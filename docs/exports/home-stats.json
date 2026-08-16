@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-parkourformer.md",
+      "detail_id": "entity-paper-parkourformer",
+      "label": "ParkourFormer（预测监督 + 序列建模人形跑酷）",
+      "type": "entity",
+      "recency": "2026-08-16",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-arcadia.md",
       "detail_id": "entity-paper-arcadia",
       "label": "Arcadia（具身终身学习全生命周期）",
@@ -206,26 +216,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-temporal-grpo.md",
-      "detail_id": "entity-paper-temporal-grpo",
-      "label": "Temporal GRPO：按阶段写回 VLA 强化学习的优势",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-arcadia.md",
-    "detail_id": "entity-paper-arcadia",
-    "label": "Arcadia（具身终身学习全生命周期）",
+    "path": "wiki/entities/paper-parkourformer.md",
+    "detail_id": "entity-paper-parkourformer",
+    "label": "ParkourFormer（预测监督 + 序列建模人形跑酷）",
     "type": "entity",
     "recency": "2026-08-16",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
