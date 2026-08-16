@@ -8,6 +8,16 @@
 - **交叉：** Generative WM / Latent Imagination / V-JEPA 2 / 物理保真输出轴 / 级联路线 01 / Video-as-Simulation / LIBERO / Manipulation / Ctrl-World / PlaNet
 - **读数：** 当前版本无动作条件；不要当像素沙盒评估器
 
+## [2026-08-16] ingest | sources/papers/arcadia_arxiv_2512_00076.md — 接入 Arcadia 具身终身学习四段闭环（EmbodiedKit 部分开源）
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2512.00076>
+- **步骤 2.5：** 论文挂 [Embodied-Arcadia/EmbodiedKit](https://github.com/Embodied-Arcadia/EmbodiedKit)；无独立项目页。根 README 为 TODO；子目录有 VLN/VLA 数据生成与 Qwen 训练入口；探索 / 3DGS / 反馈写回与权重未发布 → **部分开源**
+- **来源：** [`sources/papers/arcadia_arxiv_2512_00076.md`](sources/papers/arcadia_arxiv_2512_00076.md)、[`sources/repos/embodiedkit.md`](sources/repos/embodiedkit.md)
+- **升格：** [`wiki/entities/paper-arcadia.md`](wiki/entities/paper-arcadia.md) — 四段不可拆闭环；VLN-CE-Isaac SR 50.1%；G1+Dex-3 46/27；时序图对齐子目录入口
+- **机构：** `schema/institutions.json` 新增 `manycore`；复用 `zju` / `unitree` / `pku` / `nju` / `bytedance` / `adelaide`
+- **交叉：** VLN / VLA / Sim2Real / 数据飞轮 / NaVILA / OpenVLA / 四范式复现 / 操作 / Awesome-R2S2R / DA-Nav
+- **读数：** w/o feedback 已 +2.7 pp SR；联合训练几乎不掉；真机组合指令约 17%；仓 ≠ 论文闭环
+
 ## [2026-08-16] ingest | sources/papers/fsd_vln_arxiv_2607_08359.md — 接入 FSD-VLN 空中长程 VLN 快慢双系统（确认未开源、无真机）
 
 - **触发：** 用户指定 arXiv 论文 *FSD-VLN: Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*

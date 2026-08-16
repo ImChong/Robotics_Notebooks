@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-16",
-  "node_count": 3112,
-  "edge_count": 27319,
+  "node_count": 3113,
+  "edge_count": 27341,
   "coverage": {
-    "covered": 3088,
-    "total": 3088,
+    "covered": 3089,
+    "total": 3089,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-odeworld.md",
+      "detail_id": "entity-paper-odeworld",
+      "label": "ODEWorld（物理时间流连续预测架构）",
+      "type": "entity",
+      "recency": "2026-08-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
     {
       "path": "wiki/entities/paper-fsd-vln.md",
       "detail_id": "entity-paper-fsd-vln",
@@ -193,8 +204,7 @@
       "type": "entity",
       "recency": "2026-08-15",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-roboreact.md",
@@ -205,36 +215,27 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoidvln.md",
-      "detail_id": "entity-paper-humanoidvln",
-      "label": "HumanoidVLN：跨人形本体的物理接地 VLN 仿真与基准",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fsd-vln.md",
-    "detail_id": "entity-paper-fsd-vln",
-    "label": "FSD-VLN（空中长程 VLN · 快慢双系统）",
+    "path": "wiki/entities/paper-odeworld.md",
+    "detail_id": "entity-paper-odeworld",
+    "label": "ODEWorld（物理时间流连续预测架构）",
     "type": "entity",
     "recency": "2026-08-16",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    "has_repo": true,
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 563
-    },
-    {
       "label": "仿真到现实",
       "size": 553
+    },
+    {
+      "label": "操作",
+      "size": 527
     },
     {
       "label": "视觉-语言-动作",
@@ -242,7 +243,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
+      "size": 212
     },
     {
       "label": "人形强化学习运动控制",
@@ -258,7 +259,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1230,
+      "degree": 1232,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -281,7 +282,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 732,
+      "degree": 734,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -328,7 +329,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 453,
+      "degree": 455,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }

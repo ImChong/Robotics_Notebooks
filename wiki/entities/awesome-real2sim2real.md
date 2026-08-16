@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, sim2real, real2sim, real2sim2real, domain-randomization, gaussian-splatting, embodied-ai]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-16
 related:
   - ../overview/sun-awesome-r2s2r-technology-map.md
   - ../overview/hub-sim2real.md
@@ -14,12 +14,14 @@ related:
   - ../queries/sim2real-checklist.md
   - ./paper-agentic-real2sim.md
   - ./paper-simfoundry-real2sim-scene-generation.md
+  - ./paper-arcadia.md
   - ./paper-r2s-ego.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
 sources:
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
 summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim → Real2Sim2Real 闭环组织的迁移论文精选集；站内已节点化为技术地图 + paper-sa 详情页。"
 ---
 
@@ -78,6 +80,7 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 - [CRISP Real2Sim](../methods/crisp-real2sim.md)
 - [如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md) / [Sim2Real Checklist](../queries/sim2real-checklist.md)
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [R2S-EGO](./paper-r2s-ego.md)
+- [Arcadia](./paper-arcadia.md) — 采集 + 生成式 USD + 共享 VLN/VLA + 反馈写回（部分开源）
 - [Awesome World Models](./awesome-world-models.md) / [Awesome Touch](./awesome-touch.md)
 
 ## 参考来源
