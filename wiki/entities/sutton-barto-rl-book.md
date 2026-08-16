@@ -2,7 +2,7 @@
 type: entity
 tags: [reinforcement-learning, education, textbook, theory]
 status: complete
-updated: 2026-07-14
+updated: 2026-08-16
 related:
   - ./richard-sutton.md
   - ../methods/reinforcement-learning.md
@@ -11,6 +11,7 @@ related:
   - ../formalizations/gae.md
   - ../methods/model-based-rl.md
   - ../entities/hands-on-rl-book.md
+  - ../concepts/cartpole.md
   - ../../roadmap/depth-rl-locomotion.md
 sources:
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
@@ -56,7 +57,7 @@ summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领�
 | Ch.4 动态规划 | [Bellman Equation](../formalizations/bellman-equation.md) |
 | Ch.6–7 TD / traces | [GAE](../formalizations/gae.md)、[Intentional Updates](../methods/intentional-updates-streaming-rl.md) |
 | Ch.8 函数逼近 | 人形 loco 中大状态空间策略网络 |
-| Ch.9 on-policy 预测与控制 | PPO/Actor-Critic 理论背景 |
+| Ch.9 on-policy 预测与控制 | PPO/Actor-Critic 理论背景；实验谱系见 [Cartpole](../concepts/cartpole.md) |
 | Ch.17 规划与学习 | [Model-Based RL](../methods/model-based-rl.md) |
 
 ## 常见误区或局限
@@ -71,6 +72,7 @@ summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领�
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [MDP](../formalizations/mdp.md)
 - [动手学强化学习（蘑菇书）](./hands-on-rl-book.md)
+- [Cartpole 问题](../concepts/cartpole.md) — 1983 ASE+ACE 实验与 `pole.c` 对应的最小任务
 - [RL Locomotion 纵深路线](../../roadmap/depth-rl-locomotion.md)
 
 ## 参考来源

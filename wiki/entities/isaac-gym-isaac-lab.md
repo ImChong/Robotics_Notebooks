@@ -8,7 +8,7 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Sim / Isaac Lab 三代 NVIDIA 仿真与学习产品总览：Gym 为 legacy GPU RL；Sim 为 Omniverse 仿真底座；Lab 为当前官方学习框架。"
-updated: 2026-07-21
+updated: 2026-08-16
 tags: [nvidia]
 
 ---
@@ -177,6 +177,7 @@ Gym 时代就强调大规模随机化；Lab / Sim 延续并扩展到视觉与传
 - [Isaac Gym](./isaac-gym.md)
 - [Isaac Sim](./isaac-sim.md)
 - [Isaac Lab](./isaac-lab.md)
+- [Cartpole 问题](../concepts/cartpole.md) — Lab Quickstart 教学任务 `Isaac-Cartpole-v0`
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
 - [legged_gym](./legged-gym.md)

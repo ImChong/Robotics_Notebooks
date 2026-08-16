@@ -8,6 +8,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/rl-runner.md
   - ../entities/isaac-lab.md
+  - ../concepts/cartpole.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
@@ -89,6 +90,7 @@ flowchart LR
 - [sim2real](../concepts/sim2real.md)
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — SB3 把循环藏在 `algorithm.learn()`，与 rsl_rl `OnPolicyRunner` 对照
 - [isaac-lab](../entities/isaac-lab.md)
+- [Cartpole 问题](../concepts/cartpole.md) — SB3 默认对接的 Gymnasium `CartPole-v1` 教学基准
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 

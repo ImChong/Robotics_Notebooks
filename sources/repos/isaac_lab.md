@@ -10,7 +10,7 @@
 - **入库日期：** 2026-07-21（从联合归档拆分为独立 source）
 - **一句话说明：** 建立在 Isaac Sim 之上的官方 robot learning 框架；承接 IsaacGymEnvs / Orbit，提供 manager-based 与 direct 两套环境工作流。
 - **代码：** https://github.com/isaac-sim/IsaacLab（已开源）
-- **沉淀到 wiki：** 是 → [`wiki/entities/isaac-lab.md`](../../wiki/entities/isaac-lab.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/isaac-lab.md`](../../wiki/entities/isaac-lab.md)；教学任务 Cartpole 见 [`wiki/concepts/cartpole.md`](../../wiki/concepts/cartpole.md) 与 [`sources/sites/isaac-lab-cartpole.md`](../sites/isaac-lab-cartpole.md)
 
 ---
 

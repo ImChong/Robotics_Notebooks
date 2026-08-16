@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-13
+updated: 2026-08-16
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -16,6 +16,7 @@ related:
   - ../overview/robot-training-stack-layers-technology-map.md
   - ./legged-gym.md
   - ../methods/reinforcement-learning.md
+  - ../concepts/cartpole.md
   - ../tasks/locomotion.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../concepts/sim2real.md
@@ -94,6 +95,7 @@ Isaac Lab 的目标是提供一套现代化、可维护的 robot learning workfl
 - 提供从旧框架（IsaacGymEnvs / OmniIsaacGymEnvs / Orbit）迁移的官方路径
 - 支持训练、迁移、任务定义、环境注册、仿真管理
 - 在同一套生态里覆盖 RL、IL、locomotion、manipulation
+- Quickstart 默认教学任务是 [Cartpole](../concepts/cartpole.md) 的 `Isaac-Cartpole-v0` / `Isaac-Cartpole-Direct-v0`：同一倒立摆直觉，连续力矩 + GPU 并行，数字不能从 Gymnasium `CartPole-v1` 照搬
 
 ## 核心类图
 
@@ -318,6 +320,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [P³](./paper-p3.md) — Lab + 定制 rsl_rl：VAE-PPO 矩匹配主训与 LSFT（G1 感知地形）
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [Cartpole 问题](../concepts/cartpole.md) — Lab 教学任务 `Isaac-Cartpole-v0` 与 Gym CartPole 对照
 - [Locomotion](../tasks/locomotion.md)
 - [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [Sim2Real](../concepts/sim2real.md)

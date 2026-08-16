@@ -259,6 +259,20 @@
     "note": "V14 新增轨迹优化与 RL 对比页必须命中"
   },
   {
+    "query": "Cartpole Isaac-Cartpole-v0 倒立摆",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/cartpole.md"],
+    "expected_top_k": 5,
+    "note": "Cartpole 独立详情节点必须命中"
+  },
+  {
+    "query": "CartPole-v1 Barto Sutton Anderson",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/cartpole.md"],
+    "expected_top_k": 5,
+    "note": "1983 一手论文与 Gym 注册名应对到 Cartpole 页"
+  },
+  {
     "query": "On-policy Runner GAE discard rollout",
     "mode": "bm25",
     "must_include": ["wiki/concepts/rl-runner.md"],

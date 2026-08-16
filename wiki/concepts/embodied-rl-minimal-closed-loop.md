@@ -12,6 +12,7 @@ related:
   - ../comparisons/ppo-vs-sac.md
   - ../entities/pybullet.md
   - ../entities/isaac-gym-isaac-lab.md
+  - ../concepts/cartpole.md
   - ../methods/her.md
   - ../overview/bfm-category-03-intrinsic-reward-pretraining.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
@@ -97,7 +98,7 @@ flowchart LR
 ## 推荐最小实验路径
 
 1. **PyBullet 手写闭环** — 验证 $S,A,R,P$ 接口（见 [PyBullet](../entities/pybullet.md)）。
-2. **Gymnasium 玩具环境** — CartPole 等跑通 PPO API。
+2. **Gymnasium 玩具环境** — [CartPole](./cartpole.md) 等跑通 PPO API；同一倒立摆在 Isaac Lab 上是 `Isaac-Cartpole-v0`，数字不能照搬。
 3. **Isaac Lab 人形** — 并行环境与 domain randomization（见 [运动控制路线 L5.2](../../roadmap/motion-control.md#l52-rl-在人形运动控制里的应用)）。
 
 真机训练前必须在仿真完成闭环；试错成本与设备安全是硬约束。
@@ -121,6 +122,7 @@ flowchart LR
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — 从 MDP 扩到 Actor-Critic / PPO / 奖励 / 蒸馏的完整训练闭环
 - [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — 专栏 06：在最小闭环上叠 PD / PPO / 蒸馏 / DR
 - [主路线：运动控制 L5](../../roadmap/motion-control.md#l5-强化学习与模仿学习)
+- [Cartpole 问题](./cartpole.md) — L5.1 玩具环境的独立对照节点（Gym vs Isaac-Cartpole-v0）
 - [深蓝《具身智能基础》专栏地图](../overview/shenlan-embodied-ai-fundamentals-series.md)
 
 ## 参考来源

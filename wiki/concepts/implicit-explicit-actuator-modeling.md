@@ -2,7 +2,7 @@
 type: concept
 tags: [actuator, simulation, sim2real, control, rl, nvidia]
 status: complete
-updated: 2026-07-20
+updated: 2026-08-16
 related:
   - ./sim2real.md
   - ./torque-source-abstraction-gap.md
@@ -12,6 +12,7 @@ related:
   - ../methods/actuator-network.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/isaac-lab.md
+  - ../concepts/cartpole.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/mujoco.md
   - ../entities/bam-better-actuator-models.md
@@ -132,6 +133,7 @@ flowchart LR
 - [Actuator Network](../methods/actuator-network.md) — explicit 路线的数据驱动进阶
 - [关节摩擦模型](./joint-friction-models.md) — 常与 explicit 解析模型一并标定
 - [Isaac Lab](../entities/isaac-lab.md) — 默认训练栈与执行器 API 入口
+- [Cartpole 问题](./cartpole.md) — Lab 教学资产用 implicit 阻尼近似轨道摩擦，不是 Gym 无摩擦解析车
 
 ## 参考来源
 

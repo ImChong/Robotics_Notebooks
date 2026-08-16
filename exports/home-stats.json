@@ -1,21 +1,22 @@
 {
   "generated_at": "2026-08-16",
-  "node_count": 3116,
-  "edge_count": 27425,
+  "node_count": 3117,
+  "edge_count": 27456,
   "coverage": {
-    "covered": 3092,
-    "total": 3092,
+    "covered": 3093,
+    "total": 3093,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/rl-runner.md",
-      "detail_id": "wiki-concepts-rl-runner",
-      "label": "RL Runner（训练循环编排）",
+      "path": "wiki/concepts/cartpole.md",
+      "detail_id": "wiki-concepts-cartpole",
+      "label": "Cartpole 问题",
       "type": "concept",
       "recency": "2026-08-16",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
@@ -220,23 +221,24 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/rl-runner.md",
-    "detail_id": "wiki-concepts-rl-runner",
-    "label": "RL Runner（训练循环编排）",
+    "path": "wiki/concepts/cartpole.md",
+    "detail_id": "wiki-concepts-cartpole",
+    "label": "Cartpole 问题",
     "type": "concept",
     "recency": "2026-08-16",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 590
+      "size": 586
     },
     {
       "label": "操作",
-      "size": 527
+      "size": 524
     },
     {
       "label": "视觉-语言-动作",
@@ -244,11 +246,11 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 211
+      "size": 212
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 133
+      "size": 135
     },
     {
       "label": "移动操作",

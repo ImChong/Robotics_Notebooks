@@ -16,10 +16,11 @@ related:
   - ../formalizations/mdp.md
   - ../formalizations/bellman-equation.md
   - ../queries/rl-hyperparameter-guide.md
+  - ../concepts/cartpole.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-08-02
+updated: 2026-08-16
 ---
 
 # Policy Optimization
@@ -195,6 +196,7 @@ SAC 常用于：
 - [Formalizations: GAE](../formalizations/gae.md) — PPO 使用 GAE 作为优势估计标准实现
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — 无 minibatch 时的策略位移控制
 - [Query：RL 超参数调参指南](../queries/rl-hyperparameter-guide.md)
+- [Cartpole 问题](../concepts/cartpole.md) — 先在 CartPole-v1 / Isaac-Cartpole-v0 跑通 PPO 再选型
 
 ## 推荐继续阅读
 

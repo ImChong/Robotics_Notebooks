@@ -1,3 +1,12 @@
+## [2026-08-16] ingest | sources/papers/barto_sutton_anderson_1983_cartpole.md — 接入 Cartpole 问题独立节点（Gym CartPole-v1 + Isaac-Cartpole-v0）
+
+- **触发：** 用户要求收集 Cartpole 一手资料，结合 Isaac-Cartpole-v0，升格为独立详情节点并配足够 mermaid
+- **步骤 2.5：** Gymnasium 环境页与源码 MIT 已开源；Isaac Lab 文档站 + [isaac-sim/IsaacLab](https://github.com/isaac-sim/IsaacLab) BSD-3-Clause，`Isaac-Cartpole-v0` 注册与 cfg 可运行。1983 IEEE 文无独立项目页，历史 C/`pole.c` 与 CODECHECK 仓可复现
+- **来源：** [`sources/papers/barto_sutton_anderson_1983_cartpole.md`](sources/papers/barto_sutton_anderson_1983_cartpole.md)、[`sources/sites/gymnasium-cartpole.md`](sources/sites/gymnasium-cartpole.md)、[`sources/sites/isaac-lab-cartpole.md`](sources/sites/isaac-lab-cartpole.md)
+- **升格：** [`wiki/concepts/cartpole.md`](wiki/concepts/cartpole.md) — 欠驱动平衡、观测顺序陷阱、Gym 12° 失败 vs Isaac shaping、manager/direct 时序；多 mermaid
+- **开源结论：** Gymnasium CartPole 与 Isaac Lab Cartpole 任务 **已开源、可运行**；1983 学习器为历史实现
+- **交叉：** Gymnasium / Isaac Lab / MDP / 最小闭环 / Reward Design / Sutton-Barto / dm_control
+
 ## [2026-08-16] ingest | sources/personal/rl_runner_types.md — 接入 RL Runner 十类训练循环编排（独立概念页）
 
 - **触发：** 用户提供 Runner 分类图（On-policy / Off-policy / Offline / Distillation / Imitation / Multi-agent / Self-play / Distributed / Model-based / Evaluation）

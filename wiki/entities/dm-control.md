@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, mujoco, reinforcement-learning, benchmark, deepmind]
 status: complete
-updated: 2026-05-11
+updated: 2026-08-16
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./mujoco.md
@@ -12,6 +12,7 @@ related:
   - ../tasks/locomotion.md
   - ../queries/simulator-selection-guide.md
   - ./gymnasium.md
+  - ../concepts/cartpole.md
 sources:
   - ../../sources/repos/dm_control.md
   - ../../sources/papers/dm_control_suite.md
@@ -56,7 +57,7 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 | `dm_control.viewer` | 交互式可视化 |
 | `dm_control.mjcf` / `composer` / `locomotion` | 程序化建模、可组合环境、步态/足球等扩展任务 |
 
-**域（domain）与任务（task）**：同一刚体模型可对应不同 MDP（例如 cartpole 的 swingup 与 balance），便于在同一物理系统上比较不同控制难点。
+**域（domain）与任务（task）**：同一刚体模型可对应不同 MDP（例如 cartpole 的 swingup 与 balance），便于在同一物理系统上比较不同控制难点。与 Gymnasium / Isaac Lab 的平衡版对照见 [Cartpole 问题](../concepts/cartpole.md)。
 
 ## 常见误区或局限
 
@@ -71,6 +72,7 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 - [MuJoCo MJX](./mujoco-mjx.md) — JAX 批量 / 可微执行后端（与 MJCF 对齐）
 - [Brax](./brax.md) — JAX RL 训练；README 引导与 Playground / MJX 组合
 - [Gymnasium](./gymnasium.md) — 单智能体 RL 环境 API 标准；与 Control Suite 并行的另一条 MuJoCo 基准线
+- [Cartpole 问题](../concepts/cartpole.md) — dm_control cartpole 的 swingup/balance 与 Gym / Isaac 平衡任务对照
 - [Reinforcement Learning（方法总览）](../methods/reinforcement-learning.md) — 与连续控制基准的关系
 - [Locomotion（任务）](../tasks/locomotion.md) — walker / humanoid 等域在任务层面的位置
 - [仿真器选型指南（Query）](../queries/simulator-selection-guide.md) — 与 Isaac Lab、Genesis 等并列讨论时的上下文

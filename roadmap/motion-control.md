@@ -966,7 +966,7 @@ flowchart TD
 
 **推荐做什么：**
 - 先跑通 [具身 RL 最小闭环](../wiki/concepts/embodied-rl-minimal-closed-loop.md)：[PyBullet](../wiki/entities/pybullet.md) KUKA 定点任务，把 $S,A,R,P$ 与 `stepSimulation` 对齐（可用手写速度控制，不必先上 PPO）
-- 用 PPO 在简单环境（gymnasium）里训一个策略
+- 用 PPO 在简单环境（gymnasium）里训一个策略；[Cartpole 问题](../wiki/concepts/cartpole.md) 对照 `CartPole-v1` 与 `Isaac-Cartpole-v0` 的动作/奖励/终止差异
 - 理解 reward shaping、policy gradient、value function 的意义
 - 对照 [MDP](../wiki/formalizations/mdp.md) 五元组，能说清自己环境里的 $S,A,R,P,\gamma$ 各是什么
 
@@ -1012,7 +1012,7 @@ flowchart TD
 
 > **场景隐喻：** 通用 RL 算法直接套到人形上往往学不会——需要给它"合适的奖励 / 观测 / 动作空间 + 一堆训练 trick"。L5.2 是把 L5.1 的玩具环境落到真人形 locomotion 的工程细节。
 
-> **上一层的局限：** L5.1 让你在 CartPole 上跑通 PPO；人形 25 DOF + 浮动基的状态空间维度高几个量级，需要 reward shaping、curriculum、early termination、特权信息、teacher-student 等专门技巧。
+> **上一层的局限：** L5.1 让你在 [CartPole](../wiki/concepts/cartpole.md) 上跑通 PPO；人形 25 DOF + 浮动基的状态空间维度高几个量级，需要 reward shaping、curriculum、early termination、特权信息、teacher-student 等专门技巧。
 
 ### 英文缩写速查（L5.2）
 
