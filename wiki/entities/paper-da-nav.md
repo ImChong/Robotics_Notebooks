@@ -19,7 +19,7 @@ tags:
   - ucas
   - leju
 status: complete
-updated: 2026-08-14
+updated: 2026-08-16
 arxiv: "2607.11638"
 summary: "DA-Nav（arXiv:2607.11638）：用商业导航方向指令做城市尺度户外 VLN；图像平面离散 spatial grounding + CoT 偏离恢复；ReDA 数据集；CARLA SoTA（CSR≈98%），零样本 Go2 / 乐聚 Kuavo-V 公里级导航；截至入库日未开源。"
 related:
@@ -29,6 +29,7 @@ related:
   - ../overview/vln-open-source-repro-paradigms.md
   - ./paper-notebook-navila-legged-robot-vision-language-action-model.md
   - ./paper-worldvln-aerial-vln-wam.md
+  - ./paper-fsd-vln.md
   - ./paper-realm-last-3-meter-vln-grounding.md
   - ./paper-green-for-go-vla-nav-grounding.md
   - ./paper-uni-lavira.md
@@ -160,6 +161,7 @@ flowchart LR
 | **NaVILA** | 混合语言 | 分层 VLA→足式低层 | 弱纠偏（文中 CSR≈5%） | 见 [笔记实体](./paper-notebook-navila-legged-robot-vision-language-action-model.md) |
 | **CityWalker / ViNT** | 路径/拓扑目标 | 连续 waypoint / 拓扑 | 弱显式恢复 | 基线对照 |
 | **WorldVLN** | 空中语言指令 | WAM 潜转移→航点 | 侧重世界预测 | [空中 WAM](./paper-worldvln-aerial-vln-wam.md) |
+| **FSD-VLN** | 空中地标语言 | VLSF + 短视界 DiT | 无显式恢复 | [快慢双系统](./paper-fsd-vln.md)；未开源、无真机 |
 | **DA-Nav（本文）** | **商业方向离散指令** | **图像平面网格 + CoT** | **ReDA recovery** | **暂未开源** |
 
 ## 关联页面
@@ -170,6 +172,7 @@ flowchart LR
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — 可跑通栈对照（本文暂不可跑）
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 足式导航 VLA 基线
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 另一城市/户外相关导航范式（空中 WAM）
+- [FSD-VLN](./paper-fsd-vln.md) — 空中长程 VLN 快慢双系统（仿真、未开源）
 - [REALM](./paper-realm-last-3-meter-vln-grounding.md) — 室内 REVERIE 末段接地（评测关注点不同）
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 冻结导航 VLA 的可通行 overlay（另一类 grounding；未开源）
 - [行为克隆](../methods/behavior-cloning.md) — 纯专家示范在闭环 OOD 下的局限对照

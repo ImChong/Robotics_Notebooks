@@ -2,7 +2,7 @@
 type: concept
 tags: [vla, vlm, world-model, embodied-ai, foundation-model, real-time-control, generalization, taxonomy]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-16
 summary: "具身大模型实时性 ↔ 泛化能力取舍概念页：明示模型规模、多模态跨度、世界模型推演步长如何共同决定推理时延与控制带宽的可达边界，以及这条边界如何反向约束分层 / 端到端的选型分界。"
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ../concepts/humanoid-policy-network-architecture.md
+  - ../entities/paper-fsd-vln.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/mint_rss_2026.md
@@ -89,6 +90,7 @@ sources:
 - [生成式世界模型](../methods/generative-world-models.md) — 世界模型「级联预演」的规划层定位
 - [人形策略网络架构](./humanoid-policy-network-architecture.md) — 分层方案里承接高频控制的 WBC 底座
 - [πR²](../entities/paper-pi-r2.md) — 大 flow VLA 上拆快/慢通道并对齐推理延迟的实时闭环实例（约 25 Hz）
+- [FSD-VLN](../entities/paper-fsd-vln.md) — 空中 VLN 把 VLM 语义更新与 DiT 飞控拆到异步双频；仿真单步 176 ms，但无真机带宽验证
 - [INTACT](../entities/paper-intact.md) — 世界模型 Direct 读出毫秒级、削弱测试时 CEM 搜索
 
 ## 参考来源

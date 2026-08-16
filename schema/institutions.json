@@ -2771,6 +2771,15 @@
         "rainbow-robotics",
         "rainbow"
       ]
+    },
+    "siat": {
+      "label": "中国科学院深圳先进技术研究院（SIAT）",
+      "aliases": [
+        "siat",
+        "siat-cas",
+        "cas-siat",
+        "shenzhen-institutes-of-advanced-technology"
+      ]
     }
   }
 }
