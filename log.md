@@ -1,3 +1,8 @@
+## [2026-08-17] fix(ux): 美元价不被 KaTeX 成对 `$...$` 吞掉（entity-all-hands-up）
+
+- **现象：** [`wiki/entities/all-hands-up.md`](wiki/entities/all-hands-up.md) 工程实践段「约 $50k … 约 $7.5k」被 `docs/main.js` 行内公式正则配对，详情页把中间加粗与中文吞成公式
+- **修复：** `renderInlineMarkdown` 跳过货币配对（CJK / `**` / `$30,000–$90,000` 价带）；`$O(n)$`、`$0.99$` 仍走 KaTeX
+
 ## [2026-08-17] ingest | sources/blogs/current_robotics_currentworld.md — 接入 CurrentWorld-0 跨本体交互世界模拟器；确认未开源
 
 - **触发：** 用户指定 ingest <https://current-robotics.com/blog/currentworld>，并要求自动合并 PR

@@ -1683,6 +1683,18 @@
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
 
+  /**
+   * `$50k ... $7.5k` / `$30,000–$90,000` are currency, not `$...$` math.
+   * Keep `$0.99$`, `$O(n)$`, `$1/(1-\gamma)$` as KaTeX.
+   */
+  function isCurrencyDollarPair(expr) {
+    var s = String(expr || '').trim();
+    if (!s) return false;
+    if (/[\u3400-\u9fff]/.test(s)) return true;
+    if (/\*\*/.test(s)) return true;
+    return /^\d[\d,]*(?:\.\d+)?(?:[kKmMbB])?\s*(?:[–\-—/]|…|\.{2,3})\s*$/.test(s);
+  }
+
   function renderInlineMarkdown(text, markdownContext) {
     markdownContext = markdownContext || {};
     const source = String(text || '');
@@ -1709,6 +1721,7 @@
       .replace(/\$\s*([^$]+?)\s*\$/g, function (match, expr) {
         const trimmed = String(expr || '').trim();
         if (!trimmed) return match;
+        if (isCurrencyDollarPair(trimmed)) return match;
         const token = mathPrefix + mathTokens.length + '@@';
         // Normalize $...$ to \(...\) so downstream renderMathBlocks can catch it
         mathTokens.push({ token: token, html: '\\(' + trimmed + '\\)' });
