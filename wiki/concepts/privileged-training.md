@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -34,6 +34,7 @@ sources:
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/papers/legged_load_adapt_arxiv_2507_07825.md
 ---
@@ -130,7 +131,9 @@ Student(仅深度 + 本体)             → 学习预测同一动作
 
 $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
-优点：单阶段即可，无需两步训练；Critic 不部署，可以用所有信息。
+优点：单阶段即可，无需两步训练；Critic 不部署，可以用所有信息。**部署路径只留 Actor**，特权通道不会泄漏到真机观测。
+
+和两阶段 Teacher-Student 的差别：非对称 AC 的 Actor 从第一天起就只看可部署观测，用更准的优势信号学；Teacher-Student 则先让 **Actor 也能看特权** 把行为上限抬高，再蒸馏。前者几乎是「免费」的训练期脚手架，后者换的是更高的行为模板、但多一阶段蒸馏误差。运控 PPO 栈里两者经常叠用，不要把 critic 特权当成已经做了蒸馏。
 
 ---
 
@@ -239,6 +242,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 ## 参考来源
 
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — 非对称 AC vs Teacher-Student：特权只改善训练信号
 - [感知 Locomotion 表征与蒸馏本质 FAQ（维护者整理）](../../sources/personal/perceptive_locomotion_representation_essence.md)
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ingest 档案（Kumar RMA 2021 / Lee Science Robotics 2020 / Ji 并发训练 2022）
 - [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
@@ -253,6 +257,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 ## 关联页面
 
+- [PPO](../methods/ppo.md) — 运控默认优化器；部署只留 actor
 - [地形 Latent 表征](./terrain-latent-representation.md) — Student 深度编码向量通常不是可读高度图
 - [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md) — 特权信息（E 类）与其余四类部署可得观测的全景分类
 - [Sim2Real](./sim2real.md) — 特权训练是 sim2real 的核心技术之一，解决训练-部署感知差异

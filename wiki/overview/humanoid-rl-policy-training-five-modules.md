@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, ppo, actor-critic, teacher-student, reward, shenlan, pedagogy]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 related:
   - ../concepts/rl-runner.md
   - ../concepts/embodied-rl-minimal-closed-loop.md
@@ -21,6 +21,7 @@ related:
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "人形运动控制的 RL 策略训练可拆成五模块闭环：MDP 交互框架、Actor-Critic、PPO 裁剪更新、多维奖励、Teacher-Student 蒸馏；与 WBC/MPC 混合落地，而非替代传统控制。"
 ---
 
@@ -82,7 +83,7 @@ flowchart LR
 - **状态空间常见项**：关节角/速、IMU 姿态与角速度、足部接触、质心位置与速度等可观测量。
 - **动作接口**：关节力矩或目标关节位置（经底层 PD）；实时性要求 Actor 直接对接执行器指令链路。
 - **奖励调试**：先保证前进/平衡主项有效，再加压平滑与惩罚；权偏会直接出现抖动、畸形步态或原地「赚钱」行为。
-- **PPO 经验阈值**：文内常规 clip $\varepsilon \approx 0.2$；人形高维下「更新过猛」比「学得慢」更致命。
+- **PPO 经验阈值**：文内常规 clip $\varepsilon \approx 0.2$；人形高维下「更新过猛」比「学得慢」更致命。clip 不是硬 KL，还要盯 clip fraction / 近似 KL；原理与 `old_log_prob`、高斯动作量纲见 [PPO](../methods/ppo.md)。
 - **部署路径**：仿真大 teacher → 蒸馏 student → 真机；特权信息/机载观测差见 [Privileged Training](../concepts/privileged-training.md) 与 [Sim2Real](../concepts/sim2real.md)。
 - **与传统控制混合（文内收束）**：底层 WBC/MPC 保安全与基础稳定，上层 RL 生成自适应运动指令——对照 [WBC vs RL](../comparisons/wbc-vs-rl.md)。
 
@@ -107,9 +108,11 @@ flowchart LR
 ## 参考来源
 
 - [人形机器人运动控制：强化学习与策略训练体系详解](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — 深蓝具身智能（<https://mp.weixin.qq.com/s/mxesB0pGI_NLSkSf-cZYug>）
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — 五模块里 PPO / GAE / 高斯动作的公式级读法
 
 ## 推荐继续阅读
 
-- 原文：<https://mp.weixin.qq.com/s/mxesB0pGI_NLSkSf-cZYug>
+- 原文（深蓝）：<https://mp.weixin.qq.com/s/mxesB0pGI_NLSkSf-cZYug>
+- 原文（RobotsHub PPO 原理）：<https://mp.weixin.qq.com/s/MJQYYyOBSLirVr0vH1-AZg>
 - [具身 RL 最小闭环源文](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md)
 - [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md)

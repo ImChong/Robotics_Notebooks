@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -19,6 +19,7 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 ---
 
 # Reward Design
@@ -82,7 +83,7 @@ $$R = \sum_i w_i r_i(s, a, s')$$
 - 例子：高度奖励太强 → 策略保持半蹲站姿（重心低，最安全）
 - 例子：速度奖励不考虑方向 → 策略倒着走也能得分
 
-**应对方法**：人工测试边界情况；用 adversarial rollouts 检查漏洞；加入足够多的约束项。
+**应对方法**：人工测试边界情况；用 adversarial rollouts 检查漏洞；加入足够多的约束项。原则先于堆 term：各项 **scale 要可比**，否则大项吞掉小项；正奖励引导、负惩罚压制，过度依赖负惩罚容易学会「动得越少罚得越少」；摔倒终止尺度太严则学不会恢复，太松则用奇怪姿态刷分。
 
 ### 2. 奖励项冲突
 
@@ -182,6 +183,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 
 ## 参考来源
 
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — 原则先于堆 term；value loss 降不等于奖励目标对
 - Ng et al., *Policy Invariance Under Reward Transformations* (1999) — Potential-based shaping 理论基础
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — locomotion reward 设计工程实践
 - Ma et al., *EUREKA: Human-Level Reward Design via Coding Large Language Models* (2023) — LLM 自动奖励设计

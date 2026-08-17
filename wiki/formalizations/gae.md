@@ -6,10 +6,13 @@ related:
   - ./bellman-equation.md
   - ../methods/policy-optimization.md
   - ../methods/reinforcement-learning.md
+  - ../methods/gae.md
+  - ../methods/ppo.md
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "GAE（广义优势估计）"
-updated: 2026-04-25
+updated: 2026-08-17
 ---
 
 # GAE（广义优势估计）
@@ -97,7 +100,7 @@ for t in reversed(range(T)):
 returns = [adv + val for adv, val in zip(advantages, values)]
 ```
 
-PPO 推荐超参数：$\lambda = 0.95$，$\gamma = 0.99$（legged\_gym 默认值）。
+PPO 推荐超参数：$\lambda = 0.95$，$\gamma = 0.99$（legged\_gym 默认值）。二者职责不同：$\gamma$ 管「看多远」（步数视野），$\lambda$ 管「多大程度信任 $V$」；工程读法见 [GAE 方法页](../methods/gae.md)。
 
 ## 与 TD(λ) 的关系
 
@@ -122,6 +125,7 @@ $$\hat{A}_{T-1} = \delta_{T-1} + \gamma \lambda V(s_T)$$
 
 ## 参考来源
 
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — $\gamma$ vs $\lambda$、截断 rollout 与 bootstrap
 - Schulman et al., *High-Dimensional Continuous Control Using Generalized Advantage Estimation* (2016) — GAE 原始论文
 - Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — GAE 在 PPO 中的标准应用
 - Sutton & Barto, *Reinforcement Learning: An Introduction* Ch.12 — TD(λ) 理论背景
@@ -129,5 +133,7 @@ $$\hat{A}_{T-1} = \delta_{T-1} + \gamma \lambda V(s_T)$$
 ## 关联页面
 
 - [Bellman Equation](./bellman-equation.md) — GAE 基于 TD 残差，TD 残差来自 Bellman 方程的一步展开
+- [GAE 方法页](../methods/gae.md) — 运控里 $\gamma$ vs $\lambda$ 与 value loss 陷阱
+- [PPO](../methods/ppo.md) — clip 目标使用的 $\hat{A}_t$
 - [Policy Optimization](../methods/policy-optimization.md) — PPO 使用 GAE 作为优势估计的标准实现
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — GAE 是 policy gradient 方法的核心组件

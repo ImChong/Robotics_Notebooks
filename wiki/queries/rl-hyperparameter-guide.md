@@ -7,11 +7,14 @@ related:
   - ../concepts/curriculum-learning.md
   - ../methods/model-predictive-control.md
   - ../tasks/locomotion.md
+  - ../methods/ppo.md
+  - ../methods/gae.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/reward_design.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "RL 超参数调节指南（locomotion 专用）"
-updated: 2026-04-25
+updated: 2026-08-17
 ---
 
 # RL 超参数调节指南（locomotion 专用）
@@ -55,8 +58,8 @@ locomotion RL 的超参数调节与标准游戏 RL 有显著差异：仿真并�
 | `clip_range` (ε) | 0.1–0.2 | PPO clip；locomotion 通常用 0.2，精细任务用 0.1 |
 | `value_loss_coef` | 0.5–2.0 | value function 损失权重 |
 | `entropy_coef` | 0.001–0.01 | 探索熵正则化；locomotion 中不宜过大 |
-| `gamma` (折扣因子) | 0.97–0.99 | locomotion 长程任务用 0.99 |
-| `lambda` (GAE) | 0.90–0.97 | bias-variance 折中；0.95 是默认起点 |
+| `gamma` (折扣因子) | 0.97–0.99 | locomotion 长程任务用 0.99；**按步数计**，控制频率升高时同样 $\gamma$ 覆盖的真实时间变短 |
+| `lambda` (GAE) | 0.90–0.97 | bias-variance 折中；0.95 是默认起点。$\gamma$ 管看多远，$\lambda$ 管信不信 critic |
 | `lr` (学习率) | 1e-4–3e-4 | Adam 优化器；可用线性 decay |
 | `max_grad_norm` | 0.5–1.0 | 梯度裁剪，稳定训练 |
 
@@ -117,6 +120,9 @@ locomotion RL 的超参数调节与标准游戏 RL 有显著差异：仿真并�
 | 策略在真机上抖动 | 关节速度 / 扭矩惩罚不足 | 提高关节速度惩罚权重 |
 | 策略速度快但步态奇怪 | 缺少步态对称性约束 | 添加脚频约束 / air time reward |
 | 训练后期无提升（平台期） | 数据探索不足 | 增加 entropy / 降低课程难度 |
+| clip fraction 接近 0 或过高 | 更新太保守或太猛 | 过低：升 lr / 加 epoch；过高：降 lr、收紧 $\varepsilon$、KL early stop |
+| value loss 在降但 return 不动 | critic 拟合当前（可能很差的）策略 | 别把 value loss 当进度条；查 reward hacking / 探索塌缩 / clip 把更新压死 |
+| 提高控制频率后策略变短视 | $\gamma$ 未随频率调整 | 有效视野是 $1/(1-\gamma)$ **步**；想看同样秒数就加大 $\gamma$ |
 
 ---
 
@@ -126,8 +132,10 @@ locomotion RL 的超参数调节与标准游戏 RL 有显著差异：仿真并�
 - [课程学习](../concepts/curriculum-learning.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 - [GAE（广义优势估计）](../formalizations/gae.md) — λ 超参数直接对应 GAE 的 bias-variance 折中
+- [PPO](../methods/ppo.md) — clip / `old_log_prob` / 有效视野
 - [MDP（马尔可夫决策过程）](../formalizations/mdp.md) — RL 超参数的数学基础框架
 
 ## 参考来源
 - [policy_optimization.md](../../sources/papers/policy_optimization.md)
 - [reward_design.md](../../sources/papers/reward_design.md)
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — $\gamma$ 与控制频率、clip fraction、value loss 陷阱
