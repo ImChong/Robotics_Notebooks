@@ -455,6 +455,44 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_currency_dollar_pairs_are_not_treated_as_inline_math(self):
+        """Prose prices like $50k ... $7.5k must not become KaTeX (entity-all-hands-up)."""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('const matchHtmlRegExp');
+const endNorm = content.indexOf('function normalizeMathExpr(expr)', start);
+const endMath = content.indexOf('function applyMathBlocksInHtmlFragment', endNorm);
+eval(content.slice(start, endNorm));
+eval(content.slice(endNorm, endMath));
+const sample = '§2 点名的「高分叙事」是 **SharpaWave**（力任务强、约 $50k）、**DG-5F-S**（DexBench 接近 Sharpa、约 $7.5k，金属指面摩擦偏低）';
+const out = renderMathBlocks(renderInlineMarkdown(sample, {}));
+if (out.includes('class="math-inline"')) throw new Error('currency eaten as math: ' + out);
+if (!out.includes('$50k') || !out.includes('$7.5k')) throw new Error('currency dollars lost: ' + out);
+if (!out.includes('<strong>SharpaWave</strong>') || !out.includes('<strong>DG-5F-S</strong>')) {
+  throw new Error('bold lost: ' + out);
+}
+const math = renderMathBlocks(renderInlineMarkdown('经典 $O(n)$ 与 $\\gamma=0.99$', {}));
+if ((math.match(/class="math-inline"/g) || []).length !== 2) throw new Error('real math broken: ' + math);
+const range = renderInlineMarkdown('约 **$30,000–$90,000**', {});
+if (range.includes('\\(')) throw new Error('price range eaten: ' + range);
+if (!range.includes('$30,000') || !range.includes('$90,000')) throw new Error('price range lost: ' + range);
+console.log('ok');
+"""
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_inline_math_with_padding_spaces_in_table_cells(self):
         """$ ... $ with spaces inside delimiters (abbrev glossary tables) should render."""
         node = r"""
