@@ -46,6 +46,8 @@ sources:
   - ../../sources/datasets/let-base-dataset.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/sites/aus-bot-nestdex.md
+  - ../../sources/papers/spd_corl_2026.md
+  - ../../sources/sites/spd-bot.md
 ---
 
 # Teleoperation（遥操作）
@@ -133,6 +135,7 @@ sources:
 | **Teleopit**（西湖 / 上海创智 2026） | Unitree G1 | **PICO VR** 身体+手+头 | 公开 mocap 子集 + 自采 PICO；**96** 条瓶放置演示 | **全身跟踪 + 连续跨手重定向 + 主动视觉**；History/rewind；五仓开源；ACT/GR00T **90%/95%**；见 [论文实体](../entities/paper-teleopit.md) |
 | **Immersive Social VR+LLM**（NYUAD 2026） | Unitree H1 + Inspire 手 | **Apple Vision Pro** + 语音 | 多模态遥操作录制（RGB/语音/关节/眼动） | **LLM 语音高层 locomotion** + VR 腕/指操作 + ROS 双向音频社交；新手抓放 **80%** / 社交传方块 **70%**；**系统未开源**；见 [论文实体](../entities/paper-immersive-social-vr-llm-humanoids.md) |
 | **TeleDexter**（清华 / BIGAI / 北大 2026） | Franka + SharpaWave / LeapHand | **NOKOV MoCap**（腕 + 指尖 + 物体 6D） | 七任务真机遥操作 + 50 demos/任务 | **hand–object co-tracking** 低层「小脑」；平均 **75.2% SR**；基线运动学/生成先验近失败；**未开源**；见 [论文实体](../entities/paper-teledexter.md) |
+| **SPD**（斯坦福 / MIT / Scale AI，CoRL 2026） | 双 YAM Pro + Sharpa Wave（56 DoF） | **仿真：** Quest 3 手跟踪；**真机：** Manus + Quest 手柄 | 仿真 **75 h / 5 人一周**；真机 **1–2 h/任务** | 仿真 on-embodiment 预训练 + 真机微调；五项任务胜过从零 BC；**代码数据待发布**；见 [论文实体](../entities/paper-spd.md) |
 | **NestDex**（Usyd / PAIR Lab / Vanderbilt 2026） | Piper Nero + **WujiHand I（20-DoF）** | Leader 臂 + **1-DoF clutch**（内层手技能 copilot） | 六任务真机；外层 20 条/任务 | **嵌套采数**：人控臂与进度，部署卸掉内层；Copilot 采数 **100%**，AnyTeleop 三任务 **0%**；**未开源**；见 [论文实体](../entities/paper-nestdex.md) |
 | AnyTeleop（UCB 2023） | 多平台 | RGB 相机 | 通用 | 无传感器手套，仅视觉输入 |
 | GELLO（Berkeley 2023） | 多 UR/Franka | Leader Arms | 低成本 | 低成本版 ALOHA |
@@ -187,6 +190,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 ## 参考来源
 
 - **ingest 档案：** [sources/papers/nestdex_arxiv_2608_13362.md](../../sources/papers/nestdex_arxiv_2608_13362.md)、[sources/sites/aus-bot-nestdex.md](../../sources/sites/aus-bot-nestdex.md) — NestDex：内层手技能 copilot 采数 + 独立外层 visuomotor（arXiv:2608.13362；未开源）
+- **ingest 档案：** [sources/papers/spd_corl_2026.md](../../sources/papers/spd_corl_2026.md)、[sources/sites/spd-bot.md](../../sources/sites/spd-bot.md) — SPD：仿真 VR 灵巧手预训练 75 h + 真机 1–2 h 微调（CoRL 2026；代码数据待发布）
 - **ingest 档案：** [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)、[sources/sites/teledexter-project.md](../../sources/sites/teledexter-project.md) — TeleDexter：hand–object co-tracking 灵巧遥操作（arXiv:2607.11481；未开源）
 - **ingest 档案：** [sources/sites/engineai-urkl.md](../../sources/sites/engineai-urkl.md) — URKL：EngineAI 统一 T800 自主算法格斗联赛
 - **ingest 档案：** [sources/sites/urkl-org.md](../../sources/sites/urkl-org.md) — URKL 独立导读站（证据链 / 赛程）
@@ -231,6 +235,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [Diffusion Policy](../methods/diffusion-policy.md) — 遥操作数据训练的扩散策略
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — VR 遥操作约 50 条 + 启发式扩数据，再 DPPO 联合微调（arXiv:2603.13707）
 - [NestDex（论文实体）](../entities/paper-nestdex.md) — 内层手技能 + clutch copilot 采灵巧示范，部署卸 copilot（arXiv:2608.13362）
+- [SPD（论文实体）](../entities/paper-spd.md) — 仿真 VR 75 h 预训练；真机每任务 1–2 h 微调（CoRL 2026；代码待发布）
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — hand–object co-tracking 灵巧遥操作与采数引擎
 - [UME-EXO（论文实体）](../entities/paper-ume-exo.md) — 外骨骼力矩反馈 + 全身臂形示教 → ACT 主动柔顺策略
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 无机器人示范 → 人形全身扩散策略 + SKR

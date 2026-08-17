@@ -63,6 +63,12 @@
         "physical-intelligence"
       ]
     },
+    "scale-ai": {
+      "label": "标度人工智能（Scale AI）",
+      "aliases": [
+        "scale-ai"
+      ]
+    },
     "cmu": {
       "label": "卡内基梅隆大学（CMU）",
       "aliases": [

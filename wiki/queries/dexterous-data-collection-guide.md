@@ -11,6 +11,7 @@ related:
   - ../entities/mimic-wearable-u1.md
   - ../entities/paper-teledexter.md
   - ../entities/paper-nestdex.md
+  - ../entities/paper-spd.md
   - ../entities/humantouch.md
   - ../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
@@ -22,6 +23,8 @@ sources:
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/sites/aus-bot-nestdex.md
+  - ../../sources/papers/spd_corl_2026.md
+  - ../../sources/sites/spd-bot.md
   - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/sites/allhandsup-org.md
   - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
@@ -77,6 +80,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **方案 C：视觉重构**：从海量的人类操作视频（YouTube/Epic Kitchens）中，利用计算机视觉算法逆向推导出手的位姿序列。
 - **方案 D：学习式接触执行层采数**：[TeleDexter](../entities/paper-teledexter.md) 用 MoCap 给出指尖+物体目标，仿真训好的 co-tracking 控制器在真机上完成 finger gaiting / 工具切换，从而采到运动学遥操作采不到的接触丰富示范（每任务约 50 条即可训 Diffusion Policy）。代价是 **物体专用策略 + 重型动捕**，且截至 2026-07-28 **未开源**。
 - **方案 E：Copilot / 嵌套采数**：[NestDex](../entities/paper-nestdex.md)（arXiv:2608.13362）让操作员只控臂 + **1-DoF clutch**，可复用本体感觉内层手技能生成手指轨迹；完整示范再训**部署时不再依赖内层**的外层 visuomotor。相对同平台 AnyTeleop，六任务采数成功率 **100%** vs 三任务 **0%**。代价是每技能先采约 10 条重定向轨迹，且截至 2026-08-17 **未开源**。
+- **方案 F：仿真 VR 预训练再真机短微调**：[SPD](../entities/paper-spd.md)（CoRL 2026）让操作员戴 Quest 在 MuJoCo 里直接控目标双臂灵巧手，5 人一周采 **75 h** on-embodiment 演示做扩散策略预训练；真机每任务再 **1–2 h** 微调。五项接触丰富任务都胜过从零 BC。代价是仿真接触必须调到「像真的」，且截至 2026-08-17 **代码与 spd-75h 未列下载**。
 
 ## 采集质量的 Checklist
 
@@ -94,6 +98,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [mimic wearable U1](../entities/mimic-wearable-u1.md) — 固定 M1 运动学的被动外骨骼中层采集
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — co-tracking 灵巧遥操作数据引擎
+- [SPD（论文实体）](../entities/paper-spd.md) — 仿真 VR 75 h 预训练 + 真机 1–2 h 微调（CoRL 2026；代码待发布）
 - [NestDex（论文实体）](../entities/paper-nestdex.md) — clutch copilot 嵌套采数，部署卸内层（arXiv:2608.13362；未开源）
 - [HumanTouch](../entities/humantouch.md) — 人手全掌压阻触觉 + EMF 手姿多模态采数（数据待发）
 - [OSMO 触觉手套](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉对照
@@ -106,6 +111,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)
 - [sources/papers/nestdex_arxiv_2608_13362.md](../../sources/papers/nestdex_arxiv_2608_13362.md) — NestDex copilot 采数
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真 VR 灵巧手预训练
 - [sources/sites/aus-bot-nestdex.md](../../sources/sites/aus-bot-nestdex.md) — 项目页开源核查
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md)
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)

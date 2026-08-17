@@ -15,6 +15,7 @@ related:
   - ../entities/kinetiq-ascend.md
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-nestdex.md
+  - ../entities/paper-spd.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/imitation_learning.md
@@ -126,6 +127,7 @@ $$
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / BC / ACT / Diffusion Policy 的 ingest 档案
 - [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 生成式模仿学习如何扩展传统 BC
 - [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — chunk / delay 对 BC 复合误差与部署协议的机制分析
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真预训练后的真机 BC 微调对照
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — 解释为什么纯 BC 会受到 covariate shift 影响
 
 ## 关联页面
@@ -143,6 +145,7 @@ $$
 - [Action Chunking](./action-chunking.md) — 对单步 BC 的时间窗扩展；部署协议可与训练目标解耦
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — Delay / RDE：何时不必真的执行 chunk
 - [NestDex](../entities/paper-nestdex.md) — 外层 BC 用 H-VAE 手 latent；示范来自 copilot 而非全 DoF 遥操作（arXiv:2608.13362）
+- [SPD](../entities/paper-spd.md) — 仿真预训练后的真机 BC 微调，五项任务均胜过从零（CoRL 2026）
 
 ## 推荐继续阅读
 

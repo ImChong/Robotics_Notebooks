@@ -1,3 +1,12 @@
+## [2026-08-17] ingest | sources/papers/spd_corl_2026.md — 接入斯坦福/MIT/Scale AI 的 SPD 仿真灵巧手预训练；宣称将开源、项目页未列代码
+
+- **触发：** 用户指定 ingest *Pre-training Visual Dexterity in Simulation*（<https://spd.bot/>），并要求自动合并 PR
+- **步骤 2.5：** 打开项目页仅 PDF；论文宣称释放 spd-75h / spd-vr / 六套场景；GitHub 检索无官方仓 → **宣称将开源 / 待核实**
+- **来源：** [`sources/papers/spd_corl_2026.md`](sources/papers/spd_corl_2026.md)、[`sources/sites/spd-bot.md`](sources/sites/spd-bot.md)
+- **升格：** [`wiki/entities/paper-spd.md`](wiki/entities/paper-spd.md) — VR 仿真采 75 h → 222M DiT 预训练 → 56-DoF 真机每任务 1–2 h 微调；五项任务胜过从零 BC；历史+短 chunk 收益最大
+- **交叉：** 遥操作 / 灵巧采数指南 / Diffusion Policy / Action Chunking / EgoScale / Sim2Real / TeleDexter / π0
+- **开源结论：** 宣称将开源；源码运行时序图不适用；注册 Scale AI 机构标签
+
 ## [2026-08-17] ingest | sources/papers/fail_passive_gap_arxiv_2608_02809.md — 接入西门子工业人形 Fail-Passive Gap；确认未开源
 
 - **触发：** 用户指定 ingest Ding / Cui / Wang / Wen（西门子基础技术、Siemens Corporation 普林斯顿）arXiv 预印本 *Toward Certified Functional Safety for Industrial Humanoid Robots*，并要求自动合并 PR

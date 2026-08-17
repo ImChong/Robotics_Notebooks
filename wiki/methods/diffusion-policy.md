@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-08-15
+updated: 2026-08-17
 ---
 
 # Diffusion Policy
@@ -99,6 +99,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 ### 2. 双手操作 / 全身操作
 - 人形机器人上肢操作任务
 - 配合力控或阻抗控制的混合策略
+- [SPD](../entities/paper-spd.md) 用 222M 扩散 Transformer 在 56-DoF 双臂灵巧手上做仿真预训练：无语言条件、靠 visuomotor 历史；真机五项接触任务均胜过从零 BC
 
 ### 3. 技能组合（Skill Composition）
 - 多技能 diffusion 模型的条件切换
@@ -133,6 +134,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - **ingest 档案：** [sources/papers/refine_dp_arxiv_2603_13707.md](../../sources/papers/refine_dp_arxiv_2603_13707.md) — REFINE-DP：人形 loco-manip DP+RL 联合微调（arXiv:2603.13707）
 - **ingest 档案：** [sources/papers/fa_rdp_arxiv_2607_28596.md](../../sources/papers/fa_rdp_arxiv_2607_28596.md) — FA-RDP：频率自适应视觉–力反应扩散（arXiv:2607.28596）
 - **讲者坐标：** [sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine @ Simons 2026：扩散/flow → 长 action chunk → IL 与 offline RL（官方 abstract）
+- **ingest 档案：** [sources/papers/spd_corl_2026.md](../../sources/papers/spd_corl_2026.md) — SPD：历史条件 DiT + 仿真预训练（CoRL 2026）
 
 ## 关联页面
 
@@ -155,6 +157,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Action Chunking](./action-chunking.md) — DP 默认输出动作块时的训练 / 部署读法
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — Simons 2026 报告：为何生成式动作头抬升 IL / offline RL
 - [Seeker](../entities/paper-seeker.md) — 动作监督 ROI 作 DP 输入瓶颈；MimicGen 62.6%、xArm 域内 76.7%（arXiv:2608.13422；已开源）
+- [SPD](../entities/paper-spd.md) — 仿真 75 h 预训练的历史条件 DiT；灵巧真机短微调（CoRL 2026）
 
 ## 推荐继续阅读
 

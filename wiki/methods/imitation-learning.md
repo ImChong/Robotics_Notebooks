@@ -184,6 +184,7 @@ flowchart TD
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要
 - [sources/papers/humannet.md](../../sources/papers/humannet.md) — HumanNet 百万小时人中心视频与 VLA 受控预训练叙事
 - [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 变分蒸馏 + RL 微调 ingest 摘要
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真 VR 灵巧手预训练 + 真机 BC 微调
 - [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md) — mimic-video：Video-Action Model 与 VLA 对照（arXiv:2512.15692）摘录
 - [sources/papers/egoscale_arxiv_2602_16710.md](../../sources/papers/egoscale_arxiv_2602_16710.md) — EgoScale：人视频规模预训练 VLA + 对齐 mid-training（arXiv:2602.16710）摘录
 - [sources/papers/egoverse_arxiv_2604_07607.md](../../sources/papers/egoverse_arxiv_2604_07607.md) — EgoVerse：联盟 egocentric 人示教与跨实验室共训研究（arXiv:2604.07607）
@@ -227,6 +228,7 @@ flowchart TD
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 人示教与跨实验室共训缩放判据
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) — WAM 动力学监督 vs BC：野外人数据缩放与 misalignment 鲁棒性
 - [Seeker](../entities/paper-seeker.md) — 无空间标签的动作监督视觉瓶颈；少数据 MimicGen / xArm（arXiv:2608.13422；已开源）
+- [SPD](../entities/paper-spd.md) — 仿真 VR 灵巧手预训练 + 真机短微调 BC（CoRL 2026）
 - [HumanNet](../entities/humannet.md) — 大规模人中心视频语料与跨本体迁移的数据侧参照
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹

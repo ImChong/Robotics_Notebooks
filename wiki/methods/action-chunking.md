@@ -12,6 +12,7 @@ sources:
   - ../../sources/repos/xiaomi-robotics-0.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
+  - ../../sources/papers/spd_corl_2026.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
@@ -27,6 +28,7 @@ related:
   - ../entities/paper-chronos.md
   - ../entities/paper-pi-r2.md
   - ../entities/paper-why-action-chunking-improves-bc.md
+  - ../entities/paper-spd.md
   - ../entities/paper-autointervene.md
   - ../entities/paper-nestdex.md
   - ../entities/paper-wam-realtime-async.md
@@ -113,6 +115,8 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 
 [HTD](./humanoid-transformer-touch-dreaming.md) 把 action chunking 用在人形接触丰富型任务上：动作输出仍是短 horizon chunk，但训练时额外预测未来手部力和触觉 latent，减少 chunk 内“动作看似平滑但接触状态没学到”的问题。
 
+[SPD](../entities/paper-spd.md) 在 56-DoF 双臂灵巧手上给出互补证据：单帧条件时 8 步 chunk 会抖崩，π0 风格的单帧 + 32 步也明显弱；加上 **32 步 visuomotor 历史** 后，短 8 步 chunk 反而最强——时序一致性来自上下文，反应来自短计划。该配置也是仿真预训练收益最大的一档（平均进度 +18 点）。
+
 ## 设计时要注意什么
 
 ### Chunk 长度不能盲目变大
@@ -166,6 +170,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：2D 视频预测与 3D 动作推理拆分预训练，扩散适配器输出动作 chunk
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：ACT + 模态特异触觉编码器的跨传感器基准
 - [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — CoRL 2026：chunk 收益机制（Delay / RDE / 隐式集成）
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 历史条件化使短 chunk 可反应（CoRL 2026）
 - [sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine：扩散/flow 使大块 action chunk 成为连续控制默认接口
 
 ## HMI 开源主表入口
@@ -192,6 +197,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Chronos](../entities/paper-chronos.md) — 把 action chunk 当广义坐标，经 IMLE 先验 + 二阶加速度桥精炼（arXiv:2606.30318）
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」
+- [SPD](../entities/paper-spd.md) — 灵巧真机：历史窗才能把 chunk 缩到 8 步且吃到仿真预训练（CoRL 2026）
 - [AutoIntervene](../entities/paper-autointervene.md) — 对提议 chunk 做视觉–动作支持监控与双向自动接管（arXiv:2608.07065）
 - [NestDex](../entities/paper-nestdex.md) — 内外层均用 chunk + 时间集成；瓶抓消融显示闭环适应接触、ensemble 降 jerk（arXiv:2608.13362）
 - [ReflexVLA](../entities/paper-reflexvla.md) — 动态任务上钉死「大 chunk + 短执行地平线」；异步 chunk=8 / horizon=2（arXiv:2608.14379）
