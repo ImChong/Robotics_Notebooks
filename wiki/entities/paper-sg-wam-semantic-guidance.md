@@ -12,6 +12,7 @@ related:
   - ./paper-dypes-vla.md
   - ./paper-lamda-tsr.md
   - ./paper-shrimp.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/sg_wam_semantic_guidance_arxiv_2608_08839.md
   - ../../sources/sites/livfour-sg-wam.md
@@ -122,6 +123,7 @@ flowchart LR
 - [DyPES-VLA](./paper-dypes-vla.md) — 同 `livfour` 项目页账号的跨本体 VLA
 - [LAMDA](./paper-lamda-tsr.md) — 同样把 VLM 当教师、但推理丢掉语言通路
 - [SHRIMP](./paper-shrimp.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — SigLIP2 / Depth Anything 3 两路语义前瞻即感知输出如何被生成式策略消费的一例
 
 ## 参考来源
 
