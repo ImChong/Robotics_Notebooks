@@ -14,10 +14,11 @@ tags:
   - baai
   - hkust-gz
 status: complete
-updated: 2026-08-10
+updated: 2026-08-17
 arxiv: "2608.06375"
 related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ./paper-dpc.md
   - ./paper-being-m07-humanoid-latent-wam.md
   - ./paper-dit4dit-video-action-model.md
   - ./paper-dypes-vla.md
@@ -178,6 +179,7 @@ flowchart TB
 ## 关联页面
 
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — Joint 视频隐状态人形 WAM 对照
+- [DPC](./paper-dpc.md) — 把 SONIC latent 接口写成冻结动作像 \(M_h\)；主张去掉 \(Z_t\)（Symbiosis 2026-08，未开源）
 - [Being-M0.7](./paper-being-m07-humanoid-latent-wam.md) — Cascaded 潜空间人形 WAM（人先验 + 后接地）对照
 - [World Action Models](../concepts/world-action-models.md) — WAM 概念坐标
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务背景

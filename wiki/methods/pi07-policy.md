@@ -2,10 +2,11 @@
 type: method
 tags: [vla, foundation-policy, physical-intelligence, flow-matching, manipulation, prompting, cross-embodiment]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 related:
   - ./π0-policy.md
   - ./vla.md
+  - ../entities/paper-dpc.md
   - ./lwd.md
   - ./action-chunking.md
   - ../concepts/foundation-policy.md
@@ -108,6 +109,7 @@ flowchart LR
 
 - [π₀ (Pi-zero) 策略模型](./π0-policy.md) — π 系前代 flow-matching VLA 基线
 - [VLA（Vision-Language-Action）](./vla.md) — 通才策略模型族谱与工程瓶颈
+- [DPC](../entities/paper-dpc.md) — 异构数据先对齐到 G1 关节空间，对照本页的多模态提示混合（Symbiosis 2026-08）
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — π0.5 为 LEGS 实验骨干之一（arXiv:2606.01458）
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md) — 与 RT-2、Octo 等并列的代表模型视角
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 当子目标由世界模型在线给出时，与「未来观测–动作联合建模」讨论相邻

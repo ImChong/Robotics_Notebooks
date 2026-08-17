@@ -1318,6 +1318,14 @@
         "curr0"
       ]
     },
+    "symbiosis-robotics": {
+      "label": "共生机器人（Symbiosis Robotics）",
+      "aliases": [
+        "symbiosis-robotics",
+        "symbiosis",
+        "symbioact"
+      ]
+    },
     "sunday-robotics": {
       "label": "周日机器人（Sunday Robotics）",
       "aliases": [

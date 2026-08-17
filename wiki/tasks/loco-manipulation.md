@@ -42,6 +42,8 @@ sources:
   - ../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md
   - ../../sources/papers/3d_ic_icml_2026.md
   - ../../sources/blogs/gemini_robotics_2_whole_body.md
+  - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
+  - ../../sources/sites/symbiosis-robotics-dpc.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -181,6 +183,10 @@ flowchart TD
 - **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
 - **代表作**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) (Mondo Robotics / HKUST, 2026, arXiv:2603.10448) — 双 DiT **联合** flow matching，G1 三项全身 + 八项桌面；前序 VAM 基座；[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) (arXiv:2606.09215) 将其推到 **实时九项全身 loco-manip**（**76.1%** vs GR00T-N1.7 **43.9%**，**4.9 Hz**）。
 - **潜空间 foresight 对照**：[ω-0](../entities/paper-omega-0.md) (NTU/PKU/BAAI/HKUST-GZ, 2026, arXiv:2608.06375) — 用 **未来观测 embedding**（非像素视频重建）耦合扩散全身动作 latent + SONIC；ω-HOME 40h+；G1 家务 11 任务 Omni **SR 81.8%**（代码/数据 WIP）。
+
+### 16b. 去掉运动接口的直接感知控制（Direct-Joint · 无冻结 System 0）
+- **核心：** 把 System 1 → \(Z_t\) → 冻结 System 0（如 SONIC tracker）写成三条瓶颈——运动学接口丢掉任务控制信息、分训合推导致未来视觉梯度到不了解码器、最终动作被冻结解码器像 \(M_h\) 卡住；改为单一模型把视觉/语言/本体直接映射到 **G1 关节 + 手部 PD 目标**，用 **Symbiotic Attention** 耦合感知–控制，用 **DriftDistill**（Offline BC + 冻结教师纠正漂移态）扩大可执行分布。
+- **代表作：** [DPC](../entities/paper-dpc.md)（Symbiosis Robotics, 2026-08 博客）— 自报 **15,010 h** 统一关节语料；移动拾放 / 受限全身 / 手–眼–脚演示。**截至 2026-08-17 确认未开源**，无公开成功率表；适合当「WAM+SONIC」的反对命题，不能当复现基线。
 
 ### 17. 混合数据入口周报（ego / 生成 / 仿真 / 触觉 / 跨本体 teleop）
 - **核心**：2026-06 周报将 loco-manip 数据生产拆为 **四组入口**——第一视角语义与全身动作（Ego-Pi、EgoPriMo）、生成视频与仿真 teleop（GenHOI、OASIS）、解耦命令与统一 WBC（VAIC、M3imic）、触觉与跨本体遥操作（WT-UMI、X-OP）；强调 **对齐、接触、命令接口与跨平台复用** 比单点真机采集更关键。
@@ -335,6 +341,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md) — DiT4DiT：双 DiT 联合 VAM 与 G1 全身 loco-manip（arXiv:2603.10448）
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
 - **ingest 档案：** [sources/papers/omega0_arxiv_2608_06375.md](../../sources/papers/omega0_arxiv_2608_06375.md) — ω-0：潜空间 foresight 人形并发 loco-manipulation（arXiv:2608.06375）
+- **ingest 档案：** [sources/blogs/symbiosis_dpc_direct_perception_control.md](../../sources/blogs/symbiosis_dpc_direct_perception_control.md) — DPC：去掉 SONIC 式运动接口的直接感知控制（Symbiosis, 2026-08）
 - **ingest 档案：** [sources/papers/being_m07.md](../../sources/papers/being_m07.md) — Being-M0.7：潜空间 video-motion 先验 + G1 action expert 人形 loco-manipulation（BeingBeyond, 2026-07）
 - **ingest 档案：** [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md) — ABot-M0.5：移动操作 WAM（latent action + Dream Forcing，arXiv:2607.00678）
 - **ingest 档案：** [sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md) — Loco-Manip 8 篇数据入口周报（`Ez87ljBYmCyIpLKjMjEyaQ`）
