@@ -9,6 +9,50 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/robot-description-catalogs.md",
+      "detail_id": "wiki-comparisons-robot-description-catalogs",
+      "label": "机器人描述目录选型",
+      "type": "comparison",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-robot-descriptions.md",
+      "detail_id": "entity-awesome-robot-descriptions",
+      "label": "Awesome Robot Descriptions",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/fiveages-sim-robot-descriptions.md",
+      "detail_id": "entity-fiveages-sim-robot-descriptions",
+      "label": "fiveages-sim/robot_descriptions",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/urdf-files-dataset.md",
+      "detail_id": "entity-urdf-files-dataset",
+      "label": "URDF Files Dataset",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/lw-benchhub-tour.md",
       "detail_id": "entity-lw-benchhub-tour",
       "label": "LW BENCHHUB TOUR",
@@ -169,56 +213,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-advdex.md",
-      "detail_id": "entity-paper-advdex",
-      "label": "AdvDex：人手与灵巧手统一动作空间",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-prm-as-a-judge.md",
-      "detail_id": "entity-paper-prm-as-a-judge",
-      "label": "PRM-as-a-Judge：机器人执行过程评测",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-reflexvla.md",
-      "detail_id": "entity-paper-reflexvla",
-      "label": "ReflexVLA：动态任务低延迟 VLA",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/isaac-lab-default-environments.md",
-      "detail_id": "entity-isaac-lab-default-environments",
-      "label": "Isaac Lab 默认环境",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lw-benchhub-tour.md",
-    "detail_id": "entity-lw-benchhub-tour",
-    "label": "LW BENCHHUB TOUR",
-    "type": "entity",
+    "path": "wiki/comparisons/robot-description-catalogs.md",
+    "detail_id": "wiki-comparisons-robot-description-catalogs",
+    "label": "机器人描述目录选型",
+    "type": "comparison",
     "recency": "2026-08-17",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
