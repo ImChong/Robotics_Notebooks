@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-fail-passive-gap.md",
+      "detail_id": "entity-paper-fail-passive-gap",
+      "label": "Fail-Passive Gap：工业人形功能安全的认证缺口",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/comparisons/robot-description-catalogs.md",
       "detail_id": "wiki-comparisons-robot-description-catalogs",
       "label": "机器人描述目录选型",
@@ -202,28 +211,16 @@
       "source": "git",
       "action": "added",
       "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-v-simba.md",
-      "detail_id": "entity-paper-v-simba",
-      "label": "V-Simba：视觉 RL 的样本效率也可以来自网络结构",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/robot-description-catalogs.md",
-    "detail_id": "wiki-comparisons-robot-description-catalogs",
-    "label": "机器人描述目录选型",
-    "type": "comparison",
+    "path": "wiki/entities/paper-fail-passive-gap.md",
+    "detail_id": "entity-paper-fail-passive-gap",
+    "label": "Fail-Passive Gap：工业人形功能安全的认证缺口",
+    "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
