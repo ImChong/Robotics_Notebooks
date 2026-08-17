@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, moe, flow-matching, multi-embodiment, humanoid, qwen, manipulation, loco-manipulation, depth-distillation, robbyant]
 status: complete
-updated: 2026-07-17
+updated: 2026-08-17
 arxiv: "2607.06403"
 code: https://github.com/robbyant/lingbot-vla-v2
 related:
@@ -18,6 +18,7 @@ related:
   - ./paper-greenvla-staged-vla-humanoid.md
   - ../methods/lingbot-map.md
   - ../entities/lerobot.md
+  - ./letools.md
 sources:
   - ../../sources/papers/lingbot_vla_v2_tech_report.md
   - ../../sources/repos/lingbot-vla-v2.md
@@ -154,6 +155,7 @@ flowchart TB
 - [Qwen-VLA](./qwen-vla.md) — 同 **Qwen3-VL + flow 动作头** 族的通才路线
 - [Green-VLA](./paper-greenvla-staged-vla-humanoid.md) — 另一 **统一动作 + 分阶段训练** 人形向实例
 - [LeRobot](../entities/lerobot.md) — 后训练数据格式与工具链
+- [LeTools](./letools.md) — 乐聚 Learning 仓 2026-07-09 起接入 LingbotVLA-v2 外部模型
 - [LingBot-Map](../methods/lingbot-map.md) — 同团队 **流式 3D 几何** 基础模型（问题域不同）
 
 ## 参考来源

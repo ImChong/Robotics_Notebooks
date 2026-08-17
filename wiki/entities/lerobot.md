@@ -4,13 +4,14 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
-updated: 2026-07-27
+updated: 2026-08-17
 related:
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
   - ./lingbot-vla-v2.md
   - ./lingbot-vla.md
   - ./openlet.md
+  - ./letools.md
   - ./rebot-devarm.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/vla.md
@@ -101,6 +102,7 @@ flowchart LR
 - **部署/Agent OS 对照：** [DimOS（Dimensional）](./dimensionalos-dimos.md) 侧重 **现场 Module 编排、SLAM 导航、空间记忆与 MCP 自然语言控制**；与 LeRobot 的 **数据集 Hub + 策略训练** 正交，常在「训练用 LeRobot、集成用 DimOS/ROS」分层共存。
 - **无机器人双臂采集：** [HandUMI](./handumi.md)（钉 `lerobot[feetech]==0.5.1`）用可穿戴手持接口 **脱离目标机器人** 采集示范，经 `handumi validate` QA 后导出 **LeRobot v3 兼容** 同步数据，再重定向到 PiPER、OpenArm、TRLC-DK1、YAM 等平行夹爪双臂——降低「每台臂一套遥操作」的规模化成本。
 - **Unitree G1 官方改版：** [unitree_lerobot](./unitree-lerobot.md)（[`unitreerobotics/unitree_lerobot`](https://github.com/unitreerobotics/unitree_lerobot)）在 LeRobot 上适配 G1 双臂灵巧手采数/训练/测试，常与 [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md) 组成官方 IL 闭环；组织级导航见 [Unitree](./unitree.md)。
+- **乐聚 Kuavo 官方改版：** [LeTools](./letools.md) 的 Learning 仓把 rosbag 转为 **LeRobot Dataset v3**，并统一训 ACT/π/GR00T/LingbotVLA、仿真/真机部署；数据侧对接 [LET-Base](./let-base-dataset.md) 与 [REAL-I](./icra-2026-real-i.md)。
 - **Seeed reBot 桌面臂：** [reBot-DevArm](./rebot-devarm.md)（B601-DM / B601-RS）提供官方 Wiki 的 LeRobot 入门教程（采数 / 训练路径以 Seeed 文档为准），适合需要 **>1 kg 负载** 且仍走 LeRobot 格式的桌面操作实验。
 - **竞赛全链路对照：** [Learning to Fold / LeHome](./paper-lehome-learning-to-fold.md)（ICRA 2026）在 **SO-ARM101** 上开源采集–训练–推理，并发布仿真/真机 HF 权重；数据侧兼容 LeRobot 格式与 Hub 总线。
 

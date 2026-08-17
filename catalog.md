@@ -233,6 +233,7 @@
 - [人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）](wiki/entities/humanoid-system-curriculum.md) — 一句话：** 把深蓝学院「人形机器人系统 - 理论与实践」八章大纲落成可交叉引用的知识图：以 Unitree G1 为平台，从 **行走 RL** 走到  `📅unknown` `[entity_page]`
 - [HumanTouch（可规模化人手触觉采集系统）](wiki/entities/humantouch.md) — HumanTouch**（*A Multimodal System for Scalable Human-Hand Tactile Acquisition*，[项目页](https://xspar `📅unknown` `[entity_page]`
 - [Hydra](wiki/entities/hydra-config.md) — Hydra](https://github.com/facebookresearch/hydra) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze `📅unknown` `[entity_page]`
+- [ICRA 2026 REAL-I Challenge](wiki/entities/icra-2026-real-i.md) — REAL-I**（1st Real-World Embodied-AI Learning Challenge）是 **ICRA 2026** 上由 **乐聚** 主办的工业具身赛：提供 **真机评 `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
@@ -276,6 +277,8 @@
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
 - [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
 - [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是由 Hugging Face 开发并维护的一个**具身智能全栈框架**。它旨在将自然语言处理（NLP）领域的成熟生态（如 `transformers` 库和模型 Hub）迁移 `📅unknown` `[entity_page]`
+- [LET-Base-Dataset](wiki/entities/let-base-dataset.md) — LET-Base-Dataset**（HF [`LejuRobotics/LET-Base-Dataset`](https://huggingface.co/datasets/LejuRoboti `📅unknown` `[entity_page]`
+- [LeTools](wiki/entities/letools.md) — LeTools**（<https://www.letools.lejurobot.com/>）是乐聚为 **Kuavo 全尺寸人形** 提供的 **采集–训练–部署软件层**：产品站把「All I `📅unknown` `[entity_page]`
 - [LIBERO](wiki/entities/libero-benchmark.md) — LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
 - [LIFT（人形大规模预训练 + 高效微调）](wiki/entities/lift-humanoid.md) — LIFT**（论文缩写：**L**arge-scale pretra**I**ning and efficient **F**ine**T**uning）是面向 **人形机器人 locomotio `📅unknown` `[entity_page]`
 - [LimX COSA（人形大脑操作系统）](wiki/entities/limx-cosa.md) — LimX COSA**（**C**ognitive **OS** of **A**gents）是 **逐际动力（LimX Dynamics）** 面向全尺寸人形的 **物理世界原生 Agent 操 `📅unknown` `[entity_page]`

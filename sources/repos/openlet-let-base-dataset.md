@@ -17,5 +17,7 @@
 
 ## 对 wiki 的映射
 
+- [LET-Base-Dataset](../../wiki/entities/let-base-dataset.md) — HF 数据卡与文件计数
 - [OpenLET](../../wiki/entities/openlet.md)
 - [乐聚机器人](../../wiki/entities/leju-robotics.md)
+- [LeTools](../../wiki/entities/letools.md)

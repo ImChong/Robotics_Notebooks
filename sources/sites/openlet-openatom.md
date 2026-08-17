@@ -30,5 +30,8 @@
 ## 对 wiki 的映射
 
 - [OpenLET](../../wiki/entities/openlet.md) — 数据集社区与 LET 系列归纳
+- [LET-Base-Dataset](../../wiki/entities/let-base-dataset.md) — HF 数据卡升格
+- [ICRA 2026 REAL-I](../../wiki/entities/icra-2026-real-i.md) — 竞赛数据包
+- [LeTools](../../wiki/entities/letools.md) — 官方训练 / 技能栈
 - [乐聚机器人](../../wiki/entities/leju-robotics.md) — 硬件本体与运营方
 - [LeRobot](../../wiki/entities/lerobot.md) — `kuavo-manip-open` 工具链交叉

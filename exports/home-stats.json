@@ -1,13 +1,43 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3130,
-  "edge_count": 27611,
+  "node_count": 3133,
+  "edge_count": 27666,
   "coverage": {
-    "covered": 3106,
-    "total": 3106,
+    "covered": 3109,
+    "total": 3109,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/icra-2026-real-i.md",
+      "detail_id": "entity-icra-2026-real-i",
+      "label": "ICRA 2026 REAL-I Challenge",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/let-base-dataset.md",
+      "detail_id": "entity-let-base-dataset",
+      "label": "LET-Base-Dataset",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/letools.md",
+      "detail_id": "entity-letools",
+      "label": "LeTools",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-pgif-mppi.md",
       "detail_id": "entity-paper-pgif-mppi",
@@ -182,54 +212,22 @@
       "action": "added",
       "has_repo": true,
       "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-parkourformer.md",
-      "detail_id": "entity-paper-parkourformer",
-      "label": "ParkourFormer（预测监督 + 序列建模人形跑酷）",
-      "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-arcadia.md",
-      "detail_id": "entity-paper-arcadia",
-      "label": "Arcadia（具身终身学习全生命周期）",
-      "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-odeworld.md",
-      "detail_id": "entity-paper-odeworld",
-      "label": "ODEWorld（物理时间流连续预测架构）",
-      "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pgif-mppi.md",
-    "detail_id": "entity-paper-pgif-mppi",
-    "label": "PGIF-MPPI：社交导航的安全成本必须面向未来",
+    "path": "wiki/entities/icra-2026-real-i.md",
+    "detail_id": "entity-icra-2026-real-i",
+    "label": "ICRA 2026 REAL-I Challenge",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 613
+      "size": 605
     },
     {
       "label": "操作",
@@ -257,7 +255,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1239,
+      "degree": 1244,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -280,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 741,
+      "degree": 743,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -304,7 +302,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 524,
+      "degree": 529,
       "has_repo": true
     },
     {
@@ -327,7 +325,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 456,
+      "degree": 457,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }

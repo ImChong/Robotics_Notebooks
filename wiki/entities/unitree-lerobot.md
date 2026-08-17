@@ -2,10 +2,11 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, imitation-learning, lerobot, teleoperation, humanoid]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-17
 related:
   - ./unitree.md
   - ./lerobot.md
+  - ./letools.md
   - ./xr-teleoperate.md
   - ./unitree-sim-isaaclab.md
   - ./unitree-dexterous-hand-services.md
@@ -75,6 +76,7 @@ git clone --recurse-submodules https://github.com/unitreerobotics/unitree_lerobo
 ## 关联页面
 
 - [LeRobot](./lerobot.md)
+- [LeTools](./letools.md) — 乐聚 Kuavo 侧官方 LeRobot 胶水（对照本仓）
 - [xr_teleoperate](./xr-teleoperate.md)
 - [unitree_sim_isaaclab](./unitree-sim-isaaclab.md)
 - [UnifoLM-VLA](./unifolm-vla.md)

@@ -2,10 +2,13 @@
 type: entity
 tags: [humanoid, hardware, open-source, leju, kuavo, dataset-ecosystem]
 status: complete
-updated: 2026-07-17
+updated: 2026-08-17
 related:
   - ./humanoid-robot.md
   - ./openlet.md
+  - ./letools.md
+  - ./let-base-dataset.md
+  - ./icra-2026-real-i.md
   - ./lerobot.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
@@ -14,6 +17,7 @@ related:
 sources:
   - ../../sources/sites/lejurobot.md
   - ../../sources/sites/openlet-openatom.md
+  - ../../sources/sites/letools-lejurobot.md
 summary: "乐聚机器人：KUAVO（夸父）全尺寸人形与轮臂双形态产品线，覆盖科研开箱、商服导览、工业分拣与训练场数据生态；牵头运营 OpenLET 开源真机数据集社区。"
 ---
 
@@ -23,7 +27,7 @@ summary: "乐聚机器人：KUAVO（夸父）全尺寸人形与轮臂双形态�
 
 ## 一句话定义
 
-**全尺寸人形硬件平台商 + 真机数据生态运营方：KUAVO 负责机体与场景落地，OpenLET 负责把采集数据与挑战赛资源开源给 VLA/IL 社区。**
+**全尺寸人形硬件平台商 + 真机数据生态运营方：KUAVO 负责机体与场景落地，OpenLET 负责把采集数据与挑战赛资源开源给 VLA/IL 社区，[LeTools](./letools.md) 负责官方训练胶水与原子技能编排。**
 
 ## 英文缩写速查
 
@@ -50,6 +54,7 @@ summary: "乐聚机器人：KUAVO（夸父）全尺寸人形与轮臂双形态�
 | **公开案例** | 夸父火炬手、亚冬会传递等 | 运动控制与大活动部署的品牌展示（非学术 benchmark） |
 | **场景包** | 科研 / 商服 / 工业 / 训练场 | 从实验室到展厅导览、汽车 3C 分拣、数据训练场 |
 | **数据生态** | [OpenLET](./openlet.md) | LET 全身运控、灵巧手、轮臂基础操作 + 挑战赛；**模态**含 VR 遥操 RGB 视觉、全身动捕重定向与力触觉灵巧手数据 |
+| **软件层** | [LeTools](./letools.md) | Learning（rosbag→LeRobot v3→ACT/π/GR00T/LingbotVLA）+ Skills（SkillBase 行为树）；门户 <https://www.letools.lejurobot.com/> |
 
 ## 开源与复现入口
 
@@ -58,6 +63,9 @@ summary: "乐聚机器人：KUAVO（夸父）全尺寸人形与轮臂双形态�
 | 数据集社区 | [openlet.openatom.tech](https://openlet.openatom.tech/) | 社区首页、专栏与仓库聚合 |
 | 旗舰数据仓 | [LET-Base-Dataset](https://atomgit.com/OpenLET/LET-Base-Dataset) | 轮臂基础操作（Kuavo 4 Pro / 5W） |
 | IL 工具链 | [kuavo-manip-open](https://atomgit.com/OpenLET/kuavo-manip-open) | rosbag→parquet、训练、仿真与真机部署 |
+| 官方训练/技能栈 | [LeTools](./letools.md) | [LeTools-Learning](https://github.com/LejuRobotics/LeTools-Learning)（GPL-3.0）+ [letools_opensource](https://github.com/LejuRobotics/letools_opensource) |
+| HF 旗舰数据 | [LET-Base-Dataset](./let-base-dataset.md) | Kuavo 真机操作 rosbag；CC-BY-NC-SA-4.0 |
+| ICRA 赛事包 | [REAL-I](./icra-2026-real-i.md) | 仿真三任务各约 1000 bag；真机 split 待更新 |
 | 整机官网 | [lejurobot.com/zh](https://www.lejurobot.com/zh) | 产品参数与方案咨询（**非** 整机 CAD 全开源） |
 
 > **开源边界：** OpenLET 侧 **数据与教程已开源**；KUAVO 整机为 **商业产品**，不等同于 [灵犀 X1](./agibot-lingxi-x1.md) 类「硬件图纸全开放」路线。
@@ -71,7 +79,10 @@ summary: "乐聚机器人：KUAVO（夸父）全尺寸人形与轮臂双形态�
 ## 关联页面
 
 - [OpenLET](./openlet.md) — LET 数据集与 AtomGit 仓库
-- [LeRobot](./lerobot.md) — `kuavo-manip-open` 数据格式与训练栈
+- [LeTools](./letools.md) — 官方 Learning / Skills 软件层
+- [LET-Base-Dataset](./let-base-dataset.md) — HF 真机操作集
+- [ICRA 2026 REAL-I](./icra-2026-real-i.md) — 竞赛数据包
+- [LeRobot](./lerobot.md) — `kuavo-manip-open` / LeTools-Learning 数据格式与训练栈
 - [人形机器人](./humanoid-robot.md) — 硬件品类总览
 - [Manipulation](../tasks/manipulation.md) — LET 基础操作任务语境
 - [Unitree](./unitree.md) — 另一全尺寸/人形硬件主线对照

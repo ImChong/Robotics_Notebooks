@@ -2,9 +2,12 @@
 type: entity
 tags: [dataset, humanoid, leju, open-source, openatom, manipulation, loco-manipulation]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-17
 related:
   - ./leju-robotics.md
+  - ./letools.md
+  - ./let-base-dataset.md
+  - ./icra-2026-real-i.md
   - ./lerobot.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
@@ -16,6 +19,8 @@ related:
 sources:
   - ../../sources/sites/openlet-openatom.md
   - ../../sources/repos/openlet-let-base-dataset.md
+  - ../../sources/datasets/let-base-dataset.md
+  - ../../sources/datasets/kuavo-data-challenge-icra.md
 summary: "开放原子孵化的具身智能开源数据社区：乐聚牵头运营，发布 LET 全身运控/灵巧手/轮臂基础操作等 >6 万分钟 Kuavo 真机数据，并聚合 CRAIC、REAL-I 等赛事与 LeRobot 复现链。"
 ---
 
@@ -41,13 +46,13 @@ summary: "开放原子孵化的具身智能开源数据社区：乐聚牵头运�
 
 - **真机而非纯仿真：** 与 GRAIL 等合成轨迹或 HumanNet 等互联网人视频不同，LET 强调 **Kuavo 上采集的可执行机器人轨迹**，直接服务 **VLA/IL 后训练**。
 - **多技能覆盖：** 分 **全身运控**（行走/下蹲/转腰）、**灵巧手精细操作**（捏扣握 + 触觉阵列）、**轮臂基础操作**（抓拿放/工业分拣）三条主线，对应 loco-manipulation 不同子问题。
-- **工具链闭环：** [kuavo-manip-open](https://atomgit.com/OpenLET/kuavo-manip-open) 覆盖 **rosbag→parquet→训练→仿真→真机**，降低「只有数据、没有训练脚本」的断层。
+- **工具链闭环：** [kuavo-manip-open](https://atomgit.com/OpenLET/kuavo-manip-open) 覆盖 **rosbag→parquet→训练→仿真→真机**；产品化官方栈见 [LeTools](./letools.md)（LeTools-Learning GPL-3.0）。降低「只有数据、没有训练脚本」的断层。
 
 ## LET 数据集族（策展）
 
 | 仓库 | 采集系统 | 技能侧重 |
 |------|----------|----------|
-| [LET-Base-Dataset](https://atomgit.com/OpenLET/LET-Base-Dataset) | Kuavo 4 Pro / 5W + VR 全身增量遥操 | 抓/拿/放；工业分拣、搬运、上下料 |
+| [LET-Base-Dataset](./let-base-dataset.md)（[AtomGit](https://atomgit.com/OpenLET/LET-Base-Dataset) · [HF](https://huggingface.co/datasets/LejuRobotics/LET-Base-Dataset)） | Kuavo 4 Pro / 5W + VR 全身增量遥操 | 抓/拿/放；工业分拣、搬运、上下料 |
 | [LET-Dex-Dataset](https://atomgit.com/OpenLET/LET-Dex-Dataset) | 外骨骼 + 力触觉灵巧手（6×12×10 触觉 + 腕部六维力） | 捏、扣、握等精细操作 |
 | [LET-Body-Dataset](https://atomgit.com/OpenLET/LET-Body-Dataset) | VR + 全身动捕重定向 | 行走、下蹲、转腰、双足跟随 |
 
@@ -83,7 +88,7 @@ flowchart LR
 
 ## 赛事与社区运营
 
-- **REAL-I 具身智能挑战赛** — ICRA 背书，工业真任务（动态抓取、双臂协调等）。
+- **REAL-I 具身智能挑战赛** — ICRA 背书，工业真任务（动态抓取、双臂协调等）；数据包见 [ICRA 2026 REAL-I](./icra-2026-real-i.md)。
 - **乐聚具身智能操作任务挑战赛 & 创业启航营** — 「真实任务 + 开源数据 + 真机评测」。
 - **CRAIC 人形机器人挑战赛** — Kuavo 教程与备赛专栏。
 
@@ -96,6 +101,9 @@ flowchart LR
 ## 关联页面
 
 - [乐聚机器人](./leju-robotics.md) — 硬件本体与运营方
+- [LeTools](./letools.md) — 官方 Learning / Skills 栈（相对 AtomGit 范例仓）
+- [LET-Base-Dataset](./let-base-dataset.md) — HF 数据卡与 rosbag 计数
+- [ICRA 2026 REAL-I](./icra-2026-real-i.md) — 竞赛仿真包
 - [LeRobot](./lerobot.md) — 数据格式与训练框架
 - [HumanNet](./humannet.md) — 另一「大规模小时」但偏 **人视频** 的预训练来源对照
 - [LingBot-VLA](./lingbot-vla.md) — 真机双臂 VLA；可与 LET 操作数据组成「基础模型 + 领域后训练」链路

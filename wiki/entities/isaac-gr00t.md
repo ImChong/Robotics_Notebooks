@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, vla, humanoid, nvidia, foundation-policy, lerobot, isaac-lab, deployment]
 status: complete
-updated: 2026-07-29
+updated: 2026-08-17
 summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 GA 参考代码、LeRobot 数据管线、后训练/评测/TensorRT 部署，并与 Isaac Lab-Arena、Teleop、Isaac ROS 组成端到端策略流水线。"
 related:
   - ../entities/paper-hrl-stack-34-gr00t_n1.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/foundation-policy.md
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
+  - ./letools.md
 sources:
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
@@ -121,6 +122,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 论文 canonical：[paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md)  
 - 低层 WBC / SONIC：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)  
 - 数据互操作：[lerobot.md](../entities/lerobot.md)  
+- Kuavo 厂商胶水：[letools.md](./letools.md) — Learning 仓将 GR00T N1.5/N1.7 列入统一训练/client 部署  
 - 仿真框架：[isaac-gym-isaac-lab.md](../entities/isaac-gym-isaac-lab.md)  
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)  
 - 视觉 Sim2Real 姊妹仓：[gr00t-visual-sim2real.md](../entities/gr00t-visual-sim2real.md)

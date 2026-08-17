@@ -2,7 +2,7 @@
 type: concept
 tags: [behavior-tree, vla, orchestration, deployment, ros2, physical-ai, robotis]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-17
 summary: "行为树与 VLA 结合：用 BT 编排策略加载/暂停/复位与宏动作，VLA 负责语言条件下的连续操作 chunk；BT 提供可组合、可恢复的任务结构，VLA 提供语义技能执行。"
 related:
   - ../methods/vla.md
@@ -14,6 +14,7 @@ related:
   - ../methods/action-chunking.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-robo-harness.md
+  - ../entities/letools.md
 sources:
   - ../../sources/repos/cyclo_intelligence.md
 ---
@@ -125,6 +126,7 @@ BT 节点可传入：
 
 - [VLA（方法）](../methods/vla.md) — 策略层定义与工程瓶颈
 - [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md) — ROBOTIS 全栈实现细节
+- [LeTools（实体）](../entities/letools.md) — Kuavo 侧 BT 调度的是 **SDK 原子技能**，不是 VLA LOAD/RESUME
 - [Navigation2（实体）](../entities/navigation2.md) — 移动机器人域 BT 编排参照
 - [SayCan（方法）](../methods/saycan.md) — LLM 高层 + 低层技能的分层对照
 - [VLA 真机部署指南（Query）](../queries/vla-deployment-guide.md) — chunk 与延迟
