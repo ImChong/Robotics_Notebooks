@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, manipulation, vla, sim2real, evaluation, leaderboard, open-source, ai-mmlab-club, isaac-lab]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-17
 related:
   - ./xpolicylab.md
   - ../methods/vla.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/sim-vs-real-eval-gap.md
   - ./robo-bench.md
   - ./vla-sota-leaderboard.md
+  - ./paper-prm-as-a-judge.md
   - ./xiaomi-robotics-1.md
   - ./isaac-gym-isaac-lab.md
 sources:
@@ -183,6 +184,7 @@ sequenceDiagram
 - [RoboBench](./robo-bench.md) — MLLM 认知评测对照
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 论文摘录榜对照
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 已报 RoboDojo 仿真分数的 VLA 案例
+- [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 冻结 2026-07-03 公开视频做过程评测；SR 与 OPD 排名不完全一致
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 仿真栈底座
 
 ## 参考来源

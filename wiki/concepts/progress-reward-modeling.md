@@ -10,10 +10,11 @@ tags:
   - northwestern
   - cmu
 status: complete
-updated: 2026-07-27
+updated: 2026-08-17
 related:
   - ../entities/paper-progress-reward-modeling-survey.md
   - ../entities/paper-topreward.md
+  - ../entities/paper-prm-as-a-judge.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
@@ -99,6 +100,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 
 - [Progress Reward Survey（论文实体）](../entities/paper-progress-reward-modeling-survey.md) — 综述与 Awesome 入口
 - [TOPReward](../entities/paper-topreward.md) — 视频 VLM token 似然零样本进度；OXE / ManiRewardBench
+- [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 打进度曲线，用 OPD 评 VLA/WAM 过程（非训练奖励）
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 稠密奖励与信用分配
 - [Imitation Learning](../methods/imitation-learning.md) — 演示时间序作弱进度
 - [VLA](../methods/vla.md) — 指令微调进度模型常挂 VLM 生态
@@ -112,9 +114,11 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 - [综述论文归档](../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md)
 - [Awesome-Progress-Models](../../sources/repos/awesome-progress-models.md)
 - [TOPReward 论文归档](../../sources/papers/topreward_arxiv_2602_19313.md)
+- [PRM-as-a-Judge 论文归档](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md)
 
 ## 推荐继续阅读
 
 - [arXiv:2607.21655](https://arxiv.org/abs/2607.21655) — 综述全文
 - [Awesome-Progress-Models](https://github.com/sterzhang/Awesome-Progress-Models) — 可点击论文画廊
 - [TOPReward 项目页](https://topreward.github.io/webpage/) — 冻结 VLM token 似然进度实例
+- [PRM-as-a-Judge 项目页](https://prm-as-a-judge.github.io/) — 进度曲线作过程评测套件

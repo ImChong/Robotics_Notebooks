@@ -15,7 +15,7 @@ tags:
   - amazon
   - unc-chapel-hill
 status: complete
-updated: 2026-07-27
+updated: 2026-08-17
 arxiv: "2602.19313"
 code: https://github.com/TOPReward/TOPReward
 related:
@@ -24,6 +24,7 @@ related:
   - ../methods/awr.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
+  - ./paper-prm-as-a-judge.md
   - ../concepts/open-x-embodiment.md
 sources:
   - ../../sources/papers/topreward_arxiv_2602_19313.md
@@ -180,6 +181,7 @@ ManiRewardBench 分平台（LeRobot / Franka / 双臂·单臂 YAM）上，Qwen3-
 - [AWR](../methods/awr.md) — TOP-AWR 下游
 - [Imitation Learning](../methods/imitation-learning.md) — 加权 BC 语境
 - [VLA](../methods/vla.md) — 指令条件操作策略侧
+- [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 同类「冻结进度模型」，但输出 OPD 过程评测而非 token 似然奖励
 - [Open X-Embodiment](../concepts/open-x-embodiment.md) — OXE 评测轴
 
 ## 参考来源

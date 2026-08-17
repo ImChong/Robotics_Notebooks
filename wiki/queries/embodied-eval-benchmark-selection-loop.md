@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -16,6 +16,8 @@ sources:
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/sites/allhandsup-org.md
+  - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
+  - ../../sources/papers/reflexvla_arxiv_2608_14379.md
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../concepts/cartpole.md
@@ -33,6 +35,8 @@ related:
   - ../entities/all-hands-up.md
   - ../entities/paper-humanoidvln.md
   - ../entities/robodojo.md
+  - ../entities/paper-prm-as-a-judge.md
+  - ../entities/paper-reflexvla.md
   - ../entities/xpolicylab.md
   - ../entities/paper-fabrivla.md
   - ../entities/paper-softvtbench.md
@@ -55,7 +59,7 @@ related:
 |----|--------|-----------|--------|--------------------------|
 | ① 具身大脑/MLLM 认知 | System 2 高层认知：意图理解、场景感知、规划、affordance、失败诊断；另含 **日常音视频时序对齐** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md) | QA 正确率 / 认知维度分 / AV Align | 认知评分高 ≠ 能下发可执行动作；AV 高分 ≠ 操纵 affordance |
 | ② 世界模型预测保真度 | 给定动作，模型能否忠实推演未来帧/物理状态 | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 / WMBench](../entities/paper-gigaworld-1-policy-evaluation.md)；开放域多场景另见 [WorldScore](../entities/paper-worldscore.md) | 场景守恒 / 轨迹一致 / 语义对齐；（WorldScore：相机可控 / 质量 / 动态） | 短时视觉逼真 ≠ 长时序动作忠实 ≠ 下游策略收益；WorldScore 高分 ≠ 操纵保真 |
-| ③ 策略任务成功率 | 策略在任务上真做成没有 | [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md)、[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)、[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md)；桌面 VLA 相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)；**接触安全**另见 [SoftVTBench](../entities/paper-softvtbench.md) | 任务成功率 / 敏捷分；软体另报 Safety Success | 成功率均值掩盖长尾失败；魔法抓取虚高；跨基准直接比榜；**只报 Goal 掩盖过压** |
+| ③ 策略任务成功率 | 策略在任务上真做成没有 | [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md)、[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)、[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md)；桌面 VLA 相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)；**接触安全**另见 [SoftVTBench](../entities/paper-softvtbench.md)；**过程评测**见 [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md)；**延迟感知动态任务**见 [ReflexVLA / ReflexBench](../entities/paper-reflexvla.md) | 任务成功率 / 敏捷分；软体另报 Safety Success；过程侧报 OPD | 成功率均值掩盖长尾失败；魔法抓取虚高；跨基准直接比榜；**只报 Goal 掩盖过压**；**SR 与进度曲线排名不一致** |
 | ④ sim↔real 评测 gap 校准 | 仿真评测结论能否外推到真机 | [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) + real-to-sim 相关性 | sim↔real 排名相关性 | 仿真可复现 ≠ 真机代表性；评测集与训练分布重叠 |
 
 **总原则**：评测选型的第一问永远是「**这层指标测的到底是能力本身，还是能力的易测代理**」。越靠上层（认知、视频质量）越好测、越可复现，但离「真机做成」越远；越靠下层（真机成功率、sim↔real 校准）越贵、越难复现，但代表性越强。一条负责任的评测链要**逐层往下压实**，而不是停在某个漂亮的上层代理指标上。
@@ -107,7 +111,7 @@ flowchart TD
 
 - **测什么/用什么基准**：[ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) 用**真实低层控制**替代「魔法抓取」测家庭重排（GPU 加速、可控演示生成）；[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) 用大规模人类技能参考系统比较重定向/跟踪/模仿学习组合，测人形全身交互技能泛化；[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md) 用犬敏捷赛式障碍课 + 0–1 敏捷分测四足敏捷性。[RoboDojo](../entities/robodojo.md) 用 **42 仿真五维任务 + 18 真机任务** 与 [XPolicyLab](../entities/xpolicylab.md) 统一接口，对通用操纵策略做 **官方重跑** 的 sim-and-real 公益榜（verified 上榜须开源训推与权重）。桌面语言条件 VLA 的社区相对位次可先扫 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)（LIBERO / Meta-World / RoboTwin 等**摘录分数**，不重跑），再回原文核协议——例如 [FabriVLA](../entities/paper-fabrivla.md) 的 MT50 **90.0%** 与 [Evo-1](../entities/paper-evo1-lightweight-vla.md) 的 **80.6%** 同属该层，但训练配方与评测面不同。
 - **可复现 vs 代表性**：仿真成功率**高吞吐、可复现、可控**，适合 recipe 迭代；但「魔法抓取」这类抽象化实现会**系统性虚高**成功率——ManiSkill-HAB 的意义正是把重排基准**落到真实低层操作**上，缩小这道代表性缺口。榜站聚合视图**不能替代**官方评测脚本与协议脚注；RoboDojo verified 条目另加 **云管线 + 开源产物** 约束。
-- **典型误判**：① **成功率均值掩盖长尾失败模式**——同样 80% 成功率，均匀失败 vs 集中在某类物体/初值上的失败，工程含义天差地别；② 单任务过拟合冒充跨任务泛化，需 Mimicking-Bench 这类**跨任务/跨物体**基准把关；③ 离线回放评测（固定初值重放）≠ 在线闭环评测（策略自己滚出轨迹），后者才暴露复合误差；④ **跨基准直接比榜**（LIBERO vs Meta-World vs RoboTwin）——[VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) Methodology 明确禁止；⑤ **本地公开布局分 = RoboDojo verified 榜**——官方另有 hidden-layout 与开源门槛。
+- **典型误判**：① **成功率均值掩盖长尾失败模式**——同样 80% 成功率，均匀失败 vs 集中在某类物体/初值上的失败，工程含义天差地别；② 单任务过拟合冒充跨任务泛化，需 Mimicking-Bench 这类**跨任务/跨物体**基准把关；③ 离线回放评测（固定初值重放）≠ 在线闭环评测（策略自己滚出轨迹），后者才暴露复合误差；④ **跨基准直接比榜**（LIBERO vs Meta-World vs RoboTwin）——[VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) Methodology 明确禁止；⑤ **本地公开布局分 = RoboDojo verified 榜**——官方另有 hidden-layout 与开源门槛；⑥ **只报 SR、看不见过程**——走到 99% 与停在 5% 都叫失败；[PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) 用冻结 PRM 进度曲线给出 OPD（含 FNS/DRR/SQS），在冻结 [RoboDojo](../entities/robodojo.md) 视频上打乱 SR 排名；⑦ **仿真暂停世界掩盖延迟**——静态 LIBERO 高分不蕴含动态任务；[ReflexVLA](../entities/paper-reflexvla.md) 的 ReflexBench 把同步/异步延迟写进评测。
 
 ## 4. ④ sim↔real 评测 gap 校准层：评测结论能否外推真机
 
@@ -115,7 +119,7 @@ flowchart TD
 
 - **测什么**：不是再测一次策略，而是测**评测本身的可外推性**——[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)把可信仿真当作**可扩展闭环评测引擎**，其前提是仿真 rollout 与真机 rollout **统计相关**，且训练管线**刻意不与评测共享同一仿真分布**（避免评测集泄漏）。[RoboDojo](../entities/robodojo.md) 用同一 XPolicyLab 接口同时报告仿真与 **RealEval 真机**，是「③+④ 同协议」的工程样本，但 **sim 高分仍不自动蕴含真机高分**。
 - **为什么必须单独一层**：仿真在可复现性/吞吐/可控性上的优势，是**以牺牲真实接触、感知噪声、长尾分布代表性**换来的。这条 gap 的物理根因与三条缩小路线，单独沉淀为姊妹概念页 [仿真评测可复现性 ↔ 真实代表性取舍（sim↔real 评测 gap）](../concepts/sim-vs-real-eval-gap.md)。
-- **典型误判**：① 仿真基准饱和（刷到接近满分）当成「真实场景就绪」；② 评测集与训练分布重叠导致虚高（数据泄漏）；③ 静态基准不覆盖部署时的分布漂移。校准手段是**用少量真机 rollout 锚定 sim↔real 排名相关性**，而非用仿真绝对分。
+- **典型误判**：① 仿真基准饱和（刷到接近满分）当成「真实场景就绪」；② 评测集与训练分布重叠导致虚高（数据泄漏）；③ 静态基准不覆盖部署时的分布漂移。校准手段是**用少量真机 rollout 锚定 sim↔real 排名相关性**，而非用仿真绝对分。[PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) 在冻结 RoboDojo 上报告过程指标的 Sim–Real Spearman ρ 约 0.18–0.58，说明过程评测同样不能默认外推。
 
 ---
 
@@ -137,6 +141,8 @@ flowchart TD
 | WM 视频很真但选出的策略更差 | ② 用视觉逼真代替动作忠实 | 换长时序动作忠实指标（GigaWorld-1） |
 | 仿真成功率高真机崩 | ③/④ 魔法抓取虚高 / sim↔real 未校准 | 落到真实低层控制 + real-to-sim 相关性 |
 | 平均成功率好但偶发大事故 | ③ 均值掩盖长尾 | 按失败模式/物体分层看成功率 |
+| SR 与进度曲线排名打架 | ③ 只用终局 SR | 换 [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) OPD，分清近成功失败 vs 早停 |
+| LIBERO 高分但接球/传送带崩 | ③ 静态榜、仿真暂停世界 | 换 [ReflexBench](../entities/paper-reflexvla.md) 延迟感知动态任务 |
 | 可变形 Goal 高但物体被捏坏 | ③ 只用 Goal、未报 Safety | 换 [SoftVTBench](../entities/paper-softvtbench.md) 式 Goal/Safety + 形变分布 |
 | 榜单饱和但新场景失效 | ④ 基准饱和 ≠ 场景就绪 / 分布漂移 | 换分布外测试集，查评测集泄漏 |
 
@@ -164,6 +170,8 @@ flowchart TD
 - [daily_omni_arxiv_2505_17862.md](../../sources/papers/daily_omni_arxiv_2505_17862.md) — Daily-Omni，①层日常音视频跨模态时序对齐 AVQA
 - [wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md) — GigaWorld-1「长时序动作忠实 > 短时视觉逼真」策略评估器结论
 - [robodojo_arxiv_2607_04434.md](../../sources/papers/robodojo_arxiv_2607_04434.md) — RoboDojo，③/④ 层统一 sim-and-real 操纵评测
+- [prm_as_a_judge_arxiv_2608_14284.md](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md) — PRM-as-a-Judge，③ 层过程评测（OPD）与 judge 校准
+- [reflexvla_arxiv_2608_14379.md](../../sources/papers/reflexvla_arxiv_2608_14379.md) — ReflexBench，③ 层延迟感知动态操纵评测
 - [softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench，③ 层可变形接触安全 Goal/Safety
 - [robodojo_open_longterm_eval_2026-07.md](../../sources/blogs/robodojo_open_longterm_eval_2026-07.md) — 长期公益评测与 verified 开源上榜公告
 
@@ -184,6 +192,8 @@ flowchart TD
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — ③层社区聚合：多基准 VLA / 灵巧手摘录榜（不重跑）
 - [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji（DexBench 任务分在独立站）
 - [RoboDojo](../entities/robodojo.md) — ③/④ 层：通用操纵官方 sim-and-real 公益榜（重跑 + 开源上榜）
+- [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — ③ 层：冻结 PRM 进度曲线 + OPD；工具仓已开源
+- [ReflexVLA](../entities/paper-reflexvla.md) — ③ 层：ReflexBench 延迟感知动态任务；代码待开放
 - [SoftVTBench](../entities/paper-softvtbench.md) — ③ 层：可变形视触觉 Goal/Safety Success
 - [HumanTracker](../entities/paper-humantracker.md) — ③ 层：人形 motion tracking 四族 153 h 光学基准 + 偏好对齐 HumanScore（数据集待发布）
 - [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配与 verified 开源口

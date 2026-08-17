@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-17
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim-vs-real-eval-gap.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-worldscore.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/robodojo.md
+  - ../entities/paper-prm-as-a-judge.md
   - ../entities/xpolicylab.md
   - ../entities/paper-softvtbench.md
   - ../entities/paper-mmhu.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/papers/robodojo_arxiv_2607_04434.md
+  - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/papers/mmhu_arxiv_2507_12463.md
 summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
@@ -87,6 +89,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [WorldScore](../entities/paper-worldscore.md) — 开放域 3D/4D/视频多场景世界生成统一榜（② 层相邻，非操纵轴）
 - [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)
 - [RoboDojo](../entities/robodojo.md)
+- [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 过程评测 OPD（③ 层，可挂已有 rollout）
 - [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉 Goal/Safety Success（③ 层过程安全）
 - [MMHU](../entities/paper-mmhu.md) — 驾驶场景人体行为多模态基准（① 层相邻）
 - [XPolicyLab](../entities/xpolicylab.md)
@@ -100,6 +103,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [ESI-Bench 论文](../../sources/papers/esi_bench_arxiv_2605_18746.md) — 具身空间智能评测
 - [Daily-Omni 论文](../../sources/papers/daily_omni_arxiv_2505_17862.md) — 日常 AV 跨模态时序对齐
 - [RoboDojo 论文](../../sources/papers/robodojo_arxiv_2607_04434.md) — 统一 sim-and-real 通用操纵评测
+- [PRM-as-a-Judge 论文](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md) — 过程评测 OPD
 - [SoftVTBench 论文](../../sources/papers/softvtbench_arxiv_2607_04234.md) — 可变形视触觉 Goal/Safety Success
 - [MMHU 论文](../../sources/papers/mmhu_arxiv_2507_12463.md) — 驾驶人本 Behavior VQA / 运动评测
 - 本页归纳自 [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) 及各评测基准实体/概念页
