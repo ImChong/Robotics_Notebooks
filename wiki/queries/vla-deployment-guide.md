@@ -13,6 +13,7 @@ related:
   - ../entities/paper-wam-realtime-async.md
   - ../entities/paper-reflexvla.md
   - ./vla-with-low-level-controller.md
+  - ../entities/lw-benchhub-tour.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -100,6 +101,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — WAM 秒级延迟下六种 chunk 融合对照（先对齐再 blend）
 - [Rift](../entities/paper-rift-wam.md) — 先问要不要滚视频再谈异步切块；LIBERO 延迟 1.1× current-only
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态任务 + CUDA Graph；代码待开放
+- [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真侧 EnvHub 闭环对照（headless SmolVLA + 双臂 Piper）；不含真机异步/TensorRT
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)

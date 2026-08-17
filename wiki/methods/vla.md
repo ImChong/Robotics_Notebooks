@@ -40,6 +40,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../entities/lerobot.md
+  - ../entities/lw-benchhub-tour.md
   - ../entities/letools.md
   - ../entities/nvidia-so101-sim2real-lab-workflow.md
   - ../entities/robot-io-rio.md
@@ -426,6 +427,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台
 - [Lumina 具身智能社区](../entities/lumina-embodied.md) — Talks / Guide 社区雷达（与 Embodied-AI-Guide 同源）
 - [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架
+- [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — EnvHub 把 SmolVLA 接到光轮双臂厨房仿真；自过滤飞轮对照
 - [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 LeRobot/VLA 胶水与技能编排
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2（GR2）
 - [OpenVLA](../entities/openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调

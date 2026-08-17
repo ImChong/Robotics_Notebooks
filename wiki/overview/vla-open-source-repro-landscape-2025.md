@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -12,6 +12,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../queries/manipulation-vla-architecture-selection.md
   - ../entities/lerobot.md
+  - ../entities/lw-benchhub-tour.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../entities/paper-harness-vla.md
@@ -152,6 +153,7 @@ flowchart TB
 - [LeRobot](../entities/lerobot.md) — RynnVLA-002 文内 SO100 数据收集语境
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛级 π₀.₅ RL + DAgger 全链路开源
 - [EgoSteer](../entities/paper-egosteer.md) — egocentric 策展 + HITL DAgger + WM-VLA 双灵巧手全栈（2026）
+- [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 2026 仿真侧：EnvHub + SmolVLA 双臂 Piper 闭环与自过滤飞轮（非 2025 表内项）
 
 ## 参考来源
 
