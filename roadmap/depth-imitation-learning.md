@@ -143,6 +143,7 @@ flowchart LR
 - [Diffusion Policy](../wiki/methods/diffusion-policy.md)（本仓库）
 - [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)（本仓库）— ACT 一系的核心机制
 - [Why Action Chunking Improves BC](../wiki/entities/paper-why-action-chunking-improves-bc.md)（本仓库，CoRL 2026）— 消融拆穿"时序一致性/更短 horizon"两个常见假说，chunk 收益主因是延迟观测条件化 + 隐式集成；同一策略用 Randomized Delay Ensemble 部署即可匹配标准 chunk 执行，真机三任务验证
+- [Seeker](../wiki/entities/paper-seeker.md)（本仓库）— 冻结 DINOv3 + 动作监督 ROI，不靠 gaze/affordance/阶段提示逼近特权 Oracle（62.6 vs 64.2），同一 ROI 可跨 RGB/点云模态复用；MimicGen 62.6%，xArm 真机域内 76.7%/OOD 60.0%；MIT 已开源
 
 ### 学完输出什么
 - 一个用 Diffusion Policy 训练的动作策略
