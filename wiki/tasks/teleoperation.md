@@ -18,6 +18,7 @@ sources:
   - ../../sources/sites/hiw-500-dataset.md
   - ../../sources/papers/ume_exo_arxiv_2606_14218.md
   - ../../sources/papers/rove_arxiv_2606_17011.md
+  - ../../sources/blogs/current_robotics_currentworld.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/halomi_arxiv_2606_18772.md
   - ../../sources/papers/hapmorph_arxiv_2509_05433.md
@@ -94,7 +95,7 @@ sources:
 - 多操作员数据融合策略
 
 ### 4. 人形干预接管 ≠ 专家示范（deployment-time）
-机械臂 + 夹爪上较顺滑的 leader–follower / 3D 鼠标纠正，在 **全身 + 灵巧手人形** 上常出现 **对齐犹豫、回撤、重定向误差**。[ROVE](../entities/paper-rove-humanoid-vla-intervention.md)（arXiv:2606.17011）将 VLA rollout 近失败时的 MoCap 接管拆为 **rollout → adaptation → recovery**，并证明直接 HG-DAgger 式模仿干预会把 **adaptation 噪声** 学进策略；后训练应优先 **价值引导提取** 而非一律当专家 BC。
+机械臂 + 夹爪上较顺滑的 leader–follower / 3D 鼠标纠正，在 **全身 + 灵巧手人形** 上常出现 **对齐犹豫、回撤、重定向误差**。[ROVE](../entities/paper-rove-humanoid-vla-intervention.md)（arXiv:2606.17011）将 VLA rollout 近失败时的 MoCap 接管拆为 **rollout → adaptation → recovery**，并证明直接 HG-DAgger 式模仿干预会把 **adaptation 噪声** 学进策略；后训练应优先 **价值引导提取** 而非一律当专家 BC。产业侧对照：[CurrentWorld-0](../entities/current-robotics-currentworld.md) 把接管放进 **世界模型**（失败态保存 / 回滚 / 分支），避免在真机反复复现同一失败——与 ROVE 的真机 MoCap 接管互补，不是替代。
 
 ### 4. 双臂协调
 全身遥操作需要同时控制移动基座 + 双臂：
@@ -254,6 +255,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — VR 长程 loco-manipulation 与非结构化地形底层控制
 - [CWI（论文实体）](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — Quest VR 双手接口 + 复合全身模仿 loco-manipulation（arXiv:2606.27676）
 - [ROVE（论文实体）](../entities/paper-rove-humanoid-vla-intervention.md) — 人形 VLA 近失败 MoCap 接管与三阶段干预标注（arXiv:2606.17011）
+- [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 世界模型内人类接管、回滚与分支后训练（确认未开源）
 - [REK](../entities/rek.md) — VR 格斗体育：竞技向全身 teleop 极端场景
 - [HapMorph（论文实体）](../entities/paper-hapmorph-pneumatic-haptic-render.md) — 操作员侧可穿戴尺寸+刚度力触觉渲染（arXiv:2509.05433）
 - [TeleGate（论文实体）](../entities/paper-telegate.md) — 惯性动捕 + 门控冻结专家 + VAE 预判；2.5 h 高动态全身遥操作（RSS 2026，arXiv:2602.09628）

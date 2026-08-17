@@ -1,3 +1,12 @@
+## [2026-08-17] ingest | sources/blogs/current_robotics_currentworld.md — 接入 CurrentWorld-0 跨本体交互世界模拟器；确认未开源
+
+- **触发：** 用户指定 ingest <https://current-robotics.com/blog/currentworld>，并要求自动合并 PR
+- **步骤 2.5：** 博客与公司首页 <https://current-robotics.com/> 无 GitHub / Hugging Face / 权重 / 数据集；GitHub 检索 `CurrentWorld-0`、`current-robotics` 无官方仓 → **确认未开源**
+- **来源：** [`sources/blogs/current_robotics_currentworld.md`](sources/blogs/current_robotics_currentworld.md)、[`sources/sites/current-robotics-com.md`](sources/sites/current-robotics-com.md)
+- **升格：** [`wiki/entities/current-robotics-currentworld.md`](wiki/entities/current-robotics-currentworld.md) — 不统一低层动作空间；多视角 + 力触觉；失败态回滚/分支 + Human-in-the-World-Model 后训练（π0 / π0.5 / DP 自报）
+- **交叉：** Curr-0 / 生成式世界模型 / 虚拟沙盒 / 训练闭环 taxonomy / 评估闭环 04 / Ctrl-World / ViTacWorld / GigaWorld-1 / Hi-WM / OSCAR / loco-manipulation / teleoperation / Wuji Hand
+- **开源结论：** 确认未开源；源码运行时序图不适用；定量图为官方自报
+
 ## [2026-08-17] ingest | sources/repos/robot-descriptions-py.md — 加深 Python 加载器，并接入 Awesome / fiveages-sim / URDF Files Dataset
 
 - **触发：** 用户指定 ingest [robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py)、[awesome-robot-descriptions](https://github.com/robot-descriptions/awesome-robot-descriptions)、[fiveages-sim/robot_descriptions](https://github.com/fiveages-sim/robot_descriptions)、[URDF Files Dataset](https://github.com/Daniella1/urdf_files_dataset)，并要求自动合并 PR

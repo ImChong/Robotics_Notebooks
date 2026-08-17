@@ -9,7 +9,7 @@ tags:
   - simulation
   - gigaai
 status: complete
-updated: 2026-08-11
+updated: 2026-08-17
 arxiv: "2607.02642"
 related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
@@ -19,11 +19,13 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
+  - ../entities/current-robotics-currentworld.md
   - ../entities/paper-worldscape-moe-heterogeneous-action.md
   - ../entities/paper-driftworld.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/blogs/current_robotics_currentworld.md
 summary: "GigaWorld-1（arXiv:2607.02642）：WMBench + 7 类视频 WM、4 种动作编码、32.4 万+ rollout 系统研究；结论：长时序动作忠实 rollout 比短时视觉逼真更决定评估质量；发布 GigaWorld-1 评估器（+14.9% WMES）。"
 ---
 
@@ -121,6 +123,7 @@ flowchart TB
 | **[Worldscape-MoE](./paper-worldscape-moe-heterogeneous-action.md)** | **异构控制生成 WM**；GigaWorld 偏 **evaluator-oriented 机器人 action** |
 | **[DriftWorld](./paper-driftworld.md)** | **1-step drifting** 快想象 + 离线评估相关性；GigaWorld 偏 **评估协议 / WMES roadmap** |
 | **[SC3-Eval](./paper-sc3-eval.md)** | **自一致训练 + 早停** 的评估配方与真机相关数字；GigaWorld 偏 **评估器研究 / WMBench** |
+| **[CurrentWorld-0](./current-robotics-currentworld.md)** | 产业侧 **评测 + 人类接管后训练** 同一环境；无公开 WMES/配对轨迹协议；确认未开源 |
 | **WorldArena EWM** | **生成质量 16 维**；WMBench 强调 **policy outcome alignment** |
 | **经典 sim eval** | sim2real gap + **场景建模贵** |
 
@@ -138,6 +141,7 @@ flowchart TB
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) — WM 预演选动作
 - [DriftWorld](./paper-driftworld.md) — 1-step drifting 离线评估 + 推理时搜索
 - [SC3-Eval](./paper-sc3-eval.md) — 自一致视频策略评估器（真机闭环 \(r=0.929\)）
+- [CurrentWorld-0](./current-robotics-currentworld.md) — 产业侧交互模拟器：评测相关性叙事 + 失败态回滚后训练
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — 环境扩展
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「② 世界模型作策略评估器层」的代表工作（长时序动作忠实 > 短时视觉逼真），双向回链
 

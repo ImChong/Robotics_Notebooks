@@ -91,6 +91,7 @@
 - [Crocoddyl](wiki/entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [cuRobo](wiki/entities/curobo.md) — cuRobo**（仓库名 `curobo`）把机器人 **运动生成** 里算得最重的部分——**运动学、有符号距离与连续碰撞、数值优化、几何种子、轨迹优化**——搬到 **GPU** 上 **批量 `📅unknown` `[entity_page]`
 - [Curr-0（Current Robotics · Loco-Dexterous Manipulation）](wiki/entities/current-robotics-curr0.md) — Curr-0** 是 **Current Robotics**（2026-06 博客发布）对外阐述的 **第一代人形 loco-dexterous manipulation 基础系统**：把  `📅unknown` `[entity_page]`
+- [CurrentWorld-0（Current Robotics · 交互世界模拟器）](wiki/entities/current-robotics-currentworld.md) — CurrentWorld-0** 是 **现行机器人（Current Robotics）** 在 2026-08 博客发布的 **生成式交互环境**：把世界模型从「预测下一帧」做成 **inter `📅unknown` `[entity_page]`
 - [CvT（Convolutional Vision Transformer）](wiki/entities/cvt.md) — CvT** 在视觉 Transformer 中用 **卷积 token 嵌入** 与 **卷积投影 Q/K/V**，把 CNN 的局部/下采样归纳偏置注入注意力骨干。 `📅unknown` `[entity_page]`
 - [Cyclo Intelligence](wiki/entities/cyclo-intelligence.md) — Cyclo Intelligence** 是 ROBOTIS 发布的 **开源 Physical AI 全栈平台**（[ROBOTIS-GI `📅unknown` `[entity_page]`
 - [cyclo_lab](wiki/entities/cyclo-lab.md) — cyclo_lab** 是 ROBOTIS 在 Isaac Lab 上的官方强化学习 / 模仿学习扩展（[`ROBOTIS-GI `📅unknown` `[entity_page]`

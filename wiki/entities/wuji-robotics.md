@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand, wuji-robotics]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 related:
   - ./humanoid-robot.md
   - ./allegro-hand.md
@@ -16,6 +16,7 @@ related:
   - ../overview/notable-commercial-robot-platforms.md
   - ../methods/vla.md
   - ./current-robotics-curr0.md
+  - ./current-robotics-currentworld.md
   - ./kyber-labs.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
@@ -108,6 +109,7 @@ summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电�
 - [市面知名机器人平台纵览](../overview/notable-commercial-robot-platforms.md)
 - [VLA](../methods/vla.md) — 招聘与产业报道中偶见「多模态 / VLA」方向岗位，与整机 **感知–语言–动作** 栈相关，但 **不等于** 该公司已发布可复现的公开模型栈
 - [Curr-0（Current Robotics）](./current-robotics-curr0.md) — 博客将 **21-DoF Wuji Hand** 作为 System 0 灵巧手部署样例（2026-06）
+- [CurrentWorld-0](./current-robotics-currentworld.md) — 跨本体世界模型将 **Wuji 灵巧手** 列为人形末端配置之一（2026-08）
 - [CoorDex（论文实体）](./paper-coordex-dexterous-humanoid-loco-manipulation.md) — G1+**20-DoF WUJI** 连续 dexterous loco-manipulation 仿真主平台（arXiv:2606.23680）
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 论文在 Wuji Hand 上零样本 sim2real 转笔与魔方重定向（arXiv:2606.16272）
 - [Kyber Labs](./kyber-labs.md) — 同为产业侧 **五指灵巧手 × 具身 AI** 路线；Kyber 强调背驱动与数百美元级成本叙事

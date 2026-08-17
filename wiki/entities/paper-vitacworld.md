@@ -13,7 +13,7 @@ tags:
   - shanghaitech
   - instadapt
 status: complete
-updated: 2026-08-10
+updated: 2026-08-17
 arxiv: "2607.22530"
 related:
   - ../concepts/visuo-tactile-fusion.md
@@ -27,6 +27,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/world-model-physics-fidelity-outputs.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ./current-robotics-currentworld.md
 sources:
   - ../../sources/papers/vitacworld_arxiv_2607_22530.md
   - ../../sources/sites/vitacworld-github-io.md
@@ -177,6 +178,7 @@ o_t=\{I_t^{v}\}_{v\in\{\mathrm{main},\mathrm{wrist},\mathrm{tactile}\}}
 | [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) / [N₀-TWAM](./paper-n0-twam.md) | 联合预测视触觉+动作的 WAM | 策略内耦合 vs 外置数据生成器 |
 | [TACO](./paper-taco-tactile-wm-vla-posttrain.md) | 触觉 WM 服务 VLA 后训练 | 同属触觉前向；数据缩放叙事不同 |
 | [Ctrl-World](./paper-ctrl-world.md) | 视觉多视角 WM 评估/SFT | 缺触觉通道 |
+| [CurrentWorld-0](./current-robotics-currentworld.md) | 跨本体 + 多视角 + 力触觉产业 WM | 同属三通道叙事；未开源、无公开任务表 |
 | 端到端触觉 VLA | 直接吃触觉观测 | 不解决「触觉轨迹太少」 |
 
 ## 关联页面
@@ -189,6 +191,7 @@ o_t=\{I_t^{v}\}_{v\in\{\mathrm{main},\mathrm{wrist},\mathrm{tactile}\}}
 - [Manipulation](../tasks/manipulation.md) — 操作任务
 - [世界模型物理保真输出轴](../overview/world-model-physics-fidelity-outputs.md) — 几何·触觉混合输出族
 - [具身评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md) — 想象式策略评估如何接入验收
+- [CurrentWorld-0](./current-robotics-currentworld.md) — 产业侧视觉–力–触觉联合预测 + Human-in-the-World-Model
 
 ## 参考来源
 

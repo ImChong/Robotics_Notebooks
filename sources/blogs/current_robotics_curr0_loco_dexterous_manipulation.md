@@ -56,6 +56,7 @@
 ## 对 wiki 的映射
 
 - [current-robotics-curr0](../../wiki/entities/current-robotics-curr0.md)（系统实体 + Mermaid 全栈图）
+- 世界模型产品化：[CurrentWorld-0](../../wiki/entities/current-robotics-currentworld.md)（2026-08 博客；跨本体 / 多视角 / 力触觉）
 - 交叉：[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[舞肌科技 Wuji Hand](../../wiki/entities/wuji-robotics.md)、[VLA](../../wiki/methods/vla.md)、[MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[LEGS](../../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)、[生成式世界模型](../../wiki/methods/generative-world-models.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[运动重定向管线](../../wiki/concepts/motion-retargeting-pipeline.md)
 
 ## 可信度与使用边界
