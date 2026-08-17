@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）与 Dyna-2 等实例。"
 related:
   - ../entities/dyna-2.md
@@ -25,6 +25,8 @@ related:
   - ../entities/paper-n0-twam.md
   - ../entities/neoteai.md
   - ../entities/paper-meco-wam-4d-geometry-cotraining.md
+  - ../entities/paper-4d-wam.md
+  - ../entities/paper-sg-wam-semantic-guidance.md
   - ../entities/paper-dit4dit-video-action-model.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-omega-0.md
@@ -78,6 +80,9 @@ sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/motubrain_arxiv_2604_27792.md
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
+  - ../../sources/papers/4d_wam_arxiv_2608_08023.md
+  - ../../sources/papers/sg_wam_semantic_guidance_arxiv_2608_08839.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/blogs/dyna_2_million_hour_wam.md
   - ../../sources/repos/awesome-wam-openmoss.md
@@ -163,7 +168,9 @@ sources:
 
 **文献实例（Joint 族 + 语义/像素分层记忆 · 多模态可控接口）**：[WorldScape Policy 2.0](../entities/paper-worldscape-policy-2.md) 把「历史」拆成两条互不混用的通路——**VLM 分支** 维护 **长短期事件记忆**（global-history / local-active / event-boundary 三视图 + 紧凑全历史 bank，按 \(1-\cos\) 语义变化自动选边界，无需在线标注），检索后经**逐 token 门控**融合进 4 个隐式规划 token；**causal DiT 分支** 只留近 **4 个 chunk** 干净 VAE latent 作视觉 prefill，目标图/演示视频则作 **rollout 全程持久前缀**。训练用 **semantic forcing**（T5 事件字幕做 stop-grad 语义靶，\(\lambda_s=0.001\)）把 `fine` 模式的显式语义搬进 `auto` 模式隐通路。配套 **ManipEvent-5M**（4.89M 事件段 / 744K episode / 512M 帧）做事件级预训练。RoboTwin 2.0 标准榜 **94.3%**（已饱和，对同档仅 +0.2~+0.7），但 **C2R OOD 协议 47.9%**（Fast-WAM 39.1）与真机视觉提示任务（叠积木目标图/演示视频 **60%/70%** vs \(\pi_{0.5}\) 10%/20%）差距显著；消融显示记忆三件套的增益主要落在 randomized（**+8.81**）而非 clean（+5.14）。代码与权重截至 2026-08 未发布（arXiv:2607.18840，Manifold AI / 清华 / 上交）。
 
-**2026-07 动作后果横切面（策展）**：[动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) 将近期 WAM 按 **执行 / 修正 / 筛选** 三类接口归纳——[DSWAM](../entities/paper-dswam-dual-system-wam.md)（双系统直出动作块）、[DynaWM](../entities/paper-dynawm-vla-online-correction.md)（冻结 VLA + 在线流匹配修正）、[DreamSteer](../entities/paper-dreamsteer-vla-deployment-steering.md)（潜变量 WM 部署筛选）；接触与几何支路见 [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md)、[𝒩₀-TWAM](../entities/paper-n0-twam.md)（触觉原生 Joint WAM，NeoData 规模化）、[MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md)、[RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)。
+**文献实例（Joint 族 + 语义 foresight / 轨迹场 alignment）**：[SG-WAM（语义引导）](../entities/paper-sg-wam-semantic-guidance.md) 用 VLM 出 text-grounded 与 spatial-aware 前瞻注入视频专家（LIBERO 98.7%，项目页 404）；[4D-WAM](../entities/paper-4d-wam.md) 用轨迹场 motion/destination alignment 后训练 FastWAM / Lingbot-VA（LIBERO-Plus +8.8 pp，仓已开源）。二者都把「好看的未来」改成「对动作有用的未来」。**SG-WAM 与 Self-Guided SG-WAM（arXiv:2608.01397）不是同一篇。**
+
+**2026-07 动作后果横切面（策展）**：[动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) 将近期 WAM 按 **执行 / 修正 / 筛选** 三类接口归纳——[DSWAM](../entities/paper-dswam-dual-system-wam.md)（双系统直出动作块）、[DynaWM](../entities/paper-dynawm-vla-online-correction.md)（冻结 VLA + 在线流匹配修正）、[DreamSteer](../entities/paper-dreamsteer-vla-deployment-steering.md)（潜变量 WM 部署筛选）；接触与几何支路见 [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md)、[𝒩₀-TWAM](../entities/paper-n0-twam.md)（触觉原生 Joint WAM，NeoData 规模化）、[MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md)、[RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)、[4D-WAM](../entities/paper-4d-wam.md)。
 
 **文献实例（Joint 族 + 目标条件视觉导航 · Cosmos latent canvas）**：[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 在 **Cosmos Predict 2（2B）** 上构建 **九帧共享 latent 序列**（条件：state / goal image / 当前 egocentric；预测：action chunk / future state / 两帧未来观测 / goal-progress value），以 **policy / world-model / value 三模式** 联合训练；推理 **policy 模式单次扩散** 直接输出 action chunk，**无需 CEM**，在 **go stanford image-goal** 与 **Diablo 真机 24 episode** 上优于 **NWM+CEM** 与 **OmniVLA**（arXiv:2606.13494，东京大学 / NII / ATR）。
 
@@ -268,6 +275,8 @@ flowchart TB
 - [Rift（免视频 rollout 的未来 cache）](../entities/paper-rift-wam.md) — anticipation token 一次写 K/V；LIBERO 98.8% / 1.1× 延迟（未开源）
 - [DynaWM（VLA 在线修正）](../entities/paper-dynawm-vla-online-correction.md)
 - [DreamSteer（部署时 VLA steering）](../entities/paper-dreamsteer-vla-deployment-steering.md)
+- [4D-WAM（轨迹场 alignment）](../entities/paper-4d-wam.md) — motion + destination；LIBERO-Plus +8.8
+- [SG-WAM（语义引导）](../entities/paper-sg-wam-semantic-guidance.md) — VLM foresight 注入；勿与 Self-Guided 同缩写篇合并
 - [VT-WAM（视觉-触觉接触丰富 WAM）](../entities/paper-vt-wam-visuotactile-contact-rich.md)
 - [𝒩₀-TWAM（NeoteAI 触觉原生 WAM）](../entities/paper-n0-twam.md)
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)

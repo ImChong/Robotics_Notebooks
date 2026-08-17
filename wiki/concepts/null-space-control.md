@@ -2,7 +2,7 @@
 type: concept
 tags: [control, redundancy, inverse-kinematics, impedance-control, wbc, jacobian, manipulation]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-17
 related:
   - ../formalizations/inverse-kinematics.md
   - ../formalizations/robot-jacobian.md
@@ -13,6 +13,7 @@ related:
   - ../queries/contact-wrench-closed-loop.md
   - ./control-allocation.md
   - ../entities/paper-null-space-projections-survey.md
+  - ../entities/paper-surglat.md
   - ../entities/paper-cartesian-impedance-controller.md
   - ../entities/franka-research-3.md
   - ../entities/pink-ik.md
@@ -158,6 +159,7 @@ HQP 的「低优先级在高优先级零空间里优化」与 Nakamura 公式是
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 阻抗主任务之上，零空间只整形姿态、不替代力控方向选择
 - [控制分配](./control-allocation.md) — 冗余执行器求 $\tau$；零空间是运动学对偶问题
 - [零空间投影综述（Dietrich 2015）](../entities/paper-null-space-projections-survey.md)
+- [SurgLAT](../entities/paper-surglat.md) — 腹腔镜 RCM 控制里用冗余零空间初始化放大旋转工作空间
 - [Cartesian Impedance Controller（Mayr 2024）](../entities/paper-cartesian-impedance-controller.md)
 - [Franka Research 3](../entities/franka-research-3.md)
 - [Pink](../entities/pink-ik.md) — Pinocchio 上的任务空间 IK

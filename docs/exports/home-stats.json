@@ -1,13 +1,107 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3122,
-  "edge_count": 27555,
+  "node_count": 3131,
+  "edge_count": 27607,
   "coverage": {
-    "covered": 3098,
-    "total": 3098,
+    "covered": 3107,
+    "total": 3107,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-4d-wam.md",
+      "detail_id": "entity-paper-4d-wam",
+      "label": "4D-WAM：用轨迹场给 WAM 补上局部运动和终点",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lamda-tsr.md",
+      "detail_id": "entity-paper-lamda-tsr",
+      "label": "LAMDA：把 VLM 语言原型蒸馏进车端标志识别",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-peel-disassembly.md",
+      "detail_id": "entity-paper-peel-disassembly",
+      "label": "PEEL：长程拆解要同时解决顺序、尺度和逃逸路径",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pgif-mppi.md",
+      "detail_id": "entity-paper-pgif-mppi",
+      "label": "PGIF-MPPI：社交导航的安全成本必须面向未来",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
+      "detail_id": "entity-paper-sg-wam-semantic-guidance",
+      "label": "SG-WAM（语义引导）：让 WAM 的未来视频听懂指令",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-shrimp.md",
+      "detail_id": "entity-paper-shrimp",
+      "label": "SHRIMP：先在仿真里改计划，再让协作臂执行",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-speedtuning.md",
+      "detail_id": "entity-paper-speedtuning",
+      "label": "SpeedTuning：给冻结模仿策略加一层速度倍率",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-surglat.md",
+      "detail_id": "entity-paper-surglat",
+      "label": "SurgLAT：腹腔镜要跟的是意图轨迹，不是器械中心",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-v-simba.md",
+      "detail_id": "entity-paper-v-simba",
+      "label": "V-Simba：视觉 RL 的样本效率也可以来自网络结构",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-sonic-transfer.md",
       "detail_id": "entity-paper-sonic-transfer",
@@ -26,7 +120,8 @@
       "type": "entity",
       "recency": "2026-08-17",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-prm-as-a-judge.md",
@@ -45,7 +140,8 @@
       "type": "entity",
       "recency": "2026-08-17",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/isaac-lab-default-environments.md",
@@ -117,133 +213,40 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fsd-vln.md",
-      "detail_id": "entity-paper-fsd-vln",
-      "label": "FSD-VLN（空中长程 VLN · 快慢双系统）",
-      "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humantracker.md",
-      "detail_id": "entity-paper-humantracker",
-      "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-digitcode.md",
-      "detail_id": "entity-paper-digitcode",
-      "label": "DigitCode：按解剖单元做手部动作符号化",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ego2robot.md",
-      "detail_id": "entity-paper-ego2robot",
-      "label": "Ego2Robot：第一人称人视频规模化合成机器人数据",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-embodiedvae.md",
-      "detail_id": "entity-paper-embodiedvae",
-      "label": "EmbodiedVAE：为操作世界模型解耦的视频 VAE",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-gsr-paravla.md",
-      "detail_id": "entity-paper-gsr-paravla",
-      "label": "GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mango-grasp.md",
-      "detail_id": "entity-paper-mango-grasp",
-      "label": "MANGO-Grasp：几何 3DGS 上的马氏场跨手型抓取",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-onoff-handwriting.md",
-      "detail_id": "entity-paper-onoff-handwriting",
-      "label": "OnOff：可微物理笔刷打通在线轨迹与离线手写",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-situation-aware-frontier-quadruped-sar.md",
-      "detail_id": "entity-paper-situation-aware-frontier-quadruped-sar",
-      "label": "Situation-aware Frontier：四足搜救的局势感知前沿排序",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sonic-transfer.md",
-    "detail_id": "entity-paper-sonic-transfer",
-    "label": "SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移",
+    "path": "wiki/entities/paper-4d-wam.md",
+    "detail_id": "entity-paper-4d-wam",
+    "label": "4D-WAM：用轨迹场给 WAM 补上局部运动和终点",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 544
+      "size": 555
     },
     {
       "label": "操作",
-      "size": 527
+      "size": 538
     },
     {
       "label": "视觉-语言-动作",
-      "size": 229
+      "size": 230
     },
     {
       "label": "人形论文深读笔记",
-      "size": 216
+      "size": 211
     },
     {
-      "label": "视觉语言动作纵深路线",
-      "size": 141
+      "label": "世界动作模型",
+      "size": 152
     },
     {
       "label": "人形强化学习运动控制",
@@ -278,7 +281,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 740,
+      "degree": 742,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -302,7 +305,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 521,
+      "degree": 524,
       "has_repo": true
     },
     {
@@ -402,7 +405,7 @@
       "type": "entity",
       "degree": 40,
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
     }
   ]
 }

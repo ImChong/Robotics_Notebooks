@@ -9,7 +9,7 @@ tags:
   - tsinghua
   - li-auto
 status: complete
-updated: 2026-07-24
+updated: 2026-08-17
 venue: "CoRL 2025"
 arxiv: "2402.12289"
 related:
@@ -18,6 +18,7 @@ related:
   - ../methods/generative-world-models.md
   - ./paper-s-squared-vla.md
   - ./paper-m4world.md
+  - ./paper-lamda-tsr.md
   - ../methods/vla.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
@@ -144,6 +145,7 @@ flowchart TB
 - [生成式世界模型](../methods/generative-world-models.md)
 - [S²-VLA](./paper-s-squared-vla.md) — 驾驶 VLA / NAVSIM 对照
 - [M⁴World](./paper-m4world.md) — 驾驶世界模型后继
+- [LAMDA](./paper-lamda-tsr.md) — 训练期蒸馏 VLM 语言原型，推理不加 VLM
 - [VLA](../methods/vla.md)
 
 ## 参考来源

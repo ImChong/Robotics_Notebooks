@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
@@ -33,6 +33,7 @@ related:
   - ../entities/paper-chronos.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
   - ../entities/paper-seeker.md
+  - ../entities/paper-speedtuning.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -51,6 +52,7 @@ sources:
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/sites/xyzcorp-deux.md
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
+  - ../../sources/papers/speedtuning_arxiv_2608_09138.md
 summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
 
@@ -212,6 +214,7 @@ flowchart TD
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶桥的非马尔可夫模仿（arXiv:2606.30318）
+- [SpeedTuning](../entities/paper-speedtuning.md) — 冻结模仿基座，只学执行速度倍率（ICRA 2025；仿真仓已开源）
 - [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略
 - [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架
