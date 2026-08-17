@@ -65,6 +65,7 @@
     "wiki-overview-depth-vla": "wiki-overview-hub-vla",
     "wiki-overview-depth-wbc": "wiki-overview-hub-wbc",
     "wiki-overview-depth-wbt": "wiki-overview-hub-wbt",
-    "entity-paper-sa-2606-18610-sc3-eval-evaluating-robot-foundation-models-via": "entity-paper-sc3-eval"
+    "entity-paper-sa-2606-18610-sc3-eval-evaluating-robot-foundation-models-via": "entity-paper-sc3-eval",
+    "entity-paper-xpolicylab": "entity-xpolicylab"
   }
 }

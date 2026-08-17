@@ -113,12 +113,10 @@ flowchart TB
 - [ENPIRE](../methods/enpire.md) — 真机闭环 autoresearch 与 RoboCasa 仿真 ablation 的分工样本
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频孪生 + Pearson/MMRV 操作策略评测（arXiv:2606.28276）
 - [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) — 人形全身 loco-manipulation 双仿真器 testbed；仿真排序与真机强相关（arXiv:2606.08278，USC PSI Lab）
-- [XPolicyLab 论文（arXiv:2608.09892）](../entities/paper-xpolicylab.md) — 策略–环境统一契约与依赖隔离 serving（O(N+M)）
-- [XPolicyLab](../entities/xpolicylab.md) — 适配目录与 RoboDojo/RoboTwin 接线
+- [XPolicyLab](../entities/xpolicylab.md) — 策略–环境统一契约、依赖隔离 serving（O(N+M)）与 RoboDojo/RoboTwin 接线
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「④ sim↔real 校准层」的评测基建前提
 - [RoboDojo](../entities/robodojo.md) — Isaac 异构并行 + RealEval 真机的统一评测栈工程样本
-- [XPolicyLab](../entities/xpolicylab.md) — 策略 serving 与评测客户端契约层
 
 ## 推荐继续阅读
 

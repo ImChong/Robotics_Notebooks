@@ -196,8 +196,7 @@ flowchart TD
 - [ReflexVLA](../entities/paper-reflexvla.md) — ③ 层：ReflexBench 延迟感知动态任务；代码待开放
 - [SoftVTBench](../entities/paper-softvtbench.md) — ③ 层：可变形视触觉 Goal/Safety Success
 - [HumanTracker](../entities/paper-humantracker.md) — ③ 层：人形 motion tracking 四族 153 h 光学基准 + 偏好对齐 HumanScore（数据集待发布）
-- [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配与 verified 开源口
-- [XPolicyLab 论文（arXiv:2608.09892）](../entities/paper-xpolicylab.md) — O(N+M) 契约与依赖隔离 serving 技术报告
+- [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配、O(N+M) 契约与 verified 开源口（arXiv:2608.09892）
 - [FabriVLA](../entities/paper-fabrivla.md) — ③层轻量 VLA Meta-World 对照条目
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — ④层可信仿真作闭环评测引擎的前提
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — ③/④ 层：人形物理 VLN 成功率 + FR + 小规模 sim–real 相关（待开源）

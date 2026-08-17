@@ -31,4 +31,4 @@
 
 - 论文摘录：[`sources/papers/xpolicylab_arxiv_2608_09892.md`](../papers/xpolicylab_arxiv_2608_09892.md)
 - 仓库归档：[`sources/repos/xpolicylab.md`](../repos/xpolicylab.md)
-- Wiki：[`wiki/entities/paper-xpolicylab.md`](../../wiki/entities/paper-xpolicylab.md)、[`wiki/entities/xpolicylab.md`](../../wiki/entities/xpolicylab.md)
+- Wiki：[`wiki/entities/xpolicylab.md`](../../wiki/entities/xpolicylab.md)

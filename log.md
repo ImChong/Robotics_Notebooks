@@ -1,3 +1,11 @@
+## [2026-08-17] structural | wiki/entities/xpolicylab.md — 合并重复详情节点：删除 paper-xpolicylab，论文机制/时序图/结论并入工具实体
+
+- **触发：** 用户反馈 XPolicyLab 存在两个重复详情节点，要求合并至一个
+- **canonical：** [`wiki/entities/xpolicylab.md`](wiki/entities/xpolicylab.md)（`entity-xpolicylab`）
+- **删除：** `wiki/entities/paper-xpolicylab.md`；旧 URL `entity-paper-xpolicylab` 经 [`schema/page-aliases.json`](schema/page-aliases.json) 重定向
+- **并入：** arXiv:2608.09892 核心信息、O(N+M) 契约、源码运行时序图、实验与结论、对比表
+- **交叉：** 入链改指向 canonical（RoboDojo / 仿真评测基础设施 / 具身评测选型闭环 / sources）
+
 ## [2026-08-17] ingest | sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md — 具身智能小站 9 篇盘点：全部新建独立论文节点；SG-WAM 与 Self-Guided 同缩写消歧
 
 - **触发：** 用户要求确保 agent-reach 已装并 ingest <https://mp.weixin.qq.com/s/UsgswMgDw4Kdpt5qI9fxnA>；随后要求自动合并
