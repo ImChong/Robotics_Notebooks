@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-dpc.md",
+      "detail_id": "entity-paper-dpc",
+      "label": "DPC：Direct Perception Control（直接感知控制）",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/lw-benchhub-tour.md",
       "detail_id": "entity-lw-benchhub-tour",
       "label": "LW BENCHHUB TOUR",
@@ -200,27 +209,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/rl-runner.md",
-      "detail_id": "wiki-concepts-rl-runner",
-      "label": "RL Runner（训练循环编排）",
-      "type": "concept",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lw-benchhub-tour.md",
-    "detail_id": "entity-lw-benchhub-tour",
-    "label": "LW BENCHHUB TOUR",
+    "path": "wiki/entities/paper-dpc.md",
+    "detail_id": "entity-paper-dpc",
+    "label": "DPC：Direct Perception Control（直接感知控制）",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
