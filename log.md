@@ -1,3 +1,18 @@
+## [2026-08-17] ingest | sources/sites/letools-lejurobot.md — 接入 LeTools 门户/文档/双仓与 LET-Base、REAL-I 数据集
+
+- **触发：** 用户指定官方站+AI 助手、docs.html?type=learning、letools_opensource、skills/README、LeTools-Learning、ICRA REAL-I HF、LET-Base-Dataset 数据卡；并要求自动合并 PR
+- **步骤 2.5：**
+  - 产品站 / 文档 SPA / KuavoChat：**公开门户**；助手后端为托管 Worker（DeepSeek v4-flash），**非完整开源 agent**
+  - [LeTools-Learning](https://github.com/LejuRobotics/LeTools-Learning)：**GPL-3.0，已开源、可运行**（rosbag→LeRobot v3→train/eval）
+  - [letools_opensource](https://github.com/LejuRobotics/letools_opensource)：**已开源、可运行**；GitHub **无 SPDX**；SkillBase + 行为树；主力 `leju_wheeled`
+  - LET-Base HF：**CC-BY-NC-SA-4.0、ungated**；快照 25824 bag / 无 hdf5
+  - REAL-I HF：**ungated、卡上无 license**；sim 3×1000 bag；**real 未更新**；另有未文档化 `vienna/`
+- **来源：** [`sources/sites/letools-lejurobot.md`](sources/sites/letools-lejurobot.md)、[`sources/sites/letools-docs.md`](sources/sites/letools-docs.md)、[`sources/repos/letools-learning.md`](sources/repos/letools-learning.md)、[`sources/repos/letools_opensource.md`](sources/repos/letools_opensource.md)、[`sources/datasets/let-base-dataset.md`](sources/datasets/let-base-dataset.md)、[`sources/datasets/kuavo-data-challenge-icra.md`](sources/datasets/kuavo-data-challenge-icra.md)
+- **升格：** [`wiki/entities/letools.md`](wiki/entities/letools.md)、[`wiki/entities/let-base-dataset.md`](wiki/entities/let-base-dataset.md)、[`wiki/entities/icra-2026-real-i.md`](wiki/entities/icra-2026-real-i.md)
+- **交叉：** 乐聚 / OpenLET / LeRobot / unitree_lerobot / LingBot-VLA / GR00T / Cyclo / BT×VLA / IL / VLA / Manipulation / Teleoperation
+- **开源结论：** 两训练/技能仓可跑；数据非商业或许可不明；Chat 与整机不开源
+
+
 ## [2026-08-17] structural | wiki/entities/xpolicylab.md — 合并重复详情节点：删除 paper-xpolicylab，论文机制/时序图/结论并入工具实体
 
 - **触发：** 用户反馈 XPolicyLab 存在两个重复详情节点，要求合并至一个

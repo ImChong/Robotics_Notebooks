@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-08-13
+updated: 2026-08-17
 sources:
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
@@ -42,6 +42,7 @@ sources:
   - ../../sources/papers/xrobotoolkit_arxiv_2508_00097.md
   - ../../sources/sites/xr-robotics-github-io.md
   - ../../sources/repos/xrobotoolkit.md
+  - ../../sources/datasets/let-base-dataset.md
 ---
 
 # Teleoperation（遥操作）
@@ -219,6 +220,8 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [Loco-Manipulation](./loco-manipulation.md) — 遥操作在移动操作中的应用
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人类动作到机器人动作的映射
 - [Imitation Learning](../methods/imitation-learning.md) — 遥操作数据的学习方法
+- [LET-Base-Dataset](../entities/let-base-dataset.md) — Kuavo VR/全身增量遥操真机小时（OpenLET Base）
+- [LeTools](../entities/letools.md) — 把遥操 rosbag 转成 LeRobot 并部署
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md) — 使用触觉遥操作数据训练接触感知策略
 - [Diffusion Policy](../methods/diffusion-policy.md) — 遥操作数据训练的扩散策略
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — VR 遥操作约 50 条 + 启发式扩数据，再 DPPO 联合微调（arXiv:2603.13707）

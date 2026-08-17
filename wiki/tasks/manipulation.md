@@ -49,6 +49,8 @@ related:
   - ../entities/paper-dreamwam.md
   - ../entities/paper-galaxea-g05.md
   - ../entities/paper-rift-wam.md
+  - ../entities/letools.md
+  - ../entities/let-base-dataset.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
@@ -291,6 +293,8 @@ flowchart TD
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
 - [AnyGrasp](../entities/anygrasp.md) — 深度点云稠密抓取检测与跟踪的工程/SDK 入口
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
+- [LeTools](../entities/letools.md) — Kuavo 官方 IL/VLA 训练部署与原子技能栈
+- [LET-Base-Dataset](../entities/let-base-dataset.md) — 全尺寸人形真机操作小时库
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 0.47B 动作接地 latent 策略（LIBERO/CALVIN/真机）
 - [HIL-HARC](../entities/paper-hil-harc.md) — 真机在线 RL：CTDE 混合动作 + 分解 critic
 - [Loco-Manipulation](./loco-manipulation.md) — 边走边操作的全身协调扩展

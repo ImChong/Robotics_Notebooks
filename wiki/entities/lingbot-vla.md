@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, flow-matching, manipulation, qwen, depth-distillation, robbyant]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-17
 arxiv: "2601.18692"
 code: https://github.com/robbyant/lingbot-vla
 related:
@@ -10,6 +10,7 @@ related:
   - ./lingbot-vla-v2.md
   - ./humannet.md
   - ./lerobot.md
+  - ./letools.md
   - ../tasks/manipulation.md
   - ../methods/lingbot-map.md
   - ./paper-harness-vla.md
@@ -118,6 +119,7 @@ flowchart TB
 | **[LingBot-VLA 2.0](./lingbot-vla-v2.md)** | 6 万 h、Qwen3-VL-4B、MoE、全身 55 维、Dual-Query 蒸馏 |
 | **π₀.₅** | 同 flow 动作头族；1.0 在 RoboTwin 报告更高平均 SR |
 | **[OpenLET](./openlet.md) 数据** | LET 为 **Kuavo 真机 IL 数据**；接入 1.0 需 LeRobot 格式 + robot config，非即插即用 |
+| **[LeTools](./letools.md)** | Learning 仓把 LingbotVLA / v2 列为 **外部模型**，经 `kuavo_server` client 接到 Kuavo 部署 |
 
 ## 关联页面
 
@@ -125,6 +127,7 @@ flowchart TB
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — 后继产品与对照基线
 - [HumanNet](./humannet.md) — 同架构受控预训练实验
 - [LeRobot](./lerobot.md) — 后训练格式
+- [LeTools](./letools.md) — Kuavo 官方外部模型接入路径
 - [Manipulation](../tasks/manipulation.md) — GM-100 / RoboTwin 语境
 - [Harness VLA](./paper-harness-vla.md) — RoboTwin C2R 上将后训练 LingBot-VLA 作冻结 `vla_act` 后端
 

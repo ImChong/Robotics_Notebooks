@@ -34,6 +34,8 @@ related:
   - ../overview/sergey-levine-diffusion-expressive-policies.md
   - ../entities/paper-seeker.md
   - ../entities/paper-speedtuning.md
+  - ../entities/letools.md
+  - ../entities/let-base-dataset.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -249,6 +251,8 @@ flowchart TD
 - [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — RL 训练期按配置挖掘快速成功并效率加权回放（arXiv:2606.19752）
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 统一 ACT 管线跨模态触觉真机 IL 评测（arXiv:2605.21976）
 - [DEUX（XYZ）](../entities/xyz-deux.md) — 真店手套采数 → Brain X IL/RL 的闭源服务机器人样本
+- [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 rosbag→LeRobot v3→ACT/VLA 训练部署栈
+- [LET-Base-Dataset](../entities/let-base-dataset.md) — Kuavo 真机操作小时库（CC-BY-NC-SA）
 
 ## 推荐继续阅读
 

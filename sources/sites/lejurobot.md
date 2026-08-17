@@ -19,3 +19,4 @@
 
 - [乐聚机器人](../../wiki/entities/leju-robotics.md) — 公司与 KUAVO 平台归纳
 - [OpenLET](../../wiki/entities/openlet.md) — 乐聚牵头建设的开源数据集社区
+- [LeTools](../../wiki/entities/letools.md) — 官方训练 / 技能软件层
