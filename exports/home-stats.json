@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3121,
-  "edge_count": 27533,
+  "node_count": 3122,
+  "edge_count": 27550,
   "coverage": {
-    "covered": 3097,
-    "total": 3097,
+    "covered": 3098,
+    "total": 3098,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -225,7 +225,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 544
+      "size": 545
     },
     {
       "label": "操作",
@@ -333,7 +333,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 137,
+      "degree": 139,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [sonic_transfer_frozen_wbc_codec_lora.md](papers/sonic_transfer_frozen_wbc_codec_lora.md) | SONIC-Transfer：冻结 GEAR-SONIC + 闭式 codec + 解码器 LoRA 迁到 AgiBot X2 Ultra（draft 2026-08-16；无 arXiv；推理 play 已开）摘录与 wiki 映射 |
 | [x] [hmi_p001_operational-space-formulation.md](papers/hmi_p001_operational-space-formulation.md) 等 23 篇 | HMI 论文缺口批量归档（P001–P005/P012/P017–P018/P023/P028/P037/P039/P042–P043/P053/P055/P059/P064/P068–P072/P130）；导读见 `wiki/queries/hmi-papers-coverage.md` |
 | [x] [daily_omni_arxiv_2505_17862.md](papers/daily_omni_arxiv_2505_17862.md) | Daily-Omni：日常音视频跨模态时序 AVQA 基准（arXiv:2505.17862，复旦；代码+HF 数据已开源；榜首含 AGIBOT WITA-Omni） |
 | [x] [pi_r2_arxiv_2607_26055.md](papers/pi_r2_arxiv_2607_26055.md) | πR²：反应式实时 flow 策略，GR00T-N1.7 闭环约 25 Hz（arXiv:2607.26055，CMU；训练+部署已开源） |
@@ -137,6 +138,7 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [sonic-x2.md](repos/sonic-x2.md) | meetsitaram/sonic-x2：AgiBot X2 Ultra 上冻结 GEAR-SONIC + LoRA transfer 的 MuJoCo ONNX play bundle（无 LICENSE；训练不在仓） |
 | [x] [daily-omni.md](repos/daily-omni.md) | Lliar-liar/Daily-Omni：AVQA 管线 + 评测 + Agent 基线（arXiv:2505.17862，GPL-3.0） |
 | [x] [pi-r2-flow.md](repos/pi-r2-flow.md) | pi-r2-flow/pi-r2-flow：πR² GR00T 微调 + xArm6/XHand 部署（arXiv:2607.26055） |
 | [x] [intact-jepa.md](repos/intact-jepa.md) | zju3dv/INTACT-JEPA：INTACT **规范仓**；训练/权重 Coming Soon（arXiv:2607.26056，MIT） |
@@ -391,6 +393,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [sonic-transfer-github-io.md](sites/sonic-transfer-github-io.md) | SONIC-Transfer 项目页 sonic-agibot-x2.github.io/sonic-transfer（冻结 GEAR-SONIC → X2；推理已开、无 arXiv） |
 | [x] [allhandsup-org.md](sites/allhandsup-org.md) | All Hands Up：RLWRLD 腕装灵巧手画廊（16 手 URDF + 仿真 Kapandji；无独立 GitHub，URDF 可 HTTP 下载） |
 | [x] [daily-omni-github-io.md](sites/daily-omni-github-io.md) | Daily-Omni 项目页 lliar-liar.github.io/Daily-Omni（Leaderboard；代码+数据已开） |
 | [x] [pi-r2-flow-github-io.md](sites/pi-r2-flow-github-io.md) | πR² 项目页 pi-r2-flow.github.io（反应式实时 flow；代码已开） |

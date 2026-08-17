@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, cross-embodiment, lora, peft, sonic, limx, unitree-g1, isaac-lab]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-17
 arxiv: "2605.23733"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -14,10 +14,12 @@ related:
   - ./paper-behavior-foundation-model-humanoid.md
   - ./paper-faststair-humanoid-stair-ascent.md
   - ../methods/motion-retargeting-gmr.md
+  - ./paper-sonic-transfer.md
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
 summary: "Any2Any（arXiv:2605.23733）把单源人形 WBT 专家经运动学对齐与动力学敏感模块上的 LoRA 后训练迁到新机体，约 1% 全量训练成本将 Gear-SONIC 等骨干迁到 LimX Oli/Luna 等平台并真机验证。"
 ---
 
@@ -117,6 +119,7 @@ flowchart LR
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+- **近亲骨架、更严冻结：** [SONIC-Transfer](./paper-sonic-transfer.md)（draft 2026-08）同样迁公开 GEAR-SONIC，但把对齐做成 **闭式 affine 表**、LoRA 只进 **一个动力学解码器**，并在 AgiBot X2 Ultra 上报告 PHUMA OOD **反超**原生 tracker（69.0 vs 59.0）。它把本文「即使相似人形也不能直接部署」限定在 **非关节一一对应** 的区间；形态差大、闭链/髋轴仍走本文 \(\Phi_r\)。真机组数与跨厂商覆盖仍以本文为准。
 
 ## 参考来源
 
@@ -127,6 +130,7 @@ flowchart LR
 ## 关联页面
 
 - [SONIC](../methods/sonic-motion-tracking.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [SONIC-Transfer](./paper-sonic-transfer.md) — 近亲骨架上的闭式 codec + 单解码器 LoRA 变体
 - [Whole-Body Control](../concepts/whole-body-control.md)、[Unitree G1](./unitree-g1.md)
 - [BFM 人形基础模型](./paper-behavior-foundation-model-humanoid.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)（LimX Oli 工程线）
 

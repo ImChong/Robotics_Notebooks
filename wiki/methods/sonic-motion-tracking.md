@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-08-15
+updated: 2026-08-17
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 code: https://github.com/NVlabs/GR00T-WholeBodyControl
@@ -26,6 +26,7 @@ related:
   - ../entities/paper-gentrack.md
   - ../entities/paper-humantracker.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
+  - ../entities/paper-sonic-transfer.md
   - ../entities/paper-scaling-bfm-humanoid.md
   - ./beyondmimic.md
   - ./egm-efficient-general-mimic.md
@@ -61,6 +62,7 @@ sources:
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
   - ../../sources/papers/gentrack_arxiv_2608_01410.md
+  - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
 summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以 FSQ 统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。官方训练/部署代码在 NVlabs/GR00T-WholeBodyControl；方法页含模块边界、文件树、算法↔代码映射与源码时序图。"
 ---
 
@@ -143,7 +145,7 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 - **视频驱动现实的落脚点**：人体运动估计（如 [GENMO](./genmo.md)、[WiLoR](./wilor.md)）给出参考轨迹后，需要动力学可行的跟踪策略；SONIC 在 [ExoActor](./exoactor.md) 中被用作「物理过滤器」，直接把人体运动喂入策略而省略部分经典重定向步骤（该结论具有任务与平台依赖性）。
 - **交互式生成上游**：[ARDY](../entities/ardy.md)（SIGGRAPH 2026）演示 **实时自回归扩散人体运动 + SONIC 跟踪 → G1**，与 Kimodo 离线生成→SONIC 形成 **同生态不同延迟档位** 的参考供给路径。
 - **与 VLA 的分工示例**：公开演示把 **GR00T N1.5** 与 SONIC 经同一接口串联，体现「慢推理 / 快反射」式 **分层控制** 的一种工程形态（参见 [VLA](./vla.md)）。
-- **跨具身后训练：** [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)（arXiv:2605.23733）以 **Gear-SONIC 为源骨干**，经运动学对齐 + 解码器侧 LoRA，用约 **1%** 全量训练成本将 WBT 迁到 LimX Oli/Luna 等新机——与本文「单平台 scaling」形成 **预训练 vs 迁移** 对照阅读。
+- **跨具身后训练：** [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)（arXiv:2605.23733）以 **Gear-SONIC 为源骨干**，经运动学对齐 + 解码器侧 LoRA，用约 **1%** 全量训练成本将 WBT 迁到 LimX Oli/Luna 等新机——与本文「单平台 scaling」形成 **预训练 vs 迁移** 对照阅读。[SONIC-Transfer](../entities/paper-sonic-transfer.md)（draft 2026-08）把同一份公开权重 **整平台冻结**，用闭式关节 codec + **仅动力学解码器** LoRA 迁到 AgiBot X2 Ultra，并报告 PHUMA OOD **69.0% vs 原生 incumbent 59.0%**；近亲骨架上的更严冻结合同，不替代 Any2Any 的跨形态对齐。
 - **结构 + 数据再 scaling：** [Humanoid-GPT](../entities/paper-humanoid-gpt.md)（arXiv:2606.03985）在 **~2B 帧 + 因果 Transformer + expert DAgger** 上继续推进零样本敏捷跟踪，项目页提供与 SONIC 的 **四类真机并排对比**；可与本文 **~100M + MLP** 路线并列阅读「通才 tracker 前沿」。
 - **独立感知对齐评测：** [HumanTracker](../entities/paper-humantracker.md)（arXiv:2608.13555）复用本文 **全身终止准则**，在 **153 h / 四族** 光学测试集上零样本对照 GMT / TWIST2 / 本文 / Humanoid-GPT。本文 Interaction Succ **97.6%** 最高，Ground HumanScore **26.5** 高于 Humanoid-GPT（24.9），但 Daily / Highly Dynamic 三项落后。评测代码已开，数据集待发布。
 - **WAM 上游接口：** [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（arXiv:2606.09215）将 SONIC **FSQ motion token** 作为 **World Action Model 的统一全身动作空间**，由 Video DiT 单次前向隐状态条件 Motion DiT 预测，再经 SONIC 解码闭环执行 G1 loco-manipulation——与 GR00T+VLA 分层接 SONIC 形成 **动力学先验 vs 语义先验** 对照。[ω-0](../entities/paper-omega-0.md)（arXiv:2608.06375）同样以 **SONIC 兼容全身 action latent** 为接口，但世界信号改为 **潜空间未来观测 embedding**（非视频 DiT），并在家务 11 任务上报告 Omni **SR 81.8%**；采集侧亦用 SONIC 作 Pico VR 遥操作策略与公共运动仿真回放接地。
@@ -460,6 +462,7 @@ sequenceDiagram
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — SONIC 作为 GMT 后端的分层 egocentric benchmark（arXiv:2606.17833）
 - [HumanTracker（论文实体）](../entities/paper-humantracker.md) — 四族光学 tracking 基准 + HumanScore（arXiv:2608.13555）
 - [GenTrack（论文实体）](../entities/paper-gentrack.md) — 对已发布 SONIC 做生成器–跟踪器在线后训练；LAFAN1 SR 85→90（仿真 G1，未开源）
+- [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 冻结公开权重 + 闭式 codec 迁到 AgiBot X2 Ultra
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — generalist 跟踪上叠高动态技能；仿真对照含 SONIC
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)

@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-07-24
+updated: 2026-08-17
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT 等主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -19,6 +19,7 @@ related:
   - ../methods/amp-reward.md
   - ../entities/paper-gmt.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
+  - ../entities/paper-sonic-transfer.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-omg-omni-modal-humanoid-control.md
@@ -39,6 +40,7 @@ sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/any2any_arxiv_2605_23733.md
+  - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md
   - ../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md
@@ -188,7 +190,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 - **单具身重训**（基线）：每台机重新训一份；简单但烧卡。
 - **多具身联合训练**：共享骨干，靠观测/动作维度的统一编码吸收差异；需要大规模数据与多机型仿真。
-- **运动学对齐 + LoRA 后训练**：[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) 把差距拆为**运动学对齐**（无梯度的坐标重排）与**动力学残差**（LoRA 局部更新），用 ~1% 的全量训练算力把 SONIC 等骨干迁到 LimX / Unitree 等新机。
+- **运动学对齐 + LoRA 后训练**：[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) 把差距拆为**运动学对齐**（无梯度的坐标重排）与**动力学残差**（LoRA 局部更新），用 ~1% 的全量训练算力把 SONIC 等骨干迁到 LimX / Unitree 等新机。近亲骨架上 [SONIC-Transfer](../entities/paper-sonic-transfer.md) 把对齐收成闭式 codec、LoRA 只进一个 decoder，并报告 OOD 反超原生 tracker。
 
 > **本阶段选型**：三条路径（单具身重训 + 重定向 / Any2Any 高效后训练 / 多具身联合训练）的「算力 × 数据 × 泛化」决策树与典型故障模式，见 [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)。
 
@@ -209,6 +211,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 | **SD-AMP** | 3 条 LAFAN1（走/跑/起身） | GMR | 双判别器门控 AMP + PPO | 单具身 | ONNX 50 Hz / Unitree G1 | [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) |
 | **Heracles** | 跟踪失败时由扩散重生成 | — | tracking + 扩散中间件兜底 | 单具身 | 项目页 demo | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
 | **Any2Any** | 复用源机参考池 | 运动学对齐层 | LoRA 后训练（约 1% 算力） | 多目标机 LoRA 适配 | LimX Oli/Luna、G1、H1 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
+| **SONIC-Transfer** | 复用公开 GEAR-SONIC | 闭式关节 codec | 单解码器 LoRA（约 2% cited 算力） | 近亲骨架冻结迁移 | AgiBot X2 Ultra（MuJoCo play 已开） | [SONIC-Transfer](../entities/paper-sonic-transfer.md) |
 | **GMT (RGMT)** | 多任务参考 + 扰动课程 | 上游通用 | 历史编码 + 命令交叉注意力 | 单具身（强抗扰） | Unitree G1 项目页 | [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
 | **VMP** | 11 h 未过滤 CMU/Mixamo/Reallusion | IK retarget（LIME） | β-VAE prior + 条件 PPO 跟踪 | 单具身角色平台 | LIME 双足真机 | [VMP](../entities/paper-notebook-vmp.md) |
 
@@ -218,7 +221,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 > - **预算紧、想跑通一条线** → BeyondMimic 单具身重训（最成熟）
 > - **要少参考做多行为** → SD-AMP（3 条参考覆盖走/跑/起身）
 > - **想在 tracking 失败时优雅降级** → Heracles（扩散兜底）
-> - **已有源机 SONIC/类似专家，想搬新机** → Any2Any（~1% 算力 LoRA）
+> - **已有源机 SONIC/类似专家，想搬新机** → Any2Any（~1% 算力 LoRA）；骨架几乎同构时看 [SONIC-Transfer](../entities/paper-sonic-transfer.md)
 > - **核心是抗扰与历史依赖** → GMT / RGMT / Any2Track
 
 > **深入对比**：阶段 4「策略学习」里 SONIC / BeyondMimic / SD-AMP / Heracles 四条路线的逐维度取舍（参考池规模、训练目标、OOD 行为、真机交付），见 [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)。
@@ -282,6 +285,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP：3 条参考覆盖走/跑/起身
 - [heracles_humanoid_diffusion_arxiv_2603_27756.md](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) — Heracles：扩散中间件兜底
 - [any2any_arxiv_2605_23733.md](../../sources/papers/any2any_arxiv_2605_23733.md) — Any2Any：跨具身 LoRA 后训练
+- [sonic_transfer_frozen_wbc_codec_lora.md](../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md) — SONIC-Transfer：近亲骨架冻结 codec + LoRA
 - [humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md](../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md) — SONIC 在 42 篇栈中的策展条目
 - [humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md](../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md) — BeyondMimic 在 42 篇栈中的策展条目
 - [humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md](../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md) — Heracles 在 42 篇栈中的策展条目
@@ -297,6 +301,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) — 状态门控对抗 motion prior
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 扩散中间件兜底
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) — 跨具身 LoRA 后训练
+- [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 近亲骨架冻结 codec + 单解码器 LoRA
 - [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) / [Any2Track](../methods/any2track.md) — 历史编码 + 抗扰
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 阶段 4「策略学习」四条路线逐维度对比
 - [人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md) — 选型决策树

@@ -1,3 +1,13 @@
+## [2026-08-17] ingest | sources/sites/sonic-transfer-github-io.md — 接入冻结 GEAR-SONIC → AgiBot X2 Ultra 的闭式 codec + LoRA 跨具身迁移
+
+- **触发：** 用户指定项目页 <https://sonic-agibot-x2.github.io/sonic-transfer/>
+- **步骤 2.5：** 项目页 Code 指向 [`meetsitaram/sonic-x2`](https://github.com/meetsitaram/sonic-x2)（`./play_v2.sh` + transfer ONNX + codec sidecar）；HF [`tinkerbuggy/sonic-x2`](https://huggingface.co/tinkerbuggy/sonic-x2)。**无 SPDX LICENSE**；LoRA **训练脚本不在 play 仓**；截至入库日 **无 arXiv**。完整部署栈 sibling `GR00T-WholeBodyControl-X2-review` 未深挖。结论：**部分开源、推理可运行**
+- **来源：** [`sources/sites/sonic-transfer-github-io.md`](sources/sites/sonic-transfer-github-io.md)、[`sources/papers/sonic_transfer_frozen_wbc_codec_lora.md`](sources/papers/sonic_transfer_frozen_wbc_codec_lora.md)、[`sources/repos/sonic-x2.md`](sources/repos/sonic-x2.md)
+- **升格：** [`wiki/entities/paper-sonic-transfer.md`](wiki/entities/paper-sonic-transfer.md) — PHUMA OOD 69.0 vs 原生 incumbent 59.0；含 mermaid 流程与 `play_v2.sh` 时序图
+- **开源结论：** MuJoCo 回放可跑；训练不可从 play 仓复现；真机验证文中 ongoing
+- **交叉：** Any2Any / SONIC / 跨具身迁移选型 / WBT pipeline / LoRA / PHUMA
+- **读数：** 近亲骨架上的更严冻结变体，不替代 Any2Any 的跨形态可学习对齐；companion 冻结规划器页未升格
+
 ## [2026-08-17] ingest | sources/papers/prm_as_a_judge_arxiv_2608_14284.md + reflexvla_arxiv_2608_14379.md + advdex_arxiv_2608_14028.md — 过程评测套件 / 延迟感知动态 VLA / 人手–灵巧手统一动作空间
 
 - **触发：** 用户指定三篇资料入库（PRM-as-a-Judge 机器人执行过程评测；ReflexVLA 动态任务低延迟 VLA；AdvDex 人手与灵巧手统一动作空间）

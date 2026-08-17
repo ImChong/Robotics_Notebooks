@@ -4,7 +4,7 @@ type: query
 status: complete
 created: 2026-05-31
 updated: 2026-08-17
-summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；灵巧手层可对照 UHAS（RL 球面）与 AdvDex（VLA 关节槽）；末端/工具接口轴对照 GEN-1 千手；同形态跨配置遗留示教对照 Emergent Transfer；设计侧生成机体可对照 Transformer Transformer。
+summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；近亲骨架上 Any2Any 的更严冻结变体对照 SONIC-Transfer；灵巧手层可对照 UHAS（RL 球面）与 AdvDex（VLA 关节槽）；末端/工具接口轴对照 GEN-1 千手；同形态跨配置遗留示教对照 Emergent Transfer；设计侧生成机体可对照 Transformer Transformer。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
@@ -14,6 +14,7 @@ sources:
   - ../../sources/blogs/generalist_thousand_hands.md
   - ../../sources/papers/transformer_transformer_arxiv_2607_25798.md
   - ../../sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md
+  - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
 related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -21,6 +22,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
+  - ../entities/paper-sonic-transfer.md
   - ../entities/paper-emergent-transfer-cross-config.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/paper-transformer-transformer.md
@@ -124,7 +126,9 @@ flowchart TD
 
 这套「**对齐 + 低秩补丁**」让单源专家以约 1% 全量预训练成本迁到 LimX Oli/Luna、Unitree G1/H1 等目标机并真机验证。
 
-**常见误判**：(1) 把 Any2Any 当成「再训一个 SONIC」——它是**冻结单源专家 + 后训练**，不是亿级帧从头预训练；(2) 运动学对齐层只做关节 index 重排——必须覆盖**髋轴、闭链**等结构差异，否则动力学 LoRA 会被迫去补本该对齐层解决的问题。
+**近亲骨架变体（不是第四条路径）：** 若源/目标 **关节一一对应**（如公开 G1 GEAR-SONIC → AgiBot X2 Ultra），[SONIC-Transfer](../entities/paper-sonic-transfer.md) 把对齐收成 **闭式 affine codec**、把 LoRA 缩到 **一个动力学解码器**（约 0.25% 参数），并报告 PHUMA OOD **反超**原生 incumbent（69.0 vs 59.0）。它不取代 Any2Any：形态差、闭链/髋轴仍要可学习 \(\Phi_r\)；它回答的是「冻得更死、骨架更像时，OOD 能不能打过从头训」。
+
+**常见误判**：(1) 把 Any2Any 当成「再训一个 SONIC」——它是**冻结单源专家 + 后训练**，不是亿级帧从头预训练；(2) 运动学对齐层只做关节 index 重排——必须覆盖**髋轴、闭链**等结构差异，否则动力学 LoRA 会被迫去补本该对齐层解决的问题；(3) 把 SONIC-Transfer 的 codec-only 零样本当成通用方法——作者自己标成相似前置测量。
 
 ### 3. 多具身联合训练：要 generalist 时才值
 
@@ -167,7 +171,7 @@ flowchart TD
 | Pipeline | 组合 | 适用 |
 |----------|------|------|
 | **单机最强** | 重定向 → 单具身重训 | 旗舰机、论文复现、最干净 sim-to-real |
-| **专家搬家** | 源机 SONIC/WBT 专家 → Any2Any 对齐 + LoRA | 新机少数据、保留源先验、~1% 算力 |
+| **专家搬家** | 源机 SONIC/WBT 专家 → Any2Any 对齐 + LoRA（近亲骨架可改闭式 codec，见 [SONIC-Transfer](../entities/paper-sonic-transfer.md)） | 新机少数据、保留源先验、~1% 算力 |
 | **机群 generalist** | 多具身联合预训练 → 按需 Any2Any 适配新机 | 服务一族机型、长期资产 |
 | **混合分层** | 多具身骨干 → Any2Any 快速铺机 → 旗舰机重训 | 大规模产品线 + 旗舰精修 |
 
@@ -193,6 +197,7 @@ flowchart TD
 ## 参考来源
 
 - [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md) — 运动学对齐 + 动力学 LoRA 的跨具身后训练
+- [SONIC-Transfer（draft 2026-08）](../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md) — 近亲骨架上冻结平台 + 闭式 codec
 - [SONIC（arXiv:2511.07820）](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) — 规模化 tracking 预训练与多具身路线
 - [SONIC 在 42 篇 HRL 栈中的策展条目](../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md)
 
@@ -204,6 +209,7 @@ flowchart TD
 - [Sim2Real](../concepts/sim2real.md) — 三路径共用的真机部署与安全层
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 多具身联合训练的「身体基础模型」叙事
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) — 高效后训练路径的代表论文
+- [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 近亲骨架、更严冻结的 Any2Any 变体
 - [SONIC](../methods/sonic-motion-tracking.md) — 规模化预训练 / 多具身骨干
 - [UHAS](../methods/uhas-unified-hand-action-space.md) — 灵巧手 RL 球面统一动作空间
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 VLA 关节槽统一动作空间（确认未开源）
