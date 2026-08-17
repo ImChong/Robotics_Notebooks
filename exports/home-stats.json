@@ -9,15 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-dpc.md",
-      "detail_id": "entity-paper-dpc",
-      "label": "DPC：Direct Perception Control（直接感知控制）",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
       "path": "wiki/entities/lw-benchhub-tour.md",
       "detail_id": "entity-lw-benchhub-tour",
       "label": "LW BENCHHUB TOUR",
@@ -26,6 +17,15 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-dpc.md",
+      "detail_id": "entity-paper-dpc",
+      "label": "DPC：Direct Perception Control（直接感知控制）",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-nestdex.md",
@@ -212,13 +212,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dpc.md",
-    "detail_id": "entity-paper-dpc",
-    "label": "DPC：Direct Perception Control（直接感知控制）",
+    "path": "wiki/entities/lw-benchhub-tour.md",
+    "detail_id": "entity-lw-benchhub-tour",
+    "label": "LW BENCHHUB TOUR",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
