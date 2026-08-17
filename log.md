@@ -1,3 +1,12 @@
+## [2026-08-17] ingest | sources/papers/fail_passive_gap_arxiv_2608_02809.md — 接入西门子工业人形 Fail-Passive Gap；确认未开源
+
+- **触发：** 用户指定 ingest Ding / Cui / Wang / Wen（西门子基础技术、Siemens Corporation 普林斯顿）arXiv 预印本 *Toward Certified Functional Safety for Industrial Humanoid Robots*，并要求自动合并 PR
+- **步骤 2.5：** 无独立项目页，仅 [arXiv:2608.02809](https://arxiv.org/abs/2608.02809)；论文未列 GitHub / 数据集；检索无官方实现 → **确认未开源**
+- **来源：** [`sources/papers/fail_passive_gap_arxiv_2608_02809.md`](sources/papers/fail_passive_gap_arxiv_2608_02809.md)
+- **升格：** [`wiki/entities/paper-fail-passive-gap.md`](wiki/entities/paper-fail-passive-gap.md) — 主动安全态 vs ISO 13849 fail-passive；认证外部 D–E–R 当量尺；缺口在 SDA↔平衡策略；G1 EDU 最坏约 1.1 s；不宣称端到端 PL e / SIL 3
+- **交叉：** 安全状态机 / 整机配电 / Safety Filter / Capture Point / Balance Recovery / 系统工程枢纽 / Unitree G1 / 控制环路延迟
+- **开源结论：** 确认未开源；源码运行时序图不适用
+
 ## [2026-08-17] fix(ux): 美元价不被 KaTeX 成对 `$...$` 吞掉（entity-all-hands-up）
 
 - **现象：** [`wiki/entities/all-hands-up.md`](wiki/entities/all-hands-up.md) 工程实践段「约 $50k … 约 $7.5k」被 `docs/main.js` 行内公式正则配对，详情页把中间加粗与中文吞成公式

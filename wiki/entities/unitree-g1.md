@@ -25,6 +25,7 @@ related:
   - ./paper-roboreact.md
   - ./paper-zest.md
   - ./paper-humanoidvln.md
+  - ./paper-fail-passive-gap.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
@@ -37,6 +38,7 @@ sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/zest.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
+  - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/repos/unitree_ros2.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
@@ -81,6 +83,7 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 20. **官方技能商店（UniStore）**：[UniStore](./unitree-unistore.md) 在 **2026-05-07** 全面开放后，G1 用户可通过 **Unitree Explore App（≥ 1.9.0）** 与 **OTA（≥ 1.4.8）** 从云端一键安装舞蹈、武术等成品动作包，与自研 RL / 模仿学习管线形成「平台技能 vs 实验室策略」对照。
 21. **DimOS agent 集成（beta）**：[DimOS（Dimensional）](./dimensionalos-dimos.md) 提供 `dimos --simulation run unitree-g1-sim`（MuJoCo）及 README 列 **beta** 级 G1 平台支持，用 Python Blueprint + MCP 做导航/感知/agent 编排，**无需 ROS 即可起步**。
 22. **官方开源研发栈**：在 [Unitree / unitreerobotics](./unitree.md) 组织下，G1 常用入口包括 `unitree_rl_gym` / `unitree_rl_lab` / `unitree_rl_mjlab`（RL）、`xr_teleoperate`（XR 遥操作）、`unitree_lerobot`（IL）与 UnifoLM VLA/WMA；ROS 2 真机桥见 [`unitree_ros2` v0.3.0](./unitree-ros2.md)（双臂 / Dex3 / Arm SDK）。组织地图见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。
+23. **工业功能安全缺口（Fail-Passive Gap）**：[Fail-Passive Gap](./paper-fail-passive-gap.md)（西门子，arXiv:2608.02809）在 G1 EDU 半封闭抓放单元上用认证光幕/F-PLC/无线 PROFIsafe 定位：切电对行走双足是危害，机侧平衡站住目前评不了 PL。
 
 ## 在具身智能中的作用
 
@@ -131,6 +134,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [Uni-LaViRA（论文实体）](./paper-uni-lavira.md) — G1 真机零样本 VLN/ObjectNav/EQA 部署之一（arXiv:2605.27582）。
 - [DimOS（Dimensional）](./dimensionalos-dimos.md) — G1 MuJoCo 仿真与 beta 级 agent/导航集成栈。
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — G1 踝部闭链 IK/FK/雅可比参考实现（[Parallel_Ankle_Joint](https://github.com/feidedao/Parallel_Ankle_Joint)）。
+- [Fail-Passive Gap](./paper-fail-passive-gap.md) — G1 EDU 工业保护停可行性：外部链可评、机侧反应链不可评（arXiv:2608.02809）。
 
 ## 参考来源
 
@@ -146,5 +150,6 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：G1 GMT→残差 loco-manipulation（arXiv:2510.05070）。
 - [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — ETH RSL：G1 扩散运动生成 + RL 全身感知 locomotion（arXiv:2604.17335）。
 - [sources/papers/uni_lavira_arxiv_2605_27582.md](../../sources/papers/uni_lavira_arxiv_2605_27582.md) — Uni-LaViRA：G1 等四本体零样本统一导航（arXiv:2605.27582）。
+- [sources/papers/fail_passive_gap_arxiv_2608_02809.md](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 西门子：G1 EDU 功能安全 fail-passive gap（arXiv:2608.02809）。
 - [sources/sites/rek-com.md](../../sources/sites/rek-com.md) — REK 官网：G1 VR 格斗联赛与租赁。
 - [sources/repos/unitree_ros2.md](../../sources/repos/unitree_ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK ROS 2 入口。

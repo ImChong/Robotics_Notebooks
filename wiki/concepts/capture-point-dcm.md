@@ -1,10 +1,11 @@
 ---
 type: concept
 summary: "Capture Point / DCM 用线性倒立摆的发散分量描述步行平衡，是步位规划和扰动恢复的核心直觉工具。"
-updated: 2026-08-05
+updated: 2026-08-17
 related:
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-fddc.md
+  - ../entities/paper-fail-passive-gap.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./footstep-planning.md
 sources:
@@ -12,6 +13,7 @@ sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
+  - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 ---
 
 # Capture Point / DCM
@@ -244,6 +246,9 @@ Capture Point 可以直接影响：
 ### 5. 以为 xCoM 只能进奖励 / 特权 critic
 世界系 capture point 确实需要基座线速度 \(v_b\)，机载常测不到。但相对**支撑足**改写后 \(v_b\) 相消，可只靠编码器+IMU 重构并直接进部署 actor——见 [FDDC](../entities/paper-fddc.md)（单腿基准上消融掉动态 CoM 观测独掉 40 pt Perfect）。
 
+### 6. 保护停可以「立刻冻住」
+工业急停若打在单支撑，立即冻结通常不可行：必须先把当前步落到可捕获点再静站。这给机械停时 \(t_{\mathrm{stop}}\) 一个相位相关下界，也是人形功能安全间距必须按最坏相位定的原因，见 [Fail-Passive Gap](../entities/paper-fail-passive-gap.md)。
+
 ## 推荐使用建议
 
 ### 如果你学 locomotion
@@ -263,6 +268,7 @@ Capture Point / DCM 是很重要的中间概念。
 - **ingest 档案：** [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)
 - **ingest 档案：** [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — Kajita ZMP / Pratt CP / Koolen DCM 核心论文
 - **ingest 档案：** [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 支撑相对动态 CoM 进可部署 actor + 单腿 sim2sim 基准
+- **ingest 档案：** [Fail-Passive Gap（arXiv:2608.02809）](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 保护停的单支撑下界与 ISO 13855 最坏 \(t_{\mathrm{stop}}\)
 
 ## 推荐继续阅读
 
@@ -273,6 +279,7 @@ Capture Point / DCM 是很重要的中间概念。
 - [Footstep Planning](./footstep-planning.md) — DCM 是步位规划稳定性的核心依据
 - [Balance Recovery](../tasks/balance-recovery.md)（Capture Point 的实际应用场景：扰动恢复策略）
 - [FDDC](../entities/paper-fddc.md) — 可部署动态 CoM 观测与单腿平衡基准（arXiv:2608.00500）
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 单支撑保护停必须先 capture，再谈认证间距
 
 ## 一句话记忆
 

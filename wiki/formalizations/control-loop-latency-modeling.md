@@ -2,7 +2,7 @@
 type: formalization
 tags: [real-time, control, hardware, latency, middleware, math]
 status: complete
-updated: 2026-04-30
+updated: 2026-08-17
 related:
   - ../concepts/ethercat-protocol.md
   - ../concepts/can-bus-protocol.md
@@ -14,8 +14,10 @@ related:
   - ../concepts/clock-synchronization-algorithms.md
   - ../queries/real-time-control-middleware-guide.md
   - ./udp-multicast-dynamics.md
+  - ../entities/paper-fail-passive-gap.md
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 summary: "控制环路延迟建模：把一次力矩闭环拆成传感、总线、计算、调度、执行五段独立随机变量的累加，并给出端到端延迟分布、抖动与控制带宽之间的可计算约束。"
 ---
 
@@ -171,10 +173,12 @@ $$
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [UDP 组播动力学](./udp-multicast-dynamics.md)
 - [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 保护停 \(t_{\mathrm{response}}\) 按 [S]/[C]/[M] 分段；机械 \(t_{\mathrm{stop}}\) 主导最坏约 1.1 s
 
 ## 参考来源
 
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
+- [Fail-Passive Gap 论文策展](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 光幕到机械停的 provenance 时序预算
 - Liu, J., *Real-Time Systems*, Prentice Hall, 2000.
 - Buttazzo, G. C., *Hard Real-Time Computing Systems*, Springer, 2011.
 - Khalil, H. K., *Nonlinear Systems* (Sec. 时间延迟系统稳定性), 3rd ed.

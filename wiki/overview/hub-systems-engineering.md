@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-17
 summary: "机器人系统工程知识链：操作系统/网络/数据面/分布式/容器可观测安全，以及 RTOS、DDS、边云、频率解耦、OTA 与安全状态机；标注已有独立节点与本次新建节点。"
 ---
 
@@ -51,6 +51,7 @@ summary: "机器人系统工程知识链：操作系统/网络/数据面/分布�
 | 控制频率与推理频率解耦 | **新建** | [control-inference-frequency-decoupling](../concepts/control-inference-frequency-decoupling.md) |
 | 模型版本管理与 OTA | **新建** | [model-versioning-ota](../concepts/model-versioning-ota.md) |
 | 硬件/通信故障与安全状态机 | **新建**（实体 FSM 已有） | [robot-safety-state-machine](../concepts/robot-safety-state-machine.md)、[wbc-fsm](../entities/wbc-fsm.md) |
+| 工业功能安全认证边界 | **已有论文实体** | [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 人形主动安全态 vs ISO 13849 切电 |
 
 ## 分层读法
 
@@ -77,6 +78,7 @@ flowchart TB
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [Deployment 技术地图](../../tech-map/modules/system/deployment.md)
 - [Codex Security](../entities/codex-security.md)（AppSec CLI/SDK，挂 CI 的可选扫描层）
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 认证外部链 vs 机侧未评级反应链
 
 ## 参考来源
 
@@ -85,6 +87,7 @@ flowchart TB
 - [部署可观测安全一手资料](../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
 - [DDS/RTOS/边云/OTA/安全 FSM 一手资料](../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
 - [Codex Security 仓库归档](../../sources/repos/codex-security.md)
+- [Fail-Passive Gap 论文策展](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md)
 
 ## 推荐继续阅读
 

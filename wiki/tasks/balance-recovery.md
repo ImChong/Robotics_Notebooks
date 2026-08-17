@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, balance, stability, humanoid, bipedal, control]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-17
 related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-adp.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-argus-dynamic-symmetry.md
   - ../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md
   - ../entities/paper-fddc.md
+  - ../entities/paper-fail-passive-gap.md
 summary: "Balance Recovery 研究机器人在受扰动后如何通过步位、姿态和接触调整重新稳定下来。"
 ---
 
@@ -201,6 +202,7 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - **ingest 档案：** [KungFuAthleteBot（arXiv:2602.13656）](../../sources/papers/kung_fu_athlete_bot.md) — FastSAC 单策略联合高动态 tracking 与 GRSI 跌倒恢复，G1 真机武术抗扰
 - **ingest 档案：** [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学对抗先验，四向推扰相对 AMP 缩短恢复时间
 - **ingest 档案：** [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 预防式单腿站住（非迈步恢复）；八个通用 SOTA Perfect 0/90
+- **ingest 档案：** [Fail-Passive Gap（arXiv:2608.02809）](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 保护停必须落在可捕获域内；过猛急停本身是危害
 
 ---
 
@@ -214,6 +216,7 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法直接从仿真中学习鲁棒恢复策略
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP](../entities/paper-adp.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[HoST](../entities/paper-host-humanoid-standingup.md)、[KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 人形恢复/起身：AMP 统一策略、动力学先验抗扰、生成式中间层、纯 RL 多姿态起身、tracking∪recovery 武术
 - [FDDC](../entities/paper-fddc.md) — **预防**失稳的单腿站住（Perfect hold），对照本节「迈步/hop 恢复」的 Marginal 读法
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 工业保护停是受约束的恢复（单支撑先落步），不是切电
 
 ## 一句话记忆
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [safety, control, cbf, safe-rl, wbc, deployment]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-17
 summary: "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
 related:
   - ./control-barrier-function.md
@@ -12,11 +12,13 @@ related:
   - ../queries/robot-policy-debug-playbook.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
+  - ../entities/paper-fail-passive-gap.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
+  - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 ---
 
 # Safety Filter（安全过滤器）
@@ -110,6 +112,7 @@ Safety Filter
 - **WBC / MPC**：作为额外安全层，处理关节限位、碰撞避免、接触力锥
 - **VLA 部署**：对大模型输出的动作块做限幅、裁剪、回退
 - **对照：训练期屏障、部署无滤波** — [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) 把 Joint-CBF 投影仅作仿真 `+filter` 上限；真机部署的 Link-CBF 策略**不**走运行时安全层，靠训练内化避碰
+- **对照：认证功能安全** — 过滤器给的是控制层约束，不是 ISO 13849 的 PFHD/PL。工业人形保护停还卡在机侧反应链，见 [Fail-Passive Gap](../entities/paper-fail-passive-gap.md)
 
 ## 常见误区
 
@@ -128,6 +131,7 @@ Safety Filter
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — 真机部署中的安全与调试经验
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems*
 - [PAC-MAN 论文策展](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md) — 训练期 CBF vs 部署无滤波
+- [Fail-Passive Gap 论文策展](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 功能安全认证边界，与在线过滤互补
 
 ## 关联页面
 
@@ -141,3 +145,4 @@ Safety Filter
 - [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md) — 离线稀有失败发现与 eigenfailure 诊断；与在线过滤互补
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 感知感知 CBF-RL；部署刻意去掉运行时滤波
 - [ActFovea](../entities/paper-actfovea.md) — 感知侧一致性防护：不给几何安全保证，但覆盖安全滤波管不到的「观测本身失真/失效」
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 算法安全过滤 ≠ 可认证保护停；双足切电本身是危害
