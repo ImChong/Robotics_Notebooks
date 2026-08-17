@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 related:
   - ../entities/embodied-interview-qa.md
   - ../methods/reinforcement-learning.md
@@ -15,6 +15,7 @@ related:
   - ../tasks/locomotion.md
   - ./system-identification.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
+  - ../entities/paper-spd.md
   - ./implicit-explicit-actuator-modeling.md
   - ../methods/actuator-network.md
   - ./privileged-training.md
@@ -231,6 +232,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文
 - Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真遥操作预训练 + 真机微调（非零样本）
 - [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 「非训后一步」闭环叙事与误差分流（深蓝具身智能，2026-07-28）
 - [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — Teacher-Student 作为仿真→真机后置模块
@@ -275,6 +277,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [腿式机器人进展/挑战/机遇综述](../entities/paper-legged-robots-advances-challenges.md) — SciRobotics 2026：把 Sim2Real 放进硬件/运动/数据五柱坐标系
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节把延迟/摩擦/惯量拆开，再写回仿真
+- [SPD](../entities/paper-spd.md) — 仿真遥操作预训练 + 真机 1–2 h 微调，不是零样本视觉策略（CoRL 2026）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 从辨识到适应的持续校准叙事与误差分流
 - [Awesome-Real2Sim2Real（精选集）](../entities/awesome-real2sim2real.md) — Sim2Real / Real2Sim / Real2Sim2Real 闭环文献索引
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性

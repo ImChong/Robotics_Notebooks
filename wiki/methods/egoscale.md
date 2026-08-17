@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -25,6 +25,7 @@ related:
   - ../entities/nvidia-gear-lab.md
   - ./macrodata-egocentric-hand-action.md
   - ../entities/paper-ego2robot.md
+  - ../entities/paper-spd.md
 sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
@@ -61,6 +62,7 @@ sources:
 - **把「人视频小时」接到可复核指标上：** 论文在约 **1k–20k 小时** 扫描上给出 **验证损失随数据规模近似 log-linear 下降**，并展示其与 **后训练后真机平均完成度** 同向改善，便于把数据采集预算和实验设计对齐到同一标尺。
 - **分离「规模」与「对齐」：** 大规模野外人数据提供 **行为长尾与语义覆盖**；对齐阶段用 **机位匹配的头 + 双腕相机** 与少量机端轨迹解决 **感知与控制域 gap**，避免把一切都押在昂贵的大规模配对演示上。
 - **与低 DoF 迁移叙事相容：** 预训练监督定义在 **高 DoF 重定向手空间**，论文仍报告向 **更少手指自由度** 平台迁移的增益，支持把 rich human motion 当作 **可复用的 motor prior** 来读（具体数值以论文图表为准）。
+- **对照仿真 on-embodiment：** [SPD](../entities/paper-spd.md) 不从人视频抽动作，而在目标双臂灵巧手上采 **75 h** 仿真 VR 演示再真机短微调。规模小两个数量级，但没有 embodiment gap；适合「目标手已定、要的是接触标签」而不是「先吃互联网人视频」。
 
 ## 主要技术路线
 
@@ -123,6 +125,7 @@ flowchart LR
 
 - [EgoScale 论文摘录（arXiv:2602.16710）](../../sources/papers/egoscale_arxiv_2602_16710.md)
 - [NVIDIA Research EgoScale 项目页](../../sources/sites/nvidia-research-egoscale.md)
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真 on-embodiment 预训练对照
 
 ## 关联页面
 
@@ -142,3 +145,4 @@ flowchart LR
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md)
 - [Ego2Robot](../entities/paper-ego2robot.md) — 先把人视频渲染成机器人像素+动作再共训，对照本页 mid-training 对齐
+- [SPD](../entities/paper-spd.md) — 对照：不走人视频重定向，直接在目标灵巧手上采仿真演示做预训练（CoRL 2026；75 h vs 本页万小时）

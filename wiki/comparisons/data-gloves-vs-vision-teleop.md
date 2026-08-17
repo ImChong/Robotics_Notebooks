@@ -6,6 +6,7 @@ updated: 2026-08-17
 related:
   - ../queries/dexterous-data-collection-guide.md
   - ../entities/paper-nestdex.md
+  - ../entities/paper-spd.md
   - ../entities/allegro-hand.md
   - ../entities/xyz-deux.md
   - ../entities/humantouch.md
@@ -71,11 +72,13 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 - [HumanTouch](../entities/humantouch.md) — 全掌压阻 + EMF 手姿多模态人侧采数
 - [OSMO 触觉手套](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉
 - [NestDex](../entities/paper-nestdex.md) — copilot 嵌套采数：人控臂 + clutch，不直接编 20-DoF 手指
+- [SPD](../entities/paper-spd.md) — 仿真用头显手跟踪、真机改 Manus；同一目标本体两条通道
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
 
 ## 参考来源
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [xyzcorp-deux.md](../../sources/sites/xyzcorp-deux.md) — Glove X 产品规格与开源核查
 - [nestdex_arxiv_2608_13362.md](../../sources/papers/nestdex_arxiv_2608_13362.md) — NestDex copilot 作为第三条采数通道
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真头显手跟踪 vs 真机 Manus
 - [humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 项目页
 - Qin, B., et al. (2023). *AnyTeleop Framework*.

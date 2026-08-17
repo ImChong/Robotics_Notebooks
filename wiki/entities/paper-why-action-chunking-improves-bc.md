@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, action-chunking, behavior-cloning, diffusion-policy, libero, robomimic, polimi, berkeley, analysis]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 venue: "CoRL 2026（项目页 PDF；暂无 arXiv）"
 related:
   - ../methods/action-chunking.md
@@ -13,6 +13,7 @@ related:
   - ../formalizations/behavior-cloning-loss.md
   - ../queries/vla-deployment-guide.md
   - ./paper-autointervene.md
+  - ./paper-spd.md
   - ./paper-gsr-paravla.md
 sources:
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
@@ -182,11 +183,13 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — 监督目标形式
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — chunk 缓冲 / 异步执行工程语境
 - [AutoIntervene](./paper-autointervene.md) — 部署期对提议 chunk 的支持监控与自动接管（互补「训练机制」叙事）
+- [SPD](./paper-spd.md) — 同届 CoRL：接触丰富真机上「历史才能缩短 chunk」（互补机制叙事）
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — 拆的是语言路由，不是动作时间结构
 
 ## 参考来源
 
 - [Why Action Chunking Improves BC（论文归档）](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 同届 CoRL：历史窗与短 chunk
 - [action-chunking.github.io（项目页归档）](../../sources/sites/action-chunking-github-io.md)
 - [项目页 PDF](https://action-chunking.github.io/static/action_chunking.pdf)
 - [AutoIntervene 论文摘录](../../sources/papers/autointervene_arxiv_2608_07065.md)

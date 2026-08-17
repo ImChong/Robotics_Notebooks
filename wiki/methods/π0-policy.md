@@ -10,6 +10,7 @@ related:
   - ../formalizations/vla-tokenization.md
   - ../formalizations/cross-modal-attention.md
   - ../entities/paper-kai0.md
+  - ../entities/paper-spd.md
 sources:
   - ../../sources/repos/openpi.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -69,8 +70,10 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [FM-VLA（力觉记忆 VLA）](../entities/paper-fm-vla.md) — 以 π₀.₅ 为骨干，在 flow-matching 动作专家后缀注入力觉长程记忆 token
 - [χ₀ / kai0](../entities/paper-kai0.md) — 在 openpi π₀.₅ 上做 MA/SA/TDA 分布对齐的协同叠衣配方（代码已开源）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — flow/扩散动作头抬升 IL 与 offline RL 的讲者坐标（Simons 2026）
+- [SPD](../entities/paper-spd.md) — 灵巧真机消融：π0 风格单帧长 chunk 弱于历史+短 chunk（CoRL 2026）
 
 ## 参考来源
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 灵巧真机上 π0 风格单帧长 chunk 对照
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.
 - [Physical Intelligence Blog](https://www.physicalintelligence.company/blog/pi0).
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — π₀.₇ 后继工作与多模态提示条件（若只关心 π₀ 本体的历史语境可略读摘录节）

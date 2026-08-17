@@ -19,6 +19,7 @@ related:
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ./paper-hrl-stack-06-hdmi.md
   - ./paper-dexverse.md
+  - ./paper-spd.md
   - ./franka-research-3.md
   - ../../roadmap/depth-teleoperation.md
 sources:
@@ -188,11 +189,13 @@ flowchart TB
 - [NestDex](./paper-nestdex.md) — clutch copilot 嵌套采数；部署卸内层（对照「低层执行仍留在环内」）
 - [HDMI](./paper-hrl-stack-06-hdmi.md) — 人形 robot–object co-tracking 对照
 - [DexVerse](./paper-dexverse.md) — 灵巧多任务 benchmark 与 VR 示范对照
+- [SPD](./paper-spd.md) — 仿真 VR 预训练 + 真机短微调；同系 Sharpa Wave（CoRL 2026；代码待发布）
 - [Sim2Real](../concepts/sim2real.md) / [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 迁移与重定向背景
 
 ## 参考来源
 
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)
+- [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真预训练对照（同系 Sharpa Wave）
 - [sources/sites/teledexter-project.md](../../sources/sites/teledexter-project.md)
 - 项目页：<https://bigai-dex.github.io/blog/teledexter/>
 - arXiv：<https://arxiv.org/abs/2607.11481>
