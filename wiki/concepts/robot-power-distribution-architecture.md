@@ -2,11 +2,12 @@
 type: concept
 tags: [humanoid, hardware, electrical-design, power-distribution, bms, safety-circuit, emc, wiring]
 status: complete
-updated: 2026-07-25
+updated: 2026-08-17
 related:
   - ./humanoid-mechanical-layout-design.md
   - ./robot-onboard-communication-architecture.md
   - ./robot-safety-state-machine.md
+  - ../entities/paper-fail-passive-gap.md
   - ./field-oriented-control.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ../queries/humanoid-battery-thermal-management.md
@@ -14,6 +15,7 @@ related:
   - ../../roadmap/depth-humanoid-hardware-design.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
+  - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 summary: "整机配电架构把电芯的能量安全送到几十个关节与计算单元：电池/BMS → 预充与主回路 → 高压母线 → 分域 DC/DC → 线束 → 负载，并叠加上电时序、分级保护、E-Stop/STO 安全回路与 EMC 接地策略；关键判据是峰值工况下的母线跌落、线束温升与故障时的可预期停机行为。"
 ---
 
@@ -71,7 +73,7 @@ flowchart LR
 
 ### 安全回路：E-Stop 不等于拔电
 
-按 IEC 60204-1，停止类别 **0**（立即切断动力）、**1**（受控减速后切断）、**2**（受控停止但保持动力）适用于不同场景。对双足人形，**直接切母线（类别 0）常意味着直接倒地**，因此工程上更常用 **STO 通道 + 受控下蹲/保持** 的组合：安全回路以硬线冗余触点驱动驱动器 STO 输入，同时通知软件状态机执行受控动作。安全功能的等级评估参考 ISO 13849-1（PL a–e）与 IEC 61508（SIL），服务型/个人护理机器人另有 ISO 13482 的整体安全要求。
+按 IEC 60204-1，停止类别 **0**（立即切断动力）、**1**（受控减速后切断）、**2**（受控停止但保持动力）适用于不同场景。对双足人形，**直接切母线（类别 0）常意味着直接倒地**，因此工程上更常用 **STO 通道 + 受控下蹲/保持** 的组合：安全回路以硬线冗余触点驱动驱动器 STO 输入，同时通知软件状态机执行受控动作。安全功能的等级评估参考 ISO 13849-1（PL a–e）与 IEC 61508（SIL），服务型/个人护理机器人另有 ISO 13482 的整体安全要求。西门子 G1 单元可行性研究把「类别 0 接触器可评 PL e、平衡站住评不了」写成 [fail-passive gap](../entities/paper-fail-passive-gap.md)：外部光幕/F-PLC 仍可按标准打分，机侧反应链没有等价接触器。
 
 ### EMC 与接地
 
@@ -96,7 +98,7 @@ flowchart LR
 ## 局限与风险
 
 - **按平均功率选电池与线径**：脉冲负载下会出现"账面充裕、实测欠压"。
-- **把 E-Stop 做成切总电**：对双足平台等于"安全地摔一跤"，安全设计要连同倒地保护一起评估。
+- **把 E-Stop 做成切总电**：对双足平台等于"安全地摔一跤"，安全设计要连同倒地保护一起评估。这不是措辞问题：ISO 13849 参考例能给接触器 Reaction 打 PFHD，正是因为切电；人形单元若删掉接触器，端到端 PL 就断在反应链，见 [Fail-Passive Gap](../entities/paper-fail-passive-gap.md)。
 - **地线随手接**：多点接地形成环路，症状是编码器抖动、CAN 偶发错误帧，极难从软件侧定位。
 - **BMS 保护当作系统保护**：BMS 保护动作往往是"整机瞬断"，不能替代分路级可诊断保护。
 - **忽略连接器与线束的机械寿命**：整机迭代期最频繁的硬件故障来源之一。
@@ -108,6 +110,7 @@ flowchart LR
 - [人形整机机械布局设计](./humanoid-mechanical-layout-design.md) — 走线空间与散热路径的上游
 - [机器人整机通信架构](./robot-onboard-communication-architecture.md) — 与配电共用线束与屏蔽策略
 - [机器人安全状态机](./robot-safety-state-machine.md) — 软件侧的故障降级决策
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 工业人形：类别 0 切电可认证，主动平衡站住不可认证
 - [Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
 - [Query：人形机器人电池与热管理](../queries/humanoid-battery-thermal-management.md)
 - [磁场定向控制（FOC）](./field-oriented-control.md) — 逆变器既是主要负载也是主要噪声源
@@ -117,6 +120,7 @@ flowchart LR
 - [Humanoid Hardware 101 微信长文编译](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 电池、BMS、PCB 与计算单元的部件级视角
 - [Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) 及其 sources
 - IEC 60204-1（机械电气设备与停止类别）、ISO 13849-1（安全相关控制部件 PL）、IEC 61508（功能安全 SIL）、ISO 13482（个人护理机器人安全）— [IEC 标准检索](https://webstore.iec.ch/) · [ISO 标准检索](https://www.iso.org/search.html?q=13849)
+- [Fail-Passive Gap 论文策展](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — G1 半封闭单元上用认证外部链定位反应缺口
 - IEC 61000-4 系列（EMC 抗扰试验）与 CISPR 系列（发射限值）— [IEC 标准检索](https://webstore.iec.ch/)
 
 ## 推荐继续阅读

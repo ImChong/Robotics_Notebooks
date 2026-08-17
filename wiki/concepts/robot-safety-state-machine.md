@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, safety, fsm, fault-tolerance, realtime, deployment]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-17
 related:
   - ../entities/wbc-fsm.md
   - ./safety-filter.md
@@ -12,9 +12,11 @@ related:
   - ./can-bus-protocol.md
   - ../overview/hub-systems-engineering.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
+  - ../entities/paper-fail-passive-gap.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
+  - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 summary: "硬件故障、通信故障与安全状态机：看门狗与总线超时驱动确定性 FSM 进入阻尼/无力矩等安全态，本地完成不依赖云端选主。"
 ---
 
@@ -73,7 +75,7 @@ stateDiagram-v2
 ## 局限与风险
 
 - FSM 状态爆炸：用分层状态机，避免巨型单图。
-- 「Safe = 无力矩」在欠驱动站立机器人上可能直接摔倒——Safe 策略本身要按形态设计（阻尼站立/跪倒脚本等）。
+- 「Safe = 无力矩」在欠驱动站立机器人上可能直接摔倒——Safe 策略本身要按形态设计（阻尼站立/跪倒脚本等）。工业功能安全把这一冲突叫作 **fail-passive gap**：ISO 13849 默认断电即安全，行走双足的安全态却是**主动平衡站住**；外部光幕/F-PLC 可以按 PL 评分，机侧反应链（策略把机器人停住且不摔）目前评不了，见 [Fail-Passive Gap](../entities/paper-fail-passive-gap.md)。
 
 ## 关联页面
 
@@ -84,10 +86,12 @@ stateDiagram-v2
 - [系统工程知识链](../overview/hub-systems-engineering.md)
 - [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md) — 离线稀有失败挖掘；与运行时 FSM 降级不同层
 - [ActFovea](../entities/paper-actfovea.md) — 给出「什么时候进安全态」的触发条件：风险分 + 威胁分型 + 有界安全失败
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 认证边界：软件 FSM 切无力矩 ≠ 可评 PL 的保护停
 
 ## 参考来源
 
 - [DDS/RTOS/边云/OTA/安全 FSM 一手资料](../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
+- [Fail-Passive Gap 论文策展](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 工业人形主动安全态 vs ISO 13849 fail-passive
 
 ## 推荐继续阅读
 
