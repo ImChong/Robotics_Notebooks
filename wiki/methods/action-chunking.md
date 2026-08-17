@@ -14,6 +14,7 @@ sources:
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
 related:
   - ./behavior-cloning.md
   - ./humanoid-transformer-touch-dreaming.md
@@ -27,6 +28,7 @@ related:
   - ../entities/paper-pi-r2.md
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-autointervene.md
+  - ../entities/paper-nestdex.md
   - ../entities/paper-wam-realtime-async.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
 ---
@@ -191,6 +193,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」
 - [AutoIntervene](../entities/paper-autointervene.md) — 对提议 chunk 做视觉–动作支持监控与双向自动接管（arXiv:2608.07065）
+- [NestDex](../entities/paper-nestdex.md) — 内外层均用 chunk + 时间集成；瓶抓消融显示闭环适应接触、ensemble 降 jerk（arXiv:2608.13362）
 - [ReflexVLA](../entities/paper-reflexvla.md) — 动态任务上钉死「大 chunk + 短执行地平线」；异步 chunk=8 / horizon=2（arXiv:2608.14379）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 上对照 sync/async/blend/simple/infer/train（arXiv:2608.01880）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 生成式动作头如何使长 chunk 在实践上可行

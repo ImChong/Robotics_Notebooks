@@ -63,6 +63,7 @@ sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
@@ -134,6 +135,7 @@ flowchart TD
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
   - **动态低延迟：** [ReflexVLA](../entities/paper-reflexvla.md)（arXiv:2608.14379）— ReflexBench 延迟感知六任务 + 1B 预测/时序/CUDA Graph；均值 **50.4%**、LIBERO **97.2%**、延迟 **65.0 ms**；**代码待开放**
   - **人手→灵巧手统一动作：** [AdvDex](../entities/paper-advdex.md)（arXiv:2608.14028）— OmniShare + JAAS + 域对抗；Paxini DexH13 少样本/零样本人→机；**确认未开源**
+  - **Copilot 嵌套采数：** [NestDex](../entities/paper-nestdex.md)（arXiv:2608.13362）— 人控臂 + 1-DoF clutch，内层手技能只服务示范；外层 visuomotor 部署卸 copilot；**确认未开源**
   - **过程评测：** [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md)（arXiv:2608.14284）— 冻结 PRM 进度曲线 + OPD；工具仓 **已开源**
   - **产线后训练：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **CFM-VLA** 上用 **真机 PPO** 把 BC 策略推到工业级吞吐/可靠性（双臂 Alpha、稀疏奖励、数天 robot-time）
 - **World Model**：学习操作的世界模型，在模型里 planning；像素域上「静态场景 + 手轨迹 → 交互视频」的显式分解路线见 [DWM（Dexterous World Models）](../methods/dwm.md)；**语言条件 3D 物体点轨迹** 先验见 [MolmoMotion](../entities/molmo-motion.md)（DROID 微调后可提升 MolmoBot 规划样本效率）与产业侧级联样本 [VLOA（RoboScience）](../entities/roboscience-vloa.md)（物体中心 3D 点云轨迹 + 轨迹条件操作模型，闭源）；**训练期物理对齐** 见 [PhysisForcing](../entities/paper-physisforcing.md)（CoTracker3 轨迹 + 语义关系双层监督，强化接触丰富操纵视频的可模拟性，arXiv:2606.28128）；**动态目标 + 3D Gaussian 速度场** 见 [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md)（在线无散度 WM + 3DFA 策略，PhysMani-Bench 16 任务，arXiv:2607.01938）；**像素掩码动作统一前向/逆向** 见 [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（策略评估 **r=0.982**，arXiv:2607.19343）；**多视角 VLA 闭环可控 WM + 合成 SFT** 见 [Ctrl-World](../entities/paper-ctrl-world.md)（ICLR 2026，**38.7%→83.4%**）；**自一致视频策略评估** 见 [SC3-Eval](../entities/paper-sc3-eval.md)（闭环 \(r=0.929\)，arXiv:2606.18610）；**IR 条件世界模型 + plan-then-execute VLA** 见 [RoboInter1.5](../entities/paper-robointer-1-5.md)（230k+ episode，arXiv:2607.18709）；**物理时间 latent ODE + 子目标引导** 见 [ODEWorld](../entities/paper-odeworld.md)（LIBERO-LONG **83.6%**，AgileX+X-VLA **55%→80%**，arXiv:2607.27924）
@@ -183,6 +185,7 @@ flowchart TD
 - [VLA](../methods/vla.md)
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench（arXiv:2608.14379；代码待开放）
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间（arXiv:2608.14028；确认未开源）
+- [NestDex](../entities/paper-nestdex.md) — copilot 嵌套采数 + 独立外层 visuomotor（arXiv:2608.13362；确认未开源）
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件（arXiv:2608.14284；已开源）
 - [mimic-video（Video-Action Model）](../methods/mimic-video.md) — 视频潜计划 + 轻量动作解码器的操作学习路线
 - [mimic hand M1](../entities/mimic-hand-m1.md) — mimic 产业 AI-first 腱驱动手（15+6 DoF，>25 kg 抓握）

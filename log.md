@@ -1,3 +1,12 @@
+## [2026-08-17] ingest | sources/papers/nestdex_arxiv_2608_13362.md — 接入 NestDex 嵌套 copilot 灵巧遥操作
+
+- **触发：** 用户指定 ingest NestDex（悉尼大学 ACFR / PAIR Lab、范德堡；Zhao / Tang / Ba / Zhi；2026-08 arXiv 预印本），并要求自动合并 PR
+- **步骤 2.5：** 项目页 <https://aus.bot/research/nestdex/> 为 SPA；JS bundle 仅链 arXiv 与 PAIR Lab 研究站，**无 GitHub / Hugging Face**；GitHub 检索无官方训练仓 → **确认未开源**
+- **来源：** [`sources/papers/nestdex_arxiv_2608_13362.md`](sources/papers/nestdex_arxiv_2608_13362.md)、[`sources/sites/aus-bot-nestdex.md`](sources/sites/aus-bot-nestdex.md)
+- **升格：** [`wiki/entities/paper-nestdex.md`](wiki/entities/paper-nestdex.md) — 内层本体感觉手技能 + 1-DoF clutch 采数，外层 visuomotor 部署卸 copilot；H-VAE 20→10-D；六任务 Copilot 采数 100%
+- **交叉：** Teleoperation / 灵巧采数指南 / 手套 vs 视觉 / Action Chunking / BC / AutoIntervene / TeleDexter / 双臂 / Manipulation / 深度遥操作 Stage 4–5
+- **开源结论：** 确认未开源；源码运行时序图不适用
+
 ## [2026-08-17] ingest | sources/sites/letools-lejurobot.md — 接入 LeTools 门户/文档/双仓与 LET-Base、REAL-I 数据集
 
 - **触发：** 用户指定官方站+AI 助手、docs.html?type=learning、letools_opensource、skills/README、LeTools-Learning、ICRA REAL-I HF、LET-Base-Dataset 数据卡；并要求自动合并 PR

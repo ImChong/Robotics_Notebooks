@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-17
 arxiv: "2511.00139"
 venue: "arXiv 2025"
 summary: "Shared Autonomy framework where human guides arm pose via VR teleoperation while autonomous DexGrasp-VLA policy handles hand control using real-time tactile and visual feedback."
@@ -13,6 +13,7 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
+  - ../entities/paper-nestdex.md
 sources:
   - ../../sources/papers/sun_awesome_touch_2511_00139_end-to-end-dexterous-arm-hand-vla-polici.md
   - ../../sources/papers/sun_awesome_touch_catalog.md
@@ -89,6 +90,7 @@ Shared Autonomy framework where human guides arm pose via VR teleoperation while
 - 列表实体：[Awesome Touch](../entities/awesome-touch.md)
 - 技术地图：[Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md)
 - 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- 深度对照：[NestDex](./paper-nestdex.md) — 同样「人控臂、机器控手」采数，但 NestDex 部署时卸掉内层手策略
 
 ## 参考来源
 

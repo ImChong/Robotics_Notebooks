@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-17
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-fm-vla.md
   - ../entities/paper-fa-rdp.md
   - ../entities/paper-teledexter.md
+  - ../entities/paper-nestdex.md
   - ../entities/yale-openhand.md
   - ../entities/neoteai.md
   - ../entities/paper-n0-foundation.md
@@ -44,6 +45,7 @@ sources:
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/n0_twam.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/fa_rdp_arxiv_2607_28596.md
 ---
 
@@ -125,6 +127,7 @@ sources:
 - [SceneBot](../entities/paper-scenebot.md) — 人形 **contact-prompted tracking** 侧接触接口。
 - [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — **接触位置 vs 接触力旋量** 的演示迁移；CWS 奖励覆盖推/撬/滑等瞬态接触阶段。
 - [TeleDexter](../entities/paper-teledexter.md) — 灵巧遥操作的 **hand–object co-tracking**：操作员给指尖+物体目标，仿真 RL 学接触切换；工具使用与手内重定向真机平均 **75.2% SR**。
+- [NestDex](../entities/paper-nestdex.md) — 本体感觉内层手技能闭环适应接触；时间集成降低闭合后力矩突变（arXiv:2608.13362）。
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — **学习式触觉反应 VLA**：12 项双手力控/形变/协调真机任务与 **开源触觉 play 数据集**；强调 **异步高频触觉专家** 而非朴素模态拼接。
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — **冻结视觉 + 触觉残差真机 RL**：单臂 xArm7 上四接触丰富任务（插装/开盖/杠杆），**40–80 min** 在线练习、**无需离线触觉演示**；与 T-Rex 形成「短预算插件式适应」vs「大规模触觉 mid-training」对照。
 - [FA-RDP](../entities/paper-fa-rdp.md) — **频率自适应视觉–力扩散**：接触前低频多步保接近模态，接触后指示器切 30 Hz 流形蒸馏一步采样；Flexiv 三任务平均 **81.7%**（代码 coming soon）。
@@ -152,6 +155,7 @@ sources:
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉真机 IL 基准
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md) — TeleDexter hand–object co-tracking 灵巧遥操作
+- [sources/papers/nestdex_arxiv_2608_13362.md](../../sources/papers/nestdex_arxiv_2608_13362.md) — NestDex：闭环本体感觉手技能 + 时间集成
 - [sources/papers/fa_rdp_arxiv_2607_28596.md](../../sources/papers/fa_rdp_arxiv_2607_28596.md) — FA-RDP 频率自适应反应扩散
 - Mordatch et al., *Contact-Invariant Optimization for Hand Manipulations*
 

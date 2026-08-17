@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, residual-learning, shared-autonomy, human-robot-interaction, ppo, constrained-mdp, ttic]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-17
 arxiv: "2004.05097"
 code: https://github.com/cbschaff/rsa
 related:
@@ -10,6 +10,7 @@ related:
   - ./paper-residual-policy-learning.md
   - ../methods/reinforcement-learning.md
   - ../tasks/teleoperation.md
+  - ./paper-nestdex.md
 sources:
   - ../../sources/personal/residual-policy-reading-list.md
   - ../../sources/sites/rsa-ttic.md
@@ -123,6 +124,7 @@ sequenceDiagram
 - [Residual Policy Learning 方法页](../methods/residual-policy-learning.md)
 - [Residual Policy Learning（Silver）](./paper-residual-policy-learning.md)
 - [Teleoperation](../tasks/teleoperation.md)
+- [NestDex](./paper-nestdex.md) — 采数期 copilot；部署卸内层（对照 RSA 把 copilot 留在控制环）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 
 ## 推荐继续阅读

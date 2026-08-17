@@ -2,9 +2,10 @@
 type: comparison
 tags: [dexterity, data-collection, teleoperation, hardware, sensors]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-17
 related:
   - ../queries/dexterous-data-collection-guide.md
+  - ../entities/paper-nestdex.md
   - ../entities/allegro-hand.md
   - ../entities/xyz-deux.md
   - ../entities/humantouch.md
@@ -14,6 +15,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/sites/xyzcorp-deux.md
   - ../../sources/sites/humantouch-xsparkai.md
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
 summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基于视觉的遥操作方案，涵盖了精度、成本、遮挡鲁棒性及力反馈等关键维度。"
 ---
 
@@ -60,16 +62,20 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 
 目前顶尖的实验室（如斯坦福 ALOHA 团队）开始探索将两者结合：使用 Quest 进行宏观位姿追踪，而在指尖安装 GelSight 传感器采集微观接触特征，从而兼顾成本、灵巧度与数据精度。规模化人侧全掌压阻路线见 [HumanTouch](../entities/humantouch.md)（MANUS EMF 手姿 + 头/腕 RGB + 手套质控；数据待发）；人机共用开源磁触觉见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
 
+第三条通道是 **copilot / 共享自治采数**：操作员不再直接编全部手指关节。[NestDex](../entities/paper-nestdex.md) 用 1-DoF clutch 调节学到的内层手技能，人只管臂与进度；完整示范再训独立外层策略。它不替代手套或视觉重定向（内层技能仍靠多视重定向冷启动），但把「整任务手指协调」从操作员认知负荷里卸掉。
+
 ## 关联页面
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Allegro Hand 实体](../entities/allegro-hand.md)
 - [DEUX / Glove X（XYZ）](../entities/xyz-deux.md) — 商业三指手 + 1:1 手套零样本重定向样本
 - [HumanTouch](../entities/humantouch.md) — 全掌压阻 + EMF 手姿多模态人侧采数
 - [OSMO 触觉手套](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉
+- [NestDex](../entities/paper-nestdex.md) — copilot 嵌套采数：人控臂 + clutch，不直接编 20-DoF 手指
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
 
 ## 参考来源
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [xyzcorp-deux.md](../../sources/sites/xyzcorp-deux.md) — Glove X 产品规格与开源核查
+- [nestdex_arxiv_2608_13362.md](../../sources/papers/nestdex_arxiv_2608_13362.md) — NestDex copilot 作为第三条采数通道
 - [humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 项目页
 - Qin, B., et al. (2023). *AnyTeleop Framework*.
