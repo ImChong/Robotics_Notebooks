@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-17
 arxiv: "2604.21741"
 venue: "arXiv 2026"
 summary: "Post-training framework using learned world model as corrective substrate."
@@ -13,6 +13,7 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ./current-robotics-currentworld.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2604_21741_hi-wm-human-in-the-world-model-for-scala.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
@@ -89,6 +90,7 @@ Post-training framework using learned world model as corrective substrate.
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 产品化对照：[CurrentWorld-0](./current-robotics-currentworld.md) — 同公司 2026-08 交互世界模拟器（Human-in-the-World-Model 评测/后训练；确认未开源）
 
 ## 参考来源
 

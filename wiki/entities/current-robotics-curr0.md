@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, loco-manipulation, foundation-model, wearable, exoskeleton, world-model, dexterous-manipulation, wuji-hand, current-robotics]
 status: complete
-updated: 2026-06-16
+updated: 2026-08-17
 related:
+  - ./current-robotics-currentworld.md
   - ../tasks/loco-manipulation.md
   - ./wuji-robotics.md
   - ../methods/vla.md
@@ -18,6 +19,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
 sources:
   - ../../sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md
+  - ../../sources/blogs/current_robotics_currentworld.md
 summary: "Curr-0（Current Robotics, 2026-06）为人形 loco-dexterous manipulation 全栈：HumanEx 可穿戴将自然人体行为转为可重定向数据（21k h 人类 / 2.8k h 全身）；三系统单策略（System 2 推理接地、System 1 全身平衡与可达、System 0 Wuji 灵巧手物交互）在 70+ DoF 上闭环；多模态世界模型作可扩展评测与 Human-in-the-World-Model 部署后训练。"
 ---
 
@@ -45,7 +47,7 @@ summary: "Curr-0（Current Robotics, 2026-06）为人形 loco-dexterous manipula
 - **明确反对「走–手两阶段」范式：** 与大量分层 VLA + 低层 WBC 路线对照，Curr-0 把 **站姿、躯干、足端、双手与工具** 视为 **同一耦合行为**；博客用踩踏板倒垃圾、肘推门、跪放等任务说明 **腿与手在任务语义上不可拆分**。
 - **数据缩放律叙事：** **HumanEx** 将采集从 **robot-hour** 推向 **human-task-hour**，并强调 **incidental human behavior**（非脚本、难用语言标注的物理先验）——与纯 egocentric 视频或仅手套级手部数据形成对照。
 - **与 2026 loco-manip 姊妹路线并列：** [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 走 **egocentric 视频 WAM + SONIC token**；[LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) 走 **3DGS 合成 + VLA 微调**；Curr-0 走 **真机规模人类可穿戴数据 + 三系统端到端策略 + 公司自研世界模型环**——代表产业侧 **全栈垂直整合** 样本。
-- **世界模型定位偏评测与部署后训练：** 与 [Genesis World 1.0](./genesis-world-10.md) 类似，把仿真/世界模型从「纯数据增广」抬到 **闭环打分、人类介入纠正与可回滚分支** 的迭代基础设施。
+- **世界模型定位偏评测与部署后训练：** 2026-08 已单独产品化为 [CurrentWorld-0](./current-robotics-currentworld.md)（跨本体 / 多视角 / 力触觉交互模拟器）。与 [Genesis World 1.0](./genesis-world-10.md) 类似，把仿真/世界模型从「纯数据增广」抬到 **闭环打分、人类介入纠正与可回滚分支** 的迭代基础设施。
 
 ## 流程总览
 
@@ -113,6 +115,8 @@ flowchart TB
 
 ### 世界模型：评测与 Human-in-the-World-Model
 
+命名产品见 [CurrentWorld-0](./current-robotics-currentworld.md)（2026-08 博客）。Curr-0 文中的要点：
+
 - **可扩展评测：** 并行闭环 rollout + 自动任务打分；博客称与真机成功率 **高度相关**，优于传统 sim-to-real 评测对齐。
 - **多模态必要性：** 足端不稳、滑移、负载平衡等失败模式在 **纯 RGB** 下易漏检。
 - **Human-in-the-World-Model：** 策略在世界模型中试错，人类在失败倾向处分支介入；纠正片段用于 **post-training**；真机保留 grounding 与终验。
@@ -126,6 +130,7 @@ flowchart TB
 
 ## 关联页面
 
+- [CurrentWorld-0](./current-robotics-currentworld.md) — 跨本体多视角力触觉交互模拟器；Curr-0 的评测/后训练环
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与 2024–2026 技术路线谱系
 - [舞肌科技 · Wuji Hand](./wuji-robotics.md) — Curr-0 System 0 采用的 21-DoF 灵巧手
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 对照
@@ -139,8 +144,10 @@ flowchart TB
 ## 推荐继续阅读
 
 - Current Robotics 官方博客：<https://current-robotics.com/blog/curr-0>
+- CurrentWorld-0 官方博客：<https://current-robotics.com/blog/currentworld>
 - [Wuji Hand 文档中心](https://docs.wuji.tech/docs/zh/wuji-hand/latest/) — System 0 硬件规格与 SDK
 
 ## 参考来源
 
 - [current_robotics_curr0_loco_dexterous_manipulation.md](../../sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md)
+- [current_robotics_currentworld.md](../../sources/blogs/current_robotics_currentworld.md)

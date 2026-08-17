@@ -1322,7 +1322,8 @@
       "label": "现行机器人（Current Robotics）",
       "aliases": [
         "current-robotics",
-        "curr0"
+        "curr0",
+        "currentworld"
       ]
     },
     "symbiosis-robotics": {

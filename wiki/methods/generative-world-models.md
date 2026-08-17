@@ -2,8 +2,9 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 related:
+  - ../entities/current-robotics-currentworld.md
   - ../entities/paper-odeworld.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-sc3-eval.md
@@ -78,6 +79,7 @@ sources:
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/blogs/current_robotics_currentworld.md
   - ../../sources/papers/odeworld_arxiv_2607_27924.md
   - ../../sources/papers/wan_move_arxiv_2512_08765.md
   - ../../sources/papers/wan_dancer_arxiv_2607_09581.md
@@ -169,6 +171,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 多视角可控 VLA 闭环 WM（示例：Ctrl-World）
 
 [Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026，Stanford×Tsinghua）从 **SVD** 初始化，用 **帧级动作条件 + 位姿记忆检索 + 第三人称/腕部联合预测**，把被动视频生成器改成可与 π₀ / π₀.₅ 等现代 VLA **policy-in-the-loop** 交互的想象环境；DROID 训练后可零样本到新机位，想象指令跟随排名对齐真机，并用合成成功轨迹 SFT 把新指令成功率 **38.7%→83.4%**（约 **+44.7 pt**）。与 MVA 同属「动作条件视频 WM + 虚拟评估」，但条件是 **低维动作/位姿**、强调 **多视角 VLA 接口**，而非像素掩码前向/逆向统一。
+
+### 跨本体交互模拟器 + Human-in-the-World-Model（示例：CurrentWorld-0）
+
+[CurrentWorld-0](../entities/current-robotics-currentworld.md)（Current Robotics，2026-08 博客）把 WM 定义为 **interactive world simulator**：不统一低层动作空间，按本体保留动作子空间，联合训练人形（BrainCo / Wuji / 夹爪）、移动双臂与桌面双臂；同步预测头戴/腕部/第三人称，并联合力/触觉。产品用法是 **评测层**（自称与真机成功率强相关、保持排名）加上 **失败态保存/回滚/分支的人类接管后训练**（π0 / π0.5 / DP）。相对 Ctrl-World，它把多视角接口扩到跨本体 + 力触觉，并把纠正做成环境内遥操作，而不是只筛成功轨迹做 SFT。**确认未开源**；定量图为官方自报，独立复现前不作硬基准。
 
 ### 物理时间 latent ODE（示例：ODEWorld）
 
@@ -285,6 +291,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体 / 多视角 / 力触觉 **交互模拟器** + Human-in-the-World-Model 后训练（2026-08 博客；确认未开源）。
 - [ODEWorld](../entities/paper-odeworld.md) — **物理时间 latent ODE**：任意时刻/反向预测 + 子目标策略（arXiv:2607.27924）。
 - [SC3-Eval](../entities/paper-sc3-eval.md) — **自一致** 视频策略评估器：前向–逆向 + 跨视角 + 早停；闭环 \(r=0.929\)（arXiv:2606.18610；确认未开源）。
 - [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
@@ -336,6 +343,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Zhao, B., et al. (2026). *X-Mind: Efficient Visual Chain-of-Thought via Predictive World Model for End-to-End Driving* — 见 [sources/papers/x_mind_arxiv_2606_28758.md](../../sources/papers/x_mind_arxiv_2606_28758.md)。
 - Zayer, H., et al. (2026). *Masked Visual Actions* — 见 [sources/papers/masked_visual_actions_arxiv_2607_19343.md](../../sources/papers/masked_visual_actions_arxiv_2607_19343.md)。
 - Guo, Y., et al. (2026). *Ctrl-World* — 见 [sources/papers/ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)。
+- Current Robotics Team (2026). *CurrentWorld-0* — 见 [sources/blogs/current_robotics_currentworld.md](../../sources/blogs/current_robotics_currentworld.md)。
 - Liu, D., Niu, H., et al. (2026). *ODEWorld* — 见 [sources/papers/odeworld_arxiv_2607_27924.md](../../sources/papers/odeworld_arxiv_2607_27924.md)。
 - Zhang, X., & Du, Y. (2026). *World Action Planner* — 见 [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)。
 - Chu, R., et al. (2025). *Wan-Move* — 见 [sources/papers/wan_move_arxiv_2512_08765.md](../../sources/papers/wan_move_arxiv_2512_08765.md)。

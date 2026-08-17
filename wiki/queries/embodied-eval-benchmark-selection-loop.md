@@ -13,6 +13,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/blogs/current_robotics_currentworld.md
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/sites/allhandsup-org.md
@@ -31,6 +32,7 @@ related:
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
+  - ../entities/current-robotics-currentworld.md
   - ../entities/vla-sota-leaderboard.md
   - ../entities/all-hands-up.md
   - ../entities/paper-humanoidvln.md
@@ -188,6 +190,7 @@ flowchart TD
 - [DriftWorld](../entities/paper-driftworld.md) — ②层外延：1-step drifting 快评估 + 推理时搜索（相关性最高约 0.99）
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — ②层外延：掩码动作条件 WM，RoboCasa 策略评估 **r=0.982**
 - [Ctrl-World](../entities/paper-ctrl-world.md) — ②层外延：多视角可控 WM，VLA 想象评估 + 合成轨迹改进（ICLR 2026）
+- [CurrentWorld-0](../entities/current-robotics-currentworld.md) — ②层产业样本：跨本体交互模拟器 + 失败态回滚后训练（确认未开源）
 - [SC3-Eval](../entities/paper-sc3-eval.md) — ②层外延：自一致视频策略评估器，真机闭环 \(r=0.929\) / MMRV \(0.119\)（确认未开源）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — ③层社区聚合：多基准 VLA / 灵巧手摘录榜（不重跑）
 - [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji（DexBench 任务分在独立站）

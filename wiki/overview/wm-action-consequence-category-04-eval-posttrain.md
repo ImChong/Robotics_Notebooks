@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-17
 summary: "世界模型动作后果专题 · 04 — 策略评估与世界模型进入研发链路"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
@@ -10,9 +10,11 @@ related:
   - ../concepts/world-action-models.md
   - ../entities/paper-sc3-eval.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
+  - ../entities/current-robotics-currentworld.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
+  - ../../sources/blogs/current_robotics_currentworld.md
 ---
 
 # 世界模型动作后果分类 04：训练与评估闭环
@@ -34,6 +36,7 @@ sources:
 |------|-----------|----------|
 | GigaWorld-1 | [../entities/paper-gigaworld-1-policy-evaluation](../entities/paper-gigaworld-1-policy-evaluation.md) | 7 类视频 WM + 32 万轨迹研究策略评估对齐 |
 | SC3-Eval | [../entities/paper-sc3-eval](../entities/paper-sc3-eval.md) | 自一致视频生成作真机 VLA 评估器（闭环 \(r=0.929\)） |
+| CurrentWorld-0 | [../entities/current-robotics-currentworld](../entities/current-robotics-currentworld.md) | 产业侧交互模拟器：评测 + 失败态回滚分支后训练（确认未开源） |
 
 
 ### 交叉引用（文内第四节）
@@ -48,7 +51,9 @@ sources:
 
 - [World Action Models](../concepts/world-action-models.md)
 - [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)
+- [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体交互 WM 作评测/后训练沙盒
 
 ## 参考来源
 
 - [wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
+- [current_robotics_currentworld.md](../../sources/blogs/current_robotics_currentworld.md)
