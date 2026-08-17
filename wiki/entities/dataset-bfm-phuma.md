@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, humanoid-locomotion, unitree-g1, physisink, awesome-bfm-papers]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 summary: "DAVIAN/KAIST 物理可信人形 locomotion 集：PhySINK 重定向后的 G1/H1-2 轨迹约 73 h；Hugging Face 一键下载，ProtoMotions 原生支持，真机 G1 tracking 优于 AMASS 同管线。"
 related:
   - ../concepts/behavior-foundation-model.md
@@ -13,11 +13,13 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./paper-humantracker.md
+  - ./paper-sonic-transfer.md
 sources:
   - ../../sources/repos/phuma.md
   - ../../sources/papers/bfm_awesome_dataset_phuma_arxiv_2510_26236.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
 ---
 
 # PHUMA（Physically Reliable Humanoid Locomotion Dataset）
@@ -40,7 +42,7 @@ sources:
 
 - **「已重定向好」的宇树数据**：与 [AMASS](./amass.md)（仅 SMPL 人体）不同，PHUMA 提供 **`download_phuma.sh` 即可获取的 G1/H1-2 `dof_pos` 参考**，显著降低从零跑 GMR 的工程成本。
 - **物理可信策展**：过滤 floating、穿透、脚滑等大规模视频/MoCap 常见伪影；默认阈值保留跳跃等腾空相位，可按 `--foot_contact_threshold` 收紧（仅行走场景）。
-- **评测与生态**：论文报告 G1 **零样本 sim2real** tracking 优于 AMASS；[ProtoMotions](./protomotions.md) 已原生支持；[LIMMT](../methods/limmt-gqs-motion-curation.md)、Humanoid-GPT 等将其与 AMASS 并列实验。
+- **评测与生态**：论文报告 G1 **零样本 sim2real** tracking 优于 AMASS；[ProtoMotions](./protomotions.md) 已原生支持；[LIMMT](../methods/limmt-gqs-motion-curation.md)、Humanoid-GPT 等将其与 AMASS 并列实验。[SONIC-Transfer](./paper-sonic-transfer.md) 把 PHUMA 的 1,931-clip 分层样本当作 **OOD 停止闸**（冻结 GEAR-SONIC → X2；作者协议下的 97.0% 数字未复现，只做内部对比）。
 
 ## 核心信息
 
@@ -79,6 +81,7 @@ flowchart LR
 - **BFM 索引**：[bfm-41-papers-technology-map](../overview/bfm-41-papers-technology-map.md)
 - **五集选型**：[humanoid-reference-motion-datasets](../comparisons/humanoid-reference-motion-datasets.md)
 - **评测集对照**：[HumanTracker](./paper-humantracker.md) 在规模表里把 PHUMA（73 h，无类别/无文本）与自家 153 h 四族+文本对齐——PHUMA 仍是训练源，HumanTracker 是诊断评测（数据待发布）
+- **OOD 停止闸**：[SONIC-Transfer](./paper-sonic-transfer.md) 用分层 1,931-clip PHUMA 切片做冻结平台迁移的 OOD 选 checkpoint 信号
 
 ## 参考来源
 
@@ -95,6 +98,7 @@ flowchart LR
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [LIMMT（GQS 策展）](../methods/limmt-gqs-motion-curation.md)
 - [HumanTracker](./paper-humantracker.md)
+- [SONIC-Transfer](./paper-sonic-transfer.md)
 
 ## 推荐继续阅读
 

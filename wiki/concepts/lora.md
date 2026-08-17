@@ -2,12 +2,13 @@
 type: concept
 tags: [fine-tuning, parameter-efficient, adaptation, peft]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-17
 related:
   - ../methods/vla.md
   - ../methods/mimic-video.md
   - ../entities/paper-fada-humanoid.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
+  - ../entities/paper-sonic-transfer.md
   - ../entities/paper-m4world.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/rldx-1.md
@@ -59,6 +60,7 @@ $$
 |------|-------------|
 | [FADA](../entities/paper-fada-humanoid.md) | 冻结 $P$/$I$ 预训练权重，仅在 IDM 上优化 LoRA $\Delta\psi$ |
 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) | 在 Action Decoder 等动力学敏感模块插 LoRA，$r$ 控吸收动力学 gap 的容量 |
+| [SONIC-Transfer](../entities/paper-sonic-transfer.md) | 冻结 GEAR-SONIC 全平台，**只**在动力学解码器插 LoRA（约 0.25% 参数） |
 | [M4World](../entities/paper-m4world.md) | few-clip 后训练用 LoRA 绑定稀有外观/文本，保留基座几何与天气控制 |
 | [mimic-video](../methods/mimic-video.md) | 视频阶段对骨干加 LoRA，用机器人域视频缩小外观/动力学域差 |
 
@@ -80,6 +82,7 @@ $$
 - [mimic-video](../methods/mimic-video.md)
 - [FADA](../entities/paper-fada-humanoid.md)
 - [Any2Any Cross-Embodiment WBT](../entities/paper-any2any-cross-embodiment-wbt.md)
+- [SONIC-Transfer](../entities/paper-sonic-transfer.md)
 - [M4World](../entities/paper-m4world.md)
 - [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [RLDX-1](../entities/rldx-1.md)

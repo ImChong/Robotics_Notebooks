@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-15
+updated: 2026-08-17
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
@@ -23,6 +23,7 @@ sources:
   - ../../sources/papers/zest.md
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
   - ../../sources/papers/gentrack_arxiv_2608_01410.md
+  - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形运动跟踪与风格先验方法这么多，工程上怎么选、怎么组合？」
@@ -136,6 +137,7 @@ flowchart TD
 | 目标 | 优先路线 | 入口 |
 |------|----------|------|
 | 少数据、少算力迁到新机型 | **运动学对齐 + 局部 LoRA 动力学适配** | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
+| 近亲骨架、更严冻结、要看 OOD 能否反超原生 tracker | **闭式 codec + 单解码器 LoRA** | [SONIC-Transfer](../entities/paper-sonic-transfer.md) |
 | 从零获得单平台最强 tracker | **继续 scaling 预训练** | [SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md)（2B 帧 + Transformer 蒸馏，CVPR 2026） |
 | 多机统一 generalist | **多具身联合预训练 / 统一动作空间** | 见 [BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等 |
 
@@ -180,6 +182,7 @@ flowchart TD
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md)、[PhyGile（arXiv:2603.19305）](../../sources/papers/phygile_arxiv_2603_19305.md)、[SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)、[SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md)
 - [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md)
+- [SONIC-Transfer（draft 2026-08）](../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md)
 - [Shooting for Contact / DSMS（arXiv:2608.03116）](../../sources/papers/shooting_for_contact_arxiv_2608_03116.md)
 - [PFM-HR（arXiv:2608.03227）](../../sources/papers/pfm_hr_arxiv_2608_03227.md)
 - [HumanTracker（arXiv:2608.13555）](../../sources/papers/humantracker_arxiv_2608_13555.md)
@@ -201,6 +204,7 @@ flowchart TD
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[PhyGile](../entities/paper-phygile.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)
 - [GenTrack](../entities/paper-gentrack.md) — 已有 tracker 上的生成器–跟踪器在线后训练（AAAI 2027，未开源）
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
+- [SONIC-Transfer](../entities/paper-sonic-transfer.md)
 - [SceneBot](../entities/paper-scenebot.md)
 - [ContactMimic](../entities/paper-contactmimic.md)
 - [VMP](../entities/paper-notebook-vmp.md)

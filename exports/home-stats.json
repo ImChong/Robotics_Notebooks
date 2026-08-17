@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3121,
-  "edge_count": 27538,
+  "node_count": 3122,
+  "edge_count": 27555,
   "coverage": {
-    "covered": 3097,
-    "total": 3097,
+    "covered": 3098,
+    "total": 3098,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-sonic-transfer.md",
+      "detail_id": "entity-paper-sonic-transfer",
+      "label": "SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-advdex.md",
       "detail_id": "entity-paper-advdex",
@@ -200,32 +211,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/core-retarget.md",
-      "detail_id": "entity-core-retarget",
-      "label": "CoRe（接触感知全身重定向软件）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-advdex.md",
-    "detail_id": "entity-paper-advdex",
-    "label": "AdvDex：人手与灵巧手统一动作空间",
+    "path": "wiki/entities/paper-sonic-transfer.md",
+    "detail_id": "entity-paper-sonic-transfer",
+    "label": "SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 568
+      "size": 544
     },
     {
       "label": "操作",
@@ -240,12 +242,12 @@
       "size": 216
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 133
+      "label": "视觉语言动作纵深路线",
+      "size": 141
     },
     {
-      "label": "移动操作",
-      "size": 132
+      "label": "人形强化学习运动控制",
+      "size": 133
     }
   ],
   "top_hubs": [
@@ -333,7 +335,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 137,
+      "degree": 139,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
