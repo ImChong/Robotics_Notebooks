@@ -3,14 +3,18 @@
 type: query
 tags: [vla, wbc, mpc, impedance-control, architecture, fusion, latency, manipulation, humanoid, horizon-robotics]
 status: complete
-summary: "VLA 如何与低级关节控制器（MPC/WBC）融合：梳理3种主流架构（VLA+PD、VLA+阻抗、VLA+WBC异步）、输出格式选择、action chunking 缓冲策略与实践挑战。"
+updated: 2026-08-17
+summary: "VLA 如何与低级关节控制器（MPC/WBC）融合：梳理 3 种主流架构（VLA+PD、VLA+阻抗、VLA+WBC异步），并对照去掉冻结 System 0 的 direct-joint（DPC）。"
 sources:
   - ../../sources/papers/rl_foundation_models.md
+  - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
 related:
   - ../methods/vla.md
   - ../concepts/whole-body-control.md
   - ../methods/model-predictive-control.md
   - ../queries/vla-deployment-guide.md
+  - ../entities/paper-dpc.md
+  - ../methods/sonic-motion-tracking.md
 ---
 
 # Query：VLA 与低级关节控制器（MPC/WBC）融合架构
@@ -25,11 +29,13 @@ related:
 | **VLA + PD** | 关节位置目标 | PD 位置控制器 | 低（< 20 ms） | 低 | 高频可行 | 低 |
 | **VLA + 阻抗控制** | 末端 EE 位姿 / 刚度目标 | 阻抗/导纳控制 | 中（20~80 ms） | 中 | 中频（50~200 Hz） | 中 |
 | **VLA + WBC 异步** | EE 目标姿态 / 任务命令 | WBC + 逆动力学 | 高（50~200 ms） | 高 | WBC 内部高频（1 kHz） | 高 |
+| **Direct-joint（无冻结 System 0）** | 关节 + 手部 PD 目标 | 仅 PD（无学习式 tracker） | 低 | 低（靠数据重学平衡） | 高频 PD | 高（数据 + 闭环蒸馏） |
 
 **选型建议**：
 - 纯操作任务（桌面）：VLA + 阻抗控制，平衡安全与实现复杂度
-- 人形全身操作 / 移动操作：VLA + WBC 异步，WBC 处理平衡约束
+- 人形全身操作 / 移动操作：默认 VLA + WBC 异步，WBC 处理平衡约束
 - 简单快速原型验证：VLA + PD，上手最快
+- 若痛点是冻结 GMT/SONIC 的动作像盖不住 loco-manipulation：读 [DPC](../entities/paper-dpc.md) 的 direct-joint 反对命题（2026-08 仍未开源，不能当复现基线）
 
 ---
 
@@ -187,6 +193,12 @@ class ActionBuffer:
 **缺点**：
 - 系统最复杂，需要 WBC 实现、任务空间映射、接触调度等大量工程工作
 - WBC 本身需要精确动力学模型，sim2real gap 挑战更大
+
+#### 4.5 对照：Direct-joint（无冻结学习式 System 0）
+
+[DPC](../entities/paper-dpc.md)（Symbiosis Robotics, 2026-08）不反对「VLA 后面仍接 PD」——它反对的是 **VLA/WAM 输出运动 token \(Z_t\)，再交给冻结全身 tracker（如 [SONIC](../methods/sonic-motion-tracking.md)）**。在它的读法里，架构三的安全来自可复用 System 0，但三条代价同时成立：任务控制信息在运动学接口被压缩、分训合推导致未来视觉梯度到不了解码器、最终动作被冻结解码器像 \(M_h\) 卡住。
+
+Direct-joint 仍输出关节 PD 目标（与架构一同一电机接口），但 **没有学习式 tracker**：感知与控制在关节空间联合训练，再用 DriftDistill 补闭环漂移。这不是「VLA 直接驱动力矩」，也还没有公开代码或成功率表；选型时只把它当作架构三的反对命题，而不是已验证的第四套可部署栈。
 - VLA 输出格式和 WBC 接口之间需要精心设计任务约定
 
 ---
@@ -275,6 +287,7 @@ VLA 是黑盒模型，直接驱动执行器存在输出异常的风险：
 - Brohan et al., *RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control* (2023) — VLA 架构与输出格式
 - Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* (2024) — Action chunk + 低层控制器结合
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1/RT-2/π₀/Octo 综述
+- [sources/blogs/symbiosis_dpc_direct_perception_control.md](../../sources/blogs/symbiosis_dpc_direct_perception_control.md) — DPC：去掉冻结运动接口的 direct-joint 对照
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023) — Action chunking 缓冲机制
 - [sources/repos/cyclo_intelligence.md](../../sources/repos/cyclo_intelligence.md) — BT `SendCommand` 与推理相位同步
 
@@ -284,5 +297,7 @@ VLA 是黑盒模型，直接驱动执行器存在输出异常的风险：
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 框架、TSID/HQP 实现细节
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 与 VLA 的组合模式
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — 部署 checklist 与延迟管理实践
+- [DPC](../entities/paper-dpc.md) — 无冻结 System 0 的 direct-joint 反对命题（未开源）
+- [SONIC](../methods/sonic-motion-tracking.md) — 被 DPC 当作冻结全身 tracker 的具体接口
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 任务层 LOAD/RESUME/STOP 与宏动作组合
 - [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md) — ROBOTIS 开源 BT+VLA 栈

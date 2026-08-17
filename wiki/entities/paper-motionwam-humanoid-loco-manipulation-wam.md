@@ -13,7 +13,7 @@ tags:
   - unified-action-space
   - loco-manip-contact-survey
 status: complete
-updated: 2026-08-10
+updated: 2026-08-17
 arxiv: "2606.09215"
 venue: "arXiv 2026"
 related:
@@ -35,6 +35,7 @@ related:
   - ./unitree-g1.md
   - ./paper-legs-embodied-gaussian-splatting-vla.md
   - ./paper-worldvln-aerial-vln-wam.md
+  - ./paper-dpc.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
@@ -230,6 +231,7 @@ MotionWAM 不让策略直接从静态图像和语言抽动作，也不要求世�
 - [Unitree G1](./unitree-g1.md) — 论文硬件平台。
 - [DiT4DiT](./paper-dit4dit-video-action-model.md) — 同团队前序双 DiT VAM。
 - [ω-0](./paper-omega-0.md) — 潜空间 foresight + SONIC 全身 latent 的并发家务 loco-manip 对照（arXiv:2608.06375）。
+- [DPC](./paper-dpc.md) — 把本页的 SONIC token 接口写成冻结 System 0 的能力上限（Symbiosis 2026-08 博客，未开源）。
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 同 G1 + SONIC 栈的数据工厂路线对照。
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 另一 WAM 闭环部署实例。
 

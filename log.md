@@ -1,3 +1,12 @@
+## [2026-08-17] ingest | sources/sites/symbiosis-robotics-dpc.md — 接入 DPC 直接感知控制；确认未开源
+
+- **触发：** 用户指定 ingest <https://symbiosis-robotics.com/research/dpc/en/>，并要求自动合并 PR
+- **步骤 2.5：** 项目页页头/页脚无 GitHub、Hugging Face、PDF 或数据集；Citation 为 *Symbiosis Robotics Blog*（2026-08）→ **确认未开源**
+- **来源：** [`sources/sites/symbiosis-robotics-dpc.md`](sources/sites/symbiosis-robotics-dpc.md)、[`sources/blogs/symbiosis_dpc_direct_perception_control.md`](sources/blogs/symbiosis_dpc_direct_perception_control.md)
+- **升格：** [`wiki/entities/paper-dpc.md`](wiki/entities/paper-dpc.md) — 去掉 SONIC 式 \(Z_t\) 接口，Symbiotic Attention + DriftDistill；自报 15,010 h G1 关节语料
+- **交叉：** loco-manipulation / SONIC / VLA+低层控制器 query / MotionWAM / ω-0 / Gemini Robotics / VLA / π0.7
+- **开源结论：** 确认未开源；源码运行时序图不适用；无公开成功率表
+
 ## [2026-08-17] ingest | sources/papers/nestdex_arxiv_2608_13362.md — 接入 NestDex 嵌套 copilot 灵巧遥操作
 
 - **触发：** 用户指定 ingest NestDex（悉尼大学 ACFR / PAIR Lab、范德堡；Zhao / Tang / Ba / Zhi；2026-08 arXiv 预印本），并要求自动合并 PR
