@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-17",
   "node_count": 3130,
-  "edge_count": 27597,
+  "edge_count": 27611,
   "coverage": {
     "covered": 3106,
     "total": 3106,
@@ -169,7 +169,8 @@
       "recency": "2026-08-16",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-lego-leveled-language-gaussian-splatting.md",

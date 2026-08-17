@@ -19,8 +19,9 @@ related:
   - ../concepts/cartpole.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-08-16
+updated: 2026-08-17
 ---
 
 # Policy Optimization
@@ -179,6 +180,7 @@ SAC 常用于：
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL/BPO，新近策略优化理论与算法
 - Sharifnassab et al., *Intentional Updates for Streaming Reinforcement Learning* (2026) — 流式意图策略梯度与步长反解
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — clip 是信赖域的廉价一阶近似；`old_log_prob`
 - **ingest 档案：** [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md)
 
 ## 关联页面

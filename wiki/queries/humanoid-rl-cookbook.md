@@ -3,13 +3,14 @@ type: query
 tags: [locomotion, rl, sim2real, humanoid, cookbook, training]
 status: stable
 summary: "人形机器人 RL 策略训练完整 Checklist"
-updated: 2026-08-08
+updated: 2026-08-17
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/sim2real.md
   - ../../sources/notes/legged_humanoid_rl_pd_gains.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 ---
 
 # 人形机器人 RL 策略训练完整 Checklist
@@ -118,6 +119,8 @@ r_base_height = exp(-2 * (base_height - 0.82)²)  # 目标高度根据机型调�
 - 速度命令从 0.5 m/s 开始，成功率 > 80% 后提升到 1.5 m/s
 - 地形从平地开始，逐步引入随机地形
 
+公式没对齐时不要先堆环境：MDP → 高斯策略 / `log_prob` → $V$ 与优势 → 策略梯度 → GAE 的 $\lambda$ → PPO clip / KL / 熵 → `action_scale` 与观测归一化 → 课程 / DR / 师生。展开见 [PPO](../methods/ppo.md) 与 [RobotsHub 长文摘录](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md)。部署时用高斯均值、训练时才采样。`action_scale` 过大乱甩、过小学不动步。value loss 下降不能当收敛判据。
+
 ---
 
 ## Stage 5：Teacher-Student 蒸馏
@@ -179,12 +182,14 @@ Adaptation Module（学生）：
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — ingest 档案（PPO / Rudin 2022）
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — ingest 档案（sim2real 核心论文）
 - [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — 五模块闭环科普（与本 checklist 同叙事轴）
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — PPO / GAE 原理与 rsl_rl 代码映射
 
 ---
 
 ## 关联页面
 
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — MDP / Actor-Critic / PPO / 奖励 / 蒸馏的概念地图
+- [PPO](../methods/ppo.md) — clip、高斯动作、`action_scale`、有效视野
 - [Sim2Real Checklist](./sim2real-checklist.md) — 详细的域随机化配置清单
 - [RL Algorithm Selection](./rl-algorithm-selection.md) — PPO vs SAC vs TD3 选型指南
 - [Locomotion Reward Design Guide](./locomotion-reward-design-guide.md) — 奖励函数详细设计

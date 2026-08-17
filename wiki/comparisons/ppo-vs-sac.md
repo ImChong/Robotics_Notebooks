@@ -2,13 +2,14 @@
 type: comparison
 tags: [ppo, sac, rl, policy-optimization, locomotion, manipulation, on-policy, off-policy]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 summary: "PPO 与 SAC 在机器人 RL 任务中的系统性对比：on-policy vs off-policy 权衡、样本效率、稳定性、超参数敏感度与适用场景；含 FlashSAC 高维 scaling 选型。"
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/flashsac_arxiv_2604_04539.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 related:
   - ../methods/flashsac.md
   - ../concepts/rl-runner.md
@@ -275,6 +276,7 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 
 ## 参考来源
 
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — 并行仿真下为何 PPO 压过 SAC 的样本效率
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO / SAC 核心论文档案
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 intentional PG
 - [sources/papers/flashsac_arxiv_2604_04539.md](../../sources/papers/flashsac_arxiv_2604_04539.md) — FlashSAC 论文档案

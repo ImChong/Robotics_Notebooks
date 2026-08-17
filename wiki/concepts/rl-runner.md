@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, training-loop, runner, on-policy, off-policy, imitation, distillation, marl, model-based]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 related:
   - ./embodied-rl-minimal-closed-loop.md
   - ../methods/reinforcement-learning.md
@@ -30,6 +30,7 @@ sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "RL Runner 是训练/评测循环的编排层：按数据来源与更新规则调度采集、优势估计、网络更新与评测；行业里也叫 Trainer、Algorithm 或 Collector+Learner。"
 ---
 
@@ -127,7 +128,7 @@ flowchart TD
 
 ### 各类循环在做什么
 
-**On-policy Runner。** 策略一变，旧轨迹的重要性权重就失效。因此每轮必须用**当前** $\pi_\theta$ 重新 rollout，用 [GAE](../methods/gae.md) 估 $\hat{A}_t$，做有限次 minibatch 更新（PPO 常见 3–10 epoch），然后**整批丢掉**。人形/四足在 [Isaac Lab](../entities/isaac-lab.md) 上千并行环境里走这条路：样本利用率低，但墙钟短。工程实例：rsl_rl `OnPolicyRunner`、[AMP_mjlab](../entities/amp-mjlab.md) 的 `AMPOnPolicyRunner`。
+**On-policy Runner。** 策略一变，旧轨迹的重要性权重就失效。因此每轮必须用**当前** $\pi_\theta$ 重新 rollout，用 [GAE](../methods/gae.md) 估 $\hat{A}_t$，做有限次 minibatch 更新（PPO 常见 3–10 epoch），然后**整批丢掉**。horizon（`num_steps_per_env`）不是 episode 长度：窗口截断后对未终止片段 bootstrap。人形/四足在 [Isaac Lab](../entities/isaac-lab.md) 上千并行环境里走这条路：样本利用率低，但墙钟短。工程实例：rsl_rl `OnPolicyRunner`、[AMP_mjlab](../entities/amp-mjlab.md) 的 `AMPOnPolicyRunner`。公式与 `old_log_prob` 见 [PPO](../methods/ppo.md)。
 
 **Off-policy Runner。** 转移 $(s,a,r,s')$ 进 Replay Buffer，更新时随机抽历史。每条经验被反复用，样本效率高，但 Q 自举会过时；并行环境太多时，写入速度会淹没更新，这是大规模仿真里 SAC 常慢于 PPO 的原因之一。
 
@@ -214,6 +215,7 @@ flowchart TD
 - [RL Runner 类型谱系（图示转写）](../../sources/personal/rl_runner_types.md) — 本页分类表与读法边界的原始整理
 - [Policy Optimization 来源归档](../../sources/papers/policy_optimization.md) — PPO / SAC / TD3 算法侧依据
 - [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — 五模块闭环与蒸馏在训练栈中的位置
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — on-policy 数据有限复用 K 个 epoch 再丢弃
 
 ## 推荐继续阅读
 
