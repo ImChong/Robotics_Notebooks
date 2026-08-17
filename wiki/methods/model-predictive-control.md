@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-17
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
@@ -260,6 +260,7 @@ print("apply control:", u.ravel())
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 控制范式选型对比
 - [π MPC](./pi-mpc.md) — parallel-in-horizon、construction-free ADMM NMPC
 - [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 CD-MPC 地标奖励指导 PPO
+- [SMPC-to-RL](../entities/paper-smpc2rl-loco-manipulation.md) — 采样 MPC 只做仿真专家，稀疏 RL 上真机
 - [Nonlinear MPC](./nonlinear-model-predictive-control.md) — 完整非线性动力学滚动优化
 - [Quadratic Programming](../formalizations/quadratic-programming.md) — 凸 MPC / WBC 子问题形式
 - [MPC Solver Selection](../queries/mpc-solver-selection.md) — OSQP / Acados 等选型
