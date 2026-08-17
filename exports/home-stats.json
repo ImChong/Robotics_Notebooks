@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-pgif-mppi.md",
+      "detail_id": "entity-paper-pgif-mppi",
+      "label": "PGIF-MPPI：社交导航的安全成本必须面向未来",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
+      "detail_id": "entity-paper-sg-wam-semantic-guidance",
+      "label": "SG-WAM（语义引导）：让 WAM 的未来视频听懂指令",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-4d-wam.md",
       "detail_id": "entity-paper-4d-wam",
       "label": "4D-WAM：用轨迹场给 WAM 补上局部运动和终点",
@@ -38,27 +59,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pgif-mppi.md",
-      "detail_id": "entity-paper-pgif-mppi",
-      "label": "PGIF-MPPI：社交导航的安全成本必须面向未来",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
-      "detail_id": "entity-paper-sg-wam-semantic-guidance",
-      "label": "SG-WAM（语义引导）：让 WAM 的未来视频听懂指令",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-shrimp.md",
@@ -217,15 +217,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-4d-wam.md",
-    "detail_id": "entity-paper-4d-wam",
-    "label": "4D-WAM：用轨迹场给 WAM 补上局部运动和终点",
+    "path": "wiki/entities/paper-pgif-mppi.md",
+    "detail_id": "entity-paper-pgif-mppi",
+    "label": "PGIF-MPPI：社交导航的安全成本必须面向未来",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
   },
   "top_communities": [
     {
