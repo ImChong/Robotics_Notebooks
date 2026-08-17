@@ -24,6 +24,7 @@
 
 ## 关联档案
 
+- 默认任务清单：[`isaac_lab_environments.md`](./isaac_lab_environments.md)
 - 联合索引：[`isaac_gym_isaac_lab.md`](./isaac_gym_isaac_lab.md)
 - Isaac Sim：[`isaac_sim.md`](./isaac_sim.md)
 - 前代 Gym：见联合归档与 [`wiki/entities/isaac-gym.md`](../../wiki/entities/isaac-gym.md)
