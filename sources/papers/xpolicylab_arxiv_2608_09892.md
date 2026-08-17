@@ -22,8 +22,7 @@
 - **链接：** <https://arxiv.org/abs/2608.09892>
 - **核心贡献：** 策略侧依赖、数据表示与运行时接口碎片化，导致跨基准/仿真/真机重复接线且易 silently 改相机命名、通道序、夹爪缩放。XPolicyLab 提供统一契约与依赖隔离 serving，使策略保留原生栈、环境侧只写一份 client。
 - **对 wiki 的映射：**
-  - [XPolicyLab 论文实体](../../wiki/entities/paper-xpolicylab.md)
-  - [XPolicyLab 工具实体](../../wiki/entities/xpolicylab.md)
+  - [XPolicyLab](../../wiki/entities/xpolicylab.md)
   - [RoboDojo](../../wiki/entities/robodojo.md)
 
 ### 2) Adapter 契约与依赖隔离 serving（§III）
@@ -35,7 +34,7 @@
   - 可靠性：请求 ID + 响应缓存防重试双推理；server instance ID 变化视为致命（状态丢失）。
   - 观测 schema：\(\mathbf{o}_t=\{\mathbf{v}_t,\mathbf{q}_t,\mathbf{p}_t,\ell,\mathbf{m}_t\}\)；Cartesian 约定 \([x,y,z,q_w,q_x,q_y,q_z]\)；图像解码在 serving 层统一。
 - **对 wiki 的映射：**
-  - [XPolicyLab 论文实体](../../wiki/entities/paper-xpolicylab.md) — 源码运行时序图
+  - [XPolicyLab](../../wiki/entities/xpolicylab.md) — 源码运行时序图
   - [仿真评测基础设施](../../wiki/concepts/simulation-evaluation-infrastructure.md)
 
 ### 3) 生态规模与集成代价（§IV / 项目页）
@@ -60,8 +59,7 @@
 
 ## 对 wiki 的映射（汇总）
 
-- 论文实体：[`wiki/entities/paper-xpolicylab.md`](../../wiki/entities/paper-xpolicylab.md)
-- 工具实体刷新：[`wiki/entities/xpolicylab.md`](../../wiki/entities/xpolicylab.md)
+- 实体页：[`wiki/entities/xpolicylab.md`](../../wiki/entities/xpolicylab.md)
 - 交叉：[RoboDojo](../../wiki/entities/robodojo.md)、[仿真评测基础设施](../../wiki/concepts/simulation-evaluation-infrastructure.md)、[具身评测选型闭环](../../wiki/queries/embodied-eval-benchmark-selection-loop.md)、[VLA](../../wiki/methods/vla.md)
 
 ## BibTeX（项目页）

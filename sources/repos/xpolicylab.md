@@ -45,7 +45,6 @@ bash eval.sh RoboDojo stack_bowls <ckpt_name> arx_x5 joint 0 0 0 <policy_env> ba
 
 ## 对 wiki 的映射
 
-- 论文实体：[XPolicyLab 论文](../../wiki/entities/paper-xpolicylab.md)
-- 工具实体：[XPolicyLab](../../wiki/entities/xpolicylab.md)
+- 实体页：[XPolicyLab](../../wiki/entities/xpolicylab.md)
 - 评测基准：[RoboDojo](../../wiki/entities/robodojo.md)
 - 交叉：[VLA](../../wiki/methods/vla.md)、[仿真评测基础设施](../../wiki/concepts/simulation-evaluation-infrastructure.md)

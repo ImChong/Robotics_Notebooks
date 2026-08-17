@@ -223,7 +223,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                误报为缺页
 #   reset      → entities/gymnasium.md（`reset` / `step` 标准方法集合、四入口节点图、
 #                「先 step 再 reset 会被 OrderEnforcing 拦下」误区条）+
-#                entities/paper-xpolicylab.md（策略侧 `reset` 清 episode 状态）：
+#                entities/xpolicylab.md（策略侧 `reset` 清 episode 状态）：
 #                环境/策略 API 的方法名（episode 复位），与 stop（运行时命令名）
 #                同类 token，语义已在 API 表逐条释义，不单建概念页
 #   rgb-d      → concepts/embodied-perception-six-spatial-representations.md
