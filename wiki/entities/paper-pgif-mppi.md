@@ -10,6 +10,7 @@ related:
   - ../methods/model-predictive-control.md
   - ./paper-peel-disassembly.md
   - ./paper-notebook-learning-social-navigation-from-positive-and-neg.md
+  - ./paper-surglat.md
 sources:
   - ../../sources/papers/pgif_mppi_arxiv_2608_08323.md
   - ../../sources/repos/pgif-mppi.md
@@ -137,6 +138,7 @@ Vanilla 的短路径来自提前撞停。PGIF 主动绕行，路径更长。步�
 - [MPC](../methods/model-predictive-control.md)
 - [PEEL](./paper-peel-disassembly.md)
 - [社交导航正负样本](./paper-notebook-learning-social-navigation-from-positive-and-neg.md)
+- [SurgLAT](./paper-surglat.md) — 另一条把「未来/意图」写成可执行成本的闭环
 
 ## 参考来源
 

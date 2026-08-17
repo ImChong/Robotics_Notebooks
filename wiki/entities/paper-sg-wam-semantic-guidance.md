@@ -10,6 +10,7 @@ related:
   - ./paper-meco-wam-4d-geometry-cotraining.md
   - ./libero-benchmark.md
   - ./paper-dypes-vla.md
+  - ./paper-lamda-tsr.md
   - ./paper-shrimp.md
 sources:
   - ../../sources/papers/sg_wam_semantic_guidance_arxiv_2608_08839.md
@@ -119,6 +120,7 @@ flowchart LR
 - [MECo-WAM](./paper-meco-wam-4d-geometry-cotraining.md)
 - [LIBERO](./libero-benchmark.md)
 - [DyPES-VLA](./paper-dypes-vla.md) — 同 `livfour` 项目页账号的跨本体 VLA
+- [LAMDA](./paper-lamda-tsr.md) — 同样把 VLM 当教师、但推理丢掉语言通路
 - [SHRIMP](./paper-shrimp.md)
 
 ## 参考来源
