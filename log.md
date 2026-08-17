@@ -1,3 +1,12 @@
+## [2026-08-17] ingest | sources/papers/smpc2rl_arxiv_2608_12063.md — 加深 SMPC-to-RL：附录超参/采数细节，再核项目页仍未开源
+
+- **触发：** 用户指定 ingest *Learning Loco-Manipulation From SMPC Demonstrations With Sparse Offline-to-Online RL*（RAI / TUM / ETH；Schuck et al.）。2026-08-14 已随三篇批量入库，本次按「一次一条」补附录与开源再核。
+- **步骤 2.5：** 项目页 <https://pages.rai-inst.com/smpc2rl/> 截至 **2026-08-17** 仍无 Code/GitHub；judo（<https://github.com/rai-opensource/judo>，MIT）是通用采样 MPC 工具箱，**不是**本文 tiled 采数 + FastTD3 + ReLIC 仓 → **确认未开源**
+- **来源：** [`sources/papers/smpc2rl_arxiv_2608_12063.md`](sources/papers/smpc2rl_arxiv_2608_12063.md)、[`sources/sites/rai-inst-smpc2rl.md`](sources/sites/rai-inst-smpc2rl.md)、[`sources/repos/judo.md`](sources/repos/judo.md)
+- **升格：** [`wiki/entities/paper-smpc2rl-loco-manipulation.md`](wiki/entities/paper-smpc2rl-loco-manipulation.md) — 样条 SMPC、有界 critic、专家比例/撤出消融、真机规格；时序图仍不适用
+- **交叉：** Loco-Manipulation / Sumo / MPC vs RL / Online vs Offline RL / mjlab / MPC / Unitree G1
+- **开源结论：** 训练与部署代码未发布；judo 仅作对照入口
+
 ## [2026-08-17] ingest | sources/papers/prm_as_a_judge_arxiv_2608_14284.md + reflexvla_arxiv_2608_14379.md + advdex_arxiv_2608_14028.md — 过程评测套件 / 延迟感知动态 VLA / 人手–灵巧手统一动作空间
 
 - **触发：** 用户指定三篇资料入库（PRM-as-a-Judge 机器人执行过程评测；ReflexVLA 动态任务低延迟 VLA；AdvDex 人手与灵巧手统一动作空间）

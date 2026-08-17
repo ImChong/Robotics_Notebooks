@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-17",
   "node_count": 3121,
-  "edge_count": 27533,
+  "edge_count": 27538,
   "coverage": {
     "covered": 3097,
     "total": 3097,
@@ -225,7 +225,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 544
+      "size": 568
     },
     {
       "label": "操作",
@@ -240,12 +240,12 @@
       "size": 216
     },
     {
-      "label": "视觉语言动作纵深路线",
-      "size": 155
-    },
-    {
       "label": "人形强化学习运动控制",
       "size": 133
+    },
+    {
+      "label": "移动操作",
+      "size": 132
     }
   ],
   "top_hubs": [
