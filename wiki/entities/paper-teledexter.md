@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-teleoperation, hand-object-co-tracking, sim2real, reinforcement-learning, imitation-learning, in-hand-manipulation, tool-use, bigai, tsinghua, pku]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-17
 arxiv: "2607.11481"
 venue: "arXiv 2026"
 summary: "TeleDexter（arXiv:2607.11481，清华/BIGAI/北大）用 hand–object co-tracking 低层控制器把操作员的同步指尖与物体位姿意图映射为接触丰富执行；Isaac Gym 单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署到 SharpaWave/LeapHand，七任务平均 75.2% SR；示范可训 Diffusion Policy。截至 2026-07-28 未开源。"
@@ -15,6 +15,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../queries/dexterous-data-collection-guide.md
+  - ./paper-nestdex.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ./paper-hrl-stack-06-hdmi.md
   - ./paper-dexverse.md
@@ -23,6 +24,7 @@ related:
 sources:
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/teledexter-project.md
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
 ---
 
 # TeleDexter：接近人类水平的灵巧遥操作
@@ -183,6 +185,7 @@ flowchart TB
 - [In-hand Reorientation](../methods/in-hand-reorientation.md) — 手内重定向方法谱系
 - [Diffusion Policy](../methods/diffusion-policy.md) / [Behavior Cloning](../methods/behavior-cloning.md) — 下游自主策略
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md) — 采数通道选型
+- [NestDex](./paper-nestdex.md) — clutch copilot 嵌套采数；部署卸内层（对照「低层执行仍留在环内」）
 - [HDMI](./paper-hrl-stack-06-hdmi.md) — 人形 robot–object co-tracking 对照
 - [DexVerse](./paper-dexverse.md) — 灵巧多任务 benchmark 与 VR 示范对照
 - [Sim2Real](../concepts/sim2real.md) / [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 迁移与重定向背景

@@ -14,7 +14,7 @@ tags:
   - pair-lab
   - vanderbilt
 status: complete
-updated: 2026-08-11
+updated: 2026-08-17
 arxiv: "2608.07065"
 related:
   - ../methods/action-chunking.md
@@ -24,10 +24,12 @@ related:
   - ../tasks/bimanual-manipulation.md
   - ./paper-why-action-chunking-improves-bc.md
   - ./paper-rove-humanoid-vla-intervention.md
+  - ./paper-nestdex.md
   - ../queries/vla-deployment-guide.md
 sources:
   - ../../sources/papers/autointervene_arxiv_2608_07065.md
   - ../../sources/sites/aus-bot-autointervene.md
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
 summary: "AutoIntervene（arXiv:2608.07065，Usyd/PAIR Lab）：对 action-chunking 策略用 visual-action memory 校准双向接管（phase-local 切入 / global 交回）；九项真机双臂任务上 R2 平均成功率 80%、操作员时间低于人工接管与追加全演示；确认未开源。"
 ---
 
@@ -56,7 +58,7 @@ summary: "AutoIntervene（arXiv:2608.07065，Usyd/PAIR Lab）：对 action-chunk
 - **双向切换，而不只「喊救命」：** phase-local 支持管切入；global 支持管交回，允许恢复后从任意合法相位继续自治。
 - **阈值可校准：** 用 held-out 成功专家演示估分位数，避免每任务手调 score cutoff。
 - **数据更省：** 相对人工全程盯梢或追加全长演示，针对性干预用更少操作员时间换更高后适配成功率。
-- **动作头无关监控层：** ACT / DP / FM 均可挂同一接管逻辑。
+- **同实验室互补：** [NestDex](./paper-nestdex.md) 把 copilot 放在**采数环**（人控臂 + clutch，部署卸内层）；本文把监控放在**已训 chunk 策略的部署环**。
 
 ## 核心信息
 
@@ -179,6 +181,7 @@ flowchart TB
 - [双臂操作](../tasks/bimanual-manipulation.md) — 任务页
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — chunk 收益机制对照
 - [ROVE](./paper-rove-humanoid-vla-intervention.md) — 人形干预对照
+- [NestDex](./paper-nestdex.md) — 同实验室：采数期手技能 copilot（arXiv:2608.13362）
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 部署期监控入口
 
 ## 参考来源

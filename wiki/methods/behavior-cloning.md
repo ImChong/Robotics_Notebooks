@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, supervised-learning, manipulation, covariate-shift]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 summary: "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
 related:
   - ./imitation-learning.md
@@ -14,11 +14,13 @@ related:
   - ../tasks/manipulation.md
   - ../entities/kinetiq-ascend.md
   - ../entities/paper-why-action-chunking-improves-bc.md
+  - ../entities/paper-nestdex.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
 ---
 
 # Behavior Cloning（行为克隆）
@@ -140,6 +142,7 @@ $$
 - [Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md) — 跨配置 BC 共训中遗留数据的三相有效性
 - [Action Chunking](./action-chunking.md) — 对单步 BC 的时间窗扩展；部署协议可与训练目标解耦
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — Delay / RDE：何时不必真的执行 chunk
+- [NestDex](../entities/paper-nestdex.md) — 外层 BC 用 H-VAE 手 latent；示范来自 copilot 而非全 DoF 遥操作（arXiv:2608.13362）
 
 ## 推荐继续阅读
 

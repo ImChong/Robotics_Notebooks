@@ -193,6 +193,7 @@ flowchart LR
 - [TopoRetarget](../wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md)、[SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) 与 [DynaRetarget vs TopoRetarget（对比）](../wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md)（本仓库）— 接触保持灵巧手重定向
 - [Bunny-VisionPro 实时双手灵巧遥操作（论文笔记）](../wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)、[DexUMI（论文笔记）](../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)、[DexterCap（论文笔记）](../wiki/entities/paper-notebook-dextercap.md)（本仓库）— 视觉/手持手指采集
 - [TeleDexter](../wiki/entities/paper-teledexter.md)（本仓库）— **hand–object co-tracking** 低层控制器：MoCap 指尖+物体目标 → 仿真 RL 零样本真机；七任务平均 **75.2% SR**，并作灵巧采数引擎（**未开源**）
+- [NestDex](../wiki/entities/paper-nestdex.md)（本仓库）— **copilot 嵌套采数**：人控臂 + 1-DoF clutch，内层本体感觉手技能生成手指；部署时外层 visuomotor **卸掉内层**（arXiv:2608.13362，**未开源**）
 - [OSMO 开源触觉手套（论文笔记）](../wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) 与 [ByteDexter 20-DOF 灵巧手遥操作（论文笔记）](../wiki/entities/paper-notebook-dexterous-teleoperation-of-20-dof-bytedexter-han.md)（本仓库）— 触觉手套 / 高 DOF 手
 - [HapMorph](../wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) 与 [Touch Dreaming 触觉策略](../wiki/methods/humanoid-transformer-touch-dreaming.md)（本仓库）— 操作员侧力触觉显示 / 机器人侧触觉进策略
 - 灵巧手硬件谱系：[Shadow Hand](../wiki/entities/shadow-hand.md)、[Allegro Hand](../wiki/entities/allegro-hand.md)、[RUKA v2](../wiki/entities/ruka-v2-hand.md)、[ORCA Hand](../wiki/entities/orca-hand.md)、[mimic hand M1](../wiki/entities/mimic-hand-m1.md)、[MIDAS Hand](../wiki/entities/midas-hand.md)、[Handroid](../wiki/entities/handroid.md)（本仓库）
@@ -226,6 +227,8 @@ flowchart LR
 - [Imitation Learning](../wiki/methods/imitation-learning.md) 与 [Diffusion Policy](../wiki/methods/diffusion-policy.md)（本仓库）— 遥操作数据的主要消费者
 - [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) 与 [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md)（本仓库）— 无机器人示范 → 人形全身 visuomotor
 - [ROVE](../wiki/entities/paper-rove-humanoid-vla-intervention.md)（本仓库）— 部署期 MoCap 接管与次优接管轨迹的 RL 后训练
+- [AutoIntervene](../wiki/entities/paper-autointervene.md)（本仓库）— action-chunking 策略的校准双向接管（部署期）
+- [NestDex](../wiki/entities/paper-nestdex.md)（本仓库）— 采数期 copilot；外层 BC 部署不再依赖内层手技能（arXiv:2608.13362）
 - [HIW-500 数据集](../wiki/entities/hiw-500-dataset.md)（本仓库）— 500+ h / 23K+ 集家庭级全身遥操作开源集
 - [TeleopBench（论文笔记）](../wiki/entities/paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md) 与 [HumanoidArena](../wiki/entities/paper-humanoidarena.md)（本仓库）— 遥操作 / 分层控制评测后端
 - [EgoDex（论文笔记）](../wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md)（本仓库）— 大规模 egocentric 灵巧数据
