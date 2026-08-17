@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, instruction-generalization, libero, sjtu]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-17
 arxiv: "2608.02497"
 code: https://github.com/AutoLab-SAI-SJTU/GSR-ParaVLA
 related:
@@ -11,6 +11,7 @@ related:
   - ./xiaomi-robotics-0.md
   - ../methods/pi07-policy.md
   - ./paper-why-action-chunking-improves-bc.md
+  - ./paper-reflexvla.md
   - ./paper-ego2robot.md
 sources:
   - ../../sources/papers/gsr_paravla_arxiv_2608_02497.md
@@ -148,6 +149,7 @@ sequenceDiagram
 - [Xiaomi-Robotics-0](./xiaomi-robotics-0.md)
 - [π₀.₅ / π₀.₇](../methods/pi07-policy.md)
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md)
+- [ReflexVLA](./paper-reflexvla.md) — 同校；延迟感知动态任务，不是指令路由
 - [Ego2Robot](./paper-ego2robot.md) — 数据侧补语言/物体扰动
 
 ## 参考来源

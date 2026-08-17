@@ -12,7 +12,7 @@ tags:
   - fudan
   - tongji
 status: complete
-updated: 2026-08-07
+updated: 2026-08-17
 arxiv: "2608.04527"
 related:
   - ../methods/vla.md
@@ -20,6 +20,7 @@ related:
   - ../methods/pi07-policy.md
   - ./paper-dynawm-vla-online-correction.md
   - ./paper-dreamsteer-vla-deployment-steering.md
+  - ./paper-reflexvla.md
   - ./paper-dswam-dual-system-wam.md
   - ./paper-bridgevla-plusplus.md
   - ./paper-harness-vla.md
@@ -151,6 +152,7 @@ Matched PI-FAST 对照（Table 1）：
 - [π₀.₇ / FAST 策略](../methods/pi07-policy.md)
 - [DynaWM](./paper-dynawm-vla-online-correction.md)
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)
+- [ReflexVLA](./paper-reflexvla.md) — 作者点名未试 RTC；默认仍是 naive async
 - [BridgeVLA++](./paper-bridgevla-plusplus.md)
 
 ## 参考来源

@@ -1,3 +1,12 @@
+## [2026-08-17] ingest | sources/papers/reflexvla_arxiv_2608_14379.md — 加深交大 ReflexVLA；复核录用后开源，并与同名流式 Reflex 分流
+
+- **触发：** 用户指定 ingest *Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation*（交大 陈宇轩 / 张婉若 / 李晓，arXiv 2026-08），并要求自动合并 PR
+- **步骤 2.5：** 打开 <https://reflexvla.github.io/>；Code 按钮 title「Code will be released after the paper is accepted」，无 GitHub URL → **宣称录用后开源**
+- **已有页：** 不另造页，加深 [`wiki/entities/paper-reflexvla.md`](wiki/entities/paper-reflexvla.md)
+- **加深：** 六任务全表、LIBERO 分项、作者通讯、同名分流 arXiv:2607.14695
+- **交叉：** LIBERO / GSR / WAM 异步部署 / RTCF
+- **开源结论：** 宣称录用后开源；源码运行时序图不适用
+
 ## [2026-08-17] ingest | sources/papers/spd_corl_2026.md — 接入斯坦福/MIT/Scale AI 的 SPD 仿真灵巧手预训练；宣称将开源、项目页未列代码
 
 - **触发：** 用户指定 ingest *Pre-training Visual Dexterity in Simulation*（<https://spd.bot/>），并要求自动合并 PR

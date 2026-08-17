@@ -7,15 +7,18 @@
 - **类型：** paper / vla / latency / dynamic-manipulation
 - **arXiv：** <https://arxiv.org/abs/2608.14379>（PDF：<https://arxiv.org/pdf/2608.14379>）
 - **项目页：** <https://reflexvla.github.io/> — 归档见 [`sources/sites/reflexvla-github-io.md`](../sites/reflexvla-github-io.md)
+- **通讯：** chen_yuxuan@sjtu.edu.cn
 - **作者：** Yuxuan Chen、Wanruo Zhang、Xiao Li
 - **机构：** 上海交通大学（SJTU）
 - **入库日期：** 2026-08-17
+- **最后更新：** 2026-08-17
 - **一句话说明：** 为反应关键操纵建延迟感知基准 ReflexBench，并用未来隐特征预测 + 视觉骨干时序融合 + CUDA Graph 做低延迟 1B VLA。
+- **同名分流：** 不是 ICML 2026 *Reflex: Real-Time VLA Control through Streaming Inference*（[arXiv:2607.14695](https://arxiv.org/abs/2607.14695)）。
 
 ## 开源状态（步骤 2.5）
 
-- **项目页核查（2026-08-17）：** Hero 按钮为 **Code After acceptance**（未给 GitHub URL）；Paper 链 arXiv。
-- **结论：** **宣称录用后开源 / 截至入库日无可运行实现。**
+- **项目页核查（2026-08-17 复核）：** 打开 <https://reflexvla.github.io/>。Code 按钮 class `is-placeholder`，title **「Code will be released after the paper is accepted」**，无 `href` GitHub。Paper 链 arXiv。作者个人页仅 Yuxuan Chen → `elycyx.github.io`。
+- **结论：** **宣称录用后开源 / 截至复核日无可运行实现。** 与用户所述「代码计划在论文接收后开放」一致。
 
 ## 摘录 1：问题与基准（§I、§III）
 
@@ -48,5 +51,5 @@
 
 ## 建议 wiki 动作
 
-- 新建 **`wiki/entities/paper-reflexvla.md`**、**`sources/sites/reflexvla-github-io.md`**。
-- 交叉更新 VLA、Action Chunking、实时性取舍、操作任务页。
+- 加深 **`wiki/entities/paper-reflexvla.md`**：补全六任务表、LIBERO 分项、同名分流、录用后开源的 HTML title 原文。
+- 交叉：[LIBERO](../../wiki/entities/libero-benchmark.md)、[WAM 实时异步](../../wiki/entities/paper-wam-realtime-async.md)、[RTCF](../../wiki/entities/paper-rtcf.md)、[GSR](../../wiki/entities/paper-gsr-paravla.md)。

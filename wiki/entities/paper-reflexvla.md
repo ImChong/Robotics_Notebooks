@@ -10,6 +10,7 @@ tags:
 status: complete
 updated: 2026-08-17
 arxiv: "2608.14379"
+venue: "arXiv 2026-08-14"
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -17,16 +18,21 @@ related:
   - ../tasks/manipulation.md
   - ./paper-dypes-vla.md
   - ./paper-gsr-paravla.md
+  - ./libero-benchmark.md
+  - ./paper-wam-realtime-async.md
+  - ./paper-rtcf.md
   - ../queries/vla-deployment-guide.md
 sources:
   - ../../sources/papers/reflexvla_arxiv_2608_14379.md
   - ../../sources/sites/reflexvla-github-io.md
-summary: "ReflexVLA（arXiv:2608.14379，交大）：ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测、视觉骨干时序融合、CUDA Graph）；均值 50.4%、LIBERO 97.2%；代码录用后开放。"
+summary: "ReflexVLA（arXiv:2608.14379，交大陈宇轩/张婉若/李晓）：ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测、视觉骨干时序融合、CUDA Graph）；均值 50.4%、LIBERO 97.2%；项目页 Code After acceptance，录用后开放。"
 ---
 
 # ReflexVLA：动态任务低延迟 VLA
 
-**ReflexVLA**（*Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation*，[arXiv:2608.14379](https://arxiv.org/abs/2608.14379)，[项目页](https://reflexvla.github.io/)）由 **上海交通大学（SJTU）** 提出：先建延迟感知基准 **ReflexBench**（仿真不因推理而暂停世界），再在 VLA-Adapter 骨干上加未来隐特征预测、视觉中间层时序融合与系统级加速，做反应关键操纵。
+**ReflexVLA**（*Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation*，[arXiv:2608.14379](https://arxiv.org/abs/2608.14379)，[项目页](https://reflexvla.github.io/)）由 **上海交通大学** 陈宇轩、张婉若、李晓提出：先建延迟感知基准 **ReflexBench**（仿真不因推理而暂停世界），再在 VLA-Adapter 骨干上加未来隐特征预测、视觉中间层时序融合与系统级加速，做反应关键操纵。
+
+> **同名分流：** 不要和 ICML 2026 的另一篇 *Reflex: Real-Time VLA Control through Streaming Inference*（[arXiv:2607.14695](https://arxiv.org/abs/2607.14695)，流匹配 VLA 的 KV cache / 50 Hz 流式推理）搞混。本页是 **交大 · 反应关键操纵基准 + 1B 预测式 VLA**。
 
 ## 一句话定义
 
@@ -36,11 +42,14 @@ summary: "ReflexVLA（arXiv:2608.14379，交大）：ReflexBench 六任务延迟
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| ReflexVLA | Reflex Vision-Language-Action | 本文 1B 反应关键操纵策略 |
+| ReflexBench | Reflex Benchmark | 六任务延迟感知动态操纵基准 |
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| RTF | Real-Time Factor | 仿真时间 / 墙钟时间，用来把真机延迟注入仿真 |
+| RTF | Real-Time Factor | \(t_{\mathrm{sim}}/t_{\mathrm{wall}}\)，把真机延迟注入仿真 |
 | MHA | Multi-Head Attention | 本文在视觉中间层做因果时序融合 |
 | CUDA Graph | CUDA Graph replay | 固定计算图一次捕获、每步回放以降调度开销 |
 | LIBERO | Lifelong Robot Learning benchmark | 静态操纵对照榜 |
+| SR | Success Rate | 成功率；本页仿真报 %，真机按任务量规 |
 
 ## 为什么重要
 
@@ -53,9 +62,11 @@ summary: "ReflexVLA（arXiv:2608.14379，交大）：ReflexBench 六任务延迟
 | 项 | 内容 |
 |----|------|
 | **机构** | 上海交通大学（SJTU） |
+| **作者** | Yuxuan Chen、Wanruo Zhang、Xiao Li；通讯 chen_yuxuan@sjtu.edu.cn |
+| **arXiv** | [2608.14379](https://arxiv.org/abs/2608.14379)（2026-08-14） |
 | **骨干** | VLA-Adapter 族：DINOv2+SigLIP 224、Qwen2.5-0.5B、连续回归头；约 **1B** |
-| **基准** | ReflexBench 六任务；对照 LIBERO；真机 AgileX Piper |
-| **开源** | **宣称录用后开源**（项目页 Code After acceptance；截至 2026-08-17 无仓） |
+| **基准** | ReflexBench 六任务；对照 [LIBERO](./libero-benchmark.md)；真机 AgileX Piper |
+| **开源** | **宣称录用后开源**（项目页按钮 *Code After acceptance*，title「Code will be released after the paper is accepted」；截至 2026-08-17 无 GitHub URL） |
 
 ## 核心原理
 
@@ -92,21 +103,31 @@ flowchart TB
 |----|----------------|
 | 何时用 | 物体在动、错过时间窗即失败；静态家务不是主战场 |
 | 训练 | 六任务各 200 demo 共训单策略；2 帧历史 |
-| 评测 | 仿真与控制解耦；可用墙钟延迟 / RTF 注入 |
-| 加速 | 架构不变，只减框架与 kernel 调度；融合后 125 ms → **65.0 ms** |
+| 评测 | 仿真与控制解耦；同步=推理时空转，异步=执行上一 chunk 同时推下一 chunk；\(\mathrm{RTF}=t_{\mathrm{sim}}/t_{\mathrm{wall}}\) 把墙钟延迟注入仿真 |
+| 加速 | 架构不变，只减框架与 kernel 调度；融合后 125.1 ms → **65.0 ms**，传送带 SR 同步从 71.7 到 **73.8** |
 | 复现现状 | **等官方代码**；先读延迟协议与消融表做选型 |
 
 ## 实验与评测
 
-| 设定 | ReflexVLA | 读点 |
-|------|-----------|------|
-| ReflexBench 均值 | **50.4%** | 打平 PUMA 50.2%（4B），远超骨干 30.3% 与 \(\pi_{0.5}\) 36.9% |
-| 传送带 | **73.8%** | 相对骨干 36.8 的主增益场 |
-| 接球 / 旋转插销 | 7.3% / 12.4% | 仍难；大模型也低 |
-| LIBERO | **97.2%** | 与 VLA-Adapter 97.3 持平，动态模块未牺牲静态榜 |
-| 真机 Piper | 16/20、22.5 键/30s、6.7/10 球 | 优于 SmolVLA 与 PUMA |
+评测：六任务各 200 demo 共训单策略；异步 chunk=8、horizon=2；RTX 5880 Ada；每任务 150 ep × 3 seed。
 
-Q1 协议：低频时异步更吃亏；高频异步 + 大 chunk + 短 horizon 最好。
+**ReflexBench（Table I，均值 SR %）：**
+
+| 模型 | 参数 | 传送带 | 接球 | 打地鼠 | 斜坡截球 | 投球 | 旋转插销 | 均值 |
+|------|------|--------|------|--------|----------|------|----------|------|
+| OpenVLA-OFT | 7B | 58.0 | 5.3 | 100 | 41.4 | 10.0 | 1.3 | 36.0 |
+| \(\pi_{0.5}\) | 4B | 39.1 | 6.0 | 98.9 | 36.8 | 34.0 | 6.7 | 36.9 |
+| PUMA | 4B | 67.4 | 4.0 | 100 | 85.1 | 33.8 | 11.1 | 50.2 |
+| VLA-Adapter | 1B | 36.8 | 6.0 | 68.4 | 23.1 | 29.1 | 18.4 | 30.3 |
+| **ReflexVLA** | **1B** | **73.8** | 7.3 | **100** | 77.1 | 31.7 | 12.4 | **50.4** |
+
+打平 PUMA（4B）只用四分之一参数；主增益在传送带（36.8→73.8）与斜坡截球（23.1→77.1）。接球 / 旋转插销全体仍低。
+
+**LIBERO（Table II）：** Spatial 98.2 / Object 99.2 / Goal 98.0 / Long 93.6，均值 **97.2%**，与骨干 97.3 持平。
+
+**真机 AgileX Piper（Table IV，20 次）：** Conveyor **16/20**、PressButtons **22.5** 键/30s、CatchBalls **6.7**/10，优于 SmolVLA（2/20、0.9、3.8）与 PUMA（13/20、20.8、5.4）。
+
+Q1 协议：低频时异步更吃亏（观测–动作错位）；高频异步 + 大 chunk + 短 horizon 最好。作者未试 [RTC](./paper-rtcf.md) 一类更先进异步。
 
 ## 结论
 
@@ -125,9 +146,13 @@ Q1 协议：低频时异步更吃亏；高频异步 + 大 chunk + 短 horizon �
 |------|----------|
 | DynamicVLA / PUMA | 同属动态操纵；本文把延迟协议与 1B 系统加速写进同一套 |
 | [Action Chunking](../methods/action-chunking.md) | 通用缓冲机制；本文用实验钉死「大 chunk + 短执行地平线」 |
+| [WAM 实时异步部署](./paper-wam-realtime-async.md) | 对照 sync/async/blend；本文把延迟写进动态任务 SR，而不是只报流畅度 |
+| [RTC / RTCF](./paper-rtcf.md) | 作者点名未试的更先进异步；本页默认仍是 naive async chunk=8 / horizon=2 |
 | [实时性↔泛化](../concepts/embodied-fm-latency-generalization-tradeoff.md) | 概念页讲带宽墙；本文是 1B 侧的破墙实例 |
 | [DyPES-VLA](./paper-dypes-vla.md) | 未来预测塑跨本体先验；本文未来预测服务反应提前量 |
+| [GSR / ParaVLA](./paper-gsr-paravla.md) | 同校；改的是指令路由，不是延迟协议 |
 | 大通才 \(\pi_{0.5}\) / OpenVLA-OFT | 静态/开放词汇强，ReflexBench 均值明显落后 |
+| ICML Reflex（[arXiv:2607.14695](https://arxiv.org/abs/2607.14695)） | 同名；那篇做流匹配 VLA 的流式 KV cache，本页做反应任务基准 + 预测式 1B |
 
 ## 局限与风险
 
@@ -143,7 +168,10 @@ Q1 协议：低频时异步更吃亏；高频异步 + 大 chunk + 短 horizon �
 - [具身大模型实时性↔泛化取舍](../concepts/embodied-fm-latency-generalization-tradeoff.md) — 延迟墙
 - [Manipulation](../tasks/manipulation.md) — 操作任务背景
 - [DyPES-VLA](./paper-dypes-vla.md) — 另一条「未来预测进 VLA」
-- [GSR / ParaVLA](./paper-gsr-paravla.md) — 同校 VLA-Adapter / SmolVLA 骨干对照
+- [LIBERO](./libero-benchmark.md) — 静态对照榜；本文 97.2% 与骨干持平
+- [GSR / ParaVLA](./paper-gsr-paravla.md) — 同校；指令路由轴，不是延迟协议
+- [WAM 实时异步部署](./paper-wam-realtime-async.md) — 异步 chunk 部署对照
+- [RTCF](./paper-rtcf.md) — 作者未试的更先进异步
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 异步执行
 
 ## 参考来源
@@ -157,3 +185,4 @@ Q1 协议：低频时异步更吃亏；高频异步 + 大 chunk + 短 horizon �
 - [ReflexVLA 项目页](https://reflexvla.github.io/)
 - [VLA-Adapter](https://arxiv.org/abs/2509.09372) — 骨干论文
 - [DynamicVLA](https://arxiv.org/abs/2601.22153) — 动态物体 VLA 对照
+- 同名分流：[Reflex streaming inference](https://arxiv.org/abs/2607.14695) — 流匹配 VLA 的 50 Hz 流式推理，不是本页

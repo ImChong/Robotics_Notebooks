@@ -15,6 +15,7 @@ related:
   - ../entities/paper-neural-introspection-gating.md
   - ../entities/paper-flex-pi.md
   - ../entities/paper-galaxea-g05.md
+  - ../entities/paper-reflexvla.md
   - ../entities/paper-rift-wam.md
   - ../entities/paper-odeworld.md
   - ../queries/hmi-opensource-projects-coverage.md
@@ -106,6 +107,7 @@ flowchart LR
 - [Neural Introspection Gating](./paper-neural-introspection-gating.md) — OpenVLA / OFT 上 logit-margin 门控 KV 缓存；Long/Goal 收回盲缓存掉点（arXiv:2608.10824）
 - [Flex-π](./paper-flex-pi.md) — 多流 WAM；LIBERO 柔性 ckpt 98.5%、固定模式 99.2%；LIBERO-Plus Total 80.9%（arXiv:2608.10860；代码待发布）
 - [G0.5](./paper-galaxea-g05.md) — AR VLA；LIBERO 均 **98.9%** / Long **98.6%**（已开源）
+- [ReflexVLA](./paper-reflexvla.md) — 动态模块后 LIBERO 仍 **97.2%**（与 VLA-Adapter 持平；代码待开放）
 - [Rift](./paper-rift-wam.md) — 免 rollout WAM；LIBERO **98.8%**、LIBERO-Plus **81.1%**（未开源）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — LIBERO-Para 改写协议；SmolVLA 4.47%→49.12%（arXiv:2608.02497）
