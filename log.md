@@ -13,6 +13,16 @@
 - **开源结论：** 两训练/技能仓可跑；数据非商业或许可不明；Chat 与整机不开源
 
 
+## [2026-08-17] ingest | sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md — RobotsHub 万字 PPO：加深既有 PPO/GAE，不新建方法页；rsl_rl 已开源
+
+- **触发：** 用户要求用 agent-reach ingest <https://mp.weixin.qq.com/s/MJQYYyOBSLirVr0vH1-AZg>
+- **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；短链直连成功
+- **步骤 2.5：** 教学长文，无独立项目页；文末 [rsl_rl](https://github.com/leggedrobotics/rsl_rl) **已开源**；PPO/GAE/TRPO/Rudin 论文与 Isaac Lab 文档均为公开资料
+- **来源：** [`sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md`](sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md)；raw [`sources/raw/wechat_robotshub_ppo_locomotion_2026-07-16.md`](sources/raw/wechat_robotshub_ppo_locomotion_2026-07-16.md)
+- **升格：** 不新建方法页。主沉淀 [`wiki/methods/ppo.md`](wiki/methods/ppo.md)（clip 误区、`old_log_prob`、有效视野、高斯 `action_scale`）；配套 [`wiki/methods/gae.md`](wiki/methods/gae.md)（$\gamma$ vs $\lambda$、value loss 陷阱）
+- **交叉：** MDP / 五模块训练栈 / RL Runner / 特权训练 / 奖励设计 / RL 超参指南 / Cookbook / PPO vs SAC
+- **开源结论：** 本文无代码仓；对照实现走已开源的 rsl_rl
+
 ## [2026-08-17] structural | wiki/entities/xpolicylab.md — 合并重复详情节点：删除 paper-xpolicylab，论文机制/时序图/结论并入工具实体
 
 - **触发：** 用户反馈 XPolicyLab 存在两个重复详情节点，要求合并至一个

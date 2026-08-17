@@ -44,6 +44,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
@@ -217,6 +218,7 @@ flowchart LR
 - **残差式用法**：已有控制器/先验打底时，RL 只学补偿量 $a=a_{\text{base}}+\Delta a$，样本效率与安全性同时改善。见 [Residual Policy Learning](./residual-policy-learning.md) 及谱系论文（[Residual RL](../entities/paper-residual-rl-robot-control.md)、[RPL](../entities/paper-residual-policy-learning.md)、[ResMimic](../entities/paper-resmimic.md)、[RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)）。
 
 ## 参考来源
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — MDP → 策略梯度 → GAE → PPO 的运控教学链
 - [sources/personal/rl_runner_types.md](../../sources/personal/rl_runner_types.md) — Runner 类型谱系（On-policy / Off-policy / 蒸馏 / 评测）
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）ingest 档案
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
@@ -286,6 +288,7 @@ flowchart LR
 - [POMDP](../formalizations/pomdp.md) — 真机部分可观测场景的标准扩展
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 仿真里把 $S,A,R,P$ 跑通再上学習算法
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — MDP → Actor-Critic → PPO → 奖励 → 蒸馏的运控训练闭环
+- [PPO](./ppo.md) — 大规模并行运控的默认 on-policy 算法
 - [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
 - [Gymnasium](../entities/gymnasium.md) — 单智能体 RL 环境 API 标准（`reset` / `step` / `spaces`）
 - [Cartpole 问题](../concepts/cartpole.md) — Actor–Critic 实验原点与 Gym / Isaac 教学环境对照

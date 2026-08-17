@@ -6,12 +6,14 @@ related:
   - ./bellman-equation.md
   - ../methods/reinforcement-learning.md
   - ../methods/policy-optimization.md
+  - ../methods/ppo.md
   - ../concepts/embodied-rl-minimal-closed-loop.md
   - ../concepts/cartpole.md
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "Markov Decision Process (MDP)"
-updated: 2026-08-16
+updated: 2026-08-17
 ---
 
 # Markov Decision Process (MDP)
@@ -52,7 +54,7 @@ $$M = (S, A, P, R, \gamma)$$
 | $A$ | 动作空间 | 各关节力矩/位置指令 |
 | $P(s'|s,a)$ | 转移概率 | 给定当前状态和动作，下一状态是什么 |
 | $R(s,a,s')$ | 奖励函数 | 走得稳给正奖励、摔倒给负奖励 |
-| $\gamma \in [0,1)$ | 折扣因子 | 近期奖励重要还是远期奖励重要 |
+| $\gamma \in [0,1)$ | 折扣因子 | 近期奖励重要还是远期奖励重要；有效视野约 $1/(1-\gamma)$ **步** |
 
 ### 轨迹
 
@@ -63,6 +65,8 @@ $$s_0 \xrightarrow{a_0} s_1 \xrightarrow{a_1} s_2 \xrightarrow{a_2} \cdots \xrig
 累积折扣奖励：
 
 $$G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k}$$
+
+恒定奖励 $r$ 时，$G$ 的尺度约 $r/(1-\gamma)$，常把 $1/(1-\gamma)$ 叫**有效视野**（多少步之后的奖励可忽略）。这是**步数**不是秒：控制频率升高时，同样 $\gamma$ 覆盖的真实时间变短。50 Hz 下 $\gamma=0.99$ 大约 2 s；200 Hz 下只剩约 0.5 s。运控里随控制频率一起改 $\gamma$，否则策略会「变短视」。详见 [PPO](../methods/ppo.md)。
 
 ### 策略 $\pi$
 
@@ -135,6 +139,7 @@ MDP（数学框架）
 
 ## 参考来源
 
+- [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — 有效视野按步数计、与控制频率耦合
 - Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed.) — MDP 与 RL 标准教材，Chapter 3
 - Puterman, *Markov Decision Processes: Discrete Stochastic Dynamic Programming* — MDP 理论权威参考
 - Bellman, *Dynamic Programming* (1957) — MDP 理论基础
@@ -142,6 +147,7 @@ MDP（数学框架）
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — MDP 是 RL 的理论根基
+- [PPO](../methods/ppo.md) — 折扣 $\gamma$ 的有效视野随控制频率变化
 - [Optimal Control](../concepts/optimal-control.md) — OCP 和 MDP 的关系：OCP 是确定性的，RL 是随机性的；两者都是"最优决策"问题
 - [Reward Design](../concepts/reward-design.md) — MDP 中奖励函数的设计直接决定学到的策略
 - [Cartpole 问题](../concepts/cartpole.md) — 四维完全可观测 MDP 的最小对照：Gym 失败信号 vs Isaac shaping
