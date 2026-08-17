@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-reflexvla.md",
+      "detail_id": "entity-paper-reflexvla",
+      "label": "ReflexVLA：动态任务低延迟 VLA",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-spd.md",
       "detail_id": "entity-paper-spd",
       "label": "SPD：在仿真里预训练视觉灵巧操作",
@@ -201,22 +211,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-speedtuning.md",
-      "detail_id": "entity-paper-speedtuning",
-      "label": "SpeedTuning：给冻结模仿策略加一层速度倍率",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-spd.md",
-    "detail_id": "entity-paper-spd",
-    "label": "SPD：在仿真里预训练视觉灵巧操作",
+    "path": "wiki/entities/paper-reflexvla.md",
+    "detail_id": "entity-paper-reflexvla",
+    "label": "ReflexVLA：动态任务低延迟 VLA",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
