@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-nestdex.md",
+      "detail_id": "entity-paper-nestdex",
+      "label": "NestDex：嵌套策略 + Copilot 灵巧遥操作",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/icra-2026-real-i.md",
       "detail_id": "entity-icra-2026-real-i",
       "label": "ICRA 2026 REAL-I Challenge",
@@ -200,28 +209,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-lego-leveled-language-gaussian-splatting.md",
-      "detail_id": "entity-paper-lego-leveled-language-gaussian-splatting",
-      "label": "LEGO：层级语言高斯溅射",
-      "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/icra-2026-real-i.md",
-    "detail_id": "entity-icra-2026-real-i",
-    "label": "ICRA 2026 REAL-I Challenge",
+    "path": "wiki/entities/paper-nestdex.md",
+    "detail_id": "entity-paper-nestdex",
+    "label": "NestDex：嵌套策略 + Copilot 灵巧遥操作",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
-    "action": "added",
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
