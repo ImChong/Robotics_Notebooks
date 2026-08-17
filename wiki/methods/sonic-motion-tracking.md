@@ -27,6 +27,7 @@ related:
   - ../entities/paper-humantracker.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
+  - ../entities/paper-dpc.md
   - ../entities/paper-scaling-bfm-humanoid.md
   - ./beyondmimic.md
   - ./egm-efficient-general-mimic.md
@@ -463,6 +464,7 @@ sequenceDiagram
 - [HumanTracker（论文实体）](../entities/paper-humantracker.md) — 四族光学 tracking 基准 + HumanScore（arXiv:2608.13555）
 - [GenTrack（论文实体）](../entities/paper-gentrack.md) — 对已发布 SONIC 做生成器–跟踪器在线后训练；LAFAN1 SR 85→90（仿真 G1，未开源）
 - [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 冻结公开权重 + 闭式 codec 迁到 AgiBot X2 Ultra
+- [DPC（论文实体）](../entities/paper-dpc.md) — 把冻结 SONIC 解码器写成表示/联合训练/动作像三条上限；主张 direct-joint PD（Symbiosis 2026-08，未开源）
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — generalist 跟踪上叠高动态技能；仿真对照含 SONIC
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)

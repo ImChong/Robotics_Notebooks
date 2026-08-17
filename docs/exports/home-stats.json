@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3135,
-  "edge_count": 27707,
+  "node_count": 3136,
+  "edge_count": 27729,
   "coverage": {
-    "covered": 3111,
-    "total": 3111,
+    "covered": 3112,
+    "total": 3112,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/lw-benchhub-tour.md",
+      "detail_id": "entity-lw-benchhub-tour",
+      "label": "LW BENCHHUB TOUR",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-nestdex.md",
       "detail_id": "entity-paper-nestdex",
@@ -200,27 +210,17 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/cartpole.md",
-      "detail_id": "wiki-concepts-cartpole",
-      "label": "Cartpole 问题",
-      "type": "concept",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-nestdex.md",
-    "detail_id": "entity-paper-nestdex",
-    "label": "NestDex：嵌套策略 + Copilot 灵巧遥操作",
+    "path": "wiki/entities/lw-benchhub-tour.md",
+    "detail_id": "entity-lw-benchhub-tour",
+    "label": "LW BENCHHUB TOUR",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -276,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 745,
+      "degree": 747,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -333,7 +333,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 139,
+      "degree": 142,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -353,18 +353,18 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "degree": 56
+    },
+    {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 54,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "degree": 54
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -385,7 +385,7 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 43
+      "degree": 44
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

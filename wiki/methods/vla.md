@@ -25,6 +25,7 @@ related:
   - ./lingbot-map.md
   - ./being-h07.md
   - ./pi07-policy.md
+  - ../entities/paper-dpc.md
   - ../concepts/world-action-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../entities/roboscience-vloa.md
@@ -415,6 +416,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md) — VLA 实现视-语-控对齐的底层机制
 - [Manipulation](../tasks/manipulation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [DPC](../entities/paper-dpc.md) — 去掉冻结运动接口、直接输出 G1 关节 PD 的产业反对命题（未开源）
 - [DyPES-VLA](../entities/paper-dypes-vla.md) — 共享动力学先验 + 本体特化 MoE 跨本体 VLA（arXiv:2608.06374）
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench；代码待开放（arXiv:2608.14379）
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间；确认未开源（arXiv:2608.14028）
