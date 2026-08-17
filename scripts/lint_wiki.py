@@ -67,8 +67,8 @@ STALE_CLAIM_PATTERNS = [
 
 # 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下四类是
 # 结构性误报，按命中处的上下文豁免，避免为迁就正则去改写本就正确的正文：
-#   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」等
-#      辟谣式写法，本身就在否认该断言；
+#   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」
+#      「这一行不可直接当 SOTA 通才」等辟谣式写法，本身就在否认该断言；
 #   2) 库内页面名：「VLA SOTA Leaderboard」是 entities/vla-sota-leaderboard.md 的
 #      页面标题，正文引用它属导航，不是本页断言；
 #   3) 运行时对象：「服务端只保留最新 pending 帧」「取最新状态」描述系统行为，
@@ -84,6 +84,7 @@ STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不要",
     "而非",
     "不应",
+    "不可",
     "未必",
     "勿",
 )
@@ -220,6 +221,18 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                comparisons/rl-vs-il.md / mpc-vs-rl.md / wbc-vs-rl.md（选型对照）：
 #                与 wbc / wam / urdf 同属「缩写 slug ≠ 页面 stem」，不应按裸缩写
 #                误报为缺页
+#   reset      → entities/gymnasium.md（`reset` / `step` 标准方法集合、四入口节点图、
+#                「先 step 再 reset 会被 OrderEnforcing 拦下」误区条）+
+#                entities/paper-xpolicylab.md（策略侧 `reset` 清 episode 状态）：
+#                环境/策略 API 的方法名（episode 复位），与 stop（运行时命令名）
+#                同类 token，语义已在 API 表逐条释义，不单建概念页
+#   rgb-d      → concepts/embodied-perception-six-spatial-representations.md
+#                （缩写速查 + 「深度」层的 RGB-D SLAM / 尺度对齐口径）+
+#                formalizations/3d-coordinate-transforms-vision-robotics.md
+#                （深度获取路径表：结构光 / ToF 直接测距，及反投影链路）+
+#                concepts/2d-to-3d-semantic-lifting-gap.md（RGB-D 补尺度路线）：
+#                传感模态标签而非独立可成页机制，与 vlm 同类，另建概念页只会与
+#                上述表征/几何页重复同一来源
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
@@ -234,6 +247,8 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "mujoco",
     "qpos",  # MuJoCo 状态数组字段名，已由广义坐标 $q$ 的形式化/概念页覆盖
     "qwen3-vl",  # 外部 VLM 底座型号，已在 methods/vla.md 等按「底座」维度记述
+    "reset",  # 环境/策略 API 方法名（episode 复位），已由 entities/gymnasium.md 释义
+    "rgb-d",  # 传感模态标签，已由六种空间表征 / 三维坐标变换等页覆盖
     "rl",  # 已由 methods/reinforcement-learning.md 覆盖（缩写 slug 与页面 stem 不同名）
     "sonic",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
