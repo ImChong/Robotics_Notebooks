@@ -1,4 +1,19 @@
+## [2026-08-17] ingest | sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md — 具身智能小站 9 篇盘点：全部新建独立论文节点；SG-WAM 与 Self-Guided 同缩写消歧
+
+- **触发：** 用户要求确保 agent-reach 已装并 ingest <https://mp.weixin.qq.com/s/UsgswMgDw4Kdpt5qI9fxnA>；随后要求自动合并
+- **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；短链直连成功
+- **步骤 2.5：**
+  - SpeedTuning / SHRIMP / PGIF-MPPI / 4D-WAM / V-Simba：**已开源、可运行**
+  - PEEL：双盲 **anonymous.4open.science** 三仓 → **部分开源**
+  - SG-WAM（语义引导）：项目页 404；**实现未开源**（勿与 arXiv:2608.01397 Self-Guided SG-WAM 合并）
+  - LAMDA：论文 GitHub **404**
+  - SurgLAT：项目页已发，独立仓未找到
+- **来源：** [`sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md`](sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md)；raw [`sources/raw/wechat_embodied_station_9_papers_2026-08-17.md`](sources/raw/wechat_embodied_station_9_papers_2026-08-17.md)
+- **升格：** 9 个 `paper-*` 实体（0 复用）；交叉 WAM / MECo-WAM / MPPI / SAC / 模仿学习 / 4D 几何分类
+- **开源结论：** 5 篇可跑；PEEL 匿名仓；3 篇未开源或仓未上线
+
 ## [2026-08-17] ingest | sources/sites/sonic-transfer-github-io.md — 接入冻结 GEAR-SONIC → AgiBot X2 Ultra 的闭式 codec + LoRA 跨具身迁移
+
 
 - **触发：** 用户指定项目页 <https://sonic-agibot-x2.github.io/sonic-transfer/>
 - **步骤 2.5：** 项目页 Code 指向 [`meetsitaram/sonic-x2`](https://github.com/meetsitaram/sonic-x2)（`./play_v2.sh` + transfer ONNX + codec sidecar）；HF [`tinkerbuggy/sonic-x2`](https://huggingface.co/tinkerbuggy/sonic-x2)。**无 SPDX LICENSE**；LoRA **训练脚本不在 play 仓**；截至入库日 **无 arXiv**。完整部署栈 sibling `GR00T-WholeBodyControl-X2-review` 未深挖。结论：**部分开源、推理可运行**
