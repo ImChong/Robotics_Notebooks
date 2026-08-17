@@ -3,10 +3,11 @@ type: query
 tags: [pinocchio, dynamics, kinematics, wbc, python, quick-start]
 status: stable
 summary: "Pinocchio 快速上手：最小可运行动力学示例"
-updated: 2026-08-13
+updated: 2026-08-17
 sources:
   - ../../sources/papers/robot_kinematics_tools.md
   - ../../sources/repos/dynibo.md
+  - ../../sources/repos/robot-descriptions-py.md
 ---
 
 # Pinocchio 快速上手：最小可运行动力学示例
@@ -23,6 +24,16 @@ Pinocchio 的核心是三步：**加载 URDF → 更新运动学/动力学 → �
 ```bash
 pip install pin  # 或 conda install pinocchio -c conda-forge
 ```
+
+没有本地 URDF 时，用 [robot_descriptions.py](../entities/robot-descriptions-py.md) 按名加载（首次会下载并缓存）：
+
+```python
+from robot_descriptions.loaders.pinocchio import load_robot_description
+
+robot = load_robot_description("go2_description")  # pinocchio.RobotWrapper
+```
+
+目录选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)。
 
 ---
 
@@ -178,6 +189,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 ## 参考来源
 
 - [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / Crocoddyl 2020）
+- [sources/repos/robot-descriptions-py.md](../../sources/repos/robot-descriptions-py.md) — Pinocchio loader 的资产入口
 - [Pinocchio 官方文档](https://stack-of-tasks.github.io/pinocchio/)
 - [Pinocchio 示例](https://github.com/stack-of-tasks/pinocchio/tree/master/examples)
 
@@ -186,6 +198,8 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 ## 关联页面
 
 - [Pinocchio](../entities/pinocchio.md) — Pinocchio 框架详细介绍
+- [robot_descriptions.py](../entities/robot-descriptions-py.md) — `loaders.pinocchio` 按名下载 URDF
+- [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $Y_{\mathrm{rb}}$ 之外怎么拼 $I_a$/摩擦列
 - [Dynibo](../entities/dynibo.md) — Rust 轻量 FK/RNEA/DLS-IK；以 Pinocchio 为 oracle 的对照库
 - [WBC Implementation Guide](./wbc-implementation-guide.md) — 基于 Pinocchio 的完整 WBC 实现

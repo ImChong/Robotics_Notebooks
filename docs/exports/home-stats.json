@@ -1,22 +1,56 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3137,
-  "edge_count": 27760,
+  "node_count": 3140,
+  "edge_count": 27791,
   "coverage": {
-    "covered": 3113,
-    "total": 3113,
+    "covered": 3116,
+    "total": 3116,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/current-robotics-currentworld.md",
-      "detail_id": "entity-current-robotics-currentworld",
-      "label": "CurrentWorld-0（Current Robotics · 交互世界模拟器）",
+      "path": "wiki/comparisons/robot-description-catalogs.md",
+      "detail_id": "wiki-comparisons-robot-description-catalogs",
+      "label": "机器人描述目录选型",
+      "type": "comparison",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-robot-descriptions.md",
+      "detail_id": "entity-awesome-robot-descriptions",
+      "label": "Awesome Robot Descriptions",
       "type": "entity",
       "recency": "2026-08-17",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/fiveages-sim-robot-descriptions.md",
+      "detail_id": "entity-fiveages-sim-robot-descriptions",
+      "label": "fiveages-sim/robot_descriptions",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/urdf-files-dataset.md",
+      "detail_id": "entity-urdf-files-dataset",
+      "label": "URDF Files Dataset",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/lw-benchhub-tour.md",
@@ -86,7 +120,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+      "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
@@ -115,8 +149,7 @@
       "type": "entity",
       "recency": "2026-08-17",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-peel-disassembly.md",
@@ -127,7 +160,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+      "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-shrimp.md",
@@ -158,7 +191,7 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added",
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+      "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-v-simba.md",
@@ -168,8 +201,7 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-sonic-transfer.md",
@@ -181,63 +213,35 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-advdex.md",
-      "detail_id": "entity-paper-advdex",
-      "label": "AdvDex：人手与灵巧手统一动作空间",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-prm-as-a-judge.md",
-      "detail_id": "entity-paper-prm-as-a-judge",
-      "label": "PRM-as-a-Judge：机器人执行过程评测",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-reflexvla.md",
-      "detail_id": "entity-paper-reflexvla",
-      "label": "ReflexVLA：动态任务低延迟 VLA",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/current-robotics-currentworld.md",
-    "detail_id": "entity-current-robotics-currentworld",
-    "label": "CurrentWorld-0（Current Robotics · 交互世界模拟器）",
-    "type": "entity",
+    "path": "wiki/comparisons/robot-description-catalogs.md",
+    "detail_id": "wiki-comparisons-robot-description-catalogs",
+    "label": "机器人描述目录选型",
+    "type": "comparison",
     "recency": "2026-08-17",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 562
+      "size": 638
     },
     {
       "label": "操作",
-      "size": 512
+      "size": 538
     },
     {
       "label": "视觉-语言-动作",
-      "size": 264
+      "size": 243
     },
     {
       "label": "人形论文深读笔记",
-      "size": 211
+      "size": 212
     },
     {
       "label": "移动操作",
@@ -245,7 +249,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 129
+      "size": 124
     }
   ],
   "top_hubs": [
@@ -284,7 +288,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 725,
+      "degree": 723,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -323,7 +327,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 457,
+      "degree": 456,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
@@ -334,7 +338,8 @@
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
       "degree": 142,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -384,7 +389,8 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 44
+      "degree": 44,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

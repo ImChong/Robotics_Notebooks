@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, urdf, kinematics, dynamics, modeling, ros]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-17
 related:
   - ../entities/freecad.md
   - ../entities/pinocchio.md
@@ -13,9 +13,16 @@ related:
   - ./robot-link-and-rotor-inertia.md
   - ../entities/urdf-studio.md
   - ../entities/quadruped-control-curriculum.md
+  - ../entities/robot-descriptions-py.md
+  - ../entities/awesome-robot-descriptions.md
+  - ../entities/fiveages-sim-robot-descriptions.md
+  - ../entities/urdf-files-dataset.md
+  - ../comparisons/robot-description-catalogs.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
   - ../../sources/repos/dynibo.md
+  - ../../sources/repos/robot-descriptions-py.md
+  - ../../sources/repos/urdf_files_dataset.md
 summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式；四足课程从 17-link 树解析入手，理解 n_q 与 n_v 差异是动力学编程的前提。"
 ---
 
@@ -63,7 +70,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 3. 核对惯量、关节轴向与实机一致
 4. SysID 修正关键参数（摩擦、转子惯量）
 
-工具：[FreeCAD](../entities/freecad.md)（参数化 CAD 与 STEP 导出）、[URDF Studio](../entities/urdf-studio.md)、[step2urdf](../entities/step2urdf.md)
+工具：[FreeCAD](../entities/freecad.md)（参数化 CAD 与 STEP 导出）、[URDF Studio](../entities/urdf-studio.md)、[step2urdf](../entities/step2urdf.md)。现成开源描述的选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)：Python 实验用 [robot_descriptions.py](../entities/robot-descriptions-py.md)，ROS 2 / 国内新机用 [fiveages-sim](../entities/fiveages-sim-robot-descriptions.md)，parser 回归用冻结的 [URDF Files Dataset](../entities/urdf-files-dataset.md)。
 
 ## 常见误区
 
@@ -80,6 +87,9 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — URDF 属第 ① 几何/惯量层，误差被上层逐级放大
 - [Physics Fidelity ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 几何/惯量标定误差如何转化为姿态漂移
+- [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
+- [robot_descriptions.py](../entities/robot-descriptions-py.md)
+- [URDF Files Dataset](../entities/urdf-files-dataset.md) — 322 Bundle 上的 xacro / 解析失败 / 跨源重复统计
 
 ## 推荐继续阅读
 
@@ -90,3 +100,5 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch2–Ch3 URDF 与参数评估
 - [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — 运行时树状 URDF → 运动学/动力学库入口对照
+- [sources/repos/robot-descriptions-py.md](../../sources/repos/robot-descriptions-py.md) — Python 统一加载 190+ URDF/MJCF
+- [sources/repos/urdf_files_dataset.md](../../sources/repos/urdf_files_dataset.md) — RA-L 2024 URDF 语料与解析分析

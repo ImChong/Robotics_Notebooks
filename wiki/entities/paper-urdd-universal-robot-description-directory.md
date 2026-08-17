@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, robot-description, urdf, urdd, preprocessing, yale, apollo-lab, rust, bevy, three-js, collision-geometry, forward-kinematics, arxiv-2512-23135, linux-foundation]
 status: complete
-updated: 2026-05-17
+updated: 2026-08-17
 arxiv: "2512.23135"
 code: https://github.com/Apollo-Lab-Yale/apollo-rust
 related:
@@ -12,6 +12,8 @@ related:
   - ./mujoco.md
   - ./pinocchio.md
   - ./isaac-gym-isaac-lab.md
+  - ./robot-descriptions-py.md
+  - ./urdf-files-dataset.md
 sources:
   - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
   - ../../sources/repos/apollo-lab-yale-apollo-resources.md
@@ -113,6 +115,9 @@ flowchart LR
 - [MuJoCo](./mujoco.md)（MJCF 作为另一仿真侧描述栈，可与 URDD「数据预处理层」对照理解）
 - [Pinocchio](./pinocchio.md)（常见「URDF → 模型对象 → 动力学/几何」库路线）
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)（大量工作流仍以 URDF/MJCF 导入为起点）
+- [URDF Files Dataset](./urdf-files-dataset.md)（冻结的原始 URDF 语料；URDD 是派生产物层）
+- [robot_descriptions.py](./robot-descriptions-py.md)
+- [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 
 ## 推荐继续阅读
 

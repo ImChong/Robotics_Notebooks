@@ -3,13 +3,14 @@
 type: entity
 tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-17
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/centroidal-dynamics.md
   - ../concepts/floating-base-dynamics.md
   - ./paper-urdd-universal-robot-description-directory.md
   - ./dynibo.md
+  - ./robot-descriptions-py.md
   - ../methods/joint-actuator-parameter-identification.md
   - ./flobaroid.md
   - ../formalizations/forward-kinematics.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/papers/simulation.md
   - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
   - ../../sources/repos/dynibo.md
+  - ../../sources/repos/robot-descriptions-py.md
 summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，是目前各类腿足机器人 WBC 和基于优化的控制器背后的核心计算引擎。"
 ---
 
@@ -65,8 +67,13 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 
 `pin.computeJointTorqueRegressor(model, data, q, v, a)` 给出连杆 10 参数的 $Y_{\mathrm{rb}}$，使 $\tau = Y_{\mathrm{rb}}\pi_{\mathrm{rb}}$。它 **不含** armature / 粘滞 / 库仑列；关节执行器参数要在 $Y$ 上自拼 $\ddot q_i$、$\dot q_i$、$\mathrm{sign}(\dot q_i)$。完整估法见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)；有力矩传感的流水线对照 [FloBaRoID](./flobaroid.md)（动力学核是 iDynTree）。
 
+## 与现成 URDF 目录
+
+实验里不要手写 git submodule 路径时，用 [robot_descriptions.py](./robot-descriptions-py.md) 的 `loaders.pinocchio.load_robot_description("go2_description")`。选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)。
+
 ## 关联页面
 - [Query：Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)
+- [robot_descriptions.py](./robot-descriptions-py.md) — 190+ 开源 URDF/MJCF 的 Pinocchio loader
 - [Dynibo](./dynibo.md) — Rust 轻量 FK/RNEA/数值 IK，Pinocchio oracle 对照
 - [正向运动学](../formalizations/forward-kinematics.md) — URDF 树 FK 的教学对照
 - [雅可比矩阵](../formalizations/robot-jacobian.md) — `computeFrameJacobian` 几何雅可比
@@ -82,3 +89,4 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - Carpentier, J., et al. (2019). *The Pinocchio C++ library: A fast and flexible implementation of rigid body dynamics algorithms and their analytical derivatives*.
 - [sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md](../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md) — URDD 与 Pinocchio 等「从模型描述推导动力学」栈的交叉引用
 - [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — Dynibo 与 Pinocchio 性能/oracle 对照归档
+- [sources/repos/robot-descriptions-py.md](../../sources/repos/robot-descriptions-py.md) — `loaders.pinocchio` 统一下载 URDF
