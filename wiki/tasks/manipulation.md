@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-16
+updated: 2026-08-17
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -130,6 +130,9 @@ flowchart TD
 - **神经布料仿真（可变形体 sim）**：[ClothTransformer](../entities/paper-clothtransformer-unified-latent-cloth-simulation.md)（arXiv:2605.27852）— **统一 latent Transformer** 覆盖 **人体着装 / 夹爪抓布 / 刚体碰撞**；~493.4k 帧 **GIPC 无穿透** 数据 + **可微 CCD**；可作 **操作规划 / 仿真加速** 的动力学先验（论文 Robotic Manip. 为仿真，非真机闭环）
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
+  - **动态低延迟：** [ReflexVLA](../entities/paper-reflexvla.md)（arXiv:2608.14379）— ReflexBench 延迟感知六任务 + 1B 预测/时序/CUDA Graph；均值 **50.4%**、LIBERO **97.2%**、延迟 **65.0 ms**；**代码待开放**
+  - **人手→灵巧手统一动作：** [AdvDex](../entities/paper-advdex.md)（arXiv:2608.14028）— OmniShare + JAAS + 域对抗；Paxini DexH13 少样本/零样本人→机；**确认未开源**
+  - **过程评测：** [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md)（arXiv:2608.14284）— 冻结 PRM 进度曲线 + OPD；工具仓 **已开源**
   - **产线后训练：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **CFM-VLA** 上用 **真机 PPO** 把 BC 策略推到工业级吞吐/可靠性（双臂 Alpha、稀疏奖励、数天 robot-time）
 - **World Model**：学习操作的世界模型，在模型里 planning；像素域上「静态场景 + 手轨迹 → 交互视频」的显式分解路线见 [DWM（Dexterous World Models）](../methods/dwm.md)；**语言条件 3D 物体点轨迹** 先验见 [MolmoMotion](../entities/molmo-motion.md)（DROID 微调后可提升 MolmoBot 规划样本效率）与产业侧级联样本 [VLOA（RoboScience）](../entities/roboscience-vloa.md)（物体中心 3D 点云轨迹 + 轨迹条件操作模型，闭源）；**训练期物理对齐** 见 [PhysisForcing](../entities/paper-physisforcing.md)（CoTracker3 轨迹 + 语义关系双层监督，强化接触丰富操纵视频的可模拟性，arXiv:2606.28128）；**动态目标 + 3D Gaussian 速度场** 见 [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md)（在线无散度 WM + 3DFA 策略，PhysMani-Bench 16 任务，arXiv:2607.01938）；**像素掩码动作统一前向/逆向** 见 [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（策略评估 **r=0.982**，arXiv:2607.19343）；**多视角 VLA 闭环可控 WM + 合成 SFT** 见 [Ctrl-World](../entities/paper-ctrl-world.md)（ICLR 2026，**38.7%→83.4%**）；**自一致视频策略评估** 见 [SC3-Eval](../entities/paper-sc3-eval.md)（闭环 \(r=0.929\)，arXiv:2606.18610）；**IR 条件世界模型 + plan-then-execute VLA** 见 [RoboInter1.5](../entities/paper-robointer-1-5.md)（230k+ episode，arXiv:2607.18709）；**物理时间 latent ODE + 子目标引导** 见 [ODEWorld](../entities/paper-odeworld.md)（LIBERO-LONG **83.6%**，AgileX+X-VLA **55%→80%**，arXiv:2607.27924）
 - **Video-Action Model（VAM）**：用语义–动力学一体的 **视频扩散骨干潜计划** 条件化 **流匹配 / 逆动力学式动作头**，与 VLA 的静态 VLM 先验形成对照；入口见 [mimic-video](../methods/mimic-video.md)。**联合训练 + 测试时仿真选动作** 见 [τ₀-WM](../entities/tau0-world-model.md)（异构掩码预训练、propose–evaluate–revise）；**开源 Wan+MoT 三专家 + RobotWin JSONL 管线** 见 [Dexmal DW05](../entities/dexmal-dw05.md)（DW05-Base / DW05-Robotwin）
@@ -176,6 +179,9 @@ flowchart TD
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)
 - [VLA](../methods/vla.md)
+- [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench（arXiv:2608.14379；代码待开放）
+- [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间（arXiv:2608.14028；确认未开源）
+- [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件（arXiv:2608.14284；已开源）
 - [mimic-video（Video-Action Model）](../methods/mimic-video.md) — 视频潜计划 + 轻量动作解码器的操作学习路线
 - [mimic hand M1](../entities/mimic-hand-m1.md) — mimic 产业 AI-first 腱驱动手（15+6 DoF，>25 kg 抓握）
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — 5B 统一视频–动作世界模型与测试时后果评估
@@ -208,6 +214,8 @@ flowchart TD
 - [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — 操作模型中常见的动作表示
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [In-hand Reorientation (手内重定向)](../methods/in-hand-reorientation.md) — 极致的灵巧操作
+- [UHAS](../methods/uhas-unified-hand-action-space.md) — 灵巧手 RL 球面统一动作空间
+- [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 VLA 关节槽统一动作空间（对照 UHAS）
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 人手演示 → 接触保真参考 → PPO 跟踪，Pen-Spin / 魔方重定向
 - [REGRIND（重定向引导灵巧操作 RL）](../methods/regrind-retargeting-guided-rl.md) — MoCap 单次演示 → interaction mesh 重定向 → 残差 RL；LEAP/WUJI 剪刀与螺丝刀真机（arXiv:2607.11874）
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 人类演示 → CWS 奖励 + RL；4,739 项双手 benchmark 与 DexMachina/ManipTrans/SPIDER 对照

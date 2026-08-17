@@ -1,3 +1,16 @@
+## [2026-08-17] ingest | sources/papers/prm_as_a_judge_arxiv_2608_14284.md + reflexvla_arxiv_2608_14379.md + advdex_arxiv_2608_14028.md — 过程评测套件 / 延迟感知动态 VLA / 人手–灵巧手统一动作空间
+
+- **触发：** 用户指定三篇资料入库（PRM-as-a-Judge 机器人执行过程评测；ReflexVLA 动态任务低延迟 VLA；AdvDex 人手与灵巧手统一动作空间）
+- **步骤 2.5：**
+  - PRM-as-a-Judge：项目页 + GitHub 已上线，Apache-2.0 评测套件 **已开源**；RoboPulse 已上 HF；**RoboPulse++ 数据仍 Coming Soon**
+  - ReflexVLA：项目页按钮 **Code After acceptance**，截至 2026-08-17 **无仓**
+  - AdvDex：无独立项目页，论文未给代码/权重/OmniShare 链接，**确认未开源**
+- **来源：** [`sources/papers/prm_as_a_judge_arxiv_2608_14284.md`](sources/papers/prm_as_a_judge_arxiv_2608_14284.md)、[`sources/sites/prm-as-a-judge-github-io.md`](sources/sites/prm-as-a-judge-github-io.md)、[`sources/repos/prm-as-a-judge.md`](sources/repos/prm-as-a-judge.md)、[`sources/papers/reflexvla_arxiv_2608_14379.md`](sources/papers/reflexvla_arxiv_2608_14379.md)、[`sources/sites/reflexvla-github-io.md`](sources/sites/reflexvla-github-io.md)、[`sources/papers/advdex_arxiv_2608_14028.md`](sources/papers/advdex_arxiv_2608_14028.md)
+- **升格：** [`wiki/entities/paper-prm-as-a-judge.md`](wiki/entities/paper-prm-as-a-judge.md)、[`wiki/entities/paper-reflexvla.md`](wiki/entities/paper-reflexvla.md)、[`wiki/entities/paper-advdex.md`](wiki/entities/paper-advdex.md)
+- **开源结论：** PRM 工具仓可跑；ReflexVLA 待录用后开放；AdvDex 确认未开源
+- **交叉：** 过程奖励 / TOPReward / RoboDojo / 评测选型闭环 / VLA / Action Chunking / UHAS / 跨具身迁移 / Manipulation
+- **机构：** 注册 `paxini`（帕西尼）
+
 ## [2026-08-17] ingest | sources/repos/isaac_lab_environments.md — 一手核对 Isaac Lab v3.0.0 全部 197 个注册任务，新建 wiki/entities/isaac-lab-default-environments.md 详细节点
 
 ## [2026-08-16] structural | roadmap/depth-motion-retargeting.md + depth-bfm.md + depth-vla.md + depth-wam.md + depth-perceptive-locomotion.md + depth-motion-generation.md + depth-imitation-learning.md — 补齐 2026-08-09（roadmap 上次批量触达日）以来入库的 11 篇里程碑级知识节点到七条纵深路线「推荐读什么」区块，覆盖运动重定向、BFM、VLA、WAM、感知越障、动作生成、模仿学习

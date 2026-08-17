@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -93,6 +93,9 @@ related:
   - ../entities/paper-data-pyramid-embodied-manipulation.md
   - ../entities/gemini-robotics.md
   - ../entities/paper-gsr-paravla.md
+  - ../entities/paper-reflexvla.md
+  - ../entities/paper-advdex.md
+  - ../entities/paper-prm-as-a-judge.md
   - ../entities/paper-ego2robot.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -411,6 +414,9 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Manipulation](../tasks/manipulation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [DyPES-VLA](../entities/paper-dypes-vla.md) — 共享动力学先验 + 本体特化 MoE 跨本体 VLA（arXiv:2608.06374）
+- [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench；代码待开放（arXiv:2608.14379）
+- [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间；确认未开源（arXiv:2608.14028）
+- [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件；工具仓已开源（arXiv:2608.14284）
 - [Action Chunking](./action-chunking.md)
 - [Diffusion Policy](./diffusion-policy.md)
 - [Behavior Cloning](./behavior-cloning.md)

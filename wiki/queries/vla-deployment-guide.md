@@ -2,7 +2,7 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-08-14
+updated: 2026-08-17
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
@@ -11,6 +11,7 @@ related:
   - ../methods/action-chunking.md
   - ../entities/paper-rift-wam.md
   - ../entities/paper-wam-realtime-async.md
+  - ../entities/paper-reflexvla.md
   - ./vla-with-low-level-controller.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
@@ -98,6 +99,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [AutoIntervene（实体）](../entities/paper-autointervene.md) — action-chunking 策略的视觉–动作支持监控与双向自动接管
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — WAM 秒级延迟下六种 chunk 融合对照（先对齐再 blend）
 - [Rift](../entities/paper-rift-wam.md) — 先问要不要滚视频再谈异步切块；LIBERO 延迟 1.1× current-only
+- [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态任务 + CUDA Graph；代码待开放
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)

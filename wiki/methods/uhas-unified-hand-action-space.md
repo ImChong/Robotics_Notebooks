@@ -3,7 +3,7 @@ type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, cross-embodiment, action-representation, sim2real]
 status: complete
 date: 2026-07-11
-updated: 2026-08-15
+updated: 2026-08-17
 related:
   - ./in-hand-reorientation.md
   - ../concepts/motion-retargeting.md
@@ -13,6 +13,7 @@ related:
   - ../tasks/manipulation.md
   - ../entities/paper-mango-grasp.md
   - ../entities/paper-digitcode.md
+  - ../entities/paper-advdex.md
 sources:
   - ../../sources/papers/uhas_arxiv_2607_03570.md
   - ../../sources/sites/uhas-project-irvlutd.md
@@ -135,6 +136,7 @@ flowchart LR
 - 与 [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)：SONIC/Any2Any 等主要面向 **人形全身 WBT**；UHAS 把「统一动作空间 + 多具身联合训练」落到 **灵巧手关节层**，可作为操作栈的互补参考。
 - 与 [Allegro Hand](../entities/allegro-hand.md) / [Shadow Hand](../entities/shadow-hand.md)：论文评测平台；项目视频展示四手同策略时二者均为核心 embodiment。
 - 与 [Motion Retargeting](../concepts/motion-retargeting.md)：重定向解决 **演示/参考轨迹跨骨架**；UHAS 解决 **策略动作跨手型**——可串联但问题不同。
+- 与 [AdvDex](../entities/paper-advdex.md)：UHAS 是 **球面形变 + CIK** 的 **RL 控制接口**；AdvDex 的 JAAS 是 **腕 SE(3) + 15 指关节槽** 的 **VLA 监督空间**，服务人手演示，确认未开源。
 
 ## 推荐继续阅读
 
@@ -157,3 +159,4 @@ flowchart LR
 - [Shadow Hand](../entities/shadow-hand.md)
 - [MANGO-Grasp](../entities/paper-mango-grasp.md) — 统一的是接触场而非策略动作空间
 - [DigitCode](../entities/paper-digitcode.md) — 符号化手姿态，可编译到机器人查表
+- [AdvDex](../entities/paper-advdex.md) — VLA 侧关节对齐统一动作空间（对照本页 RL 球面接口）

@@ -13,11 +13,12 @@ tags:
   - ucsb
   - uiuc
 status: complete
-updated: 2026-07-27
+updated: 2026-08-17
 arxiv: "2607.21655"
 related:
   - ../concepts/progress-reward-modeling.md
   - ./paper-topreward.md
+  - ./paper-prm-as-a-judge.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
@@ -137,6 +138,7 @@ flowchart TB
 
 - [过程奖励建模](../concepts/progress-reward-modeling.md) — 接口×范式速查
 - [TOPReward](./paper-topreward.md) — 冻结 VLM token 似然进度实例
+- [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 把 PRM 当冻结 judge，评执行过程而非训策略
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 稠密奖励用途
 - [Imitation Learning](../methods/imitation-learning.md) — 演示序弱监督
 - [VLA](../methods/vla.md) — VLM 进度模型生态
@@ -153,3 +155,4 @@ flowchart TB
 - [arXiv:2607.21655](https://arxiv.org/abs/2607.21655)
 - [GitHub: Awesome-Progress-Models](https://github.com/sterzhang/Awesome-Progress-Models)
 - [TOPReward 项目页](https://topreward.github.io/webpage/)
+- [PRM-as-a-Judge](https://prm-as-a-judge.github.io/) — 进度曲线过程评测（1.5 工具仓已开源）
