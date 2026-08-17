@@ -3,8 +3,9 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-16
+updated: 2026-08-17
 related:
+  - ./isaac-lab-default-environments.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
   - ./isaac-gym.md
@@ -33,6 +34,7 @@ related:
   - ../comparisons/international-gpu-cloud-platforms.md
 sources:
   - ../../sources/repos/isaac_lab.md
+  - ../../sources/repos/isaac_lab_environments.md
   - ../../sources/repos/isaac_sim.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
@@ -96,6 +98,7 @@ Isaac Lab 的目标是提供一套现代化、可维护的 robot learning workfl
 - 支持训练、迁移、任务定义、环境注册、仿真管理
 - 在同一套生态里覆盖 RL、IL、locomotion、manipulation
 - Quickstart 默认教学任务是 [Cartpole](../concepts/cartpole.md) 的 `Isaac-Cartpole-v0` / `Isaac-Cartpole-Direct-v0`：同一倒立摆直觉，连续力矩 + GPU 并行，数字不能从 Gymnasium `CartPole-v1` 照搬
+- 自带一整套开箱即跑的默认任务（v3.0.0 共 **197** 个注册 ID，覆盖经典控制、操作、装配、足式、移动操作、导航、多旋翼与多智能体）：全量清单与命名法见 [Isaac Lab 默认环境](./isaac-lab-default-environments.md)
 
 ## 核心类图
 
@@ -306,6 +309,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ## 关联页面
 
+- [Isaac Lab 默认环境](./isaac-lab-default-environments.md) — v3.0.0 全部 197 个注册任务的分族清单与命名法
 - [Isaac Sim](./isaac-sim.md) — 仿真底座（USD / PhysX / 传感器）
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径
 - [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集的统一框架（Lab 3.x 主线）

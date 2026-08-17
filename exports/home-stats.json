@@ -1,259 +1,246 @@
 {
-  "generated_at": "2026-08-16",
-  "node_count": 3117,
-  "edge_count": 27456,
+  "generated_at": "2026-08-17",
+  "node_count": 3118,
+  "edge_count": 27491,
   "coverage": {
-    "covered": 3093,
-    "total": 3093,
+    "covered": 3094,
+    "total": 3094,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/rl-runner.md",
-      "detail_id": "wiki-concepts-rl-runner",
-      "label": "RL Runner（训练循环编排）",
-      "type": "concept",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/cartpole.md",
-      "detail_id": "wiki-concepts-cartpole",
-      "label": "Cartpole 问题",
-      "type": "concept",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lego-leveled-language-gaussian-splatting.md",
-      "detail_id": "entity-paper-lego-leveled-language-gaussian-splatting",
-      "label": "LEGO：层级语言高斯溅射",
+      "path": "wiki/entities/isaac-lab-default-environments.md",
+      "detail_id": "entity-isaac-lab-default-environments",
+      "label": "Isaac Lab 默认环境",
       "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-parkourformer.md",
-      "detail_id": "entity-paper-parkourformer",
-      "label": "ParkourFormer（预测监督 + 序列建模人形跑酷）",
-      "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-arcadia.md",
-      "detail_id": "entity-paper-arcadia",
-      "label": "Arcadia（具身终身学习全生命周期）",
-      "type": "entity",
-      "recency": "2026-08-16",
-      "source": "git",
+      "recency": "2026-08-17",
+      "source": "log.md",
       "action": "added",
       "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-odeworld.md",
-      "detail_id": "entity-paper-odeworld",
-      "label": "ODEWorld（物理时间流连续预测架构）",
-      "type": "entity",
+      "path": "roadmap/depth-bfm.md",
+      "detail_id": "roadmap-depth-bfm",
+      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
+      "type": "roadmap_page",
       "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-fsd-vln.md",
-      "detail_id": "entity-paper-fsd-vln",
-      "label": "FSD-VLN（空中长程 VLN · 快慢双系统）",
-      "type": "entity",
+      "path": "roadmap/depth-classical-control.md",
+      "detail_id": "roadmap-depth-classical-control",
+      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
+      "type": "roadmap_page",
       "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
-      "path": "wiki/entities/paper-humantracker.md",
-      "detail_id": "entity-paper-humantracker",
-      "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
+      "path": "roadmap/depth-contact-manipulation.md",
+      "detail_id": "roadmap-depth-contact-manipulation",
+      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-humanoid-boxing.md",
+      "detail_id": "roadmap-depth-humanoid-boxing",
+      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-humanoid-hardware-design.md",
+      "detail_id": "roadmap-depth-humanoid-hardware-design",
+      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-humanoid-soccer.md",
+      "detail_id": "roadmap-depth-humanoid-soccer",
+      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-humanoid-swarm-performance.md",
+      "detail_id": "roadmap-depth-humanoid-swarm-performance",
+      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-imitation-learning.md",
+      "detail_id": "roadmap-depth-imitation-learning",
+      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-loco-manipulation.md",
+      "detail_id": "roadmap-depth-loco-manipulation",
+      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-motion-generation.md",
+      "detail_id": "roadmap-depth-motion-generation",
+      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-motion-retargeting.md",
+      "detail_id": "roadmap-depth-motion-retargeting",
+      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-digitcode.md",
-      "detail_id": "entity-paper-digitcode",
-      "label": "DigitCode：按解剖单元做手部动作符号化",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "path": "roadmap/depth-navigation.md",
+      "detail_id": "roadmap-depth-navigation",
+      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained"
     },
     {
-      "path": "wiki/entities/paper-ego2robot.md",
-      "detail_id": "entity-paper-ego2robot",
-      "label": "Ego2Robot：第一人称人视频规模化合成机器人数据",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "path": "roadmap/depth-perceptive-locomotion.md",
+      "detail_id": "roadmap-depth-perceptive-locomotion",
+      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-embodiedvae.md",
-      "detail_id": "entity-paper-embodiedvae",
-      "label": "EmbodiedVAE：为操作世界模型解耦的视频 VAE",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gsr-paravla.md",
-      "detail_id": "entity-paper-gsr-paravla",
-      "label": "GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mango-grasp.md",
-      "detail_id": "entity-paper-mango-grasp",
-      "label": "MANGO-Grasp：几何 3DGS 上的马氏场跨手型抓取",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-onoff-handwriting.md",
-      "detail_id": "entity-paper-onoff-handwriting",
-      "label": "OnOff：可微物理笔刷打通在线轨迹与离线手写",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-situation-aware-frontier-quadruped-sar.md",
-      "detail_id": "entity-paper-situation-aware-frontier-quadruped-sar",
-      "label": "Situation-aware Frontier：四足搜救的局势感知前沿排序",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
+      "path": "roadmap/depth-real2sim.md",
+      "detail_id": "roadmap-depth-real2sim",
+      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/core-retarget.md",
-      "detail_id": "entity-core-retarget",
-      "label": "CoRe（接触感知全身重定向软件）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
+      "path": "roadmap/depth-rl-locomotion.md",
+      "detail_id": "roadmap-depth-rl-locomotion",
+      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-safe-control.md",
+      "detail_id": "roadmap-depth-safe-control",
+      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-sim2real.md",
+      "detail_id": "roadmap-depth-sim2real",
+      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-core.md",
-      "detail_id": "entity-paper-core",
-      "label": "CoRe（接触感知优化与学习的人形运动）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
+      "path": "roadmap/depth-teleoperation.md",
+      "detail_id": "roadmap-depth-teleoperation",
+      "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-rmr.md",
-      "detail_id": "entity-paper-rmr",
-      "label": "RMR（优化式 Rig 统一的人形重定向）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gentrack.md",
-      "detail_id": "entity-paper-gentrack",
-      "label": "GenTrack：机器人原生运动生成与零样本跟踪的物理对齐",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hand-visibility-detector.md",
-      "detail_id": "entity-paper-hand-visibility-detector",
-      "label": "Hand Visibility Detector：逐关节手部可见性",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-08-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/rl-runner.md",
-    "detail_id": "wiki-concepts-rl-runner",
-    "label": "RL Runner（训练循环编排）",
-    "type": "concept",
-    "recency": "2026-08-16",
-    "source": "git",
+    "path": "wiki/entities/isaac-lab-default-environments.md",
+    "detail_id": "entity-isaac-lab-default-environments",
+    "label": "Isaac Lab 默认环境",
+    "type": "entity",
+    "recency": "2026-08-17",
+    "source": "log.md",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 586
+      "size": 544
     },
     {
       "label": "操作",
-      "size": 524
+      "size": 527
     },
     {
       "label": "视觉-语言-动作",
-      "size": 243
+      "size": 229
     },
     {
       "label": "人形论文深读笔记",
-      "size": 212
+      "size": 216
+    },
+    {
+      "label": "视觉语言动作纵深路线",
+      "size": 170
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 135
-    },
-    {
-      "label": "移动操作",
-      "size": 132
+      "size": 133
     }
   ],
   "top_hubs": [
@@ -261,7 +248,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1232,
+      "degree": 1233,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -277,7 +264,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 876,
+      "degree": 877,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -331,7 +318,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 455,
+      "degree": 456,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
