@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-dpc.md",
+      "detail_id": "entity-paper-dpc",
+      "label": "DPC：Direct Perception Control（直接感知控制）",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-nestdex.md",
       "detail_id": "entity-paper-nestdex",
       "label": "NestDex：嵌套策略 + Copilot 灵巧遥操作",
@@ -199,22 +208,12 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/cartpole.md",
-      "detail_id": "wiki-concepts-cartpole",
-      "label": "Cartpole 问题",
-      "type": "concept",
-      "recency": "2026-08-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-nestdex.md",
-    "detail_id": "entity-paper-nestdex",
-    "label": "NestDex：嵌套策略 + Copilot 灵巧遥操作",
+    "path": "wiki/entities/paper-dpc.md",
+    "detail_id": "entity-paper-dpc",
+    "label": "DPC：Direct Perception Control（直接感知控制）",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
