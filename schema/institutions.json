@@ -2832,6 +2832,13 @@
         "cl-tech",
         "clai"
       ]
+    },
+    "fiveages": {
+      "label": "五纪元仿真（FiveAges）",
+      "aliases": [
+        "fiveages",
+        "fiveages-sim"
+      ]
     }
   }
 }

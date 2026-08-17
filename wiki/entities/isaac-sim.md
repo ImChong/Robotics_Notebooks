@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md
@@ -17,12 +17,15 @@ related:
   - ../methods/reinforcement-learning.md
   - ../queries/simulator-selection-guide.md
   - ./paper-humanoidvln.md
+  - ./fiveages-sim-robot-descriptions.md
+  - ../comparisons/robot-description-catalogs.md
 sources:
   - ../../sources/repos/isaac_sim.md
   - ../../sources/repos/isaac_gym_isaac_lab.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/sites/lumina-embodied-ai.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
+  - ../../sources/repos/fiveages-sim-robot-descriptions.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -216,6 +219,7 @@ flowchart TB
 - 官方文档：What Is Isaac Sim / Workflow Overview / Robotics Ecosystem
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md)
 - **社区教程入口：** [Lumina 官网归档](../../sources/sites/lumina-embodied-ai.md)（Isaac Sim 一百讲 1–5）
+- **ingest 档案：** [fiveages-sim/robot_descriptions](../../sources/repos/fiveages-sim-robot-descriptions.md) — URDF → `robot_usds` USD
 
 ## 关联页面
 
@@ -230,6 +234,8 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 - [HumanoidVLN](./paper-humanoidvln.md) — 在 Sim 上做人形物理 VLN 评测（四本体 + FR；待开源）
+- [fiveages-sim robot_descriptions](./fiveages-sim-robot-descriptions.md) — 国内机型 URDF → 姊妹仓 `robot_usds` USD
+- [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 
 ## 一句话记忆
 

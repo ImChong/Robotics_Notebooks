@@ -144,6 +144,10 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "roadmap/depth-vla.md": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA）",
     "roadmap/depth-teleoperation.md": "遥操作纵深路线（Teleoperation Deep-Dive Roadmap）",
     "wiki/queries/simulator-selection-guide.md": "仿真器选型指南（Simulator Selection Guide）",
+    "wiki/methods/ppo.md": "近端策略优化（Proximal Policy Optimization, PPO）",
+    "roadmap/depth-classical-control.md": (
+        "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap）"
+    ),
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"

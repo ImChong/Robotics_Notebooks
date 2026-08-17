@@ -3,12 +3,14 @@ type: entity
 title: URDF-Studio
 tags: [utility, design, workstation, hardware, ai]
 summary: "URDF-Studio 是专业级 Web 机器人设计与组装工作站，支持模块化设计流、硬件 BOM 管理及 AI 辅助建模。"
-updated: 2026-07-08
+updated: 2026-08-17
 related:
   - ./botworld.md
   - ./robot-viewer.md
   - ./step2urdf.md
   - ./stackforce.md
+  - ./robot-descriptions-py.md
+  - ../comparisons/robot-description-catalogs.md
 ---
 
 # URDF-Studio
@@ -65,6 +67,8 @@ related:
 - [step2urdf](./step2urdf.md)（STEP→URDF 浏览器转换，CAD 导入上游）
 - [StackForce](./stackforce.md)（URDF 网页建模 / CAD2URDF / Isaac 训练工程向导）
 - [BotWorld](./botworld.md)（机器人资产广场与 URDF Studio 统一 Web 入口）
+- [机器人描述目录选型](../comparisons/robot-description-catalogs.md) — 现成开源 URDF/MJCF 从哪下载
+- [robot_descriptions.py](./robot-descriptions-py.md)
 
 ## 参考来源
 - [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)
