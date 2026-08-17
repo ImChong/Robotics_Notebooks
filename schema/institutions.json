@@ -307,6 +307,13 @@
         "hugging-face"
       ]
     },
+    "lightwheel": {
+      "label": "光轮科技（Lightwheel）",
+      "aliases": [
+        "lightwheel",
+        "lightwheelai"
+      ]
+    },
     "arxiv": {
       "label": "学术预印本档案（arXiv）",
       "aliases": [

@@ -1,3 +1,15 @@
+## [2026-08-17] ingest | sources/repos/lw_benchhub_tour.md — 接入 LW BENCHHUB TOUR：SmolVLA 双臂 Piper 闭环、cuRobo 闸门与自过滤飞轮
+
+- **触发：** 用户指定 ingest <https://github.com/GimpelZhang/lw_benchhub_tour>，并要求自动合并 PR
+- **步骤 2.5：**
+  - Tour 仓 **Apache-2.0，已开源、可运行**（Stage 1/2/4 脚本 + GitHub Wiki）；依赖 Isaac Sim 5.1 / Lab 2.3.2 / Arena 0.1.1 + 大显存 GPU
+  - 官方 [LightwheelAI/LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub) **Apache-2.0，已开源**；项目页 [lightwheel.ai/lightwheel-platform](https://lightwheel.ai/lightwheel-platform) 为企业叙事，代码入口走 GitHub
+  - HF：`LightwheelAI/smolvla-double-piper-pnp`、`lw_benchhub_env`、`Lightwheel-Tasks-Double-Piper`
+- **来源：** [`sources/repos/lw_benchhub_tour.md`](sources/repos/lw_benchhub_tour.md)、[`sources/repos/lw-benchhub.md`](sources/repos/lw-benchhub.md)、[`sources/sites/lightwheel-platform.md`](sources/sites/lightwheel-platform.md)
+- **升格：** [`wiki/entities/lw-benchhub-tour.md`](wiki/entities/lw-benchhub-tour.md) — EnvHub 五层栈；Stage 1 基线 40%；Stage 2 live IK 闸门；Stage 4 scripted PnP 推碗失败 vs 自过滤 10 ep / 6527 帧
+- **交叉：** LeRobot / Isaac Lab / cuRobo / VLA / 双臂 / VLA 部署指南 / SO-101 课 / VLA 开源复现景观
+- **开源结论：** 已开源可跑；钉版本与 numpy/warp ABI 补丁是复现硬约束
+
 ## [2026-08-17] ingest | sources/papers/nestdex_arxiv_2608_13362.md — 接入 NestDex 嵌套 copilot 灵巧遥操作
 
 - **触发：** 用户指定 ingest NestDex（悉尼大学 ACFR / PAIR Lab、范德堡；Zhao / Tang / Ba / Zhi；2026-08 arXiv 预印本），并要求自动合并 PR

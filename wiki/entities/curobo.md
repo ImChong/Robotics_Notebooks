@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - inverse-kinematics
 status: complete
-updated: 2026-07-21
+updated: 2026-08-17
 related:
   - ../methods/trajectory-optimization.md
   - ./crocoddyl.md
@@ -19,6 +19,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/motion-retargeting.md
   - ./isaac-gym-isaac-lab.md
+  - ./lw-benchhub-tour.md
 sources:
   - ../../sources/repos/nvlabs-curobo.md
 summary: "cuRobo 是 NVIDIA 开源的 GPU 并行机器人运动生成库：在统一碰撞与运动学内核上叠加无碰撞 IK、几何规划、多样本并行轨迹优化与 MPPI；cuRoboV2 在同一代码基上引入 B 样条+力矩约束、稠密 ESDF 感知与面向高自由度整机的可扩展动力学模块，把叙事从典型操作臂扩展到双臂与人形。"
@@ -119,6 +120,7 @@ flowchart LR
 - [ScheduleStream](./schedulestream.md) — **任务层调度 + stream 采样**；连续 motion 段可与 cuRobo 类后端互补
 - [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；cuMotion 等以 MoveIt 插件集成
 - [ssik](./ssik.md) — **解析** 全分支 IK（6R/7R）；与 cuRobo **GPU 数值 IK** 分层：前者枚举代数分支，后者做无碰撞并行搜索与轨迹优化
+- [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — 双臂 Piper 上把 cuRobo 当 **live IK 可达性闸门**；scripted PnP 因夹爪碰撞模型空而推碗，不能当抓取专家
 
 ## 参考来源
 

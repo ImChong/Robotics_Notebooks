@@ -12,6 +12,7 @@ related:
   - ./manipulation.md
   - ../entities/paper-autointervene.md
   - ../entities/paper-nestdex.md
+  - ../entities/lw-benchhub-tour.md
   - ./loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../concepts/whole-body-coordination.md
@@ -144,6 +145,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | HiFi-UMI-2K（2026） | 高保真无机器人双臂 UMI | 真机双臂部署评测 | 公开 **2000 h**；zero-robot 后训练对齐 teleop；见 [HiFi-UMI](../entities/paper-hifi-umi.md) |
 | MEVION（2026） | Leader–Follower + ACT | 四条 6-DoF 臂 | 约 $14k 的开源高力高速采集系统；见 [MEVION](../entities/paper-mevion.md) |
 | Transformer Transformer（2026） | DiT 共设计 + 跨具身控制 | 轮式双臂 / ALOHA2 | 按洗碗/抛布运动优化完整机体；见 [实体页](../entities/paper-transformer-transformer.md) |
+| LW BENCHHUB TOUR（2026） | SmolVLA 闭环评测 + 自过滤飞轮 | 仿真 DoublePiper-Abs | 厨房 PnP 基线 40%；cuRobo 闸门滤场景；见 [实体](../entities/lw-benchhub-tour.md) |
 
 ## 与 Loco-Manipulation 的区别
 
@@ -181,6 +183,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — G1 人形双臂交接等接触丰富任务的部署期闭环改进（53%→96%）
 - [AutoIntervene](../entities/paper-autointervene.md) — action-chunking 双臂策略的校准自动接管与针对性干预数据（arXiv:2608.07065）
 - [NestDex](../entities/paper-nestdex.md) — 双臂 Toast / Binder 用 clutch copilot 采长程灵巧示范（arXiv:2608.13362）
+- [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真双臂 Piper 厨房 PnP：EnvHub 闭环、cuRobo 可达性闸门与自过滤数据飞轮
 
 ## 参考来源
 

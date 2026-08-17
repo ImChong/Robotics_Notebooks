@@ -23,6 +23,7 @@ related:
   - ../concepts/sim2real.md
   - ./paper-agile-humanoid-loco-manipulation.md
   - ./paper-p3.md
+  - ./lw-benchhub-tour.md
   - ./autodl.md
   - ./gpufree.md
   - ./stackforce.md
@@ -261,7 +262,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ### 和 Manipulation 的关系
 
-灵巧操作与大规模式仿 benchmark 亦在 Isaac Lab 上落地；NVIDIA [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 Lab 上发布 **4,739** 项双手任务库并用 **接触力旋量（CWS）** RL 奖励做 Robotic Grounding，是 [Video to Data](https://nvidia-isaac.github.io/video_to_data/) 管线的训练后端实例。[DexVerse](./paper-dexverse.md)（UNC/HKU/Berkeley，arXiv:2607.08751）则在同一栈上提供 **100** 项模块化 dexterous 任务、**3** 臂 × **6** 手多具身与 **3,180** 条 VR 遥操作多模态示范，用于 IL/VLA 跨任务与视觉泛化评测。
+灵巧操作与大规模式仿 benchmark 亦在 Isaac Lab 上落地；NVIDIA [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 Lab 上发布 **4,739** 项双手任务库并用 **接触力旋量（CWS）** RL 奖励做 Robotic Grounding，是 [Video to Data](https://nvidia-isaac.github.io/video_to_data/) 管线的训练后端实例。[DexVerse](./paper-dexverse.md)（UNC/HKU/Berkeley，arXiv:2607.08751）则在同一栈上提供 **100** 项模块化 dexterous 任务、**3** 臂 × **6** 手多具身与 **3,180** 条 VR 遥操作多模态示范，用于 IL/VLA 跨任务与视觉泛化评测。[LW BENCHHUB TOUR](./lw-benchhub-tour.md) 则展示 Arena EnvHub 如何把 Lab 2.3.x 厨房任务接到 `lerobot-eval` 做双臂 SmolVLA 闭环（钉 Sim 5.1，补丁不可随意升级）。
 
 见：[Manipulation](../tasks/manipulation.md)
 
@@ -329,6 +330,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [StackForce](./stackforce.md) — CAD/URDF→SimReady Isaac 工程导出与训练向导
+- [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — Lab-Arena EnvHub + 光轮厨房 + SmolVLA 双臂闭环与数据飞轮
 
 ## 一句话记忆
 

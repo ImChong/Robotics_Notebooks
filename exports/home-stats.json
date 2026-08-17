@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3134,
-  "edge_count": 27689,
+  "node_count": 3135,
+  "edge_count": 27707,
   "coverage": {
-    "covered": 3110,
-    "total": 3110,
+    "covered": 3111,
+    "total": 3111,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -45,7 +45,8 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-pgif-mppi.md",
@@ -208,7 +209,8 @@
       "recency": "2026-08-16",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -251,7 +253,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1245,
+      "degree": 1246,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -274,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 743,
+      "degree": 745,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
