@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, embodied-ai-lab]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-17
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -18,11 +18,13 @@ related:
   - ../concepts/sim2real.md
   - ../methods/vla.md
   - ../entities/awesome-text-to-motion-zilize.md
+  - ./robot-descriptions-py.md
   - ../../roadmap/motion-control.md
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/repos/robot-descriptions-py.md
 summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：六条技术路线 + ~145 篇论文解读 + ~166 个开源项目主表 + 产业与求职；与本库微信策展同源，作外部总入口而非镜像。"
 ---
 
@@ -130,10 +132,12 @@ flowchart TB
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
 - [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) — 人体 T2M 清单对照（非机器人控制）
+- [robot_descriptions.py](./robot-descriptions-py.md) — 主表「工程与实机部署」条目的独立详情；选型见 [机器人描述目录](../comparisons/robot-description-catalogs.md)
 
 ## 参考来源
 
 - [sources/repos/humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)
+- [sources/repos/robot-descriptions-py.md](../../sources/repos/robot-descriptions-py.md) — 主表工程条目加深
 - [微信 · 42 篇 RL 运动控制](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - [微信 · 运动小脑 64 篇](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
 

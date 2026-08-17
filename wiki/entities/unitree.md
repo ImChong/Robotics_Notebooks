@@ -2,7 +2,7 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-17
 sources:
   - ../../sources/repos/unitree.md
   - ../../sources/repos/unitree_ros2.md
@@ -13,6 +13,8 @@ related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
   - ./unitree-g1.md
+  - ./fiveages-sim-robot-descriptions.md
+  - ./robot-descriptions-py.md
   - ./unitree-sdk2.md
   - ./unitree-ros.md
   - ./unitree-ros2.md
@@ -380,6 +382,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 ## 关联页面
 
 - [Unitree G1](./unitree-g1.md)
+- [fiveages-sim robot_descriptions](./fiveages-sim-robot-descriptions.md) — ROS 2 侧含重绘版 G1 URDF；Python 加载另见 [robot_descriptions.py](./robot-descriptions-py.md)
 - [X-Morph](./paper-xmorph.md) — 人体运动先验迁移到 Go2 / B2-Z1 等非人形平台（arXiv:2606.30290）
 - [UniStore（宇树应用平台）](./unitree-unistore.md)
 - [unitree_sdk2](./unitree-sdk2.md)

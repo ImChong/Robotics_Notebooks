@@ -1,22 +1,13 @@
 {
   "generated_at": "2026-08-17",
-  "node_count": 3136,
-  "edge_count": 27729,
+  "node_count": 3140,
+  "edge_count": 27791,
   "coverage": {
-    "covered": 3112,
-    "total": 3112,
+    "covered": 3116,
+    "total": 3116,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-dpc.md",
-      "detail_id": "entity-paper-dpc",
-      "label": "DPC：Direct Perception Control（直接感知控制）",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added"
-    },
     {
       "path": "wiki/entities/lw-benchhub-tour.md",
       "detail_id": "entity-lw-benchhub-tour",
@@ -26,6 +17,15 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-dpc.md",
+      "detail_id": "entity-paper-dpc",
+      "label": "DPC：Direct Perception Control（直接感知控制）",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-nestdex.md",
@@ -76,7 +76,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+      "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
@@ -116,7 +116,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+      "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-shrimp.md",
@@ -147,7 +147,7 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added",
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
+      "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-v-simba.md",
@@ -157,8 +157,7 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-sonic-transfer.md",
@@ -212,22 +211,23 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dpc.md",
-    "detail_id": "entity-paper-dpc",
-    "label": "DPC：Direct Perception Control（直接感知控制）",
+    "path": "wiki/entities/lw-benchhub-tour.md",
+    "detail_id": "entity-lw-benchhub-tour",
+    "label": "LW BENCHHUB TOUR",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 609
+      "size": 638
     },
     {
       "label": "操作",
-      "size": 574
+      "size": 538
     },
     {
       "label": "视觉-语言-动作",
@@ -235,15 +235,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 172
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 133
+      "size": 212
     },
     {
       "label": "移动操作",
       "size": 132
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 124
     }
   ],
   "top_hubs": [
@@ -321,7 +321,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 457,
+      "degree": 456,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
@@ -383,7 +383,8 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 44
+      "degree": 44,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

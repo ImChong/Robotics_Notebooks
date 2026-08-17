@@ -2,16 +2,18 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-17
 summary: "ros2_control：硬件接口负责读写状态，Controller Manager管理控制器生命周期，同一控制器因此可以切换仿真与真实设备。策略部署可沿这条接口检查关节命令、反馈时间戳和安全切换是否一致。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ./fiveages-sim-robot-descriptions.md
 sources:
   - ../../sources/repos/ros2-control.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/repos/fiveages-sim-robot-descriptions.md
 ---
 
 # ros2_control
@@ -88,6 +90,7 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [fiveages-sim robot_descriptions](./fiveages-sim-robot-descriptions.md) — 国内机型 description 包；控制器在姊妹仓 `arms_ros2_control`
 
 ## 参考来源
 

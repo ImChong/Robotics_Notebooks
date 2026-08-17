@@ -46,6 +46,7 @@
 - [Autoware](wiki/entities/autoware.md) — Autoware**（autowarefoundation/autoware）由 Autowar `📅unknown` `[entity_page]`
 - [Awesome Egocentric Vision（sun254667 精选集）](wiki/entities/awesome-egocentric-vision.md) — Awesome Egocentric Vision**（GitHub：[`sun254667/awesome-egocentric-vision`](https://github.com/sun2 `📅unknown` `[entity_page]`
 - [Awesome-Real2Sim2Real（sun254667 精选集）](wiki/entities/awesome-real2sim2real.md) — Awesome-Real2Sim2Real**（GitHub：[`sun254667/Awesome-Real2Sim2Real`](https://github.com/sun254667/Aw `📅unknown` `[entity_page]`
+- [Awesome Robot Descriptions](wiki/entities/awesome-robot-descriptions.md) — Awesome Robot Descriptions](https://github.com/robot-descriptions/awesome-robot-descriptions) 是 `ro `📅unknown` `[entity_page]`
 - [Awesome Text-to-Motion（Zilize 精选集）](wiki/entities/awesome-text-to-motion-zilize.md) — Awesome Text-to-Motion**（GitHub 仓名 `awesome-text-to-motion`）是一份 **文本驱动人体运动生成** 的 curated 列表：按 **Su `📅unknown` `[entity_page]`
 - [Awesome Touch（sun254667 精选集）](wiki/entities/awesome-touch.md) — Awesome Touch**（GitHub：`sun254667/awesome-touch`）是一份 `📅unknown` `[entity_page]`
 - [Awesome World Models（sun254667 精选集）](wiki/entities/awesome-world-models.md) — Awesome World Models**（GitHub：[`sun254667/awesome-world-models`](https://github.com/sun254667/awes `📅unknown` `[entity_page]`
@@ -164,6 +165,7 @@
 - [FEMM（Finite Element Method Magnetics）](wiki/entities/femm.md) — FEMM**（femm.info，作者 David C. Meeker）是面向 **2D 与轴对称 `📅unknown` `[entity_page]`
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
 - [FindAnything](wiki/entities/findanything.md) — FindAnything**（项目页，arXiv:2504.08603）是面向机器人探索的 **开放词汇、对 `📅unknown` `[entity_page]`
+- [fiveages-sim/robot_descriptions](wiki/entities/fiveages-sim-robot-descriptions.md) — fiveages-sim/robot_descriptions](https://github.com/fiveages-sim/robot_descriptions) 是 **ROS 2 desc `📅unknown` `[entity_page]`
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
@@ -2300,7 +2302,7 @@
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
 - [robosuite](wiki/entities/robosuite.md) — robosuite](https://github.com/ARISE-Initiative/robosuite) 收录于具身智能研究室 [开源项目主表](https://github.com/Re `📅unknown` `[entity_page]`
-- [robot_descriptions.py](wiki/entities/robot-descriptions-py.md) — robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py) 收录于具身智能研究室 [开源项 `📅unknown` `[entity_page]`
+- [robot_descriptions.py](wiki/entities/robot-descriptions-py.md) — robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py) 是把分散在各 git 仓的  `📅unknown` `[entity_page]`
 - [Robot Explorer](wiki/entities/robot-explorer.md) — Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控 `📅unknown` `[entity_page]`
 - [RIO（Robot I/O）](wiki/entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅unknown` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](wiki/entities/robot-lab.md) — robot_lab** 是由 `fan-ziqi` 维护的 **IsaacLab 生态扩展库**：在核心仓库外独立开发机器人资产、Gym 环境与训练脚本，避免 fork 上游 Isaac Lab。 `📅unknown` `[entity_page]`
@@ -2401,6 +2403,7 @@
 - [Unity Engine（Unity Technologies 实时 3D 引擎）](wiki/entities/unity-engine.md) — Unity** 是 **Unity Technologies** 的 **实时 3D 创作与运行时平台**，以 **Unity Editor**、**C# / .NET 脚本** 与 **Pack `📅unknown` `[entity_page]`
 - [Unreal Engine 5（Epic 实时 3D 引擎）](wiki/entities/unreal-engine-5.md) — Unreal Engine 5（UE5）** 是 **Epic Games** 的 **下一代实时 3D 创作与运行时平台**，面向游戏、影视、建筑、汽车与 **仿真 / 数字孪生** 等行业。在 `📅unknown` `[entity_page]`
 - [Unreal MCP（Unreal Editor 内嵌 MCP Server）](wiki/entities/unreal-mcp.md) — Unreal MCP** 是 Epic 在 **Unreal Engine 5.8** 引入的 **Experimental** 编辑器能力：以插件标识 **`ModelContextProtoc `📅unknown` `[entity_page]`
+- [URDF Files Dataset](wiki/entities/urdf-files-dataset.md) — URDF Files Dataset](https://github.com/Daniella1/urdf_files_dataset) 配套 Tola & Corke 的 RA-L 论文 *Und `📅unknown` `[entity_page]`
 - [URDF-Studio](wiki/entities/urdf-studio.md) — URDF-Studio** 是由 OpenLegged 社区开发的一款专业级** Web 机器人设计与组装工作站**。它不仅是一个查看器，更是一个涵盖了从拓扑设计到硬件物料管理（BOM）的全流程工 `📅unknown` `[entity_page]`
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
@@ -2883,6 +2886,7 @@
 - [RL vs 模仿学习（Imitation Learning）](wiki/comparisons/rl-vs-il.md) — RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略 $\pi(a|s)$"，但监督信号、数据需求、能达到的行为质量完全不同。 `📅unknown` `[comparison_page]`
 - [RNN vs CNN vs Transformer vs Mamba](wiki/comparisons/rnn-cnn-transformer-mamba.md) — 从 **递推状态（RNN）**、**局部卷积（CNN）**、**全局注意力（Transformer）** 到 **选择性状态空间（Mamba）**，在长程建模能力、训练并行度与推理复杂度三维上做骨干选 `📅unknown` `[comparison_page]`
 - [八大机器人控制体系分类](wiki/comparisons/robot-control-eight-paradigms-taxonomy.md) — 从机器人 **任务规划 → 控制算法 → 伺服执行** 的分层闭环出发，控制算法层可划分为 **八大体系**；前四类侧重 **显式建模**，后四类分别面向 **接触作业、约束优化、数据补偿与自主习得 `📅unknown` `[comparison_page]`
+- [机器人描述目录选型](wiki/comparisons/robot-description-catalogs.md) — 四份公开入口解决同一问题的不同切片：**发现、Python 加载、ROS 2/Isaac 国内机型、冻结研究语料**。 `📅unknown` `[comparison_page]`
 - [机器人学习五大范式：模仿、强化、视频、多模态与持续学习](wiki/comparisons/robot-learning-five-paradigms-taxonomy.md) — 机器人学习五大范式** 是按 **学习信号来源** 划分的选型框架：示范（IL）、奖励交互（RL）、互联网视频先验（LfV）、视觉–语言–动作统一（VLA）、以及时间维上的能力保持（持续学习）；核 `📅unknown` `[comparison_page]`
 - [机器人顶会顶刊发表渠道对比](wiki/comparisons/robotics-research-venues.md) — 在机器人学习与系统方向投稿或引用时，**会议**（ICRA、IROS、CoRL、RSS）与 **期刊**（T-RO、IJRR、Science Robotics）的 **主办方、审稿节奏、论文集托管 `📅unknown` `[comparison_page]`
 - [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 一句话结论：** 需要驱动/导航/规划/可视化生态与可靠工具链时选 **ROS 2**；需要跨进程或跨板的 **高频、低抖动、最新优先** 状态与力矩总线时选 **LCM**（同机极限路径优先共享 `📅unknown` `[comparison_page]`

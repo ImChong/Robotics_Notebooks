@@ -1,3 +1,16 @@
+## [2026-08-17] ingest | sources/repos/robot-descriptions-py.md — 加深 Python 加载器，并接入 Awesome / fiveages-sim / URDF Files Dataset
+
+- **触发：** 用户指定 ingest [robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py)、[awesome-robot-descriptions](https://github.com/robot-descriptions/awesome-robot-descriptions)、[fiveages-sim/robot_descriptions](https://github.com/fiveages-sim/robot_descriptions)、[URDF Files Dataset](https://github.com/Daniella1/urdf_files_dataset)，并要求自动合并 PR
+- **步骤 2.5：**
+  - robot_descriptions.py：**Apache-2.0，已开源、可运行**（PyPI 3.1.0 / conda-forge / `uvx`）；机型许可证逐条上游，部分 NC / 厂商图形条款
+  - Awesome：**CC0-1.0 列表已开源**；无运行时代码；姊妹加载器即上项
+  - fiveages-sim：**Apache-2.0 主树已开源**；`arms_ros2_control` / `robot_usds` 亦公开；**Agibot G2 子模块 private（部分开源）**
+  - URDF Files Dataset：**MIT，已开源**（322 Bundle + 分析脚本）；配套 RA-L 2024 / arXiv:2308.00514；仓于 2024-04 冻结
+- **来源：** [`sources/repos/robot-descriptions-py.md`](sources/repos/robot-descriptions-py.md)、[`sources/repos/awesome-robot-descriptions.md`](sources/repos/awesome-robot-descriptions.md)、[`sources/repos/fiveages-sim-robot-descriptions.md`](sources/repos/fiveages-sim-robot-descriptions.md)、[`sources/repos/urdf_files_dataset.md`](sources/repos/urdf_files_dataset.md)、[`sources/papers/understanding_urdf_dataset_arxiv_2308_00514.md`](sources/papers/understanding_urdf_dataset_arxiv_2308_00514.md)
+- **升格：** 加深 [`wiki/entities/robot-descriptions-py.md`](wiki/entities/robot-descriptions-py.md)；新建 Awesome / fiveages-sim / URDF Dataset 实体与 [`wiki/comparisons/robot-description-catalogs.md`](wiki/comparisons/robot-description-catalogs.md)
+- **交叉：** URDF / Pinocchio / MuJoCo / Isaac Sim / URDD / URDF-Studio / Robot Viewer / Unitree / ros2_control / Pinocchio 快速上手
+- **开源结论：** 四个入口均可公开获取；G2 子模块未公开；Dataset 非日常仿真源
+
 ## [2026-08-17] ingest | sources/repos/lw_benchhub_tour.md — 接入 LW BENCHHUB TOUR：SmolVLA 双臂 Piper 闭环、cuRobo 闸门与自过滤飞轮
 
 - **触发：** 用户指定 ingest <https://github.com/GimpelZhang/lw_benchhub_tour>，并要求自动合并 PR
