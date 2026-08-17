@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/current-robotics-currentworld.md",
+      "detail_id": "entity-current-robotics-currentworld",
+      "label": "CurrentWorld-0（Current Robotics · 交互世界模拟器）",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/lw-benchhub-tour.md",
       "detail_id": "entity-lw-benchhub-tour",
       "label": "LW BENCHHUB TOUR",
@@ -200,27 +210,17 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/isaac-lab-default-environments.md",
-      "detail_id": "entity-isaac-lab-default-environments",
-      "label": "Isaac Lab 默认环境",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lw-benchhub-tour.md",
-    "detail_id": "entity-lw-benchhub-tour",
-    "label": "LW BENCHHUB TOUR",
+    "path": "wiki/entities/current-robotics-currentworld.md",
+    "detail_id": "entity-current-robotics-currentworld",
+    "label": "CurrentWorld-0（Current Robotics · 交互世界模拟器）",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
