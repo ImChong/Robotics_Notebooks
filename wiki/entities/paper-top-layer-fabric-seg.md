@@ -8,6 +8,7 @@ code: https://github.com/bhattner143/top-layer-fab-seg
 related:
   - ../tasks/manipulation.md
   - ../concepts/contact-rich-manipulation.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-real-bi-dex-grasp.md
 sources:
   - ../../sources/papers/top_layer_fabric_seg_arxiv_2608_10648.md
@@ -103,6 +104,7 @@ flowchart LR
 
 - [Manipulation](../tasks/manipulation.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
+- [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 - [真机双臂灵巧抓取](./paper-real-bi-dex-grasp.md)
 
 ## 参考来源
