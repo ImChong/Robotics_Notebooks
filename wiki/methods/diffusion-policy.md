@@ -158,6 +158,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — Simons 2026 报告：为何生成式动作头抬升 IL / offline RL
 - [Seeker](../entities/paper-seeker.md) — 动作监督 ROI 作 DP 输入瓶颈；MimicGen 62.6%、xArm 域内 76.7%（arXiv:2608.13422；已开源）
 - [SPD](../entities/paper-spd.md) — 仿真 75 h 预训练的历史条件 DiT；灵巧真机短微调（CoRL 2026）
+- [REALab 14 篇技术地图（2026）](../overview/realab-14-papers-technology-map-2026.md) — DF-ExpEnse / DICE-RL / GMP 等扩散策略微调与记忆线策展索引
 
 ## 推荐继续阅读
 

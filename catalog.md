@@ -3046,6 +3046,7 @@
 - [Paper Notebooks · Physics-Based Animation](wiki/overview/paper-notebook-category-13-physics-based-animation.md) — Physics-Based Animation**（`13_Physics-Based_Animation`）是 [Humanoid Robot Learning Paper Notebooks `📅unknown` `[overview_page]`
 - [Paper Notebooks · Human Motion](wiki/overview/paper-notebook-category-14-human-motion.md) — Human Motion**（`14_Human_Motion`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.githu `📅unknown` `[overview_page]`
 - [四足 × VLN × 具身智能实战营（技术地图）](wiki/overview/quadruped-vln-embodied-workshop.md) — 本页把「2 天线下实战 + 1 月线上答疑」课程日程中的 **技术点与项目** 映射到本知识库的 **独立详情节点**，作为覆盖验收表与学习入口。硬件基线：每组 **四足 + LiDAR + 相机 + `📅unknown` `[overview_page]`
+- [REALab 技术地图：14 篇工作（2026）](wiki/overview/realab-14-papers-technology-map-2026.md) — Stanford **Robotics and Embodied AI Lab（REALab，宋舒然）** 在 2026 年的 14 篇代表性工作，共同回答：**当机体形态各异、真实接触极复杂时，如何 `📅unknown` `[overview_page]`
 - [RoboParty Lab / Party OS 技术地图](wiki/overview/roboparty-lab-party-os-technology-map.md) — RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party OS** 作为研发底座，首批开源 **hhtools（动作重定向）→ MimicLite（监督跟踪 infra `📅unknown` `[overview_page]`
 - [自适应控制（体系④）](wiki/overview/robot-control-paradigm-adaptive-control.md) — 在线辨识时变参数并修正控制律，解决负载变化、磨损与摩擦漂移，与鲁棒「被动抵抗」形成互补。 `📅unknown` `[overview_page]`
 - [经典线性反馈控制（体系①）](wiki/overview/robot-control-paradigm-classical-linear-feedback.md) — 针对线性、弱扰动系统的底层伺服闭环，是电机/舵机与单关节跟踪的标配。 `📅unknown` `[overview_page]`

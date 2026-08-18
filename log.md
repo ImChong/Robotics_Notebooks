@@ -1,3 +1,5 @@
+## [2026-08-18] ingest | sources/blogs/wechat_shenlan_realab_14_papers_2026.md — REALab 14 篇技术地图；开源核查 10+ 项已开
+
 ## [2026-08-18] ingest | sources/papers/cmp_arxiv_2608_03234.md — 加深 CMP（arXiv:2608.03234）附录超参/任务上下文/G1 全表；复核仍无官方代码；交叉 PFM-HR / PDF-HR / ASE
 
 - **触发：** 用户指定 ingest *Learning Context-Aware Motion Priors for Humanoid Control*（arXiv 预印本；HKUST-GZ；Yunyang Mo / Yi Gu / Yangchen Zhou / Hanyang Cao / Renjing Xu），并要求自动合并 PR
