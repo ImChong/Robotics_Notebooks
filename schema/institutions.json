@@ -2861,6 +2861,14 @@
         "fiveages",
         "fiveages-sim"
       ]
+    },
+    "mirros": {
+      "label": "镜界（MirroS）",
+      "aliases": [
+        "mirros",
+        "mirros-lab",
+        "harnesseval"
+      ]
     }
   }
 }

@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, agibot]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-18
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
@@ -11,12 +11,14 @@ related:
   - ./paper-wem-world-ego-modeling.md
   - ./ge-sim-2.md
   - ./paper-worldscore.md
+  - ./paper-harnesseval-w.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/ewmbench.md
   - ../../sources/repos/ewmbench.md
   - ../../sources/sites/agibot-world.md
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
+  - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
 summary: "EWMBench 是面向具身世界模型（EWM）视频生成的公开基准与工具链：在 Agibot-World 子集上统一初始化后，从场景守恒、末端轨迹与语义/逻辑对齐三轴评测候选文生视频模型，并开源数据与评测代码。"
 ---
 
@@ -98,6 +100,7 @@ flowchart LR
 - [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 世界模型学习与规划文献脉络（EWMBench 评的是「生成式视频世界模型」子类）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「② 世界模型预测保真度评测层」的代表基准，双向回链
 - [WorldScore](./paper-worldscore.md) — 开放域 3D/4D/视频 **多场景世界生成** 统一榜（相机可控 + 质量 + 动态）；非操纵三轴
+- [HarnessEval-W](./paper-harnesseval-w.md) — 交互式世界 **agentic** 评测（干预/持久证据树）；无 EEF，勿与本页三轴混读
 
 ## 参考来源
 

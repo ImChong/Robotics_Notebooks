@@ -12,7 +12,7 @@ tags:
   - alibaba
   - amap
 status: complete
-updated: 2026-07-26
+updated: 2026-08-18
 arxiv: "2607.19191"
 code: https://github.com/amap-cvlab/ABot-World
 related:
@@ -24,6 +24,7 @@ related:
   - ./paper-m4world.md
   - ./open-dreamer.md
   - ./paper-kairos-native-world-model-stack.md
+  - ./paper-harnesseval-w.md
 sources:
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
   - ../../sources/repos/abot-world.md
@@ -189,6 +190,7 @@ sequenceDiagram
 - **60 s 消融：** 相对同协议 Causal-Forcing 风格基线，后半程 HPSv3 更高，高饱和 / 模糊 / patch 重复更低。
 - **小时 / 日级关键帧：** 仍可辨场景结构与活跃运动，未在抽检时刻塌成静帧或纯纹理噪声。
 - **OOD + 物理涌现：** 统一键盘接口泛化到训练外场景–角色；碰撞、水纹、雪迹、墙体阻挡等未符号化标注的响应可出现。
+- **HarnessEval-W（2026-08）：** 在开放交互评测上 Overall **66.1**（#14 / 18），但 **Exploratory Transition 第一（83.5）**、Intentional/Physical 明显落后 I2V 族——与「键盘漫游强、指令式干预弱」的产品定位一致。详见 [HarnessEval-W](./paper-harnesseval-w.md)。
 
 ## 结论
 
@@ -229,6 +231,7 @@ sequenceDiagram
 - [M⁴World](./paper-m4world.md) — 驾驶多模态可控流式对照
 - [Open Dreamer](./open-dreamer.md) — 游戏域可交互 WM 开源基线
 - [Kairos](./paper-kairos-native-world-model-stack.md) — 具身侧少步部署对照
+- [HarnessEval-W](./paper-harnesseval-w.md) — 开放交互评测：本模型 Exploratory 第一、Overall 中游
 
 ## 参考来源
 

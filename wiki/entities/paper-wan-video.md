@@ -18,6 +18,7 @@ related:
   - ./paper-masked-visual-actions.md
   - ./paper-ctrl-world.md
   - ./paper-abot-world-0.md
+  - ./paper-harnesseval-w.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -192,6 +193,7 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 - [Generative World Models](../methods/generative-world-models.md) — 方法谱系
 - [ABot-M0.5](./paper-abot-m05-mobile-manipulation-wam.md) / [τ₀ World Model](./tau0-world-model.md) — 其他 Wan2.2 系具身衍生
 - [ABot-World-0](./paper-abot-world-0.md) — Wan2.2-TI2V-5B 上的键盘交互桌面实时世界模型
+- [HarnessEval-W](./paper-harnesseval-w.md) — Wan 2.7\* Overall 第二、Intentional/Physical 第一；Wan 2.2 明显落后
 - [DreamX-Phi](./paper-dreamx-phi.md) — 同骨干的动作条件操纵 WM；权重待赛后（arXiv:2608.13489）
 - [ComfyUI](./comfyui.md) — 开源节点图推理宿主；官方与社区常把 Wan 模板接到此引擎
 
