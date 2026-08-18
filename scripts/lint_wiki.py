@@ -183,6 +183,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                concepts/world-action-models.md；论文消融条件名「joint」
 #                （Green for Go）属单页实验设定。与 damping 同为 MuJoCo 关节属性
 #                token，本库按参数/分类维度记述，不单建概念页
+#   lerobot    → entities/lerobot.md（Hugging Face 具身智能全栈框架，库/工具）
 #   mjlab      → entities/mjlab.md（库/工具）
 #   mujoco     → entities/mujoco.md（仿真器/工具）
 #   sonic      → methods/sonic-motion-tracking.md（具体方法）
@@ -242,6 +243,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "gmr",
     "heracles",
     "joint",  # 关节属性 / WAM Joint 族 / 消融条件名三义，已由 URDF + WAM 等页覆盖
+    "lerobot",  # 已由 entities/lerobot.md 覆盖（框架/工具，与 mjlab / mujoco 同类）
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     "mujoco",
