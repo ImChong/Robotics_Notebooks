@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -146,6 +146,8 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | MEVION（2026） | Leader–Follower + ACT | 四条 6-DoF 臂 | 约 $14k 的开源高力高速采集系统；见 [MEVION](../entities/paper-mevion.md) |
 | Transformer Transformer（2026） | DiT 共设计 + 跨具身控制 | 轮式双臂 / ALOHA2 | 按洗碗/抛布运动优化完整机体；见 [实体页](../entities/paper-transformer-transformer.md) |
 | LW BENCHHUB TOUR（2026） | SmolVLA 闭环评测 + 自过滤飞轮 | 仿真 DoublePiper-Abs | 厨房 PnP 基线 40%；cuRobo 闸门滤场景；见 [实体](../entities/lw-benchhub-tour.md) |
+
+- [真机双臂灵巧抓取](../entities/paper-real-bi-dex-grasp.md) — 单视角点云 + DDPM 关节配置 + 力细化（IROS 2026；已开源）
 
 ## 与 Loco-Manipulation 的区别
 

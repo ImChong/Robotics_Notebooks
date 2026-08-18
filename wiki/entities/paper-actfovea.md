@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, runtime-safety, safeguarding, anomaly-detection, plug-and-play, libero, manipulation, pi0]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-18
 arxiv: "2607.29169"
 code: https://github.com/SunnyYWD/ActFovea
 related:

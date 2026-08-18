@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, ppo, on-policy, locomotion]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 summary: "PPO 用 clip 代理目标约束策略更新幅度，兼顾稳定性与实现简单，是人形/足式机器人大规模并行 RL 训练的事实标准算法。"
 related:
   - ./flashsac.md
@@ -181,6 +181,7 @@ $\gamma$ 的有效视野约 $1/(1-\gamma)$ **步**。50 Hz 下 $\gamma=0.99$ 大
 - [Locomotion（任务）](../tasks/locomotion.md)
 - [MDP（形式化）](../formalizations/mdp.md)
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航中用 PPO 训 BEV+意图策略的实例
+- [接近–安全跟随](../entities/paper-nav-ps-balance.md) — 多 critic PPO-Lagrangian；跟目标的 cost 阈值（IROS 2026；已开源）
 - [Effective Degree](../entities/paper-effective-degree.md) — 对 PPO actor 施加多项式有效度数正则以提升 Procgen 泛化
 - [P³](../entities/paper-p3.md) — VAE 随机潜空间里用边缘策略（而非单样本 $z$）计算 PPO 概率比
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — PPO 在五模块闭环中的稳定更新角色

@@ -18,7 +18,7 @@ tags:
   - peng-cheng-lab
   - reconova
 status: complete
-updated: 2026-08-10
+updated: 2026-08-18
 arxiv: "2606.26047"
 doi: "10.1109/LRA.2026.3677748"
 related:
@@ -203,6 +203,7 @@ flowchart TB
 - [HUMEMBR](./paper-humembr.md) — 人中心例行记忆找人（任务不同：找人 vs 拥挤绕行）
 - [CommNav](./paper-commnav.md) — 主动向路人打听目标位置（信息寻求型找人；Habitat 3.0c）
 - [导航纵深路线](../../roadmap/depth-navigation.md) — Stage 3 学习型导航入口
+- [接近–安全跟随](./paper-nav-ps-balance.md) — 跟目标而非只让行；约束分解 RL（IROS 2026）
 
 ## 参考来源
 

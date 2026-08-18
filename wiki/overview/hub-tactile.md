@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-18
 summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -46,6 +46,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 | 数据+策略栈 | 力场表征 / VTLA / 触觉 WAM | [NeoteAI 𝒩₀](../entities/neoteai.md)（OpenNeoData 5k h；Foundation / VTLA / TWAM） |
 | 人侧规模化采数 | 全掌压阻手套 + 手姿 + 多视角 RGB | [HumanTouch](../entities/humantouch.md)（Xspark SparkLAB；约 100 h 初版待 HF；代码未列） |
 | 文献索引 | 2025–2026 触觉×VLA/WM/WAM 策展 | [Awesome Touch](../entities/awesome-touch.md)（sun254667；VTLA / 视触觉 WM / Sim2Real） |
+| 管线轴综述 | 多模态 + 多阶段策略–控制 | [TF-ART](../entities/paper-tf-art-tactile-force-survey.md)（arXiv:2608.07558；Awesome 清单已开源） |
 
 ## 与其他知识链的关系
 
@@ -62,6 +63,8 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可校准/质控的人侧视–触–运动数据（数据待发）
 - [NeoteAI / 𝒩₀ 三件套](../entities/neoteai.md) — OpenNeoData + NeoForce + VTLA/TWAM
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 触觉 VLA / 视触觉 WM / Tactile WAM 近期文献索引
+- [TF-ART 触觉/力觉综述](../entities/paper-tf-art-tactile-force-survey.md) — 管线轴 taxonomy；与 Touch 清单互补
+- [接触–预测–适应 10 篇技术地图](./contact-predict-adapt-10-papers-technology-map.md) — 把接触接到预测/适应横切面
 - [Teleoperation](../tasks/teleoperation.md) — 操作员力反馈与示范采集
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Contact Dynamics](../concepts/contact-dynamics.md)

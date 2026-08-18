@@ -13,7 +13,7 @@ tags:
   - uni-freiburg
   - uni-hamburg
 status: complete
-updated: 2026-08-16
+updated: 2026-08-18
 arxiv: "2608.13422"
 code: https://github.com/zheyu-zhuang/seeker
 related:
@@ -22,12 +22,15 @@ related:
   - ../tasks/manipulation.md
   - ./mimicgen.md
   - ./paper-actfovea.md
+  - ./paper-boost-skill-transfer.md
+  - ../overview/contact-predict-adapt-10-papers-technology-map.md
   - ../concepts/diffusion-model.md
   - ../methods/vla.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/seeker_arxiv_2608_13422.md
   - ../../sources/repos/seeker.md
+  - ../../sources/blogs/wechat_embodied_station_contact_predict_adapt_10_papers_2026-08-18.md
 summary: "Seeker（KTH/弗莱堡/汉堡，arXiv:2608.13422）：冻结 DINOv3 上用动作监督学出随进度变化的 ROI，无需 gaze/框/VLM。MimicGen 100 demo 平均 62.6%（对照 42.6%）；xArm7 域内 76.7%、外观偏移 60.0%。GitHub MIT 已开源。"
 ---
 
@@ -220,11 +223,14 @@ Coffee Transport 没有可靠夹爪事件，启发式框容易锁在旋转或终
 - [扩散模型](../concepts/diffusion-model.md) — 生成式动作目标为何比回归更能收 mask
 - [VLA](../methods/vla.md) — 语言条件通才路线；本页是无语言 IL 瓶颈
 - [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 下游策略消费哪块视觉
+- [BooST](./paper-boost-skill-transfer.md) — 同专辑：技能码跨域，对照本页视觉瓶颈
+- [接触–预测–适应 10 篇技术地图](../overview/contact-predict-adapt-10-papers-technology-map.md) — 公众号十篇阅读坐标
 
 ## 参考来源
 
 - [seeker_arxiv_2608_13422.md](../../sources/papers/seeker_arxiv_2608_13422.md)
 - [seeker 仓库归档](../../sources/repos/seeker.md)
+- [具身智能小站 10 篇盘点（2026-08-18）](../../sources/blogs/wechat_embodied_station_contact_predict_adapt_10_papers_2026-08-18.md)
 - Zhuang et al. — <https://arxiv.org/abs/2608.13422>
 - 代码 — <https://github.com/zheyu-zhuang/seeker>
 

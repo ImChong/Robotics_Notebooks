@@ -51,7 +51,7 @@
 ## 对 wiki 的映射
 
 - 升格 [Seeker 论文实体](../../wiki/entities/paper-seeker.md)
-- 交叉：[Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[Imitation Learning](../../wiki/methods/imitation-learning.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[MimicGen](../../wiki/entities/mimicgen.md)、[ActFovea](../../wiki/entities/paper-actfovea.md)
+- 交叉：[Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[Imitation Learning](../../wiki/methods/imitation-learning.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[MimicGen](../../wiki/entities/mimicgen.md)、[ActFovea](../../wiki/entities/paper-actfovea.md)、[接触–预测–适应 10 篇技术地图](../../wiki/overview/contact-predict-adapt-10-papers-technology-map.md)
 
 ## 当前提炼状态
 

@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
@@ -228,6 +228,7 @@ flowchart TD
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 人示教与跨实验室共训缩放判据
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) — WAM 动力学监督 vs BC：野外人数据缩放与 misalignment 鲁棒性
 - [Seeker](../entities/paper-seeker.md) — 无空间标签的动作监督视觉瓶颈；少数据 MimicGen / xArm（arXiv:2608.13422；已开源）
+- [BooST](../entities/paper-boost-skill-transfer.md) — 语义+运动 VQ-VAE 技能码，LIBERO 少样本（arXiv:2608.10600；训练仓未开）
 - [SPD](../entities/paper-spd.md) — 仿真 VR 灵巧手预训练 + 真机短微调 BC（CoRL 2026）
 - [HumanNet](../entities/humannet.md) — 大规模人中心视频语料与跨本体迁移的数据侧参照
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）

@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, tactile, visuo-tactile, vla, world-models, wam, contact-rich, sim2real]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-18
 related:
   - ../overview/sun-awesome-touch-technology-map.md
   - ../overview/hub-tactile.md
@@ -78,6 +78,7 @@ summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集�
 - [TouchWorld](./paper-touchworld-tactile-foundation-dexterous-manipulation.md) / [ViTacWorld](./paper-vitacworld.md) / [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md)
 - [TacO 触觉传感器基准](./paper-taco-tactile-sensor-benchmark.md)
 - [Awesome World Models](./awesome-world-models.md) / [Awesome-Real2Sim2Real](./awesome-real2sim2real.md)
+- [TF-ART 触觉/力觉综述](./paper-tf-art-tactile-force-survey.md) — 管线轴 taxonomy，时间窗更宽；不是本清单镜像
 
 ## 参考来源
 

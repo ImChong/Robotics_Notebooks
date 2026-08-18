@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 related:
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-odeworld.md
@@ -186,7 +186,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 开源视频先验与轨迹可控 I2V（示例：Wan / Wan-Move / Wan-Dancer）
 
-[Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**；[Wan-Dancer](../entities/paper-wan-dancer.md)（arXiv:2607.09581）同在 Wan-I2V 上做分层 **music-to-dance**，把连贯生成推到 **分钟级 720p**。三者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM / 参考视频先验的 **上游对照**。
+[Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**；[Wan-Dancer](../entities/paper-wan-dancer.md)（arXiv:2607.09581）同在 Wan-I2V 上做分层 **music-to-dance**，把连贯生成推到 **分钟级 720p**。三者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM / 参考视频先验的 **上游对照**。[DreamX-Phi 1.0](../entities/paper-dreamx-phi.md)（arXiv:2608.13489，阿里 AMAP）把 **Wan2.2-TI2V-5B** 做成动作条件操纵 WM：每臂 **SE(3)** 经 PRoPE-style 编码注入 attention，并加 depth / SAM3 / 冻结 V-JEPA；自报 WorldArena 2.0 Track 1 第一。**权重与推理待赛后**，入库日仓为占位 README。
 
 [Flex-π](../entities/paper-flex-pi.md)（arXiv:2608.10860，UW / AI2）把同一冻结 **Wan-2.2 VAE** 直接用于 **3D pointmap**：论文报 RGB 训练的 VAE 对点图近无损重建（PSNR **31.1 dB**），再与 DINOv3 语义流在 MoT 里联合去噪动作。相对「另训几何编码器」，这是 **借用视频先验吃 3D**；相对 DreamWAM 的训练多视图、部署关分支，Flex-π 把流组合留到 **推理掩码**（action-only ~60 ms ↔ full joint）。**代码待发布**。
 

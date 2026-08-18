@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, social-navigation, mppi, mpc]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 arxiv: "2608.08323"
 code: https://github.com/ChinmayMundane/PGIF_MPPI
 related:
@@ -139,6 +139,7 @@ Vanilla 的短路径来自提前撞停。PGIF 主动绕行，路径更长。步�
 - [PEEL](./paper-peel-disassembly.md)
 - [社交导航正负样本](./paper-notebook-learning-social-navigation-from-positive-and-neg.md)
 - [SurgLAT](./paper-surglat.md) — 另一条把「未来/意图」写成可执行成本的闭环
+- [接近–安全跟随](./paper-nav-ps-balance.md) — 跟随 RL 的约束分解，对照规划代价里的行人场
 
 ## 参考来源
 

@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md
@@ -222,6 +222,7 @@ sequenceDiagram
 - [评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 想象评估如何接入验收
 - [ODEWorld](./paper-odeworld.md) — 连续时间 latent 子目标对照（无动作条件）
 - [CurrentWorld-0](./current-robotics-currentworld.md) — 产业侧跨本体多视角力触觉交互模拟器（不统一动作空间；确认未开源）
+- [DreamX-Phi](./paper-dreamx-phi.md) — Wan 骨干 + PRoPE 式 SE(3)；强调动作忠实与赛道名次（占位仓）
 
 ## 参考来源
 
