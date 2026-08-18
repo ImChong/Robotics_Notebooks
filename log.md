@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## [2026-08-18] ingest | sources/sites/ibrics-lar-upatras.md + sources/repos/go2_flip_to.md — 接入 IBRICS 项目页与 Go2 SE(3) 切空间 TO；AHMP / 浮动基参数化对比均已开源
 
 - **触发：** 用户指定 ingest <https://lar.upatras.gr/projects/ibrics.html>、<https://github.com/yusongmin1/go2_flip_TO>，并要求自动合并 PR
@@ -8,7 +7,7 @@
 - **交叉：** 轨迹优化 / SE(3) / 李群 / FARO / DSMS / Pinocchio / Crocoddyl / TO vs RL / MPC 求解器 / 浮动基动力学
 - **开源结论：** AHMP 与 SE3_TrajOpt 可运行；`go2_flip_TO` 为 AMP 导出扩展；源码运行时序图已写
 - **机构：** 注册 `patras`（帕特雷大学（University of Patras））、`athena-rc`（雅典娜研究中心（Athena RC））
-=======
+
 ## [2026-08-18] ingest | sources/papers/cref_arxiv_2603_29452.md — CReF 深度条件人形行走（arXiv:2603.29452）；项目页仅为静态站，训练代码确认未开源
 
 - **触发：** 用户指定 ingest <https://arxiv.org/abs/2603.29452>、<https://arxiv.org/pdf/2603.29452>，并要求自动合并 PR
@@ -18,8 +17,6 @@
 - **交叉：** 楼梯枢纽 / Humanoid Locomotion / SSR / HPL / Now You See That / DPL / Hiking / PIE / Privileged Training / Footstep Planning / Sim2Real / Terrain Adaptation
 - **开源结论：** 训练代码未开源；源码运行时序图不适用
 - **机构：** 已有 `zju`、`sdu`、`agibot`（平台标签）
-
->>>>>>> origin/main
 
 ## [2026-08-18] ingest | sources/papers/harnesseval_w_arxiv_2608_16859.md — 接入 MirroS HarnessEval-W 交互式世界 agentic 评测；评测代码已开源、HF 全量案例待发
 
