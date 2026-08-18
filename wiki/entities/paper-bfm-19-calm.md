@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-18
 venue: "2024 · SIGGRAPH"
 code: https://github.com/NVlabs/CALM
 summary: "可指挥 latent skill；BFM 前史：技能空间先于大基座。"
@@ -11,6 +11,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
+  - ./paper-cmp.md
 sources:
   - ../../sources/papers/bfm_awesome_calm_siggraph_2024.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -84,6 +85,7 @@ sources:
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_calm_siggraph_2024.md](../../sources/papers/bfm_awesome_calm_siggraph_2024.md)
+- 对照：[CMP](./paper-cmp.md) — 不引入可指挥 latent，在原参考空间按任务上下文软重权 AMP/SMP
 
 ## 参考来源
 

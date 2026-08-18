@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, flow-matching, pose-prior, rl, add, beyondmimic, unitree-g1, hkust-gz, noitom, tsinghua, google]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-18
 arxiv: "2608.03227"
 code: https://github.com/gaoyukang33/PFM-HR
 related:
   - ../methods/beyondmimic.md
   - ../methods/add.md
   - ./paper-notebook-pdf-hr.md
+  - ./paper-cmp.md
   - ../methods/smp.md
   - ./mimickit.md
   - ../queries/humanoid-motion-tracking-method-selection.md
@@ -143,6 +144,7 @@ flowchart TB
 - [BeyondMimic](../methods/beyondmimic.md) — 真机部署宿主管线
 - [ADD](../methods/add.md) — 仿真跟踪骨干
 - [PDF-HR](./paper-notebook-pdf-hr.md) — 冻结姿态距离场直接对照
+- [CMP](./paper-cmp.md) — 同组相邻 arXiv（2608.03234）：软重权 AMP/SMP 参考监督，不改姿态流形
 - [SMP](../methods/smp.md) — 冻结时序生成先验对照
 - [MimicKit](./mimickit.md) — 单轨迹实验框架
 - [运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)

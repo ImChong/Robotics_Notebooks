@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, rl]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-18
 related:
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
@@ -180,7 +180,7 @@ flowchart TB
 
 - [人形 RL 运动控制身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) — 42 篇姊妹篇总框架
 - [AMP & HumanX](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md)、[MotionBricks](../methods/motionbricks.md)
-- [CMP 上下文感知运动先验](../entities/paper-cmp.md) — 分布约束线之外：按任务上下文软重权 AMP/SMP
+- [CMP 上下文感知运动先验](../entities/paper-cmp.md) — 分布约束线之外：按任务上下文软重权 AMP/SMP（五任务回报/样本效率双升；代码未列）
 - [AMP_mjlab](../entities/amp-mjlab.md)、[Kimodo](../entities/kimodo.md)、[MimicKit](../entities/mimickit.md)、[ProtoMotions](../entities/protomotions.md)
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)、[loco-manipulation](../tasks/loco-manipulation.md)
 - [Project Instinct](../entities/project-instinct.md) — Deep Parkour / Embrace Collisions 生态

@@ -2,7 +2,7 @@
 type: comparison
 tags: [amp, motion-prior, rl, humanoid, imitation-learning, comparison]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-18
 summary: "AMP / ADD / SMP 三种对抗式运动先验变体：判别器形式、多目标解耦与模块化 reward model 的选型对比；旁注 ADP / CMP / PFM-HR。"
 sources:
   - ../../sources/papers/amp.md
@@ -51,7 +51,7 @@ related:
 
 **旁注 · ADP**：若目标是 **抗扰恢复** 而非风格自然度，看 [ADP](../entities/paper-adp.md)（动力学特征时间窗先验，非本表三列运动学变体）。
 
-**旁注 · CMP**：若已有 AMP/SMP 基线、痛点是**异构参考与当前任务上下文不匹配**（而非换判别器形式），看 [CMP](../entities/paper-cmp.md)（相关度软重权 + 残差适配器，不另开 skill 空间）。
+**旁注 · CMP**：若已有 AMP/SMP 基线、痛点是**异构参考与当前任务上下文不匹配**（而非换判别器形式），看 [CMP](../entities/paper-cmp.md)（相关度软重权 + 残差适配器，不另开 skill 空间；行走 clip ×100 时 AMP −11.5%、CMP-AMP −2.8%；代码截至 2026-08-18 未列 URL）。
 
 **旁注 · PFM-HR / PDF-HR**：若痛点是**高动态跟踪样本效率**、且已有 ADD/BeyondMimic 骨干，可旁挂冻结**姿态几何先验**而非改判别器形式——[PFM-HR](../entities/paper-pfm-hr.md)（Flow Matching + PGS 评关节差分；代码 Coming Soon）相对 [PDF-HR](../entities/paper-notebook-pdf-hr.md)（单姿态距离场）更强调姿态转移几何；与 SMP 同属「冻结可复用先验」轴，但训练数据只需无序姿态。
 
