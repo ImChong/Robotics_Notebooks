@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-18",
   "node_count": 3153,
-  "edge_count": 27945,
+  "edge_count": 27946,
   "coverage": {
     "covered": 3129,
     "total": 3129,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-top-layer-fabric-seg.md",
+      "detail_id": "entity-paper-top-layer-fabric-seg",
+      "label": "顶层布料分割：软物体操作常输在边界",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-autopso.md",
       "detail_id": "entity-paper-autopso",
@@ -87,17 +98,6 @@
       "path": "wiki/entities/paper-tf-art-tactile-force-survey.md",
       "detail_id": "entity-paper-tf-art-tactile-force-survey",
       "label": "TF-ART：接触学习要同时画模态和阶段",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-top-layer-fabric-seg.md",
-      "detail_id": "entity-paper-top-layer-fabric-seg",
-      "label": "顶层布料分割：软物体操作常输在边界",
       "type": "entity",
       "recency": "2026-08-18",
       "source": "git",
@@ -219,9 +219,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-autopso.md",
-    "detail_id": "entity-paper-autopso",
-    "label": "AutoPSO：PSO 变体不要再手搓",
+    "path": "wiki/entities/paper-top-layer-fabric-seg.md",
+    "detail_id": "entity-paper-top-layer-fabric-seg",
+    "label": "顶层布料分割：软物体操作常输在边界",
     "type": "entity",
     "recency": "2026-08-18",
     "source": "git",
