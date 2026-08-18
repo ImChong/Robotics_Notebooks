@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, locomotion, perceptive-locomotion, depth, terrain-reconstruction, cross-attention, teacher-student, amp, ppo, sim2real, isaac-gym, x-humanoid, hku, ustc, hkust, ra-l]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-18
 arxiv: "2510.07152"
 venue: "IEEE RA-L 2026 (accepted 2026-06-09); arXiv v3 2026-08-03"
 related:
@@ -16,6 +16,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/domain-randomization.md
   - ./paper-rpl-robust-humanoid-perceptive-locomotion.md
+  - ./paper-cref.md
   - ./x-humanoid.md
   - ./tienkung-humanoid-open-source.md
   - ./isaac-gym-isaac-lab.md
@@ -202,6 +203,7 @@ $$
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 深度/高程感知闭环
 - [Privileged Training](../concepts/privileged-training.md) — 专家特权 → 学生部分观测
 - [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) — 多向深度蒸馏对照
+- [CReF](./paper-cref.md) — 对照：同样用本体 query 交叉注意，但 **不重建高程**，直接深度→动作
 - [X-Humanoid](./x-humanoid.md) / [天工开源](./tienkung-humanoid-open-source.md) — 机构与本体生态
 - [分类 05_Locomotion](../overview/paper-notebook-category-05-locomotion.md) — Paper Notebooks 父节点
 

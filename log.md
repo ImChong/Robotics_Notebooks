@@ -1,3 +1,14 @@
+## [2026-08-18] ingest | sources/papers/cref_arxiv_2603_29452.md — CReF 深度条件人形行走（arXiv:2603.29452）；项目页仅为静态站，训练代码确认未开源
+
+- **触发：** 用户指定 ingest <https://arxiv.org/abs/2603.29452>、<https://arxiv.org/pdf/2603.29452>，并要求自动合并 PR
+- **步骤 2.5：** 打开项目页 <https://cometlogic.github.io/cref/>；源仓 [cometlogic/cref](https://github.com/cometlogic/cref) 仅 GitHub Pages 静态站（`index.html` / `scripts.js` / `res/`），无训练/推理入口。论文未承诺即将开源 → **确认未开源**
+- **来源：** [`sources/papers/cref_arxiv_2603_29452.md`](sources/papers/cref_arxiv_2603_29452.md)、[`sources/sites/cometlogic-cref-github-io.md`](sources/sites/cometlogic-cref-github-io.md)
+- **升格：** [`wiki/entities/paper-cref.md`](wiki/entities/paper-cref.md) — 本体查询交叉注意 + GRF + GRU highway；足端点云可支撑落脚奖励；X2 Ultra 室内楼梯 20/20、40 cm 台、80 cm 沟；仿真总体 SR 90.45% vs 重实现 HPL 74.57%
+- **交叉：** 楼梯枢纽 / Humanoid Locomotion / SSR / HPL / Now You See That / DPL / Hiking / PIE / Privileged Training / Footstep Planning / Sim2Real / Terrain Adaptation
+- **开源结论：** 训练代码未开源；源码运行时序图不适用
+- **机构：** 已有 `zju`、`sdu`、`agibot`（平台标签）
+
+
 ## [2026-08-18] ingest | sources/papers/harnesseval_w_arxiv_2608_16859.md — 接入 MirroS HarnessEval-W 交互式世界 agentic 评测；评测代码已开源、HF 全量案例待发
 
 - **触发：** 用户指定 ingest 项目页 <https://mirros-lab.github.io/HarnessEval-W>、论文 <https://arxiv.org/abs/2608.16859>、代码 <https://github.com/mirros-lab/harnesseval-w>、Blog <https://mirros.ai/blog/harnesseval>，并要求自动合并 PR
