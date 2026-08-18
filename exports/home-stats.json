@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17",
+  "generated_at": "2026-08-18",
   "node_count": 3143,
   "edge_count": 27873,
   "coverage": {
@@ -8,6 +8,16 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
+      "detail_id": "entity-paper-sg-wam-semantic-guidance",
+      "label": "SG-WAM（语义引导）：让 WAM 的未来视频听懂指令",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
     {
       "path": "wiki/entities/paper-reflexvla.md",
       "detail_id": "entity-paper-reflexvla",
@@ -161,16 +171,6 @@
       "community_label": "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
-      "detail_id": "entity-paper-sg-wam-semantic-guidance",
-      "label": "SG-WAM（语义引导）：让 WAM 的未来视频听懂指令",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
       "path": "wiki/entities/paper-4d-wam.md",
       "detail_id": "entity-paper-4d-wam",
       "label": "4D-WAM：用轨迹场给 WAM 补上局部运动和终点",
@@ -214,9 +214,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-reflexvla.md",
-    "detail_id": "entity-paper-reflexvla",
-    "label": "ReflexVLA：动态任务低延迟 VLA",
+    "path": "wiki/entities/paper-sg-wam-semantic-guidance.md",
+    "detail_id": "entity-paper-sg-wam-semantic-guidance",
+    "label": "SG-WAM（语义引导）：让 WAM 的未来视频听懂指令",
     "type": "entity",
     "recency": "2026-08-17",
     "source": "git",
