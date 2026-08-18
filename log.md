@@ -1,3 +1,13 @@
+## [2026-08-18] ingest | sources/papers/harnesseval_w_arxiv_2608_16859.md — 接入 MirroS HarnessEval-W 交互式世界 agentic 评测；评测代码已开源、HF 全量案例待发
+
+- **触发：** 用户指定 ingest 项目页 <https://mirros-lab.github.io/HarnessEval-W>、论文 <https://arxiv.org/abs/2608.16859>、代码 <https://github.com/mirros-lab/harnesseval-w>、Blog <https://mirros.ai/blog/harnesseval>，并要求自动合并 PR
+- **步骤 2.5：** 打开项目页，Code 指向 GitHub；仓内 `harnesseval eval/plan/generate/verify`、11 个 skill、`benchmark/plans` 与捆绑 demo **已开源**。README TODO：HF 全量/子集案例与托管提交服务 **待发布**；项目页 V1 Leaderboard **Coming Soon**。许可：README 宣称 Apache-2.0，GitHub License 字段未识别
+- **来源：** [`sources/papers/harnesseval_w_arxiv_2608_16859.md`](sources/papers/harnesseval_w_arxiv_2608_16859.md)、[`sources/sites/harnesseval-w-github-io.md`](sources/sites/harnesseval-w-github-io.md)、[`sources/repos/harnesseval-w.md`](sources/repos/harnesseval-w.md)、[`sources/blogs/mirros_harnesseval.md`](sources/blogs/mirros_harnesseval.md)
+- **升格：** [`wiki/entities/paper-harnesseval-w.md`](wiki/entities/paper-harnesseval-w.md) — 三轴八设定 + 证据树；330 例 × 18 模型；Intentional ρ=0.93；Physical 成对准确率 31.9%→71.7%；微调常抬 Revisit、打掉 Intentional/Physical
+- **交叉：** 评测枢纽 / Query ② 层 / WorldScore / EWMBench / 生成式 WM / Video-as-Simulation / ABot-World-0 / Wan / Cosmos 3
+- **开源结论：** 评测管线可运行；全量案例未上 HF；源码运行时序图覆盖 eval CLI + demo
+- **机构：** 注册 `mirros`（镜界（MirroS））
+
 ## [2026-08-18] ingest | sources/blogs/wechat_embodied_station_contact_predict_adapt_10_papers_2026-08-18.md — 接入具身智能小站「接触/预测/适应」10 篇；复用 Seeker
 
 - **触发：** 用户指定 ingest <https://mp.weixin.qq.com/s/IxmKI4_JYy1KBfp_JCZFLw>

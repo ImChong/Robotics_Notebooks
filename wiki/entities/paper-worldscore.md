@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, world-generation, video-generation, evaluation, 3d, 4d, open-source, stanford]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-18
 arxiv: "2504.00983"
 venue: "ICCV 2025"
 code: https://github.com/haoyi-duan/WorldScore
@@ -13,9 +13,11 @@ related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-gigaworld-1-policy-evaluation.md
+  - ./paper-harnesseval-w.md
   - ./paper-homeworld-whole-home-scene-generation.md
 sources:
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
+  - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
   - ../../sources/sites/haoyi-duan-worldscore-github-io.md
   - ../../sources/sites/worldscore-leaderboard-hf.md
   - ../../sources/repos/worldscore.md
@@ -236,6 +238,7 @@ sequenceDiagram
 | 对照 | 差异读法 |
 |------|----------|
 | [EWMBench](./ewmbench.md) | 具身操纵：场景守恒 / EEF 轨迹 / 语义逻辑；WorldScore：开放域多场景 + 相机布局 |
+| [HarnessEval-W](./paper-harnesseval-w.md) | 交互干预/持久的 **agentic 证据树**；WorldScore 是固定十维 + 显式相机协议 |
 | VBench / WorldModelBench | 单场景视频质量为主；缺统一 3D 相机规格与多场景协议 |
 | [GigaWorld-1 / WMBench](./paper-gigaworld-1-policy-evaluation.md) | 偏「WM 作策略评估器」的动作忠实；WorldScore 不测下游策略收益 |
 | [HomeWorld](./paper-homeworld-whole-home-scene-generation.md) | 全屋静态 3D 生成系统；可用 WorldScore 类布局一致性视角对照，但非同一官方协议 |
@@ -252,6 +255,7 @@ sequenceDiagram
 ## 关联页面
 
 - [EWMBench](./ewmbench.md) — 具身视频世界模型三轴评测（操纵轴）
+- [HarnessEval-W](./paper-harnesseval-w.md) — 交互式世界 agentic 评测（干预/持久；非相机协议）
 - [Generative World Models](../methods/generative-world-models.md) — 生成式世界模型方法谱系
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频作仿真接口时的失效模式
 - [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md) — 四层评测入口；本页作 ② 层相邻的世界生成统一榜

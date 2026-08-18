@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-18",
-  "node_count": 3153,
-  "edge_count": 27946,
+  "node_count": 3154,
+  "edge_count": 27965,
   "coverage": {
-    "covered": 3129,
-    "total": 3129,
+    "covered": 3130,
+    "total": 3130,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -48,7 +48,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-hui360.md",
@@ -122,8 +122,7 @@
       "type": "entity",
       "recency": "2026-08-17",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-reflexvla.md",
@@ -132,8 +131,7 @@
       "type": "entity",
       "recency": "2026-08-17",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-spd.md",
@@ -143,7 +141,7 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-fail-passive-gap.md",
@@ -232,11 +230,11 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 700
+      "size": 695
     },
     {
       "label": "操作",
-      "size": 574
+      "size": 617
     },
     {
       "label": "视觉-语言-动作",
@@ -247,8 +245,8 @@
       "size": 172
     },
     {
-      "label": "世界动作模型",
-      "size": 159
+      "label": "视觉语言动作纵深路线",
+      "size": 133
     },
     {
       "label": "移动操作",
@@ -291,7 +289,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 728,
+      "degree": 730,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -408,7 +406,7 @@
       "type": "entity",
       "degree": 40,
       "has_repo": true,
-      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+      "community_label": "操作（Manipulation） 社区"
     }
   ]
 }

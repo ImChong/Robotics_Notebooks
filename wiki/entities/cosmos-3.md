@@ -10,7 +10,7 @@ tags:
   - wam
   - open-source
 status: complete
-updated: 2026-08-10
+updated: 2026-08-18
 arxiv: "2606.02800"
 related:
   - ../concepts/world-action-models.md
@@ -23,6 +23,7 @@ related:
   - ../entities/paper-shenlan-wm-11-cosmos-policy.md
   - ../entities/nvidia-so101-sim2real-lab-workflow.md
   - ../entities/ewmbench.md
+  - ../entities/paper-harnesseval-w.md
   - ../entities/ge-sim-2.md
   - ../entities/paper-physisforcing.md
 sources:
@@ -178,6 +179,7 @@ flowchart TB
 - [mimic-video（VAM）](../methods/mimic-video.md)
 - [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md)
 - [NVIDIA SO-101 Sim2Real 动手课](./nvidia-so101-sim2real-lab-workflow.md)
+- [HarnessEval-W](./paper-harnesseval-w.md) — Cosmos3-Super 在 Prompt I2V 族 Overall 71.9（#7）
 
 ## 推荐继续阅读
 

@@ -21,6 +21,7 @@ related:
   - ../entities/nvidia-omniverse.md
   - ../entities/ewmbench.md
   - ../entities/paper-worldscore.md
+  - ../entities/paper-harnesseval-w.md
   - ../entities/paper-wem-world-ego-modeling.md
   - ../entities/paper-gamma-world-multi-agent.md
   - ../entities/paper-homeworld-whole-home-scene-generation.md
@@ -66,6 +67,7 @@ sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/ewmbench.md
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
+  - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
   - ../../sources/papers/dwm_arxiv_2512_17907.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md
@@ -134,7 +136,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - **物理一致性缺失**：模型有时会产生违反物理常识的幻觉（如物体凭空消失）。
 - **推理开销大**：目前生成一帧高质量视频的速度远低于物理引擎的 1000Hz 要求。
 - **交互精度低**：很难通过生成的视频反推精确到毫米级的接触力。
-- **评测口径漂移**：通用「文生视频」基准往往强调美学与粗粒度语义；面向操纵的 **场景守恒、末端时序、步骤逻辑** 需要单独量纲，参见 [EWMBench](../entities/ewmbench.md)。若目标是开放域 **多场景 + 相机布局** 的世界生成（含 3D/4D），用 [WorldScore](../entities/paper-worldscore.md) 的 Ctrl/Quality/Dynamics，勿与 EWMBench 混轴。
+- **评测口径漂移**：通用「文生视频」基准往往强调美学与粗粒度语义；面向操纵的 **场景守恒、末端时序、步骤逻辑** 需要单独量纲，参见 [EWMBench](../entities/ewmbench.md)。若目标是开放域 **多场景 + 相机布局** 的世界生成（含 3D/4D），用 [WorldScore](../entities/paper-worldscore.md) 的 Ctrl/Quality/Dynamics。若目标是 **交互干预是否被执行、长程是否持久**，用 [HarnessEval-W](../entities/paper-harnesseval-w.md) 的案例路由技能与证据树。三者轴线不同，勿混读。
 
 ### 条件分解：已知静态场景 + 灵巧手轨迹（DWM）
 
@@ -280,6 +282,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。
 - [EWMBench](../entities/ewmbench.md) — 具身视频世界模型生成质量的多维基准与开源工具链。
 - [WorldScore](../entities/paper-worldscore.md) — 3D/4D/I2V/T2V **多场景世界生成** 统一评测（ICCV 2025；HF 活榜）。
+- [HarnessEval-W](../entities/paper-harnesseval-w.md) — 交互式世界 **agentic** 评测：干预/持久证据树，330 例 × 18 模型（arXiv:2608.16859；评测代码已开源）。
 - [GE-Sim 2.0](../entities/ge-sim-2.md) — Agibot **闭环** 操纵视频世界模拟器：本体状态专家 + World Judge + 加速 rollout（arXiv:2605.27491）。
 - [Cosmos 3](../entities/cosmos-3.md) — NVIDIA **全模态 MoT 世界模型平台**：Reasoner + Generator 双路径，覆盖 VLM、视频生成、policy 与正/逆动力学（arXiv:2606.02800）。
 - [Kairos（原生世界–动作模型栈）](../entities/paper-kairos-native-world-model-stack.md) — **regret-aware CEDC + SWA/DSWA/GLA + 4B/3.1 部署导向 WAM**（arXiv:2606.16533 v3，[kairos-agi/kairos](https://github.com/kairos-agi/kairos)）。
