@@ -2,9 +2,10 @@
 type: method
 tags: [locomotion, perception, reinforcement-learning, parkour, depth, legged]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-18
 summary: "PIE（Parkour with Implicit-Explicit Learning）单阶段端到端 RL：深度图+本体经多头估计器输出显式高度图/速度/足端离地量与隐式环境表征，实现低成本四足挑战地形零样本跑酷。"
 related:
+  - ../entities/paper-cref.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./dreamwaq.md
   - ../entities/dreamwaq-plus.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/papers/pie_arxiv_2408_13740.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/papers/cref_arxiv_2603_29452.md
 ---
 
 # PIE：感知一阶段鲁棒行走（隐式–显式学习）
@@ -89,6 +91,7 @@ flowchart LR
 - [Extreme Parkour](../entities/extreme-parkour.md) — 两阶段视觉跑酷对照
 - [AME 论文](../entities/paper-ame-attention-based-map-encoding.md) — Attention 地形编码姊妹线
 - [P³](../entities/paper-p3.md) — 外感知进 VAE 后，PPO 应对边缘策略做 clip（论文引用 PIE 为 VAE-PPO 谱系）
+- [CReF](../entities/paper-cref.md) — 同组后续人形单阶段 raw 深度；**去掉**显式高度图头，改本体查询注意 + 落脚奖励
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
 
 ## 参考来源
@@ -96,6 +99,7 @@ flowchart LR
 - [pie_arxiv_2408_13740.md](../../sources/papers/pie_arxiv_2408_13740.md)
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
 - [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
+- [CReF 论文摘录（arXiv:2603.29452）](../../sources/papers/cref_arxiv_2603_29452.md)
 
 ## 推荐继续阅读
 

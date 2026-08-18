@@ -2,8 +2,9 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-18
 related:
+  - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../entities/paper-discrete-terrain-minimal-proximity-sensing.md
@@ -36,6 +37,7 @@ related:
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
   - ../entities/paper-p3.md
 sources:
+  - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
   - ../../sources/papers/ssr_arxiv_2605_30770.md
@@ -121,6 +123,7 @@ flowchart TB
 | **有**（点云 BEV → 几何 token） | **上楼 · OOD 踢面** | [Explicit Stair Geometry](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md) | 踢面/踏面/航向四维条件化 PPO；G1 户外 33 级；相对 MoRE 更高 OOD 成功率 |
 | **有**（高度图 + LiDAR 奖励） | **多地形含下楼** | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) | VLM 生成环境感知奖励；论文称感知基线未能完成楼梯下降 |
 | **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hiking-in-the-wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
+| **有**（64×48 前向深度，无高程中间层） | **上下楼梯 · 沟/台 · 室内 OOD** | [CReF](../entities/paper-cref.md) | 本体查询交叉注意 + GRU highway；足端点云可支撑落脚奖励；X2 Ultra 零样本 15/30 cm 楼梯 20/20、40 cm 台、80 cm 沟；训练代码未开源 |
 | **有**（36×36 第一视角深度） | **上下楼梯 · 沟/台 · 户外长程** | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) | 想象落脚点 + 潜空间对称 + 分地形 AMP；AgiBot X2 零样本 **1.3 km** 户外；90 cm 沟 / 45 cm 台 |
 | **有**（24×32 立体深度 + 8 步增广） | **双向长楼梯 · 沟/台 · 跑酷** | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) | 特权 height → 深度 DAgger；多 critic/discriminator；**30+ 级楼梯**、RDT-Bench **98.9%**；RSS 2026 |
 | **有**（LiDAR 11×11 高程 + cross-attn） | **楼梯/高台 + 边走边操作** | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) | 单阶段 MoE 全身 LLC；G1 非结构化 loco-manipulation；相对 HOMIE/AMO 更低跟踪误差 |
@@ -176,6 +179,7 @@ flowchart TB
 | 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
 | 人形 **无技能标签** 深度跑酷 + 稀疏种子扩张 | [LightLP](../entities/paper-light-loco-parkour.md) |
 | 人形 **未来监督** Transformer 跑酷（单策略九类课） | [ParkourFormer](../entities/paper-parkourformer.md) |
+| 人形 **单阶段 raw 深度**（无 2.5D 建图 / 无几何辅助目标）+ 落脚奖励 | [CReF](../entities/paper-cref.md) |
 | 人形 **开放世界长程** + 想象落脚 | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) |
 | 人形 **立体深度 sim2real** + 特权蒸馏 + 跑酷/长楼梯 | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) |
 | 人形 **边走边操作** + LiDAR 高程 LLC | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) |
@@ -202,6 +206,7 @@ flowchart TB
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形高程图与障碍反应
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 感知到动作的通用闭环
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口
+- [CReF](../entities/paper-cref.md) — 单阶段 raw 深度交叉注意 + 可支撑落脚奖励；X2 Ultra 零样本（arXiv:2603.29452）
 
 ## 推荐继续阅读
 

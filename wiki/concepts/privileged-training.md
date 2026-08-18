@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -14,6 +14,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ./domain-randomization.md
   - ../tasks/loco-manipulation.md
+  - ../entities/paper-cref.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/extreme-parkour.md
@@ -36,6 +37,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
+  - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/legged_load_adapt_arxiv_2507_07825.md
 ---
 
@@ -133,7 +135,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 优点：单阶段即可，无需两步训练；Critic 不部署，可以用所有信息。**部署路径只留 Actor**，特权通道不会泄漏到真机观测。
 
-和两阶段 Teacher-Student 的差别：非对称 AC 的 Actor 从第一天起就只看可部署观测，用更准的优势信号学；Teacher-Student 则先让 **Actor 也能看特权** 把行为上限抬高，再蒸馏。前者几乎是「免费」的训练期脚手架，后者换的是更高的行为模板、但多一阶段蒸馏误差。运控 PPO 栈里两者经常叠用，不要把 critic 特权当成已经做了蒸馏。
+和两阶段 Teacher-Student 的差别：非对称 AC 的 Actor 从第一天起就只看可部署观测，用更准的优势信号学；Teacher-Student 则先让 **Actor 也能看特权** 把行为上限抬高，再蒸馏。前者几乎是「免费」的训练期脚手架，后者换的是更高的行为模板、但多一阶段蒸馏误差。运控 PPO 栈里两者经常叠用，不要把 critic 特权当成已经做了蒸馏。人形深度行走里，[CReF](../entities/paper-cref.md) 是典型 **只把高程/真值速度给 critic、Actor 直吃 raw 深度** 的单阶段例子，并以此对照 HPL 式 scandots teacher 蒸馏。
 
 ---
 
@@ -252,6 +254,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 非对称 Actor-Critic 在足式机器人上的应用
 - Pinto et al., *Asymmetric Actor Critic for Image-Based Robot Learning* (2018) — 非对称 AC 理论基础
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：以 proxy agent 作 teacher，对学生做掩码在线蒸馏，把多接口 WBC 统一进 CVAE
+- **ingest 档案：** [sources/papers/cref_arxiv_2603_29452.md](../../sources/papers/cref_arxiv_2603_29452.md) — CReF：非对称 critic 用局部高程，Actor 直吃 raw 深度、无蒸馏
 
 ---
 
@@ -279,6 +282,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — TCRS 合成 **地形一致 adapted 参考** 作盲 teacher 监督；部署仍用 **raw 参考 + 视觉学生**
 - [FADA](../entities/paper-fada-humanoid.md) — 仿真特权 oracle → DAgger 蒸馏 Planner–IDM；部署仅 LoRA 微调 IDM（arXiv:2606.28476）
 - [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 训练期 PCA 地形描述子门控 BSGA；部署纯本体感知 actor（非经典 teacher–student 蒸馏）
+- [CReF](../entities/paper-cref.md) — 深度条件人形行走：非对称 critic 吃局部高程，Actor 无蒸馏直吃 raw 深度（arXiv:2603.29452）
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — Teacher-Student 作为训练闭环的后置部署模块
