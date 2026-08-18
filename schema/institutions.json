@@ -354,6 +354,21 @@
         "inria"
       ]
     },
+    "cea": {
+      "label": "法国原子能和替代能源委员会（CEA）",
+      "aliases": [
+        "cea",
+        "cea-list"
+      ]
+    },
+    "cambridge": {
+      "label": "剑桥大学（University of Cambridge）",
+      "aliases": [
+        "cambridge",
+        "university-of-cambridge",
+        "cambridge-afar"
+      ]
+    },
     "intel": {
       "label": "英特尔（Intel）",
       "aliases": [

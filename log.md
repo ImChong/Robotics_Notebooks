@@ -1,3 +1,14 @@
+## [2026-08-18] ingest | sources/blogs/wechat_embodied_station_contact_predict_adapt_10_papers_2026-08-18.md — 接入具身智能小站「接触/预测/适应」10 篇；复用 Seeker
+
+- **触发：** 用户指定 ingest <https://mp.weixin.qq.com/s/IxmKI4_JYy1KBfp_JCZFLw>
+- **抓取：** Agent Reach + wechat-article-for-ai（`--no-images`）
+- **步骤 2.5：** 逐篇打开项目页/GitHub。可运行：AutoPSO、HUI360 基线、双臂 DDPM、nav-ps-balance、Mind-the-Context notebook、Seeker（复用）。清单：TF-ART Awesome。空仓：顶层布料分割。仅项目页：BooST。占位 README：DreamX-Phi（权重待赛后）
+- **已有页：** 复用 [`wiki/entities/paper-seeker.md`](wiki/entities/paper-seeker.md)
+- **升格：** 新建 9 个 `paper-*` + [`wiki/overview/contact-predict-adapt-10-papers-technology-map.md`](wiki/overview/contact-predict-adapt-10-papers-technology-map.md)
+- **交叉：** 触觉链 / Awesome Touch / 双臂 / IL / LIBERO / PGIF-MPPI / iCrowdNav / Wan / Ctrl-World / 生成式 WM
+- **开源结论：** 见上；空仓与占位仓的源码运行时序图不适用
+- **机构：** 注册 `cambridge`、`cea`
+
 ## [2026-08-17] ingest | sources/papers/reflexvla_arxiv_2608_14379.md — 加深交大 ReflexVLA；复核录用后开源，并与同名流式 Reflex 分流
 
 - **触发：** 用户指定 ingest *Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation*（交大 陈宇轩 / 张婉若 / 李晓，arXiv 2026-08），并要求自动合并 PR

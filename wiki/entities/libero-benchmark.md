@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-17
+updated: 2026-08-18
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -105,6 +105,7 @@ flowchart LR
 - [World Action Planner](./paper-world-action-planner.md) — LIBERO-Long / Object 上用 pose-image WM + VLM 规划测组合与新布局泛化
 - [ActFovea](./paper-actfovea.md) — 在本基准四套件（40 任务 / 2000 episodes）上做 VLA 运行时扰动与防护评测
 - [Neural Introspection Gating](./paper-neural-introspection-gating.md) — OpenVLA / OFT 上 logit-margin 门控 KV 缓存；Long/Goal 收回盲缓存掉点（arXiv:2608.10824）
+- [BooST](./paper-boost-skill-transfer.md) — DROID 预训练技能迁到本基准；LIBERO-90 10 demo **0.70**（arXiv:2608.10600；训练仓未开）
 - [Flex-π](./paper-flex-pi.md) — 多流 WAM；LIBERO 柔性 ckpt 98.5%、固定模式 99.2%；LIBERO-Plus Total 80.9%（arXiv:2608.10860；代码待发布）
 - [G0.5](./paper-galaxea-g05.md) — AR VLA；LIBERO 均 **98.9%** / Long **98.6%**（已开源）
 - [ReflexVLA](./paper-reflexvla.md) — 动态模块后 LIBERO 仍 **97.2%**（与 VLA-Adapter 持平；代码待开放）
