@@ -63,7 +63,8 @@
 
 | 主题 | 关系 |
 |------|------|
-| [REALab 14 篇技术地图（2026）](../../wiki/overview/realab-14-papers-technology-map-2026.md) | **主沉淀页**：三条脉络阅读坐标 + 开源状态 + 本库交叉 |
+| [REALab 14 篇技术地图（2026）](../../wiki/overview/realab-14-papers-technology-map-2026.md) | **主沉淀页** |
+| #01–#14 论文实体 | 见技术地图「Wiki 实体索引」；每篇独立 `wiki/entities/paper-*` 节点 |
 | [海外具身智能实验室地图（2026）](../../wiki/overview/overseas-embodied-ai-labs-landscape-2026.md) | REAL Lab 节点补充 2026 论文簇 |
 | [Diffusion Policy](../../wiki/methods/diffusion-policy.md) | #02 DF-ExpEnse、#03 DICE-RL、#05 GMP 等扩散策略微调/记忆线 |
 | [Transformer Transformer（实体）](../../wiki/entities/paper-transformer-transformer.md) | #01 已深读 |
@@ -75,4 +76,4 @@
 - [x] 公众号正文抓取与 raw 归档
 - [x] 14 篇索引表 + 项目页开源核查
 - [x] 升格 `wiki/overview/realab-14-papers-technology-map-2026.md`
-- [ ] 单篇论文深读实体页（除 #01 Transformer Transformer 外，待后续逐篇 ingest）
+- [x] 14/14 升格独立 `wiki/entities/paper-*` 详情节点（#01 复用 `paper-transformer-transformer`）

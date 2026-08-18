@@ -18,14 +18,19 @@ related:
   - ../methods/diffusion-policy.md
   - ../methods/vla.md
   - ../entities/paper-transformer-transformer.md
-  - ../entities/aloha.md
-  - ../tasks/manipulation.md
-  - ../tasks/teleoperation.md
-  - ../tasks/bimanual-manipulation.md
-  - ../queries/cross-embodiment-transfer-strategy.md
-  - ../concepts/diffusion-model.md
-  - ../entities/paper-ume-exo.md
-  - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+  - ../entities/paper-df-expense.md
+  - ../entities/paper-dice-rl.md
+  - ../entities/paper-foundation-models-full-stack-transfer.md
+  - ../entities/paper-gated-memory-policy.md
+  - ../entities/paper-muse-multisensory-continual-learning.md
+  - ../entities/paper-minimalist-compliance-control.md
+  - ../entities/paper-umi-ft.md
+  - ../entities/paper-modpack.md
+  - ../entities/paper-behavior-prompting-policy.md
+  - ../entities/paper-hommi.md
+  - ../entities/paper-action-view-augmentation.md
+  - ../entities/paper-geometry-aware-4d-video-generation.md
+  - ../entities/paper-dexmachina.md
 sources:
   - ../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md
   - ../../sources/raw/wechat_shenlan_realab_14_papers_2026-08-18/article.md
@@ -96,34 +101,55 @@ flowchart TB
 
 ## 核心原理：按脉络读
 
+> **站内详情页**：下表「Wiki 实体」列链接到 `wiki/entities/paper-*` 独立节点（14/14，无重复 arXiv 节点）。
+
+### Wiki 实体索引（14 篇）
+
+| # | 工作 | Wiki 实体 | arXiv |
+|---|------|-----------|-------|
+| 01 | Transformer Transformer | [paper-transformer-transformer](../entities/paper-transformer-transformer.md) | 2607.25798 |
+| 02 | DF-ExpEnse | [paper-df-expense](../entities/paper-df-expense.md) | 2606.19656 |
+| 03 | DICE-RL | [paper-dice-rl](../entities/paper-dice-rl.md) | 2603.10263 |
+| 04 | 全栈迁移综述 | [paper-foundation-models-full-stack-transfer](../entities/paper-foundation-models-full-stack-transfer.md) | 2602.22001 |
+| 05 | GMP | [paper-gated-memory-policy](../entities/paper-gated-memory-policy.md) | 2604.18933 |
+| 06 | MuSe | [paper-muse-multisensory-continual-learning](../entities/paper-muse-multisensory-continual-learning.md) | 2606.30988 |
+| 07 | Minimalist Compliance | [paper-minimalist-compliance-control](../entities/paper-minimalist-compliance-control.md) | 2603.00913 |
+| 08 | UMI-FT | [paper-umi-ft](../entities/paper-umi-ft.md) | 2601.09988 |
+| 09 | ModPack | [paper-modpack](../entities/paper-modpack.md) | 2607.19479 |
+| 10 | BPP | [paper-behavior-prompting-policy](../entities/paper-behavior-prompting-policy.md) | 2606.30457 |
+| 11 | HoMMI | [paper-hommi](../entities/paper-hommi.md) | 2603.03243 |
+| 12 | Action-View Augmentation | [paper-action-view-augmentation](../entities/paper-action-view-augmentation.md) | 2606.19586 |
+| 13 | Geometry-Aware 4D Video | [paper-geometry-aware-4d-video-generation](../entities/paper-geometry-aware-4d-video-generation.md) | 2507.01099 |
+| 14 | DexMachina | [paper-dexmachina](../entities/paper-dexmachina.md) | 2505.24853 |
+
 ### 01 — 机器人基础模型与策略微调
 
 | # | 工作 | 文内要点 | 本库延伸 |
 |---|------|----------|----------|
-| 01 | [Transformer Transformer](https://arxiv.org/abs/2607.25798) | RoboTokens + DiT 统一共设计与跨具身控制；ALOHA 跟踪误差约 −70% | [实体页](../entities/paper-transformer-transformer.md)、[ALOHA](../entities/aloha.md)、[cross-embodiment](../queries/cross-embodiment-transfer-strategy.md) |
-| 02 | [DF-ExpEnse](https://arxiv.org/abs/2606.19656) (ICML 26) | 扩散策略多模态采样 + critic ensemble 平衡质量与探索；机群协同探索 | [Diffusion Policy](../methods/diffusion-policy.md) 微调线 |
-| 03 | [DICE-RL](https://arxiv.org/abs/2603.10263) (ICML 26) | RL 作「分布收缩」算子；选择性行为正则 + 价值引导动作选择 | 同上；真机长周期操作 |
-| 04 | [全栈迁移综述](https://arxiv.org/abs/2602.22001) | OpenVLA / π₀-FAST / π₀ 三类 VLA 架构；基础模型是关键但非唯一路线 | [VLA](../methods/vla.md)、[VLA 复现谱系](./vla-open-source-repro-landscape-2025.md) |
-| 05 | [GMP](https://arxiv.org/abs/2604.18933) | 学习型内存门控 + 历史动作扩散噪声；非马尔可夫任务 SR +30.1% | [diffusion-model](../concepts/diffusion-model.md) |
+| 01 | [Transformer Transformer](../entities/paper-transformer-transformer.md) | RoboTokens + DiT 统一共设计与跨具身控制；ALOHA 跟踪误差约 −70% | [ALOHA](../entities/aloha.md)、[cross-embodiment](../queries/cross-embodiment-transfer-strategy.md) |
+| 02 | [DF-ExpEnse](../entities/paper-df-expense.md) | 扩散策略多模态采样 + critic ensemble 平衡质量与探索；机群协同探索 | [Diffusion Policy](../methods/diffusion-policy.md) |
+| 03 | [DICE-RL](../entities/paper-dice-rl.md) | RL 作「分布收缩」算子；选择性行为正则 + 价值引导动作选择 | 同上；真机长周期操作 |
+| 04 | [全栈迁移综述](../entities/paper-foundation-models-full-stack-transfer.md) | OpenVLA / π₀-FAST / π₀ 三类 VLA 架构；基础模型是关键但非唯一路线 | [VLA](../methods/vla.md)、[VLA 复现谱系](./vla-open-source-repro-landscape-2025.md) |
+| 05 | [GMP](../entities/paper-gated-memory-policy.md) | 学习型内存门控 + 历史动作扩散噪声；非马尔可夫任务 SR +30.1% | [diffusion-model](../concepts/diffusion-model.md) |
 
 ### 02 — 多模态感官融合与顺应控制
 
 | # | 工作 | 文内要点 | 本库延伸 |
 |---|------|----------|----------|
-| 06 | [MuSe](https://arxiv.org/abs/2606.30988) | 多阶段融合 + 多感官未来预测 + 经验回放；有限 F/T 数据接入预训练视觉策略 | [manipulation](../tasks/manipulation.md) 接触丰富任务 |
-| 07 | [Minimalist Compliance](https://arxiv.org/abs/2603.00913) (RSS 26) | 电机电流/电压 + 雅可比估计外力 → 任务空间导纳；跨 ARX/G1/LEAP | 对照 [PRISM](../entities/paper-prism.md)、[CURRENT](../entities/paper-current-as-touch-proprioceptive-contact.md) |
-| 08 | [UMI-FT](https://arxiv.org/abs/2601.09988) (ICRA 26) | 指端 CoinFT 六维力 + RGB/深度；自适应顺应策略 | [UME-Exo](../entities/paper-ume-exo.md) UMI 路线 |
+| 06 | [MuSe](../entities/paper-muse-multisensory-continual-learning.md) | 多阶段融合 + 多感官未来预测 + 经验回放；有限 F/T 数据接入预训练视觉策略 | [manipulation](../tasks/manipulation.md) |
+| 07 | [Minimalist Compliance](../entities/paper-minimalist-compliance-control.md) | 电机电流/电压 + 雅可比估计外力 → 任务空间导纳；跨 ARX/G1/LEAP | [PRISM](../entities/paper-prism.md)、[CURRENT](../entities/paper-current-as-touch-proprioceptive-contact.md) |
+| 08 | [UMI-FT](../entities/paper-umi-ft.md) | 指端 CoinFT 六维力 + RGB/深度；自适应顺应策略 | [UME-Exo](../entities/paper-ume-exo.md) |
 
 ### 03 — 数据采集接口与跨具身操作
 
 | # | 工作 | 文内要点 | 本库延伸 |
 |---|------|----------|----------|
-| 09 | [ModPack](https://arxiv.org/abs/2607.19479) | 可穿戴背包 + 即插即用感知/主手模块；双臂移动操作 | [teleoperation](../tasks/teleoperation.md) |
-| 10 | [BPP](https://arxiv.org/abs/2606.30457) | 单次人类示范作 behavior prompt；iPhUMI 采集 + DrawAnything/LIBERO-Gen | 测试时 in-context 操作 |
-| 11 | [HoMMI](https://arxiv.org/abs/2603.03243) (RSS 26) | UMI + 第一人称感知；具身无关视觉表征 + 放松头动作 + 扩散 Transformer WBC | 对照 [HALOMI](../entities/paper-halomi-humanoid-loco-manipulation.md) |
-| 12 | [Action-View Augmentation](https://arxiv.org/abs/2606.19586) (CoRL 25) | 单次手眼示范 → 鱼眼 3DGS + 轨迹优化 → 千条增广轨迹 | 分布外初始位姿/障碍物鲁棒 |
-| 13 | [Geometry-Aware 4D Video](https://arxiv.org/abs/2507.01099) (ICLR 26) | 跨视角点图对齐监督；无相机位姿输入的多视角一致 4D 视频 → 位姿追踪训策略 | [robot world models](./robot-world-models-training-loop-taxonomy.md) |
-| 14 | [DexMachina](https://arxiv.org/abs/2505.24853) (ICML 26) | VOC 课程 + 任务/运动/接触奖励；双手灵巧功能重定向 benchmark | [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) 基线对照 |
+| 09 | [ModPack](../entities/paper-modpack.md) | 可穿戴背包 + 即插即用感知/主手模块；双臂移动操作 | [teleoperation](../tasks/teleoperation.md) |
+| 10 | [BPP](../entities/paper-behavior-prompting-policy.md) | 单次人类示范作 behavior prompt；iPhUMI + DrawAnything/LIBERO-Gen | 测试时 in-context 操作 |
+| 11 | [HoMMI](../entities/paper-hommi.md) | UMI + 第一人称感知；具身无关视觉 + 放松头动作 + DiT WBC | [HALOMI](../entities/paper-halomi-humanoid-loco-manipulation.md) |
+| 12 | [Action-View Augmentation](../entities/paper-action-view-augmentation.md) | 单次手眼示范 → 鱼眼 3DGS + 轨迹优化 → 千条增广轨迹 | OOD 位姿/避障 |
+| 13 | [Geometry-Aware 4D Video](../entities/paper-geometry-aware-4d-video-generation.md) | 跨视角点图对齐；无相机位姿的 4D RGB-D → 位姿追踪训策略 | [robot world models](./robot-world-models-training-loop-taxonomy.md) |
+| 14 | [DexMachina](../entities/paper-dexmachina.md) | VOC 课程 + 任务/运动/接触奖励；双手灵巧 benchmark | [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) |
 
 ## 工程实践：开源状态（项目页核查，2026-08-18）
 

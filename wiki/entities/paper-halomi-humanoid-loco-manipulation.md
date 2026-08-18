@@ -181,5 +181,5 @@ flowchart TB
 
 - [HALOMI 项目主页](https://halomi-humanoid.github.io/)
 - [arXiv:2606.18772 全文](https://arxiv.org/html/2606.18772v1)
-- [HoMMI（arXiv:2603.03243）](https://arxiv.org/abs/2603.03243) — 同 UMI+egocentric 移动操作、显式手眼策略设计对照
+- [HoMMI（论文实体）](./paper-hommi.md) — 同 UMI+egocentric 移动操作、显式手眼策略设计对照
 - [EgoHumanoid（arXiv:2602.10106）](https://arxiv.org/abs/2602.10106) — ego-view 对齐来源工作

@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-08-18",
-  "node_count": 3158,
-  "edge_count": 28052,
+  "node_count": 3171,
+  "edge_count": 28118,
   "coverage": {
-    "covered": 3134,
-    "total": 3134,
+    "covered": 3147,
+    "total": 3147,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/realab-14-papers-technology-map-2026.md",
+      "detail_id": "wiki-overview-realab-14-papers-technology-map-2026",
+      "label": "REALab 技术地图：14 篇工作（2026）",
+      "type": "overview",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-cref.md",
       "detail_id": "entity-paper-cref",
@@ -26,7 +35,8 @@
       "recency": "2026-08-18",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-se3-tangent-to.md",
@@ -36,7 +46,8 @@
       "recency": "2026-08-18",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-harnesseval-w.md",
@@ -87,8 +98,7 @@
       "recency": "2026-08-18",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-hui360.md",
@@ -180,8 +190,7 @@
       "type": "entity",
       "recency": "2026-08-17",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-fail-passive-gap.md",
@@ -202,53 +211,41 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-robot-descriptions.md",
-      "detail_id": "entity-awesome-robot-descriptions",
-      "label": "Awesome Robot Descriptions",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-cref.md",
-    "detail_id": "entity-paper-cref",
-    "label": "CReF：交叉模态与循环融合的深度条件人形行走",
-    "type": "entity",
+    "path": "wiki/overview/realab-14-papers-technology-map-2026.md",
+    "detail_id": "wiki-overview-realab-14-papers-technology-map-2026",
+    "label": "REALab 技术地图：14 篇工作（2026）",
+    "type": "overview",
     "recency": "2026-08-18",
     "source": "git",
-    "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 590
+      "size": 603
     },
     {
       "label": "仿真到现实",
-      "size": 523
+      "size": 550
     },
     {
       "label": "视觉-语言-动作",
-      "size": 230
+      "size": 243
     },
     {
       "label": "人形论文深读笔记",
-      "size": 211
+      "size": 172
+    },
+    {
+      "label": "全身控制",
+      "size": 136
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 137
-    },
-    {
-      "label": "移动操作",
-      "size": 132
+      "size": 134
     }
   ],
   "top_hubs": [
@@ -256,7 +253,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1250,
+      "degree": 1257,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -279,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 748,
+      "degree": 749,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -337,8 +334,7 @@
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
       "degree": 142,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
