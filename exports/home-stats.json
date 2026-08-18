@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-harnesseval-w.md",
+      "detail_id": "entity-paper-harnesseval-w",
+      "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-top-layer-fabric-seg.md",
       "detail_id": "entity-paper-top-layer-fabric-seg",
       "label": "顶层布料分割：软物体操作常输在边界",
@@ -204,28 +214,17 @@
       "recency": "2026-08-17",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/lw-benchhub-tour.md",
-      "detail_id": "entity-lw-benchhub-tour",
-      "label": "LW BENCHHUB TOUR",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-top-layer-fabric-seg.md",
-    "detail_id": "entity-paper-top-layer-fabric-seg",
-    "label": "顶层布料分割：软物体操作常输在边界",
+    "path": "wiki/entities/paper-harnesseval-w.md",
+    "detail_id": "entity-paper-harnesseval-w",
+    "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
     "type": "entity",
     "recency": "2026-08-18",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
