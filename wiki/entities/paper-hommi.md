@@ -79,7 +79,7 @@ WBC 与机体绑定；极端动力学仍依赖仿真或额外校准。
 
 ## 与其他工作对比
 
-相对 HoMMI，[HALOMI](./paper-halomi-humanoid-loco-manipulation.md) 强调头手稀疏接口另一路线；相对 ModPack 需真机 teleop。
+相对 [HALOMI](./paper-halomi-humanoid-loco-manipulation.md) 强调头手稀疏接口另一路线；相对 ModPack 需真机 teleop。
 
 ## 关联页面
 
