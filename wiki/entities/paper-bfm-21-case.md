@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, hku]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-18
 arxiv: "2309.11351"
 venue: "2023 · SIGGRAPH Asia"
 code: https://github.com/Frank-ZY-Dou/CASE
@@ -12,6 +12,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
+  - ./paper-cmp.md
 sources:
   - ../../sources/papers/bfm_awesome_case_arxiv_2309_11351.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -84,6 +85,7 @@ sources:
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_case_arxiv_2309_11351.md](../../sources/papers/bfm_awesome_case_arxiv_2309_11351.md)
+- 对照：[CMP](./paper-cmp.md) — 不切数据集、不学条件 skill 子集，在原参考空间按上下文软重权
 
 ## 参考来源
 

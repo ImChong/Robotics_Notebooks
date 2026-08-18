@@ -172,7 +172,7 @@ flowchart LR
 - [ASE](../wiki/methods/ase.md) 与 [AMP Reward](../wiki/methods/amp-reward.md)（本仓库）
 - [Learning from Play (LMP)](../wiki/methods/learning-from-play-lmp.md)（本仓库）
 - [人形 AMP / Motion Prior 综述地图](../wiki/overview/humanoid-amp-motion-prior-survey.md)（本仓库）— AMP 家族全景
-- [CMP](../wiki/entities/paper-cmp.md)（本仓库）— 用高优势 rollout + demo 锚定的相关度，把 AMP/SMP 的任务无关先验软重权成上下文条件适配器；五任务回报与样本效率双升，参考失衡场景下 AMP 掉点 11.5% 而 CMP 仅 2.8%；截至入库日无官方代码
+- [CMP](../wiki/entities/paper-cmp.md)（本仓库）— 用高优势 rollout + demo 锚定的相关度，把 AMP/SMP 的任务无关先验软重权成上下文条件适配器；五任务回报与样本效率双升，参考失衡场景下 AMP 掉点 11.5% 而 CMP 仅 2.8%；截至 2026-08-18 无官方代码
 - "Learning Latent Plans from Play" (Lynch et al., 2020)
 
 ### 学完输出什么

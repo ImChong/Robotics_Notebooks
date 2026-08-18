@@ -1,3 +1,13 @@
+## [2026-08-18] ingest | sources/papers/cmp_arxiv_2608_03234.md — 加深 CMP（arXiv:2608.03234）附录超参/任务上下文/G1 全表；复核仍无官方代码；交叉 PFM-HR / PDF-HR / ASE
+
+- **触发：** 用户指定 ingest *Learning Context-Aware Motion Priors for Humanoid Control*（arXiv 预印本；HKUST-GZ；Yunyang Mo / Yi Gu / Yangchen Zhou / Hanyang Cao / Renjing Xu），并要求自动合并 PR
+- **已有页：** 不另造页，加深 [`wiki/entities/paper-cmp.md`](wiki/entities/paper-cmp.md)（2026-08-06 首入库）
+- **步骤 2.5：** 打开 [arXiv:2608.03234](https://arxiv.org/abs/2608.03234) HTML；无项目页。正文写 clip manifest「included in the code」；GitHub 检索无官方仓 → **宣称有代码、公开入口未列**
+- **加深：** 五任务 \(c\) 维数、Table 1 std、失衡 ×2–×100、附录 E G1 全表、AMP/SMP 超参（\(\lambda_{\mathrm{res}},\tau,\alpha\) clip）、Isaac Gym 4096
+- **交叉：** AMP / SMP / ASE / CALM / C·ASE / MimicKit / G1 / PFM-HR / PDF-HR（同组相邻 arXiv:2608.03227）
+- **开源结论：** 截至 2026-08-18 无可运行官方代码；源码运行时序图不适用
+- **机构：** 已有 `hkust-gz`
+
 ## [2026-08-18] ingest | sources/sites/ibrics-lar-upatras.md + sources/repos/go2_flip_to.md — 接入 IBRICS 项目页与 Go2 SE(3) 切空间 TO；AHMP / 浮动基参数化对比均已开源
 
 - **触发：** 用户指定 ingest <https://lar.upatras.gr/projects/ibrics.html>、<https://github.com/yusongmin1/go2_flip_TO>，并要求自动合并 PR

@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-08-08
+updated: 2026-08-18
 arxiv: "2602.04851"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
   - ./paper-pfm-hr.md
+  - ./paper-cmp.md
 sources:
   - ../../sources/papers/humanoid_pnb_pdf-hr.md
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
@@ -61,6 +62,7 @@ PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到"
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 后续冻结姿态先验：[PFM-HR](./paper-pfm-hr.md) — 同团队线用 Flow Matching + Pose Geometry Score 评关节差分（相对本页「单姿态距离」）；论文同骨干对照 ADD w/ PDF-HR。
+- 同组上下文先验：[CMP](./paper-cmp.md) — 重叠作者（Mo / Gu / Zhou / Xu）；改 AMP/SMP 的 clip 级参考监督，不评单姿态距离。
 
 ## 参考来源
 
