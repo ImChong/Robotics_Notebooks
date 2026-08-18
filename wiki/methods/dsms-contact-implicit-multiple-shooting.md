@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, motion-retargeting, humanoid, trajectory-optimization, contact-implicit, multiple-shooting, contact-rich, sim2real, caltech, depaul]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-18
 related:
   - ../entities/paper-shooting-for-contact.md
   - ../concepts/motion-retargeting.md
@@ -13,6 +13,8 @@ related:
   - ../entities/paper-hrl-stack-03-omniretarget.md
   - ../overview/hub-motion-retargeting.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ../entities/paper-ahmp.md
+  - ../entities/paper-se3-tangent-to.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/shooting_for_contact_arxiv_2608_03116.md
@@ -112,6 +114,7 @@ flowchart LR
 - 运动学前端：[GMR](./motion-retargeting-gmr.md)、[OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)
 - 概念枢纽：[Motion Retargeting](../concepts/motion-retargeting.md)、[Hub](../overview/hub-motion-retargeting.md)
 - 选型落地：[人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md)（§4 参考层动力学可行化）
+- 接触显式对照：[AHMP](../entities/paper-ahmp.md)（CEM 提出时刻表）、[SE(3) 切空间 TO](../entities/paper-se3-tangent-to.md)（摩擦锥写进 NLP）
 
 ## 参考来源
 

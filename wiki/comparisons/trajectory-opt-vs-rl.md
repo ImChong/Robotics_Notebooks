@@ -2,12 +2,13 @@
 type: comparison
 tags: [control, optimization, rl, trajectory-optimization, decision-making]
 status: complete
-updated: 2026-04-20
+updated: 2026-08-18
 related:
   - ../methods/trajectory-optimization.md
   - ../methods/reinforcement-learning.md
   - ../methods/model-predictive-control.md
   - ../queries/when-to-use-wbc-vs-rl.md
+  - ../entities/paper-se3-tangent-to.md
 summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对比：前者依赖精确动力学模型求解开环最优解，后者通过数据驱动学习具有鲁棒性的闭环策略。"
 ---
 
@@ -63,11 +64,12 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 
 现代前沿研究（如 ANYmal, Atlas 的最新版本）正在将两者融合：
 1. **RL 辅助 TO**：用 RL 学习一个良好的初始轨迹值或价值函数，作为 TO 的热启动。
-2. **TO 引导 RL**：利用 TO 产生的最优轨迹作为模仿学习的专家数据，加速 RL 训练。
+2. **TO 引导 RL**：利用 TO 产生的最优轨迹作为模仿学习的专家数据，加速 RL 训练。[SE(3) 切空间 TO](../entities/paper-se3-tangent-to.md) 的社区仓 `go2_flip_TO` 把 Go2 空翻写成 50 Hz AMP txt，就是这条落地。
 3. **WBC + RL**：上层用 RL 产生任务目标，下层用 WBC (基于 QP 的 TO) 保证物理安全性。
 
 ## 关联页面
 - [Trajectory Optimization (TO)](../methods/trajectory-optimization.md)
+- [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 开环空翻计划 → AMP 参考
 - [Reinforcement Learning (RL)](../methods/reinforcement-learning.md)
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 - [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md)

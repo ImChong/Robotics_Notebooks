@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。"
-updated: 2026-04-20
+updated: 2026-08-18
 ---
 
 # Floating Base Dynamics
@@ -374,6 +374,7 @@ floating base 系统还有一个麻烦点：
 - Featherstone, *Rigid Body Dynamics Algorithms*
 - [Modern Robotics 教材](../entities/modern-robotics-book.md)
 - [Centroidal Dynamics](./centroidal-dynamics.md)
+- [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 浮动基 RPY / 四元数 / \(\mathfrak{se}(3)\) 在全身 TO 里的对照
 - [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md) — ABA / RNEA 与 $M(q)$、$g(q)$ 计算
 - [URDF Robot Description](./urdf-robot-description.md)
 - [State Estimation](./state-estimation.md)

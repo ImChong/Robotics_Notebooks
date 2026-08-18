@@ -3,7 +3,7 @@ type: query
 tags: [mpc, solver, osqp, qpoases, acados, optimization, legged-robots]
 status: stable
 summary: "MPC 求解器选型指南"
-updated: 2026-06-10
+updated: 2026-08-18
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/pi_mpc_arxiv_2601_14414.md
@@ -182,6 +182,7 @@ solver = AcadosOcpSolver(ocp, json_file="ocp.json")
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 理论与机器人应用
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC QP 同样需要 QP 求解器
 - [Crocoddyl](../entities/crocoddyl.md) — 全身 TO 的 DDP 框架
+- [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 离线敏捷 TO 用切空间 + Ipopt，不是嵌入式 QP
 - [TSID](../concepts/tsid.md) — 任务空间逆动力学，依赖 QP 求解器
 - [π MPC](../methods/pi-mpc.md) — parallel-in-horizon ADMM；[MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) 批训练应用
 
