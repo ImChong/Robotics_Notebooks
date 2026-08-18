@@ -354,6 +354,22 @@
         "inria"
       ]
     },
+    "patras": {
+      "label": "帕特雷大学（University of Patras）",
+      "aliases": [
+        "patras",
+        "upatras",
+        "university-of-patras"
+      ]
+    },
+    "athena-rc": {
+      "label": "雅典娜研究中心（Athena RC）",
+      "aliases": [
+        "athena-rc",
+        "athenarc",
+        "archimedes"
+      ]
+    },
     "cea": {
       "label": "法国原子能和替代能源委员会（CEA）",
       "aliases": [

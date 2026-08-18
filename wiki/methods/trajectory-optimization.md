@@ -2,7 +2,7 @@
 type: method
 tags: [control, optimization, motion-planning, trajectory-optimization, mpc, humanoid]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-18
 related:
   - ./model-predictive-control.md
   - ../concepts/optimal-control.md
@@ -13,10 +13,14 @@ related:
   - ../entities/curobo.md
   - ../entities/schedulestream.md
   - ../entities/paper-faro-feasibility-aware-robot-motion-optimization.md
+  - ../entities/paper-ahmp.md
+  - ../entities/paper-se3-tangent-to.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/mpc.md
   - ../../sources/papers/faro_arxiv_2607_18362.md
+  - ../../sources/papers/ahmp_humanoids_2025.md
+  - ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md
 summary: "轨迹优化（Trajectory Optimization）通过数值优化方法求解开环最优控制序列，是 MPC 的理论核心和机器狗/人形机器人离线运动规划的主力工具。"
 ---
 
@@ -84,11 +88,14 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - **在线与离线的结合**：因此，纯开环的 TO 轨迹必须配合底层的全身反馈控制（WBC），或者直接将 TO 本身以高频运行在滚动的时间窗口内（这就是 MPC）。
 - **Learning to Optimize**：目前最前沿的趋势是利用深度强化学习（RL）来学习 TO 的价值函数（Value Function）或提供极佳的 Initial Guess，从而打破传统求解器的算力瓶颈。
 - **接触显式搜索中的嵌套剪枝**：当离散接触模式序列由树搜索 / LLM / 人类给出时，不必每步都跑全动力学 TO——[FARO](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) 用 mode/edge IK → KSO → TO 的必要检验层级早停不可行分支（KSO 相对 TO 约两数量级加速，作过滤器时假阴性近零）。
+- **接触发现 + 切空间配点**：不手写步态时，[AHMP](../entities/paper-ahmp.md) 用 CEM-MD 外层采样末端组合与相位时长，内层用 [SE(3) 切空间 TO](../entities/paper-se3-tangent-to.md) 在欧式 Ipopt 上评全身可行性（Talos 扶手走廊分钟级、20/20 可行）。同一内层在接触日程给定时，切空间是 G1 后空翻 / Go2 侧空翻相对欧拉与四元数的关键表示。
 
 ## 关联页面
 - [cuRobo（NVIDIA GPU 运动生成）](../entities/curobo.md) — 多 seed 并行 TO + GPU 碰撞/IK 的工业级开源栈，与经典 CPU NLP 路线互补对照
 - [ScheduleStream（多臂 TAMP 与调度）](../entities/schedulestream.md) — stream 中的 **motion** 段常对接轨迹/几何规划；上层负责 **时间表** 而非单次 TO
 - [FARO（可行性感知运动优化）](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — 接触模式序列上的嵌套可行性剪枝 + 全动力学 TO
+- [AHMP](../entities/paper-ahmp.md) — CEM-MD 接触发现 + SE(3) 切空间全身 TO
+- [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 欧拉/四元数/切空间对照；Go2 空翻开源
 - [Model Predictive Control](./model-predictive-control.md)
 - [π MPC](./pi-mpc.md) — parallel-in-horizon ADMM NMPC 求解器（MPC-RL 批训练后端）
 - [LQR / iLQR 算法详解](./lqr-ilqr.md)
@@ -111,3 +118,5 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - Posa, M., Cantu, C., & Tedrake, R. (2014). *A direct method for trajectory optimization of rigid bodies through contact*.
 - [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)
 - [FARO 论文摘录（arXiv:2607.18362）](../../sources/papers/faro_arxiv_2607_18362.md) — 接触显式嵌套可行性剪枝
+- [AHMP 论文摘录（Humanoids 2025）](../../sources/papers/ahmp_humanoids_2025.md)
+- [SE(3) 切空间 TO 摘录（arXiv:2508.11520）](../../sources/papers/se3_tangent_to_arxiv_2508_11520.md)

@@ -1,3 +1,13 @@
+## [2026-08-18] ingest | sources/sites/ibrics-lar-upatras.md + sources/repos/go2_flip_to.md — 接入 IBRICS 项目页与 Go2 SE(3) 切空间 TO；AHMP / 浮动基参数化对比均已开源
+
+- **触发：** 用户指定 ingest <https://lar.upatras.gr/projects/ibrics.html>、<https://github.com/yusongmin1/go2_flip_TO>，并要求自动合并 PR
+- **步骤 2.5：** 项目页无 Code 按钮。AHMP 论文/README → [hucebot/ahmp](https://github.com/hucebot/ahmp)（BSD-2-Clause，Docker + `trajopt_parallel.py`）。对比论文声明 [upatras-lar/se3_trajopt](https://github.com/upatras-lar/se3_trajopt)；用户仓 `go2_flip_TO` 未标 fork，含 Go2 AMP 50 Hz 导出与 MUMPS。**两线均已开源，均无真机脚本。**
+- **来源：** [`sources/sites/ibrics-lar-upatras.md`](sources/sites/ibrics-lar-upatras.md)、[`sources/papers/ahmp_humanoids_2025.md`](sources/papers/ahmp_humanoids_2025.md)、[`sources/papers/se3_tangent_to_arxiv_2508_11520.md`](sources/papers/se3_tangent_to_arxiv_2508_11520.md)、[`sources/repos/ahmp.md`](sources/repos/ahmp.md)、[`sources/repos/se3_trajopt.md`](sources/repos/se3_trajopt.md)、[`sources/repos/go2_flip_to.md`](sources/repos/go2_flip_to.md)
+- **升格：** [`wiki/entities/paper-ahmp.md`](wiki/entities/paper-ahmp.md) — CEM-MD 接触发现；Talos 扶手 20/20、<200 s；烟囱 1 m ~85%、3 m ~50%。[`wiki/entities/paper-se3-tangent-to.md`](wiki/entities/paper-se3-tangent-to.md) — 五种浮动基；G1/Go2 空翻仅切空间翻成功
+- **交叉：** 轨迹优化 / SE(3) / 李群 / FARO / DSMS / Pinocchio / Crocoddyl / TO vs RL / MPC 求解器 / 浮动基动力学
+- **开源结论：** AHMP 与 SE3_TrajOpt 可运行；`go2_flip_TO` 为 AMP 导出扩展；源码运行时序图已写
+- **机构：** 注册 `patras`（帕特雷大学（University of Patras））、`athena-rc`（雅典娜研究中心（Athena RC））
+
 ## [2026-08-18] ingest | sources/papers/cref_arxiv_2603_29452.md — CReF 深度条件人形行走（arXiv:2603.29452）；项目页仅为静态站，训练代码确认未开源
 
 - **触发：** 用户指定 ingest <https://arxiv.org/abs/2603.29452>、<https://arxiv.org/pdf/2603.29452>，并要求自动合并 PR
@@ -7,7 +17,6 @@
 - **交叉：** 楼梯枢纽 / Humanoid Locomotion / SSR / HPL / Now You See That / DPL / Hiking / PIE / Privileged Training / Footstep Planning / Sim2Real / Terrain Adaptation
 - **开源结论：** 训练代码未开源；源码运行时序图不适用
 - **机构：** 已有 `zju`、`sdu`、`agibot`（平台标签）
-
 
 ## [2026-08-18] ingest | sources/papers/harnesseval_w_arxiv_2608_16859.md — 接入 MirroS HarnessEval-W 交互式世界 agentic 评测；评测代码已开源、HF 全量案例待发
 

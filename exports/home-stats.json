@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-18",
-  "node_count": 3155,
-  "edge_count": 27992,
+  "node_count": 3157,
+  "edge_count": 28022,
   "coverage": {
-    "covered": 3131,
-    "total": 3131,
+    "covered": 3133,
+    "total": 3133,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -17,6 +17,26 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ahmp.md",
+      "detail_id": "entity-paper-ahmp",
+      "label": "AHMP：接触序列发现 + SE(3) 切空间全身规划",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-se3-tangent-to.md",
+      "detail_id": "entity-paper-se3-tangent-to",
+      "label": "SE(3) 切空间浮动基轨迹优化",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-harnesseval-w.md",
@@ -193,28 +213,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/fiveages-sim-robot-descriptions.md",
-      "detail_id": "entity-fiveages-sim-robot-descriptions",
-      "label": "fiveages-sim/robot_descriptions",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/urdf-files-dataset.md",
-      "detail_id": "entity-urdf-files-dataset",
-      "label": "URDF Files Dataset",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -230,7 +228,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 634
+      "size": 633
     },
     {
       "label": "操作",

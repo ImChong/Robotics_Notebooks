@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, lie-group, so3, se3, quaternion, embodied-ai, optimization]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-18
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./homogeneous-coordinates-transform.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/model-predictive-control.md
   - ../methods/trajectory-optimization.md
+  - ../entities/paper-se3-tangent-to.md
   - ../formalizations/ekf.md
   - ../concepts/floating-base-dynamics.md
 sources:
@@ -151,6 +152,7 @@ flowchart LR
 - [Whole-Body Control](../concepts/whole-body-control.md) — 任务空间 se(3) 速度
 - [Model Predictive Control](../methods/model-predictive-control.md) — 切空间线性化
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 姿态轨迹参数化
+- [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — Exp/Log 当配点积分，Ipopt 可做 G1/Go2 空翻
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 浮基 nq/nv 与四元数状态
 - [Pinocchio 快速上手 Query](../queries/pinocchio-quick-start.md) — 基座四元数在 q 向量中的布局
 

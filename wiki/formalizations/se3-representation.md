@@ -2,16 +2,19 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-05-22
+updated: 2026-08-18
 related:
   - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md
   - ../concepts/whole-body-control.md
   - ../methods/visual-servoing.md
   - ../formalizations/mdp.md
+  - ../entities/paper-se3-tangent-to.md
+  - ../methods/trajectory-optimization.md
 sources:
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
   - ../../sources/papers/perception.md
+  - ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md
 summary: "SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。"
 ---
 
@@ -59,6 +62,8 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 ## 关联页面
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 so(3)/se(3) 分工、四元数存储与 exp/log 优化链路
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
+- [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — TO 里浮动基「变量/差分/积分」三决策的对照实验
+- [AHMP](../entities/paper-ahmp.md) — 同一切空间内层 + 接触发现
 - [Visual Servoing](../methods/visual-servoing.md)
 - [Action Tokenization](./vla-tokenization.md)
 - [Modern Robotics 教材](../entities/modern-robotics-book.md) — Ch 3 用李群 / 螺旋理论系统建立 SO(3)/SE(3) 与 twist/wrench 的物理与数学语言
@@ -69,3 +74,4 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 - [sources/papers/perception.md](../../sources/papers/perception.md)
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
 - [深蓝具身智能：李群、李代数、四元数（微信公众号）](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) — 具身场景下四元数 / 李代数 / 6D 表示的分工直觉
+- [SE(3) 切空间 TO 摘录（arXiv:2508.11520）](../../sources/papers/se3_tangent_to_arxiv_2508_11520.md) — 浮动基 TO 参数化对照

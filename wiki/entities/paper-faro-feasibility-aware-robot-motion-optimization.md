@@ -13,10 +13,11 @@ tags:
   - tum
   - cmu
 status: complete
-updated: 2026-07-24
+updated: 2026-08-18
 arxiv: "2607.18362"
 related:
   - ./paper-motiondisco-extreme-humanoid-loco-manipulation.md
+  - ./paper-ahmp.md
   - ../tasks/loco-manipulation.md
   - ../methods/trajectory-optimization.md
   - ../concepts/contact-rich-manipulation.md
@@ -161,6 +162,7 @@ flowchart TB
 - [MotionDisco（极端人形 loco-manipulation 运动发现）](./paper-motiondisco-extreme-humanoid-loco-manipulation.md) — 同团队 LLM 进化接触计划搜索
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与技术路线
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 接触显式 / 多重打靶 TO 基础
+- [AHMP](./paper-ahmp.md) — CEM 采样接触序列 + 切空间全身 TO（无 IK/KSO 过滤器）
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触丰富操作概念
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 参考轨迹 → RL 跟踪 → 真机
 - [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) — 下游跟踪引用谱系
