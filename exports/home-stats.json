@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-cref.md",
+      "detail_id": "entity-paper-cref",
+      "label": "CReF：交叉模态与循环融合的深度条件人形行走",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-harnesseval-w.md",
       "detail_id": "entity-paper-harnesseval-w",
       "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
@@ -205,26 +215,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/current-robotics-currentworld.md",
-      "detail_id": "entity-current-robotics-currentworld",
-      "label": "CurrentWorld-0（Current Robotics · 交互世界模拟器）",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-harnesseval-w.md",
-    "detail_id": "entity-paper-harnesseval-w",
-    "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
+    "path": "wiki/entities/paper-cref.md",
+    "detail_id": "entity-paper-cref",
+    "label": "CReF：交叉模态与循环融合的深度条件人形行走",
     "type": "entity",
     "recency": "2026-08-18",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
