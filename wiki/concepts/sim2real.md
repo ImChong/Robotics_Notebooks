@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-18
 related:
   - ../entities/embodied-interview-qa.md
   - ../methods/reinforcement-learning.md
@@ -42,6 +42,7 @@ related:
   - ../entities/paper-fada-humanoid.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
+  - ../entities/paper-cref.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
@@ -78,6 +79,7 @@ sources:
   - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
+  - ../../sources/papers/cref_arxiv_2603_29452.md
 ---
 
 # Sim2Real
@@ -255,6 +257,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **ingest 档案：** [sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — BAM：舵机扩展摩擦模型 + MuJoCo 2R 验证（arXiv:2410.08650，ICRA 2025）
 - **ingest 档案：** [sources/repos/rhoban_bam.md](../../sources/repos/rhoban_bam.md) — Rhoban/bam 开源辨识与仿真管线
 - **ingest 档案：** [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet：压阻触觉仿真全程训练 → 真机零样本抓取精修
+- **ingest 档案：** [sources/papers/cref_arxiv_2603_29452.md](../../sources/papers/cref_arxiv_2603_29452.md) — CReF：深度条件人形行走零样本；训练不注入合成深度损坏
 
 ## 关联页面
 
@@ -292,6 +295,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — **深度** sim-to-real：真机用 **VFM（Fast-FoundationStereo）** 替代重度 depth randomization，配合 **RFM** 聚焦梯子踏棍（arXiv:2606.05873）
 - [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — **深度** sim-to-real：自遮挡射线合成 + Kinect 风格噪声进 RL 环，再对重建延迟做端到端微调（arXiv:2510.07152）
+- [CReF](../entities/paper-cref.md) — **深度** 零样本对照：训练期 **不注入** 合成深度损坏，靠 raw-depth 融合 + 循环记忆过反射孔洞（arXiv:2603.29452；代码未开源）
 - [SAGE（执行器 Sim2Real 间隙估计）](../entities/sage-sim2real-actuator-gap-estimator.md) — Isaac 重放与真机关节日志对齐，RMSE/相关/余弦相似度等量化执行器层 gap
 - [LIFT](../entities/lift-humanoid.md) — JAX SAC 大规模预训练 + Brax 物理知情世界模型微调；微调阶段真机确定性采集与模型内随机探索解耦（arXiv:2601.21363）
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 并联踝闭链与仿真训练接口分层（冲击下传载再分配等）

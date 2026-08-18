@@ -1,32 +1,22 @@
 {
   "generated_at": "2026-08-18",
-  "node_count": 3156,
-  "edge_count": 27995,
+  "node_count": 3155,
+  "edge_count": 27992,
   "coverage": {
-    "covered": 3132,
-    "total": 3132,
+    "covered": 3131,
+    "total": 3131,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-ahmp.md",
-      "detail_id": "entity-paper-ahmp",
-      "label": "AHMP：接触序列发现 + SE(3) 切空间全身规划",
+      "path": "wiki/entities/paper-cref.md",
+      "detail_id": "entity-paper-cref",
+      "label": "CReF：交叉模态与循环融合的深度条件人形行走",
       "type": "entity",
       "recency": "2026-08-18",
       "source": "git",
       "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-se3-tangent-to.md",
-      "detail_id": "entity-paper-se3-tangent-to",
-      "label": "SE(3) 切空间浮动基轨迹优化",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-harnesseval-w.md",
@@ -77,7 +67,8 @@
       "recency": "2026-08-18",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-hui360.md",
@@ -213,26 +204,37 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/urdf-files-dataset.md",
+      "detail_id": "entity-urdf-files-dataset",
+      "label": "URDF Files Dataset",
+      "type": "entity",
+      "recency": "2026-08-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ahmp.md",
-    "detail_id": "entity-paper-ahmp",
-    "label": "AHMP：接触序列发现 + SE(3) 切空间全身规划",
+    "path": "wiki/entities/paper-cref.md",
+    "detail_id": "entity-paper-cref",
+    "label": "CReF：交叉模态与循环融合的深度条件人形行走",
     "type": "entity",
     "recency": "2026-08-18",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 599
+      "label": "仿真到现实",
+      "size": 634
     },
     {
-      "label": "仿真到现实",
-      "size": 557
+      "label": "操作",
+      "size": 617
     },
     {
       "label": "视觉-语言-动作",
@@ -244,11 +246,11 @@
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 135
+      "size": 133
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 134
+      "label": "移动操作",
+      "size": 132
     }
   ],
   "top_hubs": [
@@ -272,7 +274,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 877,
+      "degree": 878,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -326,7 +328,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 458,
+      "degree": 460,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
@@ -337,7 +339,8 @@
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
       "degree": 142,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -387,7 +390,8 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 44
+      "degree": 44,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

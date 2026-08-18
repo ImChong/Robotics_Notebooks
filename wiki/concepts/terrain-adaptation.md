@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-18
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -24,6 +24,7 @@ related:
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
+  - ../entities/paper-cref.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-egohtr.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
@@ -35,6 +36,7 @@ sources:
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/papers/dpl_arxiv_2510_07152.md
+  - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
   - ../../sources/papers/ame_arxiv_2506_09588.md
   - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
@@ -112,6 +114,7 @@ sources:
 | 传统规划 | 感知 + footstep planning + MPC/WBC | 可解释、约束清晰 | 感知和规划耦合复杂 |
 | 特权训练 | teacher 用高度图，student 蒸馏到本体感知 | sim2real 友好 | teacher/student 设计复杂 |
 | 端到端 RL | 直接输入高度图/点云预测动作 | 反应式强 | 对训练分布依赖高 |
+| 单阶段 raw 深度（CReF） | 本体查询交叉注意 + GRU highway，**不建 2.5D 图** | 无建图延迟；下楼落脚可塑形 | 无官方代码；纯深度无纹理 |
 | 多模态点云 RL（DreamWaQ++） | 分层 $SE(3)$ 点云记忆 + PointNet + 本体 Mixer，单阶段非对称 AC | 障碍前瞻、传感器无关、OOD 本体回退 | 训练重、公开页暂无同署官方代码仓 |
 | 环境感知自动奖励（E-SDS） | VLM 读地形统计 + 行为分解生成调用高度图/LiDAR 的 Python 奖励 | 跨四类地形少手工调参；楼梯下降为分水岭 | 每地形专用策略、仅仿真、首轮仍依赖 prompt 工程 |
 | 足底最小感知（Foot-ToF） | 四足足底 4×4 ToF 直接进 LSTM-PPO，无高程图栈 | 低算力/低延迟、抗腿自遮挡、仿真 ray cast 易建模 | 近场落脚专用；材质/泥污敏感；不等价全局导航 |
@@ -176,6 +179,7 @@ sources:
 - [MoRE（复杂地形多步态 AMP）](../entities/paper-amp-survey-08-more.md) — 深度外感知 + 多判别器先验下的 gait 切换范例
 - [EgoHTR](../entities/paper-egohtr.md) — 场景对齐人演示支撑 foothold-critical 感知穿越
 - [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 无在线外感知的连续陡坡适应：局部平面 ZMP + 生物力学门控
+- [CReF](../entities/paper-cref.md) — 前向深度不经高程图的单阶段适应 + 足端可支撑落脚奖励
 
 ## 推荐继续阅读
 

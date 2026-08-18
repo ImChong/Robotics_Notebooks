@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, end-to-end-vision, privileged-distillation, multi-critic, amp, sim2real, stairs, parkour, dagger, ppo, hit, honor-robotics, rss-2026, unitree]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-18
 arxiv: "2602.06382"
 venue: "RSS 2026"
 related:
@@ -19,6 +19,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/terrain-adaptation.md
   - ./paper-ssr-humanoid-open-world-traversal.md
+  - ./paper-cref.md
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
   - ./extreme-parkour.md
@@ -159,6 +160,7 @@ flowchart TB
 |------|------|-------------|------------|------|----------|----------|
 | **Now You See That** | **24×32 深度** | **8 步立体增广 + 去噪蒸馏** | **多 critic + 多 disc** | **特权 height → 深度 DAgger** | **✓ 双向长程** | **✓** |
 | [SSR](./paper-ssr-humanoid-open-world-traversal.md) | 36×36 深度 | 标准 DR + Warp 深度 | 分地形 AMP | **单阶段 PPO** | ✓ | 户外长程为主 |
+| [CReF](./paper-cref.md) | 64×48 深度 | **训练不注入合成损坏** | 单 critic | **单阶段 PPO**（无蒸馏） | ✓ 实验室楼梯 | 室内 OOD / 反射孔洞 |
 | [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 深度 | 标准 DR | motion matching 多技能 | MM 参考 + 专家 + DAgger | ✓ | ✓ 技能链 |
 | [Humanoid Parkour Learning](./paper-notebook-humanoid-parkour-learning.md) | 端到端深度 | Moderate DR | 单策略 | 直接/标准管线 | ✗ | ✓ |
 | [Extreme Parkour](./extreme-parkour.md) | 四足深度 | scandots 蒸馏 | 单策略 | 两阶段 DAgger | ✗ | ✓ |
@@ -168,6 +170,7 @@ flowchart TB
 - 任务挂接：[stair-obstacle-perceptive-locomotion.md](../tasks/stair-obstacle-perceptive-locomotion.md)、[humanoid-locomotion.md](../tasks/humanoid-locomotion.md)
 - 方法：[dagger.md](../methods/dagger.md)、[privileged-training.md](../concepts/privileged-training.md)、[sim2real.md](../concepts/sim2real.md)
 - 平台：[unitree-g1.md](./unitree-g1.md)（跨平台验证）
+- 对照不建模深度噪声的单阶段 raw 深度：[CReF](./paper-cref.md)
 
 ## 参考来源
 

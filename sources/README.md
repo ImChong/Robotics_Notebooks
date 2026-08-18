@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [cref_arxiv_2603_29452.md](papers/cref_arxiv_2603_29452.md) | CReF：交叉模态与循环融合的深度条件人形行走（arXiv:2603.29452，浙大/山大；X2 Ultra 零样本；确认未开源）摘录与 wiki 映射 |
 | [x] [sonic_transfer_frozen_wbc_codec_lora.md](papers/sonic_transfer_frozen_wbc_codec_lora.md) | SONIC-Transfer：冻结 GEAR-SONIC + 闭式 codec + 解码器 LoRA 迁到 AgiBot X2 Ultra（draft 2026-08-16；无 arXiv；推理 play 已开）摘录与 wiki 映射 |
 | [x] [hmi_p001_operational-space-formulation.md](papers/hmi_p001_operational-space-formulation.md) 等 23 篇 | HMI 论文缺口批量归档（P001–P005/P012/P017–P018/P023/P028/P037/P039/P042–P043/P053/P055/P059/P064/P068–P072/P130）；导读见 `wiki/queries/hmi-papers-coverage.md` |
 | [x] [daily_omni_arxiv_2505_17862.md](papers/daily_omni_arxiv_2505_17862.md) | Daily-Omni：日常音视频跨模态时序 AVQA 基准（arXiv:2505.17862，复旦；代码+HF 数据已开源；榜首含 AGIBOT WITA-Omni） |

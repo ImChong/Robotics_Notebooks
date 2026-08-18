@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, humanoid, parkour, perceptive-locomotion, reinforcement-learning, dagger, sim2real, unitree, shanghai-pil, shanghaitech, tsinghua, humanoid-paper-notebooks]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-18
 arxiv: "2406.10759"
 venue: "CoRL 2024"
 related:
+  - ./paper-cref.md
   - ./extreme-parkour.md
   - ./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
   - ./paper-now-you-see-that-humanoid-vision-locomotion.md
@@ -140,6 +141,7 @@ Student 用 CNN 替换 scandots encoder，并继承 oracle 的 GRU/MLP 权重。
 - 训练范式：[Privileged Training](../concepts/privileged-training.md)、[DAgger](../methods/dagger.md)
 - 四足对照：[Extreme Parkour](./extreme-parkour.md)、[ANYmal Parkour](./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - 后续鲁棒深度对照：[Now You See That](./paper-now-you-see-that-humanoid-vision-locomotion.md)
+- 单阶段 raw-depth 对照（以本文为 X2 重实现基线）：[CReF](./paper-cref.md)
 - 动作先验长程路线：[PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
 - 端到端未来监督（无 scandots 教师）：[ParkourFormer](./paper-parkourformer.md)
 

@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-18
 arxiv: "2605.30770"
 related:
+  - ./paper-cref.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-01-locomotion-base.md
@@ -168,6 +169,7 @@ flowchart TB
 | [FastStair](./paper-faststair-humanoid-stair-ascent.md) | 高程图 | DCM 规划监督 | 三阶段 + LoRA | 螺旋梯/竞赛 |
 | [Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md) | 点云 BEV token | 几何条件化 PPO | 单阶段 | 长户外楼梯 |
 | HPL（论文基线） | 深度 | 稀疏/间接 | 多阶段 | 结构化课 |
+| [CReF](./paper-cref.md) | 64×48 深度 | **触地可支撑候选奖励**（无想象模型） | **单阶段 PPO** | 室内 OOD；无 1.3 km 长程 |
 
 ## 参考来源
 
@@ -181,6 +183,7 @@ flowchart TB
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)、[Footstep Planning](../concepts/footstep-planning.md)、[Privileged Training](../concepts/privileged-training.md)、[Sim2Real](../concepts/sim2real.md)
 - [AMP & HumanX](../methods/amp-reward.md)、[Reinforcement Learning](../methods/reinforcement-learning.md)、[Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)、[Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md)、[ParkourFormer](./paper-parkourformer.md)
+- [CReF](./paper-cref.md) — 同 X2 平台的单阶段 raw 深度；落脚用足端点云奖励而非想象接触；强调室内 OOD 与无几何中间层
 
 ## 推荐继续阅读
 

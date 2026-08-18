@@ -2,19 +2,21 @@
 type: concept
 tags: [locomotion, planning, footstep, contact-sequence, dcm, mpc]
 status: stable
-updated: 2026-07-25
+updated: 2026-08-18
 summary: "Footstep Planning 负责决定腿式机器人下一步踩哪里、踩多久，是地形感知和控制执行之间的关键桥梁。"
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
+  - ../../sources/papers/cref_arxiv_2603_29452.md
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./capture-point-dcm.md
   - ./terrain-adaptation.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-cref.md
 ---
 
 # Footstep Planning（步位规划）
@@ -78,6 +80,10 @@ related:
 
 [Perceptive BFM](../entities/paper-perceptive-bfm.md) 的 **TCRS** 在训练期把 raw 人体片段 + 高程场转为 **接触感知落脚 + MPPI 摆动优化 + 根重建** 的地形一致参考，供盲 teacher 跟踪；部署期 **不查询 TCRS**，仅保留 raw 参考命令并由感知 student 在线修正——把步位/摆动几何前移到 **离线特权监督** 而非在线规划器。
 
+### 7. 足端点云可支撑奖励（CReF）
+
+[CReF](../entities/paper-cref.md)（arXiv:2603.29452）不输出显式步位：从足端局部点云抽 **平面、近水平、非凹陷** 候选窗，触地时奖励靠近最近候选。部署仍是端到端深度策略。相对 FastStair 的 DCM 硬监督，这是 **软塑形**；相对「禁止踩」接触质量项，它给出朝向可支撑区的方向。
+
 ---
 
 ## 与其他模块的关系
@@ -128,6 +134,7 @@ related:
 - [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — ingest 档案（Kajita ZMP / Pratt CP / Koolen DCM / Herdt / Deits MICP）
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — ingest 档案（MICP / CITO / Tonneau 综述）
 - [sources/papers/faststair_arxiv_2601_10365.md](../../sources/papers/faststair_arxiv_2601_10365.md) — 并行 DCM 落脚点 + RL 三阶段训练上楼梯
+- [sources/papers/cref_arxiv_2603_29452.md](../../sources/papers/cref_arxiv_2603_29452.md) — CReF 足端点云可支撑落脚奖励
 - Pratt et al., *Capture the Flag: Instantaneous Capture Point for Humanoid Push Recovery* (2006) — CP 步位规划基础
 - Bledt et al., *MIT Cheetah 3: Design and Control of a Robust, Dynamic Quadruped Robot* (2018) — 接触序列在线规划
 
@@ -142,6 +149,7 @@ related:
 - [Balance Recovery](../tasks/balance-recovery.md) — 扰动后的紧急步位更新
 - [Gait Generation](./gait-generation.md) — 步态模式是步位规划的上游输入
 - [Terrain Adaptation](./terrain-adaptation.md) — 把地形感知转成可落脚区域与在线重规划
+- [CReF](../entities/paper-cref.md) — 足端点云可支撑落脚奖励；训练塑形，部署无规划器
 
 ---
 
