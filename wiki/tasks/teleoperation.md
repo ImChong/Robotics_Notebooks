@@ -233,6 +233,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [LeTools](../entities/letools.md) — 把遥操 rosbag 转成 LeRobot 并部署
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md) — 使用触觉遥操作数据训练接触感知策略
 - [Diffusion Policy](../methods/diffusion-policy.md) — 遥操作数据训练的扩散策略
+- [REALab 14 篇技术地图（2026）](../overview/realab-14-papers-technology-map-2026.md) — ModPack 模块化遥操作、HoMMI 无机器人全身示范、UMI-FT 野外力感知采集
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — VR 遥操作约 50 条 + 启发式扩数据，再 DPPO 联合微调（arXiv:2603.13707）
 - [NestDex（论文实体）](../entities/paper-nestdex.md) — 内层手技能 + clutch copilot 采灵巧示范，部署卸 copilot（arXiv:2608.13362）
 - [SPD（论文实体）](../entities/paper-spd.md) — 仿真 VR 75 h 预训练；真机每任务 1–2 h 微调（CoRL 2026；代码待发布）

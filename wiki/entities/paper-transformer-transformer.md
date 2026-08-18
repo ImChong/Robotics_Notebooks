@@ -22,6 +22,7 @@ updated: 2026-07-30
 arxiv: "2607.25798"
 code: https://github.com/real-stanford/transformer-transformer
 related:
+  - ../overview/realab-14-papers-technology-map-2026.md
   - ./paper-shape-your-body-value-gradient-design.md
   - ./aloha.md
   - ../concepts/diffusion-model.md

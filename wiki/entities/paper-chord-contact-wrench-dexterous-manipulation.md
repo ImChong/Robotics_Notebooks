@@ -126,7 +126,7 @@ flowchart TB
 
 | 方法 | 接触监督 | 数据/训练形态 | 与 CHORD 关系 |
 |------|----------|---------------|---------------|
-| [DexMachina](https://dexmachina.github.io/) | 接触 **位置** + VOC | 单任务/小规模 RL | CHORD 主要位置引导对照 |
+| [DexMachina](./paper-dexmachina.md) | 接触 **位置** + VOC | 单任务/小规模 RL | CHORD 主要位置引导对照 |
 | ManipTrans | 演示附近 **接触力** | 残差 RL + 力奖励 | 力邻近 vs wrench 几何 |
 | [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md) | 接触位置 + 虚拟接触课程 | **重定向/数据生成** 为主 | 共享 VOC 叙事；CHORD 强调 RL 奖励在 wrench 空间 |
 | [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) | 交互 mesh / Laplacian | 运动学 retarget → PPO 跟踪 | 上游参考质量路线对照 |

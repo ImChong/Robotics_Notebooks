@@ -8,8 +8,9 @@ tags:
   - technology-transfer
   - wechat-curator
 status: complete
-updated: 2026-08-01
+updated: 2026-08-18
 related:
+  - ./realab-14-papers-technology-map-2026.md
   - ./china-embodied-ai-labs-landscape-2026.md
   - ./notable-commercial-robot-platforms.md
   - ./robot-learning-overview.md
@@ -28,6 +29,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md
   - ../../sources/raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/article.md
+  - ../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md
 summary: "依据深蓝具身智能 2026-08 海外 43 所实验室盘点，按国家/地区组织阅读坐标，并交叉本库方法、平台与开源谱系；非官方排名。"
 ---
 
@@ -79,7 +81,7 @@ flowchart LR
 | 实验室 | 机构语境 | 文内要点 | 本库延伸 |
 |--------|----------|----------|----------|
 | SVL | Stanford | 李飞飞；World Labs 大型世界模型 | [世界模型相关地图](./robot-world-models-training-loop-taxonomy.md) |
-| REAL Lab | Stanford | 宋舒然；Diffusion Policy、ManiWAV | [Diffusion Policy](../methods/diffusion-policy.md)、[manipulation](../tasks/manipulation.md) |
+| REAL Lab | Stanford | 宋舒然；Diffusion Policy、UMI；2026 十四篇脉络见技术地图 | [Diffusion Policy](../methods/diffusion-policy.md)、[REALab 14 篇技术地图](./realab-14-papers-technology-map-2026.md)、[manipulation](../tasks/manipulation.md) |
 | IRIS Lab | Stanford | Chelsea Finn；π（Physical Intelligence）；ALOHA / Mobile ALOHA | [ALOHA](../entities/aloha.md)、[π₀](../methods/π0-policy.md)、[π₀.7](../methods/pi07-policy.md)、[VLA 复现谱系](./vla-open-source-repro-landscape-2025.md) |
 | CSAIL / Improbable AI | MIT | Daniela Rus；Pulkit Agrawal / DribbleBot | [locomotion](../tasks/locomotion.md) |
 | Robotics Institute | CMU | 操作 / 足式 / 学习；Skild AI 等衍生 | [市面平台纵览](./notable-commercial-robot-platforms.md) |
@@ -129,6 +131,7 @@ flowchart LR
 
 ## 关联页面
 
+- [REALab 14 篇技术地图（2026）](./realab-14-papers-technology-map-2026.md)
 - [国内具身智能实验室三层地图（2026）](./china-embodied-ai-labs-landscape-2026.md)
 - [市面知名机器人平台纵览](./notable-commercial-robot-platforms.md)
 - [Robot Learning Overview](./robot-learning-overview.md)
