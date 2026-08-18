@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-ahmp.md",
+      "detail_id": "entity-paper-ahmp",
+      "label": "AHMP：接触序列发现 + SE(3) 切空间全身规划",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-se3-tangent-to.md",
+      "detail_id": "entity-paper-se3-tangent-to",
+      "label": "SE(3) 切空间浮动基轨迹优化",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-harnesseval-w.md",
       "detail_id": "entity-paper-harnesseval-w",
       "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
@@ -193,32 +213,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/urdf-files-dataset.md",
-      "detail_id": "entity-urdf-files-dataset",
-      "label": "URDF Files Dataset",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/current-robotics-currentworld.md",
-      "detail_id": "entity-current-robotics-currentworld",
-      "label": "CurrentWorld-0（Current Robotics · 交互世界模拟器）",
-      "type": "entity",
-      "recency": "2026-08-17",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-harnesseval-w.md",
-    "detail_id": "entity-paper-harnesseval-w",
-    "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
+    "path": "wiki/entities/paper-ahmp.md",
+    "detail_id": "entity-paper-ahmp",
+    "label": "AHMP：接触序列发现 + SE(3) 切空间全身规划",
     "type": "entity",
     "recency": "2026-08-18",
     "source": "git",
