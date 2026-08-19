@@ -72,7 +72,8 @@ STALE_CLAIM_PATTERNS = [
 #   2) 库内页面名：「VLA SOTA Leaderboard」是 entities/vla-sota-leaderboard.md 的
 #      页面标题，正文引用它属导航，不是本页断言；
 #   3) 运行时对象：「服务端只保留最新 pending 帧」「取最新状态」描述系统行为，
-#      不会随领域进展过时；
+#      不会随领域进展过时；写成行内公式的运行时量（「内层根据最新
+#      \(\mathbf{q}\) 生成指令」）同属此类，只是用符号而非名词落笔；
 #   4) 英文缩写速查区块：`| SOTA | State of the Art | 排行榜对照参考 |` 是词条
 #      释义表（写作规范要求的固定区块），在给缩写下定义而非给结论下断言，
 #      与「常见误区」区块同属结构性区块，扫描前整段剥离。
@@ -95,6 +96,9 @@ STALE_CLAIM_SENTENCE_BREAKS = "。！？；\n"
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
     r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数)"
 )
+# 「最新」后紧跟的行内公式运行时量（如「最新 \((\mathbf{q},\mathbf{e})\)」）：与
+# 「最新状态/读数」同为运行时对象，只是把量写成符号而非名词，同样不随领域进展过时。
+STALE_CLAIM_RUNTIME_MATH_RE = re.compile(r"\s{0,2}\\\([^\n]{0,80}?\\\)")
 # 命中词所在的「英文/数字/空格/连字符」连续片段，用于还原被引用的页面标题
 STALE_CLAIM_SPAN_CHAR_RE = re.compile(r"[A-Za-z0-9 -]")
 
@@ -120,6 +124,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "null",
     "id",
     "title",
+    # code：各页正文里的 `code` 均为 frontmatter 来源键引用（「官方入口见
+    # frontmatter `code` / 项目页」「配套 SDK 入口见 frontmatter `code` 字段」），
+    # 少数指项目页上的 **Code** 按钮，同为仓库入口指针，非机器人概念/方法/
+    # 形式化，不应建独立页；与 type/tags/sources 同类 frontmatter 键停用词。
+    "code",
     "wiki",
     "md",
     "http",
@@ -748,7 +757,10 @@ def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
                 continue
             if _stale_claim_span_slug(body, m.start(), m.end()) in page_stems:
                 continue
-            if m.group(0) == "最新" and STALE_CLAIM_RUNTIME_OBJECT_RE.match(body, m.end()):
+            if m.group(0) == "最新" and (
+                STALE_CLAIM_RUNTIME_OBJECT_RE.match(body, m.end())
+                or STALE_CLAIM_RUNTIME_MATH_RE.match(body, m.end())
+            ):
                 continue
             return m.group(0)
     return None

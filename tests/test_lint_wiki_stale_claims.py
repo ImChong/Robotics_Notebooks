@@ -153,6 +153,36 @@ def test_runtime_object_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
     assert _run([claim, newer])["stale_claims"] == []
 
 
+def test_runtime_math_quantity_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「最新 \((\mathbf{q},\mathbf{e})\)」是写成行内公式的运行时量，与「最新状态」同类。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["teleoperation"],
+        r"内层根据最新 \((\mathbf{q},\mathbf{e})\) 生成接触相关手指协调。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["teleoperation"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_latest_before_unrelated_math_line_is_still_flagged(tmp_path, monkeypatch) -> None:
+    # 豁免只在公式紧跟命中词时生效：隔着断言正文的公式不构成运行时对象。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "2025.md",
+        "2025-01-01",
+        ["vla"],
+        r"这是最新的开源实现，其目标为 \(\min_\theta L(\theta)\)。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "最新" in results["stale_claims"][0]
+
+
 def test_abbrev_glossary_entry_is_not_flagged(tmp_path, monkeypatch) -> None:
     # 「英文缩写速查」区块是词条释义表（写作规范固定区块），不是本页断言。
     wiki = _setup_wiki(tmp_path, monkeypatch)

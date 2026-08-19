@@ -90,6 +90,17 @@ def test_runtime_command_stopword_stop_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_frontmatter_key_stopword_code_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "官方入口见 frontmatter `code` / 项目页。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # code 是 frontmatter 来源键（仓库入口指针），非可成页的机器人概念
+    assert results["missing_concept_pages"] == []
+
+
 def test_covered_elsewhere_joint_ignored(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     pages = [
