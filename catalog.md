@@ -524,6 +524,7 @@
 - [DriftWorld（Fast World Modeling through Drifting）](wiki/entities/paper-driftworld.md) — DriftWorld**（*DriftWorld: Fast World Modeling through Drifting*，[arXiv:2607.15065](https://arxiv.o `📅unknown` `[entity_page]`
 - [DriveTransformer（DriveTransformer: Unified Transformer for Scalable End-to-End Autonomous Driving · arXiv:2503.07656）](wiki/entities/paper-drivetransformer.md) — DriveTransformer**（*DriveTransformer: Unified Transformer for Scalable End-to-End Autonomous Drivi `📅unknown` `[entity_page]`
 - [DriveVLM（DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models · arXiv:2402.12289）](wiki/entities/paper-drivevlm.md) — DriveVLM**（*DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models*，[240 `📅unknown` `[entity_page]`
+- [DRL Proxemics：把「别贴太近」写进可学习奖励](wiki/entities/paper-drl-proxemics-social-nav.md) — DRL Proxemics**（*Towards Socially Compliant Navigation in Deep Reinforcement Learning via Proxemic `📅unknown` `[entity_page]`
 - [DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）](wiki/entities/paper-dswam-dual-system-wam.md) — DSWAM**（*DSWAM: A Dual-System World Action Foundation Model for Fine-Grained Robot Manipulation*， `📅unknown` `[entity_page]`
 - [DWM（Separating World Effects · arXiv:2607.18715）](wiki/entities/paper-dwm-separating-world-effects.md) — DWM**（*DWM: Separating World Effects from Actions in Latent World Models*，Yi-Ge Zhang / Tianqi Du  `📅unknown` `[entity_page]`
 - [DynaWM（Dynamic World Model for VLA Action Correction · arXiv:2607.02604）](wiki/entities/paper-dynawm-vla-online-correction.md) — DynaWM**（*DynaWM: A Base-VLA-Guided World Foundation Model for Moving-Object Manipulation*，[arXiv: `📅unknown` `[entity_page]`
@@ -596,6 +597,7 @@
 - [Green for Go（VLA 导航可通行性视觉接地）](wiki/entities/paper-green-for-go-vla-nav-grounding.md) — Green for Go, Red for No**（*Visual Grounding via Semantic Segmentation for VLA Navigation Policies `📅unknown` `[entity_page]`
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
 - [GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来](wiki/entities/paper-gsr-paravla.md) — Grounded Semantic Re-binding（GSR）**（arXiv:2608.02497，[代码](http `📅unknown` `[entity_page]`
+- [H2R-Bench：世界模型先要过「人到机器人」这一关](wiki/entities/paper-h2r-bench.md) — H2R-Bench**（*Benchmarking Human-to-Robot Manipulation Video Generation in World Models*；[arXiv:260 `📅unknown` `[entity_page]`
 - [World Models（Ha & Schmidhuber）](wiki/entities/paper-ha-schmidhuber-world-models.md) — World Models**（arXiv:1803.10122，2018，David Ha · **谷歌（Google Br `📅unknown` `[entity_page]`
 - [HAIC](wiki/entities/paper-haic.md) — HAIC**（*Humanoid Agile Object Interaction Control via Dynamics-Aware World Model*）解决的是 **underactu `📅unknown` `[entity_page]`
 - [Design of permanent multipole magnets with oriented REC（Halbach 1980）](wiki/entities/paper-halbach-permanent-multipole-magnets.md) — K. Halbach（Lawrence Berkeley Laboratory，[Nucl. Instrum. Methods 1980](https://doi.org/10.1016/0029 `📅unknown` `[entity_page]`
@@ -797,6 +799,7 @@
 - [MoLingo（Motion–Language Alignment for Text-to-Human Motion Generation）](wiki/entities/paper-molingo.md) — MoLingo**（项目页，[arXiv:2512.13840](https://arxiv.or `📅unknown` `[entity_page]`
 - [MomAD（Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving · arXiv:2503.03125）](wiki/entities/paper-momad.md) — MomAD**（*Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving*，[2503.03 `📅unknown` `[entity_page]`
 - [Momentum Control（HMI P004）](wiki/entities/paper-momentum-control-hierarchical-id.md) — Momentum Control**（*Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Hum `📅unknown` `[entity_page]`
+- [Motion-as-Prompt：先把运动画给 MLLM 看](wiki/entities/paper-motion-as-prompt.md) — Motion-as-Prompt（MaP）**（*Enhancing Motion Reasoning in Multimodal Large Language Models via Motion `📅unknown` `[entity_page]`
 - [主动空间大脑与泛化动作小脑](wiki/entities/paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md) — 主动空间大脑与泛化动作小脑** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 `📅unknown` `[entity_page]`
 - [CEER](wiki/entities/paper-motion-cerebellum-ceer.md) — CEER**（*Compliant End-Effector and Root Control as a Unified Interface for Hierarchical Humanoid L `📅unknown` `[entity_page]`
 - [ConstrainedMimic](wiki/entities/paper-motion-cerebellum-constrainedmimic.md) — ConstrainedMimic** 收录于 具身智能研究室 · 运动小脑 64 篇长文  `📅unknown` `[entity_page]`
@@ -1265,6 +1268,7 @@
 - [RoboInter1.5（中间表示操作与世界建模套件）](wiki/entities/paper-robointer-1-5.md) — RoboInter1.5**（*A Holistic Intermediate Representation Suite for Embodied World Modeling and Robot `📅unknown` `[entity_page]`
 - [RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）](wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — RoboNaldo**（*Accurate, Stable and Powerful Humanoid Soccer Shooting via Motion-Guided Curriculum R `📅unknown` `[entity_page]`
 - [RoboReact：从生成第一人称视频蒸馏可泛化全身操作技能](wiki/entities/paper-roboreact.md) — RoboReact**（*Agentic Skill Distillation from Generated Egocentric Videos for Generalizable Whole-B `📅unknown` `[entity_page]`
+- [RoboSynChallenge：合成数据能不能算数，真机说了算](wiki/entities/paper-robosynchallenge.md) — RoboSynChallenge**（*Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skill `📅unknown` `[entity_page]`
 - [Robot Parkour Learning（HMI P130）](wiki/entities/paper-robot-parkour-learning.md) — Robot Parkour Learning**（*Robot Parkour Learning*，2023，[arXiv:2309.05665](https://arxiv.org/abs/23 `📅unknown` `[entity_page]`
 - [RoboTTT（Test-Time-Training Robot Policies）](wiki/entities/paper-robottt-test-time-training-vla-context.md) — RoboTTT**（*Context Scaling for Robot Policies*，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/ `📅unknown` `[entity_page]`
 - [Robust Autonomous Navigation of Mini-Cheetah Vision](wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md) — Dudzik et al.（MIT，IROS 2020，[DOI:10.1109/IROS45743.2020.9340701](https://doi.org/10.1109/IROS45743 `📅unknown` `[entity_page]`
@@ -2116,6 +2120,7 @@
 - [SafeDreamer](wiki/entities/paper-sa-wm-482-safedreamer-safe-reinforcement-learning-with-wor.md) — SafeDreamer: Safe Reinforcement Learning with World Models** 收录于 [Awesome World Models](https://gi `📅unknown` `[entity_page]`
 - [SAM 2：图像与视频中的 Segment Anything](wiki/entities/paper-sam2.md) — SAM 2**（*Segment Anything Model 2*；论文 *SAM 2: Segment Anything in Images and Videos*，[arXiv:2408.0 `📅unknown` `[entity_page]`
 - [SAM 3：Segment Anything with Concepts](wiki/entities/paper-sam3.md) — SAM 3**（*Segment Anything Model 3*；论文 *SAM 3: Segment Anything with Concepts*，[arXiv:2511.16719](h `📅unknown` `[entity_page]`
+- [SAP-Nav：开词汇导航要主动补空间证据](wiki/entities/paper-sap-nav.md) — SAP-Nav**（*Spatial Semantic Representation Meets Active Perception for Hierarchical Open-Vocabular `📅unknown` `[entity_page]`
 - [SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）](wiki/entities/paper-sc3-eval.md) — SC3-Eval**（*SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation*，[ar `📅unknown` `[entity_page]`
 - [ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-scaling-bfm-humanoid.md) — ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scale `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
@@ -2155,6 +2160,7 @@
 - [SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移](wiki/entities/paper-sonic-transfer.md) — SONIC-Transfer**（*Cross-Embodiment Transfer of a Frozen Humanoid Whole-Body Controller via Analyti `📅unknown` `[entity_page]`
 - [SPARK（Skeleton-Parameter Aligned Retargeting）](wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — SPARK**（*Skeleton-Parameter Aligned Retargeting on Humanoid Robots with Kinodynamic Trajectory Opt `📅unknown` `[entity_page]`
 - [SparseDrive（SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation · arXiv:2405.19620）](wiki/entities/paper-sparsedrive.md) — SparseDrive**（*SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation*，[2405.1 `📅unknown` `[entity_page]`
+- [Spatial Memory Agent：不调参也能长空间记性](wiki/entities/paper-spatial-memory-agent.md) — Spatial Memory Agent（SMA）**（*Experience-Grounded Procedure Memory for Spatial Intelligence*；[arXiv `📅unknown` `[entity_page]`
 - [SPD：在仿真里预训练视觉灵巧操作](wiki/entities/paper-spd.md) — SPD**（*Simulation Pre-training for Dexterity*；论文 *Pre-training Visual Dexterity in Simulation*，[项目 `📅unknown` `[entity_page]`
 - [SpeedTuning：给冻结模仿策略加一层速度倍率](wiki/entities/paper-speedtuning.md) — SpeedTuning**（*Speeding Up Policy Execution with Lightweight Reinforcement Learning*；[arXiv:2608.0 `📅unknown` `[entity_page]`
 - [SPLC（社交偏好学习的人群机器人导航）](wiki/entities/paper-splc.md) — SPLC**（*Social Preference Learning for Crowd Robot Navigation*，[arXiv:2607.01925](https://arxiv.or `📅unknown` `[entity_page]`
@@ -3098,6 +3104,7 @@
 - [世界模型动作后果分类 02：接触状态建模](wiki/overview/wm-action-consequence-category-02-contact-modeling.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型动作后果分类 03：3D/4D 几何与环境层](wiki/overview/wm-action-consequence-category-03-geometry-4d.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型动作后果分类 04：训练与评估闭环](wiki/overview/wm-action-consequence-category-04-eval-posttrain.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [世界模型与真实执行：10 篇论文的阅读坐标](wiki/overview/world-model-exec-10-papers-technology-map.md) — 世界模型很热，但真实执行才是硬门槛：跨本体生成要可诊断，导航要社会/类人/主动感知，策略要 SMPC 或统一 token 流，感知还要可见性与运动证据。 `📅unknown` `[overview_page]`
 - [世界模型物理保真：输出阅读轴](wiki/overview/world-model-physics-fidelity-outputs.md) — 一套按「动作之后模型用什么记录世界变化」组织的阅读轴，用来判断机器人世界模型学到了多少可检验的物理，而不是只看生成观感。 `📅unknown` `[overview_page]`
 - [世界模型 15 开源项目：三线技术地图](wiki/overview/world-models-15-open-source-technology-map.md) — 世界模型的价值不在「会生成未来视频」，而在 **预测能否进入策略学习、评估与闭环决策**——15 个高引开源项目按 **先预测后动作（级联）→ 想象与动作同骨干（联合）→ 想象作 RL/评估环境（沙盒 `📅unknown` `[overview_page]`
 - [世界模型路线 01：级联架构](wiki/overview/world-models-route-01-cascade.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

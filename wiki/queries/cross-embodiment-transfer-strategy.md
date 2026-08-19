@@ -3,7 +3,7 @@ title: 跨具身策略迁移选型指南
 type: query
 status: complete
 created: 2026-05-31
-updated: 2026-08-17
+updated: 2026-08-19
 summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；近亲骨架上 Any2Any 的更严冻结变体对照 SONIC-Transfer；灵巧手层可对照 UHAS（RL 球面）与 AdvDex（VLA 关节槽）；末端/工具接口轴对照 GEN-1 千手；同形态跨配置遗留示教对照 Emergent Transfer；设计侧生成机体可对照 Transformer Transformer。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
