@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, bom, actuators, supply-chain, survey]
 status: complete
-updated: 2026-06-01
+updated: 2026-08-19
 related:
   - ./humanoid-actuator-102-technology-map.md
   - ../concepts/humanoid-mechanical-layout-design.md
@@ -21,6 +21,7 @@ related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../queries/humanoid-battery-thermal-management.md
   - ./humanoid-rl-motion-control-body-system-stack.md
+  - ../concepts/humanoid-mass-production-engineering.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
@@ -116,6 +117,7 @@ flowchart TB
 - [电机驱动与总线协议概览](./motor-drive-firmware-bus-protocols.md)
 - [人形电池热管理 Query](../queries/humanoid-battery-thermal-management.md)
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
+- [人形量产工程能力](../concepts/humanoid-mass-production-engineering.md) — 2026 量产叙事：DFM、良率与 CPK
 - [Agent Reach](../entities/agent-reach.md) — 本文抓取工具链
 
 ## 推荐继续阅读

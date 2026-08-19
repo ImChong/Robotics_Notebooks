@@ -1,3 +1,12 @@
+## [2026-08-19] ingest | sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md — 人形量产经验（DFM·三大核心件·良率/CPK·供应链·可靠性）；升格 wiki/concepts/humanoid-mass-production-engineering.md
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/CARW0vvd4doO1htt0Q1bHg>；要求自动合并 PR
+- **工具：** Agent Reach + wechat-article-for-ai（Camoufox；`--no-images`）
+- **来源：** [`sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md`](sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md)
+- **新建概念：** [`wiki/concepts/humanoid-mass-production-engineering.md`](wiki/concepts/humanoid-mass-production-engineering.md) — 量产经验 = 制造可行性；谐波/PRS/无框电机工艺定型、S 曲线良率、CPK/PPAP、跨行业迁移与主流厂商路径对照
+- **开源核查（步骤 2.5）：** **不适用** — 公众号工程解读，无项目页 / 代码仓
+- **交叉更新：** [`wiki/overview/humanoid-hardware-101-supply-chain-economics.md`](wiki/overview/humanoid-hardware-101-supply-chain-economics.md)、[`wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md`](wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md)、[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)、[`wiki/concepts/humanoid-knee-harmonic-drive-limits.md`](wiki/concepts/humanoid-knee-harmonic-drive-limits.md)、[`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)、[`sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md`](sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)
+
 ## [2026-08-19] ingest | sources/papers/tau0_vla_arxiv_2608_16885.md — τ₀-VLA 分层基础模型与世界模型引导测试时计算入库
 
 - **触发：** 用户指定 ingest τ₀-VLA（<https://tau0-vla.github.io/>；上海创智学院、智元 Finch、港中文）
