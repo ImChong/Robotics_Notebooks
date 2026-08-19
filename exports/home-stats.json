@@ -9,6 +9,73 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/world-model-exec-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-world-model-exec-10-papers-technology-map",
+      "label": "世界模型与真实执行：10 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-drl-proxemics-social-nav.md",
+      "detail_id": "entity-paper-drl-proxemics-social-nav",
+      "label": "DRL Proxemics：把「别贴太近」写进可学习奖励",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-h2r-bench.md",
+      "detail_id": "entity-paper-h2r-bench",
+      "label": "H2R-Bench：世界模型先要过「人到机器人」这一关",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-motion-as-prompt.md",
+      "detail_id": "entity-paper-motion-as-prompt",
+      "label": "Motion-as-Prompt：先把运动画给 MLLM 看",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-robosynchallenge.md",
+      "detail_id": "entity-paper-robosynchallenge",
+      "label": "RoboSynChallenge：合成数据能不能算数，真机说了算",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-sap-nav.md",
+      "detail_id": "entity-paper-sap-nav",
+      "label": "SAP-Nav：开词汇导航要主动补空间证据",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-spatial-memory-agent.md",
+      "detail_id": "entity-paper-spatial-memory-agent",
+      "label": "Spatial Memory Agent：不调参也能长空间记性",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-hommi.md",
       "detail_id": "entity-paper-hommi",
       "label": "HoMMI（arXiv:2603.03243）",
@@ -136,90 +203,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/realab-14-papers-technology-map-2026.md",
-      "detail_id": "wiki-overview-realab-14-papers-technology-map-2026",
-      "label": "REALab 技术地图：14 篇工作（2026）",
-      "type": "overview",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-cref.md",
-      "detail_id": "entity-paper-cref",
-      "label": "CReF：交叉模态与循环融合的深度条件人形行走",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ahmp.md",
-      "detail_id": "entity-paper-ahmp",
-      "label": "AHMP：接触序列发现 + SE(3) 切空间全身规划",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-se3-tangent-to.md",
-      "detail_id": "entity-paper-se3-tangent-to",
-      "label": "SE(3) 切空间浮动基轨迹优化",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-harnesseval-w.md",
-      "detail_id": "entity-paper-harnesseval-w",
-      "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-top-layer-fabric-seg.md",
-      "detail_id": "entity-paper-top-layer-fabric-seg",
-      "label": "顶层布料分割：软物体操作常输在边界",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-autopso.md",
-      "detail_id": "entity-paper-autopso",
-      "label": "AutoPSO：PSO 变体不要再手搓",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hommi.md",
-    "detail_id": "entity-paper-hommi",
-    "label": "HoMMI（arXiv:2603.03243）",
-    "type": "entity",
-    "recency": "2026-08-18",
+    "path": "wiki/overview/world-model-exec-10-papers-technology-map.md",
+    "detail_id": "wiki-overview-world-model-exec-10-papers-technology-map",
+    "label": "世界模型与真实执行：10 篇论文的阅读坐标",
+    "type": "overview",
+    "recency": "2026-08-19",
     "source": "git",
-    "action": "added",
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
