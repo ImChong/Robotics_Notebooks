@@ -123,6 +123,7 @@
 | [x] [wem_arxiv_2605_19957.md](papers/wem_arxiv_2605_19957.md) | WEM：World-Ego Modeling + HTEWorld 混合导航–操作长程视频世界模型（arXiv:2605.19957，ZGCA-HMI-Lab）摘录与 wiki 映射 |
 | [x] [ge_sim_2_arxiv_2605_27491.md](papers/ge_sim_2_arxiv_2605_27491.md) | GE-Sim 2.0：闭环操纵视频世界模拟器（本体状态专家 + World Judge + 加速，arXiv:2605.27491，AgibotTech）摘录与 wiki 映射 |
 | [x] [tau0_wm_tech_report.md](papers/tau0_wm_tech_report.md) | τ₀-WM：统一视频–动作世界模型（5B VAM、异构掩码预训练、测试时 propose–evaluate–revise，Agibot Finch 技术报告 2026-05-31）摘录与 wiki 映射 |
+| [x] [tau0_vla_arxiv_2608_16885.md](papers/tau0_vla_arxiv_2608_16885.md) | τ₀-VLA：分层机器人基础模型 + 世界模型引导测试时计算（arXiv:2608.16885；40,115 h、子任务 TTC、长程真机 45.0%）摘录与 wiki 映射 |
 | [x] [worldvln_arxiv_2605_15964.md](papers/worldvln_arxiv_2605_15964.md) | WorldVLN：空中 VLN 自回归 World Action Model + Action-aware GRPO（arXiv:2605.15964，EmbodiedCity）摘录与 wiki 映射 |
 | [x] [xiaomi_robotics_u0_arxiv_2607_11643.md](papers/xiaomi_robotics_u0_arxiv_2607_11643.md) | Xiaomi-Robotics-U0：38B 统一具身合成世界基础模型（T2I/X2I/多视角场景/迁移/视频共训 + FlashAR+，arXiv:2607.11643，小米）摘录与 wiki 映射 |
 | [x] [unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) | SD-AMP：投影重力门控双判别器 AMP，G1 单策略走跑起身（arXiv:2605.18611，HKU）摘录与 wiki 映射 |
@@ -255,6 +256,7 @@
 | [x] [wem.md](repos/wem.md) | ZGCA-HMI-Lab/WEM：World-Ego Model 与 HTEWorld 官方代码（arXiv:2605.19957） |
 | [x] [ge_sim_v2.md](repos/ge_sim_v2.md) | AgibotTech/GE-Sim-V2：Genie Envisioner World Simulator 2.0（arXiv:2605.27491；代码/权重待发布） |
 | [x] [sii_research_tau_0_wm.md](repos/sii_research_tau_0_wm.md) | sii-research/tau-0-wm：τ₀-WM 官方实现（Wan-2.2 VAM 部署、HF 权重；Simulator/测试时代码待发布） |
+| [x] [sii_research_tau_0_vla.md](repos/sii_research_tau_0_vla.md) | sii-research/tau-0-vla：τ₀-VLA 官方实现（低层 VLA 后训练/deploy、HF 权重；高层 TTC 逐步发布） |
 | [x] [worldvln_embodiedcity.md](repos/worldvln_embodiedcity.md) | EmbodiedCity/WorldVLN：空中 VLN 自回归 WAM 官方代码入口（arXiv:2605.15964） |
 | [x] [multirotor_uav_stack_catalog.md](repos/multirotor_uav_stack_catalog.md) | 多旋翼栈 10 仓索引：PX4、XTDrone、EGO-Planner、AirSim、Flightmare、PyBullet Gym、swarm RL、Crazyflie、MAVSDK |
 | [x] [navigation_slam_autonomy_stack_catalog.md](repos/navigation_slam_autonomy_stack_catalog.md) | 导航·SLAM·自动驾驶 21 仓索引：Nav2、slam_toolbox、Cartographer、FAST-LIO、VINS、Autoware、Isaac ROS、LeRobot、OpenVLA 等 |
@@ -524,6 +526,7 @@
 | [x] [wem-project.md](sites/wem-project.md) | WEM 项目页 zgca-hmi-lab.github.io/WEM（World-Ego Modeling、HTEWorld 结果表与演示，arXiv:2605.19957） |
 | [x] [ge-sim-v2-project.md](sites/ge-sim-v2-project.md) | GE-Sim 2.0 项目页 ge-sim-v2.github.io（多视角闭环模拟、World Judge、长视频演示，arXiv:2605.27491） |
 | [x] [tau0-wm-agibot-finch.md](sites/tau0-wm-agibot-finch.md) | τ₀-WM 项目页 finch.agibot.com/research/tau0-wm（5B 统一视频–动作 WM、异构数据与测试时闭环，2026-05-31） |
+| [x] [tau0-vla-github-io.md](sites/tau0-vla-github-io.md) | τ₀-VLA 项目页 tau0-vla.github.io（分层 VLA、子任务级 TTC、四类长程真机，2026-07-27） |
 | [x] [worldvln-embodiedcity.md](sites/worldvln-embodiedcity.md) | WorldVLN 项目页 embodiedcity.github.io/WorldVLN（闭环推理、两阶段训练、室内外 UAV 与真机演示，arXiv:2605.15964） |
 | [x] [worldlabs-ai.md](sites/worldlabs-ai.md) | World Labs 官网：Marble / Spark / Marble Labs；Spark 2.0 见 blogs/worldlabs_spark_2_0_streaming_3dgs.md |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |

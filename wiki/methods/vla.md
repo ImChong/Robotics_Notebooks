@@ -67,6 +67,7 @@ related:
   - ../entities/paper-turingvit.md
   - ../entities/lingbot-vla.md
   - ../entities/lingbot-vla-v2.md
+  - ../entities/paper-tau0-vla.md
   - ../entities/limx-cosa.md
   - ../entities/fluxvla-engine.md
   - ../entities/paper-steam-advantage-modeling.md
@@ -227,6 +228,7 @@ flowchart TD
 - **ACE-Brain-0.5（大晓 Ace Robotics）**：**Qwen3-VL 8B** 统一具身脑，把 **空间感知 / 规划 / 导航·操作 / 进度估计** 收进同一闭环；**SSR+**（含 Reactivate）合并异构接口；LIBERO **98.2%**、SimplerEnv-Bridge VLA 变体 **82.3%**、RBM progress VOC 强；**HF 权重已开源**，训练栈未见（见 [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md)，arXiv:2607.04426）
 - **LingBot-VLA 1.0**：**Qwen2.5-VL-3B + flow 动作头**；**2 万小时**、**9 类双臂** 真机预训练；开源 **4B** 权重（含 depth 变体）、**GM-100** 数据与 **LeRobot v3.0** 后训练范例；RoboTwin 仿真平均 SR 超 **π₀.₅**（见 [LingBot-VLA](../entities/lingbot-vla.md)，arXiv:2601.18692）
 - **LingBot-VLA 2.0**：**Qwen3-VL-4B + 稀疏 MoE action expert**；约 **6 万小时** 过滤预训练（**5 万 h** 机器人 ×**20** 本体 + **1 万 h** egocentric 人视频）、**55 维统一全身动作** 与 **Dual-Query 深度/视频蒸馏**；GM-100 / 长程移动操作 **generalist** 评测超 **π₀.₅**、**GR00T N1.7** 与 **1.0**；开源 **6B 权重** 与真机部署脚本（见 [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md)，arXiv:2607.06403）
+- **τ₀-VLA**：**分层子任务 + 世界模型引导 TTC**（beam search 比较想象后果）；低层 **Qwen3.5 + MoT flow**、**40 维** 统一动作、**40,115 h** 预训练；长程四任务分层 **45.0%** vs 整任务 **27.5%**；低层 **已开源**、高层 TTC **逐步发布**（见 [τ₀-VLA](../entities/paper-tau0-vla.md)，arXiv:2608.16885）
 - **Lumo-2**：**Qwen3.5-4B latent WAM**——**潜空间世界动力学 φ** + **三阶段动作–视觉–语言预对齐**、历史动作记忆与 **BAR 2.71×** 推理加速；**Astribot S1** 上 **22 项** 挑战真机任务全面超 **π₀.₅/Fast-WAM**；人–机共训无需专用迁移机制（见 [Lumo-2](../entities/lumo-2.md)，arXiv:2607.11270）；[Philia](../entities/philia.md) 将其作为 gateway capability 部署
 - **Dexmal DM0.5（OpenDM）**：**Gemma3-4B VLM + 680M Flow-Matching Action Expert**；**~60s 历史上下文抽象**、**11 类具身 CoT** 与 **DP 动态轨迹对齐**；**已开源** [opendm](https://github.com/dexmal/opendm) 训练/推理与 **DM05** 系列权重（LIBERO **99.0%**、RoboTwin2 Clean/Rand **93.6%/93.3%**、Table30v2 **43% SR**）（见 [Dexmal DM0.5](../entities/dexmal-dm05.md)）
 - **DA-Nav（导航 VLM，非操作 VLA）**：把城市户外导航写成 **商业方向指令 + 图像平面离散网格 grounding + CoT 偏离恢复**（Qwen2.5-VL-7B LoRA）；相对连续 waypoint / 分层 NaVILA，强调 **动作表示对齐 2D 视觉推理** 与 **recovery 数据**；CARLA SoTA 并零样本 Go2/人形（见 [DA-Nav](../entities/paper-da-nav.md)，arXiv:2607.11638；**暂未开源**）
