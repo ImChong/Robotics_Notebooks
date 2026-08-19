@@ -128,4 +128,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-sap-nav.md
 
-📊 Sources 覆盖率：3155/3155 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3156/3156 (100%) wiki/entity 页有 ingest 来源

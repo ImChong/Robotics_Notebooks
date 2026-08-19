@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, leg, linear-actuator, tesla]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-19
 related:
   - ../entities/humanoid-robot.md
   - ../tasks/locomotion.md
@@ -13,9 +13,11 @@ related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../entities/paper-humanoid-leg-generative-design-dynamics.md
   - ./humanoid-knee-harmonic-drive-limits.md
+  - ./humanoid-mass-production-engineering.md
 sources:
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
   - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 summary: "人形腿部用行星滚柱丝杠（PRS）把电机旋转转为直线推力、再经连杆映射为关节角，是在负载/自锁/布置与力控路径上偏向「工业实用主义」的一类执行器路线，与高动态全旋转关节路线形成典型权衡。"
 ---
@@ -94,6 +96,7 @@ flowchart LR
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 行星滚柱丝杠是①层执行器传动机构（线性执行器）的一种选型方案
 - [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 对照电液混合 EHA+连杆的直线推力布置
 - [膝/腿主承力链为何通常避开谐波](./humanoid-knee-harmonic-drive-limits.md) — 冲击谱载、柔轮疲劳与力流布置判据；PRS 是膝侧常见替代之一
+- [人形量产工程能力](./humanoid-mass-production-engineering.md) — PRS 螺纹磨削精度、滚柱一致性与 G 级导程量产门槛
 
 ## 推荐继续阅读
 
@@ -104,5 +107,5 @@ flowchart LR
 
 - [特斯拉人形机器人腿部关节为什么选择行星滚柱丝杠？（微信公众号原文）](https://mp.weixin.qq.com/s/webqJRQJREZdABw8bdl68w)
 - [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md（仓库内归档）](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)
-- [wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md（仓库内归档）](../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md) — 膝侧为何通常不把谐波放主冲击路径
+- [wechat_zanehub_humanoid_mass_production_experience.md（仓库内归档）](../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md) — PRS/谐波/无框电机量产工艺与良率
 - [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md) — EHA 直线推力对照案例

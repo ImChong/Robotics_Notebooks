@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, motor, gearbox, encoder, qdd, harmonic, category-hub]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-19
 summary: "Humanoid Hardware 101 · 02 传动与感知链 — 外转子伺服+有传感器换相、谐波/RV/行星减速器路线之争、双编码器与磁编绝对式；QDD 利 RL 扭矩透明。"
 related:
   - ./humanoid-hardware-101-technology-map.md
@@ -11,10 +11,12 @@ related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../methods/amp-reward.md
   - ../concepts/humanoid-knee-harmonic-drive-limits.md
+  - ../concepts/humanoid-mass-production-engineering.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
 ---
 
 # Humanoid Hardware 101 · 02：传动与感知链
@@ -68,9 +70,11 @@ sources:
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 - [电机驱动与总线协议](./motor-drive-firmware-bus-protocols.md)
 - [膝/腿主承力链为何通常避开谐波](../concepts/humanoid-knee-harmonic-drive-limits.md)
+- [人形量产工程能力](../concepts/humanoid-mass-production-engineering.md) — 谐波/丝杠/无框电机量产工艺与良率
 
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
 - [wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md](../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)
+- [wechat_zanehub_humanoid_mass_production_experience.md](../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md)

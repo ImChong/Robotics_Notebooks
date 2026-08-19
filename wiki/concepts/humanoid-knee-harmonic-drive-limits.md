@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, harmonic-drive, knee, leg, roller-screw, qdd]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-19
 related:
   - ./planetary-roller-screw-humanoid-leg-actuation.md
   - ../overview/humanoid-actuator-102-split-architecture.md
@@ -13,9 +13,11 @@ related:
   - ../entities/humanoid-robot.md
   - ../queries/humanoid-hardware-selection.md
   - ../overview/hub-actuator-drive-chain.md
+  - ./humanoid-mass-production-engineering.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
 summary: "膝/踝等主承力腿关节通常不把谐波减速器放在主冲击路径：谐波擅长紧凑低回差旋转精度，而腿优先冲击谱载、柔轮疲劳寿命、动态刚度与远端惯量；常见替代是 PRS 直线、摆线/RV 或低减速比准直驱。"
 ---
 
@@ -115,12 +117,13 @@ flowchart TB
 - [Locomotion](../tasks/locomotion.md) — 行走冲击与关节接口语境
 - [Query：人形硬件怎么选](../queries/humanoid-hardware-selection.md) — 多路线决策入口
 - [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — 传动机构选型落在驱动链①层之上的整链入口
+- [人形量产工程能力](./humanoid-mass-production-engineering.md) — 谐波柔轮量产良率、CPK 与工艺定型
 
 ## 参考来源
 
 - [人形机器人的腿部和膝关节，为什么通常不用谐波减速器？（微信原文）](https://mp.weixin.qq.com/s/GowJUzbDjWQMcujtUezLGA)
 - [wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md（仓库内归档）](../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)
-- [特斯拉 Optimus 腿部 PRS 选型姊妹文归档](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)
+- [wechat_zanehub_humanoid_mass_production_experience.md（仓库内归档）](../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md) — 谐波柔轮量产良率与三大核心件工艺
 
 ## 推荐继续阅读
 

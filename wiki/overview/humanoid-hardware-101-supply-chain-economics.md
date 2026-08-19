@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, bom, supply-chain, china, usa, category-hub]
 status: complete
-updated: 2026-06-01
+updated: 2026-08-19
 summary: "Humanoid Hardware 101 · 07 产业与成本地缘 — 执行器难 10× 降本；传感器 3–5× 路径；中国靠 EV/无人机/消费电子供应链+产业密度，美国资本偏软件等待操作智能成熟。"
 related:
   - ./humanoid-hardware-101-technology-map.md
@@ -10,9 +10,11 @@ related:
   - ./humanoid-hardware-101-sensing-end-effectors.md
   - ../queries/humanoid-hardware-selection.md
   - ../entities/open-source-humanoid-hardware.md
+  - ../concepts/humanoid-mass-production-engineering.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
 ---
 
 # Humanoid Hardware 101 · 07：产业与成本地缘
@@ -64,8 +66,10 @@ sources:
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [传感与末端](./humanoid-hardware-101-sensing-end-effectors.md)
+- [人形量产工程能力](../concepts/humanoid-mass-production-engineering.md) — DFM、良率爬坡、CPK 与可靠性放行（2026 量产叙事补充）
 
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
+- [wechat_zanehub_humanoid_mass_production_experience.md](../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md) — 量产经验与三大核心件工艺
