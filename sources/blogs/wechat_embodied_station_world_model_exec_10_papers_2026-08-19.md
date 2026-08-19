@@ -10,7 +10,7 @@
 - **入库日期：** 2026-08-19
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + `wechat-article-for-ai`（Camoufox）；`--no-images`；Jina Reader 对该链接触发微信 CAPTCHA，未采用
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md`](../raw/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md)
-- **一句话说明：** 汇总 10 篇近期具身/机器人论文（文内均给项目页或代码链），主线从「看懂场景」推进到 **跨本体世界模型、社会/类人导航、空间记忆、开词汇主动感知、合成数据真机裁决、SMPC 示范 + 稀疏 RL、统一 VLA token 流、运动提示与手部可见性**；本库 **复用 4 个已有 complete 节点，新建 6 个独立论文实体，不重复造页**。
+- **一句话说明：** 汇总 10 篇近期具身/机器人论文（文内均给项目页或代码链），主线从「看懂场景」推进到 **跨本体世界模型、社会/类人导航、空间记忆、开词汇主动感知、合成数据真机裁决、SMPC 示范 + 稀疏 RL、统一 VLA token 流、运动提示与手部可见性**；**10/10 均有独立 `paper-*` 详情节点**（本 ingest **新建 6**、**既有 complete 4**；同一 arXiv **不重复造页**）。
 
 ## 核心摘录（归纳，非全文）
 
@@ -22,14 +22,14 @@
 |---|------|-------|-------------------|------|
 | 01 | H2R-Bench | [2608.13049](https://arxiv.org/abs/2608.13049) | **部分开源**：项目页 + 仓已建，评测代码与标注 **未发布** | [paper-h2r-bench](../../wiki/entities/paper-h2r-bench.md) |
 | 02 | DRL Proxemics 社会导航 | [2608.12917](https://arxiv.org/abs/2608.12917) | **未开源**：项目页 Code 链为 `#` 占位 | [paper-drl-proxemics-social-nav](../../wiki/entities/paper-drl-proxemics-social-nav.md) |
-| 03 | HumanoidVLN | [2608.12860](https://arxiv.org/abs/2608.12860) | **待发布**（复用既有节点） | [paper-humanoidvln](../../wiki/entities/paper-humanoidvln.md) |
+| 03 | HumanoidVLN | [2608.12860](https://arxiv.org/abs/2608.12860) | **待发布** | [paper-humanoidvln](../../wiki/entities/paper-humanoidvln.md)（既有 complete） |
 | 04 | Spatial Memory Agent (SMA) | [2608.12743](https://arxiv.org/abs/2608.12743) | **待发布**：项目页 **Code Coming Soon** | [paper-spatial-memory-agent](../../wiki/entities/paper-spatial-memory-agent.md) |
 | 05 | SAP-Nav | [2608.12707](https://arxiv.org/abs/2608.12707) | **待发布**：仓仅 GitHub Pages，README 写 soon | [paper-sap-nav](../../wiki/entities/paper-sap-nav.md) |
 | 06 | RoboSynChallenge | [2608.12416](https://arxiv.org/abs/2608.12416) | **已开源** 框架 + HF 数据/权重 | [paper-robosynchallenge](../../wiki/entities/paper-robosynchallenge.md) |
-| 07 | SMPC→稀疏 RL 移动操作 | [2608.12063](https://arxiv.org/abs/2608.12063) | **已开源**（复用既有节点） | [paper-smpc2rl-loco-manipulation](../../wiki/entities/paper-smpc2rl-loco-manipulation.md) |
-| 08 | Galaxea G0.5 | [2608.11739](https://arxiv.org/abs/2608.11739) | **已开源**（复用既有节点） | [paper-galaxea-g05](../../wiki/entities/paper-galaxea-g05.md) |
+| 07 | SMPC→稀疏 RL 移动操作 | [2608.12063](https://arxiv.org/abs/2608.12063) | **已开源** | [paper-smpc2rl-loco-manipulation](../../wiki/entities/paper-smpc2rl-loco-manipulation.md)（既有 complete） |
+| 08 | Galaxea G0.5 | [2608.11739](https://arxiv.org/abs/2608.11739) | **已开源** | [paper-galaxea-g05](../../wiki/entities/paper-galaxea-g05.md)（既有 complete） |
 | 09 | Motion-as-Prompt (MaP) | [2608.11655](https://arxiv.org/abs/2608.11655) | **已开源** 训练无关框架（无 MaP 权重） | [paper-motion-as-prompt](../../wiki/entities/paper-motion-as-prompt.md) |
-| 10 | Hand Visibility Detector | [2608.11574](https://arxiv.org/abs/2608.11574) | **已开源**（复用既有节点） | [paper-hand-visibility-detector](../../wiki/entities/paper-hand-visibility-detector.md) |
+| 10 | Hand Visibility Detector | [2608.11574](https://arxiv.org/abs/2608.11574) | **已开源** | [paper-hand-visibility-detector](../../wiki/entities/paper-hand-visibility-detector.md)（既有 complete） |
 
 ### 文内要点速记
 
@@ -46,12 +46,13 @@
 
 ## 对 wiki 的映射
 
-- **复用 4** 个 complete 节点（HumanoidVLN、SMPC2RL、G0.5、Hand Visibility）；**新建 6** 个独立 `paper-*` 详情节点。
-- 阅读坐标：[世界模型与真实执行 10 篇技术地图](../../wiki/overview/world-model-exec-10-papers-technology-map.md)。
+- **10/10 独立详情节点**：每篇对应唯一 `wiki/entities/paper-*.md`；静态站 `detail.html?id=entity-paper-…` 均可直达。
+- **本 ingest 新建 6** 个实体；**4 篇**在先前 ingest 已有 complete 页 → **只回链博客，不重复造页**（lint 禁止同一 arXiv 多 canonical 节点）。
+- 阅读坐标：[世界模型与真实执行 10 篇技术地图](../../wiki/overview/world-model-exec-10-papers-technology-map.md)（**非**论文详情替代，仅作横切面索引）。
 - 交叉：[生成式世界模型](../../wiki/methods/generative-world-models.md)、[VLN](../../wiki/tasks/vision-language-navigation.md)、[VLA](../../wiki/methods/vla.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[WiLoR](../../wiki/methods/wilor.md)、[SAP-Nav](../../wiki/entities/paper-sap-nav.md)。
 
 ## 当前提炼状态
 
 - [x] 公众号正文抓取与 raw 归档
-- [x] 10 篇独立节点核查（4 复用 / 6 新建 / 0 stub 重复）
+- [x] 10 篇独立节点核查（6 新建 / 4 既有 complete / **0 重复 arXiv 节点**）
 - [x] 项目页与仓库开源状态核查（步骤 2.5）

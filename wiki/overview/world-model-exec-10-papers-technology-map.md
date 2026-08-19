@@ -89,7 +89,7 @@ flowchart TB
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|----------------|------|
 | 02 | DRL Proxemics | 未开源 | [paper-drl-proxemics-social-nav](../entities/paper-drl-proxemics-social-nav.md) |
-| 03 | HumanoidVLN | 待发布（复用） | [paper-humanoidvln](../entities/paper-humanoidvln.md) |
+| 03 | HumanoidVLN | 待发布（既有 complete） | [paper-humanoidvln](../entities/paper-humanoidvln.md) |
 | 04 | SMA | 待发布 | [paper-spatial-memory-agent](../entities/paper-spatial-memory-agent.md) |
 | 05 | SAP-Nav | 待发布 | [paper-sap-nav](../entities/paper-sap-nav.md) |
 
@@ -97,15 +97,15 @@ flowchart TB
 
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|----------------|------|
-| 07 | SMPC→RL | 已开源（复用） | [paper-smpc2rl-loco-manipulation](../entities/paper-smpc2rl-loco-manipulation.md) |
-| 08 | Galaxea G0.5 | 已开源（复用） | [paper-galaxea-g05](../entities/paper-galaxea-g05.md) |
+| 07 | SMPC→RL | 已开源（既有 complete） | [paper-smpc2rl-loco-manipulation](../entities/paper-smpc2rl-loco-manipulation.md) |
+| 08 | Galaxea G0.5 | 已开源（既有 complete） | [paper-galaxea-g05](../entities/paper-galaxea-g05.md) |
 
 ### 感知可靠性：运动证据与可见性
 
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|----------------|------|
 | 09 | Motion-as-Prompt | 已开源 | [paper-motion-as-prompt](../entities/paper-motion-as-prompt.md) |
-| 10 | Hand Visibility | 已开源（复用） | [paper-hand-visibility-detector](../entities/paper-hand-visibility-detector.md) |
+| 10 | Hand Visibility | 已开源（既有 complete） | [paper-hand-visibility-detector](../entities/paper-hand-visibility-detector.md) |
 
 ## 读法建议
 
