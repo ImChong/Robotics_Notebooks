@@ -8,6 +8,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ./paper-humanoidvln.md
   - ../methods/vla.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-seeker.md
 sources:
   - ../../sources/papers/sap_nav_arxiv_2608_12707.md
@@ -99,6 +100,7 @@ LangMap / HM3D-OVON **整体最好**；region-level SR 相对训练式方法 **+
 - [HumanoidVLN](./paper-humanoidvln.md)
 - [Seeker](./paper-seeker.md)
 - [VLA](../methods/vla.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ③ 在线语义建图层：可查询空间–语义表征 + 主动视点验证
 
 ## 参考来源
 

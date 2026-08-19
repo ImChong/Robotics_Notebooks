@@ -10,6 +10,7 @@ related:
   - ../methods/vla.md
   - ../concepts/world-action-models.md
   - ../queries/dexterous-manipulation-data-pipeline.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./libero-benchmark.md
 sources:
   - ../../sources/papers/robosynchallenge_arxiv_2608_12416.md
@@ -121,6 +122,7 @@ sequenceDiagram
 - [VLA](../methods/vla.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [灵巧操作数据管线](../queries/dexterous-manipulation-data-pipeline.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ③ 策略成功率 + ④ sim↔real 校准：本页把两层压进同一挑战赛协议
 - [LIBERO](./libero-benchmark.md)
 
 ## 参考来源
