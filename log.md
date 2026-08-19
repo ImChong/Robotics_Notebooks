@@ -1,3 +1,12 @@
+## [2026-08-19] ingest | sources/papers/tau0_vla_arxiv_2608_16885.md — τ₀-VLA 分层基础模型与世界模型引导测试时计算入库
+
+- **触发：** 用户指定 ingest τ₀-VLA（<https://tau0-vla.github.io/>；上海创智学院、智元 Finch、港中文）
+- **步骤 2.5：** 项目页链 arXiv、GitHub、HF → **部分开源**：低层 VLA 权重 + 后训练/deploy 已发布；README **[2026.08.19]** 高层 policy + TTC **逐步发布**
+- **来源：** [`sources/papers/tau0_vla_arxiv_2608_16885.md`](sources/papers/tau0_vla_arxiv_2608_16885.md)、[`sources/sites/tau0-vla-github-io.md`](sources/sites/tau0-vla-github-io.md)、[`sources/repos/sii_research_tau_0_vla.md`](sources/repos/sii_research_tau_0_vla.md)
+- **升格：** [`wiki/entities/paper-tau0-vla.md`](wiki/entities/paper-tau0-vla.md) — P/W/V/F 高层 TTC、可修订记忆、40 维 MoT 低层、长程四任务表
+- **交叉：** τ₀-WM、π₀.₅、LingBot-VLA 2.0、VLA、manipulation
+- **机构：** `shanghai-innovation-institute`、`agibot`、`cuhk`
+
 ## [2026-08-19] ingest | sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md — 具身智能小站 10 篇世界模型与真实执行盘点；复用 4 / 新建 6 论文实体 + 技术地图
 
 ## [2026-08-18] ingest | sources/blogs/wechat_shenlan_realab_14_papers_2026.md — REALab 14 篇技术地图；开源核查 10+ 项已开

@@ -12,7 +12,7 @@ tags:
   - multi-view
   - heterogeneous-data
 status: complete
-updated: 2026-07-24
+updated: 2026-08-19
 related:
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md
@@ -23,6 +23,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./ge-sim-2.md
   - ./ewmbench.md
+  - ./paper-tau0-vla.md
 sources:
   - ../../sources/papers/tau0_wm_tech_report.md
   - ../../sources/sites/tau0-wm-agibot-finch.md
@@ -53,7 +54,7 @@ summary: "τ₀-WM（5B）：在 Wan-2.2 级视频扩散骨干上联合训练多
 - **监督错位是常态：** 机器人数据有 **动作** 但场景窄；人视频有 **交互动力学** 但没有机器人控制空间。τ₀-WM 用 **模态掩码** 让每条样本只贡献其合法信号，避免假装「每条轨迹都有 action label」。
 - **世界模型不止于预览：** 动作条件分支输出 **任务进度轨迹**（子任务标签 + 失败轨迹），使仿真器成为 **action consequence evaluator**，而不只是「好看的下一帧」。
 - **测试时算力换成功率：** 多候选 action + **Re-denoising Consistency Score** + 必要时 **仿真选优再预测**，把瓶颈从「单次采样」移到 **执行前推理**——与 [VLA](../methods/vla.md) 反应式前馈形成对照。
-- **Agibot 视频 WM 谱系延伸：** 与 [GE-Sim 2.0](./ge-sim-2.md)（闭环模拟器 + World Judge + 本体专家）同生态；τ₀-WM 更强调 **策略与世界预测共享 5B 表征** 及 **操纵策略侧的测试时搜索**。
+- **Agibot 视频 WM 谱系延伸：** 与 [GE-Sim 2.0](./ge-sim-2.md)（闭环模拟器 + World Judge + 本体专家）同生态；τ₀-WM 更强调 **策略与世界预测共享 5B 表征** 及 **操纵策略侧的测试时搜索**。同团队 **[τ₀-VLA](./paper-tau0-vla.md)** 把测试时想象上移到 **开放语言子任务** 级 beam search + **可修订执行记忆**，低层仍为 generalist flow-VLA。
 
 ## 核心结构
 
@@ -131,6 +132,7 @@ flowchart TB
 - [mimic-video（VAM）](../methods/mimic-video.md) — 另一条 VAM 工程路线
 - [GE-Sim 2.0](./ge-sim-2.md) — Agibot 闭环视频世界模拟器
 - [EWMBench](./ewmbench.md) — 操纵视频生成质量评测（与内置 task-progress 评估互补）
+- [τ₀-VLA](./paper-tau0-vla.md) — 同生态分层 VLA：子任务级 TTC vs 本页 action-chunk 级 WM
 
 ## 参考来源
 
