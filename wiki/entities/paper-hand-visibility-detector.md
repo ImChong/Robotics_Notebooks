@@ -15,7 +15,7 @@ tags:
   - omron-sinic-x
   - u-tokyo
 status: complete
-updated: 2026-08-15
+updated: 2026-08-19
 arxiv: "2608.11574"
 code: https://github.com/ryhara/hand_visibility_detector
 related:
@@ -27,9 +27,11 @@ related:
   - ./paper-vidihand.md
   - ../methods/macrodata-egocentric-hand-action.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../overview/world-model-exec-10-papers-technology-map.md
 sources:
   - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
   - ../../sources/repos/hand_visibility_detector.md
+  - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
 summary: "Hand Visibility Detector（庆应/AIST/欧姆龙 SINIC X/东大，arXiv:2608.11574）：冻结 HaMeR/WiLoR，只训 0.83M visibility head，估计 MANO 21 关节可见概率。HInt mAP 0.931；多视三角化重投影最多降 10.1%。GitHub+HF 已开源（研究/非商用）。"
 ---
 
@@ -205,6 +207,7 @@ sequenceDiagram
 
 - [hand_visibility_detector_arxiv_2608_11574.md](../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md)
 - [hand_visibility_detector 仓库归档](../../sources/repos/hand_visibility_detector.md)
+- [具身智能小站 10 篇盘点（2026-08-19）](../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md)
 - Hara et al. — <https://arxiv.org/abs/2608.11574>
 - 代码 — <https://github.com/ryhara/hand_visibility_detector>
 

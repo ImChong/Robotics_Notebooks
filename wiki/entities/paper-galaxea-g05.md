@@ -12,7 +12,7 @@ tags:
   - mobile-manipulation
   - galaxea
 status: complete
-updated: 2026-08-14
+updated: 2026-08-19
 arxiv: "2608.11739"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:
@@ -20,6 +20,7 @@ related:
   - ./paper-pi05-open-world-vla.md
   - ./paper-internvla-a15-unified-vla.md
   - ../overview/vla-open-source-repro-landscape-2025.md
+  - ../overview/world-model-exec-10-papers-technology-map.md
   - ../queries/manipulation-vla-architecture-selection.md
   - ./xiaomi-robotics-0.md
   - ./lingbot-vla-v2.md
@@ -31,6 +32,7 @@ sources:
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
   - ../../sources/sites/opengalaxea-g05.md
   - ../../sources/repos/galaxea-vla.md
+  - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
 summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在同一自回归流里发 CoT 与动作 token；跨本体 RVQ ActionCodec + 视觉记忆。真机 76.7%、LIBERO 98.9%、RoboTwin 93.3%。GitHub + HF 权重已开源（Community License）。"
 ---
 
@@ -204,6 +206,7 @@ sequenceDiagram
 - [galaxea_g05_arxiv_2608_11739.md](../../sources/papers/galaxea_g05_arxiv_2608_11739.md)
 - [项目页归档](../../sources/sites/opengalaxea-g05.md)
 - [GalaxeaVLA 仓库归档](../../sources/repos/galaxea-vla.md)
+- [具身智能小站 10 篇盘点（2026-08-19）](../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md)
 - Galaxea Team — <https://arxiv.org/abs/2608.11739>
 - 项目页 — <https://opengalaxea.github.io/G05/>
 - 代码 — <https://github.com/OpenGalaxea/GalaxeaVLA>

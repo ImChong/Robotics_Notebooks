@@ -15,7 +15,7 @@ tags:
   - tum
   - eth
 status: complete
-updated: 2026-08-17
+updated: 2026-08-19
 arxiv: "2608.12063"
 related:
   - ../tasks/loco-manipulation.md
@@ -28,10 +28,12 @@ related:
   - ./mjlab.md
   - ../concepts/sim2real.md
   - ../methods/model-predictive-control.md
+  - ../overview/world-model-exec-10-papers-technology-map.md
 sources:
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
   - ../../sources/sites/rai-inst-smpc2rl.md
   - ../../sources/repos/judo.md
+  - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
 summary: "SMPC-to-RL（RAI/TUM/ETH，arXiv:2608.12063）：仿真 SMPC 当可交互专家数据机，稀疏奖励 offline-to-online FastTD3 接冻结 ReLIC 低层。Spot 推箱/扶胎/滚胎与 G1 推箱真机可部署，策略比教师更快。截至 2026-08-17 项目页未列代码；judo 只是对照工具箱。"
 ---
 
@@ -185,6 +187,7 @@ flowchart TB
 - [smpc2rl_arxiv_2608_12063.md](../../sources/papers/smpc2rl_arxiv_2608_12063.md)
 - [项目页归档](../../sources/sites/rai-inst-smpc2rl.md)
 - [judo 对照仓](../../sources/repos/judo.md) — **不是**本文官方实现
+- [具身智能小站 10 篇盘点（2026-08-19）](../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md)
 - Schuck et al. — <https://arxiv.org/abs/2608.12063>
 - 项目页 — <https://pages.rai-inst.com/smpc2rl/>
 

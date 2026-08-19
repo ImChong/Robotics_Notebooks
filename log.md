@@ -1,3 +1,5 @@
+## [2026-08-19] ingest | sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md — 具身智能小站 10 篇世界模型与真实执行盘点；复用 4 / 新建 6 论文实体 + 技术地图
+
 ## [2026-08-18] ingest | sources/blogs/wechat_shenlan_realab_14_papers_2026.md — REALab 14 篇技术地图；开源核查 10+ 项已开
 
 ## [2026-08-18] ingest | sources/papers/cmp_arxiv_2608_03234.md — 加深 CMP（arXiv:2608.03234）附录超参/任务上下文/G1 全表；复核仍无官方代码；交叉 PFM-HR / PDF-HR / ASE

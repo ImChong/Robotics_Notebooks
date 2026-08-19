@@ -17,7 +17,7 @@ tags:
   - vinmotion
   - usc
 status: complete
-updated: 2026-08-14
+updated: 2026-08-19
 arxiv: "2608.12860"
 related:
   - ../tasks/vision-language-navigation.md
@@ -29,11 +29,13 @@ related:
   - ./unitree-g1.md
   - ../concepts/sim2real.md
   - ../overview/vln-10-papers-technology-map.md
+  - ../overview/world-model-exec-10-papers-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/sites/humanoid-vln-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
 summary: "HumanoidVLN（VinMotion/USC，arXiv:2608.12860）：Isaac Sim 人形物理 VLN 平台与基准。四本体 RL+PD/MPC、87 场景≥100 m²、933 episode MAA 指令；JanusVLN 平均 SR 43.55%；G1 DualVLN 20 条 sim–real r=0.935。截至入库日宣称录用后开源，项目页无代码。"
 ---
 
@@ -200,6 +202,7 @@ flowchart LR
 
 - [humanoidvln_arxiv_2608_12860.md](../../sources/papers/humanoidvln_arxiv_2608_12860.md)
 - [项目页归档](../../sources/sites/humanoid-vln-github-io.md)
+- [具身智能小站 10 篇盘点（2026-08-19）](../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md)
 - Pham et al. — <https://arxiv.org/abs/2608.12860>
 - 项目页 — <https://humanoid-vln.github.io/>
 
