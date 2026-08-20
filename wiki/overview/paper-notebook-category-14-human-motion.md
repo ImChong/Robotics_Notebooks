@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-20
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读笔记索引）。"
@@ -40,6 +40,7 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读
 - [GENMO](../entities/soma-retargeter.md) — 见 wiki 实体页
 - [Generating Diverse and Natural 3D Human Motions from Textual Descriptions](../entities/paper-notebook-humanml3d.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html)
 - [Go to Zero](../entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Go_to_Zero__Towards_Zero-shot_Motion_Generation_with_Million-scale_Data/Go_to_Zero__Towards_Zero-shot_Motion_Generation_with_Million-scale_Data.html)
+- [GRIP](../entities/paper-grip.md) — CMU/Keio 稀疏 IMU+鞋垫物理 MoCap 与 PRISM 数据集（CVPR 2026，[arXiv:2603.16233](https://arxiv.org/abs/2603.16233)）
 - [Guided Motion Diffusion for Controllable Human Motion Synthesis](../entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthesis/Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthesis.html)
 - [HUMOTO](../entities/paper-notebook-humoto-a-4d-dataset-of-mocap-human-object-intera.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions.html)
 - [Implicit Bézier Motion Model for Precise Spatial and Temporal Control](../entities/paper-notebook-implicit-b-zier-motion-model-for-precise-spatial.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control.html)
