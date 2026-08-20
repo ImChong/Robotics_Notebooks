@@ -2,12 +2,13 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-20
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ../entities/paper-amp-survey-08-more.md
+  - ../entities/paper-tramp-vision-assisted-bipedal-locomotion.md
   - ../entities/paper-adp.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ./imitation-learning.md
@@ -71,6 +72,10 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 
 若目标是 **推扰恢复** 而非风格自然度，[ADP](../entities/paper-adp.md) 把判别目标从关节级运动学特征换成 **SRBD-TO 导出的动力学时间窗**（CoM、质心动量、接触力/状态）。同源 TO 参考下，相对 AMP 报告更高 \(J_{80}\) 与更短恢复时间；**不**显式跟踪姿态。与 SD-AMP 的「regime 门控」正交，关注的是 **先验表示层**。
 
+### 7. 地形相关 AMP（TRAMP，IEEE RA-L 2026）
+
+[TRAMP](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) 在**单阶段视觉辅助人形 RL** 中，用**平地 + 楼梯**两类 locomotion 示范构造 **terrain-related adversarial motion prior**，与 **MoE actor**、层次动力学/地形潜特征联合训练。相对 [MoRE](../entities/paper-amp-survey-08-more.md) 的多判别器 + 两阶段深度栈，TRAMP 更强调**轻量单阶段**与**双地形示范**；相对 [T-GMP](../entities/paper-motion-cerebellum-t-gmp.md) 的 CVAE 生成流形，仍停留在判别式 AMP 家族。判别器是否显式条件于地形嵌入需读 RA-L 正文。
+
 ## HumanX: 扩展到物体交互与接触图
 
 **HumanX** 是对 AMP 范式的重大增强，它认为“姿态像”是不够的，“接触像”才关键。
@@ -116,7 +121,7 @@ $$
 ## 关联页面
 
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
-- [CMP 上下文感知运动先验](../entities/paper-cmp.md)、[SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP 对抗动力学先验](../entities/paper-adp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
+- [CMP 上下文感知运动先验](../entities/paper-cmp.md)、[SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP 对抗动力学先验](../entities/paper-adp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[TRAMP 地形相关 AMP + 单阶段深度](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [Imitation Learning](./imitation-learning.md)

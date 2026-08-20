@@ -1,3 +1,5 @@
+## [2026-08-20] ingest | sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md — SJTU TRAMP（IEEE RA-L 2026）：单阶段深度+MoE+平地/楼梯地形相关 AMP；ResearchGate 全文入口；确认未开源
+
 ## [2026-08-20] ingest | sources/repos/grove-g1.md — 接入 G1 ROS 2 自主栈 Grove-G1（Nav2+MoveIt+BT），已开源可运行，真机目标检测待补
 
 ## [2026-08-20] ingest | sources/papers/warp_arxiv_2606_29940.md — WARP 离线人类全身演示闭式 c-SEW 重定向；升格 paper-warp-whole-body-retargeting；开源结论：截至入库日未开源
