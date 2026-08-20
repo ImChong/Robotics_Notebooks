@@ -164,6 +164,13 @@
         "ncnn"
       ]
     },
+    "technion": {
+      "label": "以色列理工学院（Technion）",
+      "aliases": [
+        "technion",
+        "technion-israel-institute-of-technology"
+      ]
+    },
     "pku": {
       "label": "北京大学（PKU）",
       "aliases": [
@@ -488,6 +495,14 @@
       "label": "加州大学洛杉矶分校（UCLA）",
       "aliases": [
         "ucla"
+      ]
+    },
+    "uchicago": {
+      "label": "芝加哥大学（University of Chicago）",
+      "aliases": [
+        "uchicago",
+        "u-chicago",
+        "university-of-chicago"
       ]
     },
     "genesis-ai": {
