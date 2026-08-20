@@ -9,6 +9,45 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-fetchman.md",
+      "detail_id": "entity-paper-fetchman",
+      "label": "FetchMan：仿真视觉人形 loco-manipulation",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-hydra-0.md",
+      "detail_id": "entity-paper-hydra-0",
+      "label": "Hydra-0：Action Flow 通才世界模型",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-instant-episode-repetition.md",
+      "detail_id": "entity-paper-instant-episode-repetition",
+      "label": "Instant Episode Repetition（IER）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-prism-grpo.md",
+      "detail_id": "entity-paper-prism-grpo",
+      "label": "Prism-GRPO：VLA 低样本 GRPO 优化",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-radmesh.md",
       "detail_id": "entity-paper-radmesh",
       "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
@@ -167,57 +206,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-behavior-prompting-policy.md",
-      "detail_id": "entity-paper-behavior-prompting-policy",
-      "label": "Behavior Prompting Policy（arXiv:2606.30457）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dexmachina.md",
-      "detail_id": "entity-paper-dexmachina",
-      "label": "DexMachina（arXiv:2505.24853）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-df-expense.md",
-      "detail_id": "entity-paper-df-expense",
-      "label": "DF-ExpEnse（arXiv:2606.19656）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dice-rl.md",
-      "detail_id": "entity-paper-dice-rl",
-      "label": "From Prior to Pro（arXiv:2603.10263）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-radmesh.md",
-    "detail_id": "entity-paper-radmesh",
-    "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
+    "path": "wiki/entities/paper-fetchman.md",
+    "detail_id": "entity-paper-fetchman",
+    "label": "FetchMan：仿真视觉人形 loco-manipulation",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
