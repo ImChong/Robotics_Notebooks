@@ -585,6 +585,7 @@
 - [Gamma-World（γ-World / Generative Multi-Agent World Model）](wiki/entities/paper-gamma-world-multi-agent.md) — Gamma-World**（*γ-World*，arXiv:2605.28816，[项目页](https://research.nvidia.com/labs/sil/projects/gamma `📅unknown` `[entity_page]`
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
 - [Gated Memory Policy（arXiv:2604.18933）](wiki/entities/paper-gated-memory-policy.md) — Gated Memory Policy**（Yihuai Gao, Jeff Jinyun Liu, Shuang Li, Shuran Song；Stanford University；[arX `📅unknown` `[entity_page]`
+- [Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）](wiki/entities/paper-gaussian-lic2.md) — Gaussian-LIC2**（Lang et al., arXiv:2507.04004，项目页， `📅unknown` `[entity_page]`
 - [GentleHumanoid](wiki/entities/paper-gentlehumanoid.md) — GentleHumanoid**（*Learning Upper-body Compliance for Contact-rich Human and Object Interaction*）是接 `📅unknown` `[entity_page]`
 - [GenTrack：机器人原生运动生成与零样本跟踪的物理对齐](wiki/entities/paper-gentrack.md) — GenTrack**（*Physical Alignment for Robot-Native Motion Generation and Zero-Shot Humanoid Tracking `📅unknown` `[entity_page]`
 - [Geometry-Aware 4D Video Generation for Robot Manipulation（arXiv:2507.01099）](wiki/entities/paper-geometry-aware-4d-video-generation.md) — Geometry-Aware 4D Video Generation for Robot Manipulation**（Zeyi Liu, Shuang Li, Eric Cousineau, S `📅unknown` `[entity_page]`
@@ -1246,6 +1247,7 @@
 - [Learning Torque Control for Quadrupedal Locomotion](wiki/entities/paper-quadruped-torque-control-rl.md) — 一句话定义**：用 **单网络策略直接预测关节扭矩**（相对高频），在仿真中训练并完成 **sim2real**，在多种地形与扰动下与 **位置+PD** 基线对比 **奖励与鲁棒性**。 `📅unknown` `[entity_page]`
 - [QuietWalk：面向多样鞋型的物理感知低噪人形行走](wiki/entities/paper-quietwalk-humanoid-locomotion.md) — QuietWalk**（*Physics-Informed Reinforcement Learning for Ground Reaction Force-Aware Humanoid Loco `📅unknown` `[entity_page]`
 - [R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化](wiki/entities/paper-r2s-ego.md) — R2S-EGO**（*Dual-Proxy Refinement for Sparse-Capture Real-to-Sim*，[arXiv:2608.06827](https://arxiv. `📅unknown` `[entity_page]`
+- [RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）](wiki/entities/paper-radmesh.md) — RADmesh**（*Remesh-Aware Mesh Deformation*，arXiv:2608.17182，[项目 `📅unknown` `[entity_page]`
 - [Rapid Locomotion via Reinforcement Learning](wiki/entities/paper-rapid-locomotion-rl.md) — Margolis, Yang, Paigwar, Chen & Agrawal（MIT，arXiv:2205.02824） `📅unknown` `[entity_page]`
 - [RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC](wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RAVEN**（*Reinforcement-Adaptive Visibility-Graph Planning for Robust Humanoid Navigation with Coll `📅unknown` `[entity_page]`
 - [ReactiveBFM](wiki/entities/paper-reactivebfm.md) — ReactiveBFM** 是港中大与上海人工智能实验室提出的 **闭环全身运动规划–控制** 框架（arXiv:2606.30362，[项目页](https://xiao-chen.tech/r `📅unknown` `[entity_page]`
@@ -2331,6 +2333,7 @@
 - [RLDX-1](wiki/entities/rldx-1.md) — RLDX-1** 是面向类人**灵巧操作**的 **Vision-Language-Action（VLA）** 开源模型与代码库（技术报告见 arXiv:2605.03269）。在继承大规模 VL `📅unknown` `[entity_page]`
 - [RoamerX（智身四足导航栈）](wiki/entities/roamerx-navigation.md) — RoamerX**（社区开源版 **RoamerX Lite**）是智身科技（GENISOM AI）面向四足机器人的 **ROS 2 导航栈**：在 **Nav2** 基础上增强 **SLAM、全 `📅unknown` `[entity_page]`
 - [RoboBench（MLLM 具身大脑综合评测）](wiki/entities/robo-bench.md) — RoboBench**（*A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied `📅unknown` `[entity_page]`
+- [RoboOrchardLab](wiki/entities/robo-orchard-lab.md) — RoboOrchardLab** 是 **Horizon Robotics（地平线）** 在 **RoboOrchard** 大项目下发布的 **Python 具身 AI 训练与评测框架**：核心 `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`

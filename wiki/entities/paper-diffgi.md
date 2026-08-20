@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, 3d-generation, geometry-images, thin-shell, garment, diffusion, vae, tsdf, eccv2026, clo-virtual-fashion]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-20
 arxiv: "2607.13365"
 venue: "ECCV 2026"
 related:
   - ./paper-clothtransformer-unified-latent-cloth-simulation.md
   - ./paper-physforge-physics-grounded-3d-assets.md
+  - ./paper-radmesh.md
   - ./articraft.md
   - ./paper-embodiedgen-v2-sim-ready-world-engine.md
   - ../concepts/differentiable-simulation.md
@@ -188,10 +189,12 @@ CD 为 \(\times10^{-3}\) 量级（与论文表一致）。ABO 上 NC 略低于�
 | 可微 3D 等值面 | DMTet / FlexiCubes | 可微提面思想同源，但是 3D 网格、无天然 UV |
 | 布料神经仿真 | [ClothTransformer](./paper-clothtransformer-unified-latent-cloth-simulation.md) | 下游动力学；DiffGI 提供上游薄壳网格生成 |
 | Sim-ready 资产 | [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) / [Articraft](./articraft.md) | 关节与物理字段；DiffGI 偏表面几何保真 |
+| 文本引导 mesh 编辑 | [RADmesh](./paper-radmesh.md) | 同属 ECCV 2026 显式网格；RADmesh 从已有 mesh **形变+remesh**，DiffGI 从 GI **生成**薄壳 |
 
 ## 关联页面
 
 - [ClothTransformer](./paper-clothtransformer-unified-latent-cloth-simulation.md) — 统一潜空间布料仿真；需要高质量薄壳 mesh 输入时与 DiffGI 上下游对照。
+- [RADmesh](./paper-radmesh.md) — ECCV 2026 Oral 文本引导 remesh-aware 网格形变；与 DiffGI 互补（编辑 vs 生成）。
 - [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) — 学习式仿真就绪关节资产生成。
 - [Articraft](./articraft.md) — Agent + SDK 程序化可关节资产。
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — sim-ready 世界引擎与资产接口。

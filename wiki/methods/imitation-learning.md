@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-20
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
