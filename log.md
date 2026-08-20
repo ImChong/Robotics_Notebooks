@@ -1,5 +1,7 @@
 ## [2026-08-20] ingest | 四篇 arXiv:2608 — IER/FetchMan/Hydra-0/Prism-GRPO 实体页；IER 已开源，FetchMan/Hydra-0 未开源，Prism 基于 SimpleVLA-RL
 
+## [2026-08-20] ingest | sources/papers/radmesh_arxiv_2608_17182.md — RADmesh ECCV 2026 Oral；threedle/radmesh 已开源
+
 ## [2026-08-20] ingest | sources/{repos/horizon_robotics_holomotion,sites/holomotion-docs,papers/holomotion_arxiv_2605_15336}.md — 再核 HoloMotion 三链（GitHub/Pages/arXiv:2605.15336）：已开源 v1.4.1 Docker、634★、2000+h/0.4B/MPKPE−40%；wiki/entities/holomotion.md 补实验·工程·局限·结论
 
 ## [2026-08-20] ingest | sources/repos/horizon_robotics_robo_orchard_lab.md — 接入 RoboOrchardLab 训练框架（已开源 Apache-2.0）；升格 wiki/entities/robo-orchard-lab.md

@@ -3,7 +3,7 @@ type: entity
 tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-assets]
 status: complete
 date: 2026-05-16
-updated: 2026-08-13
+updated: 2026-08-20
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
