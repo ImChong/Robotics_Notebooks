@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-radmesh.md",
+      "detail_id": "entity-paper-radmesh",
+      "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/robo-orchard-lab.md",
       "detail_id": "entity-robo-orchard-lab",
       "label": "RoboOrchardLab",
@@ -196,26 +207,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dexmachina.md",
-      "detail_id": "entity-paper-dexmachina",
-      "label": "DexMachina（arXiv:2505.24853）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robo-orchard-lab.md",
-    "detail_id": "entity-robo-orchard-lab",
-    "label": "RoboOrchardLab",
+    "path": "wiki/entities/paper-radmesh.md",
+    "detail_id": "entity-paper-radmesh",
+    "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
