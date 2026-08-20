@@ -9,6 +9,7 @@ related:
   - ../methods/imitation-learning.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ./robo-orchard-lab.md
 sources:
   - ../../sources/repos/holoagent.md
   - ../../sources/repos/humanoid-motion-intelligence.md

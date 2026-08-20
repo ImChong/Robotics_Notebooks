@@ -15,6 +15,7 @@ related:
   - ./robotis.md
   - ./openloong.md
   - ./atom01-train.md
+  - ./robo-orchard-lab.md
   - ../methods/beyondmimic.md
   - ./paper-aware-wheeled-legged-reflexive-evasion.md
 sources:
@@ -26,6 +27,8 @@ summary: "robot_lab 是基于 NVIDIA IsaacLab 的机器人 RL 扩展库，在独
 # robot_lab (IsaacLab 扩展框架)
 
 **robot_lab** 是由 `fan-ziqi` 维护的 **IsaacLab 生态扩展库**：在核心仓库外独立开发机器人资产、Gym 环境与训练脚本，避免 fork 上游 Isaac Lab。截至 2026-06，README 列出 **24 个 Velocity-Rough 主干环境**（四足 8 / 轮足 6 / 人形 10），并集成 **BeyondMimic**、**AMP Dance**、对称增广与策略蒸馏等实验管线。
+
+> **命名区分：** 地平线文档站路径亦含 `robot_lab/`（如 [RoboOrchardLab](./robo-orchard-lab.md)、[HoloMotion](./holomotion.md)），指 **Horizon 组织托管的 GitHub Pages**，与本页所述 **`fan-ziqi/robot_lab` Isaac Lab 扩展** 不是同一项目。
 
 ## 英文缩写速查
 
