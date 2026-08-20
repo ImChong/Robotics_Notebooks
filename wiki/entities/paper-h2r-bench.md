@@ -8,6 +8,7 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
   - ../queries/cross-embodiment-transfer-strategy.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-ego2robot.md
   - ../tasks/manipulation.md
 sources:
@@ -109,6 +110,7 @@ flowchart LR
 - [生成式世界模型](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [跨本体迁移策略](../queries/cross-embodiment-transfer-strategy.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 世界模型预测保真度评测层的跨本体切面
 - [Ego2Robot](./paper-ego2robot.md)
 
 ## 参考来源
