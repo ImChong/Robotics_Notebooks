@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-08-15
+updated: 2026-08-20
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -86,6 +86,10 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 3.7 非拟人三指夹爪遥操作重定向（VTAP）
 
 [VTAP Gripper](../entities/paper-vtap-gripper.md)（arXiv:2607.15448）面向 **异构三指夹爪**（无人手关节一一对应）：用 **cage/power/pinch 手势锁子空间** + 中间坐标系 \(\mathcal{I}\)，再优化指尖位置/朝向；singulation 另把拇指–食指滚动映射到内收/外展。这是 **末端夹爪遥操作** 重定向，不是全身 MoCap→人形 WBT 主线，但与 SBR/TopoRetarget 同属「人手 → 非同构手」问题族。
+
+### 3.8 离线全身闭式重定向（WARP）
+
+[WARP](../entities/paper-warp-whole-body-retargeting.md)（arXiv:2606.29940，Georgia Tech）面向 **无机器人在环的 Meta Quest 离线人演示 → 全身移动操作 BC**：核心 **c-SEW** 以 **palm 硬约束 + adaptive offset + Stereo-sew/SP3** 在 SEW 表示上闭式求解，避免 MINK 类加权 IK 的 **不精确**（EEF vs 全身 trade-off）与 **不一致**（冗余多解 → action multi-modality）；**lazy mobile-base** 让 6-DoF torso 吸收微调。离线设定无遥操作闭环纠错，重定向轨迹即监督——项目页报告 palm 误差相对 MINK-EF 降 **>150×**，DexMimicGen 策略平均成功率 **71% vs 59%**（replay 相近）。截至入库日 **未开源**。
 
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
@@ -232,6 +236,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/toporetarget_arxiv_2606_16272.md](../../sources/papers/toporetarget_arxiv_2606_16272.md) — TopoRetarget：hand–object interaction mesh + Laplacian 灵巧重定向 + 轻量 PPO 跟踪（arXiv:2606.16272）；配套 [项目页](../../sources/sites/toporetarget-github-io.md)
 - **ingest 档案：** [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP：非拟人三指夹爪手势条件遥操作重定向（arXiv:2607.15448）
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI SKR：稀疏关键点 + 仅身高缩放 + mink IK（arXiv:2605.03452）
+- **ingest 档案：** [sources/papers/warp_arxiv_2606_29940.md](../../sources/papers/warp_arxiv_2606_29940.md) — WARP：离线 Meta Quest 全身演示的闭式 c-SEW 重定向 + lazy base（arXiv:2606.29940）；配套 [项目页](../../sources/sites/warp-retargeting-github-io.md)（截至入库日未列代码）
 - **ingest 档案：** [sources/sites/jc-bao-spider-project-github-io.md](../../sources/sites/jc-bao-spider-project-github-io.md) — SPIDER 项目页 jc-bao.github.io/spider-project（管线演示与 BibTeX）
 - **ingest 档案：** [sources/sites/amass-dataset.md](../../sources/sites/amass-dataset.md) — AMASS：SMPL 统一人体动捕元数据集（MPI-IS 站点与 ICCV 2019 论文索引）
 - **ingest 档案：** [sources/repos/ubisoft-laforge-animation-dataset.md](../../sources/repos/ubisoft-laforge-animation-dataset.md) — LaFAN1：Ubisoft BVH 动捕与评估脚本（SIGGRAPH 2020 论文配套）
@@ -288,6 +293,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [SAM 3D Body](../entities/sam-3d-body.md) — 单目 RGB 全身 MHR 估计，可作视频→重定向上游
 - [SAM3DBody-cpp](../entities/sam3dbody-cpp.md) — 上述模型的 C++/BVH 工程导出
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — Robot-Free 示范的 SKR 与全身 WBC 接口
+- [WARP（论文实体）](../entities/paper-warp-whole-body-retargeting.md) — 离线人演示闭式全身重定向；开环回放 + BC 全身移动操作（arXiv:2606.29940）
 - [PHC](../entities/phc.md) — SMPL fitting 重定向与大规模物理模仿
 - [SOMA Retargeter](../entities/soma-retargeter.md) — SOMA/SEED→G1 批处理重定向
 - [robot_retargeter](../entities/robot-retargeter.md) — SMPL-X / LAFAN1 CSV→多机型 mink IK 重定向
