@@ -190,6 +190,7 @@
 - [GENE-26.5（Genesis AI 操作基础模型）](wiki/entities/gene-26-5-genesis-ai.md) — GENE-26.5** 指 **Genesis AI**（全栈机器人公司，官网域名 genesis-ai.company）在 2026 年前后对外发布的 **机器人操作基础模型** 品牌，与开源物 `📅unknown` `[entity_page]`
 - [Generalist AI（机器人方向）](wiki/entities/generalist-ai-robotics.md) — Generalist AI**：聚焦具身智能与通用机器人策略的商业实体；对外叙事强调 **海量人类 / 机器人交互数据** 上的预训练、规模定律验证，以及 GEN 系列（GEN-0 → GEN-1 `📅unknown` `[entity_page]`
 - [GEN-1 千手：跨末端执行器泛化](wiki/entities/generalist-gen1-thousand-hands.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [GEN-1.5 一次示范学习（Physical Prompting）](wiki/entities/generalist-gen15-one-shot.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定](wiki/entities/generative-motion-rig.md) — Generative Motion Rig（GMR）**（*A Generative Motion Rig for Artist-Driven Motion Authoring*，SIGGRAPH `📅unknown` `[entity_page]`
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md) — Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 isaac-gym-isaac-lab 并列，作为新一代 `📅unknown` `[entity_page]`
 - [Genesis World 1.0（Genesis AI 仿真基础设施）](wiki/entities/genesis-world-10.md) — Genesis World 1.0** 是 **Genesis AI**（机器人全栈公司，博客域名 genesis.ai）对外阐述的**仿真基础设施**版本：在初版开源 **Genesis** 仿 `📅unknown` `[entity_page]`

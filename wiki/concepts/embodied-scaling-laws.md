@@ -2,12 +2,13 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-20
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/paper-rynnbrain-1-1.md
+  - ../entities/generalist-gen15-one-shot.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/dyna-2.md
   - ../methods/vla.md
@@ -17,6 +18,7 @@ related:
   - ../formalizations/foundation-policy-alignment.md
 sources:
   - ../../sources/blogs/sutton_bitter_lesson.md
+  - ../../sources/blogs/generalist_gen15_one_shot.md
   - ../../sources/blogs/generalist_thousand_hands.md
   - ../../sources/blogs/dyna_2_million_hour_wam.md
   - ../../sources/papers/rl_foundation_models.md
@@ -50,6 +52,7 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 5. **人→机跨具身缩放（产业案例）**：[Dyna-2](../entities/dyna-2.md) 将人视频梯子推到 **1k–1M 小时**，在 **预训练零机器人数据、零对齐适配** 设定下报告 **零样本机器人离线指标** 与后训练真机归一化均值随小时数单调上升，并主张 **视频共训** 是跨具身幂律出现的必要条件；**闭源自报**，协议定义与 EgoScale（含对齐 mid-training）不同，宜对照读而非直接合并曲线。
 6. **非均匀具身 scaling（案例）**：[RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) 在统一配方下对比 matched **Qwen3.5（2B→122B）**：一般认知双方随规模上升；**推理密集型认知** 上 RynnBrain 上升而 Qwen3.5 **负缩放**；**定位** 上最大 Qwen 仍低于最小 RynnBrain——说明 **显式空间/具身监督** 与 **参数缩放** 互补而非可替代。
 7. **末端接口多样性（产业案例）**：[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) 主张在 **>50 万小时** 交互与 **~9k 末端变体** 上预训练同一基座，用 task-vector 权重更新度量「新手」新颖度；属 **闭源自报**，作多样性轴对照而非可复现定律拟合。
+8. **预训练时长与适应成本（产业案例）**：[GEN-1.5](../entities/generalist-gen15-one-shot.md) 在 **8+ 月** 持续预训练后报告 **无显式 ICL 训练** 的 one-shot physical prompting 与 **1–10 梯度步** 适应；作者主张更多预训练使新任务适应趋近「可忽略」——**闭源自报**，与 EgoScale / Dyna-2 的指标域不同。
 
 ## 宏观算力背景（与具身 scaling 的层级差）
 
@@ -78,6 +81,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [EgoScale（人视频规模预训练 VLA）](../methods/egoscale.md)
 - [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md) — 闭源 1M h 人→机缩放主张
 - [World Action Models](./world-action-models.md) — Dyna-2 所属 Joint WAM 族谱
+- [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — 预训练规模与 one-shot / 极少步适应
 - [GEN-1 千手（跨末端多样性）](../entities/generalist-gen1-thousand-hands.md) — 闭源产业多样性轴对照
 - [自动化标注流水线](../methods/auto-labeling-pipelines.md)
 - [基础策略对齐](../formalizations/foundation-policy-alignment.md)
@@ -90,4 +94,5 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [EgoScale 论文摘录（arXiv:2602.16710）](../../sources/papers/egoscale_arxiv_2602_16710.md) — 人视频小时数与验证损失 / 真机表现联动的案例材料
 - [From AGI to ASI 论文摘录（arXiv:2606.12683）](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — 有效算力与集体 scaling 的宏观框架
 - [RynnBrain 1.1 论文摘录（arXiv:2607.17977）](../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md) — 具身 vs 通用 VLM 的非均匀 scaling 案例
+- [GEN-1.5 博客归档](../../sources/blogs/generalist_gen15_one_shot.md) — one-shot physical prompting 产业样本
 - [GEN-1 千手博客归档](../../sources/blogs/generalist_thousand_hands.md) — 多末端多样性 scaling 产业样本
