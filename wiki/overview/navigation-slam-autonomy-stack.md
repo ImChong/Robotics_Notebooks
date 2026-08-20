@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-20
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -21,6 +21,7 @@ related:
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ../entities/orb-slam3.md
   - ../entities/paper-panolog-ggps.md
+  - ../entities/paper-gaussian-lic2.md
   - ../entities/paper-glob3r.md
   - ../entities/paper-slamformer-infinity.md
   - ../entities/paper-occanyscene.md
@@ -179,6 +180,7 @@ flowchart TB
 - **[Glob3R](../entities/paper-glob3r.md)**：基础模型引导的**离线全局 SfM**（dense warp tracks → 运动平均 + BA）；适合事后高精度建图/渲染，推理代码截至 2026-07-21 仍为占位仓。
 - **[SLAMFormer-∞](../entities/paper-slamformer-infinity.md)**：memory-conditioned **无界 dense mono SLAM Transformer**（frontend + PGGO 联合位姿/pointmap）；KITTI/Waymo 长程对照 VGGT-Long；官方仓截至 2026-08-08 仍为占位。
 - **[PanoLOG / G²PS](../entities/paper-panolog-ggps.md)**：ERP **全景户外大规模 3DGS**（天空球 + DAP 深度 + 几何/梯度划分）；训练代码已开源，服务 novel-view / 数字孪生资产而非实时定位。
+- **[Gaussian-LIC2](../entities/paper-gaussian-lic2.md)**：实时 **LiDAR-Inertial-Camera 3DGS-SLAM**（连续时间里程计 + 深度补全初始化 + LiDAR 深度监督）；兼顾 **RGB/深度 NVS 与几何精度**，代码已开源；自采 out-of-sequence 评测集待发布。
 
 ### 主动雷达（补充，非 ROS 原生）
 
