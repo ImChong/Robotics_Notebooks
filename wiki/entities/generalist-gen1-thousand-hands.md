@@ -6,6 +6,7 @@ title: GEN-1 千手（跨末端执行器泛化）
 updated: 2026-07-24
 related:
   - ./generalist-ai-robotics.md
+  - ./generalist-gen15-one-shot.md
   - ../overview/hub-cross-embodiment.md
   - ../concepts/foundation-policy.md
   - ../concepts/embodied-scaling-laws.md
@@ -145,6 +146,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [GEN-1.5 一次示范学习（Physical Prompting）](./generalist-gen15-one-shot.md) — 同公司后继模型；one-shot / 极少步适应轴
 - [GEN-1: Scaling Embodied Foundation Models to Mastery](https://generalistai.com/blog/gen-1) — 主模型发布与 mastery 叙事
 - [Physical Commonsense（Generalist）](https://generalistai.com/blog/physical-commonsense) — 「物理常识」姊妹博文
 - [Editing Models with Task Arithmetic（Ilharco et al., 2023）](https://arxiv.org/abs/2212.04089) — 本篇权重更新分析所引方法

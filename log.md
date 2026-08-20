@@ -1,3 +1,10 @@
+## [2026-08-20] ingest | sources/blogs/generalist_gen15_one_shot.md — GEN-1.5 one-shot physical prompting；升格 wiki/entities/generalist-gen15-one-shot.md；更新 generalist-ai-robotics / foundation-policy / embodied-scaling-laws / manipulation / hub-cross-embodiment / generalist-gen1-thousand-hands
+- **资料：** [GEN-1.5: Embodied Foundation Models are One-Shot Learners](https://generalistai.com/blog/gen-1.5)（Generalist AI，2026-08-19）
+- **归档：** [`sources/blogs/generalist_gen15_one_shot.md`](sources/blogs/generalist_gen15_one_shot.md)
+- **开源核查：** **确认未开源**（公司站无 GitHub / HF）
+- **升格：** [`wiki/entities/generalist-gen15-one-shot.md`](wiki/entities/generalist-gen15-one-shot.md) — physical prompting、组合示范、sim 提示真机、1–10 步微调、即兴工具使用
+- **交叉：** [`wiki/entities/generalist-ai-robotics.md`](wiki/entities/generalist-ai-robotics.md)、[`wiki/concepts/foundation-policy.md`](wiki/concepts/foundation-policy.md)、[`wiki/concepts/embodied-scaling-laws.md`](wiki/concepts/embodied-scaling-laws.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/hub-cross-embodiment.md`](wiki/overview/hub-cross-embodiment.md)
+
 ## [2026-08-20] ingest | 四篇 arXiv:2608 — IER/FetchMan/Hydra-0/Prism-GRPO 实体页；IER 已开源，FetchMan/Hydra-0 未开源，Prism 基于 SimpleVLA-RL
 
 ## [2026-08-20] ingest | sources/papers/radmesh_arxiv_2608_17182.md — RADmesh ECCV 2026 Oral；threedle/radmesh 已开源

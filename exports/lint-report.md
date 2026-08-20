@@ -130,4 +130,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/robo-orchard-lab.md
 
-📊 Sources 覆盖率：3163/3163 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3164/3164 (100%) wiki/entity 页有 ingest 来源
