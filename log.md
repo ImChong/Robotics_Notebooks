@@ -1,3 +1,5 @@
+## [2026-08-20] ingest | sources/papers/radmesh_arxiv_2608_17182.md — RADmesh ECCV 2026 Oral；threedle/radmesh 已开源
+
 ## [2026-08-19] ingest | sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md — 人形量产经验（DFM·三大核心件·良率/CPK·供应链·可靠性）；升格 wiki/concepts/humanoid-mass-production-engineering.md
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/CARW0vvd4doO1htt0Q1bHg>；要求自动合并 PR
