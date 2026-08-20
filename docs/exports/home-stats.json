@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-20",
-  "node_count": 3188,
-  "edge_count": 28266,
+  "node_count": 3189,
+  "edge_count": 28281,
   "coverage": {
-    "covered": 3163,
-    "total": 3163,
+    "covered": 3164,
+    "total": 3164,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -86,8 +86,7 @@
       "type": "entity",
       "recency": "2026-08-20",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-h2r-bench.md",
@@ -227,15 +226,15 @@
     },
     {
       "label": "仿真到现实",
-      "size": 588
+      "size": 598
     },
     {
       "label": "视觉-语言-动作",
-      "size": 247
+      "size": 250
     },
     {
       "label": "人形论文深读笔记",
-      "size": 171
+      "size": 172
     },
     {
       "label": "全身控制",
@@ -251,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1267,
+      "degree": 1269,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -298,7 +297,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 536,
+      "degree": 537,
       "has_repo": true
     },
     {
@@ -332,7 +331,8 @@
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
       "degree": 142,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",

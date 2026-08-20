@@ -8,6 +8,7 @@ related:
   - ../methods/vla.md
   - ../entities/paper-rynnbrain-1-1.md
   - ../entities/generalist-ai-robotics.md
+  - ../entities/generalist-gen15-one-shot.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/gr00t-wholebodycontrol.md
@@ -97,7 +98,7 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 - **意义**：第一个开源通用机器人策略；多形态预训练 + fine-tune 范式被广泛采用
 
 ### Generalist GEN 系列（商业对照，闭源）
-- **叙事：** GEN-0 主张机器人 scaling laws；GEN-1 强调 mastery 与半百万小时级交互数据；2026-07「千手」博文把多样性轴推到 **~9k 末端/工具变体** 与任务中途换手（见 [Generalist AI](../entities/generalist-ai-robotics.md)、[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md)）
+- **叙事：** GEN-0 主张机器人 scaling laws；GEN-1 强调 mastery 与半百万小时级交互数据；2026-07「千手」把多样性轴推到 **~9k 末端/工具变体**；2026-08 **GEN-1.5** 宣称 **physical prompting** one-shot（~59%）与 **1–10 步** 微调 few-shot（~83%，10 任务自报）（见 [Generalist AI](../entities/generalist-ai-robotics.md)、[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md)、[GEN-1.5](../entities/generalist-gen15-one-shot.md)）
 - **定位：** 与 Octo / OXE **开源可复现** 路线对照的产业样本；**确认未开源**，不可替代开源基线做实验
 
 ### Gemini Robotics 2（Google DeepMind，闭源 VLA + 可调用 ER）
