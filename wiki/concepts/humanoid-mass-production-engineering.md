@@ -11,6 +11,7 @@ related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ../queries/humanoid-hardware-selection.md
   - ../entities/unitree-g1.md
+  - ../roadmaps/humanoid-practitioner-entry-roadmap.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
 summary: "人形量产经验是把技术可行性转化为制造可行性的系统工程能力：三大核心件（谐波/PRS/无框电机）工艺定型、良率 S 曲线与 CPK 门槛、供应链一致性与 ISO/IEC 可靠性体系，并可从汽车 PPAP 与 3C MES 等跨行业迁移——样机与资本不等于量产。"
