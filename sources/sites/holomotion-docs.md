@@ -7,13 +7,14 @@
 - **类型：** project docs site
 - **代码：** <https://github.com/HorizonRobotics/HoloMotion>
 - **论文：** <https://arxiv.org/abs/2605.15336>
-- **权重：** <https://huggingface.co/HorizonRobotics/HoloMotion_models>
-- **镜像：** <https://hub.docker.com/r/horizonrobotics/holomotion>
+- **权重：** <https://huggingface.co/HorizonRobotics/HoloMotion_models>（合集：<https://huggingface.co/collections/HorizonRobotics/holomotion>）
+- **镜像：** <https://hub.docker.com/r/horizonrobotics/holomotion>（当前 README 推荐 **v1.4.1**）
 - **机构：** 地平线（Horizon Robotics）
 - **入库日期：** 2026-07-22
+- **再核日期：** 2026-08-20
 - **一句话说明：** HoloMotion 开源栈的 GitHub Pages 文档入口（安装、训练、部署与模型说明）；路径含 `robot_lab/holomotion` 指 **Horizon 组织托管**，与社区 IsaacLab 扩展 [fan-ziqi/robot_lab](../repos/robot_lab.md) **不是同一项目**。
 
-## 开源状态（2026-07-22）
+## 开源状态（2026-08-20）
 
 | 产物 | 状态 |
 |------|------|

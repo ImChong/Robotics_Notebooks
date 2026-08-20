@@ -1,5 +1,9 @@
 ## [2026-08-20] ingest | sources/papers/radmesh_arxiv_2608_17182.md — RADmesh ECCV 2026 Oral；threedle/radmesh 已开源
 
+## [2026-08-20] ingest | sources/{repos/horizon_robotics_holomotion,sites/holomotion-docs,papers/holomotion_arxiv_2605_15336}.md — 再核 HoloMotion 三链（GitHub/Pages/arXiv:2605.15336）：已开源 v1.4.1 Docker、634★、2000+h/0.4B/MPKPE−40%；wiki/entities/holomotion.md 补实验·工程·局限·结论
+
+## [2026-08-20] ingest | sources/repos/horizon_robotics_robo_orchard_lab.md — 接入 RoboOrchardLab 训练框架（已开源 Apache-2.0）；升格 wiki/entities/robo-orchard-lab.md
+
 ## [2026-08-20] ingest | sources/blogs/wechat_zanehub_humanoid_career_entry_for_generalists.md — 普通人切入人形赛道（结构/执行器/测试/制造）；升格 wiki/roadmaps/humanoid-practitioner-entry-roadmap.md
 
 ## [2026-08-20] ingest | sources/papers/gaussian_lic2_arxiv_2507_04004.md — Gaussian-LIC2 实时 LIC 3DGS-SLAM；代码已开源，自采评测集待发布
