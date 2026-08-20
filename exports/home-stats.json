@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-grip.md",
+      "detail_id": "entity-paper-grip",
+      "label": "GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/generalist-gen15-one-shot.md",
       "detail_id": "entity-generalist-gen15-one-shot",
       "label": "GEN-1.5 一次示范学习（Physical Prompting）",
@@ -194,26 +205,18 @@
       "recency": "2026-08-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-hommi.md",
-      "detail_id": "entity-paper-hommi",
-      "label": "HoMMI（arXiv:2603.03243）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/generalist-gen15-one-shot.md",
-    "detail_id": "entity-generalist-gen15-one-shot",
-    "label": "GEN-1.5 一次示范学习（Physical Prompting）",
+    "path": "wiki/entities/paper-grip.md",
+    "detail_id": "entity-paper-grip",
+    "label": "GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
