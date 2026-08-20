@@ -19,6 +19,15 @@
       "has_repo": true
     },
     {
+      "path": "wiki/entities/paper-warp-whole-body-retargeting.md",
+      "detail_id": "entity-paper-warp-whole-body-retargeting",
+      "label": "WARP（Whole-body-Aware Retargeting from human Pose）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-grip.md",
       "detail_id": "entity-paper-grip",
       "label": "GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap",
@@ -195,17 +204,6 @@
       "recency": "2026-08-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-motion-as-prompt.md",
-      "detail_id": "entity-paper-motion-as-prompt",
-      "label": "Motion-as-Prompt：先把运动画给 MLLM 看",
-      "type": "entity",
-      "recency": "2026-08-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
