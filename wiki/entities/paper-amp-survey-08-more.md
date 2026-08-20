@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, locomotion, mixture-of-experts, terrain-adaptation, unitree-g1, sim2real, teleai, heu, shanghaitech, ustc]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-20
 arxiv: "2506.08840"
 venue: arXiv
 code: https://github.com/TeleHuman/MoRE

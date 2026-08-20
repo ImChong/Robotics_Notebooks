@@ -2202,6 +2202,7 @@
 - [顶层布料分割：软物体操作常输在边界](wiki/entities/paper-top-layer-fabric-seg.md) — 顶层布料分割**（*Precise Top-Layer Fabric Segmentation for Fabric Destacking with Edge- and Shape-Aware D `📅unknown` `[entity_page]`
 - [TOPReward：Token 概率作零样本机器人进度奖励](wiki/entities/paper-topreward.md) — TOPReward**（*Token Probabilities as Hidden Zero-Shot Rewards for Robotics*，[arXiv:2602.19313](http `📅unknown` `[entity_page]`
 - [TouchWorld：预测–反应式触觉基础模型（灵巧操作）](wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — TouchWorld**（*A Predictive and Reactive Tactile Foundation Model for Dexterous Manipulation*，arXiv `📅unknown` `[entity_page]`
+- [TRAMP：地形相关对抗运动先验的视觉辅助双足行走](wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md) — TRAMP**（*Vision-Assisted Bipedal Locomotion on Challenging Terrains via Terrain-Related Adversaria `📅unknown` `[entity_page]`
 - [Transformer Transformer（运动条件机器人共设计 · arXiv:2607.25798）](wiki/entities/paper-transformer-transformer.md) — Transformer Transformer**（Ha、Liu、Song；Stanford / Columbia；[项目页](https://transformer-transformer.gi `📅unknown` `[entity_page]`
 - [TransGraspNet：透明实验器皿的几何–物理一致抓取](wiki/entities/paper-transgraspnet.md) — TransGraspNet**（*Physically and Geometrically Consistent Manipulation of Transparent Labware*，[arX `📅unknown` `[entity_page]`
 - [TravExplorer（可通行感知跨楼层具身探索）](wiki/entities/paper-travexplorer.md) — TravExplorer**（*Cross-Floor Embodied Exploration via Traversability-Aware 3-D Planning*，[arXiv:260 `📅unknown` `[entity_page]`

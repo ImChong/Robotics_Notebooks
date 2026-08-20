@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, locomotion, perceptive-locomotion, depth, terrain-reconstruction, cross-attention, teacher-student, amp, ppo, sim2real, isaac-gym, x-humanoid, hku, ustc, hkust, ra-l]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-20
 arxiv: "2510.07152"
 venue: "IEEE RA-L 2026 (accepted 2026-06-09); arXiv v3 2026-08-03"
 related:
