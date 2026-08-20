@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-radmesh.md",
+      "detail_id": "entity-paper-radmesh",
+      "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/robo-orchard-lab.md",
+      "detail_id": "entity-robo-orchard-lab",
+      "label": "RoboOrchardLab",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-gaussian-lic2.md",
       "detail_id": "entity-paper-gaussian-lic2",
       "label": "Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）",
@@ -27,17 +48,6 @@
       "recency": "2026-08-20",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-radmesh.md",
-      "detail_id": "entity-paper-radmesh",
-      "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
@@ -196,28 +206,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gated-memory-policy.md",
-      "detail_id": "entity-paper-gated-memory-policy",
-      "label": "Gated Memory Policy（arXiv:2604.18933）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gaussian-lic2.md",
-    "detail_id": "entity-paper-gaussian-lic2",
-    "label": "Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）",
+    "path": "wiki/entities/paper-radmesh.md",
+    "detail_id": "entity-paper-radmesh",
+    "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
