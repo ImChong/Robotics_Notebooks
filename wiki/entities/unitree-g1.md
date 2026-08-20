@@ -12,6 +12,7 @@ related:
   - ./unitree-ros.md
   - ./unitree-ros2.md
   - ./unitree-g1-software-stack.md
+  - ./grove-g1.md
   - ./humanoid-system-curriculum.md
   - ./botlab-motioncanvas.md
   - ./paper-adp.md
@@ -133,6 +134,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [HumoSlope（论文实体）](./paper-humoslope-physics-guided-slope-locomotion.md) — G1 盲穿户外草地坡至 32.1°（局部平面 ZMP + BSGA；arXiv:2607.07830；代码未开源）。
 - [Uni-LaViRA（论文实体）](./paper-uni-lavira.md) — G1 真机零样本 VLN/ObjectNav/EQA 部署之一（arXiv:2605.27582）。
 - [DimOS（Dimensional）](./dimensionalos-dimos.md) — G1 MuJoCo 仿真与 beta 级 agent/导航集成栈。
+- [Grove-G1](./grove-g1.md) — ROS 2 Humble 自主栈：Nav2 + MoveIt + BehaviorTree 端到端 pick-place（[Adyansh04/grove-g1](https://github.com/Adyansh04/grove-g1)）。
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — G1 踝部闭链 IK/FK/雅可比参考实现（[Parallel_Ankle_Joint](https://github.com/feidedao/Parallel_Ankle_Joint)）。
 - [Fail-Passive Gap](./paper-fail-passive-gap.md) — G1 EDU 工业保护停可行性：外部链可评、机侧反应链不可评（arXiv:2608.02809）。
 

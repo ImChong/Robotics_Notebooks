@@ -15,6 +15,7 @@ related:
   - ../entities/lio-sam.md
   - ../entities/point-lio-unilidar.md
   - ../entities/autonomy-stack-go2.md
+  - ../entities/grove-g1.md
   - ../entities/dualmap.md
   - ../entities/ovo-semantic-mapping.md
   - ../entities/ov-sam3d.md
@@ -162,7 +163,7 @@ flowchart TB
 
 - **[FAST-LIO](../entities/fast-lio.md)**：ikd-Tree + 迭代 ESKF，强调 **速度** 与鲁棒性。
 - **[LIO-SAM](../entities/lio-sam.md)**：GTSAM 因子图，易接 **GPS** 与回环。
-- **[point_lio_unilidar](../entities/point-lio-unilidar.md)**：宇树 **GO2 / L1·L2** 几何建图首选开源基线（Point-LIO 适配）；运动重影优先查时间同步与外参，再叠语义——见 [GO2 三维语义建图 Query](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。CMU 全栈几何导航：[autonomy_stack_go2](../entities/autonomy-stack-go2.md)。在线语义候选：[DualMap](../entities/dualmap.md)、[OVO](../entities/ovo-semantic-mapping.md)；离线：[OV-SAM3D](../entities/ov-sam3d.md)。
+- **[point_lio_unilidar](../entities/point-lio-unilidar.md)**：宇树 **GO2 / L1·L2** 几何建图首选开源基线（Point-LIO 适配）；运动重影优先查时间同步与外参，再叠语义——见 [GO2 三维语义建图 Query](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。CMU 全栈几何导航：[autonomy_stack_go2](../entities/autonomy-stack-go2.md)。**G1 人形** ROS 2 导航+操作全栈：[Grove-G1](../entities/grove-g1.md)（SLAM Toolbox + Nav2 + MoveIt + BT）。在线语义候选：[DualMap](../entities/dualmap.md)、[OVO](../entities/ovo-semantic-mapping.md)；离线：[OV-SAM3D](../entities/ov-sam3d.md)。
 - **[LeGO-LOAM](../entities/lego-loam.md)**：地面分割与地面优化，适合 **起伏地形**。
 - **[hdl_graph_slam](../entities/hdl-graph-slam.md)**：NDT 前端 + g2o，偏 **室外大场景**。
 - **[Voxgraph](../entities/voxgraph.md)**：Voxblox TSDF 子图对齐，多会话建图。

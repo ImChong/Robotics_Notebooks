@@ -9,6 +9,7 @@ related:
   - ./unitree-ros.md
   - ./unitree-ros2.md
   - ./unitree-rl-mjlab.md
+  - ./grove-g1.md
   - ../concepts/ros2-basics.md
   - ../methods/dwa.md
   - ../methods/humanoid-voice-interaction.md
@@ -81,7 +82,7 @@ flowchart TB
 | 2 | 本地跑 SDK2 例程：读状态、发底层指令（急停就绪） |
 | 3 | 仿真：官方 MuJoCo / 课程指定仿真与真机对齐话题名 |
 | 4 | 部署 RL：按 [unitree_rl_gym](./unitree.md) / [mjlab](./unitree-rl-mjlab.md) 文档 ONNX→C++/Python |
-| 5 | 导航桥：`cmd_vel` → G1 速度接口（限幅、坐标系） |
+| 5 | 导航桥：`cmd_vel` → G1 速度接口（限幅、坐标系）；或接完整 ROS 2 栈如 [Grove-G1](./grove-g1.md)（Nav2 + LocoClient） |
 
 ### 与旧栈区别
 
@@ -120,6 +121,7 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md)
 - [Unitree 品牌/组织](./unitree.md)
 - [unitree_ros2](./unitree-ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK
+- [Grove-G1](./grove-g1.md) — 仿真同构 DDS 的 Nav2 + MoveIt + BT 自主栈参考实现
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [DWA](../methods/dwa.md)
 - [人形语音交互](../methods/humanoid-voice-interaction.md)
