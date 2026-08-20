@@ -2885,6 +2885,13 @@
         "mirros-lab",
         "harnesseval"
       ]
+    },
+    "xjtu": {
+      "label": "西安交通大学（XJTU）",
+      "aliases": [
+        "xjtu",
+        "xi-an-jiaotong-university"
+      ]
     }
   }
 }

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-19
+updated: 2026-08-20
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -313,6 +313,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - **零售人形系统配方（未开源）：** [DEED](../entities/paper-deed.md)（arXiv:2607.20345）在 G1-Edu + GR00T N1.6 薯片补货上，用 Data-Efficient 后训练把 naive SFT 从 **0%→32%**，再以文本 advantage 前缀适配 RECAP 到 **42%**；强调频率对齐/策展/视觉高亮，并警示第二轮自举漂移；
 - **车队级：** [LWD](./lwd.md) 把成功/失败/干预统一进 offline-to-online replay；
 - **人形全身：** [ROVE](../entities/paper-rove-humanoid-vla-intervention.md)（arXiv:2606.17011）指出 MoCap **全身 + 灵巧手接管** 含 **adaptation 噪声**，需 **三阶段标注 + OVE 状态价值 + 跨 embodiment 人类视频**，避免 HG-DAgger 式直接模仿干预。
+- **人形全身 loco-manip 适配：** [HAF](../entities/paper-haf-humanoid-vla-adaptation.md)（arXiv:2608.16837）在冻结 flow-matching VLA 上，用 **HAF-VLA** 三阶段 action flow（locomotion+head → waist → manipulation）与 **HAF-Steer**（flow reversal + **DCT** 潜空间 **SAC**）适配天工 2.0/3.0 七项家庭长程任务，平均归一化任务分 **70.5%** vs π₀.₅ **53.3%**；**确认未开源**。
 - **flow-VLA 保守 RL：** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（arXiv:2602.00919）在 **R2** 用 **Q 梯度轨迹修正回灌** 与 **初始噪声 actor**，在 WidowX 上较 R1 **+24%** 绝对成功率，适合与 on-policy PG 微调 flow 模型对照阅读。
 - **产线真机 PPO on CFM-VLA：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **BC 预训练 CFM 操作 VLA** 上用 **解耦 Thor 采样 / 云端 PPO**、**prefix-CFM 正则** 与 **稀疏奖励 + 在线 A/B 基线**，在双臂 **Alpha** 三项生产任务上用 **数天 robot-time** 报告 **42%–2× 吞吐** 与 **10–20× 失败率下降**；强调 **仅 RL 瓶颈阶段** 与 **车队部署后持续学习**。
 - **语义–动作双频 RL：** [TEMPO](../entities/paper-tempo.md)（arXiv:2608.07314）冻结 VLM，对 semantic projection / action expert 分设 TD3 环并令动作侧更高更新频率；CALVIN ABC→D **SR5 81.7%**；截至入库日确认未开源。
@@ -364,6 +365,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：解耦前向/逆动力学预训练的 arXiv:2604.16391 摘录
 - [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — GR00T N1.6 + 语言条件操作臂 post-training 官方教程
 - [sources/papers/rove_arxiv_2606_17011.md](../../sources/papers/rove_arxiv_2606_17011.md) — ROVE：人形 VLA 干预轨迹 RL 后训练（arXiv:2606.17011）
+- [sources/papers/haf_arxiv_2608_16837.md](../../sources/papers/haf_arxiv_2608_16837.md) — HAF：层次 action flow + 频谱潜空间 RL 适配通才 VLA 到人形 loco-manipulation（arXiv:2608.16837）
 - [sources/papers/greenvla_arxiv_2602_00919.md](../../sources/papers/greenvla_arxiv_2602_00919.md) — Green-VLA：五阶段 VLA + 统一动作 + R2 对齐（arXiv:2602.00919）
 - [sources/papers/last_hd_arxiv_2606_23685.md](../../sources/papers/last_hd_arxiv_2606_23685.md) — LaST-HD：潜式物理推理 + OOL Glove 人手→机器人 VLA（arXiv:2606.23685）
 - [sources/repos/cyclo_intelligence.md](../../sources/repos/cyclo_intelligence.md) — ROBOTIS Cyclo Intelligence：BT 编排 LeRobot/GR00T VLA 真机栈
@@ -445,6 +447,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Safety Filter](../concepts/safety-filter.md)
 - [LWD（Learning while Deploying）](./lwd.md) — VLA generalist 策略的车队级 offline-to-online RL 后训练框架
 - [ROVE（人形 VLA 干预后训练）](../entities/paper-rove-humanoid-vla-intervention.md) — 次优 MoCap 接管轨迹的 OVE + advantage conditioning（arXiv:2606.17011）
+- [HAF（人形 VLA 层次 flow + 频谱 RL）](../entities/paper-haf-humanoid-vla-adaptation.md) — 三阶段 action flow + DCT 潜空间 SAC 适配天工 loco-manipulation（arXiv:2608.16837，未开源）
 - [Green-VLA（分阶段 VLA 与人形部署）](../entities/paper-greenvla-staged-vla-humanoid.md) — DataQA + 语义统一动作 + IQL/噪声 RL 的 R2 对齐（arXiv:2602.00919）
 - [JoyAI-RA 0.5（双动作对齐 VLWA）](../entities/paper-joyai-ra-05.md) — LAC-WM + 130-D 规范动作 + 内–外环 RL；AgiBot 真机人视频缩放（arXiv:2608.05674；未开源）
 - [Harness VLA（冻结 VLA + 记忆增强 harness）](../entities/paper-harness-vla.md) — 固定原语库编排 `vla_act`；LIBERO-Pro / RoboCasa365 / RoboTwin C2R（arXiv:2607.08448v3，[RPent](https://github.com/RLinf/RPent)）
