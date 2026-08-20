@@ -1,3 +1,11 @@
+## [2026-08-20] ingest | sources/papers/warp_arxiv_2606_29940.md — WARP 离线人类全身演示闭式 c-SEW 重定向；升格 paper-warp-whole-body-retargeting；开源结论：截至入库日未开源
+
+- **资料：** [WARP: Whole-Body Retargeting for Learning from Offline Human Demonstrations](https://arxiv.org/abs/2606.29940)（Georgia Tech / Danfei Xu，[项目页](https://warp-retargeting.github.io/)）
+- **归档：** [`sources/papers/warp_arxiv_2606_29940.md`](sources/papers/warp_arxiv_2606_29940.md)、[`sources/sites/warp-retargeting-github-io.md`](sources/sites/warp-retargeting-github-io.md)
+- **开源核查（步骤 2.5）：** **截至 2026-08-20 项目页未列 GitHub / 数据集**
+- **升格：** [`wiki/entities/paper-warp-whole-body-retargeting.md`](wiki/entities/paper-warp-whole-body-retargeting.md) — c-SEW、palm 硬约束、lazy mobile-base、Meta Quest 60 Hz 采集、RB-Y1 真机四任务
+- **交叉：** [`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)
+
 ## [2026-08-20] ingest | sources/papers/grip_arxiv_2603_16233.md — GRIP 稀疏 IMU+鞋垫物理 MoCap 与 PRISM 数据集；代码/数据已开源
 
 ## [2026-08-20] ingest | sources/papers/haf_arxiv_2608_16837.md — 接入 HAF 层次 action flow + 频谱潜空间 RL；升格 paper-haf-humanoid-vla-adaptation；开源结论：截至入库日未开源

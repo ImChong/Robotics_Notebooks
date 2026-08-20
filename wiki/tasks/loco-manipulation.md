@@ -309,6 +309,7 @@ flowchart TD
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact-prompted 单策略 WBT：自由空间+地形+搬箱/上楼；hindsight 场景重建数据引擎（arXiv:2606.27581）
 - [ContactMimic（论文实体）](../entities/paper-contactmimic.md) — keypoint + per-body contact 指令；增广解耦与 G1 真机 contact ✔/✘ controllability（arXiv:2607.08742）
 - [CWI（论文实体）](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — 复合全身模仿：AMASS 上身 + 双 AMP 下身 + multi-critic + VR 双手接口（arXiv:2606.27676）
+- [WARP（论文实体）](../entities/paper-warp-whole-body-retargeting.md) — Meta Quest 离线人演示 → 闭式 c-SEW 全身重定向 → BC；RB-Y1 零样本 loco-manip（arXiv:2606.29940；未开源）
 - [OmniContact（论文实体）](../entities/paper-omnicontact-humanoid-loco-manipulation.md) — Contact Flow 分层 meta-skill 链式组合、50 Hz 重规划与 VLM 语义任务（arXiv:2606.26201）
 - [Flexion Reflect v1.0](../entities/flexion-reflect-v1.md) — 产业长程自主栈：Reflect-VLM mission + VLA/RL 运动 + Reflex WBC + FlexComm（2026-06 博客）
 - [HumanoidMimicGen（论文实体）](../entities/paper-humanoidmimicgen.md) — MimicGen 式全身规划合成 loco-manip 示范 + G1 九任务基准 + co-training（arXiv:2605.27724）
