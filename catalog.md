@@ -208,6 +208,7 @@
 - [GR00T-WholeBodyControl（人形全身控制统一平台）](wiki/entities/gr00t-wholebodycontrol.md) — GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 `📅unknown` `[entity_page]`
 - [GRAIL Loco-Manipulation Dataset（G1 合成轨迹）](wiki/entities/grail-locomanipulation-dataset.md) — PhysicalAI-Robotics-Locomanipulation-GRAIL**（<https://huggingface.co/datasets/nvidia/PhysicalAI-Ro `📅unknown` `[entity_page]`
 - [graphify（Graphify Labs）](wiki/entities/graphify.md) — graphify** 是 Graphify-Labs/graphify 分发的 **编码代理技能 + 命令 `📅unknown` `[entity_page]`
+- [Grove-G1](wiki/entities/grove-g1.md) — Grove-G1**（Adyansh04/grove-g1）是面向 **Unitree G1** 的开源 **自主 `📅unknown` `[entity_page]`
 - [gRPC](wiki/entities/grpc.md) — gRPC** 是开源的高性能 **远程过程调用** 框架：用接口定义（默认 **Protocol Buffers `📅unknown` `[entity_page]`
 - [GS-Playground (3DGS 光真实感仿真)](wiki/entities/gs-playground.md) — GS-Playground** 是由 discoverse-dev 开发的高吞吐视觉机器人学习仿真框架，核心创新是将 **并行物理仿真** 与 **批量 3D Gaussian Splatting `📅unknown` `[entity_page]`
 - [GSAP AI Skills（greensock/gsap-skills）](wiki/entities/gsap-skills.md) — GSAP AI Skills** 是 greensock/gsap-skills 仓库分发的 **官方 Ag `📅unknown` `[entity_page]`

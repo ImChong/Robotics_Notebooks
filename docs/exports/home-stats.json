@@ -1,21 +1,22 @@
 {
   "generated_at": "2026-08-20",
-  "node_count": 3192,
-  "edge_count": 28317,
+  "node_count": 3193,
+  "edge_count": 28332,
   "coverage": {
-    "covered": 3167,
-    "total": 3167,
+    "covered": 3168,
+    "total": 3168,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-warp-whole-body-retargeting.md",
-      "detail_id": "entity-paper-warp-whole-body-retargeting",
-      "label": "WARP（Whole-body-Aware Retargeting from human Pose）",
+      "path": "wiki/entities/grove-g1.md",
+      "detail_id": "entity-grove-g1",
+      "label": "Grove-G1",
       "type": "entity",
       "recency": "2026-08-20",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-grip.md",
@@ -208,13 +209,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-warp-whole-body-retargeting.md",
-    "detail_id": "entity-paper-warp-whole-body-retargeting",
-    "label": "WARP（Whole-body-Aware Retargeting from human Pose）",
+    "path": "wiki/entities/grove-g1.md",
+    "detail_id": "entity-grove-g1",
+    "label": "Grove-G1",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -247,7 +249,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1272,
+      "degree": 1273,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

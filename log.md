@@ -1,3 +1,5 @@
+## [2026-08-20] ingest | sources/repos/grove-g1.md — 接入 G1 ROS 2 自主栈 Grove-G1（Nav2+MoveIt+BT），已开源可运行，真机目标检测待补
+
 ## [2026-08-20] ingest | sources/papers/warp_arxiv_2606_29940.md — WARP 离线人类全身演示闭式 c-SEW 重定向；升格 paper-warp-whole-body-retargeting；开源结论：截至入库日未开源
 
 - **资料：** [WARP: Whole-Body Retargeting for Learning from Offline Human Demonstrations](https://arxiv.org/abs/2606.29940)（Georgia Tech / Danfei Xu，[项目页](https://warp-retargeting.github.io/)）
