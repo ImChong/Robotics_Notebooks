@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-19
+updated: 2026-08-20
 related:
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-odeworld.md
@@ -158,6 +158,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [NVIDIA Cosmos 3](../entities/cosmos-3.md)（arXiv:2606.02800）把 **语言、图像、视频、音频与动作** 收进单一 **Mixture-of-Transformers**：**Reasoner** 路径（因果 AR）承担 VLM 式物理推理与 2D 轨迹 CoT，**Generator** 路径（扩散 DM）承担 T2I/T2V/I2V、带声视频、**policy** 与 **正/逆动力学** rollout。与 [mimic-video](./mimic-video.md) 依赖 **Cosmos-Predict2 冻结骨干** 或 [Cosmos Policy](../entities/paper-shenlan-wm-11-cosmos-policy.md) 微调 Predict2 的 **单论文实例** 不同，Cosmos 3 是 **开源平台级母栈**（16B Nano / 64B Super、Diffusers / vLLM-Omni / NIM、OpenMDW-1.1 权重与合成数据）。在 [Sim2Real](../concepts/sim2real.md) 课程语境中，亦常作为 **演示视频增广** 的世界基础模型（见 [NVIDIA SO-101 Sim2Real](../entities/nvidia-so101-sim2real-lab-workflow.md) Strategy 3）。
 
+### Action flow 跨具身 WM + RoboLab 开环评估（示例：Hydra-0）
+
+[Hydra-0](../entities/paper-hydra-0.md)（arXiv:2608.18077，NVIDIA 等）用 **action flow**（相机平面稀疏轨迹+可见性）替代 native 关节/6D 命令，在 **Cosmos 2.5 / Wan2.2** 上 mid-train **2,202 h** 多具身视频；相对 Cosmos 2.5 baseline **robot EPE −90.4%**、**object EPE −60.2%**；RoboLab 五策略开环 replay 与参考成功率 **Pearson r=0.96**；并演示 **object-flow→robot motion→action readout** 逆向控制 POC。截至入库日 **确认未开源**。
+
 ### 骨架条件跨具身 WM + 虚拟策略评估（示例：OSCAR）
 
 [OSCAR](../entities/paper-oscar.md)（arXiv:2606.04463）在 **Cosmos-Predict2.5-2B** 上采用 **2D 运动学骨架** 作像素对齐动作条件：经 **四阶段数据管线**（策展→过滤→SigLIP+轨迹去重→字幕）从 216 万源集筛得 18 万训练集，覆盖 **四机器人具身 + 人类 MANO 手**；**单 GH200** 微调即可在开环指标上超越 **14B Kinema4D**。论文进一步在 [RoboArena](../methods/roboarena.md) **七策略池** 上验证：虚拟 rollout 成功率与真机排名 **Pearson ρ +0.750**、MMRV **0.571**——把生成式 WM 从「画面逼真」推进到 **策略评估代理**（对齐 [world-models-route-03-virtual-sandbox](../overview/world-models-route-03-virtual-sandbox.md)）。
@@ -290,6 +294,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [PanoWorld](../entities/paper-panoworld-real-world-panoramic-generation.md) — **ERP 轨迹可控全景 WM**：DPRC 射线动作 + GMA 几何记忆 + World360 数据集（arXiv:2607.09661）。
 - [PhysisForcing](../entities/paper-physisforcing.md) — **训练期区域聚焦分层物理对齐**（像素轨迹 + 语义关系）；Wan/Cosmos 跨骨干，R-Bench SOTA 与 WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）。
 - [Flex-π](../entities/paper-flex-pi.md) — **冻结 Wan VAE 共享编码 RGB+pointmap** 的多流 Joint WAM；部署算力柔性（arXiv:2608.10860；代码待发布）。
+- [Hydra-0](../entities/paper-hydra-0.md) — **action flow** 跨具身 WM 条件 + RoboLab 开环 **r=0.96**；逆向 object-flow 控制 POC（arXiv:2608.18077；未开源）。
 - [OSCAR](../entities/paper-oscar.md) — **2D 骨架跨具身动作条件** + 大规模数据管线；**2B Cosmos-Predict2.5** 微调，RoboArena 虚拟策略评测与真机强相关（arXiv:2606.04463）。
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。

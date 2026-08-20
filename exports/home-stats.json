@@ -1,13 +1,55 @@
 {
   "generated_at": "2026-08-20",
-  "node_count": 3185,
-  "edge_count": 28248,
+  "node_count": 3189,
+  "edge_count": 28279,
   "coverage": {
-    "covered": 3160,
-    "total": 3160,
+    "covered": 3164,
+    "total": 3164,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-radmesh.md",
+      "detail_id": "entity-paper-radmesh",
+      "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/robo-orchard-lab.md",
+      "detail_id": "entity-robo-orchard-lab",
+      "label": "RoboOrchardLab",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-gaussian-lic2.md",
+      "detail_id": "entity-paper-gaussian-lic2",
+      "label": "Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/roadmaps/humanoid-practitioner-entry-roadmap.md",
+      "detail_id": "wiki-roadmaps-humanoid-practitioner-entry-roadmap",
+      "label": "Humanoid Practitioner Entry Roadmap",
+      "type": "roadmap_page",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-haf-humanoid-vla-adaptation.md",
       "detail_id": "entity-paper-haf-humanoid-vla-adaptation",
@@ -164,81 +206,43 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-foundation-models-full-stack-transfer.md",
-      "detail_id": "entity-paper-foundation-models-full-stack-transfer",
-      "label": "Are Foundation Models the Route to Full-Stack Transfer in Robotics?（arXiv:2602.22001）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gated-memory-policy.md",
-      "detail_id": "entity-paper-gated-memory-policy",
-      "label": "Gated Memory Policy（arXiv:2604.18933）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-geometry-aware-4d-video-generation.md",
-      "detail_id": "entity-paper-geometry-aware-4d-video-generation",
-      "label": "Geometry-Aware 4D Video Generation for Robot Manipulation（arXiv:2507.01099）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-minimalist-compliance-control.md",
-      "detail_id": "entity-paper-minimalist-compliance-control",
-      "label": "Minimalist Compliance Control（arXiv:2603.00913）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-haf-humanoid-vla-adaptation.md",
-    "detail_id": "entity-paper-haf-humanoid-vla-adaptation",
-    "label": "HAF（Humanoid Adaptation Framework）",
+    "path": "wiki/entities/paper-radmesh.md",
+    "detail_id": "entity-paper-radmesh",
+    "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 635
+      "size": 640
     },
     {
       "label": "仿真到现实",
-      "size": 572
+      "size": 588
     },
     {
       "label": "视觉-语言-动作",
-      "size": 245
+      "size": 247
     },
     {
       "label": "人形论文深读笔记",
-      "size": 172
+      "size": 171
     },
     {
       "label": "全身控制",
       "size": 136
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 134
+      "label": "移动操作",
+      "size": 132
     }
   ],
   "top_hubs": [
@@ -246,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1265,
+      "degree": 1268,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -269,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 759,
+      "degree": 762,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -277,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 733,
+      "degree": 735,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -293,7 +297,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 534,
+      "degree": 536,
       "has_repo": true
     },
     {

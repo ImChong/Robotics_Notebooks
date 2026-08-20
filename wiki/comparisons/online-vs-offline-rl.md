@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-20
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../concepts/rl-runner.md
