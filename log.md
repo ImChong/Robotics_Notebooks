@@ -1,5 +1,13 @@
 ## [2026-08-20] ingest | sources/blogs/wechat_zanehub_humanoid_career_entry_for_generalists.md — 普通人切入人形赛道（结构/执行器/测试/制造）；升格 wiki/roadmaps/humanoid-practitioner-entry-roadmap.md
 
+## [2026-08-19] lint | wiki/queries/*-selection-loop.md — 清空全量 lint 信息型预警：补齐 3 条知识链枢纽双向回链
+
+- **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **3 条信息型预警**（枢纽回链缺失）
+- **评测基准闭环：** [`paper-h2r-bench`](wiki/entities/paper-h2r-bench.md) 补 ②层（世界模型预测保真度）回链；[`paper-robosynchallenge`](wiki/entities/paper-robosynchallenge.md) 补 ③/④层（策略成功率 + sim↔real 校准）回链
+- **感知栈闭环：** [`paper-sap-nav`](wiki/entities/paper-sap-nav.md) 补 ③层（2D→3D 提升与在线语义建图）回链——QSSR 可查询空间–语义表征 + AVV 主动视点验证
+- **双向：** 两个 Query 枢纽页 [`embodied-eval-benchmark-selection-loop`](wiki/queries/embodied-eval-benchmark-selection-loop.md) / [`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) 同步补 `related` 与「关联页面」条目并 bump `updated`
+- **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型）；`make ci-preflight` 导出质量 12/12 通过
+
 ## [2026-08-19] ingest | sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md — 人形量产经验（DFM·三大核心件·良率/CPK·供应链·可靠性）；升格 wiki/concepts/humanoid-mass-production-engineering.md
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/CARW0vvd4doO1htt0Q1bHg>；要求自动合并 PR
