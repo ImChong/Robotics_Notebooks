@@ -16,6 +16,7 @@ related:
   - ./amass.md
   - ./unitree-g1.md
   - ./paper-omg-omni-modal-humanoid-control.md
+  - ./robo-orchard-lab.md
 sources:
   - ../../sources/repos/horizon_robotics_holomotion.md
   - ../../sources/sites/holomotion-docs.md
@@ -124,7 +125,7 @@ sequenceDiagram
 
 ## 命名说明
 
-文档路径中的 `robot_lab` 指 **Horizon 在 GitHub Pages 上的站点分段**，与社区 IsaacLab 扩展 **[robot_lab（fan-ziqi）](./robot-lab.md)** **不是同一仓库**；选型与引用时请用 **组织名与 Git URL** 区分。
+文档路径中的 `robot_lab` 指 **Horizon 在 GitHub Pages 上的站点分段**，与社区 IsaacLab 扩展 **[robot_lab（fan-ziqi）](./robot-lab.md)** **不是同一仓库**；同分段下还有 [RoboOrchardLab](./robo-orchard-lab.md) 等具身 AI 训练框架。选型与引用时请用 **组织名与 Git URL** 区分。
 
 ## 关联页面
 

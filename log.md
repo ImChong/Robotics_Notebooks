@@ -1,3 +1,5 @@
+## [2026-08-20] ingest | sources/repos/horizon_robotics_robo_orchard_lab.md — 接入 RoboOrchardLab 训练框架（已开源 Apache-2.0）；升格 wiki/entities/robo-orchard-lab.md
+
 ## [2026-08-19] lint | wiki/queries/*-selection-loop.md — 清空全量 lint 信息型预警：补齐 3 条知识链枢纽双向回链
 
 - **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **3 条信息型预警**（枢纽回链缺失）
