@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-19",
-  "node_count": 3180,
-  "edge_count": 28195,
+  "generated_at": "2026-08-20",
+  "node_count": 3181,
+  "edge_count": 28203,
   "coverage": {
     "covered": 3156,
     "total": 3156,
@@ -16,7 +16,7 @@
       "recency": "2026-08-19",
       "source": "git",
       "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-tau0-vla.md",
@@ -26,7 +26,8 @@
       "recency": "2026-08-19",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/overview/world-model-exec-10-papers-technology-map.md",
@@ -84,8 +85,7 @@
       "recency": "2026-08-19",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-spatial-memory-agent.md",
@@ -114,7 +114,7 @@
       "recency": "2026-08-18",
       "source": "git",
       "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-behavior-prompting-policy.md",
@@ -193,7 +193,7 @@
       "recency": "2026-08-18",
       "source": "git",
       "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-modpack.md",
@@ -214,32 +214,32 @@
     "recency": "2026-08-19",
     "source": "git",
     "action": "added",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 576
+      "size": 634
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 380
+      "label": "仿真到现实",
+      "size": 570
     },
     {
       "label": "视觉-语言-动作",
-      "size": 246
+      "size": 230
     },
     {
       "label": "人形论文深读笔记",
-      "size": 222
+      "size": 172
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 151
+      "label": "视觉语言动作纵深路线",
+      "size": 140
     },
     {
-      "label": "力矩电机设计纵深路线",
-      "size": 113
+      "label": "全身控制",
+      "size": 136
     }
   ],
   "top_hubs": [
@@ -335,14 +335,15 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 78,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 57,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -356,14 +357,15 @@
       "type": "entity",
       "degree": 54,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -382,7 +384,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 41
+      "degree": 41,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-masked-visual-actions",
