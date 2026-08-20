@@ -123,7 +123,7 @@ flowchart TD
 ### 3. 基础模型路线 (Foundation Models / VLA)
 - **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。
 - **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。
-- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)（2026，关节级全身遥操作 + π₀.₅ 系 VLA + HuMI 共训的全身原生配方，**已开源**）。
+- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)（2026，关节级全身遥操作 + π₀.₅ 系 VLA + HuMI 共训的全身原生配方，**已开源**）；[HAF](../entities/paper-haf-humanoid-vla-adaptation.md)（2026，三阶段 action flow + DCT 潜空间 SAC 把通才 VLA 适配到天工家庭 loco-manipulation，**未开源**）。
 
 ### 4. 视觉分层 Sim2Real（Keypoint Tracker + Depth Visuomotor）
 - **核心**：**任务无关低层** 从人类动作蒸馏 **关键点跟踪器**（motion teacher → keypoint student）；**任务专用高层** 从特权物体状态教师蒸馏 **egocentric 深度 visuomotor 生成器**；接口为 root + 头/双手/双足共 5 点，共享低层、逐任务训高层。
@@ -314,6 +314,7 @@ flowchart TD
 - [HumanoidMimicGen（论文实体）](../entities/paper-humanoidmimicgen.md) — MimicGen 式全身规划合成 loco-manip 示范 + G1 九任务基准 + co-training（arXiv:2605.27724）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — egocentric 分层全身 benchmark：7 项腿关键 HOI/HSI + 双 GMT 扰动/迁移诊断（arXiv:2606.17833）
 - [OpenHLM（论文实体）](../entities/paper-loco-manip-161-154-openhlm.md) — 全身原生人形 VLA 经验配方（arXiv:2606.22174，已开源）
+- [HAF（论文实体）](../entities/paper-haf-humanoid-vla-adaptation.md) — 三阶段 action flow + DCT 潜空间 SAC 适配通才 VLA 到天工家庭 loco-manipulation（arXiv:2608.16837，未开源）
 - [GR00T-WholeBodyControl（实体）](../entities/gr00t-wholebodycontrol.md) — NVIDIA 解耦 WBC / SONIC / MotionBricks 统一仓
 - [FastGrasp（论文实体）](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
 - [3D-IC（论文实体）](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）

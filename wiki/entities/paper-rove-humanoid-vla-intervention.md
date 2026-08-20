@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, vla, reinforcement-learning, post-training, human-in-the-loop, teleoperation, dexterous-manipulation, advantage-conditioning, offline-rl, experience-learning, xpeng-robotics, contact-rich-manipulation, xpeng]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-20
 arxiv: "2606.17011"
 venue: "arXiv 2026"
 related:

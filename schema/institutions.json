@@ -2907,6 +2907,13 @@
         "harnesseval"
       ]
     },
+    "xjtu": {
+      "label": "西安交通大学（XJTU）",
+      "aliases": [
+        "xjtu",
+        "xi-an-jiaotong-university"
+      ]
+    },
     "uoa": {
       "label": "奥克兰大学（University of Auckland）",
       "aliases": [
