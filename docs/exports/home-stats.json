@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-gaussian-lic2.md",
+      "detail_id": "entity-paper-gaussian-lic2",
+      "label": "Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-h2r-bench.md",
       "detail_id": "entity-paper-h2r-bench",
       "label": "H2R-Bench：世界模型先要过「人到机器人」这一关",
@@ -194,27 +205,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-modpack.md",
-      "detail_id": "entity-paper-modpack",
-      "label": "ModPack（arXiv:2607.19479）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-h2r-bench.md",
-    "detail_id": "entity-paper-h2r-bench",
-    "label": "H2R-Bench：世界模型先要过「人到机器人」这一关",
+    "path": "wiki/entities/paper-gaussian-lic2.md",
+    "detail_id": "entity-paper-gaussian-lic2",
+    "label": "Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）",
     "type": "entity",
-    "recency": "2026-08-19",
+    "recency": "2026-08-20",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
