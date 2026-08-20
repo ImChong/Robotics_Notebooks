@@ -1,3 +1,5 @@
+## [2026-08-20] ingest | sources/blogs/wechat_zanehub_humanoid_career_entry_for_generalists.md — 普通人切入人形赛道（结构/执行器/测试/制造）；升格 wiki/roadmaps/humanoid-practitioner-entry-roadmap.md
+
 ## [2026-08-20] ingest | sources/papers/gaussian_lic2_arxiv_2507_04004.md — Gaussian-LIC2 实时 LIC 3DGS-SLAM；代码已开源，自采评测集待发布
 
 ## [2026-08-19] lint | wiki/queries/*-selection-loop.md — 清空全量 lint 信息型预警：补齐 3 条知识链枢纽双向回链

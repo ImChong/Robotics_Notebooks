@@ -19,6 +19,8 @@ updated: 2026-04-20
 - 有一定编程基础（Python, C++）
 - 了解基本线性代数和控制理论更好（但不是必须）
 
+> **非算法主线**（结构/测试/制造/应用交付）请见 [Humanoid Practitioner Entry Roadmap](./humanoid-practitioner-entry-roadmap.md)。
+
 ## 先修知识
 
 ### 核心必学
