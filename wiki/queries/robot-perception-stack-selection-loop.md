@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-08-19
+updated: 2026-08-20
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -34,6 +34,7 @@ related:
   - ../entities/paper-green-for-go-vla-nav-grounding.md
   - ../entities/paper-hand-visibility-detector.md
   - ../entities/paper-sap-nav.md
+  - ../entities/robo-orchard-lab.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -200,3 +201,4 @@ flowchart TD
 - [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — ④层下游消费：分割 overlay 被冻结导航 VLA 当可通行提示（未开源）
 - [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md) — ④层手部消费：逐关节可见性给三角化/遥操作按点降权（已开源）
 - [SAP-Nav](../entities/paper-sap-nav.md) — ③层在线建图：可查询空间–语义表征边走边建 + 主动视点验证，证据不足就换视点（实现待发布）
+- [RoboOrchardLab](../entities/robo-orchard-lab.md) — 训练框架入口：`projects/bip3d_grounding` 落 ③层 2D→3D grounding、`finegrasp` 落 ④层下游消费；提供的是统一训练/Model Zoo 管线，选哪个感知模型仍看本页（Apache-2.0）

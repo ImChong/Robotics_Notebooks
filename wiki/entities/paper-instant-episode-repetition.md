@@ -118,6 +118,17 @@ sequenceDiagram
 | **不适用** | on-policy（PPO 等）需另设计；episode 边界模糊或 reward 非 episode 级 |
 | **与 SIL 并存** | IER 改交互；SIL 改损失——论文作对照，非互斥 |
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| Experience Replay / PER | 在 **梯度步** 被动复用 buffer 里的旧转移；IER 在 **交互环** 主动重执行整段动作序列，收的是新转移而非重采旧转移 |
+| SIL（Self-Imitation Learning） | 改的是 **损失**（对高回报轨迹加模仿项），交互仍由当前策略主导；IER 改的是 **谁选动作**，损失与标准 SAC/TD3 完全一致——两者非互斥，论文作对照 |
+| 标准 SAC / TD3 基线 | 网络、actor/critic 损失、优化器均不变；**RN=0 即退化为基线**，所以同一仓库里可直接 A/B |
+| on-policy（PPO 等） | 重复 stored 动作序列会破坏 on-policy 数据假设；IER 的触发逻辑绑定 off-policy + episode 级回报，迁到 PPO 需重新设计 |
+| 轨迹回放 / 开环 replay | 「重复」不等于复制轨迹：重执行时初始状态、随机性与接触动力学都不同，因此仍在已验证高价值行为 **附近** 采到新样本 |
+| Prioritized 多轨迹方案 | IER 只跟踪 **全局 best**（仅刷新 \(R_{\max}\) 时更新 \(\mathbf{a}^*\)），不维护多条成功轨迹的优先级池——实现更简单，代价是重复序列可能过时 |
+
 ## 局限与风险
 
 - **绑定 off-policy + episode 回报：** on-policy 或逐步稀疏 shaping 需重新设计触发逻辑。

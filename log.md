@@ -1,3 +1,14 @@
+## [2026-08-20] lint | wiki/entities/paper-{fetchman,hydra-0,instant-episode-repetition,prism-grpo}.md + robo-orchard-lab.md — 清空全量 lint 信息型预警：补 4 篇 2608 论文「对比」段 + 2 条枢纽双向回链 + 2 个缺页误报归档
+
+- **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **8 条信息型预警**（三段式缺「对比」×4、枢纽回链缺失×2、缺页概念候选×2）
+- **三段式补「对比」：** [`paper-fetchman`](wiki/entities/paper-fetchman.md)（VIRAL/DoorMan/纯加演示 BC/Temporal GRPO/端到端 WBC/SigLIP+absolute 消融）、[`paper-hydra-0`](wiki/entities/paper-hydra-0.md)（Cosmos native action/ATI-Wan-Move/OSCAR/SC3-Eval/Ctrl-World/常规 WAM）、[`paper-instant-episode-repetition`](wiki/entities/paper-instant-episode-repetition.md)（replay-PER/SIL/SAC-TD3 基线/on-policy/开环 replay/prioritized 多轨迹）、[`paper-prism-grpo`](wiki/entities/paper-prism-grpo.md)（Binary GRPO/task-specific progress reward/RL-ZVP/group-norm/Temporal GRPO/学习式 RM/只对 same-outcome 加 quality）——均由页内已有事实归并成表，未引入新论断
+- **评测基准闭环：** [`paper-hydra-0`](wiki/entities/paper-hydra-0.md) 补回链，定位为 ②层（世界模型预测保真度）向 ③层（策略成功率）的桥接：RoboLab 开环 replay r=0.96 不等于闭环 prospective 成功率
+- **感知栈闭环：** [`robo-orchard-lab`](wiki/entities/robo-orchard-lab.md) 补回链，`projects/bip3d_grounding` 落 ③层 2D→3D grounding、`finegrasp` 落 ④层下游消费
+- **双向：** 两个 Query 枢纽页 [`embodied-eval-benchmark-selection-loop`](wiki/queries/embodied-eval-benchmark-selection-loop.md) / [`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) 同步补 `related` 与「关联页面」条目并 bump `updated`
+- **缺页误报归档：** `action` / `ros2` 两个候选经核查均属「slug ≠ 页面 stem」或「数据字段名/API 键名」，已按既有惯例登记进 `MISSING_CONCEPT_COVERED_ELSEWHERE` 并附归属说明——`ros2` → [`concepts/ros2-basics.md`](wiki/concepts/ros2-basics.md)（+ rmw-interface / dds-communication / ros2-vs-lcm）；`action` → [`formalizations/mdp.md`](wiki/formalizations/mdp.md) 动作空间 $A$ + [`methods/action-chunking.md`](wiki/methods/action-chunking.md) + [`concepts/world-action-models.md`](wiki/concepts/world-action-models.md)（命中处全是 RobotWin JSONL 帧类型 / UMI 20 维导出 / ROS pick-place 接口等 token）
+- **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型）；`eval_search_quality` 40/40；`ruff check` + `ruff format --check` 通过；`pytest` 全绿（生成 `make export graph` 派生物后 3 项 export 依赖测试亦通过）
+- **未提交：** `exports/` `docs/exports/` 统计派生物——本会话是 shallow clone（108 commits），`generate_link_graph` 的 git 首次加入日会退化成 log.md 兜底，交由 `export.yml`（`fetch-depth: 0`）重算
+
 ## [2026-08-20] ingest | sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md — SJTU TRAMP（IEEE RA-L 2026）：单阶段深度+MoE+平地/楼梯地形相关 AMP；ResearchGate 全文入口；确认未开源
 
 ## [2026-08-20] ingest | sources/repos/grove-g1.md — 接入 G1 ROS 2 自主栈 Grove-G1（Nav2+MoveIt+BT），已开源可运行，真机目标检测待补

@@ -243,7 +243,22 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                concepts/2d-to-3d-semantic-lifting-gap.md（RGB-D 补尺度路线）：
 #                传感模态标签而非独立可成页机制，与 vlm 同类，另建概念页只会与
 #                上述表征/几何页重复同一来源
+#   ros2       → concepts/ros2-basics.md（canonical 定义页：节点/话题/服务/DDS 分层，
+#                slug 与页面 stem 不同名）+ concepts/rmw-interface.md（中间件抽象层）
+#                + concepts/dds-communication.md + comparisons/ros2-vs-lcm.md
+#                （选型对照）+ entities/navigation2.md / unitree-ros2.md（发行版与
+#                厂商包）：与 wbc / urdf / rl 同属「slug ≠ 页面 stem」，不应按裸名
+#                误报为缺页
+#   action     → formalizations/mdp.md（动作空间 $A$ 的 canonical 定义）+
+#                methods/action-chunking.md（多步动作序列输出）+
+#                concepts/world-action-models.md（动作后果预测）+
+#                methods/uhas-unified-hand-action-space.md（统一手部动作空间）：
+#                命中处全是数据字段名 / API 键名（RobotWin JSONL 的 `action` 帧类型、
+#                UMI 导出的 20 维 `action`、ROS pick/place **action** 接口、演示数据
+#                格式清单里的 `action` 列），与 qpos / reset / step 同为 token 而非
+#                机制，本库按形式化/方法维度记述，不单建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
+    "action",
     "amp",
     "armature",
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
@@ -261,6 +276,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "reset",  # 环境/策略 API 方法名（episode 复位），已由 entities/gymnasium.md 释义
     "rgb-d",  # 传感模态标签，已由六种空间表征 / 三维坐标变换等页覆盖
     "rl",  # 已由 methods/reinforcement-learning.md 覆盖（缩写 slug 与页面 stem 不同名）
+    "ros2",  # 已由 concepts/ros2-basics.md 覆盖（slug 与页面 stem 不同名）
     "sonic",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）

@@ -116,6 +116,18 @@ sequenceDiagram
 | **全组加 quality** | 只对 same-outcome 加 quality 会掉增益——默认 **所有组** 用 combined R |
 | **真机** | 可抑制 sim 可过、deploy 失败的 cheat（shove pot） |
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| Binary GRPO（[SimpleVLA-RL](https://github.com/PRIME-RL/SimpleVLA-RL) 默认） | 同结果组优势为 0 → dynamic sampling 丢弃，早期几乎全失败时大量 rollout 白跑；Prism 用有界 \(q(\tau)\) 在组内破 ties，四任务达标 rollout **最多 −56%** |
+| Task-specific progress reward | 需要为每个任务手写进度/子目标奖励；Prism 的 quality 是 **task-agnostic** 的接触 peak impulse / 关节反向计数 / action jerk / VLM 碰撞判据，换任务不用重写 |
+| RL-ZVP（零方差组也给梯度） | 同样想救退化组，但真机 Move Can Pot 上 shove-cheat **5/25**；Prism **0/25**、Binary 1/25——质量项同时压住了 sim 可过、deploy 会崩的取巧行为 |
+| Group-normalized GRPO | 组内归一化会把 \(\lambda\) 的尺度 cancel 掉，quality 信号被抹平；Prism **必须**配 RLOO 优势估计才保留质量尺度 |
+| [Temporal GRPO](./paper-temporal-grpo.md) | 修的是 **阶段信用分配**（时间轴）；Prism 修的是 **同结果组内的区分度**（组内轴）——两者正交，可概念组合但论文未实验 |
+| 学习式 reward model（RoboReward 类） | 用学到的 RM 打分，需额外训练与对齐验证；Prism 优先用 sim 里可直接测的物理量，无 sim 时才退到 VLM 代理 |
+| 只对 same-outcome 组加 quality | 直觉上只救退化组即可，但论文消融显示这样 **掉增益**；默认对 **所有组** 用 combined reward |
+
 ## 局限与风险
 
 - **需 observable quality aligned with success** — 无 contact/jerk 时需 VLM 或学 RM（见 RoboReward 对照）。

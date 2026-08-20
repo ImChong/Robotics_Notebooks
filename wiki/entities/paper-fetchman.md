@@ -94,6 +94,17 @@ flowchart TB
 | **多物体** | dino.txt 文本 token；350k 演示；G=64 因 uniform 组更多 |
 | **算力** | 数据生成 ~40 GPU-h；RL 阶段需大规模并行 identical-reset 组 |
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [VIRAL](./paper-viral-humanoid-visual-sim2real.md) | 同 G1 视觉 sim2real、同「策略只出语义命令 + 固定低层」分层；VIRAL 环境结构窄，FetchMan 押 **15 万场景 / 5 万物体** 的 MolmoSpaces 分布泛化 |
+| [DoorMan](./paper-doorman-opening-sim2real-door.md) | 同用 GRPO 自举 loco-manip，但任务是铰接开门；FetchMan 是 fetch/reach-pick，且明确把 RL 预算指向 **base reposition** 而非 manip |
+| 纯加演示的 BC scaling | 脚本控制器含 nav↔reach↔manip **不可观测相位**，单帧策略推不出来 → sim loco-manip 卡在 ~67%，加演示不涨；必须换 RL refinement 而非扩数据 |
+| [Temporal GRPO](./paper-temporal-grpo.md) | 同为 GRPO 变体但问题轴不同：Temporal GRPO 修 VLA 的阶段信用，FetchMan 的 Flow-GRPO 是给 flow-matching 采样加 Gaussian SDE 以拿到逐步 log-lik |
+| 端到端 WBC / 不固定低层 | FetchMan 冻结 SONIC @50 Hz，策略只出 15 维命令——换来 zero-shot transfer，代价是 gait/stance 不可 adapt |
+| SigLIP 骨干 / absolute 动作 | 同管线换视觉骨干或动作参数化，真机 loco-manip **≈0%**：冻结 DINOv3 + delta 动作不是调参项，是 sim2real 的必要条件 |
+
 ## 局限与风险
 
 - **无历史：** 单帧策略难推断脚本 相位；加 history 增 token 成本未 ablate。

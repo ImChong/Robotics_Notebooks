@@ -12,6 +12,7 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ../tasks/manipulation.md
   - ../overview/world-models-route-03-virtual-sandbox.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/hydra_0_arxiv_2608_18077.md
   - ../../sources/sites/hydra-0-nvidia-isaac.md
@@ -109,6 +110,17 @@ flowchart TB
 | **蒸馏** | LightX2V 四步 student **16×** 加速；RoboLab 评估仍开环 |
 | **与 OSCAR/SC3 对照** | OSCAR 用 2D 骨架；SC3 用逆动力学早停；Hydra 用 **flow 接口 + r=0.96** |
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| Cosmos 2.5 native action 条件 | 条件是各具身私有 joint / 6D EE 命令，绑死训练具身；Hydra 换成图像平面 action flow，五 held-out 集 **robot EPE −90.4% / object EPE −60.2%** |
+| ATI / Wan-Move 轨迹条件视频生成 | 同属「轨迹条件」，但轨迹由用户手绘或模型自采；Hydra 的 embodiment flow 由 Isaac Lab rollout + 链接变换投影得到，**运动学接地**而非自由笔画 |
+| [OSCAR](./paper-oscar.md) | 同走「跨具身共享视觉接口」，但接口是 **2D 骨架**；Hydra 用稀疏点轨迹 + 可见性，并额外给出策略排名相关性数字 |
+| [SC3-Eval](./paper-sc3-eval.md) | 闭环自一致 VLA 评估（逆动力学早停），策略被生成观测查询；Hydra 是 **开环 replay 排名**，只判「给定 achieved flow 能否复现结果」 |
+| [Ctrl-World](./paper-ctrl-world.md) | 多视角闭环 WM，策略在生成观测里滚动，可测 prospective 行为；Hydra 开环，代价正是测不到未执行命令 |
+| 常规 world action model | 逆动力学/动作读出通常需任务专属 robot 专家 demo；Hydra 逆向模式只要 **desired object flow**（可来自 human demo）→ readout 出 14-DoF 命令，代价是 grasp ~1 cm 误差 |
+
 ## 局限与风险
 
 - **开环非 prospective：** 未执行命令的策略排名需另设计闭环评估。
@@ -140,6 +152,7 @@ flowchart TB
 - [Ctrl-World](./paper-ctrl-world.md) — 多视角 VLA 闭环 WM
 - [Isaac Lab](./isaac-gym-isaac-lab.md) — 部署投影 sim
 - [虚拟沙盒路线](../overview/world-models-route-03-virtual-sandbox.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页 RoboLab r=0.96 属其 ② 世界模型预测保真度层向 ③ 策略成功率层的桥接：测的是「开环 replay 能否复现 achieved flow 的结果」，不要当闭环真机成功率读
 
 ## 参考来源
 

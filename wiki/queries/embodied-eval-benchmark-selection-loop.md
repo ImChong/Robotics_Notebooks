@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-08-19
+updated: 2026-08-20
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -46,6 +46,7 @@ related:
   - ../entities/paper-softvtbench.md
   - ../entities/paper-humantracker.md
   - ../entities/paper-h2r-bench.md
+  - ../entities/paper-hydra-0.md
   - ../entities/paper-robosynchallenge.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md
@@ -199,6 +200,7 @@ flowchart TD
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — ②层产业样本：跨本体交互模拟器 + 失败态回滚后训练（确认未开源）
 - [SC3-Eval](../entities/paper-sc3-eval.md) — ②层外延：自一致视频策略评估器，真机闭环 \(r=0.929\) / MMRV \(0.119\)（确认未开源）
 - [H2R-Bench](../entities/paper-h2r-bench.md) — ②层跨本体切面：人手视频→机器人本体视频五维诊断（本体正确性/功能接触），评测代码与标注待发布
+- [Hydra-0](../entities/paper-hydra-0.md) — ②→③ 桥接：RoboLab 开环 replay 排名与参考成功率 **r=0.96**（κ=0.82），但策略不被生成观测查询，不能当闭环 prospective 成功率读（确认未开源）
 - [RoboSynChallenge](../entities/paper-robosynchallenge.md) — ③/④ 层：合成 state-action 训练、**仅真实世界未见环境**终评的灵巧操作挑战赛协议（框架 + HF 数据已开源）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — ③层社区聚合：多基准 VLA / 灵巧手摘录榜（不重跑）
 - [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji（DexBench 任务分在独立站）
