@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19",
+  "generated_at": "2026-08-20",
   "node_count": 3180,
   "edge_count": 28201,
   "coverage": {
@@ -14,7 +14,8 @@
       "label": "H2R-Bench：世界模型先要过「人到机器人」这一关",
       "type": "entity",
       "recency": "2026-08-19",
-      "source": "log.md",
+      "source": "git",
+      "action": "added",
       "has_repo": true
     },
     {
@@ -23,7 +24,8 @@
       "label": "RoboSynChallenge：合成数据能不能算数，真机说了算",
       "type": "entity",
       "recency": "2026-08-19",
-      "source": "log.md",
+      "source": "git",
+      "action": "added",
       "has_repo": true
     },
     {
@@ -32,29 +34,10 @@
       "label": "SAP-Nav：开词汇导航要主动补空间证据",
       "type": "entity",
       "recency": "2026-08-19",
-      "source": "log.md",
+      "source": "git",
+      "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-08-19",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
-      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
-      "label": "Query：机器人视觉感知栈选型闭环知识链",
-      "type": "query",
-      "recency": "2026-08-19",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/humanoid-mass-production-engineering.md",
@@ -62,58 +45,8 @@
       "label": "人形机器人量产工程能力",
       "type": "concept",
       "recency": "2026-08-19",
-      "source": "log.md",
+      "source": "git",
       "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-supply-chain-economics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-supply-chain-economics",
-      "label": "Humanoid Hardware 101 · 07：产业与成本地缘",
-      "type": "overview",
-      "recency": "2026-08-19",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-actuation-sensing-chain",
-      "label": "Humanoid Hardware 101 · 02：传动与感知链",
-      "type": "overview",
-      "recency": "2026-08-19",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-      "label": "Humanoid Hardware 101：七类子系统技术地图",
-      "type": "overview",
-      "recency": "2026-08-19",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-knee-harmonic-drive-limits.md",
-      "detail_id": "wiki-concepts-humanoid-knee-harmonic-drive-limits",
-      "label": "人形膝/腿主承力链为何通常避开谐波减速器",
-      "type": "concept",
-      "recency": "2026-08-19",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
-      "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
-      "label": "人形腿部行星滚柱丝杠直线驱动（PRS 路线）",
-      "type": "concept",
-      "recency": "2026-08-19",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
@@ -122,88 +55,155 @@
       "label": "τ₀-VLA：世界模型引导测试时计算的分层机器人基础模型",
       "type": "entity",
       "recency": "2026-08-19",
-      "source": "log.md",
+      "source": "git",
       "action": "added",
       "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-cmp.md",
-      "detail_id": "entity-paper-cmp",
-      "label": "CMP：上下文感知运动先验",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ahmp.md",
-      "detail_id": "entity-paper-ahmp",
-      "label": "AHMP：接触序列发现 + SE(3) 切空间全身规划",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-se3-tangent-to.md",
-      "detail_id": "entity-paper-se3-tangent-to",
-      "label": "SE(3) 切空间浮动基轨迹优化",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-cref.md",
-      "detail_id": "entity-paper-cref",
-      "label": "CReF：交叉模态与循环融合的深度条件人形行走",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "特权信息训练（Privileged Training） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-harnesseval-w.md",
-      "detail_id": "entity-paper-harnesseval-w",
-      "label": "HarnessEval-W（Agentifying the Evaluation of Visual Worlds）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-seeker.md",
-      "detail_id": "entity-paper-seeker",
-      "label": "Seeker：从动作里长出视觉注意力",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/contact-predict-adapt-10-papers-technology-map.md",
-      "detail_id": "wiki-overview-contact-predict-adapt-10-papers-technology-map",
-      "label": "接触–预测–适应：10 篇论文的阅读坐标",
+      "path": "wiki/overview/world-model-exec-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-world-model-exec-10-papers-technology-map",
+      "label": "世界模型与真实执行：10 篇论文的阅读坐标",
       "type": "overview",
-      "recency": "2026-08-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added"
     },
     {
-      "path": "wiki/entities/paper-reflexvla.md",
-      "detail_id": "entity-paper-reflexvla",
-      "label": "ReflexVLA：动态任务低延迟 VLA",
+      "path": "wiki/entities/paper-drl-proxemics-social-nav.md",
+      "detail_id": "entity-paper-drl-proxemics-social-nav",
+      "label": "DRL Proxemics：把「别贴太近」写进可学习奖励",
       "type": "entity",
-      "recency": "2026-08-17",
-      "source": "log.md",
+      "recency": "2026-08-19",
+      "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-motion-as-prompt.md",
+      "detail_id": "entity-paper-motion-as-prompt",
+      "label": "Motion-as-Prompt：先把运动画给 MLLM 看",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-spatial-memory-agent.md",
+      "detail_id": "entity-paper-spatial-memory-agent",
+      "label": "Spatial Memory Agent：不调参也能长空间记性",
+      "type": "entity",
+      "recency": "2026-08-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-hommi.md",
+      "detail_id": "entity-paper-hommi",
+      "label": "HoMMI（arXiv:2603.03243）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-action-view-augmentation.md",
+      "detail_id": "entity-paper-action-view-augmentation",
+      "label": "One Demo Is Worth a Thousand Trajectories（arXiv:2606.19586）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-behavior-prompting-policy.md",
+      "detail_id": "entity-paper-behavior-prompting-policy",
+      "label": "Behavior Prompting Policy（arXiv:2606.30457）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dexmachina.md",
+      "detail_id": "entity-paper-dexmachina",
+      "label": "DexMachina（arXiv:2505.24853）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-df-expense.md",
+      "detail_id": "entity-paper-df-expense",
+      "label": "DF-ExpEnse（arXiv:2606.19656）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dice-rl.md",
+      "detail_id": "entity-paper-dice-rl",
+      "label": "From Prior to Pro（arXiv:2603.10263）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-foundation-models-full-stack-transfer.md",
+      "detail_id": "entity-paper-foundation-models-full-stack-transfer",
+      "label": "Are Foundation Models the Route to Full-Stack Transfer in Robotics?（arXiv:2602.22001）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gated-memory-policy.md",
+      "detail_id": "entity-paper-gated-memory-policy",
+      "label": "Gated Memory Policy（arXiv:2604.18933）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-geometry-aware-4d-video-generation.md",
+      "detail_id": "entity-paper-geometry-aware-4d-video-generation",
+      "label": "Geometry-Aware 4D Video Generation for Robot Manipulation（arXiv:2507.01099）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-minimalist-compliance-control.md",
+      "detail_id": "entity-paper-minimalist-compliance-control",
+      "label": "Minimalist Compliance Control（arXiv:2603.00913）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-modpack.md",
+      "detail_id": "entity-paper-modpack",
+      "label": "ModPack（arXiv:2607.19479）",
+      "type": "entity",
+      "recency": "2026-08-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -212,7 +212,8 @@
     "label": "H2R-Bench：世界模型先要过「人到机器人」这一关",
     "type": "entity",
     "recency": "2026-08-19",
-    "source": "log.md",
+    "source": "git",
+    "action": "added",
     "has_repo": true
   },
   "top_communities": [
