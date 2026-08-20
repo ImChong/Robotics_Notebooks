@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/generalist-gen15-one-shot.md",
+      "detail_id": "entity-generalist-gen15-one-shot",
+      "label": "GEN-1.5 一次示范学习（Physical Prompting）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-fetchman.md",
       "detail_id": "entity-paper-fetchman",
       "label": "FetchMan：仿真视觉人形 loco-manipulation",
@@ -195,22 +204,12 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-action-view-augmentation.md",
-      "detail_id": "entity-paper-action-view-augmentation",
-      "label": "One Demo Is Worth a Thousand Trajectories（arXiv:2606.19586）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fetchman.md",
-    "detail_id": "entity-paper-fetchman",
-    "label": "FetchMan：仿真视觉人形 loco-manipulation",
+    "path": "wiki/entities/generalist-gen15-one-shot.md",
+    "detail_id": "entity-generalist-gen15-one-shot",
+    "label": "GEN-1.5 一次示范学习（Physical Prompting）",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
