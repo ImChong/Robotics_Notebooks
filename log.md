@@ -1,3 +1,5 @@
+## [2026-08-20] ingest | sources/papers/grip_arxiv_2603_16233.md — GRIP 稀疏 IMU+鞋垫物理 MoCap 与 PRISM 数据集；代码/数据已开源
+
 ## [2026-08-20] ingest | sources/papers/haf_arxiv_2608_16837.md — 接入 HAF 层次 action flow + 频谱潜空间 RL；升格 paper-haf-humanoid-vla-adaptation；开源结论：截至入库日未开源
 
 ## [2026-08-20] ingest | sources/blogs/generalist_gen15_one_shot.md — GEN-1.5 one-shot physical prompting；升格 wiki/entities/generalist-gen15-one-shot.md；更新 generalist-ai-robotics / foundation-policy / embodied-scaling-laws / manipulation / hub-cross-embodiment / generalist-gen1-thousand-hands
