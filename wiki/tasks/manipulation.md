@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-19
+updated: 2026-08-20
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -251,6 +251,7 @@ flowchart TD
 - [Seeker](../entities/paper-seeker.md) — 动作监督 ROI；MimicGen 62.6%、xArm 域内 76.7%（arXiv:2608.13422；已开源）
 - [BooST](../entities/paper-boost-skill-transfer.md) — 语义+运动技能码；LIBERO-90 10 demo 0.70（arXiv:2608.10600；训练仓未开）
 - [真机双臂灵巧抓取](../entities/paper-real-bi-dex-grasp.md) — 单视角 DDPM 双臂关节抓取（IROS 2026；已开源）
+- [Prism-GRPO](../entities/paper-prism-grpo.md) — 同结果组 execution quality 回收 Binary GRPO 退化 rollout；RoboTwin rollout 最多 −56%（arXiv:2608.17423；SimpleVLA-RL 基座开源）
 - [Temporal GRPO](../entities/paper-temporal-grpo.md) — 分阶段 VLA-RL 信用；RoboTwin 75.8%（arXiv:2608.13026；未开源）
 - [Rift](../entities/paper-rift-wam.md) — 免视频 rollout WAM；LIBERO 98.8% / 247.9 ms（arXiv:2608.11521；未开源）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-20
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
@@ -128,6 +128,7 @@ flowchart TD
     - **PPO**：通常以 Actor-Critic 架构实现。
     - **SAC (Soft Actor-Critic)**：样本效率极高的 Off-policy 算法。
     -     **TD3**：改进的 DDPG。
+    - **IER（Instant Episode Repetition）**：[论文实体](../entities/paper-instant-episode-repetition.md) — 交互层 plug-in：新高回报 episode 后立即重放动作序列 RN 次；SAC/TD3+MuJoCo/DMC+真机验证（arXiv:2608.17347；[已开源](https://github.com/UoA-CARES/instant-episode-repetition)）。
 
 **Actor–Critic** 同时维护策略网络与价值网络；Critic 提供 bootstrap / 优势估计，Actor 据此更新策略。信息流可概括为：
 

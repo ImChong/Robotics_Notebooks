@@ -17,7 +17,7 @@ tags:
   - awesome-world-models
   - sun254667-wm
 status: complete
-updated: 2026-08-11
+updated: 2026-08-20
 arxiv: "2606.18610"
 venue: "arXiv 2026"
 related:

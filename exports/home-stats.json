@@ -1,24 +1,13 @@
 {
   "generated_at": "2026-08-20",
-  "node_count": 3184,
-  "edge_count": 28235,
+  "node_count": 3188,
+  "edge_count": 28266,
   "coverage": {
-    "covered": 3159,
-    "total": 3159,
+    "covered": 3163,
+    "total": 3163,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-radmesh.md",
-      "detail_id": "entity-paper-radmesh",
-      "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
     {
       "path": "wiki/entities/robo-orchard-lab.md",
       "detail_id": "entity-robo-orchard-lab",
@@ -49,6 +38,45 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-fetchman.md",
+      "detail_id": "entity-paper-fetchman",
+      "label": "FetchMan：仿真视觉人形 loco-manipulation",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-hydra-0.md",
+      "detail_id": "entity-paper-hydra-0",
+      "label": "Hydra-0：Action Flow 通才世界模型",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-instant-episode-repetition.md",
+      "detail_id": "entity-paper-instant-episode-repetition",
+      "label": "Instant Episode Repetition（IER）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-prism-grpo.md",
+      "detail_id": "entity-paper-prism-grpo",
+      "label": "Prism-GRPO：VLA 低样本 GRPO 优化",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-h2r-bench.md",
@@ -127,7 +155,8 @@
       "recency": "2026-08-19",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-spatial-memory-agent.md",
@@ -176,73 +205,42 @@
       "recency": "2026-08-18",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-df-expense.md",
-      "detail_id": "entity-paper-df-expense",
-      "label": "DF-ExpEnse（arXiv:2606.19656）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dice-rl.md",
-      "detail_id": "entity-paper-dice-rl",
-      "label": "From Prior to Pro（arXiv:2603.10263）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-foundation-models-full-stack-transfer.md",
-      "detail_id": "entity-paper-foundation-models-full-stack-transfer",
-      "label": "Are Foundation Models the Route to Full-Stack Transfer in Robotics?（arXiv:2602.22001）",
-      "type": "entity",
-      "recency": "2026-08-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-radmesh.md",
-    "detail_id": "entity-paper-radmesh",
-    "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
+    "path": "wiki/entities/robo-orchard-lab.md",
+    "detail_id": "entity-robo-orchard-lab",
+    "label": "RoboOrchardLab",
     "type": "entity",
     "recency": "2026-08-20",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 634
+      "size": 640
     },
     {
       "label": "仿真到现实",
-      "size": 572
+      "size": 588
     },
     {
       "label": "视觉-语言-动作",
-      "size": 230
+      "size": 247
     },
     {
       "label": "人形论文深读笔记",
-      "size": 172
-    },
-    {
-      "label": "视觉语言动作纵深路线",
-      "size": 140
+      "size": 171
     },
     {
       "label": "全身控制",
       "size": 136
+    },
+    {
+      "label": "移动操作",
+      "size": 132
     }
   ],
   "top_hubs": [
@@ -250,7 +248,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1264,
+      "degree": 1267,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -273,7 +271,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 757,
+      "degree": 760,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -281,7 +279,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 733,
+      "degree": 735,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -297,7 +295,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 534,
+      "degree": 536,
       "has_repo": true
     },
     {
