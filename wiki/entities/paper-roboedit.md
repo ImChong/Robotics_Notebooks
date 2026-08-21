@@ -134,6 +134,18 @@ flowchart LR
 6. **真机闭环** — decoded trajectory 可驱动 Franka 操作 YCB — 不只停留在 perceptual metrics。
 7. **开源** — 截至 2026-08-21 **无 URL**；RoboEdit-14M 与 Trans 权重待发布。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| 只抽中间表示（EEF 轨迹 / affordance / value） | 丢掉像素级上下文，只留稀疏信号；RoboEdit 输出 **full video + dense 3D states** 双监督 |
+| [Ego2Robot](./paper-ego2robot.md) | 同走「人类视频→机器人数据」，但产出相机系 EEF 轨迹；RoboEdit 产出像素级 robot video + 手态——需要 EEF 轨迹预训练 VLA 时用前者更轻，需要视觉监督时用后者 |
+| De novo 机器人场景生成 | 从头生成会破坏原场景 / 相机 / 物体动力学；RoboEdit 走 **编辑** 路线，这三者被保留 |
+| VACE 1.3B / OmniWeaving 13B 等编辑基线 | 300-case benchmark 上 SSIM **0.9282** vs 0.8996 / 0.8107、Edit LPIPS **0.0171** vs 0.0258 / 0.0625——13B 参数量并未换来编辑质量 |
+| 仅 LoRA 或仅 residual adapter | 消融（Table 3）显示两者**并用**才够；单 adapter 增益已大于单 LoRA，只用 backbone 不行 |
+| 其他 human→robot 数据集 | Table 1 称 RoboEdit-14M 是截至论文唯一同时具备 **自动 curation + RGB 配对 + robot state + 14M 帧级** 四项的数据集 |
+| 只报 perceptual metric 的编辑工作 | RoboEdit 把 decoded 轨迹接 Genesis residual PPO（Panda 71% / XHand 62%）并上 Franka 真机 YCB，闭到控制而非停在指标 |
+
 ## 局限与风险
 
 - **BG SSIM 偏低解释：** robot vs human 手空间范围不同，edit-mask 边界处 background metric 系统性低估（论文 §4.3）。

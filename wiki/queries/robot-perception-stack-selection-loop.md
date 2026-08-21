@@ -35,6 +35,7 @@ related:
   - ../entities/paper-hand-visibility-detector.md
   - ../entities/paper-sap-nav.md
   - ../entities/robo-orchard-lab.md
+  - ../entities/paper-partialbigrasp.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -202,3 +203,4 @@ flowchart TD
 - [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md) — ④层手部消费：逐关节可见性给三角化/遥操作按点降权（已开源）
 - [SAP-Nav](../entities/paper-sap-nav.md) — ③层在线建图：可查询空间–语义表征边走边建 + 主动视点验证，证据不足就换视点（实现待发布）
 - [RoboOrchardLab](../entities/robo-orchard-lab.md) — 训练框架入口：`projects/bip3d_grounding` 落 ③层 2D→3D grounding、`finegrasp` 落 ④层下游消费；提供的是统一训练/Model Zoo 管线，选哪个感知模型仍看本页（Apache-2.0）
+- [PartialBiGrasp](../entities/paper-partialbigrasp.md) — ③层反例读法：大/复杂物体单视角只有局部点云时，不重建完整 mesh，只用占据网络补出力闭合判据需要的接触区几何再交 ④层抓取消费（架构仓部分开源，权重 TODO）

@@ -257,6 +257,18 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                UMI 导出的 20 维 `action`、ROS pick/place **action** 接口、演示数据
 #                格式清单里的 `action` 列），与 qpos / reset / step 同为 token 而非
 #                机制，本库按形式化/方法维度记述，不单建概念页
+#   sim-to-real → concepts/sim2real.md（canonical 定义页，全称写法与页面 stem
+#                `sim2real` 不同名）+ concepts/physics-fidelity-sim2real-gap.md
+#                （保真度缺口）+ concepts/processor-in-the-loop-sim2real.md
+#                （PIL 环）+ overview/paper-notebook-category-10-sim-to-real.md
+#                （论文笔记分类）：与 ethercat / urdf / wbc 同属「slug ≠ 页面
+#                stem」，同一概念的连字符全称写法，不应按裸名误报为缺页
+#   zero-shot  → concepts/sim2real.md（zero-shot transfer 是该页主线口径，
+#                全页 27 处）+ overview/hub-cross-embodiment.md（跨具身零样本
+#                迁移枢纽）+ concepts/embodied-fm-latency-generalization-tradeoff.md
+#                （泛化侧取舍）：迁移/评测的 **条件状语**（zero-shot 迁移、
+#                zero-shot 泛化、0% 任务数据），与 rgb-d / vlm 同为描述性标签
+#                而非独立可成页机制，另建概念页只会与 sim2real 重复同一来源
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "action",
     "amp",
@@ -276,10 +288,12 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "reset",  # 环境/策略 API 方法名（episode 复位），已由 entities/gymnasium.md 释义
     "rgb-d",  # 传感模态标签，已由六种空间表征 / 三维坐标变换等页覆盖
     "rl",  # 已由 methods/reinforcement-learning.md 覆盖（缩写 slug 与页面 stem 不同名）
+    "sim-to-real",  # 已由 concepts/sim2real.md 覆盖（全称写法与页面 stem 不同名）
     "ros2",  # 已由 concepts/ros2-basics.md 覆盖（slug 与页面 stem 不同名）
     "sonic",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）
+    "zero-shot",  # 迁移/评测的条件状语，已由 concepts/sim2real.md 等页覆盖
     "locomotion",
     "loco-manipulation",
     "step",

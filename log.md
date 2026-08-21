@@ -1,3 +1,12 @@
+## [2026-08-21] lint | wiki/entities/paper-{adept-dexterity,roboedit,partialbigrasp,lt-mem,veragmil,dynamic-spectraformer,x2streaming-tts}.md — 合并 main 后二次清零 lint 信息型预警：补 7 篇新入库论文「对比」段 + 1 条感知栈回链 + 2 个缺页误报归档
+
+- **触发：** 分支合并 origin/main（8 篇 ingest 新增实体页）后重跑全量 lint，失败项 0，新增 **10 条信息型预警**（三段式缺「对比」×7、感知栈回链缺失×1、缺页概念候选×2）
+- **三段式补「对比」：** [`paper-adept-dexterity`](wiki/entities/paper-adept-dexterity.md)（from-scratch/naive fine-tune/KL 正则/demo-based/FMB 夹爪流水线/PCA 子空间/vision-only）、[`paper-roboedit`](wiki/entities/paper-roboedit.md)（中间表示/Ego2Robot/de novo 生成/VACE-OmniWeaving/单 LoRA/其他 human→robot 数据集/只报 perceptual metric）、[`paper-partialbigrasp`](wiki/entities/paper-partialbigrasp.md)（完整 mesh 重建/DG16M baseline/Real-Bi-Dex/Mango/单臂 top-down/同批补全线）、[`paper-lt-mem`](wiki/entities/paper-lt-mem.md)（覆盖旧图/逐次快照/VLM-Batch/SMA/统一更新策略/Hydra-0）、[`paper-veragmil`](wiki/entities/paper-veragmil.md)（3D 鼠标/BC-BC-RNN/只报 SR/刚体-流体近似/SHRIMP/ADEPT）、[`paper-dynamic-spectraformer`](wiki/entities/paper-dynamic-spectraformer.md)（空间域 CNN-Transformer/固定频带/稠密注意/频域当降算力技巧/Hui360/PartialBiGrasp）、[`paper-x2streaming-tts`](wiki/entities/paper-x2streaming-tts.md)（句级 TTS/伪流式/过早-过晚承诺/段间无状态/只报单请求延迟）——均由页内已有事实归并成表，未引入新论断
+- **感知栈闭环：** [`paper-partialbigrasp`](wiki/entities/paper-partialbigrasp.md) 补回链，落 ③ 层 2D→3D 提升（只补力闭合判据需要的接触区几何，不建完整语义地图）；枢纽页 [`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) 同步补 `related` 与「关联页面」条目
+- **缺页误报归档：** `sim-to-real` → [`concepts/sim2real.md`](wiki/concepts/sim2real.md)（连字符全称写法，与页面 stem 不同名，同 ethercat / urdf 惯例）；`zero-shot` → 迁移/评测的条件状语（zero-shot 迁移 / 0% 任务数据），已由 sim2real（全页 27 处）+ [`hub-cross-embodiment`](wiki/overview/hub-cross-embodiment.md) 覆盖，与 rgb-d / vlm 同为描述性标签而非独立可成页机制
+- **合并冲突：** `log.md` 顶部两侧各自 prepend，按倒序时间线保留双方（08-21 ingest 在上、08-20 lint 在下）；`paper-hydra-0.md` 二次合并自动干净（main 补 sources 条目，本分支补「对比」段，互不重叠）
+- **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型，覆盖率 3177/3177）；`eval_search_quality` 40/40；`ruff check` + `ruff format --check` 通过；`pytest` 全绿
+
 ## [2026-08-21] ingest | sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md — 8 篇世界模型/长期记忆盘点；新建 5 独立 paper 节点，回链 ADEPT/GigaBrain/Hydra
 
 ## [2026-08-21] ingest | sources/papers/{gigabrain_wbc_0_5,adept,roboedit}_arxiv_2608_*.md — GigaBrain-WBC-0.5 BWM 环境交互跟踪（Code coming soon）；ADEPT 灵巧 RL 预训练+后训练（Code Coming soon）；RoboEdit 人类视频→RoboEdit-14M（无官方代码 URL）

@@ -136,6 +136,18 @@ Flexiv Student 额外融合五指 TacMap depth + binary contact + SaTA-style FiL
 6. **触觉** — Flexiv 上 **8/10 vs 3/10**；部署 contact-rich 任务应默认 visuo-tactile。
 7. **开源** — 截至 2026-08-21 **Coming soon**；工程复现需等 NVIDIA 发布 sim 栈。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| From-scratch 单任务 RL | 单任务 ~9B env steps 且多数 seed 失败；ADEPT 一次 8B 预训练摊销到每个下游任务 ~3B post-train |
+| Naive PPO fine-tune | 直接 fine-tune 在 ADR 20 处 success **迅速归零**；ADEPT 把 collapse 拆成观测扩展 / 价值 mis-calibration / policy drift 三步分别解决 |
+| KL 正则救 collapse | 消融显示 actor LR **1e-3 必 collapse，加 KL 正则也救不了**；真正的必要条件是 **LR 1e-5** |
+| DemoStart 等 demo-based 灵巧路线 | 依赖人类 demonstration 起步；ADEPT **无 demo、无 pose tracker**，互补而非替代 |
+| FMB parallel-jaw fixture 流水线 | 多阶段夹具 pipeline 20–70 s/trial；ADEPT arm–hand 端到端 5–10 s/trial——对标时应报 wall-clock per trial |
+| PCA grasp 子空间低层 | 只暴露降维抓型；ADEPT 用 **full Cspace geometric fabric**，同一 fabric 实例跑 sim 与真机，暴露完整 kinematic dexterity |
+| Vision-only student | 同任务 Flexiv–Sharpa **3/10**；加 TacMap 触觉后 **8/10**——失败主因是 grasp confidence 而非 grasp 执行 |
+
 ## 局限与风险
 
 - **感知瓶颈：** 真机失败常因 asymmetric peg 遮挡下 orientation 估计错误；腕部相机 + 更多平台触觉仍 open。
