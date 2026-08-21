@@ -10,7 +10,7 @@
 - **入库日期：** 2026-08-21
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + `wechat-article-for-ai`（Camoufox）；`--no-images`；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md`](../raw/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)
-- **一句话说明：** 汇总 8 篇近期机器人/具身论文，主线从单点策略精度转向「补全隐藏状态—保存长期历史—预测动作后果—约束真实执行」闭环；**8/8 均有独立 `paper-*` 详情节点**（本 ingest **新建 5**、**既有 complete 3**；同一 arXiv **不重复造页**）。
+- **一句话说明：** 汇总 8 篇近期机器人/具身论文，主线从单点策略精度转向「补全隐藏状态—保存长期历史—预测动作后果—约束真实执行」闭环；**8/8 均有独立 `paper-*` 详情节点**（本 ingest **新建 5**、**复用既有 complete 3**；**lint 禁止同一 arXiv 多 canonical 节点，0 重复造页**）。
 
 ## 核心摘录（归纳，非全文）
 
@@ -43,8 +43,8 @@
 ## 对 wiki 的映射
 
 - **8/8 独立详情节点**：每篇对应唯一 `wiki/entities/paper-*.md`；静态站 `detail.html?id=entity-paper-…` 均可直达。
-- **本 ingest 新建 5** 个实体；**3 篇**在先前 ingest 已有 complete 页 → **只回链博客，不重复造页**。
-- 交叉：[生成式世界模型](../../wiki/methods/generative-world-models.md)、[Sim2Real](../../wiki/concepts/sim2real.md)、[模仿学习](../../wiki/methods/imitation-learning.md)、[8 篇技术地图](../../wiki/overview/world-model-memory-8-papers-technology-map.md)。
+- **本 ingest 新建 5** 个实体；**3 篇**在 PR #1642 / 先前 ingest 已有 complete 页 → **仅回链博客与 sources，不新建第二节点**。
+- 交叉：[生成式世界模型](../../wiki/methods/generative-world-models.md)、[Sim2Real](../../wiki/concepts/sim2real.md)、[模仿学习](../../wiki/methods/imitation-learning.md)。
 
 ## 当前提炼状态
 

@@ -112,7 +112,6 @@ flowchart TB
 ## 关联页面
 
 - [Spatial Memory Agent](./paper-spatial-memory-agent.md) — 另一 VLM 空间记忆路线
-- [LT-Mem](./paper-lt-mem.md) — 波动性感知 Tri-Memory + 多会话 SLAM
 - [VLN 任务](../tasks/vision-language-navigation.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Hydra-0](./paper-hydra-0.md) — 综述同批「保存长期历史」

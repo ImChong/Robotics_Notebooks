@@ -141,4 +141,4 @@
 - wiki/entities/paper-partialbigrasp.md
 - wiki/entities/robo-orchard-lab.md
 
-📊 Sources 覆盖率：3178/3178 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3177/3177 (100%) wiki/entity 页有 ingest 来源

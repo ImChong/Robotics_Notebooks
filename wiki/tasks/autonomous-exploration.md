@@ -118,6 +118,8 @@ flowchart TB
 - [FAR Planner](../entities/far-planner.md)
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [A\*](../methods/a-star.md)
+- [Autonomous Spot / NeBula](../entities/paper-autonomous-spot-nebula-exploration.md)
+- [Dynamic SpectraFormer](../entities/paper-dynamic-spectraformer.md) — AUV/ROV 前端 UHD 水下频域增强（arXiv:2608.18662）
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 
 ## 参考来源

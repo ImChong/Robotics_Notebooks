@@ -149,6 +149,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | LW BENCHHUB TOUR（2026） | SmolVLA 闭环评测 + 自过滤飞轮 | 仿真 DoublePiper-Abs | 厨房 PnP 基线 40%；cuRobo 闸门滤场景；见 [实体](../entities/lw-benchhub-tour.md) |
 
 - [真机双臂灵巧抓取](../entities/paper-real-bi-dex-grasp.md) — 单视角点云 + DDPM 关节配置 + 力细化（IROS 2026；已开源）
+- [PartialBiGrasp](../entities/paper-partialbigrasp.md) — 局部点云隐式补几何 + 力闭合双臂抓取对（arXiv:2608.19188；架构仓部分开源）
 
 ## 与 Loco-Manipulation 的区别
 

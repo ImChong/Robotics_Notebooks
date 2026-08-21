@@ -11,7 +11,6 @@ related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
-  - ../overview/world-model-memory-8-papers-technology-map.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
   - ../entities/paper-gaia1.md
   - ../concepts/humanoid-policy-network-architecture.md
@@ -298,7 +297,6 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Hydra-0](../entities/paper-hydra-0.md) — **action flow** 跨具身 WM 条件 + RoboLab 开环 **r=0.96**；逆向 object-flow 控制 POC（arXiv:2608.18077；未开源）。
 - [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234；代码 coming soon）。
 - [LT-Mem](../entities/paper-lt-mem.md) — **波动性感知** Live/Delta/Meta 长期场景记忆 + LT-VQA（arXiv:2608.19059；数据集可下）。
-- [8 篇世界模型与长期记忆地图](../overview/world-model-memory-8-papers-technology-map.md) — 2026-08-21 公众号盘点阅读坐标。
 - [OSCAR](../entities/paper-oscar.md) — **2D 骨架跨具身动作条件** + 大规模数据管线；**2B Cosmos-Predict2.5** 微调，RoboArena 虚拟策略评测与真机强相关（arXiv:2606.04463）。
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。

@@ -3128,7 +3128,6 @@
 - [世界模型动作后果分类 03：3D/4D 几何与环境层](wiki/overview/wm-action-consequence-category-03-geometry-4d.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型动作后果分类 04：训练与评估闭环](wiki/overview/wm-action-consequence-category-04-eval-posttrain.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型与真实执行：10 篇论文的阅读坐标](wiki/overview/world-model-exec-10-papers-technology-map.md) — 世界模型很热，但真实执行才是硬门槛：跨本体生成要可诊断，导航要社会/类人/主动感知，策略要 SMPC 或统一 token 流，感知还要可见性与运动证据。 `📅unknown` `[overview_page]`
-- [世界模型与长期记忆：8 篇论文的阅读坐标](wiki/overview/world-model-memory-8-papers-technology-map.md) — 具身智能正从「看见再行动」转向「补全隐藏状态—保存长期历史—预测动作后果—约束真实执行」的系统闭环。 `📅unknown` `[overview_page]`
 - [世界模型物理保真：输出阅读轴](wiki/overview/world-model-physics-fidelity-outputs.md) — 一套按「动作之后模型用什么记录世界变化」组织的阅读轴，用来判断机器人世界模型学到了多少可检验的物理，而不是只看生成观感。 `📅unknown` `[overview_page]`
 - [世界模型 15 开源项目：三线技术地图](wiki/overview/world-models-15-open-source-technology-map.md) — 世界模型的价值不在「会生成未来视频」，而在 **预测能否进入策略学习、评估与闭环决策**——15 个高引开源项目按 **先预测后动作（级联）→ 想象与动作同骨干（联合）→ 想象作 RL/评估环境（沙盒 `📅unknown` `[overview_page]`
 - [世界模型路线 01：级联架构](wiki/overview/world-models-route-01-cascade.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

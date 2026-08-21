@@ -268,6 +268,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [HEFT（论文实体）](../entities/paper-heft.md) — 嘈杂 raw VR + WPC 双手负载；全尺寸 L7 **24 kg** 重载遥操作（arXiv:2607.02332）
 - [Teleopit（论文实体）](../entities/paper-teleopit.md) — PICO VR 全身+连续跨手+主动视觉；History/rewind；96 演示 ACT/GR00T（arXiv:2608.01834）
 - [ω-0（论文实体）](../entities/paper-omega-0.md) — Pico VR + SONIC 采集 ω-HOME；潜空间 foresight 家务并发 loco-manip（arXiv:2608.06375）
+- [X2Streaming-TTS（论文实体）](../entities/paper-x2streaming-tts.md) — LLM **令牌级**流式 TTS + 语音状态继承；首音频 15.8 ms（arXiv:2608.18661）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — PICO egocentric 采集管线与 TWIST2/SONIC 双 GMT 分层 benchmark（arXiv:2606.17833）
 - [Humanoid Surgeon（论文实体）](../entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) — 通用人形腹腔镜遥操作 in vivo 猪模型验证（Nature 2026）
 - [ssik（解析逆运动学）](../entities/ssik.md) — 6R/7R 臂部笛卡尔跟踪：`q_seed` 最近分支与 `seed_tolerance` 跳变检测
