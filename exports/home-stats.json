@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-21",
-  "node_count": 3197,
-  "edge_count": 28374,
+  "node_count": 3203,
+  "edge_count": 28414,
   "coverage": {
-    "covered": 3172,
-    "total": 3172,
+    "covered": 3178,
+    "total": 3178,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -202,7 +202,8 @@
       "recency": "2026-08-19",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -217,7 +218,7 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 640
+      "size": 641
     },
     {
       "label": "仿真到现实",
@@ -225,7 +226,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 250
+      "size": 247
     },
     {
       "label": "人形论文深读笔记",
@@ -245,7 +246,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1277,
+      "degree": 1279,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -268,7 +269,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 762,
+      "degree": 763,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -276,7 +277,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 735,
+      "degree": 740,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -292,7 +293,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 539,
+      "degree": 541,
       "has_repo": true
     },
     {

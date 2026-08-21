@@ -530,6 +530,7 @@
 - [DRL Proxemics：把「别贴太近」写进可学习奖励](wiki/entities/paper-drl-proxemics-social-nav.md) — DRL Proxemics**（*Towards Socially Compliant Navigation in Deep Reinforcement Learning via Proxemic `📅unknown` `[entity_page]`
 - [DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）](wiki/entities/paper-dswam-dual-system-wam.md) — DSWAM**（*DSWAM: A Dual-System World Action Foundation Model for Fine-Grained Robot Manipulation*， `📅unknown` `[entity_page]`
 - [DWM（Separating World Effects · arXiv:2607.18715）](wiki/entities/paper-dwm-separating-world-effects.md) — DWM**（*DWM: Separating World Effects from Actions in Latent World Models*，Yi-Ge Zhang / Tianqi Du  `📅unknown` `[entity_page]`
+- [Dynamic SpectraFormer：UHD 水下视觉的频域增强](wiki/entities/paper-dynamic-spectraformer.md) — Dynamic SpectraFormer**（*Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancem `📅unknown` `[entity_page]`
 - [DynaWM（Dynamic World Model for VLA Action Correction · arXiv:2607.02604）](wiki/entities/paper-dynawm-vla-online-correction.md) — DynaWM**（*DynaWM: A Base-VLA-Guided World Foundation Model for Moving-Object Manipulation*，[arXiv: `📅unknown` `[entity_page]`
 - [DyPES-VLA：共享动力学先验 + 本体特化控制](wiki/entities/paper-dypes-vla.md) — DyPES-VLA**（*Learning Shared Dynamics Priors and Embodiment-Specific Control for Cross-Embodiment  `📅unknown` `[entity_page]`
 - [E-SDS（Environment-aware See it, Do it, Sorted）](wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — E-SDS** 面向 **人形感知行走** 的 **奖励函数仍难自动且感知型 RL 仍难手调** 这一交叉痛点：在 **VLM 从单段示范视频合成 Python 奖励** 的 **SDS** 路线 `📅unknown` `[entity_page]`
@@ -788,6 +789,7 @@
 - [通过主动空间大脑和通用动作小脑进行人形全身操作](wiki/entities/paper-loco-manip-161-160-n160.md) — 通过主动空间大脑和通用动作小脑进行人形全身操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）](wiki/entities/paper-low-cost-modular-actuator-katz.md) — Benjamin G. Katz（MIT，Sangbae Kim 指导，[S.M. thesis 2018](https://dspace.mit.edu/entities/publication `📅unknown` `[entity_page]`
+- [LT-Mem：波动性感知的终身场景记忆](wiki/entities/paper-lt-mem.md) — LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19 `📅unknown` `[entity_page]`
 - [LUCID：用想象的技能级动力学做长时程人形 Loco-Manipulation](wiki/entities/paper-lucid.md) — LUCID**（*Latent-Skill Unified Control via Imagined Dynamics*；[arXiv:2608.07746](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [M⁴World（Multi-view Multimodal Driving World Model）](wiki/entities/paper-m4world.md) — M⁴World**（*M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulatio `📅unknown` `[entity_page]`
 - [One-sided fluxes — A magnetic curiosity?（Mallinson 1973）](wiki/entities/paper-mallinson-one-sided-fluxes.md) — J. C. Mallinson（Ampex，IEEE Trans. Magn. 1973）** 证明存在一 `📅unknown` `[entity_page]`
@@ -1231,6 +1233,7 @@
 - [PanoLOG / G²PS：全景户外大规模 3DGS 划分重建](wiki/entities/paper-panolog-ggps.md) — PanoLOG**（*Geometry and Gradient-based Partitioning for Panoramic Outdoor Reconstruction*，[arXiv:2 `📅unknown` `[entity_page]`
 - [PanoWorld：真实世界全景可控生成](wiki/entities/paper-panoworld-real-world-panoramic-generation.md) — PanoWorld**（*Real-World Panoramic Generation*，[arXiv:2607.09661](https://arxiv.org/abs/2607.09661 `📅unknown` `[entity_page]`
 - [ParkourFormer（预测监督 + 序列建模人形跑酷）](wiki/entities/paper-parkourformer.md) — ParkourFormer**（*Integrating Predictive Supervision and Sequence Modeling into Parkour Locomotion `📅unknown` `[entity_page]`
+- [PartialBiGrasp：残缺观测下的双臂抓取局部几何补全](wiki/entities/paper-partialbigrasp.md) — PartialBiGrasp**（*Inferring Hidden Local Geometry for Bimanual Grasping from Partial Views*；[arXiv `📅unknown` `[entity_page]`
 - [Patch Policy：密集视觉表征的轻量高频控制](wiki/entities/paper-patch-policy.md) — Patch Policy** 是一种不依赖大型 VLM、直接把预训练 ViT 密集 patch 特征接入机器人策略 transformer 的轻量架构。 `📅unknown` `[entity_page]`
 - [PEAR：像素对齐的表意人体网格恢复](wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) — PEAR**（*Pixel-aligned Expressive humAn mesh Recovery*，arXiv:2601.22693，SIGGRAPH 2026，[IDEA](https: `📅unknown` `[entity_page]`
 - [PEEL：长程拆解要同时解决顺序、尺度和逃逸路径](wiki/entities/paper-peel-disassembly.md) — PEEL**（*Parallel Extraction for Long-Horizon Disassembly Planning via Scale-Invariant Sampling*；[a `📅unknown` `[entity_page]`
@@ -2235,6 +2238,7 @@
 - [Learning Variable Impedance Control for Contact Sensitive Tasks](wiki/entities/paper-variable-impedance-contact-rl.md) — 一句话定义**：在 **接触丰富** 的任务里，让 RL 策略输出 **关节空间期望轨迹 + 可变阻抗参数**，并用 **额外正则** 约束阻抗变化，使学习 **更快、更稳、更可迁移** 到真机（ `📅unknown` `[entity_page]`
 - [Variable Stiffness for Robust Locomotion through Reinforcement Learning](wiki/entities/paper-variable-stiffness-locomotion-rl.md) — 一句话定义**：策略同时输出 **关节位置（或等价目标）与可变刚度参数**，在仿真中学会鲁棒行走，并展示 **刚度参数化粒度**（逐关节、分腿、混合）对性能与能耗的影响。 `📅unknown` `[entity_page]`
 - [Variational-Based Optimal Control of Underactuated Balancing](wiki/entities/paper-variational-underactuated-balancing-quadruped.md) — Chignoli & Wensing（IEEE Access 2020）** 提出面向四足**欠驱动平 `📅unknown` `[entity_page]`
+- [VERAGMIL：VR 颗粒食物喂食仿真与模仿学习](wiki/entities/paper-veragmil.md) — VERAGMIL**（*Virtual Environment for Scooping Granular Foods with Imitation Learning Models*；[arXiv `📅unknown` `[entity_page]`
 - [Continuous Versatile Jumping Using Learned Action Residuals（L4DC 2022）](wiki/entities/paper-versatile-jumping-action-residuals.md) — Continuous Versatile Jumping Using Learned Action Residuals**（Yuxiang Yang, Xiangyun Meng, Wenhao  `📅unknown` `[entity_page]`
 - [Vesta（A Generalist Embodied Reasoning Model）](wiki/entities/paper-vesta-generalist-embodied-reasoning.md) — Vesta** 是 NVIDIA 等团队提出的 **具身通才 planner VLM**（arXiv:2606.20905）：在 **Qwen3-VL-8B** 上，用 **六类空间导向 SFT  `📅unknown` `[entity_page]`
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
@@ -2284,6 +2288,7 @@
 - [X-IONet（跨平台惯性里程计网络）](wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md) — X-IONet**（Cross-Platform Inertial Odometry Network）是 Shen & Chen 提出的 **仅用单 IMU** 的跨平台惯性里程计框架（IEEE  `📅unknown` `[entity_page]`
 - [X-Mind（Efficient Visual Chain-of-Thought via Predictive World Model）](wiki/entities/paper-x-mind.md) — X-Mind**（arXiv:2606.28758）由小鹏（XPeng） PWM 团队提出：将 **Predictive World Mo `📅unknown` `[entity_page]`
 - [X-World（Controllable Ego-Centric Multi-Camera World Models）](wiki/entities/paper-x-world.md) — X-World**（arXiv:2603.19979）由小鹏（XPeng） GWM 团队提出：面向端到端智驾评测与数据扩增的 **动作条件 `📅unknown` `[entity_page]`
+- [X2Streaming-TTS：令牌级因果流式语音合成](wiki/entities/paper-x2streaming-tts.md) — X2Streaming-TTS**（*Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inherit `📅unknown` `[entity_page]`
 - [XHugWBC（HMI P037）](wiki/entities/paper-xhugwbc-cross-humanoid.md) — XHugWBC**（*Scalable and General Whole-Body Control for Cross-Humanoid Locomotion*，2026，[arXiv:2602 `📅unknown` `[entity_page]`
 - [X-Morph：跨形态人体运动先验](wiki/entities/paper-xmorph.md) — X-Morph**（*Human Motion Priors for Scalable Robot Learning Across Morphologies*，[arXiv:2606.30290 `📅unknown` `[entity_page]`
 - [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
@@ -3123,6 +3128,7 @@
 - [世界模型动作后果分类 03：3D/4D 几何与环境层](wiki/overview/wm-action-consequence-category-03-geometry-4d.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型动作后果分类 04：训练与评估闭环](wiki/overview/wm-action-consequence-category-04-eval-posttrain.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型与真实执行：10 篇论文的阅读坐标](wiki/overview/world-model-exec-10-papers-technology-map.md) — 世界模型很热，但真实执行才是硬门槛：跨本体生成要可诊断，导航要社会/类人/主动感知，策略要 SMPC 或统一 token 流，感知还要可见性与运动证据。 `📅unknown` `[overview_page]`
+- [世界模型与长期记忆：8 篇论文的阅读坐标](wiki/overview/world-model-memory-8-papers-technology-map.md) — 具身智能正从「看见再行动」转向「补全隐藏状态—保存长期历史—预测动作后果—约束真实执行」的系统闭环。 `📅unknown` `[overview_page]`
 - [世界模型物理保真：输出阅读轴](wiki/overview/world-model-physics-fidelity-outputs.md) — 一套按「动作之后模型用什么记录世界变化」组织的阅读轴，用来判断机器人世界模型学到了多少可检验的物理，而不是只看生成观感。 `📅unknown` `[overview_page]`
 - [世界模型 15 开源项目：三线技术地图](wiki/overview/world-models-15-open-source-technology-map.md) — 世界模型的价值不在「会生成未来视频」，而在 **预测能否进入策略学习、评估与闭环决策**——15 个高引开源项目按 **先预测后动作（级联）→ 想象与动作同骨干（联合）→ 想象作 RL/评估环境（沙盒 `📅unknown` `[overview_page]`
 - [世界模型路线 01：级联架构](wiki/overview/world-models-route-01-cascade.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
