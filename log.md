@@ -1,3 +1,5 @@
+## [2026-08-21] ingest | sources/papers/{gigabrain_wbc_0_5,adept,roboedit}_arxiv_2608_*.md — GigaBrain-WBC-0.5 BWM 环境交互跟踪（Code coming soon）；ADEPT 灵巧 RL 预训练+后训练（Code Coming soon）；RoboEdit 人类视频→RoboEdit-14M（无官方代码 URL）
+
 ## [2026-08-20] lint | wiki/entities/paper-{fetchman,hydra-0,instant-episode-repetition,prism-grpo}.md + robo-orchard-lab.md — 清空全量 lint 信息型预警：补 4 篇 2608 论文「对比」段 + 2 条枢纽双向回链 + 2 个缺页误报归档
 
 - **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **8 条信息型预警**（三段式缺「对比」×4、枢纽回链缺失×2、缺页概念候选×2）
