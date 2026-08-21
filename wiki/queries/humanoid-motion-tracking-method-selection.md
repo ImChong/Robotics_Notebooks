@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-18
+updated: 2026-08-21
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
@@ -25,6 +25,7 @@ sources:
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
   - ../../sources/papers/gentrack_arxiv_2608_01410.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
+  - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形运动跟踪与风格先验方法这么多，工程上怎么选、怎么组合？」
@@ -99,6 +100,8 @@ flowchart TD
 
 [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) 把力/柔顺约束写进跟踪目标，适合接触丰富场景。当已有 **通用 tracker（如 SONIC）** 但需在 **楼梯、搬箱、坐椅** 等 **terrain + object** 组合任务上零样本执行时，优先评估 **[SceneBot](../entities/paper-scenebot.md)**：在参考运动外增加 **per-link contact label**（link 应对 terrain/object 施力），并用 **hindsight scene reconstruction** 从无场景动捕合成训练配对数据；论文报告自由空间与 SONIC 同级，而 object/terrain 成功率 **95–100% vs 5–15%**。高层可用规则/遥操作生成 label，部署时 **$c_t=0$** 可回退平地跟踪。
 
+若 **不能** 给 teleoperator 额外 contact label，但仍要 **online reference window + terrain/object + OOD/fall 鲁棒**，可对照 **[GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md)**（arXiv:2608.18234）：**Behavior World Model** 联合预测 action/next-state/next-command GMM，从 retarget corpus **自动恢复 3D terrain 几何**（非 2.5D height field），部署期用 **Mahalanobis retract** 处理不可行命令并把 **fall recovery** 训进同一 tracker；MuJoCo 四 regime 上 Terrain SR **81.3%**、Fall recovery **99.3%**；截至 2026-08-21 代码 **coming soon**。
+
 当任务语义由 **「是否真正接触物体」** 定义（擦板 vs 挥手贴近、坐椅承重 vs 悬空蹲姿、搬箱 vs 手路过箱子），且需要 **同一 keypoint 下运行时开关接触** 时，优先评估 **[ContactMimic](../entities/paper-contactmimic.md)**（arXiv:2607.08742）：在 keypoint 外增加 **per-body 二值 contact 指令**，并用 **label 翻转 / 去物体 / 膨胀几何** 增广打破 keypoint–contact 相关；论文在 HUMOTO 10 条仿真与 G1 真机 5 条上验证 contact ✔/✘ controllability，MPJPE 与 BeyondMimic 相当但接触与物体位移显著更高，且搬箱 **无需任务专用奖励**。当前为 **per-motion 策略**，与 SceneBot 的通才单策略形成粒度对照。
 
 当失败不在跟踪策略而在 **参考本身动力学不可行**（爬行/搬箱等接触丰富片段里参考违反作动极限、接触时刻表对不上，跟踪奖励再调也压不住）时，先在 **参考层** 做可行化：**[DSMS](../methods/dsms-contact-implicit-multiple-shooting.md)**（Shooting for Contact，arXiv:2608.03116）把可微仿真器的离散转移嵌进多重打靶 NLP，**接触隐式**（无 contact force 决策变量、无互补松弛、无预设时刻表），产出满足全身动力学与作动限的参考再喂给下游 mjlab PPO imitation。选型轴：周期步态用 one-shot，高动态拼接用 receding-horizon MPC；与 [GMR](../methods/motion-retargeting-gmr.md) 等 **运动学前端串联** 而非替代，采样式对照见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)。
@@ -157,7 +160,7 @@ flowchart TD
 | **通用 tracker** | GMR/NMR 重定向 → Any2Track/AMS | 多动作库、遥操作闭环 |
 | **跨具身 WBT** | 源机 Sonic/Oli-WBT → Any2Any 对齐+LoRA | 新机少量数据、保留源先验 |
 | **接触任务** | GentleHumanoid + 下游操作/搬运 | 推、扶、柔顺交互 |
-| **场景交互 tracking** | SONIC/通用 tracker + contact label 或 SceneBot 单策略 | 搬箱上楼、楼梯、坐椅；需 global root 与 hand contact label |
+| **场景交互 tracking** | SONIC/通用 tracker + contact label 或 SceneBot 单策略；或 GigaBrain-WBC-0.5 BWM + 3D terrain 标注（无 contact label） | 搬箱上楼、楼梯、坐椅；后者需 online reference + OOD/fall 一体 |
 | **接触开关 tracking** | HUMOTO/OmniRetarget + ContactMimic 增广 + contact-conditioned PPO | 同 keypoint 下擦板/坐椅/搬箱 contact on/off；per-motion 策略 |
 | **竞技冲刺** | LAFAN1→GMR 五周期 → 频谱先验 → 残差 PPO | G1 零样本 0–6 m/s（[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)） |
 | **生成器–跟踪器后训练** | 已有 SONIC/ProtoMotions + robot-native T2M → GenTrack 在线互训 | 不采新数据、扩零样本覆盖（[GenTrack](../entities/paper-gentrack.md)；未开源） |
@@ -175,6 +178,7 @@ flowchart TD
 
 ## 参考来源
 
+- [GigaBrain-WBC-0.5（arXiv:2608.18234）](../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md)
 - [SceneBot（arXiv:2606.27581）](../../sources/papers/scenebot_arxiv_2606_27581.md)
 - [ContactMimic（arXiv:2607.08742）](../../sources/papers/contactmimic_arxiv_2607_08742.md)
 - [VMP（SCA 2024 PDF）](../../sources/papers/humanoid_pnb_vmp.md)
@@ -207,6 +211,7 @@ flowchart TD
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
 - [SONIC-Transfer](../entities/paper-sonic-transfer.md)
 - [SceneBot](../entities/paper-scenebot.md)
+- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — BWM + 3D terrain 标注 + OOD retract（Code coming soon）
 - [ContactMimic](../entities/paper-contactmimic.md)
 - [VMP](../entities/paper-notebook-vmp.md)
 - [ZEST](../entities/paper-zest.md) — 工业极简 tracking；Science Robotics 2026，确认未开源

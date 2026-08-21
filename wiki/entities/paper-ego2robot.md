@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-data, egocentric, vla, synthesis, ruc, alibaba, shanghaitech, bigai, buaa]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-21
 arxiv: "2608.02580"
 related:
   - ../methods/vla.md
@@ -87,7 +87,7 @@ flowchart TB
 
 ## 与其他工作对比
 
-相对 [EgoScale](../methods/egoscale.md)：EgoScale 在人视频上预训练再 mid-train 对齐；Ego2Robot 先把人视频 **渲染成机器人像素+动作** 再共训。相对 RoviAug / Mirage：那些补的是机–机外观，这里跨的是人–机。相对 [RoboTwin](./robotwin.md)：本文扩展其评测轴，不是替代数据生成器。
+相对 [EgoScale](../methods/egoscale.md)：EgoScale 在人视频上预训练再 mid-train 对齐；Ego2Robot 先把人视频 **渲染成机器人像素+动作** 再共训。相对 RoviAug / Mirage：那些补的是机–机外观，这里跨的是人–机。相对 [RoboEdit](./paper-roboedit.md)：RoboEdit 输出 **full robot interaction video + 3D hand states**（RoboEdit-14M），Ego2Robot 输出 **相机系相对 EEF 轨迹** 供 VLA 预训练。相对 [RoboTwin](./robotwin.md)：本文扩展其评测轴，不是替代数据生成器。
 
 ## 结论
 
@@ -115,6 +115,7 @@ flowchart TB
 - [EgoVerse](./paper-egoverse.md) — 954 h 源之一
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — 指令改写轴与本文 Task/Lang 扰动互补
 - [EmbodiedVAE](./paper-embodiedvae.md) — 表征侧紧凑可控，对照数据侧规模化
+- [RoboEdit](./paper-roboedit.md) — 人类视频编辑为 robot video + 3D hand states（RoboEdit-14M）
 
 ## 参考来源
 

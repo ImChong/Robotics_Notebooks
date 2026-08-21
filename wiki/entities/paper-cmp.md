@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-prior, amp, smp, context-aware, rl, hkust-gz, mimickit, unitree-g1]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-21
 arxiv: "2608.03234"
 venue: "2026 · arXiv"
 related:
