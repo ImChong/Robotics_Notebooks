@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-scheduled-inpainting-gme.md",
+      "detail_id": "entity-paper-scheduled-inpainting-gme",
+      "label": "Scheduled Inpainting：交互式生成式运动编辑（GME）",
+      "type": "entity",
+      "recency": "2026-08-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-adept-dexterity.md",
       "detail_id": "entity-paper-adept-dexterity",
       "label": "ADEPT：灵巧操作 RL 预训练与后训练",
@@ -194,27 +204,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gaussian-lic2.md",
-      "detail_id": "entity-paper-gaussian-lic2",
-      "label": "Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adept-dexterity.md",
-    "detail_id": "entity-paper-adept-dexterity",
-    "label": "ADEPT：灵巧操作 RL 预训练与后训练",
+    "path": "wiki/entities/paper-scheduled-inpainting-gme.md",
+    "detail_id": "entity-paper-scheduled-inpainting-gme",
+    "label": "Scheduled Inpainting：交互式生成式运动编辑（GME）",
     "type": "entity",
     "recency": "2026-08-21",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
