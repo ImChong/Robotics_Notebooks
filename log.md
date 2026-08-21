@@ -1,3 +1,5 @@
+## [2026-08-21] ingest | sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md — 8 篇世界模型/长期记忆盘点；新建 5 独立 paper 节点，回链 ADEPT/GigaBrain/Hydra
+
 ## [2026-08-21] ingest | sources/papers/{gigabrain_wbc_0_5,adept,roboedit}_arxiv_2608_*.md — GigaBrain-WBC-0.5 BWM 环境交互跟踪（Code coming soon）；ADEPT 灵巧 RL 预训练+后训练（Code Coming soon）；RoboEdit 人类视频→RoboEdit-14M（无官方代码 URL）
 
 ## [2026-08-20] lint | wiki/entities/paper-{fetchman,hydra-0,instant-episode-repetition,prism-grpo}.md + robo-orchard-lab.md — 清空全量 lint 信息型预警：补 4 篇 2608 论文「对比」段 + 2 条枢纽双向回链 + 2 个缺页误报归档

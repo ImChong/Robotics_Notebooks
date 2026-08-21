@@ -13,6 +13,7 @@
 - **发表 / 上传：** 2026-08-21（arXiv v1）
 - **训练栈：** 大规模 GPU 并行仿真 PPO + ADR + PBT；Geometric Fabric 低层；DAgger distillation
 - **入库日期：** 2026-08-21
+- **索引来源：** [具身智能小站 8 篇综述](../blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)（<https://mp.weixin.qq.com/s/30hu9SRxbRNXJcGLnNwl_g>）
 
 ## 相关资料（策展）
 
