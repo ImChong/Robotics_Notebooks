@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-lt-mem.md",
+      "detail_id": "entity-paper-lt-mem",
+      "label": "LT-Mem：波动性感知的终身场景记忆",
+      "type": "entity",
+      "recency": "2026-08-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/paper-adept-dexterity.md",
       "detail_id": "entity-paper-adept-dexterity",
       "label": "ADEPT：灵巧操作 RL 预训练与后训练",
@@ -35,16 +45,6 @@
       "recency": "2026-08-21",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-lt-mem.md",
-      "detail_id": "entity-paper-lt-mem",
-      "label": "LT-Mem：波动性感知的终身场景记忆",
-      "type": "entity",
-      "recency": "2026-08-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-partialbigrasp.md",
@@ -207,13 +207,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adept-dexterity.md",
-    "detail_id": "entity-paper-adept-dexterity",
-    "label": "ADEPT：灵巧操作 RL 预训练与后训练",
+    "path": "wiki/entities/paper-lt-mem.md",
+    "detail_id": "entity-paper-lt-mem",
+    "label": "LT-Mem：波动性感知的终身场景记忆",
     "type": "entity",
     "recency": "2026-08-21",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
