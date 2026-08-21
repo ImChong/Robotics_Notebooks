@@ -20,6 +20,7 @@ related:
 sources:
   - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
   - ../../sources/sites/gigabrain-wbc-0-5-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
 summary: "GigaBrain-WBC-0.5（arXiv:2608.18234，清华/GigaAI）：首个 humanoid Behavior World Model；因果 Transformer 联合预测 action/state/next-command GMM；自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；截至 2026-08-21 代码 coming soon。"
 ---
 
@@ -171,6 +172,7 @@ flowchart TB
 
 - [GigaBrain-WBC-0.5 论文归档](../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md)
 - [gigabrain-wbc-0.5 项目页](../../sources/sites/gigabrain-wbc-0-5-github-io.md)
+- [具身智能小站 8 篇综述](../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)
 
 ## 推荐继续阅读
 

@@ -14,6 +14,7 @@ related:
 sources:
   - ../../sources/papers/adept_arxiv_2608_19182.md
   - ../../sources/sites/adept-dexterity-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
 summary: "ADEPT（arXiv:2608.19182，NVIDIA/密歇根）：16 primitive reposing RL 预训练 + BC/critic-warmup/conservative PPO 后训练 + 两阶段 vision distill；Kuka–Allegro 与 Flexiv–Sharpa zero-shot 真机 FMB/dish；触觉 8/10 vs 纯视觉 3/10；代码 Coming soon。"
 ---
 
@@ -154,6 +155,7 @@ Flexiv Student 额外融合五指 TacMap depth + binary contact + SaTA-style FiL
 
 - [ADEPT 论文归档](../../sources/papers/adept_arxiv_2608_19182.md)
 - [adept-dexterity 项目页](../../sources/sites/adept-dexterity-github-io.md)
+- [具身智能小站 8 篇综述](../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)
 
 ## 推荐继续阅读
 

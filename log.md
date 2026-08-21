@@ -1,3 +1,5 @@
+## [2026-08-21] ingest | sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md — 8 篇世界模型/长期记忆盘点；新建 5 独立 paper 节点，回链 ADEPT/GigaBrain/Hydra
+
 ## [2026-08-21] ingest | sources/papers/{gigabrain_wbc_0_5,adept,roboedit}_arxiv_2608_*.md — GigaBrain-WBC-0.5 BWM 环境交互跟踪（Code coming soon）；ADEPT 灵巧 RL 预训练+后训练（Code Coming soon）；RoboEdit 人类视频→RoboEdit-14M（无官方代码 URL）
 
 ## [2026-08-20] ingest | sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md — SJTU TRAMP（IEEE RA-L 2026）：单阶段深度+MoE+平地/楼梯地形相关 AMP；ResearchGate 全文入口；确认未开源

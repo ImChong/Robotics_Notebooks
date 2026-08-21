@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-21
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
@@ -19,6 +19,7 @@ related:
   - ../entities/mimickit.md
   - ../entities/humannet.md
   - ../entities/paper-interprior.md
+  - ../entities/paper-veragmil.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ./mimic-video.md
   - ./egoscale.md

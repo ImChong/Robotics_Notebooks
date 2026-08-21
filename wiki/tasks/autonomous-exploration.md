@@ -11,6 +11,7 @@ related:
   - ../methods/lidar-odometry-fusion.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/paper-autonomous-spot-nebula-exploration.md
+  - ../entities/paper-dynamic-spectraformer.md
   - ../entities/humanoid-system-curriculum.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
