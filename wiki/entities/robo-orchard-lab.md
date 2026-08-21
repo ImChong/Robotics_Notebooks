@@ -11,6 +11,7 @@ related:
   - ./holoagent.md
   - ./isaac-gym-isaac-lab.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/repos/horizon_robotics_robo_orchard_lab.md
   - ../../sources/sites/robo-orchard-lab-docs.md
@@ -144,6 +145,7 @@ sequenceDiagram
 - [HoloMotion](./holomotion.md) — 同组织人形运动跟踪栈
 - [HoloAgent](./holoagent.md) — 同组织 Agent / 导航能力
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页 `projects/bip3d_grounding` 落在其 ③ 2D→3D 提升层（2D 检测/grounding 桥接 3D 检测），`finegrasp` 则是 ④ 下游策略消费层；本页提供的是训练框架入口，选哪个感知模型仍看该闭环
 
 ## 参考来源
 

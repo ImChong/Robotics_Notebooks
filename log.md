@@ -1,6 +1,26 @@
+## [2026-08-21] lint | wiki/entities/paper-{adept-dexterity,roboedit,partialbigrasp,lt-mem,veragmil,dynamic-spectraformer,x2streaming-tts}.md — 合并 main 后二次清零 lint 信息型预警：补 7 篇新入库论文「对比」段 + 1 条感知栈回链 + 2 个缺页误报归档
+
+- **触发：** 分支合并 origin/main（8 篇 ingest 新增实体页）后重跑全量 lint，失败项 0，新增 **10 条信息型预警**（三段式缺「对比」×7、感知栈回链缺失×1、缺页概念候选×2）
+- **三段式补「对比」：** [`paper-adept-dexterity`](wiki/entities/paper-adept-dexterity.md)（from-scratch/naive fine-tune/KL 正则/demo-based/FMB 夹爪流水线/PCA 子空间/vision-only）、[`paper-roboedit`](wiki/entities/paper-roboedit.md)（中间表示/Ego2Robot/de novo 生成/VACE-OmniWeaving/单 LoRA/其他 human→robot 数据集/只报 perceptual metric）、[`paper-partialbigrasp`](wiki/entities/paper-partialbigrasp.md)（完整 mesh 重建/DG16M baseline/Real-Bi-Dex/Mango/单臂 top-down/同批补全线）、[`paper-lt-mem`](wiki/entities/paper-lt-mem.md)（覆盖旧图/逐次快照/VLM-Batch/SMA/统一更新策略/Hydra-0）、[`paper-veragmil`](wiki/entities/paper-veragmil.md)（3D 鼠标/BC-BC-RNN/只报 SR/刚体-流体近似/SHRIMP/ADEPT）、[`paper-dynamic-spectraformer`](wiki/entities/paper-dynamic-spectraformer.md)（空间域 CNN-Transformer/固定频带/稠密注意/频域当降算力技巧/Hui360/PartialBiGrasp）、[`paper-x2streaming-tts`](wiki/entities/paper-x2streaming-tts.md)（句级 TTS/伪流式/过早-过晚承诺/段间无状态/只报单请求延迟）——均由页内已有事实归并成表，未引入新论断
+- **感知栈闭环：** [`paper-partialbigrasp`](wiki/entities/paper-partialbigrasp.md) 补回链，落 ③ 层 2D→3D 提升（只补力闭合判据需要的接触区几何，不建完整语义地图）；枢纽页 [`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) 同步补 `related` 与「关联页面」条目
+- **缺页误报归档：** `sim-to-real` → [`concepts/sim2real.md`](wiki/concepts/sim2real.md)（连字符全称写法，与页面 stem 不同名，同 ethercat / urdf 惯例）；`zero-shot` → 迁移/评测的条件状语（zero-shot 迁移 / 0% 任务数据），已由 sim2real（全页 27 处）+ [`hub-cross-embodiment`](wiki/overview/hub-cross-embodiment.md) 覆盖，与 rgb-d / vlm 同为描述性标签而非独立可成页机制
+- **合并冲突：** `log.md` 顶部两侧各自 prepend，按倒序时间线保留双方（08-21 ingest 在上、08-20 lint 在下）；`paper-hydra-0.md` 二次合并自动干净（main 补 sources 条目，本分支补「对比」段，互不重叠）
+- **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型，覆盖率 3177/3177）；`eval_search_quality` 40/40；`ruff check` + `ruff format --check` 通过；`pytest` 全绿
+
 ## [2026-08-21] ingest | sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md — 8 篇世界模型/长期记忆盘点；新建 5 独立 paper 节点，回链 ADEPT/GigaBrain/Hydra
 
 ## [2026-08-21] ingest | sources/papers/{gigabrain_wbc_0_5,adept,roboedit}_arxiv_2608_*.md — GigaBrain-WBC-0.5 BWM 环境交互跟踪（Code coming soon）；ADEPT 灵巧 RL 预训练+后训练（Code Coming soon）；RoboEdit 人类视频→RoboEdit-14M（无官方代码 URL）
+
+## [2026-08-20] lint | wiki/entities/paper-{fetchman,hydra-0,instant-episode-repetition,prism-grpo}.md + robo-orchard-lab.md — 清空全量 lint 信息型预警：补 4 篇 2608 论文「对比」段 + 2 条枢纽双向回链 + 2 个缺页误报归档
+
+- **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **8 条信息型预警**（三段式缺「对比」×4、枢纽回链缺失×2、缺页概念候选×2）
+- **三段式补「对比」：** [`paper-fetchman`](wiki/entities/paper-fetchman.md)（VIRAL/DoorMan/纯加演示 BC/Temporal GRPO/端到端 WBC/SigLIP+absolute 消融）、[`paper-hydra-0`](wiki/entities/paper-hydra-0.md)（Cosmos native action/ATI-Wan-Move/OSCAR/SC3-Eval/Ctrl-World/常规 WAM）、[`paper-instant-episode-repetition`](wiki/entities/paper-instant-episode-repetition.md)（replay-PER/SIL/SAC-TD3 基线/on-policy/开环 replay/prioritized 多轨迹）、[`paper-prism-grpo`](wiki/entities/paper-prism-grpo.md)（Binary GRPO/task-specific progress reward/RL-ZVP/group-norm/Temporal GRPO/学习式 RM/只对 same-outcome 加 quality）——均由页内已有事实归并成表，未引入新论断
+- **评测基准闭环：** [`paper-hydra-0`](wiki/entities/paper-hydra-0.md) 补回链，定位为 ②层（世界模型预测保真度）向 ③层（策略成功率）的桥接：RoboLab 开环 replay r=0.96 不等于闭环 prospective 成功率
+- **感知栈闭环：** [`robo-orchard-lab`](wiki/entities/robo-orchard-lab.md) 补回链，`projects/bip3d_grounding` 落 ③层 2D→3D grounding、`finegrasp` 落 ④层下游消费
+- **双向：** 两个 Query 枢纽页 [`embodied-eval-benchmark-selection-loop`](wiki/queries/embodied-eval-benchmark-selection-loop.md) / [`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) 同步补 `related` 与「关联页面」条目并 bump `updated`
+- **缺页误报归档：** `action` / `ros2` 两个候选经核查均属「slug ≠ 页面 stem」或「数据字段名/API 键名」，已按既有惯例登记进 `MISSING_CONCEPT_COVERED_ELSEWHERE` 并附归属说明——`ros2` → [`concepts/ros2-basics.md`](wiki/concepts/ros2-basics.md)（+ rmw-interface / dds-communication / ros2-vs-lcm）；`action` → [`formalizations/mdp.md`](wiki/formalizations/mdp.md) 动作空间 $A$ + [`methods/action-chunking.md`](wiki/methods/action-chunking.md) + [`concepts/world-action-models.md`](wiki/concepts/world-action-models.md)（命中处全是 RobotWin JSONL 帧类型 / UMI 20 维导出 / ROS pick-place 接口等 token）
+- **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型）；`eval_search_quality` 40/40；`ruff check` + `ruff format --check` 通过；`pytest` 全绿（生成 `make export graph` 派生物后 3 项 export 依赖测试亦通过）
+- **未提交：** `exports/` `docs/exports/` 统计派生物——本会话是 shallow clone（108 commits），`generate_link_graph` 的 git 首次加入日会退化成 log.md 兜底，交由 `export.yml`（`fetch-depth: 0`）重算
 
 ## [2026-08-20] ingest | sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md — SJTU TRAMP（IEEE RA-L 2026）：单阶段深度+MoE+平地/楼梯地形相关 AMP；ResearchGate 全文入口；确认未开源
 

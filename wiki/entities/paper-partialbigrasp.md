@@ -9,6 +9,7 @@ related:
   - ../tasks/bimanual-manipulation.md
   - ./paper-real-bi-dex-grasp.md
   - ./paper-mango-grasp.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/partialbigrasp_arxiv_2608_19188.md
   - ../../sources/sites/partialbigrasp-github-io.md
@@ -99,6 +100,17 @@ flowchart LR
 4. **开源边界** — 架构可读，完整复现等权重与训练栈。
 5. **系统读法** — 与 LT-Mem / Hydra-0 同属「补全隐藏状态」能力线。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| 先做完整 mesh 重建再规划 | 重建慢，且误差会整体传播到 grasp planner；PartialBiGrasp 只补 **与接触有关的局部几何**（厚度/边缘/夹爪间隙） |
+| DG16M 上的 baseline | FC 成功率 ~**55% vs ~22%**，约 2.5× |
+| [Real Bi-Dex Grasp](./paper-real-bi-dex-grasp.md) | 另一条双臂抓取路线；本页的分工点是「**partial view** 下先补隐藏几何再配对」 |
+| [Mango Grasp](./paper-mango-grasp.md) | 抓取规划侧对照；本页把力闭合判据前移到占据网络推断出的局部几何上 |
+| 单臂 top-down grasp pipeline | 计算与规划复杂度都更低；只有「双臂 + partial view + 需 FC 保证」三者同时成立时才值得上本方法 |
+| [Hydra-0](./paper-hydra-0.md) / [LT-Mem](./paper-lt-mem.md) | 综述同批「补全隐藏状态」能力线：Hydra 补的是未来帧、LT-Mem 补的是历史记忆，本页补的是**当前观测里看不见的几何** |
+
 ## 局限与风险
 
 - **部分开源** — 权重、数据集、推理路径未发布。
@@ -112,6 +124,7 @@ flowchart LR
 - [Real Bi-Dex Grasp](./paper-real-bi-dex-grasp.md) — 另一双臂抓取路线
 - [Mango Grasp](./paper-mango-grasp.md) — 抓取规划对照
 - [Hydra-0](./paper-hydra-0.md) — 综述同批「补全隐藏状态」
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页落其 ③ 层 2D→3D 提升：不建完整语义地图，只从局部点云补出力闭合判据需要的接触区几何，再交 ④ 层抓取规划消费
 
 ## 参考来源
 
