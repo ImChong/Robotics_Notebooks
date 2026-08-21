@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, spatial-intelligence, memory-agent, frozen-vlm, procedure-memory]
 status: complete
-updated: 2026-08-19
+updated: 2026-08-21
 arxiv: "2608.12743"
 related:
   - ../methods/vla.md
@@ -110,4 +110,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [SMA 项目页](https://aim-uofa.github.io/SMA/)
+- [LT-Mem](./paper-lt-mem.md) — 对象级 3D + 波动性更新对照
 - [arXiv:2608.12743](https://arxiv.org/abs/2608.12743)

@@ -13,6 +13,7 @@
 - **发表 / 上传：** 2026-08-19（arXiv v1）
 - **训练栈：** Isaac Lab + PPO；4096 envs（flat）；512 envs（terrain + fallen init）；Unitree G1 29 DoF @ 50 Hz
 - **入库日期：** 2026-08-21
+- **索引来源：** [具身智能小站 8 篇综述](../blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)（<https://mp.weixin.qq.com/s/30hu9SRxbRNXJcGLnNwl_g>）
 
 ## 相关资料（策展）
 

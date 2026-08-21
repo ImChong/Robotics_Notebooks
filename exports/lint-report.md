@@ -2,7 +2,7 @@
 
 ## [2026-08-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **11** 条信息型预警）：
+共发现 **0** 个问题（另含 **18** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,9 +52,10 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（3 个）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（4 个）
 - action（被 7 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - ros2（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- sim-to-real（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - zero-shot（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
@@ -99,13 +100,18 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（6 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（11 个）
 - wiki/entities/paper-adept-dexterity.md（缺 对比）
+- wiki/entities/paper-dynamic-spectraformer.md（缺 对比）
 - wiki/entities/paper-fetchman.md（缺 对比）
 - wiki/entities/paper-hydra-0.md（缺 对比）
 - wiki/entities/paper-instant-episode-repetition.md（缺 对比）
+- wiki/entities/paper-lt-mem.md（缺 对比）
+- wiki/entities/paper-partialbigrasp.md（缺 对比）
 - wiki/entities/paper-prism-grpo.md（缺 对比）
 - wiki/entities/paper-roboedit.md（缺 对比）
+- wiki/entities/paper-veragmil.md（缺 对比）
+- wiki/entities/paper-x2streaming-tts.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -131,7 +137,8 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-partialbigrasp.md
 - wiki/entities/robo-orchard-lab.md
 
-📊 Sources 覆盖率：3172/3172 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3177/3177 (100%) wiki/entity 页有 ingest 来源

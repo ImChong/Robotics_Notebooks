@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-21
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -12,6 +12,7 @@ related:
   - ./manipulation.md
   - ../entities/paper-autointervene.md
   - ../entities/paper-nestdex.md
+  - ../entities/paper-partialbigrasp.md
   - ../entities/lw-benchhub-tour.md
   - ./loco-manipulation.md
   - ../concepts/whole-body-control.md
@@ -148,6 +149,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | LW BENCHHUB TOUR（2026） | SmolVLA 闭环评测 + 自过滤飞轮 | 仿真 DoublePiper-Abs | 厨房 PnP 基线 40%；cuRobo 闸门滤场景；见 [实体](../entities/lw-benchhub-tour.md) |
 
 - [真机双臂灵巧抓取](../entities/paper-real-bi-dex-grasp.md) — 单视角点云 + DDPM 关节配置 + 力细化（IROS 2026；已开源）
+- [PartialBiGrasp](../entities/paper-partialbigrasp.md) — 局部点云隐式补几何 + 力闭合双臂抓取对（arXiv:2608.19188；架构仓部分开源）
 
 ## 与 Loco-Manipulation 的区别
 

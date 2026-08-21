@@ -24,7 +24,7 @@ summary: "依据具身智能小站 2026-08-19 十篇盘点，把近期工作读�
 
 # 世界模型与真实执行：10 篇论文的阅读坐标
 
-> **本页定位**：为 [具身智能小站 · 10 篇盘点](https://mp.weixin.qq.com/s/NJ6M3CnsmDrtu9baRo8lgQ)（2026-08-19）提供 **按四类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [接触–预测–适应（2026-08-18）](./contact-predict-adapt-10-papers-technology-map.md)、[9 篇 WAM/控制（2026-08-17）](../../sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md)。
+> **本页定位**：为 [具身智能小站 · 10 篇盘点](https://mp.weixin.qq.com/s/NJ6M3CnsmDrtu9baRo8lgQ)（2026-08-19）提供 **按四类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [接触–预测–适应（2026-08-18）](./contact-predict-adapt-10-papers-technology-map.md)、[8 篇世界模型/长期记忆（2026-08-21）](../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)、[9 篇 WAM/控制（2026-08-17）](../../sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md)。
 
 ## 一句话观点
 

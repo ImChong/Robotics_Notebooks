@@ -15,6 +15,7 @@ related:
 sources:
   - ../../sources/papers/hydra_0_arxiv_2608_18077.md
   - ../../sources/sites/hydra-0-nvidia-isaac.md
+  - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
 summary: "Hydra-0（arXiv:2608.18077，NVIDIA 等）：action flow（图像平面稀疏轨迹）作跨具身 WM 条件；robot EPE −90.4%、RoboLab 开环 r=0.96；逆向 object-flow→动作；2,202 h 训练；确认未开源。"
 ---
 
@@ -145,6 +146,7 @@ flowchart TB
 
 - [Hydra-0 论文归档](../../sources/papers/hydra_0_arxiv_2608_18077.md)
 - [Hydra-0 项目页归档](../../sources/sites/hydra-0-nvidia-isaac.md)
+- [具身智能小站 8 篇综述](../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)
 
 ## 推荐继续阅读
 
