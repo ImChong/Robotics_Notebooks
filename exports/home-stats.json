@@ -1,23 +1,13 @@
 {
   "generated_at": "2026-08-21",
   "node_count": 3202,
-  "edge_count": 28402,
+  "edge_count": 28410,
   "coverage": {
     "covered": 3177,
     "total": 3177,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-lt-mem.md",
-      "detail_id": "entity-paper-lt-mem",
-      "label": "LT-Mem：波动性感知的终身场景记忆",
-      "type": "entity",
-      "recency": "2026-08-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
     {
       "path": "wiki/entities/paper-adept-dexterity.md",
       "detail_id": "entity-paper-adept-dexterity",
@@ -35,16 +25,18 @@
       "recency": "2026-08-21",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-gigabrain-wbc-0-5.md",
-      "detail_id": "entity-paper-gigabrain-wbc-0-5",
-      "label": "GigaBrain-WBC-0.5：环境交互行为世界模型",
+      "path": "wiki/entities/paper-lt-mem.md",
+      "detail_id": "entity-paper-lt-mem",
+      "label": "LT-Mem：波动性感知的终身场景记忆",
       "type": "entity",
       "recency": "2026-08-21",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-partialbigrasp.md",
@@ -55,6 +47,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-roboedit.md",
+      "detail_id": "entity-paper-roboedit",
+      "label": "RoboEdit：人类视频转机器人经验",
+      "type": "entity",
+      "recency": "2026-08-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-veragmil.md",
@@ -77,14 +79,61 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-roboedit.md",
-      "detail_id": "entity-paper-roboedit",
-      "label": "RoboEdit：人类视频转机器人经验",
+      "path": "wiki/entities/paper-gigabrain-wbc-0-5.md",
+      "detail_id": "entity-paper-gigabrain-wbc-0-5",
+      "label": "GigaBrain-WBC-0.5：环境交互行为世界模型",
       "type": "entity",
       "recency": "2026-08-21",
       "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-fetchman.md",
+      "detail_id": "entity-paper-fetchman",
+      "label": "FetchMan：仿真视觉人形 loco-manipulation",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-hydra-0.md",
+      "detail_id": "entity-paper-hydra-0",
+      "label": "Hydra-0：Action Flow 通才世界模型",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-instant-episode-repetition.md",
+      "detail_id": "entity-paper-instant-episode-repetition",
+      "label": "Instant Episode Repetition（IER）",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-prism-grpo.md",
+      "detail_id": "entity-paper-prism-grpo",
+      "label": "Prism-GRPO：VLA 低样本 GRPO 优化",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/robo-orchard-lab.md",
+      "detail_id": "entity-robo-orchard-lab",
+      "label": "RoboOrchardLab",
+      "type": "entity",
+      "recency": "2026-08-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md",
@@ -136,44 +185,6 @@
       "action": "added"
     },
     {
-      "path": "wiki/entities/paper-fetchman.md",
-      "detail_id": "entity-paper-fetchman",
-      "label": "FetchMan：仿真视觉人形 loco-manipulation",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-hydra-0.md",
-      "detail_id": "entity-paper-hydra-0",
-      "label": "Hydra-0：Action Flow 通才世界模型",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-instant-episode-repetition.md",
-      "detail_id": "entity-paper-instant-episode-repetition",
-      "label": "Instant Episode Repetition（IER）",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-prism-grpo.md",
-      "detail_id": "entity-paper-prism-grpo",
-      "label": "Prism-GRPO：VLA 低样本 GRPO 优化",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
       "path": "wiki/entities/paper-radmesh.md",
       "detail_id": "entity-paper-radmesh",
       "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
@@ -183,16 +194,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/robo-orchard-lab.md",
-      "detail_id": "entity-robo-orchard-lab",
-      "label": "RoboOrchardLab",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-gaussian-lic2.md",
@@ -207,14 +208,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-lt-mem.md",
-    "detail_id": "entity-paper-lt-mem",
-    "label": "LT-Mem：波动性感知的终身场景记忆",
+    "path": "wiki/entities/paper-adept-dexterity.md",
+    "detail_id": "entity-paper-adept-dexterity",
+    "label": "ADEPT：灵巧操作 RL 预训练与后训练",
     "type": "entity",
     "recency": "2026-08-21",
     "source": "git",
-    "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
