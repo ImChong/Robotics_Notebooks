@@ -1,3 +1,5 @@
+## [2026-08-21] ingest | sources/papers/scheduled_inpainting_arxiv_2607_29133.md — Disney scheduled inpainting / GME；wiki 实体页 + 交叉 GMR/扩散/角色动画；项目页无代码
+
 ## [2026-08-21] lint | wiki/entities/paper-{adept-dexterity,roboedit,partialbigrasp,lt-mem,veragmil,dynamic-spectraformer,x2streaming-tts}.md — 合并 main 后二次清零 lint 信息型预警：补 7 篇新入库论文「对比」段 + 1 条感知栈回链 + 2 个缺页误报归档
 
 - **触发：** 分支合并 origin/main（8 篇 ingest 新增实体页）后重跑全量 lint，失败项 0，新增 **10 条信息型预警**（三段式缺「对比」×7、感知栈回链缺失×1、缺页概念候选×2）

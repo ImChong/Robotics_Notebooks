@@ -2,12 +2,13 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-21
 related:
   - ../entities/kimodo.md
   - ../entities/ardy.md
   - ../entities/rigmo.md
   - ../entities/generative-motion-rig.md
+  - ../entities/paper-scheduled-inpainting-gme.md
   - ../entities/paper-muninn-trajectory-diffusion-acceleration.md
   - ../entities/paper-molingo.md
   - ../entities/paper-phygile.md
@@ -55,7 +56,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 
 ## 结构感知 mesh 潜空间（RigMo）与 DCC 集成（Disney GMR）
 
-[RigMo](../entities/rigmo.md)（arXiv:2601.06378）从 **无标注变形 mesh 序列** 联合发现 **Gaussian bones + SE(3) 运动**（RigMo-VAE），再在结构感知 **motion latent** 上接 **Motion-DiT** 做稀疏帧补全——与假定预定义骨架的人体扩散（Kimodo/ARDY）正交，强调 **可动画资产** 而非交互文本控制。制片侧对照：[Disney Generative Motion Rig](../entities/generative-motion-rig.md)（SIGGRAPH Talks 2026）把通用 betweener 嵌进 **Blender 插件**，用稀疏关键帧 / NMC / 噪声做 generative keyframing（插件未开源）；二者名称相近但问题不同。
+[RigMo](../entities/rigmo.md)（arXiv:2601.06378）从 **无标注变形 mesh 序列** 联合发现 **Gaussian bones + SE(3) 运动**（RigMo-VAE），再在结构感知 **motion latent** 上接 **Motion-DiT** 做稀疏帧补全——与假定预定义骨架的人体扩散（Kimodo/ARDY）正交，强调 **可动画资产** 而非交互文本控制。制片侧对照：[Disney Generative Motion Rig](../entities/generative-motion-rig.md)（SIGGRAPH Talks 2026）把通用 betweener 嵌进 **Blender 插件**，用稀疏关键帧 / NMC / 噪声做 generative keyframing（插件未开源）；[Scheduled Inpainting / GME](../entities/paper-scheduled-inpainting-gme.md)（arXiv:2607.29133）则给出 **training-free 推理编辑**——用 schedule + 时空 mask 在预训练 IBMM/SF-control 上 **保留并改写已有 MoCap**（延长/拼接/合成，亦未开源）。
 
 ## Omni-modal 人形运动生成（OMG，清华 MARS Lab）
 
@@ -123,6 +124,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [sources/sites/ardy-project.md](../../sources/sites/ardy-project.md) — ARDY 项目页：交互 Demo、方法图与 G1+SONIC 应用。
 - [RigMo（arXiv:2601.06378）](../../sources/papers/rigmo_arxiv_2601_06378.md) — 无标注 mesh 联合学 rig+motion；Motion-DiT 在结构感知潜空间生成。
 - [Disney Generative Motion Rig（SIGGRAPH Talks 2026）](../../sources/papers/generative_motion_rig_siggraph_talks_2026.md) — Blender 插件式 generative keyframing（闭源）。
+- [Scheduled Inpainting / GME（arXiv:2607.29133）](../../sources/papers/scheduled_inpainting_arxiv_2607_29133.md) — exemplar 保留式 generative motion editing（闭源）。
 - [sources/papers/genmo.md](../../sources/papers/genmo.md) — GENMO（ICCV 2025 Highlight，NVIDIA）：把人体运动估计形式化为带观测约束的扩散生成，dual-mode 训练统一估计 + 生成。
 - [sources/papers/hy_motion_arxiv_2512_23464.md](../../sources/papers/hy_motion_arxiv_2512_23464.md) — HY-Motion 1.0（腾讯混元，arXiv:2512.23464）：十亿级 DiT+流匹配的文本→SMPL-H 运动与全阶段对齐管线。
 - [sources/papers/dart_control_arxiv_2410_05260.md](../../sources/papers/dart_control_arxiv_2410_05260.md) — DART / DartControl（ICLR 2025，arXiv:2410.05260）：自回归运动原语潜扩散 + 在线文本流与潜空间空间控制。
@@ -148,6 +150,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [ARDY](../entities/ardy.md) — 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026）
 - [RigMo](../entities/rigmo.md) — 无标注 mesh→Gaussian bones + Motion-DiT 潜空间生成
 - [Generative Motion Rig（Disney）](../entities/generative-motion-rig.md) — DCC 集成的 generative keyframing（非新 backbone）
+- [Scheduled Inpainting / GME](../entities/paper-scheduled-inpainting-gme.md) — training-free 推理期 MoCap 编辑（IBMM/SF-control 上层）
 - [Muninn](../entities/paper-muninn-trajectory-diffusion-acceleration.md) — 轨迹扩散/扩散策略的免训练缓存加速与 conformal 偏差证书
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — 人体文本–运动文献与数据集的 curated 入口（单人、无 HOI）
 - [MMHU](../entities/paper-mmhu.md) — 驾驶街景 text-to-motion 域差证据（通用 T2M FID 极高，微调后显著下降）

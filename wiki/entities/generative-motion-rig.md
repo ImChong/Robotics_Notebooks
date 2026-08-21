@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, generative-animation, motion-authoring, blender, dcc, disney, eth, siggraph, keyframing]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-21
 venue: SIGGRAPH Talks 2026
 doi: "10.1145/3799818.3812088"
 related:
+  - ./paper-scheduled-inpainting-gme.md
   - ./rigmo.md
   - ./blender.md
   - ./robot-motion-keyframe-editors.md
@@ -84,7 +85,7 @@ flowchart LR
 
 - Freestyle：专业艺术家约两天完成 ~22s 双角色追逐（含学习工具）。
 - Guided：艺术家偏 ML-Poser 全身关键帧；非艺术家更依赖全 NMC + 混合稀疏约束。
-- Motion editing：改跳跃距离并加后退步，对接 Synth2Track 等 MoCap 工具链。
+- Motion editing：改跳跃距离并加后退步，对接 Synth2Track 等 MoCap 工具链；同组后续 [Scheduled Inpainting / GME](./paper-scheduled-inpainting-gme.md) 把 **exemplar 保留式 generative 编辑** 形式化为 training-free 推理框架（延长/拼接/合成）。
 
 ## 工程实践（速览）
 
@@ -104,6 +105,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Scheduled Inpainting / GME](./paper-scheduled-inpainting-gme.md) — 同组 exemplar clip 的 scheduled inpainting 编辑核（闭源）
 - [RigMo](./rigmo.md) — 无标注 mesh 联合学 rig+motion（研究资产线；名称勿混）
 - [Blender](./blender.md) — 本文展示宿主 DCC
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — 机器人侧后处理对照
