@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-08-01
+updated: 2026-08-21
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -143,7 +143,7 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 - 给真机演示视频做**可重复的剧本**，避免每次 RL rollout 都换味道；
 - 与 ASE 等 latent 技能做「艺术家可拖动」的高层接口。
 
-**生成式 DCC 绑定（Disney Generative Motion Rig，SIGGRAPH Talks 2026）：** [Generative Motion Rig](../entities/generative-motion-rig.md) 把通用 betweener 嵌进 **Blender 插件**，用稀疏关键帧 / Neural Motion Curves / 噪声采样做 **generative keyframing**，并与传统 FK 层混合——这是 **角色动画端** 的生成式操控形态（插件未开源）。资产发现侧对照：[RigMo](../entities/rigmo.md) 从无标注 mesh 序列学 Gaussian bones，产出可动画结构而非 DCC UI。注意缩写 **GMR** 在仓库内默认指 [General Motion Retargeting](../methods/motion-retargeting-gmr.md)。
+**生成式 DCC 绑定（Disney Generative Motion Rig，SIGGRAPH Talks 2026）：** [Generative Motion Rig](../entities/generative-motion-rig.md) 把通用 betweener 嵌进 **Blender 插件**，用稀疏关键帧 / Neural Motion Curves / 噪声采样做 **generative keyframing**，并与传统 FK 层混合——这是 **角色动画端** 的生成式操控形态（插件未开源）。同组 [Scheduled Inpainting / GME](../entities/paper-scheduled-inpainting-gme.md)（arXiv:2607.29133）补 **exemplar MoCap 保留式编辑**（延长/拼接/合成 + direct manipulation，training-free 推理）。资产发现侧对照：[RigMo](../entities/rigmo.md) 从无标注 mesh 序列学 Gaussian bones，产出可动画结构而非 DCC UI。注意缩写 **GMR** 在仓库内默认指 [General Motion Retargeting](../methods/motion-retargeting-gmr.md)。
 
 ## 决策矩阵（什么时候应该用 character 视角）
 
