@@ -22,10 +22,12 @@ related:
   - ./unitree-g1.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../methods/table-tennis-strategy-skill-learning.md
+  - ../overview/video-contact-control-10-papers-technology-map.md
 sources:
   - ../../sources/papers/adapt_arxiv_2608_20087.md
   - ../../sources/sites/adapt-humanoidtennis.md
   - ../../sources/repos/adapt.md
+  - ../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md
 summary: "AdaPT（arXiv:2608.20087，Noitom / 上海 AI Lab / 上交）：人形网球自适应规划–跟踪——转播视频/MoCap 风格数据 + MVAE 对拉规划与 AdaMimic 式发球残差跟踪，速度变量 α 联合缓解 sim2real 跟踪退化；G1 与 Atom P3 真机；GitHub 已开源 Stage1 发球跟踪训练。"
 ---
 
@@ -166,3 +168,4 @@ Stage1 在随机执行速度下学习跟踪参考发球动作；完整对拉闭�
 - [AdaPT 论文归档](../../sources/papers/adapt_arxiv_2608_20087.md)
 - [AdaPT 项目页归档](../../sources/sites/adapt-humanoidtennis.md)
 - [AdaPT 官方仓库归档](../../sources/repos/adapt.md)
+- [具身智能小站 10 篇盘点（2026-08-22）](../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md)
