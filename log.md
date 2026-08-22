@@ -1,3 +1,5 @@
+## [2026-08-22] ingest | sources/sites/adept-dexterity-github-io.md — 复核 ADEPT 项目页：16 primitive 清单、per-stage 真机累积成功率、Code 仍 Coming soon；补强实体页与 Allegro / in-hand-reorientation 交叉引用
+
 ## [2026-08-21] ingest | sources/papers/scheduled_inpainting_arxiv_2607_29133.md — Disney scheduled inpainting / GME；wiki 实体页 + 交叉 GMR/扩散/角色动画；项目页无代码
 
 ## [2026-08-21] lint | wiki/entities/paper-{adept-dexterity,roboedit,partialbigrasp,lt-mem,veragmil,dynamic-spectraformer,x2streaming-tts}.md — 合并 main 后二次清零 lint 信息型预警：补 7 篇新入库论文「对比」段 + 1 条感知栈回链 + 2 个缺页误报归档

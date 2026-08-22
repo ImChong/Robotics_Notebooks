@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, dexterity, manipulation, robot-hand, research, wonik-robotics]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-22
 related:
   - ../tasks/manipulation.md
   - ../concepts/tactile-sensing.md
@@ -13,6 +13,7 @@ related:
   - ./wuji-robotics.md
   - ./kyber-labs.md
   - ./all-hands-up.md
+  - ./paper-adept-dexterity.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/sites/allhandsup-org.md
@@ -55,6 +56,7 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 - **Dexterous Manipulation from Vision**：利用 Allegro Hand 在 MuJoCo 中通过强化学习训练大规模灵巧操作技能。
 - **Haptics-based Grasping**：在 Allegro Hand 上安装触觉阵列，实现对形状不规则物体的盲抓（Blind Grasping）。
 - **In-hand Reorientation**：展示如何通过协调 16 个关节，让手中的魔方或笔在不掉落的前提下实现 360 度翻转。
+- **ADEPT（NVIDIA/UMich）**：[ADEPT](./paper-adept-dexterity.md) 在 Kuka iiwa7 + Allegro（23 DoF）上 zero-shot 部署 FMB peg insertion（star **5/10**）与 dish placement（**6/10**），pre-train 16 primitive reposing 覆盖 reach/grasp/lift/reorient（arXiv:2608.19182）。
 
 ## 关联页面
 - [Shadow Hand (灵巧手)](./shadow-hand.md) — 仿生程度更高的五指方案
@@ -67,6 +69,7 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 - [Query: 灵巧手数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Kyber Labs](./kyber-labs.md) — 产业侧背驱动五指手与 skills-based AI 路线对照
 - [All Hands Up](./all-hands-up.md) — RLWRLD 画廊含 Allegro V5 Plus（16 DoF、背驱、仿真 Kapandji 9/11）
+- [ADEPT（论文实体）](./paper-adept-dexterity.md) — Kuka–Allegro 灵巧 RL 预训练 + sim2real FMB
 
 ## 参考来源
 - Wonik Robotics Official Documentation.

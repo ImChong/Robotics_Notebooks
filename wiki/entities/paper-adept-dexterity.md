@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, rl-pretraining, sim2real, geometric-fabric, visuo-tactile, fmb, nvidia, umich]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-22
 arxiv: "2608.19182"
 venue: "2026 · arXiv"
 related:
@@ -11,6 +11,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ./paper-ego2robot.md
   - ../overview/hub-cross-embodiment.md
+  - ../methods/in-hand-reorientation.md
 sources:
   - ../../sources/papers/adept_arxiv_2608_19182.md
   - ../../sources/sites/adept-dexterity-github-io.md
@@ -54,7 +55,7 @@ summary: "ADEPT（arXiv:2608.19182，NVIDIA/密歇根）：16 primitive reposing
 | **预训练** | 16 primitive shapes；ADR + PBT；reaching→grasp→lift→reorient→transport→repose |
 | **下游** | FMB star / square-round peg insertion；dish-rack placement |
 | **低层** | Joint-space **Geometric Fabric**（全 Cspace，非 PCA  grasp 子空间） |
-| **开源** | **待发布**（截至 **2026-08-21** [项目页 Code → Coming soon](https://adept-dexterity.github.io/)） |
+| **开源** | **待发布**（截至 **2026-08-22** [项目页 Code → Coming soon](https://adept-dexterity.github.io/)） |
 
 ## 核心原理
 
@@ -73,7 +74,7 @@ flowchart LR
 
 1. **BC actor distillation** — 把 \(\pi_{pre}\) 投影到下游观测空间，监督 40k iter  
 2. **Critic warm-up** — 冻结 actor，用下游 reward 训 fresh \(V_{post}\) ~20 PPO iter  
-3. **Conservative PPO** — actor LR **1e-5**（从 1e-3 decay），clip **0.05**，critic LR 5e-5  
+3. **Conservative PPO** — actor LR **1e-5**（从 1e-3 线性 decay），clip **0.05**（项目页交互图亦展示 0.20→0.05 decay），critic LR 5e-5  
 
 消融：**LR 1e-3 必 collapse**（即使加 BC+WU）；BC 将近 halve adaptation time；critic warm-up +17.6% SR。
 
@@ -87,6 +88,10 @@ Policy 输出 \(\mathbf{a}_t\in[-1,1]^{n_q}\) 作为 per-joint relative delta �
 2. **Downstream distillation** — 对 post-trained insertion teacher 继续 BC + aux  
 
 Flexiv Student 额外融合五指 TacMap depth + binary contact + SaTA-style FiLM 锚定。
+
+### Pre-training 16 primitives（项目页画廊）
+
+6 cuboid + 2 sphere + 6 capsule + 2 cone，尺度 50 mm 球～250 mm 杆；完整尺寸表见 [项目页归档](../../sources/sites/adept-dexterity-github-io.md)。
 
 ## 源码运行时序图
 
@@ -122,6 +127,18 @@ Flexiv Student 额外融合五指 TacMap depth + binary contact + SaTA-style FiL
 | Flexiv–Sharpa | Visuo-tactile | FMB Square/Round | **8/10** |
 | Kuka–Allegro | Vision | Dish rack | 6/10 |
 
+**真机 per-stage 累积成功率（项目页 `method-figure.js`，10 trials）：**
+
+| 条件 | Reach | Grasp | Lift | Reorient | Align | Insert |
+|------|-------|-------|------|----------|-------|--------|
+| Kuka FMB star | 10/10 | 9/10 | 8/10 | 8/10 | 7/10 | **5/10** |
+| Kuka FMB sq/rd | 10/10 | 8/10 | 6/10 | 4/10 | 3/10 | **3/10** |
+| Flexiv visuo-tactile | 10/10 | 10/10 | 10/10 | 9/10 | 8/10 | **8/10** |
+| Flexiv vision-only | 10/10 | 7/10 | 5/10 | 3/10 | 3/10 | **3/10** |
+| Kuka dish | 10/10 | 10/10 | 8/10 | 7/10 | 6/10 | **6/10** |
+
+读法：vision-only Flexiv 在 **Reorienting** 后从 5/10 跌至 3/10 并维持——与「grasp confidence 不足导致 regrasp 循环」的失败叙事一致；visuo-tactile 在 Align 前仍保持 ≥9/10。
+
 **Teacher sim SR（1024 ep @ ADR 50）：** Kuka aggregated peg **85.0%**；Flexiv square/round **89.2%**。
 
 ## 结论
@@ -134,7 +151,7 @@ Flexiv Student 额外融合五指 TacMap depth + binary contact + SaTA-style FiL
 4. **Beyond pretrain coverage** — dish 任务说明 post-train 可学 **qualitatively new** grasp（flip-regrasp），不只 refine 已有模式。
 5. **Fabric** — full Cspace 暴露完整 kinematic dexterity，sim-real 共享低层。
 6. **触觉** — Flexiv 上 **8/10 vs 3/10**；部署 contact-rich 任务应默认 visuo-tactile。
-7. **开源** — 截至 2026-08-21 **Coming soon**；工程复现需等 NVIDIA 发布 sim 栈。
+7. **开源** — 截至 2026-08-22 **Coming soon**；工程复现需等 NVIDIA 发布 sim 栈。
 
 ## 与其他工作对比
 
@@ -162,6 +179,7 @@ Flexiv Student 额外融合五指 TacMap depth + binary contact + SaTA-style FiL
 - [Sim2Real](../concepts/sim2real.md) — fabric + DR + distill 闭环
 - [Ego2Robot](./paper-ego2robot.md) — 人类视频→机器人数据（不同模态，可组合）
 - [Cross-embodiment 枢纽](../overview/hub-cross-embodiment.md)
+- [In-hand Reorientation](../methods/in-hand-reorientation.md) — pre-train 覆盖 lift / in-hand reorient 段；post-train 对齐下游 insert/place
 
 ## 参考来源
 

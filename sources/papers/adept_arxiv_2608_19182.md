@@ -24,10 +24,11 @@
 | 基准 | FMB [17] | peg insertion；parallel-jaw pipeline 对照 |
 | 触觉 | TacMap [29]、SaTA [10] | Flexiv–Sharpa visuo-tactile student |
 
-## 开源状态（步骤 2.5，2026-08-21）
+## 开源状态（步骤 2.5，2026-08-22 复核）
 
-- **宣称将开源 / 待发布：** 项目页 **Code → Coming soon**；截至入库日 **无** GitHub URL。
+- **宣称将开源 / 待发布：** 项目页 **Code → Coming soon**（`is-pending`）；截至 **2026-08-22** **无** GitHub / Hugging Face URL。
 - **处理：** wiki 标待发布；`## 源码运行时序图` 标不适用。
+- **项目页补充：** 16 primitive 清单与 per-stage 真机累积成功率见 [`sources/sites/adept-dexterity-github-io.md`](../sites/adept-dexterity-github-io.md)（数据来自 `method-figure.js` Table 4 可视化）。
 
 ## 摘要级要点
 
