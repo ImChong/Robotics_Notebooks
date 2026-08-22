@@ -2,8 +2,10 @@
 type: entity
 tags: [entity, llm-agents, agent-infrastructure, skills, messaging-gateway, voice, openclaw, embodied-ai]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-22
 related:
+  - ./rosclaw.md
+  - ./roboclaw.md
   - ./philia.md
   - ./hermes-agent.md
   - ./deepseek-harness.md
@@ -20,7 +22,8 @@ sources:
   - ../../sources/sites/openclaw-ai.md
   - ../../sources/repos/openclaw.md
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
-summary: "OpenClaw（openclaw.ai / openclaw/openclaw）：开源个人 AI 助手与 agent harness——本地技能、多通道消息与持久记忆；具身场景作语音/自然语言控制平面，可经 Robot Gateway（Philia）下发导航与技能。"
+  - ../../sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md
+summary: "OpenClaw（openclaw.ai / openclaw/openclaw）：开源个人 AI 助手与 agent harness——本地技能、多通道消息与持久记忆；具身场景作语音/自然语言控制平面，可经 Robot Gateway（Philia）或 RosClaw 插件直连 ROS2。"
 ---
 
 # OpenClaw
@@ -46,7 +49,7 @@ summary: "OpenClaw（openclaw.ai / openclaw/openclaw）：开源个人 AI 助手
 
 - **课程项目锚点：** 四足×VLN 实战营 Day1 项目即为 **部署 OpenClaw 做四足语音指令控制**——需要独立实体页，而不是只在 Philia/SenseNova 脚注里出现。
 - **控制平面 ≠ 运动策略：** OpenClaw 负责会话、记忆、技能路由；`cmd_vel` / 步态 / 力矩仍由 [分层导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) 与底层 SDK 负责。
-- **生态可组合：** 技能目录（如 `~/.openclaw/skills/`）可装 [SenseNova-Skills](./sensenova-skills.md)；亦可经 [CLI-Anything](./cli-anything.md) Hub meta-skill 发现/安装专业软件 CLI；物理多机扩展见 [Philia](./philia.md)；对照 agent OS 见 [Hermes Agent](./hermes-agent.md)。
+- **生态可组合：** 技能目录（如 `~/.openclaw/skills/`）可装 [SenseNova-Skills](./sensenova-skills.md)；亦可经 [CLI-Anything](./cli-anything.md) Hub meta-skill 发现/安装专业软件 CLI；物理多机扩展见 [Philia](./philia.md)；ROS2 通用工具面见 [RosClaw](./rosclaw.md)；跨本体具身助手对照 [RoboClaw](./roboclaw.md)；对照 agent OS 见 [Hermes Agent](./hermes-agent.md)。
 
 ## 核心结构/机制
 
@@ -75,6 +78,7 @@ flowchart LR
 | 快速安装 | 官网一键脚本：`curl -fsSL https://openclaw.ai/install.sh \| bash` |
 | 四足语音最小闭环 | ASR → OpenClaw 技能「导航到 X」→ 发布目标点/字符串给 Nav2 或 VLN 节点 → TTS 反馈 |
 | 与 Philia 对齐 | 控制平面保持 OpenClaw；真机能力进 Gateway manifest，避免 LLM 直接吐电机命令 |
+| ROS2 + IM | 装 [RosClaw](./rosclaw.md) 插件：`docker compose` 演示或 `rosbridge` 连真机；配置 `/estop` 旁路 |
 | 调试 | 先验证纯文本技能路由，再接通语音与真机；打断（barge-in）见 [语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) |
 
 ## 局限与风险
@@ -85,6 +89,8 @@ flowchart LR
 
 ## 关联页面
 
+- [RosClaw](./rosclaw.md) — OpenClaw 插件：IM 自然语言 → ROS2 工具集
+- [RoboClaw](./roboclaw.md) — SJTU MINT 跨本体具身助手（对照）
 - [Philia](./philia.md) — OpenClaw + Robot Gateway 多机器人助手
 - [Hermes Agent](./hermes-agent.md) — 对照开源 agent OS
 - [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方插件化 coding harness（Cordis；非具身控制平面）
@@ -100,6 +106,7 @@ flowchart LR
 - [OpenClaw 官网](../../sources/sites/openclaw-ai.md)
 - [OpenClaw 代码仓](../../sources/repos/openclaw.md)
 - [四足×VLN 实战营课程大纲](../../sources/courses/quadruped_vln_embodied_workshop_2day.md)
+- [古月居：RosClaw / ROS2 自然语言控制](../../sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md)
 
 ## 推荐继续阅读
 
