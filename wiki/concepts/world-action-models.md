@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-22
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）与 Dyna-2 等实例。"
 related:
   - ../entities/dyna-2.md
@@ -181,6 +181,10 @@ sources:
 **文献实例（Joint 族 + regret-aware 原生 CEDC · 4B 部署导向）**：[Kairos](../entities/paper-kairos-native-world-model-stack.md) 以 **Video DiT + Action DiT（MoT）** 联合 flow matching，**Stage I–II 仅训 VideoDiT、Stage III 联合 ActionDiT**；推理支持 **action-only**（不滚未来视频）与 **Kairos-joint**（联合去噪，LIBERO-Plus **89.0→90.8**）。v3 用 **control-sufficient state / \(\operatorname{Reg}_H\)** 框定目标；原生 **CEDC** 与 **仅训 ActionDiT** 消融（**−23.2** LIBERO-Plus）强调世界生成监督是控制相关表征的必要来源；代码/权重见 [kairos-agi/kairos](https://github.com/kairos-agi/kairos) 与 HF **Kairos3.1**（arXiv:2606.16533，Kairos Team / Ace Robotics）。
 
 **文献实例（Joint 族 + beyond-RGB 结构化未来 · FastWAM 系）**：[DreamWAM](../entities/paper-dreamwam.md) 在 **VideoDiT–ActionDiT** 上把未来从「仅 RGB」扩成 **appearance / motion / geometry / semantics**：RGB+RAFT flow **联合 latent 去噪**，DA3 depth 与 DINOv2 经 **gated residual** 注入；**推理关闭 beyond-RGB 分支**，部署仍 RGB-only。相对 matched Fast-WAM-Joint：LIBERO **98.00→98.90**、LIBERO-Plus **69.16→75.47**、真机视觉扰动 **55.6→74.4**；代码与 HF 权重已开源（arXiv:2608.04996，HUST / 地瓜 / 武大 / 地平线）。
+
+**文献实例（Joint 族 + 腿足移动操作因子分解 · FastWAM 系）**：[DECOWAM](../entities/paper-decowam.md) 在冻结适配 **FastWAM** 后仅训 **25.95M** 参数，用 **base/arm GRL 分离**、**future bottleneck** 与 **base-velocity ego-motion 条件** 联合预测未来 RGB 与 **48×14** 全身 chunk；配套 **ARMDOG** 四足+臂真机数据，79 次闭环 **全身协调** 领先（arXiv:2608.20114，清华 / 上海 AI Lab / 哈工大 / 云深处；**未开源**）。
+
+**文献实例（Joint 族 + 分层触觉候选预报 · 接触丰富操作）**：[HiTac-WAM](../entities/paper-hitac-wam.md) 对每个候选 action chunk 预报 **contact→deformation→slip** 层次触觉未来，**排序选优 + 执行期预报验证重规划**；三任务真机 **31.1%→72.2%**（arXiv:2608.19574，中科院自动化所 / ImprintX；**未开源**）。与 [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) 联合出动作路线对照。
 
 **文献实例（Joint 族 + 免视频 rollout 的未来 cache · FastWAM 系）**：[Rift](../entities/paper-rift-wam.md) 用闭环干预证明动作专家读的是 **位置绑定的未来 K/V**，一份 final-clean cache 几乎等于迭代去噪轨迹（Joint ADE **1.9 cm**）。再用 **anticipation token 一次 prefill** 写出该 cache，测试期不滚视频、不跑 VAE。LIBERO **98.8% / 247.9 ms**（约 **1.1×** current-only）；RoboTwin **92.9/92.6**。截至 2026-08-14 **未开源**（arXiv:2608.11521，ANU）。
 

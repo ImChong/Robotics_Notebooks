@@ -1,13 +1,54 @@
 {
   "generated_at": "2026-08-22",
-  "node_count": 3203,
-  "edge_count": 28424,
+  "node_count": 3207,
+  "edge_count": 28459,
   "coverage": {
-    "covered": 3178,
-    "total": 3178,
+    "covered": 3182,
+    "total": 3182,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-adapt.md",
+      "detail_id": "entity-paper-adapt",
+      "label": "AdaPT（人形网球自适应规划与跟踪）",
+      "type": "entity",
+      "recency": "2026-08-22",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-decowam.md",
+      "detail_id": "entity-paper-decowam",
+      "label": "DECOWAM（腿足移动操作解耦全身 WAM）",
+      "type": "entity",
+      "recency": "2026-08-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hitac-wam.md",
+      "detail_id": "entity-paper-hitac-wam",
+      "label": "HiTac-WAM（分层触觉世界–动作模型）",
+      "type": "entity",
+      "recency": "2026-08-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-revisiting-open-loop-action-chunking.md",
+      "detail_id": "entity-paper-revisiting-open-loop-action-chunking",
+      "label": "Revisiting Open-Loop Execution（长上下文 reactive 策略）",
+      "type": "entity",
+      "recency": "2026-08-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-scheduled-inpainting-gme.md",
       "detail_id": "entity-paper-scheduled-inpainting-gme",
@@ -164,66 +205,27 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-warp-whole-body-retargeting.md",
-      "detail_id": "entity-paper-warp-whole-body-retargeting",
-      "label": "WARP（Whole-body-Aware Retargeting from human Pose）",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-grip.md",
-      "detail_id": "entity-paper-grip",
-      "label": "GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/generalist-gen15-one-shot.md",
-      "detail_id": "entity-generalist-gen15-one-shot",
-      "label": "GEN-1.5 一次示范学习（Physical Prompting）",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-radmesh.md",
-      "detail_id": "entity-paper-radmesh",
-      "label": "RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-scheduled-inpainting-gme.md",
-    "detail_id": "entity-paper-scheduled-inpainting-gme",
-    "label": "Scheduled Inpainting：交互式生成式运动编辑（GME）",
+    "path": "wiki/entities/paper-adapt.md",
+    "detail_id": "entity-paper-adapt",
+    "label": "AdaPT（人形网球自适应规划与跟踪）",
     "type": "entity",
-    "recency": "2026-08-21",
+    "recency": "2026-08-22",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 641
+      "label": "仿真到现实",
+      "size": 681
     },
     {
-      "label": "仿真到现实",
-      "size": 604
+      "label": "操作",
+      "size": 640
     },
     {
       "label": "视觉-语言-动作",
@@ -231,15 +233,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
+      "size": 180
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 138
+      "size": 137
     },
     {
-      "label": "全身控制",
-      "size": 136
+      "label": "移动操作",
+      "size": 132
     }
   ],
   "top_hubs": [
@@ -270,7 +272,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 763,
+      "degree": 764,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -278,7 +280,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 738,
+      "degree": 739,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -327,7 +329,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 143,
+      "degree": 144,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -340,17 +342,17 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "degree": 58
+    },
+    {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 57,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "degree": 56
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

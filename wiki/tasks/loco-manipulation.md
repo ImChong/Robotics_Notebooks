@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-20
+updated: 2026-08-22
 sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
@@ -252,7 +252,7 @@ flowchart TD
 | 领域 | 典型任务 | 代表研究 |
 |------|---------|---------|
 | **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |
-| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), **LHBS** (2026), HITTER (2025), HUSKY (2026) |
+| **体育竞技** | 网球、羽毛球、足球、滑板 | [AdaPT](../entities/paper-adapt.md) (2026), LATENT (2026), **LHBS** (2026), HITTER (2025), HUSKY (2026) |
 | **极端环境** | 跑酷、徒步、复杂室内穿越 | [Perceptive Humanoid Parkour (PHP)](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) (RSS 2026), Hiking in the Wild (2026) |
 | **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |
 
