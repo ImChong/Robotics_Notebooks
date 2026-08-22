@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-22",
-  "node_count": 3207,
-  "edge_count": 28459,
+  "node_count": 3208,
+  "edge_count": 28473,
   "coverage": {
-    "covered": 3182,
-    "total": 3182,
+    "covered": 3183,
+    "total": 3183,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -220,12 +220,12 @@
   },
   "top_communities": [
     {
-      "label": "仿真到现实",
-      "size": 681
-    },
-    {
       "label": "操作",
       "size": 640
+    },
+    {
+      "label": "仿真到现实",
+      "size": 556
     },
     {
       "label": "视觉-语言-动作",
@@ -233,15 +233,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 180
+      "size": 181
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 137
+      "size": 138
     },
     {
-      "label": "移动操作",
-      "size": 132
+      "label": "全身控制",
+      "size": 136
     }
   ],
   "top_hubs": [
@@ -319,7 +319,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 462,
+      "degree": 463,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }

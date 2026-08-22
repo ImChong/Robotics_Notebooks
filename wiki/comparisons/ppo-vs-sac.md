@@ -2,7 +2,7 @@
 type: comparison
 tags: [ppo, sac, rl, policy-optimization, locomotion, manipulation, on-policy, off-policy]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-22
 summary: "PPO 与 SAC 在机器人 RL 任务中的系统性对比：on-policy vs off-policy 权衡、样本效率、稳定性、超参数敏感度与适用场景；含 FlashSAC 高维 scaling 选型。"
 sources:
   - ../../sources/personal/rl_runner_types.md
