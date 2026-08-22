@@ -126,6 +126,19 @@ flowchart TB
 - **vs MotionLab / CondEditor / DNO / noise-inversion**：大结构编辑（如前滚→后滚）与稀疏约束跟随更稳；MotionLab 对 walk-back / 稀疏手部位移易失败。
 - **Usability（n=2 专业艺术家，1 h）**：修复 parkour MoCap 穿透与 naive stitch；**非破坏性**与 crawl→run 自动过渡获好评。
 
+## 与其他工作对比
+
+| 对照工作 | 能力边界 | Scheduled Inpainting 的差异 |
+|----------|----------|------------------------------|
+| CondMDI / IBMM（direct-manipulation 扩散） | 可交互编辑 **自己刚生成** 的运动，但不能 structure-preserving 地改外部 MoCap | 作为 training-free 推理层接在其上，把「保留外部 exemplar + 生成式改写」纳入同一框架 |
+| MotionFix / MotionLab（文本编辑） | 语义编辑但缺 **空间精度**；MotionLab 对 walk-back / 稀疏手部位移易失败 | 用稀疏关节 / 轨迹约束提供空间精度，大结构编辑与稀疏约束跟随更稳 |
+| MDM 式二值 inpainting | 被 inpaint 区域 **完全不可再编辑** | 以「日程 + 时空 mask」给出可调保留强度，生成段仍可再被拖拽编辑 |
+| Noise-inversion / DNO | 每 clip 需离线优化（DNO 20 步 ≈ 10.3 s）或数百步反演（400+ 步），无法支撑实时迭代 | ~25 步 ≈ 0.19 s/编辑，与 vanilla 采样同级，适配迭代式艺术家工作流 |
+| [Generative Motion Rig](./generative-motion-rig.md)（同组 Disney） | 把 generative betweener **嵌进 Blender** 做 keyframing | 提供 exemplar 保留式编辑的算法核，可视为同线的编辑 / inpainting 层（二者均未开源，互补） |
+| [机器人关键帧工具](./robot-motion-keyframe-editors.md) | 对 NPZ / URDF 做 **确定性** stitch / extend | 走生成式路径，保真 vs 可编辑性可调；机器人落地仍需 retarget + 跟踪 |
+
+小结：本文的增量不在新 backbone，而在 training-free 的 scheduled inpainting——相对上述工作，它首次系统覆盖「外部 clip 结构保留编辑 + direct manipulation」的 GME 任务集，且延迟与 vanilla 采样同级。
+
 ## 局限与风险
 
 - **分布外编辑**：超出训练分布的目标动作仍可能不可行；文内建议未来做 **可行性可视化**。
