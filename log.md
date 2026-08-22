@@ -1,3 +1,6 @@
+## [2026-08-22] ingest | sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md — Vision-Driven Reactive Soccer（Science Robotics 2026 / arXiv:2511.03996）；项目页 Code→Zenodo 部分开源；补强实体页源码时序图与量化指标
+
+
 ## [2026-08-22] ingest | sources/papers/rpl_arxiv_2602_03002.md — 复核 RPL（arXiv:2602.03002，Yuanhang Zhang 等，Amazon FAR×CMU×Stanford×Berkeley）；项目页标 Code (Coming Soon)；补机构 tags 与核心信息表
 
 
