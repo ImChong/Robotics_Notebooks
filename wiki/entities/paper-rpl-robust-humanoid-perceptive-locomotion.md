@@ -14,8 +14,11 @@ tags:
   - unitree-g1
   - isaac-gym
   - amazon-far
+  - cmu
+  - stanford
+  - berkeley
 status: complete
-updated: 2026-08-06
+updated: 2026-08-22
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -42,7 +45,7 @@ summary: "RPL（arXiv:2602.03002，Amazon FAR）两阶段训练：特权高程�
 
 # RPL：复杂地形上的鲁棒人形多向感知行走
 
-**RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Amazon FAR 等，arXiv:[2602.03002](https://arxiv.org/abs/2602.03002)，[项目页](https://rpl-humanoid.github.io/)）提出 **两阶段学习框架**：先用 **特权高程图** 训练 **分地形专家**（坡、上下楼梯、垫脚石），再以 **DAgger** 蒸馏为仅依赖 **多视角深度** 的 **Transformer 下身策略**；配合 **速度指令深度特征缩放（DFSV）** 与 **随机侧向遮挡（RSM）**，在 **非对称多相机观测** 与 **训练外地形宽度** 下仍保持 **双向/多向** 鲁棒行走，并在 **2 kg 载荷** 的 loco-manipulation 扰动下完成真机长程验证。
+**RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Yuanhang Zhang 等，Amazon FAR × CMU × Stanford × UC Berkeley，arXiv:[2602.03002](https://arxiv.org/abs/2602.03002)，[项目页](https://rpl-humanoid.github.io/)）提出 **两阶段学习框架**：先用 **特权高程图** 训练 **分地形专家**（坡、上下楼梯、垫脚石），再以 **DAgger** 蒸馏为仅依赖 **多视角深度** 的 **Transformer 下身策略**；配合 **速度指令深度特征缩放（DFSV）** 与 **随机侧向遮挡（RSM）**，在 **非对称多相机观测** 与 **训练外地形宽度** 下仍保持 **双向/多向** 鲁棒行走，并在 **2 kg 载荷** 的 loco-manipulation 扰动下完成真机长程验证。
 
 ## 一句话定义
 
@@ -61,6 +64,17 @@ summary: "RPL（arXiv:2602.03002，Amazon FAR）两阶段训练：特权高程�
 | Sim2Real | Simulation to Real | 深度噪声/延迟/ dropout 随机化支撑迁移 |
 | DoF | Degrees of Freedom | 自由度；G1 全身关节维动作 |
 | G1 | Unitree G1 Humanoid | 宇树教育科研人形实验平台 |
+
+## 核心信息
+
+| 项 | 内容 |
+|----|------|
+| **作者** | Yuanhang Zhang、Younggyo Seo、Juyue Chen、Yifu Yuan、Koushil Sreenath、Pieter Abbeel、Carmelo Sferrazza、Karen Liu、Rocky Duan、Guanya Shi（* Amazon FAR 实习；† FAR co-lead） |
+| **机构** | 亚马逊前沿 AI 与机器人（Amazon FAR）；卡内基梅隆大学（CMU）；斯坦福大学（Stanford）；加州大学伯克利分校（UC Berkeley） |
+| **平台** | Unitree G1；真机前后 ZED 2i 深度相机（48×27 下采样） |
+| **任务** | 复杂地形 **双向/多向** 感知行走；**2 kg 载荷** loco-manipulation |
+| **仿真** | IsaacGym；Stage 1 4×L40S / 4096×4 env / 24 h；Stage 2 8×L40S / 1024×8 env / 12 h |
+| **开源** | **待发布** — 项目页标 **Code (Coming Soon)**，截至 2026-08-22 无官方可运行仓库 |
 
 ## 为什么重要
 
@@ -135,15 +149,15 @@ flowchart TB
 | 深度渲染 | 1024 env × L40S：RPL **1.3–1.9 s/iter** vs IsaacSim Warp **3.5–9.1 s**（Table I） |
 | 多相机 | 垫脚石上 **2 相机** 达专家级双向性能；单下视相机明显掉点（Table II） |
 | 消融 | **RSM** 关键于未见窄宽度；**DFSV** 关键于非对称多视角（如前相机楼梯、后相机垫脚石） |
-| 代码 | 入库时 **无官方公开仓库** |
+| 代码 | 项目页 **Code (Coming Soon)**，尚无 URL |
 
-## 开源状态（项目页核查，2026-07-20）
+## 开源状态（项目页核查，2026-08-22）
 
 | 资源 | 状态 |
 |------|------|
+| RPL 官方训练/部署仓 | **待发布** — 项目页标 **Code (Coming Soon)**，尚无可点击 GitHub 链接 |
 | 相关索引仓 | [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA)（资源列表，**非** RPL 可运行训练代码） |
-| RPL 官方训练/部署仓 | **未发现**独立可运行发布 |
-| 源码运行时序图 | **不适用**（无官方可复现入口） |
+| 源码运行时序图 | **不适用**（待官方仓库上线后补） |
 
 ## 结论
 
