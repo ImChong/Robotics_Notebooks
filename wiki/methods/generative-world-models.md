@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-22
 related:
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-odeworld.md

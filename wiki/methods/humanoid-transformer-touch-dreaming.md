@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, tactile-sensing, visuo-tactile, imitation-learning, behavior-cloning, loco-manipulation, transformer]
 status: complete
-updated: 2026-04-29
+updated: 2026-08-22
 related:
   - ./imitation-learning.md
   - ./bc-with-transformer.md
