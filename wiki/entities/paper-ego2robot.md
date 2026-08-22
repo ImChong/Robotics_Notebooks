@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-data, egocentric, vla, synthesis, ruc, alibaba, shanghaitech, bigai, buaa]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-22
 arxiv: "2608.02580"
 related:
   - ../methods/vla.md
