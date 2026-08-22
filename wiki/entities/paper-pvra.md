@@ -55,6 +55,20 @@ flowchart LR
   vote --> pose[当前 target + 装配后 target 6-DoF]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **指标 1** | 对称感知 MSSD（Maximum Symmetry-aware Surface Distance） |
+| **指标 2** | Step SLA-AUC（逐装配步的成功–精度曲线下面积） |
+| **外部 baseline** | FoundationPose |
+| **数据/预处理** | 依赖外部 6DAPose 与 Nema17 装配序列预处理脚本 |
+| **发表** | ECoR 2026 |
+
+- 数据出处：[ingest 摘录「装配感知 / 评测」](../../sources/papers/pvra_arxiv_2608_19968.md)。
+- **本页未列定量数值**：摘录只给出指标口径；[开源仓 `KulunuOS/PVRA`](https://github.com/KulunuOS/PVRA) 含训练/推理/评测全流程，数值可按原仓复跑核对。
+- 口径提示：Step SLA-AUC 按装配步累计，跨数据集数值不可直接横比。
+
 ## 结论
 
 **渐进式装配需要学依赖关系而不只是 object-centric pose。**

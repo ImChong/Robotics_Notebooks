@@ -55,6 +55,17 @@ flowchart LR
   val --> opt[能量优化关节配置]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **主基准** | DexGraspNet 大规模灵巧抓取合成，报 SOTA |
+| **真机** | Allegro Hand + YCB 物体集验证 |
+| **泛化设定** | 训练不见物体数据，推理阶段 zero-shot 接入未见几何 |
+
+- 定量明细以 [arXiv:2608.19776](https://arxiv.org/abs/2608.19776) 原文表格为准；本页仅记录 [ingest 摘录](../../sources/papers/cotograsp_arxiv_2608_19776.md) 已核实的基准与平台，未复述未经核对的具体数值。
+- 与同组 [GOAG](./paper-goag.md)（MultiDex 86.93%）属同一「物体无关训练」对照线，但基准不同，不可直接比大小。
+
 ## 结论
 
 **功能意图应在 gripper-centric 域学习，推理时再 zero-shot 接到未见物体。**
