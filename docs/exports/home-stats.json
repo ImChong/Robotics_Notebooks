@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-22",
-  "node_count": 3218,
-  "edge_count": 28530,
+  "node_count": 3220,
+  "edge_count": 28545,
   "coverage": {
-    "covered": 3193,
-    "total": 3193,
+    "covered": 3195,
+    "total": 3195,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -229,7 +229,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 554
+      "size": 555
     },
     {
       "label": "视觉-语言-动作",

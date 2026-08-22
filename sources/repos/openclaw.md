@@ -24,3 +24,5 @@
 | [hermes-agent](../../wiki/entities/hermes-agent.md) | 对照 agent OS |
 | [sensenova-skills](../../wiki/entities/sensenova-skills.md) | 可装入 OpenClaw 的技能库 |
 | [humanoid-voice-interaction-pipeline](../../wiki/queries/humanoid-voice-interaction-pipeline.md) | 语音→技能/VLN 工程流水线 |
+| [rosclaw](../../wiki/entities/rosclaw.md) | OpenClaw 扩展：IM → ROS2 工具集 |
+| [roboclaw](../../wiki/entities/roboclaw.md) | SJTU MINT 具身助手（对照） |

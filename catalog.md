@@ -2366,6 +2366,7 @@
 - [RoamerX（智身四足导航栈）](wiki/entities/roamerx-navigation.md) — RoamerX**（社区开源版 **RoamerX Lite**）是智身科技（GENISOM AI）面向四足机器人的 **ROS 2 导航栈**：在 **Nav2** 基础上增强 **SLAM、全 `📅unknown` `[entity_page]`
 - [RoboBench（MLLM 具身大脑综合评测）](wiki/entities/robo-bench.md) — RoboBench**（*A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied `📅unknown` `[entity_page]`
 - [RoboOrchardLab](wiki/entities/robo-orchard-lab.md) — RoboOrchardLab** 是 **Horizon Robotics（地平线）** 在 **RoboOrchard** 大项目下发布的 **Python 具身 AI 训练与评测框架**：核心 `📅unknown` `[entity_page]`
+- [RoboClaw](wiki/entities/roboclaw.md) — RoboClaw**（GitHub: MINT-SJTU/RoboClaw）是上海交通大学 **MINT 实验室 `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
@@ -2393,6 +2394,7 @@
 - [Roboto Origin（开源人形机器人基线）](wiki/entities/roboto-origin.md) — Roboto Origin（萝博头原型机，RPO）** 是 RoboParty 发布的「全链路开源」人形机器人项目入口，目标不是只给一个仓库，而是提供从硬件到训 `📅unknown` `[entity_page]`
 - [RoboTwin 2.0](wiki/entities/robotwin.md) — RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 SAPIEN (仿真引擎) 仿真引擎之上，旨在解决具身智能（Em `📅unknown` `[entity_page]`
 - [ros2_control](wiki/entities/ros2-control.md) — ros2_control](https://github.com/ros-controls/ros2_control) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
+- [RosClaw](wiki/entities/rosclaw.md) — RosClaw**（GitHub: PlaiPin/rosclaw）把 [OpenClaw](./openclaw.md `📅unknown` `[entity_page]`
 - [RS-Mamba](wiki/entities/rs-mamba.md) — RS-Mamba 面向遥感图像的 Mamba 骨干/任务模型，处理大幅面遥感场景下的长程空间依赖与高效推理。 `📅unknown` `[entity_page]`
 - [RTAB-Map](wiki/entities/rtabmap.md) — RTAB-Map** 以 **记忆管理（WM）** 处理长期建图与闭环，一套工具链覆盖采集到导航。 `📅unknown` `[entity_page]`
 - [RUKA-v2 Hand](wiki/entities/ruka-v2-hand.md) — RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-d `📅unknown` `[entity_page]`
