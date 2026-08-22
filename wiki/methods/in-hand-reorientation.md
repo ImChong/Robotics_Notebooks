@@ -2,7 +2,7 @@
 type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, control]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-22
 related:
   - ../entities/allegro-hand.md
   - ../entities/shadow-hand.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
   - ../entities/paper-vtap-gripper.md
   - ../entities/paper-teledexter.md
+  - ../entities/paper-adept-dexterity.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/uhas_arxiv_2607_03570.md
@@ -48,6 +49,7 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - **机制**：在仿真中通过海量试错发现奇特的“指尖舞蹈”策略。结合**域随机化 (Domain Randomization)** 解决 Sim2Real 问题。
 - **跨具身动作空间**：[UHAS](./uhas-unified-hand-action-space.md) 把手内立方体重定向策略建在 **规范球面形变** 上，用 **单一 PPO 策略** 同时服务 Allegro、LEAP、Shadow、MANO 四手，并支持零样本迁移与快速微调（arXiv:2607.03570）。
 - **遥操作共跟踪入口**：[TeleDexter](../entities/paper-teledexter.md) 不直接学任务专用重定向策略，而是用 **指尖+物体连续子目标 co-tracking** 在真机遥操作中执行 Cylinder/Cuboid/Bunny 手内重定向（SharpaWave 上 SR 66.7–80%），并采数训下游 Diffusion Policy。
+- **RL 预训练摊销 reorient 段**：[ADEPT](../entities/paper-adept-dexterity.md) 在 16 primitive **object reposing** 预训练中已覆盖 lift / in-hand reorient / transport，再 post-train 对齐 FMB insert 等下游；真机 per-stage 表显示 vision-only 常在 Reorient 后失败，visuo-tactile 可维持至 Insert **8/10**（arXiv:2608.19182）。
 
 ### 2. 轨迹优化 (Trajectory Optimization)
 将重定向建模为带接触约束的最优控制问题。
@@ -75,6 +77,7 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 外在灵巧触觉精修对照
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 三指 + 主动掌的手内重定向 / singulation 硬件实例
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — 手–物 co-tracking 遥操作中的真机手内重定向
+- [ADEPT（论文实体）](../entities/paper-adept-dexterity.md) — reposing RL 预训练覆盖 in-hand reorient，再 post-train 下游 insert
 - [Cross-modal Attention](../formalizations/cross-modal-attention.md)
 
 ## 参考来源
