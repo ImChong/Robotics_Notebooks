@@ -3,9 +3,10 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-21
+updated: 2026-08-22
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
+  - ../../sources/papers/loopermuscle_arxiv_2608_00820.md
   - ../../sources/papers/gmt_arxiv_2506_14770.md
   - ../../sources/papers/shooting_for_contact_arxiv_2608_03116.md
   - ../../sources/papers/scenebot_arxiv_2606_27581.md
@@ -69,6 +70,7 @@ flowchart TD
 | 接触丰富场景 tracking | 参考运动 + per-link contact label | [SceneBot](../entities/paper-scenebot.md)（hindsight 场景重建 + 单策略 terrain/object） |
 | 数据稀缺、要合成参考 | 生成式动作 | [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) |
 | 已有通才 tracker，缺可执行生成参考 | 生成器–跟踪器在线后训练 | [GenTrack](../entities/paper-gentrack.md)（接 SONIC/ProtoMotions；不采新数据；确认未开源） |
+| **快速 WBT 迭代**（off-policy 墙钟，单参考/小 benchmark） | 结构化 MoE + 专家 critic + 配额 replay | [LooperMuscle](../entities/paper-loopermuscle.md)（~45 min vs PPO ~6 h；40 LAFAN1；MJLab 特权基准 ≠ Holosoma 真机 ckpt） |
 
 ---
 
@@ -89,6 +91,8 @@ flowchart TD
 ### 3. 通用 tracker 与实时原语
 
 [MotionBricks](../methods/motionbricks.md) 强调实时 smart primitives + 全身控制；[GMT](../entities/paper-gmt.md) 用 **Adaptive Sampling + Motion MoE** 做大规模 filtered MoCap 上的**单策略**真机跟踪；[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md) 面向**多参考、抗扰、负载变化**的通用跟踪器，常作为「身体基础模型」层。
+
+当瓶颈是 **墙钟** 而非数据规模——需要在 **29-DoF 全身跟踪** 上快速试参考/奖励/域随机，且可接受 off-policy 配方时，优先评估 **[LooperMuscle](../entities/paper-loopermuscle.md)**：在 [FastSAC](../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) 基座上叠加 **上下身分组 MoE + 专家感知 DVF + 配额路由 replay**；40 条 LAFAN1 上约 **45 min** 追回 PPO（~6 h）约 **72%** 归一化奖励，相对裸 FastSAC-MLP body err **↓34%**。注意论文主表在 **MJLab 特权 anchor 观测**，真机需在 **Holosoma 154-D 可部署接口重训**，勿把基准数字当部署承诺。
 
 当瓶颈不在网络结构而在**数据不平衡与高动态精度**时，看 [EGM](../methods/egm-efficient-general-mimic.md)：它用 **bin 级误差驱动的跨动作采样课程** + **上下身分组 CDMoE**，论证「小而高质量的精选 MoCap 子集优于大规则筛集」，把选型轴从「堆更多小时数据」转向「数据策展 + 采样调度」。
 

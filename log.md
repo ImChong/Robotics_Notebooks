@@ -1,3 +1,5 @@
+## [2026-08-22] ingest | sources/papers/loopermuscle_arxiv_2608_00820.md — LooperMuscle 结构化 MoE 加速 WBT；官方仓部分开源（Holosoma 栈）；MJLab 特权基准与真机接口需重训
+
 ## [2026-08-22] ingest | sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md — 具身智能小站「视频/接触/控制」10 篇；复用 AdaPT / 新建 9 论文实体 + 技术地图
 
 ## [2026-08-22] ingest | sources/papers/adapt_arxiv_2608_20087.md 等四篇 — AdaPT（G1 网球风格，部分开源）、DECOWAM（腿足 WAM+ARMDOG，未开源）、HiTac-WAM（分层触觉 WAM，未开源）、Revisiting Open-Loop（长上下文 reactive，代码待发布）

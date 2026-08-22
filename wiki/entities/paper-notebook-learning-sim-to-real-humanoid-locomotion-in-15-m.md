@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-08-14
+updated: 2026-08-22
 arxiv: "2512.01996"
 related:
   - ../methods/flashsac.md
@@ -66,6 +66,7 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - [FDDC](./paper-fddc.md) — 用 asymmetric FastSAC（本文配方脉络）训可部署单腿平衡策略（arXiv:2608.00500）
+- [LooperMuscle](./paper-loopermuscle.md) — FastSAC 基座 + 结构化 MoE 把 WBT 墙钟–质量鸿沟收窄（arXiv:2608.00820；~45 min vs PPO ~6 h）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 改版 FastTD3 + 稀疏 loco-manip；SMPC 专家数据（arXiv:2608.12063）
 
 ## 参考来源
