@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-22
 related:
   - ../entities/humanoid-motion-intelligence.md
   - ./robot-training-stack-layers-technology-map.md

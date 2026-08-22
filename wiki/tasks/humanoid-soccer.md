@@ -2,8 +2,9 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-07-28
+updated: 2026-08-22
 related:
+  - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
   - ./locomotion.md
   - ../concepts/humanoid-multi-robot-coordination.md
   - ../concepts/soccer-field-simulation.md
@@ -35,6 +36,9 @@ sources:
   - ../../sources/repos/robonaldo-deploy.md
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
+  - ../../sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md
+  - ../../sources/repos/humanoid-kick-vision-driven-soccer.md
+  - ../../sources/sites/humanoid-kick-vision-driven-soccer.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。"
 ---
@@ -74,6 +78,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - **PAiD (Perception-Action Integrated Decision-making)**：将感知与动作解耦并渐进式融合，实现更稳健的踢球。
 - **[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)**：以单条人类踢球参考为 scaffold 的 **三阶段 motion-guided curriculum RL**，在 G1 上实现 **亚米级点瞄准射门**、**13 m/s 级触球球速** 与 **来球 one-touch** 室外真机演示；**已开源** [训练](https://github.com/OpenDriveLab/RoboNaldo) / [部署](https://github.com/OpenDriveLab/RoboNaldo_Deploy)。
 - **[视觉特权表征运球](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md)**（arXiv:2607.12702）：**RMA 式两阶段** — 特权编码器学对手感知运球，再蒸馏 **CNN+GRU 深度 latent**；Booster T1 仿真下无障碍 **100%**、静态障碍 **96%**、动态抢球 **46%** SR。
+- **[Vision-Driven Reactive Soccer](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)**（Science Robotics 2026 / arXiv:2511.03996）：**虚拟感知 + encoder-decoder** 把机载视觉误差写进统一 RL 环；AMP 运动先验；前场约 **90%** 踢球 SR；Zenodo **部分开源** 仿真训练与 checkpoint。
 
 ### 分层状态机 + 技能库
 将比赛逻辑划分为多个状态（寻球、追球、对齐、踢球），每个状态对应一个底层控制器。
@@ -93,7 +98,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 | **寻球 (Search)** | 广域视觉扫描、头部关节协同 | YOLOv8 + 分级搜索策略 |
 | **接近与对齐 (Chase & Align)** | 全向步态、动态 ZMP 调节 | 参数化行走 (htwk-gym) |
 | **运球 (Dribble)** | 移动中控球、遮挡下球态估计、动态对手规避 | [视觉特权表征运球](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md)（深度+RMA 蒸馏，仿真） |
-| **踢球 (Kick)** | 单脚支撑平衡、摆腿轨迹规划、高冲量触球时机 | RLVisionKick / PAiD / RoboNaldo |
+| **踢球 (Kick)** | 单脚支撑平衡、摆腿轨迹规划、高冲量触球时机 | RLVisionKick / PAiD / RoboNaldo / Vision-Driven Reactive Soccer |
 | **跌倒恢复 (Get up)** | 接触力反馈、全身协同规划 | 预设 Keyframe / RL Getup |
 
 ## 英文缩写速查
@@ -114,6 +119,8 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - [TeleHuman/HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md) — 针对 Unitree G1 的渐进式足球学习
 - [robonaldo_arxiv_2606_11092.md](../../sources/papers/robonaldo_arxiv_2606_11092.md) — RoboNaldo 人形射门课程 RL 与 G1 机载感知摘录
 - [robonaldo.md](../../sources/repos/robonaldo.md) / [robonaldo-deploy.md](../../sources/repos/robonaldo-deploy.md) — RoboNaldo 训练与部署开源仓
+- [humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md](../../sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md) — Vision-Driven Reactive Soccer（Science Robotics 2026）摘录
+- [humanoid-kick-vision-driven-soccer.md](../../sources/repos/humanoid-kick-vision-driven-soccer.md) — Zenodo 仿真训练/推理代码包
 - [opendrivelab-robonaldo.md](../../sources/sites/opendrivelab-robonaldo.md) — 项目页与开源核查
 - [Booster Robotics RoboCup Demo](../../wiki/entities/booster-robocup-demo.md) — 完整的足球比赛软件方案
 - [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — 广播视角检测/跟踪/俯视雷达开源对照

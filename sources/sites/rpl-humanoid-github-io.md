@@ -21,7 +21,7 @@ Amazon FAR 等人提出的 **RPL** 官方站点：展示 **单一深度策略** 
 - **消融视频：** RPL vs w/o DFSV vs w/o RSM（OOD 窄地形与非对称多视角）
 - **Benchmark 表：** IsaacGym PhysX、IsaacSim RTX、IsaacSim Warp vs RPL Warp 射线管线（VRAM / iter. time，$N_{\text{cam}}=1,2,4$）
 - **多相机表：** 双向与全向 locomotion 下 $N_{\text{cam}}=1/2/4$ 的地形等级对比
-- **代码：** 页面 **未提供** 公开仓库链接（截至入库日）
+- **代码：** 项目页标注 **Code (Coming Soon)**（截至 2026-08-22 核查仍无公开仓库 URL）
 
 ## 为何值得保留
 
