@@ -174,6 +174,7 @@
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
 | [x] [humanoid-gym.md](repos/humanoid-gym.md) | Humanoid-Gym 官方：人形 Isaac Gym PPO + MuJoCo sim2sim（arXiv:2404.05695，RobotEra XBot） |
 | [x] [humanoid-gym-modified.md](repos/humanoid-gym-modified.md) | humanoid-gym-modified：Pandaman 模型 + Gazebo/ROS sim2sim 社区 fork |
+| [x] [humanoid-kick-vision-driven-soccer.md](repos/humanoid-kick-vision-driven-soccer.md) | Humanoid Kick Zenodo 21620490：Isaac Gym 训练 + MuJoCo/Isaac 推理（Science Robotics 2026 / arXiv:2511.03996；部分开源） |
 | [x] [leggedgym_ex.md](repos/leggedgym_ex.md) | LeggedGym-Ex：legged_gym 多仿真器扩展 + AMP/DeepMimic（Go2/K1 等） |
 | [x] [leggedrobotics_robotic_world_model.md](repos/leggedrobotics_robotic_world_model.md) | robotic_world_model：ETH RSL 的 RWM / RWM-U Isaac Lab 扩展（在线 + 离线想象管线） |
 | [x] [leggedrobotics_robotic_world_model_lite.md](repos/leggedrobotics_robotic_world_model_lite.md) | robotic_world_model_lite：无仿真器依赖的 RWM / RWM-U 离线训练精简仓 |
@@ -411,6 +412,7 @@
 | [x] [teledexter-project.md](sites/teledexter-project.md) | TeleDexter 项目页 bigai-dex.github.io/blog/teledexter（75.2% SR；截至入库日未开源） |
 | [x] [fm-vla-page.md](sites/fm-vla-page.md) | FM-VLA 项目页 qft-333.github.io/FM-VLA-Page（力觉记忆；代码 coming soon） |
 | [x] [openhlm-project-github-io.md](sites/openhlm-project-github-io.md) | OpenHLM 项目页（配方消融、12 任务、开源入口） |
+| [x] [humanoid-kick-vision-driven-soccer.md](sites/humanoid-kick-vision-driven-soccer.md) | humanoid-kick.github.io（Vision-Driven Reactive Soccer；Science Robotics 2026；Code→Zenodo 21620490；配套 arXiv:2511.03996） |
 | [x] [humanoidarena-github-io.md](sites/humanoidarena-github-io.md) | HumanoidArena 项目页（7 任务、双 GMT、数据/模型发布） |
 | [x] [holomotion-docs.md](sites/holomotion-docs.md) | HoloMotion 官方文档站 |
 | [x] [gr00t-wholebodycontrol-docs.md](sites/gr00t-wholebodycontrol-docs.md) | GR00T-WholeBodyControl 文档站 |
