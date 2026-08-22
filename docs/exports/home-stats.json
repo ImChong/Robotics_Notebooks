@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-22",
-  "node_count": 3208,
-  "edge_count": 28473,
+  "node_count": 3218,
+  "edge_count": 28530,
   "coverage": {
-    "covered": 3183,
-    "total": 3183,
+    "covered": 3193,
+    "total": 3193,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-loopermuscle.md",
+      "detail_id": "entity-paper-loopermuscle",
+      "label": "LooperMuscle：结构化 MoE 加速人形全身跟踪",
+      "type": "entity",
+      "recency": "2026-08-22",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-adapt.md",
       "detail_id": "entity-paper-adapt",
@@ -195,22 +206,12 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/grove-g1.md",
-      "detail_id": "entity-grove-g1",
-      "label": "Grove-G1",
-      "type": "entity",
-      "recency": "2026-08-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adapt.md",
-    "detail_id": "entity-paper-adapt",
-    "label": "AdaPT（人形网球自适应规划与跟踪）",
+    "path": "wiki/entities/paper-loopermuscle.md",
+    "detail_id": "entity-paper-loopermuscle",
+    "label": "LooperMuscle：结构化 MoE 加速人形全身跟踪",
     "type": "entity",
     "recency": "2026-08-22",
     "source": "git",
@@ -221,27 +222,27 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 640
+      "size": 614
     },
     {
       "label": "仿真到现实",
-      "size": 556
+      "size": 554
     },
     {
       "label": "视觉-语言-动作",
-      "size": 247
+      "size": 245
     },
     {
       "label": "人形论文深读笔记",
-      "size": 181
+      "size": 219
+    },
+    {
+      "label": "全身控制",
+      "size": 152
     },
     {
       "label": "人形强化学习运动控制",
       "size": 138
-    },
-    {
-      "label": "全身控制",
-      "size": 136
     }
   ],
   "top_hubs": [
@@ -249,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1279,
+      "degree": 1288,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -272,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 764,
+      "degree": 767,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -280,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 739,
+      "degree": 740,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -296,7 +297,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 541,
+      "degree": 542,
       "has_repo": true
     },
     {
@@ -319,7 +320,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 463,
+      "degree": 464,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
