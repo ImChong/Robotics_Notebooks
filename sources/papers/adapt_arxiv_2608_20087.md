@@ -9,6 +9,7 @@
 - **代码：** <https://github.com/noitom-robotics/AdaPT>（Apache-2.0）
 - **机构：** 诺亦腾机器人（Noitom Robotics）；上海人工智能实验室；上海交通大学；越疆机器人（Dobot Robotics）
 - **入库日期：** 2026-08-22
+- **索引来源：** [具身智能小站 10 篇盘点](../blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md)（<https://mp.weixin.qq.com/s/EmC4gNgcQdPX34vxy-qSVQ>）
 - **一句话说明：** 人形网球 **自适应规划–跟踪** 框架：从转播视频/MoCap 提取职业球员风格，分层 MVAE 规划 + 速度自适应跟踪；G1 与 Atom P3 真机对拉/发球，野外发球验证。
 
 ## 开源状态（步骤 2.5，2026-08-22）
