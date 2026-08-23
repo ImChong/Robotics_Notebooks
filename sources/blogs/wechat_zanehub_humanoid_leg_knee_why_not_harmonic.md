@@ -11,7 +11,7 @@
 - **抓取工具：** Agent Reach + wechat-article-for-ai（Camoufox；`--no-images`）
 - **一句话说明：** 解释膝/踝等主承力腿部关节通常不把谐波减速器放在主冲击路径上的工程原因（冲击载荷谱、柔轮疲劳、远端惯量、力流布置），并对照行星滚柱丝杠 / 摆线·RV / 低减速比准直驱三条常见替代路线。
 - **沉淀到 wiki：** [`wiki/concepts/humanoid-knee-harmonic-drive-limits.md`](../../wiki/concepts/humanoid-knee-harmonic-drive-limits.md)
-- **姊妹文：** [`wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md`](wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)（同作者线：Optimus 腿部为何选 PRS）、[`wechat_zanehub_humanoid_mass_production_experience.md`](wechat_zanehub_humanoid_mass_production_experience.md)（同作者线：量产经验与三大核心件工艺）
+- **姊妹文：** [`wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md`](wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)（同作者线：Optimus 腿部为何选 PRS）、[`wechat_zanehub_humanoid_mass_production_experience.md`](wechat_zanehub_humanoid_mass_production_experience.md)（同作者线：量产经验与三大核心件工艺）、[`wechat_zanehub_embodied_fm_why_self_develop_robot_body.md`](wechat_zanehub_embodied_fm_why_self_develop_robot_body.md)（同作者线：具身大模型为何自研本体）
 
 ## 核心摘录（归纳，非全文）
 
