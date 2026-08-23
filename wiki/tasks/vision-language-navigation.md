@@ -29,6 +29,7 @@ related:
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-fsd-vln.md
+  - ../entities/paper-language-to-navigation-goals-rgbd.md
   - ../entities/paper-arcadia.md
   - ../entities/paper-zonda.md
   - ../entities/paper-travexplorer.md
@@ -102,6 +103,7 @@ sources:
 - **设定差异：** [WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 等 **空中 VLN** 工作在 **连续 3D 航点** 与 **大视角 egocentric 变化** 下闭环执行语言指令；相对 Matterport 离散转向，更强调 **因果记忆、短视界世界预测与真机迁移**。
 - **范式对照：** 地面开源栈见 [四范式复现路径](../overview/vln-open-source-repro-paradigms.md)；空中路线可将 **自回归 World Action Model**、**导航 VLA** 与 **快慢双系统** 对照阅读（[WAM 概念页](../concepts/world-action-models.md)）。
 - **零样本统一 agent：** [Uni-LaViRA](../entities/paper-uni-lavira.md)（arXiv:2605.27582）把 VLN-CE / ObjectNav / EQA / Aerial-VLN 写成同一 **Language→Vision→Robot** 翻译环，**无机器人轨迹训练**；OpenUAV SR 40.0%，并与训练式导航基础模型对照。
+- **ROS 2 分层语义导航（待开源）：** [Language-to-Navigation-Goals](../entities/paper-language-to-navigation-goals-rgbd.md)（arXiv:2607.13624）用远程 VLM bbox + RGB-D 投影生成 **Nav2** 目标，TurtleBot3 端到端导航误差约 0.70 m，Go2 真机定位约 0.51 m；与端到端 VLN 策略互补。
 - **快慢双系统（仿真、未开源）：** [FSD-VLN](../entities/paper-fsd-vln.md)（arXiv:2607.08359）冻结 VLM 写 **VLSF**，GR00T N1 系 DiT 异步出 8 类离散飞行动作；未见相对自复现 OpenFly SR 5.1%→**13.6%**，单步/任务时长约减半，但 **H=1 最好**、无真机。勿与 WorldVLN 的世界转移或室内 3 m SR 混读。
 
 ### 户外 / 城市尺度方向指令

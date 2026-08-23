@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [language_to_navigation_goals_arxiv_2607_13624.md](papers/language_to_navigation_goals_arxiv_2607_13624.md) | Language-to-Navigation-Goals：ROS 2 VLM+RGB-D→Nav2 语义导航（arXiv:2607.13624，UPO；Go2 真机；代码待接收后开源）摘录与 wiki 映射 |
 | [x] [cref_arxiv_2603_29452.md](papers/cref_arxiv_2603_29452.md) | CReF：交叉模态与循环融合的深度条件人形行走（arXiv:2603.29452，浙大/山大；X2 Ultra 零样本；确认未开源）摘录与 wiki 映射 |
 | [x] [sonic_transfer_frozen_wbc_codec_lora.md](papers/sonic_transfer_frozen_wbc_codec_lora.md) | SONIC-Transfer：冻结 GEAR-SONIC + 闭式 codec + 解码器 LoRA 迁到 AgiBot X2 Ultra（draft 2026-08-16；无 arXiv；推理 play 已开）摘录与 wiki 映射 |
 | [x] [hmi_p001_operational-space-formulation.md](papers/hmi_p001_operational-space-formulation.md) 等 23 篇 | HMI 论文缺口批量归档（P001–P005/P012/P017–P018/P023/P028/P037/P039/P042–P043/P053/P055/P059/P064/P068–P072/P130）；导读见 `wiki/queries/hmi-papers-coverage.md` |

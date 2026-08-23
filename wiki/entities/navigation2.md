@@ -73,6 +73,7 @@ summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [OOMWOO](./oomwoo.md) — 开源家用扫地机（Nav2 应用整机）
+- [Language-to-Navigation-Goals（VLM+RGB-D→Nav2）](./paper-language-to-navigation-goals-rgbd.md)
 - [Autoware](./autoware.md)
 
 ## 推荐继续阅读
