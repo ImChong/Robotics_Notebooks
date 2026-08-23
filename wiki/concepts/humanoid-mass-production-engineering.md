@@ -2,8 +2,9 @@
 type: concept
 tags: [humanoid, hardware, manufacturing, dfm, supply-chain, reliability, yield]
 status: complete
-updated: 2026-08-19
+updated: 2026-08-23
 related:
+  - ./embodied-foundation-model-hardware-codesign.md
   - ../overview/humanoid-hardware-101-supply-chain-economics.md
   - ../overview/humanoid-hardware-101-actuation-sensing-chain.md
   - ./humanoid-knee-harmonic-drive-limits.md
@@ -41,6 +42,7 @@ summary: "人形量产经验是把技术可行性转化为制造可行性的系�
 - **2026「量产元年」叙事下**，公开报道里 Optimus、Walker、IRON、宇树等产能目标与单价带宽并存——读者需要区分 **媒体样机** 与 **S 曲线良率、CPK 与 PPAP 放行** 两套语言。
 - **与 [Hardware 101 · 产业成本](../overview/humanoid-hardware-101-supply-chain-economics.md) 互补**：该页回答 BOM 与地缘；本页回答 **如何把四大件造稳、造一致**。
 - **给选型留制造侧判据**：谐波不是只看额定扭矩——[膝侧避开谐波](./humanoid-knee-harmonic-drive-limits.md) 谈冲击谱载与柔轮疲劳；量产侧还要问 **几十万件的良率与材料批次一致性**。
+- **与大模型叙事衔接**：自研本体不仅是制造问题，更是 **数据—仿真—量产同线** 的系统定义权；见 [具身大模型与本体协同设计](./embodied-foundation-model-hardware-codesign.md)。
 
 ## 核心原理
 

@@ -2,8 +2,9 @@
 type: overview
 tags: [hub, embodied-foundation-model, vlm, vln, vla, vlx, world-model, taxonomy]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-23
 related:
+  - ../concepts/embodied-foundation-model-hardware-codesign.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../concepts/3d-spatial-vqa.md
   - ../concepts/foundation-policy.md
@@ -43,7 +44,7 @@ summary: "具身大模型分类学选型闭环知识链枢纽：把 VLM 感知�
 
 - **补一条贯通的选型视角**：仓库已有各家族的实体/方法/对比页，但缺「从感知到推演逐层如何分工、各家族边界与取舍」的统一决策入口。
 - **暴露家族间取舍矛盾**：端到端 VLA vs 分层 VLN、显式世界模型预测 vs 无模型反应式、大模型泛化 vs 实时控制带宽、统一 VLX vs 专精分立——这些矛盾只有并置在一条链上才看得清。
-- **与人形产业叙事同向**：「大模型高层 + 实时低层控制」的分层部署，正是五层闭环在硬件上的落地形态。
+- **与人形产业叙事同向**：「大模型高层 + 实时低层控制」的分层部署，正是五层闭环在硬件上的落地形态；为何大模型公司仍自研本体见 [具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md)。
 
 ## 五层选型闭环
 
@@ -67,6 +68,7 @@ summary: "具身大模型分类学选型闭环知识链枢纽：把 VLM 感知�
 
 - **[VLA 与基础策略知识链](./hub-vla.md)**：执行层的开源谱系与 BFM 身体接口。
 - **[五大具身模型分类对比](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)**：本闭环的家族边界与递进关系原始对比。
+- **[具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md)**：模型族选型之外的硬件侧约束（数据闭环、分层频率、安全边界）。
 
 ## 关联页面
 
@@ -80,6 +82,7 @@ summary: "具身大模型分类学选型闭环知识链枢纽：把 VLM 感知�
 - [策略视觉表征](../concepts/visual-representation-for-policy.md)
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md)
 - [HumanNet Table1 人类视频语料](../comparisons/humannet-table1-human-video-corpora.md)
+- [具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md)
 
 ## 参考来源
 

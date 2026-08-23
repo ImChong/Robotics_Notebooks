@@ -2,8 +2,9 @@
 type: overview
 tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-23
 related:
+  - ../concepts/embodied-foundation-model-hardware-codesign.md
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-emergent-transfer-cross-config.md
@@ -38,6 +39,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - **数据与硬件碎片化**：不可能每个形态都从零采集全套示范。
 - **Sim2Real 的姊妹问题**：不仅是 sim→real，还有 human→robot、大→小人形。
 - **WBT 与 VLA 共同痛点**：参考动作与策略接口需对齐目标机体。
+- **与「自研本体」区分**：跨具身迁移研究 **有限接口下的技能搬运**；不等于「模型可脱离本体定义」——见 [具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md)。
 
 ## 本知识链覆盖什么
 
@@ -71,6 +73,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端接口多样性（产业闭源对照）
 - [Gemini Robotics](../entities/gemini-robotics.md) — On-Device 2 快速跨本体叙事（权重未开源）
 - [X-Morph](../entities/paper-xmorph.md) — 人体运动作非人形腿式可复用行为先验
+- [具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md) — 模型通用 vs 硬件形态通用
 
 ## 参考来源
 

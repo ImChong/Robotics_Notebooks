@@ -11,7 +11,7 @@
 - **抓取工具：** Agent Reach + wechat-article-for-ai（Camoufox；`--no-images`）
 - **一句话说明：** 从 DFM 与三大核心件工艺定型、良率爬坡与 CPK、供应链一致性、可靠性测试体系，到跨行业 PPAP/3C/医疗/航天经验迁移与主流厂商量产路径，系统解释「量产经验 = 技术可行性 → 制造可行性」的工程能力栈。
 - **沉淀到 wiki：** [`wiki/concepts/humanoid-mass-production-engineering.md`](../../wiki/concepts/humanoid-mass-production-engineering.md)
-- **姊妹文：** [`wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md`](wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)（同作者线：谐波柔轮疲劳与膝侧选型）、[`wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md`](wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)（Optimus 腿部 PRS 路线）
+- **姊妹文：** [`wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md`](wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)（同作者线：谐波柔轮疲劳与膝侧选型）、[`wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md`](wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)（Optimus 腿部 PRS 路线）、[`wechat_zanehub_embodied_fm_why_self_develop_robot_body.md`](wechat_zanehub_embodied_fm_why_self_develop_robot_body.md)（同作者线：具身大模型为何自研本体）
 
 ## 核心摘录（归纳，非全文）
 

@@ -1,3 +1,5 @@
+## [2026-08-23] ingest | sources/blogs/wechat_zanehub_embodied_fm_why_self_develop_robot_body.md — Zane Hub「具身大模型为何自研本体」；升格 wiki/concepts/embodied-foundation-model-hardware-codesign.md；交叉 hub-embodied-foundation-model / foundation-policy / 量产 / 策略架构 / 跨具身
+
 ## [2026-08-23] ingest | sources/repos/drive_game.md、nordschleife_racer.md — 接入浏览器纽北驾驶引擎（引擎 MIT；nordschleife GLB/Supabase 未入库）
 
 ## [2026-08-23] ingest | sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md — 具身智能小站「9 篇开源论文」；复用 Revisiting Open-Loop / 新建 8 论文实体 + 技术地图

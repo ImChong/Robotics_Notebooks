@@ -1,8 +1,9 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-08-20
+updated: 2026-08-23
 related:
+  - ./embodied-foundation-model-hardware-codesign.md
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
@@ -60,6 +61,8 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 > "规模化数据 + Transformer 架构 → 跨任务泛化" — RT-1 的核心命题，开创了机器人基础模型方向。
 
 传统机器人策略学习每个任务独立训练，无法复用跨任务知识。基础策略模型试图从根本上解决这一问题：训练一次，泛化到数百乃至数千个任务。
+
+跨任务泛化仍受 **本体动作空间、传感闭环与安全边界** 约束——「通用策略」不等于脱离硬件；见 [具身大模型与本体协同设计](./embodied-foundation-model-hardware-codesign.md)。
 
 ---
 

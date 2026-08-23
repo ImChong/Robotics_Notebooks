@@ -150,7 +150,7 @@ flowchart TD
 ## 常见误区
 
 - **「模型越大，人形运动越强」**：真机最强策略经常是 **宽度 256–512、深度 2–3 的 MLP**；瓶颈更常在 **观测、延迟、执行器、奖励与迁移**，而非参数量本身。
-- **「一篇论文的网络＝整条产品栈」**：论文展示的可能是 **单一频率层**；实际系统常是 **分层：慢语义 / 快跟踪**（参见 [VLA](../methods/vla.md) 与低层跟踪器互链）。
+- **「一篇论文的网络＝整条产品栈」**：论文展示的可能是 **单一频率层**；实际系统常是 **分层：慢语义 / 快跟踪**（参见 [VLA](../methods/vla.md) 与低层跟踪器互链）；为何该分层绑定特定本体见 [具身大模型与本体协同设计](./embodied-foundation-model-hardware-codesign.md)。
 
 ## 关联页面
 
@@ -164,6 +164,7 @@ flowchart TD
 - [Foundation Policy](./foundation-policy.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 策略网络架构支撑五层闭环的 VLA 动作执行层
+- [具身大模型与本体协同设计](./embodied-foundation-model-hardware-codesign.md) — 分层频率与本体定义权
 
 ## 参考来源
 

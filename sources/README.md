@@ -352,6 +352,7 @@
 | [x] [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md](blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md) | 微信公众号：Zane Zhang，特斯拉 Optimus 腿部行星滚柱丝杠（PRS）选型叙事与路线对比（入库归纳） |
 | [x] [wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md](blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md) | 微信公众号：Zane Hub，人形膝/腿主承力链为何通常不用谐波减速器（冲击谱载·柔轮疲劳·PRS/RV/QDD 对照；`GowJUzbDjWQMcujtUezLGA`） |
 | [x] [wechat_zanehub_humanoid_mass_production_experience.md](blogs/wechat_zanehub_humanoid_mass_production_experience.md) | 微信公众号：Zane Hub，人形量产经验（DFM·三大核心件工艺·良率/CPK·供应链·可靠性·跨行业 PPAP；`CARW0vvd4doO1htt0Q1bHg`） |
+| [x] [wechat_zanehub_embodied_fm_why_self_develop_robot_body.md](blogs/wechat_zanehub_embodied_fm_why_self_develop_robot_body.md) | 微信公众号：Zane Hub，具身大模型为何自研机器人本体（有效通用性·数据闭环·分层控制·ISO/TS 15066；`Ao24KF_9mIt5qOwE7W92QA`） |
 | [x] [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md) | 微信公众号「机械Robot」：机器人开源宝库第01期 10 个全开源网址（策展索引 + 10 实体页） |
 | [x] [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md) | 微信公众号「机械Robot」：机器人开源宝库第02期 10 个全开源网址（Reachy2、Poppy、InMoov、Doggo/Pupper 等） |
 | [x] [wechat_embodied_ai_lab_robot_world_model_training_loop.md](blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md) | 微信公众号「具身智能研究室」：机器人世界模型应进入训练闭环（编译 arXiv:2605.00080 综述；Agent Reach + Camoufox 抓取） |
