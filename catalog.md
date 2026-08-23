@@ -482,6 +482,7 @@
 - [Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）](wiki/entities/paper-chronos.md) — Chronos**（arXiv:2606.30318，[项目页](https://chronos-manipulation. `📅unknown` `[entity_page]`
 - [CLIFT：不打开模型盒子的闭环迭代微调](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md) — CLIFT**（*Closed-Loop Iterative Fine-Tuning*；论文 *CLIFT: Turning Gemini Robotics On-Device into Huma `📅unknown` `[entity_page]`
 - [ClothTransformer（Unified Latent-Space Cloth Simulation · arXiv:2605.27852）](wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md) — ClothTransformer**（*ClothTransformer: Unified Latent-Space Transformers for Scalable Cloth Simulat `📅unknown` `[entity_page]`
+- [CMoE：对比学习混合专家的人形运动控制与地形适应](wiki/entities/paper-cmoe.md) — CMoE**（*Contrastive Mixture of Experts for Motion Control and Terrain Adaptation of Humanoid Robot `📅unknown` `[entity_page]`
 - [CMP：上下文感知运动先验](wiki/entities/paper-cmp.md) — CMP**（*Context-Aware Motion Priors*；论文 *Learning Context-Aware Motion Priors for Humanoid Control `📅unknown` `[entity_page]`
 - [CO-Calib（多鱼眼标定 · 观测质量）](wiki/entities/paper-co-calib-multi-fisheye-calibration.md) — CO-Calib**（*Observation Quality Matters: Robust Multi-Fisheye Calibration via Failure-Oriented Ana `📅unknown` `[entity_page]`
 - [COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）](wiki/entities/paper-coins-compositional-human-scene-interaction.md) — COINS**（*Compositional Human-Scene Interaction Synthesis with Semantic Control*，Zhao et al.，ECCV 2 `📅unknown` `[entity_page]`

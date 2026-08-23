@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, locomotion, mixture-of-experts, terrain-adaptation, unitree-g1, sim2real, teleai, heu, shanghaitech, ustc]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-23
 arxiv: "2506.08840"
 venue: arXiv
 code: https://github.com/TeleHuman/MoRE
@@ -20,6 +20,7 @@ related:
   - ./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md
   - ./paper-unified-walk-run-recovery-sdamp.md
   - ./paper-explicit-stair-geometry-humanoid-locomotion.md
+  - ./paper-cmoe.md
 sources:
   - ../../sources/repos/more.md
   - ../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md

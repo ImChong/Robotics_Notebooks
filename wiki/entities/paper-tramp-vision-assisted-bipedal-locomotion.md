@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, depth, amp, motion-prior, mixture-of-experts, single-stage-rl, sim2real, sjtu, ieee-ral]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-23
 doi: "10.1109/LRA.2026.3707326"
 venue: "IEEE RA-L 2026"
 related:
@@ -18,6 +18,7 @@ related:
   - ./paper-cref.md
   - ./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ./paper-parkourformer.md
+  - ./paper-cmoe.md
 sources:
   - ../../sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md
   - ../../sources/sites/tramp-researchgate-publication.md
@@ -48,7 +49,7 @@ summary: "TRAMP（SJTU，IEEE RA-L 2026）：单阶段视觉辅助人形 RL—�
 
 - **单阶段 vs 多阶段感知栈：** 相对 [MoRE](./paper-amp-survey-08-more.md)（先深度 base 再叠 AMP+MoE）、[DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md)（重建模块 + 多教师蒸馏），TRAMP 把感知、地形调制与风格先验压进**一条 RL 训练链**，降低管线维护成本。
 - **地形相关 AMP 的示范设计：** 摘要用**平地 + 楼梯**两类示范构造先验，而非单一参考轨迹或全地形混合判别器——与 [T-GMP](./paper-motion-cerebellum-t-gmp.md) 的 CVAE 生成式多地形流形、[ParkourFormer](./paper-parkourformer.md) 的未来步 AMP 监督形成不同技术路线。
-- **MoE 用于地形行为调制：** 与 [CMoE](https://arxiv.org/abs/2603.03067) 等「对比学习防 MoE 塌缩」同期工作对照；TRAMP 强调**层次特征 → MoE actor** 与 AMP 的联合，而非分阶段 gait/terrain 分支。
+- **MoE 用于地形行为调制：** 与 [CMoE](./paper-cmoe.md) 等「对比学习防 MoE 塌缩」同期工作对照；TRAMP 强调**层次特征 → MoE actor** 与 AMP 的联合，而非分阶段 gait/terrain 分支。
 - **工程传感器栈克制：** 明确只要**低成本深度**而非 RGB-D/LiDAR 高程图，适合算力与硬件预算受限的双足平台部署。
 
 ## 核心信息
@@ -176,7 +177,7 @@ flowchart TB
 **TRAMP 的价值在于把「视觉感知 + 地形行为分工 + 风格先验」焊进单阶段 RL，用双地形 AMP 示范替代更重的几何中间表示或多阶段蒸馏。**
 
 - 若你的瓶颈是**管线阶段过多**，应优先对照 TRAMP 的单阶段设计与 [MoRE](./paper-amp-survey-08-more.md)/[DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) 的多模块方案。
-- **MoE + 层次潜特征**是摘要明确点名的两件套；是否在 MoE 上还需对比学习防塌缩（如 CMoE），要看正文消融。
+- **MoE + 层次潜特征**是摘要明确点名的两件套；是否在 MoE 上还需对比学习防塌缩（如 [CMoE](./paper-cmoe.md)），要看正文消融。
 - **平地/楼梯双示范 AMP** 是差异化假设：比「单参考 AMP」更贴楼梯，又比「每地形一判别器」更轻；实际是否覆盖宽沟/高台需读实验。
 - 传感器侧押注**低成本深度**，适合预算型双足，但域随机化/延迟标定细节决定 sim2real。
 - **截至入库日未开源**；选型时按 IEEE RA-L + ResearchGate 全文评估，勿假设有官方复现仓。
