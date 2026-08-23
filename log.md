@@ -1,3 +1,5 @@
+## [2026-08-23] ingest | sources/papers/cmoe_contrastive_mixture_of_experts_icra_2026.md — CMoE（ICRA 2026，Fudan）：对比学习防 MoE 门控塌缩 + G1 高程图感知；官方 Isaac Gym 代码已开源
+
 ## [2026-08-22] ingest | sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md — Vision-Driven Reactive Soccer（Science Robotics 2026 / arXiv:2511.03996）；项目页 Code→Zenodo 部分开源；补强实体页源码时序图与量化指标
 
 

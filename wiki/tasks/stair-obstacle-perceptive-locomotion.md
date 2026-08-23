@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-08-22
+updated: 2026-08-23
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -133,6 +133,7 @@ flowchart TB
 | **有**（机器人中心高程扫描 + identity-gated 残差） | **楼梯/块/坡/草地 · raw 参考 BFM** | [Perceptive BFM](../entities/paper-perceptive-bfm.md) | TCRS 离线监督 + PMT 四阶段；部署仍用 **原始人体参考**；G1 单策略覆盖 mocap 遥操作、舞蹈、杂技与户外 |
 | **有**（本体历史 + 高程 CNN → VAE latent） | **踏石 / 楼梯 / 缺口 · VAE-PPO 优化** | [P³](../entities/paper-p3.md) | 不改感知架构，把 PPO clip 改成边缘策略似然；G1 真机 8/9/10（10 trial）；代码已开源 |
 | **有**（低成本深度，无显式高程中间层） | **坡/楼梯/高台/宽沟 · 单阶段** | [TRAMP](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) | 层次特征 + MoE actor + 平地/楼梯地形相关 AMP；SJTU 人形真机户外杂乱场景；IEEE RA-L 2026；代码未开源 |
+| **有**（雷达/仿真高程图 0.7×1.1 m） | **沟/台阶/栏/混合 · MoE 门控** | [CMoE](../entities/paper-cmoe.md) | SwAV 式对比学习防 Vanilla MoE 均匀激活；G1 真机 80 cm 沟、20 cm 连续台阶；ICRA 2026；Isaac Gym 代码已开源 |
 
 ### 四足 · 楼梯与崎岖
 
