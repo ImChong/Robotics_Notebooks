@@ -1,23 +1,106 @@
 {
   "generated_at": "2026-08-23",
-  "node_count": 3221,
-  "edge_count": 28561,
+  "node_count": 3230,
+  "edge_count": 28609,
   "coverage": {
-    "covered": 3196,
-    "total": 3196,
+    "covered": 3205,
+    "total": 3205,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-cmoe.md",
-      "detail_id": "entity-paper-cmoe",
-      "label": "CMoE：对比学习混合专家的人形运动控制与地形适应",
+      "path": "wiki/entities/paper-dual-head-coordination.md",
+      "detail_id": "entity-paper-dual-head-coordination",
+      "label": "Dual-Head Coordination",
       "type": "entity",
       "recency": "2026-08-23",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gains.md",
+      "detail_id": "entity-paper-gains",
+      "label": "GAINS",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gigabrain-0-7.md",
+      "detail_id": "entity-paper-gigabrain-0-7",
+      "label": "GigaBrain-0.7",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-neural-gcs.md",
+      "detail_id": "entity-paper-neural-gcs",
+      "label": "Neural GCS",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-reforce.md",
+      "detail_id": "entity-paper-reforce",
+      "label": "ReForce",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sparkvla.md",
+      "detail_id": "entity-paper-sparkvla",
+      "label": "SparkVLA",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-structrl.md",
+      "detail_id": "entity-paper-structrl",
+      "label": "StructRL",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-yopo-minco.md",
+      "detail_id": "entity-paper-yopo-minco",
+      "label": "YOPO-MINCO",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-robustness-9-papers-technology-map.md",
+      "detail_id": "wiki-overview-vla-robustness-9-papers-technology-map",
+      "label": "VLA 可执行性与鲁棒性：9 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-cotograsp.md",
@@ -46,8 +129,7 @@
       "type": "entity",
       "recency": "2026-08-22",
       "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-goag.md",
@@ -130,107 +212,27 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-loopermuscle.md",
-      "detail_id": "entity-paper-loopermuscle",
-      "label": "LooperMuscle：结构化 MoE 加速人形全身跟踪",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adapt.md",
-      "detail_id": "entity-paper-adapt",
-      "label": "AdaPT（人形网球自适应规划与跟踪）",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/video-contact-control-10-papers-technology-map.md",
-      "detail_id": "wiki-overview-video-contact-control-10-papers-technology-map",
-      "label": "视频–接触–控制：10 篇论文的阅读坐标",
-      "type": "overview",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-decowam.md",
-      "detail_id": "entity-paper-decowam",
-      "label": "DECOWAM（腿足移动操作解耦全身 WAM）",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hitac-wam.md",
-      "detail_id": "entity-paper-hitac-wam",
-      "label": "HiTac-WAM（分层触觉世界–动作模型）",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-revisiting-open-loop-action-chunking.md",
-      "detail_id": "entity-paper-revisiting-open-loop-action-chunking",
-      "label": "Revisiting Open-Loop Execution（长上下文 reactive 策略）",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-scheduled-inpainting-gme.md",
-      "detail_id": "entity-paper-scheduled-inpainting-gme",
-      "label": "Scheduled Inpainting：交互式生成式运动编辑（GME）",
-      "type": "entity",
-      "recency": "2026-08-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adept-dexterity.md",
-      "detail_id": "entity-paper-adept-dexterity",
-      "label": "ADEPT：灵巧操作 RL 预训练与后训练",
-      "type": "entity",
-      "recency": "2026-08-21",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-cmoe.md",
-    "detail_id": "entity-paper-cmoe",
-    "label": "CMoE：对比学习混合专家的人形运动控制与地形适应",
+    "path": "wiki/entities/paper-dual-head-coordination.md",
+    "detail_id": "entity-paper-dual-head-coordination",
+    "label": "Dual-Head Coordination",
     "type": "entity",
     "recency": "2026-08-23",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 614
+      "label": "仿真到现实",
+      "size": 642
     },
     {
-      "label": "仿真到现实",
-      "size": 556
+      "label": "操作",
+      "size": 623
     },
     {
       "label": "视觉-语言-动作",
@@ -238,15 +240,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 219
-    },
-    {
-      "label": "全身控制",
-      "size": 152
+      "size": 213
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 138
+      "size": 137
+    },
+    {
+      "label": "移动操作",
+      "size": 132
     }
   ],
   "top_hubs": [
@@ -254,7 +256,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1288,
+      "degree": 1293,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -270,14 +272,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 880,
+      "degree": 882,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 767,
+      "degree": 771,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -285,7 +287,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 740,
+      "degree": 741,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -301,7 +303,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 542,
+      "degree": 544,
       "has_repo": true
     },
     {
