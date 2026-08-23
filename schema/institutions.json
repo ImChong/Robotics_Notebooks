@@ -623,6 +623,13 @@
         "pablo-de-olavide"
       ]
     },
+    "honor": {
+      "label": "荣耀（Honor）",
+      "aliases": [
+        "honor",
+        "honor-robotics"
+      ]
+    },
     "hitsz": {
       "label": "哈尔滨工业大学深圳（Harbin Institute of Technology, Shenzhen）",
       "aliases": [

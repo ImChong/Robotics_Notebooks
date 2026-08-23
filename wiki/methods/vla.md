@@ -496,6 +496,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [CLIFT 闭环迭代微调](../entities/paper-clift-closed-loop-iterative-finetuning.md) — 闭权重 VLA 只给托管 SFT API 时，把奖励反馈编码成 chunk 级优势 token（arXiv:2607.29172）
 - [GSR / ParaVLA](../entities/paper-gsr-paravla.md) — 改写指令崩溃来自 joint routing；冻结 T5 重绑（arXiv:2608.02497，已开源）
 - [Ego2Robot](../entities/paper-ego2robot.md) — 第一人称人视频合成 15 形态 18,561 h 预训练数据（arXiv:2608.02580；管线未开源）
+- [EATR-Stereo](../entities/paper-eatr-stereo.md) — 冻结 VLM + primary-aligned CVAT + 分段本体路由融合头载双目；33-DoF Omega 全流程 60%/抓取 100%（arXiv:2608.17453；未开源）
 
 
 ## 推荐继续阅读
