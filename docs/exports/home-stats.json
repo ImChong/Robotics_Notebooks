@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-eatr-stereo.md",
+      "detail_id": "entity-paper-eatr-stereo",
+      "label": "EATR-Stereo",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/concepts/embodied-foundation-model-hardware-codesign.md",
       "detail_id": "wiki-concepts-embodied-foundation-model-hardware-codesign",
       "label": "具身大模型与本体协同设计",
@@ -209,27 +218,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dreamhand.md",
-      "detail_id": "entity-paper-dreamhand",
-      "label": "DreamHand",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/embodied-foundation-model-hardware-codesign.md",
-    "detail_id": "wiki-concepts-embodied-foundation-model-hardware-codesign",
-    "label": "具身大模型与本体协同设计",
-    "type": "concept",
+    "path": "wiki/entities/paper-eatr-stereo.md",
+    "detail_id": "entity-paper-eatr-stereo",
+    "label": "EATR-Stereo",
+    "type": "entity",
     "recency": "2026-08-23",
     "source": "git",
-    "action": "added",
-    "community_label": "人形机器人（Humanoid Robot） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
