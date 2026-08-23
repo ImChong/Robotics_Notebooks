@@ -1,3 +1,5 @@
+## [2026-08-23] ingest | sources/repos/drive_game.md、nordschleife_racer.md — 接入浏览器纽北驾驶引擎（引擎 MIT；nordschleife GLB/Supabase 未入库）
+
 ## [2026-08-23] ingest | sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md — 具身智能小站「9 篇开源论文」；复用 Revisiting Open-Loop / 新建 8 论文实体 + 技术地图
 
 ## [2026-08-23] ingest | sources/papers/cmoe_contrastive_mixture_of_experts_icra_2026.md — CMoE（ICRA 2026，Fudan）：对比学习防 MoE 门控塌缩 + G1 高程图感知；官方 Isaac Gym 代码已开源
