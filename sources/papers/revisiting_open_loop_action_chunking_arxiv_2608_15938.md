@@ -8,6 +8,7 @@
 - **项目页：** <https://revisiting-open-loop-action-chunking.github.io/>
 - **机构：** 麻省理工学院（MIT）；加州大学伯克利分校（UC Berkeley）
 - **入库日期：** 2026-08-22
+- **索引来源：** [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md)（<https://mp.weixin.qq.com/s/CXOf3PU8-H6OzI77vnhZMA>）
 - **一句话说明：** 系统实验表明：长 **open-loop execution horizon** 主因是 **短上下文策略模仿非马尔可夫专家**；足够长的观测上下文下 **闭环 reactive 策略最优**；提出 **double encoder** 稳定长上下文 Diffusion Policy 训练。
 
 ## 开源状态（步骤 2.5，2026-08-22）

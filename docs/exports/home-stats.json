@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-23",
-  "node_count": 3220,
-  "edge_count": 28546,
+  "node_count": 3229,
+  "edge_count": 28594,
   "coverage": {
-    "covered": 3195,
-    "total": 3195,
+    "covered": 3204,
+    "total": 3204,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -35,8 +35,7 @@
       "type": "entity",
       "recency": "2026-08-22",
       "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-goag.md",
@@ -224,12 +223,12 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 614
+      "label": "仿真到现实",
+      "size": 641
     },
     {
-      "label": "仿真到现实",
-      "size": 555
+      "label": "操作",
+      "size": 623
     },
     {
       "label": "视觉-语言-动作",
@@ -237,15 +236,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 219
-    },
-    {
-      "label": "全身控制",
-      "size": 152
+      "size": 213
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 138
+      "size": 137
+    },
+    {
+      "label": "移动操作",
+      "size": 132
     }
   ],
   "top_hubs": [
@@ -253,7 +252,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1288,
+      "degree": 1293,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -269,14 +268,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 879,
+      "degree": 881,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 767,
+      "degree": 771,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +283,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 740,
+      "degree": 741,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -300,7 +299,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 542,
+      "degree": 544,
       "has_repo": true
     },
     {

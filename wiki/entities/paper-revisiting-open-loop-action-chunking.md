@@ -21,10 +21,11 @@ related:
   - ./paper-autointervene.md
   - ./paper-spd.md
   - ./libero-benchmark.md
-  - ../queries/vla-deployment-guide.md
+  - ../overview/vla-robustness-9-papers-technology-map.md
 sources:
   - ../../sources/papers/revisiting_open_loop_action_chunking_arxiv_2608_15938.md
   - ../../sources/sites/revisiting-open-loop-action-chunking.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md
 summary: "Revisiting Open-Loop（arXiv:2608.15938，MIT / Berkeley）：长 open-loop execution horizon 主因是短上下文模仿非马尔可夫专家；足够 context 后闭环 reactive 最优；提出 double encoder 稳定长上下文 Diffusion Policy。"
 ---
 
@@ -145,3 +146,4 @@ flowchart TB
 
 - [Revisiting Open-Loop 论文归档](../../sources/papers/revisiting_open_loop_action_chunking_arxiv_2608_15938.md)
 - [项目页归档](../../sources/sites/revisiting-open-loop-action-chunking.md)
+- [具身智能小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md)
