@@ -139,6 +139,7 @@
 - [Draw.io Scientific Illustrator](wiki/entities/drawio-scientific-illustrator.md) — Draw.io Scientific Illustrator**（[icebird1998/drawio-scientific-illustrator](https://github.com/ic `📅unknown` `[entity_page]`
 - [DreamWaQ++（障碍感知四足多模态强化学习）](wiki/entities/dreamwaq-plus.md) — DreamWaQ++**（Nahrendra et al., arXiv:2409.19709，**IEEE T-RO 20 `📅unknown` `[entity_page]`
 - [drift_drl（High-speed Autonomous Drifting with DRL）](wiki/entities/drift-drl.md) — drift_drl** 是 Cai 等提出的 **高速自主漂移深度强化学习** 方法与官方实现（*IEEE RA-L & ICRA 2020*），在 **CARLA 0.9.5 定制仿真** 上训 `📅unknown` `[entity_page]`
+- [drive-game（Nürburgring Drive）](wiki/entities/drive-game.md) — drive-game** 是面向 **纽博格林** 等真实赛道的 **浏览器/Android 第一人称驾驶模拟器**：**Three.js** 渲染叠在自研 **240 Hz** 车辆物理之上，赛 `📅unknown` `[entity_page]`
 - [DROID Policy Learning](wiki/entities/droid-policy-learning.md) — DROID Policy Learning](https://github.com/droid-dataset/droid_policy_learning) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
 - [DualMap](wiki/entities/dualmap.md) — DualMap**（Eku127/DualMap，RAL 2025）是面向动态环境的 **在线开放词汇语义建图** 与自然 `📅unknown` `[entity_page]`
 - [Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）](wiki/entities/dyna-2.md) — Dyna-2** 是 **Dyna Robotics**（2026-08 研究长文）发布的旗舰 **World-Action Model（WAM）**：在 **≥1,000,000 小时** eg `📅unknown` `[entity_page]`
@@ -348,6 +349,7 @@
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
 - [新智具身智能（NeoteAI）](wiki/entities/neoteai.md) — 新智具身智能**（上海新智具身智能科技有限公司，NeoteAI）源自 **复旦大学可信具身智能研究院（TEAI）**，以触觉为具身原生模态，产 `📅unknown` `[entity_page]`
 - [Newton Physics（物理引擎）](wiki/entities/newton-physics.md) — Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 [NVIDIA Warp](https://developer.nvidia.com/warp-py `📅unknown` `[entity_page]`
+- [nordschleife-racer](wiki/entities/nordschleife-racer.md) — nordschleife-racer** 是 **yassin.app** 背后的 **浏览器竞速引擎**：**TypeScript + Three.js** 实现程序化 **纽北** 单圈、 `📅unknown` `[entity_page]`
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`
 - [NVIDIA GEAR Lab（Generalist Embodied Agent Research）](wiki/entities/nvidia-gear-lab.md) — GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **[Linxi  `📅unknown` `[entity_page]`
@@ -3118,7 +3120,7 @@
 - [Paper Notebooks · Physics-Based Animation](wiki/overview/paper-notebook-category-13-physics-based-animation.md) — Physics-Based Animation**（`13_Physics-Based_Animation`）是 [Humanoid Robot Learning Paper Notebooks `📅unknown` `[overview_page]`
 - [Paper Notebooks · Human Motion](wiki/overview/paper-notebook-category-14-human-motion.md) — Human Motion**（`14_Human_Motion`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.githu `📅unknown` `[overview_page]`
 - [四足 × VLN × 具身智能实战营（技术地图）](wiki/overview/quadruped-vln-embodied-workshop.md) — 本页把「2 天线下实战 + 1 月线上答疑」课程日程中的 **技术点与项目** 映射到本知识库的 **独立详情节点**，作为覆盖验收表与学习入口。硬件基线：每组 **四足 + LiDAR + 相机 + `📅unknown` `[overview_page]`
-- [赛车漂移强化学习开源景观](wiki/overview/racing-drift-rl-open-source-landscape.md) — 赛车漂移研究的工程分叉主要在三层：**用什么仿真**（轻量 f1tenth_gym vs 高保真 CARLA vs ROS/Gazebo 全栈）、**用什么控制**（端到端 RL vs 学习 MPC  `📅unknown` `[overview_page]`
+- [赛车漂移强化学习开源景观](wiki/overview/racing-drift-rl-open-source-landscape.md) — 赛车漂移研究的工程分叉主要在三层：**用什么仿真**（轻量 f1tenth_gym vs 高保真 CARLA vs ROS/Gazebo 全栈 vs **浏览器自研物理**）、**用什么控制**（端到 `📅unknown` `[overview_page]`
 - [REALab 技术地图：14 篇工作（2026）](wiki/overview/realab-14-papers-technology-map-2026.md) — Stanford **Robotics and Embodied AI Lab（REALab，宋舒然）** 在 2026 年的 14 篇代表性工作，共同回答：**当机体形态各异、真实接触极复杂时，如何 `📅unknown` `[overview_page]`
 - [RoboParty Lab / Party OS 技术地图](wiki/overview/roboparty-lab-party-os-technology-map.md) — RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party OS** 作为研发底座，首批开源 **hhtools（动作重定向）→ MimicLite（监督跟踪 infra `📅unknown` `[overview_page]`
 - [自适应控制（体系④）](wiki/overview/robot-control-paradigm-adaptive-control.md) — 在线辨识时变参数并修正控制律，解决负载变化、磨损与摩擦漂移，与鲁棒「被动抵抗」形成互补。 `📅unknown` `[overview_page]`

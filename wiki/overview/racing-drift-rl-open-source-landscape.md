@@ -10,6 +10,8 @@ related:
   - ../entities/barc.md
   - ../entities/drift-drl.md
   - ../entities/xcar-rlgpu.md
+  - ../entities/drive-game.md
+  - ../entities/nordschleife-racer.md
   - ../entities/carla.md
   - ../concepts/sim2real.md
   - ../overview/sim-platforms-decade-technology-map.md
@@ -26,7 +28,9 @@ sources:
   - ../../sources/repos/f1tenth_gym.md
   - ../../sources/repos/autonomous_f1tenth.md
   - ../../sources/repos/carla.md
-summary: "赛车/漂移方向 10 个代表性开源入口：按仿真后端（f1tenth_gym / CARLA / Gazebo / 自研 GPU）、控制范式（RL / LMPC / 非线性 MPC）与硬件（BARC / F1TENTH 真机）分组，服务复现选型而非单一路线排名。"
+  - ../../sources/repos/drive_game.md
+  - ../../sources/repos/nordschleife_racer.md
+summary: "赛车/漂移与纽北驾驶开源景观：RL/MPC/F1TENTH 训练栈 + 浏览器 Three.js 驾驶引擎（drive-game、nordschleife-racer），按仿真后端与控制范式分组选型。"
 ---
 
 # 赛车漂移强化学习开源景观
@@ -35,7 +39,7 @@ summary: "赛车/漂移方向 10 个代表性开源入口：按仿真后端（f1
 
 ## 一句话总结
 
-赛车漂移研究的工程分叉主要在三层：**用什么仿真**（轻量 f1tenth_gym vs 高保真 CARLA vs ROS/Gazebo 全栈）、**用什么控制**（端到端 RL vs 学习 MPC vs 显式轮胎模型 NMPC）、**是否上真机**（BARC / F1TENTH / 自研 1:10）。先选对层，再选仓库。
+赛车漂移研究的工程分叉主要在三层：**用什么仿真**（轻量 f1tenth_gym vs 高保真 CARLA vs ROS/Gazebo 全栈 vs **浏览器自研物理**）、**用什么控制**（端到端 RL vs 学习 MPC vs 显式轮胎模型 NMPC）、**是否上真机**（BARC / F1TENTH / 自研 1:10）。先选对层，再选仓库。
 
 ## 英文缩写速查
 
@@ -92,6 +96,28 @@ flowchart TB
 | **autonomous_f1tenth** | CARES RL + Gazebo 仿真/真车 | F1TENTH + ROS 2 | 已开源 | 本页 |
 | **CARLA** | 城市 AD 仿真基础设施 | UE 城市 | 已开源 MIT | [carla](../entities/carla.md) |
 
+## 浏览器纽北 / 赛道驾驶引擎（补充）
+
+> 下列项目面向 **人类可玩模拟器 / 引擎源码阅读**，默认 **无 Gym RL API**；轮胎与悬挂实现可对照 MPC/漂移研究，但不宜与上表训练栈直接混比圈速。
+
+| 项目 | 核心贡献（归纳） | 运行形态 | 开源 | 本站页 |
+|------|------------------|----------|------|--------|
+| **drive-game** | OSM/DEM 真几何纽北 + **240 Hz** Pacejka 物理；Web/Android | [drive-game.pages.dev](https://drive-game.pages.dev) 可本地 `npm run dev` | 已开源 MIT | [drive-game](../entities/drive-game.md) |
+| **nordschleife-racer** | TS 程序化纽北 + 漂移物理 + Supabase 多人/榜 | 玩：[yassin.app](https://yassin.app)；仓为引擎切片 | 引擎 MIT；GLB/后端未入库 | [nordschleife-racer](../entities/nordschleife-racer.md) |
+
+```mermaid
+flowchart LR
+  subgraph browser ["浏览器引擎"]
+    DG[drive-game<br/>OSM 真几何 240Hz]
+    NR[nordschleife-racer<br/>程序化纽北 多人]
+  end
+  subgraph research ["科研训练栈"]
+    FG[f1tenth_gym]
+    CL[CARLA drift_drl]
+  end
+  browser -.->|"轮胎/悬挂可读性"| research
+```
+
 ## 按复现目标选入口
 
 | 你的首要目标 | 建议起点 | 常见坑 |
@@ -105,12 +131,15 @@ flowchart TB
 | 真机 1/10 全栈 | [barc](../entities/barc.md) | 硬件 BOM + Odroid 刷机 + ROS 版本 |
 | ROS 2 + Gazebo RL | [autonomous_f1tenth](https://github.com/UoA-CARES/autonomous_f1tenth) | 源码构建 Gazebo Garden + fork gz-sim |
 | 城市 AD 通用仿真 | [carla](../entities/carla.md) | 漂移专用仓往往锁定**旧版** CARLA |
+| 本地可 fork 的纽北模拟器 | [drive-game](../entities/drive-game.md) | `npm run dev`；非 RL 环境 |
+| 读漂移/多人引擎源码 | [nordschleife-racer](../entities/nordschleife-racer.md) | 完整游玩靠 yassin.app；车模不在仓内 |
 
 ## RL vs MPC：如何读这条线
 
 - **RL 路线**（drift_drl、DOA、Gym-Khana、xcar-rlgpu、autonomous_f1tenth）假设奖励/课程能塑造侧滑稳定域，优势是模型误差容忍度高，代价是样本与 Sim2Real 成本高。
 - **MPC 路线**（LearningMPC、drift-mpc-ackermann）显式用自行车模型 + 轮胎力饱和；优势是可解释与约束安全，代价是模型辨识与实时求解。
 - **BARC** 更偏 **教学/研究全栈**：漂移只是能力之一，价值在硬件、数据闭环与 ROS 工程习惯。
+- **浏览器引擎**（drive-game、nordschleife-racer）提供 **Pacejka/漂移** 的可读实现与可玩 demo，适合对照轮胎饱和区直觉，但需自行封装才适合 RL 训练。
 
 ## 与其他页面的关系
 

@@ -4,7 +4,7 @@
 - **类型：** repo-collection
 - **来源：** 用户指定 GitHub 仓库列表 + 仓库 README / 项目页核查（2026-08-23）
 - **入库日期：** 2026-08-23
-- **一句话说明：** 按仿真后端、控制范式与硬件栈梳理赛车/漂移方向 RL、MPC 与 F1TENTH 生态的 10 个代表性开源入口，服务选型与复现路径判断。
+- **一句话说明：** 按仿真后端、控制范式与硬件栈梳理赛车/漂移方向 RL、MPC、F1TENTH 与浏览器纽北驾驶引擎的开源入口，服务选型与复现路径判断。
 
 ---
 
@@ -22,6 +22,13 @@
 | 8 | [f1tenth/f1tenth_gym](../repos/f1tenth_gym.md) | 1/10 竞速 Gym 仿真 | 纯 Python 单车动力学 | **已开源**（MIT） | [`wiki/entities/f1tenth-gym.md`](../../wiki/entities/f1tenth-gym.md) |
 | 9 | [UoA-CARES/autonomous_f1tenth](../repos/autonomous_f1tenth.md) | CARES RL + Gazebo Garden | F1TENTH 真机/仿真 | **已开源**（仓内可运行；依赖较多） | 景观页 |
 | 10 | [carla-simulator/carla](../repos/carla.md) | 城市驾驶仿真平台 | UE 城市场景 | **已开源**（MIT） | [`wiki/entities/carla.md`](../../wiki/entities/carla.md) |
+
+### 补充：浏览器纽北 / 赛道驾驶引擎（2026-08-23）
+
+| # | 仓库 | 范式 | 运行形态 | 开源结论 | wiki / source |
+|---|------|------|----------|----------|---------------|
+| 11 | [esc5221/drive-game](../repos/drive_game.md) | 240 Hz Pacejka 模拟器 | Web + Android；OSM/DEM 真几何 | **已开源**（MIT；可本地 build） | [`wiki/entities/drive-game.md`](../../wiki/entities/drive-game.md) |
+| 12 | [yassinsolim/nordschleife-racer](../repos/nordschleife_racer.md) | arcade-sim + 多人 | 引擎 TS 模块；线上 yassin.app | **部分开源**（引擎 MIT；GLB/Supabase 未入库） | [`wiki/entities/nordschleife-racer.md`](../../wiki/entities/nordschleife-racer.md) |
 
 ---
 
