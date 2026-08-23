@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-cmoe.md",
+      "detail_id": "entity-paper-cmoe",
+      "label": "CMoE：对比学习混合专家的人形运动控制与地形适应",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-dual-head-coordination.md",
       "detail_id": "entity-paper-dual-head-coordination",
       "label": "Dual-Head Coordination",
@@ -202,28 +213,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/rosclaw.md",
-      "detail_id": "entity-rosclaw",
-      "label": "RosClaw",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dual-head-coordination.md",
-    "detail_id": "entity-paper-dual-head-coordination",
-    "label": "Dual-Head Coordination",
+    "path": "wiki/entities/paper-cmoe.md",
+    "detail_id": "entity-paper-cmoe",
+    "label": "CMoE：对比学习混合专家的人形运动控制与地形适应",
     "type": "entity",
     "recency": "2026-08-23",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
