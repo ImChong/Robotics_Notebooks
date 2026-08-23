@@ -22,6 +22,7 @@ related:
   - ./paper-cref.md
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
+  - ./paper-eatr-stereo.md
   - ./extreme-parkour.md
   - ./unitree-g1.md
 sources:
