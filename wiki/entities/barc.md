@@ -68,7 +68,7 @@ sequenceDiagram
     ROS->>Dator: 记录实验事件与 bag
 ```
 
- onboard 启动见仓内 `scripts/`；算法开发从 `workspace/` catkin 包入手。
+onboard 启动见仓内 `scripts/`；算法开发从 `workspace/` catkin 包入手。
 
 ## 常见误区或局限
 

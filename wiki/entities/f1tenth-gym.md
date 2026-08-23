@@ -57,7 +57,7 @@ sequenceDiagram
 
     User->>Gym: reset()
     Gym->>Dyn: 初始化位姿/速度
-  loop 控制周期
+    loop 控制周期
         User->>Gym: step(steering, throttle)
         Gym->>Dyn: 积分轮胎力/运动学
         Dyn-->>Gym: 新状态 + 奖励信号

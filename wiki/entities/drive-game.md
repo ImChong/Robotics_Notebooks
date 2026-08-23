@@ -51,19 +51,19 @@ summary: "esc5221/drive-game：Three.js + 240 Hz 自研物理的纽北第一人�
 sequenceDiagram
     autonumber
     participant UI as 输入/仪表
-    participant Loop as 240Hz 物理循环
+    participant Phys as 240Hz 物理循环
     participant Tire as Pacejka 轮胎力
     participant Ray as 射线悬挂
-    participant Render as Three.js 渲染
+    participant Render as ThreeJS 渲染
 
     loop 每帧
-        UI->>Loop: 油门/制动/转向/手刹
-        Loop->>Ray: 轮端探地
+        UI->>Phys: 油门/制动/转向/手刹
+        Phys->>Ray: 轮端探地
         Ray->>Tire: 滑移角/滑移率
-        Tire-->>Loop: 纵横向力
-        Loop->>Loop: 积分车身状态
-        Loop->>Render: 位姿 + 相机
-        Loop->>UI: 转速/档位/圈速
+        Tire-->>Phys: 纵横向力
+        Phys->>Phys: 积分车身状态
+        Phys->>Render: 位姿 + 相机
+        Phys->>UI: 转速/档位/圈速
     end
 ```
 
