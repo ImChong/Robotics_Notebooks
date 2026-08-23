@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-eatr-stereo.md",
+      "detail_id": "entity-paper-eatr-stereo",
+      "label": "EATR-Stereo",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-language-to-navigation-goals-rgbd.md",
       "detail_id": "entity-paper-language-to-navigation-goals-rgbd",
       "label": "Language-to-Navigation-Goals（RGB-D 语义导航）",
@@ -209,27 +218,16 @@
       "recency": "2026-08-23",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-cotograsp.md",
-      "detail_id": "entity-paper-cotograsp",
-      "label": "CoToGrasp",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-language-to-navigation-goals-rgbd.md",
-    "detail_id": "entity-paper-language-to-navigation-goals-rgbd",
-    "label": "Language-to-Navigation-Goals（RGB-D 语义导航）",
+    "path": "wiki/entities/paper-eatr-stereo.md",
+    "detail_id": "entity-paper-eatr-stereo",
+    "label": "EATR-Stereo",
     "type": "entity",
     "recency": "2026-08-23",
     "source": "git",
-    "action": "added",
-    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
