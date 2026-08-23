@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # generate_link_graph 的新增/维护标签需要完整 git 历史
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -28,6 +31,13 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements-ci-lite.txt
+
+      # ingest 合并后 README 徽章常与入库 graph-stats 短暂不同步（auto-export 用 [skip ci] 补交）。
+      # 先按当前 wiki 重算图谱统计并同步徽章，再 lint，避免误报 readme_badge。
+      - name: Sync graph-stats and README badge before lint
+        run: |
+          python3 scripts/generate_link_graph.py
+          python3 scripts/sync_readme_graph_badge.py
 
       - name: Run wiki lint
         run: python3 scripts/lint_wiki.py --report
