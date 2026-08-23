@@ -57,6 +57,19 @@ flowchart LR
   s1 --> bench[LIBERO / LIBERO-Plus / RoboTwin2.0]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **实证规模** | 统一 autoencoding 框架下 **41 项** 潜动作模型（LAM）设计对照 |
+| **考察维度** | 建模范式、目标/正则、集成策略，以及 4 类代理指标 |
+| **下游基准** | LIBERO / LIBERO-Plus / RoboTwin2.0 |
+| **强基线** | LAPO 与语义帧差 ΔDINO |
+| **最优潜动作维度** | **32**（跨 7-DoF / 14-DoF 平台一致） |
+
+- 主要结论：FDM 重建类指标比 probe 类代理指标更可靠地预测下游策略表现；缩放 Stage-II 视频微调持续改善下游。
+- 数据出处：[ingest 摘录「41 项设计 / 结论」](../../sources/papers/latent_actions_matter_arxiv_2608_19613.md)；代码与权重已开源（[GitHub](https://github.com/XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning)、[HF `XizoB/LAM`](https://huggingface.co/XizoB/LAM)），逐项数值可按原仓复跑核对。
+
 ## 结论
 
 **潜动作设计的可比实证比单点 SOTA 更能指导 VLA/WAM 数据管线。**

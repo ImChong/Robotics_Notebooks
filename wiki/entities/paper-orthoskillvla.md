@@ -55,6 +55,18 @@ flowchart LR
   moe --> seq[顺序技能微调无 replay]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **仿真基准** | LIBERO-90 三技能顺序学习（开源训练/评测脚本） |
+| **真机** | 论文报仿真与真机双验证 |
+| **核心指标口径** | 顺序学新技能后对旧技能的保留（无演示 replay 设定） |
+| **消融观察** | VLM 侧易容量耗尽；ActionHead 对扰动更敏感；输出层冻结成瓶颈、全量更新易覆盖旧映射 |
+
+- 数据出处：[ingest 摘录「组件异质 / 结果」](../../sources/papers/orthoskillvla_arxiv_2608_19589.md)。
+- **本页未列定量指标**：摘录仅给出「更好保留旧技能」的定性结论；[开源仓 `Jiaqi-Wangx/OrthoSkillVLA`](https://github.com/Jiaqi-Wangx/OrthoSkillVLA) 含 LIBERO 连续技能训练与仿真评测，可单卡复现核对（多卡训练未支持）。
+
 ## 结论
 
 **组件级正交子空间 + 轻量 MoE 能在无演示 replay 下更好保留旧技能。**

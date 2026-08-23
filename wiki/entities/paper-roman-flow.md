@@ -57,6 +57,18 @@ flowchart LR
   distill --> deploy[低延迟部署]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **仿真基准** | LIBERO-10 / LIBERO-Long 与 RoboMimic 多套操作基准 |
+| **真机** | 报与强基线 competitive 的策略表现 |
+| **延迟收益** | 一步 BiFlow 蒸馏后推理延迟显著下降（相对多步采样策略） |
+| **训练口径** | IL 预训练 AR-NF → IQL advantage-weighted likelihood（sampling-free）→ 一步蒸馏 |
+
+- 数据出处：[ingest 摘录「离线 RL + AR-NF / 结果」](../../sources/papers/roman_flow_arxiv_2608_20208.md)。
+- **本页未列定量数值**：摘录为定性表述；[开源仓 `konnyaku28/RoMAN-Flow`](https://github.com/konnyaku28/RoMAN-Flow) 含 LIBERO/RoboMimic 训练评测脚本，[HF 权重](https://huggingface.co/wangshaoxuan/RoMAN-Flow) 与 manifest 外部分发，可复跑核对成功率与延迟。
+
 ## 结论
 
 **离线操作要同时保住似然可处理性与部署延迟，AR-NF + 蒸馏是可行折中。**

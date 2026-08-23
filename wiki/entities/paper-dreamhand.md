@@ -57,6 +57,18 @@ flowchart LR
   dec --> traj[连续双手 3D 轨迹]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **基准覆盖** | 五个第一视角（egocentric）手部重建 benchmark，均报 SOTA |
+| **ARCTIC** | MPJPE-p 相对下降 **约 30%** |
+| **HOT3D** | MPJPE-p 相对下降 **约 40%** |
+| **出画手子集** | 增益 **46%–61%**（遮挡/出画为主要收益来源） |
+
+- 数据出处：[ingest 摘录「基准」](../../sources/papers/dreamhand_arxiv_2608_20308.md)。
+- 相机设定：Ray-Based Camera Solver 支持无测试时内参（K-free），故跨数据集评测不依赖各集标定参数。
+
 ## 结论
 
 **扩散先验的价值可能不在生成，而在几何记忆与遮挡补全。**

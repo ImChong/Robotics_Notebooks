@@ -55,6 +55,18 @@ flowchart LR
   ref --> hw[ros2_control 硬件接口]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **平台** | 两个独立实验室的 Franka Emika Panda（FER）真机 |
+| **任务** | MoveIt 规划执行、柔顺（compliant）控制、遥操作三类 |
+| **对照现象** | 原栈位置控制下的振动与保护停机（protective stop） |
+| **归因结论** | 根因为外部控制回路时序与采样抖动，非机器人本体 |
+
+- 数据出处：[ingest 摘录「根因 / 方案」](../../sources/papers/fer_ros2_arxiv_2608_19740.md) 与 [具身智能小站 10 篇盘点](../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md)。
+- **本页未列定量指标**：摘录仅给出定性的两平台可复现验证；代码链截至 **2026-08-22** 仍为双盲期匿名 open-science 链，无法核对评测脚本，量化数值待原文/开源后补。
+
 ## 结论
 
 **Panda 位置控制不稳的根因是控制回路时序，而非机械本体极限。**

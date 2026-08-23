@@ -55,6 +55,17 @@ flowchart LR
   contacts --> grasp[FC + 抓取优化]
 ```
 
+## 评测
+
+| 项 | 内容 |
+|----|------|
+| **主基准** | MultiDex，平均抓取成功率 **86.93%** |
+| **夹爪覆盖** | 多款夹爪仿真评测 + 真机验证 |
+| **效率** | 单次推理可批量生成大量候选抓取，较逐物体优化更快 |
+
+- 数据出处：[ingest 摘录「结果」](../../sources/papers/goag_arxiv_2608_19759.md) 与 [具身智能小站 10 篇盘点](../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md)。
+- 与 [CoToGrasp](./paper-cotograsp.md)（DexGraspNet）基准不同，两者只可作方法路线对照，不可直接比成功率。
+
 ## 结论
 
 **不绑定物体训练数据，抓取模型才有机会在未见物体上真正泛化。**
