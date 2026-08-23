@@ -293,6 +293,7 @@ flowchart LR
 - [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
 - [Gymnasium](../entities/gymnasium.md) — 单智能体 RL 环境 API 标准（`reset` / `step` / `spaces`）
 - [Cartpole 问题](../concepts/cartpole.md) — Actor–Critic 实验原点与 Gym / Isaac 教学环境对照
+- [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — f1tenth_gym / CARLA / GPU 向量化等 **轮式极限驾驶** RL 开源入口
 
 ## 继续深挖入口
 

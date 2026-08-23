@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 ## [2026-08-23] ingest | sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md — 具身智能小站「9 篇开源论文」；复用 Revisiting Open-Loop / 新建 8 论文实体 + 技术地图
 
 ## [2026-08-23] ingest | sources/papers/cmoe_contrastive_mixture_of_experts_icra_2026.md — CMoE（ICRA 2026，Fudan）：对比学习防 MoE 门控塌缩 + G1 高程图感知；官方 Isaac Gym 代码已开源
+=======
+## [2026-08-23] ingest | sources/papers/racing_drift_rl_open_source_landscape.md — 接入 10 个赛车/漂移 RL·MPC 开源仓库；新建景观页与 F1TENTH/BARC/drift-drl/xcar 实体；10 项均已开源
+>>>>>>> f4e9bd10 ([2026-08-23] ingest | sources/papers/racing_drift_rl_open_source_landscape.md — 接入赛车漂移 RL/MPC 开源景观与 10 仓库归档)
 
 ## [2026-08-22] ingest | sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md — Vision-Driven Reactive Soccer（Science Robotics 2026 / arXiv:2511.03996）；项目页 Code→Zenodo 部分开源；补强实体页源码时序图与量化指标
 
