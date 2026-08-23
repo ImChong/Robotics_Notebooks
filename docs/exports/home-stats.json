@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/embodied-foundation-model-hardware-codesign.md",
+      "detail_id": "wiki-concepts-embodied-foundation-model-hardware-codesign",
+      "label": "具身大模型与本体协同设计",
+      "type": "concept",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人（Humanoid Robot） 社区"
+    },
+    {
       "path": "wiki/entities/barc.md",
       "detail_id": "entity-barc",
       "label": "Berkeley Autonomous Race Car（BARC）",
@@ -209,28 +219,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-fer-ros2-panda-stack.md",
-      "detail_id": "entity-paper-fer-ros2-panda-stack",
-      "label": "FER ROS 2 Panda 栈",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/barc.md",
-    "detail_id": "entity-barc",
-    "label": "Berkeley Autonomous Race Car（BARC）",
-    "type": "entity",
+    "path": "wiki/concepts/embodied-foundation-model-hardware-codesign.md",
+    "detail_id": "wiki-concepts-embodied-foundation-model-hardware-codesign",
+    "label": "具身大模型与本体协同设计",
+    "type": "concept",
     "recency": "2026-08-23",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "人形机器人（Humanoid Robot） 社区"
   },
   "top_communities": [
     {
