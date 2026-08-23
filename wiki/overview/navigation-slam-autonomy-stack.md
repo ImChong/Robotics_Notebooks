@@ -90,6 +90,7 @@ summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR
 - [LeRobot](../entities/lerobot.md) / [OpenVLA](../entities/openvla.md) 解决 **操作与策略**，不替代 Nav2；二者常在「同一机器人」上 **分层共存**（导航栈 + 机械臂 VLA）。
 - **[PythonRobotics](../entities/python-robotics.md)** 提供 **算法层入门**（EKF、A*、RRT*、DWA、Stanley/MPC 等可运行 Python 示例），与 Nav2 **互补而非替代**：先建立直觉，再读 ROS 2 工程集成。
 - **[DimOS（Dimensional）](../entities/dimensionalos-dimos.md)** 提供 **ROS-optional** 的 Python 导航 + **MCP agent** 蓝图（Unitree Go2/G1 等），默认 LCM 连模块流；适合快速验证「SLAM + 自然语言控车」而不先搭完整 ROS 2 工作空间。
+- **[Language-to-Navigation-Goals](../entities/paper-language-to-navigation-goals-rgbd.md)**（arXiv:2607.13624）展示 **ROS 2 + 远程 VLM bbox + RGB-D 投影 → Nav2** 的轻量语义导航分层实现（TurtleBot3 / Go2；代码待接收后开源）。
 
 ## 流程总览
 

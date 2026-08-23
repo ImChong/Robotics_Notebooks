@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [language_to_navigation_goals_arxiv_2607_13624.md](papers/language_to_navigation_goals_arxiv_2607_13624.md) | Language-to-Navigation-Goals：ROS 2 VLM+RGB-D→Nav2 语义导航（arXiv:2607.13624，UPO；Go2 真机；代码待接收后开源）摘录与 wiki 映射 |
 | [x] [eatr_stereo_arxiv_2608_17453.md](papers/eatr_stereo_arxiv_2608_17453.md) | EATR-Stereo：头载双目 CVAT + 分段本体路由的人形 VLA 接口（arXiv:2608.17453，哈工大/荣耀；Omega 1.0 全流程 60%；未开源）摘录与 wiki 映射 |
 | [x] [cref_arxiv_2603_29452.md](papers/cref_arxiv_2603_29452.md) | CReF：交叉模态与循环融合的深度条件人形行走（arXiv:2603.29452，浙大/山大；X2 Ultra 零样本；确认未开源）摘录与 wiki 映射 |
 | [x] [sonic_transfer_frozen_wbc_codec_lora.md](papers/sonic_transfer_frozen_wbc_codec_lora.md) | SONIC-Transfer：冻结 GEAR-SONIC + 闭式 codec + 解码器 LoRA 迁到 AgiBot X2 Ultra（draft 2026-08-16；无 arXiv；推理 play 已开）摘录与 wiki 映射 |

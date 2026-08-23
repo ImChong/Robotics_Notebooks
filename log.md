@@ -1,3 +1,5 @@
+## [2026-08-23] ingest | sources/papers/language_to_navigation_goals_arxiv_2607_13624.md — Language-to-Navigation-Goals（UPO）：ROS 2 VLM+RGB-D→Nav2 语义导航；代码待接收后开源
+
 ## [2026-08-23] ingest | sources/papers/eatr_stereo_arxiv_2608_17453.md — EATR-Stereo（arXiv:2608.17453，哈工大/荣耀）：头载双目 CVAT + 分段本体路由；Omega 1.0 全流程 60%；arXiv 未开源
 
 ## [2026-08-23] ingest | sources/blogs/wechat_zanehub_embodied_fm_why_self_develop_robot_body.md — Zane Hub「具身大模型为何自研本体」；升格 wiki/concepts/embodied-foundation-model-hardware-codesign.md；交叉 hub-embodied-foundation-model / foundation-policy / 量产 / 策略架构 / 跨具身
