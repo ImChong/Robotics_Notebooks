@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, embodied-ai, survey, mujoco, habitat, isaac-gym, benchmark]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-23
 related:
   - ../entities/mujoco.md
   - ../entities/ai2-thor.md
@@ -13,6 +13,8 @@ related:
   - ../entities/maniskill2.md
   - ../entities/behavior-1k.md
   - ../entities/carla.md
+  - ../entities/f1tenth-gym.md
+  - ../overview/racing-drift-rl-open-source-landscape.md
   - ../entities/pybullet.md
   - ../entities/robogen.md
   - ../entities/genesis-sim.md
@@ -78,7 +80,8 @@ flowchart LR
 
 | 平台 | Wiki 节点 | 方向 |
 |------|-----------|------|
-| CARLA | [carla](../entities/carla.md) | 自动驾驶城市场景 |
+| CARLA | [carla](../entities/carla.md) | 自动驾驶城市场景；漂移 RL 选型见 [赛车漂移景观](./racing-drift-rl-open-source-landscape.md) |
+| F1TENTH Gym | [f1tenth-gym](../entities/f1tenth-gym.md) | 1/10 竞速轻量 RL 仿真 |
 | PyBullet / Flex | [pybullet](../entities/pybullet.md) | 软体与形变、通用刚体 |
 | RoboGen | [robogen](../entities/robogen.md) | LLM 驱动任务/数据生成 |
 | Genesis | [genesis-sim](../entities/genesis-sim.md) | 新兴多物理并行仿真 |

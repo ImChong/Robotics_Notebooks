@@ -3,15 +3,19 @@
 type: entity
 tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, microsoft]
 status: complete
-updated: 2026-06-22
+updated: 2026-08-23
 related:
   - ./unreal-engine-5.md
   - ./airsim.md
+  - ./drift-drl.md
+  - ../overview/racing-drift-rl-open-source-landscape.md
   - ../concepts/sim2real.md
   - ../overview/sim-platforms-decade-technology-map.md
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
-summary: "面向自动驾驶的开源城市仿真平台：Unreal Engine 驱动的高保真城市场景、多传感器套件与交通参与者，是 AD 感知–规划–控制闭环与 Sim2Real 研究的经典基础设施。"
+  - ../../sources/repos/carla.md
+  - ../../sources/papers/racing_drift_rl_open_source_landscape.md
+summary: "面向自动驾驶的开源城市仿真平台：Unreal Engine 驱动的高保真城市场景、多传感器套件与交通参与者，是 AD 感知–规划–控制闭环与 Sim2Real 研究的经典基础设施；亦是多条 CARLA 系漂移 RL 研究的仿真宿主。"
 ---
 
 # CARLA
@@ -51,16 +55,20 @@ summary: "面向自动驾驶的开源城市仿真平台：Unreal Engine 驱动�
 
 - **误区：CARLA = 人形仿真** — 本体是 **轮式车辆**；足式/人形见 [Isaac Lab](./isaac-lab.md)、[MuJoCo](./mujoco.md)。
 - **局限：操作与室内** — 室内交互见 [AI2-THOR](./ai2-thor.md)、[Habitat](./habitat-sim.md)。
+- **漂移复现陷阱：** [drift_drl](./drift-drl.md) 等研究常锁定 **旧版定制 CARLA build**，与当前主线 release 不直接互换——选型见 [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)。
 
 ## 关联页面
 
 - [AirSim](./airsim.md) — 另一 UE 系机器人视觉仿真
+- [drift_drl](./drift-drl.md) — CARLA 0.9.5 高速漂移 DRL 经典基线
+- [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)
 
 ## 参考来源
 
 - [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
+- [sources/repos/carla.md](../../sources/repos/carla.md)
 - Dosovitskiy et al., *CARLA: An Open Urban Driving Simulator* — [arXiv](https://arxiv.org/abs/1711.03938)
 
 ## 推荐继续阅读

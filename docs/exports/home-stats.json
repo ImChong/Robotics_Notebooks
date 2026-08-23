@@ -1,13 +1,90 @@
 {
   "generated_at": "2026-08-23",
-  "node_count": 3230,
-  "edge_count": 28609,
+  "node_count": 3237,
+  "edge_count": 28654,
   "coverage": {
-    "covered": 3205,
-    "total": 3205,
+    "covered": 3212,
+    "total": 3212,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/barc.md",
+      "detail_id": "entity-barc",
+      "label": "Berkeley Autonomous Race Car（BARC）",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/drive-game.md",
+      "detail_id": "entity-drive-game",
+      "label": "drive-game（Nürburgring Drive）",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/f1tenth-gym.md",
+      "detail_id": "entity-f1tenth-gym",
+      "label": "F1TENTH Gym",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/nordschleife-racer.md",
+      "detail_id": "entity-nordschleife-racer",
+      "label": "nordschleife-racer",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/overview/racing-drift-rl-open-source-landscape.md",
+      "detail_id": "wiki-overview-racing-drift-rl-open-source-landscape",
+      "label": "赛车漂移强化学习开源景观",
+      "type": "overview",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/drift-drl.md",
+      "detail_id": "entity-drift-drl",
+      "label": "drift_drl（High-speed Autonomous Drifting with DRL）",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/xcar-rlgpu.md",
+      "detail_id": "entity-xcar-rlgpu",
+      "label": "xcar-rlgpu",
+      "type": "entity",
+      "recency": "2026-08-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-cmoe.md",
       "detail_id": "entity-paper-cmoe",
@@ -141,84 +218,12 @@
       "recency": "2026-08-22",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-goag.md",
-      "detail_id": "entity-paper-goag",
-      "label": "GOAG",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-latent-actions-matter.md",
-      "detail_id": "entity-paper-latent-actions-matter",
-      "label": "What Matters for Latent Actions",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-orthoskillvla.md",
-      "detail_id": "entity-paper-orthoskillvla",
-      "label": "OrthoSkillVLA",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pvra.md",
-      "detail_id": "entity-paper-pvra",
-      "label": "PVRA",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-roman-flow.md",
-      "detail_id": "entity-paper-roman-flow",
-      "label": "RoMAN-Flow",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-video2door-traversal.md",
-      "detail_id": "entity-paper-video2door-traversal",
-      "label": "Video2DoorTraversal",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/roboclaw.md",
-      "detail_id": "entity-roboclaw",
-      "label": "RoboClaw",
-      "type": "entity",
-      "recency": "2026-08-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-cmoe.md",
-    "detail_id": "entity-paper-cmoe",
-    "label": "CMoE：对比学习混合专家的人形运动控制与地形适应",
+    "path": "wiki/entities/barc.md",
+    "detail_id": "entity-barc",
+    "label": "Berkeley Autonomous Race Car（BARC）",
     "type": "entity",
     "recency": "2026-08-23",
     "source": "git",
@@ -229,7 +234,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 642
+      "size": 662
     },
     {
       "label": "操作",
@@ -316,20 +321,20 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "degree": 469,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "wiki-overview-sun-awesome-ego-technology-map",
       "label": "Awesome Egocentric Vision 技术地图",
       "type": "overview",
       "degree": 465,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "degree": 464,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "top_paper_hubs": [
