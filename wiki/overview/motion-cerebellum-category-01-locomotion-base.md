@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, locomotion-base]
 status: complete
-updated: 2026-06-18
+updated: 2026-08-24
 summary: "运动小脑 64 篇长文 · A 走路底座（10 篇）— 底座等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md
