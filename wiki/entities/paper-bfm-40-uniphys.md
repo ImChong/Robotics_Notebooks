@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, cmu, eth]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-24
 arxiv: "2504.12540"
 venue: "2024 · arXiv"
 summary: "planner 与 controller 在扩散框架内协同；BFM 成熟后的分层边界问题。"
@@ -11,6 +11,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-05-hierarchical-control.md
+  - ./paper-nap-control.md
 sources:
   - ../../sources/papers/bfm_awesome_uniphys_arxiv_2504_12540.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -79,6 +80,7 @@ planner 与 controller 在扩散框架内协同；BFM 成熟后的分层边界�
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
+- 后续工作（同团队）：[NaP-Control](./paper-nap-control.md) — 在冻结 UniPhys 式扩散先验上用 RL 导航初始噪声，替代测试时梯度引导
 - 原始 source：[bfm_awesome_uniphys_arxiv_2504_12540.md](../../sources/papers/bfm_awesome_uniphys_arxiv_2504_12540.md)
 
 ## 参考来源
