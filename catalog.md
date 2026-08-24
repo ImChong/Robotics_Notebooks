@@ -847,7 +847,7 @@
 - [MuGen](wiki/entities/paper-motion-cerebellum-mugen.md) — MuGen** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 39/64 `📅unknown` `[entity_page]`
 - [SafeWBC](wiki/entities/paper-motion-cerebellum-safewbc.md) — SafeWBC** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 36/64 `📅unknown` `[entity_page]`
 - [Stubborn](wiki/entities/paper-motion-cerebellum-stubborn.md) — Stubborn**（*A Streamlined and Unified Reinforcement Learning Framework for Robust Motion Tracking  `📅unknown` `[entity_page]`
-- [T-GMP](wiki/entities/paper-motion-cerebellum-t-gmp.md) — T-GMP** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 02/64 `📅unknown` `[entity_page]`
+- [T-GMP：地形条件生成式运动先验的人形多地形行走](wiki/entities/paper-motion-cerebellum-t-gmp.md) — T-GMP**（*Terrain-conditioned Generative Motion Priors for Versatile and Natural Humanoid Locomotio `📅unknown` `[entity_page]`
 - [TAGA](wiki/entities/paper-motion-cerebellum-taga.md) — TAGA** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 09/64**  `📅unknown` `[entity_page]`
 - [TRAM](wiki/entities/paper-motion-cerebellum-tram.md) — TRAM** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 17/64**  `📅unknown` `[entity_page]`
 - [MotionDisco（极端人形 Loco-Manipulation 运动发现）](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — MotionDisco**（*Motion Discovery for Extreme Humanoid Loco-Manipulation*，arXiv:2606.06139，TUM · NYU `📅unknown` `[entity_page]`

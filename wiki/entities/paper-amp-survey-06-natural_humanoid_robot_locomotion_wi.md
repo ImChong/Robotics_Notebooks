@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, generative-prior, cvae, locomotion, zju, sim2real]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-24
 arxiv: "2503.09015"
 venue: arXiv
 summary: "GMP（arXiv:2503.09015）用冻结 CVAE 在线合成全身参考轨迹，以关节/关键点稠密 guidance reward 指导 PPO，相对 AMP 标量风格分提供更细粒度自然走跑监督。"
