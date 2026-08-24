@@ -11,6 +11,7 @@ related:
   - ./navigation2.md
   - ./autonomy-stack-go2.md
   - ../methods/vla.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-da-nav.md
   - ./paper-fsd-vln.md
 sources:
@@ -142,6 +143,7 @@ flowchart LR
 - [Navigation2](./navigation2.md) — 本文 Movement 模块依赖的导航栈
 - [Unitree Go2](./autonomy-stack-go2.md) — 真机验证平台
 - [DA-Nav](./paper-da-nav.md) — 另一类语言→导航工程路线（城市户外 VLM）
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ③ 2D→3D 提升层：VLM bbox + 深度邻域最小值 + 针孔反投影 → ④ 下游消费：地图系目标直供 Nav2
 
 ## 参考来源
 

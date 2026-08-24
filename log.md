@@ -1,3 +1,5 @@
+## [2026-08-23] lint | wiki/entities/paper-language-to-navigation-goals-rgbd.md — 全量 lint 清零最后 1 条信息型预警：补「机器人视觉感知栈选型闭环」③/④ 层双向回链
+
 ## [2026-08-23] ingest | sources/papers/language_to_navigation_goals_arxiv_2607_13624.md — Language-to-Navigation-Goals（UPO）：ROS 2 VLM+RGB-D→Nav2 语义导航；代码待接收后开源
 
 ## [2026-08-23] ingest | sources/papers/eatr_stereo_arxiv_2608_17453.md — EATR-Stereo（arXiv:2608.17453，哈工大/荣耀）：头载双目 CVAT + 分段本体路由；Omega 1.0 全流程 60%；arXiv 未开源
