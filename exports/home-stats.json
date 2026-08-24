@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-23",
   "node_count": 3240,
-  "edge_count": 28689,
+  "edge_count": 28719,
   "coverage": {
     "covered": 3215,
     "total": 3215,
@@ -231,28 +231,28 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 623
+      "label": "仿真到现实",
+      "size": 611
     },
     {
-      "label": "仿真到现实",
-      "size": 614
+      "label": "操作",
+      "size": 546
     },
     {
       "label": "视觉-语言-动作",
-      "size": 245
+      "size": 243
     },
     {
       "label": "人形论文深读笔记",
-      "size": 221
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 138
+      "size": 212
     },
     {
       "label": "全身控制",
-      "size": 138
+      "size": 135
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 133
     }
   ],
   "top_hubs": [

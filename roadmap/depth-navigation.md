@@ -152,6 +152,7 @@ flowchart LR
 - [CommNav](../wiki/entities/paper-commnav.md)（本仓库）— **主动向路人打听** 目标时空线索的社交导航（Habitat 3.0c + COMM；ES +10 pp；代码待发布）
 - [RoamFlow](../wiki/entities/paper-roamflow.md)（本仓库）— MeanFlow 一步（少步）轨迹生成 + IL→RL 任务对齐 + 轨迹评估器筛选；Habitat Gibson SR 68.7%/19.6 ms 全面超 NoMaD/NavDP，Go2 + Orin NX 真机 20 runs SR 1.00；确认未开源
 - [HUMEMBR](../wiki/entities/paper-humembr.md)（本仓库）— **身份感知多日记忆** + LLM 工具检索的 PersonEQA / Spot 例行找人（代码已开源；COBD 数据暂私有）
+- [接近–安全跟随](../wiki/entities/paper-nav-ps-balance.md)（本仓库，IROS 2026）— 把人群跟随拆成稀疏奖励 + 独立 cost 阈值（PPO-Lagrangian + DtACI），不再把跟紧和防撞塞进同一个 reward；ID 成功率 78.08%，代码已开源
 - [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md)（本仓库）— 深读论文全景入口 |
 
 ### 学完输出什么
@@ -183,6 +184,7 @@ flowchart LR
 - [VLN 10 篇论文技术地图](../wiki/overview/vln-10-papers-technology-map.md) 与 [VLN 开源复现四范式](../wiki/overview/vln-open-source-repro-paradigms.md)（本仓库）
 - [Matterport3D Simulator](../wiki/entities/matterport3d-simulator.md) 与 [Habitat-Sim](../wiki/entities/habitat-sim.md)（本仓库）
 - [NaVILA](../wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 与 [Qwen-RobotNav](../wiki/entities/qwen-robot-nav.md)（本仓库）— 腿式 / 通才导航 VLA 锚点
+- [HumanoidVLN](../wiki/entities/paper-humanoidvln.md)（本仓库）— Isaac Sim 首个人形物理 VLN 平台与基准，四本体 RL+PD/MPC、87 场景≥100 m²；JanusVLN 平均 SR 43.55%，G1 DualVLN 20 条 sim–real r=0.935
 
 ### 学完输出什么
 - 一次标准 VLN 基准上的复现与评测记录

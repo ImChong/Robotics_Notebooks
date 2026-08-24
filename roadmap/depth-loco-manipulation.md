@@ -144,6 +144,8 @@ flowchart LR
 - [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) 与 [CoorDex](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)（本仓库）
 - [SplitAdapter](../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)（本仓库）
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
+- [SMPC-to-RL](../wiki/entities/paper-smpc2rl-loco-manipulation.md)（本仓库）— 仿真 SMPC 当可交互专家数据机，稀疏奖励 offline-to-online FastTD3 接冻结低层；Spot 推箱/扶胎与 G1 推箱真机可部署，策略比教师更快
+- [FetchMan](../wiki/entities/paper-fetchman.md)（本仓库）— MolmoSpaces 15 万场景脚本演示 → BC → Flow-GRPO 突破 BC 天花板；G1 真机 loco-manip 零样本 73.3%；代码未开源
 
 ### 学完输出什么
 - 一个能在仿真里完成"走近 + 全身接触搬运"的技能策略
@@ -175,6 +177,8 @@ flowchart LR
 - [ω-0](../wiki/entities/paper-omega-0.md)（本仓库）— 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%，大幅超同族基线（ψ-0 44.5%、DiT4DiT 43.6%、Fast-WAM 37.1%）；代码/数据 WIP
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [VLA](../wiki/methods/vla.md)（本仓库）
 - [人形 Loco-Manip 161 篇技术地图](../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)（本仓库）— 十类能力形成顺序全景
+- [RoboReact](../wiki/entities/paper-roboreact.md)（本仓库）— 单帧 egocentric RGB-D + 语言生成人类交互视频并编译成物体中心关键帧技能，测试时去掉 VLM 靠再接地 + HOMIE 执行；G1 长程双臂操作四任务均值 SR 81.3%
+- [HAF](../wiki/entities/paper-haf-humanoid-vla-adaptation.md)（本仓库）— 三阶段层次 action flow + DCT 频谱潜空间 SAC，把通才 flow-matching VLA 适配到天工全身 loco-manipulation；均分 70.5%，超 π₀.₅（53.3%）与 GR00T N1.7（38.1%）
 
 ### 学完输出什么
 - 能画出"分层 / 生成式 / VLA / WAM"四条路线的架构对比图

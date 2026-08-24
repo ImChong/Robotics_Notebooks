@@ -100,6 +100,8 @@ flowchart LR
 - [Friction Cone](../wiki/formalizations/friction-cone.md)
 - [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)
 - Orin et al., *Centroidal dynamics of a humanoid robot* (2013)
+- [SE(3) 切空间浮动基轨迹优化](../wiki/entities/paper-se3-tangent-to.md)（本仓库）— 同一 Ipopt 配点设定下对比欧拉/四元数/SE(3) 切空间参数化，G1 后空翻与 Go2 侧空翻只有切空间翻成功
+- [AHMP](../wiki/entities/paper-ahmp.md)（本仓库）— 在 SE(3) 切空间 TO 之外加一层 CEM-MD 接触序列发现，Talos 扶手走廊 20/20 可行；与上一条同属 Patras LAR 谱系
 
 ### 推荐做什么
 - 用 [Crocoddyl](../wiki/entities/crocoddyl.md) 或手写 DDP 求解一个 centroidal 轨迹优化问题
@@ -154,6 +156,7 @@ flowchart LR
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Contact Estimation](../wiki/concepts/contact-estimation.md)
 - [Query：WBC 实现指南](../wiki/queries/wbc-implementation-guide.md) 与 [Query：WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
 - [重力补偿](../wiki/concepts/gravity-compensation.md) — 真机落地前的悬空 $\tau=g(q)$ 验收
+- [G1 Confined-Space WBP](../wiki/entities/paper-g1-confined-space-wbp.md)（本仓库）— 三阶段全身规划（环境 TO→可微 SCA→全阶动力学）+ 残差 RL 跟踪，Unitree G1 真机穿越超 NIST 狭窄环境；代码未开源
 
 ### 推荐做什么
 - 用 TSID（或 [Drake](../wiki/entities/drake.md) / 自研 QP）实现一个站立平衡 WBC，接上 Stage 3 的 MPC 输出
