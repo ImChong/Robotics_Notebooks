@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bimanual-grasping, 3d-perception, partial-point-cloud, force-closure]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-24
 arxiv: "2608.19188"
 related:
   - ../tasks/manipulation.md
@@ -10,11 +10,13 @@ related:
   - ./paper-real-bi-dex-grasp.md
   - ./paper-mango-grasp.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../overview/vla-predict-grasp-9-papers-technology-map.md
 sources:
   - ../../sources/papers/partialbigrasp_arxiv_2608_19188.md
   - ../../sources/sites/partialbigrasp-github-io.md
   - ../../sources/repos/partialbigrasp-codebase.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md
 summary: "PartialBiGrasp（arXiv:2608.19188，IIIT Hyderabad）：局部点云→占据网络补隐藏几何→力闭合双臂抓取对；DG16M ~55% FC。架构仓部分开源，权重/训练 TODO。"
 ---
 
@@ -125,6 +127,7 @@ flowchart LR
 - [Mango Grasp](./paper-mango-grasp.md) — 抓取规划对照
 - [Hydra-0](./paper-hydra-0.md) — 综述同批「补全隐藏状态」
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页落其 ③ 层 2D→3D 提升：不建完整语义地图，只从局部点云补出力闭合判据需要的接触区几何，再交 ④ 层抓取规划消费
+- [VLA·预测·抓取 9 篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md)
 
 ## 参考来源
 
@@ -132,6 +135,7 @@ flowchart LR
 - [partialbigrasp 项目页](../../sources/sites/partialbigrasp-github-io.md)
 - [partialbigrasp/codebase 归档](../../sources/repos/partialbigrasp-codebase.md)
 - [具身智能小站 8 篇综述](../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)
+- [具身智能小站 9 篇盘点（2026-08-24）](../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md)
 
 ## 推荐继续阅读
 

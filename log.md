@@ -1,3 +1,11 @@
+## [2026-08-24] ingest | sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md — 具身智能小站「9 篇 VLA·预测·抓取」；新建 6 论文实体 + 技术地图；复用 PartialBiGrasp/ReflexVLA/DreamX-Phi
+
+- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/e0yXB8Rz4ma3CCPX8HN2CQ>；要求 9/9 独立详情节点、同一 arXiv 不重复造页
+- **步骤 2.5：** Self-Demonstrated Control 项目页无代码；FlatLab/hint²/Arm-Aware 待发布；4-DoF 笔具分拣 GitHub 已开源；CPS4All 工作坊无算法仓
+- **新建实体：** `paper-self-supervised-control`、`paper-cps4all`、`paper-flatlab`、`paper-hint2`、`paper-arm-aware-dexgrasp`、`paper-4dof-pen-sorting`
+- **复用既有：** `paper-partialbigrasp`、`paper-reflexvla`、`paper-dreamx-phi`（仅回链博客与技术地图）
+- **阅读坐标：** [`wiki/overview/vla-predict-grasp-9-papers-technology-map.md`](wiki/overview/vla-predict-grasp-9-papers-technology-map.md)
+
 ## [2026-08-23] lint | wiki/entities/paper-language-to-navigation-goals-rgbd.md — 全量 lint 清零最后 1 条信息型预警：补「机器人视觉感知栈选型闭环」③/④ 层双向回链
 
 ## [2026-08-23] ingest | sources/papers/language_to_navigation_goals_arxiv_2607_13624.md — Language-to-Navigation-Goals（UPO）：ROS 2 VLM+RGB-D→Nav2 语义导航；代码待接收后开源

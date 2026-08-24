@@ -2,9 +2,10 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-24
 related:
-  - ../concepts/rl-runner.md
+  - ../entities/paper-self-supervised-control.md
+  - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md

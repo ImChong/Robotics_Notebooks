@@ -8,7 +8,7 @@ tags:
   - action-chunking
   - sjtu
 status: complete
-updated: 2026-08-17
+updated: 2026-08-24
 arxiv: "2608.14379"
 venue: "arXiv 2026-08-14"
 related:
@@ -22,9 +22,11 @@ related:
   - ./paper-wam-realtime-async.md
   - ./paper-rtcf.md
   - ../queries/vla-deployment-guide.md
+  - ../overview/vla-predict-grasp-9-papers-technology-map.md
 sources:
   - ../../sources/papers/reflexvla_arxiv_2608_14379.md
   - ../../sources/sites/reflexvla-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md
 summary: "ReflexVLA（arXiv:2608.14379，交大陈宇轩/张婉若/李晓）：ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测、视觉骨干时序融合、CUDA Graph）；均值 50.4%、LIBERO 97.2%；项目页 Code After acceptance，录用后开放。"
 ---
 
@@ -173,11 +175,13 @@ Q1 协议：低频时异步更吃亏（观测–动作错位）；高频异步 +
 - [WAM 实时异步部署](./paper-wam-realtime-async.md) — 异步 chunk 部署对照
 - [RTCF](./paper-rtcf.md) — 作者未试的更先进异步
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 异步执行
+- [VLA·预测·抓取 9 篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md)
 
 ## 参考来源
 
 - [reflexvla_arxiv_2608_14379.md](../../sources/papers/reflexvla_arxiv_2608_14379.md) — 论文摘录与开源核查
 - [reflexvla-github-io.md](../../sources/sites/reflexvla-github-io.md) — 项目页核查
+- [具身智能小站 9 篇盘点（2026-08-24）](../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md)
 - [arXiv:2608.14379](https://arxiv.org/abs/2608.14379) — 原文
 
 ## 推荐继续阅读

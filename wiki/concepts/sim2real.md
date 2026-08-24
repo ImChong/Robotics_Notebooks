@@ -2,9 +2,10 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-22
+updated: 2026-08-24
 related:
-  - ../entities/embodied-interview-qa.md
+  - ../entities/paper-flatlab.md
+  - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../methods/reinforcement-learning.md
   - ./whole-body-control.md
   - ./safe-real-world-rl-fine-tuning.md

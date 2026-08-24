@@ -391,6 +391,7 @@
 - [3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）](wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 3D-IC**（*Joint Navigation and Manipulation Planning with 3D Interaction Chains*，Zhang 等，ICML 2026  `📅unknown` `[entity_page]`
 - [3D Printed Open-Source Actuators for Legged Locomotion](wiki/entities/paper-3d-printed-open-source-actuators-legged.md) — Urs, Enninful Adu, Rouse & Moore（密歇根大学，arXiv:2202.12395）** 给出两 `📅unknown` `[entity_page]`
 - [4D-WAM：用轨迹场给 WAM 补上局部运动和终点](wiki/entities/paper-4d-wam.md) — 4D-WAM**（*Infusing Spatiotemporal Awareness into World Action Models through Trajectory Fields*；[a `📅unknown` `[entity_page]`
+- [4-DoF 视觉引导桌面笔具分拣](wiki/entities/paper-4dof-pen-sorting.md) — Tabletop Pen Manipulation With a Vision-Guided 4-DoF Arm**（[arXiv:2608.15968](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）](wiki/entities/paper-abot-m05-mobile-manipulation-wam.md) — ABot-M0.5**（*ABot-M0.5: Unified Mobility-and-Manipulation World Action Model*，arXiv:2607.00678，AMA `📅unknown` `[entity_page]`
 - [ABot-World-0（单卡桌面无限交互世界 Rollout）](wiki/entities/paper-abot-world-0.md) — ABot-World-0**（*ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU*，[arXiv:2 `📅unknown` `[entity_page]`
 - [ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）](wiki/entities/paper-ace-brain-0-5.md) — ACE-Brain-0.5**（*A Unified Embodied Foundational Model for Physical Agentic AI*，[arXiv:2607.04426 `📅unknown` `[entity_page]`
@@ -426,6 +427,7 @@
 - [APT-RL：野外敏捷感知多技能四足 Locomotion](wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — Agile perceptive multi-skill locomotion for quadrupedal robots in the wild**（Jun-Gill Kang / Jaehy `📅unknown` `[entity_page]`
 - [Arcadia（具身终身学习全生命周期）](wiki/entities/paper-arcadia.md) — Arcadia**（*Toward a Full-Lifecycle Framework for Embodied Lifelong Learning*，[arXiv:2512.00076](ht `📅unknown` `[entity_page]`
 - [Argus（Dynamic Symmetry / Dynamic Isotropy）](wiki/entities/paper-argus-dynamic-symmetry.md) — Argus**（*Extreme dynamic symmetry enables omnidirectional and multifunctional robots*，Jiaxun Liu / `📅unknown` `[entity_page]`
+- [Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成](wiki/entities/paper-arm-aware-dexgrasp.md) — Arm-Aware Guided Dexterous Grasp Generation**（[arXiv:2608.16351](https://arxiv.org/abs/2608.16351 `📅unknown` `[entity_page]`
 - [AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）](wiki/entities/paper-assistmimic.md) — AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026 `📅unknown` `[entity_page]`
 - [Athena-WBC：面向人形全身控制长尾的能力对齐策略专家](wiki/entities/paper-athena-wbc-humanoid-longtail.md) — Athena-WBC**（*Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control*，arXiv:2 `📅unknown` `[entity_page]`
 - [Atlas Locomotion（HMI P005）](wiki/entities/paper-atlas-locomotion-optimization-stack.md) — Atlas Locomotion**（*Optimization-based Locomotion Planning, Estimation, and Control Design for the `📅unknown` `[entity_page]`
@@ -497,6 +499,7 @@
 - [CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）](wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — CoorDex**（arXiv:2606.23680，[项目页](https://skevinci.github.io/co `📅unknown` `[entity_page]`
 - [CoRe（接触感知优化与学习的人形运动）](wiki/entities/paper-core.md) — CoRe**（*Contact-aware motion Refinement*；论文 *CoRe: A Hybrid Approach of Contact-Aware Optimization `📅unknown` `[entity_page]`
 - [CoToGrasp](wiki/entities/paper-cotograsp.md) — CoToGrasp: Contact-Topology-Conditioned Dexterous Grasp Synthesis via Canonical Workspace Learning `📅unknown` `[entity_page]`
+- [CPS4All：无障碍与能力增强的赛博物理系统工作坊](wiki/entities/paper-cps4all.md) — CPS4All**（*Cyber-Physical Systems for Accessibility and Ability Augmentation: Bridging Diverse Com `📅unknown` `[entity_page]`
 - [CReF：交叉模态与循环融合的深度条件人形行走](wiki/entities/paper-cref.md) — CReF**（*Cross-modal and Recurrent Fusion for Depth-conditioned Humanoid Locomotion*，浙江大学 / 山东大学，ar `📅unknown` `[entity_page]`
 - [Ctrl-World（可控机器人操作生成式世界模型）](wiki/entities/paper-ctrl-world.md) — Ctrl-World**（*Ctrl-World: A Controllable Generative World Model for Robot Manipulation*，[arXiv:251 `📅unknown` `[entity_page]`
 - [cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md) — cuNRTO**（*cuNRTO: GPU-Accelerated Nonlinear Robust Trajectory Optimization*，[arXiv:2603.02642](htt `📅unknown` `[entity_page]`
@@ -589,6 +592,7 @@
 - [FER ROS 2 Panda 栈](wiki/entities/paper-fer-ros2-panda-stack.md) — Keeping the Franka Emika Panda alive: a ROS 2 stack with a reliable position interface**（[arXiv:26 `📅unknown` `[entity_page]`
 - [FetchMan：仿真视觉人形 loco-manipulation](wiki/entities/paper-fetchman.md) — FetchMan**（*Learning Visual Humanoid Loco-Manipulation Policies from Simulated Experiences*，[arXiv `📅unknown` `[entity_page]`
 - [FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）](wiki/entities/paper-flap-fov-active-perception-3d-navigation.md) — FLAP**（*FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation*，arXiv:2606.17 `📅unknown` `[entity_page]`
+- [FlatLab：平面物体操作的统一框架与仿真基准](wiki/entities/paper-flatlab.md) — FlatLab**（*A Unified Methodology Framework and Simulation-Based Benchmark for Robotic Manipulation `📅unknown` `[entity_page]`
 - [Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）](wiki/entities/paper-flex-pi.md) — Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](h `📅unknown` `[entity_page]`
 - [Flying Knots（Task-Level ILC for Deformable Rope Manipulation）](wiki/entities/paper-flying-knots.md) — Flying Knots** 是 CMU **Krishna Suresh & Chris Atkeson** 的 **可变形体动态操作** 论文（arXiv:2602.21302）：在 **fl `📅unknown` `[entity_page]`
 - [FM-VLA（Force-based Memory for Vision-Language-Action Models）](wiki/entities/paper-fm-vla.md) — FM-VLA**（arXiv:2607.18231，[项目页](https://qft-333.github.io/FM-V `📅unknown` `[entity_page]`
@@ -637,6 +641,7 @@
 - [HiFi-UMI / HiFi-UMI-2K](wiki/entities/paper-hifi-umi.md) — HiFi-UMI**（*Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone*，[arXiv:26 `📅unknown` `[entity_page]`
 - [Hiking in the Wild：可扩展感知跑酷框架](wiki/entities/paper-hiking-in-the-wild.md) — Hiking in the Wild**（arXiv:2601.07718）由清华大学交叉信息研究院等提出，在 [42 篇 RL 身体系统栈](https://mp.weixin.qq.com/s `📅unknown` `[entity_page]`
 - [HIL-HARC（真机在线 RL · CTDE + 分解 Critic · arXiv:2608.09762）](wiki/entities/paper-hil-harc.md) — HIL-HARC**（*Efficient Real-World Online Reinforcement Learning for Robot Manipulation via Centrali `📅unknown` `[entity_page]`
+- [hint²：层级世界模型推理时 LTL 引导](wiki/entities/paper-hint2.md) — hint²**（*Hierarchical World Models for Inference-Time Temporal Logic Guidance*；[arXiv:2608.13678 `📅unknown` `[entity_page]`
 - [HiTac-WAM（分层触觉世界–动作模型）](wiki/entities/paper-hitac-wam.md) — HiTac-WAM**（*A Hierarchical Tactile World Action Model for Contact-Rich Robot Manipulation*，[arXiv `📅unknown` `[entity_page]`
 - [Stack of Tasks（HMI P003）](wiki/entities/paper-hmi-stack-of-tasks.md) — Stack of Tasks**（*A Versatile Generalized Inverted Kinematics Implementation for Collaborative Wor `📅unknown` `[entity_page]`
 - [HomeWorld（Kairos · Whole-Home Scene Generation）](wiki/entities/paper-homeworld-whole-home-scene-generation.md) — HomeWorld**（*Kairos · HomeWorld*，arXiv:2606.06390，项目页，[GitH `📅unknown` `[entity_page]`
@@ -2170,6 +2175,7 @@
 - [SE(3) 切空间浮动基轨迹优化](wiki/entities/paper-se3-tangent-to.md) — SE(3) Tangent TO**（论文 *A Comparative Study of Floating-Base Space Parameterizations for Agile Whol `📅unknown` `[entity_page]`
 - [Seeker：从动作里长出视觉注意力](wiki/entities/paper-seeker.md) — Seeker**（*Attention from Action, for Action: Emergent Visual Bottlenecks for Policy Learning*，[arX `📅unknown` `[entity_page]`
 - [Segment Anything（SAM）](wiki/entities/paper-segment-anything.md) — SAM**（*Segment Anything Model*；论文 *Segment Anything*，[arXiv:2304.02643](https://arxiv.org/abs/2304 `📅unknown` `[entity_page]`
+- [Self-Demonstrated Generative Control：VLA 跨本体微调的自生成回放](wiki/entities/paper-self-supervised-control.md) — Self-Demonstrated Generative Control**（*Fine-Tuning VLAs with Self-Demonstrated Generative Control `📅unknown` `[entity_page]`
 - [语义音频驱动人形全身控制（Lab-RoCoCo）](wiki/entities/paper-semantic-audio-wbc-humanoid.md) — Semantic Audio-driven Understanding for Dynamic Humanoid Whole Body Control**（Sapienza / UNINT，arX `📅unknown` `[entity_page]`
 - [Senna（Senna: Bridging Large Vision-Language Models and End-to-End Autonomous Driving · arXiv:2410.22313）](wiki/entities/paper-senna.md) — Senna**（*Senna: Bridging Large Vision-Language Models and End-to-End Autonomous Driving*，[2410.223 `📅unknown` `[entity_page]`
 - [SENTINEL](wiki/entities/paper-sentinel.md) — SENTINEL**（*A Fully End-to-End Language-Action Model for Humanoid Robots*，arXiv:2511.19236）将自然语言与本 `📅unknown` `[entity_page]`
@@ -3155,6 +3161,7 @@
 - [T-RO 分类 04：生成模型综述](wiki/overview/tro-manip-category-04-generative-models-survey.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [视频–接触–控制：10 篇论文的阅读坐标](wiki/overview/video-contact-control-10-papers-technology-map.md) — 具身智能正在把「看懂人类视频」、「仿真与控制接口」、「接触几何」与「大模型持续适配」焊成同一条动作链路——单点刷榜不如看机制能否复用到更长视野与更开放场景。 `📅unknown` `[overview_page]`
 - [VLA 开源复现景观（2025 策展）](wiki/overview/vla-open-source-repro-landscape-2025.md) — VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权重**会直接暴露工程差距；2025 年开源生态同时在 **模型、RL 训练系统、跨本体与 VLA+世界模型** 四条线上铺开，复现时应先选对 `📅unknown` `[overview_page]`
+- [VLA·预测·抓取：9 篇论文的阅读坐标](wiki/overview/vla-predict-grasp-9-papers-technology-map.md) — 具身智能正从「扩大模型与数据」转向部署闭环：本体迁移、动态时延、长时序约束、整机可执行抓取，以及基准与低成本任务工程共同定义真实价值。 `📅unknown` `[overview_page]`
 - [VLA 可执行性与鲁棒性：9 篇论文的阅读坐标](wiki/overview/vla-robustness-9-papers-technology-map.md) — 具身智能正在把策略学习从静态模仿推向可诊断、可适配、可闭环的系统——关键不在单一模型名，而在动作 chunk、探索噪声、人类反馈与规划结构能否稳定复用。 `📅unknown` `[overview_page]`
 - [VLN 10 篇论文技术地图](wiki/overview/vln-10-papers-technology-map.md) — VLN 七年演进的核心脉络是 **减负**：从 R2R 离散导航图 + 逐步指令，到 VLN-CE 连续动作与 REVERIE 高层目标定位，再到 PREVALENT 预训练、拓扑建图、大规模数据生成 `📅unknown` `[overview_page]`
 - [VLN 分类 01：数据集与仿真平台](wiki/overview/vln-category-01-datasets-platforms.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, video-generation, action-conditioned, manipulation, alibaba]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-24
 arxiv: "2608.13489"
 code: https://github.com/AMAP-ML/DreamX-Phi
 related:
@@ -11,10 +11,12 @@ related:
   - ./paper-ctrl-world.md
   - ../concepts/video-as-simulation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../overview/vla-predict-grasp-9-papers-technology-map.md
 sources:
   - ../../sources/papers/dreamx_phi_arxiv_2608_13489.md
   - ../../sources/repos/dreamx-phi.md
   - ../../sources/blogs/wechat_embodied_station_contact_predict_adapt_10_papers_2026-08-18.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md
 summary: "DreamX-Phi 1.0（阿里 AMAP，arXiv:2608.13489）：动作条件视频 WM，PRoPE 式 SE(3) 注入 + depth/SAM3/V-JEPA。WorldArena 2.0 Track 1 自报第一。仓为占位，权重待赛后。"
 ---
 
@@ -108,12 +110,14 @@ flowchart LR
 - [Ctrl-World](./paper-ctrl-world.md)
 - [Video as Simulation](../concepts/video-as-simulation.md)
 - [机器人世界模型训练闭环](../overview/robot-world-models-training-loop-taxonomy.md)
+- [VLA·预测·抓取 9 篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md)
 
 ## 参考来源
 
 - [论文摘录](../../sources/papers/dreamx_phi_arxiv_2608_13489.md)
 - [官方仓归档](../../sources/repos/dreamx-phi.md)
 - [具身智能小站 10 篇盘点（2026-08-18）](../../sources/blogs/wechat_embodied_station_contact_predict_adapt_10_papers_2026-08-18.md)
+- [具身智能小站 9 篇盘点（2026-08-24）](../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md)
 
 ## 推荐继续阅读
 
