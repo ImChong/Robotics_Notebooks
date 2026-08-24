@@ -39,11 +39,27 @@
 
 ### 5) The Newton-Muon Optimizer（Du & Su, arXiv:2604.01472）
 - **链接：** https://arxiv.org/abs/2604.01472
-- **核心贡献：** 从 **Newton 方法** 在矩阵空间的 surrogate 推导 Muon；标准 Muon 可视为忽略输入二阶矩右预条件的隐式 Newton；提出 **Newton-Muon** 作为自然推广（Modded-NanoGPT 上约 **6% 更少步数**）。
+- **代码：** https://github.com/zhehangdu/Newton-Muon
+- **核心贡献：** 从 **Newton 方法** 在矩阵空间的 surrogate 推导 Muon；标准 Muon 可视为忽略输入二阶矩右预条件的隐式 Newton；提出 **Newton-Muon** 作为自然推广（Modded-NanoGPT 上约 **6% 更少步数**；Speedrun 上常优于 Muon）。
 - **对 wiki 的映射：**
   - [Muon](../../wiki/methods/muon.md)
+  - [Feature-Space Gradient Descent](../../wiki/concepts/feature-space-gradient-descent.md)
 
-### 6) 后续变体（索引，待单篇深读）
+### 6) DeltaMomentum（arXiv:2608.19491）
+- **链接：** https://arxiv.org/abs/2608.19491
+- **核心贡献：** 不对特征回归闭式解求逆，用 **内层梯度下降** 迭代动量更新规则（Delta Rule）；与 GDN / MesaNet、线性注意力演变类比；实现需 $X$ 归一化与 $\gamma$ 选择。
+- **对 wiki 的映射：**
+  - [Feature-Space Gradient Descent](../../wiki/concepts/feature-space-gradient-descent.md)
+  - [Muon](../../wiki/methods/muon.md)
+
+### 7) 动量的新理解：逼近特征层面的梯度下降（苏剑林, kexue.fm/11875, 2026-08-23）
+- **链接：** https://kexue.fm/archives/11875
+- **核心贡献：** 中文推导：动量 = 在线回归 $(X^\top X+\lambda I)^{-1}G$ 的 EMA；统一 Newton-Muon / DeltaMomentum 与 Muon 各向同性退化；讨论输入预条件耦合与 $\lambda$ 权衡。
+- **对 wiki 的映射：**
+  - [sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md](../blogs/kexue_fm_momentum_feature_gradient_descent_11875.md)
+  - [Feature-Space Gradient Descent](../../wiki/concepts/feature-space-gradient-descent.md)
+
+### 8) 后续变体（索引，待单篇深读）
 
 | 名称 | 主要贡献 | 备注 |
 |------|----------|------|
@@ -52,17 +68,21 @@
 | MuonEq | Orthogonalization 前 Row/Column Balance | 平衡预处理 |
 | MiMuon | Muon + SGD | 泛化增强 |
 | Newton-Muon | Newton 理论推导 | 见 arXiv:2604.01472 |
+| DeltaMomentum | 内层 Delta 动量更新 | arXiv:2608.19491 |
 | OLion | 谱范数 + $\ell_\infty$ 交 | arXiv:2602.01105 |
 
 ## 推荐阅读顺序（理解难度递增）
 
 1. [Muon 博客](../blogs/muon_keller_jordan_2024.md) — 算法动机与设计
-2. arXiv:2502.16982 — LLM 规模化与工程细节
-3. arXiv:2604.01472 — Newton 视角
-4. arXiv:2506.15054 — 谱范数隐式约束
-5. arXiv:2606.03899 — Momentum 为何在正交化之前
+2. [kexue.fm/11875 特征层动量解读](../blogs/kexue_fm_momentum_feature_gradient_descent_11875.md) — 中文统一视角
+3. arXiv:2502.16982 — LLM 规模化与工程细节
+4. arXiv:2604.01472 — Newton 视角
+5. arXiv:2608.19491 — DeltaMomentum
+6. arXiv:2506.15054 — 谱范数隐式约束
+7. arXiv:2606.03899 — Momentum 为何在正交化之前
 
 ## 对 wiki 的映射
 
 - [Muon（方法页）](../../wiki/methods/muon.md)
+- [Feature-Space Gradient Descent（概念页）](../../wiki/concepts/feature-space-gradient-descent.md)
 - [Deep Learning Optimizers 对比](../../wiki/comparisons/deep-learning-optimizers.md)

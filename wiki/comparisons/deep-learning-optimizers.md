@@ -2,7 +2,7 @@
 type: comparison
 tags: [deep-learning, optimization, sgd, adam, adamw, muon, training, comparison]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-24
 summary: "深度学习一阶优化器（SGD→AdamW→Lion→Muon）的机制对比与机器人/LLM 训练选型指南；Muon 面向隐藏层矩阵正交化更新，LLM 预训练证据强于机器人 RL。"
 related:
   - ../methods/sgd.md
