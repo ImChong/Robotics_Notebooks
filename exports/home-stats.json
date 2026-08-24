@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/feature-space-gradient-descent.md",
+      "detail_id": "wiki-concepts-feature-space-gradient-descent",
+      "label": "Feature-Space Gradient Descent",
+      "type": "concept",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-nap-control.md",
       "detail_id": "entity-paper-nap-control",
       "label": "NaP-Control：扩散先验噪声导航的快速全身角色控制",
@@ -203,29 +213,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "特权信息训练（Privileged Training） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dual-head-coordination.md",
-      "detail_id": "entity-paper-dual-head-coordination",
-      "label": "Dual-Head Coordination",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-nap-control.md",
-    "detail_id": "entity-paper-nap-control",
-    "label": "NaP-Control：扩散先验噪声导航的快速全身角色控制",
-    "type": "entity",
+    "path": "wiki/concepts/feature-space-gradient-descent.md",
+    "detail_id": "wiki-concepts-feature-space-gradient-descent",
+    "label": "Feature-Space Gradient Descent",
+    "type": "concept",
     "recency": "2026-08-24",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
