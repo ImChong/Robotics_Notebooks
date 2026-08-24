@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, imitation-learning, reinforcement-learning, transformer, dagger, scaling-law, zero-shot, unitree-g1, cvpr2026, galbot, tsinghua]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-24
 arxiv: "2606.03985"
 venue: "CVPR 2026"
 code: https://github.com/GalaxyGeneralRobotics/Humanoid-GPT

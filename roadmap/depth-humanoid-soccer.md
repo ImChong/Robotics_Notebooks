@@ -200,8 +200,8 @@ flowchart LR
 - 关键词：[SMPLOlympics](../wiki/entities/smplolympics.md)、[人形拳击纵深路线](depth-humanoid-boxing.md)（对抗自博弈的展开版）
 
 **方向 D：竞技体育技能谱系**
-- 足球之外的快速运动物体交互：羽毛球、乒乓球共享"步法 + 击球时机"的方法论
-- 关键词：[人形羽毛球全身控制](../wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[PhysicsPingPong](../wiki/methods/table-tennis-strategy-skill-learning.md)
+- 足球之外的快速运动物体交互：羽毛球、乒乓球、网球共享"步法 + 击球时机"的方法论
+- 关键词：[人形羽毛球全身控制](../wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[PhysicsPingPong](../wiki/methods/table-tennis-strategy-skill-learning.md)、[AdaPT](../wiki/entities/paper-adapt.md)（人形网球自适应规划–跟踪，转播视频/MoCap 风格数据 + MVAE 对拉规划，G1 与 Atom P3 真机，GitHub 已开源发球跟踪训练）
 
 ---
 
