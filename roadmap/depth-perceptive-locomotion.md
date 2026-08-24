@@ -134,6 +134,9 @@ flowchart LR
 - [Footstep Planning](../wiki/concepts/footstep-planning.md) — 与 model-based 落脚点方法对照
 - [Light-Loco-Parkour](../wiki/entities/paper-light-loco-parkour.md)（本仓库）— 稀疏人体动作种子 Real2Sim2Real 扩成地形族 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏成单一无技能标签深度策略；Lightbot 0 攀爬至 0.83H、踏石 99.9%，Orin Nano 边缘算力 50 Hz；代码未开源
 - [ParkourFormer](../wiki/entities/paper-parkourformer.md)（本仓库）— Transformer 用当前状态查询历史，监督未来两步 AMP 状态并条件化动作；G1 九类地形单策略平均穿越 93.85%；去 MSE 下楼塌到 9.50%；代码未开源
+- [TRAMP](../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)（本仓库，SJTU，IEEE RA-L 2026）— 单阶段视觉辅助 RL：层次特征提取 + MoE actor + 地形相关 AMP，机载低成本深度；真机验证坡/楼梯/高台/宽沟与户外杂乱场景；代码未开源
+- [CMoE](../wiki/entities/paper-cmoe.md)（本仓库，Fudan，ICRA 2026）— 单阶段 PPO + 高程图 MoE，用 SwAV 式地形对比学习解决 vanilla MoE 门控均匀激活；G1 真机 20 cm 台阶、80 cm 沟；官方 Isaac Gym 代码已开源
+- [CReF](../wiki/entities/paper-cref.md)（本仓库，浙大/山大）— 单阶段前向深度 + 本体交叉注意力与 GRU highway 融合，不做 2.5D 建图或几何辅助目标；AgiBot X2 Ultra 零样本楼梯/40 cm 台/80 cm 沟；训练代码未开源
 
 ### 推荐做什么
 - 复现一个开源 parkour 工作（Extreme Parkour / humanoid parkour）在仿真里的训练

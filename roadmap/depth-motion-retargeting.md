@@ -163,6 +163,7 @@ flowchart LR
 - [Shooting for Contact / DSMS](../wiki/entities/paper-shooting-for-contact.md)（本仓库）— 接触隐式直接仿真多重打靶，无需预设接触时刻表即可把运动学参考精炼为动力学可行轨迹；backflip 落地成功率与 DynaRetarget 同档（98.7%），较 OmniRetarget（9.3%）高一个数量级，G1 零样本爬行/180° 跳转；trajopt/MPC 已开源
 - [CoRe](../wiki/entities/paper-core.md) 与 [RMR](../wiki/entities/paper-rmr.md)（本仓库，Humanoids 2025 / IROS 2025）— CoRe 用"几何映射→接触感知精炼→RL 跟踪"三段分工把脚滑/浮空/过加速当参考层问题处理；RMR 提供"先统一源骨架、再映射"的上游两段式，支撑 RGB 视频实时闭环，其实现并入 CoRe v0.1.0 的 DMR 模块；软件 [core-retarget v0.1.0](../wiki/entities/core-retarget.md) 部分开源（Apache-2.0，重定向+精炼可跑，T2M 与 RL 训练未随仓发布）
 - [OmniRetarget](../wiki/entities/paper-hrl-stack-03-omniretarget.md) 与 [Retargeting Matters](../wiki/entities/paper-hrl-stack-01-retargeting_matters.md)（本仓库）— 交互保留与重定向质量对下游的影响
+- [WARP](../wiki/entities/paper-warp-whole-body-retargeting.md)（本仓库，Georgia Tech）— 闭式 c-SEW + lazy mobile-base，把 Meta Quest 离线人类全身演示转为精确、一致、可开环回放的动作，支撑 RB-Y1 零样本全身移动操作 BC；代码未列
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)（本仓库）— 四足支线主入口，见下节
 
 ### 四足支线：动物 / 视频关键点 → 四足参考

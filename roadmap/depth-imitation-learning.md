@@ -144,6 +144,7 @@ flowchart LR
 - [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)（本仓库）— ACT 一系的核心机制
 - [Why Action Chunking Improves BC](../wiki/entities/paper-why-action-chunking-improves-bc.md)（本仓库，CoRL 2026）— 消融拆穿"时序一致性/更短 horizon"两个常见假说，chunk 收益主因是延迟观测条件化 + 隐式集成；同一策略用 Randomized Delay Ensemble 部署即可匹配标准 chunk 执行，真机三任务验证
 - [Seeker](../wiki/entities/paper-seeker.md)（本仓库）— 冻结 DINOv3 + 动作监督 ROI，不靠 gaze/affordance/阶段提示逼近特权 Oracle（62.6 vs 64.2），同一 ROI 可跨 RGB/点云模态复用；MimicGen 62.6%，xArm 真机域内 76.7%/OOD 60.0%；MIT 已开源
+- [Revisiting Open-Loop Execution](../wiki/entities/paper-revisiting-open-loop-action-chunking.md)（本仓库，MIT/Berkeley）— 与上一条对照：长 open-loop execution horizon 的主因是短上下文模仿非马尔可夫专家，足够上下文后闭环 reactive 反而最优；提出 double encoder 稳定长上下文 Diffusion Policy
 
 ### 学完输出什么
 - 一个用 Diffusion Policy 训练的动作策略
@@ -202,6 +203,7 @@ flowchart LR
 ### 推荐读什么
 - [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
 - [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
+- [SPD](../wiki/entities/paper-spd.md)（本仓库，CoRL 2026，斯坦福/MIT/Scale AI）— 仿真 VR 遥操作采 75 h on-embodiment 演示预训练扩散 Transformer，56-DoF 双臂灵巧手每任务仅 1–2 h 真机微调，五项任务均胜过从零 BC
 
 ### 学完输出什么
 - 对 IL 策略的 sim2real 差距有第一手认识

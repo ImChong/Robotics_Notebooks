@@ -87,6 +87,8 @@ flowchart LR
 - [PhysisForcing](../wiki/entities/paper-physisforcing.md)（本仓库）— 训练期分层物理对齐（像素级轨迹 + 语义级 token 关系），推理零额外开销："视频保真 ≠ 物理可信"的正面解法
 - [PhysMani](../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)（本仓库）— 在线学习的无散度 3D Gaussian 速度场世界模型与 future-aware 策略并行耦合，面向快速动态目标操作（ECCV 2026）
 - [Xiaomi-Robotics-U0](../wiki/entities/xiaomi-robotics-u0.md)（本仓库）— 38B 统一自回归世界基础模型：T2I/X2I 与多视角具身场景生成/迁移/操纵视频共训，不内置策略头，作为下游 VLA 的合成数据引擎——「视觉逼真≠动作可推断」的直接例证
+- [ODEWorld](../wiki/entities/paper-odeworld.md)（本仓库）— PT-Flow 在物理时间上学 latent ODE 速度场，JVP 一阶监督 + 动力学解耦缓解 JEPA 坍塌；LIBERO 长程视频 PSNR 19.46，AgileX+X-VLA 55%→80%；推理与权重已开源
+- [Hydra-0](../wiki/entities/paper-hydra-0.md)（本仓库）— 用图像平面稀疏 action flow 作跨具身 WM 条件，robot EPE −90.4%、RoboLab 开环 r=0.96；2,202 h 训练；确认未开源
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"
@@ -154,6 +156,8 @@ flowchart LR
 - [DreamWAM](../wiki/entities/paper-dreamwam.md)（本仓库）— 训练期用 RGB+Flow 联合去噪与 Depth/DINO 门控残差监督 beyond-RGB 未来（外观+运动+几何+语义），推理仍 RGB-only；LIBERO-Plus 69.16%→75.47%、真机视觉扰动 55.6%→74.4%；代码/权重已开源
 - [Dyna-2](../wiki/entities/dyna-2.md)（本仓库）— Dyna Robotics 闭源旗舰 WAM：≥1M h egocentric 人视频预训练（零机器人数据），报告人 held-out 与人→机零样本幂律；消融主张 video co-training 是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；未开源
 - [FACT](../wiki/entities/paper-fact.md)（本仓库）— 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
+- [Motubrain](../wiki/entities/paper-motubrain.md)（本仓库）— UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
+- [Flex-π](../wiki/entities/paper-flex-pi.md)（本仓库）— 6B 多流 Joint WAM，共享冻结 Wan VAE 联合编码 RGB+pointmap+DINOv3，流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态
@@ -205,7 +209,7 @@ flowchart LR
 
 **方向 C：评测与安全一致性**
 - 同时看世界侧（保真、物理常识、动作可推断性）与策略侧（成功率、长程、sim2real）；避免单侧代理
-- 关键词：综述评测节、[GigaWorld-1](../wiki/entities/paper-gigaworld-1-policy-evaluation.md)、开放挑战（想象未来与真实执行的因果一致）
+- 关键词：综述评测节、[GigaWorld-1](../wiki/entities/paper-gigaworld-1-policy-evaluation.md)、[SC3-Eval](../wiki/entities/paper-sc3-eval.md)（自一致视频生成作真机 VLA 策略评估器，闭环 Pearson 0.929）、[HarnessEval-W](../wiki/entities/paper-harnesseval-w.md)（LLM harness 接交互式世界模型评测，Intentional 排序与人类 ρ=0.93）、开放挑战（想象未来与真实执行的因果一致）
 
 **方向 D：与 VLA / BFM / 移动操作整机栈汇合**
 - 高层语义仍可走 VLA；全身协调走 BFM；WAM 提供后果耦合或部署筛选层
