@@ -1,13 +1,82 @@
 {
   "generated_at": "2026-08-24",
-  "node_count": 3240,
-  "edge_count": 28721,
+  "node_count": 3247,
+  "edge_count": 28768,
   "coverage": {
-    "covered": 3215,
-    "total": 3215,
+    "covered": 3222,
+    "total": 3222,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-4dof-pen-sorting.md",
+      "detail_id": "entity-paper-4dof-pen-sorting",
+      "label": "4-DoF 视觉引导桌面笔具分拣",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-arm-aware-dexgrasp.md",
+      "detail_id": "entity-paper-arm-aware-dexgrasp",
+      "label": "Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cps4all.md",
+      "detail_id": "entity-paper-cps4all",
+      "label": "CPS4All：无障碍与能力增强的赛博物理系统工作坊",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-flatlab.md",
+      "detail_id": "entity-paper-flatlab",
+      "label": "FlatLab：平面物体操作的统一框架与仿真基准",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hint2.md",
+      "detail_id": "entity-paper-hint2",
+      "label": "hint²：层级世界模型推理时 LTL 引导",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-self-supervised-control.md",
+      "detail_id": "entity-paper-self-supervised-control",
+      "label": "Self-Demonstrated Generative Control：VLA 跨本体微调的自生成回放",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/vla-predict-grasp-9-papers-technology-map.md",
+      "detail_id": "wiki-overview-vla-predict-grasp-9-papers-technology-map",
+      "label": "VLA·预测·抓取：9 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-language-to-navigation-goals-rgbd.md",
       "detail_id": "entity-paper-language-to-navigation-goals-rgbd",
@@ -34,7 +103,7 @@
       "recency": "2026-08-23",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/barc.md",
@@ -122,7 +191,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "特权信息训练（Privileged Training） 社区"
     },
     {
       "path": "wiki/entities/paper-dual-head-coordination.md",
@@ -145,113 +214,43 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gigabrain-0-7.md",
-      "detail_id": "entity-paper-gigabrain-0-7",
-      "label": "GigaBrain-0.7",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neural-gcs.md",
-      "detail_id": "entity-paper-neural-gcs",
-      "label": "Neural GCS",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-reforce.md",
-      "detail_id": "entity-paper-reforce",
-      "label": "ReForce",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sparkvla.md",
-      "detail_id": "entity-paper-sparkvla",
-      "label": "SparkVLA",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-structrl.md",
-      "detail_id": "entity-paper-structrl",
-      "label": "StructRL",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-yopo-minco.md",
-      "detail_id": "entity-paper-yopo-minco",
-      "label": "YOPO-MINCO",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-robustness-9-papers-technology-map.md",
-      "detail_id": "wiki-overview-vla-robustness-9-papers-technology-map",
-      "label": "VLA 可执行性与鲁棒性：9 篇论文的阅读坐标",
-      "type": "overview",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-language-to-navigation-goals-rgbd.md",
-    "detail_id": "entity-paper-language-to-navigation-goals-rgbd",
-    "label": "Language-to-Navigation-Goals（RGB-D 语义导航）",
+    "path": "wiki/entities/paper-4dof-pen-sorting.md",
+    "detail_id": "entity-paper-4dof-pen-sorting",
+    "label": "4-DoF 视觉引导桌面笔具分拣",
     "type": "entity",
-    "recency": "2026-08-23",
+    "recency": "2026-08-24",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 611
+      "size": 624
     },
     {
       "label": "操作",
-      "size": 546
+      "size": 543
     },
     {
       "label": "视觉-语言-动作",
-      "size": 243
+      "size": 257
     },
     {
       "label": "人形论文深读笔记",
-      "size": 212
-    },
-    {
-      "label": "全身控制",
-      "size": 135
+      "size": 221
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 133
+      "size": 151
+    },
+    {
+      "label": "世界动作模型",
+      "size": 92
     }
   ],
   "top_hubs": [
@@ -259,7 +258,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1294,
+      "degree": 1305,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -282,7 +281,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 774,
+      "degree": 776,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -290,7 +289,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 741,
+      "degree": 743,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -306,7 +305,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 544,
+      "degree": 547,
       "has_repo": true
     },
     {
@@ -321,7 +320,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 469,
+      "degree": 472,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -340,8 +339,7 @@
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
       "degree": 144,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -377,8 +375,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -397,8 +394,7 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 41,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 41
     },
     {
       "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",

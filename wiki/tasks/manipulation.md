@@ -2,9 +2,12 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-22
+updated: 2026-08-24
 related:
-  - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
+  - ../entities/paper-flatlab.md
+  - ../entities/paper-arm-aware-dexgrasp.md
+  - ../entities/paper-4dof-pen-sorting.md
+  - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
   - ../entities/paper-vtap-gripper.md
