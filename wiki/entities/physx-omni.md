@@ -10,7 +10,7 @@ tags:
   - articulated-objects
   - deformable-objects
 status: complete
-updated: 2026-07-03
+updated: 2026-08-24
 arxiv: "2605.21572"
 related:
   - ./paper-physforge-physics-grounded-3d-assets.md
@@ -91,6 +91,7 @@ flowchart LR
 ## 关联页面
 
 - [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 蓝图 + 扩散 KVI** 的物理 3D 生成对照。
+- [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 减法式部件 latent 分解**；共享 TRELLIS 生态但不含关节/物理字段。
 - [Articraft](./articraft.md) — **Agent + SDK** 程序化可关节资产路线。
 - [RoboTwin 2.0](./robotwin.md) — 操作仿真对 **可交互场景资产** 的需求语境。
 - [SAPIEN](./sapien.md) — 关节体交互仿真栈。
