@@ -8,6 +8,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/sim2real.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/flatlab_arxiv_2608_14049.md
   - ../../sources/sites/flatlab-web-github-io.md
@@ -106,6 +107,7 @@ flowchart LR
 - [Manipulation](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [VLA·预测·抓取 9 篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属其 ③ 策略任务成功率层的**平面物体域基准**：仿真泛化分只能在 FlatLab 协议内横比，跨基准比榜无效；真机仅为策略切换案例展示，④ sim↔real 相关性未校准
 
 ## 参考来源
 
