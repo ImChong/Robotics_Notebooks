@@ -1,3 +1,5 @@
+## [2026-08-24] ingest | sources/papers/nap_control_arxiv_2605_20209.md — NaP-Control 扩散先验噪声导航；官方代码已开源
+
 ## [2026-08-24] ingest | sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md — 具身智能小站「9 篇 VLA·预测·抓取」；新建 6 论文实体 + 技术地图；复用 PartialBiGrasp/ReflexVLA/DreamX-Phi
 
 - **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/e0yXB8Rz4ma3CCPX8HN2CQ>；要求 9/9 独立详情节点、同一 arXiv 不重复造页

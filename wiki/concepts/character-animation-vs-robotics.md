@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-08-21
+updated: 2026-08-24
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -22,6 +22,7 @@ related:
   - ../entities/robot-motion-keyframe-editors.md
   - ../entities/generative-motion-rig.md
   - ../entities/rigmo.md
+  - ../entities/paper-nap-control.md
   - ../entities/blender.md
   - ../entities/manim.md
   - ../entities/disney-research-la.md
@@ -113,6 +114,7 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 - [DeepMimic](../methods/deepmimic.md)：以艺术家关键帧 / MoCap 为参考，靠**显式跟踪奖励**逼真模仿。
 - [AMP](../methods/amp-reward.md)：把「像不像」交给判别器，避免手调跟踪权重；在真机上变成**风格先验**。
 - [ASE](../methods/ase.md)：把多技能压成潜空间，分层控制时由上层选 latent。
+- **扩散动作先验（2024–2026）：** [UniPhys](../entities/paper-bfm-40-uniphys.md) 用测试时梯度引导调用扩散先验；[NaP-Control](../entities/paper-nap-control.md) 改为 RL 导航初始噪声，去掉推理期迭代引导——仍是 **Isaac Gym 物理角色** 语境，与真机 WBC 有方法谱系关联但无官方硬件入口。
 
 > 迁移时易踩坑：图形学角色没有热模型、没有 IMU 噪声、没有传感延迟；同一套奖励直接搬上真机往往「仿真好看、真机抽搐」。是否需要补 [Sim2Real](./sim2real.md) 一层取决于目标平台。
 

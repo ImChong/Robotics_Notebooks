@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-24",
-  "node_count": 3247,
-  "edge_count": 28768,
+  "node_count": 3248,
+  "edge_count": 28777,
   "coverage": {
-    "covered": 3222,
-    "total": 3222,
+    "covered": 3223,
+    "total": 3223,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -246,7 +246,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 151
+      "size": 152
     },
     {
       "label": "世界动作模型",
