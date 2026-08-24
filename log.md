@@ -1,3 +1,5 @@
+## [2026-08-24] ingest | sources/papers/vitacphys_arxiv_2608_21355.md — 小米 ViTacPhys 视触觉物理属性自适应抓取；代码/数据集待发布
+
 ## [2026-08-24] ingest | sources/papers/sculpt_arxiv_2608_13541.md — SCULPT 减法式 3D 部件生成；项目页未列代码，记未开源
 
 ## [2026-08-24] ingest | sources/papers/t_gmp_terrain_conditioned_generative_motion_priors_arxiv_2606_06944.md — T-GMP（arXiv:2606.06944，HIT×乐聚 Kuavo）；地形条件 CVAE+AMP+Foothold；项目页 404、代码未开源；升格运动小脑 #02 实体页

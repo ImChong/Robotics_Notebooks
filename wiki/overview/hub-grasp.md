@@ -45,6 +45,7 @@ summary: "抓取与操作感知知识链汇总：从接触建模、灵巧手运�
 | 方法 | 移动高速灵巧抓取 + 全身 RL | [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)（CVAE 引导 · 二值触觉 · arXiv:2604.12879） |
 | 方法 | 透明含液实验器皿抓取 | [TransGraspNet](../entities/paper-transgraspnet.md)（边界/深度一致 + 物理重打分 · arXiv:2607.29567） |
 | 末段精修 | 纯触觉目标条件 regrasp | [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)（板/盘/杆 · Siamese · arXiv:2509.25746） |
+| 方法 | 视触觉物理属性条件化抓取 | [ViTacPhys](../entities/paper-vitacphys.md)（人体示范 → 质量/刚度/摩擦 · ACT · arXiv:2608.21355） |
 
 ## 与其他知识链的关系
 
@@ -59,6 +60,7 @@ summary: "抓取与操作感知知识链汇总：从接触建模、灵巧手运�
 - [Contact Dynamics](../concepts/contact-dynamics.md)
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 抓取末段纯触觉精修
 - [TransGraspNet（论文实体）](../entities/paper-transgraspnet.md) — 透明含液实验器皿几何–物理一致抓取
+- [ViTacPhys（论文实体）](../entities/paper-vitacphys.md) — 视触觉物理属性感知自适应灵巧抓取
 
 ## 参考来源
 

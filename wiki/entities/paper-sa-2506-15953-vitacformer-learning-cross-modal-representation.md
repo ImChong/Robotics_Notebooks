@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-24
 arxiv: "2506.15953"
 venue: "RSS 2026"
 summary: "Cross-modal representation learning for visuo-tactile dexterous manipulation."
