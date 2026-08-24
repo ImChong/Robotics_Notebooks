@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-sculpt-subtractive-3d-part-generation.md",
+      "detail_id": "entity-paper-sculpt-subtractive-3d-part-generation",
+      "label": "SCULPT（减法式 3D 部件生成）",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/feature-space-gradient-descent.md",
       "detail_id": "wiki-concepts-feature-space-gradient-descent",
       "label": "Feature-Space Gradient Descent",
@@ -202,24 +212,13 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cmoe.md",
-      "detail_id": "entity-paper-cmoe",
-      "label": "CMoE：对比学习混合专家的人形运动控制与地形适应",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "特权信息训练（Privileged Training） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/feature-space-gradient-descent.md",
-    "detail_id": "wiki-concepts-feature-space-gradient-descent",
-    "label": "Feature-Space Gradient Descent",
-    "type": "concept",
+    "path": "wiki/entities/paper-sculpt-subtractive-3d-part-generation.md",
+    "detail_id": "entity-paper-sculpt-subtractive-3d-part-generation",
+    "label": "SCULPT（减法式 3D 部件生成）",
+    "type": "entity",
     "recency": "2026-08-24",
     "source": "git",
     "action": "added",
