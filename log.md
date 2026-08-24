@@ -1,3 +1,5 @@
+## [2026-08-24] ingest | sources/papers/sculpt_arxiv_2608_13541.md — SCULPT 减法式 3D 部件生成；项目页未列代码，记未开源
+
 ## [2026-08-24] ingest | sources/papers/t_gmp_terrain_conditioned_generative_motion_priors_arxiv_2606_06944.md — T-GMP（arXiv:2606.06944，HIT×乐聚 Kuavo）；地形条件 CVAE+AMP+Foothold；项目页 404、代码未开源；升格运动小脑 #02 实体页
 
 ## [2026-08-24] ingest | sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md — 科学空间「动量的新理解」；新建 Feature-Space Gradient Descent 概念页；交叉 Muon / SGDM

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-generation, geometry-images, thin-shell, garment, diffusion, vae, tsdf, eccv2026, clo-virtual-fashion]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-24
 arxiv: "2607.13365"
 venue: "ECCV 2026"
 related:
@@ -189,6 +189,7 @@ CD 为 \(\times10^{-3}\) 量级（与论文表一致）。ABO 上 NC 略低于�
 | 可微 3D 等值面 | DMTet / FlexiCubes | 可微提面思想同源，但是 3D 网格、无天然 UV |
 | 布料神经仿真 | [ClothTransformer](./paper-clothtransformer-unified-latent-cloth-simulation.md) | 下游动力学；DiffGI 提供上游薄壳网格生成 |
 | Sim-ready 资产 | [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) / [Articraft](./articraft.md) | 关节与物理字段；DiffGI 偏表面几何保真 |
+| 减法式部件生成 | [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) | TRELLIS.2 latent recurrent split；纹理部件分解，非薄壳 GI |
 | 文本引导 mesh 编辑 | [RADmesh](./paper-radmesh.md) | 同属 ECCV 2026 显式网格；RADmesh 从已有 mesh **形变+remesh**，DiffGI 从 GI **生成**薄壳 |
 
 ## 关联页面

@@ -11,7 +11,7 @@ tags:
   - dataset
   - articulated-objects
 status: complete
-updated: 2026-08-20
+updated: 2026-08-24
 arxiv: "2605.05163"
 related:
   - ../concepts/sim2real.md
@@ -98,6 +98,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) — 资产 **动力学/碰撞/关节** 与仿真器一致性总提醒。
 - [Manipulation（任务总览）](../tasks/manipulation.md) — 操作学习对 **可交互场景资产** 的需求背景。
 - [DiffGI](./paper-diffgi.md) — **薄壳 / UV geometry image** 生成对照（偏表面边界，而非关节物理蓝图）。
+- [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 潜空间减法式部件生成**；纹理部件分解但不带关节/物理字段。
 - [RADmesh](./paper-radmesh.md) — **文本引导 remesh-aware 网格形变**；适合给已有 mesh 长部件，再接入 sim-ready 管线。
 
 ## 方法栈

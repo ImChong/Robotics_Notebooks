@@ -13,7 +13,7 @@ tags:
   - dcc
   - 3d-gen-studio
 status: complete
-updated: 2026-08-13
+updated: 2026-08-24
 related:
   - ../concepts/text-to-cad.md
   - ./blender.md
@@ -162,6 +162,7 @@ sequenceDiagram
 - [FreeCAD MCP](./freecad-mcp.md) — MCP 遥控桌面 CAD；与本页 MCP 网格编排形成「CAD vs mesh studio」对照。
 - [CAD Skills](./cad-skills.md) — Agent Skills 形态的 STEP/URDF 制造链。
 - [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) — 学习式物理接地 3D 资产。
+- [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 减法式部件生成**；Comfy 管线可接整对象 mesh，但 SCULPT 的 latent subtractive 分解需官方代码（截至入库日未开源）。
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — 具身仿真就绪世界引擎（场景/资产尺度不同）。
 - [Sim2Real](../concepts/sim2real.md) — 几何与动力学一致性提醒。
 
