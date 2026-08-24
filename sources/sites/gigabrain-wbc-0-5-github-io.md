@@ -4,16 +4,17 @@
 - **类型：** site / project-page
 - **URL：** <https://shepherd1226.github.io/gigabrain-wbc-0.5/>
 - **arXiv：** <https://arxiv.org/abs/2608.18234>
-- **入库日期：** 2026-08-21
+- **入库日期：** 2026-08-21（开源状态复核：2026-08-24）
 - **配套论文：** [GigaBrain-WBC-0.5（arXiv:2608.18234）](../papers/gigabrain_wbc_0_5_arxiv_2608_18234.md)
 
 ## 一句话摘要
 
 GigaAI / 清华等联合提出的 **Behavior World Model（BWM）** 官方站点：因果 Transformer 联合预测 action、next state 与 next latent command 分布；自动 motion–terrain 标注管线从 retarget 运动恢复 3D 接触几何；部署期用 GMM Mahalanobis 在线 retract OOD 命令。展示相对 SONIC 的真机物体/地形交互、极端鲁棒性与 G1→Maker L01 迁移。
 
-## 公开信息要点（截至 2026-08-21 核查）
+## 公开信息要点（截至 2026-08-24 核查）
 
-- **机构：** 清华大学；GigaAI；北京交通大学；上海理工大学；中科院自动化所；中科院大学 等（通讯：Zheng Zhu、Jiwen Lu）。
+- **机构：** 清华大学（Tsinghua University）；极佳视界（GigaAI）；上海理工大学（USST）；北京交通大学（BJTU）；中国科学院自动化研究所（CASIA）；中国科学院大学（UCAS）
+- **作者：** Ziyang Cheng、Tianshu Tang、Jinxin Lan、Xinze Chen、Yuhan Gong、Zhichao Liu、Changzhong Wu、Yahao Mao、Zongyan Deng、Mingxuan Ma、Huasen Xi、Yilong Liu、Yutong Wu、Xiaofeng Wang、Yang Wang、Yun Ye、Guan Huang、Xiaojie Jin、Zheng Zhu#、Jiwen Lu#
 - **平台：** Unitree G1（29 DoF，50 Hz）；跨具身 Maker L01（简单 fine-tune）。
 - **核心叙事：**
   - **BWM** — 非纯 reactive tracker；policy 建模「环境如何塑造下一步可行为」
@@ -22,7 +23,7 @@ GigaAI / 清华等联合提出的 **Behavior World Model（BWM）** 官方站点
 - **能力对照表：** 相对 GMT/TWIST/SONIC/HoloMotion-1/Humanoid-GPT/SceneBot/CMP/BFM-Zero，宣称唯一同时覆盖 diverse tracking、teleop、terrain/object interaction、OOD robust、fall robust。
 - **Sim-to-sim（MuJoCo，Table 核心）：** Terrain SR **81.3%**（最强基线 15.3%，4.3×）；OOD SR **83.1%**；Fall recovery **99.3%**（16.8× 最强基线 5.9%）。
 - **真机：** 与 SONIC 同指令并排对比（搬箱、灭火器、上平台、坐椅/坐箱）；缺失支撑/扰动/OOD 命令 best-effort 演示；完整真机 footage 标注 forthcoming。
-- **代码 / 数据（步骤 2.5）：** 页面 Resources 区 **Code → coming soon**；**无** GitHub / Hugging Face 链接。按 **宣称将开源 / 待发布** 处理。
+- **代码 / 数据（步骤 2.5，2026-08-24 复核）：** 页面 Resources 区 **Code → coming soon**；**无** GitHub / Hugging Face 链接。按 **宣称将开源 / 待发布** 处理。
 
 ## 为何值得保留
 

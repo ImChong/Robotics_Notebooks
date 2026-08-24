@@ -2920,6 +2920,14 @@
         "fiveages-sim"
       ]
     },
+    "gigaai": {
+      "label": "极佳视界（GigaAI）",
+      "aliases": [
+        "gigaai",
+        "giga-ai",
+        "open-gigaai"
+      ]
+    },
     "mirros": {
       "label": "镜界（MirroS）",
       "aliases": [
@@ -2928,11 +2936,25 @@
         "harnesseval"
       ]
     },
+    "bjtu": {
+      "label": "北京交通大学（BJTU）",
+      "aliases": [
+        "bjtu",
+        "beijing-jiaotong-university"
+      ]
+    },
     "xjtu": {
       "label": "西安交通大学（XJTU）",
       "aliases": [
         "xjtu",
         "xi-an-jiaotong-university"
+      ]
+    },
+    "usst": {
+      "label": "上海理工大学（USST）",
+      "aliases": [
+        "usst",
+        "university-of-shanghai-for-science-and-technology"
       ]
     },
     "uoa": {

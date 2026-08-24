@@ -1,4 +1,4 @@
-## [2026-08-23] lint | wiki/entities/paper-language-to-navigation-goals-rgbd.md — 全量 lint 清零最后 1 条信息型预警：补「机器人视觉感知栈选型闭环」③/④ 层双向回链
+## [2026-08-24] ingest | sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md — GigaBrain-WBC-0.5 补全 20 作者与 6 机构元数据；2026-08-24 复核项目页 Code 仍 coming soon；注册 gigaai/bjtu/usst 机构
 
 ## [2026-08-23] ingest | sources/papers/language_to_navigation_goals_arxiv_2607_13624.md — Language-to-Navigation-Goals（UPO）：ROS 2 VLM+RGB-D→Nav2 语义导航；代码待接收后开源
 

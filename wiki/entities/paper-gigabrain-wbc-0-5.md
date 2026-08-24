@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, humanoid, whole-body-tracking, behavior-world-model, terrain-interaction, motion-tracking, reinforcement-learning, unitree-g1, tsinghua, isaac-lab]
+tags: [paper, humanoid, whole-body-tracking, behavior-world-model, terrain-interaction, motion-tracking, reinforcement-learning, unitree-g1, tsinghua, gigaai, bjtu, usst, casia, ucas, isaac-lab]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-24
 arxiv: "2608.18234"
 venue: "2026 · arXiv"
 related:
@@ -21,7 +21,7 @@ sources:
   - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
   - ../../sources/sites/gigabrain-wbc-0-5-github-io.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
-summary: "GigaBrain-WBC-0.5（arXiv:2608.18234，清华/GigaAI）：首个 humanoid Behavior World Model；因果 Transformer 联合预测 action/state/next-command GMM；自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；截至 2026-08-21 代码 coming soon。"
+summary: "GigaBrain-WBC-0.5（arXiv:2608.18234，清华/GigaAI 等）：首个 humanoid Behavior World Model；因果 Transformer 联合预测 action/state/next-command GMM；自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；截至 2026-08-24 代码 coming soon。"
 ---
 
 # GigaBrain-WBC-0.5：环境交互行为世界模型
@@ -53,11 +53,12 @@ summary: "GigaBrain-WBC-0.5（arXiv:2608.18234，清华/GigaAI）：首个 human
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 清华大学（Tsinghua）；GigaAI；北京交通大学；上海理工大学；中科院自动化所；中科院大学（通讯 Zheng Zhu、Jiwen Lu） |
+| **作者** | Ziyang Cheng、Tianshu Tang、Jinxin Lan、Xinze Chen、Yuhan Gong、Zhichao Liu、Changzhong Wu、Yahao Mao、Zongyan Deng、Mingxuan Ma、Huasen Xi、Yilong Liu、Yutong Wu、Xiaofeng Wang、Yang Wang、Yun Ye、Guan Huang、Xiaojie Jin、Zheng Zhu#、Jiwen Lu# |
+| **机构** | 清华大学（Tsinghua）；极佳视界（GigaAI）；上海理工大学（USST）；北京交通大学（BJTU）；中国科学院自动化研究所（CASIA）；中国科学院大学（UCAS） |
 | **平台** | Unitree G1（29 DoF，50 Hz）；跨具身 Maker L01（G1 checkpoint fine-tune） |
 | **数据** | Bones-Seed / MotionMillion / MotionDecode 中识别 terrain-interaction 子集（合计 ~72.6 h）混合 flat-ground |
 | **栈** | Isaac Lab + PPO；4096 envs（flat）→ 512 envs（terrain + fallen）；MuJoCo sim-to-sim 评测 |
-| **开源** | **待发布**（截至 **2026-08-21** [项目页 Code → coming soon](https://shepherd1226.github.io/gigabrain-wbc-0.5/)，无 GitHub URL） |
+| **开源** | **待发布**（截至 **2026-08-24** [项目页 Code → coming soon](https://shepherd1226.github.io/gigabrain-wbc-0.5/)，无 GitHub URL） |
 
 ## 核心原理
 
@@ -99,7 +100,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至入库日（2026-08-21）[项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/) 标注 **Code coming soon**，无可克隆官方仓库。若后续开源，预期路径为：terrain 标注 → Isaac Lab 训练 BWM → MuJoCo 四 regime 评测 → G1 真机部署 + \(R_{safe}\) 在线 filter。
+**不适用** — 截至复核日（2026-08-24）[项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/) 标注 **Code coming soon**，无可克隆官方仓库。若后续开源，预期路径为：terrain 标注 → Isaac Lab 训练 BWM → MuJoCo 四 regime 评测 → G1 真机部署 + \(R_{safe}\) 在线 filter。
 
 ## 工程实践
 
@@ -139,7 +140,7 @@ flowchart TB
 4. **OOD + Fall** — **83.1%** OOD SR + **99.3%** fall recovery，且同一策略、无 specialist handoff。
 5. **Flat tracking 不牺牲** — Standard SR **96.3%**、MPKPE **76.6** mm 仍优于 SONIC（82.3 mm）。
 6. **部署** — Mahalanobis retract 闭式、可调 \(R_{safe}\)；真机 footage 项目页标注 forthcoming。
-7. **开源** — 截至 2026-08-21 **coming soon**；复现前勿假设已有 checkpoint。
+7. **开源** — 截至 2026-08-24 **coming soon**；复现前勿假设已有 checkpoint。
 
 ## 与其他工作对比
 
