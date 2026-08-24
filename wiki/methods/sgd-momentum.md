@@ -2,17 +2,20 @@
 type: method
 tags: [deep-learning, optimization, momentum, sgd, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-08-24
 summary: "SGD Momentum 在梯度方向外叠加历史速度，平滑更新轨迹并加速沿一致方向的收敛，是深度网络训练的经典一阶加速技巧。"
 related:
   - ./sgd.md
   - ./nesterov-momentum.md
   - ./adam.md
+  - ./muon.md
   - ../concepts/deep-learning-foundations.md
+  - ../concepts/feature-space-gradient-descent.md
   - ../comparisons/deep-learning-optimizers.md
 sources:
   - ../../sources/papers/deep_learning_optimizers.md
   - ../../sources/books/udl_book.md
+  - ../../sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md
 ---
 
 # SGD Momentum（动量随机梯度下降）
@@ -53,6 +56,10 @@ $$
 
 经典动量用 **当前位置** 的梯度；[Nesterov Momentum](./nesterov-momentum.md) 在 **前瞻位置** 评估梯度，凸优化理论收敛率更优。实践中二者常互换试验。
 
+### 4. 特征层视角：动量作为在线回归解
+
+对线性层 $Y=XW$，若希望参数更新诱导的特征变化 $X\Phi$ 逼近 **特征梯度** $\partial L/\partial Y$，可解 $\min_\Phi \|X\Phi-\partial L/\partial Y\|_F^2+\lambda\|\Phi\|_F^2$，对 $G=X^\top \partial L/\partial Y$ 与 $X^\top X$ 做 EMA 即得 **预条件动量** $Z^{-1}M$；标准 SGDM 是其 $\lambda\to\infty$ 或无预条件极限。该视角统一 Newton-Muon、[Muon](./muon.md) 与 DeltaMomentum——见 [Feature-Space Gradient Descent](../concepts/feature-space-gradient-descent.md)。
+
 ## 优势与局限
 
 | 优势 | 局限 |
@@ -74,9 +81,12 @@ $$
 - [Adam](./adam.md)
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)
+- [Feature-Space Gradient Descent](../concepts/feature-space-gradient-descent.md)
+- [Muon](./muon.md)
 
 ## 参考来源
 
+- [动量的新理解：逼近特征层面的梯度下降（kexue.fm/11875）](../../sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md)
 - [Deep Learning Optimizers 论文摘录](../../sources/papers/deep_learning_optimizers.md) — Polyak (1964)、Sutskever et al. (2013)
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 

@@ -8,7 +8,7 @@ tags:
   - moonshot
   - moe
 status: complete
-updated: 2026-07-14
+updated: 2026-08-24
 arxiv: "2502.16982"
 venue: "arXiv preprint"
 code: https://github.com/MoonshotAI/Moonlight

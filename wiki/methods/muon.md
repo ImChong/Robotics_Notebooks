@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, muon, orthogonalization, llm-training, transformer, moonshot]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-24
 summary: "Muon 对隐藏层 2D 权重先做 SGD-momentum，再用 Newton–Schulz 迭代近似正交化更新方向；原始提出为博客+代码，Moonshot 在 arXiv:2502.16982 证明其可扩展至 Billion-scale LLM 并约 2× 计算效率。"
 related:
   - ./adamw.md
@@ -14,8 +14,10 @@ related:
   - ../entities/karpathy-autoresearch.md
   - ../concepts/transformer.md
   - ../concepts/deep-learning-foundations.md
+  - ../concepts/feature-space-gradient-descent.md
 sources:
   - ../../sources/blogs/muon_keller_jordan_2024.md
+  - ../../sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md
   - ../../sources/papers/muon_optimizer_primary_refs.md
   - ../../sources/repos/kellerjordan-muon.md
 ---
@@ -45,7 +47,7 @@ sources:
 - **首发形态特殊：** 社区引用与 GitHub Citation 指向 [Keller Jordan 博客](https://kellerjordan.github.io/posts/muon/)，说明 Muon 是 **博客 + 开源实现** 驱动的优化器，而非传统论文首发路线。
 - **LLM 训练新选项：** Moonshot 在 arXiv:2502.16982 用 scaling law 证明相对 [AdamW](./adamw.md) 约 **2× 计算效率**；Moonlight 3B/16B MoE 成为公开标杆；旗舰 [Kimi K3](../entities/kimi-k3.md)（**2026-07-27** 已开放权重与技术报告）进一步采用 **Per-Head Muon**（按注意力头独立正交化更新）。
 - **Speedrun 生态：** NanoGPT / Modded-NanoGPT、[karpathy/autoresearch](../entities/karpathy-autoresearch.md) 等将 Muon+AdamW 作为默认配方。
-- **理论逐渐清晰：** 谱范数约束（arXiv:2506.15054）、Momentum 作谱滤波（arXiv:2606.03899）、Newton 推导（arXiv:2604.01472）解释「为何先 momentum 再正交化」。
+- **理论逐渐清晰：** 谱范数约束（arXiv:2506.15054）、Momentum 作谱滤波（arXiv:2606.03899）、Newton 推导（arXiv:2604.01472）解释「为何先 momentum 再正交化」；[Feature-Space Gradient Descent](../concepts/feature-space-gradient-descent.md) 把 Muon 置于「逼近特征层梯度下降」框架，各向同性时 Newton-Muon 退化为 Muon。
 
 ## 主要技术路线
 
@@ -90,6 +92,17 @@ flowchart LR
 | arXiv:2506.15054 | Muon 隐式在 **谱范数约束** 下优化，限制权重最大奇异值增长 |
 | arXiv:2606.03899 | Momentum = **去噪谱滤波**；须 **先 momentum、后正交化** |
 | arXiv:2604.01472 | Muon ≈ 矩阵空间 **Newton 方法** 近似；Newton-Muon 为显式推广 |
+| kexue.fm/11875 | 动量 = 在线回归解 $Z^{-1}M$；Newton-Muon = `msign(Z^{-1}M)`；引出 DeltaMomentum |
+
+### 5. 特征层视角（Newton-Muon / DeltaMomentum）
+
+对线性层 $Y=XW$，理想更新是特征梯度 $\partial L/\partial Y$，但只能改 $W$。令 $W\leftarrow W-\eta\Phi$ 使 $X\Phi\approx \partial L/\partial Y$，解 $(X^\top X+\lambda I)^{-1}G$；对 $X^\top X$ 与 $G$ 做 EMA 得 **预条件动量** $Z^{-1}M$：
+
+- **Newton-Muon：** $W\leftarrow W-\eta\,\mathrm{msign}(Z^{-1}M)$（Speedrun 上常优于 Muon；代码 [zhehangdu/Newton-Muon](https://github.com/zhehangdu/Newton-Muon)）
+- **DeltaMomentum（arXiv:2608.19491）：** 对内层回归目标用梯度下降迭代 $\Phi$，**免矩阵求逆**
+- **退化关系：** 输入各向同性时 $Z\approx \sigma^2 I$，或 $\lambda\to\infty$，均退化为标准 Muon
+
+详见 [Feature-Space Gradient Descent](../concepts/feature-space-gradient-descent.md) 与 [kexue.fm/11875 解读](../../sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md)。
 
 ## 工程实践
 
@@ -115,7 +128,8 @@ flowchart LR
 - **非万能替代 AdamW：** 仅针对矩阵块；混合优化增加实现与调试复杂度。
 - **正交化开销：** Newton–Schulz 虽快于 SVD，仍比纯 AdamW 多算；需分布式实现（MuonBP 等）优化吞吐。
 - **机器人栈证据少：** 当前强力结果在 **LLM 预训练** 与 speedrun；仿真 RL / 小 MLP 策略尚未大规模验证。
-- **变体众多：** MONA、MuonEq、MiMuon、Newton-Muon 等并存，选型需对照具体任务与实现。
+- **变体众多：** MONA、MuonEq、MiMuon、Newton-Muon、DeltaMomentum 等并存，选型需对照具体任务与实现。
+- **输入预条件耦合模型：** Newton-Muon / 预条件 SGDM 需在前向保存 $X^\top X$，优化器与网络结构绑定，分布式实现更复杂。
 
 ## 关联页面
 
@@ -125,9 +139,11 @@ flowchart LR
 - [Kimi K3](../entities/kimi-k3.md) — Per-Head Muon 在 2.8T MoE 上的工程延续（技术报告 §2.5）
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md)
 - [Transformer](../concepts/transformer.md)
+- [Feature-Space Gradient Descent](../concepts/feature-space-gradient-descent.md)
 
 ## 参考来源
 
+- [动量的新理解：逼近特征层面的梯度下降（kexue.fm/11875）](../../sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md)
 - [Muon 原始博客（Keller Jordan, 2024-12）](../../sources/blogs/muon_keller_jordan_2024.md)
 - [Muon Optimizer 论文与理论文献摘录](../../sources/papers/muon_optimizer_primary_refs.md)
 - [KellerJordan/Muon 仓库](../../sources/repos/kellerjordan-muon.md)

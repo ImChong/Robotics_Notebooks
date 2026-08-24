@@ -1,3 +1,9 @@
+## [2026-08-24] ingest | sources/blogs/kexue_fm_momentum_feature_gradient_descent_11875.md — 科学空间「动量的新理解」；新建 Feature-Space Gradient Descent 概念页；交叉 Muon / SGDM
+
+- **触发：** 用户指定 <https://kexue.fm/archives/11875>
+- **核心：** 动量 = 在线回归解 $Z^{-1}M$，逼近特征层梯度下降；统一 Newton-Muon / DeltaMomentum 与 Muon 退化关系
+- **关键页：** [`wiki/concepts/feature-space-gradient-descent.md`](wiki/concepts/feature-space-gradient-descent.md)、[`wiki/methods/muon.md`](wiki/methods/muon.md)
+
 ## [2026-08-24] ingest | sources/papers/nap_control_arxiv_2605_20209.md — NaP-Control 扩散先验噪声导航；官方代码已开源
 
 ## [2026-08-24] ingest | sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md — 具身智能小站「9 篇 VLA·预测·抓取」；新建 6 论文实体 + 技术地图；复用 PartialBiGrasp/ReflexVLA/DreamX-Phi
