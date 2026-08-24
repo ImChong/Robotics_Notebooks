@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-vitacphys.md",
+      "detail_id": "entity-paper-vitacphys",
+      "label": "ViTacPhys：视触觉物理属性感知自适应抓取",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-sculpt-subtractive-3d-part-generation.md",
       "detail_id": "entity-paper-sculpt-subtractive-3d-part-generation",
       "label": "SCULPT（减法式 3D 部件生成）",
@@ -201,28 +210,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/xcar-rlgpu.md",
-      "detail_id": "entity-xcar-rlgpu",
-      "label": "xcar-rlgpu",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sculpt-subtractive-3d-part-generation.md",
-    "detail_id": "entity-paper-sculpt-subtractive-3d-part-generation",
-    "label": "SCULPT（减法式 3D 部件生成）",
+    "path": "wiki/entities/paper-vitacphys.md",
+    "detail_id": "entity-paper-vitacphys",
+    "label": "ViTacPhys：视触觉物理属性感知自适应抓取",
     "type": "entity",
     "recency": "2026-08-24",
     "source": "git",
-    "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
