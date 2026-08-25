@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-24",
-  "node_count": 3251,
-  "edge_count": 28817,
+  "generated_at": "2026-08-25",
+  "node_count": 3277,
+  "edge_count": 29026,
   "coverage": {
-    "covered": 3226,
-    "total": 3226,
+    "covered": 3252,
+    "total": 3252,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -35,7 +35,7 @@
       "recency": "2026-08-24",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-nap-control.md",
@@ -143,7 +143,7 @@
       "recency": "2026-08-23",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "人形机器人（Humanoid Robot） 社区"
     },
     {
       "path": "wiki/entities/barc.md",
@@ -224,27 +224,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 622
+      "size": 605
     },
     {
       "label": "操作",
-      "size": 543
+      "size": 568
     },
     {
       "label": "视觉-语言-动作",
-      "size": 257
+      "size": 250
     },
     {
       "label": "人形论文深读笔记",
-      "size": 221
+      "size": 209
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 159
+      "size": 152
     },
     {
-      "label": "世界动作模型",
-      "size": 104
+      "label": "移动操作",
+      "size": 130
     }
   ],
   "top_hubs": [
@@ -283,7 +283,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 743,
+      "degree": 769,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -347,7 +347,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 58
+      "degree": 60
     },
     {
       "detail_id": "wiki-methods-deepmimic",
@@ -388,7 +388,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 41
+      "degree": 41,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",

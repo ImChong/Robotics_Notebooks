@@ -1,4 +1,8 @@
-## [2026-08-24] ingest | sources/papers/vitacphys_arxiv_2608_21355.md — 小米 ViTacPhys 视触觉物理属性自适应抓取；代码/数据集待发布
+## [2026-08-25] ingest | sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md — 具身世界模型六路线综述；56 篇独立节点（38 复用 + 18 新建）+ 技术地图
+
+- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ>；要求文内每篇论文独立详情节点、不重复造页
+- **taxonomy：** 模型构建 / 规划 / 学习 / 行动 / 评估 / 上下文 + 趋势判断
+- **阅读坐标：** [`wiki/overview/embodied-wm-six-routes-technology-map.md`](wiki/overview/embodied-wm-six-routes-technology-map.md)
 
 ## [2026-08-24] ingest | sources/papers/sculpt_arxiv_2608_13541.md — SCULPT 减法式 3D 部件生成；项目页未列代码，记未开源
 

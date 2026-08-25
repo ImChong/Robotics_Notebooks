@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-08-24] lint | health-check | 自动化 wiki 健康检查
+## [2026-08-25] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **28** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,11 +94,36 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（8 个）
+- wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md
+- wiki/entities/paper-mobilewam-mobile-manipulation-wam.md
+- wiki/entities/paper-playworld-autonomous-play-data.md
+- wiki/entities/paper-riemann-1-causal-action-video-wam.md
+- wiki/entities/paper-robomemory-multi-type-embodied-memory.md
+- wiki/entities/paper-robowm-bench-action-faithfulness.md
+- wiki/entities/paper-veo-world-simulator-policy-testing.md
+- wiki/entities/paper-world-tokens-inference-trimmed-wam.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（19 个）
+- wiki/entities/paper-checkvla-execution-time-verification.md（缺 评测 / 对比）
+- wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md（缺 评测 / 对比）
+- wiki/entities/paper-contactnets-contact-dynamics.md（缺 评测 / 对比）
 - wiki/entities/paper-cps4all.md（缺 评测 / 对比）
+- wiki/entities/paper-daydreamer-world-models-real-robots.md（缺 评测 / 对比）
+- wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md（缺 评测 / 对比）
+- wiki/entities/paper-mobilewam-mobile-manipulation-wam.md（缺 评测 / 对比）
+- wiki/entities/paper-muzero-planning-latent-dynamics.md（缺 评测 / 对比）
+- wiki/entities/paper-pets-probabilistic-dynamics-mpc.md（缺 评测 / 对比）
+- wiki/entities/paper-playworld-autonomous-play-data.md（缺 评测 / 对比）
+- wiki/entities/paper-resilient-machines-continuous-self-modeling.md（缺 评测 / 对比）
+- wiki/entities/paper-riemann-1-causal-action-video-wam.md（缺 评测 / 对比）
+- wiki/entities/paper-robocraft-particle-graph-dynamics.md（缺 评测 / 对比）
+- wiki/entities/paper-robomemory-multi-type-embodied-memory.md（缺 评测 / 对比）
+- wiki/entities/paper-robowm-bench-action-faithfulness.md（缺 评测 / 对比）
+- wiki/entities/paper-sayplan-llm-scene-graph-planning.md（缺 评测 / 对比）
+- wiki/entities/paper-veo-world-simulator-policy-testing.md（缺 评测 / 对比）
+- wiki/entities/paper-visual-foresight-latent-mpc.md（缺 评测 / 对比）
+- wiki/entities/paper-world-tokens-inference-trimmed-wam.md（缺 评测 / 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -127,4 +152,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：3226/3226 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3252/3252 (100%) wiki/entity 页有 ingest 来源
