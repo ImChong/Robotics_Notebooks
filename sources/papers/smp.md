@@ -7,9 +7,10 @@
 - **arXiv abs：** <https://arxiv.org/abs/2512.03028>
 - **arXiv HTML（v3）：** <https://arxiv.org/html/2512.03028v3>
 - **PDF：** <https://arxiv.org/pdf/2512.03028>
-- **项目页：** <https://yxmu.foo/smp-page/>
+- **项目页：** <https://yxmu.foo/smp-page/> — 归档见 [`sources/sites/smp-project.md`](../sites/smp-project.md)
 - **演示视频：** <https://youtu.be/jBA2tWk6vzU>
-- **官方代码：** [xbpeng/MimicKit](https://github.com/xbpeng/MimicKit)（`docs/README_SMP.md`）
+- **官方代码：** [xbpeng/MimicKit](https://github.com/xbpeng/MimicKit)（`docs/README_SMP.md`）— 归档见 [`sources/repos/mimickit.md`](../repos/mimickit.md)
+- **G1 复现代码：** [senlanke/mimic](https://github.com/senlanke/mimic) — 归档见 [`sources/repos/senlanke_mimic.md`](../repos/senlanke_mimic.md)
 - **期刊标注：** ACM TOG（预印本阶段以 arXiv 为主）
 - **入库日期：** 2026-04-28（初版）；2026-05-27（扩写完整摘录）
 - **一句话说明：** 在无任务耦合的 MoCap 上预训练**运动扩散模型**并冻结，用 **SDS** 把 ε-预测误差变成可复用的 **SMP 奖励**；下游 RL **不再需要原始数据集**，并可经 **风格条件 / 组合** 派生百种风格先验，质量对标 **AMP** 类对抗模仿。
@@ -117,8 +118,10 @@ r^{\mathrm{smp}} = \exp\left(- w_s \|\hat{\epsilon} - \epsilon\|_2^2 \right)
 
 | 主题 | 目标页面 |
 |------|----------|
+| 论文实体 | [wiki/entities/paper-smp.md](../../wiki/entities/paper-smp.md) |
 | 方法归纳 | [wiki/methods/smp.md](../../wiki/methods/smp.md) |
 | MimicKit 官方实现 | [wiki/entities/mimickit.md](../../wiki/entities/mimickit.md) |
+| G1 复现（senlanke/mimic） | [wiki/entities/smp-g1-mjlab.md](../../wiki/entities/smp-g1-mjlab.md) |
 | G1 + mjlab 课程复现 | [wiki/entities/smp-g1-mjlab.md](../../wiki/entities/smp-g1-mjlab.md) |
 | AMP 对照 | [wiki/methods/amp-reward.md](../../wiki/methods/amp-reward.md)、[wiki/entities/amp-mjlab.md](../../wiki/entities/amp-mjlab.md) |
 | 先验变体选型 | [wiki/comparisons/amp-add-smp-motion-prior-variants.md](../../wiki/comparisons/amp-add-smp-motion-prior-variants.md) |
