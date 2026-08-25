@@ -1,13 +1,43 @@
 {
   "generated_at": "2026-08-25",
   "node_count": 3254,
-  "edge_count": 28840,
+  "edge_count": 28841,
   "coverage": {
     "covered": 3229,
     "total": 3229,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-foretime-vla.md",
+      "detail_id": "entity-paper-foretime-vla",
+      "label": "ForeTime-VLA：世界模型未来 Token 蒸馏",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-g1-compliant-surface-standup.md",
+      "detail_id": "entity-paper-g1-compliant-surface-standup",
+      "label": "G1 Compliant-Surface Stand-Up：软地面参考引导起身",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-qplanning.md",
+      "detail_id": "entity-paper-qplanning",
+      "label": "Q-Planning：冻结 VLA 的离策略 Q 函数自改进",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-vitacphys.md",
       "detail_id": "entity-paper-vitacphys",
@@ -177,47 +207,14 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/nordschleife-racer.md",
-      "detail_id": "entity-nordschleife-racer",
-      "label": "nordschleife-racer",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/racing-drift-rl-open-source-landscape.md",
-      "detail_id": "wiki-overview-racing-drift-rl-open-source-landscape",
-      "label": "赛车漂移强化学习开源景观",
-      "type": "overview",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/drift-drl.md",
-      "detail_id": "entity-drift-drl",
-      "label": "drift_drl（High-speed Autonomous Drifting with DRL）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vitacphys.md",
-    "detail_id": "entity-paper-vitacphys",
-    "label": "ViTacPhys：视触觉物理属性感知自适应抓取",
+    "path": "wiki/entities/paper-foretime-vla.md",
+    "detail_id": "entity-paper-foretime-vla",
+    "label": "ForeTime-VLA：世界模型未来 Token 蒸馏",
     "type": "entity",
-    "recency": "2026-08-24",
+    "recency": "2026-08-25",
     "source": "git",
     "action": "added"
   },
