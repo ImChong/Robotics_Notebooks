@@ -1,3 +1,9 @@
+## [2026-08-25] ingest | sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md — 具身世界模型六路线综述；56 篇独立节点（38 复用 + 18 新建）+ 技术地图
+
+- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ>；要求文内每篇论文独立详情节点、不重复造页
+- **taxonomy：** 模型构建 / 规划 / 学习 / 行动 / 评估 / 上下文 + 趋势判断
+- **阅读坐标：** [`wiki/overview/embodied-wm-six-routes-technology-map.md`](wiki/overview/embodied-wm-six-routes-technology-map.md)
+
 ## [2026-08-25] ingest | sources/papers/{qplanning,foretime_vla,g1_compliant_surface_standup}_arxiv_2608_*.md — Q-Planning（冻结 BC+Q 自改进，已开源）、ForeTime-VLA（WAM 未来 token 蒸馏 π₀.₅，未开源）、G1 软地面起身（IIT Kanpur，评测+权重已开源）
 
 - **Q-Planning（2608.21204）：** 项目页+GitHub 核查 **已开源**；实体 `paper-qplanning`；交叉 VLA / action-chunking / LWD
