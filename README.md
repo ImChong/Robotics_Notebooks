@@ -3,9 +3,9 @@
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
 <<<<<<< HEAD
-<!-- Last updated: 2026-08-25 (V31 自动更新：图谱 3286 节点 29094 边) -->
+<!-- Last updated: 2026-08-25 (V31 自动更新：图谱 3286 节点 29095 边) -->
 =======
-<!-- Last updated: 2026-08-25 (V31 自动更新：图谱 3286 节点 29094 边) -->
+<!-- Last updated: 2026-08-25 (V31 自动更新：图谱 3286 节点 29095 边) -->
 >>>>>>> origin/main
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
@@ -13,9 +13,9 @@
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 <<<<<<< HEAD
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-3286节点_29094边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-3286节点_29095边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 =======
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-3286节点_29094边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-3286节点_29095边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 >>>>>>> origin/main
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v31.md)
 

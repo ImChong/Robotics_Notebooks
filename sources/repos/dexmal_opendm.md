@@ -7,20 +7,32 @@
 - **组织：** Dexmal（大晓智能）
 - **代码：** <https://github.com/dexmal/opendm>（Apache-2.0）
 - **技术博客：** <https://www.dexmal.com/blog/dm0.5>（中文）、<https://www.dexmal.com/blog/dm0.5/index_en.html>（英文）
+- **基础权重：** <https://huggingface.co/Dexmal/DM05>（亦见 ModelScope <https://modelscope.cn/models/Dexmal/DM05>）
 - **权重集合：** <https://huggingface.co/collections/Dexmal/dm05> · ModelScope <https://www.modelscope.cn/collections/Dexmal/DM05>
 - **MaaS：** <https://maas.dexmal.com/>
 - **入库日期：** 2026-08-08
+- **二次核查：** 2026-08-25（GitHub README + HF `Dexmal/DM05` 模型卡）
 - **一句话说明：** **OpenDM** 是 Dexmal 为 **DM0.5** 发布的 **训练 / 推理 / 数据注册 / 评测** 开源仓库：提供 **DM05** 基础权重与 LIBERO / RoboTwin2.0 / VLA-Arena / SO101 / Table30v2 等下游 checkpoint，统一经 `script/dm05_launcher.sh` 启动 HTTP 推理（default / TensorRT **fast** backend）与 JSONL SFT。
 
 ## 开源状态（项目页 / README 核查）
 
-| 项 | 状态（截至 2026-08-08） |
+| 项 | 状态（截至 2026-08-25） |
 |----|-------------------------|
 | **训练 / 推理代码** | **已开源**（`opendm/` 包 + `playground/` + `script/dm05_launcher.sh`） |
 | **基础权重** | **已开源**：[Dexmal/DM05](https://huggingface.co/Dexmal/DM05)（≈5.8B 参数量级；HF `pipeline_tag=robotics`） |
 | **下游评测权重** | **已开源**：`DM05-libero`、`DM05-robotwin2`、`DM05-SO101-Pick-Cube`、`DM05-Vla-Arena`、Table30v2 collection |
 | **数据集** | LIBERO / RoboTwin2.0 等经 HF 数据集卡与 runner 脚本获取（见 docs） |
-| **许可** | Apache-2.0 |
+| **代码许可** | Apache-2.0（仓库） |
+| **权重许可** | **Gemma**（HF 模型卡 `license: gemma`；商用/再分发须遵守 Gemma 条款） |
+
+## 官方动态（OpenDM README News）
+
+| 日期 | 要点 |
+|------|------|
+| 2026-08-03 | 发布 [真机改造指南 `robot_platforms.md`](https://github.com/dexmal/opendm/blob/main/docs/en/robot_platforms.md)（AgileX COBOT Magic、DOS-W1 相机与 `robot-name` 映射） |
+| 2026-07-24 | 新增 **SO101 pick-cube** checkpoint 与 LoRA SFT 流程（`docs/en/dm05_so101_lora_training.md`） |
+| 2026-07-17 | 开源 **RoboTwin2.0 generalist** checkpoint 与 SFT 代码（`docs/en/dm05_robotwin2.md`） |
+| 2026-07-09 | **DM0.5 正式发布**；技术博客见 [dm0.5](https://www.dexmal.com/blog/dm0.5) |
 
 ## 公开权重一览（README）
 

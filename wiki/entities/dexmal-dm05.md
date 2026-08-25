@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, dexmal, flow-matching, foundation-model, manipulation, navigation, cross-embodiment, open-world, open-source]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-25
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -104,12 +104,22 @@ flowchart TB
 
 ## 开源状态
 
-| 项 | 状态（截至 2026-08-08） |
+| 项 | 状态（截至 2026-08-25） |
 |----|-------------------------|
 | **代码** | **已开源** — [dexmal/opendm](https://github.com/dexmal/opendm)（Apache-2.0） |
 | **基础权重** | **已开源** — [Dexmal/DM05](https://huggingface.co/Dexmal/DM05)（亦见 ModelScope） |
 | **下游权重** | **已开源** — LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 等（见下表） |
+| **权重许可** | **Gemma**（HF 模型卡；Gemma3 骨干衍生 checkpoint 须遵守 Gemma 使用条款） |
 | **技术报告 PDF** | 博文为主；细节以 OpenDM docs 与模型卡为准 |
+
+### OpenDM 官方动态（README News）
+
+| 日期 | 更新 |
+|------|------|
+| 2026-08-03 | [`robot_platforms.md`](https://github.com/dexmal/opendm/blob/main/docs/en/robot_platforms.md) — COBOT Magic / DOS-W1 真机相机与 `robot-name` 映射 |
+| 2026-07-24 | SO101 pick-cube checkpoint + LoRA SFT 指南 |
+| 2026-07-17 | RoboTwin2.0 generalist checkpoint + SFT 栈 |
+| 2026-07-09 | DM0.5 正式发布 + 技术博客 |
 
 ### 公开权重分工
 
@@ -201,6 +211,7 @@ sequenceDiagram
 - [DM0.5 官方博客归档](../../sources/blogs/dexmal_dm05.md)
 - [OpenDM GitHub](https://github.com/dexmal/opendm)
 - [DM0.5 技术博客](https://www.dexmal.com/blog/dm0.5)
+- [DM05 Hugging Face 模型页](https://huggingface.co/Dexmal/DM05)
 - [DM05 Hugging Face collection](https://huggingface.co/collections/Dexmal/dm05)
 
 ## 关联页面

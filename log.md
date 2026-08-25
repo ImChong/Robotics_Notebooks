@@ -1,3 +1,10 @@
+## [2026-08-25] ingest | sources/repos/dexmal_opendm.md + sources/blogs/dexmal_dm05.md — OpenDM/DM0.5 二次核查（GitHub + HF DM05 + 技术博客）；补 Gemma 权重许可、官方 News 时间线；更新 wiki/entities/dexmal-dm05.md；互链 wiki/overview/vla-open-source-repro-landscape-2025.md
+
+- **触发：** 用户指定 <https://github.com/dexmal/opendm>、<https://huggingface.co/Dexmal/DM05>、<https://www.dexmal.com/blog/dm0.5>；要求自动合并 PR
+- **开源核查（步骤 2.5）：** **已开源** — 代码 Apache-2.0；HF `Dexmal/DM05` 权重 **Gemma 许可**；下游 LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 齐全
+- **增量：** 补 OpenDM README News（含 2026-08-03 `robot_platforms.md`）；二次核查日期 2026-08-25
+- **交叉更新：** [`wiki/entities/dexmal-dm05.md`](wiki/entities/dexmal-dm05.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+
 ## [2026-08-25] ingest | sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md — 具身智能小站「8 篇开源论文」；新建 5 论文实体 + 技术地图；复用 ViTacPhys/Q-Planning/DreamHand
 
 - **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/71jZDzvcWZ3SsoHOEA8sgQ>；要求 8/8 独立详情节点、同一 arXiv 不重复造页
