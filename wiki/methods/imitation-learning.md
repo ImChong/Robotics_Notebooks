@@ -2,8 +2,9 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-24
+updated: 2026-08-25
 related:
+  - ../concepts/robot-in-context-learning.md
   - ../entities/paper-self-supervised-control.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../entities/embodied-interview-qa.md
@@ -205,6 +206,7 @@ flowchart TD
 - [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)
 - [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)
 - [sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine @ Simons：生成式动作头与长 action chunk 对 IL 的抬升（官方 abstract）
+- [wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md) — 机器人 ICL taxonomy 综述（具身智能之心，2026-08-25）
 
 ## 关联页面
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷三 IL/VLA 面试速查（BC / DAgger / ACT / Diffusion Policy）
@@ -226,6 +228,7 @@ flowchart TD
 - [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架
 - [LeRobot](../entities/lerobot.md) — Hugging Face 开发的具身智能全栈框架
 - [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift
+- [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — one-shot / few-shot 示范归纳与真 ICL 判别
 - [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线
 - [EgoScale](./egoscale.md) — 海量 egocentric 人视频预训练 VLA + 对齐 mid-training 的灵巧操作迁移案例
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 人示教与跨实验室共训缩放判据

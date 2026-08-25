@@ -285,6 +285,7 @@ flowchart TD
 - [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
 - [ssik](../entities/ssik.md) — 6R/7R **解析 IK** 全分支枚举；非 Pieper 6R 与 7R 冗余臂（UW PRL，BSD-3）
 - [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — physical prompting / 极少步适应的闭源产业对照
+- [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 示范/记忆/metadata/TTT 四类「上下文」拆解
 - [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 跨末端/工具接口的通才操作叙事（闭源产业对照）
 
 ## 关联任务

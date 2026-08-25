@@ -2,7 +2,7 @@
 
 ## [2026-08-25] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **28** 条信息型预警）：
+共发现 **0** 个问题（另含 **30** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -136,11 +136,11 @@
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/concepts/robot-in-context-learning.md
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/concepts/robot-in-context-learning.md
 
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -151,4 +151,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-physcap.md
 
-📊 Sources 覆盖率：3262/3262 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3263/3263 (100%) wiki/entity 页有 ingest 来源
