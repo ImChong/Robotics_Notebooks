@@ -1,3 +1,5 @@
+## [2026-08-25] ingest | sources/papers/smp.md — 补全 SMP 论文实体页、项目页与 senlanke/mimic G1 复现归档；官方 MimicKit + 乘性奖励 mjlab 管线
+
 ## [2026-08-25] ingest | sources/repos/dexmal_opendm.md + sources/blogs/dexmal_dm05.md — OpenDM/DM0.5 二次核查（GitHub + HF DM05 + 技术博客）；补 Gemma 权重许可、官方 News 时间线；更新 wiki/entities/dexmal-dm05.md；互链 wiki/overview/vla-open-source-repro-landscape-2025.md
 
 - **触发：** 用户指定 <https://github.com/dexmal/opendm>、<https://huggingface.co/Dexmal/DM05>、<https://www.dexmal.com/blog/dm0.5>；要求自动合并 PR

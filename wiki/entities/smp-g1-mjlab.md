@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, smp, score-matching, diffusion, mjlab, unitree, humanoid, locomotion, tsinghua]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-25
 related:
+  - ./paper-smp.md
   - ../methods/smp.md
   - ./mjlab.md
   - ./mimickit.md
@@ -13,14 +14,15 @@ related:
   - ../methods/amp-reward.md
   - ../tasks/locomotion.md
 sources:
+  - ../../sources/repos/senlanke_mimic.md
   - ../../sources/repos/smp_suz_tsinghua.md
   - ../../sources/papers/smp.md
-summary: "SUZ-tsinghua/smp 在 mjlab 上为 Unitree G1 端到端复现 SMP：DDPM 运动先验预训练、冻结 SDS 引导奖励、GSI 初始化与四类下游任务，并预置三套 prior 以跳过预训练。"
+summary: "senlanke/mimic（同系 SUZ-tsinghua/smp）在 mjlab 上为 Unitree G1 端到端复现 SMP：DDPM 运动先验预训练、冻结 SDS 引导奖励、GSI 初始化与四类下游任务，并预置三套 prior 以跳过预训练。"
 ---
 
 # SMP on G1（mjlab 复现）
 
-**[SUZ-tsinghua/smp](https://github.com/SUZ-tsinghua/smp)** 在 [MimicKit](./mimickit.md) 原版 **未提供 Unitree G1** 配置的前提下，将 [SMP](../methods/smp.md)（Score-Matching Motion Priors）完整移植到 **[mjlab](./mjlab.md)**：运动特征、DDPM 预训练、冻结得分引导、GSI 与 PPO 下游任务一体化，适合作为「**生成式运动先验 + G1 + MuJoCo Warp**」的工程参考实现。
+**[senlanke/mimic](https://github.com/senlanke/mimic)**（同系镜像 [SUZ-tsinghua/smp](https://github.com/SUZ-tsinghua/smp)）在 [MimicKit](./mimickit.md) 原版 **未提供 Unitree G1** 配置的前提下，将 [SMP](../methods/smp.md)（Score-Matching Motion Priors）完整移植到 **[mjlab](./mjlab.md)**：运动特征、DDPM 预训练、冻结得分引导、GSI 与 PPO 下游任务一体化，适合作为「**生成式运动先验 + G1 + MuJoCo Warp**」的工程参考实现。论文归纳见 [paper-smp](./paper-smp.md)。
 
 ## 英文缩写速查
 
@@ -119,8 +121,10 @@ uv run scripts/play.py Smp-Forward-G1 --wandb-run-path <org>/<project>/<run> --n
 
 ## 参考来源
 
+- [sources/repos/senlanke_mimic.md](../../sources/repos/senlanke_mimic.md)
 - [sources/repos/smp_suz_tsinghua.md](../../sources/repos/smp_suz_tsinghua.md)
 - [sources/papers/smp.md](../../sources/papers/smp.md)
+- [senlanke/mimic](https://github.com/senlanke/mimic)
 - [SUZ-tsinghua/smp](https://github.com/SUZ-tsinghua/smp)
 - Mu et al., *SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*, arXiv:2512.03028
 

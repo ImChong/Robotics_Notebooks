@@ -2,10 +2,10 @@
 type: method
 tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1, paper, amp, motion-prior, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-25
 venue: arXiv
-arxiv: "2512.03028"
 related:
+  - ../entities/paper-smp.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -22,6 +22,8 @@ related:
   - ../entities/paper-pfm-hr.md
 sources:
   - ../../sources/papers/smp.md
+  - ../../sources/sites/smp-project.md
+  - ../../sources/repos/senlanke_mimic.md
   - ../../sources/repos/smp_suz_tsinghua.md
   - ../../sources/papers/humanoid_amp_survey_03_smp_reusable_score_matching_motion_priors_for_ph.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
@@ -92,7 +94,7 @@ flowchart TD
 
 ## G1 + mjlab 工程复现
 
-[MimicKit](../entities/mimickit.md) 提供论文级 SMP 参考实现，但 **未内置 Unitree G1**。[SUZ-tsinghua/smp](../entities/smp-g1-mjlab.md) 在 [mjlab](../entities/mjlab.md) 上补齐 G1 特征维度（59-d/帧）、四套任务（Forward / Steering / Location / Getup）与三套 **预置 prior**；奖励上可选 **乘性** `r = task × r_smp`，避免 MimicKit 加性形式中 `task_reward_weight : smp_reward_weight` 的敏感手调。与 [AMP_mjlab](../entities/amp-mjlab.md) 对照时：前者是 **生成式冻结先验**，后者是 **对抗判别器 + 参考 clip**。
+[MimicKit](../entities/mimickit.md) 提供论文级 SMP **官方**参考实现，但 **未内置 Unitree G1**。[senlanke/mimic](https://github.com/senlanke/mimic)（归档于 [sources/repos/senlanke_mimic.md](../../sources/repos/senlanke_mimic.md)）与 [SUZ-tsinghua/smp](../entities/smp-g1-mjlab.md) 在 [mjlab](../entities/mjlab.md) 上补齐 G1 特征维度（59-d/帧）、四套任务（Forward / Steering / Location / Getup）与三套 **预置 prior**；奖励采用 **乘性** `r = task × r_smp`，避免 MimicKit 加性形式中 `task_reward_weight : smp_reward_weight` 的敏感手调。论文实体页见 [paper-smp](../entities/paper-smp.md)。与 [AMP_mjlab](../entities/amp-mjlab.md) 对照时：前者是 **生成式冻结先验**，后者是 **对抗判别器 + 参考 clip**。
 
 ## 主要技术路线
 | 阶段 | 关键技术 | 说明 |
@@ -102,6 +104,7 @@ flowchart TD
 | **初始化** | GSI (Generative State Initialization) | 利用生成模型代替传统 RSI 数据集采样 |
 
 ## 关联页面
+- [SMP 论文实体页](../entities/paper-smp.md) — 摘要、结论、源码运行时序图与开源核查。
 - [SMP on G1（mjlab 复现）](../entities/smp-g1-mjlab.md) — G1 端到端复现、预置 prior 与乘性奖励设计。
 - [MimicKit](../entities/mimickit.md) — 原版 SMP / AMP / ADD 统一代码底座。
 - [CMP 上下文感知运动先验](../entities/paper-cmp.md) — 用相关度软重权把 SMP（及 AMP）改成上下文条件适配。
@@ -115,6 +118,8 @@ flowchart TD
 
 ## 参考来源
 - [sources/papers/smp.md](../../sources/papers/smp.md)
+- [sources/sites/smp-project.md](../../sources/sites/smp-project.md)
+- [sources/repos/senlanke_mimic.md](../../sources/repos/senlanke_mimic.md)
 - [sources/repos/smp_suz_tsinghua.md](../../sources/repos/smp_suz_tsinghua.md)
 - Mu et al., *SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*, 2026.
 - [CMP（arXiv:2608.03234）](../../sources/papers/cmp_arxiv_2608_03234.md) — 上下文条件适配扩展到 SMP。

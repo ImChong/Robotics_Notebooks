@@ -5,10 +5,10 @@
 - **标题：** SMP — Score-Matching Motion Priors (G1 reproduction on mjlab)
 - **类型：** repo
 - **机构：** 清华大学 SUZ 课题组（GitHub org: SUZ-tsinghua）
-- **链接：** https://github.com/SUZ-tsinghua/smp
+- **链接：** https://github.com/SUZ-tsinghua/smp（同系镜像：[senlanke/mimic](https://github.com/senlanke/mimic)）
 - **入库日期：** 2026-05-27
 - **一句话说明：** 在 MimicKit 原版未提供 G1 配置的前提下，于 **mjlab** 上端到端复现 SMP（DDPM 预训练 + 冻结 SDS 引导奖励 + PPO），覆盖 Unitree G1 四类下游任务，并内置三套可跳过预训练的 prior checkpoint。
-- **沉淀到 wiki：** 是 → [`wiki/entities/smp-g1-mjlab.md`](../../wiki/entities/smp-g1-mjlab.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/smp-g1-mjlab.md`](../../wiki/entities/smp-g1-mjlab.md)、[`wiki/entities/paper-smp.md`](../../wiki/entities/paper-smp.md)
 
 ---
 
@@ -17,7 +17,8 @@
 | 资料 | 链接 | 角色 |
 |------|------|------|
 | SMP 论文 | [arXiv:2512.03028](https://arxiv.org/abs/2512.03028) | 方法定义（SDS、ESM、GSI、可复用先验） |
-| 原论文项目页 | https://yxmu.foo/smp-page/ | 官方说明与结果 |
+| 项目页 | https://yxmu.foo/smp-page/ | 官方说明与结果 — [`sources/sites/smp-project.md`](../sites/smp-project.md) |
+| senlanke/mimic | https://github.com/senlanke/mimic | 用户指定 G1 复现入口 — [`sources/repos/senlanke_mimic.md`](../repos/senlanke_mimic.md) |
 | MimicKit | https://github.com/xbpeng/MimicKit | 原版 SMP 实现（`docs/README_SMP.md`） |
 | mjlab | https://github.com/mujocolab/mjlab | 本复现的 RL 环境骨架（`ManagerBasedRlEnv`） |
 
