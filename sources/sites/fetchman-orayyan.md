@@ -7,17 +7,19 @@
 - **官方入口：** <https://orayyan.com/fetchman>
 - **论文：** <https://arxiv.org/abs/2608.17027>
 - **入库日期：** 2026-08-20
+- **再核日期：** 2026-08-25
 - **一句话说明：** UCLA 等人形 loco-manip 项目页：150k MolmoSpaces 场景合成数据、BC+Flow-GRPO 两阶段、G1 零样本视频与架构/消融表。
 
 ## 开源核查（步骤 2.5）
 
-| 资源 | 入库日状态 |
-|------|------------|
-| 项目首页 | 可访问；含 demo 视频、Table 1–2、Citation |
-| GitHub / HF / 权重 | **未列出** |
-| FetchMan-Bench | 论文与页面宣称发布；**无下载链** |
+| 资源 | 2026-08-20 | 2026-08-25 再核 |
+|------|------------|----------------|
+| 项目首页 | 可访问；含 demo 视频、Table 1–2、Citation | 同左；页头新增 **Data & Code** |
+| GitHub | **未列出** | [omarrayyann/fetchman](https://github.com/omarrayyann/fetchman) — **仅占位 README** |
+| HF / 权重 | **未列出** | 仍 **未列出** |
+| FetchMan-Bench | 论文与页面宣称发布；**无下载链** | 仍 **无下载链** |
 
-**结论：** **确认未开源**（代码与 checkpoint）；页面作方法与结果溯源。
+**结论：** **部分开源 / 待发布** — 官方仓与项目页互链；README 写 **Code will be added by September 1**；训练/推理/Bench 截至再核日不可运行。
 
 ## 页面公开信息摘录
 
@@ -30,3 +32,4 @@
 
 - [`wiki/entities/paper-fetchman.md`](../../wiki/entities/paper-fetchman.md)
 - [`sources/papers/fetchman_arxiv_2608_17027.md`](../papers/fetchman_arxiv_2608_17027.md)
+- [`sources/repos/fetchman.md`](../repos/fetchman.md)

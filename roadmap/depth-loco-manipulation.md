@@ -145,7 +145,7 @@ flowchart LR
 - [SplitAdapter](../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)（本仓库）
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
 - [SMPC-to-RL](../wiki/entities/paper-smpc2rl-loco-manipulation.md)（本仓库）— 仿真 SMPC 当可交互专家数据机，稀疏奖励 offline-to-online FastTD3 接冻结低层；Spot 推箱/扶胎与 G1 推箱真机可部署，策略比教师更快
-- [FetchMan](../wiki/entities/paper-fetchman.md)（本仓库）— MolmoSpaces 15 万场景脚本演示 → BC → Flow-GRPO 突破 BC 天花板；G1 真机 loco-manip 零样本 73.3%；代码未开源
+- [FetchMan](../wiki/entities/paper-fetchman.md)（本仓库）— MolmoSpaces 15 万场景脚本演示 → BC → Flow-GRPO 突破 BC 天花板；G1 真机 loco-manip 零样本 73.3%；GitHub 占位仓（2026-09-01 前补代码）
 
 ### 学完输出什么
 - 一个能在仿真里完成"走近 + 全身接触搬运"的技能策略

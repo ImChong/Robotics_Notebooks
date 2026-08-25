@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, humanoid, loco-manipulation, sim2real, visual-rl, flow-matching, grpo, behavior-cloning, unitree-g1, molmospaces, ucla, ai2]
+tags: [paper, humanoid, loco-manipulation, sim2real, visual-rl, flow-matching, grpo, behavior-cloning, unitree-g1, molmospaces, ucla, ai2, uw]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-25
 arxiv: "2608.17027"
 related:
   - ../tasks/loco-manipulation.md
@@ -15,7 +15,8 @@ related:
 sources:
   - ../../sources/papers/fetchman_arxiv_2608_17027.md
   - ../../sources/sites/fetchman-orayyan.md
-summary: "FetchMan（arXiv:2608.17027，UCLA×AI2）：MolmoSpaces 15 万场景脚本演示 → DINOv3+DiT BC → Flow-GRPO 破 BC 顶；G1 真机 loco-manip 零样本 73.3%；FetchMan-Bench 将发布；确认未开源代码。"
+  - ../../sources/repos/fetchman.md
+summary: "FetchMan（arXiv:2608.17027，UCLA×AI2×UW）：MolmoSpaces 15 万场景脚本演示 → DINOv3+DiT BC → Flow-GRPO 破 BC 顶；G1 真机 loco-manip 零样本 73.3%；官方 GitHub 占位仓（2026-09-01 前补代码）；FetchMan-Bench 待发布。"
 ---
 
 # FetchMan：仿真视觉人形 loco-manipulation
@@ -56,7 +57,7 @@ summary: "FetchMan（arXiv:2608.17027，UCLA×AI2）：MolmoSpaces 15 万场景�
 | **观测** | 头 fisheye + 腕 RGB + 本体；10 Hz 策略 |
 | **动作** | 15 维：base vel/height + 上身/夹爪目标 |
 | **数据** | ~150k 场景 bowl-pick；~650 h；单 L40S ~40 GPU-h 采集 |
-| **开源** | **确认未开源**（2026-08-20 项目页无 GitHub/权重）；Bench 宣称 release |
+| **开源** | **部分开源 / 待发布** — [omarrayyann/fetchman](https://github.com/omarrayyann/fetchman) 占位仓（2026-08-25 仅 README；**Code by 2026-09-01**）；Bench 仍无下载 |
 
 ## 核心原理
 
@@ -82,12 +83,13 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 **2026-08-20**）：[orayyan.com/fetchman](https://orayyan.com/fetchman) 无训练/推理仓库；FetchMan-Bench 尚无公开下载。代码发布后应补：MolmoSpaces rollout → BC 训练 → Flow-GRPO → Bench/真机部署。
+**不适用**（截至 **2026-08-25**）：[omarrayyann/fetchman](https://github.com/omarrayyann/fetchman) 与项目页 **Data & Code** 已互链，但仓内仅 README（声明 **2026-09-01 前** 补代码）；FetchMan-Bench 尚无公开下载。代码释出后应补：MolmoSpaces rollout → BC 训练 → Flow-GRPO → Bench/真机部署。
 
 ## 工程实践
 
 | 项 | 内容 |
 |----|------|
+| **开源跟进** | 2026-08-25 项目页已挂 GitHub 占位仓；训练/推理入口待 README 时间表落地后更新 repo 归档与时序图 |
 | **分层命令** | 固定 SONIC 低层；策略只出 15 维语义命令——与 VIRAL/DoorMan 同类 factorization |
 | **BC 上限诊断** | manip SR 高、loco-manip 低 → 优先 RL refinement 而非加演示 |
 | **Sim2Real** | 不要替换 DINOv3 或 delta 动作；二者是真机 transfer 必要条件 |
@@ -110,7 +112,7 @@ flowchart TB
 - **无历史：** 单帧策略难推断脚本 相位；加 history 增 token 成本未 ablate。
 - **固定 SONIC：** 不能 adapt  gait/stance；重物体或大扰动超出低层包络。
 - **任务：** 仅 fetch/reach-pick；未覆盖铰接/长程组合技能。
-- **未开源：** 截至入库日不可复现训练栈；Bench 发布前仅能引用论文数字。
+- **复现待落地：** 官方占位仓已挂出（2026-09-01 前补代码）；截至 2026-08-25 仍不可跑训练栈；Bench 发布前仅能引用论文数字。
 
 ## 实验与评测
 
@@ -129,7 +131,7 @@ Flow-GRPO 相对 BC：sim loco-manip **+16 pp**；真机 **+16.6 pp**。Architec
 2. **真影响：DINOv3 + delta** — sim2real 必要条件；缺一则真机 loco-manip 崩塌。
 3. **真影响：增益在 loco-manip 不在 manip** — 克隆已够好，RL 预算应瞄准行走/handoff。
 4. **次要代价：固定 SONIC** — 平衡/步态不可 adapt。
-5. **工程读法：未开源** — 方法坐标可用；复现需等 Bench/代码。
+5. **工程读法：占位仓已挂** — 方法坐标可用；复现跟 [GitHub](https://github.com/omarrayyann/fetchman) README 时间表与 Bench 发布。
 6. **多物体初步可行** — 62% sim loco-manip，仍低于单物体 83%。
 
 ## 关联页面
@@ -144,9 +146,11 @@ Flow-GRPO 相对 BC：sim loco-manip **+16 pp**；真机 **+16.6 pp**。Architec
 
 - [FetchMan 论文归档](../../sources/papers/fetchman_arxiv_2608_17027.md)
 - [FetchMan 项目页归档](../../sources/sites/fetchman-orayyan.md)
+- [FetchMan 官方仓库归档](../../sources/repos/fetchman.md)
 
 ## 推荐继续阅读
 
 - 项目页 — <https://orayyan.com/fetchman>
+- 官方 GitHub（占位）— <https://github.com/omarrayyann/fetchman>
 - Flow-GRPO — <https://arxiv.org/abs/2505.05470>
 - MolmoSpaces — <https://arxiv.org/abs/2602.11337>

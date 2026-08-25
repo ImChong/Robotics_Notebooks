@@ -1,3 +1,9 @@
+## [2026-08-25] ingest | sources/repos/fetchman.md — FetchMan 二次核查开源状态：项目页挂 GitHub 占位仓；更新实体页与 loco-manipulation 索引
+
+- **触发：** 用户指定 <https://orayyan.com/fetchman>、arXiv:2608.17027；要求自动合并 PR
+- **步骤 2.5：** **部分开源 / 待发布** — [omarrayyann/fetchman](https://github.com/omarrayyann/fetchman) 仅 README；README：**Code will be added by September 1**；FetchMan-Bench 仍无下载链
+- **增量：** 新建 `sources/repos/fetchman.md`；更新 `sources/sites/`、`sources/papers/`、`wiki/entities/paper-fetchman.md` 开源结论（2026-08-20「未开源」→ 占位仓待发布）
+
 ## [2026-08-25] ingest | sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md — 具身智能之心「机器人上下文学习」万字综述；新建概念页 robot-in-context-learning；交叉 GEN-1.5 / IL / foundation-policy / manipulation
 
 - **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/V_Dm8kHvB2YxtGY7qScjXA>
