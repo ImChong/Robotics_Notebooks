@@ -9,6 +9,36 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-foretime-vla.md",
+      "detail_id": "entity-paper-foretime-vla",
+      "label": "ForeTime-VLA：世界模型未来 Token 蒸馏",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-g1-compliant-surface-standup.md",
+      "detail_id": "entity-paper-g1-compliant-surface-standup",
+      "label": "G1 Compliant-Surface Stand-Up：软地面参考引导起身",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-qplanning.md",
+      "detail_id": "entity-paper-qplanning",
+      "label": "Q-Planning：冻结 VLA 的离策略 Q 函数自改进",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-checkvla-execution-time-verification.md",
       "detail_id": "entity-paper-checkvla-execution-time-verification",
       "label": "CheckVLA",
@@ -177,47 +207,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-world-tokens-inference-trimmed-wam.md",
-      "detail_id": "entity-paper-world-tokens-inference-trimmed-wam",
-      "label": "World Tokens",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/embodied-wm-route-action.md",
-      "detail_id": "wiki-overview-embodied-wm-route-action",
-      "label": "具身世界模型六路线 · 行动主导型",
-      "type": "overview",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/embodied-wm-route-context.md",
-      "detail_id": "wiki-overview-embodied-wm-route-context",
-      "label": "具身世界模型六路线 · 上下文主导型",
-      "type": "overview",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-checkvla-execution-time-verification.md",
-    "detail_id": "entity-paper-checkvla-execution-time-verification",
-    "label": "CheckVLA",
+    "path": "wiki/entities/paper-foretime-vla.md",
+    "detail_id": "entity-paper-foretime-vla",
+    "label": "ForeTime-VLA：世界模型未来 Token 蒸馏",
     "type": "entity",
     "recency": "2026-08-25",
     "source": "git",
-    "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
