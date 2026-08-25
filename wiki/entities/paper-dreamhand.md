@@ -10,11 +10,13 @@ related:
   - ./paper-hand-visibility-detector.md
   - ../methods/generative-world-models.md
   - ../overview/video-contact-control-10-papers-technology-map.md
+  - ../overview/open-source-8-papers-technology-map.md
 sources:
   - ../../sources/papers/dreamhand_arxiv_2608_20308.md
   - ../../sources/sites/dreamhand-ggxxii.md
   - ../../sources/repos/dreamhand.md
   - ../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md
+  - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md
 summary: "DreamHand（arXiv:2608.20308）：将 VDM 重用为确定性几何编码器恢复遮挡/出画双手 3D 轨迹；ARCTIC/HOT3D MPJPE-p ↓30%/40%；GitHub 仓已建但推理/权重待发布。"
 ---
 
@@ -89,6 +91,7 @@ flowchart LR
 - [paper-hand-visibility-detector](./paper-hand-visibility-detector.md)
 - [generative-world-models](../methods/generative-world-models.md)
 - [视频–接触–控制 10 篇技术地图](../overview/video-contact-control-10-papers-technology-map.md)
+- [开源具身 8 篇技术地图](../overview/open-source-8-papers-technology-map.md)
 
 ## 参考来源
 
@@ -96,6 +99,7 @@ flowchart LR
 - [dreamhand-ggxxii](../../sources/sites/dreamhand-ggxxii.md)
 - [dreamhand](../../sources/repos/dreamhand.md)
 - [wechat_embodied_station_video_contact_control_10_papers_2026-08-22](../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md)
+- [wechat_embodied_station_8_papers_open_source_2026-08-25](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md)
 
 ## 推荐继续阅读
 

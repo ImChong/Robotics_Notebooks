@@ -20,10 +20,12 @@ related:
   - ../tasks/manipulation.md
   - ./paper-pi05-open-world-vla.md
   - ../concepts/world-action-models.md
+  - ../overview/open-source-8-papers-technology-map.md
 sources:
   - ../../sources/papers/qplanning_arxiv_2608_21204.md
   - ../../sources/sites/qplanning-varungiridhar.md
   - ../../sources/repos/qplanning_code.md
+  - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md
 summary: "Q-Planning（arXiv:2608.21204，Georgia Tech）：冻结大型 BC/VLA + 小型离策略 Q-chunking；推理 Q 加权平均 N 个 BC 采样；在线只微调 Q、吸收失败 rollout；LIBERO-10 93→99%、双臂真机 stack-cups 40→90%；代码已开源。"
 ---
 
@@ -181,12 +183,14 @@ sequenceDiagram
 - [Manipulation](../tasks/manipulation.md)
 - [π₀.₅](./paper-pi05-open-world-vla.md) — 大 VLA BC 先验语境
 - [World Action Models](../concepts/world-action-models.md) — 默认 BC FastWAM 系
+- [open-source-8-papers-technology-map](../overview/open-source-8-papers-technology-map.md) — 具身智能小站 2026-08-25 八篇盘点
 
 ## 参考来源
 
 - [Q-Planning 论文摘录](../../sources/papers/qplanning_arxiv_2608_21204.md)
 - [Q-Planning 项目页](../../sources/sites/qplanning-varungiridhar.md)
 - [qplanning-code 仓库](../../sources/repos/qplanning_code.md)
+- [wechat_embodied_station_8_papers_open_source_2026-08-25](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md)
 
 ## 推荐继续阅读
 

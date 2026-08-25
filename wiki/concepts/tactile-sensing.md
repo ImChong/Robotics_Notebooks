@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-25
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
@@ -94,7 +94,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — GelSight 仿真栈上 Goal/Safety；触觉抬高软体安全率
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（数据待发）
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 2025–2026 触觉×VLA/WM/WAM 文献索引
-- [TF-ART 触觉/力觉综述](../entities/paper-tf-art-tactile-force-survey.md) — 多模态+多阶段管线轴（arXiv:2608.07558）
+- [GhostTac（触觉物理层 EMI 攻击）](../entities/paper-ghosttac.md) — CCS 2026；非接触操纵传感读数，提醒部署侧物理层威胁建模
+- [ViTacPhys（视触觉物理属性）](../entities/paper-vitacphys.md) — 人体视触觉示范预测质量/刚度/摩擦并条件化抓取
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Visual Servoing (视觉伺服)](../methods/visual-servoing.md)
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)

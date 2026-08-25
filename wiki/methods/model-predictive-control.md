@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-25
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
@@ -264,6 +264,7 @@ print("apply control:", u.ravel())
 - [Nonlinear MPC](./nonlinear-model-predictive-control.md) — 完整非线性动力学滚动优化
 - [Quadratic Programming](../formalizations/quadratic-programming.md) — 凸 MPC / WBC 子问题形式
 - [MPC Solver Selection](../queries/mpc-solver-selection.md) — OSQP / Acados 等选型
+- [SRL-MPC](../entities/paper-srl-mpc.md) — RL 读取 GSF 在线调形状感知 HOCBF-MPC 参数（arXiv:2608.21175）
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — F1/10 **LearningMPC** 与 **drift-mpc-ackermann** 等非线性/学习 MPC 真机栈
 
 ## 推荐继续阅读
