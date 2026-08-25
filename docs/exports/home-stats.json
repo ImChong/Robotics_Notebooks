@@ -1,230 +1,228 @@
 {
   "generated_at": "2026-08-25",
-  "node_count": 3277,
-  "edge_count": 29026,
+  "node_count": 3280,
+  "edge_count": 29050,
   "coverage": {
-    "covered": 3252,
-    "total": 3252,
+    "covered": 3255,
+    "total": 3255,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-vitacphys.md",
-      "detail_id": "entity-paper-vitacphys",
-      "label": "ViTacPhys：视触觉物理属性感知自适应抓取",
+      "path": "wiki/entities/paper-checkvla-execution-time-verification.md",
+      "detail_id": "entity-paper-checkvla-execution-time-verification",
+      "label": "CheckVLA",
       "type": "entity",
-      "recency": "2026-08-24",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-sculpt-subtractive-3d-part-generation.md",
-      "detail_id": "entity-paper-sculpt-subtractive-3d-part-generation",
-      "label": "SCULPT（减法式 3D 部件生成）",
-      "type": "entity",
-      "recency": "2026-08-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/feature-space-gradient-descent.md",
-      "detail_id": "wiki-concepts-feature-space-gradient-descent",
-      "label": "Feature-Space Gradient Descent",
-      "type": "concept",
-      "recency": "2026-08-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-nap-control.md",
-      "detail_id": "entity-paper-nap-control",
-      "label": "NaP-Control：扩散先验噪声导航的快速全身角色控制",
-      "type": "entity",
-      "recency": "2026-08-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-4dof-pen-sorting.md",
-      "detail_id": "entity-paper-4dof-pen-sorting",
-      "label": "4-DoF 视觉引导桌面笔具分拣",
-      "type": "entity",
-      "recency": "2026-08-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-arm-aware-dexgrasp.md",
-      "detail_id": "entity-paper-arm-aware-dexgrasp",
-      "label": "Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成",
-      "type": "entity",
-      "recency": "2026-08-24",
+      "recency": "2026-08-25",
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-cps4all.md",
-      "detail_id": "entity-paper-cps4all",
-      "label": "CPS4All：无障碍与能力增强的赛博物理系统工作坊",
+      "path": "wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md",
+      "detail_id": "entity-paper-conceptgraphs-open-vocabulary-3d-scene",
+      "label": "ConceptGraphs",
       "type": "entity",
-      "recency": "2026-08-24",
+      "recency": "2026-08-25",
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-flatlab.md",
-      "detail_id": "entity-paper-flatlab",
-      "label": "FlatLab：平面物体操作的统一框架与仿真基准",
+      "path": "wiki/entities/paper-contactnets-contact-dynamics.md",
+      "detail_id": "entity-paper-contactnets-contact-dynamics",
+      "label": "ContactNets",
       "type": "entity",
-      "recency": "2026-08-24",
+      "recency": "2026-08-25",
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-hint2.md",
-      "detail_id": "entity-paper-hint2",
-      "label": "hint²：层级世界模型推理时 LTL 引导",
+      "path": "wiki/entities/paper-daydreamer-world-models-real-robots.md",
+      "detail_id": "entity-paper-daydreamer-world-models-real-robots",
+      "label": "DayDreamer",
       "type": "entity",
-      "recency": "2026-08-24",
+      "recency": "2026-08-25",
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-self-supervised-control.md",
-      "detail_id": "entity-paper-self-supervised-control",
-      "label": "Self-Demonstrated Generative Control：VLA 跨本体微调的自生成回放",
+      "path": "wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md",
+      "detail_id": "entity-paper-foresight-action-conditioned-failure-monitoring",
+      "label": "Foresight (PI)",
       "type": "entity",
-      "recency": "2026-08-24",
+      "recency": "2026-08-25",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/overview/vla-predict-grasp-9-papers-technology-map.md",
-      "detail_id": "wiki-overview-vla-predict-grasp-9-papers-technology-map",
-      "label": "VLA·预测·抓取：9 篇论文的阅读坐标",
+      "path": "wiki/entities/paper-mobilewam-mobile-manipulation-wam.md",
+      "detail_id": "entity-paper-mobilewam-mobile-manipulation-wam",
+      "label": "MobileWAM",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-muzero-planning-latent-dynamics.md",
+      "detail_id": "entity-paper-muzero-planning-latent-dynamics",
+      "label": "MuZero",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pets-probabilistic-dynamics-mpc.md",
+      "detail_id": "entity-paper-pets-probabilistic-dynamics-mpc",
+      "label": "PETS",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-playworld-autonomous-play-data.md",
+      "detail_id": "entity-paper-playworld-autonomous-play-data",
+      "label": "PlayWorld",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-resilient-machines-continuous-self-modeling.md",
+      "detail_id": "entity-paper-resilient-machines-continuous-self-modeling",
+      "label": "Resilient Machines (Self-Modeling)",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-riemann-1-causal-action-video-wam.md",
+      "detail_id": "entity-paper-riemann-1-causal-action-video-wam",
+      "label": "Riemann-1.0",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robocraft-particle-graph-dynamics.md",
+      "detail_id": "entity-paper-robocraft-particle-graph-dynamics",
+      "label": "RoboCraft",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robomemory-multi-type-embodied-memory.md",
+      "detail_id": "entity-paper-robomemory-multi-type-embodied-memory",
+      "label": "RoboMemory",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robowm-bench-action-faithfulness.md",
+      "detail_id": "entity-paper-robowm-bench-action-faithfulness",
+      "label": "RoboWM-Bench",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sayplan-llm-scene-graph-planning.md",
+      "detail_id": "entity-paper-sayplan-llm-scene-graph-planning",
+      "label": "SayPlan",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-veo-world-simulator-policy-testing.md",
+      "detail_id": "entity-paper-veo-world-simulator-policy-testing",
+      "label": "Veo World Simulator",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-visual-foresight-latent-mpc.md",
+      "detail_id": "entity-paper-visual-foresight-latent-mpc",
+      "label": "Visual Foresight",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-world-tokens-inference-trimmed-wam.md",
+      "detail_id": "entity-paper-world-tokens-inference-trimmed-wam",
+      "label": "World Tokens",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/embodied-wm-route-action.md",
+      "detail_id": "wiki-overview-embodied-wm-route-action",
+      "label": "具身世界模型六路线 · 行动主导型",
       "type": "overview",
-      "recency": "2026-08-24",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-language-to-navigation-goals-rgbd.md",
-      "detail_id": "entity-paper-language-to-navigation-goals-rgbd",
-      "label": "Language-to-Navigation-Goals（RGB-D 语义导航）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-eatr-stereo.md",
-      "detail_id": "entity-paper-eatr-stereo",
-      "label": "EATR-Stereo",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/embodied-foundation-model-hardware-codesign.md",
-      "detail_id": "wiki-concepts-embodied-foundation-model-hardware-codesign",
-      "label": "具身大模型与本体协同设计",
-      "type": "concept",
-      "recency": "2026-08-23",
+      "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/barc.md",
-      "detail_id": "entity-barc",
-      "label": "Berkeley Autonomous Race Car（BARC）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/drive-game.md",
-      "detail_id": "entity-drive-game",
-      "label": "drive-game（Nürburgring Drive）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/f1tenth-gym.md",
-      "detail_id": "entity-f1tenth-gym",
-      "label": "F1TENTH Gym",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/nordschleife-racer.md",
-      "detail_id": "entity-nordschleife-racer",
-      "label": "nordschleife-racer",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/racing-drift-rl-open-source-landscape.md",
-      "detail_id": "wiki-overview-racing-drift-rl-open-source-landscape",
-      "label": "赛车漂移强化学习开源景观",
+      "path": "wiki/overview/embodied-wm-route-context.md",
+      "detail_id": "wiki-overview-embodied-wm-route-context",
+      "label": "具身世界模型六路线 · 上下文主导型",
       "type": "overview",
-      "recency": "2026-08-23",
+      "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/drift-drl.md",
-      "detail_id": "entity-drift-drl",
-      "label": "drift_drl（High-speed Autonomous Drifting with DRL）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vitacphys.md",
-    "detail_id": "entity-paper-vitacphys",
-    "label": "ViTacPhys：视触觉物理属性感知自适应抓取",
+    "path": "wiki/entities/paper-checkvla-execution-time-verification.md",
+    "detail_id": "entity-paper-checkvla-execution-time-verification",
+    "label": "CheckVLA",
     "type": "entity",
-    "recency": "2026-08-24",
+    "recency": "2026-08-25",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 605
+      "size": 612
     },
     {
       "label": "操作",
@@ -240,7 +238,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 152
+      "size": 149
     },
     {
       "label": "移动操作",
@@ -252,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1307,
+      "degree": 1309,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -268,14 +266,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 883,
+      "degree": 884,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 776,
+      "degree": 780,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -283,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 769,
+      "degree": 770,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -314,7 +312,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 473,
+      "degree": 474,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

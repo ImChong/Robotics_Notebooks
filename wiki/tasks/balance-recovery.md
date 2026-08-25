@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, balance, stability, humanoid, bipedal, control]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-25
 related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-adp.md
@@ -199,6 +199,7 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - **ingest 档案：** [SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — G1 单策略走跑起身与俯卧/仰卧恢复
 - **ingest 档案：** [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) — 状态条件扩散中间件生成类人恢复轨迹
 - **ingest 档案：** [HoST（arXiv:2502.08378）](../../sources/papers/host_humanoid_standingup_arxiv_2502_08378.md) — 无参考轨迹、多 critic PPO，G1 跨沙发/坡/墙/俯仰卧等多样姿态真机起身（RSS 2025 系统论文 finalist）
+- **ingest 档案：** [G1 Compliant-Surface Stand-Up（arXiv:2608.20852）](../../sources/papers/g1_compliant_surface_standup_arxiv_2608_20852.md) — 硬地人形演示 + PPO 残差跟踪与恢复奖励，MuJoCo 软接触两阶段适配 29-DoF G1 仿真起身；评测与软地权重已开源
 - **ingest 档案：** [KungFuAthleteBot（arXiv:2602.13656）](../../sources/papers/kung_fu_athlete_bot.md) — FastSAC 单策略联合高动态 tracking 与 GRSI 跌倒恢复，G1 真机武术抗扰
 - **ingest 档案：** [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学对抗先验，四向推扰相对 AMP 缩短恢复时间
 - **ingest 档案：** [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 预防式单腿站住（非迈步恢复）；八个通用 SOTA Perfect 0/90
@@ -214,7 +215,7 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - [TSID](../concepts/tsid.md) — 经典恢复策略的底层执行器
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — 在线步位规划常用 MPC 求解
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法直接从仿真中学习鲁棒恢复策略
-- [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP](../entities/paper-adp.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[HoST](../entities/paper-host-humanoid-standingup.md)、[KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 人形恢复/起身：AMP 统一策略、动力学先验抗扰、生成式中间层、纯 RL 多姿态起身、tracking∪recovery 武术
+- [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP](../entities/paper-adp.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[HoST](../entities/paper-host-humanoid-standingup.md)、[G1 Compliant-Surface Stand-Up](../entities/paper-g1-compliant-surface-standup.md)、[KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 人形恢复/起身：AMP 统一策略、动力学先验抗扰、生成式中间层、纯 RL 多姿态起身、软地参考引导仿真起身、tracking∪recovery 武术
 - [FDDC](../entities/paper-fddc.md) — **预防**失稳的单腿站住（Perfect hold），对照本节「迈步/hop 恢复」的 Marginal 读法
 - [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 工业保护停是受约束的恢复（单支撑先落步），不是切电
 

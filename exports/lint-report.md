@@ -2,7 +2,7 @@
 
 ## [2026-08-25] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **28** 条信息型预警）：
+共发现 **0** 个问题（另含 **26** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -104,11 +104,10 @@
 - wiki/entities/paper-veo-world-simulator-policy-testing.md
 - wiki/entities/paper-world-tokens-inference-trimmed-wam.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（19 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（18 个）
 - wiki/entities/paper-checkvla-execution-time-verification.md（缺 评测 / 对比）
 - wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md（缺 评测 / 对比）
 - wiki/entities/paper-contactnets-contact-dynamics.md（缺 评测 / 对比）
-- wiki/entities/paper-cps4all.md（缺 评测 / 对比）
 - wiki/entities/paper-daydreamer-world-models-real-robots.md（缺 评测 / 对比）
 - wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md（缺 评测 / 对比）
 - wiki/entities/paper-mobilewam-mobile-manipulation-wam.md（缺 评测 / 对比）
@@ -143,8 +142,8 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-flatlab.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -152,4 +151,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：3252/3252 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3255/3255 (100%) wiki/entity 页有 ingest 来源

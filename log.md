@@ -4,6 +4,14 @@
 - **taxonomy：** 模型构建 / 规划 / 学习 / 行动 / 评估 / 上下文 + 趋势判断
 - **阅读坐标：** [`wiki/overview/embodied-wm-six-routes-technology-map.md`](wiki/overview/embodied-wm-six-routes-technology-map.md)
 
+## [2026-08-25] ingest | sources/papers/{qplanning,foretime_vla,g1_compliant_surface_standup}_arxiv_2608_*.md — Q-Planning（冻结 BC+Q 自改进，已开源）、ForeTime-VLA（WAM 未来 token 蒸馏 π₀.₅，未开源）、G1 软地面起身（IIT Kanpur，评测+权重已开源）
+
+- **Q-Planning（2608.21204）：** 项目页+GitHub 核查 **已开源**；实体 `paper-qplanning`；交叉 VLA / action-chunking / LWD
+- **ForeTime-VLA（2608.20735）：** 清华/上海 AI Lab/哈工大/云深处；无官方代码 URL；实体 `paper-foretime-vla`；交叉 π₀.₅ / WAM
+- **G1 Compliant-Surface Stand-Up（2608.20852）：** 硬地演示→MuJoCo 软接触两阶段 PPO；`eval.py`+软地 checkpoint **已发布**、完整训练 **未发布**；实体 `paper-g1-compliant-surface-standup`；交叉 balance-recovery / HoST
+
+## [2026-08-24] ingest | sources/papers/vitacphys_arxiv_2608_21355.md — 小米 ViTacPhys 视触觉物理属性自适应抓取；代码/数据集待发布
+
 ## [2026-08-24] ingest | sources/papers/sculpt_arxiv_2608_13541.md — SCULPT 减法式 3D 部件生成；项目页未列代码，记未开源
 
 ## [2026-08-24] ingest | sources/papers/t_gmp_terrain_conditioned_generative_motion_priors_arxiv_2606_06944.md — T-GMP（arXiv:2606.06944，HIT×乐聚 Kuavo）；地形条件 CVAE+AMP+Foothold；项目页 404、代码未开源；升格运动小脑 #02 实体页
