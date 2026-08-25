@@ -3,10 +3,11 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, imitation-learning, in-context-learning, one-shot, foundation-policy, scaling, generalist-ai]
 status: complete
 title: GEN-1.5 一次示范学习（Physical Prompting）
-updated: 2026-08-20
+updated: 2026-08-25
 related:
   - ./generalist-ai-robotics.md
   - ./generalist-gen1-thousand-hands.md
+  - ../concepts/robot-in-context-learning.md
   - ../concepts/foundation-policy.md
   - ../concepts/embodied-scaling-laws.md
   - ../tasks/manipulation.md
@@ -14,6 +15,7 @@ related:
   - ../entities/paper-robottt-test-time-training-vla-context.md
 sources:
   - ../../sources/blogs/generalist_gen15_one_shot.md
+  - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
 summary: "Generalist GEN-1.5 博客（2026-08）：8+ 月持续预训练后涌现 physical prompting——3–12 秒单次示范无梯度达约 59% 成功率，10 步微调约 83%；并报告组合示范、仿真提示零样本真机、人→机示范与即兴工具使用。"
 ---
 
@@ -143,10 +145,12 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [RoboTTT（context / test-time VLA）](../entities/paper-robottt-test-time-training-vla-context.md)
+- [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 三类不确定性拆解与 26 篇相关工作索引
 
 ## 参考来源
 
 - [GEN-1.5: Embodied Foundation Models are One-Shot Learners（来源归档）](../../sources/blogs/generalist_gen15_one_shot.md)
+- [万字长文：机器人上下文学习到底在学什么（具身智能之心，2026-08-25）](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md)
 - 原文：<https://generalistai.com/blog/gen-1.5>
 
 ## 推荐继续阅读

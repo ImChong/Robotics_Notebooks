@@ -1,3 +1,9 @@
+## [2026-08-25] ingest | sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md — 具身智能之心「机器人上下文学习」万字综述；新建概念页 robot-in-context-learning；交叉 GEN-1.5 / IL / foundation-policy / manipulation
+
+- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/V_Dm8kHvB2YxtGY7qScjXA>
+- **核心 taxonomy：** 映射选择 vs 状态估计 vs 映射本身（真 ICL）；按遥操作 / 人视频 / 系统辨识分线；对照 π0.7、记忆 VLA、RoboTTT
+- **关键页：** [`wiki/concepts/robot-in-context-learning.md`](wiki/concepts/robot-in-context-learning.md)
+
 ## [2026-08-25] ingest | sources/papers/smp.md — 补全 SMP 论文实体页、项目页与 senlanke/mimic G1 复现归档；官方 MimicKit + 乘性奖励 mjlab 管线
 
 ## [2026-08-25] ingest | sources/repos/dexmal_opendm.md + sources/blogs/dexmal_dm05.md — OpenDM/DM0.5 二次核查（GitHub + HF DM05 + 技术博客）；补 Gemma 权重许可、官方 News 时间线；更新 wiki/entities/dexmal-dm05.md；互链 wiki/overview/vla-open-source-repro-landscape-2025.md

@@ -4,6 +4,7 @@ tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretrainin
 updated: 2026-08-23
 related:
   - ./embodied-foundation-model-hardware-codesign.md
+  - ./robot-in-context-learning.md
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
@@ -37,6 +38,7 @@ sources:
   - ../../sources/papers/star_vla.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
+  - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
 summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
 ---
 
@@ -172,6 +174,7 @@ flowchart TD
 
 ## 关联页面
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 通用策略下游的接触丰富操作，依赖本链的力旋量闭环执行保证
+- [机器人 In-Context Learning](./robot-in-context-learning.md) — 部署期示范归纳 vs 记忆 vs metadata 的 taxonomy
 - [模仿学习（Imitation Learning）](../methods/imitation-learning.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [VLA](../methods/vla.md)
@@ -203,4 +206,5 @@ flowchart TD
 - [imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [sources/papers/star_vla.md](../../sources/papers/star_vla.md)
 - [sources/repos/gr00t_wholebodycontrol.md](../../sources/repos/gr00t_wholebodycontrol.md) — GR00T WBC 官方单仓（解耦 WBC、GEAR-SONIC、MotionBricks 与 VLA 教程文档）
+- [wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md) — 机器人 ICL taxonomy 综述
 - [机器人论文阅读笔记：GR00T N1](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)
