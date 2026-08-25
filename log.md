@@ -1,8 +1,10 @@
-## [2026-08-25] ingest | sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md — 具身世界模型六路线综述；56 篇独立节点（38 复用 + 18 新建）+ 技术地图
+## [2026-08-25] ingest | sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md — 具身智能小站「8 篇开源论文」；新建 5 论文实体 + 技术地图；复用 ViTacPhys/Q-Planning/DreamHand
 
-- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ>；要求文内每篇论文独立详情节点、不重复造页
-- **taxonomy：** 模型构建 / 规划 / 学习 / 行动 / 评估 / 上下文 + 趋势判断
-- **阅读坐标：** [`wiki/overview/embodied-wm-six-routes-technology-map.md`](wiki/overview/embodied-wm-six-routes-technology-map.md)
+- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/71jZDzvcWZ3SsoHOEA8sgQ>；要求 8/8 独立详情节点、同一 arXiv 不重复造页
+- **步骤 2.5：** Space Mining 清单 **已开源**；SRL-MPC 仓 **待发布**；TOSS OSF **已开源**；PhysCaP **未开源**；GhostTac 演示 **已开源**；复用三篇沿用先前开源结论
+- **新建实体：** `paper-space-mining-with-robotics`、`paper-srl-mpc`、`paper-toss-framework`、`paper-physcap`、`paper-ghosttac`
+- **复用实体：** `paper-vitacphys`、`paper-qplanning`、`paper-dreamhand`
+- **技术地图：** [`wiki/overview/open-source-8-papers-technology-map.md`](wiki/overview/open-source-8-papers-technology-map.md)
 
 ## [2026-08-25] ingest | sources/papers/{qplanning,foretime_vla,g1_compliant_surface_standup}_arxiv_2608_*.md — Q-Planning（冻结 BC+Q 自改进，已开源）、ForeTime-VLA（WAM 未来 token 蒸馏 π₀.₅，未开源）、G1 软地面起身（IIT Kanpur，评测+权重已开源）
 

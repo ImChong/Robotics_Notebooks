@@ -23,9 +23,11 @@ related:
   - ./paper-sa-2506-15953-vitacformer-learning-cross-modal-representation.md
   - ./paper-vitacworld.md
   - ./xiaomi-robotics-0.md
+  - ../overview/open-source-8-papers-technology-map.md
 sources:
   - ../../sources/papers/vitacphys_arxiv_2608_21355.md
   - ../../sources/sites/vitacphys-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md
 summary: "ViTacPhys（arXiv:2608.21355，小米机器人实验室）：人体视触觉抓取示范在线预测质量/刚度/摩擦，人→机迁移后条件化 ACT 灵巧手策略；ID 总成功率 95.0%、OOD 83.4%，相对 ACT OOD clean-success +38.9 pp。代码/数据集待发布。"
 ---
 
@@ -149,6 +151,7 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) — 同机构 VLA 工程对照
+- [open-source-8-papers-technology-map](../overview/open-source-8-papers-technology-map.md) — 具身智能小站 2026-08-25 八篇盘点
 
 ## 推荐继续阅读
 
@@ -159,3 +162,4 @@ flowchart TB
 
 - [ViTacPhys 论文归档](../../sources/papers/vitacphys_arxiv_2608_21355.md)
 - [ViTacPhys 项目页归档](../../sources/sites/vitacphys-github-io.md)
+- [wechat_embodied_station_8_papers_open_source_2026-08-25](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md)

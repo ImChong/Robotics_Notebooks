@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-25
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
@@ -259,6 +259,9 @@ flowchart LR
 - [Fault-Tolerant Locomotion（论文实体）](../entities/paper-fault-tolerant-locomotion.md) — 非对称 actor–critic + latent-alignment 应对执行器功率损失（arXiv:2608.07328）
 - [TEMPO（论文实体）](../entities/paper-tempo.md) — VLA 语义/动作双 TD3 环与双频后训练（arXiv:2608.07314）
 - [Temporal GRPO（论文实体）](../entities/paper-temporal-grpo.md) — VLA 结果 GRPO 的阶段信用写回（arXiv:2608.13026；未开源）
+- [Q-Planning（论文实体）](../entities/paper-qplanning.md) — 冻结 BC + 离策略 Q 吸收失败 rollout 自改进（arXiv:2608.21204；已开源）
+- [SRL-MPC（论文实体）](../entities/paper-srl-mpc.md) — RL 调 MPC 参数而非端到端策略（arXiv:2608.21175）
+- [TOSS Framework（论文实体）](../entities/paper-toss-framework.md) — 人类教学四维过程模型 + OSF 数据（arXiv:2608.21083）
 - [HIL-HARC（论文实体）](../entities/paper-hil-harc.md) — 真机在线 RL：CTDE 混合动作 + HRA 分解 critic（arXiv:2608.09762）
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 先验 + 物体条件残差 PPO 的两阶段 loco-manipulation（arXiv:2510.05070）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 扩散规划器 DPPO 微调 + 低层 PPO 联合优化（arXiv:2603.13707）
