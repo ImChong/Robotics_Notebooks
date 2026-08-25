@@ -115,6 +115,7 @@ flowchart TB
 - [manipulation](../tasks/manipulation.md)
 - [paper-vitacphys](./paper-vitacphys.md)
 - [open-source-8-papers-technology-map](../overview/open-source-8-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 该链把「看得见」的检测/分割/语义建图串成选型链；PhysCaP 补的是链尾之外的一段：视觉看不见的质量/刚度需靠本体感觉主动探测
 
 ## 参考来源
 

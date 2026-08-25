@@ -3,6 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
+venue: curated
 
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
@@ -51,6 +52,18 @@ summary: "RoboMemory（具身世界模型六路线专题）：并行维护时间
 - 归入 **上下文主导型** 的判断标准是 **闭环职责**，不是模型架构标签。
 - 与同路线邻接工作对照时，优先比较 **动作条件性、物理一致性与部署接口**。
 - 细节数字与开源状态以原文为准；本页服务图谱导航与交叉引用。
+
+## 实验与评测
+
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [综述原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) 指向的论文 / 项目页为准。
+- **该路线该看的指标**：长时 / 多阶段任务成功率，以及记忆或场景图规模与检索开销的关系。
+- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+
+## 与其他工作对比
+
+- **同路线邻接工作**（综述 **上下文主导型** 段）：[SayPlan](./paper-sayplan-llm-scene-graph-planning.md)、[Hydra](./paper-hydra-0.md)。
+- **对照要点**：RoboMemory 并行维护 **时间 / 空间 / 语义 / 任务经历** 四类记忆；场景图路线主要沉淀 **空间–语义** 一类——多一类记忆意味着多一处检索与一致性开销。
+- **跨路线区分**：上下文主导型的闭环职责是「持续运行维护 World Proxy 的状态与记忆」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
 

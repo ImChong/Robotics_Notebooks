@@ -3,6 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
+venue: curated
 
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
@@ -51,6 +52,18 @@ summary: "Veo World Simulator（具身世界模型六路线专题）：视频基
 - 归入 **评估主导型** 的判断标准是 **闭环职责**，不是模型架构标签。
 - 与同路线邻接工作对照时，优先比较 **动作条件性、物理一致性与部署接口**。
 - 细节数字与开源状态以原文为准；本页服务图谱导航与交叉引用。
+
+## 实验与评测
+
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [综述原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) 指向的论文 / 项目页为准。
+- **该路线该看的指标**：与真机评测的排序一致性（相关系数 / 排名保序），而非画面逼真度。
+- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+
+## 与其他工作对比
+
+- **同路线邻接工作**（综述 **评估主导型** 段）：[WorldGym](./paper-shenlan-wm-15-worldgym.md)、[WorldEval](./paper-sa-2505-19017-worldeval-world-model-as-real-world-robot-polici.md)、[GE-Sim 2.0](./ge-sim-2.md)。
+- **对照要点**：Veo 走的是 **把通用视频基础模型改造成测试场**；WorldGym / GE-Sim 是 **面向机器人自建** 的评测世界。前者赢在场景与 OOD 覆盖，后者赢在动作接口与可控性。
+- **跨路线区分**：评估主导型的闭环职责是「部署前让外部策略在学习出的世界里考试」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
 

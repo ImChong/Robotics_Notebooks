@@ -3,6 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
+venue: curated
 
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
@@ -51,6 +52,18 @@ summary: "MobileWAM（具身世界模型六路线专题）：从机械臂扩展�
 - 归入 **行动主导型** 的判断标准是 **闭环职责**，不是模型架构标签。
 - 与同路线邻接工作对照时，优先比较 **动作条件性、物理一致性与部署接口**。
 - 细节数字与开源状态以原文为准；本页服务图谱导航与交叉引用。
+
+## 实验与评测
+
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [综述原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) 指向的论文 / 项目页为准。
+- **该路线该看的指标**：真机执行成功率、动作条件性（预测是否随动作改变）与推理时延。
+- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+
+## 与其他工作对比
+
+- **同路线邻接工作**（综述 **行动主导型** 段）：[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[Riemann-1.0](./paper-riemann-1-causal-action-video-wam.md)。
+- **对照要点**：MobileWAM 把 WAM 从 **固定臂** 扩到 **移动底盘 + 臂**，视点随本体移动；MotionWAM 面向 **人形全身 loco-manipulation**——两者的难点都在自由度与视点漂移，可直接对读。
+- **跨路线区分**：行动主导型的闭环职责是「执行时未来建模与动作生成显式耦合」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
 

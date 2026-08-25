@@ -52,6 +52,18 @@ summary: "DayDreamer（具身世界模型六路线专题）：世界模型直接
 - 与同路线邻接工作对照时，优先比较 **动作条件性、物理一致性与部署接口**。
 - 细节数字与开源状态以原文为准；本页服务图谱导航与交叉引用。
 
+## 实验与评测
+
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2206.14176](https://arxiv.org/abs/2206.14176) 为准。
+- **该路线该看的指标**：样本效率（真机 / 仿真交互量）与想象训练后的真机迁移成功率。
+- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+
+## 与其他工作对比
+
+- **同路线邻接工作**（综述 **学习主导型** 段）：[Dreamer](./paper-dreamer-latent-imagination.md)、[DreamerV3](./paper-shenlan-wm-13-dreamerv3.md)、[GR00T-Dreams](./paper-gr00t-dreams-synthetic-trajectories.md)。
+- **对照要点**：DayDreamer 把 Dreamer 的想象训练直接搬到 **真机在线学习**；GR00T-Dreams 一类是先 **离线生成轨迹再训练**——前者的瓶颈是真机安全与磨损，后者是生成数据的动作可执行性。
+- **跨路线区分**：学习主导型的闭环职责是「训练时用想象经验训练策略」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
+
 ## 关联页面
 
 - [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)

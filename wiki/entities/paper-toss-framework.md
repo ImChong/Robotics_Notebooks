@@ -54,6 +54,7 @@ summary: "TOSS（arXiv:2608.21083，Leiden/VU Amsterdam）：Triggers-Objectives
 | **样本** | N=34 参与者；204 条直觉教学反应 |
 | **场景** | Tabular Q-learning 清洁导航 + DDPG 桌面推药操作 |
 | **开源** | **已开源** — OSF 数据集与实验材料 |
+| **重定向就绪度** | 不涉及形态/骨架重定向（无运动轨迹）；204 条标注反应可按 TOSS 四维直接作 **训练输入**，用于约束 realistic oracle 或教学 UI 设计 |
 
 ### 流程总览
 
