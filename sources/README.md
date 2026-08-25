@@ -10,6 +10,9 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [qplanning_arxiv_2608_21204.md](papers/qplanning_arxiv_2608_21204.md) | Q-Planning：冻结 BC/VLA + 离策略 Q 加权规划与 Q-only 自改进（arXiv:2608.21204，Georgia Tech；已开源）摘录与 wiki 映射 |
+| [x] [foretime_vla_arxiv_2608_20735.md](papers/foretime_vla_arxiv_2608_20735.md) | ForeTime-VLA：Fast-WAM 未来 token 蒸馏到因果 π₀.₅ 传送带操纵（arXiv:2608.20735，清华/上海 AI Lab/哈工大/云深处；未开源）摘录与 wiki 映射 |
+| [x] [g1_compliant_surface_standup_arxiv_2608_20852.md](papers/g1_compliant_surface_standup_arxiv_2608_20852.md) | G1 软地面参考引导起身（arXiv:2608.20852，IIT Kanpur；评测+软地权重已开源）摘录与 wiki 映射 |
 | [x] [language_to_navigation_goals_arxiv_2607_13624.md](papers/language_to_navigation_goals_arxiv_2607_13624.md) | Language-to-Navigation-Goals：ROS 2 VLM+RGB-D→Nav2 语义导航（arXiv:2607.13624，UPO；Go2 真机；代码待接收后开源）摘录与 wiki 映射 |
 | [x] [eatr_stereo_arxiv_2608_17453.md](papers/eatr_stereo_arxiv_2608_17453.md) | EATR-Stereo：头载双目 CVAT + 分段本体路由的人形 VLA 接口（arXiv:2608.17453，哈工大/荣耀；Omega 1.0 全流程 60%；未开源）摘录与 wiki 映射 |
 | [x] [cref_arxiv_2603_29452.md](papers/cref_arxiv_2603_29452.md) | CReF：交叉模态与循环融合的深度条件人形行走（arXiv:2603.29452，浙大/山大；X2 Ultra 零样本；确认未开源）摘录与 wiki 映射 |

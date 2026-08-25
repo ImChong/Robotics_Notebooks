@@ -1,32 +1,42 @@
 {
   "generated_at": "2026-08-25",
-  "node_count": 3251,
-  "edge_count": 28818,
+  "node_count": 3254,
+  "edge_count": 28841,
   "coverage": {
-    "covered": 3226,
-    "total": 3226,
+    "covered": 3229,
+    "total": 3229,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-cps4all.md",
-      "detail_id": "entity-paper-cps4all",
-      "label": "CPS4All：无障碍与能力增强的赛博物理系统工作坊",
+      "path": "wiki/entities/paper-foretime-vla.md",
+      "detail_id": "entity-paper-foretime-vla",
+      "label": "ForeTime-VLA：世界模型未来 Token 蒸馏",
       "type": "entity",
-      "recency": "2026-08-24",
+      "recency": "2026-08-25",
       "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "action": "added"
     },
     {
-      "path": "wiki/entities/paper-flatlab.md",
-      "detail_id": "entity-paper-flatlab",
-      "label": "FlatLab：平面物体操作的统一框架与仿真基准",
+      "path": "wiki/entities/paper-g1-compliant-surface-standup.md",
+      "detail_id": "entity-paper-g1-compliant-surface-standup",
+      "label": "G1 Compliant-Surface Stand-Up：软地面参考引导起身",
       "type": "entity",
-      "recency": "2026-08-24",
+      "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-qplanning.md",
+      "detail_id": "entity-paper-qplanning",
+      "label": "Q-Planning：冻结 VLA 的离策略 Q 函数自改进",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-vitacphys.md",
@@ -55,7 +65,7 @@
       "recency": "2026-08-24",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-nap-control.md",
@@ -83,6 +93,26 @@
       "path": "wiki/entities/paper-arm-aware-dexgrasp.md",
       "detail_id": "entity-paper-arm-aware-dexgrasp",
       "label": "Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cps4all.md",
+      "detail_id": "entity-paper-cps4all",
+      "label": "CPS4All：无障碍与能力增强的赛博物理系统工作坊",
+      "type": "entity",
+      "recency": "2026-08-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-flatlab.md",
+      "detail_id": "entity-paper-flatlab",
+      "label": "FlatLab：平面物体操作的统一框架与仿真基准",
       "type": "entity",
       "recency": "2026-08-24",
       "source": "git",
@@ -177,59 +207,25 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/nordschleife-racer.md",
-      "detail_id": "entity-nordschleife-racer",
-      "label": "nordschleife-racer",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/racing-drift-rl-open-source-landscape.md",
-      "detail_id": "wiki-overview-racing-drift-rl-open-source-landscape",
-      "label": "赛车漂移强化学习开源景观",
-      "type": "overview",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/drift-drl.md",
-      "detail_id": "entity-drift-drl",
-      "label": "drift_drl（High-speed Autonomous Drifting with DRL）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-cps4all.md",
-    "detail_id": "entity-paper-cps4all",
-    "label": "CPS4All：无障碍与能力增强的赛博物理系统工作坊",
+    "path": "wiki/entities/paper-foretime-vla.md",
+    "detail_id": "entity-paper-foretime-vla",
+    "label": "ForeTime-VLA：世界模型未来 Token 蒸馏",
     "type": "entity",
-    "recency": "2026-08-24",
+    "recency": "2026-08-25",
     "source": "git",
-    "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
-      "label": "仿真到现实",
-      "size": 622
+      "label": "操作",
+      "size": 534
     },
     {
-      "label": "操作",
-      "size": 543
+      "label": "仿真到现实",
+      "size": 520
     },
     {
       "label": "视觉-语言-动作",
@@ -241,11 +237,11 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 159
+      "size": 151
     },
     {
-      "label": "世界动作模型",
-      "size": 104
+      "label": "视觉语言动作纵深路线",
+      "size": 96
     }
   ],
   "top_hubs": [
@@ -253,7 +249,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1307,
+      "degree": 1309,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -269,14 +265,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 883,
+      "degree": 884,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 776,
+      "degree": 780,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +280,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 743,
+      "degree": 744,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -315,7 +311,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 473,
+      "degree": 474,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

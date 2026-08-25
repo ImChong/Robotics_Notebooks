@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, standing-up, fall-recovery, unitree-g1, ppo, sim2real, whole-body-control, isaac-gym, multi-critic]
 status: complete
-updated: 2026-07-09
+updated: 2026-08-25
 arxiv: "2502.08378"
 related:
   - ../tasks/balance-recovery.md
