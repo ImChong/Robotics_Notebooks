@@ -1,13 +1,81 @@
 {
   "generated_at": "2026-08-25",
-  "node_count": 3260,
-  "edge_count": 28884,
+  "node_count": 3286,
+  "edge_count": 29094,
   "coverage": {
-    "covered": 3235,
-    "total": 3235,
+    "covered": 3261,
+    "total": 3261,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ghosttac.md",
+      "detail_id": "entity-paper-ghosttac",
+      "label": "GhostTac：非接触触觉传感操纵攻击",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-physcap.md",
+      "detail_id": "entity-paper-physcap",
+      "label": "PhysCaP：物理信息探索的 Code-as-Policy",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-qplanning.md",
+      "detail_id": "entity-paper-qplanning",
+      "label": "Q-Planning：冻结 VLA 的离策略 Q 函数自改进",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-space-mining-with-robotics.md",
+      "detail_id": "entity-paper-space-mining-with-robotics",
+      "label": "Space Mining with Robotics：太空采矿机器人综述",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-srl-mpc.md",
+      "detail_id": "entity-paper-srl-mpc",
+      "label": "SRL-MPC：形状感知强化学习 MPC",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-toss-framework.md",
+      "detail_id": "entity-paper-toss-framework",
+      "label": "TOSS Framework：人类教学决策的过程模型",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/open-source-8-papers-technology-map.md",
+      "detail_id": "wiki-overview-open-source-8-papers-technology-map",
+      "label": "开源具身 8 篇：阅读坐标与技术地图",
+      "type": "overview",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-foretime-vla.md",
       "detail_id": "entity-paper-foretime-vla",
@@ -27,16 +95,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-qplanning.md",
-      "detail_id": "entity-paper-qplanning",
-      "label": "Q-Planning：冻结 VLA 的离策略 Q 函数自改进",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-cps4all.md",
@@ -146,102 +204,43 @@
       "recency": "2026-08-24",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-language-to-navigation-goals-rgbd.md",
-      "detail_id": "entity-paper-language-to-navigation-goals-rgbd",
-      "label": "Language-to-Navigation-Goals（RGB-D 语义导航）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-eatr-stereo.md",
-      "detail_id": "entity-paper-eatr-stereo",
-      "label": "EATR-Stereo",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/embodied-foundation-model-hardware-codesign.md",
-      "detail_id": "wiki-concepts-embodied-foundation-model-hardware-codesign",
-      "label": "具身大模型与本体协同设计",
-      "type": "concept",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/barc.md",
-      "detail_id": "entity-barc",
-      "label": "Berkeley Autonomous Race Car（BARC）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/drive-game.md",
-      "detail_id": "entity-drive-game",
-      "label": "drive-game（Nürburgring Drive）",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/f1tenth-gym.md",
-      "detail_id": "entity-f1tenth-gym",
-      "label": "F1TENTH Gym",
-      "type": "entity",
-      "recency": "2026-08-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-foretime-vla.md",
-    "detail_id": "entity-paper-foretime-vla",
-    "label": "ForeTime-VLA：世界模型未来 Token 蒸馏",
+    "path": "wiki/entities/paper-ghosttac.md",
+    "detail_id": "entity-paper-ghosttac",
+    "label": "GhostTac：非接触触觉传感操纵攻击",
     "type": "entity",
     "recency": "2026-08-25",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 535
+      "size": 577
     },
     {
       "label": "仿真到现实",
-      "size": 529
+      "size": 555
     },
     {
       "label": "视觉-语言-动作",
-      "size": 257
+      "size": 250
     },
     {
       "label": "人形论文深读笔记",
-      "size": 221
+      "size": 220
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 151
+      "size": 145
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 96
+      "size": 102
     }
   ],
   "top_hubs": [
@@ -280,7 +279,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 744,
+      "degree": 770,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -311,7 +310,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 475,
+      "degree": 476,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -344,7 +343,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 58
+      "degree": 60
     },
     {
       "detail_id": "wiki-methods-deepmimic",
