@@ -9,13 +9,16 @@
 - **作者：** Omar Rayyan、Zhi Li、Max Argus、Yuxin Jiang、Chang Yu、Chenfanfu Jiang、Yuchen Cui
 - **机构：** 加州大学洛杉矶分校（UCLA）；艾伦人工智能研究所（Allen Institute for AI）；华盛顿大学（University of Washington）
 - **入库日期：** 2026-08-20
+- **再核日期：** 2026-08-25
+- **代码：** <https://github.com/omarrayyann/fetchman>（占位仓；README：**Code will be added by September 1**）
 - **一句话说明：** 在 MolmoSpaces 上生成 15 万场景脚本演示 → DINOv3+DiT BC → Flow-GRPO 稀疏奖励 refinement → Unitree G1 零样本 loco-manip。
 
 ## 开源状态（步骤 2.5）
 
-- **项目页（2026-08-20）：** 含摘要、架构、消融视频与 BibTeX；**未列 GitHub / Hugging Face / 权重下载**。
-- **论文：** 宣称 release **FetchMan-Bench**（固定 held-out 场景与评分），但未给代码 URL。
-- **结论：** **确认未开源**（训练代码与 checkpoint 截至入库日不可获取）；基准「将发布」待跟进。
+- **项目页（2026-08-25 再核）：** 页头 **Data & Code** → [omarrayyann/fetchman](https://github.com/omarrayyann/fetchman)；含摘要、架构、消融视频与 BibTeX。
+- **GitHub（2026-08-25）：** 仓已公开，**仅 README.md**；无训练/推理脚本、无权重、无 Bench 下载。
+- **论文：** 宣称 release **FetchMan-Bench**（固定 held-out 场景与评分），截至再核日仍无公开下载链。
+- **结论：** **部分开源 / 待发布** — 官方占位仓与时间表已挂出；可运行复现入口待 **2026-09-01 前** 跟进。
 
 ## 摘录 1：问题与管线（§1、§4–5）
 
@@ -44,5 +47,6 @@
 
 ## 建议 wiki 动作
 
-- 新建 **`wiki/entities/paper-fetchman.md`**；`sources/sites/fetchman-orayyan.md`。
-- 更新 [loco-manipulation](../../wiki/tasks/loco-manipulation.md) 视觉 sim 路线索引。
+- 维护 **`wiki/entities/paper-fetchman.md`**、`sources/sites/fetchman-orayyan.md`、`sources/repos/fetchman.md`。
+- 更新 [loco-manipulation](../../wiki/tasks/loco-manipulation.md) 开源状态（占位仓 → 待发布）。
+- 代码释出后补实体页 **源码运行时序图** 与 repo 入口表。
