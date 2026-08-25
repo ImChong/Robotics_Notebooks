@@ -8,8 +8,10 @@
 - **原始链接：** <https://www.dexmal.com/blog/dm0.5>（亦见 `/blog/dm0.5/index.html`、英文 `/blog/dm0.5/index_en.html`）
 - **入库日期：** 2026-07-09
 - **修订日期：** 2026-08-08（补链官方开源仓 OpenDM 与 HF/ModelScope 权重集合）
+- **二次核查：** 2026-08-25（博客叙事与 OpenDM/HF 权重栈一致；无新增基准数值）
 - **前代模型：** DM0（2026-02 发布，Dexmal 第一代原生具身基础模型）
 - **开源代码：** <https://github.com/dexmal/opendm>（见 [dexmal_opendm.md](../repos/dexmal_opendm.md)）
+- **基础权重：** <https://huggingface.co/Dexmal/DM05>
 - **权重集合：** <https://huggingface.co/collections/Dexmal/dm05>
 - **一句话说明：** Dexmal **DM0.5** 是在 **Gemma3-4B VLM + 680M Action Expert** 上的 **开放世界 VLA 基础模型**：以 **最长约 60s 历史上下文**、**11 类具身 CoT 自回归任务** 与 **动态轨迹对齐（DP 动作匹配）** 强化长程记忆与指令遵循；多源混合预训练覆盖操作、导航与人视频，在 **zero-shot、Table30 v2、LIBERO、RoboTwin2.0、R2R/RxR** 等基准报告 SOTA 或显著领先 **DM0 / π0.5-Droid**；官方栈以 **OpenDM** 开源训练/推理与多下游 checkpoint。
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, wam, video-action-model, dexmal, manipulation, diffusion, mixture-of-transformers, robotwin, open-source]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-25
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
