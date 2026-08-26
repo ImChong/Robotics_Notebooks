@@ -3,10 +3,12 @@
 type: entity
 tags: [repo, simulation, reinforcement-learning, pybullet, gymnasium, quadcopter, multi-agent, mit]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-26
 related:
   - ./pybullet.md
   - ../overview/multirotor-simulation-planning-control-stack.md
+  - ./paper-rl-vs-gc.md
+  - ../comparisons/rl-vs-geometric-control.md
   - ./betaflight.md
   - ./flightmare.md
   - ./quad-swarm-rl.md
@@ -16,6 +18,7 @@ related:
   - ./gymnasium.md
 sources:
   - ../../sources/repos/gym_pybullet_drones.md
+  - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
 summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 RL 环境：单/多机、多种控制接口，广泛用于四旋翼强化学习论文复现与教学。"
 ---
 
@@ -64,6 +67,7 @@ summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 R
 ## 关联页面
 
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
+- [RL vs GC](./paper-rl-vs-gc.md) — Isaac Lab 上带对称几何控制基线的跟踪试验台（更重、更贴近 RSS 协议）
 - [Betaflight](./betaflight.md) — 真机 FPV 飞控与仿真参数对照
 - [quad-swarm-rl](./quad-swarm-rl.md)
 - [Sim2Real](../concepts/sim2real.md)

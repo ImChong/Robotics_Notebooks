@@ -9,6 +9,7 @@ related:
   - ./airsim.md
   - ./unity-engine.md
   - ./gym-pybullet-drones.md
+  - ./paper-rl-vs-gc.md
   - ./ego-planner-swarm.md
 sources:
   - ../../sources/repos/flightmare.md
@@ -55,6 +56,7 @@ summary: "Flightmare 是 UZH RPG 的灵活四旋翼仿真器：Unity 渲染与�
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [AirSim](./airsim.md)
 - [gym-pybullet-drones](./gym-pybullet-drones.md)
+- [RL vs GC](./paper-rl-vs-gc.md) — 状态反馈跟踪上的 RL vs \(SE(3)\) 几何控制（非视觉）
 
 ## 推荐继续阅读
 

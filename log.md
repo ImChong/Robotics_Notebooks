@@ -1,3 +1,11 @@
+## [2026-08-26] ingest | sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md — RL vs GC（arXiv:2506.17832，RSS 2025）四旋翼跟踪对称比较；Isaac Lab 实现已开源、未声明 SPDX；升格论文实体与对比页
+
+- **触发：** 用户指定项目页 <https://pratikkunapuli.github.io/rl-vs-gc/> 与 [arXiv:2506.17832](https://arxiv.org/abs/2506.17832)
+- **步骤 2.5：** **已开源** — [PratikKunapuli/rl-vs-gc](https://github.com/PratikKunapuli/rl-vs-gc) 含 DirectRLEnv、`train_rslrl.py`、`gc_tuning.py` 与 PaperModels checkpoint；仓库 **无 LICENSE**。评测纯仿真
+- **关键页：** [`wiki/entities/paper-rl-vs-gc.md`](wiki/entities/paper-rl-vs-gc.md)、[`wiki/comparisons/rl-vs-geometric-control.md`](wiki/comparisons/rl-vs-geometric-control.md)
+- **交叉：** mpc-vs-rl / wbc-vs-rl / 多旋翼栈 / Isaac Lab / gym-pybullet-drones / Flightmare / sim2real / domain-randomization / reinforcement-learning
+- **机构：** `upenn`（GRASP Lab）
+
 ## [2026-08-26] ingest | sources/repos/isaaclab_decoupled_wbc.md — HTD 解耦 WBC 全组件入库；Isaac Lab 训练/蒸馏/G1 部署已开源，遥操作与 HTD 策略仍待发布
 
 - **触发：** 用户指定 [IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC) 与论文仓 [humanoid-touch-dream](https://github.com/chrisyrniu/humanoid-touch-dream)；要求 ingest 全身控制器全部组件

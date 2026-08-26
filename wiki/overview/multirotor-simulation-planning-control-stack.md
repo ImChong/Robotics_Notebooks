@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-26
 related:
   - ../entities/betaflight.md
   - ../entities/wtfos.md
@@ -11,6 +11,8 @@ related:
   - ../entities/ego-planner-swarm.md
   - ../entities/paper-mighty-hermite-spline-trajectory-planning.md
   - ../entities/paper-flap-fov-active-perception-3d-navigation.md
+  - ../entities/paper-rl-vs-gc.md
+  - ../comparisons/rl-vs-geometric-control.md
   - ../entities/airsim.md
   - ../entities/xtdrone.md
   - ../entities/flightmare.md
@@ -38,6 +40,8 @@ sources:
   - ../../sources/repos/xtdrone.md
   - ../../sources/repos/flightmare.md
   - ../../sources/repos/gym_pybullet_drones.md
+  - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
+  - ../../sources/repos/rl-vs-gc.md
   - ../../sources/repos/quad_swarm_rl.md
   - ../../sources/repos/crazyswarm2.md
   - ../../sources/repos/crazyflie_firmware.md
@@ -140,6 +144,7 @@ flowchart TB
 | 视觉 SLAM / 深度学习、UE 场景 | [AirSim](../entities/airsim.md) | [Flightmare](../entities/flightmare.md) | 用作高保真接触/桨叶 FEM |
 | 敏捷飞行 RL、高并行 | [Flightmare](../entities/flightmare.md) | [gym-pybullet-drones](../entities/gym-pybullet-drones.md) | 首版就上真机无保护 |
 | 课程/论文标准 UAV RL 基准 | [gym-pybullet-drones](../entities/gym-pybullet-drones.md) | [quad-swarm-rl](../entities/quad-swarm-rl.md) | 与 Isaac Lab 腿式环境混为一谈 |
+| 公平比较 RL vs \(SE(3)\) 几何控制 | [RL vs GC](../entities/paper-rl-vs-gc.md)（Isaac Lab DirectRLEnv） | gym-pybullet-drones + 自写 PID | 用手调悬停增益或固件 PID 当 agile 基线 |
 | 室内 50+ 微四轴灯光秀 | [Crazyswarm2](../entities/crazyswarm2.md) | — | 无动捕硬飞 swarm |
 | ESC/电池 DroneCAN 外设 | DroneCAN 规范 | — | 与 CiA 402 关节伺服混淆 |
 | 机载开源相控阵雷达 / 低成本主动测距 | [AERIS-10](../entities/aeris-10-plfm-radar.md) | 商用毫米波模组 | 无伴机桥接时直接接 PX4 内环 |
@@ -183,6 +188,7 @@ flowchart TB
 - **[AirSim](../entities/airsim.md)**：UE/Unity 视觉仿真；维护模式下降，仍是视觉 UAV 文献常见基线。
 - **[Flightmare](../entities/flightmare.md)**：研究向敏捷飞行与并行渲染；Unity 客户端。
 - **[gym-pybullet-drones](../entities/gym-pybullet-drones.md)**：Gymnasium 四旋翼 RL，轻量可复现。
+- **[RL vs GC](../entities/paper-rl-vs-gc.md)**：UPenn GRASP 在 Isaac Lab 上对称比较 PPO 与 \(SE(3)\) 几何控制（RSS 2025，[已开源](https://github.com/PratikKunapuli/rl-vs-gc)）；协议与选型见 [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)。
 - **[quad-swarm-rl](../entities/quad-swarm-rl.md)**：多机 Gym 环境补充，社区较小。
 
 ### 真机群体
@@ -209,6 +215,7 @@ flowchart TB
 
 - **误区：AirSim / Flightmare 可替代 PX4 做全栈飞控开发** — 它们提供 **简单动力学或外接 PX4**；真机法律与安全仍依赖飞控认证与试飞流程。
 - **误区：gym-pybullet-drones 训练策略可直接上 PX4** — 观测/动作空间与 SITL 不一致，需 **系统辨识、接口转换或 domain randomization**。
+- **误区：文献里「RL 全面超过几何控制」可直接当选型结论** — [RL vs GC](../entities/paper-rl-vs-gc.md) 显示，若解析基线未在同一目标/数据/前馈上优化，差距会被高估。
 - **误区：Betaflight 可替代 PX4 做自主导航** — FPV 固件面向 **手飞性能**；规划器输出应接 PX4/MAVSDK，而非 Betaflight MSP。
 - **误区：wtfOS 等于开源飞控** — [wtfOS](../entities/wtfos.md) 改造 **DJI 图传/眼镜固件**；姿态环仍在 Betaflight，自主栈仍在 PX4。
 - **局限：AirSim 维护状态** — 新课题应查 Colosseum 等 fork 与 Flightmare 活跃度。
@@ -227,6 +234,8 @@ flowchart TB
 - [sources/repos/xtdrone.md](../../sources/repos/xtdrone.md)
 - [sources/repos/flightmare.md](../../sources/repos/flightmare.md)
 - [sources/repos/gym_pybullet_drones.md](../../sources/repos/gym_pybullet_drones.md)
+- [sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md](../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md)
+- [sources/repos/rl-vs-gc.md](../../sources/repos/rl-vs-gc.md)
 - [sources/repos/quad_swarm_rl.md](../../sources/repos/quad_swarm_rl.md)
 - [sources/repos/crazyswarm2.md](../../sources/repos/crazyswarm2.md)
 - [sources/repos/crazyflie_firmware.md](../../sources/repos/crazyflie_firmware.md)
@@ -241,6 +250,7 @@ flowchart TB
 - [PX4 Autopilot](../entities/px4-autopilot.md) · [MAVSDK](../entities/mavsdk.md) · [EGO-Planner Swarm](../entities/ego-planner-swarm.md) · [MIGHTY](../entities/paper-mighty-hermite-spline-trajectory-planning.md)
 - [AirSim](../entities/airsim.md) · [XTDrone](../entities/xtdrone.md) · [Flightmare](../entities/flightmare.md)
 - [gym-pybullet-drones](../entities/gym-pybullet-drones.md) · [quad-swarm-rl](../entities/quad-swarm-rl.md)
+- [RL vs GC](../entities/paper-rl-vs-gc.md) · [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)
 - [Crazyswarm2](../entities/crazyswarm2.md) · [Crazyflie Firmware](../entities/crazyflie-firmware.md) · [Betaflight](../entities/betaflight.md) · [wtfOS](../entities/wtfos.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
