@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, force-adaptive-control, reinforcement-learning, whole-body-control, sim2real, humanoid, cmu]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-26
 arxiv: "2505.06776"
 venue: "L4DC 2026 Oral"
 related:
@@ -10,6 +10,7 @@ related:
   - ../overview/loco-manip-161-category-05-mocap-human-video.md
   - ../overview/loco-manip-contact-category-04-post-contact-stability.md
   - ../concepts/whole-body-control.md
+  - ./htd-decoupled-wbc.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_109_falcon.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -155,6 +156,7 @@ FALCON 属于「强力/受力 loco-manip」路线，与 [Thor](./paper-hrl-stack
 - [WoCoCo](./paper-loco-manip-161-116-wococo.md)
 - [Thor](./paper-hrl-stack-42-thor.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
+- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — 项目页跟踪误差对照（HTD 跟踪 pitch/roll，FALCON 不跟踪）
 
 ## 参考来源
 

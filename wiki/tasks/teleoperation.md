@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-08-21
+updated: 2026-08-26
 sources:
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
@@ -112,7 +112,7 @@ sources:
 | ALOHA（Stanford 2023） | 4 臂台式 | Leader Arms | ~50 任务 | 低成本（$20K），精细操作 |
 | OmniH2O（CMU/Tsinghua 2024） | Unitree H1/G1 | VR + 手套 | 全身遥操作 | 全身 DOF 控制，含移动基座 |
 | **[xr_teleoperate](../entities/xr-teleoperate.md)（Unitree 官方）** | Unitree G1 / H1 | AVP / PICO / Quest 等 XR | 官方参考实现 | 宇树开源全身遥操作主仓；可与 [unitree_sim_isaaclab](../entities/unitree-sim-isaaclab.md) 同 DDS 仿真采数；组织地图见 [Unitree](../entities/unitree.md) |
-| HTD（CMU/Bosch 2026） | 人形 + 灵巧手 | VR + 摇杆 + 分布式触觉 | 5 个真实接触丰富任务 | LBC 稳定下肢，VR 采集上身/手部示范，并同步手部力与触觉 |
+| HTD（CMU/Bosch 2026） | 人形 + 灵巧手 | VR + 摇杆 + 分布式触觉 | 5 个真实接触丰富任务 | [解耦 WBC](../entities/htd-decoupled-wbc.md) 稳定下肢已开源；VR 采数与 HTD 策略截至 2026-08-26 仍待发布 |
 | UMI（Stanford 2024） | 通用 | GoPro + 夹爪 | 可扩展 | 无需专用机器人，数据可迁移 |
 | HandUMI（RoboNet 2026） | PiPER / OpenArm / TRLC-DK1 / YAM 等平行夹爪双臂 | HandUMI 手持接口（~$110 tip 可换）+ PICO / Quest | 无机器人采集 | **一次采集、多臂重定向**；Feetech 直测开合；LeRobot v3 + `handumi validate` QA；见 [实体](../entities/handumi.md) |
 | **HiFi-UMI（Simple AI 2026）** | 真机双臂（评测部署） | 头戴 stereo-inertial SLAM + 双手广角（六视角，~3 mm / <40 µs） | **HiFi-UMI-2K 2000 h** 已开源 | **zero-robot 后训练**匹配同域 teleop；数据 CC BY 4.0；采数代码未列；见 [论文实体](../entities/paper-hifi-umi.md) |
@@ -207,6 +207,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - **ingest 档案：** [sources/papers/clot_arxiv_2602_15060.md](../../sources/papers/clot_arxiv_2602_15060.md)、[sources/sites/clot-project.md](../../sources/sites/clot-project.md) — CLOT 闭环全局遥操作（arXiv:2602.15060；官方页非 clot.github.io）
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT / Diffusion Policy（遥操作数据的下游学习方法）
 - **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD 的 VR 全身遥操作、LBC 和触觉同步采集系统
+- **ingest 档案：** [sources/repos/isaaclab_decoupled_wbc.md](../../sources/repos/isaaclab_decoupled_wbc.md) — HTD LBC 已开源；遥操作代码仍 on-going
 - **ingest 档案：** [sources/repos/robot-io-rio.md](../../sources/repos/robot-io-rio.md) — RIO 的多设备遥操作与实时 Node 管线（arXiv:2605.11564）
 - **ingest 档案：** [sources/repos/xpad.md](../../sources/repos/xpad.md) — Linux USB Xbox 手柄内核驱动（paroj/xpad）
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：CVAE + 掩码在线蒸馏，让单一策略统一覆盖人形跟踪 / VR 遥操作 / locomotion 多接口
@@ -232,6 +233,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [LET-Base-Dataset](../entities/let-base-dataset.md) — Kuavo VR/全身增量遥操真机小时（OpenLET Base）
 - [LeTools](../entities/letools.md) — 把遥操 rosbag 转成 LeRobot 并部署
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md) — 使用触觉遥操作数据训练接触感知策略
+- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — HTD 开源下肢控制器；采数栈仍待发布
 - [Diffusion Policy](../methods/diffusion-policy.md) — 遥操作数据训练的扩散策略
 - [REALab 14 篇技术地图（2026）](../overview/realab-14-papers-technology-map-2026.md) — ModPack 模块化遥操作、HoMMI 无机器人全身示范、UMI-FT 野外力感知采集
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — VR 遥操作约 50 条 + 启发式扩数据，再 DPPO 联合微调（arXiv:2603.13707）

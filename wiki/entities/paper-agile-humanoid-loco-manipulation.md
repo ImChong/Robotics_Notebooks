@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, reinforcement-learning, sim2real, isaac-lab, workflow, unitree-g1, booster, nvidia]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-26
 arxiv: "2603.20147"
 code: https://github.com/nvidia-isaac/WBC-AGILE
 related:
@@ -16,6 +16,7 @@ related:
   - ../methods/vla.md
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./paper-loco-manip-161-040-homie.md
+  - ./htd-decoupled-wbc.md
 sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/repos/wbc_agile.md
@@ -189,6 +190,7 @@ sequenceDiagram
 - [PPO](../methods/ppo.md) / [Privileged Training](../concepts/privileged-training.md) — 训练与蒸馏读法
 - [VLA](../methods/vla.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 上身专家微调路径
 - [HOMIE](./paper-loco-manip-161-040-homie.md) — 分层 loco-manip 对照
+- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — 另一条 Isaac Lab 单 GPU 解耦下肢控制器（G1，HTD）
 
 ## 参考来源
 

@@ -2992,6 +2992,21 @@
         "auckland",
         "uoa-cares"
       ]
+    },
+    "bosch": {
+      "label": "博世人工智能中心（Bosch Center for AI）",
+      "aliases": [
+        "bosch",
+        "bosch-center-for-ai",
+        "bcai"
+      ]
+    },
+    "ut-arlington": {
+      "label": "德克萨斯大学阿灵顿分校（UT Arlington）",
+      "aliases": [
+        "ut-arlington",
+        "uta-arlington"
+      ]
     }
   }
 }

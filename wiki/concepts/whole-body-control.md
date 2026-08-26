@@ -2,8 +2,9 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-26
 related:
+  - ../entities/htd-decoupled-wbc.md
   - ../entities/embodied-interview-qa.md
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -101,7 +102,7 @@ flowchart TD
 ### 3. Learning-based & Generative WBC
 用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。
 
-代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)，以及 **行为基础模型（BFM）** 谱系——见 [Behavior Foundation Model 概念页](./behavior-foundation-model.md)（综述 taxonomy + [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）；单篇深读见把多种 mode 抽到 **位级掩码 + CVAE** 的 [BFM 论文实体](../entities/paper-behavior-foundation-model-humanoid.md)，以及把 BFM tracker 与 **闭环 AR 运动规划** 集成的 [ReactiveBFM](../entities/paper-reactivebfm.md)（arXiv:2606.30362，G1 真机 reactive WBC）。
+代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)，以及 **行为基础模型（BFM）** 谱系——见 [Behavior Foundation Model 概念页](./behavior-foundation-model.md)（综述 taxonomy + [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）；单篇深读见把多种 mode 抽到 **位级掩码 + CVAE** 的 [BFM 论文实体](../entities/paper-behavior-foundation-model-humanoid.md)，以及把 BFM tracker 与 **闭环 AR 运动规划** 集成的 [ReactiveBFM](../entities/paper-reactivebfm.md)（arXiv:2606.30362，G1 真机 reactive WBC）。学习型 **解耦 WBC**（下肢 RL + 上肢默认/IK）的可运行开源样本见 [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md)（Isaac Lab 单 GPU、G1 零样本）与 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)。
 
 ## 最小代码骨架
 
@@ -154,7 +155,7 @@ print("joint acceleration command:", qdd_star)
 
 - Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文
 - Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作
-- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID / HQP / Crocoddyl ingest 摘要
+- [sources/repos/isaaclab_decoupled_wbc.md](../../sources/repos/isaaclab_decoupled_wbc.md) — HTD 解耦 WBC（Isaac Lab teacher/student + G1 部署）
 - [零空间控制论文簇](../../sources/papers/null_space_control.md) — 任务优先级的连续时间投影；HQP 是不等式升级
 - [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现
 - [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合
@@ -187,6 +188,7 @@ print("joint acceleration command:", qdd_star)
 - [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪（arXiv:2608.10220；UT Austin）
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 - [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现
+- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — HTD 开源下肢+腰 RL 控制器（Isaac Lab，G1 零样本）
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — 把 WBC 多接口重表述为 CVAE 生成 + 位级掩码的人形基础模型
 - [ReactiveBFM（论文实体）](../entities/paper-reactivebfm.md) — BFM 类 tracker + 闭环 AR-MDM 规划，缓解开环级联 exposure bias（arXiv:2606.30362）

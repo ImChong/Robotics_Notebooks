@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-26",
-  "node_count": 3301,
-  "edge_count": 29322,
+  "node_count": 3302,
+  "edge_count": 29350,
   "coverage": {
-    "covered": 3276,
-    "total": 3276,
+    "covered": 3277,
+    "total": 3277,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -219,7 +219,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 674
+      "size": 694
     },
     {
       "label": "操作",
@@ -227,7 +227,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 268
+      "size": 252
     },
     {
       "label": "人形论文深读笔记",
@@ -235,7 +235,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 148
+      "size": 150
     },
     {
       "label": "移动操作",
@@ -309,7 +309,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 477,
+      "degree": 478,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -327,7 +327,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 144,
+      "degree": 145,
       "has_repo": true
     },
     {

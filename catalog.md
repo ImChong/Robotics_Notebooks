@@ -231,6 +231,7 @@
 - [HoloMotion（HoloMotion-1）](wiki/entities/holomotion.md) — HoloMotion-1** 是 **Horizon Robotics（地平线）** 发布的 **人形全身运动跟踪** 路线：把跟踪策略建成可在 **大规模异质运动语料** 上训练的 **高容量时 `📅unknown` `[entity_page]`
 - [holosoma（Amazon FAR 人形 RL + 重定向框架）](wiki/entities/holosoma.md) — holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源 `📅unknown` `[entity_page]`
 - [HRDexDB（人–机器人配对灵巧抓取数据集）](wiki/entities/hrdexdb-dataset.md) — HRDexDB**（Lim et al., arXiv:2604.14944，2026；<https://snuvclab. `📅unknown` `[entity_page]`
+- [HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）](wiki/entities/htd-decoupled-wbc.md) — HTD Decoupled WBC** 是 Humanoid Touch Dream 的稳 `📅unknown` `[entity_page]`
 - [human-humanoid-tools（hhtools）](wiki/entities/human-humanoid-tools.md) — human-humanoid-tools**（简称 **hhtools**）是 Party OS 首批开源的 **Human-to-Humanoid 动作重定向与 `📅unknown` `[entity_page]`
 - [human2humanoid（LeCAR-Lab）](wiki/entities/human2humanoid.md) — human2humanoid**（<https://github.com/LeCAR-Lab/human2humanoid>）是 CMU **LECAR Lab** 的 **人形全身实时遥操作（h `📅unknown` `[entity_page]`
 - [HumanNet](wiki/entities/humannet.md) — HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言 `📅unknown` `[entity_page]`

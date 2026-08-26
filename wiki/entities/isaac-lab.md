@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-17
+updated: 2026-08-26
 related:
   - ./isaac-lab-default-environments.md
   - ./isaac-gym-isaac-lab.md
@@ -22,6 +22,7 @@ related:
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../concepts/sim2real.md
   - ./paper-agile-humanoid-loco-manipulation.md
+  - ./htd-decoupled-wbc.md
   - ./paper-p3.md
   - ./lw-benchhub-tour.md
   - ./autodl.md
@@ -322,6 +323,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [mjlab](./mjlab.md) — 借用 Lab manager-based API 的 MuJoCo Warp 折中栈
 - [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — Isaac Lab 上 DP 规划器与 RL loco-manip 联合微调（arXiv:2603.13707）
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — Lab 之上的人形 RL 全生命周期工作流（Prepare→Deploy；arXiv:2603.20147，WBC-AGILE）
+- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰控制器（Lab 2.2.0，单 GPU，G1 零样本）
 - [P³](./paper-p3.md) — Lab + 定制 rsl_rl：VAE-PPO 矩匹配主训与 LSFT（G1 感知地形）
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -21,6 +21,7 @@ related:
   - ./paper-pac-man-perceptive-cbf-rl.md
   - ./paper-fddc.md
   - ./paper-agile-humanoid-loco-manipulation.md
+  - ./htd-decoupled-wbc.md
   - ./paper-p3.md
   - ./paper-smpc2rl-loco-manipulation.md
   - ./paper-roboreact.md
@@ -96,6 +97,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [unitree_ros2](./unitree-ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK 官方 ROS 2 入口
 - [人形系统课程策展](./humanoid-system-curriculum.md) — 深蓝学院 G1 系统课八章地图
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流；G1 速度/高度/stand-up/舞蹈/pick&place（arXiv:2603.20147）
+- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰 RL 控制器；G1 零样本部署
 - [P³](./paper-p3.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 稀疏奖励全身推箱；SMPC 专家 + FastTD3（arXiv:2608.12063；截至 2026-08-17 未开源）
 - [ZEST](./paper-zest.md) — RAI × BD：视频爬箱/芭蕾与 MoCap 侧手翻、乒乓球零样本（Science Robotics 2026；未开源）
