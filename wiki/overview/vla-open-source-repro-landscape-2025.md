@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-26
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -13,6 +13,7 @@ related:
   - ../queries/manipulation-vla-architecture-selection.md
   - ../entities/lerobot.md
   - ../entities/lw-benchhub-tour.md
+  - ../entities/paper-ros2smolvla.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../entities/paper-harness-vla.md
@@ -42,7 +43,7 @@ summary: "2025 年高可见 VLA 开源栈策展：从通用策略（OpenPI）、
 
 VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权重**会直接暴露工程差距；2025 年开源生态同时在 **模型、RL 训练系统、跨本体与 VLA+世界模型** 四条线上铺开，复现时应先选对「你要验证的层」再选仓库。**2026 起** 可另见通义 [Qwen-VLA](../entities/qwen-vla.md)（**操作 + VLN 统一通才**、Qwen3.5-4B + DiT flow），本页 11 项表仍锁定 2025-12 策展快照。
 
-**2026 补充入口（不入上表）：** [Dexmal DM0.5（OpenDM）](../entities/dexmal-dm05.md) 适合 **Gemma3-4B + flow-matching chunk VLA** 全栈复现（`dexmal/opendm` + HF `DM05` 及 LIBERO/RobotWin/Table30 下游权重；`script/dm05_launcher.sh` 统一 train/inference）。[RoboInter1.5](../entities/paper-robointer-1-5.md) 提供 **中间表示数据 + VLM +（待齐）VLA/World**——适合先复现 IR-VQA/Planner，再跟进 VLA 权重。[FabriVLA](../entities/paper-fabrivla.md) 适合 **Meta-World 轻量 flow-VLA** 对照（gated SA + shallow fusion，代码+93k 权重）；多基准相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)。[EgoSteer](../entities/paper-egosteer.md) 适合 **双灵巧手 + egocentric 预训练全栈**（EgoSmith / Robot Stack / WM-VLA；代码+权重已开源，全量处理后数据待发）。[G0.5](../entities/paper-galaxea-g05.md) 适合 **VLM-as-Actor 自回归** 复现（`OpenGalaxea/GalaxeaVLA` + HF `G05`；R1/LIBERO/RoboTwin/DROID 入口；Community License）。
+**2026 补充入口（不入上表）：** [Dexmal DM0.5（OpenDM）](../entities/dexmal-dm05.md) 适合 **Gemma3-4B + flow-matching chunk VLA** 全栈复现（`dexmal/opendm` + HF `DM05` 及 LIBERO/RobotWin/Table30 下游权重；`script/dm05_launcher.sh` 统一 train/inference）。[RoboInter1.5](../entities/paper-robointer-1-5.md) 提供 **中间表示数据 + VLM +（待齐）VLA/World**——适合先复现 IR-VQA/Planner，再跟进 VLA 权重。[FabriVLA](../entities/paper-fabrivla.md) 适合 **Meta-World 轻量 flow-VLA** 对照（gated SA + shallow fusion，代码+93k 权重）；多基准相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)。[EgoSteer](../entities/paper-egosteer.md) 适合 **双灵巧手 + egocentric 预训练全栈**（EgoSmith / Robot Stack / WM-VLA；代码+权重已开源，全量处理后数据待发）。[G0.5](../entities/paper-galaxea-g05.md) 适合 **VLM-as-Actor 自回归** 复现（`OpenGalaxea/GalaxeaVLA` + HF `G05`；R1/LIBERO/RoboTwin/DROID 入口；Community License）。[ROS2SmolVLA](../entities/paper-ros2smolvla.md) 适合 **工业 UR10e + ROS 2 本地 SmolVLA**（Docker 入口 + HF 权重；arXiv:2608.23320）。
 
 ## 英文缩写速查
 

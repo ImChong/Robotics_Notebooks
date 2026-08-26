@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-25",
-  "node_count": 3288,
-  "edge_count": 29175,
+  "generated_at": "2026-08-26",
+  "node_count": 3291,
+  "edge_count": 29211,
   "coverage": {
-    "covered": 3263,
-    "total": 3263,
+    "covered": 3266,
+    "total": 3266,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -16,17 +16,6 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-smp.md",
-      "detail_id": "entity-paper-smp",
-      "label": "SMP：可复用 Score-Matching 运动先验",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/entities/paper-checkvla-execution-time-verification.md",
@@ -109,6 +98,15 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "path": "wiki/entities/paper-physcap.md",
+      "detail_id": "entity-paper-physcap",
+      "label": "PhysCaP：物理信息探索的 Code-as-Policy",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-playworld-autonomous-play-data.md",
       "detail_id": "entity-paper-playworld-autonomous-play-data",
       "label": "PlayWorld",
@@ -179,6 +177,15 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "path": "wiki/entities/paper-toss-framework.md",
+      "detail_id": "entity-paper-toss-framework",
+      "label": "TOSS Framework：人类教学决策的过程模型",
+      "type": "entity",
+      "recency": "2026-08-25",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-veo-world-simulator-policy-testing.md",
       "detail_id": "entity-paper-veo-world-simulator-policy-testing",
       "label": "Veo World Simulator",
@@ -196,15 +203,6 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-world-tokens-inference-trimmed-wam.md",
-      "detail_id": "entity-paper-world-tokens-inference-trimmed-wam",
-      "label": "World Tokens",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
@@ -219,7 +217,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 658
+      "size": 660
     },
     {
       "label": "操作",
@@ -235,7 +233,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 150
+      "size": 149
     },
     {
       "label": "移动操作",
@@ -247,7 +245,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1314,
+      "degree": 1318,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -270,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 783,
+      "degree": 787,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -278,7 +276,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 770,
+      "degree": 771,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

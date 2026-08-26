@@ -12,7 +12,7 @@ tags:
   - georgia-tech
 status: complete
 venue: curated
-updated: 2026-08-13
+updated: 2026-08-26
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
@@ -21,6 +21,7 @@ related:
   - ../tasks/manipulation.md
   - ../comparisons/humannet-table1-human-video-corpora.md
   - ./paper-egoverse.md
+  - ./paper-ld4wam.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-dit4dit-video-action-model.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
@@ -138,6 +139,7 @@ flowchart TB
 - [DiT4DiT](./paper-dit4dit-video-action-model.md) — 双 DiT flow-matching WAM；EgoWAM 强调 **人–机共训与世界表征轴**
 - [WAM-TTT](./paper-wam-ttt-human-video-test-time-steering.md) — **部署期** 人视频 TTT 记忆 steering；与 EgoWAM **训练期共训** 互补
 - [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 全栈 VLWA + 双动作对齐的人视频缩放系统（对照受控世界目标消融）
+- [LD4WAM](./paper-ld4wam.md) — 语义空间 + Delta EE 运动对齐潜码再进 Joint WAM；部署仍滚视频
 
 ## 关联页面
 
@@ -149,6 +151,7 @@ flowchart TB
 - [HumanNet 人视频语料对比](../comparisons/humannet-table1-human-video-corpora.md)
 - [EgoVerse](./paper-egoverse.md)
 - [JoyAI-RA 0.5](./paper-joyai-ra-05.md)
+- [LD4WAM](./paper-ld4wam.md)
 
 ## 参考来源
 
