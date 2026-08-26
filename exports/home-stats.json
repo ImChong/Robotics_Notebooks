@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/rl-vs-geometric-control.md",
+      "detail_id": "wiki-comparisons-rl-vs-geometric-control",
+      "label": "RL vs 几何控制：四旋翼跟踪怎么公平比、怎么选",
+      "type": "comparison",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rl-vs-gc.md",
+      "detail_id": "entity-paper-rl-vs-gc",
+      "label": "RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/htd-decoupled-wbc.md",
       "detail_id": "entity-htd-decoupled-wbc",
       "label": "HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）",
@@ -184,37 +206,18 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-daydreamer-world-models-real-robots.md",
-      "detail_id": "entity-paper-daydreamer-world-models-real-robots",
-      "label": "DayDreamer",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md",
-      "detail_id": "entity-paper-foresight-action-conditioned-failure-monitoring",
-      "label": "Foresight (PI)",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/htd-decoupled-wbc.md",
-    "detail_id": "entity-htd-decoupled-wbc",
-    "label": "HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）",
-    "type": "entity",
+    "path": "wiki/comparisons/rl-vs-geometric-control.md",
+    "detail_id": "wiki-comparisons-rl-vs-geometric-control",
+    "label": "RL vs 几何控制：四旋翼跟踪怎么公平比、怎么选",
+    "type": "comparison",
     "recency": "2026-08-26",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
