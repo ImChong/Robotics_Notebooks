@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-26",
-  "node_count": 3288,
-  "edge_count": 29175,
+  "node_count": 3291,
+  "edge_count": 29228,
   "coverage": {
-    "covered": 3263,
-    "total": 3263,
+    "covered": 3266,
+    "total": 3266,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -25,7 +25,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md",
@@ -35,7 +35,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-contactnets-contact-dynamics.md",
@@ -55,7 +55,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md",
@@ -65,7 +65,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-mobilewam-mobile-manipulation-wam.md",
@@ -75,7 +75,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-muzero-planning-latent-dynamics.md",
@@ -85,7 +85,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-pets-probabilistic-dynamics-mpc.md",
@@ -95,7 +95,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-physcap.md",
@@ -114,7 +114,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-resilient-machines-continuous-self-modeling.md",
@@ -124,7 +124,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-riemann-1-causal-action-video-wam.md",
@@ -134,7 +134,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-robocraft-particle-graph-dynamics.md",
@@ -154,7 +154,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-robowm-bench-action-faithfulness.md",
@@ -164,7 +164,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-sayplan-llm-scene-graph-planning.md",
@@ -174,7 +174,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-toss-framework.md",
@@ -192,7 +192,8 @@
       "type": "entity",
       "recency": "2026-08-25",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-visual-foresight-latent-mpc.md",
@@ -202,7 +203,7 @@
       "recency": "2026-08-25",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -217,23 +218,23 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 658
+      "size": 693
     },
     {
       "label": "操作",
-      "size": 598
+      "size": 549
     },
     {
       "label": "视觉-语言-动作",
-      "size": 252
+      "size": 250
     },
     {
       "label": "人形论文深读笔记",
-      "size": 218
+      "size": 217
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 150
+      "size": 149
     },
     {
       "label": "移动操作",
@@ -245,7 +246,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1314,
+      "degree": 1316,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -268,7 +269,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 783,
+      "degree": 784,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -292,7 +293,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 553,
+      "degree": 557,
       "has_repo": true
     },
     {

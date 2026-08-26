@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-08-23
+updated: 2026-08-26
 related:
   - ./embodied-foundation-model-hardware-codesign.md
   - ./robot-in-context-learning.md
@@ -11,6 +11,8 @@ related:
   - ../entities/paper-rynnbrain-1-1.md
   - ../entities/generalist-ai-robotics.md
   - ../entities/generalist-gen15-one-shot.md
+  - ../entities/skild-s1.md
+  - ../entities/skild-ai.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/gr00t-wholebodycontrol.md
@@ -39,6 +41,7 @@ sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
+  - ../../sources/blogs/skild_s1_in_context_learning.md
 summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
 ---
 
@@ -105,6 +108,10 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 ### Generalist GEN 系列（商业对照，闭源）
 - **叙事：** GEN-0 主张机器人 scaling laws；GEN-1 强调 mastery 与半百万小时级交互数据；2026-07「千手」把多样性轴推到 **~9k 末端/工具变体**；2026-08 **GEN-1.5** 宣称 **physical prompting** one-shot（~59%）与 **1–10 步** 微调 few-shot（~83%，10 任务自报）（见 [Generalist AI](../entities/generalist-ai-robotics.md)、[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md)、[GEN-1.5](../entities/generalist-gen15-one-shot.md)）
 - **定位：** 与 Octo / OXE **开源可复现** 路线对照的产业样本；**确认未开源**，不可替代开源基线做实验
+
+### Skild S1（商业对照，闭源 ICL）
+- **叙事：** 预训练目的是 **in-context learning**：任务用 **视频示范** 指定，同一权重无后训练执行 **未见、最长约 10 分钟** 操作；内部对照 100k 小时档未见任务 ICL **66%** vs 语言 VLA **9%**（见 [S1](../entities/skild-s1.md)、[Skild AI](../entities/skild-ai.md)）
+- **定位：** 与 GEN-1.5「规模涌现、短程 physical prompt」对照的 **显式 ICL 预训练** 样本；同样 **确认未开源**
 
 ### Gemini Robotics 2（Google DeepMind，闭源 VLA + 可调用 ER）
 - **叙事：** 2026-07 发布 **VLA 2 / ER 2 / On-Device 2**：全身人形控制、多指/夹爪灵巧、多机协作、端侧数小时跨本体适配（见 [Gemini Robotics](../entities/gemini-robotics.md)）
@@ -193,6 +200,7 @@ flowchart TD
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — humanoid WBC 系基础策略（CVAE + 掩码控制接口）
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 基础策略是五层闭环的 VLA 动作执行层基座
 - [Generalist AI / GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源通才策略的多末端扩展叙事
+- [S1 / Skild AI](../entities/skild-s1.md) — 闭源通才策略的显式视频 ICL 叙事
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2
 
 ## 参考来源
@@ -207,4 +215,5 @@ flowchart TD
 - [sources/papers/star_vla.md](../../sources/papers/star_vla.md)
 - [sources/repos/gr00t_wholebodycontrol.md](../../sources/repos/gr00t_wholebodycontrol.md) — GR00T WBC 官方单仓（解耦 WBC、GEAR-SONIC、MotionBricks 与 VLA 教程文档）
 - [wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md) — 机器人 ICL taxonomy 综述
+- [skild_s1_in_context_learning.md](../../sources/blogs/skild_s1_in_context_learning.md) — S1 视频 ICL 产业样本
 - [机器人论文阅读笔记：GR00T N1](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)

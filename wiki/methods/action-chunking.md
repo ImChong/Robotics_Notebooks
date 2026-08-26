@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -17,6 +17,7 @@ sources:
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/revisiting_open_loop_action_chunking_arxiv_2608_15938.md
+  - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 related:
   - ./behavior-cloning.md
   - ./humanoid-transformer-touch-dreaming.md
@@ -34,6 +35,7 @@ related:
   - ../entities/paper-nestdex.md
   - ../entities/paper-wam-realtime-async.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
+  - ../concepts/behavioral-cloning-mysteries.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
 ---
 
@@ -70,6 +72,8 @@ related:
 机制上要分开三件事：**训练时拟合动作块**、**部署时是否连续播放该块**、以及 **开环执行前缀有多长（execution horizon）**。CoRL 2026 的 [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) 表明：相对单步 BC 的成功率跃迁，主因更接近 **用过去观测预测动作（delayed policy）** 与 **同时学多种时延关系带来的隐式集成**；「时序一致性 / 有效地平线缩短 / 训长 chunk 的表征红利」不足以单独解释。同一 \(\hat\pi_k\) 可用 **Randomized Delay Ensemble（RDE）** 在多数设定匹配标准 chunk 执行——训练目标与执行协议可以解耦。
 
 [Revisiting Open-Loop Execution](../entities/paper-revisiting-open-loop-action-chunking.md)（MIT / Berkeley，arXiv:2608.15938）进一步把 **长 open-loop execution horizon** 归因于 **短上下文（常见 \(T_o=1\)–\(2\)）策略模仿非马尔可夫专家**：复合误差有影响，但通常弱于专家隐状态不可观；**加长观测上下文**（如 8–20 帧）+ **double encoder** 可让 \(T_{\mathrm{exec}}^*\rightarrow 1\) 的 **完全 reactive** 策略在数据充足时优于短上下文长开环执行——与 Why AC 的「不必播完整 chunk」形成 **execution horizon ↔ context length** 互补轴。
+
+[BC Mysteries](../concepts/behavioral-cloning-mysteries.md) 给出第三条证据：在人类风格（窄、时间相关）数据上，**无限数据** 的纯闭环 \(\pi(a_t\mid s_t)\) 可以完全失败，而 length-25 开环能做；把过去 24 帧状态拼进闭环 **并不** 自动追上开环（因果混淆 / 输入空间更大）。与 Revisiting 合并读：开环是短记忆补丁；要让闭环赢，上下文必须编码 **专家隐状态**（接触意图、分段决策），而不是更长的关节角窗口。
 
 ## 主要技术路线
 
@@ -202,6 +206,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」
 - [Revisiting Open-Loop Execution](../entities/paper-revisiting-open-loop-action-chunking.md) — arXiv:2608.15938：长 execution horizon 多因短上下文；够长 \(T_o\) 后 reactive 最优
+- [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) — 真机风格数据上开环 BC 可完胜逐步闭环；乱加历史不等于修好
 - [SPD](../entities/paper-spd.md) — 灵巧真机：历史窗才能把 chunk 缩到 8 步且吃到仿真预训练（CoRL 2026）
 - [AutoIntervene](../entities/paper-autointervene.md) — 对提议 chunk 做视觉–动作支持监控与双向自动接管（arXiv:2608.07065）
 - [NestDex](../entities/paper-nestdex.md) — 内外层均用 chunk + 时间集成；瓶抓消融显示闭环适应接触、ensemble 降 jerk（arXiv:2608.13362）

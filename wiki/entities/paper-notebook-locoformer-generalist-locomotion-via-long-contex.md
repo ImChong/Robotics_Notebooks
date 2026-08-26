@@ -2,11 +2,13 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-08-26
 venue: "2025.09"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../entities/skild-s1.md
+  - ../entities/skild-ai.md
 sources:
   - ../../sources/papers/humanoid_pnb_locoformer-generalist-locomotion-via-long-contex.md
 summary: "LocoFormer：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -32,6 +34,7 @@ LocoFormer 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- Skild 2026-08 将 LocoFormer 写成操作模型 [S1](./skild-s1.md) 的运动域前序（长上下文适应 → 视频 ICL）；细节见公司博客，**官方代码仍未开源**。
 
 ## 核心信息
 
@@ -58,6 +61,7 @@ LocoFormer 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 产业后续：[S1](./skild-s1.md) / [Skild AI](./skild-ai.md)
 
 ## 参考来源
 

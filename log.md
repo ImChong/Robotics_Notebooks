@@ -1,3 +1,18 @@
+## [2026-08-26] ingest | sources/blogs/skild_s1_in_context_learning.md — Skild S1 视频 ICL；github.com/skild-ai 0 公开仓确认未开源；升格 wiki/entities/skild-s1.md 与 skild-ai.md
+
+- **触发：** 用户指定 <https://www.skild.ai/blogs/s1>
+- **步骤 2.5：** **确认未开源** — 公司 GitHub org 无公开仓；训练配方本篇推迟；LocoFormer 仅有社区非官方实现
+- **关键页：** [`wiki/entities/skild-s1.md`](wiki/entities/skild-s1.md)、[`wiki/entities/skild-ai.md`](wiki/entities/skild-ai.md)；交叉 ICL / GEN-1.5 / foundation-policy / scaling / flywheel
+- **开源结论：** 数字为内部基准自报（未见 100k h：ICL 66% vs 语言 VLA 9%）
+
+## [2026-08-26] ingest | sources/blogs/seohong_behavioral_cloning_mystery.md — 真机风格 BC 四条 mystery；升格 wiki/concepts/behavioral-cloning-mysteries.md；基准宣称 2026-10 开源、入库日未见代码
+
+- **触发：** 用户指定 <https://seohong.me/blog/behavioral-cloning-mystery/>
+- **步骤 2.5：** **宣称将开源** — 作者计划 2026-10 发官方基准；入库日无 GitHub / 数据链
+- **四条：** 过拟合有时更好；开环优于闭环；策略须极大；无限数据下特征缩放仍改成功率
+- **关键页：** [`wiki/concepts/behavioral-cloning-mysteries.md`](wiki/concepts/behavioral-cloning-mysteries.md)
+
+
 ## [2026-08-25] ingest | sources/repos/fetchman.md — FetchMan 二次核查开源状态：项目页挂 GitHub 占位仓；更新实体页与 loco-manipulation 索引
 
 - **触发：** 用户指定 <https://orayyan.com/fetchman>、arXiv:2608.17027；要求自动合并 PR
