@@ -150,6 +150,8 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [操作任务](../tasks/manipulation.md) — 短程原子操作是 GEN-1.5 one-shot 主战场
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制
 - [RealAB 14 篇地图](../overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 选型链在 VLA 层给出 I/O 边界与时延约束；ICL 是同一层的 **部署期适应旋钮**，长上下文直接吃掉该链关心的每步推理预算
+- [接触力旋量闭环](../queries/contact-wrench-closed-loop.md) — 示范抽象越高越易归纳，但接触力信息正是这条链所需；ICL 上下文用关键点/图节点表示时，力与接触细节被丢在这里
 
 ## 推荐继续阅读
 

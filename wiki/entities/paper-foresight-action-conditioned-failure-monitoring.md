@@ -3,6 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
+venue: curated
 
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
@@ -51,6 +52,18 @@ summary: "Foresight (PI)（具身世界模型六路线专题）：动作条件�
 - 归入 **趋势与判断** 的判断标准是 **闭环职责**，不是模型架构标签。
 - 与同路线邻接工作对照时，优先比较 **动作条件性、物理一致性与部署接口**。
 - 细节数字与开源状态以原文为准；本页服务图谱导航与交叉引用。
+
+## 实验与评测
+
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [综述原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) 指向的论文 / 项目页为准。
+- **该路线该看的指标**：该判断本身能否被复现——即所提指标 / 数据是否真的改变了对策略优劣的排序。
+- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+
+## 与其他工作对比
+
+- **同路线邻接工作**（综述 **趋势与判断** 段）：[CheckVLA](./paper-checkvla-execution-time-verification.md)、[PIN-WM](./paper-sa-2504-16693-pin-wm-learning-physics-informed-world-models-fo.md)。
+- **对照要点**：Foresight 用动作条件表征 **监测失败风险**（服务端侧安全闭环），本身不改写动作；CheckVLA 则直接介入后续动作——差别是「只报警」还是「接管控制」。
+- **跨路线区分**：**趋势与判断** 段不是第七条闭环职责路线，而是综述对 2026-08 走向的展望；要判断本条目「预测结果被谁消费」，须先把它落回具体路线（模型构建 / 规划 / 学习 / 行动 / 评估 / 上下文）。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
 

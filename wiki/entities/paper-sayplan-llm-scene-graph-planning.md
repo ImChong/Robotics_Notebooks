@@ -52,6 +52,18 @@ summary: "SayPlan（具身世界模型六路线专题）：从大型场景图检
 - 与同路线邻接工作对照时，优先比较 **动作条件性、物理一致性与部署接口**。
 - 细节数字与开源状态以原文为准；本页服务图谱导航与交叉引用。
 
+## 实验与评测
+
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2307.01871](https://arxiv.org/abs/2307.01871) 为准。
+- **该路线该看的指标**：长时 / 多阶段任务成功率，以及记忆或场景图规模与检索开销的关系。
+- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+
+## 与其他工作对比
+
+- **同路线邻接工作**（综述 **上下文主导型** 段）：[ConceptGraphs](./paper-conceptgraphs-open-vocabulary-3d-scene.md)、[RoboMemory](./paper-robomemory-multi-type-embodied-memory.md)。
+- **对照要点**：SayPlan 消费的是 **已建好的场景图**，贡献在把大图折叠到 LLM 上下文里做规划；RoboMemory 的记忆不止空间语义，还含时间与任务经历——读时先分清「记住了什么」。
+- **跨路线区分**：上下文主导型的闭环职责是「持续运行维护 World Proxy 的状态与记忆」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
+
 ## 关联页面
 
 - [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
