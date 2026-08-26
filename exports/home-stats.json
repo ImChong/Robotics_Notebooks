@@ -9,6 +9,33 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/behavioral-cloning-mysteries.md",
+      "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
+      "label": "Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）",
+      "type": "concept",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/skild-ai.md",
+      "detail_id": "entity-skild-ai",
+      "label": "Skild AI",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/skild-s1.md",
+      "detail_id": "entity-skild-s1",
+      "label": "S1：机器人 In-Context Learning（Skild）",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/concepts/robot-in-context-learning.md",
       "detail_id": "wiki-concepts-robot-in-context-learning",
       "label": "机器人 In-Context Learning（上下文学习）",
@@ -175,43 +202,14 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-toss-framework.md",
-      "detail_id": "entity-paper-toss-framework",
-      "label": "TOSS Framework：人类教学决策的过程模型",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-veo-world-simulator-policy-testing.md",
-      "detail_id": "entity-paper-veo-world-simulator-policy-testing",
-      "label": "Veo World Simulator",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-visual-foresight-latent-mpc.md",
-      "detail_id": "entity-paper-visual-foresight-latent-mpc",
-      "label": "Visual Foresight",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/robot-in-context-learning.md",
-    "detail_id": "wiki-concepts-robot-in-context-learning",
-    "label": "机器人 In-Context Learning（上下文学习）",
+    "path": "wiki/concepts/behavioral-cloning-mysteries.md",
+    "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
+    "label": "Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）",
     "type": "concept",
-    "recency": "2026-08-25",
+    "recency": "2026-08-26",
     "source": "git",
     "action": "added"
   },
