@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 related:
   - ./foundation-policy.md
   - ../methods/imitation-learning.md
@@ -14,11 +14,14 @@ related:
   - ../entities/paper-behavior-prompting-policy.md
   - ../entities/qwen-robot-manip.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
+  - ../entities/skild-s1.md
+  - ../entities/skild-ai.md
   - ../overview/hub-cross-embodiment.md
   - ../overview/realab-14-papers-technology-map-2026.md
 sources:
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
   - ../../sources/blogs/generalist_gen15_one_shot.md
+  - ../../sources/blogs/skild_s1_in_context_learning.md
 summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、从上下文窗口内的示范或交互证据归纳新映射；须与「映射选择」（π0.7 metadata）、「状态记忆」（MemoryVLA 等）及 test-time training（RoboTTT）区分——只有消解映射本身不确定性的第三类才是真 ICL。"
 ---
 
@@ -42,7 +45,7 @@ summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、�
 
 - **部署适应轴：** 新任务、新相机位姿、新末端执行器时，**当前帧往往不足以定动作**；上下文补上缺失信息，可避免每次重训整条策略。
 - **名词过载：** 2026 年「上下文」同时指 **π0.7 的 metadata 选择**、**MemoryVLA 的历史记忆**、**GEN-1.5 的 physical prompt** 与 **RoboTTT 的 8K 步 fast weights**——混用会误判机制与代价。
-- **与 Foundation Policy 交汇：** [GEN-1.5](../entities/generalist-gen15-one-shot.md) 报告 **无显式 ICL 训练** 下涌现 one-shot；[Qwen-RobotManip](../entities/qwen-robot-manip.md) 用 in-context chunk 做行为风格适配——预训练规模可能改变「适应」的数据与算力预算（闭源 / 技术报告，需独立验证）。
+- **与 Foundation Policy 交汇：** [GEN-1.5](../entities/generalist-gen15-one-shot.md) 报告 **无显式 ICL 训练** 下涌现 one-shot；[S1](../entities/skild-s1.md) 则把 ICL 写成 **预训练目标本身**（任务只经视频示范指定），并宣称覆盖 **未见 + 最长约 10 分钟**；[Qwen-RobotManip](../entities/qwen-robot-manip.md) 用 in-context chunk 做行为风格适配——预训练规模可能改变「适应」的数据与算力预算（闭源 / 技术报告，需独立验证）。
 
 ---
 
@@ -112,9 +115,10 @@ flowchart LR
 | 工作 | 上下文装什么 | ICL 训练 | 要点 |
 |------|------------|----------|------|
 | [GEN-1.5](../entities/generalist-gen15-one-shot.md) | 3–12s physical prompt（人/机/仿真） | **无显式 ICL 设计**；8+ 月预训练涌现 | one-shot ~59%；10 步微调 ~83%（闭源自报） |
+| [S1](../entities/skild-s1.md) | 一条任务视频（可跨场景/视角/本体） | **显式**：预训练任务只经示范指定 | 未见任务最长约 10 min；100k h 档未见 66% vs 语言 VLA 9%（闭源自报） |
 | [Qwen-RobotManip](../entities/qwen-robot-manip.md) | 近期 H 个 (o,s,a) chunk | in-context policy adaptation | **stochastic context sampling** 防退化为复制最近 chunk |
 
-GEN-1.5 与显式 ICL 方法的关键差异：**未把「读完示范后的表现」写入训练目标**；作者假设物理数据分布的 burstiness / 重复循环模式与语言 ICL 涌现机制类似（**假设性解释**）。
+GEN-1.5 与显式 ICL 方法的关键差异：**未把「读完示范后的表现」写入训练目标**；作者假设物理数据分布的 burstiness / 重复循环模式与语言 ICL 涌现机制类似（**假设性解释**）。S1 走相反路线：把「从示范学习」当成预训练外环，并强调语言 prompt 在 **未见长程** 上几乎不 scale。
 
 ---
 
@@ -136,7 +140,7 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 
 ## 开放问题（2026-08 综述归纳）
 
-1. **涌现机制：** 除 GEN-1.5 外，机器人 ICL 多靠 **显式训练**；何种数据分布 / 规模可预测涌现？与显式 ICL 的泛化行为是否系统不同？
+1. **涌现机制：** 除 GEN-1.5 外，机器人 ICL 多靠 **显式训练**（S1 是产业侧最强的显式样本）；何种数据分布 / 规模可预测涌现？与显式 ICL 的泛化行为是否系统不同？短程涌现与 **10 分钟未见** 是否同一现象的两端？
 2. **示范形态：** token 序列、图节点、关键点、结构化计划、原始感觉运动序列——抽象高则归纳易但丢接触/力信息；抽象低则保留全信息但对应关系难建立。
 3. **Long-context scaling：** 控制回路需高频动作输出，上下文变长直接增加 **每步推理成本**（不同于语言模型「延迟」问题）；何信息必须逐帧保留、何信息可压成一个 token 仍开放。
 
@@ -147,7 +151,8 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [Foundation Policy](./foundation-policy.md) — ICL 是部署期适应手段，不改变「大规模预训练通用策略」母类定义
 - [Imitation Learning](../methods/imitation-learning.md) — 示范数据与 one-shot / few-shot 训练目标的传统路线
 - [VLA](../methods/vla.md) — 马尔可夫 VLA 与长上下文 / 记忆增强 VLA 的分叉
-- [操作任务](../tasks/manipulation.md) — 短程原子操作是 GEN-1.5 one-shot 主战场
+- [操作任务](../tasks/manipulation.md) — 短程原子操作是 GEN-1.5 one-shot 主战场；S1 把评测轴推到长程未见
+- [S1（Skild）](../entities/skild-s1.md) — 显式 ICL 预训练 + 视频 prompt；闭源自报 10 min 未见任务
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制
 - [RealAB 14 篇地图](../overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 选型链在 VLA 层给出 I/O 边界与时延约束；ICL 是同一层的 **部署期适应旋钮**，长上下文直接吃掉该链关心的每步推理预算
@@ -157,9 +162,11 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 
 - [GEN-1.5 官方博客归档](../../sources/blogs/generalist_gen15_one_shot.md)
 - Generalist AI 原文：<https://generalistai.com/blog/gen-1.5>
+- Skild S1 原文：<https://www.skild.ai/blogs/s1>
 - 综述原文（微信公众号）：<https://mp.weixin.qq.com/s/V_Dm8kHvB2YxtGY7qScjXA>
 
 ## 参考来源
 
 - [万字长文：机器人上下文学习到底在学什么（具身智能之心，2026-08-25）](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md)
 - [GEN-1.5: Embodied Foundation Models are One-Shot Learners（Generalist AI 博客归档）](../../sources/blogs/generalist_gen15_one_shot.md)
+- [S1: In-Context Learning for Robotics（Skild 博客归档）](../../sources/blogs/skild_s1_in_context_learning.md)

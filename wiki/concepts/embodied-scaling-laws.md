@@ -2,13 +2,14 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-26
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/paper-rynnbrain-1-1.md
   - ../entities/generalist-gen15-one-shot.md
+  - ../entities/skild-s1.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/dyna-2.md
   - ../methods/vla.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
+  - ../../sources/blogs/skild_s1_in_context_learning.md
 summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系；含 EgoScale（~20k h）与 Dyna-2（1M h 人→机跨具身）等案例。"
 ---
 
@@ -53,6 +55,7 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 6. **非均匀具身 scaling（案例）**：[RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) 在统一配方下对比 matched **Qwen3.5（2B→122B）**：一般认知双方随规模上升；**推理密集型认知** 上 RynnBrain 上升而 Qwen3.5 **负缩放**；**定位** 上最大 Qwen 仍低于最小 RynnBrain——说明 **显式空间/具身监督** 与 **参数缩放** 互补而非可替代。
 7. **末端接口多样性（产业案例）**：[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) 主张在 **>50 万小时** 交互与 **~9k 末端变体** 上预训练同一基座，用 task-vector 权重更新度量「新手」新颖度；属 **闭源自报**，作多样性轴对照而非可复现定律拟合。
 8. **预训练时长与适应成本（产业案例）**：[GEN-1.5](../entities/generalist-gen15-one-shot.md) 在 **8+ 月** 持续预训练后报告 **无显式 ICL 训练** 的 one-shot physical prompting 与 **1–10 梯度步** 适应；作者主张更多预训练使新任务适应趋近「可忽略」——**闭源自报**，与 EgoScale / Dyna-2 的指标域不同。
+9. **ICL vs 语言 prompt（产业案例）**：[S1](../entities/skild-s1.md) 在同一数据/架构/算力下把预训练从 1k 推到 **100k 小时**：已见任务小数据语言 VLA 更好，未见任务上 ICL **66%** vs 语言 **9%**（约 7×）。读法是 **任务指定通道** 改变 scaling 斜率，不是另一条参数幂律；**闭源自报**。
 
 ## 宏观算力背景（与具身 scaling 的层级差）
 
@@ -82,6 +85,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md) — 闭源 1M h 人→机缩放主张
 - [World Action Models](./world-action-models.md) — Dyna-2 所属 Joint WAM 族谱
 - [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — 预训练规模与 one-shot / 极少步适应
+- [S1（Skild）](../entities/skild-s1.md) — ICL vs 语言条件 VLA 的未见任务 scaling 分叉
 - [GEN-1 千手（跨末端多样性）](../entities/generalist-gen1-thousand-hands.md) — 闭源产业多样性轴对照
 - [自动化标注流水线](../methods/auto-labeling-pipelines.md)
 - [基础策略对齐](../formalizations/foundation-policy-alignment.md)
@@ -95,4 +99,5 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [From AGI to ASI 论文摘录（arXiv:2606.12683）](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — 有效算力与集体 scaling 的宏观框架
 - [RynnBrain 1.1 论文摘录（arXiv:2607.17977）](../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md) — 具身 vs 通用 VLM 的非均匀 scaling 案例
 - [GEN-1.5 博客归档](../../sources/blogs/generalist_gen15_one_shot.md) — one-shot physical prompting 产业样本
+- [S1 博客归档](../../sources/blogs/skild_s1_in_context_learning.md) — ICL vs 语言 prompt 的内部 scaling 对照
 - [GEN-1 千手博客归档](../../sources/blogs/generalist_thousand_hands.md) — 多末端多样性 scaling 产业样本

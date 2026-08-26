@@ -8,7 +8,7 @@ tags:
   - technology-transfer
   - wechat-curator
 status: complete
-updated: 2026-08-18
+updated: 2026-08-26
 related:
   - ./realab-14-papers-technology-map-2026.md
   - ./china-embodied-ai-labs-landscape-2026.md
@@ -18,6 +18,7 @@ related:
   - ../entities/aloha.md
   - ../entities/anymal.md
   - ../entities/boston-dynamics.md
+  - ../entities/skild-ai.md
   - ../methods/diffusion-policy.md
   - ../methods/vla.md
   - ../methods/π0-policy.md
@@ -55,7 +56,7 @@ summary: "依据深蓝具身智能 2026-08 海外 43 所实验室盘点，按国
 ## 为什么重要
 
 - **跟方法找源头**：Diffusion Policy、ALOHA、π 系、BridgeData、SAC/HER 等本库高频方法，都能落到具体海外实验室。
-- **跟平台找衍生**：ANYbotics、Physical Intelligence、Skild、Covariant、Rainbow Robotics 等商业叙事，往往从研究所旁路长出。
+- **跟平台找衍生**：ANYbotics、Physical Intelligence、[Skild](../entities/skild-ai.md)（2026-08 [S1](../entities/skild-s1.md) 视频 ICL）、Covariant、Rainbow Robotics 等商业叙事，往往从研究所旁路长出。
 - **与国内篇对照**：海外转化更常表现为 **PI 联合创办公司 / 研究所衍生**；国内篇更强调 **组即公司前身 + 校企联合实验室** 三层结构。
 
 ## 流程总览：国家簇 → 方法/平台
@@ -84,7 +85,7 @@ flowchart LR
 | REAL Lab | Stanford | 宋舒然；Diffusion Policy、UMI；2026 十四篇脉络见技术地图 | [Diffusion Policy](../methods/diffusion-policy.md)、[REALab 14 篇技术地图](./realab-14-papers-technology-map-2026.md)、[manipulation](../tasks/manipulation.md) |
 | IRIS Lab | Stanford | Chelsea Finn；π（Physical Intelligence）；ALOHA / Mobile ALOHA | [ALOHA](../entities/aloha.md)、[π₀](../methods/π0-policy.md)、[π₀.7](../methods/pi07-policy.md)、[VLA 复现谱系](./vla-open-source-repro-landscape-2025.md) |
 | CSAIL / Improbable AI | MIT | Daniela Rus；Pulkit Agrawal / DribbleBot | [locomotion](../tasks/locomotion.md) |
-| Robotics Institute | CMU | 操作 / 足式 / 学习；Skild AI 等衍生 | [市面平台纵览](./notable-commercial-robot-platforms.md) |
+| Robotics Institute | CMU | 操作 / 足式 / 学习；[Skild AI](../entities/skild-ai.md) 等衍生 | [市面平台纵览](./notable-commercial-robot-platforms.md) |
 | BAIR / RLL / RAIL | UC Berkeley | Abbeel / Levine；SAC、HER、BridgeData；Covariant | [SAC](../methods/sac.md)、[VLA](../methods/vla.md) |
 | RPL | UT Austin | Yuke Zhu；NVIDIA GEAR；robosuite | [VLA](../methods/vla.md)、[仿真平台地图](./sim-platforms-decade-technology-map.md) |
 | GRASP | UPenn | Vijay Kumar；Exyn / Ghost Robotics | [市面平台纵览](./notable-commercial-robot-platforms.md) |

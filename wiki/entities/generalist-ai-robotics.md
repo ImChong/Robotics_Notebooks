@@ -4,10 +4,11 @@ tags: [company, embodied-foundation-model, dataset, scaling, generalist-ai, foun
 title: Generalist AI（机器人）
 status: complete
 summary: "Generalist AI 是宣称以超大规模真实交互数据预训练具身基础模型的商业团队；公开材料侧重 GEN 系列迭代（含 GEN-1.5 one-shot）、物理常识与多末端「千手」泛化，引用应以官网博客为准且注意闭源边界。"
-updated: 2026-08-20
+updated: 2026-08-26
 related:
   - ./generalist-gen15-one-shot.md
   - ./generalist-gen1-thousand-hands.md
+  - ./skild-s1.md
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/foundation-policy.md
   - ../methods/octo-model.md
@@ -41,7 +42,7 @@ sources:
 
 - **商业侧 embodied scaling 样本：** 与开源 OXE / Octo 对照，提供「超大规模 in-house 数据 + 闭源模型」的产业叙事锚点。
 - **多末端轴补全跨具身图景：** 2026-07「千手」博文把跨具身细化为 **工具/末端接口多样性**，见 [GEN-1 千手](./generalist-gen1-thousand-hands.md)。
-- **one-shot 适应叙事：** 2026-08 **GEN-1.5** 宣称 **physical prompting** 与 **1–10 步** 微调即可适应新短程任务，见 [GEN-1.5 一次示范学习](./generalist-gen15-one-shot.md)。
+- **one-shot 适应叙事：** 2026-08 **GEN-1.5** 宣称 **physical prompting** 与 **1–10 步** 微调即可适应新短程任务，见 [GEN-1.5 一次示范学习](./generalist-gen15-one-shot.md)。闭源对照：[S1](./skild-s1.md) 走 **显式 ICL 预训练**，公开地平线更长。
 - **引用纪律：** 成功率、小时数、变体数为官方自报；**确认未开源** 代码与数据集，不可当作可复现方法论文。
 
 ## 公开产品线脉络（博客）
@@ -89,6 +90,7 @@ sources:
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [跨具身迁移（知识链）](../overview/hub-cross-embodiment.md)
 - [Octo](../methods/octo-model.md)
+- [S1 / Skild AI](./skild-s1.md) — 另一条闭源 ICL 通才线（显式视频预训练）
 
 ## 参考来源
 

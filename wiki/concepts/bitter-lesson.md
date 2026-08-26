@@ -2,17 +2,19 @@
 type: concept
 tags: [scaling-laws, reinforcement-learning, methodology, ai-history]
 status: complete
-updated: 2026-07-14
+updated: 2026-08-26
 related:
   - ../entities/richard-sutton.md
   - ../concepts/embodied-scaling-laws.md
   - ../methods/reinforcement-learning.md
   - ../methods/model-based-rl.md
   - ../concepts/data-flywheel.md
+  - ../concepts/behavioral-cloning-mysteries.md
   - ../entities/paper-from-agi-to-asi.md
 sources:
   - ../../sources/blogs/sutton_bitter_lesson.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
+  - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 summary: "The Bitter Lesson：AI 进步最终来自能随算力扩展的通用方法（search 与 learning），而非把人类领域知识硬编码进系统。"
 ---
 
@@ -72,6 +74,7 @@ flowchart LR
 - **短期 vs 长期**：在算力/数据受限的机器人项目中，人类先验往往是唯一可行起点。
 - **样本效率**：纯 scaling 路线在真机数据稀缺时可能不经济；需与 sim2real、IL 预训练等结合。
 - **可解释性与安全**：黑箱 scaling 策略在安全关键机器人上需额外验证层（参见 Sutton 更早的 *Verification, The Key to AI*）。
+- **BC 闭环反例边界：** [BC Mysteries](./behavioral-cloning-mysteries.md) 显示，即使无限数据、train 损失相同，**输入坐标缩放** 仍改变测试成功率——「信息相同」不等于测试度量相同。Bitter Lesson 反对的是把人类知识做成不可扩展的系统结构，并不保证 BC 里可以放弃对测试分布有用的特征偏置。
 
 ## 关联页面
 
@@ -81,6 +84,7 @@ flowchart LR
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Data Flywheel](./data-flywheel.md)
 - [From AGI to ASI](../entities/paper-from-agi-to-asi.md) — 宏观算力 scaling 对照
+- [BC Mysteries](./behavioral-cloning-mysteries.md) — 无限数据 BC 下特征缩放仍改成功率
 
 ## 参考来源
 

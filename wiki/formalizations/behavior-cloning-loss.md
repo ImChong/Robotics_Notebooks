@@ -2,14 +2,16 @@
 type: formalization
 tags: [imitation-learning, loss, math, optimization, policy-learning]
 status: complete
-updated: 2026-04-21
+updated: 2026-08-26
 related:
   - ../methods/behavior-cloning.md
   - ../methods/dagger.md
   - ../methods/action-chunking.md
   - ./mdp.md
+  - ../concepts/behavioral-cloning-mysteries.md
 sources:
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 summary: "行为克隆损失函数（BC Loss）将马尔可夫决策过程中的策略学习简化为监督学习中的极大似然估计，是最基础的模仿学习优化目标。"
 ---
 
@@ -86,7 +88,9 @@ $$
 - [DAgger](../methods/dagger.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [MDP 形式化](./mdp.md)
+- [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) — train \(\mathcal{L}_{BC}\) 与闭环成功率不对齐的四条现象
 
 ## 参考来源
 - Pomerleau, D. A. (1989). *Alvinn: An autonomous land vehicle in a neural network*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
+- [Behavioral cloning mystery（博客归档）](../../sources/blogs/seohong_behavioral_cloning_mystery.md)
