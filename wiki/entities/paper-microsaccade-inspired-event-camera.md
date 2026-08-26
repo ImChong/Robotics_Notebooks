@@ -10,7 +10,7 @@ tags:
   - science-robotics
   - zju
 status: complete
-updated: 2026-07-20
+updated: 2026-08-26
 doi: "10.1126/scirobotics.adj8124"
 arxiv: "2405.17769"
 venue: "Science Robotics 2024"

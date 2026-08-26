@@ -8,7 +8,7 @@ tags:
   - autonomous-systems
   - casia
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 arxiv: "2608.21358"
 code: https://github.com/OpenSpace-Lab/Space-Mining-with-Robotics-List
 related:

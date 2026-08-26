@@ -9,7 +9,7 @@ tags:
   - model-based-rl
   - latent-imagination
 status: complete
-updated: 2026-08-12
+updated: 2026-08-26
 arxiv: "2301.04104"
 venue: Nature
 related:

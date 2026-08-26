@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 arxiv: "2504.16054"
 code: https://github.com/Physical-Intelligence/openpi
 venue: "HMI curated · 2025"
