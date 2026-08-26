@@ -4205,7 +4205,7 @@
       base = base.replace(/\.(md|html?)$/i, '');
       if (!base || /^(source|sources|link|ref)$/i.test(base)) return '';
       return base.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
-    } catch (err) {
+    } catch {
       return '';
     }
   }
