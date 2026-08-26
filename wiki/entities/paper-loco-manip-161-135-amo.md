@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-26
 venue: curated
 summary: "AMO 把本体状态与关节序列、仿真交互数据、接触力/触觉信号转成可跟踪的身体目标，并通过PPO/RL 策略训练、ACT/行为克隆模仿学习、全身控制器/WBC/MPC训练或组合全身策略，最终输出全身轨迹/动作序列。关键点是把示范轨迹压成可监督的动作预测问题，再通过动作 chunk 或闭环执行降低时序抖动。"
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-08-hardware-deployment.md
   - ../tasks/loco-manipulation.md
+  - ./htd-decoupled-wbc.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_135_amo.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -87,4 +88,5 @@ AMO 把本体状态与关节序列、仿真交互数据、接触力/触觉信号
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
+- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — 项目页将 AMO 作为跟踪误差对照
 - 同题深读/既有实体：[paper-loco-manip-161-135-amo](../entities/paper-loco-manip-161-135-amo.md)

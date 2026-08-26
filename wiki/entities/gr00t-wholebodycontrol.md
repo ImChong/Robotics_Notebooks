@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-26
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ../methods/motionbricks.md
@@ -16,6 +16,7 @@ related:
   - ./isaac-gr00t.md
   - ./paper-loco-manip-161-154-openhlm.md
   - ./paper-humanoidarena.md
+  - ./htd-decoupled-wbc.md
 sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/sites/gr00t-wholebodycontrol-docs.md
@@ -103,6 +104,7 @@ sequenceDiagram
 - [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成
 - [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方
 - [HumanoidArena](./paper-humanoidarena.md) — 以 SONIC 为 GMT 后端之一的分层基准
+- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — CMU/Bosch 开源的另一条「下肢 RL + 上肢默认/外部命令」解耦栈，勿与本仓 N1.5 解耦 WBC 混权重
 
 ## 参考来源
 

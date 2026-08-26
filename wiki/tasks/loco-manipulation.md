@@ -25,6 +25,7 @@ sources:
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/humanoid_touch_dream.md
+  - ../../sources/repos/isaaclab_decoupled_wbc.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
@@ -138,7 +139,7 @@ flowchart TD
 
 ### 6. 触觉增强的行为克隆路线 (Touch-Aware BC)
 - **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。
-- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。
+- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 [解耦 WBC / LBC](../entities/htd-decoupled-wbc.md) 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。WBC 训练与 G1 部署已开源；HTD 策略代码截至 2026-08-26 仍待发布。
 
 ### 7. 反向层级架构 (MPC-over-RL)
 - **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。
@@ -274,6 +275,7 @@ flowchart TD
 - [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音高层 locomotion + 双向音频社交（H1；未开源）
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
+- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — HTD 开源下肢+腰控制器（Isaac Lab，G1 零样本）
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成
 - [VIRAL（论文实体）](../entities/paper-viral-humanoid-visual-sim2real.md) — 人形 loco-manipulation 视觉 Sim2Real 全栈（arXiv:2511.15200）
 - [FetchMan（论文实体）](../entities/paper-fetchman.md) — MolmoSpaces 15 万场景 BC+Flow-GRPO；G1 真机 loco-manip 73.3% zero-shot（arXiv:2608.17027；GitHub 占位仓，2026-09-01 前补代码）
@@ -333,6 +335,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O 
 - **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作
+- **ingest 档案：** [sources/repos/isaaclab_decoupled_wbc.md](../../sources/repos/isaaclab_decoupled_wbc.md) — HTD 解耦 WBC 训练与 G1 部署
 - **ingest 档案：** [sources/papers/roboreact_arxiv_2608_03387.md](../../sources/papers/roboreact_arxiv_2608_03387.md) — RoboReact：生成 egocentric 视频蒸馏全身操作（arXiv:2608.03387）
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 视频生成驱动的人形控制
 - **ingest 档案：** [sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md](../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md) — DoorMan：人形 RGB 开门视觉 Sim2Real（arXiv:2512.01061）

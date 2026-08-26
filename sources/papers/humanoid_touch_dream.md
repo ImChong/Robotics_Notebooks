@@ -6,17 +6,22 @@
 - **类型：** paper
 - **来源：** arXiv:2604.13015v2 / PDF / GitHub project page
 - **入库日期：** 2026-04-29
-- **最后更新：** 2026-04-29
-- **一句话说明：** 提出 Humanoid Transformer with Touch Dreaming (HTD)，把触觉作为人形机器人接触丰富型移动操作策略的核心模态，并用未来手部力与触觉 latent 预测作为行为克隆的辅助目标。
+- **最后更新：** 2026-08-26
+- **一句话说明：** 提出 Humanoid Transformer with Touch Dreaming (HTD)，把触觉作为人形机器人接触丰富型移动操作策略的核心模态，并用未来手部力与触觉 latent 预测作为行为克隆的辅助目标。IROS 2026。
+- **代码：** [IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)（解耦 WBC **已开源**）；论文仓 [humanoid-touch-dream](https://github.com/chrisyrniu/humanoid-touch-dream) 为入口，遥操作与 HTD 策略截至 2026-08-26 仍 on-going
 
 ## 原始资料入口
 
 - **arXiv HTML：** <https://arxiv.org/html/2604.13015v2>
 - **arXiv PDF：** <https://arxiv.org/pdf/2604.13015>
-- **GitHub：** <https://github.com/chrisyrniu/humanoid-touch-dream>
+- **GitHub（论文入口仓）：** <https://github.com/chrisyrniu/humanoid-touch-dream>
+- **GitHub（解耦 WBC）：** <https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC>
 - **项目主页：** <https://humanoid-touch-dream.github.io/>
+- **浏览器 WBC Demo：** <https://humanoid-touch-dream.github.io/wbc_mujoco/dist/index.html>
+- **站点归档：** [sources/sites/humanoid-touch-dream.md](../sites/humanoid-touch-dream.md)
+- **WBC 仓归档：** [sources/repos/isaaclab_decoupled_wbc.md](../repos/isaaclab_decoupled_wbc.md)
 
-> 备注：这三个入口对应同一篇论文/项目，因此本仓库只建立一个 source 节点。GitHub 仓库在 2026-04-29 检查时仅包含论文 README、MIT License，并声明 whole-body controller、teleoperation 与 HTD policy learning 代码计划在 2026 年 5 月初发布。
+> 2026-08-26 复核：论文仓仍是导航入口（MIT，submodule 指向 WBC 仓）。解耦 WBC 训练/蒸馏/G1 部署与 example checkpoint 已在 IsaacLab-Decoupled-WBC 发布（BSD-3-Clause）。全身遥操作与 HTD 策略训练仍标 on-going。
 
 ## 核心论文摘录（MVP）
 
@@ -36,6 +41,7 @@
 - **核心贡献：** 论文不是只提出一个策略网络，而是搭建了完整的人形机器人移动操作系统：RL-based lower-body controller 负责稳定下肢/躯干，VR 遥操作映射上身和手部动作，IK 与 DexPilot-style retargeting 执行末端与灵巧手目标。
 - **数据结构：** 遥操作数据同步记录头部/腕部多视角 RGB、本体感受、手部关节力、双手触觉读数和全身 action targets。每只手包含 1062 维触觉观测，覆盖 17 个空间感知区域。
 - **对 wiki 的映射：**
+  - [HTD 解耦 WBC（实体）](../../wiki/entities/htd-decoupled-wbc.md)
   - [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)
   - [Teleoperation](../../wiki/tasks/teleoperation.md)
   - [Imitation Learning](../../wiki/methods/imitation-learning.md)
@@ -56,4 +62,5 @@
 - [x] 论文/HTML/PDF/GitHub 合并为单一 source 节点
 - [x] 核心系统、方法与实验结论提炼
 - [x] 升格为 HTD 方法页
-- [ ] 后续在代码发布后补充实现结构、训练配置和可复现实验入口
+- [x] 2026-08-26：解耦 WBC 代码发布后补充实现结构、观测/命令空间、G1 部署入口（见 [IsaacLab-Decoupled-WBC](../repos/isaaclab_decoupled_wbc.md)）
+- [ ] 遥操作采数与 HTD 策略训练代码发布后再补策略复现入口

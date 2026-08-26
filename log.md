@@ -1,3 +1,10 @@
+## [2026-08-26] ingest | sources/repos/isaaclab_decoupled_wbc.md — HTD 解耦 WBC 全组件入库；Isaac Lab 训练/蒸馏/G1 部署已开源，遥操作与 HTD 策略仍待发布
+
+- **触发：** 用户指定 [IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC) 与论文仓 [humanoid-touch-dream](https://github.com/chrisyrniu/humanoid-touch-dream)；要求 ingest 全身控制器全部组件
+- **步骤 2.5：** **部分开源** — WBC teacher/student/example checkpoint/G1 部署 **已开源**（BSD-3-Clause）；VR 遥操作与 HTD 策略 README 仍 on-going
+- **关键页：** [`wiki/entities/htd-decoupled-wbc.md`](wiki/entities/htd-decoupled-wbc.md)；交叉 HTD 方法页 / WBC / loco-manipulation / Isaac Lab / G1
+- **机构：** 注册 `bosch`、`ut-arlington`；实体 tags `cmu` / `bosch` / `ut-arlington`
+
 ## [2026-08-26] ingest | sources/blogs/wechat_embodied_station_7_papers_vla_intent_space_2026-08-26.md — 具身智能小站 7 篇开源盘点；新建 6 论文实体 + 技术地图；复用 ROS2SmolVLA；Indi 未开源 / SRB·RAFT·evrgb·PhyFilter 已开源 / MoeCo 部分开源
 
 - **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/zHxwlUsj22t1oPd9Q2C-dw>；要求每篇论文独立非重复详情节点

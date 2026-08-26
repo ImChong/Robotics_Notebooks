@@ -30,6 +30,7 @@ related:
   - ../formalizations/mdp.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
+  - ../entities/htd-decoupled-wbc.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/privileged_training.md
@@ -272,6 +273,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
 - [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — Teacher-Student 在四足工程链中的位置
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
+- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — teacher 足端接触特权、student 58 维本体历史 + BC→DAgger
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块的经典两阶段框架
 - [Legged Load Adapt](../entities/paper-legged-load-adapt-unknown-dynamic-load.md) — 箱载动态载荷特征特权 + concurrent estimator
