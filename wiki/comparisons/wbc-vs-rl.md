@@ -10,14 +10,17 @@ related:
   - ../concepts/mpc-wbc-integration.md
   - ../concepts/tsid.md
   - ./rl-vs-il.md
+  - ./rl-vs-geometric-control.md
+  - ../entities/paper-rl-vs-gc.md
   - ../queries/control-architecture-comparison.md
   - ../queries/when-to-use-wbc-vs-rl.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
 summary: "WBC vs RL: Whole-Body Control vs Reinforcement Learning"
-updated: 2026-08-08
+updated: 2026-08-26
 sources:
   - ../../sources/papers/whole_body_control.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
 ---
 
 # WBC vs RL: Whole-Body Control vs Reinforcement Learning
@@ -176,6 +179,8 @@ WBC（TSID/HQP）
 | 快速原型（周级） | legged_gym + PPO |
 | 追求最高性能 | 融合架构（RL HLC + WBC LLC） |
 
+跨类表格里同样避免「充分训练的 RL vs 手调、未对任务优化的 WBC」。空中跟踪上 [RL vs GC](../entities/paper-rl-vs-gc.md) 把这类不对称量化过：对称目标、数据与前馈后，解析几何律并不全面落后。见 [RL vs 几何控制](./rl-vs-geometric-control.md)。
+
 ---
 
 ## 英文缩写速查
@@ -225,6 +230,7 @@ WBC（TSID/HQP）
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)（融合架构的核心实现）
 - [TSID](../concepts/tsid.md)（WBC 最典型的执行层实现）
 - [RL vs IL](./rl-vs-il.md)（另一角度的控制策略对比）
+- [RL vs 几何控制](./rl-vs-geometric-control.md) — 四旋翼上「手调解析基线」如何高估 RL
 - [Query：控制架构选型对比](../queries/control-architecture-comparison.md)
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 

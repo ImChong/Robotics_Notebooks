@@ -23,6 +23,8 @@ related:
   - ../concepts/sim2real.md
   - ./paper-agile-humanoid-loco-manipulation.md
   - ./htd-decoupled-wbc.md
+  - ./paper-rl-vs-gc.md
+  - ../comparisons/rl-vs-geometric-control.md
   - ./paper-p3.md
   - ./lw-benchhub-tour.md
   - ./autodl.md
@@ -46,6 +48,8 @@ sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/repos/wbc_agile.md
+  - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
+  - ../../sources/repos/rl-vs-gc.md
 summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
 ---
 
@@ -101,6 +105,7 @@ Isaac Lab 的目标是提供一套现代化、可维护的 robot learning workfl
 - 在同一套生态里覆盖 RL、IL、locomotion、manipulation
 - Quickstart 默认教学任务是 [Cartpole](../concepts/cartpole.md) 的 `Isaac-Cartpole-v0` / `Isaac-Cartpole-Direct-v0`：同一倒立摆直觉，连续力矩 + GPU 并行，数字不能从 Gymnasium `CartPole-v1` 照搬
 - 自带一整套开箱即跑的默认任务（v3.0.0 共 **197** 个注册 ID，覆盖经典控制、操作、装配、足式、移动操作、导航、多旋翼与多智能体）：全量清单与命名法见 [Isaac Lab 默认环境](./isaac-lab-default-environments.md)
+- 第三方空中对照：[RL vs GC](./paper-rl-vs-gc.md) 用 Lab **DirectRLEnv** 注册四旋翼 / 固定臂跟踪与接球，在同一奖励与前馈下比较 PPO 与 \(SE(3)\) 几何控制（Isaac Sim 4.2 / Lab 1.4.1；[仓库](https://github.com/PratikKunapuli/rl-vs-gc)）
 
 ## 核心类图
 
@@ -308,6 +313,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — SO-101 课：仿真 DR 遥操作采数、策略评测与 sim2real 对照实验
 - **ingest 档案：** [sources/courses/isaac_lab_implicit_explicit_actuators.md](../../sources/courses/isaac_lab_implicit_explicit_actuators.md) — Implicit / Explicit 执行器官方文档索引
 - **ingest 档案：** [具身智能研究室训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — OpenUSD / PhysX / Lab Views 统一场景–物理–学习接口的策展归纳
+- **ingest 档案：** [RL vs GC 论文摘录（arXiv:2506.17832）](../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md) — DirectRLEnv 四旋翼跟踪 + Optuna 几何控制
 
 ## 关联页面
 
@@ -324,6 +330,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — Isaac Lab 上 DP 规划器与 RL loco-manip 联合微调（arXiv:2603.13707）
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — Lab 之上的人形 RL 全生命周期工作流（Prepare→Deploy；arXiv:2603.20147，WBC-AGILE）
 - [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰控制器（Lab 2.2.0，单 GPU，G1 零样本）
+- [RL vs GC](./paper-rl-vs-gc.md) — Lab DirectRLEnv 上对称比较 PPO 与几何控制（RSS 2025）
 - [P³](./paper-p3.md) — Lab + 定制 rsl_rl：VAE-PPO 矩匹配主训与 LSFT（G1 感知地形）
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

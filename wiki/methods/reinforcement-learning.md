@@ -2,11 +2,13 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
+  - ../comparisons/rl-vs-geometric-control.md
+  - ../entities/paper-rl-vs-gc.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
@@ -273,6 +275,8 @@ flowchart LR
 - [Locomotion](../tasks/locomotion.md)
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 控制从分立模态控制器迁向学习框架的领域综述
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
+- [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md) — 四旋翼跟踪：对称协议后没有总冠军
+- [RL vs GC（论文实体）](../entities/paper-rl-vs-gc.md) — Isaac Lab DirectRLEnv + Optuna GC（RSS 2025）
 - [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 CD-MPC 地标奖励指导 PPO、部署期纯策略
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 含训练期 MPC 指导第三条混合轴
 - [Model-Based RL](./model-based-rl.md) — 利用世界模型提升样本效率

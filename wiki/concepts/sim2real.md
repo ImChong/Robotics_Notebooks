@@ -49,6 +49,8 @@ related:
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/bam-better-actuator-models.md
   - ../overview/multirotor-simulation-planning-control-stack.md
+  - ../entities/paper-rl-vs-gc.md
+  - ../comparisons/rl-vs-geometric-control.md
   - ../entities/open-duck-mini.md
   - ../entities/physx-omni.md
   - ../entities/paper-sru-spatially-enhanced-recurrent-memory.md
@@ -81,6 +83,7 @@ sources:
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
+  - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
 ---
 
 # Sim2Real
@@ -204,6 +207,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **安全、参数高效的真机微调（四足）：** [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **冻结仿真策略** 上只训 **rank-1 LoRA**，并用 **Recovery Policy + Safety Filter** 约束真机探索；Unitree Go2 jump/trot 上相对全参 PPO 微调约 **46.5%** 墙钟缩短、训练期摔倒近零，适合讨论「**不全参、不盲探索**」的 sim2real 收尾阶段。
 - **训练期电机包络约束（轮足零样本）：** [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）将 **DC 电机速度–扭矩硬约束** 写入 **P3O**，把仿真违规从 **>90%** 压到 **<3.5%**，支撑 Go2-W **高台攀爬** 等极限机动零样本上真机而不触发过流保护——适合讨论「**约束即 sim2real 安全层**」而非仅域随机化。
 - **轮足高动态避障 + DR（动捕状态）：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 Isaac Lab 用 TABLE II 式域随机化（质量/惯量/摩擦/执行器增益/外扰等）支撑 **M20** 真机反射规避；真机 ASR **≈59%** 显著低于仿真，作者归因硬件上限与残余 gap——适合对照「**DR 必要但不足以抹平极限机动**」。
+- **空中跟踪对照（仿真代理）：** [RL vs GC](../entities/paper-rl-vs-gc.md) 在同一质量/惯量/推重比 DR 下重优化 PPO 与 \(SE(3)\) 几何控制：RL 退化明显更小；刚体上训的 RL 迁到一阶电机动力学会垮，必须在匹配执行器的仿真里重训。评测仍是仿真，不能当四旋翼真机数字。
 - **训练期 MOR 约束（四足高速奔跑）：** [执行器约束 RL（arXiv:2312.17507）](../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) 将 **电机扭矩–转速工作区（MOR）** 经减速器矩阵写入 RaiSim 训练闭环；无约束策略仿真可达 **6.5 m/s** 但 **5 m/s 实机摔倒**，有约束策略高速段 **sim–real reward gap** 不再恶化——与 MUJICA 同属「**规格书包络进训练**」路线，平台为 KAIST Hound。
 - **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
 - **补充参照（低成本双足 / 舵机）：** [Open Duck Mini](../entities/open-duck-mini.md) 在 **Feetech 舵机 + BAM 电机辨识 + MuJoCo Playground** 管线上公开 sim2real 行走；强调 MJCF 执行器参数与真机一致、模仿奖励与参考运动分仓迭代，机载部署在 Pi Zero 2W（见 [Open Duck Mini Runtime](../entities/open-duck-mini-runtime.md)）。
@@ -267,6 +271,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — 描述符驱动导出 + MuJoCo Sim2Sim / 真机合同；运动质量诊断作部署门禁（arXiv:2603.20147）
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 线中的仿真训练与域随机化迁移读法
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [RL vs GC](../entities/paper-rl-vs-gc.md) — 四旋翼仿真里 DR/电机对 PPO vs 几何控制不对称（RSS 2025）
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — 蒸馏部署作为训练闭环末环
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 多指触觉策略仿真 BC 零样本上真机

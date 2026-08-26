@@ -3,7 +3,7 @@ type: comparison
 tags: [mpc, rl, control, locomotion, comparison, engineering-selection]
 status: stable
 summary: "MPC vs RL：控制策略选型对比"
-updated: 2026-08-17
+updated: 2026-08-26
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/policy_optimization.md
@@ -11,9 +11,12 @@ sources:
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
   - ../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md
   - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
+  - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
 related:
   - ./fb-bfm-zero-intact-mimic-vla-task-space.md
   - ../entities/paper-smpc2rl-loco-manipulation.md
+  - ./rl-vs-geometric-control.md
+  - ../entities/paper-rl-vs-gc.md
 ---
 
 # MPC vs RL：控制策略选型对比
@@ -80,6 +83,8 @@ related:
 ```
 
 **代表系统**：legged_gym + Isaac Lab、parkour policy（ETH/CMU）、Unitree RL 策略
+
+空中轨迹跟踪里，跨类对比的常见污染不是「有没有 MPC」，而是 **目标函数 / 任务数据 / 前馈参考只给学习侧**：UPenn [RL vs GC](../entities/paper-rl-vs-gc.md)（RSS 2025）在四旋翼上表明，把这三项对称之后，解析 [几何控制](./rl-vs-geometric-control.md) 与 PPO 的差距远小于文献宣称。审本页「MPC 基线 vs RL」表格时用同一清单：解析器是否在**同一代价、同一任务分布**上调过，以及是否看到与策略同等的未来参考。
 
 ---
 
@@ -179,6 +184,8 @@ related:
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 详细介绍
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 详细介绍
 - [WBC vs RL](./wbc-vs-rl.md) — 相关的控制架构对比
+- [RL vs 几何控制](./rl-vs-geometric-control.md) — 四旋翼跟踪：对称协议后 GC 稳态更好、RL 瞬态更好
+- [RL vs GC（论文实体）](../entities/paper-rl-vs-gc.md) — RSS 2025 开源 Isaac Lab 试验台
 - [Model-Based vs Model-Free](./model-based-vs-model-free.md) — RL 内部的方法对比
 - [MPC Solver Selection](../queries/mpc-solver-selection.md) — MPC 求解器选型指南
 - [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 MPC 地标奖励 + 部署期纯 RL

@@ -1331,6 +1331,7 @@
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问 `📅unknown` `[entity_page]`
 - [Riemann-1.0](wiki/entities/paper-riemann-1-causal-action-video-wam.md) — Riemann-1.0** 收录于 具身智能研究室 · 具身世界模型六路线综述 **行动主 `📅unknown` `[entity_page]`
 - [Rift：免视频 Rollout 的未来条件 WAM](wiki/entities/paper-rift-wam.md) — Rift**（*Keep the Future, Drop the Rollout: Rift for World Action Models*，[arXiv:2608.11521](https: `📅unknown` `[entity_page]`
+- [RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制](wiki/entities/paper-rl-vs-gc.md) — RL vs GC**（论文 *Leveling the Playing Field: Carefully Comparing Classical and Learned Controllers f `📅unknown` `[entity_page]`
 - [RMA: Rapid Motor Adaptation for Legged Robots](wiki/entities/paper-rma-rapid-motor-adaptation.md) — RMA**（Kumar et al., arXiv:2107.04034，**RSS 2021**）提出 **快速运动自适应 `📅unknown` `[entity_page]`
 - [RMR（优化式 Rig 统一的人形重定向）](wiki/entities/paper-rmr.md) — RMR**（项目页标题 *Robust Robot Motion Retargeting*；论文 *Robust and Expressive Humanoid Motion Retargetin `📅unknown` `[entity_page]`
 - [RoamFlow](wiki/entities/paper-roamflow.md) — RoamFlow**（*Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation*，南洋理工大 `📅unknown` `[entity_page]`
@@ -3027,6 +3028,7 @@
 - [开源机器人力矩电机：电磁设计完整度对比](wiki/comparisons/open-source-torque-motor-em-design.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型](wiki/comparisons/ppo-vs-sac.md) — 背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。两者都已在真实机器人上取得 `📅unknown` `[comparison_page]`
 - [RL 求解逆运动学：五类方案怎么选](wiki/comparisons/rl-inverse-kinematics-five-approaches.md) — 一句话选型：** 固定构型、要微秒级精度 → 解析/数值 IK；冗余避障、非标软体、浮基全身 → 在传统 $J `📅unknown` `[comparison_page]`
+- [RL vs 几何控制：四旋翼跟踪怎么公平比、怎么选](wiki/comparisons/rl-vs-geometric-control.md) — 空中轨迹跟踪里，学习控制器（以 PPO 为代表）和解析几何控制（\(SE(3)\) / DFBC）经常被写成「新方法全面更好」。UPenn GRASP 的 [RL vs GC](../entities `📅unknown` `[comparison_page]`
 - [RL vs 模仿学习（Imitation Learning）](wiki/comparisons/rl-vs-il.md) — RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略 $\pi(a|s)$"，但监督信号、数据需求、能达到的行为质量完全不同。 `📅unknown` `[comparison_page]`
 - [RNN vs CNN vs Transformer vs Mamba](wiki/comparisons/rnn-cnn-transformer-mamba.md) — 从 **递推状态（RNN）**、**局部卷积（CNN）**、**全局注意力（Transformer）** 到 **选择性状态空间（Mamba）**，在长程建模能力、训练并行度与推理复杂度三维上做骨干选 `📅unknown` `[comparison_page]`
 - [八大机器人控制体系分类](wiki/comparisons/robot-control-eight-paradigms-taxonomy.md) — 从机器人 **任务规划 → 控制算法 → 伺服执行** 的分层闭环出发，控制算法层可划分为 **八大体系**；前四类侧重 **显式建模**，后四类分别面向 **接触作业、约束优化、数据补偿与自主习得 `📅unknown` `[comparison_page]`
