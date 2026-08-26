@@ -1,3 +1,8 @@
+## [2026-08-26] fix | scripts/utils/community_labels.py — 为 VLA 开源复现景观枢纽补 COMMUNITY_NAME_OVERRIDES，修复 Tests community-19 命名断言
+
+- **触发：** PR #1682 合入后 Louvain 把 `wiki/overview/vla-open-source-repro-landscape-2025.md` 选为社区枢纽；H1「VLA 开源复现景观（2025 策展）」以英文缩写开头，不符合 `中文（English） 社区`
+- **修复：** override 为「视觉语言动作开源复现景观（VLA Open-Source Reproduction Landscape）」
+
 ## [2026-08-26] ingest | sources/papers/{ros2smolvla,dreammimic,ld4wam}_arxiv_2608_*.md — ROS2SmolVLA（ROS 2 本地 SmolVLA×UR10e，已开源）、DreamMimic（视觉全身 RSSM 蒸馏，代码 Coming soon）、LD4WAM（跨本体运动对齐潜动力学 WAM，未开源）
 
 - **ROS2SmolVLA（2608.23320）：** 奥格斯堡大学；项目页+GitHub+HF 核查 **已开源**；实体 `paper-ros2smolvla`；交叉 VLA / LeRobot / ROS 2 / manipulation

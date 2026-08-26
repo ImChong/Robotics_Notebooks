@@ -31,6 +31,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     ),
     "wiki/concepts/contact-rich-manipulation.md": "接触丰富型操作（Contact-Rich Manipulation）",
     "wiki/methods/vla.md": "视觉-语言-动作（Vision-Language-Action, VLA）",
+    "wiki/overview/vla-open-source-repro-landscape-2025.md": (
+        "视觉语言动作开源复现景观（VLA Open-Source Reproduction Landscape）"
+    ),
     "wiki/methods/action-chunking.md": "动作块输出（Action Chunking）",
     "wiki/methods/diffusion-policy.md": "扩散策略（Diffusion Policy）",
     "wiki/tasks/vision-language-navigation.md": (
