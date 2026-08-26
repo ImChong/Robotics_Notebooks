@@ -43,6 +43,7 @@
 - **对 wiki 的映射：**
   - [ROS2SmolVLA](../../wiki/entities/paper-ros2smolvla.md) — 工程实践与源码时序图。
   - [ros2smolvla_docker](../repos/ros2smolvla_docker.md) — 复现入口。
+  - [开源 7 篇系统结构地图](../../wiki/overview/open-source-7-papers-system-structure-technology-map.md) — 公众号专辑复用本节点。
 
 ## 当前提炼状态
 

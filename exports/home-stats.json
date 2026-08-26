@@ -1,13 +1,95 @@
 {
   "generated_at": "2026-08-26",
-  "node_count": 3294,
-  "edge_count": 29264,
+  "node_count": 3301,
+  "edge_count": 29322,
   "coverage": {
-    "covered": 3269,
-    "total": 3269,
+    "covered": 3276,
+    "total": 3276,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-indi.md",
+      "detail_id": "entity-paper-indi",
+      "label": "Indi：把行为意图蒸馏进 VLA 解码器",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-moeco.md",
+      "detail_id": "entity-paper-moeco",
+      "label": "MoeCo：知识驱动 MoE 协同识别手术三元组",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-phyfilter.md",
+      "detail_id": "entity-paper-phyfilter",
+      "label": "PhyFilter：用物理滤波换数据规模",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-raft-thruster-fault.md",
+      "detail_id": "entity-paper-raft-thruster-fault",
+      "label": "RAFT：特权 Critic 塑造无传感器推进器容错",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-reward-free-continual-adaptation-space.md",
+      "detail_id": "entity-paper-reward-free-continual-adaptation-space",
+      "label": "无奖励持续适应：太空机器人的潜奖励景观",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-ros2smolvla.md",
+      "detail_id": "entity-paper-ros2smolvla",
+      "label": "ROS2SmolVLA：工业轻量臂上的本地小型 VLA",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-simple-evrgb-cal.md",
+      "detail_id": "entity-paper-simple-evrgb-cal",
+      "label": "simple-evrgb-cal：无运动的事件—RGB 标定",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/overview/open-source-7-papers-system-structure-technology-map.md",
+      "detail_id": "wiki-overview-open-source-7-papers-system-structure-technology-map",
+      "label": "开源具身 7 篇：系统结构阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/concepts/behavioral-cloning-mysteries.md",
       "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
@@ -53,16 +135,6 @@
       "recency": "2026-08-26",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-ros2smolvla.md",
-      "detail_id": "entity-paper-ros2smolvla",
-      "label": "ROS2SmolVLA：工业轻量臂上的本地小型 VLA",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/concepts/robot-in-context-learning.md",
@@ -132,90 +204,22 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-muzero-planning-latent-dynamics.md",
-      "detail_id": "entity-paper-muzero-planning-latent-dynamics",
-      "label": "MuZero",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pets-probabilistic-dynamics-mpc.md",
-      "detail_id": "entity-paper-pets-probabilistic-dynamics-mpc",
-      "label": "PETS",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physcap.md",
-      "detail_id": "entity-paper-physcap",
-      "label": "PhysCaP：物理信息探索的 Code-as-Policy",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-playworld-autonomous-play-data.md",
-      "detail_id": "entity-paper-playworld-autonomous-play-data",
-      "label": "PlayWorld",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-resilient-machines-continuous-self-modeling.md",
-      "detail_id": "entity-paper-resilient-machines-continuous-self-modeling",
-      "label": "Resilient Machines (Self-Modeling)",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-riemann-1-causal-action-video-wam.md",
-      "detail_id": "entity-paper-riemann-1-causal-action-video-wam",
-      "label": "Riemann-1.0",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robocraft-particle-graph-dynamics.md",
-      "detail_id": "entity-paper-robocraft-particle-graph-dynamics",
-      "label": "RoboCraft",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/behavioral-cloning-mysteries.md",
-    "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
-    "label": "Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）",
-    "type": "concept",
+    "path": "wiki/entities/paper-indi.md",
+    "detail_id": "entity-paper-indi",
+    "label": "Indi：把行为意图蒸馏进 VLA 解码器",
+    "type": "entity",
     "recency": "2026-08-26",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 673
+      "size": 674
     },
     {
       "label": "操作",
@@ -223,7 +227,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 266
+      "size": 268
     },
     {
       "label": "人形论文深读笔记",
@@ -243,7 +247,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1320,
+      "degree": 1323,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -259,14 +263,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 884,
+      "degree": 886,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 788,
+      "degree": 792,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -274,7 +278,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 771,
+      "degree": 772,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -290,7 +294,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 557,
+      "degree": 558,
       "has_repo": true
     },
     {
@@ -305,7 +309,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 476,
+      "degree": 477,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

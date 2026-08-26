@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 arxiv: "2504.16054"
 code: https://github.com/Physical-Intelligence/openpi
 venue: "HMI curated · 2025"
@@ -17,6 +17,7 @@ related:
   - ./paper-galaxea-g05.md
   - ./paper-kai0.md
   - ./paper-spd.md
+  - ./paper-indi.md
 sources:
   - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -123,6 +124,7 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - [π0-policy](../methods/π0-policy.md)
 - [pi07-policy](../methods/pi07-policy.md)
 - [vla](../methods/vla.md)
+- [Indi](./paper-indi.md) — 在 π0.5 与 GR00T-N1.7 上蒸馏行为意图（arXiv:2608.23478）
 - [foundation-policy](../concepts/foundation-policy.md)
 - [Emergent Transfer](./paper-emergent-transfer-cross-config.md) — 以 π₀.₅ 为骨干的跨配置遗留数据三相共训研究
 - [RoboHarness](./paper-robo-harness.md) — 以 π₀.₅ 为异构策略库成员之一的长时程编排框架

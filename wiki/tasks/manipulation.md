@@ -154,6 +154,7 @@ flowchart TD
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **[EgoVerse](../entities/paper-egoverse.md) 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - **LD4WAM**：在 DINOv3 语义空间用 **Delta EE 运动对齐** 学跨本体潜动力学，再以 MoT WAM 的 learnable queries 从生成未来蒸馏该码；RoboTwin **93.4%**、夹爪+灵巧手真机均 **70.5%**；**确认未开源**；入口见 [LD4WAM](../entities/paper-ld4wam.md)（arXiv:2608.22403）
 - **ROS2SmolVLA**：把 **SmolVLA 450M** 接到 **ROS 2 + UR10e** 本地拾放；九场景总体 **77.72%**；**Docker + HF 已开源**；入口见 [ROS2SmolVLA](../entities/paper-ros2smolvla.md)（arXiv:2608.23320）
+- **Indi**：把示范片段的 **局部目标** 蒸馏进 VLA 解码器；GR00T-N1.7 SimplerEnv-Bridge **64.3→84.7%**；**未开源**；入口见 [Indi](../entities/paper-indi.md)（arXiv:2608.23478）
 - **JoyAI-RA 0.5**：京东 **VLWA** 通才操作——**隐式 latent-action** + **显式 130-D** 双对齐吃人/仿/机异构数据，**内–外环 RL**；AgiBot G1 seen **92.0** / unseen **75.5**，人视频缩放未见饱和；**未开源**；入口见 [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md)（arXiv:2608.05674）
 - **EgoVerse**：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身共训研究——共训可涨分，但缩放需 **域对齐锚定**，场景多样性主导有限预算泛化；入口见 [EgoVerse](../entities/paper-egoverse.md)
 - **WAM-TTT**：在 **冻结 LDA WAM** 上用 **人视频测试时 TTT fast-weight 记忆** **steer** 新任务变体——**meta-training** 对齐人–机相位 + **KV 重建**；部署仅需 **无标注 egocentric 人视频**；**G1 + Galbot 双臂 9 任务** New 家庭场景 **46.2%** avg progress，显著优于 **WAM-ICL（7.1%）**；入口见 [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md)（arXiv:2607.06988）
@@ -211,6 +212,7 @@ flowchart TD
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) — WAM 人–机协同训练与野外 egocentric 人数据缩放
 - [LD4WAM](../entities/paper-ld4wam.md) — 运动对齐潜动力学人视频 WAM（arXiv:2608.22403；未开源）
 - [ROS2SmolVLA](../entities/paper-ros2smolvla.md) — ROS 2 本地 SmolVLA × UR10e（arXiv:2608.23320；已开源）
+- [Indi](../entities/paper-indi.md) — VLA 行为意图蒸馏（arXiv:2608.23478；未开源）
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 人示教活数据集与跨实验室共训判据
 - [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) — 部署期人视频 TTT 记忆 steering 冻结 WAM（LDA 底座，arXiv:2607.06988）
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — 触觉反应式灵巧 VLA + 开源触觉数据集与 12 任务基准

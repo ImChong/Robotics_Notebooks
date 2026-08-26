@@ -18,6 +18,7 @@ related:
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../entities/april-tag.md
   - ../entities/vins-fusion.md
+  - ./paper-simple-evrgb-cal.md
   - ../entities/open-vins.md
   - ../methods/visual-servoing.md
   - ../methods/levenberg-marquardt.md
@@ -146,6 +147,7 @@ flowchart TB
 - [VINS-Fusion](./vins-fusion.md) — 同 **HKUST Aerial Robotics** 生态的多传感器 VIO
 - [OpenVINS](./open-vins.md) — 含离线/在线标定工具链的 VIO 研究平台
 - [Visual Servoing](../methods/visual-servoing.md) — 标定误差对 PBVS/IBVS 的敏感性
+- [simple-evrgb-cal](./paper-simple-evrgb-cal.md) — 事件—RGB 无运动跨模态标定（显示器调制 ChArUco）
 - [Levenberg-Marquardt](../methods/levenberg-marquardt.md) — BA 类非线性最小二乘求解背景
 
 ## 参考来源

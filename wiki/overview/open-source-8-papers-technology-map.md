@@ -14,6 +14,7 @@ related:
   - ../entities/paper-dreamhand.md
   - ../methods/vla.md
   - ../concepts/tactile-sensing.md
+  - ./open-source-7-papers-system-structure-technology-map.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md
   - ../../sources/raw/wechat_embodied_station_8_papers_open_source_2026-08-25.md
@@ -22,7 +23,7 @@ summary: "依据具身智能小站 2026-08-25 八篇开源盘点，把近期工�
 
 # 开源具身 8 篇：阅读坐标与技术地图
 
-> **本页定位**：为 [具身智能小站 · 8 篇开源盘点](https://mp.weixin.qq.com/s/71jZDzvcWZ3SsoHOEA8sgQ)（2026-08-25）提供 **按五类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [VLA 可执行性 9 篇](./vla-robustness-9-papers-technology-map.md)、[视频–接触–控制 10 篇](./video-contact-control-10-papers-technology-map.md)。
+> **本页定位**：为 [具身智能小站 · 8 篇开源盘点](https://mp.weixin.qq.com/s/71jZDzvcWZ3SsoHOEA8sgQ)（2026-08-25）提供 **按五类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [开源 7 篇系统结构](./open-source-7-papers-system-structure-technology-map.md)、[VLA 可执行性 9 篇](./vla-robustness-9-papers-technology-map.md)、[视频–接触–控制 10 篇](./video-contact-control-10-papers-technology-map.md)。
 
 ## 一句话观点
 
@@ -111,6 +112,7 @@ flowchart TB
 - [Model Predictive Control](../methods/model-predictive-control.md) — SRL-MPC 执行层
 - [tactile-sensing](../concepts/tactile-sensing.md) — ViTacPhys / GhostTac
 - [imitation-learning](../methods/imitation-learning.md) — ViTacPhys / Q-Planning
+- [开源 7 篇系统结构地图](./open-source-7-papers-system-structure-technology-map.md) — 次日姊妹盘点
 
 ## 参考来源
 
@@ -120,4 +122,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [具身智能小站原文](https://mp.weixin.qq.com/s/71jZDzvcWZ3SsoHOEA8sgQ)
+- [开源 7 篇系统结构地图](./open-source-7-papers-system-structure-technology-map.md)
 - [VLA 可执行性 9 篇地图](./vla-robustness-9-papers-technology-map.md)
