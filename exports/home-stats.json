@@ -9,6 +9,33 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/behavioral-cloning-mysteries.md",
+      "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
+      "label": "Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）",
+      "type": "concept",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/skild-ai.md",
+      "detail_id": "entity-skild-ai",
+      "label": "Skild AI",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/skild-s1.md",
+      "detail_id": "entity-skild-s1",
+      "label": "S1：机器人 In-Context Learning（Skild）",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-dreammimic.md",
       "detail_id": "entity-paper-dreammimic",
       "label": "DreamMimic：世界模型辅助的视觉全身 Mimic",
@@ -174,47 +201,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robomemory-multi-type-embodied-memory.md",
-      "detail_id": "entity-paper-robomemory-multi-type-embodied-memory",
-      "label": "RoboMemory",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robowm-bench-action-faithfulness.md",
-      "detail_id": "entity-paper-robowm-bench-action-faithfulness",
-      "label": "RoboWM-Bench",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sayplan-llm-scene-graph-planning.md",
-      "detail_id": "entity-paper-sayplan-llm-scene-graph-planning",
-      "label": "SayPlan",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dreammimic.md",
-    "detail_id": "entity-paper-dreammimic",
-    "label": "DreamMimic：世界模型辅助的视觉全身 Mimic",
-    "type": "entity",
+    "path": "wiki/concepts/behavioral-cloning-mysteries.md",
+    "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
+    "label": "Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）",
+    "type": "concept",
     "recency": "2026-08-26",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
