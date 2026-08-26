@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/htd-decoupled-wbc.md",
+      "detail_id": "entity-htd-decoupled-wbc",
+      "label": "HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）",
+      "type": "entity",
+      "recency": "2026-08-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-indi.md",
       "detail_id": "entity-paper-indi",
       "label": "Indi：把行为意图蒸馏进 VLA 解码器",
@@ -194,27 +204,17 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mobilewam-mobile-manipulation-wam.md",
-      "detail_id": "entity-paper-mobilewam-mobile-manipulation-wam",
-      "label": "MobileWAM",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-indi.md",
-    "detail_id": "entity-paper-indi",
-    "label": "Indi：把行为意图蒸馏进 VLA 解码器",
+    "path": "wiki/entities/htd-decoupled-wbc.md",
+    "detail_id": "entity-htd-decoupled-wbc",
+    "label": "HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）",
     "type": "entity",
     "recency": "2026-08-26",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
