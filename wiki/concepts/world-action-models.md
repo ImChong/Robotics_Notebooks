@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-26
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）与 Dyna-2 等实例。"
 related:
   - ../entities/dyna-2.md
@@ -34,6 +34,8 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
+  - ../entities/paper-ld4wam.md
+  - ../entities/paper-dreammimic.md
   - ../entities/paper-egoverse.md
   - ../entities/paper-embodiedvae.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
@@ -67,6 +69,8 @@ sources:
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
   - ../../sources/papers/navwam_arxiv_2606_13494.md
   - ../../sources/papers/egowam.md
+  - ../../sources/papers/ld4wam_arxiv_2608_22403.md
+  - ../../sources/papers/dreammimic_arxiv_2608_22278.md
   - ../../sources/papers/wam_ttt_arxiv_2607_06988.md
   - ../../sources/papers/being_m07.md
   - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
@@ -155,6 +159,8 @@ sources:
 **开源实例（Joint 族 + Wan MoT 三专家 · Dexmal）**：[Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) 在 **Wan 骨干 + MoT** 上分出 **video / action / value** 专家，联合 **未来视频、32D 动作与状态–价值**；发布 **DW05-Base** 与 **RoboTwin 2.0 SFT** 权重及 **RobotWin-style JSONL** 训练/推理栈（2026-07 GitHub + Hugging Face）。
 
 **平台实例（Joint 族 + 全模态单栈 · NVIDIA）**：[Cosmos 3](../entities/cosmos-3.md) 在 **MoT** 内用 **Generator** 同时暴露 **policy、forward dynamics、inverse dynamics**，用 **Reasoner** 做具身 CoT 与 2D 轨迹规划，并支持 **Reasoning + Generation**（先文本轨迹再视频再生）；与 Cascaded「先完整视频计划再解码动作」相比，更强调 **同一 checkpoint 多任务 I/O 配置** 与 **开源 serving 栈**（arXiv:2606.02800）。
+
+**文献实例（Joint 族 + 运动对齐潜动力学 · 人视频）**：[LD4WAM](../entities/paper-ld4wam.md) 在冻结 DINOv3 空间用 **语义重建 + Delta EE** 学跨本体 \(z\)，再以 Wan2.2 MoT 的 learnable queries 从生成未来蒸馏该码并条件动作专家；RoboTwin **93.4%**、夹爪+灵巧手真机均 **70.5%**；**确认未开源**（arXiv:2608.22403）。与 EgoWAM「换世界目标」不同，这里要求表征能回归真实末端增量。
 
 **文献实例（Joint 族 + 双 DiT 联合训练 · VAM）**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) 以 **Cosmos-Predict2.5 Video DiT** 与 **Action DiT** **端到端 dual flow-matching** 联合优化，用 **固定 flow 步隐状态** 条件动作；§3 验证视频生成相对 Grounding/FLARE 的 **~10× 样本效率**；LIBERO **98.6%**、G1 真机桌面与全身 loco-manip（arXiv:2603.10448，Mondo Robotics / HKUST，[开源](https://github.com/Mondo-Robotics/DiT4DiT)）。
 
@@ -247,6 +253,8 @@ flowchart TB
 - [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md)
 - [sources/papers/navwam_arxiv_2606_13494.md](../../sources/papers/navwam_arxiv_2606_13494.md)
 - [sources/papers/egowam.md](../../sources/papers/egowam.md)
+- [sources/papers/ld4wam_arxiv_2608_22403.md](../../sources/papers/ld4wam_arxiv_2608_22403.md) — 跨本体运动对齐潜动力学 WAM
+- [sources/papers/dreammimic_arxiv_2608_22278.md](../../sources/papers/dreammimic_arxiv_2608_22278.md) — RSSM 辅助视觉全身蒸馏（对照：WM≠WAM）
 - [sources/papers/being_m07.md](../../sources/papers/being_m07.md)
 - [sources/papers/worldvln_arxiv_2605_15964.md](../../sources/papers/worldvln_arxiv_2605_15964.md)
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
@@ -286,6 +294,8 @@ flowchart TB
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)
 - [NavWAM（image-goal 视觉导航 · WAM）](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
+- [LD4WAM（运动对齐潜动力学 · 人视频 WAM）](../entities/paper-ld4wam.md) — DINOv3 语义码 + Delta EE；RoboTwin 93.4%、真机 70.5%；未开源（arXiv:2608.22403）
+- [DreamMimic（RSSM 辅助视觉全身蒸馏）](../entities/paper-dreammimic.md) — 世界模型作蒸馏稳定器而非 Joint WAM；代码 Coming soon（arXiv:2608.22278）
 - [JoyAI-RA 0.5（双动作对齐 VLWA）](../entities/paper-joyai-ra-05.md) — LAC-WM + 130-D 显式对齐；人视频缩放未见饱和（未开源）
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [World Action Planner（VLM + pose-image WM 规划）](../entities/paper-world-action-planner.md)

@@ -14,7 +14,7 @@ tags:
   - huggingface
   - open-source
 status: complete
-updated: 2026-08-17
+updated: 2026-08-26
 related:
   - ./lerobot.md
   - ./isaac-lab.md
@@ -26,6 +26,7 @@ related:
   - ../queries/vla-deployment-guide.md
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ../overview/vla-open-source-repro-landscape-2025.md
+  - ./paper-ros2smolvla.md
 sources:
   - ../../sources/repos/lw_benchhub_tour.md
   - ../../sources/repos/lw-benchhub.md
@@ -205,6 +206,7 @@ v1–v5 分别栽在「没闸门 / 工作空间采样与场景无关 / AST 硬�
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 真机延迟/chunk；本仓是仿真对照
 - [NVIDIA SO-101 Sim2Real workflow](./nvidia-so101-sim2real-lab-workflow.md) — 同为 Lab + LeRobot，但是真机 GR00T 课
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 轻量 VLA 复现地图
+- [ROS2SmolVLA](./paper-ros2smolvla.md) — 同底座 SmolVLA，但是 UR10e 真机 + ROS 2 Docker
 
 ## 参考来源
 

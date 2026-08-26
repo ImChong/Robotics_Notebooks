@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, sjtu]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-26
 arxiv: "2502.20390"
 venue: "2025 · CVPR"
 code: https://github.com/Sirui-Xu/InterMimic
@@ -13,6 +13,7 @@ related:
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
   - ./paper-lucid.md
+  - ./paper-dreammimic.md
 sources:
   - ../../sources/papers/bfm_awesome_intermimic_arxiv_2502_20390.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -88,6 +89,7 @@ sources:
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 篮球 HOI 技能模仿对照：[SkillMimic](./paper-notebook-skillmimic-learning-basketball-interaction-skill.md)
+- 视觉学生蒸馏对照：[DreamMimic](./paper-dreammimic.md) — 以本页特权教师配方为蒸馏源；RSSM+PCG，代码未发布
 - 原始 source：[bfm_awesome_intermimic_arxiv_2502_20390.md](../../sources/papers/bfm_awesome_intermimic_arxiv_2502_20390.md)
 
 ## 参考来源

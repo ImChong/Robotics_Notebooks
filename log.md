@@ -1,3 +1,9 @@
+## [2026-08-26] ingest | sources/papers/{ros2smolvla,dreammimic,ld4wam}_arxiv_2608_*.md — ROS2SmolVLA（ROS 2 本地 SmolVLA×UR10e，已开源）、DreamMimic（视觉全身 RSSM 蒸馏，代码 Coming soon）、LD4WAM（跨本体运动对齐潜动力学 WAM，未开源）
+
+- **ROS2SmolVLA（2608.23320）：** 奥格斯堡大学；项目页+GitHub+HF 核查 **已开源**；实体 `paper-ros2smolvla`；交叉 VLA / LeRobot / ROS 2 / manipulation
+- **DreamMimic（2608.22278）：** Independent / 清华；项目页 Code Coming soon，GitHub 仅占位 README；实体 `paper-dreammimic`；交叉 VisualMimic / InterMimic / loco-manipulation
+- **LD4WAM（2608.22403）：** 无项目页/代码；通讯作者个人主页为 Berkeley 博士后，论文未列单位；实体 `paper-ld4wam`；交叉 WAM / EgoWAM / Being-H0.7 / manipulation
+
 ## [2026-08-26] ingest | sources/blogs/skild_s1_in_context_learning.md — Skild S1 视频 ICL；github.com/skild-ai 0 公开仓确认未开源；升格 wiki/entities/skild-s1.md 与 skild-ai.md
 
 - **触发：** 用户指定 <https://www.skild.ai/blogs/s1>
@@ -11,7 +17,6 @@
 - **步骤 2.5：** **宣称将开源** — 作者计划 2026-10 发官方基准；入库日无 GitHub / 数据链
 - **四条：** 过拟合有时更好；开环优于闭环；策略须极大；无限数据下特征缩放仍改成功率
 - **关键页：** [`wiki/concepts/behavioral-cloning-mysteries.md`](wiki/concepts/behavioral-cloning-mysteries.md)
-
 
 ## [2026-08-25] ingest | sources/repos/fetchman.md — FetchMan 二次核查开源状态：项目页挂 GitHub 占位仓；更新实体页与 loco-manipulation 索引
 

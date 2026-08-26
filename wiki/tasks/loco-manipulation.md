@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-25
+updated: 2026-08-26
 sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
@@ -36,6 +36,7 @@ sources:
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
   - ../../sources/papers/resmimic_arxiv_2510_05070.md
   - ../../sources/papers/visualmimic_arxiv_2509_20322.md
+  - ../../sources/papers/dreammimic_arxiv_2608_22278.md
   - ../../sources/papers/cwi_arxiv_2606_27676.md
   - ../../sources/papers/omnicontact_arxiv_2606_26201.md
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
@@ -129,6 +130,7 @@ flowchart TD
 - **核心**：**任务无关低层** 从人类动作蒸馏 **关键点跟踪器**（motion teacher → keypoint student）；**任务专用高层** 从特权物体状态教师蒸馏 **egocentric 深度 visuomotor 生成器**；接口为 root + 头/双手/双足共 5 点，共享低层、逐任务训高层。
 - **稳定技巧**：低层训时命令噪声；高层动作 clip 到人类动作空间（HMS）；仿真深度 heavy masking 抗 visual gap。
 - **代表作**：[VisualMimic](../entities/paper-notebook-visualmimic.md) (Stanford, 2025, arXiv:2509.20322) — 真机零样本 **push / lift / kick / dribble**；**3.8 kg** 大箱全身 push 与 **户外** 泛化；相对 [TWIST](../entities/paper-twist.md) 补视觉、[VideoMimic](../entities/videomimic.md) 补 loco-manip、[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md) 走 **关键点+深度** 而非 RGB 大规模蒸馏。
+- **世界模型辅助蒸馏对照**：[DreamMimic](../entities/paper-dreammimic.md) (Independent / 清华, IROS 2026, arXiv:2608.22278) — RSSM 潜对齐 + PCG 把 InterMimic 特权教师蒸成深度+分割学生；OMOMO Succ. **92.2%**；**无真机、代码 Coming soon**。与 VisualMimic 的差别是 **关键点分层 vs 端到端 RSSM 学生**。
 
 ### 5. 残差与自适应学习 (Residual & Adaptive)
 - **核心**：在 **预训练全身先验**（GMT、WBC 等）或高层规划输出之上，用轻量 RL 学习 **残差修正**，注入物体条件、地形或扰动补偿，避免每条任务从零学平衡与步态。
@@ -289,6 +291,7 @@ flowchart TD
 - [OmniRetarget（论文实体）](../entities/paper-hrl-stack-03-omniretarget.md) / [holosoma](../entities/holosoma.md) — 交互保留重定向与 loco-manipulation 参考数据生成
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 预训练 + 残差后训练的全身 loco-manipulation（arXiv:2510.05070）
 - [VisualMimic（论文实体）](../entities/paper-notebook-visualmimic.md) — 视觉分层 sim2real + 关键点 tracker 全身 loco-manipulation（arXiv:2509.20322）
+- [DreamMimic（论文实体）](../entities/paper-dreammimic.md) — RSSM + PCG 视觉全身蒸馏；OMOMO 92.2%；代码 Coming soon（arXiv:2608.22278）
 - [视觉特权表征运球（论文实体）](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md) — RMA 式深度蒸馏 + 对手感知运球（arXiv:2607.12702，Booster T1 仿真）
 - [语义音频驱动 WBC（论文实体）](../entities/paper-semantic-audio-wbc-humanoid.md) — 音频指纹/语音语义在线调度 BeyondMimic 技能库（arXiv:2607.14182，G1 真机）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
@@ -343,6 +346,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：交互保留人形重定向（ICRA 2026）
 - **ingest 档案：** [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：GMT→残差全身 loco-manipulation（arXiv:2510.05070）
 - **ingest 档案：** [sources/papers/visualmimic_arxiv_2509_20322.md](../../sources/papers/visualmimic_arxiv_2509_20322.md) — VisualMimic：视觉分层 sim2real + 关键点 tracker loco-manipulation（arXiv:2509.20322）
+- **ingest 档案：** [sources/papers/dreammimic_arxiv_2608_22278.md](../../sources/papers/dreammimic_arxiv_2608_22278.md) — DreamMimic：RSSM 辅助视觉全身蒸馏（arXiv:2608.22278）
 - **ingest 档案：** [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md) — DiT4DiT：双 DiT 联合 VAM 与 G1 全身 loco-manip（arXiv:2603.10448）
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
 - **ingest 档案：** [sources/papers/omega0_arxiv_2608_06375.md](../../sources/papers/omega0_arxiv_2608_06375.md) — ω-0：潜空间 foresight 人形并发 loco-manipulation（arXiv:2608.06375）

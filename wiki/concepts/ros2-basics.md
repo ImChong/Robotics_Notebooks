@@ -2,7 +2,7 @@
 type: concept
 tags: [middleware, software, ros2, architecture, deployment, open-robotics]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-26
 related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -16,6 +16,7 @@ related:
   - ../entities/cyclone-dds.md
   - ./lcm-basics.md
   - ../overview/hub-systems-engineering.md
+  - ../entities/paper-ros2smolvla.md
 sources:
   - ../../sources/sites/ros2-official-documentation.md
   - ../../sources/sites/ros2-github-org.md
@@ -116,6 +117,7 @@ flowchart TB
 - **导航栈**：[Navigation2](../entities/navigation2.md)、[导航·SLAM 总览](../overview/navigation-slam-autonomy-stack.md)。
 - **厂商桥**：[unitree_ros2](../entities/unitree-ros2.md) 直接消费 CycloneDDS 消息。
 - **ROS-optional 对照**：[DimOS](../entities/dimensionalos-dimos.md) 默认 LCM，可选 ROS 2 传输。
+- **VLA 胶水**：[ROS2SmolVLA](../entities/paper-ros2smolvla.md) 用 Docker 把 LeRobot SmolVLA 接到 UR10e 的 ros2_control / 笛卡尔速度环（Jazzy）。
 
 ## 局限与风险
 
@@ -134,6 +136,7 @@ flowchart TB
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md)
 - [Navigation2](../entities/navigation2.md)
 - [DimOS](../entities/dimensionalos-dimos.md)
+- [ROS2SmolVLA](../entities/paper-ros2smolvla.md)
 - [PlotJuggler](../entities/plotjuggler.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)

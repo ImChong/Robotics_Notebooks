@@ -361,6 +361,14 @@
         "amazon-far"
       ]
     },
+    "augsburg": {
+      "label": "奥格斯堡大学（University of Augsburg）",
+      "aliases": [
+        "augsburg",
+        "uni-augsburg",
+        "university-of-augsburg"
+      ]
+    },
     "inria": {
       "label": "法国国家信息与自动化研究所（INRIA）",
       "aliases": [

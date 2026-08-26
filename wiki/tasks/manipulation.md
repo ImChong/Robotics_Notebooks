@@ -67,6 +67,8 @@ sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
+  - ../../sources/papers/ros2smolvla_arxiv_2608_23320.md
+  - ../../sources/papers/ld4wam_arxiv_2608_22403.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
@@ -150,6 +152,8 @@ flowchart TD
 - **EgoWorld-100W**：StellarNex **百万级** 头戴第一人称操作语料，按 **场景×物体×动作×手性** 结构化；**申请制**合作开放（非公开一键下载）；入口见 [EgoWorld-100W](../entities/egoworld-100w.md)（与 ICLR [EgoWorld exo→ego](../entities/paper-egoworld.md) **同名异物**）
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；代码与权重已开源；入口见 [EgoSteer](../entities/paper-egosteer.md)（arXiv:2607.09701）
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **[EgoVerse](../entities/paper-egoverse.md) 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
+- **LD4WAM**：在 DINOv3 语义空间用 **Delta EE 运动对齐** 学跨本体潜动力学，再以 MoT WAM 的 learnable queries 从生成未来蒸馏该码；RoboTwin **93.4%**、夹爪+灵巧手真机均 **70.5%**；**确认未开源**；入口见 [LD4WAM](../entities/paper-ld4wam.md)（arXiv:2608.22403）
+- **ROS2SmolVLA**：把 **SmolVLA 450M** 接到 **ROS 2 + UR10e** 本地拾放；九场景总体 **77.72%**；**Docker + HF 已开源**；入口见 [ROS2SmolVLA](../entities/paper-ros2smolvla.md)（arXiv:2608.23320）
 - **JoyAI-RA 0.5**：京东 **VLWA** 通才操作——**隐式 latent-action** + **显式 130-D** 双对齐吃人/仿/机异构数据，**内–外环 RL**；AgiBot G1 seen **92.0** / unseen **75.5**，人视频缩放未见饱和；**未开源**；入口见 [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md)（arXiv:2608.05674）
 - **EgoVerse**：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身共训研究——共训可涨分，但缩放需 **域对齐锚定**，场景多样性主导有限预算泛化；入口见 [EgoVerse](../entities/paper-egoverse.md)
 - **WAM-TTT**：在 **冻结 LDA WAM** 上用 **人视频测试时 TTT fast-weight 记忆** **steer** 新任务变体——**meta-training** 对齐人–机相位 + **KV 重建**；部署仅需 **无标注 egocentric 人视频**；**G1 + Galbot 双臂 9 任务** New 家庭场景 **46.2%** avg progress，显著优于 **WAM-ICL（7.1%）**；入口见 [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md)（arXiv:2607.06988）
@@ -205,6 +209,8 @@ flowchart TD
 - [EgoWorld（exo→ego）](../entities/paper-egoworld.md) — 单张第三人称→第一人称视图翻译（ICLR 2026）
 - [EgoSteer](../entities/paper-egosteer.md) — EgoSmith + HITL DAgger + WM 增强双灵巧手 VLA 全栈（arXiv:2607.09701）
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) — WAM 人–机协同训练与野外 egocentric 人数据缩放
+- [LD4WAM](../entities/paper-ld4wam.md) — 运动对齐潜动力学人视频 WAM（arXiv:2608.22403；未开源）
+- [ROS2SmolVLA](../entities/paper-ros2smolvla.md) — ROS 2 本地 SmolVLA × UR10e（arXiv:2608.23320；已开源）
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 人示教活数据集与跨实验室共训判据
 - [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) — 部署期人视频 TTT 记忆 steering 冻结 WAM（LDA 底座，arXiv:2607.06988）
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — 触觉反应式灵巧 VLA + 开源触觉数据集与 12 任务基准
