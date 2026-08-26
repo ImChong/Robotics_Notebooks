@@ -16,6 +16,7 @@ related:
   - ../tasks/manipulation.md
   - ../methods/reinforcement-learning.md
   - ../overview/open-source-8-papers-technology-map.md
+  - ./paper-reward-free-continual-adaptation-space.md
 sources:
   - ../../sources/papers/space_mining_with_robotics_arxiv_2608_21358.md
   - ../../sources/sites/space-mining-openspace-lab.md
@@ -120,6 +121,7 @@ flowchart LR
 - [manipulation](../tasks/manipulation.md) — 采样与抓取子能力
 - [reinforcement-learning](../methods/reinforcement-learning.md) — 高自主决策层
 - [open-source-8-papers-technology-map](../overview/open-source-8-papers-technology-map.md) — 公众号索引
+- [无奖励持续适应](./paper-reward-free-continual-adaptation-space.md) — 地外故障后无奖励在线适应（DreamerV3 × SRB）
 
 ## 参考来源
 

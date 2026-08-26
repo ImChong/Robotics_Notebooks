@@ -202,7 +202,7 @@ flowchart TD
 实际系统常把传统控制和学习策略组合起来，而不是二选一：
 
 - **RL policy + PD/阻抗底层**：策略输出关节位置增量或期望角度，PD/阻抗层保证高频执行稳定。
-- **MPC/WBC baseline + learned residual**：模型控制提供安全可解释的主干，学习模块补偿摩擦、冲击或模型误差。
+- **MPC/WBC baseline + learned residual**：模型控制提供安全可解释的主干，学习模块补偿摩擦、冲击或模型误差。[PhyFilter](../entities/paper-phyfilter.md) 把残差送进物理低通滤波，平地 RL 策略可泛化到未见真机地形（arXiv:2608.22701）。
 - **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。经典 **在线适应** 实例：[RMA](../entities/paper-rma-rapid-motor-adaptation.md)（特权 extrinsics → 历史 $\hat{z}_t$ 估计，A1 零微调）。**箱载动态载荷** 实例：[Legged Load Adapt](../entities/paper-legged-load-adapt-unknown-dynamic-load.md)（load characteristics 特权 + concurrent estimator，Go2 零样本）。
 - **Motion prior + task RL**：先用 MoCap/视频/重定向得到自然运动先验，再用任务奖励获得速度、转向和地形适应能力。
 
@@ -329,6 +329,7 @@ flowchart TD
 - [ZEST](../methods/zest.md) — arXiv:2602.00401（跨形态高动态模仿与零样本硬件部署）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 - [Argus（动态对称 / 球形腿式全向移动）](../entities/paper-argus-dynamic-symmetry.md) — Science Robotics 2026；动态各向同性 η 与 20 腿无朝向偏好 locomotion
+- [PhyFilter](../entities/paper-phyfilter.md) — 物理滤波残差修正；四足平地训练泛化到未见地形（arXiv:2608.22701）
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 跨介质仿生多模态定义 + 五项评测指标（MCM/CRP/TC 等）+ 物理×计算智能路线图
 - [腿式机器人进展/挑战/机遇综述（Science Robotics 2026）](../entities/paper-legged-robots-advances-challenges.md) — 硬件/locomotion/自主/数据/应用五柱 + 伦理–政策展望（ETH 牵头）
 

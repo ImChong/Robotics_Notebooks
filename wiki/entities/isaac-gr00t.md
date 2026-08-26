@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
   - ./letools.md
+  - ./paper-indi.md
 sources:
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
@@ -127,6 +128,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)  
 - 视觉 Sim2Real 姊妹仓：[gr00t-visual-sim2real.md](../entities/gr00t-visual-sim2real.md)
 - 对象中心闭环增强：[POT-VLA](./paper-pot-vla.md) — 在 **GR00T-N1.7** 动作头插入持久 3D 对象 token + 几何谓词验收（G1 **39/80→71/80**；POT 侧未开源）
+- 行为意图蒸馏：[Indi](./paper-indi.md) — 在 GR00T-N1.7 解码器中间层恢复局部目标（arXiv:2608.23478；未开源）
 
 ## 参考来源
 

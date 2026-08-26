@@ -1512,6 +1512,19 @@
         "uni-lu"
       ]
     },
+    "postech": {
+      "label": "浦项工科大学（POSTECH）",
+      "aliases": [
+        "postech"
+      ]
+    },
+    "heilbronn": {
+      "label": "海尔布隆应用科学大学（Heilbronn University of Applied Sciences）",
+      "aliases": [
+        "heilbronn",
+        "hs-heilbronn"
+      ]
+    },
     "unizar": {
       "label": "萨拉戈萨大学（Universidad de Zaragoza）",
       "aliases": [

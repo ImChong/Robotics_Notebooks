@@ -1,3 +1,11 @@
+## [2026-08-26] ingest | sources/blogs/wechat_embodied_station_7_papers_vla_intent_space_2026-08-26.md — 具身智能小站 7 篇开源盘点；新建 6 论文实体 + 技术地图；复用 ROS2SmolVLA；Indi 未开源 / SRB·RAFT·evrgb·PhyFilter 已开源 / MoeCo 部分开源
+
+- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/zHxwlUsj22t1oPd9Q2C-dw>；要求每篇论文独立非重复详情节点
+- **步骤 2.5：** Indi 仅 Pages 站 **未开源**；SRB / RAFT / simple-evrgb-cal / PhyFilter **已开源**；MoeCo 模型/损失已放、完整训练入口待录用后发布；ROS2SmolVLA 沿用既有开源结论
+- **新建实体：** `paper-indi`、`paper-reward-free-continual-adaptation-space`、`paper-raft-thruster-fault`、`paper-moeco`、`paper-simple-evrgb-cal`、`paper-phyfilter`
+- **复用实体：** `paper-ros2smolvla`（arXiv:2608.23320，当日先前 ingest）
+- **技术地图：** [`wiki/overview/open-source-7-papers-system-structure-technology-map.md`](wiki/overview/open-source-7-papers-system-structure-technology-map.md)
+
 ## [2026-08-26] fix | scripts/utils/community_labels.py — 为 VLA 开源复现景观枢纽补 COMMUNITY_NAME_OVERRIDES，修复 Tests community-19 命名断言
 
 - **触发：** PR #1682 合入后 Louvain 把 `wiki/overview/vla-open-source-repro-landscape-2025.md` 选为社区枢纽；H1「VLA 开源复现景观（2025 策展）」以英文缩写开头，不符合 `中文（English） 社区`

@@ -15,6 +15,7 @@ related:
   - ./domain-randomization.md
   - ../tasks/loco-manipulation.md
   - ../entities/paper-cref.md
+  - ../entities/paper-raft-thruster-fault.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/extreme-parkour.md
@@ -283,6 +284,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [FADA](../entities/paper-fada-humanoid.md) — 仿真特权 oracle → DAgger 蒸馏 Planner–IDM；部署仅 LoRA 微调 IDM（arXiv:2606.28476）
 - [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 训练期 PCA 地形描述子门控 BSGA；部署纯本体感知 actor（非经典 teacher–student 蒸馏）
 - [CReF](../entities/paper-cref.md) — 深度条件人形行走：非对称 critic 吃局部高程，Actor 无蒸馏直吃 raw 深度（arXiv:2603.29452）
+- [RAFT（推进器容错）](../entities/paper-raft-thruster-fault.md) — 特权只给 PPO critic，GRU actor 部署无故障传感器（arXiv:2608.22976）
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — Teacher-Student 作为训练闭环的后置部署模块

@@ -17,6 +17,7 @@ venue: "Science Robotics 2024"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
+  - ./paper-simple-evrgb-cal.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md
@@ -143,6 +144,7 @@ sequenceDiagram
 ## 关联页面
 
 - [KEMO：事件驱动关键帧记忆 VLA](./paper-kemo-event-driven-keyframe-memory-vla.md)
+- [simple-evrgb-cal](./paper-simple-evrgb-cal.md) — 无运动事件—RGB 外参标定（显示器调制 ChArUco）
 - [Sim2Real（仿真到真实迁移概念）](../concepts/sim2real.md)
 
 ## 参考来源

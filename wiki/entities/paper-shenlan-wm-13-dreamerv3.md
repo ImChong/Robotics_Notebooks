@@ -22,6 +22,7 @@ related:
   - ../methods/model-based-rl.md
   - ../concepts/latent-imagination.md
   - ./open-dreamer.md
+  - ./paper-reward-free-continual-adaptation-space.md
   - ./paper-ha-schmidhuber-world-models.md
   - ./paper-planet-latent-dynamics.md
   - ./paper-td-mpc2.md
@@ -210,6 +211,7 @@ sequenceDiagram
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Open Dreamer](./open-dreamer.md)
+- [无奖励持续适应](./paper-reward-free-continual-adaptation-space.md) — 冻结 DreamerV3 奖励头、只改 RSSM 动态以应对太空硬件退化
 - [World Models](./paper-ha-schmidhuber-world-models.md) · [PlaNet](./paper-planet-latent-dynamics.md) · [TD-MPC2](./paper-td-mpc2.md) · [UniSim](./paper-unisim.md)
 - [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — HEAP 仿真中相对想象 RL 的真机一阶对照
 

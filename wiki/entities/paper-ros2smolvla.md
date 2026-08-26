@@ -23,10 +23,13 @@ related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./lw-benchhub-tour.md
   - ./paper-evo1-lightweight-vla.md
+  - ./paper-indi.md
+  - ../overview/open-source-7-papers-system-structure-technology-map.md
 sources:
   - ../../sources/papers/ros2smolvla_arxiv_2608_23320.md
   - ../../sources/sites/ros2smolvla-una-auxme.md
   - ../../sources/repos/ros2smolvla_docker.md
+  - ../../sources/blogs/wechat_embodied_station_7_papers_vla_intent_space_2026-08-26.md
 summary: "ROS2SmolVLA（arXiv:2608.23320，奥格斯堡大学）：把 450M SmolVLA 接到 ROS 2 + UR10e，Docker 本地推理；349 episode 笛卡尔速度微调，九场景 pick-and-place 总体 77.72%；代码/数据/权重已开源。"
 ---
 
@@ -188,12 +191,15 @@ sequenceDiagram
 - [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — 同底座 SmolVLA，仿真双臂对照
 - [Evo-1](./paper-evo1-lightweight-vla.md) — 另一条亚十亿轻量 VLA（刷分 vs 工业接口）
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 2026 补充入口
+- [Indi](./paper-indi.md) — 同专辑：给 VLA 解码器意图而非换工业接口
+- [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md) — 复用本节点，不重复造页
 
 ## 参考来源
 
 - [ROS2SmolVLA 论文摘录](../../sources/papers/ros2smolvla_arxiv_2608_23320.md)
 - [项目页归档](../../sources/sites/ros2smolvla-una-auxme.md)
 - [ros2smolvla_docker 仓库归档](../../sources/repos/ros2smolvla_docker.md)
+- [具身智能小站 7 篇盘点](../../sources/blogs/wechat_embodied_station_7_papers_vla_intent_space_2026-08-26.md)
 
 ## 推荐继续阅读
 
