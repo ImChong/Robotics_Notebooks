@@ -3,14 +3,17 @@ type: concept
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-08-16
+updated: 2026-08-26
 related:
   - ./embodied-scaling-laws.md
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/paper-arcadia.md
+  - ../entities/skild-s1.md
+  - ./robot-in-context-learning.md
 sources:
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
+  - ../../sources/blogs/skild_s1_in_context_learning.md
 ---
 
 # Data Flywheel (具身数据飞轮)
@@ -22,6 +25,9 @@ sources:
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ICL | In-Context Learning | 不改权重、从上下文示范学习；可把部署周期压到分钟级再回流数据 |
+| IL | Imitation Learning | 主流飞轮常把部署轨迹当新演示做模仿 |
+| VLA | Vision-Language-Action | 语言条件基础策略；与 ICL 飞轮对照时是后训练路径 |
 
 ## 为什么重要？
 
@@ -47,9 +53,23 @@ sources:
 
 在宏观 AI 进展框架下，DeepMind [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md) 把 **test-time 搜索/推理结果蒸馏回训练集**（AlphaZero 式）与 **仿真/交互轨迹扩增** 列为对抗 **数据墙** 的主通道之一——与具身飞轮「部署产生新数据」同构，但强调 **算力换数据质量** 而非仅堆人类演示。
 
+第三条产业读法：[S1](../entities/skild-s1.md) 主张 **ICL 把新任务部署压到分钟级**（盆栽示例：录示范到真机约 11 分钟），才能把现场交互及时喂回预训练；若每个新任务仍要数小时遥操作 + 微调，飞轮转不起来。这是 **适应延迟** 对飞轮转速的约束，与 LWD 的「别丢失败轨迹」互补。
+
 ## 参考来源
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [sources/papers/lwd.md](../../sources/papers/lwd.md) — LWD 把数据飞轮重定义为 offline-to-online RL 闭环
 - [From AGI to ASI 论文摘录（arXiv:2606.12683）](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — 数据 RSI 与仿真/交互数据对抗数据墙
 - [Arcadia 论文摘录（arXiv:2512.00076）](../../sources/papers/arcadia_arxiv_2512_00076.md) — 部署反馈同时写回资产与策略
+- [S1 博客归档](../../sources/blogs/skild_s1_in_context_learning.md) — ICL 分钟级部署作为飞轮转速约束
+
+## 关联页面
+
+- [Embodied Scaling Laws](./embodied-scaling-laws.md)
+- [S1（Skild）](../entities/skild-s1.md) — 分钟级 ICL 部署叙事
+- [机器人 In-Context Learning](./robot-in-context-learning.md)
+- [LWD](../methods/lwd.md) — 失败轨迹也进飞轮的 RL 读法
+
+## 推荐继续阅读
+
+- [S1 原文](https://www.skild.ai/blogs/s1) — ICL 与数据飞轮的产业表述

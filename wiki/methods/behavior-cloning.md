@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, supervised-learning, manipulation, covariate-shift]
 status: complete
-updated: 2026-08-22
+updated: 2026-08-26
 summary: "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
 related:
   - ./imitation-learning.md
@@ -16,12 +16,15 @@ related:
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-nestdex.md
   - ../entities/paper-spd.md
+  - ../concepts/behavioral-cloning-mysteries.md
+  - ../entities/paper-revisiting-open-loop-action-chunking.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
+  - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 ---
 
 # Behavior Cloning（行为克隆）
@@ -51,6 +54,7 @@ sources:
 - 在奖励函数很难设计、但演示数据容易拿到的任务里，BC 往往是最低门槛方案。
 - 许多真机操作系统都会先用 BC 做 warm start，再用更复杂方法提升鲁棒性。
 - **工业操作的新共识（2026）：** BC 往往只需覆盖 **行为模态**；**速度与近完美可靠性** 需 RL 在真实动力学下优化——见 [KinetIQ Ascend](../entities/kinetiq-ascend.md) 对 **示教速度上限、因果混淆、失败代价不可见** 的讨论。
+- **真机风格数据会改写「标准 BC 直觉」：** 过拟合有时更好、开环 chunk 优于逐步闭环、简单状态任务也要极大网络、无限数据下特征缩放仍改成功率——见 [BC Mysteries](../concepts/behavioral-cloning-mysteries.md)（仿真复现，基准尚未开源）。
 
 ## 输入、输出与训练目标
 
@@ -87,6 +91,9 @@ $$
 ### 3. 受限于专家上界
 如果数据里没有恢复动作、异常姿态或罕见接触，BC 通常也学不会这些行为。[DA-Nav](../entities/paper-da-nav.md) 在户外 VLN 消融中给出定量对照：去掉 recovery 轨迹后 CSR 从约 **98%** 掉到 **15%**，说明「只仿完美专家」对闭环纠偏不足。
 
+### 4. Train 指标与闭环成功率不对齐（真机风格数据）
+在窄分布、时间强相关的人类风格演示上，验证 **flow / BC 损失恶化** 时成功率仍可能上升；同分布更大数据集有时更差。更相关的代理是策略诱导状态下的动作误差，而不是专家分布上的 NLL。系统整理见 [BC Mysteries](../concepts/behavioral-cloning-mysteries.md)。
+
 ## 主要技术路线
 
 | 问题 | 常见缓解 |
@@ -120,7 +127,9 @@ $$
 - **误区 2：BC 的累积误差和序列长度无关。**
   错。horizon 越长，早期偏差越容易滚雪球。
 - **误区 3：只要模型够大，BC 就天然鲁棒。**
-  模型容量能帮助拟合，但不能替代分布覆盖。
+  模型容量能帮助拟合，但不能替代分布覆盖。反过来说：真机风格数据上 **容量不够** 会让最简单的 pick-and-place 也学不会——「任务简单所以小 MLP 够了」同样是误区。
+- **误区 4：闭环逐步执行一定优于开环 chunk。**
+  纯 \(\pi(a_t\mid s_t)\) 在无限数据 BC 上可以完全失败；开环是在补偿非马尔可夫演示。加长历史也不自动等于修好——见 [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) 与 [Revisiting Open-Loop](../entities/paper-revisiting-open-loop-action-chunking.md) 的对读。
 
 ## 参考来源
 
@@ -128,6 +137,7 @@ $$
 - [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 生成式模仿学习如何扩展传统 BC
 - [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — chunk / delay 对 BC 复合误差与部署协议的机制分析
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真预训练后的真机 BC 微调对照
+- [Behavioral cloning mystery（Seohong Park，2026-08）](../../sources/blogs/seohong_behavioral_cloning_mystery.md) — 真机风格数据上的四条可复现反直觉
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — 解释为什么纯 BC 会受到 covariate shift 影响
 
 ## 关联页面
@@ -146,6 +156,8 @@ $$
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — Delay / RDE：何时不必真的执行 chunk
 - [NestDex](../entities/paper-nestdex.md) — 外层 BC 用 H-VAE 手 latent；示范来自 copilot 而非全 DoF 遥操作（arXiv:2608.13362）
 - [SPD](../entities/paper-spd.md) — 仿真预训练后的真机 BC 微调，五项任务均胜过从零（CoRL 2026）
+- [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) — 过拟合 / 开环 / 大模型 / 特征缩放四条真机风格现象
+- [Revisiting Open-Loop Execution](../entities/paper-revisiting-open-loop-action-chunking.md) — 加长观测上下文后闭环可赢开环
 
 ## 推荐继续阅读
 

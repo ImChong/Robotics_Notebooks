@@ -10,7 +10,7 @@ tags:
   - berkeley
   - analysis
 status: complete
-updated: 2026-08-22
+updated: 2026-08-26
 arxiv: "2608.15938"
 venue: "arXiv 2026"
 related:
@@ -18,6 +18,7 @@ related:
   - ../methods/behavior-cloning.md
   - ../methods/diffusion-policy.md
   - ./paper-why-action-chunking-improves-bc.md
+  - ../concepts/behavioral-cloning-mysteries.md
   - ./paper-autointervene.md
   - ./paper-spd.md
   - ./libero-benchmark.md
@@ -113,6 +114,7 @@ flowchart TB
 - **加长上下文可消除开环收益** — \(T_o\) 8–20 帧区间在多任务让 reactive 策略追上并超过长执行。
 - **Double encoder 是实用训练配方** — 分离即时控制与长程推断表征，减轻长上下文训练不稳定。
 - **与 Why AC 对照** — Why AC：同一 \(\hat\pi_k\) 用 RDE 复现 chunk 收益；本文：同一 chunk 策略在够长 \(T_o\) 下 **不必长开环执行**。
+- **与 BC Mysteries 对照** — 人类风格数据上，把过去 24 帧状态拼进闭环 **未能** 追上 length-25 开环。本文的「加长上下文」指能观测专家隐状态的视觉/历史，不是更长的关节角窗口。
 
 ## 工程实践与开源状态
 
@@ -132,6 +134,7 @@ flowchart TB
 
 - [Action Chunking](../methods/action-chunking.md) — 方法 hub（将补交叉引用）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — 并发机制论文
+- [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) — 无限数据下开环仍可完胜「乱加历史」的闭环
 - [Diffusion Policy](../methods/diffusion-policy.md) — 主实验载体
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 反应性 vs 延迟缓冲
 - [AutoIntervene](./paper-autointervene.md) — chunk 执行期干预对照

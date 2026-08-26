@@ -2471,6 +2471,8 @@
 - [SIDA（Social Media Image Detection Assistant）](wiki/entities/sida.md) — SIDA** 是面向社交媒体图像的 **伪造检测 + 篡改定位 + 文字解释** 多模态助手：在 VLM 词表中引入特殊 token，同时输出真伪类别、篡改掩码与判定理由。 `📅unknown` `[entity_page]`
 - [SimpleFOC（Arduino-FOC 生态）](wiki/entities/simplefoc.md) — SimpleFOC** 指围绕 Arduino-FOC 库形成的开源项目：跨 MCU 的 **磁场定向控制 `📅unknown` `[entity_page]`
 - [SimToolReal](wiki/entities/simtoolreal.md) — SimToolReal](https://github.com/tylerlum/simtoolreal) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXi `📅unknown` `[entity_page]`
+- [Skild AI](wiki/entities/skild-ai.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [S1：机器人 In-Context Learning（Skild）](wiki/entities/skild-s1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [skrl](wiki/entities/skrl.md) — skrl](https://github.com/Toni-SM/skrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
 - [SLAM Toolbox](wiki/entities/slam-toolbox.md) — SLAM Toolbox** 面向 **2D 激光** 的 lifelong 建图与定位，支持大规模地图持久化与在线更新。 `📅unknown` `[entity_page]`
 - [SMP on G1（mjlab 复现）](wiki/entities/smp-g1-mjlab.md) — senlanke/mimic](https://github.com/senlanke/mimic)**（同系镜像 [SUZ-tsinghua/smp](https://github.com/S `📅unknown` `[entity_page]`
@@ -2586,6 +2588,7 @@
 - [Bayesian Belief Analysis（贝叶斯信念分析）](wiki/concepts/bayesian-belief-analysis.md) — 贝叶斯信念分析**：在 **部分可观测** 或 **模型不确定** 的序贯决策中，用 **概率分布 $b_t$** 表示对隐状态（或参数）的信念，并按 **Bayes 规则** 随观测递推更新，再 `📅unknown` `[wiki_page]`
 - [Behavior Foundation Model（行为基础模型，BFM）](wiki/concepts/behavior-foundation-model.md) — Behavior Foundation Model（BFM）**：从 **大规模、多样化行为数据**（动捕、遥操作、自博弈交互等）学习 **可复用的全身行为先验**，使人形 **whole-bod `📅unknown` `[wiki_page]`
 - [行为树 × VLA 编排](wiki/concepts/behavior-tree-vla-orchestration.md) — 行为树（Behaviour Tree, BT）与 VLA 结合**：把 **宏任务流程**（加载策略、复位姿态、移动底盘、循环 pick-and-place）交给 **可组合、可恢复** 的行为树 `📅unknown` `[wiki_page]`
+- [Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）](wiki/concepts/behavioral-cloning-mysteries.md) — Behavioral Cloning Mysteries**：在统计性质接近人类演示（窄分布、时间强相关、平滑随机）的数据上训 BC 时，会出现标准 D4RL/OGBench 看不到的四条现象—— `📅unknown` `[wiki_page]`
 - [The Bitter Lesson（惨痛教训）](wiki/concepts/bitter-lesson.md) — The Bitter Lesson**：Richard Sutton 2019 年提出的 AI 方法论观察——**通用、可随算力规模扩展的方法（search 与 learning）长期压倒内置人类 `📅unknown` `[wiki_page]`
 - [缓存一致性陷阱（穿透 / 雪崩 / 击穿 / 一致性）](wiki/concepts/cache-consistency-pitfalls.md) — 缓存一致性陷阱** 归纳「加速层」失效时如何打穿数据库或返回脏数据——在机器人模型仓库、配置中心与遥测聚合 API 上反复出现。 `📅unknown` `[wiki_page]`
 - [CAN 总线（经典 CAN / CAN 2.0）](wiki/concepts/can-bus-protocol.md) — CAN（Controller Area Network）** 是一种 **多主、广播式、带硬件仲裁** 的串行现场总线。在机器人里，它最常见于 **主控板 ↔ 关节电机驱动器** 的反馈与力矩指令 `📅unknown` `[wiki_page]`

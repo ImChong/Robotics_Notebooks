@@ -291,7 +291,7 @@ flowchart TD
 - [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
 - [ssik](../entities/ssik.md) — 6R/7R **解析 IK** 全分支枚举；非 Pieper 6R 与 7R 冗余臂（UW PRL，BSD-3）
 - [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — physical prompting / 极少步适应的闭源产业对照
-- [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 示范/记忆/metadata/TTT 四类「上下文」拆解
+- [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 示范/记忆/metadata/TTT 四类「上下文」拆解；长程未见视频 ICL 见 [S1](../entities/skild-s1.md)
 - [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 跨末端/工具接口的通才操作叙事（闭源产业对照）
 
 ## 关联任务
@@ -317,6 +317,8 @@ flowchart TD
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
 - [AnyGrasp](../entities/anygrasp.md) — 深度点云稠密抓取检测与跟踪的工程/SDK 入口
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
+- [S1（Skild）](../entities/skild-s1.md) — 视频 ICL 长程未见操作（闭源产业样本）
+- [机器人 In-Context Learning](../concepts/robot-in-context-learning.md) — 示范进上下文 vs 后训练克隆
 - [LeTools](../entities/letools.md) — Kuavo 官方 IL/VLA 训练部署与原子技能栈
 - [LET-Base-Dataset](../entities/let-base-dataset.md) — 全尺寸人形真机操作小时库
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 0.47B 动作接地 latent 策略（LIBERO/CALVIN/真机）

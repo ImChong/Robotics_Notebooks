@@ -1235,6 +1235,13 @@
         "generalist-ai"
       ]
     },
+    "skild-ai": {
+      "label": "斯齐尔德（Skild AI）",
+      "aliases": [
+        "skild-ai",
+        "skild"
+      ]
+    },
     "wuji-robotics": {
       "label": "舞肌科技（Wuji Technology）",
       "aliases": [

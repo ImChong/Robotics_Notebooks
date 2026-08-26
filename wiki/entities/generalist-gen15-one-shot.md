@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, imitation-learning, in-context-learning, one-shot, foundation-policy, scaling, generalist-ai]
 status: complete
 title: GEN-1.5 一次示范学习（Physical Prompting）
-updated: 2026-08-25
+updated: 2026-08-26
 related:
   - ./generalist-ai-robotics.md
   - ./generalist-gen1-thousand-hands.md
@@ -13,9 +13,11 @@ related:
   - ../tasks/manipulation.md
   - ../methods/imitation-learning.md
   - ../entities/paper-robottt-test-time-training-vla-context.md
+  - ../entities/skild-s1.md
 sources:
   - ../../sources/blogs/generalist_gen15_one_shot.md
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
+  - ../../sources/blogs/skild_s1_in_context_learning.md
 summary: "Generalist GEN-1.5 博客（2026-08）：8+ 月持续预训练后涌现 physical prompting——3–12 秒单次示范无梯度达约 59% 成功率，10 步微调约 83%；并报告组合示范、仿真提示零样本真机、人→机示范与即兴工具使用。"
 ---
 
@@ -120,17 +122,17 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | GEN-1.5（本页） | RoboTTT / context VLA | MINT-Zero 等 one-shot IL |
-|------|----------------|----------------------|--------------------------|
-| 证据 | 公司博客 + 10 任务视频 | 论文 + 开源/部分开源 | 论文 + 基准表 |
-| Prompt | sensorimotor 物理序列 | 多模态 context + fast weights | 意图 token 注入 |
-| 训练目标 | 声称 **无** 显式 ICL 目标 | 显式 context 训练 | 动作分词 + 意图解耦 |
-| 数据规模 | 闭源超大规模预训练 | 公开配方 | 公开配方 |
-| Sim2Real | **仿真示范提示真机** | 视任务而定 | 通常不涉及 |
+| 维度 | GEN-1.5（本页） | S1（Skild） | RoboTTT / context VLA |
+|------|----------------|-------------|----------------------|
+| 证据 | 公司博客 + 10 任务视频 | 公司博客 + 长程视频 | 论文 + 开源/部分开源 |
+| Prompt | 3–12 s sensorimotor | 一条任务视频（可跨场景） | 多模态 context + fast weights |
+| 训练目标 | 声称 **无** 显式 ICL 目标 | **显式** ICL 预训练 | 显式 context / TTT |
+| 公开地平线 | 短程原子为主 | 宣称未见最长约 **10 min** | 视任务而定 |
+| Sim2Real | **仿真示范提示真机** | 未作为主叙事 | 视任务而定 |
 
 ## 局限与风险
 
-- **任务简单、短程：** 作者自认任务与成功率仍有限；勿外推至长程 household / 人形全身。
+- **任务简单、短程：** 作者自认任务与成功率仍有限；勿外推至长程 household / 人形全身。长程未见轴见闭源对照 [S1](./skild-s1.md)，同样不可复现。
 - **闭源不可复现：** 59%/83% 等数字无法独立验证；「首次」「涌现」为作者立场。
 - **ICL 脆弱性：** one-shot 成功率低于少步微调；扰动与失败分布未公开。
 - **安全与对齐：** 即兴工具使用、自发「整理」行为展示 **物理常识** 双刃剑。
@@ -146,6 +148,7 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md)
 - [RoboTTT（context / test-time VLA）](../entities/paper-robottt-test-time-training-vla-context.md)
 - [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 三类不确定性拆解与 26 篇相关工作索引
+- [S1（Skild）](./skild-s1.md) — 显式 ICL 预训练；公开地平线更长、同样闭源
 
 ## 参考来源
 
