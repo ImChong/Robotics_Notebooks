@@ -1,3 +1,12 @@
+## [2026-08-27] ingest | sources/blogs/perceptron_isaac_05.md — Perceptron Isaac 0.5（36B-A2.5B 稀疏具身基础模型）；部分开源（代码 Apache 2.0，Hub 权重 COMING SOON，mHarmony 未进 extra）；关键页 wiki/entities/perceptron-isaac-05.md
+
+- **触发：** 用户指定 <https://www.perceptron.inc/blog/introducing-isaac-0-5>；要求自动合并 PR
+- **步骤 2.5：** **部分开源** — [perceptron-ai-inc/isaac](https://github.com/perceptron-ai-inc/isaac) Apache 2.0 + LeRobot 子模块 `perceptron_isaac`；Hub [PerceptronAI/Isaac-0.5](https://huggingface.co/PerceptronAI/Isaac-0.5) 入库日标 **COMING SOON**；mHarmony/TensorStream **未纳入** extra；未来 percept 损失 **专有**
+- **关键页：** [`wiki/entities/perceptron-isaac-05.md`](wiki/entities/perceptron-isaac-05.md)
+- **交叉：** VLA / foundation-policy / embodied-scaling-laws / LeRobot / Perceptron Egocentric / Isaac GR00T（名称消歧）/ Dyna-2 / π0.7
+- **机构：** `perceptron`（感知器（Perceptron））已注册
+
+
 ## [2026-08-27] ingest | sources/papers/{worldecho_worldsync,lawa,arli}_arxiv_2608_*.md — WorldEcho/WorldSync 动作跟随评测、LAWA 潜意图 WAM、ARLI 异步延迟感知 RL；升格三实体
 
 - **触发：** 用户指定 [arXiv:2608.24885](https://arxiv.org/abs/2608.24885)、[arXiv:2608.24882](https://arxiv.org/abs/2608.24882)（项目页 <https://getterupper.github.io/LAWA>）、[arXiv:2608.23831](https://arxiv.org/abs/2608.23831)；要求自动合并 PR

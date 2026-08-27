@@ -2384,6 +2384,7 @@
 - [Tesla 人形机器人膝关节机构（WO2024073135）](wiki/entities/patent-tesla-robot-knee-joint-assembly.md) — 专利 **WO2024073135A1**（*Systems and methods for a robot knee joint assembly*，权利人 **Tesla Inc.**）公开一种  `📅unknown` `[entity_page]`
 - [PCB Motor（PCB 定子轴向磁通电机）](wiki/entities/pcb-motor.md) — PCB Motor**（ziteh/pcb-motor）是 **PCB 定子** 的轴向磁通 PMSM/BLDC 开源硬 `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
+- [Perceptron Isaac 0.5](wiki/entities/perceptron-isaac-05.md) — Isaac 0.5**（官方博客 | [技术报告 PDF](https://pub `📅unknown` `[entity_page]`
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`

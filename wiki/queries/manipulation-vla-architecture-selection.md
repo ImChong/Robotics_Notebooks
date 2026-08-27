@@ -3,7 +3,7 @@ title: 操作 VLA 与视频-动作架构选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-14
+updated: 2026-08-27
 related:
   - ../entities/paper-galaxea-g05.md
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
@@ -11,6 +11,7 @@ related:
   - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
+  - ../entities/perceptron-isaac-05.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「做灵巧操作，VLA / 视频模型 / 世界模型 / 开源策略该怎么选？」
@@ -22,7 +23,7 @@ related:
 
 | 你的约束 | 推荐路线 | 方法页 |
 |----------|----------|--------|
-| 有大规模带动作标签机器人数据 | 端到端 VLA / 开源策略族 | [VLA](../methods/vla.md)、[π₀](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[G0.5](../entities/paper-galaxea-g05.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican](../methods/pelican-unified-1.md) |
+| 有大规模带动作标签机器人数据 | 端到端 VLA / 开源策略族 | [VLA](../methods/vla.md)、[π₀](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[G0.5](../entities/paper-galaxea-g05.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican](../methods/pelican-unified-1.md)、[Isaac 0.5](../entities/perceptron-isaac-05.md) |
 | 有人视频、缺动作标签 | 解耦前向/逆动力学 | [DeFI](../methods/defi-decoupled-dynamics-vla.md) |
 | 强调语义-动力学一体潜计划 | Video-Action Model | [mimic-video](../methods/mimic-video.md) |
 | 需要显式交互物理想象 | 灵巧世界模型 | [DWM](../methods/dwm.md) |
@@ -102,7 +103,7 @@ related:
 
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md)
 - [VLA](../methods/vla.md)、[mimic-video](../methods/mimic-video.md)、[DeFI](../methods/defi-decoupled-dynamics-vla.md)、[DWM](../methods/dwm.md)、[CLAW](../methods/claw.md)
-- [π₀ Policy](../methods/π0-policy.md)、[π0.7 Policy](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican Unified-1](../methods/pelican-unified-1.md)
+- [π₀ Policy](../methods/π0-policy.md)、[π0.7 Policy](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican Unified-1](../methods/pelican-unified-1.md)、[Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)
 - [VLA 部署指南](./vla-deployment-guide.md)、[IL for Manipulation](./il-for-manipulation.md)、[接触丰富操作指南](./contact-rich-manipulation-guide.md)
 
 ## 一句话记忆

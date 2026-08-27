@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-08-26
+updated: 2026-08-27
 related:
   - ./embodied-foundation-model-hardware-codesign.md
   - ./robot-in-context-learning.md
@@ -25,6 +25,7 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/diffusion-policy.md
   - ../methods/pi07-policy.md
+  - ../entities/perceptron-isaac-05.md
   - ../methods/policy-optimization.md
   - ../methods/model-based-rl.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
@@ -42,6 +43,7 @@ sources:
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
+  - ../../sources/blogs/perceptron_isaac_05.md
 summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
 ---
 
@@ -92,6 +94,11 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 - **架构**：在 **π₀.₆-MEM** 一脉上保留历史视觉与 flow 动作头，引入**子任务语言、片段元数据、控制模态标签与视觉子目标**等到提示中；训练时随机 dropout 各条件，推理可接世界模型子目标与 **CFG** 偏好高质量/高速度模式
 - **数据**：跨形态真机演示、人视频、网络辅助任务、开源机器人数据，以及大量自主评测与 **RL 专精（π*₀.₆）** rollout；用元数据吸收次优轨迹而非被其主导
 - **意义**：把「通才 VLA」与「专精 RL 策略」用**条件蒸馏**接到同一 checkpoint，并在官方实验中强调**组合任务指令**与**跨本体零样本**等泛化轴；详情见 [π₀.₇ 方法页](../methods/pi07-policy.md)
+
+### Perceptron Isaac 0.5（Perceptron, 2026-08）
+- **架构**：**36B** Qwen-family 稀疏骨干 + **null-expert** 路由（期望 **2.5B** 激活）；**FAST** 离散与 **Flow/DiT** 连续双动作头读同一表示；专有未来 percept 自监督把无动作视频接到控制
+- **数据**：**1M h** 通用视频 + ego/UMI + **100k h** 机器人（**35+** 本体）；报告视频小时把 τ=2.50 所需 teleop 从约 **5.9k h → 28 h**（**210×**）
+- **开放边界：** 代码 Apache 2.0 + LeRobot `perceptron_isaac`；Hub 权重入库日 **COMING SOON**；**不是** NVIDIA Isaac 平台。详见 [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)
 
 ### StarVLA（Ye et al., 2026）
 - **架构**：Qwen3-VL 底座 + 极简 MLP 动作头
@@ -188,6 +195,7 @@ flowchart TD
 - [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 具身预训练脑作 VLA 初始化；跨本体统一动作空间案例
 - [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 五功能统一具身脑（感知–规划–交互–监控–自改进）+ SSR+
 - [π₀.₇（Pi-zero 0.7）通才 VLA](../methods/pi07-policy.md)
+- [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 36B 稀疏开源通才；视频置换 teleop
 - [GR00T-WholeBodyControl（实体）](../entities/gr00t-wholebodycontrol.md)
 - [Foundation Policy for Humanoids（Query 实践指南）](../queries/foundation-policy-for-humanoids.md)
 - [机器人学习「三个时代」叙事与一手文献（Query）](../queries/robot-learning-three-eras-narrative.md)
