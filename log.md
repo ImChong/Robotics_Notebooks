@@ -1,4 +1,12 @@
-## [2026-08-26] ingest | sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md — RL vs GC（arXiv:2506.17832，RSS 2025）四旋翼跟踪对称比较；Isaac Lab 实现已开源、未声明 SPDX；升格论文实体与对比页
+## [2026-08-27] ingest | sources/papers/{worldecho_worldsync,lawa,arli}_arxiv_2608_*.md — WorldEcho/WorldSync 动作跟随评测、LAWA 潜意图 WAM、ARLI 异步延迟感知 RL；升格三实体
+
+- **触发：** 用户指定 [arXiv:2608.24885](https://arxiv.org/abs/2608.24885)、[arXiv:2608.24882](https://arxiv.org/abs/2608.24882)（项目页 <https://getterupper.github.io/LAWA>）、[arXiv:2608.23831](https://arxiv.org/abs/2608.23831)；要求自动合并 PR
+- **步骤 2.5：** WorldEcho/WorldSync **确认未开源**（无项目页/代码）；LAWA **宣称将开源 / 待发布**（项目页 Code coming soon；`getterupper/LAWA` 仅网页）；ARLI **确认未开源**（项目页无代码，GitHub 仅 Pages）
+- **关键页：** [`wiki/entities/paper-worldecho-worldsync.md`](wiki/entities/paper-worldecho-worldsync.md)、[`wiki/entities/paper-lawa.md`](wiki/entities/paper-lawa.md)、[`wiki/entities/paper-arli.md`](wiki/entities/paper-arli.md)
+- **交叉：** generative-world-models / WAM / 评测选型闭环 / VLA / action-chunking / 部署指南 / manipulation
+- **机构：** 注册 `uestc`（电子科技大学（UESTC））；TARS Robotics 正文写出、未注册 tag
+
+
 
 - **触发：** 用户指定项目页 <https://pratikkunapuli.github.io/rl-vs-gc/> 与 [arXiv:2506.17832](https://arxiv.org/abs/2506.17832)
 - **步骤 2.5：** **已开源** — [PratikKunapuli/rl-vs-gc](https://github.com/PratikKunapuli/rl-vs-gc) 含 DirectRLEnv、`train_rslrl.py`、`gc_tuning.py` 与 PaperModels checkpoint；仓库 **无 LICENSE**。评测纯仿真

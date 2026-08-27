@@ -3007,6 +3007,13 @@
         "ut-arlington",
         "uta-arlington"
       ]
+    },
+    "uestc": {
+      "label": "电子科技大学（UESTC）",
+      "aliases": [
+        "uestc",
+        "university-of-electronic-science-and-technology-of-china"
+      ]
     }
   }
 }

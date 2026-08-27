@@ -2,7 +2,7 @@
 type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-27
 related:
   - ../entities/paper-odeworld.md
   - ./rl-runner.md
@@ -15,6 +15,7 @@ related:
   - ../overview/world-models-route-03-virtual-sandbox.md
   - ../entities/paper-online-mbrl-robot-control.md
   - ../entities/paper-lucid.md
+  - ../entities/paper-lawa.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/rl_foundation_models.md
@@ -78,6 +79,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [RL Runner（训练循环编排）](./rl-runner.md) — Model-based Runner 把想象 rollout 嵌进训练循环
 - [Generative World Models](../methods/generative-world-models.md)
 - [Being-H0.7](../methods/being-h07.md)
+- [LAWA](../entities/paper-lawa.md) — 测试时去噪紧凑 latent 意图而非像素（代码待发布）
 - [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md)
 - [Open Dreamer](../entities/open-dreamer.md)
 - [LUCID](../entities/paper-lucid.md) — 人形技能级宏动力学想象

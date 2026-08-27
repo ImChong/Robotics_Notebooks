@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-27
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -39,6 +39,9 @@ related:
   - ../entities/paper-ros2smolvla.md
   - ../entities/paper-indi.md
   - ../entities/paper-ld4wam.md
+  - ../entities/paper-lawa.md
+  - ../entities/paper-arli.md
+  - ../entities/paper-reflexvla.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
@@ -237,6 +240,7 @@ flowchart TD
 - **LingBot-VLA 2.0**：**Qwen3-VL-4B + 稀疏 MoE action expert**；约 **6 万小时** 过滤预训练（**5 万 h** 机器人 ×**20** 本体 + **1 万 h** egocentric 人视频）、**55 维统一全身动作** 与 **Dual-Query 深度/视频蒸馏**；GM-100 / 长程移动操作 **generalist** 评测超 **π₀.₅**、**GR00T N1.7** 与 **1.0**；开源 **6B 权重** 与真机部署脚本（见 [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md)，arXiv:2607.06403）
 - **τ₀-VLA**：**分层子任务 + 世界模型引导 TTC**（beam search 比较想象后果）；低层 **Qwen3.5 + MoT flow**、**40 维** 统一动作、**40,115 h** 预训练；长程四任务分层 **45.0%** vs 整任务 **27.5%**；低层 **已开源**、高层 TTC **逐步发布**（见 [τ₀-VLA](../entities/paper-tau0-vla.md)，arXiv:2608.16885）
 - **Q-Planning**：**冻结 BC/VLA + 小型离策略 Q-chunking**；推理 **Q 加权平均** N 个 BC flow 采样；在线 **只微调 Q**、吸收失败 rollout；LIBERO-10 **93→99%**、双臂真机 stack-cups **40→90%**；**已开源**（见 [Q-Planning](../entities/paper-qplanning.md)，arXiv:2608.21204）
+- **ARLI**：**异步 VLA + 延迟感知 DSRL**——用已承诺中间动作与 VLM 完成后的中间观测恢复近马尔可夫性；真机双臂 UR5e 三任务约 **40%→近 100%**（100–125 episode）；**确认未开源**（见 [ARLI](../entities/paper-arli.md)，arXiv:2608.23831）
 - **ForeTime-VLA**：从 **Fast-WAM 教师** 蒸馏 **64-D 未来码** 到因果 **π₀.₅**（4 future + 1 phase token）；传送带真机 **44/90** vs π₀.₅ **23/90**；**未开源**（见 [ForeTime-VLA](../entities/paper-foretime-vla.md)，arXiv:2608.20735）
 - **Lumo-2**：**Qwen3.5-4B latent WAM**——**潜空间世界动力学 φ** + **三阶段动作–视觉–语言预对齐**、历史动作记忆与 **BAR 2.71×** 推理加速；**Astribot S1** 上 **22 项** 挑战真机任务全面超 **π₀.₅/Fast-WAM**；人–机共训无需专用迁移机制（见 [Lumo-2](../entities/lumo-2.md)，arXiv:2607.11270）；[Philia](../entities/philia.md) 将其作为 gateway capability 部署
 - **Dexmal DM0.5（OpenDM）**：**Gemma3-4B VLM + 680M Flow-Matching Action Expert**；**~60s 历史上下文抽象**、**11 类具身 CoT** 与 **DP 动态轨迹对齐**；**已开源** [opendm](https://github.com/dexmal/opendm) 训练/推理与 **DM05** 系列权重（LIBERO **99.0%**、RoboTwin2 Clean/Rand **93.6%/93.3%**、Table30v2 **43% SR**）（见 [Dexmal DM0.5](../entities/dexmal-dm05.md)）
@@ -435,6 +439,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [DPC](../entities/paper-dpc.md) — 去掉冻结运动接口、直接输出 G1 关节 PD 的产业反对命题（未开源）
 - [DyPES-VLA](../entities/paper-dypes-vla.md) — 共享动力学先验 + 本体特化 MoE 跨本体 VLA（arXiv:2608.06374）
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench；代码待开放（arXiv:2608.14379）
+- [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；中间已承诺动作 + 中间观测条件 DSRL（arXiv:2608.23831；确认未开源）
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间；确认未开源（arXiv:2608.14028）
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件；工具仓已开源（arXiv:2608.14284）
 - [Action Chunking](./action-chunking.md)
@@ -447,6 +452,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [ROS2SmolVLA](../entities/paper-ros2smolvla.md) — ROS 2 本地 SmolVLA × UR10e；代码/数据/权重已开源（arXiv:2608.23320）
 - [Indi](../entities/paper-indi.md) — 行为意图蒸馏进 VLA 解码器（arXiv:2608.23478；未开源）
 - [LD4WAM](../entities/paper-ld4wam.md) — 运动对齐潜动力学桥接人视频与 Joint WAM；确认未开源（arXiv:2608.22403）
+- [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；相对 Joint-WAM 延迟 −42.9%（arXiv:2608.24882；代码待发布）
 - [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 LeRobot/VLA 胶水与技能编排
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2（GR2）
 - [OpenVLA](../entities/openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调

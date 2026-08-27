@@ -17,7 +17,7 @@ tags:
   - awesome-world-models
   - sun254667-wm
 status: complete
-updated: 2026-08-21
+updated: 2026-08-27
 arxiv: "2606.18610"
 venue: "arXiv 2026"
 related:
@@ -183,6 +183,7 @@ flowchart TB
 - [Ctrl-World](./paper-ctrl-world.md) / [IRASim](./paper-irasim.md) — 文中强基线且已开源
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — 「动作忠实 > 视觉逼真」评估器结论
 - [Masked Visual Actions](./paper-masked-visual-actions.md) / [DriftWorld](./paper-driftworld.md) — 同属虚拟评估，条件与时延不同
+- [WorldEcho / WorldSync](./paper-worldecho-worldsync.md) — 测动作跟随本身，不是自一致评估器
 - [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 策展坐标 391/571
 
 ## 参考来源

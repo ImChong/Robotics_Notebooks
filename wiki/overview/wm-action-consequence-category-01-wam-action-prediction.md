@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-14
+updated: 2026-08-27
 summary: "世界模型动作后果专题 · 01 — WAM 直接执行、修正基础 VLA 还是部署前筛选？并链 DreamWAM / FACT / Flex-π / RTCF 邻近坐标。"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
@@ -15,12 +15,14 @@ related:
   - ../entities/paper-motubrain.md
   - ../entities/paper-rift-wam.md
   - ../entities/paper-wam-realtime-async.md
+  - ../entities/paper-lawa.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/motubrain_arxiv_2604_27792.md
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
+  - ../../sources/papers/lawa_arxiv_2608_24882.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
 ---
 
@@ -53,6 +55,7 @@ sources:
 | Motubrain（邻近） | [../entities/paper-motubrain](../entities/paper-motubrain.md) | 生数 Joint WAM；RoboTwin 95.8/96.1（仓占位） |
 | WAM 异步部署（邻近） | [../entities/paper-wam-realtime-async](../entities/paper-wam-realtime-async.md) | 同平台六策略：对齐 → blend → train |
 | Rift（邻近） | [../entities/paper-rift-wam](../entities/paper-rift-wam.md) | 免视频 rollout：一次 anticipation prefill 写未来 K/V；LIBERO 98.8% / 247.9 ms |
+| LAWA（邻近） | [../entities/paper-lawa](../entities/paper-lawa.md) | 潜动作作测试时未来意图；RoboCasa 65.6/80.8%；相对 Joint −42.9% 延迟 |
 
 ## 关联页面
 
@@ -65,6 +68,7 @@ sources:
 - [Motubrain](../entities/paper-motubrain.md)
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md)
 - [Rift](../entities/paper-rift-wam.md)
+- [LAWA](../entities/paper-lawa.md)
 
 ## 参考来源
 

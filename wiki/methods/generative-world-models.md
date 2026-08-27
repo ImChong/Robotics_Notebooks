@@ -2,12 +2,13 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-24
+updated: 2026-08-27
 related:
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-odeworld.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-sc3-eval.md
+  - ../entities/paper-worldecho-worldsync.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -190,6 +191,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [SC3-Eval](../entities/paper-sc3-eval.md)（arXiv:2606.18610，UToronto×Vector×NVIDIA×π）把 **Cosmos3-Nano + 统一动力学** 改造成真机 VLA 评估沙盒：联合训 **前向/逆向动力学** 与 **跨视角 inpainting**，推理时用逆动力学误差 \(U_{\mathrm{chunk}}\) **早停** off-manifold rollout。七个 π₀.₅ checkpoint 上闭环 Pearson **0.929**、MMRV **0.119**，并复现 language/lifting/placing 失败类别；相对 Ctrl-World / IRASim 等纯前向基线，主卖点是 **自一致防漂移** 而非合成 SFT。截至入库日 **确认未开源**。
 
+### off-expert 动作跟随评测 + 对齐配方（示例：WorldEcho / WorldSync）
+
+[WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md)（arXiv:2608.24885，北大等）指出：把 AC-WM 当策略模拟器，默认假设「任意合法动作都会被忠实生成」，但现有榜多停在专家演示。**WorldEcho** 用五类查询（专家回放 / 跨状态重放 / 局部扰动 / 策略 rollout / 可行空间采样）联合测 **视觉完整性门控** 与 **\(\mathrm{SE}(3)\) 末端 NDTW**；六套专家训模型在 off-expert 上出现 **视觉崩** 或 **画面好看但不跟命令**。**WorldSync** 用仿真+少量真机覆盖扩展、Action-Forcing Expert 与 Intervention-Effect 配对监督；RoboTwin 50 任务门控误差 **0.0661**，匹配预算两轮改进把仿真倾倒 **~52%→65%**、真机叠杯 **48%→68%**。截至入库日 **确认未开源**。相对 SC3-Eval「自一致评估器」、Ctrl-World「闭环+合成 SFT」，本页主轴是 **动作跟随本身是否成立**。
+
 ### 开源视频先验与轨迹可控 I2V（示例：Wan / Wan-Move / Wan-Dancer）
 
 [Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**；[Wan-Dancer](../entities/paper-wan-dancer.md)（arXiv:2607.09581）同在 Wan-I2V 上做分层 **music-to-dance**，把连贯生成推到 **分钟级 720p**。三者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM / 参考视频先验的 **上游对照**。[DreamX-Phi 1.0](../entities/paper-dreamx-phi.md)（arXiv:2608.13489，阿里 AMAP）把 **Wan2.2-TI2V-5B** 做成动作条件操纵 WM：每臂 **SE(3)** 经 PRoPE-style 编码注入 attention，并加 depth / SAM3 / 冻结 V-JEPA；自报 WorldArena 2.0 Track 1 第一。**权重与推理待赛后**，入库日仓为占位 README。
@@ -304,6 +309,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体 / 多视角 / 力触觉 **交互模拟器** + Human-in-the-World-Model 后训练（2026-08 博客；确认未开源）。
 - [ODEWorld](../entities/paper-odeworld.md) — **物理时间 latent ODE**：任意时刻/反向预测 + 子目标策略（arXiv:2607.27924）。
 - [SC3-Eval](../entities/paper-sc3-eval.md) — **自一致** 视频策略评估器：前向–逆向 + 跨视角 + 早停；闭环 \(r=0.929\)（arXiv:2606.18610；确认未开源）。
+- [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — **off-expert 动作跟随** 评测 + AFE/IE 对齐配方（arXiv:2608.24885；确认未开源）。
 - [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
 - [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
 - [ViTacWorld](../entities/paper-vitacworld.md) — **视触觉** 动作条件 WM：dream 数据增强 + 策略评估（arXiv:2607.22530）。
@@ -355,6 +361,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Guo, Y., et al. (2026). *Ctrl-World* — 见 [sources/papers/ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)。
 - Current Robotics Team (2026). *CurrentWorld-0* — 见 [sources/blogs/current_robotics_currentworld.md](../../sources/blogs/current_robotics_currentworld.md)。
 - Liu, D., Niu, H., et al. (2026). *ODEWorld* — 见 [sources/papers/odeworld_arxiv_2607_27924.md](../../sources/papers/odeworld_arxiv_2607_27924.md)。
+- Chen, S., et al. (2026). *Do Robotic World Models Really Follow Actions?* — 见 [sources/papers/worldecho_worldsync_arxiv_2608_24885.md](../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md)。
 - Zhang, X., & Du, Y. (2026). *World Action Planner* — 见 [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)。
 - Chu, R., et al. (2025). *Wan-Move* — 见 [sources/papers/wan_move_arxiv_2512_08765.md](../../sources/papers/wan_move_arxiv_2512_08765.md)。
 - Huang, M., et al. (2026). *Wan-Dancer* — 见 [sources/papers/wan_dancer_arxiv_2607_09581.md](../../sources/papers/wan_dancer_arxiv_2607_09581.md)。

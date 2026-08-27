@@ -12,7 +12,7 @@ tags:
   - shengshu
   - tsinghua
 status: complete
-updated: 2026-08-17
+updated: 2026-08-27
 arxiv: "2608.01880"
 related:
   - ./paper-motubrain.md
@@ -23,6 +23,7 @@ related:
   - ./paper-rift-wam.md
   - ./paper-rtcf.md
   - ./paper-reflexvla.md
+  - ./paper-arli.md
   - ./paper-kai0.md
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
   - ../tasks/manipulation.md
@@ -171,6 +172,7 @@ flowchart TB
 - [VLA 与低级控制器融合](../queries/vla-with-low-level-controller.md) — chunk buffer 接到 PD/WBC
 - [RTCF](./paper-rtcf.md) — 勿与 RTC 混淆
 - [ReflexVLA](./paper-reflexvla.md) — 动态任务把 naive async 的延迟写进 SR（arXiv:2608.14379；代码待开放）
+- [ARLI](./paper-arli.md) — 异步执行下延迟感知 RL 后训练；中间动作 + 中间观测（arXiv:2608.23831；确认未开源）
 - [kai0](./paper-kai0.md) — chunk 平滑 × RTC
 - [WAM 动作后果分类 01](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — 部署层邻近坐标
 - [Rift](./paper-rift-wam.md) — 视频 rollout 税 vs 本页的 chunk 切换税

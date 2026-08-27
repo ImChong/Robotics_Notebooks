@@ -8,7 +8,7 @@ tags:
   - action-chunking
   - sjtu
 status: complete
-updated: 2026-08-24
+updated: 2026-08-27
 arxiv: "2608.14379"
 venue: "arXiv 2026-08-14"
 related:
@@ -20,6 +20,7 @@ related:
   - ./paper-gsr-paravla.md
   - ./libero-benchmark.md
   - ./paper-wam-realtime-async.md
+  - ./paper-arli.md
   - ./paper-rtcf.md
   - ../queries/vla-deployment-guide.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -173,6 +174,7 @@ Q1 协议：低频时异步更吃亏（观测–动作错位）；高频异步 +
 - [LIBERO](./libero-benchmark.md) — 静态对照榜；本文 97.2% 与骨干持平
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — 同校；指令路由轴，不是延迟协议
 - [WAM 实时异步部署](./paper-wam-realtime-async.md) — 异步 chunk 部署对照
+- [ARLI](./paper-arli.md) — 异步 VLA 上延迟感知 RL 后训练（arXiv:2608.23831；确认未开源）
 - [RTCF](./paper-rtcf.md) — 作者未试的更先进异步
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 异步执行
 - [VLA·预测·抓取 9 篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md)

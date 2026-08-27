@@ -9,7 +9,7 @@ tags:
   - action-chunking
   - georgia-tech
 status: complete
-updated: 2026-08-25
+updated: 2026-08-27
 arxiv: "2608.21204"
 code: https://github.com/varungiridhar/qplanning-code
 related:
@@ -184,6 +184,7 @@ sequenceDiagram
 - [π₀.₅](./paper-pi05-open-world-vla.md) — 大 VLA BC 先验语境
 - [World Action Models](../concepts/world-action-models.md) — 默认 BC FastWAM 系
 - [open-source-8-papers-technology-map](../overview/open-source-8-papers-technology-map.md) — 具身智能小站 2026-08-25 八篇盘点
+- [ARLI](./paper-arli.md) — 冻结 VLA + 延迟感知 DSRL 后训练（异步；确认未开源）
 
 ## 参考来源
 

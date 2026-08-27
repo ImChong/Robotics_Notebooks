@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-26
+updated: 2026-08-27
 related:
   - ../entities/paper-flatlab.md
   - ../entities/paper-arm-aware-dexgrasp.md
@@ -196,6 +196,9 @@ flowchart TD
 - [DAgger](../methods/dagger.md)
 - [VLA](../methods/vla.md)
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench（arXiv:2608.14379；代码待开放）
+- [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；真机双臂 UR5e 约 40%→近 100%（arXiv:2608.23831；确认未开源）
+- [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；RoboCasa few-shot 65.6% / full 80.8%（arXiv:2608.24882；代码待发布）
+- [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — AC-WM off-expert 动作跟随评测与对齐（arXiv:2608.24885；确认未开源）
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间（arXiv:2608.14028；确认未开源）
 - [NestDex](../entities/paper-nestdex.md) — copilot 嵌套采数 + 独立外层 visuomotor（arXiv:2608.13362；确认未开源）
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件（arXiv:2608.14284；已开源）

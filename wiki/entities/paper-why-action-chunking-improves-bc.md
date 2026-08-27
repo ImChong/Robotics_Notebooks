@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, action-chunking, behavior-cloning, diffusion-policy, libero, robomimic, polimi, berkeley, analysis]
 status: complete
-updated: 2026-08-22
+updated: 2026-08-27
 venue: "CoRL 2026（项目页 PDF；暂无 arXiv）"
 related:
   - ../methods/action-chunking.md
@@ -186,6 +186,7 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 - [AutoIntervene](./paper-autointervene.md) — 部署期对提议 chunk 的支持监控与自动接管（互补「训练机制」叙事）
 - [SPD](./paper-spd.md) — 同届 CoRL：接触丰富真机上「历史才能缩短 chunk」（互补机制叙事）
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — 拆的是语言路由，不是动作时间结构
+- [ARLI](./paper-arli.md) — 异步 chunk 下 Delay 进入 RL 状态（中间动作 + 中间观测）
 
 ## 参考来源
 
