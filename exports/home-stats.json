@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md",
+      "detail_id": "wiki-comparisons-zest-vs-sonic-vs-vision-soccer",
+      "label": "ZEST vs SONIC vs 视觉足球：人形学习控制三层对比",
+      "type": "comparison",
+      "recency": "2026-08-27",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/perceptron-isaac-05.md",
+      "detail_id": "entity-perceptron-isaac-05",
+      "label": "Perceptron Isaac 0.5",
+      "type": "entity",
+      "recency": "2026-08-27",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-vgi-white-paper.md",
       "detail_id": "entity-paper-vgi-white-paper",
       "label": "Visual General Intelligence（视觉通才智能白皮书）",
@@ -192,35 +213,18 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dreammimic.md",
-      "detail_id": "entity-paper-dreammimic",
-      "label": "DreamMimic：世界模型辅助的视觉全身 Mimic",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-ld4wam.md",
-      "detail_id": "entity-paper-ld4wam",
-      "label": "LD4WAM：跨本体运动对齐潜动力学 WAM",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vgi-white-paper.md",
-    "detail_id": "entity-paper-vgi-white-paper",
-    "label": "Visual General Intelligence（视觉通才智能白皮书）",
-    "type": "entity",
+    "path": "wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md",
+    "detail_id": "wiki-comparisons-zest-vs-sonic-vs-vision-soccer",
+    "label": "ZEST vs SONIC vs 视觉足球：人形学习控制三层对比",
+    "type": "comparison",
     "recency": "2026-08-27",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
