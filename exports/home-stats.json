@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-vgi-white-paper.md",
+      "detail_id": "entity-paper-vgi-white-paper",
+      "label": "Visual General Intelligence（视觉通才智能白皮书）",
+      "type": "entity",
+      "recency": "2026-08-27",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-arli.md",
       "detail_id": "entity-paper-arli",
       "label": "ARLI：异步 VLA 的延迟感知 RL 后训练",
@@ -201,27 +210,16 @@
       "recency": "2026-08-26",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/concepts/robot-in-context-learning.md",
-      "detail_id": "wiki-concepts-robot-in-context-learning",
-      "label": "机器人 In-Context Learning（上下文学习）",
-      "type": "concept",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-arli.md",
-    "detail_id": "entity-paper-arli",
-    "label": "ARLI：异步 VLA 的延迟感知 RL 后训练",
+    "path": "wiki/entities/paper-vgi-white-paper.md",
+    "detail_id": "entity-paper-vgi-white-paper",
+    "label": "Visual General Intelligence（视觉通才智能白皮书）",
     "type": "entity",
     "recency": "2026-08-27",
     "source": "git",
-    "action": "added",
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
