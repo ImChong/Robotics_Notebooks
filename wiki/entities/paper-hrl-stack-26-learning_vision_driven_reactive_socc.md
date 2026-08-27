@@ -14,7 +14,7 @@ tags:
   - cau
   - booster
 status: complete
-updated: 2026-08-22
+updated: 2026-08-27
 arxiv: "2511.03996"
 doi: "10.1126/scirobotics.aed1152"
 code: https://zenodo.org/records/21620490
@@ -29,12 +29,14 @@ related:
   - ./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md
   - ./paper-robonaldo-humanoid-soccer-shooting.md
   - ../../roadmap/depth-humanoid-soccer.md
+  - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md
   - ../../sources/sites/humanoid-kick-vision-driven-soccer.md
   - ../../sources/repos/humanoid-kick-vision-driven-soccer.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
 summary: "Vision-Driven Reactive Soccer（Science Robotics 2026 / arXiv:2511.03996）：虚拟感知 + encoder-decoder 耦合 AMP 与机载视觉；前场 ~90% 踢球 SR；Zenodo 部分开源 Isaac Gym 训练与 checkpoint。"
 ---
 
@@ -197,6 +199,7 @@ sequenceDiagram
 - 总框架：[人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP：[amp-reward](../methods/amp-reward.md) · [AMP survey](../overview/humanoid-amp-motion-prior-survey.md)
 - 任务 / 纵深：[Humanoid Soccer](../tasks/humanoid-soccer.md) · [depth-humanoid-soccer](../../roadmap/depth-humanoid-soccer.md)
+- [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层：本文是感知任务环，不是通用 tracker
 - Stage 3 对照：[PAiD](./paper-notebook-learning-soccer-skills-for-humanoid-robots.md) · [Agile Striker](./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md) · [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md)
 
 ## 参考来源
@@ -206,6 +209,7 @@ sequenceDiagram
 - [humanoid-kick-vision-driven-soccer.md](../../sources/repos/humanoid-kick-vision-driven-soccer.md)
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
+- [wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md](../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md)
 - 论文：<https://arxiv.org/abs/2511.03996> · <https://doi.org/10.1126/scirobotics.aed1152>
 - 项目页：<https://humanoid-kick.github.io>
 

@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-08-22
+updated: 2026-08-27
 related:
   - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
   - ./locomotion.md
@@ -26,6 +26,7 @@ related:
   - ../entities/paper-humanoid-soccer-swarm-intelligence.md
   - ../entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md
   - ../entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md
+  - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/repos/htwk_gym.md
   - ../../sources/repos/humanoid_soccer.md
@@ -39,6 +40,7 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md
   - ../../sources/repos/humanoid-kick-vision-driven-soccer.md
   - ../../sources/sites/humanoid-kick-vision-driven-soccer.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。"
 ---
@@ -135,6 +137,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - [Locomotion](./locomotion.md) — 足球任务的基础
 - [PAiD Framework](../methods/paid-framework.md) — 渐进式感知动作学习
 - [人形足球技能学习方法选型指南](../queries/humanoid-soccer-skill-learning-method-selection.md) — PAiD vs RoboNaldo 选型
+- [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — 视觉足球在 SciRob 同期三层里是感知任务环，不是跟踪底座
 - [RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) — 点级瞄准与高冲量射门课程 RL
 - [HTWK-Gym](../methods/htwk-gym.md) — 足球专项 RL 训练环境
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

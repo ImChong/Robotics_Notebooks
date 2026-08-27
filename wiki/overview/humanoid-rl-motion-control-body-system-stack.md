@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-08-22
+updated: 2026-08-27
 related:
   - ../entities/humanoid-motion-intelligence.md
   - ./robot-training-stack-layers-technology-map.md
@@ -30,12 +30,14 @@ related:
   - ./humanoid-motion-cerebellum-technology-map.md
   - ./ego-9-papers-technology-map.md
   - ../entities/gr00t-wholebodycontrol.md
+  - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -116,6 +118,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 - [ULTRA Survey](../tasks/ultra-survey.md) — 统一多模态全身 loco-manipulation 控制器的综述视角
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)、[loco-manipulation](../tasks/loco-manipulation.md)、[balance-recovery](../tasks/balance-recovery.md) — 任务侧入口
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — DeepMimic / AMP 家族 / 通用 tracker 的工程选型
+- [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — 同策展方 SciRob 同期三层读法（配方 / 底座 / 感知任务）
 - [DeepMimic](../methods/deepmimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) — 跟踪 / 控制层方法页
 - [DoorMan 论文](../entities/paper-doorman-opening-sim2real-door.md)、[VIRAL 论文](../entities/paper-viral-humanoid-visual-sim2real.md)、[BFM 论文](../entities/paper-behavior-foundation-model-humanoid.md)、[GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) — 视觉闭环 / 身体基础模型 / VLA 调用相关单篇
 
