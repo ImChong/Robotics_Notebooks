@@ -107,6 +107,7 @@ related:
   - ../entities/paper-advdex.md
   - ../entities/paper-prm-as-a-judge.md
   - ../entities/paper-ego2robot.md
+  - ../entities/perceptron-isaac-05.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
@@ -156,6 +157,7 @@ sources:
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
+  - ../../sources/blogs/perceptron_isaac_05.md
 ---
 
 # VLA（Vision-Language-Action）
@@ -212,6 +214,7 @@ flowchart TD
 - **Xiaomi-Robotics-0**：**Qwen3-VL-4B + DiT flow matching**；两阶段预训练（**Choice Policies** 扩展 VLM → 冻结 VLM 训 DiT）+ 面向 **异步 action chunk** 的后训练（**Λ 形注意力、前缀随机遮蔽、flow 损失重加权** 等），强调仿真与双臂真机 **吞吐/延迟** 叙事（见 [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md)）
 - **Xiaomi-Robotics-1**：**>100k h UMI 预训练**（VLM **自动状态转移标注**）+ **~10k h 跨本体后训练**；**Qwen3-VL + DiT MoT**（**2B/5B/10B**）；预训练 **数据/模型 scaling** 可预测迁移至 **未见环境开箱** 与 **<10h/任务** 少样本微调（**75%** vs **π₀.₅ 40%**）；**RoboCasa365 / [RoboDojo](../entities/robodojo.md)** 等四基准 SOTA（见 [Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md)）；通用操纵 **官方 sim-and-real 公益榜** 与 **XPolicyLab** 适配见 [RoboDojo](../entities/robodojo.md) / [XPolicyLab](../entities/xpolicylab.md)
 - **Qwen-VLA**：**Qwen3.5-4B + 1.15B DiT flow-matching** 的 **通才** 实例；**操作 + VLN + 轨迹** 同一 checkpoint，**embodiment prompt** 切换平台（见 [Qwen-VLA](../entities/qwen-vla.md)）
+- **Perceptron Isaac 0.5（2026-08）**：**36B-A2.5B** 稀疏 Qwen-family 骨干 + **null-expert** 路由；**FAST + Flow/DiT** 双动作接口；用专有未来 percept 自监督把 **1M h** 无动作视频与 teleop 共训，报告达到同一动作损失所需遥操作 **210×** 下降。代码 Apache 2.0；Hub 权重入库日 **COMING SOON**。**不是** NVIDIA Isaac 仿真栈（见 [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)）
 - **DyPES-VLA（HKUST-GZ / COCO Matrix，arXiv:2608.06374）**：用 **未来帧预测** 学 **共享动力学先验（query）**，再用 **本体特化 MoE** 在 **原生动作空间** 出控，避免手工统一动作格式；LIBERO **98.0%** / RoboCasa-GR1 **59.25%** / RoboTwin **89.02%**，真机三本体均值 **75.6%**（代码 coming soon；见 [DyPES-VLA](../entities/paper-dypes-vla.md)）
 - **Qwen-RobotManip**：通义 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 内 **操作专精** VLA；**80-d 跨本体对齐 + Human-to-Robot 合成 + OOD 榜 north star**，与 Qwen-VLA **同 DiT flow 族** 但分域 scaling 叙事（见 [Qwen-RobotManip](../entities/qwen-robot-manip.md)）
 - **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）
@@ -418,6 +421,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 展望中将 VLA/世界模型等纳入多模态切换与环境适配的计算智能侧
 - [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破
 - [π₀.7（Pi-zero 0.7）通才 VLA](./pi07-policy.md) — Physical Intelligence 2026 通才模型与多模态提示条件路线
+- [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 36B 稀疏开源通才；视频小时置换 teleop 的 scaling law（部分开源）
 - [StarVLA](./star-vla.md) — 基于 Qwen3-VL 的极简 VLA 基准
 - [LingBot-Map](./lingbot-map.md) — 为 VLA 提供几何背景的流式 3D 基础模型
 - [LingBot-VLA](../entities/lingbot-vla.md) — Robbyant 务实 VLA 1.0（4B、双臂 2 万小时、GM-100）

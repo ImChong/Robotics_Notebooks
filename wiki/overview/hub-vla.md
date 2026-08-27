@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-27
 summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
 ---
 
@@ -42,6 +42,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 | 概念 | BT 编排 VLA 部署 | [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) |
 | 实体 | ROBOTIS Physical AI 栈 | [Cyclo Intelligence](../entities/cyclo-intelligence.md) |
 | 榜站 | VLA / 灵巧手多基准相对位次 | [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) |
+| 实体 | Perceptron 开源通才（非 NVIDIA） | [Isaac 0.5](../entities/perceptron-isaac-05.md) |
 | 驾驶 VLA | 语义∥空间双流规划（NAVSIM） | [S²-VLA](../entities/paper-s-squared-vla.md) |
 | 数据 | 跨具身数据倡议 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
@@ -54,6 +55,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 ## 关联页面
 
 - [VLA Open-Source Landscape 2025](./vla-open-source-repro-landscape-2025.md)
+- [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)
 - [Whole-Body VLA 相关实体](../entities/paper-hrl-stack-30-wholebodyvla.md)
 - [World Action Models](../concepts/world-action-models.md)
 

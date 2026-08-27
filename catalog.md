@@ -2385,6 +2385,7 @@
 - [Tesla 人形机器人膝关节机构（WO2024073135）](wiki/entities/patent-tesla-robot-knee-joint-assembly.md) — 专利 **WO2024073135A1**（*Systems and methods for a robot knee joint assembly*，权利人 **Tesla Inc.**）公开一种  `📅unknown` `[entity_page]`
 - [PCB Motor（PCB 定子轴向磁通电机）](wiki/entities/pcb-motor.md) — PCB Motor**（ziteh/pcb-motor）是 **PCB 定子** 的轴向磁通 PMSM/BLDC 开源硬 `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
+- [Perceptron Isaac 0.5](wiki/entities/perceptron-isaac-05.md) — Isaac 0.5**（官方博客 | [技术报告 PDF](https://pub `📅unknown` `[entity_page]`
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
@@ -3049,6 +3050,7 @@
 - [五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型](wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 五大具身模型** 是 2025–2026 年产业报告与论文中高频出现的 **功能分层缩写**：共享 **Transformer + 多模态编码** 底座，按 **跨模态理解 → 空间导航 → 动作 `📅unknown` `[comparison_page]`
 - [Weights & Biases vs TensorBoard（训练实验监控选型）](wiki/comparisons/wandb-vs-tensorboard.md) — 在机器人强化学习工程里，**TensorBoard** 与 **Weights & Biases（W&B）** 都回答「训练进行得怎样」，但默认假设不同：前者是 **本机 event 文件 + 浏览器 `📅unknown` `[comparison_page]`
 - [WBC vs RL: Whole-Body Control vs Reinforcement Learning](wiki/comparisons/wbc-vs-rl.md) — 人形机器人运动控制领域最常见的两种路线对比。 `📅unknown` `[comparison_page]`
+- [ZEST vs SONIC vs 视觉足球：人形学习控制三层对比](wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md) — Science Robotics* 11(117) 同期发表 ZEST、[SONIC](../methods/sonic-motion-tr `📅unknown` `[comparison_page]`
 
 ### Wiki Overview（总览）
 

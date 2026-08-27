@@ -2,7 +2,7 @@
 type: comparison
 tags: [humanoid, whole-body-tracking, wbt, motion-tracking, sonic, beyondmimic, sd-amp, heracles, amp, diffusion, foundation-model, comparison, engineering-selection]
 status: complete
-updated: 2026-05-30
+updated: 2026-08-27
 sources:
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ./zest-vs-sonic-vs-vision-soccer.md
   - ../tasks/balance-recovery.md
 summary: "SONIC / BeyondMimic / SD-AMP / Heracles 四条全身运动跟踪（WBT）方法谱系对比：规模化监督预训练 vs 失败率驱动的精确 tracking vs 状态门控双判别器 AMP vs 状态条件扩散中间件；从参考池规模、训练目标、跨任务一般化、OOD 行为与真机交付五个维度给出选型坐标。"
 ---
@@ -265,6 +266,7 @@ flowchart TD
 - [Diffusion Motion Generation](../methods/diffusion-motion-generation.md) — Heracles flow matching 的背景
 - [Any2Any（跨具身 WBT 后训练）](../entities/paper-any2any-cross-embodiment-wbt.md) — SONIC 风骨干的跨具身迁移
 - [人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md) — 决策树式选型
+- [ZEST vs SONIC vs 视觉足球](./zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层；本页只比 WBT 方法族
 - [Balance Recovery](../tasks/balance-recovery.md) — SD-AMP / Heracles 的核心评测任务
 
 ---

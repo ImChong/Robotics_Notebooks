@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-26
+updated: 2026-08-27
 related:
   - ./isaac-lab-default-environments.md
   - ./isaac-gym-isaac-lab.md
@@ -27,6 +27,7 @@ related:
   - ../comparisons/rl-vs-geometric-control.md
   - ./paper-p3.md
   - ./lw-benchhub-tour.md
+  - ./perceptron-isaac-05.md
   - ./autodl.md
   - ./gpufree.md
   - ./stackforce.md
@@ -56,6 +57,8 @@ summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac S
 # Isaac Lab
 
 **Isaac Lab** 是 NVIDIA 当前官方主推的机器人学习框架，建立在 **Isaac Sim** 之上，用于 robot learning、locomotion、manipulation 和 sim2real 研究。
+
+> **名称消歧：** 本页是 NVIDIA **仿真训练框架**。Perceptron 的开源通才模型也叫 Isaac，见 [Perceptron Isaac 0.5](./perceptron-isaac-05.md)。
 
 ## 一句话定义
 

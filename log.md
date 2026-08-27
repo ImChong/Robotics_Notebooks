@@ -6,6 +6,23 @@
 - **交叉：** From AGI to ASI / 生成式世界模型 / WAM / 视频即仿真 / 生成式视觉预训练 / VLM-VLN-VLA-VLX-WM 分类
 - **机构：** `aist` / `oxford` / `openai` / `cambridge` / `google-deepmind` / `cmu` / `harvard` / `stanford` / `princeton` / `nyu` / `imperial-college`
 
+## [2026-08-27] ingest | sources/blogs/perceptron_isaac_05.md — Perceptron Isaac 0.5（36B-A2.5B 稀疏具身基础模型）；部分开源（代码 Apache 2.0，Hub 权重 COMING SOON，mHarmony 未进 extra）；关键页 wiki/entities/perceptron-isaac-05.md
+
+- **触发：** 用户指定 <https://www.perceptron.inc/blog/introducing-isaac-0-5>；要求自动合并 PR
+- **步骤 2.5：** **部分开源** — [perceptron-ai-inc/isaac](https://github.com/perceptron-ai-inc/isaac) Apache 2.0 + LeRobot 子模块 `perceptron_isaac`；Hub [PerceptronAI/Isaac-0.5](https://huggingface.co/PerceptronAI/Isaac-0.5) 入库日标 **COMING SOON**；mHarmony/TensorStream **未纳入** extra；未来 percept 损失 **专有**
+- **关键页：** [`wiki/entities/perceptron-isaac-05.md`](wiki/entities/perceptron-isaac-05.md)
+- **交叉：** VLA / foundation-policy / embodied-scaling-laws / LeRobot / Perceptron Egocentric / Isaac GR00T（名称消歧）/ Dyna-2 / π0.7
+- **机构：** `perceptron`（感知器（Perceptron））已注册
+
+## [2026-08-27] ingest | sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md — SciRob 11(117) 同期 ZEST/SONIC/视觉足球升格三层对比；SONIC DOI aed4592；开源：ZEST 未开源 / SONIC 已开源 / 视觉足球部分开源
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/UC-LTs_E83ssuImnXusQGA>；要求自动合并 PR
+- **步骤 2.5：** ZEST **确认未开源**；SONIC **已开源**（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/) 确认 *Science Robotics* 11(117) / [DOI aed4592](https://doi.org/10.1126/scirobotics.aed4592)，代码 GR00T-WholeBodyControl）；视觉足球 **部分开源**（Zenodo，真机未发布）
+- **关键页：** [`wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md`](wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md)
+- **交叉：** zest / sonic-motion-tracking / vision soccer 实体、运动跟踪选型、humanoid-soccer、身体系统栈
+- **复用：** 三篇均已有实体/方法页，不重复造节点
+
+
 
 ## [2026-08-27] ingest | sources/papers/{worldecho_worldsync,lawa,arli}_arxiv_2608_*.md — WorldEcho/WorldSync 动作跟随评测、LAWA 潜意图 WAM、ARLI 异步延迟感知 RL；升格三实体
 

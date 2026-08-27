@@ -13,7 +13,7 @@ tags:
   - rai-institute
   - boston-dynamics
 status: complete
-updated: 2026-08-15
+updated: 2026-08-27
 arxiv: "2602.00401"
 doi: "10.1126/scirobotics.aec7695"
 venue: "Science Robotics 2026"
@@ -29,8 +29,10 @@ related:
   - ./boston-dynamics.md
   - ./unitree-g1.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/papers/zest.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
 summary: "ZEST（Science Robotics 2026，DOI 10.1126/scirobotics.aec7695）：RAI × 波士顿动力的单阶段极简运动模仿。MoCap / 单目视频 / 动画三类参考，无接触标签与状态估计，零样本上 Atlas、G1、Spot。确认未开源。"
 ---
 
@@ -169,6 +171,7 @@ flowchart TB
 - [ZEST 方法页](../methods/zest.md) — 配方导航与同作者脉络
 - [MTRG](../methods/mtrg-reference-goal-driven-rl.md) — goal-only 部署，ZEST 作 tracking 基线
 - [HIL vs MTRG vs ZEST](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线
+- [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层：技能编译器 / 运动底座 / 感知任务环
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 失败率采样与辅助力课程
 - [Sim2Real](../concepts/sim2real.md) — 闭链电枢与增益选择
 - [VideoMimic](./videomimic.md) — 视频模仿对照
@@ -178,6 +181,7 @@ flowchart TB
 ## 参考来源
 
 - [zest.md](../../sources/papers/zest.md) — Science Robotics / arXiv 摘录与开源核查
+- [wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md](../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md) — 同期三篇层级读法
 - [arXiv:2602.00401](https://arxiv.org/abs/2602.00401) — 可直接读的 PDF / HTML
 - [Science Robotics DOI](https://doi.org/10.1126/scirobotics.aec7695) — 11(117)，2026-08-12
 

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-27",
-  "node_count": 3308,
-  "edge_count": 29449,
+  "node_count": 3310,
+  "edge_count": 29513,
   "coverage": {
-    "covered": 3283,
-    "total": 3283,
+    "covered": 3285,
+    "total": 3285,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -46,7 +46,7 @@
       "recency": "2026-08-27",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/comparisons/rl-vs-geometric-control.md",
@@ -78,7 +78,8 @@
       "recency": "2026-08-26",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-indi.md",
@@ -130,8 +131,7 @@
       "recency": "2026-08-26",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-ros2smolvla.md",
@@ -171,7 +171,7 @@
       "recency": "2026-08-26",
       "source": "git",
       "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/skild-ai.md",
@@ -181,7 +181,7 @@
       "recency": "2026-08-26",
       "source": "git",
       "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/skild-s1.md",
@@ -190,7 +190,8 @@
       "type": "entity",
       "recency": "2026-08-26",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-dreammimic.md",
@@ -224,27 +225,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 643
+      "size": 763
     },
     {
       "label": "操作",
-      "size": 588
+      "size": 549
     },
     {
       "label": "视觉-语言-动作",
-      "size": 253
+      "size": 255
     },
     {
       "label": "人形论文深读笔记",
       "size": 216
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 147
+      "label": "世界动作模型",
+      "size": 144
     },
     {
-      "label": "移动操作",
-      "size": 130
+      "label": "全身控制",
+      "size": 135
     }
   ],
   "top_hubs": [
@@ -275,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 797,
+      "degree": 799,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -332,14 +333,15 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 145,
-      "has_repo": true
+      "degree": 147,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 79,
+      "degree": 80,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -369,7 +371,8 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",

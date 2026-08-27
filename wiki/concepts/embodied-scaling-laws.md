@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-27
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -12,6 +12,7 @@ related:
   - ../entities/skild-s1.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/dyna-2.md
+  - ../entities/perceptron-isaac-05.md
   - ../methods/vla.md
   - ../methods/egoscale.md
   - ../concepts/world-action-models.md
@@ -27,7 +28,8 @@ sources:
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
-summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系；含 EgoScale（~20k h）与 Dyna-2（1M h 人→机跨具身）等案例。"
+  - ../../sources/blogs/perceptron_isaac_05.md
+summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系；含 EgoScale（~20k h）、Dyna-2（1M h 人→机跨具身）与 Perceptron Isaac 0.5（1M h 视频置换 teleop）等案例。"
 ---
 
 # Embodied Scaling Laws (具身规模法则)
@@ -75,6 +77,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - **生成式增强**：利用 [Generative Data Augmentation](../methods/generative-data-augmentation.md) 扩充长尾数据。
 - **自动标注**：利用 VLM 自动为原始轨迹添加语义标签。
 - **基础模型引导**：利用已有的 VLA 模型作为专家，在仿真中自动收集海量负样本。
+- **视频置换遥操作（开源对照）：** [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) 在固定 80:30:30 通用:ego:UMI 混合物上报告：通用视频从 1k h 升到 1M h，达到 held-out 动作损失 2.50 所需 teleop 从约 **5.9k h → 28 h**（**210×**）。与 [Dyna-2](../entities/dyna-2.md) 的闭源 1M h ego 缩放对照：Isaac 给的是 **开源代码 + teleop 置换等高线**，不是人→机零样本 WAM 幂律。
 
 ## 关联页面
 - [The Bitter Lesson](./bitter-lesson.md) — 宏观方法论：可扩展 search/learning vs 人类先验
@@ -83,6 +86,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 统一配方下相对 Qwen3.5 的非均匀具身 scaling
 - [EgoScale（人视频规模预训练 VLA）](../methods/egoscale.md)
 - [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md) — 闭源 1M h 人→机缩放主张
+- [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 开源 1M h 通用视频置换 teleop（210×；权重入库日未齐）
 - [World Action Models](./world-action-models.md) — Dyna-2 所属 Joint WAM 族谱
 - [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — 预训练规模与 one-shot / 极少步适应
 - [S1（Skild）](../entities/skild-s1.md) — ICL vs 语言条件 VLA 的未见任务 scaling 分叉
@@ -101,3 +105,4 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [GEN-1.5 博客归档](../../sources/blogs/generalist_gen15_one_shot.md) — one-shot physical prompting 产业样本
 - [S1 博客归档](../../sources/blogs/skild_s1_in_context_learning.md) — ICL vs 语言 prompt 的内部 scaling 对照
 - [GEN-1 千手博客归档](../../sources/blogs/generalist_thousand_hands.md) — 多末端多样性 scaling 产业样本
+- [Isaac 0.5 博客归档](../../sources/blogs/perceptron_isaac_05.md) — 无动作视频小时置换 teleop 的开源对照

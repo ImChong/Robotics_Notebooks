@@ -3,7 +3,7 @@ type: entity
 tags: [perceptron, data-annotation, vlm, egocentric, manipulation, product]
 title: Perceptron Egocentric
 summary: "Perceptron Egocentric 是基于 Mk1 具身感知模型的机器人/第一人称视频自动标注 API：输出原子操作时间分段、自洽子任务标签与双手稠密 grounding，在 WGO-Bench 上超越 Gemini Robotics ER-1.6 与 Gemini 3.5 Flash 驱动的 Macrodata 管线。"
-updated: 2026-08-07
+updated: 2026-08-27
 status: complete
 related:
   - ../methods/auto-labeling-pipelines.md
@@ -11,6 +11,7 @@ related:
   - ../methods/vla.md
   - ./gemini-robotics.md
   - ../methods/macrodata-egocentric-hand-action.md
+  - ./perceptron-isaac-05.md
 sources:
   - ../../sources/blogs/perceptron_egocentric_api.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
@@ -115,6 +116,7 @@ flowchart LR
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — Macrodata 度量 3D 手轨迹工程博客（几何轴）
 - [模仿学习 (Imitation Learning)](../methods/imitation-learning.md) — 分段演示监督的常见消费端
 - [VLA](../methods/vla.md) — 语言–视觉–动作数据引擎语境
+- [Perceptron Isaac 0.5](./perceptron-isaac-05.md) — 同机构 36B 具身基础模型（策略权重轴；部分开源）
 - [灵巧操作数据管线与 RL 基建指南](../queries/dexterous-manipulation-data-pipeline.md) — 轨迹/接触自动标注选型
 
 ## 参考来源

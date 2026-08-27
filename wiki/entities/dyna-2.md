@@ -2,7 +2,7 @@
 type: entity
 tags: [wam, world-action-models, scaling-laws, egocentric-video, human-robot-transfer, foundation-model, manipulation, dexterous-manipulation, flow-matching, dyna-robotics, closed-source]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-27
 related:
   - ../concepts/world-action-models.md
   - ../concepts/embodied-scaling-laws.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-omega-0.md
   - ../entities/sunday-robotics-act2.md
   - ../entities/generalist-gen1-thousand-hands.md
+  - ../entities/perceptron-isaac-05.md
   - ../tasks/manipulation.md
   - ../../roadmap/depth-wam.md
 sources:
@@ -51,7 +52,7 @@ summary: "Dyna-2（Dyna Robotics, 2026-08）：≥100 万小时 egocentric 人�
 
 - **把人视频缩放轴推到 1M h：** 相对 [EgoScale](../methods/egoscale.md)（~20k h、VLA + 人–机对齐 mid-training），Dyna-2 声称在 **不做对齐/共训** 的设定下，仍测到 **人→机零样本** 离线缩放——若成立，将改写「人数据必须先对齐才能服务机器人」的默认配方。
 - **钉死世界建模必要性：** 同架构消融显示 **action-only** 无法建立可靠跨具身缩放；**video co-training**（含无动作标签视频）才是缩放出现的主驱动 → 与 [WAM 概念](../concepts/world-action-models.md)「未来预测参与表示塑造」一致，且明确 **推理可保持 reactive**。
-- **产业对照样本：** 与 [Sunday ACT-2](./sunday-robotics-act2.md)、[GEN-1 千手](./generalist-gen1-thousand-hands.md) 同属 **闭源人类数据预训练** 路线，但主张点落在 **WAM 目标 + 跨具身幂律**，而非家用 Solve 或末端多样性。
+- **产业对照样本：** 与 [Sunday ACT-2](./sunday-robotics-act2.md)、[GEN-1 千手](./generalist-gen1-thousand-hands.md) 同属 **闭源人类数据预训练** 路线，但主张点落在 **WAM 目标 + 跨具身幂律**，而非家用 Solve 或末端多样性。开源侧 [Perceptron Isaac 0.5](./perceptron-isaac-05.md) 同样把视频推到 **1M h**，但测的是 **无动作视频置换 teleop 小时数**（VLA 共享骨干），不是人→机零样本 WAM。
 
 ## 流程总览
 
@@ -151,6 +152,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — WAM 边界与 Joint/Cascaded 族谱
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 具身缩放概念层
 - [EgoScale](../methods/egoscale.md) — ~20k h 人视频 VLA + 对齐 mid-training 对照
+- [Perceptron Isaac 0.5](./perceptron-isaac-05.md) — 开源 1M h 通用视频置换 teleop（VLA，非 WAM）
 - [VLA](../methods/vla.md) — Dyna-1 生产对照范式
 - [DreamWAM](./paper-dreamwam.md) / [ω-0](./paper-omega-0.md) — 开源/WIP 学术 Joint WAM
 - [ACT-2（Sunday）](./sunday-robotics-act2.md) / [GEN-1 千手](./generalist-gen1-thousand-hands.md) — 闭源人类数据预训练产业对照
