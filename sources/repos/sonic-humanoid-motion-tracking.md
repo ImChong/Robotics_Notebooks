@@ -2,6 +2,7 @@
 
 - **标题**: SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control
 - **论文**: https://arxiv.org/abs/2511.07820
+- **正式发表**: [*Science Robotics* 11(117)，2026](https://doi.org/10.1126/scirobotics.aed4592)（GEAR-SONIC 项目页 2026-08-27 再核）
 - **项目页（主站）**: https://nvlabs.github.io/GEAR-SONIC/ （与 `https://nvlabs.github.io/SONIC/` 为同一套公开材料，后者为别名）
 - **代码**: https://github.com/NVlabs/GR00T-WholeBodyControl （GEAR-SONIC 训练 / 评测 / C++ 部署均在此单仓）
 - **权重 / 模型卡**: https://huggingface.co/nvidia/GEAR-SONIC
@@ -10,7 +11,7 @@
 - **类型**: paper / foundation-controller
 - **机构**: NVIDIA、CMU 等（论文与官网作者列表为准）
 - **收录日期**: 2026-05-07
-- **最近对照官网整理**: 2026-07-20（对照 GEAR-SONIC 项目页 + GR00T-WholeBodyControl README / 训练与 Quick Start 文档；确认官方源码与权重已发布）
+- **最近对照官网整理**: 2026-08-27（项目页页头确认 SciRob 11(117) / DOI `aed4592`；代码与权重入口与 2026-07-20 再核一致。页上 “All models shown in the videos will be released” 不改变已发布仓/HF 权重的开源结论）
 
 ## 一句话摘要
 

@@ -3,9 +3,10 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-08-22
+updated: 2026-08-27
 arxiv: "2511.07820"
-venue: "2025 · arXiv"
+doi: "10.1126/scirobotics.aed4592"
+venue: "Science Robotics 2026"
 code: https://github.com/NVlabs/GR00T-WholeBodyControl
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
@@ -46,6 +47,7 @@ related:
   - ../entities/ardy.md
   - ./gentlehumanoid-motion-tracking.md
   - ../entities/paper-extreme-rgmt.md
+  - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
@@ -64,6 +66,7 @@ sources:
   - ../../sources/papers/fddc_arxiv_2608_00500.md
   - ../../sources/papers/gentrack_arxiv_2608_01410.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
 summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以 FSQ 统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。官方训练/部署代码在 NVlabs/GR00T-WholeBodyControl；方法页含模块边界、文件树、算法↔代码映射与源码时序图。"
 ---
 
@@ -73,7 +76,7 @@ SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标�
 
 SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）论证：在人形控制上 **大规模拟合多样参考运动**（motion tracking）可获得稳健的全身体现与少手工奖励设计，并随 **模型容量、数据量与算力** 同步扩展性能。项目由 NVIDIA 等与 CMU 等合作者推动（详见论文作者列表）。实现层面与 [Whole-Body Control (WBC)](../concepts/whole-body-control.md) 所讨论的「高自由度协调」问题同一战场：SONIC 用学习策略把参考运动映射为全身扭矩/位置指令。
 
-官网（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)，与 [SONIC 别名页](https://nvlabs.github.io/SONIC/) 同源）在论文摘要之外，补充了 **VLA 堆叠、VR/视频遥操作、音乐与文本条件、运动学规划器交互** 等系统级演示；下文「公开材料要点」与之对齐，**仍以 arXiv 论文为方法细节准绳**。
+官网（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)，与 [SONIC 别名页](https://nvlabs.github.io/SONIC/) 同源）在论文摘要之外，补充了 **VLA 堆叠、VR/视频遥操作、音乐与文本条件、运动学规划器交互** 等系统级演示；正式发表为 [*Science Robotics* 11(117)，DOI 10.1126/scirobotics.aed4592](https://doi.org/10.1126/scirobotics.aed4592)。下文「公开材料要点」与之对齐，**方法细节仍以 arXiv 与项目页为准**。
 
 ## 英文缩写速查
 
@@ -413,6 +416,7 @@ sequenceDiagram
 
 - [机器人论文阅读笔记：SONIC Supersizing Motion Tracking for Natural Humanoid Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control.html)
 - 论文：<https://arxiv.org/abs/2511.07820>
+- 正式发表：[Science Robotics 11(117)，eaed4592](https://doi.org/10.1126/scirobotics.aed4592)
 - 项目页：<https://nvlabs.github.io/GEAR-SONIC/>（别名 <https://nvlabs.github.io/SONIC/>）
 - 代码：<https://github.com/NVlabs/GR00T-WholeBodyControl>
 - 权重：<https://huggingface.co/nvidia/GEAR-SONIC>
@@ -430,6 +434,7 @@ sequenceDiagram
 - [bfm_awesome_sonic_arxiv_2511_07820.md](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) — awesome-bfm 策展摘录
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — RL 运动控制微信公众号编译导读
+- [wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md](../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md) — SciRob 同期三层读法；项目页确认 11(117) / aed4592
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — BFM 41 篇微信公众号编译导读
 - [loco_manip_161_survey_019_sonic.md](../../sources/papers/loco_manip_161_survey_019_sonic.md) — Loco-Manip 161 #019 策展摘录
 - [loco_manip_161_survey_103_sonic.md](../../sources/papers/loco_manip_161_survey_103_sonic.md) — Loco-Manip 161 #103 策展摘录
@@ -445,6 +450,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层：技能编译器 / 运动底座 / 感知任务环
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Mimic/FSQ 在任务球上的曲线投影与 OOD 读法
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 42 篇栈总框架（本文 #17/42）
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) — 本文 #07/41（02 Goal-conditioned 学习）

@@ -1,3 +1,11 @@
+## [2026-08-27] ingest | sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md — SciRob 11(117) 同期 ZEST/SONIC/视觉足球升格三层对比；SONIC DOI aed4592；开源：ZEST 未开源 / SONIC 已开源 / 视觉足球部分开源
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/UC-LTs_E83ssuImnXusQGA>；要求自动合并 PR
+- **步骤 2.5：** ZEST **确认未开源**；SONIC **已开源**（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/) 确认 *Science Robotics* 11(117) / [DOI aed4592](https://doi.org/10.1126/scirobotics.aed4592)，代码 GR00T-WholeBodyControl）；视觉足球 **部分开源**（Zenodo，真机未发布）
+- **关键页：** [`wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md`](wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md)
+- **交叉：** zest / sonic-motion-tracking / vision soccer 实体、运动跟踪选型、humanoid-soccer、身体系统栈
+- **复用：** 三篇均已有实体/方法页，不重复造节点
+
 ## [2026-08-27] ingest | sources/papers/{worldecho_worldsync,lawa,arli}_arxiv_2608_*.md — WorldEcho/WorldSync 动作跟随评测、LAWA 潜意图 WAM、ARLI 异步延迟感知 RL；升格三实体
 
 - **触发：** 用户指定 [arXiv:2608.24885](https://arxiv.org/abs/2608.24885)、[arXiv:2608.24882](https://arxiv.org/abs/2608.24882)（项目页 <https://getterupper.github.io/LAWA>）、[arXiv:2608.23831](https://arxiv.org/abs/2608.23831)；要求自动合并 PR

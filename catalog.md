@@ -3048,6 +3048,7 @@
 - [五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型](wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 五大具身模型** 是 2025–2026 年产业报告与论文中高频出现的 **功能分层缩写**：共享 **Transformer + 多模态编码** 底座，按 **跨模态理解 → 空间导航 → 动作 `📅unknown` `[comparison_page]`
 - [Weights & Biases vs TensorBoard（训练实验监控选型）](wiki/comparisons/wandb-vs-tensorboard.md) — 在机器人强化学习工程里，**TensorBoard** 与 **Weights & Biases（W&B）** 都回答「训练进行得怎样」，但默认假设不同：前者是 **本机 event 文件 + 浏览器 `📅unknown` `[comparison_page]`
 - [WBC vs RL: Whole-Body Control vs Reinforcement Learning](wiki/comparisons/wbc-vs-rl.md) — 人形机器人运动控制领域最常见的两种路线对比。 `📅unknown` `[comparison_page]`
+- [ZEST vs SONIC vs 视觉足球：人形学习控制三层对比](wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md) — Science Robotics* 11(117) 同期发表 ZEST、[SONIC](../methods/sonic-motion-tr `📅unknown` `[comparison_page]`
 
 ### Wiki Overview（总览）
 
