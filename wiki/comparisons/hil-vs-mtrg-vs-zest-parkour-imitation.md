@@ -2,7 +2,7 @@
 type: comparison
 tags: [humanoid, parkour, imitation-learning, motion-tracking, amp, goal-conditioned, unitree-g1, character-animation]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-27
 related:
   - ../methods/hil-hybrid-imitation-learning.md
   - ../methods/mtrg-reference-goal-driven-rl.md
@@ -12,6 +12,7 @@ related:
   - ../methods/amp-reward.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/locomotion.md
+  - ./zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md
   - ../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
@@ -94,6 +95,7 @@ flowchart LR
 - [DeepMimic](../methods/deepmimic.md) — 显式 tracking 传统
 - [AMP & HumanX](../methods/amp-reward.md) — style reward 来源
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 更广 WBT 选型
+- [ZEST vs SONIC vs 视觉足球](./zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层；本页只比跑酷模仿里参考是否进部署
 
 ## 参考来源
 

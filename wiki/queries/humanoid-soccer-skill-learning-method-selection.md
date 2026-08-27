@@ -3,7 +3,7 @@ title: 人形足球技能学习方法选型指南
 type: query
 status: complete
 created: 2026-06-11
-updated: 2026-07-28
+updated: 2026-08-27
 summary: 在人形足球（射门 / 踢球）技能学习中，如何在「感知–动作渐进融合」（PAiD）与「motion scaffold + 课程 RL」（RoboNaldo）之间按任务目标选型与组合。
 sources:
   - ../../sources/repos/humanoid_soccer.md
@@ -11,6 +11,7 @@ sources:
   - ../../sources/repos/robonaldo.md
   - ../../sources/repos/robonaldo-deploy.md
   - ../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形机器人踢球/射门技能学习，工程上该走 PAiD 式感知–动作渐进融合，还是 RoboNaldo 式 motion scaffold + 课程 RL，怎么选、怎么组合？」
@@ -89,6 +90,7 @@ flowchart TD
 - [PAiD Framework](../methods/paid-framework.md) — 感知–动作渐进融合三阶段
 - [RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) — motion-guided 课程 RL 三阶段
 - [Humanoid Soccer](../tasks/humanoid-soccer.md) — 任务总览与基准
+- [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — 视觉足球是感知任务环；PAiD/RoboNaldo 才是踢球技能产线对照
 - [Imitation Learning](../methods/imitation-learning.md)、[Reinforcement Learning](../methods/reinforcement-learning.md) — 两路线的基础学习范式
 - [Domain Randomization](../concepts/domain-randomization.md) — Sim2Real 鲁棒性主线
 - [Unitree G1](../entities/unitree-g1.md) — 共同真机平台
