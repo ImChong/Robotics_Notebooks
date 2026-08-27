@@ -1,3 +1,12 @@
+## [2026-08-27] ingest | sources/papers/vgi_white_paper_arxiv_2608_25924.md — CVPR 2026 VGI 白皮书；确认未开源；升格 paper-vgi-white-paper
+
+- **触发：** 用户指定 [arXiv:2608.25924](https://arxiv.org/abs/2608.25924)；要求自动合并 PR
+- **步骤 2.5：** **确认未开源** — 工作坊页 <https://cvpr2026-vgi-workshop.limitlab.xyz/> 仅 slides/poster，无 GitHub / 权重 / 数据集；立场白皮书无可运行实现
+- **关键页：** [`wiki/entities/paper-vgi-white-paper.md`](wiki/entities/paper-vgi-white-paper.md)
+- **交叉：** From AGI to ASI / 生成式世界模型 / WAM / 视频即仿真 / 生成式视觉预训练 / VLM-VLN-VLA-VLX-WM 分类
+- **机构：** `aist` / `oxford` / `openai` / `cambridge` / `google-deepmind` / `cmu` / `harvard` / `stanford` / `princeton` / `nyu` / `imperial-college`
+
+
 ## [2026-08-27] ingest | sources/papers/{worldecho_worldsync,lawa,arli}_arxiv_2608_*.md — WorldEcho/WorldSync 动作跟随评测、LAWA 潜意图 WAM、ARLI 异步延迟感知 RL；升格三实体
 
 - **触发：** 用户指定 [arXiv:2608.24885](https://arxiv.org/abs/2608.24885)、[arXiv:2608.24882](https://arxiv.org/abs/2608.24882)（项目页 <https://getterupper.github.io/LAWA>）、[arXiv:2608.23831](https://arxiv.org/abs/2608.23831)；要求自动合并 PR

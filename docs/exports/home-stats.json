@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-27",
-  "node_count": 3307,
-  "edge_count": 29435,
+  "node_count": 3308,
+  "edge_count": 29449,
   "coverage": {
-    "covered": 3282,
-    "total": 3282,
+    "covered": 3283,
+    "total": 3283,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -238,7 +238,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 217
+      "size": 216
     },
     {
       "label": "人形强化学习运动控制",
@@ -277,7 +277,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 796,
+      "degree": 797,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -285,7 +285,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 774,
+      "degree": 776,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

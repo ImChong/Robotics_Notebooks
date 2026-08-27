@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, agi, asi, scaling-laws, foundation-models, world-models, multi-agent, google-deepmind, survey, ai-safety]
 status: complete
-updated: 2026-06-14
+updated: 2026-08-27
 arxiv: "2606.12683"
 venue: "arXiv preprint (DeepMind technical report)"
 related:
+  - ./paper-vgi-white-paper.md
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/foundation-policy.md
   - ../concepts/data-flywheel.md
@@ -154,6 +155,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) / [Generative World Models](../methods/generative-world-models.md) — 范式演进路径中的 **内部世界模型** 实例。
 - [机器人学习「三个时代」](../queries/robot-learning-three-eras-narrative.md) — 产业侧 **存在性证明 → 基础模型 → Scaling** 叙事；可与此报告的 **后 AGI 连续谱** 前后拼接阅读。
 - [MARL](../methods/marl.md) — 第四条路径（多智能体集体）在机器人仿真中的具体技术落点。
+- [Visual General Intelligence 白皮书](./paper-vgi-white-paper.md) — 视觉优先、从视觉经验涌现智能的互补议程；本报告的「抽象壁垒」几乎就是那一页的动机。
 
 ## 推荐继续阅读
 
@@ -165,4 +167,5 @@ flowchart TB
 ## 参考来源
 
 - [agi_to_asi_arxiv_2606_12683.md](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — arXiv 策展摘录
+- [vgi_white_paper_arxiv_2608_25924.md](../../sources/papers/vgi_white_paper_arxiv_2608_25924.md) — 视觉优先 VGI 白皮书，与本报告语言优先路径对读
 - Genewein, T., et al. (2026). *From AGI to ASI*. arXiv:2606.12683. <https://arxiv.org/abs/2606.12683>
