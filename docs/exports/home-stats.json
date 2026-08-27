@@ -9,6 +9,37 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-arli.md",
+      "detail_id": "entity-paper-arli",
+      "label": "ARLI：异步 VLA 的延迟感知 RL 后训练",
+      "type": "entity",
+      "recency": "2026-08-27",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lawa.md",
+      "detail_id": "entity-paper-lawa",
+      "label": "LAWA：潜动作作未来意图",
+      "type": "entity",
+      "recency": "2026-08-27",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-worldecho-worldsync.md",
+      "detail_id": "entity-paper-worldecho-worldsync",
+      "label": "WorldEcho / WorldSync（动作条件世界模型的动作跟随评测与对齐）",
+      "type": "entity",
+      "recency": "2026-08-27",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
       "path": "wiki/comparisons/rl-vs-geometric-control.md",
       "detail_id": "wiki-comparisons-rl-vs-geometric-control",
       "label": "RL vs 几何控制：四旋翼跟踪怎么公平比、怎么选",
@@ -180,48 +211,17 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-checkvla-execution-time-verification.md",
-      "detail_id": "entity-paper-checkvla-execution-time-verification",
-      "label": "CheckVLA",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md",
-      "detail_id": "entity-paper-conceptgraphs-open-vocabulary-3d-scene",
-      "label": "ConceptGraphs",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-contactnets-contact-dynamics.md",
-      "detail_id": "entity-paper-contactnets-contact-dynamics",
-      "label": "ContactNets",
-      "type": "entity",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/rl-vs-geometric-control.md",
-    "detail_id": "wiki-comparisons-rl-vs-geometric-control",
-    "label": "RL vs 几何控制：四旋翼跟踪怎么公平比、怎么选",
-    "type": "comparison",
-    "recency": "2026-08-26",
+    "path": "wiki/entities/paper-arli.md",
+    "detail_id": "entity-paper-arli",
+    "label": "ARLI：异步 VLA 的延迟感知 RL 后训练",
+    "type": "entity",
+    "recency": "2026-08-27",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
