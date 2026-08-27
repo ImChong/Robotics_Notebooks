@@ -2,7 +2,7 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-27
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-rift-wam.md
   - ../entities/paper-wam-realtime-async.md
   - ../entities/paper-reflexvla.md
+  - ../entities/paper-arli.md
   - ./vla-with-low-level-controller.md
   - ../entities/lw-benchhub-tour.md
 sources:
@@ -101,6 +102,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — WAM 秒级延迟下六种 chunk 融合对照（先对齐再 blend）
 - [Rift](../entities/paper-rift-wam.md) — 先问要不要滚视频再谈异步切块；LIBERO 延迟 1.1× current-only
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态任务 + CUDA Graph；代码待开放
+- [ARLI](../entities/paper-arli.md) — 异步 VLA 上延迟感知 RL 后训练；中间动作 + 中间观测条件 DSRL（确认未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真侧 EnvHub 闭环对照（headless SmolVLA + 双臂 Piper）；不含真机异步/TensorRT
 
 ## 参考来源

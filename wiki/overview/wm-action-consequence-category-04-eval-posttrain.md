@@ -2,18 +2,20 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-27
 summary: "世界模型动作后果专题 · 04 — 策略评估与世界模型进入研发链路"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./wm-action-consequence-category-01-wam-action-prediction.md
   - ../concepts/world-action-models.md
   - ../entities/paper-sc3-eval.md
+  - ../entities/paper-worldecho-worldsync.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/current-robotics-currentworld.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
+  - ../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md
   - ../../sources/blogs/current_robotics_currentworld.md
 ---
 
@@ -36,6 +38,7 @@ sources:
 |------|-----------|----------|
 | GigaWorld-1 | [../entities/paper-gigaworld-1-policy-evaluation](../entities/paper-gigaworld-1-policy-evaluation.md) | 7 类视频 WM + 32 万轨迹研究策略评估对齐 |
 | SC3-Eval | [../entities/paper-sc3-eval](../entities/paper-sc3-eval.md) | 自一致视频生成作真机 VLA 评估器（闭环 \(r=0.929\)） |
+| WorldEcho / WorldSync | [../entities/paper-worldecho-worldsync](../entities/paper-worldecho-worldsync.md) | off-expert 动作跟随评测 + AFE/IE 对齐；作策略改进模拟器（确认未开源） |
 | CurrentWorld-0 | [../entities/current-robotics-currentworld](../entities/current-robotics-currentworld.md) | 产业侧交互模拟器：评测 + 失败态回滚分支后训练（确认未开源） |
 
 
@@ -52,6 +55,7 @@ sources:
 - [World Action Models](../concepts/world-action-models.md)
 - [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体交互 WM 作评测/后训练沙盒
+- [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — 动作跟随评测与对齐配方（arXiv:2608.24885）
 
 ## 参考来源
 

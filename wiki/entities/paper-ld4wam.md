@@ -11,7 +11,7 @@ tags:
   - mixture-of-transformers
   - dino
 status: complete
-updated: 2026-08-26
+updated: 2026-08-27
 arxiv: "2608.22403"
 related:
   - ../concepts/world-action-models.md
@@ -181,6 +181,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — Joint 族 + 人视频桥接
 - [VLA](../methods/vla.md) — 反应式对照；背景 OOD 上 π₀.₅ 更稳
 - [Being-H0.7](../methods/being-h07.md) — 潜空间世界–动作、部署不滚像素
+- [LAWA](./paper-lawa.md) — 测试时显式去噪 latent 意图；相对 Joint 延迟 −42.9%（待发布）
 - [EgoWAM](./paper-egowam-egocentric-human-wam-co-training.md) — 人–机共训的世界目标消融
 - [Manipulation](../tasks/manipulation.md) — 双臂 / 灵巧操作任务面
 - [EgoVerse](./paper-egoverse.md) — 人视频源之一

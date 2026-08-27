@@ -9,7 +9,7 @@ tags:
   - action-chunking
   - humanoid-manipulation
 status: complete
-updated: 2026-08-26
+updated: 2026-08-27
 summary: "Being-H0.7 用大规模第一人称视频与机器人演示，在潜空间对齐未来感知监督，得到可部署的「世界–动作」先验；推理不滚未来像素，直接输出动作 chunk。"
 related:
   - ../overview/wam-motion-control-five-paths.md
@@ -143,6 +143,7 @@ flowchart TB
 - [VLA（Vision-Language-Action）](vla.md)
 - [Being-M0.7（人形潜空间 WAM）](../entities/paper-being-m07-humanoid-latent-wam.md) — 同机构全身 loco-manipulation 技术报告
 - [LD4WAM](../entities/paper-ld4wam.md) — 运动对齐潜动力学 + 部署仍滚视频的 Joint WAM 对照（未开源）
+- [LAWA](../entities/paper-lawa.md) — 测试时去噪 latent 意图、不滚像素；无 ego 预训练时仍落后 Joint（代码待发布）
 - [Pelican-Unified 1.0（UEI）](pelican-unified-1.md) — 像素级联合未来–动作扩散 + VLM 推理 \(z\) 的对照阅读
 - [Generative World Models（生成式世界模型）](generative-world-models.md)
 - [Latent Imagination（潜空间想象）](../concepts/latent-imagination.md)
