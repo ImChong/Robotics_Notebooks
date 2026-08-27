@@ -1,3 +1,11 @@
+## [2026-08-27] ingest | sources/papers/vgi_white_paper_arxiv_2608_25924.md — CVPR 2026 VGI 白皮书；确认未开源；升格 paper-vgi-white-paper
+
+- **触发：** 用户指定 [arXiv:2608.25924](https://arxiv.org/abs/2608.25924)；要求自动合并 PR
+- **步骤 2.5：** **确认未开源** — 工作坊页 <https://cvpr2026-vgi-workshop.limitlab.xyz/> 仅 slides/poster，无 GitHub / 权重 / 数据集；立场白皮书无可运行实现
+- **关键页：** [`wiki/entities/paper-vgi-white-paper.md`](wiki/entities/paper-vgi-white-paper.md)
+- **交叉：** From AGI to ASI / 生成式世界模型 / WAM / 视频即仿真 / 生成式视觉预训练 / VLM-VLN-VLA-VLX-WM 分类
+- **机构：** `aist` / `oxford` / `openai` / `cambridge` / `google-deepmind` / `cmu` / `harvard` / `stanford` / `princeton` / `nyu` / `imperial-college`
+
 ## [2026-08-27] ingest | sources/blogs/perceptron_isaac_05.md — Perceptron Isaac 0.5（36B-A2.5B 稀疏具身基础模型）；部分开源（代码 Apache 2.0，Hub 权重 COMING SOON，mHarmony 未进 extra）；关键页 wiki/entities/perceptron-isaac-05.md
 
 - **触发：** 用户指定 <https://www.perceptron.inc/blog/introducing-isaac-0-5>；要求自动合并 PR
@@ -13,6 +21,7 @@
 - **关键页：** [`wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md`](wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md)
 - **交叉：** zest / sonic-motion-tracking / vision soccer 实体、运动跟踪选型、humanoid-soccer、身体系统栈
 - **复用：** 三篇均已有实体/方法页，不重复造节点
+
 
 
 ## [2026-08-27] ingest | sources/papers/{worldecho_worldsync,lawa,arli}_arxiv_2608_*.md — WorldEcho/WorldSync 动作跟随评测、LAWA 潜意图 WAM、ARLI 异步延迟感知 RL；升格三实体

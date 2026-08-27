@@ -8,8 +8,9 @@ tags:
   - perception
   - deep-learning
 status: complete
-updated: 2026-08-03
+updated: 2026-08-27
 related:
+  - ../entities/paper-vgi-white-paper.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./vision-backbones.md
   - ./visual-representation-for-policy.md
@@ -102,6 +103,7 @@ Vision Banana 的关键设计是把任务输出 **参数化为 RGB 图像**：
 - [目标检测](../methods/object-detection.md) — 2D 感知任务谱系中的物体级输出
 - [VLA](../methods/vla.md) — 语言条件机器人；与 **语言 prompt 驱动分割** 有接口相似性
 - [生成式世界模型](../methods/generative-world-models.md) — 同属「生成式预训练」大族，但侧重 **视频/动作条件未来** 而非静态理解
+- [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 把「生成基座 → 通才视觉」升到 AGI 议程，并用物理结构可编辑性限制该主张
 
 ## 参考来源
 

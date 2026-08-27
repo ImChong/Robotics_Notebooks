@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, world-generation, video-generation, evaluation, 3d, 4d, open-source, stanford]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-27
 arxiv: "2504.00983"
 venue: "ICCV 2025"
 code: https://github.com/haoyi-duan/WorldScore

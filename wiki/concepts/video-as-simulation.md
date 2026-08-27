@@ -2,8 +2,9 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-27
 related:
+  - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
   - ../entities/ewmbench.md
   - ../entities/paper-worldscore.md
@@ -131,6 +132,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 在 **开放域交互式内容 / 桌面实时** 设定下，[ABot-World-0](../entities/paper-abot-world-0.md)（arXiv:2607.19191）用 **原始键盘动作** 统一场景漫游与第三人称角色，经 **LongForcing** 压长程自回归漂移，并在 **单卡 RTX 5090** 上做到 **720P ≤16 FPS**；它更接近 UniSim「可玩的像素世界」叙事，而不是关节级机器人策略评估代理——推理学生已开源，完整训练数据/教师仍待发。
 
 ## 关联页面
+- [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — Geirhos「视频模型即 VFM」与 Wu & Wu「像素生成 ≠ 物理理解」的对张力，用来读本页「视频即仿真」的适用边界
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧控制，动作条件交互世界模型语料
 - [Generative World Models](../methods/generative-world-models.md)

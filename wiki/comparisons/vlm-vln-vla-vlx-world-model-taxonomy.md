@@ -2,8 +2,9 @@
 type: comparison
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-27
 related:
+  - ../entities/paper-vgi-white-paper.md
   - ./robot-learning-five-paradigms-taxonomy.md
   - ../methods/vla.md
   - ../tasks/vision-language-navigation.md
@@ -108,6 +109,7 @@ flowchart TB
 - [VLN 任务页](../tasks/vision-language-navigation.md)：导航基准与开源复现范式。
 - [统一多模态 token](../methods/unified-multimodal-tokens.md)：VLX/端到端大模型的表征接口。
 - [人形策略网络架构](../concepts/humanoid-policy-network-architecture.md)：全身控制与高层 VLA 分层。
+- [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md)：视觉优先对照——VGI 主张视觉可以是组织原则，而不是只当 VL 系列的输入通道。
 
 ## 推荐继续阅读
 

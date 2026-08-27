@@ -5,6 +5,7 @@ status: complete
 updated: 2026-08-27
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）、LAWA（潜动作意图）与 Dyna-2 等实例。"
 related:
+  - ../entities/paper-vgi-white-paper.md
   - ../entities/paper-lawa.md
   - ../entities/dyna-2.md
   - ../../roadmap/depth-wam.md
@@ -269,6 +270,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 具身闭环 + 生成世界模型作视觉计划；与 WAM「联合建模」同构的议程层坐标
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
 - [Dyna-2](../entities/dyna-2.md) — 百万小时人视频 Joint WAM 跨具身缩放（闭源）
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 动作接地预测 latent + 紧凑 MoT flow 策略（非像素 rollout）
