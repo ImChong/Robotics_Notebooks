@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md",
+      "detail_id": "wiki-comparisons-zest-vs-sonic-vs-vision-soccer",
+      "label": "ZEST vs SONIC vs 视觉足球：人形学习控制三层对比",
+      "type": "comparison",
+      "recency": "2026-08-27",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-arli.md",
       "detail_id": "entity-paper-arli",
       "label": "ARLI：异步 VLA 的延迟感知 RL 后训练",
@@ -201,26 +212,18 @@
       "recency": "2026-08-26",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/concepts/robot-in-context-learning.md",
-      "detail_id": "wiki-concepts-robot-in-context-learning",
-      "label": "机器人 In-Context Learning（上下文学习）",
-      "type": "concept",
-      "recency": "2026-08-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-arli.md",
-    "detail_id": "entity-paper-arli",
-    "label": "ARLI：异步 VLA 的延迟感知 RL 后训练",
-    "type": "entity",
+    "path": "wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md",
+    "detail_id": "wiki-comparisons-zest-vs-sonic-vs-vision-soccer",
+    "label": "ZEST vs SONIC vs 视觉足球：人形学习控制三层对比",
+    "type": "comparison",
     "recency": "2026-08-27",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
