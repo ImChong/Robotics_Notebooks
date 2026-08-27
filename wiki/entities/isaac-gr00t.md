@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, vla, humanoid, nvidia, foundation-policy, lerobot, isaac-lab, deployment]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-27
 summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 GA 参考代码、LeRobot 数据管线、后训练/评测/TensorRT 部署，并与 Isaac Lab-Arena、Teleop、Isaac ROS 组成端到端策略流水线。"
 related:
   - ../entities/paper-hrl-stack-34-gr00t_n1.md
@@ -15,6 +15,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ./letools.md
   - ./paper-indi.md
+  - ./perceptron-isaac-05.md
 sources:
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
@@ -25,6 +26,8 @@ sources:
 # Isaac GR00T（人形 VLA 开发平台）
 
 **Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) 仓库为工程中枢，托管 **GR00T N1.7**（GA）VLA 的权重、参考实现、LeRobot 数据格式与后训练/部署工具，并与 **Isaac Lab-Arena**、**Isaac Teleop**、**Isaac ROS + Jetson Thor** 组成可模块化拆用的端到端流水线。
+
+> **名称消歧：** 本页是 **NVIDIA Isaac** 仿真/人形 VLA **平台**。Perceptron 2026-08 发布的开源通才模型也叫 Isaac，见 [Perceptron Isaac 0.5](./perceptron-isaac-05.md) — 二者无代码或权重关系。
 
 > **论文机制深读：** [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) — N1 双系统架构、数据金字塔与 GR-1 评测以 arXiv:2503.14734 为准。  
 > **全身低层控制：** [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) — G1 上 `UNITREE_G1_SONIC` latent → SONIC WBC 解码。
@@ -129,6 +132,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 视觉 Sim2Real 姊妹仓：[gr00t-visual-sim2real.md](../entities/gr00t-visual-sim2real.md)
 - 对象中心闭环增强：[POT-VLA](./paper-pot-vla.md) — 在 **GR00T-N1.7** 动作头插入持久 3D 对象 token + 几何谓词验收（G1 **39/80→71/80**；POT 侧未开源）
 - 行为意图蒸馏：[Indi](./paper-indi.md) — 在 GR00T-N1.7 解码器中间层恢复局部目标（arXiv:2608.23478；未开源）
+- 名称撞车：[Perceptron Isaac 0.5](./perceptron-isaac-05.md) — Perceptron 36B 稀疏 VLA；**不是** 本平台
 
 ## 参考来源
 

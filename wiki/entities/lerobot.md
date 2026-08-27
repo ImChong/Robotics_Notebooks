@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
-updated: 2026-08-26
+updated: 2026-08-27
 related:
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
@@ -14,6 +14,7 @@ related:
   - ./letools.md
   - ./lw-benchhub-tour.md
   - ./paper-ros2smolvla.md
+  - ./perceptron-isaac-05.md
   - ./rebot-devarm.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/vla.md
@@ -101,6 +102,7 @@ flowchart LR
 - **整机项目协作：** [Tnkr](./tnkr.md) 侧重把 CAD、线束、代码版本与部署/运行数据收进同一开源项目仓库；训练侧仍常导出到 LeRobot 等数据集格式，二者分工不同。
 - **ROBOTIS 全栈集成：** [Cyclo Intelligence](./cyclo-intelligence.md) 以子模块钉版本集成 LeRobot，在 Docker 策略容器内提供 ACT/SmolVLA/π₀ 等推理后端，并由行为树编排 `LOAD/RESUME/STOP` 生命周期。
 - **轻量 VLA 官方集成：** [Evo-1](./paper-evo1-lightweight-vla.md)（MINT-SJTU，CVPR 2026）已并入 **官方 LeRobot 主仓**；SO100/SO101 可用 `lerobot-record --policy.path=<Evo-1 checkpoint>` 闭环，训练侧数据格式为 **LeRobot v2.1**。
+- **Perceptron Isaac 0.5：** 官方 fork 以 **LeRobot 子模块** 发布 `policy.type=perceptron_isaac`（导入 checkpoint、LIBERO eval、SO100/YAM rollout）。根仓 Apache 2.0；**mHarmony 未进 extra**，Hub 权重入库日 **COMING SOON**。见 [Perceptron Isaac 0.5](./perceptron-isaac-05.md)。**勿与** NVIDIA [Isaac GR00T](./isaac-gr00t.md) 的 `groot` policy 混淆。
 - **部署/Agent OS 对照：** [DimOS（Dimensional）](./dimensionalos-dimos.md) 侧重 **现场 Module 编排、SLAM 导航、空间记忆与 MCP 自然语言控制**；与 LeRobot 的 **数据集 Hub + 策略训练** 正交，常在「训练用 LeRobot、集成用 DimOS/ROS」分层共存。
 - **无机器人双臂采集：** [HandUMI](./handumi.md)（钉 `lerobot[feetech]==0.5.1`）用可穿戴手持接口 **脱离目标机器人** 采集示范，经 `handumi validate` QA 后导出 **LeRobot v3 兼容** 同步数据，再重定向到 PiPER、OpenArm、TRLC-DK1、YAM 等平行夹爪双臂——降低「每台臂一套遥操作」的规模化成本。
 - **Unitree G1 官方改版：** [unitree_lerobot](./unitree-lerobot.md)（[`unitreerobotics/unitree_lerobot`](https://github.com/unitreerobotics/unitree_lerobot)）在 LeRobot 上适配 G1 双臂灵巧手采数/训练/测试，常与 [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md) 组成官方 IL 闭环；组织级导航见 [Unitree](./unitree.md)。
