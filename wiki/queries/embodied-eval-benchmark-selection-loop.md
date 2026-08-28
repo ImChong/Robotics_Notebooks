@@ -14,6 +14,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/papers/wall_ss_x_square_2026.md
   - ../../sources/blogs/current_robotics_currentworld.md
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
   - ../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md
@@ -35,6 +36,7 @@ related:
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
+  - ../entities/paper-wall-ss.md
   - ../entities/current-robotics-currentworld.md
   - ../entities/vla-sota-leaderboard.md
   - ../entities/all-hands-up.md
@@ -198,6 +200,7 @@ flowchart TD
 - [DriftWorld](../entities/paper-driftworld.md) — ②层外延：1-step drifting 快评估 + 推理时搜索（相关性最高约 0.99）
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — ②层外延：掩码动作条件 WM，RoboCasa 策略评估 **r=0.982**
 - [Ctrl-World](../entities/paper-ctrl-world.md) — ②层外延：多视角可控 WM，VLA 想象评估 + 合成轨迹改进（ICLR 2026）
+- [WALL-SS](../entities/paper-wall-ss.md) — ②/④ 层外延：next-scale AR 流式 WM，600 对虚实成功率校准 \(r=0.93\)（训练代码待发布）
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — ②层产业样本：跨本体交互模拟器 + 失败态回滚后训练（确认未开源）
 - [SC3-Eval](../entities/paper-sc3-eval.md) — ②层外延：自一致视频策略评估器，真机闭环 \(r=0.929\) / MMRV \(0.119\)（确认未开源）
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — ②层：off-expert 动作跟随（视觉门控 + \(\mathrm{SE}(3)\) NDTW）；确认未开源

@@ -3076,6 +3076,15 @@
         "omnilink-tech",
         "omnilink-agents"
       ]
+    },
+    "x-square-robot": {
+      "label": "自变量机器人（X Square Robot）",
+      "aliases": [
+        "x-square-robot",
+        "x-square",
+        "x2robot",
+        "xsquare"
+      ]
     }
   }
 }

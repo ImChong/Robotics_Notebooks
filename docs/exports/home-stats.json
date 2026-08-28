@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3325,
-  "edge_count": 29695,
+  "node_count": 3326,
+  "edge_count": 29729,
   "coverage": {
-    "covered": 3300,
-    "total": 3300,
+    "covered": 3301,
+    "total": 3301,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -20,6 +20,17 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/entities/paper-wall-ss.md",
+      "detail_id": "entity-paper-wall-ss",
+      "label": "WALL-SS（下一尺度自回归长程世界模型）",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
       "path": "wiki/entities/paper-anytime-gtmp.md",
       "detail_id": "entity-paper-anytime-gtmp",
       "label": "Anytime GTMP：批量全局张量运动规划",
@@ -27,8 +38,7 @@
       "recency": "2026-08-28",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-lac.md",
@@ -206,17 +216,6 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lawa.md",
-      "detail_id": "entity-paper-lawa",
-      "label": "LAWA：潜动作作未来意图",
-      "type": "entity",
-      "recency": "2026-08-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -233,11 +232,11 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 706
+      "size": 812
     },
     {
       "label": "操作",
-      "size": 591
+      "size": 596
     },
     {
       "label": "视觉-语言-动作",
@@ -245,15 +244,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 182
+      "size": 217
     },
     {
-      "label": "全身控制",
-      "size": 150
+      "label": "移动操作",
+      "size": 134
     },
     {
-      "label": "世界动作模型",
-      "size": 136
+      "label": "视觉语言动作纵深路线",
+      "size": 113
     }
   ],
   "top_hubs": [
@@ -261,7 +260,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1340,
+      "degree": 1342,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -292,7 +291,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 782,
+      "degree": 784,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -397,18 +396,19 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "detail_id": "entity-paper-ctrl-world",
+      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
+      "type": "entity",
+      "degree": 42,
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
       "degree": 41,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "degree": 41,
-      "has_repo": true
     }
   ]
 }

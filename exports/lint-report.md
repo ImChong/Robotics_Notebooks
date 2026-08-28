@@ -107,7 +107,7 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-worldecho-worldsync.md（含绝对化措辞「SOTA」，updated=2026-08-27；同主题更新页 wiki/entities/curobo.md updated=2026-08-28）
+- wiki/entities/paper-worldecho-worldsync.md（含绝对化措辞「SOTA」，updated=2026-08-27；同主题更新页 wiki/entities/cosmos-3.md updated=2026-08-28）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -127,4 +127,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：3300/3300 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3301/3301 (100%) wiki/entity 页有 ingest 来源

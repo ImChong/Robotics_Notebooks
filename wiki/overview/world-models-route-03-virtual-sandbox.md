@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, virtual-sandbox, model-based-rl, policy-evaluation, dreamer, shenlan-survey]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 summary: "深蓝世界模型 15 项目 · 03 虚拟沙盒（3 篇）— 世界模型作 RL 想象环境或策略评估靶场，用 rollout 替代昂贵真机试错；代表 DreamerV3、RLVR-World、WorldGym。"
 related:
   - ./world-models-15-open-source-technology-map.md
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
+  - ../entities/paper-wall-ss.md
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-sc3-eval.md
   - ../entities/paper-wan-move.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/papers/wall_ss_x_square_2026.md
   - ../../sources/blogs/current_robotics_currentworld.md
   - ../../sources/repos/open-dreamer.md
   - ../../sources/sites/open-dreamer.md
@@ -65,6 +67,7 @@ sources:
 - [DriftWorld](../entities/paper-driftworld.md)（arXiv:2607.15065）— **1-step drifting** 动作条件 WM（30+ fps），用快想象做 **GPC-RANK 推理时改进** 与离线策略评估（与 GT 相关性最高约 **0.99**）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（arXiv:2607.19343）— **像素掩码动作** 统一前向仿真与逆向行为合成；RoboCasa 策略评估 **r=0.982**，Best-of-N 规划 + 真机演示进度对齐。
 - [Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026）— **多视角** 可控 WM 与 VLA policy-in-the-loop；合成轨迹 SFT（**38.7%→83.4%**）。
+- [WALL-SS](../entities/paper-wall-ss.md)（自变量，2026-08-26）— **next-scale AR** 流式 WM；同一冻结策略虚实 **600** 对成功率 MAE **0.062**、\(r=0.93\)、组内排序 pairwise **0.89**（训练代码待发布）。
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md)（2026-08 博客）— 跨本体 / 多视角 / 力触觉 **交互模拟器**；失败态回滚分支 + Human-in-the-World-Model 后训练（π0 / π0.5 / DP；**确认未开源**）。
 - [SC3-Eval](../entities/paper-sc3-eval.md)（arXiv:2606.18610）— **自一致** 视频策略评估（前向–逆向 + 跨视角 + 早停）；七 VLA 闭环 **\(r=0.929\)** / MMRV **0.119**（确认未开源）。
 - [Open Dreamer](../entities/open-dreamer.md)（2026-07）— **Dreamer 4** 的开源 JAX/Flax 复现（tokenizer→dynamics→FVD + 浏览器 Game⟷Dream demo）；完整 BC/RL agent 环仍在 roadmap，是 DreamerV3 沙盒谱系的可复现外延。
@@ -89,6 +92,7 @@ sources:
 - [DriftWorld](../entities/paper-driftworld.md) — 1-step drifting：推理时搜索 + 离线评估
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — 掩码视觉动作：规划 / 评估 + 前向/逆向统一
 - [Ctrl-World](../entities/paper-ctrl-world.md) — 多视角可控 WM：VLA 闭环评估 + 合成 SFT
+- [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR 长程 WM：虚实成功率校准 \(r=0.93\)
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体交互模拟器 + 世界模型内人类接管后训练
 - [SC3-Eval](../entities/paper-sc3-eval.md) — 自一致视频策略评估器（闭环 \(r=0.929\)）
 - [Open Dreamer](../entities/open-dreamer.md) — Dreamer 4 开源训练/推理/demo

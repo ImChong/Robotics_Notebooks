@@ -27,6 +27,7 @@ related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-ctrl-world.md
+  - ./paper-wall-ss.md
   - ./paper-irasim.md
   - ./paper-gigaworld-1-policy-evaluation.md
   - ./paper-masked-visual-actions.md
@@ -184,6 +185,7 @@ flowchart TB
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — 「动作忠实 > 视觉逼真」评估器结论
 - [Masked Visual Actions](./paper-masked-visual-actions.md) / [DriftWorld](./paper-driftworld.md) — 同属虚拟评估，条件与时延不同
 - [WorldEcho / WorldSync](./paper-worldecho-worldsync.md) — 测动作跟随本身，不是自一致评估器
+- [WALL-SS](./paper-wall-ss.md) — next-scale AR 虚实成功率校准（训练代码待发布）
 - [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 策展坐标 391/571
 
 ## 参考来源

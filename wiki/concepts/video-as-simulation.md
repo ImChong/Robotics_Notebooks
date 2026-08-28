@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
@@ -22,6 +22,7 @@ related:
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
+  - ../entities/paper-wall-ss.md
   - ../entities/paper-odeworld.md
   - ../entities/paper-wan-move.md
   - ../entities/paper-wan-dancer.md
@@ -46,6 +47,7 @@ sources:
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/papers/wall_ss_x_square_2026.md
   - ../../sources/papers/odeworld_arxiv_2607_27924.md
   - ../../sources/papers/wan_move_arxiv_2512_08765.md
   - ../../sources/papers/wan_video_arxiv_2503_20314.md
@@ -121,6 +123,8 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 
 当瓶颈是 **与现代多视角 VLA 闭环兼容**（腕部相机 + 高维动作块）时，[Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026）用帧级动作条件与位姿记忆，在想象中做策略排序与合成轨迹 SFT（新指令 **38.7%→83.4%**）。
 
+当瓶颈是 **clip 级扩散的动作捷径 + 长程误差累积** 时，[WALL-SS](../entities/paper-wall-ss.md)（自变量，2026-08）用 **next-scale 自回归** 把动作写进 coarse→fine 链条，有界记忆滚约 **60 s**，并以 **600** 对虚实成功率校准（\(r=0.93\)）；训练代码待发布。
+
 当瓶颈是 **离散帧率 / 只能正向 next-step** 时，[ODEWorld](../entities/paper-odeworld.md)（arXiv:2607.27924）把预测改成物理时间 latent ODE：可任意 \(\tau\)、反向积分、缺帧插值，再可选 RAE 解码像素。规划发生在单 token 动力学 latent，**不是**动作条件像素沙盒（作者写明当前无动作条件）。
 
 通用开源视频先验侧，[Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) 提供可微调的 I2V、点轨迹运动控制与分钟级 music-to-dance；它们不是操纵仿真器，但是像素条件 WM / 参考视频先验的常见上游（MVA 对照基线）。
@@ -153,6 +157,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [DriftWorld](../entities/paper-driftworld.md) — 1-step drifting 动作条件视频 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — 掩码视觉动作统一前向/逆向 + 策略评估（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — 多视角可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR 长程 WM：60 s 流式 + 虚实校准（训练代码待发布）。
 - [ODEWorld](../entities/paper-odeworld.md) — 物理时间 latent ODE：任意时刻/反向视频，规划不在像素环（arXiv:2607.27924）。
 - [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) — 开源视频基础模型、轨迹运动控制与分钟级 music-to-dance。
 - [RoboInter1.5](../entities/paper-robointer-1-5.md) — IR 控制视频条件世界模型 + 操作 VLA 套件（arXiv:2607.18709）。

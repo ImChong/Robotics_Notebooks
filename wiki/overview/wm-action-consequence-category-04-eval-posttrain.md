@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 summary: "世界模型动作后果专题 · 04 — 策略评估与世界模型进入研发链路"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
@@ -12,11 +12,13 @@ related:
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/current-robotics-currentworld.md
+  - ../entities/paper-wall-ss.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
   - ../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md
   - ../../sources/blogs/current_robotics_currentworld.md
+  - ../../sources/papers/wall_ss_x_square_2026.md
 ---
 
 # 世界模型动作后果分类 04：训练与评估闭环
@@ -40,6 +42,7 @@ sources:
 | SC3-Eval | [../entities/paper-sc3-eval](../entities/paper-sc3-eval.md) | 自一致视频生成作真机 VLA 评估器（闭环 \(r=0.929\)） |
 | WorldEcho / WorldSync | [../entities/paper-worldecho-worldsync](../entities/paper-worldecho-worldsync.md) | off-expert 动作跟随评测 + AFE/IE 对齐；作策略改进模拟器（确认未开源） |
 | CurrentWorld-0 | [../entities/current-robotics-currentworld](../entities/current-robotics-currentworld.md) | 产业侧交互模拟器：评测 + 失败态回滚分支后训练（确认未开源） |
+| WALL-SS（路线外延） | [../entities/paper-wall-ss](../entities/paper-wall-ss.md) | next-scale AR 流式 WM；600 对虚实成功率 \(r=0.93\)（训练代码待发布） |
 
 
 ### 交叉引用（文内第四节）
@@ -55,6 +58,7 @@ sources:
 - [World Action Models](../concepts/world-action-models.md)
 - [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体交互 WM 作评测/后训练沙盒
+- [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR + 虚实校准（自变量，2026-08）
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — 动作跟随评测与对齐配方（arXiv:2608.24885）
 
 ## 参考来源

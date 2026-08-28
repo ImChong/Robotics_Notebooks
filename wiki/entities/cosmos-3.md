@@ -10,7 +10,7 @@ tags:
   - wam
   - open-source
 status: complete
-updated: 2026-08-18
+updated: 2026-08-28
 arxiv: "2606.02800"
 related:
   - ../concepts/world-action-models.md
@@ -26,6 +26,7 @@ related:
   - ../entities/paper-harnesseval-w.md
   - ../entities/ge-sim-2.md
   - ../entities/paper-physisforcing.md
+  - ./paper-wall-ss.md
 sources:
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos3-project.md
@@ -180,6 +181,7 @@ flowchart TB
 - [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md)
 - [NVIDIA SO-101 Sim2Real 动手课](./nvidia-so101-sim2real-lab-workflow.md)
 - [HarnessEval-W](./paper-harnesseval-w.md) — Cosmos3-Super 在 Prompt I2V 族 Overall 71.9（#7）
+- [WALL-SS](./paper-wall-ss.md) — 以 Cosmos3-Nano 为视频基线的 next-scale AR WM（动作跟随 0.044 vs 0.290）
 
 ## 推荐继续阅读
 
