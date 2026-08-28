@@ -9,17 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/omnisim.md",
-      "detail_id": "entity-omnisim",
-      "label": "OmniSim",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/paper-wall-ss.md",
       "detail_id": "entity-paper-wall-ss",
       "label": "WALL-SS（下一尺度自回归长程世界模型）",
@@ -29,6 +18,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/omnisim.md",
+      "detail_id": "entity-omnisim",
+      "label": "OmniSim",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-anytime-gtmp.md",
@@ -219,15 +219,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/omnisim.md",
-    "detail_id": "entity-omnisim",
-    "label": "OmniSim",
+    "path": "wiki/entities/paper-wall-ss.md",
+    "detail_id": "entity-paper-wall-ss",
+    "label": "WALL-SS（下一尺度自回归长程世界模型）",
     "type": "entity",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
   },
   "top_communities": [
     {
