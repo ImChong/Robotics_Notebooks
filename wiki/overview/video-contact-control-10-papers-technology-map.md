@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, egocentric-vision, contact-rich, vla, technology-map]
 status: complete
-updated: 2026-08-22
+updated: 2026-08-28
 related:
   - ../entities/paper-dreamhand.md
   - ../entities/paper-video2door-traversal.md
@@ -17,6 +17,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../methods/vla.md
+  - ./wam-vla-cross-embodiment-9-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md
   - ../../sources/raw/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md
@@ -25,7 +26,7 @@ summary: "依据具身智能小站 2026-08-22 十篇盘点，把近期工作读�
 
 # 视频–接触–控制：10 篇论文的阅读坐标
 
-> **本页定位**：为 [具身智能小站 · 10 篇盘点](https://mp.weixin.qq.com/s/EmC4gNgcQdPX34vxy-qSVQ)（2026-08-22）提供 **按四类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [世界模型与真实执行（2026-08-19）](./world-model-exec-10-papers-technology-map.md)、[接触–预测–适应（2026-08-18）](./contact-predict-adapt-10-papers-technology-map.md)。
+> **本页定位**：为 [具身智能小站 · 10 篇盘点](https://mp.weixin.qq.com/s/EmC4gNgcQdPX34vxy-qSVQ)（2026-08-22）提供 **按四类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [世界模型与真实执行（2026-08-19）](./world-model-exec-10-papers-technology-map.md)、[接触–预测–适应（2026-08-18）](./contact-predict-adapt-10-papers-technology-map.md)、[WAM / VLA / 跨本体（2026-08-28）](./wam-vla-cross-embodiment-9-papers-technology-map.md)。
 
 ## 一句话观点
 

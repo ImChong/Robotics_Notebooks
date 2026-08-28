@@ -1,3 +1,11 @@
+## [2026-08-28] ingest | sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md — 具身智能小站 9 篇（WAM/VLA/跨本体）；9/9 独立 paper-* 节点；开源分化
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/FNhRO3KOm8k8CkJEqystQQ>；要求每篇论文独立、非重复详情节点
+- **步骤 2.5：** Zero-WAM / StreamPI / UCAG-P / R³ **待发布**；MA-VLA / ConfAL-WM / TARCAT 标注 **已开源**；GaussianDream++ / Super Odometry 2.0 **部分开源**
+- **关键页：** [`wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md`](wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md)；9 个新建 `paper-*`（含 GaussianDream++ 与 Awesome 索引级 2605.20752 **分列**）
+- **交叉：** WAM / VLA / 生成式世界模型 / LIO 选型
+- **机构：** 注册 `robbyant` / `buffalo` / `uci`
+
 ## [2026-08-28] ingest | sources/repos/kimodo-cpp.md — LocalAI kimodo.cpp（C++/GGML）；已开源 Apache-2.0；SOMA/G1 GGUF 已发布、SMPL-X 禁止再分发；升格 wiki/entities/kimodo-cpp.md
 
 - **触发：** 用户指定 <https://github.com/localai-org/kimodo.cpp>；要求自动合并 PR

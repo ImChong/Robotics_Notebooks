@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-27
+updated: 2026-08-28
 related:
   - ../entities/paper-flatlab.md
   - ../entities/paper-arm-aware-dexgrasp.md
