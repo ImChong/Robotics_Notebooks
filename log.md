@@ -1,3 +1,11 @@
+## [2026-08-28] ingest | sources/repos/kimodo-cpp.md — LocalAI kimodo.cpp（C++/GGML）；已开源 Apache-2.0；SOMA/G1 GGUF 已发布、SMPL-X 禁止再分发；升格 wiki/entities/kimodo-cpp.md
+
+- **触发：** 用户指定 <https://github.com/localai-org/kimodo.cpp>；要求自动合并 PR
+- **步骤 2.5：** **已开源** — 无独立项目页，以 GitHub README / `PORTING.md` / `docs/IMPLEMENTATION.md` 为入口；代码 Apache-2.0；HF `LocalAI-io` 发布 SOMA/G1 F32 GGUF（NVIDIA Open Model License）；SMPL-X 为 Internal R&D，安装器故意不打包
+- **关键页：** [`wiki/entities/kimodo-cpp.md`](wiki/entities/kimodo-cpp.md)
+- **交叉：** Kimodo 上游实体、diffusion-motion-generation、HY-Motion vs GENMO vs Kimodo、SAM3DBody-cpp
+- **机构：** 注册 `localai`（本地人工智能（LocalAI））
+
 ## [2026-08-27] ingest | sources/papers/vgi_white_paper_arxiv_2608_25924.md — CVPR 2026 VGI 白皮书；确认未开源；升格 paper-vgi-white-paper
 
 - **触发：** 用户指定 [arXiv:2608.25924](https://arxiv.org/abs/2608.25924)；要求自动合并 PR

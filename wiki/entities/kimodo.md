@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, paper, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion, amp, motion-prior]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-28
 arxiv: "2603.15546"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -19,8 +19,10 @@ related:
   - ./ardy.md
   - ./paper-gentrack.md
   - ./core-retarget.md
+  - ./kimodo-cpp.md
 sources:
   - ../../sources/repos/kimodo.md
+  - ../../sources/repos/kimodo-cpp.md
   - ../../sources/sites/kimodo-project.md
   - ../../sources/papers/kimodo_arxiv_2603_15546.md
   - ../../sources/papers/humanoid_amp_survey_04_kimodo_scaling_controllable_human_motion_generat.md
@@ -112,6 +114,7 @@ flowchart LR
 - **Demo**：`kimodo_demo` 时间线编辑多 prompt、多轨约束、多样本对比与导出。
 - **显存**：全 GPU 约 **17GB**；`TEXT_ENCODER_DEVICE=cpu` 可换 <3GB VRAM。
 - **导出**：NPZ 含 `smooth_root_pos`、`foot_contacts` 等；G1 → MuJoCo qpos CSV；SMPL-X → `*_amass.npz`。
+- **本地 C++ 运行时**：无 Python / 低峰值显存推理见社区移植 [kimodo.cpp](./kimodo-cpp.md)（CPU/Vulkan GGUF；**不含**官方约束编辑与 77 关节展开）。
 
 ## 常见误区或局限
 
@@ -134,10 +137,12 @@ flowchart LR
 - [ARDY](./ardy.md) — 交互式自回归扩散姊妹（实时流式文本 + 长时域约束）
 - [GenTrack](./paper-gentrack.md) — 附录把 KIMODO-G1 当 robot-native 源对照；执行成功高、TMR 偏低
 - [CoRe v0.1.0](./core-retarget.md) — 官方消费 Kimodo SOMA77 `.npz`，接触精炼到 11 台人形
+- [kimodo.cpp](./kimodo-cpp.md) — LocalAI 的 C++/GGML 本地推理（SOMA/G1 GGUF；约束输入未移植）
 
 ## 参考来源
 
 - [sources/repos/kimodo.md](../../sources/repos/kimodo.md)
+- [sources/repos/kimodo-cpp.md](../../sources/repos/kimodo-cpp.md) — LocalAI C++/GGML 移植与 GGUF 权重边界
 - [sources/sites/kimodo-project.md](../../sources/sites/kimodo-project.md)
 - [sources/papers/kimodo_arxiv_2603_15546.md](../../sources/papers/kimodo_arxiv_2603_15546.md)
 - [humanoid_amp_survey_04_kimodo_scaling_controllable_human_motion_generat.md](../../sources/papers/humanoid_amp_survey_04_kimodo_scaling_controllable_human_motion_generat.md) — AMP 专题策展摘录
@@ -151,3 +156,4 @@ flowchart LR
 - [Kimodo 官方文档](https://research.nvidia.com/labs/sil/projects/kimodo/docs)
 - [arXiv:2603.15546](https://arxiv.org/abs/2603.15546) — *Kimodo: Scaling Controllable Human Motion Generation*
 - [ProtoMotions × Kimodo 数据准备](https://protomotions.github.io/getting_started/kimodo_preparation.html)
+- [kimodo.cpp](https://github.com/localai-org/kimodo.cpp) — LocalAI C++/GGML 本地推理移植

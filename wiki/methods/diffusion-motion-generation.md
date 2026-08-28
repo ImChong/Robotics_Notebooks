@@ -2,9 +2,10 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-08-21
+updated: 2026-08-28
 related:
   - ../entities/kimodo.md
+  - ../entities/kimodo-cpp.md
   - ../entities/ardy.md
   - ../entities/rigmo.md
   - ../entities/generative-motion-rig.md
@@ -52,7 +53,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 
 ## 交互式自回归扩散 + 长时域约束（ARDY，SIGGRAPH 2026）
 
-[ARDY](../entities/ardy.md)（ACM TOG · SIGGRAPH 2026）把 **自回归扩散** 推到 **交互帧率**：混合 **显式 root + 潜空间 body** 表示，配合 **两阶段 Transformer 去噪器** 与 **可变历史上下文**，在 **流式文本 prompt** 下支持根部路点/轨迹、全身关键帧与稀疏关节目标——约束可落在 **当前生成窗口之外** 以达成长时域目标。项目页演示 **ARDY + SONIC → Unitree G1** 实时人形控制，与 [Kimodo](../entities/kimodo.md) 的 **离线高质量可控扩散** 形成同生态 **延迟档位** 对照。
+[ARDY](../entities/ardy.md)（ACM TOG · SIGGRAPH 2026）把 **自回归扩散** 推到 **交互帧率**：混合 **显式 root + 潜空间 body** 表示，配合 **两阶段 Transformer 去噪器** 与 **可变历史上下文**，在 **流式文本 prompt** 下支持根部路点/轨迹、全身关键帧与稀疏关节目标——约束可落在 **当前生成窗口之外** 以达成长时域目标。项目页演示 **ARDY + SONIC → Unitree G1** 实时人形控制，与 [Kimodo](../entities/kimodo.md) 的 **离线高质量可控扩散** 形成同生态 **延迟档位** 对照。部署侧对照：[kimodo.cpp](../entities/kimodo-cpp.md) 把 Kimodo 去噪器迁到 **C++/GGML（CPU 或 Vulkan）**，换无 Python 运行时，但 **通用约束尚未移植**。
 
 ## 结构感知 mesh 潜空间（RigMo）与 DCC 集成（Disney GMR）
 
@@ -118,6 +119,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) — 状态条件 flow matching 中间件 + 闭环 tracker（真机恢复）
 - [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — ETH Zurich 2026 G1 扩散运动生成工作，结合扩散模型与 RL 跟踪器实现全身移动。
 - [sources/repos/kimodo.md](../../sources/repos/kimodo.md) — Kimodo：大规模动捕上训练的运动扩散模型与约束式生成工具链（SOMA / G1 / SMPL-X）。
+- [sources/repos/kimodo-cpp.md](../../sources/repos/kimodo-cpp.md) — LocalAI kimodo.cpp：C++/GGML 本地推理与 GGUF 权重边界。
 - [sources/papers/kimodo_arxiv_2603_15546.md](../../sources/papers/kimodo_arxiv_2603_15546.md) — Kimodo（arXiv:2603.15546）：两阶段 root/body 运动学扩散与 Rigplay 700h scaling。
 - [sources/sites/kimodo-project.md](../../sources/sites/kimodo-project.md) — NVIDIA 官方项目页：能力演示、生态互操作与机器人应用叙事。
 - [ARDY（SIGGRAPH 2026）](../../sources/papers/ardy_siggraph_2026.md) — 自回归混合表示扩散：交互速度下的流式文本与长时域运动学约束。
@@ -147,6 +149,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [HY-Motion 1.0](./hy-motion-1.md) — 十亿级 DiT+流匹配的人体文本→运动开源系列（腾讯混元）
 - [DART（DartControl）](./dart-control.md) — 自回归原语潜扩散 + 在线文本与空间控制（ICLR 2025，ETH）
 - [Kimodo（实体页）](../entities/kimodo.md) — 文本 + 运动学约束的人形/人体运动扩散官方实现
+- [kimodo.cpp](../entities/kimodo-cpp.md) — Kimodo 的 C++/GGML 本地运行时（CPU/Vulkan；约束未移植）
 - [ARDY](../entities/ardy.md) — 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026）
 - [RigMo](../entities/rigmo.md) — 无标注 mesh→Gaussian bones + Motion-DiT 潜空间生成
 - [Generative Motion Rig（Disney）](../entities/generative-motion-rig.md) — DCC 集成的 generative keyframing（非新 backbone）

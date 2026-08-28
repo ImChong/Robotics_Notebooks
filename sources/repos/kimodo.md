@@ -3,7 +3,7 @@
 - **来源**：https://github.com/nv-tlabs/kimodo
 - **类型**：repo
 - **机构**：NVIDIA Research（nv-tlabs）
-- **归档日期**：2026-05-14（初版）；2026-05-21 深化（对齐项目页 / README / 论文）
+- **归档日期**：2026-05-14（初版）；2026-05-21 深化（对齐项目页 / README / 论文）；2026-08-28 交叉链到 [kimodo.cpp](./kimodo-cpp.md)
 - **项目页**：https://research.nvidia.com/labs/sil/projects/kimodo/
 - **论文**：arXiv:2603.15546 — *Kimodo: Scaling Controllable Human Motion Generation*
 - **GitHub**：约 2.4k stars，Apache-2.0（代码）；模型权重见各 Hugging Face 页许可（NVIDIA Open Model / R&D Model）
@@ -55,6 +55,7 @@
 
 - [Kimodo 项目页](../sites/kimodo-project.md)
 - [Kimodo 论文摘录](../papers/kimodo_arxiv_2603_15546.md)
+- [kimodo.cpp（LocalAI C++/GGML 移植）](./kimodo-cpp.md)
 
 ## 引用（仓库 README）
 

@@ -3,7 +3,7 @@
 type: comparison
 tags: [human-motion, text-to-motion, motion-generation, flow-matching, diffusion, smpl, hy-motion, genmo, kimodo, comparison, engineering-selection, nvidia]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-28
 sources:
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
@@ -11,12 +11,14 @@ sources:
   - ../../sources/repos/genmo.md
   - ../../sources/papers/kimodo_arxiv_2603_15546.md
   - ../../sources/repos/kimodo.md
+  - ../../sources/repos/kimodo-cpp.md
   - ../../sources/sites/kimodo-project.md
 related:
   - ../methods/hy-motion-1.md
   - ../methods/genmo.md
   - ../methods/diffusion-motion-generation.md
   - ../entities/kimodo.md
+  - ../entities/kimodo-cpp.md
   - ../entities/awesome-text-to-motion-zilize.md
   - ../formalizations/probability-flow.md
   - ../methods/motion-retargeting-gmr.md
@@ -54,7 +56,7 @@ summary: "HY-Motion 1.0 / GENMO(GEM) / Kimodo 三条『文本·多模态 → 人
 | **训练数据** | **>3000h** 预训练 + **~400h** 高质量微调（野外视频 GVHMR→SMPL-X + 动捕 + 3D 资产，统一 SMPL-H 强过滤） | 强条件（视频/2D）跑估计+生成；弱条件（文本/音乐）只跑生成；**野外 2D 弱监督**扩宽生成分布 | 约 **700h** Bones Rigplay 光学动捕（另有 **288h** 公开 SEED 变体供公平对比） |
 | **对齐 / 后训练** | **DPO**（人类成对偏好，约 4 万对筛 9228 高信息对）→ **Flow-GRPO**（显式物理/语义奖励） | **dual-mode** 本身即「估计 ↔ 生成」双向收益；estimation-guided 2D 弱监督扩多样性 | 约束**覆写** + 推理后处理（脚滑/约束修正，可 `--no-postprocess` 关） |
 | **参数 / scaling 叙事** | **>1B**（领域内首次把流匹配 DiT 推到 B 级，给 T2M scaling 提供正样本） | 不主打参数规模，主打**统一估计+生成**的范式收益 | 主打**大规模工作室数据 + 可控性**，而非纯参数堆叠 |
-| **开源形态** | 代码 + 权重（HF `tencent/HY-Motion-1.0`） | 代码 [NVlabs/GENMO](https://github.com/NVlabs/GENMO)（Apache-2.0）+ 权重 `nvidia/GEM-X`；全身扩展 [GEM-X](https://github.com/NVlabs/GEM-X) | HF 权重（多变体）+ [Benchmark](https://huggingface.co/datasets/nvidia/Kimodo-Motion-Gen-Benchmark) + 时间线 Demo |
+| **开源形态** | 代码 + 权重（HF `tencent/HY-Motion-1.0`） | 代码 [NVlabs/GENMO](https://github.com/NVlabs/GENMO)（Apache-2.0）+ 权重 `nvidia/GEM-X`；全身扩展 [GEM-X](https://github.com/NVlabs/GEM-X) | HF 权重（多变体）+ [Benchmark](https://huggingface.co/datasets/nvidia/Kimodo-Motion-Gen-Benchmark) + 时间线 Demo；本地推理另有社区 [kimodo.cpp](../entities/kimodo-cpp.md) |
 | **机器人落地接口** | SMPL-H 序列 → [GMR](../methods/motion-retargeting-gmr.md) 重定向到人形/引擎 | SMPL 序列 → [SONIC](../methods/sonic-motion-tracking.md) token 化跟踪；视频→运动是「像素→控制」中枢 | 直出 **G1 变体 → MuJoCo qpos CSV**；NPZ → [ProtoMotions](../entities/kimodo.md) / GEAR-SONIC 闭环 |
 | **核心假设** | 数据 × 模型 × 算力 + 偏好对齐单调改善「指令跟随 × 运动质量」 | 估计与生成**共享时间动力学/运动学表示**，可由一种带约束生成范式统一吸收 | **root/body 分解** + 约束同表示覆写，比单阶段更能压漂浮脚滑且保多约束可控 |
 
@@ -128,6 +130,7 @@ flowchart TD
 2. 要**直出机器人骨架**：Kimodo-G1 变体可**快于遥操作**生成参考轨迹，直接出 **MuJoCo qpos**，或 NPZ 进 ProtoMotions 训物理策略；
 3. 在意**漂浮/脚滑伪影**：两阶段 root/body 分解 + 后处理专治这两类常见扩散运动 artifact；
 4. 需要**可复现评测**：有官方 Benchmark + SEED 公平对比变体。
+5. 要 **无 Python / 低峰值显存** 的本地推理：社区 [kimodo.cpp](../entities/kimodo-cpp.md) 提供 CPU/Vulkan GGUF 运行时；**通用约束与 77 关节展开尚未移植**，导演式编辑仍走官方 Python。
 
 > **避坑**：SEED（288h）变体能力弱于 Rigplay 全量，主要用于基准对比；**运动学轨迹 ≠ 物理可行**，进 ProtoMotions/SONIC 前仍需接触/平衡/跟踪策略。
 
@@ -195,6 +198,7 @@ flowchart TD
 - [genmo.md（repo）](../../sources/repos/genmo.md) — NVlabs/GENMO 代码仓与 GEM 权重发布
 - [kimodo_arxiv_2603_15546.md](../../sources/papers/kimodo_arxiv_2603_15546.md) — Kimodo arXiv：两阶段 root/body 与 700h Rigplay scaling
 - [kimodo.md（repo）](../../sources/repos/kimodo.md) — Kimodo 代码/权重/Benchmark 工程归档
+- [kimodo-cpp.md](../../sources/repos/kimodo-cpp.md) — LocalAI C++/GGML 本地运行时与 GGUF 分发边界
 - [kimodo-project.md](../../sources/sites/kimodo-project.md) — Kimodo 官方项目页与生态互操作
 
 ---
@@ -204,6 +208,7 @@ flowchart TD
 - [HY-Motion 1.0](../methods/hy-motion-1.md) — 十亿级流匹配 DiT 文本→SMPL-H 生成（腾讯混元）
 - [GENMO / GEM（统一人体运动估计与生成）](../methods/genmo.md) — dual-mode 估计 + 生成统一扩散（NVIDIA）
 - [Kimodo（可控人体与人形运动扩散）](../entities/kimodo.md) — 两阶段 root/body 运动学扩散 + 强约束（NVIDIA）
+- [kimodo.cpp](../entities/kimodo-cpp.md) — Kimodo 的 C++/GGML 本地推理档（约束未移植）
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 扩散/流匹配生成范式概念入口
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — T2M 文献/数据/模型拓扑索引
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与扩散共同的数学基础

@@ -3014,6 +3014,14 @@
         "uestc",
         "university-of-electronic-science-and-technology-of-china"
       ]
+    },
+    "localai": {
+      "label": "本地人工智能（LocalAI）",
+      "aliases": [
+        "localai",
+        "localai-org",
+        "localai-io"
+      ]
     }
   }
 }

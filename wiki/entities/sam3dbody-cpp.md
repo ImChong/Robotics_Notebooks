@@ -3,13 +3,14 @@
 type: entity
 tags: [perception, human-mesh-recovery, onnx, cpp, deployment, motion-capture, bvh, real-time, open-source, meta]
 status: complete
-updated: 2026-05-30
+updated: 2026-08-28
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam-3d-body.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./freemocap.md
   - ../methods/motion-retargeting-gmr.md
+  - ./kimodo-cpp.md
 sources:
   - ../../sources/repos/sam3dbody-cpp.md
   - ../../sources/papers/sam_3d_body_arxiv_2602_15989.md
@@ -94,6 +95,7 @@ flowchart TB
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — BVH/关键点 → 机器人参考
 - [FreeMoCap](./freemocap.md) — 多相机开源动捕对照
 - [GMR](../methods/motion-retargeting-gmr.md) — 机器人重定向（注意参数化差异）
+- [kimodo.cpp](./kimodo-cpp.md) — 同属「官方 Python 模型 → 社区 C++/ggml 运行时」，但是文生运动而非单目 mesh
 
 ## 推荐继续阅读
 
