@@ -58,15 +58,15 @@ summary: "Pollen Robotics Microduck：约 25 cm / 800 g 桌面双足商品；机
 
 ```mermaid
 flowchart LR
-  CAD[Onshape 模型] --> MJCF[onshape-to-robot\nMJCF]
+  CAD[Onshape CAD] --> MJCF[onshape-to-robot MJCF]
   BAM[BAM M6 XL330] --> MJCF
-  MJCF --> TRAIN[microduck_rl\nmjlab PPO 50 Hz]
-  TRAIN --> ONNX[export.py\n烤进观测归一化]
-  ONNX --> ROBOTD[robotd\n50 Hz + 安全层]
-  PAD[padd / 手柄] --> ROBOTD
-  APP[btd / mediad] --> ROBOTD
-  ROBOTD --> BUS[Dynamixel 总线]
-  UPD[updaterd\n验签 + 健康门] --> REL[/opt/robot/daemon/current]
+  MJCF --> TRAIN[microduck_rl mjlab PPO]
+  TRAIN --> ONNX[export.py ONNX]
+  ONNX --> ROBOTD[robotd 50 Hz]
+  PAD[padd gamepad] --> ROBOTD
+  APP[btd mediad] --> ROBOTD
+  ROBOTD --> BUS[Dynamixel bus]
+  UPD[updaterd health gate] --> REL[daemon current symlink]
 ```
 
 ### 机载服务边界
