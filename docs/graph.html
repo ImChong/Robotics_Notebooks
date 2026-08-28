@@ -1885,9 +1885,9 @@
       <div class="slider-row">
         <div class="slider-label">
           <span>排斥力</span>
-          <span class="slider-val" id="val-charge">-800</span>
+          <span class="slider-val" id="val-charge">-100</span>
         </div>
-        <input type="range" id="sl-charge" min="50" max="1500" value="800" step="10"
+        <input type="range" id="sl-charge" min="10" max="300" value="100" step="5"
                aria-label="排斥力" />
       </div>
 
@@ -2556,7 +2556,7 @@
     }
 
     /* ── 可变物理参数 ── */
-    let chargeStrength = -800;   // 排斥力（负值，由滑块控制）
+    let chargeStrength = -100;   // 排斥力（负值，由滑块控制）
     const nodeScale      = 1.0;    // 节点大小倍数
     const linkWidthBase  = 1.0;    // 连接线基础粗细（px）
     const fontSliderVal  = 15;     // 字体缩放（相对 nodeScale）
@@ -3589,17 +3589,16 @@
       svg.attr('width', W).attr('height', H);
     }
 
-    // 2D 力模拟：略欠阻尼，允许「最多一次」回弹后落稳（以「刷新布局」手感为准）。
+    // 2D 力模拟：alpha 从头到尾单调衰减，一次收敛落稳（与 3D 视图同口径）。
     // 1) 叶序铺开（避免中心 80px 小团炸成多轮震荡）；
     // 2) 中等摩擦 + 度数加权弹簧（保活力，抑制密图连震）；
-    // 3) 极短 warmup（~20 tick）只吃掉最凶的首段爆炸，可见阶段仍有一次回弹。
+    // 3) 极短 warmup（~20 tick）只吃掉最凶的首段爆炸，之后不再二次加热。
     const FORCE_CENTER_STRENGTH = 0.05;
     const FORCE_VELOCITY_DECAY = 0.54;
     const FORCE_ALPHA_DECAY = 0.04;
     const FORCE_LINK_STRENGTH = 0.72;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
     const FORCE_COLLIDE_STRENGTH = 0.45;
     const FORCE_WARMUP_TICKS = 20;
-    const FORCE_REHEAT_ALPHA = 0.9;
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
       const list = targetNodes || nodes;
@@ -3653,10 +3652,12 @@
     // 首帧前先铺开，避免 d3 默认绕原点叶序 + 弱 forceCenter 造成的额外平移震荡。
     seedNodePositionsPhyllotaxis(nodes);
 
-    /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，保留一次回弹）── */
+    /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，一路衰减到落稳）── */
     const simulation = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(linkStrengthFor))
-      .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
+      // 不设 distanceMax：硬截断会让越过阈值的节点瞬间失/得全部斥力，
+      // 与连线/向心力形成来回拉扯的极限环（3D 视图同样不截断）。
+      .force('charge', d3.forceManyBody().strength(chargeStrength))
       .force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH))
       .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(FORCE_COLLIDE_STRENGTH))
       .force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH))
@@ -4055,7 +4056,7 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
-    /** 极短 warmup 后开场：可见一次扩张/回弹，再靠摩擦与冷却落稳。
+    /** 极短 warmup 后开场：可见一次扩张并单调落稳（alpha 不再二次抬高）。
      *  reseed=true（刷新布局）走真随机；首屏不传 reseed，沿用已铺好的叶序种子。 */
     function runStabilizedLayout2D(options) {
       const opts = options || {};
@@ -4068,14 +4069,16 @@
       }
       syncGraphDomFromSimulation();
 
-      const finishAndReheat = () => {
-        // 不清零速度：保留一小段动量，形成「最多一次」回弹，而不是过阻尼发死。
+      const startVisiblePhase = () => {
+        // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
+        // 这里若再抬回 0.9 等于中途重新加热，是可见阶段来回抽动的直接来源。
         syncGraphDomFromSimulation();
-        simulation.alpha(FORCE_REHEAT_ALPHA).restart();
+        simulation.restart();
       };
 
       if (FORCE_WARMUP_TICKS <= 0) {
-        finishAndReheat();
+        simulation.alpha(1);
+        startVisiblePhase();
         return;
       }
 
@@ -4090,14 +4093,14 @@
             requestAnimationFrame(step);
             return;
           }
-          finishAndReheat();
+          startVisiblePhase();
         };
         requestAnimationFrame(step);
         return;
       }
 
       for (let i = 0; i < FORCE_WARMUP_TICKS; i++) simulation.tick();
-      finishAndReheat();
+      startVisiblePhase();
     }
 
     function restartForceSimulation() {
