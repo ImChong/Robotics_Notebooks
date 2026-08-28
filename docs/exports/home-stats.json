@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3325,
-  "edge_count": 29711,
+  "node_count": 3326,
+  "edge_count": 29729,
   "coverage": {
-    "covered": 3300,
-    "total": 3300,
+    "covered": 3301,
+    "total": 3301,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/omnisim.md",
+      "detail_id": "entity-omnisim",
+      "label": "OmniSim",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wall-ss.md",
+      "detail_id": "entity-paper-wall-ss",
+      "label": "WALL-SS（下一尺度自回归长程世界模型）",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
     {
       "path": "wiki/entities/paper-anytime-gtmp.md",
       "detail_id": "entity-paper-anytime-gtmp",
@@ -16,8 +38,7 @@
       "recency": "2026-08-28",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-lac.md",
@@ -195,48 +216,27 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lawa.md",
-      "detail_id": "entity-paper-lawa",
-      "label": "LAWA：潜动作作未来意图",
-      "type": "entity",
-      "recency": "2026-08-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-worldecho-worldsync.md",
-      "detail_id": "entity-paper-worldecho-worldsync",
-      "label": "WorldEcho / WorldSync（动作条件世界模型的动作跟随评测与对齐）",
-      "type": "entity",
-      "recency": "2026-08-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-anytime-gtmp.md",
-    "detail_id": "entity-paper-anytime-gtmp",
-    "label": "Anytime GTMP：批量全局张量运动规划",
+    "path": "wiki/entities/omnisim.md",
+    "detail_id": "entity-omnisim",
+    "label": "OmniSim",
     "type": "entity",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 737
+      "size": 812
     },
     {
       "label": "操作",
-      "size": 583
+      "size": 596
     },
     {
       "label": "视觉-语言-动作",
@@ -244,15 +244,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 218
-    },
-    {
-      "label": "全身控制",
-      "size": 136
+      "size": 217
     },
     {
       "label": "移动操作",
       "size": 134
+    },
+    {
+      "label": "视觉语言动作纵深路线",
+      "size": 113
     }
   ],
   "top_hubs": [
@@ -322,7 +322,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 483,
+      "degree": 484,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
