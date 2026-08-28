@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-28",
   "node_count": 3332,
-  "edge_count": 29858,
+  "edge_count": 29875,
   "coverage": {
     "covered": 3307,
     "total": 3307,
@@ -97,8 +97,7 @@
       "recency": "2026-08-28",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-lac.md",
@@ -203,7 +202,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/paper-tarcat.md",
@@ -231,27 +230,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 701
+      "size": 822
     },
     {
       "label": "操作",
-      "size": 583
+      "size": 594
     },
     {
       "label": "视觉-语言-动作",
-      "size": 251
+      "size": 252
     },
     {
       "label": "人形论文深读笔记",
-      "size": 216
+      "size": 221
     },
     {
-      "label": "全身控制",
-      "size": 136
+      "label": "视觉语言动作纵深路线",
+      "size": 103
     },
     {
-      "label": "移动操作",
-      "size": 134
+      "label": "机器人视觉感知栈选型闭环",
+      "size": 90
     }
   ],
   "top_hubs": [
@@ -391,7 +390,8 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 44
+      "degree": 44,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-ctrl-world",
@@ -405,8 +405,7 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 41,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 41
     }
   ]
 }
