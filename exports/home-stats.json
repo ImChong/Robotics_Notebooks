@@ -9,6 +9,59 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-anytime-gtmp.md",
+      "detail_id": "entity-paper-anytime-gtmp",
+      "label": "Anytime GTMP：批量全局张量运动规划",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lac.md",
+      "detail_id": "entity-paper-lac",
+      "label": "LAC：人形全身线角柔顺",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ucag-p.md",
+      "detail_id": "entity-paper-ucag-p",
+      "label": "UCAG-P",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-zero-wam.md",
+      "detail_id": "entity-paper-zero-wam",
+      "label": "Zero-WAM",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/rsl-rl.md",
+      "detail_id": "entity-rsl-rl",
+      "label": "RSL-RL",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-confal-wm.md",
       "detail_id": "entity-paper-confal-wm",
       "label": "ConfAL-WM",
@@ -81,26 +134,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ucag-p.md",
-      "detail_id": "entity-paper-ucag-p",
-      "label": "UCAG-P",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-zero-wam.md",
-      "detail_id": "entity-paper-zero-wam",
-      "label": "Zero-WAM",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md",
@@ -183,51 +216,18 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/comparisons/rl-vs-geometric-control.md",
-      "detail_id": "wiki-comparisons-rl-vs-geometric-control",
-      "label": "RL vs 几何控制：四旋翼跟踪怎么公平比、怎么选",
-      "type": "comparison",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rl-vs-gc.md",
-      "detail_id": "entity-paper-rl-vs-gc",
-      "label": "RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/htd-decoupled-wbc.md",
-      "detail_id": "entity-htd-decoupled-wbc",
-      "label": "HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-confal-wm.md",
-    "detail_id": "entity-paper-confal-wm",
-    "label": "ConfAL-WM",
+    "path": "wiki/entities/paper-anytime-gtmp.md",
+    "detail_id": "entity-paper-anytime-gtmp",
+    "label": "Anytime GTMP：批量全局张量运动规划",
     "type": "entity",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
