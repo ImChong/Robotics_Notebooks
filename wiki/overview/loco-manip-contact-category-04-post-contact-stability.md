@@ -56,6 +56,7 @@ sources:
 - [阻抗控制](../concepts/impedance-control.md)
 - [力位混合控制](../concepts/hybrid-force-position-control.md)
 - [运动小脑 · I 柔顺接触](./motion-cerebellum-category-09-compliance-contact.md)
+- [LAC](../entities/paper-lac.md) — 接触后用独立角刚度稳住拧腕/托物；对照 GentleHumanoid 线柔顺
 
 ## 参考来源
 

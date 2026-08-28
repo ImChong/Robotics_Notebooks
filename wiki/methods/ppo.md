@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, ppo, on-policy, locomotion]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 summary: "PPO 用 clip 代理目标约束策略更新幅度，兼顾稳定性与实现简单，是人形/足式机器人大规模并行 RL 训练的事实标准算法。"
 related:
   - ./flashsac.md
@@ -149,7 +149,7 @@ $\gamma$ 的有效视野约 $1/(1-\gamma)$ **步**。50 Hz 下 $\gamma=0.99$ 大
 
 ### rsl_rl 代码对照
 
-读 [rsl_rl](https://github.com/leggedrobotics/rsl_rl) 时，名字和公式的对应是：
+读 [RSL-RL](../entities/rsl-rl.md)（[leggedrobotics/rsl_rl](https://github.com/leggedrobotics/rsl_rl)）时，名字和公式的对应是：
 
 | 代码 | 本页概念 |
 |------|----------|
@@ -188,6 +188,7 @@ $\gamma$ 的有效视野约 $1/(1-\gamma)$ **步**。50 Hz 下 $\gamma=0.99$ 大
 - [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — 腿式管线里 clip 与 PD 分层如何衔接
 - [特权训练](../concepts/privileged-training.md) — 非对称 critic vs Teacher-Student
 - [RL 超参数指南](../queries/rl-hyperparameter-guide.md) — clip / GAE / $\gamma$ 与控制频率
+- [RSL-RL](../entities/rsl-rl.md) — ETH RSL GPU PPO / 蒸馏库；BF16 只加速 `update()`
 
 ## 参考来源
 
@@ -202,6 +203,6 @@ $\gamma$ 的有效视野约 $1/(1-\gamma)$ **步**。50 Hz 下 $\gamma=0.99$ 大
 ## 推荐继续阅读
 
 - 原文：<https://mp.weixin.qq.com/s/MJQYYyOBSLirVr0vH1-AZg>
-- [rsl_rl](https://github.com/leggedrobotics/rsl_rl) — ETH RSL 的 GPU PPO 实现（`OnPolicyRunner`）
+- [RSL-RL](../entities/rsl-rl.md) — ETH RSL 的 GPU PPO 实现（`OnPolicyRunner` / BF16 / 蒸馏）
 - [OpenAI Spinning Up：PPO](https://spinningup.openai.com/en/latest/algorithms/ppo.html)
 - [面向机器人的 PPO/SAC 选型](../queries/ppo-vs-sac-for-robots.md)

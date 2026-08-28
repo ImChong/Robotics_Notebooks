@@ -7,7 +7,7 @@ tags:
   - compliance
   - collaborative-robot
 status: complete
-updated: 2026-07-18
+updated: 2026-08-28
 summary: "力输入、运动输出的柔顺控制，适合协作臂与人机交互。"
 related:
   - ../concepts/impedance-control.md
@@ -64,6 +64,7 @@ $M_d \ddot{x}_c + B_d \dot{x}_c + K_d x_c = f_{ext}$；解出修正轨迹 $x_c$ 
 
 - [Impedance Control](../concepts/impedance-control.md)
 - [Hybrid Force-Position](../concepts/hybrid-force-position-control.md)
+- [LAC](../entities/paper-lac.md) — 线/角导纳增强轨迹后再 RL 跟踪；角通道不是自由刚体
 
 ## 参考来源
 

@@ -3,7 +3,7 @@ title: 跨具身策略迁移选型指南
 type: query
 status: complete
 created: 2026-05-31
-updated: 2026-08-19
+updated: 2026-08-28
 summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；近亲骨架上 Any2Any 的更严冻结变体对照 SONIC-Transfer；灵巧手层可对照 UHAS（RL 球面）与 AdvDex（VLA 关节槽）；末端/工具接口轴对照 GEN-1 千手；同形态跨配置遗留示教对照 Emergent Transfer；设计侧生成机体可对照 Transformer Transformer。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
@@ -217,6 +217,7 @@ flowchart TD
 - [人形运动跟踪方法选型指南](./humanoid-motion-tracking-method-selection.md) — 方法选型（阶段 4），本页接其阶段 5
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端/工具接口多样性（与整机 WBT 迁移正交）
 - [Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md) — 同形态跨配置遗留示教三相复用（与换骨架正交）
+- [UCAG-P](../entities/paper-ucag-p.md) — 相机系双锚点共享动作空间 + 几何翻译器；单 ckpt 无榜微调（待发布）
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — **设计侧**生成机体 + 同模型跨具身控制（与本页「策略迁移」正交）
 
 ## 一句话记忆

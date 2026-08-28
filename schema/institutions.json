@@ -3047,6 +3047,20 @@
         "uc-irvine",
         "university-of-california-irvine"
       ]
+    },
+    "tohoku": {
+      "label": "日本东北大学（Tohoku University）",
+      "aliases": [
+        "tohoku",
+        "tohoku-university"
+      ]
+    },
+    "vinuni": {
+      "label": "荣大学（VinUniversity）",
+      "aliases": [
+        "vinuni",
+        "vinuniversity"
+      ]
     }
   }
 }

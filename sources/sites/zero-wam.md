@@ -15,4 +15,5 @@
 ## 交叉
 
 - 论文归档：[`sources/papers/zero_wam_arxiv_2608_26103.md`](../papers/zero_wam_arxiv_2608_26103.md)
+- 仓库归档：[`sources/repos/zero-wam.md`](../repos/zero-wam.md)
 - wiki：[`wiki/entities/paper-zero-wam.md`](../../wiki/entities/paper-zero-wam.md)

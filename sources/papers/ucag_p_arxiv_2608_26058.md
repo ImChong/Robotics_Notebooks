@@ -9,6 +9,7 @@
 - **PDF：** <https://arxiv.org/pdf/2608.26058>
 - **项目页：** <https://public-bots.github.io/UCAG-P>
 - **代码：** <https://github.com/Public-BOTs/UCAG-P>
+- **作者：** Xiaomi Embodied Intelligence Team × University of Macau（核心贡献者 Shaoqing Xu, Fang Li, Guozhi Zhan, Zhixiang Duan 等）
 - **入库日期：** 2026-08-28
 - **索引来源：** [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md)（<https://mp.weixin.qq.com/s/FNhRO3KOm8k8CkJEqystQQ>）
 - **一句话说明：** 用相机可观测锚点运动统一手臂、人形与人手的异构动作空间，再翻译成本体控制。
@@ -21,15 +22,17 @@
 
 ### 摘录 1：相机中心动作几何
 
-- 共享目标不是本体专属控制量，而是图像与相机坐标系中的腕部 / 抓取中心锚点运动。
+- 共享目标不是本体专属控制量，而是图像与相机坐标系中的腕部 / 抓取中心锚点运动（\(p_0\) 腕/末端，\(p_1\) 抓取中心）。
 - 几何条件动作转换器结合目标本体运动学生成可执行控制。
-- 训练数据：机器人与仿真 **4030 小时** + 人类示范 **2340 小时**。
+- 骨干：Qwen3-VL-4B-Instruct。
+- 训练数据：机器人与仿真 **4030 小时** + 人类示范 **2340 小时**（合计 6374 h）。
 
-**对 wiki 的映射：** [paper-ucag-p](../../wiki/entities/paper-ucag-p.md)、[VLA](../../wiki/methods/vla.md)
+**对 wiki 的映射：** [paper-ucag-p](../../wiki/entities/paper-ucag-p.md)、[VLA](../../wiki/methods/vla.md)、[跨本体迁移策略](../../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 ### 摘录 2：评测
 
 - 单检查点、无基准特化微调：LIBERO **98.3%**，RoboTwin Easy/Hard **88.7% / 89.2%**，LIBERO-Plus 零样本 **82.0%**，RoboCasa GR-1 **62.0%**。
+- Piper 真机（各 20 次闭环）：面包 / 抽屉 / 碗 **60 / 90 / 75%**（对照 π0.5：20 / 85 / 65%）。
 
 **对 wiki 的映射：** [libero-benchmark](../../wiki/entities/libero-benchmark.md)
 

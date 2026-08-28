@@ -3,7 +3,7 @@
 - **论文：** [arXiv:2608.26058](https://arxiv.org/abs/2608.26058)
 - **项目页：** <https://public-bots.github.io/UCAG-P>
 - **代码：** <https://github.com/Public-BOTs/UCAG-P>（README：Code Release Soon）
-- **机构：** 小米机器人实验室；澳门大学
+- **机构：** 小米机器人实验室（Xiaomi Embodied Intelligence）；澳门大学
 - **入库日期：** 2026-08-28
 
 ## 开源核查（步骤 2.5）
@@ -14,4 +14,5 @@
 ## 交叉
 
 - 论文归档：[`sources/papers/ucag_p_arxiv_2608_26058.md`](../papers/ucag_p_arxiv_2608_26058.md)
+- 仓库归档：[`sources/repos/ucag-p.md`](../repos/ucag-p.md)
 - wiki：[`wiki/entities/paper-ucag-p.md`](../../wiki/entities/paper-ucag-p.md)

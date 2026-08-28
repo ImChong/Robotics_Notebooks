@@ -9,6 +9,7 @@
 - **PDF：** <https://arxiv.org/pdf/2608.26103>
 - **项目页：** <https://robbyant-research.github.io/Zero-WAM/>
 - **代码：** <https://github.com/robbyant-research/Zero-WAM>
+- **作者：** Jiaming Zhou, Qihang Zhang, Gangwei Xu, Cunxin Fan, Yujie Zhao, Ruilin Wang, Yiming Luo, Shuai Yang, Xing Zhu, Yujun Shen, Junwei Liang, Yinghao Xu
 - **入库日期：** 2026-08-28
 - **索引来源：** [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md)（<https://mp.weixin.qq.com/s/FNhRO3KOm8k8CkJEqystQQ>）
 - **一句话说明：** 把人类视频当 in-context 任务规格，因果视频-动作模型零样本执行未见操作任务。
@@ -24,13 +25,14 @@
 - 零样本跨任务泛化被改写成 in-context 任务指定；语言不足以描述物体交互过程，人类视频提供任务演化线索。
 - HumanGen：自动把任务采样的机器人轨迹转成语义对齐人类视频，**7.42 万**人机配对、覆盖 **8600** 个任务。
 - IFP（in-context future chunk prediction）抑制从已见任务抄近道，迫使模型从视频提示抽取任务信息。
+- 单一策略同时支持语言指令与人类视频提示。
 
-**对 wiki 的映射：** [paper-zero-wam](../../wiki/entities/paper-zero-wam.md)、[World Action Models](../../wiki/concepts/world-action-models.md)
+**对 wiki 的映射：** [paper-zero-wam](../../wiki/entities/paper-zero-wam.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[机器人 In-Context Learning](../../wiki/concepts/robot-in-context-learning.md)
 
 ### 摘录 2：评测
 
-- RoboTwin 2.0 七个未见任务平均成功率 **47.0%**（相对最强视频动作基线 LingBot-VA **+29.5 pp**）。
-- 真机展示多物体、长时程与精细插入任务泛化，无需对应机器人数据或参数更新。
+- RoboTwin 2.0 七个未见任务平均成功率 **46.95%**（摘要四舍五入为 47.0%；相对最强视频动作基线 LingBot-VA **17.45%**，+29.5 pp）。
+- 真机双臂 Franka、无需对应机器人数据或参数更新：物体入容器 **53.3%**、三物体顺序操作 **33.3%**、双桌腿插入 **16.7%**（对照 LingBot-VA 分别为 43.3 / 10.0 / 0.0）。
 
 **对 wiki 的映射：** [manipulation](../../wiki/tasks/manipulation.md)
 

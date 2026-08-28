@@ -426,6 +426,7 @@
 - [Any2Any：跨具身高效全身跟踪迁移](wiki/entities/paper-any2any-cross-embodiment-wbt.md) — Any2Any**（arXiv:2605.23733，LimX Dynamics）研究 **已有 whole-body tracking（WBT）专家如何迁到新的人形**：不从头重训亿级 MoCa `📅unknown` `[entity_page]`
 - [AnyBody（HMI P039）](wiki/entities/paper-anybody-keypoint-humanoid-control.md) — AnyBody**（*AnyBody: Free-Form Whole-Body Humanoid Control from Arbitrary Keypoint Guidance*，2026， `📅unknown` `[entity_page]`
 - [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](wiki/entities/paper-anymal-walk-minutes-parallel-drl.md) — 一句话定义**：用 **Isaac Gym 大规模并行** 与 **游戏式课程地形**，在 **数分钟（平地）/ 约二十分钟（粗糙地形）** 内为 ANYmal 训出可迁移策略，并开源 **leg `📅unknown` `[entity_page]`
+- [Anytime GTMP：批量全局张量运动规划](wiki/entities/paper-anytime-gtmp.md) — Anytime GTMP**（*Anytime Global Tensor Motion Planning*，[arXiv:2608.25830](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
 - [APT-RL：野外敏捷感知多技能四足 Locomotion](wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — Agile perceptive multi-skill locomotion for quadrupedal robots in the wild**（Jun-Gill Kang / Jaehy `📅unknown` `[entity_page]`
 - [Arcadia（具身终身学习全生命周期）](wiki/entities/paper-arcadia.md) — Arcadia**（*Toward a Full-Lifecycle Framework for Embodied Lifelong Learning*，[arXiv:2512.00076](ht `📅unknown` `[entity_page]`
 - [Argus（Dynamic Symmetry / Dynamic Isotropy）](wiki/entities/paper-argus-dynamic-symmetry.md) — Argus**（*Extreme dynamic symmetry enables omnidirectional and multifunctional robots*，Jiaxun Liu / `📅unknown` `[entity_page]`
@@ -724,6 +725,7 @@
 - [KILVO：人形多传感器运动学–惯性–激光–视觉里程计](wiki/entities/paper-kilvo.md) — KILVO**（*Kinematic-Inertial-LiDAR-Visual Odometry with Robust Multimodal Adaptation for Humanoid R `📅unknown` `[entity_page]`
 - [KineBench（IDM-free 运动学接地的具身世界模型基准）](wiki/entities/paper-kinebench.md) — KineBench**（*Benchmarking Embodied World Models via IDM-Free Kinematic Grounding*，[arXiv:2607.1987 `📅unknown` `[entity_page]`
 - [KungFuAthleteBot（KungFuAthlete Dataset + Fall-Resilient Tracking）](wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — KungFuAthleteBot**（*A Kung Fu Athlete Bot That Can Do It All Day: Highly Dynamic, Balance-Challeng `📅unknown` `[entity_page]`
+- [LAC：人形全身线角柔顺](wiki/entities/paper-lac.md) — LAC**（*Linear and Angular Compliance for Humanoid Whole-body Control*，[arXiv:2608.25405](https://a `📅unknown` `[entity_page]`
 - [LadderMan：人形感知梯子攀爬与梯上操作](wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — LadderMan**（*Learning Humanoid Perceptive Ladder Climbing*，Amazon FAR 等，arXiv:[2606.05873](https:/ `📅unknown` `[entity_page]`
 - [LAMDA：把 VLM 语言原型蒸馏进车端标志识别](wiki/entities/paper-lamda-tsr.md) — LAMDA**（*Language-Anchored Model for Direction Alignment*；[arXiv:2608.08815](https://arxiv.org/abs `📅unknown` `[entity_page]`
 - [Language-to-Navigation-Goals（RGB-D 语义导航）](wiki/entities/paper-language-to-navigation-goals-rgbd.md) — From Language to Navigation Goals: A Vision-Language Approach for Semantic Navigation of Mobile Ro `📅unknown` `[entity_page]`
@@ -2474,6 +2476,7 @@
 - [ros2_control](wiki/entities/ros2-control.md) — ros2_control](https://github.com/ros-controls/ros2_control) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
 - [RosClaw](wiki/entities/rosclaw.md) — RosClaw**（GitHub: PlaiPin/rosclaw）把 [OpenClaw](./openclaw.md `📅unknown` `[entity_page]`
 - [RS-Mamba](wiki/entities/rs-mamba.md) — RS-Mamba 面向遥感图像的 Mamba 骨干/任务模型，处理大幅面遥感场景下的长程空间依赖与高效推理。 `📅unknown` `[entity_page]`
+- [RSL-RL](wiki/entities/rsl-rl.md) — RSL-RL**（leggedrobotics/rsl_rl，论文 [arXiv:2509.10771](h `📅unknown` `[entity_page]`
 - [RTAB-Map](wiki/entities/rtabmap.md) — RTAB-Map** 以 **记忆管理（WM）** 处理长期建图与闭环，一套工具链覆盖采集到导航。 `📅unknown` `[entity_page]`
 - [RUKA-v2 Hand](wiki/entities/ruka-v2-hand.md) — RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-d `📅unknown` `[entity_page]`
 - [RunPod](wiki/entities/runpod.md) — RunPod**（runpod.io）提供 **GPU Pods**（Docker 容器）、**Serverless GPU** 与 **Net `📅unknown` `[entity_page]`

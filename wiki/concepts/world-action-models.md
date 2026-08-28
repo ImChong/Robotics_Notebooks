@@ -293,7 +293,7 @@ flowchart TB
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — Motubrain 平台六策略实证
 - [Rift（免视频 rollout 的未来 cache）](../entities/paper-rift-wam.md) — anticipation token 一次写 K/V；LIBERO 98.8% / 1.1× 延迟（未开源）
 - [LAWA（潜动作作未来意图）](../entities/paper-lawa.md) — 测试时去噪 latent 意图而非像素；RoboCasa 65.6/80.8%；代码待发布（arXiv:2608.24882）
-- [Zero-WAM](../entities/paper-zero-wam.md) — 人类视频 in-context 任务规格；RoboTwin 未见任务 47.0%；代码待发布
+- [Zero-WAM](../entities/paper-zero-wam.md) — 人类视频 in-context 任务规格；RoboTwin 未见 46.95%；真机放置/长程/插入 53.3/33.3/16.7%；代码待发布
 - [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md)
 - [DynaWM（VLA 在线修正）](../entities/paper-dynawm-vla-online-correction.md)
 - [DreamSteer（部署时 VLA steering）](../entities/paper-dreamsteer-vla-deployment-steering.md)
