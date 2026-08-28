@@ -3068,6 +3068,14 @@
         "vinuni",
         "vinuniversity"
       ]
+    },
+    "omnilink": {
+      "label": "欧姆尼链（OmniLink）",
+      "aliases": [
+        "omnilink",
+        "omnilink-tech",
+        "omnilink-agents"
+      ]
     }
   }
 }

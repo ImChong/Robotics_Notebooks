@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3324,
-  "edge_count": 29677,
+  "node_count": 3325,
+  "edge_count": 29695,
   "coverage": {
-    "covered": 3299,
-    "total": 3299,
+    "covered": 3300,
+    "total": 3300,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/omnisim.md",
+      "detail_id": "entity-omnisim",
+      "label": "OmniSim",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-anytime-gtmp.md",
       "detail_id": "entity-paper-anytime-gtmp",
@@ -206,37 +217,27 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-worldecho-worldsync.md",
-      "detail_id": "entity-paper-worldecho-worldsync",
-      "label": "WorldEcho / WorldSync（动作条件世界模型的动作跟随评测与对齐）",
-      "type": "entity",
-      "recency": "2026-08-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-anytime-gtmp.md",
-    "detail_id": "entity-paper-anytime-gtmp",
-    "label": "Anytime GTMP：批量全局张量运动规划",
+    "path": "wiki/entities/omnisim.md",
+    "detail_id": "entity-omnisim",
+    "label": "OmniSim",
     "type": "entity",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 694
+      "size": 706
     },
     {
       "label": "操作",
-      "size": 548
+      "size": 591
     },
     {
       "label": "视觉-语言-动作",
@@ -244,14 +245,14 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 219
-    },
-    {
-      "label": "世界动作模型",
-      "size": 139
+      "size": 182
     },
     {
       "label": "全身控制",
+      "size": 150
+    },
+    {
+      "label": "世界动作模型",
       "size": 136
     }
   ],
@@ -322,7 +323,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 483,
+      "degree": 484,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -392,7 +393,8 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 44
+      "degree": 44,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

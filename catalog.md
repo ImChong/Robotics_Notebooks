@@ -363,6 +363,7 @@
 - [ODRI Solo / Bolt（开源腿式平台）](wiki/entities/odri-solo-and-bolt.md) — ODRI（Open Dynamic Robot Initiative）** 提供面向研究的开源 **扭矩控制** 腿足平台：**Solo**（四足）与 **Bolt**（双足）常被引作 **低惯量 `📅unknown` `[entity_page]`
 - [OmniContact sim2sim](wiki/entities/omnicontact-sim2sim.md) — OmniContact_sim2sim**（GitHub）是 [OmniContact](. `📅unknown` `[entity_page]`
 - [OmniRetarget Dataset（G1 交互重定向轨迹）](wiki/entities/omniretarget-dataset.md) — OmniRetarget Dataset**（<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>）是 Amazo `📅unknown` `[entity_page]`
+- [OmniSim](wiki/entities/omnisim.md) — OmniSim** 是 OmniLink 面向 **编码代理** 的开源机器人仿真工作台：clone 仓库、打 `📅unknown` `[entity_page]`
 - [OMOMO（Object Motion Guided Human Motion Synthesis）](wiki/entities/omomo-dataset.md) — OMOMO** 是 Li et al.（Stanford，SIGGRAPH Asia 2023）发布的人–物交互（HOI）**动捕数据集与合成代码**：以 **物体运动序列为条件** 生成/记录人 `📅unknown` `[entity_page]`
 - [ONNX](wiki/entities/onnx.md) — ONNX**（**Open Neural Network Exchange**）是由社区维护、托管于 **LF AI & Data Foundation**（Linux Foundation 旗下 `📅2026-06-25` `[entity_page]`
 - [ONNX Runtime](wiki/entities/onnxruntime.md) — ONNX Runtime**（常缩写 **ORT**）是由 **Microsoft** 主导的开源 **ONNX 推理与训练加速引擎**。它提供 **Python、C++、C#、Java、Java `📅2026-06-25` `[entity_page]`

@@ -1,3 +1,12 @@
+## [2026-08-28] ingest | sources/repos/omnisim.md — OmniSim（Webots 独立 fork）；已开源 Apache-2.0；Newton 唯一后端；升格 wiki/entities/omnisim.md
+
+- **触发：** 用户指定 <https://github.com/omnilink-tech/omnisim> 与项目页 <https://www.omnilink-agents.com/omnisim>；要求自动合并 PR
+- **步骤 2.5：** **已开源** Apache-2.0 — 项目页 CTA 链到同一 GitHub；一等 MCP / HTTP harness / ROS 2 sidecar 在仓内；macOS 物理未验证；**零 sim-to-real**；Twin Shadow 未实现
+- **营销页漂移：** 产品页仍写 ODE CPU 回退与更宽机型名单；仓库 README/`AGENTS.md` 写 Newton 唯一后端（ODE 2026-08-08 删除）、世界以 `.omniworld` 为准
+- **关键页：** [`wiki/entities/omnisim.md`](wiki/entities/omnisim.md)
+- **交叉：** Webots / Newton / 仿真器选型 / MCP / Isaac Sim / Gazebo / mjlab
+- **机构：** 注册 `omnilink`（欧姆尼链（OmniLink））
+
 ## [2026-08-28] ingest | sources/papers/video2door_traversal_arxiv_2608_20251.md — 加深 Video2DoorTraversal 单视频门孪生穿门；项目页仍 Code Coming soon
 
 - **触发：** 用户指定 <https://video2doortraversal.github.io/> 与 [arXiv:2608.20251v1](https://arxiv.org/abs/2608.20251v1)；要求自动合并 PR

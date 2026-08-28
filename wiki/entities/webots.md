@@ -2,16 +2,18 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-28
 summary: "Webots：以桌面级三维仿真、传感器模型、控制器插件和多语言接口服务机器人原型验证，支持将同一控制程序连接模拟或真实设备；交互式场景编辑和较低部署门槛适合教育与系统联调。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ../entities/omnisim.md
 sources:
   - ../../sources/repos/webots.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/repos/omnisim.md
 ---
 
 # Webots
@@ -76,6 +78,8 @@ flowchart LR
 | 支持机器人 / 仿真 | 读 assets 与 task 配置 |
 | 真机入口 | 查找 SDK、ROS、ONNX/JIT 导出说明 |
 
+独立 fork：[OmniSim](./omnisim.md)（OmniLink，Apache-2.0）在 Webots 世界/控制器树上换成 **Newton 唯一物理** 与 HTTP/MCP 代理面；不隶属 Cyberbotics。选型时把「教育/联调桌面仿真」留在本页，「编码代理驱动场景」看 OmniSim。
+
 ## 局限与风险
 
 - **主表是策展摘要**：细节、指标与许可以一手来源为准；本页只做知识库节点与导航。
@@ -88,11 +92,13 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [OmniSim](./omnisim.md) — Webots 独立 fork：Newton + HTTP/MCP
 
 ## 参考来源
 
 - [Webots 来源归档](../../sources/repos/webots.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
+- [OmniSim 仓库归档](../../sources/repos/omnisim.md) — Webots 独立 fork
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
 ## 推荐继续阅读

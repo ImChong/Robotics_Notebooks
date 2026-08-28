@@ -1,14 +1,15 @@
 ---
 type: query
-tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl]
+tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl, omnisim]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-28
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
   - ../../sources/papers/adams_orlandea_primary_refs.md
+  - ../../sources/repos/omnisim.md
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -24,6 +25,7 @@ related:
   - ../entities/newton-physics.md
   - ../entities/mjlab.md
   - ../entities/spear-sim.md
+  - ../entities/omnisim.md
   - ../entities/adams.md
   - ../entities/autodl.md
   - ../entities/gpufree.md
@@ -57,6 +59,7 @@ related:
 | 缩短想法→真机验证墙钟（MJX 生态） | **MuJoCo Playground** |
 | 无 CUDA / CPU 物理 + GPU 学习异构 | **UniLab** |
 | 跨项目理解「谁在跟谁竞争」 | 先读 **[训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)** |
+| 编码代理驱动场景 / HTTP+MCP 对话式仿真 | **[OmniSim](../entities/omnisim.md)**（Webots fork，Newton 唯一后端；不是 Isaac Lab 替代） |
 | 本地缺 GPU / 多卡，需租国内云算力 | 见 [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) |
 | 海外数据栈 / 无法用国内平台 | 见 [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md) |
 
@@ -181,6 +184,10 @@ related:
 
 二者均依赖 MuJoCo Warp，与 Isaac Lab 的 `feature/newton` 集成属于同一技术脉络，选型时按「要框架还是要引擎」拆分。
 
+### 补充：编码代理工作台（[OmniSim](../entities/omnisim.md)）
+
+本页主对比仍为 **MuJoCo / Isaac Lab / Genesis**（locomotion RL 训练）。若目标是 **让 Claude Code / Cursor 在对话里装仿真、改 `.omniworld`、经 HTTP/JSON 或 MCP 驱动机器人**，应单独评估 **OmniSim**：它竞争的是「代理能否把仿真当工具用」，不是万环境 PPO 峰值。物理是 [Newton](../entities/newton-physics.md) **唯一后端**（ODE 已删）；官方自承 **零 sim-to-real**、ROS 2 不完整、人形演示多带承重吊索。需要 RTX 写实或完整 Nav2/MoveIt 时仍走 [Isaac Sim](../entities/isaac-sim.md) / [Gazebo Sim](../entities/gazebo-sim.md)。
+
 ### 异构路径：UniLab（CPU 物理 + GPU 学习）
 
 若已有 **强 CPU**（多核桌面/工作站）且希望 **减轻 GPU 上仿真与学习争用**，或需要 **macOS / ROCm / Intel XPU** 上端到端训练，可评估 **[UniLab](../entities/unilab.md)**：物理在 **MuJoCoUni / MotrixSim** 的 CPU batch 路径，策略在 GPU；统一 runtime 做共享内存缓冲与采集–更新重叠。论文报告在代表 locomotion / tracking / manipulation 任务上相对 GPU 驻留栈约 **3–10×** 墙钟（同机硬件）；**强同步 PPO** 或 **视觉主导** workload 收益可能较小。详见 [MuJoCo vs Isaac Lab](../comparisons/mujoco-vs-isaac-lab.md) 与 UniLab 实体页。
@@ -242,5 +249,6 @@ related:
 - [UniLab](../entities/unilab.md) — CPU 批量仿真 + GPU 学习的异构机器人 RL 训练栈
 - [ppf-contact-solver](../entities/ppf-contact-solver.md) — 可变形 shell/solid/rod 离线 GPU 接触求解
 - [SPEAR](../entities/spear-sim.md) — UE 通用可编程光真实感与 GT 合成数据后端
+- [OmniSim](../entities/omnisim.md) — 编码代理 HTTP/MCP 仿真工作台（Newton 唯一后端）
 - [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) — 六平台国内租卡对比
 - [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md) — RunPod / Vast / Lambda / Colab / AWS / GCP
