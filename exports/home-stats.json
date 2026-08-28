@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/inverse-reinforcement-learning.md",
+      "detail_id": "wiki-methods-inverse-reinforcement-learning",
+      "label": "Inverse Reinforcement Learning（IRL, 逆强化学习）",
+      "type": "method",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/llm-robotics-control-interfaces.md",
       "detail_id": "wiki-concepts-llm-robotics-control-interfaces",
       "label": "LLM 机器人控制接口",
@@ -202,28 +213,18 @@
       "recency": "2026-08-28",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/kimodo-cpp.md",
-      "detail_id": "entity-kimodo-cpp",
-      "label": "kimodo.cpp（C++/GGML 本地运动扩散运行时）",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/llm-robotics-control-interfaces.md",
-    "detail_id": "wiki-concepts-llm-robotics-control-interfaces",
-    "label": "LLM 机器人控制接口",
-    "type": "concept",
+    "path": "wiki/methods/inverse-reinforcement-learning.md",
+    "detail_id": "wiki-methods-inverse-reinforcement-learning",
+    "label": "Inverse Reinforcement Learning（IRL, 逆强化学习）",
+    "type": "method",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
