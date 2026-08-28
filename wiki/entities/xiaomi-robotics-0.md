@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, diffusion, flow-matching, real-time, bimanual, cross-embodiment, xiaomi]
 status: complete
-updated: 2026-08-24
+updated: 2026-08-28
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -13,6 +13,7 @@ related:
   - ./robot-io-rio.md
   - ./xiaomi-robotics-u0.md
   - ./xiaomi-robotics-1.md
+  - ./paper-ucag-p.md
   - ./paper-gsr-paravla.md
   - ./paper-vitacphys.md
 sources:
@@ -118,6 +119,7 @@ flowchart LR
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 同实验室 **100k h UMI 预训练** 具身基座 VLA 与 scaling 实证
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — LIBERO-Para 上报告本模型 Full Para 76.0 / PRIDE 69.2；GSR+π₀.₅ 的 PRIDE 70.4
 - [ViTacPhys](./paper-vitacphys.md) — 同实验室视触觉物理属性估计 + ACT 自适应灵巧抓取（arXiv:2608.21355）
+- [UCAG-P](./paper-ucag-p.md) — 小米具身智能 × 澳门大学：同 **Qwen3-VL-4B** 骨干，共享的是 **相机系锚点几何** 而非异步 chunk 部署（arXiv:2608.26058；代码待发布）
 
 ## 参考来源
 

@@ -14,12 +14,13 @@ tags:
   - unitree-g1
   - franka
 status: complete
-updated: 2026-08-09
+updated: 2026-08-28
 arxiv: "2608.06374"
 related:
   - ../methods/vla.md
   - ./paper-any2any-cross-embodiment-wbt.md
   - ./qwen-vla.md
+  - ./paper-ucag-p.md
   - ./paper-omega-0.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../tasks/manipulation.md
@@ -133,6 +134,7 @@ flowchart TB
 | 对照 | 差异读法 |
 |------|----------|
 | 统一动作空间 VLA（X-Embodiment 等） | 先对齐动作再共享；本文不对齐，改共享 query + MoE |
+| [UCAG-P](./paper-ucag-p.md) | 对齐的是 **相机系腕/抓取锚点**，翻译器再出 80-d 命令；本文拒绝统一动作格式 |
 | [Any2Any](./paper-any2any-cross-embodiment-wbt.md) | WBT 跟踪专家的低成本迁移；本文是操作 VLA generalist 共训 |
 | WAM（Fast-WAM / [ω-0](./paper-omega-0.md)） | WAM 常耦合未来与动作生成；本文未来只塑先验 |
 | [Qwen-VLA](./qwen-vla.md) | 同场 generalist 对照；本文在 RoboCasa/RoboTwin 报优势 |
@@ -149,6 +151,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 方法母页
 - [Any2Any](./paper-any2any-cross-embodiment-wbt.md) — 跨具身另一条（WBT 迁移）
 - [Qwen-VLA](./qwen-vla.md) — 文内 generalist 对照
+- [UCAG-P](./paper-ucag-p.md) — 对称选型：统一相机几何 vs 本文 MoE 原生动作
 - [ω-0](./paper-omega-0.md) — 同期动力学/未来信号用法对照
 - [Manipulation](../tasks/manipulation.md) — 操作任务背景
 - [Unitree G1](./unitree-g1.md) — 真机人形平台之一
@@ -157,6 +160,7 @@ flowchart TB
 
 - [dypes_vla_arxiv_2608_06374.md](../../sources/papers/dypes_vla_arxiv_2608_06374.md) — 论文摘录与开源核查
 - [dypes-vla-github-io.md](../../sources/sites/dypes-vla-github-io.md) — 项目页核查
+- [ucag_p_arxiv_2608_26058.md](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 统一相机几何的对称对照
 - [arXiv:2608.06374](https://arxiv.org/abs/2608.06374) — 原文
 
 ## 推荐继续阅读

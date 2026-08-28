@@ -7,6 +7,7 @@ related:
   - ./qwen-robot-suite.md
   - ./qwen-vla.md
   - ./xiaomi-robotics-0.md
+  - ./paper-ucag-p.md
   - ../methods/vla.md
   - ../methods/star-vla.md
   - ../tasks/manipulation.md
@@ -93,6 +94,7 @@ flowchart LR
 
 - **[Qwen-VLA](./qwen-vla.md)：** **单权重** 同时服务 **操作 + VLN + 轨迹** 的 **通才**；README 有 R2R/RxR 与 LIBERO 同表。
 - **RobotManip：** Suite 内 **操作专精 foundation**，共享 **Qwen3.5 + DiT flow** 族，但强调 **对齐框架 + H2R + OOD 评测**；与 [StarVLA](../methods/star-vla.md)、[Xiaomi-Robotics-0](./xiaomi-robotics-0.md) 在 **真机/OOD/异步部署** 维度可对照。
+- **[UCAG-P](./paper-ucag-p.md)：** 同样走 **相机系 + 80 维稀疏槽**，但共享目标是 **腕/抓取锚点** 而非机器人 EEF，因而人手演示可直接监督、不必先做 H2R 视频合成；代码待发布。
 
 ## 常见误区或局限
 
@@ -115,9 +117,10 @@ flowchart LR
 - [StarVLA](../methods/star-vla.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Xiaomi-Robotics-0](./xiaomi-robotics-0.md)
-- [UCAG-P](./paper-ucag-p.md) — 相机系腕+抓取中心锚点；同属跨本体动作几何，数据规模更小、代码待发布
+- [UCAG-P](./paper-ucag-p.md) — 相机系锚点几何 vs 本文相机系 ΔEEF
 
 ## 推荐继续阅读
 
 - [Qwen-RobotManip 深度博客](https://qwen.ai/blog?id=qwen-robotmanip)
 - [Qwen-RobotManip GitHub](https://github.com/QwenLM/Qwen-RobotManip)
+- [UCAG-P 论文摘录](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 相机系锚点 vs 本文 ΔEEF 对照

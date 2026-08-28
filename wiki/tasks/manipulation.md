@@ -25,6 +25,7 @@ related:
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-fabrivla.md
   - ../entities/paper-egosteer.md
+  - ../entities/paper-ucag-p.md
   - ../entities/egoworld-100w.md
   - ../entities/paper-egoworld.md
   - ../entities/paper-fm-vla.md
@@ -139,6 +140,7 @@ flowchart TD
 - **神经布料仿真（可变形体 sim）**：[ClothTransformer](../entities/paper-clothtransformer-unified-latent-cloth-simulation.md)（arXiv:2605.27852）— **统一 latent Transformer** 覆盖 **人体着装 / 夹爪抓布 / 刚体碰撞**；~493.4k 帧 **GIPC 无穿透** 数据 + **可微 CCD**；可作 **操作规划 / 仿真加速** 的动力学先验（论文 Robotic Manip. 为仿真，非真机闭环）
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
+  - **跨本体相机几何：** [UCAG-P](../entities/paper-ucag-p.md)（arXiv:2608.26058）— 共享腕/抓取锚点 + 翻译器；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%**；**代码待发布**
   - **动态低延迟：** [ReflexVLA](../entities/paper-reflexvla.md)（arXiv:2608.14379）— ReflexBench 延迟感知六任务 + 1B 预测/时序/CUDA Graph；均值 **50.4%**、LIBERO **97.2%**、延迟 **65.0 ms**；**代码待开放**
   - **人手→灵巧手统一动作：** [AdvDex](../entities/paper-advdex.md)（arXiv:2608.14028）— OmniShare + JAAS + 域对抗；Paxini DexH13 少样本/零样本人→机；**确认未开源**
   - **Copilot 嵌套采数：** [NestDex](../entities/paper-nestdex.md)（arXiv:2608.13362）— 人控臂 + 1-DoF clutch，内层手技能只服务示范；外层 visuomotor 部署卸 copilot；**确认未开源**
@@ -311,6 +313,7 @@ flowchart TD
 - [Diffusion Policy 项目主页](https://diffusion-policy.cs.columbia.edu/) — 当前 SOTA IL 方法
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 视触觉主动掌夹爪
 - [sources/papers/transgraspnet_arxiv_2607_29567.md](../../sources/papers/transgraspnet_arxiv_2607_29567.md) — TransGraspNet：透明实验器皿几何–物理一致抓取
+- [sources/papers/ucag_p_arxiv_2608_26058.md](../../sources/papers/ucag_p_arxiv_2608_26058.md) — UCAG-P 相机系锚点跨本体操作 VLA
 
 ## 关联页面
 
@@ -327,9 +330,9 @@ flowchart TD
 - [LeTools](../entities/letools.md) — Kuavo 官方 IL/VLA 训练部署与原子技能栈
 - [LET-Base-Dataset](../entities/let-base-dataset.md) — 全尺寸人形真机操作小时库
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 0.47B 动作接地 latent 策略（LIBERO/CALVIN/真机）
+- [UCAG-P](../entities/paper-ucag-p.md) — 相机系腕/抓取锚点跨本体操作 VLA（arXiv:2608.26058）
 - [HIL-HARC](../entities/paper-hil-harc.md) — 真机在线 RL：CTDE 混合动作 + 分解 critic
 - [Anytime GTMP](../entities/paper-anytime-gtmp.md) — 层状张量全局规划 + 黑盒局部器；MBM 60s 成功率约 85%
-- [UCAG-P](../entities/paper-ucag-p.md) — 相机系双锚点跨本体动作几何；单 ckpt 无榜微调（待发布）
 - [Zero-WAM](../entities/paper-zero-wam.md) — 人类视频提示 WAM；RoboTwin 未见 46.95%（待发布）
 - [Loco-Manipulation](./loco-manipulation.md) — 边走边操作的全身协调扩展
 - [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段

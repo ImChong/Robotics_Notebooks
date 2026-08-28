@@ -1,3 +1,11 @@
+## [2026-08-28] ingest | sources/papers/ucag_p_arxiv_2608_26058.md — UCAG-P 相机系锚点几何预训练；宣称将开源；升格 wiki/entities/paper-ucag-p.md
+
+- **触发：** 用户指定 *One Policy, Many Embodiments*（arXiv / 小米具身智能 × 澳门大学）；要求自动合并 PR
+- **步骤 2.5：** **宣称将开源 / 待发布** — 项目页 <https://public-bots.github.io/UCAG-P>；[Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 仅为配图与静态站，README *code will be released soon*
+- **关键页：** [`wiki/entities/paper-ucag-p.md`](wiki/entities/paper-ucag-p.md)
+- **交叉：** VLA / Qwen-RobotManip / Qwen-VLA / Xiaomi-Robotics-0/1 / DyPES-VLA / Open X-Embodiment / hub-vla / hub-cross-embodiment / manipulation；合入时与 main 上 9 篇盘点 / 五篇 ingest 共用同一实体页并加深编译
+- **机构：** `xiaomi` / `umac`
+
 ## [2026-08-28] ingest | sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md — 具身智能小站 9 篇（WAM/VLA/跨本体）；9/9 独立 paper-* 节点；开源分化
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/FNhRO3KOm8k8CkJEqystQQ>；要求每篇论文独立、非重复详情节点

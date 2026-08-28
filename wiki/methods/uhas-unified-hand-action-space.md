@@ -3,7 +3,7 @@ type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, cross-embodiment, action-representation, sim2real]
 status: complete
 date: 2026-07-11
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ./in-hand-reorientation.md
   - ../concepts/motion-retargeting.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-mango-grasp.md
   - ../entities/paper-digitcode.md
   - ../entities/paper-advdex.md
+  - ../entities/paper-ucag-p.md
 sources:
   - ../../sources/papers/uhas_arxiv_2607_03570.md
   - ../../sources/sites/uhas-project-irvlutd.md
@@ -148,6 +149,7 @@ flowchart LR
 
 - [UHAS 论文摘录（arXiv:2607.03570）](../../sources/papers/uhas_arxiv_2607_03570.md)
 - [UHAS 官方项目页（IRVL UTD）](../../sources/sites/uhas-project-irvlutd.md)
+- [UCAG-P 论文摘录](../../sources/papers/ucag_p_arxiv_2608_26058.md) — VLA 相机锚点统一动作对照
 
 ## 关联页面
 
@@ -160,3 +162,4 @@ flowchart LR
 - [MANGO-Grasp](../entities/paper-mango-grasp.md) — 统一的是接触场而非策略动作空间
 - [DigitCode](../entities/paper-digitcode.md) — 符号化手姿态，可编译到机器人查表
 - [AdvDex](../entities/paper-advdex.md) — VLA 侧关节对齐统一动作空间（对照本页 RL 球面接口）
+- [UCAG-P](../entities/paper-ucag-p.md) — VLA 相机系腕/抓取锚点统一动作；粒度在腕而非指关节
