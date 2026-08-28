@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, sim2real, actuator, friction, mujoco, dynamixel, system-identification, servo, google]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-28
 code: https://github.com/Rhoban/bam
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -15,6 +15,7 @@ related:
   - ../methods/actuator-network.md
   - ./sage-sim2real-actuator-gap-estimator.md
   - ../queries/sim2real-gap-reduction.md
+  - ./pollen-microduck-rl.md
 sources:
   - ../../sources/repos/rhoban_bam.md
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
@@ -100,6 +101,7 @@ flowchart LR
 - [扩展摩擦论文实体](./paper-bam-extended-friction-servo-actuators.md)
 - [Sim2Real](../concepts/sim2real.md)、[System Identification](../concepts/system-identification.md)
 - [Actuator Network](../methods/actuator-network.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)
+- [Microduck RL](./pollen-microduck-rl.md) — 真机菜谱：BAM M6 XL330 + 摩擦 DR + 编码器侧背隙
 
 ## 推荐继续阅读
 

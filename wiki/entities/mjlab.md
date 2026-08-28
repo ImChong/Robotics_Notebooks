@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation, nvidia, unitree]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ./mujoco.md
   - ./mujoco-playground.md
@@ -17,6 +17,7 @@ related:
   - ./amp-mjlab.md
   - ./smp-g1-mjlab.md
   - ./unitree-rl-mjlab.md
+  - ./pollen-microduck-rl.md
   - ./paper-pac-man-perceptive-cbf-rl.md
   - ./paper-yahmp.md
   - ./paper-smpc2rl-loco-manipulation.md
@@ -94,7 +95,7 @@ mjlab 架构
 | API 风格 | Isaac Lab（移植） | 原生 Isaac Lab | 简单脚本 | Pythonic |
 | 依赖重量 | 轻（pip 安装） | 重（Isaac Sim） | 重（IsaacGym） | 中 |
 | 开源授权 | Apache 2.0 | BSD-3 | BSD-3 | Apache 2.0 |
-| 上层框架 | AMP_mjlab、[SMP on G1](./smp-g1-mjlab.md)、unitree_rl_mjlab、[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)（Asimov 官方 fork） | robot_lab | legged_gym 生态 | — |
+| 上层框架 | AMP_mjlab、[SMP on G1](./smp-g1-mjlab.md)、unitree_rl_mjlab、[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)（Asimov 官方 fork）、[Microduck RL](./pollen-microduck-rl.md) | robot_lab | legged_gym 生态 | — |
 | 引擎层对照 | [Newton Physics](./newton-physics.md) 为通用 Warp 物理引擎；mjlab 专注 **RL 环境 API**，二者可并存选型 | — | — | — |
 
 ## 关联页面
@@ -107,6 +108,7 @@ mjlab 架构
 - [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现
 - [SMP on G1（mjlab）](./smp-g1-mjlab.md) — G1 上 score-matching 运动先验复现
 - [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架
+- [Microduck RL](./pollen-microduck-rl.md) — Pollen 桌面双足：BAM XL330 + 共享 61D 观测 + ONNX 热切换
 - [YAHMP](./paper-yahmp.md) — G1 全身 GMT 消融与 ONNX 部署（基于 mjlab）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — mjlab + MuJoCo Warp 上 tiled SMPC 采数与稀疏 FastTD3（代码未开源）
 - [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) — mjlab 上感知感知 CBF-RL 躲避球（全栈开源）

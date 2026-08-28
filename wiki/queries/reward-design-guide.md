@@ -3,7 +3,7 @@ type: query
 tags: [reward, rl, locomotion, training, curriculum]
 status: complete
 summary: "Reward Design 实战指南"
-updated: 2026-04-25
+updated: 2026-08-28
 sources:
   - ../../sources/papers/reward_design.md
 ---
@@ -134,6 +134,7 @@ $$r_{AMP} = \log D_\phi(s, a, s')$$
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 课程学习与 reward 的配合
 - [Locomotion](../tasks/locomotion.md) — locomotion 任务整体
 - [RL Algorithm Selection](./rl-algorithm-selection.md) — 算法选型也影响 reward 设计
+- [Microduck RL](../entities/pollen-microduck-rl.md) — 真机失败炼成的符号 / jackpot / 零指令采样约定
 
 ## 一句话记忆
 

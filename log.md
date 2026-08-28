@@ -1,3 +1,11 @@
+## [2026-08-28] ingest | sources/sites/pollen-robotics-microduck.md + sources/repos/microduck.md + sources/repos/microduck_rl.md — Pollen Microduck 产品页/Runtime/RL 已开源；升格 pollen-microduck 与 pollen-microduck-rl
+
+- **触发：** 用户指定 [1] <https://github.com/pollen-robotics/microduck_rl> [2] <https://discord.com/invite/pollen-community-519098054377340948> [3] <https://github.com/pollen-robotics/microduck> [4] <https://pollen-robotics.com/microduck>；要求自动合并 PR
+- **步骤 2.5：** **已开源** Apache-2.0 — 产品页 Open source 区链到 Runtime 与 RL 仓；`microduck`（Rust daemon，`main`）+ `microduck_rl`（mjlab + PPO，默认分支 `develop`，可 `uv run train/export`）；无 GPU 可 Hugging Face Jobs。整机是商品预售（$399，宣称 2026 圣诞前发货），不是 DIY BOM。RL README 另写硬件设计 CC BY-SA-NC。
+- **关键页：** [`wiki/entities/pollen-microduck.md`](wiki/entities/pollen-microduck.md)、[`wiki/entities/pollen-microduck-rl.md`](wiki/entities/pollen-microduck-rl.md)
+- **交叉：** Reachy2 / Open Duck Mini / Open Duck Playground / mjlab / BAM / Reward Design / Sim2Real Gap 缩减
+- **机构：** 新注册 `pollen-robotics`（花粉机器人（Pollen Robotics））；既有 `pollen` tag 一并命中
+
 ## [2026-08-28] structural | 姊妹仓库更名 Robot_Learning_Paper_Notebooks — 同步 GitHub / Pages URL 与展示名
 
 - **触发：** 姊妹项目已更名为 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)，站点 [imchong.github.io/Robot_Learning_Paper_Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/)

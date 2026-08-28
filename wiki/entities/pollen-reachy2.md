@@ -3,9 +3,10 @@
 type: entity
 tags: [humanoid, mobile-manipulator, open-source, pollen, reachy, embodied-ai, huggingface]
 status: complete
-updated: 2026-05-18
+updated: 2026-08-28
 related:
   - ./humanoid-robot.md
+  - ./pollen-microduck.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../tasks/loco-manipulation.md
   - ../tasks/manipulation.md
@@ -45,6 +46,7 @@ summary: "Pollen Robotics Reachy2：面向具身 AI 的开源模块化移动人�
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)
+- [Pollen Microduck](./pollen-microduck.md) — 同一机构的桌面双足；软件开源、整机预售
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Manipulation](../tasks/manipulation.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)

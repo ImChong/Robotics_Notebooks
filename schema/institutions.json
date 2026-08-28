@@ -3092,6 +3092,13 @@
         "hhmi-janelia",
         "janelia"
       ]
+    },
+    "pollen-robotics": {
+      "label": "花粉机器人（Pollen Robotics）",
+      "aliases": [
+        "pollen-robotics",
+        "pollen"
+      ]
     }
   }
 }
