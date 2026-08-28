@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-28",
   "node_count": 3324,
-  "edge_count": 29663,
+  "edge_count": 29677,
   "coverage": {
     "covered": 3299,
     "total": 3299,
@@ -236,7 +236,7 @@
     },
     {
       "label": "操作",
-      "size": 545
+      "size": 548
     },
     {
       "label": "视觉-语言-动作",
@@ -322,7 +322,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 482,
+      "degree": 483,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

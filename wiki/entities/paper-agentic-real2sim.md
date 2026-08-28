@@ -19,7 +19,7 @@ tags:
   - fau
   - style3d
 status: complete
-updated: 2026-08-11
+updated: 2026-08-28
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md
@@ -27,6 +27,7 @@ related:
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ./paper-r2s-ego.md
   - ./articraft.md
+  - ./paper-video2door-traversal.md
   - ./paper-bfm-zero.md
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -176,6 +177,7 @@ flowchart LR
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + cousins + 策略评测
 - [R2S-EGO](./paper-r2s-ego.md) — 稀疏捕获双代理 ego 场景细化（外观 + 真机坐姿）
 - [Articraft](./articraft.md) — agentic VLM 铰接资产生成
+- [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 同属 simulator-in-the-loop agent，单位是单门视频孪生再学穿门策略，不是 DROID episode twin
 - [BFM-Zero](./paper-bfm-zero.md) — 人形适配器运动上下文
 - [Manipulation](../tasks/manipulation.md) — 操作任务入口
 

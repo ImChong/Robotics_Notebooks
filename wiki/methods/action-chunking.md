@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -18,6 +18,7 @@ sources:
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/revisiting_open_loop_action_chunking_arxiv_2608_15938.md
   - ../../sources/papers/arli_arxiv_2608_23831.md
+  - ../../sources/papers/video2door_traversal_arxiv_2608_20251.md
   - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 related:
   - ./behavior-cloning.md
@@ -36,6 +37,7 @@ related:
   - ../entities/paper-nestdex.md
   - ../entities/paper-wam-realtime-async.md
   - ../entities/paper-arli.md
+  - ../entities/paper-video2door-traversal.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
@@ -214,5 +216,6 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [NestDex](../entities/paper-nestdex.md) — 内外层均用 chunk + 时间集成；瓶抓消融显示闭环适应接触、ensemble 降 jerk（arXiv:2608.13362）
 - [ReflexVLA](../entities/paper-reflexvla.md) — 动态任务上钉死「大 chunk + 短执行地平线」；异步 chunk=8 / horizon=2（arXiv:2608.14379）
 - [ARLI](../entities/paper-arli.md) — 异步 chunk 执行下延迟感知 RL 后训练；中间已承诺动作条件 DSRL（arXiv:2608.23831；确认未开源）
+- [Video2DoorTraversal（论文实体）](../entities/paper-video2door-traversal.md) — ArticuACT 在 ACT chunk=100 上加机器人系 Plücker 与交互进度辅助头（arXiv:2608.20251；代码待发布）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 上对照 sync/async/blend/simple/infer/train（arXiv:2608.01880）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 生成式动作头如何使长 chunk 在实践上可行

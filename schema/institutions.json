@@ -559,6 +559,13 @@
         "jackhan-sdu"
       ]
     },
+    "neowa": {
+      "label": "纽娲机器人（NeoWa Robotics）",
+      "aliases": [
+        "neowa",
+        "neowa-robotics"
+      ]
+    },
     "roboparty": {
       "label": "机器人派对（RoboParty）",
       "aliases": [
