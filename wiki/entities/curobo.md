@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - inverse-kinematics
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ../methods/trajectory-optimization.md
   - ./crocoddyl.md
@@ -121,6 +121,7 @@ flowchart LR
 - [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；cuMotion 等以 MoveIt 插件集成
 - [ssik](./ssik.md) — **解析** 全分支 IK（6R/7R）；与 cuRobo **GPU 数值 IK** 分层：前者枚举代数分支，后者做无碰撞并行搜索与轨迹优化
 - [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — 双臂 Piper 上把 cuRobo 当 **live IK 可达性闸门**；scripted PnP 因夹爪碰撞模型空而推碗，不能当抓取专家
+- [Anytime GTMP](./paper-anytime-gtmp.md) — 秒～分钟预算的批量全局张量规划；低延迟出第一条路仍看本页
 
 ## 参考来源
 

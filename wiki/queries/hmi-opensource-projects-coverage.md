@@ -236,7 +236,7 @@ sources:
 | [robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py) | [robot_descriptions.py](../entities/robot-descriptions-py.md) |
 | [ROS 2](https://github.com/ros2/ros2) | [Unitree ROS 2（本库 ROS 2 相关工程入口）](../entities/unitree-ros2.md) |
 | [ros2_control](https://github.com/ros-controls/ros2_control) | [ros2_control](../entities/ros2-control.md) |
-| [rsl_rl](https://github.com/leggedrobotics/rsl_rl) | [AMP-RSL-RL](../entities/amp-rsl-rl.md) |
+| [rsl_rl](https://github.com/leggedrobotics/rsl_rl) | [RSL-RL](../entities/rsl-rl.md) |
 | [SafeWBC](https://kwlee365.github.io/SafeWBC-Website/) | [SafeWBC](../entities/paper-motion-cerebellum-safewbc.md) |
 | [SAPIEN](https://github.com/haosulab/SAPIEN) | [SAPIEN (仿真引擎)](../entities/sapien.md) |
 | [skrl](https://github.com/Toni-SM/skrl) | [skrl](../entities/skrl.md) |

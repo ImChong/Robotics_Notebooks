@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-27
+updated: 2026-08-28
 related:
   - ./isaac-lab-default-environments.md
   - ./isaac-gym-isaac-lab.md
@@ -28,6 +28,7 @@ related:
   - ./paper-p3.md
   - ./lw-benchhub-tour.md
   - ./perceptron-isaac-05.md
+  - ./rsl-rl.md
   - ./autodl.md
   - ./gpufree.md
   - ./stackforce.md
@@ -325,6 +326,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径
 - [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集的统一框架（Lab 3.x 主线）
 - [Isaac Gym](./isaac-gym.md) — 旧一代独立 GPU RL 前身
+- [RSL-RL](./rsl-rl.md) — 默认 PPO / 蒸馏后端；可选 BF16 `update()`
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md) — Isaac Lab 扩展的神经动力学与想象训练参考实现
 - [Newton Physics](./newton-physics.md) — Isaac Lab 存在 `feature/newton` 物理后端集成探索
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 大平台层定位；与 Playground/mjlab 非同一竞争平面
