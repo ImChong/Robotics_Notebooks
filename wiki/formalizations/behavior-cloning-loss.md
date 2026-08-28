@@ -2,15 +2,17 @@
 type: formalization
 tags: [imitation-learning, loss, math, optimization, policy-learning]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 related:
   - ../methods/behavior-cloning.md
   - ../methods/dagger.md
+  - ../methods/inverse-reinforcement-learning.md
   - ../methods/action-chunking.md
   - ./mdp.md
   - ../concepts/behavioral-cloning-mysteries.md
 sources:
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
   - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 summary: "行为克隆损失函数（BC Loss）将马尔可夫决策过程中的策略学习简化为监督学习中的极大似然估计，是最基础的模仿学习优化目标。"
 ---
@@ -81,11 +83,12 @@ $$
 
 因为 $\mathcal{L}_{BC}$ 仅仅在专家的状态分布 $\rho_{\pi_E}$ 上最小化误差，一旦学生策略在实机上犯下微小的错误，使得状态偏离了 $\rho_{\pi_E}$ 进入了一个从未见过的新状态 $s_{novel}$，策略网络就会输出不可预测的乱动作。这种误差会随时间指数级级联累积（Compounding Error），最终导致灾难性失败。
 
-为了解决这个数学缺陷，衍生出了 **DAgger**（通过在线收集新状态的专家标签）和 **逆强化学习 (IRL)** 等更高级的算法体系。
+为了解决这个数学缺陷，衍生出了 **[DAgger](../methods/dagger.md)**（通过在线收集新状态的专家标签）和 **[逆强化学习 (IRL)](../methods/inverse-reinforcement-learning.md)** 等更高级的算法体系。
 
 ## 关联页面
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)
+- [Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md) — 用奖励似然代替逐步动作监督，缓解 compounding error 的另一条线
 - [Action Chunking](../methods/action-chunking.md)
 - [MDP 形式化](./mdp.md)
 - [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) — train \(\mathcal{L}_{BC}\) 与闭环成功率不对齐的四条现象
@@ -93,4 +96,5 @@ $$
 ## 参考来源
 - Pomerleau, D. A. (1989). *Alvinn: An autonomous land vehicle in a neural network*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
+- [IRL 一手论文索引](../../sources/papers/inverse_reinforcement_learning_primary_refs.md)
 - [Behavioral cloning mystery（博客归档）](../../sources/blogs/seohong_behavioral_cloning_mystery.md)

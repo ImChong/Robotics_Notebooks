@@ -2,11 +2,12 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
+  - ../methods/inverse-reinforcement-learning.md
   - ./domain-randomization.md
   - ./humanoid-policy-reward-functions.md
   - ../queries/reward-design-guide.md
@@ -17,6 +18,7 @@ related:
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
@@ -166,6 +168,11 @@ IL 的核心动机之一就是"奖励函数太难设计"——让 IL 从示范�
 
 见：[Imitation Learning](../methods/imitation-learning.md)
 
+### 和 Inverse Reinforcement Learning 的关系
+IRL 不绕过 $r$，而是从演示 **推断** $r$，再交给 RL。与手写奖励、势函数塑形共享同一套退化性：许多 $r$ 解释同一专家策略，换动力学后塑形项会失效。
+
+见：[Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md)
+
 ### 和 Cartpole 的关系
 同一「保持杆向上」：1983 / `sutton_barto_reward` 是稀疏失败；Gymnasium 默认逐步 +1；Isaac-Cartpole-v0 再加杆角 L2 与速度惩罚。是最小可复现的奖励对照。
 
@@ -199,6 +206,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 - [Cartpole 问题](./cartpole.md) — 稀疏失败 vs 逐步 +1 vs Isaac shaping
 - [Policy Optimization](../methods/policy-optimization.md)
 - [Imitation Learning](../methods/imitation-learning.md)（AMP 路线：绕过手工奖励）
+- [Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md)（从演示学 $r$，再优化；AIRL 针对可迁移奖励）
 - [AMP Reward (HumanX)](../methods/amp-reward.md) — 判别器风格奖励与接触图监督
 - [AMS](../methods/ams.md) — 物理可行性过滤与混合奖励机制
 - [BeyondMimic](../methods/beyondmimic.md) — 统一的任务空间跟踪奖励

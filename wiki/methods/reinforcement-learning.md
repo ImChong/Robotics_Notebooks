@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
@@ -23,6 +23,8 @@ related:
   - ./mt-opt.md
   - ./intentional-updates-streaming-rl.md
   - ./imitation-learning.md
+  - ./inverse-reinforcement-learning.md
+  - ./inverse-reinforcement-learning.md
   - ../concepts/sim2real.md
   - ../concepts/whole-body-control.md
   - ../tasks/locomotion.md
@@ -256,6 +258,7 @@ flowchart LR
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文 RL 教材与 PPO/SAC 章节，适合 Stage 0 打底
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
 - [Imitation Learning](./imitation-learning.md)
+- [Inverse Reinforcement Learning](./inverse-reinforcement-learning.md) — 从演示推断 $r$，再走本页的 RL 内环或再优化
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）
 - [E-SDS（论文实体）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 地形统计条件化 VLM 奖励 + 人形感知行走 PPO（arXiv:2512.16446）
 - [Fault-Tolerant Locomotion（论文实体）](../entities/paper-fault-tolerant-locomotion.md) — 非对称 actor–critic + latent-alignment 应对执行器功率损失（arXiv:2608.07328）

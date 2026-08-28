@@ -73,6 +73,7 @@ flowchart LR
 - 为什么 BC 会有 compounding error（复合累积误差）
 - DAgger 为什么能缓解 compounding error
 - 模仿学习和强化学习的根本区别是什么
+- 逆强化学习（IRL）和 BC 差在哪：学奖励还是学动作
 
 ### 推荐做什么
 - 用 BC 训练一个简单机械臂跟随演示轨迹
@@ -82,6 +83,7 @@ flowchart LR
 - "A Reduction of Imitation Learning and Stochastic Gradient Descent to Online Learning" (Ross & Bagnell, 2010)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
 - [Behavior Cloning](../wiki/methods/behavior-cloning.md) 与 [DAgger](../wiki/methods/dagger.md)（本仓库）
+- [Inverse Reinforcement Learning](../wiki/methods/inverse-reinforcement-learning.md)（本仓库）— 演示 → 奖励 → 策略；GAIL 只匹配占用
 - [RL vs IL 对比](../wiki/comparisons/rl-vs-il.md)（本仓库）
 
 ### 学完输出什么
@@ -161,7 +163,7 @@ flowchart LR
 
 ### 核心问题
 - 什么是 skill embedding，为什么需要把技能压缩到隐空间
-- 对抗式模仿学习（ASE）和普通 BC 的区别是什么
+- 对抗式模仿学习（ASE / AMP）和普通 BC 的区别是什么；GAIL 来自 [IRL](../wiki/methods/inverse-reinforcement-learning.md) 的占用匹配，不一定恢复任务奖励
 - 怎么在一个隐空间里做技能插值和组合
 - 为什么 latent variable 能帮助解决 compounding error
 
@@ -171,6 +173,7 @@ flowchart LR
 
 ### 推荐读什么
 - [ASE](../wiki/methods/ase.md) 与 [AMP Reward](../wiki/methods/amp-reward.md)（本仓库）
+- [Inverse Reinforcement Learning](../wiki/methods/inverse-reinforcement-learning.md)（本仓库）— MaxEnt / GAIL / AIRL，对抗模仿的理论前身
 - [Learning from Play (LMP)](../wiki/methods/learning-from-play-lmp.md)（本仓库）
 - [人形 AMP / Motion Prior 综述地图](../wiki/overview/humanoid-amp-motion-prior-survey.md)（本仓库）— AMP 家族全景
 - [CMP](../wiki/entities/paper-cmp.md)（本仓库）— 用高优势 rollout + demo 锚定的相关度，把 AMP/SMP 的任务无关先验软重权成上下文条件适配器；五任务回报与样本效率双升，参考失衡场景下 AMP 掉点 11.5% 而 CMP 仅 2.8%；截至 2026-08-18 无官方代码

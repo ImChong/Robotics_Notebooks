@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3330,
-  "edge_count": 29800,
+  "node_count": 3331,
+  "edge_count": 29829,
   "coverage": {
-    "covered": 3305,
-    "total": 3305,
+    "covered": 3306,
+    "total": 3306,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -228,7 +228,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 855
+      "size": 856
     },
     {
       "label": "操作",
@@ -303,7 +303,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 558,
+      "degree": 560,
       "has_repo": true
     },
     {

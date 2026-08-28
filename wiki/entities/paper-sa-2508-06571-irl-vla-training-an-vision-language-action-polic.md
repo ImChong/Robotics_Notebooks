@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-28
 arxiv: "2508.06571"
 venue: "arXiv 2025"
 code: https://github.com/lidarcrafter/toolkit
@@ -12,6 +12,7 @@ related:
   - ../overview/sun-awesome-wm-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/model-based-rl.md
+  - ../methods/inverse-reinforcement-learning.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
 sources:
@@ -32,7 +33,7 @@ Training a VLA policy via reward world model.
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WM | World Model | 环境前向预测模型 |
+| IRL | Inverse Reinforcement Learning | 从演示推断奖励；本条目名称借用该缩写 |
 | WAM | World Action Model | 世界预测与动作联合建模 |
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
 | MBRL | Model-Based RL | 基于模型的强化学习 |
@@ -91,6 +92,7 @@ Training a VLA policy via reward world model.
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 奖励学习主线：[Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md)
 
 ## 参考来源
 

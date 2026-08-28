@@ -2860,6 +2860,7 @@
 - [In-hand Reorientation (手内重定向)](wiki/methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
 - [Intentional Updates for Streaming RL（意图更新与流式强化学习）](wiki/methods/intentional-updates-streaming-rl.md) — 意图更新（intentional updates）指：不显式固定「参数空间步长」，而是先规定**当前这一步在关心的输出量**（价值预测、动作 log-probability 等）上希望达到的变化，再用 `📅2026-05-10` `[method_page]`
 - [Inverse Dynamics Control（逆动力学控制，IDC）](wiki/methods/inverse-dynamics-control.md) — IDC：由期望轨迹 $(q_d,\dot{q}_d,\ddot{q}_d)$ 经动力学逆解直接得前馈力矩，辅以少量反馈修正。 `📅unknown` `[method_page]`
+- [Inverse Reinforcement Learning（IRL, 逆强化学习）](wiki/methods/inverse-reinforcement-learning.md) — 逆强化学习**：在 MDP 已知或可交互、奖励未知时，从专家（近）最优行为反推 $r$，再把 $r$ 交给 [强化学习](./reinfor `📅unknown` `[method_page]`
 - [Iterative Learning Control（迭代学习控制，ILC）](wiki/methods/iterative-learning-control.md) — ILC：重复执行同一轨迹时，将上批次全程误差映射为下一批次前馈修正，迭代提升跟踪精度。 `📅unknown` `[method_page]`
 - [Joint Actuator Parameter Identification（关节执行器参数辨识）](wiki/methods/joint-actuator-parameter-identification.md) — 关节执行器参数辨识**：用激励轨迹和测量，估计写在**关节坐标**上的动力学参数——首先是 **转子反射惯量 $I_a$（armature）** 与 **摩擦（库仑 / 粘滞 / 可选 Strib `📅unknown` `[method_page]`
 - [L-BFGS（Limited-memory BFGS）](wiki/methods/l-bfgs.md) — L-BFGS**：BFGS 的 **有限内存** 变体，只保留最近 $m$ 对 $(s_k, y_k)$，用 **two-loop recursion** 隐式计算 $H `📅unknown` `[method_page]`

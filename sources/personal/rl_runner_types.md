@@ -17,7 +17,7 @@
 | Off-policy Runner | SAC, TD3, DDPG, DQN | Replay Buffer | 少量采集 → 随机抽历史 → 多次更新 |
 | Offline Runner | CQL, IQL, BCQ, TD3+BC | 固定离线数据集 | 读数据集 → 更新网络，不跑环境 |
 | Distillation Runner | Teacher–Student | Teacher 输出或轨迹 | Teacher 推理 → Student 模仿 |
-| Imitation Runner | BC, DAgger, GAIL | 专家演示 + 可选环境交互 | 采集专家/学习者轨迹 → 模仿更新 |
+| Imitation Runner | BC, DAgger, GAIL, AIRL | 专家演示 + 可选环境交互 | 采集专家/学习者轨迹 → 模仿或对抗奖励更新 |
 | Multi-agent Runner | MAPPO, QMIX, MADDPG | 多智能体环境 | 组织多 agent 观测、动作与共享/独立策略 |
 | Self-play Runner | AlphaZero 类、博弈策略 | 当前或历史策略互打 | 选对手 → 对局 → 更新 → 写入策略池 |
 | Distributed Runner | IMPALA, Ape-X, Distributed PPO | 多个采样进程 | Actor 并行采样 → Learner 集中更新 |
@@ -41,7 +41,7 @@
 | Off-policy Replay Buffer | `wiki/methods/sac.md`、`wiki/comparisons/online-vs-offline-rl.md` |
 | Offline / 固定数据集 | `wiki/comparisons/online-vs-offline-rl.md` |
 | Teacher–Student 蒸馏 | `wiki/concepts/privileged-training.md`、`wiki/methods/teacher-student-dagger-training.md` |
-| BC / DAgger / GAIL | `wiki/methods/imitation-learning.md`、`wiki/methods/behavior-cloning.md`、`wiki/methods/dagger.md` |
+| BC / DAgger / GAIL / AIRL | `wiki/methods/imitation-learning.md`、`wiki/methods/behavior-cloning.md`、`wiki/methods/dagger.md`、`wiki/methods/inverse-reinforcement-learning.md` |
 | 多智能体 | `wiki/methods/marl.md` |
 | 自博弈 | `wiki/entities/paper-notebook-robostriker.md`、`wiki/methods/marl.md` |
 | 世界模型想象 rollout | `wiki/methods/model-based-rl.md`、`wiki/concepts/latent-imagination.md` |

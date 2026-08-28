@@ -59,11 +59,12 @@
 - [Capture Point / DCM](wiki/concepts/capture-point-dcm.md)
 - [Sim2Real](wiki/concepts/sim2real.md)
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
+- [Imitation Learning](wiki/methods/imitation-learning.md)
+- [Inverse Reinforcement Learning](wiki/methods/inverse-reinforcement-learning.md)（从演示推断奖励再交给 RL；MaxEnt / GAIL / AIRL）
 - [Cartpole 问题](wiki/concepts/cartpole.md)（倒立摆小车：`CartPole-v1` 与 `Isaac-Cartpole-v0` 对照）
 - [Residual Policy Learning](wiki/methods/residual-policy-learning.md)（base + 残差统一框架：经典 RPL/Residual RL → RFC → Versatile Jumping → G1 上 RuN/ResMimic 九篇谱系）
 - [PyTorch](wiki/entities/pytorch.md)
 - [TensorFlow](wiki/entities/tensorflow.md)
-- [Imitation Learning](wiki/methods/imitation-learning.md)
 - [World Action Models（WAM）](wiki/concepts/world-action-models.md)（联合未来–动作分布的具身策略范式；综述与 Awesome-WAM 资源入口）
 - [Pelican-Unified 1.0（UEI）](wiki/methods/pelican-unified-1.md)（Qwen3-VL 推理末态 \(z\) + Wan 系 UFG：同一扩散去噪联合未来视频与动作；arXiv:2605.15153）
 - [mimic-video（VAM）](wiki/methods/mimic-video.md)（互联网视频潜计划 + 流匹配动作解码；arXiv:2512.15692）
