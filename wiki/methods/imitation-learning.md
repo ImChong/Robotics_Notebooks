@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 related:
   - ../concepts/robot-in-context-learning.md
   - ../concepts/behavioral-cloning-mysteries.md
@@ -18,6 +18,7 @@ related:
   - ./learning-from-play-lmp.md
   - ./dial-instruction-augmentation.md
   - ./reinforcement-learning.md
+  - ./inverse-reinforcement-learning.md
   - ../concepts/sim2real.md
   - ./humanoid-transformer-touch-dreaming.md
   - ../entities/mimickit.md
@@ -46,6 +47,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/topreward_arxiv_2602_19313.md
   - ../../sources/papers/humannet.md
@@ -127,6 +129,8 @@ flowchart TD
 
 让策略在 reward signal 上接近专家，不需要显式 reward。
 
+这是 [逆强化学习](./inverse-reinforcement-learning.md) 的对抗实例化：**占用匹配**，不是可迁移奖励学习。最优时判别器约输出 0.5，不能当新动力学上的 $r$。若目标是先学奖励再优化，看 MaxEnt / AIRL；若只要运动风格项，看 [AMP](./amp-reward.md)。
+
 ### 4. 基于重建的方法
 
 先从演示中提取隐表示或技能 latent，再用于控制。
@@ -145,7 +149,7 @@ flowchart TD
 
 常见组合策略：
 - **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家
-- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合
+- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合；完整「演示 → 奖励 → 策略」见 [IRL](./inverse-reinforcement-learning.md)
 - **自模仿（SIL）**：用智能体自身轨迹作监督；[TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) 进一步按**时间效率**而非纯回报筛选快速成功轨迹，用于长时域操作 PPO
 
 ## 在人形机器人中的应用
@@ -226,6 +230,7 @@ flowchart TD
 - [Sim2Real](../concepts/sim2real.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线
+- [Inverse Reinforcement Learning](./inverse-reinforcement-learning.md) — 从演示推断奖励再交给 RL；GAIL 只匹配占用，AIRL 才追求可迁移 $r$
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶桥的非马尔可夫模仿（arXiv:2606.30318）
 - [SpeedTuning](../entities/paper-speedtuning.md) — 冻结模仿基座，只学执行速度倍率（ICRA 2025；仿真仓已开源）
 - [VERAGMIL](../entities/paper-veragmil.md) — VR + Isaac Sim 颗粒喂食仿真；BC/BCQ + VR 示范（IROS 2025；arXiv:2608.18258）

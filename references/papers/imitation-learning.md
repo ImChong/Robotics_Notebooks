@@ -14,6 +14,7 @@
 ### 基础算法
 
 - **DAgger** (Ross et al., 2011) — *A Reduction of Imitation Learning to No-Regret Online Learning*. 系统解决了 BC 的累计误差问题。
+- **IRL 谱系** (Ng & Russell 2000 → MaxEnt 2008 → GAIL 2016 → AIRL 2018) — 从演示推断奖励或做占用匹配。归纳页见 [Inverse Reinforcement Learning](../../wiki/methods/inverse-reinforcement-learning.md)；一手索引见 [inverse_reinforcement_learning_primary_refs.md](../papers/inverse_reinforcement_learning_primary_refs.md)。
 - **Diffusion Policy** (Chi et al., 2023) — *Visuomotor Policy Learning via Action Diffusion*. 将扩散模型引入策略建模，显著提升了复杂操作任务的成功率。
 
 ### 动作表达与架构
@@ -35,6 +36,7 @@
 ## 关联页面
 
 - [Imitation Learning (Method)](../../wiki/methods/imitation-learning.md)
+- [Inverse Reinforcement Learning (Method)](../../wiki/methods/inverse-reinforcement-learning.md)
 - [Diffusion Policy (Method)](../../wiki/methods/diffusion-policy.md)
 - [mimic-video / VAM (Method)](../../wiki/methods/mimic-video.md)
 - [EgoScale (Method)](../../wiki/methods/egoscale.md)

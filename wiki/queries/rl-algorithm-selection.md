@@ -3,10 +3,11 @@ type: query
 tags: [rl, locomotion, policy-optimization, humanoid]
 status: complete
 summary: "> **Query 产物**：本页由以下问题触发：「在足式/人形机器人里，PPO / SAC / TD3 怎么选？」"
-updated: 2026-08-16
+updated: 2026-08-28
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/personal/rl_runner_types.md
+  - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「在足式/人形机器人里，PPO / SAC / TD3 怎么选？」
@@ -42,7 +43,7 @@ sources:
 | 需要极高训练稳定性与理论保证 | **BPO** | PPO |
 | 真实机器人少样本学习 | **SAC** | TD3 |
 | 确定性连续控制、操作任务 | **TD3** | SAC |
-| 模仿人类运动风格 | **AMP（PPO 变体）** | SAC+GAIL |
+| 模仿人类运动风格 | **AMP（PPO 变体）** | SAC+GAIL；对抗奖励谱系见 [IRL](../methods/inverse-reinforcement-learning.md) |
 | 需要最高渐近性能 | **SAC** | TD3 |
 | 调参时间有限，要稳定收敛 | **PPO** | [AWR](../methods/awr.md) |
 | 含人类演示 / 离线缓冲区数据 | **[AWR](../methods/awr.md)** | SAC |
@@ -201,6 +202,7 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 - [AWR](../methods/awr.md) — 优势加权回归，离策/演示数据场景的回归式备选
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全景
 - [Reward Design](../concepts/reward-design.md) — reward 设计是算法选型之后的核心问题
+- [Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md) — 从演示学 $r$；风格模仿优先 AMP，要可迁移奖励才用 AIRL
 - [Sim2Real](../concepts/sim2real.md) — 仿真训练后如何迁移到真实机器人
 - [Locomotion](../tasks/locomotion.md) — 足式 locomotion 任务定义与挑战
 

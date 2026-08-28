@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-28
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-adp.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ./imitation-learning.md
+  - ./inverse-reinforcement-learning.md
   - ./beyondmimic.md
   - ./hil-hybrid-imitation-learning.md
   - ../tasks/humanoid-soccer.md
@@ -125,6 +126,7 @@ $$
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [Imitation Learning](./imitation-learning.md)
+- [Inverse Reinforcement Learning](./inverse-reinforcement-learning.md) — AMP 的对抗奖励来自 GAIL 占用匹配，不是 AIRL 式可迁移任务 $r$
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
 - [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。

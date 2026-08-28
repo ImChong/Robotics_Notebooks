@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3330,
-  "edge_count": 29800,
+  "node_count": 3331,
+  "edge_count": 29829,
   "coverage": {
-    "covered": 3305,
-    "total": 3305,
+    "covered": 3306,
+    "total": 3306,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/inverse-reinforcement-learning.md",
+      "detail_id": "wiki-methods-inverse-reinforcement-learning",
+      "label": "Inverse Reinforcement Learning（IRL, 逆强化学习）",
+      "type": "method",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/concepts/llm-robotics-control-interfaces.md",
       "detail_id": "wiki-concepts-llm-robotics-control-interfaces",
@@ -202,33 +213,23 @@
       "recency": "2026-08-28",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/kimodo-cpp.md",
-      "detail_id": "entity-kimodo-cpp",
-      "label": "kimodo.cpp（C++/GGML 本地运动扩散运行时）",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/llm-robotics-control-interfaces.md",
-    "detail_id": "wiki-concepts-llm-robotics-control-interfaces",
-    "label": "LLM 机器人控制接口",
-    "type": "concept",
+    "path": "wiki/methods/inverse-reinforcement-learning.md",
+    "detail_id": "wiki-methods-inverse-reinforcement-learning",
+    "label": "Inverse Reinforcement Learning（IRL, 逆强化学习）",
+    "type": "method",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 855
+      "size": 856
     },
     {
       "label": "操作",
@@ -303,7 +304,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 558,
+      "degree": 560,
       "has_repo": true
     },
     {

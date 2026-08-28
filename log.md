@@ -1,3 +1,16 @@
+## [2026-08-28] ingest | sources/papers/inverse_reinforcement_learning_primary_refs.md — IRL 一手谱系（Ng 2000 / MaxEnt / GCL / GAIL / AIRL）；HumanCompatibleAI/imitation 已开源；升格 wiki/methods/inverse-reinforcement-learning.md
+
+- **触发：** 用户要求找到逆强化学习（IRL）相关一手资料并 ingest；仓库原无独立 IRL 方法页
+- **步骤 2.5：**
+  - **Ng 2000 / Abbeel 2004 / Ziebart 2008** — **确认未开源**（作者 PDF，无可运行实现）
+  - **GCL** — **确认官方 GCL 专仓不存在**；[cbfinn/gps](https://github.com/cbfinn/gps) 是 GPS 不是 GCL
+  - **GAIL** — **已开源** MIT，[openai/imitation](https://github.com/openai/imitation) **已归档**（2018）
+  - **AIRL** — **已开源** MIT，[justinjfu/inverse_rl](https://github.com/justinjfu/inverse_rl) TF1 时代（2018）
+  - **现代入口** — **已开源** MIT，[HumanCompatibleAI/imitation](https://github.com/HumanCompatibleAI/imitation) PyTorch + Gymnasium
+- **关键页：** [`wiki/methods/inverse-reinforcement-learning.md`](wiki/methods/inverse-reinforcement-learning.md)
+- **交叉：** IL / BC / DAgger / AMP / Reward Design / MDP / RL vs IL / RL Runner
+- **机构：** 已有 `berkeley` / `stanford` / `cmu`；未新注册
+
 ## [2026-08-28] ingest | sources/sites/anthropic-claude-plays-robotics.md + anthropic-model-hardware-standard.md + anthropic-recursive-self-improvement.md — Anthropic 机器人评测 / MHS / RSI 三件套
 
 - **触发：** 用户指定 [1] <https://www.anthropic.com/research/claude-plays-robotics> [2] <https://www.anthropic.com/news/model-hardware-standard-research-preview> [3] <https://www.anthropic.com/institute/recursive-self-improvement>

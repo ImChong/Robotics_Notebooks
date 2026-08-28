@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, training-loop, runner, on-policy, off-policy, imitation, distillation, marl, model-based]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ./embodied-rl-minimal-closed-loop.md
   - ../methods/reinforcement-learning.md
@@ -13,6 +13,7 @@ related:
   - ../comparisons/online-vs-offline-rl.md
   - ../methods/imitation-learning.md
   - ../methods/behavior-cloning.md
+  - ../methods/inverse-reinforcement-learning.md
   - ../methods/dagger.md
   - ../methods/teacher-student-dagger-training.md
   - ./privileged-training.md
@@ -96,7 +97,7 @@ flowchart TB
 | **Off-policy** | SAC, TD3, DDPG, DQN | Replay Buffer | 少量采集 → 随机抽历史 → **多次**更新 | [SAC](../methods/sac.md) |
 | **Offline** | CQL, IQL, BCQ, TD3+BC | 固定数据集 | 读盘 → 更新，**不** `env.step` | [Online vs Offline](../comparisons/online-vs-offline-rl.md) |
 | **Distillation** | Teacher–Student | Teacher 动作或轨迹 | Teacher 推理 → Student 模仿 | [特权训练](./privileged-training.md)；实例 [RSL-RL](../entities/rsl-rl.md) `DistillationRunner` |
-| **Imitation** | BC, DAgger, GAIL | 专家演示 ± 环境 | 采专家/学生轨迹 → 模仿更新 | [模仿学习](../methods/imitation-learning.md) |
+| **Imitation** | BC, DAgger, GAIL, AIRL | 专家演示 ± 环境 | 采专家/学生轨迹 → 模仿或对抗奖励更新 | [模仿学习](../methods/imitation-learning.md)、[IRL](../methods/inverse-reinforcement-learning.md) |
 | **Multi-agent** | MAPPO, QMIX, MADDPG | 多智能体环境 | 打包多 agent 观测/动作/共享或独立策略 | [MARL](../methods/marl.md) |
 | **Self-play** | AlphaZero 类、博弈策略 | 当前或历史策略互打 | 选对手 → 对局 → 更新 → 写入策略池 | [RoboStriker](../entities/paper-notebook-robostriker.md) |
 | **Distributed** | IMPALA, Ape-X, 分布式 PPO | 多采样进程 | Actor 并行采 → Learner 集中更新 | 执行拓扑，可包 on/off-policy |
@@ -116,7 +117,7 @@ flowchart TD
   Buf --> Off["Off-policy：反复抽"]
   Fix --> OfL["Offline：不跑环境"]
   Tch --> Dist["Distillation"]
-  Tch --> Im["Imitation：BC / DAgger / GAIL"]
+  Tch --> Im["Imitation：BC / DAgger / GAIL / AIRL"]
   Opp --> Sp["Self-play"]
   Wm --> Mb["Model-based 想象"]
   On -.-> DistR["Distributed 可叠加"]
@@ -136,7 +137,7 @@ flowchart TD
 
 **Distillation Runner。** 数据来自 **Teacher 策略**（常带仿真特权观测），Student 做监督拟合。它通常接在 On-policy 收敛**之后**，不参与前期探索；对象若未收敛，学生只会稳定地学错。见 [特权训练](./privileged-training.md) 与 [Teacher-Student / DAgger](../methods/teacher-student-dagger-training.md)。
 
-**Imitation Runner。** 数据来自 **专家演示**，不是 Teacher 网络。纯 [BC](../methods/behavior-cloning.md) 可以完全离线；[DAgger](../methods/dagger.md) 必须让学生与环境交互，再请专家回标；GAIL 还要把判别器奖励送进 RL 更新。和蒸馏的差别：老师是人或演示集，还是另一套已训策略。
+**Imitation Runner。** 数据来自 **专家演示**，不是 Teacher 网络。纯 [BC](../methods/behavior-cloning.md) 可以完全离线；[DAgger](../methods/dagger.md) 必须让学生与环境交互，再请专家回标；GAIL / AIRL 还要把判别器（或结构化奖励）送进 RL 更新，见 [逆强化学习](../methods/inverse-reinforcement-learning.md)。和蒸馏的差别：老师是人或演示集，还是另一套已训策略。
 
 **Multi-agent Runner。** 每个 step 要组装 $N$ 个观测与动作，处理共享策略 vs 独立策略、集中训练分布式执行（CTDE）。非平稳性来自「别的 agent 也在学」，不是普通单智能体 on-policy 能靠加并行环境解决的。
 
@@ -198,7 +199,7 @@ flowchart TD
 - [PPO](../methods/ppo.md) / [GAE](../methods/gae.md) — On-policy Runner 的默认宿主
 - [SAC](../methods/sac.md) / [PPO vs SAC](../comparisons/ppo-vs-sac.md) — Off-policy 循环与选型
 - [Online vs Offline RL](../comparisons/online-vs-offline-rl.md) — 固定数据集循环的瓶颈
-- [模仿学习](../methods/imitation-learning.md) / [Behavior Cloning](../methods/behavior-cloning.md) / [DAgger](../methods/dagger.md)
+- [模仿学习](../methods/imitation-learning.md) / [Behavior Cloning](../methods/behavior-cloning.md) / [DAgger](../methods/dagger.md) / [逆强化学习](../methods/inverse-reinforcement-learning.md)
 - [特权训练](./privileged-training.md) / [Teacher-Student 与 DAgger](../methods/teacher-student-dagger-training.md)
 - [MARL](../methods/marl.md) — Multi-agent Runner
 - [Model-Based RL](../methods/model-based-rl.md) / [潜空间想象](./latent-imagination.md)

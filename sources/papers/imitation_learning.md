@@ -16,6 +16,7 @@
 - **核心贡献：** 提出 DAgger，系统解决 BC 的 covariate shift 问题。
 - **对 wiki 的映射：**
   - [Imitation Learning](../../wiki/methods/imitation-learning.md)
+  - [Inverse Reinforcement Learning](../../wiki/methods/inverse-reinforcement-learning.md) — IRL 是 BC compounding error 的另一条对策（学 $r$ 而非逐步回标）
 
 ### 2) Diffusion Policy: Visuomotor Policy Learning via Action Diffusion (Chi et al., 2023)
 - **链接：** <https://arxiv.org/abs/2303.04137>

@@ -5,8 +5,9 @@ status: complete
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
 summary: "RL vs 模仿学习（Imitation Learning）"
-updated: 2026-08-05
+updated: 2026-08-28
 ---
 
 # RL vs 模仿学习（Imitation Learning）
@@ -76,7 +77,7 @@ RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略
 | ACT（Action Chunking） | 预测动作序列而非单步，减少时序误差 | Bi-manual 操作 |
 | Diffusion Policy | 分布建模，多模态动作 | 精细操作、灵巧手 |
 | IBC | 能量模型，隐式行为克隆 | 高维连续控制 |
-| GAIL / AIRL | GAN-like，从演示中隐式学 reward | 风格模仿 |
+| GAIL / AIRL | GAN-like 占用匹配；AIRL 才恢复可迁移 $r$ | 风格模仿 / 奖励迁移；详见 [IRL](../methods/inverse-reinforcement-learning.md) |
 
 ---
 
@@ -124,7 +125,7 @@ flowchart TB
   IL["IL 模仿学习<br/>监督：专家演示 D = (s,a)<br/>数据：演示轨迹 · 模仿驱动"]
 
   RLm["RL 典型方法<br/>PPO · SAC · TD3 · AMP 等"]
-  ILm["IL 典型方法<br/>BC · DAgger · Diffusion · GAIL 等"]
+  ILm["IL 典型方法<br/>BC · DAgger · Diffusion · IRL/GAIL 等"]
 
   FUS["融合路线<br/>BC 预训练 + RL 微调<br/>AMP · RLHF 等"]
 
@@ -163,7 +164,8 @@ flowchart TB
 - Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 理论基础
 - Pomerleau, *ALVINN: An Autonomous Land Vehicle in a Neural Network* (1989) — BC 早期工作
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* (DAgger, 2011) — 分布偏移的经典解法
-- Ho & Ermon, *Generative Adversarial Imitation Learning* (GAIL, 2016) — 从演示隐式学 reward
+- Ho & Ermon, *Generative Adversarial Imitation Learning* (GAIL, 2016) — 从演示做占用匹配
+- [IRL 一手论文索引](../../sources/papers/inverse_reinforcement_learning_primary_refs.md) — Ng 2000 / MaxEnt / AIRL；GAIL 不恢复可复用奖励
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* (2023) — IL 的 SOTA
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control* (2021) — RL + 演示的标志性融合
 
@@ -174,6 +176,7 @@ flowchart TB
 - [机器人学习五大范式](./robot-learning-five-paradigms-taxonomy.md) — 在 RL/IL 之外补齐 LfV、VLA、持续学习
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法详细展开
 - [Imitation Learning](../methods/imitation-learning.md) — IL 方法详细展开
+- [Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md) — 演示 → 奖励 → 策略；介于 RL 与 IL 之间
 - [Policy Optimization](../methods/policy-optimization.md) — RL 中的策略梯度方法（PPO/SAC/TD3）
 - [Diffusion Policy](../methods/diffusion-policy.md) — IL 的 SOTA 方法
 - [WBC vs RL](./wbc-vs-rl.md) — 另一个控制方法对比视角
