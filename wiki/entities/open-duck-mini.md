@@ -3,7 +3,7 @@
 type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx, disney, open-duck]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-28
 related:
   - ./open-duck-playground.md
   - ./open-duck-reference-motion-generator.md
@@ -14,6 +14,7 @@ related:
   - ../tasks/locomotion.md
   - ./open-source-humanoid-hardware.md
   - ./disney-research-la.md
+  - ./pollen-microduck.md
 sources:
   - ../../sources/repos/open_duck_mini.md
   - ../../sources/sites/tnkr-open-duck-mini-v2.md
@@ -140,3 +141,4 @@ flowchart TD
 - [MuJoCo Playground 官方站点](https://playground.mujoco.org/)
 - [Haonan Yu — Sim2Real 实践博客](https://www.haonanyu.blog/post/sim2real/)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)（全尺寸人形选型对照）
+- [Pollen Microduck](./pollen-microduck.md) — Pollen 商品线迷你双足：Dynamixel + mjlab，对照本页 DIY Feetech + Playground

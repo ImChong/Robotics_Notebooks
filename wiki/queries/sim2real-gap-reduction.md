@@ -75,6 +75,7 @@ push_robots: True                   # 随机推力 [0, 150] N
 |------|------|
 | ActuatorNet（Hwangbo 2019） | 用 MLP 学习执行器的输入-输出映射（从真机数据） |
 | BAM M1–M6（ICRA 2025） | 摆锤 [CMA-ES](../methods/cma-es.md) 辨识扩展摩擦 + MuJoCo 在线更新；见 [论文实体](../entities/paper-bam-extended-friction-servo-actuators.md) / [Rhoban/bam](https://github.com/Rhoban/bam) |
+| Microduck RL（Pollen） | 桌面双足上把 BAM M6 **XL330 电压律**写进 mjlab，再加摩擦/电压/延迟 DR 与编码器侧 ±1° 背隙孪生；训练无动作低通、ONNX 必须烤观测归一化。见 [Microduck RL](../entities/pollen-microduck-rl.md) |
 | SPI-Active（CoRL 2025） | 采样式辨识 base 质量/惯量 + 电机模型，并主动优化指令最大化 FIM；见 [实体页](../entities/paper-notebook-sampling-based-system-identification-with-active.md) / [LeCAR-Lab/SPI-Active](https://github.com/LeCAR-Lab/SPI-Active) |
 | 延迟建模 | 在仿真中加入随机延迟 1-5 个控制步 |
 | PD 控制模式 | 用 PD 目标角度代替直接力矩（更鲁棒） |
@@ -159,6 +160,7 @@ contact_noise:  0.05            # 接触检测误报率
 - [Sim2Real Checklist](./sim2real-checklist.md) — 部署前完整检查清单（含快速部署检查）
 - [Sim2Real 闭环误差分层工程](./sim2real-closed-loop-engineering.md) — 误差类型 → 校准/DR/适应/安全的时序闭环
 - [RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 已上机后的症状排查
+- [Microduck RL](../entities/pollen-microduck-rl.md) — 小舵机双足上 BAM + 背隙 + 滤波/归一化踩坑
 
 ## 一句话记忆
 

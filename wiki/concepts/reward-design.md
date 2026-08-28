@@ -11,6 +11,7 @@ related:
   - ./domain-randomization.md
   - ./humanoid-policy-reward-functions.md
   - ../queries/reward-design-guide.md
+  - ../entities/pollen-microduck-rl.md
   - ../concepts/cartpole.md
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
@@ -212,6 +213,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 - [BeyondMimic](../methods/beyondmimic.md) — 统一的任务空间跟踪奖励
 - [Query：Reward Design 实战指南](../queries/reward-design-guide.md)
 - [Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md) — 娱乐实机上的模仿 + 约束型奖励
+- [Microduck RL](../entities/pollen-microduck-rl.md) — 廉价舵机双足上的符号约定、jackpot 禁令与势函数起身
 - [Character Animation vs Robotics](./character-animation-vs-robotics.md) — 风格惩罚 vs 安全惩罚的权重必须分别建模的边界讨论
 
 ## 一句话记忆
