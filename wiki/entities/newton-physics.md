@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, differentiable, linux-foundation]
 status: complete
-updated: 2026-06-08
+updated: 2026-08-28
 related:
   - ./mujoco.md
   - ./mujoco-playground.md
@@ -15,11 +15,13 @@ related:
   - ../queries/simulator-selection-guide.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
+  - ./omnisim.md
 sources:
   - ../../sources/repos/newton-physics.md
   - ../../sources/sites/nvidia-newton-physics.md
   - ../../sources/sites/newton-physics-docs-overview.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+  - ../../sources/repos/omnisim.md
 summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微物理引擎：基于 NVIDIA Warp，以 MuJoCo Warp 为主要后端，支持 URDF/MJCF/USD 与多求解器，并与 Isaac Lab、MuJoCo Playground 等机器人学习栈对接。"
 ---
 
@@ -99,6 +101,7 @@ flowchart LR
 | **[MuJoCo](./mujoco.md)** | 学术接触建模标杆；Newton 通过 **MuJoCo Warp** 承接 MJCF 资产与 GPU 批量路径 |
 | **[mjlab](./mjlab.md)** | **RL 训练框架**（Isaac Lab 风格 API + MuJoCo Warp）；Newton 是更底层的**通用物理引擎**，不限于 manager-based RL |
 | **[Isaac Lab](./isaac-gym-isaac-lab.md)** | Omniverse/PhysX 主线；Newton 作为可选/并行物理后端探索（官方教程与 `feature/newton` 分支） |
+| **[OmniSim](./omnisim.md)** | Webots fork 把 Newton **当成唯一后端并删除 ODE**；默认 MuJoCo Warp + VBD，面向编码代理 HTTP/MCP，不是 Lab 式训练框架 |
 | **[MuJoCo MJX](./mujoco-mjx.md)** | JAX 上 MJCF 对齐实现；Newton 侧强调 Warp + 多求解器 + USD，选型时需核对任务所需的 **feature parity** |
 
 ## 优势与局限
@@ -125,6 +128,7 @@ flowchart LR
 - [仿真器选型指南（Query）](../queries/simulator-selection-guide.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [OmniSim](./omnisim.md) — Newton 唯一后端的代理原生仿真器
 
 ## 参考来源
 
@@ -132,6 +136,7 @@ flowchart LR
 - [NVIDIA Developer：Newton Physics](../../sources/sites/nvidia-newton-physics.md)
 - [Newton 官方文档 Overview](../../sources/sites/newton-physics-docs-overview.md)
 - [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
+- [OmniSim 仓库归档](../../sources/repos/omnisim.md) — Newton 作为唯一后端的仿真器案例
 
 ## 推荐继续阅读
 
