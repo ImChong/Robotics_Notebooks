@@ -9,6 +9,59 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-anytime-gtmp.md",
+      "detail_id": "entity-paper-anytime-gtmp",
+      "label": "Anytime GTMP：批量全局张量运动规划",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lac.md",
+      "detail_id": "entity-paper-lac",
+      "label": "LAC：人形全身线角柔顺",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ucag-p.md",
+      "detail_id": "entity-paper-ucag-p",
+      "label": "UCAG-P：跨本体统一动作几何",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-zero-wam.md",
+      "detail_id": "entity-paper-zero-wam",
+      "label": "Zero-WAM：人类视频提示的世界动作模型",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/rsl-rl.md",
+      "detail_id": "entity-rsl-rl",
+      "label": "RSL-RL",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/kimodo-cpp.md",
       "detail_id": "entity-kimodo-cpp",
       "label": "kimodo.cpp（C++/GGML 本地运动扩散运行时）",
@@ -163,67 +216,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-ros2smolvla.md",
-      "detail_id": "entity-paper-ros2smolvla",
-      "label": "ROS2SmolVLA：工业轻量臂上的本地小型 VLA",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-simple-evrgb-cal.md",
-      "detail_id": "entity-paper-simple-evrgb-cal",
-      "label": "simple-evrgb-cal：无运动的事件—RGB 标定",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/overview/open-source-7-papers-system-structure-technology-map.md",
-      "detail_id": "wiki-overview-open-source-7-papers-system-structure-technology-map",
-      "label": "开源具身 7 篇：系统结构阅读坐标",
-      "type": "overview",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/behavioral-cloning-mysteries.md",
-      "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
-      "label": "Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）",
-      "type": "concept",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/skild-ai.md",
-      "detail_id": "entity-skild-ai",
-      "label": "Skild AI",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/kimodo-cpp.md",
-    "detail_id": "entity-kimodo-cpp",
-    "label": "kimodo.cpp（C++/GGML 本地运动扩散运行时）",
+    "path": "wiki/entities/paper-anytime-gtmp.md",
+    "detail_id": "entity-paper-anytime-gtmp",
+    "label": "Anytime GTMP：批量全局张量运动规划",
     "type": "entity",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
