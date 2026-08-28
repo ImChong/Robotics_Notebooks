@@ -3,7 +3,7 @@ type: entity
 tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-assets]
 status: complete
 date: 2026-05-16
-updated: 2026-08-24
+updated: 2026-08-28
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
@@ -16,6 +16,7 @@ related:
   - ./comfyui.md
   - ./mujoco.md
   - ./paper-agentic-real2sim.md
+  - ./paper-video2door-traversal.md
   - ./paper-diffgi.md
 sources:
   - ../../sources/sites/articraft3d-github-io.md
@@ -92,6 +93,7 @@ flowchart TB
 - [PhysX-Omni](./physx-omni.md) — **VLM + 模板 RLE + TRELLIS** 统一三类物理 3D 与 **PhysXVerse** 数据引擎；项目页亦列 Articraft 等为生成对比基线。
 - [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 减法式纹理部件生成**；共享骨干生态但不含关节/物理仿真字段。
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — 同属 **agentic VLM** 谱系，但单位是 **交互 episode→MuJoCo 孪生**，而非可关节网格资产库。
+- [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — DoorTwin 在 Articraft 程序上叠加度量视频接地与参考视角 critic，用于轮足推门穿越（arXiv:2608.20251；代码待发布）。
 - [DiffGI](./paper-diffgi.md) — 学习式 **薄壳 geometry image** 生成；与 Articraft 的程序化关节资产在「网格从哪来」上互补。
 
 ## 推荐继续阅读

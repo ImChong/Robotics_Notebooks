@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-26
+updated: 2026-08-28
 sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
@@ -28,6 +28,7 @@ sources:
   - ../../sources/repos/isaaclab_decoupled_wbc.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
+  - ../../sources/papers/video2door_traversal_arxiv_2608_20251.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/papers/legs_arxiv_2606_01458.md
   - ../../sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md
@@ -281,6 +282,7 @@ flowchart TD
 - [VIRAL（论文实体）](../entities/paper-viral-humanoid-visual-sim2real.md) — 人形 loco-manipulation 视觉 Sim2Real 全栈（arXiv:2511.15200）
 - [FetchMan（论文实体）](../entities/paper-fetchman.md) — MolmoSpaces 15 万场景 BC+Flow-GRPO；G1 真机 loco-manip 73.3% zero-shot（arXiv:2608.17027；GitHub 占位仓，2026-09-01 前补代码）
 - [DoorMan（论文实体）](../entities/paper-doorman-opening-sim2real-door.md) — 人形纯 RGB 开门铰接操作与 GRPO 自举（arXiv:2512.01061）
+- [Video2DoorTraversal（论文实体）](../entities/paper-video2door-traversal.md) — 单 RGB 视频 DoorTwin + ArticuACT；轮足 A2-W 推门穿越 96.57%（arXiv:2608.20251；代码待发布）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — DP 规划器 + RL 跟踪器联合微调的人形 loco-manip（arXiv:2603.13707，Booster T1）
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 物理 HOI 生成式先验：模仿专家 → 变分蒸馏 → RL 微调（arXiv:2602.06035）
 - [WEM（论文实体）](../entities/paper-wem-world-ego-modeling.md) — 混合导航–操作长程 **视频世界模型** 与 **HTEWorld** 基准（arXiv:2605.19957，BEHAVIOR-1K）

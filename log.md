@@ -7,6 +7,14 @@
 - **交叉：** Webots / Newton / 仿真器选型 / MCP / Isaac Sim / Gazebo / mjlab
 - **机构：** 注册 `omnilink`（欧姆尼链（OmniLink））
 
+## [2026-08-28] ingest | sources/papers/video2door_traversal_arxiv_2608_20251.md — 加深 Video2DoorTraversal 单视频门孪生穿门；项目页仍 Code Coming soon
+
+- **触发：** 用户指定 <https://video2doortraversal.github.io/> 与 [arXiv:2608.20251v1](https://arxiv.org/abs/2608.20251v1)；要求自动合并 PR
+- **步骤 2.5：** **待发布 / 宣称将开源** — 项目页复核（2026-08-28）仍为 **Code Coming soon**，无 GitHub / 权重；不建 `sources/repos/`
+- **关键页：** [`wiki/entities/paper-video2door-traversal.md`](wiki/entities/paper-video2door-traversal.md)（由 2026-08-22 盘点摘要加深为论文级编译）
+- **交叉：** Articraft / PhysX-Omni / DoorMan / Action Chunking / Agentic Real2Sim / Isaac Gym / loco-manipulation
+- **机构：** 已有 `sjtu` / `sdu`；新注册 `neowa`（纽娲机器人（NeoWa Robotics））
+
 ## [2026-08-28] ingest | sources/papers/ucag_p_arxiv_2608_26058.md — UCAG-P 相机系锚点几何预训练；宣称将开源；升格 wiki/entities/paper-ucag-p.md
 
 - **触发：** 用户指定 *One Policy, Many Embodiments*（arXiv / 小米具身智能 × 澳门大学）；要求自动合并 PR
