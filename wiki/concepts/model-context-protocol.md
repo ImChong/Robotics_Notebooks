@@ -2,7 +2,7 @@
 type: concept
 tags: [mcp, llm-agents, protocol, anthropic, json-rpc, tooling, agent-host, open-source]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-28
 related:
   - ./remote-procedure-call.md
   - ../entities/freecad-mcp.md
@@ -12,6 +12,7 @@ related:
   - ../entities/graphify.md
   - ../entities/hermes-agent.md
   - ../entities/unreal-mcp.md
+  - ../entities/omnisim.md
   - ../entities/unreal-engine-5.md
   - ../entities/unity-engine.md
   - ../references/llm-wiki-karpathy.md
@@ -122,6 +123,7 @@ flowchart TB
 | [DimOS](../entities/dimensionalos-dimos.md) | 机器人 OS | skills 暴露为 MCP tools |
 | [3D Gen Studio](../entities/3dgenstudio.md) | 网格生产台 | HTTP `/mcp` + stdio 桥 |
 | [Unreal MCP](../entities/unreal-mcp.md) | Unreal Editor | 编辑器内嵌 HTTP MCP（Experimental） |
+| [OmniSim](../entities/omnisim.md) | 机器人仿真器 | 一等 stdio MCP（官方 18 tools）+ HTTP `omnisim_wire` |
 
 ## 局限与风险
 
@@ -140,6 +142,7 @@ flowchart TB
 - [DimOS](../entities/dimensionalos-dimos.md) — 机器人 skills 的 MCP 暴露
 - [3D Gen Studio](../entities/3dgenstudio.md) · [Graphify](../entities/graphify.md) · [Hermes Agent](../entities/hermes-agent.md)
 - [Unreal MCP](../entities/unreal-mcp.md) — UE 编辑器内嵌官方 MCP server
+- [OmniSim](../entities/omnisim.md) — 仿真器一等 MCP + HTTP 机器人桥
 - [Unreal Engine 5](../entities/unreal-engine-5.md) · [Unity Engine](../entities/unity-engine.md) — 引擎侧 MCP/AI 方向
 - [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — 本库维护模式；检索侧亦可挂 MCP
 
