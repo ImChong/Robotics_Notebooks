@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
-updated: 2026-08-26
+updated: 2026-08-28
 ---
 
 # Domain Randomization
@@ -142,6 +142,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - **ingest 档案：** [sources/papers/aware_arxiv_2604_23761.md](../../sources/papers/aware_arxiv_2604_23761.md) — AWARE 轮足反射避障 DR 表与真机 ASR 落差
 - **ingest 档案：** [sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md](../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md) — 四旋翼上 DR 对 RL vs 几何控制不对称
 - **ingest 档案：** [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — DR 应围绕 SysID 基准，忌盲目扩范围
+- **ingest 档案：** [Getting Started With Isaac Lab](../../sources/courses/nvidia_getting_started_isaac_lab.md) — 模块 4：物理/视觉/深度/点云 DR 与「通才 vs 专才」权衡
 
 ## 关联页面
 
@@ -155,6 +156,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - [AWARE（轮足高动态反射避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
 - [RL vs GC](../entities/paper-rl-vs-gc.md) — 同一 DR 预算下 PPO 比几何控制更稳
 - [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)
+- [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 官方课把视觉/深度/点云 DR 放进「仿真增强」一类，并警告 DR 过宽会变成弱通才
 
 ## 推荐继续阅读
 

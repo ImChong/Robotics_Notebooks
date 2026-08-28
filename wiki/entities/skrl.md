@@ -2,15 +2,17 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-28
 summary: "skrl：以统一代理、内存、模型和训练器接口覆盖PyTorch、JAX及多种仿真环境，允许在相同任务上切换PPO、SAC等算法；模块化结构便于插入自定义网络与记录器做受控比较。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
+  - ../entities/nvidia-getting-started-isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/skrl.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
 
@@ -86,6 +88,7 @@ flowchart LR
 
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
+- [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) — 官方 Cartpole / UR10 课默认 skrl PPO；Lab 3.x 注意 YAML `input: OBSERVATIONS`
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 

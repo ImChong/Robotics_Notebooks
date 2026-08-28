@@ -11,7 +11,7 @@ tags:
   - nvidia
   - farama
 status: complete
-updated: 2026-08-16
+updated: 2026-08-28
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -21,6 +21,7 @@ related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../entities/gymnasium.md
   - ../entities/isaac-lab.md
+  - ../entities/nvidia-getting-started-isaac-lab.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/sutton-barto-rl-book.md
   - ../entities/dm-control.md
@@ -32,6 +33,7 @@ sources:
   - ../../sources/papers/barto_sutton_anderson_1983_cartpole.md
   - ../../sources/sites/gymnasium-cartpole.md
   - ../../sources/sites/isaac-lab-cartpole.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/repos/gymnasium.md
   - ../../sources/repos/isaac_lab.md
 summary: "Cartpole（倒立摆小车）是欠驱动平衡控制的最小基准：四维状态、沿轨道推车使杆保持竖直。Gymnasium CartPole-v1 对齐 1983 失败信号设定；Isaac-Cartpole-v0 把它做成 GPU 并行、连续力矩与奖励 shaping 的 Isaac Lab 教学任务。"
@@ -61,7 +63,7 @@ summary: "Cartpole（倒立摆小车）是欠驱动平衡控制的最小基准�
 
 1. **RL 的第一块试金石。** [Gymnasium](../entities/gymnasium.md) 把 Barto–Sutton–Anderson 1983 的 cart-pole 做成 `CartPole-v1`；PPO / DQN 教程几乎都先在这里证明 `reset` / `step` 能跑通。见 [具身 RL 最小闭环](./embodied-rl-minimal-closed-loop.md)。
 2. **Actor–Critic 的实验原点。** 1983 文不是「再做一个倒立摆仿真」，而是证明 **ASE（搜动作）+ ACE（学评价）** 可以只靠失败信号学会平衡。这是读 [Sutton & Barto 教材](../entities/sutton-barto-rl-book.md) 和现代 PPO critic 之前该记住的谱系。
-3. **从 CPU 玩具跨到 GPU 训练栈的台阶。** [Isaac Lab](../entities/isaac-lab.md) 文档把 `Isaac-Cartpole-v0` / `Isaac-Cartpole-Direct-v0` 当作 Quickstart 任务：同一物理直觉，换成 4096 并行、连续力矩、manager 奖励项。过了这一步再上 Humanoid，才不会把「环境 id 里有 Cartpole」误当成 Gym 超参可以原样粘贴。
+3. **从 CPU 玩具跨到 GPU 训练栈的台阶。** [Isaac Lab](../entities/isaac-lab.md) 文档把 `Isaac-Cartpole-v0` / `Isaac-Cartpole-Direct-v0` 当作 Quickstart 任务：同一物理直觉，换成 4096 并行、连续力矩、manager 奖励项。官方课 [Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) 模块 2 再走一遍 external 工程（`Template-Cartpole-v0`）。过了这一步再上 Humanoid，才不会把「环境 id 里有 Cartpole」误当成 Gym 超参可以原样粘贴。
 4. **奖励与终止的对照实验。** 同一「保持杆向上」，1983 / `sutton_barto_reward` 是稀疏失败；Gymnasium 默认逐步 +1；Isaac Lab 再加杆角 L2 与速度惩罚。这是 [Reward Design](./reward-design.md) 最小可复现案例。
 
 ## 核心原理
@@ -329,6 +331,7 @@ flowchart TB
 - [Optimal Control](./optimal-control.md) — 同一对象的 LQR / 能量法路线
 - [Gymnasium](../entities/gymnasium.md) — `CartPole-v1` 的 API 与向量化
 - [Isaac Lab](../entities/isaac-lab.md) — `Isaac-Cartpole-v0` 所在训练框架
+- [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 官方模块 2 用 `./isaaclab.sh --new` 生成 `Template-Cartpole-v0`（manager + skrl PPO）
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](../entities/isaac-gym-isaac-lab.md)
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — `pole.c` 与 Actor–Critic 教材化
 - [dm_control](../entities/dm-control.md) — 同一物理家族上的 balance / swingup 任务切分
@@ -342,6 +345,7 @@ flowchart TB
 - [Barto, Sutton, Anderson 1983 论文归档](../../sources/papers/barto_sutton_anderson_1983_cartpole.md) — IEEE TSMC；ASE+ACE；失败信号设定
 - [Gymnasium Cart Pole 官方环境页](../../sources/sites/gymnasium-cartpole.md) — `CartPole-v1` 契约与源码常数
 - [Isaac Lab Cartpole 环境族](../../sources/sites/isaac-lab-cartpole.md) — `Isaac-Cartpole-v0` 文档表与 cfg 核对
+- [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md) — 官方模块 2：external template 上的 Cartpole 并行 PPO
 - [Gymnasium 仓库归档](../../sources/repos/gymnasium.md)
 - [Isaac Lab 仓库归档](../../sources/repos/isaac_lab.md)
 

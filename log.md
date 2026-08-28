@@ -1,3 +1,11 @@
+## [2026-08-28] ingest | sources/courses/nvidia_getting_started_isaac_lab.md — NVIDIA Getting Started With Isaac Lab 全系列四模块；Isaac Lab 已开源；升格 wiki/entities/nvidia-getting-started-isaac-lab.md
+
+- **触发：** 用户指定 <https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-lab/latest/index.html> 一整个系列
+- **步骤 2.5：** **课程为文档、无可独立课程仓**；可运行代码走 [isaac-sim/IsaacLab](https://github.com/isaac-sim/IsaacLab)（**已开源**）；云端 Brev / Isaac Launchable（课内警告当时钉 Lab 3.0，可能与课测版本不兼容）
+- **关键页：** [`wiki/entities/nvidia-getting-started-isaac-lab.md`](wiki/entities/nvidia-getting-started-isaac-lab.md)
+- **交叉：** Physical AI 门户 / Isaac Lab / Cartpole / skrl / DR / 特权训练 / Actuator Network / SO-101 对照课
+- **机构：** 已有 `nvidia`
+
 ## [2026-08-28] ingest | sources/papers/inverse_reinforcement_learning_primary_refs.md — IRL 一手谱系（Ng 2000 / MaxEnt / GCL / GAIL / AIRL）；HumanCompatibleAI/imitation 已开源；升格 wiki/methods/inverse-reinforcement-learning.md
 
 - **触发：** 用户要求找到逆强化学习（IRL）相关一手资料并 ingest；仓库原无独立 IRL 方法页

@@ -93,6 +93,7 @@
 | Isaac Lab 仿真训练 | [`wiki/entities/isaac-gym-isaac-lab.md`](../../wiki/entities/isaac-gym-isaac-lab.md) |
 | SAGE 执行器 gap | [`wiki/entities/sage-sim2real-actuator-gap-estimator.md`](../../wiki/entities/sage-sim2real-actuator-gap-estimator.md) |
 | 门户与其他路径 | [`wiki/entities/nvidia-physical-ai-learning.md`](../../wiki/entities/nvidia-physical-ai-learning.md) |
+| 对照：Isaac Lab RL 入门课 | [`wiki/entities/nvidia-getting-started-isaac-lab.md`](../../wiki/entities/nvidia-getting-started-isaac-lab.md) |
 
 ---
 

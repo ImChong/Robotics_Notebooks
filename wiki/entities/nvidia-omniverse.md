@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, nvidia, realtime, metaverse]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-28
 related:
   - ./blender.md
   - ./mujoco.md

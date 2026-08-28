@@ -28,6 +28,7 @@ related:
   - ../queries/sim2real-gap-reduction.md
   - ../entities/gr00t-visual-sim2real.md
   - ../entities/nvidia-so101-sim2real-lab-workflow.md
+  - ../entities/nvidia-getting-started-isaac-lab.md
   - ../entities/nvidia-physical-ai-learning.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../entities/paper-pace-sim2real-legged-robots.md
@@ -72,6 +73,7 @@ sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
@@ -251,6 +253,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
 - [Menlo：Noise is all you need…](../../sources/blogs/menlo_noise_is_all_you_need.md) — 处理器在环 + CAN 抖动注入的 Asimov 工程博文入库摘录
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — NVIDIA SO-101 动手课：DR / Co-training / Cosmos / SAGE+GapONet 四类策略对照与 VLA workflow
+- **ingest 档案：** [sources/courses/nvidia_getting_started_isaac_lab.md](../../sources/courses/nvidia_getting_started_isaac_lab.md) — Isaac Lab 入门课模块 4：reality gap 三源与三类桥接
 - **ingest 档案：** [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — SAGE：Isaac Sim 重放与真机日志对齐的执行器层 sim2real gap 度量工具链
 - [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — CRISP：单目视频平面原语 Real2Sim + 接触引导（ICLR 2026）ingest 摘录
 - **ingest 档案：** [sources/repos/awesome-real2sim2real.md](../../sources/repos/awesome-real2sim2real.md) — Awesome-Real2Sim2Real 迁移闭环策展清单
@@ -300,6 +303,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [SHELLS（论文实体）](../entities/paper-shells-layered-surface-sampling.md) — 纯合成多视角训练 → 真实棚拍人头注册泛化（视觉/几何域，非策略控制）
 - [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 仿真 VR teleop + Path-Tracing 视觉域随机化；**纯仿真数据** 训练 G1 loco-manip 零样本可 ≥ 等量真机 teleop（arXiv:2606.08548）
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — 官方动手课：四类 sim2real 策略 + GR00T N1.6 VLA + LeRobot/Isaac Lab
+- [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 官方入门课模块 4：仿真增强 / Real2Sim / 策略鲁棒三类桥接
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 廉价双臂叠衣：仿真 AWR/RECAP → 真机三桶 BC+DAgger（arXiv:2606.27163，全链路开源）
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — **深度** sim-to-real：真机用 **VFM（Fast-FoundationStereo）** 替代重度 depth randomization，配合 **RFM** 聚焦梯子踏棍（arXiv:2606.05873）

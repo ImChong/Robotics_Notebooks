@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md

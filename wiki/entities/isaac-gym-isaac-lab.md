@@ -6,6 +6,7 @@ sources:
   - ../../sources/repos/isaac_lab.md
   - ../../sources/repos/isaac_gym.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Sim / Isaac Lab 三代 NVIDIA 仿真与学习产品总览：Gym 为 legacy GPU RL；Sim 为 Omniverse 仿真底座；Lab 为当前官方学习框架。"
 updated: 2026-08-28
@@ -171,6 +172,7 @@ Gym 时代就强调大规模随机化；Lab / Sim 延续并扩展到视觉与传
 - **ingest 档案：** [sources/repos/isaac_gym_isaac_lab.md](../../sources/repos/isaac_gym_isaac_lab.md)
 - **ingest 档案：** [sources/repos/isaac_sim.md](../../sources/repos/isaac_sim.md)、[isaac_lab.md](../../sources/repos/isaac_lab.md)、[isaac_gym.md](../../sources/repos/isaac_gym.md)
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md)
+- **ingest 档案：** [sources/courses/nvidia_getting_started_isaac_lab.md](../../sources/courses/nvidia_getting_started_isaac_lab.md)
 
 ## 关联页面
 
@@ -180,6 +182,7 @@ Gym 时代就强调大规模随机化；Lab / Sim 延续并扩展到视觉与传
 - [Cartpole 问题](../concepts/cartpole.md) — Lab Quickstart 教学任务 `Isaac-Cartpole-v0`
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
+- [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) — 官方 RL 入门四模块
 - [legged_gym](./legged-gym.md)
 - [MuJoCo](./mujoco.md)
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
