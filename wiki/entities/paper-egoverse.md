@@ -17,12 +17,13 @@ tags:
   - mit
 status: complete
 venue: arxiv
-updated: 2026-08-15
+updated: 2026-08-28
 code: https://github.com/GaTech-RL2/EgoVerse
 related:
   - ./paper-egowam-egocentric-human-wam-co-training.md
   - ./humannet.md
   - ../methods/egoscale.md
+  - ./paper-ucag-p.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
   - ../concepts/embodied-scaling-laws.md
@@ -212,12 +213,14 @@ sequenceDiagram
 - [Ego 分类 01：数据采集](../overview/ego-category-01-data-collection.md)
 - [Ego 分类 02：人→机器人](../overview/ego-category-02-human-to-robot.md)
 - [Ego2Robot](./paper-ego2robot.md) — 把 EgoVerse 等源渲染成 15 形态机器人预训练数据
+- [UCAG-P](./paper-ucag-p.md) — 把 EgoVerse 等人手小时写成相机系锚点，与机器人共训（arXiv:2608.26058）
 
 ## 参考来源
 
 - [EgoVerse 论文摘录（arXiv:2604.07607）](../../sources/papers/egoverse_arxiv_2604_07607.md)
 - [EgoVerse 项目页归档](../../sources/sites/egoverse-ai.md)
 - [EgoVerse 官方仓库归档](../../sources/repos/egoverse.md)
+- [UCAG-P 论文摘录](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 把 EgoVerse 等人手小时写入相机系锚点共训
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
 ---
 
@@ -43,6 +43,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 | 实体 | ROBOTIS Physical AI 栈 | [Cyclo Intelligence](../entities/cyclo-intelligence.md) |
 | 榜站 | VLA / 灵巧手多基准相对位次 | [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) |
 | 实体 | Perceptron 开源通才（非 NVIDIA） | [Isaac 0.5](../entities/perceptron-isaac-05.md) |
+| 实体 | 相机系锚点几何通才 | [UCAG-P](../entities/paper-ucag-p.md) — 人手与机器人共享 \(p_0/p_1\)；代码待发布 |
 | 驾驶 VLA | 语义∥空间双流规划（NAVSIM） | [S²-VLA](../entities/paper-s-squared-vla.md) |
 | 数据 | 跨具身数据倡议 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
@@ -58,9 +59,11 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 - [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)
 - [Whole-Body VLA 相关实体](../entities/paper-hrl-stack-30-wholebodyvla.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [UCAG-P](../entities/paper-ucag-p.md) — 相机系腕/抓取锚点几何通才操作
 
 ## 参考来源
 
 - 本库归纳自 [VLA](../methods/vla.md)、[Behavior Foundation Model](../concepts/behavior-foundation-model.md)、[BFM 技术地图](./bfm-41-papers-technology-map.md)
+- [UCAG-P 论文摘录](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 相机系锚点几何通才操作
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`vla` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)、[BFM：人形机器人行为基础模型（arXiv:2509.13780）](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)、[awesome-bfm-papers](../../sources/repos/awesome_bfm_papers.md)

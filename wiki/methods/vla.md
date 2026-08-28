@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -52,6 +52,7 @@ related:
   - ../entities/robot-io-rio.md
   - ../entities/xiaomi-robotics-0.md
   - ../entities/xiaomi-robotics-1.md
+  - ../entities/paper-ucag-p.md
   - ../entities/rldx-1.md
   - ../entities/humannet.md
   - ../entities/paper-capvector-capability-vectors-vla.md
@@ -120,6 +121,7 @@ sources:
   - ../../sources/blogs/limx_cosa_05_release_2026-07-15.md
   - ../../sources/repos/xiaomi-robotics-0.md
   - ../../sources/sites/xiaomi-robotics-1.md
+  - ../../sources/papers/ucag_p_arxiv_2608_26058.md
   - ../../sources/papers/being_h07.md
   - ../../sources/papers/ros2smolvla_arxiv_2608_23320.md
   - ../../sources/papers/ld4wam_arxiv_2608_22403.md
@@ -212,11 +214,12 @@ flowchart TD
 - **DeFI**：将 **GFDM（SVD 系前向动力学）** 与 **GIDM（DINO+VQ 自监督逆动力学）** 在混合/无标签视频上 **分开预训练**，下游再 **冻结前向 + 扩散适配器** 耦合微调，缓解 2D 预测与 3D 动作的目标纠缠并放大无动作标签人视频（见 [DeFI](./defi-decoupled-dynamics-vla.md)）
 - **RLDX-1**：在 Qwen3-VL 与 GR00T 系训练栈上引入 **MSAT** 多流扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，并配套图捕获与 RTC 的低延迟推理实现
 - **Xiaomi-Robotics-0**：**Qwen3-VL-4B + DiT flow matching**；两阶段预训练（**Choice Policies** 扩展 VLM → 冻结 VLM 训 DiT）+ 面向 **异步 action chunk** 的后训练（**Λ 形注意力、前缀随机遮蔽、flow 损失重加权** 等），强调仿真与双臂真机 **吞吐/延迟** 叙事（见 [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md)）
+- **UCAG-P（小米具身智能 × 澳门大学，arXiv:2608.26058）**：共享 **相机系腕/抓取锚点几何**，翻译器再出 80 维稀疏命令；人手当独立 embodiment 直接监督；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%** / LIBERO-Plus 零样本 **82.0%**；**代码 coming soon**（见 [UCAG-P](../entities/paper-ucag-p.md)）
 - **Xiaomi-Robotics-1**：**>100k h UMI 预训练**（VLM **自动状态转移标注**）+ **~10k h 跨本体后训练**；**Qwen3-VL + DiT MoT**（**2B/5B/10B**）；预训练 **数据/模型 scaling** 可预测迁移至 **未见环境开箱** 与 **<10h/任务** 少样本微调（**75%** vs **π₀.₅ 40%**）；**RoboCasa365 / [RoboDojo](../entities/robodojo.md)** 等四基准 SOTA（见 [Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md)）；通用操纵 **官方 sim-and-real 公益榜** 与 **XPolicyLab** 适配见 [RoboDojo](../entities/robodojo.md) / [XPolicyLab](../entities/xpolicylab.md)
 - **Qwen-VLA**：**Qwen3.5-4B + 1.15B DiT flow-matching** 的 **通才** 实例；**操作 + VLN + 轨迹** 同一 checkpoint，**embodiment prompt** 切换平台（见 [Qwen-VLA](../entities/qwen-vla.md)）
 - **Perceptron Isaac 0.5（2026-08）**：**36B-A2.5B** 稀疏 Qwen-family 骨干 + **null-expert** 路由；**FAST + Flow/DiT** 双动作接口；用专有未来 percept 自监督把 **1M h** 无动作视频与 teleop 共训，报告达到同一动作损失所需遥操作 **210×** 下降。代码 Apache 2.0；Hub 权重入库日 **COMING SOON**。**不是** NVIDIA Isaac 仿真栈（见 [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)）
 - **DyPES-VLA（HKUST-GZ / COCO Matrix，arXiv:2608.06374）**：用 **未来帧预测** 学 **共享动力学先验（query）**，再用 **本体特化 MoE** 在 **原生动作空间** 出控，避免手工统一动作格式；LIBERO **98.0%** / RoboCasa-GR1 **59.25%** / RoboTwin **89.02%**，真机三本体均值 **75.6%**（代码 coming soon；见 [DyPES-VLA](../entities/paper-dypes-vla.md)）
-- **Qwen-RobotManip**：通义 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 内 **操作专精** VLA；**80-d 跨本体对齐 + Human-to-Robot 合成 + OOD 榜 north star**，与 Qwen-VLA **同 DiT flow 族** 但分域 scaling 叙事（见 [Qwen-RobotManip](../entities/qwen-robot-manip.md)）
+- **Qwen-RobotManip**：通义 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 内 **操作专精** VLA；**80-d 跨本体对齐 + Human-to-Robot 合成 + OOD 榜 north star**，与 Qwen-VLA **同 DiT flow 族** 但分域 scaling 叙事（见 [Qwen-RobotManip](../entities/qwen-robot-manip.md)）；相机系 ΔEEF 对照见 [UCAG-P](../entities/paper-ucag-p.md) 的锚点几何
 - **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）
 - **MotionWAM vs VLA（Mondo / HKUST，arXiv:2606.09215）**：在 **同 Stage 3 演示 + 同 SONIC 低层** 设定下，**视频世界模型隐状态条件** 的 WAM（76.1%）大幅超过 **GR00T-N1.7**（43.9%）等 VLA 微调基线——说明人形 loco-manip 闭环更依赖 **动力学先验** 而非单独加强 **VLM 语义先验**（见 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)）
 - **Being-H0.7**：用 egocentric 人视频 + 机器人演示，在**潜空间**用未来观测分支监督 **latent world–action** 先验；测试时不滚未来像素，直接输出动作，并常与 **action chunking**、异步缓冲（UAC）组合部署
@@ -378,6 +381,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — π₀.₇ 论文与官方博客归档
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md) — Awesome-WAM 论文库
 - [sources/repos/xiaomi-robotics-0.md](../../sources/repos/xiaomi-robotics-0.md) — Xiaomi-Robotics-0 官网 / GitHub / arXiv 归档
+- [sources/papers/ucag_p_arxiv_2608_26058.md](../../sources/papers/ucag_p_arxiv_2608_26058.md) — UCAG-P 相机系锚点几何预训练（arXiv:2608.26058）
 - [sources/sites/xiaomi-robotics-1.md](../../sources/sites/xiaomi-robotics-1.md) — Xiaomi-Robotics-1 品牌站 / 技术报告 PDF 归档
 - [sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md](../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md) — Xiaomi-Robotics-1 arXiv:2607.15330 论文归档
 - [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md) — mimic-video：Video-Action Model 与 VLA 对照的 arXiv:2512.15692 摘录
@@ -465,6 +469,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [RLDX-1](../entities/rldx-1.md) — 多流扩散动作头 + 可选触觉/力矩与 RTC 推理栈的工程参考
 - [RIO（Robot I/O）](../entities/robot-io-rio.md) — 跨形态实时采集与 VLA 闭环部署的模块化 I/O 栈（RSS 2026）
 - [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) — 小米开源 VLA：异步 chunk 执行与后训练技巧的系统叙述
+- [UCAG-P](../entities/paper-ucag-p.md) — 相机系腕/抓取锚点几何预训练；人手直接进共享动作空间（arXiv:2608.26058；代码待发布）
 - [Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md) — 小米 **100k h UMI 预训练** 具身基座 VLA 与 scaling 实证
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md)
 - [Query：操作 VLA 与视频-动作架构选型](../queries/manipulation-vla-architecture-selection.md)

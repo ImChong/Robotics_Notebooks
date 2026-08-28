@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-28
 related:
   - ../concepts/embodied-foundation-model-hardware-codesign.md
   - ../queries/cross-embodiment-transfer-strategy.md
@@ -13,6 +13,7 @@ related:
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/gemini-robotics.md
   - ../entities/paper-xmorph.md
+  - ../entities/paper-ucag-p.md
 summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含同形态跨配置遗留数据三相迁移（Emergent Transfer）、末端/工具接口多样性（如 GEN-1 千手）、physical prompting 人→机/sim→真机（GEN-1.5）、人体→非人形腿式行为先验（X-Morph）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
 ---
 
@@ -54,6 +55,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 | 实体 | GEN-1 千手（跨末端/工具） | [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源产业样本；同一基座跨 ~9k 末端变体 |
 | 实体 | Gemini Robotics 2 On-Device | [Gemini Robotics](../entities/gemini-robotics.md) — 闭源；博客称新双臂本体数小时 / &lt;200 例适配 |
 | 实体 | X-Morph 人体→非人形腿式 | [X-Morph](../entities/paper-xmorph.md) — 重定向+物理校正+跟踪蒸馏；Go2/六足/B2-Z1 |
+| 实体 | UCAG-P 相机系锚点 VLA | [UCAG-P](../entities/paper-ucag-p.md) — 共享腕/抓取几何，翻译器出各本体命令；操作通才而非 WBT |
 | 概念 | 角色动画 vs 机器人 | [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) |
 | 数据 | 跨具身数据集 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
@@ -73,11 +75,13 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端接口多样性（产业闭源对照）
 - [Gemini Robotics](../entities/gemini-robotics.md) — On-Device 2 快速跨本体叙事（权重未开源）
 - [X-Morph](../entities/paper-xmorph.md) — 人体运动作非人形腿式可复用行为先验
+- [UCAG-P](../entities/paper-ucag-p.md) — 操作 VLA：相机可观测锚点作跨本体共享动作目标
 - [具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md) — 模型通用 vs 硬件形态通用
 
 ## 参考来源
 
 - 本库归纳自 [Cross-Embodiment Transfer Strategy](../queries/cross-embodiment-transfer-strategy.md) 及 motion-retargeting / sim2real 交叉页
+- [UCAG-P 论文摘录](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 相机系锚点作跨本体共享动作目标
 - [GEN-1.5: Embodied Foundation Models are One-Shot Learners（来源归档）](../../sources/blogs/generalist_gen15_one_shot.md) — physical prompting / 人→机与 sim→真机提示
 - [Towards Machines with a Thousand Hands（来源归档）](../../sources/blogs/generalist_thousand_hands.md) — 跨末端「千手」产业样本
 - [Gemini Robotics 2 全身智能（来源归档）](../../sources/blogs/gemini_robotics_2_whole_body.md) — On-Device 跨本体适配声明

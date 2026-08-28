@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, qwen, open-source, flow-matching, generalist, cross-embodiment, navigation, manipulation]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-28
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -14,6 +14,7 @@ related:
   - ./xiaomi-robotics-0.md
   - ./qwen-robot-suite.md
   - ./qwen-robot-manip.md
+  - ./paper-ucag-p.md
   - ./qwen-robot-nav.md
   - ./paper-rynnbrain-1-1.md
   - ../overview/vla-open-source-repro-landscape-2025.md
@@ -124,6 +125,7 @@ flowchart TB
 - [Loco-manipulation](../tasks/loco-manipulation.md) — 操作与移动联合任务语境
 - [Qwen-Robot Suite](./qwen-robot-suite.md) — 通义分域具身三件套与 agent 闭环
 - [Qwen-RobotManip](./qwen-robot-manip.md) — Suite 内操作专精 foundation
+- [UCAG-P](./paper-ucag-p.md) — 同场 LIBERO/RoboTwin/GR-1 通才对照；共享相机锚点而非 embodiment prompt
 - [RynnBrain 1.1](./paper-rynnbrain-1-1.md) — 同阿里生态具身预训练脑；受控实验显示优于「直接 Qwen 后训练 VLA」
 - [ACE-Brain-0.5](./paper-ace-brain-0-5.md) — 同 Qwen3-VL 族；统一感知–规划–动作–进度闭环 + SSR+
 
