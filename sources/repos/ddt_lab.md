@@ -48,3 +48,4 @@
 - 轮足概念：[`wiki/concepts/wheel-legged-quadruped.md`](../../wiki/concepts/wheel-legged-quadruped.md)
 - 对照多机型扩展：[`wiki/entities/robot-lab.md`](../../wiki/entities/robot-lab.md)（robot_lab 机型表亦含 DDTRobot Tita）
 - 对照厂商 Lab：[`wiki/entities/unitree-rl-lab.md`](../../wiki/entities/unitree-rl-lab.md)、[`wiki/entities/deeprobotics-rl-training.md`](../../wiki/entities/deeprobotics-rl-training.md)
+- Isaac Gym 前代 TITA 仓：[`wiki/entities/tita-rl.md`](../../wiki/entities/tita-rl.md)

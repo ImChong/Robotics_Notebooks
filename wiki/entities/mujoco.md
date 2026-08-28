@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-wasm.md
@@ -15,6 +15,7 @@ related:
   - ./robot-motion-keyframe-editors.md
   - ./dm-control.md
   - ./gymnasium.md
+  - ./wheel-legged-genesis.md
   - ./jackhan-walke3-e3-ecosystem.md
   - ./nvidia-omniverse.md
   - ./newton-physics.md
@@ -99,6 +100,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Newton Physics](./newton-physics.md) — Warp + MuJoCo Warp 的 GPU 可微引擎（LF 托管）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
+- [wheel_legged_genesis](./wheel-legged-genesis.md) — Genesis 策略迁 MuJoCo 的双轮足 sim2sim
 - [Barkour（Menagerie MJCF + 敏捷课）](./paper-barkour-quadruped-agility-benchmark.md)
 - [robot_descriptions.py](./robot-descriptions-py.md) — `loaders.mujoco` 与 `*_mj_description`
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)

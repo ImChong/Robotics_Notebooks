@@ -1,3 +1,14 @@
+## [2026-08-28] ingest | sources/repos/tita_rl.md + wheel_legged_genesis.md + isaac_rl_two_wheel_legged_bot.md — 轮腿双足三仓：TITA Gym / Genesis / Flamingo Lab
+
+- **触发：** 用户指定 <https://github.com/DDTRobot/tita_rl>、<https://github.com/Albusgive/wheel_legged_genesis>、<https://github.com/jaykorea/Isaac-RL-Two-wheel-Legged-Bot>；要求自动合并 PR
+- **步骤 2.5：** 三仓均无独立项目页，以 GitHub README 为准
+  - **tita_rl** — **已开源** MIT；可运行 `train.py` / `simple_play.py`；部署分仓 `tita_rl_sim2sim2real`（无 SPDX）
+  - **wheel_legged_genesis** — **已开源** MIT；Genesis + vendored RSL-RL + MuJoCo sim2sim；无官方真机包
+  - **Isaac-RL-Two-wheel-Legged-Bot** — **已开源**（SPDX MIT，`setup.py` 另写 BSD-3-Clause）；`lab.flamingo` 训练可跑；sim2sim 分支迁移中
+- **关键页：** [`wiki/concepts/wheel-legged-biped.md`](wiki/concepts/wheel-legged-biped.md)、[`wiki/entities/tita-rl.md`](wiki/entities/tita-rl.md)、[`wiki/entities/wheel-legged-genesis.md`](wiki/entities/wheel-legged-genesis.md)、[`wiki/entities/isaac-rl-two-wheel-legged-bot.md`](wiki/entities/isaac-rl-two-wheel-legged-bot.md)
+- **交叉：** DDT_Lab（Gym vs Lab 分代）、轮足四足、Hybrid Locomotion、Genesis、Isaac Gym/Lab、RSL-RL、Webots、ZONDA/TITA
+- **机构：** 已有 `direct-drive-tech` / `postech`；新注册 `independent-maintainer`（独立维护者（Independent Maintainer））供 Albusgive 社区仓派生所属机构
+
 ## [2026-08-28] ingest | sources/sites/pollen-robotics-microduck.md + sources/repos/microduck.md + sources/repos/microduck_rl.md — Pollen Microduck 产品页/Runtime/RL 已开源；升格 pollen-microduck 与 pollen-microduck-rl
 
 - **触发：** 用户指定 [1] <https://github.com/pollen-robotics/microduck_rl> [2] <https://discord.com/invite/pollen-community-519098054377340948> [3] <https://github.com/pollen-robotics/microduck> [4] <https://pollen-robotics.com/microduck>；要求自动合并 PR

@@ -10,6 +10,7 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
   - ../entities/omnisim.md
+  - ./tita-rl.md
 sources:
   - ../../sources/repos/webots.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -93,6 +94,7 @@ flowchart LR
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [OmniSim](./omnisim.md) — Webots 独立 fork：Newton + HTTP/MCP
+- [tita_rl](./tita-rl.md) — TITA 官方 RL 的 Webots sim2sim 下游仓
 
 ## 参考来源
 

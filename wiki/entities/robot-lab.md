@@ -2,9 +2,11 @@
 type: entity
 tags: [repo, framework, reinforcement-learning, isaac-lab, unitree, sim2real]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-28
 related:
   - ../concepts/wheel-legged-quadruped.md
+  - ../concepts/wheel-legged-biped.md
+  - ./tita-rl.md
   - ./isaac-gym-isaac-lab.md
   - ./legged-gym.md
   - ./unitree.md
@@ -94,6 +96,8 @@ flowchart LR
 - [legged_gym](./legged-gym.md)
 - [Unitree 品牌主页](./unitree.md)
 - [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)
+- [轮腿双足](../concepts/wheel-legged-biped.md)
+- [tita_rl](./tita-rl.md) — TITA 的 Isaac Gym 官方仓；本仓机型表含 Tita 属 Isaac Lab 社区扩展
 - [AWARE（M20 高动态反射避障）](./paper-aware-wheeled-legged-reflexive-evasion.md)
 - [BeyondMimic](../methods/beyondmimic.md)
 - [OpenLoong（青龙）](./openloong.md)

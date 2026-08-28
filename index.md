@@ -103,6 +103,7 @@
 - [机器人开源宝库（微信策展第02期）](wiki/overview/robot-open-source-wechat-issue02-curator.md)（Reachy2、Poppy、InMoov、Doggo/Pupper、myCobot 320、myAGV、TidyBot2、Kinova Gen3、Franka R3、PAROL6）
 - [四足机器人（Quadruped Robot）](wiki/entities/quadruped-robot.md)
 - [轮足四足机器人（四轮足）](wiki/concepts/wheel-legged-quadruped.md)（Go2W 类混合滚动–步态）
+- [轮腿双足（双轮足）](wiki/concepts/wheel-legged-biped.md)（TITA / Flamingo / CJ-003：两轮倒立摆 + 可调腿长）
 - [MotionCode™](wiki/entities/motioncode.md)（人体运动数据与 Mind 线人形训练叙事）
 - [HumanNet](wiki/entities/humannet.md)（百万小时级人中心视频语料；VLA/IL 人类侧预训练参照）
 - [Xiaomi-Robotics-0](wiki/entities/xiaomi-robotics-0.md)（小米开源 VLA；Qwen3-VL + DiT flow matching，异步 action chunk 部署）

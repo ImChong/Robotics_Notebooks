@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, deeprobotics, reinforcement-learning, isaac-lab, locomotion, wheel-legged, amp, sim2real]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-28
 related:
   - ./robot-lab.md
   - ./unitree-rl-lab.md

@@ -2,11 +2,12 @@
 
 type: entity
 summary: "legged_gym"
-updated: 2026-07-20
+updated: 2026-08-28
 related:
   - ../entities/extreme-parkour.md
   - ../entities/humanoid-gym.md
   - ../entities/paper-infinite-diffusion-terrain-diffusion.md
+  - ./tita-rl.md
   - ../concepts/procedural-terrain-generation.md
 sources:
   - ../../sources/papers/simulation_tools.md
@@ -281,6 +282,7 @@ tags: [eth]
 - [InfiniteDiffusion / Terrain Diffusion](./paper-infinite-diffusion-terrain-diffusion.md) — 学习式无限地形生成（`terrain.py` 经典程序化噪声的对照后继）
 - [Extreme Parkour（感知跑酷 fork）](./extreme-parkour.md) — ICRA 2024；legged_gym 生态上的两阶段深度跑酷扩展
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
+- [tita_rl](./tita-rl.md) — TITA 官方仓沿用 legged_gym 式 env/config/runner 结构
 
 ## 一句话记忆
 
