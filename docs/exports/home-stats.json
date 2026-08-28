@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3310,
-  "edge_count": 29513,
+  "node_count": 3311,
+  "edge_count": 29526,
   "coverage": {
-    "covered": 3285,
-    "total": 3285,
+    "covered": 3286,
+    "total": 3286,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kimodo-cpp.md",
+      "detail_id": "entity-kimodo-cpp",
+      "label": "kimodo.cpp（C++/GGML 本地运动扩散运行时）",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md",
       "detail_id": "wiki-comparisons-zest-vs-sonic-vs-vision-soccer",
@@ -203,24 +214,14 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/skild-s1.md",
-      "detail_id": "entity-skild-s1",
-      "label": "S1：机器人 In-Context Learning（Skild）",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md",
-    "detail_id": "wiki-comparisons-zest-vs-sonic-vs-vision-soccer",
-    "label": "ZEST vs SONIC vs 视觉足球：人形学习控制三层对比",
-    "type": "comparison",
-    "recency": "2026-08-27",
+    "path": "wiki/entities/kimodo-cpp.md",
+    "detail_id": "entity-kimodo-cpp",
+    "label": "kimodo.cpp（C++/GGML 本地运动扩散运行时）",
+    "type": "entity",
+    "recency": "2026-08-28",
     "source": "git",
     "action": "added",
     "has_repo": true,
@@ -229,7 +230,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 763
+      "size": 764
     },
     {
       "label": "操作",
@@ -337,7 +338,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 147,
+      "degree": 148,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
