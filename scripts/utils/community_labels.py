@@ -187,25 +187,9 @@ def community_search_aliases(community_name: str) -> list[str]:
     return aliases
 
 
-_PAPER_NOTEBOOKS_HUB = "wiki/overview/humanoid-paper-notebooks-index.md"
-_PAPER_NOTEBOOKS_LEGACY_ALIASES = (
-    "人形论文深读笔记",
-    "Humanoid Paper Notebooks",
-    "Humanoid Robot Learning Paper Notebooks",
-)
-
-
 def community_search_aliases_for_path(path: str) -> list[str]:
     """按 wiki 路径返回社区搜索别名（首页 chip / 图谱社区简称）。"""
-    norm = path.replace("\\", "/")
-    name = COMMUNITY_NAME_OVERRIDES.get(norm)
+    name = COMMUNITY_NAME_OVERRIDES.get(path.replace("\\", "/"))
     if not name:
         return []
-    aliases = community_search_aliases(name)
-    if norm == _PAPER_NOTEBOOKS_HUB:
-        seen = set(aliases)
-        for extra in _PAPER_NOTEBOOKS_LEGACY_ALIASES:
-            if extra not in seen:
-                aliases.append(extra)
-                seen.add(extra)
-    return aliases
+    return community_search_aliases(name)

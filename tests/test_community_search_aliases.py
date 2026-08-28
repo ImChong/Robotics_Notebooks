@@ -24,8 +24,8 @@ class CommunitySearchAliasTests(unittest.TestCase):
         )
         self.assertIn("机器人学习论文笔记", aliases)
         self.assertIn("Robot Learning Paper Notebooks", aliases)
-        self.assertIn("人形论文深读笔记", aliases)
-        self.assertIn("Humanoid Paper Notebooks", aliases)
+        self.assertNotIn("人形论文深读笔记", aliases)
+        self.assertNotIn("Humanoid Paper Notebooks", aliases)
 
     def test_community_search_aliases_from_base_name(self) -> None:
         aliases = community_search_aliases("视觉-语言-动作（Vision-Language-Action, VLA）")
@@ -44,7 +44,10 @@ class CommunitySearchAliasTests(unittest.TestCase):
             for d in payload["docs"]
             if d["path"] == "wiki/overview/humanoid-paper-notebooks-index.md"
         )
-        self.assertIn("机器人学习论文笔记", doc.get("search_aliases", []))
+        aliases = doc.get("search_aliases", [])
+        self.assertIn("机器人学习论文笔记", aliases)
+        self.assertNotIn("人形论文深读笔记", aliases)
+        self.assertNotIn("Humanoid Paper Notebooks", aliases)
         self.assertGreater(doc["tokens"].get("机器人学习论文笔记", 0), 0)
 
 

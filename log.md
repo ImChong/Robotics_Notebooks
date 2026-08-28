@@ -4,7 +4,7 @@
 - **替换：** `Humanoid_Robot_Learning_Paper_Notebooks` → `Robot_Learning_Paper_Notebooks`；展示名 Humanoid Paper Notebooks / 人形论文深读笔记 → Robot Learning Paper Notebooks / 机器人学习论文笔记
 - **保留：** 本库内链文件名（`wiki/overview/humanoid-paper-notebooks-index.md`、`sources/sites/humanoid-robot-learning-paper-notebooks.md`、`paper-notebook-*` / `humanoid_pnb_*`）与 tag `humanoid-paper-notebooks` 不变，以免 related 断链
 - **关键页：** [`wiki/overview/humanoid-paper-notebooks-index.md`](wiki/overview/humanoid-paper-notebooks-index.md)、[`sources/sites/humanoid-robot-learning-paper-notebooks.md`](sources/sites/humanoid-robot-learning-paper-notebooks.md)
-- **脚本：** sync / bootstrap / export / graph.html 识别新旧 Pages 路径；搜索保留旧名别名
+- **脚本：** sync / bootstrap / export / graph.html 识别新旧 Pages 路径；搜索只用新名，不保留旧名别名
 
 ## [2026-08-28] ingest | sources/papers/vb_com_arxiv_2502_14814.md — VB-Com（ICRA 2026）视觉/盲策略复合人形运动；项目页 Code coming soon；原地升格 paper-notebook-vb-com
 
