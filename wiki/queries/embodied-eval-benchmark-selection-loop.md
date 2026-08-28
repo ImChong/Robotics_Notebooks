@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -24,6 +24,8 @@ sources:
   - ../../sources/papers/reflexvla_arxiv_2608_14379.md
 related:
   - ../overview/hub-embodied-eval-benchmark.md
+  - ../entities/anthropic-embody.md
+  - ../concepts/llm-robotics-control-interfaces.md
   - ../concepts/cartpole.md
   - ../concepts/sim-vs-real-eval-gap.md
   - ../entities/robo-bench.md
@@ -189,6 +191,8 @@ flowchart TD
 ## 关联页面
 
 - 所属路线：[具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md) — 四层评测基准的统一入口与图谱纵深枢纽
+- [Embody](../entities/anthropic-embody.md) — 评 **LLM 控制接口** 而非 VLA SOTA；与 LIBERO 成功率榜正交
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 暂停仿真上界 vs 实时力矩环的读数陷阱
 - [仿真评测可复现性 ↔ 真实代表性取舍（sim↔real 评测 gap）](../concepts/sim-vs-real-eval-gap.md) — ④层 gap 校准的姊妹概念页，双向回链
 - [RoboBench（MLLM 具身大脑综合评测）](../entities/robo-bench.md) — ①层 MLLM 认知评测代表基准
 - [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md) — ①层主动探索式空间智能评测

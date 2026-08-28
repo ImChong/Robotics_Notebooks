@@ -113,6 +113,8 @@ related:
   - ../entities/paper-prm-as-a-judge.md
   - ../entities/paper-ego2robot.md
   - ../entities/perceptron-isaac-05.md
+  - ../concepts/llm-robotics-control-interfaces.md
+  - ../entities/anthropic-embody.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
@@ -164,6 +166,7 @@ sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
   - ../../sources/blogs/perceptron_isaac_05.md
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
 ---
 
 # VLA（Vision-Language-Action）
@@ -225,6 +228,7 @@ flowchart TD
 - **DyPES-VLA（HKUST-GZ / COCO Matrix，arXiv:2608.06374）**：用 **未来帧预测** 学 **共享动力学先验（query）**，再用 **本体特化 MoE** 在 **原生动作空间** 出控，避免手工统一动作格式；LIBERO **98.0%** / RoboCasa-GR1 **59.25%** / RoboTwin **89.02%**，真机三本体均值 **75.6%**（代码 coming soon；见 [DyPES-VLA](../entities/paper-dypes-vla.md)）
 - **Qwen-RobotManip**：通义 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 内 **操作专精** VLA；**80-d 跨本体对齐 + Human-to-Robot 合成 + OOD 榜 north star**，与 Qwen-VLA **同 DiT flow 族** 但分域 scaling 叙事（见 [Qwen-RobotManip](../entities/qwen-robot-manip.md)）；相机系 ΔEEF 对照见 [UCAG-P](../entities/paper-ucag-p.md) 的锚点几何
 - **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）
+- **LLM 监督 VLA（Anthropic Embody，2026-07）：** 通用聊天模型不直接出关节，而是对 **MolmoAct** 的 7 维提案做接受/修改/替换。这把操作成功率从直接控制的个位数抬到可用，但 **所有测试模型仍弱于 VLA 单独跑**；过改会伤分，VLA 不会的新场景上最强模型才有净增益。接口抽象见 [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)，评测床见 [Embody](../entities/anthropic-embody.md)。
 - **MotionWAM vs VLA（Mondo / HKUST，arXiv:2606.09215）**：在 **同 Stage 3 演示 + 同 SONIC 低层** 设定下，**视频世界模型隐状态条件** 的 WAM（76.1%）大幅超过 **GR00T-N1.7**（43.9%）等 VLA 微调基线——说明人形 loco-manip 闭环更依赖 **动力学先验** 而非单独加强 **VLM 语义先验**（见 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)）
 - **Being-H0.7**：用 egocentric 人视频 + 机器人演示，在**潜空间**用未来观测分支监督 **latent world–action** 先验；测试时不滚未来像素，直接输出动作，并常与 **action chunking**、异步缓冲（UAC）组合部署
 - **HumanNet**：百万小时量级 **人中心** 一三人称视频语料 + 策展/标注管线；论文在 LingBot-VLA 设定下给出「**约 1000h** egocentric 人视频持续预训练 vs **约 100h** 真机数据」等受控对比，用于讨论 **人类视频小时** 能否在成本上部分替代早期真机预训练（见 [HumanNet](../entities/humannet.md)；论文 Table 1 相关基准语料索引见 [对照页](../comparisons/humannet-table1-human-video-corpora.md)）
@@ -461,6 +465,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台
 - [Lumina 具身智能社区](../entities/lumina-embodied.md) — Talks / Guide 社区雷达（与 Embodied-AI-Guide 同源）
 - [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 监督预训练 VLA 的评测结论（Embody）
+- [Embody](../entities/anthropic-embody.md) — Anthropic 对 MolmoAct 的 LLM 监督评测床
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — EnvHub 把 SmolVLA 接到光轮双臂厨房仿真；自过滤飞轮对照
 - [ROS2SmolVLA](../entities/paper-ros2smolvla.md) — ROS 2 本地 SmolVLA × UR10e；代码/数据/权重已开源（arXiv:2608.23320）
 - [Indi](../entities/paper-indi.md) — 行为意图蒸馏进 VLA 解码器（arXiv:2608.23478；未开源）

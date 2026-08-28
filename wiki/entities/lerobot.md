@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
-updated: 2026-08-27
+updated: 2026-08-28
 related:
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
@@ -18,6 +18,8 @@ related:
   - ./rebot-devarm.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/vla.md
+  - ../concepts/model-hardware-standard.md
+  - ../concepts/llm-robotics-control-interfaces.md
 ---
 
 # LeRobot (Hugging Face)
@@ -110,6 +112,7 @@ flowchart LR
 - **光轮厨房双臂仿真闭环：** [LW BENCHHUB TOUR](./lw-benchhub-tour.md) 用 `lerobot-eval` + Isaac Lab-Arena EnvHub 评测 SmolVLA DoublePiper，并把自过滤轨迹导出为 LeRobotDataset。
 - **工业 UR 真机 SmolVLA：** [ROS2SmolVLA](./paper-ros2smolvla.md)（奥格斯堡，arXiv:2608.23320）用 Docker 把 `lerobot-record` / `lerobot-train` 接到 **ROS 2 Jazzy + UR10e** 笛卡尔速度环；HF 权重与 349 episode 数据已开源。
 - **Seeed reBot 桌面臂：** [reBot-DevArm](./rebot-devarm.md)（B601-DM / B601-RS）提供官方 Wiki 的 LeRobot 入门教程（采数 / 训练路径以 Seeed 文档为准），适合需要 **>1 kg 负载** 且仍走 LeRobot 格式的桌面操作实验。
+- **MHS 预告（2026-08）：** Anthropic [Model Hardware Standard](../concepts/model-hardware-standard.md) 研究预览点名 Hugging Face 将把 MHS 加进 LeRobot，让 agent 发现并操作真实设备。入库日 **规范与 SDK 未开源**，不能当可运行依赖；硬件通路与本页的 **数据集 Hub + 策略训练** 正交。
 - **竞赛全链路对照：** [Learning to Fold / LeHome](./paper-lehome-learning-to-fold.md)（ICRA 2026）在 **SO-ARM101** 上开源采集–训练–推理，并发布仿真/真机 HF 权重；数据侧兼容 LeRobot 格式与 Hub 总线。
 
 ## 常见误区
@@ -129,4 +132,5 @@ flowchart LR
 - [Cyclo Intelligence 仓库归档](../../sources/repos/cyclo_intelligence.md) — LeRobot 作为 Cyclo 推理后端之一
 - [Evo-1 论文与仓库归档](../../sources/papers/evo1_arxiv_2511_04555.md) — 官方 LeRobot 内置轻量 VLA 策略（SO100/SO101）
 - [reBot-DevArm 仓库归档](../../sources/repos/rebot-devarm.md) — Seeed 开源桌面臂官方 LeRobot 教程对接
+- [Model Hardware Standard 公告归档](../../sources/sites/anthropic-model-hardware-standard.md) — LeRobot 被列为早期 MHS 采用方（预览，代码未公开）
 - [LeHome / Learning to Fold](../../sources/repos/lehome_solution.md) — SO-ARM101 竞赛全链路与 `lehome_sim` / `lehome_real` 权重

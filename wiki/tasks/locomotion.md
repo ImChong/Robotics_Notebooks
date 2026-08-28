@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -34,6 +34,8 @@ related:
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/quadruped-robot.md
+  - ../concepts/llm-robotics-control-interfaces.md
+  - ../entities/anthropic-embody.md
   - ../entities/open-duck-mini.md
   - ../entities/disney-holotile.md
   - ../entities/disney-research-la.md
@@ -205,6 +207,7 @@ flowchart TD
 - **MPC/WBC baseline + learned residual**：模型控制提供安全可解释的主干，学习模块补偿摩擦、冲击或模型误差。[PhyFilter](../entities/paper-phyfilter.md) 把残差送进物理低通滤波，平地 RL 策略可泛化到未见真机地形（arXiv:2608.22701）。
 - **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。经典 **在线适应** 实例：[RMA](../entities/paper-rma-rapid-motor-adaptation.md)（特权 extrinsics → 历史 $\hat{z}_t$ 估计，A1 零微调）。**箱载动态载荷** 实例：[Legged Load Adapt](../entities/paper-legged-load-adapt-unknown-dynamic-load.md)（load characteristics 特权 + concurrent estimator，Go2 零样本）。
 - **Motion prior + task RL**：先用 MoCap/视频/重定向得到自然运动先验，再用任务奖励获得速度、转向和地形适应能力。
+- **LLM 高层摇杆（非力矩）：** [Embody](../entities/anthropic-embody.md) 表明通用语言模型 **直接力矩控 Go2/G1 几乎失败**（人形倒塌站起 0 成功），但接到预训练步态后能做简单寻的；空间记忆与开环长计划仍系统性失败。见 [LLM 控制接口](../concepts/llm-robotics-control-interfaces.md)。不要把聊天模型当低频 WBC。
 
 ## 方法选型速查
 
@@ -343,6 +346,8 @@ flowchart TD
 ## 关联页面
 
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 接步态 vs 直接力矩
+- [Embody](../entities/anthropic-embody.md) — Go2/G1 上的语言模型 locomotion 评测
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 把分本体 RL 步态接到室内 VLN 评测；H1 摔倒率暴露控制–导航耦合
 - [Hybrid Locomotion](./hybrid-locomotion.md)
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 腿部执行器路线与行走动态、能耗叙事

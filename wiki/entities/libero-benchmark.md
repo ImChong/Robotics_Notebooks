@@ -19,6 +19,8 @@ related:
   - ../entities/paper-rift-wam.md
   - ../entities/paper-odeworld.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ../concepts/llm-robotics-control-interfaces.md
+  - ./anthropic-embody.md
 sources:
   - ../../sources/repos/libero-benchmark.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -26,6 +28,7 @@ sources:
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
   - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
   - ../../sources/papers/odeworld_arxiv_2607_27924.md
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
 ---
 
 # LIBERO
@@ -115,6 +118,7 @@ flowchart LR
 - [SLIM-0.5B](./paper-slim-05b.md) — 0.47B latent 策略；LIBERO 97.5% / LIBERO-Plus 77.45%（开源权重）
 - [Temporal GRPO](./paper-temporal-grpo.md) — LIBERO-Long 阶段信用探针 99.1%；看 \(\Delta p_k\) 落在哪一段（arXiv:2608.13026）
 - [ODEWorld](./paper-odeworld.md) — 连续时间 WM；全量 LIBERO 训视频，LIBERO-LONG 序列子目标 **83.6%**（arXiv:2607.27924）
+- [Embody](./anthropic-embody.md) — 用 LIBERO 厨房场景评 **LLM 直接控制 vs 监督 MolmoAct**，不是 VLA SOTA 榜
 
 ## 参考来源
 

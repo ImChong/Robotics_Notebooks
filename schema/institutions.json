@@ -3085,6 +3085,13 @@
         "x2robot",
         "xsquare"
       ]
+    },
+    "hhmi-janelia": {
+      "label": "珍妮莉亚研究园区（HHMI Janelia）",
+      "aliases": [
+        "hhmi-janelia",
+        "janelia"
+      ]
     }
   }
 }

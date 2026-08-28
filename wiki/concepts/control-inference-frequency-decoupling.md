@@ -2,9 +2,11 @@
 type: concept
 tags: [systems-engineering, control, inference, realtime, deployment, vla]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-28
 related:
   - ./rtos-realtime-scheduling.md
+  - ./llm-robotics-control-interfaces.md
+  - ../entities/anthropic-embody.md
   - ../formalizations/control-loop-latency-modeling.md
   - ./edge-cloud-robotics.md
   - ../queries/vla-with-low-level-controller.md
@@ -14,6 +16,7 @@ related:
   - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
 summary: "控制频率与推理频率解耦：高频执行环（PD/WBC）与低频策略/VLA 推理通过动作块、零阶保持或残差接口连接。"
 ---
 
@@ -37,6 +40,7 @@ summary: "控制频率与推理频率解耦：高频执行环（PD/WBC）与低�
 
 - 端到端网络常 10–50 Hz；平衡与力控需要 200–1000 Hz。
 - 强行同频要么欠稳定，要么 deadline miss——见 [延迟建模](../formalizations/control-loop-latency-modeling.md)。
+- [Embody](../entities/anthropic-embody.md) 给了一组厂商 API 量级：腿式实时约需 **83 Hz**，当前非推理 LLM 约 **0.2–0.4 Hz**（差约两个数量级）。他们在直接控制仿真里 **暂停物理** 才测出上界；这不是把聊天模型塞进力矩环的理由，而是 [LLM 控制接口](./llm-robotics-control-interfaces.md) 必须停在高层、由快控制器执行。
 
 ## 核心原理
 
@@ -73,10 +77,13 @@ flowchart LR
 - [RTOS 与实时调度](./rtos-realtime-scheduling.md)
 - [边缘–云端协同](./edge-cloud-robotics.md)
 - [机器人安全状态机](./robot-safety-state-machine.md)
+- [LLM 机器人控制接口](./llm-robotics-control-interfaces.md)
+- [Embody](../entities/anthropic-embody.md)
 
 ## 参考来源
 
 - [DDS/RTOS/边云/OTA/安全 FSM 一手资料](../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
+- [Claude plays robotics 归档](../../sources/sites/anthropic-claude-plays-robotics.md)
 
 ## 推荐继续阅读
 

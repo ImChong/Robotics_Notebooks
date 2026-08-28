@@ -5,6 +5,8 @@ status: draft
 updated: 2026-08-28
 related:
   - ../entities/paper-flatlab.md
+  - ../concepts/llm-robotics-control-interfaces.md
+  - ../entities/anthropic-embody.md
   - ../entities/paper-arm-aware-dexgrasp.md
   - ../entities/paper-4dof-pen-sorting.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -141,6 +143,7 @@ flowchart TD
 - **神经布料仿真（可变形体 sim）**：[ClothTransformer](../entities/paper-clothtransformer-unified-latent-cloth-simulation.md)（arXiv:2605.27852）— **统一 latent Transformer** 覆盖 **人体着装 / 夹爪抓布 / 刚体碰撞**；~493.4k 帧 **GIPC 无穿透** 数据 + **可微 CCD**；可作 **操作规划 / 仿真加速** 的动力学先验（论文 Robotic Manip. 为仿真，非真机闭环）
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
+  - **LLM 监督预训练 VLA：** [Embody](../entities/anthropic-embody.md) 让通用聊天模型接受/修改 MolmoAct 提案，成功率远高于直接 7 维控制，但通常仍 **低于 VLA 单独跑**；见 [LLM 控制接口](../concepts/llm-robotics-control-interfaces.md)
   - **跨本体相机几何：** [UCAG-P](../entities/paper-ucag-p.md)（arXiv:2608.26058）— 共享腕/抓取锚点 + 翻译器；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%**；**代码待发布**
   - **动态低延迟：** [ReflexVLA](../entities/paper-reflexvla.md)（arXiv:2608.14379）— ReflexBench 延迟感知六任务 + 1B 预测/时序/CUDA Graph；均值 **50.4%**、LIBERO **97.2%**、延迟 **65.0 ms**；**代码待开放**
   - **人手→灵巧手统一动作：** [AdvDex](../entities/paper-advdex.md)（arXiv:2608.14028）— OmniShare + JAAS + 域对抗；Paxini DexH13 少样本/零样本人→机；**确认未开源**
@@ -319,6 +322,8 @@ flowchart TD
 ## 关联页面
 
 - [ssik（解析逆运动学）](../entities/ssik.md) — 6R/7R 全分支解析 IK；遥操作跟踪与规划种子枚举，覆盖 EAIK 拒绝的几何
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 直接控制 vs 监督 VLA
+- [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
 - [reBot-DevArm（Seeed B601）](../entities/rebot-devarm.md) — 全栈开源桌面六轴臂（DM/RS）；LeRobot / ROS2 / Pinocchio 已适配
 - [cuRobo（GPU 无碰撞运动生成）](../entities/curobo.md) — 到达、避障与 MoveIt / Isaac ROS 集成路径上的规划–优化参考栈
 - [MoveIt 2](../entities/moveit2.md) — ROS 2 机械臂运动规划、Planning Scene 与 pick-and-place（MTC）事实标准栈

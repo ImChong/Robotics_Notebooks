@@ -3,13 +3,16 @@
 type: query
 tags: [vla, wbc, mpc, impedance-control, architecture, fusion, latency, manipulation, humanoid, horizon-robotics]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 summary: "VLA 如何与低级关节控制器（MPC/WBC）融合：梳理 3 种主流架构（VLA+PD、VLA+阻抗、VLA+WBC异步），并对照去掉冻结 System 0 的 direct-joint（DPC）。"
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
 related:
   - ../methods/vla.md
+  - ../concepts/llm-robotics-control-interfaces.md
+  - ../entities/anthropic-embody.md
   - ../concepts/whole-body-control.md
   - ../methods/model-predictive-control.md
   - ../queries/vla-deployment-guide.md
@@ -36,6 +39,7 @@ related:
 - 人形全身操作 / 移动操作：默认 VLA + WBC 异步，WBC 处理平衡约束
 - 简单快速原型验证：VLA + PD，上手最快
 - 若痛点是冻结 GMT/SONIC 的动作像盖不住 loco-manipulation：读 [DPC](../entities/paper-dpc.md) 的 direct-joint 反对命题（2026-08 仍未开源，不能当复现基线）
+- 通用 **聊天模型** 直接出力矩在 [Embody](../entities/anthropic-embody.md) 上几乎失败；那是另一条「无预训练 System 0」的评测，不要与 VLA+WBC 部署栈混读。接口抽象见 [LLM 控制接口](../concepts/llm-robotics-control-interfaces.md)。
 
 ---
 

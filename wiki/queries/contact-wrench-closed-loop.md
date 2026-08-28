@@ -2,7 +2,7 @@
 type: query
 tags: [contact, force-control, impedance, manipulation, tactile, wrench, contact-rich]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-28
 summary: "接触力旋量闭环知识链：把分散的接触感知/估计 → 力旋量表示 → 阻抗/导纳/混合力位控制 → 接触丰富操作策略串成一条端到端决策链，逐层说明各自如何贡献操作稳定性，以及带宽/刚度/时延的取舍与典型失败模式。"
 sources:
   - ../../sources/papers/contact_dynamics.md
@@ -19,6 +19,7 @@ related:
   - ../concepts/null-space-control.md
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/contact-rich-manipulation.md
+  - ../concepts/llm-robotics-control-interfaces.md
 ---
 
 # Query：接触力旋量闭环知识链
@@ -142,5 +143,6 @@ flowchart TD
 - [零空间控制](../concepts/null-space-control.md) — 7 轴阻抗的次级关节弹簧；不替代本链的力控方向选择
 - [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md) — ① 感知层视触觉证据
 - [Contact-Rich Manipulation（接触丰富操作）](../concepts/contact-rich-manipulation.md) — ④ 策略层
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 逐步力矩不含接触力闭环；高层应停在预训练策略/阻抗之上
 - [Query：接触丰富操作实践指南](./contact-rich-manipulation-guide.md) — 任务视角的执行层选型姊妹篇
 - 纵深汇总：[接触力控（知识链汇总）](../overview/hub-contact-force-control.md) — 本链在「🤝 接触力控」[图谱路线视图](../../docs/graph.html?depth=contact-force-control)的统一入口

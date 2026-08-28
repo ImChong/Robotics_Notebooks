@@ -2,7 +2,7 @@
 type: concept
 tags: [safety, control, cbf, safe-rl, wbc, deployment]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 summary: "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
 related:
   - ./control-barrier-function.md
@@ -13,12 +13,16 @@ related:
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ../entities/paper-fail-passive-gap.md
+  - ./llm-robotics-control-interfaces.md
+  - ./model-hardware-standard.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
+  - ../../sources/sites/anthropic-model-hardware-standard.md
 ---
 
 # Safety Filter（安全过滤器）
@@ -111,6 +115,7 @@ Safety Filter
 - **Safe RL**：策略输出先过安全过滤，再发给执行器
 - **WBC / MPC**：作为额外安全层，处理关节限位、碰撞避免、接触力锥
 - **VLA 部署**：对大模型输出的动作块做限幅、裁剪、回退
+- **LLM 访问级别**： [Embody](../entities/anthropic-embody.md) 表明给罗盘、夹爪 cursor 或允许监督预训练策略，会把通用聊天模型的物理影响力抬几个数量级——过滤器要按 **接口** 设限，不能只按「模型名字」。实验室仪器侧见 [MHS](./model-hardware-standard.md) 驱动里的强制安全限。
 - **对照：训练期屏障、部署无滤波** — [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) 把 Joint-CBF 投影仅作仿真 `+filter` 上限；真机部署的 Link-CBF 策略**不**走运行时安全层，靠训练内化避碰
 - **对照：认证功能安全** — 过滤器给的是控制层约束，不是 ISO 13849 的 PFHD/PL。工业人形保护停还卡在机侧反应链，见 [Fail-Passive Gap](../entities/paper-fail-passive-gap.md)
 
@@ -146,3 +151,5 @@ Safety Filter
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 感知感知 CBF-RL；部署刻意去掉运行时滤波
 - [ActFovea](../entities/paper-actfovea.md) — 感知侧一致性防护：不给几何安全保证，但覆盖安全滤波管不到的「观测本身失真/失效」
 - [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 算法安全过滤 ≠ 可认证保护停；双足切电本身是危害
+- [LLM 机器人控制接口](./llm-robotics-control-interfaces.md) — 访问级别即能力
+- [Model Hardware Standard](./model-hardware-standard.md) — 设备驱动层强制安全限（研究预览）

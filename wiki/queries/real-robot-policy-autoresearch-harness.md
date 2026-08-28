@@ -7,6 +7,7 @@ sources:
   - ../../sources/papers/aspire_nvidia_gear_2026.md
   - ../../sources/papers/enpire_nvidia_gear_2026.md
   - ../../sources/sites/nvidia-research-enpire.md
+  - ../../sources/sites/anthropic-recursive-self-improvement.md
 related:
   - ../methods/aspire.md
   - ../methods/enpire.md
@@ -19,6 +20,8 @@ related:
   - ../entities/kimi-k3.md
   - ../entities/llada2-2-flash.md
   - ../entities/karpathy-autoresearch.md
+  - ../concepts/recursive-self-improvement.md
+  - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/deepseek-harness.md
 updated: 2026-08-13
 ---
@@ -132,3 +135,5 @@ ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Ki
 - [Kimi K3](../entities/kimi-k3.md) — 开放权重 AR 旗舰 coding backend
 - [LLaDA2.2-flash](../entities/llada2-2-flash.md) — 开放权重 dLLM / 高吞吐 agent 后端选项
 - [DeepSeek Harness](../entities/deepseek-harness.md) — DeepSeek 官方插件化 coding agent 宿主（Web / headless / Python SDK）
+- [递归自改进](../concepts/recursive-self-improvement.md) — 实验室内部「实现已代理化、选题仍为人」；本页是真机侧能自动化的前提，不是模型自训练后继者
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — Embody 显示 LLM 训 PPO 多数弱于写控制器；harness 里选范式时不要默认 RL
