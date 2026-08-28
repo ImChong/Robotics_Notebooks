@@ -258,6 +258,7 @@
 - [Isaac Gym](wiki/entities/isaac-gym.md) — Isaac Gym** 是 NVIDIA 早期推出的 GPU 加速机器人强化学习仿真框架，主打「在单张 GPU 上同时跑几千到上万个环境」的大规模并行训练。 `📅unknown` `[entity_page]`
 - [Isaac Lab 默认环境](wiki/entities/isaac-lab-default-environments.md) — Isaac Lab 默认环境**是 Isaac Lab 随框架一起注册进 Gymnasium 的**开箱即跑任务集**：截至 **v3.0.0**（`main` @ `2e44ddb`，2026- `📅unknown` `[entity_page]`
 - [Isaac Lab](wiki/entities/isaac-lab.md) — Isaac Lab** 是 NVIDIA 当前官方主推的机器人学习框架，建立在 **Isaac Sim** 之上，用于 robot learning、locomotion、manipulation `📅unknown` `[entity_page]`
+- [Isaac-RL-Two-wheel-Legged-Bot（lab.flamingo）](wiki/entities/isaac-rl-two-wheel-legged-bot.md) — Isaac-RL-Two-wheel-Legged-Bot** 是 [`jaykorea/Isaac-RL-Two-wheel-Legged-Bot`](https://github.com/ja `📅unknown` `[entity_page]`
 - [Isaac ROS Nvblox](wiki/entities/isaac-ros-nvblox.md) — isaac_ros_nvblox**（[NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_r `📅unknown` `[entity_page]`
 - [Isaac ROS Visual SLAM](wiki/entities/isaac-ros-visual-slam.md) — isaac_ros_visual_slam**（[NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-R `📅unknown` `[entity_page]`
 - [Isaac Sim](wiki/entities/isaac-sim.md) — Isaac Sim** 是 NVIDIA 基于 **Omniverse / OpenUSD** 的机器人仿真应用：导入 URDF/MJCF/CAD/USD，用 PhysX（及 Newton）做物理 `📅unknown` `[entity_page]`
@@ -2534,6 +2535,7 @@
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
 - [Tinkercad](wiki/entities/tinkercad.md) — Tinkercad**（tinkercad.com）是 **Autodesk** 提供的 **免费 Web 应用**：在同一账号与课堂体 `📅unknown` `[entity_page]`
 - [Tinymovr（紧凑开源关节驱动）](wiki/entities/tinymovr.md) — Tinymovr**（现属 Motion Layer，仓 [motionlayer/Tinymovr](https://github. `📅unknown` `[entity_page]`
+- [tita_rl](wiki/entities/tita-rl.md) — tita_rl** 是 直驱科技（Direct Drive Tech） 为 **TITA 轮腿双足** 提供的官方强化学习训练仓（Gi `📅unknown` `[entity_page]`
 - [Tnkr](wiki/entities/tnkr.md) — Tnkr**（tnkr.ai）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部 `📅unknown` `[entity_page]`
 - [TNT（Transformer-in-Transformer）](wiki/entities/tnt.md) — TNT** 把每个图像块进一步拆成 **pixel-level token**，用内层 Transformer 建模块内结构，外层 Transformer 建模块间关系，形成「Transforme `📅unknown` `[entity_page]`
 - [TrackerLab](wiki/entities/trackerlab.md) — TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) 收录于具身智能研究室 [开源项目主表](https://github.com `📅unknown` `[entity_page]`
@@ -2587,6 +2589,7 @@
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [Weights & Biases（W&B）](wiki/entities/weights-and-biases.md) — Weights & Biases**（wandb.ai）是面向 AI 研发团队的 **实验追踪与协作平台**。在机器人学习工程里，它最常承担「 `📅unknown` `[entity_page]`
 - [WHAM](wiki/entities/wham-world-human-motion.md) — WHAM](https://github.com/yohanshin/WHAM) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid `📅unknown` `[entity_page]`
+- [wheel_legged_genesis](wiki/entities/wheel-legged-genesis.md) — wheel_legged_genesis** 是社区仓库 [`Albusgive/wheel_legged_genesis`](https://github.com/Albusgive/wheel `📅unknown` `[entity_page]`
 - [Wokwi](wiki/entities/wokwi.md) — Wokwi**（wokwi.com）是面向 **MCU + 外围电路** 的 **在线电子仿真平台**：在浏览器里组装 Arduino、ESP32、ST `📅unknown` `[entity_page]`
 - [WolfieMouse](wiki/entities/wolfiemouse.md) — WolfieMouse**（kbumsik/WolfieMouse）是覆盖 **迷宫算法、STM32 底层驱动、 `📅unknown` `[entity_page]`
 - [World Labs（空间智能与世界生成）](wiki/entities/world-labs.md) — World Labs** 在公开材料中将自身定位为 **空间智能（spatial intelligence）** 公司与 **前沿世界模型** 研发方：强调模型对三维世界的 **感知、生成、推理与 `📅unknown` `[entity_page]`
@@ -2774,6 +2777,7 @@
 - [视觉基础模型发展趋势](wiki/concepts/visual-foundation-model-trends.md) — 当代视觉基础模型正沿 **多模态化、规模化、通用接口化、开放词汇化与推理化** 五条趋势演进，从单一任务小模型走向可提示、可组合的通用感知层。 `📅unknown` `[wiki_page]`
 - [视觉表征作为策略输入（Visual Representation for Policy）](wiki/concepts/visual-representation-for-policy.md) — 视觉表征作为策略输入**指：把 视觉骨干 输出的图像特征接入控制/操作策略网络的方式选择——是 **随策略一起从头学**、**冻结一个通用预训练骨 `📅unknown` `[wiki_page]`
 - [视触觉融合（Visuo-Tactile Fusion）](wiki/concepts/visuo-tactile-fusion.md) — 视触觉融合 (Visuo-Tactile Fusion)** 研究如何在一次操作的不同阶段，让机器人在「视觉全局信息」与「触觉局部信息」之间动态切换权重，特别关注**接触瞬间**这一最难的窗口期。 `📅unknown` `[wiki_page]`
+- [轮腿双足机器人（双轮足 / Two-Wheel-Legged Biped）](wiki/concepts/wheel-legged-biped.md) — 轮腿双足在 **两条腿末端各装一只驱动轮**，整机像可调腿长的两轮倒立摆：平地用轮速保持平衡与巡航，越障/下蹲用髋–大腿–小腿改变轮距与质心高度；典型量产如 Direct Drive Tech **T `📅unknown` `[wiki_page]`
 - [轮足四足机器人（四轮足 / Wheel-Legged Quadruped）](wiki/concepts/wheel-legged-quadruped.md) — 轮足四足机器人在四条腿末端集成驱动轮，平地偏滚动效率与能效，崎岖地形仍依赖足式步态；典型量产如 Unitree Go2W / B2W，仿真资产可按 [robot_lab](../entities/ro `📅unknown` `[wiki_page]`
 - [Whole-Body Control (WBC，全身控制)](wiki/concepts/whole-body-control.md) — 全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。 `📅unknown` `[wiki_page]`
 - [Whole-Body Coordination（全身协调控制）](wiki/concepts/whole-body-coordination.md) — 全身协调控制（Whole-Body Coordination）**：研究高自由度机器人系统（尤其是人形机器人）如何将全身多个肢体、链接的运动在时间和空间上进行统一协调，使不同子系统的运动相互配合， `📅unknown` `[wiki_page]`

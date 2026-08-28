@@ -33,6 +33,7 @@ related:
   - ./autodl.md
   - ./gpufree.md
   - ./stackforce.md
+  - ./isaac-rl-two-wheel-legged-bot.md
   - ./matpool.md
   - ./featurize.md
   - ./gpushare.md
@@ -348,6 +349,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [StackForce](./stackforce.md) — CAD/URDF→SimReady Isaac 工程导出与训练向导
+- [Isaac-RL-Two-wheel-Legged-Bot](./isaac-rl-two-wheel-legged-bot.md) — Flamingo 双轮足 Lab 扩展（Sim 4.5 / Lab 2.0 + CaT）
 - [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — Lab-Arena EnvHub + 光轮厨房 + SmolVLA 双臂闭环与数据飞轮
 
 ## 一句话记忆

@@ -15,7 +15,7 @@ tags:
   - gbu
   - direct-drive-tech
 status: complete
-updated: 2026-08-04
+updated: 2026-08-28
 arxiv: "2607.21025"
 venue: "arXiv 2026"
 related:
@@ -28,6 +28,8 @@ related:
   - ./paper-travexplorer.md
   - ../tasks/zero-shot-object-navigation.md
   - ../concepts/sim2real.md
+  - ./tita-rl.md
+  - ../concepts/wheel-legged-biped.md
 sources:
   - ../../sources/papers/zonda_arxiv_2607_21025.md
 summary: "ZONDA（SUSTech×Direct Drive Tech/SCUT×GBU，arXiv:2607.21025）：零样本 ObjectNav，启发式跨楼层规划 + 多视角 VLM 核验 + 行人预测避障；HM3D SR 66.5%、MP3D SR 48.2%、HM3D-DYNA SR 48.8%；TITA 真机；截至入库日未开源。"
@@ -180,6 +182,8 @@ flowchart TB
 - [DA-Nav](./paper-da-nav.md) — 户外方向感知 VLN（任务接口不同）
 - [LOVON](./paper-notebook-lovon-legged-open-vocabulary-object-navigator.md) — 足式开放词目标导航笔记实体
 - [Sim2Real](../concepts/sim2real.md) — 离散仿真动作 → 真机连续 MPPI
+- [轮腿双足](../concepts/wheel-legged-biped.md) — TITA 低层运控形态
+- [tita_rl](./tita-rl.md) — TITA 官方低层 RL（与本文导航栈解耦）
 
 ## 参考来源
 

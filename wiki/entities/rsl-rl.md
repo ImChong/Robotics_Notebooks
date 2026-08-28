@@ -14,6 +14,8 @@ related:
   - ./amp-rsl-rl.md
   - ./mjlab.md
   - ./mujoco-playground.md
+  - ./wheel-legged-genesis.md
+  - ./isaac-rl-two-wheel-legged-bot.md
 sources:
   - ../../sources/repos/rsl_rl.md
   - ../../sources/papers/rsl_rl_arxiv_2509_10771.md
@@ -123,6 +125,8 @@ sequenceDiagram
 - [legged_gym](./legged-gym.md) — 经典 Isaac Gym 宿主
 - [AMP-RSL-RL](./amp-rsl-rl.md) — 在本库 PPO 上叠 AMP
 - [mjlab](./mjlab.md) / [MuJoCo Playground](./mujoco-playground.md)
+- [wheel_legged_genesis](./wheel-legged-genesis.md) — Genesis 宿主上的 vendored RSL-RL
+- [lab.flamingo](./isaac-rl-two-wheel-legged-bot.md) — CoRL 在 rsl_rl 上叠 off-policy runner
 
 ## 参考来源
 

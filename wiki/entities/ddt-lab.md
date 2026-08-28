@@ -2,18 +2,21 @@
 type: entity
 tags: [repo, direct-drive-tech, ddt, reinforcement-learning, isaac-lab, locomotion, wheel-legged, np3o, sim2real]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-28
 related:
   - ./robot-lab.md
   - ./unitree-rl-lab.md
   - ./deeprobotics-rl-training.md
   - ./cyclo-lab.md
   - ./isaac-lab.md
+  - ./tita-rl.md
   - ../concepts/wheel-legged-quadruped.md
+  - ../concepts/wheel-legged-biped.md
   - ../tasks/hybrid-locomotion.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/repos/ddt_lab.md
+  - ../../sources/repos/tita_rl.md
 summary: "DDTRobot/DDT_Lab：直驱科技基于 Isaac Lab 的 NP3O 轮足 locomotion 训练仓，覆盖 D1（四轮足）与 Tita（轮腿双足），支持 JIT/ONNX 导出。"
 ---
 
@@ -37,7 +40,7 @@ summary: "DDTRobot/DDT_Lab：直驱科技基于 Isaac Lab 的 NP3O 轮足 locomo
 
 ## 为什么重要
 
-- **官方轮足栈**：相对 [robot_lab](./robot-lab.md) 里「顺带注册 Tita」，本仓是 DDT 自有任务、算法与导出约定。
+- **官方轮足栈**：相对 [robot_lab](./robot-lab.md) 里「顺带注册 Tita」，本仓是 DDT 自有任务、算法与导出约定。TITA 的 **Isaac Gym 世代** 官方训练仓是 [tita_rl](./tita-rl.md)，checkpoint 与本仓不互通。
 - **算法可读**：README 把 BarlowTwins 历史编码、约束代价、特权 Critic 写清楚，适合研究「无特权推理 + 训练期特权价值」类 locomotion。
 - **形态覆盖**：同一仓内并列 **四轮足 D1** 与 **轮腿双足 Tita**，便于对照混合运动学差异。
 
@@ -79,6 +82,8 @@ flowchart LR
 ## 关联页面
 
 - [轮足四足机器人](../concepts/wheel-legged-quadruped.md)
+- [轮腿双足](../concepts/wheel-legged-biped.md)
+- [tita_rl](./tita-rl.md) — 同厂商 TITA 的 Isaac Gym + NP3O 前代仓
 - [Hybrid Locomotion](../tasks/hybrid-locomotion.md)
 - [robot_lab](./robot-lab.md) — 社区扩展中亦列出 DDTRobot Tita
 - [unitree_rl_lab](./unitree-rl-lab.md)
@@ -90,6 +95,7 @@ flowchart LR
 ## 参考来源
 
 - [sources/repos/ddt_lab.md](../../sources/repos/ddt_lab.md)
+- [sources/repos/tita_rl.md](../../sources/repos/tita_rl.md)
 - 上游：<https://github.com/DDTRobot/DDT_Lab>
 - URDF 配套：<https://github.com/DDTRobot/ddt_ros2_control>
 

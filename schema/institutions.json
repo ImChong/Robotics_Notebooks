@@ -3099,6 +3099,14 @@
         "pollen-robotics",
         "pollen"
       ]
+    },
+    "independent-maintainer": {
+      "label": "独立维护者（Independent Maintainer）",
+      "aliases": [
+        "independent-maintainer",
+        "independent",
+        "community-maintainer"
+      ]
     }
   }
 }

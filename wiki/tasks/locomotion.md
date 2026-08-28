@@ -31,6 +31,10 @@ related:
   - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ../concepts/humanoid-knee-harmonic-drive-limits.md
   - ../concepts/wheel-legged-quadruped.md
+  - ../concepts/wheel-legged-biped.md
+  - ../entities/tita-rl.md
+  - ../entities/wheel-legged-genesis.md
+  - ../entities/isaac-rl-two-wheel-legged-bot.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/quadruped-robot.md
@@ -157,6 +161,7 @@ flowchart TD
 - **家用四足低噪行走：** [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md)（arXiv:2502.10983，ICRA 2025）用仿真 **足端接触速度** 作声学代理，配合可变 PD 与开关接触，真机安静度优于索尼商用 quiet 控制器（与人形 [QuietWalk GRF](../entities/paper-quietwalk-humanoid-locomotion.md) 对照）。
 - **轮足多技能盲走：** [MUJICA（论文实体页）](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **Go2-W** 上用 **单策略 + 技能选择器** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机 P3O 约束** 零样本上真机（**1 m 高台**）。
 - **轮足高动态反射避障：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 **M20** 上用分层 RL + 双专家硬切换做快速障碍反射规避（导航全向 / 高动态逃逸），Isaac Lab 与真机抛箱/棍戳/脚踢验证。
+- **轮腿双足开源训练栈：** [轮腿双足](../concepts/wheel-legged-biped.md) 汇总 TITA / Flamingo / CJ-003；官方 Gym 入口 [tita_rl](../entities/tita-rl.md)，Lab 扩展 [lab.flamingo](../entities/isaac-rl-two-wheel-legged-bot.md)，Genesis 入口 [wheel_legged_genesis](../entities/wheel-legged-genesis.md)。
 
 ### 5. 状态估计与延迟
 足式机器人在接触切换时很难直接观测机身速度和足端滑移；IMU、编码器、足端接触和视觉地形之间还存在时间同步与延迟问题。状态估计偏一点，控制器可能表现为“突然踢地”“脚底打滑”或“落脚点漂移”。
@@ -291,6 +296,10 @@ flowchart TD
 - [Footstep Planning](../concepts/footstep-planning.md)（接触序列规划：每步踩哪里、踩多久）
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)（把高度图 / 点云转成可执行的落脚点与姿态调整）
 - [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)（Go2W / B2W 类：腿末驱动轮与足式步态混合）
+- [轮腿双足（双轮足）](../concepts/wheel-legged-biped.md)（TITA / Flamingo：两轮倒立摆）
+- [tita_rl](../entities/tita-rl.md)
+- [wheel_legged_genesis](../entities/wheel-legged-genesis.md)
+- [Isaac-RL-Two-wheel-Legged-Bot](../entities/isaac-rl-two-wheel-legged-bot.md)
 - [HiPAN](../methods/hipan.md)（四足在非结构化 3D 环境中的分层深度导航 + 姿态自适应低层跟踪）
 - [四足机器人](../entities/quadruped-robot.md)（四足形态与典型平台的实体入口）
 - [Open Duck Mini](../entities/open-duck-mini.md)（BDX 风格迷你双足 DIY：MuJoCo Playground RL + 舵机 sim2real）
@@ -350,6 +359,8 @@ flowchart TD
 - [Embody](../entities/anthropic-embody.md) — Go2/G1 上的语言模型 locomotion 评测
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 把分本体 RL 步态接到室内 VLN 评测；H1 摔倒率暴露控制–导航耦合
 - [Hybrid Locomotion](./hybrid-locomotion.md)
+- [轮腿双足](../concepts/wheel-legged-biped.md)
+- [tita_rl](../entities/tita-rl.md)
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 腿部执行器路线与行走动态、能耗叙事
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [MoRE：复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md) — 深度相机 + 多判别器先验 + gait command 切换

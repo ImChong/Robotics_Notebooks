@@ -3,14 +3,21 @@ type: task
 tags: [locomotion, hybrid, wheel-legged, transformable, whole-body]
 status: in-progress
 summary: "Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。"
-updated: 2026-07-25
+updated: 2026-08-28
 sources:
   - ../../sources/papers/x2n_transformable.md
   - ../../sources/papers/mujica_arxiv_2605_13058.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
   - ../../sources/papers/bioinspired_multimodal_robotics_scirobotics_2026.md
+  - ../../sources/repos/tita_rl.md
+  - ../../sources/repos/wheel_legged_genesis.md
+  - ../../sources/repos/isaac_rl_two_wheel_legged_bot.md
 related:
   - ../concepts/wheel-legged-quadruped.md
+  - ../concepts/wheel-legged-biped.md
+  - ../entities/tita-rl.md
+  - ../entities/wheel-legged-genesis.md
+  - ../entities/isaac-rl-two-wheel-legged-bot.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/paper-bioinspired-multimodal-robotics.md
@@ -52,6 +59,11 @@ related:
 - [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）面向 **快速动态障碍** 的反射式规避：高层用 RAR 威胁特征输出速度指令并 **硬切换** 低层双专家（导航全向 / 高动态敏捷）。
 - 相对 MUJICA 的盲走多技能，AWARE 强调 **外源威胁下的滚动/踏步逃逸** 与导航↔反射连续切换；真机场景含抛箱、棍戳、脚踢。
 
+### 轮腿双足（TITA / Flamingo / CJ-003）
+
+- 形态切片见 [轮腿双足](../concepts/wheel-legged-biped.md)：两条腿 + 两只驱动轮，平地倒立摆平衡，越障靠调腿长。
+- 开源训练入口：[tita_rl](../entities/tita-rl.md)（Isaac Gym + NP3O，官方 TITA）、[DDT_Lab](../entities/ddt-lab.md)（Isaac Lab 官方继任）、[lab.flamingo](../entities/isaac-rl-two-wheel-legged-bot.md)（Isaac Lab 2.0 + CaT）、[wheel_legged_genesis](../entities/wheel-legged-genesis.md)（Genesis → MuJoCo）。
+
 ### X2-N (Transformable Wheel-legged Humanoid)
 - 结合了类人（humanoid）形态和轮腿（wheel-legged）形态的高自由度可变形机器人。
 - 采用基于 RL 的控制框架统一处理 locomotion（运动）、transformation（变形）和 manipulation（操作）。
@@ -60,6 +72,10 @@ related:
 ## 关联页面
 
 - [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)
+- [轮腿双足（双轮足）](../concepts/wheel-legged-biped.md)
+- [tita_rl](../entities/tita-rl.md)
+- [wheel_legged_genesis](../entities/wheel-legged-genesis.md)
+- [Isaac-RL-Two-wheel-Legged-Bot](../entities/isaac-rl-two-wheel-legged-bot.md)
 - [Locomotion](./locomotion.md)
 - [Loco-Manipulation](./loco-manipulation.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
@@ -73,3 +89,6 @@ related:
 - [MUJICA（arXiv:2605.13058）](../../sources/papers/mujica_arxiv_2605_13058.md)
 - [AWARE（arXiv:2604.23761）](../../sources/papers/aware_arxiv_2604_23761.md)
 - [Bioinspired multimodal robotics（Science Robotics 2026）](../../sources/papers/bioinspired_multimodal_robotics_scirobotics_2026.md)
+- [tita_rl](../../sources/repos/tita_rl.md)
+- [wheel_legged_genesis](../../sources/repos/wheel_legged_genesis.md)
+- [Isaac-RL-Two-wheel-Legged-Bot](../../sources/repos/isaac_rl_two_wheel_legged_bot.md)

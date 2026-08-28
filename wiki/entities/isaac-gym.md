@@ -10,6 +10,7 @@ related:
   - ./isaac-lab.md
   - ./isaac-sim.md
   - ./legged-gym.md
+  - ./tita-rl.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../concepts/domain-randomization.md
@@ -285,6 +286,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎，这条能�
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径
 - [Isaac Lab](./isaac-lab.md) — NVIDIA 当前主推的后继学习框架
 - [legged_gym](./legged-gym.md) — 建立在 Isaac Gym 之上的经典足式 RL 训练栈
+- [tita_rl](./tita-rl.md) — TITA 轮腿双足官方 Gym + NP3O 仓（仍钉 Isaac Gym）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Domain Randomization](../concepts/domain-randomization.md)

@@ -4,12 +4,13 @@ type: entity
 title: Genesis (仿真器)
 tags: [simulation, physics-engine, robot-learning, differentiable, genesis-ai]
 summary: "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
-updated: 2026-06-22
+updated: 2026-08-28
 related:
   - ./igibson.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ./genesis-world-10.md
   - ./gene-26-5-genesis-ai.md
+  - ./wheel-legged-genesis.md
   - ../concepts/simulation-evaluation-infrastructure.md
 ---
 
@@ -42,6 +43,7 @@ related:
 
 - **推荐背景**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 Genesis 推荐为实战路线图中的核心工具之一。
 - **对比**：相比 [mujoco](mujoco.md)，Genesis 的并行化程度更高；相比传统的 [sapien](sapien.md)，它在非刚体仿真方面具有显著优势。
+- **轮腿双足示例：** [wheel_legged_genesis](./wheel-legged-genesis.md) 用 Genesis + RSL-RL 训 CJ-003，再迁 MuJoCo。
 
 ## 名称辨析（易混品牌）
 
@@ -61,6 +63,7 @@ related:
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 「仿真优先服务评测」的概念归纳
 - [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）
 - [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 与公司品牌相近的机器人基础模型产品线（非本仿真仓库）
+- [wheel_legged_genesis](./wheel-legged-genesis.md) — Genesis 上的双轮足 PPO 训练与 MuJoCo sim2sim
 
 ## 参考来源
 

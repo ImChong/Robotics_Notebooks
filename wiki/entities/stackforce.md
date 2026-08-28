@@ -2,7 +2,7 @@
 type: entity
 tags: [platform, utility, cad, urdf, web, reinforcement-learning, isaac, china, hardware]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-28
 related:
   - ./step2urdf.md
   - ./urdf-studio.md
@@ -11,6 +11,7 @@ related:
   - ./freecad.md
   - ./robot-viewer.md
   - ./rebot-devarm.md
+  - ../concepts/wheel-legged-biped.md
   - ../concepts/urdf-robot-description.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
@@ -123,6 +124,7 @@ flowchart TB
 - [强化学习](../methods/reinforcement-learning.md) — 训练范式
 - [FreeCAD](./freecad.md) — STEP 上游 CAD
 - [reBot-DevArm](./rebot-devarm.md) — Seeed 全栈开源桌面六轴臂（B601）
+- [轮腿双足](../concepts/wheel-legged-biped.md) — 研究级双轮足 RL 栈（TITA / Flamingo），对照桌面小轮足
 
 ## 推荐继续阅读
 

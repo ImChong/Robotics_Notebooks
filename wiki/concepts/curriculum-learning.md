@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-08-15
+updated: 2026-08-28
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -152,3 +152,4 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [ZEST](../entities/paper-zest.md) — 工业侧失败率采样 + 模型基辅助扳手（Science Robotics 2026）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 跟踪精度容差的双层优化自适应课程
 - [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md) — 轮足动态障碍速度课程
+- [wheel_legged_genesis](../entities/wheel-legged-genesis.md) — Genesis 双轮足地形课程（v0.0.2 起）

@@ -2,7 +2,7 @@
 type: concept
 tags: [wheel-legged, quadruped, locomotion, hybrid, unitree]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-28
 related:
   - ../tasks/hybrid-locomotion.md
   - ../tasks/locomotion.md
@@ -10,6 +10,8 @@ related:
   - ../entities/robot-lab.md
   - ../entities/deeprobotics-rl-training.md
   - ../entities/ddt-lab.md
+  - ../entities/tita-rl.md
+  - ./wheel-legged-biped.md
   - ../entities/legged-gym.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
@@ -17,6 +19,7 @@ sources:
   - ../../sources/repos/robot_lab.md
   - ../../sources/repos/rl_training.md
   - ../../sources/repos/ddt_lab.md
+  - ../../sources/repos/tita_rl.md
   - ../../sources/papers/mujica_arxiv_2605_13058.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
 summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚动效率，崎岖地形仍依赖足式步态；典型如 Unitree Go2W / B2W，仿真可走 robot_lab 或厂商官方 Lab（Deep Robotics rl_training、DDT_Lab）。"
@@ -72,6 +75,7 @@ summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚�
 - **纯四足**：无驱动轮的足式平台，更偏崎岖地形与腿式 RL 基准；量产与研究机型分布见各硬件实体页。
 - **[Hybrid Locomotion](../tasks/hybrid-locomotion.md)**：更广义的「多模态运动」（含人形变形、轮–腿切换等）；本页只覆盖 **四足底盘 + 足端轮** 这一子类。
 - **人形轮足（如 X2-N）**：同为轮足混合，但是 **双足 + 上肢** 的可变形构型，任务侧重 loco-manipulation，参见 Hybrid Locomotion 中的代表系统描述。
+- **[轮腿双足 / 双轮足](./wheel-legged-biped.md)**：只有 **两条腿 + 两只驱动轮**（TITA / Flamingo / CJ-003），是倒立摆式平衡，不是本页的四轮足。TITA 的 Isaac Gym 官方训练仓是 [tita_rl](../entities/tita-rl.md)，Isaac Lab 官方仓仍走 [DDT_Lab](../entities/ddt-lab.md)。
 
 ## 关联页面
 
@@ -84,6 +88,8 @@ summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚�
 - [legged_gym](../entities/legged-gym.md)
 - [MUJICA（轮足多技能统一控制）](../entities/paper-mujica-wheel-legged-multi-skill.md)
 - [AWARE（轮足高动态反射式避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
+- [轮腿双足（双轮足）](./wheel-legged-biped.md)
+- [tita_rl](../entities/tita-rl.md)
 
 ## 参考来源
 

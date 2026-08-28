@@ -157,6 +157,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - [RL vs GC](../entities/paper-rl-vs-gc.md) — 同一 DR 预算下 PPO 比几何控制更稳
 - [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)
 - [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 官方课把视觉/深度/点云 DR 放进「仿真增强」一类，并警告 DR 过宽会变成弱通才
+- [tita_rl](../entities/tita-rl.md) / [wheel_legged_genesis](../entities/wheel-legged-genesis.md) — 双轮足训练里的摩擦/质量/滞后随机化实例
 
 ## 推荐继续阅读
 

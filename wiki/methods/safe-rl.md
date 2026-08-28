@@ -2,7 +2,7 @@
 type: method
 tags: [rl, safety, control, cmdp, optimization]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-28
 related:
   - ./reinforcement-learning.md
   - ../concepts/control-barrier-function.md
@@ -11,6 +11,7 @@ related:
   - ../queries/robot-policy-debug-playbook.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
+  - ../entities/isaac-rl-two-wheel-legged-bot.md
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
@@ -93,6 +94,7 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - [Query：机器人策略排障手册](../queries/robot-policy-debug-playbook.md)
 - [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md)
 - [PAC-MAN（感知感知 CBF-RL 躲避球）](../entities/paper-pac-man-perceptive-cbf-rl.md)
+- [lab.flamingo](../entities/isaac-rl-two-wheel-legged-bot.md) — CaT（约束即终止）在双轮足 Isaac Lab 任务上的实现
 
 ## 参考来源
 - [机器人论文阅读笔记：RMA](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
