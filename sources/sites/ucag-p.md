@@ -1,29 +1,18 @@
----
-title: "UCAG-P Project"
-url: "https://public-bots.github.io/UCAG-P/"
-authors:
-  - "Xu, Yifan"
-  - "Li, Yiming"
-  - "Zhan, Xinyu"
-year: 2026
-type: "project-page"
-status: "待发布"
-tags:
-  - cross-embodiment
-  - project-page
-related_papers:
-  - "sources/papers/ucag_p_arxiv_2608_26058.md"
-related_repos:
-  - "sources/repos/ucag-p.md"
----
+# UCAG-P 项目页
 
-# UCAG-P Project
+- **论文：** [arXiv:2608.26058](https://arxiv.org/abs/2608.26058)
+- **项目页：** <https://public-bots.github.io/UCAG-P>
+- **代码：** <https://github.com/Public-BOTs/UCAG-P>（README：Code Release Soon）
+- **机构：** 小米机器人实验室（Xiaomi Embodied Intelligence）；澳门大学
+- **入库日期：** 2026-08-28
 
-- **站点**：https://public-bots.github.io/UCAG-P/
-- **维护**：Public-BOTs（小米具身智能 × 澳门大学）
-- **年份**：2026
-- **类型**：项目页
-- **一句话**：UCAG-P 论文落地页：方法示意、评测数字与即将开源声明。
-- **开源状态**：待发布
-- **整理后去向**：
-  - [wiki/entities/paper-ucag-p.md](../../wiki/entities/paper-ucag-p.md)
+## 开源核查（步骤 2.5）
+
+- 仓库内容为 `web-page/` 与 `assets/` 图集，无 `train.py`。
+- **结论：** **待发布**。
+
+## 交叉
+
+- 论文归档：[`sources/papers/ucag_p_arxiv_2608_26058.md`](../papers/ucag_p_arxiv_2608_26058.md)
+- 仓库归档：[`sources/repos/ucag-p.md`](../repos/ucag-p.md)
+- wiki：[`wiki/entities/paper-ucag-p.md`](../../wiki/entities/paper-ucag-p.md)

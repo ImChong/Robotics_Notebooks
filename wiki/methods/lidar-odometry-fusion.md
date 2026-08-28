@@ -2,7 +2,7 @@
 type: method
 tags: [localization, lidar, odometry, sensor-fusion, slam, navigation, ekf]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-28
 related:
   - ../concepts/sensor-fusion.md
   - ../formalizations/ekf.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/dynamic-obstacle-filtering.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/humanoid-system-curriculum.md
+  - ../entities/paper-super-odometry-2.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -126,6 +127,7 @@ flowchart LR
 - [传感器融合](../concepts/sensor-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉 ESIKF（代码待开放）
+- [SUPER ODOMETRY 2.0](../entities/paper-super-odometry-2.md) — 四级自适应融合 + 学习式 IMU；slim ROS 2 已开
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 

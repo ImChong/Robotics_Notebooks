@@ -3023,6 +3023,31 @@
         "localai-io"
       ]
     },
+    "robbyant": {
+      "label": "蚂蚁灵波科技（Robbyant）",
+      "aliases": [
+        "robbyant",
+        "robbyant-research",
+        "ant-robby"
+      ]
+    },
+    "buffalo": {
+      "label": "纽约州立大学布法罗分校（University at Buffalo）",
+      "aliases": [
+        "buffalo",
+        "university-at-buffalo",
+        "ubuffalo",
+        "suny-buffalo"
+      ]
+    },
+    "uci": {
+      "label": "加州大学欧文分校（UC Irvine）",
+      "aliases": [
+        "uci",
+        "uc-irvine",
+        "university-of-california-irvine"
+      ]
+    },
     "tohoku": {
       "label": "日本东北大学（Tohoku University）",
       "aliases": [
@@ -3035,13 +3060,6 @@
       "aliases": [
         "vinuni",
         "vinuniversity"
-      ]
-    },
-    "robbyant": {
-      "label": "灵波（Robbyant）",
-      "aliases": [
-        "robbyant",
-        "robbyant-research"
       ]
     }
   }

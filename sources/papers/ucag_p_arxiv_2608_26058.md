@@ -1,43 +1,46 @@
----
-title: "UCAG-P: Unified Cross-embodiment Action Geometry for Policy Learning"
-authors:
-  - "Xu, Yifan"
-  - "Li, Yiming"
-  - "Zhan, Xinyu"
-  - "others"
-year: 2026
-venue: "arXiv"
-url: "https://arxiv.org/abs/2608.26058"
-pdf_url: "https://arxiv.org/pdf/2608.26058"
-github: "https://github.com/Public-BOTs/UCAG-P"
-project_page: "https://public-bots.github.io/UCAG-P/"
-status: "待发布"
-tags:
-  - cross-embodiment
-  - action-geometry
-  - vla
-  - camera-frame
-  - qwen3-vl
----
+# One Policy, Many Embodiments: Unified Camera-Centric Action Geometry Pre-training for Heterogeneous Embodied Manipulation
 
-# UCAG-P: Unified Cross-embodiment Action Geometry for Policy Learning
+> 来源归档（ingest）
 
-- **论文**：UCAG-P: Unified Cross-embodiment Action Geometry for Policy Learning
-- **作者**：Yifan Xu、Yiming Li、Xinyu Zhan 等（小米具身智能 × 澳门大学）
-- **年份**：2026
-- **链接**：https://arxiv.org/abs/2608.26058
-- **PDF**：https://arxiv.org/pdf/2608.26058
-- **GitHub**：https://github.com/Public-BOTs/UCAG-P
-- **项目页**：https://public-bots.github.io/UCAG-P/
-- **一句话**：相机系双锚点运动共享动作空间，几何条件翻译器映到本体命令；单 checkpoint 跨仿真基准零微调。
-- **开源状态**：待发布（仓为论文图与项目页；code coming soon）
-- **核心内容**：
-  - 锚点：p0 腕/末端、p1 抓取中心，相机系。
-  - 骨干：Qwen3-VL-4B。
-  - 数据：6374h（机器人 + 仿真 + 人手）。
-  - 单 ckpt 无榜微调：LIBERO 98.3%、RoboTwin Easy/Hard 88.7/89.2、LIBERO-Plus 82.0、RoboCasa GR-1 62.0。
-  - Piper 真机：面包/抽屉/碗 60/90/75%。
-- **整理后去向**：
-  - [wiki/entities/paper-ucag-p.md](../../wiki/entities/paper-ucag-p.md)
-  - [wiki/queries/cross-embodiment-transfer-strategy.md](../../wiki/queries/cross-embodiment-transfer-strategy.md)
-  - [wiki/entities/qwen-robot-manip.md](../../wiki/entities/qwen-robot-manip.md)
+- **标题：** One Policy, Many Embodiments: Unified Camera-Centric Action Geometry Pre-training for Heterogeneous Embodied Manipulation
+- **短名：** UCAG-P
+- **类型：** paper
+- **arXiv：** <https://arxiv.org/abs/2608.26058>
+- **PDF：** <https://arxiv.org/pdf/2608.26058>
+- **项目页：** <https://public-bots.github.io/UCAG-P>
+- **代码：** <https://github.com/Public-BOTs/UCAG-P>
+- **作者：** Xiaomi Embodied Intelligence Team × University of Macau（核心贡献者 Shaoqing Xu, Fang Li, Guozhi Zhan, Zhixiang Duan 等）
+- **入库日期：** 2026-08-28
+- **索引来源：** [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md)（<https://mp.weixin.qq.com/s/FNhRO3KOm8k8CkJEqystQQ>）
+- **一句话说明：** 用相机可观测锚点运动统一手臂、人形与人手的异构动作空间，再翻译成本体控制。
+
+## 开源状态（步骤 2.5）
+
+- **待发布**：[`Public-BOTs/UCAG-P`](https://github.com/Public-BOTs/UCAG-P) 是 GitHub Pages / 图集仓；README 徽章写 **Code Release Soon**。截至入库日无可运行训练脚本。
+
+## 核心摘录（面向 wiki 编译）
+
+### 摘录 1：相机中心动作几何
+
+- 共享目标不是本体专属控制量，而是图像与相机坐标系中的腕部 / 抓取中心锚点运动（\(p_0\) 腕/末端，\(p_1\) 抓取中心）。
+- 几何条件动作转换器结合目标本体运动学生成可执行控制。
+- 骨干：Qwen3-VL-4B-Instruct。
+- 训练数据：机器人与仿真 **4030 小时** + 人类示范 **2340 小时**（合计 6374 h）。
+
+**对 wiki 的映射：** [paper-ucag-p](../../wiki/entities/paper-ucag-p.md)、[VLA](../../wiki/methods/vla.md)、[跨本体迁移策略](../../wiki/queries/cross-embodiment-transfer-strategy.md)
+
+### 摘录 2：评测
+
+- 单检查点、无基准特化微调：LIBERO **98.3%**，RoboTwin Easy/Hard **88.7% / 89.2%**，LIBERO-Plus 零样本 **82.0%**，RoboCasa GR-1 **62.0%**。
+- Piper 真机（各 20 次闭环）：面包 / 抽屉 / 碗 **60 / 90 / 75%**（对照 π0.5：20 / 85 / 65%）。
+
+**对 wiki 的映射：** [libero-benchmark](../../wiki/entities/libero-benchmark.md)
+
+## 对 wiki 的映射
+
+- 升格 [`wiki/entities/paper-ucag-p.md`](../../wiki/entities/paper-ucag-p.md)
+
+## 当前提炼状态
+
+- [x] 方法要点与开源核查
+- [x] wiki 实体与技术地图回链

@@ -1,30 +1,20 @@
----
-title: "Zero-WAM"
-github: "https://github.com/robbyant-research/Zero-WAM"
-license: "Apache-2.0"
-language: null
-stars: 7
-last_commit: "2026-08-27"
-status: "待发布"
-tags:
-  - world-action-model
-  - video-action
-  - placeholder
-related_papers:
-  - "sources/papers/zero_wam_arxiv_2608_26103.md"
-related_sites:
-  - "sources/sites/zero-wam.md"
----
+# Zero-WAM（robbyant-research/Zero-WAM）
 
-# Zero-WAM
+- **URL：** <https://github.com/robbyant-research/Zero-WAM>
+- **许可：** Apache-2.0
+- **语言：** 未标注（README + 资源占位）
+- **配套论文：** [arXiv:2608.26103](https://arxiv.org/abs/2608.26103)
+- **项目页：** <https://robbyant-research.github.io/Zero-WAM/>
 
-- **仓库**：https://github.com/robbyant-research/Zero-WAM
-- **许可证**：Apache-2.0
-- **语言**：未标注（README + 资源占位）
-- **Stars**：7（2026-08-28 查询）
-- **最近提交**：2026-08-27
-- **一句话**：Zero-WAM 官方仓；当前无可运行训练/推理入口。
-- **开源状态**：待发布
-- **入口**：README 链论文、项目页、Hugging Face、数据页。
-- **整理后去向**：
-  - [wiki/entities/paper-zero-wam.md](../../wiki/entities/paper-zero-wam.md)
+## 状态（2026-08-28）
+
+| 项 | 状态 |
+|----|------|
+| README / 项目页 | 已发布 |
+| 训练代码 | **待发布**（计划 2026-09-15 前） |
+| 模型权重 | **待发布** |
+| HumanGen 数据 | **待发布** |
+
+## wiki
+
+- [`wiki/entities/paper-zero-wam.md`](../../wiki/entities/paper-zero-wam.md)

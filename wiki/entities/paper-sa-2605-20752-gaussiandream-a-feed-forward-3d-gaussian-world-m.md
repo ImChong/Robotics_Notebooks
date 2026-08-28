@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-28
 arxiv: "2605.20752"
 venue: "arXiv 2025"
 summary: "Feed-forward 3D Gaussian world model for robotic manipulation."
@@ -13,6 +13,7 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../entities/paper-gaussiandream-plusplus.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2605_20752_gaussiandream-a-feed-forward-3d-gaussian.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
@@ -68,7 +69,7 @@ Feed-forward 3D Gaussian world model for robotic manipulation.
 ## 与其他工作对比（索引级）
 
 - 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **812 Manipulation** 分组逐条展开。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
+- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。续作 [GaussianDream++](./paper-gaussiandream-plusplus.md)（arXiv:2608.25659）是**另一篇**论文，已单独建深度节点，勿与本索引页合并。
 - 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
 
 ## 结论
@@ -89,6 +90,7 @@ Feed-forward 3D Gaussian world model for robotic manipulation.
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 续作深度页：[GaussianDream++](./paper-gaussiandream-plusplus.md)（arXiv:2608.25659，独立节点）
 
 ## 参考来源
 
