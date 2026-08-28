@@ -150,5 +150,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Human-Level Actuation for Humanoids](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Human-Level_Actuation_for_Humanoids/Human-Level_Actuation_for_Humanoids.html)
+- [机器人论文阅读笔记：Human-Level Actuation for Humanoids](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Human-Level_Actuation_for_Humanoids/Human-Level_Actuation_for_Humanoids.html)
 - [International Society of Biomechanics](https://isbweb.org/)

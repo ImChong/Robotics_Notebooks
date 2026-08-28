@@ -351,7 +351,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [ABot-World-0](../entities/paper-abot-world-0.md) — 高德 **单卡桌面** 键盘交互视频 WM：LongForcing + 720P 实时流式（arXiv:2607.19191；部分开源）。
 
 ## 参考来源
-- [机器人论文阅读笔记：Generative World Modelling for Humanoids](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report.html)
+- [机器人论文阅读笔记：Generative World Modelling for Humanoids](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report.html)
 - Hu, A., et al. (2023). *GAIA-1: A Generative AI for Embodied AI*.
 - Yang, S., et al. (2023). *Learning Interactive Real-World Simulators (UniSim)*.
 - Zhou Y., et al. (2026). *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control* — 见 [sources/papers/exoactor.md](../../sources/papers/exoactor.md)。

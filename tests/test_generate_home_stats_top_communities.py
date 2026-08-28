@@ -38,7 +38,7 @@ class TopCommunitiesTest(unittest.TestCase):
                 "全身控制（Whole-Body Control, WBC） 社区": 102,
                 "仿真与平台生态（Simulation and Platform Ecosystem） 社区": 79,
                 "动作重定向（Motion Retargeting） 社区": 70,
-                "人形论文深读笔记（Humanoid Paper Notebooks） 社区": 215,
+                "机器人学习论文笔记（Robot Learning Paper Notebooks） 社区": 215,
                 "操作（Manipulation） 社区": 48,
             }
         }
@@ -49,7 +49,7 @@ class TopCommunitiesTest(unittest.TestCase):
             [item["label"] for item in result],
             [
                 "移动操作",
-                "人形论文深读笔记",
+                "机器人学习论文笔记",
                 "强化学习",
                 "全身控制",
                 "仿真与平台生态",

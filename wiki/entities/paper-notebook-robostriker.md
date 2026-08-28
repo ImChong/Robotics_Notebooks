@@ -149,4 +149,4 @@ Encoder、Decoder 与状态条件 Prior 把跟踪技能压成连续 latent。Gau
 ## 推荐继续阅读
 
 - [RoboStriker 官方项目页](https://yinkangning0124.github.io/RoboStriker/)
-- [机器人论文阅读笔记：RoboStriker](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html)
+- [机器人论文阅读笔记：RoboStriker](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html)

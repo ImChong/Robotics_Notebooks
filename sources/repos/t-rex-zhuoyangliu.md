@@ -24,4 +24,4 @@
 ## 为何值得保留
 
 - 论文同时开源 **数据集与模型**；仓库是复现 **异步级联 flow matching** 与 **触觉 mid-training** 的直接入口。
-- 与 [Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **触觉反应式 VLA × 双手灵巧** 跨主题索引。
+- 与 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **触觉反应式 VLA × 双手灵巧** 跨主题索引。

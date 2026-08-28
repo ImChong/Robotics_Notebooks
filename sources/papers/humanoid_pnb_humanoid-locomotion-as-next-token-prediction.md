@@ -1,10 +1,10 @@
 # Humanoid Locomotion as Next Token Prediction
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** Humanoid Locomotion as Next Token Prediction
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html>
 - **分类：** 03_High_Impact_Selection
 - **子分类：** 行走经典
 - **arXiv：** <https://arxiv.org/abs/2402.19469>
@@ -23,5 +23,5 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html>
 - 论文：<https://arxiv.org/abs/2402.19469>

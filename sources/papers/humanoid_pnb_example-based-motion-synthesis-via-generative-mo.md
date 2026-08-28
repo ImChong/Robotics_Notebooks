@@ -1,10 +1,10 @@
 # Example-based Motion Synthesis via Generative Motion Matching
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** Example-based Motion Synthesis via Generative Motion Matching
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Example-based_Motion_Synthesis_via_Generative_Motion_Matching/Example-based_Motion_Synthesis_via_Generative_Motion_Matching.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Example-based_Motion_Synthesis_via_Generative_Motion_Matching/Example-based_Motion_Synthesis_via_Generative_Motion_Matching.html>
 - **分类：** 14_Human_Motion
 - **arXiv：** <https://arxiv.org/abs/2306.00378>
 - **入库日期：** 2026-07-10
@@ -22,5 +22,5 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Example-based_Motion_Synthesis_via_Generative_Motion_Matching/Example-based_Motion_Synthesis_via_Generative_Motion_Matching.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Example-based_Motion_Synthesis_via_Generative_Motion_Matching/Example-based_Motion_Synthesis_via_Generative_Motion_Matching.html>
 - 论文：<https://arxiv.org/abs/2306.00378>

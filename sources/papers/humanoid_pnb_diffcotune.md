@@ -1,10 +1,10 @@
 # DiffCoTune: Differentiable Co-Tuning for Cross-domain Robot Control
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** DiffCoTune: Differentiable Co-Tuning for Cross-domain Robot Control
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control.html>
 - **分类：** 10_Sim-to-Real
 - **arXiv：** <https://arxiv.org/abs/2505.24068>
 - **入库日期：** 2026-07-10
@@ -22,5 +22,5 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control.html>
 - 论文：<https://arxiv.org/abs/2505.24068>

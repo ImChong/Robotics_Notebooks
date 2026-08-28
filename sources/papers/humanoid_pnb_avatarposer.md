@@ -1,10 +1,10 @@
 # AvatarPoser: Articulated Full-Body Pose Tracking from Sparse Motion Sensing
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** AvatarPoser: Articulated Full-Body Pose Tracking from Sparse Motion Sensing
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing.html>
 - **分类：** 14_Human_Motion
 - **arXiv：** <https://arxiv.org/abs/2207.13784>
 - **入库日期：** 2026-07-10
@@ -22,5 +22,5 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing.html>
 - 论文：<https://arxiv.org/abs/2207.13784>

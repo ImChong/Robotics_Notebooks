@@ -14,7 +14,7 @@ summary: "把交互式化身的运动系统（motor system）建成一个生成�
 
 # PRIMAL
 
-**PRIMAL: Physically Reactive and Interactive Motor Model for Avatar Learning** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**PRIMAL: Physically Reactive and Interactive Motor Model for Avatar Learning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ PRIMAL 要：一个**生成式运动模型**，从单帧持续生成、实时响
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html> |
 | arXiv | <https://arxiv.org/abs/2503.17544> |
 | 作者 | Yan Zhang、Yao Feng、Alpár Cseke、Nitin Saini、Nathan Bajandas、Michael J. Black（Meshcapade / MPI） |
 | 发表 | 2025 年 3 月 |
@@ -86,9 +86,9 @@ PRIMAL 要：一个**生成式运动模型**，从单帧持续生成、实时响
 ## 参考来源
 
 - [humanoid_pnb_primal.md](../../sources/papers/humanoid_pnb_primal.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html>
 - 论文：<https://arxiv.org/abs/2503.17544>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：PRIMAL](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html)
+- [机器人论文阅读笔记：PRIMAL](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html)

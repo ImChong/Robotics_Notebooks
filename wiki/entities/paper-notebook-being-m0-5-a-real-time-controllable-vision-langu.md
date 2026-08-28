@@ -14,7 +14,7 @@ summary: "人类动作生成潜力巨大，但现有视觉-语言-动作模型�
 
 # Being-M0.5
 
-**Being-M0.5: A Real-Time Controllable Vision-Language-Motion Model** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Being-M0.5: A Real-Time Controllable Vision-Language-Motion Model** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -56,7 +56,7 @@ VLMM 的**可控性**不足（五大短板）：响应多样指令差、姿态�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html> |
 | arXiv | <https://arxiv.org/abs/2508.07863> |
 | 作者 | Bin Cao、Sipeng Zheng、Ye Wang、Qin Jin、Jing Liu、Zongqing Lu 等（BAAI / 人大等） |
 | 发表 | 2025 年 8 月 |
@@ -84,9 +84,9 @@ VLMM 的**可控性**不足（五大短板）：响应多样指令差、姿态�
 ## 参考来源
 
 - [humanoid_pnb_being-m0-5.md](../../sources/papers/humanoid_pnb_being-m0-5.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html>
 - 论文：<https://arxiv.org/abs/2508.07863>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Being-M0.5](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html)
+- [机器人论文阅读笔记：Being-M0.5](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html)

@@ -14,7 +14,7 @@ summary: "机器人从人类视频学操作，要跨越具身差距。人在做�
 
 # EgoMI
 
-**EgoMI: Learning Active Vision and Whole-Body Manipulation from Egocentric Human Demonstrations** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**EgoMI: Learning Active Vision and Whole-Body Manipulation from Egocentric Human Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ EgoMI 要：把**头部主动运动**显式建模，并用**记忆**应对视角
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos.html> |
 | arXiv | <https://arxiv.org/abs/2511.00153> |
 | 作者 | Justin Yu、Yide Shentu、Di Wu、Pieter Abbeel、Ken Goldberg、Philipp Wu（UC Berkeley） |
 | 发表 | 2025 年 11 月 |
@@ -86,9 +86,9 @@ EgoMI 要：把**头部主动运动**显式建模，并用**记忆**应对视角
 ## 参考来源
 
 - [humanoid_pnb_egomi.md](../../sources/papers/humanoid_pnb_egomi.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos.html>
 - 论文：<https://arxiv.org/abs/2511.00153>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：EgoMI](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos.html)
+- [机器人论文阅读笔记：EgoMI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos.html)

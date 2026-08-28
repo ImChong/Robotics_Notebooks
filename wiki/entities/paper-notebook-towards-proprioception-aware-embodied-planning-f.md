@@ -14,7 +14,7 @@ summary: "近年多模态大模型（MLLM）能做高层规划，让机器人遵
 
 # Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots
 
-**Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ MLLM 做双臂人形长时程规划受限： - **仿真平台不足**（缺连�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html> |
 | arXiv | <https://arxiv.org/abs/2510.07882> |
 | 作者 | Boyu Li、Siyuan He、Hang Xu、Haoqi Yuan、Börje F. Karlsson、Zongqing Lu 等 |
 | 发表 | 2025 年 10 月 |
@@ -86,9 +86,9 @@ MLLM 做双臂人形长时程规划受限： - **仿真平台不足**（缺连�
 ## 参考来源
 
 - [humanoid_pnb_towards-proprioception-aware-embodied-planning-f.md](../../sources/papers/humanoid_pnb_towards-proprioception-aware-embodied-planning-f.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2510.07882>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html)
+- [机器人论文阅读笔记：Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html)

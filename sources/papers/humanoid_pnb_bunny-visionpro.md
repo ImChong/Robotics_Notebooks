@@ -1,10 +1,10 @@
 # Bunny-VisionPro: Real-Time Bimanual Dexterous Teleoperation for Imitation Learning
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** Bunny-VisionPro: Real-Time Bimanual Dexterous Teleoperation for Imitation Learning
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning.html>
 - **分类：** 07_Teleoperation
 - **arXiv：** <https://arxiv.org/abs/2407.03162>
 - **项目页：** <https://dingry.github.io/BunnyVisionPro/>
@@ -28,5 +28,5 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning.html>
 - 论文：<https://arxiv.org/abs/2407.03162>

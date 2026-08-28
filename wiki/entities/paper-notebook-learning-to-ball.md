@@ -58,7 +58,7 @@ summary: "Learning to Ball（arXiv:2509.22442，SIGGRAPH Asia 2025）：策略�
 | 分类 | 13_Physics-Based_Animation |
 | 机构 | 斯坦福大学（Stanford）；加州大学河滨分校（UC Riverside）；罗布乐思（Roblox）；克莱姆森大学（Clemson） |
 | Venue | ACM TOG Vol. 44 No. 6 / SIGGRAPH Asia 2025 |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html> |
 | arXiv | <https://arxiv.org/abs/2509.22442> |
 | 项目页 | <https://pei-xu.github.io/basketball> |
 | 代码 | <https://github.com/xupei0610/basketball>（MIT） |
@@ -213,6 +213,6 @@ sequenceDiagram
 
 - [项目主页（含连招与多人视频）](https://pei-xu.github.io/basketball)
 - [官方代码 xupei0610/basketball](https://github.com/xupei0610/basketball)
-- [机器人论文阅读笔记：Learning to Ball](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html)
+- [机器人论文阅读笔记：Learning to Ball](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html)
 - [SkillMimic（统一 HOI 模仿对照）](./paper-notebook-skillmimic-learning-basketball-interaction-skill.md)
 - [Composite Motion Learning with Task Control](https://pei-xu.github.io/CompositeMotion)

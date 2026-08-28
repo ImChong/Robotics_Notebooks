@@ -59,7 +59,7 @@ tags: [humanoid, reinforcement-learning, locomotion, sim2real, isaac-gym, legged
 - **人形 RL 的早期开源标杆：** 在 [legged_gym](./legged-gym.md) 四足范式之上，首次把 **步态相位奖励 + 人形专用 DR + 真机零样本** 打包成可复现仓库（~2k stars），影响后续 SPRINT、AMP 对照等工作的 baseline 叙事。
 - **Sim2Sim 作为 sim2real 前置门：** 论文强调 **MuJoCo 经正弦跟踪与相图校准后比 Isaac Gym 更接近真机**——给「没有机器人也能先验策略」提供了可操作检查点（见 [Sim2Real](../concepts/sim2real.md)）。
 - **工程模板价值：** 多帧观测堆叠（15×47）、特权帧（3×73）、100 Hz 策略 / 1000 Hz PD、接触模式掩码 $I_p$ 与奖励拆项，是人形 RL **reward / obs / DR** 设计的教科书级参考。
-- **与深读笔记互补：** 单篇机制细节见 [Paper Notebooks：Humanoid-Gym](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)；本页侧重跨主题选型与栈关系。
+- **与深读笔记互补：** 单篇机制细节见 [Paper Notebooks：Humanoid-Gym](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)；本页侧重跨主题选型与栈关系。
 
 ## 流程总览
 
@@ -149,7 +149,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 深读：Humanoid-Gym Zero-Shot Sim2Real](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
+- [Paper Notebooks 深读：Humanoid-Gym Zero-Shot Sim2Real](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
 - 项目页：<https://sites.google.com/view/humanoid-gym/>
 - 官方仓库：<https://github.com/roboterax/humanoid-gym>
 - 社区 fork（Pandaman + Gazebo）：<https://github.com/roboman-ly/humanoid-gym-modified>

@@ -14,7 +14,7 @@ summary: "当人形机器人需要用手去推墙、撑天花板、按在斜面/
 
 # Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation
 
-**Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -35,7 +35,7 @@ summary: "当人形机器人需要用手去推墙、撑天花板、按在斜面/
 - **多接触作业落地**：给"用手撑环境做活"的遥操作提供了实时稳定性护栏，是 loco-manipulation 走向真实场景的关键一环
 - **可微稳定性度量**：把"离失稳多远"做成可微标量并高效求梯度，可被 RL 奖励、MPC 代价、共享自治等多处复用
 - **共享自治(shared autonomy)范式**：示范了"听人 + 自动兜底"的好分工：人给意图，系统在零空间里保平衡
-- **与算法/界面路线互补**：同模块 [SEW-Mimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html) 解决"重定向到哪"，本文解决"重定向时别失稳"
+- **与算法/界面路线互补**：同模块 [SEW-Mimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html) 解决"重定向到哪"，本文解决"重定向时别失稳"
 
 ## 解决什么问题
 
@@ -57,7 +57,7 @@ summary: "当人形机器人需要用手去推墙、撑天花板、按在斜面/
 | 字段 | 内容 |
 |------|------|
 | 分类 | 07_Teleoperation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html> |
 | arXiv | <https://arxiv.org/abs/2510.04353> |
 | 机构 | **IHMC**（Florida Institute for Human and Machine Cognition，佛罗里达人机认知研究所） |
 | 作者 | **Stephen McCrory**, Romeo Orsolino, Dhruv Thanki, Luigi Penco, **Robert Griffin** |
@@ -88,9 +88,9 @@ summary: "当人形机器人需要用手去推墙、撑天花板、按在斜面/
 ## 参考来源
 
 - [humanoid_pnb_stability-aware-retargeting-for-humanoid-multi-c.md](../../sources/papers/humanoid_pnb_stability-aware-retargeting-for-humanoid-multi-c.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html>
 - 论文：<https://arxiv.org/abs/2510.04353>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html)
+- [机器人论文阅读笔记：Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html)

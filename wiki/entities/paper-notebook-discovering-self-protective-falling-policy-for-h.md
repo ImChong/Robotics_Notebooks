@@ -14,7 +14,7 @@ summary: "受形态、动力学与控制策略限制，人形比四足/轮式更
 
 # Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning
 
-**Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "受形态、动力学与控制策略限制，人形比四足/轮式更
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL.html> |
 | arXiv | <https://arxiv.org/abs/2512.01336> |
 | 作者 | Diyuan Shi、Shangke Lyu、Donglin Wang（西湖大学） |
 | 发表 | 2025 年 12 月 |
@@ -86,9 +86,9 @@ summary: "受形态、动力学与控制策略限制，人形比四足/轮式更
 ## 参考来源
 
 - [humanoid_pnb_discovering-self-protective-falling-policy-for-h.md](../../sources/papers/humanoid_pnb_discovering-self-protective-falling-policy-for-h.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL.html>
 - 论文：<https://arxiv.org/abs/2512.01336>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL.html)
+- [机器人论文阅读笔记：Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL.html)

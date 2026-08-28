@@ -10,7 +10,7 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 
 # Paper Notebooks · High Impact Selection
 
-**High Impact Selection**（`03_High_Impact_Selection`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **03** 类。Curated high-impact and milestone papers in humanoid robot learning
+**High Impact Selection**（`03_High_Impact_Selection`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **03** 类。Curated high-impact and milestone papers in humanoid robot learning
 
 ## 英文缩写速查
 
@@ -36,18 +36,18 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 
 ### 行走经典
 
-- [ECO](../entities/paper-notebook-eco-energy-constrained-optimization-with-rl-for.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking.html)
-- [Humanoid Locomotion as Next Token Prediction](../entities/paper-notebook-humanoid-locomotion-as-next-token-prediction.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html)
-- [Humanoid Parkour Learning](../entities/paper-notebook-humanoid-parkour-learning.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html)
-- [Learning Quadrupedal Locomotion over Challenging Terrain](../entities/paper-notebook-learning-quadrupedal-locomotion-over-challenging.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Quadrupedal_Locomotion_over_Challenging_Terrain/Learning_Quadrupedal_Locomotion_over_Challenging_Terrain.html)
-- [Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html)
+- [ECO](../entities/paper-notebook-eco-energy-constrained-optimization-with-rl-for.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking.html)
+- [Humanoid Locomotion as Next Token Prediction](../entities/paper-notebook-humanoid-locomotion-as-next-token-prediction.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html)
+- [Humanoid Parkour Learning](../entities/paper-notebook-humanoid-parkour-learning.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html)
+- [Learning Quadrupedal Locomotion over Challenging Terrain](../entities/paper-notebook-learning-quadrupedal-locomotion-over-challenging.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Quadrupedal_Locomotion_over_Challenging_Terrain/Learning_Quadrupedal_Locomotion_over_Challenging_Terrain.html)
+- [Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html)
 
 ### 仿真到现实与基座模型
 
-- [ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html)
+- [ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html)
 - [Behavior Foundation Model for Humanoid Robots](../entities/paper-behavior-foundation-model-humanoid.md) — 见 wiki 实体页
 - [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) — 见 wiki 实体页
-- [Learning Agile and Dynamic Motor Skills for Legged Robots](../entities/paper-notebook-learning-agile-and-dynamic-motor-skills-for-legg.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots.html)
+- [Learning Agile and Dynamic Motor Skills for Legged Robots](../entities/paper-notebook-learning-agile-and-dynamic-motor-skills-for-legg.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots.html)
 
 ### 仿真平台与工具
 
@@ -69,15 +69,15 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
-- 笔记主页：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html>
+- 笔记主页：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html>
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文 ingest 归档（节选）：[BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)、[HOVER：人形通用全身控制器](../../sources/papers/bfm_awesome_hover_arxiv_2410_21229.md)、[awesome-bfm-papers](../../sources/repos/awesome_bfm_papers.md)
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记总站](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)

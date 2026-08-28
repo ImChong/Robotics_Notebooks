@@ -1,10 +1,10 @@
 # Learning to Get Up Across Morphologies: Zero-Shot Recovery with a Unified Humanoid Policy
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** Learning to Get Up Across Morphologies: Zero-Shot Recovery with a Unified Humanoid Policy
 - **类型：** paper
-- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
+- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
 - **计划笔记路径：** `papers/05_Locomotion/learning-to-get-up-across-morphologies-zero-shot/learning-to-get-up-across-morphologies-zero-shot.md`
 - **分类：** 05_Locomotion
 - **arXiv：** <https://arxiv.org/abs/2512.12230>
@@ -23,5 +23,5 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.12230>

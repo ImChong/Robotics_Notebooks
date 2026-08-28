@@ -27,7 +27,7 @@
 
 - **2026-07-01 Beta 发布**：`graph-as-policy` 主仓 + `open-robot-skills` 技能仓已公开；项目页 `graph-robots/gap` 仅为静态站。
 - 复现 **LIBERO quickstart、杂货打包 workflow.json、仿真排练与真机 strip demo** 的直接入口。
-- 与 [Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **跨主题 agentic manipulation / VA** 索引。
+- 与 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **跨主题 agentic manipulation / VA** 索引。
 
 ## 对 wiki 的映射
 

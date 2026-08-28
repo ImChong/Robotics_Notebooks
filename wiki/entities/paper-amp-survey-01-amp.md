@@ -134,6 +134,6 @@ flowchart TB
 ## 推荐继续阅读
 
 - [AMP 项目页](https://xbpeng.com/projects/AMP/index.html) — 论文、视频与 BibTeX
-- [机器人论文阅读笔记：AMP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control.html)
+- [机器人论文阅读笔记：AMP](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control.html)
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
 - [AMP 方法页](../methods/amp-reward.md) — 判别器架构、Selective AMP 与 SD-AMP 延伸

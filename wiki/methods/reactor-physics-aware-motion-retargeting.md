@@ -39,12 +39,12 @@ summary: "ReActor 将跨具身运动重定向建成物理仿真中的双层问�
 
 ## Survey 坐标（策展索引）
 
-### 在 Humanoid Robot Learning Paper Notebooks 中
+### 在 Robot Learning Paper Notebooks 中
 
 | 字段 | 内容 |
 |------|------|
 | 分类 | 02_Motion_Retargeting（[分类父节点](../overview/paper-notebook-category-02-motion-retargeting.md)） |
-| 深读状态 | 索引级实体已建，深读笔记待消化（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 索引级实体已建，深读笔记待消化（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 总索引 | [humanoid-paper-notebooks-index](../overview/humanoid-paper-notebooks-index.md) |
 
 ## 为什么重要
@@ -121,5 +121,5 @@ flowchart LR
 
 - [reactor_rl_physics_aware_motion_retargeting（本入库摘录）](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md)
 - [Disney Research LA Research 总览归档](../../sources/sites/disney-research-la.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html>
 - 论文：<https://arxiv.org/abs/2605.06593v1>

@@ -88,4 +88,4 @@
 - 论文：<https://arxiv.org/abs/2602.06382>
 - 项目页：<https://hellod035.github.io/Now_You_See_That/>
 - 代码仓：<https://github.com/Hellod035/Now_You_See_That>
-- 深读笔记（姊妹仓）：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html>
+- 深读笔记（姊妹仓）：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html>

@@ -44,7 +44,7 @@ summary: "{h1}：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔�
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 """,
         encoding="utf-8",
     )

@@ -67,8 +67,8 @@
    - 同一个概念可以被多个页面引用
    - 底层是知识图，前端才是树/导图
 
-4. **避免和 `Humanoid_Robot_Learning_Paper_Notebooks` 重复**
-   - [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) 负责单篇论文深读
+4. **避免和 `Robot_Learning_Paper_Notebooks` 重复**
+   - [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks) 负责单篇论文深读
    - [`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks) 负责跨主题知识组织
 
 5. **优先可维护性，不追求一次性完美迁移**

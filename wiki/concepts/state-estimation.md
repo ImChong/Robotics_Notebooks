@@ -382,7 +382,7 @@ WBC 想稳住身体、控制摆腿、分配接触力，都依赖状态估计提�
 - [X-IONet（跨平台单 IMU 惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 行人/四足专家路由 + 双阶段 attention + EKF（IEEE RA-L 2026）
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度视觉几何精炼
 - [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — memory condition + PGGO；长程单目稠密
-- [机器人论文阅读笔记：Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors.html)
+- [机器人论文阅读笔记：Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors.html)
 - [传感器融合（Sensor Fusion）](./sensor-fusion.md) — VIO / InEKF / 多模态融合的实现细节
 - Bloesch et al., *State Estimation for Legged Robots - Consistent Fusion of Leg Kinematics and IMU*
 - Hartley et al., *Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation*

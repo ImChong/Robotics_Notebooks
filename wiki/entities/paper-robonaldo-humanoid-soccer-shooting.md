@@ -250,4 +250,4 @@ sequenceDiagram
 - 训练代码：<https://github.com/OpenDriveLab/RoboNaldo>
 - 部署代码：<https://github.com/OpenDriveLab/RoboNaldo_Deploy>
 - Video：<https://youtu.be/BuHNzqebIqc>
-- 对照：[PAiD 深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr.html)
+- 对照：[PAiD 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr.html)

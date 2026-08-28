@@ -14,7 +14,7 @@ summary: "Vision in Action（ViA）是面向双臂机器人操作的主动感知
 
 # Vision in Action
 
-**Vision in Action: Learning Active Perception from Human Demonstrations** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Vision in Action: Learning Active Perception from Human Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ ViA 要：硬件（6-DoF 颈）+ 接口（VR 共享观测 + 3D 表征缓延迟�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations.html> |
 | arXiv | <https://arxiv.org/abs/2506.15666> |
 | 作者 | Haoyu Xiong、Xiaomeng Xu、Jimmy Wu、Yifan Hou、Jeannette Bohg、Shuran Song（Stanford） |
 | 发表 | 2025 年 6 月 |
@@ -86,9 +86,9 @@ ViA 要：硬件（6-DoF 颈）+ 接口（VR 共享观测 + 3D 表征缓延迟�
 ## 参考来源
 
 - [humanoid_pnb_vision-in-action.md](../../sources/papers/humanoid_pnb_vision-in-action.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations.html>
 - 论文：<https://arxiv.org/abs/2506.15666>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Vision in Action](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations.html)
+- [机器人论文阅读笔记：Vision in Action](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations/Vision_in_Action__Learning_Active_Perception_from_Human_Demonstrations.html)

@@ -56,7 +56,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/overview/humanoid-amp-motion-prior-survey.md": (
         "人形对抗式运动先验（Humanoid Adversarial Motion Prior, AMP）"
     ),
-    "wiki/overview/humanoid-paper-notebooks-index.md": "人形论文深读笔记（Humanoid Paper Notebooks）",
+    "wiki/overview/humanoid-paper-notebooks-index.md": "机器人学习论文笔记（Robot Learning Paper Notebooks）",
     "wiki/overview/paper-notebook-category-01-foundational-rl.md": (
         "论文深读 · 基础强化学习（Foundational Reinforcement Learning, RL）"
     ),
@@ -187,9 +187,25 @@ def community_search_aliases(community_name: str) -> list[str]:
     return aliases
 
 
+_PAPER_NOTEBOOKS_HUB = "wiki/overview/humanoid-paper-notebooks-index.md"
+_PAPER_NOTEBOOKS_LEGACY_ALIASES = (
+    "人形论文深读笔记",
+    "Humanoid Paper Notebooks",
+    "Humanoid Robot Learning Paper Notebooks",
+)
+
+
 def community_search_aliases_for_path(path: str) -> list[str]:
     """按 wiki 路径返回社区搜索别名（首页 chip / 图谱社区简称）。"""
-    name = COMMUNITY_NAME_OVERRIDES.get(path.replace("\\", "/"))
+    norm = path.replace("\\", "/")
+    name = COMMUNITY_NAME_OVERRIDES.get(norm)
     if not name:
         return []
-    return community_search_aliases(name)
+    aliases = community_search_aliases(name)
+    if norm == _PAPER_NOTEBOOKS_HUB:
+        seen = set(aliases)
+        for extra in _PAPER_NOTEBOOKS_LEGACY_ALIASES:
+            if extra not in seen:
+                aliases.append(extra)
+                seen.add(extra)
+    return aliases

@@ -14,7 +14,7 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 
 # Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots
 
-**Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid.html> |
 | arXiv | <https://arxiv.org/abs/2511.09241> |
 | 作者 | Yuxi Wei、Zirui Wang、Kangning Yin、Yue Hu、Jingbo Wang、Siheng Chen（上交大 / 上海 AI Lab 等） |
 | 发表 | 2025 年 11 月 |
@@ -86,9 +86,9 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 ## 参考来源
 
 - [humanoid_pnb_unveiling-the-impact-of-data-and-model-scaling-o.md](../../sources/papers/humanoid_pnb_unveiling-the-impact-of-data-and-model-scaling-o.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid.html>
 - 论文：<https://arxiv.org/abs/2511.09241>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid.html)
+- [机器人论文阅读笔记：Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid.html)

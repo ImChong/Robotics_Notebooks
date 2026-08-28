@@ -14,7 +14,7 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 
 # Humanoid Locomotion as Next Token Prediction
 
-**Humanoid Locomotion as Next Token Prediction** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Humanoid Locomotion as Next Token Prediction** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
 ## 核心信息
@@ -38,7 +38,7 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 | 字段 | 内容 |
 |------|------|
 | 分类 | 03_High_Impact_Selection |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html> |
 | arXiv | <https://arxiv.org/abs/2402.19469> |
 
 ## 实验与评测
@@ -52,7 +52,7 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 - 真正起作用的机制是 **模态对齐的下一 token 预测** 加 **可学习 mask token**：后者把缺动作的轨迹补成统一格式，于是 RL 策略轨迹、MPC 观测、动捕与 YouTube 人体视频可以混在一起训练。
 - 最有说服力的证据是数据效率与泛化：约 27 小时量级行走数据即可零样本部署到旧金山多路面，并泛化到后退行走等训练外指令。
 - 适用边界：本页为索引级实体，机制描述停留在摘要层；量化 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
-- 在本库的位置属于 03_High_Impact_Selection，可经[分类父节点](../overview/paper-notebook-category-03-high-impact-selection.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与同类工作交叉检索。
+- 在本库的位置属于 03_High_Impact_Selection，可经[分类父节点](../overview/paper-notebook-category-03-high-impact-selection.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与同类工作交叉检索。
 
 ## 与其他页面的关系
 
@@ -63,9 +63,9 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 ## 参考来源
 
 - [humanoid_pnb_humanoid-locomotion-as-next-token-prediction.md](../../sources/papers/humanoid_pnb_humanoid-locomotion-as-next-token-prediction.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html>
 - 论文：<https://arxiv.org/abs/2402.19469>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Humanoid Locomotion as Next Token Prediction](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html)
+- [机器人论文阅读笔记：Humanoid Locomotion as Next Token Prediction](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html)

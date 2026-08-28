@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, domain-adaptation, few-shot, privileged-training, dagger, lora, whole-body-control, locomotion, unitree-g1, cmu, planner-idm, inverse-dynamics]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-28
 arxiv: "2606.28476"
 venue: "arXiv 2026"
 related:

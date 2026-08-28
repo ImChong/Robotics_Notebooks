@@ -162,4 +162,4 @@ PhysDiff 的“physics-guided”比脚滑滤波强，但仍是特定仿真人体
 ## 推荐继续阅读
 
 - [官方项目页](https://nvlabs.github.io/PhysDiff/)
-- [机器人论文阅读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model.html)
+- [机器人论文阅读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model.html)

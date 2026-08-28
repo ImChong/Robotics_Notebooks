@@ -14,7 +14,7 @@ summary: "非结构地形上，人形机器人的传感器会出错、模型也�
 
 # CMR
 
-**CMR: Contractive Mapping Embeddings for Robust Humanoid Locomotion on Unstructured Terrains** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**CMR: Contractive Mapping Embeddings for Robust Humanoid Locomotion on Unstructured Terrains** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -60,7 +60,7 @@ summary: "非结构地形上，人形机器人的传感器会出错、模型也�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 05_Locomotion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html> |
 | arXiv | <https://arxiv.org/abs/2602.03511> |
 | 机构 | University of Southampton · Westlake University · Nanjing University |
 | 作者 | Qixin Zeng, Hongyin Zhang, Shangke Lyu, Junxi Jin, Donglin Wang\*, Chao Huang\* |
@@ -90,9 +90,9 @@ summary: "非结构地形上，人形机器人的传感器会出错、模型也�
 ## 参考来源
 
 - [humanoid_pnb_cmr.md](../../sources/papers/humanoid_pnb_cmr.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html>
 - 论文：<https://arxiv.org/abs/2602.03511>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：CMR](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html)
+- [机器人论文阅读笔记：CMR](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html)

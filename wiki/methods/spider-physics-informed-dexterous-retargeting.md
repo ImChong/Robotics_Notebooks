@@ -47,12 +47,12 @@ summary: "SPIDER 用并行物理仿真中的采样式轨迹优化，把人体+�
 
 ## Survey 坐标（策展索引）
 
-### 在 Humanoid Robot Learning Paper Notebooks 中
+### 在 Robot Learning Paper Notebooks 中
 
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC（[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)） |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 总索引 | [humanoid-paper-notebooks-index](../overview/humanoid-paper-notebooks-index.md) |
 
 ## 为什么重要
@@ -171,4 +171,4 @@ sequenceDiagram
 - [spider_scalable_physics_informed_dexterous_retargeting（本入库摘录）](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md)
 - [jc-bao.github.io/spider-project（项目页索引）](../../sources/sites/jc-bao-spider-project-github-io.md)
 - [jc-bao/spider-project（Pages 源码仓）](../../sources/repos/jc-bao-spider-project.md)
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)

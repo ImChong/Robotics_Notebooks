@@ -15,7 +15,7 @@ summary: "研究从单段视频演示模仿来教人形机器人操作技能。O
 
 # OKAMI
 
-**OKAMI: Teaching Humanoid Robots Manipulation Skills through Single Video Imitation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**OKAMI: Teaching Humanoid Robots Manipulation Skills through Single Video Imitation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -59,7 +59,7 @@ OKAMI 要：从**单段 RGB-D 视频**生成计划 + 策略，并能**适应不�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation.html> |
 | arXiv | <https://arxiv.org/abs/2410.11792> |
 | 作者 | Jinhan Li、Yifeng Zhu、Yuqi Xie、Zhenyu Jiang、Mingyo Seo、Georgios Pavlakos、Yuke Zhu（UT Austin） |
 | 发表 | 2024 年 10 月 |
@@ -88,9 +88,9 @@ OKAMI 要：从**单段 RGB-D 视频**生成计划 + 策略，并能**适应不�
 ## 参考来源
 
 - [humanoid_pnb_okami.md](../../sources/papers/humanoid_pnb_okami.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation.html>
 - 论文：<https://arxiv.org/abs/2410.11792>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：OKAMI](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation.html)
+- [机器人论文阅读笔记：OKAMI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation/OKAMI__Teaching_Humanoid_Robots_Manipulation_Skills_through_Single_Video_Imitation.html)

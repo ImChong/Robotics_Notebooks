@@ -175,4 +175,4 @@ SUGAR 在「以人类视频/示范规模化生成人形 loco-manip 技能」这�
 
 - [SUGAR 项目页](https://tianshuwu.github.io/sugar-humanoid/)
 - [SUGAR GitHub](https://github.com/tianshuwu/SUGAR)
-- [机器人论文阅读笔记：SUGAR](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SUGAR__A_Scalable_Human-Video-Driven_Generalizable_Humanoid_Loco-Manipulation_Learning_Framework/SUGAR__A_Scalable_Human-Video-Driven_Generalizable_Humanoid_Loco-Manipulation_Learning_Framework.html)
+- [机器人论文阅读笔记：SUGAR](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SUGAR__A_Scalable_Human-Video-Driven_Generalizable_Humanoid_Loco-Manipulation_Learning_Framework/SUGAR__A_Scalable_Human-Video-Driven_Generalizable_Humanoid_Loco-Manipulation_Learning_Framework.html)

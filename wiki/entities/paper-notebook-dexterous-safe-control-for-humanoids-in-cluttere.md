@@ -14,7 +14,7 @@ summary: "在真实应用中确保人形安全且不牺牲性能至关重要。�
 
 # Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm
 
-**Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "在真实应用中确保人形安全且不牺牲性能至关重要。�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set.html> |
 | arXiv | <https://arxiv.org/abs/2502.02858> |
 | 作者 | Rui Chen、Yifan Sun、Changliu Liu（CMU） |
 | 发表 | 2025 年 2 月 |
@@ -86,9 +86,9 @@ summary: "在真实应用中确保人形安全且不牺牲性能至关重要。�
 ## 参考来源
 
 - [humanoid_pnb_dexterous-safe-control-for-humanoids-in-cluttere.md](../../sources/papers/humanoid_pnb_dexterous-safe-control-for-humanoids-in-cluttere.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set.html>
 - 论文：<https://arxiv.org/abs/2502.02858>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set.html)
+- [机器人论文阅读笔记：Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set.html)

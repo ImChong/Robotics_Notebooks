@@ -14,7 +14,7 @@ summary: "人形在灵巧、平衡、行走上进步显著，但在音乐表演�
 
 # Robot Drummer
 
-**Robot Drummer: Learning Rhythmic Skills for Humanoid Drumming** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Robot Drummer: Learning Rhythmic Skills for Humanoid Drumming** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ Robot Drummer 要：把打鼓建模成可学的**定时接触序列**，让人�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html> |
 | arXiv | <https://arxiv.org/abs/2507.11498> |
 | 作者 | Asad Ali Shahid、Francesco Braghin、Loris Roveda（米兰理工 / IDSIA） |
 | 发表 | 2025 年 7 月 |
@@ -86,9 +86,9 @@ Robot Drummer 要：把打鼓建模成可学的**定时接触序列**，让人�
 ## 参考来源
 
 - [humanoid_pnb_robot-drummer.md](../../sources/papers/humanoid_pnb_robot-drummer.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html>
 - 论文：<https://arxiv.org/abs/2507.11498>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Robot Drummer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html)
+- [机器人论文阅读笔记：Robot Drummer](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html)

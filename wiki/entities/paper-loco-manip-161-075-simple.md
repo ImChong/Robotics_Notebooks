@@ -170,7 +170,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：SIMPLE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation.html)
+- [机器人论文阅读笔记：SIMPLE](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation.html)
 - 论文 PDF：<https://arxiv.org/pdf/2606.08278>
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - [Psi0 项目页](https://psi-lab.ai/Psi0) — 同 lab 人形 loco-manipulation foundation model

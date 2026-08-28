@@ -28,18 +28,18 @@ SOURCES = ROOT / "sources" / "papers"
 CATEGORIES_PATH = SCHEMA_DIR / "paper-notebook-categories.json"
 FULL_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-full-map.yml"
 INDEX_OVERVIEW = WIKI / "overview" / "humanoid-paper-notebooks-index.md"
-NOTEBOOK_SITE = "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks"
+NOTEBOOK_SITE = "https://imchong.github.io/Robot_Learning_Paper_Notebooks"
 PAPERS_JSON_URL = (
     "https://raw.githubusercontent.com/ImChong/"
-    "Humanoid_Robot_Learning_Paper_Notebooks/main/_data/papers.json"
+    "Robot_Learning_Paper_Notebooks/main/_data/papers.json"
 )
 PROGRESS_JSON_URL = (
     "https://raw.githubusercontent.com/ImChong/"
-    "Humanoid_Robot_Learning_Paper_Notebooks/main/progress.json"
+    "Robot_Learning_Paper_Notebooks/main/progress.json"
 )
 PROGRESS_MD_URL = (
     "https://raw.githubusercontent.com/ImChong/"
-    "Humanoid_Robot_Learning_Paper_Notebooks/main/papers/PROGRESS.md"
+    "Robot_Learning_Paper_Notebooks/main/papers/PROGRESS.md"
 )
 ARXIV_ID_RE = re.compile(r"^\d{4}\.\d{4,5}(v\d+)?$")
 PROGRESS_SECTION_CATEGORY: list[tuple[str, str]] = [
@@ -303,11 +303,11 @@ def progress_source_label(paper: dict) -> tuple[str, str]:
     if paper.get("from_progress_md"):
         return (
             "PROGRESS.md",
-            "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md",
+            "https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md",
         )
     return (
         "progress.json",
-        "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json",
+        "https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json",
     )
 
 
@@ -393,14 +393,14 @@ def render_source(paper: dict, meta: dict, wiki_rel: str) -> str:
         route_line = f"- **路线：** {route}\n" if route else ""
         progress_src = (
             "[papers/PROGRESS.md](https://github.com/ImChong/"
-            "Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)"
+            "Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)"
             if paper.get("from_progress_md")
             else "[progress.json](https://github.com/ImChong/"
-            "Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)"
+            "Robot_Learning_Paper_Notebooks/blob/main/progress.json)"
         )
         return f"""# {paper["title"]}
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** {paper["title"]}
 - **类型：** paper
@@ -422,19 +422,19 @@ def render_source(paper: dict, meta: dict, wiki_rel: str) -> str:
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · {"PROGRESS.md" if paper.get("from_progress_md") else "progress.json"}]({"https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md" if paper.get("from_progress_md") else "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json"})
+- [Robot Learning Paper Notebooks · {"PROGRESS.md" if paper.get("from_progress_md") else "progress.json"}]({"https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md" if paper.get("from_progress_md") else "https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json"})
 {f"- 论文：<https://arxiv.org/abs/{arxiv}>" if arxiv else ""}
 """
     return f"""# {paper["title"]}
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** {paper["title"]}
 - **类型：** paper
 - **笔记链接：** <{paper["url"]}>
 - **分类：** {paper.get("category", meta.get("_category", ""))}
 {sub_line}{arxiv_line}- **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 来自 [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
 
 ## 核心摘录（策展，非全文）
 
@@ -475,7 +475,7 @@ summary: "{title_short}：列入 Paper Notebooks {prog_label} 待深读清单；
 
 # {title_short}
 
-**{paper["title"]}** 已列入 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的 **{prog_label} 待深读** 清单（分类：{paper.get("category", meta.get("_category", ""))}）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**{paper["title"]}** 已列入 [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的 **{prog_label} 待深读** 清单（分类：{paper.get("category", meta.get("_category", ""))}）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -487,7 +487,7 @@ summary: "{title_short}：列入 Paper Notebooks {prog_label} 待深读清单；
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -511,12 +511,12 @@ summary: "{title_short}：列入 Paper Notebooks {prog_label} 待深读清单；
 ## 参考来源
 
 - [{source_filename(paper["dir"])}]({src_rel})
-- [Humanoid Robot Learning Paper Notebooks · {prog_label}]({prog_url})
+- [Robot Learning Paper Notebooks · {prog_label}]({prog_url})
 {f"- 论文：<https://arxiv.org/abs/{arxiv}>" if arxiv else ""}
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 """
     return f"""---
 type: entity
@@ -528,12 +528,12 @@ updated: 2026-06-07
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - {src_rel}
-summary: "{title_short}：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "{title_short}：Robot Learning Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
 ---
 
 # {title_short}
 
-**{paper["title"]}** 收录于 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html)（分类：{paper.get("category", meta.get("_category", ""))}）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**{paper["title"]}** 收录于 [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html)（分类：{paper.get("category", meta.get("_category", ""))}）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -545,7 +545,7 @@ summary: "{title_short}：Humanoid Paper Notebooks 深读笔记索引实体；�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
 ## 核心信息
@@ -601,7 +601,7 @@ def render_category_page(
         "",
         f"# Paper Notebooks · {display}",
         "",
-        f"**{display}**（`{cat_id}`）是 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 主页面的第 **{num}** 类。{subtitle}",
+        f"**{display}**（`{cat_id}`）是 [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 主页面的第 **{num}** 类。{subtitle}",
         "",
         "## 英文缩写速查",
         "",
@@ -656,7 +656,7 @@ def render_category_page(
             "",
             "## 参考来源",
             "",
-            f"- [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html)",
+            f"- [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html)",
             "- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)",
             "",
             "## 推荐继续阅读",
@@ -681,12 +681,12 @@ def render_root_index(categories: list[tuple[str, dict, int]]) -> str:
     total = sum(n for _, _, n in categories)
     lines.extend(
         [
-            f'summary: "Humanoid Paper Notebooks 137+ 篇深读笔记在本库的分类父节点与 wiki 子节点总索引（共 {total} 篇）。"',
+            f'summary: "Robot Learning Paper Notebooks 137+ 篇深读笔记在本库的分类父节点与 wiki 子节点总索引（共 {total} 篇）。"',
             "---",
             "",
-            "# Humanoid Paper Notebooks 知识库索引",
+            "# Robot Learning Paper Notebooks 知识库索引",
             "",
-            f"本页把 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的 **14 类主页分类** 映射为本仓库 `wiki/overview/paper-notebook-category-*` **父节点**；每篇论文对应 **子节点**（已有深度 wiki 或 `wiki/entities/paper-notebook-*` 索引实体）。",
+            f"本页把 [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的 **14 类主页分类** 映射为本仓库 `wiki/overview/paper-notebook-category-*` **父节点**；每篇论文对应 **子节点**（已有深度 wiki 或 `wiki/entities/paper-notebook-*` 索引实体）。",
             "",
             "## 英文缩写速查",
             "",
@@ -719,7 +719,7 @@ def render_root_index(categories: list[tuple[str, dict, int]]) -> str:
             "",
             "## 参考来源",
             "",
-            f"- [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html)",
+            f"- [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html)",
             "- [sources/sites/rl-sim2sim-demo-website.md](../../sources/sites/rl-sim2sim-demo-website.md)（姊妹演示站，非本索引范围）",
             "",
             "## 推荐继续阅读",

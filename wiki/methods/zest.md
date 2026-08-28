@@ -111,7 +111,7 @@ MTRG 复用 ZEST 的 assistive-wrench \(\lambda\) 课程；beyond-nominal 下相
 - [论文实体](../entities/paper-zest.md)
 - [arXiv:2602.00401](https://arxiv.org/abs/2602.00401)
 - [Science Robotics DOI](https://doi.org/10.1126/scirobotics.aec7695)
-- [机器人论文阅读笔记：ZEST](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control.html)
+- [机器人论文阅读笔记：ZEST](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control.html)
 
 ## 推荐继续阅读
 

@@ -14,7 +14,7 @@ summary: "让人形可靠执行复杂多步操作对工业/家庭部署很关键
 
 # Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation
 
-**Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "让人形可靠执行复杂多步操作对工业/家庭部署很关键
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation.html> |
 | arXiv | <https://arxiv.org/abs/2506.22827> |
 | 作者 | André Schakkal、Ben Zandonati、Zhutian Yang、Navid Azizan（MIT） |
 | 发表 | 2025 年 6 月 |
@@ -87,9 +87,9 @@ summary: "让人形可靠执行复杂多步操作对工业/家庭部署很关键
 ## 参考来源
 
 - [humanoid_pnb_hierarchical-vision-language-planning-for-multi.md](../../sources/papers/humanoid_pnb_hierarchical-vision-language-planning-for-multi.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2506.22827>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation.html)
+- [机器人论文阅读笔记：Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation.html)

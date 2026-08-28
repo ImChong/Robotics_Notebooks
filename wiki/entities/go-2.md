@@ -53,6 +53,6 @@ summary: "GO-2 是智元开源的执行基座 VLA：以动作思维链与异步�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Ψ₀](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation.html)
+- [机器人论文阅读笔记：Ψ₀](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation.html)
 - [GO-2 论文](https://arxiv.org/abs/2601.11404)
 - [LIBRA-VLA 项目页](https://libra-vla.github.io/)

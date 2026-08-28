@@ -14,7 +14,7 @@ summary: "RL 在四足敏捷运动上很有前景，即便仅本体感受也行�
 
 # Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion
 
-**Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ RL 在四足敏捷运动上很有前景，即便仅本体感受也行。但实�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 05_Locomotion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html> |
 | arXiv | <https://arxiv.org/abs/2602.00678> |
 | 作者 | Tianyang Wu、Hanwei Guo、Yuhang Wang、Junshu Yang、Xinyang Sui 等（西安交大等） |
 | 发表 | 2026 年 1 月 |
@@ -86,9 +86,9 @@ RL 在四足敏捷运动上很有前景，即便仅本体感受也行。但实�
 ## 参考来源
 
 - [humanoid_pnb_toward-reliable-sim-to-real-predictability-for-m.md](../../sources/papers/humanoid_pnb_toward-reliable-sim-to-real-predictability-for-m.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html>
 - 论文：<https://arxiv.org/abs/2602.00678>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)
+- [机器人论文阅读笔记：Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)

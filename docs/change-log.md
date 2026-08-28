@@ -276,6 +276,6 @@ V1 阶段：搭建知识骨架，建立基本目录结构和部分内容。
 
 | 项目 | 职责 |
 |------|------|
-| [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) | 单篇论文深读笔记 |
+| [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks) | 单篇论文深读笔记 |
 | [`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks)（本项目）| 跨模块知识组织、成长路线、技术栈地图 |
 | [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io) | 个人简历与对外展示 |

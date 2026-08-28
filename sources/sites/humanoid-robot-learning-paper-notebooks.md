@@ -2,12 +2,13 @@
 
 > 来源归档（ingest）
 
-- **标题：** Humanoid Robot Learning Paper Notebooks
+- **标题：** Robot Learning Paper Notebooks
 - **类型：** site
-- **链接：** https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html
-- **关联仓库：** https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks（公开，BSD-3-Clause）
-- **阅读进度：** https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json
+- **链接：** https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html
+- **关联仓库：** https://github.com/ImChong/Robot_Learning_Paper_Notebooks（公开，BSD-3-Clause）
+- **阅读进度：** https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json
 - **入库日期：** 2026-08-03
+- **更名日期：** 2026-08-28（GitHub / Pages：`Humanoid_Robot_Learning_Paper_Notebooks` → `Robot_Learning_Paper_Notebooks`）
 - **一句话说明：** 姊妹站点，把人形机器人学习方向的论文按 14 个分类整理成逐篇深读笔记（Jekyll 静态站），是本库 `wiki/overview/paper-notebook-category-*` 分类页与 `wiki/entities/paper-notebook-*` 实体页的上游原始资料。
 
 ## 站点规模（入库日核对）
@@ -39,6 +40,13 @@
 | `13_Physics-Based_Animation` | Physics-Based Animation（物理动画） | 27 | [13-physics-based-animation](../../wiki/overview/paper-notebook-category-13-physics-based-animation.md) |
 | `14_Human_Motion` | Human Motion（人体动作分析与生成） | 39 | [14-human-motion](../../wiki/overview/paper-notebook-category-14-human-motion.md) |
 
+## 仓库更名（2026-08-28）
+
+- **新仓库：** https://github.com/ImChong/Robot_Learning_Paper_Notebooks
+- **新站点：** https://imchong.github.io/Robot_Learning_Paper_Notebooks/
+- **旧名：** `Humanoid_Robot_Learning_Paper_Notebooks` / Humanoid Robot Learning Paper Notebooks / Humanoid Paper Notebooks
+- 本归档文件名 `humanoid-robot-learning-paper-notebooks.md` 与 wiki 总索引文件名保持不变，避免站内 related 断链。
+
 ## 源码与开放性核查（2026-08-03）
 
 - **仓库公开**：GitHub 仓库可直接访问，许可证 BSD-3-Clause；`papers/` 目录按上述 14 个分类组织笔记源文件，根目录含 `progress.json` 与 `papers/PROGRESS.md` 两份进度清单。
@@ -48,7 +56,7 @@
 
 ## 对 wiki 的映射
 
-- [Humanoid Robot Learning Paper Notebooks 总索引](../../wiki/overview/humanoid-paper-notebooks-index.md) — 14 个分类的统一入口
+- [Robot Learning Paper Notebooks 总索引](../../wiki/overview/humanoid-paper-notebooks-index.md) — 14 个分类的统一入口
 - `wiki/overview/paper-notebook-category-01..14-*.md` — 逐类论文清单（见上表）
 - `wiki/entities/paper-notebook-*.md` — 逐篇论文实体页，深读链接回指本站
 - 同作者姊妹演示站：[rl-sim2sim-demo-website](rl-sim2sim-demo-website.md)
@@ -64,6 +72,6 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks（站点首页）](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
-- [ImChong/Humanoid_Robot_Learning_Paper_Notebooks（GitHub 仓库）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)
-- [progress.json（阅读进度）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks（站点首页）](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
+- [ImChong/Robot_Learning_Paper_Notebooks（GitHub 仓库）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)
+- [progress.json（阅读进度）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)

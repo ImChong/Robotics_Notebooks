@@ -137,6 +137,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：PHC](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PHC_Perpetual_Humanoid_Control/PHC_Perpetual_Humanoid_Control.html)
+- [机器人论文阅读笔记：PHC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PHC_Perpetual_Humanoid_Control/PHC_Perpetual_Humanoid_Control.html)
 - 重定向文档：<https://github.com/ZhengyiLuo/PHC/blob/master/docs/retargeting.md>
 - 项目页：<https://www.zhengyiluo.com/PHC-Site/>

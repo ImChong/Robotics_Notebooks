@@ -1,10 +1,10 @@
 # INTENTION: Inferring Tendencies of Humanoid Robot Motion Through Interactive Intuition and Grounded VLM
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** INTENTION: Inferring Tendencies of Humanoid Robot Motion Through Interactive Intuition and Grounded VLM
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int.html>
 - **分类：** 08_Navigation
 - **arXiv：** <https://arxiv.org/abs/2508.04931>
 - **入库日期：** 2026-07-10
@@ -22,5 +22,5 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int.html>
 - 论文：<https://arxiv.org/abs/2508.04931>

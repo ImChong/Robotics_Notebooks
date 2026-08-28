@@ -2,7 +2,7 @@
 
 最后更新：2026-04-11
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-关联项目：<https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks>
+关联项目：<https://github.com/ImChong/Robot_Learning_Paper_Notebooks>
 
 ## 一句话目标
 把 `Robotics_Notebooks` 从“有结构的知识草稿”继续推进成“可持续迭代的机器人技术栈导航系统”，优先服务你当前的人形机器人运动控制、强化学习、模仿学习主线。

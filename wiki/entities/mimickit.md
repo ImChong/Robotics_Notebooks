@@ -160,4 +160,4 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：MimicKit](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control.html)
+- [机器人论文阅读笔记：MimicKit](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control.html)

@@ -11,7 +11,7 @@ tags:
   - berkeley
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-05
+updated: 2026-08-28
 arxiv: "2310.07896"
 code: https://github.com/robodhruv/visualnav-transformer
 related:

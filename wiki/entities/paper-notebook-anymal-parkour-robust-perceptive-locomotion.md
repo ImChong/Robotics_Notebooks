@@ -151,4 +151,4 @@ flowchart LR
 ## 推荐继续阅读
 
 - [ANYmal Parkour 官方项目页](https://sites.google.com/leggedrobotics.com/agile-navigation)
-- [机器人论文阅读笔记：ANYmal Parkour](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion.html)
+- [机器人论文阅读笔记：ANYmal Parkour](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion.html)

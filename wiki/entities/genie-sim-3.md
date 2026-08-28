@@ -59,5 +59,5 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Genie Sim 3.0](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot/Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot.html)
+- [机器人论文阅读笔记：Genie Sim 3.0](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot/Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot.html)
 - [Genie Sim GitHub](https://github.com/AgibotTech/genie_sim)

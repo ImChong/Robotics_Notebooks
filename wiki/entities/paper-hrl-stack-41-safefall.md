@@ -103,6 +103,6 @@ SafeFall 不是让机器人永远不摔，而是在检测到跌倒不可避免�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：SafeFall](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SafeFall__Learning_Protective_Control_for_Humanoid_Robots/SafeFall__Learning_Protective_Control_for_Humanoid_Robots.html)
+- [机器人论文阅读笔记：SafeFall](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SafeFall__Learning_Protective_Control_for_Humanoid_Robots/SafeFall__Learning_Protective_Control_for_Humanoid_Robots.html)
 - [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
 - [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)

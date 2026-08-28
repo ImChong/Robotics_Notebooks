@@ -137,7 +137,7 @@ flowchart TB
 
 - **飞书正文抓取不完整**：公开 Jina 读取仅覆盖开篇与传统路线片段；细节以 [know-how 目录树](../../sources/notes/know-how.md) 与作者开源仓库为准。
 - **PIE / DreamWaQ 原文为四足**：飞书条目用于**感知盲走/单阶段估计**教学坐标，人形迁移需自行改观测与奖励。
-- **节点不等于论文深读**：单篇论文细节见 `wiki/entities/` 与姊妹仓库 [Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)。
+- **节点不等于论文深读**：单篇论文细节见 `wiki/entities/` 与姊妹仓库 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)。
 
 ## 关联页面
 

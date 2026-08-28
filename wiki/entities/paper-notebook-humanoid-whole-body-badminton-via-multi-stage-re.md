@@ -27,7 +27,7 @@ summary: "人形全身羽毛球多阶段 RL（arXiv:2511.11218）：无 MoCap �
 
 # Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
 
-**Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning**（[arXiv:2511.11218](https://arxiv.org/abs/2511.11218)）给出 **无动作先验、无专家示范** 的统一全身羽毛球控制器：三阶段课程让腿臂共同服务击球；部署可用 **EKF 轨迹预测** 或 **免预测** 短历史球位变体。作者称 **首个真机人形羽毛球** 系统（Phybot C1，1.28 m / 21 DoF）。收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。在本库 [人形足球纵深 Stage 5](../../roadmap/depth-humanoid-soccer.md) 中作为 **竞技体育技能谱系** 对照。
+**Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning**（[arXiv:2511.11218](https://arxiv.org/abs/2511.11218)）给出 **无动作先验、无专家示范** 的统一全身羽毛球控制器：三阶段课程让腿臂共同服务击球；部署可用 **EKF 轨迹预测** 或 **免预测** 短历史球位变体。作者称 **首个真机人形羽毛球** 系统（Phybot C1，1.28 m / 21 DoF）。收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。在本库 [人形足球纵深 Stage 5](../../roadmap/depth-humanoid-soccer.md) 中作为 **竞技体育技能谱系** 对照。
 
 ## 一句话定义
 
@@ -148,7 +148,7 @@ flowchart TB
 - [humanoid_pnb_humanoid-whole-body-badminton-via-multi-stage-re.md](../../sources/papers/humanoid_pnb_humanoid-whole-body-badminton-via-multi-stage-re.md)
 - [humanoid-badminton-multi-stage-rl.md](../../sources/sites/humanoid-badminton-multi-stage-rl.md)
 - 论文：<https://arxiv.org/abs/2511.11218>
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning.html>
 
 ## 推荐继续阅读
 

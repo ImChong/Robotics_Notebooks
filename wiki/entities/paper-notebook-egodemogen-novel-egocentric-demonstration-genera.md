@@ -14,7 +14,7 @@ summary: "基于模仿学习的视觉运动策略表现强，但常对第一视�
 
 # EgoDemoGen
 
-**EgoDemoGen: Egocentric Demonstration Generation for Viewpoint Generalization in Robotic Manipulation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**EgoDemoGen: Egocentric Demonstration Generation for Viewpoint Generalization in Robotic Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ EgoDemoGen 要：**无需多视角数据**，**生成**新视角下的配对演�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization.html> |
 | arXiv | <https://arxiv.org/abs/2509.22578> |
 | 作者 | Yuan Xu、Jiabing Yang、Xiaofeng Wang、Zheng Zhu、Yan Huang、Liang Wang 等 |
 | 发表 | 2025 年 9 月 |
@@ -86,9 +86,9 @@ EgoDemoGen 要：**无需多视角数据**，**生成**新视角下的配对演�
 ## 参考来源
 
 - [humanoid_pnb_egodemogen.md](../../sources/papers/humanoid_pnb_egodemogen.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization.html>
 - 论文：<https://arxiv.org/abs/2509.22578>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：EgoDemoGen](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization.html)
+- [机器人论文阅读笔记：EgoDemoGen](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization.html)

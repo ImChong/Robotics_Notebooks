@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync Humanoid_Robot_Learning_Paper_Notebooks deep-read links into wiki pages."""
+"""Sync Robot_Learning_Paper_Notebooks deep-read links into wiki pages."""
 
 from __future__ import annotations
 
@@ -22,13 +22,12 @@ OVERRIDES_PATH = SCHEMA_DIR / "paper-notebook-wiki-overrides.yml"
 AUTO_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-auto-map.yml"
 PAPERS_JSON_URL = (
     "https://raw.githubusercontent.com/ImChong/"
-    "Humanoid_Robot_Learning_Paper_Notebooks/main/_data/papers.json"
+    "Robot_Learning_Paper_Notebooks/main/_data/papers.json"
 )
 TREE_URL = (
-    "https://api.github.com/repos/ImChong/"
-    "Humanoid_Robot_Learning_Paper_Notebooks/git/trees/main?recursive=1"
+    "https://api.github.com/repos/ImChong/Robot_Learning_Paper_Notebooks/git/trees/main?recursive=1"
 )
-BASE_URL = "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks"
+BASE_URL = "https://imchong.github.io/Robot_Learning_Paper_Notebooks"
 LINK_PREFIX = "机器人论文阅读笔记："
 
 
@@ -244,7 +243,8 @@ def link_line(paper: dict) -> str:
 
 
 def has_notebook_link(text: str, paper: dict) -> bool:
-    if "Humanoid_Robot_Learning_Paper_Notebooks" not in text:
+    # 新 slug 是旧 slug 的后缀，因此这一条同时覆盖新旧 Pages / GitHub URL。
+    if "Robot_Learning_Paper_Notebooks" not in text:
         return False
     return paper["url"] in text or paper["dir"] in text
 
@@ -287,7 +287,7 @@ def fix_stale_urls(papers: list[dict], dry_run: bool) -> int:
         text = wiki_path.read_text(encoding="utf-8")
         new_text = text
         for match in re.finditer(
-            r"https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^)\s>]+",
+            r"https://imchong\.github\.io/(?:Humanoid_)?Robot_Learning_Paper_Notebooks/papers/[^)\s>]+",
             text,
         ):
             old_url = match.group(0)

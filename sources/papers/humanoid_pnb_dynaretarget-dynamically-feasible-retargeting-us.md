@@ -1,10 +1,10 @@
 # DynaRetarget: Dynamically-Feasible Retargeting using Sampling-Based Trajectory Optimization
 
-> 来源归档（ingest · Humanoid Paper Notebooks + arXiv 全文）
+> 来源归档（ingest · Robot Learning Paper Notebooks + arXiv 全文）
 
 - **标题：** DynaRetarget: Dynamically-Feasible Retargeting using Sampling-Based Trajectory Optimization
 - **类型：** paper
-- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
+- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
 - **计划笔记路径：** `papers/14_Human_Motion/dynaretarget-dynamically-feasible-retargeting-us/dynaretarget-dynamically-feasible-retargeting-us.md`
 - **分类：** 14_Human_Motion
 - **arXiv：** <https://arxiv.org/abs/2602.06827>
@@ -26,7 +26,7 @@
 ## 参考来源（原始）
 
 - [dynaretarget_arxiv_2602_06827.md](dynaretarget_arxiv_2602_06827.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2602.06827>
 - 项目页：<https://atarilab.github.io/dynaretarget.io/>
 - 代码：<https://github.com/Atarilab/sbto>

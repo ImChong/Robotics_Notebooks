@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync one-line summaries from Humanoid Paper Notebooks into wiki stub entities."""
+"""Sync one-line summaries from Robot Learning Paper Notebooks into wiki stub entities."""
 
 from __future__ import annotations
 
@@ -17,11 +17,11 @@ SCHEMA_DIR = ROOT / "schema"
 FULL_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-full-map.yml"
 INDEX_PATH = SCHEMA_DIR / "paper-notebook-index.json"
 NOTEBOOK_RAW = (
-    "https://raw.githubusercontent.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/main"
+    "https://raw.githubusercontent.com/ImChong/Robot_Learning_Paper_Notebooks/main"
 )
 
 GENERIC_ONE_LINE = "以 Paper Notebooks 深读笔记为首要编译来源"
-GENERIC_SUMMARY = "Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳"
+GENERIC_SUMMARY = "Robot Learning Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳"
 GENERIC_SOURCE = "的深读笔记索引；正文以笔记站与 arXiv 为准"
 
 

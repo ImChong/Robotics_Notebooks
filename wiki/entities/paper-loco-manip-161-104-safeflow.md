@@ -86,6 +86,6 @@ SafeFlow 先从本体状态与关节序列恢复场景、目标或运动表征�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：SafeFlow](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SafeFlow__Real-Time_Text-Driven_Humanoid_Whole-Body_Control_via_Physics-Guided_Rectified_Flow/SafeFlow__Real-Time_Text-Driven_Humanoid_Whole-Body_Control_via_Physics-Guided_Rectified_Flow.html)
+- [机器人论文阅读笔记：SafeFlow](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SafeFlow__Real-Time_Text-Driven_Humanoid_Whole-Body_Control_via_Physics-Guided_Rectified_Flow/SafeFlow__Real-Time_Text-Driven_Humanoid_Whole-Body_Control_via_Physics-Guided_Rectified_Flow.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - 同题深读/既有实体：[paper-loco-manip-161-104-safeflow](../entities/paper-loco-manip-161-104-safeflow.md)

@@ -14,7 +14,7 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 
 # Walk the PLANC
 
-**Walk the PLANC: Physics-Guided RL for Agile Humanoid Locomotion on Constrained Footholds** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Walk the PLANC: Physics-Guided RL for Agile Humanoid Locomotion on Constrained Footholds** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -59,7 +59,7 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 | 字段 | 内容 |
 |------|------|
 | 分类 | 05_Locomotion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html> |
 | arXiv | <https://arxiv.org/abs/2601.06286> |
 | 机构 | Caltech AMBER Lab（加州理工） |
 | 作者 | Min Dai, William D. Compton, Junheng Li, Lizhi Yang, Aaron D. Ames |
@@ -90,9 +90,9 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 ## 参考来源
 
 - [humanoid_pnb_walk-the-planc.md](../../sources/papers/humanoid_pnb_walk-the-planc.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html>
 - 论文：<https://arxiv.org/abs/2601.06286>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Walk the PLANC](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html)
+- [机器人论文阅读笔记：Walk the PLANC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html)

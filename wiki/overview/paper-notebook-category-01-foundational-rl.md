@@ -10,7 +10,7 @@ summary: "Paper Notebooks 分类 01：基础强化学习（15 篇深读笔记索
 
 # Paper Notebooks · Foundational RL
 
-**Foundational RL**（`01_Foundational_RL`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **01** 类。Foundational RL theory and classic algorithms — essential prerequisites for understanding subsequent research
+**Foundational RL**（`01_Foundational_RL`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **01** 类。Foundational RL theory and classic algorithms — essential prerequisites for understanding subsequent research
 
 ## 英文缩写速查
 
@@ -30,26 +30,26 @@ summary: "Paper Notebooks 分类 01：基础强化学习（15 篇深读笔记索
 - [CALM](../entities/paper-bfm-19-calm.md) — 见 wiki 实体页
 - [DeepMimic](../methods/deepmimic.md) — 见 wiki 实体页
 - [Diffusion Policy](../entities/oculust-quest-teleop.md) — 见 wiki 实体页
-- [Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World](../entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World.html)
-- [Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies](../entities/paper-notebook-lcp-sim-to-real-action-smoothing.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)
+- [Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World](../entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World.html)
+- [Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies](../entities/paper-notebook-lcp-sim-to-real-action-smoothing.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)
 - [MimicKit](../entities/mimickit.md) — 见 wiki 实体页
 - [PHC](../entities/phc.md) — 见 wiki 实体页
 - [PULSE](../entities/zhengyi-luo.md) — 见 wiki 实体页
 - [Proximal Policy Optimization Algorithms](../methods/reinforcement-learning.md) — 见 wiki 实体页
-- [Understanding Domain Randomization for Sim-to-real Transfer](../entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)
+- [Understanding Domain Randomization for Sim-to-real Transfer](../entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)
 
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
-- 笔记主页：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html>
+- 笔记主页：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html>
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文 ingest 归档（节选）：[CALM：可指挥虚拟角色的条件对抗隐变量模型](../../sources/papers/bfm_awesome_calm_siggraph_2024.md)、[人形 AMP 运动先验 19 篇综述](../../sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)、[Jason Peng：更灵活的运动技能学习](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md)
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记总站](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)

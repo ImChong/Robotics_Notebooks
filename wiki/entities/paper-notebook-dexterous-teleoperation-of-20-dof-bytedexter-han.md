@@ -151,7 +151,7 @@ Quest 控制器固定在手套背面，使腕部和手指共享操作员参考�
 
 ## 参考来源
 
-- [Humanoid Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_dexterous-teleoperation-of-20-dof-bytedexter-han.md)
+- [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_dexterous-teleoperation-of-20-dof-bytedexter-han.md)
 - [ByteDexter 项目页与开源核查](../../sources/sites/bytedexter.md)
 - 论文：<https://arxiv.org/abs/2507.03227>
 

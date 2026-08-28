@@ -62,4 +62,4 @@ summary: "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)
+- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)

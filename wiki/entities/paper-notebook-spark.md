@@ -16,7 +16,7 @@ summary: "SPARK（安全自主与遥操作工具箱）：列入 Paper Notebooks 
 
 # SPARK（安全自主工具箱 · Paper Notebooks 占位）
 
-**SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 > **同名消歧：** 动力学重定向论文 [SPARK: Skeleton-Parameter Aligned Retargeting](./paper-spark-skeleton-aligned-retargeting.md)（arXiv:2603.11480）是另一工作，见该实体页。
 
@@ -34,7 +34,7 @@ SPARK 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -42,7 +42,7 @@ SPARK 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
+| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
 | 计划文件夹 | `papers/04_Loco-Manipulation_and_WBC/SPARK__A_Toolbox_for_Safe_Humanoid_Autonomy_and_Teleoperation` |
 
 
@@ -67,9 +67,9 @@ SPARK 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 ## 参考来源
 
 - [humanoid_pnb_spark.md](../../sources/papers/humanoid_pnb_spark.md)
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
 
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

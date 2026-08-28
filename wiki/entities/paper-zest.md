@@ -188,5 +188,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2602.00401)
-- [Humanoid Paper Notebooks：ZEST](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control.html)
+- [Robot Learning Paper Notebooks：ZEST](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control.html)
 - [MTRG / GfR（RSS 2026）](https://arxiv.org/abs/2602.20375) — 把参考从部署接口拿掉之后的对照数字

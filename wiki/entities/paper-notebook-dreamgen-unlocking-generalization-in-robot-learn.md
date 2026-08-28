@@ -14,7 +14,7 @@ summary: "DreamGen 是一个简单而高效的四阶段流水线，通过神经�
 
 # DreamGen
 
-**DreamGen: Unlocking Generalization in Robot Learning through Video World Models** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DreamGen: Unlocking Generalization in Robot Learning through Video World Models** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ DreamGen 要：用**视频世界模型**生成**带动作标签**的合成数据
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models.html> |
 | arXiv | <https://arxiv.org/abs/2505.12705> |
 | 作者 | Joel Jang、Seonghyeon Ye、Ajay Mandlekar、Yuke Zhu、Linxi Fan、Dieter Fox、Jan Kautz 等（NVIDIA） |
 | 发表 | 2025 年 5 月 |
@@ -86,9 +86,9 @@ DreamGen 要：用**视频世界模型**生成**带动作标签**的合成数据
 ## 参考来源
 
 - [humanoid_pnb_dreamgen.md](../../sources/papers/humanoid_pnb_dreamgen.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models.html>
 - 论文：<https://arxiv.org/abs/2505.12705>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：DreamGen](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models.html)
+- [机器人论文阅读笔记：DreamGen](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models.html)

@@ -28,7 +28,7 @@ summary: "RobotDancing（TUM/BAAI/XYZ Embodied AI/清华/南大，arXiv:2509.207
 
 **RobotDancing: Residual-Action Reinforcement Learning Enables Robust Long-Horizon Humanoid Motion Tracking**（Zhenguo Sun*、Yibo Peng* 等；慕尼黑工业大学 / 北京智源 / XYZ Embodied AI / 清华大学 / 南京大学；[arXiv:2509.20717](https://arxiv.org/abs/2509.20717)，**IEEE Robotics and Automation Letters 已接收**）提出可复用的 **per-sequence** 单阶段 PPO 配方：用**参考条件残差关节目标**补偿 retarget 参考与机器人真实动力学之间的失配，使长时程高动态舞蹈在 Unitree G1 上零样本可部署。
 
-> 本页原为 Paper Notebooks **深读索引 stub**；2026-08-05 据 arXiv **v2（RA-L 接收稿）** 升格为完整实体页（原地升级，未新建重复节点）。姊妹仓库[深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html)仍可作阅读辅线。
+> 本页原为 Paper Notebooks **深读索引 stub**；2026-08-05 据 arXiv **v2（RA-L 接收稿）** 升格为完整实体页（原地升级，未新建重复节点）。姊妹仓库[深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html)仍可作阅读辅线。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ RobotDancing 不让策略重合成绝对关节轨迹，而是在 retarget 参考
 | 控制 | 仿真 500 Hz / 策略 50 Hz；真机 Orin NX TorchScript @ 50 Hz |
 | 训练 | PPO MLP `[512,256,128]`；8192 envs；RTX 4090；终策略约 20K iter |
 | 开源 | **未见官方代码/项目页**（截至 2026-08-05）；附录提及配置文件但无公开 URL |
-| 深读笔记 | [Paper Notebooks · RobotDancing](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html) |
+| 深读笔记 | [Paper Notebooks · RobotDancing](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html) |
 
 ## 流程总览
 
@@ -204,7 +204,7 @@ SELECTIVE 相对绝对动作基线（NONE）：$E_{g\text{-}mpbpe}$ / $E_{mpbpe}
 - [robotdancing_arxiv_2509_20717.md](../../sources/papers/robotdancing_arxiv_2509_20717.md) — 本次 arXiv v2 / RA-L 稿主归档
 - [humanoid_pnb_robotdancing.md](../../sources/papers/humanoid_pnb_robotdancing.md) — Paper Notebooks 深读锚点
 - 论文：<https://arxiv.org/abs/2509.20717>（v2 HTML：<https://arxiv.org/html/2509.20717v2>）
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html>
 
 ## 推荐继续阅读
 

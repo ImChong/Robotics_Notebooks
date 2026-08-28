@@ -141,4 +141,4 @@ flowchart TD
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：ProtoMotions3 Open-source Framework for Humanoid Simulation and Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control.html)
+- [机器人论文阅读笔记：ProtoMotions3 Open-source Framework for Humanoid Simulation and Control](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control.html)

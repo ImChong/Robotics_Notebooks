@@ -166,4 +166,4 @@ sequenceDiagram
 
 - [Berkeley Open Arms / Blue 项目页](https://berkeleyopenarms.github.io/)
 - [berkeleyopenarms/blue_core](https://github.com/berkeleyopenarms/blue_core)
-- [Paper Notebooks 阅读进度](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -14,7 +14,7 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 
 # LOVON
 
-**LOVON: Legged Open-Vocabulary Object Navigator** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**LOVON: Legged Open-Vocabulary Object Navigator** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -56,7 +56,7 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 08_Navigation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html> |
 | arXiv | <https://arxiv.org/abs/2507.06747> |
 | 机构 | **香港科技大学（广州）HKUST(GZ) / 北京人形机器人创新中心 / 香港科技大学 HKUST** |
 | 作者 | **Daojie Peng**, Jiahang Cao, Qiang Zhang, Jun Ma |
@@ -87,9 +87,9 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 ## 参考来源
 
 - [humanoid_pnb_lovon.md](../../sources/papers/humanoid_pnb_lovon.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html>
 - 论文：<https://arxiv.org/abs/2507.06747>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：LOVON](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html)
+- [机器人论文阅读笔记：LOVON](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html)

@@ -85,4 +85,4 @@ python scripts/sim2sim.py --load_model /path/to/logs/.../policy_1.pt
 
 - **人形 sim2real 开源标杆**：2k+ stars，XBot 真机视频与 **MuJoCo 校准 sim2sim** 降低「无真机先验验策略」门槛。
 - **工程可复用模板**：步态相位掩码、多帧观测、特权 AC、DR 表与人形 reward 拆项可直接对照 [legged_gym](../../wiki/entities/legged-gym.md) 学习差异。
-- **论文笔记本深读入口**：[Humanoid-Gym Zero-Shot Sim2Real Transfer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html) 与本页互补（单篇深读 vs 跨主题知识组织）。
+- **论文笔记本深读入口**：[Humanoid-Gym Zero-Shot Sim2Real Transfer](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html) 与本页互补（单篇深读 vs 跨主题知识组织）。

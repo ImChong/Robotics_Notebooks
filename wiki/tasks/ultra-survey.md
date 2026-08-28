@@ -108,4 +108,4 @@ ULTRA 是一个**统一的多模态控制器**——有动作参考时能精确�
 
 ## 推荐继续阅读
 
-详细笔记（含面试高频问题、工程复现要点、DAgger 通俗解释）见：[Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)
+详细笔记（含面试高频问题、工程复现要点、DAgger 通俗解释）见：[Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)

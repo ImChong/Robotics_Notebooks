@@ -77,4 +77,4 @@
 ## 参考来源（原始）
 
 - [VMP PDF](https://la.disneyresearch.com/wp-content/uploads/VMP_paper.pdf) — 本次 ingest 主来源
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json) — 待深读清单锚点
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json) — 待深读清单锚点

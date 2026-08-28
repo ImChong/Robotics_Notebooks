@@ -16,7 +16,7 @@ summary: "LocoFormer：列入 Paper Notebooks PROGRESS.md 待深读清单；深�
 
 # LocoFormer
 
-**LocoFormer: Generalist Locomotion via Long-Context Adaptation** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**LocoFormer: Generalist Locomotion via Long-Context Adaptation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -32,7 +32,7 @@ LocoFormer 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 - Skild 2026-08 将 LocoFormer 写成操作模型 [S1](./skild-s1.md) 的运动域前序（长上下文适应 → 视频 ICL）；细节见公司博客，**官方代码仍未开源**。
 
@@ -41,7 +41,7 @@ LocoFormer 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 | 字段 | 内容 |
 |------|------|
 | 分类 | 05_Locomotion |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 计划文件夹 | `papers/05_Locomotion/locoformer-generalist-locomotion-via-long-contex` |
 
 
@@ -66,9 +66,9 @@ LocoFormer 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 ## 参考来源
 
 - [humanoid_pnb_locoformer-generalist-locomotion-via-long-contex.md](../../sources/papers/humanoid_pnb_locoformer-generalist-locomotion-via-long-contex.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

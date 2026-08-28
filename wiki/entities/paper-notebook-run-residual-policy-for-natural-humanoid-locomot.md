@@ -133,7 +133,7 @@ flowchart TB
 
 - [humanoid_pnb_run-residual-policy-for-natural-humanoid-locomot.md](../../sources/papers/humanoid_pnb_run-residual-policy-for-natural-humanoid-locomot.md)
 - [Residual Policy / Residual RL 论文精读清单摘录](../../sources/personal/residual-policy-reading-list.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - Li et al., *RuN: Residual Policy for Natural Humanoid Locomotion*, arXiv:2509.20696, 2025. <https://arxiv.org/abs/2509.20696>
 
 ## 推荐继续阅读
@@ -141,4 +141,4 @@ flowchart TB
 - 论文：<https://arxiv.org/abs/2509.20696>
 - GMP（基线先验）：<https://arxiv.org/abs/2503.09015>
 - HOVER（重定向方法来源）：<https://arxiv.org/abs/2410.21229>
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

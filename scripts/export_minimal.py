@@ -23,16 +23,20 @@ BASE_URL = "https://imchong.github.io/Robotics_Notebooks"
 SCHEMA_DIR = ROOT / "schema"
 PAPER_NOTEBOOK_INDEX_PATH = SCHEMA_DIR / "paper-notebook-index.json"
 PAPER_NOTEBOOK_FULL_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-full-map.yml"
-PAPER_NOTEBOOK_SITE_PREFIX = (
+PAPER_NOTEBOOK_SITE_PREFIX = "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/"
+# 2026-08-28 仓库更名前的 Pages 路径；识别旧链以免导出漏掉深读入口。
+PAPER_NOTEBOOK_SITE_PREFIX_LEGACY = (
     "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/"
 )
 PAPER_NOTEBOOK_HTML_RE = re.compile(
-    r"https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^\s)<>\"']+\.html",
+    r"https://imchong\.github\.io/(?:Humanoid_)?Robot_Learning_Paper_Notebooks"
+    r"/papers/[^\s)<>\"']+\.html",
     re.IGNORECASE,
 )
 PAPER_NOTEBOOK_MD_LINK_RE = re.compile(
     r"\[机器人论文阅读笔记[:：]([^\]]+)\]"
-    r"\((https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^)]+\.html)\)",
+    r"\((https://imchong\.github\.io/(?:Humanoid_)?Robot_Learning_Paper_Notebooks"
+    r"/papers/[^)]+\.html)\)",
     re.IGNORECASE,
 )
 # 与 generate_link_graph.wiki_has_repo_source 同口径：关联 sources/repos/ 源码归档
@@ -681,7 +685,10 @@ def _is_paper_notebook_html_url(url: str) -> bool:
     if not url:
         return False
     base = url.split("#", 1)[0].split("?", 1)[0]
-    return base.startswith(PAPER_NOTEBOOK_SITE_PREFIX) and base.endswith(".html")
+    return (
+        base.startswith(PAPER_NOTEBOOK_SITE_PREFIX)
+        or base.startswith(PAPER_NOTEBOOK_SITE_PREFIX_LEGACY)
+    ) and base.endswith(".html")
 
 
 def build_wiki_paper_notebook_link_index() -> dict[str, dict[str, str]]:

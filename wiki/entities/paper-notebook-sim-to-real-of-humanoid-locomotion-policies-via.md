@@ -14,7 +14,7 @@ summary: "把策略从仿真搬到真机失败，根子在现实差（reality ga
 
 # Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection
 
-**Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：10_Sim-to-Real），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：10_Sim-to-Real），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 10_Sim-to-Real |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html> |
 | arXiv | <https://arxiv.org/abs/2504.06585> |
 | 机构 | Woohyun Cha, Junhyeok Cha, Jaeyong Shin, Donghyeon Kim, Jaeheung Park（首尔国立大学 智能信息系 / AICT 水原 / 1X Technologies） |
 | 发表 | 2025-04-09（arXiv v1） |
@@ -87,9 +87,9 @@ Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为�
 ## 参考来源
 
 - [humanoid_pnb_sim-to-real-humanoid-locomotion-via-joint-torque.md](../../sources/papers/humanoid_pnb_sim-to-real-humanoid-locomotion-via-joint-torque.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html>
 - 论文：<https://arxiv.org/abs/2504.06585>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html)
+- [机器人论文阅读笔记：Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html)

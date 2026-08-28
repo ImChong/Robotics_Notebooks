@@ -165,4 +165,4 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - 项目页：<https://bit-bots.github.io/SoccerDiffusion/>
-- [Paper Notebooks PROGRESS（历史进度锚点）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks PROGRESS（历史进度锚点）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

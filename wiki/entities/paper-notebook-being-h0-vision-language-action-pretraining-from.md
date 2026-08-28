@@ -14,7 +14,7 @@ summary: "Being-H0 是一个在大规模人类视频上训练的灵巧视觉-语
 
 # Being-H0
 
-**Being-H0: Vision-Language-Action Pretraining from Large-Scale Human Videos** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Being-H0: Vision-Language-Action Pretraining from Large-Scale Human Videos** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ Being-H0 要：把**人手**当基础操作器，从**网络规模人类视频**
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html> |
 | arXiv | <https://arxiv.org/abs/2507.15597> |
 | 作者 | Hao Luo、Yicheng Feng、Wanpeng Zhang、Sipeng Zheng、Haoqi Yuan、Qin Jin、Zongqing Lu 等（北大 / BAAI 等） |
 | 发表 | 2025 年 7 月 |
@@ -86,9 +86,9 @@ Being-H0 要：把**人手**当基础操作器，从**网络规模人类视频**
 ## 参考来源
 
 - [humanoid_pnb_being-h0.md](../../sources/papers/humanoid_pnb_being-h0.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html>
 - 论文：<https://arxiv.org/abs/2507.15597>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Being-H0](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html)
+- [机器人论文阅读笔记：Being-H0](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html)

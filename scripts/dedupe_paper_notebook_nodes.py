@@ -236,7 +236,8 @@ def patch_notebook_link(keeper_rel: str, stub_rel: str, dry_run: bool) -> bool:
         return False
     stub_text = stub.read_text(encoding="utf-8")
     url_match = re.search(
-        r"<(https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks[^>]+)>", stub_text
+        r"<(https://imchong\.github\.io/(?:Humanoid_)?Robot_Learning_Paper_Notebooks[^>]+)>",
+        stub_text,
     )
     if not url_match:
         return False

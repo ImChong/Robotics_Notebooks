@@ -169,7 +169,7 @@ sequenceDiagram
 
 ## 参考来源
 
-- [Humanoid Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_ace.md)
+- [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_ace.md)
 - [ACE 项目页核查](../../sources/sites/ace-teleop.md)
 - [ACE 代码仓库核查](../../sources/repos/ace-teleop.md)
 - 论文：<https://arxiv.org/abs/2408.11805>

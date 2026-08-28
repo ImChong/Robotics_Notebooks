@@ -14,7 +14,7 @@ summary: "大规模真实机器人数据集潜力大，但真实人类数据采�
 
 # Sim-and-Real Co-Training
 
-**Sim-and-Real Co-Training: A Simple Recipe for Vision-Based Robotic Manipulation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Sim-and-Real Co-Training: A Simple Recipe for Vision-Based Robotic Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "大规模真实机器人数据集潜力大，但真实人类数据采�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html> |
 | arXiv | <https://arxiv.org/abs/2503.24361> |
 | 作者 | Abhiram Maddukuri、Zhenyu Jiang、Soroush Nasiriany、Ken Goldberg、Ajay Mandlekar、Linxi Fan、Yuke Zhu 等（NVIDIA / Berkeley / UT） |
 | 发表 | 2025 年 3 月 |
@@ -86,9 +86,9 @@ summary: "大规模真实机器人数据集潜力大，但真实人类数据采�
 ## 参考来源
 
 - [humanoid_pnb_sim-and-real-co-training.md](../../sources/papers/humanoid_pnb_sim-and-real-co-training.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2503.24361>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Sim-and-Real Co-Training](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html)
+- [机器人论文阅读笔记：Sim-and-Real Co-Training](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html)

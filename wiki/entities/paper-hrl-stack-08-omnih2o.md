@@ -98,6 +98,6 @@ OmniH2O 试图把这个接口做宽：上层可以给稀疏输入，底层控制
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：OmniH2O Universal Whole-Body Teleoperation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/OmniH2O_Universal_Whole-Body_Teleoperation/OmniH2O_Universal_Whole-Body_Teleoperation.html)
+- [机器人论文阅读笔记：OmniH2O Universal Whole-Body Teleoperation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/OmniH2O_Universal_Whole-Body_Teleoperation/OmniH2O_Universal_Whole-Body_Teleoperation.html)
 - [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
 - [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)

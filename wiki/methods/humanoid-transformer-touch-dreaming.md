@@ -124,7 +124,7 @@ EMA tactile tokenizer 的作用类似慢速 teacher：它不反传梯度，只�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Visual-tactile pretraining and online multitask learning for humanlike manipulation dexterity](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity.html)
+- [机器人论文阅读笔记：Visual-tactile pretraining and online multitask learning for humanlike manipulation dexterity](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity.html)
 - [HTD 项目主页](https://humanoid-touch-dream.github.io/)
 - [IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC) — LBC 训练与 G1 部署
 - [浏览器 WBC Demo](https://humanoid-touch-dream.github.io/wbc_mujoco/dist/index.html)

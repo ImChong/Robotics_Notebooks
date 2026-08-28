@@ -169,7 +169,7 @@ sequenceDiagram
 
 ## 参考来源
 
-- [Humanoid Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_dextercap.md)
+- [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_dextercap.md)
 - [DexterCap 项目页核查](../../sources/sites/dextercap.md)
 - [DexterCap 代码/数据核查](../../sources/repos/dextercap.md)
 - 论文：<https://arxiv.org/abs/2601.05844>

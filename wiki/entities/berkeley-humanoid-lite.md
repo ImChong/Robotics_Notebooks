@@ -63,7 +63,7 @@ summary: "Berkeley Humanoid Lite（BHL）：UC Berkeley 低成本准直驱开源
 |------|------|
 | 论文 | *Berkeley Humanoid Lite: An Open-source, Accessible, and Customizable 3D-printed Humanoid Robot*，<https://arxiv.org/abs/2504.17249> |
 | Paper Notebooks 分类 | 12_Hardware_Design（[分类父节点](../overview/paper-notebook-category-12-hardware-design.md)） |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）；笔记完成后在本页链向笔记站并深化归纳 |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）；笔记完成后在本页链向笔记站并深化归纳 |
 
 ## 开源入口
 

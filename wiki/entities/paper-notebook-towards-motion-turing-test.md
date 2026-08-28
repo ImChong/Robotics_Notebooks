@@ -148,4 +148,4 @@ flowchart LR
 ## 推荐继续阅读
 
 - [Motion Turing Test 官方项目页](http://www.lidarhumanmotion.net/mtt/)
-- [机器人论文阅读笔记：Towards Motion Turing Test](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots.html)
+- [机器人论文阅读笔记：Towards Motion Turing Test](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots.html)

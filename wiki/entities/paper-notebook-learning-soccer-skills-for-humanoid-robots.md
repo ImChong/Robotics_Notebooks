@@ -39,7 +39,7 @@ summary: "PAiD（arXiv:2602.05310）：运动跟踪 → 轻量感知融合 → �
 
 # PAiD：Learning Soccer Skills for Humanoid Robots
 
-**PAiD**（*Perception-Action integrated Decision-making*，*Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework*，[arXiv:2602.05310](https://arxiv.org/abs/2602.05310)，[代码](https://github.com/TeleHuman/HumanoidSoccer)）由 **中国电信人工智能研究院（TeleAI）· 上海科技大学 · 浙江大学 · 上海交通大学** 提出：把人形踢球从端到端奖励冲突中拆出，用 **三阶段渐进** 先学拟人踢球先验，再融第一视角球/门位置，最后用接触动力学对齐 + 感知噪声完成 **Unitree G1** 真机部署。收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。
+**PAiD**（*Perception-Action integrated Decision-making*，*Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework*，[arXiv:2602.05310](https://arxiv.org/abs/2602.05310)，[代码](https://github.com/TeleHuman/HumanoidSoccer)）由 **中国电信人工智能研究院（TeleAI）· 上海科技大学 · 浙江大学 · 上海交通大学** 提出：把人形踢球从端到端奖励冲突中拆出，用 **三阶段渐进** 先学拟人踢球先验，再融第一视角球/门位置，最后用接触动力学对齐 + 感知噪声完成 **Unitree G1** 真机部署。收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。
 
 ## 一句话定义
 
@@ -190,7 +190,7 @@ sequenceDiagram
 - [soccer-humanoid-paid.md](../../sources/sites/soccer-humanoid-paid.md) — 项目页核查
 - [humanoid_soccer.md](../../sources/repos/humanoid_soccer.md) — 官方仓
 - 论文：<https://arxiv.org/abs/2602.05310>
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr.html>
 
 ## 推荐继续阅读
 

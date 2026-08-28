@@ -18,7 +18,7 @@ summary: "PARC：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔�
 
 # PARC
 
-**[PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers](https://michaelx.io/parc/index.html)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**[PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers](https://michaelx.io/parc/index.html)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 [human five 对 Jason Peng 分享的归纳](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) 与 [NUS 研讨会讲者视频](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md) 均概括其核心为 **生成器—跟踪器迭代数据增强**：14 分钟初始移动数据经多轮仿真反馈扩至 900+ 分钟，并涌现原数据集中不存在的攀爬策略；机制总览见 [灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)。
 
@@ -36,7 +36,7 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -44,7 +44,7 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 13_Physics-Based_Animation |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 计划文件夹 | `papers/13_Physics-Based_Animation/parc-physics-based-augmentation-with-reinforceme` |
 
 
@@ -72,9 +72,9 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - [humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md](../../sources/papers/humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md)
 - [jason_peng_synthetic_motion_humanoid_youtube.md](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md) — Peng 讲者原声演示 PARC 数字与 G1 案例（<https://www.youtube.com/watch?v=2looxieN53o>）
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

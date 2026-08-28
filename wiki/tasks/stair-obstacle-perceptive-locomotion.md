@@ -203,7 +203,7 @@ flowchart TB
 1. **「有相机 = 感知楼梯」** — 传感器数据必须进入 **可优化目标**（策略输入或奖励）；仅堆传感器而策略盲感知仍会高摔（E-SDS 的 Foundation-Only 对照）。
 2. **「盲走永远不如感知」** — 盲走在平坦/轻度起伏可更省算力；楼梯/缺口往往要先 **接触探测** 再改步态，速度上限更低。[VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) 则在高程图失效时切回盲策略做接触恢复，而不是把评测级噪声硬塞进单条感知策略。
 3. **「上楼梯文献可类推下楼」** — 下楼对前向质心、踏空与制动要求不同，仓库内 **下楼** 以 E-SDS 等为显式分水岭案例。
-4. **把本页当论文深读** — 单篇机制细节见各 **entity** 页与 [Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)；本页只做 **挂接与对照**。
+4. **把本页当论文深读** — 单篇机制细节见各 **entity** 页与 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)；本页只做 **挂接与对照**。
 
 ## 关联页面
 
@@ -217,7 +217,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Collision-Free Humanoid Traversal in Cluttered Indoor Scenes](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes.html)
+- [机器人论文阅读笔记：Collision-Free Humanoid Traversal in Cluttered Indoor Scenes](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes.html)
 - FastStair 论文 HTML：<https://arxiv.org/html/2601.10365v1>
 - FastStair 项目页：<https://npcliu.github.io/FastStair>
 

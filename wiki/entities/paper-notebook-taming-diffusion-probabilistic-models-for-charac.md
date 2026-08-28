@@ -14,7 +14,7 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 
 # Taming Diffusion Probabilistic Models for Character Control
 
-**Taming Diffusion Probabilistic Models for Character Control** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Taming Diffusion Probabilistic Models for Character Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html> |
 | arXiv | <https://arxiv.org/abs/2404.15121> |
 | 作者 | Rui Chen、Mingyi Shi、Shaoli Huang、Ping Tan、Taku Komura、Xuelin Chen |
 | 发表 | 2024 年 4 月 |
@@ -86,9 +86,9 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 ## 参考来源
 
 - [humanoid_pnb_taming-diffusion-probabilistic-models-for-charac.md](../../sources/papers/humanoid_pnb_taming-diffusion-probabilistic-models-for-charac.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html>
 - 论文：<https://arxiv.org/abs/2404.15121>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Taming Diffusion Probabilistic Models for Character Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html)
+- [机器人论文阅读笔记：Taming Diffusion Probabilistic Models for Character Control](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html)

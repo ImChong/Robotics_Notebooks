@@ -17,7 +17,7 @@ summary: "HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之�
 
 # Generating Diverse and Natural 3D Human Motions from Textual Descriptions
 
-**Generating Diverse and Natural 3D Human Motions from Textual Descriptions** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Generating Diverse and Natural 3D Human Motions from Textual Descriptions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -35,7 +35,7 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 - 后续工作如 [MoLingo](./paper-molingo.md) 仍以 HumanML3D 为训评锚点，并扩展 MARDM-67 / MS-272 / TMR-263 等多协议对照。
 
@@ -44,7 +44,7 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html> |
 | arXiv | <https://arxiv.org/abs/2204.09419> |
 
 ## 实验与评测
@@ -71,11 +71,11 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 ## 参考来源
 
 - [humanoid_pnb_humanml3d.md](../../sources/papers/humanoid_pnb_humanml3d.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html>
 - 论文：<https://arxiv.org/abs/2204.09419>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Generating Diverse and Natural 3D Human Motions from Textual Descriptions](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html)
+- [机器人论文阅读笔记：Generating Diverse and Natural 3D Human Motions from Textual Descriptions](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html)
 - [MoLingo（CVPR 2026）](./paper-molingo.md) — 在 HumanML3D 协议上的语义对齐连续 latent T2M
 - [Awesome Text-to-Motion](./awesome-text-to-motion-zilize.md)

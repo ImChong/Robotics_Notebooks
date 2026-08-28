@@ -151,7 +151,7 @@ flowchart TB
 - [humanoid_pnb_vmp.md](../../sources/papers/humanoid_pnb_vmp.md) — PDF 策展摘录（主来源）
 - [VMP PDF](https://la.disneyresearch.com/wp-content/uploads/VMP_paper.pdf)
 - [DOI 10.1111/cgf.15175](https://doi.org/10.1111/cgf.15175)
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json) — 04_Loco-Manipulation 待深读锚点
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json) — 04_Loco-Manipulation 待深读锚点
 
 ## 推荐继续阅读
 

@@ -1,10 +1,10 @@
 # Learning to Ball: Composing Policies for Long-Horizon Basketball Moves
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** Learning to Ball: Composing Policies for Long-Horizon Basketball Moves
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html>
 - **分类：** 13_Physics-Based_Animation
 - **arXiv：** <https://arxiv.org/abs/2509.22442>
 - **项目页：** <https://pei-xu.github.io/basketball> — 归档见 [`sources/sites/pei-xu-basketball-github-io.md`](../sites/pei-xu-basketball-github-io.md)
@@ -26,7 +26,7 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html>
 - 论文：<https://arxiv.org/abs/2509.22442>
 - 项目页：<https://pei-xu.github.io/basketball>
 - 代码：<https://github.com/xupei0610/basketball>

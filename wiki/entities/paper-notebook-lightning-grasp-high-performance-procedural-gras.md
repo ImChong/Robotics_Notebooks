@@ -14,7 +14,7 @@ summary: "多年研究后，灵巧手的实时多样抓取合成仍是机器人�
 
 # Lightning Grasp
 
-**Lightning Grasp: High Performance Procedural Grasp Synthesis with Contact Fields** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Lightning Grasp: High Performance Procedural Grasp Synthesis with Contact Fields** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ Lightning Grasp 要：**快几个数量级**、**免精调**、能处理不规�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields.html> |
 | arXiv | <https://arxiv.org/abs/2511.07418> |
 | 作者 | Zhao-Heng Yin、Pieter Abbeel（UC Berkeley） |
 | 发表 | 2025 年 11 月 |
@@ -87,9 +87,9 @@ Lightning Grasp 要：**快几个数量级**、**免精调**、能处理不规�
 ## 参考来源
 
 - [humanoid_pnb_lightning-grasp.md](../../sources/papers/humanoid_pnb_lightning-grasp.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields.html>
 - 论文：<https://arxiv.org/abs/2511.07418>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Lightning Grasp](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields.html)
+- [机器人论文阅读笔记：Lightning Grasp](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields/Lightning_Grasp__High_Performance_Procedural_Grasp_Synthesis_with_Contact_Fields.html)

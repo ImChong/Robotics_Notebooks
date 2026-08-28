@@ -10,7 +10,7 @@ summary: "Paper Notebooks 分类 08：导航（19 篇深读笔记索引）。"
 
 # Paper Notebooks · Navigation
 
-**Navigation**（`08_Navigation`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **08** 类。
+**Navigation**（`08_Navigation`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **08** 类。
 
 ## 英文缩写速查
 
@@ -23,37 +23,37 @@ summary: "Paper Notebooks 分类 08：导航（19 篇深读笔记索引）。"
 ## 本类论文索引
 
 - [ARMOR](../entities/paper-notebook-armor-egocentric-perception-for-humanoid-robot-c.md) — 待深读
-- [EgoActor](../entities/paper-notebook-egoactor.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum.html)
-- [EgoNav](../entities/paper-notebook-egonav.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoNav__Learning_Humanoid_Navigation_from_Human_Data/EgoNav__Learning_Humanoid_Navigation_from_Human_Data.html)
-- [FocusNav](../entities/paper-notebook-focusnav.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/FocusNav__Spatial_Selective_Attention_with_Waypoint_Guidance_for_Humanoid_Local/FocusNav__Spatial_Selective_Attention_with_Waypoint_Guidance_for_Humanoid_Local.html)
+- [EgoActor](../entities/paper-notebook-egoactor.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum.html)
+- [EgoNav](../entities/paper-notebook-egonav.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoNav__Learning_Humanoid_Navigation_from_Human_Data/EgoNav__Learning_Humanoid_Navigation_from_Human_Data.html)
+- [FocusNav](../entities/paper-notebook-focusnav.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/FocusNav__Spatial_Selective_Attention_with_Waypoint_Guidance_for_Humanoid_Local/FocusNav__Spatial_Selective_Attention_with_Waypoint_Guidance_for_Humanoid_Local.html)
 - [Gallant](../entities/paper-loco-manip-161-137-gallant.md) — 见 wiki 实体页
 - [GuideWalk](../entities/paper-motion-cerebellum-guidewalk.md) — 见 wiki 实体页
-- [Hand-Eye Autonomous Delivery](../entities/paper-notebook-hand-eye-autonomous-delivery-learning-humanoid-n.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching.html)
-- [Humanoid Occupancy](../entities/paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System.html)
+- [Hand-Eye Autonomous Delivery](../entities/paper-notebook-hand-eye-autonomous-delivery-learning-humanoid-n.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching.html)
+- [Humanoid Occupancy](../entities/paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System.html)
 - [HumanoidPano](../entities/paper-notebook-humanoidpano-hybrid-spherical-panoramic-lidar-cr.md) — 待深读
-- [INTENTION](../entities/paper-notebook-intention-inferring-tendencies-of-humanoid-robot.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int.html)
-- [LOVON](../entities/paper-notebook-lovon-legged-open-vocabulary-object-navigator.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html)
-- [Learning Social Navigation from Positive and Negative Demonstrations and Rule-Based Specifications](../entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications.html)
-- [LookOut](../entities/paper-notebook-lookout.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/LookOut__Real-World_Humanoid_Egocentric_Navigation/LookOut__Real-World_Humanoid_Egocentric_Navigation.html)
-- [NaVILA](../entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation/NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation.html)
-- [NavDP](../entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy.html)
+- [INTENTION](../entities/paper-notebook-intention-inferring-tendencies-of-humanoid-robot.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int.html)
+- [LOVON](../entities/paper-notebook-lovon-legged-open-vocabulary-object-navigator.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html)
+- [Learning Social Navigation from Positive and Negative Demonstrations and Rule-Based Specifications](../entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications.html)
+- [LookOut](../entities/paper-notebook-lookout.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/LookOut__Real-World_Humanoid_Egocentric_Navigation/LookOut__Real-World_Humanoid_Egocentric_Navigation.html)
+- [NaVILA](../entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation/NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation.html)
+- [NavDP](../entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy.html)
 - [NoMaD](../entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) — wiki 详细实体（Paper Notebooks 深读待撰）
-- [Quantum deep reinforcement learning for humanoid robot navigation task](../entities/paper-notebook-quantum-deep-rl-for-humanoid-robot-navigation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html)
-- [Reinforcement Learning with Data Bootstrapping for Dynamic Subgoal Pursuit in Humanoid Robot Navigation](../entities/paper-notebook-rl-with-data-bootstrapping-for-dynamic-subgoal-p.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/RL_with_Data_Bootstrapping_for_Dynamic_Subgoal_Pursuit_in_Humanoid_Navigation/RL_with_Data_Bootstrapping_for_Dynamic_Subgoal_Pursuit_in_Humanoid_Navigation.html)
+- [Quantum deep reinforcement learning for humanoid robot navigation task](../entities/paper-notebook-quantum-deep-rl-for-humanoid-robot-navigation.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html)
+- [Reinforcement Learning with Data Bootstrapping for Dynamic Subgoal Pursuit in Humanoid Robot Navigation](../entities/paper-notebook-rl-with-data-bootstrapping-for-dynamic-subgoal-p.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/RL_with_Data_Bootstrapping_for_Dynamic_Subgoal_Pursuit_in_Humanoid_Navigation/RL_with_Data_Bootstrapping_for_Dynamic_Subgoal_Pursuit_in_Humanoid_Navigation.html)
 - [STATE-NAV](../tasks/vision-language-navigation.md) — 见 wiki 实体页
 
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
-- 笔记主页：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html>
+- 笔记主页：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html>
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文 ingest 归档（节选）：[EgoNav：从人类数据学习人形导航](../../sources/papers/humanoid_pnb_egonav.md)、[ARMOR：人形避障与运动规划的第一人称感知](../../sources/papers/humanoid_pnb_armor-egocentric-perception-for-humanoid-robot-c.md)、[Gallant](../../sources/papers/loco_manip_161_survey_137_gallant.md)
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记总站](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)

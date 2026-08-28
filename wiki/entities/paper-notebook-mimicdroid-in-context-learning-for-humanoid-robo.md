@@ -14,7 +14,7 @@ summary: "目标是让人形从少量视频示例高效解决新操作任务。�
 
 # MimicDroid
 
-**MimicDroid: In-Context Learning for Humanoid Robot Manipulation from Human Play Videos** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**MimicDroid: In-Context Learning for Humanoid Robot Manipulation from Human Play Videos** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ MimicDroid 要：**仅用人类玩耍视频**训练出有 ICL 能力的人形操
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos.html> |
 | arXiv | <https://arxiv.org/abs/2509.09769> |
 | 作者 | Rutav Shah、Shuijing Liu、Zhenyu Jiang、Mingyo Seo、Roberto Martín-Martín、Yuke Zhu（UT Austin） |
 | 发表 | 2025 年 9 月 |
@@ -86,9 +86,9 @@ MimicDroid 要：**仅用人类玩耍视频**训练出有 ICL 能力的人形操
 ## 参考来源
 
 - [humanoid_pnb_mimicdroid.md](../../sources/papers/humanoid_pnb_mimicdroid.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos.html>
 - 论文：<https://arxiv.org/abs/2509.09769>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：MimicDroid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos.html)
+- [机器人论文阅读笔记：MimicDroid](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos/MimicDroid__In-Context_Learning_for_Humanoid_Manipulation_from_Human_Play_Videos.html)

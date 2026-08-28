@@ -180,7 +180,7 @@ flowchart TB
 ## 推荐继续阅读
 
 - [TeleGate 项目页](https://anywitresearch.github.io/TeleGate/)
-- [机器人论文阅读笔记：TeleGate](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior.html)
+- [机器人论文阅读笔记：TeleGate](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior.html)
 - [TWIST2（便携全身采集对照）](./paper-twist2.md) — arXiv:2511.02832
 - [SONIC（规模化 tracking 对照）](../methods/sonic-motion-tracking.md)
 - [Teleoperation 任务页](../tasks/teleoperation.md) — 全身遥操作系统横向表

@@ -14,7 +14,7 @@ summary: "Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via 
 
 # Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-Style Annealing
 
-**Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-Style Annealing** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-Style Annealing** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -38,7 +38,7 @@ Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 计划文件夹 | `papers/14_Human_Motion/full-order-sampling-based-mpc-for-torque-level-l` |
 | arXiv | <https://arxiv.org/abs/2409.15610> |
 
@@ -62,9 +62,9 @@ Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-
 ## 参考来源
 
 - [humanoid_pnb_full-order-sampling-based-mpc-for-torque-level-l.md](../../sources/papers/humanoid_pnb_full-order-sampling-based-mpc-for-torque-level-l.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2409.15610>
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -87,5 +87,5 @@ Mobile-TeleVision 把本体状态与关节序列、人类视频/动捕轨迹、�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Mobile-TeleVision](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Mobile-TeleVision__Predictive_Motion_Priors_for_Humanoid_Whole-Body_Control/Mobile-TeleVision__Predictive_Motion_Priors_for_Humanoid_Whole-Body_Control.html)
+- [机器人论文阅读笔记：Mobile-TeleVision](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Mobile-TeleVision__Predictive_Motion_Priors_for_Humanoid_Whole-Body_Control/Mobile-TeleVision__Predictive_Motion_Priors_for_Humanoid_Whole-Body_Control.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)

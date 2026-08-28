@@ -14,7 +14,7 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 
 # Quantum deep reinforcement learning for humanoid robot navigation task
 
-**Quantum deep reinforcement learning for humanoid robot navigation task** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Quantum deep reinforcement learning for humanoid robot navigation task** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
 ## 核心信息
@@ -38,7 +38,7 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 08_Navigation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html> |
 | arXiv | <https://arxiv.org/abs/2509.11388> |
 
 ## 实验与评测
@@ -62,9 +62,9 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 ## 参考来源
 
 - [humanoid_pnb_quantum-deep-rl-for-humanoid-robot-navigation.md](../../sources/papers/humanoid_pnb_quantum-deep-rl-for-humanoid-robot-navigation.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html>
 - 论文：<https://arxiv.org/abs/2509.11388>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Quantum deep reinforcement learning for humanoid robot navigation task](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html)
+- [机器人论文阅读笔记：Quantum deep reinforcement learning for humanoid robot navigation task](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html)

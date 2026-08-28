@@ -14,7 +14,7 @@ summary: "本文构建 MotionLib ——首个百万级动作生成数据集，�
 
 # Scaling Large Motion Models with Million-Level Human Motions
 
-**Scaling Large Motion Models with Million-Level Human Motions** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Scaling Large Motion Models with Million-Level Human Motions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "本文构建 MotionLib ——首个百万级动作生成数据集，�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions.html> |
 | arXiv | <https://arxiv.org/abs/2410.03311> |
 | 作者 | Ye Wang、Sipeng Zheng、Bin Cao、Qianshan Wei、Qin Jin、Zongqing Lu（BAAI / 人大等） |
 | 发表 | 2024 年 10 月 |
@@ -86,9 +86,9 @@ summary: "本文构建 MotionLib ——首个百万级动作生成数据集，�
 ## 参考来源
 
 - [humanoid_pnb_scaling-large-motion-models-with-million-level-h.md](../../sources/papers/humanoid_pnb_scaling-large-motion-models-with-million-level-h.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions.html>
 - 论文：<https://arxiv.org/abs/2410.03311>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Scaling Large Motion Models with Million-Level Human Motions](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions.html)
+- [机器人论文阅读笔记：Scaling Large Motion Models with Million-Level Human Motions](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions.html)

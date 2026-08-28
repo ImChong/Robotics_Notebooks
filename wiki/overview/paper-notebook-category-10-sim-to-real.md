@@ -10,7 +10,7 @@ summary: "Paper Notebooks 分类 10：仿真到现实（10 篇深读笔记索引
 
 # Paper Notebooks · Sim-to-Real
 
-**Sim-to-Real**（`10_Sim-to-Real`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **10** 类。Core theory and algorithms are under 01 Foundational RL (Domain Randomization, LCP). This category will host Sim-to-Real-specific works (Real-to-Sim, ADR, Privileged Learning, etc.).
+**Sim-to-Real**（`10_Sim-to-Real`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **10** 类。Core theory and algorithms are under 01 Foundational RL (Domain Randomization, LCP). This category will host Sim-to-Real-specific works (Real-to-Sim, ADR, Privileged Learning, etc.).
 
 ## 英文缩写速查
 
@@ -23,28 +23,28 @@ summary: "Paper Notebooks 分类 10：仿真到现实（10 篇深读笔记索引
 ## 本类论文索引
 
 - [Bridging the Sim-to-Real Gap for Athletic Loco-Manipulation](../entities/paper-notebook-bridging-the-sim-to-real-gap-for-athletic-loco-m.md) — 待深读
-- [Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion](../entities/paper-notebook-contrastive-representation-learning-for-adaptive.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion.html)
-- [DiffCoTune](../entities/paper-notebook-diffcotune-differentiable-co-tuning-for-cross-do.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control.html)
+- [Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion](../entities/paper-notebook-contrastive-representation-learning-for-adaptive.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion.html)
+- [DiffCoTune](../entities/paper-notebook-diffcotune-differentiable-co-tuning-for-cross-do.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control.html)
 - [HALO](../entities/paper-notebook-halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md) — 待深读
 - [LIFT](../entities/lift-humanoid.md) — 见 wiki 实体页
 - [PolySim](../concepts/sim2real.md) — 见 wiki 实体页
-- [Robot Trains Robot](../entities/paper-notebook-robot-trains-robot-automatic-real-world-policy-a.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html)
-- [SPI-Active（采样式 SysID + 主动探索）](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — CoRL 2025 Oral；[深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html) · [代码](https://github.com/LeCAR-Lab/SPI-Active)
-- [Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection](../entities/paper-notebook-sim-to-real-of-humanoid-locomotion-policies-via.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html)
-- [Simulator Adaptation for Sim-to-Real Learning of Legged Locomotion via Proprioceptive Distribution Matching](../entities/paper-notebook-simulator-adaptation-via-proprioceptive-distribu.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching.html)
+- [Robot Trains Robot](../entities/paper-notebook-robot-trains-robot-automatic-real-world-policy-a.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html)
+- [SPI-Active（采样式 SysID + 主动探索）](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — CoRL 2025 Oral；[深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html) · [代码](https://github.com/LeCAR-Lab/SPI-Active)
+- [Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection](../entities/paper-notebook-sim-to-real-of-humanoid-locomotion-policies-via.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html)
+- [Simulator Adaptation for Sim-to-Real Learning of Legged Locomotion via Proprioceptive Distribution Matching](../entities/paper-notebook-simulator-adaptation-via-proprioceptive-distribu.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching.html)
 
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
-- 笔记主页：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html>
+- 笔记主页：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html>
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文 ingest 归档（节选）：[SPI-Active（LeCAR-Lab）](../../sources/repos/spi-active.md)、[HALO：可微仿真闭合重载人形敏捷动作 sim2real 差距](../../sources/papers/humanoid_pnb_halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md)、[DiffCoTune：跨域机器人控制的可微协同调参](../../sources/papers/humanoid_pnb_diffcotune.md)
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记总站](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)

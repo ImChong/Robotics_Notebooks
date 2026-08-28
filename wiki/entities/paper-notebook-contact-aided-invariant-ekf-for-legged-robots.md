@@ -124,4 +124,4 @@ flowchart LR
 - [arXiv:1805.10410](https://arxiv.org/abs/1805.10410)
 - [arXiv:1904.09251](https://arxiv.org/abs/1904.09251)（相关版本）
 - [HMI P074](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P074.md)
-- [深读笔记入口](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [深读笔记入口](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)

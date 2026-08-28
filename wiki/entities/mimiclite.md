@@ -115,5 +115,5 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 ## 推荐继续阅读
 
 - [MimicLite GitHub](https://github.com/Roboparty/MimicLite)
-- [机器人论文阅读笔记：SONIC](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Sonic__Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole-Body_Control/Sonic__Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole-Body_Control.html)
+- [机器人论文阅读笔记：SONIC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Sonic__Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole-Body_Control/Sonic__Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole-Body_Control.html)
 - [RoboParty Lab / Party OS 技术地图](../overview/roboparty-lab-party-os-technology-map.md)
