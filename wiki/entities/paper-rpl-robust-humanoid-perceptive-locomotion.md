@@ -18,7 +18,7 @@ tags:
   - stanford
   - berkeley
 status: complete
-updated: 2026-08-22
+updated: 2026-08-28
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -36,6 +36,7 @@ related:
   - ./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ./extreme-parkour.md
   - ./paper-egohtr.md
+  - ./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
 sources:
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/sites/rpl-humanoid-github-io.md
@@ -200,6 +201,7 @@ flowchart TB
 - [DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 单深度学习高程重建对照（无外定位；TienKung Ultra）
 - [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 同系 Amazon FAR 稀疏踏棍攀爬与梯上操作
 - [EgoHTR](./paper-egohtr.md) — rough-terrain 人演示 → 高度图条件 mimic（数据缺口对照；待开放）
+- [VB-Com](./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 外感知整段不可信时切盲策略；对照 RPL「深度仍可用」假设
 - [Unitree G1](./unitree-g1.md) — 实验平台
 
 ## 参考来源

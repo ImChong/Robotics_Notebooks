@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, locomotion, rl, observation, proprioception, exteroception, state-estimation, privileged-training, sim2real]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-28
 summary: "主流人形运控策略（RL/IL/跟踪系）的输入按「部署是否可得」分五类：本体感知、指令与参考、历史上下文、外部感知、特权信息（仅训练）；每类的关键工程问题是真机上如何获得——直读、滤波估计、学习估计、感知管线还是上层给定。"
 related:
   - ./state-estimation.md
@@ -18,11 +18,13 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../queries/humanoid-rl-cookbook.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
+  - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
 sources:
   - ../../sources/personal/humanoid-loco-policy-observation-inputs-faq.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/state_estimation.md
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
+  - ../../sources/papers/vb_com_arxiv_2502_14814.md
 ---
 
 # 人形机器人运控策略的观测输入（Humanoid Policy Observation Inputs）
@@ -140,7 +142,7 @@ flowchart LR
 | 地形 latent | 64–256 维向量 | 深度/高程经编码器压缩，**通常不是可读高度图** | 见 [地形 Latent 表征](./terrain-latent-representation.md) |
 | RGB/语义 | 图像或语义特征 | 相机 + 骨干网络 | VLA / 导航高层（低频接入） |
 
-工程要点：感知链路低频（10–30 Hz）且带几十毫秒延迟，与 50–100 Hz 的策略频率必须**解耦与时间戳对齐**；盲走策略（无 D 类）在结构化工况仍是强基线，不要默认堆视觉。
+工程要点：感知链路低频（10–30 Hz）且带几十毫秒延迟，与 50–100 Hz 的策略频率必须**解耦与时间戳对齐**；盲走策略（无 D 类）在结构化工况仍是强基线，不要默认堆视觉。高程图积分窗口还会让 **动态障碍「看不见」**——此时不要继续硬信 D 类，见 [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) 用本体回报估计切到盲策略。
 
 ## E. 特权信息（Privileged，训练专用）
 
@@ -180,7 +182,7 @@ flowchart LR
 
 - **「观测越多越好」**：多余通道放大噪声、拖慢收敛，还给策略更多记住仿真作弊模式的机会；帧堆叠过长同样如此。
 - **把基座线速度当真值喂**：仿真直读训练 + 真机估计部署 = 分布断裂；要么训练就用估计值，要么部署时补齐同源估计器。
-- **忽视延迟**：视觉 30 Hz + 数十毫秒延迟直接进 obs，相当于让策略看着「过去的世界」做高频决策；要么频率解耦，要么训练时注入同分布延迟。
+- **忽视延迟**：视觉 30 Hz + 数十毫秒延迟直接进 obs，相当于让策略看着「过去的世界」做高频决策；要么频率解耦，要么训练时注入同分布延迟。动态障碍 + 高程图积分窗口会把 D 类变成系统性误导，而不是「再加一点 Gaussian」就能修好（[VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md)）。
 - **历史的双刃剑**：历史/RNN 补偿了部分可观测，但也可能让策略过拟合仿真特有的动力学模式，迁移时反而变脆。
 - **真机第一坑不是网络**：部署失败先查 obs 管线（坐标系、符号、量纲、滤波、时间戳），再怀疑策略本身；排查顺序见 [RL 策略调试手册](../queries/robot-policy-debug-playbook.md)。
 
@@ -197,6 +199,7 @@ flowchart LR
 - [人形机器人 RL 策略训练 Checklist](../queries/humanoid-rl-cookbook.md) — Stage 2 Observation 设计的操作版
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 任务层入口
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 部署观测仅球-only 掩膜深度堆叠 + 本体感觉；球态永不进策略
+- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — D 类高程图失效时用本体回报估计切到盲策略，而不是把噪声硬塞进单策略
 
 ## 参考来源
 
@@ -204,6 +207,7 @@ flowchart LR
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — 特权信息类型与 Teacher–Student（Kumar RMA 2021 / Lee Science Robotics 2020）
 - [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — 基座/接触状态估计一手文献（Bloesch 2013 / Hartley InEKF 2020）
 - [感知 Locomotion 表征与蒸馏本质 FAQ（维护者整理）](../../sources/personal/perceptive_locomotion_representation_essence.md) — 深度 → terrain latent 的信息流与蒸馏本质
+- [VB-Com 论文摘录（arXiv:2502.14814）](../../sources/papers/vb_com_arxiv_2502_14814.md) — 高程图失效时视觉/盲策略切换
 
 ## 推荐继续阅读
 

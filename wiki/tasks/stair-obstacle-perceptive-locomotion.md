@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-28
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -36,6 +36,7 @@ related:
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
   - ../entities/paper-p3.md
+  - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
 sources:
   - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
@@ -56,6 +57,7 @@ sources:
   - ../../sources/papers/light_loco_parkour_light_origins_2026.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/papers/vb_com_arxiv_2502_14814.md
 summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：按「是否显式地形感知」「上/下楼梯」「越障/跑酷」组织文献与概念，后续 ingest 默认挂接本页。"
 ---
 
@@ -88,7 +90,7 @@ summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：
 | 轴 | 典型含义 | 仓库内常见实现 |
 |----|----------|----------------|
 | **感知** | 机载高程图 / 深度 / LiDAR / 点云进入策略或奖励 | FastStair、E-SDS、DreamWaQ++、PHP、Extreme Parkour |
-| **盲走 / 弱感知** | 仅本体 + 隐式地形或接触后修正 | DreamWaQ 系盲走基线、部分「blind stair」RL、Walk These Ways 的 OOD 试参 |
+| **盲走 / 弱感知** | 仅本体 + 隐式地形或接触后修正 | DreamWaQ 系盲走基线、部分「blind stair」RL、Walk These Ways 的 OOD 试参、[VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) 的盲策略接管 |
 | **楼梯** | 重复踢面/踏面、离散高度阶跃 | 上楼梯（FastStair）、下楼梯（E-SDS 分水岭）、四足楼梯竞速（DreamWaQ++） |
 | **越障 / 跑酷** | 攀爬、翻越、沟壑、高台、技能链 | PHP、LightLP、ParkourFormer、Deep Whole-body Parkour、Hiking in the Wild、Extreme Parkour、SWAP |
 
@@ -134,6 +136,7 @@ flowchart TB
 | **有**（本体历史 + 高程 CNN → VAE latent） | **踏石 / 楼梯 / 缺口 · VAE-PPO 优化** | [P³](../entities/paper-p3.md) | 不改感知架构，把 PPO clip 改成边缘策略似然；G1 真机 8/9/10（10 trial）；代码已开源 |
 | **有**（低成本深度，无显式高程中间层） | **坡/楼梯/高台/宽沟 · 单阶段** | [TRAMP](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) | 层次特征 + MoE actor + 平地/楼梯地形相关 AMP；SJTU 人形真机户外杂乱场景；IEEE RA-L 2026；代码未开源 |
 | **有**（雷达/仿真高程图 0.7×1.1 m） | **沟/台阶/栏/混合 · MoE 门控** | [CMoE](../entities/paper-cmoe.md) | SwAV 式对比学习防 Vanilla MoE 均匀激活；G1 真机 80 cm 沟、20 cm 连续台阶；ICRA 2026；Isaac Gym 代码已开源 |
+| **复合**（机载高程图 + 盲策略切换） | **沟/栏/动态障碍 · 感知失效恢复** | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) | 视觉/盲双策略 + 仅本体回报估计器；G1/H1 真机；100% 高程噪声下完成率约 85%；ICRA 2026；代码 coming soon |
 
 ### 四足 · 楼梯与崎岖
 
@@ -189,6 +192,7 @@ flowchart TB
 | 人形 **单深度** + 学习高程重建（无外定位）+ 楼梯/缝隙 | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) |
 | 人形 **梯子攀爬** + **梯上遥操作**（稀疏踏棍） | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |
 | 人形 **BFM 式开放 raw 参考** + **地形感知落脚/间隙**（楼梯/块/户外） | [Perceptive BFM](../entities/paper-perceptive-bfm.md) |
+| 人形 **感知失效/动态障碍** 时在视觉策略与盲走间切换 | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) |
 | 已有 **VAE-PPO** 感知行走、课程上不去 / clip 异常 | [P³](../entities/paper-p3.md) |
 | 四足 **极限跑酷** 端到端 | [Extreme Parkour](../entities/extreme-parkour.md) |
 | 四足 **世界模型跑酷** + 对称等变 | [SWAP](../entities/paper-swap-parkour.md) |
@@ -197,7 +201,7 @@ flowchart TB
 ## 常见误区
 
 1. **「有相机 = 感知楼梯」** — 传感器数据必须进入 **可优化目标**（策略输入或奖励）；仅堆传感器而策略盲感知仍会高摔（E-SDS 的 Foundation-Only 对照）。
-2. **「盲走永远不如感知」** — 盲走在平坦/轻度起伏可更省算力；楼梯/缺口往往要先 **接触探测** 再改步态，速度上限更低。
+2. **「盲走永远不如感知」** — 盲走在平坦/轻度起伏可更省算力；楼梯/缺口往往要先 **接触探测** 再改步态，速度上限更低。[VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) 则在高程图失效时切回盲策略做接触恢复，而不是把评测级噪声硬塞进单条感知策略。
 3. **「上楼梯文献可类推下楼」** — 下楼对前向质心、踏空与制动要求不同，仓库内 **下楼** 以 E-SDS 等为显式分水岭案例。
 4. **把本页当论文深读** — 单篇机制细节见各 **entity** 页与 [Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)；本页只做 **挂接与对照**。
 
@@ -207,6 +211,7 @@ flowchart TB
 - [Locomotion](./locomotion.md) — 运动任务层总览
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形高程图与障碍反应
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 感知到动作的通用闭环
+- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合：感知缺失时切盲走恢复（G1/H1，ICRA 2026）
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口
 - [CReF](../entities/paper-cref.md) — 单阶段 raw 深度交叉注意 + 可支撑落脚奖励；X2 Ultra 零样本（arXiv:2603.29452）
 
@@ -226,4 +231,5 @@ flowchart TB
 - [离散地形最小感知论文摘录（arXiv:2606.31912）](../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md)
 - [42 篇人形 RL 运动控制目录摘录](../../sources/papers/humanoid_rl_stack_42_catalog.md)
 - [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
+- [VB-Com 论文摘录（arXiv:2502.14814）](../../sources/papers/vb_com_arxiv_2502_14814.md)
 - [ParkourFormer 论文摘录（arXiv:2605.25782）](../../sources/papers/parkourformer_arxiv_2605_25782.md)

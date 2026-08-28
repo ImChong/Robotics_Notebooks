@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -28,6 +28,7 @@ related:
   - ./paper-zest.md
   - ./paper-humanoidvln.md
   - ./paper-fail-passive-gap.md
+  - ./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
@@ -99,6 +100,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流；G1 速度/高度/stand-up/舞蹈/pick&place（arXiv:2603.20147）
 - [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰 RL 控制器；G1 零样本部署
 - [P³](./paper-p3.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
+- [VB-Com](./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，G1/H1 感知缺失下缺口与动态障碍（ICRA 2026；代码 coming soon）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 稀疏奖励全身推箱；SMPC 专家 + FastTD3（arXiv:2608.12063；截至 2026-08-17 未开源）
 - [ZEST](./paper-zest.md) — RAI × BD：视频爬箱/芭蕾与 MoCap 侧手翻、乒乓球零样本（Science Robotics 2026；未开源）
 - [RoboReact](./paper-roboreact.md) — 生成 egocentric 视频蒸馏全身操作；G1 + HOMIE，四任务均值 SR 81.3%（arXiv:2608.03387；未开源）

@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-28
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -28,6 +28,7 @@ related:
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-egohtr.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
+  - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/privileged_training.md
@@ -38,6 +39,7 @@ sources:
   - ../../sources/papers/dpl_arxiv_2510_07152.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
+  - ../../sources/papers/vb_com_arxiv_2502_14814.md
   - ../../sources/papers/ame_arxiv_2506_09588.md
   - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
@@ -167,6 +169,7 @@ sources:
 - [sources/papers/humoslope_arxiv_2607_07830.md](../../sources/papers/humoslope_arxiv_2607_07830.md) — HumoSlope：盲策略下连续陡坡姿态/步态适应（局部平面 ZMP + BSGA）
 - [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：崎岖地形 + 未知动态载荷
 - [sources/papers/dpl_arxiv_2510_07152.md](../../sources/papers/dpl_arxiv_2510_07152.md) — DPL：单深度交叉注意力高程重建 + 盲骨干多教师
+- [sources/papers/vb_com_arxiv_2502_14814.md](../../sources/papers/vb_com_arxiv_2502_14814.md) — VB-Com：高程图失效时视觉/盲策略切换
 
 ## 关联页面
 
@@ -180,6 +183,7 @@ sources:
 - [EgoHTR](../entities/paper-egohtr.md) — 场景对齐人演示支撑 foothold-critical 感知穿越
 - [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 无在线外感知的连续陡坡适应：局部平面 ZMP + 生物力学门控
 - [CReF](../entities/paper-cref.md) — 前向深度不经高程图的单阶段适应 + 足端可支撑落脚奖励
+- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 高程图失效时切盲策略做缺口/动态障碍恢复，而不是把噪声硬塞进单策略
 
 ## 推荐继续阅读
 

@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-08-28
 arxiv: "2411.14386"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-humanoid-locomotion-with-perceptive-int.md
 summary: "Learning Humanoid Locomotion with Perceptive Internal Model：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -58,6 +59,7 @@ Learning Humanoid Locomotion with Perceptive Internal Model 的人形机器人�
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 同组后续：[VB-Com](./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 在 PIM 式高程图上加视觉/盲策略切换（ICRA 2026 已升格）
 
 ## 参考来源
 

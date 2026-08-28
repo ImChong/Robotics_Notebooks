@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-28
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-learning-quiet-walking-aibo.md
   - ../entities/paper-quietwalk-humanoid-locomotion.md
   - ../entities/paper-g1-confined-space-wbp.md
+  - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
   - ../entities/paper-p3.md
 summary: "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
 ---
@@ -109,6 +110,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — slope-adaptive ZMP + BSGA；G1 盲穿户外草地坡至 32.1°；代码未开源
 - [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪；超 NIST 孔洞/倾斜楼梯（arXiv:2608.10220；未开源）
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
+- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，高程图失效时切盲走恢复（G1/H1，ICRA 2026；代码 coming soon）
 - [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide
 - [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
 - [RAVEN：RL 自适应可见图 + cf-MPC](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — 导航层 RL 改障碍膨胀，行走层 Booster Gym；延迟与噪声下鲁棒导航
