@@ -8,6 +8,7 @@
 - **代码：** <https://github.com/Public-BOTs/UCAG-P>
 - **项目页：** <https://public-bots.github.io/UCAG-P/>
 - **论文：** <https://arxiv.org/abs/2608.26058>
+- **许可：** 未声明
 - **入库日期：** 2026-08-28
 - **一句话说明：** GitHub 目前托管 UCAG-P **项目页与论文配图**；README 明确 *training, inference, and evaluation code will be released soon*，无许可证、无训练脚本、无权重。
 
@@ -33,5 +34,5 @@
 
 ## 对 wiki 的映射
 
-- 新建 **`wiki/entities/paper-ucag-p.md`**
+- [`wiki/entities/paper-ucag-p.md`](../../wiki/entities/paper-ucag-p.md)
 - 交叉 [VLA](../../wiki/methods/vla.md)、[Qwen-RobotManip](../../wiki/entities/qwen-robot-manip.md)、[Qwen-VLA](../../wiki/entities/qwen-vla.md)

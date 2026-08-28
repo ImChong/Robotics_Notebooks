@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../entities/current-robotics-currentworld.md
@@ -38,6 +38,9 @@ related:
   - ../entities/paper-physisforcing.md
   - ../entities/paper-flex-pi.md
   - ../entities/paper-oscar.md
+  - ../entities/paper-gaussiandream-plusplus.md
+  - ../entities/paper-confal-wm.md
+  - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
@@ -288,6 +291,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy
+- [GaussianDream++](../entities/paper-gaussiandream-plusplus.md) — 训练期高斯世界、部署 20 令牌
+- [ConfAL-WM](../entities/paper-confal-wm.md) — 稠密置信度主动后训练
 - [EmbodiedVAE](../entities/paper-embodiedvae.md) — 为操作视频世界模型解耦臂/背景的 video VAE
 - [NVIDIA Omniverse](../entities/nvidia-omniverse.md)
 - [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。

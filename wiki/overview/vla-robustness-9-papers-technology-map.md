@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, action-chunking, embodied-ai, technology-map]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-28
 related:
   - ../entities/paper-sparkvla.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-structrl.md
   - ../methods/vla.md
   - ../methods/action-chunking.md
+  - ./wam-vla-cross-embodiment-9-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md
   - ../../sources/raw/wechat_embodied_station_9_papers_open_source_2026-08-23.md
@@ -23,7 +24,7 @@ summary: "依据具身智能小站 2026-08-23 九篇盘点，把近期工作读�
 
 # VLA 可执行性与鲁棒性：9 篇论文的阅读坐标
 
-> **本页定位**：为 [具身智能小站 · 9 篇盘点](https://mp.weixin.qq.com/s/CXOf3PU8-H6OzI77vnhZMA)（2026-08-23）提供 **按四类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [视频–接触–控制（2026-08-22）](./video-contact-control-10-papers-technology-map.md)、[世界模型与真实执行（2026-08-19）](./world-model-exec-10-papers-technology-map.md)。
+> **本页定位**：为 [具身智能小站 · 9 篇盘点](https://mp.weixin.qq.com/s/CXOf3PU8-H6OzI77vnhZMA)（2026-08-23）提供 **按四类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [视频–接触–控制（2026-08-22）](./video-contact-control-10-papers-technology-map.md)、[世界模型与真实执行（2026-08-19）](./world-model-exec-10-papers-technology-map.md)、[WAM / VLA / 跨本体（2026-08-28）](./wam-vla-cross-embodiment-9-papers-technology-map.md)。
 
 ## 一句话观点
 

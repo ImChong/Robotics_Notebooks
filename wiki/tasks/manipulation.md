@@ -332,6 +332,8 @@ flowchart TD
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 0.47B 动作接地 latent 策略（LIBERO/CALVIN/真机）
 - [UCAG-P](../entities/paper-ucag-p.md) — 相机系腕/抓取锚点跨本体操作 VLA（arXiv:2608.26058）
 - [HIL-HARC](../entities/paper-hil-harc.md) — 真机在线 RL：CTDE 混合动作 + 分解 critic
+- [Anytime GTMP](../entities/paper-anytime-gtmp.md) — 层状张量全局规划 + 黑盒局部器；MBM 60s 成功率约 85%
+- [Zero-WAM](../entities/paper-zero-wam.md) — 人类视频提示 WAM；RoboTwin 未见 46.95%（待发布）
 - [Loco-Manipulation](./loco-manipulation.md) — 边走边操作的全身协调扩展
 - [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 如何高效采集人类演示数据

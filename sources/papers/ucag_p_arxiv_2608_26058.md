@@ -13,6 +13,7 @@
 - **作者：** Shaoqing Xu, Fang Li, Guozhi Zhan, Zhixiang Duan, Yuhan Wang, Yuechen Luo, Shengyin Jiang, Hanbing Li, Zhiying Du, Hangjun Ye, Zhi-xin Yang, Longlong Wang, Longmei Jiang, Weixiang Liang, Ying Gong, Yong Pan, Ziping Zhao, Zhiyuan Chen, Yangwei You, Kun Ma, Qinyuan Liu
 - **核心贡献者：** Shaoqing Xu\*†, Fang Li\*, Guozhi Zhan\*, Zhixiang Duan\*†, Yuhan Wang, Yuechen Luo, Shengyin Jiang, Hanbing Li, Zhiying Du, Hangjun Ye, Zhi-xin Yang ✉（\* 同等贡献；† Project Leads）
 - **入库日期：** 2026-08-28
+- **索引来源：** 独立 ingest；亦见于 [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md)
 - **一句话说明：** 把异构机器人与人手演示对齐到 **相机系腕/抓取锚点运动**，共享 VLA 学几何、几何条件翻译器再出各本体可执行命令；单 checkpoint 跨 LIBERO / RoboTwin / RoboCasa GR-1，无需 per-benchmark 微调。
 
 ## 开源状态（步骤 2.5，2026-08-28）
@@ -64,8 +65,11 @@
 - **短板：** OpenMicrowave 仅 11%/13%；接触丰富/铰接任务与跨形态迁移仍难；几何依赖标定、深度、运动学与 MediaPipe 关键点。
 - **对 wiki 的映射：**
   - [Qwen-VLA](../../wiki/entities/qwen-vla.md)
+  - [LIBERO](../../wiki/entities/libero-benchmark.md)
   - [DyPES-VLA](../../wiki/entities/paper-dypes-vla.md)（对照：不统一动作格式，改共享动力学 + MoE 原生头）
   - [跨具身迁移知识链](../../wiki/overview/hub-cross-embodiment.md)
+  - [跨具身策略迁移选型指南](../../wiki/queries/cross-embodiment-transfer-strategy.md)
+  - [WAM / VLA / 跨本体 9 篇技术地图](../../wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md)
 
 ## 当前提炼状态
 

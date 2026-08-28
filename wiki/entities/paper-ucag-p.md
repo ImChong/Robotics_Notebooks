@@ -8,10 +8,12 @@ tags:
   - manipulation
   - humanoid
   - xiaomi
+  - xiaomi-robotics
   - umac
 status: complete
 updated: 2026-08-28
 arxiv: "2608.26058"
+code: https://github.com/Public-BOTs/UCAG-P
 related:
   - ../methods/vla.md
   - ./qwen-robot-manip.md
@@ -19,14 +21,19 @@ related:
   - ./xiaomi-robotics-0.md
   - ./paper-dypes-vla.md
   - ./paper-egoverse.md
+  - ./paper-zero-wam.md
+  - ./libero-benchmark.md
   - ../methods/uhas-unified-hand-action-space.md
   - ../concepts/open-x-embodiment.md
   - ../overview/hub-cross-embodiment.md
+  - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
+  - ../queries/cross-embodiment-transfer-strategy.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/ucag_p_arxiv_2608_26058.md
-  - ../../sources/sites/ucag-p-github-io.md
+  - ../../sources/sites/ucag-p.md
   - ../../sources/repos/ucag-p.md
+  - ../../sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md
 summary: "UCAG-P（arXiv:2608.26058，小米具身智能×澳门大学）：共享相机系腕/抓取锚点几何 + 几何条件翻译器；单 checkpoint 在 LIBERO 98.3%、RoboTwin Easy/Hard 88.7%/89.2%、LIBERO-Plus 零样本 82.0%、RoboCasa GR-1 62.0%；训练代码 coming soon。"
 ---
 
@@ -55,6 +62,7 @@ summary: "UCAG-P（arXiv:2608.26058，小米具身智能×澳门大学）：共�
 - **把「共享什么」从控制器改到相机几何：** 相对 per-dataset 动作头、embodiment prompt、或 [Qwen-RobotManip](./qwen-robot-manip.md) 的 **相机系 ΔEEF**，锚点 \(p_0/p_1\) 能同时覆盖 **人手抓取中心**，不必先合成机器人视频。
 - **解耦可迁移几何与可执行控制：** 新本体理论上可冻共享 motion head、主要训翻译器（Stage 2 仅 8×H20 / 10K）；这与 [DyPES-VLA](./paper-dypes-vla.md)「共享动力学 + MoE 原生头、故意不对齐动作」是对称选型。
 - **单 checkpoint 跨形态榜：** 无 per-benchmark 微调仍覆盖单臂 / 双臂 / 人形 / OOD / 真机 Piper，便于和 [Qwen-VLA](./qwen-vla.md) 通才表对照。
+- **接口盘点入口：** 亦收录于 [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md)（动作写成相机几何，对照 Zero-WAM 的视频任务规格）。
 
 ## 核心信息
 
@@ -120,6 +128,7 @@ flowchart TB
 | 相对 DyPES | 愿意付统一几何预处理税、换可共享 motion head；不愿维护统一动作则看 MoE 原生头 |
 | 新本体边际 | Stage 2 翻译器相对 Stage 1 很轻（8 GPU / 10K）；仍需 GT 相机系轨迹与可执行标签 |
 | 人手接入 | MediaPipe：腕→\(p_0\)，拇食中点→\(p_1\)；命令槽保持 invalid |
+| 跨本体选型 | 先读 [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)：本页是操作 VLA 的「统一几何动作空间」，不是 WBT 重定向后重训 |
 | 复现现状 | **等官方代码与权重**；当前只能按论文数字与失败模式做选型 |
 
 ## 实验与评测
@@ -154,6 +163,7 @@ flowchart TB
 | [Qwen-VLA](./qwen-vla.md) | 通才对照（同场 LIBERO/RoboTwin/GR-1）；Qwen-VLA 另覆盖 VLN，本文专注操作几何 |
 | [DyPES-VLA](./paper-dypes-vla.md) | DyPES **不对齐动作**、共享未来动力学 + MoE；本文 **对齐几何**、翻译器出原生命令 |
 | [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) | 同实验室 Qwen3-VL-4B 族；XR-0 讲 **异步 chunk 部署**，本文讲 **跨本体动作表示** |
+| [Zero-WAM](./paper-zero-wam.md) | Zero-WAM 统一 **任务规格（视频）**；本文统一 **动作几何** |
 | [UHAS](../methods/uhas-unified-hand-action-space.md) | 灵巧手 **球面形变 + CIK**；本文是 VLA 相机锚点，粒度在腕/抓取而非指关节 |
 | [Open X-Embodiment](../concepts/open-x-embodiment.md) | OXE 是数据规范化倡议；UCAG-P 是在异构源上的 **几何动作接口** |
 
@@ -172,17 +182,22 @@ flowchart TB
 - [Qwen-VLA](./qwen-vla.md) — 文内 generalist 数字对照
 - [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) — 同实验室实时 VLA
 - [DyPES-VLA](./paper-dypes-vla.md) — 「不对齐动作」的对称方案
+- [Zero-WAM](./paper-zero-wam.md) — 视频任务规格对照
+- [LIBERO](./libero-benchmark.md) — 单臂操作榜
 - [Open X-Embodiment](../concepts/open-x-embodiment.md) — 跨本体数据轴
 - [EgoVerse](./paper-egoverse.md) — 人手小时源之一
 - [UHAS](../methods/uhas-unified-hand-action-space.md) — 灵巧手统一动作空间对照
 - [跨具身迁移知识链](../overview/hub-cross-embodiment.md)
+- [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)
+- [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md)
 - [Manipulation](../tasks/manipulation.md)
 
 ## 参考来源
 
 - [ucag_p_arxiv_2608_26058.md](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 论文摘录与开源核查
-- [ucag-p-github-io.md](../../sources/sites/ucag-p-github-io.md) — 项目页核查
+- [ucag-p.md](../../sources/sites/ucag-p.md) — 项目页核查
 - [ucag-p.md](../../sources/repos/ucag-p.md) — GitHub 占位仓
+- [具身智能小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md)
 - [arXiv:2608.26058](https://arxiv.org/abs/2608.26058) — 原文
 
 ## 推荐继续阅读

@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）、LAWA（潜动作意图）与 Dyna-2 等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -41,6 +41,8 @@ related:
   - ../entities/paper-egoverse.md
   - ../entities/paper-embodiedvae.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
+  - ../entities/paper-zero-wam.md
+  - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-world-action-planner.md
@@ -291,6 +293,8 @@ flowchart TB
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — Motubrain 平台六策略实证
 - [Rift（免视频 rollout 的未来 cache）](../entities/paper-rift-wam.md) — anticipation token 一次写 K/V；LIBERO 98.8% / 1.1× 延迟（未开源）
 - [LAWA（潜动作作未来意图）](../entities/paper-lawa.md) — 测试时去噪 latent 意图而非像素；RoboCasa 65.6/80.8%；代码待发布（arXiv:2608.24882）
+- [Zero-WAM](../entities/paper-zero-wam.md) — 人类视频 in-context 任务规格；RoboTwin 未见 46.95%；真机放置/长程/插入 53.3/33.3/16.7%；代码待发布
+- [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md)
 - [DynaWM（VLA 在线修正）](../entities/paper-dynawm-vla-online-correction.md)
 - [DreamSteer（部署时 VLA steering）](../entities/paper-dreamsteer-vla-deployment-steering.md)
 - [4D-WAM（轨迹场 alignment）](../entities/paper-4d-wam.md) — motion + destination；LIBERO-Plus +8.8

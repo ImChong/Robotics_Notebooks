@@ -27,6 +27,7 @@ related:
   - ./paper-wam-realtime-async.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ./paper-zero-wam.md
 sources:
   - ../../sources/papers/lawa_arxiv_2608_24882.md
   - ../../sources/sites/getterupper-lawa.md
@@ -151,6 +152,7 @@ DINOv2 帧差量化 + 下一帧重建；辅助 **SAM 2 自动掩码** 把码偏�
 - [WAM 实时异步部署](./paper-wam-realtime-async.md) — 延迟在 chunk 切换层
 - [VLA](../methods/vla.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Zero-WAM](./paper-zero-wam.md) — 人视频提示的因果 WAM；对照本页「语言 + latent 意图」
 
 ## 参考来源
 

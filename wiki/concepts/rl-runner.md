@@ -95,7 +95,7 @@ flowchart TB
 | **On-policy** | PPO, A2C, TRPO | 当前策略刚采的轨迹 | rollout → [GAE](../methods/gae.md) → update → **丢弃** rollout | [PPO](../methods/ppo.md) |
 | **Off-policy** | SAC, TD3, DDPG, DQN | Replay Buffer | 少量采集 → 随机抽历史 → **多次**更新 | [SAC](../methods/sac.md) |
 | **Offline** | CQL, IQL, BCQ, TD3+BC | 固定数据集 | 读盘 → 更新，**不** `env.step` | [Online vs Offline](../comparisons/online-vs-offline-rl.md) |
-| **Distillation** | Teacher–Student | Teacher 动作或轨迹 | Teacher 推理 → Student 模仿 | [特权训练](./privileged-training.md) |
+| **Distillation** | Teacher–Student | Teacher 动作或轨迹 | Teacher 推理 → Student 模仿 | [特权训练](./privileged-training.md)；实例 [RSL-RL](../entities/rsl-rl.md) `DistillationRunner` |
 | **Imitation** | BC, DAgger, GAIL | 专家演示 ± 环境 | 采专家/学生轨迹 → 模仿更新 | [模仿学习](../methods/imitation-learning.md) |
 | **Multi-agent** | MAPPO, QMIX, MADDPG | 多智能体环境 | 打包多 agent 观测/动作/共享或独立策略 | [MARL](../methods/marl.md) |
 | **Self-play** | AlphaZero 类、博弈策略 | 当前或历史策略互打 | 选对手 → 对局 → 更新 → 写入策略池 | [RoboStriker](../entities/paper-notebook-robostriker.md) |
@@ -209,6 +209,7 @@ flowchart TD
 - [Stable-Baselines3](../entities/stable-baselines3.md) — `learn()` 把 Runner 藏进算法对象
 - [AMP_mjlab](../entities/amp-mjlab.md) — `AMPOnPolicyRunner` 实例
 - [Isaac Lab](../entities/isaac-lab.md) — 大规模 On-policy 并行宿主
+- [RSL-RL](../entities/rsl-rl.md) — `OnPolicyRunner` / `DistillationRunner`；BF16 只包 `update()`
 
 ## 参考来源
 

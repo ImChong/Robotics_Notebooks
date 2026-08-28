@@ -2,7 +2,7 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-28
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md
@@ -17,6 +17,7 @@ related:
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../methods/lingbot-map.md
   - ../methods/lidar-odometry-fusion.md
+  - ../entities/paper-super-odometry-2.md
 sources:
   - ../../sources/repos/navigation_slam_autonomy_stack_catalog.md
   - ../../sources/repos/fast_lio.md
@@ -128,6 +129,7 @@ flowchart TD
 - [LingBot-Map](../methods/lingbot-map.md) — 学习型流式建图对照
 - [里程计–激光融合定位](../methods/lidar-odometry-fusion.md) — 课程级 odom↔LiDAR 融合概念，本页是其开源实现（FAST-LIO/LIO-SAM 等）选型落地
 - [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计（代码待开放）
+- [SUPER ODOMETRY 2.0](../entities/paper-super-odometry-2.md) — 退化可切换的层级融合；slim 仓 ≠ 论文全文系统
 
 ## 推荐继续阅读
 

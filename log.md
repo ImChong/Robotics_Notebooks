@@ -3,8 +3,29 @@
 - **触发：** 用户指定 *One Policy, Many Embodiments*（arXiv / 小米具身智能 × 澳门大学）；要求自动合并 PR
 - **步骤 2.5：** **宣称将开源 / 待发布** — 项目页 <https://public-bots.github.io/UCAG-P>；[Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 仅为配图与静态站，README *code will be released soon*
 - **关键页：** [`wiki/entities/paper-ucag-p.md`](wiki/entities/paper-ucag-p.md)
-- **交叉：** VLA / Qwen-RobotManip / Qwen-VLA / Xiaomi-Robotics-0/1 / DyPES-VLA / Open X-Embodiment / hub-vla / hub-cross-embodiment / manipulation
+- **交叉：** VLA / Qwen-RobotManip / Qwen-VLA / Xiaomi-Robotics-0/1 / DyPES-VLA / Open X-Embodiment / hub-vla / hub-cross-embodiment / manipulation；合入时与 main 上 9 篇盘点 / 五篇 ingest 共用同一实体页并加深编译
 - **机构：** `xiaomi` / `umac`
+
+## [2026-08-28] ingest | sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md — 具身智能小站 9 篇（WAM/VLA/跨本体）；9/9 独立 paper-* 节点；开源分化
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/FNhRO3KOm8k8CkJEqystQQ>；要求每篇论文独立、非重复详情节点
+- **步骤 2.5：** Zero-WAM / StreamPI / UCAG-P / R³ **待发布**；MA-VLA / ConfAL-WM / TARCAT 标注 **已开源**；GaussianDream++ / Super Odometry 2.0 **部分开源**
+- **关键页：** [`wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md`](wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md)；9 个新建 `paper-*`（含 GaussianDream++ 与 Awesome 索引级 2605.20752 **分列**）
+- **交叉：** WAM / VLA / 生成式世界模型 / LIO 选型
+- **机构：** 注册 `robbyant` / `buffalo` / `uci`；合入 main 时与 RSL-RL 五篇 ingest 共用 Zero-WAM / UCAG-P 规范页
+
+## [2026-08-28] ingest | sources/papers/{anytime_gtmp,lac,zero_wam,ucag_p}_arxiv_2608_*.md, sources/repos/rsl_rl.md — RSL-RL BF16 PPO/蒸馏、Anytime GTMP 批量规划、LAC 线角柔顺、Zero-WAM 人视频提示、UCAG-P 跨本体动作几何
+
+- **触发：** 用户指定五条资料一并 ingest，并要求自动合并 PR
+- **步骤 2.5：**
+  - **RSL-RL** — **已开源** BSD-3-Clause（[leggedrobotics/rsl_rl](https://github.com/leggedrobotics/rsl_rl)）；PPO + DistillationRunner；BF16 仅 `update()` autocast
+  - **Anytime GTMP** — **已开源** MIT（[CoMMALab/anytime_gtmp](https://github.com/CoMMALab/anytime_gtmp)）；需 vamp `benchmark_aorrtc_backend` 子模块
+  - **LAC** — **部分开源**（[lac-humanoid/lac-code](https://github.com/lac-humanoid/lac-code) MIT：ckpt / sim2sim / ROS 2；Isaac Lab 训练未发布）；项目页 <https://lac-humanoid.github.io/>
+  - **Zero-WAM** — **宣称将开源 / 待发布**（仓占位，预计 2026-09-15 前发代码/模型/数据）；项目页 <https://robbyant-research.github.io/Zero-WAM/>
+  - **UCAG-P** — **宣称将开源 / 待发布**（仓为论文图与项目页）；项目页 <https://public-bots.github.io/UCAG-P/>
+- **关键页：** [`wiki/entities/rsl-rl.md`](wiki/entities/rsl-rl.md)、[`wiki/entities/paper-anytime-gtmp.md`](wiki/entities/paper-anytime-gtmp.md)、[`wiki/entities/paper-lac.md`](wiki/entities/paper-lac.md)、[`wiki/entities/paper-zero-wam.md`](wiki/entities/paper-zero-wam.md)、[`wiki/entities/paper-ucag-p.md`](wiki/entities/paper-ucag-p.md)
+- **交叉：** PPO / RL Runner / 特权训练 / AMP-RSL-RL / Isaac Lab / HMI 开源覆盖；阻抗/导纳 / loco-manip / GentleHumanoid；WAM / ICL / LAWA；manipulation / Qwen-RobotManip / 跨本体迁移 / cuRobo
+- **机构：** 注册 `tohoku` / `vinuni` / `robbyant`；UCAG-P 用已有 `umac`
 
 ## [2026-08-28] ingest | sources/repos/kimodo-cpp.md — LocalAI kimodo.cpp（C++/GGML）；已开源 Apache-2.0；SOMA/G1 GGUF 已发布、SMPL-X 禁止再分发；升格 wiki/entities/kimodo-cpp.md
 

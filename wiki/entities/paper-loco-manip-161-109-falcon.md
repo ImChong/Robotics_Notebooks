@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, force-adaptive-control, reinforcement-learning, whole-body-control, sim2real, humanoid, cmu]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 arxiv: "2505.06776"
 venue: "L4DC 2026 Oral"
 related:
