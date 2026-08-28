@@ -68,7 +68,9 @@ STALE_CLAIM_PATTERNS = [
 # 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下四类是
 # 结构性误报，按命中处的上下文豁免，避免为迁就正则去改写本就正确的正文：
 #   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」
-#      「这一行不可直接当 SOTA 通才」等辟谣式写法，本身就在否认该断言；
+#      「这一行不可直接当 SOTA 通才」等辟谣式写法，本身就在否认该断言；中文里
+#      辟谣也可后置（「0.066 vs 0.067，读『SOTA 碾压』会过读」），落笔顺序相反、
+#      语义同为否认，故前置线索回看、后置线索前看，都限制在命中词同句内；
 #   2) 库内页面名：「VLA SOTA Leaderboard」是 entities/vla-sota-leaderboard.md 的
 #      页面标题，正文引用它属导航，不是本页断言；
 #   3) 运行时对象：「服务端只保留最新 pending 帧」「取最新状态」描述系统行为，
@@ -92,6 +94,14 @@ STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
 # 命中词前回看的字符数（并限制在同一句内：遇句末标点/换行即截断）
 STALE_CLAIM_NEGATION_WINDOW = 30
 STALE_CLAIM_SENTENCE_BREAKS = "。！？；\n"
+# 后置否定线索：把「读成 X」的读法判为过度解读，与前置的「不是 X」同为辟谣
+STALE_CLAIM_OVERREAD_CUES: tuple[str, ...] = (
+    "过读",
+    "过度解读",
+    "读过头",
+)
+# 命中词后前看的字符数（同样限制在同一句内）
+STALE_CLAIM_OVERREAD_WINDOW = 30
 # 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
     r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数)"
@@ -269,20 +279,49 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                （泛化侧取舍）：迁移/评测的 **条件状语**（zero-shot 迁移、
 #                zero-shot 泛化、0% 任务数据），与 rgb-d / vlm 同为描述性标签
 #                而非独立可成页机制，另建概念页只会与 sim2real 重复同一来源
+#   base       → 三义各有归属：URDF/MuJoCo 的基座连杆（TITA `base` 接触即
+#                terminate、相机到 `base`/`head` 的 TF）归
+#                concepts/urdf-robot-description.md + concepts/floating-base-dynamics.md
+#                （固定基座 vs 浮动基座、\(q_b\) 位姿）；权重档名（EgoSteer
+#                「自有数据微调用 **Base**」）属外部模型型号；消融/基线条件名
+#                （HumanoidArena 的 **Base** 任务档、AMP survey 的 **Base** = 仅
+#                Stage 1）属单页实验设定。与 joint 同为多义 token，本库按本体/
+#                实验维度记述，不单建概念页
+#   cartpole-v1 → concepts/cartpole.md（canonical 概念页，注册名写法与页面 stem
+#                不同名）+ entities/gymnasium.md（注册表入口）：Gymnasium 的环境
+#                注册 id，与 sim-to-real / urdf 同属「id 写法 ≠ 页面 stem」，
+#                不应按裸 id 误报为缺页
+#   isaac-cartpole-v0 → concepts/cartpole.md（同一 cart-pole 概念的 GPU 并行版，
+#                该页「从 CPU 玩具跨到 GPU 训练栈」一节逐条记述）+
+#                entities/isaac-lab-default-environments.md（默认环境清单）：
+#                与 cartpole-v1 同为环境注册 id，不单建概念页
+#   libero     → entities/libero-benchmark.md（130 个机械臂任务的终身学习/迁移
+#                基准，slug 与页面 stem 不同名）：基准数据集归 entities，
+#                与 lerobot / mjlab 同类，不应按裸名误报为缺 concepts 页
+#   onpolicyrunner → concepts/rl-runner.md（Runner 层的 canonical 概念页，
+#                「rsl_rl 叫 `OnPolicyRunner`」即该页对号入座的锚点）+
+#                entities/rsl-rl.md（该类的实现库）：具体实现的类名，本体是已建
+#                页的 on-policy Runner 抽象，与 qpos / reset 同为代码 token 而非
+#                机制，不单建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "action",
+    "base",  # 基座连杆 / 权重档名 / 消融条件名三义，已由 URDF + 浮动基座等页覆盖
     "amp",
     "armature",
+    "cartpole-v1",  # Gymnasium 环境注册 id，已由 concepts/cartpole.md 覆盖
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
     "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
     "g1",
     "gmr",
     "heracles",
+    "isaac-cartpole-v0",  # Isaac Lab 环境注册 id，已由 concepts/cartpole.md 覆盖
     "joint",  # 关节属性 / WAM Joint 族 / 消融条件名三义，已由 URDF + WAM 等页覆盖
     "lerobot",  # 已由 entities/lerobot.md 覆盖（框架/工具，与 mjlab / mujoco 同类）
+    "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     "mujoco",
+    "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
     "qpos",  # MuJoCo 状态数组字段名，已由广义坐标 $q$ 的形式化/概念页覆盖
     "qwen3-vl",  # 外部 VLM 底座型号，已在 methods/vla.md 等按「底座」维度记述
     "reset",  # 环境/策略 API 方法名（episode 复位），已由 entities/gymnasium.md 释义
@@ -762,12 +801,20 @@ def _frontmatter_tags(fm_block: str) -> set[str]:
     return tags
 
 
-def _stale_claim_negated(body: str, start: int) -> bool:
-    """命中词前、同一句内出现否定线索 → 辟谣式写法，不是本页在下断言。"""
-    window = body[max(0, start - STALE_CLAIM_NEGATION_WINDOW) : start]
+def _stale_claim_negated(body: str, start: int, end: int) -> bool:
+    """命中词同句内出现否定线索 → 辟谣式写法，不是本页在下断言。
+
+    前置线索回看（「不是策略 SoTA」），后置线索前看（「读『SOTA 碾压』会过读」）。
+    """
+    before = body[max(0, start - STALE_CLAIM_NEGATION_WINDOW) : start]
     for brk in STALE_CLAIM_SENTENCE_BREAKS:
-        window = window.rsplit(brk, 1)[-1]
-    return any(cue in window for cue in STALE_CLAIM_NEGATION_CUES)
+        before = before.rsplit(brk, 1)[-1]
+    if any(cue in before for cue in STALE_CLAIM_NEGATION_CUES):
+        return True
+    after = body[end : end + STALE_CLAIM_OVERREAD_WINDOW]
+    for brk in STALE_CLAIM_SENTENCE_BREAKS:
+        after = after.split(brk, 1)[0]
+    return any(cue in after for cue in STALE_CLAIM_OVERREAD_CUES)
 
 
 def _stale_claim_span_slug(body: str, start: int, end: int) -> str:
@@ -783,7 +830,7 @@ def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
     """返回正文里第一个「真·绝对化断言」，命中全属结构性误报时返回 ``None``。"""
     for pat in STALE_CLAIM_PATTERNS:
         for m in re.finditer(pat, body, re.IGNORECASE):
-            if _stale_claim_negated(body, m.start()):
+            if _stale_claim_negated(body, m.start(), m.end()):
                 continue
             if _stale_claim_span_slug(body, m.start(), m.end()) in page_stems:
                 continue
