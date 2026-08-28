@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3324,
-  "edge_count": 29677,
+  "node_count": 3325,
+  "edge_count": 29711,
   "coverage": {
-    "covered": 3299,
-    "total": 3299,
+    "covered": 3300,
+    "total": 3300,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -215,7 +215,7 @@
       "recency": "2026-08-27",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -232,11 +232,11 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 694
+      "size": 737
     },
     {
       "label": "操作",
-      "size": 548
+      "size": 583
     },
     {
       "label": "视觉-语言-动作",
@@ -244,15 +244,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 219
-    },
-    {
-      "label": "世界动作模型",
-      "size": 139
+      "size": 218
     },
     {
       "label": "全身控制",
       "size": 136
+    },
+    {
+      "label": "移动操作",
+      "size": 134
     }
   ],
   "top_hubs": [
@@ -260,7 +260,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1340,
+      "degree": 1342,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -291,7 +291,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 782,
+      "degree": 784,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -392,7 +392,16 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 44
+      "degree": 44,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "detail_id": "entity-paper-ctrl-world",
+      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
+      "type": "entity",
+      "degree": 42,
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -400,13 +409,6 @@
       "type": "entity",
       "degree": 41,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "degree": 41,
-      "has_repo": true
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, streaming-tts, causal-generation, human-robot-interaction, low-latency]
+tags: [paper, streaming-tts, causal-generation, human-robot-interaction, low-latency, x-square-robot]
 status: complete
 updated: 2026-08-21
 arxiv: "2608.18661"
@@ -8,6 +8,7 @@ related:
   - ../tasks/teleoperation.md
   - ../methods/vla.md
   - ./paper-shrimp.md
+  - ./paper-wall-ss.md
 sources:
   - ../../sources/papers/x2streaming_tts_arxiv_2608_18661.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
@@ -16,7 +17,7 @@ summary: "X2Streaming-TTS（arXiv:2608.18661，X Square Robot）：令牌级因�
 
 # X2Streaming-TTS：令牌级因果流式语音合成
 
-**X2Streaming-TTS**（*Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inheritance*；[arXiv:2608.18661](https://arxiv.org/abs/2608.18661)）由 **X Square Robot（平方机器人）** 提出：服务机器人语音交互的低时延上限不只取决于声学模型 FLOPs，还取决于系统如何在 **前缀不确定** 时持续发声。
+**X2Streaming-TTS**（*Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inheritance*；[arXiv:2608.18661](https://arxiv.org/abs/2608.18661)）由 **自变量机器人（X Square Robot）** 提出：服务机器人语音交互的低时延上限不只取决于声学模型 FLOPs，还取决于系统如何在 **前缀不确定** 时持续发声。
 
 ## 一句话定义
 
@@ -42,7 +43,7 @@ summary: "X2Streaming-TTS（arXiv:2608.18661，X Square Robot）：令牌级因�
 
 | 项 | 内容 |
 |----|------|
-| **机构** | X Square Robot |
+| **机构** | 自变量机器人（X Square Robot） |
 | **接口** | **零未来 lookahead** 的令牌级输入 |
 | **延迟** | 单请求首音频令牌 **15.8 ms**；128 并发 **260.8 ms** |
 | **开源** | **待发布** — 论文链 [GitHub](https://github.com/X-Square-Robot/X2Streaming-TTS) **404**（2026-08-21） |
@@ -117,6 +118,7 @@ flowchart LR
 
 - [Teleoperation](../tasks/teleoperation.md)
 - [SHRIMP](./paper-shrimp.md) — 自然语言→机器人任务（不同模态，可组合）
+- [WALL-SS](./paper-wall-ss.md) — 同机构 next-scale 世界模型
 
 ## 参考来源
 

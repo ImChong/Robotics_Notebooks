@@ -21,6 +21,7 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
   - ./paper-ctrl-world.md
+  - ./paper-wall-ss.md
   - ./paper-sc3-eval.md
   - ./paper-gigaworld-1-policy-evaluation.md
   - ../overview/hub-embodied-eval-benchmark.md
@@ -144,6 +145,7 @@ flowchart LR
 - [评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 层动作忠实
 - [动作后果分类 04](../overview/wm-action-consequence-category-04-eval-posttrain.md) — 评测→后训练
 - [Ctrl-World](./paper-ctrl-world.md) — 主对照与策略改进基线
+- [WALL-SS](./paper-wall-ss.md) — next-scale AR；WorldArena 动作跟随 + 虚实成功率，不报 SE(3) NDTW
 - [SC3-Eval](./paper-sc3-eval.md) — 自一致评估器，不测 off-expert SE(3)
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — 「动作忠实 > 视觉逼真」
 - [具身评测基准枢纽](../overview/hub-embodied-eval-benchmark.md)

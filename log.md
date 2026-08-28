@@ -1,3 +1,11 @@
+## [2026-08-28] ingest | sources/papers/wall_ss_x_square_2026.md — 自变量 WALL-SS 下一尺度自回归长程世界模型；训练推理代码待发布；升格 wiki/entities/paper-wall-ss.md
+
+- **触发：** 用户指定 *WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression*（自变量机器人；项目页 <http://x2robot.com/pages/ss>）；要求自动合并 PR
+- **步骤 2.5：** **宣称将开源 / 待发布训练推理代码** — [X-Square-Robot/wall-ss](https://github.com/X-Square-Robot/wall-ss) MIT 占位仓（PDF + README + assets）；README TODO *Release the training and inference code* 未勾选；无公开 arXiv abs（页眉 `arXiv:submit/7998075`）
+- **关键页：** [`wiki/entities/paper-wall-ss.md`](wiki/entities/paper-wall-ss.md)
+- **交叉：** 生成式世界模型 / 视频即仿真 / 虚拟沙盒 / 训练闭环 taxonomy / Ctrl-World / OSCAR / SC3-Eval / Cosmos 3 / WorldEcho / GigaWorld-1
+- **机构：** 新注册 `x-square-robot`（自变量机器人（X Square Robot））；顺带修正 X2Streaming-TTS 的中文机构名
+
 ## [2026-08-28] ingest | sources/papers/video2door_traversal_arxiv_2608_20251.md — 加深 Video2DoorTraversal 单视频门孪生穿门；项目页仍 Code Coming soon
 
 - **触发：** 用户指定 <https://video2doortraversal.github.io/> 与 [arXiv:2608.20251v1](https://arxiv.org/abs/2608.20251v1)；要求自动合并 PR

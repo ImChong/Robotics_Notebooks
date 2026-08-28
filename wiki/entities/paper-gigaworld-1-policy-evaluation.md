@@ -22,6 +22,7 @@ related:
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-worldscape-moe-heterogeneous-action.md
   - ../entities/paper-driftworld.md
+  - ../entities/paper-wall-ss.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
@@ -144,6 +145,7 @@ flowchart TB
 - [CurrentWorld-0](./current-robotics-currentworld.md) — 产业侧交互模拟器：评测相关性叙事 + 失败态回滚后训练
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — 环境扩展
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「② 世界模型作策略评估器层」的代表工作（长时序动作忠实 > 短时视觉逼真），双向回链
+- [WALL-SS](./paper-wall-ss.md) — next-scale AR 实现：虚实成功率 \(r=0.93\)（训练代码待发布）
 
 ## 推荐继续阅读
 

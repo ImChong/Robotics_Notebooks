@@ -10,7 +10,7 @@ tags:
   - cosmos
   - skeleton-conditioning
 status: complete
-updated: 2026-08-21
+updated: 2026-08-28
 arxiv: "2606.04463"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -25,6 +25,7 @@ related:
   - ./paper-driftworld.md
   - ./current-robotics-currentworld.md
   - ./paper-masked-visual-actions.md
+  - ./paper-wall-ss.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/oscar_arxiv_2606_04463.md
@@ -168,6 +169,7 @@ flowchart TB
 - [Masked Visual Actions](./paper-masked-visual-actions.md) — 像素掩码条件：前向/逆向统一 + 策略评估
 - [Manipulation](../tasks/manipulation.md) — 操纵策略与评测语境
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页兼跨其 ② 世界模型与 ④ 校准层：视频世界模型作虚拟策略评估器，RoboArena 评测与真机排名强相关
+- [WALL-SS](./paper-wall-ss.md) — next-scale AR 虚实成功率校准对照（训练代码待发布）
 
 ## 参考来源
 

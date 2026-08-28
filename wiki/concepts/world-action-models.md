@@ -42,6 +42,7 @@ related:
   - ../entities/paper-embodiedvae.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/paper-zero-wam.md
+  - ../entities/paper-wall-ss.md
   - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
@@ -83,6 +84,7 @@ sources:
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
+  - ../../sources/papers/wall_ss_x_square_2026.md
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
@@ -163,6 +165,8 @@ sources:
 **开源实例（Joint 族 + Wan MoT 三专家 · Dexmal）**：[Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) 在 **Wan 骨干 + MoT** 上分出 **video / action / value** 专家，联合 **未来视频、32D 动作与状态–价值**；发布 **DW05-Base** 与 **RoboTwin 2.0 SFT** 权重及 **RobotWin-style JSONL** 训练/推理栈（2026-07 GitHub + Hugging Face）。
 
 **平台实例（Joint 族 + 全模态单栈 · NVIDIA）**：[Cosmos 3](../entities/cosmos-3.md) 在 **MoT** 内用 **Generator** 同时暴露 **policy、forward dynamics、inverse dynamics**，用 **Reasoner** 做具身 CoT 与 2D 轨迹规划，并支持 **Reasoning + Generation**（先文本轨迹再视频再生）；与 Cascaded「先完整视频计划再解码动作」相比，更强调 **同一 checkpoint 多任务 I/O 配置** 与 **开源 serving 栈**（arXiv:2606.02800）。
+
+**相邻（世界模型优先 + 共训动作专家 · 自变量）**：[WALL-SS](../entities/paper-wall-ss.md) 主对象是 \(p(o'\mid o,a)\) 的 **next-scale AR 世界模型**，再在已提交因果状态上共训 flow-matching 动作专家；真机 Task Progress **69.1**。它更接近 Cascaded「先世界后动作」，但共享同一因果状态，而不是先滚完整视频再 IDM。**训练推理代码待发布**。
 
 **文献实例（Joint 族 + 运动对齐潜动力学 · 人视频）**：[LD4WAM](../entities/paper-ld4wam.md) 在冻结 DINOv3 空间用 **语义重建 + Delta EE** 学跨本体 \(z\)，再以 Wan2.2 MoT 的 learnable queries 从生成未来蒸馏该码并条件动作专家；RoboTwin **93.4%**、夹爪+灵巧手真机均 **70.5%**；**确认未开源**（arXiv:2608.22403）。与 EgoWAM「换世界目标」不同，这里要求表征能回归真实末端增量。
 
@@ -280,6 +284,7 @@ flowchart TB
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料
 - [VLA](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
+- [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR WM + 共训动作专家（自变量；训练代码待发布）
 - [Being-H0.7](../methods/being-h07.md)
 - [Being-M0.7（人形潜空间 WAM）](../entities/paper-being-m07-humanoid-latent-wam.md)
 - [Pelican-Unified 1.0（UEI）](../methods/pelican-unified-1.md)

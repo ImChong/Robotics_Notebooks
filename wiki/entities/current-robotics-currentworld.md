@@ -14,6 +14,7 @@ related:
   - ./paper-gigaworld-1-policy-evaluation.md
   - ./paper-sa-2604-21741-hi-wm-human-in-the-world-model-for-scalable-robo.md
   - ./paper-oscar.md
+  - ./paper-wall-ss.md
   - ./paper-sc3-eval.md
   - ./paper-taco-tactile-wm-vla-posttrain.md
   - ./wuji-robotics.md
@@ -150,6 +151,7 @@ flowchart TB
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — 策略评估器研究与 WMES
 - [Hi-WM](./paper-sa-2604-21741-hi-wm-human-in-the-world-model-for-scalable-robo.md) — 同公司 Human-in-the-World-Model 论文（索引级）
 - [OSCAR](./paper-oscar.md) — 用 2D 骨架统一跨本体条件的对照路线
+- [WALL-SS](./paper-wall-ss.md) — next-scale AR 虚实成功率校准对照（训练代码待发布）
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — Curr-0 / CurrentWorld 所服务的任务
 - [Teleoperation](../tasks/teleoperation.md) — 世界模型内接管 vs 真机干预
 - [舞肌科技 · Wuji Hand](./wuji-robotics.md) — 人形末端样例之一

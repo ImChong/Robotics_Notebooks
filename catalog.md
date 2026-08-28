@@ -2354,6 +2354,7 @@
 - [VT-WAM（Visual-Tactile World Action Model · arXiv:2607.02503）](wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) — VT-WAM**（*VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation*，[arXiv:2607.025 `📅unknown` `[entity_page]`
 - [VTAP Gripper（视触觉主动掌夹爪）](wiki/entities/paper-vtap-gripper.md) — VTAP Gripper**（*Synergizing Fingertip Sensing and a Visuo-Tactile Active Palm for Dexterous In-Han `📅unknown` `[entity_page]`
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
+- [WALL-SS（下一尺度自回归长程世界模型）](wiki/entities/paper-wall-ss.md) — WALL-SS**（*WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression*，[PDF](https:/ `📅unknown` `[entity_page]`
 - [WAM 实时异步部署（Beyond Stalls · arXiv:2608.01880）](wiki/entities/paper-wam-realtime-async.md) — World Action Models in Real Time**（*An Empirical Study of Smooth Execution via Asynchronous Deploy `📅unknown` `[entity_page]`
 - [WAM-TTT（人视频 · 测试时训练 · WAM Steering）](wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — WAM-TTT**（*Steering World-Action Models by Watching Human Play at Test Time*，[arXiv:2607.06988](ht `📅unknown` `[entity_page]`
 - [Wan-Dancer（分钟级连贯 Music-to-Dance 视频生成）](wiki/entities/paper-wan-dancer.md) — Wan-Dancer**（*Wan-Dancer: A Hierarchical Framework for Minute-scale Coherent Music-to-Dance Genera `📅unknown` `[entity_page]`

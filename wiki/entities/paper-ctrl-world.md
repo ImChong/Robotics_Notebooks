@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md
@@ -31,6 +31,7 @@ related:
   - ../methods/vla.md
   - ./paper-odeworld.md
   - ./current-robotics-currentworld.md
+  - ./paper-wall-ss.md
 sources:
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
   - ../../sources/repos/ctrl-world.md
@@ -224,6 +225,7 @@ sequenceDiagram
 - [CurrentWorld-0](./current-robotics-currentworld.md) — 产业侧跨本体多视角力触觉交互模拟器（不统一动作空间；确认未开源）
 - [DreamX-Phi](./paper-dreamx-phi.md) — Wan 骨干 + PRoPE 式 SE(3)；强调动作忠实与赛道名次（占位仓）
 - [WorldEcho / WorldSync](./paper-worldecho-worldsync.md) — off-expert 动作跟随评测；策略改进对照骨干即本文
+- [WALL-SS](./paper-wall-ss.md) — next-scale AR 长程对照：虚实成功率校准，训练代码待发布
 
 ## 参考来源
 
