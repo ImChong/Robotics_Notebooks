@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/omnisim.md",
+      "detail_id": "entity-omnisim",
+      "label": "OmniSim",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-anytime-gtmp.md",
       "detail_id": "entity-paper-anytime-gtmp",
       "label": "Anytime GTMP：批量全局张量运动规划",
@@ -206,28 +217,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-worldecho-worldsync.md",
-      "detail_id": "entity-paper-worldecho-worldsync",
-      "label": "WorldEcho / WorldSync（动作条件世界模型的动作跟随评测与对齐）",
-      "type": "entity",
-      "recency": "2026-08-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-anytime-gtmp.md",
-    "detail_id": "entity-paper-anytime-gtmp",
-    "label": "Anytime GTMP：批量全局张量运动规划",
+    "path": "wiki/entities/omnisim.md",
+    "detail_id": "entity-omnisim",
+    "label": "OmniSim",
     "type": "entity",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
