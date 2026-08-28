@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, loco-manip-contact-survey, compliance, impedance-control, contact-rich, ppo, teacher-student, sim2real, unitree-g1, stanford]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-28
 arxiv: "2511.04679"
 venue: "arXiv 2025"
 code: https://github.com/Axellwppr/gentle-humanoid
@@ -143,6 +143,7 @@ sequenceDiagram
 - [CHIP](./paper-hrl-stack-36-chip.md)
 - [Thor](./paper-hrl-stack-42-thor.md)
 - [SONIC](../methods/sonic-motion-tracking.md)
+- [LAC](./paper-lac.md) — 线+角刚度命令；作者对照含本页方法（部分开源）
 
 ## 参考来源
 

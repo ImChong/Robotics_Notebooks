@@ -3022,6 +3022,27 @@
         "localai-org",
         "localai-io"
       ]
+    },
+    "tohoku": {
+      "label": "日本东北大学（Tohoku University）",
+      "aliases": [
+        "tohoku",
+        "tohoku-university"
+      ]
+    },
+    "vinuni": {
+      "label": "荣大学（VinUniversity）",
+      "aliases": [
+        "vinuni",
+        "vinuniversity"
+      ]
+    },
+    "robbyant": {
+      "label": "灵波（Robbyant）",
+      "aliases": [
+        "robbyant",
+        "robbyant-research"
+      ]
     }
   }
 }

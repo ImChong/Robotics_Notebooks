@@ -272,6 +272,7 @@ flowchart TD
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind GR2：闭源全身 VLA + ER 编排的产业对照（权重未开源）
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合未来–动作建模与 VLA/世界模型分界（综述资源入口）
 - [Teleoperation](./teleoperation.md)
+- [LAC](../entities/paper-lac.md) — G1 上身线+角柔顺；拧腕/托物可读 \(K_\theta\)（部分开源）
 - [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音高层 locomotion + 双向音频社交（H1；未开源）
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)

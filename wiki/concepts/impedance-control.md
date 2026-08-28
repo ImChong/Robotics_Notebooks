@@ -2,7 +2,7 @@
 type: concept
 tags: [control, manipulation, impedance-control, force-control, contact-rich, whole-body-control]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-28
 summary: "Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。"
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
@@ -123,4 +123,5 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Gravity Compensation](./gravity-compensation.md) — 柔顺环先扣掉 $g(q)$，否则弹簧在扛自重
 - [Manipulation](../tasks/manipulation.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
+- [LAC](../entities/paper-lac.md) — 人形上身线+角刚度命令；角通道走被动运动链（部分开源）
 - [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md)

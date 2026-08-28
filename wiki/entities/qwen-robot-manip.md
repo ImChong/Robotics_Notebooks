@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, manipulation, qwen, cross-embodiment, flow-matching, foundation-model]
 status: complete
-updated: 2026-06-16
+updated: 2026-08-28
 related:
   - ./qwen-robot-suite.md
   - ./qwen-vla.md
@@ -115,6 +115,7 @@ flowchart LR
 - [StarVLA](../methods/star-vla.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Xiaomi-Robotics-0](./xiaomi-robotics-0.md)
+- [UCAG-P](./paper-ucag-p.md) — 相机系腕+抓取中心锚点；同属跨本体动作几何，数据规模更小、代码待发布
 
 ## 推荐继续阅读
 

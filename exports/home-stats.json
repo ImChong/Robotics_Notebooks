@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-28",
-  "node_count": 3311,
-  "edge_count": 29526,
+  "node_count": 3316,
+  "edge_count": 29579,
   "coverage": {
-    "covered": 3286,
-    "total": 3286,
+    "covered": 3291,
+    "total": 3291,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -56,8 +56,7 @@
       "type": "entity",
       "recency": "2026-08-27",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-lawa.md",
@@ -202,8 +201,7 @@
       "type": "concept",
       "recency": "2026-08-26",
       "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/skild-ai.md",
@@ -230,11 +228,11 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 764
+      "size": 842
     },
     {
       "label": "操作",
-      "size": 549
+      "size": 553
     },
     {
       "label": "视觉-语言-动作",
@@ -245,12 +243,12 @@
       "size": 216
     },
     {
-      "label": "世界动作模型",
-      "size": 144
+      "label": "全身控制",
+      "size": 136
     },
     {
-      "label": "全身控制",
-      "size": 135
+      "label": "移动操作",
+      "size": 134
     }
   ],
   "top_hubs": [
@@ -258,7 +256,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1329,
+      "degree": 1335,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -281,7 +279,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 799,
+      "degree": 801,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -404,7 +402,8 @@
       "label": "GR00T N1",
       "type": "entity",
       "degree": 41,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }
