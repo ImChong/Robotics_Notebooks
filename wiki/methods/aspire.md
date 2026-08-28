@@ -2,7 +2,7 @@
 type: method
 tags: [coding-agents, skill-library, continual-learning, code-as-policy, nvidia-gear, manipulation, sim2real, evolutionary-search, nvidia]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-28
 date: 2026-06-30
 summary: "ASPIRE 是 NVIDIA GEAR 等的持续学习 code-as-policy 系统：闭环执行引擎暴露逐原语多模态 trace 供 coding agent 诊断修补，进化搜索探索多样控制程序，并把验证修复蒸馏进可扩展技能库——让后续任务以 in-context 技能加速适应，并在 LIBERO-Pro / Robosuite / BEHAVIOR-1K 上大幅超越 CaP-Agent0 与 VLA 基线，初步证明仿真技能可降低真机跨具身编程 token 成本。"
 related:
@@ -17,9 +17,12 @@ related:
   - ../entities/behavior-1k.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ../entities/paper-harness-vla.md
+  - ../concepts/llm-robotics-control-interfaces.md
+  - ../entities/anthropic-embody.md
 sources:
   - ../../sources/papers/aspire_nvidia_gear_2026.md
   - ../../sources/sites/nvidia-research-aspire.md
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
 ---
 
 # ASPIRE
@@ -173,6 +176,7 @@ flowchart TB
 - 与 [NVIDIA GEAR Lab](../entities/nvidia-gear-lab.md)：研究组锚点与姊妹工作索引。
 - 与 [GaP](../entities/paper-gap-graph-as-policy.md)：同属 agentic 编程谱；**程序技能库** vs **ROS 式计算图 + VA benchmark**。
 - 与 [Harness VLA](../entities/paper-harness-vla.md)：同属 LLM harness；ASPIRE **扩张**技能库，Harness VLA **固定**原语并把冻结 VLA 当作 `vla_act`。
+- 与 [Embody / LLM 控制接口](../concepts/llm-robotics-control-interfaces.md)：Anthropic 评测里「写 Python 控制器」普遍强于直接力矩，但 **没有技能库复利**；ASPIRE 是同一台阶上把失败修复沉淀下来的工程形态。RL 监督接口在 Embody 上多数弱于写代码，与本页「程序 > 端到端权重」同向。
 
 ## 推荐继续阅读
 

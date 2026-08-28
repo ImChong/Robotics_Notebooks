@@ -2,7 +2,7 @@
 type: query
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy, foundation-model]
 status: complete
-updated: 2026-08-27
+updated: 2026-08-28
 summary: "具身大模型分类学选型闭环知识链：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层，从分散的家族概念页沉淀为一条端到端选型决策链，逐层说明 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性的取舍及典型失败模式。"
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -22,6 +22,7 @@ related:
   - ../overview/hub-vla.md
   - ../entities/paper-daily-omni.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../concepts/llm-robotics-control-interfaces.md
 ---
 
 # Query：具身大模型分类学选型闭环知识链
@@ -166,6 +167,7 @@ VLX（Vision-Language-X，X = 可扩展任务）把感知/导航/执行收进**�
 
 - [五大具身模型分类对比（VLM/VLN/VLA/VLX/WM）](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 本链的家族底座与 I/O 边界总表
 - [VLA 方法页](../methods/vla.md) — ③ 动作执行层代表方法与训练数据
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 VLM/LLM 当监督者、预训练 VLA 当执行器的评测结论
 - [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SONIC token 当 VLA 身体接口时，低层是配方/底座/感知任务哪一层
 - [VLN 任务页](../tasks/vision-language-navigation.md) — ② 空间导航层基准与复现
 - [World Action Models（WAM）](../concepts/world-action-models.md) — ⑤ 世界模型「联合建模」范式

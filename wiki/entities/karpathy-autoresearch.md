@@ -9,13 +9,14 @@ tags:
   - autonomous-experimentation
   - research-automation
 status: complete
-updated: 2026-07-14
+updated: 2026-08-28
 related:
   - ./andrej-karpathy.md
   - ./darwin-skill.md
   - ./nuwa-skill.md
   - ./cangjie-skill.md
   - ../concepts/ai-auto-research.md
+  - ../concepts/recursive-self-improvement.md
   - ../references/llm-wiki-karpathy.md
   - ../methods/muon.md
   - ./superpowers-obra.md
@@ -114,6 +115,7 @@ flowchart LR
 ## 关联页面
 
 - [AI Auto-Research](../concepts/ai-auto-research.md)
+- [递归自改进](../concepts/recursive-self-improvement.md) — 实验室内部「实现已代理化」；本仓是固定 metric 的最小闭环，不是 RSI
 - [Andrej Karpathy](./andrej-karpathy.md)
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)
 - [Superpowers（obra）](./superpowers-obra.md)

@@ -1,3 +1,14 @@
+## [2026-08-28] ingest | sources/sites/anthropic-claude-plays-robotics.md + anthropic-model-hardware-standard.md + anthropic-recursive-self-improvement.md — Anthropic 机器人评测 / MHS / RSI 三件套
+
+- **触发：** 用户指定 [1] <https://www.anthropic.com/research/claude-plays-robotics> [2] <https://www.anthropic.com/news/model-hardware-standard-research-preview> [3] <https://www.anthropic.com/institute/recursive-self-improvement>
+- **步骤 2.5：**
+  - **Embody** — **宣称将开源 / 截至入库日 404** — `github.com/safety-research/embody`（`EXPERIMENTS.md` / `METRICS.md`）；无可运行入口
+  - **MHS** — **宣称将开源 / 研究预览未公开规范仓** — 项目页 <https://modelhardwarestandard.com/> 申请制；无 GitHub / SDK
+  - **RSI 论述** — **不适用（论述文）** — 无可运行实现；内部生产率数字不可复现
+- **关键页：** [`wiki/concepts/llm-robotics-control-interfaces.md`](wiki/concepts/llm-robotics-control-interfaces.md)、[`wiki/entities/anthropic-embody.md`](wiki/entities/anthropic-embody.md)、[`wiki/concepts/model-hardware-standard.md`](wiki/concepts/model-hardware-standard.md)、[`wiki/concepts/recursive-self-improvement.md`](wiki/concepts/recursive-self-improvement.md)
+- **交叉：** MCP / VLA / LeRobot / ASPIRE / Safety Filter / 频率解耦 / locomotion / manipulation / LIBERO / AI Auto-Research / 真机 autoresearch harness
+- **机构：** 已有 `anthropic`；新注册 `hhmi-janelia`（珍妮莉亚研究园区（HHMI Janelia））
+
 ## [2026-08-28] ingest | sources/papers/wall_ss_x_square_2026.md — 自变量 WALL-SS 下一尺度自回归长程世界模型；训练推理代码待发布；升格 wiki/entities/paper-wall-ss.md
 
 - **触发：** 用户指定 *WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression*（自变量机器人；项目页 <http://x2robot.com/pages/ss>）；要求自动合并 PR

@@ -18,10 +18,13 @@ related:
   - ../entities/skild-ai.md
   - ../overview/hub-cross-embodiment.md
   - ../overview/realab-14-papers-technology-map-2026.md
+  - ./llm-robotics-control-interfaces.md
+  - ../entities/anthropic-embody.md
 sources:
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
   - ../../sources/blogs/generalist_gen15_one_shot.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
 summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、从上下文窗口内的示范或交互证据归纳新映射；须与「映射选择」（π0.7 metadata）、「状态记忆」（MemoryVLA 等）及 test-time training（RoboTTT）区分——只有消解映射本身不确定性的第三类才是真 ICL。"
 ---
 
@@ -46,6 +49,7 @@ summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、�
 - **部署适应轴：** 新任务、新相机位姿、新末端执行器时，**当前帧往往不足以定动作**；上下文补上缺失信息，可避免每次重训整条策略。
 - **名词过载：** 2026 年「上下文」同时指 **π0.7 的 metadata 选择**、**MemoryVLA 的历史记忆**、**GEN-1.5 的 physical prompt** 与 **RoboTTT 的 8K 步 fast weights**——混用会误判机制与代价。
 - **与 Foundation Policy 交汇：** [GEN-1.5](../entities/generalist-gen15-one-shot.md) 报告 **无显式 ICL 训练** 下涌现 one-shot；[S1](../entities/skild-s1.md) 则把 ICL 写成 **预训练目标本身**（任务只经视频示范指定），并宣称覆盖 **未见 + 最长约 10 分钟**；[Qwen-RobotManip](../entities/qwen-robot-manip.md) 用 in-context chunk 做行为风格适配——预训练规模可能改变「适应」的数据与算力预算（闭源 / 技术报告，需独立验证）。
+- **通用 LLM 控机器人不是长窗口 ICL：** [Embody](../entities/anthropic-embody.md) 的代际优势来自 **短时程重试**；截掉远期上下文多数模型不掉分。这是失败后改策略，不是从示范轨迹归纳新映射——对照 [LLM 控制接口](./llm-robotics-control-interfaces.md)，勿与本页真 ICL 混读。
 
 ---
 

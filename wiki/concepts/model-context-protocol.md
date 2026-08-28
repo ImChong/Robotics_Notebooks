@@ -4,6 +4,8 @@ tags: [mcp, llm-agents, protocol, anthropic, json-rpc, tooling, agent-host, open
 status: complete
 updated: 2026-08-28
 related:
+  - ./model-hardware-standard.md
+  - ./llm-robotics-control-interfaces.md
   - ./remote-procedure-call.md
   - ../entities/freecad-mcp.md
   - ../entities/drawio-scientific-illustrator.md
@@ -21,6 +23,7 @@ sources:
   - ../../sources/sites/modelcontextprotocol-io.md
   - ../../sources/repos/modelcontextprotocol.md
   - ../../sources/sites/unreal-mcp-in-unreal-editor.md
+  - ../../sources/sites/anthropic-model-hardware-standard.md
 summary: "Model Context Protocol（MCP）是连接 AI 应用与外部数据/工具的开放标准：Host 经 Client 用 JSON-RPC 对接 Server；官方传输为 stdio 与 Streamable HTTP；Server 暴露 Tools / Resources / Prompts。2024-11 Anthropic 开源，规范与文档以 modelcontextprotocol.io 与 schema 版本目录为真源。"
 ---
 
@@ -131,11 +134,12 @@ flowchart TB
 - **版本碎片：** Host / SDK / 自定义 server 可能停在不同 schema 日期；`2026-07-28` 无状态与旧 `initialize` 会话模型并存于生态。
 - **传输能力差：** 仅官方 stdio + Streamable HTTP；不支持的传输（如部分编辑器曾只用 HTTP、无 WebSocket）需查具体产品文档。
 - **Primitives 可选实现：** 许多 shipping server **只实现 Tools**，Resources/Prompts 为空——客户端不应假设三者齐全。
-- **不是实时控制总线：** 不适合 1 kHz 力矩环或确定性运控；那是 [LCM](./lcm-basics.md) / DDS / 现场总线的领域。
+- **不是实时控制总线：** 不适合 1 kHz 力矩环或确定性运控；那是 [LCM](./lcm-basics.md) / DDS / 现场总线的领域。物理设备编排走互补的 [Model Hardware Standard](./model-hardware-standard.md)（2026-08 研究预览，驱动级 `read`/`write` + 安全限；**尚未开源**），不要把 MCP Tool 直接当成实验室仪器协议。
 - **许可过渡：** 规范仓正从 MIT 过渡到 Apache-2.0；再分发时核对当前 LICENSE 文本。
 
 ## 关联页面
 
+- [Model Hardware Standard](./model-hardware-standard.md) — 物理设备驱动标准；可经 MCP 访问，但不等于 MCP
 - [远程过程调用（RPC）](./remote-procedure-call.md) — JSON-RPC / gRPC 概念下层
 - [FreeCAD MCP](../entities/freecad-mcp.md) — 桌面 CAD MCP 桥
 - [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) — 科研插图 MCP
@@ -151,6 +155,7 @@ flowchart TB
 - [Introducing the Model Context Protocol（Anthropic 公告归档）](../../sources/sites/anthropic-model-context-protocol.md)
 - [modelcontextprotocol.io 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
 - [modelcontextprotocol/modelcontextprotocol 仓库归档](../../sources/repos/modelcontextprotocol.md)
+- [Previewing the Model Hardware Standard（对照：硬件侧标准）](../../sources/sites/anthropic-model-hardware-standard.md)
 
 ## 推荐继续阅读
 
