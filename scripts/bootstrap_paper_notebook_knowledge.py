@@ -34,8 +34,7 @@ PAPERS_JSON_URL = (
     "Robot_Learning_Paper_Notebooks/main/_data/papers.json"
 )
 PROGRESS_JSON_URL = (
-    "https://raw.githubusercontent.com/ImChong/"
-    "Robot_Learning_Paper_Notebooks/main/progress.json"
+    "https://raw.githubusercontent.com/ImChong/Robot_Learning_Paper_Notebooks/main/progress.json"
 )
 PROGRESS_MD_URL = (
     "https://raw.githubusercontent.com/ImChong/"

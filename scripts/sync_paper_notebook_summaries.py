@@ -16,9 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_DIR = ROOT / "schema"
 FULL_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-full-map.yml"
 INDEX_PATH = SCHEMA_DIR / "paper-notebook-index.json"
-NOTEBOOK_RAW = (
-    "https://raw.githubusercontent.com/ImChong/Robot_Learning_Paper_Notebooks/main"
-)
+NOTEBOOK_RAW = "https://raw.githubusercontent.com/ImChong/Robot_Learning_Paper_Notebooks/main"
 
 GENERIC_ONE_LINE = "以 Paper Notebooks 深读笔记为首要编译来源"
 GENERIC_SUMMARY = "Robot Learning Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳"
