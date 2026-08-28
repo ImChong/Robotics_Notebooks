@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-anytime-gtmp.md",
+      "detail_id": "entity-paper-anytime-gtmp",
+      "label": "Anytime GTMP：批量全局张量运动规划",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lac.md",
+      "detail_id": "entity-paper-lac",
+      "label": "LAC：人形全身线角柔顺",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-ucag-p.md",
       "detail_id": "entity-paper-ucag-p",
       "label": "UCAG-P：相机系动作几何预训练",
@@ -17,6 +39,110 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-zero-wam.md",
+      "detail_id": "entity-paper-zero-wam",
+      "label": "Zero-WAM",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/rsl-rl.md",
+      "detail_id": "entity-rsl-rl",
+      "label": "RSL-RL",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-confal-wm.md",
+      "detail_id": "entity-paper-confal-wm",
+      "label": "ConfAL-WM",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gaussiandream-plusplus.md",
+      "detail_id": "entity-paper-gaussiandream-plusplus",
+      "label": "GaussianDream++",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ma-vla.md",
+      "detail_id": "entity-paper-ma-vla",
+      "label": "MA-VLA",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-r3-robotic-reasoner.md",
+      "detail_id": "entity-paper-r3-robotic-reasoner",
+      "label": "R³",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-streampi.md",
+      "detail_id": "entity-paper-streampi",
+      "label": "StreamPI",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-super-odometry-2.md",
+      "detail_id": "entity-paper-super-odometry-2",
+      "label": "SUPER ODOMETRY 2.0",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tarcat.md",
+      "detail_id": "entity-paper-tarcat",
+      "label": "TARCAT",
+      "type": "entity",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md",
+      "detail_id": "wiki-overview-wam-vla-cross-embodiment-9-papers-technology-map",
+      "label": "WAM / VLA / 跨本体：9 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-28",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/kimodo-cpp.md",
@@ -90,142 +216,18 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/comparisons/rl-vs-geometric-control.md",
-      "detail_id": "wiki-comparisons-rl-vs-geometric-control",
-      "label": "RL vs 几何控制：四旋翼跟踪怎么公平比、怎么选",
-      "type": "comparison",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rl-vs-gc.md",
-      "detail_id": "entity-paper-rl-vs-gc",
-      "label": "RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/htd-decoupled-wbc.md",
-      "detail_id": "entity-htd-decoupled-wbc",
-      "label": "HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-indi.md",
-      "detail_id": "entity-paper-indi",
-      "label": "Indi：把行为意图蒸馏进 VLA 解码器",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-moeco.md",
-      "detail_id": "entity-paper-moeco",
-      "label": "MoeCo：知识驱动 MoE 协同识别手术三元组",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-phyfilter.md",
-      "detail_id": "entity-paper-phyfilter",
-      "label": "PhyFilter：用物理滤波换数据规模",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-raft-thruster-fault.md",
-      "detail_id": "entity-paper-raft-thruster-fault",
-      "label": "RAFT：特权 Critic 塑造无传感器推进器容错",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-reward-free-continual-adaptation-space.md",
-      "detail_id": "entity-paper-reward-free-continual-adaptation-space",
-      "label": "无奖励持续适应：太空机器人的潜奖励景观",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-ros2smolvla.md",
-      "detail_id": "entity-paper-ros2smolvla",
-      "label": "ROS2SmolVLA：工业轻量臂上的本地小型 VLA",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-simple-evrgb-cal.md",
-      "detail_id": "entity-paper-simple-evrgb-cal",
-      "label": "simple-evrgb-cal：无运动的事件—RGB 标定",
-      "type": "entity",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/overview/open-source-7-papers-system-structure-technology-map.md",
-      "detail_id": "wiki-overview-open-source-7-papers-system-structure-technology-map",
-      "label": "开源具身 7 篇：系统结构阅读坐标",
-      "type": "overview",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/behavioral-cloning-mysteries.md",
-      "detail_id": "wiki-concepts-behavioral-cloning-mysteries",
-      "label": "Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）",
-      "type": "concept",
-      "recency": "2026-08-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ucag-p.md",
-    "detail_id": "entity-paper-ucag-p",
-    "label": "UCAG-P：相机系动作几何预训练",
+    "path": "wiki/entities/paper-anytime-gtmp.md",
+    "detail_id": "entity-paper-anytime-gtmp",
+    "label": "Anytime GTMP：批量全局张量运动规划",
     "type": "entity",
     "recency": "2026-08-28",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
