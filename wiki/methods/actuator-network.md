@@ -2,7 +2,7 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-28
 related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/sim2real.md
@@ -12,8 +12,10 @@ related:
   - ../entities/paper-neuralactuator-neural-actuation-modeling.md
   - ../entities/bam-better-actuator-models.md
   - ../concepts/system-identification.md
+  - ../entities/nvidia-getting-started-isaac-lab.md
 sources:
   - ../../sources/papers/system_identification.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/papers/locomotion_rl.md
 summary: "执行器网络（Actuator Network）通过神经网络在仿真中拟合真实电机的非线性动力学、摩擦和延迟特性，是实现高精度足式机器人 Sim2Real 迁移的核心技术。"
 ---
@@ -105,6 +107,7 @@ flowchart LR
 - [BAM 论文实体](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 仓库](../entities/bam-better-actuator-models.md)
 - [NeuralActuator（可微仿真 + 力感知）](../entities/paper-neuralactuator-neural-actuation-modeling.md) — 低成本操作臂多任务执行器建模
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — 论文对比基线；可解释参数辨识路线
+- [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 课内把 Actuator Network 写成 Real2Sim：冻结网络替换仿真 PID
 
 ## 参考来源
 
@@ -113,3 +116,4 @@ flowchart LR
 - [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — ingest 档案（Hwangbo 2019 ActuatorNet + Gautier–Khalil 1990 最小惯性参数集 / 1992 激励轨迹 + Grandia 2019 在线辨识 + Peng 2018 域随机化辨识等系统辨识合集）。
 - [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — 足式 RL 论文索引（ANYmal 等应用背景）。
 - Isaac Lab 执行器栈工程参考（理想/隐式 PD、数据驱动力矩路径等）：[`actuator_pd.py`](https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab/isaaclab/actuators/actuator_pd.py)。
+- [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md) — 模块 4：指令+关节历史 → 弹簧偏转力矩，冻结后替换 PID

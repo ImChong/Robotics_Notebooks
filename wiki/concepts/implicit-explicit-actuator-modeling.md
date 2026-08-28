@@ -2,7 +2,7 @@
 type: concept
 tags: [actuator, simulation, sim2real, control, rl, nvidia]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-28
 related:
   - ./sim2real.md
   - ./torque-source-abstraction-gap.md
@@ -12,6 +12,7 @@ related:
   - ../methods/actuator-network.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/isaac-lab.md
+  - ../entities/nvidia-getting-started-isaac-lab.md
   - ../concepts/cartpole.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/mujoco.md
@@ -19,6 +20,7 @@ related:
   - ../entities/sage-sim2real-actuator-gap-estimator.md
 sources:
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
 summary: "在腿足/人形 RL 仿真中，implicit 执行器由物理引擎内部积分 PD 并算力矩；explicit 由用户侧模型先算力矩再写入仿真——影响数值稳定性、训练收敛与 Sim2Real。"
 ---
 
@@ -133,11 +135,13 @@ flowchart LR
 - [Actuator Network](../methods/actuator-network.md) — explicit 路线的数据驱动进阶
 - [关节摩擦模型](./joint-friction-models.md) — 常与 explicit 解析模型一并标定
 - [Isaac Lab](../entities/isaac-lab.md) — 默认训练栈与执行器 API 入口
+- [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — UR10 reach 课用 `ImplicitActuatorCfg`；模块 4 再讲 Actuator Network 替换 PID
 - [Cartpole 问题](./cartpole.md) — Lab 教学资产用 implicit 阻尼近似轨道摩擦，不是 Gym 无摩擦解析车
 
 ## 参考来源
 
 - [Isaac Lab / mjlab Implicit vs Explicit Actuator 一手资料索引](../../sources/courses/isaac_lab_implicit_explicit_actuators.md)
+- [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md)
 - [Isaac Lab — Actuators](https://isaac-sim.github.io/IsaacLab/main/source/overview/core-concepts/actuators.html)
 - [mjlab — Actuators](https://mujocolab.github.io/mjlab/main/source/actuators.html)
 

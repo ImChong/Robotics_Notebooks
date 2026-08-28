@@ -6,8 +6,8 @@
 - **类型：** site（厂商官方自学课程门户）
 - **来源：** NVIDIA
 - **链接：** https://docs.nvidia.com/learning/physical-ai/
-- **入库日期：** 2026-05-21
-- **一句话说明：** NVIDIA 面向 Physical AI 的免费自学路径索引：Isaac Sim/Lab/ROS、OpenUSD 数字孪生、医疗机器人与 SO-101 操作臂 Sim2Real 等，并指向 Brev 云 GPU 环境与社区支持。
+- **入库日期：** 2026-05-21（2026-08-28 补链 Getting Started With Isaac Lab 全系列）
+- **一句话说明：** NVIDIA 面向 Physical AI 的免费自学路径索引：Isaac Sim/Lab/ROS、OpenUSD 数字孪生、医疗机器人、Isaac Lab 入门四模块课与 SO-101 操作臂 Sim2Real 等，并指向 Brev 云 GPU 环境与社区支持。
 - **沉淀到 wiki：** 是 → [`wiki/entities/nvidia-physical-ai-learning.md`](../../wiki/entities/nvidia-physical-ai-learning.md)
 
 ---
@@ -29,6 +29,7 @@
 | 路径 | 级别 / 时长（官方标注） | 关键技能 |
 |------|-------------------------|----------|
 | [Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac](https://docs.nvidia.com/learning/physical-ai/sim-to-real-so-101/latest/index.html) | Intermediate · 6–10 h | Isaac Lab、GR00T、LeRobot、Cosmos、sim-to-real 原则 |
+| [Getting Started With Isaac Lab](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-lab/latest/index.html) | Intermediate · 3–4 h | RL、GPU 并行、manager-based 任务、Cartpole / UR10 reach、sim-to-real 三类桥接 |
 | Assembling Digital Twins With Omniverse and OpenUSD | Intermediate · 3–4 h | OpenUSD、场景组合、资产组织 |
 | Getting Started With Isaac Sim | Beginner · 2–3 h | 物理仿真、传感器、环境搭建 |
 | Getting Started With Isaac Lab | Intermediate · 3–4 h | RL、GPU 并行训练 |
@@ -49,5 +50,6 @@
 
 - 门户总览与路径选型 → [`wiki/entities/nvidia-physical-ai-learning.md`](../../wiki/entities/nvidia-physical-ai-learning.md)
 - SO-101 操作臂 Sim2Real 动手课（本门户 flagship 路径之一）→ [`sources/courses/nvidia_sim_to_real_so101_isaac.md`](../courses/nvidia_sim_to_real_so101_isaac.md) → [`wiki/entities/nvidia-so101-sim2real-lab-workflow.md`](../../wiki/entities/nvidia-so101-sim2real-lab-workflow.md)
+- Isaac Lab 入门四模块课（RL + manager-based）→ [`sources/courses/nvidia_getting_started_isaac_lab.md`](../courses/nvidia_getting_started_isaac_lab.md) → [`wiki/entities/nvidia-getting-started-isaac-lab.md`](../../wiki/entities/nvidia-getting-started-isaac-lab.md)
 - Isaac / Omniverse 底座 → [`wiki/entities/nvidia-omniverse.md`](../../wiki/entities/nvidia-omniverse.md)、[`wiki/entities/isaac-gym-isaac-lab.md`](../../wiki/entities/isaac-gym-isaac-lab.md)
 - LeRobot 数据采集栈 → [`wiki/entities/lerobot.md`](../../wiki/entities/lerobot.md)

@@ -356,6 +356,7 @@
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`
 - [NVIDIA GEAR Lab（Generalist Embodied Agent Research）](wiki/entities/nvidia-gear-lab.md) — GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **[Linxi  `📅unknown` `[entity_page]`
+- [NVIDIA Getting Started With Isaac Lab](wiki/entities/nvidia-getting-started-isaac-lab.md) — Getting Started With Isaac Lab** 是 Physical AI Learning 门户下的  `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 Isaac Sim 的运行底座。通过利 `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI Learning](wiki/entities/nvidia-physical-ai-learning.md) — NVIDIA Physical AI Learning** 是 NVIDIA 面向 **Physical AI**（能感知、推理物理关系、执行动作并适应真实环境的 AI 系统）的 **免费自学课程 `📅unknown` `[entity_page]`
 - [NVIDIA SO-101 Sim2Real 实验 workflow](wiki/entities/nvidia-so101-sim2real-lab-workflow.md) — Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac** 是 [Physical AI Learning](./nvidia-physi `📅unknown` `[entity_page]`

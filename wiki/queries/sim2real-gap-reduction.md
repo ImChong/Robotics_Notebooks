@@ -3,13 +3,14 @@ type: query
 tags: [sim2real, domain-randomization, locomotion, deployment, training]
 status: complete
 summary: "Sim2Real Gap 缩减实战指南"
-updated: 2026-07-31
+updated: 2026-08-28
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/system_identification.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
 ---
 
 # Sim2Real Gap 缩减实战指南
@@ -147,12 +148,14 @@ contact_noise:  0.05            # 接触检测误报率
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — teacher-student / RMA 适应模块
 - [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — 仿真平台原论文
 - [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — 执行器建模 ActuatorNet
+- [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md) — 官方课：仿真增强 / Real2Sim / 策略鲁棒三类桥接
 
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md) — sim2real 概念综述
 - [Domain Randomization](../concepts/domain-randomization.md) — DR 方法详解
 - [Privileged Training](../concepts/privileged-training.md) — teacher-student 蒸馏
+- [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 课内三类桥接与「最小必要 DR」建议
 - [Sim2Real Checklist](./sim2real-checklist.md) — 部署前完整检查清单（含快速部署检查）
 - [Sim2Real 闭环误差分层工程](./sim2real-closed-loop-engineering.md) — 误差类型 → 校准/DR/适应/安全的时序闭环
 - [RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 已上机后的症状排查

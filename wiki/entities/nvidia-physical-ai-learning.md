@@ -2,9 +2,10 @@
 type: entity
 tags: [course, nvidia, isaac, omniverse, openusd, physical-ai, sim2real]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-28
 related:
   - ./nvidia-so101-sim2real-lab-workflow.md
+  - ./nvidia-getting-started-isaac-lab.md
   - ./nvidia-omniverse.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -14,7 +15,8 @@ related:
 sources:
   - ../../sources/sites/nvidia-physical-ai-learning.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
-summary: "NVIDIA Physical AI Learning 是官方免费自学门户，索引 Isaac、OpenUSD、医疗机器人与 SO-101 操作臂 Sim2Real 等多条动手路径，并对接 Brev 云 GPU 环境。"
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
+summary: "NVIDIA Physical AI Learning 是官方免费自学门户，索引 Isaac Lab 入门四模块课、SO-101 操作臂 Sim2Real、OpenUSD 与医疗机器人等动手路径，并对接 Brev 云 GPU 环境。"
 ---
 
 # NVIDIA Physical AI Learning
@@ -43,13 +45,14 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 
 - **工程主线清晰：** 门户把「仿真 → 数据 → 策略 → 真机」拆成可跟做的模块，比零散博客更适合作为本知识库的 **厂商官方课程锚点**。
 - **与仓库已有实体互补：** 本库已有 [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)、[Omniverse](./nvidia-omniverse.md)、[GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) 等 **研究/产品** 页；本门户页负责 **自学路径选型**，避免把课程目录散落在各实体页脚注里。
-- **旗舰动手课：** [SO-101 Sim2Real 实验课](./nvidia-so101-sim2real-lab-workflow.md) 在同一门户下，系统演练四种 sim2real 策略，适合作为 manipulation + VLA 入门实验。
+- **两条动手主线：** [Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) 走 **RL + manager-based 任务设计**（Cartpole → UR10 reach → sim-to-real 分类）；[SO-101 Sim2Real 实验课](./nvidia-so101-sim2real-lab-workflow.md) 走 **VLA + 四类 gap 策略**，适合 manipulation 真机实验。
 
 ## 门户内的主要学习路径（摘要）
 
 | 路径 | 侧重 | 与本库关联 |
 |------|------|------------|
 | SO-101 Sim2Real | 操作臂 VLA + 四类 gap 策略 | [nvidia-so101-sim2real-lab-workflow](./nvidia-so101-sim2real-lab-workflow.md) |
+| Getting Started With Isaac Lab | RL、GPU 并行、manager 任务、三类 sim-to-real 桥接 | [nvidia-getting-started-isaac-lab](./nvidia-getting-started-isaac-lab.md) |
 | Isaac Sim / Isaac Lab 入门 | 仿真与 GPU RL | [Isaac Sim](./isaac-sim.md)、[Isaac Lab](./isaac-lab.md)；总览 [isaac-gym-isaac-lab](./isaac-gym-isaac-lab.md) |
 | Omniverse + OpenUSD | 工业数字孪生场景组合 | [nvidia-omniverse](./nvidia-omniverse.md) |
 | Isaac ROS | ROS 2 + NITROS 真机感知导航 | [ros2-basics](../concepts/ros2-basics.md) |
@@ -65,11 +68,13 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 
 - [NVIDIA Physical AI Learning 门户](../../sources/sites/nvidia-physical-ai-learning.md)
 - [SO-101 Sim2Real 课程归档](../../sources/courses/nvidia_sim_to_real_so101_isaac.md)
+- [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md)
 - [What is Physical AI?（NVIDIA Glossary）](https://www.nvidia.com/en-us/glossary/generative-physical-ai/)
 
 ## 关联页面
 
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
+- [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [LeRobot](./lerobot.md)

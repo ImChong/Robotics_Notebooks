@@ -27,6 +27,7 @@ related:
   - ../comparisons/rl-vs-geometric-control.md
   - ./paper-p3.md
   - ./lw-benchhub-tour.md
+  - ./nvidia-getting-started-isaac-lab.md
   - ./perceptron-isaac-05.md
   - ./rsl-rl.md
   - ./autodl.md
@@ -43,6 +44,7 @@ sources:
   - ../../sources/repos/isaac_lab_environments.md
   - ../../sources/repos/isaac_sim.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
@@ -107,7 +109,7 @@ Isaac Lab 的目标是提供一套现代化、可维护的 robot learning workfl
 - 提供从旧框架（IsaacGymEnvs / OmniIsaacGymEnvs / Orbit）迁移的官方路径
 - 支持训练、迁移、任务定义、环境注册、仿真管理
 - 在同一套生态里覆盖 RL、IL、locomotion、manipulation
-- Quickstart 默认教学任务是 [Cartpole](../concepts/cartpole.md) 的 `Isaac-Cartpole-v0` / `Isaac-Cartpole-Direct-v0`：同一倒立摆直觉，连续力矩 + GPU 并行，数字不能从 Gymnasium `CartPole-v1` 照搬
+- Quickstart 默认教学任务是 [Cartpole](../concepts/cartpole.md) 的 `Isaac-Cartpole-v0` / `Isaac-Cartpole-Direct-v0`：同一倒立摆直觉，连续力矩 + GPU 并行，数字不能从 Gymnasium `CartPole-v1` 照搬。官方自学路径见 [Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md)（external template 注册 `Template-Cartpole-v0`，再做 UR10 reach）
 - 自带一整套开箱即跑的默认任务（v3.0.0 共 **197** 个注册 ID，覆盖经典控制、操作、装配、足式、移动操作、导航、多旋翼与多智能体）：全量清单与命名法见 [Isaac Lab 默认环境](./isaac-lab-default-environments.md)
 - 第三方空中对照：[RL vs GC](./paper-rl-vs-gc.md) 用 Lab **DirectRLEnv** 注册四旋翼 / 固定臂跟踪与接球，在同一奖励与前馈下比较 PPO 与 \(SE(3)\) 几何控制（Isaac Sim 4.2 / Lab 1.4.1；[仓库](https://github.com/PratikKunapuli/rl-vs-gc)）
 
@@ -314,6 +316,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用
 - **ingest 档案：** [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md) — Lab + 定制 rsl_rl 的 VAE-PPO 矩匹配训练
+- **ingest 档案：** [sources/courses/nvidia_getting_started_isaac_lab.md](../../sources/courses/nvidia_getting_started_isaac_lab.md) — 官方四模块入门：Cartpole / UR10 reach / 三类 sim-to-real 桥接
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — SO-101 课：仿真 DR 遥操作采数、策略评测与 sim2real 对照实验
 - **ingest 档案：** [sources/courses/isaac_lab_implicit_explicit_actuators.md](../../sources/courses/isaac_lab_implicit_explicit_actuators.md) — Implicit / Explicit 执行器官方文档索引
 - **ingest 档案：** [具身智能研究室训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — OpenUSD / PhysX / Lab Views 统一场景–物理–学习接口的策展归纳
@@ -321,6 +324,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ## 关联页面
 
+- [Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) — 官方入门课：manager 任务设计与 sim-to-real 分类
 - [Isaac Lab 默认环境](./isaac-lab-default-environments.md) — v3.0.0 全部 197 个注册任务的分族清单与命名法
 - [Isaac Sim](./isaac-sim.md) — 仿真底座（USD / PhysX / 传感器）
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径

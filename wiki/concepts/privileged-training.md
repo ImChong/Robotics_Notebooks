@@ -15,6 +15,7 @@ related:
   - ./domain-randomization.md
   - ../tasks/loco-manipulation.md
   - ../entities/paper-cref.md
+  - ../entities/nvidia-getting-started-isaac-lab.md
   - ../entities/paper-raft-thruster-fault.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
@@ -40,6 +41,7 @@ sources:
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/papers/legged_load_adapt_arxiv_2507_07825.md
 ---
 
@@ -257,6 +259,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - Pinto et al., *Asymmetric Actor Critic for Image-Based Robot Learning* (2018) — 非对称 AC 理论基础
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：以 proxy agent 作 teacher，对学生做掩码在线蒸馏，把多接口 WBC 统一进 CVAE
 - **ingest 档案：** [sources/papers/cref_arxiv_2603_29452.md](../../sources/papers/cref_arxiv_2603_29452.md) — CReF：非对称 critic 用局部高程，Actor 直吃 raw 深度、无蒸馏
+- **ingest 档案：** [Getting Started With Isaac Lab](../../sources/courses/nvidia_getting_started_isaac_lab.md) — 模块 4：特权信息 = 非对称 AC 或 teacher–student
 
 ---
 
@@ -288,6 +291,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [FADA](../entities/paper-fada-humanoid.md) — 仿真特权 oracle → DAgger 蒸馏 Planner–IDM；部署仅 LoRA 微调 IDM（arXiv:2606.28476）
 - [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 训练期 PCA 地形描述子门控 BSGA；部署纯本体感知 actor（非经典 teacher–student 蒸馏）
 - [CReF](../entities/paper-cref.md) — 深度条件人形行走：非对称 critic 吃局部高程，Actor 无蒸馏直吃 raw 深度（arXiv:2603.29452）
+- [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 课内把非对称 AC 与 teacher–student（DextrAH-G）并列为特权信息两条路
 - [RAFT（推进器容错）](../entities/paper-raft-thruster-fault.md) — 特权只给 PPO critic，GRU actor 部署无故障传感器（arXiv:2608.22976）
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案

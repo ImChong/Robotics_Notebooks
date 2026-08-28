@@ -2,9 +2,10 @@
 type: entity
 tags: [course, nvidia, sim2real, vla, groot, lerobot, isaac-lab, manipulation, so101, cosmos, domain-randomization]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 related:
   - ./nvidia-physical-ai-learning.md
+  - ./nvidia-getting-started-isaac-lab.md
   - ./isaac-gym-isaac-lab.md
   - ./lerobot.md
   - ./lw-benchhub-tour.md
@@ -18,6 +19,7 @@ related:
   - ../queries/sim2real-gap-reduction.md
 sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
+  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/sites/nvidia-physical-ai-learning.md
 summary: "NVIDIA 官方 SO-101 操作臂动手课：离心管瓶 pick-place 任务上，用 LeRobot 采集、GR00T N1.6 训练 VLA，并在 Isaac Lab 与真机上对比 DR、Co-training、Cosmos 与 SAGE+GapONet 四类 sim2real 策略。"
 ---
@@ -160,6 +162,7 @@ flowchart TD
 ## 关联页面
 
 - [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md)
+- [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) — 同门户的 RL / manager 入门课，不是 VLA 真机课
 - [Sim2Real](../concepts/sim2real.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [LeRobot](./lerobot.md)

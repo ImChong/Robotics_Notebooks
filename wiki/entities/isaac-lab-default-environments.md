@@ -12,7 +12,7 @@ tags:
   - gpu-simulation
   - nvidia
 status: complete
-updated: 2026-08-17
+updated: 2026-08-28
 summary: "Isaac Lab 3.0 随框架注册的全部默认任务（197 个 Gym ID / 153 个基础任务）：命名法、Manager-Based 与 Direct 分工、Play 与 ROS-Inference 变体、preset 后端选择器，以及按经典控制 / 操作 / 装配 / 足式 / 移动操作 / 导航 / 多旋翼 / 多智能体分族的全量清单。"
 code: https://github.com/isaac-sim/IsaacLab
 related:
