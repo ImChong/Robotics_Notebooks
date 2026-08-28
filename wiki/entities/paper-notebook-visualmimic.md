@@ -31,7 +31,7 @@ summary: "VisualMimic（arXiv:2509.20322，Stanford）用分层 teacher–studen
 
 # VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）
 
-**VisualMimic**（arXiv:[2509.20322](https://arxiv.org/abs/2509.20322)，Stanford，[项目页](https://visualmimic.github.io/)，[代码](https://github.com/visualmimic/VisualMimic)）提出 **视觉 sim-to-real 分层框架**：**任务无关低层关键点跟踪器**（从人类动作蒸馏）+ **任务专用高层 visuomotor 关键点生成器**（从特权状态教师蒸馏），在真机 **零样本** 完成 **push / lift / kick / dribble** 等全身 loco-manipulation，并展示 **户外** 时空泛化。本页为知识库 **策展摘要**；姊妹仓库 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 深读笔记仍待撰写。
+**VisualMimic**（arXiv:[2509.20322](https://arxiv.org/abs/2509.20322)，Stanford，[项目页](https://visualmimic.github.io/)，[代码](https://github.com/visualmimic/VisualMimic)）提出 **视觉 sim-to-real 分层框架**：**任务无关低层关键点跟踪器**（从人类动作蒸馏）+ **任务专用高层 visuomotor 关键点生成器**（从特权状态教师蒸馏），在真机 **零样本** 完成 **push / lift / kick / dribble** 等全身 loco-manipulation，并展示 **户外** 时空泛化。本页为知识库 **策展摘要**；姊妹仓库 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 深读笔记仍待撰写。
 
 ## 一句话定义
 

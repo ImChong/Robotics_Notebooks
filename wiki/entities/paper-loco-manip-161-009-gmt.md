@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, motion-tracking, gmt, ucsd, sfu]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-28
 venue: curated
 summary: "Loco-Manip 161 篇 #009 索引：GMT（arXiv:2506.14770）用 Adaptive Sampling + Motion MoE 训练单一统一全身跟踪策略；完整方法见 paper-gmt.md。注意：公众号策展曾误写扩散/流匹配，应以 arXiv/项目页为准。"
 related:

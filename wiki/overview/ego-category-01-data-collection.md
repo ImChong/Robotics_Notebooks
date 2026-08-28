@@ -78,7 +78,7 @@ sources:
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：EmbodMocap](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents.html)
+- [机器人论文阅读笔记：EmbodMocap](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents.html)
 - [Ego4D 项目页](https://ego4d-data.org/)
 - [Stereo-550（Ego-OSCAR）](https://huggingface.co/datasets/fpvlabs/stereo-550)
 - [EgoVerse 项目页](https://egoverse.ai/)

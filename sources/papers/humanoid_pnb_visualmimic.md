@@ -1,10 +1,10 @@
 # VisualMimic: Visual Humanoid Loco-Manipulation via Motion Tracking and Generation
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress + arXiv 一手资料）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress + arXiv 一手资料）
 
 - **标题：** VisualMimic: Visual Humanoid Loco-Manipulation via Motion Tracking and Generation
 - **类型：** paper
-- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)）；本仓库已 ingest 策展摘要
+- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)）；本仓库已 ingest 策展摘要
 - **计划笔记路径：** `papers/04_Loco-Manipulation_and_WBC/VisualMimic__Visual_Humanoid_Loco-Manipulation_via_Motion_Tracking_and_Generatio/VisualMimic__Visual_Humanoid_Loco-Manipulation_via_Motion_Tracking_and_Generatio.md`
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **路线：** Loco-Manipulation / Visual Sim2Real
@@ -37,4 +37,4 @@
 - 论文：<https://arxiv.org/abs/2509.20322>
 - 项目页：<https://visualmimic.github.io/>
 - 代码：<https://github.com/visualmimic/VisualMimic>
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)

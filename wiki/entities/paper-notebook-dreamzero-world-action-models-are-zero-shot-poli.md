@@ -14,7 +14,7 @@ summary: "DreamZero 提出 World Action Model (WAM)：在预训练视频扩散�
 
 # DreamZero
 
-**DreamZero: World Action Models are Zero-shot Policies** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DreamZero: World Action Models are Zero-shot Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -57,7 +57,7 @@ SOTA **VLA** 擅长语义泛化（换物体、换语言指令），但在**新�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamZero_World_Action_Models_are_Zero-shot_Policies/DreamZero_World_Action_Models_are_Zero-shot_Policies.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamZero_World_Action_Models_are_Zero-shot_Policies/DreamZero_World_Action_Models_are_Zero-shot_Policies.html> |
 | arXiv | <https://arxiv.org/abs/2602.15922> |
 | 机构 | NVIDIA（合作含 UC Berkeley、CMU 等） |
 | 发表 | 2026-02-17 (arXiv) |
@@ -96,9 +96,9 @@ SOTA **VLA** 擅长语义泛化（换物体、换语言指令），但在**新�
 ## 参考来源
 
 - [humanoid_pnb_dreamzero-world-action-models-are-zero-shot-poli.md](../../sources/papers/humanoid_pnb_dreamzero-world-action-models-are-zero-shot-poli.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamZero_World_Action_Models_are_Zero-shot_Policies/DreamZero_World_Action_Models_are_Zero-shot_Policies.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamZero_World_Action_Models_are_Zero-shot_Policies/DreamZero_World_Action_Models_are_Zero-shot_Policies.html>
 - 论文：<https://arxiv.org/abs/2602.15922>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：DreamZero](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamZero_World_Action_Models_are_Zero-shot_Policies/DreamZero_World_Action_Models_are_Zero-shot_Policies.html)
+- [机器人论文阅读笔记：DreamZero](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamZero_World_Action_Models_are_Zero-shot_Policies/DreamZero_World_Action_Models_are_Zero-shot_Policies.html)

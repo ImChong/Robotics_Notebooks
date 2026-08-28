@@ -1,10 +1,10 @@
 # Unitree H1 Humanoid Robot Whitepaper & Specifications
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** Unitree H1 Humanoid Robot Whitepaper & Specifications
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Unitree_H1_Whitepaper/Unitree_H1_Whitepaper.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Unitree_H1_Whitepaper/Unitree_H1_Whitepaper.html>
 - **分类：** 12_Hardware_Design
 - **入库日期：** 2026-06-07
 - **一句话说明：** Unitree H1 是全球首款能够完成原地后空翻的全尺寸电驱动人形机器人，凭借自研的高扭矩密度电机和强大的计算能力，成为了具身智能科研领域的"国民级"硬件平台。
@@ -21,5 +21,5 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Unitree_H1_Whitepaper/Unitree_H1_Whitepaper.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Unitree_H1_Whitepaper/Unitree_H1_Whitepaper.html>
 

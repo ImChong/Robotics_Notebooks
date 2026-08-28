@@ -2,7 +2,7 @@
 type: method
 tags: [residual-learning, reinforcement-learning, control, locomotion, manipulation, motion-tracking, sim2real, shared-autonomy]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-28
 related:
   - ./reinforcement-learning.md
   - ./imitation-learning.md

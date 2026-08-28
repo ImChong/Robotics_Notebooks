@@ -215,4 +215,4 @@ flowchart TB
 - [YouTube 演示](https://youtu.be/f9iUE3v7I-8)
 - Long et al., *Learning Humanoid Locomotion with Perceptive Internal Model*，[arXiv:2411.14386](https://arxiv.org/abs/2411.14386) — 高程图硬件实现
 - Cheng et al., *Extreme Parkour with Legged Robots*（ICRA 2024）— 航点命令来源
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -173,7 +173,7 @@ sequenceDiagram
 
 ## 参考来源
 
-- [Humanoid Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_child.md)
+- [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_child.md)
 - [CHILD 项目页核查](../../sources/sites/child-teleoperation.md)
 - [CHILD 代码/硬件仓库核查](../../sources/repos/child-teleoperation.md)
 - 论文：<https://arxiv.org/abs/2508.00162>

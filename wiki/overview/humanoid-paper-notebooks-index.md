@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-08-28
 related:
   - ./paper-notebook-category-01-foundational-rl.md
   - ./paper-notebook-category-02-motion-retargeting.md
@@ -18,12 +18,14 @@ related:
   - ./paper-notebook-category-12-hardware-design.md
   - ./paper-notebook-category-13-physics-based-animation.md
   - ./paper-notebook-category-14-human-motion.md
-summary: "Humanoid Paper Notebooks 137+ 篇深读笔记在本库的分类父节点与 wiki 子节点总索引（共 518 篇）。"
+summary: "Robot Learning Paper Notebooks 137+ 篇深读笔记在本库的分类父节点与 wiki 子节点总索引（共 518 篇）。"
 ---
 
-# Humanoid Paper Notebooks 知识库索引
+# Robot Learning Paper Notebooks 知识库索引
 
-本页把 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **14 类主页分类** 映射为本仓库 `wiki/overview/paper-notebook-category-*` **父节点**；每篇论文对应 **子节点**（已有深度 wiki 或 `wiki/entities/paper-notebook-*` 索引实体）。
+本页把 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **14 类主页分类** 映射为本仓库 `wiki/overview/paper-notebook-category-*` **父节点**；每篇论文对应 **子节点**（已有深度 wiki 或 `wiki/entities/paper-notebook-*` 索引实体）。
+
+> **更名（2026-08-28）：** 姊妹仓库与 Pages 站点由 `Humanoid_Robot_Learning_Paper_Notebooks` 更名为 [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)；本库内链文件名（如本页 `humanoid-paper-notebooks-index.md`）保持不变，以免打断已有 related。
 
 ## 英文缩写速查
 
@@ -65,11 +67,12 @@ summary: "Humanoid Paper Notebooks 137+ 篇深读笔记在本库的分类父节�
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
+- [sources/sites/humanoid-robot-learning-paper-notebooks.md](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - [sources/sites/rl-sim2sim-demo-website.md](../../sources/sites/rl-sim2sim-demo-website.md)（姊妹演示站，非本索引范围）
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记总站](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)

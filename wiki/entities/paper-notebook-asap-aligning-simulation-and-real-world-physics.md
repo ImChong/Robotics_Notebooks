@@ -15,7 +15,7 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 
 # ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills
 
-**ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -31,7 +31,7 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
 ## 核心信息
@@ -39,7 +39,7 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 03_High_Impact_Selection |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html> |
 | arXiv | <https://arxiv.org/abs/2502.01143> |
 
 ## 实验与评测
@@ -65,9 +65,9 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 ## 参考来源
 
 - [humanoid_pnb_asap-aligning-simulation-and-real-world-physics.md](../../sources/papers/humanoid_pnb_asap-aligning-simulation-and-real-world-physics.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html>
 - 论文：<https://arxiv.org/abs/2502.01143>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html)
+- [机器人论文阅读笔记：ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html)

@@ -109,5 +109,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- [PULSE 深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PULSE_Physics-based_Universal_Latent_Space/PULSE_Physics-based_Universal_Latent_Space.html)
+- [PULSE 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PULSE_Physics-based_Universal_Latent_Space/PULSE_Physics-based_Universal_Latent_Space.html)
 - [SMPLOlympics GitHub](https://github.com/SMPLOlympics/SMPLOlympics)

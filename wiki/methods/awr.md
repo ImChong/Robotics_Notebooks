@@ -53,7 +53,7 @@ AWR 不直接计算策略梯度，而是通过对优势函数进行指数加权�
 - [χ₀ / kai0](../entities/paper-kai0.md) — Stage Advantage → advantage-weighted BC，相对值差式 RECAP 更稳。
 
 ## 参考来源
-- [机器人论文阅读笔记：Advantage Weighted Regression](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AWR_Advantage_Weighted_Regression/AWR_Advantage_Weighted_Regression.html)
+- [机器人论文阅读笔记：Advantage Weighted Regression](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AWR_Advantage_Weighted_Regression/AWR_Advantage_Weighted_Regression.html)
 - [sources/papers/awr.md](../../sources/papers/awr.md)
 - [sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md](../../sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md) — AWR+RECAP 异步 RL 叠衣配方
 - [sources/papers/topreward_arxiv_2602_19313.md](../../sources/papers/topreward_arxiv_2602_19313.md) — TOP-AWR 下游

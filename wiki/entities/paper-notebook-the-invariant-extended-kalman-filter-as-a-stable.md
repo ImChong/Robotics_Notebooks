@@ -14,7 +14,7 @@ summary: "标准 EKF 在非线性系统上把动力学「就地线性化」，�
 
 # The Invariant Extended Kalman Filter as a Stable Observer
 
-**The Invariant Extended Kalman Filter as a Stable Observer** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**The Invariant Extended Kalman Filter as a Stable Observer** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -56,7 +56,7 @@ summary: "标准 EKF 在非线性系统上把动力学「就地线性化」，�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 09_State_Estimation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html> |
 | arXiv | <https://arxiv.org/abs/1410.1465> |
 | 发表 | 2014-10-06 (arXiv v1)，2017 正式发表（IEEE TAC） |
 | 源码 | 理论论文，无配套代码（后续 [RossHartley/invariant-ekf](https://github.com/RossHartley/invariant-ekf) 是工程实现参考） |
@@ -84,9 +84,9 @@ summary: "标准 EKF 在非线性系统上把动力学「就地线性化」，�
 ## 参考来源
 
 - [humanoid_pnb_the-invariant-extended-kalman-filter-as-a-stable.md](../../sources/papers/humanoid_pnb_the-invariant-extended-kalman-filter-as-a-stable.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html>
 - 论文：<https://arxiv.org/abs/1410.1465>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：The Invariant Extended Kalman Filter as a Stable Observer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html)
+- [机器人论文阅读笔记：The Invariant Extended Kalman Filter as a Stable Observer](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html)

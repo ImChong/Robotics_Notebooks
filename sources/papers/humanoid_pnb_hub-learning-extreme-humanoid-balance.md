@@ -1,10 +1,10 @@
 # HuB: Learning Extreme Humanoid Balance
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** HuB: Learning Extreme Humanoid Balance
 - **类型：** paper
-- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
+- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
 - **计划笔记路径：** `papers/04_Loco-Manipulation_and_WBC/hub-learning-extreme-humanoid-balance/hub-learning-extreme-humanoid-balance.md`
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2505.07294>
@@ -23,5 +23,5 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.07294>

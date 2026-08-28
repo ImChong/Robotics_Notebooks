@@ -14,7 +14,7 @@ summary: "隐式贝塞尔运动模型（Implicit Bézier Motion Model, IBMM）�
 
 # Implicit Bézier Motion Model for Precise Spatial and Temporal Control
 
-**Implicit Bézier Motion Model for Precise Spatial and Temporal Control** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Implicit Bézier Motion Model for Precise Spatial and Temporal Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ IBMM 要：**任意时间控制点**、**任意帧约束任意末端**、且可*
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control.html> |
 | 作者 | Disney Research Studios（详见项目页） |
 | 发表 | 2025 年 12 月（SIGGRAPH MIG 2025） |
 | 笔记阅读日期 | 2026-06-21 |
@@ -85,8 +85,8 @@ IBMM 要：**任意时间控制点**、**任意帧约束任意末端**、且可*
 ## 参考来源
 
 - [humanoid_pnb_implicit-bezier-motion-model-for-precise-spatial.md](../../sources/papers/humanoid_pnb_implicit-bezier-motion-model-for-precise-spatial.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control.html>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Implicit Bézier Motion Model for Precise Spatial and Temporal Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control.html)
+- [机器人论文阅读笔记：Implicit Bézier Motion Model for Precise Spatial and Temporal Control](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control/Implicit_Bezier_Motion_Model_for_Precise_Spatial_and_Temporal_Control.html)

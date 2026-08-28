@@ -86,6 +86,6 @@ UniAct 把语言指令转成可跟踪的身体目标，并通过策略网络和�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：UniAct](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/UniAct__Unified_Motion_Generation_and_Action_Streaming_for_Humanoid_Robots/UniAct__Unified_Motion_Generation_and_Action_Streaming_for_Humanoid_Robots.html)
+- [机器人论文阅读笔记：UniAct](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/UniAct__Unified_Motion_Generation_and_Action_Streaming_for_Humanoid_Robots/UniAct__Unified_Motion_Generation_and_Action_Streaming_for_Humanoid_Robots.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - 同题深读/既有实体：[paper-loco-manip-161-023-uniact](../entities/paper-loco-manip-161-023-uniact.md)

@@ -114,7 +114,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 离线 RL 与构型空间 **轨迹扩散规划器**（如 [Diffuser](https://github.com/jannerm/diffuser)）与上文 **运动生成** 共享「逐步 denoiser」瓶颈。[Muninn](../entities/paper-muninn-trajectory-diffusion-acceleration.md) 提供 **免训练包装层**：probe 稳定性 + 采样器灵敏度 + conformal 预算，在 D4RL / MPD / EDMP 上最高约 **4.6×** 墙钟加速且可证相对全量教师的轨迹偏离界；与 ETH G1 式 **训练期少步/闭环微调** 正交，可叠在已有教师上。
 
 ## 参考来源
-- [机器人论文阅读笔记：Learned Motion Matching](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Learned_Motion_Matching/Learned_Motion_Matching.html)
+- [机器人论文阅读笔记：Learned Motion Matching](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Learned_Motion_Matching/Learned_Motion_Matching.html)
 - [OMG 项目页与仓库](../../sources/sites/omg-tsinghua-mars-lab-github-io.md) — 清华 MARS Lab omni-modal G1 运动生成（OMG-DiT + HoloMotion tracker）
 - [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) — 状态条件 flow matching 中间件 + 闭环 tracker（真机恢复）
 - [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — ETH Zurich 2026 G1 扩散运动生成工作，结合扩散模型与 RL 跟踪器实现全身移动。

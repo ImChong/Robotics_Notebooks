@@ -4234,7 +4234,10 @@
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
 
-    const NOTEBOOK_SITE_PREFIX = 'imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/';
+    const NOTEBOOK_SITE_PREFIXES = [
+      'imchong.github.io/Robot_Learning_Paper_Notebooks/papers/',
+      'imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/',
+    ];
 
     function normalizeSourceLinkEntry(entry) {
       if (entry == null) return { label: '', url: '' };
@@ -4248,7 +4251,7 @@
     function isPaperNotebookHtmlUrl(url) {
       if (!url) return false;
       const base = String(url).split('#')[0].split('?')[0];
-      return base.includes(NOTEBOOK_SITE_PREFIX) && /\.html$/i.test(base);
+      return NOTEBOOK_SITE_PREFIXES.some((prefix) => base.includes(prefix)) && /\.html$/i.test(base);
     }
 
     function cleanPaperNotebookLabel(label, url, fallbackTitle) {
@@ -4286,12 +4289,12 @@
         push(norm.url, norm.label);
       });
       const content = item.content_markdown || '';
-      const mdRe = /\[机器人论文阅读笔记[:：]([^\]]+)\]\((https:\/\/imchong\.github\.io\/Humanoid_Robot_Learning_Paper_Notebooks\/papers\/[^)]+\.html)\)/gi;
+      const mdRe = /\[机器人论文阅读笔记[:：]([^\]]+)\]\((https:\/\/imchong\.github\.io\/(?:Humanoid_)?Robot_Learning_Paper_Notebooks\/papers\/[^)]+\.html)\)/gi;
       let match;
       while ((match = mdRe.exec(content)) !== null) {
         push(match[2], match[1]);
       }
-      const bareRe = /https:\/\/imchong\.github\.io\/Humanoid_Robot_Learning_Paper_Notebooks\/papers\/[^\s)<>"']+\.html/gi;
+      const bareRe = /https:\/\/imchong\.github\.io\/(?:Humanoid_)?Robot_Learning_Paper_Notebooks\/papers\/[^\s)<>"']+\.html/gi;
       while ((match = bareRe.exec(content)) !== null) {
         push(match[0], '');
       }

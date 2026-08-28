@@ -14,7 +14,7 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 
 # Coordinated Humanoid Manipulation with Choice Policies
 
-**Coordinated Humanoid Manipulation with Choice Policies** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Coordinated Humanoid Manipulation with Choice Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Coordinated_Humanoid_Manipulation_with_Choice_Policies/Coordinated_Humanoid_Manipulation_with_Choice_Policies.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Coordinated_Humanoid_Manipulation_with_Choice_Policies/Coordinated_Humanoid_Manipulation_with_Choice_Policies.html> |
 | arXiv | <https://arxiv.org/abs/2512.25072> |
 | 作者 | Haozhi Qi、Yen-Jen Wang、Toru Lin、Brent Yi、Yi Ma、Koushil Sreenath、Jitendra Malik（UC Berkeley） |
 | 发表 | 2025 年 12 月 |
@@ -87,9 +87,9 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 ## 参考来源
 
 - [humanoid_pnb_coordinated-humanoid-manipulation-with-choice-po.md](../../sources/papers/humanoid_pnb_coordinated-humanoid-manipulation-with-choice-po.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Coordinated_Humanoid_Manipulation_with_Choice_Policies/Coordinated_Humanoid_Manipulation_with_Choice_Policies.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Coordinated_Humanoid_Manipulation_with_Choice_Policies/Coordinated_Humanoid_Manipulation_with_Choice_Policies.html>
 - 论文：<https://arxiv.org/abs/2512.25072>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Coordinated Humanoid Manipulation with Choice Policies](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Coordinated_Humanoid_Manipulation_with_Choice_Policies/Coordinated_Humanoid_Manipulation_with_Choice_Policies.html)
+- [机器人论文阅读笔记：Coordinated Humanoid Manipulation with Choice Policies](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Coordinated_Humanoid_Manipulation_with_Choice_Policies/Coordinated_Humanoid_Manipulation_with_Choice_Policies.html)

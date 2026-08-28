@@ -30,7 +30,7 @@ summary: "SPI-Active（CoRL 2025 Oral，CMU/LeCAR）：GPU 并行采样式 SysID
 
 # SPI-Active（采样式 SysID + 主动探索）
 
-**SPI-Active**（*Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning*，arXiv:[2505.14266](https://arxiv.org/abs/2505.14266)，[项目页](https://lecar-lab.github.io/spi-active_/)，[代码](https://github.com/LeCAR-Lab/SPI-Active)）是 CMU / LeCAR 提出的 **两阶段腿足系统辨识** 框架（CoRL 2025 Oral）：用 GPU 大规模并行采样最小化仿真–真实轨迹误差，再优化探索策略指令以最大化 Fisher 信息，从而辨识关键物理参数并支撑高精度 locomotion 的零样本 sim2real。深读笔记见 [Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html)。
+**SPI-Active**（*Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning*，arXiv:[2505.14266](https://arxiv.org/abs/2505.14266)，[项目页](https://lecar-lab.github.io/spi-active_/)，[代码](https://github.com/LeCAR-Lab/SPI-Active)）是 CMU / LeCAR 提出的 **两阶段腿足系统辨识** 框架（CoRL 2025 Oral）：用 GPU 大规模并行采样最小化仿真–真实轨迹误差，再优化探索策略指令以最大化 Fisher 信息，从而辨识关键物理参数并支撑高精度 locomotion 的零样本 sim2real。深读笔记见 [Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html)。
 
 ## 一句话定义
 
@@ -122,7 +122,7 @@ flowchart TB
 | 源码 | <https://github.com/LeCAR-Lab/SPI-Active> |
 | 仿真栈 | Isaac Gym Preview 4 · Python 3.8 · uv · Hydra |
 | 主平台 | Unitree Go2（含负载实验）；G1 配置/泛化线索 |
-| Paper Notebooks | [10_Sim-to-Real 深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html) |
+| Paper Notebooks | [10_Sim-to-Real 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html) |
 
 ## 源码运行时序图
 
@@ -234,7 +234,7 @@ sequenceDiagram
 - [sources/repos/spi-active.md](../../sources/repos/spi-active.md)
 - [sources/sites/spi-active.md](../../sources/sites/spi-active.md)
 - [sources/papers/humanoid_pnb_spi-active.md](../../sources/papers/humanoid_pnb_spi-active.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>
 - 论文：<https://arxiv.org/abs/2505.14266>
 
 ## 推荐继续阅读

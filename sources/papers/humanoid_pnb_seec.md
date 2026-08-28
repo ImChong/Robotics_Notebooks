@@ -1,10 +1,10 @@
 # SEEC: Stable End-Effector Control with Model-Enhanced Residual Learning for Humanoid Loco-Manipulation
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** SEEC: Stable End-Effector Control with Model-Enhanced Residual Learning for Humanoid Loco-Manipulation
 - **类型：** paper
-- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
+- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
 - **计划笔记路径：** `papers/04_Loco-Manipulation_and_WBC/SEEC__Stable_End-Effector_Control_with_Model-Enhanced_Residual_Learning_for_Huma/SEEC__Stable_End-Effector_Control_with_Model-Enhanced_Residual_Learning_for_Huma.md`
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **路线：** Loco-Manipulation
@@ -23,5 +23,5 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
 

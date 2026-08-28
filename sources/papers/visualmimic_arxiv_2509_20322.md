@@ -94,4 +94,4 @@ $$c^{\mathrm{kp}}_t=[\Delta p_t,\,\Delta x_t^1,\ldots,\Delta x_t^5]$$
 - 论文：<https://arxiv.org/abs/2509.20322>
 - 项目页：<https://visualmimic.github.io/>
 - 代码：<https://github.com/visualmimic/VisualMimic>
-- Paper Notebooks progress：<https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json>
+- Paper Notebooks progress：<https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json>

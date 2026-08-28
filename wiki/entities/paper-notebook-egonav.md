@@ -165,5 +165,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- [EgoNav 深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoNav__Learning_Humanoid_Navigation_from_Human_Data/EgoNav__Learning_Humanoid_Navigation_from_Human_Data.html)
+- [EgoNav 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoNav__Learning_Humanoid_Navigation_from_Human_Data/EgoNav__Learning_Humanoid_Navigation_from_Human_Data.html)
 - [NoMaD 官方项目](https://general-navigation-models.github.io/nomad/) — 多机器人数据与图像目标条件的另一条扩散路线

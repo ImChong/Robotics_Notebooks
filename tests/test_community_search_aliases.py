@@ -15,15 +15,17 @@ from utils.community_labels import (  # noqa: E402
 
 class CommunitySearchAliasTests(unittest.TestCase):
     def test_community_short_label_strips_suffix_and_english(self) -> None:
-        full = "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-        self.assertEqual(community_short_label(full), "人形论文深读笔记")
+        full = "机器人学习论文笔记（Robot Learning Paper Notebooks） 社区"
+        self.assertEqual(community_short_label(full), "机器人学习论文笔记")
 
     def test_community_search_aliases_for_paper_notebooks_hub(self) -> None:
         aliases = community_search_aliases_for_path(
             "wiki/overview/humanoid-paper-notebooks-index.md"
         )
-        self.assertIn("人形论文深读笔记", aliases)
-        self.assertIn("Humanoid Paper Notebooks", aliases)
+        self.assertIn("机器人学习论文笔记", aliases)
+        self.assertIn("Robot Learning Paper Notebooks", aliases)
+        self.assertNotIn("人形论文深读笔记", aliases)
+        self.assertNotIn("Humanoid Paper Notebooks", aliases)
 
     def test_community_search_aliases_from_base_name(self) -> None:
         aliases = community_search_aliases("视觉-语言-动作（Vision-Language-Action, VLA）")
@@ -42,8 +44,11 @@ class CommunitySearchAliasTests(unittest.TestCase):
             for d in payload["docs"]
             if d["path"] == "wiki/overview/humanoid-paper-notebooks-index.md"
         )
-        self.assertIn("人形论文深读笔记", doc.get("search_aliases", []))
-        self.assertGreater(doc["tokens"].get("人形论文深读笔记", 0), 0)
+        aliases = doc.get("search_aliases", [])
+        self.assertIn("机器人学习论文笔记", aliases)
+        self.assertNotIn("人形论文深读笔记", aliases)
+        self.assertNotIn("Humanoid Paper Notebooks", aliases)
+        self.assertGreater(doc["tokens"].get("机器人学习论文笔记", 0), 0)
 
 
 if __name__ == "__main__":

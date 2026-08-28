@@ -14,7 +14,7 @@ summary: "把物体操控到目标状态是灵巧操作的基本而重要的技�
 
 # Object-Centric Dexterous Manipulation from Human Motion Data
 
-**Object-Centric Dexterous Manipulation from Human Motion Data** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Object-Centric Dexterous Manipulation from Human Motion Data** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "把物体操控到目标状态是灵巧操作的基本而重要的技�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data.html> |
 | arXiv | <https://arxiv.org/abs/2411.04005> |
 | 作者 | Yuanpei Chen、Chen Wang、Yaodong Yang、C. Karen Liu（Stanford / 北大） |
 | 发表 | 2024 年 11 月 |
@@ -86,9 +86,9 @@ summary: "把物体操控到目标状态是灵巧操作的基本而重要的技�
 ## 参考来源
 
 - [humanoid_pnb_object-centric-dexterous-manipulation-from-human.md](../../sources/papers/humanoid_pnb_object-centric-dexterous-manipulation-from-human.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data.html>
 - 论文：<https://arxiv.org/abs/2411.04005>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Object-Centric Dexterous Manipulation from Human Motion Data](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data.html)
+- [机器人论文阅读笔记：Object-Centric Dexterous Manipulation from Human Motion Data](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data.html)

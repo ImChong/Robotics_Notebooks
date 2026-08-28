@@ -20,7 +20,7 @@ summary: "LHBS（arXiv:2602.08370）：Imitation-to-Interaction 四阶段渐进 
 
 # LHBS：人形拟人羽毛球技能学习
 
-**LHBS**（*Learning Human-Like Badminton Skills for Humanoid Robots*，arXiv:2602.08370）由香港大学与 EngineAI 提出，收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。核心命题：把人形从 **运动模仿者（mimic）** 渐进培养成 **能击球的 striker**，在保持拟人风格的同时完成 **时序关键、物理一致的羽毛球拦截**。
+**LHBS**（*Learning Human-Like Badminton Skills for Humanoid Robots*，arXiv:2602.08370）由香港大学与 EngineAI 提出，收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。核心命题：把人形从 **运动模仿者（mimic）** 渐进培养成 **能击球的 striker**，在保持拟人风格的同时完成 **时序关键、物理一致的羽毛球拦截**。
 
 ## 一句话定义
 
@@ -138,7 +138,7 @@ flowchart TB
 - [humanoid_pnb_learning-human-like-badminton-skills-for-humanoi.md](../../sources/papers/humanoid_pnb_learning-human-like-badminton-skills-for-humanoi.md)
 - 项目页：<https://astrorix.github.io/LHBS/>
 - 论文：<https://arxiv.org/abs/2602.08370>
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots.html>
 
 ## 推荐继续阅读
 

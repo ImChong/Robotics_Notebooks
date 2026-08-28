@@ -18,7 +18,7 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 
 # Learning Sim-to-Real Humanoid Locomotion in 15 Minutes
 
-**Learning Sim-to-Real Humanoid Locomotion in 15 Minutes** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Learning Sim-to-Real Humanoid Locomotion in 15 Minutes** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -34,7 +34,7 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 - 后续 **[FlashSAC](../methods/flashsac.md)**（arXiv:2604.04539）在同一 off-policy 墙钟加速脉络上，用更大网络与范数约束进一步挑战 PPO 默认地位；本文 FastSAC/FastTD3 配方可视为其前驱小网络路线。
 
@@ -43,7 +43,7 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 03_High_Impact_Selection |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html> |
 | arXiv | <https://arxiv.org/abs/2512.01996> |
 
 ## 实验与评测
@@ -74,9 +74,9 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 - [humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md](../../sources/papers/humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md)
 - [flashsac_arxiv_2604_04539.md](../../sources/papers/flashsac_arxiv_2604_04539.md) — 后继 scaling 式 off-policy（FlashSAC）
 - [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — asymmetric FastSAC 单腿应用
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html>
 - 论文：<https://arxiv.org/abs/2512.01996>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html)
+- [机器人论文阅读笔记：Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html)

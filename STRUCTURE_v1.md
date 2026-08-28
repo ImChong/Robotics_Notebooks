@@ -388,7 +388,7 @@ docs/
 
 | 项目 | 职责 |
 |------|------|
-| **Humanoid_Robot_Learning_Paper_Notebooks** | 单篇论文深读笔记 |
+| **Robot_Learning_Paper_Notebooks** | 单篇论文深读笔记 |
 | **Robotics_Notebooks** | 跨模块知识组织、学习路线、技术栈地图 |
 | **ImChong.github.io** | 个人简历与对外展示 |
 

@@ -99,6 +99,6 @@ PvP 的全称是 Proprioceptive-Privileged Contrastive Representations。它关�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：PvP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/PvP__Data-Efficient_Humanoid_Robot_Learning_with_Proprioceptive-Privileged_Contrastive/PvP__Data-Efficient_Humanoid_Robot_Learning_with_Proprioceptive-Privileged_Contrastive.html)
+- [机器人论文阅读笔记：PvP](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/PvP__Data-Efficient_Humanoid_Robot_Learning_with_Proprioceptive-Privileged_Contrastive/PvP__Data-Efficient_Humanoid_Robot_Learning_with_Proprioceptive-Privileged_Contrastive.html)
 - [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
 - [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)

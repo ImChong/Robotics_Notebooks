@@ -14,7 +14,7 @@ summary: "从单张彩色图恢复 3D 人-物交互（HOI）很难：深度歧�
 
 # PICO
 
-**PICO: Reconstructing 3D People In Contact with Objects** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**PICO: Reconstructing 3D People In Contact with Objects** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ PICO 要：泛化到**自然图像 + 新物体类**的 3D HOI 重建。
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html> |
 | arXiv | <https://arxiv.org/abs/2504.17695> |
 | 作者 | Alpár Cseke、Shashank Tripathi、Sai Kumar Dwivedi、Michael J. Black、Dimitrios Tzionas（MPI / 图宾根等） |
 | 发表 | 2025 年 4 月 |
@@ -86,9 +86,9 @@ PICO 要：泛化到**自然图像 + 新物体类**的 3D HOI 重建。
 ## 参考来源
 
 - [humanoid_pnb_pico.md](../../sources/papers/humanoid_pnb_pico.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html>
 - 论文：<https://arxiv.org/abs/2504.17695>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：PICO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html)
+- [机器人论文阅读笔记：PICO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html)

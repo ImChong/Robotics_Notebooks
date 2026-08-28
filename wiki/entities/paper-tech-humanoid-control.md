@@ -185,4 +185,4 @@ flowchart TB
 - [TeCH 成果页（RoboParty Lab）](https://lab.roboparty.com/outputs/tech)
 - [UFO GitHub](https://github.com/Roboparty/UFO)
 - [TLDR 原论文](https://arxiv.org/abs/2407.08464)
-- [BFM-Zero 论文笔记（姊妹仓库）](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL.html)
+- [BFM-Zero 论文笔记（姊妹仓库）](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL.html)

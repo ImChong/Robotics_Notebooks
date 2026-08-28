@@ -27,4 +27,4 @@
 
 - 技术报告 + **开源 6B 权重** + **完整后训练/部署脚本**，是 2026 年 **务实 VLA 基础模型 → 真机应用** 路线的直接复现入口。
 - **55 维统一动作** 与 **MoE 跨本体 scaling** 可与 Green-VLA、Qwen-VLA 等 **语义槽位 / embodiment prompt** 路线形成工程对照。
-- 与 [Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **跨主题 VLA 数据–模型–部署** 索引。
+- 与 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **跨主题 VLA 数据–模型–部署** 索引。

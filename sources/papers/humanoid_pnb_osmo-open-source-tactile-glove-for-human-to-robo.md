@@ -1,10 +1,10 @@
 # OSMO: Open-Source Tactile Glove for Human-to-Robot Skill Transfer
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** OSMO: Open-Source Tactile Glove for Human-to-Robot Skill Transfer
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer.html>
 - **分类：** 12_Hardware_Design
 - **arXiv：** <https://arxiv.org/abs/2512.08920>
 - **项目页：** <https://www.jessicayin.com/osmo_tactile_glove/>
@@ -25,7 +25,7 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer.html>
 - 论文：<https://arxiv.org/abs/2512.08920>
 - 项目页归档：[osmo-tactile-glove.md](../sites/osmo-tactile-glove.md)
 - 仓库归档：[osmo-tactile-glove.md](../repos/osmo-tactile-glove.md)

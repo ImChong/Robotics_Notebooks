@@ -14,7 +14,7 @@ summary: "许多操作任务需要主动或交互式探索才能成功——智�
 
 # Learning to Look
 
-**Learning to Look: Seeking Information for Decision Making via Policy Factorization** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Learning to Look: Seeking Information for Decision Making via Policy Factorization** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "许多操作任务需要主动或交互式探索才能成功——智�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization.html> |
 | arXiv | <https://arxiv.org/abs/2410.18964> |
 | 作者 | Shivin Dass、Jiaheng Hu、Ben Abbatematteo、Peter Stone、Roberto Martín-Martín（UT Austin） |
 | 发表 | 2024 年 10 月 |
@@ -86,9 +86,9 @@ summary: "许多操作任务需要主动或交互式探索才能成功——智�
 ## 参考来源
 
 - [humanoid_pnb_learning-to-look.md](../../sources/papers/humanoid_pnb_learning-to-look.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization.html>
 - 论文：<https://arxiv.org/abs/2410.18964>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Learning to Look](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization.html)
+- [机器人论文阅读笔记：Learning to Look](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization/Learning_to_Look__Seeking_Information_for_Decision_Making_via_Policy_Factorization.html)

@@ -173,5 +173,5 @@ DAgger 从 50 expert episodes 起步，再执行 10 rounds × 50 episodes。两�
 
 ## 推荐继续阅读
 
-- [PioneeR 深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications.html)
+- [PioneeR 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications.html)
 - [Core Challenges of Social Robot Navigation](https://doi.org/10.1145/3583741) — 社会导航问题定义与评测边界

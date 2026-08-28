@@ -1,10 +1,10 @@
 # Flexible Motion In-betweening with Diffusion Models
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** Flexible Motion In-betweening with Diffusion Models
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Flexible_Motion_In-betweening_with_Diffusion_Models/Flexible_Motion_In-betweening_with_Diffusion_Models.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Flexible_Motion_In-betweening_with_Diffusion_Models/Flexible_Motion_In-betweening_with_Diffusion_Models.html>
 - **分类：** 14_Human_Motion
 - **arXiv：** <https://arxiv.org/abs/2405.11126>
 - **项目页：** <https://setarehc.github.io/CondMDI/>
@@ -24,7 +24,7 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Flexible_Motion_In-betweening_with_Diffusion_Models/Flexible_Motion_In-betweening_with_Diffusion_Models.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Flexible_Motion_In-betweening_with_Diffusion_Models/Flexible_Motion_In-betweening_with_Diffusion_Models.html>
 - 论文：<https://arxiv.org/abs/2405.11126>
 - 项目页归档：[condmdi-project.md](../sites/condmdi-project.md)
 - 代码归档：[condmdi.md](../repos/condmdi.md)

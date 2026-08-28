@@ -137,5 +137,5 @@ HumanX 在项目页和核心原理里主要与两条同样「从人类视频出�
 ## 推荐继续阅读
 
 - [HumanX 项目页](https://wyhuai.github.io/human-x/)
-- [机器人论文阅读笔记：HumanX](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi/HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi.html)
+- [机器人论文阅读笔记：HumanX](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi/HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi.html)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)

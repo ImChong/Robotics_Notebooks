@@ -14,7 +14,7 @@ summary: "机器人操作仍数据稀缺——最大的机器人数据集也比�
 
 # Masquerade
 
-**Masquerade: Learning from In-the-wild Human Videos using Data-Editing** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Masquerade: Learning from In-the-wild Human Videos using Data-Editing** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ Masquerade 要：用**数据编辑**把人类视频"机器人化"，从而利用
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing.html> |
 | arXiv | <https://arxiv.org/abs/2508.09976> |
 | 作者 | Marion Lepert、Jiaying Fang、Jeannette Bohg（Stanford） |
 | 发表 | 2025 年 8 月 |
@@ -86,9 +86,9 @@ Masquerade 要：用**数据编辑**把人类视频"机器人化"，从而利用
 ## 参考来源
 
 - [humanoid_pnb_masquerade.md](../../sources/papers/humanoid_pnb_masquerade.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing.html>
 - 论文：<https://arxiv.org/abs/2508.09976>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Masquerade](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing.html)
+- [机器人论文阅读笔记：Masquerade](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing/Masquerade__Learning_from_In-the-wild_Human_Videos_using_Data-Editing.html)

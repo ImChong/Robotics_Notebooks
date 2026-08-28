@@ -12,7 +12,7 @@ tags:
   - umich
   - upenn
 status: complete
-updated: 2026-08-10
+updated: 2026-08-28
 arxiv: "2512.08920"
 code: https://github.com/jessicayin/osmo_tactile_glove
 related:

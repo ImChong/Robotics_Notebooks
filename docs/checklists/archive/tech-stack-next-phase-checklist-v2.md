@@ -2,7 +2,7 @@
 
 最后更新：2026-04-13
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-关联项目：<https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks>
+关联项目：<https://github.com/ImChong/Robot_Learning_Paper_Notebooks>
 上一版清单：[`docs/tech-stack-next-phase-checklist-v1.md`](tech-stack-next-phase-checklist-v1.md)
 
 ## 当前项目状态判断

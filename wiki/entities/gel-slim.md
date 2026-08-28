@@ -120,5 +120,5 @@ GelSlim 在策略学习里最大的难题是**仿真**——硅胶的非线性�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Visual-tactile pretraining and online multitask learning for humanlike manipulation dexterity](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity.html)
-- [机器人论文阅读笔记：Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)
+- [机器人论文阅读笔记：Visual-tactile pretraining and online multitask learning for humanlike manipulation dexterity](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity/Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity.html)
+- [机器人论文阅读笔记：Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)

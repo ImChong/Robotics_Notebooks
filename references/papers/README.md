@@ -13,7 +13,7 @@ updated: 2026-04-23
 > 按主题整理当前主线最值得继续看的论文入口，让你知道“这个方向往下该看哪些论文”。
 
 如果你想做单篇论文深读，请去：
-- [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)
+- [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)
 
 ---
 

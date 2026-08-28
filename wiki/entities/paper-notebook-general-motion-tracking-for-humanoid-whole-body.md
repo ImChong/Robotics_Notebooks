@@ -18,7 +18,7 @@ summary: "Paper Notebooks progress 待深读占位：General Motion Tracking / G
 
 # General Motion Tracking for Humanoid Whole-Body Control（Paper Notebooks 计划）
 
-**General Motion Tracking / GMT** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页保留 **计划索引**；跨主题知识归纳见正式实体 [paper-gmt.md](./paper-gmt.md)。
+**General Motion Tracking / GMT** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页保留 **计划索引**；跨主题知识归纳见正式实体 [paper-gmt.md](./paper-gmt.md)。
 
 ## 一句话定义
 
@@ -34,7 +34,7 @@ summary: "Paper Notebooks progress 待深读占位：General Motion Tracking / G
 
 ## 为什么重要
 
-- 与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 对齐阅读进度。
+- 与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 对齐阅读进度。
 - 避免图谱上只有「计划」而无方法页：正式内容已在 [paper-gmt.md](./paper-gmt.md)。
 
 ## 核心信息
@@ -42,7 +42,7 @@ summary: "Paper Notebooks progress 待深读占位：General Motion Tracking / G
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
+| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
 | arXiv | [2506.14770](https://arxiv.org/abs/2506.14770) |
 | 本库正式实体 | [paper-gmt.md](./paper-gmt.md) |
 | 计划文件夹 | `papers/04_Loco-Manipulation_and_WBC/General_Motion_Tracking_for_Humanoid_Whole-Body_Control` |
@@ -70,10 +70,10 @@ summary: "Paper Notebooks progress 待深读占位：General Motion Tracking / G
 
 - [gmt_arxiv_2506_14770.md](../../sources/papers/gmt_arxiv_2506_14770.md)
 - [humanoid_pnb_general-motion-tracking-for-humanoid-whole-body.md](../../sources/papers/humanoid_pnb_general-motion-tracking-for-humanoid-whole-body.md)
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
 
 ## 推荐继续阅读
 
 - [GMT 正式实体页](./paper-gmt.md)
-- [Paper Notebooks PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 项目页：<https://gmt-humanoid.github.io/>

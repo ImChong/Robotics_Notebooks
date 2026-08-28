@@ -14,7 +14,7 @@ summary: "Geometry-Aware Predictive Safety Filters on Humanoids：列入 Paper N
 
 # Geometry-Aware Predictive Safety Filters on Humanoids
 
-**Geometry-Aware Predictive Safety Filters on Humanoids** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Geometry-Aware Predictive Safety Filters on Humanoids** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ Geometry-Aware Predictive Safety Filters on Humanoids 的人形机器人学习�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -38,7 +38,7 @@ Geometry-Aware Predictive Safety Filters on Humanoids 的人形机器人学习�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 05_Locomotion |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 计划文件夹 | `papers/05_Locomotion/geometry-aware-predictive-safety-filters-on-huma` |
 | arXiv | <https://arxiv.org/abs/2508.11129> |
 
@@ -52,7 +52,7 @@ Geometry-Aware Predictive Safety Filters on Humanoids 的人形机器人学习�
 
 - 页面现状：status 为 planned，正文只有分类归属与 PROGRESS.md 待深读状态，没有可供归纳的机制、指标或实验内容。
 - 从标题能读出的定位仅限于「人形 + 几何感知的预测式安全滤波」，归类在 05_Locomotion；任何关于方法细节或效果的判断在本页都缺乏依据。
-- 使用方式：把本页当检索入口——分类父节点 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 与 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走 arXiv 原文。
+- 使用方式：把本页当检索入口——分类父节点 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 与 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走 arXiv 原文。
 
 ## 与其他页面的关系
 
@@ -62,9 +62,9 @@ Geometry-Aware Predictive Safety Filters on Humanoids 的人形机器人学习�
 ## 参考来源
 
 - [humanoid_pnb_geometry-aware-predictive-safety-filters-on-huma.md](../../sources/papers/humanoid_pnb_geometry-aware-predictive-safety-filters-on-huma.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.11129>
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

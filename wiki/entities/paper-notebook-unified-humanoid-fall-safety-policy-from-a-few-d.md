@@ -14,7 +14,7 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 
 # Unified Humanoid Fall-Safety Policy from a Few Demonstrations
 
-**Unified Humanoid Fall-Safety Policy from a Few Demonstrations** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Unified Humanoid Fall-Safety Policy from a Few Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations.html> |
 | arXiv | <https://arxiv.org/abs/2511.07407> |
 | 作者 | Zhengjie Xu、Ye Li、Kwan-yee Lin、Stella X. Yu |
 | 发表 | 2025 年 11 月 |
@@ -86,9 +86,9 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 ## 参考来源
 
 - [humanoid_pnb_unified-humanoid-fall-safety-policy-from-a-few-d.md](../../sources/papers/humanoid_pnb_unified-humanoid-fall-safety-policy-from-a-few-d.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations.html>
 - 论文：<https://arxiv.org/abs/2511.07407>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Unified Humanoid Fall-Safety Policy from a Few Demonstrations](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations.html)
+- [机器人论文阅读笔记：Unified Humanoid Fall-Safety Policy from a Few Demonstrations](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations.html)

@@ -25,7 +25,7 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2310.08580>
 - 项目页归档：[omnicontrol-project.md](../sites/omnicontrol-project.md)
 - 代码归档：[omnicontrol.md](../repos/omnicontrol.md)

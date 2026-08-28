@@ -1,6 +1,6 @@
 # DPL: Depth-only Perceptive Humanoid Locomotion via Realistic Depth Synthesis and Cross-Attention Terrain Reconstruction
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress → 本库升格）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress → 本库升格）
 
 - **标题：** DPL: Depth-only Perceptive Humanoid Locomotion via Realistic Depth Synthesis and Cross-Attention Terrain Reconstruction
 - **类型：** paper
@@ -25,5 +25,5 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2510.07152>

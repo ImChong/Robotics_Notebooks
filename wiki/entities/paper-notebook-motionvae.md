@@ -14,7 +14,7 @@ summary: "MotionVAE 通过自回归条件变分自编码器（CVAE）构建了�
 
 # Character Controllers using Motion VAEs
 
-**Character Controllers using Motion VAEs** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Character Controllers using Motion VAEs** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
 ## 核心信息
@@ -38,7 +38,7 @@ MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构
 | 字段 | 内容 |
 |------|------|
 | 分类 | 13_Physics-Based_Animation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/MotionVAE/MotionVAE.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/MotionVAE/MotionVAE.html> |
 | arXiv | <https://arxiv.org/abs/2103.14274> |
 
 ## 实验与评测
@@ -61,9 +61,9 @@ MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构
 ## 参考来源
 
 - [humanoid_pnb_motionvae.md](../../sources/papers/humanoid_pnb_motionvae.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/MotionVAE/MotionVAE.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/MotionVAE/MotionVAE.html>
 - 论文：<https://arxiv.org/abs/2103.14274>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Character Controllers using Motion VAEs](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/MotionVAE/MotionVAE.html)
+- [机器人论文阅读笔记：Character Controllers using Motion VAEs](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/MotionVAE/MotionVAE.html)

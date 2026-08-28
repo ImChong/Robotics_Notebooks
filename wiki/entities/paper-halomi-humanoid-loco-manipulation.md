@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, active-perception, umi, robot-free, vla, whole-body-control, unitree-g1, bfm-zero, dagger, teleoperation, shanghai-jiao-tong]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-28
 arxiv: "2606.18772"
 venue: "arXiv 2026"
 related:

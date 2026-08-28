@@ -95,7 +95,7 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - [PAC-MAN（感知感知 CBF-RL 躲避球）](../entities/paper-pac-man-perceptive-cbf-rl.md)
 
 ## 参考来源
-- [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
+- [机器人论文阅读笔记：RMA](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
 - Achiam, J., et al. (2017). *Constrained Policy Optimization*.
 - Ray, A., et al. (2019). *Benchmarking Safe Deep Reinforcement Learning*.
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md)

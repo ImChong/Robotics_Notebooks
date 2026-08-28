@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, black-box-optimization, evolution-strategy, sim2real, system-identification, actuator]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-28
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md

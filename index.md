@@ -198,7 +198,7 @@ SORT type ASC
 
 ## 与其他项目的边界
 
-- [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)：单篇论文深读
+- [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)：单篇论文深读
 - [`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks)：跨模块知识组织
 - [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io)：个人简历
 

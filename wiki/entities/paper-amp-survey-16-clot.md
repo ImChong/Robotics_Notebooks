@@ -150,5 +150,5 @@ flowchart TB
 - [CLOT 项目页](https://zhutengjie.github.io/CLOT.github.io/)
 - [CLOT GitHub](https://github.com/zhutengjie/CLOT)
 - [TWIST2（局部帧便携遥操作对照）](./paper-twist2.md)
-- [机器人论文阅读笔记：CLOT](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation.html)
+- [机器人论文阅读笔记：CLOT](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation.html)
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)

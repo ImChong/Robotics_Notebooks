@@ -154,4 +154,4 @@ Student 用 CNN 替换 scandots encoder，并继承 oracle 的 GRU/MLP 权重。
 ## 推荐继续阅读
 
 - [Humanoid Parkour Learning 官方项目页](https://humanoid4parkour.github.io/)
-- [机器人论文阅读笔记：Humanoid Parkour Learning](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html)
+- [机器人论文阅读笔记：Humanoid Parkour Learning](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html)

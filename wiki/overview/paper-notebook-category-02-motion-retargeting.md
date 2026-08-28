@@ -10,7 +10,7 @@ summary: "Paper Notebooks 分类 02：运动重定向（4 篇深读笔记索引�
 
 # Paper Notebooks · Motion Retargeting
 
-**Motion Retargeting**（`02_Motion_Retargeting`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **02** 类。Bridging human motion data and humanoid policies — geometric IK, learned retargeting, and the engineering choices that determine downstream policy quality
+**Motion Retargeting**（`02_Motion_Retargeting`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **02** 类。Bridging human motion data and humanoid policies — geometric IK, learned retargeting, and the engineering choices that determine downstream policy quality
 
 ## 英文缩写速查
 
@@ -24,21 +24,21 @@ summary: "Paper Notebooks 分类 02：运动重定向（4 篇深读笔记索引�
 
 - [Make Tracking Easy](../entities/paper-hrl-stack-02-make_tracking_easy.md) — 见 wiki 实体页
 - [OmniRetarget](../entities/holosoma.md) — 见 wiki 实体页
-- [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html)
+- [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html)
 - [Retargeting Matters](../entities/paper-hrl-stack-01-retargeting_matters.md) — 见 wiki 实体页
 
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
-- 笔记主页：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html>
+- 笔记主页：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html>
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文 ingest 归档（节选）：[Retargeting Matters](../../sources/papers/humanoid_rl_stack_01_retargeting_matters_general_motion_retargeting_f.md)、[Make Tracking Easy](../../sources/papers/humanoid_rl_stack_02_make_tracking_easy_neural_motion_retargeting_for.md)、[人形 RL 身体系统栈：42 篇论文 source 索引](../../sources/papers/humanoid_rl_stack_42_catalog.md)
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记总站](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)

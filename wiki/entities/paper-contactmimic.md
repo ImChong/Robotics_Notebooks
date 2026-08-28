@@ -171,7 +171,7 @@ flowchart TB
 
 - 论文：<https://arxiv.org/abs/2607.08742>
 - 项目页（概述视频与真机 trial）：<https://lixinyao11.github.io/contactmimic-page/>
-- [HUMOTO 数据集笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions.html)
+- [HUMOTO 数据集笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions.html)
 - [BeyondMimic 项目页](https://beyondmimic.github.io/)
 - [SceneBot 项目页](https://ericcsr.github.io/scenebot/)
 

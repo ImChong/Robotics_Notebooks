@@ -14,7 +14,7 @@ summary: "让人形机器人与人发生物理交互是关键前沿，但人-人
 
 # Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations
 
-**Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "让人形机器人与人发生物理交互是关键前沿，但人-人
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html> |
 | arXiv | <https://arxiv.org/abs/2601.09518> |
 | 作者 | Wei-Jin Huang、Yue-Yi Zhang、Yi-Lin Wei、Zhi-Wei Xia、Juantao Tan、Yuan-Ming Li、Zhilin Zhao、Wei-Shi Zheng（中山大学等） |
 | 发表 | 2026 年 1 月 |
@@ -86,9 +86,9 @@ summary: "让人形机器人与人发生物理交互是关键前沿，但人-人
 ## 参考来源
 
 - [humanoid_pnb_learning-whole-body-human-humanoid-interaction-f.md](../../sources/papers/humanoid_pnb_learning-whole-body-human-humanoid-interaction-f.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html>
 - 论文：<https://arxiv.org/abs/2601.09518>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html)
+- [机器人论文阅读笔记：Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html)

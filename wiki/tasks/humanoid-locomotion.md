@@ -131,6 +131,6 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Now You See That](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html)
+- [机器人论文阅读笔记：Now You See That](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html)
 - [Now You See That 项目页](https://hellod035.github.io/Now_You_See_That/) — RSS 2026；立体深度增广与实机跑酷/楼梯 demo
-- [机器人论文阅读笔记：HoRD](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation/HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation.html)
+- [机器人论文阅读笔记：HoRD](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation/HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation.html)

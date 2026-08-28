@@ -1,10 +1,10 @@
 # Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记 + 项目页开源核查）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记 + 项目页开源核查）
 
 - **标题：** Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2511.11218>
 - **项目页：** <https://humanoid-badminton.github.io/Humanoid-Whole-Body-Badminton-via-Multi-Stage-Reinforcement-Learning/>

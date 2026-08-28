@@ -1,10 +1,10 @@
 # FAME: Force-Adaptive RL for Expanding the Manipulation Envelope of a Full-Scale Humanoid
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** FAME: Force-Adaptive RL for Expanding the Manipulation Envelope of a Full-Scale Humanoid
 - **类型：** paper
-- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
+- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
 - **计划笔记路径：** `papers/04_Loco-Manipulation_and_WBC/FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_/FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_.md`
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **路线：** Loco-Manipulation
@@ -23,5 +23,5 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
 

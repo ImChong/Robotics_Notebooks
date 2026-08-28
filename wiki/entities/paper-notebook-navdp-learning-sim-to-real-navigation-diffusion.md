@@ -199,6 +199,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [NavDP 深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy.html)
+- [NavDP 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy.html)
 - [InternRobotics/NavDP](https://github.com/InternRobotics/NavDP) — 以 README 当前版本为准运行 server 与 benchmark
 - [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 + IL→RL 对照（arXiv:2606.29934）

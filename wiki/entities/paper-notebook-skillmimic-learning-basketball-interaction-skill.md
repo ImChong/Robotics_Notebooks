@@ -26,7 +26,7 @@ summary: "SkillMimic（arXiv:2408.15270，CVPR 2025 Highlight）：统一 HOI �
 
 # SkillMimic（Learning Basketball Interaction Skills from Demonstrations）
 
-**SkillMimic**（arXiv:[2408.15270](https://arxiv.org/abs/2408.15270)，**CVPR 2025 Highlight**；[项目页](https://ingrid789.github.io/SkillMimic/)，[代码](https://github.com/wyhuai/SkillMimic)）提出 **数据驱动、技能无关** 的 HOI 模仿范式：用 **统一配置** 模仿人–球状态转移，使物理仿真人形掌握运球、上篮、投篮等多样篮球技能，并由 **高层控制器（HLC）** 复用技能完成连续得分等长程任务。本页为知识库 **策展摘要**；姊妹仓库 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 深读笔记仍待撰写。
+**SkillMimic**（arXiv:[2408.15270](https://arxiv.org/abs/2408.15270)，**CVPR 2025 Highlight**；[项目页](https://ingrid789.github.io/SkillMimic/)，[代码](https://github.com/wyhuai/SkillMimic)）提出 **数据驱动、技能无关** 的 HOI 模仿范式：用 **统一配置** 模仿人–球状态转移，使物理仿真人形掌握运球、上篮、投篮等多样篮球技能，并由 **高层控制器（HLC）** 复用技能完成连续得分等长程任务。本页为知识库 **策展摘要**；姊妹仓库 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 深读笔记仍待撰写。
 
 ## 一句话定义
 

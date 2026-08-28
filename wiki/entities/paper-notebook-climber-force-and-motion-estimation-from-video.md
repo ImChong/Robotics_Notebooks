@@ -14,7 +14,7 @@ summary: "本工作研究从视频同时估计攀岩者的运动与受力：在�
 
 # Climber Force and Motion Estimation from Video
 
-**Climber Force and Motion Estimation from Video** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Climber Force and Motion Estimation from Video** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "本工作研究从视频同时估计攀岩者的运动与受力：在�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Climber_Force_and_Motion_Estimation_from_Video/Climber_Force_and_Motion_Estimation_from_Video.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Climber_Force_and_Motion_Estimation_from_Video/Climber_Force_and_Motion_Estimation_from_Video.html> |
 | 发表 | 2025 年 4 月（arXiv，详见项目页） |
 | 项目主页 | [rihat99.github.io/climb_force](https://rihat99.github.io/climb_force/) |
 | 笔记阅读日期 | 2026-06-21 |
@@ -84,8 +84,8 @@ summary: "本工作研究从视频同时估计攀岩者的运动与受力：在�
 ## 参考来源
 
 - [humanoid_pnb_climber-force-and-motion-estimation-from-video.md](../../sources/papers/humanoid_pnb_climber-force-and-motion-estimation-from-video.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Climber_Force_and_Motion_Estimation_from_Video/Climber_Force_and_Motion_Estimation_from_Video.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Climber_Force_and_Motion_Estimation_from_Video/Climber_Force_and_Motion_Estimation_from_Video.html>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Climber Force and Motion Estimation from Video](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Climber_Force_and_Motion_Estimation_from_Video/Climber_Force_and_Motion_Estimation_from_Video.html)
+- [机器人论文阅读笔记：Climber Force and Motion Estimation from Video](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Climber_Force_and_Motion_Estimation_from_Video/Climber_Force_and_Motion_Estimation_from_Video.html)

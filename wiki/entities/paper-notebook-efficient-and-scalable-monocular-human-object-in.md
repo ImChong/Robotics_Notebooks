@@ -14,7 +14,7 @@ summary: "机器人要学操作离不开大规模、多样化的「人-物交互
 
 # Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction
 
-**Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -57,7 +57,7 @@ summary: "机器人要学操作离不开大规模、多样化的「人-物交互
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html> |
 | arXiv | <https://arxiv.org/abs/2512.00960> |
 | 机构 | 上海交通大学（SJTU）· SII · 复旦大学（FDU）· 北京交通大学（BJTU）· 浙江大学（ZJU） |
 | 作者 | Boran Wen、Ye Lu、Sirui Wang、Keyan Wan、Jiahong Zhou、Junxuan Liang、Xinpeng Liu、Bang Xiao、Ruiyang Liu、Yong-Lu Li |
@@ -88,9 +88,9 @@ summary: "机器人要学操作离不开大规模、多样化的「人-物交互
 ## 参考来源
 
 - [humanoid_pnb_efficient-and-scalable-monocular-human-object-in.md](../../sources/papers/humanoid_pnb_efficient-and-scalable-monocular-human-object-in.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html>
 - 论文：<https://arxiv.org/abs/2512.00960>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html)
+- [机器人论文阅读笔记：Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html)

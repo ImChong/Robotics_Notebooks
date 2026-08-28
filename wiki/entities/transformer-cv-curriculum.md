@@ -167,7 +167,7 @@ flowchart LR
 
 - 大纲截图未给出机构课号/链接时，来源以本库 `sources/courses/` 归档为准。
 - 部分作业数据（VisDrone、BraTS、COD10K）未单独建页，需要时再 ingest。
-- 节点为课程覆盖级编译，不等于每篇论文的深读笔记（深读见 Humanoid Paper Notebooks 分工）。
+- 节点为课程覆盖级编译，不等于每篇论文的深读笔记（深读见 Robot Learning Paper Notebooks 分工）。
 
 ## 关联页面
 

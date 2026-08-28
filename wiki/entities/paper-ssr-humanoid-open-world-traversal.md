@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-28
 arxiv: "2605.30770"
 related:
   - ./paper-cref.md

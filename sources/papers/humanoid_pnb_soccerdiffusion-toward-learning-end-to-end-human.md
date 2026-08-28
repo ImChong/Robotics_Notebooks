@@ -32,4 +32,4 @@
 - 项目页：[bit-bots-soccerdiffusion.md](../sites/bit-bots-soccerdiffusion.md)
 - 仓：[soccerdiffusion.md](../repos/soccerdiffusion.md)
 - 论文：<https://arxiv.org/abs/2504.20808>
-- [PROGRESS.md 历史锚点](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [PROGRESS.md 历史锚点](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

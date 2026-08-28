@@ -177,7 +177,7 @@ Replay 相近；WARP 监督对 BC **+12%** 平均策略成功率。
 - **交互场景硬约束：** [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — interaction mesh + SOCP；侧重场景/物体交互增广
 - **Meta Quest 但不同环：** [CWI](./paper-cwi-composite-humanoid-whole-body-imitation.md)（robot teleop BC）、[BifrostUMI](./paper-bifrost-umi.md)（SKR + 扩散高层）
 - **问题域：** [Motion Retargeting](../concepts/motion-retargeting.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)、[Imitation Learning](../methods/imitation-learning.md)
-- **SEW 上游：** [SEW-Mimic 阅读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html) — 在线上身闭式解；WARP 扩展到离线 palm 硬约束 + 全身底座
+- **SEW 上游：** [SEW-Mimic 阅读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html) — 在线上身闭式解；WARP 扩展到离线 palm 硬约束 + 全身底座
 
 ## 参考来源
 

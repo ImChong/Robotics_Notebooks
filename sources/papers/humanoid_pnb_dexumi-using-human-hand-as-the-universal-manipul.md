@@ -4,7 +4,7 @@
 
 - **标题：** DexUMI: Using Human Hand as the Universal Manipulation Interface for Dexterous Manipulation
 - **类型：** paper
-- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
+- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
 - **计划笔记路径：** `papers/06_Manipulation/dexumi-using-human-hand-as-the-universal-manipul/dexumi-using-human-hand-as-the-universal-manipul.md`
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2505.21864>
@@ -30,7 +30,7 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.21864>
 - 项目页：<https://dex-umi.github.io/>
 

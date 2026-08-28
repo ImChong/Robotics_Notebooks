@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, heterogeneous-control, impedance-control, force-position-control, teleoperation, imitation-learning, humanoid, ucsd]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-28
 arxiv: "2511.14756"
 venue: "ICRA 2026 / RSS 2025 WCBM Spotlight"
 related:

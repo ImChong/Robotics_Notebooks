@@ -177,7 +177,7 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：TextOp](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C/TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C.html)
+- [机器人论文阅读笔记：TextOp](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C/TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C.html)
 - 论文 abs / HTML：<https://arxiv.org/abs/2505.01425v1>、<https://arxiv.org/html/2505.01425v1>
 - 项目页（GEM）：<https://research.nvidia.com/labs/dair/gem/>
 - 代码：<https://github.com/NVlabs/GENMO>

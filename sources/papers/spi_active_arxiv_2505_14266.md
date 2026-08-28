@@ -63,4 +63,4 @@
 - PMLR：<https://proceedings.mlr.press/v305/sobanbabu25a.html>
 - 项目页：<https://lecar-lab.github.io/spi-active_/>
 - 代码：<https://github.com/LeCAR-Lab/SPI-Active>
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>

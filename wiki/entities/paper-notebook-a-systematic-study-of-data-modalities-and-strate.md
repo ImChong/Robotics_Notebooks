@@ -14,7 +14,7 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 
 # A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation
 
-**A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models.html> |
 | arXiv | <https://arxiv.org/abs/2602.01067> |
 | 作者 | Fanqi Lin、Kushal Arora、Jean Mercat、Haruki Nishimura、Paarth Shah、Jose Barreiros 等（Toyota Research Institute, TRI） |
 | 发表 | 2026 年 2 月 |
@@ -86,9 +86,9 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 ## 参考来源
 
 - [humanoid_pnb_a-systematic-study-of-data-modalities-and-strate.md](../../sources/papers/humanoid_pnb_a-systematic-study-of-data-modalities-and-strate.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models.html>
 - 论文：<https://arxiv.org/abs/2602.01067>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models.html)
+- [机器人论文阅读笔记：A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models.html)

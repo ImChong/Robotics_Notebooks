@@ -138,4 +138,4 @@ flowchart TB
 - [HUSKY 项目页](https://husky-humanoid.github.io/)
 - [GitHub: TeleHuman/humanoid_skateboarding](https://github.com/TeleHuman/humanoid_skateboarding)
 - [arXiv:2602.03205](https://arxiv.org/abs/2602.03205)
-- [机器人论文阅读笔记：HUSKY](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control/HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control.html)
+- [机器人论文阅读笔记：HUSKY](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control/HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control.html)

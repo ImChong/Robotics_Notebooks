@@ -1,7 +1,7 @@
 # 首页文案 + 导航文案 v1
 
 > 说明：本页是 `Robotics_Notebooks` 网站首页的 Markdown 草稿。
-> 风格要求：与 `ImChong.github.io` 和 `Humanoid_Robot_Learning_Paper_Notebooks` 保持一致。
+> 风格要求：与 `ImChong.github.io` 和 `Robot_Learning_Paper_Notebooks` 保持一致。
 > 关键词：简洁、干净、卡片化、双语可扩展、偏 Notion / 学术主页风格。
 
 ---
@@ -74,7 +74,7 @@
 - `sources/`：原始资料索引
 
 ### 3.6 项目边界
-- `Humanoid_Robot_Learning_Paper_Notebooks`：单篇论文深读，负责“点”
+- `Robot_Learning_Paper_Notebooks`：单篇论文深读，负责“点”
 - `Robotics_Notebooks`：技术栈、路线、模块组织，负责“线和面”
 - `ImChong.github.io`：对外展示，负责“展示层”
 

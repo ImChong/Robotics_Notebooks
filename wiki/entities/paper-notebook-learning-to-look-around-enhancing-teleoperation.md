@@ -14,7 +14,7 @@ summary: "本文提出一套集成 5 自由度（DOF）可动颈的遥操作系�
 
 # Learning to Look Around
 
-**Learning to Look Around: Enhancing Teleoperation and Learning with a Human-like Actuated Neck** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Learning to Look Around: Enhancing Teleoperation and Learning with a Human-like Actuated Neck** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "本文提出一套集成 5 自由度（DOF）可动颈的遥操作系�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning.html> |
 | arXiv | <https://arxiv.org/abs/2411.00704> |
 | 作者 | Bipasha Sen、Michelle Wang、Nandini Thakur、Aditya Agarwal、Pulkit Agrawal（MIT） |
 | 发表 | 2024 年 11 月 |
@@ -86,9 +86,9 @@ summary: "本文提出一套集成 5 自由度（DOF）可动颈的遥操作系�
 ## 参考来源
 
 - [humanoid_pnb_learning-to-look-around.md](../../sources/papers/humanoid_pnb_learning-to-look-around.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning.html>
 - 论文：<https://arxiv.org/abs/2411.00704>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Learning to Look Around](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning.html)
+- [机器人论文阅读笔记：Learning to Look Around](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning.html)

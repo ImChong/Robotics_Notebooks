@@ -14,7 +14,7 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 
 # Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery
 
-**Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
 ## 核心信息
@@ -38,7 +38,7 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html> |
 | arXiv | <https://arxiv.org/abs/2603.08619> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 - 这种非对称设计是它可落地的前提——若把这些量放进 actor 观测，部署就会绑死在难以在线获取的状态估计上。
 - 结果侧的关键在"统一"而非单点性能：一个策略覆盖从小扰动到大跌倒后恢复的完整行为链，本页报告 93.4% 的恢复成功率。
 - 适用边界：本页为索引级实体，93.4% 对应的实验条件、消融设置与真机验证细节须回到深读笔记与论文 PDF（见[参考来源](#参考来源)）。
-- 本页归入 04_Loco-Manipulation_and_WBC，可经[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与同类工作交叉检索。
+- 本页归入 04_Loco-Manipulation_and_WBC，可经[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与同类工作交叉检索。
 
 ## 与其他页面的关系
 
@@ -63,9 +63,9 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 ## 参考来源
 
 - [humanoid_pnb_embedding-classical-balance-control-principles-i.md](../../sources/papers/humanoid_pnb_embedding-classical-balance-control-principles-i.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html>
 - 论文：<https://arxiv.org/abs/2603.08619>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html)
+- [机器人论文阅读笔记：Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html)

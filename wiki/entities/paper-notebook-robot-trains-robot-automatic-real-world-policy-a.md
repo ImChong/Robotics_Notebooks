@@ -14,7 +14,7 @@ summary: "人形机器人「直接在真机上做 RL」一直难落地：怕摔�
 
 # Robot Trains Robot
 
-**Robot Trains Robot: Automatic Real-World Policy Adaptation and Learning for Humanoids** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：10_Sim-to-Real），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Robot Trains Robot: Automatic Real-World Policy Adaptation and Learning for Humanoids** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：10_Sim-to-Real），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "人形机器人「直接在真机上做 RL」一直难落地：怕摔�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 10_Sim-to-Real |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html> |
 | arXiv | <https://arxiv.org/abs/2508.12252> |
 | 机构 | Kaizhe Hu、Haochen Shi、Yao He、Weizhuo Wang、C. Karen Liu、Shuran Song（Stanford） |
 | 发表 | 2025-08-17（arXiv v1），**CoRL 2025 录用** |
@@ -88,9 +88,9 @@ summary: "人形机器人「直接在真机上做 RL」一直难落地：怕摔�
 ## 参考来源
 
 - [humanoid_pnb_robot-trains-robot-automatic-real-world-policy-a.md](../../sources/papers/humanoid_pnb_robot-trains-robot-automatic-real-world-policy-a.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html>
 - 论文：<https://arxiv.org/abs/2508.12252>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Robot Trains Robot](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html)
+- [机器人论文阅读笔记：Robot Trains Robot](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html)

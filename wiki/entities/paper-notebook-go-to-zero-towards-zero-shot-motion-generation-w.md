@@ -182,4 +182,4 @@ Go to Zero 与 GPC 都验证“动作 token + GPT scaling”，但前者是文�
 
 - [官方项目页](https://vankouf.github.io/MotionMillion/)
 - [MotionMillion 数据集](https://huggingface.co/datasets/InternRobotics/MotionMillion)
-- [机器人论文阅读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Go_to_Zero__Towards_Zero-shot_Motion_Generation_with_Million-scale_Data/Go_to_Zero__Towards_Zero-shot_Motion_Generation_with_Million-scale_Data.html)
+- [机器人论文阅读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Go_to_Zero__Towards_Zero-shot_Motion_Generation_with_Million-scale_Data/Go_to_Zero__Towards_Zero-shot_Motion_Generation_with_Million-scale_Data.html)

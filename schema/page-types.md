@@ -133,7 +133,7 @@ python3 scripts/scaffold_wiki_page.py entity "论文短名" --slug paper-xxx --p
 
 注意：
 - 这里只做简版摘要与定位说明
-- 深度论文拆解尽量放在 [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)
+- 深度论文拆解尽量放在 [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)
 
 ## 8. Query Page（wiki/queries/）
 回答：一个高价值问题的综合分析，将探索结论写回 wiki 实现知识复利。

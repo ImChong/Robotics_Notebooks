@@ -1,10 +1,10 @@
 # Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记 + 项目页/代码核查）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记 + 项目页/代码核查）
 
 - **标题：** Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.05310>
 - **项目页：** <https://soccer-humanoid.github.io/>

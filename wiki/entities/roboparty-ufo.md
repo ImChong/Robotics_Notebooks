@@ -116,5 +116,5 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 ## 推荐继续阅读
 
 - [UFO GitHub](https://github.com/Roboparty/UFO)
-- [机器人论文阅读笔记：BFM-Zero](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL.html)
+- [机器人论文阅读笔记：BFM-Zero](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL/BFM-Zero__Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Unsupervised_RL.html)
 - [mjlab 实体页](./mjlab.md)

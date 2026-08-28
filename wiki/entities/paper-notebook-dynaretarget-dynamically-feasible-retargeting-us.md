@@ -25,7 +25,7 @@ summary: "DynaRetarget：IK + 增量 SBTO 把运动学参考精炼为动力学�
 
 **DynaRetarget**（*Dynamically-Feasible Retargeting using Sampling-Based Trajectory Optimization*，arXiv:[2602.06827](https://arxiv.org/abs/2602.06827)，[项目页](https://atarilab.github.io/dynaretarget.io/)）是 Atari Lab 等人提出的 **人形 loco-manipulation 重定向与部署** 管线：IK 运动学参考 → **SBTO** 动态精炼 → **PPO** 跟踪策略 + **domain randomization** → 真机零样本。算法细节见方法页 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)；SBTO 实现见 [sbto](./sbto.md)（[GitHub](https://github.com/Atarilab/sbto)）。
 
-本页同时索引 [Humanoid Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) **14_Human_Motion** 分类条目（深读笔记待姊妹仓库撰写）。
+本页同时索引 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) **14_Human_Motion** 分类条目（深读笔记待姊妹仓库撰写）。
 
 ## 一句话定义
 
@@ -111,7 +111,7 @@ flowchart TB
 | 字段 | 内容 |
 |------|------|
 | 分类 | Paper Notebooks **14_Human_Motion** |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 链接 | [项目页](https://atarilab.github.io/dynaretarget.io/) · [arXiv](https://arxiv.org/abs/2602.06827) · [SBTO 代码](https://github.com/Atarilab/sbto) · [项目页源码](https://github.com/Atarilab/dynaretarget.io) |
 
 ## 与其他页面的关系

@@ -14,7 +14,7 @@ summary: "遥操作采集机器人模仿数据受硬件可得性瓶颈——问�
 
 # ARMADA
 
-**ARMADA: Augmented Reality for Robot Manipulation and Robot-Free Data Acquisition** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**ARMADA: Augmented Reality for Robot Manipulation and Robot-Free Data Acquisition** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ ARMADA 要：用 **AR + 虚拟机器人反馈**，让用户徒手采到**硬件�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition.html> |
 | arXiv | <https://arxiv.org/abs/2412.10631> |
 | 作者 | Nataliya Nechyporenko、Ryan Hoque、Christopher Webb、Mouli Sivapurapu、Jian Zhang（Apple） |
 | 发表 | 2024 年 12 月 |
@@ -86,9 +86,9 @@ ARMADA 要：用 **AR + 虚拟机器人反馈**，让用户徒手采到**硬件�
 ## 参考来源
 
 - [humanoid_pnb_armada.md](../../sources/papers/humanoid_pnb_armada.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition.html>
 - 论文：<https://arxiv.org/abs/2412.10631>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：ARMADA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition.html)
+- [机器人论文阅读笔记：ARMADA](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition.html)

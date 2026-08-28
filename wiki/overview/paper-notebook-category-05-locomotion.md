@@ -10,7 +10,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 
 # Paper Notebooks · Locomotion
 
-**Locomotion**（`05_Locomotion`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **05** 类。
+**Locomotion**（`05_Locomotion`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **05** 类。
 
 ## 英文缩写速查
 
@@ -25,19 +25,19 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [A Gait Driven RL Framework for Humanoid Robots](../entities/paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots.md) — 待深读
 - [A Hierarchical Framework for Humanoid Locomotion with Supernumerary Limbs](../entities/paper-notebook-a-hierarchical-framework-for-humanoid-locomotion.md) — 待深读
 - [A Hierarchical, Model-Based System for High-Performance Humanoid Soccer](../entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md) — 待深读
-- [A Hybrid Autoencoder for Robust Heightmap Generation from Fused Lidar and Depth Data for Humanoid Robot Locomotion](../entities/paper-notebook-hybrid-autoencoder-for-robust-heightmap-from-fus.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data.html)
+- [A Hybrid Autoencoder for Robust Heightmap Generation from Fused Lidar and Depth Data for Humanoid Robot Locomotion](../entities/paper-notebook-hybrid-autoencoder-for-robust-heightmap-from-fus.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data.html)
 - [AME](../entities/paper-ame-attention-based-map-encoding.md) — ETH RSL 注意力高程图编码稀疏地形泛化（arXiv:2506.09588）
 - [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 敏捷+泛化+神经映射（arXiv:2601.08485）
-- [ANYmal Parkour](../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion.html)
-- [APEX](../entities/paper-notebook-apex-learning-adaptive-high-platform-traversal-f.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots.html)
+- [ANYmal Parkour](../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion.html)
+- [APEX](../entities/paper-notebook-apex-learning-adaptive-high-platform-traversal-f.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots.html)
 - [Advancing Humanoid Locomotion](../entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) — 待深读
 - [Architecture Is All You Need](../entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md) — 待深读
 - [BeamDojo](../entities/paper-notebook-beamdojo-learning-agile-humanoid-locomotion-on-s.md) — 待深读
 - [Benchmarking Potential Based Rewards for Learning Humanoid Locomotion](../entities/paper-notebook-benchmarking-potential-based-rewards-for-learnin.md) — 待深读
 - [Bi-Level Motion Imitation for Humanoid Robots](../entities/paper-notebook-bi-level-motion-imitation-for-humanoid-robots.md) — 待深读
-- [Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits](../entities/paper-notebook-biomechanical-comparisons-reveal-divergence-of-h.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits/Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits.html)
+- [Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits](../entities/paper-notebook-biomechanical-comparisons-reveal-divergence-of-h.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits/Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits.html)
 - [Booster Gym](../entities/paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md) — 待深读
-- [CMR](../entities/paper-notebook-cmr-contractive-mapping-embeddings-for-robust-hu.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html)
+- [CMR](../entities/paper-notebook-cmr-contractive-mapping-embeddings-for-robust-hu.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html)
 - [Chasing Stability](../entities/paper-notebook-chasing-stability-humanoid-running-via-control-l.md) — 待深读
 - [Coordinated Humanoid Robot Locomotion with Symmetry Equivariant Reinforcement Learning Policy](../entities/paper-notebook-coordinated-humanoid-robot-locomotion-with-symme.md) — 待深读
 - [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 见 wiki 实体页（单深度重建 + 盲骨干多教师；IEEE RA-L）
@@ -100,25 +100,25 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [Success in Humanoid Reinforcement Learning under Partial Observation](../entities/paper-notebook-success-in-humanoid-reinforcement-learning-under.md) — 待深读
 - [Symphony](../entities/paper-notebook-symphony-a-heuristic-normalized-calibrated-advan.md) — 待深读
 - [TD-GRPC](../entities/paper-notebook-td-grpc-temporal-difference-learning-with-group.md) — 待深读
-- [Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](../entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)
+- [Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](../entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)
 - [Traversing Narrow Paths](../entities/paper-notebook-traversing-narrow-paths-a-two-stage-rl-framework.md) — 待深读
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — ICRA 2026 视觉/盲策略复合运动；G1/H1 感知缺失下缺口与动态障碍（arXiv:2502.14814；2026-08-28 升格完整实体页）
 - [VideoMimic](../entities/videomimic.md) — 见 wiki 实体页
-- [Walk the PLANC](../entities/paper-notebook-walk-the-planc-physics-guided-rl-for-agile-human.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html)
+- [Walk the PLANC](../entities/paper-notebook-walk-the-planc-physics-guided-rl-for-agile-human.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html)
 - [Whole-body Humanoid Robot Locomotion with Human Reference](../entities/paper-notebook-whole-body-humanoid-robot-locomotion-with-human.md) — 待深读
 
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
-- 笔记主页：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html>
+- 笔记主页：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html>
 
 ## 参考来源
 
-- [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文 ingest 归档（节选）：[AME：面向泛化腿足运动的注意力地图编码（arXiv:2506.09588）](../../sources/papers/ame_arxiv_2506_09588.md)、[人形 AMP 运动先验：19 篇论文 source 索引](../../sources/papers/humanoid_amp_survey_19_catalog.md)、[Humanoid Motion Intelligence](../../sources/repos/humanoid-motion-intelligence.md)
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记总站](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
+- [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)

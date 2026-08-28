@@ -1,10 +1,10 @@
 # Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation
 - **类型：** paper
-- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
+- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
 - **计划笔记路径：** `papers/12_Hardware_Design/quasi-direct-drive-for-low-cost-compliant-roboti/quasi-direct-drive-for-low-cost-compliant-roboti.md`
 - **分类：** 12_Hardware_Design
 - **arXiv：** <https://arxiv.org/abs/1904.03815>
@@ -25,7 +25,7 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/1904.03815>
 - 项目页：[berkeley-open-arms-blue.md](../sites/berkeley-open-arms-blue.md)
 - 代码：[blue-core.md](../repos/blue-core.md)

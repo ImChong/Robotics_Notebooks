@@ -14,7 +14,7 @@ summary: "尽管行走越来越鲁棒，双足机器人在真实世界仍有跌�
 
 # Robot Crash Course
 
-**Robot Crash Course: Learning Soft and Stylized Falling** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Robot Crash Course: Learning Soft and Stylized Falling** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -57,7 +57,7 @@ summary: "尽管行走越来越鲁棒，双足机器人在真实世界仍有跌�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html> |
 | arXiv | <https://arxiv.org/abs/2511.10635> |
 | 作者 | Pascal Strauch、David Müller、Sammy Christen、Agon Serifi、Ruben Grandia、Espen Knoop、Moritz Bächer（Disney Research 等） |
 | 发表 | 2025 年 11 月 |
@@ -85,9 +85,9 @@ summary: "尽管行走越来越鲁棒，双足机器人在真实世界仍有跌�
 ## 参考来源
 
 - [humanoid_pnb_robot-crash-course.md](../../sources/papers/humanoid_pnb_robot-crash-course.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html>
 - 论文：<https://arxiv.org/abs/2511.10635>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Robot Crash Course](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html)
+- [机器人论文阅读笔记：Robot Crash Course](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html)

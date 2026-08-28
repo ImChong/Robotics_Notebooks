@@ -1,10 +1,10 @@
 # iCub3 Avatar System: Enabling Remote Fully-Immersive Embodiment of Humanoid Robots
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** iCub3 Avatar System: Enabling Remote Fully-Immersive Embodiment of Humanoid Robots
 - **类型：** paper
-- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
+- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
 - **计划笔记路径：** `papers/07_Teleoperation/icub3-avatar-system-enabling-remote-fully-immers/icub3-avatar-system-enabling-remote-fully-immers.md`
 - **分类：** 07_Teleoperation
 - **arXiv：** <https://arxiv.org/abs/2203.06972>
@@ -23,5 +23,5 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2203.06972>

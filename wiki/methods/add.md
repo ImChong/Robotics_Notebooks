@@ -68,7 +68,7 @@ ADD 的核心思想是将判别器的输入从绝对状态 $ 转变为状态的*
 - [PFM-HR](../entities/paper-pfm-hr.md) — 以 ADD 为跟踪骨干挂载的冻结姿态 Flow Matching 先验（PGS 调制跟踪奖励；arXiv:2608.03227）。
 
 ## 参考来源
-- [机器人论文阅读笔记：ADD](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ADD_Adversarial_Differential_Discriminators/ADD_Adversarial_Differential_Discriminators.html)
+- [机器人论文阅读笔记：ADD](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ADD_Adversarial_Differential_Discriminators/ADD_Adversarial_Differential_Discriminators.html)
 - [sources/papers/add.md](../../sources/papers/add.md)
 - Peng et al., *ADD: Adversarial Differential Discriminator for Physics-Based Character Control*, SIGGRAPH 2024.
 - 原始抓取：[wechat_humanoid_amp_19_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)

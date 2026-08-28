@@ -32,4 +32,4 @@
 ## 为何值得保留
 
 - **轻量 VLA 可复现入口：** 完整两阶段训练、仿真评测与 **LeRobot 一条命令真机闭环**。
-- 与 [Humanoid_Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **跨主题轻量 VLA 选型与部署索引**。
+- 与 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks) 单篇深读互补：本库负责 **跨主题轻量 VLA 选型与部署索引**。

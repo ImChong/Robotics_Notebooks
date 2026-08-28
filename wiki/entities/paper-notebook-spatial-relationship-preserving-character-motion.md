@@ -14,7 +14,7 @@ summary: "本文提出一种编辑与重定向运动的新方法，专门针对�
 
 # Spatial Relationship Preserving Character Motion Adaptation
 
-**Spatial Relationship Preserving Character Motion Adaptation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Spatial Relationship Preserving Character Motion Adaptation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "本文提出一种编辑与重定向运动的新方法，专门针对�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 13_Physics-Based_Animation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html> |
 | 作者 | Edmond S. L. Ho、Taku Komura、Chiew-Lan Tai |
 | 发表 | 2010 年（SIGGRAPH 2010 / ACM TOG 29(4)） |
 | 笔记阅读日期 | 2026-06-21 |
@@ -85,8 +85,8 @@ summary: "本文提出一种编辑与重定向运动的新方法，专门针对�
 ## 参考来源
 
 - [humanoid_pnb_spatial-relationship-preserving-character-motion.md](../../sources/papers/humanoid_pnb_spatial-relationship-preserving-character-motion.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Spatial Relationship Preserving Character Motion Adaptation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html)
+- [机器人论文阅读笔记：Spatial Relationship Preserving Character Motion Adaptation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html)

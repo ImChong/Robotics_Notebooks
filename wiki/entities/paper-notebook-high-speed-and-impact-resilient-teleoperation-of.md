@@ -14,7 +14,7 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 
 # High-Speed and Impact Resilient Teleoperation of Humanoid Robots
 
-**High-Speed and Impact Resilient Teleoperation of Humanoid Robots** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**High-Speed and Impact Resilient Teleoperation of Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 07_Teleoperation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots.html> |
 | arXiv | <https://arxiv.org/abs/2409.04639> |
 | 作者 | Sylvain Bertrand、Luigi Penco、Dexton Anderson、Duncan Calvert、Jerry Pratt、Robert Griffin 等（IHMC / Boardwalk Robotics） |
 | 发表 | 2024 年 9 月 |
@@ -86,9 +86,9 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 ## 参考来源
 
 - [humanoid_pnb_high-speed-and-impact-resilient-teleoperation-of.md](../../sources/papers/humanoid_pnb_high-speed-and-impact-resilient-teleoperation-of.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2409.04639>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：High-Speed and Impact Resilient Teleoperation of Humanoid Robots](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots.html)
+- [机器人论文阅读笔记：High-Speed and Impact Resilient Teleoperation of Humanoid Robots](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots.html)

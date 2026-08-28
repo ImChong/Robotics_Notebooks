@@ -1,10 +1,10 @@
 # Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
 
 - **标题：** Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>
 - **分类：** 10_Sim-to-Real
 - **arXiv：** <https://arxiv.org/abs/2505.14266>
 - **代码：** <https://github.com/LeCAR-Lab/SPI-Active>
@@ -28,7 +28,7 @@
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration/SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration.html>
 - 论文：<https://arxiv.org/abs/2505.14266>
 - 代码：<https://github.com/LeCAR-Lab/SPI-Active>
 - 项目页：<https://lecar-lab.github.io/spi-active_/>

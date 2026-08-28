@@ -56,7 +56,7 @@
   - [42 篇 RL 运动控制](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
   - [运动小脑 64 篇](../blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
   - [AMP 运动先验](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
-- **互补清单**：[awesome-humanoid-robot-learning](awesome-humanoid-robot-learning.md)（Yanjie Ze，偏真机+开源论文列表）；[Humanoid Paper Notebooks](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)（单篇深读）。
+- **互补清单**：[awesome-humanoid-robot-learning](awesome-humanoid-robot-learning.md)（Yanjie Ze，偏真机+开源论文列表）；[Robot Learning Paper Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)（单篇深读）。
 
 ## 对 wiki 的映射
 

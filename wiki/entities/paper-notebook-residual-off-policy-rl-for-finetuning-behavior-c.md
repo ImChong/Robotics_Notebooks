@@ -14,7 +14,7 @@ summary: "行为克隆（BC）能学到不错的视觉运动策略，但受限�
 
 # Residual Off-Policy RL for Finetuning Behavior Cloning Policies
 
-**Residual Off-Policy RL for Finetuning Behavior Cloning Policies** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Residual Off-Policy RL for Finetuning Behavior Cloning Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ BC 与 RL 各有短板： - **BC**：受演示质量限制、边际收益递减�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies.html> |
 | arXiv | <https://arxiv.org/abs/2509.19301> |
 | 作者 | Lars Ankile、Zhenyu Jiang、Rocky Duan、Guanya Shi、Pieter Abbeel、Anusha Nagabandi |
 | 发表 | 2025 年 9 月 |
@@ -86,9 +86,9 @@ BC 与 RL 各有短板： - **BC**：受演示质量限制、边际收益递减�
 ## 参考来源
 
 - [humanoid_pnb_residual-off-policy-rl-for-finetuning-behavior-c.md](../../sources/papers/humanoid_pnb_residual-off-policy-rl-for-finetuning-behavior-c.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies.html>
 - 论文：<https://arxiv.org/abs/2509.19301>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Residual Off-Policy RL for Finetuning Behavior Cloning Policies](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies.html)
+- [机器人论文阅读笔记：Residual Off-Policy RL for Finetuning Behavior Cloning Policies](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies.html)

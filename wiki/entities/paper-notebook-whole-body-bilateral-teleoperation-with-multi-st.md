@@ -161,7 +161,7 @@ CenterSnap 从单帧 RGB-D 估计 cuboid 尺寸，约束 CoM 位于物体内部�
 
 - [humanoid_pnb_whole-body-bilateral-teleoperation-with-multi-st.md](../../sources/papers/humanoid_pnb_whole-body-bilateral-teleoperation-with-multi-st.md)
 - 论文：<https://arxiv.org/abs/2508.09846>
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation/Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation/Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation.html>
 
 ## 推荐继续阅读
 

@@ -14,7 +14,7 @@ summary: "SafeHumanoid 把「怎么调阻抗」这个低层控制问题，交给
 
 # SafeHumanoid
 
-**SafeHumanoid: VLM-RAG-driven Control of Upper Body Impedance for Humanoid Robot** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**SafeHumanoid: VLM-RAG-driven Control of Upper Body Impedance for Humanoid Robot** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -59,7 +59,7 @@ SafeHumanoid 把「怎么调阻抗」这个低层控制问题，交给一个第�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html> |
 | arXiv | <https://arxiv.org/abs/2511.23300> |
 | 发表 | 2025-11-28 (arXiv) |
 | 源码 | 论文未公开代码 / 项目页 |
@@ -87,9 +87,9 @@ SafeHumanoid 把「怎么调阻抗」这个低层控制问题，交给一个第�
 ## 参考来源
 
 - [humanoid_pnb_safehumanoid.md](../../sources/papers/humanoid_pnb_safehumanoid.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html>
 - 论文：<https://arxiv.org/abs/2511.23300>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：SafeHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html)
+- [机器人论文阅读笔记：SafeHumanoid](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html)

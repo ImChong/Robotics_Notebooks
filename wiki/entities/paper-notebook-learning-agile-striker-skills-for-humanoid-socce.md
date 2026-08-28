@@ -36,7 +36,7 @@ summary: "Agile Striker（arXiv:2512.06571，ICRA 2026）：四阶段教师–�
 
 # Learning Agile Striker Skills for Humanoid Soccer Robots
 
-**Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input**（[arXiv:2512.06571](https://arxiv.org/abs/2512.06571)，ICRA 2026，[代码](https://github.com/Daffan/humanoid-soccer)）由 **UT Austin LARG / AMRL · Sony AI** 提出：面向 **连续踢球循环**（长距追球 → 定向摆腿 → 再定向找球），用四阶段教师–学生管线在 **含噪球/门估计** 下部署到 **Booster T1**。收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。
+**Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input**（[arXiv:2512.06571](https://arxiv.org/abs/2512.06571)，ICRA 2026，[代码](https://github.com/Daffan/humanoid-soccer)）由 **UT Austin LARG / AMRL · Sony AI** 提出：面向 **连续踢球循环**（长距追球 → 定向摆腿 → 再定向找球），用四阶段教师–学生管线在 **含噪球/门估计** 下部署到 **Booster T1**。收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。
 
 ## 一句话定义
 
@@ -182,7 +182,7 @@ sequenceDiagram
 - [humanoidsoccer-agile-striker.md](../../sources/sites/humanoidsoccer-agile-striker.md)
 - [humanoid-soccer-agile-striker.md](../../sources/repos/humanoid-soccer-agile-striker.md)
 - 论文：<https://arxiv.org/abs/2512.06571>
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input.html>
 
 ## 推荐继续阅读
 

@@ -14,7 +14,7 @@ summary: "构建通才机器人系统受制于多样高质量数据的稀缺。�
 
 # DexHub and DART
 
-**DexHub and DART: Towards Internet Scale Robot Data Collection** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DexHub and DART: Towards Internet Scale Robot Data Collection** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ DexHub/DART 要：用**云仿真 + AR 众包**采集，建**公共数据库**，
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html> |
 | arXiv | <https://arxiv.org/abs/2411.02214> |
 | 作者 | Younghyo Park、Jagdeep Singh Bhatia、Lars Ankile、Pulkit Agrawal（MIT） |
 | 发表 | 2024 年 11 月 |
@@ -87,9 +87,9 @@ DexHub/DART 要：用**云仿真 + AR 众包**采集，建**公共数据库**，
 ## 参考来源
 
 - [humanoid_pnb_dexhub-and-dart.md](../../sources/papers/humanoid_pnb_dexhub-and-dart.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html>
 - 论文：<https://arxiv.org/abs/2411.02214>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：DexHub and DART](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html)
+- [机器人论文阅读笔记：DexHub and DART](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html)

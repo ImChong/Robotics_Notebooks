@@ -1,10 +1,10 @@
 # SMAP: Self-supervised Motion Adaptation for Physically Plausible Humanoid Whole-body Control
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读）
 
 - **标题：** SMAP: Self-supervised Motion Adaptation for Physically Plausible Humanoid Whole-body Control
 - **类型：** paper
-- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
+- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
 - **计划笔记路径：** `papers/04_Loco-Manipulation_and_WBC/SMAP__Self-supervised_Motion_Adaptation_for_Physically_Plausible_Humanoid_Whole-/SMAP__Self-supervised_Motion_Adaptation_for_Physically_Plausible_Humanoid_Whole-.md`
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **路线：** Loco-Manipulation
@@ -23,5 +23,5 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
 

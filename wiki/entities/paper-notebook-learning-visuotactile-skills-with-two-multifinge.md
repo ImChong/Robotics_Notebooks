@@ -14,7 +14,7 @@ summary: "为复刻人类的灵巧、感知体验与动作模式，本文用一�
 
 # Learning Visuotactile Skills with Two Multifingered Hands
 
-**Learning Visuotactile Skills with Two Multifingered Hands** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Learning Visuotactile Skills with Two Multifingered Hands** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "为复刻人类的灵巧、感知体验与动作模式，本文用一�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands.html> |
 | arXiv | <https://arxiv.org/abs/2404.16823> |
 | 作者 | Toru Lin、Yu Zhang、Qiyang Li、Haozhi Qi、Brent Yi、Sergey Levine、Jitendra Malik（UC Berkeley） |
 | 发表 | 2024 年 4 月 |
@@ -86,9 +86,9 @@ summary: "为复刻人类的灵巧、感知体验与动作模式，本文用一�
 ## 参考来源
 
 - [humanoid_pnb_learning-visuotactile-skills-with-two-multifinge.md](../../sources/papers/humanoid_pnb_learning-visuotactile-skills-with-two-multifinge.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands.html>
 - 论文：<https://arxiv.org/abs/2404.16823>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Learning Visuotactile Skills with Two Multifingered Hands](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands.html)
+- [机器人论文阅读笔记：Learning Visuotactile Skills with Two Multifingered Hands](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/Learning_Visuotactile_Skills_with_Two_Multifingered_Hands.html)

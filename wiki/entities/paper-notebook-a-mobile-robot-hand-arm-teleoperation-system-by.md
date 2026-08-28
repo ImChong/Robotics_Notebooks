@@ -15,7 +15,7 @@ summary: "A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU：列�
 
 # A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU
 
-**[A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU](https://arxiv.org/pdf/2003.05212)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：07_Teleoperation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**[A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU](https://arxiv.org/pdf/2003.05212)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：07_Teleoperation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -31,7 +31,7 @@ A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU 的人形机器�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -39,7 +39,7 @@ A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU 的人形机器�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 07_Teleoperation |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 计划文件夹 | `papers/07_Teleoperation/a-mobile-robot-hand-arm-teleoperation-system-by` |
 
 
@@ -53,7 +53,7 @@ A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU 的人形机器�
 
 - 页面能给出的确定信息只有三项：分类为 07_Teleoperation、深读状态为待撰写、计划文件夹路径已预留。
 - 论文本身的机制、量化 benchmark 与实机结论 **本页均未涵盖**，不要把这里的任何表述当作对该工作的评价。
-- 它的作用是保持图谱完整、可从 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点交叉检索到该实体；深读笔记完成后本页应链向笔记站并升格为完整索引实体。
+- 它的作用是保持图谱完整、可从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点交叉检索到该实体；深读笔记完成后本页应链向笔记站并升格为完整索引实体。
 
 ## 与其他页面的关系
 
@@ -63,9 +63,9 @@ A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU 的人形机器�
 ## 参考来源
 
 - [humanoid_pnb_a-mobile-robot-hand-arm-teleoperation-system-by.md](../../sources/papers/humanoid_pnb_a-mobile-robot-hand-arm-teleoperation-system-by.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

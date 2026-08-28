@@ -14,7 +14,7 @@ summary: "接触丰富操作在机器人学习中越来越重要，但以往机�
 
 # A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation
 
-**A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "接触丰富操作在机器人学习中越来越重要，但以往机�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation.html> |
 | arXiv | <https://arxiv.org/abs/2510.25725> |
 | 作者 | Eunju Kwon、Seungwon Oh、In-Chang Baek、Yunho Choi、Kyung-Joong Kim 等（GIST 等） |
 | 发表 | 2025 年 10 月 |
@@ -86,9 +86,9 @@ summary: "接触丰富操作在机器人学习中越来越重要，但以往机�
 ## 参考来源
 
 - [humanoid_pnb_a-humanoid-visual-tactile-action-dataset-for-con.md](../../sources/papers/humanoid_pnb_a-humanoid-visual-tactile-action-dataset-for-con.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2510.25725>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation.html)
+- [机器人论文阅读笔记：A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation.html)

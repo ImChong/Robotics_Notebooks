@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, omoe, icra-2026]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-28
 arxiv: "2509.16638"
 venue: "ICRA 2026"
 related:

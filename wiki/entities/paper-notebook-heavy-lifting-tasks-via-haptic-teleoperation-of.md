@@ -14,7 +14,7 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 
 # Heavy lifting tasks via haptic teleoperation of a wheeled humanoid
 
-**Heavy lifting tasks via haptic teleoperation of a wheeled humanoid** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Heavy lifting tasks via haptic teleoperation of a wheeled humanoid** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 07_Teleoperation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid.html> |
 | arXiv | <https://arxiv.org/abs/2505.19530> |
 | 作者 | Amartya Purushottam、Jack Yan、Christopher Yu、Joao Ramos（UIUC） |
 | 发表 | 2025 年 5 月 |
@@ -86,9 +86,9 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 ## 参考来源
 
 - [humanoid_pnb_heavy-lifting-tasks-via-haptic-teleoperation-of.md](../../sources/papers/humanoid_pnb_heavy-lifting-tasks-via-haptic-teleoperation-of.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid.html>
 - 论文：<https://arxiv.org/abs/2505.19530>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Heavy lifting tasks via haptic teleoperation of a wheeled humanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid.html)
+- [机器人论文阅读笔记：Heavy lifting tasks via haptic teleoperation of a wheeled humanoid](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid.html)

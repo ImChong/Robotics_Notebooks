@@ -1,10 +1,10 @@
 # Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记 + 项目页/代码核查）
+> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记 + 项目页/代码核查）
 
 - **标题：** Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input
 - **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input.html>
+- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2512.06571>
 - **项目页：** <https://humanoidsoccer.github.io>

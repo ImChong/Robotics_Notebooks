@@ -133,7 +133,7 @@ flowchart TB
 ## 推荐继续阅读
 
 - [Z1hanW/CRISP-Real2Sim（GitHub）](https://github.com/Z1hanW/CRISP-Real2Sim) — 克隆复现与 `run_crisp_video.sh` 入口
-- [机器人论文阅读笔记：CRISP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit.html)
+- [机器人论文阅读笔记：CRISP](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit.html)
 - [OpenReview：CRISP 论文页](https://openreview.net/forum?id=xlr3NqxUqY)
 - [arXiv:2512.14696](https://arxiv.org/abs/2512.14696)
 - [VideoMimic 项目页](https://videomimic.github.io/)（站点中与 CRISP 做交互对比的基线之一）

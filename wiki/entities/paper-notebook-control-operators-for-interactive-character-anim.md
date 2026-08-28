@@ -15,7 +15,7 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 
 # Control Operators for Interactive Character Animation
 
-**Control Operators for Interactive Character Animation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Control Operators for Interactive Character Animation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -31,7 +31,7 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
 ## 核心信息
@@ -39,7 +39,7 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html> |
 
 ## 实验与评测
 
@@ -53,7 +53,7 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 - 与骨干模型解耦是它可信度的来源：同一套算子在 Learned Motion Matching 变体 和本文新提出的流匹配（flow-matching）自回归模型上都做了演示，说明这是接口层设计而非某个模型的技巧。
 - 评价方式也随之改变——本文用工业界从业者的用户研究来验证易用性；这类"非 ML 用户能否用起来"的证据与常规动作质量指标不可互相替代。
 - 适用边界：本页为索引级实体，机制描述停留在摘要层；量化 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
-- 本页归入 14_Human_Motion（SIGGRAPH Asia 2025，frontmatter 给出开源仓库地址），可经[分类父节点](../overview/paper-notebook-category-14-human-motion.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)交叉检索。
+- 本页归入 14_Human_Motion（SIGGRAPH Asia 2025，frontmatter 给出开源仓库地址），可经[分类父节点](../overview/paper-notebook-category-14-human-motion.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)交叉检索。
 
 ## 与其他页面的关系
 
@@ -63,8 +63,8 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 ## 参考来源
 
 - [humanoid_pnb_control-operators-for-interactive-character-anim.md](../../sources/papers/humanoid_pnb_control-operators-for-interactive-character-anim.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Control Operators for Interactive Character Animation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html)
+- [机器人论文阅读笔记：Control Operators for Interactive Character Animation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html)

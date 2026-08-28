@@ -86,6 +86,6 @@ Gallant 先从相机图像/多视角观测、本体状态与关节序列、深�
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Gallant](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Gallant__Voxel_Grid-based_Humanoid_Locomotion_and_Local-navigation_across_3D_Constrained_Terrains/Gallant__Voxel_Grid-based_Humanoid_Locomotion_and_Local-navigation_across_3D_Constrained_Terrains.html)
+- [机器人论文阅读笔记：Gallant](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Gallant__Voxel_Grid-based_Humanoid_Locomotion_and_Local-navigation_across_3D_Constrained_Terrains/Gallant__Voxel_Grid-based_Humanoid_Locomotion_and_Local-navigation_across_3D_Constrained_Terrains.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - 同题深读/既有实体：[paper-loco-manip-161-137-gallant](../entities/paper-loco-manip-161-137-gallant.md)

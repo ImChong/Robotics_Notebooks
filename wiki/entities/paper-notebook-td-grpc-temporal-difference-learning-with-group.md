@@ -14,7 +14,7 @@ summary: "TD-GRPC：列入 Paper Notebooks PROGRESS.md 待深读清单；深读�
 
 # TD-GRPC
 
-**TD-GRPC: Temporal Difference Learning with Group Relative Policy Constraint for Humanoid Locomotion** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**TD-GRPC: Temporal Difference Learning with Group Relative Policy Constraint for Humanoid Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ TD-GRPC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -38,7 +38,7 @@ TD-GRPC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 05_Locomotion |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 计划文件夹 | `papers/05_Locomotion/td-grpc-temporal-difference-learning-with-group` |
 | arXiv | <https://arxiv.org/abs/2505.13549> |
 
@@ -52,7 +52,7 @@ TD-GRPC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 页面能确定的只有元信息：分类 05_Locomotion、PROGRESS.md 标记为待深读、计划文件夹路径与 arXiv 入口；核心机制、量化 benchmark、消融与实机指标均尚未编译。
 - 因此不应把本页当作引用该工作的技术依据；需要结论时请回到 arXiv 原文，或等待笔记站的深读页。
-- 适用边界很窄：本页只服务于 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点之间的交叉检索，避免知识图谱缺失该论文实体。
+- 适用边界很窄：本页只服务于 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点之间的交叉检索，避免知识图谱缺失该论文实体。
 - 升格条件明确：深读笔记完成后本页应链向笔记站并补齐「实验与评测」，届时本节需整体重写。
 
 ## 与其他页面的关系
@@ -63,9 +63,9 @@ TD-GRPC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 参考来源
 
 - [humanoid_pnb_td-grpc-temporal-difference-learning-with-group.md](../../sources/papers/humanoid_pnb_td-grpc-temporal-difference-learning-with-group.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.13549>
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

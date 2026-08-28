@@ -14,7 +14,7 @@ summary: "第一视角（egocentric）视频是学操作策略的宝贵可扩展
 
 # In-N-On
 
-**In-N-On: Scaling Egocentric Manipulation with in-the-wild and on-task Data** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**In-N-On: Scaling Egocentric Manipulation with in-the-wild and on-task Data** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 | 字段 | 内容 |
 |------|------|
 | 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data.html> |
 | arXiv | <https://arxiv.org/abs/2511.15704> |
 | 作者 | Xiongyi Cai、Ri-Zhao Qiu、Geng Chen、Lai Wei、Tianshu Huang、Xuxin Cheng、Xiaolong Wang（UC San Diego） |
 | 发表 | 2025 年 11 月 |
@@ -86,9 +86,9 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 ## 参考来源
 
 - [humanoid_pnb_in-n-on.md](../../sources/papers/humanoid_pnb_in-n-on.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data.html>
 - 论文：<https://arxiv.org/abs/2511.15704>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：In-N-On](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data.html)
+- [机器人论文阅读笔记：In-N-On](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data.html)

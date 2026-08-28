@@ -14,7 +14,7 @@ summary: "FLAM：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔�
 
 # FLAM
 
-**FLAM: Foundation Model-Based Body Stabilization for Humanoid Locomotion and Manipulation** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**FLAM: Foundation Model-Based Body Stabilization for Humanoid Locomotion and Manipulation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ FLAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 
 ## 核心信息
@@ -38,7 +38,7 @@ FLAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 计划文件夹 | `papers/14_Human_Motion/flam-foundation-model-based-body-stabilization-f` |
 | arXiv | <https://arxiv.org/abs/2503.22249> |
 
@@ -51,7 +51,7 @@ FLAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 **FLAM 在本库目前只是一条「已排期、未深读」的占位实体：它保证"基础模型用于人形躯干稳定"这一线索在图谱中不缺节点，但还给不出可引用的方法结论。**
 
 - 本页能确认的只有索引层信息——arXiv 2503.22249、分类 14_Human_Motion 与计划中的笔记文件夹；标题指向"基于基础模型的身体稳定，服务于人形运动与操作"这一命题，基础模型具体承担何种角色、如何与底层控制衔接，页内均未展开。
-- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-14-human-motion.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为方案对比或工程选型的依据。
+- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-14-human-motion.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为方案对比或工程选型的依据。
 - 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 PROGRESS.md 跟踪，结论以论文原文为准。
 
 ## 与其他页面的关系
@@ -62,9 +62,9 @@ FLAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 参考来源
 
 - [humanoid_pnb_flam-foundation-model-based-body-stabilization-f.md](../../sources/papers/humanoid_pnb_flam-foundation-model-based-body-stabilization-f.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2503.22249>
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

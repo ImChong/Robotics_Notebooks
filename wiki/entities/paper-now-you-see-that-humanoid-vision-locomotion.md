@@ -179,7 +179,7 @@ flowchart TB
 - [now-you-see-that-github-io.md](../../sources/sites/now-you-see-that-github-io.md) — 项目页结构与 demo 索引
 - [now_you_see_that.md](../../sources/repos/now_you_see_that.md) — 官方 GitHub README 与外链
 - 论文 PDF：<https://arxiv.org/pdf/2602.06382>
-- 深读笔记（姊妹仓）：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html>
+- 深读笔记（姊妹仓）：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html>
 
 ## 推荐继续阅读
 

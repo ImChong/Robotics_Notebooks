@@ -1,6 +1,6 @@
 # SkillMimic: Learning Basketball Interaction Skills from Demonstrations
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读 → 本库已升格策展）
+> 来源归档（ingest · Robot Learning Paper Notebooks progress 待深读 → 本库已升格策展）
 
 - **标题：** SkillMimic: Learning Basketball Interaction Skills from Demonstrations
 - **类型：** paper
@@ -26,7 +26,7 @@
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2408.15270>
 - 项目页：<https://ingrid789.github.io/SkillMimic/>
 - 代码：<https://github.com/wyhuai/SkillMimic>

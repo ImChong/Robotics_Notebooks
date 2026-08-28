@@ -56,7 +56,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/overview/humanoid-amp-motion-prior-survey.md": (
         "人形对抗式运动先验（Humanoid Adversarial Motion Prior, AMP）"
     ),
-    "wiki/overview/humanoid-paper-notebooks-index.md": "人形论文深读笔记（Humanoid Paper Notebooks）",
+    "wiki/overview/humanoid-paper-notebooks-index.md": "机器人学习论文笔记（Robot Learning Paper Notebooks）",
     "wiki/overview/paper-notebook-category-01-foundational-rl.md": (
         "论文深读 · 基础强化学习（Foundational Reinforcement Learning, RL）"
     ),

@@ -14,7 +14,7 @@ summary: "大多数人形机器人遥操作系统都把精力放在控制算法�
 
 # Development of an Intuitive GUI for Non-Expert Teleoperation of Humanoid Robots
 
-**Development of an Intuitive GUI for Non-Expert Teleoperation of Humanoid Robots** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Development of an Intuitive GUI for Non-Expert Teleoperation of Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -34,7 +34,7 @@ summary: "大多数人形机器人遥操作系统都把精力放在控制算法�
 
 - **降低操作门槛**：让非专业人士也能遥操作人形机器人，对教育、科普、应急/救援等"操作员未必是工程师"的场景很重要
 - **HRI / UI 视角补位**：提醒社区：遥操作的瓶颈不只在算法，**人能不能看懂、能不能控好界面**同样关键
-- **与算法路线互补**：与本模块 [SEW-Mimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html)（重定向算法）、[ExtremControl](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control.html)（低延迟控制）形成"算法 ↔ 界面"两端的互补
+- **与算法路线互补**：与本模块 [SEW-Mimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html)（重定向算法）、[ExtremControl](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control.html)（低延迟控制）形成"算法 ↔ 界面"两端的互补
 - **竞赛驱动研究**：展示了 FIRA 这类机器人竞赛如何反哺学术研究与人才培养
 
 ## 解决什么问题
@@ -57,7 +57,7 @@ summary: "大多数人形机器人遥操作系统都把精力放在控制算法�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 07_Teleoperation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots.html> |
+| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots.html> |
 | arXiv | <https://arxiv.org/abs/2510.13594> |
 | 机构 | Laurentian University，Bharti School of Engineering and Computer Science（加拿大）· Laurentian Intelligent Mobile Robotics Lab（LIMRL） |
 | 作者 | **Austin Barrett**, **Meng Cheng Lau** |
@@ -86,9 +86,9 @@ summary: "大多数人形机器人遥操作系统都把精力放在控制算法�
 ## 参考来源
 
 - [humanoid_pnb_intuitive-gui-for-non-expert-teleoperation-of-hu.md](../../sources/papers/humanoid_pnb_intuitive-gui-for-non-expert-teleoperation-of-hu.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots.html>
+- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2510.13594>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Development of an Intuitive GUI for Non-Expert Teleoperation of Humanoid Robots](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots.html)
+- [机器人论文阅读笔记：Development of an Intuitive GUI for Non-Expert Teleoperation of Humanoid Robots](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots.html)
