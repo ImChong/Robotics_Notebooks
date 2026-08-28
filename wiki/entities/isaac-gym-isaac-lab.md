@@ -8,7 +8,7 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Sim / Isaac Lab 三代 NVIDIA 仿真与学习产品总览：Gym 为 legacy GPU RL；Sim 为 Omniverse 仿真底座；Lab 为当前官方学习框架。"
-updated: 2026-08-21
+updated: 2026-08-28
 tags: [nvidia]
 
 ---
@@ -188,6 +188,7 @@ Gym 时代就强调大规模随机化；Lab / Sim 延续并扩展到视觉与传
 - [Genesis](./genesis-sim.md)
 - [UniLab](./unilab.md)
 - [PyTorch](./pytorch.md)
+- [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 专家轨迹在 Isaac Gym 50 Hz 并行采集后再训 ArticuACT（arXiv:2608.20251）
 
 ## 一句话记忆
 

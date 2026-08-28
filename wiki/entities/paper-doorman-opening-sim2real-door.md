@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear, body-system-stack]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-28
 arxiv: "2512.01061"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -22,6 +22,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
   - ../tasks/loco-manipulation.md
+  - ./paper-video2door-traversal.md
   - ./unitree-g1.md
   - ./isaac-gym-isaac-lab.md
 sources:
@@ -181,6 +182,7 @@ sequenceDiagram
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 对照：单 RGB 视频建门孪生 + 模仿学习穿门（轮足 A2-W），而非程序化资产 + 特权教师 RL（人形 G1）。
 - [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — DP 分层规划 + RL 联合微调的开门/搬箱对照（Booster T1，arXiv:2603.13707）
 - [Unitree G1](./unitree-g1.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)

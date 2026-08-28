@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-28
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -14,6 +14,7 @@ related:
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
   - ../tasks/locomotion.md
+  - ../entities/paper-video2door-traversal.md
   - ./system-identification.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/paper-spd.md
@@ -284,6 +285,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) — 三段流水线中段；Sim2Real 横切其「训练 → 真机」落地
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 三段流水线末段；换机体后是否需重跨 domain gap
 - [Locomotion](../tasks/locomotion.md)
+- [Video2DoorTraversal（论文实体）](../entities/paper-video2door-traversal.md) — 单 RGB 视频门孪生 → 仿真专家 → 双深度 ACT 穿门（arXiv:2608.20251；代码待发布）
 - [腿式机器人进展/挑战/机遇综述](../entities/paper-legged-robots-advances-challenges.md) — SciRobotics 2026：把 Sim2Real 放进硬件/运动/数据五柱坐标系
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节把延迟/摩擦/惯量拆开，再写回仿真
