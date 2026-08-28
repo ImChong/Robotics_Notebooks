@@ -1,3 +1,11 @@
+## [2026-08-28] ingest | sources/papers/vb_com_arxiv_2502_14814.md — VB-Com（ICRA 2026）视觉/盲策略复合人形运动；项目页 Code coming soon；原地升格 paper-notebook-vb-com
+
+- **触发：** 用户指定 *VB-Com: Learning Vision-Blind Composite Humanoid Locomotion Against Deficient Perception*（Junli Ren 等；ICRA 2026；Unitree G1/H1；论文 <https://arxiv.org/pdf/2502.14814>；项目页 <https://renjunli99.github.io/vbcom.github.io/>）；要求自动合并 PR
+- **步骤 2.5：** **宣称将开源 / 截至入库日项目页未列 GitHub** — 按钮文案 *Code (coming soon)*，`href=""`；无训练/推理入口、无权重
+- **关键页：** [`wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md`](wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md)（原 Paper Notebooks planned 占位，原地升格，未新建重复节点）
+- **交叉：** 楼梯与障碍 locomotion 枢纽 / 人形运控观测输入 / Humanoid Locomotion / Terrain Adaptation / RPL / PIM 占位 / Unitree G1
+- **机构：** 已有 `shanghai-ai-lab` / `hku` / `sjtu` / `zju` / `cuhk`；未新注册
+
 ## [2026-08-28] ingest | sources/courses/nvidia_getting_started_isaac_lab.md — NVIDIA Getting Started With Isaac Lab 全系列四模块；Isaac Lab 已开源；升格 wiki/entities/nvidia-getting-started-isaac-lab.md
 
 - **触发：** 用户指定 <https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-lab/latest/index.html> 一整个系列
