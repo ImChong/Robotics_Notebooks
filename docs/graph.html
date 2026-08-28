@@ -5369,6 +5369,20 @@
       applyGraphFitTransform(transform);
     }
 
+    /** 视口尺寸变化后只平移画布变换，让图保持在可视区中央。
+     *  刻意不碰力模拟：alpha().restart() 会让所有节点朝新中心迁移，
+     *  在侧栏开合 / 窗口缩放时表现为整图抖一下（3D 侧同样只动相机）。 */
+    function recenterAfterViewportChange(prevW, prevH) {
+      const dx = (W - prevW) / 2;
+      const dy = (H - prevH) / 2;
+      if (!dx && !dy) return;
+      const t = d3.zoomTransform(svg.node());
+      // zoom.transform 会触发 zoom 回调把 userZoomed2D 置真；被动重新取景不算用户缩放。
+      const wasUserZoomed = userZoomed2D;
+      svg.call(zoom.transform, d3.zoomIdentity.translate(t.x + dx, t.y + dy).scale(t.k));
+      userZoomed2D = wasUserZoomed;
+    }
+
     /* ── 搜索飞行定位 ── */
     function flyToVisible() {
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
@@ -5402,7 +5416,7 @@
         else fitToScreen();
         return;
       }
-      simulation.alpha(0.1).restart();
+      recenterAfterViewportChange(prevW, prevH);
     }
     function onGraphViewportResize() {
       // 双 rAF：等浏览器把 innerHeight / visualViewport 都更新完再量壳层
@@ -5536,15 +5550,22 @@
     const sbClose      = document.getElementById('sb-close');
     const SIDEBAR_TRANSITION_MS = 220;
 
-    function scheduleSidebarViewportSync() {
+    /** 侧栏开合改变了绘图区宽度：等过渡结束后重新取景。
+     *  refit=true（关闭侧栏）适配回整图，否则只平移保持居中。 */
+    function scheduleSidebarViewportSync(options) {
+      const opts = options || {};
       let settled = false;
       const finish = () => {
         if (settled) return;
         settled = true;
         wrap.removeEventListener('transitionend', onEnd);
         clearTimeout(fallbackTimer);
+        const prevW = W;
+        const prevH = H;
         updateGraphViewport();
-        if (!timelineAnimating && !is3DView()) simulation.alpha(0.1).restart();
+        if (timelineAnimating || is3DView()) return;
+        if (opts.refit) fitToScreen();
+        else recenterAfterViewportChange(prevW, prevH);
       };
       const onEnd = (ev) => {
         if (ev.target !== wrap || ev.propertyName !== 'right') return;
@@ -5629,21 +5650,6 @@
         .style('stroke-width', null)
         .attr('stroke', edgeBaseColor());
       applyFilters();
-      if (opts.relayout && !is3DView()) {
-        updateGraphViewport();
-        const cx = (wrap.clientWidth || W) / 2;
-        const cy = (wrap.clientHeight || H) / 2;
-        simulation.force('center', d3.forceCenter(cx, cy).strength(FORCE_CENTER_STRENGTH));
-        if (!isMagnetic2D) {
-          simulation.force('x', d3.forceX(cx).strength(FORCE_CENTER_STRENGTH));
-          simulation.force('y', d3.forceY(cy).strength(FORCE_CENTER_STRENGTH));
-        }
-        simulation.alpha(0.1).restart();
-        simulation.on('end.sidebar', () => {
-          simulation.on('end.sidebar', null);
-          fitToScreen();
-        });
-      }
     }
 
     function openSidebar(d) {
@@ -5761,15 +5767,9 @@
       sidebar.classList.remove('open');
       wrap.classList.remove('sidebar-open');
       if (isMobile) hideTooltip();
-      // 侧栏未开时空白点击也会走到这里：不要 scheduleSidebarViewportSync /
-      // relayout（二者都会 alpha().restart()）。曾与时序退出残留的
-      // alphaTarget=0.3 叠加，导致整图永久自振。
-      if (wasOpen) {
-        scheduleSidebarViewportSync();
-        clearNodeNeighborHighlight({ relayout: true });
-      } else {
-        clearNodeNeighborHighlight({ relayout: false });
-      }
+      // 侧栏未开时空白点击也会走到这里：此时绘图区宽度没变，无需重新取景。
+      if (wasOpen) scheduleSidebarViewportSync({ refit: true });
+      clearNodeNeighborHighlight();
     }
 
     sbClose.addEventListener('click', closeSidebar);
