@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, urdf, kinematics, dynamics, modeling, ros]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-29
 related:
   - ../entities/freecad.md
   - ../entities/pinocchio.md
@@ -17,6 +17,7 @@ related:
   - ../entities/awesome-robot-descriptions.md
   - ../entities/fiveages-sim-robot-descriptions.md
   - ../entities/urdf-files-dataset.md
+  - ../entities/paper-apollo-blender.md
   - ../comparisons/robot-description-catalogs.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
@@ -90,6 +91,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 - [robot_descriptions.py](../entities/robot-descriptions-py.md)
 - [URDF Files Dataset](../entities/urdf-files-dataset.md) — 322 Bundle 上的 xacro / 解析失败 / 跨源重复统计
+- [APOLLO Blender](../entities/paper-apollo-blender.md) — URDF/URDD 进 Blender 出论文图，不是仿真导入
 
 ## 推荐继续阅读
 

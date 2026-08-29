@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-29
 related:
   - ./freecad.md
   - ./nvidia-omniverse.md
@@ -21,6 +21,7 @@ related:
   - ../concepts/motion-retargeting-pipeline.md
   - ../concepts/character-animation-vs-robotics.md
   - ./manim.md
+  - ./paper-apollo-blender.md
 sources:
   - ../../sources/sites/blender-org.md
   - ../../sources/repos/blender.md
@@ -49,7 +50,7 @@ summary: "Blender 是 GPL 开源的全流程 3D 创作套件：在机器人栈�
 1. **资产与场景 authoring**：机器人仿真需要 mesh、材质、灯光、相机与布局；Blender 是 **零许可成本** 的全功能 DCC，可导出 FBX/OBJ/glTF/USD 等供 [NVIDIA Omniverse](./nvidia-omniverse.md)、自定义渲染或 **NeRF/3DGS** 数据合成使用。室内场景生成（如 [HomeWorld](./paper-homeworld-whole-home-scene-generation.md)）中亦常见 **Blender unfurnished shell** 作显式 3D 约束。
 2. **动画与重定向上游**：[Motion Retargeting](../concepts/motion-retargeting.md) 链路里，人体/角色动作常在 DCC 中 **检视、剪辑、绑定与曲线平滑** 后再导出；[SAM3DBody-cpp](./sam3dbody-cpp.md) 等提供 **BVH + Blender/MakeHuman 插件**，把单目姿态估计接入 DCC。
 3. **插件宿主与远程求解**：高保真离线物理（如 [ppf-contact-solver](./ppf-contact-solver.md)）通过 **Blender 5+ 插件** 在本地 DCC 调远程 GPU 求解器——典型「图形学精度仿真 + 艺术家工作流」组合。
-4. **Python 脚本层**：界面、批渲染、网格处理均可脚本化，适合 **合成数据集、相机轨迹批量导出、可视化 pipeline**，而不必绑定某一商业 DCC。
+4. **Python 脚本层**：界面、批渲染、网格处理均可脚本化，适合 **合成数据集、相机轨迹批量导出、可视化 pipeline**，而不必绑定某一商业 DCC。机器人论文出图可进一步走 [APOLLO Blender](./paper-apollo-blender.md)（URDD/`ChainBlender` 关键帧，不是又一个仿真器）。
 
 ## 核心能力分区（与机器人管线的映射）
 
@@ -112,6 +113,7 @@ flowchart LR
 - [3D Gen Studio（ComfyUI 网格生产编排）](./3dgenstudio.md)
 - [ComfyUI（节点式生成引擎）](./comfyui.md) — 像素/视频/mesh 生成运行时；常与本页 DCC 精修串联
 - [Manim（程序化数学动画，讲解层互补）](./manim.md)
+- [APOLLO Blender（URDD 导入 + 论文级出图脚本）](./paper-apollo-blender.md)
 - [HomeWorld 全屋场景生成论文实体](./paper-homeworld-whole-home-scene-generation.md)
 
 ## 参考来源

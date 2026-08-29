@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-08-29",
-  "node_count": 3342,
-  "edge_count": 30029,
+  "node_count": 3343,
+  "edge_count": 30043,
   "coverage": {
-    "covered": 3317,
-    "total": 3317,
+    "covered": 3318,
+    "total": 3318,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/agentic-coding-software-fundamentals.md",
+      "detail_id": "wiki-concepts-agentic-coding-software-fundamentals",
+      "label": "Agentic Coding 时代的软件工程基础",
+      "type": "concept",
+      "recency": "2026-08-29",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-clap-cross-embodiment.md",
       "detail_id": "entity-paper-clap-cross-embodiment",
@@ -206,33 +216,22 @@
       "action": "added",
       "has_repo": true,
       "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lac.md",
-      "detail_id": "entity-paper-lac",
-      "label": "LAC：人形全身线角柔顺",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-clap-cross-embodiment.md",
-    "detail_id": "entity-paper-clap-cross-embodiment",
-    "label": "CLAP：跨本体视频世界模型当零样本物理模拟器",
-    "type": "entity",
+    "path": "wiki/concepts/agentic-coding-software-fundamentals.md",
+    "detail_id": "wiki-concepts-agentic-coding-software-fundamentals",
+    "label": "Agentic Coding 时代的软件工程基础",
+    "type": "concept",
     "recency": "2026-08-29",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 802
+      "size": 803
     },
     {
       "label": "操作",

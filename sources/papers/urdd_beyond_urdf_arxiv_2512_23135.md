@@ -49,6 +49,7 @@
 - **Rust 实现与示例 URDD：** <https://github.com/Apollo-Lab-Yale/apollo-rust> — 归档见 [sources/repos/apollo-lab-yale-apollo-rust.md](../repos/apollo-lab-yale-apollo-rust.md)
 - **Three.js 引擎模块（import map 引用 `apollo-three-engine`）：** <https://github.com/Apollo-Lab-Yale/apollo-three-engine> — 归档见 [sources/repos/apollo-lab-yale-apollo-three-engine.md](../repos/apollo-lab-yale-apollo-three-engine.md)
 - **Python 包骨架：** <https://github.com/Apollo-Lab-Yale/apollo-py> — 归档见 [sources/repos/apollo-lab-yale-apollo-py.md](../repos/apollo-lab-yale-apollo-py.md)
+- **Blender 出版渲染（姊妹论文）：** [APOLLO Blender](apollo_blender_arxiv_2512_23103.md)（arXiv:2512.23103）— 同仓 `apollo_py_blender` 把 URDD 送进离线渲染
 
 ## 当前提炼状态
 

@@ -6,6 +6,14 @@
 - **交叉：** mattpocock/skills、Superpowers、ENPIRE、真机 autoresearch harness、AI Auto-Research、Data Flywheel
 - **机构：** 未改 `institutions.json`（Stanford 已注册；本页为概念而非论文实体）
 
+## [2026-08-29] ingest | sources/papers/apollo_blender_arxiv_2512_23103.md — APOLLO Blender（Yale）Blender 出图库已开源（apollo-py / apollo-toolbox-py）；论文 import 名 blender_robot_toolbox_py 不在 PyPI
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2512.23103v2>；要求自动合并 PR
+- **步骤 2.5：** **已开源** MIT — 实验室研究页点名但不给直链；可核验入口 [apollo-py](https://github.com/Apollo-Lab-Yale/apollo-py) / PyPI `apollo-toolbox-py` 0.0.13（`apollo_py_blender.ChainBlender`、`scripts/test.py`）。论文示例包名 `blender_robot_toolbox_py` **PyPI 404**。
+- **关键页：** [`wiki/entities/paper-apollo-blender.md`](wiki/entities/paper-apollo-blender.md)
+- **交叉：** Blender / URDD / URDF / 关键帧编辑器 / Robot Viewer / Manim / 描述目录选型
+- **机构：** 既有 `yale`，未改 `institutions.json`
+
 ## [2026-08-29] ingest | sources/papers/flashvla_arxiv_2608_27384.md + clap_arxiv_2608_27406.md + solo_arxiv_2608_26583.md — FlashVLA 流式异步 VLA 已开源；CLAP 跨本体视频 WM + G1 权重已开源；SOLO 1.5 km 感知行走项目页未列代码
 
 - **触发：** 用户指定 FlashVLA（[论文](https://arxiv.org/abs/2608.27384) / [GitHub](https://github.com/z-lab/flashvla) / [HF](https://huggingface.co/z-lab/flashvla-pi05-libero)）、CLAP（[论文](https://arxiv.org/abs/2608.27406) / [GitHub](https://github.com/omni-CLAP/clap) / [项目页](https://omni-clap.github.io/) / [HF](https://huggingface.co/omni-CLAP/CLAP)）、SOLO（[论文](https://arxiv.org/abs/2608.26583) / [项目页](https://sunpihai-up.github.io/solo/)）；要求自动合并 PR
