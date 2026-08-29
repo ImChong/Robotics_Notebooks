@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ../references/llm-wiki-karpathy.md
@@ -11,6 +11,7 @@ related:
   - ../entities/hermes-agent.md
   - ../entities/agent-reach.md
   - ../entities/superpowers-obra.md
+  - ./agentic-coding-software-fundamentals.md
   - ../entities/paper-harnessbank.md
   - ../entities/paper-dash-opsd.md
   - ../../schema/ingest-workflow.md
@@ -117,7 +118,7 @@ flowchart LR
 
 ## 常见误区
 
-- **误区 1：SWE-bench 高就等于能做科研。** 熟悉 issue 修复 ≠ 实现论文中欠指定的算法；研究代码基准天花板仍低（语义错误为主）。
+- **误区 1：SWE-bench 高就等于能做科研。** 熟悉 issue 修复 ≠ 实现论文中欠指定的算法；研究代码基准天花板仍低（语义错误为主）。[Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md) 解决的是应用/栈层取舍，同样 **不能** 替代假设质量与论证。
 - **误区 2：端到端「一夜一篇」代表科学可信。** 低成本生成文稿不保证可复现、可接受、可问责；Validation 与 Dissemination 覆盖仍弱。
 - **误区 3：更多 agent 自动更好。** 多 agent 仅在可分解、可并行子任务上增益；顺序推理与 handoff 验证不足时反而放大错误。
 - **误区 4：AI 检测器可治理学术诚信。** 假阳性与规避手段使 **披露 + 责任链** 比检测更可持续。
@@ -128,6 +129,7 @@ flowchart LR
 - [Hermes Agent](../entities/hermes-agent.md) — 常驻 agent OS：工具、记忆、网关、cron。
 - [Agent Reach](../entities/agent-reach.md) — 微信/ arXiv 等 **读搜上游** 聚合，偏 S2 资料获取。
 - [Superpowers（obra）](../entities/superpowers-obra.md) — TDD、worktree、评审子代理等 **交付纪律**。
+- [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md) — 有 coding agent 仍要懂 SE 取舍；与「SWE ≠ 科研」互补。
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md) — S3 单 GPU LLM 训练 **自主实验环** 最小实现。
 - [HarnessBank](../entities/paper-harnessbank.md) — agent harness **门控自进化**（验证增益才入库，对照无门控自改）。
 - [DASH](../entities/paper-dash-opsd.md) — OPSD 上 **可验证数学推理** 后训练的自适应蒸馏聚合。
@@ -148,6 +150,7 @@ flowchart LR
 - [Hermes Agent](../entities/hermes-agent.md)
 - [Agent Reach](../entities/agent-reach.md)
 - [Superpowers（obra）](../entities/superpowers-obra.md)
+- [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md)
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md)
 - [HarnessBank](../entities/paper-harnessbank.md)
 - [DASH](../entities/paper-dash-opsd.md)

@@ -8,7 +8,7 @@ tags:
   - software-engineering
   - methodology
 status: complete
-updated: 2026-07-16
+updated: 2026-08-29
 related:
   - ./ponytail.md
   - ./nuwa-skill.md
@@ -19,6 +19,7 @@ related:
   - ./agent-reach.md
   - ./graphify.md
   - ../references/llm-wiki-karpathy.md
+  - ../concepts/agentic-coding-software-fundamentals.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
 sources:
@@ -49,6 +50,7 @@ summary: "Superpowers（obra/superpowers）是一套面向多种编码代理 har
 - **与「LLM 维护 wiki」同构的另一条轴：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 强调 **持久 wiki 与 cross-reference**；Superpowers 强调 **持久技能与可验证工程习惯**（TDD、评审、worktree）。两者都试图把 **人类策展 + 机器执行** 写成 **可重复、可审计** 的文件结构。
 - **对机器人代码与仿真栈开发的迁移价值：** 本仓库读者常在 **Isaac Lab / MuJoCo / ROS2** 等多仓库、长链路场景下并行实验；`using-git-worktrees`、分任务子代理与 **RED/GREEN** 节奏，有助于降低「单会话上下文里乱改多模块」的风险（仍以团队自己的 CI 与规约为准）。
 - **生态位清晰：** 上游 README 明确技能集合与 **多 harness 安装差异**；贡献边界保守（不随意合并新技能），适合作为 **方法论参考** 而非未经验证的插件大杂烩。
+- **与「软件基础技能图」分工：** [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲人要保留哪些 **取舍判断**；Superpowers 讲代理默认走哪条 **交付管线**。有流程无判断，仍会把 vibe coding 加速进生产。
 
 ## 核心结构
 
@@ -90,6 +92,7 @@ flowchart TD
 - [Caveman](caveman.md) — **输出与记忆文件 token 压缩**技能（与本页「交付流程」互补）
 - [Ponytail](ponytail.md) — **必要性阶梯减 LOC**（与本页「流程对」与 Caveman「措辞对」形成三角）
 - [Hermes Agent](hermes-agent.md) — **常驻代理运行时**（网关、记忆/技能、cron；与本页「流程技能」互补）
+- [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 吴恩达五项 SE 基础：转向 agent 的取舍语言，不是语法记忆
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
 - [Articraft](./articraft.md) — 另一类 **agent + 规约文件 + harness** 的闭环（面向 3D 资产生成，与编码技能栈问题域不同但可类比）

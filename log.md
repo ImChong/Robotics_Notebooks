@@ -1,3 +1,11 @@
+## [2026-08-29] ingest | sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md — 吴恩达 AI 工程技能图「软件工程基础」；无代码；升格 agentic-coding-software-fundamentals
+
+- **触发：** 用户指定 <https://x.com/andrewyng/status/2093388974194872781>
+- **步骤 2.5：** **不适用** — 论述文，无项目页、无可运行代码。同文镜像：X Article / LinkedIn Pulse / DeepLearning.AI *The Batch*
+- **关键页：** [`wiki/concepts/agentic-coding-software-fundamentals.md`](wiki/concepts/agentic-coding-software-fundamentals.md)
+- **交叉：** mattpocock/skills、Superpowers、ENPIRE、真机 autoresearch harness、AI Auto-Research、Data Flywheel
+- **机构：** 未改 `institutions.json`（Stanford 已注册；本页为概念而非论文实体）
+
 ## [2026-08-29] ingest | sources/papers/flashvla_arxiv_2608_27384.md + clap_arxiv_2608_27406.md + solo_arxiv_2608_26583.md — FlashVLA 流式异步 VLA 已开源；CLAP 跨本体视频 WM + G1 权重已开源；SOLO 1.5 km 感知行走项目页未列代码
 
 - **触发：** 用户指定 FlashVLA（[论文](https://arxiv.org/abs/2608.27384) / [GitHub](https://github.com/z-lab/flashvla) / [HF](https://huggingface.co/z-lab/flashvla-pi05-libero)）、CLAP（[论文](https://arxiv.org/abs/2608.27406) / [GitHub](https://github.com/omni-CLAP/clap) / [项目页](https://omni-clap.github.io/) / [HF](https://huggingface.co/omni-CLAP/CLAP)）、SOLO（[论文](https://arxiv.org/abs/2608.26583) / [项目页](https://sunpihai-up.github.io/solo/)）；要求自动合并 PR

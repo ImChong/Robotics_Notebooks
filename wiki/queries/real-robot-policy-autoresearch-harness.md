@@ -23,7 +23,8 @@ related:
   - ../concepts/recursive-self-improvement.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/deepseek-harness.md
-updated: 2026-08-13
+  - ../concepts/agentic-coding-software-fundamentals.md
+updated: 2026-08-29
 ---
 
 # 真机策略 autoresearch 闭环搭建指南
@@ -100,7 +101,7 @@ ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Ki
 
 ## 常见误区
 
-- **「有 coding agent 就能跳过环境工程」**：恰恰相反，reset/verify 接口才是核心贡献；没有自动判分与复位，agent 只能低频人工试验。
+- **「有 coding agent 就能跳过环境工程」**：恰恰相反，reset/verify 接口才是核心贡献；没有自动判分与复位，agent 只能低频人工试验。通用软件侧同一逻辑见 [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md)：有 agent 仍要懂取舍，不能 vibe coding 过关。
 - **「成功率数字可脱离 harness 泛化」**：高成功率建立在特定 verification、复位策略与预算上；换传感器布局需重新标定。
 - **「更多机器人/agent 一定更快」**：并行能加速，但 MRU/MTU 揭示 GPU 利用率与 token 消耗的同步上升，物理与 token scaling 要分开读。
 
@@ -135,5 +136,6 @@ ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Ki
 - [Kimi K3](../entities/kimi-k3.md) — 开放权重 AR 旗舰 coding backend
 - [LLaDA2.2-flash](../entities/llada2-2-flash.md) — 开放权重 dLLM / 高吞吐 agent 后端选项
 - [DeepSeek Harness](../entities/deepseek-harness.md) — DeepSeek 官方插件化 coding agent 宿主（Web / headless / Python SDK）
+- [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 有 agent 仍要保留 SE 取舍语言；与「不能跳过环境工程」同构
 - [递归自改进](../concepts/recursive-self-improvement.md) — 实验室内部「实现已代理化、选题仍为人」；本页是真机侧能自动化的前提，不是模型自训练后继者
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — Embody 显示 LLM 训 PPO 多数弱于写控制器；harness 里选范式时不要默认 RL
