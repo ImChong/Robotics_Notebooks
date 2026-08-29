@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-apollo-blender.md",
+      "detail_id": "entity-paper-apollo-blender",
+      "label": "APOLLO Blender",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/agentic-coding-software-fundamentals.md",
       "detail_id": "wiki-concepts-agentic-coding-software-fundamentals",
       "label": "Agentic Coding 时代的软件工程基础",
@@ -205,27 +216,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-anytime-gtmp.md",
-      "detail_id": "entity-paper-anytime-gtmp",
-      "label": "Anytime GTMP：批量全局张量运动规划",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/agentic-coding-software-fundamentals.md",
-    "detail_id": "wiki-concepts-agentic-coding-software-fundamentals",
-    "label": "Agentic Coding 时代的软件工程基础",
-    "type": "concept",
+    "path": "wiki/entities/paper-apollo-blender.md",
+    "detail_id": "entity-paper-apollo-blender",
+    "label": "APOLLO Blender",
+    "type": "entity",
     "recency": "2026-08-29",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
