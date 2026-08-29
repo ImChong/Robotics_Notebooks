@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, supervised-learning, manipulation, covariate-shift]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 summary: "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
 related:
   - ./imitation-learning.md
@@ -85,6 +85,14 @@ $$
 
 ### 1. Covariate Shift / Distribution Shift
 训练时看到的是专家访问到的状态，部署时策略一旦出错，就会进入训练集中没见过的状态分布。
+
+BC 的监督目标只在专家诱导的状态分布 \(d_{\pi^*}\) 上取期望，闭环部署却是在策略自己诱导的 \(d_{\pi_\theta}\) 上被评测——**训练分布与评测分布不是同一个**，这是纯 BC 与普通监督学习最本质的差别，也是 covariate shift（分布偏移）一词在模仿学习里的确切所指。Ross & Bagnell 给出的经典刻画是：单步误差为 \(\epsilon\) 的 BC 在 horizon \(H\) 上最坏可退化到 \(\mathcal{O}(\epsilon H^2)\)，而持续在策略诱导分布上补标注的 [DAgger](./dagger.md) 可做到 \(\mathcal{O}(\epsilon H)\)——**多出来的那个 \(H\) 就是分布偏移的代价**。
+
+工程上有三条直接推论：
+
+- **验证集选错分布就测不出问题**：专家分布上的 NLL / MSE 再低，也不保证 \(d_{\pi_\theta}\) 上不崩；应改测策略诱导状态下的动作误差（与下方「Train 指标与闭环成功率不对齐」同源）。
+- **数据要覆盖「偏离之后怎么回来」**：只演示完美轨迹时，\(d_{\pi_\theta}\) 的尾部状态完全没有监督信号；[DA-Nav](../entities/paper-da-nav.md) 的 recovery 消融给出了定量对照。
+- **采集时主动注入扰动**：在演示过程中加噪声（DART 等做法）相当于让专家顺带标注邻域状态，是不做在线交互时最省事的近似。
 
 ### 2. Compounding Error
 单步小误差会沿着闭环执行不断累积，序列越长、任务越长 horizon，问题越明显。BC 并不是“每步都独立无害”的方法。[Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) 进一步给出尺度：Markov BC 可遭 \(\Omega(2^H\epsilon)\) 下界，而 **delayed policy**（\(a_t\mid o_{t-n}\)）与 action chunking 共享 \(\mathcal{O}((k+1)^{H/k}\epsilon)\) 上界——缓解复合误差不一定要「播放整段动作块」。
