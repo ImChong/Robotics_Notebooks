@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 arxiv: "2605.30770"
 related:
   - ./paper-cref.md
@@ -22,6 +22,7 @@ related:
   - ./paper-faststair-humanoid-stair-ascent.md
   - ./paper-explicit-stair-geometry-humanoid-locomotion.md
   - ./isaac-gym-isaac-lab.md
+  - ./paper-solo.md
 sources:
   - ../../sources/papers/ssr_arxiv_2605_30770.md
   - ../../sources/sites/ssr-humanoid-github-io.md
@@ -170,6 +171,7 @@ flowchart TB
 | [Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md) | 点云 BEV token | 几何条件化 PPO | 单阶段 | 长户外楼梯 |
 | HPL（论文基线） | 深度 | 稀疏/间接 | 多阶段 | 结构化课 |
 | [CReF](./paper-cref.md) | 64×48 深度 | **触地可支撑候选奖励**（无想象模型） | **单阶段 PPO** | 室内 OOD；无 1.3 km 长程 |
+| [SOLO](./paper-solo.md) | 胸挂 D455 → 16×32 高程 | **逐格查询 + TA-MSE 蒸馏** | 三阶段教师–学生 | Omni **1.5 km**（未开源） |
 
 ## 参考来源
 
@@ -184,6 +186,7 @@ flowchart TB
 - [AMP & HumanX](../methods/amp-reward.md)、[Reinforcement Learning](../methods/reinforcement-learning.md)、[Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)、[Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md)、[ParkourFormer](./paper-parkourformer.md)
 - [CReF](./paper-cref.md) — 同 X2 平台的单阶段 raw 深度；落脚用足端点云奖励而非想象接触；强调室内 OOD 与无几何中间层
+- [SOLO](./paper-solo.md) — 教师–学生 + 显式高程；天工 Omni 连续 **1.5 km**（未开源）
 
 ## 推荐继续阅读
 

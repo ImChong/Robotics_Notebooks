@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../entities/current-robotics-currentworld.md
@@ -44,6 +44,7 @@ related:
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
+  - ../entities/paper-clap-cross-embodiment.md
   - ../entities/paper-wall-ss.md
   - ../entities/paper-rofacto.md
   - ../entities/paper-vitacworld.md
@@ -87,6 +88,7 @@ sources:
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/papers/clap_arxiv_2608_27406.md
   - ../../sources/papers/wall_ss_x_square_2026.md
   - ../../sources/blogs/current_robotics_currentworld.md
   - ../../sources/papers/odeworld_arxiv_2607_27924.md
@@ -188,6 +190,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 下一尺度自回归长程 WM + 虚实校准（示例：WALL-SS）
 
 [WALL-SS](../entities/paper-wall-ss.md)（自变量机器人，2026-08-26）把 clip 级扩散换成 **InfinityStar next-scale AR**：观察–动作写成因果序列，粗尺度钉状态转移、细尺度补接触；有界时间–尺度记忆支撑约 **60 s** 流式；on-policy 视觉对齐只优化动作跟随与长程一致性。WorldArena 风格动作跟随 **0.290**（Cosmos3-Nano **0.044**）；**600** 组虚实配对成功率 MAE **0.062**、\(r=0.93\)。相对 Ctrl-World，卖点是 **自回归长程 + 校准协议**，不是合成 SFT；**训练推理代码待发布**。
+
+### 跨本体课程视频 WM + 开源 G1 权重（示例：CLAP）
+
+[CLAP](../entities/paper-clap-cross-embodiment.md)（arXiv:2608.27406，Princeton）同样从 **SVD** 做动作条件视频，但先用 **32-D 潜动作** 吃 OXE + EgoDex，再换成 **7-D 绝对末端** 做零样本规划。相对 Ctrl-World 的 DROID 单本体 + 合成 SFT，CLAP 强调 **跨本体先验可迁移**：同容量追上 DROID SOTA，后训练超过从零单本体，并发布 **`adapt-g1`（26-D）** 与双臂 YAM 权重。推理时对 \(\pi_{0.5}\) / MolmoAct-2 做交叉策略规划，也可用 DSRL 在想象里微调扩散策略。**已开源**（MIT + HF）。
 
 ### 跨本体交互模拟器 + Human-in-the-World-Model（示例：CurrentWorld-0）
 
@@ -319,6 +325,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [CLAP](../entities/paper-clap-cross-embodiment.md) — **跨本体** LAM→EE 课程 + 开源 G1/YAM 适配权重（arXiv:2608.27406）。
 - [WALL-SS](../entities/paper-wall-ss.md) — **下一尺度自回归** 长程 WM：60 s 流式 + 虚实成功率校准 \(r=0.93\)（训练代码待发布）。
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体 / 多视角 / 力触觉 **交互模拟器** + Human-in-the-World-Model 后训练（2026-08 博客；确认未开源）。
 - [ODEWorld](../entities/paper-odeworld.md) — **物理时间 latent ODE**：任意时刻/反向预测 + 子目标策略（arXiv:2607.27924）。

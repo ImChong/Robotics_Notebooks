@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier]
 status: stable
 summary: "AME（AME-1）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；AME-2 的前作。"
-updated: 2026-07-24
+updated: 2026-08-29
 arxiv: "2506.09588"
 venue: "arXiv 2025"
 related:

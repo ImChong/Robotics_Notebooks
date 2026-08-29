@@ -13,7 +13,7 @@ tags:
   - hit
   - deep-robotics
 status: complete
-updated: 2026-08-25
+updated: 2026-08-29
 arxiv: "2608.20735"
 related:
   - ./paper-pi05-open-world-vla.md
@@ -22,6 +22,7 @@ related:
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
   - ./paper-decowam.md
+  - ./paper-flashvla.md
 sources:
   - ../../sources/papers/foretime_vla_arxiv_2608_20735.md
 summary: "ForeTime-VLA（arXiv:2608.20735，清华/上海 AI Lab/哈工大/云深处）：从冻结 Fast-WAM 教师蒸馏 64-D 未来感知码到因果 π₀.₅；4 future token + phase token 条件 VLM；传送带真机 44/90 vs π₀.₅ 23/90；截至入库日未列官方代码。"
@@ -163,6 +164,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md)、[Generative World Models](../methods/generative-world-models.md)
 - [Manipulation](../tasks/manipulation.md)
 - [DECOWAM](./paper-decowam.md) — 另一类 WAM→策略蒸馏
+- [FlashVLA](./paper-flashvla.md) — 同基座 \(\pi_{0.5}\)：改解码循环而非未来 token
 
 ## 参考来源
 
