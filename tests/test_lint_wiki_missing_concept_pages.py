@@ -134,6 +134,39 @@ def test_covered_elsewhere_rgbd_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_covered_elsewhere_env_ids_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "从 `CartPole-v1` 跨到 `Isaac-Cartpole-v0`。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # 两者都是环境注册 id，同一 cart-pole 概念已由 concepts/cartpole.md 覆盖
+    assert results["missing_concept_pages"] == []
+
+
+def test_covered_elsewhere_onpolicyrunner_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "rsl_rl 的循环入口叫 `OnPolicyRunner`。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # 具体实现的类名，本体是 concepts/rl-runner.md 的 on-policy Runner 抽象
+    assert results["missing_concept_pages"] == []
+
+
+def test_covered_elsewhere_base_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "TITA 对 `base` 接触直接 terminate。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # base 的基座连杆 / 权重档名 / 消融条件名三义已由 URDF、浮动基座等页覆盖
+    assert results["missing_concept_pages"] == []
+
+
 def test_case_insensitive_merge(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     half = lw.MISSING_CONCEPT_PAGE_MIN_PAGES // 2 + 1

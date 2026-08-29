@@ -114,6 +114,36 @@ def test_cannot_be_read_as_claim_is_not_flagged(tmp_path, monkeypatch) -> None:
     assert _run([claim, newer])["stale_claims"] == []
 
 
+def test_postpositioned_overread_cue_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「读『SOTA 碾压』会过读」是后置辟谣：落笔顺序与「不是 SoTA」相反，语义同为否认。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["world-model"],
+        "门控误差领先很窄：0.066 vs 0.067，读「SOTA 碾压」会过读。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["world-model"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_overread_cue_in_next_sentence_does_not_exempt(tmp_path, monkeypatch) -> None:
+    # 后置线索同样只在命中词同句内生效：下一句的「过读」不应放过本句的真实断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["world-model"],
+        "本方法仍是该任务的 SOTA。别的指标才容易过读。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["world-model"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "SOTA" in results["stale_claims"][0]
+
+
 def test_negation_cue_in_previous_sentence_does_not_exempt(tmp_path, monkeypatch) -> None:
     # 否定线索只在命中词同句内生效：上一句的「不可」不应放过本句的真实断言。
     wiki = _setup_wiki(tmp_path, monkeypatch)
