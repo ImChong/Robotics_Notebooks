@@ -9,7 +9,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-08-08
+updated: 2026-08-29
 related:
   - ./ponytail.md
   - ./nuwa-skill.md
@@ -24,6 +24,7 @@ related:
   - ./video-shotcraft.md
   - ./agent-reach.md
   - ../references/llm-wiki-karpathy.md
+  - ../concepts/agentic-coding-software-fundamentals.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
 sources:
@@ -53,6 +54,7 @@ summary: "mattpocock/skills（Skills For Real Engineers）是 Matt Pocock 公开
 - **对本仓库 agent 的直接价值：** 维护 Robotics_Notebooks 时大量 **ingest、派生文件同步、长 markdown 交叉引用**；`/grill-with-docs` 与 `CONTEXT.md` 可降低 **术语不一致导致的冗长解释**；`/tdd` 与 `/diagnose` 可迁移到 **脚本与 CI 工具链** 的修改场景（与 `make ci-preflight` 文化一致）。
 - **命名注意：** 本库含 `productivity/caveman` 技能，与 [Caveman（JuliusBrussee）](caveman.md) **不同上游、不同实现**；二者都追求更短输出，宜对照选用而非混为同一插件。
 - **与 Ponytail 的分工：** [Ponytail](ponytail.md) 压 **实现代码量**（必要性阶梯）；本库压 **对齐与反馈环**；可与 Superpowers 流程技能叠加选用。
+- **判断框架对照：** [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 解释 **为什么** 要对抗 vibe coding（取舍语言、数据架构、按阶段换架构）；本库技能是把那套判断 **编译进 SKILL.md**。
 
 ## 核心结构
 
@@ -99,6 +101,7 @@ flowchart TD
 - [GSAP AI Skills](gsap-skills.md) — **Web 动效 / GSAP** 官方垂直 Agent Skills（timeline、ScrollTrigger、React cleanup）
 - [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（镜头配方卡 + Ink Press 模板）
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
+- [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 吴恩达技能图：有 agent 仍要懂取舍，不能把 vibe coding 当能力
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — 通用 skill 蒸馏/进化（与本库 **编码工程** 技能互补）

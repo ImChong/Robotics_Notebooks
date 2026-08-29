@@ -1,3 +1,11 @@
+## [2026-08-29] ingest | sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md — 吴恩达 AI 工程技能图「软件工程基础」；无代码；升格 agentic-coding-software-fundamentals
+
+- **触发：** 用户指定 <https://x.com/andrewyng/status/2093388974194872781>
+- **步骤 2.5：** **不适用** — 论述文，无项目页、无可运行代码。同文镜像：X Article / LinkedIn Pulse / DeepLearning.AI *The Batch*
+- **关键页：** [`wiki/concepts/agentic-coding-software-fundamentals.md`](wiki/concepts/agentic-coding-software-fundamentals.md)
+- **交叉：** mattpocock/skills、Superpowers、ENPIRE、真机 autoresearch harness、AI Auto-Research、Data Flywheel
+- **机构：** 未改 `institutions.json`（Stanford 已注册；本页为概念而非论文实体）
+
 ## [2026-08-29] ingest | sources/papers/apollo_blender_arxiv_2512_23103.md — APOLLO Blender（Yale）Blender 出图库已开源（apollo-py / apollo-toolbox-py）；论文 import 名 blender_robot_toolbox_py 不在 PyPI
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2512.23103v2>；要求自动合并 PR
@@ -5,7 +13,6 @@
 - **关键页：** [`wiki/entities/paper-apollo-blender.md`](wiki/entities/paper-apollo-blender.md)
 - **交叉：** Blender / URDD / URDF / 关键帧编辑器 / Robot Viewer / Manim / 描述目录选型
 - **机构：** 既有 `yale`，未改 `institutions.json`
-
 
 ## [2026-08-29] ingest | sources/papers/flashvla_arxiv_2608_27384.md + clap_arxiv_2608_27406.md + solo_arxiv_2608_26583.md — FlashVLA 流式异步 VLA 已开源；CLAP 跨本体视频 WM + G1 权重已开源；SOLO 1.5 km 感知行走项目页未列代码
 

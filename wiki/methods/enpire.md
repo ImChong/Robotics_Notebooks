@@ -3,7 +3,7 @@
 type: method
 tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-29
 date: 2026-06-18
 summary: "ENPIRE 把真机策略自改进封装成 coding agent 可编排的 EN–PI–R–E 闭环：自动 reset/verify 环境、多范式策略改进、并行 rollout 与跨假设演化，在 Push-T、插针、GPU 插拔、扎/剪扎带等灵巧任务上报告约 99% pass@8，并给出 AutoEnvBench 与 MRU/MTU 机队 scaling 指标。"
 related:
@@ -15,6 +15,7 @@ related:
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/data-flywheel.md
+  - ../concepts/agentic-coding-software-fundamentals.md
   - ../tasks/manipulation.md
   - ./egoscale.md
   - ../entities/gr00t-wholebodycontrol.md
@@ -125,7 +126,7 @@ flowchart TB
 
 ## 常见误区或局限
 
-- **误区：「有 coding agent 就能跳过环境工程」。** ENPIRE 的核心贡献之一是 **reset/verify 接口**；没有可自动判分与复位的任务，agent 只能低频人工试验。
+- **误区：「有 coding agent 就能跳过环境工程」。** ENPIRE 的核心贡献之一是 **reset/verify 接口**；没有可自动判分与复位的任务，agent 只能低频人工试验。通用软件侧同一判断见 [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md)。
 - **误区：「成功率数字可脱离 harness 泛化」。** 报告的高成功率建立在 **特定自动评测器、复位策略与 trial 预算** 上；换传感器布局或安全约束需重新标定 verification。
 - **局限：资源利用率权衡（页面自述）：** agent 读日志、写代码、等 LLM 时 **机器人 MRU 下降**；机队变大后 **GPU 利用率升、token 消耗增**，需把 **物理 scaling** 与 **token scaling** 分开优化。
 - **局限：公开复现材料：** 截至入库日 **无 arXiv 正式条目、无公开代码仓**；工程细节应以后续官方发布为准。
