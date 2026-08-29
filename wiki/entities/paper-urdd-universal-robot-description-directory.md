@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, robot-description, urdf, urdd, preprocessing, yale, apollo-lab, rust, bevy, three-js, collision-geometry, forward-kinematics, arxiv-2512-23135, linux-foundation]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-29
 arxiv: "2512.23135"
 code: https://github.com/Apollo-Lab-Yale/apollo-rust
 related:
@@ -14,6 +14,7 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./robot-descriptions-py.md
   - ./urdf-files-dataset.md
+  - ./paper-apollo-blender.md
 sources:
   - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
   - ../../sources/repos/apollo-lab-yale-apollo-resources.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/repos/apollo-lab-yale-apollo-three-engine.md
   - ../../sources/repos/apollo-lab-yale-apollo-py.md
   - ../../sources/sites/apollo-lab-yale-apollo-resources-github-io.md
+  - ../../sources/papers/apollo_blender_arxiv_2512_23103.md
 summary: "URDD（Universal Robot Description Directory，arXiv:2512.23135）把从 URDF 等规格反复派生的 DOF 映射、链结构、凸分解与链路上形状近似等结果，整理成带版本号的 JSON/YAML 模块目录；配套 Rust/Bevy 生成与检视、Three.js 浏览器检视器及示例资产库，目标减少跨仿真/规划/控制栈的重复预处理与不一致。"
 ---
 
@@ -87,6 +89,7 @@ flowchart LR
 - **Rust**：批处理与单机构型生成、凸分解与网格导出、**Bevy** GUI 中编辑/验证 **碰撞跳过对**；支持将 **多个 URDD 组合** 成复合系统（论文图 2 叙事）。
 - **JavaScript / Three.js**：`apollo-lab-yale.github.io/apollo-resources` 上提供 **零安装** 检视；模块来自 `Apollo-Lab-Yale/apollo-resources` 仓库公开目录结构。
 - **Python**：论文给出基于模块拼装 FK 的极简消费示例；工程入口见 `apollo-py` 仓库（当前 README 较简，以仓内演进为准）。
+- **Blender 出版渲染**：同仓 `apollo_py_blender.ChainBlender` 把 URDD 链送进离线渲染，见 [APOLLO Blender](./paper-apollo-blender.md)（arXiv:2512.23103）。
 
 ### 评测结论（量级）
 
@@ -118,6 +121,7 @@ flowchart LR
 - [URDF Files Dataset](./urdf-files-dataset.md)（冻结的原始 URDF 语料；URDD 是派生产物层）
 - [robot_descriptions.py](./robot-descriptions-py.md)
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
+- [APOLLO Blender](./paper-apollo-blender.md) — 同实验室把 URDD 送进 Blender 出论文图
 
 ## 推荐继续阅读
 

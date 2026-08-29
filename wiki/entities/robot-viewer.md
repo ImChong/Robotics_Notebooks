@@ -3,12 +3,13 @@ type: entity
 title: Robot Viewer
 tags: [utility, simulation, mujoco, xacro]
 summary: "Robot Viewer 是支持多格式（URDF/MJCF/USD/Xacro）的 Web 机器人模型查看器，集成 MuJoCo WASM 支持浏览器内物理仿真。"
-updated: 2026-08-17
+updated: 2026-08-29
 related:
   - ./mujoco-wasm.md
   - ./mujoco.md
   - ./robot-descriptions-py.md
   - ../comparisons/robot-description-catalogs.md
+  - ./paper-apollo-blender.md
 ---
 
 # Robot Viewer
@@ -51,6 +52,7 @@ related:
 - [mujoco](mujoco.md) (底层仿真引擎)
 - [mujoco-wasm](mujoco-wasm.md) (浏览器 WASM 绑定与生态)
 - [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md)（URDF 派生数据模块化目录与浏览器检视；与本工具的「在线看模型」互补）
+- [APOLLO Blender](./paper-apollo-blender.md) — 同一 URDD 资产的离线出版渲染，不是浏览器检视
 - [robot_descriptions.py](./robot-descriptions-py.md) — 先下载再在 Viewer 里打开
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 
