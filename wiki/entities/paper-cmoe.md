@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, elevation-map, mixture-of-experts, contrastive-learning, single-stage-rl, unitree-g1, sim2real, fudan, icra]
 status: complete
-updated: 2026-08-23
+updated: 2026-08-29
 arxiv: "2603.03067"
 venue: "ICRA 2026"
 code: https://github.com/Hoshi-No-Ai/CMoE
@@ -14,6 +14,9 @@ related:
   - ../concepts/privileged-training.md
   - ../methods/reinforcement-learning.md
   - ./unitree-g1.md
+  - ./smp-g1-mjlab.md
+  - ./robot-lab.md
+  - ./paper-ame-attention-based-map-encoding.md
   - ./paper-amp-survey-08-more.md
   - ./paper-tramp-vision-assisted-bipedal-locomotion.md
   - ./paper-hiking-in-the-wild.md
@@ -23,6 +26,7 @@ sources:
   - ../../sources/papers/cmoe_contrastive_mixture_of_experts_icra_2026.md
   - ../../sources/sites/cmoe-github-io.md
   - ../../sources/repos/cmoe.md
+  - ../../sources/repos/senlanke_mimic.md
 summary: "CMoE（Fudan，ICRA 2026）：单阶段 PPO + 高程图 MoE，用 SwAV 式地形对比学习解决 Vanilla MoE 门控均匀激活；G1 真机 20 cm 台阶、80 cm 沟；官方 Isaac Gym 代码已开源。"
 ---
 
@@ -62,11 +66,11 @@ summary: "CMoE（Fudan，ICRA 2026）：单阶段 PPO + 高程图 MoE，用 SwAV
 | **机构** | 复旦大学（Fudan）智能机器人与先进制造学院 |
 | **作者** | Shihao Ma、Hongjin Chen、Zijun Xu 等；通讯 Zhongxue Gan、Wenchao Ding |
 | **发表** | ICRA 2026；[arXiv:2603.03067](https://arxiv.org/abs/2603.03067) |
-| **平台** | Unitree G1；仿真 Isaac Gym Preview 4 |
+| **平台** | Unitree G1 **12-DoF 下肢**（`g1_12dof.urdf`）；仿真 Isaac Gym Preview 4 |
 | **感知** | 仿真特权/噪声高程图 0.7 m × 1.1 m；真机 **雷达点云 + 定位 → 高程图** |
 | **专家数** | 5（论文 §IV-A） |
 | **训练规模** | 4096 并行环境，20k epoch，RTX 4090 |
-| **开源（截至 2026-08-23）** | **已开源** [`Hoshi-No-Ai/CMoE`](https://github.com/Hoshi-No-Ai/CMoE)；**无公开 checkpoint** |
+| **开源（截至 2026-08-29）** | **已开源** [`Hoshi-No-Ai/CMoE`](https://github.com/Hoshi-No-Ai/CMoE)；**无公开 checkpoint**。`Fudan-MAGIC-Lab/CMoE` 是**空占位**，勿克隆。mjlab 移植见 [senlanke/mimic `CMoE-G1`](./smp-g1-mjlab.md) |
 
 ## 流程总览
 
@@ -167,13 +171,15 @@ sequenceDiagram
 
 | 项 | 建议 |
 |----|------|
-| 复现入口 | 克隆 [`Hoshi-No-Ai/CMoE`](https://github.com/Hoshi-No-Ai/CMoE)；**勿**换上游 rsl_rl/legged_gym |
+| 复现入口 | 克隆 [`Hoshi-No-Ai/CMoE`](https://github.com/Hoshi-No-Ai/CMoE)；**勿**换上游 rsl_rl/legged_gym；**勿**克隆空仓 `Fudan-MAGIC-Lab/CMoE` |
 | 环境钉死 | Isaac Gym Preview 4 + PyTorch 1.13.1/cu117（README 测试栈） |
 | 对比损失 | `num_prototype=32`, `temperature=0.2`；去掉后应回到 Vanilla MoE 行为 |
 | 专家数 | 论文用 5；改专家数需同步改门控与对比维度 |
 | 高程图噪声 | 真机前必须在仿真启用椒盐+倒角随机化（§IV-B） |
 | Checkpoint | README 仅写 `legged_gym/logs/`；无 HF 权重需自训 |
-| 真机感知 | 雷达点云 + 定位拼高程图；与仿真分辨率/FOV 对齐是 sim2real 主风险 |
+| 真机感知 | 官方指向 [elevation_mapping_humanoid](https://github.com/smoggy-P/elevation_mapping_humanoid)（单 MID-360）；需自对齐分辨率/FOV |
+| 真机部署 | 官方写明叠在 [rl_sar](https://github.com/fan-ziqi/rl_sar) 上（见 [robot_lab](./robot-lab.md) 部署链）；须改观测、动作、关节序与频率 |
+| 只要 mjlab | [senlanke/mimic](./smp-g1-mjlab.md) 任务 `CMoE-G1`：77 点扫描 + 同结构五专家；**无**论文 Table III / 真机数字 |
 
 ## 实验与评测
 
@@ -213,7 +219,8 @@ sequenceDiagram
 3. **感知栈是高程图** — 与深度端到端（TRAMP/Hiking）选型时先定传感器：LiDAR/雷达 vs 深度相机。
 4. **Expert 1 ≈ 上行专精** — 部署或剪枝时勿默认专家可互换；消融表明上楼依赖单一专家。
 5. **开源训得动、权重得自训** — 代码完整但无官方 checkpoint；复现预算要含 Isaac Gym + 20k epoch。
-6. **真机数字绑定 G1 + 自研高程图** — 80 cm 沟/20 cm 台阶勿直接外推到其他本体或盲走策略。
+6. **真机数字绑定 G1 + 社区高程图/部署栈** — 80 cm 沟/20 cm 台阶勿直接外推；落地路径是 `elevation_mapping_humanoid` + `rl_sar`，不是仓内 onboard 包。
+7. **mjlab 移植 ≠ 官方数字** — [senlanke/mimic `CMoE-G1`](./smp-g1-mjlab.md) 只保证结构对齐；要对论文成功率仍跑官方 Isaac Gym。
 
 ## 与其他工作对比
 
@@ -224,12 +231,14 @@ sequenceDiagram
 | [Hiking in the Wild](./paper-hiking-in-the-wild.md) | 同族单阶段 MoE + 感知；Hiking 用 **RGB 深度 + 边缘/足端软约束 + AMP 风格项** |
 | [ParkourFormer](./paper-parkourformer.md) | Transformer + 未来两步监督；非 MoE 门控路线 |
 | [Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md) | 显式楼梯几何 token；CMoE 用 **隐式高程 AE + 对比门控** |
+| [senlanke/mimic CMoE-G1](./smp-g1-mjlab.md) | 同结构五专家迁到 mjlab；官方仓仍是 Isaac Gym + 真机数字来源 |
+| [AME](./paper-ame-attention-based-map-encoding.md) | 注意力选 foothold，非 MoE 门控；senlanke/mimic 里 AME 仍未验证 |
 
 ## 局限与风险
 
-- **Isaac Gym 依赖：** Preview 4 已停更；迁移 Isaac Lab 需自行移植 `g1cmoe` 与 `cmoe_ppo`。
+- **Isaac Gym 依赖：** Preview 4 已停更；社区 mjlab 移植见 [smp-g1-mjlab](./smp-g1-mjlab.md)，不是作者维护的官方第二栈。
 - **无公开权重：** 复现真机数字需完整自训 + 感知对齐，周期较长。
-- **高程图单点故障：** 雷达/定位失效则策略失明；无深度盲走回退。
+- **高程图单点故障：** 雷达/定位失效则策略失明；无深度盲走回退。官方只给社区高程图指针，不随仓提供雷达节点。
 - **对比超参敏感：** prototype 数与温度在 §IV-A 固定为 32/0.2，换地形课是否仍稳未充分报告。
 - **全身跑酷未覆盖：** 结论节称未来扩展到 whole-body parkour；当前以下肢穿越为主。
 - **专家数固定为 5：** 更多地形类型是否需更多专家，论文未系统扫描。
@@ -244,12 +253,16 @@ sequenceDiagram
 - [TRAMP](./paper-tramp-vision-assisted-bipedal-locomotion.md) — 单阶段 MoE + AMP 对照
 - [Hiking in the Wild](./paper-hiking-in-the-wild.md) — 单阶段 MoE + 深度跑酷
 - [Unitree G1](./unitree-g1.md) — 硬件平台
+- [senlanke/mimic CMoE-G1](./smp-g1-mjlab.md) — mjlab 移植
+- [AME](./paper-ame-attention-based-map-encoding.md) — 注意力高程对照
+- [robot_lab](./robot-lab.md) — `rl_sar` 部署链入口
 
 ## 参考来源
 
 - [CMoE 论文归档](../../sources/papers/cmoe_contrastive_mixture_of_experts_icra_2026.md)
 - [CMoE 项目页归档](../../sources/sites/cmoe-github-io.md)
 - [CMoE 官方代码归档](../../sources/repos/cmoe.md)
+- [senlanke/mimic 归档](../../sources/repos/senlanke_mimic.md) — mjlab `CMoE-G1` 移植
 
 ## 推荐继续阅读
 
@@ -257,3 +270,5 @@ sequenceDiagram
 - [CMoE 项目页](https://hoshi-no-ai.github.io/CMoE/) — 视频与框架图
 - [GitHub: Hoshi-No-Ai/CMoE](https://github.com/Hoshi-No-Ai/CMoE) — 训练与 play 脚本
 - [YouTube 演示](https://www.youtube.com/watch?v=Q95Ssg1FP7A) — 真机混合地形
+- [elevation_mapping_humanoid](https://github.com/smoggy-P/elevation_mapping_humanoid) — 官方指向的 MID-360 高程图
+- [rl_sar](https://github.com/fan-ziqi/rl_sar) — 官方指向的 G1 真机部署框架

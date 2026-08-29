@@ -121,7 +121,7 @@ r^{\mathrm{smp}} = \exp\left(- w_s \|\hat{\epsilon} - \epsilon\|_2^2 \right)
 | 论文实体 | [wiki/entities/paper-smp.md](../../wiki/entities/paper-smp.md) |
 | 方法归纳 | [wiki/methods/smp.md](../../wiki/methods/smp.md) |
 | MimicKit 官方实现 | [wiki/entities/mimickit.md](../../wiki/entities/mimickit.md) |
-| G1 复现（senlanke/mimic） | [wiki/entities/smp-g1-mjlab.md](../../wiki/entities/smp-g1-mjlab.md) |
+| G1 复现（senlanke/mimic；同仓另有 CMoE/AME） | [wiki/entities/smp-g1-mjlab.md](../../wiki/entities/smp-g1-mjlab.md) |
 | G1 + mjlab 课程复现 | [wiki/entities/smp-g1-mjlab.md](../../wiki/entities/smp-g1-mjlab.md) |
 | AMP 对照 | [wiki/methods/amp-reward.md](../../wiki/methods/amp-reward.md)、[wiki/entities/amp-mjlab.md](../../wiki/entities/amp-mjlab.md) |
 | 先验变体选型 | [wiki/comparisons/amp-add-smp-motion-prior-variants.md](../../wiki/comparisons/amp-add-smp-motion-prior-variants.md) |

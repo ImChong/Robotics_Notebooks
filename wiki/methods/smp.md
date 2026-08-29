@@ -2,7 +2,7 @@
 type: method
 tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1, paper, amp, motion-prior, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-29
 venue: arXiv
 related:
   - ../entities/paper-smp.md
@@ -94,7 +94,7 @@ flowchart TD
 
 ## G1 + mjlab 工程复现
 
-[MimicKit](../entities/mimickit.md) 提供论文级 SMP **官方**参考实现，但 **未内置 Unitree G1**。[senlanke/mimic](https://github.com/senlanke/mimic)（归档于 [sources/repos/senlanke_mimic.md](../../sources/repos/senlanke_mimic.md)）与 [SUZ-tsinghua/smp](../entities/smp-g1-mjlab.md) 在 [mjlab](../entities/mjlab.md) 上补齐 G1 特征维度（59-d/帧）、四套任务（Forward / Steering / Location / Getup）与三套 **预置 prior**；奖励采用 **乘性** `r = task × r_smp`，避免 MimicKit 加性形式中 `task_reward_weight : smp_reward_weight` 的敏感手调。论文实体页见 [paper-smp](../entities/paper-smp.md)。与 [AMP_mjlab](../entities/amp-mjlab.md) 对照时：前者是 **生成式冻结先验**，后者是 **对抗判别器 + 参考 clip**。
+[MimicKit](../entities/mimickit.md) 提供论文级 SMP **官方**参考实现，但 **未内置 Unitree G1**。[senlanke/mimic](https://github.com/senlanke/mimic)（归档于 [sources/repos/senlanke_mimic.md](../../sources/repos/senlanke_mimic.md)，枢纽页 [smp-g1-mjlab](../entities/smp-g1-mjlab.md)）与 [SUZ-tsinghua/smp](https://github.com/SUZ-tsinghua/smp) 在 [mjlab](../entities/mjlab.md) 上补齐 G1 特征维度（59-d/帧）、四套任务（Forward / Steering / Location / Getup）与三套 **预置 prior**；奖励采用 **乘性** `r = task × r_smp`，避免 MimicKit 加性形式中 `task_reward_weight : smp_reward_weight` 的敏感手调。同仓 2026-08-29 起还挂 **CMoE-G1**（移植完成）与 **AME-G1\***（未验证），不要和 SMP 任务混用。论文实体页见 [paper-smp](../entities/paper-smp.md)。与 [AMP_mjlab](../entities/amp-mjlab.md) 对照时：前者是 **生成式冻结先验**，后者是 **对抗判别器 + 参考 clip**。
 
 ## 主要技术路线
 | 阶段 | 关键技术 | 说明 |
@@ -105,7 +105,7 @@ flowchart TD
 
 ## 关联页面
 - [SMP 论文实体页](../entities/paper-smp.md) — 摘要、结论、源码运行时序图与开源核查。
-- [SMP on G1（mjlab 复现）](../entities/smp-g1-mjlab.md) — G1 端到端复现、预置 prior 与乘性奖励设计。
+- [senlanke/mimic（SMP / CMoE / AME）](../entities/smp-g1-mjlab.md) — G1 mjlab 枢纽：SMP 完整、CMoE 移植、AME 未验证。
 - [MimicKit](../entities/mimickit.md) — 原版 SMP / AMP / ADD 统一代码底座。
 - [CMP 上下文感知运动先验](../entities/paper-cmp.md) — 用相关度软重权把 SMP（及 AMP）改成上下文条件适配。
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。

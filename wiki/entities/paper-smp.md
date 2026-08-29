@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-prior, diffusion, score-matching, amp, sfu, nvidia, sony, stanford, snap, unitree-g1, siggraph]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-29
 arxiv: "2512.03028"
 venue: "ACM TOG (SIGGRAPH 2026)"
 related:
@@ -65,7 +65,7 @@ summary: "SMP（arXiv:2512.03028，SIGGRAPH 2026）：预训练运动扩散模�
 | **平台** | 仿真人形多任务；附录 **Unitree G1** 真机 |
 | **数据** | LaFAN1、100STYLE、人–物/人–场景交互 MoCap 等 |
 | **任务** | 速度跟踪、转向、落点、躲避球、搬运、楼梯、起身等 |
-| **开源** | **已开源** — 官方 [MimicKit](https://github.com/xbpeng/MimicKit)（`docs/README_SMP.md`）；G1 端到端复现 [senlanke/mimic](https://github.com/senlanke/mimic)（内置三套 prior） |
+| **开源** | **已开源** — 官方 [MimicKit](https://github.com/xbpeng/MimicKit)（`docs/README_SMP.md`）；G1 端到端复现 [senlanke/mimic](https://github.com/senlanke/mimic)（内置三套 SMP prior；同仓另有 CMoE 移植与未验证 AME） |
 
 ## 流程总览
 
@@ -162,7 +162,7 @@ r^{\mathrm{smp}} = \exp\left(- w_s \|\hat{\epsilon} - \epsilon\|_2^2 \right)
 | 项 | 做法 |
 |----|------|
 | 官方栈 | [MimicKit](./mimickit.md) `docs/README_SMP.md`；奖励 **加性** `w_g·r_g + w_smp·r_smp` |
-| G1 复现 | [senlanke/mimic](https://github.com/senlanke/mimic)；**乘性** `r = task × r_smp`；`uv` + mjlab |
+| G1 复现 | [senlanke/mimic](./smp-g1-mjlab.md)；**乘性** `r = task × r_smp`；`uv` + mjlab；任务前缀 `Smp-*-G1`（勿与同仓 `CMoE-G1` / `AME-*` 混用） |
 | 预置 prior | `pretrained_loco.pt` / `pretrained_lafan_run.pt` / `pretrained_getup_f2s2.pt` 对应四类任务 |
 | 特征维 | G1：**59 维/帧**（根位姿 + 29 关节 + 末端 + 根速度） |
 | 归一化 | 在**宽数据集**（如全 LaFAN G1）上算 q01/q99；窄集会导致 RL 期 OOD 饱和 |
@@ -212,5 +212,5 @@ r^{\mathrm{smp}} = \exp\left(- w_s \|\hat{\epsilon} - \epsilon\|_2^2 \right)
 - [SMP 项目页](https://yxmu.foo/smp-page/) — 视频、多任务演示与 BibTeX
 - [arXiv:2512.03028](https://arxiv.org/abs/2512.03028) — 论文 PDF
 - [MimicKit README_SMP](https://github.com/xbpeng/MimicKit/blob/main/docs/README_SMP.md) — 官方实现
-- [senlanke/mimic](https://github.com/senlanke/mimic) — G1 + mjlab 端到端复现
+- [senlanke/mimic](https://github.com/senlanke/mimic) — G1 + mjlab；SMP 完整，另挂 CMoE/AME
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) — 03/19 策展坐标

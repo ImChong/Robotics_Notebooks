@@ -5,8 +5,9 @@
 - **URL：** <https://yxmu.foo/smp-page/>
 - **配套论文：** [SMP（arXiv:2512.03028）](https://arxiv.org/abs/2512.03028) — 归档见 [`sources/papers/smp.md`](../papers/smp.md)
 - **官方代码：** <https://github.com/xbpeng/MimicKit>（`docs/README_SMP.md`）— 归档见 [`sources/repos/mimickit.md`](../repos/mimickit.md)
-- **G1 复现代码：** <https://github.com/senlanke/mimic> — 归档见 [`sources/repos/senlanke_mimic.md`](../repos/senlanke_mimic.md)
+- **G1 复现代码：** <https://github.com/senlanke/mimic> — 归档见 [`sources/repos/senlanke_mimic.md`](../repos/senlanke_mimic.md)（2026-08-29 起同仓还挂 CMoE 移植与未完成 AME）
 - **入库日期：** 2026-08-25
+- **复核日期：** 2026-08-29
 
 ## 一句话摘要
 
@@ -30,8 +31,8 @@ SFU / NVIDIA 等团队的 **Score-Matching Motion Priors (SMP)** 官方项目页
 | 入口 | 状态 | 说明 |
 |------|------|------|
 | 项目页 | **已开源（官方）** | 论文方法实现见 **MimicKit** `docs/README_SMP.md` |
-| 项目页 | **已开源（G1 复现）** | 用户指定仓库 **senlanke/mimic**（mjlab + G1 端到端；与 SUZ-tsinghua/smp 同系课程复现） |
-| 预训练权重 | **部分** | MimicKit 需自训 prior；senlanke/mimic 内置三套 G1 prior checkpoint |
+| 项目页 | **已开源（G1 复现）** | 用户指定仓库 **senlanke/mimic**（mjlab；SMP 完整 + CMoE 移植完成 + AME 未验证；与 SUZ-tsinghua/smp 同系） |
+| 预训练权重 | **部分** | MimicKit 需自训 prior；senlanke/mimic 内置三套 G1 SMP prior；CMoE/AME 无可靠预置权重 |
 
 ## 关联资料
 

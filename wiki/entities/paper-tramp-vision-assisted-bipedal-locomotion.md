@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, depth, amp, motion-prior, mixture-of-experts, single-stage-rl, sim2real, sjtu, ieee-ral]
 status: complete
-updated: 2026-08-24
+updated: 2026-08-29
 doi: "10.1109/LRA.2026.3707326"
 venue: "IEEE RA-L 2026"
 related:

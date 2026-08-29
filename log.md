@@ -1,3 +1,13 @@
+## [2026-08-29] ingest | sources/repos/cmoe.md + sources/repos/senlanke_mimic.md — 复核官方 CMoE 部署指针与空占位仓；senlanke/mimic 升为 SMP/CMoE/AME 三线枢纽
+
+- **触发：** 用户指定 <https://github.com/Hoshi-No-Ai/CMoE>、<https://github.com/senlanke/mimic>
+- **步骤 2.5：**
+  - **CMoE** — **已开源** BSD-3-Clause；可运行 `train.py --task=g1cmoe --alg=cmoe`。无公开 checkpoint。`Fudan-MAGIC-Lab/CMoE` 为空占位。真机指向 `elevation_mapping_humanoid` + `rl_sar`。
+  - **senlanke/mimic** — **已开源**（根目录无 SPDX）；SMP Complete、CMoE-G1 Port complete、AME Incomplete/unverified。课程移植，非官方。
+- **关键页：** [`wiki/entities/paper-cmoe.md`](wiki/entities/paper-cmoe.md)、[`wiki/entities/smp-g1-mjlab.md`](wiki/entities/smp-g1-mjlab.md)
+- **交叉：** AME 论文、楼梯障碍感知、robot_lab/rl_sar、SMP 方法页
+- **机构：** 既有 `fudan` / `tsinghua`，未改 `institutions.json`
+
 ## [2026-08-29] ingest | sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md — 吴恩达 AI 工程技能图「软件工程基础」；无代码；升格 agentic-coding-software-fundamentals
 
 - **触发：** 用户指定 <https://x.com/andrewyng/status/2093388974194872781>
