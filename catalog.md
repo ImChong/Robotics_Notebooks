@@ -496,6 +496,7 @@
 - [CheckVLA](wiki/entities/paper-checkvla-execution-time-verification.md) — CheckVLA** 收录于 具身智能研究室 · 具身世界模型六路线综述 **规划主导型 `📅unknown` `[entity_page]`
 - [CHORD（Contact Wrench Guidance for Dexterous Manipulation）](wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md) — CHORD**（*Contact Wrench Guidance from Human Demonstration in Robotic Dexterous Manipulation*，NVIDI `📅unknown` `[entity_page]`
 - [Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）](wiki/entities/paper-chronos.md) — Chronos**（arXiv:2606.30318，[项目页](https://chronos-manipulation. `📅unknown` `[entity_page]`
+- [CLAP：跨本体视频世界模型当零样本物理模拟器](wiki/entities/paper-clap-cross-embodiment.md) — CLAP**（*Cross-Embodiment Video World Models are Zero-Shot Physical Simulators*，[arXiv:2608.27406 `📅unknown` `[entity_page]`
 - [CLIFT：不打开模型盒子的闭环迭代微调](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md) — CLIFT**（*Closed-Loop Iterative Fine-Tuning*；论文 *CLIFT: Turning Gemini Robotics On-Device into Huma `📅unknown` `[entity_page]`
 - [ClothTransformer（Unified Latent-Space Cloth Simulation · arXiv:2605.27852）](wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md) — ClothTransformer**（*ClothTransformer: Unified Latent-Space Transformers for Scalable Cloth Simulat `📅unknown` `[entity_page]`
 - [CMoE：对比学习混合专家的人形运动控制与地形适应](wiki/entities/paper-cmoe.md) — CMoE**（*Contrastive Mixture of Experts for Motion Control and Terrain Adaptation of Humanoid Robot `📅unknown` `[entity_page]`
@@ -606,6 +607,7 @@
 - [FER ROS 2 Panda 栈](wiki/entities/paper-fer-ros2-panda-stack.md) — Keeping the Franka Emika Panda alive: a ROS 2 stack with a reliable position interface**（[arXiv:26 `📅unknown` `[entity_page]`
 - [FetchMan：仿真视觉人形 loco-manipulation](wiki/entities/paper-fetchman.md) — FetchMan**（*Learning Visual Humanoid Loco-Manipulation Policies from Simulated Experiences*，[arXiv `📅unknown` `[entity_page]`
 - [FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）](wiki/entities/paper-flap-fov-active-perception-3d-navigation.md) — FLAP**（*FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation*，arXiv:2606.17 `📅unknown` `[entity_page]`
+- [FlashVLA：流式异步 VLA 动作解码](wiki/entities/paper-flashvla.md) — FlashVLA**（*Streaming Action Decoding for Fast and Asynchronous VLA Inference*，[arXiv:2608.27384 `📅unknown` `[entity_page]`
 - [FlatLab：平面物体操作的统一框架与仿真基准](wiki/entities/paper-flatlab.md) — FlatLab**（*A Unified Methodology Framework and Simulation-Based Benchmark for Robotic Manipulation `📅unknown` `[entity_page]`
 - [Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）](wiki/entities/paper-flex-pi.md) — Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](h `📅unknown` `[entity_page]`
 - [Flying Knots（Task-Level ILC for Deformable Rope Manipulation）](wiki/entities/paper-flying-knots.md) — Flying Knots** 是 CMU **Krishna Suresh & Chris Atkeson** 的 **可变形体动态操作** 论文（arXiv:2602.21302）：在 **fl `📅unknown` `[entity_page]`
@@ -2253,6 +2255,7 @@
 - [SMP：可复用 Score-Matching 运动先验](wiki/entities/paper-smp.md) — SMP**（*SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*，[arXiv:2512 `📅unknown` `[entity_page]`
 - [SMPC-to-RL：稀疏奖励全身 Loco-Manipulation](wiki/entities/paper-smpc2rl-loco-manipulation.md) — SMPC-to-RL**（*Learning Loco-Manipulation From SMPC Demonstrations With Sparse Offline-to-Online RL `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
+- [SOLO：稳定全地形长程感知人形运动](wiki/entities/paper-solo.md) — SOLO**（*Stable Omni-terrain Long-Horizon Perceptive Humanoid Locomotion*，[arXiv:2608.26583](https: `📅unknown` `[entity_page]`
 - [SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移](wiki/entities/paper-sonic-transfer.md) — SONIC-Transfer**（*Cross-Embodiment Transfer of a Frozen Humanoid Whole-Body Controller via Analyti `📅unknown` `[entity_page]`
 - [Space Mining with Robotics：太空采矿机器人综述](wiki/entities/paper-space-mining-with-robotics.md) — Mining beyond Earth with Space Robots: Exploration, Sampling, and Extraction**（[arXiv:2608.21358 `📅unknown` `[entity_page]`
 - [SPARK（Skeleton-Parameter Aligned Retargeting）](wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — SPARK**（*Skeleton-Parameter Aligned Retargeting on Humanoid Robots with Kinodynamic Trajectory Opt `📅unknown` `[entity_page]`

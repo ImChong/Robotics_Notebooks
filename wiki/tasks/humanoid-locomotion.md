@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
@@ -102,6 +102,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 扩散运动生成 + RL 全身跟踪，真机箱攀/跨栏/楼梯与混合地形
 - [SPRINT 人形竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md) — 极少 MoCap + 频域先验外推至高动态冲刺
 - [SSR 开放世界人形穿越](../entities/paper-ssr-humanoid-open-world-traversal.md) — 想象落脚点 + 潜空间对称 + 分地形 AMP，楼梯/沟壑/高台与户外长程
+- [SOLO 长程感知行走](../entities/paper-solo.md) — QR 逐格高程 + TA-MSE；天工 Omni 单胸深相机零样本 **1.5 km**（未开源）
 - [CReF 深度条件融合行走](../entities/paper-cref.md) — 无 2.5D 中间层的单阶段 raw 深度；本体查询注意 + GRU highway + 可支撑落脚奖励；X2 Ultra 零样本
 - [Now You See That 端到端视觉人形 locomotion](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — 8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏，双向长楼梯与跑酷零样本
 - [QuietWalk 物理感知低噪行走](../entities/paper-quietwalk-humanoid-locomotion.md) — 逆动力学 PINN 估计 GRF 作冲击惩罚；G1 真机 1.2 m/s 降噪约 7 dB，跨赤脚/运动鞋/高跟鞋与多地面材质

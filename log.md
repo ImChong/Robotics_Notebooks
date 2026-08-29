@@ -1,3 +1,14 @@
+## [2026-08-29] ingest | sources/papers/flashvla_arxiv_2608_27384.md + clap_arxiv_2608_27406.md + solo_arxiv_2608_26583.md — FlashVLA 流式异步 VLA 已开源；CLAP 跨本体视频 WM + G1 权重已开源；SOLO 1.5 km 感知行走项目页未列代码
+
+- **触发：** 用户指定 FlashVLA（[论文](https://arxiv.org/abs/2608.27384) / [GitHub](https://github.com/z-lab/flashvla) / [HF](https://huggingface.co/z-lab/flashvla-pi05-libero)）、CLAP（[论文](https://arxiv.org/abs/2608.27406) / [GitHub](https://github.com/omni-CLAP/clap) / [项目页](https://omni-clap.github.io/) / [HF](https://huggingface.co/omni-CLAP/CLAP)）、SOLO（[论文](https://arxiv.org/abs/2608.26583) / [项目页](https://sunpihai-up.github.io/solo/)）；要求自动合并 PR
+- **步骤 2.5：**
+  - **FlashVLA** — **已开源** Apache-2.0；`sim_eval/libero/eval.sh` / `train/train.sh` / `benchmarks/benchmark_latency.py` 可跑；LIBERO/RoboTwin 权重已发（`flashvla-pi05-libero`、`flashvla-pi05-robotwin`）
+  - **CLAP**（omni-CLAP 视频世界模型，勿与音频 CLAP 混淆）— **已开源** MIT；`clap-rollout-replay` / `teleop` / `deploy` / `clap-eval` + G1 适配（`adapt-g1` 26-D）；项目页 BibTeX 仍写 Coming soon，引用用 arXiv
+  - **SOLO** — **确认未开源**：项目页无 GitHub/HF；论文无代码 URL。有视频与 2026 世界人形运动会展示（技术同源，非论文主表）
+- **关键页：** [`wiki/entities/paper-flashvla.md`](wiki/entities/paper-flashvla.md)、[`wiki/entities/paper-clap-cross-embodiment.md`](wiki/entities/paper-clap-cross-embodiment.md)、[`wiki/entities/paper-solo.md`](wiki/entities/paper-solo.md)
+- **交叉：** VLA / action chunking / π0.5 / Ctrl-World / ForeTime-VLA；生成式世界模型 / 虚拟沙盒；DPL / SSR / 特权训练 / 地形适应 / 楼梯障碍感知行走 / 天工
+- **机构：** 既有 `ucsd` / `mit` / `princeton` / `ustc` / `x-humanoid` / `hku` / `anu` / `hkust-gz` / `sjtu` / `tsinghua` / `cuhk`，未改 `institutions.json`
+
 ## [2026-08-28] ingest | sources/repos/tita_rl.md + wheel_legged_genesis.md + isaac_rl_two_wheel_legged_bot.md — 轮腿双足三仓：TITA Gym / Genesis / Flamingo Lab
 
 - **触发：** 用户指定 <https://github.com/DDTRobot/tita_rl>、<https://github.com/Albusgive/wheel_legged_genesis>、<https://github.com/jaykorea/Isaac-RL-Two-wheel-Legged-Bot>；要求自动合并 PR

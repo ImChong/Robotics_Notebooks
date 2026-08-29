@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, open-source, x-humanoid, tienkung, vla, robomind, sim2real, hardware]
 status: complete
-updated: 2026-08-20
+updated: 2026-08-29
 related:
   - ./tienkung-humanoid-open-source.md
   - ./open-source-humanoid-hardware.md
@@ -12,6 +12,7 @@ related:
   - ./paper-loco-manip-161-038-hex.md
   - ./paper-heracles-humanoid-diffusion.md
   - ./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
+  - ./paper-solo.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../concepts/sim2real.md
   - ../methods/vla.md
@@ -22,6 +23,7 @@ sources:
   - ../../sources/repos/open-x-humanoid.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/papers/dpl_arxiv_2510_07152.md
+  - ../../sources/papers/solo_arxiv_2608_26583.md
 summary: "北京人形机器人创新中心（X-Humanoid）：官网 + 天工造物开源社区 + Open-X-Humanoid 三入口；天工本体开源、RoboMIND 数据、TienKung-Lab RL、HEX/XR-1/Pelican 模型栈。"
 ---
 
@@ -105,6 +107,7 @@ flowchart TB
 |------|------|------|
 | IsaacLab 运控 | [TienKung-Lab](https://github.com/Open-X-Humanoid/TienKung-Lab) | Isaac Sim **4.5** / Lab **2.1**；AMP + 周期步态；Sim2Sim→MuJoCo；半程马拉松叙事 |
 | 单深度感知行走（论文） | [DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) | TienKung Ultra + Orbbec；深度合成 + 交叉注意力高程重建；**代码未开源**（RA-L） |
+| 长程感知行走（论文） | [SOLO](./paper-solo.md) | 天工 Omni + 胸挂 D455；QR + TA-MSE；零样本 **1.5 km**；**截至入库日未开源** |
 | MuJoCo / VLA 评测 | [xSIM_MUJOCO](https://github.com/Open-X-Humanoid/xSIM_MUJOCO)、[x-humanoid-vla-simulation-benchmark](https://github.com/Open-X-Humanoid/x-humanoid-vla-simulation-benchmark) | 并行仿真与评测 |
 
 ### 数据与训练工具链

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -46,6 +46,7 @@ related:
   - ../entities/paper-lawa.md
   - ../entities/paper-arli.md
   - ../entities/paper-reflexvla.md
+  - ../entities/paper-flashvla.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
@@ -534,6 +535,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Seeker](../entities/paper-seeker.md) — 无语言 IL 的动作监督视觉瓶颈；对照 VLA grounding 裁剪（arXiv:2608.13422；已开源）
 - [WCM 世界模型 Critic](../entities/paper-wcm-world-critic-model.md) — VLA **RL 后训练**的 critic 换成 LeJEPA 世界模型，修单帧价值估计的错配（arXiv:2607.29613）
 - [CLIFT 闭环迭代微调](../entities/paper-clift-closed-loop-iterative-finetuning.md) — 闭权重 VLA 只给托管 SFT API 时，把奖励反馈编码成 chunk 级优势 token（arXiv:2607.29172）
+- [FlashVLA](../entities/paper-flashvla.md) — 流匹配 VLA 的流式 chunk 解码：交错噪声缓冲 + 因果注意力；LIBERO 异步 2.43×，真机 ≥30 Hz（arXiv:2608.27384，已开源）
 - [GSR / ParaVLA](../entities/paper-gsr-paravla.md) — 改写指令崩溃来自 joint routing；冻结 T5 重绑（arXiv:2608.02497，已开源）
 - [Ego2Robot](../entities/paper-ego2robot.md) — 第一人称人视频合成 15 形态 18,561 h 预训练数据（arXiv:2608.02580；管线未开源）
 - [EATR-Stereo](../entities/paper-eatr-stereo.md) — 冻结 VLM + primary-aligned CVAT + 分段本体路由融合头载双目；33-DoF Omega 全流程 60%/抓取 100%（arXiv:2608.17453；未开源）

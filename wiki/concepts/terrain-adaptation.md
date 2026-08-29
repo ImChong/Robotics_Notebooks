@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -144,6 +144,7 @@ sources:
 - [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) 展示四足 **足底 ToF** 在垫脚石/沟上的 **任务对齐最小传感** 路线。
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 用 **多视角深度** 做 **双向/多向** 地形适应，并以 **DFSV/RSM** 处理非对称视野与未见窄地形宽度。
 - [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) 用 **单深度 → 交叉注意力高程重建**（自遮挡射线合成进 RL 环）在无外定位下做前向楼梯/缝隙适应；与 elevation map 多传感器路线对照。
+- [SOLO](../entities/paper-solo.md) 用 **逐格查询高程** 保住踏石/台阶沿，并把下一步师生分歧写入 PPO，支撑连续 **1.5 km** 户外。
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) 把 **稀疏踏棍梯子** 当作极端薄结构地形：端到端 **深度 + VFM** 适应，配合 **RFM** 聚焦踏棍几何。
 - [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。
 
@@ -169,6 +170,7 @@ sources:
 - [sources/papers/humoslope_arxiv_2607_07830.md](../../sources/papers/humoslope_arxiv_2607_07830.md) — HumoSlope：盲策略下连续陡坡姿态/步态适应（局部平面 ZMP + BSGA）
 - [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：崎岖地形 + 未知动态载荷
 - [sources/papers/dpl_arxiv_2510_07152.md](../../sources/papers/dpl_arxiv_2510_07152.md) — DPL：单深度交叉注意力高程重建 + 盲骨干多教师
+- [sources/papers/solo_arxiv_2608_26583.md](../../sources/papers/solo_arxiv_2608_26583.md) — SOLO：逐格查询重建 + TA-MSE 长程感知行走
 - [sources/papers/vb_com_arxiv_2502_14814.md](../../sources/papers/vb_com_arxiv_2502_14814.md) — VB-Com：高程图失效时视觉/盲策略切换
 
 ## 关联页面

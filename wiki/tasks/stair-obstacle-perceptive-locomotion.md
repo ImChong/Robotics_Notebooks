@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -37,6 +37,7 @@ related:
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
   - ../entities/paper-p3.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
+  - ../entities/paper-solo.md
 sources:
   - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
@@ -58,6 +59,7 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/papers/vb_com_arxiv_2502_14814.md
+  - ../../sources/papers/solo_arxiv_2608_26583.md
 summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：按「是否显式地形感知」「上/下楼梯」「越障/跑酷」组织文献与概念，后续 ingest 默认挂接本页。"
 ---
 
@@ -131,6 +133,7 @@ flowchart TB
 | **有**（LiDAR 11×11 高程 + cross-attn） | **楼梯/高台 + 边走边操作** | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) | 单阶段 MoE 全身 LLC；G1 非结构化 loco-manipulation；相对 HOMIE/AMO 更低跟踪误差 |
 | **有**（前+后深度，特权高程蒸馏） | **双向楼梯/坡/垫脚石 + 载荷** | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) | 分地形专家 + DAgger；DFSV/RSM 鲁棒多向；G1 真机 2 kg 载荷、22–30 cm 台阶与 60 cm 缝垫脚石 |
 | **有**（单深度 → 交叉注意力高程重建） | **上下楼梯 · 缝隙 · 可动平台** | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) | 现实深度合成进 RL 环 + 盲骨干多教师；无外定位；TienKung Ultra；重建 MAE 3.25 cm；IEEE RA-L |
+| **有**（单胸深相机 → 逐格查询 16×32 高程） | **连续户外 1.5 km · 踏石 · 楼梯** | [SOLO](../entities/paper-solo.md) | QR 保边界 + TA-MSE 轨迹蒸馏；天工 Omni 零样本；应力 97.5% / 踏石 96%；截至入库日未开源 |
 | **有**（机载深度 + VFM） | **梯子攀爬 · 梯上操作** | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | 单参考 hybrid tracking 多几何专家 + DAgger+RL；RFM/VFM 零样本 sim-to-real；G1 双向 ~3.4 s/踏棍；梯顶 VR 双智能体操作 |
 | **有**（机器人中心高程扫描 + identity-gated 残差） | **楼梯/块/坡/草地 · raw 参考 BFM** | [Perceptive BFM](../entities/paper-perceptive-bfm.md) | TCRS 离线监督 + PMT 四阶段；部署仍用 **原始人体参考**；G1 单策略覆盖 mocap 遥操作、舞蹈、杂技与户外 |
 | **有**（本体历史 + 高程 CNN → VAE latent） | **踏石 / 楼梯 / 缺口 · VAE-PPO 优化** | [P³](../entities/paper-p3.md) | 不改感知架构，把 PPO clip 改成边缘策略似然；G1 真机 8/9/10（10 trial）；代码已开源 |
@@ -190,6 +193,7 @@ flowchart TB
 | 人形 **边走边操作** + LiDAR 高程 LLC | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) |
 | 人形 **双向/多向** 深度感知 + **载荷** 爬楼梯/垫脚石 | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) |
 | 人形 **单深度** + 学习高程重建（无外定位）+ 楼梯/缝隙 | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) |
+| 人形 **连续公里级** + 单胸深相机 + 逐格高程 + 轨迹蒸馏 | [SOLO](../entities/paper-solo.md) |
 | 人形 **梯子攀爬** + **梯上遥操作**（稀疏踏棍） | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |
 | 人形 **BFM 式开放 raw 参考** + **地形感知落脚/间隙**（楼梯/块/户外） | [Perceptive BFM](../entities/paper-perceptive-bfm.md) |
 | 人形 **感知失效/动态障碍** 时在视觉策略与盲走间切换 | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) |
