@@ -12,7 +12,7 @@ tags:
   - mobile-manipulation
   - galaxea
 status: complete
-updated: 2026-08-19
+updated: 2026-08-29
 arxiv: "2608.11739"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:
@@ -200,6 +200,7 @@ sequenceDiagram
 - [LIBERO](./libero-benchmark.md) — 四套件协议
 - [Manipulation](../tasks/manipulation.md) — 桌面与移动操作语境
 - [World Action Models](../concepts/world-action-models.md) — 联合未来对照，不是本模型
+- [Riemann-1.0](./paper-riemann-1.md) — 闭源 WAM；真机对照表里本页厨房 SR 35% vs 其 90%（公司自报）
 
 ## 参考来源
 

@@ -1,3 +1,11 @@
+## [2026-08-29] ingest | sources/papers/riemann_1_0.md — Riemann-1.0 全因果 WAM；项目页已开、模型代码确认未开源；wiki/entities/paper-riemann-1.md
+
+- **触发：** 用户指定 <https://riemann-dynamics.github.io/Riemann-1.0-Website>
+- **步骤 2.5：** **确认未开源** — 页头仅 Paper PDF；GitHub `Riemann-Dynamics` 只有官网静态站与无关的 Matrix-Game 3.5；无权重/数据。无 arXiv。
+- **关键页：** [`wiki/entities/paper-riemann-1.md`](wiki/entities/paper-riemann-1.md)
+- **开源结论：** 闭源产业技术报告；可作因果 WAM 选型与 RoboCasa365 / 真机对照，不可复现。
+- **机构：** 新增 `riemann-dynamics`、`kunlun-wanwei`
+
 ## [2026-08-29] ingest | sources/repos/cmoe.md + sources/repos/senlanke_mimic.md — 复核官方 CMoE 部署指针与空占位仓；senlanke/mimic 升为 SMP/CMoE/AME 三线枢纽
 
 - **触发：** 用户指定 <https://github.com/Hoshi-No-Ai/CMoE>、<https://github.com/senlanke/mimic>

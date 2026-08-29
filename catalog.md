@@ -1345,7 +1345,8 @@
 - [无奖励持续适应：太空机器人的潜奖励景观](wiki/entities/paper-reward-free-continual-adaptation-space.md) — Reward-Free Continual Adaptation for Resilient Space Robots**（[arXiv:2608.23452](https://arxiv.org `📅unknown` `[entity_page]`
 - [Residual Force Control（RFC，NeurIPS 2020）](wiki/entities/paper-rfc-residual-force-control.md) — Residual Force Control for Agile Human Behavior Imitation and Extended Motion Synthesis**（Ye Yuan、 `📅unknown` `[entity_page]`
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问 `📅unknown` `[entity_page]`
-- [Riemann-1.0](wiki/entities/paper-riemann-1-causal-action-video-wam.md) — Riemann-1.0** 收录于 具身智能研究室 · 具身世界模型六路线综述 **行动主 `📅unknown` `[entity_page]`
+- [Riemann-1.0（六路线策展入口）](wiki/entities/paper-riemann-1-causal-action-video-wam.md) — 六路线里的行动主导型样本：历史观测先生成动作，再条件预测视觉后果；真机可直接执行。 `📅unknown` `[entity_page]`
+- [Riemann-1.0（全因果自回归 World Action Model）](wiki/entities/paper-riemann-1.md) — Riemann-1.0**（*Riemann-1.0: An Embodied World Action Model for Physical AI*，黎曼动力技术报告，[项目页](https:/ `📅unknown` `[entity_page]`
 - [Rift：免视频 Rollout 的未来条件 WAM](wiki/entities/paper-rift-wam.md) — Rift**（*Keep the Future, Drop the Rollout: Rift for World Action Models*，[arXiv:2608.11521](https: `📅unknown` `[entity_page]`
 - [RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制](wiki/entities/paper-rl-vs-gc.md) — RL vs GC**（论文 *Leveling the Playing Field: Carefully Comparing Classical and Learned Controllers f `📅unknown` `[entity_page]`
 - [RMA: Rapid Motor Adaptation for Legged Robots](wiki/entities/paper-rma-rapid-motor-adaptation.md) — RMA**（Kumar et al., arXiv:2107.04034，**RSS 2021**）提出 **快速运动自适应 `📅unknown` `[entity_page]`

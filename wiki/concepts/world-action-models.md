@@ -2,11 +2,12 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-28
-summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）、LAWA（潜动作意图）与 Dyna-2 等实例。"
+updated: 2026-08-29
+summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../entities/paper-lawa.md
+  - ../entities/paper-riemann-1.md
   - ../entities/dyna-2.md
   - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -95,6 +96,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_9_papers_2026-08-17.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/blogs/dyna_2_million_hour_wam.md
+  - ../../sources/papers/riemann_1_0.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/awesome-world-models.md
@@ -212,6 +214,8 @@ sources:
 
 **产业实例（Joint 族 + 百万小时人视频跨具身缩放 · 闭源）**：[Dyna-2](../entities/dyna-2.md)（Dyna Robotics，2026-08）在 **≥1M h** egocentric 人视频上预训练 MoT–DiT WAM（预训练 **零** 机器人数据），报告人 held-out 与 **人→机零样本** 离线幂律，并消融主张 **video co-training** 是跨具身缩放必要条件；推理可保持 reactive（动作塔不吃预测未来视频）。后训练少量机端数据上双臂 / 灵巧手 / 半人形；**未开源**——作缩放律与目标设计参照，不作可复现基线。
 
+**产业实例（Joint 族 + 动作优先全因果 AR · 闭源）**：[Riemann-1.0](../entities/paper-riemann-1.md)（黎曼动力 / 昆仑万维，2026-07）把交互写成 \(p(a_t\mid z_{<t},s_{<t},a_{<t})\,p(z_t\mid z_{<t},s_{<t},a_{\le t})\)：先出 action chunk 再条件化未来视觉 latent，同一 DiT 兼任策略与世界仿真。三阶段课程（LAM 伪动作 λ=0.1 → 3D 手/UMI/机 λ=0.5 → 机器人-only λ=0.9）吃 **232K+ h** 异构数据；RoboCasa365 **62.6%**（相对 [ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) +8.4）、天机 Marvin 真机均 **85.0% SR**；**确认未开源**。与 Dyna-2 对照：人视频在这里是 **对齐原料**，不是「预训练零机器人」缩放律。
+
 **文献实例（Joint 族 + latent foresight 查询冻结生成器 · 部署纯 VLA）**：[InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) 在 **Qwen3.5-2B MoT** 上持续 **VQA/子任务** 共训，用 **50 个 foresight token** 读出紧凑潜码条件化 **冻结 WAN2.2-5B**，以 video flow loss **蒸馏动力学先验** 至 unified expert，再以 **flow matching** 输出连续 action chunk；**推理丢弃视频分支**（~0.1s/步），在 LIBERO-Plus / DOMINO 零样本与真机 **组合指令 OOD** 上报告最强组合泛化（arXiv:2607.04988，上海 AI Lab Physical Intelligence Team）。
 
 **文献实例（VLWA · 双动作对齐 · 人视频主缩放轴）**：[JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md) 以 **VLM ∥ LAC-WM late-fuse → Flow Action Expert** 构成 VLWA：多视角 **LAM** 推断 latent action 条件化世界模型（隐式对齐），可靠人/机轨迹映射进 **130-D** 规范槽与相机系 chunk-relative EE（显式对齐）；部署时 LAC-WM **只抽第一帧特征、不滚像素**。在 AgiBot G1 真机上 seen **92.0** / unseen **75.5**，且人视频缩放未见饱和（京东 Joy Future Academy，arXiv:2608.05674；**未开源**）。
@@ -269,6 +273,7 @@ flowchart TB
 - [sources/papers/worldvln_arxiv_2605_15964.md](../../sources/papers/worldvln_arxiv_2605_15964.md)
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
 - [sources/blogs/dyna_2_million_hour_wam.md](../../sources/blogs/dyna_2_million_hour_wam.md) — Dyna-2 百万小时跨具身缩放（闭源产业）
+- [sources/papers/riemann_1_0.md](../../sources/papers/riemann_1_0.md) — Riemann-1.0 全因果动作优先 WAM（闭源）
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md)
 - [sources/sites/awesome-wam-openmoss.md](../../sources/sites/awesome-wam-openmoss.md)
 - [sources/repos/awesome-world-models.md](../../sources/repos/awesome-world-models.md) — Awesome World Models 全谱策展（含 WAM/VLA 分册）
@@ -279,6 +284,7 @@ flowchart TB
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 具身闭环 + 生成世界模型作视觉计划；与 WAM「联合建模」同构的议程层坐标
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
 - [Dyna-2](../entities/dyna-2.md) — 百万小时人视频 Joint WAM 跨具身缩放（闭源）
+- [Riemann-1.0](../entities/paper-riemann-1.md) — 全因果动作优先 AR WAM；RoboCasa365 62.6%、真机 85% SR（闭源）
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 动作接地预测 latent + 紧凑 MoT flow 策略（非像素 rollout）
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料

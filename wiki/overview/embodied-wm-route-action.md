@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, survey, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-29
 summary: "具身世界模型六路线 · 行动主导型 — 部署时动作生成与未来建模显式耦合。"
 related:
   - ./embodied-wm-six-routes-technology-map.md
@@ -30,7 +30,7 @@ sources:
 | Unified World Models (UWM) | [paper-shenlan-wm-08-uwm](../entities/paper-shenlan-wm-08-uwm.md) | 未来观测扩散与动作扩散同一 Transformer，未来目标改善动作。 |
 | Cosmos Policy | [paper-shenlan-wm-11-cosmos-policy](../entities/paper-shenlan-wm-11-cosmos-policy.md) | 动作块/未来视觉/本体/价值同一潜在空间，可想象多未来再排序。 |
 | DreamZero | [paper-notebook-dreamzero-world-action-models-are-zero-shot-poli](../entities/paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) | 同一生成过程输出未来视频与动作，真实观测修正下一轮。 |
-| Riemann-1.0 | [paper-riemann-1-causal-action-video-wam](../entities/paper-riemann-1-causal-action-video-wam.md) | 统一因果序列：历史观测先生成动作，再条件预测视觉后果；真机可直接执行动作。 |
+| Riemann-1.0 | [paper-riemann-1](../entities/paper-riemann-1.md) | 全因果动作优先 WAM；先出动作再条件化视觉后果；闭源，详见实体页。 |
 | World Tokens | [paper-world-tokens-inference-trimmed-wam](../entities/paper-world-tokens-inference-trimmed-wam.md) | 训练期世界监督、推理期裁剪生成分支的 WAM 趋势代表。 |
 | FLEX-π | [paper-flex-pi](../entities/paper-flex-pi.md) | RGB/点图/语义共同塑造未来表征的多流 Joint WAM。 |
 | MobileWAM | [paper-mobilewam-mobile-manipulation-wam](../entities/paper-mobilewam-mobile-manipulation-wam.md) | 从机械臂扩展到移动操作的 WAM。 |
