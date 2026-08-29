@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation, nvidia, unitree]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 related:
   - ./mujoco.md
   - ./mujoco-playground.md
@@ -106,7 +106,7 @@ mjlab 架构
 - [Isaac Gym / Isaac Sim / Isaac Lab](./isaac-gym-isaac-lab.md) — 三代产品总览
 - [legged_gym](./legged-gym.md) — 同类框架，绑定 IsaacGym
 - [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现
-- [SMP on G1（mjlab）](./smp-g1-mjlab.md) — G1 上 score-matching 运动先验复现
+- [senlanke/mimic（mjlab）](./smp-g1-mjlab.md) — G1 上 SMP / CMoE / AME 移植枢纽
 - [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架
 - [Microduck RL](./pollen-microduck-rl.md) — Pollen 桌面双足：BAM XL330 + 共享 61D 观测 + ONNX 热切换
 - [YAHMP](./paper-yahmp.md) — G1 全身 GMT 消融与 ONNX 部署（基于 mjlab）

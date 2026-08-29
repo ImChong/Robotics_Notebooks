@@ -2512,7 +2512,7 @@
 - [S1：机器人 In-Context Learning（Skild）](wiki/entities/skild-s1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [skrl](wiki/entities/skrl.md) — skrl](https://github.com/Toni-SM/skrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
 - [SLAM Toolbox](wiki/entities/slam-toolbox.md) — SLAM Toolbox** 面向 **2D 激光** 的 lifelong 建图与定位，支持大规模地图持久化与在线更新。 `📅unknown` `[entity_page]`
-- [SMP on G1（mjlab 复现）](wiki/entities/smp-g1-mjlab.md) — senlanke/mimic](https://github.com/senlanke/mimic)**（同系镜像 [SUZ-tsinghua/smp](https://github.com/S `📅unknown` `[entity_page]`
+- [senlanke/mimic：G1 上的 SMP / CMoE / AME 移植](wiki/entities/smp-g1-mjlab.md) — senlanke/mimic](https://github.com/senlanke/mimic)**（SMP 同系 [SUZ-tsinghua/smp](https://github.com `📅unknown` `[entity_page]`
 - [SMPLOlympics（仿真人形体育环境套件）](wiki/entities/smplolympics.md) — SMPLOlympics**（Luo et al., arXiv:2407.00187）在 **Isaac Gym** 中为 `📅unknown` `[entity_page]`
 - [SOEM](wiki/entities/soem.md) — SOEM（Simple Open EtherCAT Master）** 是面向实时嵌入式与通用 OS 的 **开源 EtherCAT MainDevice 库**：以 ANSI-C 实现用户态主站 `📅unknown` `[entity_page]`
 - [SOMA Retargeter](wiki/entities/soma-retargeter.md) — SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](./soma-x.md `📅unknown` `[entity_page]`

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md

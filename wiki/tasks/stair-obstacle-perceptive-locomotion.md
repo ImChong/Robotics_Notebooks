@@ -38,6 +38,8 @@ related:
   - ../entities/paper-p3.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
   - ../entities/paper-solo.md
+  - ../entities/paper-cmoe.md
+  - ../entities/smp-g1-mjlab.md
 sources:
   - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
@@ -138,7 +140,7 @@ flowchart TB
 | **有**（机器人中心高程扫描 + identity-gated 残差） | **楼梯/块/坡/草地 · raw 参考 BFM** | [Perceptive BFM](../entities/paper-perceptive-bfm.md) | TCRS 离线监督 + PMT 四阶段；部署仍用 **原始人体参考**；G1 单策略覆盖 mocap 遥操作、舞蹈、杂技与户外 |
 | **有**（本体历史 + 高程 CNN → VAE latent） | **踏石 / 楼梯 / 缺口 · VAE-PPO 优化** | [P³](../entities/paper-p3.md) | 不改感知架构，把 PPO clip 改成边缘策略似然；G1 真机 8/9/10（10 trial）；代码已开源 |
 | **有**（低成本深度，无显式高程中间层） | **坡/楼梯/高台/宽沟 · 单阶段** | [TRAMP](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) | 层次特征 + MoE actor + 平地/楼梯地形相关 AMP；SJTU 人形真机户外杂乱场景；IEEE RA-L 2026；代码未开源 |
-| **有**（雷达/仿真高程图 0.7×1.1 m） | **沟/台阶/栏/混合 · MoE 门控** | [CMoE](../entities/paper-cmoe.md) | SwAV 式对比学习防 Vanilla MoE 均匀激活；G1 真机 80 cm 沟、20 cm 连续台阶；ICRA 2026；Isaac Gym 代码已开源 |
+| **有**（雷达/仿真高程图 0.7×1.1 m） | **沟/台阶/栏/混合 · MoE 门控** | [CMoE](../entities/paper-cmoe.md) | SwAV 式对比学习防 Vanilla MoE 均匀激活；G1 真机 80 cm 沟、20 cm 连续台阶；ICRA 2026；官方 Isaac Gym [`Hoshi-No-Ai/CMoE`](https://github.com/Hoshi-No-Ai/CMoE)，mjlab 移植见 [senlanke/mimic `CMoE-G1`](../entities/smp-g1-mjlab.md) |
 | **复合**（机载高程图 + 盲策略切换） | **沟/栏/动态障碍 · 感知失效恢复** | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) | 视觉/盲双策略 + 仅本体回报估计器；G1/H1 真机；100% 高程噪声下完成率约 85%；ICRA 2026；代码 coming soon |
 
 ### 四足 · 楼梯与崎岖

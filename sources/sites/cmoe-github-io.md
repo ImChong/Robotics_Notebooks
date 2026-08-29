@@ -11,12 +11,13 @@
 - **会议：** ICRA 2026
 - **配套论文归档：** [`sources/papers/cmoe_contrastive_mixture_of_experts_icra_2026.md`](../papers/cmoe_contrastive_mixture_of_experts_icra_2026.md)
 - **入库日期：** 2026-08-23
+- **复核日期：** 2026-08-29
 
 ## 一句话摘要
 
 复旦大学 CMoE 项目页：单阶段 MoE 人形 locomotion，用 **对比学习** 解决 Vanilla MoE 门控均匀激活；仿真 Isaac Gym + 真机 G1 高程图感知，展示 20 cm 台阶、80 cm 沟与混合跑酷。
 
-## 开源状态（步骤 2.5，截至 2026-08-23）
+## 开源状态（步骤 2.5，截至 2026-08-29）
 
 | 资源 | 状态 |
 |------|------|
@@ -24,9 +25,12 @@
 | arXiv PDF | **已发布**（2603.03067） |
 | YouTube 演示 | **已发布** |
 | 官方 GitHub（`Hoshi-No-Ai/CMoE`） | **已发布**（`legged_gym` + `rsl_rl`，task `g1cmoe`，alg `cmoe`） |
+| `Fudan-MAGIC-Lab/CMoE` | **空占位**（README clone 指令仍指向它，不可用） |
 | 预训练 checkpoint / 权重托管 | **未列出**（README 仅说明 logs 路径） |
+| 真机高程图 / 部署 | README 指向 [elevation_mapping_humanoid](https://github.com/smoggy-P/elevation_mapping_humanoid) 与 [rl_sar](https://github.com/fan-ziqi/rl_sar) |
+| mjlab 移植 | 社区 [senlanke/mimic](https://github.com/senlanke/mimic) 任务 `CMoE-G1` |
 
-**结论：已开源（仿真训练栈完整）；权重与真机雷达→高程图部署需自行复现或向作者索取。**
+**结论：已开源（仿真训练栈完整）；权重与真机雷达→高程图部署需自行接社区仓，官方仓不提供 onboard 包。**
 
 ## 公开信息要点
 

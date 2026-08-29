@@ -8,7 +8,8 @@
 - **arXiv：** [2603.03067](https://arxiv.org/abs/2603.03067)
 - **PDF：** <https://arxiv.org/pdf/2603.03067>
 - **项目页：** <https://hoshi-no-ai.github.io/CMoE/>
-- **代码：** <https://github.com/Hoshi-No-Ai/CMoE>（BSD-3-Clause；README 亦提及 `Fudan-MAGIC-Lab/CMoE` 镜像）
+- **代码：** <https://github.com/Hoshi-No-Ai/CMoE>（BSD-3-Clause；`Fudan-MAGIC-Lab/CMoE` 截至 2026-08-29 为空占位，不是可用镜像）
+- **mjlab 移植：** <https://github.com/senlanke/mimic> 任务 `CMoE-G1` — [`sources/repos/senlanke_mimic.md`](../repos/senlanke_mimic.md)
 - **视频：** <https://www.youtube.com/watch?v=Q95Ssg1FP7A>
 - **作者：** Shihao Ma、Hongjin Chen、Zijun Xu、Yi Zhao、Ke Wu、Ruichen Yang、Leyao Zou、Zhongxue Gan、Wenchao Ding（复旦大学智能机器人与先进制造学院）
 - **会议：** ICRA 2026
@@ -17,10 +18,11 @@
 
 ## 开源状态（步骤 2.5）
 
-- **核查日：** 2026-08-23。项目页 Footer / README 均链至 GitHub；仓库含 `legged_gym`（task `g1cmoe`）与定制 `rsl_rl`（`cmoe_ppo`、`cmoe_actor_critic`、双 estimator）。
-- **已发布：** 训练脚本 `train.py`、可视化 `play.py`、环境配置、对比损失与 estimator 模块；BSD-3-Clause。
-- **未发布 / 待核实：** README 未列预训练 checkpoint 或 Hugging Face 权重下载；真机部署需自备雷达点云→高程图管线（论文 §V-E）。
-- **结论：** **已开源**（可运行仿真训练栈）；权重与真机感知栈需自行对齐论文。
+- **核查日：** 2026-08-29。项目页 Footer / README 均链至 `Hoshi-No-Ai/CMoE`；仓库含 `legged_gym`（task `g1cmoe`）与定制 `rsl_rl`（`cmoe_ppo`、`cmoe_actor_critic`、双 estimator）。
+- **已发布：** 训练脚本 `train.py`、可视化 `play.py`、环境配置、对比损失与 estimator 模块；BSD-3-Clause。README「Deployment References」指向 `elevation_mapping_humanoid` 与 `rl_sar`。
+- **未发布 / 勿误用：** 无预训练 checkpoint；`Fudan-MAGIC-Lab/CMoE` 为空占位；真机节点不在官方仓内。
+- **社区移植：** [senlanke/mimic](https://github.com/senlanke/mimic) 任务 `CMoE-G1`（mjlab，结构对齐，无官方数字）。
+- **结论：** **已开源**（可运行仿真训练栈）；权重与真机感知/部署需接社区仓。
 
 ## 摘录 1：问题与 Vanilla MoE 失效（摘要 + §I）
 
@@ -52,7 +54,7 @@ CMoE 提出 **单阶段 RL**：MoE actor-critic + **对比学习**——**同地
 ## 对 wiki 的映射（汇总）
 
 - 新建实体页：[`wiki/entities/paper-cmoe.md`](../../wiki/entities/paper-cmoe.md)
-- 交叉更新：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md`](../../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)
+- 交叉更新：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md`](../../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)、[`wiki/entities/smp-g1-mjlab.md`](../../wiki/entities/smp-g1-mjlab.md)
 
 ## 参考来源（原始）
 

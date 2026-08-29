@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, reinforcement-learning, isaac-lab, unitree, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 related:
   - ../concepts/wheel-legged-quadruped.md
   - ../concepts/wheel-legged-biped.md
@@ -20,6 +20,7 @@ related:
   - ./robo-orchard-lab.md
   - ../methods/beyondmimic.md
   - ./paper-aware-wheeled-legged-reflexive-evasion.md
+  - ./paper-cmoe.md
 sources:
   - ../../sources/repos/robot_lab.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
@@ -50,7 +51,7 @@ summary: "robot_lab 是基于 NVIDIA IsaacLab 的机器人 RL 扩展库，在独
 
 - **Isaac Lab 核心** 提供物理仿真、传感器与 `ManagerBasedRLEnv` / Direct 环境接口。
 - **robot_lab** 提供多厂商 **URDF/USD 资产**、**速度跟踪 / 模仿 / AMP** 任务配置，以及 **RSL-RL / CusRL / SKRL** 统一训练入口。
-- **rl_sar**（同作者）承接 **Gazebo / 真机** 策略部署，形成「仿真训练 → 实机运行」闭环。
+- **rl_sar**（同作者）承接 **Gazebo / 真机** 策略部署，形成「仿真训练 → 实机运行」闭环。[CMoE](./paper-cmoe.md) 官方 README 也写明 G1 真机部署叠在 `rl_sar` 上。
 
 ## 流程总览
 
@@ -107,6 +108,7 @@ flowchart LR
 - [DDT_Lab](./ddt-lab.md)
 - [ROBOTIS cyclo_lab](./cyclo-lab.md)
 - [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)
+- [CMoE](./paper-cmoe.md) — 官方真机部署叠在 rl_sar 上
 
 ## 参考来源
 

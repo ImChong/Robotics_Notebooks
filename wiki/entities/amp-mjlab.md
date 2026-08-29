@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-29
 related:
   - ../concepts/neural-feedback-controller.md
   - ../methods/amp-reward.md

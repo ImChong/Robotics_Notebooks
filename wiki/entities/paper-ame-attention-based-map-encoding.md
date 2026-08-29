@@ -8,6 +8,7 @@ arxiv: "2506.09588"
 venue: "arXiv 2025"
 related:
   - ./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
+  - ./smp-g1-mjlab.md
   - ./anymal.md
   - ./quadruped-robot.md
   - ./extreme-parkour.md
@@ -19,6 +20,7 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/ame_arxiv_2506_09588.md
+  - ../../sources/repos/senlanke_mimic.md
 ---
 
 # AME — Attention-Based Map Encoding
@@ -136,6 +138,7 @@ flowchart LR
 - **不是「无地图」**：依赖 **elevation mapping** 栈产 2.5D 扫描；与 **raw depth 端到端** 不同。
 - **2.5D 边界**： confined / 强 3D 接触（vault 等）不在 AME-1 主战场；**AME-2** 补 **敏捷 parkour + 学习映射**。
 - **训练成本**：数天 GPU；调参仍贵。
+- **G1 mjlab 移植未验证：** [senlanke/mimic](./smp-g1-mjlab.md) 已注册 `AME-G1*`，但 README / `MIGRATION.md` 标明未跑训练与行为对齐；要可运行 G1 复现先看 [SII-FUSC/AME_Locomotion](https://github.com/SII-FUSC/AME_Locomotion)（Isaac Lab）。
 
 ## 参考来源
 
@@ -148,8 +151,10 @@ flowchart LR
 - [ANYmal](./anymal.md)
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)
+- [senlanke/mimic](./smp-g1-mjlab.md) — mjlab 上未验证的 G1 AME 迁移
 
 ## 推荐继续阅读
 
+- [SII-FUSC/AME_Locomotion](https://github.com/SII-FUSC/AME_Locomotion) — Unitree G1 社区复现（Isaac Lab）
 - [AME-2 项目页](https://sites.google.com/leggedrobotics.com/ame-2)
 - [Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing](./paper-discrete-terrain-minimal-proximity-sensing.md) — 同 ETH RSL 稀疏地形对照轴

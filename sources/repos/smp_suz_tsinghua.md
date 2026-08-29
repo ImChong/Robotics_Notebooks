@@ -5,7 +5,7 @@
 - **标题：** SMP — Score-Matching Motion Priors (G1 reproduction on mjlab)
 - **类型：** repo
 - **机构：** 清华大学 SUZ 课题组（GitHub org: SUZ-tsinghua）
-- **链接：** https://github.com/SUZ-tsinghua/smp（同系镜像：[senlanke/mimic](https://github.com/senlanke/mimic)）
+- **链接：** https://github.com/SUZ-tsinghua/smp（同系入口：[senlanke/mimic](https://github.com/senlanke/mimic)，2026-08-29 起后者还挂 CMoE/AME 移植）
 - **入库日期：** 2026-05-27
 - **一句话说明：** 在 MimicKit 原版未提供 G1 配置的前提下，于 **mjlab** 上端到端复现 SMP（DDPM 预训练 + 冻结 SDS 引导奖励 + PPO），覆盖 Unitree G1 四类下游任务，并内置三套可跳过预训练的 prior checkpoint。
 - **沉淀到 wiki：** 是 → [`wiki/entities/smp-g1-mjlab.md`](../../wiki/entities/smp-g1-mjlab.md)、[`wiki/entities/paper-smp.md`](../../wiki/entities/paper-smp.md)
