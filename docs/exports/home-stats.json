@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-08-29",
-  "node_count": 3344,
-  "edge_count": 30075,
+  "node_count": 3345,
+  "edge_count": 30096,
   "coverage": {
-    "covered": 3319,
-    "total": 3319,
+    "covered": 3320,
+    "total": 3320,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/dexbench.md",
+      "detail_id": "entity-dexbench",
+      "label": "DexBench（工业灵巧操作基准）",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-riemann-1.md",
       "detail_id": "entity-paper-riemann-1",
@@ -205,23 +215,12 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-wall-ss.md",
-      "detail_id": "entity-paper-wall-ss",
-      "label": "WALL-SS（下一尺度自回归长程世界模型）",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-riemann-1.md",
-    "detail_id": "entity-paper-riemann-1",
-    "label": "Riemann-1.0（全因果自回归 World Action Model）",
+    "path": "wiki/entities/dexbench.md",
+    "detail_id": "entity-dexbench",
+    "label": "DexBench（工业灵巧操作基准）",
     "type": "entity",
     "recency": "2026-08-29",
     "source": "git",
@@ -231,7 +230,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 816
+      "size": 829
     },
     {
       "label": "操作",
@@ -243,11 +242,11 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 216
+      "size": 213
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 103
+      "size": 102
     },
     {
       "label": "机器人视觉感知栈选型闭环",
@@ -259,7 +258,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1350,
+      "degree": 1352,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
