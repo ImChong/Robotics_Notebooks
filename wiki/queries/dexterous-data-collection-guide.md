@@ -2,12 +2,13 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-08-17
+updated: 2026-08-29
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md
   - ../entities/midas-hand.md
   - ../entities/all-hands-up.md
+  - ../entities/dexbench.md
   - ../entities/mimic-wearable-u1.md
   - ../entities/paper-teledexter.md
   - ../entities/paper-nestdex.md
@@ -105,6 +106,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [多模态融合技巧](./multimodal-fusion-tricks.md)
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)
 - [All Hands Up](../entities/all-hands-up.md) — RLWRLD 把高背驱、力矩可当学习信号的手标成 Type 2 采数手
+- [DexBench](../entities/dexbench.md) — Regime → 传感/标注优先级；本指南补「先定测什么再定采什么」
 
 ## 参考来源
 - Qin, B., et al. (2023). *AnyTeleop: A Unified and General Framework for Bimanual Dexterous Teleoperation*.

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, benchmark, imitation-learning, multi-embodiment, visuomotor, bimanual, contact-rich, isaac-lab, berkeley, hku, unc-chapel-hill]
 status: complete
-updated: 2026-07-14
+updated: 2026-08-29
 arxiv: "2607.08751"
 venue: "arXiv 2026"
 related:
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-coordex-dexterous-humanoid-loco-manipulation.md
   - ../entities/paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
   - ../entities/maniskill2.md
+  - ./dexbench.md
 sources:
   - ../../sources/papers/dexverse_arxiv_2607_08751.md
 summary: "DexVerse（arXiv:2607.08751，UNC/HKU/Berkeley）发布 100 项模块化灵巧操作 benchmark：3 臂×6 手、可配置视觉域随机、3,180 条 VR 遥操作多模态示范；19 任务上 π₀.₅/DP3 均值成功率仅 34%，暴露跨技能泛化与亚厘米接触对齐瓶颈。"
@@ -135,6 +136,7 @@ flowchart TB
 - **仿真-only 当前版本：** 论文明确未来扩展真机迁移与更多具身；选型时区分 **仿真 IL 排行榜** 与 **部署闭环**。
 - **Shadow 手主导示范：** 单目标任务 50/55 来自 Shadow Hand，跨手泛化仍需依赖 retarget 与 per-hand 少量轨迹——读表时注意 **具身分布偏斜**。
 - **与 loco-manipulation 正交：** 桌面臂–手设定；全身人形 dexterous loco-manip 见同团队系的 [CoorDex](./paper-coordex-dexterous-humanoid-loco-manipulation.md)。
+- **≠ DexBench：** [DexBench](./dexbench.md)（RLWRLD × NVIDIA，dexbench.org）是工业任务**规格**，官方评测仓与 Arena 集成仍标 coming soon；不要和本页已开源的 100 任务 Isaac Lab bench 混名。另有 `sail-ucf/dexbench`（LLM 推理）也无关。
 
 ## 关联页面
 
@@ -145,6 +147,7 @@ flowchart TB
 - [Isaac Lab](./isaac-lab.md) — 仿真后端与 manager-based 环境
 - [CoorDex](./paper-coordex-dexterous-humanoid-loco-manipulation.md) — UNC/Berkeley 人形 dexterous loco-manipulation
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：100 项灵巧操作泛化基准，暴露亚厘米接触与跨技能泛化瓶颈
+- [DexBench](./dexbench.md) — 易混名的工业规格页；本页是已开源仿真 bench
 
 ## 参考来源
 

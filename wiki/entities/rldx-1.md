@@ -3,7 +3,7 @@
 type: entity
 tags: [vla, manipulation, lerobot, diffusion, qwen3-vl, tactile, action-chunking, repo, huggingface]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-29
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -13,9 +13,11 @@ related:
   - ../methods/diffusion-policy.md
   - ./paper-harness-vla.md
   - ./all-hands-up.md
+  - ./dexbench.md
 sources:
   - ../../sources/repos/rldx-1.md
   - ../../sources/sites/allhandsup-org.md
+  - ../../sources/sites/dexbench-org.md
 summary: "RLDX-1 是 RLWRLD 开源的灵巧操作 VLA：Qwen3-VL 骨干 + MSAT 扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，三阶段训练与图捕获/RTC 推理栈。"
 ---
 
@@ -96,7 +98,7 @@ README 在 RTX 5090 上报告约 **43.7 ms/step**、**>22 Hz**（随 GPU 架构�
 
 ## 基准与检查点
 
-仿真侧在 **LIBERO / SIMPLER / RoboCasa / GR-1 Tabletop / RoboCasa365** 等上报告成功率；各基准对应独立 **Hugging Face fine-tune 权重** 与 `run_scripts/eval/` 下的复现说明。预训练与中训检查点如 `RLDX-1-PT`、`RLDX-1-MT-DROID`、`RLDX-1-MT-ALLEX` 等在集合页列出。
+仿真侧在 **LIBERO / SIMPLER / RoboCasa / GR-1 Tabletop / RoboCasa365** 等上报告成功率；各基准对应独立 **Hugging Face fine-tune 权重** 与 `run_scripts/eval/` 下的复现说明。预训练与中训检查点如 `RLDX-1-PT`、`RLDX-1-MT-DROID`、`RLDX-1-MT-ALLEX` 等在集合页列出。同机构 [DexBench](./dexbench.md) 是 **工业任务规格**，不是这套公开数字的评测入口；新闻稿用上述仿真结果为合作背书，不要读成 DexBench 官方基线。
 
 ## 常见误区与许可
 
@@ -120,6 +122,7 @@ README 在 RTX 5090 上报告约 **43.7 ms/step**、**>22 Hz**（随 GPU 架构�
 - [Diffusion Policy](../methods/diffusion-policy.md) — 扩散式动作建模背景
 - [Harness VLA](./paper-harness-vla.md) — RoboCasa365 上将 RLDX-1 作冻结 `vla_act` 后端（arXiv:2607.08448）
 - [All Hands Up](./all-hands-up.md) — 同机构腕装灵巧手档案与 Type 1/Type 2 选型
+- [DexBench](./dexbench.md) — 同机构工业灵巧任务规格；公开评测不在该套件上
 
 ## 推荐继续阅读
 

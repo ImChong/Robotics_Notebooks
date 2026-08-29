@@ -9,7 +9,7 @@ tags:
   - manipulation
   - rlwrld
 status: complete
-updated: 2026-08-15
+updated: 2026-08-29
 related:
   - ./allegro-hand.md
   - ./orca-hand.md
@@ -21,8 +21,10 @@ related:
   - ../queries/dexterous-data-collection-guide.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/manipulation.md
+  - ./dexbench.md
 sources:
   - ../../sources/sites/allhandsup-org.md
+  - ../../sources/sites/dexbench-org.md
 summary: "All Hands Up（RLWRLD）：腕装模块化灵巧手公开档案——浏览器 URDF 画廊、仿真 Kapandji 对掌分与规格对照；长文给出尺寸–握力–背驱权衡与 Type 1/Type 2 双硬件策略。URDF 可 HTTP 下载，无独立 GitHub。"
 ---
 
@@ -41,7 +43,7 @@ summary: "All Hands Up（RLWRLD）：腕装模块化灵巧手公开档案——�
 | Kapandji | Kapandji opposition scale | 临床拇指对掌地标 K0–K10；本站在 URDF 上仿真计分 |
 | DIP / PIP / MCP | Distal / Proximal Interphalangeal / Metacarpophalangeal | 远侧/近侧指间关节与掌指关节；DIP 是否独立驱动决定 tip pinch vs pad pinch |
 | DoF | Degrees of Freedom | 独立可控关节数；人手除腕约 22 |
-| DexBench | Dexterity Benchmark | 同机构 18 项工业灵巧任务套件（T00–T17），独立站 dexbench.org |
+| DexBench | Dexterity Benchmark | 同机构 18 项工业灵巧任务规格（T00–T17），见 [DexBench](./dexbench.md) |
 
 ## 为什么重要
 
@@ -68,7 +70,7 @@ flowchart TB
     K["_kapandji.json 仿真扫掠"]
   end
   subgraph external [站外]
-    DB["DexBench 18 任务 T00–T17"]
+    DB["DexBench 18 任务 T00–T17\n独立站 / 规范页"]
   end
   P1 --> P2 --> T12
   R --> U --> V
@@ -117,7 +119,7 @@ flowchart TB
 | 先看三列 | 主动 DoF、指数、Kapandji；再展开规格网格（背驱、外展、掌/指触觉、钩挂、指尖力、总线） |
 | 拉 URDF | `https://allhandsup.org/hands_urdf/_registry.json` 取路径；网格按 `packages` 与 `_meshPathRewrite` 解析。许可是 **逐手** 的，复用前读 registry `license` |
 | 读 Kapandji | `hands_urdf/_kapandji.json`；满分 11。若 `_validation.outOfSiteLimit` 点名该手，分数含越限姿态，仿真可达 ≠ 真机安全可达 |
-| 对 DexBench | 任务级 18 项在 [dexbench.org](https://dexbench.org)；AHU 只映射「哪些硬件轴伤哪些任务」，不在本页重贴 T00–T17 分数 |
+| 对 DexBench | 任务级 18 项见 [DexBench](./dexbench.md)；AHU 只映射「哪些硬件轴伤哪些任务」，不在本页重贴 T00–T17 分数 |
 | 纠错 / 寄样 | partnership@rlwrld.ai；页脚欢迎厂商寄测 |
 
 **画廊速查（入库日 16 手，Kapandji = 仿真达标地标数 / 11）：**
@@ -160,16 +162,18 @@ flowchart TB
 - [灵巧手运动学](../concepts/dexterous-kinematics.md) — 多指闭链与可操作性
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md) — Type 2 手服务遥操作/重定向采数
 - [Manipulation](../tasks/manipulation.md) — 操作任务层
-- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — AHU/DexBench 落在硬件层，不要和 VLA 任务成功率榜混读
+- [DexBench](./dexbench.md) — 同机构工业任务规格（OSC / Regime / T00–T17）；AHU 是硬件层
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — AHU 落在硬件层，DexBench 落在 ③ 层工业规格，不要和 VLA 仿真成功率榜混读
 
 ## 参考来源
 
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
+- [DexBench 站点归档](../../sources/sites/dexbench-org.md)
 - 画廊数据：<https://allhandsup.org/hands_urdf/_registry.json>、<https://allhandsup.org/hands_urdf/_kapandji.json>（2026-08-15 拉取）
 - 长文：<https://allhandsup.org/blog/part1.html>、<https://allhandsup.org/blog/part2.html>
 
 ## 推荐继续阅读
 
 - 中文画廊：<https://allhandsup.org/zh/#gallery>
-- DexBench：<https://dexbench.org>
+- [DexBench 规范页](https://dexbench.org/en/)
 - RLWRLD 发布说明（2026-07）：[Robotics & Automation News](https://roboticsandautomationnews.com/2026/07/07/rlwrld-launches-open-platform-to-benchmark-dexterous-robotic-hands/103146/)

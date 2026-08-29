@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-29
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -20,6 +20,7 @@ sources:
   - ../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/sites/allhandsup-org.md
+  - ../../sources/sites/dexbench-org.md
   - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
   - ../../sources/papers/reflexvla_arxiv_2608_14379.md
 related:
@@ -42,6 +43,7 @@ related:
   - ../entities/current-robotics-currentworld.md
   - ../entities/vla-sota-leaderboard.md
   - ../entities/all-hands-up.md
+  - ../entities/dexbench.md
   - ../entities/paper-humanoidvln.md
   - ../entities/robodojo.md
   - ../entities/paper-prm-as-a-judge.md
@@ -71,7 +73,7 @@ related:
 |----|--------|-----------|--------|--------------------------|
 | ① 具身大脑/MLLM 认知 | System 2 高层认知：意图理解、场景感知、规划、affordance、失败诊断；另含 **日常音视频时序对齐** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md) | QA 正确率 / 认知维度分 / AV Align | 认知评分高 ≠ 能下发可执行动作；AV 高分 ≠ 操纵 affordance |
 | ② 世界模型预测保真度 | 给定动作，模型能否忠实推演未来帧/物理状态 | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 / WMBench](../entities/paper-gigaworld-1-policy-evaluation.md)；开放域多场景另见 [WorldScore](../entities/paper-worldscore.md)；交互干预/持久另见 [HarnessEval-W](../entities/paper-harnesseval-w.md)；**off-expert 动作跟随**另见 [WorldEcho](../entities/paper-worldecho-worldsync.md) | 场景守恒 / 轨迹一致 / 语义对齐；（WorldScore：相机可控 / 质量 / 动态；HarnessEval-W：Observation / Transition / Persistence + 证据树；WorldEcho：视觉门控 + \(\mathrm{SE}(3)\) NDTW） | 短时视觉逼真 ≠ 长时序动作忠实 ≠ 下游策略收益；WorldScore 高分 ≠ 操纵保真；HarnessEval Overall 高 ≠ 末端轨迹对；**专家回放好看 ≠ off-expert 仍跟命令** |
-| ③ 策略任务成功率 | 策略在任务上真做成没有 | [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md)、[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)、[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md)；桌面 VLA 相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)；**接触安全**另见 [SoftVTBench](../entities/paper-softvtbench.md)；**过程评测**见 [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md)；**延迟感知动态任务**见 [ReflexVLA / ReflexBench](../entities/paper-reflexvla.md) | 任务成功率 / 敏捷分；软体另报 Safety Success；过程侧报 OPD | 成功率均值掩盖长尾失败；魔法抓取虚高；跨基准直接比榜；**只报 Goal 掩盖过压**；**SR 与进度曲线排名不一致** |
+| ③ 策略任务成功率 | 策略在任务上真做成没有 | [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md)、[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)、[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md)；桌面 VLA 相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)；**接触安全**另见 [SoftVTBench](../entities/paper-softvtbench.md)；**过程评测**见 [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md)；**延迟感知动态任务**见 [ReflexVLA / ReflexBench](../entities/paper-reflexvla.md)；**工业灵巧规格**见 [DexBench](../entities/dexbench.md)（18 任务 / OSC，官方评测仓待发布） | 任务成功率 / 敏捷分；软体另报 Safety Success；过程侧报 OPD；DexBench 主张 breakdown curve 而非单一 SR | 成功率均值掩盖长尾失败；魔法抓取虚高；跨基准直接比榜；**只报 Goal 掩盖过压**；**SR 与进度曲线排名不一致**；**把 DexBench 规范页当成可跑仿真榜** |
 | ④ sim↔real 评测 gap 校准 | 仿真评测结论能否外推到真机 | [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) + real-to-sim 相关性 | sim↔real 排名相关性 | 仿真可复现 ≠ 真机代表性；评测集与训练分布重叠 |
 
 **总原则**：评测选型的第一问永远是「**这层指标测的到底是能力本身，还是能力的易测代理**」。越靠上层（认知、视频质量）越好测、越可复现，但离「真机做成」越远；越靠下层（真机成功率、sim↔real 校准）越贵、越难复现，但代表性越强。一条负责任的评测链要**逐层往下压实**，而不是停在某个漂亮的上层代理指标上。
@@ -212,7 +214,8 @@ flowchart TD
 - [Hydra-0](../entities/paper-hydra-0.md) — ②→③ 桥接：RoboLab 开环 replay 排名与参考成功率 **r=0.96**（κ=0.82），但策略不被生成观测查询，不能当闭环 prospective 成功率读（确认未开源）
 - [RoboSynChallenge](../entities/paper-robosynchallenge.md) — ③/④ 层：合成 state-action 训练、**仅真实世界未见环境**终评的灵巧操作挑战赛协议（框架 + HF 数据已开源）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — ③层社区聚合：多基准 VLA / 灵巧手摘录榜（不重跑）
-- [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji（DexBench 任务分在独立站）
+- [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji
+- [DexBench](../entities/dexbench.md) — ③ 层工业灵巧规格（OSC / 18 任务）；规范已公开，Arena 评测栈仍标 coming soon，不要和仿真 SR 榜混读
 - [RoboDojo](../entities/robodojo.md) — ③/④ 层：通用操纵官方 sim-and-real 公益榜（重跑 + 开源上榜）
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — ③ 层：冻结 PRM 进度曲线 + OPD；工具仓已开源
 - [ReflexVLA](../entities/paper-reflexvla.md) — ③ 层：ReflexBench 延迟感知动态任务；代码待开放
