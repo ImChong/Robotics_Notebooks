@@ -2,80 +2,82 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-29
 venue: curated
-
 related:
+  - ./paper-riemann-1.md
   - ../overview/embodied-wm-six-routes-technology-map.md
   - ../overview/embodied-wm-route-action.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md
-summary: "Riemann-1.0（具身世界模型六路线专题）：统一因果序列：历史观测先生成动作，再条件预测视觉后果；真机可直接执行动作。"
+  - ../../sources/papers/riemann_1_0.md
+summary: "Riemann-1.0 六路线策展入口（行动主导型）：先动作、后视觉后果。方法/数字/开源核查见 canonical 实体页 paper-riemann-1。"
 ---
 
-# Riemann-1.0
+# Riemann-1.0（六路线策展入口）
 
-**Riemann-1.0** 收录于 [具身智能研究室 · 具身世界模型六路线综述](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) **行动主导型** 段。本页为知识库 **策展编译** 详情节点；量化指标以原文 PDF / 项目页为准。
+> **Canonical 实体页：** [Riemann-1.0（全因果自回归 World Action Model）](./paper-riemann-1.md)
+>
+> 本页只保留 [具身世界模型六路线综述](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) 的 **行动主导型** 导航坐标；方法、评测与开源状态以项目页 ingest 为准。
 
 ## 一句话定义
 
-统一因果序列：历史观测先生成动作，再条件预测视觉后果；真机可直接执行动作。
+**六路线里的行动主导型样本：历史观测先生成动作，再条件预测视觉后果；真机可直接执行。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WM | World Model | 根据状态与动作预测未来观测/状态 |
 | WAM | World Action Model | 联合未来与动作生成的具身策略 |
-| MPC | Model Predictive Control | 滚动时域优化选动作 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| WM | World Model | 根据状态与动作预测未来观测 |
+| VLA | Vision-Language-Action | 反应式语义策略对照 |
+| PSR | Progress Success Rate | 真机过程成功率（详见 canonical 页） |
 
 ## 为什么重要
 
-- 属于六路线 taxonomy 的 **行动主导型**：预测结果被用于 **部署时动作生成与未来建模显式耦合。**
-- 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
+- 综述把它放在 **行动主导型**：部署时未来建模与动作生成显式耦合，而不是只当画质生成器。
+- 2026-08-29 已用官方项目页与技术报告 PDF 升格 [完整实体页](./paper-riemann-1.md)；本页不再重复数字。
 
 ## 核心信息
 
 | 项 | 内容 |
 |----|------|
 | **路线** | 行动主导型 |
-| **出处** | （策展文未给 arXiv；以原文为准） |
-| **文内角色** | 统一因果序列：历史观测先生成动作，再条件预测视觉后果；真机可直接执行动作。 |
-
-## 结论
-
-**Riemann-1.0 在六路线框架下的读法：先看预测输出被谁消费，再看是否改善真实行动——而非只看网络新旧或画面观感。**
-
-- 归入 **行动主导型** 的判断标准是 **闭环职责**，不是模型架构标签。
-- 与同路线邻接工作对照时，优先比较 **动作条件性、物理一致性与部署接口**。
-- 细节数字与开源状态以原文为准；本页服务图谱导航与交叉引用。
+| **因果顺序** | 先 \(a_t\)，再 \(z_t\) |
+| **详情** | [paper-riemann-1](./paper-riemann-1.md) |
+| **开源** | **确认未开源**（见 canonical 页步骤 2.5） |
 
 ## 实验与评测
 
-- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [综述原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) 指向的论文 / 项目页为准。
-- **该路线该看的指标**：真机执行成功率、动作条件性（预测是否随动作改变）与推理时延。
-- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+量化以 [Riemann-1.0 实体页](./paper-riemann-1.md) 的仿真 / 真机表为准（RoboCasa365 62.6%、真机均 85.0% SR）。本页不转抄，避免与项目页 ingest 双源漂移。
 
 ## 与其他工作对比
 
-- **同路线邻接工作**（综述 **行动主导型** 段）：[UWM](./paper-shenlan-wm-08-uwm.md)、[Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md)、[World Tokens](./paper-world-tokens-inference-trimmed-wam.md)。
-- **对照要点**：Riemann-1.0 的因果顺序是 **先出动作、再条件预测视觉后果**；World Tokens 则在推理期裁掉生成分支。对照 WAM 时先问「生成分支在部署时是否还跑」，再问架构。
-- **跨路线区分**：行动主导型的闭环职责是「执行时未来建模与动作生成显式耦合」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
+同路线邻接：[UWM](./paper-shenlan-wm-08-uwm.md)、[Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md)、[World Tokens](./paper-world-tokens-inference-trimmed-wam.md)。对照时先问「生成分支在部署时是否还跑」，再问架构。完整对照表见 [canonical 页](./paper-riemann-1.md)。
+
+## 结论
+
+**读六路线时把它当作「动作优先因果」的导航钉；要数字、课程和开源边界，跳到 [paper-riemann-1](./paper-riemann-1.md)。**
+
+1. 归入行动主导型看的是闭环职责，不是机构名。
+2. 与 World Tokens「推理裁生成分支」对照时，Riemann 部署仍可滚动作条件视频。
+3. 不要在本页堆 LIBERO / RoboTwin 饱和榜。
 
 ## 关联页面
 
+- [Riemann-1.0 完整实体](./paper-riemann-1.md)
 - [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
 - [行动主导型 分类 hub](../overview/embodied-wm-route-action.md)
-- [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
 
 ## 参考来源
 
-- [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [六路线综述摘录](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [Riemann-1.0 论文摘录](../../sources/papers/riemann_1_0.md)
 
 ## 推荐继续阅读
 
-- [具身世界模型六路线原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ)
+- [Riemann-1.0 项目页](https://riemann-dynamics.github.io/Riemann-1.0-Website)
+- [六路线原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ)

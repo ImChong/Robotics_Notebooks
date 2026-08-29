@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-08-29
 venue: curated
 
 related:
@@ -61,7 +61,7 @@ summary: "World Tokens（具身世界模型六路线专题）：训练期世界�
 
 ## 与其他工作对比
 
-- **同路线邻接工作**（综述 **行动主导型** 段）：[Riemann-1.0](./paper-riemann-1-causal-action-video-wam.md)、[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[FLEX-π](./paper-flex-pi.md)。
+- **同路线邻接工作**（综述 **行动主导型** 段）：[Riemann-1.0](./paper-riemann-1.md)、[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[FLEX-π](./paper-flex-pi.md)。
 - **对照要点**：World Tokens 把世界建模当 **训练期监督**，推理期裁剪生成分支换时延；保留生成的 WAM 则用推理成本换「可检视的未来」——这是同一路线内的部署取舍，不是优劣。
 - **跨路线区分**：行动主导型的闭环职责是「执行时未来建模与动作生成显式耦合」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 

@@ -26,6 +26,7 @@ related:
   - ./paper-galaxea-g05.md
   - ./tau0-world-model.md
   - ./paper-worldscape-policy-2.md
+  - ./paper-riemann-1-causal-action-video-wam.md
   - ./paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md
 sources:
   - ../../sources/papers/riemann_1_0.md
@@ -212,6 +213,7 @@ Held-out（每任务 10 trial）：组合泛化 **65%**，OOD（魔方入盒 / �
 - [G0.5](./paper-galaxea-g05.md) — 真机次强开源 VLA
 - [τ₀-WM](./tau0-world-model.md) — 联合视频–动作 + 测试时仿真
 - [WAM 纵深路线](../../roadmap/depth-wam.md) — Stage 3 学习入口
+- [六路线策展入口](./paper-riemann-1-causal-action-video-wam.md) — 行动主导型导航钉；数字以本页为准
 
 ## 参考来源
 
