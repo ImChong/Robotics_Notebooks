@@ -15,6 +15,7 @@ related:
   - ../entities/pinocchio.md
   - ../entities/isaac-sim.md
   - ../entities/paper-urdd-universal-robot-description-directory.md
+  - ../entities/paper-apollo-blender.md
 sources:
   - ../../sources/repos/awesome-robot-descriptions.md
   - ../../sources/repos/robot-descriptions-py.md
@@ -85,7 +86,7 @@ flowchart TD
 
 ## 与 URDD / 编辑器的关系
 
-[URDD](../entities/paper-urdd-universal-robot-description-directory.md) 解决「各栈重复从 URDF 派生凸分解/DOF 映射」；本页四个入口解决「**原始描述从哪来**」。编辑与导出走 [URDF-Studio](../entities/urdf-studio.md)；浏览器检视走 [Robot Viewer](../entities/robot-viewer.md)。
+[URDD](../entities/paper-urdd-universal-robot-description-directory.md) 解决「各栈重复从 URDF 派生凸分解/DOF 映射」；本页四个入口解决「**原始描述从哪来**」。编辑与导出走 [URDF-Studio](../entities/urdf-studio.md)；浏览器检视走 [Robot Viewer](../entities/robot-viewer.md)；论文级离线渲染走 [APOLLO Blender](../entities/paper-apollo-blender.md)。
 
 ## 工程实践
 
@@ -109,6 +110,7 @@ flowchart TD
 - [Pinocchio](../entities/pinocchio.md)
 - [Isaac Sim](../entities/isaac-sim.md)
 - [URDD](../entities/paper-urdd-universal-robot-description-directory.md)
+- [APOLLO Blender](../entities/paper-apollo-blender.md)
 
 ## 参考来源
 

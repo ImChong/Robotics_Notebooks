@@ -3,7 +3,7 @@
 type: entity
 tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-29
 related:
   - ./blender.md
   - ./botlab-motioncanvas.md
@@ -12,6 +12,7 @@ related:
   - ./video-shotcraft.md
   - ../concepts/character-animation-vs-robotics.md
   - ../methods/deepmimic.md
+  - ./paper-apollo-blender.md
 sources:
   - ../../sources/sites/manim-community.md
   - ../../sources/repos/manim-community.md
@@ -118,6 +119,7 @@ flowchart LR
 - [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill（镜头卡 + 成片模板；与 Manim 数学讲解片不同栈）
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [DeepMimic（图形学起源的模仿学习）](../methods/deepmimic.md)
+- [APOLLO Blender](./paper-apollo-blender.md) — 3D 机型论文图；公式讲解仍走本页
 
 ## 参考来源
 

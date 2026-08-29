@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-29",
-  "node_count": 3341,
-  "edge_count": 30016,
+  "node_count": 3342,
+  "edge_count": 30030,
   "coverage": {
-    "covered": 3316,
-    "total": 3316,
+    "covered": 3317,
+    "total": 3317,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-apollo-blender.md",
+      "detail_id": "entity-paper-apollo-blender",
+      "label": "APOLLO Blender",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-clap-cross-embodiment.md",
       "detail_id": "entity-paper-clap-cross-embodiment",
@@ -207,33 +218,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lac.md",
-      "detail_id": "entity-paper-lac",
-      "label": "LAC：人形全身线角柔顺",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-clap-cross-embodiment.md",
-    "detail_id": "entity-paper-clap-cross-embodiment",
-    "label": "CLAP：跨本体视频世界模型当零样本物理模拟器",
+    "path": "wiki/entities/paper-apollo-blender.md",
+    "detail_id": "entity-paper-apollo-blender",
+    "label": "APOLLO Blender",
     "type": "entity",
     "recency": "2026-08-29",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 801
+      "size": 802
     },
     {
       "label": "操作",

@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
-updated: 2026-08-18
+updated: 2026-08-29
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/centroidal-dynamics.md
