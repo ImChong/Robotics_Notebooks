@@ -3,7 +3,7 @@ type: entity
 title: HRDexDB（人–机器人配对灵巧抓取数据集）
 tags: [dataset, dexterous, manipulation, cross-embodiment, teleoperation, tactile, snu, allegro-hand]
 summary: "SNU/RLWRLD 首个同物体配对的人–灵巧机器人抓取序列集：100+ 物体、多种手形态、23 路同步相机与统一世界坐标系 3D 标注，含 Inspire/Allegro 触觉与成败标签。"
-updated: 2026-07-01
+updated: 2026-08-29
 status: complete
 related:
   - ../tasks/manipulation.md
@@ -12,6 +12,7 @@ related:
   - ../concepts/tactile-sensing.md
   - ./allegro-hand.md
   - ../overview/hub-grasp.md
+  - ./dexbench.md
 sources:
   - ../../sources/papers/hrdexdb_arxiv_2604_14944.md
   - ../../sources/sites/snuvclab-hrdexdb-github-io.md
@@ -114,6 +115,7 @@ flowchart LR
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Allegro Hand](./allegro-hand.md)
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)
+- [DexBench](./dexbench.md) — 同机构工业任务规格；本页是人–机配对抓取数据，不是 T00–T17 套件
 
 ## 推荐继续阅读
 

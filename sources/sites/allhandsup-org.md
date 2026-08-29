@@ -94,9 +94,10 @@ RLWRLD 基于「真机操作十数款腕装模块化灵巧手」的经验，公�
 ## 关联资料
 
 - 同机构 VLA：[RLDX-1 仓库归档](../repos/rldx-1.md)
-- 任务基准（独立站，本次不另建页）：<https://dexbench.org>
+- 任务基准：[DexBench 站点归档](./dexbench-org.md)（独立站；2026-08-29 已升格 wiki）
 
 ## 对 wiki 的映射
 
 - [All Hands Up](../../wiki/entities/all-hands-up.md) — 平台实体与选型读法
+- [DexBench](../../wiki/entities/dexbench.md) — 同机构 18 任务 / OSC 规格（本站只映射硬件轴）
 - 交叉：[Allegro Hand](../../wiki/entities/allegro-hand.md)、[Orca Hand](../../wiki/entities/orca-hand.md)、[舞肌 / Wuji Hand](../../wiki/entities/wuji-robotics.md)、[RLDX-1](../../wiki/entities/rldx-1.md)、[灵巧手运动学](../../wiki/concepts/dexterous-kinematics.md)、[灵巧操作数据采集指南](../../wiki/queries/dexterous-data-collection-guide.md)

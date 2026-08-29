@@ -1,3 +1,12 @@
+## [2026-08-29] ingest | sources/sites/dexbench-org.md — DexBench 工业灵巧规格；规范已公开，官方仓与 Arena 评测栈待发布；wiki/entities/dexbench.md
+
+- **触发：** 用户指定 <https://dexbench.org/en/>
+- **步骤 2.5：** **部分开源** — 项目页完整公开 18 任务 / 55 case / OSC / 采购清单；`RLWRLD/DexBench` 404；Isaac Lab-Arena 将 NVIDIA DexBench 标为 coming soon。HF 数据卡公开检索可见 `dexbench/single-lerobot`、`dexbench/bimanual-lerobot`（本环境 API 401，未能二次核验）。
+- **关键页：** [`wiki/entities/dexbench.md`](wiki/entities/dexbench.md)
+- **交叉：** All Hands Up、RLDX-1、Isaac Lab、DexVerse（消歧）、评测选型闭环 / 枢纽、Manipulation
+- **开源结论：** 规范可搭台；官方评测代码与 Arena 环境待发布。勿与 sail-ucf/dexbench、DexVerse 混名。
+- **机构：** 既有 `rlwrld` / `nvidia`，未改 `institutions.json`
+
 ## [2026-08-29] ingest | sources/papers/riemann_1_0.md — Riemann-1.0 全因果 WAM；项目页已开、模型代码确认未开源；wiki/entities/paper-riemann-1.md
 
 - **触发：** 用户指定 <https://riemann-dynamics.github.io/Riemann-1.0-Website>
