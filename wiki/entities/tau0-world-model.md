@@ -12,7 +12,7 @@ tags:
   - multi-view
   - heterogeneous-data
 status: complete
-updated: 2026-08-19
+updated: 2026-08-29
 related:
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md
@@ -147,6 +147,7 @@ flowchart TB
 - [mimic-video](../methods/mimic-video.md)
 - [GE-Sim 2.0](./ge-sim-2.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Riemann-1.0](./paper-riemann-1.md) — 闭源动作优先 WAM；真机表把本页列为对照（均 SR 16.3%）
 
 ## 推荐继续阅读
 

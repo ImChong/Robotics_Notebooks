@@ -331,7 +331,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 与 World Action Models（WAM）的关系
 
-综述 *World Action Models*（arXiv:2605.12090）把典型 VLA 写作 **\(p(a \mid o, l)\)** 的语义条件策略，并指出其往往 **不显式滚未来物理状态**。当未来观测预测与动作生成在 **同一策略框架内耦合**、并以联合对象 **\(p(o', a \mid o, l)\)** 为训练目标时，文献中才归类为 **WAM**（含 Cascaded 与 Joint 两族）。入口概念页见 [World Action Models（WAM）](../concepts/world-action-models.md)。
+综述 *World Action Models*（arXiv:2605.12090）把典型 VLA 写作 **\(p(a \mid o, l)\)** 的语义条件策略，并指出其往往 **不显式滚未来物理状态**。当未来观测预测与动作生成在 **同一策略框架内耦合**、并以联合对象 **\(p(o', a \mid o, l)\)** 为训练目标时，文献中才归类为 **WAM**（含 Cascaded 与 Joint 两族）。入口概念页见 [World Action Models（WAM）](../concepts/world-action-models.md)。闭源产业侧 [Riemann-1.0](../entities/paper-riemann-1.md) 把 Joint 再收成 **动作优先全因果 AR**（先 \(a_t\) 再 \(z_t\)），同一模型兼任策略与仿真；真机对照表里 [G0.5](../entities/paper-galaxea-g05.md) 是其开源 VLA 对手。
 
 ## 部署经验后训练（post-training from experience）
 
@@ -517,6 +517,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [EgoSteer](../entities/paper-egosteer.md) — EgoSmith + HITL DAgger + WM 增强 flow-VLA 全栈（arXiv:2607.09701）
 - [HumanNet](../entities/humannet.md) — 百万小时人中心视频语料与管线级设计参照
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合未来–动作范式与 VLA/世界模型分界
+- [Riemann-1.0](../entities/paper-riemann-1.md) — 闭源全因果动作优先 WAM；真机开源对照是 G0.5
 - [World Action Planner](../entities/paper-world-action-planner.md) — 相对 π₀.₅ / cosmos-policy 的模型基规划对照（arXiv:2607.27599）
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA **内嵌** chunk-wise 预测式世界建模（小鹏；未开源）
 - [S²-VLA](../entities/paper-s-squared-vla.md) — 驾驶 VLA **语义∥空间双流** 解耦（武汉理工；NAVSIM SFT PDMS 87.1；未开源）

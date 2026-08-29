@@ -11,7 +11,7 @@ tags:
   - dream-forcing
   - alibaba
 status: complete
-updated: 2026-08-10
+updated: 2026-08-29
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md
@@ -146,6 +146,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — RoboTwin / LIBERO 精细操纵语境
 - [VLA](../methods/vla.md) — π₀.₅ / GR00T 等反应式对照基线
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 人形实时 WAM 对照
+- [Riemann-1.0](./paper-riemann-1.md) — 闭源动作优先 WAM；RoboCasa365 62.6% vs 本页 54.2%，RoboTwin 同档 94.3/94.1
 - [ABot-World-0](./paper-abot-world-0.md) — 同机构交互式视频世界模型（勿与本页混淆）
 - [Loco-Manip 接触 · 05 VLA/WM](../overview/loco-manip-contact-category-05-vla-world-models.md) — 上层模型与接触结构接口
 

@@ -3100,6 +3100,20 @@
         "pollen"
       ]
     },
+    "riemann-dynamics": {
+      "label": "黎曼动力（Riemann Dynamics）",
+      "aliases": [
+        "riemann-dynamics",
+        "riemann-1"
+      ]
+    },
+    "kunlun-wanwei": {
+      "label": "昆仑万维（Kunlun Wanwei）",
+      "aliases": [
+        "kunlun-wanwei",
+        "kunlun-tech"
+      ]
+    },
     "independent-maintainer": {
       "label": "独立维护者（Independent Maintainer）",
       "aliases": [

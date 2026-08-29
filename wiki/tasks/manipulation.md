@@ -158,6 +158,7 @@ flowchart TD
 - **EgoWorld-100W**：StellarNex **百万级** 头戴第一人称操作语料，按 **场景×物体×动作×手性** 结构化；**申请制**合作开放（非公开一键下载）；入口见 [EgoWorld-100W](../entities/egoworld-100w.md)（与 ICLR [EgoWorld exo→ego](../entities/paper-egoworld.md) **同名异物**）
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；代码与权重已开源；入口见 [EgoSteer](../entities/paper-egosteer.md)（arXiv:2607.09701）
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **[EgoVerse](../entities/paper-egoverse.md) 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
+- **Riemann-1.0**：黎曼动力 **全因果动作优先** WAM——先出 action chunk 再滚未来视觉；**232K+ h** 人/UMI/机三阶段预训练；RoboCasa365 **62.6%**、天机 Marvin 真机均 **85.0% SR**；**确认未开源**；入口见 [Riemann-1.0](../entities/paper-riemann-1.md)
 - **LD4WAM**：在 DINOv3 语义空间用 **Delta EE 运动对齐** 学跨本体潜动力学，再以 MoT WAM 的 learnable queries 从生成未来蒸馏该码；RoboTwin **93.4%**、夹爪+灵巧手真机均 **70.5%**；**确认未开源**；入口见 [LD4WAM](../entities/paper-ld4wam.md)（arXiv:2608.22403）
 - **ROS2SmolVLA**：把 **SmolVLA 450M** 接到 **ROS 2 + UR10e** 本地拾放；九场景总体 **77.72%**；**Docker + HF 已开源**；入口见 [ROS2SmolVLA](../entities/paper-ros2smolvla.md)（arXiv:2608.23320）
 - **Indi**：把示范片段的 **局部目标** 蒸馏进 VLA 解码器；GR00T-N1.7 SimplerEnv-Bridge **64.3→84.7%**；**未开源**；入口见 [Indi](../entities/paper-indi.md)（arXiv:2608.23478）
@@ -268,6 +269,7 @@ flowchart TD
 - [EventVLA](../entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆 + RoboTwin-MeM（arXiv:2606.20092）
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶加速度桥；RMBench 73.6%、真机 78%（arXiv:2606.30318）
 - [BridgeVLA++](../entities/paper-bridgevla-plusplus.md) — 3D heatmap VLA + 时空记忆；RMBench 96.0%、RLBench 93.7%（arXiv:2608.05042）
+- [Riemann-1.0](../entities/paper-riemann-1.md) — 全因果动作优先 WAM；RoboCasa365 62.6%、真机 85% SR（闭源）
 - [DreamWAM](../entities/paper-dreamwam.md) — beyond-RGB Joint WAM；LIBERO-Plus 75.47%、真机扰动 74.4%（arXiv:2608.04996）
 - [Flex-π](../entities/paper-flex-pi.md) — 多流算力柔性 Joint WAM；真机双臂 YAM ID 83.0% / OOD 76.1%，action-only↔full joint（arXiv:2608.10860；代码待发布）
 - [RTCF](../entities/paper-rtcf.md) — 免训练记忆检索 + 低频纠偏；LIBERO Long 61.6→68.6（arXiv:2608.04527）

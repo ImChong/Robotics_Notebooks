@@ -155,6 +155,7 @@ flowchart LR
 - [ω-0](../wiki/entities/paper-omega-0.md)（本仓库）— 潜空间未来观测 embedding + SONIC 全身动作 latent 扩散的人形并发 loco-manip Joint WAM；ω-HOME 40h+/4827 episodes，G1 上 11 任务 Omni 成功率 81.8% 大幅超 ψ-0（44.5%）/DiT4DiT（43.6%）/Fast-WAM（37.1%）；代码/数据 WIP
 - [DreamWAM](../wiki/entities/paper-dreamwam.md)（本仓库）— 训练期用 RGB+Flow 联合去噪与 Depth/DINO 门控残差监督 beyond-RGB 未来（外观+运动+几何+语义），推理仍 RGB-only；LIBERO-Plus 69.16%→75.47%、真机视觉扰动 55.6%→74.4%；代码/权重已开源
 - [Dyna-2](../wiki/entities/dyna-2.md)（本仓库）— Dyna Robotics 闭源旗舰 WAM：≥1M h egocentric 人视频预训练（零机器人数据），报告人 held-out 与人→机零样本幂律；消融主张 video co-training 是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；未开源
+- [Riemann-1.0](../wiki/entities/paper-riemann-1.md)（本仓库）— 黎曼动力闭源全因果 AR WAM：动作优先再条件化未来视觉；232K+ h 人/UMI/机三阶段课程；RoboCasa365 62.6%（+8.4 vs ABot-M0.5）、天机 Marvin 真机均 85.0% SR；无 arXiv / 未开源
 - [FACT](../wiki/entities/paper-fact.md)（本仓库）— 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
 - [Motubrain](../wiki/entities/paper-motubrain.md)（本仓库）— UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
 - [Flex-π](../wiki/entities/paper-flex-pi.md)（本仓库）— 6B 多流 Joint WAM，共享冻结 Wan VAE 联合编码 RGB+pointmap+DINOv3，流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布
