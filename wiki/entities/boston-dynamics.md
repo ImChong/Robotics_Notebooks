@@ -3,8 +3,9 @@
 type: entity
 tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-30
 related:
+  - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./benjamin-katz.md
   - ./mit-mini-cheetah.md
   - ./humanoid-robot.md
@@ -47,7 +48,7 @@ Atlas 是世界上最先进的人形机器人之一，代表了双足机器人�
 Spot 是全球最成功的商业化足式机器人，广泛应用于工业巡检、测绘和高危环境作业。
 - **环境适应性**：其核心竞争力在于极强的环境适应性（如 AutoWalk 自主巡检系统）和极其稳定的步态控制。
 - **商业化证明**：Spot 证明了四足机器人能够在工厂、矿区、变电站等结构复杂、障碍众多的真实场景中，以极高的可靠性（MTBF，平均故障间隔时间）连续运行。它不仅是一个硬件平台，更是一个集成了避障、楼梯攀爬、感知与导航的完整机器人产品。
-- **研究生态**：第三方 **NeBula 长程地下探索**（[Autonomous Spot](./paper-autonomous-spot-nebula-exploration.md)）与 **Spot RL Researcher Kit + Isaac Lab** 高性能 RL（[分布距离 Sim2Real](./paper-spot-rl-distributional-sim2real.md)）展示 **任务级自主** 与 **低层数据驱动控制** 两条研究线；**专利层** 的在线轨迹优化与关节模组集成见 [足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)。
+- **研究生态**：第三方 **NeBula 长程地下探索**（[Autonomous Spot](./paper-autonomous-spot-nebula-exploration.md)）与 **Spot RL Researcher Kit + Isaac Lab** 展示 **任务级自主** 与 **低层数据驱动控制** 两条研究线——入门部署见 [Isaac Lab Spot locomotion 教程](./nvidia-isaac-lab-spot-locomotion-sim2real.md)，高性能/标定见 [分布距离 Sim2Real 论文](./paper-spot-rl-distributional-sim2real.md)；**专利层** 的在线轨迹优化与关节模组集成见 [足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)。
 
 ### 3. Stretch (仓储机器人)
 Stretch 是一款针对物流搬运设计的非类人机器人。它拥有一个巨大的多自由度机械臂和一个带有吸盘的末端执行器，安装在全向移动底座上。Stretch 展示了波士顿动力将过去在足式平衡中积累的“质心控制”与“动态操作”技术，成功降维并迁移到工业垂直领域的商业能力。

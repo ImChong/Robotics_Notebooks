@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-29
+updated: 2026-08-30
 related:
   - ../entities/paper-flatlab.md
   - ../concepts/llm-robotics-control-interfaces.md
@@ -231,6 +231,7 @@ flowchart TD
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉策略 + 触觉残差真机 RL 的快速接触适应（arXiv:2607.03723）
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 视触觉主动掌三指夹爪 + 手势条件遥操作重定向（arXiv:2607.15448）
 - [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
+- [NVIDIA Isaac Lab UR10e 工业装配 Sim2Real](../entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — IndustReal 思路 + Factory 族环境 + Isaac ROS 6D 感知 + UR 力矩阻抗零样本装配
 - [ADEPT](../entities/paper-adept-dexterity.md) — 灵巧 RL 预训练+后训练+sim2real FMB（NVIDIA/UMich，arXiv:2608.19182）
 - [RoboEdit](../entities/paper-roboedit.md) — 人类视频编辑为 RoboEdit-14M robot experience（UCLA，arXiv:2608.18948）
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳索动态打结的 Task-Level ILC + 单示教真机迭代（arXiv:2602.21302）

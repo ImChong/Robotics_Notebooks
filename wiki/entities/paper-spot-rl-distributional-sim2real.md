@@ -7,7 +7,7 @@ tags:
   - legged-robot
   - nvidia
 status: complete
-updated: 2026-07-05
+updated: 2026-08-30
 arxiv: "2504.17857"
 venue: "arXiv 2025"
 related:
@@ -19,8 +19,11 @@ related:
   - ../methods/reinforcement-learning.md
   - ./paper-autonomous-spot-nebula-exploration.md
   - ./patent-boston-dynamics-legged-control-stack.md
+  - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
 sources:
   - ../../sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md
+  - ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
+  - ../../sources/repos/spot_rl_example.md
 summary: "Spot RL Researcher Kit 低层 API 上端到端 RL 部署；Wasserstein/MMD 度量 sim2real 分布差，CMA-ES 优化仿真参数，Isaac Lab 训练实现 >5.2 m/s 多步态。"
 ---
 
@@ -121,11 +124,13 @@ flowchart LR
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [强化学习](../methods/reinforcement-learning.md)
 - [Autonomous Spot / NeBula](./paper-autonomous-spot-nebula-exploration.md)
+- [Isaac Lab Spot locomotion 教程（官方博客）](./nvidia-isaac-lab-spot-locomotion-sim2real.md)
 - [BD 足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)
 
 ## 参考来源
 
 - [Spot RL 论文摘录（arXiv:2504.17857）](../../sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md)
+- [NVIDIA 博客：Spot locomotion Sim2Real](../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md)
 
 ## 推荐继续阅读
 

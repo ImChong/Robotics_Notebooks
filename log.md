@@ -1,3 +1,11 @@
+## [2026-08-30] ingest | sources/blogs/nvidia_isaac_lab_{ur10e_industrial_assembly,spot_locomotion}_sim2real.md — NVIDIA 官方 Isaac Lab sim2real 博客：UR10e IndustReal 装配 + Spot Researcher Kit 平地 velocity
+
+- **触发：** 用户指定两篇 NVIDIA Developer Blog；要求自动合并 PR
+- **步骤 2.5：**
+  - **UR10e 装配** — Isaac Lab / Isaac ROS **已开源**；UR Direct Torque **早期访问**；本篇完整训练包 **待发布**
+  - **Spot locomotion** — Isaac Lab + [spot-rl-example](https://github.com/boston-dynamics/spot-rl-example) **已开源**；joint SDK / Kit 硬件 **需 BD 渠道**
+- **关键页：** [`nvidia-isaac-lab-ur10e-industrial-assembly-sim2real`](wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md)、[`nvidia-isaac-lab-spot-locomotion-sim2real`](wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md)
+
 ## [2026-08-30] ingest | sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md — 10 篇独立详情节点（新建 8 / 复用 Indi+DreamMimic）；GlanceWAM / Physical Agentic / Bet4Sim2Real 已开源
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/MdCtmijSM_VfYp19f-nZQw>；要求每篇论文独立、非重复详情节点；要求自动合并 PR
