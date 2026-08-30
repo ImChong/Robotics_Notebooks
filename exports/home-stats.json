@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-30",
-  "node_count": 3345,
-  "edge_count": 30096,
+  "node_count": 3346,
+  "edge_count": 30108,
   "coverage": {
-    "covered": 3320,
-    "total": 3320,
+    "covered": 3321,
+    "total": 3321,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -230,7 +230,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 829
+      "size": 830
     },
     {
       "label": "操作",

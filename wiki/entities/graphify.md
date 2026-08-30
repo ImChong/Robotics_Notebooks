@@ -10,13 +10,14 @@ tags:
   - agent-infrastructure
   - mcp
 status: complete
-updated: 2026-07-16
+updated: 2026-08-30
 related:
   - ./superpowers-obra.md
   - ./agent-reach.md
   - ./caveman.md
   - ./hermes-agent.md
   - ./mattpocock-skills.md
+  - ./archify.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
@@ -92,6 +93,7 @@ flowchart TD
 - [Caveman](caveman.md) — **输出 token** 压缩；与本页 **输入侧少读文件** 形成省钱三角
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时；上游支持 `graphify install --platform hermes`
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量工程技能库；同属 **skills 文件化** 生态
+- [Archify](archify.md) — **可校验演示/审阅系统图**；本页是探索期查询图，不是对外沟通 HTML
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **人工 ingest** 规范（graphify 不替代）
 
 ## 参考来源
