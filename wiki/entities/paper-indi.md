@@ -8,7 +8,7 @@ tags:
   - manipulation
   - postech
 status: complete
-updated: 2026-08-26
+updated: 2026-08-30
 arxiv: "2608.23478"
 related:
   - ../methods/vla.md
@@ -17,11 +17,15 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/manipulation.md
   - ../overview/open-source-7-papers-system-structure-technology-map.md
+  - ../overview/glancewam-vla-crew-10-papers-technology-map.md
   - ./paper-ros2smolvla.md
+  - ./paper-m3-modality-masking.md
+  - ./paper-imitator-game.md
 sources:
   - ../../sources/papers/indi_arxiv_2608_23478.md
   - ../../sources/sites/indi-leesangoh.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_vla_intent_space_2026-08-26.md
+  - ../../sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md
 summary: "Indi（arXiv:2608.23478，POSTECH）：冻结教师 VLM 把示范片段的局部目标蒸馏进 VLA 动作解码器；部署无教师。GR00T-N1.7 在 SimplerEnv-Bridge 64.3→84.7%，真机 62.0→68.7%；项目页未列训练代码。"
 ---
 
@@ -146,12 +150,16 @@ GR00T-N1.7 64.1→**70.3%**，距论文引用的 3000 demo/task 报告点 70.8% 
 - [π0.5](./paper-pi05-open-world-vla.md) — 第二骨干
 - [ROS2SmolVLA](./paper-ros2smolvla.md) — 同专辑工业轻量 VLA
 - [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md)
+- [M3](./paper-m3-modality-masking.md) — 训练期模态遮蔽，不改意图监督
+- [Imitator Game](./paper-imitator-game.md) — 用 L3 功能替代评意图而非轨迹
+- [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
 
 ## 参考来源
 
 - [Indi 论文摘录](../../sources/papers/indi_arxiv_2608_23478.md)
 - [项目页归档](../../sources/sites/indi-leesangoh.md)
 - [具身智能小站 7 篇盘点](../../sources/blogs/wechat_embodied_station_7_papers_vla_intent_space_2026-08-26.md)
+- [具身智能小站 10 篇盘点](../../sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md)
 
 ## 推荐继续阅读
 

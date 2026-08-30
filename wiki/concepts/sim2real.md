@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-30
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -42,6 +42,7 @@ related:
   - ../entities/paper-online-mbrl-robot-control.md
   - ../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md
   - ../entities/paper-slowrl-safe-lora-locomotion-sim2real.md
+  - ../entities/paper-bet4sim2real.md
   - ../entities/paper-fada-humanoid.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
@@ -272,6 +273,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 ## 关联页面
 
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷四世界模型 / Sim2Real 面试速查（DR、蒸馏、仿真栈）
+- [Bet4Sim2Real](../entities/paper-bet4sim2real.md) — 仿真库逐次下注收窄 anytime-valid 真机证书（arXiv:2608.21572；已开源）
 - [Space Mining with Robotics](../entities/paper-space-mining-with-robotics.md) — 地外任务数据、地球类比数据集与高保真仿真作为算法验证基础设施（arXiv:2608.21358）
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — 描述符驱动导出 + MuJoCo Sim2Sim / 真机合同；运动质量诊断作部署门禁（arXiv:2603.20147）
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 线中的仿真训练与域随机化迁移读法

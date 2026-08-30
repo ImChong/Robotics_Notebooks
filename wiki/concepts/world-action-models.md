@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -39,6 +39,8 @@ related:
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
   - ../entities/paper-ld4wam.md
   - ../entities/paper-dreammimic.md
+  - ../entities/paper-glancewam.md
+  - ../overview/glancewam-vla-crew-10-papers-technology-map.md
   - ../entities/paper-egoverse.md
   - ../entities/paper-embodiedvae.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
@@ -269,6 +271,7 @@ flowchart TB
 - [sources/papers/egowam.md](../../sources/papers/egowam.md)
 - [sources/papers/ld4wam_arxiv_2608_22403.md](../../sources/papers/ld4wam_arxiv_2608_22403.md) — 跨本体运动对齐潜动力学 WAM
 - [sources/papers/dreammimic_arxiv_2608_22278.md](../../sources/papers/dreammimic_arxiv_2608_22278.md) — RSSM 辅助视觉全身蒸馏（对照：WM≠WAM）
+- [sources/papers/glancewam_arxiv_2608_23927.md](../../sources/papers/glancewam_arxiv_2608_23927.md) — 异步稀疏前瞻 WAM（48 ms）
 - [sources/papers/being_m07.md](../../sources/papers/being_m07.md)
 - [sources/papers/worldvln_arxiv_2605_15964.md](../../sources/papers/worldvln_arxiv_2605_15964.md)
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
@@ -317,6 +320,7 @@ flowchart TB
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - [LD4WAM（运动对齐潜动力学 · 人视频 WAM）](../entities/paper-ld4wam.md) — DINOv3 语义码 + Delta EE；RoboTwin 93.4%、真机 70.5%；未开源（arXiv:2608.22403）
 - [DreamMimic（RSSM 辅助视觉全身蒸馏）](../entities/paper-dreammimic.md) — 世界模型作蒸馏稳定器而非 Joint WAM；代码 Coming soon（arXiv:2608.22278）
+- [GlanceWAM](../entities/paper-glancewam.md) — 异步单帧前瞻，动作头 48 ms；RoboCasa 72.2% / LIBERO 99.0%；已开源（arXiv:2608.23927）
 - [JoyAI-RA 0.5（双动作对齐 VLWA）](../entities/paper-joyai-ra-05.md) — LAC-WM + 130-D 显式对齐；人视频缩放未见饱和（未开源）
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [World Action Planner（VLM + pose-image WM 规划）](../entities/paper-world-action-planner.md)

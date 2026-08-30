@@ -24,6 +24,7 @@ related:
   - ./paper-rtcf.md
   - ./paper-reflexvla.md
   - ./paper-arli.md
+  - ./paper-glancewam.md
   - ./paper-kai0.md
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
   - ../tasks/manipulation.md

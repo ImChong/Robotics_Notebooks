@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-08-24
+updated: 2026-08-30
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -12,6 +12,7 @@ related:
   - ./manipulation.md
   - ../entities/paper-autointervene.md
   - ../entities/paper-nestdex.md
+  - ../entities/paper-m3-modality-masking.md
   - ../entities/paper-partialbigrasp.md
   - ../entities/lw-benchhub-tour.md
   - ./loco-manipulation.md
@@ -187,6 +188,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — G1 人形双臂交接等接触丰富任务的部署期闭环改进（53%→96%）
 - [AutoIntervene](../entities/paper-autointervene.md) — action-chunking 双臂策略的校准自动接管与针对性干预数据（arXiv:2608.07065）
 - [NestDex](../entities/paper-nestdex.md) — 双臂 Toast / Binder 用 clutch copilot 采长程灵巧示范（arXiv:2608.13362）
+- [M3](../entities/paper-m3-modality-masking.md) — 训练期模态遮蔽稳住查询式双臂 VLA（arXiv:2608.22419；未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真双臂 Piper 厨房 PnP：EnvHub 闭环、cuRobo 可达性闸门与自过滤数据飞轮
 
 ## 参考来源

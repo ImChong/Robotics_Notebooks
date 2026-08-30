@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-30",
-  "node_count": 3345,
-  "edge_count": 30096,
+  "node_count": 3354,
+  "edge_count": 30173,
   "coverage": {
-    "covered": 3320,
-    "total": 3320,
+    "covered": 3329,
+    "total": 3329,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -185,7 +185,8 @@
       "recency": "2026-08-28",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/concepts/model-hardware-standard.md",
@@ -194,7 +195,8 @@
       "type": "concept",
       "recency": "2026-08-28",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/concepts/recursive-self-improvement.md",
@@ -214,7 +216,8 @@
       "recency": "2026-08-28",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -230,27 +233,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 829
+      "size": 939
     },
     {
       "label": "操作",
-      "size": 583
+      "size": 585
     },
     {
       "label": "视觉-语言-动作",
-      "size": 251
+      "size": 255
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 213
-    },
-    {
-      "label": "视觉语言动作纵深路线",
-      "size": 102
+      "size": 211
     },
     {
       "label": "机器人视觉感知栈选型闭环",
       "size": 90
+    },
+    {
+      "label": "移动操作",
+      "size": 76
     }
   ],
   "top_hubs": [
@@ -258,7 +261,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1352,
+      "degree": 1353,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -281,7 +284,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 820,
+      "degree": 830,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -305,7 +308,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 560,
+      "degree": 562,
       "has_repo": true
     },
     {
@@ -320,7 +323,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 494,
+      "degree": 496,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -37,6 +37,8 @@ related:
   - ../entities/paper-autointervene.md
   - ../entities/paper-nestdex.md
   - ../entities/paper-wam-realtime-async.md
+  - ../entities/paper-glancewam.md
+  - ../entities/paper-tonav.md
   - ../entities/paper-arli.md
   - ../entities/paper-video2door-traversal.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
@@ -211,6 +213,8 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」
 - [FlashVLA](../entities/paper-flashvla.md) — 流匹配 VLA 用交错噪声缓冲把 chunk 解码摊到时间轴上，修异步错配（arXiv:2608.27384）
+- [GlanceWAM](../entities/paper-glancewam.md) — WAM 动作块在潜空间 48 ms 解码，想象异步离环（arXiv:2608.23927）
+- [TONAV](../entities/paper-tonav.md) — 位置–速度动作块稳住四足铰接接触（arXiv:2608.22296）
 - [Revisiting Open-Loop Execution](../entities/paper-revisiting-open-loop-action-chunking.md) — arXiv:2608.15938：长 execution horizon 多因短上下文；够长 \(T_o\) 后 reactive 最优
 - [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) — 真机风格数据上开环 BC 可完胜逐步闭环；乱加历史不等于修好
 - [SPD](../entities/paper-spd.md) — 灵巧真机：历史窗才能把 chunk 缩到 8 步且吃到仿真预训练（CoRL 2026）
