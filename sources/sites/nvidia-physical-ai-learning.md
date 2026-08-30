@@ -51,5 +51,6 @@
 - 门户总览与路径选型 → [`wiki/entities/nvidia-physical-ai-learning.md`](../../wiki/entities/nvidia-physical-ai-learning.md)
 - SO-101 操作臂 Sim2Real 动手课（本门户 flagship 路径之一）→ [`sources/courses/nvidia_sim_to_real_so101_isaac.md`](../courses/nvidia_sim_to_real_so101_isaac.md) → [`wiki/entities/nvidia-so101-sim2real-lab-workflow.md`](../../wiki/entities/nvidia-so101-sim2real-lab-workflow.md)
 - Isaac Lab 入门四模块课（RL + manager-based）→ [`sources/courses/nvidia_getting_started_isaac_lab.md`](../courses/nvidia_getting_started_isaac_lab.md) → [`wiki/entities/nvidia-getting-started-isaac-lab.md`](../../wiki/entities/nvidia-getting-started-isaac-lab.md)
+- Learn OpenUSD 课纲 → [`sources/courses/nvidia_learn_openusd.md`](../courses/nvidia_learn_openusd.md) → [`wiki/entities/nvidia-learn-openusd.md`](../../wiki/entities/nvidia-learn-openusd.md)
 - Isaac / Omniverse 底座 → [`wiki/entities/nvidia-omniverse.md`](../../wiki/entities/nvidia-omniverse.md)、[`wiki/entities/isaac-gym-isaac-lab.md`](../../wiki/entities/isaac-gym-isaac-lab.md)
 - LeRobot 数据采集栈 → [`wiki/entities/lerobot.md`](../../wiki/entities/lerobot.md)
