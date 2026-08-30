@@ -5,22 +5,23 @@
 - **标题：** ParkourFormer: Integrating Predictive Supervision and Sequence Modeling into Parkour Locomotion
 - **缩写：** **ParkourFormer**
 - **类型：** paper / humanoid / parkour / sequence-modeling / future-prediction / amp / rgb-d
-- **来源：** [arXiv:2605.25782](https://arxiv.org/abs/2605.25782)（HTML：[ar5iv](https://ar5iv.labs.arxiv.org/html/2605.25782)）
+- **来源：** [arXiv:2605.25782](https://arxiv.org/abs/2605.25782)（官方 HTML：[v3](https://arxiv.org/html/2605.25782v3)；镜像：[ar5iv](https://ar5iv.labs.arxiv.org/html/2605.25782)）
 - **项目页：** <https://mronaldo-gif.github.io/parkourformer.github.io/> — 归档见 [`sources/sites/parkourformer-github-io.md`](../sites/parkourformer-github-io.md)
 - **PDF：** <https://arxiv.org/pdf/2605.25782>
 - **作者：** Yanheng Mai、Wenhao Xu、Zirui Huang、Yifei Fu、Shengwei Dong、Xinjue Wang、Kailun Huang、Yanzhe Xie、Renjing Xu†（† corresponding，`renjingxu@hkust-gz.edu.cn`）
 - **机构：** 香港科技大学广州校区（HKUST-GZ）；CLAI-LAB / CL-TECH；华南农业大学（SCAU）；广东工业大学（GDUT）
 - **发表：** arXiv preprint，2026（检索到 v3，2026-06-12）
 - **入库日期：** 2026-08-16
-- **最后更新：** 2026-08-16
+- **最后更新：** 2026-08-30
 - **一句话说明：** 把人形跑酷写成 **future-conditioned Seq2Seq**：当前状态用 cross-attention 查询历史，预测头监督未来两步本体/AMP 状态，再把预测未来拼进动作头与 AMP 判别器；G1 上九类地形统一策略平均穿越成功率 **93.85%**。
 
 ## 开源状态（步骤 2.5）
 
-- **核查日：** 2026-08-16。打开项目页、作者 GitHub [`MRonaldo-gif`](https://github.com/MRonaldo-gif) 与站点仓 [`parkourformer.github.io`](https://github.com/MRonaldo-gif/parkourformer.github.io)。
-- **已发布：** 项目页、arXiv PDF/HTML、真机与仿真演示视频（页内嵌入）。
-- **未发布：** 训练/推理代码、权重、数据集。站点仓仅为 github.io 主页；作者公开仓无训练入口；论文未承诺开源。
-- **结论：** **确认未开源**。wiki 实体页「源码运行时序图」写 **不适用**。
+- **复核日：** 2026-08-30。打开项目页、作者 GitHub [`MRonaldo-gif`](https://github.com/MRonaldo-gif)、站点仓 [`parkourformer.github.io`](https://github.com/MRonaldo-gif/parkourformer.github.io)、arXiv HTML v3，并检索 GitHub「ParkourFormer」。
+- **已发布：** 项目页、arXiv PDF/HTML（仍为 **v3**，2026-06-12）、真机与仿真演示视频（页内嵌入）。
+- **未发布：** 训练/推理代码、权重、数据集。站点仓仅为 github.io 主页（`index.html` + `static`）；作者公开仓无训练入口。`Pixel-114514/parkourformer.github.io` 为早期主页拷贝，同样无训练脚本。
+- **承诺：** 项目页按钮现为 **「Code(Coming Soon)」**（`href` 仍注释掉，未指向训练仓）。论文正文仍无 GitHub / HF 链接。
+- **结论：** **宣称将开源 / 待发布**（相对 2026-08-16「确认未开源」：页上已出现 Coming Soon，但仍无可运行实现）。wiki「源码运行时序图」继续写 **不适用**。
 
 ## 摘录 1：问题与三条贡献
 
@@ -44,7 +45,7 @@
 | 历史 | \(\mathbf{o}_t=\{o_{t-7},\ldots,o_t\}\)（8 帧） |
 | 动作 | \(\mathbf{a}_t\in\mathbb{R}^{29}\)，名义姿态上的 action delta，底层 PD |
 
-骨干：当前观测 + 深度 token 作 **query**，历史 token 作 **key/value**，多层 cross-attention + residual FFN。地形上下文 \(c_t\) 经 **Conditional SwiGLU** 乘性门控调制中间特征。非对称 critic 额外吃特权线速度 \(\mathbf{v}_l\)。
+骨干：当前观测 + 深度 token 作 **query** \(\mathbf{Q}_t^{(0)}\in\mathbb{R}^{2\times 128}\)，历史投成记忆 \(\mathbf{M}_t\in\mathbb{R}^{8\times 128}\) 作 **key/value**，多层 cross-attention + residual FFN。地形上下文 \(c_t\) 经 **Conditional SwiGLU**（Eq. 5，\(C_1,C_2\) 调制）乘性门控中间特征。非对称 critic 额外吃特权线速度 \(\mathbf{v}_l\)。判别器完整序列 \(\tilde{\mathbf{s}}_t\in\mathbb{R}^{10\times 67}\)。仿真与真机评测均用 **G1 29 DoF**。
 
 **未来预测头：** 从 Transformer 特征确定性预测未来 **两步** AMP 状态 \(\hat{\mathbf{s}}_{t+1:t+2}\)。监督：
 
@@ -66,7 +67,7 @@
 
 ## 摘录 3：九类地形与主结果（Table 1–3）
 
-训练地形（Fig. 5）：Boxes、Walk Over Obstacles、Climb Slope、Rough ground、Up Stairs、Climb Down、Down stairs、Climb Up、Gaps Crossing；每类 **L1–L9** 难度。
+训练地形（Fig. 5）：Boxes、Walk Over Obstacles、Climb Slope、Rough ground、Up Stairs、Climb Down、Down stairs、Climb Up、Gaps Crossing；每类 **L1–L9** 难度。复杂度沿三维：几何变化（阶高/坡角）、障碍密度与间距、不连续（缺口/突变高差）。
 
 **Table 1 平均穿越成功率（%）：**
 
