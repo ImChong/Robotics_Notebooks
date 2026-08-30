@@ -2,7 +2,7 @@
 
 ## [2026-08-30] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -106,9 +106,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-clap-cross-embodiment.md（含绝对化措辞「SOTA」，updated=2026-08-29；同主题更新页 wiki/entities/isaac-lab-default-environments.md updated=2026-08-30）
-- wiki/entities/paper-riemann-1.md（含绝对化措辞「SOTA」，updated=2026-08-29；同主题更新页 wiki/entities/isaac-lab-default-environments.md updated=2026-08-30）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -119,9 +118,8 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-bet4sim2real.md
-- wiki/entities/paper-imitator-game.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无

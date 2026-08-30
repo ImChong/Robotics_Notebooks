@@ -11,7 +11,7 @@ tags:
   - unitree-g1
   - princeton
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 arxiv: "2608.27406"
 code: https://github.com/omni-CLAP/clap
 related:
@@ -55,7 +55,7 @@ summary: "CLAP（arXiv:2608.27406，Princeton）：跨本体动作条件视频 W
 ## 为什么重要
 
 - **跨本体不是「把数据拼起来」：** 关节维数不同、人视频无标签。CLAP 把统一表示拆成 EE / 语言 / 潜动作，再用课程克服各自短板。
-- **对照 Ctrl-World：** 同属 SVD 动作条件视频 WM，但 Ctrl-World 锁 DROID 单本体；CLAP 用更少域内样本追上或超过 DROID SOTA，再用后训练全面超过。
+- **对照 Ctrl-World：** 同属 SVD 动作条件视频 WM，但 Ctrl-World 锁 DROID 单本体；CLAP 用更少域内样本在 DROID 上接近或超过 Ctrl-World，再用后训练全面超过该单本体基线。
 - **可复现栈：** MIT 许可仓 + HF 全套检查点，含 **`adapt-g1`（26-D）**；推理 **<12 GB**，消费级卡可回放。
 - **用途是沙盒，不是像素策略：** 推理时规划与视频内 RL，用来抬 \(\pi_{0.5}\) / MolmoAct-2，而不是替代 VLA。
 
