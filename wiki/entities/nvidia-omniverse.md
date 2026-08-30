@@ -2,18 +2,20 @@
 type: entity
 tags: [software, simulation, physics-engine, nvidia, realtime, metaverse]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-30
 related:
   - ./blender.md
   - ./mujoco.md
   - ./isaac-sim.md
   - ./isaac-lab.md
+  - ./nvidia-learn-openusd.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/simulation.md
   - ../../sources/repos/isaac_sim.md
+  - ../../sources/courses/nvidia_learn_openusd.md
 summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于 USD 格式、工业级的实时三维协作与仿真引擎，旨在为具身智能提供高保真的数字化孪生环境。"
 ---
 
@@ -54,6 +56,7 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 
 ## 关联页面
 - [Isaac Sim](./isaac-sim.md) — Omniverse 上的机器人仿真应用实体页
+- [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md) — 官方 USD 课纲与 OpenUSD 认证备考
 - [Isaac Lab](./isaac-lab.md) — 建立在 Isaac Sim 上的学习框架
 - [Blender（开源 DCC 与 USD 资产来源）](./blender.md)
 - [MuJoCo 物理引擎](./mujoco.md)

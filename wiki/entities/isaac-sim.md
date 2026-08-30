@@ -2,12 +2,13 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-30
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md
   - ./isaac-gym-isaac-lab.md
   - ./nvidia-omniverse.md
+  - ./nvidia-learn-openusd.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ../comparisons/mujoco-vs-isaac-lab.md
   - ./newton-physics.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/sites/lumina-embodied-ai.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/repos/fiveages-sim-robot-descriptions.md
+  - ../../sources/courses/nvidia_learn_openusd.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -227,6 +229,7 @@ flowchart TB
 - [Isaac Gym](./isaac-gym.md) — 旧一代独立 GPU RL 仿真（legacy）
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品关系与迁移
 - [NVIDIA Omniverse](./nvidia-omniverse.md) — Kit / USD / RTX 底座
+- [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md) — USD stage/composition 官方课纲
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Newton Physics](./newton-physics.md) — 可选物理后端方向
 - [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集

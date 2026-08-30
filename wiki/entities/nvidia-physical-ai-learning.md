@@ -2,10 +2,11 @@
 type: entity
 tags: [course, nvidia, isaac, omniverse, openusd, physical-ai, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-30
 related:
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./nvidia-getting-started-isaac-lab.md
+  - ./nvidia-learn-openusd.md
   - ./nvidia-omniverse.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/sites/nvidia-physical-ai-learning.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
+  - ../../sources/courses/nvidia_learn_openusd.md
 summary: "NVIDIA Physical AI Learning 是官方免费自学门户，索引 Isaac Lab 入门四模块课、SO-101 操作臂 Sim2Real、OpenUSD 与医疗机器人等动手路径，并对接 Brev 云 GPU 环境。"
 ---
 
@@ -56,7 +58,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 | Isaac Sim / Isaac Lab 入门 | 仿真与 GPU RL | [Isaac Sim](./isaac-sim.md)、[Isaac Lab](./isaac-lab.md)；总览 [isaac-gym-isaac-lab](./isaac-gym-isaac-lab.md) |
 | Omniverse + OpenUSD | 工业数字孪生场景组合 | [nvidia-omniverse](./nvidia-omniverse.md) |
 | Isaac ROS | ROS 2 + NITROS 真机感知导航 | [ros2-basics](../concepts/ros2-basics.md) |
-| Learn OpenUSD | USD 课纲与认证 | 资产管线、URDF→USD |
+| Learn OpenUSD | USD 课纲与认证 | [nvidia-learn-openusd](./nvidia-learn-openusd.md) |
 
 无本地 GPU 时，官方推荐通过 **NVIDIA Brev** 启动预配置 Isaac / Omniverse 环境（门户页内 Launchable 链接）。
 
@@ -75,6 +77,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
 - [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md)
+- [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [LeRobot](./lerobot.md)

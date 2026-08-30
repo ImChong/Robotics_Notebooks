@@ -1,3 +1,9 @@
+## [2026-08-30] ingest | sources/courses/nvidia_learn_openusd.md — Learn OpenUSD 官方课纲：Stage→Composition→资产结构→Instancing→Data Exchange；GitHub 已开源
+
+- **触发：** 用户指定 <https://docs.nvidia.com/learn-openusd/latest/index.html>；要求自动合并 PR
+- **步骤 2.5：** 课纲源码 [LearnOpenUSD](https://github.com/NVIDIA-Omniverse/LearnOpenUSD) **已开源**；在线文档免费；OpenUSD Development Certification 为 **付费认证**
+- **关键页：** [`wiki/entities/nvidia-learn-openusd.md`](wiki/entities/nvidia-learn-openusd.md)
+
 ## [2026-08-30] ingest | sources/blogs/nvidia_isaac_lab_{ur10e_industrial_assembly,spot_locomotion}_sim2real.md — NVIDIA 官方 Isaac Lab sim2real 博客：UR10e IndustReal 装配 + Spot Researcher Kit 平地 velocity
 
 - **触发：** 用户指定两篇 NVIDIA Developer Blog；要求自动合并 PR
