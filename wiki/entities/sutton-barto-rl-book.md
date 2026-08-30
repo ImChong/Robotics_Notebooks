@@ -2,9 +2,10 @@
 type: entity
 tags: [reinforcement-learning, education, textbook, theory]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-30
 related:
   - ./richard-sutton.md
+  - ../concepts/reinforcement-learning-history.md
   - ../methods/reinforcement-learning.md
   - ../formalizations/mdp.md
   - ../formalizations/bellman-equation.md
@@ -15,6 +16,7 @@ related:
   - ../../roadmap/depth-rl-locomotion.md
 sources:
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
+  - ../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md
 summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领域标准教材；官方电子版、习题与教学材料托管于 incompleteideas.net。"
 ---
 
@@ -53,6 +55,7 @@ summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领�
 
 | 章节主题 | 本库对应页 |
 |----------|-----------|
+| Ch.1 §1.6 RL 史 | [强化学习史](../concepts/reinforcement-learning-history.md)（[§1.6 HTML](http://incompleteideas.net/book/ebook/node12.html)） |
 | Ch.3 有限 MDP | [MDP](../formalizations/mdp.md) |
 | Ch.4 动态规划 | [Bellman Equation](../formalizations/bellman-equation.md) |
 | Ch.6–7 TD / traces | [GAE](../formalizations/gae.md)、[Intentional Updates](../methods/intentional-updates-streaming-rl.md) |
@@ -68,6 +71,7 @@ summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领�
 
 ## 关联页面
 
+- [强化学习史](../concepts/reinforcement-learning-history.md) — 第 1 章 §1.6 三线汇合叙事
 - [Richard Sutton](./richard-sutton.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [MDP](../formalizations/mdp.md)
@@ -78,6 +82,7 @@ summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领�
 ## 参考来源
 
 - [incompleteideas.net 一手资料索引](../../sources/sites/incompleteideas-net-rich-sutton.md)
+- [§1.6 History of Reinforcement Learning](../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md)
 
 ## 推荐继续阅读
 

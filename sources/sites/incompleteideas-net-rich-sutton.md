@@ -32,6 +32,7 @@
 | 资源 | 链接 | 说明 |
 |------|------|------|
 | **Sutton & Barto RL 教材（2nd ed.）** | <http://incompleteideas.net/book/the-book-2nd.html> | MIT Press 2018；含 PDF、errata、slides、代码解答交换 |
+| 教材 §1.6 RL 史（HTML） | <http://incompleteideas.net/book/ebook/node12.html> | 第 1 版 LaTeX2HTML；见 [sources/courses/sutton_barto_rl_book_ch01_sec06_history.md](../courses/sutton_barto_rl_book_ch01_sec06_history.md) |
 | 第 1 版 | <http://incompleteideas.net/book/first/the-book.html> | 1998 版归档 |
 | **RL MOOC** | <https://www.ualberta.ca/admissions-programs/online-courses/reinforcement-learning/index.html> | UAlberta + Coursera；Martha & Adam White 主讲 |
 | Coursera 专项 | <https://www.coursera.org/specializations/reinforcement-learning> | 四课程专项 |
@@ -110,6 +111,7 @@
 
 - 升格页面：[wiki/entities/richard-sutton.md](../../wiki/entities/richard-sutton.md)
 - 教材实体：[wiki/entities/sutton-barto-rl-book.md](../../wiki/entities/sutton-barto-rl-book.md)
+- 概念页：[wiki/concepts/reinforcement-learning-history.md](../../wiki/concepts/reinforcement-learning-history.md)（§1.6 归档）
 - 概念页：[wiki/concepts/bitter-lesson.md](../../wiki/concepts/bitter-lesson.md)
 - 交叉更新：[wiki/methods/reinforcement-learning.md](../../wiki/methods/reinforcement-learning.md)、[wiki/methods/model-based-rl.md](../../wiki/methods/model-based-rl.md)、[wiki/concepts/embodied-scaling-laws.md](../../wiki/concepts/embodied-scaling-laws.md)
 

@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-08-30",
-  "node_count": 3357,
-  "edge_count": 30215,
+  "node_count": 3358,
+  "edge_count": 30224,
   "coverage": {
-    "covered": 3332,
-    "total": 3332,
+    "covered": 3333,
+    "total": 3333,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
+      "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
+      "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md",
+      "detail_id": "entity-nvidia-isaac-lab-ur10e-industrial-assembly-sim2real",
+      "label": "NVIDIA Isaac Lab UR10e 工业装配 Sim2Real",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/archify.md",
       "detail_id": "entity-archify",
@@ -167,7 +189,8 @@
       "recency": "2026-08-29",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-solo.md",
@@ -189,34 +212,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/isaac-rl-two-wheel-legged-bot.md",
-      "detail_id": "entity-isaac-rl-two-wheel-legged-bot",
-      "label": "Isaac-RL-Two-wheel-Legged-Bot（lab.flamingo）",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/rsl-rl.md",
-      "detail_id": "entity-rsl-rl",
-      "label": "RSL-RL",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/archify.md",
-    "detail_id": "entity-archify",
-    "label": "Archify",
+    "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
+    "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
+    "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
     "type": "entity",
     "recency": "2026-08-30",
     "source": "git",
@@ -227,27 +228,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 945
+      "size": 816
     },
     {
       "label": "操作",
-      "size": 585
+      "size": 581
     },
     {
       "label": "视觉-语言-动作",
-      "size": 255
+      "size": 243
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 211
+      "size": 216
+    },
+    {
+      "label": "视觉语言动作纵深路线",
+      "size": 136
     },
     {
       "label": "机器人视觉感知栈选型闭环",
       "size": 90
-    },
-    {
-      "label": "移动操作",
-      "size": 76
     }
   ],
   "top_hubs": [

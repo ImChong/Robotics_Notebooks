@@ -2750,6 +2750,7 @@
 - [处理器在环 Sim2Real（Processor-in-the-loop）](wiki/concepts/processor-in-the-loop-sim2real.md) — 处理器在环 Sim2Real**：不把控制器当成「数学上完美的函数」，而把**真实固件执行路径**（线程优先级、周期抖动、总线协议、嵌入式浮点语义）当作与环境动力学并列的**闭环组成部分**，在仿 `📅unknown` `[wiki_page]`
 - [过程奖励建模（Progress Reward Modeling）](wiki/concepts/progress-reward-modeling.md) — 过程奖励 / 进度模型** 回答执行中的问题：在当前目标下，机器人是在 **推进、停滞，还是回退**？它把「终局成功」之外的稠密、可比较信号用于 RL、监控、重排、过滤与恢复。 `📅unknown` `[wiki_page]`
 - [递归自改进（Recursive Self-Improvement）](wiki/concepts/recursive-self-improvement.md) — 递归自改进（RSI）** 是：在足够算力下，AI 系统 **充分自主地设计、训练并部署自己的后继者**——不是「帮人写训练脚本」，而是把后继模型的规格与优化闭环从人类手里接过去。 `📅unknown` `[wiki_page]`
+- [强化学习史（Sutton & Barto §1.6）](wiki/concepts/reinforcement-learning-history.md) — 强化学习史**：Sutton & Barto 将现代 RL 追溯为 **试错学习**（心理学与早期 AI）、**最优控制 / 动态规划**（Bellman、MDP）与 **时序差分学习**（Sam `📅unknown` `[wiki_page]`
 - [远程过程调用（Remote Procedure Call, RPC）](wiki/concepts/remote-procedure-call.md) — RPC** 是一种分布式通信范式：调用方像调用本地过程一样发起远程方法，运行时负责 **参数编解码、跨机传递、远端执行与结果返回**；经典论述见 Birrell & Nelson（1984），线上 `📅unknown` `[wiki_page]`
 - [Reward Design](wiki/concepts/reward-design.md) — 奖励函数设计（Reward Design）**：强化学习中定义智能体优化目标的核心环节。奖励函数的好坏直接决定策略能不能学出来、学出来后的行为是否符合预期。 `📅unknown` `[wiki_page]`
 - [RL Runner（训练循环编排）](wiki/concepts/rl-runner.md) — RL Runner 是强化学习框架里驱动「采集 → 计算学习信号 → 更新（或只评测）」的编排层。算法给出损失与更新公式；环境给出 `step`；Runner 决定何时采、采完怎么用、用完是否丢掉、要 `📅unknown` `[wiki_page]`
