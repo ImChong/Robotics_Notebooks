@@ -1,21 +1,33 @@
 {
   "generated_at": "2026-08-30",
-  "node_count": 3356,
-  "edge_count": 30194,
+  "node_count": 3358,
+  "edge_count": 30224,
   "coverage": {
-    "covered": 3331,
-    "total": 3331,
+    "covered": 3333,
+    "total": 3333,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/reinforcement-learning-history.md",
-      "detail_id": "wiki-concepts-reinforcement-learning-history",
-      "label": "强化学习史（Sutton & Barto §1.6）",
-      "type": "concept",
+      "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
+      "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
+      "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
+      "type": "entity",
       "recency": "2026-08-30",
       "source": "git",
       "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md",
+      "detail_id": "entity-nvidia-isaac-lab-ur10e-industrial-assembly-sim2real",
+      "label": "NVIDIA Isaac Lab UR10e 工业装配 Sim2Real",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
@@ -200,33 +212,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/isaac-rl-two-wheel-legged-bot.md",
-      "detail_id": "entity-isaac-rl-two-wheel-legged-bot",
-      "label": "Isaac-RL-Two-wheel-Legged-Bot（lab.flamingo）",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/reinforcement-learning-history.md",
-    "detail_id": "wiki-concepts-reinforcement-learning-history",
-    "label": "强化学习史（Sutton & Barto §1.6）",
-    "type": "concept",
+    "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
+    "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
+    "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
+    "type": "entity",
     "recency": "2026-08-30",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 815
+      "size": 816
     },
     {
       "label": "操作",
@@ -254,7 +256,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1353,
+      "degree": 1355,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -270,7 +272,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 900,
+      "degree": 903,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -316,7 +318,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 496,
+      "degree": 500,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

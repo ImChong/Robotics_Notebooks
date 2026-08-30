@@ -3,8 +3,10 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-29
+updated: 2026-08-30
 related:
+  - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
+  - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
   - ./isaac-lab-default-environments.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -50,6 +52,8 @@ sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+  - ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
+  - ../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
@@ -328,6 +332,8 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 - [DexBench](./dexbench.md) — RLWRLD × NVIDIA 工业灵巧规格；Arena README 仍标 coming soon，勿当成已注册环境
 - [Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) — 官方入门课：manager 任务设计与 sim-to-real 分类
+- [Spot locomotion Sim2Real（官方博客）](./nvidia-isaac-lab-spot-locomotion-sim2real.md) — Researcher Kit + `Isaac-Velocity-Flat-Spot-v0` + Orin 部署
+- [UR10e 工业装配 Sim2Real（官方博客）](./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — IndustReal + Isaac ROS + UR 力矩阻抗
 - [Isaac Lab 默认环境](./isaac-lab-default-environments.md) — v3.0.0 全部 197 个注册任务的分族清单与命名法
 - [Isaac Sim](./isaac-sim.md) — 仿真底座（USD / PhysX / 传感器）
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径

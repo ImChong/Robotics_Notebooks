@@ -29,6 +29,8 @@ related:
   - ../entities/gr00t-visual-sim2real.md
   - ../entities/nvidia-so101-sim2real-lab-workflow.md
   - ../entities/nvidia-getting-started-isaac-lab.md
+  - ../entities/nvidia-isaac-lab-spot-locomotion-sim2real.md
+  - ../entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
   - ../entities/nvidia-physical-ai-learning.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../entities/paper-pace-sim2real-legged-robots.md
@@ -83,6 +85,8 @@ sources:
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
+  - ../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md
   - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md

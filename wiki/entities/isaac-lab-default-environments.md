@@ -12,7 +12,7 @@ tags:
   - gpu-simulation
   - nvidia
 status: complete
-updated: 2026-08-28
+updated: 2026-08-30
 summary: "Isaac Lab 3.0 随框架注册的全部默认任务（197 个 Gym ID / 153 个基础任务）：命名法、Manager-Based 与 Direct 分工、Play 与 ROS-Inference 变体、preset 后端选择器，以及按经典控制 / 操作 / 装配 / 足式 / 移动操作 / 导航 / 多旋翼 / 多智能体分族的全量清单。"
 code: https://github.com/isaac-sim/IsaacLab
 related:
@@ -307,7 +307,7 @@ Direct 版关键规格（读代码即得，可用于对齐自研环境）：
 
 | 族 | 任务 ID | RL 库 | 相对上一族新增 |
 |---|---|---|---|
-| **Factory** | `Isaac-Factory-PegInsert-Direct-v0`、`Isaac-Factory-GearMesh-Direct-v0`、`Isaac-Factory-NutThread-Direct-v0` | rl_games | 基线：插销 / 齿轮啮合 / 螺母拧入 |
+| **Factory** | `Isaac-Factory-PegInsert-Direct-v0`、`Isaac-Factory-GearMesh-Direct-v0`、`Isaac-Factory-NutThread-Direct-v0` | rl_games | 基线：插销 / 齿轮啮合 / 螺母拧入；工业 UR10e 零样本叙事见 [UR10e 装配 Sim2Real 博客](./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) |
 | **FORGE** | `Isaac-Forge-PegInsert-Direct-v0`、`Isaac-Forge-GearMesh-Direct-v0`、`Isaac-Forge-NutThread-Direct-v0` | rl_games | 力觉观测、过大接触力惩罚、动力学随机化、成功预测动作 |
 | **AutoMate** | `Isaac-AutoMate-Assembly-Direct-v0`、`Isaac-AutoMate-Disassembly-Direct-v0` | rl_games（Disassembly 为脚本流程） | **100 种**零件几何的装配任务库，按 `--assembly_id` 切换 |
 
@@ -327,7 +327,7 @@ AutoMate 的 Disassembly 是**纯脚本**（把插头提出插座）用于生成
 | Unitree A1 | `Isaac-Velocity-Flat-Unitree-A1-v0` | `Isaac-Velocity-Rough-Unitree-A1-v0` | rsl_rl、sb3、skrl |
 | Unitree Go1 | `Isaac-Velocity-Flat-Unitree-Go1-v0` | `Isaac-Velocity-Rough-Unitree-Go1-v0` | rsl_rl、skrl |
 | Unitree Go2 | `Isaac-Velocity-Flat-Unitree-Go2-v0` | `Isaac-Velocity-Rough-Unitree-Go2-v0` | rsl_rl、skrl |
-| Boston Dynamics Spot | `Isaac-Velocity-Flat-Spot-v0` | —（仅平地） | rsl_rl、skrl |
+| Boston Dynamics Spot | `Isaac-Velocity-Flat-Spot-v0` | —（仅平地） | rsl_rl、skrl；真机部署教程见 [Spot locomotion Sim2Real](./nvidia-isaac-lab-spot-locomotion-sim2real.md) |
 | Unitree H1 | `Isaac-Velocity-Flat-H1-v0` | `Isaac-Velocity-Rough-H1-v0` | rsl_rl、skrl |
 | Unitree G1 | `Isaac-Velocity-Flat-G1-v0` | `Isaac-Velocity-Rough-G1-v0` | rsl_rl、skrl |
 | Agility Digit | `Isaac-Velocity-Flat-Digit-v0` | `Isaac-Velocity-Rough-Digit-v0` | rsl_rl |
