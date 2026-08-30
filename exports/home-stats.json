@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-30",
-  "node_count": 3355,
-  "edge_count": 30185,
+  "node_count": 3356,
+  "edge_count": 30194,
   "coverage": {
-    "covered": 3330,
-    "total": 3330,
+    "covered": 3331,
+    "total": 3331,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -167,7 +167,8 @@
       "recency": "2026-08-29",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-solo.md",
@@ -227,27 +228,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 951
+      "size": 815
     },
     {
       "label": "操作",
-      "size": 585
+      "size": 581
     },
     {
       "label": "视觉-语言-动作",
-      "size": 255
+      "size": 243
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 211
+      "size": 216
+    },
+    {
+      "label": "视觉语言动作纵深路线",
+      "size": 136
     },
     {
       "label": "机器人视觉感知栈选型闭环",
       "size": 90
-    },
-    {
-      "label": "移动操作",
-      "size": 76
     }
   ],
   "top_hubs": [
