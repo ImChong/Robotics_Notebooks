@@ -31,6 +31,16 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/concepts/reinforcement-learning-history.md",
+      "detail_id": "wiki-concepts-reinforcement-learning-history",
+      "label": "强化学习史（Sutton & Barto §1.6）",
+      "type": "concept",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/archify.md",
       "detail_id": "entity-archify",
       "label": "Archify",
@@ -201,17 +211,6 @@
       "source": "git",
       "action": "added",
       "community_label": "特权信息训练（Privileged Training） 社区"
-    },
-    {
-      "path": "wiki/concepts/wheel-legged-biped.md",
-      "detail_id": "wiki-concepts-wheel-legged-biped",
-      "label": "轮腿双足机器人（双轮足 / Two-Wheel-Legged Biped）",
-      "type": "concept",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
