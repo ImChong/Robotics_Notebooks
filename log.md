@@ -1,3 +1,10 @@
+## [2026-08-30] ingest | sources/courses/sutton_barto_rl_book_ch01_sec06_history.md — Sutton & Barto §1.6 强化学习史；wiki/concepts/reinforcement-learning-history.md
+
+- **触发：** 用户指定 <http://incompleteideas.net/book/ebook/node12.html>；要求自动合并 PR
+- **来源：** 教材第 1 章 §1.6 *History of Reinforcement Learning*（LaTeX2HTML 在线版；HTTPS 证书异常，HTTP 可访问）
+- **关键页：** [`wiki/concepts/reinforcement-learning-history.md`](wiki/concepts/reinforcement-learning-history.md) — 试错 / DP / TD 三线汇合时间线与 Mermaid 总图
+- **交叉：** [`sutton-barto-rl-book`](wiki/entities/sutton-barto-rl-book.md)、[`reinforcement-learning`](wiki/methods/reinforcement-learning.md)、[`incompleteideas-net-rich-sutton`](sources/sites/incompleteideas-net-rich-sutton.md)
+
 ## [2026-08-30] ingest | sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md — 10 篇独立详情节点（新建 8 / 复用 Indi+DreamMimic）；GlanceWAM / Physical Agentic / Bet4Sim2Real 已开源
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/MdCtmijSM_VfYp19f-nZQw>；要求每篇论文独立、非重复详情节点；要求自动合并 PR

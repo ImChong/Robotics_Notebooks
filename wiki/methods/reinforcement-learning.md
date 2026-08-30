@@ -16,6 +16,7 @@ related:
   - ../methods/hierarchical-reinforcement-learning.md
   - ../entities/richard-sutton.md
   - ../entities/sutton-barto-rl-book.md
+  - ../concepts/reinforcement-learning-history.md
   - ../concepts/bitter-lesson.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
@@ -50,6 +51,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
+  - ../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/locomotion_rl.md
@@ -229,6 +231,7 @@ flowchart LR
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 自适应跟踪容差课程 + 非对称 actor-critic（[PBHC](../../sources/repos/pbhc.md)）
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — RL 标准教材，MDP 框架基础（[一手资料](../../sources/sites/incompleteideas-net-rich-sutton.md)）
+- [强化学习史（§1.6）](../concepts/reinforcement-learning-history.md) — 试错 / DP / TD 三线汇合；[sources 归档](../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md)
 - [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与 incompleteideas.net 一手资料索引
 - Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展
@@ -254,6 +257,7 @@ flowchart LR
 - [Effective Degree（论文实体）](../entities/paper-effective-degree.md) — 函数空间简洁正则；Procgen 上对 PPO actor 提升未见 level 泛化（ICML 2026）
 - [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与一手资料总入口
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — 理论标准教材
+- [强化学习史](../concepts/reinforcement-learning-history.md) — Sutton & Barto §1.6 三线史学框架
 - [The Bitter Lesson](../concepts/bitter-lesson.md) — scaling 方法论（search + learning）
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文 RL 教材与 PPO/SAC 章节，适合 Stage 0 打底
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
