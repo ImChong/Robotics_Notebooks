@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -332,7 +332,7 @@ flowchart TD
 - [DPL（单深度感知人形行走）](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — arXiv:2510.07152（IEEE RA-L；深度合成 + 交叉注意力高程重建 + 盲骨干多教师；TienKung Ultra；代码未开源）
 - [SOLO（长程感知人形运动）](../entities/paper-solo.md) — arXiv:2608.26583（QR + TA-MSE；天工 Omni 零样本 1.5 km；截至入库日未开源）
 - [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins 2026-08-03（稀疏种子 Real2Sim2Real + 转移组 RL；Lightbot 0 无技能标签深度跑酷；代码未开源）
-- [ParkourFormer](../entities/paper-parkourformer.md) — arXiv:2605.25782（query 历史 + 未来两步本体监督；G1 九类地形单策略 93.85%；代码未开源）
+- [ParkourFormer](../entities/paper-parkourformer.md) — arXiv:2605.25782（query 历史 + 未来两步本体监督；G1 九类地形单策略 93.85%；代码 Coming Soon）
 - [SMPLOlympics](../entities/smplolympics.md) — arXiv:2407.00187（SMPL 仿真人形 10 项奥运运动 benchmark；PPO/AMP/PULSE 基线）
 - [Table Tennis Strategy & Skill（PhysicsPingPong）](../methods/table-tennis-strategy-skill-learning.md) — arXiv:2407.16210（SIGGRAPH 2024 分层乒乓球 + VR 人–机）
 - [乒乓球分层技能选型指南](../queries/table-tennis-hierarchical-skill-learning-guide.md) — ASE 专家 + mixer + 策略层选型

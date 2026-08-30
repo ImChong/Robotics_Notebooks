@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, parkour, perceptive-locomotion, distillation, real2sim2real, dagger, light-origins, whole-body]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-30
 venue: "Light Origins 项目页（暂无 arXiv）"
 related:
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md

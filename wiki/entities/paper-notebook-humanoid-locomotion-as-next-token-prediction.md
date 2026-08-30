@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-08-16
+updated: 2026-08-30
 arxiv: "2402.19469"
 related:
   - ../overview/paper-notebook-category-03-high-impact-selection.md

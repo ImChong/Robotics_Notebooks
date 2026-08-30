@@ -9,20 +9,21 @@
 - **平台：** Unitree G1（29 DoF）
 - **配套论文归档：** [`sources/papers/parkourformer_arxiv_2605_25782.md`](../papers/parkourformer_arxiv_2605_25782.md)
 - **入库日期：** 2026-08-16
+- **最后复核：** 2026-08-30
 
 ## 一句话摘要
 
 HKUST-GZ 等单位的人形跑酷项目页：用 **Transformer + 未来两步本体监督** 把策略从 reactive 映射改成 future-conditioned Seq2Seq，在九类地形上以**单一策略**跑仿真 L1–L9 与真机楼梯/平台/缺口。
 
-## 开源状态（步骤 2.5，截至 2026-08-16）
+## 开源状态（步骤 2.5，截至 2026-08-30）
 
 | 资源 | 状态 |
 |------|------|
 | 项目页 + 真机/仿真视频 + BibTeX | **已发布** |
-| arXiv PDF/HTML | **已发布**（2605.25782） |
-| 训练 / 推理代码 / 权重 | **未列出**（页上无 Code 按钮；GitHub 仅 `parkourformer.github.io` 站点仓） |
+| arXiv PDF/HTML | **已发布**（2605.25782 **v3**，2026-06-12） |
+| 训练 / 推理代码 / 权重 | **待发布**（页上按钮「Code(Coming Soon)」；`href` 仍注释，未指向训练仓；GitHub 仅 `MRonaldo-gif/parkourformer.github.io` 站点仓） |
 
-**结论：确认未开源（无可运行官方实现）。** wiki「源码运行时序图」标 **不适用**。
+**结论：宣称将开源 / 待发布（无可运行官方实现）。** wiki「源码运行时序图」标 **不适用**。勿把 `Pixel-114514/parkourformer.github.io` 当成训练仓。
 
 ## 公开信息要点
 
