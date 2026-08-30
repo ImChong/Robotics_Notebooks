@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/archify.md",
+      "detail_id": "entity-archify",
+      "label": "Archify",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/dexbench.md",
       "detail_id": "entity-dexbench",
       "label": "DexBench（工业灵巧操作基准）",
@@ -205,27 +216,18 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/anthropic-embody.md",
-      "detail_id": "entity-anthropic-embody",
-      "label": "Embody（Anthropic）",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/dexbench.md",
-    "detail_id": "entity-dexbench",
-    "label": "DexBench（工业灵巧操作基准）",
+    "path": "wiki/entities/archify.md",
+    "detail_id": "entity-archify",
+    "label": "Archify",
     "type": "entity",
-    "recency": "2026-08-29",
+    "recency": "2026-08-30",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
