@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/archify.md",
+      "detail_id": "entity-archify",
+      "label": "Archify",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-bet4sim2real.md",
       "detail_id": "entity-paper-bet4sim2real",
       "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
@@ -200,23 +211,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/tita-rl.md",
-      "detail_id": "entity-tita-rl",
-      "label": "tita_rl",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bet4sim2real.md",
-    "detail_id": "entity-paper-bet4sim2real",
-    "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
+    "path": "wiki/entities/archify.md",
+    "detail_id": "entity-archify",
+    "label": "Archify",
     "type": "entity",
     "recency": "2026-08-30",
     "source": "git",
