@@ -3,11 +3,12 @@
 type: entity
 tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 related:
   - ./blender.md
   - ./botlab-motioncanvas.md
   - ./drawio-scientific-illustrator.md
+  - ./archify.md
   - ./gsap-skills.md
   - ./video-shotcraft.md
   - ../concepts/character-animation-vs-robotics.md
@@ -115,6 +116,7 @@ flowchart LR
 - [Blender（3D 创作与资产管线）](./blender.md)
 - [BotLab / MotionCanvas（浏览器策略–仿真编排）](./botlab-motioncanvas.md)
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可编辑静态科研框图**（Codex + draw.io MCP）；与 Manim **讲解动画**互补
+- [Archify](./archify.md) — **可校验独立 HTML 系统图**（架构/时序/数据流）；与本页 **时间线讲解片** 不同层
 - [GSAP Skills](./gsap-skills.md) — **Web UI 动效** Agent Skills，亦属可视化沟通层
 - [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill（镜头卡 + 成片模板；与 Manim 数学讲解片不同栈）
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)

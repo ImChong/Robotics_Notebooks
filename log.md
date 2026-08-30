@@ -1,3 +1,12 @@
+## [2026-08-30] ingest | sources/repos/archify.md — Archify 可校验系统图 Skill；项目页已开源 MIT；wiki/entities/archify.md
+
+- **触发：** 用户指定 <https://github.com/tt-a1i/archify>
+- **步骤 2.5：** **已开源** — 项目页 <https://tt-a1i.github.io/archify/> 链回本仓；MIT；CLI `archify/bin/archify.mjs` + `SKILL.md` + Proof Lab 可运行。无权重。稳定标签 v2.15.0，开发号 v2.16.0-dev.0。
+- **关键页：** [`wiki/entities/archify.md`](wiki/entities/archify.md)
+- **交叉：** Draw.io Scientific Illustrator、Manim、GSAP Skills、graphify、Agentic Coding 软件工程基础
+- **开源结论：** 完整渲染/校验栈已开；适合对外系统图，不替代页内 Mermaid 或 ingest 质量门。
+- **机构：** 独立作者 tt-a1i，未改 `institutions.json`
+
 ## [2026-08-29] ingest | sources/sites/dexbench-org.md — DexBench 工业灵巧规格；规范已公开，官方仓与 Arena 评测栈待发布；wiki/entities/dexbench.md
 
 - **触发：** 用户指定 <https://dexbench.org/en/>
