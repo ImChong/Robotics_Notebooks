@@ -14,6 +14,23 @@
 - **关键页：** [`wiki/overview/glancewam-vla-crew-10-papers-technology-map.md`](wiki/overview/glancewam-vla-crew-10-papers-technology-map.md)
 - **机构：** 新注册 `virginia-tech` / `drexel` / `northeastern-us` / `arizona-state` / `colorado-boulder` / `hunan` / `cityu-hk` / `michigan-state` / `transcengram`
 
+## [2026-08-30] ingest | sources/papers/parkourformer_arxiv_2605_25782.md — 复核 ParkourFormer：加深既有实体，代码改为 Coming Soon
+
+- **触发：** 用户指定 [arXiv:2605.25782](https://arxiv.org/abs/2605.25782)（Mai et al.，HKUST-GZ / CLAI-LAB / SCAU / GDUT；G1 29 DoF 多地形跑酷）
+- **排重：** 已有 canonical [`wiki/entities/paper-parkourformer.md`](wiki/entities/paper-parkourformer.md)（2026-08-16 ingest）；**未新建**第二篇 `paper-*`。
+- **步骤 2.5：** 项目页现写「Code(Coming Soon)」，但 `MRonaldo-gif/parkourformer.github.io` 仍只有站点页；arXiv 仍为 **v3**；无训练仓 → **宣称将开源 / 待发布**。时序图继续不适用。
+- **加深：** 观测拆分、query \(\mathbb{R}^{2\times 128}\) / 记忆 \(8\times 128\) / AMP \(10\times 67\)、Conditional SwiGLU Eq. 5、地形三维加难；交叉页开源措辞同步。
+- **机构：** 既有 `hkust-gz` / `clai-lab` / `scau` / `gdut`，未改 `institutions.json`
+
+## [2026-08-30] ingest | sources/repos/archify.md — Archify 可校验系统图 Skill；项目页已开源 MIT；wiki/entities/archify.md
+
+- **触发：** 用户指定 <https://github.com/tt-a1i/archify>
+- **步骤 2.5：** **已开源** — 项目页 <https://tt-a1i.github.io/archify/> 链回本仓；MIT；CLI `archify/bin/archify.mjs` + `SKILL.md` + Proof Lab 可运行。无权重。稳定标签 v2.15.0，开发号 v2.16.0-dev.0。
+- **关键页：** [`wiki/entities/archify.md`](wiki/entities/archify.md)
+- **交叉：** Draw.io Scientific Illustrator、Manim、GSAP Skills、graphify、Agentic Coding 软件工程基础
+- **开源结论：** 完整渲染/校验栈已开；适合对外系统图，不替代页内 Mermaid 或 ingest 质量门。
+- **机构：** 独立作者 tt-a1i，未改 `institutions.json`
+
 ## [2026-08-29] ingest | sources/sites/dexbench-org.md — DexBench 工业灵巧规格；规范已公开，官方仓与 Arena 评测栈待发布；wiki/entities/dexbench.md
 
 - **触发：** 用户指定 <https://dexbench.org/en/>

@@ -12,13 +12,14 @@ tags:
   - open-source
   - agent-infrastructure
 status: complete
-updated: 2026-08-03
+updated: 2026-08-30
 related:
   - ./freecad-mcp.md
   - ./cad-skills.md
   - ./img2threejs.md
   - ./gsap-skills.md
   - ./manim.md
+  - ./archify.md
   - ./3dgenstudio.md
   - ./mattpocock-skills.md
   - ../concepts/model-context-protocol.md
@@ -56,7 +57,7 @@ summary: "Draw.io Scientific Illustrator（icebird1998）是 Codex 插件：本�
 1. **把「论文/wiki 插图」变成可代理的可编辑交付物：** 本站大量方法页用 Mermaid 表达知识结构；投稿图、组会示意、专利框图常需 **draw.io 级可编辑图元**。本插件把「参考图 → 可见重绘 → 校验导出」写成可重复 Skill 路径。
 2. **MCP 操控桌面专业软件的垂直样本：** 与 [FreeCAD MCP](./freecad-mcp.md)（CAD）同构——**本机 GUI 真值 + localhost 工具通道**；与 [CAD Skills](./cad-skills.md) / [img2threejs](./img2threejs.md) 的「纯 skill/脚本」路线互补：这里强调 **人眼可见的逐步绘制**。
 3. **硬边界可审计：** Skill 明确禁止 OS 键鼠自动化与 XML-first；调试口仅绑 `127.0.0.1`，无遥测——适合评估「代理是否在合法 API 面内操作」。
-4. **与讲解动画栈分工：** [Manim](./manim.md) 服务 **程序化讲解短片**；本工具服务 **静态可编辑科研图**；[GSAP Skills](./gsap-skills.md) 服务 **Web UI 动效**——三者勿混用选型。
+4. **与讲解动画栈分工：** [Manim](./manim.md) 服务 **程序化讲解短片**；本工具服务 **静态可编辑科研图**；[GSAP Skills](./gsap-skills.md) 服务 **Web UI 动效**；[Archify](./archify.md) 服务 **可校验的独立 HTML 系统图**——勿混用选型。
 
 ## 核心架构
 
@@ -158,6 +159,7 @@ sequenceDiagram
 | [CAD Skills](./cad-skills.md) | build123d → STEP/URDF | Agent Skills + CLI | 无头、可 CI 的制造向 CAD |
 | [img2threejs](./img2threejs.md) | TypeScript Three.js 工厂 | Agent Skill + forge 脚本 | 程序化 WebGL，非矢量框图 |
 | [Manim](./manim.md) | 讲解视频 | Python 场景脚本 | 公式/动画叙事，非交互编辑器 |
+| [Archify](./archify.md) | 自包含 HTML + 导出图 | Agent Skill + Node CLI | 可校验架构/时序/数据流，非图元编辑 |
 | 本库 Mermaid | Markdown 内流程图 | 无（静态编译） | 知识页结构图、版本友好 |
 
 ## 关联页面
@@ -167,6 +169,7 @@ sequenceDiagram
 - [img2threejs](./img2threejs.md) — **图像→程序化 Three.js** Skill（WebGL 资产）
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方 Agent Skills
 - [Manim](./manim.md) — **程序化数学/技术讲解动画**
+- [Archify](./archify.md) — **可校验 HTML 系统图**（架构/工作流/时序）；要投稿级可编辑图元仍走本页
 - [3D Gen Studio](./3dgenstudio.md) — ComfyUI 网格生产 + MCP（三维资产，非 2D 框图）
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 协议层 Host/Client/Server 与传输

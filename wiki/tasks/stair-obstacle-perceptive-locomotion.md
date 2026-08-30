@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -161,7 +161,7 @@ flowchart TB
 |------|------|------|------|
 | 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略 |
 | 人形 Lightbot 0 | **深度** | [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) | 稀疏种子 Real2Sim2Real + 多专家/转移组蒸馏；**无技能标签**；代码未开源 |
-| 人形 G1 | **RGB-D** | [ParkourFormer](../entities/paper-parkourformer.md) | Transformer 查询历史 + 未来两步 AMP 监督；九类地形单策略 **93.85%**；代码未开源 |
+| 人形 G1 | **RGB-D** | [ParkourFormer](../entities/paper-parkourformer.md) | Transformer 查询历史 + 未来两步 AMP 监督；九类地形单策略 **93.85%**；代码 Coming Soon |
 | 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 全身跑酷，与 PHP 同簇 |
 | 四足 Go1 | **单目深度** | [Extreme Parkour](../entities/extreme-parkour.md) | 端到端跑酷；两阶段特权 scandots → 深度蒸馏 |
 | 四足 Apollo | **深度 + RSSM WM** | [SWAP](../entities/paper-swap-parkour.md) | 对称等变潜变量世界模型 + 等变 Actor-Critic；2.13 m 远跳 / 1.63 m 攀台 |

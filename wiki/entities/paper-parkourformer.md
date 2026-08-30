@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, parkour, locomotion, transformer, sequence-modeling, future-prediction, amp, rgb-d, perceptive-locomotion, unitree-g1, hkust-gz, scau, gdut, clai-lab]
 status: complete
-updated: 2026-08-16
+updated: 2026-08-30
 arxiv: "2605.25782"
 venue: arXiv
 related:
@@ -22,7 +22,7 @@ related:
 sources:
   - ../../sources/papers/parkourformer_arxiv_2605_25782.md
   - ../../sources/sites/parkourformer-github-io.md
-summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用当前状态 cross-attention 查询历史，监督未来两步 AMP 状态并条件化动作与判别器；G1 九类地形单策略平均穿越 93.85%；代码未开源。"
+summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用当前状态 cross-attention 查询历史，监督未来两步 AMP 状态并条件化动作与判别器；G1 九类地形单策略平均穿越 93.85%；代码 Coming Soon。"
 ---
 
 # ParkourFormer（预测监督 + 序列建模人形跑酷）
@@ -61,10 +61,11 @@ summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用�
 | **机构** | 香港科技大学广州校区（HKUST-GZ）；创联人工智能实验室（CLAI-LAB / CL-TECH）；华南农业大学（SCAU）；广东工业大学（GDUT） |
 | **平台** | Unitree G1，29 DoF；真机 + 仿真 |
 | **仿真** | Project Instinct MuJoCo；4096 并行；200 Hz 仿真 / 50 Hz 控制；≤30k iter；RTX 4090D |
-| **输入（策略）** | 8 帧本体 \(o_t\in\mathbb{R}^{96}\) + 当前 RGB-D token \(\mathbf{z}_t\in\mathbb{R}^{128}\) |
-| **AMP 状态** | \(s_t\in\mathbb{R}^{67}\)（含特权线速度 \(\mathbf{v}_l\)） |
+| **输入（策略）** | 8 帧本体 \(o_t\in\mathbb{R}^{96}=[\boldsymbol{\omega}_a,\mathbf{g}_p,\mathbf{v}_c,\mathbf{q}_p,\mathbf{q}_v,\mathbf{a}_{t-1}]\) + 当前 RGB-D token \(\mathbf{z}_t\in\mathbb{R}^{128}\) |
+| **Query / 记忆** | \(\mathbf{Q}_t^{(0)}\in\mathbb{R}^{2\times 128}\)（当前观测 ⊕ 深度）；记忆 \(\mathbf{M}_t\in\mathbb{R}^{8\times 128}\) |
+| **AMP 状态** | \(s_t\in\mathbb{R}^{67}\)（含特权线速度 \(\mathbf{v}_l\)）；判别序列 \(\tilde{\mathbf{s}}_t\in\mathbb{R}^{10\times 67}\)（8 真实 + 2 预测） |
 | **动作** | \(\mathbf{a}_t\in\mathbb{R}^{29}\) 名义姿态 delta，底层 PD |
-| **开源（截至 2026-08-16）** | **未开源**（仅项目页/视频/arXiv；无训练仓） |
+| **开源（截至 2026-08-30）** | **待发布**（项目页按钮「Code(Coming Soon)」；作者仓仅站点页，无训练/推理入口） |
 
 ## 核心原理（方法）
 
@@ -72,9 +73,9 @@ summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用�
 
 | 模块 | 作用 |
 |------|------|
-| 位置编码历史 | 把 \(\{o_{t-7},\ldots,o_t\}\) 投成有序 token 记忆 |
-| Cross-attention | 当前观测 ⊕ 深度 token 作 query，历史作 KV（「now → past」） |
-| Conditional SwiGLU | RGB-D 地形上下文 \(c_t\) 乘性门控中间 FFN |
+| 位置编码历史 | 把 \(\{o_{t-7},\ldots,o_t\}\) 投成 \(\mathbf{X}_t\in\mathbb{R}^{8\times 128}\) 有序记忆 |
+| Cross-attention | 当前观测 ⊕ 深度 token 作 \(\mathbf{Q}\in\mathbb{R}^{2\times 128}\)，历史作 KV（「now → past」） |
+| Conditional SwiGLU | RGB-D 地形上下文 \(c_t\) 经 \(C_1,C_2\) 乘性门控中间 FFN（论文 Eq. 5） |
 | 未来预测头 | 确定性预报 \(\hat{\mathbf{s}}_{t+1:t+2}\)；rollout MSE + 无效步 mask |
 | 未来条件动作头 | \(\hat{\mathbf{a}}_t\sim\pi'(\mathbf{a}_t\mid\mathbf{Q}_t^{(L)},\hat{\mathbf{s}}_{t+1:t+2})\) |
 | AMP 判别器 | 输入改为 \([\mathbf{s}_{t-7:t};\hat{\mathbf{s}}_{t+1:t+2}]\)，把预期运动钉在参考流形上 |
@@ -113,23 +114,25 @@ flowchart TB
 \mathcal{L}_{\mathrm{pred}}=\frac{1}{|\mathcal{M}_{\mathrm{pred}}|}\sum_i\sum_{k=1}^{2}m_{i,k}\,\|\hat{s}_{i,k}-s_{i,k}\|_2^2
 \]
 
-动作在名义姿态附近输出 delta；总奖励 \(R_{\mathrm{task}}+R_{\mathrm{AMP}}\)。
+Conditional SwiGLU（论文 Eq. 5）：\(\mathrm{FFN}(x,c_t)=\mathbf{W}_5\bigl(\mathrm{SiLU}(\mathbf{W}_3 x+C_1 c_t)\odot(\mathbf{W}_4 x+C_2 c_t)\bigr)\)。动作在名义姿态附近输出 delta；总奖励 \(R_{\mathrm{task}}+R_{\mathrm{AMP}}\)。
+
+地形课沿三维加难：几何变化（阶高/坡角）、障碍密度与间距、不连续（缺口/突变高差）。仿真与真机评测均用 **G1 29 DoF**。
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-08-16：项目页与作者 GitHub 仅有 [`parkourformer.github.io`](https://github.com/MRonaldo-gif/parkourformer.github.io) 站点仓，无训练/推理入口）。待代码发布后按 README 补 `sequenceDiagram`。
+**不适用**（截至 2026-08-30：项目页写「Code(Coming Soon)」；作者 GitHub 仅有 [`parkourformer.github.io`](https://github.com/MRonaldo-gif/parkourformer.github.io) 站点仓，无训练/推理入口）。待代码发布后按 README 补 `sequenceDiagram`。
 
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
-| 复现入口 | arXiv HTML/PDF + 项目页视频；**代码未发布** |
+| 复现入口 | arXiv HTML/PDF + 项目页视频；**代码 Coming Soon，尚未可跑** |
 | 仿真对齐 | 先对齐 Project Instinct / [Hiking](./paper-hiking-in-the-wild.md) 的 MuJoCo 地形课，再谈 Transformer |
 | 预测步长 | 论文钉死 **2 步**；更长视野未报，勿默认可外推 |
 | 监督权重 | \(c_2\) 对失败/负 advantage 加大——下楼消融说明这不是装饰项 |
 | AMP 拼接 | 判别器必须看到「历史+预测」连续序列，而不是只加 MSE |
 | 感知 | 缺口/攀升依赖 RGB-D query；盲走或深度失效会整体掉功能 |
-| 源码运行时序图 | **不适用**（未开源） |
+| 源码运行时序图 | **不适用**（待发布，无可运行实现） |
 
 ## 实验与评测
 
@@ -162,7 +165,7 @@ flowchart TB
 3. **AMP 要吃预测未来** — 只加 \(\mathcal{L}_{\mathrm{pred}}\) 不够，判别序列必须接上 \(\hat{\mathbf{s}}_{t+1:t+2}\)。
 4. **单策略换技能链** — 适合「九类程序地形课」；不覆盖 PHP 式 1.25 m 攀墙技能库或 LightLP 的 0.83H 承重攀爬。
 5. **负 advantage 加权监督** — 失败轨迹更需要学「下一步身体会怎样」，而不是只在成功轨迹上拟合。
-6. **代码未开源** — 选型先看表与视频；仿真数字绑定 Instinct MuJoCo + 自建九类课，勿直接对标 IsaacLab 论文。
+6. **代码仍不可复现** — 2026-08-30 项目页改为「Code(Coming Soon)」，但仓库仍只有站点页；选型先看表与视频。仿真数字绑定 Instinct MuJoCo + 自建九类课，勿直接对标 IsaacLab 论文。
 
 ## 与其他工作对比
 
@@ -177,7 +180,7 @@ flowchart TB
 
 ## 局限与风险
 
-- **未开源：** 无法核对网络宽度、\(c_{1\ldots4}\) 或地形生成器；数字以 arXiv v3 / 项目页为准。
+- **代码待发布：** 无法核对网络宽度、\(c_{1\ldots4}\) 或地形生成器；数字以 arXiv v3 / 项目页为准。`Pixel-114514/parkourformer.github.io` 亦为早期主页拷贝，不是训练仓。
 - **AMP reset 无地形：** 作者自承参考被随机切段，动态跑酷缺地形条件化运动检索。
 - **RGB-D 单点故障：** 深度损坏则策略整体失效，没有盲走回退。
 - **奖励稀疏：** 大缺口/不规则障碍上优化仍弱。

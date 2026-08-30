@@ -8,13 +8,14 @@ tags:
   - web-animation
   - agent-infrastructure
 status: complete
-updated: 2026-07-31
+updated: 2026-08-30
 related:
   - ./mattpocock-skills.md
   - ./cad-skills.md
   - ./img2threejs.md
   - ./video-shotcraft.md
   - ./drawio-scientific-illustrator.md
+  - ./archify.md
   - ./sensenova-skills.md
   - ./superpowers-obra.md
   - ./manim.md
@@ -95,6 +96,7 @@ flowchart TD
 - [img2threejs](./img2threejs.md) — **图像→程序化 Three.js** 垂直 Agent Skill（WebGL 资产，非 DOM tween）
 - [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill（离线成片；与本页 DOM/Scroll 交互层不同）
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可见 draw.io 科研插图**（Codex Skill + MCP），与 Web 动效不同层
+- [Archify](./archify.md) — **可校验 HTML 系统图**（架构/工作流），不是 DOM tween
 - [SenseNova-Skills](./sensenova-skills.md) — **办公产出** Agent Skills
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库（与本库 **垂直 API** 技能互补）
 - [Manim](./manim.md) — **离线数学示意动画**（Python），与 GSAP **Web UI 动效** 不同层
