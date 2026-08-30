@@ -115,6 +115,7 @@ flowchart TB
 - [imitation-learning](../methods/imitation-learning.md) — ViTacPhys / Q-Planning
 - [开源 7 篇系统结构地图](./open-source-7-papers-system-structure-technology-map.md) — 次日姊妹盘点
 - [WAM / VLA / 跨本体 9 篇](./wam-vla-cross-embodiment-9-papers-technology-map.md) — 2026-08-28 盘点
+- [48ms WAM / 编排 10 篇](./glancewam-vla-crew-10-papers-technology-map.md) — 2026-08-30 盘点
 
 ## 参考来源
 

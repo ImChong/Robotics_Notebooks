@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -38,6 +38,9 @@ related:
   - ../entities/paper-egosteer.md
   - ../entities/paper-ros2smolvla.md
   - ../entities/paper-indi.md
+  - ../entities/paper-glancewam.md
+  - ../entities/paper-m3-modality-masking.md
+  - ../overview/glancewam-vla-crew-10-papers-technology-map.md
   - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
   - ../entities/paper-streampi.md
   - ../entities/paper-ucag-p.md
@@ -242,6 +245,8 @@ flowchart TD
 - **Evo-1（CVPR 2026）**：**0.77B** 轻量 **InternVL3-1B + cross-modulated DiT flow-matching**；**两阶段训练**（冻 VLM 对齐动作头 → 全量微调）**保持 VLM 语义对齐**；**无机器人数据预训练** 即在 Meta-World **80.6%**、LIBERO **94.8%**、RoboTwin **37.8%** 与 xArm6 真机 **78%**；RTX 4090d **2.3 GB / 16.4 Hz**；**官方 LeRobot 集成**（SO100/SO101，`lerobot-record --policy.path`）（见 [Evo-1](../entities/paper-evo1-lightweight-vla.md)，arXiv:2511.04555）
 - **ROS2SmolVLA（arXiv:2608.23320）**：把 **SmolVLA 450M** 接到 **ROS 2 + UR10e** 做 **本地/边缘** 工业轻量臂拾放，而不是再刷桌面 SO-101；349 episode 笛卡尔速度微调，九场景总体 **77.72%**；**Docker + HF 权重已开源**（见 [ROS2SmolVLA](../entities/paper-ros2smolvla.md)）
 - **Indi（arXiv:2608.23478）**：冻结教师 VLM 把示范片段的 **局部目标** 蒸馏进动作解码器中间态；部署零教师。GR00T-N1.7 SimplerEnv-Bridge **64.3→84.7%**、真机 **62.0→68.7%**；**项目页未列训练仓**（见 [Indi](../entities/paper-indi.md)）
+- **GlanceWAM（arXiv:2608.23927）**：视频 WAM 把想象移出控制关键路径，动作头潜空间 **48 ms**；RoboCasa **72.2%**、LIBERO **99.0%**；**MIT + HF 已开源**（见 [GlanceWAM](../entities/paper-glancewam.md)）
+- **M3（arXiv:2608.22419）**：训练期结构化遮蔽腕相机/语言/查询，推理结构不变；RoboTwin Clean **+21.7**，真机长时程完整任务 **+30**；**未开源**（见 [M3](../entities/paper-m3-modality-masking.md)）
 - **FabriVLA（arXiv:2607.08575）**：**0.89B** 轻量 **InternVL3.5-1B + gated self-attention flow-matching + shallow VLM layer fusion**；在公开 **Evo-1 Meta-World** 数据上 **单阶段联合微调**（DeepSpeed FP32 master）；MT50 **tier-avg 90.0%** / episode **92.0%**；代码与 93k 权重已开源（见 [FabriVLA](../entities/paper-fabrivla.md)）；多基准相对位次可对照 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)
 - **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
 - **GaP staging（非纯 VLA，但直接消费 VLA）**：[GaP](../entities/paper-gap-graph-as-policy.md) 在 [变体自动化](../concepts/variational-automation.md) benchmark 上用 **计算图** 做感知/相机位姿等 **结构化 staging**，再 handoff **π₀.₅ / MolmoAct2**；大位姿变化列裸 VLA **~0.20**，**π₀.₅ w/ GaP** 可达 **0.66+**（Pack varied）——说明 **可靠性 gap** 有时靠 **图式工程壳** 而非单点放大 VLA 数据
@@ -471,6 +476,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — EnvHub 把 SmolVLA 接到光轮双臂厨房仿真；自过滤飞轮对照
 - [ROS2SmolVLA](../entities/paper-ros2smolvla.md) — ROS 2 本地 SmolVLA × UR10e；代码/数据/权重已开源（arXiv:2608.23320）
 - [Indi](../entities/paper-indi.md) — 行为意图蒸馏进 VLA 解码器（arXiv:2608.23478；未开源）
+- [GlanceWAM](../entities/paper-glancewam.md) — 异步 WAM 想象，动作头 48 ms（arXiv:2608.23927；已开源）
+- [M3](../entities/paper-m3-modality-masking.md) — 双臂 VLA 训练期模态遮蔽（arXiv:2608.22419；未开源）
 - [LD4WAM](../entities/paper-ld4wam.md) — 运动对齐潜动力学桥接人视频与 Joint WAM；确认未开源（arXiv:2608.22403）
 - [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；相对 Joint-WAM 延迟 −42.9%（arXiv:2608.24882；代码待发布）
 - [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 LeRobot/VLA 胶水与技能编排

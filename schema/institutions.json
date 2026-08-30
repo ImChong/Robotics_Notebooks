@@ -3121,6 +3121,69 @@
         "independent",
         "community-maintainer"
       ]
+    },
+    "virginia-tech": {
+      "label": "弗吉尼亚理工学院（Virginia Tech）",
+      "aliases": [
+        "virginia-tech",
+        "vt"
+      ]
+    },
+    "drexel": {
+      "label": "德雷塞尔大学（Drexel University）",
+      "aliases": [
+        "drexel",
+        "drexel-university"
+      ]
+    },
+    "northeastern-us": {
+      "label": "美国东北大学（Northeastern University）",
+      "aliases": [
+        "northeastern-us",
+        "northeastern-university"
+      ]
+    },
+    "arizona-state": {
+      "label": "亚利桑那州立大学（Arizona State University）",
+      "aliases": [
+        "arizona-state",
+        "asu"
+      ]
+    },
+    "colorado-boulder": {
+      "label": "科罗拉多大学博尔德分校（University of Colorado Boulder）",
+      "aliases": [
+        "colorado-boulder",
+        "cu-boulder"
+      ]
+    },
+    "hunan": {
+      "label": "湖南大学（Hunan University）",
+      "aliases": [
+        "hunan",
+        "hunan-university",
+        "hnu"
+      ]
+    },
+    "cityu-hk": {
+      "label": "香港城市大学（City University of Hong Kong）",
+      "aliases": [
+        "cityu-hk",
+        "cityu"
+      ]
+    },
+    "michigan-state": {
+      "label": "密歇根州立大学（Michigan State University）",
+      "aliases": [
+        "michigan-state",
+        "msu"
+      ]
+    },
+    "transcengram": {
+      "label": "超忆（TranscEngram）",
+      "aliases": [
+        "transcengram"
+      ]
     }
   }
 }

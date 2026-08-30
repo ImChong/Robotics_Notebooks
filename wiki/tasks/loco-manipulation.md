@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-28
+updated: 2026-08-30
 sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
@@ -297,6 +297,8 @@ flowchart TD
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 预训练 + 残差后训练的全身 loco-manipulation（arXiv:2510.05070）
 - [VisualMimic（论文实体）](../entities/paper-notebook-visualmimic.md) — 视觉分层 sim2real + 关键点 tracker 全身 loco-manipulation（arXiv:2509.20322）
 - [DreamMimic（论文实体）](../entities/paper-dreammimic.md) — RSSM + PCG 视觉全身蒸馏；OMOMO 92.2%；代码 Coming soon（arXiv:2608.22278）
+- [TONAV](../entities/paper-tonav.md) — 四足铰接物体：任务导向导航 + 位置–速度动作块（arXiv:2608.22296）
+- [GOLEM](../entities/paper-golem-humanoid.md) — H1-2 模块化电池拆解；抓取 97→87→37%（arXiv:2608.21550）
 - [视觉特权表征运球（论文实体）](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md) — RMA 式深度蒸馏 + 对手感知运球（arXiv:2607.12702，Booster T1 仿真）
 - [语义音频驱动 WBC（论文实体）](../entities/paper-semantic-audio-wbc-humanoid.md) — 音频指纹/语音语义在线调度 BeyondMimic 技能库（arXiv:2607.14182，G1 真机）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层

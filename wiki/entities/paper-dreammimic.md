@@ -12,7 +12,7 @@ tags:
   - intermimic
   - tsinghua
 status: complete
-updated: 2026-08-26
+updated: 2026-08-30
 arxiv: "2608.22278"
 related:
   - ../tasks/loco-manipulation.md
@@ -22,10 +22,14 @@ related:
   - ../methods/dagger.md
   - ../methods/generative-world-models.md
   - ./paper-resmimic.md
+  - ./paper-tonav.md
+  - ./paper-golem-humanoid.md
+  - ../overview/glancewam-vla-crew-10-papers-technology-map.md
 sources:
   - ../../sources/papers/dreammimic_arxiv_2608_22278.md
   - ../../sources/sites/dreammimic-github-io.md
   - ../../sources/repos/dreammimic.md
+  - ../../sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md
 summary: "DreamMimic（arXiv:2608.22278，Independent / 清华）：RSSM 潜动力学 + PCG 把 InterMimic 特权教师蒸馏成深度+分割学生；OMOMO Succ. 92.2%；代码 Coming soon，无真机。"
 ---
 
@@ -177,12 +181,16 @@ PCG 与 naive annealing 成功率同为 **72.7%**（质量 ×2 为 63.6%），PC
 - [DAgger](../methods/dagger.md) — 主监督
 - [Generative World Models](../methods/generative-world-models.md) — Dreamer / RSSM 工具箱
 - [ResMimic](./paper-resmimic.md) — 另一条全身接触残差路线
+- [TONAV](./paper-tonav.md) — 四足铰接物体真机对照
+- [GOLEM](./paper-golem-humanoid.md) — 人形工业模块对照
+- [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
 
 ## 参考来源
 
 - [DreamMimic 论文摘录](../../sources/papers/dreammimic_arxiv_2608_22278.md)
 - [项目页归档](../../sources/sites/dreammimic-github-io.md)
 - [GitHub 占位仓归档](../../sources/repos/dreammimic.md)
+- [具身智能小站 10 篇盘点](../../sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md)
 
 ## 推荐继续阅读
 

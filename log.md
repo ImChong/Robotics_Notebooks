@@ -1,3 +1,19 @@
+## [2026-08-30] ingest | sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md — 10 篇独立详情节点（新建 8 / 复用 Indi+DreamMimic）；GlanceWAM / Physical Agentic / Bet4Sim2Real 已开源
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/MdCtmijSM_VfYp19f-nZQw>；要求每篇论文独立、非重复详情节点；要求自动合并 PR
+- **步骤 2.5：**
+  - **GlanceWAM** — **已开源** MIT；训练/评测 sweep + HF `LinhanWang/GlanceWAM`
+  - **Indi** — **未开源**（复用 `paper-indi`）
+  - **Physical Agentic AI** — **已开源** MIT；mock / Gazebo / G1+Go2
+  - **M3 / Meta-Ctrl** — **未开源** 仅项目页
+  - **Imitator Game** — **部分开源** 项目页 + Arena
+  - **TONAV** — **待发布** 学习代码 Coming Soon
+  - **DreamMimic** — **待发布**（复用 `paper-dreammimic`）
+  - **Bet4Sim2Real** — **已开源** 无 SPDX
+  - **GOLEM** — **待核实** `golem-humanoid` org API 404
+- **关键页：** [`wiki/overview/glancewam-vla-crew-10-papers-technology-map.md`](wiki/overview/glancewam-vla-crew-10-papers-technology-map.md)
+- **机构：** 新注册 `virginia-tech` / `drexel` / `northeastern-us` / `arizona-state` / `colorado-boulder` / `hunan` / `cityu-hk` / `michigan-state` / `transcengram`
+
 ## [2026-08-30] ingest | sources/papers/parkourformer_arxiv_2605_25782.md — 复核 ParkourFormer：加深既有实体，代码改为 Coming Soon
 
 - **触发：** 用户指定 [arXiv:2605.25782](https://arxiv.org/abs/2605.25782)（Mai et al.，HKUST-GZ / CLAI-LAB / SCAU / GDUT；G1 29 DoF 多地形跑酷）

@@ -1,23 +1,101 @@
 {
   "generated_at": "2026-08-30",
-  "node_count": 3346,
-  "edge_count": 30108,
+  "node_count": 3355,
+  "edge_count": 30185,
   "coverage": {
-    "covered": 3321,
-    "total": 3321,
+    "covered": 3330,
+    "total": 3330,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/archify.md",
-      "detail_id": "entity-archify",
-      "label": "Archify",
+      "path": "wiki/entities/paper-bet4sim2real.md",
+      "detail_id": "entity-paper-bet4sim2real",
+      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
       "type": "entity",
       "recency": "2026-08-30",
       "source": "git",
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-glancewam.md",
+      "detail_id": "entity-paper-glancewam",
+      "label": "GlanceWAM：把视觉想象移出控制关键路径",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-golem-humanoid.md",
+      "detail_id": "entity-paper-golem-humanoid",
+      "label": "GOLEM：把人形工业拆解拆成可替换模块",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-imitator-game.md",
+      "detail_id": "entity-paper-imitator-game",
+      "label": "The Imitator Game：用目标等价衡量模仿",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-m3-modality-masking.md",
+      "detail_id": "entity-paper-m3-modality-masking",
+      "label": "M3：用训练期模态遮蔽稳住双臂 VLA",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-meta-ctrl.md",
+      "detail_id": "entity-paper-meta-ctrl",
+      "label": "Meta-Ctrl：保证计划合法，同时留下常识",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-physical-agentic-ai.md",
+      "detail_id": "entity-paper-physical-agentic-ai",
+      "label": "Physical Agentic AI：可验证的多机器人编排",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tonav.md",
+      "detail_id": "entity-paper-tonav",
+      "label": "TONAV：导航从一开始就服务于接触",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/glancewam-vla-crew-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-glancewam-vla-crew-10-papers-technology-map",
+      "label": "48ms WAM / 编排 / 证书：10 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/dexbench.md",
@@ -133,95 +211,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/wheel-legged-genesis.md",
-      "detail_id": "entity-wheel-legged-genesis",
-      "label": "wheel_legged_genesis",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/pollen-microduck-rl.md",
-      "detail_id": "entity-pollen-microduck-rl",
-      "label": "Microduck RL",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/pollen-microduck.md",
-      "detail_id": "entity-pollen-microduck",
-      "label": "Pollen Microduck",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-getting-started-isaac-lab.md",
-      "detail_id": "entity-nvidia-getting-started-isaac-lab",
-      "label": "NVIDIA Getting Started With Isaac Lab",
-      "type": "entity",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/inverse-reinforcement-learning.md",
-      "detail_id": "wiki-methods-inverse-reinforcement-learning",
-      "label": "Inverse Reinforcement Learning（IRL, 逆强化学习）",
-      "type": "method",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/llm-robotics-control-interfaces.md",
-      "detail_id": "wiki-concepts-llm-robotics-control-interfaces",
-      "label": "LLM 机器人控制接口",
-      "type": "concept",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/model-hardware-standard.md",
-      "detail_id": "wiki-concepts-model-hardware-standard",
-      "label": "Model Hardware Standard（MHS）",
-      "type": "concept",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/recursive-self-improvement.md",
-      "detail_id": "wiki-concepts-recursive-self-improvement",
-      "label": "递归自改进（Recursive Self-Improvement）",
-      "type": "concept",
-      "recency": "2026-08-28",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/archify.md",
-    "detail_id": "entity-archify",
-    "label": "Archify",
+    "path": "wiki/entities/paper-bet4sim2real.md",
+    "detail_id": "entity-paper-bet4sim2real",
+    "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
     "type": "entity",
     "recency": "2026-08-30",
     "source": "git",
@@ -232,27 +227,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 830
+      "size": 951
     },
     {
       "label": "操作",
-      "size": 583
+      "size": 585
     },
     {
       "label": "视觉-语言-动作",
-      "size": 251
+      "size": 255
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 213
-    },
-    {
-      "label": "视觉语言动作纵深路线",
-      "size": 102
+      "size": 211
     },
     {
       "label": "机器人视觉感知栈选型闭环",
       "size": 90
+    },
+    {
+      "label": "移动操作",
+      "size": 76
     }
   ],
   "top_hubs": [
@@ -260,7 +255,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1352,
+      "degree": 1353,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -283,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 820,
+      "degree": 830,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -307,7 +302,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 560,
+      "degree": 562,
       "has_repo": true
     },
     {
@@ -322,7 +317,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 494,
+      "degree": 496,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
