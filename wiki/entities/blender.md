@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 related:
   - ./freecad.md
   - ./nvidia-omniverse.md

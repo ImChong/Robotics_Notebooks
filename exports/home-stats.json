@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/nvidia-learn-openusd.md",
+      "detail_id": "entity-nvidia-learn-openusd",
+      "label": "NVIDIA Learn OpenUSD",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
       "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
       "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
@@ -201,22 +212,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-solo.md",
-      "detail_id": "entity-paper-solo",
-      "label": "SOLO：稳定全地形长程感知人形运动",
-      "type": "entity",
-      "recency": "2026-08-29",
-      "source": "git",
-      "action": "added",
-      "community_label": "特权信息训练（Privileged Training） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
-    "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
-    "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
+    "path": "wiki/entities/nvidia-learn-openusd.md",
+    "detail_id": "entity-nvidia-learn-openusd",
+    "label": "NVIDIA Learn OpenUSD",
     "type": "entity",
     "recency": "2026-08-30",
     "source": "git",
