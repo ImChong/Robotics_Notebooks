@@ -178,6 +178,8 @@ flowchart LR
 - [Query：RL 策略真机调试 Playbook](../wiki/queries/robot-policy-debug-playbook.md)（本仓库）
 - [ONNX](../wiki/entities/onnx.md) · [ONNX Runtime vs MNN vs TensorRT](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)（本仓库）
 - [Open Duck Mini](../wiki/entities/open-duck-mini.md)（本仓库）— 低成本平台全链路 sim2real 公开参考
+- [NVIDIA Isaac Lab · Spot Locomotion Sim2Real](../wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md)（本仓库）— 官方教程：Isaac-Velocity-Flat-Spot-v0 训平地速度跟踪，Jetson Orin 上 ONNX 推理 + Spot SDK 零样本部署
+- [NVIDIA Isaac Lab · UR10e Industrial Assembly Sim2Real](../wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md)（本仓库）— 官方案例：RL 出 motion/insertion、Isaac ROS 做 6D 感知、UR Direct Torque 阻抗环 500 Hz 真机执行的零样本装配
 
 ### 学完输出什么
 - 一份本平台的部署 SOP 文档与 sim2sim 回归报告

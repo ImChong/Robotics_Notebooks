@@ -14,6 +14,7 @@ related:
   - ../concepts/sim2real.md
   - ../queries/sim2real-gap-reduction.md
   - ./isaac-gr00t.md
+  - ../overview/hub-embodied-eval-benchmark.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
 sources:
   - ../../sources/papers/bet4sim2real_arxiv_2608_21572.md
@@ -144,6 +145,7 @@ sequenceDiagram
 - [Sim2Real](../concepts/sim2real.md)
 - [Sim2Real Gap 缩减](../queries/sim2real-gap-reduction.md)
 - [Isaac GR00T](./isaac-gr00t.md)
+- [具身评测基准枢纽](../overview/hub-embodied-eval-benchmark.md) — ④ 层：把真机评测结论的不确定性量化成证书
 - [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
 
 ## 参考来源

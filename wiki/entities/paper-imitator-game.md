@@ -17,6 +17,7 @@ related:
   - ../methods/vla.md
   - ./paper-indi.md
   - ../tasks/manipulation.md
+  - ../overview/hub-embodied-eval-benchmark.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
 sources:
   - ../../sources/papers/imitator_game_arxiv_2608_22301.md
@@ -134,6 +135,7 @@ flowchart TB
 - [VLA](../methods/vla.md)
 - [Indi](./paper-indi.md)
 - [Manipulation](../tasks/manipulation.md)
+- [具身评测基准枢纽](../overview/hub-embodied-eval-benchmark.md) — ③ 层：把成功率口径从轨迹相似换成目标等价
 - [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
 
 ## 参考来源

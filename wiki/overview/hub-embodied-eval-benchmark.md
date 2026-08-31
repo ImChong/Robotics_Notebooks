@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-08-29
+updated: 2026-08-30
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim-vs-real-eval-gap.md
@@ -20,6 +20,8 @@ related:
   - ../entities/paper-softvtbench.md
   - ../entities/paper-mmhu.md
   - ../entities/dexbench.md
+  - ../entities/paper-imitator-game.md
+  - ../entities/paper-bet4sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -33,6 +35,8 @@ sources:
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/papers/mmhu_arxiv_2507_12463.md
   - ../../sources/sites/dexbench-org.md
+  - ../../sources/papers/imitator_game_arxiv_2608_22301.md
+  - ../../sources/papers/bet4sim2real_arxiv_2608_21572.md
 summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
 ---
 
@@ -67,8 +71,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 |------|--------|----------|----------|
 | ① 认知评测 | MLLM 作为 embodied brain 的感知/规划/推理能力；另含日常 AV 时序对齐；驾驶人本 Behavior VQA 见 MMHU | RoboBench、ESI-Bench、Daily-Omni；驾驶相邻 **MMHU** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md)、[MMHU](../entities/paper-mmhu.md) |
 | ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度；开放域多场景世界生成另见 WorldScore；交互干预/持久另见 HarnessEval-W；off-expert 动作跟随另见 WorldEcho | EWMBench、GigaWorld-1 WMBench；WorldScore / HarnessEval-W（相邻）；WorldEcho | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[WorldScore](../entities/paper-worldscore.md)、[HarnessEval-W](../entities/paper-harnesseval-w.md)、[WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) |
-| ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**；接触安全另见 **SoftVTBench**；工业灵巧规格见 **DexBench**（评测仓待发布） | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[DexBench](../entities/dexbench.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
-| ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、代表性代价 | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md) |
+| ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**；接触安全另见 **SoftVTBench**；工业灵巧规格见 **DexBench**（评测仓待发布）；成功判据本身另见 **Imitator Game**（目标等价而非轨迹相似） | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[DexBench](../entities/dexbench.md)、[Imitator Game](../entities/paper-imitator-game.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
+| ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、代表性代价；真机样本量不足另见 **Bet4Sim2Real**（仿真库下注换 anytime-valid 区间） | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md)、[Bet4Sim2Real](../entities/paper-bet4sim2real.md) |
 | 端到端 | 四层如何逐层选型取舍 | 选型决策树 | [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) |
 
 ## 评测选型的关键取舍
@@ -99,6 +103,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 过程评测 OPD（③ 层，可挂已有 rollout）
 - [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉 Goal/Safety Success（③ 层过程安全）
 - [DexBench](../entities/dexbench.md) — 工业灵巧规格（OSC / 18 任务）；规范已公开，Arena 仍标 coming soon
+- [Imitator Game](../entities/paper-imitator-game.md) — L0–L3 意图级模仿基准（③ 层成功判据：目标等价而非轨迹相似）
+- [Bet4Sim2Real](../entities/paper-bet4sim2real.md) — 仿真库下注换 anytime-valid 真机性能证书（④ 层，真机样本贵时收窄区间）
 - [MMHU](../entities/paper-mmhu.md) — 驾驶场景人体行为多模态基准（① 层相邻）
 - [XPolicyLab](../entities/xpolicylab.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
@@ -115,4 +121,6 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [PRM-as-a-Judge 论文](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md) — 过程评测 OPD
 - [SoftVTBench 论文](../../sources/papers/softvtbench_arxiv_2607_04234.md) — 可变形视触觉 Goal/Safety Success
 - [MMHU 论文](../../sources/papers/mmhu_arxiv_2507_12463.md) — 驾驶人本 Behavior VQA / 运动评测
+- [Imitator Game 论文](../../sources/papers/imitator_game_arxiv_2608_22301.md) — L0–L3 意图级模仿评测协议
+- [Bet4Sim2Real 论文](../../sources/papers/bet4sim2real_arxiv_2608_21572.md) — 下注式 anytime-valid 真机性能证书
 - 本页归纳自 [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) 及各评测基准实体/概念页

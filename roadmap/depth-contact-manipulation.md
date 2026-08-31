@@ -89,6 +89,7 @@ flowchart LR
 - [Query：操作任务里的模仿学习](../wiki/queries/il-for-manipulation.md)
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集方案选型
 - [DexVerse](../wiki/entities/paper-dexverse.md) — 100 任务 × 3 臂 × 6 手灵巧操作 benchmark；π₀.₅ / DP3 均值成功率仅 34%，暴露跨技能泛化与亚厘米接触对齐瓶颈
+- [DexBench](../wiki/entities/dexbench.md)（本仓库）— RLWRLD × NVIDIA 工业灵巧操作开放规格：OSC 六轴诊断难度、五种 Dexterity Regime 规定能力包络，18 任务 / 55 用例 + 可采购实物；官方评测仓与 Isaac Lab-Arena 集成待发布
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
 
 ### 推荐做什么
