@@ -4,6 +4,7 @@ tags: [interview, embodied-ai, vla, reinforcement-learning, imitation-learning, 
 status: complete
 updated: 2026-08-08
 related:
+  - ./coding-interview-university.md
   - ./lumina-embodied.md
   - ./learn-robotics-qqfly-guide.md
   - ./waytoagi.md
@@ -118,10 +119,11 @@ README 宣称主表及补充约 **425** 题；入库日 Markdown `<summary>` 合
 - **误区：AI 二次审查 = 零事实错误。** 仍可能过时或简化过度（尤其前沿 VLA 数字）；关键指标回实体页。
 - **误区：频次标签是公司 JD 保证。** 频次来自公开面经合并统计，不是某司必考清单。
 - **局限：** 卷八与各卷手撕偏通识 coding；与具身专识卷正交，勿用其替代运控深读。
-- **与其它中文入口分工：** [Lumina Guide](./lumina-embodied.md) 偏百科/社区；[qqfly 指南](./learn-robotics-qqfly-guide.md) 偏机械臂规控自学；[WaytoAGI](./waytoagi.md) 偏大众 AI 雷达；**本题库偏面试速查**。
+- **与其它中文入口分工：** [Lumina Guide](./lumina-embodied.md) 偏百科/社区；[qqfly 指南](./learn-robotics-qqfly-guide.md) 偏机械臂规控自学；[WaytoAGI](./waytoagi.md) 偏大众 AI 雷达；[Coding Interview University](./coding-interview-university.md) 偏 **通用 SWE 算法/刷题路线图**；**本题库偏面试速查**。
 
 ## 关联页面
 
+- [Coding Interview University](./coding-interview-university.md) — 大厂 SWE 通用 CS/刷题路线图（补卷八 coding 底座）
 - [Lumina 具身智能社区](./lumina-embodied.md) — 百科 Guide / Talks，与面试题库互补
 - [开源机器人学学习指南（qqfly）](./learn-robotics-qqfly-guide.md) — 系统自学手册（固定基臂主线）
 - [WaytoAGI](./waytoagi.md) — 中文社区飞书雷达
