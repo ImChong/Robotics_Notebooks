@@ -15,7 +15,7 @@ tags:
   - tsinghua
 status: complete
 venue: arxiv
-updated: 2026-07-16
+updated: 2026-08-31
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
@@ -25,9 +25,13 @@ related:
   - ../tasks/bimanual-manipulation.md
   - ./paper-egowam-egocentric-human-wam-co-training.md
   - ./paper-robottt-test-time-training-vla-context.md
+  - ./paper-stellavla-structured-icl-vla.md
+  - ./paper-zero-wam.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
 sources:
   - ../../sources/papers/wam_ttt_arxiv_2607_06988.md
+  - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
 summary: "WAM-TTT（PKU/Galbot 等）：在冻结 LDA-1B WAM 的 video expert 上外挂 Spatial-TTT fast-weight 分支；meta-training 用 2286 对人–机相位同步示教 + KV 记忆重建对齐人 Key/Value 与机器人 Query；部署时仅用无标注 egocentric 人视频做自监督视频预测 TTT 更新记忆即可 steer 新任务，无需机器人动作或全模型微调；9 项真机 New 家庭场景平均 46.2% progress，显著优于 WAM-ICL（7.1%）与同骨干 LDA（32.5%）。"
 ---
 
@@ -125,7 +129,8 @@ flowchart TB
 
 - **误区：** 把 WAM-TTT 等同于 **人视频 BC / 模仿学习**——论文明确 **不** 把人轨迹当可执行监督，而是作 **部署时记忆**。
 - **误区：** 与 [RoboTTT](./paper-robottt-test-time-training-vla-context.md) 混为一谈——RoboTTT 在 **VLA 层内** 用 **机器人 visuomotor 流** 递推 fast weights；WAM-TTT 在 **WAM video 分支** 用 **人视频** 做 **批次 TTT**，且依赖 **meta-training 人–机对齐**。
-- **局限：** Meta-training 依赖 **相位对齐** 的配对数据，错位会无声劣化；fast-weight 容量与 **分布外任务** 边界未充分刻画；接口仅 **egocentric RGB**，未融合手姿/接触/3D；截至 ingest **代码/项目页未公开**。
+- **局限：** progress 为**部分给分**（非二元完成率），真实全完成率低于 headline **46.2%**；「零梯度」指零**主干**梯度，测试时仍对快权重做 inner SGD；WAM-ICL 基线主干非长上下文 ICL 专用，**7.1%** 对照需打折解读；截至 ingest **代码/项目页未公开**。
+- **策展对照：** 四路线横向定位见 [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM 对比](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)；附录 **KVM** 损失等价于无 softmax 线性注意力，缝合「上下文」与「记忆」两种叙事。
 
 ## 与其他页面的关系
 
@@ -146,6 +151,7 @@ flowchart TB
 ## 参考来源
 
 - [WAM-TTT 论文摘录](../../sources/papers/wam_ttt_arxiv_2607_06988.md)
+- [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)
 
 ## 推荐继续阅读
 

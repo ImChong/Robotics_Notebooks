@@ -1,3 +1,14 @@
+## [2026-08-31] ingest | sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md — 四篇具身 ICL 纵横向解读；对比页 + StellaVLA 新建 + RoboTTT arXiv 补录
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/vIUalf3vZI3AV-HWSVruew>，与 WAM-TTT / RoboTTT / StellaVLA / Zero-WAM 四论文 ingest 一并合并
+- **关键页：** [`wam-ttt-robottt-stellavla-zero-wam-embodied-icl`](wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)；[`paper-stellavla-structured-icl-vla`](wiki/entities/paper-stellavla-structured-icl-vla.md)
+
+## [2026-08-31] ingest | sources/papers/stellavla_arxiv_2608_11671.md + robottt arXiv 补录 — 四篇部署期适应轴：StellaVLA 结构化 ICL 新建；RoboTTT 补 arXiv:2607.15275；WAM-TTT / Zero-WAM 已入库并交叉链接
+
+- **触发：** 用户指定 WAM-TTT（2607.06988）、RoboTTT（2607.15275）、StellaVLA（2608.11671）、Zero-WAM（2608.26103）；要求自动合并 PR
+- **步骤 2.5：** StellaVLA **确认未开源**（仅 VLA-Arena 开源基准）；RoboTTT arXiv 已发布、**仍无公开代码**；Zero-WAM **待发布**（2026-09-15 前）
+- **关键页：** [`paper-stellavla-structured-icl-vla`](wiki/entities/paper-stellavla-structured-icl-vla.md)（新建）；[`paper-robottt`](wiki/entities/paper-robottt-test-time-training-vla-context.md)（arXiv 元数据）；交叉 [`robot-in-context-learning`](wiki/concepts/robot-in-context-learning.md) / [`vla`](wiki/methods/vla.md) / [`manipulation`](wiki/tasks/manipulation.md)
+
 ## [2026-08-31] ingest | sources/papers/abot_n1_arxiv_2607_10383.md — ABot-N1 慢–快 VLN 基础模型；开源 ABotN-Bench 评测栈，模型权重未发布
 
 ## [2026-08-31] ingest | sources/papers/wikiskill_arxiv_2608_27454.md — WikiSkill 持久 wiki 驱动 skill 进化；官方未开源；交叉 LLM Wiki / Superpowers / Darwin

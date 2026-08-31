@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, vla, test-time-training, long-horizon, manipulation, nvidia, stanford, ut-austin]
 status: complete
-updated: 2026-07-16
-venue: "NVIDIA GEAR（项目页，暂无 arXiv）"
+updated: 2026-08-31
+arxiv: "2607.15275"
+venue: "arXiv 2026 / NVIDIA GEAR"
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -11,19 +12,22 @@ related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./paper-notebook-ttt-parkour.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
+  - ./paper-stellavla-structured-icl-vla.md
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
+  - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
 sources:
   - ../../sources/papers/robottt_nvidia_gear.md
   - ../../sources/sites/nvidia-research-robottt.md
+  - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
 summary: "RoboTTT（NVIDIA GEAR 等）：在 GR00T N1.7 类 VLA 中嵌入 TTT 层，用固定大小 fast weights 对每步 visuomotor token 做自监督梯度更新，把上下文扩到 8K 步且不增推理延迟；报告长程双臂装配 +87%、单次人视频模仿与在线自纠偏。"
 ---
 
 # RoboTTT（Test-Time-Training Robot Policies）
 
-**RoboTTT**（*Context Scaling for Robot Policies*，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/gear/robottt/)）把 **Test-Time Training（TTT）** 写进机器人 **Vision-Language-Action（VLA）** foundation 模型的时间维：层内携带一个 **微小神经网络**，其 **fast weights** 即递推隐藏状态；**每一次**传入的图像、本体与动作 chunk 都会在 fast weights 上触发 **一步自监督梯度更新**，把任意长的交互历史 **压缩进固定大小参数**，而非堆叠 KV cache 或变长 RNN 状态。
+**RoboTTT**（*Context Scaling for Robot Policies*，[arXiv:2607.15275](https://arxiv.org/abs/2607.15275)，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/gear/robottt/)）把 **Test-Time Training（TTT）** 写进机器人 **Vision-Language-Action（VLA）** foundation 模型的时间维：层内携带一个 **微小神经网络**，其 **fast weights** 即递推隐藏状态；**每一次**传入的图像、本体与动作 chunk 都会在 fast weights 上触发 **一步自监督梯度更新**，把任意长的交互历史 **压缩进固定大小参数**，而非堆叠 KV cache 或变长 RNN 状态。
 
-> **工程底座：** 论文实例化为 **GR00T N1.7** VLA（见 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 与 [Isaac GR00T](./isaac-gr00t.md)）。入库时 **尚无独立 arXiv 编号**，以官方项目页为准。
+> **工程底座：** 论文实例化为 **GR00T N1.7** VLA（见 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 与 [Isaac GR00T](./isaac-gr00t.md)）。
 
 ## 一句话定义
 
@@ -114,14 +118,15 @@ flowchart TB
 - 同一套 **context masking** 配方买到两种能力：人视频作纯上下文 → 未见配置 one-shot 装配；失败 rollout + 人工纠正作上下文 → 部署后无人工在线自纠偏。
 - 适用边界是 **长程、需跨分钟记忆的双臂装配**（~5 min 级任务上 ~89 vs ~42）；短程单步任务本就差距有限，8K 上下文的收益无从体现。
 - 主要风险在工程侧：TBPTT 段长、门控 \(\alpha\) 与 masking 配方对稳定性敏感；「记住 8K 步」是压缩进固定大小权重，能记什么由自监督目标与 meta-learned 更新动力学决定。
-- 落地状态保守：入库时无 arXiv、无公开代码，真机证据仅项目页列出的 YAM 双臂装配域；与 KV / 关键帧记忆类 VLA 尚无同 benchmark 系统对比。
+- 落地状态保守：截至入库日无公开代码，真机证据以论文 / 项目页列出的 YAM 双臂装配域为准；与 KV / 关键帧记忆类 VLA、[StellaVLA](./paper-stellavla-structured-icl-vla.md) 结构化 ICL 尚无同 benchmark 系统对比。
 - 与 [TTT-Parkour](./paper-notebook-ttt-parkour.md)、[WAM-TTT](./paper-wam-ttt-human-video-test-time-steering.md) 同名不同物：那两者是部署前或批次级的离线 TTT，本页是 **训练与部署都在线** 的层内递推。
 
 ## 常见误区或局限
 
 - **误区：** 把 RoboTTT 等同于 **测试时全模型 fine-tune** 或 [TTT-Parkour](./paper-notebook-ttt-parkour.md) 式 **离线仿真微调**——RoboTTT 更新的是 **层内 fast weights**，主慢权重与预训练 VLA 骨干通过门控保留。
-- **误区：** 认为 **8K 上下文 = 存 8K 帧图像**——实际是 **压缩进固定大小权重**；能记什么取决于 **自监督目标与 meta-learned 更新动力学**。
-- **局限：** 入库时 **无公开代码/arXiv**；真机仅项目页列出的装配域；**TBPTT 段长、门控与 masking 配方** 对稳定性敏感；与 **KV/关键帧记忆类 VLA**（如 KEMO）路线尚未在同一 benchmark 系统对比。
+- **误区：** 认为 **8K 上下文 = 存 8K 帧图像**——实际是 **压缩进固定大小权重**；且论文 **8K 指预训练上下文**，主结果部署策略多在 **1K** 后训练上评估。
+- **误区：** one-shot 人视频 = 野外 egocentric 人演示——实验设定为 **机器人固定相机、机器人静止** 拍摄的人手操作，「未见」多为同板 **80 种元件构型** 的留出组合。
+- **局限：** 截至入库日 **无公开代码**；真机以论文列出的装配域为主；**+1 历史帧** 基线反而更差（Pup Go Car **39.5 vs 57**），长上下文非免费午餐；与 **KV/关键帧记忆类 VLA** 及 **结构化 ICL** 尚无同 benchmark 系统对比；**DAgger Distillation**（失败作 context、纠正作 target）相对标准 DAgger 自报 **+33% vs +9%**，可独立于 TTT 拆用。
 
 ## 与其他工作对比
 
@@ -147,9 +152,11 @@ flowchart TB
 
 - [RoboTTT 论文摘录（NVIDIA GEAR）](../../sources/papers/robottt_nvidia_gear.md)
 - [NVIDIA Research RoboTTT 项目页归档](../../sources/sites/nvidia-research-robottt.md)
+- [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)
 
 ## 推荐继续阅读
 
+- 论文 PDF：<https://arxiv.org/abs/2607.15275>
 - 官方项目页与演示视频：<https://research.nvidia.com/labs/gear/robottt/>
 - GR00T N1 原文：<https://arxiv.org/abs/2503.14734>
 - 长上下文 TTT（NLP，机制相近）：<https://arxiv.org/abs/2512.23675>（TTT-E2E）

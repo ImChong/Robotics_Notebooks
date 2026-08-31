@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-31
 related:
   - ./foundation-policy.md
   - ../methods/imitation-learning.md
@@ -13,7 +13,11 @@ related:
   - ../entities/paper-robottt-test-time-training-vla-context.md
   - ../entities/paper-behavior-prompting-policy.md
   - ../entities/qwen-robot-manip.md
+  - ../entities/paper-stellavla-structured-icl-vla.md
+  - ../entities/paper-zero-wam.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
+  - ../entities/qwen-robot-manip.md
+  - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
   - ../entities/skild-s1.md
   - ../entities/skild-ai.md
   - ../overview/hub-cross-embodiment.md
@@ -25,6 +29,7 @@ sources:
   - ../../sources/blogs/generalist_gen15_one_shot.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
+  - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
 summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、从上下文窗口内的示范或交互证据归纳新映射；须与「映射选择」（π0.7 metadata）、「状态记忆」（MemoryVLA 等）及 test-time training（RoboTTT）区分——只有消解映射本身不确定性的第三类才是真 ICL。"
 ---
 
@@ -95,7 +100,7 @@ flowchart LR
 ### 1. 遥操作轨迹（同坐标系示范）
 
 - **训练塑造归纳能力：** One-Shot Imitation Learning 等在训练时构造「一条示范 + 一次查询」，优化 **读完示范后的执行表现**。
-- **表征形态：** ICRT 类 **图像/状态/动作 token 交错序列**；Instant Policy **图 diffusion**；KAT **关键点 + 文本 Transformer**；BPP **示范 embedding + cross-attention**（见 [BPP 实体](../entities/paper-behavior-prompting-policy.md)）；StellaVLA **结构化计划与子目标**。
+- **表征形态：** ICRT 类 **图像/状态/动作 token 交错序列**；Instant Policy **图 diffusion**；KAT **关键点 + 文本 Transformer**；BPP **示范 embedding + cross-attention**（见 [BPP 实体](../entities/paper-behavior-prompting-policy.md)）；[StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) **结构化计划、子目标与 2D/3D 运动 verbalization**。
 - **Action tokenizer：** 相邻动作在 latent 空间是否平滑（如 LipVQ-VAE）直接影响从示范归纳出的控制是否可执行。
 - **配对数据：** 同任务多条示范互相作 prompt/query；或仿真程序化生成（SynthICL）。
 - **后装能力：** RICL 在预训练 VLA（如 π0-FAST）上做小规模 in-context post-training。
@@ -158,6 +163,8 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [操作任务](../tasks/manipulation.md) — 短程原子操作是 GEN-1.5 one-shot 主战场；S1 把评测轴推到长程未见
 - [S1（Skild）](../entities/skild-s1.md) — 显式 ICL 预训练 + 视频 prompt；闭源自报 10 min 未见任务
 - [Zero-WAM](../entities/paper-zero-wam.md) — 人视频当 WAM 任务规格；HumanGen ICL 对 + IFP；代码待发布
+- [StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) — 结构化检索示范；VLA-Arena 0.63；无官方代码
+- [四路线对比（WAM-TTT / RoboTTT / StellaVLA / Zero-WAM）](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 2026-08 可核对论文纵横向坐标系
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制
 - [RealAB 14 篇地图](../overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 选型链在 VLA 层给出 I/O 边界与时延约束；ICL 是同一层的 **部署期适应旋钮**，长上下文直接吃掉该链关心的每步推理预算
@@ -175,3 +182,4 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [万字长文：机器人上下文学习到底在学什么（具身智能之心，2026-08-25）](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md)
 - [GEN-1.5: Embodied Foundation Models are One-Shot Learners（Generalist AI 博客归档）](../../sources/blogs/generalist_gen15_one_shot.md)
 - [S1: In-Context Learning for Robotics（Skild 博客归档）](../../sources/blogs/skild_s1_in_context_learning.md)
+- [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)

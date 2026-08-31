@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, wam, in-context-learning, human-video, manipulation, robottwin, robbyant, hkust, hkust-gz]
 status: complete
-updated: 2026-08-28
+updated: 2026-08-31
 arxiv: "2608.26103"
 code: https://github.com/robbyant-research/Zero-WAM
 related:
@@ -13,12 +13,17 @@ related:
   - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
   - ./paper-dreamwam.md
   - ./paper-lawa.md
+  - ./paper-wam-ttt-human-video-test-time-steering.md
+  - ./paper-stellavla-structured-icl-vla.md
+  - ./paper-robottt-test-time-training-vla-context.md
   - ./skild-s1.md
+  - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
 sources:
   - ../../sources/papers/zero_wam_arxiv_2608_26103.md
   - ../../sources/sites/zero-wam.md
   - ../../sources/repos/zero-wam.md
   - ../../sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md
+  - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
 summary: "Zero-WAM（arXiv:2608.26103）：人类视频作 in-context 任务规格；HumanGen 74.2K 配对 / 8.6K 任务；RoboTwin 2.0 未见 46.95%；真机放置/长程/插桌腿 53.3/33.3/16.7%；代码计划 2026-09-15 前发布。"
 ---
 
@@ -100,6 +105,7 @@ flowchart LR
 4. 主数字是相对 LingBot-VA，不要写成操作领域 SOTA。
 5. 代码未发布前，只能把 47% 当论文数字，不能当可复现基线。
 6. 「Zero-Shot」依赖 HumanGen 预训练分布，不是无相关人视频的真零样本。
+7. **IFP 不可省**：跨消融推算，去掉 IFP 后加人类视频（**28.55**）反而低于不加（**39.44**）；朴素堆人视频会走捷径——方向性结论见 [四路线对比](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)，严格等价性需作者确认。
 
 ## 源码运行时序图
 
@@ -107,7 +113,7 @@ flowchart LR
 
 ## 局限与风险
 
-- 生成人类视频依赖图像编辑与视频生成模型，语义/物理过滤失败会污染 ICL。
+- 生成人类视频 **100% 为合成**（VLM+视频生成管线）；训练/测试 domain gap 未系统评估；质检通过率未披露。
 - 堆叠三块等长时程任务成功率仍低，不能把平均 47% 读成「开箱即用」。
 - 真机展示样本量有限；16.7% 方差未知。
 - 公众号条目把机构写成「灵波」，官方中文名是**蚂蚁灵波科技（Robbyant）**。
@@ -139,6 +145,7 @@ flowchart LR
 - [zero-wam 项目页](../../sources/sites/zero-wam.md)
 - [zero-wam 仓库](../../sources/repos/zero-wam.md)
 - [具身智能小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md)
+- [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)
 
 ## 推荐继续阅读
 

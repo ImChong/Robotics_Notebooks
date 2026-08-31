@@ -1380,7 +1380,7 @@
 - [RoboReact：从生成第一人称视频蒸馏可泛化全身操作技能](wiki/entities/paper-roboreact.md) — RoboReact**（*Agentic Skill Distillation from Generated Egocentric Videos for Generalizable Whole-B `📅unknown` `[entity_page]`
 - [RoboSynChallenge：合成数据能不能算数，真机说了算](wiki/entities/paper-robosynchallenge.md) — RoboSynChallenge**（*Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skill `📅unknown` `[entity_page]`
 - [Robot Parkour Learning（HMI P130）](wiki/entities/paper-robot-parkour-learning.md) — Robot Parkour Learning**（*Robot Parkour Learning*，2023，[arXiv:2309.05665](https://arxiv.org/abs/23 `📅unknown` `[entity_page]`
-- [RoboTTT（Test-Time-Training Robot Policies）](wiki/entities/paper-robottt-test-time-training-vla-context.md) — RoboTTT**（*Context Scaling for Robot Policies*，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/ `📅unknown` `[entity_page]`
+- [RoboTTT（Test-Time-Training Robot Policies）](wiki/entities/paper-robottt-test-time-training-vla-context.md) — RoboTTT**（*Context Scaling for Robot Policies*，[arXiv:2607.15275](https://arxiv.org/abs/2607.15275 `📅unknown` `[entity_page]`
 - [RoboWM-Bench](wiki/entities/paper-robowm-bench-action-faithfulness.md) — RoboWM-Bench** 收录于 具身智能研究室 · 具身世界模型六路线综述 **趋势 `📅unknown` `[entity_page]`
 - [Robust Autonomous Navigation of Mini-Cheetah Vision](wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md) — Dudzik et al.（MIT，IROS 2020，[DOI:10.1109/IROS45743.2020.9340701](https://doi.org/10.1109/IROS45743 `📅unknown` `[entity_page]`
 - [Robust Perceptive Locomotion（HMI P012）](wiki/entities/paper-robust-perceptive-locomotion-wild.md) — Robust Perceptive Locomotion**（*Learning Robust Perceptive Locomotion for Quadrupedal Robots in th `📅unknown` `[entity_page]`
@@ -2293,6 +2293,7 @@
 - [SRU（Spatially-Enhanced Recurrent Memory）](wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — SRU**（*Spatially-Enhanced Recurrent Memory for Long-Range Mapless Navigation via End-to-End Reinfo `📅unknown` `[entity_page]`
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
 - [STEAM：自监督时序 Ensemble Advantage 建模](wiki/entities/paper-steam-advantage-modeling.md) — STEAM**（*Self-Supervised Temporal Ensemble Advantage Modeling for Real-World Robot Learning*，[arXi `📅unknown` `[entity_page]`
+- [StellaVLA（结构化 In-Context 示范 · VLA）](wiki/entities/paper-stellavla-structured-icl-vla.md) — StellaVLA**（*In-Context Structured Demonstration for Generalizable Vision-Language-Action Models*， `📅unknown` `[entity_page]`
 - [StreamPI](wiki/entities/paper-streampi.md) — StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models**（[arXiv:2608.2 `📅unknown` `[entity_page]`
 - [StructRL](wiki/entities/paper-structrl.md) — StructRL: Structured Action-Space Exploration for Flow-Based VLAs**（[arXiv:2608.15139](https://arx `📅unknown` `[entity_page]`
 - [亚厘米级管道检测机器人：DEA 驱动的蠕动穿管软体机器人](wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md) — A pipeline inspection robot for navigating tubular environments in the sub-centimeter scale**（Tang `📅unknown` `[entity_page]`
@@ -3107,6 +3108,7 @@
 - [Spark vs Aholo Viewer：Web 大场景 3DGS 渲染选型](wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md) — 两者都解决 **consumer 设备 上交互式浏览千万级 splat** 的问题，但 **生态绑定、格式与混渲能力** 不同。机器人研究若只需 **训练用光真实感观测**，应优先 [GS-Playg `📅unknown` `[comparison_page]`
 - [Trajectory Optimization vs Reinforcement Learning](wiki/comparisons/trajectory-opt-vs-rl.md) — 在足式机器人运动控制领域，**轨迹优化 (Trajectory Optimization, TO)** 和 **强化学习 (Reinforcement Learning, RL)** 是两种截然不同但 `📅unknown` `[comparison_page]`
 - [五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型](wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 五大具身模型** 是 2025–2026 年产业报告与论文中高频出现的 **功能分层缩写**：共享 **Transformer + 多模态编码** 底座，按 **跨模态理解 → 空间导航 → 动作 `📅unknown` `[comparison_page]`
+- [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比](wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 截至 2026-08 学术侧最接近产业「演示当提示」叙事的四条可核对路线**：两条 **快权重 TTT**（感知侧技能记忆 vs 动作侧工作记忆）与两条 **零梯度上下文**（结构化语言示范 vs `📅unknown` `[comparison_page]`
 - [Weights & Biases vs TensorBoard（训练实验监控选型）](wiki/comparisons/wandb-vs-tensorboard.md) — 在机器人强化学习工程里，**TensorBoard** 与 **Weights & Biases（W&B）** 都回答「训练进行得怎样」，但默认假设不同：前者是 **本机 event 文件 + 浏览器 `📅unknown` `[comparison_page]`
 - [WBC vs RL: Whole-Body Control vs Reinforcement Learning](wiki/comparisons/wbc-vs-rl.md) — 人形机器人运动控制领域最常见的两种路线对比。 `📅unknown` `[comparison_page]`
 - [ZEST vs SONIC vs 视觉足球：人形学习控制三层对比](wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md) — Science Robotics* 11(117) 同期发表 ZEST、[SONIC](../methods/sonic-motion-tr `📅unknown` `[comparison_page]`
