@@ -1,5 +1,7 @@
 ## [2026-08-31] ingest | sources/repos/jwasham_coding_interview_university.md — 接入 Coding Interview University 并升格实体页；交叉更新具身面试题库与 qqfly 指南
 
+## [2026-08-31] ingest | sources/repos/hkuds_deeptutor.md — 接入 HKUDS DeepTutor（已开源）并升格 wiki/entities/deeptutor.md；交叉更新 CLI-Anything/Hermes/OpenClaw/Agent Reach
+
 ## [2026-08-30] ingest | sources/courses/nvidia_learn_openusd.md — Learn OpenUSD 官方课纲：Stage→Composition→资产结构→Instancing→Data Exchange；GitHub 已开源
 
 - **触发：** 用户指定 <https://docs.nvidia.com/learn-openusd/latest/index.html>；要求自动合并 PR
