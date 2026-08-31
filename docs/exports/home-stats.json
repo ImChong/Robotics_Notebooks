@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/winui.md",
+      "detail_id": "entity-winui",
+      "label": "WinUI",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-abot-n1.md",
       "detail_id": "entity-paper-abot-n1",
       "label": "ABot-N1（通用视觉–语言导航基础模型）",
@@ -203,22 +213,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-glancewam.md",
-      "detail_id": "entity-paper-glancewam",
-      "label": "GlanceWAM：把视觉想象移出控制关键路径",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-abot-n1.md",
-    "detail_id": "entity-paper-abot-n1",
-    "label": "ABot-N1（通用视觉–语言导航基础模型）",
+    "path": "wiki/entities/winui.md",
+    "detail_id": "entity-winui",
+    "label": "WinUI",
     "type": "entity",
     "recency": "2026-08-31",
     "source": "git",
