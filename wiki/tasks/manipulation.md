@@ -166,6 +166,7 @@ flowchart TD
 - **Indi**：把示范片段的 **局部目标** 蒸馏进 VLA 解码器；GR00T-N1.7 SimplerEnv-Bridge **64.3→84.7%**；**未开源**；入口见 [Indi](../entities/paper-indi.md)（arXiv:2608.23478）
 - **JoyAI-RA 0.5**：京东 **VLWA** 通才操作——**隐式 latent-action** + **显式 130-D** 双对齐吃人/仿/机异构数据，**内–外环 RL**；AgiBot G1 seen **92.0** / unseen **75.5**，人视频缩放未见饱和；**未开源**；入口见 [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md)（arXiv:2608.05674）
 - **EgoVerse**：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身共训研究——共训可涨分，但缩放需 **域对齐锚定**，场景多样性主导有限预算泛化；入口见 [EgoVerse](../entities/paper-egoverse.md)
+- **StellaVLA**：**结构化 in-context 示范**——离线 VLM 自动抽取任务计划、子目标与 2D/3D 运动 verbalization；训练期 **spatial-language 专家**、推理仅 action expert；**VLA-Arena overall 0.63**、LIBERO **98.8%**、LIBERO-Plus **85.1%**；入口见 [StellaVLA](../entities/paper-stellavla-structured-icl-vla.md)（arXiv:2608.11671；无官方代码）
 - **WAM-TTT**：在 **冻结 LDA WAM** 上用 **人视频测试时 TTT fast-weight 记忆** **steer** 新任务变体——**meta-training** 对齐人–机相位 + **KV 重建**；部署仅需 **无标注 egocentric 人视频**；**G1 + Galbot 双臂 9 任务** New 家庭场景 **46.2%** avg progress，显著优于 **WAM-ICL（7.1%）**；入口见 [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md)（arXiv:2607.06988）
 - **T-Rex**（[实体页](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）：**触觉反应式灵巧操作**——人视频预训练 + **100 h 触觉 play mid-training** + 变频率 MoT；开源触觉数据集与 **12 任务** 双手真机基准
 - **OmniTacTune**（[实体页](../entities/paper-omnitactune-tactile-residual-adaptation.md)，arXiv:2607.03723）：**策略无关触觉残差真机 RL**——冻结 Flow/ACT/DP/π₀.₅ 视觉基策略，**40–80 min** 在线练习把接触丰富任务 **5–40% → 85–100%**；**无需离线触觉演示**
@@ -285,7 +286,8 @@ flowchart TD
 - [Prism-GRPO](../entities/paper-prism-grpo.md) — 同结果组 execution quality 回收 Binary GRPO 退化 rollout；RoboTwin rollout 最多 −56%（arXiv:2608.17423；SimpleVLA-RL 基座开源）
 - [Temporal GRPO](../entities/paper-temporal-grpo.md) — 分阶段 VLA-RL 信用；RoboTwin 75.8%（arXiv:2608.13026；未开源）
 - [Rift](../entities/paper-rift-wam.md) — 免视频 rollout WAM；LIBERO 98.8% / 247.9 ms（arXiv:2608.11521；未开源）
-- [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
+- [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（arXiv:2607.15275）
+- [StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) — 结构化检索示范 ICL；VLA-Arena 0.63 / LIBERO 98.8%（arXiv:2608.11671；无官方代码）
 - [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环（约 25 Hz；训练+部署已开源，arXiv:2607.26055）
 - [HiFi-UMI / HiFi-UMI-2K](../entities/paper-hifi-umi.md) — 2000 h 高保真无机器人双臂数据；zero-robot 后训练（arXiv:2607.25895）
 - [INTACT](../entities/paper-intact.md) — 意图→动作无搜索 latent WM；Direct 2.9–5.5 ms（arXiv:2607.26056）

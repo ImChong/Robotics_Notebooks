@@ -16,7 +16,7 @@
 - **序列训练：** flow-matching 动作头 + **sequence action forcing**（每 action chunk 独立噪声 \(\tau_t\)）+ **TBPTT**（段内反传、段间 fast weights 传递但梯度 detach）。
 - **上下文利用：** 对选定 timestep **mask 动作损失** 可仅更新 fast weights——用于 **人视频 in-context 模仿** 与 **DAgger Distillation**（失败 rollout 作 context、人工纠正作监督）。
 - **评测：** YAM 双臂 setup 上三项 dexterous 长程装配（Pup Go Car ~5min、Gear Bot ~5min、Circuit 1–2min）；相对 GR00T N1.7 单步上下文平均 **+87%** 任务完成分，8K 预训练上下文相对 1K **+62%**；GDN 等固定大小循环记忆基线无类似 scaling 趋势。
-- **论文状态：** 入库时项目页 **未给出独立 arXiv 编号**；正文引用 GR00T N1（2503.14734）、TTT-E2E 长上下文（2512.23675）、Algorithm Distillation（2210.14215）、Gated DeltaNet（2412.06464）等。后续若发布 preprint 应补 `sources/papers/` 条目并回链本页。
+- **论文状态：** [arXiv:2607.15275](https://arxiv.org/abs/2607.15275)（2026-07）；正文引用 GR00T N1（2503.14734）、TTT-E2E 长上下文（2512.23675）、Algorithm Distillation（2210.14215）、Gated DeltaNet（2412.06464）等。
 
 ## 对 wiki 的映射
 

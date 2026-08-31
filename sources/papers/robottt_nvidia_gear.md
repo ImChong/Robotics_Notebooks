@@ -8,8 +8,9 @@
 - **项目页：** <https://research.nvidia.com/labs/gear/robottt/>
 - **机构：** NVIDIA GEAR、Stanford、UT Austin（以项目页为准；作者列表见后续 preprint）
 - **底座模型：** GR00T N1.7（[arXiv:2503.14734](https://arxiv.org/abs/2503.14734) 系列）
-- **入库日期：** 2026-07-16
-- **arXiv：** 入库时 **暂无独立编号**（仅官方项目页；见 [站点归档](../sites/nvidia-research-robottt.md)）
+- **arXiv：** <https://arxiv.org/abs/2607.15275>（2026-07 发布；此前仅项目页）
+- **PDF：** <https://arxiv.org/pdf/2607.15275>
+- **入库日期：** 2026-07-16（arXiv 编号于 2026-08-31 补录）
 - **一句话说明：** 在机器人 foundation VLA 内嵌 **TTT 层**：每步传感器读数触发 fast weights 上 **一步自监督梯度更新**，以 **固定大小神经网络状态** 压缩任意长交互历史；配合 **sequence action forcing + TBPTT** 把预训练 visuomotor 上下文扩到 **8K 步** 且不增推理延迟，解锁 **单次人视频 in-context 模仿、在线自改进、扰动恢复** 与 **上下文长度 scaling law**。
 
 ## 摘录 1：问题与 TTT 层机制（Abstract + Model）
