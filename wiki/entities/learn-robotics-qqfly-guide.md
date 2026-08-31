@@ -5,6 +5,7 @@ status: complete
 updated: 2026-08-08
 related:
   - ./embodied-interview-qa.md
+  - ./embodied-interview-qa.md
   - ./modern-robotics-book.md
   - ./python-robotics.md
   - ./linear-algebra-curriculum.md
@@ -115,6 +116,7 @@ flowchart TB
 - [MoveIt 2](../entities/moveit2.md) — 进阶实践 MoveIt 实验对应栈
 - [运动控制成长路线](../../roadmap/motion-control.md) — 人形/双足主路线，与本指南互补
 - [具身智能高频面试题库](./embodied-interview-qa.md) — 具身岗面试速查（VLA/RL/腿足）；本书偏固定基规控自学
+- [Coding Interview University](./coding-interview-university.md) — 大厂通用算法/刷题路线图；补 CS 面试底座
 
 ## 推荐继续阅读
 
