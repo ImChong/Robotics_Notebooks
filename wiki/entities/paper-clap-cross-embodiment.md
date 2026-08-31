@@ -11,13 +11,14 @@ tags:
   - unitree-g1
   - princeton
 status: complete
-updated: 2026-08-30
+updated: 2026-08-31
 arxiv: "2608.27406"
 code: https://github.com/omni-CLAP/clap
 related:
   - ../methods/generative-world-models.md
   - ./paper-ctrl-world.md
   - ../overview/world-models-route-03-virtual-sandbox.md
+  - ../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md
   - ../concepts/video-as-simulation.md
   - ./paper-pi05-open-world-vla.md
   - ./current-robotics-currentworld.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/papers/clap_arxiv_2608_27406.md
   - ../../sources/repos/omni-clap.md
   - ../../sources/sites/omni-clap-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md
 summary: "CLAP（arXiv:2608.27406，Princeton）：跨本体动作条件视频 WM；LAM→EE 课程吃 OXE+EgoDex，零样本规划 π0.5/MolmoAct-2，few-shot 出双臂 YAM 与 G1 权重；代码与检查点已开源。"
 ---
 
@@ -212,6 +214,7 @@ sequenceDiagram
 - [clap_arxiv_2608_27406.md](../../sources/papers/clap_arxiv_2608_27406.md) — 论文摘录
 - [omni-clap.md](../../sources/repos/omni-clap.md) — 仓库入口
 - [omni-clap-github-io.md](../../sources/sites/omni-clap-github-io.md) — 项目页核查
+- [wechat_embodied_station_clap_9_papers_open_source_2026-08-31](../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md) — 九篇盘点 ingest
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-08-26
+updated: 2026-08-31
 related:
   - ../entities/htd-decoupled-wbc.md
   - ../entities/embodied-interview-qa.md

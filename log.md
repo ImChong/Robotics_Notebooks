@@ -4,11 +4,26 @@
 - **步骤 2.5：** [项目页](https://hanbyelcho.info/safeflow/) 方法/视频/量化表齐全；**未列 GitHub/权重** → **未开源**
 - **关键页：** [`paper-loco-manip-161-104-safeflow`](wiki/entities/paper-loco-manip-161-104-safeflow.md)（自 161 策展索引升格 arXiv 深读）
 
+## [2026-08-31] ingest | sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md — 9 篇独立详情节点（新建 6 / 复用 CLAP+FlashVLA+Riemann）；MILO/AlloEgo/MistyPilot 已开源
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/J62q2IVvvBDyT_8OTR9KZQ>；要求每篇论文独立非重复详情节点
+- **步骤 2.5：**
+  - **MILO** — **已开源** `ac5113/MILO`
+  - **CLAP / FlashVLA** — **已开源**（复用既有 complete 页）
+  - **ESRP** — **未开源** 项目页
+  - **Riemann-1.0** — **确认未开源**（复用既有页）
+  - **TrapVLA** — **未开源** Pages 站
+  - **ViTaR** — **待发布** Code Coming soon
+  - **AlloEgo-VLM / MistyPilot** — **已开源**
+- **关键页：** [clap-cross-embodiment-vla-wm-9-papers-technology-map](wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md)；新建 `paper-milo`、`paper-esrp`、`paper-trapvla`、`paper-vitar`、`paper-alloego-vlm`、`paper-mistypilot`
+
+
 ## [2026-08-31] ingest | sources/papers/temporalflow_vla_arxiv_2608_26821.md — TemporalFlow-VLA 物理接地执行历史；π₀.₅ 双 query + 离线机器人表面流；截至入库日未列官方代码
 
 ## [2026-08-31] ingest | sources/repos/jwasham_coding_interview_university.md — 接入 Coding Interview University 并升格实体页；交叉更新具身面试题库与 qqfly 指南
 
 ## [2026-08-31] ingest | sources/repos/hkuds_deeptutor.md — 接入 HKUDS DeepTutor（已开源）并升格 wiki/entities/deeptutor.md；交叉更新 CLI-Anything/Hermes/OpenClaw/Agent Reach
+
 
 ## [2026-08-30] ingest | sources/courses/nvidia_learn_openusd.md — Learn OpenUSD 官方课纲：Stage→Composition→资产结构→Instancing→Data Exchange；GitHub 已开源
 
