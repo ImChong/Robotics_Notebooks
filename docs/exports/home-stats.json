@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-08-31",
-  "node_count": 3360,
-  "edge_count": 30262,
+  "node_count": 3361,
+  "edge_count": 30273,
   "coverage": {
-    "covered": 3335,
-    "total": 3335,
+    "covered": 3336,
+    "total": 3336,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/coding-interview-university.md",
+      "detail_id": "entity-coding-interview-university",
+      "label": "Coding Interview University",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-bet4sim2real.md",
       "detail_id": "entity-paper-bet4sim2real",
@@ -200,25 +210,14 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-flashvla.md",
-      "detail_id": "entity-paper-flashvla",
-      "label": "FlashVLA：流式异步 VLA 动作解码",
-      "type": "entity",
-      "recency": "2026-08-29",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bet4sim2real.md",
-    "detail_id": "entity-paper-bet4sim2real",
-    "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
+    "path": "wiki/entities/coding-interview-university.md",
+    "detail_id": "entity-coding-interview-university",
+    "label": "Coding Interview University",
     "type": "entity",
-    "recency": "2026-08-30",
+    "recency": "2026-08-31",
     "source": "git",
     "action": "added",
     "has_repo": true
@@ -226,7 +225,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 766
+      "size": 815
     },
     {
       "label": "操作",
@@ -245,8 +244,8 @@
       "size": 137
     },
     {
-      "label": "视觉-语言导航",
-      "size": 94
+      "label": "机器人视觉感知栈选型闭环",
+      "size": 89
     }
   ],
   "top_hubs": [
@@ -380,7 +379,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 48,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-ctrl-world",

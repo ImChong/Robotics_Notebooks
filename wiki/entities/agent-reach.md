@@ -14,6 +14,7 @@ related:
   - ./superpowers-obra.md
   - ./hermes-agent.md
   - ./cli-anything.md
+  - ./deeptutor.md
   - ./articraft.md
   - ./graphify.md
   - ../references/llm-wiki-karpathy.md
@@ -83,6 +84,7 @@ flowchart LR
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **交付流程** 技能库（与本页「外网工具链」互补）
 - [Hermes Agent](hermes-agent.md) — **完整代理运行时**（内置 web/MCP/终端与网关；与本页「读搜脚手架」互补）
 - [CLI-Anything（HKUDS）](cli-anything.md) — **专业软件 → agent-native CLI**（与本页「读搜渠道」互补）
+- [DeepTutor（HKUDS）](deeptutor.md) — **辅导工作区 + 内置 web/paper search**（与本页「外网读搜脚手架」互补）
 - [Articraft](articraft.md) — 另一类 **harness + SDK** 型代理外围（3D 资产域）
 - [graphify（Graphify Labs）](graphify.md) — **本地/仓库内** 多模态知识图（与本页「外网读搜」互补）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式
