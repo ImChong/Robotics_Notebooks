@@ -7817,6 +7817,12 @@
 - 应维护者要求更换 v30 优化方向：由「免机器人示教数据采集选型闭环」改为「**执行器驱动链选型闭环**」——与 V28（选哪类具身大模型）/ V29（怎么评测）两条软件链互补，回答「策略力矩指令由什么电子硬件驱动链落地」。
 - 四层链：EDA 电路设计（KiCad vs Altium、自研驱动板 vs 一体化关节）→ 电机驱动固件 FOC（SimpleFOC，电流环带宽/编码器分辨率）→ 执行器建模与摩擦辨识（BAM / NeuralActuator / actuator-network / SAGE，理想力矩源假设何时破）→ 实时总线闭环集成（EtherCAT 周期 ≠ 闭环带宽）。P0 巡检 / P1 Query（`actuator-drive-chain-selection-loop`）+ concept（`torque-source-abstraction-gap`）/ P2 事实库 240→250（10 条驱动链选型矛盾）/ P3 专题视图（`actuator-drive-chain`，⚡，第 20 项）+ 详情页徽标结构不变。
 
+## [2026-08-31] ingest | sources/repos/microsoft-ui-xaml.md — WinUI 3 源码仓与 Windows 工控机 HMI 选型
+
+- **意图：** 接入 Microsoft 官方 WinUI 3 开源仓库（`microsoft/microsoft-ui-xaml`），为 Windows 侧遥操作/采数控制台提供 UI 框架实体。
+- **开源核查：** **已开源**（MIT，可 `init.cmd` + `build.cmd` 构建）；外部代码 PR 暂不接受（OSS 推进中）。
+- **关键页：** [`wiki/entities/winui.md`](wiki/entities/winui.md)；交叉更新 [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)。
+
 ## [2026-08-22] ingest | sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md — 古月居 RosClaw / RoboClaw 自然语言控 ROS2 长文
 
 - **意图：** 接入古月居对 RosClaw（OpenClaw × ROS2 插件）三层架构、三种部署模式、工具集与安全的解读；对照 SJTU MINT RoboClaw 跨本体具身助手。
