@@ -1,3 +1,5 @@
+## [2026-08-31] ingest | sources/papers/wikiskill_arxiv_2608_27454.md — WikiSkill 持久 wiki 驱动 skill 进化；官方未开源；交叉 LLM Wiki / Superpowers / Darwin
+
 ## [2026-08-31] ingest | sources/papers/safeflow_arxiv_2603_23983.md — SafeFlow 物理引导整流流 + 三阶段安全门；G1 相对 TextOp 成功率 98.5%；截至入库日未开源
 
 - **触发：** 用户指定 arXiv:2603.23983（三星 Future Robot AI Group）；要求自动合并 PR
