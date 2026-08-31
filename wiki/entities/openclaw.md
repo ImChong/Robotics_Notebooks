@@ -10,6 +10,7 @@ related:
   - ./hermes-agent.md
   - ./deepseek-harness.md
   - ./cli-anything.md
+  - ./deeptutor.md
   - ./sensenova-skills.md
   - ./paper-skillcorpus.md
   - ./paper-harnessbank.md
@@ -95,6 +96,7 @@ flowchart LR
 - [Hermes Agent](./hermes-agent.md) — 对照开源 agent OS
 - [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方插件化 coding harness（Cordis；非具身控制平面）
 - [CLI-Anything（HKUDS）](./cli-anything.md) — 生成/分发 agent-native 软件 CLI；OpenClaw 为 SKILL 宿主之一
+- [DeepTutor（HKUDS）](./deeptutor.md) — 辅导工作区；可 consult OpenClaw 并安装 ClawHub skills
 - [SkillCorpus](./paper-skillcorpus.md) — 社区 `SKILL.md` 策展语料；OpenClaw 为其端到端评测 harness 之一
 - [HarnessBank](./paper-harnessbank.md) — 冻结模型下进化宿主 harness（与技能层互补）
 - [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md)
