@@ -9,8 +9,9 @@ tags:
   - autonomous-experimentation
   - agent-infrastructure
 status: complete
-updated: 2026-08-08
+updated: 2026-08-31
 related:
+  - ./paper-wikiskill.md
   - ./karpathy-autoresearch.md
   - ./nuwa-skill.md
   - ./cangjie-skill.md
@@ -108,6 +109,7 @@ flowchart LR
 - [Superpowers（obra）](superpowers-obra.md) — 流程型 skill 库（可被达尔文优化）
 - [HarnessBank](paper-harnessbank.md) — 全 harness 表面自进化 + 门控验证（对照单 `SKILL.md` 棘轮）
 - [SkillCorpus](paper-skillcorpus.md) — 生态级社区技能策展与检索（对照单 skill 制造/进化）
+- [WikiSkill（论文实体）](paper-wikiskill.md) — **持久 wiki + skill** 共进化框架；与达尔文单 skill 棘轮、SkillOpt 对齐形成对照
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs skill 编译
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 lint / preflight 规范
 

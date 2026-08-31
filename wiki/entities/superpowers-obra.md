@@ -8,8 +8,9 @@ tags:
   - software-engineering
   - methodology
 status: complete
-updated: 2026-08-29
+updated: 2026-08-31
 related:
+  - ./paper-wikiskill.md
   - ./ponytail.md
   - ./nuwa-skill.md
   - ./cangjie-skill.md
@@ -94,6 +95,7 @@ flowchart TD
 - [Hermes Agent](hermes-agent.md) — **常驻代理运行时**（网关、记忆/技能、cron；与本页「流程技能」互补）
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 吴恩达五项 SE 基础：转向 agent 的取舍语言，不是语法记忆
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
+- [WikiSkill（论文实体）](paper-wikiskill.md) — **持久 wiki + 可执行 skill** 共进化；与本页「技能文件交付」形成学术对照
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
 - [Articraft](./articraft.md) — 另一类 **agent + 规约文件 + harness** 的闭环（面向 3D 资产生成，与编码技能栈问题域不同但可类比）
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) — **蒸馏** 人与方法论为 skill；[Darwin Skill](darwin-skill.md) 可 **优化** 本类流程 skill 的 rubric
