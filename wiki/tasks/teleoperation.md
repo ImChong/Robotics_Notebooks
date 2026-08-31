@@ -28,6 +28,7 @@ sources:
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/repos/robot-io-rio.md
   - ../../sources/repos/xpad.md
+  - ../../sources/repos/microsoft-ui-xaml.md
   - ../../sources/papers/cwi_arxiv_2606_27676.md
   - ../../sources/sites/telegate-project.md
   - ../../sources/papers/telegate_arxiv_2602_09628.md
@@ -153,6 +154,8 @@ sources:
 
 在 **Linux 工作站** 上，**USB 有线 Xbox 手柄** 通常由内核 **[xpad](../entities/xpad.md)** 驱动暴露为 `/dev/input/js*` 与 evdev 节点，再被 pygame、ROS `joy` 或 RIO 手柄 Node 读取；**蓝牙配对** 的 Xbox 手柄则走通用 HID，不经过 xpad。部署前需分清连接方式，避免「模块已加载但无输入」的误判。
 
+在 **Windows 工控机** 上，游戏手柄经 **XInput / `Windows.Gaming.Input`** 进入应用；若需要 **原生操作员控制台**（多路相机预览、模式切换、急停、状态面板），常见选型是 **[WinUI 3](../entities/winui.md)**（Fluent 控件 + XAML）与 [ONNX Runtime](../entities/onnxruntime.md) C# 推理同栈集成。WinUI 解决 **界面可读性与任务编排**，不替代 [RIO](../entities/robot-io-rio.md) 等跨形态 IO 中间件；GUI 设计取舍可参考 [非专家遥操作 GUI 论文笔记](../entities/paper-notebook-intuitive-gui-for-non-expert-teleoperation-of-hu.md)。
+
 ## 臂部笛卡尔跟踪：解析 IK 参考（ssik）
 
 VR / 手柄每 tick 给出末端 `T_target` 时，常见模式是 **「离当前关节角最近的单解 IK」** 以保持构型连续。**[ssik](../entities/ssik.md)**（UW PRL）对 **6R/7R 机械臂** 提供 **解析全分支** 再按 `q_seed` 排序：`solve(T, max_solutions=1, q_seed=q_current, seed_tolerance=…)`；空结果表示该姿态下无法在容差内平滑延续，应触发重规划。覆盖 **Franka、iiwa、xArm、非 Pieper 6R** 等 EAIK 常拒绝的几何；与 [MoveIt 2](../entities/moveit2.md) 数值 IK、[cuRobo](../entities/curobo.md) GPU IK 可分层组合（解析分支枚举 → 碰撞/规划）。
@@ -210,6 +213,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - **ingest 档案：** [sources/repos/isaaclab_decoupled_wbc.md](../../sources/repos/isaaclab_decoupled_wbc.md) — HTD LBC 已开源；遥操作代码仍 on-going
 - **ingest 档案：** [sources/repos/robot-io-rio.md](../../sources/repos/robot-io-rio.md) — RIO 的多设备遥操作与实时 Node 管线（arXiv:2605.11564）
 - **ingest 档案：** [sources/repos/xpad.md](../../sources/repos/xpad.md) — Linux USB Xbox 手柄内核驱动（paroj/xpad）
+- **ingest 档案：** [sources/repos/microsoft-ui-xaml.md](../../sources/repos/microsoft-ui-xaml.md) — WinUI 3：Windows 工控机操作员 HMI 官方 UI 栈（MIT，WinAppSDK 2.4.0）
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：CVAE + 掩码在线蒸馏，让单一策略统一覆盖人形跟踪 / VR 遥操作 / locomotion 多接口
 - **ingest 档案：** [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：VR 遥操作 + 感知 MoE 全身 LLC（arXiv:2601.17440）
 - **ingest 档案：** [sources/papers/cwi_arxiv_2606_27676.md](../../sources/papers/cwi_arxiv_2606_27676.md) — CWI：Meta Quest 双手 + 速度/身高全身 loco-manipulation（arXiv:2606.27676）
@@ -258,6 +262,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 遥操作采集数据的实操指南
 - [RIO（Robot I/O）](../entities/robot-io-rio.md) — 跨形态 Node 化遥操作与异步策略推理栈
 - [xpad](../entities/xpad.md) — Linux USB Xbox 手柄内核驱动与 joystick/evdev 接口
+- [WinUI](../entities/winui.md) — Windows 工控机原生操作员控制台（Fluent / XAML）
 - [Isaac Teleop](../entities/isaac-teleop.md) — NVIDIA Isaac Lab / Sim XR 遥操作与示范录制
 - [Isaac Lab](../entities/isaac-lab.md) — 集成宿主与内置遥操作环境
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — VR 长程 loco-manipulation 与非结构化地形底层控制
