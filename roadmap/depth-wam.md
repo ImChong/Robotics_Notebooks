@@ -159,6 +159,7 @@ flowchart LR
 - [FACT](../wiki/entities/paper-fact.md)（本仓库）— 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
 - [Motubrain](../wiki/entities/paper-motubrain.md)（本仓库）— UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
 - [Flex-π](../wiki/entities/paper-flex-pi.md)（本仓库）— 6B 多流 Joint WAM，共享冻结 Wan VAE 联合编码 RGB+pointmap+DINOv3，流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布
+- [GlanceWAM](../wiki/entities/paper-glancewam.md)（本仓库）— 单视频 DiT 内异步稀疏前瞻，想象离关键路径、动作头潜空间 48 ms 解码；RoboCasa 72.2%、LIBERO 99.0%；代码与权重已开源
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态
@@ -264,4 +265,5 @@ flowchart LR
 - [sources/papers/world_action_models_survey_2605.md](../sources/papers/world_action_models_survey_2605.md) — Wang et al., arXiv:2605.12090
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md) 与 2026-07 策展 12 篇实体页
 - [机器人世界模型训练闭环 taxonomy](../wiki/overview/robot-world-models-training-loop-taxonomy.md)
+- [GlanceWAM / VLA Crew 10 篇技术地图（2026-08-30 策展）](../wiki/overview/glancewam-vla-crew-10-papers-technology-map.md)
 - OpenMOSS [Awesome-WAM](https://github.com/OpenMOSS/Awesome-WAM)

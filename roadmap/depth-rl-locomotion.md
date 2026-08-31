@@ -53,6 +53,7 @@ flowchart LR
 - [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文：MDP → PPO/SAC 章节 + [hrl.boyuai.com](https://hrl.boyuai.com/chapter) 在线 notebook；配套 [伯禹免费视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)
 - Spinning Up (OpenAI) — Part 1: Key Concepts
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
+- [强化学习史（试错学习 / 最优控制 / 时序差分三脉汇合）](../wiki/concepts/reinforcement-learning-history.md)（本仓库）— Sutton & Barto §1.6；读懂谱系有助于区分 RL 与监督学习及 model-based 控制
 - [PPO](../wiki/methods/ppo.md) · [SAC](../wiki/methods/sac.md)（本仓库）
 - [Query：机器人任务里 PPO 与 SAC 怎么选](../wiki/queries/ppo-vs-sac-for-robots.md)
 
