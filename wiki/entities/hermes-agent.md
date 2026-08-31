@@ -19,6 +19,7 @@ related:
   - ./sensenova-skills.md
   - ./agent-reach.md
   - ./cli-anything.md
+  - ./deeptutor.md
   - ./philia.md
   - ../concepts/model-context-protocol.md
   - ../references/llm-wiki-karpathy.md
@@ -127,6 +128,7 @@ flowchart TB
 - [SkillCorpus](paper-skillcorpus.md) — 社区技能策展语料；可与 Hermes 技能目录对照「精品库 vs 生态语料」
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
 - [CLI-Anything（HKUDS）](cli-anything.md) — 专业软件 → agent-native CLI / Hub / SKILL（可装入 Hermes）
+- [DeepTutor（HKUDS）](deeptutor.md) — 辅导工作区；My Agents 可 live consult Hermes
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Hermes 工具扩展所依的开放协议
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护操作规范

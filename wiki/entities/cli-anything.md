@@ -12,6 +12,7 @@ tags:
 status: complete
 updated: 2026-08-13
 related:
+  - ./deeptutor.md
   - ./hermes-agent.md
   - ./openclaw.md
   - ./agent-reach.md
@@ -125,6 +126,7 @@ flowchart TB
 
 ## 关联页面
 
+- [DeepTutor（HKUDS）](deeptutor.md) — agent-native 辅导工作区；可挂载 CLI Apps 并 consult 外部 agent
 - [Hermes Agent](hermes-agent.md) — 常驻 agent OS；可消费 CLI-Anything 生成的 skill/CLI
 - [DeepSeek Harness](deepseek-harness.md) — DeepSeek 官方插件化宿主（自带 `packages/skill`；与生成式 CLI 互补）
 - [OpenClaw](openclaw.md) — SKILL 兼容个人助手宿主；Hub meta-skill 安装目标之一

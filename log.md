@@ -11,6 +11,13 @@
   - **AlloEgo-VLM / MistyPilot** — **已开源**
 - **关键页：** [clap-cross-embodiment-vla-wm-9-papers-technology-map](wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md)；新建 `paper-milo`、`paper-esrp`、`paper-trapvla`、`paper-vitar`、`paper-alloego-vlm`、`paper-mistypilot`
 
+## [2026-08-31] ingest | sources/papers/temporalflow_vla_arxiv_2608_26821.md — TemporalFlow-VLA 物理接地执行历史；π₀.₅ 双 query + 离线机器人表面流；截至入库日未列官方代码
+
+## [2026-08-31] ingest | sources/repos/jwasham_coding_interview_university.md — 接入 Coding Interview University 并升格实体页；交叉更新具身面试题库与 qqfly 指南
+
+## [2026-08-31] ingest | sources/repos/hkuds_deeptutor.md — 接入 HKUDS DeepTutor（已开源）并升格 wiki/entities/deeptutor.md；交叉更新 CLI-Anything/Hermes/OpenClaw/Agent Reach
+
+
 ## [2026-08-30] ingest | sources/courses/nvidia_learn_openusd.md — Learn OpenUSD 官方课纲：Stage→Composition→资产结构→Instancing→Data Exchange；GitHub 已开源
 
 - **触发：** 用户指定 <https://docs.nvidia.com/learn-openusd/latest/index.html>；要求自动合并 PR
