@@ -1,32 +1,23 @@
 {
   "generated_at": "2026-08-31",
-  "node_count": 3359,
-  "edge_count": 30247,
+  "node_count": 3360,
+  "edge_count": 30258,
   "coverage": {
-    "covered": 3334,
-    "total": 3334,
+    "covered": 3335,
+    "total": 3335,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-bet4sim2real.md",
-      "detail_id": "entity-paper-bet4sim2real",
-      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
+      "path": "wiki/entities/deeptutor.md",
+      "detail_id": "entity-deeptutor",
+      "label": "DeepTutor（HKUDS）",
       "type": "entity",
-      "recency": "2026-08-30",
+      "recency": "2026-08-31",
       "source": "git",
       "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-imitator-game.md",
-      "detail_id": "entity-paper-imitator-game",
-      "label": "The Imitator Game：用目标等价衡量模仿",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/nvidia-learn-openusd.md",
@@ -83,6 +74,16 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/entities/paper-bet4sim2real.md",
+      "detail_id": "entity-paper-bet4sim2real",
+      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-glancewam.md",
       "detail_id": "entity-paper-glancewam",
       "label": "GlanceWAM：把视觉想象移出控制关键路径",
@@ -100,6 +101,16 @@
       "recency": "2026-08-30",
       "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-imitator-game.md",
+      "detail_id": "entity-paper-imitator-game",
+      "label": "The Imitator Game：用目标等价衡量模仿",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-m3-modality-masking.md",
@@ -200,33 +211,23 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-flashvla.md",
-      "detail_id": "entity-paper-flashvla",
-      "label": "FlashVLA：流式异步 VLA 动作解码",
-      "type": "entity",
-      "recency": "2026-08-29",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bet4sim2real.md",
-    "detail_id": "entity-paper-bet4sim2real",
-    "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
+    "path": "wiki/entities/deeptutor.md",
+    "detail_id": "entity-deeptutor",
+    "label": "DeepTutor（HKUDS）",
     "type": "entity",
-    "recency": "2026-08-30",
+    "recency": "2026-08-31",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 815
+      "size": 817
     },
     {
       "label": "操作",
