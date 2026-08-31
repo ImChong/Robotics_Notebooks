@@ -9,6 +9,36 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-temporalflow-vla.md",
+      "detail_id": "entity-paper-temporalflow-vla",
+      "label": "TemporalFlow-VLA：物理接地执行历史",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/deeptutor.md",
+      "detail_id": "entity-deeptutor",
+      "label": "DeepTutor（HKUDS）",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/coding-interview-university.md",
+      "detail_id": "entity-coding-interview-university",
+      "label": "Coding Interview University",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-alloego-vlm.md",
       "detail_id": "entity-paper-alloego-vlm",
       "label": "AlloEgo-VLM：消歧自我中心与环境中心参照系",
@@ -182,48 +212,16 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-meta-ctrl.md",
-      "detail_id": "entity-paper-meta-ctrl",
-      "label": "Meta-Ctrl：保证计划合法，同时留下常识",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physical-agentic-ai.md",
-      "detail_id": "entity-paper-physical-agentic-ai",
-      "label": "Physical Agentic AI：可验证的多机器人编排",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tonav.md",
-      "detail_id": "entity-paper-tonav",
-      "label": "TONAV：导航从一开始就服务于接触",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-alloego-vlm.md",
-    "detail_id": "entity-paper-alloego-vlm",
-    "label": "AlloEgo-VLM：消歧自我中心与环境中心参照系",
+    "path": "wiki/entities/paper-temporalflow-vla.md",
+    "detail_id": "entity-paper-temporalflow-vla",
+    "label": "TemporalFlow-VLA：物理接地执行历史",
     "type": "entity",
     "recency": "2026-08-31",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
