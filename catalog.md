@@ -2308,6 +2308,7 @@
 - [Teleopit](wiki/entities/paper-teleopit.md) — Teleopit**（*A Full-Embodiment Humanoid Teleoperation System*，西湖大学 / 上海创智学院，arXiv:2608.01834）用 **PI `📅unknown` `[entity_page]`
 - [TEMPO（VLA 双频 RL 后训练）](wiki/entities/paper-tempo.md) — TEMPO**（*Semantic-Action Decoupled RL Post-Training for Vision-Language-Action Models*，[arXiv:2608 `📅unknown` `[entity_page]`
 - [Temporal GRPO：按阶段写回 VLA 强化学习的优势](wiki/entities/paper-temporal-grpo.md) — Temporal GRPO**（*Beyond Trajectory-Level Credit in Vision-Language-Action Reinforcement Learning*， `📅unknown` `[entity_page]`
+- [TemporalFlow-VLA：物理接地执行历史](wiki/entities/paper-temporalflow-vla.md) — TemporalFlow-VLA**（*Learning Physically Grounded Execution History for Long-Horizon Robot Manipula `📅unknown` `[entity_page]`
 - [TF-ART：接触学习要同时画模态和阶段](wiki/entities/paper-tf-art-tactile-force-survey.md) — TF-ART**（*Learning Physical Interaction: A Survey of Tactile- and Force-aware Robot Learning*；[arX `📅unknown` `[entity_page]`
 - [Thinking in Video（视频生成器能否对真实世界做因果推理？）](wiki/entities/paper-thinking-in-video.md) — Thinking in Video**（*Can Video Generators Really Reason About the Real World?*，[arXiv:2607.17523 `📅unknown` `[entity_page]`
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
