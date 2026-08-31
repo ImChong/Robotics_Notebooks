@@ -20,6 +20,26 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/entities/paper-bet4sim2real.md",
+      "detail_id": "entity-paper-bet4sim2real",
+      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-imitator-game.md",
+      "detail_id": "entity-paper-imitator-game",
+      "label": "The Imitator Game：用目标等价衡量模仿",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/nvidia-learn-openusd.md",
       "detail_id": "entity-nvidia-learn-openusd",
       "label": "NVIDIA Learn OpenUSD",
@@ -74,16 +94,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-bet4sim2real.md",
-      "detail_id": "entity-paper-bet4sim2real",
-      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
       "path": "wiki/entities/paper-glancewam.md",
       "detail_id": "entity-paper-glancewam",
       "label": "GlanceWAM：把视觉想象移出控制关键路径",
@@ -101,16 +111,6 @@
       "recency": "2026-08-30",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-imitator-game.md",
-      "detail_id": "entity-paper-imitator-game",
-      "label": "The Imitator Game：用目标等价衡量模仿",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-m3-modality-masking.md",
