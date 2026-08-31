@@ -11,7 +11,7 @@ tags:
   - ucsd
   - mit
 status: complete
-updated: 2026-08-29
+updated: 2026-08-31
 arxiv: "2608.27384"
 code: https://github.com/z-lab/flashvla
 related:
@@ -23,8 +23,10 @@ related:
   - ./paper-foretime-vla.md
   - ../tasks/manipulation.md
   - ./lerobot.md
+  - ../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md
 sources:
   - ../../sources/papers/flashvla_arxiv_2608_27384.md
+  - ../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md
   - ../../sources/repos/flashvla.md
   - ../../sources/sites/z-lab-flashvla.md
 summary: "FlashVLA（arXiv:2608.27384，UCSD/MIT）：对流匹配 VLA 做交错噪声缓冲 + chunk 级因果注意力，稳态每步吐一块动作；LIBERO 异步 2.43×（96.9%→97.8%），真机单卡 ≥30 Hz；代码与 π0.5 权重已开源。"

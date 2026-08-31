@@ -13,7 +13,7 @@ tags:
   - riemann-dynamics
   - kunlun-wanwei
 status: complete
-updated: 2026-08-29
+updated: 2026-08-31
 venue: "Riemann Dynamics Technical Report 2026"
 related:
   - ../concepts/world-action-models.md
@@ -28,10 +28,12 @@ related:
   - ./paper-worldscape-policy-2.md
   - ./paper-riemann-1-causal-action-video-wam.md
   - ./paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md
+  - ../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md
 sources:
   - ../../sources/papers/riemann_1_0.md
   - ../../sources/sites/riemann-1-0-website.md
   - ../../sources/repos/riemann-1-0-website.md
+  - ../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md
 summary: "Riemann-1.0（黎曼动力，2026-07 技术报告）：全因果自回归 WAM，先出动作再条件化未来视觉 latent，同一模型兼任策略与世界仿真；232K+ h 人/UMI/机三阶段预训练。RoboCasa365 62.6%、RoboTwin 94.3%、LIBERO 99.0%；天机 Marvin 真机均 85.0% SR。确认未开源。"
 ---
 
