@@ -1,3 +1,9 @@
+## [2026-08-31] ingest | sources/papers/safeflow_arxiv_2603_23983.md — SafeFlow 物理引导整流流 + 三阶段安全门；G1 相对 TextOp 成功率 98.5%；截至入库日未开源
+
+- **触发：** 用户指定 arXiv:2603.23983（三星 Future Robot AI Group）；要求自动合并 PR
+- **步骤 2.5：** [项目页](https://hanbyelcho.info/safeflow/) 方法/视频/量化表齐全；**未列 GitHub/权重** → **未开源**
+- **关键页：** [`paper-loco-manip-161-104-safeflow`](wiki/entities/paper-loco-manip-161-104-safeflow.md)（自 161 策展索引升格 arXiv 深读）
+
 ## [2026-08-31] ingest | sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md — 9 篇独立详情节点（新建 6 / 复用 CLAP+FlashVLA+Riemann）；MILO/AlloEgo/MistyPilot 已开源
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/J62q2IVvvBDyT_8OTR9KZQ>；要求每篇论文独立非重复详情节点
@@ -10,6 +16,7 @@
   - **ViTaR** — **待发布** Code Coming soon
   - **AlloEgo-VLM / MistyPilot** — **已开源**
 - **关键页：** [clap-cross-embodiment-vla-wm-9-papers-technology-map](wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md)；新建 `paper-milo`、`paper-esrp`、`paper-trapvla`、`paper-vitar`、`paper-alloego-vlm`、`paper-mistypilot`
+
 
 ## [2026-08-31] ingest | sources/papers/temporalflow_vla_arxiv_2608_26821.md — TemporalFlow-VLA 物理接地执行历史；π₀.₅ 双 query + 离线机器人表面流；截至入库日未列官方代码
 

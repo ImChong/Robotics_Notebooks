@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-31",
   "node_count": 3369,
-  "edge_count": 30319,
+  "edge_count": 30324,
   "coverage": {
     "covered": 3344,
     "total": 3344,
@@ -37,78 +37,6 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-alloego-vlm.md",
-      "detail_id": "entity-paper-alloego-vlm",
-      "label": "AlloEgo-VLM：消歧自我中心与环境中心参照系",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-esrp.md",
-      "detail_id": "entity-paper-esrp",
-      "label": "ESRP：具身场景家具重排规划",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-milo.md",
-      "detail_id": "entity-paper-milo",
-      "label": "MILO：大型重建模型解释人—物三维交互",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-mistypilot.md",
-      "detail_id": "entity-paper-mistypilot",
-      "label": "MistyPilot：社交机器人的多智能体 LLM 技能编排",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trapvla.md",
-      "detail_id": "entity-paper-trapvla",
-      "label": "TrapVLA：把 VLA 困在配置化失败模式",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vitar.md",
-      "detail_id": "entity-paper-vitar",
-      "label": "ViTaR：基础 VLA 的视触觉残差适配",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md",
-      "detail_id": "wiki-overview-clap-cross-embodiment-vla-wm-9-papers-technology-map",
-      "label": "CLAP / 跨本体 WM / VLA：9 篇论文的阅读坐标",
-      "type": "overview",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added"
     },
     {
       "path": "wiki/entities/paper-bet4sim2real.md",
@@ -212,6 +140,76 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-meta-ctrl.md",
+      "detail_id": "entity-paper-meta-ctrl",
+      "label": "Meta-Ctrl：保证计划合法，同时留下常识",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-physical-agentic-ai.md",
+      "detail_id": "entity-paper-physical-agentic-ai",
+      "label": "Physical Agentic AI：可验证的多机器人编排",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tonav.md",
+      "detail_id": "entity-paper-tonav",
+      "label": "TONAV：导航从一开始就服务于接触",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/glancewam-vla-crew-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-glancewam-vla-crew-10-papers-technology-map",
+      "label": "48ms WAM / 编排 / 证书：10 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/dexbench.md",
+      "detail_id": "entity-dexbench",
+      "label": "DexBench（工业灵巧操作基准）",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-riemann-1.md",
+      "detail_id": "entity-paper-riemann-1",
+      "label": "Riemann-1.0（全因果自回归 World Action Model）",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-apollo-blender.md",
+      "detail_id": "entity-paper-apollo-blender",
+      "label": "APOLLO Blender",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {

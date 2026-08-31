@@ -820,7 +820,7 @@
 - [FRoM-W1](wiki/entities/paper-loco-manip-161-096-from-w1.md) — FRoM-W1** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
 - [Harmon](wiki/entities/paper-loco-manip-161-097-harmon.md) — Harmon** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [Robot Motion Diffusion Model](wiki/entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) — Robot Motion Diffusion Model** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pA `📅unknown` `[entity_page]`
-- [SafeFlow](wiki/entities/paper-loco-manip-161-104-safeflow.md) — SafeFlow** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
+- [SafeFlow](wiki/entities/paper-loco-manip-161-104-safeflow.md) — SafeFlow**（arXiv:2603.23983，[项目页](https://hanbyelcho.info/safe `📅unknown` `[entity_page]`
 - [从语言到运动](wiki/entities/paper-loco-manip-161-106-n106.md) — 从语言到运动** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [使用潜在扩散模型进行物理一致的人形移动操作](wiki/entities/paper-loco-manip-161-107-n107.md) — 使用潜在扩散模型进行物理一致的人形移动操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsI `📅unknown` `[entity_page]`
 - [揭示数据和模型扩展对人形机器人高级控制的影响](wiki/entities/paper-loco-manip-161-108-n108.md) — 揭示数据和模型扩展对人形机器人高级控制的影响** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Ehs `📅unknown` `[entity_page]`
