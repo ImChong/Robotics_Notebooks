@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md",
+      "detail_id": "wiki-comparisons-wam-ttt-robottt-stellavla-zero-wam-embodied-icl",
+      "label": "WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比",
+      "type": "comparison",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-stellavla-structured-icl-vla.md",
+      "detail_id": "entity-paper-stellavla-structured-icl-vla",
+      "label": "StellaVLA（结构化 In-Context 示范 · VLA）",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/winui.md",
       "detail_id": "entity-winui",
       "label": "WinUI",
@@ -192,38 +212,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/reinforcement-learning-history.md",
-      "detail_id": "wiki-concepts-reinforcement-learning-history",
-      "label": "强化学习史（Sutton & Barto §1.6）",
-      "type": "concept",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/archify.md",
-      "detail_id": "entity-archify",
-      "label": "Archify",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/winui.md",
-    "detail_id": "entity-winui",
-    "label": "WinUI",
-    "type": "entity",
+    "path": "wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md",
+    "detail_id": "wiki-comparisons-wam-ttt-robottt-stellavla-zero-wam-embodied-icl",
+    "label": "WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比",
+    "type": "comparison",
     "recency": "2026-08-31",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
