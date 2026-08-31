@@ -121,6 +121,7 @@ flowchart LR
 - [BridgeVLA++](../wiki/entities/paper-bridgevla-plusplus.md)（本仓库）— 多视图 heatmap 对齐 3D VLA 加统一时空记忆（粗阶段关键帧检索 + 细阶段初始几何），RMBench 记忆依赖任务 18.9%→96.0%，RLBench 93.7%；代码与权重已开源
 - [Galaxea G0.5](../wiki/entities/paper-galaxea-g05.md)（本仓库）— VLM-as-Actor + 学出来的 ActionCodec 27 维去掉自回归 token 税，原生 CoT 直接 attend；真机六设定 76.7% vs π0.5 53.3%，LIBERO 98.9% / RoboTwin 93.3%；GalaxeaVLA + HF 权重已开源（G0.5 Community License，非商用）
 - [GSR / ParaVLA](../wiki/entities/paper-gsr-paravla.md)（本仓库）— 指出 VLA 指令改写崩溃来自联合 V-L 路由而非不懂语义，冻结 T5 重绑原生视觉并重训动作专家；LIBERO-Para 上 SmolVLA +44.6 pp；训练与 HF 权重已开源
+- [Indi](../wiki/entities/paper-indi.md)（本仓库）— 冻结教师 VLM 把示范片段的局部行为意图蒸馏进动作解码器，部署时无需教师；GR00T-N1.7 在 SimplerEnv-Bridge 64.3%→84.7%，真机 62.0%→68.7%
 
 ### 学完输出什么
 - 能画出典型 VLA 的三段式结构（视觉编码 → 语义 backbone → 动作专家）并说清各家差异
@@ -270,3 +271,4 @@ flowchart LR
 - "RT-2: Vision-Language-Action Models" (Brohan et al., 2023) — VLA 概念确立
 - "π0: A Vision-Language-Action Flow Model" (Black et al., 2024) — flow matching 动作专家代表
 - "OpenVLA: An Open-Source Vision-Language-Action Model" (Kim et al., 2024) — 开源 VLA 与 OXE 跨本体路线
+- [GlanceWAM / VLA Crew 10 篇技术地图（2026-08-30 策展）](../wiki/overview/glancewam-vla-crew-10-papers-technology-map.md)
