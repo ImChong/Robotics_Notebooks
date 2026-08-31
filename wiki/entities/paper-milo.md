@@ -73,6 +73,20 @@ flowchart LR
 | InterCap / HODome / IMHD | 定量优于既有单图 HOI 基线 |
 | PICO-db 野外图 | 定性展示布局一致性 |
 
+## 与其他工作对比
+
+单图 HOI 重建的分歧点是「三维先验从哪来」——MILO 的答案是 **让 LRM 先把人和物一起生出来，再去解释这团几何**：
+
+| 路线 | 输入 | 三维先验来源 | 接触处理 | 相对 MILO |
+|------|------|--------------|----------|-----------|
+| **MILO** | 单张 RGB | **LRM 联合网格**（Hunyuan3D-2.0，可替换） | **无需 GT 接触**，靠 LRM 保留的相对布局 | — |
+| 二维重投影 + 接触约束拟合 | 单张 RGB | 参数化人体 + 物体模板 | 显式接触先验/标注驱动优化 | 本文的直接对照组；MILO 在 InterCap / HODome / IMHD 上定量占优 |
+| [ECHO](./paper-sa-2508-21556-echo-ego-centric-modeling-of-human-object-intera.md) | **头 + 腕稀疏追踪**（非图像） | 三变量扩散过程 | 与人体姿态、物体运动**联合恢复** | 传感形态完全不同：ECHO 面向可穿戴/头显链路，MILO 面向单目图像与野外素材 |
+
+- **模板是可选项而非前提**：物体侧走「LRM 物体部分」或「模板对齐」双路径，缺 CAD 时仍能出解，但精细度受限（见「局限与风险」）。
+- **对机器人链路的位置**：MILO 产出的是 **SMPL-H + 物体姿态/形状**，属于 [动作重定向管线](../concepts/motion-retargeting-pipeline.md) 的上游供给端，不替代重定向本身的可行性与约束求解。
+- **同批次分工**：在 [CLAP 九篇地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) 的「感知—执行接口」组里，MILO 补 **三维交互几何**，[ViTaR](./paper-vitar.md) 补 **接触执行校准**，[AlloEgo-VLM](./paper-alloego-vlm.md) 补 **参照系语义**——三者互补而非竞争。
+
 ## 结论
 
 **单图 HOI 应优先解释 LRM 联合几何，而不是在二维歧义里硬拟合接触。**

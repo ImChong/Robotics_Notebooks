@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-31",
   "node_count": 3374,
-  "edge_count": 30382,
+  "edge_count": 30407,
   "coverage": {
     "covered": 3349,
     "total": 3349,
@@ -14,7 +14,7 @@
       "label": "WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比",
       "type": "comparison",
       "recency": "2026-08-31",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
@@ -24,102 +24,60 @@
       "label": "StellaVLA（结构化 In-Context 示范 · VLA）",
       "type": "entity",
       "recency": "2026-08-31",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
-      "path": "wiki/entities/winui.md",
-      "detail_id": "entity-winui",
-      "label": "WinUI",
+      "path": "wiki/entities/paper-robottt-test-time-training-vla-context.md",
+      "detail_id": "entity-paper-robottt-test-time-training-vla-context",
+      "label": "RoboTTT（Test-Time-Training Robot Policies）",
       "type": "entity",
       "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-abot-n1.md",
-      "detail_id": "entity-paper-abot-n1",
-      "label": "ABot-N1（通用视觉–语言导航基础模型）",
-      "type": "entity",
+      "path": "wiki/concepts/robot-in-context-learning.md",
+      "detail_id": "wiki-concepts-robot-in-context-learning",
+      "label": "机器人 In-Context Learning（上下文学习）",
+      "type": "concept",
       "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-wikiskill.md",
-      "detail_id": "entity-paper-wikiskill",
-      "label": "WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）",
-      "type": "entity",
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
       "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-alloego-vlm.md",
-      "detail_id": "entity-paper-alloego-vlm",
-      "label": "AlloEgo-VLM：消歧自我中心与环境中心参照系",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
+      "source": "log.md",
+      "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-esrp.md",
-      "detail_id": "entity-paper-esrp",
-      "label": "ESRP：具身场景家具重排规划",
-      "type": "entity",
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
       "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-milo.md",
-      "detail_id": "entity-paper-milo",
-      "label": "MILO：大型重建模型解释人—物三维交互",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-mistypilot.md",
-      "detail_id": "entity-paper-mistypilot",
-      "label": "MistyPilot：社交机器人的多智能体 LLM 技能编排",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
+      "source": "log.md",
+      "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-trapvla.md",
-      "detail_id": "entity-paper-trapvla",
-      "label": "TrapVLA：把 VLA 困在配置化失败模式",
+      "path": "wiki/entities/paper-loco-manip-161-104-safeflow.md",
+      "detail_id": "entity-paper-loco-manip-161-104-safeflow",
+      "label": "SafeFlow",
       "type": "entity",
       "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vitar.md",
-      "detail_id": "entity-paper-vitar",
-      "label": "ViTaR：基础 VLA 的视触觉残差适配",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md",
@@ -127,16 +85,7 @@
       "label": "CLAP / 跨本体 WM / VLA：9 篇论文的阅读坐标",
       "type": "overview",
       "recency": "2026-08-31",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-temporalflow-vla.md",
-      "detail_id": "entity-paper-temporalflow-vla",
-      "label": "TemporalFlow-VLA：物理接地执行历史",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
+      "source": "log.md",
       "action": "added"
     },
     {
@@ -145,40 +94,10 @@
       "label": "DeepTutor（HKUDS）",
       "type": "entity",
       "recency": "2026-08-31",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/coding-interview-university.md",
-      "detail_id": "entity-coding-interview-university",
-      "label": "Coding Interview University",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-bet4sim2real.md",
-      "detail_id": "entity-paper-bet4sim2real",
-      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-imitator-game.md",
-      "detail_id": "entity-paper-imitator-game",
-      "label": "The Imitator Game：用目标等价衡量模仿",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/nvidia-learn-openusd.md",
@@ -186,18 +105,7 @@
       "label": "NVIDIA Learn OpenUSD",
       "type": "entity",
       "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
-      "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
-      "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
@@ -208,10 +116,102 @@
       "label": "NVIDIA Isaac Lab UR10e 工业装配 Sim2Real",
       "type": "entity",
       "recency": "2026-08-30",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
+      "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
+      "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/reinforcement-learning-history.md",
+      "detail_id": "wiki-concepts-reinforcement-learning-history",
+      "label": "强化学习史（Sutton & Barto §1.6）",
+      "type": "concept",
+      "recency": "2026-08-30",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/sutton-barto-rl-book.md",
+      "detail_id": "entity-sutton-barto-rl-book",
+      "label": "Sutton & Barto RL 教材",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-08-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/glancewam-vla-crew-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-glancewam-vla-crew-10-papers-technology-map",
+      "label": "48ms WAM / 编排 / 证书：10 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-08-30",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-parkourformer.md",
+      "detail_id": "entity-paper-parkourformer",
+      "label": "ParkourFormer（预测监督 + 序列建模人形跑酷）",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "特权信息训练（Privileged Training） 社区"
+    },
+    {
+      "path": "wiki/entities/archify.md",
+      "detail_id": "entity-archify",
+      "label": "Archify",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/dexbench.md",
+      "detail_id": "entity-dexbench",
+      "label": "DexBench（工业灵巧操作基准）",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-riemann-1.md",
+      "detail_id": "entity-paper-riemann-1",
+      "label": "Riemann-1.0（全因果自回归 World Action Model）",
+      "type": "entity",
+      "recency": "2026-08-29",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
     }
   ],
   "latest_wiki_node": {
@@ -220,34 +220,34 @@
     "label": "WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比",
     "type": "comparison",
     "recency": "2026-08-31",
-    "source": "git",
+    "source": "log.md",
     "action": "added",
     "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 821
+      "size": 833
     },
     {
       "label": "操作",
-      "size": 581
+      "size": 584
     },
     {
       "label": "视觉-语言-动作",
-      "size": 260
+      "size": 258
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 214
+      "size": 212
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 99
+      "size": 100
     },
     {
       "label": "机器人视觉感知栈选型闭环",
-      "size": 90
+      "size": 89
     }
   ],
   "top_hubs": [

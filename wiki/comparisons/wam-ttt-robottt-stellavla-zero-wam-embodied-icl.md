@@ -4,6 +4,7 @@ tags: [in-context-learning, icl, vla, wam, test-time-training, manipulation, tax
 status: complete
 updated: 2026-08-31
 related:
+  - ../queries/embodied-fm-taxonomy-loop.md
   - ../concepts/robot-in-context-learning.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -115,6 +116,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Query：具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 本页四路线都落在闭环的「执行（VLA）× 推演（WM）」两层；先在那里定家族，再回本页按漂移轴挑适应机制
 - [机器人 In-Context Learning](../concepts/robot-in-context-learning.md) — 真 ICL vs TTT vs 映射选择 taxonomy
 - [VLA](../methods/vla.md) — 长程记忆与部署期适应
 - [Manipulation](../tasks/manipulation.md) — 四实体索引入口

@@ -101,6 +101,28 @@ def test_frontmatter_key_stopword_code_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_frontmatter_key_stopword_venue_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "| **Venue** | ECCV 2026 |")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # Venue 是核心信息表的发表信息行标签（同 frontmatter venue 来源键），非机器人概念
+    assert results["missing_concept_pages"] == []
+
+
+def test_covered_elsewhere_libero_plus_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "扰动增强 **LIBERO-Plus** 零样本 85.1%。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # LIBERO-Plus 是 LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
+    assert results["missing_concept_pages"] == []
+
+
 def test_covered_elsewhere_joint_ignored(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     pages = [

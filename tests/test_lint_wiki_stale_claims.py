@@ -211,6 +211,50 @@ def test_runtime_object_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
     assert _run([claim, newer])["stale_claims"] == []
 
 
+def test_runtime_candidate_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「只在最新候选过门后刷新」描述预览服务的运行时行为，与「最新 pending 帧」同类。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["diagrams"],
+        "本机监视单个 JSON，只在最新候选过门后刷新；失败保留 last-good。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["diagrams"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_sota_as_baseline_label_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「相对经典/SOTA 基线」里的 SOTA 是对照组的类别名，不是本页对自身的断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["sim2real"],
+        "相对经典/SOTA 基线，证书平均收窄 51.6% ± 16%。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["sim2real"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_sota_not_followed_by_baseline_is_still_flagged(tmp_path, monkeypatch) -> None:
+    # 豁免只在「基线」紧跟命中词时生效：隔着断言正文的「基线」不构成对照组标签。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["sim2real"],
+        "本方法仍是该任务的 SOTA，全面超过论文里的四条基线。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["sim2real"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "SOTA" in results["stale_claims"][0]
+
+
 def test_runtime_math_quantity_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
     # 「最新 \((\mathbf{q},\mathbf{e})\)」是写成行内公式的运行时量，与「最新状态」同类。
     wiki = _setup_wiki(tmp_path, monkeypatch)

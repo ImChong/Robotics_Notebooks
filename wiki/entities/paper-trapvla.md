@@ -71,6 +71,21 @@ flowchart LR
 - 真机：Eggplant / Cup，\(\pi_{0.5}\) 受害者。
 - 详情见 [TrapVLA 项目页](https://john-liua.github.io/TrapVLA/) 论文表。
 
+## 与其他工作对比
+
+本库 VLA 安全线的其余页面基本站在 **防御/诊断** 一侧，TrapVLA 是少见的 **攻击面** 页，读时应按「威胁模型落在哪一层」区分：
+
+| 工作 | 站位 | 威胁/评测层 | 相对 TrapVLA |
+|------|------|-------------|--------------|
+| **TrapVLA** | 攻击 | 训练期注入，**文本触发器 → 指定失败形态**（EC/GD/EO/RD） | — |
+| [ActFovea](./paper-actfovea.md) | 防御 | **运行时**、不重训不改权重；动作条件中央凹 + 视觉–动作一致性 | 针对的是观测侧扰动与冻结重放；对本文这种**权重内**后门不构成直接缓解 |
+| [EgoSafetyBench](./paper-sa-2607-00218-egosafetybench-a-diagnostic-egocentric-video-ben.md) | 诊断 | 用 VLM 做流式安全哨兵，判「场景是否危险」 | 判的是**语义危险**，而非策略是否被操控；TrapVLA 的干净指令在语义上完全无害 |
+| [Safety Filter](../concepts/safety-filter.md) | 防御 | 动作层约束/投影 | 能截住越界动作，但 GD/RD 这类**位姿偏移型**失败可能仍在可行域内 |
+
+- **对既有后门工作的推进点**：常规后门以「触发即失败」为目标，本文把指标推到 **C-ASR（配置化攻击成功率）**——攻击者能否指定**如何失败**；这也是 Trap-LIBERO / Trap-RoboTwin 相对原基准的新增维度。
+- **受害者模型的可比性**：评测选 OpenVLA-OFT 与 [\(\pi_{0.5}\)](./paper-pi05-open-world-vla.md) 两类主流开放权重 VLA，因此结论指向「范式级易感」而非单一实现缺陷。
+- **复现门槛的落差**：同批次盘点里 [MILO](./paper-milo.md)、[MistyPilot](./paper-mistypilot.md) 已开源，本文 `John-liua/TrapVLA` 仅托管 Pages 站（见「局限与风险」），横向选型时须把这一差异计入。
+
 ## 结论
 
 **配置化后门证明 VLA 部署必须同时审计干净性能与可操控失败形态。**
