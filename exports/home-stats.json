@@ -1,13 +1,33 @@
 {
-  "generated_at": "2026-08-30",
+  "generated_at": "2026-08-31",
   "node_count": 3359,
-  "edge_count": 30235,
+  "edge_count": 30247,
   "coverage": {
     "covered": 3334,
     "total": 3334,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-bet4sim2real.md",
+      "detail_id": "entity-paper-bet4sim2real",
+      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-imitator-game.md",
+      "detail_id": "entity-paper-imitator-game",
+      "label": "The Imitator Game：用目标等价衡量模仿",
+      "type": "entity",
+      "recency": "2026-08-30",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/nvidia-learn-openusd.md",
       "detail_id": "entity-nvidia-learn-openusd",
@@ -63,17 +83,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-bet4sim2real.md",
-      "detail_id": "entity-paper-bet4sim2real",
-      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/paper-glancewam.md",
       "detail_id": "entity-paper-glancewam",
       "label": "GlanceWAM：把视觉想象移出控制关键路径",
@@ -91,16 +100,6 @@
       "recency": "2026-08-30",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-imitator-game.md",
-      "detail_id": "entity-paper-imitator-game",
-      "label": "The Imitator Game：用目标等价衡量模仿",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-m3-modality-masking.md",
@@ -215,24 +214,23 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-learn-openusd.md",
-    "detail_id": "entity-nvidia-learn-openusd",
-    "label": "NVIDIA Learn OpenUSD",
+    "path": "wiki/entities/paper-bet4sim2real.md",
+    "detail_id": "entity-paper-bet4sim2real",
+    "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
     "type": "entity",
     "recency": "2026-08-30",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 817
+      "size": 815
     },
     {
       "label": "操作",
-      "size": 581
+      "size": 582
     },
     {
       "label": "视觉-语言-动作",
@@ -240,11 +238,11 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 216
+      "size": 217
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 136
+      "size": 137
     },
     {
       "label": "机器人视觉感知栈选型闭环",
