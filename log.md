@@ -1,3 +1,5 @@
+## [2026-08-31] ingest | sources/papers/temporalflow_vla_arxiv_2608_26821.md — TemporalFlow-VLA 物理接地执行历史；π₀.₅ 双 query + 离线机器人表面流；截至入库日未列官方代码
+
 ## [2026-08-31] ingest | sources/repos/jwasham_coding_interview_university.md — 接入 Coding Interview University 并升格实体页；交叉更新具身面试题库与 qqfly 指南
 
 ## [2026-08-31] ingest | sources/repos/hkuds_deeptutor.md — 接入 HKUDS DeepTutor（已开源）并升格 wiki/entities/deeptutor.md；交叉更新 CLI-Anything/Hermes/OpenClaw/Agent Reach
