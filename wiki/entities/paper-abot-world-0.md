@@ -12,7 +12,7 @@ tags:
   - alibaba
   - amap
 status: complete
-updated: 2026-08-18
+updated: 2026-08-31
 arxiv: "2607.19191"
 code: https://github.com/amap-cvlab/ABot-World
 related:

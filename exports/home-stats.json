@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-31",
-  "node_count": 3370,
-  "edge_count": 30333,
+  "node_count": 3371,
+  "edge_count": 30343,
   "coverage": {
-    "covered": 3345,
-    "total": 3345,
+    "covered": 3346,
+    "total": 3346,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -278,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 838,
+      "degree": 839,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
