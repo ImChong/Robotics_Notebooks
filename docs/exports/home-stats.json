@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-abot-n1.md",
+      "detail_id": "entity-paper-abot-n1",
+      "label": "ABot-N1（通用视觉–语言导航基础模型）",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-wikiskill.md",
       "detail_id": "entity-paper-wikiskill",
       "label": "WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）",
@@ -203,26 +213,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-golem-humanoid.md",
-      "detail_id": "entity-paper-golem-humanoid",
-      "label": "GOLEM：把人形工业拆解拆成可替换模块",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-wikiskill.md",
-    "detail_id": "entity-paper-wikiskill",
-    "label": "WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）",
+    "path": "wiki/entities/paper-abot-n1.md",
+    "detail_id": "entity-paper-abot-n1",
+    "label": "ABot-N1（通用视觉–语言导航基础模型）",
     "type": "entity",
     "recency": "2026-08-31",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
