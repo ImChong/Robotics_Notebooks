@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/starter-kit-racing.md",
+      "detail_id": "entity-starter-kit-racing",
+      "label": "starter-kit-racing",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-motus2.md",
       "detail_id": "entity-paper-motus2",
       "label": "Motus2（自进化通用世界模型 · arXiv:2608.30237）",
@@ -197,27 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/winui.md",
-      "detail_id": "entity-winui",
-      "label": "WinUI",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-motus2.md",
-    "detail_id": "entity-paper-motus2",
-    "label": "Motus2（自进化通用世界模型 · arXiv:2608.30237）",
+    "path": "wiki/entities/starter-kit-racing.md",
+    "detail_id": "entity-starter-kit-racing",
+    "label": "starter-kit-racing",
     "type": "entity",
     "recency": "2026-09-01",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
