@@ -157,6 +157,7 @@ flowchart TD
 - [开源人形机器人“大脑”选型](./open-source-humanoid-brains.md) — 算力平衡与硬件底座
 - [Asimov v1](./asimov-v1.md) — 单仓 CAD/电气/MuJoCo/板载软件与双板架构参考
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — 闭链踝等机构层与仿真控制接口分层
+- [Robot in a crib（iCub mobile paradigm）](./paper-robot-in-crib-sensorimotor-contingency.md) — 发展机器人视角下的早期动作–世界因果学习
 - [人形腿部行星滚柱丝杠直线驱动](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — PRS + 连杆的量产叙事与动态权衡（Optimus 相关公开讨论）
 - [机器人硬件抽象层 (HAL) 设计指南](../queries/hardware-abstraction-layer.md) — 屏蔽硬件差异的工程实践
 - [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md) — 硬件部署中的动力与散热闭坑
