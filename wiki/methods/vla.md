@@ -51,6 +51,7 @@ related:
   - ../entities/paper-reflexvla.md
   - ../entities/paper-flashvla.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
+  - ../entities/paper-embodied-manipulation-foundation-models-survey.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../entities/lerobot.md
@@ -146,6 +147,8 @@ sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
   - ../../sources/papers/egosteer_arxiv_2607_09701.md
+  - ../../sources/repos/awesome-robotics-manipulation.md
+  - ../../sources/papers/embodied_robot_manipulation_fm_survey_2512_22983.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/papers/capvector_arxiv_2605_10903.md
   - ../../sources/sites/capvector-github-io.md
@@ -339,6 +342,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 综述 *World Action Models*（arXiv:2605.12090）把典型 VLA 写作 **\(p(a \mid o, l)\)** 的语义条件策略，并指出其往往 **不显式滚未来物理状态**。当未来观测预测与动作生成在 **同一策略框架内耦合**、并以联合对象 **\(p(o', a \mid o, l)\)** 为训练目标时，文献中才归类为 **WAM**（含 Cascaded 与 Joint 两族）。入口概念页见 [World Action Models（WAM）](../concepts/world-action-models.md)。闭源产业侧 [Riemann-1.0](../entities/paper-riemann-1.md) 把 Joint 再收成 **动作优先全因果 AR**（先 \(a_t\) 再 \(z_t\)），同一模型兼任策略与仿真；真机对照表里 [G0.5](../entities/paper-galaxea-g05.md) 是其开源 VLA 对手。
 
+*Bai et al., Embodied Robot Manipulation in the Era of Foundation Models*（arXiv:2512.22983）从 **功能角色** 而非模型家族组织操作文献：VLA 落在低层「输入建模 → 策略学习」管线，常与高层 LLM/MLLM 规划器、几何约束或 affordance 模块组合；详见 [基础模型时代具身操作综述](../entities/paper-embodied-manipulation-foundation-models-survey.md) 与配套 [Awesome-Robotics-Manipulation](https://github.com/BaiShuanghao/Awesome-Robotics-Manipulation)。
+
 ## 部署经验后训练（post-training from experience）
 
 离线 SFT / BC 往往不足以覆盖真机 **分布偏移** 与 **接触/精细操作** 长尾失败。近年路线在预训练 VLA 之上，用 **自主 rollout + 人类干预 + 价值/优势信号** 做迭代提纯：
@@ -392,6 +397,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/humannet.md](../../sources/papers/humannet.md) — HumanNet 百万小时人中心视频语料与 VLA 受控预训练对比
 - [sources/repos/humannet.md](../../sources/repos/humannet.md) — HumanNet 项目页与 GitHub 索引
 - [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md) — WAM 综述与 Cascaded/Joint 分类
+- [sources/papers/embodied_robot_manipulation_fm_survey_2512_22983.md](../../sources/papers/embodied_robot_manipulation_fm_survey_2512_22983.md) — 基础模型时代操作综述（规划 × 学习双轴）
+- [sources/repos/awesome-robotics-manipulation.md](../../sources/repos/awesome-robotics-manipulation.md) — Awesome-Robotics-Manipulation 策展列表
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md) — Pelican-Unified 1.0（UEI）技术报告 arXiv:2605.15153
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — π₀.₇ 论文与官方博客归档
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md) — Awesome-WAM 论文库

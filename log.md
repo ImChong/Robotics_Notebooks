@@ -1,3 +1,5 @@
+## [2026-09-01] ingest | sources/papers/embodied_robot_manipulation_fm_survey_2512_22983.md — 基础模型时代操作综述（规划×学习双轴）入库；Awesome 列表已开源；升格 wiki/entities/paper-embodied-manipulation-foundation-models-survey.md
+
 ## [2026-09-01] ingest | sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md — 接入 Zane Hub 结构模态解读并升格 robot-structural-modal-analysis 概念页
 
 ## [2026-09-01] ingest | sources/papers/vlact_arxiv_2608_27550.md + stay_seated + aero_hand_open — VLAct/Stay Seated/Aero Hand Open 三篇 ingest；VLAct 与 Aero 已开源，Stay Seated 未开源

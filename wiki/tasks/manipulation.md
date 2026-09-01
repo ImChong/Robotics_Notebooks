@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-31
+updated: 2026-09-01
 related:
   - ../entities/paper-flatlab.md
   - ../concepts/llm-robotics-control-interfaces.md
@@ -12,6 +12,7 @@ related:
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
+  - ../entities/paper-embodied-manipulation-foundation-models-survey.md
   - ../entities/paper-vtap-gripper.md
   - ../entities/humantouch.md
   - ../entities/yale-openhand.md
@@ -364,6 +365,7 @@ flowchart TD
 - [G3M（T-RO 2026）](../entities/paper-tro-manip-04-g3m.md) — 图到图生成视频预训练 → 操作策略（GraphMimic 期刊版）
 - [DGM Robot Learning Survey（T-RO 2026）](../entities/paper-tro-manip-05-dgm-robot-learning-survey.md) — 深度生成模型在 LfD 中的模型族、应用与 OOD 设计
 - [操作鲁棒性综述（Dong et al., arXiv:2606.31494）](../entities/paper-robustness-robotic-manipulation-survey.md) — 不确定性与失败管理双原则、五模块机制与评测协议的系统框架
+- [基础模型时代具身操作综述（Bai et al., arXiv:2512.22983）](../entities/paper-embodied-manipulation-foundation-models-survey.md) — 高层规划六类 × 低层学习管线双轴 taxonomy，配套 Awesome-Robotics-Manipulation
 - [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层
 - [PhysX-Omni](../entities/physx-omni.md) — 统一刚体/可变形/关节体 sim-ready 3D 生成与 PhysXVerse 数据引擎
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 全屋 sim-ready  furnished 3D 与 **>15 manipulable objects/scene** 的场景级生成（arXiv:2606.06390）

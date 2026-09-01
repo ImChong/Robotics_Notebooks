@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "survey", "vla", "embodied-ai", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-01
 arxiv: "2405.14093"
 venue: "HMI curated · 2024"
 summary: "VLA Survey（HMI P071）：系统梳理具身 VLA 的数据、架构、训练与评测维度，便于把「通才策略」主张拆成可比较的技术选择。"
