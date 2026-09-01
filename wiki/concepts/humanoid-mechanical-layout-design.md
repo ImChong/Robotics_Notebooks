@@ -2,13 +2,14 @@
 type: concept
 tags: [humanoid, hardware, mechanical-design, layout, dof, inertia, tolerance, fea]
 status: complete
-updated: 2026-08-09
+updated: 2026-09-01
 related:
   - ./humanoid-parallel-joint-kinematics.md
   - ./robot-link-and-rotor-inertia.md
   - ./urdf-robot-description.md
   - ./planetary-roller-screw-humanoid-leg-actuation.md
   - ./humanoid-knee-harmonic-drive-limits.md
+  - ./robot-structural-modal-analysis.md
   - ./robot-power-distribution-architecture.md
   - ./robot-onboard-communication-architecture.md
   - ../overview/humanoid-hardware-101-chassis-materials.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
   - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
+  - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
 summary: "人形整机机械布局设计把任务指标翻译成自由度分配、传动布置、质量/惯量分布与结构刚度公差四层决策；核心判据不是「零件够不够强」，而是质量分布与结构模态是否给控制留出可用带宽与可行域。"
 ---
 
@@ -92,7 +94,7 @@ flowchart TB
 1. **从指标反推布局**：先写出行走速度、单腿峰值力矩、负载与续航，再回推腿部 DoF 与执行器物种（见 [硬件选型 Query](../queries/humanoid-hardware-selection.md)）。
 2. **同一份 CAD 出两份产物**：制造图纸 + 导出惯量参数的 [URDF](./urdf-robot-description.md)；两者版本号必须绑定，避免仿真与实物长期不同步。
 3. **惯量对账**：整机装配后用摆动实验或 [系统辨识](./system-identification.md) 校核连杆惯量与关节摩擦，把偏差写回模型，而不是塞进控制器增益。
-4. **模态实测**：装配态敲击测试（锤击 + 加速度计）取最低阶频率，与 FEA 对账；这一步是决定力控目标带宽的现实依据。
+4. **模态实测**：装配态敲击测试（锤击 + 加速度计）取最低阶频率，与 FEA 对账；这一步是决定力控目标带宽的现实依据——方法学与 MAC/阻尼识别见 [机器人结构模态分析](./robot-structural-modal-analysis.md)。
 5. **可维护性硬约束**：走线通道、拆装顺序、单关节可换性要在 L2 就画进包络——很多整机是因为"换一个膝关节要拆半边身子"而丧失迭代速度。
 
 关键参数速查：摆动腿惯量、整机质量与质量分配比、质心高度、最低阶模态频率、关键配合公差等级、单关节拆装工时。
@@ -117,6 +119,7 @@ flowchart TB
 - [接触力环带宽](./contact-force-loop-bandwidth.md)
 - [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 电液混合 5-DoF 腿 + 仿真工况驱动衍生式减重案例
 - [膝/腿主承力链为何通常避开谐波](./humanoid-knee-harmonic-drive-limits.md) — 近端布置与主冲击力流判据
+- [机器人结构模态分析](./robot-structural-modal-analysis.md) — 固有频率、振型、阻尼比与试验–仿真对账
 
 ## 参考来源
 
@@ -125,6 +128,7 @@ flowchart TB
 - [开源人形硬件对比](../entities/open-source-humanoid-hardware.md) — 可查阅真实图纸/BOM 的整机布局样本
 - [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md) — 跳跃仿真提载荷 → 衍生式连杆轻量化
 - [膝侧避开谐波工程解读归档](../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)
+- [结构模态工程解读归档](../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md)
 - ISO 1101（几何公差）、ISO 286 / ISO 2768（配合与未注公差）— [ISO 标准检索入口](https://www.iso.org/search.html?q=1101)
 
 ## 推荐继续阅读

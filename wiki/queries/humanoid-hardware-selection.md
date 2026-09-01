@@ -4,7 +4,7 @@ title: 人形机器人硬件选型指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-08-03
+updated: 2026-09-01
 summary: 对比当前主流人形机器人平台（G1 / H1 / Unitree B2 / Figure / Atlas），从研究场景和工程目标给出选型建议。
 related:
   - ../overview/humanoid-hardware-101-technology-map.md

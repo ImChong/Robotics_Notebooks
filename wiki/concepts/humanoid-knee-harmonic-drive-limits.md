@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, harmonic-drive, knee, leg, roller-screw, qdd]
 status: complete
-updated: 2026-08-19
+updated: 2026-09-01
 related:
   - ./planetary-roller-screw-humanoid-leg-actuation.md
   - ../overview/humanoid-actuator-102-split-architecture.md
@@ -14,10 +14,12 @@ related:
   - ../queries/humanoid-hardware-selection.md
   - ../overview/hub-actuator-drive-chain.md
   - ./humanoid-mass-production-engineering.md
+  - ./robot-structural-modal-analysis.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
   - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
+  - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
 summary: "膝/踝等主承力腿关节通常不把谐波减速器放在主冲击路径：谐波擅长紧凑低回差旋转精度，而腿优先冲击谱载、柔轮疲劳寿命、动态刚度与远端惯量；常见替代是 PRS 直线、摆线/RV 或低减速比准直驱。"
 ---
 
