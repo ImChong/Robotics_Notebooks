@@ -9,6 +9,37 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-aero-hand-open.md",
+      "detail_id": "entity-paper-aero-hand-open",
+      "label": "Aero Hand Open：仿真就绪的腱驱灵巧手",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-stay-seated.md",
+      "detail_id": "entity-paper-stay-seated",
+      "label": "Stay Seated：G1 被动椅上的全向坐姿移动",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vlact.md",
+      "detail_id": "entity-paper-vlact",
+      "label": "VLAct：数据缩放之外的 VLA 表征轴",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
       "path": "wiki/concepts/robot-structural-modal-analysis.md",
       "detail_id": "wiki-concepts-robot-structural-modal-analysis",
       "label": "Robot Structural Modal Analysis（机器人结构模态分析）",
@@ -178,46 +209,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-imitator-game.md",
-      "detail_id": "entity-paper-imitator-game",
-      "label": "The Imitator Game：用目标等价衡量模仿",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-learn-openusd.md",
-      "detail_id": "entity-nvidia-learn-openusd",
-      "label": "NVIDIA Learn OpenUSD",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
-      "detail_id": "entity-nvidia-isaac-lab-spot-locomotion-sim2real",
-      "label": "NVIDIA Isaac Lab Spot locomotion Sim2Real",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/robot-structural-modal-analysis.md",
-    "detail_id": "wiki-concepts-robot-structural-modal-analysis",
-    "label": "Robot Structural Modal Analysis（机器人结构模态分析）",
-    "type": "concept",
+    "path": "wiki/entities/paper-aero-hand-open.md",
+    "detail_id": "entity-paper-aero-hand-open",
+    "label": "Aero Hand Open：仿真就绪的腱驱灵巧手",
+    "type": "entity",
     "recency": "2026-09-01",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
