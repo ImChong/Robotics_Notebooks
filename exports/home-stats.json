@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-robot-in-crib-sensorimotor-contingency.md",
+      "detail_id": "entity-paper-robot-in-crib-sensorimotor-contingency",
+      "label": "Robot in a crib：摇篮里的 iCub 与感觉运动偶联学习",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-pamor.md",
       "detail_id": "entity-paper-pamor",
       "label": "PAMoR",
@@ -197,27 +207,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/coding-interview-university.md",
-      "detail_id": "entity-coding-interview-university",
-      "label": "Coding Interview University",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pamor.md",
-    "detail_id": "entity-paper-pamor",
-    "label": "PAMoR",
+    "path": "wiki/entities/paper-robot-in-crib-sensorimotor-contingency.md",
+    "detail_id": "entity-paper-robot-in-crib-sensorimotor-contingency",
+    "label": "Robot in a crib：摇篮里的 iCub 与感觉运动偶联学习",
     "type": "entity",
     "recency": "2026-09-01",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
