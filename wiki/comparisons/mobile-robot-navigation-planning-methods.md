@@ -2,8 +2,9 @@
 type: comparison
 tags: [path-planning, navigation, local-planning, motion-planning, mobile-robot, comparison, engineering-selection]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-01
 related:
+  - ./robot-path-planning-five-paradigms-taxonomy.md
   - ../methods/a-star.md
   - ../methods/dwa.md
   - ../methods/smooth-navigation-path-generation.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/repos/python_robotics.md
   - ../../sources/repos/navigation2.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
+  - ../../sources/blogs/wechat_shenlan_robot_path_planning_five_paradigms.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部 DWA 跟踪避障、平滑优化补动力学可行性三层如何各司其职并组合落地。"
 ---
@@ -80,6 +82,7 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - [PythonRobotics 归档](../../sources/repos/python_robotics.md) — A\* / DWA / 路径平滑教学实现
 - [Navigation2 归档](../../sources/repos/navigation2.md) — planner_server / DWB 工程栈
 - [深蓝AI：规划与控制篇](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 全局/局部分层背景
+- [深蓝具身智能：路径规划五范式](../../sources/blogs/wechat_shenlan_robot_path_planning_five_paradigms.md) — 五条技术路线与狭窄通道组合选型
 - [数值优化基础课程](../../sources/courses/numerical_optimization_foundations_robotics.md) — 第 2.4–2.5 节平滑导航路径
 
 ## 关联页面
@@ -91,3 +94,4 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - [PythonRobotics](../entities/python-robotics.md) — 三层算法的教学级动画实现入口
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — A\* + DWA 分层导航所属的课程主线
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL；相对 DWA 的学习型局部社交对照（代码待发布）
+- [路径规划五大范式](./robot-path-planning-five-paradigms-taxonomy.md) — 图搜索/采样/APF/MPC/AI 五条路线总览；本页三层栈是其工程子集

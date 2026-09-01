@@ -7854,6 +7854,12 @@
 - **开源核查：** **已开源**（MIT，可 `init.cmd` + `build.cmd` 构建）；外部代码 PR 暂不接受（OSS 推进中）。
 - **关键页：** [`wiki/entities/winui.md`](wiki/entities/winui.md)；交叉更新 [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)。
 
+## [2026-09-01] ingest | sources/blogs/wechat_shenlan_robot_path_planning_five_paradigms.md — 深蓝具身智能路径规划五范式长文
+
+- **意图：** 接入《具身智能基础》专栏第 11 篇，按图搜索、采样、人工势场、最优控制/MPC、强化学习与 AI 五条路线梳理路径规划范式，并以狭窄通道场景对照组合选型。
+- **开源核查：** N/A（综述科普文，无单一项目页）。
+- **关键页：** [`wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md`](wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md)；交叉更新 [`mobile-robot-navigation-planning-methods`](wiki/comparisons/mobile-robot-navigation-planning-methods.md)、控制/学习姊妹 taxonomy。
+
 ## [2026-08-22] ingest | sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md — 古月居 RosClaw / RoboClaw 自然语言控 ROS2 长文
 
 - **意图：** 接入古月居对 RosClaw（OpenClaw × ROS2 插件）三层架构、三种部署模式、工具集与安全的解读；对照 SJTU MINT RoboClaw 跨本体具身助手。

@@ -145,6 +145,7 @@ flowchart LR
 - [Imitation Learning](../methods/imitation-learning.md) / [Reinforcement Learning](../methods/reinforcement-learning.md) / [VLA](../methods/vla.md)
 - [Sim2Real](../concepts/sim2real.md) / [Domain Randomization](../concepts/domain-randomization.md)
 - [机器人控制八范式](./robot-control-eight-paradigms-taxonomy.md) — 控制侧分类（与学习信号侧互补）
+- [路径规划五大范式](./robot-path-planning-five-paradigms-taxonomy.md) — 规划侧分类（与学习信号侧互补）
 
 ## 推荐继续阅读
 
