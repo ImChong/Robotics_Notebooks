@@ -2,6 +2,12 @@
 
 ## [2026-09-01] ingest | sources/papers/vlact_arxiv_2608_27550.md + stay_seated + aero_hand_open — VLAct/Stay Seated/Aero Hand Open 三篇 ingest；VLAct 与 Aero 已开源，Stay Seated 未开源
 
+## [2026-09-01] ingest | sources/papers/pamor_arxiv_2608_28213.md — PAMoR：UCL 运动学闭式 V-A + 可组合潜扩散，G1 实时情感全身运动；感知 Top-1 0.384；截至入库日未开源
+
+- **触发：** 用户指定 arXiv:2608.28213（UCL Chengxu Zhou 组）
+- **步骤 2.5：** arXiv 为唯一官方入口；**未列 GitHub/权重** → **未开源**
+- **关键页：** [`paper-pamor`](wiki/entities/paper-pamor.md)；交叉 [`textop`](wiki/entities/paper-loco-manip-161-022-textop.md) / [`diffusion-motion-generation`](wiki/methods/diffusion-motion-generation.md) / [`hiaer`](wiki/entities/paper-notebook-hierarchical-intention-aware-expressive-motion-g.md)
+
 ## [2026-08-31] ingest | sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md — 四篇具身 ICL 纵横向解读；对比页 + StellaVLA 新建 + RoboTTT arXiv 补录
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/vIUalf3vZI3AV-HWSVruew>，与 WAM-TTT / RoboTTT / StellaVLA / Zero-WAM 四论文 ingest 一并合并
