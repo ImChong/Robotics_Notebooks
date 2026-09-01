@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-01
 related:
   - ../entities/kimodo.md
   - ../entities/kimodo-cpp.md
@@ -38,6 +38,10 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 ## 语音驱动整体表情+手势（DiffSHEG，CVPR 2024）
 
 [DiffSHEG](../entities/paper-diffsheg.md)（arXiv:2401.04747）把扩散用在 **共语 3D 表情（blendshape）+ 手势（轴角）联合生成**：UniEG-Transformer 强制 **表情→手势单向条件流** 以匹配联合分布，测试时用 **FOPPAS**（Repaint 式 outpainting + DDIM25）做任意长、近实时流式采样（报告 ~31.5 FPS@3090）。产出是数字人/角色资产，进真机仍需 retarget + 跟踪——与下文 **机器人原生 / 地形条件扩散规划** 对照，同属「条件扩散运动生成」，但条件是语音而非地形或文本技能指令。
+
+## 连续情感 V-A + 可组合潜扩散（PAMoR，UCL，arXiv:2608.28213）
+
+[PAMoR](../entities/paper-pamor.md) 在 **Unitree G1 机器人特征空间** 上把 **效价–唤醒（V-A）** 从姿态扩张与运动能量 **闭式标定**（无需人工情感标注），并用 **三个独立扩散先验**（文本动作 / 效价 / 唤醒）在共享 MVAE 潜空间 **classifier-free 组合** 实时自回归生成；相对 [TextOp](../entities/paper-loco-manip-161-022-textop.md) 情感 prompt（感知 Top-1 仅 chance）与 SMooDi 风格参考，V-A 命令 Top-1 **0.384** 接近人体表演基线。与 [HIAER](../entities/paper-notebook-hierarchical-intention-aware-expressive-motion-g.md) 对照：PAMoR 解决 **生成器侧连续情感条件**，HIAER 侧重场景 VLM 推断意图。截至 2026-09-01 **未开源**。
 
 ## 控制环内的生成式中间件（Heracles）
 

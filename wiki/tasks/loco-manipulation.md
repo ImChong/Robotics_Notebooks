@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-31
+updated: 2026-09-01
 sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
@@ -275,6 +275,7 @@ flowchart TD
 - [Teleoperation](./teleoperation.md)
 - [LAC](../entities/paper-lac.md) — G1 上身线+角柔顺；拧腕/托物可读 \(K_\theta\)（部分开源）
 - [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音高层 locomotion + 双向音频社交（H1；未开源）
+- [PAMoR（论文实体）](../entities/paper-pamor.md) — UCL：运动学闭式 V-A + 可组合潜扩散，G1 实时情感全身运动；感知 Top-1 0.384（arXiv:2608.28213；未开源）
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
 - [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — HTD 开源下肢+腰控制器（Isaac Lab，G1 零样本）

@@ -8,6 +8,7 @@ venue: "2025.06"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-pamor.md
 sources:
   - ../../sources/papers/humanoid_pnb_hierarchical-intention-aware-expressive-motion-g.md
 summary: "Hierarchical Intention-Aware Expressive Motion Generation for Humanoid Robots：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
