@@ -65,7 +65,7 @@ STALE_CLAIM_PATTERNS = [
     r"最新",
 ]
 
-# 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下四类是
+# 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下五类是
 # 结构性误报，按命中处的上下文豁免，避免为迁就正则去改写本就正确的正文：
 #   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」
 #      「这一行不可直接当 SOTA 通才」等辟谣式写法，本身就在否认该断言；否认也
@@ -75,12 +75,15 @@ STALE_CLAIM_PATTERNS = [
 #      语义同为否认，故前置线索回看、后置线索前看，都限制在命中词同句内；
 #   2) 库内页面名：「VLA SOTA Leaderboard」是 entities/vla-sota-leaderboard.md 的
 #      页面标题，正文引用它属导航，不是本页断言；
-#   3) 运行时对象：「服务端只保留最新 pending 帧」「取最新状态」描述系统行为，
-#      不会随领域进展过时；写成行内公式的运行时量（「内层根据最新
-#      \(\mathbf{q}\) 生成指令」）同属此类，只是用符号而非名词落笔；
+#   3) 运行时对象：「服务端只保留最新 pending 帧」「取最新状态」「只在最新候选
+#      过门后刷新」描述系统行为，不会随领域进展过时；写成行内公式的运行时量
+#      （「内层根据最新 \(\mathbf{q}\) 生成指令」）同属此类，只是用符号而非名词落笔；
 #   4) 英文缩写速查区块：`| SOTA | State of the Art | 排行榜对照参考 |` 是词条
 #      释义表（写作规范要求的固定区块），在给缩写下定义而非给结论下断言，
-#      与「常见误区」区块同属结构性区块，扫描前整段剥离。
+#      与「常见误区」区块同属结构性区块，扫描前整段剥离；
+#   5) 对照基线的类别名：「相对经典/SOTA 基线，证书平均收窄 51.6%」里的 SOTA 指
+#      被比较的那批既有方法，是对照组标签而非本页对自身的断言；与 2) 的页面名
+#      引用同属指称，故按命中词后紧跟的「基线 / baseline」豁免。
 STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不是",
     "并非",
@@ -108,8 +111,13 @@ STALE_CLAIM_OVERREAD_CUES: tuple[str, ...] = (
 STALE_CLAIM_OVERREAD_WINDOW = 30
 # 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
-    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数)"
+    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选)"
 )
+# 「SOTA / state-of-the-art + 基线」是对照组的类别名（「相对经典/SOTA 基线，证书
+# 平均收窄 51.6%」），指的是被比较的那批既有方法，不是本页对自身的时效性断言；
+# 与「库内页面名引用」同属导航/指称而非结论，故按命中词后**紧跟**的
+# 「基线 / baseline」豁免；只允许夹一两个空白，避免把跨短语的命中一并放行。
+STALE_CLAIM_BASELINE_LABEL_RE = re.compile(r"\s{0,2}(?:基线|baselines?)", re.I)
 # 「最新」后紧跟的行内公式运行时量（如「最新 \((\mathbf{q},\mathbf{e})\)」）：与
 # 「最新状态/读数」同为运行时对象，只是把量写成符号而非名词，同样不随领域进展过时。
 STALE_CLAIM_RUNTIME_MATH_RE = re.compile(r"\s{0,2}\\\([^\n]{0,80}?\\\)")
@@ -148,6 +156,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "http",
     "https",
     "main",
+    # venue：各页正文里的 `Venue` / **Venue** 均为 paper-* 实体页「核心信息」表的
+    # 发表信息行标签（`| **Venue** | ECCV 2026 |`），与 frontmatter 的 venue 来源键
+    # 同义（见 _check_paper_entity_metadata 的 source_keys），是出版元数据字段名，
+    # 非机器人概念/方法/形式化，不应建独立页；与 arxiv/code/type/tags 同类停用词。
+    "venue",
     # clip：正文里既指 CLIP 视觉-语言模型，又指力矩「限幅」动词（torque clip），
     # 两义被小写 slug 合并，非单一可成页概念，作停用词不再误报为「缺独立页」。
     "clip",
@@ -302,6 +315,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   libero     → entities/libero-benchmark.md（130 个机械臂任务的终身学习/迁移
 #                基准，slug 与页面 stem 不同名）：基准数据集归 entities，
 #                与 lerobot / mjlab 同类，不应按裸名误报为缺 concepts 页
+#   libero-plus → entities/libero-benchmark.md「扰动增强变体：LIBERO-Plus」专节
+#                （相机/布局/语言/噪声/纹理扰动条件、分项读法与跨页数字不可横比
+#                的口径，并交叉链接 LAWA / StellaVLA / GaussianDream++ / Kairos /
+#                Rift / Flex-π / SLIM-0.5B 各自报告值）：它是同一批 LIBERO 任务的
+#                扰动条件而非新机制，与 libero 同归该基准实体页，不单建概念页
 #   onpolicyrunner → concepts/rl-runner.md（Runner 层的 canonical 概念页，
 #                「rsl_rl 叫 `OnPolicyRunner`」即该页对号入座的锚点）+
 #                entities/rsl-rl.md（该类的实现库）：具体实现的类名，本体是已建
@@ -322,6 +340,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "joint",  # 关节属性 / WAM Joint 族 / 消融条件名三义，已由 URDF + WAM 等页覆盖
     "lerobot",  # 已由 entities/lerobot.md 覆盖（框架/工具，与 mjlab / mujoco 同类）
     "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
+    "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     "mujoco",
@@ -843,6 +862,8 @@ def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
                 or STALE_CLAIM_RUNTIME_MATH_RE.match(body, m.end())
             ):
                 continue
+            if STALE_CLAIM_BASELINE_LABEL_RE.match(body, m.end()):
+                continue
             return m.group(0)
     return None
 
@@ -855,8 +876,9 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
     ``updated`` 早于库内共享至少一个 tag 的更晚页面时，提示该断言可能已过时、
     建议复核。属信息型预警，不计入 lint 失败总数。
 
-    命中判定见 :func:`_stale_claim_hit`：否定语境 / 库内页面名引用 / 运行时对象
-    三类结构性误报不算断言；「英文缩写速查」区块是词条释义表，扫描前整段剥离。
+    命中判定见 :func:`_stale_claim_hit`：否定语境 / 库内页面名引用 / 运行时对象 /
+    对照基线类别名四类结构性误报不算断言；「英文缩写速查」区块是词条释义表，
+    扫描前整段剥离。
     """
     from wiki_abbrev_section import extract_abbrev_section
 

@@ -158,6 +158,22 @@ sequenceDiagram
 | VLN-CE RxR | NE **3.13** / SR **73.9%** | 多语言长指令 |
 | Person-Following EVT | STT SR **90.1%** | 动态跟人 |
 
+## 与其他工作对比
+
+四条路线的分歧不在骨干大小，而在 **慢/快之间放什么接口**：
+
+| 工作 | 架构 | 慢–快之间的接口 | 任务覆盖 | 相对 ABot-N1 |
+|------|------|-----------------|----------|--------------|
+| **ABot-N1** | 慢 4B + 快 2B，异步 | **CoT 文本 + Target/Affordance 像素** | 五任务单 checkpoint | — |
+| [ABot-N0](https://amap-cvlab.github.io/ABot-Navigation/ABot-N0/) | 单体 Brain–Action VLA | 无显式瓶颈（端到端 latent） | 导航 | 前代；N1 是**接口层的架构演进 + GRPO**，非单纯 scale，跨代应看任务分项而非单 SR |
+| [Green for Go](./paper-green-for-go-vla-nav-grounding.md) | **冻结 VLA + 视觉提示** | 画在图像上的外部提示 | 导航接地 | 同样落在**图像空间**，但提示来自外部模块；N1 的像素目标是**内生**的、且可被 GRPO 按到达结果对齐 |
+| [Qwen-VLA](./qwen-vla.md) | 通才 VLA | 端到端 | 操作—导航通用 | 同 Qwen 骨干族；N1 不追大一统 checkpoint，只做**导航专用**慢–快接口 |
+| [ABot-M0.5](./paper-abot-m05-mobile-manipulation-wam.md) | 移动操作 WAM | 未来观测—动作联合 | 移动操作 | 同机构互补线：一个把未来**观测**当接口，一个把**像素锚点**当接口 |
+
+- **可诊断性是主要卖点**：CoT + 像素锚点让「语义错了」与「空间指错了」可分离归因，这是端到端 latent 接口做不到的；代价是慢系统缓存在极端动态场景可能滞后（见「局限与风险」）。
+- **基准不可横比**：ABotN-PointBench 用 **3DGS 闭环 + 社会可通行评分**，与旧 open-loop waypoint 基准的 SR/SPL 不在同一口径；POI **77.3%** 的 +35.0 pp 增益也应对照其自建基准读。
+- **开源边界的差异**：本文开源的是 **评测基础设施**（`ABotN-Bench`），策略权重截至 2026-08-31 未发布——与上表中已放权重的通才 VLA 相比，复现能力完全不同层级。
+
 ## 结论
 
 **一句话总判：ABot-N1 的真贡献是「CoT + 像素目标」作为慢–快之间的可读、可 RL 对齐接口，并在城市级 Point/POI 闭环基准上给出强证据；当前开源价值主要在评测基础设施，而非策略权重。**

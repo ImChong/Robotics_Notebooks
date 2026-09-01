@@ -80,6 +80,16 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+### 扰动增强变体：LIBERO-Plus
+
+**LIBERO-Plus** 是本库多篇论文页共同引用的 **扰动增强套件**：保持 LIBERO 的任务与数据接口，但在 **相机视角、场景布局、语言表述、观测噪声、纹理** 等维度加扰，用来把「记住训练场景」与「获得可迁移能力」的差距**显式量化**。读表时注意三点：
+
+- **它不是一个新任务集，而是同一批任务的扰动条件**——因此 LIBERO 原榜近饱和（多篇报 97–99%）时，LIBERO-Plus 仍能拉开差距（本库已收录的报告值多在 **74–89%** 区间）。
+- **分项比均值有信息量**：不同方法的强项落在不同扰动轴上，例如 [LAWA](./paper-lawa.md) 微平均 **74.4%** 但语言扰动弱于 Joint 基线、赢在相机/噪声/纹理；[StellaVLA](./paper-stellavla-structured-icl-vla.md) 零样本 **85.1%** 的主要来源是**视角扰动 +23.5**。
+- **跨页数字不可直接横比**：各页的基座、训练数据与评测子集不同（如 [GaussianDream++](./paper-gaussiandream-plusplus.md) **87.8%**、[Kairos](./paper-kairos-native-world-model-stack.md) **89.0**、[Rift](./paper-rift-wam.md) **81.1%**、[Flex-π](./paper-flex-pi.md) **80.9%**、[SLIM-0.5B](./paper-slim-05b.md) **77.45%**），应回各自论文页核对协议后再比较。
+
+具体扰动定义与划分以上游 LIBERO-Plus 发布物为准；本页只做本库交叉引用的锚点。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

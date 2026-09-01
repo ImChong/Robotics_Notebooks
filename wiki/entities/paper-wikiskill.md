@@ -102,6 +102,21 @@ flowchart TD
 - **跨模型迁移：** Qwen-3.6-27B skill 使 Qwen-3.5-9B 在 ALFWorld 达 **70.2%**（自演化 63.4%）。
 - **消融（Gemini）：** Skill Proposer 有 wiki 63.7% vs 无 wiki 48.7%（**+15.0 pt**）。
 
+## 与其他工作对比
+
+四条 skill 进化路线都有「轨迹 → 改 SKILL.md」的外环，差别在 **经验以什么形态沉淀、能否回滚**：
+
+| 工作 | 经验沉淀载体 | 可回滚性 | 相对 WikiSkill |
+|------|--------------|----------|----------------|
+| **WikiSkill** | **持久 wiki 层**（`patterns/`、`logs.md`、`skill-impact.md`） | skill 可回滚，**wiki 永不回滚** | — |
+| EvoSkill | 累积 **proposal 历史** | 随 skill 一起进退 | 记的是「提过什么」而非「为什么失败」；五模型平均均低于 WikiSkill（Qwen-3.6-27B：53.3% vs **63.3%**） |
+| Trace2Skill | 轨迹教训**直接写进 skill** | 与 skill 同生共死 | 诊断知识与规程文件耦合，回滚 skill 即丢失教训 |
+| SkillOpt | 拒绝反馈 + epoch meta | 以 epoch 为粒度 | 与 [Darwin Skill](./darwin-skill.md) 的单 skill validation-gated 自优化同构；WikiSkill 多出的是**跨轮可复用的知识层** |
+
+- **消融给出因果证据**：Skill Proposer 去掉 wiki 后 Gemini 平均掉 **15.0 pt**，说明增益主因是「知识编译」而非「更聪明地 patch 文件」——这是它与上表三条基线的真正分界。
+- **与本库工程实践的对应**：`wiki/patterns/` ↔ 结构化 lint 发现，`skill-impact.md` ↔ git + CI 拒绝记录，`skills/*/SKILL.md` ↔ [Superpowers](./superpowers-obra.md) 式技能文件；本仓库的 [ingest workflow](../../schema/ingest-workflow.md) 即同构的分层实例。
+- **对比的适用边界**：五个 benchmark 偏 agent 工具任务，且实验用 **全文注入** 隔离检索失败——因此上表比较的是「skill 内容质量」，不含生产路径必需的 skill 检索与触发（见「局限与风险」）。
+
 ## 源码运行时序图
 
 **不适用。** 截至 **2026-08-31**，作者 **未发布** 官方可运行仓库或项目页 Code 链接，无法对齐 `sources/repos/` 绘制可复现时序。第三方 [`ashutoshsinghpr7/wikiskill`](https://github.com/ashutoshsinghpr7/wikiskill) 为社区复现，**非** Google Research 官方发布。

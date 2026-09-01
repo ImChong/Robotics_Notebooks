@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-31",
+  "generated_at": "2026-09-01",
   "node_count": 3374,
-  "edge_count": 30382,
+  "edge_count": 30407,
   "coverage": {
     "covered": 3349,
     "total": 3349,
@@ -17,6 +17,87 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-abot-n1.md",
+      "detail_id": "entity-paper-abot-n1",
+      "label": "ABot-N1（通用视觉–语言导航基础模型）",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-alloego-vlm.md",
+      "detail_id": "entity-paper-alloego-vlm",
+      "label": "AlloEgo-VLM：消歧自我中心与环境中心参照系",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-esrp.md",
+      "detail_id": "entity-paper-esrp",
+      "label": "ESRP：具身场景家具重排规划",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-milo.md",
+      "detail_id": "entity-paper-milo",
+      "label": "MILO：大型重建模型解释人—物三维交互",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mistypilot.md",
+      "detail_id": "entity-paper-mistypilot",
+      "label": "MistyPilot：社交机器人的多智能体 LLM 技能编排",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-trapvla.md",
+      "detail_id": "entity-paper-trapvla",
+      "label": "TrapVLA：把 VLA 困在配置化失败模式",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-vitar.md",
+      "detail_id": "entity-paper-vitar",
+      "label": "ViTaR：基础 VLA 的视触觉残差适配",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-wikiskill.md",
+      "detail_id": "entity-paper-wikiskill",
+      "label": "WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）",
+      "type": "entity",
+      "recency": "2026-08-31",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-stellavla-structured-icl-vla.md",
@@ -36,89 +117,7 @@
       "recency": "2026-08-31",
       "source": "git",
       "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-abot-n1.md",
-      "detail_id": "entity-paper-abot-n1",
-      "label": "ABot-N1（通用视觉–语言导航基础模型）",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-wikiskill.md",
-      "detail_id": "entity-paper-wikiskill",
-      "label": "WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-alloego-vlm.md",
-      "detail_id": "entity-paper-alloego-vlm",
-      "label": "AlloEgo-VLM：消歧自我中心与环境中心参照系",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-esrp.md",
-      "detail_id": "entity-paper-esrp",
-      "label": "ESRP：具身场景家具重排规划",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-milo.md",
-      "detail_id": "entity-paper-milo",
-      "label": "MILO：大型重建模型解释人—物三维交互",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-mistypilot.md",
-      "detail_id": "entity-paper-mistypilot",
-      "label": "MistyPilot：社交机器人的多智能体 LLM 技能编排",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trapvla.md",
-      "detail_id": "entity-paper-trapvla",
-      "label": "TrapVLA：把 VLA 困在配置化失败模式",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vitar.md",
-      "detail_id": "entity-paper-vitar",
-      "label": "ViTaR：基础 VLA 的视触觉残差适配",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -227,27 +226,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 821
+      "size": 833
     },
     {
       "label": "操作",
-      "size": 581
+      "size": 584
     },
     {
       "label": "视觉-语言-动作",
-      "size": 260
+      "size": 258
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 214
+      "size": 212
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 99
+      "size": 100
     },
     {
       "label": "机器人视觉感知栈选型闭环",
-      "size": 90
+      "size": 89
     }
   ],
   "top_hubs": [
