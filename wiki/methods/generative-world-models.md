@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-01
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../entities/current-robotics-currentworld.md

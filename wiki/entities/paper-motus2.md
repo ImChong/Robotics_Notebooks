@@ -21,7 +21,9 @@ arxiv: "2608.30237"
 related:
   - ./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md
   - ./paper-motubrain.md
+  - ./paper-zeva.md
   - ../concepts/world-action-models.md
+  - ../overview/open-source-system-loop-7-papers-technology-map.md
   - ../methods/model-based-rl.md
   - ../methods/action-chunking.md
   - ../tasks/manipulation.md
@@ -31,6 +33,7 @@ related:
 sources:
   - ../../sources/papers/motus2_arxiv_2608_30237.md
   - ../../sources/sites/motus2.md
+  - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
 summary: "Motus2（GensPI/清华等，arXiv:2608.30237）：在 Motus 共享 video–action 上暴露 policy/simulator/evaluator 三接口，用人数据金字塔 + 机端 mid-training 与 DiffusionNFT MBRL 闭环自进化灵巧双手；真机五任务宏平均 84%，MBRL+Planning 75%；截至入库日未开源。"
 ---
 

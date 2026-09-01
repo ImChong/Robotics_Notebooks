@@ -1,3 +1,5 @@
+## [2026-09-01] ingest | sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md — 7 篇开源系统闭环盘点；新建 6 实体 + 复用 Motus2；6/7 已开源
+
 ## [2026-09-01] ingest | sources/repos/starter_kit_racing.md — mrdoob/starter-kit-racing Kenney Godot→JS 街机赛车；crashcat + GridMap 编辑器；MIT 已开源；升格 starter-kit-racing 实体并补赛车景观
 
 - **触发：** 用户指定 <https://github.com/mrdoob/starter-kit-racing>
