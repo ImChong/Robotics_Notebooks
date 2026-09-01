@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md",
+      "detail_id": "wiki-comparisons-robot-path-planning-five-paradigms-taxonomy",
+      "label": "机器人路径规划五大范式：图搜索、采样、势场、最优控制与 AI",
+      "type": "comparison",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-embodied-manipulation-foundation-models-survey.md",
       "detail_id": "entity-paper-embodied-manipulation-foundation-models-survey",
       "label": "基础模型时代具身操作综述（Planning & Learning）",
@@ -198,27 +208,17 @@
       "recency": "2026-08-31",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-temporalflow-vla.md",
-      "detail_id": "entity-paper-temporalflow-vla",
-      "label": "TemporalFlow-VLA：物理接地执行历史",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-embodied-manipulation-foundation-models-survey.md",
-    "detail_id": "entity-paper-embodied-manipulation-foundation-models-survey",
-    "label": "基础模型时代具身操作综述（Planning & Learning）",
-    "type": "entity",
+    "path": "wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md",
+    "detail_id": "wiki-comparisons-robot-path-planning-five-paradigms-taxonomy",
+    "label": "机器人路径规划五大范式：图搜索、采样、势场、最优控制与 AI",
+    "type": "comparison",
     "recency": "2026-09-01",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
