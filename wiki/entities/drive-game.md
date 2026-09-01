@@ -2,9 +2,10 @@
 type: entity
 tags: [entity, racing, driving-game, three-js, open-source]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-01
 related:
   - ./nordschleife-racer.md
+  - ./starter-kit-racing.md
   - ../overview/racing-drift-rl-open-source-landscape.md
   - ../methods/model-predictive-control.md
 sources:
@@ -75,6 +76,7 @@ sequenceDiagram
 ## 关联页面
 
 - [nordschleife-racer](./nordschleife-racer.md) — 另一纽北浏览器引擎（多人/排行榜）
+- [starter-kit-racing](./starter-kit-racing.md) — Kenney 街机 GridMap 样板（非纽北）
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
 
 ## 参考来源

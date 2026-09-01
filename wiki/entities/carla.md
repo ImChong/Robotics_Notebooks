@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, microsoft]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-01
 related:
   - ./unreal-engine-5.md
   - ./airsim.md

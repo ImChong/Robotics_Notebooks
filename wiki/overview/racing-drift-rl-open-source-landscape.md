@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, racing, drift, reinforcement-learning, mpc, f1tenth, carla, open-source]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-01
 related:
   - ../methods/reinforcement-learning.md
   - ../methods/model-predictive-control.md
@@ -12,6 +12,7 @@ related:
   - ../entities/xcar-rlgpu.md
   - ../entities/drive-game.md
   - ../entities/nordschleife-racer.md
+  - ../entities/starter-kit-racing.md
   - ../entities/carla.md
   - ../concepts/sim2real.md
   - ../overview/sim-platforms-decade-technology-map.md
@@ -30,7 +31,8 @@ sources:
   - ../../sources/repos/carla.md
   - ../../sources/repos/drive_game.md
   - ../../sources/repos/nordschleife_racer.md
-summary: "赛车/漂移与纽北驾驶开源景观：RL/MPC/F1TENTH 训练栈 + 浏览器 Three.js 驾驶引擎（drive-game、nordschleife-racer），按仿真后端与控制范式分组选型。"
+  - ../../sources/repos/starter_kit_racing.md
+summary: "赛车/漂移与纽北驾驶开源景观：RL/MPC/F1TENTH 训练栈 + 浏览器 Three.js 驾驶引擎（drive-game、nordschleife-racer、starter-kit-racing），按仿真后端与控制范式分组选型。"
 ---
 
 # 赛车漂移强化学习开源景观
@@ -104,12 +106,14 @@ flowchart TB
 |------|------------------|----------|------|--------|
 | **drive-game** | OSM/DEM 真几何纽北 + **240 Hz** Pacejka 物理；Web/Android | [drive-game.pages.dev](https://drive-game.pages.dev) 可本地 `npm run dev` | 已开源 MIT | [drive-game](../entities/drive-game.md) |
 | **nordschleife-racer** | TS 程序化纽北 + 漂移物理 + Supabase 多人/榜 | 玩：[yassin.app](https://yassin.app)；仓为引擎切片 | 引擎 MIT；GLB/后端未入库 | [nordschleife-racer](../entities/nordschleife-racer.md) |
+| **starter-kit-racing** | Kenney Godot→JS 街机移植；GridMap 编辑器 | [Pages 在线](https://mrdoob.github.io/Starter-Kit-Racing/)；CDN 零构建 | 已开源 MIT | [starter-kit-racing](../entities/starter-kit-racing.md) |
 
 ```mermaid
 flowchart LR
   subgraph browser ["浏览器引擎"]
     DG[drive-game<br/>OSM 真几何 240Hz]
     NR[nordschleife-racer<br/>程序化纽北 多人]
+    SK[starter-kit-racing<br/>GridMap 街机]
   end
   subgraph research ["科研训练栈"]
     FG[f1tenth_gym]
@@ -133,13 +137,14 @@ flowchart LR
 | 城市 AD 通用仿真 | [carla](../entities/carla.md) | 漂移专用仓往往锁定**旧版** CARLA |
 | 本地可 fork 的纽北模拟器 | [drive-game](../entities/drive-game.md) | `npm run dev`；非 RL 环境 |
 | 读漂移/多人引擎源码 | [nordschleife-racer](../entities/nordschleife-racer.md) | 完整游玩靠 yassin.app；车模不在仓内 |
+| 最小 Three.js 街机赛车样板 | [starter-kit-racing](../entities/starter-kit-racing.md) | arcade 物理非 Pacejka；CDN 离线需改 importmap |
 
 ## RL vs MPC：如何读这条线
 
 - **RL 路线**（drift_drl、DOA、Gym-Khana、xcar-rlgpu、autonomous_f1tenth）假设奖励/课程能塑造侧滑稳定域，优势是模型误差容忍度高，代价是样本与 Sim2Real 成本高。
 - **MPC 路线**（LearningMPC、drift-mpc-ackermann）显式用自行车模型 + 轮胎力饱和；优势是可解释与约束安全，代价是模型辨识与实时求解。
 - **BARC** 更偏 **教学/研究全栈**：漂移只是能力之一，价值在硬件、数据闭环与 ROS 工程习惯。
-- **浏览器引擎**（drive-game、nordschleife-racer）提供 **Pacejka/漂移** 的可读实现与可玩 demo，适合对照轮胎饱和区直觉，但需自行封装才适合 RL 训练。
+- **浏览器引擎**（drive-game、nordschleife-racer、starter-kit-racing）提供 **轮胎/街机物理** 的可读实现与可玩 demo，适合对照直觉或快速 Web 原型，但需自行封装才适合 RL 训练。
 
 ## 与其他页面的关系
 

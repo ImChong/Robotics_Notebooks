@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, hardware, autonomous-driving, racing, drift, ros, berkeley]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-01
 related:
   - ../overview/racing-drift-rl-open-source-landscape.md
   - ./f1tenth-gym.md

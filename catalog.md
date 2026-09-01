@@ -2557,6 +2557,7 @@
 - [Stable-Baselines3](wiki/entities/stable-baselines3.md) — Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3) 收录于具身智能研究室 [开源项目主表](https://github. `📅unknown` `[entity_page]`
 - [StackForce](wiki/entities/stackforce.md) — StackForce**（stackforce.cc）是面向教育与小整机开发的 **轻量级模块化机器人平台**（堆叠式主控 + 电机/舵机/传感 `📅unknown` `[entity_page]`
 - [Stanford Doggo / Pupper（开源四足）](wiki/entities/stanford-doggo-and-pupper.md) — Stanford Doggo** 与 **Stanford Pupper** 同属斯坦福学生机器人俱乐部叙事下的 **开源四足**：**Doggo** 强调 **高动态跳跃**（转载中约 **5  `📅unknown` `[entity_page]`
+- [starter-kit-racing](wiki/entities/starter-kit-racing.md) — starter-kit-racing** 是 **mrdoob** 将 Kenney「Starter Kit Racing」从 **Godot 4.6** 移植到 **纯 JavaScript + `📅unknown` `[entity_page]`
 - [step2urdf](wiki/entities/step2urdf.md) — step2urdf**（原 URDFlyS2U）是 [Democratizing-Dexterous/step2urdf](https://github.com/Democratizing-Dex `📅unknown` `[entity_page]`
 - [STMR 四足时空重定向](wiki/entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
 - [ACT-2（Sunday Robotics · Generalizing Reliability）](wiki/entities/sunday-robotics-act2.md) — ACT-2** 是 **Sunday Robotics**（2026-07 博客预览）在自研移动平台 **Memo** 上部署的 **第二代家用机器人基础模型**：在 **ACT-1**（2025 `📅unknown` `[entity_page]`
