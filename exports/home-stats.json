@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-01",
-  "node_count": 3382,
-  "edge_count": 30488,
+  "node_count": 3383,
+  "edge_count": 30501,
   "coverage": {
-    "covered": 3357,
-    "total": 3357,
+    "covered": 3358,
+    "total": 3358,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -239,7 +239,7 @@
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 171
+      "size": 172
     },
     {
       "label": "仿真到现实",
@@ -251,7 +251,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1368,
+      "degree": 1369,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -290,7 +290,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 573,
+      "degree": 575,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
