@@ -8,6 +8,8 @@
 - **步骤 2.5：** arXiv 为唯一官方入口；**未列 GitHub/权重** → **未开源**
 - **关键页：** [`paper-pamor`](wiki/entities/paper-pamor.md)；交叉 [`textop`](wiki/entities/paper-loco-manip-161-022-textop.md) / [`diffusion-motion-generation`](wiki/methods/diffusion-motion-generation.md) / [`hiaer`](wiki/entities/paper-notebook-hierarchical-intention-aware-expressive-motion-g.md)
 
+## [2026-09-01] ingest | sources/papers/ssr_arxiv_2605_30770.md — SSR 复核查补核心信息/工程实践/源码时序图；项目页确认未开源
+
 ## [2026-08-31] ingest | sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md — 四篇具身 ICL 纵横向解读；对比页 + StellaVLA 新建 + RoboTTT arXiv 补录
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/vIUalf3vZI3AV-HWSVruew>，与 WAM-TTT / RoboTTT / StellaVLA / Zero-WAM 四论文 ingest 一并合并
