@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-01
 arxiv: "2605.30770"
 related:
   - ./paper-cref.md
@@ -57,6 +57,18 @@ summary: "SSR（arXiv:2605.30770）用单阶段第一视角深度 PPO，以想�
 | DCM | Divergent Component of Motion | 发散运动分量；FastStair 等路线的规划监督用语 |
 | DAgger | Dataset Aggregation | 数据集聚合蒸馏（多阶段感知 locomotion 对照） |
 
+## 核心信息
+
+| 项 | 内容 |
+|----|------|
+| **机构** | 浙江大学（Ruiqi Yu*、Yiwen Wang*、Yuan Hao、Jun Wu、Qiuguo Zhu†） |
+| **发表** | arXiv 预印本 [2605.30770](https://arxiv.org/abs/2605.30770)，2026 |
+| **平台** | AgiBot X2（训练与主实机）；跨形态验证 **1.8 m / 70 kg** 全尺寸人形 |
+| **栈** | Isaac Gym + NVIDIA Warp 自遮挡深度；单阶段 PPO + MoE Actor + 三 Critic |
+| **机载** | 腰部 RealSense D435i（60 Hz）→ **36×36** 深度；Jetson AGX Orin **50 Hz** |
+| **训练** | 4096 并行 AgiBot X2；约 **20k** PPO 迭代 / RTX 4090 |
+| **开源** | **确认未开源**（截至 2026-09-01）：[项目页](https://ssr-humanoid.github.io/) 仅 GitHub Pages 静态站与演示视频，无 GitHub / Hugging Face 训练或推理仓 |
+
 ## 为什么重要
 
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **A 走路底座**（10/64）：底座：第一视角视觉驱动开放世界穿越。
@@ -102,6 +114,10 @@ flowchart TB
   train --> dep
 ```
 
+## 源码运行时序图
+
+**不适用。** 截至 2026-09-01，[项目页](https://ssr-humanoid.github.io/) 与 [arXiv:2605.30770](https://arxiv.org/abs/2605.30770) 均未列出可辨识的训练 / 推理脚本、部署入口或公开 checkpoint；仅有论文 PDF 与演示视频。
+
 ## 核心机制（归纳）
 
 ### 1）想象落脚点引导（Imagined Foothold Guidance）
@@ -127,6 +143,19 @@ flowchart TB
 - **POMDP + 非对称 actor–critic**；**三 critic** 分别拟合任务、落脚、风格价值。
 - 编码器解码足周/躯干 **特权高程图**（训练期）并 VAE 预测下一时刻本体；部署仅依赖深度 + 本体 + 估计速度。
 - 仿真：**4096 AgiBot X2**、Isaac Gym + **NVIDIA Warp** 渲染与部署一致的自遮挡深度；约 **20k** 迭代 / RTX 4090。
+
+## 工程实践
+
+| 项 | 要点 |
+|----|------|
+| 深度预处理 | D435i 640×360 → 裁剪下采样 **36×36**；60 Hz 采集 / 50 Hz 控制 |
+| 相机安装 | 腰部 Intel RealSense D435i |
+| 渲染 | Isaac Gym + Warp 胶囊自遮挡；与机载深度分布对齐 |
+| 三项机制 | 想象落脚点引导 + 等变潜空间对称增广 + 分地形多判别器 AMP |
+| 策略结构 | 等变跨模态编码器（CNN+MLP+GRU）→ 三头潜变量 + 速度估计 + MoE Actor；三 Critic 分别拟合任务 / 落脚 / 风格价值 |
+| 安全落脚指标 | **SFR**（支撑比>75% 落脚占比）、**MSR**（平均支撑比） |
+| 源码运行时序图 | **不适用**（无官方可运行仓） |
+| 复现边界 | 需自建 Isaac Gym 任务、X2 资产、Warp 深度与 MoE/PPO 三 critic 栈；无公开 checkpoint |
 
 ## 常见误区
 
@@ -172,6 +201,14 @@ flowchart TB
 | HPL（论文基线） | 深度 | 稀疏/间接 | 多阶段 | 结构化课 |
 | [CReF](./paper-cref.md) | 64×48 深度 | **触地可支撑候选奖励**（无想象模型） | **单阶段 PPO** | 室内 OOD；无 1.3 km 长程 |
 | [SOLO](./paper-solo.md) | 胸挂 D455 → 16×32 高程 | **逐格查询 + TA-MSE 蒸馏** | 三阶段教师–学生 | Omni **1.5 km**（未开源） |
+
+## 局限与风险
+
+- **确认未开源**：项目页不能当复现入口；数字与视频仅作选型对照。
+- **想象落脚仅在训练期**：部署不运行显式落点优化器；摆动相安全依赖已学策略，而非在线规划。
+- **前向单相机盲区**：腰部 D435i 无前向以外视野；后退换向与侧向障碍风险高于多向感知路线。
+- **户外长程为个案展示**：1.3 km / 40 min 为工业遗产公园单次穿越；不同地貌与天气未必可外推。
+- **跨形态验证尺度有限**：1.8 m / 70 kg 人形为项目页演示；与 X2 主数字的定量对比未完全展开。
 
 ## 参考来源
 

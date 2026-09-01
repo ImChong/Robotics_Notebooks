@@ -6,7 +6,9 @@
 - **类型：** site / demo videos
 - **链接：** <https://ssr-humanoid.github.io/>
 - **关联论文：** [ssr_arxiv_2605_30770.md](../papers/ssr_arxiv_2605_30770.md)（arXiv:2605.30770）
+- **机构：** 浙江大学（Ruiqi Yu*, Yiwen Wang*, Yuan Hao, Jun Wu, Qiuguo Zhu†）
 - **入库日期：** 2026-06-05
+- **代码核查（2026-09-01）：** **确认未开源** — 页面无 GitHub / Hugging Face / Zenodo 等链接；仅有 PDF 外链（arXiv）与演示视频。
 - **一句话说明：** 论文配套项目页：多样楼梯结构、45 cm 高台、90 cm 沟壑、草地坡、推搡/推车扰动、OOD 滑移推车/穿孔格栅/可移动托盘、**1.3 km 户外长程** 与 **1.8 m 全尺寸人形** 跨平台验证视频。
 
 ## 页面结构（2026-06-05 抓取）
