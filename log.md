@@ -1,3 +1,9 @@
+## [2026-09-01] ingest | sources/repos/starter_kit_racing.md — mrdoob/starter-kit-racing Kenney Godot→JS 街机赛车；crashcat + GridMap 编辑器；MIT 已开源；升格 starter-kit-racing 实体并补赛车景观
+
+- **触发：** 用户指定 <https://github.com/mrdoob/starter-kit-racing>
+- **步骤 2.5：** GitHub + Pages **MIT 已开源**；Kenney CC0 资产在仓内
+- **关键页：** [`starter-kit-racing`](wiki/entities/starter-kit-racing.md)；交叉赛车漂移景观 / drive-game / nordschleife-racer
+
 ## [2026-09-01] ingest | sources/papers/motus2_arxiv_2608_30237.md — Motus2 自进化 GWM 灵巧操作；项目页未列代码仓；升格 wiki/entities/paper-motus2.md
 
 - **触发：** 用户指定 <https://motus-robotics.github.io/motus2/>

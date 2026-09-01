@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, embodied-ai, survey, mujoco, habitat, isaac-gym, benchmark]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-01
 related:
   - ../entities/mujoco.md
   - ../entities/ai2-thor.md

@@ -29,6 +29,7 @@
 |---|------|------|----------|----------|---------------|
 | 11 | [esc5221/drive-game](../repos/drive_game.md) | 240 Hz Pacejka 模拟器 | Web + Android；OSM/DEM 真几何 | **已开源**（MIT；可本地 build） | [`wiki/entities/drive-game.md`](../../wiki/entities/drive-game.md) |
 | 12 | [yassinsolim/nordschleife-racer](../repos/nordschleife_racer.md) | arcade-sim + 多人 | 引擎 TS 模块；线上 yassin.app | **部分开源**（引擎 MIT；GLB/Supabase 未入库） | [`wiki/entities/nordschleife-racer.md`](../../wiki/entities/nordschleife-racer.md) |
+| 13 | [mrdoob/starter-kit-racing](../repos/starter_kit_racing.md) | Godot→JS 街机移植 | GridMap + crashcat；CDN 零构建 | **已开源**（MIT；Kenney CC0 资产） | [`wiki/entities/starter-kit-racing.md`](../../wiki/entities/starter-kit-racing.md) |
 
 ---
 
