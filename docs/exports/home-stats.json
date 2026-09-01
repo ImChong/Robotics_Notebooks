@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-01",
-  "node_count": 3380,
-  "edge_count": 30466,
+  "node_count": 3381,
+  "edge_count": 30474,
   "coverage": {
-    "covered": 3355,
-    "total": 3355,
+    "covered": 3356,
+    "total": 3356,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -238,7 +238,7 @@
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 170
+      "size": 171
     },
     {
       "label": "仿真到现实",
@@ -250,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1366,
+      "degree": 1368,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -273,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 844,
+      "degree": 846,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

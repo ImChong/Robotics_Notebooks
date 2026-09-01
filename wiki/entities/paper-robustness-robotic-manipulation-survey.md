@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, robustness, survey, perception, planning, control, policy-learning, hardware, duke, stanford, mit]
 status: complete
-updated: 2026-07-01
+updated: 2026-09-01
 arxiv: "2606.31494"
 venue: "arXiv 2026"
 related:
