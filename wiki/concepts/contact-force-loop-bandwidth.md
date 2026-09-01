@@ -2,13 +2,14 @@
 type: concept
 tags: [control, contact, force-control, impedance, manipulation, tactile]
 status: complete
-updated: 2026-06-30
+updated: 2026-09-01
 summary: "力控闭环带宽 ↔ 接触稳定性概念页：明示感知时延、控制刚度、接触离散化如何共同决定可达带宽与接触震荡/穿透边界，以及它与阻抗/导纳选型的耦合关系。"
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
 related:
   - ../queries/contact-wrench-closed-loop.md
+  - ./robot-structural-modal-analysis.md
   - ./impedance-control.md
   - ./force-control-basics.md
   - ./contact-estimation.md

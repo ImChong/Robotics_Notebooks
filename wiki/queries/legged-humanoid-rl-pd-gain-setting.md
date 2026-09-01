@@ -3,7 +3,7 @@ type: query
 tags: [rl, locomotion, humanoid, legged, sim2real, actuator, pd-control]
 status: stable
 summary: "腿足与人形 RL 中如何把 Kp/Kd（刚度/阻尼）与仿真步长、控制频率及 sim2real 对齐的工程要点与决策流程。"
-updated: 2026-08-02
+updated: 2026-09-01
 related:
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../concepts/implicit-explicit-actuator-modeling.md

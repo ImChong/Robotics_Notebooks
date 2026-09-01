@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-01",
-  "node_count": 3374,
-  "edge_count": 30407,
+  "node_count": 3375,
+  "edge_count": 30419,
   "coverage": {
-    "covered": 3349,
-    "total": 3349,
+    "covered": 3350,
+    "total": 3350,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -97,7 +97,7 @@
       "recency": "2026-08-31",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-stellavla-structured-icl-vla.md",
@@ -118,7 +118,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md",
@@ -147,7 +147,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/coding-interview-university.md",
@@ -157,7 +157,8 @@
       "recency": "2026-08-31",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-bet4sim2real.md",
@@ -187,8 +188,7 @@
       "recency": "2026-08-30",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md",
@@ -198,8 +198,7 @@
       "recency": "2026-08-30",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md",
@@ -209,8 +208,7 @@
       "recency": "2026-08-30",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     }
   ],
   "latest_wiki_node": {
@@ -225,28 +223,28 @@
   },
   "top_communities": [
     {
-      "label": "仿真到现实",
-      "size": 833
+      "label": "操作",
+      "size": 590
     },
     {
-      "label": "操作",
-      "size": 584
+      "label": "宇树 G1 人形机器人",
+      "size": 472
     },
     {
       "label": "视觉-语言-动作",
-      "size": 258
+      "size": 245
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 212
+      "size": 222
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 100
+      "size": 169
     },
     {
-      "label": "机器人视觉感知栈选型闭环",
-      "size": 89
+      "label": "仿真到现实",
+      "size": 132
     }
   ],
   "top_hubs": [
@@ -336,7 +334,7 @@
       "type": "method",
       "degree": 148,
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -344,7 +342,7 @@
       "type": "method",
       "degree": 80,
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -357,7 +355,7 @@
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 57,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -365,7 +363,7 @@
       "type": "entity",
       "degree": 55,
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -373,7 +371,7 @@
       "type": "entity",
       "degree": 48,
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -381,7 +379,7 @@
       "type": "entity",
       "degree": 48,
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-ctrl-world",
@@ -395,8 +393,7 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 44,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 44
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
