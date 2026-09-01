@@ -25,7 +25,7 @@ summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）
 - [A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation](../entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md) — 待深读
 - [A Framework for Optimal Ankle Design of Humanoid Robots](../concepts/humanoid-parallel-joint-kinematics.md) — 见 wiki 实体页
 - [AGILOped](../entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md) — 待深读
-- [Aero Hand Open](../entities/paper-notebook-aero-hand-open.md) — 待深读
+- [Aero Hand Open](../entities/paper-aero-hand-open.md) — 腱驱手 MuJoCo sim2real（[索引页](../entities/paper-notebook-aero-hand-open.md)）
 - [Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand](../entities/paper-notebook-antagonistic-bowden-cable-actuation-of-a-lightwe.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html)
 - [Berkeley Humanoid Lite](../entities/berkeley-humanoid-lite.md) — 待深读
 - [Berkeley Humanoid](../entities/paper-notebook-berkeley-humanoid-a-research-platform-for-learni.md) — 待深读

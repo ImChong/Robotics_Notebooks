@@ -1,5 +1,7 @@
 ## [2026-09-01] ingest | sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md — 接入 Zane Hub 结构模态解读并升格 robot-structural-modal-analysis 概念页
 
+## [2026-09-01] ingest | sources/papers/vlact_arxiv_2608_27550.md + stay_seated + aero_hand_open — VLAct/Stay Seated/Aero Hand Open 三篇 ingest；VLAct 与 Aero 已开源，Stay Seated 未开源
+
 ## [2026-08-31] ingest | sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md — 四篇具身 ICL 纵横向解读；对比页 + StellaVLA 新建 + RoboTTT arXiv 补录
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/vIUalf3vZI3AV-HWSVruew>，与 WAM-TTT / RoboTTT / StellaVLA / Zero-WAM 四论文 ingest 一并合并

@@ -419,6 +419,7 @@
 - [ADP：对抗动力学先验的人形抗扰 locomotion](wiki/entities/paper-adp.md) — ADP**（*Adversarial Dynamics Priors for Physically Grounded Humanoid Locomotion*，arXiv:[2607.03454 `📅unknown` `[entity_page]`
 - [AdvDex：人手与灵巧手统一动作空间](wiki/entities/paper-advdex.md) — AdvDex**（*Learning Dexterous Manipulation from Human Demonstrations via Joint-Aligned Actions and  `📅unknown` `[entity_page]`
 - [空中-水中两栖搭便车机器人：仿印鱼吸盘+被动变形桨](wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md) — Aerial-aquatic robots capable of crossing the air-water boundary and hitchhiking on surfaces**（Don `📅unknown` `[entity_page]`
+- [Aero Hand Open：仿真就绪的腱驱灵巧手](wiki/entities/paper-aero-hand-open.md) — Aero Hand Open**（*A Simulation-Ready Tendon-Driven Hand for Dexterous Manipulation Learning*，[arXi `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`
 - [AGILE：人形 Loco-Manipulation 学习工作流](wiki/entities/paper-agile-humanoid-loco-manipulation.md) — AGILE**（*A Generic Isaac-Lab based Engine*；论文 *AGILE: A Comprehensive Workflow for Humanoid Loco-M `📅unknown` `[entity_page]`
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
@@ -934,7 +935,7 @@
 - [Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation](wiki/entities/paper-notebook-adaptive-invariant-extended-kalman-filter-for-le.md) — Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation** 已列入 [Robot Learning  `📅unknown` `[entity_page]`
 - [AdaptNet](wiki/entities/paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha.md) — AdaptNet: Policy Adaptation for Physics-Based Character Control** 已列入 [Robot Learning Paper Notebo `📅unknown` `[entity_page]`
 - [Denoising World Model Locomotion（HMI P017）](wiki/entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) — Advancing Humanoid Locomotion: Mastering Challenging Terrains with Denoising World Model Learning `📅unknown` `[entity_page]`
-- [Aero Hand Open](wiki/entities/paper-notebook-aero-hand-open.md) — Aero Hand Open** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Pap `📅unknown` `[entity_page]`
+- [Aero Hand Open（Paper Notebooks 索引）](wiki/entities/paper-notebook-aero-hand-open.md) — Aero Hand Open** 已由 完整论文实体（[arXiv:2608.28578](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
 - [AGILOped](wiki/entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md) — AGILOped: Agile Open-Source Humanoid Robot for Research** 已列入 [Robot Learning Paper Notebooks](htt `📅unknown` `[entity_page]`
 - [AME-2 — Agile and Generalized Legged Locomotion](wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 一句话定义**：在 AME（AME-1） 的 **本体条件地图注意力** 之上，引入 **全局地形上下 `📅unknown` `[entity_page]`
 - [AMOR](wiki/entities/paper-notebook-amor-adaptive-character-control-through-multi-ob.md) — AMOR: Adaptive Character Control through Multi-Objective Reinforcement Learning** 已列入 [Robot Learn `📅unknown` `[entity_page]`
@@ -2292,6 +2293,7 @@
 - [SRL-MPC：形状感知强化学习 MPC](wiki/entities/paper-srl-mpc.md) — SRL-MPC: Shape-Aware Reinforcement Learned Model Predictive Control**（[arXiv:2608.21175](https://a `📅unknown` `[entity_page]`
 - [SRU（Spatially-Enhanced Recurrent Memory）](wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — SRU**（*Spatially-Enhanced Recurrent Memory for Long-Range Mapless Navigation via End-to-End Reinfo `📅unknown` `[entity_page]`
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
+- [Stay Seated：G1 被动椅上的全向坐姿移动](wiki/entities/paper-stay-seated.md) — Stay Seated**（*Learning Omnidirectional Humanoid Locomotion on a Passive Mobile Chair with Casters `📅unknown` `[entity_page]`
 - [STEAM：自监督时序 Ensemble Advantage 建模](wiki/entities/paper-steam-advantage-modeling.md) — STEAM**（*Self-Supervised Temporal Ensemble Advantage Modeling for Real-World Robot Learning*，[arXi `📅unknown` `[entity_page]`
 - [StellaVLA（结构化 In-Context 示范 · VLA）](wiki/entities/paper-stellavla-structured-icl-vla.md) — StellaVLA**（*In-Context Structured Demonstration for Generalizable Vision-Language-Action Models*， `📅unknown` `[entity_page]`
 - [StreamPI](wiki/entities/paper-streampi.md) — StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models**（[arXiv:2608.2 `📅unknown` `[entity_page]`
@@ -2372,6 +2374,7 @@
 - [ViTaR：基础 VLA 的视触觉残差适配](wiki/entities/paper-vitar.md) — ViTaR**（*ViTaR: Visuo-Tactile Residual Adaptation for Foundation VLA Manipulation*，[arXiv:2608.158 `📅unknown` `[entity_page]`
 - [V-JEPA 2（自监督视频世界模型 · arXiv:2506.09985）](wiki/entities/paper-vjepa2.md) — V-JEPA 2**（*V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning*， `📅unknown` `[entity_page]`
 - [VLA Survey（HMI P071）](wiki/entities/paper-vla-survey-embodied.md) — VLA Survey**（*A Survey on Vision-Language-Action Models for Embodied AI*，2024，[arXiv:2405.14093](h `📅unknown` `[entity_page]`
+- [VLAct：数据缩放之外的 VLA 表征轴](wiki/entities/paper-vlact.md) — VLAct**（*Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Ac `📅unknown` `[entity_page]`
 - [VLK（Vision-Language-Kinematics）](wiki/entities/paper-vlk-synthetic-loco-manipulation.md) — VLK: Learning Humanoid Loco-Manipulation from Synthetic Interactions in Reconstructed Scenes**（arX `📅unknown` `[entity_page]`
 - [R2R](wiki/entities/paper-vln-01-r2r.md) — R2R** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 01/10**  `📅unknown` `[entity_page]`
 - [VLN-CE](wiki/entities/paper-vln-02-vln-ce.md) — VLN-CE** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 02/10 `📅unknown` `[entity_page]`
