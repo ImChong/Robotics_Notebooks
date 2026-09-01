@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/robot-structural-modal-analysis.md",
+      "detail_id": "wiki-concepts-robot-structural-modal-analysis",
+      "label": "Robot Structural Modal Analysis（机器人结构模态分析）",
+      "type": "concept",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md",
       "detail_id": "wiki-comparisons-wam-ttt-robottt-stellavla-zero-wam-embodied-icl",
       "label": "WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比",
@@ -199,27 +208,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md",
-      "detail_id": "entity-nvidia-isaac-lab-ur10e-industrial-assembly-sim2real",
-      "label": "NVIDIA Isaac Lab UR10e 工业装配 Sim2Real",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md",
-    "detail_id": "wiki-comparisons-wam-ttt-robottt-stellavla-zero-wam-embodied-icl",
-    "label": "WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比",
-    "type": "comparison",
-    "recency": "2026-08-31",
+    "path": "wiki/concepts/robot-structural-modal-analysis.md",
+    "detail_id": "wiki-concepts-robot-structural-modal-analysis",
+    "label": "Robot Structural Modal Analysis（机器人结构模态分析）",
+    "type": "concept",
+    "recency": "2026-09-01",
     "source": "git",
-    "action": "added",
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
