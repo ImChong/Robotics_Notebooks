@@ -9,15 +9,46 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/starter-kit-racing.md",
-      "detail_id": "entity-starter-kit-racing",
-      "label": "starter-kit-racing",
+      "path": "wiki/entities/paper-correctvla.md",
+      "detail_id": "entity-paper-correctvla",
+      "label": "CorrectVLA：VLA 失败的语言反馈推理期动作纠错",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-emerge-policy.md",
+      "detail_id": "entity-paper-emerge-policy",
+      "label": "EMERGE-Policy：超越单一策略的机器人系统级「心智」",
       "type": "entity",
       "recency": "2026-09-01",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-language-driven-robotic-qd.md",
+      "detail_id": "entity-paper-language-driven-robotic-qd",
+      "label": "Language-Driven Quality-Diversity（语言驱动 QD 技能档案）",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-lightnav-0.md",
+      "detail_id": "entity-paper-lightnav-0",
+      "label": "LightNav-0：激发 VLM 空间智能的通用具身导航",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-motus2.md",
@@ -27,6 +58,47 @@
       "recency": "2026-09-01",
       "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-optigeo.md",
+      "detail_id": "entity-paper-optigeo",
+      "label": "OptiGeo：光学挑战场景的高效单目几何感知",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-zeva.md",
+      "detail_id": "entity-paper-zeva",
+      "label": "Zeva：上下文因果学习用于可泛化具身操作",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/open-source-system-loop-7-papers-technology-map.md",
+      "detail_id": "wiki-overview-open-source-system-loop-7-papers-technology-map",
+      "label": "开源系统闭环：7 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/starter-kit-racing.md",
+      "detail_id": "entity-starter-kit-racing",
+      "label": "starter-kit-racing",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md",
@@ -138,90 +210,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-esrp.md",
-      "detail_id": "entity-paper-esrp",
-      "label": "ESRP：具身场景家具重排规划",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-milo.md",
-      "detail_id": "entity-paper-milo",
-      "label": "MILO：大型重建模型解释人—物三维交互",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mistypilot.md",
-      "detail_id": "entity-paper-mistypilot",
-      "label": "MistyPilot：社交机器人的多智能体 LLM 技能编排",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trapvla.md",
-      "detail_id": "entity-paper-trapvla",
-      "label": "TrapVLA：把 VLA 困在配置化失败模式",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vitar.md",
-      "detail_id": "entity-paper-vitar",
-      "label": "ViTaR：基础 VLA 的视触觉残差适配",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-wikiskill.md",
-      "detail_id": "entity-paper-wikiskill",
-      "label": "WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-stellavla-structured-icl-vla.md",
-      "detail_id": "entity-paper-stellavla-structured-icl-vla",
-      "label": "StellaVLA（结构化 In-Context 示范 · VLA）",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/starter-kit-racing.md",
-    "detail_id": "entity-starter-kit-racing",
-    "label": "starter-kit-racing",
+    "path": "wiki/entities/paper-correctvla.md",
+    "detail_id": "entity-paper-correctvla",
+    "label": "CorrectVLA：VLA 失败的语言反馈推理期动作纠错",
     "type": "entity",
     "recency": "2026-09-01",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
