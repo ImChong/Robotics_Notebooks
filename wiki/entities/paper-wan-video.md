@@ -9,7 +9,7 @@ tags:
   - world-models
   - alibaba
 status: complete
-updated: 2026-08-18
+updated: 2026-09-01
 arxiv: "2503.20314"
 related:
   - ./comfyui.md
@@ -24,6 +24,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./paper-abot-m05-mobile-manipulation-wam.md
   - ./tau0-world-model.md
+  - ./paper-fixanything.md
 sources:
   - ../../sources/papers/wan_video_arxiv_2503_20314.md
   - ../../sources/repos/wan2.1.md
@@ -181,6 +182,7 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 | [Ctrl-World](./paper-ctrl-world.md) | **非 Wan（SVD）** | 低维动作 + 多视角 | 骨干对照项，说明可控 WM 不必绑定 Wan |
 | [ABot-M0.5](./paper-abot-m05-mobile-manipulation-wam.md) / [τ₀ World Model](./tau0-world-model.md) | Wan2.2 系 | 具身动作/观测 | 其他 Wan2.2 具身衍生，共享上游先验 |
 | [ABot-World-0](./paper-abot-world-0.md) | Wan2.2-TI2V-5B | 原始键盘 + 角色记忆 | 交互式开放域视频世界；单卡实时部署 |
+| [FixAnything](./paper-fixanything.md) | Wan-I2V-14B（2.1 线） | 退化渲染 + mask | 3DGS/NeRF/mesh/点云渲染后处理；rank-64 LoRA + Flow-DPO |
 
 **选型第一判据**：需要**可微调的视频基础先验**时选本页作骨干；需要**可执行动作/掩码/接触语义**时，价值在派生的机器人适配层，而非裸 Wan I2V——「先验在视频模型、语义在机器人适配层」。
 
@@ -195,6 +197,7 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 - [ABot-World-0](./paper-abot-world-0.md) — Wan2.2-TI2V-5B 上的键盘交互桌面实时世界模型
 - [HarnessEval-W](./paper-harnesseval-w.md) — Wan 2.7\* Overall 第二、Intentional/Physical 第一；Wan 2.2 明显落后
 - [DreamX-Phi](./paper-dreamx-phi.md) — 同骨干的动作条件操纵 WM；权重待赛后（arXiv:2608.13489）
+- [FixAnything](./paper-fixanything.md) — Wan2.1-I2V-14B LoRA 统一修复四类 3D 渲染伪影（ECCV 2026）
 - [ComfyUI](./comfyui.md) — 开源节点图推理宿主；官方与社区常把 Wan 模板接到此引擎
 
 ## 参考来源
