@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-01
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-online-mbrl-robot-control.md
   - ../entities/paper-td-mpc2.md
   - ../entities/paper-lucid.md
+  - ../entities/paper-motus2.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/repos/open-dreamer.md
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
+  - ../../sources/papers/motus2_arxiv_2608_30237.md
 summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
 ---
 
@@ -208,6 +210,10 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - 仿真对照中相对 [TD-MPC2](../entities/paper-td-mpc2.md) / [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md) 强调「真实代价 + 一阶更新」的稳定与精度
 - 实体页与开源状态（确认未开源）：[Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md)
 
+### WAM 内嵌 MBRL（共享参数 GWM）
+
+[Motus2](../entities/paper-motus2.md) 把 **policy / simulator / evaluator** 做成同一 video–action 模型的三种查询模式：策略提议 action chunk，仿真器想象视觉后果，价值模型评估相对任务进度；**DiffusionNFT** 用 evaluator 信号更新动作通路，**Best-of-N** 在测试时对候选分支排序。失败与次优真机轨迹进入 simulation / evaluation 监督而非动作模仿——与经典「外置动力学 + CEM」MBRL 不同，闭环完全在 **联合 WAM** 内完成（arXiv:2608.30237；截至 2026-09-01 **未开源**）。
+
 ---
 
 ## MBRL vs Model-Free RL 对比
@@ -273,6 +279,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - [Open Dreamer](../entities/open-dreamer.md) — Dreamer 4 开源训练/推理/demo
 - [Latent Imagination](../concepts/latent-imagination.md) — Dreamer 系核心机制
 - [LUCID](../entities/paper-lucid.md) — 人形技能级 macro-dynamics 想象控制
+- [Motus2](../entities/paper-motus2.md) — 共享参数 WAM 内嵌 DiffusionNFT MBRL + Best-of-N 灵巧操作
 - [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Model-based Runner：真交互训模型 → 想象 rollout → 更新策略
 - [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"

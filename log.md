@@ -1,3 +1,9 @@
+## [2026-09-01] ingest | sources/papers/motus2_arxiv_2608_30237.md — Motus2 自进化 GWM 灵巧操作；项目页未列代码仓；升格 wiki/entities/paper-motus2.md
+
+- **触发：** 用户指定 <https://motus-robotics.github.io/motus2/>
+- **步骤 2.5：** 项目页与 `motus-robotics` 组织 **无** 训练/推理仓库 → **未开源**（仅静态站 `motus-robotics.github.io`）
+- **关键页：** [`paper-motus2`](wiki/entities/paper-motus2.md)；交叉 Motus 索引 / Motubrain / `world-action-models`
+
 ## [2026-09-01] ingest | sources/papers/embodied_robot_manipulation_fm_survey_2512_22983.md — 基础模型时代操作综述（规划×学习双轴）入库；Awesome 列表已开源；升格 wiki/entities/paper-embodied-manipulation-foundation-models-survey.md
 
 ## [2026-09-01] ingest | sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md — 接入 Zane Hub 结构模态解读并升格 robot-structural-modal-analysis 概念页

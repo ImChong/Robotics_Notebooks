@@ -14,6 +14,7 @@ status: complete
 updated: 2026-08-13
 arxiv: "2604.27792"
 related:
+  - ./paper-motus2.md
   - ./paper-wam-realtime-async.md
   - ./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md
   - ../concepts/world-action-models.md
@@ -151,6 +152,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Motus2](./paper-motus2.md) — 同族 GWM 三接口 + MBRL 自进化（灵巧双手）
 - [WAM 实时异步部署](./paper-wam-realtime-async.md) — 同平台六策略实证
 - [Motus（索引）](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) — 范式前作
 - [World Action Models](../concepts/world-action-models.md)
