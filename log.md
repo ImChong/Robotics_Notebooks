@@ -10,6 +10,12 @@
 
 ## [2026-09-01] ingest | sources/papers/ssr_arxiv_2605_30770.md — SSR 复核查补核心信息/工程实践/源码时序图；项目页确认未开源
 
+## [2026-09-01] ingest | sources/papers/robot_in_crib_sensorimotor_contingency_scirobotics_2026.md — iCub 摇篮 mobile paradigm；四策略挑战「动得更多」；仿真代码已开源、真机未列 GitHub
+
+- **触发：** 用户指定 Science Robotics 2026（DOI:10.1126/scirobotics.aed4106）；全文无 arXiv，用 CTU 新闻 + 姊妹 arXiv:2504.17939 + 官方仿真仓核查
+- **步骤 2.5：** 仿真 [`mobile-paradigm-model`](https://github.com/ctu-vras/mobile-paradigm-model) **已开源**；真机七条件 **未列代码**；媒体见 CTU Google Drive
+- **关键页：** [`paper-robot-in-crib-sensorimotor-contingency`](wiki/entities/paper-robot-in-crib-sensorimotor-contingency.md)
+
 ## [2026-08-31] ingest | sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md — 四篇具身 ICL 纵横向解读；对比页 + StellaVLA 新建 + RoboTTT arXiv 补录
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/vIUalf3vZI3AV-HWSVruew>，与 WAM-TTT / RoboTTT / StellaVLA / Zero-WAM 四论文 ingest 一并合并

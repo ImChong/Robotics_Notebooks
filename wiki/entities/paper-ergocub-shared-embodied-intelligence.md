@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, iit, inail, generative-bionics, university-of-manchester, humanoid, hardware-codesign, ergonomics, whole-body-control, physical-hri, locomotion, icub]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-01
 doi: "10.1038/s42256-026-01272-2"
 venue: "Nature Machine Intelligence"
 code: "https://github.com/ami-iit/paper_sartore_2025_ergocub_nature_machine_intelligence"
@@ -181,6 +181,7 @@ sequenceDiagram
 - [Sim2Real](../concepts/sim2real.md) — 优化模型与制造实现的缺口讨论。
 - [Humanoid Robot](./humanoid-robot.md) — 人形平台总览。
 - [iCub3 Avatar System（计划实体）](./paper-notebook-icub3-avatar-system-enabling-remote-fully-immers.md) — 同族 iCub3 遥操作条目。
+- [Robot in a crib（mobile paradigm 偶联学习）](./paper-robot-in-crib-sensorimotor-contingency.md) — iCub 真机发展心理学范式与预测–好奇心机制。
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md) — 硬件选型对照。
 - [WBC vs RL](../comparisons/wbc-vs-rl.md) — 模型控制 vs 学习策略选型。
 
