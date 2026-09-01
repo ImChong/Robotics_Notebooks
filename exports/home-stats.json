@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-pamor.md",
+      "detail_id": "entity-paper-pamor",
+      "label": "PAMoR",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-aero-hand-open.md",
       "detail_id": "entity-paper-aero-hand-open",
       "label": "Aero Hand Open：仿真就绪的腱驱灵巧手",
@@ -199,27 +208,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bet4sim2real.md",
-      "detail_id": "entity-paper-bet4sim2real",
-      "label": "Bet4Sim2Real：用仿真下注收紧真机证书",
-      "type": "entity",
-      "recency": "2026-08-30",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-aero-hand-open.md",
-    "detail_id": "entity-paper-aero-hand-open",
-    "label": "Aero Hand Open：仿真就绪的腱驱灵巧手",
+    "path": "wiki/entities/paper-pamor.md",
+    "detail_id": "entity-paper-pamor",
+    "label": "PAMoR",
     "type": "entity",
     "recency": "2026-09-01",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
