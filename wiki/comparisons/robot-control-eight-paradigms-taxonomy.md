@@ -110,6 +110,7 @@ flowchart TB
 - [Humanoid Model-based Control Stack](../overview/humanoid-model-based-control-stack.md)
 - [Control Architecture Comparison](../queries/control-architecture-comparison.md)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
+- [路径规划五大范式](./robot-path-planning-five-paradigms-taxonomy.md) — 规划侧姊妹 taxonomy
 
 ## 参考来源
 
