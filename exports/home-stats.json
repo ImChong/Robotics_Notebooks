@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-fixanything.md",
+      "detail_id": "entity-paper-fixanything",
+      "label": "FixAnything",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-correctvla.md",
       "detail_id": "entity-paper-correctvla",
       "label": "CorrectVLA：VLA 失败的语言反馈推理期动作纠错",
@@ -199,23 +209,12 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-alloego-vlm.md",
-      "detail_id": "entity-paper-alloego-vlm",
-      "label": "AlloEgo-VLM：消歧自我中心与环境中心参照系",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-correctvla.md",
-    "detail_id": "entity-paper-correctvla",
-    "label": "CorrectVLA：VLA 失败的语言反馈推理期动作纠错",
+    "path": "wiki/entities/paper-fixanything.md",
+    "detail_id": "entity-paper-fixanything",
+    "label": "FixAnything",
     "type": "entity",
     "recency": "2026-09-01",
     "source": "git",
