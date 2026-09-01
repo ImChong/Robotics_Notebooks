@@ -1,24 +1,26 @@
 ---
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
-status: planned
-updated: 2026-06-26
+status: complete
+updated: 2026-09-01
 venue: curated
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-aero-hand-open.md
 sources:
   - ../../sources/papers/humanoid_pnb_aero-hand-open.md
-summary: "Aero Hand Open：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+  - ../../sources/papers/aero_hand_open_arxiv_2608_28578.md
+summary: "Aero Hand Open 索引页：已升格完整实体 paper-aero-hand-open（arXiv:2608.28578）；本页保留 Paper Notebooks 交叉检索入口。"
 ---
 
-# Aero Hand Open
+# Aero Hand Open（Paper Notebooks 索引）
 
-**Aero Hand Open** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Aero Hand Open** 已由 [完整论文实体](./paper-aero-hand-open.md)（[arXiv:2608.28578](https://arxiv.org/abs/2608.28578)）覆盖；本页保留 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) **12_Hardware_Design** 分类的图谱索引。
 
 ## 一句话定义
 
-Aero Hand Open 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+TetherIA 开源腱驱灵巧手：完整知识归纳见 [paper-aero-hand-open](./paper-aero-hand-open.md)。
 
 ## 英文缩写速查
 
@@ -48,11 +50,10 @@ Aero Hand Open 的人形机器人学习论文条目，当前处于 Paper Noteboo
 
 ## 结论
 
-**本页是待深读的占位实体：它证明这条硬件设计条目已被纳入阅读计划，但还不构成对 Aero Hand Open 本身的任何评价。**
+**本页已降级为 Paper Notebooks 索引入口；技术结论以 [paper-aero-hand-open](./paper-aero-hand-open.md) 为准。**
 
-- 现状：列入 Paper Notebooks 的 **PROGRESS.md 待深读** 清单，分类 12_Hardware_Design，深读笔记尚未撰写。
-- 因此本页 **不含任何量化结论**：benchmark、消融与实机指标待笔记完成后补充。
-- 检索路径为 [分类父节点](../overview/paper-notebook-category-12-hardware-design.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；本页未登记论文直链，需经 PROGRESS.md 回溯原文。
+- 2026-09-01 ingest 已建立 arXiv 实体页与 `sources/papers/aero_hand_open_arxiv_2608_28578.md`。
+- 姊妹仓库深读笔记路径仍为 `papers/12_Hardware_Design/aero-hand-open`。
 
 ## 与其他页面的关系
 
@@ -61,8 +62,9 @@ Aero Hand Open 的人形机器人学习论文条目，当前处于 Paper Noteboo
 
 ## 参考来源
 
+- [paper-aero-hand-open.md](./paper-aero-hand-open.md)
+- [aero_hand_open_arxiv_2608_28578.md](../../sources/papers/aero_hand_open_arxiv_2608_28578.md)
 - [humanoid_pnb_aero-hand-open.md](../../sources/papers/humanoid_pnb_aero-hand-open.md)
-- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 
 
 ## 推荐继续阅读
