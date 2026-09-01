@@ -622,6 +622,7 @@
 - [FDDC：首个可部署的动态 CoM 单腿平衡策略与基准](wiki/entities/paper-fddc.md) — FDDC**（*First Deployable Dynamic-CoM*；论文 *First Deployable Dynamic-CoM: A Unified Policy and Metho `📅unknown` `[entity_page]`
 - [FER ROS 2 Panda 栈](wiki/entities/paper-fer-ros2-panda-stack.md) — Keeping the Franka Emika Panda alive: a ROS 2 stack with a reliable position interface**（[arXiv:26 `📅unknown` `[entity_page]`
 - [FetchMan：仿真视觉人形 loco-manipulation](wiki/entities/paper-fetchman.md) — FetchMan**（*Learning Visual Humanoid Loco-Manipulation Policies from Simulated Experiences*，[arXiv `📅unknown` `[entity_page]`
+- [FixAnything](wiki/entities/paper-fixanything.md) — FixAnything: 3D-Consistent Rendering Refinement via Video Generative Priors**（[arXiv:2608.23549](h `📅unknown` `[entity_page]`
 - [FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）](wiki/entities/paper-flap-fov-active-perception-3d-navigation.md) — FLAP**（*FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation*，arXiv:2606.17 `📅unknown` `[entity_page]`
 - [FlashVLA：流式异步 VLA 动作解码](wiki/entities/paper-flashvla.md) — FlashVLA**（*Streaming Action Decoding for Fast and Asynchronous VLA Inference*，[arXiv:2608.27384 `📅unknown` `[entity_page]`
 - [FlatLab：平面物体操作的统一框架与仿真基准](wiki/entities/paper-flatlab.md) — FlatLab**（*A Unified Methodology Framework and Simulation-Based Benchmark for Robotic Manipulation `📅unknown` `[entity_page]`

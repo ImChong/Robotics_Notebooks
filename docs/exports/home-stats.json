@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-01",
-  "node_count": 3391,
-  "edge_count": 30546,
+  "node_count": 3392,
+  "edge_count": 30553,
   "coverage": {
-    "covered": 3366,
-    "total": 3366,
+    "covered": 3367,
+    "total": 3367,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -48,7 +48,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-motus2.md",
@@ -68,7 +68,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-zeva.md",
@@ -225,27 +225,27 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 592
+      "size": 593
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 472
+      "size": 461
     },
     {
       "label": "视觉-语言-动作",
-      "size": 245
+      "size": 247
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 224
+      "size": 221
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 172
+      "size": 167
     },
     {
       "label": "仿真到现实",
-      "size": 135
+      "size": 134
     }
   ],
   "top_hubs": [
@@ -284,7 +284,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 789,
+      "degree": 790,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -383,18 +383,18 @@
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
+      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
+      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
+      "type": "entity",
+      "degree": 45
+    },
+    {
       "detail_id": "entity-paper-ctrl-world",
       "label": "Ctrl-World（可控机器人操作生成式世界模型）",
       "type": "entity",
       "degree": 44,
       "has_repo": true,
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
-      "type": "entity",
-      "degree": 44
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

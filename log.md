@@ -1,3 +1,9 @@
+## [2026-09-01] ingest | sources/papers/fixanything_arxiv_2608_23549.md — FixAnything：Wan2.1 LoRA 统一修复四类 3D 渲染伪影 + Flow-DPO 几何偏好；推理与 HF 权重已开源
+
+- **触发：** 用户指定 arXiv:2608.23549（ECCV 2026，CMU）
+- **步骤 2.5：** GitHub `kvuong2711/fix-anything` + HF LoRA **已开源（推理）**；SFT/Flow-DPO 训练脚本未发布
+- **关键页：** [`paper-fixanything`](wiki/entities/paper-fixanything.md)；交叉 [`paper-wan-video`](wiki/entities/paper-wan-video.md) / [`paper-r2s-ego`](wiki/entities/paper-r2s-ego.md)
+
 ## [2026-09-01] ingest | sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md — 7 篇开源系统闭环盘点；新建 6 实体 + 复用 Motus2；6/7 已开源
 
 ## [2026-09-01] ingest | sources/repos/starter_kit_racing.md — mrdoob/starter-kit-racing Kenney Godot→JS 街机赛车；crashcat + GridMap 编辑器；MIT 已开源；升格 starter-kit-racing 实体并补赛车景观

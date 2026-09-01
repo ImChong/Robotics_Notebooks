@@ -12,7 +12,7 @@ tags:
   - xpeng
   - polyu
 status: complete
-updated: 2026-08-11
+updated: 2026-09-01
 arxiv: "2608.06827"
 related:
   - ../concepts/sim2real.md
@@ -24,6 +24,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ./unitree-g1.md
   - ../comparisons/sim2real-vs-real2sim-fine-tuning.md
+  - ./paper-fixanything.md
 sources:
   - ../../sources/papers/r2s_ego_arxiv_2608_06827.md
 summary: "R2S-EGO（arXiv:2608.06827，XPENG Robotics × PolyU）：稀疏捕获 Real-to-Sim 双代理细化——机器人代理定行为范围可执行 ego 查询与赤字，几何代理供结构条件与碰撞面；六视角 3DGS 外观与真机 G1 坐姿迁移显著优于 GaussGym；截至入库日未开源。"
@@ -140,6 +141,7 @@ flowchart TB
 | [CRISP](../methods/crisp-real2sim.md) | 单目人–场景平面原语 + RL 物理闭环；偏运动/接触资产。R2S-EGO 偏 **既有场景的稀疏多视角视觉+碰撞细化** |
 | [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | episode / 操作孪生与 cousins；评测多为回放或策略相关。R2S-EGO 评 **冻结 ego 渲染 + 同栈策略迁移** |
 | GenFusion 等视觉更新 | 生成–重建闭环提升 novel view；本文额外要求 **机器人可执行查询 + 捕获锚定结构 + 仿真碰撞接口** |
+| [FixAnything](./paper-fixanything.md) / Difix3D+ 等 post-hoc 增强 | 表 II 将 Difix3D+ 作外观基线；FixAnything 走 **整段视频时序一致** 的跨表示清理，非行为范围 ego 查询 |
 
 ## 局限与风险
 
@@ -171,4 +173,5 @@ flowchart TB
 - [arXiv PDF](https://arxiv.org/pdf/2608.06827) — 方法、Algorithm 1 与 Table II–IV
 - [GaussGym（arXiv:2510.15352）](https://arxiv.org/abs/2510.15352) — 文中主 R2S 基线
 - [ViewCrafter](https://arxiv.org/abs/2409.02048) — 相机控制 novel-view 生成组件先例
+- [FixAnything](./paper-fixanything.md) — Wan2.1 LoRA 跨表示渲染清理；推理已开源（arXiv:2608.23549）
 - [Awesome-Real2Sim2Real](https://github.com/sun254667/Awesome-Real2Sim2Real) — 闭环文献策展
