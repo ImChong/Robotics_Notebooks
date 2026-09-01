@@ -2,7 +2,7 @@
 
 ## [2026-09-01] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **7** 条信息型预警）：
+共发现 **0** 个问题（另含 **6** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,8 +97,7 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（3 个）
-- wiki/entities/paper-embodied-manipulation-foundation-models-survey.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
 - wiki/entities/paper-pamor.md（缺 对比）
 - wiki/entities/paper-robot-in-crib-sensorimotor-contingency.md（缺 对比）
 

@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-embodied-manipulation-foundation-models-survey.md",
+      "detail_id": "entity-paper-embodied-manipulation-foundation-models-survey",
+      "label": "基础模型时代具身操作综述（Planning & Learning）",
+      "type": "entity",
+      "recency": "2026-09-01",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-robot-in-crib-sensorimotor-contingency.md",
       "detail_id": "entity-paper-robot-in-crib-sensorimotor-contingency",
       "label": "Robot in a crib：摇篮里的 iCub 与感觉运动偶联学习",
@@ -196,28 +207,18 @@
       "recency": "2026-08-31",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/deeptutor.md",
-      "detail_id": "entity-deeptutor",
-      "label": "DeepTutor（HKUDS）",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-robot-in-crib-sensorimotor-contingency.md",
-    "detail_id": "entity-paper-robot-in-crib-sensorimotor-contingency",
-    "label": "Robot in a crib：摇篮里的 iCub 与感觉运动偶联学习",
+    "path": "wiki/entities/paper-embodied-manipulation-foundation-models-survey.md",
+    "detail_id": "entity-paper-embodied-manipulation-foundation-models-survey",
+    "label": "基础模型时代具身操作综述（Planning & Learning）",
     "type": "entity",
     "recency": "2026-09-01",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
