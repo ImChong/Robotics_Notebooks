@@ -1,11 +1,12 @@
 ---
 type: entity
-tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier]
+tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier, science-robotics]
 status: stable
-summary: "AME（AME-1）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；AME-2 的前作。"
-updated: 2026-08-29
+summary: "AME（AME-1，Science Robotics 10(105) eadv3604）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；官方无训练代码，Zenodo 数据 + SII-FUSC 社区 G1 复现。"
+updated: 2026-09-02
 arxiv: "2506.09588"
-venue: "arXiv 2025"
+doi: "10.1126/scirobotics.adv3604"
+venue: "Science Robotics 2025"
 related:
   - ./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ./smp-g1-mjlab.md
@@ -20,12 +21,17 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/ame_arxiv_2506_09588.md
+  - ../../sources/repos/ame_locomotion_sii_fusc.md
   - ../../sources/repos/senlanke_mimic.md
 ---
 
 # AME — Attention-Based Map Encoding
 
-**一句话定义**：用 **CNN 提取机器人中心高程图逐点局部特征**，再以 **本体与速度指令条件化的 multi-head attention** 聚焦 **下一落脚可行区域**，与 proprioception 一起 **端到端 PPO** 输出关节目标——在 **ANYmal-D** 与 **Fourier GR-1** 上同时获得 **稀疏垫脚石/梁/沟** 的 **泛化、鲁棒与可解释地形感知**（后续扩展见 [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md)）。
+**AME**（*Attention-Based Map Encoding for Learning Generalized Legged Locomotion*，[Science Robotics 10(105), eadv3604](https://doi.org/10.1126/scirobotics.adv3604)，[arXiv:2506.09588](https://arxiv.org/abs/2506.09588)）由 **ETH RSL × Disney Research Zurich** 提出。
+
+## 一句话定义
+
+用 **CNN + 本体条件 MHA** 编码 2.5D 高程图，**两阶段 PPO** 在 **速度指令** 下于 **ANYmal-D** 与 **Fourier GR-1** 上实现稀疏垫脚石/梁/沟的 **零样本泛化** 与 **可解释落脚注意力**（后继见 [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md)）。
 
 ## 英文缩写速查
 
@@ -52,11 +58,15 @@ sources:
 
 | 字段 | 内容 |
 |------|------|
-| 机构 | 苏黎世联邦理工（ETH Zürich）RSL；迪士尼研究院苏黎世（Disney Research Zurich） |
-| 平台 | ANYmal-D；Fourier GR-1 |
-| 感知 | 机器人中心 **2.5D 高程扫描**（elevation mapping） |
-| 训练 | 自定义 PPO；**4096** 并行 env；**两阶段**（理想感知基地形 → 难地形+噪声） |
-| arXiv | <https://arxiv.org/abs/2506.09588> |
+| **作者** | Junzhe He、Chong Zhang、Fabian Jenelten、Ruben Grandia、Moritz Bächer、Marco Hutter |
+| **机构** | 苏黎世联邦理工（ETH Zürich）RSL；迪士尼研究院苏黎世（Disney Research Zurich） |
+| **发表** | *Science Robotics* **10**(105)，**eadv3604**（2025-08-27） |
+| **平台** | ANYmal-D（12-DoF 四足）；Fourier GR-1（23-DoF 人形） |
+| **任务** | **速度指令** 跟踪；踏脚石、窄梁、缺口等 **稀疏地形** locomotion |
+| **感知** | 机器人中心 **2.5D 高程扫描**（elevation mapping） |
+| **训练** | 自定义 PPO；**4096** 并行 env；**两阶段**（理想感知基地形 → 难地形+噪声） |
+| **开源** | **官方训练代码未发布**；[Zenodo 数据](https://doi.org/10.5281/zenodo.14499786)；社区 [SII-FUSC/AME_Locomotion](https://github.com/SII-FUSC/AME_Locomotion)（**非官方**，G1 + Isaac Lab） |
+| **arXiv** | <https://arxiv.org/abs/2506.09588> |
 
 ## 系统结构
 
@@ -114,6 +124,10 @@ flowchart LR
 
 点级 **MHA + 保分辨率 CNN** 优于 **Transformer encoder**、**额外下采样 CNN**、**ViT**——尤其在 **未见地形** 成功率上。
 
+## 源码运行时序图
+
+**不适用（官方可运行训练代码尚未发布）。** 论文 Data availability 仅指向 [Zenodo 10.5281/zenodo.14499786](https://doi.org/10.5281/zenodo.14499786) 数据包。社区 [SII-FUSC/AME_Locomotion](https://github.com/SII-FUSC/AME_Locomotion) 为 **非官方 G1 + Isaac Lab** 复现（`run_train.sh` → 两阶段 `FINETUNE` → `run_play.sh`），与论文 ANYmal-D/GR-1 栈不同，见 [`ame_locomotion_sii_fusc.md`](../../sources/repos/ame_locomotion_sii_fusc.md)。
+
 ## 结论
 
 **CNN + 本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在四足与人形上实现稀疏地形泛化与可解释落脚注意力。**
@@ -143,7 +157,8 @@ flowchart LR
 ## 参考来源
 
 - [ame_arxiv_2506_09588.md](../../sources/papers/ame_arxiv_2506_09588.md)
-- He et al., *Attention-Based Map Encoding for Learning Generalized Legged Locomotion*, [arXiv:2506.09588](https://arxiv.org/abs/2506.09588)
+- [ame_locomotion_sii_fusc.md](../../sources/repos/ame_locomotion_sii_fusc.md) — 社区 G1 复现（非官方）
+- He et al., *Attention-Based Map Encoding for Learning Generalized Legged Locomotion*, [*Science Robotics* 10(105), eadv3604](https://doi.org/10.1126/scirobotics.adv3604) · [arXiv:2506.09588](https://arxiv.org/abs/2506.09588)
 
 ## 关联页面
 

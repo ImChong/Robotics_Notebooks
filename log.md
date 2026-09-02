@@ -1,3 +1,10 @@
+## [2026-09-02] ingest | sources/papers/ame_arxiv_2506_09588.md, sources/repos/ame_locomotion_sii_fusc.md — AME 补 Science Robotics 10(105) eadv3604 正式发表与 SII-FUSC 社区复现；复核 UCAG-P 仍待发布
+
+- **触发：** 用户一次 ingest 含两篇：（1）*One Policy, Many Embodiments* / UCAG-P；（2）*Attention-Based Map Encoding* / AME（arXiv:2506.09588）
+- **UCAG-P：** 已于 2026-08-28 入库；**步骤 2.5 复核（2026-09-02）** — [public-bots.github.io/UCAG-P](https://public-bots.github.io/UCAG-P) 与 [Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 仍 **code release coming soon**，无训练入口
+- **AME 更新：** 补 *Science Robotics* **10**(105) **eadv3604**（DOI [10.1126/scirobotics.adv3604](https://doi.org/10.1126/scirobotics.adv3604)）；官方 **无训练代码**，Zenodo [10.5281/zenodo.14499786](https://doi.org/10.5281/zenodo.14499786)；新建社区复现归档 [SII-FUSC/AME_Locomotion](https://github.com/SII-FUSC/AME_Locomotion)（**非官方**，G1 + Isaac Lab）
+- **关键页：** [`paper-ame-attention-based-map-encoding`](wiki/entities/paper-ame-attention-based-map-encoding.md)、[`paper-ucag-p`](wiki/entities/paper-ucag-p.md)
+
 ## [2026-09-02] ingest | sources/papers/anyworld_arxiv_2608_29242.md — AnyWorld：动作–相机–具身因子化 egocentric WM，无配对人–机数据重组 GR1/IRON rollout；UniT 适配 +4.8pp/+35pp；项目页未开源
 
 - **触发：** 用户指定 arXiv:2608.29242（小鹏机器人 / NTU / A*STAR IAIC / ZJU / CUHK）
