@@ -1,3 +1,9 @@
+## [2026-09-02] ingest | sources/papers/anyworld_arxiv_2608_29242.md — AnyWorld：动作–相机–具身因子化 egocentric WM，无配对人–机数据重组 GR1/IRON rollout；UniT 适配 +4.8pp/+35pp；项目页未开源
+
+- **触发：** 用户指定 arXiv:2608.29242（小鹏机器人 / NTU / A*STAR IAIC / ZJU / CUHK）
+- **步骤 2.5：** 项目页 `xpeng-robotics.github.io/anyworld` **未列** GitHub/权重 → **未开源**
+- **关键页：** [`paper-anyworld`](wiki/entities/paper-anyworld.md)；交叉 [`paper-unit-unified-physical-language`](wiki/entities/paper-unit-unified-physical-language.md)
+
 ## [2026-09-02] ingest | sources/papers/agile_perceptive_traversal + blind_dexterity + smoothrl — 三篇 arXiv:2608.29769/29487/29768：猴架 LiDAR 感知穿越 / G1 纯本体操作 / 异步 VLA 在线 RL；均未开源（Blind Dexterity 待发布）
 
 - **触发：** 用户指定三篇论文 + 项目页
