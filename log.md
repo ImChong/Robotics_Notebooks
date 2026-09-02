@@ -1,3 +1,9 @@
+## [2026-09-02] ingest | sources/blogs/worldlabs_atlas_omni_world_model.md — World Labs Atlas omni 世界模型（相机可控生成、稀疏 3D 重建、Real-to-Sim）；早期访问未开源；新增 wiki/entities/atlas-world-model.md；交叉 world-labs、generative-world-models
+
+- **触发：** 用户指定 <https://www.worldlabs.ai/blog/atlas>
+- **步骤 2.5：** 博客与官网 **未列** GitHub/HF → **早期访问（未开源）**；输出 splat 与 Marble/Spark 同表征
+- **关键页：** [`atlas-world-model`](wiki/entities/atlas-world-model.md)、[`world-labs`](wiki/entities/world-labs.md)
+
 ## [2026-09-02] ingest | sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md — 7 篇开源论文独立节点：Facet-0/ParcelStow/Dual-MP/Depth Survey/ADM-BA/Peg-in-Bench/NP-Throw；Peg-in-Bench 仓库待发布
 
 ## [2026-09-02] ingest | sources/papers/hydrogym_nature_s41586_026_10917_6.md — HydroGym 主动流控 RL 平台（Nature 2026）；arXiv:2512.17534 开放全文 + GitHub/HF 已开源；通道→翼型零样本减阻

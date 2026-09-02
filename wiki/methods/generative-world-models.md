@@ -283,7 +283,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 相邻方向：三维世界生成与流式 3DGS（产业样本）
 
-部分团队将「世界模型」叙事延伸到 **持久 3D 世界** 的生成与编辑，并以 **3D Gaussian Splatting** 在 Web 或工具链中交付可漫游场景；这与上文以 **像素视频 rollout** 为中心的讨论共享「生成式环境」动机，但 **评测对象与训练目标** 往往更接近内容管线而非机器人控制回路。产业侧公开样本见 [World Labs](../entities/world-labs.md)（Marble + [Spark](../entities/spark-3dgs-renderer.md)）；同类 Web 渲染可对照 [Aholo Viewer](../entities/aholo-viewer.md)（见 [Spark vs Aholo](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）。
+部分团队将「世界模型」叙事延伸到 **持久 3D 世界** 的生成与编辑，并以 **3D Gaussian Splatting** 在 Web 或工具链中交付可漫游场景；这与上文以 **像素视频 rollout** 为中心的讨论共享「生成式环境」动机，但 **评测对象与训练目标** 往往更接近内容管线而非机器人控制回路。产业侧公开样本见 [World Labs](../entities/world-labs.md)：**[Atlas](../entities/atlas-world-model.md)**（2026-09 omni 世界模型：相机可控长视频、稀疏视角重建、Real-to-Sim 机器人传感器 rollout；早期访问未开源）+ Marble + [Spark](../entities/spark-3dgs-renderer.md)；同类 Web 渲染可对照 [Aholo Viewer](../entities/aholo-viewer.md)（见 [Spark vs Aholo](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）。
 
 ### 术语对照：状态动力学「世界模型」（RWM）
 
@@ -343,7 +343,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — **静态 sim-ready 全屋 3D** 场景生成与中文住宅平面图数据（arXiv:2606.06390）。
 - [InfiniteDiffusion / Terrain Diffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md) — **学习式无限户外地形**（惰性扩散 + 分层高程/气候场；Minecraft mod 集成，SIGGRAPH 2026）。
 - [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md) — 状态空间神经动力学 + 想象 rollout（与像素生成式 WBM 对照）。
-- [World Labs](../entities/world-labs.md) — 空间智能与 3D 世界生成产品侧样本（Marble / Spark）。
+- [World Labs](../entities/world-labs.md) — 空间智能与 3D 世界生成产品侧样本（Atlas / Marble / Spark）。
+- [Atlas（World Labs omni 世界模型）](../entities/atlas-world-model.md) — 相机可控生成、稀疏 3D 重建、Real-to-Sim；早期访问。
 - [Spark（Web 3DGS）](../entities/spark-3dgs-renderer.md) — LoD splat 树、.RAD 流式与 splat 分页（Spark 2.0）。
 - [Aholo Viewer](../entities/aholo-viewer.md) — Chunked Streaming LoD + 3DGS/Mesh 混渲。
 - [DWM（Dexterous World Models）](./dwm.md) — 已知静态 3D 场景上的场景–手条件视频扩散与残差动力学学习。
@@ -367,6 +368,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Hu, Y., et al. (2025). *EWMBench: Evaluating Scene, Motion, and Semantic Quality in Embodied World Models* — 见 [sources/papers/ewmbench.md](../../sources/papers/ewmbench.md)。
 - Duan, H., et al. (2025). *WorldScore: A Unified Evaluation Benchmark for World Generation* — 见 [sources/papers/worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md)。
 - World Labs 官方站点与 Spark/Marble 关联归档 — 见 [sources/sites/worldlabs-ai.md](../../sources/sites/worldlabs-ai.md)。
+- Atlas 技术博客归档 — 见 [sources/blogs/worldlabs_atlas_omni_world_model.md](../../sources/blogs/worldlabs_atlas_omni_world_model.md)。
 - Spark 2.0 技术博客归档 — 见 [sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md](../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md)。
 - Kim, B., et al. (2026). *Dexterous World Models* — 见 [sources/papers/dwm_arxiv_2512_17907.md](../../sources/papers/dwm_arxiv_2512_17907.md)。
 - Pai, J., et al. (2025). *mimic-video: Video-Action Models for Generalizable Robot Control Beyond VLAs* — 见 [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md)。
