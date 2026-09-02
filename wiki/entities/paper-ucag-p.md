@@ -11,7 +11,7 @@ tags:
   - xiaomi-robotics
   - umac
 status: complete
-updated: 2026-08-28
+updated: 2026-09-02
 arxiv: "2608.26058"
 code: https://github.com/Public-BOTs/UCAG-P
 related:
@@ -73,7 +73,7 @@ summary: "UCAG-P（arXiv:2608.26058，小米具身智能×澳门大学）：共�
 | **动作接口** | 共享几何 \(\mathbb{R}^{30}\)（左右臂锚点 + 相机运动）；可执行稀疏命令 \(\mathbb{R}^{80}\) |
 | **数据** | 11 子集、102 万 episode、**6,374 h**（真机 266 h + 仿真 3,768 h + 人手 2,340 h） |
 | **训练** | 三阶段：128×H20 / 200K → 8×H20 / 10K → 64×H20 / 10K；chunk **H=30** |
-| **开源（截至 2026-08-28）** | **宣称将开源 / 待发布**：项目页与 [Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 仅配图/站点；README *code will be released soon* |
+| **开源（截至 2026-09-02）** | **宣称将开源 / 待发布**：项目页与 [Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 仅配图/站点；README *code will be released soon* |
 
 ## 核心原理
 
@@ -117,7 +117,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（官方可运行代码尚未发布）。** 截至 **2026-08-28**：[项目页](https://public-bots.github.io/UCAG-P) 与 [Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 仅托管配图与静态站；README 写训练/推理/评测 **will be released soon**。发布后应补：数据对齐 → Stage1 几何预训练 → Stage2 GT 翻译器 → Stage3 联合 → 分本体闭环部署 的 `sequenceDiagram`。
+**不适用（官方可运行代码尚未发布）。** 截至 **2026-09-02**：[项目页](https://public-bots.github.io/UCAG-P) 与 [Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 仅托管配图与静态站；README 写训练/推理/评测 **will be released soon**。发布后应补：数据对齐 → Stage1 几何预训练 → Stage2 GT 翻译器 → Stage3 联合 → 分本体闭环部署 的 `sequenceDiagram`。
 
 ## 工程实践
 
