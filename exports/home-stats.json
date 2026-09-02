@@ -9,6 +9,45 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md",
+      "detail_id": "entity-paper-agile-perceptive-traversal-sparse-3d",
+      "label": "Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-blind-dexterity.md",
+      "detail_id": "entity-paper-blind-dexterity",
+      "label": "Blind Dexterity：纯本体感知人形全身操作",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-smoothrl.md",
+      "detail_id": "entity-paper-smoothrl",
+      "label": "SmoothRL：异步执行下的 VLA 在线强化学习",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-anyworld.md",
+      "detail_id": "entity-paper-anyworld",
+      "label": "AnyWorld（因子化 Egocentric 跨具身世界模型）",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-hydrogym.md",
       "detail_id": "entity-paper-hydrogym",
       "label": "HydroGym：流体动力学强化学习平台",
@@ -170,58 +209,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-stay-seated.md",
-      "detail_id": "entity-paper-stay-seated",
-      "label": "Stay Seated：G1 被动椅上的全向坐姿移动",
-      "type": "entity",
-      "recency": "2026-09-01",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vlact.md",
-      "detail_id": "entity-paper-vlact",
-      "label": "VLAct：数据缩放之外的 VLA 表征轴",
-      "type": "entity",
-      "recency": "2026-09-01",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-structural-modal-analysis.md",
-      "detail_id": "wiki-concepts-robot-structural-modal-analysis",
-      "label": "Robot Structural Modal Analysis（机器人结构模态分析）",
-      "type": "concept",
-      "recency": "2026-09-01",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md",
-      "detail_id": "wiki-comparisons-wam-ttt-robottt-stellavla-zero-wam-embodied-icl",
-      "label": "WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比",
-      "type": "comparison",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hydrogym.md",
-    "detail_id": "entity-paper-hydrogym",
-    "label": "HydroGym：流体动力学强化学习平台",
+    "path": "wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md",
+    "detail_id": "entity-paper-agile-perceptive-traversal-sparse-3d",
+    "label": "Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越",
     "type": "entity",
     "recency": "2026-09-02",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
