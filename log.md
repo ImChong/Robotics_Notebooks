@@ -1,3 +1,9 @@
+## [2026-09-02] ingest | sources/papers/anyworld_arxiv_2608_29242.md — AnyWorld：动作–相机–具身因子化 egocentric WM，无配对人–机数据重组 GR1/IRON rollout；UniT 适配 +4.8pp/+35pp；项目页未开源
+
+- **触发：** 用户指定 arXiv:2608.29242（小鹏机器人 / NTU / A*STAR IAIC / ZJU / CUHK）
+- **步骤 2.5：** 项目页 `xpeng-robotics.github.io/anyworld` **未列** GitHub/权重 → **未开源**
+- **关键页：** [`paper-anyworld`](wiki/entities/paper-anyworld.md)；交叉 [`paper-unit-unified-physical-language`](wiki/entities/paper-unit-unified-physical-language.md)
+
 ## [2026-09-01] ingest | sources/papers/fixanything_arxiv_2608_23549.md — FixAnything：Wan2.1 LoRA 统一修复四类 3D 渲染伪影 + Flow-DPO 几何偏好；推理与 HF 权重已开源
 
 - **触发：** 用户指定 arXiv:2608.23549（ECCV 2026，CMU）
