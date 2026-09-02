@@ -19,7 +19,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md
   - ../../sources/sites/ac5113-milo.md
   - ../../sources/repos/ac5113-milo.md
-summary: "MILO（arXiv:2608.27407，UT Austin）：用 LRM 联合网格作 HOI 几何脚手架，分割后拟合 SMPL-H 与可选物体模板；无 GT 接触，多基准 SOTA；ac5113/MILO 已开源。"
+summary: "MILO（arXiv:2608.27407，UT Austin）：用 LRM 联合网格作 HOI 几何脚手架，分割后拟合 SMPL-H 与可选物体模板；无 GT 接触，多基准取得论文口径最优；ac5113/MILO 已开源。"
 ---
 
 # MILO：大型重建模型解释人—物三维交互
@@ -42,7 +42,7 @@ summary: "MILO（arXiv:2608.27407，UT Austin）：用 LRM 联合网格作 HOI �
 ## 为什么重要
 
 - 纳入 [具身智能小站 2026-08-31 九篇盘点](../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md) 的「三维交互感知」支线。
-- 相对二维重投影 + 接触约束拟合，**无需 GT 接触** 即在 InterCap / HODome / IMHD 上 SOTA。
+- 相对二维重投影 + 接触约束拟合，**无需 GT 接触** 即在 InterCap / HODome / IMHD 上取得论文投稿时（2026-08）的最优结果。
 - **已开源** `ac5113/MILO`（ECCV 2026 官方代码）。
 
 ## 核心信息
@@ -93,7 +93,7 @@ flowchart LR
 
 - LRM 网格保留相对布局与邻近关系，降低优化难度
 - 人体 SMPL-H + 物体 LRM/模板双路径，模板可选
-- 不依赖 GT 接触仍达 SOTA
+- 不依赖 GT 接触仍达到三套基准上的论文口径最优精度
 - 官方代码与 demo 可复现
 - 对机器人 teleop / 操作场景的三维交互感知有直接价值
 

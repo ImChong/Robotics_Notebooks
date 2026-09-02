@@ -110,10 +110,26 @@ sequenceDiagram
 - **硬件：** 依赖腕部 F/T 与合规控制栈，低成本臂需评估传感与控制器。
 - **与 VLA 关系：** 语义骨干可复用，但力后果头与 critic 是精密场景增量成本。
 
+## 与其他工作对比（索引级）
+
+| 维度 | Facet-0 | 通用 [VLA](../methods/vla.md)（视觉-语言-动作） | 传统柔顺/力控装配 |
+|------|---------|----------------------------------------|-----------------|
+| 预测目标 | **动作片段 + 预期腕部力曲线**（action-wrench 联合） | 仅动作 | 无预测，实时力反馈调节 |
+| 力信号角色 | 训练目标的一部分，进 critic | 多数不入模 | 唯一闭环量 |
+| 语义泛化 | 保留 VLM 骨干 | **最强** | 无 |
+| 亚毫米任务表现 | 5 任务均值 **82%** | 论文中最强 baseline **15%** | 需逐任务手工编程/示教 |
+| 硬件前提 | **腕部 F/T + 柔顺控制栈** | 相机即可 | F/T 或柔顺机构 |
+| 迁移成本 | 跨行业零件 few-shot（~6.6% 权重） | 提示/微调 | 重新编程 |
+
+- **82% vs 15% 的可比性前提**：同一批亚毫米计算机装配任务、同一套本体与传感配置；把它读成「Facet-0 全面优于 VLA」会越界——通用语义泛化仍是通用 VLA 的强项，本文的增量是力后果头与 critic。
+- **与 [Peg-in-Bench](./paper-peg-in-bench.md) 是「算法—基准」互补**：前者提供可重构的插入评测底座，本文提供策略侧方案；两边的成功率因任务件与公差不同而不可横比。
+- **不与 [ADM-BA](./paper-adm-ba.md) 混淆**：本页缩写表已标注 BA 在此不指束调整，两篇分处「接触后果」与「几何配准」两条线。
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
 - [Imitation Learning](../methods/imitation-learning.md)
+- [VLA](../methods/vla.md) — 语义骨干与对照基线族
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 - [Peg-in-Bench](./paper-peg-in-bench.md)
 

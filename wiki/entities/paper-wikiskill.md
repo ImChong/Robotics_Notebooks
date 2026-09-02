@@ -135,7 +135,7 @@ flowchart TD
 **WikiSkill 的核心增益来自「持久 wiki 编译经验」，而不只是更聪明地 patch SKILL.md；技能进化与模型规模互补，且演化 skill 可跨模型迁移。**
 
 1. **持久 wiki 是主因** — 去掉 Maintainer/累积后 Gemini 平均降 **15 pt**；patterns + `skill-impact.md` 支撑跨轮 refine。
-2. **相对 SOTA skill 进化更稳** — 五模型平均均为 WikiSkill 最高，优于 EvoSkill / SkillOpt / Trace2Skill 的「偏科」。
+2. **相对既有 skill 进化方法更稳** — 五模型平均均为 WikiSkill 最高，优于 EvoSkill / SkillOpt / Trace2Skill 的「偏科」。
 3. **规模互补** — 更强模型从演化 skill 获益更多；9B+skill 可超过 27B 无 skill。
 4. **迁移非平凡** — 泛化 procedure 可跨族增益；模型特定 workaround 会负迁移（SpreadSheet × Gemini）。
 5. **训练期别让执行端读 wiki** — 否则轨迹信号污染 skill 开发。

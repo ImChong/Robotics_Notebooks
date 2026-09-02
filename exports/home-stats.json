@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-02",
   "node_count": 3419,
-  "edge_count": 30801,
+  "edge_count": 30817,
   "coverage": {
     "covered": 3394,
     "total": 3394,
@@ -186,8 +186,7 @@
       "recency": "2026-09-02",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-facet-0.md",
@@ -235,15 +234,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 606
+      "size": 602
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 493
+      "size": 491
     },
     {
       "label": "视觉-语言-动作",
-      "size": 256
+      "size": 261
     },
     {
       "label": "机器人学习论文笔记",
@@ -251,7 +250,7 @@
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 172
+      "size": 173
     },
     {
       "label": "仿真到现实",
@@ -286,7 +285,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 864,
+      "degree": 865,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

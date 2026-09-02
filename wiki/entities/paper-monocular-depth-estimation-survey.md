@@ -14,6 +14,8 @@ code: https://github.com/CVMI-Lab/Depth_Survey
 related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../queries/robot-perception-stack-selection-loop.md
+  - ./paper-adm-ba.md
   - ../overview/contact-rich-manipulation-7-papers-technology-map.md
 sources:
   - ../../sources/papers/monocular_depth_survey_arxiv_2609_01172.md
@@ -103,10 +105,26 @@ sequenceDiagram
 - **机器人域：** 室内/室外摄影数据集与工业/操作场景存在域差。
 - **metric 部署：** 相对深度模型直接用于抓取/碰撞检测需额外标定。
 
+## 与其他工作对比（索引级）
+
+| 维度 | 本综述覆盖的判别式 FM | 本综述覆盖的生成式（扩散）FM | RGB-D / 主动深度传感 |
+|------|---------------------|--------------------------|--------------------|
+| 输出 | 直接回归深度（相对或 metric） | 采样生成深度，可给多假设 | 硬件直接测距 |
+| 速度 | 单次前向，利于机载 | 多步采样，通常更慢 | 传感器帧率 |
+| 不确定性 | 需额外头/集成 | **采样方差天然可读** | 由材质/距离决定 |
+| 尺度 | 相对深度需标定才 metric | 同上 | **天然 metric** |
+| 典型软肋 | 域偏移下尺度漂移 | 时序一致性与延迟 | 反光/透明/远距失效 |
+
+- **与 [ADM-BA](./paper-adm-ba.md) 的分工**：本综述回答「单帧深度从哪来、怎么选」，ADM-BA 回答「多视角深度怎么联合优化成一张可规划的图」；反光金属这类单目 FM 与主动深度都吃力的场景，正是 ADM-BA 用多假设分层网格接手的地方。
+- **不要跨口径横比**：相对深度与 metric depth 目标不同（本页「结论」已列），综述内的排名不能直接搬到抓取/碰撞检测的验收指标上。
+- 选型分层见 [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)。
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
 - [VLA](../methods/vla.md)
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本综述是①传感与标定层「不上 RGB-D 时深度从哪来」的选型底稿
+- [ADM-BA](./paper-adm-ba.md) — 下游：多视角深度的联合优化与融合
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 
 ## 推荐继续阅读

@@ -14,6 +14,7 @@ code: https://github.com/YiranZhou-Robotics/ADM-BA
 related:
   - ../tasks/manipulation.md
   - ./paper-monocular-depth-estimation-survey.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/contact-rich-manipulation-7-papers-technology-map.md
 sources:
   - ../../sources/papers/adm_ba_arxiv_2609_01089.md
@@ -103,10 +104,25 @@ sequenceDiagram
 - **深度质量：** 依赖多视角深度传感器精度，极端反光仍可能污染假设层。
 - **实时性：** BA 迭代成本需与在线规划周期对齐。
 
+## 与其他工作对比（索引级）
+
+| 维度 | ADM-BA | ICP 族（点对点/点对面） | 特征对应 + RANSAC 管线 |
+|------|--------|----------------------|----------------------|
+| 数据关联 | **不建显式对应**，深度观测直接投影为约束 | 迭代最近点隐式对应 | 显式特征匹配 + 外点剔除 |
+| 光滑金属表面 | 分层深度图容纳多假设，规避误匹配 | 易陷局部极小 | **最易失败**（重复结构、弱纹理） |
+| 优化对象 | **位姿 + 全局 2.5-D 深度图联合 BA** | 仅位姿（地图为参照点云） | 位姿，地图后融合 |
+| 冲突深度 | softmax 层分配 | 无显式机制 | 靠外点剔除 |
+| 论文自评 | 竞争性精度 + 更低计算成本 | 本文对比基线族 | 本文的失败动机 |
+
+- **与 [单目深度综述](./paper-monocular-depth-estimation-survey.md) 的分工**：综述解决「深度从哪来」，ADM-BA 解决「多视角深度怎么对齐成一张可规划的图」——前者是感知栈②→③层，后者是③层内部的融合优化。
+- **不是通用 SLAM 替代**：本文验证域是废钢工位的静态多视角扫描，与在线里程计/回环的评价口径不同，数字不可横比。
+- 在感知栈中的位置见 [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)。
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
 - [单目深度综述](./paper-monocular-depth-estimation-survey.md)
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ADM-BA 落在「2D→3D 提升与几何融合」这一层，输出直接喂切割/避碰规划
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 
 ## 推荐继续阅读

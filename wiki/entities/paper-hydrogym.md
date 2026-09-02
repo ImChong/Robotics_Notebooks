@@ -23,6 +23,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
   - ./gymnasium.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../comparisons/motor-em-simulation-software.md
 sources:
   - ../../sources/papers/hydrogym_nature_s41586_026_10917_6.md
@@ -60,7 +61,7 @@ summary: "Nature 2026：solver-independent 的 Gymnasium 主动流控 RL 平台 
 - **可微 + 多智能体：** **JAX/JAX-Fluids** 支撑 **GPPO**（Kolmogorov 流训练迭代 **≥65%** 减少）；**PettingZoo** 接口覆盖 **3D 圆柱 spanwise 射流** 等高维作动。
 - **零样本工业叙事：** 仅在 **\(Re_\tau=206\)** 通道训练 **TD3 多智能体**，零样本部署 **\(Re_c=200{,}000\)** 三维 NACA0012，局部 **\(c_f\)** 降 **~38%**、总阻力降 **~11%**，探索代价较直接翼型优化降 **>10⁴** — 为「在简单环境学物理、在复杂几何用控制」提供 Nature 级证据。
 
-## 核心结构
+## 方法栈：平台核心结构
 
 | 模块 | 作用 |
 |------|------|
@@ -71,7 +72,7 @@ summary: "Nature 2026：solver-independent 的 Gymnasium 主动流控 RL 平台 
 | **训练生态** | Stable-Baselines3、RLlib；`VecNormalize`；HF Hub **checkpoint** 按需下载 |
 | **HPC** | MPI 并行求解器 + 分布式 RL；Docker（CUDA Hopper/Blackwell、Turing/Ampere、ROCm） |
 
-### 流程总览（平台数据流）
+## 流程总览（平台数据流）
 
 ```mermaid
 flowchart LR
@@ -99,7 +100,7 @@ flowchart LR
   hf["HF Hub checkpoints"] -. 网格 / 初场 .-> cfd
 ```
 
-### 源码运行时序图
+## 源码运行时序图
 
 ```mermaid
 sequenceDiagram
@@ -182,6 +183,7 @@ sequenceDiagram
 - [Gymnasium（RL 环境 API）](./gymnasium.md) — `FlowEnv` 对齐的接口契约
 - [Sim2Real](../concepts/sim2real.md) — 代理环境训练→目标几何部署的迁移叙事
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md) — 另一维度的 **CFD/热** 工程仿真（非 RL 流控，但共享 CFD 缩写语境）
+- [Query：具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — HydroGym 与该闭环里的具身基准 **正交**：物理域是 Navier-Stokes 而非接触刚体，减阻百分比不可与 VLA 任务成功率横比；可借鉴的是「共享环境 + 固定基线」这套基准文化
 
 ## 参考来源
 

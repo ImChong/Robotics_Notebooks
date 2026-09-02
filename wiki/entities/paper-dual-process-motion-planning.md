@@ -108,10 +108,26 @@ sequenceDiagram
 - **S1 数据：** 神经策略质量依赖成功轨迹覆盖，冷启动仍需 S2。
 - **实时性：** 元认知切换与 S2 求解延迟需在真机控制周期内标定。
 
+## 与其他工作对比（索引级）
+
+| 维度 | Dual-MP（本文） | 纯 System-1（学习式规划器） | 纯 System-2（[MPC](../methods/model-predictive-control.md) / [CBF](../concepts/control-barrier-function.md)） | 固定级联（学习热启动 + 求解器） |
+|------|----------------|--------------------------|------------------------------------|---------------------------|
+| 谁决定用哪条路径 | **元认知控制器在线仲裁** | 无（始终快路径） | 无（始终慢路径） | 编译期写死的固定顺序 |
+| 常见情形延迟 | 走 S1，接近学习式 | 最低 | 最高（每步求解） | 求解器仍每步跑 |
+| 难例安全性 | 回落 S2，保留约束满足 | **无保证** | 最强 | 强，但代价恒定 |
+| 冷启动 | 数据不足时自然多走 S2 | 差 | 不受影响 | 不受影响 |
+| 主要新增风险 | **仲裁阈值本身要标定** | 分布外失效 | 实时性 | 无自适应 |
+
+- **不是替换式选型**：本文主张的是调度问题被显式建模，而不是「学习规划器优于经典规划器」——把它读成 S1 打败 S2 会错过全部要点。
+- **与固定级联的差别在自适应**：热启动式混合栈的求解器开销是恒定的；Dual-MP 的收益恰恰来自在容易的状态上**跳过** S2，因此其效率增益强依赖 benchmark 中简单/困难状态的混合比例，换分布需重测。
+- **外推边界**：验证域为非线性规划 benchmark，高维全身人形规划的实时仲裁未在本文覆盖（见「局限与风险」）。
+
 ## 关联页面
 
 - [Trajectory Optimization](../methods/trajectory-optimization.md)
 - [Locomotion](../tasks/locomotion.md)
+- [Model Predictive Control](../methods/model-predictive-control.md) — System-2 的主力求解器
+- [Control Barrier Function](../concepts/control-barrier-function.md) — System-2 的安全约束来源
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 
 ## 推荐继续阅读

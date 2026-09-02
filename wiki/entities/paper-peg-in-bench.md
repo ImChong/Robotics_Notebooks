@@ -13,6 +13,7 @@ arxiv: "2609.00906"
 related:
   - ../tasks/manipulation.md
   - ./paper-facet-0.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/contact-rich-manipulation-7-papers-technology-map.md
 sources:
   - ../../sources/papers/peg_in_bench_arxiv_2609_00906.md
@@ -90,10 +91,25 @@ flowchart TB
 - **打印精度：** 3D 打印公差会引入额外变量，需记录材料与工艺。
 - **与仿真差距：** 物理基准结果向仿真迁移需单独建模接触与公差。
 
+## 与其他工作对比（索引级）
+
+| 维度 | Peg-in-Bench | 固定配置 PiH 台架（含 NIST Assembly Task Board） | 仿真侧操作基准 |
+|------|--------------|---------------------------------------------|----------------|
+| 载体 | **物理**，全 3D 打印模块 | 物理，固定板/固定孔位 | 纯仿真 |
+| 可重构性 | **peg 几何 × 公差等级 × 底座组合** | 基本不可重构，换任务=换板 | 改配置即可，但接触物理是模型 |
+| 评的是什么 | **跨布局/几何/组合的泛化** | 单实例成功率与循环时间 | 策略在给定接触模型下的成功率 |
+| 复现成本 | 打印耗材级（工具发布后） | 采购/加工整板 | 算力 |
+| 主要噪声源 | **打印公差、材料与工艺** | 装夹与标定 | 接触建模与 sim2real gap |
+
+- **与 [Facet-0](./paper-facet-0.md) 是「硬件—算法」互补**：Facet-0 给精密装配的策略侧方案，Peg-in-Bench 给可重构的评测底座；两者数字不构成横比。
+- **不要与仿真成功率横比**：本页 tags 含 `benchmark`，但物理台架的公差、打印工艺与装夹条件是结果的一部分，跨基准比较须先对齐这些条件，见 [Query：具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
+- **可比性前提未满足**：截至 2026-09-02 官方 STL 与场景生成工具不可下载，任何第三方复现结果暂时都无法声称与论文同配置。
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
 - [Facet-0](./paper-facet-0.md)
+- [Query：具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 物理插入台架落在「真机、任务级泛化」一格，与仿真 VLA 榜单分开读
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 
 ## 推荐继续阅读

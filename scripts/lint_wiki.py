@@ -326,6 +326,8 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                页的 on-policy Runner 抽象，与 qpos / reset 同为代码 token 而非
 #                机制，不单建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
+    "act",  # 已由 methods/action-chunking.md（机制）+ entities/paper-act.md（论文）覆盖，
+    # 缩写 slug 与页面 stem 不同名；与 wbc / rl / wam 同类
     "action",
     "base",  # 基座连杆 / 权重档名 / 消融条件名三义，已由 URDF + 浮动基座等页覆盖
     "amp",
