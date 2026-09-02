@@ -9,6 +9,7 @@ related:
   - ./sapien.md
   - ./paper-notebook-maniskill3-gpu-parallelized-robotics-simulation.md
   - ../methods/imitation-learning.md
+  - ./paper-imitator-game.md
   - ../overview/sim-platforms-decade-technology-map.md
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
@@ -57,6 +58,7 @@ summary: "2023 年基于 SAPIEN 的统一机械臂操作基准：跨类别/几�
 - [SAPIEN](./sapien.md)
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)
 - [模仿学习](../methods/imitation-learning.md)
+- [Imitator Game](./paper-imitator-game.md) — 下游 ManiSkill3 仿真 + IG-10K 人视频模仿基准（MIT）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：统一机械臂操作泛化基准
 
 ## 参考来源

@@ -65,6 +65,7 @@ sources:
   - ../../sources/papers/speedtuning_arxiv_2608_09138.md
   - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
+  - ../../sources/papers/imitator_game_arxiv_2608_22301.md
 summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
 
@@ -235,7 +236,7 @@ flowchart TD
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶桥的非马尔可夫模仿（arXiv:2606.30318）
 - [SpeedTuning](../entities/paper-speedtuning.md) — 冻结模仿基座，只学执行速度倍率（ICRA 2025；仿真仓已开源）
 - [VERAGMIL](../entities/paper-veragmil.md) — VR + Isaac Sim 颗粒喂食仿真；BC/BCQ + VR 示范（IROS 2025；arXiv:2608.18258）
-- [Imitator Game](../entities/paper-imitator-game.md) — L0–L3 意图级模仿基准；L3 功能替代崩溃（arXiv:2608.22301）
+- [Imitator Game](../entities/paper-imitator-game.md) — L0–L3 意图级模仿基准；L3 功能替代崩溃；MIT 仓 + IG-10K 已开源（arXiv:2608.22301）
 - [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略
 - [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架

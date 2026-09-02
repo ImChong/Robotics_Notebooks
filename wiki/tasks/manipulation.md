@@ -4,6 +4,7 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
 updated: 2026-09-02
 related:
+  - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/anthropic-embody.md
@@ -338,6 +339,7 @@ flowchart TD
 - [ScheduleStream（多臂 TAMP 与调度）](../entities/schedulestream.md) — 双臂/多臂 **物体分配 + 并行运动时间表** 的规划层框架（ICRA 2026）
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
 - [AnyGrasp](../entities/anygrasp.md) — 深度点云稠密抓取检测与跟踪的工程/SDK 入口
+- [Imitator Game](../entities/paper-imitator-game.md) — 人视频操作模仿 L0–L3：目标等价而非轨迹相似；IG-10K 已开源
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
 - [S1（Skild）](../entities/skild-s1.md) — 视频 ICL 长程未见操作（闭源产业样本）
 - [机器人 In-Context Learning](../concepts/robot-in-context-learning.md) — 示范进上下文 vs 后训练克隆

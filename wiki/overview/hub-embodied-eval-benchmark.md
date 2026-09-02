@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-02
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim-vs-real-eval-gap.md
@@ -36,6 +36,8 @@ sources:
   - ../../sources/papers/mmhu_arxiv_2507_12463.md
   - ../../sources/sites/dexbench-org.md
   - ../../sources/papers/imitator_game_arxiv_2608_22301.md
+  - ../../sources/repos/the-imitator-game.md
+  - ../../sources/datasets/ig-10k.md
   - ../../sources/papers/bet4sim2real_arxiv_2608_21572.md
 summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
 ---
