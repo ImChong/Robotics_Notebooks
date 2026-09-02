@@ -24,7 +24,7 @@
 | 02 | Indi（Intention Distillation） | [2608.23478](https://arxiv.org/abs/2608.23478) | **未开源** 仅项目页（复用既有节点） | [paper-indi](../../wiki/entities/paper-indi.md) |
 | 03 | Physical Agentic AI | [2608.22657](https://arxiv.org/abs/2608.22657) | **已开源** MIT；mock / Gazebo / 真机分层 | [paper-physical-agentic-ai](../../wiki/entities/paper-physical-agentic-ai.md) |
 | 04 | M3（Modality Masking） | [2608.22419](https://arxiv.org/abs/2608.22419) | **未开源** 仅项目页 | [paper-m3-modality-masking](../../wiki/entities/paper-m3-modality-masking.md) |
-| 05 | The Imitator Game | [2608.22301](https://arxiv.org/abs/2608.22301) | **部分开源** 项目页 + Arena；训练仓未见 | [paper-imitator-game](../../wiki/entities/paper-imitator-game.md) |
+| 05 | The Imitator Game | [2608.22301](https://arxiv.org/abs/2608.22301) | **已开源** MIT 仓 + HF IG-10K / Assets；真机评测走 Arena（2026-09-02 再核） | [paper-imitator-game](../../wiki/entities/paper-imitator-game.md) |
 | 06 | TONAV | [2608.22296](https://arxiv.org/abs/2608.22296) | **部分开源** 遥操作仓待齐；学习代码 Coming Soon | [paper-tonav](../../wiki/entities/paper-tonav.md) |
 | 07 | DreamMimic | [2608.22278](https://arxiv.org/abs/2608.22278) | **待发布** Code Coming soon（复用既有节点） | [paper-dreammimic](../../wiki/entities/paper-dreammimic.md) |
 | 08 | Meta-Ctrl | [2608.22149](https://arxiv.org/abs/2608.22149) | **未开源** 仅项目页 | [paper-meta-ctrl](../../wiki/entities/paper-meta-ctrl.md) |

@@ -1,3 +1,9 @@
+## [2026-09-02] ingest | sources/papers/imitator_game_arxiv_2608_22301.md — The Imitator Game 再核：MIT 仿真仓 + HF IG-10K/Assets 已开源；深化 L0–L3 / Arena 数字；真机评测仍走申请
+
+- **触发：** 用户指定 arXiv:2608.22301 + 项目页 https://imitator-game.github.io/ ；2026-08-30 已有浅入库
+- **步骤 2.5（再核）：** [imitator-game/The-Imitator-Game](https://github.com/imitator-game/The-Imitator-Game) **MIT**；HF `IG-10K-Dataset` / `IG-10K-Assets`；ModelScope `Zhouxunzhe/*`。真机部署无上传接口。
+- **关键页：** [`paper-imitator-game`](wiki/entities/paper-imitator-game.md)；交叉 IL / VLA / Manipulation / 评测选型闭环
+
 ## [2026-09-02] ingest | sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md — 14 篇独立节点：新建 10（RT-1/RT-2/OpenVLA/π0/Octo/DP/CLIP/ACT/SPOC/DINOv2）+ 复用 4（LaDi-WM/DreamDojo/RISE/PointWorld）；Octo arxiv 迁出方法页；13/14 已开源，RT-2 官方训练未开源
 
 ## [2026-09-02] ingest | sources/blogs/worldlabs_atlas_omni_world_model.md — World Labs Atlas omni 世界模型（相机可控生成、稀疏 3D 重建、Real-to-Sim）；早期访问未开源；新增 wiki/entities/atlas-world-model.md；交叉 world-labs、generative-world-models
