@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - hku
 status: complete
-updated: 2026-07-26
+updated: 2026-09-02
 arxiv: "2604.19734"
 venue: "arXiv 2026"
 code: https://github.com/xpeng-robotics/UniT
@@ -25,6 +25,7 @@ related:
   - ./paper-being-m07-humanoid-latent-wam.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-egowm-egocentric-world-model.md
+  - ./paper-anyworld.md
 sources:
   - ../../sources/papers/unit_xpeng_arxiv_2604_19734.md
   - ../../sources/sites/xpeng-robotics-unit.md
@@ -165,6 +166,7 @@ sequenceDiagram
 | [Being-M0.7](./paper-being-m07-humanoid-latent-wam.md) | 同做人数据先验；M0.7 偏 latent WAM 计划，UniT 偏 **分词介质** |
 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | MotionWAM 联合视频–动作 DiT；UniT 先统一动作语言再接下游 |
 | [EgoWM](./paper-egowm-egocentric-world-model.md) | EgoWM 预测像素未来；UniT 可为其提供跨本体动作条件 |
+| [AnyWorld](./paper-anyworld.md) | AnyWorld 以 UniT 为 VLA 基线，用因子化 WM rollout 做目标具身适配数据引擎 |
 
 ## 关联页面
 

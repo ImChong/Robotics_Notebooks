@@ -16,7 +16,7 @@ tags:
   - isaac-sim
   - amazon-far
 status: complete
-updated: 2026-07-24
+updated: 2026-09-02
 arxiv: "2606.05873"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -175,6 +175,7 @@ flowchart TB
 - [Privileged Training](../concepts/privileged-training.md) — 专家 → 学生蒸馏范式
 - [DAgger](../methods/dagger.md) — Stage 2 蒸馏算法
 - [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) — 同系 Amazon FAR 多向深度行走
+- [Agile Perceptive Traversal](./paper-agile-perceptive-traversal-sparse-3d.md) — ETH 猴架荡杆：原始 LiDAR + 钩具，与梯子攀爬形成稀疏结构对照（arXiv:2608.29769）
 - [Unitree G1](./unitree-g1.md) — 实验平台
 
 ## 参考来源

@@ -2,7 +2,7 @@
 
 ## [2026-09-02] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **17** 条信息型预警）：
+共发现 **0** 个问题（另含 **18** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -116,9 +116,9 @@
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（5 个）
 - wiki/entities/paper-abot-n1.md（含绝对化措辞「SOTA」，updated=2026-08-31；同主题更新页 wiki/entities/paper-aero-hand-open.md updated=2026-09-01）
-- wiki/entities/paper-lightnav-0.md（含绝对化措辞「SOTA」，updated=2026-09-01；同主题更新页 wiki/entities/paper-hydrogym.md updated=2026-09-02）
+- wiki/entities/paper-lightnav-0.md（含绝对化措辞「SOTA」，updated=2026-09-01；同主题更新页 wiki/entities/paper-anyworld.md updated=2026-09-02）
 - wiki/entities/paper-milo.md（含绝对化措辞「SOTA」，updated=2026-08-31；同主题更新页 wiki/entities/paper-aero-hand-open.md updated=2026-09-01）
-- wiki/entities/paper-motus2.md（含绝对化措辞「SOTA」，updated=2026-09-01；同主题更新页 wiki/entities/paper-hydrogym.md updated=2026-09-02）
+- wiki/entities/paper-motus2.md（含绝对化措辞「SOTA」，updated=2026-09-01；同主题更新页 wiki/entities/paper-anyworld.md updated=2026-09-02）
 - wiki/entities/paper-wikiskill.md（含绝对化措辞「SOTA」，updated=2026-08-31；同主题更新页 wiki/entities/paper-aero-hand-open.md updated=2026-09-01）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
@@ -136,7 +136,8 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-blind-dexterity.md
 - wiki/entities/paper-optigeo.md
 
-📊 Sources 覆盖率：3368/3368 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3372/3372 (100%) wiki/entity 页有 ingest 来源

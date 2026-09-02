@@ -2,7 +2,7 @@
 type: entity
 tags: [robot, quadruped, hardware, platform, eth]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-02
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
