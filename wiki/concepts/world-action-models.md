@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-02
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -50,6 +50,7 @@ related:
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-world-action-planner.md
+  - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-worldscape-policy-2.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -86,6 +87,7 @@ sources:
   - ../../sources/papers/x_foresight_arxiv_2605_24892.md
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
+  - ../../sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md
   - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
   - ../../sources/papers/wall_ss_x_square_2026.md
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
@@ -152,6 +154,8 @@ sources:
 - **主要张力**：两阶段 **信息瓶颈与对齐**——未来计划是否保留 **动作可恢复** 的足够信息。
 
 **文献实例（Cascaded + 显式解耦预训练）**：[DeFI](../methods/defi-decoupled-dynamics-vla.md) 将 **GFDM（视频生成式前向动力学）** 与 **GIDM（自监督逆动力学潜动作）** 在 **不同数据源与目标** 上独立预训练，再在下游用扩散适配器耦合；论文强调弱化逆向模块（如 VPP）会成为整条链路的瓶颈（arXiv:2604.16391）。
+
+**文献实例（Cascaded + 驾驶测试时自适应想象）**：[RISE（酷哇）](../entities/paper-rise-adaptive-imagination-wam.md) 在 Encoder–Predictor–Planner 上插 **Roll/Stop Scheduler**：用 Future Planning Gain 对代价逐步决定是否再滚 latent，而不是全局固定 \(H\)；NAVSIM v1 PDMS **91.5** / v2 EPDMS **90.8**，平均 2.40 步。配套 CounterDrive 反事实集。**不是** OpenDriveLab 同名操作 RISE（arXiv:2602.11075）。
 
 ### Joint WAM
 
@@ -266,6 +270,7 @@ flowchart TB
 
 - [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)
 - [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)
+- [sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md](../../sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md) — 驾驶 WAM 自适应 Roll/Stop（酷哇 RISE；非 OpenDriveLab）
 - [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md)
 - [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md)
 - [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md)
@@ -326,6 +331,7 @@ flowchart TB
 - [JoyAI-RA 0.5（双动作对齐 VLWA）](../entities/paper-joyai-ra-05.md) — LAC-WM + 130-D 显式对齐；人视频缩放未见饱和（未开源）
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [World Action Planner（VLM + pose-image WM 规划）](../entities/paper-world-action-planner.md)
+- [RISE（酷哇 · 驾驶 WAM 自适应想象）](../entities/paper-rise-adaptive-imagination-wam.md) — 测试时 Roll/Stop；勿与 OpenDriveLab 同名 RISE 混淆
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
 - [HiFi-UMI](../entities/paper-hifi-umi.md) — UMI-only 后训练覆盖 VLA/WAM（LingBot-VA）骨干；2000 h 公开数据
 - [INTACT](../entities/paper-intact.md) — 意图→动作无搜索 JEPA（相对 CEM 搜索的延迟对照）

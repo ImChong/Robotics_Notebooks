@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-models, predictive-world-model, autonomous-driving, causal-forecasting, xpeng]
 status: complete
-updated: 2026-07-23
+updated: 2026-09-02
 arxiv: "2605.24892"
 related:
   - ../methods/vla.md
@@ -13,6 +13,7 @@ related:
   - ./paper-x-mind.md
   - ./paper-x-cache.md
   - ./paper-turingvit.md
+  - ./paper-rise-adaptive-imagination-wam.md
 sources:
   - ../../sources/papers/x_foresight_arxiv_2605_24892.md
   - ../../sources/sites/x-foresight-1-github-io.md
@@ -138,6 +139,7 @@ flowchart LR
 - [X-Mind](./paper-x-mind.md) — 同数据协议的高效 Visual CoT 变体
 - [X-Cache](./paper-x-cache.md) — 世界模型推理加速（仿真侧）
 - [TuringViT](./paper-turingvit.md) — 同机构视觉编码器
+- [RISE（酷哇 · 驾驶自适应想象）](./paper-rise-adaptive-imagination-wam.md) — NAVSIM 上的测试时 Roll/Stop，对照本页 Joint 固定 foresight
 
 ## 参考来源
 

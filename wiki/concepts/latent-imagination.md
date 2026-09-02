@@ -2,7 +2,7 @@
 type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-02
 related:
   - ../entities/paper-odeworld.md
   - ./rl-runner.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-online-mbrl-robot-control.md
   - ../entities/paper-lucid.md
   - ../entities/paper-lawa.md
+  - ../entities/paper-rise-adaptive-imagination-wam.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/rl_foundation_models.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
   - ../../sources/papers/odeworld_arxiv_2607_27924.md
+  - ../../sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md
 summary: "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技术，通过在紧凑的隐变量空间中预测未来状态，使智能体能够在无需真实环境交互的情况下进行无限次自我博弈与策略优化。"
 ---
 
@@ -73,6 +75,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - **Being-H0.7**：面向语言–视觉–操作策略的 **latent world–action** 路线——用 egocentric 人视频与机演示，在训练期用未来观测分支对齐潜空间，部署时不依赖像素 rollout；见 [Being-H0.7](../methods/being-h07.md)。
 - **LUCID**：在 **技能级宏状态**（非像素 RSSM）上想象；冻结结构化 latent LLC，用 macro-dynamics WM 训 HLC 做长时程重排；见 [LUCID](../entities/paper-lucid.md)。
 - **ODEWorld**：把离散 RSSM 步换成 **物理时间 ODE**——在解耦后的单 token 动力学 latent 上积分 \(v_\theta\)，任意 \(\tau\) / 反向预测，再把 \(z_\tau\) 当策略子目标；见 [ODEWorld](../entities/paper-odeworld.md)。不是 Dreamer 式「梦中 actor-critic」，而是连续时间潜空间展开。
+- **RISE（酷哇，驾驶 WAM）**：测试时在 V-JEPA latent 前缀上逐步 Roll/Stop，用规划增益对代价，而不是固定 horizon 或 Dreamer 式梦中 actor-critic；见 [RISE 自适应想象](../entities/paper-rise-adaptive-imagination-wam.md)。勿与 OpenDriveLab 同名操作 RISE 混淆。
 
 ## 关联页面
 - [Model-Based RL](../methods/model-based-rl.md)
@@ -84,6 +87,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [Open Dreamer](../entities/open-dreamer.md)
 - [LUCID](../entities/paper-lucid.md) — 人形技能级宏动力学想象
 - [ODEWorld](../entities/paper-odeworld.md) — 物理时间 latent ODE 展开 + 子目标引导
+- [RISE（酷哇 · 驾驶 WAM 自适应想象）](../entities/paper-rise-adaptive-imagination-wam.md) — 测试时 Roll/Stop，非梦中 RL
 - [虚拟沙盒路线](../overview/world-models-route-03-virtual-sandbox.md)
 - [变分目标函数 (ELBO)](../formalizations/variational-objective.md)
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 潜空间想象属五层闭环的世界模型推演层
@@ -95,5 +99,6 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - Hafner, D., Yan, W., & Lillicrap, T. (2025). *Training Agents Inside of Scalable World Models (Dreamer 4)* — <https://arxiv.org/abs/2509.24527>；开源复现归档 [sources/repos/open-dreamer.md](../../sources/repos/open-dreamer.md)。
 - Luo, H., et al. (2026). *Being-H0.7: A Latent World-Action Model from Egocentric Videos* — 项目页 <https://research.beingbeyond.com/being-h07>；归档见 [sources/papers/being_h07.md](../../sources/papers/being_h07.md)。
 - [Online MBRL 论文归档（真机一阶对照）](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
+- [RISE 自适应想象（驾驶 WAM Roll/Stop）](../../sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md)
 - [lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID 技能级想象控制
 - [odeworld_arxiv_2607_27924.md](../../sources/papers/odeworld_arxiv_2607_27924.md) — PT-Flow 连续时间潜空间预测

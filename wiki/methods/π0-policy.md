@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-02
 related:
   - ../entities/paper-pi0.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md

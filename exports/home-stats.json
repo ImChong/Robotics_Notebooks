@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-02",
-  "node_count": 3417,
-  "edge_count": 30763,
+  "node_count": 3418,
+  "edge_count": 30780,
   "coverage": {
-    "covered": 3392,
-    "total": 3392,
+    "covered": 3393,
+    "total": 3393,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-rise-adaptive-imagination-wam.md",
+      "detail_id": "entity-paper-rise-adaptive-imagination-wam",
+      "label": "RISE：驾驶 WAM 的自适应想象调度",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-spoc.md",
       "detail_id": "entity-paper-spoc",
@@ -212,33 +223,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-peg-in-bench.md",
-      "detail_id": "entity-paper-peg-in-bench",
-      "label": "Peg-in-Bench：高精度插入模块化基准",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-spoc.md",
-    "detail_id": "entity-paper-spoc",
-    "label": "SPOC：模仿仿真最短路径，换真机导航与操作",
+    "path": "wiki/entities/paper-rise-adaptive-imagination-wam.md",
+    "detail_id": "entity-paper-rise-adaptive-imagination-wam",
+    "label": "RISE：驾驶 WAM 的自适应想象调度",
     "type": "entity",
     "recency": "2026-09-02",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 606
+      "size": 607
     },
     {
       "label": "宇树 G1 人形机器人",
@@ -297,7 +298,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 793,
+      "degree": 795,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -305,7 +306,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 573,
+      "degree": 574,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-02
 arxiv: "2603.24581"
 venue: "arXiv 2026"
 summary: "Latent world action modeling for trajectory planning via spatial-aware and dynamic-aware latent representations."
@@ -13,6 +13,7 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../entities/paper-rise-adaptive-imagination-wam.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2603_24581_latent-wam-latent-world-action-modeling.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
@@ -89,6 +90,7 @@ Latent world action modeling for trajectory planning via spatial-aware and dynam
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 深度对照：[RISE（酷哇 · 驾驶自适应想象）](./paper-rise-adaptive-imagination-wam.md) — NAVSIM v2 表中的后继工作，把本页这类固定想象改成逐步停
 
 ## 参考来源
 
