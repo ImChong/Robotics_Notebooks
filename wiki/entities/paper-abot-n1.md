@@ -53,7 +53,7 @@ summary: "ABot-N1（arXiv:2607.10383，高德 AMAP CV Lab）：慢–快 VLN 基
 
 - **架构读点清晰：** 相对 [ABot-N0](https://amap-cvlab.github.io/ABot-Navigation/ABot-N0/) 等 **单体 Brain–Action VLA**，N1 把 **推理频率** 与 **控制频率** 拆开，并用 **人类可读的 CoT + 像素锚点** 作瓶颈，便于区分「语义错了」还是「空间指错了」。
 - **城市级基准缺口：** 开源 **ABotN-PointBench**（31 真实 3DGS 场景、465 轨迹）与 **ABotN-POIBench**（163 POI）填补 **闭环、社会规则可通行** 的 Point/POI 评测空白；附带 **Short-Horizon OVON** 隔离物体「识别–接近」阶段。
-- **五任务单 checkpoint SOTA 叙事：** 报告在 Point / POI / Object / VLN-CE R2R·RxR / Person-Following 七套基准上领先专精与多任务基线，**POI 到达 +35.0 pp（至 77.3%）** 与 **室内外 Point-Goal 95.4% / 92.9% SR** 是城市部署的主证据。
+- **五任务单 checkpoint 领先叙事（2026-08 技术报告口径）：** 报告在 Point / POI / Object / VLN-CE R2R·RxR / Person-Following 七套基准上领先当时的专精与多任务基线，**POI 到达 +35.0 pp（至 77.3%）** 与 **室内外 Point-Goal 95.4% / 92.9% SR** 是城市部署的主证据。
 - **与通才 VLA 的对照轴：** 同 Qwen 系骨干族可与 [Qwen-VLA](./qwen-vla.md) 对照；N1 更强调 **导航专用慢–快接口** 而非操作–导航大一统 checkpoint。
 
 ## 核心信息
@@ -141,7 +141,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **权重未发布：** 截至 2026-08-31 无法本地复现报告 SOTA 数字，仅能跑基准与自研 agent 对照。
+- **权重未发布：** 截至 2026-08-31 无法本地复现报告中的成绩数字，仅能跑基准与自研 agent 对照。
 - **慢–快异步：** 缓存像素目标在极端动态场景可能滞后；论文以噪声注入缓解，真机仍须验安全边界。
 - **与 ABot-N0 关系：** N1 为架构演进（像素接口 + GRPO），非简单 scale；跨代数字需看任务分项而非单 SR。
 - **评测栈复杂度：** 3DGS 渲染 + 双 conda 环境，CI 集成成本高于纯 Habitat 离散动作基准。

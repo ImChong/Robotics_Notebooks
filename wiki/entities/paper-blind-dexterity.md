@@ -13,6 +13,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../methods/dagger.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/blind_dexterity_arxiv_2608_29487.md
   - ../../sources/sites/blind-dexterity-bhatts-org.md
@@ -164,6 +165,7 @@ flowchart LR
 - [Current as Touch](./paper-current-as-touch-proprioceptive-contact.md) — 另一路「本体即触觉」
 - [DAgger](../methods/dagger.md) — 本文蒸馏失败的对照
 - [Sim2Real](../concepts/sim2real.md) — 域随机化迁移
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本文是该闭环的**下界对照**：整条视觉栈置零、只留本体交互式感知时策略还能做到什么，可用来判断某任务是否真的需要①～③层
 
 ## 参考来源
 

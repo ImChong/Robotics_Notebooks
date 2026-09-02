@@ -9,6 +9,7 @@ related:
   - ./system-identification.md
   - ./humanoid-knee-harmonic-drive-limits.md
   - ./robot-link-and-rotor-inertia.md
+  - ../queries/contact-wrench-closed-loop.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../queries/humanoid-hardware-selection.md
   - ../overview/humanoid-hardware-101-chassis-materials.md
@@ -165,6 +166,7 @@ $$\text{MAC}=\frac{|\phi_a^T\phi_b|^2}{(\phi_a^T\phi_a)(\phi_b^T\phi_b)}$$
 - [系统辨识](./system-identification.md) — 试验数据修正仿真模型
 - [膝/腿主承力链为何通常避开谐波](./humanoid-knee-harmonic-drive-limits.md) — 关节侧柔性来源
 - [连杆与转子惯量](./robot-link-and-rotor-inertia.md) — 质量分布与反射惯量
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 低阶模态是③控制层力控带宽的机械上界，调不上去先查结构而非增益
 - [Query：腿式/人形 RL 的 PD 增益怎么设](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [Query：人形硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Hardware 101 · 机身与材料](../overview/humanoid-hardware-101-chassis-materials.md)
