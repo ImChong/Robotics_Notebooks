@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-08-26
+updated: 2026-09-02
 sources:
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
@@ -25,6 +25,7 @@ sources:
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/sites/xyzcorp-deux.md
+  - ../../sources/sites/x2robot-twindex.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/repos/robot-io-rio.md
   - ../../sources/repos/xpad.md
@@ -118,6 +119,7 @@ sources:
 | HandUMI（RoboNet 2026） | PiPER / OpenArm / TRLC-DK1 / YAM 等平行夹爪双臂 | HandUMI 手持接口（~$110 tip 可换）+ PICO / Quest | 无机器人采集 | **一次采集、多臂重定向**；Feetech 直测开合；LeRobot v3 + `handumi validate` QA；见 [实体](../entities/handumi.md) |
 | **HiFi-UMI（Simple AI 2026）** | 真机双臂（评测部署） | 头戴 stereo-inertial SLAM + 双手广角（六视角，~3 mm / <40 µs） | **HiFi-UMI-2K 2000 h** 已开源 | **zero-robot 后训练**匹配同域 teleop；数据 CC BY 4.0；采数代码未列；见 [论文实体](../entities/paper-hifi-umi.md) |
 | **DEUX / Glove X（XYZ 2026）** | DEUX 半人形双臂服务机器人 | **Glove X**（7 关节 + 3 指尖压 + 双相机；板载 &lt;50 ms） | 真店 proprietary | 手套–三指手 **1:1 接触点**，宣称 **zero-shot retarget、免后处理**；**未开源**；见 [实体](../entities/xyz-deux.md) |
+| **TwinDEX（自变量 2026-09）** | 同构三指末端（7 主动 + 2 被动） | **可穿戴三指外骨骼**（多视 RGB + 6D 腕 + 关节 + 指尖触觉） | 无机器人采集；宣称 **5.3×** 真机遥操作吞吐 | 采数/部署 **运动学·接触·外观·时序 1:1**，关节直映、无软件 retarget；纯 robot-free 训策略；**未开源**；见 [实体](../entities/twindex.md) |
 | mimic U1 / umimic（mimic 2026） | mimic hand M1 | 固定运动学被动外骨骼 | 中层规模化 | 与 M1 **运动学/触觉/腕相机 1:1**；无 retargeting；见 [实体](../entities/mimic-wearable-u1.md) |
 | UME-EXO（Ant / Stanford 2026） | OpenArm 双臂移动平台等 | 上肢外骨骼 + IMU | 26–157 条/任务 | 实时触觉力矩反馈 + 全身臂形/力矩记录 + 子链重定向；ACT 学主动柔顺；见 [论文实体](../entities/paper-ume-exo.md) |
 | BifrostUMI（BAAI Aether 2026） | Unitree G1 | Pico 追踪 + 双腕鱼眼夹爪 | 无机器人采集 | UMI 式示范 + 扩散高层 + SKR → 人形全身 WBC；见 [论文实体](../entities/paper-bifrost-umi.md) |
@@ -200,6 +202,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - **ingest 档案：** [sources/blogs/wechat_urkl_faq_01.md](../../sources/blogs/wechat_urkl_faq_01.md) — 众擎 URKL 官方 FAQ（开源承诺 / 商业化）
 - **ingest 档案：** [sources/sites/rek-com.md](../../sources/sites/rek-com.md) — REK：VR 驱动 G1 全接触格斗联赛与租赁
 - **ingest 档案：** [sources/sites/hiw-500-dataset.md](../../sources/sites/hiw-500-dataset.md) — HIW-500：东南亚 12 家庭 G1 全身遥操作 **500+ h / 23K+ 集** 开源数据集
+- **ingest 档案：** [sources/sites/x2robot-twindex.md](../../sources/sites/x2robot-twindex.md) — TwinDEX：三指外骨骼–同构手共设计无本体采数（2026-09-02；未开源）
 - **ingest 档案：** [sources/blogs/mimicrobotics_m1_u1_full_stack.md](../../sources/blogs/mimicrobotics_m1_u1_full_stack.md) — mimic U1 固定运动学外骨骼 + M1 全栈灵巧平台（2026-07）
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / BifrostUMI / AnyTeleop
 - **ingest 档案：** [sources/papers/xrobotoolkit_arxiv_2508_00097.md](../../sources/papers/xrobotoolkit_arxiv_2508_00097.md)、[sources/sites/xr-robotics-github-io.md](../../sources/sites/xr-robotics-github-io.md)、[sources/repos/xrobotoolkit.md](../../sources/repos/xrobotoolkit.md) — XRoboToolkit：OpenXR 跨平台 XR 遥操作套件（arXiv:2508.00097，SII 2026 Best Paper）
@@ -251,6 +254,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [HiFi-UMI / HiFi-UMI-2K（论文实体）](../entities/paper-hifi-umi.md) — 高保真 UMI 2000 h；zero-robot 后训练（arXiv:2607.25895）
 - [Ego-OSCAR / Stereo-550（论文实体）](../entities/paper-ego-oscar.md) — 观测-only 开源硬件立体+IMU 头戴（~USD 200；非 teleop/EE 通道）
 - [DEUX / Glove X（XYZ）](../entities/xyz-deux.md) — 商业手套–三指手 1:1 零样本重定向采数（闭源）
+- [TwinDEX（自变量）](../entities/twindex.md) — 三指外骨骼–机械手共设计；纯 robot-free、无软件 retarget（闭源）
 - [Manipulation](./manipulation.md) — 操作任务整体视角
 - [TWIST2（论文实体）](../entities/paper-twist2.md) — 便携真机全身遥操作 → visuomotor 自主
 - [XRoboToolkit（论文实体）](../entities/paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（PICO/Quest；全栈开源）

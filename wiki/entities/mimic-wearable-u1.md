@@ -2,7 +2,7 @@
 type: entity
 tags: [teleoperation, data-collection, dexterous-hand, wearable, exoskeleton, manipulation, mimic-robotics]
 status: complete
-updated: 2026-07-17
+updated: 2026-09-02
 related:
   - ./mimic-hand-m1.md
   - ../tasks/teleoperation.md
@@ -11,6 +11,7 @@ related:
   - ../queries/dexterous-data-collection-guide.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../concepts/motion-retargeting.md
+  - ./twindex.md
 sources:
   - ../../sources/blogs/mimicrobotics_m1_u1_full_stack.md
   - ../../sources/sites/mimicrobotics.md
@@ -79,7 +80,7 @@ flowchart LR
 - **手寸与人体工学：** 固定几何仅适合 **特定手寸范围**；不适合作为通用公众采集设备。
 - **硬件未开源：** 与 M1 相同，截至 2026-07-17 **无公开 CAD/固件**。
 - **仍非真机接触动力学：** 操作者通过 **自己的手指** 感受接触，机器人端惯性/摩擦/温控仍须顶层真机数据补齐。
-- **与视觉 teleop 对照：** 无遮挡问题，但设备成本与穿戴流程高于 [纯视觉方案](../comparisons/data-gloves-vs-vision-teleop.md)。
+- **与视觉 teleop 对照：** 无遮挡问题，但设备成本与穿戴流程高于 [纯视觉方案](../comparisons/data-gloves-vs-vision-teleop.md)。自变量 [TwinDEX](./twindex.md) 同样用 **外骨骼–目标手 1:1** 省略软件 retarget，但是三指 7 主动、并主张纯 robot-free 即可部署。
 
 ## 关联页面
 
@@ -88,6 +89,7 @@ flowchart LR
 - [Teleoperation](../tasks/teleoperation.md)
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)
+- [TwinDEX](./twindex.md) — 三指外骨骼–同构手共设计（自变量；未开源）
 
 ## 推荐继续阅读
 

@@ -37,6 +37,7 @@ related:
   - ../entities/paper-topreward.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/xyz-deux.md
+  - ../entities/twindex.md
   - ../entities/paper-chronos.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
   - ../entities/paper-seeker.md
@@ -184,7 +185,7 @@ flowchart TD
 
 ## 常见问题
 
-- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构
+- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构；[TwinDEX](../entities/twindex.md) 一类共设计接口则用同构外骨骼 **绕开** 软件 retarget，代价是锁死特定手。
 - **分布偏移**：训练分布和真实部署差异
 - **技能组合**：如何把多个独立技能串成复杂长序列
 
@@ -276,6 +277,7 @@ flowchart TD
 - [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — RL 训练期按配置挖掘快速成功并效率加权回放（arXiv:2606.19752）
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 统一 ACT 管线跨模态触觉真机 IL 评测（arXiv:2605.21976）
 - [DEUX（XYZ）](../entities/xyz-deux.md) — 真店手套采数 → Brain X IL/RL 的闭源服务机器人样本
+- [TwinDEX](../entities/twindex.md) — 三指外骨骼 robot-free 示范 → 同构手策略（闭源；宣称零真机数据）
 - [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 rosbag→LeRobot v3→ACT/VLA 训练部署栈
 - [LET-Base-Dataset](../entities/let-base-dataset.md) — Kuavo 真机操作小时库（CC-BY-NC-SA）
 

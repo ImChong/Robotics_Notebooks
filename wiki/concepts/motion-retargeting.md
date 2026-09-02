@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-08-28
+updated: 2026-09-02
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -90,6 +90,10 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 3.8 离线全身闭式重定向（WARP）
 
 [WARP](../entities/paper-warp-whole-body-retargeting.md)（arXiv:2606.29940，Georgia Tech）面向 **无机器人在环的 Meta Quest 离线人演示 → 全身移动操作 BC**：核心 **c-SEW** 以 **palm 硬约束 + adaptive offset + Stereo-sew/SP3** 在 SEW 表示上闭式求解，避免 MINK 类加权 IK 的 **不精确**（EEF vs 全身 trade-off）与 **不一致**（冗余多解 → action multi-modality）；**lazy mobile-base** 让 6-DoF torso 吸收微调。离线设定无遥操作闭环纠错，重定向轨迹即监督——项目页报告 palm 误差相对 MINK-EF 降 **>150×**，DexMimicGen 策略平均成功率 **71% vs 59%**（replay 相近）。截至入库日 **未开源**。
+
+### 3.9 硬件共设计可以省略软件重定向
+
+当采数装置与目标手在 **运动学、接触几何、外观与时序** 上做成同构「双胞胎」时，手指状态可以直接进机器人关节空间，**不再经过** 人手→异构手的优化/学习式 retarget。产业样本：[mimic U1](../entities/mimic-wearable-u1.md) 刚性约束到 M1；[TwinDEX](../entities/twindex.md)（自变量，2026-09）三指外骨骼–机械手五维对齐，并主张纯 robot-free 数据即可部署。这不是「重定向做对了」，而是 **用机械约束把问题定义掉**——代价是 embodiment 锁定，且两例截至入库日均 **未开源硬件/训练栈**。需要跨臂复用时仍走 [HandUMI](../entities/handumi.md) / UMI 族的标定 + 重定向。
 
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
@@ -219,6 +223,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 ---
 
 ## 参考来源
+- **ingest 档案：** [sources/sites/x2robot-twindex.md](../../sources/sites/x2robot-twindex.md) — TwinDEX：用外骨骼–机械手共设计省略软件 retarget
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — GVHMR→GMR 根高度抛物线校正（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot / PBHC](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — SMPL 统一格式 + Mink/PHC 双管线重定向到 G1（[repo](../../sources/repos/pbhc.md)）
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
@@ -275,6 +280,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 运动学参考 + 并行仿真采样优化 + 课程式虚拟接触引导
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — hand–object interaction mesh + 实时 Laplacian 优化，面向灵巧 in-hand manipulation 参考生成
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 非拟人三指夹爪的手势条件遥操作重定向（硬件/采集侧）
+- [TwinDEX](../entities/twindex.md) — 三指外骨骼–同构手共设计，用硬件对齐 **省略** 软件 retarget
 - [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三条主流路线在误差修补位置、训练/推理成本、跨形态能力上的选型坐标
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例
 - [Character Animation vs Robotics](./character-animation-vs-robotics.md) — 当目标函数里同时出现表演意图与物理可控性时的张力与案例切片

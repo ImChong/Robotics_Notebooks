@@ -2,7 +2,7 @@
 type: entity
 tags: [service-robot, mobile-manipulation, semi-humanoid, dexterous-hand, data-glove, teleoperation, imitation-learning, physical-ai, xyz-corp, closed-source]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-02
 related:
   - ../tasks/teleoperation.md
   - ../tasks/manipulation.md
@@ -10,6 +10,7 @@ related:
   - ../methods/imitation-learning.md
   - ./sunday-robotics-act2.md
   - ./handumi.md
+  - ./twindex.md
   - ../overview/humanoid-hardware-101-sensing-end-effectors.md
 sources:
   - ../../sources/sites/xyzcorp-deux.md
@@ -48,7 +49,7 @@ summary: "DEUX（XYZ, 2026）是面向零售等场景的半人形双臂移动服
 - **「不必仿人手」的商业三指路线：** 与 [Sunday Memo / ACT-2](./sunday-robotics-act2.md) 一样押注 **三指几何稳定抓取**，但 XYZ 把故事写成 **手套接触点 1:1 → 免后处理 retarget**，直接服务 [模仿学习](../methods/imitation-learning.md) 数据飞轮。
 - **移动双臂服务机器人的可引用规格：** 高度 **900–1550 mm**、全向底盘、单臂 **5.5 kg** / 双臂 **11 kg**、**CAN-FD 1 kHz**、预购 **~$30k–40k**（含 BrainX 与一轮任务建模）——便于和开源桌面臂 / 人形平台做 **成本–工作空间–开源度** 对照。
 - **闭源 Physical AI 闭环样本：** 真店数据 → Glove X（视/关节/触觉同步）→ Brain X（foundation + IL/RL + Voice X）→ 门店试点；研究侧价值在 **产品形态与采数主张**，不在可复现权重。
-- **与开源手套/无机器人示教对照：** [HandUMI](./handumi.md) 走 **跨臂可重定向 + LeRobot**；DEUX/Glove X 走 **专有 embodiment 1:1 绑定**——选型时先问「要可迁移数据集还是要门店一体机」。
+- **与开源手套/无机器人示教对照：** [HandUMI](./handumi.md) 走 **跨臂可重定向 + LeRobot**；DEUX/Glove X 走 **专有 embodiment 1:1 绑定**——选型时先问「要可迁移数据集还是要门店一体机」。自变量 [TwinDEX](./twindex.md) 也是三指 1:1，但是 **外骨骼–机械手共设计** 且主张 **零真机遥操作数据**，同样闭源。
 
 ## 流程总览
 
@@ -139,6 +140,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — 零售/家务操作任务语境
 - [ACT-2 / Sunday Robotics](./sunday-robotics-act2.md) — 另一三指移动服务/家用闭源对照
 - [HandUMI](./handumi.md) — 开源、跨臂可重定向的无机器人示教对照
+- [TwinDEX](./twindex.md) — 三指外骨骼–同构手共设计；纯 robot-free（自变量，闭源）
 - [Humanoid Hardware 101 · 传感与末端](../overview/humanoid-hardware-101-sensing-end-effectors.md) — 三指末端单位经济性论点
 
 ## 参考来源
