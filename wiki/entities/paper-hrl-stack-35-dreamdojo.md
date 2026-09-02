@@ -3,12 +3,13 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, ut-austin, hkust, nvidia, uw, stanford, kaist, berkeley]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-02
 venue: curated
 summary: "DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+  - ./paper-anyworld.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -88,6 +89,7 @@ DreamDojo 的下游实验也很有意思。它不只是拿世界模型做长视�
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
+- 同人视频 WM 对照：[AnyWorld](./paper-anyworld.md) — 因子化动作/相机/具身重组，无配对人–机数据生成机器人域 rollout
 - 原始 source：[humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md)
 
 ## 参考来源

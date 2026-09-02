@@ -166,6 +166,7 @@ Teacher 输入 **3D** 坐标；Student 输入 **4D** $(x,y,z,u)$（$u$ 为不确
 ## 关联页面
 
 - [AME（AME-1）](./paper-ame-attention-based-map-encoding.md)
+- [Agile Perceptive Traversal](./paper-agile-perceptive-traversal-sparse-3d.md) — 同一 AME-2 编码器用于 PM-01 原始 E1R 猴架穿越（arXiv:2608.29769）
 - [ANYmal](./anymal.md)
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)
