@@ -2,8 +2,10 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-02
 related:
+  - ../entities/paper-hrl-stack-35-dreamdojo.md
+  - ./vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ./robot-training-stack-layers-technology-map.md
   - ./robot-world-models-training-loop-taxonomy.md
@@ -109,6 +111,8 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 
 ## 关联页面
 
+- [DreamDojo](../entities/paper-hrl-stack-35-dreamdojo.md) — #35 世界模型节点；2026-09-02 补 arXiv:2602.06949 与 NVIDIA/DreamDojo
+- [VLA / 世界模型 14 篇阅读路线](./vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [Humanoid Motion Intelligence 知识库](../entities/humanoid-motion-intelligence.md) — 同策展方 GitHub 总仓（六条路线 + 论文/开源双索引；勿镜像）
 - [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md) — 训练流水线组件读法（与本文能力层正交）
 - [训练栈分层技术地图](./robot-training-stack-layers-technology-map.md) — 工具链六层（与本文「身体能力八层」互补）

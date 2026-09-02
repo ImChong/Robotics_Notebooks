@@ -13,7 +13,7 @@ arxiv: "2312.02976"
 code: https://github.com/allenai/spoc-robot-training
 related:
   - ../concepts/sim2real.md
-  - ../tasks/navigation.md
+  - ../tasks/vision-language-navigation.md
   - ./paper-rt-1.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
 sources:
@@ -120,7 +120,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md)
-- [Navigation](../tasks/navigation.md)
+- [视觉–语言导航](../tasks/vision-language-navigation.md)
 - [RT-1](./paper-rt-1.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 
