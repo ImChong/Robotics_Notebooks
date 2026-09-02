@@ -1,3 +1,5 @@
+## [2026-09-02] ingest | sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md — 7 篇开源论文独立节点：Facet-0/ParcelStow/Dual-MP/Depth Survey/ADM-BA/Peg-in-Bench/NP-Throw；Peg-in-Bench 仓库待发布
+
 ## [2026-09-02] ingest | sources/papers/hydrogym_nature_s41586_026_10917_6.md — HydroGym 主动流控 RL 平台（Nature 2026）；arXiv:2512.17534 开放全文 + GitHub/HF 已开源；通道→翼型零样本减阻
 
 - **触发：** 用户指定 Nature s41586-026-10917-6，并查询 arXiv 等开放获取入口

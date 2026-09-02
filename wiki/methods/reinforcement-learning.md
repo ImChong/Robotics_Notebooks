@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-02
 related:
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
