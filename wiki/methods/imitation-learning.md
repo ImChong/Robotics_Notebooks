@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-02
 related:
   - ../concepts/robot-in-context-learning.md
   - ../concepts/behavioral-cloning-mysteries.md
