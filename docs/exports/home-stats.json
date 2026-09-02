@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-spoc.md",
+      "detail_id": "entity-paper-spoc",
+      "label": "SPOC：模仿仿真最短路径，换真机导航与操作",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-act.md",
       "detail_id": "entity-paper-act",
       "label": "ACT：低成本硬件上的动作块 Transformer",
@@ -104,17 +115,6 @@
       "recency": "2026-09-02",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-spoc.md",
-      "detail_id": "entity-paper-spoc",
-      "label": "SPOC：模仿仿真最短路径，换真机导航与操作",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
@@ -225,9 +225,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-act.md",
-    "detail_id": "entity-paper-act",
-    "label": "ACT：低成本硬件上的动作块 Transformer",
+    "path": "wiki/entities/paper-spoc.md",
+    "detail_id": "entity-paper-spoc",
+    "label": "SPOC：模仿仿真最短路径，换真机导航与操作",
     "type": "entity",
     "recency": "2026-09-02",
     "source": "git",
