@@ -2,7 +2,7 @@
 type: entity
 tags: [software, reinforcement-learning, api, benchmark, farama]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-02
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/reinforcement-learning.md
@@ -315,6 +315,7 @@ flowchart TB
 | **另一套 MuJoCo 基准** | [dm_control](./dm-control.md) Control Suite（自有 `TimeStep` API，常与 Gym 结果并列报告） |
 | **物理 + 任务框架** | [legged_gym](./legged-gym.md)（Isaac Gym 上足式 RL，非 Gymnasium 内置） |
 | **轻量机体 RL** | [gym-pybullet-drones](./gym-pybullet-drones.md)（PyBullet + Gymnasium 四旋翼） |
+| **流控 CFD 基准** | [HydroGym](./paper-hydrogym.md)（*Nature* 2026；61+ 流场环境，Gymnasium `FlowEnv`） |
 | **新实验默认并行栈** | [Isaac Lab](./isaac-lab.md)（Isaac Gym 已 deprecated） |
 
 ## 工程实践
@@ -362,6 +363,7 @@ flowchart TD
 - [MuJoCo](./mujoco.md) — Gymnasium MuJoCo 域的物理后端
 - [dm_control](./dm-control.md) — 并行存在的 MuJoCo 连续控制基准栈
 - [gym-pybullet-drones](./gym-pybullet-drones.md) — Gymnasium 接口的四旋翼实例
+- [HydroGym（论文实体）](./paper-hydrogym.md) — *Nature* 2026 主动流控 RL 平台；Gymnasium 兼容 `FlowEnv` 与 6 类 CFD 后端
 - [legged_gym](./legged-gym.md) — 足式 RL 工程框架（底层多为 Isaac Gym，非 Gymnasium 内置）
 - [Isaac Gym](./isaac-gym.md) — GPU 并行物理；与 API 标准分层理解
 - [Isaac Lab](./isaac-lab.md) — 当前推荐的 GPU 并行训练入口

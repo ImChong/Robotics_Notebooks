@@ -306,6 +306,7 @@ flowchart LR
 - [PPO](./ppo.md) — 大规模并行运控的默认 on-policy 算法
 - [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
 - [Gymnasium](../entities/gymnasium.md) — 单智能体 RL 环境 API 标准（`reset` / `step` / `spaces`）
+- [HydroGym（论文实体）](../entities/paper-hydrogym.md) — *Nature* 2026 流控 RL 基准平台；Gymnasium 接口 + 通道→翼型零样本迁移（arXiv:2512.17534，已开源）
 - [Cartpole 问题](../concepts/cartpole.md) — Actor–Critic 实验原点与 Gym / Isaac 教学环境对照
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — f1tenth_gym / CARLA / GPU 向量化等 **轮式极限驾驶** RL 开源入口
 

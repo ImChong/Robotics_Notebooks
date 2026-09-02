@@ -1,3 +1,10 @@
+## [2026-09-02] ingest | sources/papers/hydrogym_nature_s41586_026_10917_6.md — HydroGym 主动流控 RL 平台（Nature 2026）；arXiv:2512.17534 开放全文 + GitHub/HF 已开源；通道→翼型零样本减阻
+
+- **触发：** 用户指定 Nature s41586-026-10917-6，并查询 arXiv 等开放获取入口
+- **开放获取：** **arXiv:2512.17534**（推荐）；Nature 读者链 rdcu.be/fBvqa；SI PDF 可下
+- **步骤 2.5：** `dynamicslab/hydrogym` + `dynamicslab.github.io/hydrogym` → **已开源（MIT）**；HF 环境 checkpoint
+- **关键页：** [`paper-hydrogym`](wiki/entities/paper-hydrogym.md)；交叉 [`gymnasium`](wiki/entities/gymnasium.md) / [`sim2real`](wiki/concepts/sim2real.md)
+
 ## [2026-09-01] ingest | sources/papers/fixanything_arxiv_2608_23549.md — FixAnything：Wan2.1 LoRA 统一修复四类 3D 渲染伪影 + Flow-DPO 几何偏好；推理与 HF 权重已开源
 
 - **触发：** 用户指定 arXiv:2608.23549（ECCV 2026，CMU）

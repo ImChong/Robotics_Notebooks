@@ -730,6 +730,7 @@
 - [HUMEMBR（人中心记忆驱动的预测式具身导航）](wiki/entities/paper-humembr.md) — HUMEMBR**（*Human-Centered Memory for Embodied Robots* / *Learning Human Routines for Predictive Em `📅unknown` `[entity_page]`
 - [HumoSlope：极端坡面物理引导生物力学步态适应](wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md) — HumoSlope**（*Physics-Guided Biomechanical Gait Adaptation for Humanoid Locomotion on Extreme Slope `📅unknown` `[entity_page]`
 - [Hydra-0：Action Flow 通才世界模型](wiki/entities/paper-hydra-0.md) — Hydra-0**（*Action Flow for Generalist World Modeling and Control*，[arXiv:2608.18077](https://arxiv `📅unknown` `[entity_page]`
+- [HydroGym：流体动力学强化学习平台](wiki/entities/paper-hydrogym.md) — The HydroGym reinforcement learning platform for fluid dynamics**（Lagemann 等，*Nature* 2026，DOI [10 `📅unknown` `[entity_page]`
 - [iCrowdNav（意图感知场景表征的视觉人群导航）](wiki/entities/paper-icrowdnav.md) — iCrowdNav**（*Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations `📅unknown` `[entity_page]`
 - [Imagine2Real](wiki/entities/paper-imagine2real-zero-shot-hoi.md) — Imagine2Real: Towards Zero-shot Humanoid-Object Interaction via Video Generative Priors**（arXiv:26 `📅unknown` `[entity_page]`
 - [Imagined Rollouts are Kinematic, Not Dynamic（长程世界模型失败诊断）](wiki/entities/paper-imagined-rollouts-kinematic-not-dynamic.md) — Imagined Rollouts are Kinematic, Not Dynamic**（*A Diagnosis of Long-Horizon World-Model Failure*， `📅unknown` `[entity_page]`

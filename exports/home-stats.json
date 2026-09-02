@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-01",
-  "node_count": 3392,
-  "edge_count": 30553,
+  "generated_at": "2026-09-02",
+  "node_count": 3393,
+  "edge_count": 30560,
   "coverage": {
-    "covered": 3367,
-    "total": 3367,
+    "covered": 3368,
+    "total": 3368,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -58,7 +58,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-motus2.md",
@@ -78,7 +78,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-zeva.md",
@@ -224,23 +224,23 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 593
+      "size": 592
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 461
+      "size": 464
     },
     {
       "label": "视觉-语言-动作",
-      "size": 247
+      "size": 246
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 221
+      "size": 226
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 167
+      "size": 173
     },
     {
       "label": "仿真到现实",
@@ -314,7 +314,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 502,
+      "degree": 504,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
