@@ -9,6 +9,100 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-adm-ba.md",
+      "detail_id": "entity-paper-adm-ba",
+      "label": "ADM-BA：无对应点的多视角点云配准",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-blind-dexterity.md",
+      "detail_id": "entity-paper-blind-dexterity",
+      "label": "Blind Dexterity：纯本体感知人形全身操作",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-dual-process-motion-planning.md",
+      "detail_id": "entity-paper-dual-process-motion-planning",
+      "label": "Dual Process Motion Planning：快慢系统协同的非线性运动规划",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-facet-0.md",
+      "detail_id": "entity-paper-facet-0",
+      "label": "Facet-0：接触丰富精密装配基础模型",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hydrogym.md",
+      "detail_id": "entity-paper-hydrogym",
+      "label": "HydroGym：流体动力学强化学习平台",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-monocular-depth-estimation-survey.md",
+      "detail_id": "entity-paper-monocular-depth-estimation-survey",
+      "label": "单目深度估计综述：进展与机遇",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-np-throw.md",
+      "detail_id": "entity-paper-np-throw",
+      "label": "NP-Throw：强化学习视角的非抓取投掷",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-parcelstow.md",
+      "detail_id": "entity-paper-parcelstow",
+      "label": "ParcelStow：模仿学习是否保留时间鲁棒性？",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-peg-in-bench.md",
+      "detail_id": "entity-paper-peg-in-bench",
+      "label": "Peg-in-Bench：高精度插入模块化基准",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/twindex.md",
       "detail_id": "entity-twindex",
       "label": "TwinDEX（无本体灵巧操作共设计接口）",
@@ -126,110 +220,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rt-2.md",
-      "detail_id": "entity-paper-rt-2",
-      "label": "RT-2：用 VLM 把网页知识迁到机器人控制",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/contact-rich-manipulation-7-papers-technology-map.md",
-      "detail_id": "wiki-overview-contact-rich-manipulation-7-papers-technology-map",
-      "label": "接触丰富操作：7 篇论文的阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md",
-      "detail_id": "wiki-overview-vla-wm-reading-roadmap-14-papers-technology-map",
-      "label": "VLA 与世界模型：14 篇论文的阅读路线",
-      "type": "overview",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/atlas-world-model.md",
-      "detail_id": "entity-atlas-world-model",
-      "label": "Atlas（World Labs omni 世界模型）",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adm-ba.md",
-      "detail_id": "entity-paper-adm-ba",
-      "label": "ADM-BA：无对应点的多视角点云配准",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dual-process-motion-planning.md",
-      "detail_id": "entity-paper-dual-process-motion-planning",
-      "label": "Dual Process Motion Planning：快慢系统协同的非线性运动规划",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-facet-0.md",
-      "detail_id": "entity-paper-facet-0",
-      "label": "Facet-0：接触丰富精密装配基础模型",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-monocular-depth-estimation-survey.md",
-      "detail_id": "entity-paper-monocular-depth-estimation-survey",
-      "label": "单目深度估计综述：进展与机遇",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-np-throw.md",
-      "detail_id": "entity-paper-np-throw",
-      "label": "NP-Throw：强化学习视角的非抓取投掷",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/twindex.md",
-    "detail_id": "entity-twindex",
-    "label": "TwinDEX（无本体灵巧操作共设计接口）",
+    "path": "wiki/entities/paper-adm-ba.md",
+    "detail_id": "entity-paper-adm-ba",
+    "label": "ADM-BA：无对应点的多视角点云配准",
     "type": "entity",
     "recency": "2026-09-02",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
