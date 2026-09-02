@@ -1,104 +1,139 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, world-models, 3d, point-cloud, cross-embodiment, nvidia, stanford, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-02
 arxiv: "2601.03782"
-venue: "arXiv 2026"
-summary: "NVIDIA's large-scale pre-trained 3D world model unifying state and action as 3D point flows."
+venue: "CVPR 2026 Highlight"
+code: https://github.com/NVlabs/PointWorld
 related:
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../entities/awesome-world-models.md
   - ../overview/sun-awesome-wm-technology-map.md
+  - ./paper-hrl-stack-35-dreamdojo.md
   - ../methods/generative-world-models.md
-  - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+  - ../../sources/repos/nvlabs-pointworld.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
-  - ../../sources/repos/awesome-world-models.md
+summary: "PointWorld（arXiv:2601.03782，NVIDIA/Stanford，CVPR 2026 Highlight）：用 3D 点流统一状态与动作，做野外跨本体世界模型与约 0.1 s MPC。NVlabs/PointWorld 已开源。"
 ---
 
-# PointWorld
+# PointWorld：用 3D 点流做野外操作世界模型
 
-**PointWorld** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 324/571** 篇，分组 **812 Manipulation**。本页为知识库 **策展索引级** 详情节点；方法细节与量化指标以原文 PDF / 项目页为准。
+**PointWorld**（*Scaling 3D World Models for In-The-Wild Robotic Manipulation*，[arXiv:2601.03782](https://arxiv.org/abs/2601.03782)，[项目页](https://point-world.github.io/)，[代码](https://github.com/NVlabs/PointWorld)）由 **NVIDIA / Stanford** 提出（CVPR 2026 Highlight）：把关节动作变成机器人点流，与 RGB-D 场景点云统一建模，预测全场景 3D 点流。Awesome **第 324/571**（812 Manipulation）在此升格。
 
 ## 一句话定义
 
-NVIDIA's large-scale pre-trained 3D world model unifying state and action as 3D point flows.
+**跨本体世界模型用点怎么动，而不是用某台机器人的关节角怎么动。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WM | World Model | 环境前向预测模型 |
-| WAM | World Action Model | 世界预测与动作联合建模 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
+| WM | World Model | 3D 前向预测 |
+| MPC | Model Predictive Control | 约 0.1 s 规划 |
+| RGB-D | Color + Depth | 场景点云来源 |
+| VLA | Vision-Language-Action | 可用点流作中间表示 |
 
 ## 为什么重要
 
-- NVIDIA's large-scale pre-trained 3D world model unifying state and action as 3D point flows.
-- 在 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 与列表实体 [Awesome World Models](../entities/awesome-world-models.md) 及站内方法/任务页交叉，便于从策展索引跳转到学习主线。
+- 纳入 [VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md) 的 3D 跨本体篇。
+- 减少对特定 action representation 的绑定。
+- 文内口径：约 **200 万** 条轨迹规模化；推理约 **0.1 s** 可做 MPC。
+- **已开源** `NVlabs/PointWorld`（清单原未标代码，2026-09-02 补查）。
 
-## 核心信息（索引级）
+## 核心信息
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 324/571 |
-| 分组 | 812 Manipulation |
-| 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2601.03782> |
-| 项目页 | <https://point-world.github.io> |
+| 项 | 内容 |
+|----|------|
+| **机构** | 英伟达；斯坦福大学 |
+| **状态** | RGB-D 场景点云 + 机器人点流 |
+| **动作** | 关节 → 机器人点流（统一表示） |
+| **规划** | MPC，约 0.1 s |
+| **开源** | **已开源** [NVlabs/PointWorld](https://github.com/NVlabs/PointWorld) |
 
-## 核心机制（归纳）
+### 流程总览
 
-### 策展导读要点
+```mermaid
+flowchart LR
+  rgb[RGB-D] --> scene[场景点云]
+  q[关节动作] --> rflow[机器人点流]
+  scene --> pw[PointWorld]
+  rflow --> pw
+  pw --> pred[全场景 3D 点流]
+  pred --> mpc[MPC 0.1s]
+  mpc --> act[可执行动作]
+```
 
-NVIDIA's large-scale pre-trained 3D world model unifying state and action as 3D point flows.
+## 评测
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
-
-## 评测与指标（索引级）
-
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2601.03782) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
-
-## 与其他工作对比（索引级）
-
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **812 Manipulation** 分组逐条展开。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 野外操作与跨本体是主设定，不是桌面仿真单任务。
+- 规模数字（约 200 万轨迹）以原文为准。
+- 与 RGB 视频 WM 对照：几何一致性更好解释跨本体。
 
 ## 结论
 
-**本条目的站内价值是把「PointWorld」从外部 Awesome 列表提升为可链接的知识节点，并保留清单 Highlights 作为阅读锚点。**
+**要跨本体预测接触后果，3D 点流比 RGB 视频更接近「同一个物理世界」。**
 
-- 起作用的是策展坐标：列表分组 **812 Manipulation** + Highlights 指出的问题设定，而不是本页自行推导的新算法结论。
-- 适用边界：索引级页面不能替代 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 若该工作成为学习主线，应再升格为深度论文实体（补机构、实验表、源码运行时序图或「不适用」说明）。
+- 统一状态与动作表示，减少关节空间绑定
+- MPC 实时性说明 3D WM 可以进控制环，不只是生成 demo
+- 200 万轨迹验证可扩展性，不等于随便换本体零成本
+- 未来可作「点流中间层 → 机器人适配器 → 关节」
+- 复现走 NVlabs/PointWorld，不要停在 Awesome 无代码标注
 
-## 常见误区
+## 源码运行时序图
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 同一 arXiv 在全库只允许一个 canonical 详情节点；若已有深度页，应以深度页为准。
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Repo as NVlabs/PointWorld
+    participant PCD as RGB-D 点云
+    participant PW as 点流世界模型
+    participant MPC as 0.1s 规划
+    participant Robot as 真机
+    Dev->>Repo: clone + 权重
+    Dev->>PCD: 构建场景点云
+    PCD->>PW: 状态
+    Note over PW: 关节→机器人点流
+    PW->>MPC: 预测点流
+    MPC->>Robot: 控制指令
+    Robot-->>Dev: 野外操作结果
+```
+
+## 局限与风险
+
+- **深度质量：** 野外 RGB-D 噪声直接进点云。
+- **适配器仍要：** 点流不是现成关节指令。
+- **算力：** 大规模 3D 训练/推理成本高。
+
+## 与其他工作对比
+
+| 工作 | 相对本页 |
+|------|----------|
+| [DreamDojo](./paper-hrl-stack-35-dreamdojo.md) | 人视频 2D/隐空间，非点流 |
+| [LaDi-WM](./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md) | 图像隐空间扩散 |
+| [CLAP 跨本体地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) | 视频跨本体对照 |
 
 ## 关联页面
 
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
-
-## 参考来源
-
-- [`sources/papers/sun_awesome_wm_2601_03782_pointworld.md`](../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2601.03782>
+- [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [Awesome World Models](../entities/awesome-world-models.md)
+- [DreamDojo](./paper-hrl-stack-35-dreamdojo.md)
+- [生成式世界模型](../methods/generative-world-models.md)
+- [Manipulation](../tasks/manipulation.md)
 
 ## 推荐继续阅读
 
-- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2601.03782)
+- [项目页](https://point-world.github.io/)
+- [arXiv:2601.03782](https://arxiv.org/abs/2601.03782)
+
+## 参考来源
+
+- [sun_awesome_wm_2601_03782](../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md)
+- [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
+- [nvlabs-pointworld](../../sources/repos/nvlabs-pointworld.md)
+- [sun_awesome_wm_catalog](../../sources/papers/sun_awesome_wm_catalog.md)

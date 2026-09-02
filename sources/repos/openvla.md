@@ -8,7 +8,7 @@
 - **Stars：** ~6282（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** 开源 VLA：Prismatic 视觉-语言骨干 + 离散动作 token，支持 LoRA/OFT 微调。
-- **沉淀到 wiki：** [openvla](../../wiki/entities/openvla.md)、[VLA 方法页](../../wiki/methods/vla.md)
+- **沉淀到 wiki：** [openvla](../../wiki/entities/openvla.md)（软件实体）、[paper-openvla](../../wiki/entities/paper-openvla.md)（论文详情）、[VLA 方法页](../../wiki/methods/vla.md)
 
 ---
 

@@ -2,26 +2,29 @@
 type: method
 tags: [vla, open-source, generalist-policy, diffusion, manipulation, hmi-papers]
 status: complete
-updated: 2026-07-31
-arxiv: "2405.12213"
+updated: 2026-09-02
 code: https://github.com/octo-models/octo
 related:
+  - ../entities/paper-octo.md
   - ./vla.md
   - ../concepts/open-x-embodiment.md
   - ../entities/paper-open-x-embodiment.md
   - ../concepts/foundation-policy.md
   - ./robotics-transformer-rt-series.md
   - ../queries/hmi-papers-coverage.md
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
 sources:
+  - ../../sources/papers/octo_arxiv_2405_12213.md
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
 summary: "Octo（arXiv:2405.12213）是基于 Open X-Embodiment 等数据训练的开源通用机器人策略：块状注意力 Transformer + 独立读出头，强调少样本适配新相机与动作空间。"
 ---
 
 # Octo（开源 Generalist Policy）
 
-**Octo**（[arXiv:2405.12213](https://arxiv.org/abs/2405.12213)，[代码](https://github.com/octo-models/octo)）是开源通用机器人操作策略，常作为跨本体预训练 + 微调基线，并与 RT 系列、OpenVLA、π₀ 等对照。HMI 论文总索引编号 **P056**。
+**Octo**（[arXiv:2405.12213](https://arxiv.org/abs/2405.12213)，[代码](https://github.com/octo-models/octo)）是开源通用机器人操作策略，常作为跨本体预训练 + 微调基线，并与 RT 系列、OpenVLA、π₀ 等对照。HMI 论文总索引编号 **P056**。论文详情节点见 [paper-octo](../entities/paper-octo.md)（本方法页不再持有 `arxiv`，避免双节点）。
 
 ## 一句话定义
 
@@ -104,10 +107,12 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Octo 论文实体](../entities/paper-octo.md)
 - [Open X-Embodiment（概念）](../concepts/open-x-embodiment.md)
 - [Open X-Embodiment（论文实体）](../entities/paper-open-x-embodiment.md)
 - [VLA](./vla.md)
 - [HMI 论文导读](../queries/hmi-papers-coverage.md)
+- [VLA/WM 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 
 ## 参考来源
 

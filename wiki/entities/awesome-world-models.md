@@ -2,8 +2,12 @@
 type: entity
 tags: [curated-list, world-models, wam, vla, model-based-rl, embodied-ai, autonomous-driving]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-02
 related:
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md
+  - ./paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md
+  - ./paper-sa-2601-03782-pointworld.md
   - ../overview/sun-awesome-wm-technology-map.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -70,6 +74,7 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 
 ## 关联页面
 
+- [VLA / 世界模型 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — LaDi-WM / RISE / PointWorld 已从索引级升格
 - [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 清单论文 → 独立详情节点
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合世界–动作范式
 - [Generative World Models](../methods/generative-world-models.md) — 生成式 / 视频世界模型方法页

@@ -9,7 +9,7 @@
 - **arXiv：** 2601.03782
 - **出处：** arXiv 2026
 - **论文：** <https://arxiv.org/abs/2601.03782>
-- **代码：** 未在清单中标注
+- **代码：** <https://github.com/NVlabs/PointWorld>（2026-09-02 核查，清单原未标注）
 - **项目页：** <https://point-world.github.io>
 - **Highlights（清单）：** NVIDIA's large-scale pre-trained 3D world model unifying state and action as 3D point flows.
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2601-03782-pointworld.md`](../../wiki/entities/paper-sa-2601-03782-pointworld.md)
@@ -21,7 +21,7 @@
 | 已发布 | 备注 |
 |--------|------|
 | 清单条目元数据 | 本 source 为策展摘录，非全文转存 |
-| 代码/权重 | 以项目页 / GitHub 实际链接为准；清单标注见上 |
+| 代码/权重 | **已开源** [NVlabs/PointWorld](https://github.com/NVlabs/PointWorld)（2026-09-02 核查） |
 
 ## 对 wiki 的映射
 

@@ -7,6 +7,8 @@
 - **系统栈层：** 04 视觉闭环 · 任务接口 · 世界模型
 - **机构：** NVIDIA；香港科技大学；伯克利；华盛顿大学；斯坦福大学；KAIST；德州大学奥斯汀分校等
 - **项目/论文链接：** <https://dreamdojo-world.github.io/>
+- **arXiv：** <https://arxiv.org/abs/2602.06949>
+- **代码：** <https://github.com/NVIDIA/DreamDojo>（Apache-2.0；2026-09-02 核查）
 - **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26
@@ -20,7 +22,8 @@
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- [DreamDojo 论文实体](../../wiki/entities/paper-hrl-stack-35-dreamdojo.md) — canonical 详情节点（arXiv:2602.06949）
+- [VLA / 世界模型 14 篇阅读路线](../../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 
 ## 参考来源（原始）
 

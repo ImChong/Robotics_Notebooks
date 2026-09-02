@@ -1,106 +1,138 @@
 ---
-
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, ut-austin, hkust, nvidia, uw, stanford, kaist, berkeley]
+tags: [paper, world-models, human-video, cross-embodiment, nvidia, ut-austin, hkust, berkeley, uw, stanford, kaist, humanoid, rl, motion-control, body-system-stack]
 status: complete
 updated: 2026-09-02
-venue: curated
-summary: "DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。"
+arxiv: "2602.06949"
+venue: "ICML 2026"
+code: https://github.com/NVIDIA/DreamDojo
 related:
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
-  - ../overview/humanoid-amp-motion-prior-survey.md
   - ./paper-anyworld.md
+  - ./paper-sa-2601-03782-pointworld.md
+  - ../methods/generative-world-models.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+  - ../../sources/repos/nvidia-dreamdojo.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+summary: "DreamDojo（arXiv:2602.06949，UT Austin/NVIDIA 等，ICML 2026）：约 44K 小时人类视频预训练 + latent action + 少量机器人 post-train。NVIDIA/DreamDojo Apache-2.0 已开源。"
 ---
 
-# DreamDojo
+# DreamDojo：从大规模人类视频预训练机器人世界模型
 
-**DreamDojo** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 35/42** 篇，归类为 **04 视觉闭环 · 任务接口 · 世界模型**。
+**DreamDojo**（*A Generalist Robot World Model from Large-Scale Human Videos*，[arXiv:2602.06949](https://arxiv.org/abs/2602.06949)，[项目页](https://dreamdojo-world.github.io/)，[代码](https://github.com/NVIDIA/DreamDojo)）由 **UT Austin / NVIDIA** 等提出（ICML 2026）：用约 **44K 小时** 第一视角人类视频预训练通用世界模型，以 **continuous latent action** 补上无机器人动作标签的缺口，再少量目标本体 post-train。人形 RL 栈 **#35/42** 与 VLA/WM 阅读路线共用**本页**为 canonical 节点。
 
 ## 一句话定义
 
-DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。
+**要的不是会生成视频，而是动作可控、能给策略用的机器人世界模型。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| WM | World Model | 观测+动作 → 未来 |
+| LA | Latent Action | 无标签视频中的隐动作 |
+| VLA | Vision-Language-Action | 本工作不是 VLA，而是其数据瓶颈对照 |
+| FPS | Frames Per Second | 蒸馏后约 10 FPS 交互 |
 
 ## 为什么重要
 
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **04 视觉闭环 · 任务接口 · 世界模型**（#35/42）。
-- DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。
-- 这里最关键的不是“会生成视频”，而是它试图让世界模型具备机器人策略可用的物理和动作可控性。
-- 论文用大规模第一视角人类视频做预训练，数据规模达到 44K 小时；然后用 continuous latent action 解决人类视频没有机器人动作标签的问题；最后再用少量目标机器人数据 post-train，让模型对具体机器人 embodiment 和 action space 变得可控。
+- 纳入 [VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md) 的人类视频预训练篇。
+- 直接回答 VLA 的 **真机数据贵**：先在人视频上规模化。
+- 下游不只是长视频：live teleoperation、policy evaluation、model-based planning。
+- **已开源** `NVIDIA/DreamDojo`（Apache-2.0，2026-09-02 核查）。
 
-## 核心信息（索引级）
+## 核心信息
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 35/42 |
-| 系统栈层 | 04 视觉闭环 · 任务接口 · 世界模型 |
-| 机构 | NVIDIA；香港科技大学；伯克利；华盛顿大学；斯坦福大学；KAIST；德州大学奥斯汀分校等 |
-| 出处 | curated |
-| 链接 | <https://dreamdojo-world.github.io/> |
+| 项 | 内容 |
+|----|------|
+| **机构** | 英伟达；德州大学奥斯汀分校；香港科技大学；伯克利；华盛顿大学；斯坦福；KAIST 等 |
+| **数据** | ~44K h 第一视角人类视频 |
+| **关键** | continuous latent action + 机器人 post-train |
+| **推理** | 蒸馏约 10 FPS |
+| **开源** | **已开源** [NVIDIA/DreamDojo](https://github.com/NVIDIA/DreamDojo) |
 
-## 核心机制（归纳）
+### 流程总览
 
-### 1）策展导读要点
+```mermaid
+flowchart LR
+  hv[人类视频] --> pre[规模预训练]
+  pre --> la[Latent Action]
+  robot[少量机器人数据] --> post[Post-train]
+  la --> post
+  post --> dist[蒸馏加速]
+  dist --> use[遥操作/评估/规划]
+```
 
-DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。
+## 评测
 
-### 2）策展导读要点
-
-这里最关键的不是“会生成视频”，而是它试图让世界模型具备机器人策略可用的物理和动作可控性。
-
-### 3）策展导读要点
-
-论文用大规模第一视角人类视频做预训练，数据规模达到 44K 小时；然后用 continuous latent action 解决人类视频没有机器人动作标签的问题；最后再用少量目标机器人数据 post-train，让模型对具体机器人 embodiment 和 action space 变得可控。
-
-### 4）策展导读要点
-
-DreamDojo 的下游实验也很有意思。它不只是拿世界模型做长视频生成，而是拿来做 live teleoperation、policy evaluation 和 model-based planning。
+- 策展与论文强调下游三种用法，而非单纯 FID。
+- 量化 benchmark 以 [原文 / 项目页](https://dreamdojo-world.github.io/) 为准。
+- 与 [AnyWorld](./paper-anyworld.md) 对照：都做无人–机配对的人视频迁移，配方不同。
 
 ## 结论
 
-**DreamDojo 要的不是一个会生成视频的模型，而是一个动作可控、物理可用的机器人世界模型——它的成败由下游用途来判定，而不是画面质量。**
+**人类视频能预训练 WM，前提是 latent action 把「没标签」变成可条件化动作。**
 
-- 三段式配方回答了「人类视频没有机器人动作标签」这个卡点：**44K 小时** 第一视角人类视频预训练 → **continuous latent action** 补上动作标签 → 少量目标机器人数据 post-train，使模型对具体 embodiment 与 action space 变得可控。
-- 判据落在 **可控性而非观感**：关键是让世界模型具备机器人策略可用的物理与动作可控性，「会生成视频」本身不构成贡献。
-- 下游三种用法——**live teleoperation、policy evaluation、model-based planning**——说明它被定位成基础设施，而不是长视频生成 demo。
-- 边界：世界模型解决的是 **接口与预测**，不自动替代已封装的底层 WBC 能力；本页为策展编译，量化 benchmark 与实机指标以原文 / 项目页为准。
+- 44K 小时解决的是覆盖，不是本体对齐
+- post-train 才把 embodiment / action space 接上
+- 蒸馏在画质与交互速度之间折中
+- 判据是可控性与下游任务，不是观感
+- 不替代底层 WBC；解决的是预测接口
 
-## 常见误区
+## 源码运行时序图
 
-1. VLA/世界模型条目解决 **接口与预测**，不自动替代已封装的底层 WBC 能力。
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Repo as NVIDIA/DreamDojo
+    participant Pre as 人视频预训练权重
+    participant Post as 机器人 post-train
+    participant Dist as 蒸馏交互
+    participant App as 遥操作/规划
+    Dev->>Repo: clone（Apache-2.0）
+    Dev->>Pre: 加载通用 WM
+    Dev->>Post: 少量目标本体数据
+    Post->>Dist: 约 10 FPS
+    Dist->>App: 动作条件预测
+    App-->>Dev: 评估或规划结果
+```
 
-## 实验与评测
+## 局限与风险
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+- **人–机外观差：** 腕部/夹爪域移仍在。
+- **隐动作可解释性弱。**
+- **栈位：** 42 篇里属视觉闭环/世界模型层，不是全身运动跟踪。
 
-## 与其他页面的关系
+## 与其他工作对比
 
-- 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
-- AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-- 同人视频 WM 对照：[AnyWorld](./paper-anyworld.md) — 因子化动作/相机/具身重组，无配对人–机数据生成机器人域 rollout
-- 原始 source：[humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md)
+| 工作 | 相对本页 |
+|------|----------|
+| [LaDi-WM](./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md) | 隐空间操作预测，数据规模更小 |
+| [PointWorld](./paper-sa-2601-03782-pointworld.md) | 3D 点流跨本体 |
+| [AnyWorld](./paper-anyworld.md) | 因子化人视频 WM |
 
-## 参考来源
+## 关联页面
 
-- [humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md) — 42 篇栈策展摘录
-- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
-- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
-- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- [AnyWorld](./paper-anyworld.md)
+- [生成式世界模型](../methods/generative-world-models.md)
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：DreamDojo](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos.html)
-- [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
-- [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
+- [项目页](https://dreamdojo-world.github.io/)
+- [论文笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos.html)
+- [arXiv:2602.06949](https://arxiv.org/abs/2602.06949)
+
+## 参考来源
+
+- [humanoid_rl_stack_35_dreamdojo](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md)
+- [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
+- [nvidia-dreamdojo](../../sources/repos/nvidia-dreamdojo.md)
+- [42 篇栈总表](../../sources/papers/humanoid_rl_stack_42_catalog.md)
+- [人形 RL 运动控制公众号](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)

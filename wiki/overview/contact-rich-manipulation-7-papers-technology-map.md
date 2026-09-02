@@ -113,4 +113,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [开源系统闭环 7 篇地图](./open-source-system-loop-7-papers-technology-map.md)
+- [VLA / 世界模型 14 篇阅读路线](./vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [公众号原文](https://mp.weixin.qq.com/s/v2-G3TNZV5e_Uzm0kHPZEA)
