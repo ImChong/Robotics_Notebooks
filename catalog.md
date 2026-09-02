@@ -2610,6 +2610,7 @@
 - [TrackerLab](wiki/entities/trackerlab.md) — TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) 收录于具身智能研究室 [开源项目主表](https://github.com `📅unknown` `[entity_page]`
 - [Transformer 视觉应用课程策展](wiki/entities/transformer-cv-curriculum.md) — 把「Transformer 在计算机视觉中的应用」八章大纲落成可交叉引用的知识图：从 **CNN/注意力基础** 走到 **分类·检测·分割·多模态·Mamba·视觉基础模型**，保证截图中每个知识点 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
+- [TwinDEX（无本体灵巧操作共设计接口）](wiki/entities/twindex.md) — TwinDEX**（项目页，2026-09-02）由 **自变量机器人（X Square Robot）** 发布：一 `📅unknown` `[entity_page]`
 - [U-Mamba](wiki/entities/u-mamba.md) — U-Mamba 在 U-Net 式编解码中嵌入 Mamba 块，增强医学图像分割的长程上下文，对应课程作业相关的医学分割线。 `📅unknown` `[entity_page]`
 - [UKMARSBOT](wiki/entities/ukmarsbot.md) — UKMARSBOT** 是 UK Micromouse and Robotics Society（UKMARS） 发布的 **低成本入门多用途开源机器 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO](wiki/entities/ultralytics.md) — Ultralytics**（ultralytics/ultralytics，文档 [docs.ultra `📅unknown` `[entity_page]`

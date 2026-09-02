@@ -3,7 +3,7 @@ type: entity
 title: HandUMI
 tags: [hardware, software, teleoperation, dual-arm, bimanual, data-collection, robot-free, retargeting, lerobot, open-source, parallel-gripper, robonet]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-02
 related:
   - ../tasks/teleoperation.md
   - ../tasks/bimanual-manipulation.md
@@ -14,6 +14,7 @@ related:
   - ./paper-halomi-humanoid-loco-manipulation.md
   - ./paper-hifi-umi.md
   - ./xyz-deux.md
+  - ./twindex.md
 sources:
   - ../../sources/repos/handumi-sw.md
   - ../../sources/repos/handumi-hw.md
@@ -56,7 +57,7 @@ HandUMI 把问题切成两步：
 1. **采集阶段**：用可穿戴 HandUMI + PICO / Quest 追踪，**脱离目标机器人** 记录同步示范；
 2. **部署阶段**：对选定 embodiment 做 **标定指纹 + 重定向 + QA**，再仿真预览或真机回放/遥操作。
 
-文档站明确其产品叙事：帮助 **初创公司加速部署**、帮助 **研究人员做更多实验**。这与 [BifrostUMI](./paper-bifrost-umi.md)、[HALOMI](./paper-halomi-humanoid-loco-manipulation.md) 等 **无机器人示范** 路线同族，但 HandUMI **明确收敛到平行夹爪双臂工位**，而非全身人形 loco-manipulation；工程上更贴近 **LeRobot 生态的数据飞轮**（见 [LeRobot](./lerobot.md)）。相对 [mimic U1](./mimic-wearable-u1.md) 的「与特定灵巧手 1:1 运动学」路线，HandUMI 走 **跨臂可重定向**，用 tip 模块化换夹爪几何；相对商业 [DEUX / Glove X](./xyz-deux.md) 的 **专有三指手 1:1 绑定**，HandUMI 优先 **开源可迁移数据集** 而非门店一体机锁定。
+文档站明确其产品叙事：帮助 **初创公司加速部署**、帮助 **研究人员做更多实验**。这与 [BifrostUMI](./paper-bifrost-umi.md)、[HALOMI](./paper-halomi-humanoid-loco-manipulation.md) 等 **无机器人示范** 路线同族，但 HandUMI **明确收敛到平行夹爪双臂工位**，而非全身人形 loco-manipulation；工程上更贴近 **LeRobot 生态的数据飞轮**（见 [LeRobot](./lerobot.md)）。相对 [mimic U1](./mimic-wearable-u1.md) 的「与特定灵巧手 1:1 运动学」路线，HandUMI 走 **跨臂可重定向**，用 tip 模块化换夹爪几何；相对商业 [DEUX / Glove X](./xyz-deux.md) 与 [TwinDEX](./twindex.md) 的 **专有三指 1:1 绑定**，HandUMI 优先 **开源可迁移数据集** 而非一体机锁定。
 
 ## 流程总览
 
@@ -174,6 +175,7 @@ flowchart LR
 - [BifrostUMI](./paper-bifrost-umi.md) — 无机器人示范 → 人形全身对照
 - [HiFi-UMI / HiFi-UMI-2K](./paper-hifi-umi.md) — 高保真双臂 UMI 2000 h；zero-robot 后训练（数据已开）
 - [DEUX / Glove X（XYZ）](./xyz-deux.md) — 商业 1:1 手套绑定对照（闭源、不可跨臂迁移）
+- [TwinDEX](./twindex.md) — 三指外骨骼–同构手共设计对照（闭源、无软件 retarget）
 
 ## 参考来源
 

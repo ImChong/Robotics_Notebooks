@@ -11,7 +11,7 @@ tags:
   - multi-view
   - x-square-robot
 status: complete
-updated: 2026-08-28
+updated: 2026-09-02
 code: https://github.com/X-Square-Robot/wall-ss
 related:
   - ../methods/generative-world-models.md
@@ -29,6 +29,7 @@ related:
   - ./current-robotics-currentworld.md
   - ./paper-driftworld.md
   - ./paper-x2streaming-tts.md
+  - ./twindex.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/manipulation.md
   - ./agibot-world-2026.md
@@ -193,6 +194,7 @@ On-policy 对齐相对监督 checkpoint：动作跟随 **0.264→0.290**，轨�
 - [Cosmos 3](./cosmos-3.md) — 本文 Nano 基线所属平台
 - [CurrentWorld-0](./current-robotics-currentworld.md) — 产业侧交互模拟器（确认未开源）
 - [X2Streaming-TTS](./paper-x2streaming-tts.md) — 同机构流式生成（语音）
+- [TwinDEX](./twindex.md) — 同机构三指无本体采数接口（2026-09；未开源）
 - [评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 层 WM 作评估器
 - [Manipulation](../tasks/manipulation.md)
 

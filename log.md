@@ -1,3 +1,10 @@
+## [2026-09-02] ingest | sources/sites/x2robot-twindex.md — 自变量 TwinDEX 三指外骨骼–同构手共设计无本体采数；确认未开源；升格 wiki/entities/twindex.md
+
+- **触发：** 用户指定项目主页 <https://x2robot.com/pages/twindex>；要求自动合并 PR
+- **步骤 2.5：** 项目页（Next.js）与英文页 **未列** GitHub / HF / arXiv；BibTeX *Coming soon*。GitHub `twindex` 检索 0 仓。**确认未开源。** 勿把同机构 [XRZero-G0](https://github.com/X-Square-Robot/XRZero-G0)（VR+夹爪，arXiv:2604.13001）或 [sdk_hand](https://github.com/X-Square-Robot/sdk_hand)（五指）写成 TwinDEX 复现入口。
+- **关键页：** [`twindex`](wiki/entities/twindex.md)；交叉 teleoperation / 灵巧采数指南 / 手套 vs 视觉 / mimic U1 / DEUX / HandUMI
+- **主张（项目页）：** 3 指 9 DoF（7 主动+2 被动）；采数吞吐 **5.3×** 真机遥操作；robot-free 与 on-robot data-efficiency 重叠；化学实验约 24–25 子动作（页内 24/25 不一致）
+
 ## [2026-09-02] ingest | sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md — 酷哇 RISE 自适应想象 WAM（arXiv:2608.20430）；代码 MIT + CounterDrive 已开、权重未发；勿与 OpenDriveLab RISE 混淆
 
 - **触发：** 用户指定论文 *RISE: Adaptive Imagination for World Action Models*；机构 COWARobot / 上交 / 河海；项目页 https://cowarobot-ai.github.io/RISE/ ；代码 https://github.com/COOWAI/RISE ；数据集 https://huggingface.co/datasets/COWARobot/CounterDrive
