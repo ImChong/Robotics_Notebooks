@@ -422,6 +422,7 @@
 - [Aero Hand Open：仿真就绪的腱驱灵巧手](wiki/entities/paper-aero-hand-open.md) — Aero Hand Open**（*A Simulation-Ready Tendon-Driven Hand for Dexterous Manipulation Learning*，[arXi `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`
 - [AGILE：人形 Loco-Manipulation 学习工作流](wiki/entities/paper-agile-humanoid-loco-manipulation.md) — AGILE**（*A Generic Isaac-Lab based Engine*；论文 *AGILE: A Comprehensive Workflow for Humanoid Loco-M `📅unknown` `[entity_page]`
+- [Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md) — Agile Perceptive Traversal**（*Learning Agile Perceptive Traversal of Sparse 3D Structures for Huma `📅unknown` `[entity_page]`
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
 - [AlloEgo-VLM：消歧自我中心与环境中心参照系](wiki/entities/paper-alloego-vlm.md) — AlloEgo-VLM**（*AlloEgo-VLM: Disambiguating Allocentric and Egocentric Reference Frames in Vision-L `📅unknown` `[entity_page]`
 - [AME — Attention-Based Map Encoding](wiki/entities/paper-ame-attention-based-map-encoding.md) — 一句话定义**：用 **CNN 提取机器人中心高程图逐点局部特征**，再以 **本体与速度指令条件化的 multi-head attention** 聚焦 **下一落脚可行区域**，与 propr `📅unknown` `[entity_page]`
@@ -497,6 +498,7 @@
 - [仿生多模态机器人综述：五项指标与软硬智能融合](wiki/entities/paper-bioinspired-multimodal-robotics.md) — Bioinspired multimodal robotics**（共同一作：Ziyu Ren† / Youning Duo† / Haoyuan Xu†；Yihui Zhang、Xingjian `📅unknown` `[entity_page]`
 - [双稳态软跳跃机器人（Bistable Soft Jumper）](wiki/entities/paper-bistable-soft-jumper-magnetic.md) — Bistable soft jumper capable of fast response and high takeoff velocity**（Daofan Tang、Chengqian Zh `📅unknown` `[entity_page]`
 - [Regularized Predictive Control Framework（Bledt Thesis）](wiki/entities/paper-bledt-rpc-thesis.md) — Gerardo Bledt（MIT，2020 博士论文，dspace:1721.1/125485） `📅unknown` `[entity_page]`
+- [Blind Dexterity：纯本体感知人形全身操作](wiki/entities/paper-blind-dexterity.md) — Blind Dexterity**（*Whole-Body Humanoid Manipulation via Pure Proprioception*，[arXiv:2608.29487](ht `📅unknown` `[entity_page]`
 - [BLIP-2](wiki/entities/paper-blip2.md) — BLIP-2**（*Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language  `📅unknown` `[entity_page]`
 - [BooST：技能要同时记住「做什么」和「怎么动」](wiki/entities/paper-boost-skill-transfer.md) — BooST**（*Bridging Semantics and Motions for Efficient Skill Transfer*；[arXiv:2608.10600](https://a `📅unknown` `[entity_page]`
 - [BridgeVLA++（Memory-Augmented 3D VLA · arXiv:2608.05042）](wiki/entities/paper-bridgevla-plusplus.md) — BridgeVLA++**（*BridgeVLA++: A Data-Efficient, Generalizable, and Memory-Augmented Vision-Language- `📅unknown` `[entity_page]`
@@ -2284,6 +2286,7 @@
 - [SLAMFormer-∞（Infinite SLAM Transformer）](wiki/entities/paper-slamformer-infinity.md) — SLAMFormer-∞**（*Infinite SLAM Transformer for Unbounded Frontend and Backend Processing*，[arXiv:26 `📅unknown` `[entity_page]`
 - [SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）](wiki/entities/paper-slim-05b.md) — SLIM-0.5B**（*Learning Action-Grounded Predictive Latents for Robot Manipulation*，[arXiv:2608.09771 `📅unknown` `[entity_page]`
 - [SLowRL：安全低秩 RL 真机运动微调](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态 `📅unknown` `[entity_page]`
+- [SmoothRL：异步执行下的 VLA 在线强化学习](wiki/entities/paper-smoothrl.md) — SmoothRL**（*Online Reinforcement Learning During Asynchronous Execution*，[arXiv:2608.29768](https: `📅unknown` `[entity_page]`
 - [SMP：可复用 Score-Matching 运动先验](wiki/entities/paper-smp.md) — SMP**（*SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*，[arXiv:2512 `📅unknown` `[entity_page]`
 - [SMPC-to-RL：稀疏奖励全身 Loco-Manipulation](wiki/entities/paper-smpc2rl-loco-manipulation.md) — SMPC-to-RL**（*Learning Loco-Manipulation From SMPC Demonstrations With Sparse Offline-to-Online RL `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
