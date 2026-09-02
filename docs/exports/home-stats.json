@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-02",
-  "node_count": 3393,
-  "edge_count": 30564,
+  "node_count": 3396,
+  "edge_count": 30593,
   "coverage": {
-    "covered": 3368,
-    "total": 3368,
+    "covered": 3371,
+    "total": 3371,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-anyworld.md",
+      "detail_id": "entity-paper-anyworld",
+      "label": "AnyWorld（因子化 Egocentric 跨具身世界模型）",
+      "type": "entity",
+      "recency": "2026-09-02",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
     {
       "path": "wiki/entities/paper-fixanything.md",
       "detail_id": "entity-paper-fixanything",
@@ -199,52 +209,42 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-abot-n1.md",
-      "detail_id": "entity-paper-abot-n1",
-      "label": "ABot-N1（通用视觉–语言导航基础模型）",
-      "type": "entity",
-      "recency": "2026-08-31",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fixanything.md",
-    "detail_id": "entity-paper-fixanything",
-    "label": "FixAnything",
+    "path": "wiki/entities/paper-anyworld.md",
+    "detail_id": "entity-paper-anyworld",
+    "label": "AnyWorld（因子化 Egocentric 跨具身世界模型）",
     "type": "entity",
-    "recency": "2026-09-01",
+    "recency": "2026-09-02",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 593
+      "size": 592
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 461
+      "size": 482
     },
     {
       "label": "视觉-语言-动作",
-      "size": 247
+      "size": 257
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 221
+      "size": 220
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 167
+      "size": 160
     },
     {
       "label": "仿真到现实",
-      "size": 134
+      "size": 136
     }
   ],
   "top_hubs": [
@@ -252,7 +252,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1374,
+      "degree": 1376,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -275,7 +275,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 851,
+      "degree": 853,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -314,7 +314,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 502,
+      "degree": 504,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -399,7 +399,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 41
+      "degree": 42,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }

@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, biped, reinforcement-learning, perceptive-locomotion, neural-mapping, teacher-student, attention, sim2real, eth, anymal, limx]
 status: stable
 summary: "AME-2：全局+局部 AME 编码器 + 不确定性神经高程映射 + Teacher–Student RL，在 ANYmal-D 与 TRON1 上同时实现 parkour 级敏捷与稀疏/未见地形泛化。"
-updated: 2026-08-29
+updated: 2026-09-02
 arxiv: "2601.08485"
 venue: "arXiv 2026"
 related:
@@ -166,6 +166,7 @@ Teacher 输入 **3D** 坐标；Student 输入 **4D** $(x,y,z,u)$（$u$ 为不确
 ## 关联页面
 
 - [AME（AME-1）](./paper-ame-attention-based-map-encoding.md)
+- [Agile Perceptive Traversal](./paper-agile-perceptive-traversal-sparse-3d.md) — 同一 AME-2 编码器用于 PM-01 原始 E1R 猴架穿越（arXiv:2608.29769）
 - [ANYmal](./anymal.md)
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)

@@ -4,6 +4,12 @@
 - **步骤 2.5：** 项目页 `xpeng-robotics.github.io/anyworld` **未列** GitHub/权重 → **未开源**
 - **关键页：** [`paper-anyworld`](wiki/entities/paper-anyworld.md)；交叉 [`paper-unit-unified-physical-language`](wiki/entities/paper-unit-unified-physical-language.md)
 
+## [2026-09-02] ingest | sources/papers/agile_perceptive_traversal + blind_dexterity + smoothrl — 三篇 arXiv:2608.29769/29487/29768：猴架 LiDAR 感知穿越 / G1 纯本体操作 / 异步 VLA 在线 RL；均未开源（Blind Dexterity 待发布）
+
+- **触发：** 用户指定三篇论文 + 项目页
+- **步骤 2.5：** Sparse-3D 项目页无代码；BlindDexterity **Code to be released**；SmoothRL 项目页 **404**、arXiv 无仓库
+- **关键页：** [`paper-agile-perceptive-traversal-sparse-3d`](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md)、[`paper-blind-dexterity`](wiki/entities/paper-blind-dexterity.md)、[`paper-smoothrl`](wiki/entities/paper-smoothrl.md)
+
 ## [2026-09-01] ingest | sources/papers/fixanything_arxiv_2608_23549.md — FixAnything：Wan2.1 LoRA 统一修复四类 3D 渲染伪影 + Flow-DPO 几何偏好；推理与 HF 权重已开源
 
 - **触发：** 用户指定 arXiv:2608.23549（ECCV 2026，CMU）
