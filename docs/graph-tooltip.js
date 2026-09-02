@@ -208,7 +208,7 @@
     return ' style="--community-r:' + rgb.r + ';--community-g:' + rgb.g + ';--community-b:' + rgb.b + '"';
   }
 
-  /** 浮窗/侧边栏类型徽章：badgeColor 由图谱 colorMode 决定（社区/类型/健康度） */
+  /** 浮窗/侧边栏类型徽章：badgeColor 由图谱 colorMode 决定（社区/类型/开源/健康度） */
   function buildMetaBadgesHtml(opts) {
     opts = opts || {};
     var html = '';

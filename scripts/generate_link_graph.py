@@ -20,7 +20,8 @@ git 不可用（浅克隆）时回退 log.md；再无命中则回退 frontmatter
         "label": "MPC",
         "type": "method",
         "community": "community-0",
-        "institutions": ["nvidia"]
+        "institutions": ["nvidia"],
+        "has_repo": true
       }
     ],
     "edges": [{"source": "wiki/methods/mpc.md", "target": "wiki/concepts/wbc.md"}],
@@ -338,7 +339,7 @@ def _append_latest_node(
         action = _wiki_node_action(rel, log_date, first_log_dates, git_added_dates)
         if action:
             entry["action"] = action
-    has_repo = bool(base.get("_has_repo_source"))
+    has_repo = bool(base.get("has_repo") or base.get("_has_repo_source"))
     if not has_repo:
         try:
             has_repo = wiki_has_repo_source(p.read_text(encoding="utf-8"))
@@ -1668,9 +1669,10 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             # 论文节点：type=entity/method 且 frontmatter tags 含 paper（私有标记，写出前剔除）。
             # method 页覆盖 SONIC、BeyondMimic 等升格为深度拆解页的论文，须一并进论文榜单。
             "_is_paper": node_type in ("entity", "method") and "paper" in node_tags,
-            # 更新记录 ⭐️：关联 sources/repos/ 源码归档（私有标记，写出前剔除）
-            "_has_repo_source": wiki_has_repo_source(content),
         }
+        # 图谱「按开源」着色 / 详情页 ⭐️：关联 sources/repos/ 源码归档
+        if wiki_has_repo_source(content):
+            node["has_repo"] = True
         institutions = derive_node_institutions(content)
         if institutions:
             node["institutions"] = institutions
@@ -1718,7 +1720,7 @@ def _compute_graph_stats(
             "type": node.get("type") or "",
             "degree": total_degree[node["id"]],
         }
-        if node.get("_has_repo_source"):
+        if node.get("has_repo"):
             entry["has_repo"] = True
         community_label = _community_label_for_node(node, community_labels)
         if community_label:
@@ -1842,7 +1844,6 @@ def main() -> None:
     added_dates = wiki_added_dates(nodes)
     for node in nodes:
         node.pop("_is_paper", None)
-        node.pop("_has_repo_source", None)
         recency = node.pop("_recency", None)
         if recency:
             node["recency"] = recency
