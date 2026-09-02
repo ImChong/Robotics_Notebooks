@@ -1,3 +1,10 @@
+## [2026-09-02] ingest | sources/papers/hydrogym_nature_s41586_026_10917_6.md — HydroGym 主动流控 RL 平台（Nature 2026）；arXiv:2512.17534 开放全文 + GitHub/HF 已开源；通道→翼型零样本减阻
+
+- **触发：** 用户指定 Nature s41586-026-10917-6，并查询 arXiv 等开放获取入口
+- **开放获取：** **arXiv:2512.17534**（推荐）；Nature 读者链 rdcu.be/fBvqa；SI PDF 可下
+- **步骤 2.5：** `dynamicslab/hydrogym` + `dynamicslab.github.io/hydrogym` → **已开源（MIT）**；HF 环境 checkpoint
+- **关键页：** [`paper-hydrogym`](wiki/entities/paper-hydrogym.md)；交叉 [`gymnasium`](wiki/entities/gymnasium.md) / [`sim2real`](wiki/concepts/sim2real.md)
+
 ## [2026-09-02] ingest | sources/papers/ame_arxiv_2506_09588.md, sources/repos/ame_locomotion_sii_fusc.md — AME 补 Science Robotics 10(105) eadv3604 正式发表与 SII-FUSC 社区复现；复核 UCAG-P 仍待发布
 
 - **触发：** 用户一次 ingest 含两篇：（1）*One Policy, Many Embodiments* / UCAG-P；（2）*Attention-Based Map Encoding* / AME（arXiv:2506.09588）
