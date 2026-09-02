@@ -64,8 +64,10 @@ function copyToArtifacts(src, name) {
       const tabs = {
         type: !!document.getElementById('filter-mode-type'),
         community: !!document.getElementById('filter-mode-community'),
+        opensource: !!document.getElementById('filter-mode-opensource'),
         health: !!document.getElementById('filter-mode-health'),
         communityActive: document.getElementById('filter-mode-community')?.classList.contains('active'),
+        order: Array.from(document.querySelectorAll('#filter-mode-tabs .chip')).map((el) => el.id),
       };
       const sections = [
         'filter-dimension-section',
@@ -78,8 +80,17 @@ function copyToArtifacts(src, name) {
       return { tabs, sections };
     });
     console.log('UI state:', JSON.stringify(chromeState, null, 2));
-    if (!chromeState.tabs.type || !chromeState.tabs.community || !chromeState.tabs.health) {
+    if (!chromeState.tabs.type || !chromeState.tabs.community || !chromeState.tabs.opensource || !chromeState.tabs.health) {
       throw new Error('Mode tabs missing');
+    }
+    const expectedOrder = [
+      'filter-mode-type',
+      'filter-mode-community',
+      'filter-mode-opensource',
+      'filter-mode-health',
+    ];
+    if (JSON.stringify(chromeState.tabs.order) !== JSON.stringify(expectedOrder)) {
+      throw new Error('Mode tab order mismatch: ' + JSON.stringify(chromeState.tabs.order));
     }
     if (!chromeState.tabs.communityActive) {
       throw new Error('Community mode tab should be active by default');

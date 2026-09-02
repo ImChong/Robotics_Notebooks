@@ -1,7 +1,7 @@
 // Verify graph.html 「显示社区标签」勾选框行为：
 //  1. 按社区模式默认开启 → 各聚类中心出现社区名称标签
 //  2. 取消勾选 → 标签消失
-//  3. 切到按类型/按健康度筛选 → 勾选框置灰不可选、标签不显示
+//  3. 切到按类型/按健康度/按开源筛选 → 勾选框置灰不可选、标签不显示
 //  4. 切回按社区 → 勾选框恢复可选，勾选状态下标签重现
 //  5. 勾选具体社区 → 只剩对应社区的标签
 // Usage: node scripts/verify_graph_community_labels.cjs [baseUrl] [outDir]
@@ -163,6 +163,13 @@ const path = require('path');
     await new Promise((r) => setTimeout(r, 500));
     s = await labelState();
     check('按健康度筛选：勾选框置灰不可选', s.disabled === true && s.toggleDisabledClass === true);
+
+    // ── 3c. 切到按开源筛选 → 同样置灰 ──
+    await page.evaluate(() => document.getElementById('filter-mode-opensource').click());
+    await new Promise((r) => setTimeout(r, 500));
+    s = await labelState();
+    check('按开源筛选：勾选框置灰不可选', s.disabled === true && s.toggleDisabledClass === true);
+    check('按开源筛选：社区标签不显示', s.count === 0);
 
     // ── 4. 切回按社区 → 勾选框恢复、勾选状态下标签重现 ──
     await page.evaluate(() => document.getElementById('filter-mode-community').click());

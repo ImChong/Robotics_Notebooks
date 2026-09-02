@@ -1421,6 +1421,13 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
       flex-wrap: wrap;
     }
+    .filter-mode-tabs .chip {
+      flex: 1 1 0;
+      padding: 0 6px;
+      font-size: .7rem;
+      text-align: center;
+      min-width: 0;
+    }
     .filter-subtitle {
       padding: 8px 14px 0;
       font-size: .72rem;
@@ -1486,7 +1493,7 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-    /* 按类型 / 按社区 / 按健康度：手风琴容器（对齐路线视图 / 机构） */
+    /* 按类型 / 按社区 / 按开源 / 按健康度：手风琴容器（对齐路线视图 / 机构） */
     .filter-sections-scroll {
       flex: 1 1 auto;
       min-height: 120px;
@@ -1961,6 +1968,7 @@
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
         <button id="filter-mode-type" class="chip" type="button">按类型</button>
         <button id="filter-mode-community" class="chip active" type="button">按社区</button>
+        <button id="filter-mode-opensource" class="chip" type="button">按开源</button>
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
       <details id="filter-degree-section" class="filter-degree-section">
@@ -2140,6 +2148,18 @@
       { value: '2', label: '2 分', color: '#facc15' },
       { value: '3', label: '3 分', color: '#4ade80' }
     ];
+    // 开源：teal（可复现入口）；未开源：rose（与健康度红 / 类型粉区分）
+    const OPENSOURCE_COLOR_OPEN = '#2dd4bf';
+    const OPENSOURCE_COLOR_CLOSED = '#fb7185';
+    function nodeIsOpenSource(d) {
+      return !!d.has_repo;
+    }
+    function nodeOpensourceKey(d) {
+      return nodeIsOpenSource(d) ? 'open' : 'closed';
+    }
+    function nodeOpensourceColor(d) {
+      return nodeIsOpenSource(d) ? OPENSOURCE_COLOR_OPEN : OPENSOURCE_COLOR_CLOSED;
+    }
     const COMMUNITY_COLORS = d3.schemeTableau10.concat([
       '#e377c2', '#bcbd22', '#17becf', '#aec7e8', '#ffbb78', '#98df8a', '#c5b0d5'
     ]);
@@ -2181,6 +2201,7 @@
     const filterSubtitle = document.getElementById('filter-subtitle');
     const filterModeTypeBtn = document.getElementById('filter-mode-type');
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
+    const filterModeOpensourceBtn = document.getElementById('filter-mode-opensource');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
     const filterDimensionLabel = document.getElementById('filter-dimension-label');
@@ -2189,6 +2210,7 @@
     const FILTER_DIMENSION_META = {
       type: { emoji: '🏷️', unit: '项' },
       community: { emoji: '🧩', unit: '个社区' },
+      opensource: { emoji: '⭐', unit: '项' },
       health: { emoji: '💚', unit: '项' },
     };
 
@@ -2455,7 +2477,7 @@
     }
 
     // 研究机构筛选：独立于着色维度的过滤面（与「路线视图」同类），多选；命中任一
-    // 所选机构即保留，着色仍由 colorMode 决定（社区/类型/健康度），不改图例配色。
+    // 所选机构即保留，着色仍由 colorMode 决定（社区/类型/开源/健康度），不改图例配色。
     const activeInstitutions = new Set();
 
     function nodeMatchesInstitutionFilter(d) {
@@ -2508,6 +2530,7 @@
 
     let focusedCommunityId = null;
     let focusedType = null;
+    let focusedOpensource = null;
     let focusedHealth = null;
 
     /* ── 路线视图（V22 P3）：复用 link-graph.json 的 path / community 元数据 ── */
@@ -2665,18 +2688,27 @@
       }
     }
 
+    function colorModeClusterKey(d) {
+      if (colorMode === 'community') return d.community || '';
+      if (colorMode === 'opensource') return nodeOpensourceKey(d);
+      return d.type || '';
+    }
+    function colorModeClusterCategories() {
+      if (colorMode === 'community') return Array.from(communityLabelMap.keys());
+      if (colorMode === 'opensource') return ['open', 'closed'];
+      return Array.from(new Set(nodes.map(n => n.type)));
+    }
+
     function getMagneticConfig3D() {
       if (!isMagnetic3D) return null;
-      const categories = (colorMode === 'community')
-        ? Array.from(communityLabelMap.keys())
-        : Array.from(new Set(nodes.map(n => n.type)));
+      const categories = colorModeClusterCategories();
       const centers = window.RNGraph3D?.buildMagneticCenters3D
         ? window.RNGraph3D.buildMagneticCenters3D(categories)
         : {};
       return {
         enabled: true,
         centers,
-        getKey: d => ((colorMode === 'community') ? d.community : d.type) || '',
+        getKey: d => colorModeClusterKey(d),
       };
     }
 
@@ -2902,6 +2934,9 @@
           ? (communityColorMap.get(d.community) || COMMUNITY_COLORS[9])
           : (TYPE_COLOR[d.type] || TYPE_COLOR['']);
       }
+      if (colorMode === 'opensource') {
+        return nodeOpensourceColor(d);
+      }
       if (colorMode === 'health') {
         const score = d.health_score != null ? Math.min(d.health_score, 3) : 0;
         return HEALTH_COLORS[score];
@@ -2919,6 +2954,9 @@
     function nodeColor(d)  {
       if (colorMode === 'community') {
         return communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
+      }
+      if (colorMode === 'opensource') {
+        return nodeOpensourceColor(d);
       }
       if (colorMode === 'health') {
         return HEALTH_COLORS[d.health_score != null ? Math.min(d.health_score, 3) : 0];
@@ -2980,6 +3018,18 @@
             <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div><span class="legend-label-text">${escapeHtml(String(label))}</span>${countHtml}
           </div>`);
         }
+      } else if (colorMode === 'opensource') {
+        rows.push('<div class="legend-title">按开源着色</div>');
+        const openRows = [
+          { key: 'open', color: OPENSOURCE_COLOR_OPEN, label: '已开源 — 关联 sources/repos' },
+          { key: 'closed', color: OPENSOURCE_COLOR_CLOSED, label: '未开源 — 无源码归档' },
+        ];
+        for (const row of openRows) {
+          const isActive = (focusedOpensource === row.key);
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-opensource="${escapeHtml(String(row.key))}">
+            <div class="legend-dot" style="background:${escapeHtml(String(row.color))}"></div>${escapeHtml(String(row.label))}
+          </div>`);
+        }
       } else if (colorMode === 'health') {
         rows.push('<div class="legend-title">按健康度着色</div>');
         const healthRows = [
@@ -3012,6 +3062,7 @@
       if (graphLegendFab) {
         const fabLabels = {
           community: '按社区着色',
+          opensource: '按开源着色',
           health: '按健康度着色',
           type: '按类型着色',
         };
@@ -3686,9 +3737,7 @@
       simulation.force('charge').strength(chargeStrength);
       
       if (isMagnetic2D) {
-        const categories = (colorMode === 'community') 
-          ? Array.from(communityLabelMap.keys())
-          : Array.from(new Set(nodes.map(n => n.type)));
+        const categories = colorModeClusterCategories();
           
         const angleStep = (2 * Math.PI) / (categories.length || 1);
         const radius = Math.min(W, H) * 0.25;
@@ -3701,12 +3750,12 @@
         });
 
         const getTargetX = d => {
-          const key = (colorMode === 'community') ? d.community : d.type;
+          const key = colorModeClusterKey(d);
           return centers[key]?.x || W/2;
         };
         const getTargetY = d => {
-          const key = (colorMode === 'community') ? d.community : d.type;
-          return centers[key]?.y || H/2;
+          const key = colorModeClusterKey(d);
+          return centers[key]?.y || W/2;
         };
 
         simulation.force('x', d3.forceX(getTargetX).strength(0.18));
@@ -3927,6 +3976,19 @@
 
     // 首屏力布局在下方 runStabilizedLayout2D() 就位后再 finishLoading。
 
+    function getOpensourceFilterOptions() {
+      let open = 0;
+      let closed = 0;
+      for (const n of nodes) {
+        if (nodeIsOpenSource(n)) open += 1;
+        else closed += 1;
+      }
+      return [
+        { value: 'open', label: '已开源', color: OPENSOURCE_COLOR_OPEN, size: open },
+        { value: 'closed', label: '未开源', color: OPENSOURCE_COLOR_CLOSED, size: closed },
+      ];
+    }
+
     function getFilterOptions() {
       if (colorMode === 'community') {
         return getSortedCommunities().map((community) => ({
@@ -3934,6 +3996,9 @@
           label: formatCommunityOptionLabel(community.id),
           color: communityColorMap.get(community.id) || COMMUNITY_COLORS[9]
         }));
+      }
+      if (colorMode === 'opensource') {
+        return getOpensourceFilterOptions();
       }
       if (colorMode === 'health') {
         return HEALTH_FILTER_OPTIONS;
@@ -3943,6 +4008,7 @@
 
     function getColorModeLabel(mode) {
       if (mode === 'community') return '按社区';
+      if (mode === 'opensource') return '按开源';
       if (mode === 'health') return '按健康度';
       return '按类型';
     }
@@ -3965,6 +4031,7 @@
       if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
       if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
       if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active', colorMode === 'community');
+      if (filterModeOpensourceBtn) filterModeOpensourceBtn.classList.toggle('active', colorMode === 'opensource');
       if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active', colorMode === 'health');
       updateDimensionFilterSummary();
       if (!filterPanelBody) return;
@@ -3974,9 +4041,10 @@
       } else {
         filterPanelBody.innerHTML = options.map(option => {
           const checked = activeFilters.has(option.value) ? ' checked' : '';
-          const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
-          const countBadge = meta && meta.size != null
-            ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
+          const communityMeta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
+          const size = communityMeta && communityMeta.size != null ? communityMeta.size : option.size;
+          const countBadge = size != null
+            ? '<span class="filter-count-badge">' + escapeHtml(String(size)) + '</span>'
             : '';
           return '<label class="filter-item">'
             + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
@@ -4031,6 +4099,7 @@
       activeFilters.clear();
       focusedCommunityId = null;
       focusedType = null;
+      focusedOpensource = null;
       focusedHealth = null;
       updateFilterCount();
       refreshNodeColors();
@@ -4040,6 +4109,7 @@
 
     if (filterModeTypeBtn) filterModeTypeBtn.addEventListener('click', () => setColorMode('type'));
     if (filterModeCommunityBtn) filterModeCommunityBtn.addEventListener('click', () => setColorMode('community'));
+    if (filterModeOpensourceBtn) filterModeOpensourceBtn.addEventListener('click', () => setColorMode('opensource'));
     if (filterModeHealthBtn) filterModeHealthBtn.addEventListener('click', () => setColorMode('health'));
 
     function syncGraphDomFromSimulation() {
@@ -4336,7 +4406,7 @@
     function hasActiveGraphFilter() {
       return topDegreeIds !== null || topRecencyIds !== null
         || activeFilters.size > 0 || searchQuery.length > 0
-        || focusedCommunityId || focusedType || focusedHealth !== null
+        || focusedCommunityId || focusedType || focusedOpensource || focusedHealth !== null
         || activeInstitutions.size > 0 || currentDepth !== 'all';
     }
 
@@ -4631,7 +4701,7 @@
       setFilterPanelOpen(filterPanel.hidden);
     });
 
-    // V17: 社区高亮功能 / V22: 扩展支持类型与健康度筛选
+    // V17: 社区高亮功能 / V22: 扩展支持类型与健康度筛选 / 开源筛选
     graphLegend.addEventListener('click', (ev) => {
       if (areFiltersLocked()) return;
       const row = ev.target.closest('.legend-row');
@@ -4639,12 +4709,15 @@
 
       const cid = row.getAttribute('data-community-id');
       const type = row.getAttribute('data-type');
+      const opensource = row.getAttribute('data-opensource');
       const health = row.getAttribute('data-health');
 
       if (cid) {
         focusedCommunityId = (focusedCommunityId === cid) ? null : cid;
       } else if (type) {
         focusedType = (focusedType === type) ? null : type;
+      } else if (opensource) {
+        focusedOpensource = (focusedOpensource === opensource) ? null : opensource;
       } else if (health !== null) {
         focusedHealth = (focusedHealth === health) ? null : health;
       } else {
@@ -4729,10 +4802,14 @@
     function nodeMatchesCurrentFilter(d) {
       if (focusedCommunityId) return d.community === focusedCommunityId;
       if (focusedType) return d.type === focusedType;
+      if (focusedOpensource) return nodeOpensourceKey(d) === focusedOpensource;
       if (focusedHealth !== null) return String(d.health_score != null ? d.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(d.community);
+      }
+      if (colorMode === 'opensource') {
+        return activeFilters.has(nodeOpensourceKey(d));
       }
       if (colorMode === 'health') {
         return activeFilters.has(String(d.health_score != null ? d.health_score : 0));
@@ -4743,10 +4820,14 @@
     function edgeMatchesCurrentFilter(n) {
       if (focusedCommunityId) return n.community === focusedCommunityId;
       if (focusedType) return n.type === focusedType;
+      if (focusedOpensource) return nodeOpensourceKey(n) === focusedOpensource;
       if (focusedHealth !== null) return String(n.health_score != null ? n.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(n.community);
+      }
+      if (colorMode === 'opensource') {
+        return activeFilters.has(nodeOpensourceKey(n));
       }
       if (colorMode === 'health') {
         return activeFilters.has(String(n.health_score != null ? n.health_score : 0));
