@@ -9,8 +9,8 @@
 - **arXiv：** 2602.11075
 - **出处：** arXiv 2026
 - **论文：** <https://arxiv.org/abs/2602.11075>
-- **代码：** 未在清单中标注
-- **项目页：** <https://opendrivelab.com/kai0-rl/>
+- **代码：** <https://github.com/OpenDriveLab/RISE>（2026-09-02 核查）
+- **项目页：** <https://opendrivelab.com/RISE/>（清单原误指向 kai0-rl）
 - **Highlights（清单）：** Self-improving robot policy with compositional world model.
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md`](../../wiki/entities/paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md)
 
@@ -21,7 +21,7 @@
 | 已发布 | 备注 |
 |--------|------|
 | 清单条目元数据 | 本 source 为策展摘录，非全文转存 |
-| 代码/权重 | 以项目页 / GitHub 实际链接为准；清单标注见上 |
+| 代码/权重 | **已开源** [OpenDriveLab/RISE](https://github.com/OpenDriveLab/RISE)（2026-09-02 核查） |
 
 ## 对 wiki 的映射
 

@@ -1,104 +1,137 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, world-models, model-based-rl, vla, opendrivelab, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-02
 arxiv: "2602.11075"
-venue: "arXiv 2026"
-summary: "Self-improving robot policy with compositional world model."
+venue: "RSS 2026"
+code: https://github.com/OpenDriveLab/RISE
 related:
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../entities/awesome-world-models.md
   - ../overview/sun-awesome-wm-technology-map.md
-  - ../methods/generative-world-models.md
+  - ./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2602_11075_rise-self-improving-robot-policy-with-co.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+  - ../../sources/repos/opendrivelab-rise.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
-  - ../../sources/repos/awesome-world-models.md
+summary: "RISE（arXiv:2602.11075，OpenDriveLab，RSS 2026）：组合式世界模型（动力学+进度/价值）里做想象 RL，再部署真机。OpenDriveLab/RISE 已开源；项目页是 opendrivelab.com/RISE/。"
 ---
 
-# RISE
+# RISE：组合式世界模型里的自提升策略
 
-**RISE: Self-Improving Robot Policy with Compositional World Model** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 224/571** 篇，分组 **63 World Models for VLA Training & Evaluation Combining Paradigms**。本页为知识库 **策展索引级** 详情节点；方法细节与量化指标以原文 PDF / 项目页为准。
+**RISE**（*Self-Improving Robot Policy with Compositional World Model*，[arXiv:2602.11075](https://arxiv.org/abs/2602.11075)，[项目页](https://opendrivelab.com/RISE/)，[代码](https://github.com/OpenDriveLab/RISE)）由 **OpenDriveLab** 提出（RSS 2026）：把真实世界 RL 换成在 **组合式世界模型** 中的想象强化学习，再经 PiPER 一类路径落到真机。Awesome **第 224/571**（63 World Models for VLA Training & Evaluation）在此升格。
 
 ## 一句话定义
 
-Self-improving robot policy with compositional world model.
+**动力学与价值拆开建 WM，在想象里做 RL，少烧真机小时。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WM | World Model | 环境前向预测模型 |
-| WAM | World Action Model | 世界预测与动作联合建模 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
+| WM | World Model | 可滚动的环境模型 |
+| MBRL | Model-Based RL | 在想象中更新策略 |
+| VLA | Vision-Language-Action | 可被本闭环后训练的策略族 |
+| PiPER | 部署管线名（文内） | 想象训练 → 真机 |
 
 ## 为什么重要
 
-- Self-improving robot policy with compositional world model.
-- 在 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 与列表实体 [Awesome World Models](../entities/awesome-world-models.md) 及站内方法/任务页交叉，便于从策展索引跳转到学习主线。
+- 纳入 [VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md) 的 WM+RL 工程篇。
+- 提供 **offline policy → online RL → real robot** 可复现代码链。
+- 组合式拆分比端到端「又预测又打分」更稳。
+- **已开源** `OpenDriveLab/RISE`。清单旧项目页 `kai0-rl` **不是** 本仓库入口。
 
-## 核心信息（索引级）
+## 核心信息
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 224/571 |
-| 分组 | 63 World Models for VLA Training & Evaluation Combining Paradigms |
-| 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2602.11075> |
-| 项目页 | <https://opendrivelab.com/kai0-rl/> |
+| 项 | 内容 |
+|----|------|
+| **机构** | OpenDriveLab |
+| **模块** | Dynamics + Progress/Value + Imagination RL |
+| **部署** | 想象训练后上真机 |
+| **开源** | **已开源** [OpenDriveLab/RISE](https://github.com/OpenDriveLab/RISE) |
+| **项目页** | [opendrivelab.com/RISE](https://opendrivelab.com/RISE/) |
 
-## 核心机制（归纳）
+### 流程总览
 
-### 策展导读要点
+```mermaid
+flowchart LR
+  off[离线策略] --> dyn[动力学模型]
+  off --> val[进度/价值模型]
+  dyn --> imag[想象 rollout]
+  val --> imag
+  imag --> rl[想象中 RL]
+  rl --> real[真机部署]
+```
 
-Self-improving robot policy with compositional world model.
+## 评测
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
-
-## 评测与指标（索引级）
-
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.11075) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
-
-## 与其他工作对比（索引级）
-
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **63 World Models for VLA Training & Evaluation Combining Paradigms** 分组逐条展开。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 强调硬件交互成本下降：rollout 主要在 WM 内。
+- 具体成功率以 [原文](https://arxiv.org/abs/2602.11075) 为准。
+- Awesome Highlights 未搬运数值。
 
 ## 结论
 
-**本条目的站内价值是把「RISE」从外部 Awesome 列表提升为可链接的知识节点，并保留清单 Highlights 作为阅读锚点。**
+**要「策略自己变强」，先有可滚动的动力学和单独的进度估计，再在想象里 RL。**
 
-- 起作用的是策展坐标：列表分组 **63 World Models for VLA Training & Evaluation Combining Paradigms** + Highlights 指出的问题设定，而不是本页自行推导的新算法结论。
-- 适用边界：索引级页面不能替代 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 若该工作成为学习主线，应再升格为深度论文实体（补机构、实验表、源码运行时序图或「不适用」说明）。
+- 组合式比一个大网同时预测与打分更稳
+- 想象 RL 替代的是真机交互次数，不是仿真标定
+- 完整代码链比单篇方法图更有工程价值
+- 可接「重定向数据 → WM → 自提升」路线
+- 复现以 RISE 仓 README 为准，勿打开旧 kai0-rl 链接当官方页
 
-## 常见误区
+## 源码运行时序图
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 同一 arXiv 在全库只允许一个 canonical 详情节点；若已有深度页，应以深度页为准。
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Repo as OpenDriveLab/RISE
+    participant Dyn as Dynamics
+    participant Val as Progress/Value
+    participant RL as Imagination RL
+    participant Robot as 真机
+    Dev->>Repo: clone + 环境
+    Dev->>Dyn: 训练/加载动力学
+    Dev->>Val: 训练/加载进度模型
+    Dyn->>RL: 想象轨迹
+    Val->>RL: 回报估计
+    RL->>Robot: PiPER 部署
+    Robot-->>Dev: 自提升后成功率
+```
+
+## 局限与风险
+
+- **模型偏差：** 想象乐观会在真机上崩。
+- **项目页曾被清单误标** 为 kai0-rl。
+- **不是 VLA 本体：** 是 WM+RL 后训练框架。
+
+## 与其他工作对比
+
+| 工作 | 相对本页 |
+|------|----------|
+| [LaDi-WM](./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md) | 预测引导，非完整想象 RL 圈 |
+| [DreamDojo](./paper-hrl-stack-35-dreamdojo.md) | 人视频预训练 WM |
+| [Model-based RL](../methods/model-based-rl.md) | 方法总览 |
 
 ## 关联页面
 
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
-
-## 参考来源
-
-- [`sources/papers/sun_awesome_wm_2602_11075_rise-self-improving-robot-policy-with-co.md`](../../sources/papers/sun_awesome_wm_2602_11075_rise-self-improving-robot-policy-with-co.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2602.11075>
+- [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [Awesome World Models](../entities/awesome-world-models.md)
+- [Model-based RL](../methods/model-based-rl.md)
+- [Manipulation](../tasks/manipulation.md)
 
 ## 推荐继续阅读
 
-- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2602.11075)
+- [项目页](https://opendrivelab.com/RISE/)
+- [arXiv:2602.11075](https://arxiv.org/abs/2602.11075)
+
+## 参考来源
+
+- [sun_awesome_wm_2602_11075](../../sources/papers/sun_awesome_wm_2602_11075_rise-self-improving-robot-policy-with-co.md)
+- [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
+- [opendrivelab-rise](../../sources/repos/opendrivelab-rise.md)
+- [sun_awesome_wm_catalog](../../sources/papers/sun_awesome_wm_catalog.md)

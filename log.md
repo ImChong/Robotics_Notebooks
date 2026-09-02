@@ -1,3 +1,5 @@
+## [2026-09-02] ingest | sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md — 14 篇独立节点：新建 10（RT-1/RT-2/OpenVLA/π0/Octo/DP/CLIP/ACT/SPOC/DINOv2）+ 复用 4（LaDi-WM/DreamDojo/RISE/PointWorld）；Octo arxiv 迁出方法页；13/14 已开源，RT-2 官方训练未开源
+
 ## [2026-09-02] ingest | sources/blogs/worldlabs_atlas_omni_world_model.md — World Labs Atlas omni 世界模型（相机可控生成、稀疏 3D 重建、Real-to-Sim）；早期访问未开源；新增 wiki/entities/atlas-world-model.md；交叉 world-labs、generative-world-models
 
 - **触发：** 用户指定 <https://www.worldlabs.ai/blog/atlas>

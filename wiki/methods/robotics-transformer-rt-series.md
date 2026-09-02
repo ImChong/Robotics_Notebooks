@@ -2,8 +2,11 @@
 type: method
 tags: [vla, transformer, manipulation, foundation-policy, google-robotics]
 status: complete
-updated: 2026-05-10
+updated: 2026-09-02
 related:
+  - ../entities/paper-rt-1.md
+  - ../entities/paper-rt-2.md
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ./vla.md
   - ./dial-instruction-augmentation.md
   - ../concepts/foundation-policy.md

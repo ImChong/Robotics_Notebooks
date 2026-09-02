@@ -3184,6 +3184,13 @@
       "aliases": [
         "transcengram"
       ]
+    },
+    "szu": {
+      "label": "深圳大学（Shenzhen University）",
+      "aliases": [
+        "szu",
+        "shenzhen-university"
+      ]
     }
   }
 }

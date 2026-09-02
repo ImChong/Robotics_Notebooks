@@ -3,8 +3,10 @@
 type: entity
 tags: [repo, vla, manipulation, open-source, vision-language-action, stanford]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-02
 related:
+  - ./paper-openvla.md
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../methods/vla.md
   - ../entities/lerobot.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -19,7 +21,7 @@ summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + �
 
 # OpenVLA
 
-**OpenVLA**（[openvla/openvla](https://github.com/openvla/openvla)）提供可复现的 **Vision-Language-Action（VLA）** 训练与推理代码，将视觉-语言预训练能力迁移到 **机器人操作**（单臂/桌面操纵为主）。
+**OpenVLA**（[openvla/openvla](https://github.com/openvla/openvla)）提供可复现的 **Vision-Language-Action（VLA）** 训练与推理代码，将视觉-语言预训练能力迁移到 **机器人操作**（单臂/桌面操纵为主）。论文详情见 [paper-openvla](./paper-openvla.md)。
 
 ## 英文缩写速查
 
@@ -60,6 +62,8 @@ summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + �
 
 ## 关联页面
 
+- [OpenVLA 论文实体](./paper-openvla.md)
+- [VLA / 世界模型 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [VLA](../methods/vla.md)
 - [LeRobot](./lerobot.md)
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md)

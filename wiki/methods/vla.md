@@ -9,7 +9,12 @@ related:
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../overview/vla-open-source-repro-landscape-2025.md
+  - ../entities/paper-rt-1.md
+  - ../entities/paper-rt-2.md
+  - ../entities/paper-openvla.md
+  - ../entities/paper-pi0.md
   - ../entities/paper-tempo.md
   - ../entities/paper-autointervene.md
   - ../overview/vln-open-source-repro-paradigms.md

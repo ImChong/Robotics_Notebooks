@@ -21,6 +21,7 @@ sources:
   - ../../sources/papers/video2door_traversal_arxiv_2608_20251.md
   - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 related:
+  - ../entities/paper-act.md
   - ./behavior-cloning.md
   - ./humanoid-transformer-touch-dreaming.md
   - ./vla.md

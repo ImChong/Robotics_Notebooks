@@ -12,6 +12,7 @@
 - **代码：** <https://github.com/GuHuangAI/LaDiWM>
 - **项目页：** <https://guhuangai.github.io/LaDiWM.github.io/>
 - **Highlights（清单）：** Latent diffusion-based world model for predictive manipulation.
+- **2026-09-02 复核：** 仓库 **已开源**（CoRL 2025 官方代码）；升格阅读见 [具身智能研究室 VLA/WM 路线](../blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md`](../../wiki/entities/paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md)
 
 ---
@@ -21,7 +22,7 @@
 | 已发布 | 备注 |
 |--------|------|
 | 清单条目元数据 | 本 source 为策展摘录，非全文转存 |
-| 代码/权重 | 以项目页 / GitHub 实际链接为准；清单标注见上 |
+| 代码/权重 | **已开源** [GuHuangAI/LaDiWM](https://github.com/GuHuangAI/LaDiWM)（2026-09-02 核查） |
 
 ## 对 wiki 的映射
 
