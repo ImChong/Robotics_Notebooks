@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-01
+updated: 2026-09-02
 related:
   - ../entities/paper-flatlab.md
   - ../concepts/llm-robotics-control-interfaces.md

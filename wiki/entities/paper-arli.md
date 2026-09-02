@@ -14,7 +14,7 @@ tags:
   - microsoft
   - eth
 status: complete
-updated: 2026-08-27
+updated: 2026-09-02
 arxiv: "2608.23831"
 related:
   - ../methods/vla.md
@@ -141,6 +141,7 @@ sequenceDiagram
 ## 关联页面
 
 - [VLA](../methods/vla.md) — 通才策略与 RL 后训练
+- [SmoothRL](./paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL（arXiv:2608.29768；与 ARLI 正交）
 - [Action Chunking](../methods/action-chunking.md) — chunk / 异步 / RTC
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 延迟清单
 - [WAM 实时异步部署](./paper-wam-realtime-async.md) — 部署层对照
