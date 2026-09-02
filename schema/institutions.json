@@ -183,6 +183,21 @@
         "sjtu"
       ]
     },
+    "hohai": {
+      "label": "河海大学（Hohai University）",
+      "aliases": [
+        "hohai",
+        "hhu"
+      ]
+    },
+    "cowarobot": {
+      "label": "酷哇科技（COWARobot）",
+      "aliases": [
+        "cowarobot",
+        "coowa",
+        "coowai"
+      ]
+    },
     "zju": {
       "label": "浙江大学（ZJU）",
       "aliases": [

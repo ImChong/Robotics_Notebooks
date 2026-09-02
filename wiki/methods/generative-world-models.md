@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-02
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../entities/current-robotics-currentworld.md
@@ -59,6 +59,7 @@ related:
   - ../entities/paper-x-world.md
   - ../entities/paper-x-cache.md
   - ../entities/paper-x-foresight.md
+  - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-m4world.md
   - ../entities/paper-abot-world-0.md
@@ -271,7 +272,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 产业驾驶栈：多摄仿真 → 加速 → VLA 内嵌（示例：小鹏 X-World 系列）
 
-[X-World](../entities/paper-x-world.md)（arXiv:2603.19979）给出 **动作条件 7 摄** 自车中心视频世界模型，服务端到端智驾可扩展评测；[X-Cache](../entities/paper-x-cache.md)（arXiv:2604.20289）在少步蒸馏后改沿 **跨 chunk** 缓存 DiT block，约 **2.7×** 加速近无损。策略侧 [X-Foresight](../entities/paper-x-foresight.md) 把预测式世界模型嵌进 VLA（chunk-wise 因果 + Renderer），[X-Mind](../entities/paper-x-mind.md) 则把 PWM 压成 **Visual CoT 抽象 sketch** 以上车。整条链偏 **级联仿真底座 + 联合策略变体**；截至入库日项目页均 **未开源**，适合读设计对照而非复现。
+[X-World](../entities/paper-x-world.md)（arXiv:2603.19979）给出 **动作条件 7 摄** 自车中心视频世界模型，服务端到端智驾可扩展评测；[X-Cache](../entities/paper-x-cache.md)（arXiv:2604.20289）在少步蒸馏后改沿 **跨 chunk** 缓存 DiT block，约 **2.7×** 加速近无损。策略侧 [X-Foresight](../entities/paper-x-foresight.md) 把预测式世界模型嵌进 VLA（chunk-wise 因果 + Renderer），[X-Mind](../entities/paper-x-mind.md) 则把 PWM 压成 **Visual CoT 抽象 sketch** 以上车。规划调度侧 [RISE（酷哇）](../entities/paper-rise-adaptive-imagination-wam.md) 在 Encoder–Predictor–Planner 上按 Future Planning Gain 逐步停想象（NAVSIM；代码+CounterDrive 已开、权重未发）。整条链偏 **级联仿真底座 + 联合策略变体**；小鹏系列截至入库日项目页均 **未开源**，适合读设计对照而非复现。
 
 ### 多视角多模态驾驶仿真（示例：M⁴World）
 
@@ -354,6 +355,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [X-World](../entities/paper-x-world.md) — 小鹏 **7 摄动作条件** 驾驶世界模型（arXiv:2603.19979）。
 - [X-Cache](../entities/paper-x-cache.md) — 少步 AR 世界模型 **跨 chunk** 推理加速（arXiv:2604.20289）。
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA **内嵌** 长视界预测式世界建模（arXiv:2605.24892）。
+- [RISE（酷哇 · 驾驶 WAM 自适应想象）](../entities/paper-rise-adaptive-imagination-wam.md) — 测试时按规划增益停 latent rollout（arXiv:2608.20430；代码+CounterDrive 已开，权重未发）。
 - [X-Mind](../entities/paper-x-mind.md) — Visual CoT + 压缩 sketch / RBD 的车载高效变体（arXiv:2606.28758）。
 - [M⁴World](../entities/paper-m4world.md) — 美团等 **多视角多模态** 驾驶 WM：物体外观控制 + 分钟级流式（arXiv:2607.14005）。
 - [ABot-World-0](../entities/paper-abot-world-0.md) — 高德 **单卡桌面** 键盘交互视频 WM：LongForcing + 720P 实时流式（arXiv:2607.19191；部分开源）。

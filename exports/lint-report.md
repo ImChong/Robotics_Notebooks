@@ -150,4 +150,4 @@
 - wiki/entities/paper-monocular-depth-estimation-survey.md
 - wiki/entities/paper-optigeo.md
 
-📊 Sources 覆盖率：3392/3392 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3393/3393 (100%) wiki/entity 页有 ingest 来源

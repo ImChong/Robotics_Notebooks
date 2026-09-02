@@ -1,3 +1,10 @@
+## [2026-09-02] ingest | sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md — 酷哇 RISE 自适应想象 WAM（arXiv:2608.20430）；代码 MIT + CounterDrive 已开、权重未发；勿与 OpenDriveLab RISE 混淆
+
+- **触发：** 用户指定论文 *RISE: Adaptive Imagination for World Action Models*；机构 COWARobot / 上交 / 河海；项目页 https://cowarobot-ai.github.io/RISE/ ；代码 https://github.com/COOWAI/RISE ；数据集 https://huggingface.co/datasets/COWARobot/CounterDrive
+- **步骤 2.5：** 项目页链 GitHub + HF。**已开源（部分）**：`COOWAI/RISE` MIT 训练/评测代码与七段手动链；HF CounterDrive tar 约 31.5 GB（CC-BY-NC-ND-4.0）。**权重未发**。GitHub README（约 2026-08-13）仍写论文/数据未发布，**以项目页 + arXiv:2608.20430 + HF 实际文件为准**。
+- **关键页：** [`paper-rise-adaptive-imagination-wam`](wiki/entities/paper-rise-adaptive-imagination-wam.md)；同名对照 [`paper-sa-2602-11075` OpenDriveLab RISE](wiki/entities/paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md)；交叉 WAM / latent-imagination / V-JEPA 2 / X-Foresight
+- **机构注册：** `cowarobot` 酷哇科技（COWARobot）、`hohai` 河海大学（Hohai University）；`sjtu` 已有
+
 ## [2026-09-02] ingest | sources/papers/imitator_game_arxiv_2608_22301.md — The Imitator Game 再核：MIT 仿真仓 + HF IG-10K/Assets 已开源；深化 L0–L3 / Arena 数字；真机评测仍走申请
 
 - **触发：** 用户指定 arXiv:2608.22301 + 项目页 https://imitator-game.github.io/ ；2026-08-30 已有浅入库

@@ -10,7 +10,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-08-16
+updated: 2026-09-02
 arxiv: "2506.09985"
 code: https://github.com/facebookresearch/vjepa2
 related:
@@ -24,6 +24,7 @@ related:
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
   - ./paper-odeworld.md
+  - ./paper-rise-adaptive-imagination-wam.md
 sources:
   - ../../sources/papers/vjepa2_arxiv_2506_09985.md
   - ../../sources/repos/vjepa2.md
@@ -209,6 +210,7 @@ sequenceDiagram
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [Manipulation](../tasks/manipulation.md)
 - [ODEWorld](./paper-odeworld.md) — 连续时间 JVP 速度监督对照（论文视频基线之一）
+- [RISE（酷哇 · 驾驶 WAM）](./paper-rise-adaptive-imagination-wam.md) — 冻结 V-JEPA 2 编码器 + 自适应 latent rollout
 
 ## 参考来源
 
