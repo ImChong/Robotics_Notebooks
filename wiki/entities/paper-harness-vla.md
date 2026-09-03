@@ -19,7 +19,7 @@ tags:
   - hkust
   - zgca
 status: complete
-updated: 2026-08-13
+updated: 2026-09-03
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
 related:
@@ -33,6 +33,7 @@ related:
   - ./rldx-1.md
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-robo-harness.md
+  - ./paper-embodiedskills.md
   - ./deepseek-harness.md
 sources:
   - ../../sources/papers/harness_vla_arxiv_2607_08448.md
@@ -195,13 +196,14 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 维度 | Harness VLA | 微调更强 VLA backbone | ASPIRE（技能库扩张） | DreamSteer（动作 chunk 预演） |
-|------|-------------|------------------------|------------------------|--------------------------------|
-| VLA 权重 | **冻结** | 微调 / 重训 | 冻结或按需 | **冻结** |
-| 技能 / 原语词汇 | **固定**原语库 + `vla_act` | 端到端策略 | **扩张**可验证技能库 | 不改原语，做动作排序 |
-| 分布外增益来源 | 编排 + 记忆 + 可重试接触 | 更强表征 / 更多数据 | 新技能覆盖 | WM 预演筛选动作 chunk |
-| 记忆机制 | 外置 Task / Global Memory，部署重绑定 | 参数内隐式 | 技能库为主 | 无显式跨任务记忆 |
-| 编排 / 干预粒度 | **原语级** agentic JSON 闭环 | 无显式编排 | code-as-policy 组合 | 动作 chunk 级 |
+| 维度 | Harness VLA | EmbodiedSkills | 微调更强 VLA backbone | ASPIRE（技能库扩张） | DreamSteer（动作 chunk 预演） |
+|------|-------------|----------------|----------------------|----------------------|------------------------------|
+| VLA 权重 | **冻结** `vla_act` | 任务适配 **π₀.₅**（可替换） | 端到端微调 | 技能库内策略 | **冻结** chunk 排序 |
+| 高层 | LLM planner + **记忆** | Qwen3-VL + **runtime guard** | 无显式 agent | 技能发现 / code | WM 预演 |
+| 技能词汇 | **固定**原语库 | **可执行 skill contract** | 端到端策略 | **扩张**技能库 | 不改原语 |
+| 训练 | 记忆 bootstrap | **轨迹 SFT**（planner/verifier/VLA） | 全模型 FT | 技能扩张 | 无 FT |
+| 分布外增益 | 编排 + 记忆 + 可重试接触 | 子目标 + verify + recover | 更强表征 / 数据 | 新技能覆盖 | WM 筛选 chunk |
+| 代表基准 | LIBERO-Pro / C2R | RoboTwin 50 任务 / LIBERO | 分布内 LIBERO | 多技能 | 部署 steering |
 
 ## 局限与风险
 
@@ -217,6 +219,7 @@ sequenceDiagram
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 确定性编排 vs agentic JSON 原语
 - [ASPIRE](../methods/aspire.md) — code-as-policy + 技能库扩张对照
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) — 另一类零微调 VLA steering
+- [EmbodiedSkills](./paper-embodiedskills.md) — guarded AgentLoop + 可训练 planner/verifier（arXiv:2609.01281）
 - [RoboHarness](./paper-robo-harness.md) — 异构策略族编排 + Memory Bridge（勿与本页混名）
 - [DeepSeek Harness](./deepseek-harness.md) — **同名不同物**：DeepSeek 的 LLM agent 运行时，不是冻结 VLA 编排
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — RPent / RLinf 栈入口

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-03
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -97,6 +97,7 @@ related:
   - ../entities/paper-galaxea-g05.md
   - ../entities/paper-internvla-a15-unified-vla.md
   - ../entities/paper-harness-vla.md
+  - ../entities/paper-embodiedskills.md
   - ../entities/paper-robo-harness.md
   - ../entities/paper-fm-vla.md
   - ../entities/paper-chronos.md
@@ -425,6 +426,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/lingbot_vla_v2_tech_report.md](../../sources/papers/lingbot_vla_v2_tech_report.md) — LingBot-VLA 2.0：6 万小时数据管线 + MoE + Dual-Query 蒸馏（arXiv:2607.06403）
 - [sources/repos/lingbot-vla-v2.md](../../sources/repos/lingbot-vla-v2.md) — LingBot-VLA 2.0 官方仓库与权重入口
 - [sources/papers/harness_vla_arxiv_2607_08448.md](../../sources/papers/harness_vla_arxiv_2607_08448.md) — Harness VLA：冻结 VLA 作接触原语 + 记忆增强 agentic harness（arXiv:2607.08448v3）
+- [sources/papers/embodiedskills_arxiv_2609_01281.md](../../sources/papers/embodiedskills_arxiv_2609_01281.md) — EmbodiedSkills：guarded AgentLoop + 可执行 skill contract（arXiv:2609.01281）
 - [sources/papers/fm_vla_arxiv_2607_18231.md](../../sources/papers/fm_vla_arxiv_2607_18231.md) — FM-VLA：Force-VAE 力觉长程记忆（arXiv:2607.18231）
 - [sources/papers/chronos_arxiv_2606_30318.md](../../sources/papers/chronos_arxiv_2606_30318.md) — Chronos：全历史 SSM + IMLE + 二阶桥（arXiv:2606.30318）
 - [sources/papers/robointer_1_5_arxiv_2607_18709.md](../../sources/papers/robointer_1_5_arxiv_2607_18709.md) — RoboInter1.5 中间表示套件（arXiv:2607.18709）
@@ -516,6 +518,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Green-VLA（分阶段 VLA 与人形部署）](../entities/paper-greenvla-staged-vla-humanoid.md) — DataQA + 语义统一动作 + IQL/噪声 RL 的 R2 对齐（arXiv:2602.00919）
 - [JoyAI-RA 0.5（双动作对齐 VLWA）](../entities/paper-joyai-ra-05.md) — LAC-WM + 130-D 规范动作 + 内–外环 RL；AgiBot 真机人视频缩放（arXiv:2608.05674；未开源）
 - [Harness VLA（冻结 VLA + 记忆增强 harness）](../entities/paper-harness-vla.md) — 固定原语库编排 `vla_act`；LIBERO-Pro / RoboCasa365 / RoboTwin C2R（arXiv:2607.08448v3，[RPent](https://github.com/RLinf/RPent)）
+- [EmbodiedSkills（AgentLoop + skill contract）](../entities/paper-embodiedskills.md) — Qwen3-VL guarded runtime + OpenPI/π₀.₅；RoboTwin **86.20%**、LIBERO **97.40%**（arXiv:2609.01281，[已开源](https://github.com/DCDmllm/EmbodiedSkills)）
 - [RoboHarness（异构策略编排）](../entities/paper-robo-harness.md) — VLA+RL+TAMP 能力边界路由与 Memory Bridge；LIBERO-LoHo 95.2%（arXiv:2607.18060；仓暂为项目页镜像）
 - [FM-VLA（力觉长程记忆）](../entities/paper-fm-vla.md) — Force-VAE 压缩 wrench 历史注入 π₀.₅；接触计数任务平均 83.3%、+3.3 ms（arXiv:2607.18231）
 - [KEMO（事件关键帧视觉记忆）](../entities/paper-kemo-event-driven-keyframe-memory-vla.md) — 运动学峰 + DINOv2 去重选帧插拔 π₀.₅（arXiv:2606.23589）
