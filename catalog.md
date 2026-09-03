@@ -237,7 +237,7 @@
 - [HoloMotion（HoloMotion-1）](wiki/entities/holomotion.md) — HoloMotion-1** 是 **Horizon Robotics（地平线）** 发布的 **人形全身运动跟踪** 路线：把跟踪策略建成可在 **大规模异质运动语料** 上训练的 **高容量时 `📅unknown` `[entity_page]`
 - [holosoma（Amazon FAR 人形 RL + 重定向框架）](wiki/entities/holosoma.md) — holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源 `📅unknown` `[entity_page]`
 - [HRDexDB（人–机器人配对灵巧抓取数据集）](wiki/entities/hrdexdb-dataset.md) — HRDexDB**（Lim et al., arXiv:2604.14944，2026；<https://snuvclab. `📅unknown` `[entity_page]`
-- [HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）](wiki/entities/htd-decoupled-wbc.md) — HTD Decoupled WBC** 是 Humanoid Touch Dream 的稳 `📅unknown` `[entity_page]`
+- [HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）](wiki/entities/htd-decoupled-wbc.md) — HTD Decoupled WBC** 是 Humanoid Touch Dream（[方法页](../methods/hum `📅unknown` `[entity_page]`
 - [human-humanoid-tools（hhtools）](wiki/entities/human-humanoid-tools.md) — human-humanoid-tools**（简称 **hhtools**）是 Party OS 首批开源的 **Human-to-Humanoid 动作重定向与 `📅unknown` `[entity_page]`
 - [human2humanoid（LeCAR-Lab）](wiki/entities/human2humanoid.md) — human2humanoid**（<https://github.com/LeCAR-Lab/human2humanoid>）是 CMU **LECAR Lab** 的 **人形全身实时遥操作（h `📅unknown` `[entity_page]`
 - [HumanNet](wiki/entities/humannet.md) — HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言 `📅unknown` `[entity_page]`
@@ -736,6 +736,7 @@
 - [Humanoid Loco-Manipulation Survey（HMI P069）](wiki/entities/paper-humanoid-loco-manipulation-survey.md) — Humanoid Loco-Manipulation Survey**（*Humanoid Locomotion and Manipulation: Current Progress and Ch `📅unknown` `[entity_page]`
 - [Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams](wiki/entities/paper-humanoid-soccer-swarm-intelligence.md) — Nadiri & Rad（Sensors 2025, 25(11):3496）** 提出面向 **人形足球机器人队** 的 **生物启发式去中心化群控框架**：在部分可观测、高动态对抗场上，用  `📅unknown` `[entity_page]`
 - [Humanoid Surgeon（In Vivo Laparoscopic Feasibility）](wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) — Humanoid Surgeon**（*In vivo feasibility study of humanoid robots in surgery*，Zekai Liang / Michael `📅unknown` `[entity_page]`
+- [Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）](wiki/entities/paper-humanoid-touch-dream.md) — Humanoid Touch Dream（HTD）**（arXiv:2604.13015，[项目页](https://hum `📅unknown` `[entity_page]`
 - [HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）](wiki/entities/paper-humanoidarena.md) — HumanoidArena** 是香港科技大学（广州）、北京工业大学、哈尔滨工业大学（深圳）、深圳北理莫斯科大学与京东探索研究院等团队的 **仿真优先人形全身学习基准**（arXiv:2606.1 `📅unknown` `[entity_page]`
 - [HumanoidMimicGen](wiki/entities/paper-humanoidmimicgen.md) — HumanoidMimicGen** 是 NVIDIA 与 UT Austin 团队的 **人形 loco-manipulation 合成示范生成** 论文（arXiv:2605.27724，Op `📅unknown` `[entity_page]`
 - [HumanoidUMI](wiki/entities/paper-humanoidumi.md) — HumanoidUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation**（arXiv:2606. `📅unknown` `[entity_page]`
@@ -837,7 +838,7 @@
 - [具有选择策略的协调人形操作](wiki/entities/paper-loco-manip-161-087-n087.md) — 具有选择策略的协调人形操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdii `📅unknown` `[entity_page]`
 - [基于基础模型的自主人形抓取快速部署管道](wiki/entities/paper-loco-manip-161-088-n088.md) — 基于基础模型的自主人形抓取快速部署管道** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISi `📅unknown` `[entity_page]`
 - [通过真实部署就绪的技能空间释放人形机器人的潜力](wiki/entities/paper-loco-manip-161-091-n091.md) — 通过真实部署就绪的技能空间释放人形机器人的潜力** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
-- [通过触摸梦学习多样化人形操作](wiki/entities/paper-loco-manip-161-092-n092.md) — 通过触摸梦学习多样化人形操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdi `📅unknown` `[entity_page]`
+- [通过触摸梦学习多样化人形操作](wiki/entities/paper-loco-manip-161-092-n092.md) — 通过触摸梦学习多样化人形操作**（*Learning Versatile Humanoid Manipulation with Touch Dreaming*）收录于 [具身智能研究室 · 人形  `📅unknown` `[entity_page]`
 - [DreamControl](wiki/entities/paper-loco-manip-161-093-dreamcontrol.md) — DreamControl** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [EMOTION](wiki/entities/paper-loco-manip-161-094-emotion.md) — EMOTION** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
 - [FRoM-W1](wiki/entities/paper-loco-manip-161-096-from-w1.md) — FRoM-W1** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
@@ -2937,7 +2938,7 @@
 - [HIL: Hybrid Imitation Learning（混合模仿学习）](wiki/methods/hil-hybrid-imitation-learning.md) — HIL** 将 **逐帧 motion tracking** 与 **AMP 式对抗模仿** 放在同一策略、同一观测空间里并行训练，使物理仿真角色既能精确学会跑酷参考动作，又能在新障碍布局中灵活组 `📅unknown` `[method_page]`
 - [HiPAN（Hierarchical Posture-Adaptive Navigation）](wiki/methods/hipan.md) — HiPAN** 是面向**四足机器人**在**非结构化三维环境**（窄通道、限高、死胡同、半封闭房间）中的导航框架：部署时**不依赖显式三维地图**，仅用**机载深度**做感知，通过**分层强化学 `📅unknown` `[method_page]`
 - [htwk-gym](wiki/methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
-- [Humanoid Transformer with Touch Dreaming (HTD)](wiki/methods/humanoid-transformer-touch-dreaming.md) — HTD** 是一种面向人形机器人 dexterous loco-manipulation 的多模态行为克隆方法。它把触觉从“附加传感器输入”提升为训练目标：策略不仅预测 action chunks `📅unknown` `[method_page]`
+- [Humanoid Transformer with Touch Dreaming (HTD)](wiki/methods/humanoid-transformer-touch-dreaming.md) — HTD** 是一种面向人形机器人 dexterous loco-manipulation 的多模态行为克隆方法（论文实体见 [Humanoid Touch Dream](../entities/p `📅unknown` `[method_page]`
 - [人形机器人智能语音交互](wiki/methods/humanoid-voice-interaction.md) — 人形智能语音交互**把 **语音识别、语言理解/大模型规划、技能或导航执行、语音合成** 串成可唤醒、可打断的闭环，使人形能用自然语言接受任务——课程第 8.2 节；Ch8 实践常与 [VLN `📅unknown` `[method_page]`
 - [HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）](wiki/methods/hy-motion-1.md) — HY-Motion 1.0**（Tencent Hunyuan 3D Digital Human Team，arXiv:2512.23464）面向 **文本描述 + 期望时长** 生成 **SMP `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](wiki/methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`

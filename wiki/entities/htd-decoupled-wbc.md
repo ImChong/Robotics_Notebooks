@@ -14,9 +14,10 @@ tags:
   - bosch
   - ut-arlington
 status: complete
-updated: 2026-08-26
+updated: 2026-09-03
 code: https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC
 related:
+  - ./paper-humanoid-touch-dream.md
   - ../methods/humanoid-transformer-touch-dreaming.md
   - ../concepts/whole-body-control.md
   - ../tasks/loco-manipulation.md
@@ -41,7 +42,7 @@ summary: "HTD 解耦 WBC 是 CMU/UTA/Bosch 为 Humanoid Touch Dream 开源的下
 
 # HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）
 
-**HTD Decoupled WBC** 是 [Humanoid Touch Dream](../methods/humanoid-transformer-touch-dreaming.md) 的稳定执行层：在 [Isaac Lab](./isaac-lab.md) 上训练解耦全身/下肢控制器，student 只控下肢与腰，上肢留给遥操作或操作策略。官方实现是 [chrisyrniu/IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)，由论文仓 [humanoid-touch-dream](https://github.com/chrisyrniu/humanoid-touch-dream) 以 submodule 挂入。
+**HTD Decoupled WBC** 是 [Humanoid Touch Dream](./paper-humanoid-touch-dream.md)（[方法页](../methods/humanoid-transformer-touch-dreaming.md)）的稳定执行层：在 [Isaac Lab](./isaac-lab.md) 上训练解耦全身/下肢控制器，student 只控下肢与腰，上肢留给遥操作或操作策略。官方实现是 [chrisyrniu/IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)，由论文仓 [humanoid-touch-dream](https://github.com/chrisyrniu/humanoid-touch-dream) 以 submodule 挂入。
 
 ## 一句话定义
 
