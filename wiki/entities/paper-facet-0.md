@@ -42,7 +42,7 @@ summary: "Facet-0（arXiv:2609.01596，NTU PINE Lab）：action–wrench 联合�
 | VLA | Vision-Language-Action | 对照族；本页骨干是 PaliGemma + action expert |
 | AWC | Action–Wrench Critic | 给联合提案打分布价值 |
 | HF | Hugging Face | ManuFacet-1K 已发；模型卡为空 |
-| RECAP | Regularized Constraint-Aware Policy 风格目标 | 论文最强基线是 \(\pi_{0.5}\) 上的 RECAP-style 复现 |
+| RECAP | Physical Intelligence 的 VLA 部署后训练目标 | 论文最强基线是 \(\pi_{0.5}\) 上的 RECAP-style 复现，不是官方 \(\pi_{0.6}^{\star}\) |
 
 ## 为什么重要
 

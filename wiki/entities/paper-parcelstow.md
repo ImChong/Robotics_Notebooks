@@ -66,8 +66,8 @@ summary: "ParcelStow（arXiv:2609.01453，UMD）：Isaac Lab 上 G1 L6 灵巧手
 
 ```mermaid
 flowchart LR
-  expert[脚本专家\n获取固定 + 操作段 × 1/r] --> demos[示范 r∈[0.5,2.0]]
-  demos --> act[ACT / DP / DAgger]
+  expert[脚本专家：获取定时，操作段按 r 缩放] --> demos[示范速度 0.5 到 2.0]
+  demos --> act[ACT 或 DP 或 DAgger]
   expert --> eval[同初始条件速度扫频]
   act --> eval
   eval --> fail[高速插入错位]

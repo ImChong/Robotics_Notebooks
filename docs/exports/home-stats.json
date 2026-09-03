@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-adapt-text-driven-humanoid.md",
+      "detail_id": "entity-paper-adapt-text-driven-humanoid",
+      "label": "ADAPT：端到端文本驱动人形控制",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-adm-ba.md",
       "detail_id": "entity-paper-adm-ba",
       "label": "ADM-BA：无对应点的多视角点云配准",
@@ -208,29 +218,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rt-1.md",
-      "detail_id": "entity-paper-rt-1",
-      "label": "RT-1：规模化真机控制的 Robotics Transformer",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adm-ba.md",
-    "detail_id": "entity-paper-adm-ba",
-    "label": "ADM-BA：无对应点的多视角点云配准",
+    "path": "wiki/entities/paper-adapt-text-driven-humanoid.md",
+    "detail_id": "entity-paper-adapt-text-driven-humanoid",
+    "label": "ADAPT：端到端文本驱动人形控制",
     "type": "entity",
-    "recency": "2026-09-02",
+    "recency": "2026-09-03",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
