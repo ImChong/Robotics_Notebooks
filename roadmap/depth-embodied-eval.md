@@ -1,6 +1,6 @@
-# 路线（纵深）：如果目标是具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）
+# 路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）
 
-**摘要**：面向"训完一个具身模型，接下来怎么『测/证明它』"的纵深路线，从评测目的与四层闭环边界，到 ① 具身大脑/MLLM 认知评测、② 世界模型预测保真度评测、③ 策略成功率与过程/判据评测、④ sim↔real 评测 gap 校准，再到评测基建与榜单治理，按 Stage 0–5 串通核心基准与指标读法；本路线是 [运动控制主路线](motion-control.md) 的一条分支，是 [BFM](depth-bfm.md) / [VLA](depth-vla.md) / [WAM](depth-wam.md) 三条建模路线的**共用验收环节**。
+**摘要**：面向"训完一个具身模型，接下来怎么『测/证明它』"的纵深路线，从评测目的与四层闭环边界，到 ① 具身大脑/MLLM 认知评测、② 世界模型预测保真度评测、③ 策略成功率与过程/判据评测，再到 **运控模型专属指标**（跟踪精度 / 步态与能耗 / 真机验收）、④ sim↔real 评测 gap 校准与评测基建治理，按 Stage 0–6 串通核心基准与指标读法；本路线是 [运动控制主路线](motion-control.md) 的一条分支，是 [BFM](depth-bfm.md) / [VLA](depth-vla.md) / [WAM](depth-wam.md) 三条建模路线的**共用验收环节**。
 
 ## 路线一览
 
@@ -10,25 +10,28 @@ flowchart LR
   S1["<b>Stage 1</b><br/>① 认知评测<br/><em>MLLM 作 embodied brain</em>"]
   S2["<b>Stage 2</b><br/>② 世界模型保真度<br/><em>动作忠实 ≠ 视觉逼真</em>"]
   S3["<b>Stage 3</b><br/>③ 策略成功率<br/><em>结果 · 过程 · 成功判据</em>"]
-  S4["<b>Stage 4</b><br/>④ sim↔real 校准<br/><em>排名相关性 · 统计置信</em>"]
-  S5["<b>Stage 5</b><br/>评测工程化与治理<br/><em>基建 · 榜单 · 飞轮</em>"]
+  S4["<b>Stage 4</b><br/>运控模型测评<br/><em>跟踪精度 · 步态能耗 · 真机验收</em>"]
+  S5["<b>Stage 5</b><br/>④ sim↔real 校准<br/><em>排名相关性 · 统计置信</em>"]
+  S6["<b>Stage 6</b><br/>评测工程化与治理<br/><em>基建 · 榜单 · 飞轮</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5
+  S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6
 
   classDef stage fill:#142a3a,stroke:#e67e22,stroke-width:2px,color:#fff
-  class S0,S1,S2,S3,S4,S5 stage
+  class S0,S1,S2,S3,S4,S5,S6 stage
 ```
 
 ## 这条路径怎么用
 
 - 目标读者是**已经能训出（或已选定）一个具身模型**、接下来要给它出具可信结论的人——做技术选型、发版决策、论文实验设计、内部 benchmark 建设都在这条路线上
+- 被测对象既包括**任务侧的操作/VLA 策略**（Stage 1–3），也包括**运控侧的 locomotion / whole-body tracking / MPC-WBC 控制器**（Stage 4）——两者指标体系不同，不要互相套用
 - 这条路线解决的是 **"分数到底测的是能力本身，还是能力的易测代理"**：它不教你怎么把模型训好（那是 [BFM](depth-bfm.md) / [VLA](depth-vla.md) / [WAM](depth-wam.md) / [模仿学习](depth-imitation-learning.md) 的主题），只教你怎么证明/证伪它真的好
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
 
 **和主路线的关系：**
 - 本路线是主路线 L5（RL 与模仿学习）之后、L6（sim2real 部署）与 L7（出口）之间的**验收层**：训练路线负责"做出来"，本路线负责"证明它成立"
-- 与 [Sim2Real 纵深](depth-sim2real.md) 共享同一物理根因但落点不同——Sim2Real 问"策略在真机上还能不能跑"，本路线 Stage 4 问"仿真给出的**排名**在真机上还成不成立"
+- 与 [Sim2Real 纵深](depth-sim2real.md) 共享同一物理根因但落点不同——Sim2Real 问"策略在真机上还能不能跑"，本路线 Stage 5 问"仿真给出的**排名**在真机上还成不成立"
 - 与 [Real2Sim 纵深](depth-real2sim.md) 在评测资产上衔接：Real2Sim 产出可评测的场景/episode 孪生，本路线负责判断这些孪生上的分数能否外推
+- Stage 4 直接服务主路线 L2–L5 与 [RL 运动控制纵深](depth-rl-locomotion.md) / [传统模型控制纵深](depth-classical-control.md) / [BFM 纵深](depth-bfm.md)：它们负责把控制器训出来，Stage 4 负责给它出验收数字
 
 ---
 
@@ -124,7 +127,7 @@ flowchart LR
 
 ## Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据
 
-**这一层最像"最终答案"，也最容易被均值、魔法抓取和跨榜比较骗过去。**
+**这一层最像"最终答案"，也最容易被均值、魔法抓取和跨榜比较骗过去。本阶段说的是任务侧（操作 / VLA / 长时序任务链）；运控模型的指标体系见下面的 Stage 4。**
 
 ### 前置知识
 - Stage 0 内容（Stage 1–2 可按需跳过）
@@ -157,12 +160,51 @@ flowchart LR
 
 ---
 
-## Stage 4 ④ sim↔real 评测 gap 校准：排名还成不成立
+## Stage 4 运控模型测评：跟踪精度、步态质量与真机验收
 
-**这一层最贵也最不可省：它决定前三层的分数能不能拿来做发版决策。**
+**运控模型不是"任务做没做成"，而是"跟得准不准、走得稳不稳、敢不敢上真机"——指标体系与 Stage 3 完全不同，套用会得出错误结论。**
 
 ### 前置知识
-- Stage 3 内容
+- Stage 0 内容（Stage 1–3 可按需跳过）
+- [RL 运动控制纵深](depth-rl-locomotion.md) 或 [传统模型控制纵深](depth-classical-control.md) Stage 0–2 水平：能训出/跑起一个 locomotion 或 whole-body tracking 策略
+
+### 核心问题
+- **只报 MPJPE 为什么会骗人**：MPJPE 通常只在**已执行片段**上取平均，早早触发终止的 rollout 反而误差更小——必须与 Succ（终止准则下的跑完比例）联报，否则"更准"可能只是"死得更早"
+- **比的是 tracker 还是后处理**：不同工作的参考表示、rollout 记账、终止准则、指标实现各不相同，不钉死这四项就没有可比性
+- **跟踪类 vs 命令跟随类**：whole-body tracking 看参考误差与人类偏好；velocity-command locomotion 看命令跟踪误差、CoT、地形通过率、摔倒频率
+- **model-based 控制器另有评测轴**：求解耗时与实时率、约束违反与可行性、增益/模型误差下的鲁棒裕度——这些在纯 RL 指标表里完全不出现
+- **不分难度层就没法"比 SOTA"**：同一均值可能来自完全不同的动作难度分布
+- **奖励项 ≠ 评测指标**：能耗惩罚、抖动惩罚是训练信号，直接拿来当验收指标会自证其说
+
+### 推荐做什么
+- 跟踪类：先把**参考表示 / rollout 记账 / 终止准则 / 指标实现**四项统一，再横评 tracker；主表按动作族（或难度档）分报，不要只给一个总分
+- locomotion 类：照 [locomotion 任务页的评价指标清单](../wiki/tasks/locomotion.md) 出表——速度、CoT、地形适应、摔倒频率、命令跟踪误差、硬件安全裕度（力矩/电流/温升/冲击峰值）
+- 按 **仿真 → 半实物 → 真机** 三段分层验收：仿真看成功率与能耗，半实物看延迟与电流，真机看温升、冲击与长时间稳定性
+- 把失败 rollout 按机制归档（摔倒、打滑、膝盖反关节、脚底震荡），它们比平均 reward 更能指导下一轮改动
+
+### 推荐读什么
+- [HumanTracker](../wiki/entities/paper-humantracker.md)（本仓库）— 153 h / 25K 四族光学基准 + 偏好对齐指标 HumanScore；把 GMT / TWIST2 / SONIC / Humanoid-GPT 的参考表示、rollout 记账、终止准则与指标实现钉死后再对照；族均衡对齐率 90.83%，评测代码与 HumanScore 权重已开、数据集待发布
+- [Motion Difficulty Score / MD-AMASS](../wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md)（本仓库）— 用刚体动力学给出与策略无关的动作难度分，配 MID（最大可模仿难度）与 DSJE（按难度分层的关节误差），把"比 SOTA"变成"每个难度档分别比"
+- [HumanoidBench](../wiki/entities/humanoid-bench.md)（本仓库）— 统一 MuJoCo 下 15 项全身操作 + 12 项运动任务，附 Dreamer / SAC / PPO / TD-MPC2 基线，用于检验算法能否同时扛住高维身体控制与任务交互
+- [TrackerLab](../wiki/entities/trackerlab.md)（本仓库）— 多本体 / 多动作数据 / 多跟踪配置共享实验接口，把参考表示、奖励与机器人模型的影响**分开**比较；换本体后突然退化时先用它排除环境差异
+- [Barkour](../wiki/entities/paper-barkour-quadruped-agility-benchmark.md)（本仓库）— 四足敏捷课把多障碍序列 + 计时扣分压成 0–1 敏捷分，便于对比"专长切换 vs Transformer 通才"与 sim2real 管线
+- [Mimicking-Bench](../wiki/entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)（本仓库）— 人形模仿的泛化性评测套件
+- [Locomotion 任务页 · 评价指标与工程落地检查](../wiki/tasks/locomotion.md) · [全身跟踪管线](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
+- [人形策略奖励函数](../wiki/concepts/humanoid-policy-reward-functions.md)（本仓库）— 读它是为了**区分**训练奖励项与验收指标，不要互相顶替
+- [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）— 选型侧的姊妹页
+
+### 学完输出什么
+- 一份运控评测表：**Succ + 误差类指标 + 人类偏好/敏捷分**按动作族或难度档分报，而不是单一均值
+- 一条写死的"仿真 → 半实物 → 真机"分层验收流程，含硬件安全裕度项与失败模式归档
+
+---
+
+## Stage 5 ④ sim↔real 评测 gap 校准：排名还成不成立
+
+**这一层最贵也最不可省：它决定前面所有层的分数能不能拿来做发版决策。**
+
+### 前置知识
+- Stage 3 或 Stage 4 内容（看被测对象是操作策略还是运控模型）
 - 有真机（或云真机）可跑，哪怕样本量很小
 
 ### 核心问题
@@ -189,10 +231,10 @@ flowchart LR
 
 ---
 
-## Stage 5 评测工程化、榜单治理与进阶方向
+## Stage 6 评测工程化、榜单治理与进阶方向
 
 ### 前置知识
-- Stage 4 内容
+- Stage 5 内容
 
 **方向 A：评测基建与集成成本**
 - N 个策略 × M 个环境的集成爆炸怎么收敛成 O(N+M)；统一策略–环境契约与依赖隔离 serving 长什么样
@@ -219,9 +261,10 @@ flowchart LR
 | Stage 0 | 四层边界与代理指标陷阱 | [具身评测基准选型闭环](../wiki/overview/hub-embodied-eval-benchmark.md) |
 | Stage 1 | MLLM 认知评测 | [RoboBench](../wiki/entities/robo-bench.md) |
 | Stage 2 | 世界模型保真度 | [EWMBench](../wiki/entities/ewmbench.md) |
-| Stage 3 | 策略成功率与过程判据 | [RoboDojo](../wiki/entities/robodojo.md) |
-| Stage 4 | sim↔real 校准 | [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) |
-| Stage 5 | 评测基建与榜单治理 | [XPolicyLab](../wiki/entities/xpolicylab.md) |
+| Stage 3 | 任务侧策略成功率与过程判据 | [RoboDojo](../wiki/entities/robodojo.md) |
+| Stage 4 | 运控模型跟踪精度与真机验收 | [HumanTracker](../wiki/entities/paper-humantracker.md) · [locomotion 评价指标](../wiki/tasks/locomotion.md) |
+| Stage 5 | sim↔real 校准 | [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) |
+| Stage 6 | 评测基建与榜单治理 | [XPolicyLab](../wiki/entities/xpolicylab.md) |
 
 ## 和其他页面的关系
 
@@ -229,24 +272,24 @@ flowchart LR
 - 其它纵深路径：
   - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
+  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) — Stage 4 的 model-based 评测轴（求解耗时 / 约束违反 / 鲁棒裕度）
   - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md) — Stage 3 接触/软体安全指标的工程侧
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md) — Stage 3 成功判据（目标等价 vs 轨迹相似）的建模侧
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
+  - [人形 RL 运动控制](depth-rl-locomotion.md) — Stage 4 被测对象之一：locomotion 策略
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
   - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
+  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 4 参考轨迹质量的上游
   - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — Stage 4 的迁移侧姊妹路线
+  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — Stage 5 的迁移侧姊妹路线
   - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 被测对象之一：全身协调
+  - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 4 被测对象之一：全身跟踪与协调
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 被测对象之一：语义策略
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — Stage 4 评测资产的来源侧
+  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — Stage 5 评测资产的来源侧
   - [WAM（世界–动作模型）](depth-wam.md) — 被测对象之一，同时也是 Stage 2 评估器的提供方
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
@@ -266,4 +309,7 @@ flowchart LR
 - [sources/papers/imitator_game_arxiv_2608_22301.md](../sources/papers/imitator_game_arxiv_2608_22301.md) — Imitator Game，arXiv:2608.22301
 - [sources/papers/bet4sim2real_arxiv_2608_21572.md](../sources/papers/bet4sim2real_arxiv_2608_21572.md) — Bet4Sim2Real，arXiv:2608.21572
 - [sources/papers/sc3_eval_arxiv_2606_18610.md](../sources/papers/sc3_eval_arxiv_2606_18610.md) — SC3-Eval，arXiv:2606.18610
+- [sources/papers/humantracker_arxiv_2608_13555.md](../sources/papers/humantracker_arxiv_2608_13555.md) — HumanTracker，arXiv:2608.13555（Stage 4 跟踪评测协议与 HumanScore）
+- [sources/repos/humanoid-bench.md](../sources/repos/humanoid-bench.md) · [sources/repos/trackerlab.md](../sources/repos/trackerlab.md) — Stage 4 运控评测套件与统一跟踪实验接口
+- [wiki/tasks/locomotion.md](../wiki/tasks/locomotion.md) 的「评价指标」与「工程落地检查」小节
 - [sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md](../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — 机器人训练栈分层

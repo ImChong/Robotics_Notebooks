@@ -417,7 +417,8 @@
     'embodied-eval': {
       segments: new Set([
         'eval', 'evaluation', 'benchmark', 'bench', 'leaderboard', 'judge',
-        'ewmbench', 'worldscore', 'robodojo', 'dexbench'
+        'ewmbench', 'worldscore', 'robodojo', 'dexbench', 'humantracker',
+        'trackerlab'
       ]),
       ids: mergeIds('embodied-eval', [
         'wiki/overview/hub-embodied-eval-benchmark.md',
@@ -435,7 +436,10 @@
         'wiki/entities/paper-reflexvla.md',
         'wiki/entities/paper-robosynchallenge.md',
         'wiki/entities/paper-sa-2606-15032-how-should-world-models-be-evaluated-for-embodie.md',
-        'wiki/entities/xpolicylab.md'
+        'wiki/entities/xpolicylab.md',
+        'wiki/tasks/locomotion.md',
+        'wiki/concepts/whole-body-tracking-pipeline.md',
+        'wiki/queries/humanoid-motion-tracking-method-selection.md'
       ])
     },
     'perceptive-locomotion': {
@@ -642,7 +646,7 @@
       emoji: '📊',
       label: '具身测评',
       wikiPath: DEPTH_HUB_IDS['embodied-eval'],
-      description: '认知 → 世界模型保真 → 策略成功率 → sim↔real 校准的四层评测验收。'
+      description: '认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准的分层评测验收。'
     },
     'perceptive-locomotion': {
       emoji: '👁️',

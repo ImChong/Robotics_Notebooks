@@ -35,7 +35,7 @@
 - [如果目标是 Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) —— 想把仿真里训好的策略稳定搬上真机（起点：域随机化 DR，2017）
 - [如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) —— 想让两台人形在擂台上像人一样对打（起点：MuJoCo 人形对抗自博弈，2017）
 - [如果目标是 BFM（人形行为基础模型）](depth-bfm.md) —— 想用一个 checkpoint 控住人形全身（起点：DeepMimic 动作跟踪谱系，2018）
-- [如果目标是具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) —— 想证明/证伪一个具身模型到底好不好（起点：RLBench 标准化视觉操作评测套件，2019）
+- [如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](depth-embodied-eval.md) —— 想证明/证伪一个具身模型（含 locomotion / 全身跟踪等运控模型）到底好不好（起点：RLBench 标准化视觉操作评测套件，2019）
 - [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) —— 想让机器人看着地形上楼梯、跨障碍、跑酷（起点：2020s 感知策略浪潮）
 - [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) —— 想用生成模型造出人体/人形动作（起点：MDM 扩散动作生成，2022）
 - [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) —— 想让机器人听懂指令干活（起点：RT-2 确立 VLA，2023）

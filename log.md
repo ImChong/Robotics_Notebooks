@@ -1,3 +1,5 @@
+## [2026-09-03] structural | roadmap/depth-embodied-eval.md — 补 Stage 4「运控模型测评」（Succ+MPJPE 联报、参考表示/rollout 记账/终止准则四项对齐、难度分层 MDS/MID/DSJE、locomotion 速度/CoT/摔倒率/硬件安全裕度、MPC-WBC 求解耗时与约束违反、仿真→半实物→真机三段验收）；原 Stage 4/5 顺延为 5/6，路线更新为 Stage 0–6
+
 ## [2026-09-03] structural | roadmap/depth-embodied-eval.md — 新增第 22 条纵深路线「具身模型测评」（Stage 0–5：四层边界 → MLLM 认知 → 世界模型保真 → 策略成功率 → sim↔real 校准 → 评测基建/榜单治理）；同步 README/index/motion-control/roadmap README 与 docs 路线视图（depth-filters.js 新增 embodied-eval key、首页按钮与计数 21→22）
 
 ## [2026-09-03] fix | wiki/entities/gpufree.md、wiki/comparisons/china-gpu-cloud-platforms.md — 按平台开发者勘误（issue #1767）修正算力自由定位、去除 Docker/星级打分、补容器桌面 3.0
