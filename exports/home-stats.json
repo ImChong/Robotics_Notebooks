@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-03",
-  "node_count": 3432,
-  "edge_count": 30934,
+  "node_count": 3434,
+  "edge_count": 31059,
   "coverage": {
-    "covered": 3407,
-    "total": 3407,
+    "covered": 3408,
+    "total": 3408,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "roadmap/depth-embodied-eval.md",
+      "detail_id": "roadmap-depth-embodied-eval",
+      "label": "路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）",
+      "type": "roadmap_page",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/concepts/ipc-inter-process-communication.md",
       "detail_id": "wiki-concepts-ipc-inter-process-communication",
@@ -55,8 +66,7 @@
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-sa-wam.md",
@@ -104,8 +114,7 @@
       "type": "overview",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-humanoid-touch-dream.md",
@@ -199,52 +208,43 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-np-throw.md",
-      "detail_id": "entity-paper-np-throw",
-      "label": "NP-Throw：强化学习视角的非抓取投掷",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/ipc-inter-process-communication.md",
-    "detail_id": "wiki-concepts-ipc-inter-process-communication",
-    "label": "进程间通信（Inter-Process Communication, IPC）",
-    "type": "concept",
+    "path": "roadmap/depth-embodied-eval.md",
+    "detail_id": "roadmap-depth-embodied-eval",
+    "label": "路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）",
+    "type": "roadmap_page",
     "recency": "2026-09-03",
     "source": "git",
     "action": "added",
-    "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 624
+      "size": 695
     },
     {
       "label": "操作",
-      "size": 594
+      "size": 591
     },
     {
       "label": "视觉-语言-动作",
-      "size": 267
+      "size": 268
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 226
+      "size": 223
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 212
+      "size": 149
     },
     {
       "label": "力矩电机设计纵深路线",
-      "size": 89
+      "size": 87
     }
   ],
   "top_hubs": [
@@ -268,7 +268,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 902,
+      "degree": 905,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -314,7 +314,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 508,
+      "degree": 509,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -332,7 +332,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 149,
+      "degree": 150,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -393,7 +393,7 @@
       "type": "entity",
       "degree": 44,
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

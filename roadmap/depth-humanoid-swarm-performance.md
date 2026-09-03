@@ -231,6 +231,7 @@ flowchart LR
   - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 特技上真机的部署侧前置
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 展演场地/道具的可仿真资产侧
   - [BFM（人形行为基础模型）](depth-bfm.md) — 单基座控全身的谱系路线
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — 场地定位工程的邻接路线
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)

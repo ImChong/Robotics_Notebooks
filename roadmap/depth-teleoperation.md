@@ -262,6 +262,7 @@ flowchart LR
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — 本路线 Stage 2/4 用其重定向工具箱；差别在"实时、在环、带延迟"
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 遥操作示范的主要下游消费者
   - [BFM（人形行为基础模型）](depth-bfm.md) — 全身遥操作低层的流形约束来源与数据消费者
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — 全身遥操作的典型任务面
   - [接触丰富的操作任务](depth-contact-manipulation.md) — 手指遥操作接触保持的邻接路线
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 全身跟踪策略的训练侧前置

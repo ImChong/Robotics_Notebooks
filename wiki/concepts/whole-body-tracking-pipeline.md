@@ -292,6 +292,8 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 ## 关联页面
 
+- [运控模型评测指标](./motion-control-policy-evaluation-metrics.md) — 本流水线产出的 tracker 用哪些指标验收（Succ 与 MPJPE 联报、终止准则对齐、难度分层）
+
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — WBT 流水线的**上游**：参考从哪里来
 - [Whole-Body Control (WBC)](./whole-body-control.md) — 一帧内的全身协调（与本页是两层抽象）
 - [Sim2Real](./sim2real.md) — WBT 阶段 6 的核心问题域
