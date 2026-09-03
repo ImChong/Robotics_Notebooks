@@ -36,6 +36,7 @@ related:
   - ../entities/vla-sota-leaderboard.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../entities/paper-demomimic.md
+  - ../entities/paper-embodiedskills.md
   - ../methods/regrind-retargeting-guided-rl.md
   - ../entities/paper-dexverse.md
   - ../entities/dexbench.md
@@ -80,6 +81,7 @@ sources:
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/sites/dexbench-org.md
   - ../../sources/papers/demomimic_stanford_2026.md
+  - ../../sources/papers/embodiedskills_arxiv_2609_01281.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
@@ -185,6 +187,7 @@ flowchart TD
 - **ADEPT**（[实体页](../entities/paper-adept-dexterity.md)，arXiv:2608.19182）：**16 primitive reposing RL 预训练 + 保守 post-training + 两阶段 vision distill**——Kuka–Allegro / Flexiv–Sharpa **zero-shot** FMB peg insertion 与 dish placement；visuo-tactile **8/10** vs vision **3/10**；Code Coming soon
 - **DemoMimic**（[实体页](../entities/paper-demomimic.md)，Stanford 2026）：**单次人类示范** + **接触局部几何** 与 **AR/SCR** → 仿真 RL 教师蒸馏 **腕部 depth IL**；真机 **16 物体** 平均 **71%** SR，**最小 sim-to-real gap**（相对 DexMachina* / HERMES*）；**Code / arXiv coming soon**
 - **RoboEdit**（[实体页](../entities/paper-roboedit.md)，arXiv:2608.18948）：**人类操作 RGB 视频 → robot video + 3D hand states**（RoboEdit-14M）；下游 Franka 真机 YCB；无官方代码 URL
+- **EmbodiedSkills**（[实体页](../entities/paper-embodiedskills.md)，arXiv:2609.01281）：**guarded AgentLoop** + 可执行 skill contract；Qwen3-VL 高层 + OpenPI/π₀.₅ 低层；RoboTwin **86.20%**、LIBERO **97.40%**；[GitHub 已开源](https://github.com/DCDmllm/EmbodiedSkills)
 
 ## 在人形机器人中的特殊性
 
@@ -245,6 +248,7 @@ flowchart TD
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K）
 - [Harness VLA](../entities/paper-harness-vla.md) — 冻结 VLA + 固定原语记忆 harness；LIBERO-Pro / RoboCasa365 / RoboTwin C2R（arXiv:2607.08448）
+- [EmbodiedSkills](../entities/paper-embodiedskills.md) — AgentLoop + skill contract；Qwen3-VL + π₀.₅；RoboTwin 86.20% / LIBERO 97.40%（arXiv:2609.01281，已开源）
 - [RoboInter1.5](../entities/paper-robointer-1-5.md) — 稠密中间表示 Data/VQA/VLM/VLA + IR 条件 World（arXiv:2607.18709）
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger 叠衣；仿真 1st / 真机 2nd（arXiv:2606.27163）
 - [χ₀ / kai0](../entities/paper-kai0.md) — Model Arithmetic + Stage Advantage + TDA；协同双臂叠衣/挂衣，相对 π₀.₅ 约 +250% SR（arXiv:2602.09021）

@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-03",
-  "node_count": 3421,
-  "edge_count": 30847,
+  "node_count": 3422,
+  "edge_count": 30860,
   "coverage": {
-    "covered": 3396,
-    "total": 3396,
+    "covered": 3397,
+    "total": 3397,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-embodiedskills.md",
+      "detail_id": "entity-paper-embodiedskills",
+      "label": "EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-demomimic.md",
       "detail_id": "entity-paper-demomimic",
@@ -205,27 +216,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-openvla.md",
-      "detail_id": "entity-paper-openvla",
-      "label": "OpenVLA：可复现的开源视觉–语言–动作模型",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-demomimic.md",
-    "detail_id": "entity-paper-demomimic",
-    "label": "DemoMimic（One Demonstration, Many Objects）",
+    "path": "wiki/entities/paper-embodiedskills.md",
+    "detail_id": "entity-paper-embodiedskills",
+    "label": "EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）",
     "type": "entity",
     "recency": "2026-09-03",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
@@ -234,7 +236,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 492
+      "size": 485
     },
     {
       "label": "视觉-语言-动作",
@@ -242,15 +244,15 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 220
+      "size": 219
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 173
+      "size": 174
     },
     {
       "label": "仿真到现实",
-      "size": 144
+      "size": 143
     }
   ],
   "top_hubs": [
@@ -258,7 +260,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1385,
+      "degree": 1387,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -281,7 +283,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 865,
+      "degree": 867,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

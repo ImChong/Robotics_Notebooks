@@ -1,3 +1,5 @@
+## [2026-09-03] ingest | sources/papers/embodiedskills_arxiv_2609_01281.md — EmbodiedSkills AgentLoop；GitHub 已开源
+
 ## [2026-09-03] ingest | sources/papers/demomimic_stanford_2026.md — DemoMimic 单次示范灵巧泛化；开源待发布（Code/arXiv coming soon）
 
 ## [2026-09-03] ingest | sources/papers/{parcelstow,adapt_2609_00677,facet_0} — G1 时间鲁棒性 / 文本运动 / 动作–受力联合预测；Facet-0 仓库仍占位
