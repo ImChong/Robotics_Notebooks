@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, transformers, behavior-cloning, machine-learning]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-03
 related:
   - ./behavior-cloning.md
   - ./action-chunking.md

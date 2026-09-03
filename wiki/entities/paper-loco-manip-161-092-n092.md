@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-03
 venue: curated
-summary: "这篇工作主要解决数据闭环：用相机图像/多视角观测、本体状态与关节序列、遥操作/外骨骼数据采集人类操作和机器人状态，再通过PPO/RL 策略训练、扩散策略/流匹配、MM-DiT/Transformer 动作头转成可训练、可复用的末端执行器/腕手目标、动作 chunk/token。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
+summary: "161 篇策展索引 #092：Humanoid Touch Dream（IROS 2026）— 量化指标与机制详见 canonical 论文实体页。"
 related:
+  - ./paper-humanoid-touch-dream.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
   - ../tasks/loco-manipulation.md
@@ -17,11 +18,13 @@ sources:
 
 # 通过触摸梦学习多样化人形操作
 
-**通过触摸梦学习多样化人形操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 092/161** 篇，归类为 **03 视觉感知驱动的人形移动操作**。
+**通过触摸梦学习多样化人形操作**（*Learning Versatile Humanoid Manipulation with Touch Dreaming*）收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 092/161** 篇，归类为 **03 视觉感知驱动的人形移动操作**。
+
+> **Canonical 论文页：** 机制、实验与开源边界请以 [Humanoid Touch Dream（论文实体）](./paper-humanoid-touch-dream.md) 为准；本页仅保留 161 篇地图坐标。
 
 ## 一句话定义
 
-这篇工作主要解决数据闭环：用相机图像/多视角观测、本体状态与关节序列、遥操作/外骨骼数据采集人类操作和机器人状态，再通过PPO/RL 策略训练、扩散策略/流匹配、MM-DiT/Transformer 动作头转成可训练、可复用的末端执行器/腕手目标、动作 chunk/token。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
+HTD 用 RL 解耦 WBC 稳定全身、VR 采集含触觉的全身示范，并以 Touch Dreaming（预测未来手部力与触觉 latent）做多模态行为克隆，在五个接触丰富真机任务上显著超过 ACT 基线。
 
 ## 英文缩写速查
 
@@ -61,11 +64,11 @@ sources:
 
 ## 结论
 
-**这条目被放在数据闭环一侧：它的落点是让遥操作采到的操作经验变成可采样的动作 chunk，而不是提供一套现成的底层控制器。**
+**本条目为 161 篇策展地图坐标；完整结论、实验表与开源状态见 [paper-humanoid-touch-dream.md](./paper-humanoid-touch-dream.md)。**
 
-- 起作用的机制链是：相机图像/多视角观测、本体状态与关节序列、遥操作/外骨骼数据作输入，经 PPO/RL 策略训练、扩散策略/流匹配与 MM-DiT/Transformer 动作头，输出末端执行器/腕手目标与动作 chunk/token。
-- 适用边界在 **03 视觉感知驱动的人形移动操作**：解决的是多模态动作分布上的采样问题，不代表底层 WBC 鲁棒性同时被解决。
-- 索引级局限：本页未搬运原文量化 benchmark 与实机指标，评测口径与数值以 [原文 / 项目页](https://humanoid-touch-dream.github.io/) 为准。
+- HTD 主链：解耦 WBC/LBC → VR 全身采数（含双手触觉）→ 多模态 Transformer BC + Touch Dreaming。
+- 相对更强 ACT 基线平均成功率约 **+90.9% relative**；latent tactile dreaming 相对 raw tactile 约 **+30% relative**。
+- WBC **已开源**（IsaacLab-Decoupled-WBC）；策略训练与 VR 采数截至 2026-09-03 **on-going**。
 
 ## 常见误区
 
@@ -74,6 +77,7 @@ sources:
 
 ## 与其他页面的关系
 
+- **Canonical：** [paper-humanoid-touch-dream.md](./paper-humanoid-touch-dream.md)
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-03-visuomotor.md](../overview/loco-manip-161-category-03-visuomotor.md)
 - 原始 source：[loco_manip_161_survey_092_n092.md](../../sources/papers/loco_manip_161_survey_092_n092.md)
@@ -86,4 +90,5 @@ sources:
 
 ## 推荐继续阅读
 
+- [Humanoid Touch Dream（论文实体）](./paper-humanoid-touch-dream.md)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)

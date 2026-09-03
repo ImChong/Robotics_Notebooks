@@ -6,6 +6,7 @@
 - **类型：** site / project-page
 - **官方入口：** <https://humanoid-touch-dream.github.io/>
 - **入库日期：** 2026-08-26
+- **最后复核：** 2026-09-03
 - **一句话说明：** HTD 论文配套站点：接触丰富人形 loco-manipulation 策略、解耦全身控制器跟踪误差对照、浏览器内 MuJoCo WBC Demo，以及遥操作/策略代码发布清单。
 
 ## 页面公开资源（检索自 2026-08-26）
@@ -34,6 +35,7 @@
 
 ## 对 wiki 的映射
 
+- [`wiki/entities/paper-humanoid-touch-dream.md`](../../wiki/entities/paper-humanoid-touch-dream.md) — canonical 论文实体页
 - [`wiki/entities/htd-decoupled-wbc.md`](../../wiki/entities/htd-decoupled-wbc.md) — 解耦 WBC 组件、训练/蒸馏/部署
 - [`wiki/methods/humanoid-transformer-touch-dreaming.md`](../../wiki/methods/humanoid-transformer-touch-dreaming.md) — HTD 策略方法页
 - [`wiki/tasks/loco-manipulation.md`](../../wiki/tasks/loco-manipulation.md) — 接触丰富移动操作任务

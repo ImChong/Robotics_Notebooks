@@ -1,3 +1,5 @@
+## [2026-09-03] ingest | sources/papers/humanoid_touch_dream.md — Humanoid Touch Dream（IROS 2026）；升格 canonical 论文实体；WBC 已开源、策略/遥操作 on-going
+
 ## [2026-09-03] ingest | sources/papers/embodiedskills_arxiv_2609_01281.md — EmbodiedSkills AgentLoop；GitHub 已开源
 
 ## [2026-09-03] ingest | sources/papers/demomimic_stanford_2026.md — DemoMimic 单次示范灵巧泛化；开源待发布（Code/arXiv coming soon）

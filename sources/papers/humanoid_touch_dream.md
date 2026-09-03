@@ -6,7 +6,7 @@
 - **类型：** paper
 - **来源：** arXiv:2604.13015v2 / PDF / GitHub project page
 - **入库日期：** 2026-04-29
-- **最后更新：** 2026-08-26
+- **最后更新：** 2026-09-03
 - **一句话说明：** 提出 Humanoid Transformer with Touch Dreaming (HTD)，把触觉作为人形机器人接触丰富型移动操作策略的核心模态，并用未来手部力与触觉 latent 预测作为行为克隆的辅助目标。IROS 2026。
 - **代码：** [IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)（解耦 WBC **已开源**）；论文仓 [humanoid-touch-dream](https://github.com/chrisyrniu/humanoid-touch-dream) 为入口，遥操作与 HTD 策略截至 2026-08-26 仍 on-going
 
@@ -21,7 +21,7 @@
 - **站点归档：** [sources/sites/humanoid-touch-dream.md](../sites/humanoid-touch-dream.md)
 - **WBC 仓归档：** [sources/repos/isaaclab_decoupled_wbc.md](../repos/isaaclab_decoupled_wbc.md)
 
-> 2026-08-26 复核：论文仓仍是导航入口（MIT，submodule 指向 WBC 仓）。解耦 WBC 训练/蒸馏/G1 部署与 example checkpoint 已在 IsaacLab-Decoupled-WBC 发布（BSD-3-Clause）。全身遥操作与 HTD 策略训练仍标 on-going。
+> 2026-09-03 复核：论文仓仍是导航入口（MIT，submodule 指向 WBC 仓）。解耦 WBC 训练/蒸馏/G1 部署与 example checkpoint 已在 IsaacLab-Decoupled-WBC 发布（BSD-3-Clause）。全身遥操作与 HTD 策略训练仍标 on-going。已升格 canonical 论文实体页 [wiki/entities/paper-humanoid-touch-dream.md](../../wiki/entities/paper-humanoid-touch-dream.md)。
 
 ## 核心论文摘录（MVP）
 
@@ -63,4 +63,5 @@
 - [x] 核心系统、方法与实验结论提炼
 - [x] 升格为 HTD 方法页
 - [x] 2026-08-26：解耦 WBC 代码发布后补充实现结构、观测/命令空间、G1 部署入口（见 [IsaacLab-Decoupled-WBC](../repos/isaaclab_decoupled_wbc.md)）
+- [x] 2026-09-03：升格 canonical 论文实体页 [paper-humanoid-touch-dream.md](../../wiki/entities/paper-humanoid-touch-dream.md)
 - [ ] 遥操作采数与 HTD 策略训练代码发布后再补策略复现入口

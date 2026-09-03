@@ -2,8 +2,9 @@
 type: method
 tags: [humanoid, tactile-sensing, visuo-tactile, imitation-learning, behavior-cloning, loco-manipulation, transformer]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-03
 related:
+  - ../entities/paper-humanoid-touch-dream.md
   - ../entities/htd-decoupled-wbc.md
   - ./imitation-learning.md
   - ./bc-with-transformer.md
@@ -23,7 +24,7 @@ summary: "Humanoid Transformer with Touch Dreaming (HTD) 是一种面向人形�
 
 # Humanoid Transformer with Touch Dreaming (HTD)
 
-**HTD** 是一种面向人形机器人 dexterous loco-manipulation 的多模态行为克隆方法。它把触觉从“附加传感器输入”提升为训练目标：策略不仅预测 action chunks，还要预测未来手部关节力和未来触觉 latent，从而逼迫共享 Transformer trunk 学到接触动态。
+**HTD** 是一种面向人形机器人 dexterous loco-manipulation 的多模态行为克隆方法（论文实体见 [Humanoid Touch Dream](../entities/paper-humanoid-touch-dream.md)）。它把触觉从“附加传感器输入”提升为训练目标：策略不仅预测 action chunks，还要预测未来手部关节力和未来触觉 latent，从而逼迫共享 Transformer trunk 学到接触动态。
 
 ## 一句话定义
 
@@ -54,7 +55,7 @@ HTD 的关键价值在于两点：
 
 HTD 依赖一个完整的人形操作数据闭环：
 
-1. **Lower-Body Controller (LBC)：** 在 Isaac Lab 中训练 RL teacher，再用 BC→DAgger 蒸馏到只依赖真机可观测本体信息的 student。LBC 跟踪底盘速度、躯干姿态和高度命令，是操作时的稳定性骨架。官方实现已开源为 [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md)（[IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)）；遥操作采数与 HTD 策略代码截至 2026-08-26 仍待发布。
+1. **Lower-Body Controller (LBC)：** 在 Isaac Lab 中训练 RL teacher，再用 BC→DAgger 蒸馏到只依赖真机可观测本体信息的 student。LBC 跟踪底盘速度、躯干姿态和高度命令，是操作时的稳定性骨架。官方实现已开源为 [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md)（[IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)）；遥操作采数与 HTD 策略代码截至 2026-09-03 仍待发布。
 2. **VR 遥操作采集：** 操作者的头、腕、手信号被映射为躯干命令、腕部 6D pose、灵巧手 retargeting target，摇杆提供底盘速度。
 3. **多模态 demonstration：** 数据同步包含头部/腕部 RGB、本体感受、手部关节力、双手触觉，以及 torso、end-effector、velocity、hand action targets。
 4. **HTD policy：** 多模态 tokenizer 将各输入压成 tokens，encoder-decoder Transformer 融合后，由 action experts 解码动作，由 dream experts 解码未来接触信号。
@@ -112,6 +113,7 @@ EMA tactile tokenizer 的作用类似慢速 teacher：它不反传梯度，只�
 
 ## 关联页面
 
+- [Humanoid Touch Dream（论文实体）](../entities/paper-humanoid-touch-dream.md)
 - [Imitation Learning](./imitation-learning.md)
 - [Behavior Cloning with Transformer](./bc-with-transformer.md)
 - [Action Chunking](./action-chunking.md)
