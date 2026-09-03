@@ -1,3 +1,9 @@
+## [2026-09-03] ingest | sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md — 具身智能小站 8 篇开源论文速览；新建 7 实体 + 系统可靠性技术地图；DemoMimic 复用
+
+- **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/-UqboKHaoG5eu79u9XQU0w>；要求每篇独立非重复详情节点
+- **步骤 2.5：** HINT/SA-WAM/Safe-Stop **待发布**（项目页无 GitHub）；Physics HRC **部分/待发布**（匿名预览 benchmark Coming soon）；TAPVid-MV **部分开源**（基准/Perpetua 经项目页）；TTI Survey + PACT **已开源**；DemoMimic **复用** complete 页并补 arXiv:2609.01938
+- **关键页：** 新建 `paper-hint-robot-manipulation`、`paper-sa-wam`、`paper-physics-consistent-hrc-benchmark`、`paper-safe-stop-humanoid`、`paper-tapvid-mv`、`paper-test-time-intelligence-survey`、`paper-pact-hrc-action-admission`；地图 [`open-source-system-reliability-8-papers-technology-map`](wiki/overview/open-source-system-reliability-8-papers-technology-map.md)
+
 ## [2026-09-03] ingest | sources/papers/humanoid_touch_dream.md — Humanoid Touch Dream（IROS 2026）；升格 canonical 论文实体；WBC 已开源、策略/遥操作 on-going
 
 ## [2026-09-03] ingest | sources/papers/embodiedskills_arxiv_2609_01281.md — EmbodiedSkills AgentLoop；GitHub 已开源
