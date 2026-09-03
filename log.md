@@ -1,3 +1,10 @@
+## [2026-09-03] fix | wiki/entities/gpufree.md、wiki/comparisons/china-gpu-cloud-platforms.md — 按平台开发者勘误（issue #1767）修正算力自由定位、去除 Docker/星级打分、补容器桌面 3.0
+
+- **触发：** 平台开发者 `@RiskerFalor` 在 [issue #1767](https://github.com/ImChong/Robotics_Notebooks/issues/1767) 指出早期页面（含 AI 生成成分）有误
+- **修正点：** ①定位改为「产品重心是机器人仿真」；②「Docker 容器」→「容器实例/容器化平台」；③文档成熟度星级 → 文档风格描述（打分不可跨受众线性比较）；④容器桌面非 VNC，3.0（2026-09-03）GPU 加速 + 手柄；⑤RT Core 由 NVIDIA 卡型决定，不是平台差异点；⑥补赛事/高校合作与价格（标注为厂商自述）；⑦补「公共模型存储未必是加分项」误区
+- **核对：** 官网首页已有「合作赛事」入口；`docs/guide/quick_start.html` 仍写 noVNC-vulkan、无 3.0 章节 → 相关条目标注「开发者自述 / 待官方文档更新回填」
+- **归档：** [`sources/sites/gpufree.md`](sources/sites/gpufree.md) 新增「开发者勘误」小节原样保留一手说法
+
 ## [2026-09-03] ingest | sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md — 具身智能小站 8 篇开源论文速览；新建 7 实体 + 系统可靠性技术地图；DemoMimic 复用
 
 - **触发：** 用户指定公众号 <https://mp.weixin.qq.com/s/-UqboKHaoG5eu79u9XQU0w>；要求每篇独立非重复详情节点
