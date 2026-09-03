@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-02
+updated: 2026-09-03
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -35,6 +35,7 @@ related:
   - ../entities/paper-fm-vla.md
   - ../entities/vla-sota-leaderboard.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+  - ../entities/paper-demomimic.md
   - ../methods/regrind-retargeting-guided-rl.md
   - ../entities/paper-dexverse.md
   - ../entities/dexbench.md
@@ -78,6 +79,7 @@ sources:
   - ../../sources/papers/ld4wam_arxiv_2608_22403.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/sites/dexbench-org.md
+  - ../../sources/papers/demomimic_stanford_2026.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
@@ -181,6 +183,7 @@ flowchart TD
 - **家用可变形操作 · Solve 叙事**：[ACT-2（Sunday Robotics）](../entities/sunday-robotics-act2.md)（2026-07）在 **Memo** 移动平台上以 **人类 sensorized 预训练 + in-house post-training** 报告 **叠衣 99.1%（785 ep、未见家庭、零部署适配）**；评测框架见 [Robotics Solve 标准](../concepts/robotics-solve-standard.md)——与开源 [TidyBot2](../entities/tidybot2.md)、[LeRobot folding](../entities/lerobot.md)、竞赛全链路 [Learning to Fold / LeHome](../entities/paper-lehome-learning-to-fold.md)（仿真 1st / 真机 2nd，SO-ARM101）、以及 [χ₀ / kai0](../entities/paper-kai0.md)（双臂协同展平/折叠/挂衣，相对 π₀.₅ 约 +250% SR，代码数据权重已开）形成 **闭源可靠性主张 vs 可复现栈** 对照
 - **FastGrasp**（[实体页](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)，arXiv:2604.12879）：**移动底盘 + 臂 + LeapHand 全身 RL 快速灵巧抓取**——CVAE 点云引导 + PPO + **二值触觉** 冲击稳定；仿真 **50.09%**、真机 **32–35%**
 - **ADEPT**（[实体页](../entities/paper-adept-dexterity.md)，arXiv:2608.19182）：**16 primitive reposing RL 预训练 + 保守 post-training + 两阶段 vision distill**——Kuka–Allegro / Flexiv–Sharpa **zero-shot** FMB peg insertion 与 dish placement；visuo-tactile **8/10** vs vision **3/10**；Code Coming soon
+- **DemoMimic**（[实体页](../entities/paper-demomimic.md)，Stanford 2026）：**单次人类示范** + **接触局部几何** 与 **AR/SCR** → 仿真 RL 教师蒸馏 **腕部 depth IL**；真机 **16 物体** 平均 **71%** SR，**最小 sim-to-real gap**（相对 DexMachina* / HERMES*）；**Code / arXiv coming soon**
 - **RoboEdit**（[实体页](../entities/paper-roboedit.md)，arXiv:2608.18948）：**人类操作 RGB 视频 → robot video + 3D hand states**（RoboEdit-14M）；下游 Franka 真机 YCB；无官方代码 URL
 
 ## 在人形机器人中的特殊性
@@ -257,6 +260,7 @@ flowchart TD
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 人手演示 → 接触保真参考 → PPO 跟踪，Pen-Spin / 魔方重定向
 - [REGRIND（重定向引导灵巧操作 RL）](../methods/regrind-retargeting-guided-rl.md) — MoCap 单次演示 → interaction mesh 重定向 → 残差 RL；LEAP/WUJI 剪刀与螺丝刀真机（arXiv:2607.11874）
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 人类演示 → CWS 奖励 + RL；4,739 项双手 benchmark 与 DexMachina/ManipTrans/SPIDER 对照
+- [DemoMimic（单次示范灵巧泛化）](../entities/paper-demomimic.md) — 接触局部几何 + AR/SCR；16 物体真机 71% 均值（Stanford；代码待发布）
 - [WARP（离线全身重定向）](../entities/paper-warp-whole-body-retargeting.md) — Meta Quest 离线人演示 → 闭式 c-SEW 机器人动作 → BC；全身移动操作数据管线（arXiv:2606.29940）
 - [DexVerse](../entities/paper-dexverse.md) — 100 项多任务多具身灵巧 benchmark + 3,180 VR 示范；IL/VLA 基线均值成功率 34%（arXiv:2607.08751，UNC/HKU/Berkeley）
 - [Grasp Pose Estimation (抓取位姿估计)](../methods/grasp-pose-estimation.md) — RGBD/点云 → 6-DoF 抓取候选；GraspNet → Contact-GraspNet → GSNet/AnyGrasp 方法谱系

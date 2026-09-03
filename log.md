@@ -1,3 +1,5 @@
+## [2026-09-03] ingest | sources/papers/demomimic_stanford_2026.md — DemoMimic 单次示范灵巧泛化；开源待发布（Code/arXiv coming soon）
+
 ## [2026-09-03] ingest | sources/papers/{parcelstow,adapt_2609_00677,facet_0} — G1 时间鲁棒性 / 文本运动 / 动作–受力联合预测；Facet-0 仓库仍占位
 
 - **触发：** 用户指定三组：ParcelStow（GitHub + arXiv:2609.01453 + HF `cenwerem/parcelstow`）、ADAPT（arXiv:2609.00677 + wuyan01 项目页）、Facet-0（GitHub + arXiv:2609.01596 + 项目页 + ManuFacet-1K）

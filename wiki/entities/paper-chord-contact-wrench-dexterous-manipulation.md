@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, contact-rich, imitation-learning, reinforcement-learning, benchmark, bimanual, nvidia, isaac-lab, sim2real]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-03
 venue: "2026 · NVIDIA Tech Report"
 summary: "CHORD 以物体中心接触力旋量（CWS）空间奖励把人类双手演示迁移到灵巧手 RL 策略，在 4,739 项 benchmark 上训练、1,831 项评测达 82.12% 平均成功率，并扩展到 G1 全身与 Sharpa 真机。"
 related:

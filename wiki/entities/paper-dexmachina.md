@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-03
 arxiv: "2505.24853"
 venue: "ICML 2026"
 code: https://project-dexmachina.github.io/
 related:
   - ./paper-chord-contact-wrench-dexterous-manipulation.md
+  - ./paper-demomimic.md
   - ../methods/regrind-retargeting-guided-rl.md
   - ../tasks/bimanual-manipulation.md
   - ../overview/realab-14-papers-technology-map-2026.md
@@ -71,6 +72,7 @@ DexMachina 把 VOC 课程做成可复现的灵巧功能重定向平台，但真�
 ## 关联页面
 
 - [paper-chord-contact-wrench-dexterous-manipulation](./paper-chord-contact-wrench-dexterous-manipulation.md)
+- [DemoMimic](./paper-demomimic.md) — 项目页将 DexMachina* 作 sim 高、真机低的对照基线（接触中心 AR/SCR）
 - [regrind-retargeting-guided-rl](../methods/regrind-retargeting-guided-rl.md)
 - [bimanual-manipulation](../tasks/bimanual-manipulation.md)
 - [REALab 14 篇技术地图](../overview/realab-14-papers-technology-map-2026.md)
