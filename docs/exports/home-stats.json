@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-demomimic.md",
+      "detail_id": "entity-paper-demomimic",
+      "label": "DemoMimic（One Demonstration, Many Objects）",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-adapt-text-driven-humanoid.md",
       "detail_id": "entity-paper-adapt-text-driven-humanoid",
       "label": "ADAPT：端到端文本驱动人形控制",
@@ -207,28 +216,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pi0.md",
-      "detail_id": "entity-paper-pi0",
-      "label": "π₀：流匹配动作专家的通用 VLA",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adapt-text-driven-humanoid.md",
-    "detail_id": "entity-paper-adapt-text-driven-humanoid",
-    "label": "ADAPT：端到端文本驱动人形控制",
+    "path": "wiki/entities/paper-demomimic.md",
+    "detail_id": "entity-paper-demomimic",
+    "label": "DemoMimic（One Demonstration, Many Objects）",
     "type": "entity",
     "recency": "2026-09-03",
     "source": "git",
-    "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
