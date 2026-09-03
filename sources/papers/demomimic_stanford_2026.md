@@ -7,7 +7,7 @@
 - **类型：** paper / dexterous-manipulation / sim2real / imitation-learning / reinforcement-learning / contact-rich / single-demo
 - **项目页：** <https://demomimic.github.io/> — 归档见 [`sources/sites/demomimic-github-io.md`](../sites/demomimic-github-io.md)
 - **PDF：** <https://demomimic.github.io/static/demomimic_paper.pdf>
-- **arXiv：** 项目页标注 **coming soon**（截至 2026-09-03 未挂 abs 链接）
+- **arXiv：** <https://arxiv.org/abs/2609.01938>（[具身智能小站 2026-09-03 盘点](../blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md) 已链；项目页按钮仍可能显示 coming soon）
 - **代码：** 项目页标注 **Code · coming soon**（截至 2026-09-03 **无** GitHub URL）
 - **机构：** Stanford University（Satvik Sharma*、Samrat Sahoo*、Huang Huang*；Fei-Fei Li、Jiajun Wu、Dorsa Sadigh、Jeannette Bohg）
 - **入库日期：** 2026-09-03

@@ -2,7 +2,7 @@
 
 ## [2026-09-03] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **4** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -118,8 +118,9 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-physics-consistent-hrc-benchmark.md
+- wiki/entities/paper-tapvid-mv.md
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -127,4 +128,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：3398/3398 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3406/3406 (100%) wiki/entity 页有 ingest 来源
