@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-humanoid-touch-dream.md",
+      "detail_id": "entity-paper-humanoid-touch-dream",
+      "label": "Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-embodiedskills.md",
       "detail_id": "entity-paper-embodiedskills",
       "label": "EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）",
@@ -205,29 +215,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-octo.md",
-      "detail_id": "entity-paper-octo",
-      "label": "Octo：灵活输入的开源通才操作策略",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-embodiedskills.md",
-    "detail_id": "entity-paper-embodiedskills",
-    "label": "EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）",
+    "path": "wiki/entities/paper-humanoid-touch-dream.md",
+    "detail_id": "entity-paper-humanoid-touch-dream",
+    "label": "Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）",
     "type": "entity",
     "recency": "2026-09-03",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
