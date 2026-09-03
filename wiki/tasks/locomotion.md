@@ -237,6 +237,8 @@ flowchart TD
 - **硬件安全裕度**：关节力矩、电流、温度和冲击峰值是否留有余量
 - **敏捷课一体化分数（研究基准）**：例如 [Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md) 将 **多障碍序列 + 计时扣分** 压成 **0–1 敏捷分**，便于对比 **专长切换 vs Transformer 通才** 与 **sim2real** 管线。
 
+> 上面这些指标怎么读、和跟踪误差类/求解类/硬件类指标怎么分工，见 [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md)。
+
 ## 工程落地检查
 
 1. **先定义动作接口**：策略输出扭矩、关节位置、位置增量还是阻抗参数，会直接决定训练难度和真机风险。

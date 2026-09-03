@@ -183,6 +183,7 @@ flowchart LR
 - 把失败 rollout 按机制归档（摔倒、打滑、膝盖反关节、脚底震荡），它们比平均 reward 更能指导下一轮改动
 
 ### 推荐读什么
+- [运控模型评测指标](../wiki/concepts/motion-control-policy-evaluation-metrics.md)（本仓库）— **本阶段的概念主页**：四组指标（跟踪误差 / 命令跟随 / model-based 求解 / 硬件部署）、可比性四项对齐、难度分层与三段验收的完整定义
 - [HumanTracker](../wiki/entities/paper-humantracker.md)（本仓库）— 153 h / 25K 四族光学基准 + 偏好对齐指标 HumanScore；把 GMT / TWIST2 / SONIC / Humanoid-GPT 的参考表示、rollout 记账、终止准则与指标实现钉死后再对照；族均衡对齐率 90.83%，评测代码与 HumanScore 权重已开、数据集待发布
 - [Motion Difficulty Score / MD-AMASS](../wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md)（本仓库）— 用刚体动力学给出与策略无关的动作难度分，配 MID（最大可模仿难度）与 DSJE（按难度分层的关节误差），把"比 SOTA"变成"每个难度档分别比"
 - [HumanoidBench](../wiki/entities/humanoid-bench.md)（本仓库）— 统一 MuJoCo 下 15 项全身操作 + 12 项运动任务，附 Dreamer / SAC / PPO / TD-MPC2 基线，用于检验算法能否同时扛住高维身体控制与任务交互
@@ -262,7 +263,7 @@ flowchart LR
 | Stage 1 | MLLM 认知评测 | [RoboBench](../wiki/entities/robo-bench.md) |
 | Stage 2 | 世界模型保真度 | [EWMBench](../wiki/entities/ewmbench.md) |
 | Stage 3 | 任务侧策略成功率与过程判据 | [RoboDojo](../wiki/entities/robodojo.md) |
-| Stage 4 | 运控模型跟踪精度与真机验收 | [HumanTracker](../wiki/entities/paper-humantracker.md) · [locomotion 评价指标](../wiki/tasks/locomotion.md) |
+| Stage 4 | 运控模型跟踪精度与真机验收 | [运控模型评测指标](../wiki/concepts/motion-control-policy-evaluation-metrics.md) |
 | Stage 5 | sim↔real 校准 | [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) |
 | Stage 6 | 评测基建与榜单治理 | [XPolicyLab](../wiki/entities/xpolicylab.md) |
 
@@ -309,6 +310,7 @@ flowchart LR
 - [sources/papers/imitator_game_arxiv_2608_22301.md](../sources/papers/imitator_game_arxiv_2608_22301.md) — Imitator Game，arXiv:2608.22301
 - [sources/papers/bet4sim2real_arxiv_2608_21572.md](../sources/papers/bet4sim2real_arxiv_2608_21572.md) — Bet4Sim2Real，arXiv:2608.21572
 - [sources/papers/sc3_eval_arxiv_2606_18610.md](../sources/papers/sc3_eval_arxiv_2606_18610.md) — SC3-Eval，arXiv:2606.18610
+- [运控模型评测指标](../wiki/concepts/motion-control-policy-evaluation-metrics.md) — Stage 4 的概念沉淀页
 - [sources/papers/humantracker_arxiv_2608_13555.md](../sources/papers/humantracker_arxiv_2608_13555.md) — HumanTracker，arXiv:2608.13555（Stage 4 跟踪评测协议与 HumanScore）
 - [sources/repos/humanoid-bench.md](../sources/repos/humanoid-bench.md) · [sources/repos/trackerlab.md](../sources/repos/trackerlab.md) — Stage 4 运控评测套件与统一跟踪实验接口
 - [wiki/tasks/locomotion.md](../wiki/tasks/locomotion.md) 的「评价指标」与「工程落地检查」小节

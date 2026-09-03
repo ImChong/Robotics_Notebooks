@@ -199,6 +199,8 @@ flowchart LR
 
 ## 关联页面
 
+- [运控模型评测指标](./motion-control-policy-evaluation-metrics.md) — 奖励项与验收指标的边界：能耗/抖动惩罚是训练信号，不能直接当评测指标
+
 - [Reward Design](./reward-design.md) — 奖励设计的通用原则：hacking、稀疏/稠密、potential-based shaping 与自动化方向
 - [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md) — 对偶页：输入侧按「部署可得性」的五类划分
 - [Locomotion 奖励函数设计指南](../queries/locomotion-reward-design-guide.md) — 本页分类的操作版：公式、权重与失败模式速查

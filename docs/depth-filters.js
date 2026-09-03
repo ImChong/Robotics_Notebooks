@@ -437,6 +437,7 @@
         'wiki/entities/paper-robosynchallenge.md',
         'wiki/entities/paper-sa-2606-15032-how-should-world-models-be-evaluated-for-embodie.md',
         'wiki/entities/xpolicylab.md',
+        'wiki/concepts/motion-control-policy-evaluation-metrics.md',
         'wiki/tasks/locomotion.md',
         'wiki/concepts/whole-body-tracking-pipeline.md',
         'wiki/queries/humanoid-motion-tracking-method-selection.md'
