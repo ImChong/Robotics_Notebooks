@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-03",
   "node_count": 3422,
-  "edge_count": 30859,
+  "edge_count": 30860,
   "coverage": {
     "covered": 3397,
     "total": 3397,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-embodiedskills.md",
+      "detail_id": "entity-paper-embodiedskills",
+      "label": "EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-demomimic.md",
       "detail_id": "entity-paper-demomimic",
@@ -205,27 +216,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-openvla.md",
-      "detail_id": "entity-paper-openvla",
-      "label": "OpenVLA：可复现的开源视觉–语言–动作模型",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-demomimic.md",
-    "detail_id": "entity-paper-demomimic",
-    "label": "DemoMimic（One Demonstration, Many Objects）",
+    "path": "wiki/entities/paper-embodiedskills.md",
+    "detail_id": "entity-paper-embodiedskills",
+    "label": "EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）",
     "type": "entity",
     "recency": "2026-09-03",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
