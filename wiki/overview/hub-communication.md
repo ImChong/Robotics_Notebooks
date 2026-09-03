@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-communication, ethercat, can, ros2, firmware, bus, rpc, grpc]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-03
 summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场总线（EtherCAT/CAN/UART）到 ROS 2 / LCM / RPC 软件中间件，覆盖人形与移动机器人底层数据链路选型。"
 ---
 
@@ -39,6 +39,7 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 | 总览 | 驱动-固件-总线栈 | [Motor Drive / Firmware / Bus Protocols](./motor-drive-firmware-bus-protocols.md) |
 | 现场总线 | EtherCAT / CAN 选型 | [EtherCAT Protocol](../concepts/ethercat-protocol.md)、[CAN vs EtherCAT](../comparisons/can-vs-ethercat-joint-bus.md) |
 | 串口层 | RS-485 / UART | [RS-485](../concepts/rs-485-serial-bus.md)、[UART](../concepts/uart-serial-communication.md) |
+| 进程间通信 | POSIX 原语与分层选型 | [IPC 基础](../concepts/ipc-inter-process-communication.md) |
 | 中间件 | ROS 2 vs LCM | [ROS2 Basics](../concepts/ros2-basics.md)、[ROS2 vs LCM](../comparisons/ros2-vs-lcm.md) |
 | DDS | ROS 2 底层 QoS/RTPS | [DDS 通信机制](../concepts/dds-communication.md) |
 | RPC | 请求/响应服务面 | [远程过程调用](../concepts/remote-procedure-call.md)、[gRPC](../entities/grpc.md) |
@@ -54,6 +55,7 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 
 ## 关联页面
 
+- [进程间通信（IPC）](../concepts/ipc-inter-process-communication.md)
 - [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) · [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md)
 - [Field-Oriented Control](../concepts/field-oriented-control.md)
 - [EtherCAT vs EtherNet/IP](../comparisons/ethercat-vs-ethernet-ip.md)

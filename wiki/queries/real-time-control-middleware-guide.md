@@ -20,6 +20,7 @@ related:
   - ../concepts/rtos-realtime-scheduling.md
   - ../concepts/control-inference-frequency-decoupling.md
   - ../concepts/operating-system-basics.md
+  - ../concepts/ipc-inter-process-communication.md
   - ../overview/hub-systems-engineering.md
 summary: "实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。"
 ---
@@ -70,7 +71,7 @@ summary: "实时运控中间件配置指南：详细解答在真机部署中如�
 
 ## 3. 进程间通信的避坑指南 (Middleware)
 
-即使你的进程是实时的，如果你的进程间通信（IPC）机制拉胯，整个系统依然会卡顿。
+即使你的进程是实时的，如果你的进程间通信（IPC）机制拉胯，整个系统依然会卡顿。机制谱系与 POSIX 一手语义见 [IPC 基础](../concepts/ipc-inter-process-communication.md)。
 
 ### 避坑 ROS 2 的 DDS
 ROS 2 底层使用的是 [DDS](../concepts/dds-communication.md) 协议（常见实现：[Fast DDS](../entities/fast-dds.md)、[Cyclone DDS](../entities/cyclone-dds.md)），它极其庞杂，包含大量的多线程动态内存分配、TCP 握手和 QoS 确认机制。**绝不要把 1000Hz 的底层关节反馈和力矩指令发在 ROS 2 上**。
@@ -111,6 +112,7 @@ ROS 2 底层使用的是 [DDS](../concepts/dds-communication.md) 协议（常见
 
 ## 参考来源
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
+- [IPC 一手资料索引](../../sources/sites/ipc_primary_refs.md)
 - [LCM 官方文档 / 仓](../../sources/sites/lcm-proj-github-io.md) · [repos/lcm.md](../../sources/repos/lcm.md)
 - [ROS 2 组织 / 元仓](../../sources/sites/ros2-github-org.md) · [repos/ros2.md](../../sources/repos/ros2.md)
 - [OMG DDS / Fast DDS / Cyclone](../../sources/sites/omg-dds-spec.md) · [fast-dds](../../sources/repos/fast-dds.md) · [cyclonedds](../../sources/repos/cyclonedds.md)

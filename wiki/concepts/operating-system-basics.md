@@ -2,8 +2,9 @@
 type: concept
 tags: [systems-engineering, os, linux, scheduling, memory, deployment]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-03
 related:
+  - ./ipc-inter-process-communication.md
   - ./rtos-realtime-scheduling.md
   - ./network-protocol-stack.md
   - ../queries/real-time-control-middleware-guide.md
@@ -11,6 +12,7 @@ related:
   - ../formalizations/control-loop-latency-modeling.md
 sources:
   - ../../sources/sites/systems_engineering_os_network_primary_refs.md
+  - ../../sources/sites/ipc_primary_refs.md
 summary: "操作系统基础（进程、线程、内存、文件系统、调度）：机器人主控 Linux 上隔离运控与日志 I/O、理解抖动来源的最小知识集。"
 ---
 
@@ -60,6 +62,7 @@ summary: "操作系统基础（进程、线程、内存、文件系统、调度�
 
 ## 关联页面
 
+- [进程间通信（IPC）](./ipc-inter-process-communication.md)
 - [RTOS 与实时调度](./rtos-realtime-scheduling.md)
 - [网络协议栈基础](./network-protocol-stack.md)
 - [系统工程知识链](../overview/hub-systems-engineering.md)
@@ -67,6 +70,7 @@ summary: "操作系统基础（进程、线程、内存、文件系统、调度�
 ## 参考来源
 
 - [OS 与网络一手资料](../../sources/sites/systems_engineering_os_network_primary_refs.md)
+- [IPC 一手资料索引](../../sources/sites/ipc_primary_refs.md)
 
 ## 推荐继续阅读
 

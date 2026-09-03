@@ -6,7 +6,7 @@
 - **类型：** book / RFC / standard（合集）
 - **入库日期：** 2026-07-21
 - **一句话说明：** 为人形/移动机器人「主控 Linux + 感知板 + 云端服务」提供操作系统与网络基线概念的原始依据，沉淀到系统工程专题。
-- **沉淀到 wiki：** 是 → [operating-system-basics](../../wiki/concepts/operating-system-basics.md)、[network-protocol-stack](../../wiki/concepts/network-protocol-stack.md)、[hub-systems-engineering](../../wiki/overview/hub-systems-engineering.md)
+- **沉淀到 wiki：** 是 → [operating-system-basics](../../wiki/concepts/operating-system-basics.md)、[network-protocol-stack](../../wiki/concepts/network-protocol-stack.md)、[hub-systems-engineering](../../wiki/overview/hub-systems-engineering.md)；IPC 专页见 [ipc_primary_refs.md](ipc_primary_refs.md) → [ipc-inter-process-communication](../../wiki/concepts/ipc-inter-process-communication.md)
 
 ## 为什么值得保留
 
@@ -51,9 +51,17 @@
 - **要点：** L4（TCP/UDP）与 L7（HTTP）分流；机器人训练集群与多机仿真常用；真机控制面应避免把实时流量送进 LB。
 - **对 wiki 的映射：** [network-protocol-stack](../../wiki/concepts/network-protocol-stack.md)、[container-orchestration-cicd](../../wiki/concepts/container-orchestration-cicd.md)
 
+### 5) POSIX / Linux IPC 原语
+
+- **来源：** [ipc_primary_refs.md](ipc_primary_refs.md) — `pipe(7)`、`shm_overview(7)`、`mq_overview(7)`、`sem_overview(7)`、`unix(7)`；OSTEP、APUE、Beej's Guide to Unix IPC。
+- **要点：**
+  - 进程隔离后靠 IPC 传数据；**共享内存零拷贝但须同步**；管道为无边界字节流。
+  - 机器人分层：高频本机 → 共享内存 / LCM；系统集成 → ROS 2/DDS；服务面 → RPC。
+- **对 wiki 的映射：** [ipc-inter-process-communication](../../wiki/concepts/ipc-inter-process-communication.md)、[real-time-control-middleware-guide](../../wiki/queries/real-time-control-middleware-guide.md)
+
 ## 推荐继续阅读（外部）
 
-- man7.org：`sched(7)`、`epoll(7)`、`tcp(7)`、`udp(7)`
+- man7.org：`sched(7)`、`epoll(7)`、`pipe(7)`、`shm_overview(7)`、`tcp(7)`、`udp(7)`
 - [ROS 2 官方文档](./ros2-official-documentation.md)（DDS 走 UDP，QoS 覆盖可靠性）
 
 ## 当前提炼状态

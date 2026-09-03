@@ -4,6 +4,8 @@
 - **步骤 2.5：** HINT/SA-WAM/Safe-Stop **待发布**（项目页无 GitHub）；Physics HRC **部分/待发布**（匿名预览 benchmark Coming soon）；TAPVid-MV **部分开源**（基准/Perpetua 经项目页）；TTI Survey + PACT **已开源**；DemoMimic **复用** complete 页并补 arXiv:2609.01938
 - **关键页：** 新建 `paper-hint-robot-manipulation`、`paper-sa-wam`、`paper-physics-consistent-hrc-benchmark`、`paper-safe-stop-humanoid`、`paper-tapvid-mv`、`paper-test-time-intelligence-survey`、`paper-pact-hrc-action-admission`；地图 [`open-source-system-reliability-8-papers-technology-map`](wiki/overview/open-source-system-reliability-8-papers-technology-map.md)
 
+## [2026-09-03] ingest | sources/sites/ipc_primary_refs.md — POSIX/Linux IPC 一手资料（pipe/shm/mq/unix man-pages、OSTEP、APUE、Beej）；新建 wiki/concepts/ipc-inter-process-communication.md；交叉 OS 基础、运控中间件指南、hub 系统工程/通信
+
 ## [2026-09-03] ingest | sources/papers/humanoid_touch_dream.md — Humanoid Touch Dream（IROS 2026）；升格 canonical 论文实体；WBC 已开源、策略/遥操作 on-going
 
 ## [2026-09-03] ingest | sources/papers/embodiedskills_arxiv_2609_01281.md — EmbodiedSkills AgentLoop；GitHub 已开源
