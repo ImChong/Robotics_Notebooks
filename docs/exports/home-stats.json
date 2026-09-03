@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/ipc-inter-process-communication.md",
+      "detail_id": "wiki-concepts-ipc-inter-process-communication",
+      "label": "进程间通信（Inter-Process Communication, IPC）",
+      "type": "concept",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    },
+    {
       "path": "wiki/entities/paper-demomimic.md",
       "detail_id": "entity-paper-demomimic",
       "label": "DemoMimic（One Demonstration, Many Objects）",
@@ -199,27 +209,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-parcelstow.md",
-      "detail_id": "entity-paper-parcelstow",
-      "label": "ParcelStow：模仿学习是否保留时间鲁棒性？",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-demomimic.md",
-    "detail_id": "entity-paper-demomimic",
-    "label": "DemoMimic（One Demonstration, Many Objects）",
-    "type": "entity",
+    "path": "wiki/concepts/ipc-inter-process-communication.md",
+    "detail_id": "wiki-concepts-ipc-inter-process-communication",
+    "label": "进程间通信（Inter-Process Communication, IPC）",
+    "type": "concept",
     "recency": "2026-09-03",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
   },
   "top_communities": [
     {
