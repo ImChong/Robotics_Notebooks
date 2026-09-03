@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, contact-rich, manipulation, open-source, technology-map]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-03
 related:
   - ../entities/paper-facet-0.md
   - ../entities/paper-parcelstow.md
@@ -71,7 +71,7 @@ flowchart TB
 
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|---------------|------|
-| 01 | Facet-0 | **已开源** `PINE-Lab-NTU/FACET` + HF | [paper-facet-0](../entities/paper-facet-0.md) |
+| 01 | Facet-0 | **部分开源** HF `ManuFacet-1K`；GitHub 仍 Code coming soon（2026-09-03） | [paper-facet-0](../entities/paper-facet-0.md) |
 | 02 | ParcelStow | **已开源** `coenwerem/parcelstow` | [paper-parcelstow](../entities/paper-parcelstow.md) |
 | 06 | Peg-in-Bench | **待核实** `aistairc/peg-in-bench`（404） | [paper-peg-in-bench](../entities/paper-peg-in-bench.md) |
 

@@ -1,3 +1,13 @@
+## [2026-09-03] ingest | sources/papers/{parcelstow,adapt_2609_00677,facet_0} — G1 时间鲁棒性 / 文本运动 / 动作–受力联合预测；Facet-0 仓库仍占位
+
+- **触发：** 用户指定三组：ParcelStow（GitHub + arXiv:2609.01453 + HF `cenwerem/parcelstow`）、ADAPT（arXiv:2609.00677 + wuyan01 项目页）、Facet-0（GitHub + arXiv:2609.01596 + 项目页 + ManuFacet-1K）
+- **步骤 2.5：**
+  - **ParcelStow：已开源** — `coenwerem/parcelstow` Apache-2.0 + HF 示范/权重；Isaac Lab G1 L6；无真机。v1 只报包裹插入。
+  - **ADAPT（ETH）：确认未开源** — 项目页无 GitHub/HF。勿与网球 AdaPT（2608.20087 / `noitom-robotics/AdaPT`）混淆。
+  - **Facet-0：部分开源** — ManuFacet-1K 已上 HF；`PINE-Lab-NTU/FACET` 仅 README（Code coming soon）；模型卡为空。纠正 2026-09-02 浅入库的「已开源」。
+- **关键页：** [`paper-parcelstow`](wiki/entities/paper-parcelstow.md) 深化；新建 [`paper-adapt-text-driven-humanoid`](wiki/entities/paper-adapt-text-driven-humanoid.md)；[`paper-facet-0`](wiki/entities/paper-facet-0.md) 深化并改开源边界
+- **主张：** ParcelStow \(r=2\) 专家 84% / ACT 53%；ADAPT 仿真 Success 0.984、真机走慢跑满；Facet-0 五任务 82% vs RECAP 15%，16→38→82 三段互补
+
 ## [2026-09-02] ingest | sources/sites/x2robot-twindex.md — 自变量 TwinDEX 三指外骨骼–同构手共设计无本体采数；确认未开源；升格 wiki/entities/twindex.md
 
 - **触发：** 用户指定项目主页 <https://x2robot.com/pages/twindex>；要求自动合并 PR

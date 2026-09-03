@@ -11,7 +11,7 @@ tags:
   - shanghai-ai-lab
   - sjtu
 status: complete
-updated: 2026-08-22
+updated: 2026-09-03
 arxiv: "2608.20087"
 venue: "arXiv 2026"
 related:
@@ -21,6 +21,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ./unitree-g1.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ./paper-adapt-text-driven-humanoid.md
   - ../methods/table-tennis-strategy-skill-learning.md
   - ../overview/video-contact-control-10-papers-technology-map.md
 sources:
@@ -32,6 +33,8 @@ summary: "AdaPT（arXiv:2608.20087，Noitom / 上海 AI Lab / 上交）：人形
 ---
 
 # AdaPT（人形网球自适应规划与跟踪）
+
+> **同名警告：** 本页是网球规划–跟踪 **AdaPT**（arXiv:2608.20087）。ETH 的端到端文本运动控制见 [ADAPT（Agile Diffusion Action Priors）](./paper-adapt-text-driven-humanoid.md)（arXiv:2609.00677），两篇缩写相近、问题不同。
 
 **AdaPT**（*Towards Professional Tennis Styles for Humanoid Robots with Adaptive Motion Planning and Tracking*，[arXiv:2608.20087](https://arxiv.org/abs/2608.20087)，[项目页](https://humanoidtennis.github.io/AdaPT/)）提出 **Adaptive motion Planning and Tracking**：从职业球员转播与 MoCap 学习 **风格化全身网球技能**，用 **解耦规划–跟踪** 保留运动风格，并以 **执行速度自适应** 缩小仿真到真机的复合误差。
 
@@ -156,6 +159,7 @@ Stage1 在随机执行速度下学习跟踪参考发球动作；完整对拉闭�
 - [Unitree G1](./unitree-g1.md) — 真机平台
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 另一 G1 全身动态技能对照
 - [Table Tennis Strategy & Skill](../methods/table-tennis-strategy-skill-learning.md) — 乒乓球分层技能（球类动画对照）
+- [ADAPT（文本驱动扩散先验）](./paper-adapt-text-driven-humanoid.md) — 同名另一篇，ETH G1 语言控制
 
 ## 推荐继续阅读
 
