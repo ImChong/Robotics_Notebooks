@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-03",
   "node_count": 3432,
-  "edge_count": 30934,
+  "edge_count": 30940,
   "coverage": {
     "covered": 3407,
     "total": 3407,
@@ -55,8 +55,7 @@
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-sa-wam.md",
@@ -104,8 +103,7 @@
       "type": "overview",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-humanoid-touch-dream.md",
@@ -232,7 +230,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 267
+      "size": 265
     },
     {
       "label": "机器人学习论文笔记",

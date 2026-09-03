@@ -10,7 +10,7 @@ tags:
   - berkeley
   - max-planck
 status: complete
-updated: 2026-09-02
+updated: 2026-09-03
 arxiv: "2406.09246"
 code: https://github.com/openvla/openvla
 related:
@@ -18,6 +18,7 @@ related:
   - ./paper-rt-2.md
   - ./paper-octo.md
   - ../methods/vla.md
+  - ./vla-sota-leaderboard.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
 sources:
   - ../../sources/papers/openvla_arxiv_2406_09246.md
@@ -77,7 +78,7 @@ flowchart LR
 
 ## 评测
 
-- 文内口径：开源 7B 可达闭源 SOTA 约 **85%+** 相对水平（对照 RT-2-X 量级）。
+- 文内口径（**2024 年原文发表时**）：开源 7B 相对当时闭源 SOTA 基线（RT-2-X 量级）约 **85%+** 相对水平；此为**发表时快照**，随后续 VLA 迭代会变，横比前请回 [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) 与原文核评测协议。
 - 目标机器人 **5k–10k** 步微调即可适配。
 - 基准细节以 [原文](https://arxiv.org/abs/2406.09246) 与仓库 README 为准。
 
@@ -128,6 +129,7 @@ sequenceDiagram
 - [RT-2](./paper-rt-2.md)
 - [Octo](./paper-octo.md)
 - [VLA](../methods/vla.md)
+- [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 社区多基准摘录榜，核对本页发表时相对位次是否已被后续工作刷新
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 
 ## 推荐继续阅读

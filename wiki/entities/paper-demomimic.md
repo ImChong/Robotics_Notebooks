@@ -150,6 +150,19 @@ flowchart TB
 - **未开源：** 仿真环境、示范格式、蒸馏细节暂不可复现。
 - **与 wrench 路线差异：** [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 wrench 空间比接触效应；DemoMimic 强调 **局部几何 + 法向/持续接触**，二者可互补而非替代。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [DexMachina](./paper-dexmachina.md)\* | 项目页列作基线（位置 + VOC 引导）：仿真 **95.8%** 但真机跌至 **21.72%**；DemoMimic 用 AR+SCR 把同任务真机保到 **82.71%** |
+| HERMES\* | 同为项目页基线：仿真 **93.7%** → 真机 **3.37%**，是「仿真虚高、真机崩塌」最极端的一条对照 |
+| [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) | 在 **wrench 空间** 比接触效应；DemoMimic 在 **接触局部几何 + 法向对齐/持续性** 上做奖励，两条接触奖励范式互补 |
+| [ADEPT](./paper-adept-dexterity.md) | 高 DoF 灵巧 **RL 预训练 + distill** 走大规模任务面；DemoMimic 只要 **每任务一条人类示范**，靠局部几何换物体泛化 |
+| [VisualMimic](./paper-notebook-visualmimic.md) | 同校线但对象不同：全身 loco-manipulation 的视觉分层控制 vs 本页多指 **桌面灵巧接触** |
+| 多示范模仿学习 | 依赖 per-object 重采集；DemoMimic 的赌注是「示范条数不是瓶颈，仿真里算不算真接触才是」 |
+
+> 读法提醒：\* 标注的基线数字来自 **项目页复现**，非原论文自报值；跨论文横比前应回各自原文核评测协议。
+
 ## 关联页面
 
 - [Manipulation 任务](../tasks/manipulation.md) — 灵巧操作与单次示范路线语境
