@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-03",
-  "node_count": 3431,
-  "edge_count": 30921,
+  "node_count": 3432,
+  "edge_count": 30934,
   "coverage": {
-    "covered": 3406,
-    "total": 3406,
+    "covered": 3407,
+    "total": 3407,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -223,28 +223,28 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 589
+      "label": "宇树 G1 人形机器人",
+      "size": 624
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 485
+      "label": "操作",
+      "size": 594
     },
     {
       "label": "视觉-语言-动作",
-      "size": 282
+      "size": 267
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 219
+      "size": 226
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 174
+      "size": 212
     },
     {
-      "label": "仿真到现实",
-      "size": 143
+      "label": "力矩电机设计纵深路线",
+      "size": 89
     }
   ],
   "top_hubs": [
@@ -399,8 +399,7 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 42,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 42
     }
   ]
 }

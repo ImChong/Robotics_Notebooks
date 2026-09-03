@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-03
 summary: "机器人系统工程知识链：操作系统/网络/数据面/分布式/容器可观测安全，以及 RTOS、DDS、边云、频率解耦、OTA 与安全状态机；标注已有独立节点与本次新建节点。"
 ---
 
@@ -35,6 +35,7 @@ summary: "机器人系统工程知识链：操作系统/网络/数据面/分布�
 | 主题簇 | 状态 | 独立节点 |
 |--------|------|----------|
 | 操作系统（进程/线程/内存/FS/调度） | **新建** | [operating-system-basics](../concepts/operating-system-basics.md) |
+| 进程间通信（IPC 原语与中间件分层） | **新建** | [ipc-inter-process-communication](../concepts/ipc-inter-process-communication.md) |
 | 网络（TCP/UDP/HTTP/DNS/TLS/LB） | **新建**（UDP 组播形式化已有） | [network-protocol-stack](../concepts/network-protocol-stack.md)、[udp-multicast-dynamics](../formalizations/udp-multicast-dynamics.md) |
 | 数据库（索引/事务/锁/隔离/复制/分片） | **新建** | [database-fundamentals](../concepts/database-fundamentals.md) |
 | 缓存（穿透/雪崩/击穿/一致性） | **新建** | [cache-consistency-pitfalls](../concepts/cache-consistency-pitfalls.md) |
