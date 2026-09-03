@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-03
 venue: curated
 summary: "TextOp 主要解决数据闭环：用语言指令、遥操作/外骨骼数据采集人类操作和机器人状态，再通过扩散策略/流匹配、全身控制器/WBC/MPC转成可训练、可复用的全身轨迹/动作序列、低层控制器目标。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:
@@ -80,6 +80,7 @@ TextOp 主要解决数据闭环：用语言指令、遥操作/外骨骼数据采
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-01-motion-base-wbt.md](../overview/loco-manip-161-category-01-motion-base-wbt.md)、[loco-manip-161-category-04-generative-language-trajectory.md](../overview/loco-manip-161-category-04-generative-language-trajectory.md)
 - 原始 source：[loco_manip_161_survey_022_textop.md](../../sources/papers/loco_manip_161_survey_022_textop.md)
+- 两阶段对照：[ADAPT（文本驱动人形）](./paper-adapt-text-driven-humanoid.md) — 用 TextOp 跟踪策略采状态–动作数据，再训端到端扩散；Offline TextOp 在其表里 Success 0.522
 
 ## 参考来源
 

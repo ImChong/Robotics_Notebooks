@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-03
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -210,6 +210,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md) — VLA + WBC 的 action buffer 设计
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂协调任务中常见 chunk 输出
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — ACT 作为跨模态触觉硬件评测骨干（chunk 64 / 执行 32）
+- [ParcelStow](../entities/paper-parcelstow.md) — ACT 在 G1 包裹插入上的时间鲁棒性对照：标称 100%，\(r=2\) 仅 53%
 - [Chronos](../entities/paper-chronos.md) — 把 action chunk 当广义坐标，经 IMLE 先验 + 二阶加速度桥精炼（arXiv:2606.30318）
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」

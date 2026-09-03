@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-03
 arxiv: "2504.21738"
 venue: "2025 · arXiv"
 summary: "语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。"
@@ -82,6 +82,7 @@ sources:
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_langwbc_arxiv_2504_21738.md](../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md)
+- 后续对照：[ADAPT（文本驱动人形）](./paper-adapt-text-driven-humanoid.md) — 同样端到端语言控制，但用帧级扩散先验 + 残差；论文表里 LangWBC Success 0.923 / R@1 40.9%
 
 ## 参考来源
 

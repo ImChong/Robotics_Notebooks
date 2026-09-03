@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, lightweight-rl, manipulation, stanford]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-03
 arxiv: "2608.09138"
 code: https://github.com/DaivdYuan/SpeedTuning
 related:
@@ -133,6 +133,7 @@ sequenceDiagram
 - [Action Chunking](../methods/action-chunking.md)
 - [SHRIMP](./paper-shrimp.md) — 执行前在仿真里改计划，对照执行时改时钟
 - [V-Simba](./paper-v-simba.md) — 同批视觉/架构向 RL
+- [ParcelStow](./paper-parcelstow.md) — 对照：不学倍率，只评模仿是否保留专家跨速度性能
 
 ## 参考来源
 

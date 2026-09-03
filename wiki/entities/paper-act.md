@@ -8,7 +8,7 @@ tags:
   - teleoperation
   - stanford
 status: complete
-updated: 2026-09-02
+updated: 2026-09-03
 arxiv: "2304.13705"
 code: https://github.com/tonyzhaozh/act
 related:
@@ -122,6 +122,7 @@ sequenceDiagram
 - [Action Chunking](../methods/action-chunking.md)
 - [Diffusion Policy](./paper-diffusion-policy.md)
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md)
+- [ParcelStow](./paper-parcelstow.md) — ACT 在 G1 包裹插入上的速度扫频：标称 100%，\(r=2\) 53%
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 
 ## 推荐继续阅读

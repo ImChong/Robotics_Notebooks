@@ -6,26 +6,31 @@ tags:
   - imitation-learning
   - dexterous-manipulation
   - temporal-robustness
+  - unitree-g1
   - umd
 status: complete
-updated: 2026-09-02
+updated: 2026-09-03
 arxiv: "2609.01453"
 code: https://github.com/coenwerem/parcelstow
 related:
   - ../methods/imitation-learning.md
-  - ../tasks/manipulation.md
+  - ../methods/action-chunking.md
+  - ./unitree-g1.md
+  - ./paper-speedtuning.md
+  - ./paper-act.md
   - ../overview/contact-rich-manipulation-7-papers-technology-map.md
   - ./paper-facet-0.md
 sources:
   - ../../sources/papers/parcelstow_arxiv_2609_01453.md
-  - ../../sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md
   - ../../sources/repos/coenwerem-parcelstow.md
-summary: "ParcelStow（arXiv:2609.01453，UMD）：比较脚本专家与 ACT 在接触丰富包裹任务上的时间鲁棒性；标称速度均 100%，最高示范速度处专家 84% / ACT 53%；coenwerem/parcelstow 已开源。"
+  - ../../sources/datasets/cenwerem-parcelstow.md
+  - ../../sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md
+summary: "ParcelStow（arXiv:2609.01453，UMD）：Isaac Lab 上 G1 L6 灵巧手包裹插入，比较脚本专家与 ACT 的时间鲁棒性；r=1 均 100%，r=2 专家 84% / ACT 53%；代码+HF 已开源，无真机。"
 ---
 
 # ParcelStow：模仿学习是否保留时间鲁棒性？
 
-**ParcelStow**（*Does Imitation Learning Preserve Temporal Robustness in Dexterous Manipulation?*，[arXiv:2609.01453](https://arxiv.org/abs/2609.01453)，[代码](https://github.com/coenwerem/parcelstow)）由 **马里兰大学（University of Maryland）** 提出：在接触丰富的 **ParcelStow** 任务（获取、重定向、插入包裹）上，系统比较 **脚本专家** 与 **ACT** 学习者在不同任务执行速度下的表现。
+**ParcelStow**（*Does Imitation Learning Preserve Temporal Robustness in Dexterous Manipulation?*，[arXiv:2609.01453](https://arxiv.org/abs/2609.01453)，[代码](https://github.com/coenwerem/parcelstow)，[HF](https://huggingface.co/datasets/cenwerem/parcelstow)）由 **马里兰大学学院公园分校（University of Maryland）** 提出：在 **Unitree G1**（固定骨盆 + 右臂 + L6 五指，16 关节）接触丰富的包裹获取–重定向–插入任务上，用同一初始条件与同一时速因子 \(r\) 比较 **脚本专家** 与 **ACT**。
 
 ## 一句话定义
 
@@ -35,57 +40,75 @@ summary: "ParcelStow（arXiv:2609.01453，UMD）：比较脚本专家与 ACT 在
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| ACT | Action Chunking with Transformers | 本文使用的模仿学习基线 |
+| ACT | Action Chunking with Transformers | 论文主学习器；HF `act_stow.pt` 为 ACT-A |
 | IL | Imitation Learning | 模仿学习 |
-| BC | Behavior Cloning | 行为克隆（ACT 的训练范式） |
-| DR | Domain Randomization | 域随机化（本文未作为主消融轴） |
+| DP | Diffusion Policy | 包裹插入另有 checkpoint，不是主对照 |
+| G1 | Unitree G1 Humanoid | 本基准本体；L6 = 腰 + 右臂 + 五指 |
+| HF | Hugging Face | 示范、权重与视频托管 |
 
 ## 为什么重要
 
-- 纳入 [2026-09-02 七篇盘点](../../sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md) 的「评测维度」支线。
-- 现有 IL 鲁棒性评测多关注场景/物体/指令变化，**执行速度** 维度常被忽略。
-- 对部署侧：产线节拍变化可能直接击穿「实验室 100%」策略。
-- **已开源** 代码、数据与评测脚本。
+- 现有 IL 鲁棒性评测多看场景 / 物体 / 指令，**执行速度**常被漏掉；产线节拍一变，「实验室 100%」可能直接掉到 50% 带。
+- 这是 **G1 灵巧手** 上的受控专家–学习器对照，不是桌面机械臂。
+- **已开源** Isaac Lab 评测台 + HF 示范/权重；`reproduce.py` 可在 CPU 上重算论文表。
 
 ## 核心信息
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 马里兰大学（University of Maryland） |
-| **任务** | ParcelStow：获取 → 重定向 → 插入 |
-| **对比** | 脚本专家 vs ACT（两种初始化） |
-| **开源** | **已开源** [coenwerem/parcelstow](https://github.com/coenwerem/parcelstow) |
+| **机构** | 马里兰大学学院公园分校（University of Maryland） |
+| **平台** | Unitree G1，16 维绝对关节位置，50 Hz（物理 200 Hz） |
+| **观测** | 147 维状态（含 `task_phase` 与 `task_rate=r`），无视觉 |
+| **物体** | 80×55×40 mm、0.120 kg 刚性包裹 |
+| **开源** | **已开源（Apache-2.0）**：[GitHub](https://github.com/coenwerem/parcelstow) + [HF](https://huggingface.co/datasets/cenwerem/parcelstow)；**无真机** |
 
 ### 流程总览
 
 ```mermaid
 flowchart LR
-  demo[多速度专家示范] --> train[ACT 训练]
-  train --> eval[同速度因子评测]
-  expert[脚本专家] --> eval
+  expert[脚本专家\n获取固定 + 操作段 × 1/r] --> demos[示范 r∈[0.5,2.0]]
+  demos --> act[ACT / DP / DAgger]
+  expert --> eval[同初始条件速度扫频]
+  act --> eval
   eval --> fail[高速插入错位]
 ```
 
+## 核心原理
+
+时速因子 \(r\) **只缩放获取之后**的操作段（抬升→重定向→传递→插入→释放），获取段时长固定，从而把评测轴钉在「同一几何操作走得更快」，而不是整回合一起快进。几何路径是相位 \((k,f)\) 的函数；\(r\) 只改相位时钟。
+
+成功谓词是物理的（插入深度、释放、静置、终态姿态 <10°），**不读** force-closure 裕度。force-closure 只作诊断：414 次无闭包的获取在全部策略与速度下 **零完成**。
+
 ## 评测
 
-| 速度设置 | 专家成功率 | ACT 成功率 |
-|----------|-----------|-----------|
-| 标称速度 | 100% | 100% |
-| 示范范围最高速度 | 84% | 53% |
+论文 v1 / `v1.0.0` 只报包裹插入（100 episode / 速度）：
 
-- 最高速度下 ACT 47 次失败中 **35 次为插入错位**。
-- 无 force closure 的 414 次获取 **无一** 完成任务。
+| 速度 | 专家 | ACT-A |
+|------|------|-------|
+| \(r=1\)（标称） | 100% | 100% |
+| \(r=2\)（示范上限） | 84% | 53% |
+
+- 两枚不同初始化 ACT 从标称到 \(r=2\) 分别掉 **34 / 48** pt，专家掉 **16** pt。
+- \(r=2\) 时 ACT 47 次失败中 **35 次插入错位**。
+- 相对运动交接后：ACT 获取都能在空中走完重定向，但全任务只有 **64%**（专家获取后 **95%**）。
+
+`main` 另有两任务，**不是**论文主对照（标称就未对齐）：
+
+| 任务 | \(r=1\) 专家 / ACT | 额外 |
+|------|-------------------|------|
+| 直立放置 | 92 / 39 | \(r=1.75\)：90 / 74 |
+| 键控插销（3 mm 间隙） | 93 / 75 | \(r\ge 1.5\) 时 ACT 获取 **0/100** |
 
 ## 结论
 
-**模仿学习评测必须包含时间维度，否则会高估真实部署稳定性。**
+**模仿学习评测必须带时间轴，否则会把「标称 100%」误读成部署稳定性。**
 
-- 标称 100% 可掩盖高速段 30+ pt 成功率落差
-- 插入阶段是 ACT 时间敏感的主要瓶颈
-- 两个不同初始化的 ACT 均出现类似退化
-- 专家在示范速度范围内仍保留更高时间鲁棒性
-- 开源评测管线可直接复现专家—学习器对照
-- 部署前应在目标节拍范围做速度扫频评测
+1. **30+ pt 落差藏在高速段** — 同一任务、同一初始条件，只改 \(r\)。
+2. **插入是 ACT 的时间敏感瓶颈** — 空中传递还能做，入口对准先垮。
+3. **无 force-closure 的获取从不完成任务** — 时间鲁棒性讨论的前提是抓稳。
+4. **只测了一种 IL 架构的主对照** — DP/DAgger 有包裹插入权重，但不能外推 VLA。
+5. **直立 / 插销是开发数字** — 标称未对齐，勿与 v1 主表横比。
+6. **部署读法** — 目标节拍范围做速度扫频，而不是只报 \(r=1\)。
 
 ## 源码运行时序图
 
@@ -94,41 +117,57 @@ sequenceDiagram
     autonumber
     actor Dev as 开发者
     participant Repo as coenwerem/parcelstow
-    participant Data as 示范与评测数据
-    participant ACT as ACT 策略
-    participant Eval as 速度扫频评测
-    Dev->>Repo: clone + 依赖安装
-    Dev->>Data: 加载多速度示范
-    Dev->>ACT: 训练或加载 checkpoint
-    Dev->>Eval: 固定初始条件 + 速度因子
-    Eval-->>Dev: 分阶段成功率与失败类型
+    participant HF as cenwerem/parcelstow
+    participant Rec as data/records
+    participant IL as Isaac Lab 0.54
+    participant Eval as evaluate.py
+    Dev->>Repo: clone；uv pip install -e source/parcelstow
+    opt CPU 复现论文表
+        Dev->>Rec: python3 scripts/reproduce.py all-tasks
+        Rec-->>Dev: 成功率表与图
+    end
+    Dev->>HF: download_artifacts.py --task parcel
+    Dev->>IL: run_task.py / evaluate.py --actor expert|act
+    IL->>Eval: 固定种子 + r 网格
+    Eval-->>Dev: 分阶段成功与失败类型
 ```
+
+仿真需要 Isaac Sim 5.1 + GPU；数值复现不需要。
+
+## 工程实践
+
+| 项 | 做法 |
+|----|------|
+| 装扩展 | `uv pip install -p <isaaclab-venv>/bin/python -e source/parcelstow` |
+| 拉权重 | `python scripts/download_artifacts.py --task parcel`（或 `upright` / `peg` / `--paper`） |
+| 统一接口 | 147-D 观测、16-D 归一化关节位置；`--task` 选任务，不把任务 ID 拼进观测 |
+| 自定义策略 | `evaluate.py --actor examples.custom_policy:HoldPosturePolicy` |
 
 ## 局限与风险
 
-- **任务单一：** 结论来自 ParcelStow，泛化到其他接触丰富任务需验证。
-- **专家类型：** 脚本专家非人类示范，与真实遥操作数据分布可能不同。
-- **ACT 版本：** 其他 IL 架构（扩散策略、VLA 等）时间鲁棒性未覆盖。
+- **无真机 / 无视觉** — 结论停在 Isaac Lab 状态观测。
+- **专家是脚本不是遥操作** — 与人类示范分布可能不同。
+- **任务族仍窄** — 论文主文只有包裹插入；另外两任务标称未匹配。
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
-| 维度 | 本文的速度扫频评测 | 常见 IL 鲁棒性评测 | 脚本专家（本文对照组） |
-|------|------------------|-----------------|--------------------|
-| 扰动轴 | **执行速度（时间维度）** | 场景 / 物体 / 指令 / 光照 | — |
-| 暴露的问题 | 标称 100% 掩盖高速段 30+ pt 落差 | 视觉与语义分布外 | — |
-| 高速段表现 | [ACT](../methods/action-chunking.md) **53%** | 通常不测 | **84%** |
-| 主要失败模式 | **插入错位**（47 失败中 35 次） | 抓取/识别失败 | — |
-| 结论方向 | 时间鲁棒性**没有**随行为克隆一起继承 | — | 在示范速度范围内更稳 |
+| 维度 | ParcelStow | [SpeedTuning](./paper-speedtuning.md) | 常见 IL 鲁棒性评测 |
+|------|------------|--------------------------------------|-------------------|
+| 问题 | 学习器**有没有继承**专家的时间鲁棒性 | 冻结策略上**另学**执行倍率 | 场景 / 物体 / 指令 |
+| 速度轴 | 评测协议的自变量 \(r\) | 策略输出的控制维 | 通常不测 |
+| 平台 | G1 L6 仿真 | 桌面操作 + 仿真仓 | 各异 |
+| 主数字 | \(r=2\)：专家 84% / ACT 53% | 接触关键帧减速、安全段加速 | — |
 
-- **本文不是在否定 [ACT](../methods/action-chunking.md)**：标称速度下两者都是 100%，差距只在示范速度范围的高端；把它读成「ACT 不行」会丢掉真正的结论——**评测协议缺了时间轴**。
-- **不可外推的部分**：只测了一个任务与一种 IL 架构，扩散策略 / VLA 的时间鲁棒性未覆盖（见「局限与风险」），也不能反推 [Facet-0](./paper-facet-0.md) 这类含力后果建模的方法会有同样退化。
-- **对部署的直接含义**：产线节拍是会变的，验收应在目标节拍范围做速度扫频，而不是只报标称速度成功率。
+- **不是在否定 [ACT](./paper-act.md)**：\(r=1\) 两边都是 100%；缺的是评测协议的时间轴。
+- **不能外推**到 [Facet-0](./paper-facet-0.md) 这类含力后果建模的方法。
 
 ## 关联页面
 
 - [Imitation Learning](../methods/imitation-learning.md)
-- [Manipulation](../tasks/manipulation.md)
-- [Action Chunking](../methods/action-chunking.md) — 本文被测学习器 ACT 的机制页
+- [Action Chunking](../methods/action-chunking.md)
+- [Unitree G1](./unitree-g1.md)
+- [SpeedTuning](./paper-speedtuning.md)
+- [ACT](./paper-act.md)
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 - [Facet-0](./paper-facet-0.md)
 
@@ -136,9 +175,11 @@ sequenceDiagram
 
 - [arXiv:2609.01453](https://arxiv.org/abs/2609.01453)
 - [coenwerem/parcelstow](https://github.com/coenwerem/parcelstow)
+- [HF cenwerem/parcelstow](https://huggingface.co/datasets/cenwerem/parcelstow)
 
 ## 参考来源
 
 - [parcelstow_arxiv_2609_01453](../../sources/papers/parcelstow_arxiv_2609_01453.md)
-- [具身智能小站 2026-09-02 七篇盘点](../../sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md)
 - [coenwerem/parcelstow](../../sources/repos/coenwerem-parcelstow.md)
+- [cenwerem-parcelstow 数据集](../../sources/datasets/cenwerem-parcelstow.md)
+- [具身智能小站 2026-09-02 七篇盘点](../../sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md)
