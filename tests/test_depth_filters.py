@@ -54,7 +54,7 @@ console.log(JSON.stringify({
 """
         )
         data = json.loads(out.strip())
-        self.assertEqual(data["orderLen"], 22)
+        self.assertEqual(data["orderLen"], 23)
         self.assertTrue(data["hasLoco"])
         self.assertTrue(data["hasMotionGen"])
 

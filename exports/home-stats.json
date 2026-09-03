@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-03",
-  "node_count": 3432,
-  "edge_count": 30934,
+  "node_count": 3433,
+  "edge_count": 31020,
   "coverage": {
     "covered": 3407,
     "total": 3407,
@@ -16,7 +16,7 @@
       "recency": "2026-09-03",
       "source": "git",
       "action": "added",
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-demomimic.md",
@@ -55,8 +55,7 @@
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-sa-wam.md",
@@ -104,8 +103,7 @@
       "type": "overview",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-humanoid-touch-dream.md",
@@ -125,8 +123,7 @@
       "recency": "2026-09-03",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-adapt-text-driven-humanoid.md",
@@ -135,8 +132,7 @@
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-adm-ba.md",
@@ -219,32 +215,32 @@
     "recency": "2026-09-03",
     "source": "git",
     "action": "added",
-    "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 624
+      "label": "操作",
+      "size": 592
     },
     {
-      "label": "操作",
-      "size": 594
+      "label": "宇树 G1 人形机器人",
+      "size": 453
     },
     {
       "label": "视觉-语言-动作",
-      "size": 267
+      "size": 304
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 226
+      "size": 220
     },
     {
-      "label": "视觉语言动作纵深路线",
-      "size": 212
+      "label": "仿真到现实",
+      "size": 135
     },
     {
       "label": "力矩电机设计纵深路线",
-      "size": 89
+      "size": 131
     }
   ],
   "top_hubs": [
@@ -370,16 +366,14 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -399,7 +393,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 42
+      "degree": 42,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }

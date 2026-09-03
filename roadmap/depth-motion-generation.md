@@ -225,6 +225,7 @@ flowchart LR
   - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — 姊妹路线：生成负责"造动作"，重定向负责"落到机器人"
   - [BFM（人形行为基础模型）](depth-bfm.md) — 行为先验的策略权重侧表达
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md) — Diffusion Policy 一系与本路线共享生成式建模基础
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 语义接口与分层设计的邻接路线
   - [WAM（世界–动作模型）](depth-wam.md)

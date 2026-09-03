@@ -1,3 +1,5 @@
+## [2026-09-03] structural | roadmap/depth-embodied-eval.md — 新增第 22 条纵深路线「具身模型测评」（Stage 0–5：四层边界 → MLLM 认知 → 世界模型保真 → 策略成功率 → sim↔real 校准 → 评测基建/榜单治理）；同步 README/index/motion-control/roadmap README 与 docs 路线视图（depth-filters.js 新增 embodied-eval key、首页按钮与计数 21→22）
+
 ## [2026-09-03] fix | wiki/entities/gpufree.md、wiki/comparisons/china-gpu-cloud-platforms.md — 按平台开发者勘误（issue #1767）修正算力自由定位、去除 Docker/星级打分、补容器桌面 3.0
 
 - **触发：** 平台开发者 `@RiskerFalor` 在 [issue #1767](https://github.com/ImChong/Robotics_Notebooks/issues/1767) 指出早期页面（含 AI 生成成分）有误

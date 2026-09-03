@@ -236,6 +236,7 @@ flowchart LR
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接地的模型侧展开版
   - [WAM（世界–动作模型）](depth-wam.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
   - [人形 RL 运动控制](depth-rl-locomotion.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)

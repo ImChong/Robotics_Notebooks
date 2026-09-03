@@ -328,6 +328,7 @@ flowchart LR
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 姊妹路线：生成负责"造动作"，重定向负责"落到机器人"
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 5 下游的策略学习侧
   - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 6 方向 D 的主要数据消费者
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪训练的训练侧前置，也是 Stage 3 四足支线 legged_gym 跟踪的训练侧
   - [接触丰富的操作任务](depth-contact-manipulation.md) — 方向 B 灵巧手接触的邻接路线
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
