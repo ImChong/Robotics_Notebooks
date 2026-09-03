@@ -212,7 +212,7 @@
 - [Go2 Motion Imitation](wiki/entities/go2-motion-imitation.md) — Go2 Motion Imitation**（<https://github.com/TSUITUENYUE/motion-imitation>）是针对 **Unitree Go2** 的 **运 `📅unknown` `[entity_page]`
 - [Google Cloud GPU](wiki/entities/google-cloud-gpu.md) — Google Cloud GPU** 涵盖 **Compute Engine GPU 虚拟机**与 **Vertex AI** 托管 ML 服务，是除 AWS 外最常用的 **超大规模云 GPU `📅unknown` `[entity_page]`
 - [Google Colab](wiki/entities/google-colab.md) — Google Colab**（colab.research.google.com）是 Google 提供的 **云端 J `📅unknown` `[entity_page]`
-- [算力自由（GPUFree）](wiki/entities/gpufree.md) — 算力自由**（gpufree.cn，北京算力自由科技有限公司）是国内 **GPU 算力调度云**：整合多地 IDC 资源，用容器把物理 GPU `📅unknown` `[entity_page]`
+- [算力自由（GPUFree）](wiki/entities/gpufree.md) — 算力自由**（gpufree.cn，北京算力自由科技有限公司）是国内 **GPU 云平台**：整合多地 IDC 资源，用**容器化**方式把物 `📅unknown` `[entity_page]`
 - [恒源云（GPUShare）](wiki/entities/gpushare.md) — 恒源云**（gpushare.com）是专注 AI 的 **共享 GPU 算力平台**，提供云市场租卡、官方深度学习镜像与自研 **OSS 个人数 `📅unknown` `[entity_page]`
 - [GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)](wiki/entities/gr00t-visual-sim2real.md) — GR00T-VisualSim2Real** 是 NVIDIA NVlabs 发布的开源框架，囊括两项 CVPR 2026 研究：**VIRAL**（人形 Loco-Manipulation 的规 `📅unknown` `[entity_page]`
 - [GR00T-WholeBodyControl（人形全身控制统一平台）](wiki/entities/gr00t-wholebodycontrol.md) — GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 `📅unknown` `[entity_page]`

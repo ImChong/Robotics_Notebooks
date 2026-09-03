@@ -92,7 +92,7 @@ flowchart TD
 
 ## 机器人 RL 工程注意
 
-1. **Isaac Lab / Omniverse**：neocloud 上多为 **headless**；GUI 仿真需验证显示与 RT 核心，国内 [算力自由](../entities/gpufree.md) 文档更直白。
+1. **Isaac Lab / Omniverse**：neocloud 上多为 **headless**；GUI 仿真需验证显示链路与卡型（A100/H100 无 RT 核心），国内以仿真为重心的 [算力自由](../entities/gpufree.md) 直接提供 GPU 加速容器桌面。
 2. **Checkpoint**：Vast/Spot/Colab 会话中断是常态；`rsl_rl` / `wandb` artifact 养成习惯。
 3. **Egress**：权重与数据集在 AWS 却用 RunPod 训练，传数费可能吞掉租卡节省。
 4. **实验追踪**：与租卡平台正交，仍用 [TensorBoard](../entities/tensorboard.md) / [W&B](../entities/weights-and-biases.md)。
