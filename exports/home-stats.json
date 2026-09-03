@@ -9,6 +9,95 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-demomimic.md",
+      "detail_id": "entity-paper-demomimic",
+      "label": "DemoMimic（One Demonstration, Many Objects）",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-hint-robot-manipulation.md",
+      "detail_id": "entity-paper-hint-robot-manipulation",
+      "label": "HINT：长视野操作的人类意图注入",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pact-hrc-action-admission.md",
+      "detail_id": "entity-paper-pact-hrc-action-admission",
+      "label": "PACT：溯源守恒的多视角融合与动作准入",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-physics-consistent-hrc-benchmark.md",
+      "detail_id": "entity-paper-physics-consistent-hrc-benchmark",
+      "label": "Physics-Consistent HRC Benchmark：接触丰富辅助护理评测",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sa-wam.md",
+      "detail_id": "entity-paper-sa-wam",
+      "label": "SA-WAM：几何感知的 World Action Model",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-safe-stop-humanoid.md",
+      "detail_id": "entity-paper-safe-stop-humanoid",
+      "label": "Safe-Stop：人形机器人可学习安全停止",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-tapvid-mv.md",
+      "detail_id": "entity-paper-tapvid-mv",
+      "label": "TAPVid-MV：多视角 3D 任意点跟踪基准",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-test-time-intelligence-survey.md",
+      "detail_id": "entity-paper-test-time-intelligence-survey",
+      "label": "测试时智能综述：反馈驱动的适应、学习与扩展",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/open-source-system-reliability-8-papers-technology-map.md",
+      "detail_id": "wiki-overview-open-source-system-reliability-8-papers-technology-map",
+      "label": "开源系统可靠性：8 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-humanoid-touch-dream.md",
       "detail_id": "entity-paper-humanoid-touch-dream",
       "label": "Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）",
@@ -28,15 +117,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-demomimic.md",
-      "detail_id": "entity-paper-demomimic",
-      "label": "DemoMimic（One Demonstration, Many Objects）",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added"
     },
     {
       "path": "wiki/entities/paper-adapt-text-driven-humanoid.md",
@@ -130,102 +210,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-peg-in-bench.md",
-      "detail_id": "entity-paper-peg-in-bench",
-      "label": "Peg-in-Bench：高精度插入模块化基准",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/twindex.md",
-      "detail_id": "entity-twindex",
-      "label": "TwinDEX（无本体灵巧操作共设计接口）",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-rise-adaptive-imagination-wam.md",
-      "detail_id": "entity-paper-rise-adaptive-imagination-wam",
-      "label": "RISE：驾驶 WAM 的自适应想象调度",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-spoc.md",
-      "detail_id": "entity-paper-spoc",
-      "label": "SPOC：模仿仿真最短路径，换真机导航与操作",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-act.md",
-      "detail_id": "entity-paper-act",
-      "label": "ACT：低成本硬件上的动作块 Transformer",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-clip.md",
-      "detail_id": "entity-paper-clip",
-      "label": "CLIP：自然语言监督下的可迁移视觉模型",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-diffusion-policy.md",
-      "detail_id": "entity-paper-diffusion-policy",
-      "label": "Diffusion Policy：用去噪生成动作序列",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dinov2.md",
-      "detail_id": "entity-paper-dinov2",
-      "label": "DINOv2：无监督的稳健视觉特征",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoid-touch-dream.md",
-    "detail_id": "entity-paper-humanoid-touch-dream",
-    "label": "Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）",
+    "path": "wiki/entities/paper-demomimic.md",
+    "detail_id": "entity-paper-demomimic",
+    "label": "DemoMimic（One Demonstration, Many Objects）",
     "type": "entity",
     "recency": "2026-09-03",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
