@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3435,
-  "edge_count": 31090,
+  "node_count": 3440,
+  "edge_count": 31167,
   "coverage": {
-    "covered": 3409,
-    "total": 3409,
+    "covered": 3414,
+    "total": 3414,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-umr-unified-motion-retargeting.md",
+      "detail_id": "entity-paper-umr-unified-motion-retargeting",
+      "label": "UMR：学习点云对应的统一人形重定向",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "roadmap/depth-embodied-eval.md",
       "detail_id": "roadmap-depth-embodied-eval",
@@ -198,53 +208,42 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hydrogym.md",
-      "detail_id": "entity-paper-hydrogym",
-      "label": "HydroGym：流体动力学强化学习平台",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-embodied-eval.md",
-    "detail_id": "roadmap-depth-embodied-eval",
-    "label": "路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）",
-    "type": "roadmap_page",
-    "recency": "2026-09-03",
+    "path": "wiki/entities/paper-umr-unified-motion-retargeting.md",
+    "detail_id": "entity-paper-umr-unified-motion-retargeting",
+    "label": "UMR：学习点云对应的统一人形重定向",
+    "type": "entity",
+    "recency": "2026-09-04",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 697
+      "size": 686
     },
     {
       "label": "操作",
-      "size": 591
+      "size": 596
     },
     {
       "label": "视觉-语言-动作",
-      "size": 268
+      "size": 278
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 223
+      "size": 222
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 149
+      "size": 123
     },
     {
-      "label": "力矩电机设计纵深路线",
-      "size": 87
+      "label": "机器人视觉感知栈选型闭环",
+      "size": 97
     }
   ],
   "top_hubs": [
@@ -275,7 +274,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 871,
+      "degree": 875,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -283,7 +282,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 796,
+      "degree": 798,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

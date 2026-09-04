@@ -11,7 +11,7 @@ tags:
   - pedestrian
   - unitree
 status: complete
-updated: 2026-06-24
+updated: 2026-09-04
 arxiv: "2511.08277"
 venue: "IEEE RA-L 2026"
 related:
@@ -114,6 +114,7 @@ flowchart TB
 - [状态估计知识链汇总](../overview/hub-state-estimation.md) — SLAM/VIO/LIO 与纯 IMU 路线对照
 - [Unitree（平台）](./unitree.md) — Go2 自采数据集硬件语境
 - [Locomotion（任务）](../tasks/locomotion.md) — 腿式运动产生 distinct 惯性签名
+- [FOCUS](./paper-focus-foot-observation-confidence.md) — 人形 FK+IMU 连续可靠度，不是单 IMU IO
 
 ## 参考来源
 

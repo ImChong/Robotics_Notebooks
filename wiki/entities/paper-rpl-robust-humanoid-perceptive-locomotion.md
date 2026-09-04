@@ -18,7 +18,7 @@ tags:
   - stanford
   - berkeley
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -37,6 +37,7 @@ related:
   - ./extreme-parkour.md
   - ./paper-egohtr.md
   - ./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
+  - ./paper-wm-loco.md
 sources:
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/sites/rpl-humanoid-github-io.md
@@ -203,6 +204,7 @@ flowchart TB
 - [EgoHTR](./paper-egohtr.md) — rough-terrain 人演示 → 高度图条件 mimic（数据缺口对照；待开放）
 - [VB-Com](./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 外感知整段不可信时切盲策略；对照 RPL「深度仍可用」假设
 - [Unitree G1](./unitree-g1.md) — 实验平台
+- [WM-LOCO](./paper-wm-loco.md) — 无蒸馏、单深度 RSSM 共训过沟/踏石；对照本页特权高程 + DAgger
 
 ## 参考来源
 

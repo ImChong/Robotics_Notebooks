@@ -23,6 +23,8 @@ related:
   - ./paper-agile-humanoid-loco-manipulation.md
   - ./htd-decoupled-wbc.md
   - ./paper-p3.md
+  - ./paper-wm-loco.md
+  - ./paper-safe-stop-humanoid.md
   - ./paper-smpc2rl-loco-manipulation.md
   - ./paper-roboreact.md
   - ./paper-zest.md
@@ -102,6 +104,8 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [Blind Dexterity](./paper-blind-dexterity.md) — 纯本体 G1 全身操作：足球/滑板/手提箱与无 IMU 推抗行走（arXiv:2608.29487；代码待发布）
 - [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰 RL 控制器；G1 零样本部署
 - [P³](./paper-p3.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
+- [WM-LOCO](./paper-wm-loco.md) — 单深度 RSSM+PPO；沟/踏石/楼梯机载平均 93.3%（arXiv:2609.02542；代码待发布）
+- [Safe-Stop](./paper-safe-stop-humanoid.md) — 可停止性双估计急停；OOD 停止 96.4%（arXiv:2609.02358；代码待发布）
 - [VB-Com](./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，G1/H1 感知缺失下缺口与动态障碍（ICRA 2026；代码 coming soon）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 稀疏奖励全身推箱；SMPC 专家 + FastTD3（arXiv:2608.12063；截至 2026-08-17 未开源）
 - [ZEST](./paper-zest.md) — RAI × BD：视频爬箱/芭蕾与 MoCap 侧手翻、乒乓球零样本（Science Robotics 2026；未开源）

@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, perception, footstep-planning, attention, reinforcement-learning]
 status: complete
-updated: 2026-07-14
+updated: 2026-09-04
 summary: "Attention 落足点优化：用注意力机制在机器人中心高程图或候选落脚点集合上选择可行走区域，是飞书 Know-How 中感知 loco 与落足规划交叉模块；站内代表实现含 AME 等。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -73,6 +73,7 @@ sources:
 ## 关联页面
 
 - [AME 论文实体](../entities/paper-ame-attention-based-map-encoding.md)
+- [WM-LOCO](../entities/paper-wm-loco.md) — 不显式选 foothold，用 RSSM 预测特征过沟/踏石
 - [感知越障纵深路线](../../roadmap/depth-perceptive-locomotion.md)
 - [PIE](./pie-perceptive-locomotion.md)、[DreamWaQ](./dreamwaq.md)
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
