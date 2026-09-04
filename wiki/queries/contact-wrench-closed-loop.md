@@ -2,7 +2,7 @@
 type: query
 tags: [contact, force-control, impedance, manipulation, tactile, wrench, contact-rich]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 summary: "接触力旋量闭环知识链：把分散的接触感知/估计 → 力旋量表示 → 阻抗/导纳/混合力位控制 → 接触丰富操作策略串成一条端到端决策链，逐层说明各自如何贡献操作稳定性，以及带宽/刚度/时延的取舍与典型失败模式。"
 sources:
   - ../../sources/papers/contact_dynamics.md
@@ -13,6 +13,7 @@ sources:
 related:
   - ../concepts/contact-force-loop-bandwidth.md
   - ../concepts/contact-estimation.md
+  - ../concepts/humanoid-closed-loop-inertia-calibration.md
   - ../concepts/force-control-basics.md
   - ../concepts/hybrid-force-position-control.md
   - ../concepts/impedance-control.md
@@ -137,6 +138,7 @@ flowchart TD
 
 - [Contact-Force-Loop Bandwidth（力控闭环带宽 ↔ 接触稳定性）](../concepts/contact-force-loop-bandwidth.md) — 本链「带宽/刚度/时延取舍」的量化概念页
 - [Contact Estimation（接触估计）](../concepts/contact-estimation.md) — ① 感知/估计层
+- [人形整机闭环惯量标定](../concepts/humanoid-closed-loop-inertia-calibration.md) — ② 层雅可比/惯量不准时，力方向在出厂参数上就已经错
 - [Force Control Basics（力控制基础）](../concepts/force-control-basics.md) — ② 力旋量表示层
 - [Hybrid Force-Position Control（力位混合控制）](../concepts/hybrid-force-position-control.md) — ③ 控制层（力位正交划分）
 - [Impedance Control（阻抗控制）](../concepts/impedance-control.md) — ③ 控制层（阻抗/导纳对偶）

@@ -2,10 +2,11 @@
 type: concept
 tags: [dynamics, simulation, urdf, mujoco, sysid, actuator, inertia]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-04
 related:
   - ./armature-modeling.md
   - ./system-identification.md
+  - ./humanoid-closed-loop-inertia-calibration.md
   - ../methods/joint-actuator-parameter-identification.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ./floating-base-dynamics.md
@@ -148,6 +149,7 @@ flowchart LR
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Armature Modeling（电枢惯量建模）](./armature-modeling.md) — 反射惯量公式、双驱动、BeyondMimic PD 标定
 - [System Identification](./system-identification.md) — 连杆参数与执行器层辨识
+- [人形整机闭环惯量标定](./humanoid-closed-loop-inertia-calibration.md) — CAD 惯量不是装机真值；量产要用整机闭环写回 URDF
 - [Gravity Compensation](./gravity-compensation.md) — 惯性参数决定 $g(q)$ 准不准
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦的实验估法
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 闭环 vs 开环测 $J_{\mathrm{eff}}$；`armature` 不是旋钮

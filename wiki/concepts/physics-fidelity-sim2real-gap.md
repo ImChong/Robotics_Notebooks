@@ -2,11 +2,12 @@
 type: concept
 tags: [simulation, sim2real, physics, dynamics, contact, friction, fidelity]
 status: complete
-updated: 2026-07-29
+updated: 2026-09-04
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/simulation-physics-fidelity.md
   - ./sim2real.md
+  - ./humanoid-closed-loop-inertia-calibration.md
   - ./contact-dynamics.md
   - ./joint-friction-models.md
   - ./friction-compensation.md
@@ -52,7 +53,7 @@ summary: "物理保真度 ↔ sim2real gap 的因果概念页：把仿真保真�
 - 站立时脚底「打滑 / 抖动」→ 接触/摩擦层（库仑摩擦系数、接触刚度）。
 - 迈步落地冲击与仿真对不上 → 接触层（硬 LCP vs 软接触）叠加几何层（脚底碰撞体简化）。
 - 力矩跟踪在高速段塌陷 → 执行器层（理想力矩源假设忽略了力矩-转速曲线与温度降额）。
-- 整机姿态长期漂移 → 几何/惯量层（URDF 质量/质心/惯量标定误差）经动力学层放大。
+- 整机姿态长期漂移 → 几何/惯量层（URDF 质量/质心/惯量标定误差）经动力学层放大。量产侧要把这层做成可追踪的 [整机闭环标定](./humanoid-closed-loop-inertia-calibration.md)，而不是一份 CAD URDF 烧进全机。
 
 分层让 **DR / SysID / 补偿** 各自落到该补的那一层，而不是用一个超大随机化范围掩盖一切。
 
@@ -110,6 +111,7 @@ URDF 的连杆尺寸、碰撞体形状、质量、质心与惯量张量是动力
 - 端到端决策：[仿真物理保真度链路选型](../queries/simulation-physics-fidelity.md)
 - 工程主线：[Sim2Real](./sim2real.md)
 - 几何层：[URDF 机器人描述](./urdf-robot-description.md)
+- [人形整机闭环惯量标定](./humanoid-closed-loop-inertia-calibration.md) — 量产要把 URDF 惯量做成可追踪、可随负载更新的闭环辨识
 - 动力学层：[ABA/RNEA 铰接体算法](../formalizations/articulated-body-algorithms.md)、[Floating Base Dynamics](./floating-base-dynamics.md)、[Centroidal Dynamics](./centroidal-dynamics.md)
 - 接触/摩擦层：[Contact Dynamics](./contact-dynamics.md)、[Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
 - 可微性取舍：[Differentiable Simulation](./differentiable-simulation.md)

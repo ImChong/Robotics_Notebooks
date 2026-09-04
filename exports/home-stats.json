@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3457,
-  "edge_count": 31450,
+  "node_count": 3458,
+  "edge_count": 31481,
   "coverage": {
-    "covered": 3430,
-    "total": 3430,
+    "covered": 3431,
+    "total": 3431,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/humanoid-closed-loop-inertia-calibration.md",
+      "detail_id": "wiki-concepts-humanoid-closed-loop-inertia-calibration",
+      "label": "人形整机闭环惯量标定（出厂体检）",
+      "type": "concept",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/entities/paper-levjepa.md",
       "detail_id": "entity-paper-levjepa",
@@ -28,7 +38,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/sciencediscovery.md",
@@ -39,7 +49,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-adarobovlg.md",
@@ -170,7 +180,8 @@
       "type": "entity",
       "recency": "2026-09-04",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-wm-loco.md",
@@ -179,7 +190,8 @@
       "type": "entity",
       "recency": "2026-09-04",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/overview/embodied-infra-2026-panorama.md",
@@ -198,52 +210,42 @@
       "recency": "2026-09-04",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/queries/slam-second-spring-embodied.md",
-      "detail_id": "wiki-queries-slam-second-spring-embodied",
-      "label": "具身时代：SLAM 的精华与糟粕",
-      "type": "query",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-levjepa.md",
-    "detail_id": "entity-paper-levjepa",
-    "label": "LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）",
-    "type": "entity",
+    "path": "wiki/concepts/humanoid-closed-loop-inertia-calibration.md",
+    "detail_id": "wiki-concepts-humanoid-closed-loop-inertia-calibration",
+    "label": "人形整机闭环惯量标定（出厂体检）",
+    "type": "concept",
     "recency": "2026-09-04",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 635
+      "label": "操作",
+      "size": 613
     },
     {
-      "label": "操作",
-      "size": 621
+      "label": "宇树 G1 人形机器人",
+      "size": 497
     },
     {
       "label": "视觉-语言-动作",
-      "size": 254
+      "size": 255
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 217
+      "size": 224
+    },
+    {
+      "label": "仿真到现实",
+      "size": 188
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 109
-    },
-    {
-      "label": "机器人视觉感知栈选型闭环",
-      "size": 97
+      "size": 110
     }
   ],
   "top_hubs": [
@@ -313,7 +315,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 510,
+      "degree": 509,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -377,7 +379,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 48,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -397,7 +400,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 42
+      "degree": 42,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }

@@ -1,9 +1,10 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-09-01
+updated: 2026-09-04
 related:
   - ./robot-link-and-rotor-inertia.md
+  - ./humanoid-closed-loop-inertia-calibration.md
   - ../methods/joint-actuator-parameter-identification.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
@@ -11,6 +12,7 @@ related:
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
+  - ../entities/prime-system-id.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ./sim2real.md
   - ./gravity-compensation.md
@@ -19,7 +21,9 @@ sources:
   - ../../sources/papers/system_identification.md
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md
   - ../../sources/papers/spi_active_arxiv_2505_14266.md
+  - ../../sources/papers/prime_arxiv_2605_17681.md
 ---
 
 # System Identification
@@ -300,6 +304,8 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - 残差补偿
 - 域随机化兜底
 
+量产整机还多一层：[闭环惯量标定](./humanoid-closed-loop-inertia-calibration.md) — 单关节台架覆盖不了电池/外壳/负载的分布式质量，要用行为（力矩 + IMU + 足底力）倒推身体，并绑机身序列号终身更新。可运行实例见 [PRIME](../entities/prime-system-id.md)。
+
 ## 继续深挖入口
 
 如果你想沿着 system identification 继续往下挖，建议从这里进入：
@@ -319,6 +325,8 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + [CMA-ES](../methods/cma-es.md) 紧凑关节参数辨识（arXiv:2509.06342）
 - [SPI-Active（采样式 SysID + 主动探索）](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — GPU 并行采样辨识 Go2 质量/惯量 + 最大化 FIM 的主动激励（CoRL 2025 Oral）
+- [PRIME](../entities/prime-system-id.md) — 接触隐式 MAP：轨迹 + 摩擦接触力 + 惯量联合估计（RSS 2026，已开源）
+- [人形整机闭环惯量标定](./humanoid-closed-loop-inertia-calibration.md) — 量产出厂体检：运动学 / 惯量 / IMU 零偏 / 足底力
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — SysID → 训练 → 前馈/适应 → 安全的持续校准闭环
 
 ## 参考来源
@@ -327,6 +335,8 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [sources/blogs/wechat_freedof_sim2real_dynamics_identification.md](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节可辨识性与分级实验设计
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — SysID 作为 Sim2Real 起点、勿在默认 URDF 上盲目扩 DR
 - [sources/papers/spi_active_arxiv_2505_14266.md](../../sources/papers/spi_active_arxiv_2505_14266.md) — SPI-Active：采样式辨识 + 主动探索最大化 FIM（CoRL 2025）
+- [sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md](../../sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md) — 人形量产「出厂体检」与整机闭环辨识
+- [sources/papers/prime_arxiv_2605_17681.md](../../sources/papers/prime_arxiv_2605_17681.md) — PRIME：接触隐式惯量 + 运动估计（RSS 2026）
 - Gautier & Khalil, *Direct calculation of minimum set of inertial parameters of serial robots* — 最小参数集辨识经典
 - Wensing et al., *Linear Matrix Inequalities for Physically Consistent Inertial Parameter Identification* (2018) — 物理一致性约束辨识
 - Hwangbo et al., *Learning Agile and Dynamic Motor Skills for Legged Robots* (2019) — 执行器网络用于模型 gap 处理

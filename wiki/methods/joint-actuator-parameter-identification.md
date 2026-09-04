@@ -2,9 +2,10 @@
 type: method
 tags: [system-identification, actuator, friction, armature, sim2real, identification]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-04
 related:
   - ../concepts/system-identification.md
+  - ../concepts/humanoid-closed-loop-inertia-calibration.md
   - ../concepts/joint-friction-models.md
   - ../concepts/robot-link-and-rotor-inertia.md
   - ../concepts/armature-modeling.md
@@ -125,6 +126,7 @@ flowchart TB
 
 - [关节动力学辨识实验设计](./sim2real-joint-sysid-experiment-design.md) — 可辨识性与分级实验（延迟→摩擦→惯量→柔性）
 - [System Identification](../concepts/system-identification.md) — 更宽的 SysID 层级（刚体 / 执行器 / 接触）
+- [人形整机闭环惯量标定](../concepts/humanoid-closed-loop-inertia-calibration.md) — 台架 \(I_a\) 覆盖不了装机后分布式质量；整机用闭环辨识
 - [Joint Friction Models](../concepts/joint-friction-models.md) / [Friction Compensation](../concepts/friction-compensation.md)
 - [连杆与转子惯量](../concepts/robot-link-and-rotor-inertia.md) / [Armature Modeling](../concepts/armature-modeling.md)
 - [CMA-ES](./cma-es.md) — BAM/PACE 的优化器

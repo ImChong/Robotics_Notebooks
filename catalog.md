@@ -2511,7 +2511,7 @@
 - [Ponytail](wiki/entities/ponytail.md) — Ponytail** 是 DietrichGebert/ponytail 仓库分发的 **编码代理「必要 `📅unknown` `[entity_page]`
 - [Poppy 开源机器人平台](wiki/entities/poppy-project-robots.md) — Poppy** 是由 **法国 Inria** 相关社区推动的 **开源 3D 打印机器人** 家族：包含 **Poppy Humanoid**、**Poppy Torso**、**Ergo Jr `📅unknown` `[entity_page]`
 - [ppf-contact-solver（ZOZO Contact Solver）](wiki/entities/ppf-contact-solver.md) — ppf-contact-solver**（README 亦称 *ZOZO's Contact Solver*）是 ZOZO, Inc. 技 `📅unknown` `[entity_page]`
-- [PRIME](wiki/entities/prime-system-id.md) — PRIME](https://github.com/well-robotics/PRIME) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
+- [PRIME](wiki/entities/prime-system-id.md) — PRIME**（*Physically-consistent Robotic Inertial and Motion Estimation*，[arXiv:2605.17681](https:// `📅unknown` `[entity_page]`
 - [Project Instinct](wiki/entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [ProtoMotions: 大规模人形机器人仿真框架](wiki/entities/protomotions.md) — ProtoMotions**（当前主线为 **ProtoMotions3**）是 NVIDIA Labs 维护的 **GPU 加速仿真 + 强化学习训练** 框架：面向 **动画角色** 与  `📅unknown` `[entity_page]`
 - [ProxSuite](wiki/entities/proxsuite.md) — ProxSuite](https://github.com/Simple-Robotics/proxsuite) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
@@ -2779,6 +2779,7 @@
 - [Halbach Array（哈尔巴赫阵列）](wiki/concepts/halbach-array.md) — Halbach Array** 是一类 **磁化方向沿空间逐步旋转** 的永磁排布：目标侧（平面的一侧，或圆柱孔径内）磁场增强，另一侧（或材料外）削弱乃至理想为零——平面一手见 [Mallinso `📅unknown` `[wiki_page]`
 - [Hierarchical Quadruped Navigation Stack（四足分层导航栈）](wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 四足分层导航栈** 将 **语义/语言目标、全局路径、局部运动、关节力矩** 拆成多层模块，避免「一个端到端网络从像素直接到电机」的工程不可控性。 `📅unknown` `[wiki_page]`
 - [HQP（Hierarchical QP）](wiki/concepts/hqp.md) — 分层二次规划（Hierarchical Quadratic Programming，HQP）**：全身控制（WBC）中处理多任务优先级冲突的优化框架，通过将任务按优先级分层求解，确保高优先级任务精 `📅unknown` `[wiki_page]`
+- [人形整机闭环惯量标定（出厂体检）](wiki/concepts/humanoid-closed-loop-inertia-calibration.md) — 量产人形从「能演示」到「能稳定干活」，先要一份与身体一致的参数报告：运动学、惯量、IMU 零偏、足底力。工业臂那套**拆关节上台架**覆盖不了分布式质量与终身漂移；足式闭环会把上游误差放大进 [WBC `📅unknown` `[wiki_page]`
 - [人形膝/腿主承力链为何通常避开谐波减速器](wiki/concepts/humanoid-knee-harmonic-drive-limits.md) — 谐波减速器**擅长高精度、小体积、低回差的旋转传动，但人形**膝、踝等反复落地冲击的主承力关节**优先要解决冲击载荷谱、高周疲劳、动态刚度、反驱与低远端惯量——两套需求并不完全同向，因此工程上通常 `📅unknown` `[wiki_page]`
 - [人形机器人量产工程能力](wiki/concepts/humanoid-mass-production-engineering.md) — 人形机器人量产经验**不是「做出能走路的样机」，而是把关节级 **工艺 know-how、良率爬坡、供应链一致性与可靠性验证** 固化成可重复放大产线的 **制造可行性**——核心件（谐波减速器、 `📅unknown` `[wiki_page]`
 - [人形整机机械布局设计（构型 → 传动布置 → 质量分布 → 刚度与公差）](wiki/concepts/humanoid-mechanical-layout-design.md) — 人形整机机械布局设计**回答：给定任务指标（身高、负载、续航、动态等级），**关节自由度怎么分配、执行器往哪儿放、质量与惯量怎么分布、结构刚度与公差链留多少余量**——它决定了后续控制与 RL 能 `📅unknown` `[wiki_page]`

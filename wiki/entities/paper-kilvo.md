@@ -12,7 +12,7 @@ tags:
   - unitree-g1
   - hit
 status: complete
-updated: 2026-08-11
+updated: 2026-09-04
 arxiv: "2608.05647"
 code: https://github.com/JixinGao/KILVO
 related:
@@ -20,12 +20,14 @@ related:
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ./fast-lio.md
   - ../concepts/sensor-fusion.md
+  - ../concepts/humanoid-closed-loop-inertia-calibration.md
   - ../formalizations/ekf.md
   - ./unitree-g1.md
   - ../overview/navigation-slam-autonomy-stack.md
 sources:
   - ../../sources/papers/kilvo_arxiv_2608_05647.md
   - ../../sources/repos/kilvo.md
+  - ../../sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md
 summary: "KILVO（arXiv:2608.05647，HIT，TMECH）：人形运动学–惯性–激光–视觉里程计；异步–顺序混合 ESIKF + 接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；代码仓占位待开放。"
 ---
 
@@ -54,6 +56,7 @@ summary: "KILVO（arXiv:2608.05647，HIT，TMECH）：人形运动学–惯性�
 - **失效是常态：** 碰撞、跌倒、强光/无纹理墙、点云退化——非弹性系统会整段崩。
 - **接触不另挂硬件：** 复用运动学/惯性/地图线索，利于 G1 等无足底力传感器平台。
 - **工程指标齐全：** 精度、时延、1 kHz 输出、模态消融与失效注入实验一并给出。
+- **零偏不是出厂常数：** ESIKF 把 IMU 零偏当状态在线更新；量产「出厂体检」里这张单子的读法见 [闭环惯量标定](../concepts/humanoid-closed-loop-inertia-calibration.md)（公众号把 KILVO 写成零偏在线标定，主贡献仍是多传感器里程计）。
 
 ## 核心信息
 
@@ -153,6 +156,7 @@ flowchart TB
 - [EKF](../formalizations/ekf.md) — 滤波形式化
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md) — 上层衔接
 - [Unitree G1](./unitree-g1.md) — 文中数据采集平台之一
+- [人形整机闭环惯量标定](../concepts/humanoid-closed-loop-inertia-calibration.md) — IMU 零偏作为在线状态，而不是一次性台架常数
 
 ## 参考来源
 

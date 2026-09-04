@@ -1,3 +1,12 @@
+## [2026-09-04] ingest | sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md — 人形智研院「出厂体检」：惯量标定必须闭环；PRIME 复用并补强（已开源）；KILVO 复用；Calib3R/CAL²M 待升格
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/sl06FnCPmUh6GilJuK-xEQ>
+- **步骤 2.5：** 文内主案例 **PRIME 已开源**（[well-robotics/PRIME](https://github.com/well-robotics/PRIME)，BSD-3-Clause；项目页 [PRIME-project](https://jkangkjr.github.io/PRIME-project/)）。KILVO **代码待开放**（既有 complete 页）。Calib3R / CAL²M 为相机外参 / SLAM 轴，**不造页**。
+- **关键判断：** 单关节台架覆盖不了分布式质量与终身漂移；量产要运动学 / 惯量 / IMU 零偏 / 足底力四张单子闭环，并绑机身序列号。标定误差是地板，大模型是上限。ISO 13482 **不**写成已核实的出厂惯量强制项。
+- **新建：** [`humanoid-closed-loop-inertia-calibration`](wiki/concepts/humanoid-closed-loop-inertia-calibration.md)；PRIME 论文/项目页归档
+- **复用：** [`prime-system-id`](wiki/entities/prime-system-id.md)（HMI draft → complete，**不另造** `paper-prime`）；[`paper-kilvo`](wiki/entities/paper-kilvo.md)
+- **交叉：** SysID / 关节执行器辨识 / 连杆-转子惯量 / 物理保真度 / Sim2Real 闭环 / 接触力旋量 / Crocoddyl
+
 ## [2026-09-04] ingest | sources/papers/levjepa_arxiv_2608_27395.md — LeVJEPA（arXiv:2608.27395）：LeJEPA+SIGReg 视频预训练；已开源 MIT（module.py/权重 CC BY-NC）；关键页 paper-levjepa
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2608.27395>、项目页 <https://levjepa.github.io/>
