@@ -75,6 +75,21 @@
         "cmu"
       ]
     },
+    "fujitsu": {
+      "label": "富士通（Fujitsu Limited）",
+      "aliases": [
+        "fujitsu",
+        "fujitsu-limited"
+      ]
+    },
+    "fujitsu-research-america": {
+      "label": "富士通美国研究院（Fujitsu Research of America）",
+      "aliases": [
+        "fujitsu-research-america",
+        "fra",
+        "fujitsu-america"
+      ]
+    },
     "cornell": {
       "label": "康奈尔大学（Cornell University）",
       "aliases": [

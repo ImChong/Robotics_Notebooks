@@ -1,3 +1,10 @@
+## [2026-09-04] ingest | sources/papers/unified_robot_learning_survey_arxiv_2609_03927.md — TMLR 表征–VLA–世界模型统一综述；独立节点，不造表内空壳
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2609.03927>
+- **步骤 2.5：** **确认未开源 / 无配套实现**（arXiv-only，无项目页/GitHub）
+- **关键页：** 新建 [`paper-unified-robot-learning-survey`](wiki/entities/paper-unified-robot-learning-survey.md)；交叉 VLA / WM / WAM / 五大分类 / 选型闭环 / 14 篇阅读路线
+- **机构注册：** `fujitsu-research-america`、`fujitsu`；CMU 已有
+
 ## [2026-09-03] lint | wiki/entities/paper-{demomimic,openvla,tapvid-mv,physics-consistent-hrc-benchmark}.md — 清空全量 lint 信息型预警：补 1 篇「对比」段 + 2 条评测枢纽双向回链 + 1 条陈旧声明时效化 + 1 个缺页误报归档
 
 - **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **5 条信息型预警**（三段式缺「对比」×1、评测基准枢纽回链缺失×2、陈旧声明×1、缺页概念候选×1）

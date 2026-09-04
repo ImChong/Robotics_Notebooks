@@ -2,11 +2,12 @@
 type: comparison
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-04
 related:
   - ../entities/paper-vgi-white-paper.md
   - ./robot-learning-five-paradigms-taxonomy.md
   - ../methods/vla.md
+  - ../entities/paper-unified-robot-learning-survey.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -106,6 +107,7 @@ flowchart TB
 - [机器人学习五大范式](./robot-learning-five-paradigms-taxonomy.md)：按 **学习信号**（示范/奖励/视频/多模态/持续学习）划分的正交 taxonomy；本页按 **模型族 I/O** 划分。
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md)：把本页五大家族沉淀为「感知 → 导航 → 执行 → 扩展 → 推演」的端到端选型决策链，逐层给出 I/O 边界、数据需求与实时性/泛化取舍。
 - [VLA 方法页](../methods/vla.md)：执行层代表方法与训练数据。
+- [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md)：I/O 分层之外，用六种耦合诊断系统病（TMLR 2026）。
 - [VLN 任务页](../tasks/vision-language-navigation.md)：导航基准与开源复现范式。
 - [统一多模态 token](../methods/unified-multimodal-tokens.md)：VLX/端到端大模型的表征接口。
 - [人形策略网络架构](../concepts/humanoid-policy-network-architecture.md)：全身控制与高层 VLA 分层。

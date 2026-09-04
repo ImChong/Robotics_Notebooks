@@ -3,16 +3,16 @@
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
 <<<<<<< HEAD
-<!-- Last updated: 2026-09-04 (V31 自动更新：图谱 3434 节点 31065 边) -->
+<!-- Last updated: 2026-09-04 (V31 自动更新：图谱 3435 节点 31084 边) -->
 =======
-<!-- Last updated: 2026-09-04 (V31 自动更新：图谱 3434 节点 31065 边) -->
+<!-- Last updated: 2026-09-04 (V31 自动更新：图谱 3435 节点 31084 边) -->
 >>>>>>> origin/main
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-3434节点_31065边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-3435节点_31084边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v31.md)
 
 ---
