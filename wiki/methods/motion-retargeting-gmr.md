@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-04
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -10,6 +10,7 @@ related:
   - ./spider-physics-informed-dexterous-retargeting.md
   - ../entities/paper-kdmr.md
   - ../entities/paper-spark-skeleton-aligned-retargeting.md
+  - ../entities/paper-umr-unified-motion-retargeting.md
   - ./beyondmimic.md
   - ../entities/paper-synthetic-video-humanoid-tasks.md
   - ./sonic-motion-tracking.md
@@ -203,6 +204,7 @@ $$
 - [SPIDER（物理感知采样式灵巧重定向）](./spider-physics-informed-dexterous-retargeting.md) — 并行仿真采样优化 + 虚拟接触引导的数据生成外壳。
 - [KDMR](../entities/paper-kdmr.md) — GRF 多接触动力学重定向；相对 GMR 降跟踪误差。
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准相对 GMR 大幅降 Empbpe。
+- [UMR](../entities/paper-umr-unified-motion-retargeting.md) — 学表面点对，不手写 GMR 式关键点；LAFAN1/BeyondMimic 上难动作成功率与体段误差优于 GMR（arXiv:2609.02134）
 - [GMR vs NMR vs Reactor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
 - [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。

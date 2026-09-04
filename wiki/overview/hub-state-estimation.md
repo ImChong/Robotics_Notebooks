@@ -2,12 +2,13 @@
 type: overview
 tags: [hub, hub-state-estimation, slam, odometry, ekf, perception]
 status: complete
-updated: 2026-08-08
+updated: 2026-09-04
 summary: "状态估计知识链汇总：本体感知融合、SLAM/VIO/LIO 选型与 Kalman/优化估计框架，服务 locomotion 与导航中的位姿与速度估计。"
 related:
   - ../entities/paper-slamformer-infinity.md
   - ../entities/paper-glob3r.md
   - ../methods/lingbot-map.md
+  - ../queries/slam-second-spring-embodied.md
 ---
 
 # 状态估计（知识链汇总）
@@ -56,6 +57,8 @@ related:
 - [AERIS-10（开源相控阵雷达）](../entities/aeris-10-plfm-radar.md) — 10.5 GHz PLFM 主动测距 + GPS/IMU 点迹修正；非 SLAM 栈，可作 **雷达测距** 硬件参考
 - [Ultra-Fusion（多传感器 SLAM）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 统一滑窗 LVIO/LVWIO、退化调度与在线时空标定（arXiv:2606.21223）
 - [X-IONet（跨平台惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 单 IMU 行人/四足 IO + EKF（IEEE RA-L 2026）
+- [FOCUS（连续足部 FK 可靠度）](../entities/paper-focus-foot-observation-confidence.md) — 人形本体 EKF；接触 ≠ FK 可信（A3 Ultra，arXiv:2609.02222）
+- [Query：具身时代 SLAM 精华与糟粕](../queries/slam-second-spring-embodied.md) — 深蓝沙龙纪要：留下时空基准，丢掉给人看的中间图
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 冻结 Pi3X + tracks → 运动平均/BA；离线高精度建图与渲染
 - [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — memory condition + PGGO 联合长程位姿与 pointmap；官方仓占位（arXiv:2608.03429）
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — ERP 全景户外大规模 3DGS 划分重建（位姿下游 novel-view 资产）

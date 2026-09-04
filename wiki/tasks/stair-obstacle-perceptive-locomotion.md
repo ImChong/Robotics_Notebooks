@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-04
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -36,6 +36,7 @@ related:
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
   - ../entities/paper-p3.md
+  - ../entities/paper-wm-loco.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
   - ../entities/paper-solo.md
   - ../entities/paper-cmoe.md
@@ -139,6 +140,7 @@ flowchart TB
 | **有**（机载深度 + VFM） | **梯子攀爬 · 梯上操作** | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | 单参考 hybrid tracking 多几何专家 + DAgger+RL；RFM/VFM 零样本 sim-to-real；G1 双向 ~3.4 s/踏棍；梯顶 VR 双智能体操作 |
 | **有**（机器人中心高程扫描 + identity-gated 残差） | **楼梯/块/坡/草地 · raw 参考 BFM** | [Perceptive BFM](../entities/paper-perceptive-bfm.md) | TCRS 离线监督 + PMT 四阶段；部署仍用 **原始人体参考**；G1 单策略覆盖 mocap 遥操作、舞蹈、杂技与户外 |
 | **有**（本体历史 + 高程 CNN → VAE latent） | **踏石 / 楼梯 / 缺口 · VAE-PPO 优化** | [P³](../entities/paper-p3.md) | 不改感知架构，把 PPO clip 改成边缘策略似然；G1 真机 8/9/10（10 trial）；代码已开源 |
+| **有**（单头戴深度 + RSSM 预测特征，无落脚标签） | **踏石 / 楼梯 / 沟 · 世界模型共训** | [WM-LOCO](../entities/paper-wm-loco.md) | 匹配 PPO 在沟/踏石 0%；G1 机载平均 93.3%；代码待发布 |
 | **有**（低成本深度，无显式高程中间层） | **坡/楼梯/高台/宽沟 · 单阶段** | [TRAMP](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) | 层次特征 + MoE actor + 平地/楼梯地形相关 AMP；SJTU 人形真机户外杂乱场景；IEEE RA-L 2026；代码未开源 |
 | **有**（雷达/仿真高程图 0.7×1.1 m） | **沟/台阶/栏/混合 · MoE 门控** | [CMoE](../entities/paper-cmoe.md) | SwAV 式对比学习防 Vanilla MoE 均匀激活；G1 真机 80 cm 沟、20 cm 连续台阶；ICRA 2026；官方 Isaac Gym [`Hoshi-No-Ai/CMoE`](https://github.com/Hoshi-No-Ai/CMoE)，mjlab 移植见 [senlanke/mimic `CMoE-G1`](../entities/smp-g1-mjlab.md) |
 | **复合**（机载高程图 + 盲策略切换） | **沟/栏/动态障碍 · 感知失效恢复** | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) | 视觉/盲双策略 + 仅本体回报估计器；G1/H1 真机；100% 高程噪声下完成率约 85%；ICRA 2026；代码 coming soon |
@@ -219,6 +221,7 @@ flowchart TB
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 感知到动作的通用闭环
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合：感知缺失时切盲走恢复（G1/H1，ICRA 2026）
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口
+- [WM-LOCO](../entities/paper-wm-loco.md) — RSSM 预测特征；仿真沟/踏石上匹配 PPO 为 0%；G1 机载 93.3%
 - [CReF](../entities/paper-cref.md) — 单阶段 raw 深度交叉注意 + 可支撑落脚奖励；X2 Ultra 零样本（arXiv:2603.29452）
 
 ## 推荐继续阅读

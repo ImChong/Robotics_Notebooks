@@ -661,6 +661,21 @@
         "hit"
       ]
     },
+    "bupt": {
+      "label": "北京邮电大学（BUPT）",
+      "aliases": [
+        "bupt",
+        "beijing-university-of-posts-and-telecommunications"
+      ]
+    },
+    "soochow": {
+      "label": "苏州大学（Soochow University）",
+      "aliases": [
+        "soochow",
+        "suda",
+        "soochow-university"
+      ]
+    },
     "upo": {
       "label": "巴勃罗·德·奥拉维德大学（Universidad Pablo de Olavide, UPO）",
       "aliases": [

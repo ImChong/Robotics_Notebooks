@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, reinforcement-learning, motion-tracking, contact-flow, meta-skill, sim2sim, mocap, unitree-g1, vlm, noitom, hkust, hku, whu]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-04
 arxiv: "2606.26201"
 venue: "arXiv 2026"
 related:
@@ -18,6 +18,7 @@ related:
   - ./paper-notebook-lessmimic-long-horizon-humanoid-interaction-with.md
   - ./paper-hrl-stack-05-humanx.md
   - ./paper-hrl-stack-03-omniretarget.md
+  - ./paper-umr-unified-motion-retargeting.md
   - ./unitree-g1.md
   - ./omnicontact-sim2sim.md
 sources:
@@ -195,6 +196,7 @@ flowchart TB
 - [LessMimic](./paper-notebook-lessmimic-long-horizon-humanoid-interaction-with.md) — implicit embedding + chaining 对照
 - [HumanX](./paper-hrl-stack-05-humanx.md) — 物体位姿泛化 HOI RL
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — 交互保留重定向数据管线
+- [UMR](./paper-umr-unified-motion-retargeting.md) — 用本数据集重定向后训接触策略；相对 OmniRetarget 降关节/物体误差
 - [Unitree G1](./unitree-g1.md) — 默认硬件平台
 - [AMP Reward](../methods/amp-reward.md) — CF-Track 运动先验
 - [Sim2Real](../concepts/sim2real.md) — sim2sim 校验入口

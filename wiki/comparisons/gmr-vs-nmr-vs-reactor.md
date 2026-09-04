@@ -2,7 +2,7 @@
 type: comparison
 tags: [motion-retargeting, humanoid, kinematics, reinforcement-learning, imitation-learning, bilevel-optimization, comparison, engineering-selection]
 status: complete
-updated: 2026-05-18
+updated: 2026-09-04
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
@@ -14,6 +14,7 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../methods/neural-motion-retargeting-nmr.md
   - ../methods/reactor-physics-aware-motion-retargeting.md
+  - ../entities/paper-umr-unified-motion-retargeting.md
   - ../methods/spider-physics-informed-dexterous-retargeting.md
   - ../methods/sonic-motion-tracking.md
 summary: "GMR / NMR / ReActor 三种动作重定向方法谱系对比：监督优化（运动学 QP/IK）vs 学习式整段映射（神经网络 + 仿真锚定监督）vs 物理感知 RL（双层联合优化参考与跟踪策略），从输入形态、依赖、产物、训练 / 推理成本与适用场景给出选型坐标。"
@@ -210,6 +211,7 @@ flowchart TD
 - [NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) — CEPR 管线与网络结构。
 - [ReActor（物理感知 RL 运动重定向）](../methods/reactor-physics-aware-motion-retargeting.md) — 双层优化与近似梯度。
 - [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 另一条「采样优化 + 虚拟接触」的物理感知前端。
+- [UMR（学习点云对应）](../entities/paper-umr-unified-motion-retargeting.md) — 相邻第四条：T-pose 表面对应 + 运动学 QP，不改写本页三路线主表。
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 与「跳过重定向直接 tracking」路线对照。
 - [ExoActor（视频生成驱动的人形控制）](../methods/exoactor.md) — 在估计/生成源动作上「何时跳过 GMR」的反例。
 

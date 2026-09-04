@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-08-08
+updated: 2026-09-04
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2025 · arXiv"
 arxiv: "2508.08241"
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-extreme-rgmt.md
   - ../entities/paper-agile-humanoid-loco-manipulation.md
   - ../entities/paper-pfm-hr.md
+  - ../entities/paper-umr-unified-motion-retargeting.md
 sources:
   - ../../sources/repos/beyondmimic-reproduction.md
   - ../../sources/papers/motion_control_projects.md
@@ -350,3 +351,4 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - [PFM-HR](../entities/paper-pfm-hr.md) — 冻结 Flow Matching 姿态几何先验；仅在仿真训练调制跟踪奖励，BeyondMimic 部署栈不变（arXiv:2608.03227；代码 Coming Soon）。
 - [KDMR](../entities/paper-kdmr.md) — 用动力学可行参考替换 GMR 参考后训 BeyondMimic/mjlab 跟踪（arXiv:2603.09956）。
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — KDTO(+T) 参考驱动 BeyondMimic/IsaacLab 高动态跟踪（arXiv:2603.11480）。
+- [UMR](../entities/paper-umr-unified-motion-retargeting.md) — 表面对应参考喂本页跟踪协议；LAFAN1 难动作成功率高于 GMR（arXiv:2609.02134）。
