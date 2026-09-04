@@ -38,6 +38,8 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
+  - ../entities/paper-gift-intermediate-feature-training.md
+  - ../overview/open-source-reproducibility-9-papers-technology-map.md
   - ../entities/paper-ld4wam.md
   - ../entities/paper-dreammimic.md
   - ../entities/paper-glancewam.md
@@ -348,6 +350,8 @@ flowchart TB
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — WAM 对应五层闭环的世界模型推演层
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — WAM 是五层选型闭环 **⑤ 世界模型推演层** 的 **联合建模** 范式（`p(o',a|o,l)` 前向预测与动作生成耦合），与生成式世界模型的「级联预演」范式并列
 - [EmbodiedVAE](../entities/paper-embodiedvae.md) — 操作世界模型的解耦 video VAE tokenizer（arXiv:2608.02990）
+- [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 把几何/可供性/目标区域监督接到 VLA 与 WAM-Fast/IDM（arXiv:2609.04193；待发布）
+- [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
 
 ## 推荐继续阅读
 

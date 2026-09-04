@@ -26,6 +26,7 @@ related:
   - ../entities/paper-p3.md
   - ../entities/paper-wm-loco.md
   - ../entities/paper-safe-stop-humanoid.md
+  - ../entities/paper-bridge-humanoid.md
 summary: "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
 ---
 
@@ -117,6 +118,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
 - [WM-LOCO](../entities/paper-wm-loco.md) — RSSM+PPO 单深度预测特征；仿真沟/踏石上匹配 PPO 为 0%，G1 机载三类平均 93.3%（arXiv:2609.02542；代码待发布）
 - [Safe-Stop](../entities/paper-safe-stop-humanoid.md) — 急停可停止性双估计 + 阻尼 fallback；G1 OOD 停止 96.4%（arXiv:2609.02358；代码待发布）
+- [BRIDGE](../entities/paper-bridge-humanoid.md) — 形态–控制共设计的 88 cm / ~$1500 开源人形（arXiv:2609.03497；仓待核实）
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，高程图失效时切盲走恢复（G1/H1，ICRA 2026；代码 coming soon）
 - [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide
 - [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon

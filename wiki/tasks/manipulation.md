@@ -67,6 +67,12 @@ related:
   - ../entities/paper-rift-wam.md
   - ../entities/letools.md
   - ../entities/let-base-dataset.md
+  - ../overview/open-source-reproducibility-9-papers-technology-map.md
+  - ../entities/paper-gift-intermediate-feature-training.md
+  - ../entities/paper-adarobovlg.md
+  - ../entities/paper-minerva-libero.md
+  - ../entities/paper-xr2-bimanual-household.md
+  - ../entities/paper-artis-gripper.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
@@ -399,6 +405,12 @@ flowchart TD
 - [PRISM](../entities/paper-prism.md) — 多项式本体条件；LIBERO 无 force 输入达 91% 成功率（arXiv:2607.23473）
 - [FA-RDP](../entities/paper-fa-rdp.md) — 频率自适应视觉–力反应扩散；Flexiv 接触丰富三任务 81.7%（arXiv:2607.28596）
 - [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；LIBERO 组合/新布局泛化（arXiv:2607.27599）
+- [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md) — 2026-09-04 九篇：表征 / 抓取 / 数据 / 评测 / 硬件
+- [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 动作足够用的中间特征（arXiv:2609.04193）
+- [AdaRoboVLG](../entities/paper-adarobovlg.md) — 物理抓取与语义先验解耦（arXiv:2609.04096）
+- [MINERVA](../entities/paper-minerva-libero.md) — LIBERO 容量下限 0.54M / ~95%（arXiv:2609.03715）
+- [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务（arXiv:2609.03591）
+- [ARTiS](../entities/paper-artis-gripper.md) — 拆解工具夹爪（arXiv:2609.03362）
 
 
 ## 推荐继续阅读
