@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-ctrl-world.md
   - ../entities/paper-wall-ss.md
   - ../entities/paper-odeworld.md
+  - ../entities/paper-levjepa.md
   - ../entities/paper-wan-move.md
   - ../entities/paper-wan-dancer.md
   - ../entities/paper-wan-video.md
@@ -159,6 +160,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [Ctrl-World](../entities/paper-ctrl-world.md) — 多视角可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
 - [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR 长程 WM：60 s 流式 + 虚实校准（训练代码待发布）。
 - [ODEWorld](../entities/paper-odeworld.md) — 物理时间 latent ODE：任意时刻/反向视频，规划不在像素环（arXiv:2607.27924）。
+- [LeVJEPA](../entities/paper-levjepa.md) — 视频当**表征底物**而非仿真器：无像素重建，只要因果 JEPA 编码器。
 - [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) — 开源视频基础模型、轨迹运动控制与分钟级 music-to-dance。
 - [RoboInter1.5](../entities/paper-robointer-1-5.md) — IR 控制视频条件世界模型 + 操作 VLA 套件（arXiv:2607.18709）。
 - [X-World](../entities/paper-x-world.md) — 小鹏 **7 摄动作条件** 驾驶视频世界模型（arXiv:2603.19979；未开源）。

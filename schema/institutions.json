@@ -3273,6 +3273,43 @@
         "keenon",
         "keenon-robotics"
       ]
+    },
+    "dkfz": {
+      "label": "德国癌症研究中心（DKFZ）",
+      "aliases": [
+        "dkfz",
+        "german-cancer-research-center"
+      ]
+    },
+    "goethe": {
+      "label": "法兰克福歌德大学（Goethe University Frankfurt）",
+      "aliases": [
+        "goethe",
+        "goethe-university",
+        "goethe-frankfurt"
+      ]
+    },
+    "mila": {
+      "label": "蒙特利尔学习算法研究所（Mila）",
+      "aliases": [
+        "mila",
+        "mila-quebec"
+      ]
+    },
+    "umontreal": {
+      "label": "蒙特利尔大学（Université de Montréal）",
+      "aliases": [
+        "umontreal",
+        "universite-de-montreal",
+        "udem"
+      ]
+    },
+    "ami-labs": {
+      "label": "先进机器智能实验室（AMI Labs）",
+      "aliases": [
+        "ami-labs",
+        "advanced-machine-intelligence"
+      ]
     }
   }
 }

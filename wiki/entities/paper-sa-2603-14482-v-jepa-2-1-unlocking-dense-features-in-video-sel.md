@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-04
 arxiv: "2603.14482"
 venue: "arXiv 2026"
 code: https://github.com/facebookresearch/vjepa2
@@ -91,6 +91,7 @@ Unlocks dense features in video self-supervised learning.
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [LeVJEPA](./paper-levjepa.md) — 只监督 `[cls]` 时声称可涌现 dense patch 结构，对照本页的显式 dense loss
 
 ## 参考来源
 

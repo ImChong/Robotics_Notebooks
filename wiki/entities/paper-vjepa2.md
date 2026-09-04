@@ -10,7 +10,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-09-02
+updated: 2026-09-04
 arxiv: "2506.09985"
 code: https://github.com/facebookresearch/vjepa2
 related:
@@ -25,6 +25,7 @@ related:
   - ../tasks/manipulation.md
   - ./paper-odeworld.md
   - ./paper-rise-adaptive-imagination-wam.md
+  - ./paper-levjepa.md
 sources:
   - ../../sources/papers/vjepa2_arxiv_2506_09985.md
   - ../../sources/repos/vjepa2.md
@@ -127,7 +128,7 @@ flowchart TB
 | **AC 权重** | `vjepa2-ac-vitg.pt`（自 ViT-g） |
 | **最短体验** | 装 conda 环境 → 下权重 → `python -m notebooks.vjepa2_demo` |
 | **AC 相关** | `configs/train/vitg16/droid-256px-8f.yaml`；`energy_landscape_example.ipynb` |
-| **选型** | 要 **少机器人数据 + latent 规划** 选本页；要 **可检视像素 rollout** 选 IRASim / MVA；要 **分解自主动态** 见 [DWM Separating](./paper-dwm-separating-world-effects.md) |
+| **选型** | 要 **少机器人数据 + latent 规划** 选本页；要 **更便宜的因果视频表征、暂不规划** 见 [LeVJEPA](./paper-levjepa.md)；要 **可检视像素 rollout** 选 IRASim / MVA；要 **分解自主动态** 见 [DWM Separating](./paper-dwm-separating-world-effects.md) |
 
 ## 源码运行时序图
 
@@ -211,6 +212,7 @@ sequenceDiagram
 - [Manipulation](../tasks/manipulation.md)
 - [ODEWorld](./paper-odeworld.md) — 连续时间 JVP 速度监督对照（论文视频基线之一）
 - [RISE（酷哇 · 驾驶 WAM）](./paper-rise-adaptive-imagination-wam.md) — 冻结 V-JEPA 2 编码器 + 自适应 latent rollout
+- [LeVJEPA](./paper-levjepa.md) — LeJEPA+SIGReg 视频预训练：不要 EMA/predictor，同数据重训省 5.6–20.8× FLOP；无 AC/规划
 
 ## 参考来源
 
