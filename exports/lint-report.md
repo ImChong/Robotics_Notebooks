@@ -2,7 +2,7 @@
 
 ## [2026-09-04] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **12** 条信息型预警）：
+共发现 **0** 个问题（另含 **1** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,23 +97,14 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（9 个）
-- wiki/entities/paper-adarobovlg.md（缺 方法）
-- wiki/entities/paper-artis-gripper.md（缺 方法）
-- wiki/entities/paper-bridge-humanoid.md（缺 方法）
-- wiki/entities/paper-failbench.md（缺 方法）
-- wiki/entities/paper-gift-intermediate-feature-training.md（缺 方法）
-- wiki/entities/paper-irwoz-2.md（缺 方法）
-- wiki/entities/paper-minerva-libero.md（缺 方法）
-- wiki/entities/paper-network-design-reproducible.md（缺 方法）
-- wiki/entities/paper-xr2-bimanual-household.md（缺 方法）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-irwoz-2.md（缺 模态 / 重定向就绪度）
-- wiki/entities/paper-xr2-bimanual-household.md（缺 模态 / 重定向就绪度）
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
