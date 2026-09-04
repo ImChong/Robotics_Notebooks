@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, world-action-models, latent-world-model, manipulation, humanoid, bimanual, astribot, foundation-model, flow-matching]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-04
 arxiv: "2607.11270"
 related:
   - ../concepts/world-action-models.md
@@ -11,6 +11,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ./philia.md
+  - ./paper-smoothrl.md
   - ./lingbot-vla-v2.md
   - ./paper-being-m07-humanoid-latent-wam.md
   - ./paper-physmani-dynamic-manipulation-world-model.md
@@ -154,6 +155,7 @@ flowchart TB
 ## 关联页面
 
 - [Philia](./philia.md) — 将 Lumo 系策略作为 capability 的长期助手运行时
+- [SmoothRL](./paper-smoothrl.md) — 同机构：已有 VLA 的异步在线 RL 后训练（arXiv:2608.29768）
 - [World Action Models](../concepts/world-action-models.md) — Joint 族 latent WAM 坐标
 - [VLA](../methods/vla.md) — π₀.₅ / Fast-WAM 同赛道索引
 - [Manipulation](../tasks/manipulation.md) — 灵巧与长程真机任务语境

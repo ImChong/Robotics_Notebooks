@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3443,
-  "edge_count": 31294,
+  "node_count": 3444,
+  "edge_count": 31324,
   "coverage": {
-    "covered": 3416,
-    "total": 3416,
+    "covered": 3417,
+    "total": 3417,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -158,8 +158,7 @@
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-pact-hrc-action-admission.md",
@@ -214,15 +213,15 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 623
+      "size": 638
     },
     {
       "label": "操作",
-      "size": 597
+      "size": 613
     },
     {
       "label": "视觉-语言-动作",
-      "size": 265
+      "size": 243
     },
     {
       "label": "机器人学习论文笔记",
@@ -230,11 +229,11 @@
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 180
+      "size": 188
     },
     {
       "label": "机器人视觉感知栈选型闭环",
-      "size": 97
+      "size": 99
     }
   ],
   "top_hubs": [
@@ -242,7 +241,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1396,
+      "degree": 1397,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -265,7 +264,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 880,
+      "degree": 882,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -273,7 +272,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 800,
+      "degree": 801,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -304,7 +303,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 509,
+      "degree": 510,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

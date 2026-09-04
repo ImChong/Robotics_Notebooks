@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-03
+updated: 2026-09-04
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -218,6 +218,7 @@ flowchart TD
 - [VLA](../methods/vla.md)
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench（arXiv:2608.14379；代码待开放）
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；真机双臂 UR5e 约 40%→近 100%（arXiv:2608.23831；确认未开源）
+- [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL；S1 投掷/笔帽/开箱 250 ep 后 94%/83%/90%（arXiv:2608.29768；项目页已上线、仍未开源）
 - [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；RoboCasa few-shot 65.6% / full 80.8%（arXiv:2608.24882；代码待发布）
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — AC-WM off-expert 动作跟随评测与对齐（arXiv:2608.24885；确认未开源）
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间（arXiv:2608.14028；确认未开源）

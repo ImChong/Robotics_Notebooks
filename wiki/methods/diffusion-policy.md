@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-08-28
+updated: 2026-09-04
 ---
 
 # Diffusion Policy

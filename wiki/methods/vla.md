@@ -59,6 +59,8 @@ related:
   - ../entities/paper-ld4wam.md
   - ../entities/paper-lawa.md
   - ../entities/paper-arli.md
+  - ../entities/paper-smoothrl.md
+  - ../queries/embodied-six-routes-holes.md
   - ../entities/paper-reflexvla.md
   - ../entities/paper-flashvla.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
@@ -489,7 +491,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [DyPES-VLA](../entities/paper-dypes-vla.md) — 共享动力学先验 + 本体特化 MoE 跨本体 VLA（arXiv:2608.06374）
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench；代码待开放（arXiv:2608.14379）
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；中间已承诺动作 + 中间观测条件 DSRL（arXiv:2608.23831；确认未开源）
-- [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL 微调 π₀.₅（arXiv:2608.29768；未开源）
+- [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL 微调 π₀.₅（arXiv:2608.29768；项目页 2026-09-04 已上线，仍未开源）
+- [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — VLA 的数据/实时/记忆/最后一毫米卡点与「RL 作后训练」坐标
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间；确认未开源（arXiv:2608.14028）
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件；工具仓已开源（arXiv:2608.14284）
 - [Action Chunking](./action-chunking.md)

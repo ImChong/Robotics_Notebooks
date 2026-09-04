@@ -10,7 +10,7 @@ tags:
   - berkeley
   - max-planck
 status: complete
-updated: 2026-09-03
+updated: 2026-09-04
 arxiv: "2406.09246"
 code: https://github.com/openvla/openvla
 related:
