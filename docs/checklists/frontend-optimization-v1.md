@@ -54,7 +54,7 @@
 ### Phase 3: 体验打磨 (UX)
 - [x] 搜索结果列表优化：支持卡片式快速预览。首页搜索结果卡片摘要默认按 2 行 `-webkit-line-clamp` 收起（仅摘要长度 > 120 字符时），卡片内提供「预览全文 / 收起」就地展开开关（`.result-preview-toggle`，`aria-expanded` 同步），无需跳转详情页即可快速预览完整摘要；短摘要卡片不显示开关。验证脚本 `scripts/verify_search_preview.cjs`（`slam` → 10 张卡片 / 4 个预览开关；收起态 clientH 45 < scrollH 89、展开后全显 89）。
 - [x] 详情页浮窗联动：正文里指向站内知识页的内链（`detail.html?id=` / `roadmap.html?id=`）标记为 `.detail-inline-link`，悬停弹出与图谱同款 hover 卡片（类型徽标 + 标题 + 摘要 + 「打开详情页 →」）；徽标优先取 `link-graph.json` 的细类型（concept / task / paper…）与社区色，与迷你图浮窗同口径。双向联动：悬停正文内链 → 「关联知识图谱」迷你图同一节点点亮（`.mini-node-linked`）；悬停迷你图节点 → 正文中指向它的内链点亮（`.detail-inline-link-linked`）。触屏（`hover: none`）不绑定，点击仍直接跳转。验证脚本 `scripts/verify_detail_inline_link_preview.cjs`（`wiki-concepts-sim2real` → 内链 Locomotion 浮窗可见 / 迷你图点亮 1 个节点；反向悬停迷你图节点 → 正文点亮 1 条内链）。
-- [x] 技术路线页 `roadmap.html` 本库超链接同样悬停浮窗：正文、知识地图叶子、阶段速览相关项中的 `detail.html?id=` / `roadmap.html?id=` 复用同一套 hover 卡片；无迷你图时类型徽标回退 `roadmapKmapNodeType`（path 前缀）。验证脚本 `scripts/verify_roadmap_inline_link_preview.cjs`。
+- [x] 技术路线页 `roadmap.html` 本库超链接同样悬停浮窗：正文、知识地图叶子、阶段速览相关项中的 `detail.html?id=` / `roadmap.html?id=` 复用同一套 hover 卡片；无迷你图时类型徽标回退 `roadmapKmapNodeType`（path 前缀）。桌面端绑浮窗时去掉原生 `title`，避免与浏览器 tooltip 重叠。验证脚本 `scripts/verify_roadmap_inline_link_preview.cjs`。
 - [x] 图谱页移动端动态视口：Chrome 底栏显隐时 `#graph-wrap` 用 `--app-vh`（`visualViewport.height`）撑满，消除下方空白条。
 - [x] 详情页 Markdown 渲染修复：正文独立 `---` 行渲染为分隔线，并按整行分隔符剥离 YAML frontmatter。
 - [x] 首页搜索索引修复：将 `tech-map/`、roadmap 与 references 纳入 `search-index.json`，支持搜索 `tech-map`。

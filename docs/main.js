@@ -3100,11 +3100,9 @@
           var nodeType = roadmapKmapNodeType(page, rid);
           var color = typeColors[nodeType] || typeColors[''] || '#64748b';
           var typeLabel = typeLabelOf(nodeType);
-          var tip = typeLabel + (page.summary ? ' · ' + page.summary : '');
           parts.push('<li class="roadmap-kmap-leaf">');
           parts.push(
-            '<a class="roadmap-kmap-leaf-a" href="' + escapeHtml(href) + '"' +
-              (tip ? ' title="' + escapeHtml(tip) + '"' : '') + '>'
+            '<a class="roadmap-kmap-leaf-a" href="' + escapeHtml(href) + '">'
           );
           parts.push('<span class="roadmap-kmap-dot" style="background:' + color + ';" aria-hidden="true"></span>');
           parts.push('<span class="roadmap-kmap-leaf-label">' + escapeHtml(page.title || rid) + '</span>');
@@ -3139,11 +3137,9 @@
         var depthType = roadmapKmapNodeType(depthPage, depthId);
         var depthColor = typeColors[depthType] || typeColors[''] || '#64748b';
         var depthTypeLabel = typeLabelOf(depthType);
-        var depthTip = depthTypeLabel + (depthPage.summary ? ' · ' + depthPage.summary : '');
         parts.push('<li class="roadmap-kmap-leaf">');
         parts.push(
-          '<a class="roadmap-kmap-leaf-a" href="' + escapeHtml(depthHref) + '"' +
-            (depthTip ? ' title="' + escapeHtml(depthTip) + '"' : '') + '>'
+          '<a class="roadmap-kmap-leaf-a" href="' + escapeHtml(depthHref) + '">'
         );
         parts.push('<span class="roadmap-kmap-dot" style="background:' + depthColor + ';" aria-hidden="true"></span>');
         parts.push('<span class="roadmap-kmap-leaf-label">' + escapeHtml(depthPage.title || depthId) + '</span>');
@@ -4869,6 +4865,17 @@
     if (!tooltipEl) return;
     var hoverTip = setupGraphHoverTooltip(tooltipEl);
     if (hoverTip.isMobile) return; // 触屏无 hover，点击内链直接跳转即可
+
+    function suppressNativeTitle(el) {
+      var nativeTitle = el.getAttribute('title');
+      if (!nativeTitle) return;
+      if (!el.dataset.nativeTitle) el.dataset.nativeTitle = nativeTitle;
+      el.removeAttribute('title');
+    }
+
+    for (var t = 0; t < marked.length; t++) {
+      suppressNativeTitle(marked[t]);
+    }
 
     function inlineLinkOf(ev) {
       return ev.target && ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;

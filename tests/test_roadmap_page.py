@@ -45,7 +45,12 @@ class RoadmapPageTests(unittest.TestCase):
             "setupDetailInlineLinkPreview",
             "collectInlineLinkPreviewRoots",
             "currentPageIdFromLocation",
+            "suppressNativeTitle",
         ]
+        self.assertNotIn(
+            "var tip = typeLabel + (page.summary ? ' · ' + page.summary : '');",
+            content,
+        )
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 

@@ -45,6 +45,12 @@ const path = require('path');
       { timeout: 30000 }
     );
     await page.addStyleTag({ content: 'html { scroll-behavior: auto !important; }' });
+    const titledLeaves = await page.evaluate(() =>
+      [...document.querySelectorAll('a.detail-inline-link[title]')].map((a) => a.textContent.trim())
+    );
+    if (titledLeaves.length) {
+      throw new Error('本库内链仍带原生 title，会与浮窗重叠: ' + titledLeaves.slice(0, 5).join(' | '));
+    }
 
     async function hoverFirst(selector, shotName) {
       const found = await page.evaluate((sel) => {
@@ -79,6 +85,7 @@ const path = require('path');
           tooltipTitle: ((tip && tip.querySelector('.tt-title')) || {}).textContent || '',
           tooltipHasType: !!(tip && tip.querySelector('.tt-type')),
           tooltipHasLink: !!(tip && tip.querySelector('.tt-link')),
+          nativeTitle: document.getElementById('rn-verify-inline-link').getAttribute('title') || '',
         };
       });
       await page.screenshot({ path: path.join(outDir, shotName) });
@@ -102,8 +109,10 @@ const path = require('path');
     console.log('BODY       :', JSON.stringify(body));
     console.log('KMAP       :', JSON.stringify(kmap));
 
-    const bodyOk = body.hover.tooltipVisible && body.hover.tooltipTitle && body.hover.tooltipHasLink;
-    const kmapOk = !kmap || (kmap.hover.tooltipVisible && kmap.hover.tooltipTitle && kmap.hover.tooltipHasLink);
+    const bodyOk = body.hover.tooltipVisible && body.hover.tooltipTitle && body.hover.tooltipHasLink
+      && !body.hover.nativeTitle;
+    const kmapOk = !kmap || (kmap.hover.tooltipVisible && kmap.hover.tooltipTitle && kmap.hover.tooltipHasLink
+      && !kmap.hover.nativeTitle);
     const ok = bodyOk && kmapOk && !errs.length;
     console.log(ok ? 'PASS' : 'FAIL');
     process.exitCode = ok ? 0 : 1;
