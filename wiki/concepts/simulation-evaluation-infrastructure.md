@@ -2,13 +2,14 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-04
 related:
   - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
+  - ../entities/paper-lucida-r2s.md
   - ../entities/paper-loco-manip-161-075-simple.md
   - ../entities/robodojo.md
   - ../entities/xpolicylab.md
@@ -101,6 +102,8 @@ flowchart TB
 
 **操作臂实证：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276）从真机视频构建孪生场景，在 **7 任务 × 5 策略族** 上报告 **均值 Pearson r=0.911、MMRV=0.018**，并相对 PolaRiS 显著提升排序相关性——可作为「**视频孪生 + cousins 数据**」路线的 real-to-sim 评测锚点。
 
+**几何对齐 ≠ 策略相关：** [Lucida](../entities/paper-lucida-r2s.md)（arXiv:2608.30821）同样做室内 Real2Sim 资产生成，但主表是检测 mAP / ADD-SB / 场景 F-Score，**没有** Pearson/MMRV；读本页时不要把「可编辑副本」直接当成评测基础设施。
+
 ## 关联页面
 
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
@@ -112,6 +115,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 操作基础模型评测基准语境
 - [ENPIRE](../methods/enpire.md) — 真机闭环 autoresearch 与 RoboCasa 仿真 ablation 的分工样本
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频孪生 + Pearson/MMRV 操作策略评测（arXiv:2606.28276）
+- [Lucida](../entities/paper-lucida-r2s.md) — 室内可编辑资产对齐（几何指标，非策略相关）
 - [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) — 人形全身 loco-manipulation 双仿真器 testbed；仿真排序与真机强相关（arXiv:2606.08278，USC PSI Lab）
 - [XPolicyLab](../entities/xpolicylab.md) — 策略–环境统一契约、依赖隔离 serving（O(N+M)）与 RoboDojo/RoboTwin 接线
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环

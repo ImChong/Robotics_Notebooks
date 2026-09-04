@@ -2,7 +2,7 @@
 type: method
 title: CRISP（Contact-guided Real2Sim）
 tags: [real2sim, monocular-video, human-scene-interaction, reinforcement-learning, humanoid, iclr2026, planar-primitives]
-updated: 2026-08-11
+updated: 2026-09-04
 summary: "CRISP 从单目视频恢复可物理仿真的人形运动与「凸平面片」场景原语，用人–场景接触补全遮挡结构，并用 RL 人形控制做物理一致性闭环，面向 Real2Sim 资产规模化。"
 related:
   - ../concepts/sim2real.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-agentic-real2sim.md
   - ../entities/paper-r2s-ego.md
+  - ../entities/paper-lucida-r2s.md
 ---
 
 # CRISP（Contact-guided Real2Sim）
@@ -112,6 +113,7 @@ flowchart TB
 - 与 **[DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md)**：CRISP 从 **视频恢复可仿真资产**；DIMOS 从 **语义/路点目标正向合成** 室内坐/躺/行走序列（静态交互目标来自 COINS）——前者偏 Real2Sim 上游，后者偏 **合成训练数据 / 场景填充**。
 - 与 **[SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) / [Agentic Real2Sim](../entities/paper-agentic-real2sim.md)**：后两者偏 **操作臂 episode / 场景孪生**；CRISP 偏 **人–场景接触 + 人形 RL**——几何原语与下游策略接口不同。
 - 与 **[R2S-EGO](../entities/paper-r2s-ego.md)**：后者在**既有仿真**上用双代理补 **行为范围 ego 外观/碰撞**（稀疏多视角）；CRISP 从**单目视频**构造可 rollout 人–场景资产——上游输入与输出接口不同。
+- 与 **[Lucida](../entities/paper-lucida-r2s.md)**：后者把室内多视角写成 **可编辑物体 mesh + 场景图**，VLM 做 **gizmo 放置**；CRISP 做人–场景平面原语与人形 RL——几何与下游接口不同。
 
 ## 关联页面
 
@@ -123,6 +125,7 @@ flowchart TB
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md)
 - [R2S-EGO](../entities/paper-r2s-ego.md) — 稀疏捕获双代理 ego 细化（3DGS + 真机坐姿）
+- [Lucida](../entities/paper-lucida-r2s.md) — 室内物体级 Real2Sim + GizmoAct 闭环放置（arXiv:2608.30821）
 
 ## 参考来源
 

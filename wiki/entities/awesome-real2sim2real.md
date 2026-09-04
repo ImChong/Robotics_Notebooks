@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, sim2real, real2sim, real2sim2real, domain-randomization, gaussian-splatting, embodied-ai]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-04
 related:
   - ../overview/sun-awesome-r2s2r-technology-map.md
   - ../overview/hub-sim2real.md
@@ -16,6 +16,7 @@ related:
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ./paper-arcadia.md
   - ./paper-r2s-ego.md
+  - ./paper-lucida-r2s.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
 sources:
@@ -79,7 +80,7 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 - [Sim2Real 残差适配 vs Real2Sim vs 真机 RL](../comparisons/sim2real-vs-real2sim-fine-tuning.md)
 - [CRISP Real2Sim](../methods/crisp-real2sim.md)
 - [如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md) / [Sim2Real Checklist](../queries/sim2real-checklist.md)
-- [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [R2S-EGO](./paper-r2s-ego.md)
+- [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [R2S-EGO](./paper-r2s-ego.md) / [Lucida](./paper-lucida-r2s.md)
 - [Arcadia](./paper-arcadia.md) — 采集 + 生成式 USD + 共享 VLN/VLA + 反馈写回（部分开源）
 - [Awesome World Models](./awesome-world-models.md) / [Awesome Touch](./awesome-touch.md)
 

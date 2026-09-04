@@ -1,3 +1,11 @@
+## [2026-09-04] ingest | sources/papers/lucida_r2s_arxiv_2608_30821.md — Lucida 组合式 Real-to-Sim（ByteDance Seed×PKU×ZJU）；项目页仅 arXiv/HF，确认未开源；关键页 paper-lucida-r2s
+
+- **触发：** 用户指定 <https://lucida-r2s.github.io/>
+- **步骤 2.5：** **确认未开源**。项目页 `project.resources` 仅 arXiv + Hugging Face papers；论文未承诺发代码；`github.com/lucida-r2s` 为 Pages 托管。勿建 `sources/repos/`。
+- **关键判断：** 精度后移到 GizmoAct 闭环放置；主读数是 R2S-Scene F-Score 0.924 与 CA-1M ADD-SB@0.05 83.4%，不是策略 Pearson。漏检不可事后补。
+- **新建：** [`paper-lucida-r2s`](wiki/entities/paper-lucida-r2s.md)；归档论文 + 项目页
+- **交叉：** Sim2Real / CRISP / SimFoundry / Agentic Real2Sim / R2S-EGO / Awesome-R2S2R / Manipulation
+
 ## [2026-09-04] ingest | sources/repos/easymocap.md — EasyMocap（zju3dv）：无标记多视角/互联网视频 SMPL 工具箱；已开源（非商业科研许可）；ZJU-MoCap 协议申请
 
 - **触发：** 用户指定 <https://github.com/zju3dv/EasyMocap>

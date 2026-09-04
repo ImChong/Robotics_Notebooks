@@ -892,6 +892,7 @@
 - [A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）](wiki/entities/paper-low-cost-modular-actuator-katz.md) — Benjamin G. Katz（MIT，Sangbae Kim 指导，[S.M. thesis 2018](https://dspace.mit.edu/entities/publication `📅unknown` `[entity_page]`
 - [LT-Mem：波动性感知的终身场景记忆](wiki/entities/paper-lt-mem.md) — LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19 `📅unknown` `[entity_page]`
 - [LUCID：用想象的技能级动力学做长时程人形 Loco-Manipulation](wiki/entities/paper-lucid.md) — LUCID**（*Latent-Skill Unified Control via Imagined Dynamics*；[arXiv:2608.07746](https://arxiv.org/ `📅unknown` `[entity_page]`
+- [Lucida：组合式 Real-to-Sim 场景建模](wiki/entities/paper-lucida-r2s.md) — Lucida**（*Parse, Generate, and Place for Composable Real-to-Sim Scene Modeling*，[arXiv:2608.30821 `📅unknown` `[entity_page]`
 - [M3：用训练期模态遮蔽稳住双臂 VLA](wiki/entities/paper-m3-modality-masking.md) — M3**（*Robust Bimanual Vision-Language-Action Models via Embarrassingly Simple Modality Masking*，[a `📅unknown` `[entity_page]`
 - [M⁴World（Multi-view Multimodal Driving World Model）](wiki/entities/paper-m4world.md) — M⁴World**（*M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulatio `📅unknown` `[entity_page]`
 - [MA-VLA](wiki/entities/paper-ma-vla.md) — MA-VLA: Multi-Arm Vision-Language-Action Model for Collaboration and Compositional Generalization `📅unknown` `[entity_page]`
