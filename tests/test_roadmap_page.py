@@ -20,6 +20,8 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapContentSourceLink"',
             'id="roadmapTocList"',
             'id="roadmapTocSubtitle"',
+            'id="detail-inline-link-tooltip"',
+            'src="graph-tooltip.js"',
         ]
         for marker in required_ids:
             self.assertIn(marker, content)
@@ -40,7 +42,15 @@ class RoadmapPageTests(unittest.TestCase):
             "function latestNodeHref",
             "renderDetailMetaDateBadge(updated)",
             "roadmapMetaUpdated",
+            "setupDetailInlineLinkPreview",
+            "collectInlineLinkPreviewRoots",
+            "currentPageIdFromLocation",
+            "suppressNativeTitle",
         ]
+        self.assertNotIn(
+            "var tip = typeLabel + (page.summary ? ' · ' + page.summary : '');",
+            content,
+        )
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
