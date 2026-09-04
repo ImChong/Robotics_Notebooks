@@ -1,3 +1,10 @@
+## [2026-09-04] ingest | sources/papers/unified_robot_learning_survey_arxiv_2609_03927.md — TMLR 表征–VLA–世界模型统一综述；独立节点，不造表内空壳
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2609.03927>
+- **步骤 2.5：** **确认未开源 / 无配套实现**（arXiv-only，无项目页/GitHub）
+- **关键页：** 新建 [`paper-unified-robot-learning-survey`](wiki/entities/paper-unified-robot-learning-survey.md)；交叉 VLA / WM / WAM / 五大分类 / 选型闭环 / 14 篇阅读路线
+- **机构注册：** `fujitsu-research-america`、`fujitsu`；CMU 已有
+
 ## [2026-09-04] ingest | sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md — UMR：学习点云对应的统一人形重定向；独立节点，代码待发布
 
 - **触发：** 用户指定 *Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*（香港科技大学广州校区 / 诺亦腾 / 汉阳大学 / 香港科技大学 / 香港大学；[arXiv:2609.02134](https://arxiv.org/abs/2609.02134)）

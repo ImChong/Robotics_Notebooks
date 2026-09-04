@@ -10,6 +10,7 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ../entities/paper-unified-robot-learning-survey.md
   - ../overview/embodied-infra-2026-panorama.md
   - ../queries/slam-second-spring-embodied.md
   - ../overview/vla-open-source-repro-landscape-2025.md
@@ -446,6 +447,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — VLA 作为多模态学习信号主线，与 IL / RL / LfV / 持续学习对照
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — VLA 作为任务球上的稀疏语义投影；OOD 勿只归因数据量
 - [五大具身模型分类（VLM/VLN/VLA/VLX/WM）](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 感知→导航→执行→推演递进框架
+- [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 表征–VLA–WM 六种耦合；TMLR 2026
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — VLA 是五层选型闭环的 **③ 动作执行层**：全模态+本体状态 → 关节/末端控制量，也是「泛化 ↔ 实时带宽」矛盾最尖锐的一层
 - [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md) — Zero-WAM / StreamPI / UCAG-P / MA-VLA 等接口显式化盘点
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — GitHub 高可见项目按复现目标分组

@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-04
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../entities/current-robotics-currentworld.md
@@ -18,6 +18,7 @@ related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/latent-imagination.md
   - ../concepts/world-action-models.md
+  - ../entities/paper-unified-robot-learning-survey.md
   - ../methods/model-based-rl.md
   - ../methods/being-h07.md
   - ../entities/nvidia-omniverse.md
@@ -304,6 +305,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy
+- [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 把 WM 写成三轴之一，用耦合类型诊断长程/不确定失败（TMLR 2026）
 - [GaussianDream++](../entities/paper-gaussiandream-plusplus.md) — 训练期高斯世界、部署 20 令牌
 - [ConfAL-WM](../entities/paper-confal-wm.md) — 稠密置信度主动后训练
 - [EmbodiedVAE](../entities/paper-embodiedvae.md) — 为操作视频世界模型解耦臂/背景的 video VAE

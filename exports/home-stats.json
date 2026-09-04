@@ -1,22 +1,21 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3440,
-  "edge_count": 31167,
+  "node_count": 3441,
+  "edge_count": 31186,
   "coverage": {
-    "covered": 3414,
-    "total": 3414,
+    "covered": 3415,
+    "total": 3415,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-umr-unified-motion-retargeting.md",
-      "detail_id": "entity-paper-umr-unified-motion-retargeting",
-      "label": "UMR：学习点云对应的统一人形重定向",
+      "path": "wiki/entities/paper-unified-robot-learning-survey.md",
+      "detail_id": "entity-paper-unified-robot-learning-survey",
+      "label": "统一机器人学习综述：表征、VLA 与世界模型",
       "type": "entity",
       "recency": "2026-09-04",
       "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "action": "added"
     },
     {
       "path": "roadmap/depth-embodied-eval.md",
@@ -125,8 +124,7 @@
       "recency": "2026-09-03",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/overview/open-source-system-reliability-8-papers-technology-map.md",
@@ -211,19 +209,18 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-umr-unified-motion-retargeting.md",
-    "detail_id": "entity-paper-umr-unified-motion-retargeting",
-    "label": "UMR：学习点云对应的统一人形重定向",
+    "path": "wiki/entities/paper-unified-robot-learning-survey.md",
+    "detail_id": "entity-paper-unified-robot-learning-survey",
+    "label": "统一机器人学习综述：表征、VLA 与世界模型",
     "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
-    "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 686
+      "size": 683
     },
     {
       "label": "操作",
@@ -231,15 +228,15 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 278
+      "size": 277
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 222
+      "size": 217
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 123
+      "size": 121
     },
     {
       "label": "机器人视觉感知栈选型闭环",
@@ -274,7 +271,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 875,
+      "degree": 877,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +279,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 798,
+      "degree": 800,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

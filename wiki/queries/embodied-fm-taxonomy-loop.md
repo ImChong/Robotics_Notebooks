@@ -14,6 +14,7 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../concepts/embodied-fm-latency-generalization-tradeoff.md
   - ../methods/vla.md
+  - ../entities/paper-unified-robot-learning-survey.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -167,6 +168,7 @@ VLX（Vision-Language-X，X = 可扩展任务）把感知/导航/执行收进**�
 
 - [五大具身模型分类对比（VLM/VLN/VLA/VLX/WM）](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 本链的家族底座与 I/O 边界总表
 - [VLA 方法页](../methods/vla.md) — ③ 动作执行层代表方法与训练数据
+- [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 三轴耦合诊断，对照本页五层选型
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 VLM/LLM 当监督者、预训练 VLA 当执行器的评测结论
 - [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SONIC token 当 VLA 身体接口时，低层是配方/底座/感知任务哪一层
 - [VLN 任务页](../tasks/vision-language-navigation.md) — ② 空间导航层基准与复现
