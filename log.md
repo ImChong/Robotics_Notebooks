@@ -1,3 +1,10 @@
+## [2026-09-04] ingest | sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md — UMR：学习点云对应的统一人形重定向；独立节点，代码待发布
+
+- **触发：** 用户指定 *Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*（香港科技大学广州校区 / 诺亦腾 / 汉阳大学 / 香港科技大学 / 香港大学；[arXiv:2609.02134](https://arxiv.org/abs/2609.02134)）
+- **步骤 2.5：** **待发布**。所谓项目链接即 arXiv；HTML/PDF 未列 GitHub。同团队 [AdaPT 项目页](https://humanoidtennis.github.io/AdaPT/) 写 MoCap「UMR coming soon」，AdaPT 仓不含本实现。
+- **关键页：** 新建 [`paper-umr-unified-motion-retargeting`](wiki/entities/paper-umr-unified-motion-retargeting.md)；交叉 [Motion Retargeting](wiki/concepts/motion-retargeting.md)、[hub](wiki/overview/hub-motion-retargeting.md)、[GMR](wiki/methods/motion-retargeting-gmr.md)、[OmniRetarget](wiki/entities/paper-hrl-stack-03-omniretarget.md)、[OmniContact](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md)、[BeyondMimic](wiki/methods/beyondmimic.md)、[SONIC](wiki/methods/sonic-motion-tracking.md)、[AdaPT](wiki/entities/paper-adapt.md)
+- **消歧：** 勿与 AdaMorph（2601.07284）或 PALUM（2601.07272）混页
+
 ## [2026-09-04] ingest | sources/papers/{wm_loco,focus,safe_stop} + 两篇公众号 — WM-LOCO/FOCUS 新建独立节点，Safe-Stop 复用；Infra 全景与 SLAM 沙龙写回 overview/query
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/qVqpihnA4GezsE2MIJjKDw>、三篇论文（WM-LOCO / Safe-Stop / FOCUS）须独立非重复详情节点，以及 <https://mp.weixin.qq.com/s/0MUtW7aaPPltT9oO3SUtSg>

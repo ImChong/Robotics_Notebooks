@@ -2391,6 +2391,7 @@
 - [UMA（多级表面对齐超精细人体 Avatar）](wiki/entities/paper-uma.md) — UMA**（*Ultra-detailed Human Avatars via Multi-level Surface Alignment*，[arXiv:2506.01802](https:// `📅unknown` `[entity_page]`
 - [UME-EXO（Universal Manipulation Exoskeleton）](wiki/entities/paper-ume-exo.md) — UME**（Universal Manipulation Exoskeleton）是 Ant Group 与 Stanford 团队提出的 **上肢外骨骼遥操作与数据采集** 系统（arXiv:2 `📅unknown` `[entity_page]`
 - [In-the-Wild Compliant Manipulation with UMI-FT（arXiv:2601.09988）](wiki/entities/paper-umi-ft.md) — In-the-Wild Compliant Manipulation with UMI-FT**（Hojung Choi, Yifan Hou, Chuer Pan, Seongheon Hong `📅unknown` `[entity_page]`
+- [UMR：学习点云对应的统一人形重定向](wiki/entities/paper-umr-unified-motion-retargeting.md) — UMR**（*Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*，[arXiv:26 `📅unknown` `[entity_page]`
 - [Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译](wiki/entities/paper-uni-lavira.md) — Uni-LaViRA**（*Language-Vision-Robot Actions Translation for Unified Embodied Navigation*，arXiv:[26 `📅unknown` `[entity_page]`
 - [UniAD（Planning-oriented Autonomous Driving · arXiv:2212.10156）](wiki/entities/paper-uniad.md) — UniAD**（*Planning-oriented Autonomous Driving*，2212.10156，CVPR `📅unknown` `[entity_page]`
 - [统一流体-机器人多物理可微仿真（Realizing Robotic Swimming with Unified Fluid-Robot Multiphysics）](wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md) — Unified Fluid-Robot Multiphysics**（*Realizing Robotic Swimming with Unified Fluid-Robot Multiphysi `📅unknown` `[entity_page]`

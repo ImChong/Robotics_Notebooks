@@ -12,6 +12,8 @@
 
 人形网球风格化对拉与发球项目页：Federaer / Nadal / Djokovic 与 MoCap 风格在 **G1** 与 **Atom P3** 上复现；数据集约 **21.5 h**、6 种运动员风格、7 类击球/发球；视频经 GVHMR+GMR、MoCap 经 UMR 重定向。
 
+UMR 论文已于 2026-09 出现在 [arXiv:2609.02134](https://arxiv.org/abs/2609.02134)；项目页仍写 **coming soon**，官方实现未随 AdaPT 仓发布。归档见 [`umr_unified_motion_retargeting_arxiv_2609_02134.md`](../papers/umr_unified_motion_retargeting_arxiv_2609_02134.md)。
+
 ## 开源状态（步骤 2.5，2026-08-22）
 
 | 资源 | 状态 |
@@ -25,3 +27,4 @@
 - 论文归档：[`sources/papers/adapt_arxiv_2608_20087.md`](../papers/adapt_arxiv_2608_20087.md)
 - 代码归档：[`sources/repos/adapt.md`](../repos/adapt.md)
 - 沉淀实体：[`wiki/entities/paper-adapt.md`](../../wiki/entities/paper-adapt.md)
+- UMR 论文：[`wiki/entities/paper-umr-unified-motion-retargeting.md`](../../wiki/entities/paper-umr-unified-motion-retargeting.md)

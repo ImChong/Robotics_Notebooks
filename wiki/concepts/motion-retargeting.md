@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-02
+updated: 2026-09-04
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -82,6 +82,10 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 3.6 采样式灵巧手重定向（SBR，Smooth Operator）
 
 [mimic robotics](https://mimicrobotics.github.io/smooth-operator/) 的 **Sampling-Based Retargeter（SBR）** 面向 **15 DoF 级实时遥操作**：用 **Kabsch–Umeyama** 对齐人手指点云与机器人手，再以 **MPPI / MPOPI + iCEM** 做 **梯度无关** 路径积分优化，缓解 DexPilot / GeoRT 等 **梯度法局部极小与抖动**。18 人用户研究中整体成功率 **54.1%**、NASA-TLX **36.4**（相对 GeoRT 26.6% / 56.4）。开源快照见 [mimic_retargeter_lab](https://github.com/mimicrobotics/mimic_retargeter_lab)；与 [mimic wearable U1](../entities/mimic-wearable-u1.md)「机械 1:1、无软件重定向」形成 **中层采集 vs 顶层真机遥操作** 对照。
+
+### 3.7 学习式稠密点云对应（UMR）
+
+[UMR](../entities/paper-umr-unified-motion-retargeting.md)（arXiv:2609.02134）在规范 T-pose 上学人–机外表面点对，再作为约束优化锚点匹配位置、法向与接触向量，**不手写骨架关键点表**。换源（SMPL-X / SOMA / 扫描网格）与换机主要复用同一套索引。跟踪对照 [GMR](../methods/motion-retargeting-gmr.md)，接触对照 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)；代码待发布。
 
 ### 3.7 非拟人三指夹爪遥操作重定向（VTAP）
 
@@ -252,6 +256,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR：rough-terrain 场景对齐人演示；Human2Robot 侧用 OmniRetarget/GMR/CoACD
 - **ingest 档案：** [sources/papers/kdmr_arxiv_2603_09956.md](../../sources/papers/kdmr_arxiv_2603_09956.md) — KDMR：GRF 锚定多接触动力学重定向（arXiv:2603.09956）
 - **ingest 档案：** [sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md](../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md) — SPARK：URDF 校准 + 渐进 KDTO（arXiv:2603.11480）
+- **ingest 档案：** [sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md](../../sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md) — UMR：学习点云对应的统一重定向（arXiv:2609.02134）
 - **ingest 档案：** [sources/repos/core_retarget.md](../../sources/repos/core_retarget.md) — CoRe v0.1.0：SOMA 接触感知重定向（11 机，Apache-2.0）；论文见 [core_humanoids_2025.md](../../sources/papers/core_humanoids_2025.md)、[rmr_iros_2025.md](../../sources/papers/rmr_iros_2025.md)
 
 ---
@@ -260,6 +265,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — 端到端工程链路视角：源归一 → 骨架对齐 → IK → 物理筛选 → 配对监督
 - [KDMR](../entities/paper-kdmr.md) — GRF 多接触全身 TO
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + KDTO
+- [UMR（学习点云对应）](../entities/paper-umr-unified-motion-retargeting.md) — 稠密表面对应 + 接触图直传；不手写关键点（arXiv:2609.02134，待发布）
 - [Motion Retargeting Objective（重定向目标函数形式化）](../formalizations/motion-retargeting-objective.md) — 姿态相似 / 末端接触 / 平衡 / 限位 / 平滑项的统一加权和及其三种工程退化
 - [Motion Data Quality（动作数据质量维度）](./motion-data-quality.md) — 形态差距/接触/物理/规模四轴决定重定向是否可省略及需补几层
 - [Teleopit](../entities/paper-teleopit.md) — 归一化指方向 + 距离/拇指帧的跨形态灵巧手在线优化重定向（somehand；arXiv:2608.01834）

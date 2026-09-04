@@ -11,7 +11,7 @@ tags:
   - shanghai-ai-lab
   - sjtu
 status: complete
-updated: 2026-09-03
+updated: 2026-09-04
 arxiv: "2608.20087"
 venue: "arXiv 2026"
 related:
@@ -22,6 +22,7 @@ related:
   - ./unitree-g1.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-adapt-text-driven-humanoid.md
+  - ./paper-umr-unified-motion-retargeting.md
   - ../methods/table-tennis-strategy-skill-learning.md
   - ../overview/video-contact-control-10-papers-technology-map.md
 sources:
@@ -53,12 +54,13 @@ summary: "AdaPT（arXiv:2608.20087，Noitom / 上海 AI Lab / 上交）：人形
 | G1 | Unitree G1 Humanoid | 主要真机平台之一 |
 | RL | Reinforcement Learning | Mjlab + PPO 训练跟踪与规划策略 |
 | MoCap | Motion Capture | 专业运动员高精度动作采集 |
+| UMR | Unified Motion Retargeting | MoCap 支路重定向；论文已发、代码仍待发布 |
 
 ## 为什么重要
 
 - **风格与任务并重：** 相对 LATENT 等偏任务成功率的人形网球线，AdaPT 显式保留 **职业球员全身协调风格**（转体、引拍、恢复步），并报告仿真中风格–成功率权衡。
 - **解耦 + 速度适配应对 sim2real：** Vid2Player3D 式解耦在真机上面临跟踪退化 × 自回归规划 × 感知噪声；**α 混合参考帧** 让规划器适配跟踪器能力，跟踪器在训练中见过多速度。
-- **多源运动与多机体：** 转播视频（GVHMR→GMR）与 MoCap（UMR）统一管线；**G1** 与 **~1.7 m Atom** 验证尺度泛化。
+- **多源运动与多机体：** 转播视频（GVHMR→GMR）与 MoCap（[UMR](./paper-umr-unified-motion-retargeting.md)）统一管线；**G1** 与 **~1.7 m Atom** 验证尺度泛化。UMR 论文已在 arXiv:2609.02134，**实现仍待发布**。
 - **工程可复现入口：** [noitom-robotics/AdaPT](https://github.com/noitom-robotics/AdaPT) 已发布 **Stage1 发球跟踪** 训练/play（Apache-2.0）。
 
 ## 核心方法与结构
@@ -156,6 +158,7 @@ Stage1 在随机执行速度下学习跟踪参考发球动作；完整对拉闭�
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 体育竞技子类
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — GVHMR/GMR 管线
+- [UMR](./paper-umr-unified-motion-retargeting.md) — MoCap 支路点名的统一点云重定向（代码待发布）
 - [Unitree G1](./unitree-g1.md) — 真机平台
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 另一 G1 全身动态技能对照
 - [Table Tennis Strategy & Skill](../methods/table-tennis-strategy-skill-learning.md) — 乒乓球分层技能（球类动画对照）

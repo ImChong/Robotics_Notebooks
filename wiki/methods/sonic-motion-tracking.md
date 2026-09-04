@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-08-27
+updated: 2026-09-04
 arxiv: "2511.07820"
 doi: "10.1126/scirobotics.aed4592"
 venue: "Science Robotics 2026"
@@ -31,6 +31,7 @@ related:
   - ../entities/paper-dpc.md
   - ../entities/paper-scaling-bfm-humanoid.md
   - ./beyondmimic.md
+  - ../entities/paper-umr-unified-motion-retargeting.md
   - ./egm-efficient-general-mimic.md
   - ./exoactor.md
   - ./imitation-learning.md
@@ -458,6 +459,7 @@ sequenceDiagram
 - [Behavior Foundation Model（概念）](../concepts/behavior-foundation-model.md)
 - [ScaleBFM（BFM scaling 配方）](../entities/paper-scaling-bfm-humanoid.md)
 - [BeyondMimic](./beyondmimic.md)
+- [UMR](../entities/paper-umr-unified-motion-retargeting.md) — BONES-SEED 上用本页配方比官方 GMR 参考（关 SMPL encoder 时约 +10%）
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [GENMO（统一人体运动估计与生成）](./genmo.md)
 - [ARDY（交互式人体运动生成）](../entities/ardy.md) — 实时扩散生成 + SONIC→G1 闭环演示
