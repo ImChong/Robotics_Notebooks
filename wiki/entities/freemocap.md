@@ -3,10 +3,11 @@
 type: entity
 tags: [repo, motion-capture, mocap, computer-vision, education, opensource, freemocap]
 status: complete
-updated: 2026-06-09
+updated: 2026-09-04
 related:
   - ../concepts/motion-retargeting.md
   - ./paper-mamma-markerless-motion-capture.md
+  - ./easymocap.md
   - ./paper-opencap-monocular.md
   - ./mjlab-playground.md
   - ./mimickit.md
@@ -35,7 +36,7 @@ summary: "FreeMoCap：面向科研与教学的开源多相机运动捕捉平台�
 
 ## 为什么重要？
 
-- **降低 MoCap 门槛**：相比光学动捕室或专用套装，USB 相机阵列 + 统一软件栈更易在实验室快速搭建。若需 **研究级 SMPL-X + 双人交互**，可对照 [MAMMA](./paper-mamma-markerless-motion-capture.md)（多视角 markerless，CVPR 2026）选型；若需 **单手机临床级运动学/动力学（OpenSim）**，见 [OpenCap Monocular](./paper-opencap-monocular.md)。
+- **降低 MoCap 门槛**：相比光学动捕室或专用套装，USB 相机阵列 + 统一软件栈更易在实验室快速搭建。若需 **研究级 SMPL 拟合 + 标定多相机 / 镜面 / Neural Body**，对照 [EasyMocap](./easymocap.md)（浙大 3DV，非商业科研许可）；若需 **研究级 SMPL-X + 双人交互**，对照 [MAMMA](./paper-mamma-markerless-motion-capture.md)（多视角 markerless，CVPR 2026）；若需 **单手机临床级运动学/动力学（OpenSim）**，见 [OpenCap Monocular](./paper-opencap-monocular.md)。
 - **GUI 闭环**：`pip install freemocap` 后以 `freemocap` 命令启动图形界面，适合作为 **人体动作采集** 的第一站，再把数据交给重定向、仿真或模仿学习下游。
 - **许可需显式评估**：项目采用 **AGPL**（README 与 LICENSE 说明）；若要将修改后的版本嵌入闭源产品或服务端，需要自行做法务评估或按 README 指引联系维护方讨论其他许可。
 
@@ -67,6 +68,7 @@ flowchart TD
 - [mjlab_playground](./mjlab-playground.md) — MuJoCo Warp 上足式技能训练示例，可与动捕数据在管线层组合
 - [MimicKit](./mimickit.md) — 研究侧运动模仿算法集合，可与 MoCap 数据管线对照
 - [Locomotion](../tasks/locomotion.md) — 足式运动学习中 MoCap 先验的常见用途
+- [EasyMocap](./easymocap.md) — 浙大 3DV 无标记 SMPL 拟合工具箱（研究许可，非 GUI 教学平台）
 
 ## 推荐继续阅读
 

@@ -1,3 +1,11 @@
+## [2026-09-04] ingest | sources/repos/easymocap.md — EasyMocap（zju3dv）：无标记多视角/互联网视频 SMPL 工具箱；已开源（非商业科研许可）；ZJU-MoCap 协议申请
+
+- **触发：** 用户指定 <https://github.com/zju3dv/EasyMocap>
+- **步骤 2.5：** **已开源（科研许可）**。文档站 <https://chingswy.github.io/easymocap-public-doc/> 与 GitHub 互指；CLI `emc` + `apps/demo/mv1p.py` / `mvmp.py` 可跑。LICENSE 仅教育/研究/非营利，商用须邮件 `xwzhou@zju.edu.cn`。SMPL/MANO 权重不随仓。ZJU-MoCap（LightStage + Mirrored-Human）需协议 PDF + 邮件申请。iMocap 多视频特定动作 README 仍标 Coming soon。
+- **关键判断：** 有标定外参走 EasyMocap；野外单目世界轨迹走同组 [GVHMR](wiki/entities/gvhmr.md)。输出 `Rh` ≠ 官方 `global_orient`，接 GMR 前必须转换。不是机器人关节指令。
+- **新建：** [`easymocap`](wiki/entities/easymocap.md)；归档 repo + 文档站
+- **交叉：** GVHMR / FreeMoCap / MAMMA / motion-retargeting-pipeline / SMPL-X / GMR
+
 ## [2026-09-04] ingest | sources/papers/crosstracer_arxiv_2608_06688.md — CrossTracer 像素轨迹残差跨本体导航；NaviTrace 45.68；项目页无代码（宣称开源/待核实）；关键页 paper-crosstracer
 
 - **触发：** 用户指定 CrossTracer（arXiv:2608.06688）；鹏城实验室 / 南科大 / 创新投资研究院 / 苏州大学

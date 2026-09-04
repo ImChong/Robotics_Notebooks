@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-capture, markerless, smpl-x, multi-view, dense-landmarks, cvpr-2026, human-motion, eth, max-planck]
 status: complete
-updated: 2026-06-09
+updated: 2026-09-04
 arxiv: "2506.13040"
 venue: "2026 · CVPR Oral"
 code: https://github.com/cuevhv/mamma
@@ -12,6 +12,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ./freemocap.md
+  - ./easymocap.md
   - ./gvhmr.md
   - ./paper-opencap-monocular.md
   - ./amass.md
@@ -45,7 +46,7 @@ summary: "MAMMA（CVPR 2026 Oral）：多视角 markerless 管线，用 MammaNet
 
 - **降低高质量 MoCap 门槛：** 相对光学 marker 系统（贴标、清 swapped marker、MoSh++ 后处理），MAMMA 强调 **像素级全自动**；论文报告 held-out marker 误差与 Vicon 管线仅差 **~1.6 mm**，动画视觉难区分。
 - **填补双人交互空白：** 多数学术 HMR / markerless 方法面向单人稀疏关键点；MAMMA 用 **mask 条件化 + per-landmark query + 可见性估计** 处理拥抱、舞蹈、搬运等 **人–人遮挡**。
-- **机器人上游数据源：** 输出 **SMPL-X 序列** 可直接进入 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)（与 [AMASS](./amass.md) 棚拍 SMPL 库、[GVHMR](./gvhmr.md) 单目估计形成 **多视角高质量 / 单目便捷 / 大库离线** 三角）；相对 [FreeMoCap](./freemocap.md) 更偏 **研究级精度与 SMPL-X 参数**，而非教学向低成本 GUI。
+- **机器人上游数据源：** 输出 **SMPL-X 序列** 可直接进入 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)（与 [AMASS](./amass.md) 棚拍 SMPL 库、[EasyMocap](./easymocap.md) 多视角工具箱、[GVHMR](./gvhmr.md) 单目估计形成 **研究级双人 / 标定多相机 / 单目便捷 / 大库离线** 对照）；相对 [FreeMoCap](./freemocap.md) 更偏 **研究级精度与 SMPL-X 参数**，而非教学向低成本 GUI。
 - **可复现工程栈：** 开源 `ma_cap → ma_masks → ma_2d → ma_3d → ma_vis` CLI + 浏览器 GUI，附带 MAMMASyn 训练数据与 MAMMAEval 基准。
 
 ## 流程总览
@@ -137,7 +138,7 @@ flowchart TB
 - 关键指标是 held-out marker 相对 MoSh++ 管线仅差 ~1.6 mm，以及 3D 拟合在双人 Harmony4D/CHI3D 上的明显增益；训练完全来自 MAMMASyn 合成数据，仍能泛化到 MOYO 等极端 OOD 姿态。
 - 适用边界与失败模式：需同步多视角与标定（32 相机棚拍或 4×iPhone）、当前最多两人、非商业科研许可；野外仍受标定与遮挡限制，它不是单目手机方案。
 - 输出是 SMPL-X 运动学序列而非关节指令，上机器人必须经 [Motion Retargeting](../concepts/motion-retargeting.md) 与 [GMR](../methods/motion-retargeting-gmr.md) 及接触/平衡筛选。
-- 生态定位：相对 [GVHMR](./gvhmr.md) 的单目便捷与 [AMASS](./amass.md) 的大库离线，MAMMA 占「现场采集 + 研究级精度」这一格；与 [FreeMoCap](./freemocap.md) 的低成本教学取向在许可与硬件假设上都不重叠。
+- 生态定位：相对 [GVHMR](./gvhmr.md) 的单目便捷、[EasyMocap](./easymocap.md) 的多视角 SMPL 工具箱与 [AMASS](./amass.md) 的大库离线，MAMMA 占「现场采集 + 研究级精度 + 双人交互」这一格；与 [FreeMoCap](./freemocap.md) 的低成本教学取向在许可与硬件假设上都不重叠。
 
 ## 常见误区
 
@@ -150,7 +151,7 @@ flowchart TB
 
 - **重定向流水线：** [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — MAMMA 属于上游 **「干净多视角 → SMPL-X」** 源，与棚拍 BVH、AMASS 同级，优于单目估计噪声源。
 - **全身跟踪下游：** [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 精炼 SMPL-X 可作为 WBT/模仿学习参考轨迹输入。
-- **开源 MoCap 对照：** [FreeMoCap](./freemocap.md) — 低成本多相机平台；[GVHMR](./gvhmr.md) — 单目视频上游；[OpenCap Monocular](./paper-opencap-monocular.md) — 单手机 OpenSim 运动学/动力学。
+- **开源 MoCap 对照：** [EasyMocap](./easymocap.md) — 浙大 3DV 多视角 / 镜面 SMPL 工具箱（非商业科研许可）；[FreeMoCap](./freemocap.md) — 低成本多相机平台；[GVHMR](./gvhmr.md) — 单目视频上游；[OpenCap Monocular](./paper-opencap-monocular.md) — 单手机 OpenSim 运动学/动力学。
 - **动捕数据生态：** [AMASS](./amass.md) — 统一 SMPL 大库；MAMMA 提供 **现场采集** 到 SMPL-X 的替代 Vicon 路径。
 - **论文笔记索引：** [Human Motion 分类](../overview/paper-notebook-category-14-human-motion.md)
 
