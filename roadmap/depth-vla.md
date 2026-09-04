@@ -242,6 +242,7 @@ flowchart LR
 - 其它纵深路径：
   - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [BFM（人形行为基础模型）](depth-bfm.md) — 姊妹路线：VLA 管任务级语义，BFM 管身体级协调
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 验收环节：VLA 成功率/泛化怎么测才不骗人
   - [WAM（世界–动作模型）](depth-wam.md) — 姊妹路线：VLA 管反应式语义策略，WAM 管前向后果耦合
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 1 的展开版
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的展开版

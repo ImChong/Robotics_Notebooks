@@ -27,6 +27,7 @@
 | 想让仿真训好的策略稳上真机 | [Sim2Real 纵深路线](roadmap/depth-sim2real.md) |
 | 想让两台人形在擂台上对打 | [人形拳击纵深路线](roadmap/depth-humanoid-boxing.md) |
 | 想做人形全身行为基础模型 | [BFM 纵深路线](roadmap/depth-bfm.md) |
+| 想证明/证伪一个具身模型（含运控模型）到底好不好 | [具身模型测评纵深路线](roadmap/depth-embodied-eval.md) |
 | 想让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
 | 想用生成模型造人形动作 | [动作生成纵深路线](roadmap/depth-motion-generation.md) |
 | 想让机器人听懂指令干活 | [VLA 纵深路线](roadmap/depth-vla.md) |

@@ -1,13 +1,40 @@
 {
-  "generated_at": "2026-09-03",
-  "node_count": 3432,
-  "edge_count": 30940,
+  "generated_at": "2026-09-04",
+  "node_count": 3434,
+  "edge_count": 31065,
   "coverage": {
-    "covered": 3407,
-    "total": 3407,
+    "covered": 3408,
+    "total": 3408,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-demomimic.md",
+      "detail_id": "entity-paper-demomimic",
+      "label": "DemoMimic（One Demonstration, Many Objects）",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-physics-consistent-hrc-benchmark.md",
+      "detail_id": "entity-paper-physics-consistent-hrc-benchmark",
+      "label": "Physics-Consistent HRC Benchmark：接触丰富辅助护理评测",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-tapvid-mv.md",
+      "detail_id": "entity-paper-tapvid-mv",
+      "label": "TAPVid-MV：多视角 3D 任意点跟踪基准",
+      "type": "entity",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/concepts/ipc-inter-process-communication.md",
       "detail_id": "wiki-concepts-ipc-inter-process-communication",
@@ -17,15 +44,6 @@
       "source": "git",
       "action": "added",
       "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-demomimic.md",
-      "detail_id": "entity-paper-demomimic",
-      "label": "DemoMimic（One Demonstration, Many Objects）",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added"
     },
     {
       "path": "wiki/entities/paper-hint-robot-manipulation.md",
@@ -49,15 +67,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-physics-consistent-hrc-benchmark.md",
-      "detail_id": "entity-paper-physics-consistent-hrc-benchmark",
-      "label": "Physics-Consistent HRC Benchmark：接触丰富辅助护理评测",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added"
-    },
-    {
       "path": "wiki/entities/paper-sa-wam.md",
       "detail_id": "entity-paper-sa-wam",
       "label": "SA-WAM：几何感知的 World Action Model",
@@ -71,15 +80,6 @@
       "path": "wiki/entities/paper-safe-stop-humanoid.md",
       "detail_id": "entity-paper-safe-stop-humanoid",
       "label": "Safe-Stop：人形机器人可学习安全停止",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-tapvid-mv.md",
-      "detail_id": "entity-paper-tapvid-mv",
-      "label": "TAPVid-MV：多视角 3D 任意点跟踪基准",
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
@@ -210,39 +210,38 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/ipc-inter-process-communication.md",
-    "detail_id": "wiki-concepts-ipc-inter-process-communication",
-    "label": "进程间通信（Inter-Process Communication, IPC）",
-    "type": "concept",
+    "path": "wiki/entities/paper-demomimic.md",
+    "detail_id": "entity-paper-demomimic",
+    "label": "DemoMimic（One Demonstration, Many Objects）",
+    "type": "entity",
     "recency": "2026-09-03",
     "source": "git",
-    "action": "added",
-    "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 624
+      "size": 695
     },
     {
       "label": "操作",
-      "size": 594
+      "size": 591
     },
     {
       "label": "视觉-语言-动作",
-      "size": 265
+      "size": 268
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 226
+      "size": 223
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 212
+      "size": 149
     },
     {
       "label": "力矩电机设计纵深路线",
-      "size": 89
+      "size": 87
     }
   ],
   "top_hubs": [
@@ -266,7 +265,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 902,
+      "degree": 905,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -312,7 +311,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 508,
+      "degree": 509,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -330,7 +329,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 149,
+      "degree": 150,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -391,7 +390,7 @@
       "type": "entity",
       "degree": 44,
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

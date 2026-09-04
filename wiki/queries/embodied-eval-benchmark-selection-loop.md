@@ -198,6 +198,8 @@ flowchart TD
 
 ## 关联页面
 
+- [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md) — 本链 ③ 层在 **运控模型**（locomotion / whole-body tracking / MPC-WBC）这一被测对象上的展开
+
 - 所属路线：[具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md) — 四层评测基准的统一入口与图谱纵深枢纽
 - [Embody](../entities/anthropic-embody.md) — 评 **LLM 控制接口** 而非 VLA SOTA；与 LIBERO 成功率榜正交
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 暂停仿真上界 vs 实时力矩环的读数陷阱

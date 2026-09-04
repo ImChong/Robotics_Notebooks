@@ -231,6 +231,7 @@ flowchart LR
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
   - [WAM（世界–动作模型）](depth-wam.md)
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)

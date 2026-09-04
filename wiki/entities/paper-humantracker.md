@@ -202,6 +202,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md) — 本文的终止准则对齐、MPJPE 记账口径与 HumanScore 被收进的通用指标体系页
+
 - [Humanoid-GPT](./paper-humanoid-gpt.md) — 本基准上整体最强的零样本 tracker
 - [SONIC](../methods/sonic-motion-tracking.md) — Interaction Succ 与 Ground HumanScore 的对照强基线
 - [GMT](./paper-gmt.md) / [TWIST2](./paper-twist2.md) — 同一协议下暴露 Ground 崩溃

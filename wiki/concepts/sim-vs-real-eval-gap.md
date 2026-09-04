@@ -77,6 +77,8 @@ related:
 
 ## 关联页面
 
+- [运控模型评测指标](./motion-control-policy-evaluation-metrics.md) — 运控模型侧的指标体系，其仿真绝对分同样受本页 gap 约束
+
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「④ sim↔real 校准层」的取舍根因，双向回链
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 RoboDojo 上过程指标 Sim–Real Spearman ρ 约 0.18–0.58
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 用可信仿真当闭环评测引擎的前提正是本页的 sim↔real 相关性

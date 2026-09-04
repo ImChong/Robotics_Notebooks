@@ -256,6 +256,7 @@ flowchart LR
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
+  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)

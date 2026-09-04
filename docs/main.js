@@ -360,7 +360,7 @@
       nodes: readHeroStatFallback(nodeEl, 0),
       edges: readHeroStatFallback(edgeEl, 0),
       main: readHeroStatFallback(mainEl, 1),
-      depth: readHeroStatFallback(depthEl, 21)
+      depth: readHeroStatFallback(depthEl, 22)
     };
 
     if (!getHeroStatsCountUpEnabled()) {
@@ -420,7 +420,7 @@
       if (play || fallbacks) applyStat(heroMainRouteCount, 'main', mainTarget);
     }
     if (heroDepthRouteCount) {
-      var depthTarget = fallbacks ? fallbacks.depth : parseHeroStatNumber(heroDepthRouteCount, 21);
+      var depthTarget = fallbacks ? fallbacks.depth : parseHeroStatNumber(heroDepthRouteCount, 22);
       if (play || fallbacks) applyStat(heroDepthRouteCount, 'depth', depthTarget);
     }
     if (wikiSearchSubtitle && nodeCount !== null) {
@@ -6380,7 +6380,7 @@
       extras[rti].hidden = !expanded;
     }
     routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 21 条纵深路线 ↓';
+    routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 22 条纵深路线 ↓';
     if (routeLinks) {
       routeLinks.classList.toggle('is-expanded', !!expanded);
     }

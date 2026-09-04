@@ -2791,6 +2791,7 @@
 - [Model Hardware Standard（MHS）](wiki/concepts/model-hardware-standard.md) — Model Hardware Standard（MHS）** 是给 AI agent 用的 **硬件 USB-C**：标准化驱动把显微镜、液体处理工作站、机械臂等可编程设备暴露成可发现的 `rea `📅unknown` `[wiki_page]`
 - [模型版本管理与 OTA](wiki/concepts/model-versioning-ota.md) — 模型版本管理与 OTA** 把策略/感知权重与机载固件当作 **可签名、可回滚、可审计** 的发布物，经空中或近场通道安全晋升到机器人。 `📅unknown` `[wiki_page]`
 - [建模与求解（控制问题框架）](wiki/concepts/modeling-and-solving-for-control.md) — 飞书 Know-How「**建模 + 求解**」是人形控制问题拆解的第一轴：**建模**确定状态、输入、动力学与约束；**求解**选择能否实时、能否保证约束的算法（QP、MPC、iLQR、RL 等）。 `📅unknown` `[wiki_page]`
+- [运控模型评测指标（Motion-Control Policy Evaluation Metrics）](wiki/concepts/motion-control-policy-evaluation-metrics.md) — 运控模型评测指标** 指用于给 locomotion 策略、whole-body tracking 策略与 model-based 控制器（MPC / WBC）出具验收结论的那组指标——它回答的不 `📅unknown` `[wiki_page]`
 - [Motion Data Quality（动作数据质量维度）](wiki/concepts/motion-data-quality.md) — 把一段参考运动 / 演示数据「能不能直接喂给人形策略训练」拆成**四个可独立评估的质量轴**。它回答的不是「数据多不多」，而是「数据**像不像**机器人能物理执行的东西」——这正是 [Motion R `📅unknown` `[wiki_page]`
 - [Motion Retargeting Pipeline（动作重定向流水线）](wiki/concepts/motion-retargeting-pipeline.md) — Motion Retargeting Pipeline** 关注的不是「某一个重定向算法」，而是把**异构来源的人体动作**（MoCap、单目视频估计、生成模型、遥操作流）落到**机器人可执行参考 `📅unknown` `[wiki_page]`
 - [Motion Retargeting（动作重定向）](wiki/concepts/motion-retargeting.md) — Motion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。 `📅unknown` `[wiki_page]`
@@ -3370,6 +3371,7 @@
 - [路线（纵深）：如果目标是 BFM（人形行为基础模型）](roadmap/depth-bfm.md) — 摘要**：面向"想用一个 checkpoint 控住人形全身"的纵深路线，从 RL locomotion 与动捕数据基座、动作跟踪谱系（DeepMimic → ASE → PHC → Masked `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](roadmap/depth-classical-control.md) — 摘要**：面向"想用基于模型的传统控制栈驱动人形机器人"的纵深路线，从简化模型（LIP/ZMP）到 Centroidal 轨迹优化、MPC，再到 TSID/WBC 与真机状态估计，按 Stage  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是接触丰富的操作任务](roadmap/depth-contact-manipulation.md) — 摘要**：面向"装配、拧螺丝、插拔等需要精细接触"的操作任务的纵深路线，按 Stage 0–3 串通从阻抗控制到 ACT / Diffusion Policy 的核心方法；本路线是 [运动控制主路 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](roadmap/depth-embodied-eval.md) — 摘要**：面向"训完一个具身模型，接下来怎么『测/证明它』"的纵深路线，从评测目的与四层闭环边界，到 ① 具身大脑/MLLM 认知评测、② 世界模型预测保真度评测、③ 策略成功率与过程/判据评测， `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](roadmap/depth-humanoid-boxing.md) — 摘要**：面向"让两台人形机器人在擂台上像人一样对打"的纵深路线，从对抗全身任务的问题定义与自主 / 遥操作两条产品路线出发，经拳击 MoCap 的全身跟踪基座、技能蒸馏到潜空间动作流形，再到两玩 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](roadmap/depth-humanoid-hardware-design.md) — 摘要**：面向"想从一张任务需求做到一台能上电、能跑控制、能交付的人形整机"的纵深路线，从整机指标与质量/功率/延迟三大预算，到构型与机械布局、结构详设与验证、电气架构与配电、EMC 接地与板级落 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](roadmap/depth-humanoid-soccer.md) — 摘要**：面向"让人形机器人追球、射门、打整场比赛"的纵深路线，从 RoboCup 任务全景与感知–决策–运动的耦合问题出发，经参数化全向行走与跌倒恢复的运动基座、球/场地/对手的机载感知，到闭环 `📅unknown` `[roadmap_page]`
