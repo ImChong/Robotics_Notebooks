@@ -4826,10 +4826,20 @@
     return [contentEl];
   }
 
+  function currentPageIdFromLocation() {
+    try {
+      return decodeURIComponent(new URLSearchParams(window.location.search).get('id') || '');
+    } catch (unusedErr) {
+      void unusedErr;
+      return '';
+    }
+  }
+
   // 正文 / 路线页本库内链悬停浮窗：复用图谱 hover 卡片，详情页同时点亮迷你图同一节点
   function setupDetailInlineLinkPreview(contentEl, detailPages) {
     var roots = collectInlineLinkPreviewRoots(contentEl);
     if (!roots.length) return;
+    var currentPageId = currentPageIdFromLocation();
     var marked = [];
     for (var r = 0; r < roots.length; r++) {
       var anchors = roots[r].querySelectorAll('a[href^="detail.html?id="], a[href^="roadmap.html?id="]');
@@ -4838,6 +4848,7 @@
         var matched = /^(?:detail|roadmap)\.html\?id=([^&#]+)/.exec(anchor.getAttribute('href') || '');
         if (!matched) continue;
         var pid = decodeURIComponent(matched[1]);
+        if (currentPageId && pid === currentPageId) continue;
         var page = detailPages[pid];
         if (!page || !page.path) continue;
         anchor.classList.add('detail-inline-link');

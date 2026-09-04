@@ -48,7 +48,13 @@ const path = require('path');
 
     async function hoverFirst(selector, shotName) {
       const found = await page.evaluate((sel) => {
-        const link = [...document.querySelectorAll(sel)].find((a) => a.getClientRects().length);
+        const currentId = decodeURIComponent(new URLSearchParams(location.search).get('id') || '');
+        const link = [...document.querySelectorAll(sel)].find((a) => {
+          if (a.dataset.wikiId === currentId) return false;
+          const details = a.closest('details');
+          if (details) details.open = true;
+          return a.getClientRects().length > 0;
+        });
         if (!link) return null;
         link.id = 'rn-verify-inline-link';
         window.scrollTo(0, link.getBoundingClientRect().top + window.scrollY - 220);

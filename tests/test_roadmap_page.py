@@ -44,6 +44,7 @@ class RoadmapPageTests(unittest.TestCase):
             "roadmapMetaUpdated",
             "setupDetailInlineLinkPreview",
             "collectInlineLinkPreviewRoots",
+            "currentPageIdFromLocation",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
