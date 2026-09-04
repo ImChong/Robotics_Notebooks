@@ -12,7 +12,7 @@ tags:
   - xpeng
   - polyu
 status: complete
-updated: 2026-09-01
+updated: 2026-09-04
 arxiv: "2608.06827"
 related:
   - ../concepts/sim2real.md
@@ -20,6 +20,7 @@ related:
   - ../methods/crisp-real2sim.md
   - ./paper-agentic-real2sim.md
   - ./paper-simfoundry-real2sim-scene-generation.md
+  - ./paper-lucida-r2s.md
   - ./awesome-real2sim2real.md
   - ../methods/sonic-motion-tracking.md
   - ./unitree-g1.md
@@ -140,6 +141,7 @@ flowchart TB
 | [GaussGym](./paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md) | 开源像素 locomotion real-to-sim 框架；本文以其为外观与真机主基线，贡献在 **行为范围预算化细化** 而非新仿真器 |
 | [CRISP](../methods/crisp-real2sim.md) | 单目人–场景平面原语 + RL 物理闭环；偏运动/接触资产。R2S-EGO 偏 **既有场景的稀疏多视角视觉+碰撞细化** |
 | [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | episode / 操作孪生与 cousins；评测多为回放或策略相关。R2S-EGO 评 **冻结 ego 渲染 + 同栈策略迁移** |
+| [Lucida](./paper-lucida-r2s.md) | 从捕获 **新造** 可编辑物体场景 + GizmoAct 放置；R2S-EGO 在 **既有仿真** 上补行为范围 ego 外观/碰撞 |
 | GenFusion 等视觉更新 | 生成–重建闭环提升 novel view；本文额外要求 **机器人可执行查询 + 捕获锚定结构 + 仿真碰撞接口** |
 | [FixAnything](./paper-fixanything.md) / Difix3D+ 等 post-hoc 增强 | 表 II 将 Difix3D+ 作外观基线；FixAnything 走 **整段视频时序一致** 的跨表示清理，非行为范围 ego 查询 |
 
@@ -158,6 +160,7 @@ flowchart TB
 - [CRISP](../methods/crisp-real2sim.md) — 单目人–场景 Real2Sim
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — VLM 编排 episode twin
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 视频孪生 + cousins + 策略评测
+- [Lucida](./paper-lucida-r2s.md) — 室内多视角 → 可编辑物体资产 + GizmoAct（几何对齐）
 - [Awesome-Real2Sim2Real](./awesome-real2sim2real.md) — 迁移闭环文献索引
 - [SONIC](../methods/sonic-motion-tracking.md) — 文中下游坐姿蒸馏所用运动/WBC 栈
 - [Unitree G1](./unitree-g1.md) — 实验平台

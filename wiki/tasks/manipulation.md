@@ -26,6 +26,7 @@ related:
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-arcadia.md
   - ../entities/paper-agentic-real2sim.md
+  - ../entities/paper-lucida-r2s.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-fabrivla.md
   - ../entities/paper-egosteer.md
@@ -131,7 +132,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 现实世界物体种类几乎无限，不可能为每个物体单独训练。
 
 ### 5. 仿真场景与交互资产
-操作仿真除策略外，还依赖 **可关节、带物理字段的 3D 资产**（尺度、材料、affordance、运动学）。近期 **sim-ready 生成**（如 [PhysX-Omni](../entities/physx-omni.md)、[PhysForge](../entities/paper-physforge-physics-grounded-3d-assets.md)）试图缓解 **PartNet-Mobility 系数据** 在类别与标注上的瓶颈，但导入目标引擎（SAPIEN、MuJoCo、Isaac 等）时仍需核对 **URDF/碰撞/关节限位**。**真机视频孪生**路线见 [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276）：单段 RGB 视频 → 数字孪生 + **digital cousins**，并直接对接 **策略评测与仿真演示训练**（DROID / YAM）。 **Episode 级 agentic Real2Sim** 见 [Agentic Real2Sim](../entities/paper-agentic-real2sim.md)（DROID→MuJoCo 回放孪生，代码待开放，arXiv:2607.19190）。
+操作仿真除策略外，还依赖 **可关节、带物理字段的 3D 资产**（尺度、材料、affordance、运动学）。近期 **sim-ready 生成**（如 [PhysX-Omni](../entities/physx-omni.md)、[PhysForge](../entities/paper-physforge-physics-grounded-3d-assets.md)）试图缓解 **PartNet-Mobility 系数据** 在类别与标注上的瓶颈，但导入目标引擎（SAPIEN、MuJoCo、Isaac 等）时仍需核对 **URDF/碰撞/关节限位**。**真机视频孪生**路线见 [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276）：单段 RGB 视频 → 数字孪生 + **digital cousins**，并直接对接 **策略评测与仿真演示训练**（DROID / YAM）。 **Episode 级 agentic Real2Sim** 见 [Agentic Real2Sim](../entities/paper-agentic-real2sim.md)（DROID→MuJoCo 回放孪生，代码待开放，arXiv:2607.19190）。**室内物体级可编辑副本** 见 [Lucida](../entities/paper-lucida-r2s.md)（parse–generate–place + GizmoAct 9-DoF，arXiv:2608.30821，未开源）。
 
 ## 操作闭环流程总览
 
@@ -394,6 +395,7 @@ flowchart TD
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + object/scene/task cousins；real-to-sim 评测与 sim-to-real 训练（arXiv:2606.28276）
 - [Arcadia](../entities/paper-arcadia.md) — 操作与 VLN 共享骨干 + Sim-from-Real；LIBERO 消融 87.2%、G1+Dex-3 27/100（arXiv:2512.00076；部分开源）
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin（arXiv:2607.19190，代码待开放）
+- [Lucida](../entities/paper-lucida-r2s.md) — 室内多视角 → 可编辑物体资产 + GizmoAct 闭环放置（arXiv:2608.30821，未开源）
 - [TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) — 长时域 Meta-World 操作 PPO：自适应时间目标 + 效率加权自模仿（arXiv:2606.19752）
 - [FabriVLA](../entities/paper-fabrivla.md) — 轻量 InternVL3.5 + gated SA flow-matching；Meta-World MT50 tier-avg **90.0%**（arXiv:2607.08575）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — EvoMind/MINT-SJTU 社区 VLA / 灵巧手多基准排行榜

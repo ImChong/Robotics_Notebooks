@@ -41,6 +41,7 @@ related:
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-agentic-real2sim.md
   - ../entities/paper-r2s-ego.md
+  - ../entities/paper-lucida-r2s.md
   - ../entities/paper-online-mbrl-robot-control.md
   - ../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md
   - ../entities/paper-slowrl-safe-lora-locomotion-sim2real.md
@@ -82,6 +83,7 @@ sources:
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
   - ../../sources/papers/r2s_ego_arxiv_2608_06827.md
+  - ../../sources/papers/lucida_r2s_arxiv_2608_30821.md
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
@@ -238,6 +240,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 **稀疏捕获行为范围 ego 细化：** [R2S-EGO](../entities/paper-r2s-ego.md)（arXiv:2608.06827，XPENG Robotics × PolyU）针对 **人类稀疏采集 vs 机器人 ego 消费** 的 support gap，用 **robot proxy（可执行查询/赤字）+ geometry proxy（结构条件/碰撞面）** 做固定预算生成并同化进 3DGS；六视角外观 **19.062** dB PSNR，真机 G1 坐姿相对 GaussGym **10%→82.5%**（同 SONIC 栈）；截至入库日 **未开源**。
 
+**组合式室内物体场景：** [Lucida](../entities/paper-lucida-r2s.md)（arXiv:2608.30821，ByteDance Seed × PKU × ZJU）把带位姿室内 RGB(-D) 写成 **可编辑物体资产 + 9-DoF 布置 + 场景图**：Parse 只收多视角证据、Generate 做 amodal 补全、**GizmoAct** 在 3D 编辑器 GUI 上闭环对齐。R2S-Scene 场景 F-Score **0.924**（SAM 3D 0.794）；评测是几何对齐而非策略 Pearson。截至入库日 **未开源**。
+
 **旁路：难仿真平台直接 on-robot MBRL：** [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md)（arXiv:2510.18518，ETH×MPI-IS×EPFL）对液压挖掘机臂 / 缆驱软臂 **跳过 sim-to-real**，用真机缓冲学动力学并在真实轨迹上做一阶策略更新；HEAP 约 **2.5 h** 达 **2.7 cm** 跟踪。读法是「仿真不可用或不值得」时的对照路线，而非否定 DR/RMA；截至入库日 **确认未开源**。
 
 **场地专用 RGB 导航（产业管线）：** [Flexion × Niantic Spatial × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md)（2026-07）用 **360° 扫描 → 3DGS+对齐碰撞 mesh 的 NuRec USDZ → Isaac Lab 大规模 RL** 训练 **纯 RGB 局部导航**，在两家办公室重建中仿真成功率 **达到或超过深度基线**（97.8% vs 93.8% / 75.0% vs 70.9%），并 **零样本** 部署真机——把「无纹理合成场景 + 深度」惯例推进到 **语义可见、部署点绑定** 的 RGB 策略，与 [LEGS](../entities/paper-legs-embodied-gaussian-splatting-vla.md)（3DGS 缩小 VLA **模仿**视觉 gap）、[GS-Playground](../entities/gs-playground.md)（高吞吐 3DGS **仿真渲染**）形成互补读法。
@@ -325,6 +329,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → 数字孪生 + cousins；real-to-sim 评测与 sim-to-real 操作训练闭环（arXiv:2606.28276）
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin；可变形/人形适配（arXiv:2607.19190，代码待开放）
 - [R2S-EGO](../entities/paper-r2s-ego.md) — 稀疏捕获双代理 ego 细化；六视角 3DGS + 真机 G1 坐姿（arXiv:2608.06827，未开源）
+- [Lucida](../entities/paper-lucida-r2s.md) — 室内多视角 → 可编辑物体资产 + GizmoAct 9-DoF 闭环放置（arXiv:2608.30821，未开源）
 - [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md) — 难仿真平台直接真机在线 MBRL（arXiv:2510.18518，确认未开源）
 - **ingest 档案：** [sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 - [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 部署现场 3DGS 数字孪生 + 纯 RGB 导航 RL 零样本真机（2026-07 产业联合文）
