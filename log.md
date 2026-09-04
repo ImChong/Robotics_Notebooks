@@ -1,3 +1,11 @@
+## [2026-09-04] structural | roadmap/depth-icl.md — 新增第 23 条纵深路线「ICL（具身上下文学习）」并接入路线视图/首页/主路线
+
+- **触发：** 维护者要求"增加一个 ICL（in-context learning）的纵深"。仓库已有 [`robot-in-context-learning`](wiki/concepts/robot-in-context-learning.md) 概念页与 [四路线对比](wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)，但没有对应的学习路线页。
+- **新建：** [`roadmap/depth-icl.md`](roadmap/depth-icl.md)（Stage 0–5）：判别边界（映射选择 / 状态估计 / 映射本身，只有第三类是真 ICL）→ 示范表征与 action tokenizer → 遥操作示范线（配对数据 + 防"复制最近 chunk"捷径）→ 人类视频线（无动作标签 + embodiment gap）→ 零梯度上下文 vs 快权重 TTT vs 记忆增强的选型与每步推理预算 → 规模涌现与评测协议。
+- **排序位：** 按各方向起点里程碑历史顺序，置于人形拳击（2017）与 BFM（2018）之间，起点取 **One-Shot Imitation Learning，NeurIPS 2017**（综述归档参考文献 1）。
+- **接入点：** `docs/depth-filters.js`（DEPTH_ORDER / HUB_IDS / FILTERS / META，22→23 条，emoji 🧩）、`docs/index.html` 首页按钮与纵深路线计数、`docs/main.js` 折叠文案与 hero 兜底值、`README.md` / `index.md` / `roadmap/README.md` / `roadmap/motion-control.md` 四处清单、22 条既有 depth 页的「其它纵深路径」互链，以及 ICL 概念页与四路线对比页的回链。
+- **验证：** `tests/test_depth_filters.py` 期望长度 23→24；`make ci-preflight` 12/12 通过、`lint_wiki` 0 errors；全量 `pytest` 429 passed；`eslint docs/main.js` 通过。
+
 ## [2026-09-04] structural | docs/roadmap.html + docs/main.js — 路线详情页本库超链接悬停浮窗
 
 - **改动：** [`docs/roadmap.html`](docs/roadmap.html) 增加 `#detail-inline-link-tooltip` 与 `graph-tooltip.js`；[`docs/main.js`](docs/main.js) 在路线页正文 / 知识地图 / 阶段相关项上复用详情页内链 hover 卡片
