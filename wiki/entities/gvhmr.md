@@ -4,7 +4,7 @@
 type: entity
 tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024, tsinghua, zju]
 status: complete
-updated: 2026-07-20
+updated: 2026-09-04
 arxiv: "2409.06662"
 code: https://github.com/zju3dv/GVHMR
 venue: SIGGRAPH Asia 2024
@@ -21,6 +21,7 @@ related:
   - ./paper-htd-refine-monocular-hmr.md
   - ./paper-pear-pixel-aligned-expressive-hmr.md
   - ./paper-motion-cerebellum-tram.md
+  - ./easymocap.md
   - ./paper-opencap-monocular.md
   - ./paper-face-anything-4d-face-reconstruction.md
 sources:
@@ -50,7 +51,7 @@ sources:
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（16/64）：**视频动作恢复到重力对齐世界坐标**。
 - **重定向不是第一步**：现场只有手机视频时，必须先有 GVHMR（或 [TRAM](./paper-motion-cerebellum-tram.md) 等同类 HMR）才能把像素变成 **带世界坐标的 SMPL 序列**，再交给 [GMR](../methods/motion-retargeting-gmr.md) 等几何重定向（见 [humanoid-training-data-pipeline](../queries/humanoid-training-data-pipeline.md)）。
 - **坐标设计直击长视频痛点：** world 系定义随序列变化而歧义；GV 系 **每帧由重力+视线唯一确定**，天然对齐重力，避免沿重力方向的漂移累积。
-- **生态互操作：** [GMR](https://github.com/YanjieZe/GMR) 官方支持 GVHMR 输入；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 可作为 **后处理** 改善 jitter/脚滑；[HY-Motion 1.0](../methods/hy-motion-1.md)、[CRISP-Real2Sim](../methods/crisp-real2sim.md) 等把其列为 **视频→SMPL** 环节。若目标是 **临床级运动学/动力学**（OpenSim 力矩、GRF）而非机器人 SMPL 重定向，见 [OpenCap Monocular](./paper-opencap-monocular.md)。
+- **生态互操作：** [GMR](https://github.com/YanjieZe/GMR) 官方支持 GVHMR 输入；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 可作为 **后处理** 改善 jitter/脚滑；[HY-Motion 1.0](../methods/hy-motion-1.md)、[CRISP-Real2Sim](../methods/crisp-real2sim.md) 等把其列为 **视频→SMPL** 环节。若目标是 **临床级运动学/动力学**（OpenSim 力矩、GRF）而非机器人 SMPL 重定向，见 [OpenCap Monocular](./paper-opencap-monocular.md)。同组更早的 [EasyMocap](./easymocap.md) 覆盖 **标定多视角 / 镜面 / Neural Body**，不替代本页的单目世界轨迹。
 
 ## 流程总览
 
@@ -171,6 +172,7 @@ sequenceDiagram
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [HTD-Refine](./paper-htd-refine-monocular-hmr.md)
 - [TRAM](./paper-motion-cerebellum-tram.md)
+- [EasyMocap](./easymocap.md) — 同组无标记多视角 / 互联网视频工具箱；有外参时优先它，无外参野外视频走本页
 - [OpenCap Monocular](./paper-opencap-monocular.md) — 单手机生物力学运动学/动力学（WHAM 上游 + OpenSim），机器人重定向非默认路径
 - [Face Anything](./paper-face-anything-4d-face-reconstruction.md) — **面部** 4D 重建与密集跟踪（canonical coordinates）；与全身 SMPL 恢复互补
 

@@ -145,6 +145,7 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [easymocap.md](repos/easymocap.md) | zju3dv/EasyMocap：无标记多视角/互联网视频 SMPL 系动捕工具箱（非商业科研许可；ZJU-MoCap 协议申请） |
 | [x] [sonic-x2.md](repos/sonic-x2.md) | meetsitaram/sonic-x2：AgiBot X2 Ultra 上冻结 GEAR-SONIC + LoRA transfer 的 MuJoCo ONNX play bundle（无 LICENSE；训练不在仓） |
 | [x] [daily-omni.md](repos/daily-omni.md) | Lliar-liar/Daily-Omni：AVQA 管线 + 评测 + Agent 基线（arXiv:2505.17862，GPL-3.0） |
 | [x] [pi-r2-flow.md](repos/pi-r2-flow.md) | pi-r2-flow/pi-r2-flow：πR² GR00T 微调 + xArm6/XHand 部署（arXiv:2607.26055） |
@@ -404,6 +405,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [easymocap-public-doc.md](sites/easymocap-public-doc.md) | EasyMocap 文档站 chingswy.github.io/easymocap-public-doc（安装/Quick Start；代码已开、数据协议申请） |
 | [x] [sonic-transfer-github-io.md](sites/sonic-transfer-github-io.md) | SONIC-Transfer 项目页 sonic-agibot-x2.github.io/sonic-transfer（冻结 GEAR-SONIC → X2；推理已开、无 arXiv） |
 | [x] [allhandsup-org.md](sites/allhandsup-org.md) | All Hands Up：RLWRLD 腕装灵巧手画廊（16 手 URDF + 仿真 Kapandji；无独立 GitHub，URDF 可 HTTP 下载） |
 | [x] [daily-omni-github-io.md](sites/daily-omni-github-io.md) | Daily-Omni 项目页 lliar-liar.github.io/Daily-Omni（Leaderboard；代码+数据已开） |

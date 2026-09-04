@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3459,
-  "edge_count": 31497,
+  "node_count": 3460,
+  "edge_count": 31508,
   "coverage": {
-    "covered": 3432,
-    "total": 3432,
+    "covered": 3433,
+    "total": 3433,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -230,7 +230,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 497
+      "size": 498
     },
     {
       "label": "视觉-语言-动作",
