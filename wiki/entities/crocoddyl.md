@@ -4,7 +4,7 @@ type: entity
 sources:
   - ../../sources/papers/optimal_control.md
 summary: "Crocoddyl"
-updated: 2026-08-18
+updated: 2026-09-04
 tags: [inria]
 
 ---
@@ -282,7 +282,7 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 - [cuRobo](./curobo.md) — GPU 并行碰撞与多样本 TO 的另一条实现谱系（与 shooting/DDP 工具链问题剖分不同）
 - [SE(3) 切空间浮动基 TO](./paper-se3-tangent-to.md) — 配点 + 欧式 Ipopt + \(\mathfrak{se}(3)\) 坐标，不必走 DDP 也能做空翻
 - [Optimal Control](../methods/model-predictive-control.md)
-- [Whole-Body Control](../concepts/whole-body-control.md)
+- [PRIME](./prime-system-id.md) — 在 Crocoddyl/FDDP 上做接触隐式惯量 + 运动 MAP 估计（RSS 2026）
 
 ## 一句话记忆
 

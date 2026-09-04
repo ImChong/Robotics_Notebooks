@@ -9,11 +9,12 @@ tags:
   - deployment
   - safety
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 summary: "Sim2Real 不是训完再迁移：按误差类型分流到 SysID/前馈、DR、在线适应与分层安全，形成从辨识到部署的持续校准闭环。"
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
+  - ../concepts/humanoid-closed-loop-inertia-calibration.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../concepts/domain-randomization.md
   - ../concepts/curriculum-learning.md
@@ -144,6 +145,7 @@ flowchart TD
 
 - [Sim2Real](../concepts/sim2real.md) — 概念总览与工程流程
 - [System Identification](../concepts/system-identification.md) — 物理基准
+- [人形整机闭环惯量标定](../concepts/humanoid-closed-loop-inertia-calibration.md) — 量产出厂 / 在役整机辨识，绑机身序列号
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节分级实验，把 SysID 从「优化器」落到可分离工况
 - [Domain Randomization](../concepts/domain-randomization.md) / [DR 参数指南](./domain-randomization-guide.md)
 - [Curriculum Learning](../concepts/curriculum-learning.md)
