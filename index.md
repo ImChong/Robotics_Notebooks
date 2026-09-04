@@ -122,6 +122,8 @@
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md)（Agent Skills 办公技能库：信息图/PPT/Excel/深度研究；Hermes/OpenClaw + SenseNova API）
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md)（常驻自主代理：网关 + 记忆/技能闭环 + 多沙箱 + cron/子代理；MIT）
 - [DeepSeek Harness（dsh）](wiki/entities/deepseek-harness.md)（深度求索官方插件化 agent 运行时：Cordis + Web/headless/Python SDK；MIT，开发者预览）
+- [openJiuwen（开放九问）](wiki/entities/openjiuwen.md)（华为共建开源 Agent 平台：WorkSwarm / 协同工程；GitHub + AtomGit）
+- [ScienceDiscovery](wiki/entities/sciencediscovery.md)（openJiuwen 本地 AI 科研工作台：MCP 文献 + Bubblewrap 沙箱 + CAS 溯源；Apache-2.0）
 
 ### roadmap/ — 成长路线
 回答"应该先学什么、再学什么、学完输出什么"。

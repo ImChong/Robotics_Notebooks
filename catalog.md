@@ -388,6 +388,7 @@
 - [开源人形机器人硬件方案对比](wiki/entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
 - [OpenVINS](wiki/entities/open-vins.md) — OpenVINS** 面向 **VIO 研究** 的可扩展滤波框架，强调可复现与模块配置。 `📅unknown` `[entity_page]`
 - [OpenClaw](wiki/entities/openclaw.md) — OpenClaw**（openclaw.ai，[GitHub: openclaw/openclaw](https://github.com/open `📅unknown` `[entity_page]`
+- [openJiuwen（开放九问）](wiki/entities/openjiuwen.md) — openJiuwen**（openjiuwen.com，GitHub org [openJiuwen-ai](https://githu `📅unknown` `[entity_page]`
 - [OpenLET 具身智能开源数据集社区](wiki/entities/openlet.md) — OpenLET**（<https://openlet.openatom.tech/>）是由 **开放原子开源基金会** 孵化、**乐聚机器人**牵头运营的 **具身智能真机数据枢纽**：遵循开放协 `📅unknown` `[entity_page]`
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
@@ -2588,6 +2589,7 @@
 - [sbto（DynaRetarget SBTO 官方实现）](wiki/entities/sbto.md) — sbto**（<https://github.com/Atarilab/sbto>，MIT）是 [DynaRetarget](./paper-notebook-dynaretarget-dynam `📅unknown` `[entity_page]`
 - [SceneVerse++](wiki/entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
+- [ScienceDiscovery](wiki/entities/sciencediscovery.md) — ScienceDiscovery**（GitHub · [AtomGit](https:/ `📅unknown` `[entity_page]`
 - [SEEM（Segment Everything Everywhere All at Once）](wiki/entities/seem.md) — SEEM** 用统一的解码接口消费 **多种提示**（点、框、涂鸦、文本、参照实体等），在一张图上做开放词汇、交互式与全景式分割。 `📅unknown` `[entity_page]`
 - [SegFormer](wiki/entities/segformer.md) — SegFormer** 结合 **分层高效 Transformer 编码器** 与 **极简 MLP 解码器**，在无pe、无重型解码头的情况下达到强语义分割精度与良好推理效率。 `📅unknown` `[entity_page]`
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md) — SenseNova-Skills** 是 [OpenSenseNova/SenseNova-Skills](https://github.com/OpenSenseNova/SenseNova-S `📅unknown` `[entity_page]`

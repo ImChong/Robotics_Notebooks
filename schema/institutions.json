@@ -784,6 +784,14 @@
         "huawei"
       ]
     },
+    "openjiuwen": {
+      "label": "开放九问（openJiuwen）",
+      "aliases": [
+        "openjiuwen",
+        "open-jiuwen",
+        "jiuwen"
+      ]
+    },
     "ubc": {
       "label": "英属哥伦比亚大学（UBC）",
       "aliases": [

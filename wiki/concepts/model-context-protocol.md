@@ -2,7 +2,7 @@
 type: concept
 tags: [mcp, llm-agents, protocol, anthropic, json-rpc, tooling, agent-host, open-source]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 related:
   - ./model-hardware-standard.md
   - ./llm-robotics-control-interfaces.md
@@ -13,6 +13,7 @@ related:
   - ../entities/3dgenstudio.md
   - ../entities/graphify.md
   - ../entities/hermes-agent.md
+  - ../entities/sciencediscovery.md
   - ../entities/unreal-mcp.md
   - ../entities/omnisim.md
   - ../entities/unreal-engine-5.md
@@ -145,6 +146,7 @@ flowchart TB
 - [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) — 科研插图 MCP
 - [DimOS](../entities/dimensionalos-dimos.md) — 机器人 skills 的 MCP 暴露
 - [3D Gen Studio](../entities/3dgenstudio.md) · [Graphify](../entities/graphify.md) · [Hermes Agent](../entities/hermes-agent.md)
+- [ScienceDiscovery](../entities/sciencediscovery.md) — 科学 MCP：Node 治理 broker + 延迟披露工具 + CAS 审计
 - [Unreal MCP](../entities/unreal-mcp.md) — UE 编辑器内嵌官方 MCP server
 - [OmniSim](../entities/omnisim.md) — 仿真器一等 MCP + HTTP 机器人桥
 - [Unreal Engine 5](../entities/unreal-engine-5.md) · [Unity Engine](../entities/unity-engine.md) — 引擎侧 MCP/AI 方向
