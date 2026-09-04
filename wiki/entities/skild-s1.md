@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, one-shot, foundation-policy, manipulation, scaling, skild-ai, nvidia]
 title: S1 机器人上下文学习（Skild）
 status: complete
-updated: 2026-08-26
+updated: 2026-09-04
 related:
   - ./skild-ai.md
   - ../concepts/robot-in-context-learning.md
@@ -16,6 +16,7 @@ related:
   - ./paper-robottt-test-time-training-vla-context.md
   - ./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
+  - ./paper-host-one-shot-human-video.md
 sources:
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/sites/skild-ai.md
@@ -30,7 +31,7 @@ summary: "Skild S1（2026-08 博客）：从预训练起用视频示范指定任
 | **类型** | 产业官方博客（非 peer-reviewed 论文） |
 | **模型** | S1（旗舰操作基础模型；前序 LocoFormer） |
 | **发布** | 2026-08 |
-| **开源** | **确认未开源**（无公开代码 / 权重 / 数据集；截至 2026-08-26） |
+| **开源** | **确认未开源**（无公开代码 / 权重 / 数据集；2026-09-04 再核 `github.com/skild-ai` 仍 0 公开仓） |
 
 ## 一句话定义
 
@@ -128,6 +129,8 @@ flowchart TB
 | 公开地平线 | 最长约 **10 分钟** 未见 | **3–12 秒** 为主 | 上下文长度或视频 steering |
 | 开源 | 确认未开源 | 确认未开源 | RoboTTT 部分公开；WAM-TTT 见实体页 |
 
+学术侧可核对的短程单视频对照：[HOST](./paper-host-one-shot-human-video.md)（零梯度、进度流形、双臂 ARX；不覆盖本页 10 min 未见主张）。
+
 ## 局限与风险
 
 - **闭源不可复现：** 66%/9%、100k 小时、380 episode 交叉点无法独立验证。
@@ -148,6 +151,7 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md)
 - [RoboTTT](./paper-robottt-test-time-training-vla-context.md) — S1 文列为 concurrent，机制实为 TTT
 - [LocoFormer（论文笔记占位）](./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — 运动域前序
+- [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot；地平线短、数字可核对
 
 ## 参考来源
 

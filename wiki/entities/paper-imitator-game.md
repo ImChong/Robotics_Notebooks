@@ -10,7 +10,7 @@ tags:
   - fudan
   - zju
 status: complete
-updated: 2026-09-02
+updated: 2026-09-04
 arxiv: "2608.22301"
 code: https://github.com/imitator-game/The-Imitator-Game
 related:
@@ -23,6 +23,7 @@ related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
+  - ./paper-host-one-shot-human-video.md
 sources:
   - ../../sources/papers/imitator_game_arxiv_2608_22301.md
   - ../../sources/sites/imitator-game-github-io.md
@@ -181,6 +182,7 @@ sequenceDiagram
 | 常规 BC / ACT / DP 榜 | 多在近复现设定；本页把差距显式分级 |
 | RHyME 等跨本体层级 | 测身体差异、场景固定；本页固定具身差距、改场景 |
 | 人类视频预训练 VLA | 本页显示视频条件更强，但仍过不了 L3 / unseen |
+| [HOST](./paper-host-one-shot-human-video.md) | 方法页：单视频秒级习得 + 不遗忘；不按 L0–L3 报，开源代码与权重 |
 
 ## 局限与风险
 
@@ -202,6 +204,7 @@ sequenceDiagram
 - [具身评测基准枢纽](../overview/hub-embodied-eval-benchmark.md) — ③ 层：成功率口径从轨迹相似换成目标等价
 - [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md)
 - [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
+- [HOST](./paper-host-one-shot-human-video.md) — 单条人视频、不改权重的可核对 one-shot 方法（arXiv:2607.20033）
 
 ## 参考来源
 

@@ -55,6 +55,9 @@ related:
   - ../entities/kinetiq-ascend.md
   - ../entities/sunday-robotics-act2.md
   - ../entities/generalist-gen15-one-shot.md
+  - ../entities/paper-host-one-shot-human-video.md
+  - ../entities/paper-zero-wam.md
+  - ../entities/skild-s1.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../concepts/robotics-solve-standard.md
   - ../entities/paper-softvtbench.md
@@ -319,6 +322,8 @@ flowchart TD
 - [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
 - [ssik](../entities/ssik.md) — 6R/7R **解析 IK** 全分支枚举；非 Pieper 6R 与 7R 冗余臂（UW PRL，BSD-3）
 - [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — physical prompting / 极少步适应的闭源产业对照
+- [HOST](../entities/paper-host-one-shot-human-video.md) — 单视频秒级习得；双臂 ARX 八任务 62%；开源（arXiv:2607.20033）
+- [Zero-WAM](../entities/paper-zero-wam.md) — 人视频 ICL 任务规格；RoboTwin 未见 46.95%；代码待发布
 - [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 示范/记忆/metadata/TTT 四类「上下文」拆解；长程未见视频 ICL 见 [S1](../entities/skild-s1.md)
 - [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 跨末端/工具接口的通才操作叙事（闭源产业对照）
 

@@ -702,6 +702,7 @@
 - [HomeWorld（Kairos · Whole-Home Scene Generation）](wiki/entities/paper-homeworld-whole-home-scene-generation.md) — HomeWorld**（*Kairos · HomeWorld*，arXiv:2606.06390，项目页，[GitH `📅unknown` `[entity_page]`
 - [HoMMI（arXiv:2603.03243）](wiki/entities/paper-hommi.md) — HoMMI**（Xiaomeng Xu, Jisang Park, Han Zhang, Eric Cousineau, Aditya Bhat, Jose Barreiros, Dian Wan `📅unknown` `[entity_page]`
 - [HoST：跨多样姿态的人形起身控制](wiki/entities/paper-host-humanoid-standingup.md) — HoST（Humanoid Standing-up Control）** 是上海 AI Lab 等团队提出的强化学习框架（arXiv:2502.08378，**RSS 2025 Best Syst `📅unknown` `[entity_page]`
+- [HOST：单条人类视频秒级习得操作](wiki/entities/paper-host-one-shot-human-video.md) — HOST**（*Human-to-robot One-Shot Skill AcquisiTion*，*Robots Acquire Manipulation Skills in Seconds  `📅unknown` `[entity_page]`
 - [Retargeting Matters](wiki/entities/paper-hrl-stack-01-retargeting_matters.md) — Retargeting Matters** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeU `📅unknown` `[entity_page]`
 - [Make Tracking Easy](wiki/entities/paper-hrl-stack-02-make_tracking_easy.md) — Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUP `📅unknown` `[entity_page]`
 - [OmniRetarget](wiki/entities/paper-hrl-stack-03-omniretarget.md) — OmniRetarget**（*OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco- `📅unknown` `[entity_page]`

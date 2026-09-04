@@ -2,7 +2,7 @@
 type: comparison
 tags: [in-context-learning, icl, vla, wam, test-time-training, manipulation, taxonomy]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-04
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../concepts/robot-in-context-learning.md
@@ -14,6 +14,8 @@ related:
   - ../entities/paper-zero-wam.md
   - ../entities/generalist-gen15-one-shot.md
   - ../entities/skild-s1.md
+  - ../entities/paper-host-one-shot-human-video.md
+  - ../entities/paper-imitator-game.md
 sources:
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
@@ -66,6 +68,7 @@ flowchart TB
 | [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) | **DiT 动作头** fast weights | 每步 visuomotor 递推 | 零**主干**梯度 | arXiv:2607.15275 |
 | [StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) | 检索 **结构化语言** 示范前缀 | 无 | **完全零梯度** | arXiv:2608.11671 |
 | [Zero-WAM](../entities/paper-zero-wam.md) | **人类视频** 作视频分支上下文 | 无 | **完全零梯度** | arXiv:2608.26103 |
+| [HOST](../entities/paper-host-one-shot-human-video.md) | **真人视频** + 进度流形 / 自接地未来观测 | 无 | **完全零梯度** | arXiv:2607.20033 |
 
 ## 十二维对照（定性，非排名）
 
@@ -90,6 +93,7 @@ flowchart TB
 | **时长/阶段** | RoboTTT（8K 预训练上下文） | StellaVLA Long Horizon L1/L2 ≈ 0 |
 | **扰动/规格** | StellaVLA（LIBERO-Plus + 三向干预） | 物体布局增益仅 +0.1 |
 | **未见任务** | Zero-WAM（任务级切分） | 未见环境未测 |
+| **秒级单视频 + 不遗忘** | [HOST](../entities/paper-host-one-shot-human-video.md)（开源管线） | 单平台 ARX；不按 L0–L3 报 |
 
 **结构性事实：** 四篇里 **仅 WAM-TTT** 用真实、跨域人类视频；StellaVLA 与 Zero-WAM 均用 VLM **把机器人轨迹重渲染** 成另一模态（文本 vs 合成视频）。
 
@@ -107,6 +111,7 @@ flowchart TB
 | 5 min 级多阶段装配，需部署后自纠偏 | RoboTTT | 8K 预训练上下文 scaling；DAgger Distillation 可拆用 |
 | 桌面 OOD 扰动，可检索同任务示范 | StellaVLA | 三向干预证明真用上下文；试 λ=0 若重 OOD |
 | 仿真/真机 **未见任务**，可造 HumanGen 式配对 | Zero-WAM | 任务级泛化；**IFP 不可省** |
+| 要开源单视频、不改权重、可下权重 | [HOST](../entities/paper-host-one-shot-human-video.md) | 真机包未随仓；开环 ≠ 62% 真机表 |
 
 ## 局限与风险
 
@@ -121,6 +126,8 @@ flowchart TB
 - [VLA](../methods/vla.md) — 长程记忆与部署期适应
 - [Manipulation](../tasks/manipulation.md) — 四实体索引入口
 - [GEN-1.5](../entities/generalist-gen15-one-shot.md) / [S1](../entities/skild-s1.md) — 产业闭源对照
+- [HOST](../entities/paper-host-one-shot-human-video.md) — 开源零梯度单视频；进度对齐 + 自接地
+- [The Imitator Game](../entities/paper-imitator-game.md) — 意图级模仿基准，不是方法路线
 
 ## 参考来源
 

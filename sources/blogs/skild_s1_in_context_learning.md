@@ -91,6 +91,7 @@
 - [skild-ai](../../wiki/entities/skild-ai.md) — 公司入口
 - [robot-in-context-learning](../../wiki/concepts/robot-in-context-learning.md) — 显式 ICL 预训练 + 长程未见任务产业样本
 - [generalist-gen15-one-shot](../../wiki/entities/generalist-gen15-one-shot.md) — 短程涌现 ICL vs 长程显式 ICL 对照
+- [paper-host-one-shot-human-video](../../wiki/entities/paper-host-one-shot-human-video.md) — 开源短程单视频对照（2026-09-04）
 - [foundation-policy](../../wiki/concepts/foundation-policy.md) — 预训练目的 = ICL 的产业命题
 - [embodied-scaling-laws](../../wiki/concepts/embodied-scaling-laws.md) — ICL vs 语言 prompt 的 scaling 分叉
 - [data-flywheel](../../wiki/concepts/data-flywheel.md) — 分钟级部署回流预训练

@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-08-27
+updated: 2026-09-04
 related:
   - ./embodied-foundation-model-hardware-codesign.md
   - ./robot-in-context-learning.md
@@ -13,6 +13,7 @@ related:
   - ../entities/generalist-gen15-one-shot.md
   - ../entities/skild-s1.md
   - ../entities/skild-ai.md
+  - ../entities/paper-host-one-shot-human-video.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/gr00t-wholebodycontrol.md
@@ -119,6 +120,11 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 ### Skild S1（商业对照，闭源 ICL）
 - **叙事：** 预训练目的是 **in-context learning**：任务用 **视频示范** 指定，同一权重无后训练执行 **未见、最长约 10 分钟** 操作；内部对照 100k 小时档未见任务 ICL **66%** vs 语言 VLA **9%**（见 [S1](../entities/skild-s1.md)、[Skild AI](../entities/skild-ai.md)）
 - **定位：** 与 GEN-1.5「规模涌现、短程 physical prompt」对照的 **显式 ICL 预训练** 样本；同样 **确认未开源**
+- **开源短程对照：** [HOST](../entities/paper-host-one-shot-human-video.md) 把 one-shot 做成进度对齐 + 自接地级联（八任务 62%），不是百千小时涌现叙事
+
+### HOST（学术对照，已开源 one-shot）
+- **叙事：** 单条人视频、不改权重、平均 29 秒；技能停在外部视频以免覆盖已掌握技能（见 [HOST](../entities/paper-host-one-shot-human-video.md)）
+- **开放边界：** GitHub + HF 权重；论文规模真机数据未发布
 
 ### Gemini Robotics 2（Google DeepMind，闭源 VLA + 可调用 ER）
 - **叙事：** 2026-07 发布 **VLA 2 / ER 2 / On-Device 2**：全身人形控制、多指/夹爪灵巧、多机协作、端侧数小时跨本体适配（见 [Gemini Robotics](../entities/gemini-robotics.md)）
@@ -209,6 +215,7 @@ flowchart TD
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 基础策略是五层闭环的 VLA 动作执行层基座
 - [Generalist AI / GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源通才策略的多末端扩展叙事
 - [S1 / Skild AI](../entities/skild-s1.md) — 闭源通才策略的显式视频 ICL 叙事
+- [HOST](../entities/paper-host-one-shot-human-video.md) — 开源单视频 one-shot；不是百千小时涌现叙事
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2
 
 ## 参考来源
