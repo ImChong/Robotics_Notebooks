@@ -9,6 +9,51 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-focus-foot-observation-confidence.md",
+      "detail_id": "entity-paper-focus-foot-observation-confidence",
+      "label": "FOCUS：连续足部置信度的人形本体里程计",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-wm-loco.md",
+      "detail_id": "entity-paper-wm-loco",
+      "label": "WM-LOCO：落脚约束地形上的世界模型视觉行走",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/embodied-infra-2026-panorama.md",
+      "detail_id": "wiki-overview-embodied-infra-2026-panorama",
+      "label": "具身智能 Infra 2026：闭环比单点模型更拉开差距",
+      "type": "overview",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/g1-foothold-safe-stop-focus-technology-map.md",
+      "detail_id": "wiki-overview-g1-foothold-safe-stop-focus-technology-map",
+      "label": "落脚、急停、本体里程计：三篇独立节点",
+      "type": "overview",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/queries/slam-second-spring-embodied.md",
+      "detail_id": "wiki-queries-slam-second-spring-embodied",
+      "label": "具身时代：SLAM 的精华与糟粕",
+      "type": "query",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "roadmap/depth-embodied-eval.md",
       "detail_id": "roadmap-depth-embodied-eval",
       "label": "路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）",
@@ -157,69 +202,16 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adm-ba.md",
-      "detail_id": "entity-paper-adm-ba",
-      "label": "ADM-BA：无对应点的多视角点云配准",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-blind-dexterity.md",
-      "detail_id": "entity-paper-blind-dexterity",
-      "label": "Blind Dexterity：纯本体感知人形全身操作",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-dual-process-motion-planning.md",
-      "detail_id": "entity-paper-dual-process-motion-planning",
-      "label": "Dual Process Motion Planning：快慢系统协同的非线性运动规划",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-facet-0.md",
-      "detail_id": "entity-paper-facet-0",
-      "label": "Facet-0：接触丰富精密装配基础模型",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hydrogym.md",
-      "detail_id": "entity-paper-hydrogym",
-      "label": "HydroGym：流体动力学强化学习平台",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-embodied-eval.md",
-    "detail_id": "roadmap-depth-embodied-eval",
-    "label": "路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）",
-    "type": "roadmap_page",
-    "recency": "2026-09-03",
+    "path": "wiki/entities/paper-focus-foot-observation-confidence.md",
+    "detail_id": "entity-paper-focus-foot-observation-confidence",
+    "label": "FOCUS：连续足部置信度的人形本体里程计",
+    "type": "entity",
+    "recency": "2026-09-04",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
