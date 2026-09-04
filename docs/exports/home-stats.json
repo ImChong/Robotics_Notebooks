@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/openjiuwen.md",
+      "detail_id": "entity-openjiuwen",
+      "label": "openJiuwen（开放九问）",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/sciencediscovery.md",
+      "detail_id": "entity-sciencediscovery",
+      "label": "ScienceDiscovery",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-adarobovlg.md",
       "detail_id": "entity-paper-adarobovlg",
       "label": "AdaRoboVLG：可组合先验的自适应视觉语言抓取",
@@ -184,37 +206,18 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unified-robot-learning-survey.md",
-      "detail_id": "entity-paper-unified-robot-learning-survey",
-      "label": "统一机器人学习综述：表征、VLA 与世界模型",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-host-one-shot-human-video.md",
-      "detail_id": "entity-paper-host-one-shot-human-video",
-      "label": "HOST：单条人类视频秒级习得操作",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adarobovlg.md",
-    "detail_id": "entity-paper-adarobovlg",
-    "label": "AdaRoboVLG：可组合先验的自适应视觉语言抓取",
+    "path": "wiki/entities/openjiuwen.md",
+    "detail_id": "entity-openjiuwen",
+    "label": "openJiuwen（开放九问）",
     "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
     "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
