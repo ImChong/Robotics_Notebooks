@@ -1,4 +1,14 @@
+## [2026-09-04] ingest | sources/repos/sciencediscovery.md + sources/sites/openjiuwen-com.md — openJiuwen 平台与 ScienceDiscovery 科研工作台；已开源 Apache-2.0；双托管 GitHub/AtomGit
+
+- **触发：** 用户指定 <https://atomgit.com/openJiuwen/sciencediscovery>、<https://github.com/openJiuwen-ai/sciencediscovery>、<https://www.openjiuwen.com>
+- **步骤 2.5：** **已开源**。GitHub `openJiuwen-ai/sciencediscovery` 与 AtomGit `openJiuwen/sciencediscovery` 双托管；Apache-2.0；中英文档完整。官网为平台入口（WorkSwarm / 协同工程），ScienceDiscovery 以代码仓为准。模型与文献全文不随仓。
+- **关键结构：** Node API `:4310` 进程内 `native-agent`（非 LangChain）+ Runner `:4311` Bubblewrap；科学 MCP（PubMed/arXiv/PDB 等）延迟披露；CAS 溯源。仓内 `skills/` 仅 2 个内置包，README「300+ Skills」按生态叙事读。
+- **新建：** [`sciencediscovery`](wiki/entities/sciencediscovery.md)、[`openjiuwen`](wiki/entities/openjiuwen.md)；机构注册 `openjiuwen`
+- **未升格：** JiuwenSwarm / JiuwenSymbiosis / agent-core 仅在平台页登记（一次一条）
+- **交叉：** AI Auto-Research、Hermes、OpenClaw、DeepSeek Harness、autoresearch、MCP、index.md
+
 ## [2026-09-04] ingest | sources/blogs/wechat_embodied_station_9_papers_open_source_2026-09-04.md — 具身智能小站 9 篇开源盘点；9/9 独立节点（GIFT/AdaRoboVLG/IRWOZ 2.0/Network Design/MINERVA/FailBench/XR-2/BRIDGE/ARTiS）；0 复用。MINERVA+NetworkDesign 已开源；IRWOZ/FailBench/XR-2/ARTiS 部分开源；GIFT/AdaRoboVLG 待发布；BRIDGE 仓待核实
+
 
 ## [2026-09-04] ingest | sources/papers/smoothrl_arxiv_2608_29768.md + 深蓝六条路线公众号 — SmoothRL 项目页再核已上线仍未开源；六条窟窿写回 query
 

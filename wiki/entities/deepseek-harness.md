@@ -10,10 +10,12 @@ tags:
   - acp
   - open-source
 status: complete
-updated: 2026-08-13
+updated: 2026-09-04
 related:
   - ./hermes-agent.md
   - ./openclaw.md
+  - ./sciencediscovery.md
+  - ./openjiuwen.md
   - ./kimi-k3.md
   - ./cli-anything.md
   - ./paper-harnessbank.md
@@ -202,6 +204,8 @@ sequenceDiagram
 
 - [Hermes Agent](./hermes-agent.md) — 常驻 agent OS（网关 / 记忆 / cron）；对照「插件树 vs 单体 AIAgent」
 - [OpenClaw](./openclaw.md) — 个人助手 + 技能目录；具身课里作语音控制平面
+- [ScienceDiscovery](./sciencediscovery.md) — 本地科研工作台（MCP 文献 + bwrap）；对照「科学 Connector vs 通用 coding 环」
+- [openJiuwen](./openjiuwen.md) — ScienceDiscovery 所属开源 Agent 平台
 - [Kimi K3](./kimi-k3.md) — 开放权重长程编码后端；可与 dsh 的自定义 OpenAI-compatible 路由对照
 - [CLI-Anything](./cli-anything.md) — 生成 agent-native CLI / SKILL；宿主层与 dsh 的 `packages/skill` 互补
 - [HarnessBank](./paper-harnessbank.md) — 冻结模型下进化 **宿主** harness（概念相邻、实现不同）

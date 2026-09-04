@@ -2,13 +2,15 @@
 type: entity
 tags: [entity, llm-agents, agent-infrastructure, skills, messaging-gateway, voice, openclaw, embodied-ai]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-04
 related:
   - ./rosclaw.md
   - ./roboclaw.md
   - ./philia.md
   - ./hermes-agent.md
   - ./deepseek-harness.md
+  - ./sciencediscovery.md
+  - ./openjiuwen.md
   - ./cli-anything.md
   - ./deeptutor.md
   - ./sensenova-skills.md
@@ -94,6 +96,8 @@ flowchart LR
 - [RoboClaw](./roboclaw.md) — SJTU MINT 跨本体具身助手（对照）
 - [Philia](./philia.md) — OpenClaw + Robot Gateway 多机器人助手
 - [Hermes Agent](./hermes-agent.md) — 对照开源 agent OS
+- [ScienceDiscovery](./sciencediscovery.md) — 本地科研工作台（文献 MCP + 沙箱）；不是语音控机平面
+- [openJiuwen](./openjiuwen.md) — WorkSwarm 自称覆盖 Claw 类个人助手模式
 - [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方插件化 coding harness（Cordis；非具身控制平面）
 - [CLI-Anything（HKUDS）](./cli-anything.md) — 生成/分发 agent-native 软件 CLI；OpenClaw 为 SKILL 宿主之一
 - [DeepTutor（HKUDS）](./deeptutor.md) — 辅导工作区；可 consult OpenClaw 并安装 ClawHub skills

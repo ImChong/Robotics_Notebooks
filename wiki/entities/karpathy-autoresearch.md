@@ -9,7 +9,7 @@ tags:
   - autonomous-experimentation
   - research-automation
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 related:
   - ./andrej-karpathy.md
   - ./darwin-skill.md
@@ -21,6 +21,7 @@ related:
   - ../methods/muon.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
+  - ./sciencediscovery.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/karpathy-autoresearch.md
@@ -103,6 +104,7 @@ flowchart LR
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — markdown 契约驱动的人机协作。
 - [Superpowers（obra）](./superpowers-obra.md) — 另一类 agent 技能与交付纪律。
 - [Hermes Agent](./hermes-agent.md) — 常驻代理运行时；可与 autoresearch 组合为「长驻代理 + 夜间实验环」。
+- [ScienceDiscovery](./sciencediscovery.md) — 开放文献/沙箱工作台；对照本仓「锁 `train.py` + 单一 val_bpb」。
 - [ENPIRE](../methods/enpire.md) — 机器人领域的物理 autoresearch 对照（真机 reset + 策略改进）。
 - [Muon](../methods/muon.md) — `train.py` 默认隐藏层优化器；与 [AdamW](../methods/adamw.md) 混用。
 - [Darwin Skill](./darwin-skill.md) — autoresearch 机制在 Agent Skill 优化域的映射。
@@ -120,6 +122,7 @@ flowchart LR
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)
 - [Superpowers（obra）](./superpowers-obra.md)
 - [Hermes Agent](./hermes-agent.md)
+- [ScienceDiscovery](./sciencediscovery.md) — 开放文献/沙箱工作台对照
 - [ENPIRE](../methods/enpire.md)
 - [Muon](../methods/muon.md)
 - [Darwin Skill](./darwin-skill.md)
