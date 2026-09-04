@@ -28,6 +28,7 @@ related:
   - ./paper-tacrefinenet-tactile-grasp-refinement.md
   - ./paper-deimel-compliant-underactuated-robotic-hand.md
   - ./paper-taco-tactile-sensor-benchmark.md
+  - ./paper-artis-gripper.md
 sources:
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/sites/yuhao-zhou-vtap.md
@@ -187,6 +188,7 @@ flowchart TB
 - [GelSlim](./gel-slim.md) — 薄片视觉触觉硬件对照
 - [TacO（触觉传感器操作基准）](./paper-taco-tactile-sensor-benchmark.md) — 同用 FlexiTac 的跨模态真机 IL 对比
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) — 下游学习式触觉策略对照
+- [ARTiS](./paper-artis-gripper.md) — jamming 掌 + fin-ray 指尖的拆解工具夹爪对照
 
 ## 参考来源
 

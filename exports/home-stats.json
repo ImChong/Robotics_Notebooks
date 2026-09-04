@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3444,
-  "edge_count": 31324,
+  "node_count": 3454,
+  "edge_count": 31404,
   "coverage": {
-    "covered": 3417,
-    "total": 3417,
+    "covered": 3427,
+    "total": 3427,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -148,7 +148,8 @@
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/concepts/ipc-inter-process-communication.md",
@@ -167,7 +168,8 @@
       "type": "entity",
       "recency": "2026-09-03",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-pact-hrc-action-admission.md",
@@ -178,7 +180,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-sa-wam.md",
@@ -212,15 +214,15 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 638
+      "size": 657
     },
     {
       "label": "操作",
-      "size": 613
+      "size": 621
     },
     {
       "label": "视觉-语言-动作",
-      "size": 243
+      "size": 254
     },
     {
       "label": "机器人学习论文笔记",
@@ -228,11 +230,11 @@
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 188
+      "size": 113
     },
     {
-      "label": "机器人视觉感知栈选型闭环",
-      "size": 99
+      "label": "移动操作",
+      "size": 87
     }
   ],
   "top_hubs": [
@@ -240,7 +242,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1397,
+      "degree": 1412,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -263,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 882,
+      "degree": 892,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -366,8 +368,7 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

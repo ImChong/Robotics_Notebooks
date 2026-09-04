@@ -9,6 +9,7 @@ related:
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ./paper-gift-intermediate-feature-training.md
 sources:
   - ../../sources/papers/sa_wam_arxiv_2609_02531.md
   - ../../sources/sites/sa-wam.md
@@ -101,6 +102,7 @@ Depth 归一化消融：对数尺度比线性高 **5.2** 点策略成功率。
 - [World Action Models](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [Manipulation](../tasks/manipulation.md)
+- [GIFT](./paper-gift-intermediate-feature-training.md) — 中间特征结构监督，可接 WAM-Fast/IDM
 
 ## 参考来源
 

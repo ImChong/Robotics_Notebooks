@@ -3236,6 +3236,35 @@
         "szu",
         "shenzhen-university"
       ]
+    },
+    "aalborg": {
+      "label": "奥尔堡大学（Aalborg University）",
+      "aliases": [
+        "aalborg",
+        "aau",
+        "aalborg-university"
+      ]
+    },
+    "ceu": {
+      "label": "中欧大学（Central European University）",
+      "aliases": [
+        "ceu",
+        "central-european-university"
+      ]
+    },
+    "metric-ai": {
+      "label": "度量人工智能实验室（Metric AI Lab）",
+      "aliases": [
+        "metric-ai",
+        "metric-ai-lab"
+      ]
+    },
+    "keenon": {
+      "label": "擎朗智能（KEENON Robotics）",
+      "aliases": [
+        "keenon",
+        "keenon-robotics"
+      ]
     }
   }
 }

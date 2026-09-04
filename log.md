@@ -1,3 +1,5 @@
+## [2026-09-04] ingest | sources/blogs/wechat_embodied_station_9_papers_open_source_2026-09-04.md — 具身智能小站 9 篇开源盘点；9/9 独立节点（GIFT/AdaRoboVLG/IRWOZ 2.0/Network Design/MINERVA/FailBench/XR-2/BRIDGE/ARTiS）；0 复用。MINERVA+NetworkDesign 已开源；IRWOZ/FailBench/XR-2/ARTiS 部分开源；GIFT/AdaRoboVLG 待发布；BRIDGE 仓待核实
+
 ## [2026-09-04] ingest | sources/papers/smoothrl_arxiv_2608_29768.md + 深蓝六条路线公众号 — SmoothRL 项目页再核已上线仍未开源；六条窟窿写回 query
 
 - **触发：** 用户指定 <https://www.astribot.com/research/SmoothRL>、arXiv:2608.29768、<https://mp.weixin.qq.com/s/k7CR03ZHaSQRMVvutpSnCg>

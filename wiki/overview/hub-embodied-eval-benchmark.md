@@ -24,6 +24,7 @@ related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-bet4sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
+  - ../entities/paper-failbench.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
@@ -94,6 +95,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 ## 关联页面
 
 - [具身大模型评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md)
+- [FailBench](../entities/paper-failbench.md) — VLM 失败裁判跨源基准；接触装配 balanced accuracy ≤0.60（③ 层相邻）
 - [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md) — 运控模型（locomotion / WBT / MPC-WBC）侧的指标体系，与 ③ 层任务成功率互补
 - [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)
 - [RoboBench](../entities/robo-bench.md)

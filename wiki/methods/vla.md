@@ -35,6 +35,10 @@ related:
   - ./pi07-policy.md
   - ../entities/paper-dpc.md
   - ../concepts/world-action-models.md
+  - ../entities/paper-gift-intermediate-feature-training.md
+  - ../entities/paper-minerva-libero.md
+  - ../entities/paper-xr2-bimanual-household.md
+  - ../overview/open-source-reproducibility-9-papers-technology-map.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../entities/roboscience-vloa.md
   - ../entities/paper-daji-anticipatory-joint-intent.md
@@ -238,6 +242,7 @@ flowchart TD
 - **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
 - **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线
 - **VLAct**：在 StarVLA 栈上做 **表征中心持续预训练**（多头共监督 + 部分统一跨本体动作布局）；16 GPU 开源数据达 LIBERO-Plus **82.6%**、未见 GR-1 仅 20% 轨迹超全数据 GR00T-N1.6（见 [VLAct](../entities/paper-vlact.md)，arXiv:2608.27550）
+- **GIFT / MINERVA / XR-2（2026-09-04 九篇盘点）**：[GIFT](../entities/paper-gift-intermediate-feature-training.md) 用几何/可供性/目标区域监督中间特征（LIBERO-Plus 79.6/72.6/87.8%，代码待发布）；[MINERVA](../entities/paper-minerva-libero.md) 用 0.54M task-ID 策略量 LIBERO 容量下限（约 95%，已开源）；[XR-2](../entities/paper-xr2-bimanual-household.md) 开放 1500 小时双臂家务数据（策略未见）。横切面见 [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
 - **Pelican-Unified 1.0**：在 Qwen3-VL 上叠 **推理末态潜变量 \(z\)** 与 **Wan 系 UFG**，用 **同一扩散去噪** 联合生成未来视频与动作块，语言 / 视频 / 动作损失回传共享表示；定位为 **统一具身智能（UEI）** 闭环而非 VLA+世界模型流水线拼接（见 [Pelican-Unified 1.0](./pelican-unified-1.md)）
 - **mimic-video（Video-Action Model, VAM）**：用 **互联网规模视频扩散骨干**（如 Cosmos-Predict2）在 **潜空间** 形成与语言一致的 **视觉动力学计划**，再以 **流匹配动作解码器** 作 **逆动力学** 输出动作块；论文叙事强调相对传统 VLA 的 **样本效率** 与把瓶颈转移到 **视频表征质量**（见 [mimic-video](./mimic-video.md)）
 - **DeFI**：将 **GFDM（SVD 系前向动力学）** 与 **GIDM（DINO+VQ 自监督逆动力学）** 在混合/无标签视频上 **分开预训练**，下游再 **冻结前向 + 扩散适配器** 耦合微调，缓解 2D 预测与 3D 动作的目标纠缠并放大无动作标签人视频（见 [DeFI](./defi-decoupled-dynamics-vla.md)）
@@ -578,6 +583,10 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [GSR / ParaVLA](../entities/paper-gsr-paravla.md) — 改写指令崩溃来自 joint routing；冻结 T5 重绑（arXiv:2608.02497，已开源）
 - [Ego2Robot](../entities/paper-ego2robot.md) — 第一人称人视频合成 15 形态 18,561 h 预训练数据（arXiv:2608.02580；管线未开源）
 - [EATR-Stereo](../entities/paper-eatr-stereo.md) — 冻结 VLM + primary-aligned CVAT + 分段本体路由融合头载双目；33-DoF Omega 全流程 60%/抓取 100%（arXiv:2608.17453；未开源）
+- [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 动作足够用的中间特征监督；LIBERO-Plus 79.6/72.6/87.8%（arXiv:2609.04193；待发布）
+- [MINERVA](../entities/paper-minerva-libero.md) — 0.54M 闭集容量下限，标准 LIBERO 约 95%（arXiv:2609.03715；已开源）
+- [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务 + DAgger 修正（arXiv:2609.03591；数据已开）
+- [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md) — 2026-09-04 九篇盘点横切面
 
 
 ## 推荐继续阅读

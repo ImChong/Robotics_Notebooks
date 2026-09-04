@@ -23,7 +23,7 @@ summary: "依据具身智能小站 2026-09-03 八篇盘点，把近期工作读�
 
 # 开源系统可靠性：8 篇论文的阅读坐标
 
-> **本页定位**：为 [具身智能小站 · 具身智能机器人最新开源论文速览](https://mp.weixin.qq.com/s/-UqboKHaoG5eu79u9XQU0w)（2026-09-03）提供 **按八类问题组织的阅读坐标**；不复述每篇方法细节。姊妹盘点见 [接触丰富操作 7 篇](./contact-rich-manipulation-7-papers-technology-map.md)、[开源系统闭环 7 篇](./open-source-system-loop-7-papers-technology-map.md)。
+> **本页定位**：为 [具身智能小站 · 具身智能机器人最新开源论文速览](https://mp.weixin.qq.com/s/-UqboKHaoG5eu79u9XQU0w)（2026-09-03）提供 **按八类问题组织的阅读坐标**；不复述每篇方法细节。姊妹盘点见 [开源可复现性 9 篇](./open-source-reproducibility-9-papers-technology-map.md)、[接触丰富操作 7 篇](./contact-rich-manipulation-7-papers-technology-map.md)、[开源系统闭环 7 篇](./open-source-system-loop-7-papers-technology-map.md)。
 
 ## 一句话观点
 
