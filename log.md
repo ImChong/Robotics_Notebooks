@@ -7,7 +7,7 @@
 - **复用：** [`prime-system-id`](wiki/entities/prime-system-id.md)（HMI draft → complete，**不另造** `paper-prime`）；[`paper-kilvo`](wiki/entities/paper-kilvo.md)
 - **交叉：** SysID / 关节执行器辨识 / 连杆-转子惯量 / 物理保真度 / Sim2Real 闭环 / 接触力旋量 / Crocoddyl
 
-
+## [2026-09-04] ingest | sources/papers/levjepa_arxiv_2608_27395.md — LeVJEPA（arXiv:2608.27395）：LeJEPA+SIGReg 视频预训练；已开源 MIT（module.py/权重 CC BY-NC）；关键页 paper-levjepa
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2608.27395>、项目页 <https://levjepa.github.io/>
 - **步骤 2.5：** **已开源**。项目页互链 [MLO-lab/LeVJEPA](https://github.com/MLO-lab/LeVJEPA)（2026-08-28 建仓）与 HF `galilai-group/LeVJEPA-VideoMix-Large`。主体 MIT；`module.py` 与发布权重 **CC BY-NC 4.0**（改编 Meta V-JEPA）。默认复现走公开 Walking Tours，论文主表 K710 20% 需自备。
