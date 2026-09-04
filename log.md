@@ -1,3 +1,9 @@
+## [2026-09-04] structural | docs/roadmap.html + docs/main.js — 路线详情页本库超链接悬停浮窗
+
+- **改动：** [`docs/roadmap.html`](docs/roadmap.html) 增加 `#detail-inline-link-tooltip` 与 `graph-tooltip.js`；[`docs/main.js`](docs/main.js) 在路线页正文 / 知识地图 / 阶段相关项上复用详情页内链 hover 卡片
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md) Phase 3
+- **验证：** [`scripts/verify_roadmap_inline_link_preview.cjs`](scripts/verify_roadmap_inline_link_preview.cjs)
+
 ## [2026-09-04] ingest | sources/papers/host_arxiv_2607_20033.md + 再核 Imitator Game / GEN-1.5 / S1 / Zero-WAM — 五条人视频 one-shot / ICL 节点：HOST 新建；其余复用已有 complete 页
 
 - **触发：** 用户指定五条独立不重复详情节点：[1] Imitator Game（imitator-game.github.io）[2] GEN-1.5（generalistai.com/blog/gen-1.5）[3] Skild S1（skild.ai/blogs/s1）[4] arXiv:2607.20033 [5] Zero-WAM（arXiv:2608.26103）
