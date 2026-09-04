@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-crosstracer.md",
+      "detail_id": "entity-paper-crosstracer",
+      "label": "CrossTracer：像素轨迹残差做跨本体导航",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
       "path": "wiki/concepts/humanoid-closed-loop-inertia-calibration.md",
       "detail_id": "wiki-concepts-humanoid-closed-loop-inertia-calibration",
       "label": "人形整机闭环惯量标定（出厂体检）",
@@ -201,26 +211,17 @@
       "recency": "2026-09-04",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/overview/g1-foothold-safe-stop-focus-technology-map.md",
-      "detail_id": "wiki-overview-g1-foothold-safe-stop-focus-technology-map",
-      "label": "落脚、急停、本体里程计：三篇独立节点",
-      "type": "overview",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/humanoid-closed-loop-inertia-calibration.md",
-    "detail_id": "wiki-concepts-humanoid-closed-loop-inertia-calibration",
-    "label": "人形整机闭环惯量标定（出厂体检）",
-    "type": "concept",
+    "path": "wiki/entities/paper-crosstracer.md",
+    "detail_id": "entity-paper-crosstracer",
+    "label": "CrossTracer：像素轨迹残差做跨本体导航",
+    "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
     "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
   },
   "top_communities": [
     {
