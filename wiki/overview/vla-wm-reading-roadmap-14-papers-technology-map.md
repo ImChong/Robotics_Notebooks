@@ -19,6 +19,7 @@ related:
   - ../entities/paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md
   - ../entities/paper-sa-2601-03782-pointworld.md
   - ../methods/vla.md
+  - ../entities/paper-unified-robot-learning-survey.md
   - ./hub-vla.md
   - ../../roadmap/depth-vla.md
   - ./vla-open-source-repro-landscape-2025.md
@@ -132,6 +133,7 @@ flowchart TB
 - [VLA 知识链](./hub-vla.md)
 - [VLA 纵深路线](../../roadmap/depth-vla.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 读完 14 篇后用耦合类型判断系统缺哪段
 
 ## 关联页面
 

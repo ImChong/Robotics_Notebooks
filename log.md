@@ -10,6 +10,26 @@
 - **步骤 2.5（HOST）：** **已开源** — [CGuangyan-BIT/HOST](https://github.com/CGuangyan-BIT/HOST) 对齐/耦合/策略训练入口 + HF [`Guangyan/HOST`](https://huggingface.co/Guangyan/HOST)（MIT）。仓根无统一 LICENSE；193k 真机轨迹未随仓；`eval_openloop.sh` 不指挥真机。
 - **关键数字：** 双臂 ARX R5；单视频平均 **29 s**；八任务 **62%**；相对语言零样本约 **+45 pt**；已掌握保留约 **99%**；相对 50 条 SFT 演示少 50×、快约 507×。
 - **交叉：** ICL 概念表、IL / Manipulation / WAM、四路线对比、跨具身枢纽、Foundation Policy；四条复用页回链 HOST
+## [2026-09-04] ingest | sources/papers/unified_robot_learning_survey_arxiv_2609_03927.md — TMLR 表征–VLA–世界模型统一综述；独立节点，不造表内空壳
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2609.03927>
+- **步骤 2.5：** **确认未开源 / 无配套实现**（arXiv-only，无项目页/GitHub）
+- **关键页：** 新建 [`paper-unified-robot-learning-survey`](wiki/entities/paper-unified-robot-learning-survey.md)；交叉 VLA / WM / WAM / 五大分类 / 选型闭环 / 14 篇阅读路线
+- **机构注册：** `fujitsu-research-america`、`fujitsu`；CMU 已有
+
+## [2026-09-04] ingest | sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md — UMR：学习点云对应的统一人形重定向；独立节点，代码待发布
+
+- **触发：** 用户指定 *Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*（香港科技大学广州校区 / 诺亦腾 / 汉阳大学 / 香港科技大学 / 香港大学；[arXiv:2609.02134](https://arxiv.org/abs/2609.02134)）
+- **步骤 2.5：** **待发布**。所谓项目链接即 arXiv；HTML/PDF 未列 GitHub。同团队 [AdaPT 项目页](https://humanoidtennis.github.io/AdaPT/) 写 MoCap「UMR coming soon」，AdaPT 仓不含本实现。
+- **关键页：** 新建 [`paper-umr-unified-motion-retargeting`](wiki/entities/paper-umr-unified-motion-retargeting.md)；交叉 [Motion Retargeting](wiki/concepts/motion-retargeting.md)、[hub](wiki/overview/hub-motion-retargeting.md)、[GMR](wiki/methods/motion-retargeting-gmr.md)、[OmniRetarget](wiki/entities/paper-hrl-stack-03-omniretarget.md)、[OmniContact](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md)、[BeyondMimic](wiki/methods/beyondmimic.md)、[SONIC](wiki/methods/sonic-motion-tracking.md)、[AdaPT](wiki/entities/paper-adapt.md)
+- **消歧：** 勿与 AdaMorph（2601.07284）或 PALUM（2601.07272）混页
+
+## [2026-09-04] ingest | sources/papers/{wm_loco,focus,safe_stop} + 两篇公众号 — WM-LOCO/FOCUS 新建独立节点，Safe-Stop 复用；Infra 全景与 SLAM 沙龙写回 overview/query
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/qVqpihnA4GezsE2MIJjKDw>、三篇论文（WM-LOCO / Safe-Stop / FOCUS）须独立非重复详情节点，以及 <https://mp.weixin.qq.com/s/0MUtW7aaPPltT9oO3SUtSg>
+- **步骤 2.5：** WM-LOCO **待发布**（`m0puppet.github.io/wm-loco` 仅项目页，Code coming soon）；Safe-Stop **待发布**（2026-09-04 再核项目页仍无 GitHub，**复用**既有 complete 页）；FOCUS **确认未开源**（无项目页/官方仓；勿与 StefanoFerraro/FOCUS 世界模型仓混淆）
+- **关键页：** 新建 [`paper-wm-loco`](wiki/entities/paper-wm-loco.md)、[`paper-focus-foot-observation-confidence`](wiki/entities/paper-focus-foot-observation-confidence.md)；复用 [`paper-safe-stop-humanoid`](wiki/entities/paper-safe-stop-humanoid.md)；地图 [`g1-foothold-safe-stop-focus-technology-map`](wiki/overview/g1-foothold-safe-stop-focus-technology-map.md)；Infra 长文写回 [`embodied-infra-2026-panorama`](wiki/overview/embodied-infra-2026-panorama.md)（30 条参考文献映射已有节点，缺页待升格）；SLAM 沙龙写回 [`slam-second-spring-embodied`](wiki/queries/slam-second-spring-embodied.md)
+- **机构注册：** `bupt` 北京邮电大学（BUPT）、`soochow` 苏州大学（Soochow University）
 
 ## [2026-09-03] lint | wiki/entities/paper-{demomimic,openvla,tapvid-mv,physics-consistent-hrc-benchmark}.md — 清空全量 lint 信息型预警：补 1 篇「对比」段 + 2 条评测枢纽双向回链 + 1 条陈旧声明时效化 + 1 个缺页误报归档
 

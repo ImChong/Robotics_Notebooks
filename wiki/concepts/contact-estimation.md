@@ -3,7 +3,7 @@ title: Contact Estimation（接触估计）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-04-18
+updated: 2026-09-04
 summary: 在无直接力传感器时，从关节力矩/速度信号推断足端或末端执行器的接触状态，是步态规划和 WBC 的重要感知前提。
 ---
 
@@ -136,5 +136,6 @@ J^T · f = τ_gravity_compensation - τ_actuator
 - [TSID](./tsid.md) — TSID 求解前必须确定接触集合
 - [Centroidal Dynamics](./centroidal-dynamics.md) — 接触力是质心加速度的来源
 - [Locomotion](../tasks/locomotion.md) — 步态切换依赖实时接触检测
+- [FOCUS](../entities/paper-focus-foot-observation-confidence.md) — 接触为真仍可能 FK 不可信；学的是连续可靠度不是二值接触
 - [Sim2Real](./sim2real.md) — 接触模型差异是 sim2real gap 的重要来源
 - [Balance Recovery](../tasks/balance-recovery.md) — 意外接触的快速检测对扰动恢复至关重要

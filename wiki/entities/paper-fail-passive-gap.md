@@ -10,7 +10,7 @@ tags:
   - unitree-g1
   - siemens
 status: complete
-updated: 2026-08-17
+updated: 2026-09-04
 arxiv: "2608.02809"
 related:
   - ../concepts/robot-safety-state-machine.md
@@ -162,6 +162,7 @@ flowchart TB
 - [Balance Recovery](../tasks/balance-recovery.md) — 保护停是受约束的恢复，不是越快越好
 - [系统工程知识链](../overview/hub-systems-engineering.md) — 安全 FSM 与现场总线之上的认证层
 - [Unitree G1](./unitree-g1.md) — 本文验证平台
+- [Safe-Stop](./paper-safe-stop-humanoid.md) — 学习式可停止性门控；互补认证缺口，不替代本页
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) — 把 \(t_{\mathrm{response}}\) 拆成可加分段的同一思路
 
 ## 参考来源

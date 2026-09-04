@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-04
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -11,6 +11,7 @@ related:
   - ../entities/dyna-2.md
   - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../entities/paper-unified-robot-learning-survey.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/rekacs2-10k-dataset.md
   - ../entities/lumo-2.md
@@ -300,6 +301,7 @@ flowchart TB
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料
 - [VLA](../methods/vla.md)
+- [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — WAM 是其世界模型轴下的联合建模行
 - [Generative World Models](../methods/generative-world-models.md)
 - [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR WM + 共训动作专家（自变量；训练代码待发布）
 - [Being-H0.7](../methods/being-h07.md)
