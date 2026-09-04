@@ -46,7 +46,7 @@
   - [Imitator Game](../../wiki/entities/paper-imitator-game.md)
   - [模仿学习](../../wiki/methods/imitation-learning.md)
 
-### 5) 开源状态（截至 2026-09-02）
+### 5) 开源状态（截至 2026-09-04 再核仍成立）
 
 - **摘录要点：** **已开源（MIT）**。官方仓含 ManiSkill/SAPIEN 仿真、采集与九套基线训练/评测入口；HF 发布 IG-10K-Dataset 与 IG-10K-Assets（ModelScope 镜像 `Zhouxunzhe/*`）。Arena / 文档 / 数据页在项目站。真机部署评测走社区申请，仓内无上传接口。2026-08-30 浅入库时训练仓尚未公开，本次复核已改判。
 

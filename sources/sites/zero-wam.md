@@ -5,12 +5,14 @@
 - **代码：** <https://github.com/robbyant-research/Zero-WAM>（代码/模型/数据计划 2026-09-15 前）
 - **机构：** 蚂蚁灵波科技（Robbyant）；香港科技大学广州校区；香港科技大学
 - **入库日期：** 2026-08-28
+- **再核日期：** 2026-09-04
 
 ## 开源核查（步骤 2.5）
 
 - 项目页与 GitHub 仓均已上线（2026-08-28）。
+- 2026-09-04 再核：仓仍仅 `.gitignore` / LICENSE / README / `docs`；`pushed_at` 2026-08-30。
 - README Release Plan：Paper 已发布；Code / Model / Data 均为 checkbox 未勾。
-- **结论：** **待发布**。
+- **结论：** **仍待发布**（计划 2026-09-15 前）。
 
 ## 交叉
 

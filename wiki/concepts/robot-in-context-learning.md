@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-04
 related:
   - ./foundation-policy.md
   - ../methods/imitation-learning.md
@@ -20,6 +20,8 @@ related:
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
   - ../entities/skild-s1.md
   - ../entities/skild-ai.md
+  - ../entities/paper-host-one-shot-human-video.md
+  - ../entities/paper-imitator-game.md
   - ../overview/hub-cross-embodiment.md
   - ../overview/realab-14-papers-technology-map-2026.md
   - ./llm-robotics-control-interfaces.md
@@ -125,6 +127,7 @@ flowchart LR
 |------|------------|----------|------|
 | [GEN-1.5](../entities/generalist-gen15-one-shot.md) | 3–12s physical prompt（人/机/仿真） | **无显式 ICL 设计**；8+ 月预训练涌现 | one-shot ~59%；10 步微调 ~83%（闭源自报） |
 | [S1](../entities/skild-s1.md) | 一条任务视频（可跨场景/视角/本体） | **显式**：预训练任务只经示范指定 | 未见任务最长约 10 min；100k h 档未见 66% vs 语言 VLA 9%（闭源自报） |
+| [HOST](../entities/paper-host-one-shot-human-video.md) | 单条真人视频 + 进度流形 | **显式**：TCC/DTW 对齐 + 自接地级联 | 八任务 62%；29 s；不改权重；代码+HF 权重已开 |
 | [Qwen-RobotManip](../entities/qwen-robot-manip.md) | 近期 H 个 (o,s,a) chunk | in-context policy adaptation | **stochastic context sampling** 防退化为复制最近 chunk |
 
 GEN-1.5 与显式 ICL 方法的关键差异：**未把「读完示范后的表现」写入训练目标**；作者假设物理数据分布的 burstiness / 重复循环模式与语言 ICL 涌现机制类似（**假设性解释**）。S1 走相反路线：把「从示范学习」当成预训练外环，并强调语言 prompt 在 **未见长程** 上几乎不 scale。
@@ -162,6 +165,8 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [VLA](../methods/vla.md) — 马尔可夫 VLA 与长上下文 / 记忆增强 VLA 的分叉
 - [操作任务](../tasks/manipulation.md) — 短程原子操作是 GEN-1.5 one-shot 主战场；S1 把评测轴推到长程未见
 - [S1（Skild）](../entities/skild-s1.md) — 显式 ICL 预训练 + 视频 prompt；闭源自报 10 min 未见任务
+- [HOST](../entities/paper-host-one-shot-human-video.md) — 开源单视频 one-shot；进度对齐 + 自接地未来观测
+- [The Imitator Game](../entities/paper-imitator-game.md) — 意图级模仿基准；L3 / 未见零样本把「视频条件」打回原形
 - [Zero-WAM](../entities/paper-zero-wam.md) — 人视频当 WAM 任务规格；HumanGen ICL 对 + IFP；代码待发布
 - [StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) — 结构化检索示范；VLA-Arena 0.63；无官方代码
 - [四路线对比（WAM-TTT / RoboTTT / StellaVLA / Zero-WAM）](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 2026-08 可核对论文纵横向坐标系

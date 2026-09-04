@@ -10,7 +10,7 @@
 - **数据：** <https://huggingface.co/datasets/imitator-game/IG-10K-Dataset> — 归档见 [`sources/datasets/ig-10k.md`](../datasets/ig-10k.md)
 - **机构：** 香港大学（HKU）；超忆（TranscEngram）；复旦大学（Fudan）；浙江大学（ZJU）
 - **入库日期：** 2026-08-30
-- **再核日期：** 2026-09-02
+- **再核日期：** 2026-09-04
 - **一句话说明：** L0–L3 层级、IG-10K、排行榜、Imitator Arena 盲测、文档与数据下载入口。
 
 ## 开源核查（步骤 2.5，2026-09-02）

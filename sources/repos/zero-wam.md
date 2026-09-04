@@ -6,7 +6,7 @@
 - **配套论文：** [arXiv:2608.26103](https://arxiv.org/abs/2608.26103)
 - **项目页：** <https://robbyant-research.github.io/Zero-WAM/>
 
-## 状态（2026-08-28）
+## 状态（2026-09-04 再核）
 
 | 项 | 状态 |
 |----|------|

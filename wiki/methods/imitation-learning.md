@@ -26,6 +26,9 @@ related:
   - ../entities/paper-interprior.md
   - ../entities/paper-veragmil.md
   - ../entities/paper-imitator-game.md
+  - ../entities/paper-host-one-shot-human-video.md
+  - ../entities/generalist-gen15-one-shot.md
+  - ../entities/paper-zero-wam.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ./mimic-video.md
   - ./egoscale.md
@@ -239,6 +242,9 @@ flowchart TD
 - [ParcelStow](../entities/paper-parcelstow.md) — G1 L6 上问模仿是否继承专家跨速度鲁棒性；\(r=2\) 时 ACT 53% / 专家 84%（arXiv:2609.01453）
 - [VERAGMIL](../entities/paper-veragmil.md) — VR + Isaac Sim 颗粒喂食仿真；BC/BCQ + VR 示范（IROS 2025；arXiv:2608.18258）
 - [Imitator Game](../entities/paper-imitator-game.md) — L0–L3 意图级模仿基准；L3 功能替代崩溃；MIT 仓 + IG-10K 已开源（arXiv:2608.22301）
+- [HOST](../entities/paper-host-one-shot-human-video.md) — 单条人视频、约 29 s、不改权重；八任务 62%；代码+权重已开（arXiv:2607.20033）
+- [GEN-1.5](../entities/generalist-gen15-one-shot.md) — 闭源 physical prompting；one-shot ~59% / 10 步 ~83%
+- [Zero-WAM](../entities/paper-zero-wam.md) — 人视频作 in-context 任务规格；代码待发布（arXiv:2608.26103）
 - [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略
 - [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架

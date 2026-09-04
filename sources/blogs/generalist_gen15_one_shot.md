@@ -64,6 +64,7 @@
 ## 对 wiki 的映射
 
 - [generalist-gen15-one-shot](../../wiki/entities/generalist-gen15-one-shot.md) — 本篇升格实体页
+- [paper-host-one-shot-human-video](../../wiki/entities/paper-host-one-shot-human-video.md) — 开源单视频对照（2026-09-04）
 - [generalist-ai-robotics](../../wiki/entities/generalist-ai-robotics.md) — 公司入口页更新 GEN 系列脉络
 - [generalist-gen1-thousand-hands](../../wiki/entities/generalist-gen1-thousand-hands.md) — 同公司 GEN-1 姊妹能力轴
 - [foundation-policy](../../wiki/concepts/foundation-policy.md) — 商业通才策略 one-shot 对照

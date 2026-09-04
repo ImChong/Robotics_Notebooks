@@ -47,6 +47,8 @@ related:
   - ../entities/paper-ros2smolvla.md
   - ../entities/paper-indi.md
   - ../entities/paper-imitator-game.md
+  - ../entities/paper-host-one-shot-human-video.md
+  - ../entities/paper-zero-wam.md
   - ../entities/paper-glancewam.md
   - ../entities/paper-m3-modality-masking.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
@@ -443,6 +445,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 关联页面
 - [Imitator Game](../entities/paper-imitator-game.md) — 字幕条件 VLA vs 人视频条件：L3 功能替代与未见任务零样本都弱（arXiv:2608.22301）
+- [HOST](../entities/paper-host-one-shot-human-video.md) — 人视频 one-shot 不改 VLA 权重；先预测机器人未来观测再出动作（arXiv:2607.20033）
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷三 VLA/IL 面试速查（短答案 + 频次）；深读仍以本页与实体为准
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — VLA 作为多模态学习信号主线，与 IL / RL / LfV / 持续学习对照
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — VLA 作为任务球上的稀疏语义投影；OOD 勿只归因数据量

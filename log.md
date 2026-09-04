@@ -1,3 +1,15 @@
+## [2026-09-04] ingest | sources/papers/host_arxiv_2607_20033.md + 再核 Imitator Game / GEN-1.5 / S1 / Zero-WAM — 五条人视频 one-shot / ICL 节点：HOST 新建；其余复用已有 complete 页
+
+- **触发：** 用户指定五条独立不重复详情节点：[1] Imitator Game（imitator-game.github.io）[2] GEN-1.5（generalistai.com/blog/gen-1.5）[3] Skild S1（skild.ai/blogs/s1）[4] arXiv:2607.20033 [5] Zero-WAM（arXiv:2608.26103）
+- **复用（同一 arXiv / 已有实体不重造）：**
+  - [1] [`paper-imitator-game`](wiki/entities/paper-imitator-game.md)（2608.22301）— 2026-09-04 再核仍 **已开源（MIT）** + HF IG-10K
+  - [2] [`generalist-gen15-one-shot`](wiki/entities/generalist-gen15-one-shot.md) — 再核仍 **确认未开源**
+  - [3] [`skild-s1`](wiki/entities/skild-s1.md) — 再核 `github.com/skild-ai` 仍 0 公开仓，**确认未开源**
+  - [5] [`paper-zero-wam`](wiki/entities/paper-zero-wam.md)（2608.26103）— 仓仍仅 README/`docs`，**仍待发布**（计划 2026-09-15 前）
+- **新建：** [4] HOST（*Human-to-robot One-Shot Skill AcquisiTion*）— [`paper-host-one-shot-human-video`](wiki/entities/paper-host-one-shot-human-video.md)
+- **步骤 2.5（HOST）：** **已开源** — [CGuangyan-BIT/HOST](https://github.com/CGuangyan-BIT/HOST) 对齐/耦合/策略训练入口 + HF [`Guangyan/HOST`](https://huggingface.co/Guangyan/HOST)（MIT）。仓根无统一 LICENSE；193k 真机轨迹未随仓；`eval_openloop.sh` 不指挥真机。
+- **关键数字：** 双臂 ARX R5；单视频平均 **29 s**；八任务 **62%**；相对语言零样本约 **+45 pt**；已掌握保留约 **99%**；相对 50 条 SFT 演示少 50×、快约 507×。
+- **交叉：** ICL 概念表、IL / Manipulation / WAM、四路线对比、跨具身枢纽、Foundation Policy；四条复用页回链 HOST
 ## [2026-09-04] ingest | sources/papers/unified_robot_learning_survey_arxiv_2609_03927.md — TMLR 表征–VLA–世界模型统一综述；独立节点，不造表内空壳
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2609.03927>

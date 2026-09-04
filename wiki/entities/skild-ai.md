@@ -77,6 +77,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 - [Generalist AI](./generalist-ai-robotics.md) — 另一条闭源通才 / ICL 产业线
 - [海外具身智能实验室地图（2026）](../overview/overseas-embodied-ai-labs-landscape-2026.md)
 - [LocoFormer（论文笔记占位）](./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md)
+- [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot 对照，不是本公司产品
 
 ## 参考来源
 

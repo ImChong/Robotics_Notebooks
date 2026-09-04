@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, imitation-learning, in-context-learning, one-shot, foundation-policy, scaling, generalist-ai]
 status: complete
 title: GEN-1.5 一次示范学习（Physical Prompting）
-updated: 2026-08-26
+updated: 2026-09-04
 related:
   - ./generalist-ai-robotics.md
   - ./generalist-gen1-thousand-hands.md
@@ -14,6 +14,7 @@ related:
   - ../methods/imitation-learning.md
   - ../entities/paper-robottt-test-time-training-vla-context.md
   - ../entities/skild-s1.md
+  - ../entities/paper-host-one-shot-human-video.md
 sources:
   - ../../sources/blogs/generalist_gen15_one_shot.md
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
@@ -29,7 +30,7 @@ summary: "Generalist GEN-1.5 博客（2026-08）：8+ 月持续预训练后涌�
 | **类型** | 产业官方博客（非 peer-reviewed 论文） |
 | **模型** | GEN-1.5（前序 GEN-1 / GEN-0） |
 | **发布** | 2026-08 |
-| **开源** | **确认未开源**（无公开代码 / 权重 / 数据集；截至 2026-08-20） |
+| **开源** | **确认未开源**（无公开代码 / 权重 / 数据集；2026-09-04 再核公司 GitHub / 博客仍无仓） |
 
 ## 一句话定义
 
@@ -130,6 +131,8 @@ flowchart TB
 | 公开地平线 | 短程原子为主 | 宣称未见最长约 **10 min** | 视任务而定 |
 | Sim2Real | **仿真示范提示真机** | 未作为主叙事 | 视任务而定 |
 
+开源、可核对的短程对照见 [HOST](./paper-host-one-shot-human-video.md)（单视频 29 s / 八任务 62%；真机数据包未随仓发布）。
+
 ## 局限与风险
 
 - **任务简单、短程：** 作者自认任务与成功率仍有限；勿外推至长程 household / 人形全身。长程未见轴见闭源对照 [S1](./skild-s1.md)，同样不可复现。
@@ -149,6 +152,7 @@ flowchart TB
 - [RoboTTT（context / test-time VLA）](../entities/paper-robottt-test-time-training-vla-context.md)
 - [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 三类不确定性拆解与 26 篇相关工作索引
 - [S1（Skild）](./skild-s1.md) — 显式 ICL 预训练；公开地平线更长、同样闭源
+- [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot；进度对齐 + 自接地，不是规模涌现
 
 ## 参考来源
 

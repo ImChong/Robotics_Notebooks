@@ -1,21 +1,23 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3441,
-  "edge_count": 31186,
+  "node_count": 3442,
+  "edge_count": 31216,
   "coverage": {
-    "covered": 3415,
-    "total": 3415,
+    "covered": 3416,
+    "total": 3416,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-unified-robot-learning-survey.md",
-      "detail_id": "entity-paper-unified-robot-learning-survey",
-      "label": "统一机器人学习综述：表征、VLA 与世界模型",
+      "path": "wiki/entities/paper-host-one-shot-human-video.md",
+      "detail_id": "entity-paper-host-one-shot-human-video",
+      "label": "HOST：单条人类视频秒级习得操作",
       "type": "entity",
       "recency": "2026-09-04",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "roadmap/depth-embodied-eval.md",
@@ -74,7 +76,7 @@
       "recency": "2026-09-03",
       "source": "git",
       "action": "added",
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-hint-robot-manipulation.md",
@@ -209,38 +211,40 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-unified-robot-learning-survey.md",
-    "detail_id": "entity-paper-unified-robot-learning-survey",
-    "label": "统一机器人学习综述：表征、VLA 与世界模型",
+    "path": "wiki/entities/paper-host-one-shot-human-video.md",
+    "detail_id": "entity-paper-host-one-shot-human-video",
+    "label": "HOST：单条人类视频秒级习得操作",
     "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 683
+      "label": "操作",
+      "size": 591
     },
     {
-      "label": "操作",
-      "size": 596
+      "label": "宇树 G1 人形机器人",
+      "size": 553
     },
     {
       "label": "视觉-语言-动作",
-      "size": 277
+      "size": 265
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 217
+      "size": 219
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 121
+      "size": 182
     },
     {
-      "label": "机器人视觉感知栈选型闭环",
-      "size": 97
+      "label": "力矩电机设计纵深路线",
+      "size": 136
     }
   ],
   "top_hubs": [
@@ -248,7 +252,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1394,
+      "degree": 1396,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -271,7 +275,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 877,
+      "degree": 879,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -295,7 +299,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 569,
+      "degree": 573,
       "has_repo": true
     },
     {

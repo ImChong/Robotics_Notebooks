@@ -91,6 +91,7 @@ sources:
 - [跨具身迁移（知识链）](../overview/hub-cross-embodiment.md)
 - [Octo](../methods/octo-model.md)
 - [S1 / Skild AI](./skild-s1.md) — 另一条闭源 ICL 通才线（显式视频预训练）
+- [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot 对照，不是本公司产品
 
 ## 参考来源
 

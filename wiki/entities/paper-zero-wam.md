@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, wam, in-context-learning, human-video, manipulation, robottwin, robbyant, hkust, hkust-gz]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-04
 arxiv: "2608.26103"
 code: https://github.com/robbyant-research/Zero-WAM
 related:
@@ -18,6 +18,7 @@ related:
   - ./paper-robottt-test-time-training-vla-context.md
   - ./skild-s1.md
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
+  - ./paper-host-one-shot-human-video.md
 sources:
   - ../../sources/papers/zero_wam_arxiv_2608_26103.md
   - ../../sources/sites/zero-wam.md
@@ -47,7 +48,7 @@ summary: "Zero-WAM（arXiv:2608.26103）：人类视频作 in-context 任务规�
 ## 为什么重要
 
 - 纳入 [具身智能小站 2026-08-28 九篇盘点](../../sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md) 的「结构化接口」主线：视频成为任务说明。
-- 开源状态（入库日）：**待发布**（代码/模型/数据计划 2026-09-15 前）。
+- 开源状态（2026-09-04 再核）：**仍待发布**（仓仅 README / LICENSE / `docs`；计划 2026-09-15 前发代码/模型/数据）。
 - 同一套因果 video-action 同时吃语言或人视频；对照 [Skild S1](./skild-s1.md) 的视频 ICL，这里把 WAM 未来分支和提示绑在一起。
 
 ## 核心信息
@@ -59,7 +60,7 @@ summary: "Zero-WAM（arXiv:2608.26103）：人类视频作 in-context 任务规�
 | **数据** | HumanGen：74.2K ICL 对 / 8.6K 任务 |
 | **仿真** | RoboTwin 2.0 七任务未见 |
 | **真机** | 双臂 Franka：放置 / 长程 / 插桌腿 |
-| **开源** | **待发布**：仓 Apache-2.0，截至 2026-08-28 仅 README 与资源；预计 2026-09-15 前发代码/模型/数据 |
+| **开源** | **待发布**：仓 Apache-2.0，2026-09-04 再核仍仅 README / LICENSE / `docs`；预计 2026-09-15 前发代码/模型/数据 |
 
 ### 流程总览
 
@@ -109,7 +110,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用**（截至 **2026-08-28**）：官方训练/推理入口尚未公开发布。
+**不适用**（截至 **2026-09-04**）：官方训练/推理入口尚未公开发布。
 
 ## 局限与风险
 
@@ -126,6 +127,8 @@ flowchart LR
 | 任务提示 | 语言 **或** 人视频 | 语言为主 | 人视频 ICL |
 | 开源 | **待发布** | **待发布** | **确认未开源** |
 
+真人视频、零梯度且 **代码+权重已开** 的对照：[HOST](./paper-host-one-shot-human-video.md)（进度流形 + 自接地；八任务 62%，不在 RoboTwin 协议上）。
+
 - 相对纯语言 VLA：把任务指定从文本扩展到视频上下文。
 - 相对 [DreamWAM](./paper-dreamwam.md) 等像素世界动作模型：Zero-WAM 强调 **零样本跨任务 ICL**，而不是在线 rollout 规划。
 
@@ -137,6 +140,7 @@ flowchart LR
 - [Manipulation](../tasks/manipulation.md)
 - [LAWA](./paper-lawa.md)
 - [S1（Skild）](./skild-s1.md)
+- [HOST](./paper-host-one-shot-human-video.md)
 - [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md)
 
 ## 参考来源
