@@ -1,3 +1,12 @@
+## [2026-09-04] ingest | sources/papers/levjepa_arxiv_2608_27395.md — LeVJEPA（arXiv:2608.27395）：LeJEPA+SIGReg 视频预训练；已开源 MIT（module.py/权重 CC BY-NC）；关键页 paper-levjepa
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.27395>、项目页 <https://levjepa.github.io/>
+- **步骤 2.5：** **已开源**。项目页互链 [MLO-lab/LeVJEPA](https://github.com/MLO-lab/LeVJEPA)（2026-08-28 建仓）与 HF `galilai-group/LeVJEPA-VideoMix-Large`。主体 MIT；`module.py` 与发布权重 **CC BY-NC 4.0**（改编 Meta V-JEPA）。默认复现走公开 Walking Tours，论文主表 K710 20% 需自备。
+- **关键判断：** 坍塌对策从 EMA/predictor 换成 SIGReg；95% 均匀 token drop 是增强不是近似；block-causal 几乎不掉点。本文**不是**规划 WM（无 AC / MPC / 真机）。
+- **新建：** [`paper-levjepa`](wiki/entities/paper-levjepa.md)；机构注册 `dkfz` / `goethe` / `mila` / `umontreal` / `ami-labs`
+- **交叉：** V-JEPA 2、V-JEPA 2.1、WCM、generative-world-models、world-model-physics-fidelity-outputs、video-as-simulation
+
+
 ## [2026-09-04] ingest | sources/repos/sciencediscovery.md + sources/sites/openjiuwen-com.md — openJiuwen 平台与 ScienceDiscovery 科研工作台；已开源 Apache-2.0；双托管 GitHub/AtomGit
 
 - **触发：** 用户指定 <https://atomgit.com/openJiuwen/sciencediscovery>、<https://github.com/openJiuwen-ai/sciencediscovery>、<https://www.openjiuwen.com>

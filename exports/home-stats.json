@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3456,
-  "edge_count": 31435,
+  "node_count": 3457,
+  "edge_count": 31450,
   "coverage": {
-    "covered": 3429,
-    "total": 3429,
+    "covered": 3430,
+    "total": 3430,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -222,7 +222,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 659
+      "size": 635
     },
     {
       "label": "操作",
@@ -238,11 +238,11 @@
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 113
+      "size": 109
     },
     {
-      "label": "移动操作",
-      "size": 87
+      "label": "机器人视觉感知栈选型闭环",
+      "size": 97
     }
   ],
   "top_hubs": [
@@ -281,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 801,
+      "degree": 803,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

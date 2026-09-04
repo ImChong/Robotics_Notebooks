@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, rl, post-training, critic, world-model, jepa, manipulation, tongji, shanghai-innovation-institute, fudan]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-04
 arxiv: "2607.29613"
 code: https://github.com/sylvestf/WCM
 related:
@@ -14,6 +14,7 @@ related:
   - ../methods/generative-world-models.md
   - ./paper-actfovea.md
   - ./paper-temporal-grpo.md
+  - ./paper-levjepa.md
 sources:
   - ../../sources/papers/wcm_world_critic_arxiv_2607_29613.md
   - ../../sources/repos/wcm-world-critic-model.md
@@ -191,6 +192,7 @@ sequenceDiagram
 | [生成式世界模型](../methods/generative-world-models.md) | 生成式路线预测像素/视频；WCM 在**隐空间**预测（JEPA 路线），并靠 SIGReg 防坍塌，代价更低但不可视化为视频 |
 | [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md) | WCM 同时接 on-policy（Flow-SDE / PPO）与 off-policy（RECAP / AWR），说明瓶颈在 critic 表征而非算法族 |
 | [ActFovea](./paper-actfovea.md) | 都在处理「单帧不够」；WCM 用时序做**训练期价值估计**，ActFovea 用时序做**推理期健康检查** |
+| [LeVJEPA](./paper-levjepa.md) | 同一套 LeJEPA / SIGReg，但落在**视频表征预训练**（无价值头、无机器人 RL）；WCM 是 critic 侧的轻量变体 |
 
 ## 局限与风险
 
@@ -211,6 +213,7 @@ sequenceDiagram
 - [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md) — WCM 两侧都接
 - [ActFovea](./paper-actfovea.md) — 时序信息用于推理期防护的对照
 - [Temporal GRPO](./paper-temporal-grpo.md) — 对照：无 critic，只改阶段组相对写回（arXiv:2608.13026；未开源）
+- [LeVJEPA](./paper-levjepa.md) — LeJEPA+SIGReg 的视频预训练配方（arXiv:2608.27395；已开源）
 
 ## 参考来源
 
