@@ -17,7 +17,7 @@ tags:
   - vinmotion
   - usc
 status: complete
-updated: 2026-08-19
+updated: 2026-09-04
 arxiv: "2608.12860"
 related:
   - ../tasks/vision-language-navigation.md
@@ -32,8 +32,10 @@ related:
   - ../overview/world-model-exec-10-papers-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/locomotion.md
+  - ./paper-crosstracer.md
 sources:
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
+  - ../../sources/papers/crosstracer_arxiv_2608_06688.md
   - ../../sources/sites/humanoid-vln-github-io.md
   - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
 summary: "HumanoidVLN（VinMotion/USC，arXiv:2608.12860）：Isaac Sim 人形物理 VLN 平台与基准。四本体 RL+PD/MPC、87 场景≥100 m²、933 episode MAA 指令；JanusVLN 平均 SR 43.55%；G1 DualVLN 20 条 sim–real r=0.935。截至入库日宣称录用后开源，项目页无代码。"
@@ -173,6 +175,7 @@ flowchart LR
 | [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) | 腿式分层 VLA 代表实现，且已开源；在本基准上是 **被测对象**，H1 FR 很高 |
 | [REALM](./paper-realm-last-3-meter-vln-grounding.md) | 补 REVERIE **末 3 m 实例可见性**；本文补 **双足物理可执行性**，轴正交 |
 | [DA-Nav](./paper-da-nav.md) | 城市户外方向指令 + 四足/人形零样本；本文是室内物理 VLN 平台 |
+| [CrossTracer](./paper-crosstracer.md) | 改的是图像平面 trace 是否按本体可走；本文评的是双足能不能把计划走完。轴正交 |
 | [WorldVLN](./paper-worldvln-aerial-vln-wam.md) | 空中连续航点 WAM；本体与动作空间都不同 |
 
 ## 局限与风险
@@ -197,6 +200,7 @@ flowchart LR
 - [Locomotion](../tasks/locomotion.md) — 低层步态；本文把它接到 VLN 评测环
 - [VLN 10 篇技术地图](../overview/vln-10-papers-technology-map.md) — 2018–2024 基础设施地图；本文是后续物理层
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本文落在策略任务成功率 + sim↔real 校准层；FR 把物理可执行性写进协议
+- [CrossTracer](./paper-crosstracer.md) — 跨本体像素轨迹残差（NaviTrace）；不评摔倒
 
 ## 参考来源
 

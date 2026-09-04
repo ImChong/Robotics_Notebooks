@@ -539,6 +539,7 @@
 - [CoToGrasp](wiki/entities/paper-cotograsp.md) — CoToGrasp: Contact-Topology-Conditioned Dexterous Grasp Synthesis via Canonical Workspace Learning `📅unknown` `[entity_page]`
 - [CPS4All：无障碍与能力增强的赛博物理系统工作坊](wiki/entities/paper-cps4all.md) — CPS4All**（*Cyber-Physical Systems for Accessibility and Ability Augmentation: Bridging Diverse Com `📅unknown` `[entity_page]`
 - [CReF：交叉模态与循环融合的深度条件人形行走](wiki/entities/paper-cref.md) — CReF**（*Cross-modal and Recurrent Fusion for Depth-conditioned Humanoid Locomotion*，浙江大学 / 山东大学，ar `📅unknown` `[entity_page]`
+- [CrossTracer：像素轨迹残差做跨本体导航](wiki/entities/paper-crosstracer.md) — CrossTracer**（*Cross-Embodiment Navigation via VLA Model Reasoning and Trace Residuals Adapting*， `📅unknown` `[entity_page]`
 - [Ctrl-World（可控机器人操作生成式世界模型）](wiki/entities/paper-ctrl-world.md) — Ctrl-World**（*Ctrl-World: A Controllable Generative World Model for Robot Manipulation*，[arXiv:251 `📅unknown` `[entity_page]`
 - [cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md) — cuNRTO**（*cuNRTO: GPU-Accelerated Nonlinear Robust Trajectory Optimization*，[arXiv:2603.02642](htt `📅unknown` `[entity_page]`
 - [Current as Touch（Proprioceptive Contact Feedback · arXiv:2607.03529）](wiki/entities/paper-current-as-touch-proprioceptive-contact.md) — Current as Touch**（*Current as Touch: Proprioceptive Contact Feedback for Compliant Dexterous Mani `📅unknown` `[entity_page]`

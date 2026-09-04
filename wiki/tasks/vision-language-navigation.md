@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-08-31
+updated: 2026-09-04
 status: complete
 related:
   - ../entities/paper-abot-n1.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
   - ../entities/paper-humanoidvln.md
+  - ../entities/paper-crosstracer.md
   - ../entities/paper-sru-spatially-enhanced-recurrent-memory.md
   - ../concepts/3d-spatial-vqa.md
   - ../concepts/world-action-models.md
@@ -54,6 +55,7 @@ sources:
   - ../../sources/papers/refertrack_arxiv_2607_20061.md
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
+  - ../../sources/papers/crosstracer_arxiv_2608_06688.md
   - ../../sources/papers/abot_n1_arxiv_2607_10383.md
 ---
 
@@ -78,6 +80,7 @@ sources:
 - **与 VLA 的衔接**：高层策略可将 VLN 视作「语言条件下的路径生成」子问题；仿真基准（如 Matterport3D 上的 **R2R / RxR**）与真实视频蒸馏数据（如室内 tour）常混合使用以缓解 **sim–real** 与 **轨迹分布** 差异。通才 VLA 如 [Qwen-VLA](../entities/qwen-vla.md) 在官方 README 中把 **操作与 VLN 基准** 放进 **同一 checkpoint** 联合评测，可作为「导航是否应并入统一 VLA」的工程参照。
 - **与 image-goal 视觉导航的对照**：[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 研究 **目标图像**（非自然语言）条件下的 egocentric 闭环导航，用 **Cosmos Predict 2 系 WAM** 联合预测未来观测、value 与 action，在 **go stanford** 与真机上相对 **OmniVLA** 与 **NWM+CEM** 报告增益——说明「导航」任务族内 **语言接地** 与 **视觉目标接地** 可走不同基础模型路线。另一条 image-goal 生成策略见 [RoamFlow](../entities/paper-roamflow.md)（MeanFlow 一步轨迹 + IL→RL；Habitat/Go2；**未开源**）。
 - **冻结导航 VLA 的推理时可通行接地**：[Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)（arXiv:2607.05122）用 SegFormer **绿/红 overlay** 喂冻结 **OmniVLA**，Grand Tour 上最远航点误差降 **27–44%**，但归一化后显示主要是轨迹缩短约 **30%**；**图像目标几乎无增益**，「stop」修不掉。这是输入侧试验旋钮，不是新 VLA；**未开源**。勿与 [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) 混淆。
+- **跨本体像素轨迹残差**：[CrossTracer](../entities/paper-crosstracer.md)（arXiv:2608.06688）把 OmniVLA 改成无本体 **VL-Tracer**，再用 **CE-Adapter** 按机器人 ID 改 8 个归一化航点；NaviTrace 总分 **45.68**（相对 Gemini-2.5-Pro +28.1%），真机相对 OmniVLA 抬轮式/腿式 SR。与 Green for Go 同碰 OmniVLA，但是 **重训两段 + 显式本体**，不是推理时涂色。**项目页截至 2026-09-04 无代码仓。**
 
 - **与坐标目标无地图循环导航的对照**：[SRU](../entities/paper-sru-spatially-enhanced-recurrent-memory.md)（IJRR 2025）用 **相对目标向量 + 单目前向深度 + SRU 隐式空间记忆** 做 **50–120 m 级** 无地图 RL 导航（非语言、非 image-goal），真机 **B2W 零样本**；部署移植见 [SRU-Odin](../entities/sru-odin.md)。与 VLN 共享「部分可观测 + 长程」难点，但 **监督与目标接口** 完全不同，不宜混用 R2R 等语言基准。
 - **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。端到端驾驶专用 VLA 对照见 [S²-VLA](../entities/paper-s-squared-vla.md)（语义∥空间双流规划，NAVSIM 纯 SFT）。
@@ -127,6 +130,12 @@ sources:
 - **方法要点：** observation-only vs joint（语言后缀或目标图同样 overlay）；长指令远航点收益更大；长度归一化后优势消失。
 - **开源边界：** 截至 2026-08-14 **确认未开源**；可跑通导航栈仍走 [四范式开源复现](../overview/vln-open-source-repro-paradigms.md)。
 
+### 跨本体：像素轨迹残差（不是换双足控制器）
+
+- **设定差异：** [CrossTracer](../entities/paper-crosstracer.md)（arXiv:2608.06688）评的是 **同一语义目标下，轮式/腿式该走哪条图像平面路径**，不是 Habitat SR，也不是 [HumanoidVLN](../entities/paper-humanoidvln.md) 的摔倒协议。
+- **方法要点：** VL-Tracer 出无本体 8 航点；CE-Adapter 用 FiLM + 残差；CE-RRT* 从分割自动造监督。NaviTrace **45.68**；去 adapter **22.56**；真机相对 OmniVLA 轮式 SR **0.40→0.65**、腿式 **0.45→0.70**。
+- **开源边界：** 截至 2026-09-04 **宣称开源 / 待核实**（对照表打勾，项目页无 GitHub）；可跑通栈仍走 [四范式](../overview/vln-open-source-repro-paradigms.md)。
+
 ### 人形物理执行：跨本体 Isaac VLN
 
 - **设定差异：** [HumanoidVLN](../entities/paper-humanoidvln.md)（arXiv:2608.12860）不把人形当 Habitat 传送代理，而在 [Isaac Sim](../entities/isaac-sim.md) 上用 **分本体 RL 步态 + PD/MPC 跟踪** 走完语言指令；场景按 **≥100 m² 可通行** 筛选，指令由 MAA + 人工核验，相对 R2R/VLN-CE 把 **摔倒（FR）** 写进协议。
@@ -167,6 +176,7 @@ sources:
 - **城市尺度方向感知**：[DA-Nav](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面离散 grounding + CoT 恢复；CARLA / Go2 / Kuavo-V（arXiv:2607.11638）。
 - **多楼层动态 ObjectNav**：[ZONDA](../entities/paper-zonda.md) — 启发式跨楼层 + 多视角核验 + 行人避障；HM3D-DYNA / TITA（arXiv:2607.21025）。
 - **冻结 VLA 可通行 overlay**：[Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — SegFormer 绿/红接地 OmniVLA；开环航点误差 vs 长度正则（arXiv:2607.05122）。
+- **跨本体像素轨迹残差**：[CrossTracer](../entities/paper-crosstracer.md) — VL-Tracer + CE-Adapter；NaviTrace 45.68（arXiv:2608.06688；待核实开源）。
 - **人形物理 VLN 平台**：[HumanoidVLN](../entities/paper-humanoidvln.md) — Isaac Sim 四本体 + FR；933 episode 零样本（arXiv:2608.12860；待开源）。
 - **终身学习闭环**：[Arcadia](../entities/paper-arcadia.md) — 自采 + 生成式 USD + 共享 VLN/VLA 骨干 + Sim-from-Real；G1 46/100（arXiv:2512.00076；部分开源）。
 - **慢–快像素接口 VLN 基础模型**：[ABot-N1](../entities/paper-abot-n1.md) — CoT + 像素目标统一五任务；ABotN-Bench 城市 Point/POI 闭环；基准开源、权重待发布（arXiv:2607.10383）。
@@ -182,6 +192,7 @@ sources:
 - [Arcadia 论文摘录（arXiv:2512.00076）](../../sources/papers/arcadia_arxiv_2512_00076.md) — 具身终身学习四段闭环
 - [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md) — 多楼层动态零样本 ObjectNav
 - [Green for Go 论文摘录（arXiv:2607.05122）](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — 冻结导航 VLA 的绿/红可通行视觉接地
+- [CrossTracer 论文摘录（arXiv:2608.06688）](../../sources/papers/crosstracer_arxiv_2608_06688.md) — 像素轨迹残差跨本体导航
 - [HumanoidVLN 论文摘录（arXiv:2608.12860）](../../sources/papers/humanoidvln_arxiv_2608_12860.md) — 人形物理 VLN 仿真与基准
 - [ABot-N1 论文摘录（arXiv:2607.10383）](../../sources/papers/abot_n1_arxiv_2607_10383.md) — 慢–快 VLN 基础模型与 ABotN-Bench
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
@@ -207,6 +218,7 @@ sources:
 - [DA-Nav（方向感知城市尺度 VLN）](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面网格 + CoT 恢复
 - [ZONDA（多楼层动态零样本 ObjectNav）](../entities/paper-zonda.md) — 跨楼层启发式规划 + 多视角核验 + 行人预测
 - [Green for Go（VLA 导航可通行性视觉接地）](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 的绿/红 overlay；未开源
+- [CrossTracer](../entities/paper-crosstracer.md) — 像素轨迹残差做跨本体导航；NaviTrace；待核实开源
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 跨人形本体的 Isaac 物理 VLN 基准；待开源
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal 导航（对照；未开源）
 - [S²-VLA（驾驶双流 VLA）](../entities/paper-s-squared-vla.md) — NAVSIM 端到端规划；与 VLN / RobotNav 驾驶 mode 对照
