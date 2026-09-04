@@ -9,6 +9,70 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-focus-foot-observation-confidence.md",
+      "detail_id": "entity-paper-focus-foot-observation-confidence",
+      "label": "FOCUS：连续足部置信度的人形本体里程计",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-wm-loco.md",
+      "detail_id": "entity-paper-wm-loco",
+      "label": "WM-LOCO：落脚约束地形上的世界模型视觉行走",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/embodied-infra-2026-panorama.md",
+      "detail_id": "wiki-overview-embodied-infra-2026-panorama",
+      "label": "具身智能 Infra 2026：闭环比单点模型更拉开差距",
+      "type": "overview",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/g1-foothold-safe-stop-focus-technology-map.md",
+      "detail_id": "wiki-overview-g1-foothold-safe-stop-focus-technology-map",
+      "label": "落脚、急停、本体里程计：三篇独立节点",
+      "type": "overview",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/queries/slam-second-spring-embodied.md",
+      "detail_id": "wiki-queries-slam-second-spring-embodied",
+      "label": "具身时代：SLAM 的精华与糟粕",
+      "type": "query",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-umr-unified-motion-retargeting.md",
+      "detail_id": "entity-paper-umr-unified-motion-retargeting",
+      "label": "UMR：学习点云对应的统一人形重定向",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-unified-robot-learning-survey.md",
+      "detail_id": "entity-paper-unified-robot-learning-survey",
+      "label": "统一机器人学习综述：表征、VLA 与世界模型",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-host-one-shot-human-video.md",
       "detail_id": "entity-paper-host-one-shot-human-video",
       "label": "HOST：单条人类视频秒级习得操作",
@@ -136,90 +200,16 @@
       "recency": "2026-09-03",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-touch-dream.md",
-      "detail_id": "entity-paper-humanoid-touch-dream",
-      "label": "Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-embodiedskills.md",
-      "detail_id": "entity-paper-embodiedskills",
-      "label": "EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adapt-text-driven-humanoid.md",
-      "detail_id": "entity-paper-adapt-text-driven-humanoid",
-      "label": "ADAPT：端到端文本驱动人形控制",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adm-ba.md",
-      "detail_id": "entity-paper-adm-ba",
-      "label": "ADM-BA：无对应点的多视角点云配准",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-blind-dexterity.md",
-      "detail_id": "entity-paper-blind-dexterity",
-      "label": "Blind Dexterity：纯本体感知人形全身操作",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-dual-process-motion-planning.md",
-      "detail_id": "entity-paper-dual-process-motion-planning",
-      "label": "Dual Process Motion Planning：快慢系统协同的非线性运动规划",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-facet-0.md",
-      "detail_id": "entity-paper-facet-0",
-      "label": "Facet-0：接触丰富精密装配基础模型",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-host-one-shot-human-video.md",
-    "detail_id": "entity-paper-host-one-shot-human-video",
-    "label": "HOST：单条人类视频秒级习得操作",
+    "path": "wiki/entities/paper-focus-foot-observation-confidence.md",
+    "detail_id": "entity-paper-focus-foot-observation-confidence",
+    "label": "FOCUS：连续足部置信度的人形本体里程计",
     "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
