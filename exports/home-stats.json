@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/embodied-six-routes-holes.md",
+      "detail_id": "wiki-queries-embodied-six-routes-holes",
+      "label": "六条路线的窟窿：按时间尺度缝合，而不是赌一条终局",
+      "type": "query",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "roadmap/depth-icl.md",
       "detail_id": "roadmap-depth-icl",
       "label": "路线（纵深）：如果目标是 ICL（具身上下文学习）",
@@ -189,23 +198,13 @@
       "recency": "2026-09-03",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-test-time-intelligence-survey.md",
-      "detail_id": "entity-paper-test-time-intelligence-survey",
-      "label": "测试时智能综述：反馈驱动的适应、学习与扩展",
-      "type": "entity",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-icl.md",
-    "detail_id": "roadmap-depth-icl",
-    "label": "路线（纵深）：如果目标是 ICL（具身上下文学习）",
-    "type": "roadmap_page",
+    "path": "wiki/queries/embodied-six-routes-holes.md",
+    "detail_id": "wiki-queries-embodied-six-routes-holes",
+    "label": "六条路线的窟窿：按时间尺度缝合，而不是赌一条终局",
+    "type": "query",
     "recency": "2026-09-04",
     "source": "git",
     "action": "added"
