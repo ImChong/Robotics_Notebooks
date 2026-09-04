@@ -2,17 +2,21 @@
 type: entity
 tags: [paper, humanoid, safe-stop, reach-avoid, berkeley, cmu, stanford]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-04
 arxiv: "2609.02358"
 related:
   - ../tasks/humanoid-locomotion.md
   - ../concepts/whole-body-control.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ./paper-wm-loco.md
+  - ./paper-focus-foot-observation-confidence.md
+  - ./paper-fail-passive-gap.md
+  - ../overview/g1-foothold-safe-stop-focus-technology-map.md
 sources:
   - ../../sources/papers/safe_stop_humanoid_arxiv_2609_02358.md
   - ../../sources/sites/safestop.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
-summary: "Safe-Stop（arXiv:2609.02358，Berkeley/CMU/Stanford）：急停建模为 reach-avoid；双 stoppability 估计器 + learned stop policy；仅双估计一致才提交停止，否则 damping fallback；G1 OOD 停止成功 96.4%；代码待发布。"
+summary: "Safe-Stop（arXiv:2609.02358，Berkeley/CMU/Stanford）：急停建模为 reach-avoid；双 stoppability 估计器 + learned stop policy；仅双估计一致才提交停止，否则 damping fallback；G1 OOD 停止成功 96.4%；代码待发布。2026-09-04 再核项目页仍无 GitHub，不另造详情节点。"
 ---
 
 # Safe-Stop：人形机器人可学习安全停止
@@ -34,7 +38,7 @@ summary: "Safe-Stop（arXiv:2609.02358，Berkeley/CMU/Stanford）：急停建模
 
 ## 为什么重要
 
-- 纳入 [八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md) 的「人形安全停止」支线。
+- 纳入 [八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md) 的「人形安全停止」支线；与 [WM-LOCO](./paper-wm-loco.md) / [FOCUS](./paper-focus-foot-observation-confidence.md) 并列阅读时见 [三篇坐标](../overview/g1-foothold-safe-stop-focus-technology-map.md)（**本页保持唯一 arXiv:2609.02358 详情节点**）。
 - 传统急停执行 **固定动作**，不判断从当前姿态是否真能安全停下。
 - **任务无关**：stop policy 与估计器不依赖急停前行为策略，可跨上游任务迁移。
 - Unitree G1：**96.4%** OOD 停止成功，**3.89%** unsafe-approval。
@@ -45,7 +49,7 @@ summary: "Safe-Stop（arXiv:2609.02358，Berkeley/CMU/Stanford）：急停建模
 |----|------|
 | **机构** | UC Berkeley、CMU、Stanford 等 |
 | **平台** | Unitree G1（仿真+真机） |
-| **开源** | **待发布**（项目页无 GitHub，截至 2026-09-03） |
+| **开源** | **待发布**（项目页无 GitHub，2026-09-04 再核仍无） |
 
 ### 流程总览
 
@@ -77,7 +81,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-03** 无可运行官方代码。
+**不适用** — 截至 **2026-09-04** 无可运行官方代码。
 
 ## 局限与风险
 
@@ -98,6 +102,10 @@ flowchart TB
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [开源系统可靠性 8 篇地图](../overview/open-source-system-reliability-8-papers-technology-map.md)
+- [WM-LOCO](./paper-wm-loco.md) — 同平台 G1 视觉落脚；不管急停
+- [FOCUS](./paper-focus-foot-observation-confidence.md) — 本体里程计可靠度；平台为 A3 Ultra
+- [Fail-Passive Gap](./paper-fail-passive-gap.md) — 认证层急停与「站住保持平衡」缺口
+- [三篇阅读坐标](../overview/g1-foothold-safe-stop-focus-technology-map.md)
 
 ## 参考来源
 

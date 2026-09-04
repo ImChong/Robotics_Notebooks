@@ -2,8 +2,9 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 related:
+  - ../queries/slam-second-spring-embodied.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md
   - ../entities/paper-kilvo.md
@@ -130,6 +131,7 @@ flowchart TD
 - [里程计–激光融合定位](../methods/lidar-odometry-fusion.md) — 课程级 odom↔LiDAR 融合概念，本页是其开源实现（FAST-LIO/LIO-SAM 等）选型落地
 - [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计（代码待开放）
 - [SUPER ODOMETRY 2.0](../entities/paper-super-odometry-2.md) — 退化可切换的层级融合；slim 仓 ≠ 论文全文系统
+- [Query：具身时代 SLAM 精华与糟粕](../queries/slam-second-spring-embodied.md) — 选型之外：地图可以是 token，不必是人读 Occupancy
 
 ## 推荐继续阅读
 

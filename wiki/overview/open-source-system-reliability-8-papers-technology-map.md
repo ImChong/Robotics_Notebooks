@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, open-source, system-reliability, technology-map]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-04
 related:
   - ../entities/paper-hint-robot-manipulation.md
   - ../entities/paper-sa-wam.md
@@ -105,7 +105,7 @@ flowchart TB
 1. **做长视野 VLA 编排** — 从 [HINT](../entities/paper-hint-robot-manipulation.md) 入手，对照 [VLA](../methods/vla.md)。
 2. **做 3D-aware 策略** — [SA-WAM](../entities/paper-sa-wam.md) + [World Action Models](../concepts/world-action-models.md)。
 3. **做护理/接触 HRC** — [Physics Benchmark](../entities/paper-physics-consistent-hrc-benchmark.md) 评物理，[PACT](../entities/paper-pact-hrc-action-admission.md) 管准入。
-4. **做人形安全** — [Safe-Stop](../entities/paper-safe-stop-humanoid.md) 与 [Humanoid Locomotion](../tasks/humanoid-locomotion.md)。
+4. **做人形安全** — [Safe-Stop](../entities/paper-safe-stop-humanoid.md) 与 [Humanoid Locomotion](../tasks/humanoid-locomotion.md)；同日窗口的落脚/里程计姊妹节点见 [三篇坐标](./g1-foothold-safe-stop-focus-technology-map.md)。
 5. **做灵巧单示范** — [DemoMimic](../entities/paper-demomimic.md)（既有 complete 页）。
 6. **做多相机感知** — [TAPVid-MV](../entities/paper-tapvid-mv.md)。
 7. **梳理部署期方法版图** — [TTI Survey](../entities/paper-test-time-intelligence-survey.md)。

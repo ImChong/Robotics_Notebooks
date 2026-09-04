@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-04
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -10,6 +10,8 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ../overview/embodied-infra-2026-panorama.md
+  - ../queries/slam-second-spring-embodied.md
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../entities/paper-rt-1.md
   - ../entities/paper-rt-2.md
@@ -447,6 +449,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — VLA 是五层选型闭环的 **③ 动作执行层**：全模态+本体状态 → 关节/末端控制量，也是「泛化 ↔ 实时带宽」矛盾最尖锐的一层
 - [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md) — Zero-WAM / StreamPI / UCAG-P / MA-VLA 等接口显式化盘点
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — GitHub 高可见项目按复现目标分组
+- [具身 Infra 2026 全景](../overview/embodied-infra-2026-panorama.md) — 闭环周转时间 vs 单点模型分
+- [Query：具身时代 SLAM 精华与糟粕](../queries/slam-second-spring-embodied.md) — 深蓝沙龙：VLA 是 BC，Planning 不会随参数自动出现
 - [VLN 四范式复现路径](../overview/vln-open-source-repro-paradigms.md) — 导航域 Uni-NaVid 等（与 UniVLA 操作栈区分）
 - [Uni-LaViRA](../entities/paper-uni-lavira.md) — training-free 导航 agent：主张导航可落在 MLLM 输出流形内，对照「堆轨迹训导航 VLA」
 - [DA-Nav](../entities/paper-da-nav.md) — 城市尺度方向感知 VLN：图像平面网格 + CoT 恢复（对照连续 waypoint / NaVILA）
