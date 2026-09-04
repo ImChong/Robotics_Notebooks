@@ -2,7 +2,7 @@
 type: concept
 tags: [llm-agents, control-interface, vla, locomotion, manipulation, anthropic, safety, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 related:
   - ../entities/anthropic-embody.md
   - ./model-hardware-standard.md

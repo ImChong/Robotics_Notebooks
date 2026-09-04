@@ -11,7 +11,7 @@ tags:
   - gpu
   - motion-planning
 status: complete
-updated: 2026-05-30
+updated: 2026-09-04
 arxiv: "2511.04758"
 venue: "ICRA 2026"
 code: https://github.com/NVlabs/schedulestream

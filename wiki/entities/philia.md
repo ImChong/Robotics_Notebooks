@@ -2,10 +2,11 @@
 type: entity
 tags: [llm-agents, agent-infrastructure, multi-robot, manipulation, humanoid, astribot, persistent-memory, messaging-gateway]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-04
 arxiv: "2607.11377"
 related:
   - ./lumo-2.md
+  - ./paper-smoothrl.md
   - ./hermes-agent.md
   - ./openclaw.md
   - ../tasks/manipulation.md
@@ -129,6 +130,7 @@ flowchart TB
 ## 关联页面
 
 - [Lumo-2](./lumo-2.md) — 上游 latent WAM 通才策略
+- [SmoothRL](./paper-smoothrl.md) — 同机构：异步环内在线 RL 微调已有 VLA（arXiv:2608.29768）
 - [Hermes Agent](./hermes-agent.md) — 开源多通道 Agent 运行时对照
 - [Manipulation](../tasks/manipulation.md) — 长程灵巧服务任务
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md) — 语义地点 vs 低层导航分界

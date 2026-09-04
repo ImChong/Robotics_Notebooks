@@ -2,12 +2,13 @@
 type: comparison
 tags: [robot-learning, imitation-learning, reinforcement-learning, vla, continual-learning, sim2real, taxonomy, shenlan]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-04
 related:
   - ./rl-vs-il.md
   - ./vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../overview/hub-embodied-foundation-model.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../queries/embodied-six-routes-holes.md
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
   - ../methods/vla.md
@@ -141,6 +142,7 @@ flowchart LR
 - [五大具身模型分类](./vlm-vln-vla-vlx-world-model-taxonomy.md) — 模型族 I/O 边界（正交 taxonomy）
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 选模型族时的姊妹入口；本页回答「用什么学习信号」
 - [Query：具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — VLM→VLN→VLA→VLX→WM 决策链
+- [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — 产业叙事并置的六条 + 各路卡点（与本页学习信号轴正交）
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 学习方法层总入口
 - [Imitation Learning](../methods/imitation-learning.md) / [Reinforcement Learning](../methods/reinforcement-learning.md) / [VLA](../methods/vla.md)
 - [Sim2Real](../concepts/sim2real.md) / [Domain Randomization](../concepts/domain-randomization.md)

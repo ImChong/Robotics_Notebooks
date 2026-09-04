@@ -4,7 +4,7 @@ tags: [google-deepmind, vla, gemini, embodied-ai, product, hmi-papers, whole-bod
 title: Gemini Robotics
 status: complete
 summary: "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈的机器人模型族；Gemini Robotics 2（2026-07）把 VLA 推进到全身人形控制，并配套公开预览的 ER 2 agent 与端侧 On-Device 2。"
-updated: 2026-08-17
+updated: 2026-09-04
 related:
   - ../methods/vla.md
   - ../concepts/foundation-policy.md
@@ -16,6 +16,7 @@ related:
   - ./paper-palm-e-embodied-language-model.md
   - ./perceptron-egocentric.md
   - ../queries/hmi-papers-coverage.md
+  - ../queries/embodied-six-routes-holes.md
 sources:
   - ../../sources/blogs/gemini_robotics_2_whole_body.md
   - ../../sources/sites/gemini-robotics.md
@@ -172,6 +173,7 @@ sequenceDiagram
 - [PaLM-E](./paper-palm-e-embodied-language-model.md)
 - [Perceptron Egocentric](./perceptron-egocentric.md)
 - [HMI 论文导读](../queries/hmi-papers-coverage.md)
+- [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — ER 作为高层编排、VLA 作为手的产业坐标
 - [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 通过托管 SFT API 把 Gemini Robotics On-Device 适配成人形专才（arXiv:2607.29172）
 
 ## 参考来源

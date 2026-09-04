@@ -1,3 +1,12 @@
+## [2026-09-04] ingest | sources/papers/smoothrl_arxiv_2608_29768.md + 深蓝六条路线公众号 — SmoothRL 项目页再核已上线仍未开源；六条窟窿写回 query
+
+- **触发：** 用户指定 <https://www.astribot.com/research/SmoothRL>、arXiv:2608.29768、<https://mp.weixin.qq.com/s/k7CR03ZHaSQRMVvutpSnCg>
+- **复用：** [`paper-smoothrl`](wiki/entities/paper-smoothrl.md)（2026-09-02 已 complete）。**不要**把公众号误读成 SmoothRL 通稿——正文是深蓝《拆完这六条技术路线…》。
+- **步骤 2.5（SmoothRL，2026-09-04 再核）：** 项目页 **已上线**（Nuxt；2026-09-02 为 404）。Hero + 9 段任务对比视频在 OSS `media/smoothrl/`。页内 **无** GitHub / HF → **确认未开源**。作者：Guang Gao\* / Yuxuan Nong\* / Baifu Huang；Lead：Jianan Wang。
+- **关键数字：** S1 三任务 250 ep：投掷 39%→94%、笔帽 8%→83%、开箱 30%→90%；RMS acc/jerk −52%/−47%。
+- **新建：** 公众号写回 [`embodied-six-routes-holes`](wiki/queries/embodied-six-routes-holes.md)；raw + blog 归档。文内 Helix / Index / ER 2 / RL Token 等 **映射已有节点，0 重复造页**。
+- **交叉：** VLA / action-chunking / Manipulation / RL / Lumo-2 / Philia / Figure / Gemini / 五大范式 / 五层选型闭环
+
 ## [2026-09-04] structural | roadmap/depth-icl.md — 新增第 23 条纵深路线「ICL（具身上下文学习）」并接入路线视图/首页/主路线
 
 - **触发：** 维护者要求"增加一个 ICL（in-context learning）的纵深"。仓库已有 [`robot-in-context-learning`](wiki/concepts/robot-in-context-learning.md) 概念页与 [四路线对比](wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)，但没有对应的学习路线页。

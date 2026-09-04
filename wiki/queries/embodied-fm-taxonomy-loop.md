@@ -2,7 +2,7 @@
 type: query
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy, foundation-model]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-04
 summary: "具身大模型分类学选型闭环知识链：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层，从分散的家族概念页沉淀为一条端到端选型决策链，逐层说明 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性的取舍及典型失败模式。"
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-daily-omni.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/llm-robotics-control-interfaces.md
+  - ./embodied-six-routes-holes.md
 ---
 
 # Query：具身大模型分类学选型闭环知识链
@@ -177,4 +178,5 @@ VLX（Vision-Language-X，X = 可扩展任务）把感知/导航/执行收进**�
 - [统一多模态 token](../methods/unified-multimodal-tokens.md) — ④ VLX 一体化的表征接口
 - [Daily-Omni](../entities/paper-daily-omni.md) — ① 层 omni-modal **音视频时序对齐** 诊断基准
 - 姊妹 Query：[具身大模型评测基准选型闭环](./embodied-eval-benchmark-selection-loop.md) — 「选完怎么评测」
+- 姊妹 Query：[六条路线的窟窿](./embodied-six-routes-holes.md) — 产业叙事轴上的卡点，不替代本页 I/O 五层
 - 纵深汇总：[VLA（知识链汇总）](../overview/hub-vla.md) — ③ 执行层在图谱路线视图的统一入口

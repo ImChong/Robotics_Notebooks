@@ -3,14 +3,16 @@
 type: entity
 tags: [hardware, humanoid, industry, vla, figure-ai]
 status: complete
-updated: 2026-05-07
+updated: 2026-09-04
 related:
   - ./humanoid-robot.md
   - ./1x-technologies.md
   - ../methods/vla.md
   - ../queries/humanoid-hardware-selection.md
+  - ../queries/embodied-six-routes-holes.md
 sources:
   - ../../sources/repos/figure-ai.md
+  - ../../sources/blogs/wechat_shenlan_embodied_six_routes_holes_2026-09-04.md
 summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。"
 ---
 
@@ -39,7 +41,8 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 | 名称 | 类型 | 说明 |
 |------|------|------|
 | **Figure 02** | 全尺寸人形整机 | 面向落地场景的第二代平台（细节以官方规格为准） |
-| **Helix / Helix 02** | VLA 家族 | upper-body → full-body 控制扩展见 Figure 官方新闻稿 |
+| **Helix / Helix 02** | VLA 家族 | 官方新闻稿：upper-body → full-body。深蓝 2026-09-04 转述其按时间尺度分层：System 2 语义、System 1 ~200 Hz 全身关节、System 0 ~1 kHz 平衡/接触——**以 Figure 博客为准** |
+| **Index** | 人视频数据平台 | 同文转述：截至 2026-08-25 自称累计超 **1600 万** 条真实世界视频；条数以 Figure 官方为准 |
 
 ## 常见误区或局限
 
@@ -53,10 +56,12 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 - [VLA](../methods/vla.md)
 - [1X Technologies](./1x-technologies.md)
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
+- [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — Helix 分层与 Index 数据饥渴的产业读法
 
 ## 参考来源
 
 - [Figure AI 原始资料](../../sources/repos/figure-ai.md)
+- [深蓝六条路线（转述 Helix 02 / Index）](../../sources/blogs/wechat_shenlan_embodied_six_routes_holes_2026-09-04.md)
 
 ## 推荐继续阅读
 
