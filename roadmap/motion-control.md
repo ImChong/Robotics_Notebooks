@@ -45,6 +45,7 @@
   - [如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
   - [如果目标是 Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
   - [如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
+  - [如果目标是 ICL（具身上下文学习）](depth-icl.md)
   - [如果目标是 BFM（人形行为基础模型）](depth-bfm.md)
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
@@ -1453,7 +1454,7 @@ flowchart TD
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子方向。下面二十二条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
+主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子方向。下面二十三条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
@@ -1472,6 +1473,7 @@ flowchart TD
 | [如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md) | 想让一群人形同台跳舞、变队形、协同炫技 | L5.3 之后 |
 | [如果目标是 Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) | 想把仿真里训好的策略稳定搬上真机 | L5.2 → L6（L6 的展开版）|
 | [如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) | 想让两台人形在擂台上像人一样对打 | L5.3 之后 |
+| [如果目标是 ICL（具身上下文学习）](depth-icl.md) | 想让机器人读完一条示范就会做新任务、且不动权重 | L5.3 之后（示范数据侧与遥操作纵深串联）|
 | [如果目标是 BFM（人形行为基础模型）](depth-bfm.md) | 想用一个 checkpoint 控住人形全身 | L5.3 之后 |
 | [如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](depth-embodied-eval.md) | 想证明/证伪一个具身模型（含运控模型）到底好不好 | L2–L5 的验收侧，L6 / L7 的出具结论环节 |
 | [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) | 想让机器人看着地形上楼梯、跨障碍、跑酷 | L5 之后 |
@@ -1524,6 +1526,7 @@ flowchart TD
   - [如果目标是人形群控展演](depth-humanoid-swarm-performance.md)
   - [如果目标是 Sim2Real](depth-sim2real.md)
   - [如果目标是人形拳击](depth-humanoid-boxing.md)
+  - [如果目标是 ICL（具身上下文学习）](depth-icl.md)
   - [如果目标是 BFM（人形行为基础模型）](depth-bfm.md)
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成](depth-motion-generation.md)

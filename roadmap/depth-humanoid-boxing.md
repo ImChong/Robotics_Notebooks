@@ -238,6 +238,7 @@ flowchart LR
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
+  - [ICL（具身上下文学习）](depth-icl.md)
 - 关联知识页：
   - [RoboStriker](../wiki/entities/paper-notebook-robostriker.md)
   - [REK](../wiki/entities/rek.md)

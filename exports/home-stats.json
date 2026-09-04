@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3442,
-  "edge_count": 31216,
+  "node_count": 3443,
+  "edge_count": 31294,
   "coverage": {
     "covered": 3416,
     "total": 3416,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "roadmap/depth-icl.md",
+      "detail_id": "roadmap-depth-icl",
+      "label": "路线（纵深）：如果目标是 ICL（具身上下文学习）",
+      "type": "roadmap_page",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-focus-foot-observation-confidence.md",
       "detail_id": "entity-paper-focus-foot-observation-confidence",
@@ -140,7 +149,7 @@
       "recency": "2026-09-03",
       "source": "git",
       "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-hint-robot-manipulation.md",
@@ -191,34 +200,25 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/overview/open-source-system-reliability-8-papers-technology-map.md",
-      "detail_id": "wiki-overview-open-source-system-reliability-8-papers-technology-map",
-      "label": "开源系统可靠性：8 篇论文的阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-03",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-focus-foot-observation-confidence.md",
-    "detail_id": "entity-paper-focus-foot-observation-confidence",
-    "label": "FOCUS：连续足部置信度的人形本体里程计",
-    "type": "entity",
+    "path": "roadmap/depth-icl.md",
+    "detail_id": "roadmap-depth-icl",
+    "label": "路线（纵深）：如果目标是 ICL（具身上下文学习）",
+    "type": "roadmap_page",
     "recency": "2026-09-04",
     "source": "git",
     "action": "added"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 591
+      "label": "宇树 G1 人形机器人",
+      "size": 623
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 553
+      "label": "操作",
+      "size": 597
     },
     {
       "label": "视觉-语言-动作",
@@ -226,15 +226,15 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 219
+      "size": 217
     },
     {
       "label": "视觉语言动作纵深路线",
-      "size": 182
+      "size": 180
     },
     {
-      "label": "力矩电机设计纵深路线",
-      "size": 136
+      "label": "机器人视觉感知栈选型闭环",
+      "size": 97
     }
   ],
   "top_hubs": [
@@ -265,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 879,
+      "degree": 880,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -278,19 +278,19 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "degree": 574,
+      "has_repo": true
+    },
+    {
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
       "degree": 574,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "degree": 573,
-      "has_repo": true
     },
     {
       "detail_id": "entity-awesome-world-models",

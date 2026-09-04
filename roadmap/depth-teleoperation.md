@@ -272,6 +272,7 @@ flowchart LR
   - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)、[人形群控展演](depth-humanoid-swarm-performance.md) — 竞技/展演向的遥操作极端场景
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — 非结构化地形遥操作的感知前置
   - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
+  - [ICL（具身上下文学习）](depth-icl.md) — 下游：采到的示范可直接当上下文提示
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
