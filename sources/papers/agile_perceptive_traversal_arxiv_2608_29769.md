@@ -13,6 +13,7 @@
 - **发表 / 上传：** 2026-08（arXiv）
 - **平台：** ENGINEAI PM-01 + RoboSense E1R 固态 LiDAR + 被动钩式末端
 - **入库日期：** 2026-09-02
+- **再核日期：** 2026-09-04
 
 ## 相关资料（策展）
 
@@ -23,10 +24,10 @@
 | 前作 | [AME-2 arXiv:2601.08485](https://arxiv.org/abs/2601.08485) | 注意力地图编码器直接用于原始 LiDAR 栅格 |
 | 对照 | [LadderMan arXiv:2606.05873](https://arxiv.org/abs/2606.05873) | 人形感知梯子攀爬（深度而非原始 LiDAR） |
 
-## 开源状态（步骤 2.5，2026-09-02 复核）
+## 开源状态（步骤 2.5，2026-09-04 再核）
 
-- **确认未开源：** 项目页 **无** GitHub / Hugging Face / Zenodo 链接；页脚无 Code 区。
-- **处理：** wiki 标未开源；`## 源码运行时序图` 标不适用。
+- **确认未开源：** 项目页 **无** GitHub / Hugging Face / Zenodo 链接；页脚无 Code 区。作者 Pages 账号 [`nemantor`](https://github.com/nemantor) 仅有无关 Java/LIVO fork，**无** 本项目训练/部署仓。
+- **处理：** wiki 标未开源；`## 源码运行时序图` 标不适用。勿建 `sources/repos/`。
 
 ## 摘要级要点
 
@@ -57,15 +58,26 @@
 | 编码器 | 参数量 | total | jump | brach. | down |
 |--------|--------|-------|------|--------|------|
 | AME-2 + aux | 13.8k | **2.35** | **2.48** | **1.95** | **3.20** |
+| AME-2 | 13.8k | 2.43 | 2.56 | 2.00 | 3.26 |
+| CNN | 106.7k | 2.62 | 2.73 | 2.16 | 3.57 |
+| MLP | 1.31M | 2.76 | 2.92 | 2.28 | 3.62 |
 | Blind | — | 2.90 | 3.18 | 2.30 | 3.51 |
+
+### 4) 电池 / 热 / LiDAR 噪声（§V）
+
+- 跳上峰值机械功率 **2.11 kW**，电压最低 **34.7 V**；无压降模型会 brownout。
+- 电池：\(V_{\mathrm{nom}}=51\,\mathrm{V}\)，\(V_{\mathrm{min}}=30\,\mathrm{V}\)，\(k_{\mathrm{sag}}=0.0375\)，\(T_{\mathrm{rec}}=0.1\,\mathrm{s}\)。
+- 热积分：18 个低力矩关节，\(T_{\mathrm{ch}}=1\,\mathrm{s}\)，\(T_{\mathrm{leak}}=5\,\mathrm{s}\)，持续 \(\rho\ge 0.2\) 饱和。
+- E1R 训练噪声：\(0.625^\circ\) 锥 + \(\sigma=2\,\mathrm{cm}\)；边缘 drop 0.05 / mix 0.20；距离门 \([0.3,1.5]\,\mathrm{m}\)。MuJoCo 验证：每像素 16 射线逆平方融合。
 
 ## 对 wiki 的映射
 
 - 沉淀实体页：[Agile Perceptive Traversal](../../wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md)
-- 交叉补强：[AME-2](../../wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md)、[LadderMan](../../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)、[stair-obstacle perceptive locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
+- 交叉补强：[AME-2](../../wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md)、[LadderMan](../../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)、[PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[ANYmal Parkour](../../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)、[stair-obstacle perceptive locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
 
 ## 当前提炼状态
 
-- [x] arXiv HTML 方法 / Table IV–V / 硬件节摘录
-- [x] 项目页开源核查：无代码链接
+- [x] arXiv HTML 方法 / Table I–V / 硬件与 §V 噪声摘录
+- [x] 项目页开源核查（2026-09-02 初核、2026-09-04 再核）：无代码链接
 - [x] 升格 `wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md`
+- [x] 2026-09-04：枢纽页挂接 + 电池/热/射线锥参数编译入 wiki

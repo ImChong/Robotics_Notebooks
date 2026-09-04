@@ -2,13 +2,15 @@
 type: entity
 tags: [paper, quadruped, parkour, perceptive-locomotion, hierarchical-rl, navigation, sim2real, anymal, eth, humanoid-paper-notebooks]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-04
 arxiv: "2306.14874"
 venue: "Science Robotics 2024"
 related:
   - ./anymal.md
   - ./extreme-parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
+  - ./paper-agile-perceptive-traversal-sparse-3d.md
+  - ./paper-agile-perceptive-traversal-sparse-3d.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../concepts/terrain-latent-representation.md
   - ../concepts/hierarchical-quadruped-navigation-stack.md
@@ -139,7 +141,7 @@ flowchart LR
 - 路线入口：[感知越障纵深](../../roadmap/depth-perceptive-locomotion.md)
 - 任务枢纽：[楼梯与障碍感知 locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)
 - 表示：[Terrain Latent Representation](../concepts/terrain-latent-representation.md)
-- 对照：[Extreme Parkour](./extreme-parkour.md)、[Humanoid Parkour Learning](./paper-notebook-humanoid-parkour-learning.md)
+- 对照：[Extreme Parkour](./extreme-parkour.md)、[Humanoid Parkour Learning](./paper-notebook-humanoid-parkour-learning.md)、[Agile Perceptive Traversal](./paper-agile-perceptive-traversal-sparse-3d.md)（部署期单策略 vs 本文技能库切换）
 
 ## 参考来源
 
