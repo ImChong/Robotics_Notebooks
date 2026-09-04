@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, parkour, vae, ppo, sim2real, unitree-g1, isaac-lab, rsl-rl, sjtu, tongji, zju, shanghai-innovation-institute]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-04
 arxiv: "2607.25541"
 code: https://github.com/ylyem9x/P3_Open
 related:
@@ -17,6 +17,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ./isaac-lab.md
   - ./unitree-g1.md
+  - ./paper-wm-loco.md
   - ../overview/humanoid-rl-motion-control-methods.md
 sources:
   - ../../sources/papers/p3_arxiv_2607_25541.md
@@ -206,6 +207,7 @@ sequenceDiagram
 - [地形 Latent 表征](../concepts/terrain-latent-representation.md) — Encoder 输出是分布时，下游 PPO 必须边缘化
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) — 踏石 / 楼梯 / 缺口任务挂接
 - [Isaac Lab](./isaac-lab.md) / [Unitree G1](./unitree-g1.md) — 训练栈与真机平台
+- [WM-LOCO](./paper-wm-loco.md) — 同为 G1 踏石/楼梯/沟，改的是世界模型特征而不是 PPO 边缘似然
 
 ## 参考来源
 

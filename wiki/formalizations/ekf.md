@@ -13,7 +13,7 @@ sources:
   - ../../sources/papers/perception_localization.md
   - ../../sources/courses/mit_underactuated_kalman_lqr.md
 summary: "Extended Kalman Filter (EKF)"
-updated: 2026-08-09
+updated: 2026-09-04
 ---
 
 # Extended Kalman Filter (EKF)
@@ -125,6 +125,7 @@ EKF 在旋转相关状态上有一致性问题（observability 不一致）。**
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 浮动基机器人状态估计的动力学背景
 - [Sim2Real](../concepts/sim2real.md) — 状态估计精度直接影响 sim2real 效果
 - [LQR / iLQR](./lqr.md) — LQR/EKF 是最优控制中的"最优估计+最优控制"经典对
+- [FOCUS](../entities/paper-focus-foot-observation-confidence.md) — 连续 FK 可靠度调制 EKF 观测，而不是二值接触开关
 
 ## 参考来源
 

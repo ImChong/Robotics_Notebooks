@@ -1,3 +1,10 @@
+## [2026-09-04] ingest | sources/papers/{wm_loco,focus,safe_stop} + 两篇公众号 — WM-LOCO/FOCUS 新建独立节点，Safe-Stop 复用；Infra 全景与 SLAM 沙龙写回 overview/query
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/qVqpihnA4GezsE2MIJjKDw>、三篇论文（WM-LOCO / Safe-Stop / FOCUS）须独立非重复详情节点，以及 <https://mp.weixin.qq.com/s/0MUtW7aaPPltT9oO3SUtSg>
+- **步骤 2.5：** WM-LOCO **待发布**（`m0puppet.github.io/wm-loco` 仅项目页，Code coming soon）；Safe-Stop **待发布**（2026-09-04 再核项目页仍无 GitHub，**复用**既有 complete 页）；FOCUS **确认未开源**（无项目页/官方仓；勿与 StefanoFerraro/FOCUS 世界模型仓混淆）
+- **关键页：** 新建 [`paper-wm-loco`](wiki/entities/paper-wm-loco.md)、[`paper-focus-foot-observation-confidence`](wiki/entities/paper-focus-foot-observation-confidence.md)；复用 [`paper-safe-stop-humanoid`](wiki/entities/paper-safe-stop-humanoid.md)；地图 [`g1-foothold-safe-stop-focus-technology-map`](wiki/overview/g1-foothold-safe-stop-focus-technology-map.md)；Infra 长文写回 [`embodied-infra-2026-panorama`](wiki/overview/embodied-infra-2026-panorama.md)（30 条参考文献映射已有节点，缺页待升格）；SLAM 沙龙写回 [`slam-second-spring-embodied`](wiki/queries/slam-second-spring-embodied.md)
+- **机构注册：** `bupt` 北京邮电大学（BUPT）、`soochow` 苏州大学（Soochow University）
+
 ## [2026-09-03] lint | wiki/entities/paper-{demomimic,openvla,tapvid-mv,physics-consistent-hrc-benchmark}.md — 清空全量 lint 信息型预警：补 1 篇「对比」段 + 2 条评测枢纽双向回链 + 1 条陈旧声明时效化 + 1 个缺页误报归档
 
 - **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **5 条信息型预警**（三段式缺「对比」×1、评测基准枢纽回链缺失×2、陈旧声明×1、缺页概念候选×1）
