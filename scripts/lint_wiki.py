@@ -219,6 +219,12 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                concepts/world-action-models.md；论文消融条件名「joint」
 #                （Green for Go）属单页实验设定。与 damping 同为 MuJoCo 关节属性
 #                token，本库按参数/分类维度记述，不单建概念页
+#   lcm        → concepts/lcm-basics.md（Lightweight Communications and Marshalling
+#                的 canonical 概念页：UDP 组播 pub/sub、类型描述语言与多语言强类型
+#                序列化，slug 与页面 stem 不同名）+ concepts/ipc-inter-process-communication.md
+#                （IPC 谱系里的一档）+ comparisons/ros2-vs-lcm.md（与 ROS 2 的选型
+#                对照）：与 ethercat / ros2 / urdf 同属「缩写 slug ≠ 页面 stem」，
+#                不应按裸缩写误报为缺页
 #   lerobot    → entities/lerobot.md（Hugging Face 具身智能全栈框架，库/工具）
 #   mjlab      → entities/mjlab.md（库/工具）
 #   mujoco     → entities/mujoco.md（仿真器/工具）
@@ -340,6 +346,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "heracles",
     "isaac-cartpole-v0",  # Isaac Lab 环境注册 id，已由 concepts/cartpole.md 覆盖
     "joint",  # 关节属性 / WAM Joint 族 / 消融条件名三义，已由 URDF + WAM 等页覆盖
+    "lcm",  # 已由 concepts/lcm-basics.md 覆盖（缩写 slug 与页面 stem 不同名）
     "lerobot",  # 已由 entities/lerobot.md 覆盖（框架/工具，与 mjlab / mujoco 同类）
     "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
     "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖

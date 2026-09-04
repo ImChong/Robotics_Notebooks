@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-03
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -24,6 +24,8 @@ sources:
   - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
   - ../../sources/papers/reflexvla_arxiv_2608_14379.md
   - ../../sources/papers/imitator_game_arxiv_2608_22301.md
+  - ../../sources/papers/physics_consistent_hrc_benchmark_arxiv_2609_02402.md
+  - ../../sources/papers/tapvid_mv_arxiv_2609_01899.md
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../entities/anthropic-embody.md
@@ -57,6 +59,8 @@ related:
   - ../entities/paper-h2r-bench.md
   - ../entities/paper-hydra-0.md
   - ../entities/paper-robosynchallenge.md
+  - ../entities/paper-tapvid-mv.md
+  - ../entities/paper-physics-consistent-hrc-benchmark.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -225,6 +229,8 @@ flowchart TD
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — ③ 层：冻结 PRM 进度曲线 + OPD；工具仓已开源
 - [ReflexVLA](../entities/paper-reflexvla.md) — ③ 层：ReflexBench 延迟感知动态任务；代码待开放
 - [SoftVTBench](../entities/paper-softvtbench.md) — ③ 层：可变形视触觉 Goal/Safety Success
+- [Physics-Consistent HRC Benchmark](../entities/paper-physics-consistent-hrc-benchmark.md) — ③ 层接触安全切面：辅助护理 HRC 名义成功率经区域+力安全筛查后 72.9%→56.4%（`benchmark/` 待发布）
+- [TAPVid-MV](../entities/paper-tapvid-mv.md) — ② 层前置感知：多同步移动相机长时 3D 任意点跟踪基准；30+ baseline 未接近解决，瓶颈在几何恢复而非跟踪头
 - [HumanTracker](../entities/paper-humantracker.md) — ③ 层：人形 motion tracking 四族 153 h 光学基准 + 偏好对齐 HumanScore（数据集待发布）
 - [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配、O(N+M) 契约与 verified 开源口（arXiv:2608.09892）
 - [FabriVLA](../entities/paper-fabrivla.md) — ③层轻量 VLA Meta-World 对照条目

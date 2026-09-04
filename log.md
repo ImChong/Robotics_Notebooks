@@ -1,3 +1,14 @@
+## [2026-09-03] lint | wiki/entities/paper-{demomimic,openvla,tapvid-mv,physics-consistent-hrc-benchmark}.md — 清空全量 lint 信息型预警：补 1 篇「对比」段 + 2 条评测枢纽双向回链 + 1 条陈旧声明时效化 + 1 个缺页误报归档
+
+- **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **5 条信息型预警**（三段式缺「对比」×1、评测基准枢纽回链缺失×2、陈旧声明×1、缺页概念候选×1）
+- **三段式补「对比」：** [`paper-demomimic`](wiki/entities/paper-demomimic.md) 新增 `## 与其他工作对比`（DexMachina\* 95.8→21.72% / HERMES\* 93.7→3.37% 的 sim-to-real 崩塌对照、CHORD 的 wrench 空间 vs 本页接触局部几何、ADEPT 大规模预训练+distill vs 单次示范、VisualMimic 全身 loco-manip vs 桌面多指、多示范 IL 的 per-object 重采集）——均由页内已有事实归并成表，未引入新论断；另注明 \* 基线数字来自项目页复现而非原论文自报
+- **评测基准闭环：** [`paper-physics-consistent-hrc-benchmark`](wiki/entities/paper-physics-consistent-hrc-benchmark.md) 落 ③ 层接触安全切面（名义 SR 经区域+力安全筛查 72.9%→56.4%，与 SoftVTBench 同类）；[`paper-tapvid-mv`](wiki/entities/paper-tapvid-mv.md) 落 ② 层前置感知切面（多视角长时 3D 对应，30+ baseline 未接近解决、瓶颈在几何恢复）；枢纽页 [`embodied-eval-benchmark-selection-loop`](wiki/queries/embodied-eval-benchmark-selection-loop.md) 同步补 `related` / `sources` / 「关联页面」条目并 bump `updated`
+- **陈旧声明时效化：** [`paper-openvla`](wiki/entities/paper-openvla.md) 的「开源 7B 可达闭源 SOTA 约 85%+」补上 **2024 年原文发表时** 的时间限定与「发表时快照、横比前回榜核协议」的读法，并链到 [`vla-sota-leaderboard`](wiki/entities/vla-sota-leaderboard.md) 作为相对位次的复核入口——该数字是发表时相对 RT-2-X 的对照基线值，不是当前位次
+- **缺页误报归档：** `LCM` 属「缩写 slug ≠ 页面 stem」，已由 [`concepts/lcm-basics.md`](wiki/concepts/lcm-basics.md)（UDP 组播 pub/sub + 类型描述语言）+ [`concepts/ipc-inter-process-communication.md`](wiki/concepts/ipc-inter-process-communication.md) + [`comparisons/ros2-vs-lcm.md`](wiki/comparisons/ros2-vs-lcm.md) 覆盖，按 ethercat / ros2 / urdf 惯例登记进 `MISSING_CONCEPT_COVERED_ELSEWHERE`
+- **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型，覆盖率 3407/3407）；`make ci-preflight` 全绿（导出质量 12/12）；`eval_search_quality` 通过；`ruff check` + `ruff format --check` 通过；`npm run lint:js` 通过；`pytest` 429 passed / 608 subtests
+- **派生物：** 本会话 `git fetch --unshallow` 后重跑 `ci-preflight`，`wiki-activity` 口径为 git（非 log.md 兜底），故 `exports/` `docs/exports/` 统计随本次提交（图谱 30934 → 30940 边）
+- **合并 main 后复跑：** 合入 origin/main（PR #1769：新建 `concepts/motion-control-policy-evaluation-metrics.md` + 第 22 条纵深路线 `roadmap/depth-embodied-eval.md`）后二次全量 lint 仍为 **0 失败 / 0 信息型**，新页未带入新预警；冲突仅在 `log.md`（顶部两侧各自 prepend，按倒序时间线保留双方）与徽章/统计派生物（取 main 侧后由 `ci-preflight` 重算，图谱 3434 节点 / 31065 边）
+
 ## [2026-09-03] ingest | wiki/concepts/motion-control-policy-evaluation-metrics.md — 新建「运控模型评测指标」概念页：四组指标坐标系（跟踪误差 / 命令跟随 / model-based 求解 / 硬件部署）、可比性四项对齐（参考表示·rollout 记账·终止准则·指标实现）、HumanScore 偏好对齐、MDS/MID/DSJE 难度分层、仿真→半实物→真机三段验收；归纳自 HumanTracker(2608.13555)/MDS(2512.07248)/Barkour(2305.14654)/HumanoidBench/TrackerLab 与 locomotion 任务页
 
 ## [2026-09-03] structural | roadmap/depth-embodied-eval.md — 补 Stage 4「运控模型测评」（Succ+MPJPE 联报、参考表示/rollout 记账/终止准则四项对齐、难度分层 MDS/MID/DSJE、locomotion 速度/CoT/摔倒率/硬件安全裕度、MPC-WBC 求解耗时与约束违反、仿真→半实物→真机三段验收）；原 Stage 4/5 顺延为 5/6，路线更新为 Stage 0–6

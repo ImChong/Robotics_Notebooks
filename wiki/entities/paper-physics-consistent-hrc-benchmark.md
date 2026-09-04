@@ -8,6 +8,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/humanoid-locomotion.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-pact-hrc-action-admission.md
 sources:
   - ../../sources/papers/physics_consistent_hrc_benchmark_arxiv_2609_02402.md
@@ -101,6 +102,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md)
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - [PACT](./paper-pact-hrc-action-admission.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属其 ③ 策略任务成功率评测层的接触安全切面：与 [SoftVTBench](./paper-softvtbench.md) 同类，主张名义成功率须经区域+力安全筛查后再读（72.9%→56.4%），双向回链
 
 ## 参考来源
 

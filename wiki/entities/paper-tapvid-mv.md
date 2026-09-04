@@ -8,6 +8,7 @@ related:
   - ../tasks/manipulation.md
   - ../methods/reinforcement-learning.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/tapvid_mv_arxiv_2609_01899.md
   - ../../sources/sites/tapvid-mv.md
@@ -95,6 +96,7 @@ flowchart LR
 
 - [Manipulation](../tasks/manipulation.md)
 - [开源系统可靠性 8 篇地图](../overview/open-source-system-reliability-8-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ② 预测保真度层的前置感知切面：多视角长时 3D 对应基准，30+ baseline 均未接近解决且瓶颈在几何恢复，双向回链
 
 ## 参考来源
 
