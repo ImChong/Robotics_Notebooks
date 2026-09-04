@@ -32,6 +32,7 @@ related:
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
+  - ../entities/paper-agile-perceptive-traversal-sparse-3d.md
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
@@ -51,6 +52,7 @@ sources:
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/papers/dpl_arxiv_2510_07152.md
   - ../../sources/papers/ladderman_arxiv_2606_05873.md
+  - ../../sources/papers/agile_perceptive_traversal_arxiv_2608_29769.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
@@ -162,6 +164,7 @@ flowchart TB
 | 平台 | 感知 | 页面 | 要点 |
 |------|------|------|------|
 | 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略 |
+| 人形 PM-01 | **头部固态 LiDAR（原始栅格）** | [Agile Perceptive Traversal](../entities/paper-agile-perceptive-traversal-sparse-3d.md) | AME-2+GRU 直接吃 E1R 稀疏回波；分阶段多教师蒸馏；猴架全序列真机 **14/15**、荡杆 0.5 m/s；截至 2026-09-04 未开源 |
 | 人形 Lightbot 0 | **深度** | [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) | 稀疏种子 Real2Sim2Real + 多专家/转移组蒸馏；**无技能标签**；代码未开源 |
 | 人形 G1 | **RGB-D** | [ParkourFormer](../entities/paper-parkourformer.md) | Transformer 查询历史 + 未来两步 AMP 监督；九类地形单策略 **93.85%**；代码 Coming Soon |
 | 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 全身跑酷，与 PHP 同簇 |
@@ -199,6 +202,7 @@ flowchart TB
 | 人形 **单深度** + 学习高程重建（无外定位）+ 楼梯/缝隙 | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) |
 | 人形 **连续公里级** + 单胸深相机 + 逐格高程 + 轨迹蒸馏 | [SOLO](../entities/paper-solo.md) |
 | 人形 **梯子攀爬** + **梯上遥操作**（稀疏踏棍） | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |
+| 人形 **稀疏悬空结构 / 猴架荡杆** + 原始固态 LiDAR（非高程图） | [Agile Perceptive Traversal](../entities/paper-agile-perceptive-traversal-sparse-3d.md) |
 | 人形 **BFM 式开放 raw 参考** + **地形感知落脚/间隙**（楼梯/块/户外） | [Perceptive BFM](../entities/paper-perceptive-bfm.md) |
 | 人形 **感知失效/动态障碍** 时在视觉策略与盲走间切换 | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) |
 | 已有 **VAE-PPO** 感知行走、课程上不去 / clip 异常 | [P³](../entities/paper-p3.md) |
@@ -240,5 +244,6 @@ flowchart TB
 - [离散地形最小感知论文摘录（arXiv:2606.31912）](../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md)
 - [42 篇人形 RL 运动控制目录摘录](../../sources/papers/humanoid_rl_stack_42_catalog.md)
 - [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
+- [Agile Perceptive Traversal 论文摘录（arXiv:2608.29769）](../../sources/papers/agile_perceptive_traversal_arxiv_2608_29769.md)
 - [VB-Com 论文摘录（arXiv:2502.14814）](../../sources/papers/vb_com_arxiv_2502_14814.md)
 - [ParkourFormer 论文摘录（arXiv:2605.25782）](../../sources/papers/parkourformer_arxiv_2605_25782.md)

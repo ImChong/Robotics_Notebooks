@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-04",
   "node_count": 3461,
-  "edge_count": 31525,
+  "edge_count": 31531,
   "coverage": {
     "covered": 3434,
     "total": 3434,
@@ -399,7 +399,7 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 42
+      "degree": 43
     }
   ]
 }

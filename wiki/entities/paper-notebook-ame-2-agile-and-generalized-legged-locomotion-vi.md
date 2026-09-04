@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, biped, reinforcement-learning, perceptive-locomotion, neural-mapping, teacher-student, attention, sim2real, eth, anymal, limx]
 status: stable
 summary: "AME-2：全局+局部 AME 编码器 + 不确定性神经高程映射 + Teacher–Student RL，在 ANYmal-D 与 TRON1 上同时实现 parkour 级敏捷与稀疏/未见地形泛化。"
-updated: 2026-09-02
+updated: 2026-09-04
 arxiv: "2601.08485"
 venue: "arXiv 2026"
 related:
@@ -12,6 +12,7 @@ related:
   - ./quadruped-robot.md
   - ./extreme-parkour.md
   - ./paper-discrete-terrain-minimal-proximity-sensing.md
+  - ./paper-agile-perceptive-traversal-sparse-3d.md
   - ../concepts/terrain-adaptation.md
   - ../concepts/privileged-training.md
   - ../concepts/sim2real.md

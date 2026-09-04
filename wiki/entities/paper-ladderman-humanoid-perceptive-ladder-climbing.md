@@ -16,7 +16,7 @@ tags:
   - isaac-sim
   - amazon-far
 status: complete
-updated: 2026-09-02
+updated: 2026-09-04
 arxiv: "2606.05873"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md

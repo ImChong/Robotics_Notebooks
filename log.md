@@ -1,3 +1,11 @@
+## [2026-09-04] ingest | sources/papers/agile_perceptive_traversal_arxiv_2608_29769.md — Sparse 3D Traversal 再核加深（ETH RSL 猴架）；确认未开源；关键页已存在，补枢纽挂接与电池/热/射线锥
+
+- **触发：** 用户指定 <https://nemantor.github.io/sparse-3d-traversal-website/>
+- **复用：** [`paper-agile-perceptive-traversal-sparse-3d`](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md)（2026-09-02 已 complete）。**不另造页**。
+- **步骤 2.5（2026-09-04 再核）：** 项目页 **无** GitHub / HF / Zenodo；作者账号 `nemantor` 无对应仓。→ **确认未开源**。勿建 `sources/repos/`。
+- **关键判断：** 14/15 真机成功绑在电池压降 / 热积分 / E1R 射线锥，而不是更大 DR。AME-2 13.8k 打过 1.31M MLP；盲学生不可行。跳上峰值 2.11 kW、电压最低 34.7 V。
+- **加深：** 编译 Table IV 全行、电池/热参数、两套 LiDAR 噪声；挂接 [`stair-obstacle-perceptive-locomotion`](wiki/tasks/stair-obstacle-perceptive-locomotion.md) 枢纽与 PHP / ANYmal Parkour 对照。
+
 ## [2026-09-04] ingest | sources/papers/lucida_r2s_arxiv_2608_30821.md — Lucida 组合式 Real-to-Sim（ByteDance Seed×PKU×ZJU）；项目页仅 arXiv/HF，确认未开源；关键页 paper-lucida-r2s
 
 - **触发：** 用户指定 <https://lucida-r2s.github.io/>
