@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, synthetic-data, sim2real, motion-control, generated-video, loco-manip-contact-survey, nvidia, ucla, unitree-g1]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-04
 arxiv: "2606.05160"
 venue: "arXiv 2026"
 summary: "GRAIL（NVIDIA/UCLA，arXiv:2606.05160）是一条全数字人形 loco-manipulation 数据生成管线：先在已知 3D 资产、场景、相机和机器人比例下用 VFM 合成 HOI 视频，再用 GENMO/WiLoR/FoundationPose 与特权 3D 配置重建 metric 4D HOI，重定向到 Unitree G1 并训练 task-general tracker 与 egocentric RGB 策略；官方 NVlabs/GRAIL 已开源 Docker、pipeline entrypoints、checkpoint 下载和 Hugging Face 数据集。"
@@ -19,6 +19,7 @@ related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./videomimic.md
   - ./grail-locomanipulation-dataset.md
+  - ./paper-umr-unified-motion-retargeting.md
 sources:
   - ../../sources/papers/grail_arxiv_2606_05160.md
   - ../../sources/sites/grail-project.md
@@ -238,6 +239,7 @@ sequenceDiagram
 - [Loco-Manip 接触分类 03：生成式补数](../overview/loco-manip-contact-category-03-generative-data.md) — GRAIL 所属接触横切面。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务背景。
 - [SONIC](../methods/sonic-motion-tracking.md) — G1 task-general tracker 基础。
+- [UMR](./paper-umr-unified-motion-retargeting.md) — 用本页 HSI 轨迹做接触重定向对照（Stair/Slope 优于 OmniRetarget）。
 - [Unitree G1](./unitree-g1.md) — 论文硬件平台。
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — egocentric visual sim-to-real 对照。
 - [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — GRAIL 数据微调对象。

@@ -1,3 +1,10 @@
+## [2026-09-04] ingest | sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md — UMR：学习点云对应的统一人形重定向；独立节点，代码待发布
+
+- **触发：** 用户指定 *Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*（香港科技大学广州校区 / 诺亦腾 / 汉阳大学 / 香港科技大学 / 香港大学；[arXiv:2609.02134](https://arxiv.org/abs/2609.02134)）
+- **步骤 2.5：** **待发布**。所谓项目链接即 arXiv；HTML/PDF 未列 GitHub。同团队 [AdaPT 项目页](https://humanoidtennis.github.io/AdaPT/) 写 MoCap「UMR coming soon」，AdaPT 仓不含本实现。
+- **关键页：** 新建 [`paper-umr-unified-motion-retargeting`](wiki/entities/paper-umr-unified-motion-retargeting.md)；交叉 [Motion Retargeting](wiki/concepts/motion-retargeting.md)、[hub](wiki/overview/hub-motion-retargeting.md)、[GMR](wiki/methods/motion-retargeting-gmr.md)、[OmniRetarget](wiki/entities/paper-hrl-stack-03-omniretarget.md)、[OmniContact](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md)、[BeyondMimic](wiki/methods/beyondmimic.md)、[SONIC](wiki/methods/sonic-motion-tracking.md)、[AdaPT](wiki/entities/paper-adapt.md)
+- **消歧：** 勿与 AdaMorph（2601.07284）或 PALUM（2601.07272）混页
+
 ## [2026-09-03] lint | wiki/entities/paper-{demomimic,openvla,tapvid-mv,physics-consistent-hrc-benchmark}.md — 清空全量 lint 信息型预警：补 1 篇「对比」段 + 2 条评测枢纽双向回链 + 1 条陈旧声明时效化 + 1 个缺页误报归档
 
 - **触发：** 跑一遍全量知识库 lint（`python3 scripts/lint_wiki.py`），失败项 0，余 **5 条信息型预警**（三段式缺「对比」×1、评测基准枢纽回链缺失×2、陈旧声明×1、缺页概念候选×1）

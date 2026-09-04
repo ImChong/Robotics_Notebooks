@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-04",
-  "node_count": 3434,
-  "edge_count": 31065,
+  "node_count": 3435,
+  "edge_count": 31090,
   "coverage": {
-    "covered": 3408,
-    "total": 3408,
+    "covered": 3409,
+    "total": 3409,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -224,7 +224,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 695
+      "size": 697
     },
     {
       "label": "操作",
@@ -332,7 +332,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 150,
+      "degree": 152,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -340,7 +340,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 80,
+      "degree": 82,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -351,18 +351,18 @@
       "degree": 62
     },
     {
+      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
+      "label": "OmniRetarget",
+      "type": "entity",
+      "degree": 57,
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 57,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
-      "label": "OmniRetarget",
-      "type": "entity",
-      "degree": 55,
-      "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
