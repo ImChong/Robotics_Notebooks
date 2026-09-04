@@ -4,6 +4,7 @@ tags: [in-context-learning, icl, vla, wam, test-time-training, manipulation, tax
 status: complete
 updated: 2026-09-04
 related:
+  - ../../roadmap/depth-icl.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../concepts/robot-in-context-learning.md
   - ../methods/vla.md
@@ -120,6 +121,8 @@ flowchart TB
 - **产业规模未覆盖：** 四篇证明的是「可负担规模需显式机制」，不能否定 GEN-1.5/S1 级预训练下是否涌现。
 
 ## 关联页面
+
+- [ICL 纵深路线](../../roadmap/depth-icl.md) — 本页坐标系对应 Stage 4「零梯度上下文 vs 快权重 TTT vs 记忆增强」的选型环节
 
 - [Query：具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 本页四路线都落在闭环的「执行（VLA）× 推演（WM）」两层；先在那里定家族，再回本页按漂移轴挑适应机制
 - [机器人 In-Context Learning](../concepts/robot-in-context-learning.md) — 真 ICL vs TTT vs 映射选择 taxonomy

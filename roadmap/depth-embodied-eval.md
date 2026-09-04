@@ -292,6 +292,7 @@ flowchart LR
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 被测对象之一：语义策略
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — Stage 5 评测资产的来源侧
   - [WAM（世界–动作模型）](depth-wam.md) — 被测对象之一，同时也是 Stage 2 评估器的提供方
+  - [ICL（具身上下文学习）](depth-icl.md) — 被测对象之一：未见任务 one-shot 评测协议
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 

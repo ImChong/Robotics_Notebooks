@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 22 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 23 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -19,7 +19,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（22 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（23 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'teleoperation',
@@ -37,6 +37,7 @@
     'humanoid-swarm-performance',
     'sim2real',
     'humanoid-boxing',
+    'icl',
     'bfm',
     'embodied-eval',
     'perceptive-locomotion',
@@ -63,6 +64,7 @@
     'humanoid-swarm-performance': 'roadmap/depth-humanoid-swarm-performance.md',
     'sim2real': 'roadmap/depth-sim2real.md',
     'humanoid-boxing': 'roadmap/depth-humanoid-boxing.md',
+    'icl': 'roadmap/depth-icl.md',
     'bfm': 'roadmap/depth-bfm.md',
     'embodied-eval': 'roadmap/depth-embodied-eval.md',
     'perceptive-locomotion': 'roadmap/depth-perceptive-locomotion.md',
@@ -515,6 +517,24 @@
         'wiki/concepts/video-as-simulation.md'
       ])
     },
+    'icl': {
+      segments: new Set([
+        'icl', 'in-context', 'one-shot', 'test-time'
+      ]),
+      ids: mergeIds('icl', [
+        'wiki/concepts/foundation-policy.md',
+        'wiki/concepts/llm-robotics-control-interfaces.md',
+        'wiki/methods/imitation-learning.md',
+        'wiki/methods/pi07-policy.md',
+        'wiki/queries/embodied-fm-taxonomy-loop.md',
+        'wiki/entities/anthropic-embody.md',
+        'wiki/entities/paper-behavior-prompting-policy.md',
+        'wiki/entities/paper-imitator-game.md',
+        'wiki/entities/paper-zero-wam.md',
+        'wiki/entities/qwen-robot-manip.md',
+        'wiki/entities/skild-s1.md'
+      ])
+    },
     'wam': {
       segments: new Set([
         'wam', 'world-action', 'world-model', 'worldmodel', 'video-prediction',
@@ -636,6 +656,12 @@
       label: '人形拳击',
       wikiPath: DEPTH_HUB_IDS['humanoid-boxing'],
       description: '动作跟踪 → 潜空间技能 → 对抗自博弈的擂台对打。'
+    },
+    'icl': {
+      emoji: '🧩',
+      label: 'ICL',
+      wikiPath: DEPTH_HUB_IDS.icl,
+      description: '具身上下文学习：读完一条示范就会做新任务，且不更新权重。'
     },
     'bfm': {
       emoji: '🧠',
