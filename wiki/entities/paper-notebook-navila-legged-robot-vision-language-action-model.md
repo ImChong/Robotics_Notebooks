@@ -13,7 +13,7 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-16
+updated: 2026-09-04
 arxiv: "2412.04453"
 code: https://github.com/AnjieCheng/NaVILA
 related:
@@ -24,6 +24,7 @@ related:
   - ./paper-da-nav.md
   - ./paper-arcadia.md
   - ./paper-green-for-go-vla-nav-grounding.md
+  - ./paper-crosstracer.md
   - ./paper-humanoidvln.md
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
 sources:
@@ -181,6 +182,7 @@ sequenceDiagram
 - 与 [DA-Nav](./paper-da-nav.md) 的后续评测表明 NaVILA 缺少专门偏离恢复监督；城市长程 CSR 不宜从室内 SR 外推。
 - [Arcadia](./paper-arcadia.md) 把本页当主要导航基线，并批评 YouTube 外源轨迹与目标人形错位；其 Table 1 的 NaVILA 分数是 **Isaac 协议复现**（VLN-CE-Isaac SR 45.1%），不要和本页 Habitat R2R-CE 54% 横比。
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) 走另一条路：不重训 VLA，只用绿/红可通行 overlay 喂冻结 OmniVLA；那是开环航点正则，不能替代本页的腿式闭环 SR。
+- [CrossTracer](./paper-crosstracer.md) 把 OmniVLA 改成像素轨迹提案，再用本体残差打 NaviTrace / 轮腿真机；窄腰是 8 个航点而不是本页的语言命令，且截至入库日无代码。
 - [HumanoidVLN](./paper-humanoidvln.md) 把本页策略当 **零样本被测对象**（离散动作 + PD 跟踪）：G1 SR 28.19%，H1 SR 21.97% 且 FR **70.95%**——说明 VLN-CE-Isaac 的 H1 分数不能外推到「可通行筛选 + 摔倒即终止」协议。
 
 ## 与其他页面的关系
@@ -191,6 +193,7 @@ sequenceDiagram
 - [DA-Nav](./paper-da-nav.md) — 城市尺度方向指令与显式 recovery 对照
 - [Arcadia](./paper-arcadia.md) — 生命周期闭环对照：自采数据 + 反馈写回；部分开源
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 冻结导航 VLA 的推理时可通行 overlay（对照；未开源）
+- [CrossTracer](./paper-crosstracer.md) — 像素轨迹残差跨本体导航（NaviTrace；待核实开源）
 - [HumanoidVLN](./paper-humanoidvln.md) — 人形物理 VLN 基准上的零样本被测对象（待开源）
 - [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — 可充当更快局部 trajectory system-1
 

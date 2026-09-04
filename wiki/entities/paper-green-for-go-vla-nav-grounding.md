@@ -12,7 +12,7 @@ tags:
   - quadruped
   - ucl
 status: complete
-updated: 2026-08-14
+updated: 2026-09-04
 arxiv: "2607.05122"
 summary: "Green for Go（arXiv:2607.05122，UCL）：用 SegFormer 绿/红可通行 overlay 给冻结导航 VLA（OmniVLA）做推理时视觉接地；Grand Tour ETH-2 上最远航点误差降 27–44%，但归一化后显示主要是轨迹缩短约 30% 的长度正则；图像目标与 stop 指令几乎无增益。确认未开源。勿与 Green-VLA 通才操作模型混淆。"
 related:
@@ -24,10 +24,12 @@ related:
   - ./paper-realm-last-3-meter-vln-grounding.md
   - ./paper-actfovea.md
   - ./paper-greenvla-staged-vla-humanoid.md
+  - ./paper-crosstracer.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
+  - ../../sources/papers/crosstracer_arxiv_2608_06688.md
 ---
 
 # Green for Go（VLA 导航可通行性视觉接地）
@@ -165,9 +167,11 @@ joint 相对 obs-only：约一半片段无优势；含糊指令更吃后缀，�
 | **[DA-Nav](./paper-da-nav.md)** | 图像平面离散网格 + CoT | 是（LoRA） | 城市方向指令 | CARLA / Go2 |
 | **[NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md)** | 联合未来观测 / value / 动作 | 是 | image-goal | Diablo；对照 OmniVLA |
 | **本文** | **可通行绿/红 overlay** | **否** | **冻结 OmniVLA 航点** | Grand Tour ETH-2 |
+| **[CrossTracer](./paper-crosstracer.md)** | **像素轨迹残差** | **是**（LoRA + adapter） | **本体条件 8 航点** | NaviTrace + 轮/腿真机 |
 
 - **相对 NaVILA：** 不改策略与低层控制，只改输入；换来的是开环误差读数，不是腿式闭环 SR。
 - **相对 NavWAM：** NavWAM 在 image-goal 上打 OmniVLA；本文则显示 **同一 OmniVLA 在图像目标上几乎不吃 overlay**——视觉目标已带空间线索时，再涂可通行色收益有限。
+- **相对 CrossTracer：** 都碰 OmniVLA 与可通行性，但 CrossTracer **重训提案头 + 显式机器人 ID**，评 NaviTrace / 真机 SR；本文是 **冻结权重的输入正则**，评开环航点误差。选型时不要把 overlay 当跨本体残差的平价替代。
 - **相对 REALM：** REALM 修的是 VLN **末段实例可见性**；本文修的是 **全程可通行提示**，评测也不是 REVERIE 式接地。
 - **相对 ActFovea：** 同属冻结 VLA 的推理时壳层；ActFovea 做安全恢复，本文做可通行着色。
 
@@ -177,6 +181,7 @@ joint 相对 obs-only：约一半片段无优势；含糊指令更吃后缀，�
 - [VLA](../methods/vla.md) — 不重训的输入侧干预，对照重训式导航 VLA
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 训练式腿式导航 VLA 对照
 - [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md) — image-goal 对照；同用 OmniVLA 作基线
+- [CrossTracer](./paper-crosstracer.md) — 重训式像素残差 + 本体 ID；NaviTrace / 真机 SR
 - [DA-Nav](./paper-da-nav.md) — 图像平面 grounding，但是训出来的户外方向 VLN
 - [REALM](./paper-realm-last-3-meter-vln-grounding.md) — 另一类导航接地：末段实例可见性
 - [ActFovea](./paper-actfovea.md) — 冻结操作 VLA 的运行时防护

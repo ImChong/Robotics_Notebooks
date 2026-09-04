@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, open-source, reproduction, habitat, vla, embodied-ai]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-04
 related:
   - ./vln-10-papers-technology-map.md
   - ../entities/paper-vln-10-navid.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-roamflow.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
   - ../entities/paper-humanoidvln.md
+  - ../entities/paper-crosstracer.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
+  - ../../sources/papers/crosstracer_arxiv_2608_06688.md
 summary: "VLN 新手复现策展：四条范式各一栈——VLFM（2D 语义地图）、NavGPT（LLM 推理）、NoMaD（扩散统一探索/到达）、Uni-NaVid（导航 VLA）；按模块化→语言中枢→端到端策略→统一 VLA 由浅入深，而非性能排名。"
 ---
 
@@ -97,6 +99,7 @@ flowchart LR
 - **Image-goal MeanFlow 生成导航（暂不可复现）：** [RoamFlow](../entities/paper-roamflow.md)（arXiv:2606.29934）用 MeanFlow 一步轨迹 + IL→RL，Habitat/Go2 报告低延迟高 SR；**截至 2026-08-05 未开源**，不进入本页四范式清单。需要可跑通生成导航时仍从 **NoMaD** 起步。
 - **冻结 VLA 可通行 overlay（暂不可复现）：** [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)（arXiv:2607.05122）只改 OmniVLA 输入（绿/红 SegFormer），**不进入本页四范式清单**；当作「已有导航 VLA 上的推理时试验」阅读即可。**勿与** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) **混淆**。
 - **人形物理 VLN 平台（暂不可复现）：** [HumanoidVLN](../entities/paper-humanoidvln.md)（arXiv:2608.12860）在 Isaac Sim 上评测双足执行与摔倒，把 [NaVILA](../entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 等当零样本被测对象；**截至 2026-08-14 项目页无代码**，不进入本页清单。需要可跑通腿式链时仍从 **Uni-NaVid / NaVILA** 起步。
+- **跨本体像素轨迹残差（暂不可复现）：** [CrossTracer](../entities/paper-crosstracer.md)（arXiv:2608.06688）用 OmniVLA 提案 + 本体残差打 NaviTrace；**截至 2026-09-04 项目页无 GitHub**（对照表 Open-Source ✓ 不能当入口），不进入本页清单。需要可跑通腿式链时仍从 **Uni-NaVid / NaVILA** 起步。
 
 ## 按目标选入口
 
@@ -133,6 +136,7 @@ flowchart LR
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal（方法对照；暂未开源）
 - [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 绿/红 overlay（方法对照；暂未开源）
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 人形物理 VLN 基准（方法对照；待开源）
+- [CrossTracer](../entities/paper-crosstracer.md) — 像素轨迹残差跨本体导航（方法对照；待核实开源）
 
 ## 参考来源
 

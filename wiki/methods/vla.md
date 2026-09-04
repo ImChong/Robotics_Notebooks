@@ -87,6 +87,7 @@ related:
   - ../entities/paper-rove-humanoid-vla-intervention.md
   - ../entities/paper-greenvla-staged-vla-humanoid.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
+  - ../entities/paper-crosstracer.md
   - ../entities/paper-arcadia.md
   - ../entities/paper-joyai-ra-05.md
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
@@ -290,6 +291,7 @@ flowchart TD
 - **DA-Nav（导航 VLM，非操作 VLA）**：把城市户外导航写成 **商业方向指令 + 图像平面离散网格 grounding + CoT 偏离恢复**（Qwen2.5-VL-7B LoRA）；相对连续 waypoint / 分层 NaVILA，强调 **动作表示对齐 2D 视觉推理** 与 **recovery 数据**；CARLA SoTA 并零样本 Go2/人形（见 [DA-Nav](../entities/paper-da-nav.md)，arXiv:2607.11638；**暂未开源**）
 - **FSD-VLN（空中导航双系统，非操作 VLA）**：把 [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) 的 VLM+DiT 迁到 UAV VLN——慢路冻结 VLM 写 VLSF，快路短视界 DiT 出 8 类离散飞行动作；未见相对自复现 OpenFly SR 5.1%→13.6%，单步 402→176 ms（见 [FSD-VLN](../entities/paper-fsd-vln.md)，arXiv:2607.08359；**确认未开源、无真机**）
 - **Green for Go（导航 VLA 推理时 overlay，非新模型）**：SegFormer **绿=可通行 / 红=不可通行** 喂冻结 **OmniVLA**；Grand Tour 最远航点误差 **−27–44%**，但归一化后主要是轨迹缩短约 **30%**；图像目标与 **stop** 几乎无增益（见 [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)，arXiv:2607.05122；**确认未开源**）。**勿与** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) **混淆**。
+- **CrossTracer（导航 VLA 跨本体残差，非操作 VLA）**：OmniVLA 改成 **VL-Tracer** 出无本体像素轨迹，**CE-Adapter** 按机器人 ID 做残差；NaviTrace 总分 **45.68**（相对 Gemini-2.5-Pro +28.1%），去 adapter 掉到 22.56；真机相对 OmniVLA 轮式 SR **0.40→0.65**、腿式 **0.45→0.70**（见 [CrossTracer](../entities/paper-crosstracer.md)，arXiv:2608.06688；**宣称开源 / 待核实**）
 - **S²-VLA（驾驶 VLA，武汉理工，arXiv:2607.13926）**：针对单流驾驶 VLA 的 **spatial representation collapse**，把 **InternVL3-2B 多尺度语义流** 与 **绕过自回归头的 ViT 空间流**（BEV map / agent 辅助）解耦，经 **Dual-Stream Planning Adapter** 级联融合；NAVSIM 纯 SFT **PDMS 87.1 / NC 98.4**；**未开源**（见 [S²-VLA](../entities/paper-s-squared-vla.md)）
 
 ## VLA 与传统策略的区别
@@ -449,6 +451,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/da_nav_arxiv_2607_11638.md](../../sources/papers/da_nav_arxiv_2607_11638.md) — DA-Nav：方向感知城市尺度 VLN（arXiv:2607.11638）
 - [sources/papers/fsd_vln_arxiv_2607_08359.md](../../sources/papers/fsd_vln_arxiv_2607_08359.md) — FSD-VLN：空中长程 VLN 快慢双系统（arXiv:2607.08359）
 - [sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — Green for Go：冻结导航 VLA 绿/红视觉接地（arXiv:2607.05122）
+- [sources/papers/crosstracer_arxiv_2608_06688.md](../../sources/papers/crosstracer_arxiv_2608_06688.md) — CrossTracer：像素轨迹残差跨本体导航（arXiv:2608.06688）
 
 ## 关联页面
 - [Imitator Game](../entities/paper-imitator-game.md) — 字幕条件 VLA vs 人视频条件：L3 功能替代与未见任务零样本都弱（arXiv:2608.22301）
@@ -468,6 +471,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [DA-Nav](../entities/paper-da-nav.md) — 城市尺度方向感知 VLN：图像平面网格 + CoT 恢复（对照连续 waypoint / NaVILA）
 - [FSD-VLN](../entities/paper-fsd-vln.md) — 空中 VLN 快慢双系统：GR00T N1 骨干 + VLSF（仿真、未开源）
 - [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 的绿/红可通行 overlay（对照 Green-VLA；未开源）
+- [CrossTracer](../entities/paper-crosstracer.md) — 像素轨迹残差做跨本体导航（NaviTrace；宣称开源 / 待核实）
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 展望中将 VLA/世界模型等纳入多模态切换与环境适配的计算智能侧

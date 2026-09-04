@@ -1,3 +1,11 @@
+## [2026-09-04] ingest | sources/papers/crosstracer_arxiv_2608_06688.md — CrossTracer 像素轨迹残差跨本体导航；NaviTrace 45.68；项目页无代码（宣称开源/待核实）；关键页 paper-crosstracer
+
+- **触发：** 用户指定 CrossTracer（arXiv:2608.06688）；鹏城实验室 / 南科大 / 创新投资研究院 / 苏州大学
+- **步骤 2.5：** 项目页 <https://lilduckkk.github.io/CrossTracer-Nav/> **无** GitHub / HF。NaviTrace 对照表把 CrossTracer-8B 标 Open-Source ✓；作者仓 `Lilduckkk` 仅有 `whisper_turtlesim`。→ **宣称开源 / 待核实**。勿建 `sources/repos/`。
+- **关键判断：** 语义提案与本体可通行要拆开；去掉 CE-Adapter 掉 23.12 分。NaviTrace 45.68 ≠ VLN-CE SR。goal-pose 63.91 不能与语言-only 横比。
+- **新建：** [`paper-crosstracer`](wiki/entities/paper-crosstracer.md)；机构注册 `innovation-investment-research-institute`
+- **交叉：** VLA / VLN / 四范式 / hub-cross-embodiment / Green for Go / HumanoidVLN / NaVILA
+
 ## [2026-09-04] ingest | sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md — 人形智研院「出厂体检」：惯量标定必须闭环；PRIME 复用并补强（已开源）；KILVO 复用；Calib3R/CAL²M 待升格
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/sl06FnCPmUh6GilJuK-xEQ>
