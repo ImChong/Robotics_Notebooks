@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-lucida-r2s.md",
+      "detail_id": "entity-paper-lucida-r2s",
+      "label": "Lucida：组合式 Real-to-Sim 场景建模",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/easymocap.md",
       "detail_id": "entity-easymocap",
       "label": "EasyMocap（无标记人体动捕工具箱）",
@@ -202,27 +211,16 @@
       "recency": "2026-09-04",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-wm-loco.md",
-      "detail_id": "entity-paper-wm-loco",
-      "label": "WM-LOCO：落脚约束地形上的世界模型视觉行走",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/easymocap.md",
-    "detail_id": "entity-easymocap",
-    "label": "EasyMocap（无标记人体动捕工具箱）",
+    "path": "wiki/entities/paper-lucida-r2s.md",
+    "detail_id": "entity-paper-lucida-r2s",
+    "label": "Lucida：组合式 Real-to-Sim 场景建模",
     "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
