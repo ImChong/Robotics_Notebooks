@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-levjepa.md",
+      "detail_id": "entity-paper-levjepa",
+      "label": "LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+    },
+    {
       "path": "wiki/entities/openjiuwen.md",
       "detail_id": "entity-openjiuwen",
       "label": "openJiuwen（开放九问）",
@@ -196,28 +207,18 @@
       "recency": "2026-09-04",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-umr-unified-motion-retargeting.md",
-      "detail_id": "entity-paper-umr-unified-motion-retargeting",
-      "label": "UMR：学习点云对应的统一人形重定向",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/openjiuwen.md",
-    "detail_id": "entity-openjiuwen",
-    "label": "openJiuwen（开放九问）",
+    "path": "wiki/entities/paper-levjepa.md",
+    "detail_id": "entity-paper-levjepa",
+    "label": "LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）",
     "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
   },
   "top_communities": [
     {
