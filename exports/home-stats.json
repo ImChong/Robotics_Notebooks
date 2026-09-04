@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "roadmap/depth-embodied-eval.md",
+      "detail_id": "roadmap-depth-embodied-eval",
+      "label": "路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）",
+      "type": "roadmap_page",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-control-policy-evaluation-metrics.md",
+      "detail_id": "wiki-concepts-motion-control-policy-evaluation-metrics",
+      "label": "运控模型评测指标（Motion-Control Policy Evaluation Metrics）",
+      "type": "concept",
+      "recency": "2026-09-03",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-demomimic.md",
       "detail_id": "entity-paper-demomimic",
       "label": "DemoMimic（One Demonstration, Many Objects）",
@@ -186,37 +208,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-monocular-depth-estimation-survey.md",
-      "detail_id": "entity-paper-monocular-depth-estimation-survey",
-      "label": "单目深度估计综述：进展与机遇",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-np-throw.md",
-      "detail_id": "entity-paper-np-throw",
-      "label": "NP-Throw：强化学习视角的非抓取投掷",
-      "type": "entity",
-      "recency": "2026-09-02",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-demomimic.md",
-    "detail_id": "entity-paper-demomimic",
-    "label": "DemoMimic（One Demonstration, Many Objects）",
-    "type": "entity",
+    "path": "roadmap/depth-embodied-eval.md",
+    "detail_id": "roadmap-depth-embodied-eval",
+    "label": "路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）",
+    "type": "roadmap_page",
     "recency": "2026-09-03",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
