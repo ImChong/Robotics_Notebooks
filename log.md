@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/repos/project-quiver.md、sources/sites/arrowair-quiver.md — 接入 Arrow Quiver 25kg 开源 ArduPilot 机架；已开源 CERN-OHL-S；关键页 project-quiver；对照 PX4 / MAVSDK / Crazyflie
+
+- **触发：** 用户指定 <https://github.com/Arrow-air/project-quiver>、<https://arrowair.com/quiver>。
+- **复用：** 无同名页。挂接已有 [多旋翼栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md)、[PX4](wiki/entities/px4-autopilot.md)、[MAVSDK](wiki/entities/mavsdk.md)、[Crazyflie](wiki/entities/crazyflie-firmware.md)、[Betaflight](wiki/entities/betaflight.md)。**不另造** ArduPilot 固件实体页。
+- **步骤 2.5：** 项目页写明 CAD / KiCad / ArduPilot 配置 / 装配文档在 GitHub。仓 **已开源** CERN-OHL-S-2.0（372★ / 96 forks）。飞控固件在上游 ArduPilot，不在本仓。无学习权重。
+- **关键判断：** 这是 **25 kg 作业机架**，不是 PX4 分叉、也不是室内微四轴。补齐总览里「ArduPilot 未列入本批」的机架层。
+- **新建：** [`project-quiver`](wiki/entities/project-quiver.md)；归档 `sources/repos/project-quiver.md`、`sources/sites/arrowair-quiver.md`；机构 `arrow-air`。
+- **交叉：** 多旋翼栈总览 / PX4 / MAVSDK / Crazyflie / Betaflight / AERIS-10 / 平滑路径 / VLN
+
 ## [2026-09-05] ingest | sources/repos/multi-agent-cad.md — 接入清华 IEI Lab MAC；已开源 MIT；关键页 multi-agent-cad；对照 CAD Skills / Text-to-CAD
 
 - **触发：** 用户指定 <https://github.com/Pan-Chera/Multi-Agent-CAD>。

@@ -2,12 +2,13 @@
 type: entity
 tags: [repo, firmware, crazyflie, micro-quadrotor, embedded, bitcraze]
 status: complete
-updated: 2026-05-27
+updated: 2026-09-05
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./crazyswarm2.md
   - ./px4-autopilot.md
   - ./gym-pybullet-drones.md
+  - ./project-quiver.md
 sources:
   - ../../sources/repos/crazyflie_firmware.md
 summary: "crazyflie-firmware 是 Bitcraze Crazyflie 2.x / Bolt 的机载飞控固件：STM32 姿态控制、CRTP 协议与扩展甲板（UWB、Lighthouse、OptiTrack）支持。"
@@ -57,6 +58,7 @@ summary: "crazyflie-firmware 是 Bitcraze Crazyflie 2.x / Bolt 的机载飞控�
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [Crazyswarm2](./crazyswarm2.md)
 - [PX4 Autopilot](./px4-autopilot.md)（标准多旋翼飞控对照）
+- [Project Quiver](./project-quiver.md) — 25 kg 户外机架对照（不是微四轴）
 
 ## 推荐继续阅读
 
