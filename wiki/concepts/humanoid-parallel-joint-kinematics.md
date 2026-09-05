@@ -13,6 +13,8 @@ related:
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/modern-robotics-book.md
   - ./sim2real.md
+  - ../entities/newton-physics.md
+  - ../entities/paper-kamino.md
   - ../methods/trajectory-optimization.md
 sources:
   - ../../sources/notes/humanoid-parallel-joint-kinematics.md
@@ -134,6 +136,8 @@ flowchart TB
 - [Modern Robotics（教材实体）](../entities/modern-robotics-book.md)
 - [Sim2Real](./sim2real.md)
 - [Trajectory Optimization](../methods/trajectory-optimization.md)
+- [Newton Physics](../entities/newton-physics.md) — 多求解器 GPU 引擎
+- [Kamino（闭链 GPU 求解器）](../entities/paper-kamino.md) — 原生环拓扑仿真，避免开链近似
 
 ## 推荐继续阅读
 

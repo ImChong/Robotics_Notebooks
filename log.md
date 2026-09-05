@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/papers/kamino_arxiv_2603_16536.md、disney-kamino、newton-kamino-solver、newton-solvers-catalog — Kamino 闭链 GPU 求解器 + Newton 九目录求解器谱系；已开源 BETA；关键页 paper-kamino，交叉 newton-physics / humanoid-parallel-joint-kinematics
+
+- **触发：** 用户指定 <https://disneyresearch.github.io/kamino/>、arXiv:2603.16536、Newton `solvers/kamino` 与 `solvers/` 下全部求解器类型，并要求自动合并 PR
+- **复用：** [`newton-physics`](wiki/entities/newton-physics.md) 已存在 — **扩充求解器谱系表**，不另造引擎页
+- **步骤 2.5：** Kamino 代码在 Newton 仓库 **已开源** Apache-2.0；**BETA 1**（2026 夏目标 BETA 2，暂不接受社区 PR）
+- **新建：** `paper-kamino`；归档项目页、论文、Kamino 子路径、全求解器目录
+- **求解器目录（9）：** mujoco / featherstone / xpbd / semi_implicit / vbd / style3d / implicit_mpm / kamino / coupled（内部多求解器耦合 API）
+- **交叉：** humanoid-parallel-joint-kinematics / isaac-lab `newton_kamino`
+
 ## [2026-09-05] ingest | sources/sites/nvidia-spatial-intelligence-lab.md、nv_tlabs、nvidia-isaac-sim-sil-tutorial — 接入 SIL 实验室与 Software-in-the-Loop 教程；部分开源；关键页 nvidia-spatial-intelligence-lab、software-in-the-loop
 
 - **触发：** 用户指定 <https://research.nvidia.com/labs/sil/>、<https://github.com/nv-tlabs>、Isaac Sim SIL 教程页，并要求自动合并 PR

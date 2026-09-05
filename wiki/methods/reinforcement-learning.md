@@ -2,8 +2,9 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 related:
+  - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
@@ -311,6 +312,7 @@ flowchart LR
 - [HydroGym（论文实体）](../entities/paper-hydrogym.md) — *Nature* 2026 流控 RL 基准平台；Gymnasium 接口 + 通道→翼型零样本迁移（arXiv:2512.17534，已开源）
 - [Cartpole 问题](../concepts/cartpole.md) — Actor–Critic 实验原点与 Gym / Isaac 教学环境对照
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — f1tenth_gym / CARLA / GPU 向量化等 **轮式极限驾驶** RL 开源入口
+- [Kamino（闭链 GPU 仿真）](../entities/paper-kamino.md) — Newton 后端；DR Legs 4096 环境批量 RL（arXiv:2603.16536）
 
 ## 继续深挖入口
 

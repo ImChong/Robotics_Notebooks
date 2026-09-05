@@ -4,6 +4,7 @@ tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, di
 status: complete
 updated: 2026-09-05
 related:
+  - ./paper-kamino.md
   - ./mujoco.md
   - ./mujoco-playground.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -21,6 +22,10 @@ related:
   - ./omnisim.md
 sources:
   - ../../sources/repos/newton-physics.md
+  - ../../sources/sites/newton-solvers-catalog.md
+  - ../../sources/repos/newton-kamino-solver.md
+  - ../../sources/sites/disney-kamino.md
+  - ../../sources/papers/kamino_arxiv_2603_16536.md
   - ../../sources/sites/nvidia-newton-physics.md
   - ../../sources/sites/newton-physics-docs-overview.md
   - ../../sources/repos/nvidia-warp.md
@@ -52,7 +57,7 @@ summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微�
 ## 为什么重要？
 
 - **机器人学习的主干正在 GPU 化**：大规模并行 rollout、可微仿真与系统辨识越来越依赖「Python 友好 + GPU 吞吐 + 可插拔求解器」的引擎，而不仅是单机 CPU 步进。
-- **MuJoCo 生态的 GPU 延伸**：Newton 把 **MuJoCo Warp** 纳入统一框架，同时保留 XPBD / VBD / Featherstone / Kamino / ImplicitMPM / Style3D 等后端，便于在同一套 `Model` / `State` / `Solver` 抽象下做对比与扩展。
+- **MuJoCo 生态的 GPU 延伸**：Newton 把 **MuJoCo Warp** 纳入统一框架，同时保留 XPBD / VBD / Featherstone / [Kamino](./paper-kamino.md) / ImplicitMPM / Style3D 等后端，便于在同一套 `Model` / `State` / `Solver` 抽象下做对比与扩展。
 - **与 NVIDIA 机器人栈对齐**：官方叙事与 **Isaac Sim / Isaac Lab**、**MuJoCo Playground** 兼容；Isaac Lab 侧已有 `feature/newton` 与 `newton_kamino` 等 preset。厂商 FAQ 把本引擎（及 Omniverse）放在 **解析仿真** 一侧，把 [Cosmos](./nvidia-cosmos.md) Transfer 放在「仿真视频 → 照片级合成数据」一侧。
 
 ## 核心能力
@@ -63,11 +68,29 @@ summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微�
 | **可微** | Warp 核可微；`diffsim_*` 示例走 **非 MJWarp** 求解器。 [MuJoCo Warp](./mujoco-warp.md) 步进的 AD **尚未接通**（issue #500） |
 | **可扩展** | 模块化求解器与组件；可插拔自定义求解器，支持多物理扩展 |
 | **资产** | `ModelBuilder` 导入 **URDF、MJCF、USD**；OpenUSD 聚合机器人与环境 |
-| **求解器** | **XPBD、VBD、MuJoCo（Warp）、Featherstone、SemiImplicit、Kamino、ImplicitMPM、Style3D** |
+| **求解器** | 见下表「求解器谱系」；公开 API 八类 + 内部 `coupled` 多求解器耦合 |
 | **接触** | `CollisionPipeline.collide` 填充 `Contacts`（2026-09 文档；不再写 `Model.collide`） |
 | **传感器** | 基于 `State` / `Contacts` 与 extended attributes 的观测管线 |
 
 官方示例已覆盖 **G1 / H1 / ANYmal / Panda / Allegro**、布料与缆索、颗粒–机器人双向耦合、螺母螺栓 / RJ45 接触装配，以及 Kamino 四连杆与异构机构。
+
+## 求解器谱系（`newton/_src/solvers`，2026-09-05 再核）
+
+Newton 通过 PEP 562 懒加载导出 `SolverBase` 及下列后端；源码目录索引见 [newton-solvers-catalog](../../sources/sites/newton-solvers-catalog.md)。
+
+| 子目录 | 类名 | 典型场景 | 备注 |
+|--------|------|----------|------|
+| `mujoco/` | `SolverMuJoCo` | 开链腿臂 RL、MJCF 资产、接触丰富操作 | **默认刚体主路径**（MuJoCo Warp） |
+| `featherstone/` | `SolverFeatherstone` | 递推刚体 + 半隐式接触/粒子/肌肉 | 与 `semi_implicit` 核共享 |
+| `xpbd/` | `SolverXPBD` | 位置基约束与接触原型 | XPBD 迭代 |
+| `semi_implicit/` | `SolverSemiImplicit` | 通用半隐式体/粒子/肌肉积分 | 多物理基础核 |
+| `vbd/` | `SolverVBD` | 可变形体、刚–软耦合 | Vertex Block Descent |
+| `style3d/` | `SolverStyle3D` | 布料、服装仿真 | Style3D 管线 |
+| `implicit_mpm/` | `SolverImplicitMPM` | 颗粒、雪、流体、刚–颗粒耦合 | MPM 连续介质 |
+| `kamino/` | `SolverKamino` | **闭链/任意拓扑** 约束多体 | PADMM；**BETA 1** — 见 [Kamino 论文](./paper-kamino.md) |
+| `coupled/` | （内部 API） | 多求解器同场景耦合 | `solver_coupled.py`；非 `__all__` 公开导出 |
+
+**选型口诀：** 纯开链 → `SolverMuJoCo`；布料 → Style3D/VBD；颗粒 → ImplicitMPM；四连杆/并联环 → Kamino（无闭环勿用）；位置基实验 → XPBD。
 
 ## 流程总览
 
@@ -108,7 +131,7 @@ flowchart LR
 | 冒烟 | `python -m newton.examples` 或 `--list`；`--viewer gl\|usd\|rtx\|rerun\|viser\|null` |
 | 机器人资产 | `robot_g1` / `robot_h1` / `robot_anymal_d`；策略回放 `robot_policy` |
 | 多物理 | 布料走 Style3D / VBD（`cloth_*`）；颗粒 / 雪 / 水走 ImplicitMPM（`mpm_*`） |
-| 约束机构 | Kamino 示例：`kamino_basic_fourbar`、`kamino_robot_anymal_d` |
+| 约束机构 | Kamino 示例：`kamino_basic_fourbar`、`kamino_robot_anymal_d`；闭链理论与 BETA 状态见 [Kamino](./paper-kamino.md) |
 | Isaac Lab | 官方 CTA 指向 `IsaacLab` 的 `feature/newton`；Lab 环境 preset 含 `newton_mjwarp` / `newton_kamino` |
 | 硬件 | NVIDIA Maxwell+、驱动 545+（CUDA 12）；无需本机 CUDA Toolkit；macOS 仅 CPU |
 
@@ -130,9 +153,11 @@ flowchart LR
 - 生态仍新：相对 MuJoCo 经典 CPU 栈与 Isaac Lab 工业管线，第三方任务库、基准与 Sim2Real 案例积累更少。
 - **硬件**：有意义的 GPU 路径依赖 NVIDIA GPU（macOS 仅 CPU）。
 - 与 [mjlab](./mjlab.md) 等「已包装好的 RL 环境」相比，Newton 更偏**引擎层**，上手需理解 `ModelBuilder` / `CollisionPipeline` / `Solver` 抽象。
-- 多求解器并存意味着 **feature parity 不自动成立**：选 ImplicitMPM / Style3D / Kamino 前先对任务所需接触与可微路径做核对。
+- 多求解器并存意味着 **feature parity 不自动成立**：选 ImplicitMPM / Style3D / Kamino 前先对任务所需接触与可微路径做核对；Kamino 当前为 **BETA**，不宜作为无闭环系统的默认后端。
 
 ## 关联页面
+
+- [Kamino（闭链 GPU 求解器论文）](./paper-kamino.md) — `SolverKamino` 算法与 RL 实证
 
 - [NVIDIA Warp](./nvidia-warp.md) — JIT 计算层；本引擎站在其上
 - [MuJoCo Warp](./mujoco-warp.md) — 主要刚体后端
@@ -151,6 +176,8 @@ flowchart LR
 ## 参考来源
 
 - [newton-physics 仓库归档](../../sources/repos/newton-physics.md)
+- [Newton 求解器目录再核](../../sources/sites/newton-solvers-catalog.md)
+- [Kamino arXiv 2603.16536](../../sources/papers/kamino_arxiv_2603_16536.md)
 - [NVIDIA/warp 仓库归档](../../sources/repos/nvidia-warp.md)
 - [mujoco_warp 仓库归档](../../sources/repos/mujoco-warp.md)
 - [NVIDIA Developer：Newton Physics](../../sources/sites/nvidia-newton-physics.md)
