@@ -26,6 +26,7 @@ related:
   - ../entities/humantouch.md
   - ../tasks/manipulation.md
   - ../entities/dexbench.md
+  - ../entities/paper-dexholdem.md
   - ./contact-dynamics.md
   - ./tsid.md
   - ./whole-body-control.md
@@ -176,6 +177,7 @@ sources:
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md)
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md)
 - [DexBench](../entities/dexbench.md) — 工业侧把插入/紧固/擦拭/倾倒收成 OSC 诊断 + 状态终态规格
+- [DexHoldem](../entities/paper-dexholdem.md) — 薄牌/筹码真机接触：做成但扫飞邻物记 DC，不算 SPSR
 - [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无传感器接触残差支撑擦白板 / 带闭门器开门的轮足 loco-manip
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 接触丰富任务上的跨模态触觉选型证据

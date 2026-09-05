@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/papers/dexholdem_arxiv_2605_18727.md — DexHoldem 真机扑克灵巧基准；已开源 Policy/Skills + TexasPokerRobot；关键页 paper-dexholdem
+
+- **触发：** 用户指定 <https://dexholdem.github.io/Dexholdem/>。
+- **复用：** 无同名页。挂接已有 [Manipulation](wiki/tasks/manipulation.md)、[DexBench](wiki/entities/dexbench.md)、[评测枢纽](wiki/overview/hub-embodied-eval-benchmark.md)、[π₀](wiki/methods/π0-policy.md)、[VLA](wiki/methods/vla.md)、[Diffusion Policy](wiki/methods/diffusion-policy.md)。**不另造** 方法页。
+- **步骤 2.5：** 项目页 Resources 同时链到 Policy 仓、Skills 仓与 HF 数据集。→ **已开源可运行**。两仓截至入库日未附 LICENSE；数据 CC BY 4.0（约 378 GB）。
+- **关键判断：** 测的不是扑克智能。报 SPSR 不要只报 TCR；芯片 pull 与筹码字典才是硬项；感知 field-wise 高不等于 Overall。
+- **新建：** [`paper-dexholdem`](wiki/entities/paper-dexholdem.md)；归档 `sources/papers/dexholdem_arxiv_2605_18727.md`、`sources/sites/dexholdem-github-io.md`、`sources/repos/dexholdem-policy.md`、`sources/repos/dexholdem-skills.md`、`sources/datasets/texaspokerrobot.md`
+- **交叉：** Manipulation / DexBench / 评测选型闭环 / 接触丰富操作 / π₀ / VLA / Diffusion Policy / 灵巧采数指南
+
 ## [2026-09-05] ingest | sources/repos/project-quiver.md、sources/sites/arrowair-quiver.md — 接入 Arrow Quiver 25kg 开源 ArduPilot 机架；已开源 CERN-OHL-S；关键页 project-quiver；对照 PX4 / MAVSDK / Crazyflie
 
 - **触发：** 用户指定 <https://github.com/Arrow-air/project-quiver>、<https://arrowair.com/quiver>。

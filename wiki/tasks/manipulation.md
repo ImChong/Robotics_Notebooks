@@ -41,6 +41,7 @@ related:
   - ../methods/regrind-retargeting-guided-rl.md
   - ../entities/paper-dexverse.md
   - ../entities/dexbench.md
+  - ../entities/paper-dexholdem.md
   - ../entities/paper-physmani-dynamic-manipulation-world-model.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
@@ -126,7 +127,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 需要识别物体、理解姿态、估计空间位置；**2D 目标检测**（见 [目标检测](../methods/object-detection.md)、[YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）常作第一级 **物体锚点**；抓取子问题中常需要 **6D/7DoF 抓取位姿** 或 **候选集合**（见 [AnyGrasp](../entities/anygrasp.md) 一类检测式管线）。视觉特征多来自 [视觉骨干](../concepts/vision-backbones.md)（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）预训练微调。
 
 ### 3. 灵巧操作
-很多操作需要多指协调、精细力控（如插头、拧瓶盖）。工业侧把这类任务收成可采购实物 + 状态终态的规格，见 [DexBench](../entities/dexbench.md)（18 原子任务 / OSC；官方评测仓待发布）。
+很多操作需要多指协调、精细力控（如插头、拧瓶盖）。工业侧把这类任务收成可采购实物 + 状态终态的规格，见 [DexBench](../entities/dexbench.md)（18 原子任务 / OSC；官方评测仓待发布）。真机扑克桌面协议见 [DexHoldem](../entities/paper-dexholdem.md)（ShadowHand + UR10e；报 SPSR 而不是只报做成）。
 
 ### 4. 开放词汇
 现实世界物体种类几乎无限，不可能为每个物体单独训练。
@@ -376,6 +377,7 @@ flowchart TD
 - [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 如何高效采集人类演示数据
 - [DexBench](../entities/dexbench.md) — RLWRLD × NVIDIA 工业灵巧规格（OSC / T00–T17）；规范页已公开，Arena 评测栈仍标 coming soon
+- [DexHoldem](../entities/paper-dexholdem.md) — 真机 ShadowHand 扑克基准：SPSR 47.5%、感知 exact match 34.3%（已开源）
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md) — 装配、插拔、拧紧等任务的工程排错顺序
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习的方案组合指南
 - [Query：操作 VLA 与视频-动作架构选型](../queries/manipulation-vla-architecture-selection.md) — VLA / mimic-video / DeFI / DWM / 开源策略族选型
