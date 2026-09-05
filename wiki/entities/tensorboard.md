@@ -9,6 +9,7 @@ related:
   - ./amp-mjlab.md
   - ./robot-lab.md
   - ./plotjuggler.md
+  - ./plotly.md
   - ../queries/robot-policy-debug-playbook.md
   - ../methods/reinforcement-learning.md
 sources:
@@ -101,6 +102,7 @@ tensorboard --logdir logs/rsl_rl
 
 - **不是团队协作中心**：event 文件在本地磁盘，跨机器对比需自行同步 `logs/` 或使用 [W&B](./weights-and-biases.md)。
 - **不是真机 log 工具**：部署后 ros2 bag / 关节时序请用 [PlotJuggler](./plotjuggler.md)。
+- **不是交互报告图工具**：组会/论文用可缩放 HTML 图请用 [plotly.py](./plotly.md) 等，从 TB 导出 CSV 后再画。
 - **tag 命名无统一标准**：mjlab `Episode_Reward/` 与 vanilla rsl_rl `Episode/rew_*` **前缀不同**——读曲线前应对照具体仓库 runner 源码（AMP_mjlab 页已列表）。
 - **大日志体积**：高频 scalar + 长训练会生成 GB 级 events；定期归档或降低 log 频率。
 
@@ -111,6 +113,7 @@ tensorboard --logdir logs/rsl_rl
 - [AMP_mjlab](./amp-mjlab.md) — TB 曲线作为训练成功基准
 - [robot_lab](./robot-lab.md) — Isaac Lab 训练 + TB 工作流
 - [PlotJuggler](./plotjuggler.md) — 训练标量 vs 真机时序的分工
+- [plotly.py](./plotly.md) — 聚合统计与交互 HTML 报告
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 工具链位置
 - [强化学习](../methods/reinforcement-learning.md) — 实验可观测性
 

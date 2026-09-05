@@ -1,13 +1,43 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3488,
-  "edge_count": 32010,
+  "node_count": 3489,
+  "edge_count": 32020,
   "coverage": {
-    "covered": 3461,
-    "total": 3461,
+    "covered": 3462,
+    "total": 3462,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/nvidia-cosmos.md",
+      "detail_id": "entity-nvidia-cosmos",
+      "label": "NVIDIA Cosmos（世界基础模型平台）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-nurec.md",
+      "detail_id": "entity-nvidia-nurec",
+      "label": "NVIDIA Omniverse NuRec",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/nvidia-physical-ai-datasets.md",
+      "detail_id": "entity-nvidia-physical-ai-datasets",
+      "label": "NVIDIA Physical AI 数据集（Hugging Face 集合）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/robotis-cyclo-mjlab.md",
       "detail_id": "entity-robotis-cyclo-mjlab",
@@ -45,8 +75,7 @@
       "type": "entity",
       "recency": "2026-09-05",
       "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-lejepa.md",
@@ -92,16 +121,6 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/nvidia-nurec.md",
-      "detail_id": "entity-nvidia-nurec",
-      "label": "NVIDIA Omniverse NuRec",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
       "path": "wiki/entities/paper-instant-nurec.md",
       "detail_id": "entity-paper-instant-nurec",
       "label": "Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）",
@@ -126,17 +145,6 @@
       "path": "wiki/entities/cosmos-transfer.md",
       "detail_id": "entity-cosmos-transfer",
       "label": "Cosmos Transfer（条件世界翻译）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-cosmos.md",
-      "detail_id": "entity-nvidia-cosmos",
-      "label": "NVIDIA Cosmos（世界基础模型平台）",
       "type": "entity",
       "recency": "2026-09-05",
       "source": "git",
@@ -207,53 +215,43 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-4danyone.md",
-      "detail_id": "entity-paper-4danyone",
-      "label": "4DAnyone：单目随意视频做出 4D 人",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robotis-cyclo-mjlab.md",
-    "detail_id": "entity-robotis-cyclo-mjlab",
-    "label": "cyclo_mjlab（ROBOTIS）",
+    "path": "wiki/entities/nvidia-cosmos.md",
+    "detail_id": "entity-nvidia-cosmos",
+    "label": "NVIDIA Cosmos（世界基础模型平台）",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 815
+      "size": 878
     },
     {
       "label": "操作",
-      "size": 679
+      "size": 670
     },
     {
       "label": "视觉-语言-动作",
-      "size": 243
+      "size": 245
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 226
-    },
-    {
-      "label": "仿真到现实",
-      "size": 135
+      "size": 224
     },
     {
       "label": "移动操作",
       "size": 77
+    },
+    {
+      "label": "强化学习",
+      "size": 68
     }
   ],
   "top_hubs": [
@@ -379,7 +377,8 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -407,8 +406,7 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 43,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 43
     }
   ]
 }
