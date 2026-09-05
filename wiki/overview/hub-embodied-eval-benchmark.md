@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-05
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/motion-control-policy-evaluation-metrics.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-softvtbench.md
   - ../entities/paper-mmhu.md
   - ../entities/dexbench.md
+  - ../entities/paper-dexholdem.md
   - ../entities/paper-imitator-game.md
   - ../entities/paper-bet4sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -75,7 +76,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 |------|--------|----------|----------|
 | ① 认知评测 | MLLM 作为 embodied brain 的感知/规划/推理能力；另含日常 AV 时序对齐；驾驶人本 Behavior VQA 见 MMHU | RoboBench、ESI-Bench、Daily-Omni；驾驶相邻 **MMHU** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md)、[MMHU](../entities/paper-mmhu.md) |
 | ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度；开放域多场景世界生成另见 WorldScore；交互干预/持久另见 HarnessEval-W；off-expert 动作跟随另见 WorldEcho | EWMBench、GigaWorld-1 WMBench；WorldScore / HarnessEval-W（相邻）；WorldEcho | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[WorldScore](../entities/paper-worldscore.md)、[HarnessEval-W](../entities/paper-harnesseval-w.md)、[WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) |
-| ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**；接触安全另见 **SoftVTBench**；工业灵巧规格见 **DexBench**（评测仓待发布）；成功判据本身另见 **Imitator Game**（目标等价而非轨迹相似） | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[DexBench](../entities/dexbench.md)、[Imitator Game](../entities/paper-imitator-game.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
+| ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**；接触安全另见 **SoftVTBench**；工业灵巧规格见 **DexBench**（评测仓待发布）；真机扑克灵巧见 **DexHoldem**（报 SPSR）；成功判据本身另见 **Imitator Game**（目标等价而非轨迹相似） | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[DexBench](../entities/dexbench.md)、[DexHoldem](../entities/paper-dexholdem.md)、[Imitator Game](../entities/paper-imitator-game.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
 | ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、代表性代价；真机样本量不足另见 **Bet4Sim2Real**（仿真库下注换 anytime-valid 区间） | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md)、[Bet4Sim2Real](../entities/paper-bet4sim2real.md) |
 | ③′ 运控横切 | 被测对象换成 locomotion / whole-body tracking / MPC-WBC 时的指标体系：跟踪误差、命令跟随、求解实时性、硬件裕度 | HumanTracker、HumanoidBench、TrackerLab、Barkour | [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md)、[HumanTracker](../entities/paper-humantracker.md)、[HumanoidBench](../entities/humanoid-bench.md)、[TrackerLab](../entities/trackerlab.md) |
 | 端到端 | 四层如何逐层选型取舍 | 选型决策树 | [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) |
@@ -110,6 +111,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 过程评测 OPD（③ 层，可挂已有 rollout）
 - [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉 Goal/Safety Success（③ 层过程安全）
 - [DexBench](../entities/dexbench.md) — 工业灵巧规格（OSC / 18 任务）；规范已公开，Arena 仍标 coming soon
+- [DexHoldem](../entities/paper-dexholdem.md) — ③ 层真机扑克灵巧：SPSR ≠ TCR；策略仓与数据已开源
 - [Imitator Game](../entities/paper-imitator-game.md) — L0–L3 意图级模仿基准（③ 层成功判据：目标等价而非轨迹相似）
 - [Bet4Sim2Real](../entities/paper-bet4sim2real.md) — 仿真库下注换 anytime-valid 真机性能证书（④ 层，真机样本贵时收窄区间）
 - [MMHU](../entities/paper-mmhu.md) — 驾驶场景人体行为多模态基准（① 层相邻）

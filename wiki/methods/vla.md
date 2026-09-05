@@ -18,6 +18,7 @@ related:
   - ../entities/paper-rt-2.md
   - ../entities/paper-openvla.md
   - ../entities/paper-pi0.md
+  - ../entities/paper-dexholdem.md
   - ../entities/paper-tempo.md
   - ../entities/paper-autointervene.md
   - ../overview/vln-open-source-repro-paradigms.md
@@ -482,6 +483,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 展望中将 VLA/世界模型等纳入多模态切换与环境适配的计算智能侧
 - [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破
+- [DexHoldem](../entities/paper-dexholdem.md) — 真机扑克：预训练 VLA 领先任务 IL，但 SPSR 仍只有 47.5%
 - [π₀.7（Pi-zero 0.7）通才 VLA](./pi07-policy.md) — Physical Intelligence 2026 通才模型与多模态提示条件路线
 - [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 36B 稀疏开源通才；视频小时置换 teleop 的 scaling law（部分开源）
 - [StarVLA](./star-vla.md) — 基于 Qwen3-VL 的极简 VLA 基准

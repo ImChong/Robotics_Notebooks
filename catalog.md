@@ -564,6 +564,7 @@
 - [Deform360（Massive Multi-view Visuotactile Dataset · arXiv:2607.05390）](wiki/entities/paper-deform360-deformable-visuotactile-dataset.md) — Deform360**（*Deform360: A Massive Multi-view Visuotactile Dataset for Deformable World Models*，[ar `📅unknown` `[entity_page]`
 - [顺应性欠驱动机器人手（A Novel Type of Compliant, Underactuated Robotic Hand for Dexterous Grasping）](wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md) — Deimel & Brock 柔性手**（*A Novel Type of Compliant, Underactuated Robotic Hand for Dexterous Grasping `📅unknown` `[entity_page]`
 - [DemoMimic（One Demonstration, Many Objects）](wiki/entities/paper-demomimic.md) — DemoMimic**（*Dexterous Motion Mimic*；Stanford；[arXiv:2609.01938](https://arxiv.org/abs/2609.01938 `📅unknown` `[entity_page]`
+- [DexHoldem：德州扑克桌面上的灵巧具身基准](wiki/entities/paper-dexholdem.md) — DexHoldem**（*Playing Texas Hold'em with Dexterous Embodied System*，[arXiv:2605.18727](https://arxi `📅unknown` `[entity_page]`
 - [DexMachina（arXiv:2505.24853）](wiki/entities/paper-dexmachina.md) — DexMachina**（Mandi Zhao, Yifan Hou, Dieter Fox, Yashraj Narang, Ajay Mandlekar, Shuran Song；Stanfo `📅unknown` `[entity_page]`
 - [DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）](wiki/entities/paper-dexverse.md) — DexVerse**（arXiv:2607.08751，[项目页](https://ycyao216.github.io/D `📅unknown` `[entity_page]`
 - [DF-ExpEnse（arXiv:2606.19656）](wiki/entities/paper-df-expense.md) — DF-ExpEnse**（Calvin Luo, Chen Sun, Shuran Song；Stanford University; Brown University；[arXiv:2606.1 `📅unknown` `[entity_page]`

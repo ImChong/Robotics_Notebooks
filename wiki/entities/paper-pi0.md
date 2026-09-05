@@ -8,7 +8,7 @@ tags:
   - manipulation
   - physical-intelligence
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 arxiv: "2410.24164"
 code: https://github.com/Physical-Intelligence/openpi
 related:
@@ -17,6 +17,7 @@ related:
   - ./paper-diffusion-policy.md
   - ./paper-openvla.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ./paper-dexholdem.md
 sources:
   - ../../sources/papers/pi0_arxiv_2410_24164.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -123,6 +124,7 @@ sequenceDiagram
 - [Diffusion Policy](./paper-diffusion-policy.md)
 - [OpenVLA](./paper-openvla.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [DexHoldem](./paper-dexholdem.md) — 真机扑克榜上 π₀ 与 π₀.₅ 并列最高 SPSR
 
 ## 推荐继续阅读
 
