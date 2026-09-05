@@ -34,9 +34,11 @@ related:
   - ./cosmos-transfer.md
   - ./cosmos-cookbook.md
   - ./paper-cosmos-transfer1.md
+  - ./nvidia-physical-ai-datasets.md
 sources:
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos3-project.md
+  - ../../sources/sites/hf-nvidia-cosmos3-collection.md
   - ../../sources/repos/nvidia_cosmos.md
   - ../../sources/repos/nvidia_cosmos_framework.md
   - ../../sources/sites/nvidia-cosmos.md
@@ -158,6 +160,10 @@ flowchart TB
 
 默认生成设定（README）：480p / 16:9 / 24 FPS / 最多 300 帧；Linux + BF16 + Ampere/Hopper/Blackwell。Edge 仅 256p/480p、12–30 fps、50–150 帧。推荐 CUDA 13。
 
+### Hugging Face 权重集合
+
+官方 [Cosmos3 collection](https://huggingface.co/collections/nvidia/cosmos3)（2026-09-05 核查 **4** 项）收录 **Cosmos3-Super / Nano / Edge** 三档主权重与 **Cosmos3-Action-Viewer** 交互 Space。README 另列的 Policy-DROID、Super-T2I/I2V、4Step 蒸馏学生等 **不在该 collection 内**，需从 [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) 模型表跳转独立 HF 仓。合成训练数据索引见 [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md)。
+
 ### 源码运行时序图
 
 官方可跑入口：[NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) cookbook + [cosmos-framework](https://github.com/NVIDIA/cosmos-framework)。
@@ -223,6 +229,7 @@ README 自列：长分辨率或复杂物理输出可出现时序不一致、相�
 
 - [Cosmos 3 技术报告（arXiv:2606.02800）](../../sources/papers/cosmos3_arxiv_2606_02800.md)
 - [Cosmos 3 官方项目页](../../sources/sites/cosmos3-project.md)
+- [HF Cosmos3 集合](../../sources/sites/hf-nvidia-cosmos3-collection.md)
 - [NVIDIA/cosmos 仓库](../../sources/repos/nvidia_cosmos.md)
 - [cosmos-framework 仓库](../../sources/repos/nvidia_cosmos_framework.md)
 - [NVIDIA Cosmos 产品页](../../sources/sites/nvidia-cosmos.md)
@@ -240,6 +247,7 @@ README 自列：长分辨率或复杂物理输出可出现时序不一致、相�
 - [NVIDIA SO-101 Sim2Real 动手课](./nvidia-so101-sim2real-lab-workflow.md)
 - [Cosmos Transfer](./cosmos-transfer.md) — 2.x V2V 翻译；本栈 Edge **不支持** video-to-video
 - [Cosmos Cookbook](./cosmos-cookbook.md) — 2.x 配方；3.0 改走本仓 + cosmos-framework
+- [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md) — HF 合成/真机数据索引
 - [Transfer1 论文](./paper-cosmos-transfer1.md)
 - [HarnessEval-W](./paper-harnesseval-w.md) — Cosmos3-Super 在 Prompt I2V 族 Overall 71.9（#7）
 - [WALL-SS](./paper-wall-ss.md) — 以 Cosmos3-Nano 为视频基线的 next-scale AR WM（动作跟随 0.044 vs 0.290）

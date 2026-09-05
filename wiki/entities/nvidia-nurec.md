@@ -14,9 +14,11 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ./nvidia-omniverse.md
   - ./isaac-teleop.md
+  - ./nvidia-physical-ai-datasets.md
 sources:
   - ../../sources/sites/nvidia-nurec-docs.md
   - ../../sources/sites/nvidia-research-instant-nurec.md
+  - ../../sources/sites/hf-nvidia-physical-ai-collection.md
   - ../../sources/repos/nvidia-instant-nurec.md
   - ../../sources/papers/instant_nurec_arxiv_2607_14203.md
 summary: "NVIDIA Omniverse NuRec（文档 26.04）把真实相机/LiDAR 重建为可仿真 USDZ 体积，经 gRPC 与 OmniNuRecVolumeAPI 在 Isaac Sim 等 Kit 应用中渲染；AV 路径推荐用 Instant NuRec 秒级 PLY 初始化再逐场景精修，机器人路径走单目/双目+3DGRUT 或预重建数据集。"
@@ -103,7 +105,7 @@ NuRec 渲染嵌在 Omniverse Kit。Isaac Sim 加载兼容 USDZ 后，用 **`Omni
 | 文档入口 | <https://docs.nvidia.com/nurec/>（核查版本 **26.04**） |
 | AV 容器 | `docker pull nvcr.io/nvidia/nre/nre-ga:26.04`；需要 `NGC_API_KEY` |
 | Instant 初始化 | [NVIDIA/instant-nurec](https://github.com/NVIDIA/instant-nurec) `./setup.sh` → `run_inference.py --merge` |
-| 预重建场景 | Hugging Face Physical AI：AV 用 NCore 数据集；机器人用 Robotics NuRec 数据集 |
+| 预重建场景 | Hugging Face [Physical AI 集合](./nvidia-physical-ai-datasets.md)：AV 用 `NCore` / `Autonomous-Vehicles-NuRec`；机器人用 `Robotics-NuRec` |
 | Isaac 加载 | File/Import 或拖入 USDZ；体积走 `OmniNuRecVolumeAPI`；物理另挂地面或 mesh |
 | 机器人重建栈 | Isaac ROS + cuSFM + FoundationStereo + nvblox + 3DGRUT（`export_usdz.enabled=true`） |
 | 硬件 | Instant 继承 [NuRec Hardware](https://docs.nvidia.com/nurec/basics/hardware.html) 下限 |

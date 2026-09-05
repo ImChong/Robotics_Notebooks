@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/sites/hf-nvidia-cosmos3-collection.md、hf-nvidia-physical-ai-collection.md — 接入 NVIDIA HF Cosmos3 与 Physical AI 集合；已开放获取（部分门控）；关键页 nvidia-physical-ai-datasets，交叉 cosmos-3 / nvidia-cosmos / nurec / gr00t
+
+- **触发：** 用户指定 <https://huggingface.co/collections/nvidia/cosmos3>、<https://huggingface.co/collections/nvidia/physical-ai>，并要求自动合并 PR
+- **复用：** [`cosmos-3`](wiki/entities/cosmos-3.md)、[`nvidia-cosmos`](wiki/entities/nvidia-cosmos.md) 已存在。**新建** [`nvidia-physical-ai-datasets`](wiki/entities/nvidia-physical-ai-datasets.md) 作为 Physical AI 集合 canonical 页；Cosmos3 补 HF 集合节而非另造实体。
+- **步骤 2.5：** Cosmos3 集合 4 项（Super/Nano/Edge + Action Viewer Space）**已开源**；README 另列 Policy-DROID 等不在集合内。Physical AI 集合 49 项 **已开放获取**，部分 AV/NuRec/Spatial 子集 **`gated: auto`**。
+- **关键判断：** 权重走 Cosmos3 collection；训练数据走 Physical AI collection；门控集需 HF 登录.accept 条款。
+- **新建：** `nvidia-physical-ai-datasets`；归档 `hf-nvidia-cosmos3-collection.md`、`hf-nvidia-physical-ai-collection.md`
+- **交叉：** cosmos-3 / nvidia-cosmos / nvidia-nurec / isaac-gr00t / grail-locomanipulation-dataset
+
 ## [2026-09-05] ingest | sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md — 腾讯科技世界模型访谈；点名论文独立节点；关键页 paper-lpwm / paper-phi-wm-acteffect
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/2DEpiexjwh5O6bBJDXk3LA>，并要求文内论文各有独立非重复详情节点。
@@ -15,7 +24,6 @@
 - **关键判断：** 功能分类只描述解码（观测/状态/动作）；上智文补压缩定义与表征轴，并声明 WAM 不是第四实现列。仿真是枢纽；倒金字塔把数据天花板钉在互联网视频多样性。
 - **新建：** `functional-taxonomy-world-models`；升格 `paper-sa-2607-06401-a-definition-and-roadmap-for-world-models`（不另建第二实体）；归档 `worldlabs_functional_taxonomy_world_models.md`、`world_model_definition_roadmap_arxiv_2607_06401.md`
 - **交叉：** 生成式 WM / WAM / VL* 五家族 / 训练闭环三线 / 具身数据金字塔 / Cosmos 3 / Video-as-Simulation
-
 ## [2026-09-05] ingest | sources/sites/cosmos-cookbook.md、Transfer1/2.5 仓与文档 — Cosmos Transfer 族 + Cookbook 入库；已开源但 2.x 有限维护；关键页 cosmos-transfer、paper-cosmos-transfer1、cosmos-cookbook
 
 - **触发：** 用户指定 Cookbook、Transfer2.5 文档/仓、NVIDIA/Cosmos、Transfer1 项目页/仓，并要求自动合并 PR

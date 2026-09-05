@@ -375,6 +375,7 @@
 - [NVIDIA Learn OpenUSD](wiki/entities/nvidia-learn-openusd.md) — Learn OpenUSD** 是 NVIDIA 维护的 **免费、开源** USD 自学路径（[在线课纲](https://docs.nvidia.com/learn-openusd/lates `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse NuRec](wiki/entities/nvidia-nurec.md) — NVIDIA Omniverse NuRec** 是面向 Physical AI 的 **神经重建与渲染栈**：把真实相机 / LiDAR 吃成可在仿真里重放、改视角的 3D 环境，主交付是带高斯 `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 Isaac Sim 的运行底座。通过利 `📅unknown` `[entity_page]`
+- [NVIDIA Physical AI 数据集（Hugging Face 集合）](wiki/entities/nvidia-physical-ai-datasets.md) — NVIDIA Physical AI**（[Hugging Face Collection](https://huggingface.co/collections/nvidia/physical- `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI Learning](wiki/entities/nvidia-physical-ai-learning.md) — NVIDIA Physical AI Learning** 是 NVIDIA 面向 **Physical AI**（能感知、推理物理关系、执行动作并适应真实环境的 AI 系统）的 **免费自学课程 `📅unknown` `[entity_page]`
 - [NVIDIA SO-101 Sim2Real 实验 workflow](wiki/entities/nvidia-so101-sim2real-lab-workflow.md) — Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac** 是 [Physical AI Learning](./nvidia-physi `📅unknown` `[entity_page]`
 - [NVIDIA Warp（可微 GPU 计算框架）](wiki/entities/nvidia-warp.md) — NVIDIA Warp** 是面向仿真、机器人与机器学习的 **Python JIT 框架**：用 `@wp.kernel` 写普通函数，经 `wp.launch` 编译到 **CPU 或 CUD `📅unknown` `[entity_page]`
