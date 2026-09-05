@@ -351,6 +351,7 @@ flowchart TD
 
 ## 关联页面
 
+- [MILO](../entities/paper-milo.md) — 单图 LRM 解释人—物三维交互（SMPL-H + 物体网格）；操作链路的上游几何，不是策略
 - [ssik（解析逆运动学）](../entities/ssik.md) — 6R/7R 全分支解析 IK；遥操作跟踪与规划种子枚举，覆盖 EAIK 拒绝的几何
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 直接控制 vs 监督 VLA
 - [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测

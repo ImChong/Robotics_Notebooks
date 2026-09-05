@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-05",
   "node_count": 3463,
-  "edge_count": 31561,
+  "edge_count": 31566,
   "coverage": {
     "covered": 3436,
     "total": 3436,
@@ -240,7 +240,7 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 217
+      "size": 216
     },
     {
       "label": "视觉语言动作纵深路线",
@@ -256,7 +256,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1414,
+      "degree": 1415,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

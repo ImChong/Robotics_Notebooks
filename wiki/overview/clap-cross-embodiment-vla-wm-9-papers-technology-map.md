@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, world-models, vla, cross-embodiment, technology-map]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-05
 related:
   - ../entities/paper-milo.md
   - ../entities/paper-clap-cross-embodiment.md
@@ -99,7 +99,7 @@ flowchart TB
 
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|----------------|------|
-| 01 | MILO | **已开源** | [paper-milo](../entities/paper-milo.md) |
+| 01 | MILO | **已开源** MIT（2026-09-05 再核） | [paper-milo](../entities/paper-milo.md) |
 | 07 | ViTaR | **待发布** | [paper-vitar](../entities/paper-vitar.md) |
 | 08 | AlloEgo-VLM | **已开源** | [paper-alloego-vlm](../entities/paper-alloego-vlm.md) |
 | 09 | MistyPilot | **已开源** | [paper-mistypilot](../entities/paper-mistypilot.md) |

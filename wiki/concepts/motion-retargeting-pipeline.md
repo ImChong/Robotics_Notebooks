@@ -245,6 +245,7 @@ flowchart TD
 - [Gen2Humanoid](../entities/gen2humanoid.md) — 文本→HY-Motion→GMR 的端到端集成示例（运动学参考，无物理后处理）
 - [4DAnyone](../entities/paper-4danyone.md) — 单目→多视角外观 / 4DGS；与本流水线共享 GVHMR 上游，**不输出** 可重定向关节
 - [EasyMocap](../entities/easymocap.md) — 标定多视角 / 镜面视频 → SMPL 系参数的上游工具箱
+- [MILO](../entities/paper-milo.md) — 单图 LRM→SMPL-H + 物体网格的上游 HOI 几何；不是关节指令，进本管线前还要做坐标系/尺度对齐
 
 ## 推荐继续阅读
 
