@@ -65,7 +65,7 @@ flowchart LR
 | 路径 | 适用 |
 |------|------|
 | **ROS 2 bridge** | 已有 ROS 包，SIL 联调 segmentation、导航、驾驶等 |
-| **OmniGraph** | 无代码搭仿真逻辑与传感器图 |
+| **OmniGraph** | 无代码搭仿真逻辑与传感器图（见 [OmniGraph 实体页](../entities/omnigraph.md)） |
 | **Python API** | 批量场景、CI 回归、自定义传感器 |
 
 ### SIL vs HIL vs Sim2Real

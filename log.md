@@ -1,3 +1,10 @@
+## [2026-09-05] ingest | sources/sites/nvidia-omniverse-omnigraph.md、nvidia-isaac-sim-omnigraph.md — 接入 OmniGraph Omniverse 扩展与 Isaac Sim 6.0.1 教程；已开源；关键页 omnigraph，交叉 isaac-sim / nvidia-omniverse / software-in-the-loop
+
+- **触发：** 用户指定 Omniverse Extensions OmniGraph 页与 Isaac Sim 6.0.1 OmniGraph 索引，并要求自动合并 PR
+- **步骤 2.5：** 随 [isaac-sim/IsaacSim](https://github.com/isaac-sim/IsaacSim) **已开源** Apache-2.0；`omni.graph.core` 为 Python 入口
+- **新建：** `omnigraph` 实体；归档 Omniverse 核心概念 + Isaac Jetbot 教程 / shortcuts / scripting API
+- **交叉：** isaac-sim / nvidia-omniverse / software-in-the-loop / sru-odin（shm 注意）
+
 ## [2026-09-05] ingest | sources/papers/kamino_arxiv_2603_16536.md、disney-kamino、newton-kamino-solver、newton-solvers-catalog — Kamino 闭链 GPU 求解器 + Newton 九目录求解器谱系；已开源 BETA；关键页 paper-kamino，交叉 newton-physics / humanoid-parallel-joint-kinematics
 
 - **触发：** 用户指定 <https://disneyresearch.github.io/kamino/>、arXiv:2603.16536、Newton `solvers/kamino` 与 `solvers/` 下全部求解器类型，并要求自动合并 PR

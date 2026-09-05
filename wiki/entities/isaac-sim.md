@@ -18,6 +18,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../queries/simulator-selection-guide.md
   - ../concepts/software-in-the-loop.md
+  - ./omnigraph.md
   - ./paper-humanoidvln.md
   - ./fiveages-sim-robot-descriptions.md
   - ../comparisons/robot-description-catalogs.md
@@ -30,6 +31,8 @@ sources:
   - ../../sources/repos/fiveages-sim-robot-descriptions.md
   - ../../sources/courses/nvidia_learn_openusd.md
   - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
+  - ../../sources/sites/nvidia-isaac-sim-omnigraph.md
+  - ../../sources/sites/nvidia-omniverse-omnigraph.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -74,7 +77,7 @@ summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应�
 | 资产导入与场景配置 | URDF / MJCF / CAD / USD → 共享 stage |
 | 物理与传感器仿真 | PhysX / Newton + RTX / 物理传感器 |
 | 合成数据 | Replicator 标注与随机化写出 |
-| Software-in-the-loop | ROS 2 / 外部控制栈预硬件验证 | [Software-in-the-Loop](../concepts/software-in-the-loop.md) |
+| Software-in-the-loop | ROS 2 / 外部控制栈预硬件验证 | [Software-in-the-Loop](../concepts/software-in-the-loop.md) + [OmniGraph](./omnigraph.md) |
 | 为学习准备场景 | 给 Isaac Lab 准备可训练机器人与环境 |
 
 ## 核心类图
@@ -241,6 +244,7 @@ flowchart TB
 - [HumanoidVLN](./paper-humanoidvln.md) — 在 Sim 上做人形物理 VLN 评测（四本体 + FR；待开源）
 - [fiveages-sim robot_descriptions](./fiveages-sim-robot-descriptions.md) — 国内机型 URDF → 姊妹仓 `robot_usds` USD
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
+- [OmniGraph](./omnigraph.md) — 可视化脚本：ROS 2、传感器、控制器与 Replicator 编排
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — USDZ 神经体积 + `OmniNuRecVolumeAPI`
 - [Instant NuRec](./paper-instant-nurec.md) — 驾驶日志前向重建（AV 路径；机器人单目/双目走 3DGRUT）
 
