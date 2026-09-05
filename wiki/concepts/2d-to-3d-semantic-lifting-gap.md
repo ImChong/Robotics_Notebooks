@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-05
 related:
   - ./embodied-perception-six-spatial-representations.md
   - ./perception-coordinate-postprocessing.md
@@ -18,12 +18,14 @@ related:
   - ../entities/cmu-mscv-semantic-3d-mapping.md
   - ../entities/paper-occanyscene.md
   - ../entities/paper-lego-leveled-language-gaussian-splatting.md
+  - ../entities/paper-pointdit.md
 sources:
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
   - ../../sources/papers/sam2_arxiv_2408_00714.md
   - ../../sources/repos/ov-sam3d.md
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
   - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
+  - ../../sources/papers/pointdit_arxiv_2607_02515.md
 summary: "「2D 检测/分割结果」↔「可供策略消费的 3D 语义几何」取舍概念：提升时会引入尺度不确定、遮挡、时序不一致、语义–几何分离，以及 2D 粒度/绝对尺度与语义层级错位——它是感知输出能否被下游忠实消费的物理根因，可用深度融合 / 多视角一致性 / 联合建图收窄。"
 ---
 
@@ -96,9 +98,9 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
 ### 路线①：深度融合（补尺度）
 
-- **做什么**：用 RGB-D / 双目 / LiDAR 给 2D 掩码补上可信深度，把像素反投影到 3D，对不可信深度（远距/反光/低纹理）设门限剔除。
-- **取舍**：直接消掉单目尺度歧义、成本中等；但深度传感自身有失效区，融合前要先判深度可信度。
-- **关键坑**：无条件相信深度图——远处/反光处的错误深度会被提升放大成大位置误差。
+- **做什么**：用 RGB-D / 双目 / LiDAR 给 2D 掩码补上可信深度，把像素反投影到 3D，对不可信深度（远距/反光/低纹理）设门限剔除。只有 RGB 时，也可用单目点图模型（如 [PointDiT](../entities/paper-pointdit.md)）直接出相机系 XYZ，再与掩码相交。
+- **取舍**：主动深度直接消掉单目尺度歧义、成本中等；单目点图省传感器，但 PointDiT 一类输出是 **仿射不变**，抓取/碰撞仍要另做尺度标定。深度传感自身有失效区，融合前要先判深度可信度。
+- **关键坑**：无条件相信深度图——远处/反光处的错误深度会被提升放大成大位置误差。也勿把仿射点图的 Rel 当成毫米误差。
 
 ### 路线②：多视角一致性（去时序抖动）
 
@@ -142,6 +144,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — 路线③语义-几何联合建图代表
 - [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外度量 lifting：像素视锥约束高斯，而不是绝对米制偏移
 - [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) — 离线 3DGS：把多视角 SAM 重分级成结构层级，再接 CLIP / 场景图
+- [PointDiT](../entities/paper-pointdit.md) — 路线①的 RGB-only 点图：像素空间扩散，细结构强，尺度仿射不变
 - [视觉骨干（概念）](./vision-backbones.md) — 2D 特征提取背景
 - [目标检测（方法）](../methods/object-detection.md) — 2D 检测方法总览
 
@@ -152,3 +155,4 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [OV-SAM3D（开放词汇 3D 分割）](../../sources/repos/ov-sam3d.md) — 路线③语义-几何联合建图一手资料
 - [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 跨相机/跨尺度 image-to-3D lifting 的视锥高斯路线
 - [LEGO 论文摘录](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md) — 多视角 SAM 重分级：结构层级 vs 2D 粒度 / 绝对尺度
+- [PointDiT 论文摘录](../../sources/papers/pointdit_arxiv_2607_02515.md) — 路线① RGB-only 仿射点图（像素空间扩散）
