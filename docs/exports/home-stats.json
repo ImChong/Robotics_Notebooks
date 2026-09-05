@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-kamino.md",
+      "detail_id": "entity-paper-kamino",
+      "label": "Kamino（GPU 闭链约束多体仿真）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/concepts/software-in-the-loop.md",
       "detail_id": "wiki-concepts-software-in-the-loop",
       "label": "Software-in-the-Loop（SIL，软件在环）",
@@ -202,27 +212,17 @@
       "recency": "2026-09-05",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/multi-agent-cad.md",
-      "detail_id": "entity-multi-agent-cad",
-      "label": "Multi-Agent CAD（MAC）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/software-in-the-loop.md",
-    "detail_id": "wiki-concepts-software-in-the-loop",
-    "label": "Software-in-the-Loop（SIL，软件在环）",
-    "type": "concept",
+    "path": "wiki/entities/paper-kamino.md",
+    "detail_id": "entity-paper-kamino",
+    "label": "Kamino（GPU 闭链约束多体仿真）",
+    "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
