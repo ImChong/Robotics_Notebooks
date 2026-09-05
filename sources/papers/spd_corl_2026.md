@@ -7,8 +7,9 @@
 - **会议：** CoRL 2026（PDF 元数据 *Proceedings of the 10th Conference on Robot Learning*）
 - **项目页：** <https://spd.bot/> — 归档见 [`sources/sites/spd-bot.md`](../sites/spd-bot.md)
 - **PDF：** <https://spd.bot/assets/paper.pdf>
-- **arXiv：** 入库时 **暂无编号**（BibTeX 仅项目页 URL）
-- **代码 / 数据：** 论文宣称释放 **spd-vr**、**spd-75h** 与六套场景；截至 2026-08-17 项目页 **未列** GitHub / Hugging Face
+- **arXiv abs：** <https://arxiv.org/abs/2608.15917>
+- **arXiv HTML：** <https://arxiv.org/html/2608.15917>
+- **代码 / 数据：** 论文宣称释放 **spd-vr**、**spd-75h** 与六套场景；截至 2026-09-05 项目页 **未列** GitHub / Hugging Face
 - **作者：** Sarthak Kamat\*、Adam Rashid\*、Satvik Sharma、Aseem Doriwala、Chelsea Finn、Phillip Isola、C. Karen Liu（\* 同等贡献）
 - **机构：** 斯坦福大学（Stanford）；麻省理工（MIT）；Scale AI
 - **通讯：** sartk@cs.stanford.edu、abrashid@mit.edu
@@ -17,9 +18,9 @@
 
 ## 开源状态（步骤 2.5）
 
-- **核查日：** 2026-08-17，打开 <https://spd.bot/>。
-- **已发布：** 项目页、论文 PDF、任务视频与进度图。
-- **未发布：** GitHub、数据集下载、权重、arXiv 编号。
+- **核查日：** 2026-09-05，打开 <https://spd.bot/> 与 <https://arxiv.org/abs/2608.15917>。
+- **已发布：** 项目页、论文 PDF、arXiv 预印本、任务视频与进度图。
+- **未发布：** GitHub、数据集下载、权重。
 - **论文承诺：** §1 末「we release our pre-training dataset (spd-75h), VR teleoperation software (spd-vr), and six curated scenes…」
 - **结论：** **宣称将开源 / 待核实**。wiki 不得写「已开源」；`## 源码运行时序图` 写 **不适用**。GitHub 检索 `spd-vr` / `spd-75h` 无官方仓。
 

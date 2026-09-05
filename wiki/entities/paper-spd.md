@@ -13,8 +13,9 @@ tags:
   - mit
   - scale-ai
 status: complete
-updated: 2026-08-17
-venue: "CoRL 2026（项目页 PDF；暂无 arXiv）"
+updated: 2026-09-05
+arxiv: "2608.15917"
+venue: "CoRL 2026 / arXiv:2608.15917"
 related:
   - ../tasks/teleoperation.md
   - ../queries/dexterous-data-collection-guide.md
@@ -32,14 +33,14 @@ related:
 sources:
   - ../../sources/papers/spd_corl_2026.md
   - ../../sources/sites/spd-bot.md
-summary: "SPD（CoRL 2026，斯坦福/MIT/Scale AI）：仿真 VR 遥操作采 75 h on-embodiment 演示预训练 222M 扩散 Transformer，56-DoF 双臂灵巧手每任务 1–2 h 真机微调；五项任务均胜过从零 BC。论文宣称释放 spd-75h / spd-vr，截至入库日项目页未列代码或数据。"
+summary: "SPD（CoRL 2026 / arXiv:2608.15917，斯坦福/MIT/Scale AI）：仿真 VR 遥操作采 75 h on-embodiment 演示预训练 222M 扩散 Transformer，56-DoF 双臂灵巧手每任务 1–2 h 真机微调；五项任务均胜过从零 BC。论文宣称释放 spd-75h / spd-vr，截至 2026-09-05 项目页未列代码或数据。"
 ---
 
 # SPD：在仿真里预训练视觉灵巧操作
 
-**SPD**（*Simulation Pre-training for Dexterity*；论文 *Pre-training Visual Dexterity in Simulation*，[项目页](https://spd.bot/)，[PDF](https://spd.bot/assets/paper.pdf)；CoRL 2026）由**斯坦福大学 / MIT / Scale AI**提出：把灵巧手预训练数据全部放到仿真 VR 遥操作里采，再用少量真机演示微调。作者要回答的不是「仿真 RL 能否 zero-shot 上真机」，而是 **仿真里的 on-embodiment 演示能不能当灵巧手的可规模化预训练源**。
+**SPD**（*Simulation Pre-training for Dexterity*；论文 *Pre-training Visual Dexterity in Simulation*，[arXiv:2608.15917](https://arxiv.org/abs/2608.15917)，[项目页](https://spd.bot/)，[PDF](https://spd.bot/assets/paper.pdf)；CoRL 2026）由**斯坦福大学 / MIT / Scale AI**提出：把灵巧手预训练数据全部放到仿真 VR 遥操作里采，再用少量真机演示微调。作者要回答的不是「仿真 RL 能否 zero-shot 上真机」，而是 **仿真里的 on-embodiment 演示能不能当灵巧手的可规模化预训练源**。
 
-> **落地状态：** 入库时 **无 arXiv 编号**；论文宣称释放 **spd-75h / spd-vr / 六套场景**，项目页仅挂 PDF，**无 GitHub / Hugging Face**。读法以方法与真机进度表为准，不当可复现训练栈。
+> **落地状态：** arXiv 已挂 **2608.15917**；论文宣称释放 **spd-75h / spd-vr / 六套场景**，项目页仍 **无 GitHub / Hugging Face**。读法以方法与真机进度表为准，不当可复现训练栈。
 
 ## 一句话定义
 
@@ -69,12 +70,12 @@ summary: "SPD（CoRL 2026，斯坦福/MIT/Scale AI）：仿真 VR 遥操作采 7
 | 项 | 内容 |
 |----|------|
 | **机构** | 斯坦福大学（Stanford）；麻省理工（MIT）；Scale AI（采集 spd-75h） |
-| **会议** | CoRL 2026；暂无 arXiv |
+| **会议** | CoRL 2026；[arXiv:2608.15917](https://arxiv.org/abs/2608.15917) |
 | **平台** | 两台升级 YAM Pro + 各 22-DoF Sharpa Wave；三台 RealSense D405（顶 + 双腕） |
 | **仿真** | MuJoCo 480 Hz；Quest 3 WebXR 仅渲染/报手姿；IK（mink）60 Hz |
 | **数据** | spd-75h：六场景、约 1,930 ep / 75 h；真机微调 44–121 min/任务 |
 | **栈** | 222M 扩散 Transformer；冻结 DINOv3 ViT-B/16；flow matching；Muon |
-| **开源** | **宣称将开源 / 待核实**（截至 2026-08-17 项目页未列代码或数据 URL） |
+| **开源** | **宣称将开源 / 待核实**（截至 2026-09-05 项目页未列代码或数据 URL） |
 
 ## 核心原理
 
@@ -108,7 +109,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至入库日 2026-08-17：项目页仅 PDF，未列 GitHub / 数据集 / 权重；论文宣称释放 spd-vr 与 spd-75h，按「宣称 / 待核实」处理，不可按官方入口复现训练栈）。
+**不适用**（截至 2026-09-05：项目页与 arXiv 均未列 GitHub / 数据集 / 权重；论文宣称释放 spd-vr 与 spd-75h，按「宣称 / 待核实」处理，不可按官方入口复现训练栈）。
 
 ## 工程实践
 
@@ -181,10 +182,12 @@ flowchart TB
 
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md)
 - [spd.bot 项目页归档](../../sources/sites/spd-bot.md)
+- arXiv：<https://arxiv.org/abs/2608.15917>
 - 项目页：<https://spd.bot/>
 - PDF：<https://spd.bot/assets/paper.pdf>
 
 ## 推荐继续阅读
 
+- arXiv：<https://arxiv.org/abs/2608.15917> — 全文与附录（spd-vr / spd-75h 细节）
 - 项目页与 PDF：<https://spd.bot/> — 五项真机 rollout 与 (w,c) 消融图
 - ABC 遥操作基础设施（致谢来源）：<https://abc.bot/>

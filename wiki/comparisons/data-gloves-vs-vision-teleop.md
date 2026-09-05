@@ -2,7 +2,7 @@
 type: comparison
 tags: [dexterity, data-collection, teleoperation, hardware, sensors]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 related:
   - ../queries/dexterous-data-collection-guide.md
   - ../entities/paper-nestdex.md
