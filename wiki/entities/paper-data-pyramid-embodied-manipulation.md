@@ -31,7 +31,7 @@ related:
   - ../concepts/open-x-embodiment.md
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/world-action-models.md
-  - ../entities/paper-world-model-definition-roadmap.md
+  - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ../concepts/functional-taxonomy-world-models.md
   - ../concepts/sim2real.md
   - ../concepts/data-flywheel.md
@@ -220,7 +220,7 @@ flowchart TB
 - [GR00T N1](paper-hrl-stack-34-gr00t_n1.md) — 模型专属数据金字塔叙事（本综述的系统化对象之一）
 - [VLA](../methods/vla.md) — action-labeled 数据的主要消费者模型族
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界–动作模型族谱（数据消费视角互补）
-- [世界模型定义与路线图](./paper-world-model-definition-roadmap.md) — 「广度→可执行」倒金字塔，与本页五层配方正交
+- [世界模型定义与路线图](./paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 「广度→可执行」倒金字塔，与本页五层配方正交
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — Renderer 吃视频、Simulator/Planner 吃可执行 3D 与轨迹的数据不对称
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 数据规模与性能的量化轴
 - [EgoScale](../methods/egoscale.md) — Ego 层数据规模化的受控证据

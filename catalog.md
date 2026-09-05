@@ -2229,7 +2229,7 @@
 - [Closing the Reality Gap](wiki/entities/paper-sa-2607-04940-closing-the-reality-gap-zero-shot-sim-to-real-de.md) — Closing the Reality Gap: Zero-Shot Sim-to-Real Deployment for Dexterous Force-Based Grasping and M `📅unknown` `[entity_page]`
 - [MIRA](wiki/entities/paper-sa-2607-05352-mira-multiplayer-interactive-world-models-with-r.md) — MIRA: Multiplayer Interactive World Models with Representation Autoencoders** 收录于 [Awesome World M `📅unknown` `[entity_page]`
 - [MoWorld](wiki/entities/paper-sa-2607-06216-moworld-a-flash-world-model.md) — MoWorld: A Flash World Model** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-wor `📅unknown` `[entity_page]`
-- [A Definition and Roadmap for World Models](wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — A Definition and Roadmap for World Models** 收录于 [Awesome World Models](https://github.com/sun25466 `📅unknown` `[entity_page]`
+- [A Definition and Roadmap for World Models](wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 上海 AI Lab Physical Intelligence Team 的 **perspective**：世界模型不是「能出像素的视频生成器」，而是 **有限算力下对物理状态转移的压缩**；在 F `📅unknown` `[entity_page]`
 - [RynnWorld-Teleop](wiki/entities/paper-sa-2607-06558-rynnworld-teleop-an-action-conditioned-world-mod.md) — RynnWorld-Teleop: An Action-Conditioned World Model for Digital Teleoperation** 收录于 [Awesome World `📅unknown` `[entity_page]`
 - [Grounding Spatial Relations in a Compact World Model](wiki/entities/paper-sa-2607-06925-grounding-spatial-relations-in-a-compact-world-m.md) — Grounding Spatial Relations in a Compact World Model: Instruction Leakage and a Goal-Free Dynamics `📅unknown` `[entity_page]`
 - [WAM-TTT](wiki/entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md) — WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time** 收录于 [Awesome World Mod `📅unknown` `[entity_page]`
@@ -2791,6 +2791,7 @@
 - [Force Control Basics (力控制基础)](wiki/concepts/force-control-basics.md) — 在人形机器人和操作任务中，**力控制 (Force Control)** 是实现物理交互的基石。与传统工业机器人仅跟踪位置轨迹（Position Control）不同，力控制允许机器人感知并调节它对环 `📅unknown` `[wiki_page]`
 - [Foundation Policy（基础策略模型）](wiki/concepts/foundation-policy.md) — Foundation Policy（基础策略模型）**：在大规模多任务、多机器人形态演示数据上预训练的通用机器人策略，通过"规模化预训练 + 任务微调"范式，将跨任务泛化能力迁移到新场景——是 N `📅unknown` `[wiki_page]`
 - [Friction Compensation（摩擦补偿）](wiki/concepts/friction-compensation.md) — 摩擦补偿**：根据关节速度（及可选负载）估计摩擦矩 $\hat{\tau}_f$，在 **前馈通道** 叠加到 PD/RL 输出，使 **净关节力矩** 更接近仿真假设。 `📅unknown` `[wiki_page]`
+- [世界模型功能分类（Renderer / Simulator / Planner）](wiki/concepts/functional-taxonomy-world-models.md) — 世界模型功能分类** 是 Fei-Fei Li 与 World Labs（2026-06）提出的消歧：不按架构家族点名，而按系统在 **agent–环境环** 里 **输出哪一段**——像素观测、 `📅unknown` `[wiki_page]`
 - [Gait Generation（步态生成）](wiki/concepts/gait-generation.md) — Gait Generation** 是腿式机器人运动控制中负责**决定步态模式（gait pattern）的模块**：确定各腿的支撑/摆动相时序、步频、步幅范围，为步位规划和质心轨迹优化提供时序框 `📅unknown` `[wiki_page]`
 - [Generalized Value Functions (GVFs)](wiki/concepts/generalized-value-functions.md) — 广义价值函数（GVF）**：在标准 value function 框架下，把「奖励折扣和」推广为「**任意 cumulant 信号** 在 **策略 π** 与 **终止/折扣 γ** 下的期望累 `📅unknown` `[wiki_page]`
 - [生成式视觉预训练（Generative Vision Pretraining）](wiki/concepts/generative-vision-pretraining.md) — 生成式视觉预训练**是以 **合成视觉内容**（图像、编辑、视频帧等）为训练目标的表征学习范式；与 ImageNet 分类、对比学习、MAE 等 **非生成** 路线不同，它假设 **「能按语义与 `📅unknown` `[wiki_page]`

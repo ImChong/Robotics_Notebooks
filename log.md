@@ -1,10 +1,10 @@
 ## [2026-09-05] ingest | sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md + sources/blogs/worldlabs_functional_taxonomy_world_models.md — Fei-Fei 功能分类 + 上智定义/路线图；确认未开源
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2607.06401v1>、<https://drfeifei.substack.com/p/a-functional-taxonomy-of-world-models>
-- **复用：** 已有 [生成式世界模型](wiki/methods/generative-world-models.md)、[WAM](wiki/concepts/world-action-models.md)、[World Labs](wiki/entities/world-labs.md)、[Marble](wiki/entities/marble-world-model.md)、[训练闭环三线](wiki/overview/robot-world-models-training-loop-taxonomy.md)。**另建** 功能分类概念页与定义文实体页。
+- **复用：** 已有 [生成式世界模型](wiki/methods/generative-world-models.md)、[WAM](wiki/concepts/world-action-models.md)、[World Labs](wiki/entities/world-labs.md)、[Marble](wiki/entities/marble-world-model.md)、[训练闭环三线](wiki/overview/robot-world-models-training-loop-taxonomy.md)、Awesome 索引卡 [paper-sa-2607-06401](wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)。**另建** 功能分类概念页；定义文 **原地升格** Awesome stub（同一 arXiv 不双实体）。
 - **步骤 2.5：** 官方博客 <https://www.worldlabs.ai/blog/taxonomy-of-world-models> 与 arXiv HTML **均无** GitHub / 权重。概念文 + 视角文 → **确认未开源**。Marble 仍是部分开源（Spark），不因本篇改变。
 - **关键判断：** 功能分类只描述解码（观测/状态/动作）；上智文补压缩定义与表征轴，并声明 WAM 不是第四实现列。仿真是枢纽；倒金字塔把数据天花板钉在互联网视频多样性。
-- **新建：** `functional-taxonomy-world-models`、`paper-world-model-definition-roadmap`；归档 `worldlabs_functional_taxonomy_world_models.md`、`world_model_definition_roadmap_arxiv_2607_06401.md`
+- **新建：** `functional-taxonomy-world-models`；升格 `paper-sa-2607-06401-a-definition-and-roadmap-for-world-models`（不另建第二实体）；归档 `worldlabs_functional_taxonomy_world_models.md`、`world_model_definition_roadmap_arxiv_2607_06401.md`
 - **交叉：** 生成式 WM / WAM / VL* 五家族 / 训练闭环三线 / 具身数据金字塔 / Cosmos 3 / Video-as-Simulation
 
 

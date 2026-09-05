@@ -34,7 +34,7 @@
 ## 对 wiki 的映射
 
 - [`wiki/concepts/functional-taxonomy-world-models.md`](../../wiki/concepts/functional-taxonomy-world-models.md) — Renderer / Simulator / Planner 功能分类。
-- [`wiki/entities/paper-world-model-definition-roadmap.md`](../../wiki/entities/paper-world-model-definition-roadmap.md) — 上海人工智能实验室对功能分类的二维扩展。
+- [`wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md`](../../wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 上海人工智能实验室对功能分类的二维扩展。
 - [`wiki/entities/world-labs.md`](../../wiki/entities/world-labs.md) — 公司定位、Marble / Spark / Marble Labs 与和「生成式世界模型」「3DGS 仿真」知识节点的关系。
 - [`wiki/entities/marble-world-model.md`](../../wiki/entities/marble-world-model.md) — Marble 产品、文档门禁与开源边界。
 - [`wiki/entities/atlas-world-model.md`](../../wiki/entities/atlas-world-model.md) — Atlas omni 世界模型（相机可控生成、稀疏重建、Real-to-Sim）。

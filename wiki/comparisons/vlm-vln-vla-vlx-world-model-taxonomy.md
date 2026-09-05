@@ -11,7 +11,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../concepts/world-action-models.md
   - ../concepts/functional-taxonomy-world-models.md
-  - ../entities/paper-world-model-definition-roadmap.md
+  - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ../methods/generative-world-models.md
   - ../overview/hub-vla.md
   - ../overview/world-models-15-open-source-technology-map.md
@@ -109,7 +109,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md)：按 POMDP **输出**（观测 / 状态 / 动作）划分，与本页 VL* I/O 家族正交；本页的 WM 推演层在那边多半是 Renderer 或 Simulator。
-- [世界模型定义与路线图](../entities/paper-world-model-definition-roadmap.md)：再加表征轴，并声明 WAM 不是第四实现列。
+- [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)：再加表征轴，并声明 WAM 不是第四实现列。
 - [机器人学习五大范式](./robot-learning-five-paradigms-taxonomy.md)：按 **学习信号**（示范/奖励/视频/多模态/持续学习）划分的正交 taxonomy；本页按 **模型族 I/O** 划分。
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md)：把本页五大家族沉淀为「感知 → 导航 → 执行 → 扩展 → 推演」的端到端选型决策链，逐层给出 I/O 边界、数据需求与实时性/泛化取舍。
 - [VLA 方法页](../methods/vla.md)：执行层代表方法与训练数据。

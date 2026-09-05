@@ -63,7 +63,7 @@ related:
   - ../methods/vla.md
   - ../methods/generative-world-models.md
   - ./functional-taxonomy-world-models.md
-  - ../entities/paper-world-model-definition-roadmap.md
+  - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ../methods/model-based-rl.md
   - ../methods/being-h07.md
   - ../entities/paper-being-m07-humanoid-latent-wam.md
@@ -139,7 +139,7 @@ sources:
 - **VLA** 在多任务语义与语言条件上很强，但常见形态仍是 **当前观测 → 动作** 的反应式映射，对 **长程物理后果** 与 **反事实 rollout** 的显式表达有限。
 - **世界模型** 擅长 \(p(o' \mid o, a)\)，却 **不单独构成** 可部署策略：还需要 planner、策略头或二阶段系统。
 - **WAM** 试图把两条线收束到一个范式里：既是 **预测器** 又是 **控制器**，便于讨论 **耦合方式、数据混合、评测协议** 与 **安全部署** 上的共同问题。
-- 在 [Fei-Fei 功能分类](./functional-taxonomy-world-models.md) 里，WAM 落在 **Planner**，并通常横跨 Simulator。[上海人工智能实验室 2607.06401](../entities/paper-world-model-definition-roadmap.md) 据此强调：WAM **不是** 与 observation / latent / 3D 并列的第四实现列，只是「预测状态 ↔ 生成动作」的跨架构功能范式。
+- 在 [Fei-Fei 功能分类](./functional-taxonomy-world-models.md) 里，WAM 落在 **Planner**，并通常横跨 Simulator。[上海人工智能实验室 2607.06401](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 据此强调：WAM **不是** 与 observation / latent / 3D 并列的第四实现列，只是「预测状态 ↔ 生成动作」的跨架构功能范式。
 
 ## 核心结构：与相邻概念的分界
 
@@ -270,7 +270,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 语言条件视觉策略的主线；WAM 可视为在目标分布与训练接口上的延伸讨论。
 - [Generative World Models](../methods/generative-world-models.md) — 像素/潜空间动态预测工具箱；WAM 强调 **与控制头的耦合位置**。
 - [世界模型功能分类](./functional-taxonomy-world-models.md) — Renderer / Simulator / Planner；WAM 是 Planner 侧、常横跨 Simulator
-- [世界模型定义与路线图](../entities/paper-world-model-definition-roadmap.md) — 把 WAM 写成跨架构功能范式，不新开第四列
+- [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 把 WAM 写成跨架构功能范式，不新开第四列
 - [Model-Based RL](../methods/model-based-rl.md) — 经典 **模型 + 规划/策略** 分解；对照理解 Cascaded WAM 的历史渊源。
 - [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；相对 E2E WAM/VLA 的模型基对照。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 高 DoF 任务上 **长程协调** 与 **sim2real** 压力最集中，是 WAM 论文重点引用的评测语境之一。
@@ -305,7 +305,7 @@ flowchart TB
 ## 关联页面
 
 - [世界模型功能分类（Renderer / Simulator / Planner）](./functional-taxonomy-world-models.md)
-- [世界模型定义与路线图（上海人工智能实验室）](../entities/paper-world-model-definition-roadmap.md)
+- [世界模型定义与路线图（上海人工智能实验室）](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 具身闭环 + 生成世界模型作视觉计划；与 WAM「联合建模」同构的议程层坐标
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
 - [Dyna-2](../entities/dyna-2.md) — 百万小时人视频 Joint WAM 跨具身缩放（闭源）

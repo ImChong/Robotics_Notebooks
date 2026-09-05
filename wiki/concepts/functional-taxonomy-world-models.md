@@ -11,7 +11,7 @@ status: complete
 updated: 2026-09-05
 summary: "Fei-Fei / World Labs 把过载的「世界模型」按 POMDP 闭环拆成 Renderer（输出观测）、Simulator（输出状态）、Planner（输出动作）；仿真是枢纽。上海人工智能实验室补上表征轴，并指出功能分类只描述解码、不定义内部压缩。"
 related:
-  - ../entities/paper-world-model-definition-roadmap.md
+  - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ../methods/generative-world-models.md
   - ./world-action-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -51,7 +51,7 @@ sources:
 - **词已被用坏。** 文生视频、可玩语言模型、燃烧物理引擎都自称 world model；选型时若不问「输出是像素、状态还是动作」，会把创作者产品和闭环策略评到同一轴上。
 - **仿真是枢纽，却最少被讨论。** Renderer 商业最成熟，Planner demo 最吸睛；缺几何/物性/动力学，前两者都不可信。
 - **和本库已有 taxonomy 正交。** [五大具身模型](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) 按 VL* 的 I/O 家族分；[训练闭环三线](../overview/robot-world-models-training-loop-taxonomy.md) 按机器人学习接口分。本页问的是 **POMDP 环上吐出什么**。
-- **后续定义文补了一刀。** [上海人工智能实验室 2607.06401](../entities/paper-world-model-definition-roadmap.md) 承认功能分类有用，但指出它分类的是 **解码**，不是内部压缩表征。
+- **后续定义文补了一刀。** [上海人工智能实验室 2607.06401](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 承认功能分类有用，但指出它分类的是 **解码**，不是内部压缩表征。
 
 ## 核心原理
 
@@ -95,7 +95,7 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 
 ### 第二轴：功能 × 架构（定义文补充）
 
-功能分类不回答「内部状态存在哪种底物上」。[定义与路线图](../entities/paper-world-model-definition-roadmap.md) 加了表征轴：observation-level / latent-space / 3D-structured。同一产品可占多个格子——[Cosmos 3](../entities/cosmos-3.md) 是共享骨干上的多种 I/O 配置；WAM 是横跨 Planner+Simulator 的功能范式，**不是第四实现列**。
+功能分类不回答「内部状态存在哪种底物上」。[定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 加了表征轴：observation-level / latent-space / 3D-structured。同一产品可占多个格子——[Cosmos 3](../entities/cosmos-3.md) 是共享骨干上的多种 I/O 配置；WAM 是横跨 Planner+Simulator 的功能范式，**不是第四实现列**。
 
 ## 工程实践
 
@@ -119,7 +119,7 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 
 ## 关联页面
 
-- [世界模型定义与路线图（上海人工智能实验室）](../entities/paper-world-model-definition-roadmap.md) — 压缩定义、二维 taxonomy、倒金字塔与三阶段路线
+- [世界模型定义与路线图（上海人工智能实验室）](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 压缩定义、二维 taxonomy、倒金字塔与三阶段路线
 - [Generative World Models](../methods/generative-world-models.md) — 像素/视频生成式仿真工具箱；多数条目落在 Renderer 或 observation-level
 - [World Action Models（WAM）](./world-action-models.md) — Planner 侧联合建模；定义文不把它列为第四架构
 - [机器人世界模型：训练闭环与三线 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — 按「预测能否进入学习/评估/决策」分线

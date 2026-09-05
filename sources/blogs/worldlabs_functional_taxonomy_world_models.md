@@ -62,5 +62,5 @@
 ## 对 wiki 的映射
 
 - 升格：[世界模型功能分类](../../wiki/concepts/functional-taxonomy-world-models.md)
-- 对话论文：[世界模型定义与路线图](../../wiki/entities/paper-world-model-definition-roadmap.md)（arXiv:2607.06401）
+- 对话论文：[世界模型定义与路线图](../../wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)（arXiv:2607.06401）
 - 交叉：[生成式世界模型](../../wiki/methods/generative-world-models.md)、[WAM](../../wiki/concepts/world-action-models.md)、[World Labs](../../wiki/entities/world-labs.md)、[Marble](../../wiki/entities/marble-world-model.md)、[训练闭环三线 taxonomy](../../wiki/overview/robot-world-models-training-loop-taxonomy.md)

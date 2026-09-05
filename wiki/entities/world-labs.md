@@ -7,7 +7,7 @@ updated: 2026-09-05
 related:
   - ../methods/generative-world-models.md
   - ../concepts/functional-taxonomy-world-models.md
-  - ../entities/paper-world-model-definition-roadmap.md
+  - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ./marble-world-model.md
   - ./atlas-world-model.md
   - ./spark-3dgs-renderer.md
@@ -46,7 +46,7 @@ summary: "World Labs 是公开以「空间智能」与三维世界模型为主�
 
 ## 为什么重要
 
-- **概念对齐样本**：「世界模型」一词在产业与论文中跨度极大；World Labs 的公开叙事可作为 **3D 世界生成 / 空间智能** 分支的对照轴，避免与 **EWM 视频基准**（如 [EWMBench](./ewmbench.md)）或 **World Action Models** 混为一谈。2026-06 的 [功能分类](../concepts/functional-taxonomy-world-models.md) 把过载词拆成 Renderer / Simulator / Planner；[上海人工智能实验室定义文](./paper-world-model-definition-roadmap.md) 把它收成功能轴。
+- **概念对齐样本**：「世界模型」一词在产业与论文中跨度极大；World Labs 的公开叙事可作为 **3D 世界生成 / 空间智能** 分支的对照轴，避免与 **EWM 视频基准**（如 [EWMBench](./ewmbench.md)）或 **World Action Models** 混为一谈。2026-06 的 [功能分类](../concepts/functional-taxonomy-world-models.md) 把过载词拆成 Renderer / Simulator / Planner；[上海人工智能实验室定义文](./paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 把它收成功能轴。
 - **3DGS 工程参考**：Spark 2.0 公开阐述了 **LoD splat 树、渐进流式、.RAD 随机访问与显存分页** 等系统细节（已消化至 [spark-3dgs-renderer.md](./spark-3dgs-renderer.md)）；同赛道可对照 [Aholo Viewer](./aholo-viewer.md) 与 [选型对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)。
 - **产品化闭环**：[Marble](./marble-world-model.md) + Marble Labs + **World API** 把 **生成—编辑—导出** 串成创作者工作流（文档给出模型档位、积分与 SPZ/collider/HQ mesh 门禁），便于观察「世界模型」在 **内容生产管线** 而非 **控制回路** 中的落地形态。
 
@@ -72,7 +72,7 @@ summary: "World Labs 是公开以「空间智能」与三维世界模型为主�
 ## 关联页面
 
 - [世界模型功能分类（Renderer / Simulator / Planner）](../concepts/functional-taxonomy-world-models.md) — 2026-06 官方消歧文
-- [世界模型定义与路线图](./paper-world-model-definition-roadmap.md) — 把本页产品放进功能×架构格子
+- [世界模型定义与路线图](./paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 把本页产品放进功能×架构格子
 - [生成式世界模型（Generative World Models）](../methods/generative-world-models.md)
 - [Marble（多模态世界模型产品）](./marble-world-model.md)
 - [Atlas（omni 世界模型）](./atlas-world-model.md)

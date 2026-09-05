@@ -99,6 +99,6 @@ Outlook 的 Trinity：**Agent / Evaluator / World Model**（世界模型兼课�
 
 ## 对 wiki 的映射
 
-- 升格：[paper-world-model-definition-roadmap](../../wiki/entities/paper-world-model-definition-roadmap.md)
+- 升格：[paper-sa-2607-06401-a-definition-and-roadmap-for-world-models](../../wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)
 - 功能轴概念：[世界模型功能分类](../../wiki/concepts/functional-taxonomy-world-models.md)
 - 交叉：[生成式世界模型](../../wiki/methods/generative-world-models.md)、[WAM](../../wiki/concepts/world-action-models.md)、[训练闭环三线](../../wiki/overview/robot-world-models-training-loop-taxonomy.md)、[具身数据金字塔](../../wiki/entities/paper-data-pyramid-embodied-manipulation.md)、[Cosmos 3](../../wiki/entities/cosmos-3.md)、[Marble](../../wiki/entities/marble-world-model.md)
