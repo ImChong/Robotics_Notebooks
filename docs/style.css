@@ -2526,6 +2526,129 @@ button.home-wiki-heatmap-cell.is-active {
   }
 }
 
+/* 首页章节跳转按钮（由 main.js 仅在首页注入）
+   参考 https://imchong.github.io/ 的 .home-nav-fab：左下角浮动按钮 + 上弹章节菜单。
+   与参考站的差异：那边只在 ≤720px 显示（PC 交给 header 里的 .main-nav），本站不改
+   .site-header，所以不设断点，PC 端同样用这个按钮跳转。
+   位置与 .back-to-top 关于窗口中轴镜像：bottom / 内缩量 / 尺寸三者一致；左侧没有
+   scrollbar-gutter 装订线，故直接写 left: 20px。首页没有 .sidebar-toggle，不会撞位。 */
+.home-nav-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 20px;
+  z-index: 1350;
+  display: flex;
+  /* 按钮在 DOM 里排在菜单之前（Tab 顺序从按钮进菜单），column-reverse 把菜单画在上方 */
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: 12px;
+}
+.home-nav-fab__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.home-nav-fab__toggle:active {
+  transform: scale(0.9);
+}
+.home-nav-fab.is-open .home-nav-fab__toggle {
+  background: var(--accent-hover);
+}
+.home-nav-fab__toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+.home-nav-fab__icon--close {
+  display: none;
+}
+.home-nav-fab.is-open .home-nav-fab__icon--open {
+  display: none;
+}
+.home-nav-fab.is-open .home-nav-fab__icon--close {
+  display: block;
+}
+
+.home-nav-menu {
+  width: max-content;
+  min-width: 168px;
+  max-width: min(72vw, 280px);
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  padding: 8px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom left;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s ease;
+}
+.home-nav-fab.is-open .home-nav-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.home-nav-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.home-nav-menu a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition);
+}
+.home-nav-menu a:hover {
+  color: var(--text);
+  background: var(--bg-alt);
+}
+.home-nav-menu a.active {
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--quote-bg);
+}
+
+.home-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1250;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.home-nav-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-nav-fab__toggle,
+  .home-nav-menu,
+  .home-nav-overlay {
+    transition: none;
+  }
+}
+
 @media (max-width: 1631px) {
   .detail-toc-panel {
     position: fixed;
