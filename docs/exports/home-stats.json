@@ -1,13 +1,34 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3466,
-  "edge_count": 31641,
+  "node_count": 3468,
+  "edge_count": 31680,
   "coverage": {
-    "covered": 3439,
-    "total": 3439,
+    "covered": 3441,
+    "total": 3441,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mujoco-warp.md",
+      "detail_id": "entity-mujoco-warp",
+      "label": "MuJoCo Warp（MJWarp）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-warp.md",
+      "detail_id": "entity-nvidia-warp",
+      "label": "NVIDIA Warp（可微 GPU 计算框架）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/nvidia-cosmos.md",
       "detail_id": "entity-nvidia-cosmos",
@@ -130,7 +151,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/sciencediscovery.md",
@@ -141,7 +162,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-adarobovlg.md",
@@ -193,64 +214,43 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-minerva-libero.md",
-      "detail_id": "entity-paper-minerva-libero",
-      "label": "MINERVA：LIBERO 需要多小的操作策略",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-network-design-reproducible.md",
-      "detail_id": "entity-paper-network-design-reproducible",
-      "label": "可复现网络的设计原则",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-cosmos.md",
-    "detail_id": "entity-nvidia-cosmos",
-    "label": "NVIDIA Cosmos（世界基础模型平台）",
+    "path": "wiki/entities/mujoco-warp.md",
+    "detail_id": "entity-mujoco-warp",
+    "label": "MuJoCo Warp（MJWarp）",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 612
+      "size": 606
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 591
+      "size": 546
     },
     {
       "label": "视觉-语言-动作",
-      "size": 242
+      "size": 244
     },
     {
       "label": "机器人学习论文笔记",
       "size": 216
     },
     {
-      "label": "视觉语言动作纵深路线",
-      "size": 190
+      "label": "仿真到现实",
+      "size": 189
     },
     {
-      "label": "移动操作",
-      "size": 87
+      "label": "视觉语言动作纵深路线",
+      "size": 147
     }
   ],
   "top_hubs": [
@@ -376,8 +376,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -404,7 +403,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 43
+      "degree": 43,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }
