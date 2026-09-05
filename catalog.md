@@ -370,6 +370,7 @@
 - [NVIDIA Isaac Lab Spot locomotion Sim2Real](wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab** 是 NVIDIA D `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab UR10e 工业装配 Sim2Real](wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — Bridging the Sim-to-Real Gap for Industrial Robotic Assembly Applications Using NVIDIA Isaac Lab `📅unknown` `[entity_page]`
 - [NVIDIA Learn OpenUSD](wiki/entities/nvidia-learn-openusd.md) — Learn OpenUSD** 是 NVIDIA 维护的 **免费、开源** USD 自学路径（[在线课纲](https://docs.nvidia.com/learn-openusd/lates `📅unknown` `[entity_page]`
+- [NVIDIA Omniverse NuRec](wiki/entities/nvidia-nurec.md) — NVIDIA Omniverse NuRec** 是面向 Physical AI 的 **神经重建与渲染栈**：把真实相机 / LiDAR 吃成可在仿真里重放、改视角的 3D 环境，主交付是带高斯 `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 Isaac Sim 的运行底座。通过利 `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI Learning](wiki/entities/nvidia-physical-ai-learning.md) — NVIDIA Physical AI Learning** 是 NVIDIA 面向 **Physical AI**（能感知、推理物理关系、执行动作并适应真实环境的 AI 系统）的 **免费自学课程 `📅unknown` `[entity_page]`
 - [NVIDIA SO-101 Sim2Real 实验 workflow](wiki/entities/nvidia-so101-sim2real-lab-workflow.md) — Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac** 是 [Physical AI Learning](./nvidia-physi `📅unknown` `[entity_page]`
@@ -774,6 +775,7 @@
 - [Indi：把行为意图蒸馏进 VLA 解码器](wiki/entities/paper-indi.md) — Indi**（*Act with Intent: Distilling Behavior Intent for Vision-Language-Action Models*，[arXiv:2608 `📅unknown` `[entity_page]`
 - [InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）](wiki/entities/paper-infinite-diffusion-terrain-diffusion.md) — InfiniteDiffusion**（*Bridging Learned Fidelity and Procedural Utility for Open-World Terrain Gener `📅unknown` `[entity_page]`
 - [Instant Episode Repetition（IER）](wiki/entities/paper-instant-episode-repetition.md) — Instant Episode Repetition（IER）**（*Repetition as Reinforcement: Enhancing Sample Efficiency via In `📅unknown` `[entity_page]`
+- [Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）](wiki/entities/paper-instant-nurec.md) — Instant NuRec** 是 NVIDIA [Spatial Intelligence Lab](https://research.nvidia.com/labs/sil/projects/ `📅unknown` `[entity_page]`
 - [INTACT（Search-Free Intent-to-Action World Model）](wiki/entities/paper-intact.md) — INTACT**（*Isomorphic Intent-to-Action Learning for Search-Free World Models*，[arXiv:2607.26056](ht `📅unknown` `[entity_page]`
 - [InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA](wiki/entities/paper-internvla-a15-unified-vla.md) — InternVLA-A1.5**（*Unifying Understanding, Latent Foresight, and Action for Compositional Generaliz `📅unknown` `[entity_page]`
 - [InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）](wiki/entities/paper-interprior.md) — InterPrior** 是 UIUC 与 Amazon 团队的 **物理仿真人–物交互（HOI）** 论文（arXiv:2602.06035，项目页标注 **CVPR 2026 Highligh `📅unknown` `[entity_page]`

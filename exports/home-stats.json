@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3474,
-  "edge_count": 31784,
+  "node_count": 3476,
+  "edge_count": 31820,
   "coverage": {
-    "covered": 3447,
-    "total": 3447,
+    "covered": 3449,
+    "total": 3449,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/nvidia-nurec.md",
+      "detail_id": "entity-nvidia-nurec",
+      "label": "NVIDIA Omniverse NuRec",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-instant-nurec.md",
+      "detail_id": "entity-paper-instant-nurec",
+      "label": "Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-robot-juggling-athenazero.md",
       "detail_id": "entity-paper-robot-juggling-athenazero",
@@ -192,43 +212,22 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-levjepa.md",
-      "detail_id": "entity-paper-levjepa",
-      "label": "LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/openjiuwen.md",
-      "detail_id": "entity-openjiuwen",
-      "label": "openJiuwen（开放九问）",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-robot-juggling-athenazero.md",
-    "detail_id": "entity-paper-robot-juggling-athenazero",
-    "label": "Robot Juggling：分钟级真机动态操作学习",
+    "path": "wiki/entities/nvidia-nurec.md",
+    "detail_id": "entity-nvidia-nurec",
+    "label": "NVIDIA Omniverse NuRec",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 676
+      "size": 782
     },
     {
       "label": "操作",
@@ -236,7 +235,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 277
+      "size": 260
     },
     {
       "label": "机器人学习论文笔记",
@@ -244,11 +243,11 @@
     },
     {
       "label": "仿真到现实",
-      "size": 147
+      "size": 123
     },
     {
-      "label": "计算机视觉中的 Transformer",
-      "size": 81
+      "label": "移动操作",
+      "size": 77
     }
   ],
   "top_hubs": [
@@ -287,7 +286,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 809,
+      "degree": 812,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -310,7 +309,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 518,
+      "degree": 522,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

@@ -245,7 +245,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 **旁路：难仿真平台直接 on-robot MBRL：** [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md)（arXiv:2510.18518，ETH×MPI-IS×EPFL）对液压挖掘机臂 / 缆驱软臂 **跳过 sim-to-real**，用真机缓冲学动力学并在真实轨迹上做一阶策略更新；HEAP 约 **2.5 h** 达 **2.7 cm** 跟踪。读法是「仿真不可用或不值得」时的对照路线，而非否定 DR/RMA；截至入库日 **确认未开源**。
 
-**场地专用 RGB 导航（产业管线）：** [Flexion × Niantic Spatial × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md)（2026-07）用 **360° 扫描 → 3DGS+对齐碰撞 mesh 的 NuRec USDZ → Isaac Lab 大规模 RL** 训练 **纯 RGB 局部导航**，在两家办公室重建中仿真成功率 **达到或超过深度基线**（97.8% vs 93.8% / 75.0% vs 70.9%），并 **零样本** 部署真机——把「无纹理合成场景 + 深度」惯例推进到 **语义可见、部署点绑定** 的 RGB 策略，与 [LEGS](../entities/paper-legs-embodied-gaussian-splatting-vla.md)（3DGS 缩小 VLA **模仿**视觉 gap）、[GS-Playground](../entities/gs-playground.md)（高吞吐 3DGS **仿真渲染**）形成互补读法。
+**场地专用 RGB 导航（产业管线）：** [Flexion × Niantic Spatial × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md)（2026-07）用 **360° 扫描 → 3DGS+对齐碰撞 mesh 的 NuRec USDZ → Isaac Lab 大规模 RL** 训练 **纯 RGB 局部导航**，在两家办公室重建中仿真成功率 **达到或超过深度基线**（97.8% vs 93.8% / 75.0% vs 70.9%），并 **零样本** 部署真机——把「无纹理合成场景 + 深度」惯例推进到 **语义可见、部署点绑定** 的 RGB 策略，与 [LEGS](../entities/paper-legs-embodied-gaussian-splatting-vla.md)（3DGS 缩小 VLA **模仿**视觉 gap）、[GS-Playground](../entities/gs-playground.md)（高吞吐 3DGS **仿真渲染**）形成互补读法。体积规范与 Isaac 导入见 [NVIDIA Omniverse NuRec](../entities/nvidia-nurec.md)；驾驶日志的 **秒级前向初始化** 见 [Instant NuRec](../entities/paper-instant-nurec.md)（arXiv:2607.14203，官方仓部分开源）。
 
 ## 参考来源
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — G1 真机高动态武术 tracking（[source](../../sources/papers/kung_fu_athlete_bot.md)）
@@ -336,6 +336,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md) — 难仿真平台直接真机在线 MBRL（arXiv:2510.18518，确认未开源）
 - **ingest 档案：** [sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 - [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 部署现场 3DGS 数字孪生 + 纯 RGB 导航 RL 零样本真机（2026-07 产业联合文）
+- [NVIDIA Omniverse NuRec](../entities/nvidia-nurec.md) — 相机/LiDAR → USDZ 体积；Isaac `OmniNuRecVolumeAPI` + AV Docker 精修
+- [Instant NuRec](../entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS；~1.5 s vs 逐场景 75 min，AlpaSim 策略排序对齐（arXiv:2607.14203）
 - [DA-Nav](../entities/paper-da-nav.md) — CARLA 方向感知 VLN → Go2 / Kuavo-V 零样本户外导航（arXiv:2607.11638）
 - [Arcadia](../entities/paper-arcadia.md) — 自采 + 3DGS USD + 共享 VLN/VLA + 真机反馈写回；G1 46/27（arXiv:2512.00076；部分开源）
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 3DGS 室内场景与 G1 DualVLN 20 条 sim–real 相关（arXiv:2608.12860；待开源）

@@ -288,7 +288,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 相邻方向：三维世界生成与流式 3DGS（产业样本）
 
-部分团队将「世界模型」叙事延伸到 **持久 3D 世界** 的生成与编辑，并以 **3D Gaussian Splatting** 在 Web 或工具链中交付可漫游场景；这与上文以 **像素视频 rollout** 为中心的讨论共享「生成式环境」动机，但 **评测对象与训练目标** 往往更接近内容管线而非机器人控制回路。产业侧公开样本见 [World Labs](../entities/world-labs.md)：**[Atlas](../entities/atlas-world-model.md)**（2026-09 omni 世界模型：相机可控长视频、稀疏视角重建、Real-to-Sim 机器人传感器 rollout；早期访问未开源）+ Marble + [Spark](../entities/spark-3dgs-renderer.md)；同类 Web 渲染可对照 [Aholo Viewer](../entities/aholo-viewer.md)（见 [Spark vs Aholo](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）。
+部分团队将「世界模型」叙事延伸到 **持久 3D 世界** 的生成与编辑，并以 **3D Gaussian Splatting** 在 Web 或工具链中交付可漫游场景；这与上文以 **像素视频 rollout** 为中心的讨论共享「生成式环境」动机，但 **评测对象与训练目标** 往往更接近内容管线而非机器人控制回路。产业侧公开样本见 [World Labs](../entities/world-labs.md)：**[Atlas](../entities/atlas-world-model.md)**（2026-09 omni 世界模型：相机可控长视频、稀疏视角重建、Real-to-Sim 机器人传感器 rollout；早期访问未开源）+ Marble + [Spark](../entities/spark-3dgs-renderer.md)；同类 Web 渲染可对照 [Aholo Viewer](../entities/aholo-viewer.md)（见 [Spark vs Aholo](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）。驾驶侧的对照是 [Instant NuRec](../entities/paper-instant-nurec.md)：它 **不发明像素**，而是一次前向给出可重姿态的分层 3DGS，再交给 [NuRec](../entities/nvidia-nurec.md) / AlpaSim——论文把它放在「重建骨干」，与生成修复 / 联合世界模型互补。
 
 ### 术语对照：状态动力学「世界模型」（RWM）
 
@@ -310,6 +310,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy
 - [NVIDIA Cosmos](../entities/nvidia-cosmos.md) — 1.0 / Predict2.5 / Cosmos 3 平台与 Newton 分工
+- [Instant NuRec](../entities/paper-instant-nurec.md) — 驾驶日志前向 3DGS（显式世界，不是像素 WM）
+- [NVIDIA Omniverse NuRec](../entities/nvidia-nurec.md) — 神经体积 USDZ 与 Instant 初始化
 - [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 把 WM 写成三轴之一，用耦合类型诊断长程/不确定失败（TMLR 2026）
 - [GaussianDream++](../entities/paper-gaussiandream-plusplus.md) — 训练期高斯世界、部署 20 令牌
 - [ConfAL-WM](../entities/paper-confal-wm.md) — 稠密置信度主动后训练

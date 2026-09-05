@@ -2,11 +2,13 @@
 type: entity
 tags: [humanoid, sim2real, real2sim, reinforcement-learning, navigation, 3dgs, gaussian-splatting, rgb, flexion, niantic-spatial, nvidia, isaac-lab]
 status: complete
-updated: 2026-07-20
+updated: 2026-09-05
 related:
   - ../concepts/sim2real.md
   - ./flexion-reflect-v1.md
   - ./isaac-gym-isaac-lab.md
+  - ./nvidia-nurec.md
+  - ./paper-instant-nurec.md
   - ./gs-playground.md
   - ./paper-legs-embodied-gaussian-splatting-vla.md
   - ./paper-simfoundry-real2sim-scene-generation.md
@@ -132,7 +134,7 @@ flowchart LR
 
 | 组件 | 状态 |
 |------|------|
-| Isaac Sim / Isaac Lab / NuRec | **已开放** — NVIDIA 官方栈 |
+| Isaac Sim / Isaac Lab / NuRec | **已开放** — NVIDIA 官方栈；体积规范与 Instant 初始化见 [NuRec](./nvidia-nurec.md) / [Instant NuRec](./paper-instant-nurec.md) |
 | Niantic Spatial 重建导出管线 | **未开源** — SPZ 格式开源，完整管线为企业服务 |
 | Flexion 导航策略权重/部署 | **未开源** — 产业演示栈 |
 
@@ -149,6 +151,8 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) — Domain gap 与 Real2Sim 资产语境
 - [Flexion Reflect v1.0](./flexion-reflect-v1.md) — 同公司长程自主平台；3DGS 全栈仿真与局部导航上层
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 训练基础设施与 NuRec 导入
+- [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — USDZ 体积、Isaac 渲染 API、AV/机器人两条重建路径
+- [Instant NuRec](./paper-instant-nurec.md) — 驾驶日志前向 3DGS；办公室 360° 扫描仍走本页 / 3DGRUT，不要套 Instant CLI
 - [GS-Playground](./gs-playground.md) — 另一路 **批量 3DGS + 并行物理** 的高吞吐视觉 RL（学术 RSS 2026）
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 缩小 **VLA 模仿学习** 视觉 gap（斯坦福，G1 loco-manip）
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — NVIDIA GEAR 真机视频→数字孪生 + cousins（偏操作评测）

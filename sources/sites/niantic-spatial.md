@@ -33,5 +33,6 @@
 ## 对 wiki 的映射
 
 - [flexion-niantic-nvidia-rgb-sim2real-pipeline](../../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md)
+- [NVIDIA Omniverse NuRec](../../wiki/entities/nvidia-nurec.md) — 导出 USDZ 的体积规范与 Isaac 渲染 API
 - [Sim2Real](../../wiki/concepts/sim2real.md)
 - [SimFoundry](../../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 另一路真机视频→数字孪生（NVIDIA GEAR）
