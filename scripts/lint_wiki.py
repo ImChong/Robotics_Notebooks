@@ -196,6 +196,18 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 导航评测的片段类别（Green for Go 的 stop 片段）。非单一可成页概念，
     # 与 clip（模型名 vs 限幅动词）同类语义噪声。
     "stop",
+    # eval：各页正文里的 `eval` / **Eval** 均为仓库入口脚本名或任务名后缀
+    # （「无可对齐的 `train` / `eval` 入口」「`lego run` / `eval` / `viewer`」、
+    # Isaac Lab 任务用途标签 `Eval`），与已作停用词的 `train` 成对出现，是
+    # 工具链/命令 token；评测作为机制已由 concepts/sim-vs-real-eval-gap.md、
+    # concepts/motion-control-policy-evaluation-metrics.md 等页覆盖，不应建独立页。
+    "eval",
+    # play：各页正文里的 `play` / **Play** 是运行时命令或脚本名——mjlab/Isaac Lab
+    # 的回放脚本与配置（`scripts/play.py`、`play_env_cfg`、「课内第一次 `play`」）、
+    # Omniverse timeline 的 **Play** 按钮（OmniGraph 的 On Playback Tick 触发条件）。
+    # 与 stop（BehaviorTree 命令名 / 动作枚举）同类运行时命令 token，非机器人
+    # 概念/方法/形式化，不应建独立页。
+    "play",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -362,6 +374,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "sim-to-real",  # 已由 concepts/sim2real.md 覆盖（全称写法与页面 stem 不同名）
     "ros2",  # 已由 concepts/ros2-basics.md 覆盖（slug 与页面 stem 不同名）
     "sonic",
+    # state：三义各有归属——决策过程里的状态量已由 formalizations/mdp.md /
+    # pomdp.md 定义（「**State** 是物理/机器人意义上的完整瞬时描述」即该形式化的
+    # 复述），可观状态的估计归 concepts/state-estimation.md，仿真真值与观测之分归
+    # concepts/humanoid-policy-observation-inputs.md；余下的 `State` 是代码 token
+    # （Newton 的 `Model` / `State` / `Control` 抽象、观测字典键 `state`），与 qpos /
+    # reset 同类，不单建概念页
+    "state",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）
     "zero-shot",  # 迁移/评测的条件状语，已由 concepts/sim2real.md 等页覆盖

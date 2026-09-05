@@ -104,6 +104,7 @@ flowchart TB
 - **集合 ≠ 完整 NVIDIA 数据宇宙：** 部分 checkpoint（如 Cosmos Policy-DROID）在独立 HF 仓，不在本 collection。
 - **门控与地域：** `gated: auto` 子集无法 CI 匿名拉取；企业合规需单独审数据卡。
 - **格式异构：** 有 parquet+video、USDZ、imagefolder、LeRobot v3 等；不要假设统一 schema。
+- **重定向就绪度：** 机器人子集按具体本体采集（`Teleop-G1` 为 Unitree G1、`Teleop-GR1`/`GR00T-GR1` 为 Fourier GR-1、`mindmap-Franka-*` 为 Franka），同形态可直接作策略输入；换目标形态须按目标骨架 **重定向 / retarget** 或重采。`X-Embodiment-Sim` 覆盖多本体但仍是各自动作空间，`LIBERO_LeRobot_v3` / `BridgeData2_LeRobot_v3` 统一的是 **schema 而非形态**。
 - **第三方条目：** 如 `bones-studio/seed`、`NianticSpatial/real2sim-sample-usdz-scenes` 许可与 NVIDIA 主集不同。
 
 ## 关联页面

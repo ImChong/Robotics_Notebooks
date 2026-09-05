@@ -13,6 +13,7 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/software-in-the-loop.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/sites/nvidia-spatial-intelligence-lab.md
   - ../../sources/repos/nv_tlabs.md
@@ -114,6 +115,7 @@ flowchart TB
 - [Software-in-the-Loop（概念）](../concepts/software-in-the-loop.md) — Isaac Sim 工程 SIL
 - [生成式世界模型](../methods/generative-world-models.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — SIL 的 3D/4D 感知与重建落到感知栈哪一层
 
 ## 参考来源
 
