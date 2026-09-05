@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-08-27
+updated: 2026-09-05
 related:
   - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
   - ./locomotion.md
@@ -18,6 +18,7 @@ related:
   - ../methods/htwk-gym.md
   - ../entities/booster-robocup-demo.md
   - ../entities/roboflow-sports.md
+  - ../entities/tennis-vision.md
   - ../entities/unitree-g1.md
   - ../entities/humanoid-system-curriculum.md
   - ../entities/intel-realsense.md
@@ -56,7 +57,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 ## 核心挑战
 
 ### 1. 动态感知与定位
-机器人必须在快速移动中识别高速滚动的足球、对手机器人、场地边线和球门，并实时更新自身位姿。广播/第三人称侧的检测–跟踪–俯视投影可参考 [Roboflow Sports](../entities/roboflow-sports.md)；机载场线定位见 [视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md)。
+机器人必须在快速移动中识别高速滚动的足球、对手机器人、场地边线和球门，并实时更新自身位姿。广播/第三人称侧的检测–跟踪–俯视投影可参考 [Roboflow Sports](../entities/roboflow-sports.md)；网球广播对照见 [Tennis-Vision](../entities/tennis-vision.md)（地板单应失效与拒报）。机载场线定位见 [视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md)。
 
 ### 2. 闭环踢球 (Closed-loop Kicking)
 不同于预设轨迹的踢球，竞技环境要求：
@@ -134,6 +135,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch6–7 感知定位与 RoboCup 实践地图
 - [足球场仿真环境](../concepts/soccer-field-simulation.md) / [场地线检测](../methods/soccer-field-line-detection.md) / [线匹配](../methods/visual-line-matching-localization.md) / [线特征 EKF](../methods/visual-line-ekf-fusion.md)
 - [Roboflow Sports](../entities/roboflow-sports.md) — 第三人称体育 CV 与俯视雷达 demo
+- [Tennis-Vision](../entities/tennis-vision.md) — 网球广播：事件门与「空中球勿投地板单应」
 - [Locomotion](./locomotion.md) — 足球任务的基础
 - [PAiD Framework](../methods/paid-framework.md) — 渐进式感知动作学习
 - [人形足球技能学习方法选型指南](../queries/humanoid-soccer-skill-learning-method-selection.md) — PAiD vs RoboNaldo 选型

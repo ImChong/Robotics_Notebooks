@@ -2,7 +2,7 @@
 type: entity
 tags: [perception, computer-vision, hand-tracking, pose-estimation, open-source, google, on-device-ml]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-05
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/dexterous-data-collection-guide.md
@@ -11,6 +11,7 @@ related:
   - ../methods/toporetarget-interaction-preserving-dexterous-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./sam-3d-body.md
+  - ./tennis-vision.md
 sources:
   - ../../sources/repos/mediapipe.md
   - ../../sources/sites/mediapipe-developers-google.md
@@ -86,6 +87,7 @@ flowchart LR
 - [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 以 MediaPipe 21 点为输入的交互保留重定向
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 感知上游在管线中的位置
 - [Hand Visibility Detector](./paper-hand-visibility-detector.md) — 逐关节可见性插件，补 MediaPipe 缺的遮挡分数
+- [Tennis-Vision](./tennis-vision.md) — 广播正反手：MediaPipe 常丢掉反手持拍手；「拒绝给点」本身是质量门
 
 ## 参考来源
 

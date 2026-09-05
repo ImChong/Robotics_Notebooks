@@ -2,7 +2,7 @@
 type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
-updated: 2026-07-11
+updated: 2026-09-05
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam3dbody-cpp.md
@@ -12,6 +12,7 @@ related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../methods/motion-retargeting-gmr.md
   - ./gnm-head.md
+  - ./tennis-vision.md
 sources:
   - ../../sources/papers/sam_3d_body_arxiv_2602_15989.md
   - ../../sources/repos/sam-3d-body.md
@@ -104,6 +105,7 @@ flowchart LR
 - [GENMO](../methods/genmo.md) — 时序人体运动生成/估计对照
 - [GMR](../methods/motion-retargeting-gmr.md) — SMPL/MHR 序列 → 机器人重定向
 - [GNM Head](./gnm-head.md) — 参数化头脸 3DMM（与全身 HMR 粒度互补）
+- [Tennis-Vision](./tennis-vision.md) — 可选姿态后端：遮挡臂覆盖 100%，但正反手比 MediaPipe 更差（推断的拍位毁掉判别信号）
 
 ## 推荐继续阅读
 

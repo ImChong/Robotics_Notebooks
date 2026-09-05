@@ -2637,6 +2637,7 @@
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
 - [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](wiki/entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，AGIBOT Finch 研究页， `📅unknown` `[entity_page]`
+- [Tennis-Vision](wiki/entities/tennis-vision.md) — Tennis-Vision**（HarshTomar1234/Tennis-Vision）是一 `📅unknown` `[entity_page]`
 - [TensorBoard](wiki/entities/tensorboard.md) — TensorBoard**（tensorflow/tensorboard）是一套 **Web 端实验检查工 `📅unknown` `[entity_page]`
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`
