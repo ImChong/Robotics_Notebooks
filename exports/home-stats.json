@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3470,
-  "edge_count": 31719,
+  "node_count": 3471,
+  "edge_count": 31730,
   "coverage": {
-    "covered": 3443,
-    "total": 3443,
+    "covered": 3444,
+    "total": 3444,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/tennis-vision.md",
-      "detail_id": "entity-tennis-vision",
-      "label": "Tennis-Vision",
+      "path": "wiki/entities/multi-agent-cad.md",
+      "detail_id": "entity-multi-agent-cad",
+      "label": "Multi-Agent CAD（MAC）",
       "type": "entity",
       "recency": "2026-09-05",
       "source": "git",
@@ -217,9 +217,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tennis-vision.md",
-    "detail_id": "entity-tennis-vision",
-    "label": "Tennis-Vision",
+    "path": "wiki/entities/multi-agent-cad.md",
+    "detail_id": "entity-multi-agent-cad",
+    "label": "Multi-Agent CAD（MAC）",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
@@ -230,7 +230,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 787
+      "size": 790
     },
     {
       "label": "操作",
@@ -320,7 +320,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 514,
+      "degree": 515,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

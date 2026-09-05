@@ -3,7 +3,7 @@ type: concept
 tags: [cad, generative-ai, hardware, design, api, manufacturing, llm, robotics]
 status: complete
 date: 2026-05-14
-updated: 2026-08-13
+updated: 2026-09-05
 related:
   - ../entities/urdf-studio.md
   - ../entities/atom01-hardware.md
@@ -14,11 +14,13 @@ related:
   - ../entities/gencad.md
   - ../entities/gencad-3d.md
   - ../entities/cad-skills.md
+  - ../entities/multi-agent-cad.md
   - ../entities/freecad-mcp.md
   - ./sim2real.md
 sources:
   - ../../sources/sites/text-to-cad-tools.md
   - ../../sources/repos/earthtojake-text-to-cad.md
+  - ../../sources/repos/multi-agent-cad.md
   - ../../sources/repos/img2threejs.md
   - ../../sources/repos/freecad-mcp.md
   - ../../sources/repos/3dgenstudio.md
@@ -136,6 +138,14 @@ Autodesk 产品线正在把 **AI** 深度嵌入 **Fusion / Maya / Flow** 等工�
 
 相对 Zoo/Adam 等 **商业 CAD 宿主**，CAD Skills 更偏 **开源 skill 规约 + 本地 CLI 校验**；相对 [Articraft](../entities/articraft.md)，目标仍是 **制造向 B-rep/STEP** 而非仿真就绪可关节网格。
 
+### 6.5 解耦多智能体 + 测试时压缩（MAC）
+
+[MAC](../entities/multi-agent-cad.md)（[Pan-Chera/Multi-Agent-CAD](https://github.com/Pan-Chera/Multi-Agent-CAD)，清华 IEI Lab）把同一条 **LLM + build123d → STEP** 链拆成 **Spec Planner / Geometric Architect / 确定性翻译器 / QA+Aider**，节点之间只传 `CADBrief` / `ArchitectPlan` JSON。它用 CAD Skills 的 **P1–P10** 当单 agent 基线，自报 **116× 更少 token、13× 更低费用、特征通过 99.3%（140/141）**。
+
+- **适合：** 反复修同一件、在乎 API 账单、要落盘审计中间件的机械草稿。
+- **不替代 CAD Skills：** 无 URDF / 标准件 / 切片链；Web UI 会在服务端执行生成代码。
+- **工程坑：** `pipeline_cache/` 只看文件是否存在，换 prompt 必须清缓存。
+
 ### 7. 桌面 CAD + MCP（FreeCAD MCP）
 
 [FreeCAD MCP](../entities/freecad-mcp.md)（[neka-nat/freecad-mcp](https://github.com/neka-nat/freecad-mcp)）走 **「不迁移几何栈、直接遥控已装 FreeCAD」** 路线：
@@ -214,6 +224,7 @@ flowchart LR
 - [GenCAD](../entities/gencad.md) — 图像条件 **CAD program** 生成与检索（MIT，对比学习 + 潜扩散）。
 - [GenCAD-3D](../entities/gencad-3d.md) — 点云/网格条件 **CAD program** 与 **SynthBal** 数据平衡（逆向工程向）。
 - [CAD Skills](../entities/cad-skills.md) — **Agent Skills** 形态的 build123d→STEP→URDF/制造/打印全链路参考实现。
+- [Multi-Agent CAD（MAC）](../entities/multi-agent-cad.md) — 四段 LangGraph + 确定性翻译器；同一套 Skills 基准上压测试时 token。
 - [FreeCAD MCP](../entities/freecad-mcp.md) — **MCP + 桌面 FreeCAD RPC** 的自然语言建模与 FEM 桥接。
 - [Atom01 Hardware](../entities/atom01-hardware.md) — 开源硬件仓中 **CAD / BOM** 与仿真描述分层的实例。
 - [Sim2Real](./sim2real.md) — 几何与动力学一致性问题。
@@ -233,6 +244,7 @@ flowchart LR
 - [GenCAD 论文摘录（arXiv:2409.16294）](../../sources/papers/gencad_arxiv_2409_16294.md)
 - [GenCAD-3D 论文摘录（arXiv:2509.15246）](../../sources/papers/gencad3d_arxiv_2509_15246.md)
 - [CAD Skills 仓库源归档（earthtojake/text-to-cad）](../../sources/repos/earthtojake-text-to-cad.md)
+- [MAC 仓库源归档（Pan-Chera/Multi-Agent-CAD）](../../sources/repos/multi-agent-cad.md)
 - [img2threejs 仓库源归档](../../sources/repos/img2threejs.md)
 - [freecad-mcp 仓库源归档](../../sources/repos/freecad-mcp.md)
 - [3D Gen Studio 官网 / 仓库归档](../../sources/sites/3dgenstudio-com.md) · [sources/repos/3dgenstudio.md](../../sources/repos/3dgenstudio.md)
