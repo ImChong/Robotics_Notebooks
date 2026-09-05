@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-05
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ../methods/motionbricks.md
@@ -17,6 +17,7 @@ related:
   - ./paper-loco-manip-161-154-openhlm.md
   - ./paper-humanoidarena.md
   - ./htd-decoupled-wbc.md
+  - ./isaac-teleop.md
 sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/sites/gr00t-wholebodycontrol-docs.md
@@ -100,6 +101,7 @@ sequenceDiagram
 - [Foundation Policy](../concepts/foundation-policy.md) — GR00T 系基础策略与分层控制叙事
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 概念层与 QP / 分层控制主线
 - [Isaac GR00T](./isaac-gr00t.md) — N1.7 VLA 主仓；G1 全身路径经 `UNITREE_G1_SONIC` 调用本仓 SONIC
+- [Isaac Teleop](./isaac-teleop.md) — README 把「跟踪全身 loco-manip + GR00T-WBC (SONIC)」列为已支持用例；XR 流经 Teleop 再进本仓，不是本仓自带头显栈
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — 同品牌视觉 Sim2Real 仓库，任务侧重不同
 - [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成
 - [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方

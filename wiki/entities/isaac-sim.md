@@ -232,7 +232,7 @@ flowchart TB
 - [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md) — USD stage/composition 官方课纲
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Newton Physics](./newton-physics.md) — 可选物理后端方向
-- [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集
+- [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集（Televiz 与 CloudXR 共用一条连接）
 - [Lumina 具身智能社区](./lumina-embodied.md) — 中文 Isaac Sim 一百讲与社区 Talks
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真器选型指南](../queries/simulator-selection-guide.md)

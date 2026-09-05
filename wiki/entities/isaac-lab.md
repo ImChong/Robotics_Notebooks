@@ -339,7 +339,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Isaac Lab 默认环境](./isaac-lab-default-environments.md) — v3.0.0 全部 197 个注册任务的分族清单与命名法
 - [Isaac Sim](./isaac-sim.md) — 仿真底座（USD / PhysX / 传感器）
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径
-- [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集的统一框架（Lab 3.x 主线）
+- [Isaac Teleop](./isaac-teleop.md) — Lab 3.x XR 主线（取代 `openxr` 设备栈）；Televiz + LeRobot + 无标记手重建
 - [Isaac Gym](./isaac-gym.md) — 旧一代独立 GPU RL 前身
 - [RSL-RL](./rsl-rl.md) — 默认 PPO / 蒸馏后端；可选 BF16 `update()`
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md) — Isaac Lab 扩展的神经动力学与想象训练参考实现

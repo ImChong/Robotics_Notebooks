@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/repos/nvidia_isaac_teleop.md + sources/sites/nvidia-isaac-teleop-docs.md — Isaac Teleop 1.5.x 复核；已开源 Apache-2.0；关键页 isaac-teleop
+
+- **触发：** 用户指定 <https://nvidia.github.io/IsaacTeleop/main/index.html>、<https://github.com/NVIDIA/IsaacTeleop>，并要求自动合并 PR
+- **复用：** 已有 [isaac-teleop](wiki/entities/isaac-teleop.md)（2026-06 入库）。**不另造页**，按 1.5.x 文档补 Televiz / 无标记手重建 / LeRobot / 开源边界。
+- **步骤 2.5：** 文档与 README 均链 GitHub + PyPI。仓 **已开源** Apache-2.0（376★ / 85 forks）；`isaacteleop` wheel 含 Televiz。CloudXR Web Client **首次 EULA**；手重建另需 MANO + BMC + 第三方 Docker 权重。Upcoming（非 XR 主设备、云仿真遥操作、远程相机流）未交付。
+- **关键判断：** Lab 3.x XR 主线，不是「所有 Lab 遥操作」。Televiz 是 XR **合成器**，不是 NuRec 训练产品。no-robot 第一人称采数是一等公民。
+- **更新：** `isaac-teleop`；新建归档 `nvidia-isaac-teleop-docs.md`；复核 `nvidia_isaac_teleop.md`
+- **交叉：** Teleoperation / Isaac Lab / Isaac Sim / Isaac GR00T / GR00T-WBC / LeRobot / NuRec
+
 ## [2026-09-05] ingest | sources/blogs/worldlabs_marble_world_model.md — Marble GA + docs/API；部分开源（Spark/示例，模型闭源）；关键页 marble-world-model
 
 - **触发：** 用户指定 <https://docs.worldlabs.ai/>、<https://marble.worldlabs.ai/>、<https://www.worldlabs.ai/blog/marble-world-model>，并要求自动合并 PR

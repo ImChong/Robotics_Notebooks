@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
-updated: 2026-09-04
+updated: 2026-09-05
 related:
   - ./paper-imitator-game.md
   - ./paper-evo1-lightweight-vla.md
@@ -21,6 +21,7 @@ related:
   - ../methods/vla.md
   - ../concepts/model-hardware-standard.md
   - ../concepts/llm-robotics-control-interfaces.md
+  - ./isaac-teleop.md
 ---
 
 # LeRobot (Hugging Face)
@@ -102,6 +103,7 @@ flowchart LR
 - **上层应用**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 LeRobot 推荐为实现开源实物部署的核心框架。
 - **对比**：相比传统的 [ros2-basics](../concepts/ros2-basics.md)，LeRobot 更侧重于“数据驱动型”的端到端学习，而非复杂的分布式中间件逻辑。
 - **互补 I/O 栈**：[RIO（Robot I/O）](./robot-io-rio.md) 侧重 **本机实时闭环** 与可切换中间件上的 **异步策略推理**；官方文档叙述可 **导出到 LeRobot / DROID 等格式** 再进入常见训练管线，二者常在「采集/部署」与「数据集/训练」两侧分工。
+- **NVIDIA Isaac Teleop：** [Isaac Teleop](./isaac-teleop.md) 的 Data Interface 声明 **FlatBuffers + MCAP 与 LeRobot 互操作**；Lab 3.x XR 采数经 HDF5 / `record_demos.py` 再转 LeRobot，是 [Isaac GR00T](./isaac-gr00t.md) 后训练的官方入口之一，不是 LeRobot 的替代品。
 - **NVIDIA 官方课：** [SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md) 用 `lerobot-record`（`so101_follower` / `so101_leader`）采集真机少量演示，并与 Isaac Lab 仿真演示做 Co-training。
 - **整机项目协作：** [Tnkr](./tnkr.md) 侧重把 CAD、线束、代码版本与部署/运行数据收进同一开源项目仓库；训练侧仍常导出到 LeRobot 等数据集格式，二者分工不同。
 - **ROBOTIS 全栈集成：** [Cyclo Intelligence](./cyclo-intelligence.md) 以子模块钉版本集成 LeRobot，在 Docker 策略容器内提供 ACT/SmolVLA/π₀ 等推理后端，并由行为树编排 `LOAD/RESUME/STOP` 生命周期。
