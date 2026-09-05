@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-teleoperation, hand-object-co-tracking, sim2real, reinforcement-learning, imitation-learning, in-hand-manipulation, tool-use, bigai, tsinghua, pku]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-05
 arxiv: "2607.11481"
 venue: "arXiv 2026"
 summary: "TeleDexter（arXiv:2607.11481，清华/BIGAI/北大）用 hand–object co-tracking 低层控制器把操作员的同步指尖与物体位姿意图映射为接触丰富执行；Isaac Gym 单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署到 SharpaWave/LeapHand，七任务平均 75.2% SR；示范可训 Diffusion Policy。截至 2026-07-28 未开源。"

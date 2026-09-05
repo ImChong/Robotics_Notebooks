@@ -84,7 +84,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **方案 C：视觉重构**：从海量的人类操作视频（YouTube/Epic Kitchens）中，利用计算机视觉算法逆向推导出手的位姿序列。
 - **方案 D：学习式接触执行层采数**：[TeleDexter](../entities/paper-teledexter.md) 用 MoCap 给出指尖+物体目标，仿真训好的 co-tracking 控制器在真机上完成 finger gaiting / 工具切换，从而采到运动学遥操作采不到的接触丰富示范（每任务约 50 条即可训 Diffusion Policy）。代价是 **物体专用策略 + 重型动捕**，且截至 2026-07-28 **未开源**。
 - **方案 E：Copilot / 嵌套采数**：[NestDex](../entities/paper-nestdex.md)（arXiv:2608.13362）让操作员只控臂 + **1-DoF clutch**，可复用本体感觉内层手技能生成手指轨迹；完整示范再训**部署时不再依赖内层**的外层 visuomotor。相对同平台 AnyTeleop，六任务采数成功率 **100%** vs 三任务 **0%**。代价是每技能先采约 10 条重定向轨迹，且截至 2026-08-17 **未开源**。
-- **方案 F：仿真 VR 预训练再真机短微调**：[SPD](../entities/paper-spd.md)（CoRL 2026）让操作员戴 Quest 在 MuJoCo 里直接控目标双臂灵巧手，5 人一周采 **75 h** on-embodiment 演示做扩散策略预训练；真机每任务再 **1–2 h** 微调。五项接触丰富任务都胜过从零 BC。代价是仿真接触必须调到「像真的」，且截至 2026-08-17 **代码与 spd-75h 未列下载**。
+- **方案 F：仿真 VR 预训练再真机短微调**：[SPD](../entities/paper-spd.md)（CoRL 2026 / [arXiv:2608.15917](https://arxiv.org/abs/2608.15917)）让操作员戴 Quest 在 MuJoCo 里直接控目标双臂灵巧手，5 人一周采 **75 h** on-embodiment 演示做扩散策略预训练；真机每任务再 **1–2 h** 微调。五项接触丰富任务都胜过从零 BC。代价是仿真接触必须调到「像真的」，且截至 2026-09-05 **代码与 spd-75h 未列下载**。
 
 ## 采集质量的 Checklist
 

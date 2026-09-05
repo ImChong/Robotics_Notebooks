@@ -1,3 +1,9 @@
+## [2026-09-05] ingest | sources/papers/spd_corl_2026.md — 复核 SPD 并补挂 arXiv:2608.15917；代码/数据仍待发布
+
+- **触发：** 用户指定 ingest *Pre-training Visual Dexterity in Simulation*（<https://spd.bot/>、<https://arxiv.org/abs/2608.15917>），并要求自动合并 PR
+- **步骤 2.5：** 项目页 BibTeX 已更新为 arXiv:2608.15917；仍无 GitHub / spd-vr / spd-75h 下载 → **宣称将开源 / 待核实**
+- **更新：** [`sources/papers/spd_corl_2026.md`](sources/papers/spd_corl_2026.md)、[`sources/sites/spd-bot.md`](sources/sites/spd-bot.md)、[`wiki/entities/paper-spd.md`](wiki/entities/paper-spd.md)
+
 ## [2026-09-05] ingest | sources/papers/dexholdem_arxiv_2605_18727.md — DexHoldem 真机扑克灵巧基准；已开源 Policy/Skills + TexasPokerRobot；关键页 paper-dexholdem
 
 - **触发：** 用户指定 <https://dexholdem.github.io/Dexholdem/>。

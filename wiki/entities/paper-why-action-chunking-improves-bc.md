@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, action-chunking, behavior-cloning, diffusion-policy, libero, robomimic, polimi, berkeley, analysis]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-05
 venue: "CoRL 2026（项目页 PDF；暂无 arXiv）"
 related:
   - ../methods/action-chunking.md

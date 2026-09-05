@@ -8,22 +8,23 @@
 - **机构：** Stanford University¹ · MIT² · Scale AI³（\* 同等贡献）
 - **作者：** Sarthak Kamat¹\*、Adam Rashid²\*、Satvik Sharma¹、Aseem Doriwala³、Chelsea Finn¹、Phillip Isola²、C. Karen Liu¹
 - **入库日期：** 2026-08-17
+- **复核日期：** 2026-09-05（补挂 arXiv:2608.15917；代码/数据仍无 URL）
 
 ## 一句话摘要
 
 斯坦福 / MIT / Scale AI 的 CoRL 2026 项目页：用 VR 头显在仿真里遥操双臂灵巧手，5 人一周采 **75 小时** 演示（spd-75h），预训练扩散 Transformer 后，真机每任务 **1–2 小时** 微调即可完成放盘子、挂马克杯、叠叠乐等五项接触丰富任务，且五项都胜过从零 BC。
 
-## 开源状态（步骤 2.5，截至 2026-08-17）
+## 开源状态（步骤 2.5，截至 2026-09-05）
 
-打开 <https://spd.bot/> 核头部按钮与页脚资源区：
+打开 <https://spd.bot/> 与 <https://arxiv.org/abs/2608.15917> 核头部按钮与页脚资源区：
 
 | 资源 | 状态 |
 |------|------|
 | 项目页 / 论文 PDF | **已发布**（`assets/paper.pdf`；PDF Producer 标注 *Proceedings of the 10th Conference on Robot Learning (CoRL 2026)*） |
+| arXiv | **已发布** — [arXiv:2608.15917](https://arxiv.org/abs/2608.15917)（项目页 BibTeX 已更新） |
 | 代码 / spd-vr | **未列 URL**（论文宣称释放 VR 遥操作软件与六套调参场景） |
 | 数据集 spd-75h | **未列 URL**（论文宣称释放；致谢 Scale AI 采集） |
 | 权重 / Hugging Face / GitHub | **无链接** |
-| arXiv | **未挂编号**（BibTeX 仅 `url={https://spd.bot}`） |
 
 **结论：宣称将开源 / 待核实。** 复现入口暂以项目页 PDF 与叙述为准；wiki「源码运行时序图」标 **不适用**，待正式 release 后补 `sources/repos/`。
 
@@ -37,7 +38,7 @@
 - **真机任务视频：** plate racking / cup stacking / Jenga / mug hanging / bottles in bin。
 - **主结论：** 五项任务平均进度均高于同架构从零 BC；训练 loss 起点与收敛更低。
 - **消融：** 单帧 + 短 chunk 崩；单帧 + 长 chunk 接近 π0 风格；**32 步历史 + 8 步 chunk** 最强，且从此配置预训练收益最大。
-- **BibTeX：** `@article{spd2026, title={Pre-training Visual Dexterity in Simulation}, ... url={https://spd.bot}, year={2026}}`。
+- **BibTeX：** `@article{spd2026, title={Pre-training Visual Dexterity in Simulation}, ... journal={arXiv preprint arXiv:2608.15917}, url={https://arxiv.org/abs/2608.15917}, year={2026}}`。
 
 ## 为何值得保留
 
