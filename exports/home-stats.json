@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-4danyone.md",
+      "detail_id": "entity-paper-4danyone",
+      "label": "4DAnyone：单目随意视频做出 4D 人",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-luna-universal-3d-human-animation.md",
+      "detail_id": "entity-paper-luna-universal-3d-human-animation",
+      "label": "LUNA：绕过蒙皮的通用 3D 人动画",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/mujoco-warp.md",
       "detail_id": "entity-mujoco-warp",
       "label": "MuJoCo Warp（MJWarp）",
@@ -54,17 +75,6 @@
       "path": "wiki/entities/paper-hil-hybrid-imitation-learning.md",
       "detail_id": "entity-paper-hil-hybrid-imitation-learning",
       "label": "HIL：混合模仿学习做动态运动控制",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-4danyone.md",
-      "detail_id": "entity-paper-4danyone",
-      "label": "4DAnyone：单目随意视频做出 4D 人",
       "type": "entity",
       "recency": "2026-09-05",
       "source": "git",
@@ -202,29 +212,18 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-irwoz-2.md",
-      "detail_id": "entity-paper-irwoz-2",
-      "label": "IRWOZ 2.0：工业机器人对话数据集",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mujoco-warp.md",
-    "detail_id": "entity-mujoco-warp",
-    "label": "MuJoCo Warp（MJWarp）",
+    "path": "wiki/entities/paper-4danyone.md",
+    "detail_id": "entity-paper-4danyone",
+    "label": "4DAnyone：单目随意视频做出 4D 人",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
