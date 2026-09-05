@@ -7,7 +7,9 @@
 - **发布方：** NVIDIA GEAR Lab；合作方含 Georgia Tech、Stanford、UT Austin、University of Toronto 等（页面作者列表）
 - **原始链接：** <https://research.nvidia.com/labs/gear/simfoundry/>
 - **配套论文：** arXiv:2606.28276 — 归档见 [sources/papers/simfoundry_arxiv_2606_28276.md](../papers/simfoundry_arxiv_2606_28276.md)
+- **代码：** <https://github.com/NVlabs/SimFoundry> — 归档见 [sources/repos/nvlabs-simfoundry.md](../repos/nvlabs-simfoundry.md)
 - **入库日期：** 2026-07-03
+- **最近复核：** 2026-09-05（官方仓已发布，部分开源）
 - **一句话说明：** 单段真机视频 → **交互式 sim-ready 数字孪生** + **digital cousins**；页面展示 **Real2Sim 策略评测**（相对真机 Pearson **0.911**）、**Sim2Real 零样本/协同训练**、**3DGS 背景 + 物体 mesh** 混合场景，以及与 **PolaRiS / SAM3D** 的并排对比。
 
 ## 摘录要点（与论文分工）
@@ -24,11 +26,12 @@
 ## 论文 / 代码状态
 
 - 论文：<https://arxiv.org/abs/2606.28276>（PDF：<https://arxiv.org/pdf/2606.28276v1>）
-- 截至入库日，项目页**未给出**公开 GitHub 仓库链接；复现以论文附录与 NVIDIA GEAR 发布为准。
+- **2026-09-05 再核：** 官方仓 [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry)（Apache-2.0）已公开，README 互指本项目页。→ **部分开源**：A/B/C 管线与 HF 示例场景可跑；论文级数据生成 / 策略训练 / 评测 **未随仓发布**。详见 [nvlabs-simfoundry.md](../repos/nvlabs-simfoundry.md)。
 
 ## 对 wiki 的映射
 
 - [SimFoundry 论文实体](../../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 三阶段管线、digital cousins、评测与训练量化读点
+- [官方仓归档](../repos/nvlabs-simfoundry.md) — 部分开源边界与 A/B/C 入口
 - [Sim2Real](../../wiki/concepts/sim2real.md) — Real2Sim 资产与 sim2real 训练闭环
 - [仿真评测基础设施](../../wiki/concepts/simulation-evaluation-infrastructure.md) — real-to-sim 相关性评测语境
 - [NVIDIA GEAR Lab](../../wiki/entities/nvidia-gear-lab.md) — 研究组锚点

@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -234,7 +234,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 讨论 Sim2Real 时常隐含「仿真里已有合理关卡与参考运动」；人形上下文技能还要解决如何把**单目视频**变成**接触动力学可信**的仿真资产。[CRISP](../methods/crisp-real2sim.md)（ICLR 2026）用**凸平面场景原语 + 人–场景接触补全 + RL 人形闭环**把视频推向可 rollout 的 Real2Sim，并与 VideoMimic 等管线在几何—控制接口上形成对照（见项目页交互对比区）。
 
-**操作场景与策略闭环：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276，NVIDIA GEAR）从**单段真机视频**模块化重建 **sim-ready 数字孪生**，并自动生成 **object/scene/task digital cousins**；同一环境支撑 **real-to-sim 策略评测**（均值 Pearson **0.911**）与 **sim-to-real 演示训练**（DROID / YAM，含多步、铰接与双手任务），把「资产—评测—训练」收进可替换 foundation model 组件的统一栈。
+**操作场景与策略闭环：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276，NVIDIA GEAR，[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) **部分开源**）从**单段真机视频**模块化重建 **sim-ready 数字孪生**，并自动生成 **object/scene/task digital cousins**；同一环境支撑 **real-to-sim 策略评测**（均值 Pearson **0.911**）与 **sim-to-real 演示训练**（DROID / YAM，含多步、铰接与双手任务）。开源默认导出 OmniGibson 场景；论文级 VLA 训练/评测协议未随仓。
 
 **Episode 级 agentic 转换：** [Agentic Real2Sim](../entities/paper-agentic-real2sim.md)（arXiv:2607.19190）用 **可替换 VLM 后端**编排视觉/物性/场景/仿真内修复，把 **DROID 交互 episode** 转为 **可回放 MuJoCo 孪生**（并演示可变形/人形适配器）；评测主线是 **回放成功** 而非策略 Pearson，代码截至入库日 **coming soon**。
 

@@ -9,7 +9,7 @@ sources:
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Sim / Isaac Lab 三代 NVIDIA 仿真与学习产品总览：Gym 为 legacy GPU RL；Sim 为 Omniverse 仿真底座；Lab 为当前官方学习框架。"
-updated: 2026-08-28
+updated: 2026-09-05
 tags: [nvidia]
 
 ---
