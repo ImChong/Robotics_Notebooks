@@ -60,7 +60,9 @@
 | Cloth / Cable | `cloth_style3d` / `cloth_franka` / `cable_twist` | Style3D 布料与缆索 |
 | MPM | `mpm_granular` / `mpm_anymal` / `mpm_snow_ball` / `mpm_twoway_coupling` | ImplicitMPM 颗粒 / 雪 / 双向耦合 |
 | DiffSim | `diffsim_ball` / `diffsim_cloth` / `diffsim_drone` | 可微仿真 |
-| Kamino | `kamino_basic_fourbar` / `kamino_robot_anymal_d` | Kamino 求解器 |
+| Kamino | `kamino_basic_fourbar` / `kamino_robot_anymal_d` | Kamino 求解器（闭链 PADMM，BETA） |
+
+求解器完整目录见 [`sources/sites/newton-solvers-catalog.md`](../sites/newton-solvers-catalog.md)；Kamino 论文页 [`wiki/entities/paper-kamino.md`](../../wiki/entities/paper-kamino.md)。
 | IK / Contacts | `ik_franka` / `nut_bolt_sdf` / `contacts_rj45_plug` | 接触丰富装配 |
 
 共用 CLI：`--viewer {gl,usd,rtx,rerun,viser,null}`、`--device`、`--num-frames`、`--output-path`。
@@ -70,6 +72,7 @@
 | 主题 | 目标 wiki |
 |------|-----------|
 | 引擎定位、求解器谱系、CollisionPipeline、与 MuJoCo Warp / Isaac Lab 关系 | [`wiki/entities/newton-physics.md`](../../wiki/entities/newton-physics.md) |
+| Kamino 闭链求解器 | [`wiki/entities/paper-kamino.md`](../../wiki/entities/paper-kamino.md)、[`sources/sites/newton-solvers-catalog.md`](../sites/newton-solvers-catalog.md) |
 | 与 Cosmos / Omniverse 的 Physical AI 分工 | [`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)、[`wiki/entities/nvidia-omniverse.md`](../../wiki/entities/nvidia-omniverse.md) |
 | MuJoCo 生态对照 | [`wiki/entities/mujoco.md`](../../wiki/entities/mujoco.md)、[`wiki/entities/mjlab.md`](../../wiki/entities/mjlab.md) |
 | GPU 并行 RL 训练栈 | [`wiki/entities/isaac-gym-isaac-lab.md`](../../wiki/entities/isaac-gym-isaac-lab.md) |
