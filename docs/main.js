@@ -7464,14 +7464,15 @@
     if (!document.getElementById('hero')) return;
     if (document.querySelector('.home-nav-fab')) return;
 
-    // 章节按 DOM 顺序收集；标题优先取 .section-title，其次取 section 自身的 aria-label
+    // 章节按 DOM 顺序收集，只收有 .section-title 的板块：没有可见标题的过渡区
+    // （如首页入口卡片区 #home-start）不进菜单
     var items = [{ id: 'hero', label: '顶部' }];
     var sections = document.querySelectorAll('main > section[id]');
     for (var i = 0; i < sections.length; i++) {
       var sec = sections[i];
       if (sec.id === 'hero') continue;
       var titleEl = sec.querySelector('.section-title');
-      var label = (titleEl && titleEl.textContent.trim()) || sec.getAttribute('aria-label') || '';
+      var label = titleEl ? titleEl.textContent.trim() : '';
       if (label) items.push({ id: sec.id, label: label });
     }
     if (items.length < 2) return;
