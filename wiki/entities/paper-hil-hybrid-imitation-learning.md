@@ -12,7 +12,10 @@ tags:
   - cmu
   - nvidia
   - sfu
-  - unitree-g1
+institutions:
+  - cmu
+  - nvidia
+  - sfu
 status: complete
 updated: 2026-09-05
 arxiv: "2505.12619"
