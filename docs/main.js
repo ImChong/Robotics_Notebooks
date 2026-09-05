@@ -7437,3 +7437,148 @@
     init();
   }
 })();
+
+/* ── 首页章节跳转按钮 ──
+   参考 https://imchong.github.io/ 的 .home-nav-fab：左下角浮动按钮 + 上弹章节菜单。
+   与参考站的差异：那边只在 ≤720px 显示（PC 交给 .site-header 里的 .main-nav），本站
+   不改动 .site-header，所以不设断点，PC 端同样用这个按钮跳转。
+   只在首页注入：#hero 是 index.html 独有的锚点。 */
+(function () {
+  'use strict';
+
+  function fabIcon(kind) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'home-nav-fab__icon home-nav-fab__icon--' + kind);
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    // open 复用站内 .sidebar-toggle 的同一条汉堡路径，两个浮动按钮观感一致
+    path.setAttribute('d', kind === 'close'
+      ? 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'
+      : 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z');
+    svg.appendChild(path);
+    return svg;
+  }
+
+  function init() {
+    if (!document.getElementById('hero')) return;
+    if (document.querySelector('.home-nav-fab')) return;
+
+    // 章节按 DOM 顺序收集，只收有 .section-title 的板块：没有可见标题的过渡区
+    // （如首页入口卡片区 #home-start）不进菜单
+    var items = [{ id: 'hero', label: '顶部' }];
+    var sections = document.querySelectorAll('main > section[id]');
+    for (var i = 0; i < sections.length; i++) {
+      var sec = sections[i];
+      if (sec.id === 'hero') continue;
+      var titleEl = sec.querySelector('.section-title');
+      var label = titleEl ? titleEl.textContent.trim() : '';
+      if (label) items.push({ id: sec.id, label: label });
+    }
+    if (items.length < 2) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'home-nav-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    var fab = document.createElement('div');
+    fab.className = 'home-nav-fab';
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.id = 'homeNavToggle';
+    toggle.className = 'home-nav-fab__toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'homeNavMenu');
+    toggle.setAttribute('aria-label', '打开或关闭章节导航');
+    toggle.setAttribute('title', '章节导航');
+    toggle.appendChild(fabIcon('open'));
+    toggle.appendChild(fabIcon('close'));
+
+    var menu = document.createElement('nav');
+    menu.id = 'homeNavMenu';
+    menu.className = 'home-nav-menu';
+    menu.setAttribute('aria-label', '章节导航');
+
+    var list = document.createElement('ul');
+    for (var j = 0; j < items.length; j++) {
+      var li = document.createElement('li');
+      var link = document.createElement('a');
+      link.href = '#' + items[j].id;
+      link.textContent = items[j].label;
+      li.appendChild(link);
+      list.appendChild(li);
+    }
+    menu.appendChild(list);
+
+    // 按钮先入 DOM，保证 Tab 顺序是「按钮 → 菜单项」
+    fab.appendChild(toggle);
+    fab.appendChild(menu);
+    document.body.appendChild(overlay);
+    document.body.appendChild(fab);
+
+    function closeMenu() {
+      if (!fab.classList.contains('is-open')) return;
+      fab.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      if (menu.contains(document.activeElement)) toggle.focus();
+    }
+
+    function openMenu() {
+      fab.classList.add('is-open');
+      overlay.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    toggle.addEventListener('click', function (event) {
+      event.stopPropagation();
+      if (fab.classList.contains('is-open')) closeMenu();
+      else openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
+    menu.addEventListener('click', function (event) {
+      // 立刻关闭，别挡住 hash 跳转
+      if (event.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    // 滚动高亮当前章节：判定线取吸顶 header 下沿，与 html 的 scroll-padding-top 同口径
+    var links = menu.querySelectorAll('a');
+    var lastActive = -1;
+    function updateActive() {
+      var header = document.querySelector('.site-header');
+      var line = (header ? header.getBoundingClientRect().height : 0) + 24;
+      var current = 0;
+      for (var k = 0; k < items.length; k++) {
+        var target = document.getElementById(items[k].id);
+        if (target && target.getBoundingClientRect().top <= line) current = k;
+      }
+      if (current === lastActive) return;
+      lastActive = current;
+      for (var m = 0; m < links.length; m++) {
+        links[m].classList.toggle('active', m === current);
+      }
+    }
+
+    // 与页面其他滚动监听一致：rAF 节流
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        updateActive();
+        ticking = false;
+      });
+    }, { passive: true });
+    updateActive();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
