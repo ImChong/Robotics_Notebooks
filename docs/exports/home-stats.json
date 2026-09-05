@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/nvidia-nurec.md",
+      "detail_id": "entity-nvidia-nurec",
+      "label": "NVIDIA Omniverse NuRec",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-instant-nurec.md",
+      "detail_id": "entity-paper-instant-nurec",
+      "label": "Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-robot-juggling-athenazero.md",
       "detail_id": "entity-paper-robot-juggling-athenazero",
       "label": "Robot Juggling：分钟级真机动态操作学习",
@@ -192,38 +212,17 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-levjepa.md",
-      "detail_id": "entity-paper-levjepa",
-      "label": "LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/openjiuwen.md",
-      "detail_id": "entity-openjiuwen",
-      "label": "openJiuwen（开放九问）",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-robot-juggling-athenazero.md",
-    "detail_id": "entity-paper-robot-juggling-athenazero",
-    "label": "Robot Juggling：分钟级真机动态操作学习",
+    "path": "wiki/entities/nvidia-nurec.md",
+    "detail_id": "entity-nvidia-nurec",
+    "label": "NVIDIA Omniverse NuRec",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
