@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md — TOG 2026 HIL 再核：heading 任务 + 官方未开源 + 一作非官方 G1 仓；关键页 paper-hil-hybrid-imitation-learning
+
+- **触发：** 用户指定 HIL TOG PDF / Peng 组项目页 / Code(G1) Hybrid-Motion-Imitation。
+- **复用：** [`hil-hybrid-imitation-learning`](wiki/methods/hil-hybrid-imitation-learning.md) 与对比页已存在（预印本 *Diverse Parkour Skills from Videos*）。**不另造方法页**，升格 TOG 定稿并补实体页。
+- **步骤 2.5：** [jiashunwang.github.io/HIL](https://jiashunwang.github.io/HIL/) 与 [xbpeng.github.io/projects/HIL](https://xbpeng.github.io/projects/HIL/index.html) **无 GitHub**。→ 官方 TOG 角色动画 **确认未开源**。一作 [jiashunwang/Hybrid-Motion-Imitation](https://github.com/jiashunwang/Hybrid-Motion-Imitation)（Apache-2.0）自标 unofficial extension of GfR + HIL，G1 箱攀/搬箱可跑，**无 AMP 判别器**。
+- **关键判断：** 统一观测（无相位）；跑酷 skill acc **0.66** / DTW **0.31** / 完成率 0.74；heading facing **0.97**。完成率低于纯任务基线不是失败。机构 `cmu` / `nvidia` / `sfu` 已注册。
+- **新建：** [`paper-hil-hybrid-imitation-learning`](wiki/entities/paper-hil-hybrid-imitation-learning.md)；归档项目页 + G1 仓
+- **交叉：** AMP / DeepMimic / ASE / MTRG / ZEST / holosoma / Locomotion
+
 ## [2026-09-05] ingest | sources/papers/4danyone_arxiv_2608_20335.md — 4DAnyone 单目随意视频→重建级多视角/4DGS；已开源 ant-research/4DAnyone；关键页 paper-4danyone
 
 - **触发：** 用户指定 <https://4danyone.github.io/>。

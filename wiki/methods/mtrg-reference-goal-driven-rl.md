@@ -2,11 +2,12 @@
 type: method
 tags: [humanoid, reinforcement-learning, motion-imitation, parkour, goal-conditioned, unitree-g1, sim2real]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-05
 related:
   - ./zest.md
   - ../entities/paper-zest.md
   - ./hil-hybrid-imitation-learning.md
+  - ../entities/paper-hil-hybrid-imitation-learning.md
   - ./deepmimic.md
   - ../tasks/humanoid-locomotion.md
   - ../concepts/curriculum-learning.md
@@ -141,6 +142,7 @@ flowchart LR
 - [ZEST](./zest.md) — assistive wrench 课程与 tracking 基线
 - [ZEST 论文实体](../entities/paper-zest.md) — Science Robotics 2026 评测与未开源结论
 - [HIL](./hil-hybrid-imitation-learning.md) — 对抗式混合模仿对照
+- [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 2026；官方动画代码未开源，一作有非官方 G1 扩展仓
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 三条路线选型
 - [DeepMimic](./deepmimic.md) — 显式 tracking 传统
 - [Curriculum Learning](../concepts/curriculum-learning.md)
@@ -159,4 +161,5 @@ flowchart LR
 
 - [GfR 项目页](https://jiashunwang.github.io/GfR/) — 长程组合、MuJoCo 与感知扩展视频
 - [ZEST 论文](https://arxiv.org/abs/2602.00401) — 辅助扳手与跨形态 tracking 细节
-- [HIL 演示](https://youtu.be/le4248gIMME) — 同作者早期混合模仿与场景点云设计
+- [HIL 项目页](https://jiashunwang.github.io/HIL/) — TOG 2026 跑酷 / heading 演示
+- [Hybrid-Motion-Imitation](https://github.com/jiashunwang/Hybrid-Motion-Imitation) — 一作非官方 G1 仓，同时引用 GfR 与 HIL

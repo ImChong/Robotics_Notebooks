@@ -3,7 +3,7 @@
 type: method
 tags: [hierarchical-control, embedding, gan, xbpeng, paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-05
 code: https://github.com/nv-tlabs/ASE
 venue: "2022 · TOG"
 arxiv: "2205.01906"
@@ -122,6 +122,7 @@ sequenceDiagram
 - [mimickit](../entities/mimickit.md) — 核心集成框架。
 - [smp](smp.md) — 下一代生成式先验。
 - [CMP](../entities/paper-cmp.md) — 不另开 skill 空间，在下游 RL 里软重权 AMP/SMP 参考监督。
+- [HIL](./hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — heading 任务用 ASE sword-and-shield 数据；无任务引导的 ASE 在跑酷障碍前完成率为 0。
 
 ## 参考来源
 - [sources/papers/ase.md](../../sources/papers/ase.md)

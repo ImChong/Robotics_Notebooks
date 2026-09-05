@@ -2,9 +2,10 @@
 type: comparison
 tags: [humanoid, parkour, imitation-learning, motion-tracking, amp, goal-conditioned, unitree-g1, character-animation]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-05
 related:
   - ../methods/hil-hybrid-imitation-learning.md
+  - ../entities/paper-hil-hybrid-imitation-learning.md
   - ../methods/mtrg-reference-goal-driven-rl.md
   - ../methods/zest.md
   - ../entities/paper-zest.md
@@ -15,15 +16,17 @@ related:
   - ./zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md
+  - ../../sources/sites/hil-project.md
+  - ../../sources/repos/hybrid-motion-imitation.md
   - ../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
   - ../../sources/sites/gfr-project.md
   - ../../sources/papers/zest.md
-summary: "跑酷/障碍穿越场景下 HIL（仿真角色 tracking+AMP）、GfR/MTRG（G1 参考塑形+goal 部署）与 ZEST（跨形态 tracking 真机）三条路线的对比与选型。"
+summary: "跑酷/障碍穿越场景下 HIL（TOG 2026 仿真角色 tracking+AMP）、GfR/MTRG（G1 参考塑形+goal 部署）与 ZEST（跨形态 tracking 真机）三条路线的对比与选型。"
 ---
 
 # HIL vs MTRG vs ZEST：跑酷模仿学习路线对比
 
-同一作者群从 **物理角色动画跑酷**（[HIL](../methods/hil-hybrid-imitation-learning.md)）演进到 **人形 G1 箱式跑酷**（[GfR / MTRG](../methods/mtrg-reference-goal-driven-rl.md)，**RSS 2026**），并与工业侧极简 tracking 真机路线 [ZEST](../methods/zest.md)（[*Science Robotics* 2026](../entities/paper-zest.md)）形成对照。
+同一作者群从 **物理角色动画跑酷**（[HIL](../methods/hil-hybrid-imitation-learning.md)，[TOG 2026 实体](../entities/paper-hil-hybrid-imitation-learning.md)）演进到 **人形 G1 箱式跑酷**（[GfR / MTRG](../methods/mtrg-reference-goal-driven-rl.md)，**RSS 2026**），并与工业侧极简 tracking 真机路线 [ZEST](../methods/zest.md)（[*Science Robotics* 2026](../entities/paper-zest.md)）形成对照。HIL 定稿还多了 **heading / facing** 任务；一作另有非官方 G1 仓 Hybrid-Motion-Imitation（无 AMP 判别器），不要当成 TOG 官方代码。
 
 三者都处理「像参考」与「能改目标/障碍」的张力，但 **参考是否进策略、是否用对抗、是否上硬件** 的分工截然不同。
 
@@ -89,6 +92,7 @@ flowchart LR
 
 ## 关联页面
 
+- [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 评测与开源边界
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 人形跑酷任务挂接
 - [Locomotion](../tasks/locomotion.md) — 跑酷与障碍穿越总览
 - [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — 感知深度蒸馏跑酷；消融称纯稀疏奖励（HIL 式无专家）难学暴力接触
@@ -99,7 +103,8 @@ flowchart LR
 
 ## 参考来源
 
-- [HIL: Hybrid Imitation Learning](../../sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md)
+- [HIL: Hybrid Imitation Learning（TOG 2026）](../../sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md)
+- [HIL 项目页](../../sources/sites/hil-project.md)
 - [MTRG: Reference and Goal-Driven RL](../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md)
 - [ZEST](../../sources/papers/zest.md)
 - [ZEST 论文实体](../entities/paper-zest.md) — Science Robotics 11(117) 评测与开源结论

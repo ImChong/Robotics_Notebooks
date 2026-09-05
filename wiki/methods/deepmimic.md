@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng, paper, humanoid, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-05
 code: https://github.com/xbpeng/DeepMimic
 venue: curated
 related:
@@ -100,6 +100,7 @@ sequenceDiagram
 - [RFC（Residual Force Control）](../entities/paper-rfc-residual-force-control.md) — 同栈对位工作：在动作空间注入根部残差外力补偿动力学失配，芭蕾等动作超越 DeepMimic（NeurIPS 2020）。
 - [Residual Policy Learning（方法页）](./residual-policy-learning.md) — base + 残差谱系总览。
 - [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md) — 用生成视频参考做 DeepMimic 式 G1 跟踪（仿真；未开源）。
+- [HIL](./hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — 去掉相位与未来姿态，才能和 AMP 共用同一 \(\pi\)。
 
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)

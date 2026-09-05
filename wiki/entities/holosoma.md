@@ -2,9 +2,10 @@
 type: entity
 tags: [repo, humanoid, rl, motion-retargeting, whole-body-tracking, locomotion, amazon-far, isaacgym, isaacsim, mujoco, unitree-g1, booster-t1]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-05
 summary: "holosoma 是 Amazon FAR 开源的人形全身 RL 训练、推理与 OmniRetarget 重定向一体化框架；支持 IsaacGym/IsaacSim/MJWarp/MuJoCo、PPO/FastSAC、G1/T1 与 sim-to-real 部署管线。"
 related:
+  - ./paper-hil-hybrid-imitation-learning.md
   - ./paper-hrl-stack-03-omniretarget.md
   - ./omniretarget-dataset.md
   - ../concepts/motion-retargeting.md
@@ -87,6 +88,7 @@ flowchart LR
 - **方法来源：** [OmniRetarget（arXiv:2509.26633）](./paper-hrl-stack-03-omniretarget.md)
 - **公开轨迹：** [OmniRetarget 数据集](./omniretarget-dataset.md)
 - **下游跑酷：** [PHP（感知跑酷）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 使用 OmniRetarget 构建技能库
+- **非官方下游：** [Hybrid-Motion-Imitation](https://github.com/jiashunwang/Hybrid-Motion-Imitation) 把 HIL / GfR 的 hybrid track+gen 接到 G1 箱攀/搬箱，见 [HIL 论文实体](./paper-hil-hybrid-imitation-learning.md)
 - **问题域：** [Motion Retargeting](../concepts/motion-retargeting.md)
 
 ## 参考来源
