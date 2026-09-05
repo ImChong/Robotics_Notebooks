@@ -9,7 +9,7 @@
 - **arXiv：** 2511.00062
 - **出处：** arXiv 2025
 - **论文：** <https://arxiv.org/abs/2511.00062>
-- **代码：** 未在清单中标注
+- **代码：** 未在清单中标注；一手核查见 [`nvidia_cosmos_predict25.md`](../repos/nvidia_cosmos_predict25.md)（Apache-2.0 + NVIDIA Open Model License）
 
 - **Highlights（清单）：** Introduces Cosmos-Predict2.5 and Cosmos-Transfer2.5, advanced Physical AI models that unify text, image, and video generation, enabling Sim2Real and Real2Real world translation with higher fidelity
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md`](../../wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
@@ -25,5 +25,7 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md`](../../wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
+- 实体页（已升格一手）：[`wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md`](../../wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
+- 一手摘录：[`sources/papers/cosmos_predict25_arxiv_2511_00062.md`](./cosmos_predict25_arxiv_2511_00062.md)
+- 平台总览：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - 列表实体：[`wiki/entities/awesome-real2sim2real.md`](../../wiki/entities/awesome-real2sim2real.md)

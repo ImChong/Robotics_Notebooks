@@ -36,6 +36,7 @@
 
 | 主题 | 关系 |
 |------|------|
+| [NVIDIA Cosmos 平台](../../wiki/entities/nvidia-cosmos.md) | 1.0 / 2.5 / 3.0 总览 |
 | [Cosmos 3](../../wiki/entities/cosmos-3.md) | 主实体页 |
 | [Generative World Models](../../wiki/methods/generative-world-models.md) | 开源全模态生成式世界模型平台 |
 | [World Action Models](../../wiki/concepts/world-action-models.md) | policy + forward/inverse dynamics 统一栈 |

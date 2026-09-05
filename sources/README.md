@@ -112,6 +112,8 @@
 | [x] [brax_arxiv_2106_13281.md](papers/brax_arxiv_2106_13281.md) | Brax：大规模可微刚体仿真与 RL（arXiv:2106.13281，NeurIPS 2021）摘录与 wiki 映射 |
 | [x] [capvector_arxiv_2605_10903.md](papers/capvector_arxiv_2605_10903.md) | CapVector：参数空间 capability vector（θ_ao−θ_ft）合并 + 下游正交正则的 VLA 微调（arXiv:2605.10903，HKUSTGZ/浙大/西湖/清华/智源等）摘录与 wiki 映射 |
 | [x] [cosmos3_arxiv_2606_02800.md](papers/cosmos3_arxiv_2606_02800.md) | Cosmos 3：全模态 MoT 世界模型平台（语言/图像/视频/音频/动作，arXiv:2606.02800，NVIDIA Cosmos Lab）摘录与 wiki 映射 |
+| [x] [cosmos_wfm_arxiv_2501_03575.md](papers/cosmos_wfm_arxiv_2501_03575.md) | Cosmos 1.0 WFM 平台一手摘录（arXiv:2501.03575；策展索引已升格） |
+| [x] [cosmos_predict25_arxiv_2511_00062.md](papers/cosmos_predict25_arxiv_2511_00062.md) | Cosmos-Predict2.5 / Transfer2.5 一手摘录（arXiv:2511.00062；PAI-Bench I2W 0.810） |
 | [x] [deepinsight_arxiv_2606_17574.md](papers/deepinsight_arxiv_2606_17574.md) | DeepInsight：Physical AI 全栈统一评测基础设施 System 2/1/0 + 统一 trace（arXiv:2606.17574，XPENG Robotics）摘录与 wiki 映射 |
 | [x] [daji_arxiv_2605_14417.md](papers/daji_arxiv_2605_14417.md) | DAJI：语言条件人形控制的预期关节意图接口（DAJI-Flow + DAJI-Act，arXiv:2605.14417）摘录与 wiki 映射 |
 | [x] [dit4dit_arxiv_2603_10448.md](papers/dit4dit_arxiv_2603_10448.md) | DiT4DiT：双 DiT 联合 flow matching VAM，LIBERO/RoboCasa/G1 真机（arXiv:2603.10448，Mondo Robotics / HKUST）摘录与 wiki 映射 |
@@ -168,7 +170,9 @@
 | [x] [boyu_ai_hands_on_rl.md](repos/boyu_ai_hands_on_rl.md) | Hands-on-RL / 蘑菇书：中文 RL 教材 Jupyter 仓（PPO/SAC/MARL 等，配套 hrl.boyuai.com） |
 | [isaac_gym_isaac_lab.md](repos/isaac_gym_isaac_lab.md) | Isaac Gym / Isaac Lab |
 | [x] [nvidia_isaac_teleop.md](repos/nvidia_isaac_teleop.md) | Isaac Teleop：NVIDIA 统一仿真/真机 XR 遥操作、retargeting 与 Isaac Lab 集成 |
-| [x] [nvidia_cosmos.md](repos/nvidia_cosmos.md) | NVIDIA/cosmos：Cosmos 3 全模态世界模型开放平台（Diffusers / vLLM-Omni / NIM，OpenMDW-1.1） |
+| [x] [nvidia_cosmos.md](repos/nvidia_cosmos.md) | NVIDIA/cosmos：Cosmos 3 全模态世界模型开放平台（Edge/Nano/Super，Diffusers / vLLM-Omni / SGLang / NIM，OpenMDW-1.1） |
+| [x] [nvidia_cosmos_framework.md](repos/nvidia_cosmos_framework.md) | NVIDIA/cosmos-framework：Cosmos 3 训练 / 推理框架（SFT、DCP 导出、Agent Skills） |
+| [x] [nvidia_cosmos_predict25.md](repos/nvidia_cosmos_predict25.md) | nvidia-cosmos/cosmos-predict2.5：2.5 代视频 WFM 官方仓（有限维护，引导迁移 Cosmos 3） |
 | [pinocchio.md](repos/pinocchio.md) | Pinocchio 动力学库 |
 | [crocoddyl.md](repos/crocoddyl.md) | Crocoddyl 最优控制框架 |
 | [x] [unitree.md](repos/unitree.md) | unitreerobotics 官方 GitHub 组织总览：SDK2 / ROS / 三条 RL 线 / XR 遥操作 / UnifoLM |
@@ -248,7 +252,7 @@
 | [x] [moveit-moveit2.md](repos/moveit-moveit2.md) | moveit/moveit2：MoveIt 2（ROS 2）运动规划与操作框架 |
 | [x] [motion_imitation_peng.md](repos/motion_imitation_peng.md) | erwincoumans/motion_imitation：四足模仿动物奠基仓库 |
 | [x] [mjlab.md](repos/mjlab.md) | mjlab：Isaac Lab API + MuJoCo Warp 轻量 GPU RL 框架（AMP_mjlab / unitree_rl_mjlab 的底层） |
-| [x] [newton-physics.md](repos/newton-physics.md) | Newton Physics：Warp + MuJoCo Warp GPU 可微物理引擎（LF 托管，Disney/DeepMind/NVIDIA） |
+| [x] [newton-physics.md](repos/newton-physics.md) | Newton Physics：Warp + MuJoCo Warp GPU 可微物理引擎（LF 托管；Kamino / ImplicitMPM / Style3D，2026-09 再核） |
 | [x] [plotjuggler.md](repos/plotjuggler.md) | PlotJuggler：跨平台时序可视化（rosbag/ROS topic、PX4 ULog、MQTT/LSL 插件） |
 | [x] [ppf-contact-solver.md](repos/ppf-contact-solver.md) | ppf-contact-solver：ZOZO GPU shell/solid/rod FEM+接触离线仿真（TOG 论文实现） |
 | [x] [mjlab_playground.md](repos/mjlab_playground.md) | mjlab_playground：mjlab 任务集合（MuJoCo Playground 端口起步，含 Go1/T1 getup 等） |
@@ -520,6 +524,7 @@
 | [x] [moveit1-noetic-tutorials.md](sites/moveit1-noetic-tutorials.md) | MoveIt 1 Noetic 官方教程（moveit.github.io/moveit_tutorials） |
 | [x] [moveit2-picknik-documentation.md](sites/moveit2-picknik-documentation.md) | MoveIt 2 官方文档 moveit.picknik.ai（概念/教程/API） |
 | [x] [cosmos3-project.md](sites/cosmos3-project.md) | Cosmos 3 项目页 research.nvidia.com/labs/cosmos-lab/cosmos3（全模态 Physical AI 能力 demo 与榜单摘要，arXiv:2606.02800） |
+| [x] [nvidia-cosmos.md](sites/nvidia-cosmos.md) | NVIDIA Cosmos 产品页 nvidia.com/ai/cosmos（Cosmos 3 omni-model、与 Omniverse/Newton 分工 FAQ） |
 | [x] [nvidia-research-robottt.md](sites/nvidia-research-robottt.md) | NVIDIA Research GEAR：RoboTTT 项目页 research.nvidia.com/labs/gear/robottt/（TTT 层、8K 上下文 scaling、长程双臂装配演示） |
 | [x] [nvidia-research-egoscale.md](sites/nvidia-research-egoscale.md) | NVIDIA Research GEAR：EgoScale 项目页 research.nvidia.com/labs/gear/egoscale（演示、管线叙述、BibTeX；GitHub 标注 Coming Soon） |
 | [x] [mixamo.md](sites/mixamo.md) | Mixamo：Adobe 在线角色绑定与动画库（商业服务说明） |
@@ -529,7 +534,7 @@
 | [x] [nvidia-physical-ai-learning.md](sites/nvidia-physical-ai-learning.md) | NVIDIA Physical AI Learning 门户（Isaac/OpenUSD/SO-101 等自学路径索引） |
 | [x] [nvidia-newton-physics.md](sites/nvidia-newton-physics.md) | NVIDIA Developer：Newton Physics 产品页（Warp、OpenUSD、Isaac Lab 集成叙事） |
 | [x] [openloong_community.md](sites/openloong_community.md) | OpenLoong 社区：青龙·公版机门户（硬件 v2.5、控制框架、数据集、文档/论坛） |
-| [x] [newton-physics-docs-overview.md](sites/newton-physics-docs-overview.md) | Newton 官方文档 Overview（ModelBuilder 仿真循环、多求解器、URDF/MJCF/USD） |
+| [x] [newton-physics-docs-overview.md](sites/newton-physics-docs-overview.md) | Newton 官方文档 Overview（CollisionPipeline、八求解器含 Kamino/ImplicitMPM/Style3D） |
 | [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：OpenAI MTS；CMU / NVIDIA GEAR 人形学习论文与项目总索引 |
 | [x] [yanjieze.md](sites/yanjieze.md) | Yanjie Ze（迮炎杰）个人主页：Stanford / Amazon FAR / Figure AI 人形模仿学习与 GMR–TWIST 技术线总索引 |
 | [x] [vision-banana-project.md](sites/vision-banana-project.md) | Vision Banana 项目页 vision-banana.github.io（交互分割/深度/法线演示、zero-shot 榜单，arXiv:2604.20329） |

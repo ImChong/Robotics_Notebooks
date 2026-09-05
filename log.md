@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/repos/newton-physics.md、sources/sites/newton-physics-docs-overview.md、NVIDIA Cosmos 一手族 — Newton 八求解器再核 + Cosmos 1.0/2.5/3 平台对齐；关键页 newton-physics、nvidia-cosmos
+
+- **触发：** 用户指定 <https://github.com/newton-physics/newton>、<https://newton-physics.github.io/newton/stable/guide/overview.html>，并要求一并找到英伟达 Cosmos 模型一手资料。
+- **复用：** [`newton-physics`](wiki/entities/newton-physics.md)、[`cosmos-3`](wiki/entities/cosmos-3.md) 已存在（2026-05 / 2026-06）。**不另造** Newton 页。Cosmos 1.0 / Predict2.5 的 Awesome 索引页 **原地升格**（同一 arXiv 只允许一个节点）。
+- **步骤 2.5：** Newton **已开源** Apache-2.0（~5.6k★）。Cosmos 3 **已开源**（[NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) ~11.7k★ + [cosmos-framework](https://github.com/NVIDIA/cosmos-framework) + HF Cosmos3）。Predict2.5 **已开源但有限维护**。产品页 FAQ：Omniverse/Newton 仿真视频 → Cosmos Transfer。
+- **关键判断：** Newton stable Overview 新增 **Kamino / ImplicitMPM / Style3D**，接触改为 **`CollisionPipeline.collide`**。Cosmos 3 现含 **4B Edge**、4-step 蒸馏、SGLang / TensorRT-LLM、framework SFT。Predict2.5 PAI-Bench I2W Overall **0.810**。解析仿真 ≠ 像素 WFM。
+- **新建：** [`nvidia-cosmos`](wiki/entities/nvidia-cosmos.md)；一手源 `cosmos_wfm_arxiv_2501_03575`、`cosmos_predict25_arxiv_2511_00062`、`nvidia_cosmos_framework`、`nvidia_cosmos_predict25`、`sites/nvidia-cosmos`
+- **交叉：** Newton / Cosmos 3 / Omniverse / Isaac Lab / generative-world-models / WAM / 仿真器选型
+
 ## [2026-09-05] ingest | sources/papers/pointdit_arxiv_2607_02515.md — PointDiT 像素空间点图扩散；已开源 google-research/pointdit；关键页 paper-pointdit
 
 - **触发：** 用户指定 <https://haofeixu.github.io/pointdit/>。

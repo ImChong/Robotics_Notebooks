@@ -10,9 +10,13 @@ tags:
   - wam
   - open-source
 status: complete
-updated: 2026-08-28
+updated: 2026-09-05
 arxiv: "2606.02800"
 related:
+  - ./nvidia-cosmos.md
+  - ./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md
+  - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md
+  - ./newton-physics.md
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md
   - ../concepts/sim2real.md
@@ -31,6 +35,8 @@ sources:
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos3-project.md
   - ../../sources/repos/nvidia_cosmos.md
+  - ../../sources/repos/nvidia_cosmos_framework.md
+  - ../../sources/sites/nvidia-cosmos.md
 summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 统一架构下联合理解/生成语言、图像、视频、音频与动作，Reasoner 与 Generator 双运行时面覆盖 VLM、视频 WM、正逆动力学与操纵策略。"
 ---
 
@@ -53,10 +59,12 @@ summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 
 | Physical AI | Physical Artificial Intelligence | 需在物理世界中感知、推理与行动的 AI 系统 |
 | T2V | Text-to-Video | 文本条件视频生成 |
 | I2V | Image-to-Video | 图像条件视频生成 |
+| SFT | Supervised Fine-Tuning | cosmos-framework 公开后训练主路径 |
+| NIM | NVIDIA Inference Microservices | Reasoner / Generator 预构建容器 |
 
 ## 为什么重要
 
-- **平台级统一，而非单点论文：** 同时发布 **16B Nano / 64B Super** 权重、合成数据、评测基准与 **Diffusers / vLLM-Omni / NIM** 集成，降低从「看视频想象」到「出动作/出仿真」的工程切换成本。
+- **平台级统一，而非单点论文：** 同时发布 **4B Edge / 16B Nano / 64B Super** 权重、合成数据、评测基准与 **Diffusers / vLLM-Omni / SGLang / TensorRT-LLM / NIM** 集成，后训练走 [cosmos-framework](../../sources/repos/nvidia_cosmos_framework.md)（不再只是 Coming Soon）。代际总览见 [NVIDIA Cosmos](./nvidia-cosmos.md)。
 - **Physical AI 闭环语义完整：** 项目页与 README 明确覆盖 **policy、forward dynamics、inverse dynamics**，并与 **2D 轨迹 CoT + 视频再生** 串联——对齐 [World Action Models（WAM）](../concepts/world-action-models.md) 对「预测 + 控制」联合范式的讨论。
 - **开源榜单叙事强：** 技术报告撰写时，后训练模型在 **Artificial Analysis** 开源 T2I/I2V 与 **RoboArena** policy 榜位居首（见 [参考来源](#参考来源)）；与 [EWMBench](../entities/ewmbench.md) 等 **操纵向** 专用基准形成互补——前者偏平台综合能力，后者偏场景/运动/语义三维量。
 - **生态承接：** 前序 **Cosmos-Predict2** 已是 [mimic-video](../methods/mimic-video.md) VAM 骨干与 [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) 微调基底；Cosmos 3 把「视频先验 + 动作头」路线升级为 **原生五模态单栈**，并进入 [NVIDIA SO-101 Sim2Real](./nvidia-so101-sim2real-lab-workflow.md) 等课程的 **合成演示增广** 语境。
@@ -77,11 +85,14 @@ summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 
 
 | 模型 | 规模 | 侧重 |
 |------|-----:|------|
+| **Cosmos3-Edge** | 4B | 边缘 / 实时策略与视觉推理（Jetson AGX Orin / Thor / RTX Pro 6000）；无 V2V transfer |
 | **Cosmos3-Nano** | 16B | 默认研究与部署入口：全模态理解+生成+动作 |
-| **Cosmos3-Super** | 64B | 前沿规模全模态 |
+| **Cosmos3-Super** | 64B | 前沿规模全模态；教师 / 数据中心 |
 | **Cosmos3-Super-Text2Image** | 64B | 高保真 T2I |
 | **Cosmos3-Super-Image2Video** | 64B | 时序一致 I2V |
+| **Super-*-4Step** | 64B | DMD2 蒸馏学生，README 宣称 17–25× 加速 |
 | **Cosmos3-Nano-Policy-DROID** | 16B | DROID 操纵策略专用 |
+| **Cosmos3-Edge-Policy-DROID** | 4B | 实时 World Action Model（README 列出） |
 
 ### 流程总览（双路径 + 典型机器人闭环）
 
@@ -135,12 +146,45 @@ flowchart TB
 
 | 路径 | 适用 | 备注 |
 |------|------|------|
-| **Diffusers** `Cosmos3OmniPipeline` | 研究、微调、原型 | 加载完整 checkpoint（含 Reasoner + 扩散路径） |
-| **vLLM-Omni** | Generator 生产 API | OpenAI 兼容 `/v1/images/generations`、`/v1/videos/sync`；action modes 含 policy / forward_dynamics / inverse_dynamics |
-| **vLLM + vllm-cosmos3** | Reasoner 生产 API | Chat-completions；Qwen3-VL 风格多模态消息 |
-| **Cosmos 3 Reasoner NIM** | 最快 Reasoner 上线 | NGC 预优化容器 |
+| **Diffusers** `Cosmos3OmniPipeline` | Generator 研究、原型 | 加载完整 checkpoint（含 Reasoner + 扩散路径） |
+| **vLLM-Omni / SGLang** | Generator 生产 API | OpenAI 兼容图像 / 视频 / 声音 / 动作；action modes 含 policy / forward_dynamics / inverse_dynamics |
+| **Transformers** | Reasoner 研究 | Python-first 提示与处理器 |
+| **vLLM / TensorRT-LLM** | Reasoner 生产 API | Chat-completions；Qwen3-VL 风格多模态消息 |
+| **Reasoner / Generator NIM** | 开箱容器 | NGC；Generator NIM 仅 T2V/I2V |
+| **cosmos-framework** | SFT、导出、评测 | `scripts.train` / `inference`；8×H100 recipe；DCP→safetensors→Diffusers |
 
-默认生成设定（README）：480p / 16:9 / 24 FPS / 最多 300 帧；Linux + BF16 + Ampere/Hopper/Blackwell。
+默认生成设定（README）：480p / 16:9 / 24 FPS / 最多 300 帧；Linux + BF16 + Ampere/Hopper/Blackwell。Edge 仅 256p/480p、12–30 fps、50–150 帧。推荐 CUDA 13。
+
+### 源码运行时序图
+
+官方可跑入口：[NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) cookbook + [cosmos-framework](https://github.com/NVIDIA/cosmos-framework)。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant UV as uv sync<br/>cu130-train
+    participant HF as Hugging Face<br/>Cosmos3-*
+    participant FW as cosmos_framework.scripts
+    participant R as Reasoner AR
+    participant G as Generator DM
+    participant API as vLLM-Omni / SGLang / NIM
+    Dev->>UV: 装 framework 或 cookbook
+    Dev->>HF: 拉取 Nano/Super/Edge
+    alt 研究推理
+      Dev->>FW: inference -i omni/t2v.json
+      FW->>G: 扩散去噪
+      G-->>Dev: 视频 / 动作
+    else 生产 serving
+      Dev->>API: OpenAI 兼容请求
+      API->>R: 视觉理解
+      API->>G: 生成或 policy
+      API-->>Dev: 文本或媒体
+    else 后训练
+      Dev->>FW: train --sft-toml
+      FW-->>Dev: DCP → export_model → Diffusers
+    end
+```
 
 ## 与相邻路线的分界
 
@@ -156,6 +200,11 @@ flowchart TB
 - **误区 1：Cosmos 3 = 只做视频生成。** Generator 明确包含 **policy 与正/逆动力学**；Reasoner 侧也是产品级能力，而非附属 caption 模型。
 - **误区 2：与 Cosmos Policy 重复。** [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) 是 **微调 Predict2 的联合架构论文实例**；Cosmos 3 是 **下一代全模态母平台**，可再被微调为各类 policy / 仿真器。
 - **误区 3：榜单第一等于操纵闭环已解决。** 平台榜与 [EWMBench](../entities/ewmbench.md) 等 **任务语义/轨迹** 量纲不同；合成增广仍要面对 **物理幻觉与分布偏移**（见 [Sim2Real](../concepts/sim2real.md)）。
+- **误区 4：Cosmos 3 替代 Newton。** [Newton](./newton-physics.md) 是解析 GPU 物理引擎；本栈是学习式世界模型。官方产品页把 Omniverse/Newton 仿真视频交给 Transfer / Generator，而不是删掉接触求解器。
+
+## 局限与风险
+
+README 自列：长分辨率或复杂物理输出可出现时序不一致、相机/物体运动不稳、声画错位、动作–状态不一致、物体 morphing、3D 结构不准与不合理动力学。安全关键控制必须另加验证。Edge 不支持 V2V transfer。HF 仓多为门控。
 
 ## 与其他页面的关系
 
@@ -172,9 +221,15 @@ flowchart TB
 - [Cosmos 3 技术报告（arXiv:2606.02800）](../../sources/papers/cosmos3_arxiv_2606_02800.md)
 - [Cosmos 3 官方项目页](../../sources/sites/cosmos3-project.md)
 - [NVIDIA/cosmos 仓库](../../sources/repos/nvidia_cosmos.md)
+- [cosmos-framework 仓库](../../sources/repos/nvidia_cosmos_framework.md)
+- [NVIDIA Cosmos 产品页](../../sources/sites/nvidia-cosmos.md)
 
 ## 关联页面
 
+- [NVIDIA Cosmos 平台](./nvidia-cosmos.md) — 1.0 / 2.5 / 3.0 总览
+- [Cosmos 1.0 WFM 论文](./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)
+- [Predict2.5 / Transfer2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
+- [Newton Physics](./newton-physics.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [mimic-video（VAM）](../methods/mimic-video.md)
@@ -188,4 +243,5 @@ flowchart TB
 - [arXiv:2606.02800](https://arxiv.org/abs/2606.02800) — 论文全文
 - [Cosmos 3 项目页](https://research.nvidia.com/labs/cosmos-lab/cosmos3/) — 交互 demo 与能力矩阵
 - [GitHub: NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) — Quickstart、模型卡与 serving 配方
+- [GitHub: NVIDIA/cosmos-framework](https://github.com/NVIDIA/cosmos-framework) — SFT / 导出 / Agent Skills
 - [Cosmos 3 Diffusers 文档](https://huggingface.co/docs/diffusers/main/en/api/pipelines/cosmos3) — `Cosmos3OmniPipeline` API

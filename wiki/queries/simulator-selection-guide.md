@@ -2,7 +2,7 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl, omnisim]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-05
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
@@ -182,7 +182,7 @@ related:
 - **引擎层**可插拔求解器、USD、可微与 LF 开源治理 → 评估 **Newton**
 - **现成 manager-based RL 环境**（类 Isaac Lab API、不绑 Isaac Sim）→ 优先 **mjlab**
 
-二者均依赖 MuJoCo Warp，与 Isaac Lab 的 `feature/newton` 集成属于同一技术脉络，选型时按「要框架还是要引擎」拆分。
+二者均依赖 MuJoCo Warp，与 Isaac Lab 的 `feature/newton` 集成属于同一技术脉络，选型时按「要框架还是要引擎」拆分。2026-09 文档把接触改到 **`CollisionPipeline.collide`**，并列出 **Kamino / ImplicitMPM / Style3D**（颗粒、雪、Style3D 布料）；需要像素级世界预测或仿真视频照片级翻译时另评 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)，不要把 WFM 当成接触求解器。
 
 ### 补充：编码代理工作台（[OmniSim](../entities/omnisim.md)）
 

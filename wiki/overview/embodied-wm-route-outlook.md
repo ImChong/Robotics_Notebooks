@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, survey, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-09-05
 summary: "具身世界模型六路线 · 趋势与判断 — 文内五个判断与行业方向所引工作。"
 related:
   - ./embodied-wm-six-routes-technology-map.md
@@ -28,6 +28,7 @@ sources:
 | 工作 | Wiki 实体 | 文内角色 |
 |------|-----------|----------|
 | Cosmos 3 | [cosmos-3](../entities/cosmos-3.md) | 统一骨干处理文本/图像/视频/音频/动作的全模态世界基础模型。 |
+| NVIDIA Cosmos | [nvidia-cosmos](../entities/nvidia-cosmos.md) | 1.0→2.5→3.0 平台；与 Newton 解析仿真互补。 |
 | WorldArena | [paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe](../entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md) | 对比视频质量与数据生成/策略评估/规划效用。 |
 | RoboWM-Bench | [paper-robowm-bench-action-faithfulness](../entities/paper-robowm-bench-action-faithfulness.md) | 把生成行为还原为机器人动作并在真机执行评测。 |
 | DreamDojo | [paper-hrl-stack-35-dreamdojo](../entities/paper-hrl-stack-35-dreamdojo.md) | 第一视角人类视频学日常交互，少量机器人数据恢复可控性。 |
