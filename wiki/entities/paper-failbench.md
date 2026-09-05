@@ -9,6 +9,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ./paper-irwoz-2.md
   - ../overview/open-source-reproducibility-9-papers-technology-map.md
@@ -117,6 +118,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md)
 - [评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 - [具身评测基准选型闭环（枢纽）](../overview/hub-embodied-eval-benchmark.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页「证据类型决定上限」即感知栈①层模态选型的下游后果：物体运动视觉可见故判定接近饱和，接触装配纯视觉不可观测故接近随机
 - [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
 
 ## 参考来源
