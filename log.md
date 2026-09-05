@@ -1,11 +1,20 @@
 ## [2026-09-05] ingest | sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md — 腾讯科技世界模型访谈；点名论文独立节点；关键页 paper-lpwm / paper-phi-wm-acteffect
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/2DEpiexjwh5O6bBJDXk3LA>，并要求文内论文各有独立非重复详情节点。
-- **复用：** [Atlas](wiki/entities/atlas-world-model.md)、[LeVJEPA](wiki/entities/paper-levjepa.md)、[World Labs](wiki/entities/world-labs.md)。功能分类博客本分支无独立概念页，外链 World Labs 原文。
+- **复用：** [Atlas](wiki/entities/atlas-world-model.md)、[LeVJEPA](wiki/entities/paper-levjepa.md)、[World Labs](wiki/entities/world-labs.md)、[功能分类](wiki/concepts/functional-taxonomy-world-models.md)（#1808 已合入）。
 - **步骤 2.5：** LeJEPA **已开源** CC BY-NC；LeWM **已开源** MIT+HF；LpWM **已开源** MIT；ActEffect / Atlas **确认未开源**。
 - **关键判断：** 过载词要拆岗位——Atlas 生成 3D、LpWM 改隐几何、ActEffect 把 WM 放进训练反馈。
 - **新建：** `paper-lejepa`、`paper-lewm`、`paper-lpwm`、`paper-phi-wm-acteffect`；归档访谈 raw + 三仓 + 光象站。
-- **交叉：** 生成式 WM / WAM / INTACT / LeVJEPA / Atlas
+- **交叉：** 生成式 WM / WAM / INTACT / LeVJEPA / Atlas / 功能分类
+
+## [2026-09-05] ingest | sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md + sources/blogs/worldlabs_functional_taxonomy_world_models.md — Fei-Fei 功能分类 + 上智定义/路线图；确认未开源
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2607.06401v1>、<https://drfeifei.substack.com/p/a-functional-taxonomy-of-world-models>
+- **复用：** 已有 [生成式世界模型](wiki/methods/generative-world-models.md)、[WAM](wiki/concepts/world-action-models.md)、[World Labs](wiki/entities/world-labs.md)、[Marble](wiki/entities/marble-world-model.md)、[训练闭环三线](wiki/overview/robot-world-models-training-loop-taxonomy.md)、Awesome 索引卡 [paper-sa-2607-06401](wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)。**另建** 功能分类概念页；定义文 **原地升格** Awesome stub（同一 arXiv 不双实体）。
+- **步骤 2.5：** 官方博客 <https://www.worldlabs.ai/blog/taxonomy-of-world-models> 与 arXiv HTML **均无** GitHub / 权重。概念文 + 视角文 → **确认未开源**。Marble 仍是部分开源（Spark），不因本篇改变。
+- **关键判断：** 功能分类只描述解码（观测/状态/动作）；上智文补压缩定义与表征轴，并声明 WAM 不是第四实现列。仿真是枢纽；倒金字塔把数据天花板钉在互联网视频多样性。
+- **新建：** `functional-taxonomy-world-models`；升格 `paper-sa-2607-06401-a-definition-and-roadmap-for-world-models`（不另建第二实体）；归档 `worldlabs_functional_taxonomy_world_models.md`、`world_model_definition_roadmap_arxiv_2607_06401.md`
+- **交叉：** 生成式 WM / WAM / VL* 五家族 / 训练闭环三线 / 具身数据金字塔 / Cosmos 3 / Video-as-Simulation
 
 ## [2026-09-05] ingest | sources/sites/cosmos-cookbook.md、Transfer1/2.5 仓与文档 — Cosmos Transfer 族 + Cookbook 入库；已开源但 2.x 有限维护；关键页 cosmos-transfer、paper-cosmos-transfer1、cosmos-cookbook
 

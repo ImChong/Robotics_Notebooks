@@ -22,7 +22,7 @@
 | # | 资料 | 身份 | 开源结论（入库日） | wiki |
 |---|------|------|-------------------|------|
 | 01 | Atlas（World Labs，2026-09-01） | 产品 / omni 模型，非论文 | **确认未开源**（早期访问） | [atlas-world-model](../../wiki/entities/atlas-world-model.md) **复用** |
-| 02 | A Functional Taxonomy of World Models（Fei-Fei，2026-06） | 博客 / 概念文 | **确认未开源** | 外部 [World Labs 博客](https://www.worldlabs.ai/blog/taxonomy-of-world-models)；库内叙事见 [world-labs](../../wiki/entities/world-labs.md) **复用** |
+| 02 | A Functional Taxonomy of World Models（Fei-Fei，2026-06） | 博客 / 概念文 | **确认未开源** | [functional-taxonomy-world-models](../../wiki/concepts/functional-taxonomy-world-models.md) **复用**（#1808）；原文 [World Labs 博客](https://www.worldlabs.ai/blog/taxonomy-of-world-models) |
 | 03 | LeJEPA（arXiv:2511.08544） | 论文（LeVJEPA 前身） | **已开源** CC BY-NC 4.0 | [paper-lejepa](../../wiki/entities/paper-lejepa.md) **新建** |
 | 04 | LeWM / LeWorldModel（arXiv:2603.19312） | 论文（LpWM 稠密对照） | **已开源** MIT + HF | [paper-lewm](../../wiki/entities/paper-lewm.md) **新建** |
 | 05 | LpWM（arXiv:2608.22764，2026-08-24） | 论文 | **已开源** MIT | [paper-lpwm](../../wiki/entities/paper-lpwm.md) **新建** |

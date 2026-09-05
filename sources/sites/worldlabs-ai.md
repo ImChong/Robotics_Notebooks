@@ -24,6 +24,7 @@
 
 | 文章 | URL | 技术要点（归纳） |
 |------|-----|------------------|
+| 世界模型功能分类 | <https://www.worldlabs.ai/blog/taxonomy-of-world-models> | 已深度归档 → [worldlabs_functional_taxonomy_world_models.md](../blogs/worldlabs_functional_taxonomy_world_models.md)；wiki：[functional-taxonomy-world-models.md](../../wiki/concepts/functional-taxonomy-world-models.md)。Substack 镜像：<https://drfeifei.substack.com/p/a-functional-taxonomy-of-world-models> |
 | Marble：多模态世界模型 GA | <https://www.worldlabs.ai/blog/marble-world-model> | 已深度归档 → [worldlabs_marble_world_model.md](../blogs/worldlabs_marble_world_model.md)；wiki：[marble-world-model.md](../../wiki/entities/marble-world-model.md) |
 | Spark 2.0：流式 3DGS 世界 | <https://www.worldlabs.ai/blog/spark-2.0> | 已深度归档 → [worldlabs_spark_2_0_streaming_3dgs.md](../blogs/worldlabs_spark_2_0_streaming_3dgs.md)；wiki：[spark-3dgs-renderer.md](../../wiki/entities/spark-3dgs-renderer.md) |
 | Atlas：空间智能世界模型 | <https://www.worldlabs.ai/blog/atlas> | 已深度归档 → [worldlabs_atlas_omni_world_model.md](../blogs/worldlabs_atlas_omni_world_model.md)；wiki：[atlas-world-model.md](../../wiki/entities/atlas-world-model.md) |
@@ -32,6 +33,8 @@
 
 ## 对 wiki 的映射
 
+- [`wiki/concepts/functional-taxonomy-world-models.md`](../../wiki/concepts/functional-taxonomy-world-models.md) — Renderer / Simulator / Planner 功能分类。
+- [`wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md`](../../wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 上海人工智能实验室对功能分类的二维扩展。
 - [`wiki/entities/world-labs.md`](../../wiki/entities/world-labs.md) — 公司定位、Marble / Spark / Marble Labs 与和「生成式世界模型」「3DGS 仿真」知识节点的关系。
 - [`wiki/entities/marble-world-model.md`](../../wiki/entities/marble-world-model.md) — Marble 产品、文档门禁与开源边界。
 - [`wiki/entities/atlas-world-model.md`](../../wiki/entities/atlas-world-model.md) — Atlas omni 世界模型（相机可控生成、稀疏重建、Real-to-Sim）。

@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3484,
-  "edge_count": 31937,
+  "node_count": 3485,
+  "edge_count": 31973,
   "coverage": {
-    "covered": 3457,
-    "total": 3457,
+    "covered": 3458,
+    "total": 3458,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-lejepa.md",
+      "detail_id": "entity-paper-lejepa",
+      "label": "LeJEPA（无启发式 JEPA · arXiv:2511.08544）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lewm.md",
+      "detail_id": "entity-paper-lewm",
+      "label": "LeWorldModel / LeWM（像素端到端 JEPA WM · arXiv:2603.19312）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lpwm.md",
+      "detail_id": "entity-paper-lpwm",
+      "label": "LpWM（稀疏世界模型 · arXiv:2608.22764）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-phi-wm-acteffect.md",
+      "detail_id": "entity-paper-phi-wm-acteffect",
+      "label": "Phi-WM 1.0 ActEffect（训练时后果反馈）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/nvidia-nurec.md",
       "detail_id": "entity-nvidia-nurec",
@@ -26,7 +69,7 @@
       "recency": "2026-09-05",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-instant-nurec.md",
@@ -68,7 +111,8 @@
       "recency": "2026-09-05",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-cosmos-transfer1.md",
@@ -174,71 +218,31 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-pointdit.md",
-      "detail_id": "entity-paper-pointdit",
-      "label": "PointDiT：像素空间扩散估单目点图",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hil-hybrid-imitation-learning.md",
-      "detail_id": "entity-paper-hil-hybrid-imitation-learning",
-      "label": "HIL：混合模仿学习做动态运动控制",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fwbc-vla.md",
-      "detail_id": "entity-paper-fwbc-vla",
-      "label": "FWBC-VLA：无传感器接触感知的全身补偿",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-failbench.md",
-      "detail_id": "entity-paper-failbench",
-      "label": "FailBench：VLM 当裁判有多可靠",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-nurec.md",
-    "detail_id": "entity-nvidia-nurec",
-    "label": "NVIDIA Omniverse NuRec",
+    "path": "wiki/entities/paper-lejepa.md",
+    "detail_id": "entity-paper-lejepa",
+    "label": "LeJEPA（无启发式 JEPA · arXiv:2511.08544）",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 678
+      "size": 711
     },
     {
       "label": "操作",
-      "size": 608
+      "size": 679
     },
     {
       "label": "视觉-语言-动作",
-      "size": 330
+      "size": 252
     },
     {
       "label": "机器人学习论文笔记",
@@ -246,7 +250,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 131
+      "size": 123
     },
     {
       "label": "移动操作",
@@ -258,7 +262,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1420,
+      "degree": 1419,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -274,14 +278,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 905,
+      "degree": 904,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 899,
+      "degree": 900,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -289,7 +293,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 827,
+      "degree": 830,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -312,7 +316,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 528,
+      "degree": 529,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -398,7 +402,7 @@
       "type": "entity",
       "degree": 44,
       "has_repo": true,
-      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

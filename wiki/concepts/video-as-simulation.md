@@ -6,6 +6,8 @@ updated: 2026-09-05
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
+  - ./functional-taxonomy-world-models.md
+  - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ../entities/ewmbench.md
   - ../entities/paper-worldscore.md
   - ../entities/paper-harnesseval-w.md
@@ -35,6 +37,8 @@ related:
   - ../entities/cosmos-transfer.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
+  - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
+  - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/ewmbench.md
@@ -60,7 +64,7 @@ summary: "视频即仿真（Video-as-Simulation）代表了仿真技术的新范
 
 # Video-as-Simulation (视频即仿真)
 
-**视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个模型本身就可以充当一个端到端的、像素级的物理引擎。
+**视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个模型本身就可以充当一个端到端的、像素级的物理引擎。在 [功能分类](./functional-taxonomy-world-models.md) 里，这类系统默认是 **Renderer**；加上可靠动作条件与可查询状态后才靠近 Simulator。[定义文](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 提醒：像素逼真既非必要也非充分。
 
 ## 英文缩写速查
 
@@ -141,6 +145,8 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — Geirhos「视频模型即 VFM」与 Wu & Wu「像素生成 ≠ 物理理解」的对张力，用来读本页「视频即仿真」的适用边界
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧控制，动作条件交互世界模型语料
+- [世界模型功能分类](./functional-taxonomy-world-models.md) — 视频即仿真默认是 Renderer；动作条件后才靠近 Simulator
+- [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 像素逼真既非必要也非充分
 - [Generative World Models](../methods/generative-world-models.md)
 - [EWMBench](../entities/ewmbench.md) — 操纵场景下视频世界模型生成的多维评测坐标
 - [WorldScore](../entities/paper-worldscore.md) — 开放域多场景 + 相机可控世界生成统一评测（ICCV 2025）
@@ -171,6 +177,8 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [ABot-World-0](../entities/paper-abot-world-0.md) — 单卡桌面键盘交互视频世界模型（arXiv:2607.19191；部分开源）。
 
 ## 参考来源
+- Fei-Fei Li / World Labs (2026). *A Functional Taxonomy of World Models* — 见 [worldlabs_functional_taxonomy_world_models.md](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)。
+- Physical Intelligence Team (2026). *A Definition and Roadmap for World Models* — 见 [world_model_definition_roadmap_arxiv_2607_06401.md](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md)。
 - Yang, S., et al. (2023). *UniSim: Learning Interactive Real-World Simulators*.
 - [Google DeepMind Blog on UniSim](https://deepmind.google/discover/blog/unisim/).
 - Zhou Y., et al. (2026). *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control* — 见 [sources/papers/exoactor.md](../../sources/papers/exoactor.md)。
