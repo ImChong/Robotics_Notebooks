@@ -7357,3 +7357,83 @@
     container.innerHTML = othersHtml;
   }
 })();
+
+/* ── 全站「回到顶部」按钮（带阅读进度环） ──
+   注入判据与 style.css 里 `body:has(> .footer)` 一致：graph.html / references.html
+   没有站内 footer，因此自动排除（图谱页全屏画布不加浮层，跳转桩页无需）。 */
+(function () {
+  'use strict';
+
+  function init() {
+    if (!document.querySelector('body > .footer')) return;
+    if (document.querySelector('.back-to-top')) return;
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'backToTop';
+    btn.className = 'back-to-top';
+    btn.setAttribute('aria-label', '回到顶部');
+    btn.setAttribute('title', '回到顶部');
+    btn.setAttribute('aria-hidden', 'true');
+    btn.tabIndex = -1;
+    btn.innerHTML = '<span class="back-to-top-arrow" aria-hidden="true">↑</span>';
+    document.body.appendChild(btn);
+
+    var visible = false;
+    var lastProgress = -1;
+
+    function update() {
+      var doc = document.documentElement;
+      var scrolled = window.pageYOffset || doc.scrollTop || 0;
+      var scrollable = doc.scrollHeight - window.innerHeight;
+      var progress = scrollable > 0 ? Math.min(1, Math.max(0, scrolled / scrollable)) : 0;
+      // 量化到 1% 再写回样式，避免每帧都触发进度环重绘
+      var rounded = Math.round(progress * 100) / 100;
+      if (rounded !== lastProgress) {
+        lastProgress = rounded;
+        btn.style.setProperty('--btt-progress', String(rounded));
+      }
+      // 出现阈值：默认 0.6 屏，但对本身就不长的页面（如 hubs.html 可滚约 570px）
+      // 按可滚距离的 35% 提前放出，否则按钮只会在最后几十像素里闪一下；
+      // 可滚距离不足 240px 的页面则完全不出现，避免为一点点滚动挂个浮层。
+      var shouldShow = scrollable >= 240 &&
+        scrolled > Math.min(window.innerHeight * 0.6, scrollable * 0.35);
+      if (shouldShow !== visible) {
+        visible = shouldShow;
+        btn.classList.toggle('is-visible', shouldShow);
+        btn.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+        btn.tabIndex = shouldShow ? 0 : -1;
+      }
+    }
+
+    // 与页面其他滚动监听一致：rAF 节流
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        update();
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    btn.addEventListener('click', function () {
+      var reduce = false;
+      try {
+        reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      } catch { /* 老浏览器无 matchMedia：按默认平滑滚动处理 */ }
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

@@ -2460,6 +2460,75 @@ button.home-wiki-heatmap-cell.is-active {
   opacity: 1;
 }
 
+/* Back to Top（进度环 FAB，main.js 注入；graph.html / references.html 无 footer 故不注入）
+   右下角落位：与左下角的 .sidebar-toggle 分居两侧，移动端抽屉目录展开时互不遮挡 */
+.back-to-top {
+  --btt-progress: 0;
+  --btt-track: color-mix(in srgb, var(--text-muted) 32%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  /* 外圈 = 阅读进度环，由 JS 每帧更新 --btt-progress（0~1） */
+  background: conic-gradient(var(--accent) calc(var(--btt-progress) * 360deg), var(--btt-track) 0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+/* 内圈实心底，把 conic-gradient 削成一条 3px 宽的环 */
+.back-to-top::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+}
+.back-to-top:hover::before {
+  background: var(--bg-alt);
+}
+.back-to-top:active {
+  transform: scale(0.9);
+}
+.back-to-top-arrow {
+  position: relative;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--text);
+}
+.back-to-top:hover .back-to-top-arrow {
+  color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: none;
+  }
+}
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
 @media (max-width: 1631px) {
   .detail-toc-panel {
     position: fixed;
