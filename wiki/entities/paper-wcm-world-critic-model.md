@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, rl, post-training, critic, world-model, jepa, manipulation, tongji, shanghai-innovation-institute, fudan]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 arxiv: "2607.29613"
 code: https://github.com/sylvestf/WCM
 related:
@@ -14,6 +14,7 @@ related:
   - ../methods/generative-world-models.md
   - ./paper-actfovea.md
   - ./paper-temporal-grpo.md
+  - ./paper-lejepa.md
   - ./paper-levjepa.md
 sources:
   - ../../sources/papers/wcm_world_critic_arxiv_2607_29613.md
@@ -213,6 +214,7 @@ sequenceDiagram
 - [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md) — WCM 两侧都接
 - [ActFovea](./paper-actfovea.md) — 时序信息用于推理期防护的对照
 - [Temporal GRPO](./paper-temporal-grpo.md) — 对照：无 critic，只改阶段组相对写回（arXiv:2608.13026；未开源）
+- [LeJEPA](./paper-lejepa.md) — SIGReg 图像配方（arXiv:2511.08544）；WCM 的轻量 critic 主干从此分叉
 - [LeVJEPA](./paper-levjepa.md) — LeJEPA+SIGReg 的视频预训练配方（arXiv:2608.27395；已开源）
 
 ## 参考来源

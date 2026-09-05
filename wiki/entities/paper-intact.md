@@ -2,10 +2,13 @@
 type: entity
 tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, search-free, zju, tsinghua, roboparty]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-05
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
 related:
+  - ./paper-lejepa.md
+  - ./paper-lewm.md
+  - ./paper-lpwm.md
   - ./paper-dwm-separating-world-effects.md
   - ./paper-vjepa2.md
   - ./roboparty.md
@@ -48,7 +51,7 @@ summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四
 
 ## 为什么重要
 
-- **补上前向 WM 的另一半：** [LeWM](./paper-dwm-separating-world-effects.md) 类模型学会预测「动作会产生什么效果」；INTACT 进一步学「为了实现意图应执行什么动作」，闭合表征–控制不对称。
+- **补上前向 WM 的另一半：** [LeWM](./paper-lewm.md) 类模型学会预测「动作会产生什么效果」；INTACT 进一步学「为了实现意图应执行什么动作」，闭合表征–控制不对称。
 - **延迟可读：** Direct **毫秒级**（约 **2.9–5.5 ms**），相对上千候选 CEM（约秒级，叙事约 **300×**）更贴 [实时性边界](../concepts/embodied-fm-latency-generalization-tradeoff.md)。
 - **与分解式 WM 互补：** [DWM Separating](./paper-dwm-separating-world-effects.md) 改训练期世界/动作效应；INTACT 改 **逆问题接口**（意图读出）。
 - **多任务共享编码器：** 一四任务编码器仍提升每域，说明意图坐标可跨任务复用。
@@ -153,6 +156,7 @@ flowchart TB
 
 ## 关联页面
 
+- [LeJEPA](./paper-lejepa.md) / [LeWM](./paper-lewm.md) / [LpWM](./paper-lpwm.md) — 官方四任务评测基座与同一作者族的表征先验
 - [DWM Separating World Effects](./paper-dwm-separating-world-effects.md) — LeWM 族训练期分解对照
 - [V-JEPA 2](./paper-vjepa2.md) — JEPA 规划中间路线
 - [RoboParty](./roboparty.md) — Lab 联署与组织镜像入口

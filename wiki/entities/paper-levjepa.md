@@ -15,10 +15,13 @@ tags:
   - nyu
   - ami-labs
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 arxiv: "2608.27395"
 code: https://github.com/MLO-lab/LeVJEPA
 related:
+  - ./paper-lejepa.md
+  - ./paper-lewm.md
+  - ./paper-lpwm.md
   - ./paper-vjepa2.md
   - ./paper-wcm-world-critic-model.md
   - ./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md
@@ -31,12 +34,13 @@ sources:
   - ../../sources/papers/levjepa_arxiv_2608_27395.md
   - ../../sources/repos/levjepa.md
   - ../../sources/sites/levjepa-github-io.md
+  - ../../sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md
 summary: "LeVJEPA（arXiv:2608.27395，DKFZ/Mila/NYU/Brown/AMI Labs）：把 LeJEPA 的不变性+SIGReg 接到视频编码器——不要 EMA teacher、predictor 或像素重建；95% 随机 token drop 反而涨点，并免费得到 block-causal 逐帧表征。同数据重训下相对 V-JEPA 2 省 5.6–20.8× FLOPs；VideoMix ViT-L 冻结 probe IN1K 69.5%。代码 MIT，module.py 与权重 CC BY-NC。"
 ---
 
 # LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）
 
-**LeVJEPA**（*LeVJEPA: Efficient & Scalable Video Pretraining without the Heuristics*，[arXiv:2608.27395](https://arxiv.org/abs/2608.27395)；[项目页](https://levjepa.github.io/)，[代码](https://github.com/MLO-lab/LeVJEPA)）由 **Lukas Kuhn / Lucas Maes / Giuseppe Serra / Quentin Le Lidec / Yann LeCun / Randall Balestriero / Florian Buettner** 提出：把图像侧 [LeJEPA](https://arxiv.org/abs/2511.08544) 的 **坍塌无关目标**接到 V-JEPA 风格的视频 Transformer。可训练件只剩 **encoder + 小 projector**，目标只剩一个超参 \(\lambda=0.02\)。
+**LeVJEPA**（*LeVJEPA: Efficient & Scalable Video Pretraining without the Heuristics*，[arXiv:2608.27395](https://arxiv.org/abs/2608.27395)；[项目页](https://levjepa.github.io/)，[代码](https://github.com/MLO-lab/LeVJEPA)）由 **Lukas Kuhn / Lucas Maes / Giuseppe Serra / Quentin Le Lidec / Yann LeCun / Randall Balestriero / Florian Buettner** 提出：把图像侧 [LeJEPA](./paper-lejepa.md) 的 **坍塌无关目标**接到 V-JEPA 风格的视频 Transformer。可训练件只剩 **encoder + 小 projector**，目标只剩一个超参 \(\lambda=0.02\)。
 
 ## 一句话定义
 
@@ -198,6 +202,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [LeJEPA](./paper-lejepa.md) — 图像侧 SIGReg 配方；本文接到视频编码器
+- [LeWM](./paper-lewm.md) / [LpWM](./paper-lpwm.md) — 同一作者族的动作条件规划 WM
 - [V-JEPA 2](./paper-vjepa2.md) — 同数据重训的主对照；AC 规划是本文没有的下一阶段
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md) — 用显式 dense loss 换 patch 结构；本文声称结构可涌现
 - [WCM](./paper-wcm-world-critic-model.md) — 同一套 LeJEPA / SIGReg，落在 VLA critic
@@ -212,6 +218,7 @@ sequenceDiagram
 - [LeVJEPA 论文归档（arXiv:2608.27395）](../../sources/papers/levjepa_arxiv_2608_27395.md)
 - [MLO-lab/LeVJEPA 代码索引](../../sources/repos/levjepa.md)
 - [LeVJEPA 项目页归档](../../sources/sites/levjepa-github-io.md)
+- [腾讯科技访谈归档](../../sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md)
 
 ## 推荐继续阅读
 
@@ -219,4 +226,5 @@ sequenceDiagram
 - [项目页](https://levjepa.github.io/)
 - [GitHub — MLO-lab/LeVJEPA](https://github.com/MLO-lab/LeVJEPA)
 - [HF — LeVJEPA-VideoMix-Large](https://huggingface.co/galilai-group/LeVJEPA-VideoMix-Large)
-- [LeJEPA（图像配方，arXiv:2511.08544）](https://arxiv.org/abs/2511.08544)
+- [LeJEPA（图像配方）](./paper-lejepa.md)
+- [LeWM](./paper-lewm.md) / [LpWM](./paper-lpwm.md) — 同一 SIGReg 家族的规划 WM

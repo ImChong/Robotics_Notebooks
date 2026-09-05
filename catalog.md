@@ -811,7 +811,9 @@
 - [LEGO：层级语言高斯溅射](wiki/entities/paper-lego-leveled-language-gaussian-splatting.md) — LEGO**（*LEveled Gaussian splatting for Open-vocabulary understanding*；论文 *LEGO: Leveled Language G `📅unknown` `[entity_page]`
 - [LEGS（Loco-manipulation via Embodied Gaussian Splatting）](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) — LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频 `📅unknown` `[entity_page]`
 - [Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）](wiki/entities/paper-lehome-learning-to-fold.md) — Learning to Fold**（arXiv:2606.27163，[项目博客](https://ilialarchen `📅unknown` `[entity_page]`
+- [LeJEPA（无启发式 JEPA · arXiv:2511.08544）](wiki/entities/paper-lejepa.md) — LeJEPA**（*LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics*，[arXiv:25 `📅unknown` `[entity_page]`
 - [LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）](wiki/entities/paper-levjepa.md) — LeVJEPA**（*LeVJEPA: Efficient & Scalable Video Pretraining without the Heuristics*，[arXiv:2608.273 `📅unknown` `[entity_page]`
+- [LeWorldModel / LeWM（像素端到端 JEPA WM · arXiv:2603.19312）](wiki/entities/paper-lewm.md) — LeWorldModel（LeWM）**（*Stable End-to-End Joint-Embedding Predictive Architecture from Pixels*，[arXi `📅unknown` `[entity_page]`
 - [Light-Loco-Parkour（LightLP）](wiki/entities/paper-light-loco-parkour.md) — Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称  `📅unknown` `[entity_page]`
 - [LightNav-0：激发 VLM 空间智能的通用具身导航](wiki/entities/paper-lightnav-0.md) — LightNav-0**（*Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation*，[arXiv:2608.3 `📅unknown` `[entity_page]`
 - [Ego-Pi](wiki/entities/paper-loco-manip-01-ego-pi.md) — Ego-Pi** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
@@ -904,6 +906,7 @@
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [LooperMuscle：结构化 MoE 加速人形全身跟踪](wiki/entities/paper-loopermuscle.md) — LooperMuscle**（*LooperMuscle: Fast and Stable Learning of Humanoid Whole-Body Tracking via Structu `📅unknown` `[entity_page]`
 - [A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）](wiki/entities/paper-low-cost-modular-actuator-katz.md) — Benjamin G. Katz（MIT，Sangbae Kim 指导，[S.M. thesis 2018](https://dspace.mit.edu/entities/publication `📅unknown` `[entity_page]`
+- [LpWM（稀疏世界模型 · arXiv:2608.22764）](wiki/entities/paper-lpwm.md) — LpWM / LpWorldModel**（*A Case for Sparse Representations in World Models*，[arXiv:2608.22764](https `📅unknown` `[entity_page]`
 - [LT-Mem：波动性感知的终身场景记忆](wiki/entities/paper-lt-mem.md) — LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19 `📅unknown` `[entity_page]`
 - [LUCID：用想象的技能级动力学做长时程人形 Loco-Manipulation](wiki/entities/paper-lucid.md) — LUCID**（*Latent-Skill Unified Control via Imagined Dynamics*；[arXiv:2608.07746](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Lucida：组合式 Real-to-Sim 场景建模](wiki/entities/paper-lucida-r2s.md) — Lucida**（*Parse, Generate, and Place for Composable Real-to-Sim Scene Modeling*，[arXiv:2608.30821 `📅unknown` `[entity_page]`
@@ -1381,6 +1384,7 @@
 - [PETS](wiki/entities/paper-pets-probabilistic-dynamics-mpc.md) — PETS** 收录于 具身智能研究室 · 具身世界模型六路线综述 **规划主导型** 段。 `📅unknown` `[entity_page]`
 - [PFM-HR：面向人形的姿态流匹配先验](wiki/entities/paper-pfm-hr.md) — PFM-HR**（*Pose Flow Matching for Humanoid Robots*；[arXiv:2608.03227](https://arxiv.org/abs/2608.03 `📅unknown` `[entity_page]`
 - [PGIF-MPPI：社交导航的安全成本必须面向未来](wiki/entities/paper-pgif-mppi.md) — PGIF**（*Predictive Gaussian Interaction Fields*；[arXiv:2608.08323](https://arxiv.org/abs/2608.0832 `📅unknown` `[entity_page]`
+- [Phi-WM 1.0 ActEffect（训练时后果反馈）](wiki/entities/paper-phi-wm-acteffect.md) — ActEffect**（报告 *Phi-WM 1.0 ActEffect: From Predictive Foresight to Consequence Feedback in Robot L `📅unknown` `[entity_page]`
 - [PhyFilter：用物理滤波换数据规模](wiki/entities/paper-phyfilter.md) — PhyFilter**（*Physics Filtering Favors the Generalization of Robot Learning*，[arXiv:2608.22701](htt `📅unknown` `[entity_page]`
 - [PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）](wiki/entities/paper-phygile.md) — PhyGile** 是西北工业大学、上海 AI Lab、中科大、清华、复旦、字节与东北大学等团队的 **文本驱动人形敏捷全身控制** 工作（arXiv:2603.19305）：在 **262 维机 `📅unknown` `[entity_page]`
 - [PhysCaP：物理信息探索的 Code-as-Policy](wiki/entities/paper-physcap.md) — PhysCaP: Grounding Code-as-Policy Agent with Physics-Informed Exploration**（[arXiv:2608.21031](htt `📅unknown` `[entity_page]`

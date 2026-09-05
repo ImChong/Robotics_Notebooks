@@ -4,6 +4,10 @@ tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
 updated: 2026-09-05
 related:
+  - ../entities/paper-lejepa.md
+  - ../entities/paper-lewm.md
+  - ../entities/paper-lpwm.md
+  - ../entities/paper-phi-wm-acteffect.md
   - ../entities/paper-vgi-white-paper.md
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-odeworld.md
@@ -309,7 +313,11 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 生成式世界模型是五层选型闭环 **⑤ 世界模型推演层** 的 **级联预演** 范式（VLA 出候选 → WM 逐帧推演择优 → 真机执行），与 WAM 的「联合建模」范式并列，注意推演步长↑累积误差↑
 - [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)
 - [WCM](../entities/paper-wcm-world-critic-model.md) — JEPA 隐空间预测路线：不生成像素，只用预测目标监督 critic 表征（靠 SIGReg 防坍塌）
+- [LeJEPA](../entities/paper-lejepa.md) — SIGReg 图像配方；后续规划/视频 JEPA 的防坍塌起点
+- [LeWM](../entities/paper-lewm.md) — 像素端到端动作条件 JEPA，规划至 48× 快于 DINO-WM
+- [LpWM](../entities/paper-lpwm.md) — 稀疏非负码；PushT 中等预测器相对稠密 LeWM 最高 +57 pp
 - [LeVJEPA](../entities/paper-levjepa.md) — 把 LeJEPA+SIGReg 接到视频编码器：不要 EMA teacher / predictor / 像素重建；因果表征免费，但本文不做规划 WM
+- [ActEffect](../entities/paper-phi-wm-acteffect.md) — 训练时后果反馈，部署卸 WM（光象技术报告；未开源）
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy

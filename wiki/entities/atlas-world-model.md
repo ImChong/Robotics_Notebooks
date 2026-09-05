@@ -11,9 +11,12 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ./gs-playground.md
+  - ./paper-phi-wm-acteffect.md
+  - ./paper-lpwm.md
 sources:
   - ../../sources/blogs/worldlabs_atlas_omni_world_model.md
   - ../../sources/sites/worldlabs-ai.md
+  - ../../sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md
 summary: "Atlas 是 World Labs 2026 年发布的 omni 世界模型：多模态自回归扩散 Transformer，以 3D spatial context 统一相机可控生成、稀疏视角重建、时空仿真与文生图；将驱动 Marble 等产品，截至入库日为合作伙伴早期访问、未公开权重。"
 ---
 
@@ -35,7 +38,7 @@ summary: "Atlas 是 World Labs 2026 年发布的 omni 世界模型：多模态�
 
 ## 为什么重要
 
-- **「世界模型」的 3D omni 样本**：与仓库内大量 **像素视频 rollout** 或 **状态动力学 RWM** 不同，Atlas 把 **相机几何、深度图与 splat 点云** 放进同一序列生成框架，是观察 **空间智能 + 生成式重建/仿真合一** 的产业参照。
+- **「世界模型」的 3D omni 样本**：与仓库内大量 **像素视频 rollout** 或 **状态动力学 RWM** 不同，Atlas 把 **相机几何、深度图与 splat 点云** 放进同一序列生成框架，是观察 **空间智能 + 生成式重建/仿真合一** 的产业参照。腾讯科技 2026-09-05 访谈把它与 [LpWM](./paper-lpwm.md) / [ActEffect](./paper-phi-wm-acteffect.md) 并列，说明同一词下产品、稀疏 JEPA 与训练反馈器并不互替。
 - **机器人 Real-to-Sim 叙事**：博客展示用手机短视频重建大场景，再沿规划路径生成 **机载 RGB+depth**；与 [Video-as-Simulation](../concepts/video-as-simulation.md) 共享「用生成模型补观测」动机，但强调 **显式 3D 与传感器一致 rollout**。
 - **与 Marble / Spark 产品链闭合**：重建输出为 **3D Gaussian splats**，与 [Spark](./spark-3dgs-renderer.md) 渲染栈及 Marble 资产格式对齐；Atlas 定位为 **未来 Marble 等产品的模型底座**（早期访问阶段）。
 
