@@ -3,9 +3,10 @@
 type: entity
 tags: [industry, world-models, 3dgs, generative-ai, spatial-intelligence, web, simulation-adjacent, nvidia]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 related:
   - ../methods/generative-world-models.md
+  - ./marble-world-model.md
   - ./atlas-world-model.md
   - ./spark-3dgs-renderer.md
   - ./aholo-viewer.md
@@ -15,9 +16,11 @@ related:
   - ../comparisons/spark-vs-aholo-web-3dgs-renderers.md
 sources:
   - ../../sources/sites/worldlabs-ai.md
+  - ../../sources/sites/worldlabs-docs.md
+  - ../../sources/blogs/worldlabs_marble_world_model.md
   - ../../sources/blogs/worldlabs_atlas_omni_world_model.md
   - ../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md
-summary: "World Labs 是公开以「空间智能」与三维世界模型为主线的公司与产品团队：2026 年发布 omni 世界模型 Atlas（将驱动 Marble 等产品），浏览器产品 Marble 从多模态输入生成可编辑 3D 世界，并开源 Spark（Web 端 3DGS 渲染栈）。"
+summary: "World Labs 是公开以「空间智能」与三维世界模型为主线的公司与产品团队：首款产品 Marble（2025-11 GA，文档+World API）从多模态输入生成可导出 3D 世界；2026 年发布 omni 底座 Atlas（早期访问）；并开源 Spark（Web 端 3DGS 渲染栈）。"
 ---
 
 # World Labs（空间智能与世界生成）
@@ -32,20 +35,23 @@ summary: "World Labs 是公开以「空间智能」与三维世界模型为主�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| API | Application Programming Interface | 应用程序编程接口 |
+| Marble | Marble world model | 首款产品：多模态生成持久 3D 世界（SaaS + API） |
+| Atlas | Atlas omni world model | 2026-09 公开的多模态自回归扩散底座（早期访问） |
+| Spark | Spark 3DGS renderer | 开源 Web 3DGS 栈；Marble 站点与导出推荐运行时 |
+| 3DGS | 3D Gaussian Splatting | Marble / Atlas 的高保真场景表征 |
+| API | Application Programming Interface | World API（platform.worldlabs.ai）付费生成 |
 
 ## 为什么重要
 
 - **概念对齐样本**：「世界模型」一词在产业与论文中跨度极大；World Labs 的公开叙事可作为 **3D 世界生成 / 空间智能** 分支的对照轴，避免与 **EWM 视频基准**（如 [EWMBench](./ewmbench.md)）或 **World Action Models** 混为一谈。
 - **3DGS 工程参考**：Spark 2.0 公开阐述了 **LoD splat 树、渐进流式、.RAD 随机访问与显存分页** 等系统细节（已消化至 [spark-3dgs-renderer.md](./spark-3dgs-renderer.md)）；同赛道可对照 [Aholo Viewer](./aholo-viewer.md) 与 [选型对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)。
-- **产品化闭环**：Marble + Marble Labs 把 **生成—编辑—导出** 串成创作者工作流，便于观察「世界模型」在 **内容生产管线** 而非 **控制回路** 中的落地形态。
+- **产品化闭环**：[Marble](./marble-world-model.md) + Marble Labs + **World API** 把 **生成—编辑—导出** 串成创作者工作流（文档给出模型档位、积分与 SPZ/collider/HQ mesh 门禁），便于观察「世界模型」在 **内容生产管线** 而非 **控制回路** 中的落地形态。
 
 ## 产品与开源组件（归纳）
 
 | 名称 | 类型 | 说明 |
 |------|------|------|
-| **Marble** | 浏览器产品 | 从文本、图像、视频或 360° 全景生成 **空间一致、高保真、可持久化** 的 3D 世界；支持布局控制、元素级编辑、世界扩展与多格式导出（官方营销页表述） |
+| **Marble** | 浏览器产品 + World API | 2025-11-12 GA。文/图/多图/视频/Chisel → 可编辑世界；导出 SPZ/PLY、collider、HQ mesh。能力与门禁见 [Marble 实体页](./marble-world-model.md) 与 [docs.worldlabs.ai](https://docs.worldlabs.ai/) |
 | **Marble Labs** | 教程与案例站 | Showcase、生产向案例与文档/教程入口 |
 | **Atlas** | omni 世界模型 | **多模态自回归扩散 Transformer**；统一相机可控生成、稀疏 3D 重建、时空仿真与 Real-to-Sim 机器人传感器 rollout；**早期访问**，详见 [Atlas 实体页](./atlas-world-model.md) |
 | **Spark** | 开源 3DGS 渲染器 | 基于 **THREE.js** 与 **WebGL2**；2.0 的 LoD splat 树、**.RAD** 流式与 splat 分页见 [Spark 实体页](./spark-3dgs-renderer.md) 与 [Spark 2.0 博客归档](../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md) |
@@ -63,6 +69,7 @@ summary: "World Labs 是公开以「空间智能」与三维世界模型为主�
 ## 关联页面
 
 - [生成式世界模型（Generative World Models）](../methods/generative-world-models.md)
+- [Marble（多模态世界模型产品）](./marble-world-model.md)
 - [Atlas（omni 世界模型）](./atlas-world-model.md)
 - [Spark（Web 3DGS 渲染器）](./spark-3dgs-renderer.md)
 - [Aholo Viewer](./aholo-viewer.md)
@@ -74,12 +81,16 @@ summary: "World Labs 是公开以「空间智能」与三维世界模型为主�
 ## 参考来源
 
 - [World Labs 官方站点与关联链接归档](../../sources/sites/worldlabs-ai.md)
+- [Marble 文档归档](../../sources/sites/worldlabs-docs.md)
+- [Marble GA 博客归档](../../sources/blogs/worldlabs_marble_world_model.md)
 - [Atlas 技术博客归档](../../sources/blogs/worldlabs_atlas_omni_world_model.md)
 - [Spark 2.0 技术博客归档](../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md)
 
 ## 推荐继续阅读
 
 - [World Labs 首页](https://www.worldlabs.ai/)
+- [Marble 文档](https://docs.worldlabs.ai/)
+- [Marble: A Multimodal World Model](https://www.worldlabs.ai/blog/marble-world-model)
 - [Atlas: A World Model for Spatial Intelligence](https://www.worldlabs.ai/blog/atlas)
 - [Streaming 3DGS worlds on the web（Spark 2.0 技术稿）](https://www.worldlabs.ai/blog/spark-2.0)
 - [Spark 文档与示例](https://sparkjs.dev/)

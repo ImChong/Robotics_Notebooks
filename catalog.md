@@ -316,6 +316,7 @@
 - [MambaIR](wiki/entities/mambair.md) — MambaIR 把 Mamba/SSM 用于图像恢复（去噪、超分等），利用长程建模改善伪影与全局一致性。 `📅unknown` `[entity_page]`
 - [Manim（程序化数学动画引擎）](wiki/entities/manim.md) — Manim** 是一套用 **Python 代码精确描述动画时间线** 的开源引擎，最初由 **Grant Sanderson（3Blue1Brown）** 为教育数学视频而编写。当前存在两个  `📅unknown` `[entity_page]`
 - [ManiSkill2](wiki/entities/maniskill2.md) — ManiSkill2** 是 2023 年发布的 **通用可泛化操作技能（Generalizable Manipulation Skills）统一基准**，构建于 [SAPIEN](./sapie `📅unknown` `[entity_page]`
+- [Marble（World Labs 多模态世界模型）](wiki/entities/marble-world-model.md) — Marble** 是 World Labs 的首款产品：用多模态世界模型从文本、图像、视频或粗 3D 布局生成 **可编辑、可扩展、可组合** 的持久 3D  `📅unknown` `[entity_page]`
 - [矩池云（Matpool）](wiki/entities/matpool.md) — 矩池云**（matpool.com）是专注人工智能领域的 **GPU 云服务商**，以算力市场租用主机为核心，并提供专有云、私有云与高校 A `📅unknown` `[entity_page]`
 - [MATRiX（智身科技联合仿真平台）](wiki/entities/matrix-simulation-platform.md) — MATRiX** 是 智身科技 / GENISOM AI 开源的机器人 **联合仿真与训练平台**：将 **MuJoCo 高精度（可微）物 `📅unknown` `[entity_page]`
 - [Matterport3D Simulator](wiki/entities/matterport3d-simulator.md) — Matterport3D Simulator** 是 2018 年随 **Room-to-Room (R2R)** 基准发布的 **视觉–语言导航（VLN）仿真环境**，直接利用 Matterpo `📅unknown` `[entity_page]`

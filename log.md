@@ -1,3 +1,13 @@
+## [2026-09-05] ingest | sources/blogs/worldlabs_marble_world_model.md — Marble GA + docs/API；部分开源（Spark/示例，模型闭源）；关键页 marble-world-model
+
+- **触发：** 用户指定 <https://docs.worldlabs.ai/>、<https://marble.worldlabs.ai/>、<https://www.worldlabs.ai/blog/marble-world-model>，并要求自动合并 PR
+- **复用：** 已有 [world-labs](wiki/entities/world-labs.md)、[Atlas](wiki/entities/atlas-world-model.md)、[Spark](wiki/entities/spark-3dgs-renderer.md)。**另建** [marble-world-model](wiki/entities/marble-world-model.md)，不把文档塞进公司页。
+- **步骤 2.5：** 产品站/博客无权重 GitHub。→ **部分开源**：生成模型闭源 SaaS+World API；Spark 与 Interactive World Examples 开源。
+- **关键判断：** Marble 是外观/漫游资产源；collider ≠ sim-ready。对照 Instant NuRec / NuRec（忠实重建）与 SimFoundry（操作孪生）。
+- **新建：** `marble-world-model`；归档 `worldlabs_marble_world_model.md`、`worldlabs-docs.md`、`marble-worldlabs-ai.md`
+- **交叉：** World Labs / Atlas / Spark / 生成式世界模型 / GS-Playground / NuRec
+
+
 ## [2026-09-05] ingest | sources/papers/instant_nurec_arxiv_2607_14203.md — Instant NuRec 前向 3DGS；部分开源静态 CLI；关键页 paper-instant-nurec / nvidia-nurec
 
 - **触发：** 用户指定 <https://docs.nvidia.com/nurec/>、<https://github.com/NVIDIA/instant-nurec>、<https://research.nvidia.com/labs/sil/projects/instant-nurec/>、<https://arxiv.org/abs/2607.14203>，并要求自动合并 PR

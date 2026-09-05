@@ -132,6 +132,7 @@ NuRec 渲染嵌在 Omniverse Kit。Isaac Sim 加载兼容 USDZ 后，用 **`Omni
 - [Flexion × Niantic × NVIDIA RGB 管线](./flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 现场 3DGS+mesh → NuRec USDZ → 纯 RGB 导航
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 操作场景视频孪生（mesh+cousins），不是驾驶日志体积
 - [GS-Playground](./gs-playground.md) — 仿真侧批量 3DGS 渲染吞吐，不是日志重建产品
+- [Marble](./marble-world-model.md) — 生成式 3D 世界（发明未观测区）；本页是传感器日志重建
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 
