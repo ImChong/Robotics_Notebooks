@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, tooling, computer-vision, object-detection, yolo, real-time, perception, robotics, ultralytics]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-05
 code: https://github.com/ultralytics/ultralytics
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -14,6 +14,7 @@ related:
   - ../tasks/humanoid-soccer.md
   - ../methods/soccer-field-line-detection.md
   - ./roboflow-sports.md
+  - ./tennis-vision.md
   - ./dualmap.md
 sources:
   - ../../sources/repos/ultralytics.md
@@ -173,6 +174,7 @@ sequenceDiagram
 - [Booster RoboCup Demo](./booster-robocup-demo.md) — YOLOv8 真机范例
 - [人形足球](../tasks/humanoid-soccer.md) / [场地线检测](../methods/soccer-field-line-detection.md)
 - [Roboflow Sports](./roboflow-sports.md) — YOLOv8 足球广播分析 demo（本仓 AGPL 权重叠 MIT 分析代码）
+- [Tennis-Vision](./tennis-vision.md) — YOLOv8x + ByteTrack 检人；测过更大 YOLO 无收益，瓶颈在选哪两个是球员
 - [DualMap](./dualmap.md) — 开放词汇语义建图中的检测/分割前端
 
 ## 参考来源

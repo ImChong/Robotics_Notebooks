@@ -355,6 +355,7 @@
 - [MuJoCo Warp（MJWarp）](wiki/entities/mujoco-warp.md) — MuJoCo Warp**（常写作 **MJWarp**）是 Google DeepMind 与 NVIDIA **作为 Newton 的一部分**  `📅unknown` `[entity_page]`
 - [MuJoCo WASM（浏览器物理仿真）](wiki/entities/mujoco-wasm.md) — MuJoCo WASM** 是把 MuJoCo C 核心编译为 **WebAssembly**、并通过 **JavaScript/TypeScript** 暴露 `M `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](wiki/entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
+- [Multi-Agent CAD（MAC）](wiki/entities/multi-agent-cad.md) — MAC**（Pan-Chera/Multi-Agent-CAD）是清华 [IEI Lab](http `📅unknown` `[entity_page]`
 - [MuSHR](wiki/entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
@@ -2636,6 +2637,7 @@
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
 - [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](wiki/entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，AGIBOT Finch 研究页， `📅unknown` `[entity_page]`
+- [Tennis-Vision](wiki/entities/tennis-vision.md) — Tennis-Vision**（HarshTomar1234/Tennis-Vision）是一 `📅unknown` `[entity_page]`
 - [TensorBoard](wiki/entities/tensorboard.md) — TensorBoard**（tensorflow/tensorboard）是一套 **Web 端实验检查工 `📅unknown` `[entity_page]`
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`

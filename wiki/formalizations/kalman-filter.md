@@ -8,13 +8,14 @@ related:
   - ../concepts/state-estimation.md
   - ../concepts/sensor-fusion.md
   - ./lqr.md
+  - ../entities/tennis-vision.md
 sources:
   - ../../sources/repos/python_robotics.md
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/courses/welch_bishop_kalman_filter.md
   - ../../sources/courses/mit_underactuated_kalman_lqr.md
 summary: "线性卡尔曼滤波（KF）：线性高斯系统下的最优递推状态估计"
-updated: 2026-08-09
+updated: 2026-09-05
 ---
 
 # Kalman Filter (KF)
@@ -111,6 +112,7 @@ flowchart LR
 - [LQR / iLQR](./lqr.md) — LQG 对偶与 Riccati 结构
 - [Sensor Fusion](../concepts/sensor-fusion.md) — 多传感器融合实践
 - [PythonRobotics](../entities/python-robotics.md) — EKF 定位可运行示例与动画
+- [Tennis-Vision](../entities/tennis-vision.md) — TrackNet 重尾误差上 RTS / χ² 门的实测负结果；跨击球勿恒速平滑
 
 ## 参考来源
 
