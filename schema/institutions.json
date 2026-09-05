@@ -3324,6 +3324,13 @@
         "zust",
         "zhejiang-university-of-science-and-technology"
       ]
+    },
+    "kesai": {
+      "label": "可扩展自主智能（KE:SAI）",
+      "aliases": [
+        "kesai",
+        "ke-sai"
+      ]
     }
   }
 }

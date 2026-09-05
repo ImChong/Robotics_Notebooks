@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-05
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -15,6 +15,7 @@ sources:
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
   - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
+  - ../../sources/papers/pointdit_arxiv_2607_02515.md
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ../concepts/2d-to-3d-semantic-lifting-gap.md
@@ -37,6 +38,7 @@ related:
   - ../entities/paper-language-to-navigation-goals-rgbd.md
   - ../entities/robo-orchard-lab.md
   - ../entities/paper-partialbigrasp.md
+  - ../entities/paper-pointdit.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -56,7 +58,7 @@ related:
 
 | 层 | 选什么 | 代表性工具/方案 | 核心取舍 | 这一层最容易骗人的地方 |
 |----|--------|----------------|----------|------------------------|
-| ① 传感与标定 | RGB / RGB-D / LiDAR 输入模态、内外参标定、深度精度 vs 成本 | 单目 / 双目 / 结构光 / ToF / LiDAR + 标定流程 | 深度精度 vs 成本/功耗；模态互补 vs 标定/同步复杂度 | 有深度图 ≠ 深度在远处/反光/低纹理处可信 |
+| ① 传感与标定 | RGB / RGB-D / LiDAR 输入模态、内外参标定、深度精度 vs 成本 | 单目 / 双目 / 结构光 / ToF / LiDAR + 标定流程；只有 RGB 时可用 [PointDiT](../entities/paper-pointdit.md) 出仿射点图 | 深度精度 vs 成本/功耗；模态互补 vs 标定/同步复杂度；单目点图省传感器但不是 metric | 有深度图 ≠ 深度在远处/反光/低纹理处可信；点图 Rel 低 ≠ 毫米尺度已对齐 |
 | ② 2D 检测/分割选型 | 单阶段 vs 两阶段 vs DETR、闭集 vs 开放词汇、机载 vs 服务器侧 | [YOLO/Ultralytics](../entities/ultralytics.md)、[RF-DETR](../entities/rf-detr.md)、[SAM/SAM2](../entities/paper-segment-anything.md) | 实时机载算力 vs 服务器侧精度；闭集准 vs 开放词汇泛 | mAP 高 ≠ 机载帧率够；SAM 掩码强 ≠ 有类别语义 |
 | ③ 2D→3D 提升与语义建图 | 深度融合、点云语义、在线 vs 离线、稠密 vs 稀疏 | [FindAnything](../entities/findanything.md)、[OV-SAM3D](../entities/ov-sam3d.md)、[CMU MSCV Semantic 3D](../entities/cmu-mscv-semantic-3d-mapping.md) | 2D 框够用 vs 必须 3D 语义几何；稠密信息全 vs 内存/时延 | 2D 检测准 ≠ 提升到 3D 后尺度/遮挡不歧义 |
 | ④ 下游策略消费 | 坐标后处理、感知-控制频率对齐、感知输出接口 | [坐标后处理](../concepts/perception-coordinate-postprocessing.md) + 导航/操作/WBC 消费 | 感知延迟 vs 控制带宽；富语义 vs 策略实际用得上 | 感知 30fps ≠ 控制闭环能吃 30Hz 新信息 |
@@ -181,6 +183,7 @@ flowchart TD
 - [ov-sam3d.md](../../sources/repos/ov-sam3d.md) — ③层开放词汇 3D 分割一手资料
 - [occanyscene_arxiv_2608_08696.md](../../sources/papers/occanyscene_arxiv_2608_08696.md) — ③层跨室内外语义占据 lifting
 - [lego_leveled_language_gs_arxiv_2608_10057.md](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md) — ③层离线 3DGS 多粒度开放词汇（结构层级 vs SAM 粒度）
+- [pointdit_arxiv_2607_02515.md](../../sources/papers/pointdit_arxiv_2607_02515.md) — ①/③层 RGB-only 仿射点图（像素空间扩散）
 
 ## 关联页面
 
@@ -206,3 +209,4 @@ flowchart TD
 - [Language-to-Navigation-Goals](../entities/paper-language-to-navigation-goals-rgbd.md) — ③/④层最小实现：远程 VLM bbox + RGB-D 深度邻域最小值反投影 → 地图系目标直供 Nav2，不建持久语义地图也不学导航策略（代码待论文接收后开源）
 - [RoboOrchardLab](../entities/robo-orchard-lab.md) — 训练框架入口：`projects/bip3d_grounding` 落 ③层 2D→3D grounding、`finegrasp` 落 ④层下游消费；提供的是统一训练/Model Zoo 管线，选哪个感知模型仍看本页（Apache-2.0）
 - [PartialBiGrasp](../entities/paper-partialbigrasp.md) — ③层反例读法：大/复杂物体单视角只有局部点云时，不重建完整 mesh，只用占据网络补出力闭合判据需要的接触区几何再交 ④层抓取消费（架构仓部分开源，权重 TODO）
+- [PointDiT](../entities/paper-pointdit.md) — ①/③层 RGB-only 点图：像素空间扩散、单步可用；仿射不变，室外弱于 MoGe（已开源）
