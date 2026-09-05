@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3486,
-  "edge_count": 31983,
+  "node_count": 3487,
+  "edge_count": 31996,
   "coverage": {
-    "covered": 3459,
-    "total": 3459,
+    "covered": 3460,
+    "total": 3460,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -232,7 +232,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 711
+      "size": 710
     },
     {
       "label": "操作",
@@ -299,7 +299,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 574,
+      "degree": 575,
       "has_repo": true
     },
     {
@@ -314,7 +314,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 529,
+      "degree": 530,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

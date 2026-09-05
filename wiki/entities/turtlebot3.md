@@ -2,7 +2,7 @@
 type: entity
 tags: [mobile-robot, education, ros, robotis, turtlebot]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 related:
   - ./robotis.md
   - ./dynamixel-sdk.md

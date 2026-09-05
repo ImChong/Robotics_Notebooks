@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotis, ros, full-size]
 status: complete
-updated: 2026-05-18
+updated: 2026-09-05
 related:
   - ./humanoid-robot.md
   - ../overview/robot-open-source-wechat-issue01-curator.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, mujoco, simulation, assets, physical-ai, open-source]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 summary: "ROBOTIS robotis_mujoco_menagerie：官方 MuJoCo 模型集，含 AI Worker（FFW）、OMY/OMX、OpenMANIPULATOR-X、OP3、TurtleBot3 等，供仿真与 LeRobot 教程。"
 related:
   - ./robotis.md

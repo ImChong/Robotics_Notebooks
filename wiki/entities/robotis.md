@@ -2,12 +2,13 @@
 type: entity
 tags: [robotis, hardware, dynamixel, physical-ai, ros2, open-source, cyclo, humanoid, manipulator]
 status: complete
-updated: 2026-08-07
-summary: "乐百机器人（ROBOTIS）官方开源组织 ROBOTIS-GIT：Dynamixel 执行器、TurtleBot3/OP3 教育平台、OpenMANIPULATOR，以及 Cyclo Physical AI 栈（AI Worker / AI Sapiens、cyclo_lab、physical_ai_tools、cyclo_intelligence）。"
+updated: 2026-09-05
+summary: "乐百机器人（ROBOTIS）官方开源组织 ROBOTIS-GIT（154 仓）：Dynamixel、TurtleBot3/OP3、Cyclo Physical AI（Isaac cyclo_lab + mjlab cyclo_mjlab、physical_ai_tools、cyclo_intelligence）与 Zenoh×LeRobot 桥接。"
 related:
   - ./robotis-ai-worker.md
   - ./robotis-ai-sapiens.md
   - ./cyclo-lab.md
+  - ./robotis-cyclo-mjlab.md
   - ./robotis-physical-ai-tools.md
   - ./cyclo-intelligence.md
   - ./dynamixel-sdk.md
@@ -25,15 +26,17 @@ related:
 sources:
   - ../../sources/repos/robotis-git.md
   - ../../sources/repos/cyclo.md
+  - ../../sources/repos/cyclo_mjlab.md
+  - ../../sources/repos/zenoh_ros2_sdk.md
 ---
 
 # ROBOTIS（乐百机器人）
 
-**ROBOTIS（乐百机器人）** 是韩国机器人硬件与开源软件厂商，以 **DYNAMIXEL** 舵机协议栈和 ROS 教育平台闻名；近年将产品线扩展到 **Physical AI**（AI Worker / AI Sapiens / OpenMANIPULATOR-Y）与 **Cyclo** 模块化开源框架。官方 GitHub 组织：[ROBOTIS-GIT](https://github.com/ROBOTIS-GIT)（约 152 公开仓，2026-08）。
+**ROBOTIS（乐百机器人）** 是韩国机器人硬件与开源软件厂商，以 **DYNAMIXEL** 舵机协议栈和 ROS 教育平台闻名；近年将产品线扩展到 **Physical AI**（AI Worker / AI Sapiens / OpenMANIPULATOR-Y）与 **Cyclo** 模块化开源框架。官方 GitHub 组织：[ROBOTIS-GIT](https://github.com/ROBOTIS-GIT)（**154** 公开仓 · ~1182 followers，2026-09）。
 
 ## 一句话定义
 
-从 **Dynamixel 执行器 SDK** 到 **TurtleBot3 / OpenMANIPULATOR 教育生态**，再到 **Cyclo（Lab + Control + Intelligence + Tools）** 上的半人形/人形 Physical AI 真机栈——ROBOTIS 提供一条可买硬件、可跑 ROS 2、可接 LeRobot / Isaac Lab 的厂商开源主线。
+从 **Dynamixel 执行器 SDK** 到 **TurtleBot3 / OpenMANIPULATOR 教育生态**，再到 **Cyclo（Isaac Lab + mjlab 双仿真线、Control、Intelligence、Tools、Zenoh×LeRobot）** 上的半人形/人形 Physical AI 真机栈——ROBOTIS 提供一条可买硬件、可跑 ROS 2、可接 LeRobot / Isaac Lab / mjlab 的厂商开源主线。
 
 ## 英文缩写速查
 
@@ -64,7 +67,9 @@ flowchart TB
   EDU[TurtleBot3 / OP3 / OpenMANIPULATOR]
   PAI[Physical AI 硬件<br/>AI Worker / AI Sapiens / Hand]
   LAB[cyclo_lab<br/>Isaac Lab RL/IL]
+  MJLAB[cyclo_mjlab<br/>K1 · mjlab RL/Mimic]
   TOOLS[physical_ai_tools<br/>LeRobot + ROS 2]
+  ZENOH[zenoh_ros2_sdk<br/>LeRobot w/o ROS install]
   INTEL[cyclo_intelligence<br/>BT + VLA 全栈]
   CTRL[cyclo_control<br/>运动控制]
   MJ[robotis_mujoco_menagerie]
@@ -74,9 +79,12 @@ flowchart TB
   PAI --> INTEL
   PAI --> CTRL
   LAB --> PAI
+  MJLAB --> PAI
   MJ --> LAB
+  MJ --> MJLAB
   MJ --> TOOLS
   TOOLS --> INTEL
+  TOOLS --> ZENOH
 ```
 
 ### 1. 经典开源平台（已有实体）
@@ -94,8 +102,10 @@ flowchart TB
 | 框架索引 | [cyclo](https://github.com/ROBOTIS-GIT/cyclo) | 本节（不单独 stub） |
 | 硬件：AI Worker | [ai_worker](https://github.com/ROBOTIS-GIT/ai_worker) | [robotis-ai-worker.md](./robotis-ai-worker.md) |
 | 硬件：AI Sapiens | [ai_sapiens](https://github.com/ROBOTIS-GIT/ai_sapiens) | [robotis-ai-sapiens.md](./robotis-ai-sapiens.md) |
-| Lab（仿真 RL/IL） | [cyclo_lab](https://github.com/ROBOTIS-GIT/cyclo_lab) | [cyclo-lab.md](./cyclo-lab.md) |
+| Lab（Isaac RL/IL） | [cyclo_lab](https://github.com/ROBOTIS-GIT/cyclo_lab) | [cyclo-lab.md](./cyclo-lab.md) |
+| Lab（K1 / mjlab） | [cyclo_mjlab](https://github.com/ROBOTIS-GIT/cyclo_mjlab) | [robotis-cyclo-mjlab.md](./robotis-cyclo-mjlab.md) |
 | Tools（LeRobot 界面） | [physical_ai_tools](https://github.com/ROBOTIS-GIT/physical_ai_tools) | [robotis-physical-ai-tools.md](./robotis-physical-ai-tools.md) |
+| LeRobot × Zenoh（α） | [zenoh_ros2_sdk](https://github.com/ROBOTIS-GIT/zenoh_ros2_sdk) + [lerobot_robot_ros2_zenoh](https://github.com/ROBOTIS-GIT/lerobot_robot_ros2_zenoh) | 本节 + [lerobot.md](./lerobot.md) |
 | Intelligence（BT+VLA） | [cyclo_intelligence](https://github.com/ROBOTIS-GIT/cyclo_intelligence) | [cyclo-intelligence.md](./cyclo-intelligence.md) |
 | MuJoCo 资产 | [robotis_mujoco_menagerie](https://github.com/ROBOTIS-GIT/robotis_mujoco_menagerie) | [robotis-mujoco-menagerie.md](./robotis-mujoco-menagerie.md) |
 | 执行器 SDK | [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) | [dynamixel-sdk.md](./dynamixel-sdk.md) |
@@ -105,7 +115,7 @@ flowchart TB
 ## 工程实践
 
 1. **先定产品线**：教学轮式 → TurtleBot3 eManual；桌面臂 → OpenMANIPULATOR / OMY；半人形操作 → AI Worker + [ai.robotis.com](https://ai.robotis.com/)；人形 K1 → AI Sapiens docs。
-2. **学习栈**：仿真资产用 [MuJoCo menagerie](./robotis-mujoco-menagerie.md)；Isaac Lab 任务用 [cyclo_lab](./cyclo-lab.md)；真机 LeRobot 流程用 [physical_ai_tools](./robotis-physical-ai-tools.md)；长程 BT+VLA 部署看 [cyclo_intelligence](./cyclo-intelligence.md)。
+2. **学习栈**：仿真资产用 [MuJoCo menagerie](./robotis-mujoco-menagerie.md)；**K1 全身**用 [cyclo_mjlab](./robotis-cyclo-mjlab.md) 或 **臂/Worker** 用 [cyclo_lab](./cyclo-lab.md)；真机 LeRobot 流程用 [physical_ai_tools](./robotis-physical-ai-tools.md)（或 Zenoh 路径 `lerobot_robot_ros2_zenoh`）；长程 BT+VLA 部署看 [cyclo_intelligence](./cyclo-intelligence.md)。
 3. **Docker**：官方镜像多在 `robotis/ros`、`robotis/cyclo-intelligence` 等；Jetson ARM64 与 AMD64 常共用 `container.sh`。
 4. **数据与权重**：[Hugging Face/ROBOTIS](https://huggingface.co/ROBOTIS)。
 5. **厂商 Lab 对照**：与 [unitree_rl_lab](./unitree-rl-lab.md)、[Deep Robotics rl_training](./deeprobotics-rl-training.md)、社区 [robot_lab](./robot-lab.md) 并列选型时，`cyclo_lab` 是 ROBOTIS 官方入口。
@@ -115,12 +125,12 @@ flowchart TB
 - **开源状态：主线仓已开源**；Cyclo README 标明 **Supervisor / Hub 等私有栈**不在公开组织——勿假设「全栈皆 Apache」。
 - **型号与包名分叉**：FFW 子型号（SH5/SG2/BG2）、OMY/OMX、K1 rev 配置以当前 docs 为准，旧 eManual 页面可能滞后。
 - **Isaac Lab 版本钉死**：`cyclo_lab` 徽章绑定 Sim/Lab 版本，与其它厂商 Lab 环境不互通。
-- **组织仓体量大**：152+ 仓含大量 ROS1 时代与 fork；选型以本 hub「已升格节点」与 Cyclo 模块表为准，避免陷入冷门归档仓。
+- **组织仓体量大**：154 仓含大量 ROS1 时代与 fork；选型以本 hub「已升格节点」与 Cyclo 模块表为准，避免陷入冷门归档仓。
 
 ## 关联页面
 
 - [AI Worker](./robotis-ai-worker.md) · [AI Sapiens](./robotis-ai-sapiens.md)
-- [cyclo_lab](./cyclo-lab.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
+- [cyclo_lab](./cyclo-lab.md) · [cyclo_mjlab](./robotis-cyclo-mjlab.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
 - [Dynamixel SDK](./dynamixel-sdk.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)
 - [TurtleBot3](./turtlebot3.md) · [OpenMANIPULATOR 线](./robotis-open-manipulator-line.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)

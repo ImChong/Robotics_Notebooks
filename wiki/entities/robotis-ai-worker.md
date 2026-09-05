@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, ai-worker, physical-ai, ros2, humanoid, ffw, teleoperation, open-source]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 summary: "ROBOTIS AI Worker（FFW）官方 ROS 2 包 ai_worker：描述、bringup、导航、遥操作与 Docker；对接 Physical AI Tools / cyclo_lab / MuJoCo 资产。"
 related:
   - ./robotis.md

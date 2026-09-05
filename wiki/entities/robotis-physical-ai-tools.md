@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, physical-ai, lerobot, ros2, behavior-tree, teleoperation, open-source]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 summary: "ROBOTIS physical_ai_tools：LeRobot + ROS 2 的 Physical AI 开发界面，含 physical_ai_server、physical_ai_bt 宏动作与 Docker；对接 AI Worker 与 cyclo_lab Sim2Real。"
 related:
   - ./robotis.md

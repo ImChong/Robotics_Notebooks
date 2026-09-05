@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotis, ros, education]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 related:
   - ./robotis.md
   - ./robotis-ai-sapiens.md

@@ -2,13 +2,14 @@
 type: entity
 tags: [robotis, cyclo, isaac-lab, reinforcement-learning, imitation-learning, sim2real, physical-ai, open-source]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 summary: "ROBOTIS cyclo_lab：基于 Isaac Lab 的官方 RL/IL 扩展，含 OMY 与 FFW-BG2 等任务、Isaac Lab Mimic 与 Sim2Real DDS；对齐 Isaac Sim 5.1 / Lab 2.3。"
 related:
   - ./robotis.md
   - ./robotis-ai-worker.md
   - ./robotis-physical-ai-tools.md
   - ./robotis-mujoco-menagerie.md
+  - ./robotis-cyclo-mjlab.md
   - ./isaac-lab.md
   - ./unitree-rl-lab.md
   - ./deeprobotics-rl-training.md
@@ -24,7 +25,7 @@ sources:
 
 # cyclo_lab
 
-**cyclo_lab** 是 [ROBOTIS](./robotis.md) 在 [Isaac Lab](./isaac-lab.md) 上的官方强化学习 / 模仿学习扩展（[`ROBOTIS-GIT/cyclo_lab`](https://github.com/ROBOTIS-GIT/cyclo_lab)，~136★，Apache-2.0）。定位与 [unitree_rl_lab](./unitree-rl-lab.md)、[Deep Robotics rl_training](./deeprobotics-rl-training.md)、[DDT_Lab](./ddt-lab.md) 同属 **厂商官方 Lab**，侧重 **操作臂 / AI Worker** 而非四足 locomotion。
+**cyclo_lab** 是 [ROBOTIS](./robotis.md) 在 [Isaac Lab](./isaac-lab.md) 上的官方强化学习 / 模仿学习扩展（[`ROBOTIS-GIT/cyclo_lab`](https://github.com/ROBOTIS-GIT/cyclo_lab)，~144★，Apache-2.0）。**K1 人形**若走 MuJoCo/mjlab 而非 Isaac，见姊妹仓 [cyclo_mjlab](./robotis-cyclo-mjlab.md)。定位与 [unitree_rl_lab](./unitree-rl-mjlab.md)、[Deep Robotics rl_training](./deeprobotics-rl-training.md)、[DDT_Lab](./ddt-lab.md) 同属 **厂商官方 Lab**，侧重 **操作臂 / AI Worker** 而非四足 locomotion。
 
 ## 一句话定义
 

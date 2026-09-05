@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, ai-sapiens, humanoid, ros2, physical-ai, open-source]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 summary: "ROBOTIS AI Sapiens K1 官方 ROS 2 包 ai_sapiens：描述、bringup、关节组阻抗控制器与 RC broadcaster；对接 Physical AI Tools 与运动重定向资产。"
 related:
   - ./robotis.md
