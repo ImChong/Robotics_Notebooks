@@ -70,7 +70,7 @@ flowchart LR
   Enc --> Z[z]
   Z --> Pred[AdaLN 预测器]
   A[动作 a] --> Pred
-  Pred --> Zhat[ẑ]
+  Pred --> Zhat["zhat"]
   Z --> SIG[SIGReg]
 ```
 

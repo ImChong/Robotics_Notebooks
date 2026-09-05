@@ -63,7 +63,7 @@ flowchart LR
   X[图像多视图] --> Enc[任意编码器]
   Enc --> Z[embedding]
   Z --> Pred[视图预测损失]
-  Z --> SIG[SIGReg → N(0,I)]
+  Z --> SIG["SIGReg to N(0,I)"]
 ```
 
 ## 源码运行时序图
@@ -76,7 +76,7 @@ sequenceDiagram
   participant SIG as lejepa.univariate.EppsPulley
   participant Slice as SlicingUnivariateTest
   Train->>Enc: 2 global + 6 local views
-  Enc->>Slice: embeddings [N, K]
+  Enc->>Slice: embeddings NxK
   Slice->>SIG: 随机 1D 投影（默认 1024 slices）
   SIG-->>Train: SIGReg
   Train->>Train: 预测损失 + λ SIGReg

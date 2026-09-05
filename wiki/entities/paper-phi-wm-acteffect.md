@@ -73,7 +73,7 @@ flowchart TB
   DINO[冻结 DINOv3 z] --> CWM[训练时受控 WM]
   MIP --> CWM
   CWM -->|反事实排序| MIP
-  MIP --> Deploy[部署: 只留 a1]
+  MIP --> Deploy["部署只留 a1"]
 ```
 
 ## 实验与评测

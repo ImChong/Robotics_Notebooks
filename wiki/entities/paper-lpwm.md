@@ -64,7 +64,7 @@ flowchart LR
   Enc --> Relu[RepReLU 稀疏 z]
   Relu --> Pred[预测器梯子]
   A[动作] --> Pred
-  Relu --> RDM[RDMReg → RGG]
+  Relu --> RDM["RDMReg to RGG"]
 ```
 
 ## 源码运行时序图
