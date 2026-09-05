@@ -1,7 +1,7 @@
 # 文字生成 CAD / 对话式 CAD 工具（原始资料索引）
 
 - **类型**：网站与在线产品（机械 CAD / AEC / API / 脚本栈 / 网格生成）汇编
-- **收录日期**：2026-05-13；**最近更新**：2026-07-27（补充 3D Gen Studio 本地 ComfyUI 网格编排工作台）
+- **收录日期**：2026-05-13；**最近更新**：2026-09-05（补充清华 IEI Lab MAC / Multi-Agent-CAD）
 - **说明**：以下为可检索的**公开入口**与一句话定位；**定价、导出格式列表、合规边界以各产品当前文档为准**，本文件不做采购或合规建议。
 
 ## 一句话
@@ -48,6 +48,12 @@
 - **安装（Skills CLI）**：`npx skills install earthtojake/text-to-cad`；亦支持 Codex / Claude Code 插件 marketplace（见仓库 README）。
 - **要点**：`skills/cad/SKILL.md` 规定 brief → `gen_step()` 源码 → STEP → inspect/snapshot → CAD Viewer handoff；URDF 等 skill 以 `gen_urdf()` 为真值；含 10 项机械 benchmark（`benchmarks/01`…`10`，重资产 Git LFS）。
 - **wiki**：[wiki/entities/cad-skills.md](../../wiki/entities/cad-skills.md)
+
+## 解耦多智能体 Text-to-CAD（MAC，Pan-Chera/Multi-Agent-CAD）
+
+- **GitHub**：<https://github.com/Pan-Chera/Multi-Agent-CAD> — 品牌 **MAC**；清华 IEI Lab；MIT；LangGraph 四段 + 确定性 build123d 翻译器 + Aider 修复。
+- **对照**：用 CAD Skills 的 10 条机械 prompt 当单 agent 基线；自报 116× 更少 token、99.3% 特征通过；**无** URDF/打印 skill 链。
+- **wiki**：[wiki/entities/multi-agent-cad.md](../../wiki/entities/multi-agent-cad.md)
 
 ## 参数化脚本 CAD（LLM 友好、机器人夹具常用）
 

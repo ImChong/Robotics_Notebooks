@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3471,
-  "edge_count": 31739,
+  "node_count": 3473,
+  "edge_count": 31771,
   "coverage": {
-    "covered": 3444,
-    "total": 3444,
+    "covered": 3446,
+    "total": 3446,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dexholdem.md",
+      "detail_id": "entity-paper-dexholdem",
+      "label": "DexHoldem：德州扑克桌面上的灵巧具身基准",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/tennis-vision.md",
       "detail_id": "entity-tennis-vision",
@@ -205,52 +215,42 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bridge-humanoid.md",
-      "detail_id": "entity-paper-bridge-humanoid",
-      "label": "BRIDGE：形态–控制共设计的开源人形平台",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tennis-vision.md",
-    "detail_id": "entity-tennis-vision",
-    "label": "Tennis-Vision",
+    "path": "wiki/entities/paper-dexholdem.md",
+    "detail_id": "entity-paper-dexholdem",
+    "label": "DexHoldem：德州扑克桌面上的灵巧具身基准",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 977
+      "size": 676
     },
     {
       "label": "操作",
-      "size": 617
+      "size": 606
     },
     {
       "label": "视觉-语言-动作",
-      "size": 261
+      "size": 277
     },
     {
       "label": "机器人学习论文笔记",
       "size": 226
     },
     {
-      "label": "移动操作",
-      "size": 77
+      "label": "仿真到现实",
+      "size": 147
     },
     {
-      "label": "强化学习",
-      "size": 68
+      "label": "计算机视觉中的 Transformer",
+      "size": 81
     }
   ],
   "top_hubs": [
@@ -275,7 +275,7 @@
       "label": "Locomotion",
       "type": "task",
       "degree": 905,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
@@ -320,7 +320,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 514,
+      "degree": 516,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -376,8 +376,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -404,7 +403,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 43
+      "degree": 43,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }

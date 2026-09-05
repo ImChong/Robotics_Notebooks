@@ -26,6 +26,7 @@
 - **实体页**：[`wiki/entities/cad-skills.md`](../../wiki/entities/cad-skills.md) — Agent Skills 形态的 **文字→CAD→机器人描述→制造/打印** 全链路参考实现。
 - **概念交叉**：[`wiki/concepts/text-to-cad.md`](../../wiki/concepts/text-to-cad.md) — 与 LLM+CadQuery/build123d 脚本路线、STEP 真值与 Sim2Real 几何一致性讨论互链。
 - **相邻实体**：[`wiki/entities/urdf-studio.md`](../../wiki/entities/urdf-studio.md)、[`wiki/entities/articraft.md`](../../wiki/entities/articraft.md)、[`wiki/entities/mattpocock-skills.md`](../../wiki/entities/mattpocock-skills.md)（通用编码 Agent Skills 对照）。
+- **多智能体对照**：[`wiki/entities/multi-agent-cad.md`](../../wiki/entities/multi-agent-cad.md) — 清华 MAC 用本仓 P1–P10 当基线。
 
 ## 备注（维护者）
 

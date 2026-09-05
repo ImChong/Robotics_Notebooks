@@ -3,9 +3,10 @@ type: entity
 tags: [cad, generative-ai, llm-agents, skills, build123d, urdf, robotics, hardware, manufacturing]
 status: complete
 date: 2026-06-15
-updated: 2026-07-28
+updated: 2026-09-05
 related:
   - ../concepts/text-to-cad.md
+  - ./multi-agent-cad.md
   - ../concepts/sim2real.md
   - ./urdf-studio.md
   - ./step2urdf.md
@@ -17,6 +18,7 @@ related:
   - ./sensenova-skills.md
 sources:
   - ../../sources/repos/earthtojake-text-to-cad.md
+  - ../../sources/repos/multi-agent-cad.md
 summary: "CAD Skills（earthtojake/text-to-cad）是把 CAD、URDF/SRDF/SDF、本地预览、标准件检索、DXF、切片与 3D 打印检查拆成可安装 Agent Skills 的开源库：STEP 优先的 build123d 源码真值 + 几何 inspect/snapshot 闭环，覆盖概念件到机器人描述与制造交接。"
 ---
 
@@ -84,6 +86,7 @@ flowchart TB
 - **相同抽象：** [文字生成 CAD](../concepts/text-to-cad.md) §「LLM + CadQuery/build123d」——**语言 → 结构化程序 → B-rep**。
 - **CAD Skills 的增量：** 把该抽象 **产品化为可安装 skills**（安装、handoff、基准、打印链），并 **强制 STEP 真值 + 校验/report 结构**，更接近机器人团队的 **可回归硬件草稿** 工作流，而非 API 黑盒。
 - **不同目标：** 不含 Zoo/Adam 等 **商业 CAD 宿主**；也不等同 [Articraft](./articraft.md) 的 **可关节 3D 资产 agent**（仿真就绪网格 + harness），或 [img2threejs](./img2threejs.md) 的 **图像→程序化 Three.js** skill（浏览器 WebGL prop）——CAD Skills 偏 **制造向 B-rep 与 URDF/MoveIt 描述**。
+- **与 [MAC](./multi-agent-cad.md)：** 后者用本库 **P1–P10** 当单 agent 基线，把 brief/方案收成 JSON、常见特征走确定性翻译器，自报 token 降两个数量级。MAC **不替代** 本页的 URDF/打印 skills；本页也不自带 LangGraph 四段状态机。
 
 ## 常见误区或局限
 
@@ -95,6 +98,7 @@ flowchart TB
 ## 关联页面
 
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 制造向 text-to-CAD 成熟度与工具谱系总览
+- [Multi-Agent CAD（MAC）](./multi-agent-cad.md) — 清华 IEI：同一基准上的解耦多智能体对照；vendored `cadpy` 来自本仓
 - [URDF-Studio](./urdf-studio.md) — Web 端机器人描述与 BOM；与 URDF skill 的 GUI 对照
 - [step2urdf](./step2urdf.md) — 已有 STEP 装配体的浏览器 STEP→URDF；与 `gen_urdf()` CLI 路线互补
 - [Articraft](./articraft.md) — 可关节 3D 资产生成 agent；偏仿真网格而非 STEP 加工链

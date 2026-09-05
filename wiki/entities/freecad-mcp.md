@@ -2,10 +2,11 @@
 type: entity
 tags: [software, cad, mcp, llm-agents, freecad, parametric-modeling, open-source, hardware, fem]
 status: complete
-updated: 2026-08-08
+updated: 2026-09-05
 related:
   - ./freecad.md
   - ./cad-skills.md
+  - ./multi-agent-cad.md
   - ./cli-anything.md
   - ./step2urdf.md
   - ./urdf-studio.md
@@ -126,6 +127,7 @@ flowchart LR
 
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md)
 - [CAD Skills（LLM 驱动 CAD 技能）](./cad-skills.md)
+- [Multi-Agent CAD（MAC）](./multi-agent-cad.md) — 无头 build123d 四段编排；本页是 GUI FreeCAD 真值
 - [CLI-Anything（HKUDS）](./cli-anything.md) — 含 `cli-anything-freecad` 生成式 CLI harness；与本页 MCP 桥对照
 - [step2urdf（STEP→URDF 浏览器转换）](./step2urdf.md)
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
