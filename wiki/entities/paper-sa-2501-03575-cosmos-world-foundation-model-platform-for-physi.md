@@ -16,6 +16,8 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../concepts/sim2real.md
+  - ./cosmos-transfer.md
+  - ./paper-cosmos-transfer1.md
 sources:
   - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
   - ../../sources/papers/sun_awesome_wm_2501_03575_cosmos-world-foundation-model-platform-f.md
@@ -148,6 +150,8 @@ Awesome 策展索引仍指向本文件名；深度内容以本页与一手 PDF �
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Cosmos Transfer](./cosmos-transfer.md) — 1.0 条件翻译后继
+- [Transfer1 论文](./paper-cosmos-transfer1.md)
 
 ## 参考来源
 

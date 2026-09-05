@@ -91,6 +91,8 @@
 - [CoppeliaSim](wiki/entities/coppeliasim.md) — CoppeliaSim](https://github.com/CoppeliaRobotics/coppeliaSimLib) 收录于具身智能研究室 [开源项目主表](https://github `📅unknown` `[entity_page]`
 - [CoRe（接触感知全身重定向软件）](wiki/entities/core-retarget.md) — CoRe**（*Contact-Aware Motion Retargeting*，<https://github.com/tmjeong1103/CoRe>，[v0.1.0](https://g `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](wiki/entities/cosmos-3.md) — Cosmos 3**（2026-06，arXiv:2606.02800，[项目页](https://research.nvi `📅unknown` `[entity_page]`
+- [Cosmos Cookbook（WFM 配方站）](wiki/entities/cosmos-cookbook.md) — Cosmos Cookbook**（文档站，[GitHub](https `📅unknown` `[entity_page]`
+- [Cosmos Transfer（条件世界翻译）](wiki/entities/cosmos-transfer.md) — Cosmos Transfer** 是 NVIDIA Cosmos 里专门做 **world-to-world** 的一支：输入不是「从零生成世界」，而 `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
 - [Crocoddyl](wiki/entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
@@ -544,6 +546,7 @@
 - [CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）](wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — CoorDex**（arXiv:2606.23680，[项目页](https://skevinci.github.io/co `📅unknown` `[entity_page]`
 - [CoRe（接触感知优化与学习的人形运动）](wiki/entities/paper-core.md) — CoRe**（*Contact-aware motion Refinement*；论文 *CoRe: A Hybrid Approach of Contact-Aware Optimization `📅unknown` `[entity_page]`
 - [CorrectVLA：VLA 失败的语言反馈推理期动作纠错](wiki/entities/paper-correctvla.md) — CorrectVLA**（*Training-Free Action Correction for VLA Model Failures via Language Feedback*，[arXiv `📅unknown` `[entity_page]`
+- [Cosmos-Transfer1: Conditional World Generation with Adaptive Multimodal Control](wiki/entities/paper-cosmos-transfer1.md) — Cosmos-Transfer1**（arXiv:2503.14492，NVIDIA，[项目页](https://resea `📅unknown` `[entity_page]`
 - [CoToGrasp](wiki/entities/paper-cotograsp.md) — CoToGrasp: Contact-Topology-Conditioned Dexterous Grasp Synthesis via Canonical Workspace Learning `📅unknown` `[entity_page]`
 - [CPS4All：无障碍与能力增强的赛博物理系统工作坊](wiki/entities/paper-cps4all.md) — CPS4All**（*Cyber-Physical Systems for Accessibility and Ability Augmentation: Bridging Diverse Com `📅unknown` `[entity_page]`
 - [CReF：交叉模态与循环融合的深度条件人形行走](wiki/entities/paper-cref.md) — CReF**（*Cross-modal and Recurrent Fusion for Depth-conditioned Humanoid Locomotion*，浙江大学 / 山东大学，ar `📅unknown` `[entity_page]`

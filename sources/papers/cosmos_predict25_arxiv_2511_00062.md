@@ -46,3 +46,4 @@
 - Canonical 实体：[`wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md`](../../wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
 - 仓库：[`sources/repos/nvidia_cosmos_predict25.md`](../repos/nvidia_cosmos_predict25.md)
 - 下一代：[`wiki/entities/cosmos-3.md`](../../wiki/entities/cosmos-3.md)
+- Transfer 族：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)
