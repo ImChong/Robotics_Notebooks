@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, robot-learning, survey, vla, video-generation, model-based-rl, training-loop]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-05
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./world-models-15-open-source-technology-map.md
@@ -14,6 +14,8 @@ related:
   - ./wam-motion-control-five-paths.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
+  - ../concepts/functional-taxonomy-world-models.md
+  - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ../methods/vla.md
   - ../methods/model-based-rl.md
   - ../concepts/video-as-simulation.md
@@ -40,6 +42,8 @@ related:
   - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
+  - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
+  - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
   - ../../sources/sites/wm-robot-survey-ntumars.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
@@ -79,7 +83,7 @@ summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整�
 - 关键问题不是「模型能不能生成一段未来画面」。
 - 而是：**这个未来能否帮助机器人更好地学习、评估、规划与执行？**
 
-与本库 [Generative World Models](../methods/generative-world-models.md) 的衔接：该页侧重 **扩散/视频生成式** 仿真与反事实推演；本页侧重 **综述给出的三条能力接口** 与 **训练闭环评价**。与 [World Action Models（WAM）](../concepts/world-action-models.md) 的衔接：WAM 综述（arXiv:2605.12090）讨论 **未来与动作在同一策略内联合建模**；本页综述覆盖更广的 **世界模型家族**（含纯模拟器与视频生成支路）。
+与本库 [Generative World Models](../methods/generative-world-models.md) 的衔接：该页侧重 **扩散/视频生成式** 仿真与反事实推演；本页侧重 **综述给出的三条能力接口** 与 **训练闭环评价**。与 [World Action Models（WAM）](../concepts/world-action-models.md) 的衔接：WAM 综述（arXiv:2605.12090）讨论 **未来与动作在同一策略内联合建模**；本页综述覆盖更广的 **世界模型家族**（含纯模拟器与视频生成支路）。另两套正交轴：[Fei-Fei 功能分类](../concepts/functional-taxonomy-world-models.md) 问输出是观测/状态/动作；[上海人工智能实验室定义文](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 再加表征底物，并把倒金字塔数据流写成天花板。
 
 ## 三线 taxonomy（综述主线）
 
@@ -154,6 +158,8 @@ flowchart TB
 
 - [动作后果技术地图（2026-07 策展）](./robot-world-models-action-consequence-technology-map.md) — WAM 执行/修正/筛选与接触、几何、评估四线
 - [世界模型 15 开源项目技术地图](./world-models-15-open-source-technology-map.md) — 深蓝具身智能 **级联/联合/沙盒** 三线开源基线策展（15 项目）
+- [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — POMDP 输出轴；与本页「训练闭环三线」正交
+- [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 压缩定义 + 功能×架构；倒金字塔对照本页三道门槛
 - [Generative World Models](../methods/generative-world-models.md) — 像素/Token 视频 rollout 与工程折中（DWM、Being-H0.7、mimic-video 等）
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 产业侧交互模拟器：评测 + Human-in-the-World-Model
 - [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR 流式 WM + 虚实成功率校准
@@ -166,6 +172,8 @@ flowchart TB
 ## 参考来源
 
 - [World Model for Robot Learning 综述（arXiv:2605.00080）](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md)
+- [Fei-Fei 功能分类归档](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)
+- [世界模型定义与路线图归档](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md)
 - [NTUMARS 综述项目站](../../sources/sites/wm-robot-survey-ntumars.md)
 - [具身智能研究室 · 训练闭环解读（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)
 - [具身智能研究室 · 动作后果纵深（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)

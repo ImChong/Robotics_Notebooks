@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Provides a scientific definition of world models, discussions of their key technical aspects, and a staged roadmap for developing effective world models.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md`](../../wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md`](../../wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)（2026-09-05 由索引卡升格为深读实体，不再另建第二页）
 
 ---
 
