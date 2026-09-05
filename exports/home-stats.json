@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04",
+  "generated_at": "2026-09-05",
   "node_count": 3461,
   "edge_count": 31532,
   "coverage": {
@@ -8,6 +8,16 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-failbench.md",
+      "detail_id": "entity-paper-failbench",
+      "label": "FailBench：VLM 当裁判有多可靠",
+      "type": "entity",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-lucida-r2s.md",
       "detail_id": "entity-paper-lucida-r2s",
@@ -112,16 +122,6 @@
       "action": "added"
     },
     {
-      "path": "wiki/entities/paper-failbench.md",
-      "detail_id": "entity-paper-failbench",
-      "label": "FailBench：VLM 当裁判有多可靠",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
       "path": "wiki/entities/paper-gift-intermediate-feature-training.md",
       "detail_id": "entity-paper-gift-intermediate-feature-training",
       "label": "GIFT：面向动作足够用的中间特征训练",
@@ -213,13 +213,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-lucida-r2s.md",
-    "detail_id": "entity-paper-lucida-r2s",
-    "label": "Lucida：组合式 Real-to-Sim 场景建模",
+    "path": "wiki/entities/paper-failbench.md",
+    "detail_id": "entity-paper-failbench",
+    "label": "FailBench：VLM 当裁判有多可靠",
     "type": "entity",
     "recency": "2026-09-04",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
