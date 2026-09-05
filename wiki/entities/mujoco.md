@@ -2,11 +2,13 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-05
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-wasm.md
   - ./mujoco-mjx.md
+  - ./mujoco-warp.md
+  - ./nvidia-warp.md
   - ./mujoco-playground.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ./brax.md
@@ -69,7 +71,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - 接触模型非常稳定，很少发生“穿模”或无理的反弹（Explosion）。
   - `mjcf` (XML) 模型描述文件格式严谨且专为机器人设计。
 - **局限**：
-  - 原生 CPU MuJoCo 在单机多 GPU **环境复制数** 上，仍常逊色于 Isaac Gym 类专并行栈；需要 JAX/GPU 批量路径时，应评估 [**MuJoCo MJX**](./mujoco-mjx.md)（及官方文档中的 feature parity）。
+  - 原生 CPU MuJoCo 在单机多 GPU **环境复制数** 上，仍常逊色于 Isaac Gym 类专并行栈。JAX 批量 / 可微走 [**MuJoCo MJX**](./mujoco-mjx.md)；NVIDIA GPU 高吞吐、对齐 MJCF 的 drop-in 走 [**MuJoCo Warp**](./mujoco-warp.md)（PGS / PLUGIN 等有缺口，AD 未通）。
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱；大规模 **壳/体 FEM + 亿级接触** 的离线路径见 [ppf-contact-solver](./ppf-contact-solver.md)。
   - **浏览器 WASM**（[`@mujoco/mujoco`](./mujoco-wasm.md)）适合 demo、教学与轻量 Sim2Sim，吞吐与 API 完备度仍弱于原生绑定；多线程版另需 COOP/COEP 隔离头。
 
@@ -87,6 +89,8 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [MuJoCo Playground](./mujoco-playground.md) — MJX 上的任务入口层，强调 time-to-robot 与 sim2real 短链路
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — MuJoCo 在物理/sim2sim 层的定位
 - [MuJoCo MJX（JAX / XLA 后端）](./mujoco-mjx.md) — 与 MJCF 对齐的 JAX 重实现，用于高吞吐与可微 rollout
+- [MuJoCo Warp](./mujoco-warp.md) — Warp/CUDA 上的 GPU MuJoCo；Newton 主要刚体后端
+- [NVIDIA Warp](./nvidia-warp.md) — MJWarp / Newton 的 JIT 计算层
 - [Brax](./brax.md) — JAX 侧 RL 训练与 README 中的 Playground / MJX 迁移指引
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — MJCF 场景上的关键帧编排与 LZ4 轨迹包（Stanford `robot_keyframe_kit` 等）
 - [Gymnasium](./gymnasium.md) — 单智能体 RL 环境 API；MuJoCo 域经典控制基准的注册入口
@@ -97,7 +101,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Robot Viewer](./robot-viewer.md) — 支持 MJCF 格式的 Web 查看器
 - [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md) — 以 URDF 为起点的派生模块目录（与 MJCF 这类仿真专用描述对照理解「预处理资产层」）
 - [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)
-- [Newton Physics](./newton-physics.md) — Warp + MuJoCo Warp 的 GPU 可微引擎（LF 托管）
+- [Newton Physics](./newton-physics.md) — Warp + MJWarp 的 GPU 多求解器引擎（LF 托管；MJWarp 路径 AD 未通）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [wheel_legged_genesis](./wheel-legged-genesis.md) — Genesis 策略迁 MuJoCo 的双轮足 sim2sim

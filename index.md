@@ -89,6 +89,8 @@
 - [MuJoCo](wiki/entities/mujoco.md)
 - [dm_control / Control Suite](wiki/entities/dm-control.md)
 - [MuJoCo MJX](wiki/entities/mujoco-mjx.md)（JAX/XLA 版 MuJoCo，GPU 批量与可微 rollout）
+- [NVIDIA Warp](wiki/entities/nvidia-warp.md)（`warp-lang`：Python JIT 到 CPU/CUDA；Newton / MJWarp 计算底座）
+- [MuJoCo Warp](wiki/entities/mujoco-warp.md)（GPU 版 MuJoCo；Newton 主要刚体后端，Warp AD 未通）
 - [Brax](wiki/entities/brax.md)（JAX 可微物理与 RL 训练；与 MJX、MuJoCo Playground 的官方组合指引）
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)

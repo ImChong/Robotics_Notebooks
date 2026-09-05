@@ -252,7 +252,9 @@
 | [x] [moveit-moveit2.md](repos/moveit-moveit2.md) | moveit/moveit2：MoveIt 2（ROS 2）运动规划与操作框架 |
 | [x] [motion_imitation_peng.md](repos/motion_imitation_peng.md) | erwincoumans/motion_imitation：四足模仿动物奠基仓库 |
 | [x] [mjlab.md](repos/mjlab.md) | mjlab：Isaac Lab API + MuJoCo Warp 轻量 GPU RL 框架（AMP_mjlab / unitree_rl_mjlab 的底层） |
+| [x] [mujoco-warp.md](repos/mujoco-warp.md) | google-deepmind/mujoco_warp：GPU MuJoCo（MJWarp）；Newton 主要刚体后端，AD 未通 |
 | [x] [newton-physics.md](repos/newton-physics.md) | Newton Physics：Warp + MuJoCo Warp GPU 可微物理引擎（LF 托管；Kamino / ImplicitMPM / Style3D，2026-09 再核） |
+| [x] [nvidia-warp.md](repos/nvidia-warp.md) | NVIDIA/warp：`warp-lang` JIT 到 CPU/CUDA；Newton / MJWarp 计算底座，`warp.sim` 已弃用 |
 | [x] [plotjuggler.md](repos/plotjuggler.md) | PlotJuggler：跨平台时序可视化（rosbag/ROS topic、PX4 ULog、MQTT/LSL 插件） |
 | [x] [ppf-contact-solver.md](repos/ppf-contact-solver.md) | ppf-contact-solver：ZOZO GPU shell/solid/rod FEM+接触离线仿真（TOG 论文实现） |
 | [x] [mjlab_playground.md](repos/mjlab_playground.md) | mjlab_playground：mjlab 任务集合（MuJoCo Playground 端口起步，含 Go1/T1 getup 等） |
@@ -533,6 +535,7 @@
 | [x] [pupper-v3-documentation-readthedocs.md](sites/pupper-v3-documentation-readthedocs.md) | Pupper v3 官方文档站（建造/安全/规格/ROS2 monorepo/RL·VLM 与 CS 123 入口） |
 | [x] [nvidia-physical-ai-learning.md](sites/nvidia-physical-ai-learning.md) | NVIDIA Physical AI Learning 门户（Isaac/OpenUSD/SO-101 等自学路径索引） |
 | [x] [nvidia-newton-physics.md](sites/nvidia-newton-physics.md) | NVIDIA Developer：Newton Physics 产品页（Warp、OpenUSD、Isaac Lab 集成叙事） |
+| [x] [nvidia-warp-docs.md](sites/nvidia-warp-docs.md) | NVIDIA Warp 官方文档 nvidia.github.io/warp/stable（1.17.0：JIT、安装、可微） |
 | [x] [openloong_community.md](sites/openloong_community.md) | OpenLoong 社区：青龙·公版机门户（硬件 v2.5、控制框架、数据集、文档/论坛） |
 | [x] [newton-physics-docs-overview.md](sites/newton-physics-docs-overview.md) | Newton 官方文档 Overview（CollisionPipeline、八求解器含 Kamino/ImplicitMPM/Style3D） |
 | [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：OpenAI MTS；CMU / NVIDIA GEAR 人形学习论文与项目总索引 |

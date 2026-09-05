@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/repos/nvidia-warp.md、sources/sites/nvidia-warp-docs.md、sources/repos/mujoco-warp.md — 接入 NVIDIA Warp 与 MuJoCo Warp 并接到 Newton；关键页 nvidia-warp、mujoco-warp
+
+- **触发：** 用户指定 <https://github.com/NVIDIA/warp>、<https://github.com/google-deepmind/mujoco_warp>、<https://nvidia.github.io/warp/stable/>。
+- **复用：** 无同名实体（`paper-warp-whole-body-retargeting` 是无关论文）。[Newton](wiki/entities/newton-physics.md) / [mjlab](wiki/entities/mjlab.md) / [MJX](wiki/entities/mujoco-mjx.md) 已存在，**不另造引擎页**。
+- **步骤 2.5：** Warp **已开源** Apache-2.0（`warp-lang`，~7.1k★，文档 1.17.0）。MJWarp **已开源** Apache-2.0（`mujoco-warp`，~1.4k★）。二者均可 `pip` 安装；MJWarp 文档在 MuJoCo readthedocs `mjwarp/`。
+- **关键判断：** Warp 是 JIT 计算层，`warp.sim` **已弃用**，机器人物理走 Newton。MJWarp 是 GPU drop-in MuJoCo、Newton 主要刚体后端；**Warp AD 尚未接通**（issue #500）。PGS / noslip / PLUGIN / IMPLICITFAST midpoint 有缺口。JAX 训练经 MJX + Playground；PyTorch 经 mjlab 或 Isaac Lab `feature/newton`。
+- **新建：** [`nvidia-warp`](wiki/entities/nvidia-warp.md)、[`mujoco-warp`](wiki/entities/mujoco-warp.md)
+- **交叉：** Newton / MuJoCo / MJX / mjlab / Brax / Playground / Isaac Lab / Omniverse / 仿真器选型 / 训练栈分层
+
 ## [2026-09-05] ingest | sources/repos/newton-physics.md、sources/sites/newton-physics-docs-overview.md、NVIDIA Cosmos 一手族 — Newton 八求解器再核 + Cosmos 1.0/2.5/3 平台对齐；关键页 newton-physics、nvidia-cosmos
 
 - **触发：** 用户指定 <https://github.com/newton-physics/newton>、<https://newton-physics.github.io/newton/stable/guide/overview.html>，并要求一并找到英伟达 Cosmos 模型一手资料。

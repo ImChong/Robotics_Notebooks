@@ -12,6 +12,8 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./nvidia-omniverse.md
   - ./nvidia-cosmos.md
+  - ./nvidia-warp.md
+  - ./mujoco-warp.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ../queries/simulator-selection-guide.md
   - ../methods/reinforcement-learning.md
@@ -21,6 +23,8 @@ sources:
   - ../../sources/repos/newton-physics.md
   - ../../sources/sites/nvidia-newton-physics.md
   - ../../sources/sites/newton-physics-docs-overview.md
+  - ../../sources/repos/nvidia-warp.md
+  - ../../sources/repos/mujoco-warp.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/repos/omnisim.md
 summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微物理引擎：基于 NVIDIA Warp，以 MuJoCo Warp 为主要后端，支持 URDF/MJCF/USD 与 XPBD/VBD/MuJoCo/Featherstone/SemiImplicit/Kamino/ImplicitMPM/Style3D，并与 Isaac Lab、MuJoCo Playground、Cosmos Transfer 叙事对接。"
@@ -28,7 +32,7 @@ summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微�
 
 # Newton Physics（物理引擎）
 
-**Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 [NVIDIA Warp](https://developer.nvidia.com/warp-python) 上实现核心计算，集成 [MuJoCo Warp](https://github.com/google-deepmind/mujoco_warp) 作为**主要物理后端**，并强调 [OpenUSD](https://openusd.org/) 场景组合与现代 Python API。项目由 **Disney Research、Google DeepMind、NVIDIA** 发起，现由 **Linux Foundation** 社区维护（代码 Apache-2.0）。
+**Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 [NVIDIA Warp](./nvidia-warp.md) 上实现核心计算，集成 [MuJoCo Warp](./mujoco-warp.md) 作为**主要刚体后端**，并强调 [OpenUSD](https://openusd.org/) 场景组合与现代 Python API。项目由 **Disney Research、Google DeepMind、NVIDIA** 发起，现由 **Linux Foundation** 社区维护（代码 Apache-2.0）。
 
 ## 英文缩写速查
 
@@ -56,7 +60,7 @@ summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微�
 | 维度 | 要点 |
 |------|------|
 | **计算** | Warp 驱动 GPU 仿真；目标是把日级仿真压到分钟级（厂商页叙事） |
-| **可微** | 支持可微物理，服务策略训练、设计优化、系统辨识（`diffsim_*` 示例） |
+| **可微** | Warp 核可微；`diffsim_*` 示例走 **非 MJWarp** 求解器。 [MuJoCo Warp](./mujoco-warp.md) 步进的 AD **尚未接通**（issue #500） |
 | **可扩展** | 模块化求解器与组件；可插拔自定义求解器，支持多物理扩展 |
 | **资产** | `ModelBuilder` 导入 **URDF、MJCF、USD**；OpenUSD 聚合机器人与环境 |
 | **求解器** | **XPBD、VBD、MuJoCo（Warp）、Featherstone、SemiImplicit、Kamino、ImplicitMPM、Style3D** |
@@ -112,8 +116,10 @@ flowchart LR
 
 | 工具 | 关系 |
 |------|------|
-| **[MuJoCo](./mujoco.md)** | 学术接触建模标杆；Newton 通过 **MuJoCo Warp** 承接 MJCF 资产与 GPU 批量路径 |
-| **[mjlab](./mjlab.md)** | **RL 训练框架**（Isaac Lab 风格 API + MuJoCo Warp）；Newton 是更底层的**通用物理引擎**，不限于 manager-based RL |
+| **[NVIDIA Warp](./nvidia-warp.md)** | 计算底座（`warp-lang`）；`warp.sim` 已弃用，由 Newton 接替 |
+| **[MuJoCo Warp](./mujoco-warp.md)** | 主要刚体后端（`mujoco-warp`）；drop-in MuJoCo，PGS/PLUGIN 等有缺口，AD 未通 |
+| **[MuJoCo](./mujoco.md)** | 学术接触建模标杆；Newton 通过 **MJWarp** 承接 MJCF 资产与 GPU 批量路径 |
+| **[mjlab](./mjlab.md)** | **RL 训练框架**（Isaac Lab 风格 API + MJWarp）；Newton 是更底层的**通用物理引擎**，不限于 manager-based RL |
 | **[Isaac Lab](./isaac-gym-isaac-lab.md)** | Omniverse/PhysX 主线；Newton 作为可选/并行物理后端探索（官方教程与 `feature/newton` 分支） |
 | **[OmniSim](./omnisim.md)** | Webots fork 把 Newton **当成唯一后端并删除 ODE**；默认 MuJoCo Warp + VBD，面向编码代理 HTTP/MCP |
 | **[MuJoCo MJX](./mujoco-mjx.md)** | JAX 上 MJCF 对齐实现；Newton 侧强调 Warp + 多求解器 + USD |
@@ -128,8 +134,10 @@ flowchart LR
 
 ## 关联页面
 
+- [NVIDIA Warp](./nvidia-warp.md) — JIT 计算层；本引擎站在其上
+- [MuJoCo Warp](./mujoco-warp.md) — 主要刚体后端
 - [MuJoCo（物理引擎）](./mujoco.md)
-- [mjlab](./mjlab.md) — Isaac Lab API + MuJoCo Warp 的 RL 框架
+- [mjlab](./mjlab.md) — Isaac Lab API + MJWarp 的 RL 框架
 - [MuJoCo MJX](./mujoco-mjx.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
@@ -143,6 +151,8 @@ flowchart LR
 ## 参考来源
 
 - [newton-physics 仓库归档](../../sources/repos/newton-physics.md)
+- [NVIDIA/warp 仓库归档](../../sources/repos/nvidia-warp.md)
+- [mujoco_warp 仓库归档](../../sources/repos/mujoco-warp.md)
 - [NVIDIA Developer：Newton Physics](../../sources/sites/nvidia-newton-physics.md)
 - [Newton 官方文档 Overview](../../sources/sites/newton-physics-docs-overview.md)
 - [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
@@ -154,4 +164,5 @@ flowchart LR
 - [Newton GitHub](https://github.com/newton-physics/newton)
 - [NVIDIA：Newton Physics 产品页](https://developer.nvidia.com/newton-physics)
 - [Introduction tutorial](https://newton-physics.github.io/newton/stable/tutorials/00_introduction.html)
-- [MuJoCo Warp](https://github.com/google-deepmind/mujoco_warp)
+- [MuJoCo Warp](./mujoco-warp.md)
+- [NVIDIA Warp 文档](https://nvidia.github.io/warp/stable/)

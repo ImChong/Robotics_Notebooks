@@ -2,10 +2,11 @@
 type: entity
 tags: [repo, mujoco, mjx, reinforcement-learning, locomotion, manipulation, time-to-robot, deepmind]
 status: complete
-updated: 2026-06-08
+updated: 2026-09-05
 related:
   - ./mujoco.md
   - ./mujoco-mjx.md
+  - ./mujoco-warp.md
   - ./mjlab.md
   - ./mjlab-playground.md
   - ./open-duck-playground.md
@@ -67,8 +68,9 @@ flowchart LR
 ## 关联页面
 
 - [MuJoCo](./mujoco.md) — 底层物理与 sim2sim 文化
-- [MuJoCo MJX](./mujoco-mjx.md) — Playground 的计算后端
-- [mjlab](./mjlab.md) — Isaac Lab API + MuJoCo Warp 的轻量组合
+- [MuJoCo MJX](./mujoco-mjx.md) — Playground 的 JAX 计算后端
+- [MuJoCo Warp](./mujoco-warp.md) — Warp/CUDA 兄弟后端；官方 JAX 接入仍经 MJX
+- [mjlab](./mjlab.md) — Isaac Lab API + MJWarp 的轻量组合
 - [Newton Physics](./newton-physics.md) — 官方列出的兼容上层框架之一
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 
