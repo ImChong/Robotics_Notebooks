@@ -12,6 +12,8 @@ related:
   - ./foxglove-studio.md
   - ./rerun-io.md
   - ./mcap-log-format.md
+  - ./plotly.md
+  - ./tensorboard.md
   - ../comparisons/ros2-vs-lcm.md
 sources:
   - ../../sources/repos/plotjuggler.md
@@ -48,6 +50,7 @@ summary: "PlotJuggler 是跨平台时序可视化桌面工具：拖拽多曲线�
 - **飞控日志**：原生支持 [PX4 ULog](./px4-autopilot.md)（含大文件），调参、对比 SITL/真机 EKF 与执行器输出时省去自写解析脚本。
 - **与多模态生态对齐**：3.16+ 起内置 **Foxglove / PlotJuggler WebSocket bridge** 与更稳的 [MCAP](./mcap-log-format.md) 读取；选型时可与 [Foxglove](./foxglove-studio.md)、[rerun](./rerun-io.md) 分工而非互斥。
 - **PJ4 路线清晰**：官方站与 [Announcing PlotJuggler 4](https://plotjuggler.io/blog/announcing-plotjuggler-4/) 明确「不是升级而是新应用」——列式引擎、懒加载大对象、Extensions Marketplace、2D/3D；评估新工具链时应单独跟踪 beta Releases。
+- **与 Plotly 分工**：PJ 看 **原始时序对齐**；episode 聚合成功率、3D 轨迹摘要 HTML 报告可再用 [plotly.py](./plotly.md)。
 - **可扩展**：MPL 2.0 主仓 + 独立 ROS/MQTT/LSL 插件仓，团队可封装私有消息格式而不 fork 核心。
 
 ## 核心原理

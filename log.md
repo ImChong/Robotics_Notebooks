@@ -1,3 +1,11 @@
+## [2026-09-05] ingest | sources/repos/plotly.py.md — 接入 plotly.py 交互图表库；已开源 MIT；关键页 plotly，交叉 tensorboard / plotjuggler
+
+- **触发：** 用户指定 <https://github.com/plotly/plotly.py>，并要求自动合并 PR
+- **步骤 2.5：** 仓库 **已开源** MIT；静态导出依赖 Kaleido；Dash 为独立项目。
+- **关键判断：** 训练监控仍走 TensorBoard/W&B；真机高频时序走 PlotJuggler；Plotly 补交互报告与 notebook EDA。
+- **新建：** `plotly` 实体；归档 `plotly.py.md`
+- **交叉：** tensorboard / plotjuggler / robot-policy-debug-playbook
+
 ## [2026-09-05] ingest | sources/sites/hf-nvidia-cosmos3-collection.md、hf-nvidia-physical-ai-collection.md — 接入 NVIDIA HF Cosmos3 与 Physical AI 集合；已开放获取（部分门控）；关键页 nvidia-physical-ai-datasets，交叉 cosmos-3 / nvidia-cosmos / nurec / gr00t
 
 - **触发：** 用户指定 <https://huggingface.co/collections/nvidia/cosmos3>、<https://huggingface.co/collections/nvidia/physical-ai>，并要求自动合并 PR
