@@ -1442,6 +1442,7 @@
 - [RoboReact：从生成第一人称视频蒸馏可泛化全身操作技能](wiki/entities/paper-roboreact.md) — RoboReact**（*Agentic Skill Distillation from Generated Egocentric Videos for Generalizable Whole-B `📅unknown` `[entity_page]`
 - [RoboSynChallenge：合成数据能不能算数，真机说了算](wiki/entities/paper-robosynchallenge.md) — RoboSynChallenge**（*Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skill `📅unknown` `[entity_page]`
 - [Robot in a crib：摇篮里的 iCub 与感觉运动偶联学习](wiki/entities/paper-robot-in-crib-sensorimotor-contingency.md) — Robot in a crib**（*How a playing robot helps us understand sensorimotor contingency learning*，Josu `📅unknown` `[entity_page]`
+- [Robot Juggling：分钟级真机动态操作学习](wiki/entities/paper-robot-juggling-athenazero.md) — Robot Juggling**（*Rapid On-Robot Learning for Dynamic Manipulation Skills: Robot Juggling*，[arXiv: `📅unknown` `[entity_page]`
 - [Robot Parkour Learning（HMI P130）](wiki/entities/paper-robot-parkour-learning.md) — Robot Parkour Learning**（*Robot Parkour Learning*，2023，[arXiv:2309.05665](https://arxiv.org/abs/23 `📅unknown` `[entity_page]`
 - [RoboTTT（Test-Time-Training Robot Policies）](wiki/entities/paper-robottt-test-time-training-vla-context.md) — RoboTTT**（*Context Scaling for Robot Policies*，[arXiv:2607.15275](https://arxiv.org/abs/2607.15275 `📅unknown` `[entity_page]`
 - [RoboWM-Bench](wiki/entities/paper-robowm-bench-action-faithfulness.md) — RoboWM-Bench** 收录于 具身智能研究室 · 具身世界模型六路线综述 **趋势 `📅unknown` `[entity_page]`
