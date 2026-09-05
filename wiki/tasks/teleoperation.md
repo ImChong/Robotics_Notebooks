@@ -45,6 +45,8 @@ sources:
   - ../../sources/papers/xrobotoolkit_arxiv_2508_00097.md
   - ../../sources/sites/xr-robotics-github-io.md
   - ../../sources/repos/xrobotoolkit.md
+  - ../../sources/repos/nvidia_isaac_teleop.md
+  - ../../sources/sites/nvidia-isaac-teleop-docs.md
   - ../../sources/datasets/let-base-dataset.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/sites/aus-bot-nestdex.md
@@ -124,6 +126,7 @@ sources:
 | UME-EXO（Ant / Stanford 2026） | OpenArm 双臂移动平台等 | 上肢外骨骼 + IMU | 26–157 条/任务 | 实时触觉力矩反馈 + 全身臂形/力矩记录 + 子链重定向；ACT 学主动柔顺；见 [论文实体](../entities/paper-ume-exo.md) |
 | BifrostUMI（BAAI Aether 2026） | Unitree G1 | Pico 追踪 + 双腕鱼眼夹爪 | 无机器人采集 | UMI 式示范 + 扩散高层 + SKR → 人形全身 WBC；见 [论文实体](../entities/paper-bifrost-umi.md) |
 | HALOMI（上交 / 萨塞克斯 / 华理 2026） | Unitree G1 + 主动颈 | Pika Sense 双夹爪 + 头盔 egocentric + Vive | 无机器人采集 | UMI+头手追踪 + π₀.₅ VLA + BFM-Zero 流形 WBC；见 [论文实体](../entities/paper-halomi-humanoid-loco-manipulation.md) |
+| **[Isaac Teleop](../entities/isaac-teleop.md)**（NVIDIA，文档 1.5.x） | Franka / G1 / GR1T2 等 Lab 环境；真机 + ROS 2 | AVP / Quest / Pico + 手套/踏板；CloudXR | MCAP / HDF5 / **LeRobot** | **已开源** Apache-2.0 + PyPI；图式 retargeting；**Televiz** XR 合成；第一人称无标记手重建（MANO 门禁）；Lab 3.x XR 主线 |
 | **XRoboToolkit**（ByteDance PICO / GT / GMU，SII 2026） | UR5 / ARX R5 / Galaxea R1-Lite / Shadow Hand | PICO 4 Ultra / Quest 3（OpenXR） | 跨平台 XR 中间层 | 低延迟立体视觉 + QP-IK + 多模态追踪；全栈开源；π₀ 采数验证；见 [论文实体](../entities/paper-xrobotoolkit.md) |
 | TWIST2（Amazon FAR, ICRA 2026） | Unitree G1 | PICO 4 Ultra + 2-DoF 颈 | 真机便携遥操作 | 全身 RL 跟踪 + 扩散 visuomotor 自主；15 min 级百次采集；底层 XR 流常用 XRoboToolkit；见 [论文实体](../entities/paper-twist2.md) |
 | CLOT（上交 / 上海 AI Lab 2026） | Adam Pro | OptiTrack 全局反馈 | 闭环全局遥操作 | Observation Pre-shift + Transformer + AMP；长时程无漂移；见 [论文实体](../entities/paper-amp-survey-16-clot.md) |
@@ -206,6 +209,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - **ingest 档案：** [sources/blogs/mimicrobotics_m1_u1_full_stack.md](../../sources/blogs/mimicrobotics_m1_u1_full_stack.md) — mimic U1 固定运动学外骨骼 + M1 全栈灵巧平台（2026-07）
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / BifrostUMI / AnyTeleop
 - **ingest 档案：** [sources/papers/xrobotoolkit_arxiv_2508_00097.md](../../sources/papers/xrobotoolkit_arxiv_2508_00097.md)、[sources/sites/xr-robotics-github-io.md](../../sources/sites/xr-robotics-github-io.md)、[sources/repos/xrobotoolkit.md](../../sources/repos/xrobotoolkit.md) — XRoboToolkit：OpenXR 跨平台 XR 遥操作套件（arXiv:2508.00097，SII 2026 Best Paper）
+- **ingest 档案：** [sources/repos/nvidia_isaac_teleop.md](../../sources/repos/nvidia_isaac_teleop.md)、[sources/sites/nvidia-isaac-teleop-docs.md](../../sources/sites/nvidia-isaac-teleop-docs.md) — Isaac Teleop：Lab 3.x XR 主线 + Televiz + 无标记手重建（文档 1.5.x，2026-09-05 复核）
 - **ingest 档案：** [sources/papers/ume_exo_arxiv_2606_14218.md](../../sources/papers/ume_exo_arxiv_2606_14218.md)、[sources/sites/ume-exo-project.md](../../sources/sites/ume-exo-project.md) — UME-EXO：外骨骼实时力矩反馈 + 全身臂形采集 + ACT 柔顺策略（arXiv:2606.14218）
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：无机器人采集 + SKR + G1 全身 visuomotor（arXiv:2605.03452）
 - **ingest 档案：** [sources/papers/halomi_arxiv_2606_18772.md](../../sources/papers/halomi_arxiv_2606_18772.md) — HALOMI：egocentric 无机器人示范 + 主动颈 G1 loco-manipulation（arXiv:2606.18772）
@@ -267,7 +271,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [RIO（Robot I/O）](../entities/robot-io-rio.md) — 跨形态 Node 化遥操作与异步策略推理栈
 - [xpad](../entities/xpad.md) — Linux USB Xbox 手柄内核驱动与 joystick/evdev 接口
 - [WinUI](../entities/winui.md) — Windows 工控机原生操作员控制台（Fluent / XAML）
-- [Isaac Teleop](../entities/isaac-teleop.md) — NVIDIA Isaac Lab / Sim XR 遥操作与示范录制
+- [Isaac Teleop](../entities/isaac-teleop.md) — NVIDIA Isaac Lab / Sim / ROS 2 统一 XR 遥操作；Televiz + LeRobot + 无标记手重建
 - [Isaac Lab](../entities/isaac-lab.md) — 集成宿主与内置遥操作环境
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — VR 长程 loco-manipulation 与非结构化地形底层控制
 - [CWI（论文实体）](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — Quest VR 双手接口 + 复合全身模仿 loco-manipulation（arXiv:2606.27676）

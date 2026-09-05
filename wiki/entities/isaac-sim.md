@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-05
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md
@@ -232,13 +232,15 @@ flowchart TB
 - [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md) — USD stage/composition 官方课纲
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Newton Physics](./newton-physics.md) — 可选物理后端方向
-- [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集
+- [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集（Televiz 与 CloudXR 共用一条连接）
 - [Lumina 具身智能社区](./lumina-embodied.md) — 中文 Isaac Sim 一百讲与社区 Talks
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 - [HumanoidVLN](./paper-humanoidvln.md) — 在 Sim 上做人形物理 VLN 评测（四本体 + FR；待开源）
 - [fiveages-sim robot_descriptions](./fiveages-sim-robot-descriptions.md) — 国内机型 URDF → 姊妹仓 `robot_usds` USD
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
+- [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — USDZ 神经体积 + `OmniNuRecVolumeAPI`
+- [Instant NuRec](./paper-instant-nurec.md) — 驾驶日志前向重建（AV 路径；机器人单目/双目走 3DGRUT）
 
 ## 一句话记忆
 

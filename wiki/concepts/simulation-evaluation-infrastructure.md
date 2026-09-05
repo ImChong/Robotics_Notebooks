@@ -102,6 +102,8 @@ flowchart TB
 
 **操作臂实证：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276，[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) **部分开源**）从真机视频构建孪生场景，在 **7 任务 × 5 策略族** 上报告 **均值 Pearson r=0.911、MMRV=0.018**，并相对 PolaRiS 显著提升排序相关性——可作为「**视频孪生 + cousins 数据**」路线的 real-to-sim 评测锚点。仓内能重建/加载场景，**不能**复现该 Pearson 协议。
 
+**驾驶神经仿真：** [Instant NuRec](../entities/paper-instant-nurec.md)（arXiv:2607.14203）在 AlpaSim 上用同一套策略、只换重建，140 场景上与逐场景 [NuRec](../entities/nvidia-nurec.md) **策略排序相同**——把「重建够不够当评测器」从 PSNR 换成 **换资产不改榜**。官方仓只能复现静态前向，闭环数字不在 CLI 里。
+
 **几何对齐 ≠ 策略相关：** [Lucida](../entities/paper-lucida-r2s.md)（arXiv:2608.30821）同样做室内 Real2Sim 资产生成，但主表是检测 mAP / ADD-SB / 场景 F-Score，**没有** Pearson/MMRV；读本页时不要把「可编辑副本」直接当成评测基础设施。
 
 ## 关联页面
@@ -115,6 +117,8 @@ flowchart TB
 - [VLA](../methods/vla.md) — 操作基础模型评测基准语境
 - [ENPIRE](../methods/enpire.md) — 真机闭环 autoresearch 与 RoboCasa 仿真 ablation 的分工样本
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频孪生 + Pearson/MMRV 操作策略评测（arXiv:2606.28276）
+- [Instant NuRec](../entities/paper-instant-nurec.md) — 驾驶前向 3DGS；AlpaSim 上与逐场景 NuRec 策略排序一致（arXiv:2607.14203）
+- [NVIDIA Omniverse NuRec](../entities/nvidia-nurec.md) — USDZ 体积与 AV/机器人重建入口
 - [Lucida](../entities/paper-lucida-r2s.md) — 室内可编辑资产对齐（几何指标，非策略相关）
 - [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) — 人形全身 loco-manipulation 双仿真器 testbed；仿真排序与真机强相关（arXiv:2606.08278，USC PSI Lab）
 - [XPolicyLab](../entities/xpolicylab.md) — 策略–环境统一契约、依赖隔离 serving（O(N+M)）与 RoboDojo/RoboTwin 接线

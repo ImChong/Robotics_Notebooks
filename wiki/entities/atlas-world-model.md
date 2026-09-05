@@ -3,9 +3,10 @@
 type: entity
 tags: [world-models, spatial-intelligence, generative-ai, 3dgs, 3d-reconstruction, real-to-sim, diffusion, transformer]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 related:
   - ./world-labs.md
+  - ./marble-world-model.md
   - ./spark-3dgs-renderer.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
@@ -106,6 +107,7 @@ flowchart TB
 ## 关联页面
 
 - [World Labs（空间智能与世界生成）](./world-labs.md)
+- [Marble（当前可注册的多模态世界产品）](./marble-world-model.md)
 - [Spark（Web 3DGS 渲染器）](./spark-3dgs-renderer.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)

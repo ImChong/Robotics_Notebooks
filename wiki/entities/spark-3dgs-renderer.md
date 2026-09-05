@@ -3,9 +3,10 @@
 type: entity
 tags: [repo, 3dgs, gaussian-splatting, web, threejs, webgl2, streaming, lod, open-source, linux-foundation]
 status: complete
-updated: 2026-07-26
+updated: 2026-09-05
 related:
   - ./world-labs.md
+  - ./marble-world-model.md
   - ./aholo-viewer.md
   - ./gs-playground.md
   - ../comparisons/spark-vs-aholo-web-3dgs-renderers.md
@@ -72,6 +73,7 @@ flowchart LR
 ## 关联页面
 
 - [World Labs](./world-labs.md)
+- [Marble](./marble-world-model.md) — 官方推荐把 SPZ 送进 Spark
 - [Aholo Viewer](./aholo-viewer.md)
 - [GS-Playground](./gs-playground.md)
 - [Spark vs Aholo（Web 3DGS 渲染选型）](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)
@@ -82,8 +84,10 @@ flowchart LR
 
 - [World Labs Spark 2.0 技术博客归档](../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md)
 - [World Labs 官方站点归档](../../sources/sites/worldlabs-ai.md)
+- [Marble 文档归档](../../sources/sites/worldlabs-docs.md)
 
 ## 推荐继续阅读
 
 - [Streaming 3DGS worlds on the web（Spark 2.0）](https://www.worldlabs.ai/blog/spark-2.0)
 - [Spark 文档](https://sparkjs.dev/)
+- [Marble 导出到 Spark](https://docs.worldlabs.ai/marble/export/gaussian-splat/spark.md)
