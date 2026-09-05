@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/robotis-cyclo-mjlab.md",
+      "detail_id": "entity-robotis-cyclo-mjlab",
+      "label": "cyclo_mjlab（ROBOTIS）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-egoexomocap.md",
       "detail_id": "entity-paper-egoexomocap",
       "label": "EgoExoMoCap",
@@ -207,22 +217,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-luna-universal-3d-human-animation.md",
-      "detail_id": "entity-paper-luna-universal-3d-human-animation",
-      "label": "LUNA：绕过蒙皮的通用 3D 人动画",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egoexomocap.md",
-    "detail_id": "entity-paper-egoexomocap",
-    "label": "EgoExoMoCap",
+    "path": "wiki/entities/robotis-cyclo-mjlab.md",
+    "detail_id": "entity-robotis-cyclo-mjlab",
+    "label": "cyclo_mjlab（ROBOTIS）",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
