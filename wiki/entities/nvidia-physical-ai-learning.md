@@ -11,6 +11,7 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
   - ./isaac-lab.md
+  - ../concepts/software-in-the-loop.md
   - ./lerobot.md
   - ../concepts/sim2real.md
 sources:
@@ -18,6 +19,7 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/courses/nvidia_learn_openusd.md
+  - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
 summary: "NVIDIA Physical AI Learning 是官方免费自学门户，索引 Isaac Lab 入门四模块课、SO-101 操作臂 Sim2Real、OpenUSD 与医疗机器人等动手路径，并对接 Brev 云 GPU 环境。"
 ---
 
@@ -55,6 +57,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 |------|------|------------|
 | SO-101 Sim2Real | 操作臂 VLA + 四类 gap 策略 | [nvidia-so101-sim2real-lab-workflow](./nvidia-so101-sim2real-lab-workflow.md) |
 | Getting Started With Isaac Lab | RL、GPU 并行、manager 任务、三类 sim-to-real 桥接 | [nvidia-getting-started-isaac-lab](./nvidia-getting-started-isaac-lab.md) |
+| Getting Started With Isaac Sim | 物理仿真、传感器、**SIL** | [Isaac Sim](./isaac-sim.md)、[Software-in-the-Loop](../concepts/software-in-the-loop.md) |
 | Isaac Sim / Isaac Lab 入门 | 仿真与 GPU RL | [Isaac Sim](./isaac-sim.md)、[Isaac Lab](./isaac-lab.md)；总览 [isaac-gym-isaac-lab](./isaac-gym-isaac-lab.md) |
 | Omniverse + OpenUSD | 工业数字孪生场景组合 | [nvidia-omniverse](./nvidia-omniverse.md) |
 | Isaac ROS | ROS 2 + NITROS 真机感知导航 | [ros2-basics](../concepts/ros2-basics.md) |

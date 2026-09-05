@@ -1,3 +1,11 @@
+## [2026-09-05] ingest | sources/sites/nvidia-spatial-intelligence-lab.md、nv_tlabs、nvidia-isaac-sim-sil-tutorial — 接入 SIL 实验室与 Software-in-the-Loop 教程；部分开源；关键页 nvidia-spatial-intelligence-lab、software-in-the-loop
+
+- **触发：** 用户指定 <https://research.nvidia.com/labs/sil/>、<https://github.com/nv-tlabs>、Isaac Sim SIL 教程页，并要求自动合并 PR
+- **消歧：** **Spatial Intelligence Lab**（研究组）≠ **Software-in-the-Loop**（Isaac 工程方法）——同缩写 SIL，分实体页与概念页。
+- **步骤 2.5：** 实验室无统一代码仓；`nv-tlabs` ~121 公开仓 **逐项目开源**；Instant NuRec 等在 `NVIDIA/` 组织。
+- **新建：** `nvidia-spatial-intelligence-lab`、`software-in-the-loop`；归档三份 sources
+- **交叉：** instant-nurec / kimodo / gamma-world / isaac-sim / physical-ai-learning
+
 ## [2026-09-05] ingest | sources/repos/plotly.py.md — 接入 plotly.py 交互图表库；已开源 MIT；关键页 plotly，交叉 tensorboard / plotjuggler
 
 - **触发：** 用户指定 <https://github.com/plotly/plotly.py>，并要求自动合并 PR
