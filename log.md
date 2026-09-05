@@ -7,6 +7,15 @@
 - **新建：** [`paper-hil-hybrid-imitation-learning`](wiki/entities/paper-hil-hybrid-imitation-learning.md)；归档项目页 + G1 仓
 - **交叉：** AMP / DeepMimic / ASE / MTRG / ZEST / holosoma / Locomotion
 
+## [2026-09-05] ingest | sources/sites/ac5113-milo.md — MILO 项目页再核加深（UT Austin / ECCV 2026）；确认已开源 MIT；关键页已存在
+
+- **触发：** 用户指定 <https://ac5113.github.io/MILO/>
+- **复用：** [`paper-milo`](wiki/entities/paper-milo.md)（2026-08-31 已 complete）。**不另造页**。
+- **步骤 2.5（2026-09-05 再核）：** 项目页 Code 链到 [ac5113/MILO](https://github.com/ac5113/MILO)；README 与 `docs/PIPELINE.md` 可跑。→ **已开源（MIT）**。SMPL-H / SAM 3 / SAM 3D 权重门控，不随仓。
+- **关键判断：** 增益来自 **联合 LRM 脚手架** 不是拟合器。InterCap 有模板联合 PA-CD **7.45 cm**（PICO 10.33，无 GT 接触）。HODome / IMHD **无模板更好**（6.38 / 6.98）。模板对瓶/杯有用，对行李箱/椅/伞会变差。核心 **344 s/图**，瓶颈在 LRM 189 s。输出是网格，**不是**关节指令。
+- **加深：** 编译 Table 1–7 + 运行时 + 仓库步骤；挂接 PICO / 重定向 / Manipulation / ECHO。
+- **交叉：** PICO / motion-retargeting-pipeline / Manipulation / ECHO / CLAP 九篇地图
+
 ## [2026-09-05] ingest | sources/papers/4danyone_arxiv_2608_20335.md — 4DAnyone 单目随意视频→重建级多视角/4DGS；已开源 ant-research/4DAnyone；关键页 paper-4danyone
 
 - **触发：** 用户指定 <https://4danyone.github.io/>。

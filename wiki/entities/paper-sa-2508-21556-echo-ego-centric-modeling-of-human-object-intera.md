@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-05
 arxiv: "2508.21556"
 venue: "arXiv 2025"
 summary: "The first unified framework to jointly recover human pose, object motion, and contact dynamics solely from head and wrist tracking, using a novel tri-variate diffusion process with independent noise schedules"
@@ -89,6 +89,7 @@ The first unified framework to jointly recover human pose, object motion, and co
 - 列表实体：[Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md)
 - 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
 - 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- 单目图像对照：[MILO](./paper-milo.md) — 头显稀疏追踪 vs 单张 RGB + LRM 脚手架，传感形态不同
 
 ## 参考来源
 

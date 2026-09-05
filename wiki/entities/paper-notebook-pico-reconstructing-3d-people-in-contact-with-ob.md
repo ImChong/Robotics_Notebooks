@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-07-10
+updated: 2026-09-05
 arxiv: "2504.17695"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
@@ -82,6 +82,7 @@ PICO 要：泛化到**自然图像 + 新物体类**的 3D HOI 重建。
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 后续对照：[MILO](./paper-milo.md) — 用 LRM 联合网格解释 HOI，**无需 GT 接触**；InterCap / HODome / IMHD 上压过 PICO-fit
 
 ## 参考来源
 
