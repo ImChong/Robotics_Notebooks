@@ -73,6 +73,8 @@ related:
   - ../queries/sim2real-closed-loop-engineering.md
   - ../entities/awesome-real2sim2real.md
   - ../entities/paper-humanoidvln.md
+  - ../entities/cosmos-transfer.md
+  - ../entities/cosmos-cookbook.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
@@ -282,6 +284,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ## 关联页面
 
+- [Cosmos Transfer](../entities/cosmos-transfer.md) — 多控视频翻译：仿真/真机 → 照片级合成数据（Transfer1 / 2.5；配方见 [Cookbook](../entities/cosmos-cookbook.md)）
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷四世界模型 / Sim2Real 面试速查（DR、蒸馏、仿真栈）
 - [Bet4Sim2Real](../entities/paper-bet4sim2real.md) — 仿真库逐次下注收窄 anytime-valid 真机证书（arXiv:2608.21572；已开源）
 - [Space Mining with Robotics](../entities/paper-space-mining-with-robotics.md) — 地外任务数据、地球类比数据集与高保真仿真作为算法验证基础设施（arXiv:2608.21358）

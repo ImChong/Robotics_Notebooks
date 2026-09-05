@@ -31,6 +31,9 @@ related:
   - ../entities/ge-sim-2.md
   - ../entities/paper-physisforcing.md
   - ./paper-wall-ss.md
+  - ./cosmos-transfer.md
+  - ./cosmos-cookbook.md
+  - ./paper-cosmos-transfer1.md
 sources:
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos3-project.md
@@ -235,6 +238,9 @@ README 自列：长分辨率或复杂物理输出可出现时序不一致、相�
 - [mimic-video（VAM）](../methods/mimic-video.md)
 - [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md)
 - [NVIDIA SO-101 Sim2Real 动手课](./nvidia-so101-sim2real-lab-workflow.md)
+- [Cosmos Transfer](./cosmos-transfer.md) — 2.x V2V 翻译；本栈 Edge **不支持** video-to-video
+- [Cosmos Cookbook](./cosmos-cookbook.md) — 2.x 配方；3.0 改走本仓 + cosmos-framework
+- [Transfer1 论文](./paper-cosmos-transfer1.md)
 - [HarnessEval-W](./paper-harnesseval-w.md) — Cosmos3-Super 在 Prompt I2V 族 Overall 71.9（#7）
 - [WALL-SS](./paper-wall-ss.md) — 以 Cosmos3-Nano 为视频基线的 next-scale AR WM（动作跟随 0.044 vs 0.290）
 

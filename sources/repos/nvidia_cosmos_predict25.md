@@ -37,3 +37,5 @@
 - 论文实体（本 arXiv 唯一节点）：[`wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md`](../../wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
 - 平台总览：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - 下一代：[`wiki/entities/cosmos-3.md`](../../wiki/entities/cosmos-3.md)
+- Transfer：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)、[`sources/repos/nvidia_cosmos_transfer25.md`](./nvidia_cosmos_transfer25.md)
+- Cookbook：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)

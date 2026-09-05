@@ -96,3 +96,5 @@ Edge 限制：分辨率仅 256p/480p，12–30 fps，50–150 帧；当前不支
 - 项目页：[`sources/sites/cosmos3-project.md`](../sites/cosmos3-project.md)
 - 训练框架：[`sources/repos/nvidia_cosmos_framework.md`](./nvidia_cosmos_framework.md)
 - 实体页：**`wiki/entities/cosmos-3.md`**
+- Transfer 族：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)
+- 2.x 配方：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)

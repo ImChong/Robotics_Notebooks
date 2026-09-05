@@ -34,6 +34,7 @@ related:
   - ../entities/paper-m4world.md
   - ../entities/paper-abot-world-0.md
   - ../entities/paper-roboreact.md
+  - ../entities/cosmos-transfer.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
@@ -150,6 +151,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [EWMBench](../entities/ewmbench.md) — 操纵场景下视频世界模型生成的多维评测坐标
 - [WorldScore](../entities/paper-worldscore.md) — 开放域多场景 + 相机可控世界生成统一评测（ICCV 2025）
 - [HarnessEval-W](../entities/paper-harnesseval-w.md) — 交互式世界 agentic 评测：干预是否发生、drift/revisit/offscreen
+- [Cosmos Transfer](../entities/cosmos-transfer.md) — 控制条件 world-to-world，补仿真视觉域而不是当像素物理引擎
 - [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)
 - [Model-Based RL](../methods/model-based-rl.md)
 - [ExoActor](../methods/exoactor.md) — 把视频即仿真思想用到人形机器人交互行为生成上。

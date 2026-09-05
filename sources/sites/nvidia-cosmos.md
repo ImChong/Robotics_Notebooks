@@ -55,4 +55,6 @@ GitHub 上按模态提供后训练脚本；NVIDIA TAO 7 提供 coding-agent skil
 
 - 平台总览：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - Cosmos 3：[`wiki/entities/cosmos-3.md`](../../wiki/entities/cosmos-3.md)
+- Transfer：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)
+- Cookbook：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)
 - 解析仿真对照：[`wiki/entities/newton-physics.md`](../../wiki/entities/newton-physics.md)、[`wiki/entities/nvidia-omniverse.md`](../../wiki/entities/nvidia-omniverse.md)

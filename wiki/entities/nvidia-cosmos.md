@@ -16,6 +16,9 @@ related:
   - ./paper-shenlan-wm-11-cosmos-policy.md
   - ../methods/mimic-video.md
   - ./nvidia-so101-sim2real-lab-workflow.md
+  - ./cosmos-transfer.md
+  - ./cosmos-cookbook.md
+  - ./paper-cosmos-transfer1.md
 sources:
   - ../../sources/sites/nvidia-cosmos.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -24,6 +27,9 @@ sources:
   - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
   - ../../sources/papers/cosmos_predict25_arxiv_2511_00062.md
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
+  - ../../sources/sites/cosmos-cookbook.md
+  - ../../sources/repos/nvidia_cosmos_transfer1.md
+  - ../../sources/repos/nvidia_cosmos_transfer25.md
 summary: "NVIDIA Cosmos 是 Physical AI 世界基础模型开放平台：从 Cosmos 1.0（Predict/Transfer/Reason 分模型）经 Predict2.5 flow WFM，到 Cosmos 3 全模态 MoT；配套 Curator / Evaluator / cosmos-framework。与 Newton / Omniverse 的解析仿真互补。"
 code: https://github.com/NVIDIA/cosmos
 ---
@@ -94,7 +100,7 @@ flowchart TB
 |------|--------|------|
 | 新产品 / 全模态 | [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) cookbook | Diffusers、vLLM-Omni、SGLang、NIM；微调走 cosmos-framework |
 | 训练 / 导出 | [cosmos-framework](https://github.com/NVIDIA/cosmos-framework) | `scripts.train` / `inference`；8×H100 recipe；DCP→safetensors→Diffusers |
-| 旧视频 WFM / Transfer | predict2.5 / transfer2.5 仓 | README 已写迁移 Cosmos 3；只为复现 2.5 论文或旧骨干 |
+| 旧视频 WFM / Transfer | [Cosmos Transfer](./cosmos-transfer.md) 1 / 2.5 仓 | README 已写迁移 Cosmos 3；V2V 配方见 [Cookbook](./cosmos-cookbook.md) |
 | 产品试用 | [nvidia.com/ai/cosmos](https://www.nvidia.com/en-us/ai/cosmos/) | Download Models / hosted catalog / Cookbook |
 | 解析仿真对照 | [Newton](./newton-physics.md)、Isaac Lab `feature/newton` | 接触、可微、USD 资产 |
 
@@ -120,6 +126,9 @@ flowchart TB
 - [mimic-video](../methods/mimic-video.md) — 冻结 Predict2 骨干的 VAM
 - [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md)
 - [NVIDIA SO-101 Sim2Real 动手课](./nvidia-so101-sim2real-lab-workflow.md)
+- [Cosmos Transfer](./cosmos-transfer.md) — world-to-world 多控翻译
+- [Cosmos-Transfer1 论文](./paper-cosmos-transfer1.md)
+- [Cosmos Cookbook](./cosmos-cookbook.md) — 2.x 可运行配方
 
 ## 参考来源
 
@@ -130,6 +139,9 @@ flowchart TB
 - [Cosmos 1.0 论文摘录](../../sources/papers/cosmos_wfm_arxiv_2501_03575.md)
 - [Predict2.5 论文摘录](../../sources/papers/cosmos_predict25_arxiv_2511_00062.md)
 - [Cosmos 3 论文摘录](../../sources/papers/cosmos3_arxiv_2606_02800.md)
+- [Cosmos Cookbook 站点](../../sources/sites/cosmos-cookbook.md)
+- [cosmos-transfer1 仓库](../../sources/repos/nvidia_cosmos_transfer1.md)
+- [cosmos-transfer2.5 仓库](../../sources/repos/nvidia_cosmos_transfer25.md)
 
 ## 推荐继续阅读
 
@@ -139,3 +151,4 @@ flowchart TB
 - [arXiv:2501.03575](https://arxiv.org/abs/2501.03575) — 平台定义
 - [arXiv:2511.00062](https://arxiv.org/abs/2511.00062) — Predict2.5 / Transfer2.5
 - [arXiv:2606.02800](https://arxiv.org/abs/2606.02800) — Cosmos 3
+- [Cosmos Cookbook](https://nvidia-cosmos.github.io/cosmos-cookbook/index.html)
