@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-4danyone.md",
+      "detail_id": "entity-paper-4danyone",
+      "label": "4DAnyone：单目随意视频做出 4D 人",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-fwbc-vla.md",
       "detail_id": "entity-paper-fwbc-vla",
       "label": "FWBC-VLA：无传感器接触感知的全身补偿",
@@ -201,25 +212,18 @@
       "recency": "2026-09-04",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "roadmap/depth-icl.md",
-      "detail_id": "roadmap-depth-icl",
-      "label": "路线（纵深）：如果目标是 ICL（具身上下文学习）",
-      "type": "roadmap_page",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fwbc-vla.md",
-    "detail_id": "entity-paper-fwbc-vla",
-    "label": "FWBC-VLA：无传感器接触感知的全身补偿",
+    "path": "wiki/entities/paper-4danyone.md",
+    "detail_id": "entity-paper-4danyone",
+    "label": "4DAnyone：单目随意视频做出 4D 人",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
