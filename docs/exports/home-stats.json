@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-fwbc-vla.md",
+      "detail_id": "entity-paper-fwbc-vla",
+      "label": "FWBC-VLA：无传感器接触感知的全身补偿",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-failbench.md",
       "detail_id": "entity-paper-failbench",
       "label": "FailBench：VLM 当裁判有多可靠",
@@ -201,26 +210,16 @@
       "recency": "2026-09-04",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-focus-foot-observation-confidence.md",
-      "detail_id": "entity-paper-focus-foot-observation-confidence",
-      "label": "FOCUS：连续足部置信度的人形本体里程计",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-failbench.md",
-    "detail_id": "entity-paper-failbench",
-    "label": "FailBench：VLM 当裁判有多可靠",
+    "path": "wiki/entities/paper-fwbc-vla.md",
+    "detail_id": "entity-paper-fwbc-vla",
+    "label": "FWBC-VLA：无传感器接触感知的全身补偿",
     "type": "entity",
-    "recency": "2026-09-04",
+    "recency": "2026-09-05",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
