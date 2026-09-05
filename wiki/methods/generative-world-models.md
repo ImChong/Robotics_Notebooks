@@ -33,6 +33,8 @@ related:
   - ../entities/xiaomi-robotics-u0.md
   - ../entities/cosmos-3.md
   - ../entities/nvidia-cosmos.md
+  - ../entities/cosmos-transfer.md
+  - ../entities/cosmos-cookbook.md
   - ../entities/newton-physics.md
   - ../entities/paper-kairos-native-world-model-stack.md
   - ../entities/paper-physmani-dynamic-manipulation-world-model.md
@@ -170,7 +172,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 **image-goal 导航 WAM 实例**：[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 在 **Cosmos Predict 2（2B）** 上构建 **九帧 latent canvas**，联合去噪未来 egocentric 观测、goal-progress value 与 action chunk；**policy 模式** 单次扩散即可闭环导航，**无需 CEM**（arXiv:2606.13494）。
 
-[NVIDIA Cosmos](../entities/nvidia-cosmos.md) 是该路线的 **厂商平台**：[1.0](../entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) 定义 WFM 与五类用法，[Predict2.5](../entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) 用 flow matching 统一 T2W/I2W/V2W（PAI-Bench I2W Overall **0.810**），[Cosmos 3](../entities/cosmos-3.md)（arXiv:2606.02800）再把 **语言、图像、视频、音频与动作** 收进单一 **Mixture-of-Transformers**。与 [mimic-video](./mimic-video.md) 依赖 **Cosmos-Predict2 冻结骨干** 或 [Cosmos Policy](../entities/paper-shenlan-wm-11-cosmos-policy.md) 微调 Predict2 的 **单论文实例** 不同，Cosmos 3 是 **开源平台级母栈**（4B Edge / 16B Nano / 64B Super、Diffusers / vLLM-Omni / SGLang / NIM、cosmos-framework SFT）。它与 [Newton](../entities/newton-physics.md) 互补：后者做解析接触，前者做像素世界与合成数据。在 [Sim2Real](../concepts/sim2real.md) 课程语境中，亦常作为 **演示视频增广** 的世界基础模型（见 [NVIDIA SO-101 Sim2Real](../entities/nvidia-so101-sim2real-lab-workflow.md) Strategy 3）。
+[NVIDIA Cosmos](../entities/nvidia-cosmos.md) 是该路线的 **厂商平台**：[1.0](../entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) 定义 WFM 与五类用法，[Predict2.5](../entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) 用 flow matching 统一 T2W/I2W/V2W（PAI-Bench I2W Overall **0.810**），[Cosmos Transfer](../entities/cosmos-transfer.md) 用多 ControlNet 做仿真/真机 **world-to-world** 翻译（Transfer1 自适应时空加权，Transfer2.5-2B 更小；配方见 [Cookbook](../entities/cosmos-cookbook.md)），[Cosmos 3](../entities/cosmos-3.md)（arXiv:2606.02800）再把 **语言、图像、视频、音频与动作** 收进单一 **Mixture-of-Transformers**。与 [mimic-video](./mimic-video.md) 依赖 **Cosmos-Predict2 冻结骨干** 或 [Cosmos Policy](../entities/paper-shenlan-wm-11-cosmos-policy.md) 微调 Predict2 的 **单论文实例** 不同，Cosmos 3 是 **开源平台级母栈**（4B Edge / 16B Nano / 64B Super、Diffusers / vLLM-Omni / SGLang / NIM、cosmos-framework SFT）。它与 [Newton](../entities/newton-physics.md) 互补：后者做解析接触，前者做像素世界与合成数据。在 [Sim2Real](../concepts/sim2real.md) 课程语境中，亦常作为 **演示视频增广** 的世界基础模型（见 [NVIDIA SO-101 Sim2Real](../entities/nvidia-so101-sim2real-lab-workflow.md) Strategy 3）。
 
 ### Action flow 跨具身 WM + RoboLab 开环评估（示例：Hydra-0）
 
@@ -310,6 +312,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy
 - [NVIDIA Cosmos](../entities/nvidia-cosmos.md) — 1.0 / Predict2.5 / Cosmos 3 平台与 Newton 分工
+- [Cosmos Transfer](../entities/cosmos-transfer.md) — 多控 world-to-world；Sim2Real 合成数据
+- [Cosmos Cookbook](../entities/cosmos-cookbook.md) — 2.x 可运行配方
 - [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 把 WM 写成三轴之一，用耦合类型诊断长程/不确定失败（TMLR 2026）
 - [GaussianDream++](../entities/paper-gaussiandream-plusplus.md) — 训练期高斯世界、部署 20 令牌
 - [ConfAL-WM](../entities/paper-confal-wm.md) — 稠密置信度主动后训练

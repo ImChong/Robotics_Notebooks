@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/sites/cosmos-cookbook.md、Transfer1/2.5 仓与文档 — Cosmos Transfer 族 + Cookbook 入库；已开源但 2.x 有限维护；关键页 cosmos-transfer、paper-cosmos-transfer1、cosmos-cookbook
+
+- **触发：** 用户指定 Cookbook、Transfer2.5 文档/仓、NVIDIA/Cosmos、Transfer1 项目页/仓，并要求自动合并 PR
+- **复用：** [`nvidia-cosmos`](wiki/entities/nvidia-cosmos.md)、[`cosmos-3`](wiki/entities/cosmos-3.md)、[`paper-sa-2511-00062`](wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)、[`nvidia_cosmos`](sources/repos/nvidia_cosmos.md) 已存在。**不另造** Cosmos 3 / Predict2.5 论文页。
+- **步骤 2.5：** Transfer1 / Transfer2.5 / Cookbook **已开源**（Apache-2.0 + NVIDIA Open Model License）。三仓 README 均写 **有限维护**，新产品走 [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos)。Cosmos 3 Edge **不支持** V2V transfer。
+- **关键判断：** Transfer 卖的是「控制图钉几何、prompt 改外观」；Transfer1 均匀四控 Quality 8.54、64×B200 实时 4.2 s；Transfer2.5-2B 比 7B 小 3.5×。配方从 Cookbook 抄，不要从零猜 JSON。
+- **新建：** [`cosmos-transfer`](wiki/entities/cosmos-transfer.md)、[`paper-cosmos-transfer1`](wiki/entities/paper-cosmos-transfer1.md)、[`cosmos-cookbook`](wiki/entities/cosmos-cookbook.md)
+- **交叉：** nvidia-cosmos / cosmos-3 / Predict2.5 / Sim2Real / GWM / SO-101 / video-as-simulation
+
 ## [2026-09-05] ingest | sources/papers/robot_juggling_arxiv_2608_26800.md — RAI AthenaZero 真机抛接分钟级记忆学习；确认未开源；关键页 paper-robot-juggling-athenazero
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2608.26800>、<https://arxiv.org/html/2608.26800v1>，并要求自动合并 PR

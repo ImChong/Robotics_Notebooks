@@ -17,6 +17,8 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/manipulation.md
   - ../queries/sim2real-gap-reduction.md
+  - ./cosmos-transfer.md
+  - ./cosmos-cookbook.md
 sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
@@ -126,7 +128,7 @@ flowchart TD
 
 ### Strategy 3：Cosmos 数据集增广
 
-- **Cosmos** 作为 Physical AI **世界基础模型**，从演示视频 + 文本 prompt 生成光照、物体位姿、背景等多样 **逼真视频**，补足 DR 无法覆盖的「合成感」与全新场景。课程 ingest 时对应 **Cosmos 2.x / Predict 系** 工作流；后续 **全模态单栈** 见 [Cosmos 3](./cosmos-3.md)（Generator T2V/I2V 与 policy rollout）。
+- **Cosmos** 作为 Physical AI **世界基础模型**，从演示视频 + 文本 prompt 生成光照、物体位姿、背景等多样 **逼真视频**，补足 DR 无法覆盖的「合成感」与全新场景。课程 ingest 时对应 **Cosmos 2.x / Predict 系** 工作流；要 **保住几何、只换外观** 时走 [Cosmos Transfer](./cosmos-transfer.md)（depth/edge/seg/vis，配方见 [Cookbook](./cosmos-cookbook.md)）；后续 **全模态单栈** 见 [Cosmos 3](./cosmos-3.md)（Generator T2V/I2V 与 policy rollout）。
 - 可与 depth/edge/seg 等控制信号组合（课程给出 prompt 与 control weight 示例）。
 
 ### Strategy 4：SAGE + GapONet（执行器层）
@@ -171,6 +173,8 @@ flowchart TD
 - [Learning to Fold（LeHome 2026）](./paper-lehome-learning-to-fold.md) — 同硬件族竞赛方案：Isaac Sim RL + 真机 DAgger 全链路
 - [SAGE](./sage-sim2real-actuator-gap-estimator.md)
 - [Cosmos 3](./cosmos-3.md)
+- [Cosmos Transfer](./cosmos-transfer.md) — Strategy 3 的控制翻译入口
+- [Cosmos Cookbook](./cosmos-cookbook.md)
 - [Manipulation](../tasks/manipulation.md)
 
 ## 推荐继续阅读

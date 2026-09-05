@@ -17,11 +17,16 @@ related:
   - ../methods/mimic-video.md
   - ../concepts/sim2real.md
   - ../tasks/manipulation.md
+  - ./cosmos-transfer.md
+  - ./cosmos-cookbook.md
+  - ./paper-cosmos-transfer1.md
 sources:
   - ../../sources/papers/cosmos_predict25_arxiv_2511_00062.md
   - ../../sources/repos/nvidia_cosmos_predict25.md
   - ../../sources/papers/sun_awesome_r2s2r_2511_00062_world-simulation-with-video-foundation-m.md
   - ../../sources/sites/nvidia-cosmos.md
+  - ../../sources/repos/nvidia_cosmos_transfer25.md
+  - ../../sources/sites/cosmos-cookbook.md
 summary: "Cosmos-Predict2.5 / Transfer2.5（arXiv:2511.00062）：flow matching 统一 T2W/I2W/V2W，Reason1 文本编码，200M clip + RL 后训练；PAI-Bench I2W Overall 0.810；Transfer2.5 比 Transfer1 小 3.5×。官方仓已引导迁移 Cosmos 3。"
 ---
 
@@ -117,7 +122,7 @@ sequenceDiagram
 |----|------|
 | 安装 | 仓内 `docs/setup.md`；Diffusers 另见 `docs/diffusers_inference.md` |
 | 选权重 | 通用世界用 2B/14B post-trained；驾驶用 auto/multiview；操纵用 action-cond 或 policy |
-| Transfer | 另仓 cosmos-transfer2.5；控制规格走 JSON `controlnet_specs` |
+| Transfer | 另仓 [cosmos-transfer2.5](./cosmos-transfer.md)；控制规格走 JSON `controlnet_specs`；配方见 [Cookbook](./cosmos-cookbook.md) |
 | 训练效率 | 论文：4096×H100、720p/93 帧，2B MFU 36.49%（CP=2），14B 33.08%（CP=8） |
 | 新产品 | **改走** [Cosmos 3](./cosmos-3.md) + cosmos-framework |
 
@@ -176,6 +181,9 @@ Transfer：PAIBench-Transfer（600 视频）上 Transfer2.5-2B 在控制遵循�
 - [mimic-video](../methods/mimic-video.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Cosmos Transfer](./cosmos-transfer.md) — 1 / 2.5 工程族
+- [Transfer1 论文](./paper-cosmos-transfer1.md)
+- [Cosmos Cookbook](./cosmos-cookbook.md)
 
 ## 参考来源
 
@@ -183,6 +191,8 @@ Transfer：PAIBench-Transfer（600 视频）上 Transfer2.5-2B 在控制遵循�
 - [cosmos-predict2.5 仓库](../../sources/repos/nvidia_cosmos_predict25.md)
 - [Awesome-Real2Sim2Real 策展摘录](../../sources/papers/sun_awesome_r2s2r_2511_00062_world-simulation-with-video-foundation-m.md)
 - [NVIDIA Cosmos 产品页](../../sources/sites/nvidia-cosmos.md)
+- [cosmos-transfer2.5 仓库](../../sources/repos/nvidia_cosmos_transfer25.md)
+- [Cookbook 站点](../../sources/sites/cosmos-cookbook.md)
 
 ## 推荐继续阅读
 
