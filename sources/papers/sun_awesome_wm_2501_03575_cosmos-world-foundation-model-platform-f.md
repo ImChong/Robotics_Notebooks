@@ -9,7 +9,7 @@
 - **arXiv：** 2501.03575
 - **出处：** arXiv 2025 (v3)
 - **论文：** <https://arxiv.org/abs/2501.03575>
-- **代码：** 未在清单中标注
+- **代码：** 未在清单中标注；一手核查见 [`cosmos_wfm_arxiv_2501_03575.md`](./cosmos_wfm_arxiv_2501_03575.md)（现主线 [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos)）
 
 - **Highlights（清单）：** NVIDIA's world foundation model platform for Physical AI, including video curation pipelines, pre‑trained world foundation models, post‑training examples, and video tokenizers to help developers build custom world models.
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md`](../../wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)
@@ -25,5 +25,7 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md`](../../wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)
+- 实体页（已升格一手）：[`wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md`](../../wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)
+- 一手摘录：[`sources/papers/cosmos_wfm_arxiv_2501_03575.md`](./cosmos_wfm_arxiv_2501_03575.md)
+- 平台总览：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)

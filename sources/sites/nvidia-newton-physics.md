@@ -7,6 +7,7 @@
 - **来源：** NVIDIA
 - **链接：** https://developer.nvidia.com/newton-physics
 - **入库日期：** 2026-05-19
+- **再核日期：** 2026-09-05
 - **一句话说明：** NVIDIA 对 Newton 的产品叙事：开源可扩展物理引擎、Warp + OpenUSD 底座、服务机器人学习与工业接触丰富任务。
 - **沉淀到 wiki：** 是 → [`wiki/entities/newton-physics.md`](../../wiki/entities/newton-physics.md)
 
@@ -40,14 +41,18 @@
 - **可微**：加速训练、设计优化与系统辨识。
 - **开源**：Apache 2.0，社区协作迭代。
 
-### 延伸阅读（页内链接）
+### 延伸阅读（页内链接，2026-09-05 仍在）
 
 - [Newton 文档](https://newton-physics.github.io/newton/guide/overview.html)
 - [Newton 1.0 博客](https://developer.nvidia.com/blog/newton-adds-contact-rich-manipulation-and-locomotion-capabilities-for-industrial-robotics)（接触丰富操作与 locomotion）
 - [Isaac Lab + Newton 四足教程](https://developer.nvidia.com/blog/train-a-quadruped-locomotion-policy-and-simulate-cloth-manipulation-with-nvidia-isaac-lab-and-newton/)
 - Isaac Lab 集成分支：<https://github.com/isaac-sim/IsaacLab/tree/feature/newton>
+- 页首 CTA：Newton on GitHub、Newton in Isaac Lab
+
+厂商页把 Newton 放在 **Isaac Sim / Isaac Lab / MuJoCo Playground / Warp / OpenUSD** 同一叙事里；与 [NVIDIA Cosmos](https://www.nvidia.com/en-us/ai/cosmos/) 的分工见产品 FAQ：Omniverse/Newton 提供解析仿真，Cosmos Transfer 把仿真视频译成可控照片级合成数据。
 
 ## 对 wiki 的映射
 
 - 产品层叙事与 Isaac / Playground 对接 → [`wiki/entities/newton-physics.md`](../../wiki/entities/newton-physics.md)
 - Omniverse / Isaac 底座 → [`wiki/entities/nvidia-omniverse.md`](../../wiki/entities/nvidia-omniverse.md)
+- 与 Cosmos 世界模型的互补 → [`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)

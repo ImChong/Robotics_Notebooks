@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, training-stack, isaac-lab, mujoco, mjlab, unilab, newton, genesis, reinforcement-learning, survey]
 status: complete
-updated: 2026-06-22
+updated: 2026-09-05
 related:
   - ../entities/isaac-lab.md
   - ../entities/mujoco.md
@@ -10,6 +10,8 @@ related:
   - ../entities/mjlab.md
   - ../entities/unilab.md
   - ../entities/newton-physics.md
+  - ../entities/nvidia-warp.md
+  - ../entities/mujoco-warp.md
   - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md
   - ../queries/simulator-selection-guide.md
@@ -78,7 +80,7 @@ flowchart TB
 | 层 | 代表项目 | Wiki 节点 | 核心问题 |
 |----|----------|-----------|----------|
 | **① 大平台** | Isaac Lab / Isaac Sim | [isaac-lab](../entities/isaac-lab.md)、[isaac-sim](../entities/isaac-sim.md) | 复杂场景、多传感、资产与训练接口能否在同一工作台统一？ |
-| **② 物理 / sim2sim** | MuJoCo、MJX、Warp | [mujoco](../entities/mujoco.md)、[mujoco-mjx](../entities/mujoco-mjx.md) | 接触动力学是否透明、可调试、便于 sim2sim？ |
+| **② 物理 / sim2sim** | MuJoCo、MJX、Warp | [mujoco](../entities/mujoco.md)、[mujoco-mjx](../entities/mujoco-mjx.md)、[mujoco-warp](../entities/mujoco-warp.md)、[nvidia-warp](../entities/nvidia-warp.md) | 接触动力学是否透明、可调试、便于 sim2sim？ |
 | **③ 任务入口** | MuJoCo Playground、mjlab | [mujoco-playground](../entities/mujoco-playground.md)、[mjlab](../entities/mjlab.md) | **time-to-robot**：从行为/奖励想法到真机验证要多久？ |
 | **④ 异构运行时** | UniLab | [unilab](../entities/unilab.md) | 瓶颈在物理 step 还是采集–学习–同步整条回路？ |
 | **⑤ 底层连接器** | Newton | [newton-physics](../entities/newton-physics.md) | 能否在 OpenUSD / Warp / MuJoCo Warp / Lab 之间可插拔？ |

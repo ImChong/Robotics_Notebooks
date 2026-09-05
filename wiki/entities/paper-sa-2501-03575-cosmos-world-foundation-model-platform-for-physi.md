@@ -1,103 +1,163 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, nvidia, world-models, physical-ai, wfm, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-05
 arxiv: "2501.03575"
 venue: "arXiv 2025 (v3)"
-summary: "NVIDIA's world foundation model platform for Physical AI, including video curation pipelines, pre‑trained world foundation models, post‑training examples, and video tokenizers to help developers build custom world models"
+code: https://github.com/NVIDIA/cosmos
 related:
+  - ./nvidia-cosmos.md
+  - ./cosmos-3.md
+  - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md
+  - ./newton-physics.md
   - ../entities/awesome-world-models.md
   - ../overview/sun-awesome-wm-technology-map.md
   - ../methods/generative-world-models.md
-  - ../methods/model-based-rl.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+  - ../concepts/video-as-simulation.md
+  - ../concepts/sim2real.md
 sources:
+  - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
   - ../../sources/papers/sun_awesome_wm_2501_03575_cosmos-world-foundation-model-platform-f.md
-  - ../../sources/papers/sun_awesome_wm_catalog.md
-  - ../../sources/repos/awesome-world-models.md
+  - ../../sources/sites/nvidia-cosmos.md
+  - ../../sources/repos/nvidia_cosmos.md
+summary: "NVIDIA Cosmos 1.0 世界基础模型平台（arXiv:2501.03575）：从约 2000 万小时视频策展约 1 亿 clip，预训练扩散与自回归 WFM，再后训练到相机控制 / 操纵 / 驾驶；定义策略评估、初始化、MBRL、规划与合成数据五类用法。"
 ---
 
 # Cosmos World Foundation Model Platform for Physical AI
 
-**Cosmos World Foundation Model Platform for Physical AI** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 018/571** 篇，分组 **111 General Simulation Platforms**。本页为知识库 **策展索引级** 详情节点；方法细节与量化指标以原文 PDF / 项目页为准。
+**Cosmos World Foundation Model Platform for Physical AI**（[arXiv:2501.03575](https://arxiv.org/abs/2501.03575)，NVIDIA，2025）是 Cosmos **第一代** 平台论文：把世界基础模型（WFM）定义为 Physical AI 的「世界数字孪生」，并给出视频策展、扩散 / 自回归预训练、tokenizer、后训练示例与 guardrail。Awesome World Models 列表坐标仍为 **第 018/571**、分组 **111 General Simulation Platforms**；本页已按一手 PDF 升格，不再停留在清单 Highlights。
 
 ## 一句话定义
 
-NVIDIA's world foundation model platform for Physical AI, including video curation pipelines, pre‑trained world foundation models, post‑training examples, and video tokenizers to help developers build custom world models.
+**先用大规模视频把 WFM 训成世界通才，再在目标机器人 / 驾驶环境上后训练成专才——用数字世界代替真机探索。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WM | World Model | 环境前向预测模型 |
-| WAM | World Action Model | 世界预测与动作联合建模 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
+| WFM | World Foundation Model | 可后训练的通用世界模型 \(\mathcal{W}(x_{0:t}, c_t)\to\hat{x}_{t+1}\) |
+| VLM | Vision-Language Model | 为 clip 写字幕、并参与过滤 |
+| AR | Autoregressive | 离散 token 上按序生成的预训练路线 |
+| DM | Diffusion Model | 连续 token 上逐步去噪的预训练路线 |
+| MPC | Model Predictive Control | 论文列出的 WFM 用途之一：在想象里滚动作 |
+| SDG | Synthetic Data Generation | 条件 WFM 生成深度 / 语义等再用于 Sim2Real |
 
 ## 为什么重要
 
-- NVIDIA's world foundation model platform for Physical AI, including video curation pipelines, pre‑trained world foundation models, post‑training examples, and video tokenizers to help developers build custom world models.
-- 在 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 与列表实体 [Awesome World Models](../entities/awesome-world-models.md) 及站内方法/任务页交叉，便于从策展索引跳转到学习主线。
+- 把「Physical AI 数据难规模化」写成平台问题，而不是又一篇视频生成论文：探索动作会损坏真机，所以先要世界孪生。
+- 给出可复述的预训练–后训练配方，后续 [Predict2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) 与 [Cosmos 3](./cosmos-3.md) 都沿这条轴加流量匹配、全模态与 serving。
+- 明确 WFM 的五种用法（评估 / 初始化 / 配奖励训练 / 规划 / 合成数据），方便和 [Newton](./newton-physics.md) 的解析仿真对照。
 
-## 核心信息（索引级）
+## 核心信息
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 018/571 |
-| 分组 | 111 General Simulation Platforms |
-| 出处 | arXiv 2025 (v3) |
-| 论文 | <https://arxiv.org/abs/2501.03575> |
+| 项 | 内容 |
+|----|------|
+| **机构** | 英伟达（NVIDIA） |
+| **Awesome 坐标** | 018/571 · 111 General Simulation Platforms |
+| **数据** | ~2000 万小时源视频 → ~1 亿条 2–60 秒 clip；每 256 帧 VLM 字幕 |
+| **预训练** | Transformer 扩散 WFM（连续 token）+ Transformer 自回归 WFM（离散 token） |
+| **后训练示例** | 相机位姿条件、机器人 video–action、自动驾驶 |
+| **开源** | 论文发布时：NVIDIA Open Model License，入口 Cosmos-Predict1。2026-09 主线在 [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos)（Cosmos 3） |
 
-## 核心机制（归纳）
+## 核心原理
 
-### 策展导读要点
+WFM \(\mathcal{W}\) 根据过去观测 \(x_{0:t}\)（RGB 视频）与当前扰动 \(c_t\)（动作、随机扰动或文本等）预测 \(\hat{x}_{t+1}\)。
 
-NVIDIA's world foundation model platform for Physical AI, including video curation pipelines, pre‑trained world foundation models, post‑training examples, and video tokenizers to help developers build custom world models.
+预训练用多样视频让模型接触真实世界物理；后训练用目标环境的 prompt–视频对做成 specialist，数据量可以小得多。Tokenizer 被写成类视频编解码器：既要压 token 数，又要保住视觉内容。Guardrail 分 pre-Guard（拦输入）与 post-Guard（拦输出）。
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+### 流程总览
 
-## 评测与指标（索引级）
+```mermaid
+flowchart LR
+  RAW[约 2000 万小时视频] --> CUR[策展管线\n切 clip + VLM 字幕]
+  CUR --> TOK[视频 tokenizer\n连续 / 离散]
+  TOK --> PRE[预训练 WFM\n扩散或自回归]
+  PRE --> POST[后训练\n相机 / 操纵 / 驾驶]
+  POST --> USE[评估 / 初始化 / MBRL\n规划 / 合成数据]
+```
 
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2501.03575) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
+## 源码运行时序图
 
-## 与其他工作对比（索引级）
+第一代入口是 Cosmos-Predict1（NVIDIA Open Model License）。2026-09-05 官方主仓 [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) 与 [cosmos-framework](https://github.com/NVIDIA/cosmos-framework) 面向 **Cosmos 3**；复现本文化应用 1.0 历史权重，新产品应走 3.0 cookbook。
 
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **111 General Simulation Platforms** 分组逐条展开。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant HF as Hugging Face<br/>历史 Predict1 / 现 Cosmos3
+    participant FW as cosmos_framework<br/>或 Diffusers
+    participant Tok as 视频 tokenizer
+    participant WFM as 预训练 / 后训练 WFM
+    participant Out as 未来视频或动作
+    Dev->>HF: 按模型卡申请门控权重
+    Dev->>FW: 加载 checkpoint
+    FW->>Tok: 编码观测视频
+    Tok->>WFM: token + 文本 / 动作条件
+    WFM->>Out: 去噪或自回归解码
+    Out-->>Dev: 合成 clip / 评估策略
+```
+
+## 工程实践
+
+| 项 | 要点 |
+|----|------|
+| 论文主张的用途 | 策略评估、策略初始化、配奖励的策略训练、规划 / MPC、条件合成数据 |
+| 今日入口 | 平台总览见 [nvidia-cosmos](./nvidia-cosmos.md)；不要把 Predict1 README 当当前产品 |
+| 与解析仿真 | 需要接触与守恒律时用 [Newton](./newton-physics.md)；本平台输出是视频世界 |
+
+## 评测与指标
+
+本平台文以方法与系统叙述为主，定量榜单留给后续代际（Predict2.5 的 PAI-Bench、Cosmos 3 的 Artificial Analysis / RoboArena）。读者应记住的是 **数据与配方**：2000 万小时 → 1 亿 clip、双路线预训练、三类后训练，而不是某一 VBench 分数。
+
+## 与其他工作对比
+
+| 对比轴 | Cosmos 1.0 | [Predict2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) | [Cosmos 3](./cosmos-3.md) |
+|--------|------------|----------------------------------------------------------------------------------------|---------------------------|
+| 生成范式 | 扩散 + 自回归分模型 | 单网 flow matching | MoT：AR Reasoner + 扩散 Generator |
+| 模态 | 视频为主，文本条件 | 文本 / 图像 / 视频世界 | 文本 / 图像 / 视频 / 音频 / 动作 |
+| 控制翻译 | 后文 Transfer1 | Transfer2.5 ControlNet | Generator transfer cookbook |
+| 维护 | 历史入口 | 有限维护，引导迁移 | **当前主线** |
+
+Awesome 策展索引仍指向本文件名；深度内容以本页与一手 PDF 为准。
 
 ## 结论
 
-**本条目的站内价值是把「Cosmos World Foundation Model Platform for Physical AI」从外部 Awesome 列表提升为可链接的知识节点，并保留清单 Highlights 作为阅读锚点。**
+**Cosmos 1.0 真正留下的是「WFM = 可后训练的世界孪生」与五类用法，而不是某一版视频质量分数。**
 
-- 起作用的是策展坐标：列表分组 **111 General Simulation Platforms** + Highlights 指出的问题设定，而不是本页自行推导的新算法结论。
-- 适用边界：索引级页面不能替代 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 若该工作成为学习主线，应再升格为深度论文实体（补机构、实验表、源码运行时序图或「不适用」说明）。
+1. **先问用途再选代际** — 只要视频世界与后训练配方，读本页；要 PAI-Bench / Transfer 控制图，读 2.5；要动作 / 音频 / serving，读 Cosmos 3。
+2. **数据管线是平台资产** — 切 clip、字幕、tokenizer、guardrail 比单次 checkpoint 更长久。
+3. **后训练数据可以少** — 前提是预训练已经见过足够物理视觉。
+4. **开源入口已搬家** — 论文写 Predict1；2026-09 可跑主线是 NVIDIA/cosmos。
+5. **不能替代 Newton** — 本 WFM 预测像素未来，不保证接触力或动量守恒。
 
-## 常见误区
+## 局限与风险
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 同一 arXiv 在全库只允许一个 canonical 详情节点；若已有深度页，应以深度页为准。
+- 论文自己说 WFM 远未解决；1.0 画质与指令对齐被 2.5 / 3.0 明确超越。
+- 把 Awesome Highlights 当完整方法证明会漏掉 tokenizer / guardrail / 五类用法。
+- 权重许可与仓名随代际变化，复现须核对模型卡。
 
 ## 关联页面
 
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [NVIDIA Cosmos 平台](./nvidia-cosmos.md)
+- [Cosmos 3](./cosmos-3.md)
+- [Predict2.5 / Transfer2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
+- [Newton Physics](./newton-physics.md)
+- [Awesome World Models](./awesome-world-models.md)
+- [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
+- [Generative World Models](../methods/generative-world-models.md)
+- [Video-as-Simulation](../concepts/video-as-simulation.md)
+- [Sim2Real](../concepts/sim2real.md)
 
 ## 参考来源
 
-- [`sources/papers/sun_awesome_wm_2501_03575_cosmos-world-foundation-model-platform-f.md`](../../sources/papers/sun_awesome_wm_2501_03575_cosmos-world-foundation-model-platform-f.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2501.03575>
+- [Cosmos 1.0 一手摘录](../../sources/papers/cosmos_wfm_arxiv_2501_03575.md)
+- [Awesome 策展摘录](../../sources/papers/sun_awesome_wm_2501_03575_cosmos-world-foundation-model-platform-f.md)
+- [NVIDIA Cosmos 产品页](../../sources/sites/nvidia-cosmos.md)
+- [NVIDIA/cosmos 仓库](../../sources/repos/nvidia_cosmos.md)
 
 ## 推荐继续阅读
 
+- [arXiv:2501.03575](https://arxiv.org/abs/2501.03575)
+- [NVIDIA Cosmos 产品页](https://www.nvidia.com/en-us/ai/cosmos/)
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2501.03575)

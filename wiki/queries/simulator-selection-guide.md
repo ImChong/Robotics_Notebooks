@@ -2,7 +2,7 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl, omnisim]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-05
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
@@ -23,6 +23,8 @@ related:
   - ../entities/mujoco-mjx.md
   - ../entities/brax.md
   - ../entities/newton-physics.md
+  - ../entities/nvidia-warp.md
+  - ../entities/mujoco-warp.md
   - ../entities/mjlab.md
   - ../entities/spear-sim.md
   - ../entities/omnisim.md
@@ -57,6 +59,8 @@ related:
 | 四足课程 / MuJoCo+UE 联合 / 智身 SDK 闭环 | **[MATRiX](../entities/matrix-simulation-platform.md)** |
 | 极速原型验证 / 新兴框架尝鲜 | **Genesis** |
 | 缩短想法→真机验证墙钟（MJX 生态） | **MuJoCo Playground** |
+| 已有 MJCF、要 NVIDIA GPU 吞吐、PyTorch / Newton | **[MuJoCo Warp](../entities/mujoco-warp.md)**（经 [mjlab](../entities/mjlab.md) / Newton；AD 未通） |
+| 只要可微 kernel / 自写 GPU 仿真，不要引擎 | **[NVIDIA Warp](../entities/nvidia-warp.md)**（`warp-lang`；`warp.sim` 已弃用） |
 | 无 CUDA / CPU 物理 + GPU 学习异构 | **UniLab** |
 | 跨项目理解「谁在跟谁竞争」 | 先读 **[训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)** |
 | 编码代理驱动场景 / HTTP+MCP 对话式仿真 | **[OmniSim](../entities/omnisim.md)**（Webots fork，Newton 唯一后端；不是 Isaac Lab 替代） |
@@ -72,6 +76,7 @@ related:
 | 层 | 代表 | 与本页三选关系 |
 |----|------|----------------|
 | 任务入口 | [MuJoCo Playground](../entities/mujoco-playground.md)、[mjlab](../entities/mjlab.md) | 可与 MuJoCo/Isaac **并存**；先原型再迁移 |
+| 物理 / 计算 | [MuJoCo MJX](../entities/mujoco-mjx.md)、[MuJoCo Warp](../entities/mujoco-warp.md)、[NVIDIA Warp](../entities/nvidia-warp.md) | MJX = JAX 可微；MJWarp = GPU drop-in（AD 未通）；Warp = kernel 层 |
 | 运行时 | [UniLab](../entities/unilab.md) | 可搭配 MuJoCo 后端，质疑「必须 GPU 仿真」默认 |
 | 评估 | [Genesis World](../entities/genesis-world-10.md) | 与开源 [Genesis](../entities/genesis-sim.md) 同名不同物，选型须核对主体 |
 
@@ -100,7 +105,7 @@ related:
 - 接触动力学建模是学术界黄金标准，soft contact 模型精度高
 - DeepMind 开源后社区活跃，[dm_control](../entities/dm-control.md) / ManiSkill2 均基于 MuJoCo
 - CPU 运行稳定，不依赖 GPU 环境，部署门槛低
-- [MuJoCo MJX](../entities/mujoco-mjx.md)（JAX / GPU 批量）支持高吞吐采样，但需核对 **feature parity**；[Brax](../entities/brax.md) 侧重 **JAX RL 训练算法**，物理侧官方推荐对齐 MJX / MuJoCo Warp
+- [MuJoCo MJX](../entities/mujoco-mjx.md)（JAX / GPU 批量）支持高吞吐采样，但需核对 **feature parity**；[MuJoCo Warp](../entities/mujoco-warp.md) 是 **Warp/CUDA** 上的 drop-in（PGS/PLUGIN 有缺口，**AD 未通**）。[Brax](../entities/brax.md) 侧重 **JAX RL 训练算法**，物理侧官方推荐对齐 MJX / MJWarp
 
 **局限：**
 - 单进程仿真速度有限，大规模并行需要 MJX 或多进程 wrapper
@@ -182,7 +187,7 @@ related:
 - **引擎层**可插拔求解器、USD、可微与 LF 开源治理 → 评估 **Newton**
 - **现成 manager-based RL 环境**（类 Isaac Lab API、不绑 Isaac Sim）→ 优先 **mjlab**
 
-二者均依赖 MuJoCo Warp，与 Isaac Lab 的 `feature/newton` 集成属于同一技术脉络，选型时按「要框架还是要引擎」拆分。
+二者均依赖 MuJoCo Warp，与 Isaac Lab 的 `feature/newton` 集成属于同一技术脉络，选型时按「要框架还是要引擎」拆分。2026-09 文档把接触改到 **`CollisionPipeline.collide`**，并列出 **Kamino / ImplicitMPM / Style3D**（颗粒、雪、Style3D 布料）；需要像素级世界预测或仿真视频照片级翻译时另评 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)，不要把 WFM 当成接触求解器。
 
 ### 补充：编码代理工作台（[OmniSim](../entities/omnisim.md)）
 

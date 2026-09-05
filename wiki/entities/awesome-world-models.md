@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, world-models, wam, vla, model-based-rl, embodied-ai, autonomous-driving]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 related:
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md

@@ -3,9 +3,10 @@ type: entity
 tags: [software, simulation, jax, reinforcement-learning, differentiable-physics, google, deepmind]
 status: complete
 date: 2026-05-18
-updated: 2026-05-18
+updated: 2026-09-05
 related:
   - ./mujoco-mjx.md
+  - ./mujoco-warp.md
   - ./mujoco.md
   - ./dm-control.md
   - ../methods/reinforcement-learning.md
@@ -48,7 +49,7 @@ summary: "Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；当前 RE
 
 - **自 0.13.0 起**：**仅 `brax/training` 处于积极维护**；不应再把 `brax/envs` 当作新项目的默认环境来源。
 - **环境**：官方建议改用 [**MuJoCo Playground**](https://github.com/google-deepmind/mujoco_playground) 等任务库，并与 `brax/training` 组合训练。
-- **物理仿真**：若目标是 **MuJoCo 一致动力学**，应使用 **MJX**（[`mujoco-mjx`](https://pypi.org/project/mujoco-mjx/)）或 [**MuJoCo Warp**](https://github.com/google-deepmind/mujoco_warp)，README 提示未来可能将 Brax **进一步收窄为 RL 库**。
+- **物理仿真**：若目标是 **MuJoCo 一致动力学**，应使用 **MJX**（[`mujoco-mjx`](https://pypi.org/project/mujoco-mjx/)）或 [**MuJoCo Warp**](./mujoco-warp.md)，README 提示未来可能将 Brax **进一步收窄为 RL 库**。
 
 ## 常见误区或局限
 
@@ -59,6 +60,7 @@ summary: "Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；当前 RE
 ## 关联页面
 
 - [MuJoCo MJX](./mujoco-mjx.md) — README 推荐的 MuJoCo 级 JAX 物理入口
+- [MuJoCo Warp](./mujoco-warp.md) — README 并列的 Warp/CUDA 物理入口（AD 未通）
 - [MuJoCo](./mujoco.md) — 资产格式、接触建模与 CPU 参考实现
 - [dm_control](./dm-control.md) — 经典连续控制基准与 Python 工具链
 - [LIFT（人形大规模预训练 + 高效微调）](./lift-humanoid.md) — 工程叙事中使用 **Brax 可微刚体** 组件的实例

@@ -337,7 +337,7 @@
 - [MIT Mini Cheetah（学习栈与开源边界）](wiki/entities/mit-mini-cheetah.md) — MIT Mini Cheetah**（Sangbae Kim 实验室；执行器由 Benjamin Katz 主导）是约 **0.3 m / 9 kg `📅unknown` `[entity_page]`
 - [Mixamo](wiki/entities/mixamo.md) — Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形 `📅unknown` `[entity_page]`
 - [mjlab_playground（mjlab 任务集合）](wiki/entities/mjlab-playground.md) — mjlab_playground** 是 mjlab 之上的 **示例任务仓库**：把 [MuJoCo Playground](https://playground.m `📅unknown` `[entity_page]`
-- [mjlab (轻量 GPU 加速 RL 框架)](wiki/entities/mjlab.md) — mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 **MuJoCo Warp `📅unknown` `[entity_page]`
+- [mjlab (轻量 GPU 加速 RL 框架)](wiki/entities/mjlab.md) — mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 [**MuJoCo War `📅unknown` `[entity_page]`
 - [MLflow](wiki/entities/mlflow.md) — MLflow](https://github.com/mlflow/mlflow) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
 - [MNN](wiki/entities/mnn.md) — MNN**（**Mobile Neural Network**）是由 **阿里巴巴** 开源并长期维护的 **高效轻量深度学习推理引擎**。它在阿里系 30+ 应用、70+ 场景中承担 on-de `📅2026-06-25` `[entity_page]`
 - [MobileGym（移动 GUI Agent 可验证仿真与基准）](wiki/entities/mobilegym.md) — MobileGym**（arXiv:2605.26114，官网，[代码](https://github.com/Purewhiter/mobile `📅unknown` `[entity_page]`
@@ -352,16 +352,18 @@
 - [MoveIt 2](wiki/entities/moveit2.md) — MoveIt 2** 是面向 **ROS 2** 的开源 **运动规划、操作与运动学** 框架（[moveit/moveit2](https://github.com/moveit/moveit2 `📅2026-06-15` `[entity_page]`
 - [MuJoCo MJX（MuJoCo XLA）](wiki/entities/mujoco-mjx.md) — MuJoCo MJX**（常写作 **MJX**）是 Google DeepMind 在 **JAX** 上对 MuJoCo 物理引擎的 **重实现**：通过 PyP `📅2026-05-18` `[entity_page]`
 - [MuJoCo Playground](wiki/entities/mujoco-playground.md) — MuJoCo Playground**（[google-deepmind/mujoco_playground](https://github.com/google-deepmind/mujoco_ `📅unknown` `[entity_page]`
+- [MuJoCo Warp（MJWarp）](wiki/entities/mujoco-warp.md) — MuJoCo Warp**（常写作 **MJWarp**）是 Google DeepMind 与 NVIDIA **作为 Newton 的一部分**  `📅unknown` `[entity_page]`
 - [MuJoCo WASM（浏览器物理仿真）](wiki/entities/mujoco-wasm.md) — MuJoCo WASM** 是把 MuJoCo C 核心编译为 **WebAssembly**、并通过 **JavaScript/TypeScript** 暴露 `M `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](wiki/entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
 - [MuSHR](wiki/entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
 - [新智具身智能（NeoteAI）](wiki/entities/neoteai.md) — 新智具身智能**（上海新智具身智能科技有限公司，NeoteAI）源自 **复旦大学可信具身智能研究院（TEAI）**，以触觉为具身原生模态，产 `📅unknown` `[entity_page]`
-- [Newton Physics（物理引擎）](wiki/entities/newton-physics.md) — Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 [NVIDIA Warp](https://developer.nvidia.com/warp-py `📅unknown` `[entity_page]`
+- [Newton Physics（物理引擎）](wiki/entities/newton-physics.md) — Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 NVIDIA Warp 上实现核心计算，集成 [MuJoCo `📅unknown` `[entity_page]`
 - [nordschleife-racer](wiki/entities/nordschleife-racer.md) — nordschleife-racer** 是 **yassin.app** 背后的 **浏览器竞速引擎**：**TypeScript + Three.js** 实现程序化 **纽北** 单圈、 `📅unknown` `[entity_page]`
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`
+- [NVIDIA Cosmos（世界基础模型平台）](wiki/entities/nvidia-cosmos.md) — NVIDIA Cosmos** 是面向机器人、自动驾驶与智慧基础设施的 **Physical AI 世界基础模型（WFM）开放平台**：同时发布模型权重、视频策展 / 评测工具与训练–推理框架。当 `📅unknown` `[entity_page]`
 - [NVIDIA GEAR Lab（Generalist Embodied Agent Research）](wiki/entities/nvidia-gear-lab.md) — GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **[Linxi  `📅unknown` `[entity_page]`
 - [NVIDIA Getting Started With Isaac Lab](wiki/entities/nvidia-getting-started-isaac-lab.md) — Getting Started With Isaac Lab** 是 Physical AI Learning 门户下的  `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab Spot locomotion Sim2Real](wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab** 是 NVIDIA D `📅unknown` `[entity_page]`
@@ -370,6 +372,7 @@
 - [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 Isaac Sim 的运行底座。通过利 `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI Learning](wiki/entities/nvidia-physical-ai-learning.md) — NVIDIA Physical AI Learning** 是 NVIDIA 面向 **Physical AI**（能感知、推理物理关系、执行动作并适应真实环境的 AI 系统）的 **免费自学课程 `📅unknown` `[entity_page]`
 - [NVIDIA SO-101 Sim2Real 实验 workflow](wiki/entities/nvidia-so101-sim2real-lab-workflow.md) — Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac** 是 [Physical AI Learning](./nvidia-physi `📅unknown` `[entity_page]`
+- [NVIDIA Warp（可微 GPU 计算框架）](wiki/entities/nvidia-warp.md) — NVIDIA Warp** 是面向仿真、机器人与机器学习的 **Python JIT 框架**：用 `@wp.kernel` 写普通函数，经 `wp.launch` 编译到 **CPU 或 CUD `📅unknown` `[entity_page]`
 - [OCS2](wiki/entities/ocs2.md) — OCS2](https://github.com/leggedrobotics/ocs2) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](wiki/entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
 - [ODRI Solo / Bolt（开源腿式平台）](wiki/entities/odri-solo-and-bolt.md) — ODRI（Open Dynamic Robot Initiative）** 提供面向研究的开源 **扭矩控制** 腿足平台：**Solo**（四足）与 **Bolt**（双足）常被引作 **低惯量 `📅unknown` `[entity_page]`
@@ -1608,7 +1611,7 @@
 - [Embodied VideoAgent](wiki/entities/paper-sa-2501-00358-embodied-videoagent-persistent-memory-from-egoce.md) — Embodied VideoAgent: Persistent Memory from Egocentric Videos and Embodied Sensors Enables Dynamic `📅unknown` `[entity_page]`
 - [EnerVerse](wiki/entities/paper-sa-2501-01895-enerverse-envisioning-embodied-future-space-for.md) — EnerVerse: Envisioning Embodied Future Space for Robotics Manipulation** 收录于 [Awesome World Models `📅unknown` `[entity_page]`
 - [Sim-to-Real Transfer for Mobile Robots with Reinforcement Learning](wiki/entities/paper-sa-2501-02902-sim-to-real-transfer-for-mobile-robots-with-rein.md) — Sim-to-Real Transfer for Mobile Robots with Reinforcement Learning: from NVIDIA Isaac Sim to Gazeb `📅unknown` `[entity_page]`
-- [Cosmos World Foundation Model Platform for Physical AI](wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) — Cosmos World Foundation Model Platform for Physical AI** 收录于 [Awesome World Models](https://github `📅unknown` `[entity_page]`
+- [Cosmos World Foundation Model Platform for Physical AI](wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) — Cosmos World Foundation Model Platform for Physical AI**（[arXiv:2501.03575](https://arxiv.org/abs/ `📅unknown` `[entity_page]`
 - [AD-L-JEPA](wiki/entities/paper-sa-2501-04969-ad-l-jepa-self-supervised-spatial-world-models-w.md) — AD-L-JEPA: Self-Supervised Spatial World Models with JEPA for Autonomous Driving with LiDAR** 收录于  `📅unknown` `[entity_page]`
 - [ECBench](wiki/entities/paper-sa-2501-05031-ecbench-can-multi-modal-foundation-models-unders.md) — ECBench: Can Multi-modal Foundation Models Understand the Egocentric World? A Holistic Embodied Co `📅unknown` `[entity_page]`
 - [RoboHorizon](wiki/entities/paper-sa-2501-06605-robohorizon-an-llm-assisted-multi-view-world-mod.md) — RoboHorizon: An LLM-Assisted Multi-View World Model for Long-Horizon Robotic Manipulation** 收录于 [A `📅unknown` `[entity_page]`
@@ -1903,7 +1906,7 @@
 - [EgoThinker](wiki/entities/paper-sa-2510-23569-egothinker-unveiling-egocentric-reasoning-with-s.md) — EgoThinker: Unveiling Egocentric Reasoning with Spatio-Temporal Chain of Thought** 收录于 [Awesome Eg `📅unknown` `[entity_page]`
 - [TRELLISWorld](wiki/entities/paper-sa-2510-23880-trellisworld-training-free-world-generation-from.md) — TRELLISWorld: Training-Free World Generation from Object Generators** 收录于 [Awesome World Models](h `📅unknown` `[entity_page]`
 - [Emu3.5](wiki/entities/paper-sa-2510-26583-emu3-5-native-multimodal-models-are-world-learne.md) — Emu3.5: Native Multimodal Models are World Learners** 收录于 [Awesome World Models](https://github.co `📅unknown` `[entity_page]`
-- [World Simulation with Video Foundation Models for Physical AI](wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) — World Simulation with Video Foundation Models for Physical AI** 收录于 [Awesome-Real2Sim2Real](https: `📅unknown` `[entity_page]`
+- [World Simulation with Video Foundation Models for Physical AI](wiki/entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) — World Simulation with Video Foundation Models for Physical AI**（[arXiv:2511.00062](https://arxiv.o `📅unknown` `[entity_page]`
 - [End-to-End Dexterous Arm-Hand VLA Policies via Shared Autonomy](wiki/entities/paper-sa-2511-00139-end-to-end-dexterous-arm-hand-vla-policies-via-s.md) — End-to-End Dexterous Arm-Hand VLA Policies via Shared Autonomy** 收录于 [Awesome Touch](https://githu `📅unknown` `[entity_page]`
 - [Eyes on Target](wiki/entities/paper-sa-2511-01237-eyes-on-target-gaze-aware-object-detection-in-eg.md) — Eyes on Target: Gaze-Aware Object Detection in Egocentric Video** 收录于 [Awesome Egocentric Vision `📅unknown` `[entity_page]`
 - [UD-VLA](wiki/entities/paper-sa-2511-01718-ud-vla-unified-diffusion-vla-via-joint-discrete.md) — UD-VLA: Unified Diffusion VLA via Joint Discrete Denoising Diffusion Process** 收录于 [Awesome World  `📅unknown` `[entity_page]`

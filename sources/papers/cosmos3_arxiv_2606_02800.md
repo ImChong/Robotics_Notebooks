@@ -59,6 +59,8 @@
 ## 对 wiki 的映射
 
 - 主实体页：[`wiki/entities/cosmos-3.md`](../../wiki/entities/cosmos-3.md)
+- 平台总览：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - 项目页归档：[`sources/sites/cosmos3-project.md`](../sites/cosmos3-project.md)
 - 仓库归档：[`sources/repos/nvidia_cosmos.md`](../repos/nvidia_cosmos.md)
+- 训练框架：[`sources/repos/nvidia_cosmos_framework.md`](../repos/nvidia_cosmos_framework.md)
 - 互链：[Generative World Models](../../wiki/methods/generative-world-models.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[Video-as-Simulation](../../wiki/concepts/video-as-simulation.md)、[Sim2Real](../../wiki/concepts/sim2real.md)

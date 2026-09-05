@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-30
+updated: 2026-09-05
 related:
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
@@ -14,6 +14,8 @@ related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ./robotic-world-model-eth-rsl.md
   - ./newton-physics.md
+  - ./mujoco-warp.md
+  - ./nvidia-warp.md
   - ./mujoco-playground.md
   - ./mjlab.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -341,7 +343,10 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Isaac Gym](./isaac-gym.md) — 旧一代独立 GPU RL 前身
 - [RSL-RL](./rsl-rl.md) — 默认 PPO / 蒸馏后端；可选 BF16 `update()`
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md) — Isaac Lab 扩展的神经动力学与想象训练参考实现
-- [Newton Physics](./newton-physics.md) — Isaac Lab 存在 `feature/newton` 物理后端集成探索
+- [Newton Physics](./newton-physics.md) — Isaac Lab 存在 `feature/newton` 与 `newton_kamino` 等物理后端
+- [MuJoCo Warp](./mujoco-warp.md) — `newton_mjwarp` preset 的刚体后端
+- [NVIDIA Warp](./nvidia-warp.md) — Newton / MJWarp 的 JIT 计算层
+- [NVIDIA Cosmos](./nvidia-cosmos.md) — 学习式世界模型；与 Lab/Newton 解析仿真互补
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 大平台层定位；与 Playground/mjlab 非同一竞争平面
 - [MuJoCo Playground](./mujoco-playground.md) — 轻量 time-to-robot 入口，复杂任务可再迁移至 Lab
 - [mjlab](./mjlab.md) — 借用 Lab manager-based API 的 MuJoCo Warp 折中栈

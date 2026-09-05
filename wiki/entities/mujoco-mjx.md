@@ -3,9 +3,11 @@ type: entity
 tags: [software, simulation, mujoco, jax, reinforcement-learning, deepmind, gpu]
 status: complete
 date: 2026-05-18
-updated: 2026-05-18
+updated: 2026-09-05
 related:
   - ./mujoco.md
+  - ./mujoco-warp.md
+  - ./nvidia-warp.md
   - ./brax.md
   - ./dm-control.md
   - ../methods/reinforcement-learning.md
@@ -58,10 +60,12 @@ summary: "MuJoCo MJX 是 MuJoCo 的 JAX/XLA 重实现：以 `mujoco-mjx` 分发�
 - **误区：「MJX = 把旧脚本原封不动加速」。** 需要按 JAX 习惯改写 **批量维度**、**纯函数** 与 **设备放置**；并核对 **不支持特性** 是否命中你的 MJCF。
 - **误区：「有了 MJX 就不学 MuJoCo C API」。** 资产建模、调试与许多基准仍以 **MJCF / `mujoco` Python 绑定** 为中心；MJX 是 **执行后端之一**。
 - **局限**：生态与第三方包对 MJX 的 **默认测试覆盖** 仍少于经典 CPU 路径；新特性落地节奏以 DeepMind 发布为准。
+- **与 [MuJoCo Warp](./mujoco-warp.md) 不是同一后端**：MJX 是 JAX/XLA；MJWarp 是 [NVIDIA Warp](./nvidia-warp.md)/CUDA。要 GPU 吞吐且留在 PyTorch / Newton / [mjlab](./mjlab.md) 时选 MJWarp；要 `jax.grad` / Playground 时选本页。MJWarp 的 Warp AD **尚未接通**。
 
 ## 关联页面
 
 - [MuJoCo（物理引擎）](./mujoco.md) — 设计哲学、接触模型与学术基准语境
+- [MuJoCo Warp](./mujoco-warp.md) — Warp/CUDA 兄弟后端（Newton / mjlab）
 - [Brax](./brax.md) — JAX 侧 RL 训练算法与 README 中的 **Playground + training** 推荐组合
 - [dm_control](./dm-control.md) — 经典 MuJoCo Python 基准栈（CPU 路径为主）
 - [仿真器选型指南（Query）](../queries/simulator-selection-guide.md) — 与 Isaac Lab、Genesis 并列讨论时的定位

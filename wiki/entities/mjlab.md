@@ -3,9 +3,11 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation, nvidia, unitree]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-05
 related:
   - ./mujoco.md
+  - ./mujoco-warp.md
+  - ./nvidia-warp.md
   - ./mujoco-playground.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ./newton-physics.md
@@ -34,7 +36,7 @@ summary: "mjlab 将 Isaac Lab 的 manager-based 环境 API 与 MuJoCo Warp（GPU
 
 # mjlab (轻量 GPU 加速 RL 框架)
 
-**mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 **MuJoCo Warp**（GPU 并行物理）结合，在不依赖 NVIDIA Isaac Sim 的前提下提供与 Isaac Lab 相似的开发体验。
+**mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 [**MuJoCo Warp**](./mujoco-warp.md)（GPU 并行物理）结合，在不依赖 NVIDIA Isaac Sim 的前提下提供与 Isaac Lab 相似的开发体验。
 
 有对应研究论文：Zakka et al. (2026) arXiv:2601.22074。
 
@@ -100,8 +102,10 @@ mjlab 架构
 
 ## 关联页面
 
-- [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 MuJoCo Warp）
-- [Newton Physics](./newton-physics.md) — 同生态的底层 GPU 可微引擎（非 RL 框架封装）
+- [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 [MuJoCo Warp](./mujoco-warp.md)）
+- [MuJoCo Warp](./mujoco-warp.md) — 实际 GPU 刚体后端；PGS/PLUGIN 缺口与 AD 未通见该页
+- [NVIDIA Warp](./nvidia-warp.md) — MJWarp 的 JIT 计算层
+- [Newton Physics](./newton-physics.md) — 同生态的底层多求解器引擎（非 RL 框架封装）
 - [Isaac Lab](./isaac-lab.md) — API 设计来源；底层依赖 [Isaac Sim](./isaac-sim.md)
 - [Isaac Gym / Isaac Sim / Isaac Lab](./isaac-gym-isaac-lab.md) — 三代产品总览
 - [legged_gym](./legged-gym.md) — 同类框架，绑定 IsaacGym
