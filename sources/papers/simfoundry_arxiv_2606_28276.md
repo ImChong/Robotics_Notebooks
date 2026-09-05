@@ -5,7 +5,9 @@
 - **标题：** SimFoundry: Modular and Automated Scene Generation for Policy Learning and Evaluation
 - **类型：** paper
 - **来源：** arXiv:2606.28276v1（2026-06-25）；项目页 <https://research.nvidia.com/labs/gear/simfoundry/>
+- **代码：** <https://github.com/NVlabs/SimFoundry> — 归档见 [sources/repos/nvlabs-simfoundry.md](../repos/nvlabs-simfoundry.md)
 - **入库日期：** 2026-07-03
+- **最近复核：** 2026-09-05（官方仓部分开源）
 - **一句话说明：** 从**单段真机 RGB 视频**全自动构建 **sim-ready 数字孪生**，并沿 **物体 / 场景 / 任务** 三轴生成 **digital cousins**；统一支撑 **real-to-sim 策略评测**（均值 Pearson **0.911**、MMRV **0.018**）与 **sim-to-real 策略训练**（DROID / YAM，多步、铰接、双手任务）。
 
 ## 核心论文摘录（MVP）
@@ -30,6 +32,7 @@
 - **对 wiki 的映射：**
   - [Manipulation](../../wiki/tasks/manipulation.md)
   - [Isaac Gym / Isaac Lab](../../wiki/entities/isaac-gym-isaac-lab.md)
+  - [BEHAVIOR-1K / OmniGibson](../../wiki/entities/behavior-1k.md) — 开源仓默认导出运行层
   - [PhysX-Omni](../../wiki/entities/physx-omni.md) — 同属 sim-ready 资产生成谱系，侧重不同模态与引擎导出
 
 ### 3) Real-to-sim 策略评测（Sec.5.1）
@@ -62,6 +65,8 @@
 ## 其他公开资料（非 PDF 正文）
 
 - **项目页（交互 demo、Real2Sim Eval、Sim2Real 训练曲线）：** <https://research.nvidia.com/labs/gear/simfoundry/> — 归档见 [sources/sites/nvidia-research-simfoundry.md](../sites/nvidia-research-simfoundry.md)
+- **官方仓（2026-08-14 起部分开源）：** <https://github.com/NVlabs/SimFoundry> — 归档见 [sources/repos/nvlabs-simfoundry.md](../repos/nvlabs-simfoundry.md)
+- **示例场景资产：** <https://huggingface.co/datasets/nadunRanawaka1/simfoundry-assets>
 
 ## 当前提炼状态
 

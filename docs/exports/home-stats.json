@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3468,
-  "edge_count": 31680,
+  "node_count": 3469,
+  "edge_count": 31697,
   "coverage": {
-    "covered": 3441,
-    "total": 3441,
+    "covered": 3442,
+    "total": 3442,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -128,8 +128,7 @@
       "type": "concept",
       "recency": "2026-09-04",
       "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-levjepa.md",
@@ -234,7 +233,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 546
+      "size": 544
     },
     {
       "label": "视觉-语言-动作",

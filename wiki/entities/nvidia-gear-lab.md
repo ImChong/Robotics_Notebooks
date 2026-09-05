@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, research-lab, embodied-ai, foundation-models, humanoid, vla, simulation, gear]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-05
 related:
   - ../methods/aspire.md
   - ../methods/egoscale.md
@@ -98,7 +98,7 @@ flowchart TB
 | **GaP** | Graph-as-Policy 多 agent harness + 变体自动化 benchmark | [paper-gap-graph-as-policy.md](./paper-gap-graph-as-policy.md) |
 | **Vesta** | 统一定位/VLN/具身推理/记忆子任务规划的通才 planner VLM | [paper-vesta-generalist-embodied-reasoning.md](./paper-vesta-generalist-embodied-reasoning.md) |
 | **GR00T Visual Sim2Real** | VIRAL / DoorMan 等像素→动作迁移 | [gr00t-visual-sim2real.md](./gr00t-visual-sim2real.md) |
-| **SimFoundry** | 真机视频 → 数字孪生 + cousins；real-to-sim 评测与 sim-to-real 操作训练 | [paper-simfoundry-real2sim-scene-generation.md](./paper-simfoundry-real2sim-scene-generation.md) |
+| **SimFoundry** | 真机视频 → 数字孪生 + cousins；real-to-sim 评测与 sim-to-real 操作训练；**部分开源** [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) | [paper-simfoundry-real2sim-scene-generation.md](./paper-simfoundry-real2sim-scene-generation.md) |
 | **Real-robot autoresearch** | ENPIRE 与机队 scaling 讨论 | [real-robot-policy-autoresearch-harness.md](../queries/real-robot-policy-autoresearch-harness.md) |
 
 ## 常见误区或局限

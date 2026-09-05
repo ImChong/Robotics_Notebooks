@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 related:
   - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md
@@ -100,7 +100,7 @@ flowchart TB
 - 在未做 **real-to-sim 相关性** 校验的任务上，用仿真排行榜替代真机 sign-off。
 - 将某一公司/平台的自报 Pearson/MMRV **外推**到所有机器人形态与任务分布。
 
-**操作臂实证：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276）从真机视频构建孪生场景，在 **7 任务 × 5 策略族** 上报告 **均值 Pearson r=0.911、MMRV=0.018**，并相对 PolaRiS 显著提升排序相关性——可作为「**视频孪生 + cousins 数据**」路线的 real-to-sim 评测锚点。
+**操作臂实证：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276，[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) **部分开源**）从真机视频构建孪生场景，在 **7 任务 × 5 策略族** 上报告 **均值 Pearson r=0.911、MMRV=0.018**，并相对 PolaRiS 显著提升排序相关性——可作为「**视频孪生 + cousins 数据**」路线的 real-to-sim 评测锚点。仓内能重建/加载场景，**不能**复现该 Pearson 协议。
 
 **几何对齐 ≠ 策略相关：** [Lucida](../entities/paper-lucida-r2s.md)（arXiv:2608.30821）同样做室内 Real2Sim 资产生成，但主表是检测 mAP / ADD-SB / 场景 F-Score，**没有** Pearson/MMRV；读本页时不要把「可编辑副本」直接当成评测基础设施。
 

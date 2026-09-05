@@ -16,6 +16,24 @@
 - **新建：** [`nvidia-cosmos`](wiki/entities/nvidia-cosmos.md)；一手源 `cosmos_wfm_arxiv_2501_03575`、`cosmos_predict25_arxiv_2511_00062`、`nvidia_cosmos_framework`、`nvidia_cosmos_predict25`、`sites/nvidia-cosmos`
 - **交叉：** Newton / Cosmos 3 / Omniverse / Isaac Lab / generative-world-models / WAM / 仿真器选型
 
+## [2026-09-05] ingest | sources/papers/luna_arxiv_2606_31981.md — LUNA（ECCV 2026）LBS-free 隐式 2D 驱动 3DGS；项目页 GitHub 占位未开源；关键页 paper-luna-universal-3d-human-animation
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2606.31981>、<https://penghtyx.github.io/LUNA/>。
+- **复用：** 无同名页。挂接已有 [SMPL-X](wiki/concepts/smpl-x.md)、[GVHMR](wiki/entities/gvhmr.md)、[4DAnyone](wiki/entities/paper-4danyone.md)、[Face Anything](wiki/entities/paper-face-anything-4d-face-reconstruction.md)、[UMA](wiki/entities/paper-uma.md)、[人形训练数据管线](wiki/queries/humanoid-training-data-pipeline.md)。
+- **步骤 2.5：** 项目页 GitHub 按钮为注释占位（`href="#"`），无 HF / 权重。→ **宣称将开源 / 截至 2026-09-05 未列可用链接。** 不建 `sources/repos/`。机构 `hkust` / `meta` 已注册。
+- **关键判断：** 推理丢掉 LBS，训练仍蒸馏软结构；主场是 Cloth10K PSNR **22.07** 与 MSJ **0.0032**（相对 MV-LHM 约 **4.5×**）。NeuMan 与前馈打平。输出是 splat，**不是**关节指令。
+- **新建：** [`paper-luna-universal-3d-human-animation`](wiki/entities/paper-luna-universal-3d-human-animation.md)；归档论文 + 项目页
+- **交叉：** SMPL-X / GVHMR / 4DAnyone / Face Anything / UMA / 人形训练数据管线 / 2D→3D Gap
+
+## [2026-09-05] ingest | sources/repos/nvlabs-simfoundry.md — SimFoundry 官方仓再核：部分开源 Apache-2.0；关键页已存在
+
+- **触发：** 用户指定项目页 / [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) / arXiv:2606.28276。
+- **复用：** [`paper-simfoundry-real2sim-scene-generation`](wiki/entities/paper-simfoundry-real2sim-scene-generation.md)（2026-07-03 已 complete）。**不另造页**。
+- **步骤 2.5（2026-09-05）：** 官方仓已公开（2026-08-14 V0）。→ **部分开源**。A 重建 / B cousins / C OmniGibson 加载可跑；README 写明 **数据生成与策略训练未随仓**。HF `nadunRanawaka1/simfoundry-assets`。导出是 **OmniGibson JSON**，不是论文写的 Isaac Lab。
+- **关键判断：** 不要再写「未挂公开仓」。能复现场景孪生，不能复现 Pearson 0.911 训练协议。24 GiB 必须 `low_vram`；全量约 250 GB + 门控权重 + Gemini。
+- **新建：** [`nvlabs-simfoundry`](sources/repos/nvlabs-simfoundry.md)
+- **交叉：** Sim2Real / Manipulation / 仿真评测基础设施 / GEAR / BEHAVIOR-1K / depth-real2sim
+
 ## [2026-09-05] ingest | sources/papers/pointdit_arxiv_2607_02515.md — PointDiT 像素空间点图扩散；已开源 google-research/pointdit；关键页 paper-pointdit
 
 - **触发：** 用户指定 <https://haofeixu.github.io/pointdit/>。
