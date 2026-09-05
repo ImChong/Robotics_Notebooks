@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3471,
-  "edge_count": 31740,
+  "node_count": 3472,
+  "edge_count": 31751,
   "coverage": {
-    "covered": 3444,
-    "total": 3444,
+    "covered": 3445,
+    "total": 3445,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/project-quiver.md",
+      "detail_id": "entity-project-quiver",
+      "label": "Project Quiver",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
+    },
     {
       "path": "wiki/entities/tennis-vision.md",
       "detail_id": "entity-tennis-vision",
@@ -205,27 +216,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bridge-humanoid.md",
-      "detail_id": "entity-paper-bridge-humanoid",
-      "label": "BRIDGE：形态–控制共设计的开源人形平台",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tennis-vision.md",
-    "detail_id": "entity-tennis-vision",
-    "label": "Tennis-Vision",
+    "path": "wiki/entities/project-quiver.md",
+    "detail_id": "entity-project-quiver",
+    "label": "Project Quiver",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
   },
   "top_communities": [
     {
@@ -234,7 +236,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 561
+      "size": 563
     },
     {
       "label": "视觉-语言-动作",
@@ -246,7 +248,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 197
+      "size": 194
     },
     {
       "label": "视觉语言动作纵深路线",
@@ -320,7 +322,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 515,
+      "degree": 516,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
