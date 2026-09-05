@@ -2,7 +2,7 @@
 type: method
 tags: [computer-vision, soccer, perception, yolo, geometry, humanoid, robocup]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-05
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
@@ -14,6 +14,7 @@ related:
   - ../entities/booster-robocup-demo.md
   - ../entities/ultralytics.md
   - ../entities/roboflow-sports.md
+  - ../entities/tennis-vision.md
   - ../tasks/humanoid-soccer.md
   - ../entities/humanoid-system-curriculum.md
   - ../queries/soccer-visual-field-localization-pipeline.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/ultralytics.md
   - ../../sources/repos/roboflow_sports.md
+  - ../../sources/repos/tennis-vision.md
 summary: "球门与足球场线交点检测：YOLO 检球/门 + 线几何或关键点回归得到场地结构特征，为线匹配定位供观测；课程 6.4 与 YOLO11 实践。"
 ---
 
@@ -136,11 +138,13 @@ flowchart TB
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 - [足球视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md) — 本页是其第一段（检测），下接线匹配→EKF
 - [Roboflow Sports](../entities/roboflow-sports.md) — 广播视角球场关键点 + 单应俯视雷达，第三人称对照实现
+- [Tennis-Vision](../entities/tennis-vision.md) — 网球 14 点 + 线亮度有效性门；说明重投影误差区分不了「拟合到看台」
 
 ## 参考来源
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
 - [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — 球场关键点检测与单应可视化开源对照
+- [tennis-vision.md](../../sources/repos/tennis-vision.md) — 网球 14 点 + 线亮度门，重投影误差反例
 
 ## 推荐继续阅读
 

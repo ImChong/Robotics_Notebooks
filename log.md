@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/repos/tennis-vision.md — 接入 HarshTomar Tennis-Vision；已开源 MIT；关键页 tennis-vision；对照 Roboflow Sports / 场线检测 / 坐标后处理
+
+- **触发：** 用户指定 <https://github.com/HarshTomar1234/Tennis-Vision>。
+- **复用：** 无同名页。挂接已有 [Roboflow Sports](wiki/entities/roboflow-sports.md)、[场线检测](wiki/methods/soccer-field-line-detection.md)、[感知坐标后处理](wiki/concepts/perception-coordinate-postprocessing.md)、[Ultralytics](wiki/entities/ultralytics.md)、[Kalman](wiki/formalizations/kalman-filter.md)、[MediaPipe](wiki/entities/mediapipe.md)、[SAM 3D Body](wiki/entities/sam-3d-body.md)。**不另造** 方法页。
+- **步骤 2.5：** 无独立项目页。GitHub 仓 **已开源** MIT（67★）。TrackNet 权重不随仓再分发；可选 SAM 3D Body 为 Meta SAM License，默认关。球场微调权重在 HF `Coddieharsh/tennis-court-keypoints`。
+- **关键判断：** 广播网球离线分析，不是机载闭环。教学点：单应只在地板平面有效、重投影自洽 ≠ 场地有效、出点率 ≠ 定位精度、RTS/更大 YOLO 已测过并丢掉。
+- **新建：** [`tennis-vision`](wiki/entities/tennis-vision.md)；归档 `sources/repos/tennis-vision.md`
+- **交叉：** Roboflow Sports / 场线检测 / 坐标后处理 / 场线定位流水线 / Ultralytics / Kalman / MediaPipe / SAM 3D Body / Humanoid Soccer / 目标检测
+
 ## [2026-09-05] ingest | sources/repos/nvidia-warp.md、sources/sites/nvidia-warp-docs.md、sources/repos/mujoco-warp.md — 接入 NVIDIA Warp 与 MuJoCo Warp 并接到 Newton；关键页 nvidia-warp、mujoco-warp
 
 - **触发：** 用户指定 <https://github.com/NVIDIA/warp>、<https://github.com/google-deepmind/mujoco_warp>、<https://nvidia.github.io/warp/stable/>。

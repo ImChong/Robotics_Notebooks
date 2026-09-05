@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, coordinate-transform, calibration, robotics, soccer, tf]
 status: complete
-updated: 2026-07-23
+updated: 2026-09-05
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
@@ -12,6 +12,7 @@ related:
   - ../methods/visual-line-ekf-fusion.md
   - ../entities/intel-realsense.md
   - ../entities/humanoid-system-curriculum.md
+  - ../entities/tennis-vision.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "感知后处理与坐标变换：检测框/线特征经相机模型与 TF 链进入 base/场地系，并做置信度与拓扑校验；课程 7.1，足球视觉闭环胶水层。"
@@ -103,7 +104,7 @@ flowchart LR
 
 ## 局限与风险
 
-- **平面假设**在机器人大幅俯仰/球不在地面时失效。
+- **平面假设**在机器人大幅俯仰/球不在地面时失效。广播网球侧的定量反例见 [Tennis-Vision](../entities/tennis-vision.md)：空中球走地板单应会投影到射线与地面交点，发球接触可被投出场地。
 - **深度在强光/黑球**上不可靠 → 允许 RGB-only 回退并增大观测噪声。
 - **误区**：在检测节点里写死魔法数外参，不进 TF——后续换相机必炸。
 
@@ -114,6 +115,7 @@ flowchart LR
 - [线特征 EKF 融合](../methods/visual-line-ekf-fusion.md)
 - [Intel RealSense](../entities/intel-realsense.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
+- [Tennis-Vision](../entities/tennis-vision.md) — 地板有效锚点 vs 空中插值；单应只在拟合平面上成立
 
 ## 参考来源
 
