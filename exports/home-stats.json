@@ -9,6 +9,50 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/cosmos-cookbook.md",
+      "detail_id": "entity-cosmos-cookbook",
+      "label": "Cosmos Cookbook（WFM 配方站）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/cosmos-transfer.md",
+      "detail_id": "entity-cosmos-transfer",
+      "label": "Cosmos Transfer（条件世界翻译）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-cosmos.md",
+      "detail_id": "entity-nvidia-cosmos",
+      "label": "NVIDIA Cosmos（世界基础模型平台）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cosmos-transfer1.md",
+      "detail_id": "entity-paper-cosmos-transfer1",
+      "label": "Cosmos-Transfer1: Conditional World Generation with Adaptive Multimodal Control",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/concepts/functional-taxonomy-world-models.md",
       "detail_id": "wiki-concepts-functional-taxonomy-world-models",
       "label": "世界模型功能分类（Renderer / Simulator / Planner）",
@@ -143,17 +187,6 @@
       "has_repo": true
     },
     {
-      "path": "wiki/entities/nvidia-cosmos.md",
-      "detail_id": "entity-nvidia-cosmos",
-      "label": "NVIDIA Cosmos（世界基础模型平台）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
       "path": "wiki/entities/paper-pointdit.md",
       "detail_id": "entity-paper-pointdit",
       "label": "PointDiT：像素空间扩散估单目点图",
@@ -183,46 +216,17 @@
       "recency": "2026-09-05",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-failbench.md",
-      "detail_id": "entity-paper-failbench",
-      "label": "FailBench：VLM 当裁判有多可靠",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-lucida-r2s.md",
-      "detail_id": "entity-paper-lucida-r2s",
-      "label": "Lucida：组合式 Real-to-Sim 场景建模",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/easymocap.md",
-      "detail_id": "entity-easymocap",
-      "label": "EasyMocap（无标记人体动捕工具箱）",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/functional-taxonomy-world-models.md",
-    "detail_id": "wiki-concepts-functional-taxonomy-world-models",
-    "label": "世界模型功能分类（Renderer / Simulator / Planner）",
-    "type": "concept",
+    "path": "wiki/entities/cosmos-cookbook.md",
+    "detail_id": "entity-cosmos-cookbook",
+    "label": "Cosmos Cookbook（WFM 配方站）",
+    "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
