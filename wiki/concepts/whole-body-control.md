@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 related:
   - ../entities/htd-decoupled-wbc.md
   - ../entities/embodied-interview-qa.md
@@ -199,6 +199,7 @@ print("joint acceleration command:", qdd_star)
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 人因指标驱动的硬件–分层 WBC 联合优化（*Nat Mach Intell* 2026；adam + shared-controllers）
 - [Gemini Robotics](../entities/gemini-robotics.md) — 学习式「全身 VLA」产业对照；**不替代** QP/分层 WBC 与接触约束栈
 - [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — 语音高层 locomotion + VR 臂手分层遥操作（H1；非统一全身跟踪）
+- [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无 F/T 残差力同时条件化 VLA 与轮足底盘补偿（arXiv:2609.03889；未开源）
 
 ## 继续深挖入口
 

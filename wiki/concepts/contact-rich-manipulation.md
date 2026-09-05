@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-05
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -176,6 +176,7 @@ sources:
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md)
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md)
 - [DexBench](../entities/dexbench.md) — 工业侧把插入/紧固/擦拭/倾倒收成 OSC 诊断 + 状态终态规格
+- [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无传感器接触残差支撑擦白板 / 带闭门器开门的轮足 loco-manip
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 接触丰富任务上的跨模态触觉选型证据
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — 过程级物理安全 vs 终端 Goal

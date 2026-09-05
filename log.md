@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/papers/fwbc_vla_arxiv_2609_03889.md + MINERVA/BRIDGE 再核 — FWBC-VLA 无传感器接触 WBC 新建实体；MINERVA 补 CPU 5.1ms；BRIDGE CAD 部分开源、规格 80cm
+
+- **触发：** 用户指定 MINERVA（GitHub / arXiv:2609.03715 / HF）、BRIDGE（arXiv:2609.03497 / 项目页）、FWBC-VLA（arXiv:2609.03889）。
+- **复用：** [`paper-minerva-libero`](wiki/entities/paper-minerva-libero.md)、[`paper-bridge-humanoid`](wiki/entities/paper-bridge-humanoid.md) 已存在（2026-09-04 九篇盘点）。**不另造页**，再核加深。
+- **新建：** [`paper-fwbc-vla`](wiki/entities/paper-fwbc-vla.md)；机构注册 `zust`。
+- **步骤 2.5：** MINERVA **已开源**（`k1000dai/MINERVA` + HF）。BRIDGE **部分开源**（项目页 `.stp` CAD；控制/BOM 待录用）。FWBC-VLA **确认未开源**（无项目页/仓；WL&Arm 宣称将公开）。
+- **关键判断：** MINERVA 0.54M L1 CPU **5.1 ms/chunk**；BRIDGE 规格以表为准 **80 cm / 12.5 kg / 21 DoF**，跟踪 SR **94.83**；FWBC-VLA 擦白板终段 **64%**、开门 **52%**，FI 与 BC 必须拆开读。
+- **交叉：** VLA / Manipulation / Loco-Manipulation / WBC / Contact Estimation / Contact-Rich / Humanoid Locomotion / FM-VLA / 九篇地图
+
 ## [2026-09-04] ingest | sources/papers/agile_perceptive_traversal_arxiv_2608_29769.md — Sparse 3D Traversal 再核加深（ETH RSL 猴架）；确认未开源；关键页已存在，补枢纽挂接与电池/热/射线锥
 
 - **触发：** 用户指定 <https://nemantor.github.io/sparse-3d-traversal-website/>

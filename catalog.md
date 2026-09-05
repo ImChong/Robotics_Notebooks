@@ -657,6 +657,7 @@
 - [Are Foundation Models the Route to Full-Stack Transfer in Robotics?（arXiv:2602.22001）](wiki/entities/paper-foundation-models-full-stack-transfer.md) — Are Foundation Models the Route to Full-Stack Transfer in Robotics?**（Freek Stulp, Samuel Bustaman `📅unknown` `[entity_page]`
 - [From AGI to ASI（DeepMind 技术报告）](wiki/entities/paper-from-agi-to-asi.md) — From AGI to ASI** 是 Google DeepMind 发布的长篇技术报告（arXiv:2606.12683，2026-06）：在 **不预设 AGI 到达时间** 的前提下，讨论 `📅unknown` `[entity_page]`
 - [FSD-VLN（空中长程 VLN · 快慢双系统）](wiki/entities/paper-fsd-vln.md) — FSD-VLN**（*Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*，[arX `📅unknown` `[entity_page]`
+- [FWBC-VLA：无传感器接触感知的全身补偿](wiki/entities/paper-fwbc-vla.md) — FWBC-VLA**（*Force-Aware Whole-Body Compensation for Contact-Rich Loco-Manipulation*，[arXiv:2609.03 `📅unknown` `[entity_page]`
 - [G1 Compliant-Surface Stand-Up：软地面参考引导起身](wiki/entities/paper-g1-compliant-surface-standup.md) — Demonstration-Guided Humanoid Stand-Up on an Emulated Deformable Surface**（[arXiv:2608.20852](http `📅unknown` `[entity_page]`
 - [G1 Confined-Space WBP（狭窄空间全身规划 · arXiv:2608.10220）](wiki/entities/paper-g1-confined-space-wbp.md) — G1 Confined-Space WBP**（*Whole-Body Planning for Humanoids Navigating Confined Spaces via Self-Col `📅unknown` `[entity_page]`
 - [GAIA-1（GAIA-1: A Generative World Model for Autonomous Driving · arXiv:2309.17080）](wiki/entities/paper-gaia1.md) — GAIA-1**（*GAIA-1: A Generative World Model for Autonomous Driving*，[2309.17080](https://arxiv.org/ `📅unknown` `[entity_page]`

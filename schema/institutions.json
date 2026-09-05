@@ -3317,6 +3317,13 @@
         "ami-labs",
         "advanced-machine-intelligence"
       ]
+    },
+    "zust": {
+      "label": "浙江科技学院（Zhejiang University of Science and Technology）",
+      "aliases": [
+        "zust",
+        "zhejiang-university-of-science-and-technology"
+      ]
     }
   }
 }

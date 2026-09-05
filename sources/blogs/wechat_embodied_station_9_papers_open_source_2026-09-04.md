@@ -27,7 +27,7 @@
 | 05 | MINERVA | [2609.03715](https://arxiv.org/abs/2609.03715) | **已开源** `k1000dai/MINERVA`（Apache-2.0）+ HF 权重 | [paper-minerva-libero](../../wiki/entities/paper-minerva-libero.md) |
 | 06 | FailBench | [2609.03611](https://arxiv.org/abs/2609.03611) | **部分开源**：`Metric-AI-Lab/failbench` 仅站点镜像，harness 按钮仍为 `#` | [paper-failbench](../../wiki/entities/paper-failbench.md) |
 | 07 | XR-2 / 双臂家务 | [2609.03591](https://arxiv.org/abs/2609.03591) | **部分开源**：HF `challenge-2026/challenge_data`（CC-BY-SA-4.0）；策略代码未见 | [paper-xr2-bimanual-household](../../wiki/entities/paper-xr2-bimanual-household.md) |
-| 08 | BRIDGE | [2609.03497](https://arxiv.org/abs/2609.03497) | **待核实**：项目页在，论文宣称 open code/design，未见可用官方仓 | [paper-bridge-humanoid](../../wiki/entities/paper-bridge-humanoid.md) |
+| 08 | BRIDGE | [2609.03497](https://arxiv.org/abs/2609.03497) | **部分开源**（2026-09-05 再核）：项目页 `.stp` CAD；控制/BOM 待录用 | [paper-bridge-humanoid](../../wiki/entities/paper-bridge-humanoid.md) |
 | 09 | ARTiS | [2609.03362](https://arxiv.org/abs/2609.03362) | **部分开源**：项目页 CAD/BOM/hardware；仓为站点镜像 | [paper-artis-gripper](../../wiki/entities/paper-artis-gripper.md) |
 
 ### 文内要点速记

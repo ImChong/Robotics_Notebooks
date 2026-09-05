@@ -15,7 +15,7 @@ tags:
   - fudan
   - ustc
 status: complete
-updated: 2026-08-07
+updated: 2026-09-05
 arxiv: "2607.18231"
 venue: "arXiv 2026"
 related:
@@ -204,7 +204,7 @@ Action expert 序列：`[noisy-action × H] ‖ [力记忆 × K] ‖ [状态 × 
 | 视觉稀疏关键帧 | 可见状态转移 | [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md)、[EventVLA](./paper-eventvla-visual-evidence-memory.md) | 画面有阶段变化时优先；视觉模糊计数时 FM-VLA 更对症 |
 | 全历史 SSM 策略 | 轨迹级相位状态 | [Chronos](./paper-chronos.md) | 紧凑专用策略 + 二阶动作桥；非挂到 π 系的力/视觉记忆模块 |
 | 视觉稠密/多尺度 | 帧或语言摘要 | MemoryVLA、MEM / π-MEM | 更贵；Buttons 上仍明显落后 |
-| 短窗力/触觉条件 | 瞬时接触 | TA-VLA、ForceVLA | 改善接触细控，不解决长程事件计数 |
+| 短窗力/触觉条件 | 瞬时接触 | TA-VLA、ForceVLA、[FWBC-VLA](./paper-fwbc-vla.md) | 改善接触细控或机身稳定，不解决长程事件计数 |
 | Fast-weight / TTT | 压缩进权重 | RoboTTT 等 | 另一记忆介质；与力通道正交 |
 
 ## 关联页面
