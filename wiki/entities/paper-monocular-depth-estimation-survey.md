@@ -8,7 +8,7 @@ tags:
   - foundation-models
   - hku
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 arxiv: "2609.01172"
 code: https://github.com/CVMI-Lab/Depth_Survey
 related:
@@ -16,6 +16,7 @@ related:
   - ../methods/vla.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-adm-ba.md
+  - ./paper-pointdit.md
   - ../overview/contact-rich-manipulation-7-papers-technology-map.md
 sources:
   - ../../sources/papers/monocular_depth_survey_arxiv_2609_01172.md
@@ -116,6 +117,7 @@ sequenceDiagram
 | 典型软肋 | 域偏移下尺度漂移 | 时序一致性与延迟 | 反光/透明/远距失效 |
 
 - **与 [ADM-BA](./paper-adm-ba.md) 的分工**：本综述回答「单帧深度从哪来、怎么选」，ADM-BA 回答「多视角深度怎么联合优化成一张可规划的图」；反光金属这类单目 FM 与主动深度都吃力的场景，正是 ADM-BA 用多假设分层网格接手的地方。
+- **与 [PointDiT](./paper-pointdit.md) 的分工**：综述里的生成式 FM 多半还带着 VAE / 多步采样；PointDiT 把扩散直接放在原始点图上，单步就能出相机系 XYZ，BF1 高于 Depth Pro / MoGe-2，但输出是仿射不变、室外仍弱。
 - **不要跨口径横比**：相对深度与 metric depth 目标不同（本页「结论」已列），综述内的排名不能直接搬到抓取/碰撞检测的验收指标上。
 - 选型分层见 [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)。
 
@@ -125,6 +127,7 @@ sequenceDiagram
 - [VLA](../methods/vla.md)
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本综述是①传感与标定层「不上 RGB-D 时深度从哪来」的选型底稿
 - [ADM-BA](./paper-adm-ba.md) — 下游：多视角深度的联合优化与融合
+- [PointDiT](./paper-pointdit.md) — 像素空间点图扩散：生成式但不走 VAE，已开源
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 
 ## 推荐继续阅读

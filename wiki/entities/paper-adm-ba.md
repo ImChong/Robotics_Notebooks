@@ -8,7 +8,7 @@ tags:
   - robot-perception
   - edinburgh
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 arxiv: "2609.01089"
 code: https://github.com/YiranZhou-Robotics/ADM-BA
 related:
@@ -16,6 +16,7 @@ related:
   - ./paper-monocular-depth-estimation-survey.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/contact-rich-manipulation-7-papers-technology-map.md
+  - ./paper-pointdit.md
 sources:
   - ../../sources/papers/adm_ba_arxiv_2609_01089.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_contact_manipulation_2026-09-02.md
@@ -124,6 +125,7 @@ sequenceDiagram
 - [单目深度综述](./paper-monocular-depth-estimation-survey.md)
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ADM-BA 落在「2D→3D 提升与几何融合」这一层，输出直接喂切割/避碰规划
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
+- [PointDiT](./paper-pointdit.md) — 单帧 RGB→仿射点图；ADM-BA 接多视角深度怎么融成可规划图
 
 ## 推荐继续阅读
 

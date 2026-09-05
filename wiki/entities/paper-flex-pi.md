@@ -11,7 +11,7 @@ tags:
   - uw
   - ai2
 status: complete
-updated: 2026-08-14
+updated: 2026-09-05
 arxiv: "2608.10860"
 code: "https://github.com/geyan21/flex-pi"
 related:
@@ -27,6 +27,7 @@ related:
   - ../tasks/manipulation.md
   - ./paper-rift-wam.md
   - ./libero-benchmark.md
+  - ./paper-pointdit.md
 sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/repos/flex-pi.md
@@ -163,6 +164,7 @@ RoboTwin 五任务消融（50 demo）：RGB-only 加 DINO **+6.8 pt**，再加�
 | Fast-WAM / DreamZero / LingBot-VA | RGB latent WAM 基线；Flex-π 加 3D/DINO 与柔性掩码 |
 | π0.5 | 强 VLA 对照；Flex-π action-only 更快且真机更高，LIBERO-Plus 仍落后 |
 | ManiFlow | 显式 3D 输入基线；OOD 掉点更大（约 −26.7 vs Flex-π −4.7） |
+| [PointDiT](./paper-pointdit.md) | 同吃 3D pointmap：PointDiT 在像素空间扩散估几何（无 VAE）；Flex-π 借用冻结 Wan VAE 把点图当训练流 |
 
 ## 关联页面
 
@@ -176,6 +178,7 @@ RoboTwin 五任务消融（50 demo）：RGB-only 加 DINO **+6.8 pt**，再加�
 - [LIBERO](./libero-benchmark.md)
 - [动作后果分类 01](../overview/wm-action-consequence-category-01-wam-action-prediction.md)
 - [Rift](./paper-rift-wam.md)
+- [PointDiT](./paper-pointdit.md) — 像素空间点图扩散；对照「VAE 吃 3D」vs「数据空间估 3D」
 
 ## 参考来源
 

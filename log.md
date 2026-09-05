@@ -7,6 +7,15 @@
 - **新建：** [`nvlabs-simfoundry`](sources/repos/nvlabs-simfoundry.md)
 - **交叉：** Sim2Real / Manipulation / 仿真评测基础设施 / GEAR / BEHAVIOR-1K / depth-real2sim
 
+## [2026-09-05] ingest | sources/papers/pointdit_arxiv_2607_02515.md — PointDiT 像素空间点图扩散；已开源 google-research/pointdit；关键页 paper-pointdit
+
+- **触发：** 用户指定 <https://haofeixu.github.io/pointdit/>。
+- **复用：** 无同名页。挂接已有 [单目深度综述](wiki/entities/paper-monocular-depth-estimation-survey.md)、[2D→3D 提升 Gap](wiki/concepts/2d-to-3d-semantic-lifting-gap.md)、[感知栈选型闭环](wiki/queries/robot-perception-stack-selection-loop.md)、[Flex-π](wiki/entities/paper-flex-pi.md)、[ADM-BA](wiki/entities/paper-adm-ba.md)。
+- **步骤 2.5：** 项目页 + [google-research/pointdit](https://github.com/google-research/pointdit)（Apache-2.0）+ [HF haofeixu/pointdit](https://huggingface.co/haofeixu/pointdit)。仓内 `main.py` / `scripts/demo_*.sh` / `eval_*.sh` / `train_stage*.sh` 可跑。→ **已开源**。DINOv3 权重门控，不随 checkpoint。
+- **关键判断：** 去掉 VAE 与混合回归头；x-prediction 是硬门槛（v-pred 崩）。H 型 4 步 Rel\(_d\) **2.75** / BF1 **10.49**，1 步 **72 ms**。室外 KITTI/DIODE/ETH3D 仍落后 MoGe。输出仿射不变，不是 metric。机构注册 `kesai`。
+- **新建：** [`paper-pointdit`](wiki/entities/paper-pointdit.md)；归档项目页 + 官方仓
+- **交叉：** 单目深度综述 / 2D→3D Gap / 感知选型闭环 / Flex-π / ADM-BA
+
 ## [2026-09-05] ingest | sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md — TOG 2026 HIL 再核：heading 任务 + 官方未开源 + 一作非官方 G1 仓；关键页 paper-hil-hybrid-imitation-learning
 
 - **触发：** 用户指定 HIL TOG PDF / Peng 组项目页 / Code(G1) Hybrid-Motion-Imitation。
