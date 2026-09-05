@@ -9,6 +9,36 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/nvidia-cosmos.md",
+      "detail_id": "entity-nvidia-cosmos",
+      "label": "NVIDIA Cosmos（世界基础模型平台）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-nurec.md",
+      "detail_id": "entity-nvidia-nurec",
+      "label": "NVIDIA Omniverse NuRec",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/nvidia-physical-ai-datasets.md",
+      "detail_id": "entity-nvidia-physical-ai-datasets",
+      "label": "NVIDIA Physical AI 数据集（Hugging Face 集合）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/robotis-cyclo-mjlab.md",
       "detail_id": "entity-robotis-cyclo-mjlab",
       "label": "cyclo_mjlab（ROBOTIS）",
@@ -92,16 +122,6 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/nvidia-nurec.md",
-      "detail_id": "entity-nvidia-nurec",
-      "label": "NVIDIA Omniverse NuRec",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
       "path": "wiki/entities/paper-instant-nurec.md",
       "detail_id": "entity-paper-instant-nurec",
       "label": "Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）",
@@ -126,17 +146,6 @@
       "path": "wiki/entities/cosmos-transfer.md",
       "detail_id": "entity-cosmos-transfer",
       "label": "Cosmos Transfer（条件世界翻译）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-cosmos.md",
-      "detail_id": "entity-nvidia-cosmos",
-      "label": "NVIDIA Cosmos（世界基础模型平台）",
       "type": "entity",
       "recency": "2026-09-05",
       "source": "git",
@@ -207,28 +216,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-4danyone.md",
-      "detail_id": "entity-paper-4danyone",
-      "label": "4DAnyone：单目随意视频做出 4D 人",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robotis-cyclo-mjlab.md",
-    "detail_id": "entity-robotis-cyclo-mjlab",
-    "label": "cyclo_mjlab（ROBOTIS）",
+    "path": "wiki/entities/nvidia-cosmos.md",
+    "detail_id": "entity-nvidia-cosmos",
+    "label": "NVIDIA Cosmos（世界基础模型平台）",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
