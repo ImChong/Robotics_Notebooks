@@ -8286,6 +8286,12 @@
 - **开源核查：** N/A（综述科普文，无单一项目页）。
 - **关键页：** [`wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md`](wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md)；交叉更新 [`mobile-robot-navigation-planning-methods`](wiki/comparisons/mobile-robot-navigation-planning-methods.md)、控制/学习姊妹 taxonomy。
 
+## [2026-09-05] ingest | sources/papers/egoexomocap_arxiv_2607_15868.md — EgoExoMoCap 分布式 HMD ego-exo 野外动捕
+
+- **意图：** 接入 ECCV 2026 Spotlight 论文与 SIPLAB 项目页，沉淀分布式智能眼镜互观测的全身 SMPL 重建管线（EgoNet + ViTPose 射线 + DINOv3 门控）。
+- **开源核查：** GitHub `eth-siplab/EgoExoMoCap` **已建仓但 Code coming soon**（MIT，待发布）。
+- **关键页：** [`wiki/entities/paper-egoexomocap.md`](wiki/entities/paper-egoexomocap.md)；交叉更新 [`ego-category-04-ego-exo-fusion`](wiki/overview/ego-category-04-ego-exo-fusion.md)、[`paper-notebook-category-14-human-motion`](wiki/overview/paper-notebook-category-14-human-motion.md)。
+
 ## [2026-08-22] ingest | sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md — 古月居 RosClaw / RoboClaw 自然语言控 ROS2 长文
 
 - **意图：** 接入古月居对 RosClaw（OpenClaw × ROS2 插件）三层架构、三种部署模式、工具集与安全的解读；对照 SJTU MINT RoboClaw 跨本体具身助手。

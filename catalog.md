@@ -617,6 +617,7 @@
 - [Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）](wiki/entities/paper-ego-oscar.md) — Ego-OSCAR**（*Egocentric Open source Stereo CAptuRe System*，[arXiv:2608.08285](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [Ego2Robot：第一人称人视频规模化合成机器人数据](wiki/entities/paper-ego2robot.md) — Ego2Robot**（*Scalable Robot Data Synthesis from Egocentric Human Data*；[arXiv:2608.02580](https:// `📅unknown` `[entity_page]`
 - [Ego4D（全球第一人称日常视频 · 数据集与基准套件）](wiki/entities/paper-ego4d.md) — Ego4D**（*Around the World in 3,000 Hours of Egocentric Video*，项目页，[arXi `📅unknown` `[entity_page]`
+- [EgoExoMoCap](wiki/entities/paper-egoexomocap.md) — EgoExoMoCap: Distributed Ego-Exo Human Motion Capture**（Jiang et al., ECCV 2026 Spotlight）提出一种**分布 `📅unknown` `[entity_page]`
 - [EgoHTR：第一视角粗糙地形人–场景 4D 演示](wiki/entities/paper-egohtr.md) — EgoHTR**（*EgoHTR: Egocentric 4D Demonstrations of Human Terrain Traversal*，arXiv:[2607.13472](http `📅unknown` `[entity_page]`
 - [EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈](wiki/entities/paper-egosteer.md) — EgoSteer**（*A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos*， `📅unknown` `[entity_page]`
 - [EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）](wiki/entities/paper-egoverse.md) — EgoVerse**（*An Egocentric Human Dataset for Robot Learning from Around the World*，[项目页](https://eg `📅unknown` `[entity_page]`

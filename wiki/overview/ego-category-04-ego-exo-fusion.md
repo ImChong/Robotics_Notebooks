@@ -2,13 +2,14 @@
 type: overview
 tags: [egocentric, exocentric, ego-survey, category-hub, memory, video-generation]
 status: complete
-updated: 2026-06-01
+updated: 2026-09-05
 summary: "Ego 9 篇专题 · 04 Ego+Exo（2 篇）— 第一视角有遮挡与空间盲区；EgoExoMem 与 E³C 指向 Ego+Exo+3D 环境记忆的长期数据与生成形态。"
 related:
   - ./ego-9-papers-technology-map.md
   - ./ego-category-03-world-models.md
   - ../entities/paper-ego-08-egoexomem.md
   - ../entities/paper-ego-09-e3c.md
+  - ../entities/paper-egoexomocap.md
   - ../concepts/video-as-simulation.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
@@ -40,6 +41,7 @@ sources:
 
 - [视频作为仿真](../concepts/video-as-simulation.md)
 - [世界模型分类 03](./ego-category-03-world-models.md)
+- [EgoExoMoCap](../entities/paper-egoexomocap.md) — 分布式 HMD ego-exo **动捕重建**（ECCV 2026 Spotlight）；与 EgoExoMem / E³C 的「理解/生成」互补
 
 ## 参考来源
 
