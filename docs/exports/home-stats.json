@@ -9,6 +9,36 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/nvidia-nurec.md",
+      "detail_id": "entity-nvidia-nurec",
+      "label": "NVIDIA Omniverse NuRec",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/marble-world-model.md",
+      "detail_id": "entity-marble-world-model",
+      "label": "Marble（World Labs 多模态世界模型）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-instant-nurec.md",
+      "detail_id": "entity-paper-instant-nurec",
+      "label": "Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/cosmos-cookbook.md",
       "detail_id": "entity-cosmos-cookbook",
       "label": "Cosmos Cookbook（WFM 配方站）",
@@ -185,48 +215,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-lucida-r2s.md",
-      "detail_id": "entity-paper-lucida-r2s",
-      "label": "Lucida：组合式 Real-to-Sim 场景建模",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/easymocap.md",
-      "detail_id": "entity-easymocap",
-      "label": "EasyMocap（无标记人体动捕工具箱）",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-crosstracer.md",
-      "detail_id": "entity-paper-crosstracer",
-      "label": "CrossTracer：像素轨迹残差做跨本体导航",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cosmos-cookbook.md",
-    "detail_id": "entity-cosmos-cookbook",
-    "label": "Cosmos Cookbook（WFM 配方站）",
+    "path": "wiki/entities/nvidia-nurec.md",
+    "detail_id": "entity-nvidia-nurec",
+    "label": "NVIDIA Omniverse NuRec",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
