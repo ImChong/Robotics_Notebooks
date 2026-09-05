@@ -51,6 +51,35 @@ def test_merge_partition_by_hub_equivalence_merges_alias_hubs() -> None:
     assert sum(len(group) for group in merged) == 4
 
 
+def test_merge_partition_by_hub_equivalence_pulls_in_canonical_hub() -> None:
+    """canonical 枢纽页落在别的分区时应被并回同名社区，否则社区会以非成员页命名。"""
+    partition = [
+        ["wiki/tasks/manipulation.md", "wiki/tasks/locomotion.md", "wiki/methods/foo.md"],
+        [
+            "wiki/overview/paper-notebook-category-05-locomotion.md",
+            "wiki/entities/paper-a.md",
+        ],
+    ]
+    degree_map = glg.Counter(
+        {
+            "wiki/tasks/manipulation.md": 90,
+            "wiki/tasks/locomotion.md": 80,
+            "wiki/methods/foo.md": 2,
+            "wiki/overview/paper-notebook-category-05-locomotion.md": 50,
+            "wiki/entities/paper-a.md": 1,
+        }
+    )
+    node_map = {nid: {"id": nid, "label": nid.split("/")[-1]} for nid in degree_map}
+
+    merged = glg._merge_partition_by_hub_equivalence(partition, degree_map, node_map)
+
+    assert sum(len(group) for group in merged) == len(degree_map)
+    locomotion_group = next(g for g in merged if "wiki/tasks/locomotion.md" in g)
+    assert "wiki/overview/paper-notebook-category-05-locomotion.md" in locomotion_group
+    manipulation_group = next(g for g in merged if "wiki/tasks/manipulation.md" in g)
+    assert "wiki/tasks/locomotion.md" not in manipulation_group
+
+
 def test_merge_communities_to_cap_merges_smallest() -> None:
     partition = [["a", "b"], ["c"], ["d", "e", "f"]]
     adjacency = {

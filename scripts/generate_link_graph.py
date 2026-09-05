@@ -1489,6 +1489,19 @@ def _hub_for_members(
     )
 
 
+def _attach_canonical_hub_nodes(
+    buckets: dict[str, set[str]],
+    node_map: dict[str, dict[str, Any]],
+) -> None:
+    """把 canonical 枢纽页本体并入同名分桶，避免社区以非成员页命名（如 Locomotion）。"""
+    for canonical, members in buckets.items():
+        if canonical in members or canonical not in node_map:
+            continue
+        for other in buckets.values():
+            other.discard(canonical)
+        members.add(canonical)
+
+
 def _merge_partition_by_hub_equivalence(
     partition: list[list[str]],
     degree_map: Counter[str],
@@ -1502,8 +1515,9 @@ def _merge_partition_by_hub_equivalence(
     for members in partition:
         hub_id = _hub_for_members(members, degree_map, node_map)
         buckets[canonical_community_hub(hub_id)].update(members)
+    _attach_canonical_hub_nodes(buckets, node_map)
 
-    merged = [sorted(members) for members in buckets.values()]
+    merged = [sorted(members) for members in buckets.values() if members]
     return sorted(merged, key=lambda members: (-len(members), members[0] if members else ""))
 
 
