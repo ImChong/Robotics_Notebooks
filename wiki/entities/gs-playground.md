@@ -113,7 +113,8 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [MuJoCo](./mujoco.md) — 物理内核参考，GS-Playground 使用自研求解器
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 工作流直接服务 sim2real
 - [Spark](./spark-3dgs-renderer.md) / [Aholo Viewer](./aholo-viewer.md) — Web 端大场景 3DGS 渲染（见 [对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）
-- [World Labs](./world-labs.md) — 空间世界生成（Marble）与 Spark 产业侧上下文
+- [World Labs](./world-labs.md) — 空间世界生成与 Spark 产业侧上下文
+- [Marble](./marble-world-model.md) — 创作者 SaaS 出 splat/collider；本页是批量训练渲染
 - [CRISP](../methods/crisp-real2sim.md) — 另一条 Real2Sim 路线：单目视频 + 平面原语与接触物理（ICLR 2026），与 3DGS 外观路径互补对照（见 [选型对比](../comparisons/crisp-vs-gs-playground-real2sim.md)）
 - [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 背景 + mesh 前景为人形 VLA loco-manip 合成演示（arXiv:2606.01458）
 - [PanoLOG / G²PS](./paper-panolog-ggps.md) — 户外全景大规模 3DGS 重建，可作仿真场景资产上游
