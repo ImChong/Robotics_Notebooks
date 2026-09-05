@@ -2469,8 +2469,13 @@ button.home-wiki-heatmap-cell.is-active {
   align-items: center;
   justify-content: center;
   position: fixed;
+  /* 与左下角 .sidebar-toggle 关于窗口中轴镜像：bottom / 内缩量 / 尺寸三者与它一致
+     （那边是 bottom:24px; left:20px; 48x48，且没有窄屏覆写），所以这里同样不加断点覆写。
+     右侧要额外减掉滚动条装订线：html 上的 scrollbar-gutter: stable 会把 fixed 元素的
+     包含块从右侧缩窄，而 .sidebar-toggle 的 left 仍贴窗口左边缘；(100vw - 100%) 即该
+     装订线宽度（无装订线时为 0，移动端 overlay 滚动条自动退化成 right: 20px）。 */
   bottom: 24px;
-  right: 20px;
+  right: calc(20px - (100vw - 100%));
   width: 48px;
   height: 48px;
   padding: 0;
@@ -2518,14 +2523,6 @@ button.home-wiki-heatmap-cell.is-active {
 @media (prefers-reduced-motion: reduce) {
   .back-to-top {
     transition: none;
-  }
-}
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 20px;
-    right: 16px;
-    width: 44px;
-    height: 44px;
   }
 }
 
