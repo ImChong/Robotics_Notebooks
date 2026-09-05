@@ -14,6 +14,7 @@ related:
   - ./paper-shells-layered-surface-sampling.md
   - ./paper-uma.md
   - ./paper-4danyone.md
+  - ./paper-luna-universal-3d-human-animation.md
   - ../tasks/teleoperation.md
 sources:
   - ../../sources/papers/face_anything_arxiv_2604_19702.md
@@ -126,6 +127,7 @@ flowchart TB
 
 - [GVHMR](./gvhmr.md) — **全身** 单目视频→SMPL；Face Anything 覆盖 **面部 4D** 分支
 - [4DAnyone](./paper-4danyone.md) — 全身外观多视角 / 4DGS；脸部细节点交给源视频，不走本页规范面部坐标
+- [LUNA](./paper-luna-universal-3d-human-animation.md) — 全身着装 3DGS 隐式 2D 驱动；面部细节点仍缺本页规范对应
 - [GNM Head](./gnm-head.md) — 参数化头脸统计模型（生成式先验，非单目 HMR）
 - [SHELLS](./paper-shells-layered-surface-sampling.md) — **标定多视角** 固定拓扑 ~18k 顶点前馈注册（棚拍度量）；与本文任意序列 4D 互补
 - [UMA](./paper-uma.md) — **全身着装** 多视角可驱动超精细 avatar（VR telepresence）；与本文面部 4D 通道互补

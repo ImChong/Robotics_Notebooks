@@ -19,6 +19,7 @@ related:
   - ../entities/paper-occanyscene.md
   - ../entities/paper-lego-leveled-language-gaussian-splatting.md
   - ../entities/paper-pointdit.md
+  - ../entities/paper-luna-universal-3d-human-animation.md
 sources:
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
   - ../../sources/papers/sam2_arxiv_2408_00714.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
   - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/papers/pointdit_arxiv_2607_02515.md
+  - ../../sources/papers/luna_arxiv_2606_31981.md
 summary: "「2D 检测/分割结果」↔「可供策略消费的 3D 语义几何」取舍概念：提升时会引入尺度不确定、遮挡、时序不一致、语义–几何分离，以及 2D 粒度/绝对尺度与语义层级错位——它是感知输出能否被下游忠实消费的物理根因，可用深度融合 / 多视角一致性 / 联合建图收窄。"
 ---
 
@@ -145,6 +147,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外度量 lifting：像素视锥约束高斯，而不是绝对米制偏移
 - [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) — 离线 3DGS：把多视角 SAM 重分级成结构层级，再接 CLIP / 场景图
 - [PointDiT](../entities/paper-pointdit.md) — 路线①的 RGB-only 点图：像素空间扩散，细结构强，尺度仿射不变
+- [LUNA](../entities/paper-luna-universal-3d-human-animation.md) — 2D 驱动直接抬 3D 高斯形变：无结构蒸馏会扁平塌缩，是本页「深度歧义」在数字人动画上的对照
 - [视觉骨干（概念）](./vision-backbones.md) — 2D 特征提取背景
 - [目标检测（方法）](../methods/object-detection.md) — 2D 检测方法总览
 
@@ -156,3 +159,4 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 跨相机/跨尺度 image-to-3D lifting 的视锥高斯路线
 - [LEGO 论文摘录](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md) — 多视角 SAM 重分级：结构层级 vs 2D 粒度 / 绝对尺度
 - [PointDiT 论文摘录](../../sources/papers/pointdit_arxiv_2607_02515.md) — 路线① RGB-only 仿射点图（像素空间扩散）
+- [LUNA 论文摘录](../../sources/papers/luna_arxiv_2606_31981.md) — 2D→3D 形变无 LBS 蒸馏会深度塌缩

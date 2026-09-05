@@ -13,6 +13,7 @@ related:
   - ./paper-face-anything-4d-face-reconstruction.md
   - ./easymocap.md
   - ./paper-opencap-monocular.md
+  - ./paper-luna-universal-3d-human-animation.md
 sources:
   - ../../sources/papers/4danyone_arxiv_2608_20335.md
   - ../../sources/sites/4danyone-github-io.md
@@ -160,6 +161,7 @@ Table 3 消融（生成一致性）：去掉 RCP+TCR **21.09**；只去其一约
 | CAT4D / TrajectoryCrafter | 相机或深度条件；扩到几十路会漂或深度误差累积 |
 | 单目 GaussianAvatar / GauHuman | 直接拟合，看不见的区域有天花板 |
 | [Face Anything](./paper-face-anything-4d-face-reconstruction.md) | 脸部 4D；本文是全身外观 |
+| [LUNA](./paper-luna-universal-3d-human-animation.md) | 前馈隐式 2D 驱动 3DGS，推理不走 LBS；本文是单目补多视角再重建 |
 | [EasyMocap](./easymocap.md) | 有外参的多视角运动；没有外观生成 |
 
 ## 关联页面
@@ -170,6 +172,7 @@ Table 3 消融（生成一致性）：去掉 RCP+TCR **21.09**；只去其一约
 - [Face Anything](./paper-face-anything-4d-face-reconstruction.md)
 - [EasyMocap](./easymocap.md)
 - [OpenCap Monocular](./paper-opencap-monocular.md)
+- [LUNA](./paper-luna-universal-3d-human-animation.md) — LBS-free 前馈动画；与「生成阵列再抬 4DGS」对照
 
 ## 参考来源
 
