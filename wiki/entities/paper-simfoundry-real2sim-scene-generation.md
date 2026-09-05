@@ -225,6 +225,8 @@ sequenceDiagram
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 研究组与姊妹工作（ENPIRE、GR00T Visual Sim2Real 等）
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — VLM agent 编排的 episode 级 Real2Sim（代码待开放）
 - [Lucida](./paper-lucida-r2s.md) — 室内多视角 → 可编辑资产 + GizmoAct 9-DoF（几何对齐，无策略评测）
+- [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 驾驶/现场神经体积 USDZ；本页是操作 mesh+cousins，不是车队日志
+- [Instant NuRec](./paper-instant-nurec.md) — 前向 3DGS 驾驶世界；闭环看策略排序而非 Pearson
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 校准层：real-to-sim 策略评测（均值 Pearson 0.911）
 
 ## 参考来源

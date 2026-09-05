@@ -130,7 +130,7 @@ flowchart LR
 
 ### 和 Sim2Real 的关系
 
-提供仿真训练与 domain randomization 工作台；成功还取决于状态估计、系统辨识、执行器建模等。见：[Sim2Real](../concepts/sim2real.md)
+提供仿真训练与 domain randomization 工作台；成功还取决于状态估计、系统辨识、执行器建模等。见：[Sim2Real](../concepts/sim2real.md)。现场 / 驾驶日志的照片级背景可走 [NuRec](./nvidia-nurec.md) USDZ（Isaac `OmniNuRecVolumeAPI`）；秒级驾驶初始化见 [Instant NuRec](./paper-instant-nurec.md)。
 
 ### 和 Domain Randomization 的关系
 
@@ -192,6 +192,8 @@ Gym 时代就强调大规模随机化；Lab / Sim 延续并扩展到视觉与传
 - [UniLab](./unilab.md)
 - [PyTorch](./pytorch.md)
 - [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 专家轨迹在 Isaac Gym 50 Hz 并行采集后再训 ArticuACT（arXiv:2608.20251）
+- [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 真实场景 USDZ 体积导入 Sim / Lab
+- [Instant NuRec](./paper-instant-nurec.md) — AV 日志前向 3DGS，可作 NuRec 精修种子
 
 ## 一句话记忆
 

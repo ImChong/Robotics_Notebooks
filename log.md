@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/papers/instant_nurec_arxiv_2607_14203.md — Instant NuRec 前向 3DGS；部分开源静态 CLI；关键页 paper-instant-nurec / nvidia-nurec
+
+- **触发：** 用户指定 <https://docs.nvidia.com/nurec/>、<https://github.com/NVIDIA/instant-nurec>、<https://research.nvidia.com/labs/sil/projects/instant-nurec/>、<https://arxiv.org/abs/2607.14203>，并要求自动合并 PR
+- **复用：** 无同名页。挂接已有 [Sim2Real](wiki/concepts/sim2real.md)、[NuRec USDZ 消费方 Flexion 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md)、[Isaac](wiki/entities/isaac-gym-isaac-lab.md)、[SimFoundry](wiki/entities/paper-simfoundry-real2sim-scene-generation.md)、[GS-Playground](wiki/entities/gs-playground.md)。**另建** 产品实体 [nvidia-nurec](wiki/entities/nvidia-nurec.md)，不把文档与论文塞进同一页。
+- **步骤 2.5：** 项目页与文档均链到 GitHub + HF 权重。仓 **部分开源**（Apache-2.0）：静态 PLY + `.sky.npz` 可跑；动态层 / 训练 / AlpaSim 评测不在独立 CLI。NuRec 精修是 NGC 容器 `nre-ga:26.04`，不是本仓。NCore 演示数据门控。
+- **关键判断：** 闭环价值是 **换重建不改策略排序**（140 场景 AlpaSim），不是追平 34.38 dB；办公室 360° 扫描走 NuRec 机器人 / Niantic 路径，不要套 Instant AV CLI。
+- **新建：** [`paper-instant-nurec`](wiki/entities/paper-instant-nurec.md)、[`nvidia-nurec`](wiki/entities/nvidia-nurec.md)；归档 `sources/papers/instant_nurec_arxiv_2607_14203.md`、`sources/repos/nvidia-instant-nurec.md`、`sources/sites/nvidia-research-instant-nurec.md`、`sources/sites/nvidia-nurec-docs.md`
+- **交叉：** Sim2Real / 仿真评测基础设施 / Real2Sim 纵深 / Isaac Sim / Flexion 管线 / SimFoundry / GS-Playground / 生成式世界模型
+
 ## [2026-09-05] ingest | sources/papers/robot_juggling_arxiv_2608_26800.md — RAI AthenaZero 真机抛接分钟级记忆学习；确认未开源；关键页 paper-robot-juggling-athenazero
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2608.26800>、<https://arxiv.org/html/2608.26800v1>，并要求自动合并 PR

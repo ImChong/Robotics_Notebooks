@@ -84,6 +84,8 @@ flowchart LR
 - [CRISP vs GS-Playground：Real2Sim 路线选型（接触动力学 vs 光真实感）](../wiki/comparisons/crisp-vs-gs-playground-real2sim.md)（本仓库）— 本阶段的核心选型页
 - [CRISP（Contact-guided Real2Sim）](../wiki/methods/crisp-real2sim.md) · [GS-Playground](../wiki/entities/gs-playground.md)（本仓库）— 两条维度的代表实现
 - [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md)（本仓库）— 360° 扫描 → 3DGS+碰撞 mesh 的 NuRec 数字孪生 → Isaac Lab RGB 导航零样本真机
+- [NVIDIA Omniverse NuRec](../wiki/entities/nvidia-nurec.md)（本仓库）— 官方 USDZ 体积与 Isaac / AV 两条重建入口
+- [Instant NuRec](../wiki/entities/paper-instant-nurec.md)（本仓库）— 驾驶日志单次前向 3DGS（~1.5 s），作逐场景 NuRec 种子；办公室扫描不要套这条 CLI
 - [Spark vs Aholo：Web 大场景 3DGS 渲染选型](../wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md)（本仓库）— 重建资产的浏览器可视化栈
 
 ### 学完输出什么
