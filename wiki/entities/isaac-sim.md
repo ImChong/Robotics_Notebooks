@@ -17,6 +17,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../queries/simulator-selection-guide.md
+  - ../concepts/software-in-the-loop.md
   - ./paper-humanoidvln.md
   - ./fiveages-sim-robot-descriptions.md
   - ../comparisons/robot-description-catalogs.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/repos/fiveages-sim-robot-descriptions.md
   - ../../sources/courses/nvidia_learn_openusd.md
+  - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -46,7 +48,7 @@ summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应�
 | USD / OpenUSD | Universal Scene Description | Omniverse 共享场景与资产描述格式 |
 | PhysX | NVIDIA PhysX | Isaac Sim 默认刚体/接触物理后端 |
 | RTX | NVIDIA RTX | 光追渲染与视觉传感器仿真路径 |
-| SIL | Software-in-the-Loop | 在仿真中接外部机器人栈（如 ROS 2）做软硬件联调前验证 |
+| SIL | Software-in-the-Loop | 在仿真中接外部机器人栈（如 ROS 2）做软硬件联调前验证；见 [概念页](../concepts/software-in-the-loop.md)（勿与 Spatial Intelligence Lab 混淆） |
 | SDG | Synthetic Data Generation | Replicator 等合成标注数据管线 |
 | Kit | Omniverse Kit | Isaac Sim 所依赖的应用运行时框架 |
 | RL | Reinforcement Learning | 策略学习；训练通常上移到 Isaac Lab |
@@ -72,7 +74,7 @@ summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应�
 | 资产导入与场景配置 | URDF / MJCF / CAD / USD → 共享 stage |
 | 物理与传感器仿真 | PhysX / Newton + RTX / 物理传感器 |
 | 合成数据 | Replicator 标注与随机化写出 |
-| Software-in-the-loop | ROS 2 / 外部控制栈预硬件验证 |
+| Software-in-the-loop | ROS 2 / 外部控制栈预硬件验证 | [Software-in-the-Loop](../concepts/software-in-the-loop.md) |
 | 为学习准备场景 | 给 Isaac Lab 准备可训练机器人与环境 |
 
 ## 核心类图

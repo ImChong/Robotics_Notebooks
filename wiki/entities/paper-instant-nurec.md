@@ -6,6 +6,8 @@ updated: 2026-09-05
 arxiv: "2607.14203"
 code: https://github.com/NVIDIA/instant-nurec
 related:
+  - ./nvidia-spatial-intelligence-lab.md
+  - ../concepts/software-in-the-loop.md
   - ./nvidia-nurec.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -25,7 +27,7 @@ summary: "Instant NuRec（arXiv:2607.14203，NVIDIA SIL）单次前向把标定�
 
 # Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）
 
-**Instant NuRec** 是 NVIDIA [Spatial Intelligence Lab](https://research.nvidia.com/labs/sil/projects/instant-nurec/) 的 **前向神经重建模型**（arXiv:2607.14203，2026）：输入标定多相机短日志，**一次前向** 输出可导航、可改时的分层 **3DGS** 世界，并接到 [NuRec](./nvidia-nurec.md) / AlpaSim，而不是再为每段 clip 做数十分钟优化。
+**Instant NuRec** 是 NVIDIA [Spatial Intelligence Lab](./nvidia-spatial-intelligence-lab.md)（[项目页](https://research.nvidia.com/labs/sil/projects/instant-nurec/)）的 **前向神经重建模型**（arXiv:2607.14203，2026）：输入标定多相机短日志，**一次前向** 输出可导航、可改时的分层 **3DGS** 世界，并接到 [NuRec](./nvidia-nurec.md) / AlpaSim，而不是再为每段 clip 做数十分钟优化。
 
 ## 英文缩写速查
 
