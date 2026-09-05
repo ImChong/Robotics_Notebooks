@@ -11,9 +11,10 @@ tags:
   - computer-vision
 status: complete
 date: 2026-05-21
-updated: 2026-05-21
+updated: 2026-09-05
 related:
   - ../concepts/text-to-cad.md
+  - ./multi-agent-cad.md
   - ./gencad-3d.md
   - ./urdf-studio.md
   - ../concepts/sim2real.md
@@ -81,6 +82,7 @@ flowchart LR
 
 - [GenCAD-3D](./gencad-3d.md) — **点云/网格→CAD** 与 **SynthBal** 数据平衡扩展。
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 自然语言/对话式 CAD 与 **学习式 CAD program** 路线对照。
+- [Multi-Agent CAD（MAC）](./multi-agent-cad.md) — LLM 写 build123d 脚本的编排对照，不是学习式命令序列
 - [URDF-Studio](./urdf-studio.md) — CAD/STEP 下游到机器人描述与仿真的常见衔接点。
 - [Sim2Real](../concepts/sim2real.md) — 若用生成 CAD 作仿真碰撞源，仍需 **网格简化与惯性校验**。
 

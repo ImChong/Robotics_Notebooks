@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3469,
-  "edge_count": 31697,
+  "node_count": 3470,
+  "edge_count": 31708,
   "coverage": {
-    "covered": 3442,
-    "total": 3442,
+    "covered": 3443,
+    "total": 3443,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -232,7 +232,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 544
+      "size": 547
     },
     {
       "label": "视觉-语言-动作",
@@ -244,7 +244,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 189
+      "size": 187
     },
     {
       "label": "视觉语言动作纵深路线",
@@ -318,7 +318,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 514,
+      "degree": 515,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
