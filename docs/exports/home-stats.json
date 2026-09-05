@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3485,
-  "edge_count": 31973,
+  "node_count": 3486,
+  "edge_count": 31983,
   "coverage": {
-    "covered": 3458,
-    "total": 3458,
+    "covered": 3459,
+    "total": 3459,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -241,7 +241,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 252
+      "size": 251
     },
     {
       "label": "机器人学习论文笔记",
