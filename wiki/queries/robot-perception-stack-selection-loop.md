@@ -10,6 +10,7 @@ sources:
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
   - ../../sources/papers/sam2_arxiv_2408_00714.md
   - ../../sources/repos/ultralytics.md
+  - ../../sources/repos/tennis-vision.md
   - ../../sources/repos/ov-sam3d.md
   - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
@@ -23,6 +24,7 @@ related:
   - ../concepts/perception-coordinate-postprocessing.md
   - ../methods/object-detection.md
   - ../entities/ultralytics.md
+  - ../entities/tennis-vision.md
   - ../entities/rf-detr.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/paper-segment-anything.md
@@ -199,6 +201,7 @@ flowchart TD
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — ②层特征骨干背景
 - [感知坐标后处理](../concepts/perception-coordinate-postprocessing.md) — ④层像素→策略坐标的后处理
 - [Ultralytics YOLO](../entities/ultralytics.md) · [RF-DETR](../entities/rf-detr.md) · [YOLO 奠基论文](../entities/paper-yolo-unified-realtime-detection.md) — ②层 2D 检测层实体
+- [Tennis-Vision](../entities/tennis-vision.md) — 广播网球检测/跟踪案例：出点率 ≠ 定位精度，单应只在地板平面有效
 - [Segment Anything](../entities/paper-segment-anything.md) · [SAM2](../entities/paper-sam2.md) — ②层可提示分割层实体
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — ③层 2D→3D 语义建图层实体
 - [OccAnyScene](../entities/paper-occanyscene.md) — ③层跨室内外语义占据（视锥高斯 lifting；代码待发布）

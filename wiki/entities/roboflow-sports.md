@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, tooling, computer-vision, object-detection, keypoint-detection, soccer, sports-analytics, tracking, perception, roboflow, mit]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-05
 code: https://github.com/roboflow/sports
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -14,6 +14,7 @@ related:
   - ../methods/object-detection.md
   - ../concepts/soccer-field-simulation.md
   - ./booster-robocup-demo.md
+  - ./tennis-vision.md
 sources:
   - ../../sources/repos/roboflow_sports.md
 summary: "roboflow/sports：MIT 体育 CV 工具库 + 足球分析 demo；YOLOv8 检测、球场关键点单应、球跟踪与 SigLIP 球队聚类，输出俯视雷达；第三人称广播视角对照 RoboCup 机载感知。"
@@ -157,6 +158,7 @@ sequenceDiagram
 - [目标检测](../methods/object-detection.md) — 检测通论
 - [足球场仿真](../concepts/soccer-field-simulation.md) — 有真值时可对照俯视误差
 - [Booster RoboCup Demo](./booster-robocup-demo.md) — 真机队感知栈对照
+- [Tennis-Vision](./tennis-vision.md) — 网球广播对照：地板单应门、事件语法与拒报；本仓做到俯视雷达，那仓把「测不到就不报」写进产品
 
 ## 参考来源
 

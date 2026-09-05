@@ -7,7 +7,7 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-08-12
+updated: 2026-09-05
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -17,6 +17,7 @@ related:
   - ../queries/perception-backbone-selection.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/ultralytics.md
+  - ../entities/tennis-vision.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/rf-detr.md
   - ../tasks/manipulation.md
@@ -143,6 +144,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [Visual Servoing（方法）](./visual-servoing.md)
 - [Query：目标检测模型选型](../queries/object-detection-model-selection.md)
 - [Ultralytics YOLO](../entities/ultralytics.md)
+- [Tennis-Vision](../entities/tennis-vision.md) — 广播网球：出点率 ≠ 定位精度；更大 YOLO 检人已饱和
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测与跟踪上游
 
 ## 参考来源
