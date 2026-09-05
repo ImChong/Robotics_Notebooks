@@ -13,6 +13,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ./nvidia-omniverse.md
+  - ./isaac-teleop.md
 sources:
   - ../../sources/sites/nvidia-nurec-docs.md
   - ../../sources/sites/nvidia-research-instant-nurec.md
@@ -128,6 +129,7 @@ NuRec 渲染嵌在 Omniverse Kit。Isaac Sim 加载兼容 USDZ 后，用 **`Omni
 - [Instant NuRec（论文）](./paper-instant-nurec.md) — 前向模型、Waymo / 闭环数字与开源边界
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — Lab 训练与 NuRec volume 导入
 - [Isaac Sim](./isaac-sim.md) — Kit 底座与 `OmniNuRecVolumeAPI`
+- [Isaac Teleop](./isaac-teleop.md) — Televiz `ProjectionLayer` 可把头显接到 gsplat / nvblox / 神经重建的 RGBD；这是 **XR 显示**，不是本页的 USDZ 训练/精修产品
 - [NVIDIA Omniverse](./nvidia-omniverse.md) — USD / Kit 底座
 - [Flexion × Niantic × NVIDIA RGB 管线](./flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 现场 3DGS+mesh → NuRec USDZ → 纯 RGB 导航
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 操作场景视频孪生（mesh+cousins），不是驾驶日志体积

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, vla, humanoid, nvidia, foundation-policy, lerobot, isaac-lab, deployment]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-05
 summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 GA 参考代码、LeRobot 数据管线、后训练/评测/TensorRT 部署，并与 Isaac Lab-Arena、Teleop、Isaac ROS 组成端到端策略流水线。"
 related:
   - ../entities/paper-hrl-stack-34-gr00t_n1.md
@@ -16,6 +16,7 @@ related:
   - ./letools.md
   - ./paper-indi.md
   - ./perceptron-isaac-05.md
+  - ./isaac-teleop.md
 sources:
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
@@ -82,7 +83,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 | 步骤 | 命令/产物 | 备注 |
 |------|-----------|------|
 | 搭环境 | Isaac Lab-Arena asset registry + `PickAndPlaceTask` | 静态任务用 **AGILE WBC**；完整代码见 [G1 仿真环境 GitLab Pages](https://unitree-g1-physical-ai-workflow-b42650.gitlab-master-pages.nvidia.com/simulation-workflow/sim-environment-code-review.html) |
-| VR 采数 | `record_demos.py` + `--teleop_device openxr` | CloudXR + VR 头显；示例 400 条 HDF5（可多 session） |
+| VR 采数 | `record_demos.py` + XR（Lab 3.x 走 [Isaac Teleop](./isaac-teleop.md)） | CloudXR + VR 头显；示例 400 条 HDF5（可多 session）。旧文档的 `--teleop_device openxr` 是 Lab 2.x 遗留路径 |
 | 转 LeRobot | `convert_hdf5_to_lerobot.py` + `g1_static_apple_config.yaml` | 映射 `robot_joint_pos` / `processed_actions` / `robot_head_cam_rgb` |
 | 后训练 | `launch_finetune.py` + `g1_sim_wbc_data_gr00t_n_1_7_config.py` | `--embodiment-tag new_embodiment`；Arena 外单独 checkout Isaac-GR00T |
 | 闭环评测 | `policy_runner.py` + 远端 GR00T server | ZMQ；冒烟 `--num_steps 600`；统计 `--num_episodes 100` + `--num_envs 5` |
@@ -125,7 +126,8 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 
 - 论文 canonical：[paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md)  
 - 低层 WBC / SONIC：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)  
-- 数据互操作：[lerobot.md](../entities/lerobot.md)  
+- 数据互操作：[lerobot.md](../entities/lerobot.md)
+- 采数栈：[isaac-teleop.md](./isaac-teleop.md) — Lab 3.x XR 主线；MCAP / LeRobot；Televiz 把头显当瘦客户端  
 - Kuavo 厂商胶水：[letools.md](./letools.md) — Learning 仓将 GR00T N1.5/N1.7 列入统一训练/client 部署  
 - 仿真框架：[isaac-gym-isaac-lab.md](../entities/isaac-gym-isaac-lab.md)  
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)  
