@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-hil-hybrid-imitation-learning.md",
+      "detail_id": "entity-paper-hil-hybrid-imitation-learning",
+      "label": "HIL：混合模仿学习做动态运动控制",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-4danyone.md",
       "detail_id": "entity-paper-4danyone",
       "label": "4DAnyone：单目随意视频做出 4D 人",
@@ -203,21 +214,12 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-six-routes-holes.md",
-      "detail_id": "wiki-queries-embodied-six-routes-holes",
-      "label": "六条路线的窟窿：按时间尺度缝合，而不是赌一条终局",
-      "type": "query",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-4danyone.md",
-    "detail_id": "entity-paper-4danyone",
-    "label": "4DAnyone：单目随意视频做出 4D 人",
+    "path": "wiki/entities/paper-hil-hybrid-imitation-learning.md",
+    "detail_id": "entity-paper-hil-hybrid-imitation-learning",
+    "label": "HIL：混合模仿学习做动态运动控制",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
