@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-04
+updated: 2026-09-05
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -410,7 +410,7 @@ flowchart TD
 - [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md) — 2026-09-04 九篇：表征 / 抓取 / 数据 / 评测 / 硬件
 - [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 动作足够用的中间特征（arXiv:2609.04193）
 - [AdaRoboVLG](../entities/paper-adarobovlg.md) — 物理抓取与语义先验解耦（arXiv:2609.04096）
-- [MINERVA](../entities/paper-minerva-libero.md) — LIBERO 容量下限 0.54M / ~95%（arXiv:2609.03715）
+- [MINERVA](../entities/paper-minerva-libero.md) — LIBERO 容量下限 0.54M / ~95%，CPU 5.1 ms/chunk（arXiv:2609.03715）
 - [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务（arXiv:2609.03591）
 - [ARTiS](../entities/paper-artis-gripper.md) — 拆解工具夹爪（arXiv:2609.03362）
 

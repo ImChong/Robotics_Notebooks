@@ -3,7 +3,7 @@ title: Contact Estimation（接触估计）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-04
+updated: 2026-09-05
 summary: 在无直接力传感器时，从关节力矩/速度信号推断足端或末端执行器的接触状态，是步态规划和 WBC 的重要感知前提。
 ---
 
@@ -141,3 +141,4 @@ J^T · f = τ_gravity_compensation - τ_actuator
 - [PRIME](../entities/prime-system-id.md) — 无力传感时从运动学 + 执行器命令重建接触力与惯量
 - [人形整机闭环惯量标定](./humanoid-closed-loop-inertia-calibration.md) — 足底力是量产体检四张单子之一
 - [Balance Recovery](../tasks/balance-recovery.md) — 意外接触的快速检测对扰动恢复至关重要
+- [FWBC-VLA](../entities/paper-fwbc-vla.md) — 双 LSTM 残差力矩估计，把接触强度/趋势同时喂给 VLA 与底盘补偿

@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, open-source, reproducibility, technology-map]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 related:
   - ../entities/paper-gift-intermediate-feature-training.md
   - ../entities/paper-adarobovlg.md
@@ -102,7 +102,7 @@ flowchart TB
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|---------------|------|
 | 04 | Network Design | **已开源** `Barabasi-Lab/NetworkDesign` | [paper-network-design-reproducible](../entities/paper-network-design-reproducible.md) |
-| 08 | BRIDGE | **待核实**（项目页在，仓未落地） | [paper-bridge-humanoid](../entities/paper-bridge-humanoid.md) |
+| 08 | BRIDGE | **部分开源**（`.stp` CAD；控制/BOM 待录用） | [paper-bridge-humanoid](../entities/paper-bridge-humanoid.md) |
 | 09 | ARTiS | **部分开源**（CAD/BOM；控制未见） | [paper-artis-gripper](../entities/paper-artis-gripper.md) |
 
 ## 读法建议

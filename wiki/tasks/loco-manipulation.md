@@ -3,11 +3,12 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-03
+updated: 2026-09-05
 sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
+  - ../../sources/papers/fwbc_vla_arxiv_2609_03889.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
   - ../../sources/papers/faro_arxiv_2607_18362.md
@@ -126,7 +127,7 @@ flowchart TD
 ### 3. 基础模型路线 (Foundation Models / VLA)
 - **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。
 - **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。
-- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)（2026，关节级全身遥操作 + π₀.₅ 系 VLA + HuMI 共训的全身原生配方，**已开源**）；[HAF](../entities/paper-haf-humanoid-vla-adaptation.md)（2026，三阶段 action flow + DCT 潜空间 SAC 把通才 VLA 适配到天工家庭 loco-manipulation，**未开源**）。
+- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)（2026，关节级全身遥操作 + π₀.₅ 系 VLA + HuMI 共训的全身原生配方，**已开源**）；[HAF](../entities/paper-haf-humanoid-vla-adaptation.md)（2026，三阶段 action flow + DCT 潜空间 SAC 把通才 VLA 适配到天工家庭 loco-manipulation，**未开源**）；[FWBC-VLA](../entities/paper-fwbc-vla.md)（2026，无 F/T 的残差力同时条件化 π₀.₅ 与轮足底盘补偿；擦白板终段 64%、开门 52%，**未开源**）。
 
 ### 4. 视觉分层 Sim2Real（Keypoint Tracker + Depth Visuomotor）
 - **核心**：**任务无关低层** 从人类动作蒸馏 **关键点跟踪器**（motion teacher → keypoint student）；**任务专用高层** 从特权物体状态教师蒸馏 **egocentric 深度 visuomotor 生成器**；接口为 root + 头/双手/双足共 5 点，共享低层、逐任务训高层。
@@ -376,6 +377,7 @@ flowchart TD
 - **ingest 档案：** [sources/blogs/flexion_reflect_v1_0.md](../../sources/blogs/flexion_reflect_v1_0.md) — Flexion Reflect v1.0：长程 NL mission 跨楼层 loco-manip 产业演示（2026-06）
 - **ingest 档案：** [sources/blogs/limx_cosa_05_release_2026-07-15.md](../../sources/blogs/limx_cosa_05_release_2026-07-15.md) — LimX COSA 0.5：S2/S1/S0 调度 V³-0 VLA + WBT，Oli 一镜到底家务 Demo（2026-07）
 - **ingest 档案：** [sources/papers/lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID：技能级世界模型想象控制长时程人形 loco-manipulation（arXiv:2608.07746）
+- **ingest 档案：** [sources/papers/fwbc_vla_arxiv_2609_03889.md](../../sources/papers/fwbc_vla_arxiv_2609_03889.md) — FWBC-VLA：无传感器接触残差 + 轮足全身补偿（arXiv:2609.03889）
 
 ## 一句话记忆
 
