@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md — 腾讯科技世界模型访谈；点名论文独立节点；关键页 paper-lpwm / paper-phi-wm-acteffect
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/2DEpiexjwh5O6bBJDXk3LA>，并要求文内论文各有独立非重复详情节点。
+- **复用：** [Atlas](wiki/entities/atlas-world-model.md)、[LeVJEPA](wiki/entities/paper-levjepa.md)、[World Labs](wiki/entities/world-labs.md)、[功能分类](wiki/concepts/functional-taxonomy-world-models.md)（#1808 已合入）。
+- **步骤 2.5：** LeJEPA **已开源** CC BY-NC；LeWM **已开源** MIT+HF；LpWM **已开源** MIT；ActEffect / Atlas **确认未开源**。
+- **关键判断：** 过载词要拆岗位——Atlas 生成 3D、LpWM 改隐几何、ActEffect 把 WM 放进训练反馈。
+- **新建：** `paper-lejepa`、`paper-lewm`、`paper-lpwm`、`paper-phi-wm-acteffect`；归档访谈 raw + 三仓 + 光象站。
+- **交叉：** 生成式 WM / WAM / INTACT / LeVJEPA / Atlas / 功能分类
+
 ## [2026-09-05] ingest | sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md + sources/blogs/worldlabs_functional_taxonomy_world_models.md — Fei-Fei 功能分类 + 上智定义/路线图；确认未开源
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2607.06401v1>、<https://drfeifei.substack.com/p/a-functional-taxonomy-of-world-models>

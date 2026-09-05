@@ -22,6 +22,7 @@ related:
   - ../entities/paper-dreamwam.md
   - ../entities/paper-fact.md
   - ../entities/paper-flex-pi.md
+  - ../entities/paper-phi-wm-acteffect.md
   - ../entities/paper-motubrain.md
   - ../entities/paper-rift-wam.md
   - ../entities/paper-wam-realtime-async.md
@@ -326,6 +327,7 @@ flowchart TB
 - [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../entities/paper-abot-m05-mobile-manipulation-wam.md)
 - [动作后果技术地图（2026-07 策展）](../overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM（双系统 WAM 执行）](../entities/paper-dswam-dual-system-wam.md)
+- [ActEffect / Phi-WM 1.0](../entities/paper-phi-wm-acteffect.md) — 训练时受控 WM 反馈，部署一次前向（LIBERO 98.8%；确认未开源）
 - [Motubrain](../entities/paper-motubrain.md) — 生数 Joint WAM（RoboTwin 95.8/96.1；仓占位）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — Motubrain 平台六策略实证
 - [Rift（免视频 rollout 的未来 cache）](../entities/paper-rift-wam.md) — anticipation token 一次写 K/V；LIBERO 98.8% / 1.1× 延迟（未开源）
