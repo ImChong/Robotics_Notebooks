@@ -11,6 +11,7 @@ related:
   - ./nvidia-learn-openusd.md
   - ./newton-physics.md
   - ./nvidia-warp.md
+  - ./omnigraph.md
   - ./nvidia-cosmos.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ../concepts/sim2real.md
@@ -60,6 +61,7 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 ## 关联页面
 - [Isaac Sim](./isaac-sim.md) — Omniverse 上的机器人仿真应用实体页
 - [Newton Physics](./newton-physics.md) — Warp + OpenUSD 的 GPU 多求解器引擎；Isaac Lab `feature/newton`
+- [OmniGraph](./omnigraph.md) — Kit 可视化脚本：Action / Push Graph、ROS 与机器人控制快捷图
 - [NVIDIA Warp](./nvidia-warp.md) — Kit 扩展 `omni.warp.core`；Newton / MJWarp 的计算层
 - [NVIDIA Cosmos](./nvidia-cosmos.md) — 学习式 WFM；产品 FAQ：Omniverse 仿真视频可送入 Cosmos Transfer
 - [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md) — 官方 USD 课纲与 OpenUSD 认证备考
