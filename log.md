@@ -1,3 +1,11 @@
+## [2026-09-05] ingest | sources/papers/robot_juggling_arxiv_2608_26800.md — RAI AthenaZero 真机抛接分钟级记忆学习；确认未开源；关键页 paper-robot-juggling-athenazero
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2608.26800>、<https://arxiv.org/html/2608.26800v1>，并要求自动合并 PR
+- **步骤 2.5：** arXiv 与 RAI AthenaZero 博客 **无 GitHub / 数据集** → **确认未开源**
+- **关键判断：** 先验连 1 cycle 都完不成仍可作学习正则；MRS 排除 89% 不安全规划；五种三球花样 <5 min；与 [SPD](wiki/entities/paper-spd.md) 仿真预训练路线对照
+- **新建：** [`paper-robot-juggling-athenazero`](wiki/entities/paper-robot-juggling-athenazero.md)；归档 `sources/papers/robot_juggling_arxiv_2608_26800.md`、`sources/sites/rai-athenazero-blog.md`
+- **交叉：** Contact-Rich Manipulation / Sim2Real / Manipulation / Sumo / SMPC-to-RL / SPD
+
 ## [2026-09-05] ingest | sources/papers/spd_corl_2026.md — 复核 SPD 并补挂 arXiv:2608.15917；代码/数据仍待发布
 
 - **触发：** 用户指定 ingest *Pre-training Visual Dexterity in Simulation*（<https://spd.bot/>、<https://arxiv.org/abs/2608.15917>），并要求自动合并 PR

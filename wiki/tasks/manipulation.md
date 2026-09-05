@@ -159,6 +159,7 @@ flowchart TD
 - **RL**：在仿真中学习抓取策略
 - **IL**：从演示中学习操作技能
 - **Task-Level ILC（可变形体）**：[Flying Knots](../entities/paper-flying-knots.md)（arXiv:2602.21302）— **单次人类示教 + 粒子绳模型 + critical-point 逆模型 QP**，在 xArm7 真机上 **≤10 trials** 完成动态打结，绳型间 **2–5 trials** 可迁移；与大规模 BC/扩散策略形成 **样本效率** 对照
+- **真机分钟级动态技能（抛接）**：[Robot Juggling / AthenaZero](../entities/paper-robot-juggling-athenazero.md)（arXiv:2608.26800，RAI）— **正则化记忆学习 + 互达集 MRS**；五种三球花样 **<5 min** 墙钟；先验零样本一轮都失败但仍正则学习；**确认未开源**
 - **神经布料仿真（可变形体 sim）**：[ClothTransformer](../entities/paper-clothtransformer-unified-latent-cloth-simulation.md)（arXiv:2605.27852）— **统一 latent Transformer** 覆盖 **人体着装 / 夹爪抓布 / 刚体碰撞**；~493.4k 帧 **GIPC 无穿透** 数据 + **可微 CCD**；可作 **操作规划 / 仿真加速** 的动力学先验（论文 Robotic Manip. 为仿真，非真机闭环）
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）

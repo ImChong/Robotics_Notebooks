@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3473,
-  "edge_count": 31771,
+  "node_count": 3474,
+  "edge_count": 31784,
   "coverage": {
-    "covered": 3446,
-    "total": 3446,
+    "covered": 3447,
+    "total": 3447,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-robot-juggling-athenazero.md",
+      "detail_id": "entity-paper-robot-juggling-athenazero",
+      "label": "Robot Juggling：分钟级真机动态操作学习",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/multi-agent-cad.md",
       "detail_id": "entity-multi-agent-cad",
@@ -205,29 +214,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/sciencediscovery.md",
-      "detail_id": "entity-sciencediscovery",
-      "label": "ScienceDiscovery",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/multi-agent-cad.md",
-    "detail_id": "entity-multi-agent-cad",
-    "label": "Multi-Agent CAD（MAC）",
+    "path": "wiki/entities/paper-robot-juggling-athenazero.md",
+    "detail_id": "entity-paper-robot-juggling-athenazero",
+    "label": "Robot Juggling：分钟级真机动态操作学习",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -260,7 +256,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1416,
+      "degree": 1418,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -311,20 +307,20 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "degree": 518,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "entity-awesome-world-models",
       "label": "Awesome World Models（sun254667 精选集）",
       "type": "entity",
       "degree": 517,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "degree": 516,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-overview-sun-awesome-ego-technology-map",
