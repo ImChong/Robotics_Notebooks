@@ -9,16 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/marble-world-model.md",
-      "detail_id": "entity-marble-world-model",
-      "label": "Marble（World Labs 多模态世界模型）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/nvidia-nurec.md",
       "detail_id": "entity-nvidia-nurec",
       "label": "NVIDIA Omniverse NuRec",
@@ -27,6 +17,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/marble-world-model.md",
+      "detail_id": "entity-marble-world-model",
+      "label": "Marble（World Labs 多模态世界模型）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-instant-nurec.md",
@@ -215,14 +215,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/marble-world-model.md",
-    "detail_id": "entity-marble-world-model",
-    "label": "Marble（World Labs 多模态世界模型）",
+    "path": "wiki/entities/nvidia-nurec.md",
+    "detail_id": "entity-nvidia-nurec",
+    "label": "NVIDIA Omniverse NuRec",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
