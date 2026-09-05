@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-robot-juggling-athenazero.md",
+      "detail_id": "entity-paper-robot-juggling-athenazero",
+      "label": "Robot Juggling：分钟级真机动态操作学习",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/multi-agent-cad.md",
       "detail_id": "entity-multi-agent-cad",
       "label": "Multi-Agent CAD（MAC）",
@@ -205,29 +214,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/sciencediscovery.md",
-      "detail_id": "entity-sciencediscovery",
-      "label": "ScienceDiscovery",
-      "type": "entity",
-      "recency": "2026-09-04",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/multi-agent-cad.md",
-    "detail_id": "entity-multi-agent-cad",
-    "label": "Multi-Agent CAD（MAC）",
+    "path": "wiki/entities/paper-robot-juggling-athenazero.md",
+    "detail_id": "entity-paper-robot-juggling-athenazero",
+    "label": "Robot Juggling：分钟级真机动态操作学习",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
