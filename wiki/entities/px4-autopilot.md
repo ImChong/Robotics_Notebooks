@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, autopilot, px4, mavlink, uav, multirotor, open-source, linux-foundation]
 status: complete
-updated: 2026-05-27
+updated: 2026-09-05
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../concepts/sim2real.md
@@ -14,6 +14,7 @@ related:
   - ./xtdrone.md
   - ./crazyflie-firmware.md
   - ./betaflight.md
+  - ./project-quiver.md
 sources:
   - ../../sources/repos/px4_autopilot.md
   - ../../sources/sites/cia_dronecan_uavcan.md
@@ -74,6 +75,7 @@ summary: "PX4 是 Dronecode 生态的开源自动驾驶仪：多机型飞控固�
 - [XTDrone](./xtdrone.md)
 - [EGO-Planner Swarm](./ego-planner-swarm.md)
 - [Betaflight](./betaflight.md) — FPV 手飞飞控对照
+- [Project Quiver](./project-quiver.md) — 25 kg **ArduPilot** 开源机架对照（不是 PX4 分叉）
 - [Sim2Real](../concepts/sim2real.md)
 
 ## 推荐继续阅读

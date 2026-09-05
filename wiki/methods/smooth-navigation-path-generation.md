@@ -2,7 +2,7 @@
 type: method
 tags: [motion-planning, navigation, optimization, path-smoothing, mobile-robot]
 status: complete
-updated: 2026-06-23
+updated: 2026-09-05
 related:
   - ./trajectory-optimization.md
   - ../concepts/collision-distance-optimization.md
@@ -64,6 +64,7 @@ $$\min \sum_k \big( w_j \|\Delta^3 p_k\|^2 + w_c \kappa(p_k)^2 + w_l \|p_k - p_k
 - [Trajectory Optimization](./trajectory-optimization.md)
 - [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md)
 - [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其路径平滑后处理层的选型落地
+- [Project Quiver](../entities/project-quiver.md) — 作业级 ArduPilot 机架；平滑路径仍在 GCS / 伴机侧，不在机架仓内
 
 ## 推荐继续阅读
 

@@ -3,13 +3,14 @@
 type: entity
 tags: [repo, firmware, fpv, multirotor, uav, open-source, flight-controller, linux-foundation]
 status: complete
-updated: 2026-06-18
+updated: 2026-09-05
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
   - ./gym-pybullet-drones.md
   - ./crazyflie-firmware.md
   - ./wtfos.md
+  - ./project-quiver.md
 sources:
   - ../../sources/repos/betaflight.md
   - ../../sources/sites/betaflight-com.md
@@ -88,6 +89,7 @@ flowchart LR
 - [gym-pybullet-drones](./gym-pybullet-drones.md) — RL 仿真与 Betaflight 风格参数
 - [Crazyflie Firmware](./crazyflie-firmware.md) — 微四轴嵌入式栈对照
 - [wtfOS](./wtfos.md) — DJI 数字图传端 MSP OSD 与社区包
+- [Project Quiver](./project-quiver.md) — 作业级 ArduPilot 机架对照（非 FPV 手飞）
 
 ## 推荐继续阅读
 
