@@ -18,6 +18,8 @@ related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/latent-imagination.md
   - ../concepts/world-action-models.md
+  - ../concepts/functional-taxonomy-world-models.md
+  - ../entities/paper-world-model-definition-roadmap.md
   - ../entities/paper-unified-robot-learning-survey.md
   - ../methods/model-based-rl.md
   - ../methods/being-h07.md
@@ -103,6 +105,8 @@ sources:
   - ../../sources/papers/m4world_arxiv_2607_14005.md
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
   - ../../sources/sites/worldlabs-ai.md
+  - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
+  - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
   - ../../sources/repos/abot-world.md
   - ../../sources/sites/abot-world.md
   - ../../sources/blogs/allenai_molmo_motion.md
@@ -127,6 +131,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ## 核心理念：以生成代替计算
 
 在传统仿真中，我们需要手动编写复杂的接触力方程；而在生成式世界模型中，模型学会了“如果机器人向左打方向盘，画面应该如何平滑变化”。
+
+选型时先标功能格：本页大多数系统在 [Fei-Fei 功能分类](../concepts/functional-taxonomy-world-models.md) 里是 **Renderer**（吐像素），只有动作条件、可查询几何或闭环规划时才跨到 Simulator / Planner。[上海人工智能实验室定义文](../entities/paper-world-model-definition-roadmap.md) 再加一列架构（observation / latent / 3D）：好看视频不等于有可干预的压缩物理状态。
 
 ### 主要架构
 1. **视频生成器 (Video Diffusion/Autoregressive)**：如 GAIA-1 或 UniSim。给定当前画面和动作序列，生成一段长达数秒甚至数分钟的未来预测视频。
@@ -353,6 +359,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — **静态 sim-ready 全屋 3D** 场景生成与中文住宅平面图数据（arXiv:2606.06390）。
 - [InfiniteDiffusion / Terrain Diffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md) — **学习式无限户外地形**（惰性扩散 + 分层高程/气候场；Minecraft mod 集成，SIGGRAPH 2026）。
 - [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md) — 状态空间神经动力学 + 想象 rollout（与像素生成式 WBM 对照）。
+- [世界模型功能分类（Renderer / Simulator / Planner）](../concepts/functional-taxonomy-world-models.md) — 先问输出是观测、状态还是动作
+- [世界模型定义与路线图](../entities/paper-world-model-definition-roadmap.md) — 压缩定义 + 功能×架构二维表（arXiv:2607.06401）
 - [World Labs](../entities/world-labs.md) — 空间智能与 3D 世界生成产品侧样本（Atlas / Marble / Spark）。
 - [Marble（World Labs 多模态世界模型）](../entities/marble-world-model.md) — 可注册产品 + 文档/API；生成闭源，Spark 开源。
 - [Atlas（World Labs omni 世界模型）](../entities/atlas-world-model.md) — 相机可控生成、稀疏 3D 重建、Real-to-Sim；早期访问。
@@ -379,6 +387,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Wang, S., et al. (2026). *World Action Models: The Next Frontier in Embodied AI* — 见 [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)。
 - Hu, Y., et al. (2025). *EWMBench: Evaluating Scene, Motion, and Semantic Quality in Embodied World Models* — 见 [sources/papers/ewmbench.md](../../sources/papers/ewmbench.md)。
 - Duan, H., et al. (2025). *WorldScore: A Unified Evaluation Benchmark for World Generation* — 见 [sources/papers/worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md)。
+- Fei-Fei Li / World Labs (2026). *A Functional Taxonomy of World Models* — 见 [worldlabs_functional_taxonomy_world_models.md](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)。
+- Physical Intelligence Team, Shanghai AI Lab (2026). *A Definition and Roadmap for World Models* — 见 [world_model_definition_roadmap_arxiv_2607_06401.md](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md)。
 - World Labs 官方站点与 Spark/Marble 关联归档 — 见 [sources/sites/worldlabs-ai.md](../../sources/sites/worldlabs-ai.md)。
 - Marble 文档与 GA 博客 — 见 [worldlabs-docs.md](../../sources/sites/worldlabs-docs.md)、[worldlabs_marble_world_model.md](../../sources/blogs/worldlabs_marble_world_model.md)。
 - Atlas 技术博客归档 — 见 [sources/blogs/worldlabs_atlas_omni_world_model.md](../../sources/blogs/worldlabs_atlas_omni_world_model.md)。

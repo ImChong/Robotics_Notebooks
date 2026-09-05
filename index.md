@@ -67,6 +67,7 @@
 - [Residual Policy Learning](wiki/methods/residual-policy-learning.md)（base + 残差统一框架：经典 RPL/Residual RL → RFC → Versatile Jumping → G1 上 RuN/ResMimic 九篇谱系）
 - [PyTorch](wiki/entities/pytorch.md)
 - [TensorFlow](wiki/entities/tensorflow.md)
+- [世界模型功能分类（Renderer / Simulator / Planner）](wiki/concepts/functional-taxonomy-world-models.md)（Fei-Fei / World Labs：按 POMDP 输出消歧；上海人工智能实验室补表征轴）
 - [World Action Models（WAM）](wiki/concepts/world-action-models.md)（联合未来–动作分布的具身策略范式；综述与 Awesome-WAM 资源入口）
 - [Pelican-Unified 1.0（UEI）](wiki/methods/pelican-unified-1.md)（Qwen3-VL 推理末态 \(z\) + Wan 系 UFG：同一扩散去噪联合未来视频与动作；arXiv:2605.15153）
 - [mimic-video（VAM）](wiki/methods/mimic-video.md)（互联网视频潜计划 + 流匹配动作解码；arXiv:2512.15692）

@@ -13,10 +13,13 @@ related:
   - ./paper-instant-nurec.md
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ../methods/generative-world-models.md
+  - ../concepts/functional-taxonomy-world-models.md
+  - ./paper-world-model-definition-roadmap.md
   - ../concepts/video-as-simulation.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/blogs/worldlabs_marble_world_model.md
+  - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
   - ../../sources/sites/worldlabs-docs.md
   - ../../sources/sites/marble-worldlabs-ai.md
   - ../../sources/sites/worldlabs-ai.md
@@ -42,7 +45,7 @@ summary: "Marble 是 World Labs 首款多模态世界模型产品（2025-11-12 G
 
 ## 为什么重要
 
-- **把「世界模型」钉在 3D 资产管线：** 相对仓库里大量 **像素视频 WM**，Marble 交付的是可漫游 splat 与可选碰撞网，评测轴是创作者控制与导出互通，不是闭环策略成功率。
+- **把「世界模型」钉在 3D 资产管线：** 相对仓库里大量 **像素视频 WM**，Marble 交付的是可漫游 splat 与可选碰撞网，评测轴是创作者控制与导出互通，不是闭环策略成功率。Fei-Fei [功能分类](../concepts/functional-taxonomy-world-models.md) 把它写成 Renderer↔Simulator 的第一章（splat + collider）；[定义文](./paper-world-model-definition-roadmap.md) 放在 3D/structured 格，并提醒 collider ≠ 完整学习动力学。
 - **控制梯度清楚：** 文/单图发明细节 → 多图/视频约束多视角 → Chisel **结构与风格解耦**。选型时先问「要发明还是要对齐已有空间」。
 - **机器人只消费外观：** collider + Spark/Rapier 示例能做第一人称逛场景；**接触可信、可训练物理** 仍要 [NuRec](./nvidia-nurec.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / 解析仿真。
 - **开源边界可核对：** 生成闭源；[Spark](./spark-3dgs-renderer.md) 与 Interactive World Examples 开源。勿写成「Marble 已开源」。
@@ -147,6 +150,8 @@ GA 博客把 Marble 写成：把手头模态 **抬成完整 3D 世界**，并随
 
 ## 关联页面
 
+- [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — Marble 被写成仿真方向的第一章
+- [世界模型定义与路线图](./paper-world-model-definition-roadmap.md) — 3D/structured 格；collider ≠ 学习动力学
 - [World Labs](./world-labs.md) — 公司与 Atlas / Spark 总览
 - [Atlas](./atlas-world-model.md) — 后续 omni 底座（早期访问）
 - [Spark](./spark-3dgs-renderer.md) — 官方推荐的 Web 3DGS 运行时
@@ -162,6 +167,7 @@ GA 博客把 Marble 写成：把手头模态 **抬成完整 3D 世界**，并随
 ## 参考来源
 
 - [worldlabs_marble_world_model.md](../../sources/blogs/worldlabs_marble_world_model.md)
+- [worldlabs_functional_taxonomy_world_models.md](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)
 - [worldlabs-docs.md](../../sources/sites/worldlabs-docs.md)
 - [marble-worldlabs-ai.md](../../sources/sites/marble-worldlabs-ai.md)
 - [worldlabs-ai.md](../../sources/sites/worldlabs-ai.md)
