@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-05
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -340,7 +340,7 @@ flowchart TD
 - [Table Tennis Strategy & Skill（PhysicsPingPong）](../methods/table-tennis-strategy-skill-learning.md) — arXiv:2407.16210（SIGGRAPH 2024 分层乒乓球 + VR 人–机）
 - [乒乓球分层技能选型指南](../queries/table-tennis-hierarchical-skill-learning-guide.md) — ASE 专家 + mixer + 策略层选型
 - [MTRG](../methods/mtrg-reference-goal-driven-rl.md) — arXiv:2602.20375（G1 箱式跑酷：参考仅塑形 + goal 部署，无对抗）
-- [HIL](../methods/hil-hybrid-imitation-learning.md) — arXiv:2505.12619（物理角色跑酷：tracking + 场景条件 AMP）
+- [HIL](../methods/hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 2026 / arXiv:2505.12619（物理角色跑酷 + heading：tracking + 场景条件 AMP）
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线选型
 - [ZEST](../methods/zest.md) — arXiv:2602.00401（跨形态高动态模仿与零样本硬件部署）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)

@@ -4,11 +4,12 @@ title: ZEST (Zero-shot Embodied Skill Transfer)
 tags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact, rai-institute, boston-dynamics]
 status: complete
 summary: "ZEST（Science Robotics 2026）用自适应采样与辅助扳手课程，把 MoCap / 视频 / 动画变成 Atlas、G1、Spot 上的零样本高动态技能。论文实体见 paper-zest；确认未开源。"
-updated: 2026-08-27
+updated: 2026-09-05
 related:
   - ../entities/paper-zest.md
   - ./mtrg-reference-goal-driven-rl.md
   - ./hil-hybrid-imitation-learning.md
+  - ../entities/paper-hil-hybrid-imitation-learning.md
   - ../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md
   - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
   - ../concepts/curriculum-learning.md
@@ -94,6 +95,7 @@ MTRG 复用 ZEST 的 assistive-wrench \(\lambda\) 课程；beyond-nominal 下相
 - [ZEST 论文实体](../entities/paper-zest.md) — Science Robotics 评测、消融与开源结论
 - [MTRG](./mtrg-reference-goal-driven-rl.md) — 参考塑形 + goal 部署
 - [HIL](./hil-hybrid-imitation-learning.md) — tracking + AMP（角色动画）
+- [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 2026 评测与开源边界
 - [HIL vs MTRG vs ZEST](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)
 - [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层对照
 - [Curriculum Learning](../concepts/curriculum-learning.md)

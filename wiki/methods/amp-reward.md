@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-05
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
@@ -15,6 +15,7 @@ related:
   - ./inverse-reinforcement-learning.md
   - ./beyondmimic.md
   - ./hil-hybrid-imitation-learning.md
+  - ../entities/paper-hil-hybrid-imitation-learning.md
   - ../tasks/humanoid-soccer.md
 sources:
   - ../../sources/papers/amp.md
@@ -63,7 +64,7 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 
 ### 4. 场景条件 AMP：[HIL](./hil-hybrid-imitation-learning.md)
 
-[HIL](./hil-hybrid-imitation-learning.md)（arXiv:2505.12619）将 AMP style reward 与 **motion tracking** 并行训练，并把 **场景点云** 送入判别器，使风格奖励同时约束「像参考」与「适配当前障碍」。这是 AMP 在人–场景跑酷动画中的代表性扩展；后人形 [MTRG](./mtrg-reference-goal-driven-rl.md) 则完全去掉对抗分支，改用参考塑形 + goal 泛化。
+[HIL](./hil-hybrid-imitation-learning.md)（[TOG 2026](../entities/paper-hil-hybrid-imitation-learning.md)，arXiv:2505.12619）将 AMP style reward 与 **motion tracking** 并行训练，并把 **场景点云** 送入判别器，使风格奖励同时约束「像参考」与「适配当前障碍」。这是 AMP 在人–场景跑酷动画中的代表性扩展；后人形 [MTRG](./mtrg-reference-goal-driven-rl.md) 则完全去掉对抗分支，改用参考塑形 + goal 泛化。
 
 ### 5. 状态相关 AMP（SD-AMP，arXiv:2605.18611）
 

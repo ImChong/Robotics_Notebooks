@@ -706,6 +706,7 @@
 - [HiFi-UMI / HiFi-UMI-2K](wiki/entities/paper-hifi-umi.md) — HiFi-UMI**（*Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone*，[arXiv:26 `📅unknown` `[entity_page]`
 - [Hiking in the Wild：可扩展感知跑酷框架](wiki/entities/paper-hiking-in-the-wild.md) — Hiking in the Wild**（arXiv:2601.07718）由清华大学交叉信息研究院等提出，在 [42 篇 RL 身体系统栈](https://mp.weixin.qq.com/s `📅unknown` `[entity_page]`
 - [HIL-HARC（真机在线 RL · CTDE + 分解 Critic · arXiv:2608.09762）](wiki/entities/paper-hil-harc.md) — HIL-HARC**（*Efficient Real-World Online Reinforcement Learning for Robot Manipulation via Centrali `📅unknown` `[entity_page]`
+- [HIL：混合模仿学习做动态运动控制](wiki/entities/paper-hil-hybrid-imitation-learning.md) — HIL**（*Hybrid Imitation Learning for Dynamic Athletic Control*，[*ACM Transactions on Graphics* 202 `📅unknown` `[entity_page]`
 - [HINT：长视野操作的人类意图注入](wiki/entities/paper-hint-robot-manipulation.md) — HINT**（*Human-Intent Inception for Long-Horizon Robot Manipulation*，[arXiv:2609.02653](https://arx `📅unknown` `[entity_page]`
 - [hint²：层级世界模型推理时 LTL 引导](wiki/entities/paper-hint2.md) — hint²**（*Hierarchical World Models for Inference-Time Temporal Logic Guidance*；[arXiv:2608.13678 `📅unknown` `[entity_page]`
 - [HiTac-WAM（分层触觉世界–动作模型）](wiki/entities/paper-hitac-wam.md) — HiTac-WAM**（*A Hierarchical Tactile World Action Model for Contact-Rich Robot Manipulation*，[arXiv `📅unknown` `[entity_page]`
@@ -2967,7 +2968,7 @@
 - [HAIC: 动力学感知世界模型控制](wiki/methods/haic.md) — HAIC**（*Humanoid Agile Object Interaction Control via Dynamics-Aware World Model*）不是泛称的分层控制器，而是面向  `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](wiki/methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
 - [Hierarchical Reinforcement Learning（分层强化学习，HRL）](wiki/methods/hierarchical-reinforcement-learning.md) — HRL：上层策略拆分子任务/选项，下层策略执行具体运动，缓解长时程信用分配与探索难题。 `📅unknown` `[method_page]`
-- [HIL: Hybrid Imitation Learning（混合模仿学习）](wiki/methods/hil-hybrid-imitation-learning.md) — HIL** 将 **逐帧 motion tracking** 与 **AMP 式对抗模仿** 放在同一策略、同一观测空间里并行训练，使物理仿真角色既能精确学会跑酷参考动作，又能在新障碍布局中灵活组 `📅unknown` `[method_page]`
+- [HIL: Hybrid Imitation Learning（混合模仿学习）](wiki/methods/hil-hybrid-imitation-learning.md) — HIL**（*Hybrid Imitation Learning for Dynamic Athletic Control*，[ACM TOG 2026](https://jiashunwang. `📅unknown` `[method_page]`
 - [HiPAN（Hierarchical Posture-Adaptive Navigation）](wiki/methods/hipan.md) — HiPAN** 是面向**四足机器人**在**非结构化三维环境**（窄通道、限高、死胡同、半封闭房间）中的导航框架：部署时**不依赖显式三维地图**，仅用**机载深度**做感知，通过**分层强化学 `📅unknown` `[method_page]`
 - [htwk-gym](wiki/methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
 - [Humanoid Transformer with Touch Dreaming (HTD)](wiki/methods/humanoid-transformer-touch-dreaming.md) — HTD** 是一种面向人形机器人 dexterous loco-manipulation 的多模态行为克隆方法（论文实体见 [Humanoid Touch Dream](../entities/p `📅unknown` `[method_page]`
@@ -3151,7 +3152,7 @@
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](wiki/comparisons/ethercat-vs-ethernet-ip.md) — 在人形机器人、工业机械臂、移动操作平台落地时，"主控板 ↔ 关节驱动器"的连接几乎都跑在工业以太网上。**EtherCAT** 和 **EtherNet/IP** 是当前装机量最大的两种以太网现场总线 `📅unknown` `[comparison_page]`
 - [FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比](wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 背景**：围绕 RoboParty Lab 近期 MimicLite、[UFO](. `📅unknown` `[comparison_page]`
 - [GMR vs NMR vs ReActor：动作重定向方法谱系对比](wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 背景**：当源动作（动捕、视频估计、生成模型）要喂给目标人形 / 异构机器人时，重定向是必须穿过的一道闸。围绕「**像不像**」与「**能不能跟得上**」两条评价线，社区涌现了三类代表性路线——以 `📅unknown` `[comparison_page]`
-- [HIL vs MTRG vs ZEST：跑酷模仿学习路线对比](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 同一作者群从 **物理角色动画跑酷**（HIL）演进到 **人形 G1 箱式跑酷**（[GfR / MTR `📅unknown` `[comparison_page]`
+- [HIL vs MTRG vs ZEST：跑酷模仿学习路线对比](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 同一作者群从 **物理角色动画跑酷**（HIL，[TOG 2026 实体](../entities/pap `📅unknown` `[comparison_page]`
 - [HumanNet Table 1：代表性人类视频语料与具身向关系](wiki/comparisons/humannet-table1-human-video-corpora.md) — HumanNet** 在与既有语料对比时，用一张表同时强调 **规模、视点、活动语义粒度** 以及论文中称为 **Embodied Use** 的定性列（与「能否直接支撑机器人学习接口」相关，但仍 `📅unknown` `[comparison_page]`
 - [人形参考运动与操作数据集选型](wiki/comparisons/humanoid-reference-motion-datasets.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [HY-Motion vs GENMO/GEM vs Kimodo：三条「文本/多模态 → 人体运动」生成式骨干对比](wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 背景**：2025–2026 年「文本/多模态驱动人体运动生成」涌出一批大模型，它们都把一段语言/视频/约束变成 **SMPL 系骨架的时间序列**，但落点截然不同。本页对比三条代表性路线——腾讯 `📅unknown` `[comparison_page]`

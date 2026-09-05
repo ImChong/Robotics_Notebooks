@@ -128,7 +128,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [Locomotion](./locomotion.md)
 - [ZEST](../methods/zest.md) — Boston Dynamics 跨形态高动态模仿与零样本部署
 - [MTRG / GfR](../methods/mtrg-reference-goal-driven-rl.md) — RSS 2026；G1 箱式跑酷：参考塑形 + goal 泛化（超越 ZEST tracking 的 OOD 鲁棒性）
-- [HIL](../methods/hil-hybrid-imitation-learning.md) — 物理角色跑酷：tracking + AMP 混合模仿（仿真）
+- [HIL](../methods/hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 2026 物理角色跑酷 + heading；官方代码未开源
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线选型
 - [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins / Lightbot 0；稀疏种子 Real2Sim2Real + 多专家蒸馏，无技能标签机载深度跑酷（代码未开源）
 - [ParkourFormer](../entities/paper-parkourformer.md) — HKUST-GZ 等；Transformer 查询历史 + 未来两步 AMP 监督；G1 九类地形单策略平均穿越 93.85%（代码 Coming Soon）
