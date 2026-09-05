@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/papers/luna_arxiv_2606_31981.md — LUNA（ECCV 2026）LBS-free 隐式 2D 驱动 3DGS；项目页 GitHub 占位未开源；关键页 paper-luna-universal-3d-human-animation
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2606.31981>、<https://penghtyx.github.io/LUNA/>。
+- **复用：** 无同名页。挂接已有 [SMPL-X](wiki/concepts/smpl-x.md)、[GVHMR](wiki/entities/gvhmr.md)、[4DAnyone](wiki/entities/paper-4danyone.md)、[Face Anything](wiki/entities/paper-face-anything-4d-face-reconstruction.md)、[UMA](wiki/entities/paper-uma.md)、[人形训练数据管线](wiki/queries/humanoid-training-data-pipeline.md)。
+- **步骤 2.5：** 项目页 GitHub 按钮为注释占位（`href="#"`），无 HF / 权重。→ **宣称将开源 / 截至 2026-09-05 未列可用链接。** 不建 `sources/repos/`。机构 `hkust` / `meta` 已注册。
+- **关键判断：** 推理丢掉 LBS，训练仍蒸馏软结构；主场是 Cloth10K PSNR **22.07** 与 MSJ **0.0032**（相对 MV-LHM 约 **4.5×**）。NeuMan 与前馈打平。输出是 splat，**不是**关节指令。
+- **新建：** [`paper-luna-universal-3d-human-animation`](wiki/entities/paper-luna-universal-3d-human-animation.md)；归档论文 + 项目页
+- **交叉：** SMPL-X / GVHMR / 4DAnyone / Face Anything / UMA / 人形训练数据管线 / 2D→3D Gap
+
 ## [2026-09-05] ingest | sources/repos/nvlabs-simfoundry.md — SimFoundry 官方仓再核：部分开源 Apache-2.0；关键页已存在
 
 - **触发：** 用户指定项目页 / [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) / arXiv:2606.28276。

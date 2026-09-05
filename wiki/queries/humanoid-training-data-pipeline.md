@@ -3,7 +3,7 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-08-07
+updated: 2026-09-05
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
@@ -13,6 +13,7 @@ sources:
   - ../../sources/repos/omomo_release.md
   - ../../sources/sites/humanoideveryday.md
   - ../../sources/sites/rekadaily-10k.md
+  - ../../sources/papers/luna_arxiv_2606_31981.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「我要训练一个人形全身策略，从**原始动作捕捉 / 人体视频**到能喂进 **RL/IL** 的训练输入，参考运动来源、重定向方案、训练范式三层各该怎么选？」
@@ -73,6 +74,7 @@ flowchart TD
 | 面部视频（telepresence/表情） | [Face Anything](../entities/paper-face-anything-4d-face-reconstruction.md) | 前馈 **4D 面部几何+跟踪** | 与全身 SMPL 链路分离；野外泛化待验证 |
 | 标定多视角面部注册 | [SHELLS](../entities/paper-shells-layered-surface-sampling.md) | 固定拓扑 ~18k 顶点、亚秒级前馈；纯合成训练可泛化棚拍 | **未开源**；需标定多视角；非细皱纹/发须外包络 |
 | 多视角着装数字人（telepresence） | [UMA](../entities/paper-uma.md) | 40×6K 长序列 + 可驱动超精细几何/外观；推理与 demo 已开源 | 人物特异单层模板；训练工具待发；非机器人策略数据 |
+| 隐式 2D 驱动 3DGS 动画 | [LUNA](../entities/paper-luna-universal-3d-human-animation.md) | RGB / 关键点 / 草图 → 规范高斯形变，推理不走 LBS | **截至 2026-09-05 未开源**；输出是 splat **不是**关节；核心数据专有 |
 
 **决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500；要 **绕开真机 teleop 复位/空间成本** 且接受仿真资产管线 → OASIS；要 **公开可商用的家庭 ego 视觉/语言先验**（非机器人轨迹）→ RekaDaily-10k。
 
@@ -154,6 +156,7 @@ flowchart TD
 - [Humanoid Everyday 项目页归档](../../sources/sites/humanoideveryday.md)
 - [HIW-500 项目页归档](../../sources/sites/hiw-500-dataset.md)
 - [oasis_humanoid_loco_manip_2606_08548.md](../../sources/papers/oasis_humanoid_loco_manip_2606_08548.md) — OASIS 纯仿真 loco-manip 数据采集（arXiv:2606.08548）
+- [LUNA 论文摘录](../../sources/papers/luna_arxiv_2606_31981.md) — 隐式 2D 驱动 3DGS；外观层，不是第 2 层关节输入
 
 ## 关联页面
 
@@ -169,6 +172,7 @@ flowchart TD
 - [RL vs IL](../comparisons/rl-vs-il.md) — 第 3 层范式分流的总论
 - [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 纯仿真 VR teleop + 视觉域随机化 loco-manip 数据管线
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — loco-manip 任务定义与数据路线谱系
+- [LUNA](../entities/paper-luna-universal-3d-human-animation.md) — 数字人外观动画层；不能当第 2 层重定向输入
 
 ## 一句话记忆
 
