@@ -149,6 +149,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Manipulation](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 人形全身 visuomotor 的扩散高层实例
+- [DexHoldem](../entities/paper-dexholdem.md) — 真机扑克：DP (DINO) 是最强从零基线（SPSR 26.2%），DP-UNet 接近失败
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — 灵巧遥操作示范训真机 Diffusion Policy（锤/灯泡/刷）
 - [Muninn（论文实体）](../entities/paper-muninn-trajectory-diffusion-acceleration.md) — 扩散策略/轨迹扩散的免训练推理加速与 conformal 偏差证书
 - [OAT 有序动作 Tokenization](../entities/paper-oat-ordered-action-tokenization.md)

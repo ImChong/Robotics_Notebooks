@@ -3331,6 +3331,13 @@
         "kesai",
         "ke-sai"
       ]
+    },
+    "arrow-air": {
+      "label": "箭头航空（Arrow Air）",
+      "aliases": [
+        "arrow-air",
+        "arrowair"
+      ]
     }
   }
 }

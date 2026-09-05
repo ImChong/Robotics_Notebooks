@@ -9,6 +9,7 @@ related:
   - ../entities/midas-hand.md
   - ../entities/all-hands-up.md
   - ../entities/dexbench.md
+  - ../entities/paper-dexholdem.md
   - ../entities/mimic-wearable-u1.md
   - ../entities/twindex.md
   - ../entities/paper-teledexter.md
@@ -110,6 +111,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)
 - [All Hands Up](../entities/all-hands-up.md) — RLWRLD 把高背驱、力矩可当学习信号的手标成 Type 2 采数手
 - [DexBench](../entities/dexbench.md) — Regime → 传感/标注优先级；本指南补「先定测什么再定采什么」
+- [DexHoldem](../entities/paper-dexholdem.md) — 1,470 条 ShadowHand 扑克示范；Vive 遥操作，失败尝试不进发布集
 
 ## 参考来源
 - Qin, B., et al. (2023). *AnyTeleop: A Unified and General Framework for Bimanual Dexterous Teleoperation*.

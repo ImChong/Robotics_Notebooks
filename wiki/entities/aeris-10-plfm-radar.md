@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, radar, open-hardware, perception, uav, sdr, phased-array, abac-industry]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-05
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -11,6 +11,7 @@ related:
   - ../entities/fast-lio.md
   - ../entities/px4-autopilot.md
   - ../queries/field-robotics-troubleshooting.md
+  - ./project-quiver.md
 sources:
   - ../../sources/repos/plfm_radar.md
 summary: "AERIS-10（PLFM_RADAR）是开源 10.5 GHz 脉冲 LFM 相控阵雷达：3 km/20 km 双版本、FPGA 脉冲压缩与 CFAR、Python 地图 GUI，面向研究与无人机低成本主动测距实验。"
@@ -106,6 +107,7 @@ flowchart LR
 - [多旋翼仿真—规划—飞控开源栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [状态估计（知识链汇总）](../overview/hub-state-estimation.md)
 - [野外机器人排障指南](../queries/field-robotics-troubleshooting.md)
+- [Project Quiver](./project-quiver.md) — 作业级开源机架，高度计是商用 Nanoradar，不是本开源相控阵
 
 ## 推荐继续阅读
 

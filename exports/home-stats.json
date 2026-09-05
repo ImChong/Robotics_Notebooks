@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-05",
-  "node_count": 3470,
-  "edge_count": 31719,
+  "node_count": 3473,
+  "edge_count": 31771,
   "coverage": {
-    "covered": 3443,
-    "total": 3443,
+    "covered": 3446,
+    "total": 3446,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -230,27 +230,27 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 787
+      "size": 676
     },
     {
       "label": "操作",
-      "size": 616
+      "size": 606
     },
     {
       "label": "视觉-语言-动作",
-      "size": 244
+      "size": 277
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 217
+      "size": 226
     },
     {
-      "label": "视觉语言动作纵深路线",
+      "label": "仿真到现实",
       "size": 147
     },
     {
-      "label": "移动操作",
-      "size": 77
+      "label": "计算机视觉中的 Transformer",
+      "size": 81
     }
   ],
   "top_hubs": [
@@ -258,7 +258,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1414,
+      "degree": 1416,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -275,13 +275,13 @@
       "label": "Locomotion",
       "type": "task",
       "degree": 905,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 896,
+      "degree": 898,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -320,7 +320,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 514,
+      "degree": 516,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -376,16 +376,14 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -405,7 +403,8 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 43
+      "degree": 43,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }

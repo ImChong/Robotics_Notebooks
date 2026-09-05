@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-05
 related:
   - ../entities/paper-pi0.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
@@ -13,6 +13,7 @@ related:
   - ../formalizations/cross-modal-attention.md
   - ../entities/paper-kai0.md
   - ../entities/paper-spd.md
+  - ../entities/paper-dexholdem.md
 sources:
   - ../../sources/repos/openpi.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -75,6 +76,7 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [χ₀ / kai0](../entities/paper-kai0.md) — 在 openpi π₀.₅ 上做 MA/SA/TDA 分布对齐的协同叠衣配方（代码已开源）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — flow/扩散动作头抬升 IL 与 offline RL 的讲者坐标（Simons 2026）
 - [SPD](../entities/paper-spd.md) — 灵巧真机消融：π0 风格单帧长 chunk 弱于历史+短 chunk（CoRL 2026）
+- [DexHoldem](../entities/paper-dexholdem.md) — ShadowHand 扑克真机：π₀ / π₀.₅ SPSR 并列 47.5%，芯片 pull 仍弱
 
 ## 参考来源
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 灵巧真机上 π0 风格单帧长 chunk 对照

@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-09-04
+updated: 2026-09-05
 status: complete
 related:
   - ../entities/paper-abot-n1.md
@@ -226,6 +226,7 @@ sources:
 - [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA / Spot 例行找人（对照仿真 EQA）
 - [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 统一具身脑内嵌 VLN-CE（R2R/RxR）与操作/进度接口
 - [ABot-N1](../entities/paper-abot-n1.md) — 慢–快 CoT+像素接口 VLN 基础模型；ABotN-PointBench / POIBench 城市闭环基准
+- [Project Quiver](../entities/project-quiver.md) — 25 kg 开源户外机架；无官方 VLN 绑定，只作重载真机想象
 
 ## 推荐继续阅读
 

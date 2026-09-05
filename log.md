@@ -4,6 +4,33 @@
 - **步骤 2.5：** 项目页 BibTeX 已更新为 arXiv:2608.15917；仍无 GitHub / spd-vr / spd-75h 下载 → **宣称将开源 / 待核实**
 - **更新：** [`sources/papers/spd_corl_2026.md`](sources/papers/spd_corl_2026.md)、[`sources/sites/spd-bot.md`](sources/sites/spd-bot.md)、[`wiki/entities/paper-spd.md`](wiki/entities/paper-spd.md)
 
+## [2026-09-05] ingest | sources/papers/dexholdem_arxiv_2605_18727.md — DexHoldem 真机扑克灵巧基准；已开源 Policy/Skills + TexasPokerRobot；关键页 paper-dexholdem
+
+- **触发：** 用户指定 <https://dexholdem.github.io/Dexholdem/>。
+- **复用：** 无同名页。挂接已有 [Manipulation](wiki/tasks/manipulation.md)、[DexBench](wiki/entities/dexbench.md)、[评测枢纽](wiki/overview/hub-embodied-eval-benchmark.md)、[π₀](wiki/methods/π0-policy.md)、[VLA](wiki/methods/vla.md)、[Diffusion Policy](wiki/methods/diffusion-policy.md)。**不另造** 方法页。
+- **步骤 2.5：** 项目页 Resources 同时链到 Policy 仓、Skills 仓与 HF 数据集。→ **已开源可运行**。两仓截至入库日未附 LICENSE；数据 CC BY 4.0（约 378 GB）。
+- **关键判断：** 测的不是扑克智能。报 SPSR 不要只报 TCR；芯片 pull 与筹码字典才是硬项；感知 field-wise 高不等于 Overall。
+- **新建：** [`paper-dexholdem`](wiki/entities/paper-dexholdem.md)；归档 `sources/papers/dexholdem_arxiv_2605_18727.md`、`sources/sites/dexholdem-github-io.md`、`sources/repos/dexholdem-policy.md`、`sources/repos/dexholdem-skills.md`、`sources/datasets/texaspokerrobot.md`
+- **交叉：** Manipulation / DexBench / 评测选型闭环 / 接触丰富操作 / π₀ / VLA / Diffusion Policy / 灵巧采数指南
+
+## [2026-09-05] ingest | sources/repos/project-quiver.md、sources/sites/arrowair-quiver.md — 接入 Arrow Quiver 25kg 开源 ArduPilot 机架；已开源 CERN-OHL-S；关键页 project-quiver；对照 PX4 / MAVSDK / Crazyflie
+
+- **触发：** 用户指定 <https://github.com/Arrow-air/project-quiver>、<https://arrowair.com/quiver>。
+- **复用：** 无同名页。挂接已有 [多旋翼栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md)、[PX4](wiki/entities/px4-autopilot.md)、[MAVSDK](wiki/entities/mavsdk.md)、[Crazyflie](wiki/entities/crazyflie-firmware.md)、[Betaflight](wiki/entities/betaflight.md)。**不另造** ArduPilot 固件实体页。
+- **步骤 2.5：** 项目页写明 CAD / KiCad / ArduPilot 配置 / 装配文档在 GitHub。仓 **已开源** CERN-OHL-S-2.0（372★ / 96 forks）。飞控固件在上游 ArduPilot，不在本仓。无学习权重。
+- **关键判断：** 这是 **25 kg 作业机架**，不是 PX4 分叉、也不是室内微四轴。补齐总览里「ArduPilot 未列入本批」的机架层。
+- **新建：** [`project-quiver`](wiki/entities/project-quiver.md)；归档 `sources/repos/project-quiver.md`、`sources/sites/arrowair-quiver.md`；机构 `arrow-air`。
+- **交叉：** 多旋翼栈总览 / PX4 / MAVSDK / Crazyflie / Betaflight / AERIS-10 / 平滑路径 / VLN
+
+## [2026-09-05] ingest | sources/repos/multi-agent-cad.md — 接入清华 IEI Lab MAC；已开源 MIT；关键页 multi-agent-cad；对照 CAD Skills / Text-to-CAD
+
+- **触发：** 用户指定 <https://github.com/Pan-Chera/Multi-Agent-CAD>。
+- **复用：** 无同名页。挂接已有 [CAD Skills](wiki/entities/cad-skills.md)、[文字生成 CAD](wiki/concepts/text-to-cad.md)、[FreeCAD MCP](wiki/entities/freecad-mcp.md)、[GenCAD](wiki/entities/gencad.md)。**不另造** 方法页。
+- **步骤 2.5：** 无独立项目页。实验室 [IEI Lab](https://maureenzou.github.io/lab.html) 未挂下载。GitHub 仓 **已开源** MIT（930★）。无训练权重；需自备 OpenAI 兼容 API。`packages/cadpy` vendored 自 CAD Skills。
+- **关键判断：** 核心是结构化状态传递 + 确定性翻译器，不是「又一个写 build123d 的 agent」。同一套 P1–P10 上自报 116× 少 token。无 URDF/打印链。
+- **新建：** [`multi-agent-cad`](wiki/entities/multi-agent-cad.md)；归档 `sources/repos/multi-agent-cad.md`
+- **交叉：** CAD Skills / Text-to-CAD / FreeCAD MCP / GenCAD / text-to-cad-tools
+
 ## [2026-09-05] ingest | sources/repos/tennis-vision.md — 接入 HarshTomar Tennis-Vision；已开源 MIT；关键页 tennis-vision；对照 Roboflow Sports / 场线检测 / 坐标后处理
 
 - **触发：** 用户指定 <https://github.com/HarshTomar1234/Tennis-Vision>。
