@@ -1,24 +1,13 @@
 {
   "generated_at": "2026-09-05",
   "node_count": 3465,
-  "edge_count": 31606,
+  "edge_count": 31608,
   "coverage": {
     "covered": 3438,
     "total": 3438,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-pointdit.md",
-      "detail_id": "entity-paper-pointdit",
-      "label": "PointDiT：像素空间扩散估单目点图",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
     {
       "path": "wiki/entities/paper-hil-hybrid-imitation-learning.md",
       "detail_id": "entity-paper-hil-hybrid-imitation-learning",
@@ -215,12 +204,22 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/open-source-reproducibility-9-papers-technology-map.md",
+      "detail_id": "wiki-overview-open-source-reproducibility-9-papers-technology-map",
+      "label": "开源可复现性：9 篇论文的阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-04",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pointdit.md",
-    "detail_id": "entity-paper-pointdit",
-    "label": "PointDiT：像素空间扩散估单目点图",
+    "path": "wiki/entities/paper-hil-hybrid-imitation-learning.md",
+    "detail_id": "entity-paper-hil-hybrid-imitation-learning",
+    "label": "HIL：混合模仿学习做动态运动控制",
     "type": "entity",
     "recency": "2026-09-05",
     "source": "git",

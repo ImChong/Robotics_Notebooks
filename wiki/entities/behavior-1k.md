@@ -3,13 +3,14 @@
 type: entity
 tags: [entity, simulator, benchmark, embodied-ai, omniverse, everyday-activities, nvidia]
 status: complete
-updated: 2026-07-30
+updated: 2026-09-05
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./nvidia-omniverse.md
   - ./paper-behavior-foundation-model-humanoid.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../overview/sim-platforms-decade-technology-map.md
+  - ./paper-simfoundry-real2sim-scene-generation.md
 sources:
   - ../../sources/repos/omnigibson.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
@@ -67,6 +68,7 @@ summary: "斯坦福等 2023 年推出的具身 AI 基准：基于社会调查筛
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：开放世界日常活动综合能力基准
+- [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — GEAR 视频孪生开源默认导出 OmniGibson 场景 JSON
 
 ## 参考来源
 

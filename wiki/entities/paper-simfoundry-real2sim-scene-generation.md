@@ -1,9 +1,10 @@
 ---
 type: entity
-tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, 3dgs, vla]
+tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, omnigibson, 3dgs, vla]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 arxiv: "2606.28276"
+code: https://github.com/NVlabs/SimFoundry
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim2real.md
@@ -14,6 +15,7 @@ related:
   - ../methods/crisp-real2sim.md
   - ./nvidia-gear-lab.md
   - ./isaac-gym-isaac-lab.md
+  - ./behavior-1k.md
   - ./physx-omni.md
   - ./genesis-world-10.md
   - ./paper-hrl-stack-34-gr00t_n1.md
@@ -22,12 +24,13 @@ related:
 sources:
   - ../../sources/papers/simfoundry_arxiv_2606_28276.md
   - ../../sources/sites/nvidia-research-simfoundry.md
-summary: "SimFoundry（arXiv:2606.28276，NVIDIA GEAR）从单段真机视频模块化重建 sim-ready 数字孪生，并自动生成 object/scene/task digital cousins；统一支撑 real-to-sim 策略评测（均值 Pearson 0.911）与 sim-to-real 操作策略训练（DROID/YAM，多步/铰接/双手）。"
+  - ../../sources/repos/nvlabs-simfoundry.md
+summary: "SimFoundry（arXiv:2606.28276，NVIDIA GEAR）从单段真机视频模块化重建 sim-ready 数字孪生，并自动生成 object/scene/task digital cousins；统一支撑 real-to-sim 策略评测（均值 Pearson 0.911）与 sim-to-real 操作策略训练（DROID/YAM）。官方仓部分开源：A/B 重建与 cousins 可跑，论文级训练/评测未随仓。"
 ---
 
 # SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）
 
-**SimFoundry** 是 NVIDIA [GEAR Lab](./nvidia-gear-lab.md) 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606.28276，2026-06）：输入 **单段真实场景 RGB 视频**，全自动产出 **可物理交互的仿真场景**（数字孪生），并沿 **物体实例、空间布局、任务规格** 三轴扩展 **digital cousins**（保 affordance 的语义变体）。同一套环境既用于 **已有真机策略的 real-to-sim 评测**，也用于 **纯仿真演示训练策略并零样本部署真机**。
+**SimFoundry** 是 NVIDIA [GEAR Lab](./nvidia-gear-lab.md) 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606.28276，2026-06；[官方仓](https://github.com/NVlabs/SimFoundry)）：输入 **单段真实场景 RGB 视频**，全自动产出 **可物理交互的仿真场景**（数字孪生），并沿 **物体实例、空间布局、任务规格** 三轴扩展 **digital cousins**（保 affordance 的语义变体）。同一套环境既用于 **已有真机策略的 real-to-sim 评测**，也用于 **纯仿真演示训练策略并零样本部署真机**。开源默认导出 **[OmniGibson](./behavior-1k.md)** 场景 JSON，而不是论文叙述里的 Isaac Lab。
 
 ## 英文缩写速查
 
@@ -40,7 +43,8 @@ summary: "SimFoundry（arXiv:2606.28276，NVIDIA GEAR）从单段真机视频模
 | 3DGS | 3D Gaussian Splatting | 高保真背景外观表示，常与前景 mesh 混合 |
 | DROID | Distributed Robot Interaction Dataset | 单臂 Franka 操作平台与大规模数据集生态 |
 | VLM | Vision-Language Model | 场景理解、物性标注与任务提议的多模态模型 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练与导出目标 |
+| Isaac Lab | NVIDIA Isaac Lab | 论文写的下游导出目标之一；开源默认走 OmniGibson |
+| OG | OmniGibson | StanfordVL 仿真运行层；仓内 `s14_og/reconstructed_og_scene.json` |
 
 ## 为什么重要
 
@@ -66,7 +70,7 @@ flowchart TB
     mesh[2D→3D mesh + 位姿对齐]
     art[铰接物体关节推断]
     phys[碰撞 CoACD + 质量摩擦标注]
-    compose[PyBullet 穿透消解 → 导出 Isaac Lab 等]
+    compose[物理沉降 → OmniGibson 场景 JSON]
     crops --> mesh --> art --> phys --> compose
   end
   subgraph aug [Augmentation digital cousins]
@@ -97,7 +101,7 @@ flowchart TB
 ### 模块化 Real2Sim 三阶段
 
 1. **Extraction：** 深度估计 + 地面/世界系对齐；VLM 列举物体后 **逐物体分割并从 RGB-D 中擦除**，直至只剩背景——避免遮挡下漏检，并为每物体保留独立 crop。
-2. **Generation：** 图像超分 + **2D→3D 生成 mesh**；**FoundationPose** 类模块精化 6D 位姿；橱柜/抽屉等走 **articulation** 分支；**CoACD** 碰撞体 + VLM 查询 **质量/摩擦**；在 **PyBullet** 中消解穿透后导出 **Isaac Lab** 等下游格式。
+2. **Generation：** 图像超分 + **2D→3D 生成 mesh**（开源默认 **Hunyuan3D-2.1**，可选 TRELLIS.2 / Pixal3D）；**FoundationPose** 类模块精化 6D 位姿；橱柜/抽屉等走 **articulation** 分支；碰撞体 + VLM 查询 **质量/摩擦**；物理沉降后导出。论文写 **PyBullet 消解 → Isaac Lab**；**开源仓**编译到 **OmniGibson**（`s14_og/reconstructed_og_scene.json`）。
 3. **Augmentation：** 在 **digital twin**（几何与布局严格复刻真场景）上扩展 **digital cousins**：
    - **Object cousins：** 图像空间编辑物体再重生成 mesh（换形状/纹理但保留「可抓/可放」语义）。
    - **Scene cousins：** 用 **OnTop / RightOf** 等谓词生成有意义新布局，并可注入 distractor 资产库物体。
@@ -125,6 +129,59 @@ flowchart TB
 | + scene cousins | cousin 布局 Store Marker **0%→16%** |
 | 多任务 + task cousins | π₀.₅-DROID 13 任务 **28%→46%**；7 held-out **0%→29%**（π₀.₅-base） |
 
+## 源码运行时序图
+
+官方仓 [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry)（Apache-2.0，归档见 [nvlabs-simfoundry.md](../../sources/repos/nvlabs-simfoundry.md)）按 **A 重建 → B 增广 → C 加载** 三段运行。节点对齐 README 入口：`scripts/pipeline/A_reconstruction/run.sh`、`B_augmentation/run.sh`、`C_application/run.sh`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 用户
+    participant A as A_reconstruction/run.sh
+    participant FM as SAM3 / 深度 / Gemini VLM
+    participant H3 as Hunyuan3D（s7）
+    participant Pose as 位姿对齐（s8）
+    participant OG as OmniGibson（s14）
+    participant B as B_augmentation/run.sh
+    participant C as C_application/run.sh
+    User->>A: --scene-name + --video-fpath
+    A->>FM: 抽帧 / 深度 / 地面 / 世界系
+    FM-->>A: RGB-D + 支撑平面
+    A->>FM: 迭代检物 + 分割 + inpaint
+    FM->>H3: per-object crop
+    H3-->>A: textured mesh
+    A->>Pose: 6D 位姿
+    opt --detect-articulation
+        A->>A: s9 关节分解 + URDF
+    end
+    A->>OG: s11–14 sim-ready USD + reconstructed_og_scene.json
+    User->>B: --scene-name
+    B->>H3: object cousins 再生成 mesh
+    B->>OG: scene variants + proposed_tasks YAML
+    User->>C: --mode smoke-random / eval / demo
+    C->>OG: 加载场景 / smoke / 遥操作脚手架
+    Note over C: 论文级 VLA 训练与 Pearson 评测协议未随仓发布
+```
+
+- **复现先跑 A：** 桌面单平面、斜向下平移拍摄；24 GiB 卡必须 `s7_mesh.low_vram=true`。
+- **C 不是论文评测：** 仓内有 smoke / teleop / demo 脚手架，但 README 写明 **数据生成与策略训练代码尚未发布**。
+
+## 工程实践
+
+| 项 | 内容 |
+|------|------|
+| 安装 | `bash scripts/installation/install_everything.sh`；Linux + NVIDIA GPU；全量约 **250 GB** |
+| 服务登录 | HF 门控：SAM3 / DINOv3 / RMBG-2.0；VLM 走 Vertex AI Gemini 或 `GEMINI_API_KEY` |
+| 24 GiB | `-- s7_mesh.low_vram=true`（默认 mesh 约 **29 GiB**） |
+| 重建 | `scripts/pipeline/A_reconstruction/run.sh --scene-name … --video-fpath …` |
+| Cousins | `scripts/pipeline/B_augmentation/run.sh --scene-name …` |
+| 加载冒烟 | `scripts/pipeline/C_application/run.sh --scene-name … --mode smoke-random` |
+| 示例资产 | HF [`nadunRanawaka1/simfoundry-assets`](https://huggingface.co/datasets/nadunRanawaka1/simfoundry-assets) |
+| 编辑器 | `scripts/interactive/light_editor/server.py`（无需 OG）或 `run_editor.sh`（OG 内） |
+| 未发布 | 论文级 data generation / policy training / evaluation |
+
+拍摄约束（Pipeline README）：**同一平面**、斜向下、**平移不要原地旋转**、物体全程在画幅内、铰接物保持闭合。
+
 ## 评测速览
 
 > 详见上文「核心机制 · Real-to-sim 评测协议 / Sim-to-real 训练读点」。
@@ -141,7 +198,8 @@ flowchart TB
 2. **Cousins 增益分层读** — object / scene / task 分别约 **+17% / +21% / +40%** 平均任务成功率；π₀.₅-base 在 7 个 held-out 任务 **0%→29%**。
 3. **Sim-to-real 可操作点** — 仅 SimFoundry 数据：YAM Pot on Stove **99%**、DROID Stack Dishware **100%**；少量 real co-train 如 Store Marker **60%→92%**（π₀.₅）。
 4. **管线不是零人工** — 全自动 F1 约 **0.81–0.92**；每物体约 **3 分钟** 微调可到 **0.93–0.99**，要把编辑预算算进 SLA。
-5. **高 Pearson ≠ 训练免费午餐** — 排序可信后，未见物体/布局仍常需 cousins 或少量真机 demo；截至入库项目页未挂公开仓库。
+5. **高 Pearson ≠ 训练免费午餐** — 排序可信后，未见物体/布局仍常需 cousins 或少量真机 demo；开源仓能重建场景，**不能**复现论文级 VLA 训练/评测数字。
+6. **导出读仓不读论文口号** — 论文写 Isaac Lab；2026-08 开源默认是 **OmniGibson JSON**。
 
 ## 常见误区或局限
 
@@ -150,14 +208,17 @@ flowchart TB
 - **与 Agentic Real2Sim 对照：** [Agentic Real2Sim](./paper-agentic-real2sim.md)（arXiv:2607.19190）同样做真机→可仿真，但单位是 **交互 episode twin（MuJoCo 回放）**、编排层是 **VLM agent**，主指标是 **回放成功**；SimFoundry 主打 **场景孪生 + cousins + 策略 Pearson/MMRV**。
 - **与 Lucida 对照：** [Lucida](./paper-lucida-r2s.md)（arXiv:2608.30821）同样产出可编辑室内物体资产，但评测停在 **检测 / ADD-SB / 场景 Chamfer**，没有 cousins 或策略相关；放置靠 **GizmoAct GUI 闭环**，不是模块化孪生栈。
 - **评测相关 ≠ 训练免费午餐：** 高 Pearson 只说明 **排序可信**；策略仍可能需 **cousins 或少量真机 demo** 才能覆盖未见物体/布局（论文 co-train 与 cousins 消融已说明）。
-- **代码开放度：** 截至入库日项目页 **未挂公开仓库**；复现需跟踪 GEAR 后续发布与论文附录中的 foundation model 组合（`V_*` 可替换）。
+- **代码开放度（2026-09-05）：** [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) **部分开源**（Apache-2.0）。**已发布** A/B 管线、C 加载脚手架、light editor、HF 示例场景。**未发布** 论文级数据生成 / 策略训练 / Pearson 评测协议；自动 3DGS 背景仍标 Coming Soon。第三方权重多有门控或非商用条款。
+- **论文下游 ≠ 开源下游：** 正文写 PyBullet + Isaac Lab；仓内阶段编号对齐 OmniGibson（`s14_og/`）。选型时按 README 而不是 PDF。
+- **安装不是 `pip install`：** 多 conda env（`simfoundry` / `hunyuan` / 可选 `articulate`）、约 250 GB、Gemini 或 GCP。漏权或漏 `low_vram` 会在 s7 直接 OOM。
 
 ## 与其他页面的关系
 
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 资产构建与 sim2real 训练/评测闭环
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — real-to-sim 相关性驱动的模型排序
 - [Manipulation](../tasks/manipulation.md) — 操作仿真场景与 sim-ready 资产生成路线
-- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 主要导出与训练后端
+- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 论文叙述的下游之一（开源默认不是它）
+- [BEHAVIOR-1K / OmniGibson](./behavior-1k.md) — 开源仓实际导出与加载层
 - [PhysX-Omni](./physx-omni.md) — 另一条 **统一物理字段 3D 生成** 路线，可对照「视频孪生 vs 生成式资产库」
 - [Genesis World 1.0](./genesis-world-10.md) — 产业侧 **real-to-sim 评测基础设施** 叙事参照
 - [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 实验策略族之一（GR00T N1.6/N1.7）
@@ -170,8 +231,11 @@ flowchart TB
 
 - [simfoundry_arxiv_2606_28276.md](../../sources/papers/simfoundry_arxiv_2606_28276.md)
 - [nvidia-research-simfoundry.md](../../sources/sites/nvidia-research-simfoundry.md)
+- [nvlabs-simfoundry.md](../../sources/repos/nvlabs-simfoundry.md)
 - 论文：<https://arxiv.org/abs/2606.28276>
 - 项目页：<https://research.nvidia.com/labs/gear/simfoundry/>
+- 代码：<https://github.com/NVlabs/SimFoundry>
+- 示例资产：<https://huggingface.co/datasets/nadunRanawaka1/simfoundry-assets>
 
 ## 推荐继续阅读
 
@@ -179,3 +243,4 @@ flowchart TB
 - SIMPLER / SimplerEnv：<https://simpler-env.github.io/> — MMRV 指标语境
 - [CRISP（Contact-guided Real2Sim）](../methods/crisp-real2sim.md) — 单目视频 Real2Sim 的互补路线
 - [DoorMan](./paper-doorman-opening-sim2real-door.md) — 同 GEAR 生态的 **视觉 sim2real** 姊妹工作（程序化门资产 vs 视频孪生）
+- 官方仓 README / `docs/INSTALL.md`：<https://github.com/NVlabs/SimFoundry>

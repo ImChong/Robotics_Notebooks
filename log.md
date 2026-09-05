@@ -1,3 +1,12 @@
+## [2026-09-05] ingest | sources/repos/nvlabs-simfoundry.md — SimFoundry 官方仓再核：部分开源 Apache-2.0；关键页已存在
+
+- **触发：** 用户指定项目页 / [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) / arXiv:2606.28276。
+- **复用：** [`paper-simfoundry-real2sim-scene-generation`](wiki/entities/paper-simfoundry-real2sim-scene-generation.md)（2026-07-03 已 complete）。**不另造页**。
+- **步骤 2.5（2026-09-05）：** 官方仓已公开（2026-08-14 V0）。→ **部分开源**。A 重建 / B cousins / C OmniGibson 加载可跑；README 写明 **数据生成与策略训练未随仓**。HF `nadunRanawaka1/simfoundry-assets`。导出是 **OmniGibson JSON**，不是论文写的 Isaac Lab。
+- **关键判断：** 不要再写「未挂公开仓」。能复现场景孪生，不能复现 Pearson 0.911 训练协议。24 GiB 必须 `low_vram`；全量约 250 GB + 门控权重 + Gemini。
+- **新建：** [`nvlabs-simfoundry`](sources/repos/nvlabs-simfoundry.md)
+- **交叉：** Sim2Real / Manipulation / 仿真评测基础设施 / GEAR / BEHAVIOR-1K / depth-real2sim
+
 ## [2026-09-05] ingest | sources/papers/pointdit_arxiv_2607_02515.md — PointDiT 像素空间点图扩散；已开源 google-research/pointdit；关键页 paper-pointdit
 
 - **触发：** 用户指定 <https://haofeixu.github.io/pointdit/>。
