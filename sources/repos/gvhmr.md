@@ -11,6 +11,7 @@
 - **最后更新：** 2026-06-21
 - **一句话说明：** 单目视频 **world-grounded** 人体运动恢复（SMPL）；用 **Gravity-View 坐标** 逐帧估计再变换到世界轨迹，常作为 GMR / 人形重定向上游的「视频→人体轨迹」模块。
 - **沉淀到 wiki：** 是 → [`wiki/entities/gvhmr.md`](../../wiki/entities/gvhmr.md)
+- **下游调用：** [4DAnyone](./4danyone.md) 把本仓作为 `third_party/GVHMR` 子模块，只取 3D 骨架条件，不走重定向
 
 ## 仓库要点（2026-06 复核）
 

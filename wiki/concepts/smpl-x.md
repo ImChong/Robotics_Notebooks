@@ -2,7 +2,7 @@
 type: concept
 tags: [human-body-model, motion-retargeting, parametric-model, humanoid, mocap, world-models]
 status: complete
-updated: 2026-08-06
+updated: 2026-09-05
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -80,6 +80,7 @@ SMPL-X 只是 **人体侧** 的表征；要驱动一台真实人形机器人，�
 - [DIMOS（人-场景动作合成）](../entities/paper-dimos-human-scene-motion-synthesis.md) — 以 SMPL-X + 体表 marker 表示人体
 - [gen2humanoid](../entities/gen2humanoid.md) — `convert_smpl.py` 统一到 SMPL-X 再进 GMR 的接缝
 - [UMA（超精细可驱动 avatar）](../entities/paper-uma.md) — 数据集元数据同时发布 SMPL-X 与 DDC 角色
+- [4DAnyone](../entities/paper-4danyone.md) — 仓内下载 SMPL-X 资产并经 GVHMR 出骨架；下游是多视角外观，不是本页的重定向中间格式用法
 
 ## 参考来源
 

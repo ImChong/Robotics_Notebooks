@@ -1,3 +1,10 @@
+## [2026-09-05] ingest | sources/papers/4danyone_arxiv_2608_20335.md — 4DAnyone 单目随意视频→重建级多视角/4DGS；已开源 ant-research/4DAnyone；关键页 paper-4danyone
+
+- **触发：** 用户指定 <https://4danyone.github.io/>。
+- **步骤 2.5：** 项目页给出 [ant-research/4DAnyone](https://github.com/ant-research/4DAnyone)（Apache-2.0）与 [HF AntResearch/4DAnyone](https://huggingface.co/AntResearch/4DAnyone)。→ **已开源**。建 `sources/repos/4danyone.md`。机构 `zju` / `robbyant` / `ant-group` / `hkust` / `cuhk` 均已注册。
+- **关键判断：** 几何走 GVHMR（depth-buffered 40/308），外观走 Wan2.2-TI2V-5B + RCP/TCR，再抬 4DGS。DNA-Rendering 4DGS PSNR **24.15**。仓内 4090 峰值 **<24 GB**、121 帧约 **27 s**、Turbo **5.58×**。Roadmap 仍写 4DGS 方法未接线；仓文档是 nerfstudio **3DGS**。输出是多视角/点绘，**不是**关节指令。
+- **交叉：** GVHMR / SMPL-X / Face Anything / Motion Retargeting / EasyMocap
+
 ## [2026-09-05] ingest | sources/papers/fwbc_vla_arxiv_2609_03889.md + MINERVA/BRIDGE 再核 — FWBC-VLA 无传感器接触 WBC 新建实体；MINERVA 补 CPU 5.1ms；BRIDGE CAD 部分开源、规格 80cm
 
 - **触发：** 用户指定 MINERVA（GitHub / arXiv:2609.03715 / HF）、BRIDGE（arXiv:2609.03497 / 项目页）、FWBC-VLA（arXiv:2609.03889）。

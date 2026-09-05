@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-09-04
+updated: 2026-09-05
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -243,6 +243,7 @@ flowchart TD
 - [Sim2Real](./sim2real.md) — 重定向伪影会被下游 RL/IL 训练放大，是 sim2real 链路的上游
 - [机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md) — CSV / NPZ / MuJoCo 关键帧的手工修整入口
 - [Gen2Humanoid](../entities/gen2humanoid.md) — 文本→HY-Motion→GMR 的端到端集成示例（运动学参考，无物理后处理）
+- [4DAnyone](../entities/paper-4danyone.md) — 单目→多视角外观 / 4DGS；与本流水线共享 GVHMR 上游，**不输出** 可重定向关节
 - [EasyMocap](../entities/easymocap.md) — 标定多视角 / 镜面视频 → SMPL 系参数的上游工具箱
 
 ## 推荐继续阅读
