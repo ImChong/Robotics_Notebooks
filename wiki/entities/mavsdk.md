@@ -3,12 +3,13 @@
 type: entity
 tags: [repo, mavlink, px4, api, uav, offboard, companion-computer, linux-foundation]
 status: complete
-updated: 2026-05-27
+updated: 2026-09-05
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
   - ./ego-planner-swarm.md
   - ./xtdrone.md
+  - ./project-quiver.md
 sources:
   - ../../sources/repos/mavsdk.md
 summary: "MAVSDK 是 MAVLink 兼容飞控（PX4、ArduPilot）的 C++20 库与多语言绑定，提供 Action、Mission、Offboard、Telemetry 等高层 API，用于伴机自动化与规划器对接。"
@@ -59,6 +60,7 @@ summary: "MAVSDK 是 MAVLink 兼容飞控（PX4、ArduPilot）的 C++20 库与�
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [PX4 Autopilot](./px4-autopilot.md)
 - [EGO-Planner Swarm](./ego-planner-swarm.md)
+- [Project Quiver](./project-quiver.md) — ArduPilot 真机机架，可用本 API 做 Mission / Offboard
 
 ## 推荐继续阅读
 

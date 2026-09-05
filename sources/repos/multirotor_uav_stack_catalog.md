@@ -34,3 +34,5 @@
 
 - [cia_dronecan_uavcan.md](../sites/cia_dronecan_uavcan.md) — PX4/ArduPilot 外设 CAN 协议
 - [sim2real.md](../papers/sim2real.md) — 仿真迁移通用框架（腿式为主，概念可类比）
+- [project-quiver.md](project-quiver.md) — Arrow Air 25 kg 开源 ArduPilot 机架（2026-09 补入，非本批 10 仓）
+- [arrowair-quiver.md](../sites/arrowair-quiver.md) — Quiver 项目页

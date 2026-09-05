@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-05
 related:
   - ../entities/betaflight.md
   - ../entities/wtfos.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-fsd-vln.md
   - ../entities/aeris-10-plfm-radar.md
+  - ../entities/project-quiver.md
   - ../concepts/can-bus-protocol.md
 sources:
   - ../../sources/repos/multirotor_uav_stack_catalog.md
@@ -51,7 +52,9 @@ sources:
   - ../../sources/sites/fpv-wtf.md
   - ../../sources/sites/cia_dronecan_uavcan.md
   - ../../sources/repos/plfm_radar.md
-summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner 局部规划、AirSim/Flightmare/XTDrone 仿真、PyBullet Gym 与群体 RL、Crazyflie+Crazyswarm 微四轴真机编队——按「飞控—规划—仿真—RL—真机 swarm」分层选型。"
+  - ../../sources/repos/project-quiver.md
+  - ../../sources/sites/arrowair-quiver.md
+summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner 局部规划、AirSim/Flightmare/XTDrone 仿真、PyBullet Gym 与群体 RL、Crazyflie+Crazyswarm 微四轴真机编队、Quiver 25 kg ArduPilot 开源机架——按「飞控—机架—规划—仿真—RL—真机 swarm」分层选型。"
 ---
 
 # 多旋翼仿真—规划—飞控开源栈总览
@@ -60,7 +63,7 @@ summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner �
 
 ## 一句话总结
 
-**飞控与通信** 分两支：**自主导航 / 研究** 以 [PX4](../entities/px4-autopilot.md) + [MAVSDK](../entities/mavsdk.md) 为事实标准；**FPV 手飞 / 竞速** 走 [Betaflight](../entities/betaflight.md)（MSP + Betaflight App，非 MAVLink）。**数字图传 / 眼镜端**（DJI HD FPV）社区扩展见 [wtfOS](../entities/wtfos.md)（opkg 包、MSP OSD 叠加，**非飞控**）。**运动规划** 常用 [EGO-Planner Swarm](../entities/ego-planner-swarm.md)，新一代联合时空优化可参考 [MIGHTY](../entities/paper-mighty-hermite-spline-trajectory-planning.md)（Hermite 样条 · RA-L 2026）；**无先验地图 + 有限 FOV 主动感知** 见 [FLAP](../entities/paper-flap-fov-active-perception-3d-navigation.md)（传感器系 FOV 惩罚 · arXiv 2026）；**仿真** 分三路——**Gazebo 教学栈**（[XTDrone](../entities/xtdrone.md)）、**高保真视觉**（[AirSim](../entities/airsim.md)、[Flightmare](../entities/flightmare.md)）、**轻量 RL**（[gym-pybullet-drones](../entities/gym-pybullet-drones.md)、[quad-swarm-rl](../entities/quad-swarm-rl.md)）；**真机微四轴 swarm** 走 [Crazyflie Firmware](../entities/crazyflie-firmware.md) + [Crazyswarm2](../entities/crazyswarm2.md)。
+**飞控与通信** 分两支：**自主导航 / 研究** 以 [PX4](../entities/px4-autopilot.md) + [MAVSDK](../entities/mavsdk.md) 为事实标准；**FPV 手飞 / 竞速** 走 [Betaflight](../entities/betaflight.md)（MSP + Betaflight App，非 MAVLink）。**数字图传 / 眼镜端**（DJI HD FPV）社区扩展见 [wtfOS](../entities/wtfos.md)（opkg 包、MSP OSD 叠加，**非飞控**）。**运动规划** 常用 [EGO-Planner Swarm](../entities/ego-planner-swarm.md)，新一代联合时空优化可参考 [MIGHTY](../entities/paper-mighty-hermite-spline-trajectory-planning.md)（Hermite 样条 · RA-L 2026）；**无先验地图 + 有限 FOV 主动感知** 见 [FLAP](../entities/paper-flap-fov-active-perception-3d-navigation.md)（传感器系 FOV 惩罚 · arXiv 2026）；**仿真** 分三路——**Gazebo 教学栈**（[XTDrone](../entities/xtdrone.md)）、**高保真视觉**（[AirSim](../entities/airsim.md)、[Flightmare](../entities/flightmare.md)）、**轻量 RL**（[gym-pybullet-drones](../entities/gym-pybullet-drones.md)、[quad-swarm-rl](../entities/quad-swarm-rl.md)）；**真机微四轴 swarm** 走 [Crazyflie Firmware](../entities/crazyflie-firmware.md) + [Crazyswarm2](../entities/crazyswarm2.md)。**户外作业级开源机架** 见 [Project Quiver](../entities/project-quiver.md)（25 kg MTOW、ArduPilot、三接口载荷）。
 
 ## 英文缩写速查
 
@@ -81,7 +84,7 @@ summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner �
 ## 为什么重要
 
 - 本仓库主线以 **腿式/人形** 为主，但 **空中 VLN、群体避障、视觉 Sim2Real** 与地面机器人共享「仿真—规划—低层控制—部署」方法论。
-- 十仓覆盖从 **纳级微四轴** 到 **标准多旋翼 + PX4** 的完整谱系；选型错误常见表现：在 PyBullet Gym 里调 PX4 参数、或用 AirSim 期望精确接触动力学。
+- 十仓覆盖从 **纳级微四轴** 到 **标准多旋翼 + PX4** 的完整谱系；后续补上 [Quiver](../entities/project-quiver.md) 作为 **25 kg / ArduPilot** 开源机架，避免把「有飞控固件」当成「有可制造真机」。选型错误常见表现：在 PyBullet Gym 里调 PX4 参数、或用 AirSim 期望精确接触动力学。
 - 与 [DroneCAN / UAVCAN](../../sources/sites/cia_dronecan_uavcan.md) 衔接：PX4 外设总线与地面机器人 CAN 栈对照阅读。
 
 ## 流程总览
@@ -111,6 +114,7 @@ flowchart TB
   end
   subgraph real["真机"]
     MC["标准多旋翼 + GPS/视觉"]
+    QV["Quiver 25 kg\nArduPilot 机架"]
     FPV["FPV 竞速 / 自由式\n手飞"]
     SW["Crazyswarm2\n动捕室内 swarm"]
   end
@@ -124,6 +128,7 @@ flowchart TB
   VIS --> PX4
   RL -.->|策略验证后| MAV
   PX4 --> MC
+  MAV -.->|ArduPilot 兼容| QV
   BF --> FPV
   BF -.->|MSP OSD| WTF
   WTF --> FPV
@@ -134,7 +139,8 @@ flowchart TB
 
 | 需求 | 优先选型 | 备选 | 避免 |
 |------|----------|------|------|
-| 工业/研究飞控、SITL、固定翼+多旋翼 | [PX4](../entities/px4-autopilot.md) | ArduPilot（未列入本批） | 仅 PyBullet 环境不调参就上真机 |
+| 工业/研究飞控、SITL、固定翼+多旋翼 | [PX4](../entities/px4-autopilot.md) | ArduPilot 上游固件（无独立实体页） | 仅 PyBullet 环境不调参就上真机 |
+| 户外作业级开源机架、热插拔载荷、可制造 CAD | [Project Quiver](../entities/project-quiver.md)（25 kg / ArduPilot） | 自组 PX4 机架 | 把 Quiver 当 PX4 固件仓或室内微四轴 |
 | FPV 竞速 / 自由式、低延迟手飞 | [Betaflight](../entities/betaflight.md) | — | 期待 MAVLink Offboard 或 ROS 任务栈 |
 | DJI 数字图传 / 眼镜 MSP OSD、社区包 | [wtfOS](../entities/wtfos.md) | — | 当作飞控或期待 Goggles 2/3、O4 主线支持 |
 | 伴机 Offboard / 自动化测试 | [MAVSDK](../entities/mavsdk.md) | MAVROS（[XTDrone](../entities/xtdrone.md) 教程栈） | 手写裸 MAVLink 除非必要 |
@@ -199,6 +205,10 @@ flowchart TB
 
 - **[AERIS-10（PLFM_RADAR）](../entities/aeris-10-plfm-radar.md)**：开源 **相控阵雷达** 全栈（非本批 10 仓之一）；README 面向 **drone developers**，可与 [MAVSDK](../entities/mavsdk.md) 伴机或地面站融合点迹，但 **无** PX4 官方驱动，亦不在 AirSim/PyBullet 仿真链内。
 
+### 开源机架（补充）
+
+- **[Project Quiver](../entities/project-quiver.md)**：Arrow Air **25 kg MTOW** 开源四旋翼（CERN-OHL-S）；三接口载荷 + 四块定制 PCB + build123d CAD。飞控是 **ArduPilot / Pix32 V6**，不是 PX4 分叉；伴机仍可用 [MAVSDK](../entities/mavsdk.md)。与 Crazyflie 不在同一尺度。
+
 ## 与腿式机器人栈的对照
 
 | 维度 | 多旋翼（本页） | 腿式/人形（仓库主线） |
@@ -217,6 +227,7 @@ flowchart TB
 - **误区：gym-pybullet-drones 训练策略可直接上 PX4** — 观测/动作空间与 SITL 不一致，需 **系统辨识、接口转换或 domain randomization**。
 - **误区：文献里「RL 全面超过几何控制」可直接当选型结论** — [RL vs GC](../entities/paper-rl-vs-gc.md) 显示，若解析基线未在同一目标/数据/前馈上优化，差距会被高估。
 - **误区：Betaflight 可替代 PX4 做自主导航** — FPV 固件面向 **手飞性能**；规划器输出应接 PX4/MAVSDK，而非 Betaflight MSP。
+- **误区：Quiver 是 PX4 固件仓或室内微四轴** — [Quiver](../entities/project-quiver.md) 是 **ArduPilot 机架**（25 kg）；SITL 参数与 Crazyflie / gym-pybullet-drones 尺度都不通用。
 - **误区：wtfOS 等于开源飞控** — [wtfOS](../entities/wtfos.md) 改造 **DJI 图传/眼镜固件**；姿态环仍在 Betaflight，自主栈仍在 PX4。
 - **局限：AirSim 维护状态** — 新课题应查 Colosseum 等 fork 与 Flightmare 活跃度。
 - **局限：Crazyswarm** — 依赖室内定位，难扩展到 GPS 室外大编队。
@@ -244,6 +255,8 @@ flowchart TB
 - [sources/repos/wtfos.md](../../sources/repos/wtfos.md)
 - [sources/sites/fpv-wtf.md](../../sources/sites/fpv-wtf.md)
 - [sources/sites/cia_dronecan_uavcan.md](../../sources/sites/cia_dronecan_uavcan.md)
+- [sources/repos/project-quiver.md](../../sources/repos/project-quiver.md)
+- [sources/sites/arrowair-quiver.md](../../sources/sites/arrowair-quiver.md)
 
 ## 关联页面
 
@@ -252,6 +265,7 @@ flowchart TB
 - [gym-pybullet-drones](../entities/gym-pybullet-drones.md) · [quad-swarm-rl](../entities/quad-swarm-rl.md)
 - [RL vs GC](../entities/paper-rl-vs-gc.md) · [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)
 - [Crazyswarm2](../entities/crazyswarm2.md) · [Crazyflie Firmware](../entities/crazyflie-firmware.md) · [Betaflight](../entities/betaflight.md) · [wtfOS](../entities/wtfos.md)
+- [Project Quiver](../entities/project-quiver.md) — 25 kg ArduPilot 开源机架
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 - [WorldVLN（空中 VLN）](../entities/paper-worldvln-aerial-vln-wam.md)
