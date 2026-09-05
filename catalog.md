@@ -2593,6 +2593,7 @@
 - [Robotic World Model（ETH RSL：RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md) — Robotic World Model（RWM）** 与 **Uncertainty-Aware RWM（RWM-U）** 是 ETH Zurich（RSL / LAS 等）开源的 **模型基强化 `📅unknown` `[entity_page]`
 - [ROBOTIS AI Sapiens（ai_sapiens）](wiki/entities/robotis-ai-sapiens.md) — AI Sapiens** 是 ROBOTIS 的 **开源人形** 产品线（K1）；官方 ROS 2 软件入口为 [`ROBOTIS-GIT/ai_sapiens`](https://github `📅unknown` `[entity_page]`
 - [ROBOTIS AI Worker（ai_worker）](wiki/entities/robotis-ai-worker.md) — AI Worker** 是 ROBOTIS **Physical AI** 半人形操作平台（产品叙事 **FFW — Freedom From Work**）；官方 ROS 2 软件入口为 [`R `📅unknown` `[entity_page]`
+- [cyclo_mjlab（ROBOTIS）](wiki/entities/robotis-cyclo-mjlab.md) — cyclo_mjlab**（`ROBOTIS-GIT/cyclo_mjlab`，Apache-2.0，2 `📅unknown` `[entity_page]`
 - [ROBOTIS MuJoCo Menagerie](wiki/entities/robotis-mujoco-menagerie.md) — robotis_mujoco_menagerie**（[`ROBOTIS-GIT/robotis_mujoco_menagerie`](https://github.com/ROBOTIS-GIT `📅unknown` `[entity_page]`
 - [ROBOTIS OP3](wiki/entities/robotis-op3.md) — ROBOTIS OP3** 是 **ROBOTIS** 的 **小型人形** 开源平台：硬件结构、电气与传感器接口说明在 **[OP3 eManual](https://emanual.robot `📅unknown` `[entity_page]`
 - [ROBOTIS 机械臂 / 手（OpenMANIPULATOR 等）](wiki/entities/robotis-open-manipulator-line.md) — ROBOTIS** 在 **OpenMANIPULATOR** 品牌下维护多条 **开源机械臂与夹爪** 产品线（如 **OpenMANIPULATOR-X / P**、**Manipulator `📅unknown` `[entity_page]`

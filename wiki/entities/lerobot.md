@@ -107,6 +107,7 @@ flowchart LR
 - **NVIDIA 官方课：** [SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md) 用 `lerobot-record`（`so101_follower` / `so101_leader`）采集真机少量演示，并与 Isaac Lab 仿真演示做 Co-training。
 - **整机项目协作：** [Tnkr](./tnkr.md) 侧重把 CAD、线束、代码版本与部署/运行数据收进同一开源项目仓库；训练侧仍常导出到 LeRobot 等数据集格式，二者分工不同。
 - **ROBOTIS 全栈集成：** [Cyclo Intelligence](./cyclo-intelligence.md) 以子模块钉版本集成 LeRobot，在 Docker 策略容器内提供 ACT/SmolVLA/π₀ 等推理后端，并由行为树编排 `LOAD/RESUME/STOP` 生命周期。
+- **Zenoh 路径（α）：** [ROBOTIS `lerobot_robot_ros2_zenoh`](https://github.com/ROBOTIS-GIT/lerobot_robot_ros2_zenoh) + [`zenoh_ros2_sdk`](https://github.com/ROBOTIS-GIT/zenoh_ros2_sdk) 可在**无本机 ROS 2** 环境下经 Zenoh 对接 `/joint_states` 与轨迹 topic，供 LeRobot 采训推；见 [robotis.md](./robotis.md) 组织地图。
 - **轻量 VLA 官方集成：** [Evo-1](./paper-evo1-lightweight-vla.md)（MINT-SJTU，CVPR 2026）已并入 **官方 LeRobot 主仓**；SO100/SO101 可用 `lerobot-record --policy.path=<Evo-1 checkpoint>` 闭环，训练侧数据格式为 **LeRobot v2.1**。
 - **Perceptron Isaac 0.5：** 官方 fork 以 **LeRobot 子模块** 发布 `policy.type=perceptron_isaac`（导入 checkpoint、LIBERO eval、SO100/YAM rollout）。根仓 Apache 2.0；**mHarmony 未进 extra**，Hub 权重入库日 **COMING SOON**。见 [Perceptron Isaac 0.5](./perceptron-isaac-05.md)。**勿与** NVIDIA [Isaac GR00T](./isaac-gr00t.md) 的 `groot` policy 混淆。
 - **部署/Agent OS 对照：** [DimOS（Dimensional）](./dimensionalos-dimos.md) 侧重 **现场 Module 编排、SLAM 导航、空间记忆与 MCP 自然语言控制**；与 LeRobot 的 **数据集 Hub + 策略训练** 正交，常在「训练用 LeRobot、集成用 DimOS/ROS」分层共存。

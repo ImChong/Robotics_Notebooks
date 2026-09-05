@@ -8286,6 +8286,12 @@
 - **开源核查：** N/A（综述科普文，无单一项目页）。
 - **关键页：** [`wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md`](wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md)；交叉更新 [`mobile-robot-navigation-planning-methods`](wiki/comparisons/mobile-robot-navigation-planning-methods.md)、控制/学习姊妹 taxonomy。
 
+## [2026-09-05] ingest | sources/repos/robotis-git.md — 复核 ROBOTIS-GIT 组织（154 仓）；新增 cyclo_mjlab / zenoh_ros2_sdk 归档与 wiki/entities/robotis-cyclo-mjlab.md；刷新组织 hub
+
+- **触发：** 用户指定 <https://github.com/ROBOTIS-GIT>；要求自动合入
+- **变更：** 组织数 152→154；新增 **cyclo_mjlab**（K1 · mjlab RL/Mimic）、**zenoh_ros2_sdk** + **lerobot_robot_ros2_zenoh**（LeRobot 无 ROS 2 安装路径）；刷新 [`robotis.md`](wiki/entities/robotis.md) 双仿真栈地图
+- **开源核查：** 主线仓 **已开源**；Zenoh LeRobot 集成标 **Alpha**
+
 ## [2026-09-05] ingest | sources/papers/egoexomocap_arxiv_2607_15868.md — EgoExoMoCap 分布式 HMD ego-exo 野外动捕
 
 - **意图：** 接入 ECCV 2026 Spotlight 论文与 SIPLAB 项目页，沉淀分布式智能眼镜互观测的全身 SMPL 重建管线（EgoNet + ViTPose 射线 + DINOv3 门控）。
