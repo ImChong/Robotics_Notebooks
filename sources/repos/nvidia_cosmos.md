@@ -94,7 +94,9 @@ Edge 限制：分辨率仅 256p/480p，12–30 fps，50–150 帧；当前不支
 - 平台总览：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - 论文：[`sources/papers/cosmos3_arxiv_2606_02800.md`](../papers/cosmos3_arxiv_2606_02800.md)
 - 项目页：[`sources/sites/cosmos3-project.md`](../sites/cosmos3-project.md)
+- HF 集合：[`sources/sites/hf-nvidia-cosmos3-collection.md`](../sites/hf-nvidia-cosmos3-collection.md)
 - 训练框架：[`sources/repos/nvidia_cosmos_framework.md`](./nvidia_cosmos_framework.md)
 - 实体页：**`wiki/entities/cosmos-3.md`**
 - Transfer 族：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)
 - 2.x 配方：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)
+- Physical AI 数据：[`wiki/entities/nvidia-physical-ai-datasets.md`](../../wiki/entities/nvidia-physical-ai-datasets.md)

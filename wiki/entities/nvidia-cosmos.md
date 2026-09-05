@@ -19,6 +19,7 @@ related:
   - ./cosmos-transfer.md
   - ./cosmos-cookbook.md
   - ./paper-cosmos-transfer1.md
+  - ./nvidia-physical-ai-datasets.md
 sources:
   - ../../sources/sites/nvidia-cosmos.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -28,6 +29,8 @@ sources:
   - ../../sources/papers/cosmos_predict25_arxiv_2511_00062.md
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos-cookbook.md
+  - ../../sources/sites/hf-nvidia-cosmos3-collection.md
+  - ../../sources/sites/hf-nvidia-physical-ai-collection.md
   - ../../sources/repos/nvidia_cosmos_transfer1.md
   - ../../sources/repos/nvidia_cosmos_transfer25.md
 summary: "NVIDIA Cosmos 是 Physical AI 世界基础模型开放平台：从 Cosmos 1.0（Predict/Transfer/Reason 分模型）经 Predict2.5 flow WFM，到 Cosmos 3 全模态 MoT；配套 Curator / Evaluator / cosmos-framework。与 Newton / Omniverse 的解析仿真互补。"
@@ -102,6 +105,8 @@ flowchart TB
 | 训练 / 导出 | [cosmos-framework](https://github.com/NVIDIA/cosmos-framework) | `scripts.train` / `inference`；8×H100 recipe；DCP→safetensors→Diffusers |
 | 旧视频 WFM / Transfer | [Cosmos Transfer](./cosmos-transfer.md) 1 / 2.5 仓 | README 已写迁移 Cosmos 3；V2V 配方见 [Cookbook](./cosmos-cookbook.md) |
 | 产品试用 | [nvidia.com/ai/cosmos](https://www.nvidia.com/en-us/ai/cosmos/) | Download Models / hosted catalog / Cookbook |
+| HF 权重 | [Cosmos3 collection](https://huggingface.co/collections/nvidia/cosmos3) | Super / Nano / Edge + Action Viewer；详见 [HF 归档](../../sources/sites/hf-nvidia-cosmos3-collection.md) |
+| HF 数据 | [Physical AI collection](https://huggingface.co/collections/nvidia/physical-ai) | 49 项数据集/资产；见 [Physical AI 数据集](./nvidia-physical-ai-datasets.md) |
 | 解析仿真对照 | [Newton](./newton-physics.md)、Isaac Lab `feature/newton` | 接触、可微、USD 资产 |
 
 开源结论（2026-09-05 项目页核查）：**平台代码与多代权重已开源**；HF 仓多为门控，Generator 仍可能要求 Cosmos-1.0-Guardrail 访问。许可口径：Cosmos 3 摘要写 **OpenMDW-1.1**，2.5 代权重写 **NVIDIA Open Model License**——以具体卡为准。
@@ -129,6 +134,7 @@ flowchart TB
 - [Cosmos Transfer](./cosmos-transfer.md) — world-to-world 多控翻译
 - [Cosmos-Transfer1 论文](./paper-cosmos-transfer1.md)
 - [Cosmos Cookbook](./cosmos-cookbook.md) — 2.x 可运行配方
+- [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md) — HF 数据集合索引
 
 ## 参考来源
 
@@ -140,6 +146,8 @@ flowchart TB
 - [Predict2.5 论文摘录](../../sources/papers/cosmos_predict25_arxiv_2511_00062.md)
 - [Cosmos 3 论文摘录](../../sources/papers/cosmos3_arxiv_2606_02800.md)
 - [Cosmos Cookbook 站点](../../sources/sites/cosmos-cookbook.md)
+- [HF Cosmos3 集合](../../sources/sites/hf-nvidia-cosmos3-collection.md)
+- [HF Physical AI 集合](../../sources/sites/hf-nvidia-physical-ai-collection.md)
 - [cosmos-transfer1 仓库](../../sources/repos/nvidia_cosmos_transfer1.md)
 - [cosmos-transfer2.5 仓库](../../sources/repos/nvidia_cosmos_transfer25.md)
 

@@ -17,6 +17,7 @@ related:
   - ./paper-indi.md
   - ./perceptron-isaac-05.md
   - ./isaac-teleop.md
+  - ./nvidia-physical-ai-datasets.md
 sources:
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
@@ -71,6 +72,7 @@ flowchart LR
 | 仿真环境 | 场景 + 任务 + WBC 配置 | Isaac Lab-Arena asset registry |
 | 数据采集 | HDF5 demonstrations | `record_demos.py`（OpenXR 等） |
 | 格式转换 | `lerobot/` 目录（parquet + mp4 + meta） | `convert_hdf5_to_lerobot.py` + YAML 映射 |
+| 公开数据 | [Physical AI HF 集合](./nvidia-physical-ai-datasets.md) | `GR00T-X-Embodiment-Sim`、Teleop 族、`LIBERO_LeRobot_v3` 等 |
 | 后训练 | finetune checkpoint | `launch_finetune.py` + `--embodiment-tag` |
 | 评测/部署 | success rate / LEAPP bundle | ZMQ Policy Server；Isaac ROS G1 教程 |
 
@@ -127,6 +129,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 论文 canonical：[paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md)  
 - 低层 WBC / SONIC：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)  
 - 数据互操作：[lerobot.md](../entities/lerobot.md)
+- 官方数据索引：[nvidia-physical-ai-datasets.md](./nvidia-physical-ai-datasets.md) — GR00T / Teleop / LeRobot v3 子集
 - 采数栈：[isaac-teleop.md](./isaac-teleop.md) — Lab 3.x XR 主线；MCAP / LeRobot；Televiz 把头显当瘦客户端  
 - Kuavo 厂商胶水：[letools.md](./letools.md) — Learning 仓将 GR00T N1.5/N1.7 列入统一训练/client 部署  
 - 仿真框架：[isaac-gym-isaac-lab.md](../entities/isaac-gym-isaac-lab.md)  
