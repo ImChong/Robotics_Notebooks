@@ -11,7 +11,7 @@ tags:
   - human-motion
   - zju
 status: complete
-updated: 2026-09-04
+updated: 2026-09-05
 code: https://github.com/zju3dv/EasyMocap
 summary: "EasyMocap：浙大 3DV 无标记动捕工具箱，把标定多视角 / 互联网视频 / 镜面人拟合成 SMPL 系参数，并可选接到 Neural Body 新视角合成；许可为非商业科研，ZJU-MoCap 需协议申请。"
 related:
@@ -122,6 +122,7 @@ flowchart TD
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人体参数到机器人关节的映射
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — EasyMocap 作为「干净多视角 SMPL」上游源
 - [GMR](../methods/motion-retargeting-gmr.md) — 常见几何重定向落点
+- [4DAnyone](./paper-4danyone.md) — 无外参单目 → 多视角外观；有标定时仍优先本页做运动拟合
 
 ## 参考来源
 

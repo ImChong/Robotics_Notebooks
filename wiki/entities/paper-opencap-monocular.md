@@ -149,6 +149,7 @@ flowchart TB
 - **开源 MoCap 对照：** [FreeMoCap](./freemocap.md) — 教学向多相机 3D 重建，无 OpenSim 动力学。
 - **重定向流水线：** [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — TRC/MOT 可作为异构源之一，但非默认路径。
 - **人体动作索引：** [Human Motion 分类](../overview/paper-notebook-category-14-human-motion.md)
+- **外观生成对照：** [4DAnyone](./paper-4danyone.md) — 同是单目入口，但下游是多视角 / 4DGS 外观，不是 OpenSim 运动学。
 
 ## 参考来源
 

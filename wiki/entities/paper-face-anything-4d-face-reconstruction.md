@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, face-reconstruction, 4d-tracking, depth-estimation, feed-forward, transformer, tum, huawei, canonical-coordinates]
 status: complete
-updated: 2026-08-06
+updated: 2026-09-05
 arxiv: "2604.19702"
 related:
   - ../concepts/visual-representation-for-policy.md
@@ -13,6 +13,7 @@ related:
   - ./gnm-head.md
   - ./paper-shells-layered-surface-sampling.md
   - ./paper-uma.md
+  - ./paper-4danyone.md
   - ../tasks/teleoperation.md
 sources:
   - ../../sources/papers/face_anything_arxiv_2604_19702.md
@@ -124,6 +125,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [GVHMR](./gvhmr.md) — **全身** 单目视频→SMPL；Face Anything 覆盖 **面部 4D** 分支
+- [4DAnyone](./paper-4danyone.md) — 全身外观多视角 / 4DGS；脸部细节点交给源视频，不走本页规范面部坐标
 - [GNM Head](./gnm-head.md) — 参数化头脸统计模型（生成式先验，非单目 HMR）
 - [SHELLS](./paper-shells-layered-surface-sampling.md) — **标定多视角** 固定拓扑 ~18k 顶点前馈注册（棚拍度量）；与本文任意序列 4D 互补
 - [UMA](./paper-uma.md) — **全身着装** 多视角可驱动超精细 avatar（VR telepresence）；与本文面部 4D 通道互补
