@@ -1,3 +1,10 @@
+## [2026-09-06] ingest | sources/sites/nvidia-jetson-embedded-systems.md — 接入 Jetson 嵌入式产品线门户（Thor/Orin 谱系、JetPack、Physical AI）；关键页 nvidia-jetson；交叉 jetson-orin-nx / hardware-in-the-loop
+
+- **触发：** 用户指定 <https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/>，并要求自动合并 PR
+- **步骤 2.5：** 硬件模组 **商业闭源**；JetPack / 开发者工具 **可下载 SDK**；Jetson AI Lab 聚合 **开源模型** 生态
+- **新建：** `nvidia-jetson` 平台实体；归档嵌入式系统门户
+- **交叉：** jetson-orin-nx、hardware-in-the-loop
+
 ## [2026-09-06] ingest | sources/sites/nvidia-isaac-sim-hil-tutorial.md、opal-rt-hardware-in-the-loop.md + sources/papers/martin_emami_2008、fedak_2015、arisoy_sen_2025 — 接入 Hardware-in-the-Loop 一手资料（NVIDIA 课程、OPAL-RT、RHILS 书章、工业臂驱动 HIL、柔性连杆 HOSMC 案例）；关键页 hardware-in-the-loop；交叉 software-in-the-loop / sim2real / hub-sim2real / humanoid-robot
 
 - **触发：** 用户要求找到 HIL（Hardware-in-the-Loop）一手资料并 ingest，自动合并 PR
