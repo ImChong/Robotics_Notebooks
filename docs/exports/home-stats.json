@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-06",
   "node_count": 3815,
-  "edge_count": 33943,
+  "edge_count": 33950,
   "coverage": {
     "covered": 3788,
     "total": 3788,
@@ -240,11 +240,11 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 922
+      "size": 911
     },
     {
       "label": "操作",
-      "size": 633
+      "size": 632
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -252,7 +252,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 242
+      "size": 241
     },
     {
       "label": "机器人学习论文笔记",
@@ -260,7 +260,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 137
+      "size": 136
     }
   ],
   "top_hubs": [
@@ -299,7 +299,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 836,
+      "degree": 837,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -330,7 +330,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 545,
+      "degree": 546,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -401,8 +401,7 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 45,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "degree": 45
     },
     {
       "detail_id": "entity-paper-ctrl-world",
