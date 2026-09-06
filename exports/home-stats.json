@@ -1,251 +1,269 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3493,
-  "edge_count": 32071,
+  "node_count": 3811,
+  "edge_count": 33858,
   "coverage": {
-    "covered": 3466,
-    "total": 3466,
+    "covered": 3784,
+    "total": 3784,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/software-in-the-loop.md",
-      "detail_id": "wiki-concepts-software-in-the-loop",
-      "label": "Software-in-the-Loop（SIL，软件在环）",
-      "type": "concept",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/nvidia-physical-ai-datasets.md",
-      "detail_id": "entity-nvidia-physical-ai-datasets",
-      "label": "NVIDIA Physical AI 数据集（Hugging Face 集合）",
+      "path": "wiki/entities/cn-os-a3-a3u-robot-model.md",
+      "detail_id": "entity-cn-os-a3-a3u-robot-model",
+      "label": "A3-A3U-robot-model",
       "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/nvidia-spatial-intelligence-lab.md",
-      "detail_id": "entity-nvidia-spatial-intelligence-lab",
-      "label": "NVIDIA Spatial Intelligence Lab（SIL）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/omnigraph.md",
-      "detail_id": "entity-omnigraph",
-      "label": "OmniGraph（Omniverse 可视化脚本）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-kamino.md",
-      "detail_id": "entity-paper-kamino",
-      "label": "Kamino（GPU 闭链约束多体仿真）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-instant-nurec.md",
-      "detail_id": "entity-paper-instant-nurec",
-      "label": "Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/plotly.md",
-      "detail_id": "entity-plotly",
-      "label": "plotly.py（Plotly Python）",
-      "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "论文总索引导读（HMI Papers Coverage Guide） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
     {
-      "path": "wiki/entities/nvidia-cosmos.md",
-      "detail_id": "entity-nvidia-cosmos",
-      "label": "NVIDIA Cosmos（世界基础模型平台）",
+      "path": "wiki/entities/cn-os-a3-ultra-usd.md",
+      "detail_id": "entity-cn-os-a3-ultra-usd",
+      "label": "A3_Ultra_usd",
       "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
     {
-      "path": "wiki/entities/nvidia-nurec.md",
-      "detail_id": "entity-nvidia-nurec",
-      "label": "NVIDIA Omniverse NuRec",
+      "path": "wiki/entities/cn-os-abot-3dworld.md",
+      "detail_id": "entity-cn-os-abot-3dworld",
+      "label": "ABot-3DWorld",
       "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robotis-cyclo-mjlab.md",
-      "detail_id": "entity-robotis-cyclo-mjlab",
-      "label": "cyclo_mjlab（ROBOTIS）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-egoexomocap.md",
-      "detail_id": "entity-paper-egoexomocap",
-      "label": "EgoExoMoCap",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/functional-taxonomy-world-models.md",
-      "detail_id": "wiki-concepts-functional-taxonomy-world-models",
-      "label": "世界模型功能分类（Renderer / Simulator / Planner）",
-      "type": "concept",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/marble-world-model.md",
-      "detail_id": "entity-marble-world-model",
-      "label": "Marble（World Labs 多模态世界模型）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-lejepa.md",
-      "detail_id": "entity-paper-lejepa",
-      "label": "LeJEPA（无启发式 JEPA · arXiv:2511.08544）",
-      "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
     {
-      "path": "wiki/entities/paper-lewm.md",
-      "detail_id": "entity-paper-lewm",
-      "label": "LeWorldModel / LeWM（像素端到端 JEPA WM · arXiv:2603.19312）",
+      "path": "wiki/entities/cn-os-abot-claw.md",
+      "detail_id": "entity-cn-os-abot-claw",
+      "label": "ABot-Claw",
       "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
     {
-      "path": "wiki/entities/paper-lpwm.md",
-      "detail_id": "entity-paper-lpwm",
-      "label": "LpWM（稀疏世界模型 · arXiv:2608.22764）",
+      "path": "wiki/entities/cn-os-abot-explorer.md",
+      "detail_id": "entity-cn-os-abot-explorer",
+      "label": "ABot-Explorer",
       "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
     {
-      "path": "wiki/entities/paper-phi-wm-acteffect.md",
-      "detail_id": "entity-paper-phi-wm-acteffect",
-      "label": "Phi-WM 1.0 ActEffect（训练时后果反馈）",
+      "path": "wiki/entities/cn-os-abot-manipulation.md",
+      "detail_id": "entity-cn-os-abot-manipulation",
+      "label": "ABot-Manipulation",
       "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/cosmos-cookbook.md",
-      "detail_id": "entity-cosmos-cookbook",
-      "label": "Cosmos Cookbook（WFM 配方站）",
-      "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
     {
-      "path": "wiki/entities/cosmos-transfer.md",
-      "detail_id": "entity-cosmos-transfer",
-      "label": "Cosmos Transfer（条件世界翻译）",
+      "path": "wiki/entities/cn-os-abot-navigation.md",
+      "detail_id": "entity-cn-os-abot-navigation",
+      "label": "ABot-Navigation",
       "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
     {
-      "path": "wiki/entities/paper-cosmos-transfer1.md",
-      "detail_id": "entity-paper-cosmos-transfer1",
-      "label": "Cosmos-Transfer1: Conditional World Generation with Adaptive Multimodal Control",
+      "path": "wiki/entities/cn-os-abot-recon.md",
+      "detail_id": "entity-cn-os-abot-recon",
+      "label": "ABot-Recon",
       "type": "entity",
-      "recency": "2026-09-05",
+      "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-agibot-d1-edu-ultra.md",
+      "detail_id": "entity-cn-os-agibot-d1-edu-ultra",
+      "label": "agibot_D1_Edu-Ultra",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-agibot-d1-max.md",
+      "detail_id": "entity-cn-os-agibot-d1-max",
+      "label": "Agibot_D1_Max",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-agibot-x1-hardware.md",
+      "detail_id": "entity-cn-os-agibot-x1-hardware",
+      "label": "agibot_x1_hardware",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-agibot-x1-infer.md",
+      "detail_id": "entity-cn-os-agibot-x1-infer",
+      "label": "agibot_x1_infer",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-agibot-x1-train.md",
+      "detail_id": "entity-cn-os-agibot-x1-train",
+      "label": "agibot_x1_train",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-agibot-x2-urdf.md",
+      "detail_id": "entity-cn-os-agibot-x2-urdf",
+      "label": "agibot_x2_urdf",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-agillink-omnihand-sdk.md",
+      "detail_id": "entity-cn-os-agillink-omnihand-sdk",
+      "label": "agillink_omnihand_sdk",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-aimrt.md",
+      "detail_id": "entity-cn-os-aimrt",
+      "label": "AimRT",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-airbot-play-hardware.md",
+      "detail_id": "entity-cn-os-airbot-play-hardware",
+      "label": "AIRBOT-Play-Hardware",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-alicia-d-leader-ros.md",
+      "detail_id": "entity-cn-os-alicia-d-leader-ros",
+      "label": "Alicia-D-Leader-ROS",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-alicia-d-ros2.md",
+      "detail_id": "entity-cn-os-alicia-d-ros2",
+      "label": "Alicia-D-ROS2",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-alicia-d-sdk.md",
+      "detail_id": "entity-cn-os-alicia-d-sdk",
+      "label": "Alicia-D-SDK",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/software-in-the-loop.md",
-    "detail_id": "wiki-concepts-software-in-the-loop",
-    "label": "Software-in-the-Loop（SIL，软件在环）",
-    "type": "concept",
-    "recency": "2026-09-05",
+    "path": "wiki/entities/cn-os-a3-a3u-robot-model.md",
+    "detail_id": "entity-cn-os-a3-a3u-robot-model",
+    "label": "A3-A3U-robot-model",
+    "type": "entity",
+    "recency": "2026-09-06",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 878
+      "size": 872
     },
     {
       "label": "操作",
-      "size": 670
+      "size": 689
+    },
+    {
+      "label": "国内开源全景 424 项本库导读",
+      "size": 322
     },
     {
       "label": "视觉-语言-动作",
-      "size": 245
+      "size": 243
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 224
+      "size": 229
     },
     {
-      "label": "移动操作",
-      "size": 77
-    },
-    {
-      "label": "强化学习",
-      "size": 68
+      "label": "仿真到现实",
+      "size": 131
     }
   ],
   "top_hubs": [
@@ -253,7 +271,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1420,
+      "degree": 1428,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -266,19 +284,19 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 904,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 901,
+      "degree": 909,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 909,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-generative-world-models",
@@ -289,10 +307,18 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
+      "label": "国内具身开源全景 424 项 · 本库导读",
+      "type": "query",
+      "degree": 680,
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 575,
+      "degree": 577,
       "has_repo": true
     },
     {
@@ -307,25 +333,17 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 533,
+      "degree": 542,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "detail_id": "entity-awesome-world-models",
-      "label": "Awesome World Models（sun254667 精选集）",
-      "type": "entity",
-      "degree": 517,
+      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
+      "label": "HMI 开源项目主表 · 本库导读",
+      "type": "query",
+      "degree": 526,
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "detail_id": "wiki-overview-sun-awesome-ego-technology-map",
-      "label": "Awesome Egocentric Vision 技术地图",
-      "type": "overview",
-      "degree": 465,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -333,7 +351,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 154,
+      "degree": 156,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -341,7 +359,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 82,
+      "degree": 83,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -370,7 +388,7 @@
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
-      "degree": 48,
+      "degree": 49,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },

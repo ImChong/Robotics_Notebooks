@@ -31,6 +31,7 @@ sources:
   - ../../sources/sites/xpeng-robotics-unit.md
   - ../../sources/repos/xpeng_robotics_unit.md
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
+  - ../../sources/repos/unit.md
 summary: "UniT（arXiv:2604.19734，小鹏机器人等）：视觉锚定三分支交叉重构，学人–人形共享离散潜动作分词；VLA-UniT 在 RoboCasa GR1 达 66.7%（+11.7pp vs FLARE）；WM-UniT 支持人动作条件人形视频。Apache-2.0 已开源 + HF checkpoints。"
 ---
 
@@ -176,6 +177,8 @@ sequenceDiagram
 - [World Action Models](../concepts/world-action-models.md)
 
 ## 参考来源
+
+- [UniT 源码归档](../../sources/repos/unit.md)（<https://github.com/xpeng-robotics/UniT>）
 
 - [unit_xpeng_arxiv_2604_19734.md](../../sources/papers/unit_xpeng_arxiv_2604_19734.md)
 - [xpeng-robotics-unit.md](../../sources/sites/xpeng-robotics-unit.md)

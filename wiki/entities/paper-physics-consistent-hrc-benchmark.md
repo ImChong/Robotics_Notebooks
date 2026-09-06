@@ -2,18 +2,20 @@
 type: entity
 tags: [paper, human-robot-interaction, benchmark, assistive-care, contact-rich]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-06
 arxiv: "2609.02402"
 related:
   - ../tasks/manipulation.md
   - ../tasks/humanoid-locomotion.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../overview/embodied-resources-reliability-9-papers-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-pact-hrc-action-admission.md
 sources:
   - ../../sources/papers/physics_consistent_hrc_benchmark_arxiv_2609_02402.md
   - ../../sources/sites/physics-consistent-hrc-benchmark.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md
 summary: "Physics-Consistent HRC Benchmark（arXiv:2609.02402）：辅助洗浴接触丰富 HRC 基准；可变形被动人体 + 泄漏自由方法接口 + 物理一致评分；LLM-SM 名义 72.9% 经安全筛查降至 56.4%；benchmark 代码 Coming soon。"
 ---
 
@@ -109,6 +111,7 @@ flowchart TB
 - [physics_consistent_hrc_benchmark_arxiv_2609_02402](../../sources/papers/physics_consistent_hrc_benchmark_arxiv_2609_02402.md)
 - [physics-consistent-hrc-benchmark 预览仓](../../sources/sites/physics-consistent-hrc-benchmark.md)
 - [具身智能小站 2026-09-03 八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md)
+- [具身智能小站 2026-09-06 九篇资源汇总](../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md)
 
 ## 推荐继续阅读
 

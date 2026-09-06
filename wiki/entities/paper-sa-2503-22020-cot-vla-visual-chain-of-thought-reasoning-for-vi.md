@@ -17,6 +17,7 @@ sources:
   - ../../sources/papers/sun_awesome_wm_2503_22020_cot-vla-visual-chain-of-thought-reasonin.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/repos/acot-vla.md
 ---
 
 # CoT-VLA
@@ -92,6 +93,8 @@ Visual chain-of-thought reasoning for VLAs.
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [ACoT-VLA 源码归档](../../sources/repos/acot-vla.md)（<https://github.com/AgibotTech/ACoT-VLA>）
 
 - [`sources/papers/sun_awesome_wm_2503_22020_cot-vla-visual-chain-of-thought-reasonin.md`](../../sources/papers/sun_awesome_wm_2503_22020_cot-vla-visual-chain-of-thought-reasonin.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表

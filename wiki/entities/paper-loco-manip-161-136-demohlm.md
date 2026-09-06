@@ -13,6 +13,7 @@ sources:
   - ../../sources/papers/loco_manip_161_survey_136_demohlm.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/repos/demohlm.md
 ---
 
 # DemoHLM
@@ -80,6 +81,8 @@ DemoHLM 主要解决数据闭环：用相机图像/多视角观测、本体状�
 - 原始 source：[loco_manip_161_survey_136_demohlm.md](../../sources/papers/loco_manip_161_survey_136_demohlm.md)
 
 ## 参考来源
+
+- [DemoHLM 源码归档](../../sources/repos/demohlm.md)（<https://github.com/BeingBeyond/DemoHLM>）
 
 - [loco_manip_161_survey_136_demohlm.md](../../sources/papers/loco_manip_161_survey_136_demohlm.md) — 161 篇策展摘录
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)

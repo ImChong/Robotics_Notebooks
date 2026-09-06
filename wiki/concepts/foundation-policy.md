@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-09-04
+updated: 2026-09-06
 related:
   - ./embodied-foundation-model-hardware-codesign.md
   - ./robot-in-context-learning.md
@@ -149,6 +149,11 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 - **数据**：**混合大规模运动语料**——**野外视频重建运动**主导 **行为多样性**，**MoCap + 室内自采** 补 **高保真与部署覆盖**（与纯 MoCap scaling 路线对照阅读）
 - **定位**：面向 **零样本全身运动跟踪** 的 **运动基础模型** 工程栈；与 [SONIC](../methods/sonic-motion-tracking.md)（MoCap-centric scaling）、[BFM](../entities/paper-behavior-foundation-model-humanoid.md)（生成式多接口 WBC）形成 **数据—结构—接口** 三角对照
 - **入口**：[HoloMotion 实体页](../entities/holomotion.md)（代码 / HF / Docker / arXiv:2605.15336 一手索引）
+
+### NEXUS（SJTU，Research Preview，2026）
+- **叙事（项目页）：** **感知型基础策略**，把 **live human motion** 映射为 **cross-domain、terrain-aware** 全身遥操作；预览含 sim+real **楼梯** 场景
+- **开放边界：** 截至 2026-09-06 **Paper / Code / arXiv 均 Coming Soon**；GitHub 仅静态站 — 见 [NEXUS](../entities/nexus-humanoid.md)
+- **对照：** 与 [Perceptive BFM](../entities/paper-perceptive-bfm.md) 同轴（raw/人体参考 + 地形感知），发布前勿混为已验证基础模型
 
 ---
 

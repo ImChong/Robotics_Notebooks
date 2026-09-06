@@ -15,6 +15,7 @@ related:
   - ../concepts/sim2real.md
 sources:
   - ../../sources/repos/rl_training.md
+  - ../../sources/repos/lite3_rl_training.md
 summary: "DeepRoboticsLab/rl_training：云深处官方 Isaac Lab RL 扩展，注册 Lite3 / M20 / DR02（含 AMP）环境，默认 RSL-RL；真机走同组织 sdk_deploy 等部署仓。"
 ---
 
@@ -90,6 +91,8 @@ flowchart LR
 - [Locomotion](../tasks/locomotion.md)
 
 ## 参考来源
+
+- [DeepRobotics RL Training 源码归档](../../sources/repos/lite3_rl_training.md)（<https://github.com/DeepRoboticsLab/Lite3_rl_training>）
 
 - [sources/repos/rl_training.md](../../sources/repos/rl_training.md)
 - 上游：<https://github.com/DeepRoboticsLab/rl_training>

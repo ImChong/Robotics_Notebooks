@@ -14,6 +14,13 @@ related:
   - ../overview/robot-training-stack-layers-technology-map.md
 sources:
   - ../../sources/sites/botworld.md
+  - ../../sources/repos/agibotworldchallengeicra2026-worldmodelbaseline.md
+  - ../../sources/repos/lingbot-world.md
+  - ../../sources/repos/abot-world.md
+  - ../../sources/repos/botworld.md
+  - ../../sources/repos/botworld_lingbotworld20.md
+  - ../../sources/repos/botworld_lingbotworld10.md
+  - ../../sources/repos/botworld_abotworld.md
 summary: "BotWorld 是 EnkeeBot 运营的具身智能资产社区：在广场发现、审核发布与下载机器人模型与数据资产，并聚合 URDF Studio、Motion Studio、BotLab 及 step2urdf、Motrix 等生态工具。"
 ---
 
@@ -128,6 +135,20 @@ flowchart LR
 - [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md) — URDF 派生模块目录化思路，与广场「可复用资产包」互补
 
 ## 参考来源
+
+- [ABot-World 源码归档](../../sources/repos/botworld_abotworld.md)（<https://github.com/amap-cvlab/ABot-World>）
+
+- [LingBot-World 1.0 源码归档](../../sources/repos/botworld_lingbotworld10.md)（<https://github.com/Robbyant/LingBot-World>）
+
+- [LingBot-World 2.0 源码归档](../../sources/repos/botworld_lingbotworld20.md)（<https://github.com/Robbyant/LingBot-World>）
+
+- [AgiBotWorldChallengeICRA2026-WorldModelBaseline 源码归档](../../sources/repos/botworld.md)（<https://github.com/AgibotTech/AgiBotWorldChallengeICRA2026-WorldModelBaseline>）
+
+- [ABot-World 源码归档](../../sources/repos/abot-world.md)（<https://github.com/amap-cvlab/ABot-World>）
+
+- [LingBot-World 2.0 源码归档](../../sources/repos/lingbot-world.md)（<https://github.com/Robbyant/LingBot-World>）
+
+- [AgiBotWorldChallengeICRA2026-WorldModelBaseline 源码归档](../../sources/repos/agibotworldchallengeicra2026-worldmodelbaseline.md)（<https://github.com/AgibotTech/AgiBotWorldChallengeICRA2026-WorldModelBaseline>）
 
 - [BotWorld 站点归档](../../sources/sites/botworld.md)
 - [BotWorld 平台](https://botworld.enkeebot.com/)

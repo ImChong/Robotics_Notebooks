@@ -1,0 +1,20 @@
+# ROS2Ti5DualArmManipulation
+
+> 来源归档（国内具身开源全景）
+
+- **标题：** ROS2Ti5DualArmManipulation
+- **类型：** repo
+- **机构：** 钛虎机器人
+- **链接：** https://github.com/ti5robot/ROS2Ti5DualArmManipulation
+- **分类：** SDK/驱动
+- **入库日期：** 2026-09-06
+- **一句话说明：** 钛虎机器人 开源项目 ROS2Ti5DualArmManipulation（SDK/驱动），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
+- **沉淀到 wiki：** [`wiki/entities/cn-os-ros2ti5dualarmmanipulation.md`](../../wiki/entities/cn-os-ros2ti5dualarmmanipulation.md)
+
+## 开源状态
+
+- **已开源**：公开仓库（以 README 与 release 为准）。
+
+## 对 wiki 的映射
+
+- [wiki/entities/cn-os-ros2ti5dualarmmanipulation.md](../../wiki/entities/cn-os-ros2ti5dualarmmanipulation.md)

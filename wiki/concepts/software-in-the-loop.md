@@ -2,12 +2,13 @@
 type: concept
 tags: [simulation, isaac-sim, ros2, software-in-the-loop, validation, nvidia, physical-ai]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-06
 related:
   - ../entities/isaac-sim.md
   - ../entities/nvidia-physical-ai-learning.md
   - ../concepts/ros2-basics.md
   - ../concepts/sim2real.md
+  - ./hardware-in-the-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../entities/nvidia-spatial-intelligence-lab.md
   - ../queries/robot-policy-debug-playbook.md
@@ -74,7 +75,7 @@ flowchart LR
 | 阶段 | 测什么 | 典型工具 |
 |------|--------|----------|
 | **SIL** | 软件逻辑在仿真机器人上是否正确 | Isaac Sim + ROS 2 |
-| **HIL** | 软件在 **真实硬件** 上是否仍正确 | Isaac Sim HIL 模块（后续课程） |
+| **HIL** | 软件在 **真实硬件** 上是否仍正确 | [Hardware-in-the-Loop](./hardware-in-the-loop.md) · Isaac Sim HIL 模块 |
 | **Sim2Real** | 仿真策略/模型在真机是否可用 | 域随机化、系统辨识、真机标定等 |
 
 ## 工程实践
@@ -99,6 +100,7 @@ flowchart LR
 - [NVIDIA Physical AI Learning](../entities/nvidia-physical-ai-learning.md) — 官方课程入口
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Hardware-in-the-Loop](./hardware-in-the-loop.md) — SIL 之后的软硬件集成验证
 - [NVIDIA Spatial Intelligence Lab](../entities/nvidia-spatial-intelligence-lab.md) — **不同含义的 SIL**
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — SIL 通过后仍要逐层核的保真度投资判据
@@ -110,5 +112,6 @@ flowchart LR
 ## 推荐继续阅读
 
 - [Software-in-the-Loop（官方模块）](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/developing-robots-with-sil-in-isaac-sim/02-software-in-the-loop-sil.html)
+- [Hardware-in-the-Loop Fundamentals（官方 HIL 模块）](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/leveraging-ros-2-and-hil-in-isaac-sim/01-hardware-in-the-loop-hil-fundamentals.html)
 - [Isaac Sim 文档](https://docs.isaacsim.omniverse.nvidia.com/latest/index.html)
 - [NVIDIA Physical AI Learning](https://docs.nvidia.com/learning/physical-ai/)

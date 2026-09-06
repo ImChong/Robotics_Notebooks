@@ -17,6 +17,7 @@ related:
   - ./paper-panolog-ggps.md
 sources:
   - ../../sources/repos/gs_playground.md
+  - ../../sources/repos/gs_playground_gsplayground.md
 summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲染耦合，以最高 10^4 FPS 提供光真实感视觉观测，用于视觉 RL 训练，RSS 2026 收录。"
 ---
 
@@ -122,6 +123,8 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [Instant NuRec](./paper-instant-nurec.md) — 驾驶日志前向 3DGS（秒级预览 + NuRec 初始化）
 
 ## 参考来源
+
+- [gs_playground 源码归档](../../sources/repos/gs_playground_gsplayground.md)（<https://github.com/discoverse-dev/gs_playground>）
 
 - [sources/repos/gs_playground.md](../../sources/repos/gs_playground.md)
 - [discoverse-dev/gs_playground GitHub Repo](https://github.com/discoverse-dev/gs_playground)

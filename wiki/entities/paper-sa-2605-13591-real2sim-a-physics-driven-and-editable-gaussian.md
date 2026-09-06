@@ -17,6 +17,8 @@ sources:
   - ../../sources/papers/sun_awesome_r2s2r_2605_13591_real2sim-a-physics-driven-and-editable-g.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
+  - ../../sources/repos/discoverse-real2sim.md
+  - ../../sources/repos/paper_sa_2605_13591_real2sim_a_physics_driven_and_editable_gaussian.md
 ---
 
 # Real2Sim
@@ -91,6 +93,10 @@ Explicitly reconstructs dynamic driving scenes as temporally continuous Gaussian
 - 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
 
 ## 参考来源
+
+- [DISCOVERSE-Real2Sim 源码归档](../../sources/repos/paper_sa_2605_13591_real2sim_a_physics_driven_and_editable_gaussian.md)（<https://github.com/discoverse-dev/DISCOVERSE-Real2Sim>）
+
+- [DISCOVERSE-Real2Sim 源码归档](../../sources/repos/discoverse-real2sim.md)（<https://github.com/discoverse-dev/DISCOVERSE-Real2Sim>）
 
 - [`sources/papers/sun_awesome_r2s2r_2605_13591_real2sim-a-physics-driven-and-editable-g.md`](../../sources/papers/sun_awesome_r2s2r_2605_13591_real2sim-a-physics-driven-and-editable-g.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表

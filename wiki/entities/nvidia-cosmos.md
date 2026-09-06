@@ -20,6 +20,7 @@ related:
   - ./cosmos-cookbook.md
   - ./paper-cosmos-transfer1.md
   - ./nvidia-physical-ai-datasets.md
+  - ./nvidia-gtc.md
 sources:
   - ../../sources/sites/nvidia-cosmos.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -160,3 +161,4 @@ flowchart TB
 - [arXiv:2511.00062](https://arxiv.org/abs/2511.00062) — Predict2.5 / Transfer2.5
 - [arXiv:2606.02800](https://arxiv.org/abs/2606.02800) — Cosmos 3
 - [Cosmos Cookbook](https://nvidia-cosmos.github.io/cosmos-cookbook/index.html)
+- [GTC 2025 — Cosmos WFM 入门演讲](./nvidia-gtc.md)（On-Demand [S72431](https://www.nvidia.com/en-us/on-demand/session/gtc25-s72431/)）

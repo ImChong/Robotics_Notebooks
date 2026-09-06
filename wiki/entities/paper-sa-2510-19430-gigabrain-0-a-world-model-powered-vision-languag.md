@@ -17,6 +17,7 @@ sources:
   - ../../sources/papers/sun_awesome_wm_2510_19430_gigabrain-0-a-world-model-powered-vision.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/repos/paper_sa_2510_19430_gigabrain_0_a_world_model_powered_vision_languag.md
 ---
 
 # GigaBrain-0
@@ -92,6 +93,8 @@ World model-powered VLA.
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [GigaBrain-0 源码归档](../../sources/repos/paper_sa_2510_19430_gigabrain_0_a_world_model_powered_vision_languag.md)（<https://github.com/open-gigaai/giga-brain-0>）
 
 - [`sources/papers/sun_awesome_wm_2510_19430_gigabrain-0-a-world-model-powered-vision.md`](../../sources/papers/sun_awesome_wm_2510_19430_gigabrain-0-a-world-model-powered-vision.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表

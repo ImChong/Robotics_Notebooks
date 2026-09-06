@@ -24,6 +24,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 | DR | Domain Randomization | 随机化仿真参数扩宽训练分布 |
 | SysID | System Identification | 辨识真机/仿真参数 |
 | RMA | Rapid Motor Adaptation | 在线适应电机/动力学差异 |
+| HIL | Hardware-in-the-Loop | 真实硬件 + 仿真植物闭环验证 |
 | PITL | Processor-in-the-Loop | 控制环硬件在环仿真 |
 
 ## 为什么重要
@@ -43,6 +44,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 | 工程 | 部署清单 | [Sim2Real Checklist](../queries/sim2real-checklist.md)（含快速部署检查） |
 | 工程 | 闭环误差分层 | [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) |
 | 工程 | 单关节 SysID 实验 | [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) |
+| 工程 | 硬件在环 | [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md) |
 | 工程 | 处理器在环 | [Processor-in-the-Loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md) |
 | 文献索引 | Sim2Real / Real2Sim / R2S2R 闭环策展 | [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)（sun254667；2024–2026） |
 

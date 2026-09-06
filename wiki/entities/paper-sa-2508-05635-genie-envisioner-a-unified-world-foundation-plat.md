@@ -18,6 +18,7 @@ sources:
   - ../../sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/repos/genie-envisioner-v1.md
 ---
 
 # Genie Envisioner
@@ -93,6 +94,8 @@ Unified world foundation platform for robotic manipulation.
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [Genie-Envisioner-V1 源码归档](../../sources/repos/genie-envisioner-v1.md)（<https://github.com/AgibotTech/Genie-Envisioner-V1>）
 
 - [`sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md`](../../sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表

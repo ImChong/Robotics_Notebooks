@@ -3,9 +3,10 @@
 type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
-summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
-updated: 2026-09-05
+summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持数据采集、训练、EnvHub 仿真评测与实物部署。"
+updated: 2026-09-06
 related:
+  - ../concepts/lerobot-envhub.md
   - ./paper-imitator-game.md
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
@@ -14,6 +15,7 @@ related:
   - ./openlet.md
   - ./letools.md
   - ./lw-benchhub-tour.md
+  - ./isaac-lab-arena.md
   - ./paper-ros2smolvla.md
   - ./perceptron-isaac-05.md
   - ./rebot-devarm.md
@@ -22,6 +24,10 @@ related:
   - ../concepts/model-hardware-standard.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ./isaac-teleop.md
+sources:
+  - ../../sources/repos/lerobot.md
+  - ../../sources/sites/lerobot-envhub-docs.md
+  - ../../sources/sites/lerobot-huggingface-org.md
 ---
 
 # LeRobot (Hugging Face)
@@ -34,7 +40,8 @@ related:
 |------|----------|----------|
 | ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
 | VLA | Vision-Language-Action | 视觉–语言–动作统一策略模型族 |
-| HF Hub | Hugging Face Hub | 模型 / 数据集 / Spaces 托管与分发平台 |
+| HF Hub | Hugging Face Hub | 模型 / 数据集 / **EnvHub 环境** / Spaces 托管与分发平台 |
+| EnvHub | Environment Hub | 从 Hub 仓 `env.py` 动态加载仿真环境，见 [LeRobot EnvHub](../concepts/lerobot-envhub.md) |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 | SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
 
@@ -47,9 +54,10 @@ related:
 
 ## 核心组件
 
-- **Dataset Library**：支持加载和上传大规模机器人演示数据集。
-- **Policy Library**：内置了多种主流算法（如 ACT、Diffusion Policy、TD-MPC2、π₀/π₀.₅、SmolVLA 等）。
-- **Hardware Interface**：提供了一套简洁的 Python 接口，用于连接电机、传感器和真实机器人。
+- **Dataset Library**：支持加载和上传大规模机器人演示数据集（LeRobotDataset v3）。
+- **Policy Library**：内置 ACT、Diffusion、π0/π0.5、GR00T N、SmolVLA 等策略实现。
+- **Hardware Interface**：统一 `Robot` 类连接电机、传感器与真机；第三方 `lerobot_robot_*` 插件自动发现。
+- **EnvHub / 仿真评测**：`lerobot.envs.make_env` 与 `lerobot-eval` 从 Hub 拉取 `env.py` 环境，或走内置 `libero` / `metaworld` 等 `--env.type`。详见 [LeRobot EnvHub](../concepts/lerobot-envhub.md)。
 
 ## GitHub 代码仓 vs Hugging Face Hub
 
@@ -57,8 +65,8 @@ LeRobot 的工程闭环常拆成 **两处入口**：
 
 | 入口 | 链接 | 主要职责 |
 |------|------|----------|
-| **代码仓** | [github.com/huggingface/lerobot](https://github.com/huggingface/lerobot) | Python 包、CLI（`lerobot-record` / `lerobot-train`）、硬件驱动、策略实现源码 |
-| **Hub 组织页** | [huggingface.co/lerobot](https://huggingface.co/lerobot) | 预训练 **Models**、社区 **Datasets**、**Spaces** 可视化与教程、**Collections** 打包 |
+| **代码仓** | [github.com/huggingface/lerobot](https://github.com/huggingface/lerobot) | Python 包、CLI（`lerobot-record` / `lerobot-train` / **`lerobot-eval`**）、硬件驱动、策略与环境加载器 |
+| **Hub 组织页** | [huggingface.co/lerobot](https://huggingface.co/lerobot) | 预训练 **Models**、社区 **Datasets**、**EnvHub 环境仓**、**Spaces** 可视化与教程 |
 
 2026-07 快照规模：Hub 上约 **56** 个模型、**187** 个数据集、**11** 个 Collections、**9** 个 Spaces；另含 `lerobot/robot-urdfs` 资产 bucket。
 
@@ -72,11 +80,14 @@ flowchart LR
   subgraph hub["HF Hub lerobot"]
     models["Models 权重"]
     datasets["Datasets 演示"]
+    envhub["EnvHub 环境仓"]
     spaces["Spaces 可视化"]
   end
   teleop["遥操作采集"] --> datasets
   train --> models
   models --> deploy["lerobot-record / from_pretrained"]
+  envhub --> eval["lerobot-eval / make_env"]
+  models --> eval
   cli --> deploy
   spaces --> datasets
   policy_src --> train
@@ -114,7 +125,8 @@ flowchart LR
 - **无机器人双臂采集：** [HandUMI](./handumi.md)（钉 `lerobot[feetech]==0.5.1`）用可穿戴手持接口 **脱离目标机器人** 采集示范，经 `handumi validate` QA 后导出 **LeRobot v3 兼容** 同步数据，再重定向到 PiPER、OpenArm、TRLC-DK1、YAM 等平行夹爪双臂——降低「每台臂一套遥操作」的规模化成本。
 - **Unitree G1 官方改版：** [unitree_lerobot](./unitree-lerobot.md)（[`unitreerobotics/unitree_lerobot`](https://github.com/unitreerobotics/unitree_lerobot)）在 LeRobot 上适配 G1 双臂灵巧手采数/训练/测试，常与 [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md) 组成官方 IL 闭环；组织级导航见 [Unitree](./unitree.md)。
 - **乐聚 Kuavo 官方改版：** [LeTools](./letools.md) 的 Learning 仓把 rosbag 转为 **LeRobot Dataset v3**，并统一训 ACT/π/GR00T/LingbotVLA、仿真/真机部署；数据侧对接 [LET-Base](./let-base-dataset.md) 与 [REAL-I](./icra-2026-real-i.md)。
-- **光轮厨房双臂仿真闭环：** [LW BENCHHUB TOUR](./lw-benchhub-tour.md) 用 `lerobot-eval` + Isaac Lab-Arena EnvHub 评测 SmolVLA DoublePiper，并把自过滤轨迹导出为 LeRobotDataset。
+- **光轮厨房双臂仿真闭环：** [LW BENCHHUB TOUR](./lw-benchhub-tour.md) 用 `lerobot-eval` + [EnvHub](../concepts/lerobot-envhub.md)（`LightwheelAI/lw_benchhub_env`）评测 SmolVLA DoublePiper。
+- **Isaac Lab-Arena：** [isaac-lab-arena](./isaac-lab-arena.md) 经 `nvidia/isaaclab-arena-envs` 发布 GPU 仿真任务到 EnvHub。
 - **工业 UR 真机 SmolVLA：** [ROS2SmolVLA](./paper-ros2smolvla.md)（奥格斯堡，arXiv:2608.23320）用 Docker 把 `lerobot-record` / `lerobot-train` 接到 **ROS 2 Jazzy + UR10e** 笛卡尔速度环；HF 权重与 349 episode 数据已开源。
 - **Seeed reBot 桌面臂：** [reBot-DevArm](./rebot-devarm.md)（B601-DM / B601-RS）提供官方 Wiki 的 LeRobot 入门教程（采数 / 训练路径以 Seeed 文档为准），适合需要 **>1 kg 负载** 且仍走 LeRobot 格式的桌面操作实验。
 - **MHS 预告（2026-08）：** Anthropic [Model Hardware Standard](../concepts/model-hardware-standard.md) 研究预览点名 Hugging Face 将把 MHS 加进 LeRobot，让 agent 发现并操作真实设备。入库日 **规范与 SDK 未开源**，不能当可运行依赖；硬件通路与本页的 **数据集 Hub + 策略训练** 正交。
@@ -124,11 +136,12 @@ flowchart LR
 
 - **只盯 GitHub、忽略 Hub：** 许多可部署 checkpoint 仅在 `huggingface.co/lerobot` 发布；复现论文或官方 demo 时应先查 Hub Models / Collections。
 - **把 Hub 当训练框架：** Spaces 适合质检与演示；正式训练仍依赖 GitHub 仓 CLI 与本地 / 集群算力。
+- **忽略 EnvHub 安全闸：** 加载 Hub 环境必须 `trust_remote_code=True`；应审阅 `env.py` 并钉 commit，见 [LeRobot EnvHub](../concepts/lerobot-envhub.md)。
 - **数据格式混用：** v2.0+ 与旧版字段不同；上传前可用 **Visualize Dataset** Space 确认相机键、动作维与 fps。
 
 ## 参考来源
-- [LeRobot Hugging Face 组织页归档](../../sources/sites/lerobot-huggingface-org.md) — Hub 模型 / 数据集 / Spaces / Collections 分发层（本次 ingest）
-- [LeRobot 仓库归档](../../sources/repos/lerobot.md) — 官方 GitHub 代码仓 source
+- [LeRobot EnvHub 官方文档归档](../../sources/sites/lerobot-envhub-docs.md) — `make_env` 契约、URL 格式、安全与多任务返回（本次 ingest）
+- [LeRobot 仓库归档](../../sources/repos/lerobot.md) — GitHub 主仓、`lerobot-eval`、策略族与硬件（本次复核）
 - [NVIDIA SO-101 Sim2Real 课程](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — `lerobot-record` 采集 so101_follower/leader 真机与仿真演示
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [RIO 仓库与论文归档](../../sources/repos/robot-io-rio.md) — 与 LeRobot 数据导出衔接的跨形态实时 I/O 框架（对照阅读）
@@ -139,3 +152,10 @@ flowchart LR
 - [reBot-DevArm 仓库归档](../../sources/repos/rebot-devarm.md) — Seeed 开源桌面臂官方 LeRobot 教程对接
 - [Model Hardware Standard 公告归档](../../sources/sites/anthropic-model-hardware-standard.md) — LeRobot 被列为早期 MHS 采用方（预览，代码未公开）
 - [LeHome / Learning to Fold](../../sources/repos/lehome_solution.md) — SO-ARM101 竞赛全链路与 `lehome_sim` / `lehome_real` 权重
+
+## 关联页面
+
+- [LeRobot EnvHub](../concepts/lerobot-envhub.md)
+- [Isaac Lab-Arena](./isaac-lab-arena.md)
+- [LW BENCHHUB TOUR](./lw-benchhub-tour.md)
+- [VLA](../methods/vla.md)

@@ -22,6 +22,7 @@ sources:
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/repos/opentrack.md
 ---
 
 # Track Any Motions under Any Disturbances
@@ -119,6 +120,8 @@ Any2Track 的目标是 **track any motions under any disturbances**。它认为�
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 
 ## 参考来源
+
+- [OpenTrack / Any2Track 源码归档](../../sources/repos/opentrack.md)（<https://github.com/GalaxyGeneralRobotics/OpenTrack>）
 
 - [humanoid_rl_stack_13_track_any_motions_under_any_disturbances.md](../../sources/papers/humanoid_rl_stack_13_track_any_motions_under_any_disturbances.md) — 42 篇栈策展摘录
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 42 篇总表

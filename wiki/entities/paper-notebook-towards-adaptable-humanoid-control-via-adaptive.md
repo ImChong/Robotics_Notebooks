@@ -1,71 +1,50 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
-status: planned
-updated: 2026-06-26
-arxiv: "2510.14454"
-venue: "2025.10"
+tags: [paper, humanoid-paper-notebooks, humanoid, motion-tracking]
+status: complete
+updated: 2026-09-06
 related:
+  - ./paper-adamimic.md
+  - ./paper-notebook-adamimic.md
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
-  - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_towards-adaptable-humanoid-control-via-adaptive.md
-summary: "Towards Adaptable Humanoid Control via Adaptive Motion Tracking：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+  - ../../sources/papers/adamimic_arxiv_2510_14454.md
+summary: "与 paper-notebook-adamimic 同文重复索引；知识归纳统一见 paper-adamimic。"
 ---
 
 # Towards Adaptable Humanoid Control via Adaptive Motion Tracking
 
-**Towards Adaptable Humanoid Control via Adaptive Motion Tracking** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+> **重复索引：** 本页与 [paper-notebook-adamimic](./paper-notebook-adamimic.md) 指向同一论文 **AdaMimic**（arXiv:2510.14454）。全库知识归纳见 [paper-adamimic](./paper-adamimic.md)。
 
 ## 一句话定义
 
-Towards Adaptable Humanoid Control via Adaptive Motion Tracking 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+题名级 Paper Notebooks 占位节点 → 已合并至 [paper-adamimic](./paper-adamimic.md)。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-
-## 为什么重要
-
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
-
-## 核心信息
-
-| 字段 | 内容 |
-|------|------|
-| 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
-| 计划文件夹 | `papers/04_Loco-Manipulation_and_WBC/Towards_Adaptable_Humanoid_Control_via_Adaptive_Motion_Tracking` |
-
-
-## 实验与评测
-
-- 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
+| AdaMimic | Adaptive Motion Tracking | 论文方法名；见 [paper-adamimic](./paper-adamimic.md) |
+| RL | Reinforcement Learning | 训练范式 |
+| WBC | Whole-Body Control | 全身控制语境 |
 
 ## 结论
 
-**本页是一个尚未展开的占位实体：题名提示的取向是「用自适应动作跟踪换取人形控制的可适应性」，但这条主张在本页没有任何证据支撑。**
-
-- 本页可确认的只有条目级信息：分类 04_Loco-Manipulation_and_WBC、arXiv 2510.14454、发表 2025.10、深读状态「待撰写」。
-- 「自适应」具体自适应什么、跟踪参考如何构造、代价是什么均未给出；量化 benchmark、消融与实机指标同样缺位。
-- 当前价值仅在图谱完整性与交叉检索入口（[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) / [总索引](../overview/humanoid-paper-notebooks-index.md)）；升格为完整索引实体需等深读笔记。
+- 勿在本页维护独立技术内容；请阅读 [paper-adamimic](./paper-adamimic.md)。
+- 保留本页仅为兼容旧链接与图谱入边。
 
 ## 与其他页面的关系
 
+- **主实体：** [paper-adamimic](./paper-adamimic.md)
+- **PNB 短名索引：** [paper-notebook-adamimic](./paper-notebook-adamimic.md)
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
-- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源
 
+- [paper-adamimic.md](./paper-adamimic.md)
 - [humanoid_pnb_towards-adaptable-humanoid-control-via-adaptive.md](../../sources/papers/humanoid_pnb_towards-adaptable-humanoid-control-via-adaptive.md)
-- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [paper-adamimic](./paper-adamimic.md)

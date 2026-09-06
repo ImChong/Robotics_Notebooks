@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, platform, actuator]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-06
 related:
   - ./motioncode.md
   - ./project-instinct.md
@@ -35,6 +35,7 @@ related:
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/humannet.md
+  - ../../sources/repos/globalhumanoidrobotchallenge_2026_baseline.md
 summary: "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。"
 ---
 
@@ -171,8 +172,11 @@ flowchart TD
 - [Project Instinct](./project-instinct.md) — 清华 IIIS / 期智人形「本能级全身控制」公开研究站群（接触丰富 Shadowing、深度跑酷、野外徒步）
 - [ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — IIT×INAIL 人因导向硬件–控制联合优化人形（*Nat Mach Intell* 2026）
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 人形本体的执行器子系统即本驱动链选型闭环的物理载体
+- [Hardware-in-the-Loop（硬件在环）](../concepts/hardware-in-the-loop.md) — 流程图「HIL 与台架安全测试」节点；与 Hybrid Imitation Learning 缩写消歧
 
 ## 参考来源
+
+- [GlobalHumanoidRobotChallenge_2026_Baseline 源码归档](../../sources/repos/globalhumanoidrobotchallenge_2026_baseline.md)（<https://github.com/UBTECH-Robot/GlobalHumanoidRobotChallenge_2026_Baseline>）
 - [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md) — Optimus 腿部 PRS 路线的第三方解读（与平台表交叉引用）
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
 - [humannet.md](../../sources/papers/humannet.md) — 大规模人中心视频语料（与人形数据飞轮对照）

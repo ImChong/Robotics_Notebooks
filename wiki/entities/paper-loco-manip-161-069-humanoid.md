@@ -13,6 +13,16 @@ sources:
   - ../../sources/papers/loco_manip_161_survey_069_humanoid.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/repos/x-humanoid-training-toolchain.md
+  - ../../sources/repos/x-humanoid-vla-simulation-benchmark.md
+  - ../../sources/repos/xhumanoid_sdk.md
+  - ../../sources/repos/engineai_humanoid.md
+  - ../../sources/repos/humanoid-lab.md
+  - ../../sources/repos/humanoid-description.md
+  - ../../sources/repos/humanoid-mujoco-sim.md
+  - ../../sources/repos/humanoid-rl-deploy-python.md
+  - ../../sources/repos/humanoid-rl-isaaclab.md
+  - ../../sources/repos/zj_humanoid_sdk_ros.md
 ---
 
 # Humanoid
@@ -79,6 +89,26 @@ Humanoid 主要解决数据闭环：用语言指令、相机图像/多视角观�
 - 原始 source：[loco_manip_161_survey_069_humanoid.md](../../sources/papers/loco_manip_161_survey_069_humanoid.md)
 
 ## 参考来源
+
+- [zj_humanoid_sdk_ros 源码归档](../../sources/repos/zj_humanoid_sdk_ros.md)（<https://github.com/ZJ-Humanoid/zj_humanoid_sdk_ros>）
+
+- [humanoid-rl-isaaclab 源码归档](../../sources/repos/humanoid-rl-isaaclab.md)（<https://github.com/limxdynamics/humanoid-rl-isaaclab>）
+
+- [humanoid-rl-deploy-python 源码归档](../../sources/repos/humanoid-rl-deploy-python.md)（<https://github.com/limxdynamics/humanoid-rl-deploy-python>）
+
+- [humanoid-mujoco-sim 源码归档](../../sources/repos/humanoid-mujoco-sim.md)（<https://github.com/limxdynamics/humanoid-mujoco-sim>）
+
+- [humanoid-description 源码归档](../../sources/repos/humanoid-description.md)（<https://github.com/limxdynamics/humanoid-description>）
+
+- [humanoid-lab 源码归档](../../sources/repos/humanoid-lab.md)（<https://github.com/roboterax/humanoid-lab>）
+
+- [engineai_humanoid 源码归档](../../sources/repos/engineai_humanoid.md)（<https://github.com/engineai-robotics/engineai_humanoid>）
+
+- [xhumanoid_sdk 源码归档](../../sources/repos/xhumanoid_sdk.md)（<https://github.com/Open-X-Humanoid/xhumanoid_sdk>）
+
+- [x-humanoid-vla-simulation-benchmark 源码归档](../../sources/repos/x-humanoid-vla-simulation-benchmark.md)（<https://github.com/Open-X-Humanoid/x-humanoid-vla-simulation-benchmark>）
+
+- [x-humanoid-training-toolchain 源码归档](../../sources/repos/x-humanoid-training-toolchain.md)（<https://github.com/Open-X-Humanoid/x-humanoid-training-toolchain>）
 
 - [loco_manip_161_survey_069_humanoid.md](../../sources/papers/loco_manip_161_survey_069_humanoid.md) — 161 篇策展摘录
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)

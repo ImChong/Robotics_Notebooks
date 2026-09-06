@@ -3339,6 +3339,271 @@
         "ke-sai"
       ]
     },
+    "agilex": {
+      "label": "松灵机器人（AgileX Robotics）",
+      "aliases": [
+        "agilex",
+        "agilex-robotics"
+      ]
+    },
+    "agilex-ai": {
+      "label": "智在无界（AgileX AI）",
+      "aliases": [
+        "agilex-ai",
+        "zhizaiwujie"
+      ]
+    },
+    "alphasquare": {
+      "label": "智平方（AlphaSquare）",
+      "aliases": [
+        "alphasquare",
+        "zhisquare"
+      ]
+    },
+    "aubo": {
+      "label": "遨博智能（AUBO Robotics）",
+      "aliases": [
+        "aubo",
+        "aubo-robotics"
+      ]
+    },
+    "baidu": {
+      "label": "百度（Baidu）",
+      "aliases": [
+        "baidu",
+        "baidu-cloud"
+      ]
+    },
+    "bridgedp": {
+      "label": "桥介数物（BridgeDP）",
+      "aliases": [
+        "bridgedp",
+        "bridge-dp"
+      ]
+    },
+    "dexmate": {
+      "label": "戴盟机器人（Dexmate Robotics）",
+      "aliases": [
+        "dexmate",
+        "daimeng"
+      ]
+    },
+    "dmbots": {
+      "label": "达妙科技（DMBots）",
+      "aliases": [
+        "dmbots",
+        "damiao"
+      ]
+    },
+    "dobot": {
+      "label": "越疆科技（Dobot）",
+      "aliases": [
+        "dobot",
+        "yuejiang",
+        "embodied-dobot"
+      ]
+    },
+    "elite-robot": {
+      "label": "艾利特机器人（Elite Robot）",
+      "aliases": [
+        "elite-robot",
+        "eliterobot"
+      ]
+    },
+    "fair-innovation": {
+      "label": "法奥意威（FAIR Innovation）",
+      "aliases": [
+        "fair-innovation",
+        "fao-innovation"
+      ]
+    },
+    "flexiv": {
+      "label": "非夕科技（Flexiv）",
+      "aliases": [
+        "flexiv",
+        "feixi"
+      ]
+    },
+    "hesai": {
+      "label": "禾赛科技（Hesai Technology）",
+      "aliases": [
+        "hesai"
+      ]
+    },
+    "jaka": {
+      "label": "节卡机器人（JAKA Robotics）",
+      "aliases": [
+        "jaka",
+        "jaka-robotics"
+      ]
+    },
+    "jzrobot": {
+      "label": "简智机器人（JZ Robot）",
+      "aliases": [
+        "jzrobot",
+        "jianzhi"
+      ]
+    },
+    "lightsource": {
+      "label": "亮源新创（LightSource）",
+      "aliases": [
+        "lightsource",
+        "liangyuan"
+      ]
+    },
+    "linkerbot": {
+      "label": "灵心巧手（LinkerBot）",
+      "aliases": [
+        "linkerbot",
+        "lingxin"
+      ]
+    },
+    "magiclab": {
+      "label": "魔法原子（MagicLab Robotics）",
+      "aliases": [
+        "magiclab",
+        "mofa-atom"
+      ]
+    },
+    "mech-mind": {
+      "label": "梅卡曼德（Mech-Mind Robotics）",
+      "aliases": [
+        "mech-mind",
+        "mechmind"
+      ]
+    },
+    "modelbest": {
+      "label": "面壁智能（ModelBest）",
+      "aliases": [
+        "modelbest",
+        "mianbi"
+      ]
+    },
+    "noetix": {
+      "label": "松延动力（Noetix Robotics）",
+      "aliases": [
+        "noetix",
+        "songyan"
+      ]
+    },
+    "ohand": {
+      "label": "傲意科技（OHand Technology）",
+      "aliases": [
+        "ohand",
+        "aoyi"
+      ]
+    },
+    "orbbec": {
+      "label": "奥比中光（Orbbec）",
+      "aliases": [
+        "orbbec",
+        "aobi"
+      ]
+    },
+    "original-intelligence": {
+      "label": "原力灵机（Original Intelligence）",
+      "aliases": [
+        "original-intelligence",
+        "yuanli"
+      ]
+    },
+    "qianjue": {
+      "label": "千觉机器人（Qianjue Robotics）",
+      "aliases": [
+        "qianjue"
+      ]
+    },
+    "qztech": {
+      "label": "求之科技（QZTech）",
+      "aliases": [
+        "qztech",
+        "qiuzhi"
+      ]
+    },
+    "realman": {
+      "label": "睿尔曼智能（RealMan Robotics）",
+      "aliases": [
+        "realman",
+        "ruier-man"
+      ]
+    },
+    "robosense": {
+      "label": "速腾聚创（RoboSense）",
+      "aliases": [
+        "robosense",
+        "suteng"
+      ]
+    },
+    "roboterax": {
+      "label": "星动纪元（ROBOTERA）",
+      "aliases": [
+        "roboterax",
+        "robotera",
+        "xingdong"
+      ]
+    },
+    "seer": {
+      "label": "仙工智能（SEER Robotics）",
+      "aliases": [
+        "seer",
+        "xiangong"
+      ]
+    },
+    "tars-robotics": {
+      "label": "它石智航（TARS Robotics）",
+      "aliases": [
+        "tars-robotics",
+        "tars"
+      ]
+    },
+    "ti5robot": {
+      "label": "钛虎机器人（Ti5 Robot）",
+      "aliases": [
+        "ti5robot",
+        "taihu"
+      ]
+    },
+    "ubtech": {
+      "label": "优必选（UBTECH）",
+      "aliases": [
+        "ubtech",
+        "youbixuan"
+      ]
+    },
+    "xuanya": {
+      "label": "玄雅科技（Xuanya Technology）",
+      "aliases": [
+        "xuanya",
+        "xuanya-tech"
+      ]
+    },
+    "zhicheng-ai": {
+      "label": "智澄AI（ZhiCheng AI）",
+      "aliases": [
+        "zhicheng-ai",
+        "zhicheng"
+      ]
+    },
+    "zhongwei": {
+      "label": "众为创造（Zhongwei Creation）",
+      "aliases": [
+        "zhongwei"
+      ]
+    },
+    "zj-humanoid": {
+      "label": "浙江人形机器人创新中心（ZJ Humanoid）",
+      "aliases": [
+        "zj-humanoid",
+        "zj-humanoid-center"
+      ]
+    },
+    "zsibot": {
+      "label": "智身科技（ZSibot）",
+      "aliases": [
+        "zsibot",
+        "zhishen"
+      ]
+    },
     "arrow-air": {
       "label": "箭头航空（Arrow Air）",
       "aliases": [

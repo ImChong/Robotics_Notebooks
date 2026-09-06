@@ -24,6 +24,8 @@ sources:
   - ../../sources/repos/party_os.md
   - ../../sources/repos/roboparty-intact-jepa.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
+  - ../../sources/repos/roboparty_train.md
+  - ../../sources/repos/roboparty_deploy.md
 summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双足人形的创业公司：Roboto Origin 整机开源基线 + RoboParty Lab / Party OS 研发基础设施（MimicLite、UFO、hhtools）；Lab 联署 INTACT 等世界模型工作。"
 ---
 
@@ -127,6 +129,10 @@ flowchart TB
 - [INTACT 组织镜像](https://github.com/Roboparty/INTACT-JEPA)
 
 ## 参考来源
+
+- [roboparty_deploy 源码归档](../../sources/repos/roboparty_deploy.md)（<https://github.com/Roboparty/roboparty_deploy>）
+
+- [roboparty_train 源码归档](../../sources/repos/roboparty_train.md)（<https://github.com/Roboparty/roboparty_train>）
 
 - [roboparty_com.md](../../sources/sites/roboparty_com.md)
 - [lab_roboparty_com.md](../../sources/sites/lab_roboparty_com.md)

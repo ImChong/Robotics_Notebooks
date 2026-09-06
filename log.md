@@ -1,4 +1,71 @@
-## [2026-09-05] ingest | sources/sites/nvidia-omniverse-omnigraph.md、nvidia-isaac-sim-omnigraph.md — 接入 OmniGraph Omniverse 扩展与 Isaac Sim 6.0.1 教程；已开源；关键页 omnigraph，交叉 isaac-sim / nvidia-omniverse / software-in-the-loop
+## [2026-09-06] fix(wiki) | 国内开源全景 424 项 — 补齐 sources/repos 归档与 has_repo 开源星标
+
+- **触发：** 用户反馈新建 `cn-os-*` 实体无 ⭐；根因是未链 `sources/repos/`（`has_repo` 口径）
+- **处理：** 新增 `scripts/link_china_opensource_repo_sources.py`，为 298 新建 + 复用节点解析 GitHub/Gitee 并写入 repo 归档
+- **验证：** `make ci-preflight` 通过；`entity-cn-os-aimrt` 详情页标题已显示 ⭐
+
+## [2026-09-06] ingest | sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md — 国内 76 家机构 424 项开源全景；126 复用 + 298 新建独立实体节点
+
+- **触发：** 用户 ingest 公众号「国内具身智能的开源全景」；要求每项目独立非重复详情节点；自动合并 PR
+- **开源结论：** 清单为 GitHub/Gitee/HF 公开仓库策展；逐仓以 README 为准
+- **新建：** [五层技术地图](wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md)、[424 项覆盖索引](wiki/queries/china-domestic-opensource-424-coverage.md)、298 个 `cn-os-*` 实体
+- **交叉：** [humanoid-motion-intelligence](wiki/entities/humanoid-motion-intelligence.md)、[hmi-opensource-projects-coverage](wiki/queries/hmi-opensource-projects-coverage.md)
+
+## [2026-09-06] ingest | sources/papers/adamimic_arxiv_2510_14454.md — AdaMimic ICRA 2026 Oral 全库 ingest；GitHub 已开源 stage1/stage2
+
+## [2026-09-06] ingest | sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md — 9篇资源汇总；新建 R2S-Eval/RoboTok/EGR 独立节点，6篇复用
+
+## [2026-09-06] ingest | sources/sites/lightwheel_robofinals.md、lightwheel_robofinals_industrial_benchmark.md — 接入 Lightwheel RoboFinals 工业仿真评测平台（RoboFinals-100）；商业 Coming soon；关键页 lightwheel-robofinals；交叉 isaac-lab-arena / lw-benchhub-tour
+
+- **触发：** 用户指定 lightwheel.ai/robofinals 与 industrial-benchmark 媒体文，自动合并 PR
+- **步骤 2.5：** RoboFinals **商业闭源**；底层 Arena + LW-BenchHub **已开源**；AutoDataGen **未列公开仓**
+- **新建：** `lightwheel-robofinals` 实体；两份 sources 归档
+- **交叉：** isaac-lab-arena、lw-benchhub-tour、lightwheel-platform
+
+## [2026-09-06] ingest | sources/sites/nvidia-gtc.md、courses/nvidia_gtc_2025_physical_ai_robotics_playlist.md、courses/nvidia_gtc_2025_humanoid_developer_day.md — 接入 NVIDIA GTC On-Demand 机器人一手资料（Physical AI/Robotics + Humanoid Developer Day 播放列表）；关键页 nvidia-gtc；交叉 physical-ai-learning / cosmos / isaac-gr00t / newton
+
+- **触发：** 用户要求 ingest Nvidia GTC 相关一手资料，自动合并 PR
+- **步骤 2.5：** On-Demand 为官方免费视频回放；无独立训练代码
+- **新建：** `nvidia-gtc` 实体；三份 sources 归档（门户 + 两个 GTC 2025 播放列表）
+- **交叉：** nvidia-physical-ai-learning、nvidia-cosmos、isaac-gr00t、newton-physics、robotics-fundamentals-playlist
+
+## [2026-09-06] ingest | sources/repos/isaac_launchable.md、sites/nvidia-robotics-fundamentals-playlist.md — 接入 Isaac Launchable（Brev 浏览器 Isaac Lab+Sim）与 Robotics Fundamentals 播放列表；已开源模板；关键页 isaac-launchable；交叉 nvidia-brev / physical-ai-learning / getting-started-isaac-lab
+
+- **触发：** 用户指定 isaac-sim/isaac-launchable、resources.nvidia.com robotics-1 播放列表，并要求自动合并 PR
+- **步骤 2.5：** isaac-launchable **已开源**（GitHub Other 许可；Deploy 需 Isaac Sim 附加许可）；播放列表为营销 landing，动手课在 docs.nvidia.com
+- **新建：** `isaac-launchable` 实体；两份 sources 归档
+- **交叉：** nvidia-brev、nvidia-physical-ai-learning、nvidia-getting-started-isaac-lab
+
+## [2026-09-06] ingest | sources/sites/nexus-humanoid-github-io.md — NEXUS 感知型基础策略 Research Preview（SJTU）；Paper/Code/arXiv 待发布；关键页 nexus-humanoid；交叉 foundation-policy / teleoperation / perceptive-bfm
+
+- **触发：** 用户指定 <https://nexus-humanoid.github.io/>，并要求自动合并 PR
+- **步骤 2.5：** Paper / arXiv / Code / Video 均 **Coming Soon**；GitHub 仅 [nexus-humanoid.github.io](https://github.com/nexus-humanoid/nexus-humanoid.github.io) 静态站，**非**训练代码
+- **新建：** `nexus-humanoid` 预告实体；sites + repos 归档
+- **交叉：** foundation-policy、teleoperation、perceptive-bfm（同轴对照，发布前勿混为同一工作）
+
+## [2026-09-06] ingest | SDPG 双论文同名消歧 — 视觉 RL（arXiv:2605.26478 / HaoxiangYou/SDPG / Yale）+ LLM RLVR（arXiv:2606.04036 / lauyikfung/SDPG / UCLA）；关键页 paper-sdpg-visual-rl-stochastic-decoupled、paper-sdpg-self-distilled-policy-gradient；交叉 reinforcement-learning / sim2real / genesis-sim
+
+- **触发：** 用户指定两篇 arXiv、两个 GitHub 仓与 Yale 项目页，并要求自动合并 PR
+- **步骤 2.5：** 两仓均 **已开源**；Yale 项目页链出 [HaoxiangYou/SDPG](https://github.com/HaoxiangYou/SDPG)；UCLA 项目页链出 [lauyikfung/SDPG](https://github.com/lauyikfung/SDPG) + verl
+- **消歧：** 缩写 SDPG 指 **Stochastic Decoupled**（机器人视觉）vs **Self-Distilled**（LLM 数学 RLVR）
+- **新建：** 两份 papers/sites/repos 归档 + 两个论文实体（含源码运行时序图）
+- **交叉：** reinforcement-learning、sim2real（Go2）、genesis-sim
+
+## [2026-09-06] ingest | sources/sites/nvidia-jetson-embedded-systems.md — 接入 Jetson 嵌入式产品线门户（Thor/Orin 谱系、JetPack、Physical AI）；关键页 nvidia-jetson；交叉 jetson-orin-nx / hardware-in-the-loop
+
+- **触发：** 用户指定 <https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/>，并要求自动合并 PR
+- **步骤 2.5：** 硬件模组 **商业闭源**；JetPack / 开发者工具 **可下载 SDK**；Jetson AI Lab 聚合 **开源模型** 生态
+- **新建：** `nvidia-jetson` 平台实体；归档嵌入式系统门户
+- **交叉：** jetson-orin-nx、hardware-in-the-loop
+
+## [2026-09-06] ingest | sources/sites/nvidia-isaac-sim-hil-tutorial.md、opal-rt-hardware-in-the-loop.md + sources/papers/martin_emami_2008、fedak_2015、arisoy_sen_2025 — 接入 Hardware-in-the-Loop 一手资料（NVIDIA 课程、OPAL-RT、RHILS 书章、工业臂驱动 HIL、柔性连杆 HOSMC 案例）；关键页 hardware-in-the-loop；交叉 software-in-the-loop / sim2real / hub-sim2real / humanoid-robot
+
+- **触发：** 用户要求找到 HIL（Hardware-in-the-Loop）一手资料并 ingest，自动合并 PR
+- **一手来源：** NVIDIA Physical AI *Leveraging ROS 2 and HIL* 模块；OPAL-RT 厂商页；Martín & Emami 2008 RHILS（IntechOpen）；Fedák 2015 RT-LAB+SINAMICS 六轴臂；Arisoy & Sen 2025 MDPI 柔性连杆 HOSMC HIL 案例
+- **消歧：** 本页 HIL = Hardware-in-the-Loop；≠ [Hybrid Imitation Learning](wiki/methods/hil-hybrid-imitation-learning.md) / [HIL-HARC](wiki/entities/paper-hil-harc.md)
+- **新建：** `wiki/concepts/hardware-in-the-loop.md`；五份 sources 归档
+- **交叉：** software-in-the-loop、sim2real、hub-sim2real、humanoid-robot
+
 
 - **触发：** 用户指定 Omniverse Extensions OmniGraph 页与 Isaac Sim 6.0.1 OmniGraph 索引，并要求自动合并 PR
 - **步骤 2.5：** 随 [isaac-sim/IsaacSim](https://github.com/isaac-sim/IsaacSim) **已开源** Apache-2.0；`omni.graph.core` 为 Python 入口
@@ -8337,6 +8404,24 @@
 - **意图：** 接入 ECCV 2026 Spotlight 论文与 SIPLAB 项目页，沉淀分布式智能眼镜互观测的全身 SMPL 重建管线（EgoNet + ViTPose 射线 + DINOv3 门控）。
 - **开源核查：** GitHub `eth-siplab/EgoExoMoCap` **已建仓但 Code coming soon**（MIT，待发布）。
 - **关键页：** [`wiki/entities/paper-egoexomocap.md`](wiki/entities/paper-egoexomocap.md)；交叉更新 [`ego-category-04-ego-exo-fusion`](wiki/overview/ego-category-04-ego-exo-fusion.md)、[`paper-notebook-category-14-human-motion`](wiki/overview/paper-notebook-category-14-human-motion.md)。
+
+## [2026-09-06] ingest | sources/repos/robocasa.md + dexbench.org 复核 — RoboCasa365 仿真 benchmark 与 DexBench 工业规格对照
+
+- **意图：** 接入 RoboCasa 官方仓、项目站、文档与 2026-09-01 Leaderboard；复核 dexbench.org（sitemap 仍 2026-06-23，无官方 GitHub）。
+- **开源核查：** RoboCasa **已开源**（MIT + CC BY 4.0 资产）；DexBench **规范已公开、评测仓仍待发布**。
+- **关键页：** [`wiki/entities/robocasa.md`](wiki/entities/robocasa.md)；交叉更新 [`dexbench`](wiki/entities/dexbench.md)、[`isaac-lab-arena`](wiki/entities/isaac-lab-arena.md)。
+
+## [2026-09-06] ingest | sources/sites/lerobot-envhub-docs.md — LeRobot EnvHub 官方文档与 make_env 契约
+
+- **意图：** 接入 Hugging Face LeRobot EnvHub 文档与 GitHub 主仓评测节，沉淀 `env.py`/`make_env` API、URL 钉扎、`trust_remote_code` 安全闸与 `lerobot-eval` 闭环。
+- **开源核查：** `huggingface/lerobot` **已开源**（Apache 2.0）；Hub 环境仓为第三方远程代码。
+- **关键页：** [`wiki/concepts/lerobot-envhub.md`](wiki/concepts/lerobot-envhub.md)；交叉更新 [`lerobot`](wiki/entities/lerobot.md)、[`isaac-lab-arena`](wiki/entities/isaac-lab-arena.md)、[`lw-benchhub-tour`](wiki/entities/lw-benchhub-tour.md)。
+
+## [2026-09-06] ingest | sources/repos/isaaclab_arena.md — NVIDIA Isaac Lab-Arena 通才策略大规模仿真评测框架
+
+- **意图：** 接入 Isaac Lab-Arena 官方仓、文档、开发者页、EnvHub 与技术博客，沉淀 Scene/Embodiment/Task 组合架构、版本矩阵、LeRobot 评测闭环与生态 benchmark 清单。
+- **开源核查：** GitHub **已开源**（Apache 2.0）；运行依赖 Isaac Sim（专有）；Alpha 状态，DexBench / GR00T Industrial 等仍标 coming soon。
+- **关键页：** [`wiki/entities/isaac-lab-arena.md`](wiki/entities/isaac-lab-arena.md)；交叉更新 [`isaac-lab`](wiki/entities/isaac-lab.md)、[`lerobot`](wiki/entities/lerobot.md)、[`lw-benchhub-tour`](wiki/entities/lw-benchhub-tour.md)。
 
 ## [2026-08-22] ingest | sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md — 古月居 RosClaw / RoboClaw 自然语言控 ROS2 长文
 

@@ -2,17 +2,19 @@
 type: entity
 tags: [paper, long-horizon-manipulation, vla, agentic-framework, zju, sjtu]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-06
 arxiv: "2609.02653"
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../overview/embodied-resources-reliability-9-papers-technology-map.md
   - ./paper-demomimic.md
 sources:
   - ../../sources/papers/hint_robot_manipulation_arxiv_2609_02653.md
   - ../../sources/sites/robot-hint.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md
 summary: "HINT（arXiv:2609.02653，ZJU/SJTU 等）：在 manipulation-pattern transitions 处稀疏语义推理 + 多视角 grounding/跟踪，以 highlighting 或 attention-prior 向 foundation policy 注入意图；Wall-OSS-0.5 与 π₀.₅ 插件提升长视野成功率；代码待发布。"
 ---
 
@@ -111,12 +113,14 @@ OOD 设置下仍有显著提升（如插孔 IS 26.7%→90.0%）。
 - [VLA](../methods/vla.md)
 - [Manipulation](../tasks/manipulation.md)
 - [开源系统可靠性 8 篇地图](../overview/open-source-system-reliability-8-papers-technology-map.md)
+- [具身资源与可靠性 9 篇地图](../overview/embodied-resources-reliability-9-papers-technology-map.md)
 
 ## 参考来源
 
 - [hint_robot_manipulation_arxiv_2609_02653](../../sources/papers/hint_robot_manipulation_arxiv_2609_02653.md)
 - [robot-hint 项目页](../../sources/sites/robot-hint.md)
 - [具身智能小站 2026-09-03 八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md)
+- [具身智能小站 2026-09-06 九篇资源汇总](../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md)
 
 ## 推荐继续阅读
 

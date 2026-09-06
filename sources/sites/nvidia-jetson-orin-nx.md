@@ -18,4 +18,4 @@
 ## 开源 / 软件栈提示
 
 - 硬件闭源；软件侧常用 **JetPack / Isaac ROS / TensorRT / ONNX Runtime**。
-- 相关本库实体：[findanything](../../wiki/entities/findanything.md)、[isaac-ros-visual-slam](../../wiki/entities/isaac-ros-visual-slam.md)、[jetson-orin-nx](../../wiki/entities/jetson-orin-nx.md)。
+- 相关本库实体：[nvidia-jetson](../../wiki/entities/nvidia-jetson.md)、[findanything](../../wiki/entities/findanything.md)、[isaac-ros-visual-slam](../../wiki/entities/isaac-ros-visual-slam.md)、[jetson-orin-nx](../../wiki/entities/jetson-orin-nx.md)。
