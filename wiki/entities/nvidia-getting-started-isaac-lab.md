@@ -5,6 +5,7 @@ status: complete
 updated: 2026-08-28
 related:
   - ./nvidia-physical-ai-learning.md
+  - ./nvidia-brev.md
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./isaac-lab.md
   - ./isaac-sim.md
@@ -61,7 +62,7 @@ summary: "NVIDIA 官方 Isaac Lab 入门四模块课：Sim/Lab 分工与 MDP 工
 |----|---------------------------|
 | 课程正文 | 免费文档，无独立课程 GitHub |
 | 可运行代码 | **已开源** — [isaac-sim/IsaacLab](https://github.com/isaac-sim/IsaacLab)；任务由 `./isaaclab.sh --new` 生成 external 工程 |
-| 云 GPU | NVIDIA Brev / Isaac Launchable；课内警告 Launchable 当时钉 **Lab 3.0**，可能与课测版本不兼容 |
+| 云 GPU | [NVIDIA Brev](./nvidia-brev.md) / Isaac Launchable；课内警告 Launchable 当时钉 **Lab 3.0**，可能与课测版本不兼容 |
 | 数据/权重 | 无单独发布；Cartpole / Reach 从零训 |
 
 ## 四模块地图

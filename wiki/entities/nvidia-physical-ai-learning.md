@@ -7,6 +7,7 @@ related:
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./nvidia-getting-started-isaac-lab.md
   - ./nvidia-learn-openusd.md
+  - ./nvidia-brev.md
   - ./nvidia-omniverse.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -63,7 +64,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 | Isaac ROS | ROS 2 + NITROS 真机感知导航 | [ros2-basics](../concepts/ros2-basics.md) |
 | Learn OpenUSD | USD 课纲与认证 | [nvidia-learn-openusd](./nvidia-learn-openusd.md) |
 
-无本地 GPU 时，官方推荐通过 **NVIDIA Brev** 启动预配置 Isaac / Omniverse 环境（门户页内 Launchable 链接）。
+无本地 GPU 时，官方推荐通过 **[NVIDIA Brev](./nvidia-brev.md)** 启动预配置 Isaac / Omniverse 环境（门户页内 Launchable 链接）。
 
 ## 与「生成式 AI」的边界（课程共性）
 
@@ -82,6 +83,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 - [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md)
 - [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [NVIDIA Brev](./nvidia-brev.md) — 云 GPU 与 Launchable 环境
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [LeRobot](./lerobot.md)
 - [Sim2Real](../concepts/sim2real.md)
