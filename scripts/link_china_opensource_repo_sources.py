@@ -22,11 +22,20 @@ TODAY = date.today().isoformat()
 REPO_LINK_RE = re.compile(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b")
 
 MANUAL_URLS: dict[tuple[str, str], str] = {
-    ("cn-os-pelican-vla-0-5", "Pelican-VLA 0.5"): "https://github.com/Open-X-Humanoid/Pelican-VLA05",
+    (
+        "cn-os-pelican-vla-0-5",
+        "Pelican-VLA 0.5",
+    ): "https://github.com/Open-X-Humanoid/Pelican-VLA05",
     ("cn-os-engineai-gmr", "EngineAI GMR"): "https://github.com/engineai-robotics/GMR",
-    ("cn-os-sim2real", "sim2real"): "https://github.com/HighTorque-Robotics/sim2real-inference_code",
+    (
+        "cn-os-sim2real",
+        "sim2real",
+    ): "https://github.com/HighTorque-Robotics/sim2real-inference_code",
     ("cn-os-gigaworld-1", "GigaWorld-1"): "https://github.com/open-gigaai/giga-world-1",
-    ("cn-os-rxbrain-1-0", "RxBrain-1.0"): "https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0",
+    (
+        "cn-os-rxbrain-1-0",
+        "RxBrain-1.0",
+    ): "https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0",
     ("cn-os-embodiedgen-v2", "EmbodiedGen V2"): "https://github.com/HorizonRobotics/EmbodiedGen",
     ("genie-sim-3", "Genie Sim 3.0"): "https://github.com/AgibotTech/genie_sim",
     ("agibot-world-2026", "AgiBot-World"): "https://github.com/AgibotTech/AgiBot-World",
@@ -38,7 +47,10 @@ MANUAL_URLS: dict[tuple[str, str], str] = {
     ("botworld", "LingBot-World 1.0"): "https://github.com/Robbyant/LingBot-World",
     ("botworld", "ABot-World"): "https://github.com/amap-cvlab/ABot-World",
     ("paper-shenlan-wm-09-gr1", "GR-1"): "https://github.com/ByteDance-Seed/GR-1",
-    ("paper-opentrack", "OpenTrack / Any2Track"): "https://github.com/GalaxyGeneralRobotics/OpenTrack",
+    (
+        "paper-opentrack",
+        "OpenTrack / Any2Track",
+    ): "https://github.com/GalaxyGeneralRobotics/OpenTrack",
     ("paper-notebook-latent", "LATENT"): "https://github.com/GalaxyGeneralRobotics/LATENT",
 }
 
@@ -138,7 +150,11 @@ def repo_filename(url: str, slug: str, name: str) -> str:
     if not path.exists():
         return base
     alt = slug.replace("-", "_")
-    return alt if not (REPOS / f"{alt}.md").exists() else f"{alt}_{re.sub(r'[^a-z0-9]+', '', name.lower())[:20]}"
+    return (
+        alt
+        if not (REPOS / f"{alt}.md").exists()
+        else f"{alt}_{re.sub(r'[^a-z0-9]+', '', name.lower())[:20]}"
+    )
 
 
 def render_repo_source(item: Mapping, url: str, wiki_slug: str) -> str:

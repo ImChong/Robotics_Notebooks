@@ -1,3 +1,9 @@
+## [2026-09-06] fix(wiki) | 国内开源全景 424 项 — 补齐 sources/repos 归档与 has_repo 开源星标
+
+- **触发：** 用户反馈新建 `cn-os-*` 实体无 ⭐；根因是未链 `sources/repos/`（`has_repo` 口径）
+- **处理：** 新增 `scripts/link_china_opensource_repo_sources.py`，为 298 新建 + 复用节点解析 GitHub/Gitee 并写入 repo 归档
+- **验证：** `make ci-preflight` 通过；`entity-cn-os-aimrt` 详情页标题已显示 ⭐
+
 ## [2026-09-06] ingest | sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md — 国内 76 家机构 424 项开源全景；126 复用 + 298 新建独立实体节点
 
 - **触发：** 用户 ingest 公众号「国内具身智能的开源全景」；要求每项目独立非重复详情节点；自动合并 PR
