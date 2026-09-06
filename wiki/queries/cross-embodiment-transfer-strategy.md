@@ -218,6 +218,7 @@ flowchart TD
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端/工具接口多样性（与整机 WBT 迁移正交）
 - [Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md) — 同形态跨配置遗留示教三相复用（与换骨架正交）
 - [UCAG-P](../entities/paper-ucag-p.md) — 相机系双锚点共享动作空间 + 几何翻译器；单 ckpt 无榜微调（待发布）
+- [COMPASS](../entities/compass.md) — **移动/导航**跨具身（IL+残差 RL+蒸馏）；与 WBT 三路径正交
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — **设计侧**生成机体 + 同模型跨具身控制（与本页「策略迁移」正交）
 
 ## 一句话记忆

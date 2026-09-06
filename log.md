@@ -1,3 +1,10 @@
+## [2026-09-06] ingest | sources/repos/compass.md、blogs/nvidia_compass_cross_embodiment_navigation_ai_agents.md、repos/brev_cli.md、sites/nvidia-brev-overview.md — 接入 COMPASS 跨具身导航框架与 NVIDIA Brev 云 GPU；已开源；关键页 compass、nvidia-brev
+
+- **触发：** 用户指定 NVlabs/COMPASS、NVIDIA 博客、brevdev/brev-cli、Brev 文档，并要求自动合并 PR
+- **步骤 2.5：** COMPASS **已开源** Apache 2.0（HF gated 资产）；brev-cli **已开源** MIT；Brev 云服务为商业 GPU 平台
+- **新建：** `compass`、`nvidia-brev` 实体；四份 sources 归档
+- **交叉：** cross-embodiment-transfer-strategy、physical-ai-learning、getting-started-isaac-lab
+
 ## [2026-09-06] ingest | sources/sites/nvidia-jetson-embedded-systems.md — 接入 Jetson 嵌入式产品线门户（Thor/Orin 谱系、JetPack、Physical AI）；关键页 nvidia-jetson；交叉 jetson-orin-nx / hardware-in-the-loop
 
 - **触发：** 用户指定 <https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/>，并要求自动合并 PR
