@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/papers/merope_arxiv_2609_01252.md — MeRoPE 相机可控视频生成 Metric RoPE；开源待发布
+
 ## [2026-09-06] fix(wiki) | 国内开源全景 424 项 — 补齐 sources/repos 归档与 has_repo 开源星标
 
 - **触发：** 用户反馈新建 `cn-os-*` 实体无 ⭐；根因是未链 `sources/repos/`（`has_repo` 口径）
