@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, foundation-policy, manipulation, skild-ai, cmu]
 title: Skild AI
 status: complete
-updated: 2026-08-26
+updated: 2026-09-06
 related:
   - ./skild-s1.md
   - ../concepts/robot-in-context-learning.md
@@ -25,8 +25,10 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 | **机构** | 斯齐尔德（Skild AI） |
 | **类型** | 商业具身基础模型公司 |
 | **公开锚点** | [skild.ai](https://www.skild.ai/)；旗舰博文 [S1](https://www.skild.ai/blogs/s1) |
+| **Skild Brain** | 公司品牌名：统一 **omni-bodied** 策略脑（首页 2026-09-06） |
+| **联系** | press@skild.ai |
 | **学术前序** | LocoFormer（arXiv:2509.23745，Liu / Pathak / Agarwal） |
-| **开源** | **确认未开源**（[github.com/skild-ai](https://github.com/skild-ai) 0 公开仓；截至 2026-08-26） |
+| **开源** | **确认未开源**（[github.com/skild-ai](https://github.com/skild-ai) **0 公开仓**，2026-09-06 再核） |
 
 ## 一句话定义
 
@@ -44,6 +46,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 ## 为什么重要
 
 - **产业 ICL 样本：** 与 [Generalist AI](./generalist-ai-robotics.md) 的 **涌现 physical prompting** 对照，Skild 把 ICL 写成 **预训练目标本身**（任务只通过示范指定）。
+- **Omni-bodied 产品叙事：** 首页（2026-09-06）将 **Skild Brain** 定位为跨机型/跨任务统一脑，并列出 **安防巡检、移动操作 API、自主装箱** 三条落地线；数据侧强调 **Learns from Humans**（人类视频可扩展采集）。
 - **跨域迁移叙事：** 先在 locomotion 验证长上下文适应，再搬到 manipulation 长程未见任务，见 [S1](./skild-s1.md)。
 - **引用纪律：** 成功率、数据小时数为官方自报；**确认未开源**，不可替代 Octo / π / OpenVLA 做实验。
 
@@ -51,7 +54,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 
 | 节点 | 要点 | 入口 |
 |------|------|------|
-| 公司 thesis | omni-bodied brain；安防巡检 / 移动操作 API / 精细装箱 | [站点归档](../../sources/sites/skild-ai.md) |
+| 公司 thesis | **Skild Brain** · omni-bodied；安防巡检 / 移动操作 API / 精细装箱；**人视频学习** | [站点归档](../../sources/sites/skild-ai.md) |
 | **LocoFormer**（2025-09） | 运动通才 + 上下文累积经验；未见本体/环境在线适应 | [论文笔记占位](./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) |
 | **S1**（2026-08） | 视频 prompt；未见任务最长约 10 分钟；相对语言 VLA 未见档约 7× | [S1 实体](./skild-s1.md) |
 

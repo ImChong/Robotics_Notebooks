@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/sites/skild-ai.md — Skild AI 首页再核（omni-bodied/Skild Brain/三平台/人视频）；确认未开源；刷新 skild-ai 实体
+
 ## [2026-09-06] ingest | sources/repos/nv_tlabs_ardy.md — ARDY 深度 ingest（GitHub+HF+arXiv+PDF）；已开源；升级 ardy 实体（评测/对比/结论/运行时序图）
 
 ## [2026-09-06] ingest | sources/repos/nvidia_osmo.md — NVIDIA OSMO Physical AI YAML 编排器（GitHub+User Guide+developer 页）；已开源；关键页 nvidia-osmo；交叉工具链技术地图 / isaac-lab / HIL
