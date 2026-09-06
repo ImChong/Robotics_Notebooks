@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/inspect-robots.md",
+      "detail_id": "entity-inspect-robots",
+      "label": "Inspect Robots",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/isaac-lab-arena.md",
+      "detail_id": "entity-isaac-lab-arena",
+      "label": "Isaac Lab-Arena",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/robocurve.md",
+      "detail_id": "entity-robocurve",
+      "label": "Robocurve",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/nvidia-osmo.md",
       "detail_id": "entity-nvidia-osmo",
       "label": "NVIDIA OSMO（Physical AI 工作流编排）",
@@ -189,51 +221,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-agibot-d1-edu-ultra.md",
-      "detail_id": "entity-cn-os-agibot-d1-edu-ultra",
-      "label": "agibot_D1_Edu-Ultra",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-agibot-d1-max.md",
-      "detail_id": "entity-cn-os-agibot-d1-max",
-      "label": "Agibot_D1_Max",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-agibot-x1-hardware.md",
-      "detail_id": "entity-cn-os-agibot-x1-hardware",
-      "label": "agibot_x1_hardware",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-osmo.md",
-    "detail_id": "entity-nvidia-osmo",
-    "label": "NVIDIA OSMO（Physical AI 工作流编排）",
+    "path": "wiki/entities/inspect-robots.md",
+    "detail_id": "entity-inspect-robots",
+    "label": "Inspect Robots",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
