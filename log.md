@@ -1,3 +1,5 @@
+## [2026-09-06] structural | wiki/overview/nvidia-physical-ai-toolchain-technology-map.md — 按 NVIDIA 端到端工作流截图新建 NVIDIA 工具链汇总节点；七段挂接 30+ 站内 NVIDIA 实体页，回链 isaac-lab / nvidia-cosmos / isaac-gr00t / 训练栈分层地图
+
 ## [2026-09-06] fix(wiki) | 国内开源全景 424 项 — 补齐 sources/repos 归档与 has_repo 开源星标
 
 - **触发：** 用户反馈新建 `cn-os-*` 实体无 ⭐；根因是未链 `sources/repos/`（`has_repo` 口径）

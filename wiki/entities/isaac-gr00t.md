@@ -134,6 +134,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 采数栈：[isaac-teleop.md](./isaac-teleop.md) — Lab 3.x XR 主线；MCAP / LeRobot；Televiz 把头显当瘦客户端  
 - Kuavo 厂商胶水：[letools.md](./letools.md) — Learning 仓将 GR00T N1.5/N1.7 列入统一训练/client 部署  
 - 仿真框架：[isaac-gym-isaac-lab.md](../entities/isaac-gym-isaac-lab.md)  
+- 全栈定位：[NVIDIA Physical AI 工具链技术地图](../overview/nvidia-physical-ai-toolchain-technology-map.md) — 本页五阶段在端到端七段里的上下游
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)  
 - 视觉 Sim2Real 姊妹仓：[gr00t-visual-sim2real.md](../entities/gr00t-visual-sim2real.md)
 - 对象中心闭环增强：[POT-VLA](./paper-pot-vla.md) — 在 **GR00T-N1.7** 动作头插入持久 3D 对象 token + 几何谓词验收（G1 **39/80→71/80**；POT 侧未开源）

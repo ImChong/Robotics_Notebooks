@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3811,
-  "edge_count": 33858,
+  "node_count": 3812,
+  "edge_count": 33911,
   "coverage": {
-    "covered": 3784,
-    "total": 3784,
+    "covered": 3785,
+    "total": 3785,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -243,15 +243,15 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 872
+      "size": 920
     },
     {
       "label": "操作",
-      "size": 689
+      "size": 683
     },
     {
       "label": "国内开源全景 424 项本库导读",
-      "size": 322
+      "size": 320
     },
     {
       "label": "视觉-语言-动作",
@@ -262,8 +262,8 @@
       "size": 229
     },
     {
-      "label": "仿真到现实",
-      "size": 131
+      "label": "移动操作",
+      "size": 130
     }
   ],
   "top_hubs": [
@@ -333,7 +333,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 542,
+      "degree": 543,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -404,7 +404,8 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 45
+      "degree": 45,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-ctrl-world",
