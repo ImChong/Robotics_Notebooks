@@ -5,6 +5,7 @@ status: complete
 updated: 2026-08-05
 related:
   - ./nvidia-jetson.md
+  - ./jetson-ai-lab.md
   - ../concepts/edge-cloud-robotics.md
   - ../concepts/lidar-sensing.md
   - ./quadruped-robot.md
@@ -85,6 +86,7 @@ flowchart TB
 ## 关联页面
 
 - [NVIDIA Jetson 平台家族](./nvidia-jetson.md) — Orin NX 所属产品线总览与跨代选型
+- [Jetson AI Lab](./jetson-ai-lab.md) — Orin 机载 LLM/VLM 部署教程与 jetson-containers
 - [边缘–云机器人](../concepts/edge-cloud-robotics.md)
 - [LiDAR 传感](../concepts/lidar-sensing.md)
 - [四足机器人](./quadruped-robot.md)

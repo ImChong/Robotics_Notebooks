@@ -4,6 +4,7 @@ tags: [entity, hardware, edge-ai, nvidia, jetson, onboard-compute, robotics, phy
 status: complete
 updated: 2026-09-06
 related:
+  - ./jetson-ai-lab.md
   - ./jetson-orin-nx.md
   - ./isaac-gr00t.md
   - ./isaac-sim.md
@@ -15,6 +16,9 @@ related:
 sources:
   - ../../sources/sites/nvidia-jetson-embedded-systems.md
   - ../../sources/sites/nvidia-jetson-orin-nx.md
+  - ../../sources/sites/jetson-ai-lab.md
+  - ../../sources/sites/nvidia-jetpack.md
+  - ../../sources/sites/jetson-linux-r392-developer-guide.md
 summary: "NVIDIA Jetson 是机器人与边缘 Physical AI 的嵌入式 GPU 计算平台家族：JetPack 软件栈 + Orin/Thor 等模组谱系，承担机载感知、VLA/GR00T 推理与 HIL 目标硬件选型。"
 ---
 
@@ -56,9 +60,10 @@ flowchart TB
     NANO["Jetson Orin Nano<br/>67 TOPS · 入门"]
   end
   subgraph sw["软件栈"]
-    JP["JetPack 7 SDK"]
+    JP["JetPack 7.2 SDK<br/>Ubuntu 24.04 · CUDA 13"]
+    DG["Jetson Linux r39.2<br/>BSP · 刷机 · 定制"]
     ISAAC["Isaac 仿真 / ROS"]
-    LAB["Jetson AI Lab<br/>开源模型"]
+    LAB["Jetson AI Lab<br/>LLM/VLM/VLA 教程"]
   end
   subgraph deploy["部署场景"]
     PER["多相机感知 · SLAM"]
@@ -69,6 +74,7 @@ flowchart TB
   AGX --> JP
   NX --> JP
   NANO --> JP
+  JP --> DG
   JP --> ISAAC
   JP --> LAB
   JP --> PER
@@ -92,9 +98,12 @@ flowchart TB
 
 | 组件 | 作用 |
 |------|------|
-| **JetPack** | 统一 BSP + CUDA + TensorRT + 容器/OTA 工具链 |
+| **JetPack 7** | Linux **6.8** + **Ubuntu 24.04**；CUDA/cuDNN/**TensorRT**；**vLLM/SGLang/Triton**；preemptable RT、MIG、Holoscan Sensor Bridge |
+| **JetPack 7.2 agentic** | **NemoClaw** 单命令安装；**Jetson Agent Skills**（Device + BSP）；官方 **Yocto/OE4T** 支持 |
+| **Jetson Linux r39.2** | Developer Guide：DevKit vs 量产模组、SDK Manager 刷机、**Module Adaptation and Bring-Up** |
+| **Jetson AI Lab 2.0** | 分步教程：Getting Started/SSH、GenAI、**GR00T/OpenPi Thor**、Cosmos Reason、优化 workshop（见 [专页](./jetson-ai-lab.md)） |
 | **Isaac ROS / Sim** | 感知、SLAM、SIL/HIL 与仿真对齐 |
-| **Jetson AI Lab** | 开源模型与示例聚合 |
+| **Thor SBSA** | Thor 走 **SBSA + CUDA 13** 统一安装器（与数据中心 Arm 栈对齐） |
 | **合作伙伴生态** | 工业 PC、边缘 appliance、整机方案 |
 | **NVIDIA IGX** | 工业级、功能安全导向的并行平台（门户另链） |
 
@@ -102,9 +111,11 @@ flowchart TB
 
 | 目标 | 做法 |
 |------|------|
+| **从零上手** | 1) 官方 DevKit Quick Start（[AI Lab Getting Started](https://www.jetson-ai-lab.com/tutorials/getting-started-with-jetson/) 链 docs.nvidia.com）→ 2) SSH / Remote-SSH → 3) [Jetson AI Lab](./jetson-ai-lab.md) GenAI/VLA 路径 |
 | 选型 | 先定 **功耗预算 + 相机路数 + 模型算力**，再查官方 [Compare Specifications](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/) 表 |
-| 软件基线 | 模组与 **JetPack 版本** 一一对应；升级前核对 Isaac ROS / GR00T 支持矩阵 |
-| 推理优化 | 机载优先 **TensorRT**（见 [ORT vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)） |
+| 软件基线 | 模组与 **JetPack 版本** 一一对应（当前文档 **r39.2 / JP7**）；升级前核对 Isaac ROS / GR00T 支持矩阵 |
+| BSP/量产 | DevKit 开发 → [Module Adaptation and Bring-Up](https://docs.nvidia.com/jetson/archives/r39.2/DeveloperGuide/) 迁量产载板 |
+| 推理优化 | 机载优先 **TensorRT** / **TensorRT Edge-LLM**（见 [ORT vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)） |
 | HIL | SIL 通过后，将 ROS 2 节点部署到 Jetson，Sim 侧仍提供虚拟环境与传感器（见 [HIL 概念页](../concepts/hardware-in-the-loop.md)） |
 | 热与供电 | Thor/AGX 持续推理需核对散热与峰值功耗；传感器与控制电源宜独立保护 |
 
@@ -117,6 +128,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Jetson AI Lab](./jetson-ai-lab.md) — LLM/VLM/VLA 官方教程 hub
 - [Jetson Orin NX](./jetson-orin-nx.md) — 四足/轻量机器人常用模组深读
 - [Isaac GR00T](./isaac-gr00t.md) — Thor 部署叙事与开源 VLA 平台
 - [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)
@@ -128,10 +140,16 @@ flowchart TB
 ## 参考来源
 
 - [NVIDIA Jetson Embedded Systems 门户归档](../../sources/sites/nvidia-jetson-embedded-systems.md)
+- [Jetson AI Lab 教程站](../../sources/sites/jetson-ai-lab.md)
+- [NVIDIA JetPack 产品页](../../sources/sites/nvidia-jetpack.md)
+- [Jetson Linux r39.2 Developer Guide](../../sources/sites/jetson-linux-r392-developer-guide.md)
 - [NVIDIA Jetson Orin 产品页归档](../../sources/sites/nvidia-jetson-orin-nx.md)
 
 ## 推荐继续阅读
 
+- [Jetson AI Lab Tutorials](https://www.jetson-ai-lab.com/tutorials/)
+- [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack)
+- [Jetson Linux Developer Guide r39.2](https://docs.nvidia.com/jetson/archives/r39.2/DeveloperGuide/)
 - [NVIDIA Jetson Embedded Systems（官方）](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/)
 - [NVIDIA Embedded Computing Developer](https://developer.nvidia.com/embedded-computing)
 - [Hardware-in-the-Loop Fundamentals（Isaac Sim 课程）](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/leveraging-ros-2-and-hil-in-isaac-sim/01-hardware-in-the-loop-hil-fundamentals.html)

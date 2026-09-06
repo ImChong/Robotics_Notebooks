@@ -581,6 +581,7 @@
 - [WalkE3-Dataset（E3 运动 CSV 与 MuJoCo 回放）](wiki/entities/jackhan-walke3-dataset.md) — 本仓库提供 E3 人形运动的 CSV 列定义、体坐标速度估计与 JSON 运动导出，并可在 MuJoCo 中回放轨迹。 `📅unknown` `[entity_page]`
 - [JackHan-Sdu WalkE3 / HumanoidE3 工具链生态](wiki/entities/jackhan-walke3-e3-ecosystem.md) — 将 JackHan-Sdu 维护的 WalkE3 数据、MuJoCo 手柄仿真、WalkE3 控制器、LCM 算法模板与两条 FEAP 部署仓组织成一条可读的人形工程工具链。 `📅unknown` `[entity_page]`
 - [Yobotics HumanoidE3 外接算法模板（LCM）](wiki/entities/jackhan-yobotics-e3-algorithm-template.md) — 本模板用 LCM 与 WalkE3-Controller 的 DEVELOPMENT 模式对接，提供 AlgorithmBase 双线程（约 50Hz 推理与 500Hz 发令）与 ONNX/PyTo `📅unknown` `[entity_page]`
+- [Jetson AI Lab（边缘 AI 教程 hub）](wiki/entities/jetson-ai-lab.md) — Jetson AI Lab**（教程索引，[Getting Started](https://www.jet `📅unknown` `[entity_page]`
 - [NVIDIA Jetson Orin NX](wiki/entities/jetson-orin-nx.md) — Jetson Orin NX** 是 NVIDIA **Jetson Orin** 产品线中的边缘 AI 模组形态，面向移动机器人机载推理：在功耗与体积约束下运行 CUDA/TensorRT 加速 `📅unknown` `[entity_page]`
 - [Linxi "Jim" Fan（范林熹）](wiki/entities/jim-fan.md) — Linxi "Jim" Fan** 是 **NVIDIA 具身智能与通才 agent** 方向的 **PI 级研究科学家**：与 Yuke Zhu 共 `📅unknown` `[entity_page]`
 - [autoresearch（karpathy/autoresearch）](wiki/entities/karpathy-autoresearch.md) — autoresearch** 是 Andrej Karpathy 的 [GitHub 仓库](https://github.com/k `📅unknown` `[entity_page]`

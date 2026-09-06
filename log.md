@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/sites/jetson-ai-lab.md — Jetson AI Lab 2.0 + JetPack 7.2 / L4T r39.2；教程 hub 已开源协作；关键页 jetson-ai-lab；交叉 nvidia-jetson / jetson-orin-nx
+
 ## [2026-09-06] ingest | sources/repos/ashemag_human_atlas.md — 接入 Human Atlas 3D 解剖浏览器；已开源 MIT+CC BY 4.0；关键页 human-atlas；交叉 humanoid-robot / motion-retargeting
 
 ## [2026-09-06] ingest | sources/papers/wh0_arxiv_2606_22136.md — Wh0 深度 ingest（项目页+GitHub+arXiv）；已开源；WM-H 50k + VITRA Co-FT；18 任务 8.3%→38.9%；升格 paper-sa-2606-22136

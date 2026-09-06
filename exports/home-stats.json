@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3816,
-  "edge_count": 33957,
+  "node_count": 3817,
+  "edge_count": 33969,
   "coverage": {
-    "covered": 3789,
-    "total": 3789,
+    "covered": 3790,
+    "total": 3790,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/human-atlas.md",
+      "detail_id": "entity-human-atlas",
+      "label": "Human Atlas（3D 解剖探索器）",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/entities/cosmos-curator.md",
       "detail_id": "entity-cosmos-curator",
@@ -213,29 +224,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-aimrt.md",
-      "detail_id": "entity-cn-os-aimrt",
-      "label": "AimRT",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cosmos-curator.md",
-    "detail_id": "entity-cosmos-curator",
-    "label": "Cosmos Curator（视频策展）",
+    "path": "wiki/entities/human-atlas.md",
+    "detail_id": "entity-human-atlas",
+    "label": "Human Atlas（3D 解剖探索器）",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
@@ -260,7 +260,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 136
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -284,7 +284,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 909,
+      "degree": 910,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
