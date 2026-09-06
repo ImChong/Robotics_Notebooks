@@ -6742,7 +6742,6 @@
 
     var _searchIndex = null;
     var _searchIndexPromise = null;
-    var _searchIndexFailed = false;
 
     var _communityByPath = null;
     var _communityByPathPromise = null;
@@ -6777,7 +6776,9 @@
     function ensureCommunityByPath() {
       if (_communityByPath) return Promise.resolve(_communityByPath);
       if (_communityByPathPromise) return _communityByPathPromise;
-      _communityByPathPromise = fetch('exports/link-graph.json')
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 30000);
+      _communityByPathPromise = fetch('exports/link-graph.json', { signal: controller.signal })
         .then(function(r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
@@ -6795,17 +6796,21 @@
           return m;
         })
         .catch(function() {
-          _communityByPath = new Map();
-          return _communityByPath;
+          _communityByPathPromise = null;
+          return new Map();
+        })
+        .finally(function () {
+          clearTimeout(timeout);
         });
       return _communityByPathPromise;
     }
 
     function ensureSearchIndex() {
       if (_searchIndex) return Promise.resolve(_searchIndex);
-      if (_searchIndexFailed) return Promise.reject(new Error('search-index.json unavailable'));
       if (_searchIndexPromise) return _searchIndexPromise;
-      _searchIndexPromise = fetch('search-index.json')
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 30000);
+      _searchIndexPromise = fetch('search-index.json', { signal: controller.signal })
         .then(function(r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
@@ -6815,8 +6820,11 @@
           return data;
         })
         .catch(function(error) {
-          _searchIndexFailed = true;
+          _searchIndexPromise = null;
           throw error;
+        })
+        .finally(function () {
+          clearTimeout(timeout);
         });
       return _searchIndexPromise;
     }
@@ -7214,7 +7222,10 @@
           }
         })
         .catch(function() {
-          searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">离线搜索索引加载失败，请使用命令行搜索：<code>python3 scripts/search_wiki.py "关键词"</code></p>';
+          searchResults.innerHTML = '<div role="status" style="color:var(--text-muted);grid-column:1/-1">'
+            + '<p>搜索暂时无法加载，请检查网络后重试。</p>'
+            + '<button type="button" class="search-retry">重试搜索</button>'
+            + ' <a href="graph.html">浏览知识图谱</a></div>';
         });
     }
 
@@ -7250,21 +7261,8 @@
     });
 
     searchInput.addEventListener('focus', function() {
-      if (_searchIndex || _searchIndexFailed || _searchIndexPromise) return;
-      // 空查询静默预取，不写「加载中…」以免与入口卡滚动/描边同帧抢布局
-      var hadQuery = !!searchInput.value.trim();
-      if (hadQuery) {
-        searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载中…</p>';
-      }
-      ensureSearchIndex().then(function() {
-        if (searchInput.value.trim()) {
-          triggerSearch();
-        } else if (hadQuery) {
-          searchResults.innerHTML = '';
-        }
-      }).catch(function() {
-        if (hadQuery) searchResults.innerHTML = '';
-      });
+      if (searchInput.value.trim()) triggerSearch();
+      else prefetchWikiSearchIndex();
     });
 
     var _searchTimer;
@@ -7286,6 +7284,10 @@
     }
 
     searchResults.addEventListener('click', function(e) {
+      if (e.target.closest('.search-retry')) {
+        triggerSearch();
+        return;
+      }
       var graphBtn = e.target.closest('.js-graph-btn');
       if (graphBtn) {
         e.stopPropagation();
