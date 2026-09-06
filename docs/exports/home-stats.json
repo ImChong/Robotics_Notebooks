@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-humaps4d.md",
+      "detail_id": "entity-paper-humaps4d",
+      "label": "HUMAPS-4D：足底压力也能推断全身 3D 运动吗？",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/inspect-robots.md",
       "detail_id": "entity-inspect-robots",
       "label": "Inspect Robots",
@@ -210,28 +220,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-abot-recon.md",
-      "detail_id": "entity-cn-os-abot-recon",
-      "label": "ABot-Recon",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/inspect-robots.md",
-    "detail_id": "entity-inspect-robots",
-    "label": "Inspect Robots",
+    "path": "wiki/entities/paper-humaps4d.md",
+    "detail_id": "entity-paper-humaps4d",
+    "label": "HUMAPS-4D：足底压力也能推断全身 3D 运动吗？",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
