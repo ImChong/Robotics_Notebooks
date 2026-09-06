@@ -126,6 +126,7 @@ flowchart TB
 - [Cosmos-Predict2.5 / Transfer2.5 论文](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
 - [Newton Physics](./newton-physics.md) — GPU 解析物理引擎
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
+- [NVIDIA Physical AI 工具链技术地图](../overview/nvidia-physical-ai-toolchain-technology-map.md) — Cosmos 在策展/增广/评分段的位置
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)

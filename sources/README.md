@@ -114,6 +114,7 @@
 | [x] [cosmos3_arxiv_2606_02800.md](papers/cosmos3_arxiv_2606_02800.md) | Cosmos 3：全模态 MoT 世界模型平台（语言/图像/视频/音频/动作，arXiv:2606.02800，NVIDIA Cosmos Lab）摘录与 wiki 映射 |
 | [x] [cosmos_wfm_arxiv_2501_03575.md](papers/cosmos_wfm_arxiv_2501_03575.md) | Cosmos 1.0 WFM 平台一手摘录（arXiv:2501.03575；策展索引已升格） |
 | [x] [cosmos_predict25_arxiv_2511_00062.md](papers/cosmos_predict25_arxiv_2511_00062.md) | Cosmos-Predict2.5 / Transfer2.5 一手摘录（arXiv:2511.00062；PAI-Bench I2W 0.810） |
+| [x] [physical_ai_bench_arxiv_2512_01989.md](papers/physical_ai_bench_arxiv_2512_01989.md) | PAI-Bench：Physical AI 统一生成/条件生成/理解基准（arXiv:2512.01989，CVPR 2026 Oral；代码+HF 数据已开源） |
 | [x] [deepinsight_arxiv_2606_17574.md](papers/deepinsight_arxiv_2606_17574.md) | DeepInsight：Physical AI 全栈统一评测基础设施 System 2/1/0 + 统一 trace（arXiv:2606.17574，XPENG Robotics）摘录与 wiki 映射 |
 | [x] [daji_arxiv_2605_14417.md](papers/daji_arxiv_2605_14417.md) | DAJI：语言条件人形控制的预期关节意图接口（DAJI-Flow + DAJI-Act，arXiv:2605.14417）摘录与 wiki 映射 |
 | [x] [dit4dit_arxiv_2603_10448.md](papers/dit4dit_arxiv_2603_10448.md) | DiT4DiT：双 DiT 联合 flow matching VAM，LIBERO/RoboCasa/G1 真机（arXiv:2603.10448，Mondo Robotics / HKUST）摘录与 wiki 映射 |

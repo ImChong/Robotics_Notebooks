@@ -8,6 +8,7 @@ ci-test:
 	python3 -m pip_audit -r requirements-dev.txt
 	npm ci
 	npm run lint:js
+	npm run test:frontend
 	PYTHONPATH=scripts python3 -m pytest
 
 lint:

@@ -1,5 +1,7 @@
 // Robotics Notebooks Service Worker — 离线缓存支持
 const CACHE_NAME = 'robotics-wiki-2026-09-06';
+const CACHE_PREFIX = 'robotics-wiki-';
+const PROJECT_PATH = new URL(self.registration.scope).pathname;
 const ASSETS_TO_CACHE = [
   '/Robotics_Notebooks/',
   '/Robotics_Notebooks/index.html',
@@ -34,7 +36,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter((key) => key !== CACHE_NAME)
+          .filter((key) => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
           .map((key) => caches.delete(key))
       )
     )
@@ -47,6 +49,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
+  if (!url.pathname.startsWith(PROJECT_PATH)) return;
 
   // sponsor.js 等小脚本优先走网络，避免 emoji/文案更新后仍显示旧缓存
   if (url.pathname.endsWith('/sponsor.js')) {
@@ -59,13 +62,13 @@ self.addEventListener('fetch', (event) => {
           }
           return resp;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => caches.open(CACHE_NAME).then((cache) => cache.match(event.request)))
     );
     return;
   }
 
   event.respondWith(
-    caches.match(event.request).then((cached) => {
+    caches.open(CACHE_NAME).then((cache) => cache.match(event.request)).then((cached) => {
       if (cached) {
         // 后台刷新缓存（stale-while-revalidate）
         fetch(event.request)
