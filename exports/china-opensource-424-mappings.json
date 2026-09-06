@@ -1,0 +1,3818 @@
+[
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "Genie Sim 3.0",
+    "category": "数据采集/工具",
+    "slug": "genie-sim-3",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "GE-Sim 2.0",
+    "category": "世界模型",
+    "slug": "ge-sim-2",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "AimRT",
+    "category": "部署运行时",
+    "slug": "cn-os-aimrt",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "AgiBot-World",
+    "category": "数据集/Benchmark",
+    "slug": "agibot-world-2026",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "Genie-Envisioner-V1",
+    "category": "世界模型",
+    "slug": "paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "ACoT-VLA",
+    "category": "VLA/操作模型",
+    "slug": "paper-sa-2503-22020-cot-vla-visual-chain-of-thought-reasoning-for-vi",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "EnerVerse-AC",
+    "category": "世界模型",
+    "slug": "paper-sa-2501-01895-enerverse-envisioning-embodied-future-space-for",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "agibot_x1_train",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-agibot-x1-train",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "agibot_x1_infer",
+    "category": "部署运行时",
+    "slug": "cn-os-agibot-x1-infer",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "agibot_x1_hardware",
+    "category": "本体模型资产",
+    "slug": "cn-os-agibot-x1-hardware",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "AgiBotWorldChallengeICRA2026-WorldModelBaseline",
+    "category": "世界模型",
+    "slug": "botworld",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "EWMBench",
+    "category": "评测",
+    "slug": "ewmbench",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "agibot_x2_urdf",
+    "category": "本体模型资产",
+    "slug": "cn-os-agibot-x2-urdf",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "agibot_D1_Edu-Ultra",
+    "category": "SDK/驱动",
+    "slug": "cn-os-agibot-d1-edu-ultra",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "agillink_omnihand_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-agillink-omnihand-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "Agibot_D1_Max",
+    "category": "SDK/驱动",
+    "slug": "cn-os-agibot-d1-max",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "Agibot_D1_MaxPro",
+    "category": "SDK/驱动",
+    "slug": "cn-os-agibot-d1-max",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "A3-A3U-robot-model",
+    "category": "本体模型资产",
+    "slug": "cn-os-a3-a3u-robot-model",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "A3_Ultra_usd",
+    "category": "本体模型资产",
+    "slug": "cn-os-a3-ultra-usd",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智元机器人",
+    "org_url": "https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab",
+    "name": "aimrt_mujoco_sim",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "Unitree RL Lab",
+    "category": "运动RL/技能训练",
+    "slug": "unitree-rl-lab",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "Unitree RL Gym",
+    "category": "运动RL/技能训练",
+    "slug": "unitree-rl-gym",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "Unitree RL Mjlab",
+    "category": "运动RL/技能训练",
+    "slug": "unitree-rl-mjlab",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "UnifoLM-WMA-0",
+    "category": "世界模型",
+    "slug": "unifolm-world-model-action",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "UnifoLM-VLA-0",
+    "category": "VLA/操作模型",
+    "slug": "unifolm-vla",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_sim_isaaclab",
+    "category": "运动RL/技能训练",
+    "slug": "unitree-sim-isaaclab",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_mujoco",
+    "category": "仿真环境",
+    "slug": "unitree-mujoco",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_sdk2",
+    "category": "SDK/驱动",
+    "slug": "unitree-sdk2",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_sdk2_python",
+    "category": "SDK/驱动",
+    "slug": "unitree-sdk2",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_ros2",
+    "category": "SDK/驱动",
+    "slug": "unitree-ros2",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "xr_teleoperate",
+    "category": "遥操作与数据采集",
+    "slug": "xr-teleoperate",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "kinect_teleoperate",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-kinect-teleoperate",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_lerobot",
+    "category": "VLA/操作模型",
+    "slug": "unitree-lerobot",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "UniArmL1",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-uniarml1",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_model",
+    "category": "本体模型资产",
+    "slug": "unitree-model",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "宇树科技",
+    "org_url": "https://github.com/unitreerobotics",
+    "name": "unitree_slam",
+    "category": "感知/导航",
+    "slug": "unitree",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "TienKung-Lab",
+    "category": "运动RL/技能训练",
+    "slug": "tienkung-humanoid-open-source",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "xMimic",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-xmimic",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "Deploy_Tienkung",
+    "category": "仿真环境",
+    "slug": "cn-os-deploy-tienkung",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "x-humanoid-training-toolchain",
+    "category": "运动RL/技能训练",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "HEX",
+    "category": "VLA/操作模型",
+    "slug": "paper-loco-manip-161-038-hex",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "XR-1",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-xr-1",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "Pelican-VLA 0.5",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-pelican-vla-0-5",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "Pelican-VL",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-pelican-vl",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "xGMR",
+    "category": "动作重定向",
+    "slug": "cn-os-xgmr",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "xSIM_MUJOCO",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "RoboMIND-Sim",
+    "category": "仿真环境",
+    "slug": "cn-os-robomind-sim",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "RoboMIND-dataset-utils",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-robomind-dataset-utils",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "x-humanoid-vla-simulation-benchmark",
+    "category": "VLA/操作模型",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "embodied-skill-kit",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-embodied-skill-kit",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "Robo-ValueRL",
+    "category": "评测",
+    "slug": "cn-os-robo-valuerl",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "xhumanoid_sdk",
+    "category": "SDK/驱动",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "北京人形机器人创新中心",
+    "org_url": "https://github.com/Open-X-Humanoid",
+    "name": "Humanoid-Occupancy",
+    "category": "工程与工具",
+    "slug": "paper-notebook-humanoid-occupancy-enabling-a-generalized-multim",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "优必选",
+    "org_url": "https://github.com/UBTECH-Robot",
+    "name": "WalkerS2-Model",
+    "category": "本体模型资产",
+    "slug": "cn-os-walkers2-model",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "优必选",
+    "org_url": "https://github.com/UBTECH-Robot",
+    "name": "GlobalHumanoidRobotChallenge_2026_Baseline",
+    "category": "评测",
+    "slug": "humanoid-robot",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "优必选",
+    "org_url": "https://github.com/UBTECH-Robot",
+    "name": "GHRC_Evaluation_2026",
+    "category": "评测",
+    "slug": "cn-os-ghrc-evaluation-2026",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "优必选",
+    "org_url": "https://github.com/UBTECH-Robot",
+    "name": "Walker_TienKung_URDF",
+    "category": "本体模型资产",
+    "slug": "cn-os-walker-tienkung-urdf",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "优必选",
+    "org_url": "https://github.com/UBTECH-Robot",
+    "name": "Walker_TienKung_DEX_URDF",
+    "category": "本体模型资产",
+    "slug": "cn-os-walker-tienkung-dex-urdf",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "Wiki-GRx-Pipeline",
+    "category": "部署运行时",
+    "slug": "cn-os-wiki-grx-pipeline",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "Wiki-GRx-Deploy",
+    "category": "部署运行时",
+    "slug": "cn-os-wiki-grx-deploy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "Wiki-GRx-Gym",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-wiki-grx-gym",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "Wiki-GRx-Webots",
+    "category": "仿真环境",
+    "slug": "webots",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "Wiki-GRx-Models",
+    "category": "本体模型资产",
+    "slug": "cn-os-wiki-grx-models",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "Wiki-GRx-Gazebo",
+    "category": "仿真环境",
+    "slug": "cn-os-wiki-grx-gazebo",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "Wiki-GRx-Mujoco",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "teleoperation",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-teleoperation",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "fourier-lerobot",
+    "category": "VLA/操作模型",
+    "slug": "lerobot",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "fourier_lab",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-fourier-lab",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "fourier-grx-client",
+    "category": "SDK/驱动",
+    "slug": "cn-os-fourier-grx-client",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "傅利叶智能",
+    "org_url": "https://github.com/FFTAI",
+    "name": "fourier_dexhand_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-fourier-dexhand-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "众擎机器人",
+    "org_url": "https://github.com/engineai-robotics",
+    "name": "engineai_rl_lab",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "engineai-rl-lab",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "众擎机器人",
+    "org_url": "https://github.com/engineai-robotics",
+    "name": "EngineAI Native SDK",
+    "category": "SDK/驱动",
+    "slug": "engineai-native-sdk",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "众擎机器人",
+    "org_url": "https://github.com/engineai-robotics",
+    "name": "EngineAI GMR",
+    "category": "动作重定向",
+    "slug": "cn-os-engineai-gmr",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "众擎机器人",
+    "org_url": "https://github.com/engineai-robotics",
+    "name": "engineai_amp",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-engineai-amp",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "众擎机器人",
+    "org_url": "https://github.com/engineai-robotics",
+    "name": "engineai_humanoid",
+    "category": "部署运行时",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "众擎机器人",
+    "org_url": "https://github.com/engineai-robotics",
+    "name": "engineai_ros2_workspace",
+    "category": "SDK/驱动",
+    "slug": "cn-os-engineai-ros2-workspace",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "众擎机器人",
+    "org_url": "https://github.com/engineai-robotics",
+    "name": "engineai_robotics_description",
+    "category": "本体模型资产",
+    "slug": "cn-os-engineai-robotics-description",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "加速进化",
+    "org_url": "https://github.com/BoosterRobotics",
+    "name": "Booster Gym",
+    "category": "运动RL/技能训练",
+    "slug": "paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "加速进化",
+    "org_url": "https://github.com/BoosterRobotics",
+    "name": "booster_train",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-booster-train",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "加速进化",
+    "org_url": "https://github.com/BoosterRobotics",
+    "name": "booster_deploy",
+    "category": "部署运行时",
+    "slug": "cn-os-booster-deploy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "加速进化",
+    "org_url": "https://github.com/BoosterRobotics",
+    "name": "booster_robotics_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-booster-robotics-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "加速进化",
+    "org_url": "https://github.com/BoosterRobotics",
+    "name": "booster_robotics_sdk_ros2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-booster-robotics-sdk",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "加速进化",
+    "org_url": "https://github.com/BoosterRobotics",
+    "name": "booster_assets",
+    "category": "本体模型资产",
+    "slug": "cn-os-booster-assets",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "加速进化",
+    "org_url": "https://github.com/BoosterRobotics",
+    "name": "robocup_demo",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-robocup-demo",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "松延动力",
+    "org_url": "https://github.com/Noetix-Robotics",
+    "name": "noetix_n2_gym",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-noetix-n2-gym",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "松延动力",
+    "org_url": "https://github.com/Noetix-Robotics",
+    "name": "noetix_e1_lab",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-noetix-e1-lab",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "松延动力",
+    "org_url": "https://github.com/Noetix-Robotics",
+    "name": "noetix_sdk_n2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-noetix-sdk-n2",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "松延动力",
+    "org_url": "https://github.com/Noetix-Robotics",
+    "name": "noetix_sdk_e1",
+    "category": "SDK/驱动",
+    "slug": "cn-os-noetix-sdk-e1",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "松延动力",
+    "org_url": "https://github.com/Noetix-Robotics",
+    "name": "noetix_sdk_bumi",
+    "category": "SDK/驱动",
+    "slug": "cn-os-noetix-sdk-bumi",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "Humanoid-Gym",
+    "category": "运动RL/技能训练",
+    "slug": "humanoid-gym",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "models",
+    "category": "本体模型资产",
+    "slug": "cn-os-models",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "ros2_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-ros2-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "video-prediction-policy",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-video-prediction-policy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "teleop_client",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-teleop-client",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "xbot_sdk_api",
+    "category": "SDK/驱动",
+    "slug": "cn-os-xbot-sdk-api",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "humanoid-lab",
+    "category": "运动RL/技能训练",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "星动纪元",
+    "org_url": "https://github.com/roboterax",
+    "name": "robotera_vla",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-robotera-vla",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "kuavo-ros-opensource",
+    "category": "SDK/驱动",
+    "slug": "cn-os-kuavo-ros-opensource",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "kuavo_data_challenge",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-kuavo-data-challenge",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "LejuLab-Train",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-lejulab-train",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "LejuLab-Deploy",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-lejulab-deploy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "Leju-GMR",
+    "category": "动作重定向",
+    "slug": "cn-os-leju-gmr",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "LeTools-Learning",
+    "category": "运动RL/技能训练",
+    "slug": "letools",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "letools_opensource",
+    "category": "部署运行时",
+    "slug": "letools",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "乐聚机器人",
+    "org_url": "https://github.com/LejuRobotics",
+    "name": "roban_model_and_sim",
+    "category": "本体模型资产",
+    "slug": "cn-os-roban-model-and-sim",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "DeepRobotics RL Training",
+    "category": "运动RL/技能训练",
+    "slug": "deeprobotics-rl-training",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "Lite3 RL Deploy",
+    "category": "仿真环境",
+    "slug": "cn-os-lite3-rl-deploy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "sdk_deploy",
+    "category": "SDK/驱动",
+    "slug": "cn-os-sdk-deploy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "deep-robotics-simulation",
+    "category": "仿真环境",
+    "slug": "cn-os-deep-robotics-simulation",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "deep-robotics-teleoperate",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-deep-robotics-teleoperate",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "deep-robotics-sdk2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-deep-robotics-sdk2",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "Lite3_SLAM",
+    "category": "感知/导航",
+    "slug": "cn-os-lite3-slam",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "Lite3_Navigation",
+    "category": "工程与工具",
+    "slug": "cn-os-lite3-navigation",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "fast-livo2-deep-robotics",
+    "category": "工程与工具",
+    "slug": "cn-os-fast-livo2-deep-robotics",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "云深处科技",
+    "org_url": "https://github.com/DeepRoboticsLab",
+    "name": "Robot_Training_Cases",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-robot-training-cases",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "TRON1 RL Isaac Gym",
+    "category": "运动RL/技能训练",
+    "slug": "isaac-gym",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "TRON1 RL Deploy ROS2",
+    "category": "仿真环境",
+    "slug": "cn-os-tron1-rl-deploy-ros2",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "FluxVLA Engine",
+    "category": "VLA/操作模型",
+    "slug": "fluxvla-engine",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "humanoid-description",
+    "category": "本体模型资产",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "humanoid-mujoco-sim",
+    "category": "仿真环境",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "humanoid-rl-deploy-python",
+    "category": "部署运行时",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "humanoid-rl-isaaclab",
+    "category": "运动RL/技能训练",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "limxsdk-lowlevel",
+    "category": "SDK/驱动",
+    "slug": "cn-os-limxsdk-lowlevel",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "tron1-agent",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-tron1-agent",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "tron1-mujoco-sim",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "tron1-ss",
+    "category": "工程与工具",
+    "slug": "cn-os-tron1-ss",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "tron2_env",
+    "category": "SDK/驱动",
+    "slug": "cn-os-tron2-env",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "tron2_mujoco_sim",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "tron2_openpi",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-tron2-openpi",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "tron2_rl_lab",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-tron2-rl-lab",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "逐际动力",
+    "org_url": "https://github.com/limxdynamics、https://github.com/FluxVLA",
+    "name": "troncamp-mani",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-troncamp-mani",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星海图",
+    "org_url": "https://github.com/OpenGalaxea",
+    "name": "GalaxeaVLA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-galaxeavla",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星海图",
+    "org_url": "https://github.com/OpenGalaxea",
+    "name": "GalaxeaDP",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-galaxeadp",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星海图",
+    "org_url": "https://github.com/OpenGalaxea",
+    "name": "GalaxeaManipSim",
+    "category": "仿真环境",
+    "slug": "cn-os-galaxeamanipsim",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星海图",
+    "org_url": "https://github.com/OpenGalaxea",
+    "name": "GalaxeaLeRobotToolkit",
+    "category": "数据集/Benchmark",
+    "slug": "lerobot",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "星海图",
+    "org_url": "https://github.com/OpenGalaxea",
+    "name": "EFMNode",
+    "category": "部署运行时",
+    "slug": "cn-os-efmnode",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星尘智能",
+    "org_url": "https://github.com/Astribot-Dev",
+    "name": "astribot_simulation",
+    "category": "仿真环境",
+    "slug": "cn-os-astribot-simulation",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星尘智能",
+    "org_url": "https://github.com/Astribot-Dev",
+    "name": "astribot_descriptions",
+    "category": "本体模型资产",
+    "slug": "cn-os-astribot-descriptions",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "星尘智能",
+    "org_url": "https://github.com/Astribot-Dev",
+    "name": "astribot_msgs",
+    "category": "仿真环境",
+    "slug": "cn-os-astribot-msgs",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "上海人形机器人创新中心",
+    "org_url": "https://github.com/loongOpen",
+    "name": "OpenLoong-Gymloong",
+    "category": "运动RL/技能训练",
+    "slug": "openloong",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "上海人形机器人创新中心",
+    "org_url": "https://github.com/loongOpen",
+    "name": "OpenLoong-Dyn-Control",
+    "category": "工程与工具",
+    "slug": "openloong-dyn-control",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "上海人形机器人创新中心",
+    "org_url": "https://github.com/loongOpen",
+    "name": "OpenLoong-Brain",
+    "category": "具身Agent/规划",
+    "slug": "openloong",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "上海人形机器人创新中心",
+    "org_url": "https://github.com/loongOpen",
+    "name": "OpenLoong-Hardware",
+    "category": "仿真环境",
+    "slug": "openloong",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "上海人形机器人创新中心",
+    "org_url": "https://github.com/loongOpen",
+    "name": "LoongMarathonNav",
+    "category": "工程与工具",
+    "slug": "cn-os-loongmarathonnav",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "浙江人形机器人创新中心",
+    "org_url": "https://github.com/ZJ-Humanoid",
+    "name": "zj_humanoid_sdk_ros",
+    "category": "SDK/驱动",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "小米集团",
+    "org_url": "https://github.com/XiaomiRobotics、https://github.com/sharinka0715",
+    "name": "Xiaomi-Robotics-0",
+    "category": "VLA/操作模型",
+    "slug": "xiaomi-robotics-0",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "小米集团",
+    "org_url": "https://github.com/XiaomiRobotics、https://github.com/sharinka0715",
+    "name": "Xiaomi-Robotics-1",
+    "category": "VLA/操作模型",
+    "slug": "xiaomi-robotics-1",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "小米集团",
+    "org_url": "https://github.com/XiaomiRobotics、https://github.com/sharinka0715",
+    "name": "Xiaomi-Robotics-U0",
+    "category": "VLA/操作模型",
+    "slug": "xiaomi-robotics-u0",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "小米集团",
+    "org_url": "https://github.com/XiaomiRobotics、https://github.com/sharinka0715",
+    "name": "X-WAM",
+    "category": "世界模型",
+    "slug": "cn-os-x-wam",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "小鹏机器人",
+    "org_url": "https://github.com/xpeng-robotics",
+    "name": "DIAL",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-dial",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "小鹏机器人",
+    "org_url": "https://github.com/xpeng-robotics",
+    "name": "UniT",
+    "category": "VLA/操作模型",
+    "slug": "paper-unit-unified-physical-language",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智身科技",
+    "org_url": "https://github.com/zsibot",
+    "name": "matrix",
+    "category": "仿真环境",
+    "slug": "matrix-simulation-platform",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智身科技",
+    "org_url": "https://github.com/zsibot",
+    "name": "genisom_roamerx_open",
+    "category": "工程与工具",
+    "slug": "roamerx-navigation",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智身科技",
+    "org_url": "https://github.com/zsibot",
+    "name": "genisom_vln",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-genisom-vln",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智身科技",
+    "org_url": "https://github.com/zsibot",
+    "name": "genisom_robot_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-genisom-robot-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智身科技",
+    "org_url": "https://github.com/zsibot",
+    "name": "MATRiX_Python_SDK",
+    "category": "SDK/驱动",
+    "slug": "matrix-simulation-platform",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "智身科技",
+    "org_url": "https://github.com/zsibot",
+    "name": "genisom_L1_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-genisom-l1-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "智身科技",
+    "org_url": "https://github.com/zsibot",
+    "name": "genisom_model",
+    "category": "本体模型资产",
+    "slug": "cn-os-genisom-model",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "鹿明机器人",
+    "org_url": "https://github.com/LumosRobot",
+    "name": "lumos_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-lumos-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "鹿明机器人",
+    "org_url": "https://github.com/LumosRobot",
+    "name": "FastUMI_Ego",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-fastumi-ego",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "鹿明机器人",
+    "org_url": "https://github.com/LumosRobot",
+    "name": "FastUMI_Camera",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-fastumi-camera",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "鹿明机器人",
+    "org_url": "https://github.com/LumosRobot",
+    "name": "FastUMI_Data_Conversion",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-fastumi-data-conversion",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "鹿明机器人",
+    "org_url": "https://github.com/LumosRobot",
+    "name": "FastUMI_Data_Platform_Web",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-fastumi-data-platform-web",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "达妙科技",
+    "org_url": "https://github.com/dmBots",
+    "name": "motor-sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-motor-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "达妙科技",
+    "org_url": "https://github.com/dmBots",
+    "name": "open-dog",
+    "category": "工程与工具",
+    "slug": "cn-os-open-dog",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "达妙科技",
+    "org_url": "https://github.com/dmBots",
+    "name": "wheel-legged",
+    "category": "工程与工具",
+    "slug": "cn-os-wheel-legged",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "达妙科技",
+    "org_url": "https://github.com/dmBots",
+    "name": "bipedal-robot",
+    "category": "工程与工具",
+    "slug": "cn-os-bipedal-robot",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "Mini Pi Plus AMP",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-mini-pi-plus-amp",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "Mini-Pi-Plus_BeyondMimic",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-mini-pi-plus-beyondmimic",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "Mini-Pi-Plus_PBHC",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-mini-pi-plus-pbhc",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "livelybot_pi_rl_baseline",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-livelybot-pi-rl-baseline",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "hi_dynamic_control",
+    "category": "部署运行时",
+    "slug": "cn-os-hi-dynamic-control",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "sim2real",
+    "category": "仿真环境",
+    "slug": "cn-os-sim2real",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "Panthera-HT_Main",
+    "category": "本体模型资产",
+    "slug": "cn-os-panthera-ht-main",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "Panthera-HT_SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-panthera-ht-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "Panthera-HT_ROS2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-panthera-ht-ros2",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "高擎机电",
+    "org_url": "https://github.com/HighTorque-Robotics",
+    "name": "robot_urdf",
+    "category": "本体模型资产",
+    "slug": "cn-os-robot-urdf",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "魔法原子",
+    "org_url": "https://github.com/MagiclabRobotics",
+    "name": "magiclab_rl_lab",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-magiclab-rl-lab",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "魔法原子",
+    "org_url": "https://github.com/MagiclabRobotics",
+    "name": "magicbot-mimic",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-magicbot-mimic",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "魔法原子",
+    "org_url": "https://github.com/MagiclabRobotics",
+    "name": "Magiclab_GMR",
+    "category": "动作重定向",
+    "slug": "cn-os-magiclab-gmr",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "魔法原子",
+    "org_url": "https://github.com/MagiclabRobotics",
+    "name": "magiclab_deploy",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-magiclab-deploy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "魔法原子",
+    "org_url": "https://github.com/MagiclabRobotics",
+    "name": "magicbot-gen1_pi0_demo",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-magicbot-gen1-pi0-demo",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "越疆科技",
+    "org_url": "https://github.com/embodied-dobot、https://github.com/Dobot-Arm",
+    "name": "x-trainer",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-x-trainer",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "越疆科技",
+    "org_url": "https://github.com/embodied-dobot、https://github.com/Dobot-Arm",
+    "name": "atom-locomotion-training",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-atom-locomotion-training",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "越疆科技",
+    "org_url": "https://github.com/embodied-dobot、https://github.com/Dobot-Arm",
+    "name": "atom-locomotion-deploy",
+    "category": "仿真环境",
+    "slug": "cn-os-atom-locomotion-deploy",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "越疆科技",
+    "org_url": "https://github.com/embodied-dobot、https://github.com/Dobot-Arm",
+    "name": "Embodylink",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-embodylink",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "越疆科技",
+    "org_url": "https://github.com/embodied-dobot、https://github.com/Dobot-Arm",
+    "name": "dobot_atom_ros2",
+    "category": "工程与工具",
+    "slug": "cn-os-dobot-atom-ros2",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "Ti5HandROS1SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-ti5handros1sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "Ti5HandROS2SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-ros2-sdk",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "mechanical_arm_5_0_SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-mechanical-arm-5-0-sdk",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "mechanical_arm_5_0_python",
+    "category": "SDK/驱动",
+    "slug": "cn-os-mechanical-arm-5-0-python",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "HumanoidDualArmSolver",
+    "category": "工程与工具",
+    "slug": "paper-loco-manip-161-069-humanoid",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "LeftArmMotionSolver",
+    "category": "工程与工具",
+    "slug": "cn-os-leftarmmotionsolver",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "RightArmMotionSolver",
+    "category": "工程与工具",
+    "slug": "cn-os-rightarmmotionsolver",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "ROS2Ti5DualArmManipulation",
+    "category": "SDK/驱动",
+    "slug": "cn-os-ros2ti5dualarmmanipulation",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "RoboticArm-3DVisionGrab",
+    "category": "工程与工具",
+    "slug": "cn-os-roboticarm-3dvisiongrab",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "钛虎机器人",
+    "org_url": "https://github.com/ti5robot",
+    "name": "multiMotorTCPAPI",
+    "category": "SDK/驱动",
+    "slug": "cn-os-multimotortcpapi",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "桥介数物",
+    "org_url": "https://github.com/bridgedp",
+    "name": "hunter_bipedal_control",
+    "category": "运动控制",
+    "slug": "cn-os-hunter-bipedal-control",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "roboto_origin",
+    "category": "硬件开源",
+    "slug": "roboto-origin",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "rpo_hardware",
+    "category": "硬件开源",
+    "slug": "cn-os-rpo-hardware",
+    "new": true
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "UFO",
+    "category": "运动RL/技能训练",
+    "slug": "roboparty-ufo",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "roboparty_train",
+    "category": "运动RL/技能训练",
+    "slug": "roboparty",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "MimicLite",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "mimiclite",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "Party_OS",
+    "category": "工程与工具",
+    "slug": "party-os",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "roboparty_deploy",
+    "category": "部署运行时",
+    "slug": "roboparty",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "human-humanoid-tools",
+    "category": "工程与工具",
+    "slug": "human-humanoid-tools",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "roboparty_teleop",
+    "category": "遥操作与数据采集",
+    "slug": "roboparty",
+    "new": false
+  },
+  {
+    "layer": "第一层",
+    "company": "萝卜派对（RoboParty）",
+    "org_url": "https://github.com/Roboparty",
+    "name": "roboparty_dexhand",
+    "category": "SDK/驱动",
+    "slug": "roboparty",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "OpenTrack / Any2Track",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "paper-opentrack",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "OpenWBT",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-openwbt",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "LATENT",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "paper-notebook-latent",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "Humanoid-GPT",
+    "category": "遥操作与数据采集",
+    "slug": "paper-humanoid-gpt",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "GraspVLA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-graspvla",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "Click-and-Traverse",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-click-and-traverse",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "UrbanVLA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-urbanvla",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "GalbotSDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-galbotsdk",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "galbot-mcap2lerobot",
+    "category": "数据集/Benchmark",
+    "slug": "lerobot",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "galbot_s1_description",
+    "category": "本体模型资产",
+    "slug": "cn-os-galbot-s1-description",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "银河通用",
+    "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
+    "name": "HumanTracker",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-humantracker",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "千寻智能",
+    "org_url": "https://github.com/Spirit-AI-Team",
+    "name": "Spirit-v1.5",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-spirit-v1-5",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "自变量机器人",
+    "org_url": "https://github.com/X-Square-Robot",
+    "name": "WALL-X",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-wall-x",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "自变量机器人",
+    "org_url": "https://github.com/X-Square-Robot",
+    "name": "X-Tokenizer",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-x-tokenizer",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "自变量机器人",
+    "org_url": "https://github.com/X-Square-Robot",
+    "name": "WALL-WM",
+    "category": "世界模型",
+    "slug": "cn-os-wall-wm",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "自变量机器人",
+    "org_url": "https://github.com/X-Square-Robot",
+    "name": "WALL-SS",
+    "category": "世界模型",
+    "slug": "paper-wall-ss",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "它石智航",
+    "org_url": "https://github.com/tars-robotics",
+    "name": "RTR",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-rtr",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "它石智航",
+    "org_url": "https://github.com/tars-robotics",
+    "name": "World In Your Hands",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-world-in-your-hands",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智平方",
+    "org_url": "https://github.com/CHEN-H01",
+    "name": "Fast-in-Slow",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-fast-in-slow",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "Being-H",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-being-h",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "Being-H0",
+    "category": "VLA/操作模型",
+    "slug": "paper-notebook-being-h0-vision-language-action-pretraining-from",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "Being-M0",
+    "category": "动作重定向",
+    "slug": "cn-os-being-m0",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "Being-M0.5",
+    "category": "动作重定向",
+    "slug": "paper-notebook-being-m0-5-a-real-time-controllable-vision-langu",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "Being-VL-0.5",
+    "category": "世界模型",
+    "slug": "cn-os-being-vl-0-5",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "BumbleBee",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-bumblebee",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "DemoGrasp",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-demograsp",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "DemoHLM",
+    "category": "具身Agent/规划",
+    "slug": "paper-loco-manip-161-136-demohlm",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "FAST",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-fast",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "JALA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-jala",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "TTP",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-ttp",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "UniTacHand",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-unitachand",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "RLPF",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "cn-os-rlpf",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "Rethink_VLA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-rethink-vla",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智在无界",
+    "org_url": "https://github.com/BeingBeyond",
+    "name": "VIPA-VLA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-vipa-vla",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "极佳视界",
+    "org_url": "https://github.com/open-gigaai",
+    "name": "GigaWorld-0",
+    "category": "世界模型",
+    "slug": "gigaworld-0",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "极佳视界",
+    "org_url": "https://github.com/open-gigaai",
+    "name": "GigaBrain-0",
+    "category": "VLA/操作模型",
+    "slug": "paper-sa-2510-19430-gigabrain-0-a-world-model-powered-vision-languag",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "极佳视界",
+    "org_url": "https://github.com/open-gigaai",
+    "name": "GigaWorld-Policy",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-gigaworld-policy",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "极佳视界",
+    "org_url": "https://github.com/open-gigaai",
+    "name": "GigaWorld-1",
+    "category": "世界模型",
+    "slug": "cn-os-gigaworld-1",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "大晓机器人",
+    "org_url": "https://github.com/kairos-agi",
+    "name": "Kairos",
+    "category": "世界模型",
+    "slug": "cn-os-kairos",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "妙动科技",
+    "org_url": "https://github.com/Mondo-Robotics",
+    "name": "DiT4DiT",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-dit4dit",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "生数科技",
+    "org_url": "https://github.com/thu-ml、https://github.com/shengshu-ai",
+    "name": "Motus",
+    "category": "世界模型",
+    "slug": "paper-sa-2512-13030-motus-a-unified-latent-action-world-model",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "生数科技",
+    "org_url": "https://github.com/thu-ml、https://github.com/shengshu-ai",
+    "name": "MotuBrain",
+    "category": "世界模型",
+    "slug": "cn-os-motubrain",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "原力灵机",
+    "org_url": "https://github.com/dexmal",
+    "name": "OpenDM",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-opendm",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "原力灵机",
+    "org_url": "https://github.com/dexmal",
+    "name": "OpenDW",
+    "category": "世界模型",
+    "slug": "cn-os-opendw",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "面壁智能",
+    "org_url": "https://github.com/OpenBMB",
+    "name": "DeepThinkVLA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-deepthinkvla",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "面壁智能",
+    "org_url": "https://github.com/OpenBMB",
+    "name": "MiniCPM-Robot",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-minicpm-robot",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "戴盟机器人",
+    "org_url": "https://github.com/dmrobot-admin",
+    "name": "Daimon-Infinity",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-daimon-infinity",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "光轮智能",
+    "org_url": "https://github.com/LightwheelAI",
+    "name": "LeIsaac",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-leisaac",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "光轮智能",
+    "org_url": "https://github.com/LightwheelAI",
+    "name": "LW-BenchHub",
+    "category": "评测",
+    "slug": "cn-os-lw-benchhub",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "光轮智能",
+    "org_url": "https://github.com/LightwheelAI",
+    "name": "Lightwheel-YCB",
+    "category": "仿真环境",
+    "slug": "cn-os-lightwheel-ycb",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "光轮智能",
+    "org_url": "https://github.com/LightwheelAI",
+    "name": "Lightwheel-simready-asset",
+    "category": "本体模型资产",
+    "slug": "cn-os-lightwheel-simready-asset",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "光轮智能",
+    "org_url": "https://github.com/LightwheelAI",
+    "name": "LW-Egosuite-DevKit",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-lw-egosuite-devkit",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-VLA 2.0",
+    "category": "VLA/操作模型",
+    "slug": "lingbot-vla-v2",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-VA",
+    "category": "世界模型",
+    "slug": "paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-World 2.0",
+    "category": "世界模型",
+    "slug": "botworld",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-Map",
+    "category": "评测",
+    "slug": "cn-os-lingbot-map",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-Depth",
+    "category": "工程与工具",
+    "slug": "cn-os-lingbot-depth",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-Vision",
+    "category": "评测",
+    "slug": "cn-os-lingbot-vision",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-Video",
+    "category": "世界模型",
+    "slug": "cn-os-lingbot-video",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-VLA 1.0",
+    "category": "VLA/操作模型",
+    "slug": "lingbot-vla",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁灵波",
+    "org_url": "https://github.com/Robbyant",
+    "name": "LingBot-World 1.0",
+    "category": "世界模型",
+    "slug": "botworld",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "蚂蚁集团",
+    "org_url": "https://github.com/ant-research",
+    "name": "Open-AoE",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-open-aoe",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "简智机器人",
+    "org_url": "https://github.com/genrobot-ai",
+    "name": "das-datakit",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-das-datakit",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "群核科技",
+    "org_url": "https://github.com/manycore-research",
+    "name": "SpatialLM",
+    "category": "世界模型",
+    "slug": "cn-os-spatiallm",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "求之科技",
+    "org_url": "https://github.com/discoverse-dev、https://github.com/DISCOVER-Robotics",
+    "name": "DISCOVERSE",
+    "category": "仿真环境",
+    "slug": "paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "求之科技",
+    "org_url": "https://github.com/discoverse-dev、https://github.com/DISCOVER-Robotics",
+    "name": "DISCOVERSE-Real2Sim",
+    "category": "仿真环境",
+    "slug": "paper-sa-2605-13591-real2sim-a-physics-driven-and-editable-gaussian",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "求之科技",
+    "org_url": "https://github.com/discoverse-dev、https://github.com/DISCOVER-Robotics",
+    "name": "gs_playground",
+    "category": "仿真环境",
+    "slug": "gs-playground",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "求之科技",
+    "org_url": "https://github.com/discoverse-dev、https://github.com/DISCOVER-Robotics",
+    "name": "MuJoCo-LiDAR",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "求之科技",
+    "org_url": "https://github.com/discoverse-dev、https://github.com/DISCOVER-Robotics",
+    "name": "AIRBOT-Play-Hardware",
+    "category": "本体模型资产",
+    "slug": "cn-os-airbot-play-hardware",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "求之科技",
+    "org_url": "https://github.com/discoverse-dev、https://github.com/DISCOVER-Robotics",
+    "name": "AIRBOT-Play-Hardware-with-Moveit2",
+    "category": "SDK/驱动",
+    "slug": "moveit2",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "求之科技",
+    "org_url": "https://github.com/discoverse-dev、https://github.com/DISCOVER-Robotics",
+    "name": "SIM2REAL-2025",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-sim2real",
+    "new": false
+  },
+  {
+    "layer": "第二层",
+    "company": "亮源新创",
+    "org_url": "https://github.com/lightorigins",
+    "name": "LightNav-0",
+    "category": "感知/导航",
+    "slug": "cn-os-lightnav-0",
+    "new": true
+  },
+  {
+    "layer": "第二层",
+    "company": "智澄AI",
+    "org_url": "https://github.com/ZhiChengAIR",
+    "name": "Chengling-PWM",
+    "category": "世界模型",
+    "slug": "cn-os-chengling-pwm",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "灵心巧手",
+    "org_url": "https://github.com/linker-bot",
+    "name": "linkerhand-ros2-sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-ros2-sdk",
+    "new": false
+  },
+  {
+    "layer": "第三层",
+    "company": "灵心巧手",
+    "org_url": "https://github.com/linker-bot",
+    "name": "linkerhand-python-sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-linkerhand-python-sdk",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "灵心巧手",
+    "org_url": "https://github.com/linker-bot",
+    "name": "linkerhand-sim",
+    "category": "移动操作",
+    "slug": "cn-os-linkerhand-sim",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "灵心巧手",
+    "org_url": "https://github.com/linker-bot",
+    "name": "umi-dex",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-umi-dex",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "灵心巧手",
+    "org_url": "https://github.com/linker-bot",
+    "name": "linkerhand-urdf",
+    "category": "本体模型资产",
+    "slug": "cn-os-linkerhand-urdf",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "灵巧智能",
+    "org_url": "https://github.com/DexRobot",
+    "name": "dexrobot_ecosystem",
+    "category": "移动操作",
+    "slug": "cn-os-dexrobot-ecosystem",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wujihandpy",
+    "category": "工程与工具",
+    "slug": "cn-os-wujihandpy",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wujihandros2",
+    "category": "工程与工具",
+    "slug": "cn-os-wujihandros2",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wuji-description",
+    "category": "本体模型资产",
+    "slug": "cn-os-wuji-description",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "mujoco-sim",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "isaaclab-sim",
+    "category": "运动RL/技能训练",
+    "slug": "paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework",
+    "new": false
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wuji-retargeting",
+    "category": "动作重定向",
+    "slug": "cn-os-wuji-retargeting",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wuji-hand-teleop",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-wuji-hand-teleop",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wuji-mjlab",
+    "category": "移动操作",
+    "slug": "cn-os-wuji-mjlab",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wuji-openpi",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-wuji-openpi",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "舞肌科技",
+    "org_url": "https://github.com/wuji-technology",
+    "name": "wuji-sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-wuji-sdk",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "帕西尼感知科技",
+    "org_url": "https://github.com/px-DataCollection",
+    "name": "px_omnisharing_dataprocess_kit",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-px-omnisharing-dataprocess-kit",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "xensesdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-xensesdk",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "xensesdk-cpp",
+    "category": "SDK/驱动",
+    "slug": "cn-os-xensesdk",
+    "new": false
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "TacCap-Gripper",
+    "category": "SDK/驱动",
+    "slug": "cn-os-taccap-gripper",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "XGripper",
+    "category": "SDK/驱动",
+    "slug": "cn-os-xgripper",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "xense-ros",
+    "category": "SDK/驱动",
+    "slug": "cn-os-xense-ros",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "lerobot-xense",
+    "category": "工程与工具",
+    "slug": "lerobot",
+    "new": false
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "xense-openpi",
+    "category": "工程与工具",
+    "slug": "cn-os-xense-openpi",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "千觉机器人",
+    "org_url": "https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics",
+    "name": "xense-mcap-viewer",
+    "category": "工程与工具",
+    "slug": "cn-os-xense-mcap-viewer",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "gForceSDKEmbedded",
+    "category": "SDK/驱动",
+    "slug": "cn-os-gforcesdkembedded",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "gForceSDKPython",
+    "category": "SDK/驱动",
+    "slug": "cn-os-gforcesdkpython",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "EMGFilters",
+    "category": "工程与工具",
+    "slug": "cn-os-emgfilters",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "ros_gforce",
+    "category": "SDK/驱动",
+    "slug": "cn-os-ros-gforce",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "oglove_ros2_pkg",
+    "category": "SDK/驱动",
+    "slug": "cn-os-oglove-ros2-pkg",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "rohand_ros_pkg",
+    "category": "SDK/驱动",
+    "slug": "cn-os-rohand-ros-pkg",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "rohand_ros2_pkg",
+    "category": "SDK/驱动",
+    "slug": "cn-os-rohand-ros2-pkg",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "rohand_gen2_urdf_ros2",
+    "category": "本体模型资产",
+    "slug": "cn-os-rohand-gen2-urdf-ros2",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "rohand_mujoco",
+    "category": "仿真环境",
+    "slug": "mujoco",
+    "new": false
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "roh_gen2_firmware",
+    "category": "工程与工具",
+    "slug": "cn-os-roh-gen2-firmware",
+    "new": true
+  },
+  {
+    "layer": "第三层",
+    "company": "傲意科技",
+    "org_url": "https://github.com/oymotion",
+    "name": "roh_demos",
+    "category": "工程与工具",
+    "slug": "cn-os-roh-demos",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-World",
+    "category": "世界模型",
+    "slug": "botworld",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "RynnVLA-002",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-rynnvla-002",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "RynnBrain",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-rynnbrain",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-Manipulation",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-abot-manipulation",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "RynnEC",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-rynnec",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-PhysWorld",
+    "category": "世界模型",
+    "slug": "paper-sa-2603-23376-abot-physworld-interactive-world-foundation-mode",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "RynnVLA-001",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-rynnvla-001",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-Navigation",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-abot-navigation",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "RynnWorld-4D",
+    "category": "世界模型",
+    "slug": "cn-os-rynnworld-4d",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "RynnWorld-Teleop",
+    "category": "遥操作与数据采集",
+    "slug": "paper-sa-2607-06558-rynnworld-teleop-an-action-conditioned-world-mod",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "RynnValue",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-rynnvalue",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-3DWorld",
+    "category": "世界模型",
+    "slug": "cn-os-abot-3dworld",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-Claw",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-abot-claw",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-Explorer",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-abot-explorer",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "ABot-Recon",
+    "category": "工程与工具",
+    "slug": "cn-os-abot-recon",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "AstraNav-Memory",
+    "category": "感知/导航",
+    "slug": "cn-os-astranav-memory",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "AstraNav-World",
+    "category": "世界模型",
+    "slug": "cn-os-astranav-world",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "CE-Nav",
+    "category": "感知/导航",
+    "slug": "cn-os-ce-nav",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "阿里巴巴",
+    "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
+    "name": "OmniNav",
+    "category": "感知/导航",
+    "slug": "cn-os-omninav",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "腾讯机器人实验室",
+    "org_url": "https://github.com/Tencent-Hunyuan",
+    "name": "HY-Embodied",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-hy-embodied",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "腾讯机器人实验室",
+    "org_url": "https://github.com/Tencent-Hunyuan",
+    "name": "HY-Embodied-0.5-VLA",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-hy-embodied",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "腾讯机器人实验室",
+    "org_url": "https://github.com/Tencent-Hunyuan",
+    "name": "RxBrain-1.0",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-rxbrain-1-0",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "腾讯机器人实验室",
+    "org_url": "https://github.com/Tencent-Hunyuan",
+    "name": "HY-Embodied-0.5-X",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-hy-embodied",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "字节跳动机器人团队",
+    "org_url": "https://github.com/ByteDance-Seed、https://github.com/bytedance",
+    "name": "VideoWorld",
+    "category": "世界模型",
+    "slug": "cn-os-videoworld",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "字节跳动机器人团队",
+    "org_url": "https://github.com/ByteDance-Seed、https://github.com/bytedance",
+    "name": "SimArt",
+    "category": "仿真环境",
+    "slug": "cn-os-simart",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "字节跳动机器人团队",
+    "org_url": "https://github.com/ByteDance-Seed、https://github.com/bytedance",
+    "name": "GR-1",
+    "category": "VLA/操作模型",
+    "slug": "paper-shenlan-wm-09-gr1",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "字节跳动机器人团队",
+    "org_url": "https://github.com/ByteDance-Seed、https://github.com/bytedance",
+    "name": "GR-MG",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-gr-mg",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "字节跳动机器人团队",
+    "org_url": "https://github.com/ByteDance-Seed、https://github.com/bytedance",
+    "name": "Chain-of-Action",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-chain-of-action",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "百度智能云",
+    "org_url": "https://github.com/baidu-baige",
+    "name": "LoongForge",
+    "category": "数据采集/工具",
+    "slug": "cn-os-loongforge",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "HoloAgent",
+    "category": "具身Agent/规划",
+    "slug": "holoagent",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "HoloMotion",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "holomotion",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "EmbodiedGen V2",
+    "category": "仿真环境",
+    "slug": "cn-os-embodiedgen-v2",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "RoboOrchardCore",
+    "category": "数据采集/工具",
+    "slug": "cn-os-roboorchardcore",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "BIP3D",
+    "category": "工程与工具",
+    "slug": "cn-os-bip3d",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "RoboOrchardLab",
+    "category": "运动RL/技能训练",
+    "slug": "robo-orchard-lab",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "RoboOrchardSim",
+    "category": "仿真环境",
+    "slug": "cn-os-roboorchardsim",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "RoboOrchardHardware",
+    "category": "本体模型资产",
+    "slug": "cn-os-roboorchardhardware",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "RoboTransfer",
+    "category": "世界模型",
+    "slug": "cn-os-robotransfer",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "RoboSplatter",
+    "category": "仿真环境",
+    "slug": "cn-os-robosplatter",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地平线",
+    "org_url": "https://github.com/HorizonRobotics",
+    "name": "GeoFlowSlam",
+    "category": "感知/导航",
+    "slug": "cn-os-geoflowslam",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地瓜机器人",
+    "org_url": "https://github.com/D-Robotics",
+    "name": "rdk_LeRobot_tools",
+    "category": "SDK/驱动",
+    "slug": "lerobot",
+    "new": false
+  },
+  {
+    "layer": "第四层",
+    "company": "地瓜机器人",
+    "org_url": "https://github.com/D-Robotics",
+    "name": "robot_dev_config",
+    "category": "工程与工具",
+    "slug": "cn-os-robot-dev-config",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地瓜机器人",
+    "org_url": "https://github.com/D-Robotics",
+    "name": "rdk_model_zoo",
+    "category": "SDK/驱动",
+    "slug": "cn-os-rdk-model-zoo",
+    "new": true
+  },
+  {
+    "layer": "第四层",
+    "company": "地瓜机器人",
+    "org_url": "https://github.com/D-Robotics",
+    "name": "hobot_stereonet",
+    "category": "工程与工具",
+    "slug": "cn-os-hobot-stereonet",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "ARIO",
+    "category": "本体模型资产",
+    "slug": "cn-os-ario",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "DataEval",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-dataeval",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "data_tools",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-data-tools",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "gr00t-agilex",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-gr00t-agilex",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "lerobot-agilex",
+    "category": "VLA/操作模型",
+    "slug": "lerobot",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "openpi-agilex",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-openpi-agilex",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "PikaAnyArm",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-pikaanyarm",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "pika_ros",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-pika-ros",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "pika_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-pika-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "piper_isaac_sim",
+    "category": "仿真环境",
+    "slug": "isaac-sim",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "aloha-agilex",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-aloha-agilex",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "mobile_aloha_sim",
+    "category": "仿真环境",
+    "slug": "cn-os-mobile-aloha-sim",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "mobile_aloha_sim_ros2",
+    "category": "仿真环境",
+    "slug": "cn-os-mobile-aloha-sim",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "松灵机器人",
+    "org_url": "https://github.com/agilexrobotics",
+    "name": "AgileX Robot Lab",
+    "category": "运动RL/技能训练",
+    "slug": "robot-lab",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "仙工智能",
+    "org_url": "https://github.com/seer-robotics",
+    "name": "wheelDog_RL",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-wheeldog-rl",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "仙工智能",
+    "org_url": "https://github.com/seer-robotics",
+    "name": "SeerTCPTest",
+    "category": "工程与工具",
+    "slug": "cn-os-seertcptest",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "仙工智能",
+    "org_url": "https://github.com/seer-robotics",
+    "name": "SeerSdk4j",
+    "category": "SDK/驱动",
+    "slug": "cn-os-seersdk4j",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "众为创造",
+    "org_url": "https://github.com/xArm-Developer",
+    "name": "xarm_ros2",
+    "category": "仿真环境",
+    "slug": "cn-os-xarm-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "众为创造",
+    "org_url": "https://github.com/xArm-Developer",
+    "name": "xArm-Python-SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-xarm-python-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "众为创造",
+    "org_url": "https://github.com/xArm-Developer",
+    "name": "uf-gym",
+    "category": "运动RL/技能训练",
+    "slug": "cn-os-uf-gym",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "大象机器人",
+    "org_url": "https://github.com/elephantrobotics",
+    "name": "mycobot_ros2",
+    "category": "仿真环境",
+    "slug": "cn-os-mycobot-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "大象机器人",
+    "org_url": "https://github.com/elephantrobotics",
+    "name": "pymycobot",
+    "category": "工程与工具",
+    "slug": "cn-os-pymycobot",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "大象机器人",
+    "org_url": "https://github.com/elephantrobotics",
+    "name": "mycobot_ros",
+    "category": "仿真环境",
+    "slug": "cn-os-mycobot-ros",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "奥比中光",
+    "org_url": "https://github.com/orbbec",
+    "name": "OrbbecSDK_v2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-orbbecsdk-v2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "奥比中光",
+    "org_url": "https://github.com/orbbec",
+    "name": "OrbbecSDK_ROS2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-orbbecsdk-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "奥比中光",
+    "org_url": "https://github.com/orbbec",
+    "name": "pyorbbecsdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-pyorbbecsdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "禾赛科技",
+    "org_url": "https://github.com/HesaiTechnology",
+    "name": "HesaiLidar_SDK_2.0",
+    "category": "SDK/驱动",
+    "slug": "cn-os-hesailidar-sdk-2-0",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "禾赛科技",
+    "org_url": "https://github.com/HesaiTechnology",
+    "name": "HesaiLidar_ROS_2.0",
+    "category": "工程与工具",
+    "slug": "cn-os-hesailidar-ros-2-0",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "速腾聚创",
+    "org_url": "https://github.com/RoboSense-LiDAR",
+    "name": "rslidar_sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-rslidar-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "速腾聚创",
+    "org_url": "https://github.com/RoboSense-LiDAR",
+    "name": "rs_driver",
+    "category": "SDK/驱动",
+    "slug": "cn-os-rs-driver",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "梅卡曼德",
+    "org_url": "https://github.com/MechMindRobotics",
+    "name": "mecheye_ros2_interface",
+    "category": "工程与工具",
+    "slug": "cn-os-mecheye-ros2-interface",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "梅卡曼德",
+    "org_url": "https://github.com/MechMindRobotics",
+    "name": "mecheye_python_samples",
+    "category": "数据采集/工具",
+    "slug": "cn-os-mecheye-python-samples",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "法奥意威",
+    "org_url": "https://github.com/FAIR-INNOVATION",
+    "name": "frcobot_ros2",
+    "category": "工程与工具",
+    "slug": "cn-os-frcobot-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "法奥意威",
+    "org_url": "https://github.com/FAIR-INNOVATION",
+    "name": "fairino-python-sdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-fairino-python-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "非夕科技",
+    "org_url": "https://github.com/flexivrobotics",
+    "name": "flexiv_rdk",
+    "category": "SDK/驱动",
+    "slug": "cn-os-flexiv-rdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "非夕科技",
+    "org_url": "https://github.com/flexivrobotics",
+    "name": "flexiv_ros2",
+    "category": "工程与工具",
+    "slug": "cn-os-flexiv-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "非夕科技",
+    "org_url": "https://github.com/flexivrobotics",
+    "name": "flexiv_trainer",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-flexiv-trainer",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "非夕科技",
+    "org_url": "https://github.com/flexivrobotics",
+    "name": "flexiv_tdk",
+    "category": "数据集/Benchmark",
+    "slug": "cn-os-flexiv-tdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "非夕科技",
+    "org_url": "https://github.com/flexivrobotics",
+    "name": "isaac_sim_ws",
+    "category": "仿真环境",
+    "slug": "isaac-sim",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "艾利特机器人",
+    "org_url": "https://github.com/Elite-Robots",
+    "name": "Elite_Robots_CS_ROS2_Driver",
+    "category": "SDK/驱动",
+    "slug": "cn-os-elite-robots-cs-ros2-driver",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "艾利特机器人",
+    "org_url": "https://github.com/Elite-Robots",
+    "name": "Elite_Robots_CS_SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-elite-robots-cs-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "节卡机器人",
+    "org_url": "https://github.com/JAKARobotics",
+    "name": "jaka_ros2",
+    "category": "工程与工具",
+    "slug": "cn-os-jaka-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "节卡机器人",
+    "org_url": "https://github.com/JAKARobotics",
+    "name": "JAKA_Lumi",
+    "category": "具身Agent/规划",
+    "slug": "cn-os-jaka-lumi",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "遨博智能",
+    "org_url": "https://github.com/AuboRobot、https://gitee.com/aubo-nxrobo",
+    "name": "aubo_robot",
+    "category": "工程与工具",
+    "slug": "cn-os-aubo-robot",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "遨博智能",
+    "org_url": "https://github.com/AuboRobot、https://gitee.com/aubo-nxrobo",
+    "name": "arcs_ros2",
+    "category": "工程与工具",
+    "slug": "cn-os-arcs-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "睿尔曼智能",
+    "org_url": "https://github.com/RealManRobot",
+    "name": "RM_API2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-rm-api2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "睿尔曼智能",
+    "org_url": "https://github.com/RealManRobot",
+    "name": "ros2_rm_robot",
+    "category": "工程与工具",
+    "slug": "cn-os-ros2-rm-robot",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "睿尔曼智能",
+    "org_url": "https://github.com/RealManRobot",
+    "name": "rm_models",
+    "category": "本体模型资产",
+    "slug": "cn-os-models",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "睿尔曼智能",
+    "org_url": "https://github.com/RealManRobot",
+    "name": "hand_eye_calibration",
+    "category": "工程与工具",
+    "slug": "unitree-dexterous-hand-services",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "睿尔曼智能",
+    "org_url": "https://github.com/RealManRobot",
+    "name": "Touch-Teleoperation-RM65",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-teleoperation",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "诺亦腾机器人",
+    "org_url": "https://github.com/noitom-robotics",
+    "name": "AdaPT",
+    "category": "全身动作跟踪/技能训练",
+    "slug": "paper-adapt",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "RoboCore",
+    "category": "工程与工具",
+    "slug": "cn-os-robocore",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Alicia-D-SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-alicia-d-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Alicia-D-ROS2",
+    "category": "SDK/驱动",
+    "slug": "cn-os-alicia-d-ros2",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Alicia-D-Leader-ROS",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-alicia-d-leader-ros",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Alicia-D-VLM-Grasp",
+    "category": "VLA/操作模型",
+    "slug": "cn-os-alicia-d-vlm-grasp",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Alicia-M-SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-alicia-m-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Bessica-D-SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-bessica-d-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Gloria-M-SDK",
+    "category": "SDK/驱动",
+    "slug": "cn-os-gloria-m-sdk",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Synria-Robots-Isaaclab",
+    "category": "仿真环境",
+    "slug": "paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "VR-Teleoperation",
+    "category": "遥操作与数据采集",
+    "slug": "cn-os-teleoperation",
+    "new": false
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Electronic-Skin-ML",
+    "category": "SDK/驱动",
+    "slug": "cn-os-electronic-skin-ml",
+    "new": true
+  },
+  {
+    "layer": "第五层",
+    "company": "玄雅科技",
+    "org_url": "https://github.com/Synria-Robotics",
+    "name": "Open-Robot-Descriptions",
+    "category": "本体模型资产",
+    "slug": "cn-os-open-robot-descriptions",
+    "new": true
+  }
+]

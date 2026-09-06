@@ -2,13 +2,15 @@
 type: entity
 tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, embodied-ai-lab]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-06
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/open-source-motion-control-projects.md
+  - ../queries/china-domestic-opensource-424-coverage.md
   - ../queries/hmi-opensource-projects-coverage.md
   - ../queries/hmi-papers-coverage.md
   - ../queries/humanoid-motion-tracking-method-selection.md
@@ -23,9 +25,10 @@ related:
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/repos/robot-descriptions-py.md
-summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：六条技术路线 + ~145 篇论文解读 + ~166 个开源项目主表 + 产业与求职；与本库微信策展同源，作外部总入口而非镜像。"
+summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：六条技术路线 + ~145 篇论文解读 + ~166 个开源项目主表 + 国内 76 家机构 424 项开源全景 + 产业与求职；与本库微信策展同源，作外部总入口而非镜像。"
 ---
 
 # Humanoid Motion Intelligence（人形机器人运动智能知识库）
@@ -100,6 +103,7 @@ flowchart TB
 | 建立完整技术路线 / 新手路径 | [`技术路线/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/README.md) |
 | 查论文与稳定 ID（Pxxx） | [`论文与项目/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)（约 145 条）→ 本库导读见 [HMI 论文总索引 · 本库导读](../queries/hmi-papers-coverage.md) |
 | 找代码与复现入口 | [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)（约 166 项）→ 本库导读见 [HMI 开源项目主表 · 本库导读](../queries/hmi-opensource-projects-coverage.md) |
+| 国内机构开源全景（76 家 · 424 项） | [微信全景 2026-09-06](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md) → [五层技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) + [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) |
 | 产业信号 / 求职面经 | [`公司与产业/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%BA%A7%E4%B8%9A)、[`求职与岗位/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E6%B1%82%E8%81%8C%E4%B8%8E%E5%B2%97%E4%BD%8D) |
 
 ## 工程实践
@@ -128,6 +132,8 @@ flowchart TB
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 移动操作全谱
 - [HMI 论文总索引 · 本库导读](../queries/hmi-papers-coverage.md) — 总索引 145 篇接到本库详情页（无缺口、不重复造页）
 - [HMI 开源项目主表 · 本库导读](../queries/hmi-opensource-projects-coverage.md) — 主表 166 项接到本库详情页的读者向导读表
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 2026-09-06 公众号五层机构清单
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 逐条独立实体节点导读
 - [开源运动控制项目结构化摘要](../queries/open-source-motion-control-projects.md) — 本库另一条开源项目方法地图
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
@@ -140,6 +146,7 @@ flowchart TB
 - [sources/repos/robot-descriptions-py.md](../../sources/repos/robot-descriptions-py.md) — 主表工程条目加深
 - [微信 · 42 篇 RL 运动控制](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - [微信 · 运动小脑 64 篇](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
+- [微信 · 国内开源全景 76 家 424 项](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 
