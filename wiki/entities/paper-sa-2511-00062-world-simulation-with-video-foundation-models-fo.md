@@ -20,6 +20,7 @@ related:
   - ./cosmos-transfer.md
   - ./cosmos-cookbook.md
   - ./paper-cosmos-transfer1.md
+  - ./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md
 sources:
   - ../../sources/papers/cosmos_predict25_arxiv_2511_00062.md
   - ../../sources/repos/nvidia_cosmos_predict25.md
@@ -45,7 +46,7 @@ summary: "Cosmos-Predict2.5 / Transfer2.5（arXiv:2511.00062）：flow matching 
 | T2W | Text-to-World | 文本条件世界生成 |
 | I2W | Image-to-World | 图像条件续写 |
 | V2W | Video-to-World | 视频条件未来预测 |
-| PAI-Bench | Physical AI Bench | 论文主榜：Domain + Quality 平均 |
+| PAI-Bench | Physical AI Bench | [PAI-Bench 基准](./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md)：Domain + Quality 平均 |
 | MFU | Model FLOPs Utilization | 4096×H100 上的训练效率 |
 | RNDS | Relative Normalized Dover Score | Transfer 长程画质衰减曲线 |
 | VLA | Vision-Language-Action | DreamGen 等下游合成数据用法 |
@@ -128,7 +129,7 @@ sequenceDiagram
 
 ## 评测与指标
 
-PAI-Bench Predict：Overall = (Domain + Quality) / 2。Domain 覆盖 av / common / human / industry / misc / physics / robotics；Quality 改编自 VBench 的 8 个 T2V/I2V 指标。
+[PAI-Bench](./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md) Predict（G 轨）：Overall = (Domain + Quality) / 2。Domain 覆盖 av / common / human / industry / misc / physics / robotics；Quality 改编自 VBench 的 8 个 T2V/I2V 指标。论文 Table 为 0–1 小数，本页百分制需 ×100 与 G 轨原表对齐。
 
 | 设定 | 模型 | Domain | Quality | Overall |
 |------|------|-------:|--------:|--------:|

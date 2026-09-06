@@ -45,7 +45,7 @@ code: https://github.com/nvidia-cosmos/cosmos-transfer2.5
 | Vis | Visual blur control | 双边模糊支：保颜色与粗构图 |
 | HDMap | High-Definition Map | AV 支：车道、标线、3D box |
 | SDG | Synthetic Data Generation | Transfer 的主工程用法 |
-| PAI-Bench | Physical AI Bench | 2.5 代 Transfer 控制遵循 / 画质榜 |
+| PAI-Bench | Physical AI Bench | [PAI-Bench-C](./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md) 条件生成控制遵循 / 画质榜 |
 
 ## 为什么重要
 
@@ -64,7 +64,7 @@ code: https://github.com/nvidia-cosmos/cosmos-transfer2.5
 | **Transfer2.5（2025-10）** | Predict2.5 flow | **2B**；auto 多视角；robot-multiview | JSON `controlnet_specs`；可当场算 depth/seg | [cosmos-transfer2.5](https://github.com/nvidia-cosmos/cosmos-transfer2.5) |
 | **Cosmos 3（2026-06）** | 全模态 MoT | 4B / 16B / 64B | 统一 Generator；Edge **不支持** V2V transfer | [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) |
 
-机制细节与 TransferBench 数字见 [Transfer1 论文](./paper-cosmos-transfer1.md)；2.5 代 PAI-Bench 见 [Predict2.5 / Transfer2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)。
+机制细节与 TransferBench 数字见 [Transfer1 论文](./paper-cosmos-transfer1.md)；2.5 代 PAI-Bench-C 见 [PAI-Bench 基准](./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md) 与 [Predict2.5 / Transfer2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)。
 
 ### 流程总览
 
