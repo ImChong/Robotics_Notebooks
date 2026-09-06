@@ -14,8 +14,6 @@ const ASSETS_TO_CACHE = [
   '/Robotics_Notebooks/exports/home-stats.json',
   '/Robotics_Notebooks/exports/hub-rankings.json',
   '/Robotics_Notebooks/exports/link-graph.json',
-  '/Robotics_Notebooks/exports/site-data-v1.json',
-  '/Robotics_Notebooks/exports/index-v1.json',
   '/Robotics_Notebooks/exports/graph-stats.json',
   '/Robotics_Notebooks/exports/wiki-activity.json',
 ];
@@ -51,8 +49,8 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
   if (!url.pathname.startsWith(PROJECT_PATH)) return;
 
-  // sponsor.js 等小脚本优先走网络，避免 emoji/文案更新后仍显示旧缓存
-  if (url.pathname.endsWith('/sponsor.js')) {
+  // 目录优先读网络，离线再用缓存；正文哈希 URL 与目录版本配套。
+  if (url.pathname.endsWith('/sponsor.js') || url.pathname.endsWith('/site-catalog-v1.json')) {
     event.respondWith(
       fetch(event.request)
         .then((resp) => {
@@ -70,6 +68,8 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.open(CACHE_NAME).then((cache) => cache.match(event.request)).then((cached) => {
       if (cached) {
+        // 哈希正文不可变；已缓存的旧版本离线可读，也不必再后台下载。
+        if (/\/exports\/page-content\/[a-f0-9]{64}\.json$/.test(url.pathname)) return cached;
         // 后台刷新缓存（stale-while-revalidate）
         fetch(event.request)
           .then((resp) => {

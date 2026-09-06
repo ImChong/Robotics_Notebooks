@@ -6,7 +6,9 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -25,12 +27,58 @@ def check(name: str, passed: bool, detail: str = "") -> bool:
     return passed
 
 
+def validate_page_exports(source_dir: Path, mirror_dir: Path) -> int:
+    """Verify the split contract against the legacy export, including exact mirrors."""
+    catalog_bytes = (source_dir / "site-catalog-v1.json").read_bytes()
+    if catalog_bytes != (mirror_dir / "site-catalog-v1.json").read_bytes():
+        raise ValueError("目录镜像不一致")
+    catalog = json.loads(catalog_bytes)
+    original = json.loads((source_dir / "site-data-v1.json").read_bytes())
+    if catalog.pop("content_mode", None) != "per-page-v1":
+        raise ValueError("目录版本不正确")
+    details = catalog["pages"]["detail_pages"]
+    if set(details) != set(original["pages"]["detail_pages"]):
+        raise ValueError("页面 ID 集合不一致")
+    expected_files = set()
+    for page_id, page in details.items():
+        url = page.pop("content_url", "")
+        if not re.fullmatch(r"exports/page-content/[a-f0-9]{64}\.json", url):
+            raise ValueError(f"{page_id}: 正文路径不合法")
+        filename = url.rsplit("/", 1)[-1]
+        body_bytes = (source_dir / "page-content" / filename).read_bytes()
+        if filename != f"{hashlib.sha256(body_bytes).hexdigest()}.json":
+            raise ValueError(f"{page_id}: 正文哈希不匹配")
+        if body_bytes != (mirror_dir / "page-content" / filename).read_bytes():
+            raise ValueError(f"{page_id}: 正文镜像不一致")
+        body = json.loads(body_bytes)
+        if (
+            body.get("version") != "v1"
+            or body.get("id") != page_id
+            or not isinstance(body.get("content_markdown"), str)
+            or "content_markdown" in page
+        ):
+            raise ValueError(f"{page_id}: 正文字段契约不正确")
+        page["content_markdown"] = body["content_markdown"]
+        expected_files.add(filename)
+    if catalog != original:
+        raise ValueError("拆分后不能无损重建完整站点数据")
+    for directory in (source_dir, mirror_dir):
+        if {p.name for p in (directory / "page-content").glob("*.json")} != expected_files:
+            raise ValueError("存在未引用或缺失的正文文件")
+    return len(details)
+
+
 def main() -> None:
     print("=" * 55)
     print("导出质量检查")
     print("=" * 55)
 
     results: list[bool] = []
+    try:
+        page_count = validate_page_exports(EXPORTS, DOCS_EXPORTS)
+        results.append(check("按页正文 ID、哈希、契约与镜像一致", True, f"{page_count} 页面"))
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as error:
+        results.append(check("按页正文 ID、哈希、契约与镜像一致", False, str(error)))
 
     # 1. search-index.json 存在且非空
     si = DOCS / "search-index.json"
