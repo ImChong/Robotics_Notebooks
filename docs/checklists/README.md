@@ -4,6 +4,7 @@
 
 ## 当前入口
 
+- [软件工程改进计划](../../plan.md) — 2026-09-06 全库审查的 35 项改进、推进顺序与验收标准。
 - [技术栈项目执行清单 v31](tech-stack-next-phase-checklist-v31.md) — 当前技术栈、自动化、纵深建设与 UX 推进看板。
 - [前端体验优化清单 v1](frontend-optimization-v1.md) — GitHub Pages 首页与交互体验优化计划。
 - [Cursor Cloud Agent：PR 与验证截图流程](cloud-agent-pr-workflow.md) — Cloud Agent 推送分支、开 PR、附验证截图的路径约定。
