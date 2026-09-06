@@ -1,3 +1,10 @@
+## [2026-09-06] ingest | sources/sites/nexus-humanoid-github-io.md — NEXUS 感知型基础策略 Research Preview（SJTU）；Paper/Code/arXiv 待发布；关键页 nexus-humanoid；交叉 foundation-policy / teleoperation / perceptive-bfm
+
+- **触发：** 用户指定 <https://nexus-humanoid.github.io/>，并要求自动合并 PR
+- **步骤 2.5：** Paper / arXiv / Code / Video 均 **Coming Soon**；GitHub 仅 [nexus-humanoid.github.io](https://github.com/nexus-humanoid/nexus-humanoid.github.io) 静态站，**非**训练代码
+- **新建：** `nexus-humanoid` 预告实体；sites + repos 归档
+- **交叉：** foundation-policy、teleoperation、perceptive-bfm（同轴对照，发布前勿混为同一工作）
+
 ## [2026-09-06] ingest | SDPG 双论文同名消歧 — 视觉 RL（arXiv:2605.26478 / HaoxiangYou/SDPG / Yale）+ LLM RLVR（arXiv:2606.04036 / lauyikfung/SDPG / UCLA）；关键页 paper-sdpg-visual-rl-stochastic-decoupled、paper-sdpg-self-distilled-policy-gradient；交叉 reinforcement-learning / sim2real / genesis-sim
 
 - **触发：** 用户指定两篇 arXiv、两个 GitHub 仓与 Yale 项目页，并要求自动合并 PR
