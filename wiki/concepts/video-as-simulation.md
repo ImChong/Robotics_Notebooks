@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-06
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
