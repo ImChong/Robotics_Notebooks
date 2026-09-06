@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3503,
-  "edge_count": 32196,
+  "node_count": 3504,
+  "edge_count": 32205,
   "coverage": {
-    "covered": 3476,
-    "total": 3476,
+    "covered": 3477,
+    "total": 3477,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -38,7 +38,8 @@
       "recency": "2026-09-06",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-sdpg-self-distilled-policy-gradient.md",
@@ -226,7 +227,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 900
+      "size": 903
     },
     {
       "label": "操作",

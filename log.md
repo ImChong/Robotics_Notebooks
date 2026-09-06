@@ -1,3 +1,10 @@
+## [2026-09-06] ingest | sources/repos/isaac_launchable.md、sites/nvidia-robotics-fundamentals-playlist.md — 接入 Isaac Launchable（Brev 浏览器 Isaac Lab+Sim）与 Robotics Fundamentals 播放列表；已开源模板；关键页 isaac-launchable；交叉 nvidia-brev / physical-ai-learning / getting-started-isaac-lab
+
+- **触发：** 用户指定 isaac-sim/isaac-launchable、resources.nvidia.com robotics-1 播放列表，并要求自动合并 PR
+- **步骤 2.5：** isaac-launchable **已开源**（GitHub Other 许可；Deploy 需 Isaac Sim 附加许可）；播放列表为营销 landing，动手课在 docs.nvidia.com
+- **新建：** `isaac-launchable` 实体；两份 sources 归档
+- **交叉：** nvidia-brev、nvidia-physical-ai-learning、nvidia-getting-started-isaac-lab
+
 ## [2026-09-06] ingest | sources/sites/nexus-humanoid-github-io.md — NEXUS 感知型基础策略 Research Preview（SJTU）；Paper/Code/arXiv 待发布；关键页 nexus-humanoid；交叉 foundation-policy / teleoperation / perceptive-bfm
 
 - **触发：** 用户指定 <https://nexus-humanoid.github.io/>，并要求自动合并 PR

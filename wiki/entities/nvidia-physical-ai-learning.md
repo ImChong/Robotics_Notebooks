@@ -2,12 +2,13 @@
 type: entity
 tags: [course, nvidia, isaac, omniverse, openusd, physical-ai, sim2real]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-06
 related:
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./nvidia-getting-started-isaac-lab.md
   - ./nvidia-learn-openusd.md
   - ./nvidia-brev.md
+  - ./isaac-launchable.md
   - ./nvidia-omniverse.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -17,6 +18,7 @@ related:
   - ../concepts/sim2real.md
 sources:
   - ../../sources/sites/nvidia-physical-ai-learning.md
+  - ../../sources/sites/nvidia-robotics-fundamentals-playlist.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/courses/nvidia_learn_openusd.md
@@ -64,7 +66,11 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 | Isaac ROS | ROS 2 + NITROS 真机感知导航 | [ros2-basics](../concepts/ros2-basics.md) |
 | Learn OpenUSD | USD 课纲与认证 | [nvidia-learn-openusd](./nvidia-learn-openusd.md) |
 
-无本地 GPU 时，官方推荐通过 **[NVIDIA Brev](./nvidia-brev.md)** 启动预配置 Isaac / Omniverse 环境（门户页内 Launchable 链接）。
+无本地 GPU 时，官方推荐通过 **[Isaac Launchable](./isaac-launchable.md)**（Brev 上预配置 Isaac Lab + Isaac Sim 浏览器环境）或 **[NVIDIA Brev](./nvidia-brev.md)** 自建实例。
+
+## Robotics Fundamentals 播放列表（营销漏斗）
+
+NVIDIA [Robotics Fundamentals Learning page](https://resources.nvidia.com/en-us-playlist-for-robotics/robotics-1?xs=954362) 是 **resources.nvidia.com** 上的视频/演讲索引（仿真、ROS、机器人学习、Cosmos、Physical AI 愿景等），主 CTA 指向本门户。它与 **docs.nvidia.com 可跟做课程** 分工明确：播放列表负责种草，动手课仍在本页下列路径（Isaac Sim/Lab/ROS、SO-101 等）。归档见 [`sources/sites/nvidia-robotics-fundamentals-playlist.md`](../../sources/sites/nvidia-robotics-fundamentals-playlist.md)。
 
 ## 与「生成式 AI」的边界（课程共性）
 
@@ -73,6 +79,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 ## 参考来源
 
 - [NVIDIA Physical AI Learning 门户](../../sources/sites/nvidia-physical-ai-learning.md)
+- [Robotics Fundamentals 播放列表](../../sources/sites/nvidia-robotics-fundamentals-playlist.md)
 - [SO-101 Sim2Real 课程归档](../../sources/courses/nvidia_sim_to_real_so101_isaac.md)
 - [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md)
 - [What is Physical AI?（NVIDIA Glossary）](https://www.nvidia.com/en-us/glossary/generative-physical-ai/)
@@ -84,6 +91,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 - [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [NVIDIA Brev](./nvidia-brev.md) — 云 GPU 与 Launchable 环境
+- [Isaac Launchable](./isaac-launchable.md) — 官方 Isaac Lab+Sim 浏览器 Launchable
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [LeRobot](./lerobot.md)
 - [Sim2Real](../concepts/sim2real.md)

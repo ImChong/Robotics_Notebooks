@@ -2,10 +2,11 @@
 type: entity
 tags: [course, nvidia, isaac-lab, isaac-sim, reinforcement-learning, sim2real, cartpole, manipulation, manager-based, skrl, ppo]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-06
 related:
   - ./nvidia-physical-ai-learning.md
   - ./nvidia-brev.md
+  - ./isaac-launchable.md
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./isaac-lab.md
   - ./isaac-sim.md
@@ -62,7 +63,7 @@ summary: "NVIDIA 官方 Isaac Lab 入门四模块课：Sim/Lab 分工与 MDP 工
 |----|---------------------------|
 | 课程正文 | 免费文档，无独立课程 GitHub |
 | 可运行代码 | **已开源** — [isaac-sim/IsaacLab](https://github.com/isaac-sim/IsaacLab)；任务由 `./isaaclab.sh --new` 生成 external 工程 |
-| 云 GPU | [NVIDIA Brev](./nvidia-brev.md) / Isaac Launchable；课内警告 Launchable 当时钉 **Lab 3.0**，可能与课测版本不兼容 |
+| 云 GPU | [Isaac Launchable](./isaac-launchable.md)（Brev 官方模板，钉 **Lab 3.0.0-beta2-post1 + Sim 6.0.1**）或 [NVIDIA Brev](./nvidia-brev.md) 自建实例；版本可能与课测 revision 不完全一致 |
 | 数据/权重 | 无单独发布；Cartpole / Reach 从零训 |
 
 ## 四模块地图
@@ -148,7 +149,7 @@ Gap 来源课内写成三条：离散化等 **近似误差**、质量/摩擦不�
 
 ## 工程实践
 
-1. **装栈：** 本地按 Isaac Lab 文档；无合适 GPU 走 Brev。先确认 Launchable 的 Lab 版本是否就是课测版本。
+1. **装栈：** 本地按 Isaac Lab 文档；无合适 GPU 走 [Isaac Launchable](./isaac-launchable.md) 或 Brev。先确认 Launchable 钉扎版本是否就是课测版本。
 2. **新建任务：** `./isaaclab.sh --new` 选 **External + Manager-based + skrl/PPO**，再 `pip install -e source/<Name>`，用 `list_envs.py` 确认注册。
 3. **训练：** `python scripts/skrl/train.py --task <id> --headless`；看过程去掉 `--headless`；云端流式加 `--livestream 2`。并行数默认 4096，机器吃不住就 `--num_envs`。
 4. **自定义臂：** Sim 里保证 **单一 Articulation Root**；Lab 里 USD 路径、关节名、`ee_link` 与命令 `body_name` 一致。
@@ -157,7 +158,7 @@ Gap 来源课内写成三条：离散化等 **近似误差**、质量/摩擦不�
 
 ## 局限与风险
 
-- **Launchable / Lab 3.0 可能对不齐课测版本。** 先跑 `zero_agent`，不要一上来 4096 环境 debug。
+- **Launchable 版本可能对不齐课测版本。** [Isaac Launchable](./isaac-launchable.md) 当前为 Lab 3.0.0-beta2-post1；先跑 `zero_agent`，不要一上来 4096 环境 debug。
 - **skrl YAML `input: STATES`：** 课内示例与部分模板在 skrl 2.x 会 `NoneType.shape`；社区修复是改成 `OBSERVATIONS`（[IsaacLab#5416](https://github.com/isaac-sim/IsaacLab/issues/5416)）。
 - **模块 4 没有动手。** 读完三类桥接不等于会部署；真机课走 [SO-101](./nvidia-so101-sim2real-lab-workflow.md) 或官方 Spot/装配博客。
 - **Implicit 执行器好训，不等于真机。** Reach 课用 implicit PD；上真机还要对齐 explicit / 执行器网络。
@@ -167,6 +168,7 @@ Gap 来源课内写成三条：离散化等 **近似误差**、质量/摩擦不�
 ## 关联页面
 
 - [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md) — 门户与路径选型
+- [Isaac Launchable](./isaac-launchable.md) — 无本地 GPU 时的官方浏览器环境
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md) — 同门户的 VLA/真机课
 - [Isaac Lab](./isaac-lab.md)
 - [Isaac Sim](./isaac-sim.md)

@@ -268,6 +268,7 @@
 - [Isaac Lab-Arena](wiki/entities/isaac-lab-arena.md) — Isaac Lab-Arena** 是 NVIDIA 在 Isaac Lab 之上的 **开源 Alpha 扩展**，面向通才机器人策略的 **任务策展、多样化 `📅unknown` `[entity_page]`
 - [Isaac Lab 默认环境](wiki/entities/isaac-lab-default-environments.md) — Isaac Lab 默认环境**是 Isaac Lab 随框架一起注册进 Gymnasium 的**开箱即跑任务集**：截至 **v3.0.0**（`main` @ `2e44ddb`，2026- `📅unknown` `[entity_page]`
 - [Isaac Lab](wiki/entities/isaac-lab.md) — Isaac Lab** 是 NVIDIA 当前官方主推的机器人学习框架，建立在 **Isaac Sim** 之上，用于 robot learning、locomotion、manipulation `📅unknown` `[entity_page]`
+- [Isaac Launchable](wiki/entities/isaac-launchable.md) — Isaac Launchable**（isaac-sim/isaac-launchable）把  `📅unknown` `[entity_page]`
 - [Isaac-RL-Two-wheel-Legged-Bot（lab.flamingo）](wiki/entities/isaac-rl-two-wheel-legged-bot.md) — Isaac-RL-Two-wheel-Legged-Bot** 是 [`jaykorea/Isaac-RL-Two-wheel-Legged-Bot`](https://github.com/ja `📅unknown` `[entity_page]`
 - [Isaac ROS Nvblox](wiki/entities/isaac-ros-nvblox.md) — isaac_ros_nvblox**（[NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_r `📅unknown` `[entity_page]`
 - [Isaac ROS Visual SLAM](wiki/entities/isaac-ros-visual-slam.md) — isaac_ros_visual_slam**（[NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-R `📅unknown` `[entity_page]`
