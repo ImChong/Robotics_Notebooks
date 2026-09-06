@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/leju-gmr.md
 summary: "乐聚机器人 开源项目 Leju-GMR（动作重定向）：动作重定向：人体/MoCap 动作映射为目标本体训练参考…"
 institutions:
   - leju
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Leju-GMR 源码归档](../../sources/repos/leju-gmr.md)（<https://github.com/LejuRobotics/Leju-GMR>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

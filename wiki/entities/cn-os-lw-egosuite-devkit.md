@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lw-egosuite-devkit.md
 summary: "光轮智能 开源项目 LW-Egosuite-DevKit（数据集/Benchmark）：转换并可视化人类第一视角MCAP数据，用于检查相机、轨迹和多模态记录后再进入训练数据管线。…"
 institutions:
   - lightwheel
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LW-Egosuite-DevKit 源码归档](../../sources/repos/lw-egosuite-devkit.md)（<https://github.com/LightwheelAI/LW-Egosuite-DevKit>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

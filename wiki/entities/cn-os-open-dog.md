@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/open-dog.md
 summary: "达妙科技 开源项目 open-dog（工程与工具）：公开达妙OpenDog01四足机器人资料，连接关节电机、机械结构和控制开发。…"
 institutions:
   - dmbots
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [open-dog 源码归档](../../sources/repos/open-dog.md)（<https://github.com/dmBots/open-dog>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

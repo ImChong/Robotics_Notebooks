@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/xarm-python-sdk.md
 summary: "众为创造 开源项目 xArm-Python-SDK（SDK/驱动）：提供UFACTORY系列机械臂的官方Python API，覆盖连接、状态读取、关节与笛卡尔运动及IO控制。…"
 institutions:
   - zhongwei
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [xArm-Python-SDK 源码归档](../../sources/repos/xarm-python-sdk.md)（<https://github.com/xArm-Developer/xArm-Python-SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

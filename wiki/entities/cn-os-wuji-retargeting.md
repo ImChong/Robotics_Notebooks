@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wuji-retargeting.md
 summary: "舞肌科技 开源项目 wuji-retargeting（动作重定向）：把Vision Pro获得的人手追踪结果映射为Wuji Hand可执行关节目标，为遥操作和示范采集提供人手到机器人手的映射入口。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wuji-retargeting 源码归档](../../sources/repos/wuji-retargeting.md)（<https://github.com/wuji-technology/wuji-retargeting>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

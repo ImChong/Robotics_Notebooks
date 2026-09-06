@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/robot_dev_config.md
 summary: "地瓜机器人 开源项目 robot_dev_config（工程与工具）：作为TogetheROS.Bot开发入口组织机器人中间件、依赖和设备配置。…"
 institutions:
   - d-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [robot_dev_config 源码归档](../../sources/repos/robot_dev_config.md)（<https://github.com/D-Robotics/robot_dev_config>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

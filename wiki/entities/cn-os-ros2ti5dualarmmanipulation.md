@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/ros2ti5dualarmmanipulation.md
 summary: "钛虎机器人 开源项目 ROS2Ti5DualArmManipulation（SDK/驱动）：人形双臂操作 ROS2 控制接口…"
 institutions:
   - ti5robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [ROS2Ti5DualArmManipulation 源码归档](../../sources/repos/ros2ti5dualarmmanipulation.md)（<https://github.com/ti5robot/ROS2Ti5DualArmManipulation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

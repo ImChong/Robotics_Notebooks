@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/ros2_sdk.md
+  - ../../sources/repos/linkerhand-ros2-sdk.md
 summary: "星动纪元 开源项目 ros2_sdk（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - roboterax
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [linkerhand-ros2-sdk 源码归档](../../sources/repos/linkerhand-ros2-sdk.md)（<https://github.com/linker-bot/linkerhand-ros2-sdk>）
+
+- [ros2_sdk 源码归档](../../sources/repos/ros2_sdk.md)（<https://github.com/roboterax/ros2_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

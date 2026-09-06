@@ -12,6 +12,7 @@ related:
 sources:
   - ../../sources/repos/engineai-rl-lab.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/repos/engineai_rl_lab.md
 ---
 
 # engineai_rl_lab
@@ -90,6 +91,8 @@ flowchart LR
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源
+
+- [engineai_rl_lab 源码归档](../../sources/repos/engineai_rl_lab.md)（<https://github.com/engineai-robotics/engineai_rl_lab>）
 
 - [engineai_rl_lab 来源归档](../../sources/repos/engineai-rl-lab.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)

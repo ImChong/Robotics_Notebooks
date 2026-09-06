@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/hunter_bipedal_control.md
 summary: "桥介数物 开源项目 hunter_bipedal_control（运动控制）：开源双足运动控制框架：非线性 MPC + 全身控制（WBC），面向 EC-hunter80 双足机器人，配套 Gazebo/MuJoCo 仿真与真机部署…"
 institutions:
   - bridgedp
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [hunter_bipedal_control 源码归档](../../sources/repos/hunter_bipedal_control.md)（<https://github.com/bridgedp/hunter_bipedal_control>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

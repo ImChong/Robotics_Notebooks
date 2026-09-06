@@ -10,6 +10,7 @@ related:
   - ./paper-occanyscene.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanoid-occupancy.md
+  - ../../sources/repos/humanoid-occupancy.md
 summary: "人形技术快速演进，厂商推出各式异构视觉感知模块。在各种感知范式里，基于占据（occupancy）的表示被广泛认为特别适合人形——它同时提供丰富的语义与 3D 几何信息。本文提出 Humanoid Occupancy：一个通用的多模态占据感知系统，整合软硬件组件、数据采集设备与专用标注流水线。框架用多模态融合生成栅格化占据输出，编码占据状态 + 语义标签，从而为任务规划与导航等下游任务提供整体环境理解。针对人形特有挑战，克服运动学干扰与遮挡、建立有效传感器布局策略；并构建首个面向人形的全景占据数据集。网络融合多模态特征与时序信息以保证鲁棒感知，为标准化通用视觉模块奠定基础。"
 ---
 
@@ -84,6 +85,8 @@ summary: "人形技术快速演进，厂商推出各式异构视觉感知模块�
 - 跨室内外视觉占据对照：[OccAnyScene](./paper-occanyscene.md) — 像素视锥高斯统一房间/街道协议；不解决人形自遮挡与传感器布局
 
 ## 参考来源
+
+- [Humanoid-Occupancy 源码归档](../../sources/repos/humanoid-occupancy.md)（<https://github.com/Open-X-Humanoid/Humanoid-Occupancy>）
 
 - [humanoid_pnb_humanoid-occupancy.md](../../sources/papers/humanoid_pnb_humanoid-occupancy.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System.html>

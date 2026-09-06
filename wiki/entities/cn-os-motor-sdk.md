@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/motor-sdk.md
 summary: "达妙科技 开源项目 motor-sdk（SDK/驱动）：提供达妙电机设备控制与通信示例，服务关节执行器调试和机器人底层接入。…"
 institutions:
   - dmbots
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [motor-sdk 源码归档](../../sources/repos/motor-sdk.md)（<https://github.com/dmBots/motor-sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

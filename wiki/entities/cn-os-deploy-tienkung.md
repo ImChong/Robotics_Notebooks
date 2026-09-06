@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/deploy_tienkung.md
 summary: "北京人形机器人创新中心 开源项目 Deploy_Tienkung（仿真环境）：ROS 2控制主库接收导出的强化学习策略，通过有限状态机、标准机器人接口和控制SDK驱动天工系列机器人；配套xSIM_MUJOCO提供相同消息链路的关节、IMU、地形和位置/力矩仿真，xhumanoid_sdk补充天工3.0关节与传感器示例…"
 institutions:
   - x-humanoid
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Deploy_Tienkung 源码归档](../../sources/repos/deploy_tienkung.md)（<https://github.com/Open-X-Humanoid/Deploy_Tienkung>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

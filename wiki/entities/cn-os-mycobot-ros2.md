@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/mycobot_ros2.md
 summary: "大象机器人 开源项目 mycobot_ros2（仿真环境）：为myCobot及相关机器人提供ROS2模型、驱动、MoveIt和仿真开发入口。…"
 institutions:
   - elephant-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [mycobot_ros2 源码归档](../../sources/repos/mycobot_ros2.md)（<https://github.com/elephantrobotics/mycobot_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

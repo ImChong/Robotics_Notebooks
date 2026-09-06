@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/a3-a3u-robot-model.md
 summary: "智元机器人 开源项目 A3-A3U-robot-model（本体模型资产）：提供A3与A3 Ultra多个版本的URDF、MJCF、网格、RViz配置及部分SRDF，使机器人几何、关节和规划语义能够进入ROS、MuJoCo与MoveIt工具链。…"
 institutions:
   - agibot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [A3-A3U-robot-model 源码归档](../../sources/repos/a3-a3u-robot-model.md)（<https://github.com/AgibotTech/A3-A3U-robot-model>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/astranav-memory.md
 summary: "阿里巴巴 开源项目 AstraNav-Memory（感知/导航）：视觉上下文压缩的终身具身导航（AstraNav 系列）…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [AstraNav-Memory 源码归档](../../sources/repos/astranav-memory.md)（<https://github.com/amap-cvlab/AstraNav-Memory>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

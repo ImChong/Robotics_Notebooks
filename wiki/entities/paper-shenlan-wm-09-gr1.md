@@ -17,6 +17,8 @@ sources:
   - ../../sources/papers/shenlan_wm_survey_09_gr1.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+  - ../../sources/repos/gr-1.md
+  - ../../sources/repos/paper_shenlan_wm_09_gr1.md
 ---
 
 # GR-1
@@ -82,6 +84,10 @@ GPT 风格端到端预测动作+未来图像；大规模视频预训练后机器
 - 原始 source：[shenlan_wm_survey_09_gr1.md](../../sources/papers/shenlan_wm_survey_09_gr1.md)
 
 ## 参考来源
+
+- [GR-1 源码归档](../../sources/repos/paper_shenlan_wm_09_gr1.md)（<https://github.com/ByteDance-Seed/GR-1>）
+
+- [GR-1 源码归档](../../sources/repos/gr-1.md)（<https://github.com/ByteDance-Seed/GR-1>）
 
 - [shenlan_wm_survey_09_gr1.md](../../sources/papers/shenlan_wm_survey_09_gr1.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)

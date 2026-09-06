@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/xarm_ros2.md
 summary: "众为创造 开源项目 xarm_ros2（仿真环境）：为xArm、UFACTORY 850和Lite6提供ROS2模型、硬件接口、MoveIt规划、Gazebo仿真和真机控制示例。…"
 institutions:
   - zhongwei
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [xarm_ros2 源码归档](../../sources/repos/xarm_ros2.md)（<https://github.com/xArm-Developer/xarm_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

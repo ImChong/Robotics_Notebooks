@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wall-x.md
 summary: "自变量机器人 开源项目 WALL-X（VLA/操作模型）：语言、视觉和机器人状态经过统一模型生成操作动作，面向多任务与跨本体执行；仓库开放训练或推理入口，构成X Square具身模型主线。…"
 institutions:
   - x-square-robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [WALL-X 源码归档](../../sources/repos/wall-x.md)（<https://github.com/X-Square-Robot/WALL-X>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

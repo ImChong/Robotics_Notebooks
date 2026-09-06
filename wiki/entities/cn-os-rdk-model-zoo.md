@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rdk_model_zoo.md
 summary: "地瓜机器人 开源项目 rdk_model_zoo（SDK/驱动）：提供在RDK平台部署的模型示例与转换入口，覆盖机器人感知和边缘推理任务。…"
 institutions:
   - d-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [rdk_model_zoo 源码归档](../../sources/repos/rdk_model_zoo.md)（<https://github.com/D-Robotics/rdk_model_zoo>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

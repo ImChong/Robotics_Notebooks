@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/atom-locomotion-training.md
 summary: "越疆科技 开源项目 atom-locomotion-training（运动RL/技能训练）：提供ATOM人形机器人Locomotion强化学习训练入口，连接机器人模型、任务环境和策略配置。…"
 institutions:
   - dobot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [atom-locomotion-training 源码归档](../../sources/repos/atom-locomotion-training.md)（<https://github.com/embodied-dobot/atom-locomotion-training>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

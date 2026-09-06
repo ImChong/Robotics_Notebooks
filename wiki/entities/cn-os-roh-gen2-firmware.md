@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/roh_gen2_firmware.md
 summary: "傲意科技 开源项目 roh_gen2_firmware（工程与工具）：ROHand Gen2 固件与文档…"
 institutions:
   - ohand
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [roh_gen2_firmware 源码归档](../../sources/repos/roh_gen2_firmware.md)（<https://github.com/oymotion/roh_gen2_firmware>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

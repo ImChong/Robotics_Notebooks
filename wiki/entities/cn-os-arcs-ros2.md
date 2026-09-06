@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/arcs_ros2_git.md
 summary: "遨博智能 开源项目 arcs_ros2（工程与工具）：面向AUBO ARCS控制系统提供ROS2硬件接口、机器人描述和轨迹控制示例。…"
 institutions:
   - aubo
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [arcs_ros2 源码归档](../../sources/repos/arcs_ros2_git.md)（<https://gitee.com/aubo-nxrobo/arcs_ros2.git>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

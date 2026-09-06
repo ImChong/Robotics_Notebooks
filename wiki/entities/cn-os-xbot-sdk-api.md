@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/xbot_sdk_api.md
 summary: "星动纪元 开源项目 xbot_sdk_api（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - roboterax
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [xbot_sdk_api 源码归档](../../sources/repos/xbot_sdk_api.md)（<https://github.com/roboterax/xbot_sdk_api>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

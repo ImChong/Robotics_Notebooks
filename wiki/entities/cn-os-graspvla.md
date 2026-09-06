@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/graspvla.md
 summary: "银河通用 开源项目 GraspVLA（VLA/操作模型）：视觉与语言目标经过空间理解和抓取策略生成六自由度末端动作，用于在开放物体与场景中完成抓取；项目连接视觉语言理解、抓取候选与机器人执行。…"
 institutions:
   - galbot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [GraspVLA 源码归档](../../sources/repos/graspvla.md)（<https://github.com/PKU-EPIC/GraspVLA>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/alicia-d-vlm-grasp.md
 summary: "玄雅科技 开源项目 Alicia-D-VLM-Grasp（VLA/操作模型）：Alicia-D 视觉语言模型抓取示例…"
 institutions:
   - xuanya
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Alicia-D-VLM-Grasp 源码归档](../../sources/repos/alicia-d-vlm-grasp.md)（<https://github.com/Synria-Robotics/Alicia-D-VLM-Grasp>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

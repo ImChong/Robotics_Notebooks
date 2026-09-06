@@ -17,6 +17,7 @@ sources:
   - ../../sources/papers/sun_awesome_wm_2603_23376_abot-physworld-interactive-world-foundat.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/repos/abot-physworld.md
 ---
 
 # ABot-PhysWorld
@@ -91,6 +92,8 @@ sources:
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [ABot-PhysWorld 源码归档](../../sources/repos/abot-physworld.md)（<https://github.com/amap-cvlab/ABot-PhysWorld>）
 
 - [`sources/papers/sun_awesome_wm_2603_23376_abot-physworld-interactive-world-foundat.md`](../../sources/papers/sun_awesome_wm_2603_23376_abot-physworld-interactive-world-foundat.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表

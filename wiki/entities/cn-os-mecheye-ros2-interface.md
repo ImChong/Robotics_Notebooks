@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/mecheye_ros2_interface.md
 summary: "梅卡曼德 开源项目 mecheye_ros2_interface（工程与工具）：为Mech-Eye工业3D相机提供ROS2接口，使机器人系统能够获取图像、深度和点云并接入感知与操作流程。…"
 institutions:
   - mech-mind
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [mecheye_ros2_interface 源码归档](../../sources/repos/mecheye_ros2_interface.md)（<https://github.com/MechMindRobotics/mecheye_ros2_interface>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

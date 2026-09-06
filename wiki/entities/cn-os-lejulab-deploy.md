@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lejulab-deploy.md
 summary: "乐聚机器人 开源项目 LejuLab-Deploy（运动RL/技能训练）：策略部署运行时：加载训练策略、下发关节命令…"
 institutions:
   - leju
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LejuLab-Deploy 源码归档](../../sources/repos/lejulab-deploy.md)（<https://github.com/LejuRobotics/LejuLab-Deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

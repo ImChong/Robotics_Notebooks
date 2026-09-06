@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/agibot_d1_max.md
+  - ../../sources/repos/agibot_d1_maxpro.md
 summary: "智元机器人 开源项目 Agibot_D1_Max（SDK/驱动）：C++ SDK通过高层运动接口、状态回调和模式切换连接D1 Max本体，仓库同时提供头文件、示例、URDF和按架构编译的动态库；系统版本与SDK兼容表决定哪些接口可以使用。…"
 institutions:
   - agibot
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Agibot_D1_MaxPro 源码归档](../../sources/repos/agibot_d1_maxpro.md)（<https://github.com/AgibotTech/Agibot_D1_MaxPro>）
+
+- [Agibot_D1_Max 源码归档](../../sources/repos/agibot_d1_max.md)（<https://github.com/AgibotTech/Agibot_D1_Max>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rpo_hardware.md
 summary: "萝卜派对（RoboParty） 开源项目 rpo_hardware（硬件开源）：RPO 人形硬件设计文件：机械结构、PCB、BOM 与制造资产…"
 institutions:
   - roboparty
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [rpo_hardware 源码归档](../../sources/repos/rpo_hardware.md)（<https://github.com/Roboparty/rpo_hardware>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

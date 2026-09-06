@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fairino-python-sdk.md
 summary: "法奥意威 开源项目 fairino-python-sdk（SDK/驱动）：提供法奥意威协作机器人Python控制SDK，支持状态读取、运动命令和应用程序集成。…"
 institutions:
   - fair-innovation
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [fairino-python-sdk 源码归档](../../sources/repos/fairino-python-sdk.md)（<https://github.com/FAIR-INNOVATION/fairino-python-sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -8,6 +8,7 @@ sources:
   - ../../sources/repos/unitree_ros2.md
   - ../../sources/sites/unitree-unistore.md
   - ../../sources/papers/humanoid_hardware.md
+  - ../../sources/repos/unitree_slam.md
 summary: "宇树科技是腿式与人形机器人领域高影响力硬件与官方开源软件组织；GitHub unitreerobotics 主线仓有详情 wiki 节点（SDK2/ROS/RL/遥操作/UnifoLM 等），周边仓合并或仅 sources 归档以避免 stub 与重复节点。"
 related:
   - ./humanoid-robot.md
@@ -371,6 +372,8 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 - UnifoLM-VLA 项目页：<https://unigen-x.github.io/unifolm-vla.github.io>
 
 ## 参考来源
+
+- [unitree_slam 源码归档](../../sources/repos/unitree_slam.md)（<https://github.com/unitreerobotics/unitree_slam>）
 
 - [unitreerobotics 组织归档](../../sources/repos/unitree.md) — 本次 ingest 主来源（组织级仓库地图与开源状态）
 - [UniStore 官方门户归档](../../sources/sites/unitree-unistore.md)

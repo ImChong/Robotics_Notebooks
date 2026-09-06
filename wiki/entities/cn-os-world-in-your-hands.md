@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/world-in-your-hands.md
 summary: "它石智航 开源项目 World In Your Hands（数据集/Benchmark）：采集者穿戴Oracle Suite在自然工作流中产生多视角视觉、手腕和手部轨迹、压力触觉及标定数据；在线与离线算法融合红外、RGB和IMU完成动作定位，质量验证后再进行原子动作、深度、掩码、指令和推理标注。仓库提供样例数据解析、可视化、Wi…"
 institutions:
   - tars-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [World In Your Hands 源码归档](../../sources/repos/world-in-your-hands.md)（<https://github.com/tars-robotics/World-In-Your-Hands>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

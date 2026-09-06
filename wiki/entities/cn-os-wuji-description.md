@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wuji-description.md
 summary: "舞肌科技 开源项目 wuji-description（本体模型资产）：提供Wuji Hand及相关设备的URDF、MJCF、MJX和USD模型资产，连接ROS、MuJoCo、JAX和Isaac仿真流程。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wuji-description 源码归档](../../sources/repos/wuji-description.md)（<https://github.com/wuji-technology/wuji-description>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

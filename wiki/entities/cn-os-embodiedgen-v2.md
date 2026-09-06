@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/embodiedgen.md
+  - ../../sources/repos/cn_os_embodiedgen_v2.md
 summary: "地平线 开源项目 EmbodiedGen V2（仿真环境）：语言、参考图和编辑指令生成带几何、材质、碰撞与可供性标注的仿真资产，再转换到SAPIEN、Isaac和MuJoCo。插件与并行任务入口把场景生成接到策略训练，可检验资产多样性是否带来下游泛化。…"
 institutions:
   - horizon-robotics
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [EmbodiedGen V2 源码归档](../../sources/repos/cn_os_embodiedgen_v2.md)（<https://github.com/HorizonRobotics/EmbodiedGen>）
+
+- [EmbodiedGen V2 源码归档](../../sources/repos/embodiedgen.md)（<https://github.com/HorizonRobotics/EmbodiedGen>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

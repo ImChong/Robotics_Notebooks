@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/giga-world-policy.md
 summary: "极佳视界 开源项目 GigaWorld-Policy（VLA/操作模型）：以动作和环境变化的联合表征训练机器人策略，使世界模型不仅生成未来画面，也为动作选择提供表征；适合研究GigaWorld世界生成能力怎样转成可执行控制信号。…"
 institutions:
   - gigaai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [GigaWorld-Policy 源码归档](../../sources/repos/giga-world-policy.md)（<https://github.com/open-gigaai/giga-world-policy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

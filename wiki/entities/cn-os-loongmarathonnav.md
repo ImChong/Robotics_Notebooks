@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/loongmarathonnav.md
+  - ../../sources/repos/cn_os_loongmarathonnav.md
 summary: "上海人形机器人创新中心 开源项目 LoongMarathonNav（工程与工具）：融合RTK、惯导、视觉和激光雷达处理城市复杂环境中的长程定位、避障与轨迹跟踪。…"
 institutions:
   - openloong
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LoongMarathonNav 源码归档](../../sources/repos/cn_os_loongmarathonnav.md)（<https://github.com/loongOpen/LoongMarathonNav>）
+
+- [LoongMarathonNav 源码归档](../../sources/repos/loongmarathonnav.md)（<https://github.com/loongOpen/LoongMarathonNav>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

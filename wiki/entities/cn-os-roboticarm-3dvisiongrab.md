@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/roboticarm-3dvisiongrab.md
 summary: "钛虎机器人 开源项目 RoboticArm-3DVisionGrab（工程与工具）：机械臂 3D 视觉抓取示例…"
 institutions:
   - ti5robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RoboticArm-3DVisionGrab 源码归档](../../sources/repos/roboticarm-3dvisiongrab.md)（<https://github.com/ti5robot/RoboticArm-3DVisionGrab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

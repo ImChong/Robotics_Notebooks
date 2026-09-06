@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/opendw.md
 summary: "原力灵机 开源项目 OpenDW（世界模型）：DW0.5接收语言、图像或视频、机器人类型、状态和动作，用共享骨干及视频、动作、价值专家联合预测未来画面、动作与状态价值；仓库开放权重、推理与训练代码，并给出RoboTwin式数据格式和动作条件回放入口。…"
 institutions:
   - original-intelligence
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [OpenDW 源码归档](../../sources/repos/opendw.md)（<https://github.com/dexmal/opendw>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

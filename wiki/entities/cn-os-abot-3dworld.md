@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/abot-3dworld.md
 summary: "阿里巴巴 开源项目 ABot-3DWorld（世界模型）：文本/图像/多视图/视频生成可探索 3D 世界（高德 ABot 系列）…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [ABot-3DWorld 源码归档](../../sources/repos/abot-3dworld.md)（<https://github.com/amap-cvlab/ABot-3DWorld>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

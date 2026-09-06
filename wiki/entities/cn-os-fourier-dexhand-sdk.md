@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fourier_dexhand_sdk.md
 summary: "傅利叶智能 开源项目 fourier_dexhand_sdk（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - fourier
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [fourier_dexhand_sdk 源码归档](../../sources/repos/fourier_dexhand_sdk.md)（<https://github.com/FFTAI/fourier_dexhand_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fastumi_data_conversion.md
 summary: "鹿明机器人 开源项目 FastUMI_Data_Conversion（数据集/Benchmark）：把FastUMI采集结果转换成下游训练或分析所需格式，连接原始记录与策略训练数据。…"
 institutions:
   - lumos
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [FastUMI_Data_Conversion 源码归档](../../sources/repos/fastumi_data_conversion.md)（<https://github.com/LumosRobot/FastUMI_Data_Conversion>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

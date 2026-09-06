@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/elite_robots_cs_ros2_driver.md
 summary: "艾利特机器人 开源项目 Elite_Robots_CS_ROS2_Driver（SDK/驱动）：为艾利特CS系列提供ROS2驱动、标定、机器人描述、控制器、MoveIt和Gazebo仿真集成。…"
 institutions:
   - elite-robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Elite_Robots_CS_ROS2_Driver 源码归档](../../sources/repos/elite_robots_cs_ros2_driver.md)（<https://github.com/Elite-Robots/Elite_Robots_CS_ROS2_Driver>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -11,6 +11,7 @@ related:
   - ./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
 sources:
   - ../../sources/papers/humanoid_pnb_latent.md
+  - ../../sources/repos/latent.md
 summary: "LATENT 只用 5 小时、3 × 5 米小场地采集的\"业余网球动作碎片\"，就把 Unitree G1 训练成会在真人对打下完成连续多拍回合的\"人形网球手\"——核心办法是先用动作跟踪器学出一个可修正的 latent 动作空间，再让高层策略在该空间里做 \"修正 + 组合\"，并用 Latent Action Barrier (LAB) 约束策略别跑出先验分布。"
 ---
 
@@ -63,6 +64,8 @@ LATENT 只用 5 小时、3 × 5 米小场地采集的"业余网球动作碎片"�
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源
+
+- [LATENT 源码归档](../../sources/repos/latent.md)（<https://github.com/GalaxyGeneralRobotics/LATENT>）
 
 - [humanoid_pnb_latent.md](../../sources/papers/humanoid_pnb_latent.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/LATENT__Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Human_Motion_Dat/LATENT__Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Human_Motion_Dat.html>

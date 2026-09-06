@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/engineai_ros2_workspace.md
 summary: "众擎机器人 开源项目 engineai_ros2_workspace（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - engineai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [engineai_ros2_workspace 源码归档](../../sources/repos/engineai_ros2_workspace.md)（<https://github.com/engineai-robotics/engineai_ros2_workspace>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/pyorbbecsdk.md
 summary: "奥比中光 开源项目 pyorbbecsdk（SDK/驱动）：提供OrbbecSDK的Python绑定，便于快速构建深度感知、采集和标定工具。…"
 institutions:
   - orbbec
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [pyorbbecsdk 源码归档](../../sources/repos/pyorbbecsdk.md)（<https://github.com/orbbec/pyorbbecsdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/seersdk4j.md
 summary: "仙工智能 开源项目 SeerSdk4j（SDK/驱动）：为仙工智能移动机器人控制器提供Java TCP客户端与请求示例，便于业务系统读取状态和调用控制接口。…"
 institutions:
   - seer
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [SeerSdk4j 源码归档](../../sources/repos/seersdk4j.md)（<https://github.com/seer-robotics/SeerSdk4j>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

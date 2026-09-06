@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/a3_ultra_usd.md
 summary: "智元机器人 开源项目 A3_Ultra_usd（本体模型资产）：仿真级USD按Isaac Sim Asset Structure 3.0组织A3 Ultra的层级、视觉与碰撞网格、质量惯量、关节限制和驱动参数，并通过Physics Variant切换通用USD、PhysX和MuJoCo物理配置。…"
 institutions:
   - agibot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [A3_Ultra_usd 源码归档](../../sources/repos/a3_ultra_usd.md)（<https://github.com/AgibotTech/A3_Ultra_usd>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/giga-world-1.md
+  - ../../sources/repos/cn_os_gigaworld_1.md
 summary: "极佳视界 开源项目 GigaWorld-1（世界模型）：GigaWorld-1继续研究机器人动作条件下的未来环境生成、交互一致性和世界模型评测，为具身数据生成与策略训练提供可控环境变化。…"
 institutions:
   - gigaai
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [GigaWorld-1 源码归档](../../sources/repos/cn_os_gigaworld_1.md)（<https://github.com/open-gigaai/giga-world-1>）
+
+- [GigaWorld-1 源码归档](../../sources/repos/giga-world-1.md)（<https://github.com/open-gigaai/giga-world-1>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

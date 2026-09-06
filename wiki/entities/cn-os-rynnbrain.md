@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_rynnbrain.md
 summary: "阿里巴巴 开源项目 RynnBrain（具身Agent/规划）：视觉和语言输入先形成场景与任务表示，再输出任务步骤或技能调用，为下层VLA、导航和操作策略提供高层目标；仓库用于理解Rynn体系中大脑层与动作层的接口。…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RynnBrain 源码归档](../../sources/repos/cn_os_rynnbrain.md)（<https://github.com/alibaba-damo-academy/RynnBrain>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

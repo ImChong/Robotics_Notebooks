@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rynnworld-4d.md
 summary: "阿里巴巴 开源项目 RynnWorld-4D（世界模型）：模型联合表达三维空间结构和时间演化，用于预测机器人动作后的场景变化与对象运动；适合作为空间理解、世界生成和规划之间的研究入口。…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RynnWorld-4D 源码归档](../../sources/repos/rynnworld-4d.md)（<https://github.com/alibaba-damo-academy/RynnWorld-4D>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

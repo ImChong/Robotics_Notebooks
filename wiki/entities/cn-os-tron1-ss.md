@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/tron1-ss.md
 summary: "逐际动力 开源项目 tron1-ss（工程与工具）：感知/定位/建图模块：为导航与控制提供环境状态…"
 institutions:
   - limx
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [tron1-ss 源码归档](../../sources/repos/tron1-ss.md)（<https://github.com/limxdynamics/tron1-ss>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

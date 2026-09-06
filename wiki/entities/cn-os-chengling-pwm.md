@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/chengling-pwm.md
 summary: "智澄AI 开源项目 Chengling-PWM（世界模型）：机器人原生 JEPA 物理世界模型：从机器人示范学习物理动力学并预测动作轨迹（配套 TR5 Pro 人形机器人）…"
 institutions:
   - zhicheng-ai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Chengling-PWM 源码归档](../../sources/repos/chengling-pwm.md)（<https://github.com/ZhiChengAIR/Chengling-PWM>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

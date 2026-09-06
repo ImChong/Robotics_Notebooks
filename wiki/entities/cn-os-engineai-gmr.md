@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/gmr.md
+  - ../../sources/repos/cn_os_engineai_gmr.md
 summary: "众擎机器人 开源项目 EngineAI GMR（动作重定向）：动作重定向：人体/MoCap 动作映射为目标本体训练参考…"
 institutions:
   - engineai
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [EngineAI GMR 源码归档](../../sources/repos/cn_os_engineai_gmr.md)（<https://github.com/engineai-robotics/GMR>）
+
+- [EngineAI GMR 源码归档](../../sources/repos/gmr.md)（<https://github.com/engineai-robotics/GMR>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

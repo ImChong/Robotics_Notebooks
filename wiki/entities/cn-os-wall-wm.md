@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wall-wm.md
 summary: "自变量机器人 开源项目 WALL-WM（世界模型）：联合建模场景视频、机器人状态与动作，预测执行后的环境变化，为动作选择和策略训练提供世界表征；仓库公开模型结构与训练评测入口。…"
 institutions:
   - x-square-robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [WALL-WM 源码归档](../../sources/repos/wall-wm.md)（<https://github.com/X-Square-Robot/WALL-WM>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/open-aoe.md
 summary: "蚂蚁集团 开源项目 Open-AoE（数据集/Benchmark）：把消费级手机视频接到数据质检、相机与手部运动恢复、原子动作标注、可视化、跨本体重定向、机器人回放、模型格式转换和VLA或世界模型训练配方。…"
 institutions:
   - ant-group
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Open-AoE 源码归档](../../sources/repos/open-aoe.md)（<https://github.com/ant-research/Open-AoE>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

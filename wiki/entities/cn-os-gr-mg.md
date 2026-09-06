@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/gr-mg.md
 summary: "字节跳动机器人团队 开源项目 GR-MG（VLA/操作模型）：GR-MG 机器人操作生成模型官方实现…"
 institutions:
   - bytedance
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [GR-MG 源码归档](../../sources/repos/gr-mg.md)（<https://github.com/bytedance/GR-MG>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

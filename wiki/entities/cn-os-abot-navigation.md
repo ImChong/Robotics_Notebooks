@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_abot_navigation.md
 summary: "阿里巴巴 开源项目 ABot-Navigation（数据集/Benchmark）：视觉与语言指令经过场景理解和导航策略生成移动决策，仓库提供Benchmark、评测和方法入口；它用于检验高层语言目标怎样接到底盘导航，而不是机械臂操作。…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [ABot-Navigation 源码归档](../../sources/repos/cn_os_abot_navigation.md)（<https://github.com/amap-cvlab/ABot-Navigation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

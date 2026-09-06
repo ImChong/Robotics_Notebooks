@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/videoworld.md
 summary: "字节跳动机器人团队 开源项目 VideoWorld（世界模型）：从无标注视频学习潜在动态和行为表示，为从视觉变化中获得动作先验提供上游模型案例。…"
 institutions:
   - bytedance
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [VideoWorld 源码归档](../../sources/repos/videoworld.md)（<https://github.com/ByteDance-Seed/VideoWorld>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

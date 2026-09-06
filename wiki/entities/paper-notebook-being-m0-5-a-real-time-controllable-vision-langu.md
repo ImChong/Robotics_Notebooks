@@ -9,6 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_being-m0-5.md
+  - ../../sources/repos/being-m0_5.md
 summary: "人类动作生成潜力巨大，但现有视觉-语言-动作模型（VLMM）实用部署受限。作者指出可控性是主瓶颈，体现在五方面：对多样人类指令响应不足、姿态初始化能力有限、长序列表现差、对未见场景处理不足、缺乏对各身体部位的细粒度控制。为此提出Being-M0.5，并引入 HuMo100M ——迄今最大最全的人类动作数据集（500 万+ 自采动作序列、1 亿条多任务指令实例、细粒度部位级标注）。方法用部位感知残差量化（part-aware residual quantization）做动作 token 化，实现逐部位的精细控制。模型在多个动作生成基准上达 SOTA，同时保持实时执行效率。"
 ---
 
@@ -82,6 +83,8 @@ VLMM 的**可控性**不足（五大短板）：响应多样指令差、姿态�
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源
+
+- [Being-M0.5 源码归档](../../sources/repos/being-m0_5.md)（<https://github.com/BeingBeyond/Being-M0.5>）
 
 - [humanoid_pnb_being-m0-5.md](../../sources/papers/humanoid_pnb_being-m0-5.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html>

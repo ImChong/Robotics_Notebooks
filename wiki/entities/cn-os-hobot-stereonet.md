@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/hobot_stereonet.md
 summary: "地瓜机器人 开源项目 hobot_stereonet（工程与工具）：从双目图像实时估计深度，为机器人三维感知、避障和操作提供环境几何输入。…"
 institutions:
   - d-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [hobot_stereonet 源码归档](../../sources/repos/hobot_stereonet.md)（<https://github.com/D-Robotics/hobot_stereonet>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

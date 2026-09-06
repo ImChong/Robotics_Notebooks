@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fastumi_data_platform_web.md
 summary: "鹿明机器人 开源项目 FastUMI_Data_Platform_Web（数据集/Benchmark）：提供FastUMI Pro数据管理Web平台，用于查看、组织和管理采集任务与数据。…"
 institutions:
   - lumos
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [FastUMI_Data_Platform_Web 源码归档](../../sources/repos/fastumi_data_platform_web.md)（<https://github.com/LumosRobot/FastUMI_Data_Platform_Web>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -15,6 +15,7 @@ related:
   - ../methods/ppo.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/repos/matrix.md
 summary: "MATRiX 是智身科技（GENISOM AI）开源的高保真联合仿真平台：MuJoCo 可微物理 + UE5 视觉渲染 + GPU 并行，支撑四足 SysID、PPO 训练与 Sim2Real 部署链。"
 ---
 
@@ -80,5 +81,7 @@ summary: "MATRiX 是智身科技（GENISOM AI）开源的高保真联合仿真�
 - IROS 2025 四足挑战赛冠军案例（曼彻斯特大学 × 智身钢镚）
 
 ## 参考来源
+
+- [matrix 源码归档](../../sources/repos/matrix.md)（<https://github.com/zsibot/matrix>）
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程大纲与 Project 描述

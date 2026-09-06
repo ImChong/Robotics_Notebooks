@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/aloha-agilex.md
 summary: "松灵机器人 开源项目 aloha-agilex（具身Agent/规划）：移动操作（Loco-Manip）策略接入…"
 institutions:
   - agilex
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [aloha-agilex 源码归档](../../sources/repos/aloha-agilex.md)（<https://github.com/agilexrobotics/aloha-agilex>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

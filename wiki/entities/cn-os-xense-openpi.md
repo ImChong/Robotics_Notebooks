@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/xense-openpi.md
 summary: "千觉机器人 开源项目 xense-openpi（工程与工具）：触觉数据接入 OpenPI（pi0）训练与推理链路…"
 institutions:
   - qianjue
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [xense-openpi 源码归档](../../sources/repos/xense-openpi.md)（<https://github.com/XenseRobotics-AI/xense-openpi>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/sites/agibot-world.md
+  - ../../sources/repos/agibot-world.md
+  - ../../sources/repos/agibot_world_2026.md
 summary: "AGIBOT WORLD 2026 是智元 2026-06 开源的真实世界机器人操作数据集：基于精灵 G2 在商业/家居/工业等场景采集多模态示范，首期主题聚焦模仿学习与自由采集范式。"
 ---
 
@@ -56,6 +58,10 @@ summary: "AGIBOT WORLD 2026 是智元 2026-06 开源的真实世界机器人操�
 - [模仿学习](../methods/imitation-learning.md)
 
 ## 参考来源
+
+- [AgiBot-World 源码归档](../../sources/repos/agibot_world_2026.md)（<https://github.com/AgibotTech/AgiBot-World>）
+
+- [AgiBot-World 源码归档](../../sources/repos/agibot-world.md)（<https://github.com/AgibotTech/AgiBot-World>）
 
 - [wechat_embodied_ai_lab_agibot_june_2026_release.md](../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md)
 - [agibot-world.md](../../sources/sites/agibot-world.md)

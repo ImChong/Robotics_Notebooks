@@ -17,6 +17,7 @@ sources:
   - ../../sources/papers/sun_awesome_r2s2r_2507_21981_discoverse-efficient-robot-simulation-in.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
+  - ../../sources/repos/discoverse.md
 ---
 
 # DISCOVERSE
@@ -91,6 +92,8 @@ The first unified, modular, open-source 3DGS-based simulation framework for Real
 - 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
 
 ## 参考来源
+
+- [DISCOVERSE 源码归档](../../sources/repos/discoverse.md)（<https://github.com/discoverse-dev/DISCOVERSE>）
 
 - [`sources/papers/sun_awesome_r2s2r_2507_21981_discoverse-efficient-robot-simulation-in.md`](../../sources/papers/sun_awesome_r2s2r_2507_21981_discoverse-efficient-robot-simulation-in.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表

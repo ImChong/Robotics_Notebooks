@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/kuavo-ros-opensource.md
 summary: "乐聚机器人 开源项目 kuavo-ros-opensource（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - leju
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [kuavo-ros-opensource 源码归档](../../sources/repos/kuavo-ros-opensource.md)（<https://github.com/LejuRobotics/kuavo-ros-opensource>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

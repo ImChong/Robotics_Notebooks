@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lightwheel-simready-asset.md
 summary: "光轮智能 开源项目 Lightwheel-simready-asset（本体模型资产）：提供机器人训练和交互仿真所需的开源三维数字资产。…"
 institutions:
   - lightwheel
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Lightwheel-simready-asset 源码归档](../../sources/repos/lightwheel-simready-asset.md)（<https://github.com/LightwheelAI/Lightwheel-simready-asset>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

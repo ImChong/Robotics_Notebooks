@@ -12,6 +12,7 @@ related:
 sources:
   - ../../sources/sites/gigaworld-0.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/repos/giga-world-0.md
 ---
 
 # GigaWorld-0
@@ -90,6 +91,8 @@ flowchart LR
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源
+
+- [GigaWorld-0 源码归档](../../sources/repos/giga-world-0.md)（<https://github.com/open-gigaai/giga-world-0>）
 
 - [GigaWorld-0 来源归档](../../sources/sites/gigaworld-0.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/hesailidar_sdk_2_0.md
 summary: "禾赛科技 开源项目 HesaiLidar_SDK_2.0（SDK/驱动）：提供禾赛激光雷达数据接收、解析和点云输出SDK，为机器人定位、感知和避障提供传感器输入。…"
 institutions:
   - hesai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [HesaiLidar_SDK_2.0 源码归档](../../sources/repos/hesailidar_sdk_2_0.md)（<https://github.com/HesaiTechnology/HesaiLidar_SDK_2.0>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

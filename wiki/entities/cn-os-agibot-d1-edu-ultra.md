@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/agibot_d1_edu-ultra.md
 summary: "智元机器人 开源项目 agibot_D1_Edu-Ultra（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - agibot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [agibot_D1_Edu-Ultra 源码归档](../../sources/repos/agibot_d1_edu-ultra.md)（<https://github.com/AgibotTech/agibot_D1_Edu-Ultra>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

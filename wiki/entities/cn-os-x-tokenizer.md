@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/x-tokenizer.md
 summary: "自变量机器人 开源项目 X-Tokenizer（VLA/操作模型）：把不同机器人或任务的连续动作编码为可由序列模型处理的Token，并解码回可执行动作；它为WALL系列跨本体训练提供动作表示基础。…"
 institutions:
   - x-square-robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [X-Tokenizer 源码归档](../../sources/repos/x-tokenizer.md)（<https://github.com/X-Square-Robot/X-Tokenizer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

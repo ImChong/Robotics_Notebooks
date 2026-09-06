@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/uf-gym.md
 summary: "众为创造 开源项目 uf-gym（运动RL/技能训练）：在panda-gym基础上加入UFACTORY机器人模型和到达、抓取放置等任务，用于机械臂强化学习的快速仿真实验。…"
 institutions:
   - zhongwei
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [uf-gym 源码归档](../../sources/repos/uf-gym.md)（<https://github.com/xArm-Developer/uf-gym>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

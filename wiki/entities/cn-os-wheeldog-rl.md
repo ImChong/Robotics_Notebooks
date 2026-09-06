@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wheeldog_rl.md
 summary: "仙工智能 开源项目 wheelDog_RL（运动RL/技能训练）：仙工智能公开的第一阶段轮足机器人强化学习项目，为其轮足平台提供训练环境与策略实验入口。…"
 institutions:
   - seer
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wheelDog_RL 源码归档](../../sources/repos/wheeldog_rl.md)（<https://github.com/seer-robotics/wheelDog_RL>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

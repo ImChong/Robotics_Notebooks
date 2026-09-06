@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/embodied-skill-kit.md
 summary: "北京人形机器人创新中心 开源项目 embodied-skill-kit（具身Agent/规划）：具身 Agent：任务规划与技能调度…"
 institutions:
   - x-humanoid
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [embodied-skill-kit 源码归档](../../sources/repos/embodied-skill-kit.md)（<https://github.com/Open-X-Humanoid/embodied-skill-kit>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

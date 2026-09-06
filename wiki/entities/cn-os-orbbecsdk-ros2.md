@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/orbbecsdk_ros2.md
 summary: "奥比中光 开源项目 OrbbecSDK_ROS2（SDK/驱动）：把奥比中光相机接入ROS2，发布图像、深度和相机参数供感知与机器人应用使用。…"
 institutions:
   - orbbec
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [OrbbecSDK_ROS2 源码归档](../../sources/repos/orbbecsdk_ros2.md)（<https://github.com/orbbec/OrbbecSDK_ROS2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wiki-grx-pipeline.md
 summary: "傅利叶智能 开源项目 Wiki-GRx-Pipeline（部署运行时）：以模型准备、Isaac Gym训练、MuJoCo验证和真机部署四步连接Wiki-GRx-URDF、Wiki-GRx-MJCF、Wiki-GRx-Gym、Wiki-GRx-Mujoco与Wiki-GRx-Deploy，使读者能按同一机器人型号…"
 institutions:
   - fourier
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Wiki-GRx-Pipeline 源码归档](../../sources/repos/wiki-grx-pipeline.md)（<https://github.com/FFTAI/Wiki-GRx-Pipeline>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

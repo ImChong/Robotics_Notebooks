@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/galaxeavla.md
 summary: "星海图 开源项目 GalaxeaVLA（VLA/操作模型）：语言、视觉和机器人状态经过VLA生成移动底盘与双臂动作，用于在星海图本体上执行多步骤移动操作任务；仓库提供模型、数据或部署入口。…"
 institutions:
   - galaxea
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [GalaxeaVLA 源码归档](../../sources/repos/galaxeavla.md)（<https://github.com/OpenGalaxea/GalaxeaVLA>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lite3_rl_deploy.md
 summary: "云深处科技 开源项目 Lite3 RL Deploy（仿真环境）：把训练得到的PyTorch策略转换为ONNX，并通过策略运行器、机器人接口和Idle、StandUp、RL、JointDamping状态机接入MuJoCo或PyBullet；切换编译平台与网络配置后可连接Lite3运动主机，形成仿真检查到实…"
 institutions:
   - deeprobotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Lite3 RL Deploy 源码归档](../../sources/repos/lite3_rl_deploy.md)（<https://github.com/DeepRoboticsLab/Lite3_rl_deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

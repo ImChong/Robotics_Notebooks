@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/px_omnisharing_dataprocess_kit.md
 summary: "帕西尼感知科技 开源项目 px_omnisharing_dataprocess_kit（数据集/Benchmark）：触觉数据产线后处理工具链（官方首个开源项目）：把 Super EID 产线原始数据（DF-1）经双手/物体位姿估计（PX Pose）加工为 DF-2/DF-2R，并转出可直接训练的 DF-3（LeRobot 格式）；配套发布 Omnisha…"
 institutions:
   - paxini
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [px_omnisharing_dataprocess_kit 源码归档](../../sources/repos/px_omnisharing_dataprocess_kit.md)（<https://github.com/px-DataCollection/px_omnisharing_dataprocess_kit>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

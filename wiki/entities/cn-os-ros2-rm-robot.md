@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/ros2_rm_robot.md
 summary: "睿尔曼智能 开源项目 ros2_rm_robot（工程与工具）：提供睿尔曼机械臂ROS2驱动与消息接口，支持规划、感知和双臂系统集成。…"
 institutions:
   - realman
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [ros2_rm_robot 源码归档](../../sources/repos/ros2_rm_robot.md)（<https://github.com/RealManRobot/ros2_rm_robot>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

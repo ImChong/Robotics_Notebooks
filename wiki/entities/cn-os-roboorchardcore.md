@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/roboorchardcore.md
 summary: "地平线 开源项目 RoboOrchardCore（数据采集/工具）：用类型化配置和批量张量容器统一相机、坐标变换、关节状态与环境数据，再由动作、观测和事件管理器组织控制循环；本地或Ray远程策略沿同一接口接入，使仿真、训练和部署代码共享显式的数据形状与运行边界。…"
 institutions:
   - horizon-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RoboOrchardCore 源码归档](../../sources/repos/roboorchardcore.md)（<https://github.com/HorizonRobotics/RoboOrchardCore>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

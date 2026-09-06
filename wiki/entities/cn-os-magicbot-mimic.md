@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/magicbot-mimic.md
 summary: "魔法原子 开源项目 magicbot-mimic（全身动作跟踪/技能训练）：面向MagicBot训练动作模仿与全身跟踪策略，连接参考动作、策略和机器人关节目标。…"
 institutions:
   - magiclab
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [magicbot-mimic 源码归档](../../sources/repos/magicbot-mimic.md)（<https://github.com/MagiclabRobotics/magicbot-mimic>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -18,6 +18,7 @@ sources:
   - ../../sources/papers/sun_awesome_wm_2607_06558_rynnworld-teleop-an-action-conditioned-w.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/repos/rynnworld-teleop.md
 ---
 
 # RynnWorld-Teleop
@@ -93,6 +94,8 @@ Action-conditioned world model for digital teleoperation.
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [RynnWorld-Teleop 源码归档](../../sources/repos/rynnworld-teleop.md)（<https://github.com/alibaba-damo-academy/RynnWorld-Teleop>）
 
 - [`sources/papers/sun_awesome_wm_2607_06558_rynnworld-teleop-an-action-conditioned-w.md`](../../sources/papers/sun_awesome_wm_2607_06558_rynnworld-teleop-an-action-conditioned-w.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表

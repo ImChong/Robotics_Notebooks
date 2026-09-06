@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lumos_sdk.md
 summary: "鹿明机器人 开源项目 lumos_sdk（SDK/驱动）：提供鹿明机器人C++集成接口，使状态、设备与控制功能接入上层系统。…"
 institutions:
   - lumos
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [lumos_sdk 源码归档](../../sources/repos/lumos_sdk.md)（<https://github.com/LumosRobot/lumos_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

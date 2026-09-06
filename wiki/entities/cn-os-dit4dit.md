@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/dit4dit.md
 summary: "妙动科技 开源项目 DiT4DiT（VLA/操作模型）：将视频生成DiT的中间去噪特征与流匹配动作头联合训练，使视觉未来表征直接服务机器人动作预测；仓库开放训练与评测代码，模型权重另由官方数据卡提供。…"
 institutions:
   - miaodong
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [DiT4DiT 源码归档](../../sources/repos/dit4dit.md)（<https://github.com/Mondo-Robotics/DiT4DiT>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

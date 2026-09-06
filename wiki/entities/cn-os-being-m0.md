@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/being-m0.md
 summary: "智在无界 开源项目 Being-M0（动作重定向）：动作重定向：人体/MoCap 动作映射为目标本体训练参考…"
 institutions:
   - agilex-ai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Being-M0 源码归档](../../sources/repos/being-m0.md)（<https://github.com/BeingBeyond/Being-M0>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

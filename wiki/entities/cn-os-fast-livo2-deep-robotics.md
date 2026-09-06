@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fast-livo2-deep-robotics.md
 summary: "云深处科技 开源项目 fast-livo2-deep-robotics（工程与工具）：感知/定位/建图模块：为导航与控制提供环境状态…"
 institutions:
   - deeprobotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [fast-livo2-deep-robotics 源码归档](../../sources/repos/fast-livo2-deep-robotics.md)（<https://github.com/DeepRoboticsLab/fast-livo2-deep-robotics>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wuji-hand-teleop.md
 summary: "舞肌科技 开源项目 wuji-hand-teleop（遥操作与数据采集）：通过ROS2接入多种人体输入设备并实时控制Wuji Hand和机器人手臂，为示范采集和操作闭环提供统一入口。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wuji-hand-teleop 源码归档](../../sources/repos/wuji-hand-teleop.md)（<https://github.com/wuji-technology/wuji-hand-teleop>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

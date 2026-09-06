@@ -13,6 +13,7 @@ related:
   - ./navigation2.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/repos/genisom_roamerx_open.md
 summary: "RoamerX 是智身科技开源的四足导航栈（GENISOM-AI）：ROS2 Nav2 增强、LiDAR SLAM、MPPI 局部规划与行为树，与 MATRiX/RL 运动策略分层集成。"
 ---
 
@@ -73,5 +74,7 @@ summary: "RoamerX 是智身科技开源的四足导航栈（GENISOM-AI）：ROS2
 - [Quadruped Control Curriculum](./quadruped-control-curriculum.md) — Project 4 集成说明
 
 ## 参考来源
+
+- [genisom_roamerx_open 源码归档](../../sources/repos/genisom_roamerx_open.md)（<https://github.com/zsibot/genisom_roamerx_open>）
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程第 7 章与 Final Project

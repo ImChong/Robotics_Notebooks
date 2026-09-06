@@ -9,6 +9,7 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
 sources:
   - ../../sources/repos/openloong_dyn_control.md
+  - ../../sources/repos/openloong-dyn-control.md
 summary: "OpenLoong-Dyn-Control 是青龙人形 MuJoCo 动力学控制包：MPC+WBC 行走/跳跃/盲踩，与 OpenLoong Framework 并行。"
 ---
 
@@ -45,6 +46,8 @@ summary: "OpenLoong-Dyn-Control 是青龙人形 MuJoCo 动力学控制包：MPC+
 - **硬件**：实机需配合 [OpenLoong](./openloong.md) Framework 与 EtherCAT 驱动。
 
 ## 参考来源
+
+- [OpenLoong-Dyn-Control 源码归档](../../sources/repos/openloong-dyn-control.md)（<https://github.com/loongOpen/OpenLoong-Dyn-Control>）
 
 - [sources/repos/openloong_dyn_control.md](../../sources/repos/openloong_dyn_control.md)
 - [loongOpen/OpenLoong-Dyn-Control](https://github.com/loongOpen/OpenLoong-Dyn-Control)

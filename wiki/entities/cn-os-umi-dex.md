@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/umi-dex.md
 summary: "灵心巧手 开源项目 umi-dex（数据集/Benchmark）：面向灵巧手操作采集高质量示范数据，连接人类操作输入、灵巧手状态与训练数据转换。…"
 institutions:
   - linkerbot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [umi-dex 源码归档](../../sources/repos/umi-dex.md)（<https://github.com/linker-bot/umi-dex>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

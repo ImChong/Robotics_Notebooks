@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/openpi-agilex.md
 summary: "松灵机器人 开源项目 openpi-agilex（VLA/操作模型）：VLA/策略接入：模型输出动作块驱动本体执行…"
 institutions:
   - agilex
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [openpi-agilex 源码归档](../../sources/repos/openpi-agilex.md)（<https://github.com/agilexrobotics/openpi-agilex>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/gloria-m-sdk.md
 summary: "玄雅科技 开源项目 Gloria-M-SDK（SDK/驱动）：云犀夹爪 Python SDK…"
 institutions:
   - xuanya
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Gloria-M-SDK 源码归档](../../sources/repos/gloria-m-sdk.md)（<https://github.com/Synria-Robotics/Gloria-M-SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

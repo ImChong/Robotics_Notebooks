@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rightarmmotionsolver.md
 summary: "钛虎机器人 开源项目 RightArmMotionSolver（工程与工具）：人形右手运动学解算器…"
 institutions:
   - ti5robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RightArmMotionSolver 源码归档](../../sources/repos/rightarmmotionsolver.md)（<https://github.com/ti5robot/RightArmMotionSolver>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

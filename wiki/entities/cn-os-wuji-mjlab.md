@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wuji-mjlab.md
 summary: "舞肌科技 开源项目 wuji-mjlab（移动操作）：基于mjlab训练Wuji Hand的手内物体旋转策略，公开PPO训练和Sim2Real部署入口，用于检查灵巧手接触控制从仿真到真机的完整链路。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wuji-mjlab 源码归档](../../sources/repos/wuji-mjlab.md)（<https://github.com/wuji-technology/wuji-mjlab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/hy-embodied-rxbrain-1_0.md
+  - ../../sources/repos/cn_os_rxbrain_1_0.md
 summary: "腾讯机器人实验室 开源项目 RxBrain-1.0（具身Agent/规划）：视觉与语言输入形成场景理解和任务计划，再向下层操作或导航策略发出目标；项目用于区分高层认知、策略动作与低层控制三种职责。…"
 institutions:
   - tencent
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RxBrain-1.0 源码归档](../../sources/repos/cn_os_rxbrain_1_0.md)（<https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0>）
+
+- [RxBrain-1.0 源码归档](../../sources/repos/hy-embodied-rxbrain-1_0.md)（<https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

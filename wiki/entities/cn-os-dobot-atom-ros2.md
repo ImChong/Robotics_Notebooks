@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/dobot_atom_ros2.md
 summary: "越疆科技 开源项目 dobot_atom_ros2（工程与工具）：为ATOM机器人提供ROS2接口，使状态、传感器与执行器进入上层控制和开发工具链。…"
 institutions:
   - dobot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [dobot_atom_ros2 源码归档](../../sources/repos/dobot_atom_ros2.md)（<https://github.com/Dobot-Arm/dobot_atom_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -17,6 +17,7 @@ sources:
   - ../../sources/papers/sun_awesome_wm_2501_01895_enerverse-envisioning-embodied-future-sp.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/repos/enerverse-ac.md
 ---
 
 # EnerVerse
@@ -92,6 +93,8 @@ Envisions embodied future space for robotics manipulation.
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [EnerVerse-AC 源码归档](../../sources/repos/enerverse-ac.md)（<https://github.com/AgibotTech/EnerVerse-AC>）
 
 - [`sources/papers/sun_awesome_wm_2501_01895_enerverse-envisioning-embodied-future-sp.md`](../../sources/papers/sun_awesome_wm_2501_01895_enerverse-envisioning-embodied-future-sp.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
