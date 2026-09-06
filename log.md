@@ -1,4 +1,11 @@
-## [2026-09-05] ingest | sources/sites/nvidia-omniverse-omnigraph.md、nvidia-isaac-sim-omnigraph.md — 接入 OmniGraph Omniverse 扩展与 Isaac Sim 6.0.1 教程；已开源；关键页 omnigraph，交叉 isaac-sim / nvidia-omniverse / software-in-the-loop
+## [2026-09-06] ingest | sources/sites/nvidia-isaac-sim-hil-tutorial.md、opal-rt-hardware-in-the-loop.md + sources/papers/martin_emami_2008、fedak_2015、arisoy_sen_2025 — 接入 Hardware-in-the-Loop 一手资料（NVIDIA 课程、OPAL-RT、RHILS 书章、工业臂驱动 HIL、柔性连杆 HOSMC 案例）；关键页 hardware-in-the-loop；交叉 software-in-the-loop / sim2real / hub-sim2real / humanoid-robot
+
+- **触发：** 用户要求找到 HIL（Hardware-in-the-Loop）一手资料并 ingest，自动合并 PR
+- **一手来源：** NVIDIA Physical AI *Leveraging ROS 2 and HIL* 模块；OPAL-RT 厂商页；Martín & Emami 2008 RHILS（IntechOpen）；Fedák 2015 RT-LAB+SINAMICS 六轴臂；Arisoy & Sen 2025 MDPI 柔性连杆 HOSMC HIL 案例
+- **消歧：** 本页 HIL = Hardware-in-the-Loop；≠ [Hybrid Imitation Learning](wiki/methods/hil-hybrid-imitation-learning.md) / [HIL-HARC](wiki/entities/paper-hil-harc.md)
+- **新建：** `wiki/concepts/hardware-in-the-loop.md`；五份 sources 归档
+- **交叉：** software-in-the-loop、sim2real、hub-sim2real、humanoid-robot
+
 
 - **触发：** 用户指定 Omniverse Extensions OmniGraph 页与 Isaac Sim 6.0.1 OmniGraph 索引，并要求自动合并 PR
 - **步骤 2.5：** 随 [isaac-sim/IsaacSim](https://github.com/isaac-sim/IsaacSim) **已开源** Apache-2.0；`omni.graph.core` 为 Python 入口

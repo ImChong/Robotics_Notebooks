@@ -2,9 +2,11 @@
 type: concept
 tags: [sim2real, embedded-systems, firmware, can-bus, domain-randomization, humanoid, locomotion]
 status: complete
+updated: 2026-09-06
 related:
   - ./sim2real.md
   - ./domain-randomization.md
+  - ./hardware-in-the-loop.md
   - ./can-bus-protocol.md
   - ./uart-serial-communication.md
   - ../entities/asimov-v1.md
@@ -81,6 +83,7 @@ flowchart LR
 ## 关联页面
 
 - [CAN 总线（经典）](./can-bus-protocol.md) — 电机请求–响应与总线抖动注入
+- [Hardware-in-the-Loop](./hardware-in-the-loop.md) — 经典 HIL 台架；本页偏固件/总线语义注入的 PITL
 - [UART 串行通信](./uart-serial-communication.md) — 与 I2C 并列的板级外设路径
 - [Sim2Real](./sim2real.md) — gap 来源总览；本页聚焦 **执行器 + 嵌入式 + 通信** 交叉层
 - [Domain Randomization](./domain-randomization.md) — **抖动注入**可视为面向总线/调度的结构化随机化

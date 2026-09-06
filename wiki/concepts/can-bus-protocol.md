@@ -2,7 +2,7 @@
 type: concept
 tags: [middleware, hardware, protocol, can-bus, fieldbus, embedded, robotics]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-06
 related:
   - ./can-fd.md
   - ./ethercat-protocol.md
@@ -93,6 +93,7 @@ summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁�
 - [CAN FD（Flexible Data Rate）](./can-fd.md)
 - [EtherCAT 协议基础](./ethercat-protocol.md)
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
+- [Hardware-in-the-Loop（硬件在环）](./hardware-in-the-loop.md) — 工业臂驱动 HIL 等 CAN 闭环台架案例
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 
