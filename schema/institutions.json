@@ -3640,6 +3640,13 @@
         "univ-lille",
         "university-of-lille"
       ]
+    },
+    "kaust": {
+      "label": "阿卜杜拉国王科技大学（KAUST）",
+      "aliases": [
+        "kaust",
+        "king-abdullah-university-of-science-and-technology"
+      ]
     }
   }
 }
