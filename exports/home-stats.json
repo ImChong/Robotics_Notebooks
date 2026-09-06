@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05",
+  "generated_at": "2026-09-06",
   "node_count": 3493,
-  "edge_count": 32069,
+  "edge_count": 32071,
   "coverage": {
     "covered": 3466,
     "total": 3466,
@@ -18,6 +18,25 @@
       "action": "added"
     },
     {
+      "path": "wiki/entities/nvidia-physical-ai-datasets.md",
+      "detail_id": "entity-nvidia-physical-ai-datasets",
+      "label": "NVIDIA Physical AI 数据集（Hugging Face 集合）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/nvidia-spatial-intelligence-lab.md",
+      "detail_id": "entity-nvidia-spatial-intelligence-lab",
+      "label": "NVIDIA Spatial Intelligence Lab（SIL）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/omnigraph.md",
       "detail_id": "entity-omnigraph",
       "label": "OmniGraph（Omniverse 可视化脚本）",
@@ -30,16 +49,6 @@
       "path": "wiki/entities/paper-kamino.md",
       "detail_id": "entity-paper-kamino",
       "label": "Kamino（GPU 闭链约束多体仿真）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/nvidia-spatial-intelligence-lab.md",
-      "detail_id": "entity-nvidia-spatial-intelligence-lab",
-      "label": "NVIDIA Spatial Intelligence Lab（SIL）",
       "type": "entity",
       "recency": "2026-09-05",
       "source": "git",
@@ -87,15 +96,6 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/nvidia-physical-ai-datasets.md",
-      "detail_id": "entity-nvidia-physical-ai-datasets",
-      "label": "NVIDIA Physical AI 数据集（Hugging Face 集合）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added"
     },
     {
       "path": "wiki/entities/robotis-cyclo-mjlab.md",
