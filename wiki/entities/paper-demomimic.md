@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, sim2real, imitation-learning, reinforcement-learning, contact-rich, single-demo, stanford, realab]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-06
 arxiv: "2609.01938"
 venue: "2026 · Stanford（arXiv:2609.01938）"
 related:
@@ -11,6 +11,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../overview/embodied-resources-reliability-9-papers-technology-map.md
   - ./paper-dexmachina.md
   - ./paper-chord-contact-wrench-dexterous-manipulation.md
   - ./paper-adept-dexterity.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/papers/demomimic_stanford_2026.md
   - ../../sources/sites/demomimic-github-io.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md
 summary: "DemoMimic（Stanford，2026）：单次人类示范 + 接触局部几何与 AR/SCR 接触中心奖励训 RL 教师，再蒸馏腕部深度模仿策略；16 物体/4 任务/2 灵巧手真机平均 71% SR，sim-to-real gap 小于 DexMachina*/HERMES*；代码待发布。"
 ---
 
@@ -177,6 +179,7 @@ flowchart TB
 - [demomimic_stanford_2026.md](../../sources/papers/demomimic_stanford_2026.md)
 - [demomimic-github-io.md](../../sources/sites/demomimic-github-io.md)
 - [具身智能小站 2026-09-03 八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md)
+- [具身智能小站 2026-09-06 九篇资源汇总](../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md)
 
 ## 推荐继续阅读
 

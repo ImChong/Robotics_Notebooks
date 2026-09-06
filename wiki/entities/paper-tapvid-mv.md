@@ -2,17 +2,19 @@
 type: entity
 tags: [paper, benchmark, multi-view-tracking, 3d-point-tracking, google-deepmind]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-06
 arxiv: "2609.01899"
 related:
   - ../tasks/manipulation.md
   - ../methods/reinforcement-learning.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../overview/embodied-resources-reliability-9-papers-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/tapvid_mv_arxiv_2609_01899.md
   - ../../sources/sites/tapvid-mv.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md
 summary: "TAPVid-MV（arXiv:2609.01899，Google DeepMind 等）：首个多同步移动相机长时 3D 任意点跟踪基准；284 序列、109,769 轨迹；30+ baseline 均未接近解决；基准/Perpetua 生成器经项目页部分发布。"
 ---
 
@@ -96,6 +98,7 @@ flowchart LR
 
 - [Manipulation](../tasks/manipulation.md)
 - [开源系统可靠性 8 篇地图](../overview/open-source-system-reliability-8-papers-technology-map.md)
+- [具身资源与可靠性 9 篇地图](../overview/embodied-resources-reliability-9-papers-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ② 预测保真度层的前置感知切面：多视角长时 3D 对应基准，30+ baseline 均未接近解决且瓶颈在几何恢复，双向回链
 
 ## 参考来源
@@ -103,6 +106,7 @@ flowchart LR
 - [tapvid_mv_arxiv_2609_01899](../../sources/papers/tapvid_mv_arxiv_2609_01899.md)
 - [tapvid-mv 项目页](../../sources/sites/tapvid-mv.md)
 - [具身智能小站 2026-09-03 八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md)
+- [具身智能小站 2026-09-06 九篇资源汇总](../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md)
 
 ## 推荐继续阅读
 
