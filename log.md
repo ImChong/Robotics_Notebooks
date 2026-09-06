@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/repos/ashemag_human_atlas.md — 接入 Human Atlas 3D 解剖浏览器；已开源 MIT+CC BY 4.0；关键页 human-atlas；交叉 humanoid-robot / motion-retargeting
+
 ## [2026-09-06] ingest | sources/papers/wh0_arxiv_2606_22136.md — Wh0 深度 ingest（项目页+GitHub+arXiv）；已开源；WM-H 50k + VITRA Co-FT；18 任务 8.3%→38.9%；升格 paper-sa-2606-22136
 
 ## [2026-09-06] ingest | sources/repos/nvidia_cosmos_curator.md — 接入 Cosmos Curator（NVIDIA/cosmos-curator + LHA 文档）；已开源 Apache-2.0；关键页 cosmos-curator；交叉 nvidia-cosmos / cosmos-cookbook / 工具链技术地图
