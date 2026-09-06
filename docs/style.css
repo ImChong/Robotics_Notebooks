@@ -791,7 +791,8 @@ a.hero-stat-num:focus-visible {
   white-space: nowrap;
   justify-self: end;
 }
-.home-hub-more { margin-top: 18px; font-size: .9rem; }
+/* 居中：左对齐时会被左下角的 .home-nav-fab 浮动按钮压住（移动端尤其明显） */
+.home-hub-more { margin-top: 18px; font-size: .9rem; text-align: center; }
 /* 详情页关联区块：复用互链枢纽紧凑行（类型 / 标题+后缀 / 尾列元信息） */
 .detail-compact-list {
   list-style: none;
