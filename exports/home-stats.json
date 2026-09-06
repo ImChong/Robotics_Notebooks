@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/nvidia-osmo.md",
+      "detail_id": "entity-nvidia-osmo",
+      "label": "NVIDIA OSMO（Physical AI 工作流编排）",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/overview/nvidia-physical-ai-toolchain-technology-map.md",
+      "detail_id": "wiki-overview-nvidia-physical-ai-toolchain-technology-map",
+      "label": "NVIDIA Physical AI 工具链技术地图（汇总节点）",
+      "type": "overview",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/holoscan-sensor-bridge.md",
       "detail_id": "entity-holoscan-sensor-bridge",
       "label": "Holoscan Sensor Bridge（HSB）",
@@ -60,16 +81,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/nvidia-physical-ai-toolchain-technology-map.md",
-      "detail_id": "wiki-overview-nvidia-physical-ai-toolchain-technology-map",
-      "label": "NVIDIA Physical AI 工具链技术地图（汇总节点）",
-      "type": "overview",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md",
@@ -211,23 +222,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-agibot-x1-infer.md",
-      "detail_id": "entity-cn-os-agibot-x1-infer",
-      "label": "agibot_x1_infer",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/holoscan-sensor-bridge.md",
-    "detail_id": "entity-holoscan-sensor-bridge",
-    "label": "Holoscan Sensor Bridge（HSB）",
+    "path": "wiki/entities/nvidia-osmo.md",
+    "detail_id": "entity-nvidia-osmo",
+    "label": "NVIDIA OSMO（Physical AI 工作流编排）",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
