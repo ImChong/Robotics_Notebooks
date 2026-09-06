@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fastumi_ego.md
 summary: "鹿明机器人 开源项目 FastUMI_Ego（数据集/Benchmark）：提供FastUMI第一视角数据采集入口，记录人类操作过程以服务机器人模仿学习数据构建。…"
 institutions:
   - lumos
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [FastUMI_Ego 源码归档](../../sources/repos/fastumi_ego.md)（<https://github.com/LumosRobot/FastUMI_Ego>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

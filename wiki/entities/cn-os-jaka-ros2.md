@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/jaka_ros2.md
 summary: "节卡机器人 开源项目 jaka_ros2（工程与工具）：为JAKA协作机器人提供ROS2驱动、机器人模型与上层规划控制接口。…"
 institutions:
   - jaka
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [jaka_ros2 源码归档](../../sources/repos/jaka_ros2.md)（<https://github.com/JAKARobotics/jaka_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/linkerhand-urdf.md
 summary: "灵心巧手 开源项目 linkerhand-urdf（本体模型资产）：提供LinkerHand多款灵巧手URDF模型，为仿真、规划和控制器集成提供几何与关节定义。…"
 institutions:
   - linkerbot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [linkerhand-urdf 源码归档](../../sources/repos/linkerhand-urdf.md)（<https://github.com/linker-bot/linkerhand-urdf>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

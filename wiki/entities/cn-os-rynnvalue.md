@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rynnvalue.md
 summary: "阿里巴巴 开源项目 RynnValue（具身Agent/规划）：模型对候选动作或执行轨迹进行价值判断，为策略选择、失败筛选和后训练提供反馈信号；它解决的是动作好坏的评估，不直接生成完整机器人控制命令。…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RynnValue 源码归档](../../sources/repos/rynnvalue.md)（<https://github.com/alibaba-damo-academy/RynnValue>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

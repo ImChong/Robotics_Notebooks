@@ -16,6 +16,7 @@ sources:
   - ../../sources/repos/open-x-humanoid.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/papers/dpl_arxiv_2510_07152.md
+  - ../../sources/repos/tienkung-lab.md
 summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、ROS、SDK 与二次开发说明分散在门户站与 TienKung_Docs 仓库，需分清主入口。"
 ---
 
@@ -91,6 +92,8 @@ summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、
 - [Open-X-Humanoid 组织](https://github.com/Open-X-Humanoid)
 
 ## 参考来源
+
+- [TienKung-Lab 源码归档](../../sources/repos/tienkung-lab.md)（<https://github.com/Open-X-Humanoid/TienKung-Lab>）
 
 - [sources/sites/x-humanoid.md](../../sources/sites/x-humanoid.md)
 - [sources/sites/x-humanoid-opensource-cloud.md](../../sources/sites/x-humanoid-opensource-cloud.md)

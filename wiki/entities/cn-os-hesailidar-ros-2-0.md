@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/hesailidar_ros_2_0.md
 summary: "禾赛科技 开源项目 HesaiLidar_ROS_2.0（工程与工具）：把禾赛激光雷达接入ROS与ROS2，发布点云和设备状态供机器人系统使用。…"
 institutions:
   - hesai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [HesaiLidar_ROS_2.0 源码归档](../../sources/repos/hesailidar_ros_2_0.md)（<https://github.com/HesaiTechnology/HesaiLidar_ROS_2.0>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

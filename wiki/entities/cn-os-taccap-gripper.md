@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/taccap-gripper.md
 summary: "千觉机器人 开源项目 TacCap-Gripper（SDK/驱动）：TacCap 多模态触觉数据采集夹爪 SDK（C++17/Python，支持主从与腕部相机）…"
 institutions:
   - qianjue
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [TacCap-Gripper 源码归档](../../sources/repos/taccap-gripper.md)（<https://github.com/XenseRobotics-AI/TacCap-Gripper>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

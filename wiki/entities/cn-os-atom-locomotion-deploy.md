@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/atom-locomotion-deploy.md
 summary: "越疆科技 开源项目 atom-locomotion-deploy（仿真环境）：把ATOM运动策略接入仿真或真机运行时，处理机器人状态、策略推理与控制命令输出。…"
 institutions:
   - dobot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [atom-locomotion-deploy 源码归档](../../sources/repos/atom-locomotion-deploy.md)（<https://github.com/embodied-dobot/atom-locomotion-deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

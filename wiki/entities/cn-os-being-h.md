@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/being-h.md
 summary: "智在无界 开源项目 Being-H（数据集/Benchmark）：从大规模第一视角人类操作视频学习手部动作和任务结构，再通过目标机器人数据适配到灵巧手操作；仓库连接非本体预训练、动作表示和真机后训练。…"
 institutions:
   - agilex-ai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Being-H 源码归档](../../sources/repos/being-h.md)（<https://github.com/BeingBeyond/Being-H>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

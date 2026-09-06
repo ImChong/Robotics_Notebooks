@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_kairos.md
 summary: "大晓机器人 开源项目 Kairos（世界模型）：Kairos以通用视频、人类行为和真机交互数据逐级训练持续世界表征，并在统一模型中预测未来视觉状态与可执行动作；仓库开放推理代码和多组模型权重，并提供RoboTwin与LIBERO评测入口。…"
 institutions:
   - ace-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Kairos 源码归档](../../sources/repos/cn_os_kairos.md)（<https://github.com/kairos-agi/Kairos>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

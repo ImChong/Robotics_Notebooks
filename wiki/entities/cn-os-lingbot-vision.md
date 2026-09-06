@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lingbot-vision.md
 summary: "蚂蚁灵波 开源项目 LingBot-Vision（评测）：以面向几何和密集预测的自监督目标训练视觉编码器，使同一主干能够为深度、三维感知与机器人视觉任务提供特征；仓库开放代码、预训练权重和评测入口，适合比较通用视觉语义与空间几何预训练的差异。…"
 institutions:
   - robbyant
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LingBot-Vision 源码归档](../../sources/repos/lingbot-vision.md)（<https://github.com/Robbyant/lingbot-vision>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

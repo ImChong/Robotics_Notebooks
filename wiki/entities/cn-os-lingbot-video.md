@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lingbot-video.md
 summary: "蚂蚁灵波 开源项目 LingBot-Video（世界模型）：稠密与MoE视频模型从文本或图像条件生成未来视频，并通过大规模视频预训练学习场景变化与运动模式；仓库开放推理代码、模型权重和提示词重写器，可作为世界动态表征或人类视频预训练研究入口。…"
 institutions:
   - robbyant
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LingBot-Video 源码归档](../../sources/repos/lingbot-video.md)（<https://github.com/Robbyant/lingbot-video>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

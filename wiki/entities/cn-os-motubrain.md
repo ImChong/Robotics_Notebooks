@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_motubrain.md
 summary: "生数科技 开源项目 MotuBrain（世界模型）：MotuBrain把视频、动作和语言统一建模，并面向多本体适配、长程任务和实时闭环；公开仓库主要承载技术报告、图示和发布材料，适合了解系统定位。…"
 institutions:
   - shengshu
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [MotuBrain 源码归档](../../sources/repos/cn_os_motubrain.md)（<https://github.com/shengshu-ai/MotuBrain>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

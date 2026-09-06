@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/deep-robotics-simulation.md
 summary: "云深处科技 开源项目 deep-robotics-simulation（仿真环境）：官方仿真环境与模型接入：联调、策略回放与 Sim2Sim 验证…"
 institutions:
   - deeprobotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [deep-robotics-simulation 源码归档](../../sources/repos/deep-robotics-simulation.md)（<https://github.com/DeepRoboticsLab/deep-robotics-simulation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

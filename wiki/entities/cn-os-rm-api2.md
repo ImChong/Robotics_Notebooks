@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rm_api2.md
 summary: "睿尔曼智能 开源项目 RM_API2（SDK/驱动）：提供睿尔曼机器人新一代控制API，使上层应用读取状态并发送机械臂控制命令。…"
 institutions:
   - realman
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RM_API2 源码归档](../../sources/repos/rm_api2.md)（<https://github.com/RealManRobot/RM_API2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/airbot-play-hardware.md
 summary: "求之科技 开源项目 AIRBOT-Play-Hardware（本体模型资产）：AIRBOT Play 双臂硬件开源包…"
 institutions:
   - qztech
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [AIRBOT-Play-Hardware 源码归档](../../sources/repos/airbot-play-hardware.md)（<https://github.com/DISCOVER-Robotics/AIRBOT-Play-Hardware>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

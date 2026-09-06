@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/elite_robots_cs_sdk.md
 summary: "艾利特机器人 开源项目 Elite_Robots_CS_SDK（SDK/驱动）：提供艾利特CS系列机器人C++访问与控制库，为ROS2驱动和自定义应用提供底层接口。…"
 institutions:
   - elite-robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Elite_Robots_CS_SDK 源码归档](../../sources/repos/elite_robots_cs_sdk.md)（<https://github.com/Elite-Robots/Elite_Robots_CS_SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

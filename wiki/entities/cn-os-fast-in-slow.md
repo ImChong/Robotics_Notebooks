@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fast-in-slow.md
 summary: "智平方 开源项目 Fast-in-Slow（具身Agent/规划）：以慢速推理系统组织任务并由快速策略执行操作，研究长时决策与实时动作之间的双系统接口。…"
 institutions:
   - alphasquare
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Fast-in-Slow 源码归档](../../sources/repos/fast-in-slow.md)（<https://github.com/CHEN-H01/Fast-in-Slow>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

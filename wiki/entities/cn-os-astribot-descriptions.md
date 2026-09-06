@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/astribot_descriptions.md
 summary: "星尘智能 开源项目 astribot_descriptions（本体模型资产）：提供星尘智能机器人在仿真和ROS工具链中使用的描述文件与模型资产。…"
 institutions:
   - astribot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [astribot_descriptions 源码归档](../../sources/repos/astribot_descriptions.md)（<https://github.com/Astribot-Dev/astribot_descriptions>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

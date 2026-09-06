@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/noetix_n2_gym.md
 summary: "松延动力 开源项目 noetix_n2_gym（运动RL/技能训练）：为N2人形机器人提供Isaac Gym训练环境、动作加载、AMP和Sim2Sim工具。…"
 institutions:
   - noetix
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [noetix_n2_gym 源码归档](../../sources/repos/noetix_n2_gym.md)（<https://github.com/Noetix-Robotics/noetix_n2_gym>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

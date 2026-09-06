@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_humantracker.md
 summary: "银河通用 开源项目 HumanTracker（全身动作跟踪/技能训练）：全身动作跟踪策略（带仿真/真机验证）…"
 institutions:
   - galbot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [HumanTracker 源码归档](../../sources/repos/cn_os_humantracker.md)（<https://github.com/GalaxyGeneralRobotics/HumanTracker>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

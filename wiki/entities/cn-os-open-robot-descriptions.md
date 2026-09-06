@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/open-robot-descriptions.md
 summary: "玄雅科技 开源项目 Open-Robot-Descriptions（本体模型资产）：开源机器人模型描述文件集合…"
 institutions:
   - xuanya
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Open-Robot-Descriptions 源码归档](../../sources/repos/open-robot-descriptions.md)（<https://github.com/Synria-Robotics/Open-Robot-Descriptions>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

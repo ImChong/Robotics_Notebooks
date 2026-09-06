@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/magiclab_deploy.md
 summary: "魔法原子 开源项目 magiclab_deploy（运动RL/技能训练）：提供魔法原子运动策略的运行与部署入口，将策略输出接到机器人控制接口。…"
 institutions:
   - magiclab
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [magiclab_deploy 源码归档](../../sources/repos/magiclab_deploy.md)（<https://github.com/MagiclabRobotics/magiclab_deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

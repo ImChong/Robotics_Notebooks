@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wiki-grx-gazebo.md
 summary: "傅利叶智能 开源项目 Wiki-GRx-Gazebo（仿真环境）：官方仿真环境与模型接入：联调、策略回放与 Sim2Sim 验证…"
 institutions:
   - fourier
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Wiki-GRx-Gazebo 源码归档](../../sources/repos/wiki-grx-gazebo.md)（<https://github.com/FFTAI/Wiki-GRx-Gazebo>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

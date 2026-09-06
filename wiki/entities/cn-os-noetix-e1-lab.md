@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/noetix_e1_lab.md
 summary: "松延动力 开源项目 noetix_e1_lab（运动RL/技能训练）：为E1人形机器人提供Isaac Lab强化学习训练环境和任务配置。…"
 institutions:
   - noetix
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [noetix_e1_lab 源码归档](../../sources/repos/noetix_e1_lab.md)（<https://github.com/Noetix-Robotics/noetix_e1_lab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/livelybot_pi_rl_baseline.md
 summary: "高擎机电 开源项目 livelybot_pi_rl_baseline（运动RL/技能训练）：并行 RL 运动训练框架（含仿真任务与策略导出链路）…"
 institutions:
   - hightorque
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [livelybot_pi_rl_baseline 源码归档](../../sources/repos/livelybot_pi_rl_baseline.md)（<https://github.com/HighTorque-Robotics/livelybot_pi_rl_baseline>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

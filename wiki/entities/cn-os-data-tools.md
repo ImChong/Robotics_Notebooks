@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/data_tools.md
 summary: "松灵机器人 开源项目 data_tools（数据集/Benchmark）：数据采集/转换工具：同步记录并可转入 LeRobot/RLDS 训练栈…"
 institutions:
   - agilex
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [data_tools 源码归档](../../sources/repos/data_tools.md)（<https://github.com/agilexrobotics/data_tools>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

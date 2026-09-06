@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/aimrt.md
 summary: "智元机器人 开源项目 AimRT（部署运行时）：C++运行时通过插件和声明式配置组织线程、资源、通信与部署，兼容ROS 2、HTTP和gRPC，并把日志、监控与性能分析作为统一基础设施；它适合承载模型服务和机器人应用模块，不直接提供运动策略。…"
 institutions:
   - agibot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [AimRT 源码归档](../../sources/repos/aimrt.md)（<https://github.com/AimRT/AimRT>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

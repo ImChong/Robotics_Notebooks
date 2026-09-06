@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/daimon-infinity.md
 summary: "戴盟机器人 开源项目 Daimon-Infinity（数据集/Benchmark）：公开包含高分辨率触觉在内的全模态机器人数据集入口，用于Physical AI的数据预训练与操作研究。…"
 institutions:
   - dexmate
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Daimon-Infinity 源码归档](../../sources/repos/daimon-infinity.md)（<https://github.com/dmrobot-admin/Daimon-Infinity>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wuji-openpi.md
 summary: "舞肌科技 开源项目 wuji-openpi（VLA/操作模型）：扩展OpenPI以支持双臂与双Wuji Hand配置，连接ROS2 MCAP示范、LeRobot数据转换、pi0或pi0.5监督微调、策略服务和真机推理。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wuji-openpi 源码归档](../../sources/repos/wuji-openpi.md)（<https://github.com/wuji-technology/wuji-openpi>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

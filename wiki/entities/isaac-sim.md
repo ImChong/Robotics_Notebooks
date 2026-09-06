@@ -33,6 +33,7 @@ sources:
   - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
   - ../../sources/sites/nvidia-isaac-sim-omnigraph.md
   - ../../sources/sites/nvidia-omniverse-omnigraph.md
+  - ../../sources/repos/isaac_sim_ws.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -220,6 +221,8 @@ flowchart TB
 - 中文社区入门（Lumina）：[Isaac Sim 一百讲（1）安装](https://lumina-embodied.ai/blog/isaac101-1)
 
 ## 参考来源
+
+- [isaac_sim_ws 源码归档](../../sources/repos/isaac_sim_ws.md)（<https://github.com/flexivrobotics/isaac_sim_ws>）
 
 - **ingest 档案：** [sources/repos/isaac_sim.md](../../sources/repos/isaac_sim.md)
 - **ingest 档案：** [sources/repos/isaac_gym_isaac_lab.md](../../sources/repos/isaac_gym_isaac_lab.md)

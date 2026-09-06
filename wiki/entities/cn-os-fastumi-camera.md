@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/fastumi_camera.md
 summary: "鹿明机器人 开源项目 FastUMI_Camera（数据集/Benchmark）：提供FastUMI板载相机工具，承担第一视角视频采集与设备接入。…"
 institutions:
   - lumos
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [FastUMI_Camera 源码归档](../../sources/repos/fastumi_camera.md)（<https://github.com/LumosRobot/FastUMI_Camera>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

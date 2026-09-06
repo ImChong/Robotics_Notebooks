@@ -24,6 +24,9 @@ sources:
   - ../../sources/repos/openloong_dyn_control.md
   - ../../sources/repos/openloong_hardware.md
   - ../../sources/sites/openloong_community.md
+  - ../../sources/repos/openloong-gymloong.md
+  - ../../sources/repos/openloong-brain.md
+  - ../../sources/repos/openloong-hardware.md
 summary: "OpenLoong（青龙）是由人形机器人（上海）有限公司、国家地方共建人形机器人创新中心与开放原子基金会运营的全尺寸公版人形全栈开源项目：硬件 PDF/BOM、ROS-free C++ 控制框架、MPC+WBC 动力学包、Isaac Gym/ROS 并行栈与训推数据集。"
 ---
 
@@ -244,6 +247,12 @@ OpenLoong 软件以 **`loongOpen` GitHub 组织** 与 **AtomGit `openloong` 组�
 | 国内同类 | 天工、灵犀 X1、傅利叶 N1 | [天工](./tienkung-humanoid-open-source.md)、[灵犀 X1](./agibot-lingxi-x1.md) |
 
 ## 参考来源
+
+- [OpenLoong-Hardware 源码归档](../../sources/repos/openloong-hardware.md)（<https://github.com/loongOpen/OpenLoong-Hardware>）
+
+- [OpenLoong-Brain 源码归档](../../sources/repos/openloong-brain.md)（<https://github.com/loongOpen/OpenLoong-Brain>）
+
+- [OpenLoong-Gymloong 源码归档](../../sources/repos/openloong-gymloong.md)（<https://github.com/loongOpen/OpenLoong-Gymloong>）
 
 - [sources/repos/openloong.md](../../sources/repos/openloong.md)
 - [sources/repos/openloong_hardware.md](../../sources/repos/openloong_hardware.md)

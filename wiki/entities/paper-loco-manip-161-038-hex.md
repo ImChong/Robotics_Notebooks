@@ -15,6 +15,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
   - ../../sources/repos/open-x-humanoid.md
+  - ../../sources/repos/hex.md
 ---
 
 # HEX
@@ -82,6 +83,8 @@ HEX 的实现路径是先把本体状态与关节序列编码成多模态表征�
 - 原始 source：[loco_manip_161_survey_038_hex.md](../../sources/papers/loco_manip_161_survey_038_hex.md)
 
 ## 参考来源
+
+- [HEX 源码归档](../../sources/repos/hex.md)（<https://github.com/Open-X-Humanoid/HEX>）
 
 - [loco_manip_161_survey_038_hex.md](../../sources/papers/loco_manip_161_survey_038_hex.md) — 161 篇策展摘录
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)

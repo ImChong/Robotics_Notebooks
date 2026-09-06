@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/xmimic.md
 summary: "北京人形机器人创新中心 开源项目 xMimic（全身动作跟踪/技能训练）：BVH动作由xGMR重定向为机器人PKL，再转换成含最大坐标信息的NPZ；Isaac Sim 5.1中以4096环境训练PPO跟踪器，随后通过MuJoCo和ROS 2检查策略，并把ONNX模型放入Deploy_Tienkung的Beyond…"
 institutions:
   - x-humanoid
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [xMimic 源码归档](../../sources/repos/xmimic.md)（<https://github.com/Open-X-Humanoid/xMimic>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

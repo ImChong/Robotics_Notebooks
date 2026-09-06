@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/agibot_x1_infer.md
 summary: "智元机器人 开源项目 agibot_x1_infer（部署运行时）：策略部署运行时：加载训练策略、下发关节命令…"
 institutions:
   - agibot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [agibot_x1_infer 源码归档](../../sources/repos/agibot_x1_infer.md)（<https://github.com/AgibotTech/agibot_x1_infer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/mini-pi-plus_beyondmimic.md
 summary: "高擎机电 开源项目 Mini-Pi-Plus_BeyondMimic（全身动作跟踪/技能训练）：全身动作跟踪策略（带仿真/真机验证）…"
 institutions:
   - hightorque
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Mini-Pi-Plus_BeyondMimic 源码归档](../../sources/repos/mini-pi-plus_beyondmimic.md)（<https://github.com/HighTorque-Robotics/Mini-Pi-Plus_BeyondMimic>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

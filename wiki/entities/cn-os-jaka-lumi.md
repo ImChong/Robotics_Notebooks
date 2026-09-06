@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/jaka_lumi.md
 summary: "节卡机器人 开源项目 JAKA_Lumi（具身Agent/规划）：公开JAKA Lumi机器人平台相关开发内容，用于机械臂、移动平台与感知任务的系统集成。…"
 institutions:
   - jaka
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [JAKA_Lumi 源码归档](../../sources/repos/jaka_lumi.md)（<https://github.com/JAKARobotics/JAKA_Lumi>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

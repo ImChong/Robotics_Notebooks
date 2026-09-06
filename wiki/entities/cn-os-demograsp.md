@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/demograsp.md
 summary: "智在无界 开源项目 DemoGrasp（具身Agent/规划）：移动操作（Loco-Manip）策略接入…"
 institutions:
   - agilex-ai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [DemoGrasp 源码归档](../../sources/repos/demograsp.md)（<https://github.com/BeingBeyond/DemoGrasp>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

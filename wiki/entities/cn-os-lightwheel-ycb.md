@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lightwheel-ycb.md
 summary: "光轮智能 开源项目 Lightwheel-YCB（仿真环境）：提供刚体、关节体和柔性物体的仿真就绪YCB资产，并同时提供MJCF与USD格式。…"
 institutions:
   - lightwheel
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Lightwheel-YCB 源码归档](../../sources/repos/lightwheel-ycb.md)（<https://github.com/LightwheelAI/Lightwheel-YCB>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

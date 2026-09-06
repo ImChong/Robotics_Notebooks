@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/linkerhand-sim.md
 summary: "灵心巧手 开源项目 linkerhand-sim（移动操作）：提供LinkerHand仿真环境，用于抓取、控制和操作策略在真机前的验证。…"
 institutions:
   - linkerbot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [linkerhand-sim 源码归档](../../sources/repos/linkerhand-sim.md)（<https://github.com/linker-bot/linkerhand-sim>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

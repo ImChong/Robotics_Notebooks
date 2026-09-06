@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/booster_robotics_sdk.md
+  - ../../sources/repos/booster_robotics_sdk_ros2.md
 summary: "加速进化 开源项目 booster_robotics_sdk（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - booster
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [booster_robotics_sdk_ros2 源码归档](../../sources/repos/booster_robotics_sdk_ros2.md)（<https://github.com/BoosterRobotics/booster_robotics_sdk_ros2>）
+
+- [booster_robotics_sdk 源码归档](../../sources/repos/booster_robotics_sdk.md)（<https://github.com/BoosterRobotics/booster_robotics_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

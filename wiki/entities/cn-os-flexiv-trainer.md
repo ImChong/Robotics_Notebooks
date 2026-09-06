@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/flexiv_trainer.md
 summary: "非夕科技 开源项目 flexiv_trainer（VLA/操作模型）：面向非夕机器人组织数据、训练和Physical AI技能开发流程，把机器人接口接到策略训练与验证。…"
 institutions:
   - flexiv
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [flexiv_trainer 源码归档](../../sources/repos/flexiv_trainer.md)（<https://github.com/flexivrobotics/flexiv_trainer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

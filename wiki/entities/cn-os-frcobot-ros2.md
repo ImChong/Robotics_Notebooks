@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/frcobot_ros2.md
 summary: "法奥意威 开源项目 frcobot_ros2（工程与工具）：为法奥意威协作机器人提供ROS2驱动、机器人描述、控制与MoveIt集成入口。…"
 institutions:
   - fair-innovation
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [frcobot_ros2 源码归档](../../sources/repos/frcobot_ros2.md)（<https://github.com/FAIR-INNOVATION/frcobot_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

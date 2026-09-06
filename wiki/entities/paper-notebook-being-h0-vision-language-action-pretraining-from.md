@@ -9,6 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_being-h0.md
+  - ../../sources/repos/being-h0.md
 summary: "Being-H0 是一个在大规模人类视频上训练的灵巧视觉-语言-动作模型（VLA）。现有 VLA 在高灵巧操作上吃力、对新场景泛化差，主因是依赖有 sim-to-real 差距的合成数据或缺规模与多样性的遥操作演示。为破数据瓶颈，本文把人手当作基础操作器（foundation manipulator），利用网络数据中丰富的灵巧性与可扩展性。方法核心是物理指令微调（physical instruction tuning）：结合大规模人类视频 VLA 预训练、3D 推理的物理空间对齐、以及面向机器人任务的后训练适配。还提出部件级运动 token 化（part-level motion tokenization），达毫米级重建精度以建模精确手部轨迹；并构建融合动捕、VR、RGB-only 视频的百万级运动指令数据集。实验显示 Being-H0 在手部动作生成与指令跟随上优异，随模型与数据规模良好扩展，并在真机操作上随物理指令微调见效。"
 ---
 
@@ -84,6 +85,8 @@ Being-H0 要：把**人手**当基础操作器，从**网络规模人类视频**
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源
+
+- [Being-H0 源码归档](../../sources/repos/being-h0.md)（<https://github.com/BeingBeyond/Being-H0>）
 
 - [humanoid_pnb_being-h0.md](../../sources/papers/humanoid_pnb_being-h0.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html>

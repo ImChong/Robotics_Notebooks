@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_lw_benchhub.md
 summary: "光轮智能 开源项目 LW-BenchHub（评测）：基于Isaac Lab Arena统一任务、机器人和策略接口，支持大规模具身策略评测和可复现实验配置。…"
 institutions:
   - lightwheel
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LW-BenchHub 源码归档](../../sources/repos/cn_os_lw_benchhub.md)（<https://github.com/LightwheelAI/LW-BenchHub>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

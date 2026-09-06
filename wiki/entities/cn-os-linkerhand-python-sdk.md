@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/linkerhand-python-sdk.md
 summary: "灵心巧手 开源项目 linkerhand-python-sdk（SDK/驱动）：提供LinkerHand的Python控制接口，用于关节命令、状态读取和机器人应用集成。…"
 institutions:
   - linkerbot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [linkerhand-python-sdk 源码归档](../../sources/repos/linkerhand-python-sdk.md)（<https://github.com/linker-bot/linkerhand-python-sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

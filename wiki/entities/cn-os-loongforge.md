@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/loongforge.md
 summary: "百度智能云 开源项目 LoongForge（数据采集/工具）：以Megatron-LM为基础统一模型组网、数据预处理、并行策略、预训练、中期训练、SFT、LoRA和权重转换，并为VLM、VLA和扩散模型提供GPU与昆仑芯XPU训练入口。…"
 institutions:
   - baidu
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LoongForge 源码归档](../../sources/repos/loongforge.md)（<https://github.com/baidu-baige/LoongForge>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

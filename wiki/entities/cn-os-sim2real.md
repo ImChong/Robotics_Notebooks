@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/sim2real-inference_code.md
+  - ../../sources/repos/cn_os_sim2real.md
 summary: "高擎机电 开源项目 sim2real（仿真环境）：策略部署运行时：加载训练策略、下发关节命令…"
 institutions:
   - hightorque
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [sim2real 源码归档](../../sources/repos/cn_os_sim2real.md)（<https://github.com/HighTorque-Robotics/sim2real-inference_code>）
+
+- [sim2real 源码归档](../../sources/repos/sim2real-inference_code.md)（<https://github.com/HighTorque-Robotics/sim2real-inference_code>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

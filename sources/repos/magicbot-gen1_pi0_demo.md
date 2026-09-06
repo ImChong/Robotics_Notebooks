@@ -1,0 +1,20 @@
+# magicbot-gen1_pi0_demo
+
+> 来源归档（国内具身开源全景）
+
+- **标题：** magicbot-gen1_pi0_demo
+- **类型：** repo
+- **机构：** 魔法原子
+- **链接：** https://github.com/MagiclabRobotics/magicbot-gen1_pi0_demo
+- **分类：** VLA/操作模型
+- **入库日期：** 2026-09-06
+- **一句话说明：** 魔法原子 开源项目 magicbot-gen1_pi0_demo（VLA/操作模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
+- **沉淀到 wiki：** [`wiki/entities/cn-os-magicbot-gen1-pi0-demo.md`](../../wiki/entities/cn-os-magicbot-gen1-pi0-demo.md)
+
+## 开源状态
+
+- **已开源**：公开仓库（以 README 与 release 为准）。
+
+## 对 wiki 的映射
+
+- [wiki/entities/cn-os-magicbot-gen1-pi0-demo.md](../../wiki/entities/cn-os-magicbot-gen1-pi0-demo.md)

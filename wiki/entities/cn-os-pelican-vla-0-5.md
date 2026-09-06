@@ -9,6 +9,8 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/pelican-vla05.md
+  - ../../sources/repos/cn_os_pelican_vla_0_5.md
 summary: "北京人形机器人创新中心 开源项目 Pelican-VLA 0.5（VLA/操作模型）：共享Qwen3-VL主干联合视觉语言理解、未来帧和动作预测，固定容量瓶颈Token把与接触相关的视觉信息送入动作通路；当前版本重点验证注意力层面的跨场景与跨本体泛化，并明确承认从表征到可靠动作仍有缺口。…"
 institutions:
   - x-humanoid
@@ -61,6 +63,10 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Pelican-VLA 0.5 源码归档](../../sources/repos/cn_os_pelican_vla_0_5.md)（<https://github.com/Open-X-Humanoid/Pelican-VLA05>）
+
+- [Pelican-VLA 0.5 源码归档](../../sources/repos/pelican-vla05.md)（<https://github.com/Open-X-Humanoid/Pelican-VLA05>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/robocore.md
 summary: "玄雅科技 开源项目 RoboCore（工程与工具）：Synria 统一高吞吐机器人开发库…"
 institutions:
   - xuanya
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RoboCore 源码归档](../../sources/repos/robocore.md)（<https://github.com/Synria-Robotics/RoboCore>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

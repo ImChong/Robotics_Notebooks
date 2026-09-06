@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/chain-of-action.md
 summary: "字节跳动机器人团队 开源项目 Chain-of-Action（VLA/操作模型）：面向机器人操作的轨迹自回归建模（动作链推理）…"
 institutions:
   - bytedance
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Chain-of-Action 源码归档](../../sources/repos/chain-of-action.md)（<https://github.com/ByteDance-Seed/Chain-of-Action>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/spatiallm.md
 summary: "群核科技 开源项目 SpatialLM（世界模型）：空间智能大模型（NeurIPS 2025）：点云→结构化室内场景理解（墙体/门窗/物体 3D 框与语义），Llama-1B 与 Qwen-0.5B 两档，训练代码与 12,328 场景合成数据公开，常被用于机器人场景理解与仿真资产生成…"
 institutions:
   - manycore
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [SpatialLM 源码归档](../../sources/repos/spatiallm.md)（<https://github.com/manycore-research/SpatialLM>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

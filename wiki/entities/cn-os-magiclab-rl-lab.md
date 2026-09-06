@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/magiclab_rl_lab.md
 summary: "魔法原子 开源项目 magiclab_rl_lab（运动RL/技能训练）：为魔法原子机器人提供基于Isaac Lab的强化学习训练环境与任务配置。…"
 institutions:
   - magiclab
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [magiclab_rl_lab 源码归档](../../sources/repos/magiclab_rl_lab.md)（<https://github.com/MagiclabRobotics/magiclab_rl_lab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

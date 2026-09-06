@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/orbbecsdk_v2.md
 summary: "奥比中光 开源项目 OrbbecSDK_v2（SDK/驱动）：提供奥比中光RGB-D相机底层SDK，为机器人感知、标定和数据采集读取图像与深度流。…"
 institutions:
   - orbbec
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [OrbbecSDK_v2 源码归档](../../sources/repos/orbbecsdk_v2.md)（<https://github.com/orbbec/OrbbecSDK_v2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

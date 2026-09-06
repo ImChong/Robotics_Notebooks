@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/omninav.md
 summary: "阿里巴巴 开源项目 OmniNav（感知/导航）：统一前瞻探索与视觉语言导航框架…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [OmniNav 源码归档](../../sources/repos/omninav.md)（<https://github.com/amap-cvlab/OmniNav>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

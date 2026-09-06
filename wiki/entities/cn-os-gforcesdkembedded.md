@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/gforcesdkembedded.md
 summary: "傲意科技 开源项目 gForceSDKEmbedded（SDK/驱动）：gForce 肌电臂环 C/C++ 嵌入式 SDK…"
 institutions:
   - ohand
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [gForceSDKEmbedded 源码归档](../../sources/repos/gforcesdkembedded.md)（<https://github.com/oymotion/gForceSDKEmbedded>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

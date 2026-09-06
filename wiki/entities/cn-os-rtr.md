@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rtr.md
 summary: "它石智航 开源项目 RTR（VLA/操作模型）：在连续潜空间学习高频动作块，并以Reuse-then-Refine处理异步推理时新旧动作块的边界，使接触操作保持连续执行。…"
 institutions:
   - tars-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RTR 源码归档](../../sources/repos/rtr.md)（<https://github.com/tars-robotics/RTR>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

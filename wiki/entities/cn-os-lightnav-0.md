@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lightnav-0.md
 summary: "亮源新创 开源项目 LightNav-0（感知/导航）：紧凑通用具身导航模型（Qwen3-VL 基座）：指令跟随、开放词汇物体导航与视觉跟踪，支持跨机器人形态零样本迁移（配套 HuggingFace 权重）…"
 institutions:
   - lightsource
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LightNav-0 源码归档](../../sources/repos/lightnav-0.md)（<https://github.com/lightorigins/LightNav-0>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

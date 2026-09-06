@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/abot-manipulation.md
 summary: "阿里巴巴 开源项目 ABot-Manipulation（VLA/操作模型）：ABot-M0.5联合处理移动与操作任务，让世界表征、动作预测和评测在同一系统中连接；仓库开放推理、预训练模型和评测入口，用于检查移动操作是否真正形成统一动作接口。…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [ABot-Manipulation 源码归档](../../sources/repos/abot-manipulation.md)（<https://github.com/amap-cvlab/ABot-Manipulation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

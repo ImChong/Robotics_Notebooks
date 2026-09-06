@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/oglove_ros2_pkg.md
 summary: "傲意科技 开源项目 oglove_ros2_pkg（SDK/驱动）：OGlove 手势数据手套 ROS2 包…"
 institutions:
   - ohand
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [oglove_ros2_pkg 源码归档](../../sources/repos/oglove_ros2_pkg.md)（<https://github.com/oymotion/oglove_ros2_pkg>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

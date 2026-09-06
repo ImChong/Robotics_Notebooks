@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lingbot-depth.md
 summary: "蚂蚁灵波 开源项目 LingBot-Depth（工程与工具）：把RGB外观与不完整或噪声深度对齐到统一潜空间，输出补全和精修后的度量深度；仓库开放推理代码、模型权重及约三百万RGB-D样本入口，可为抓取、重建和空间感知提供更稳定的几何输入。…"
 institutions:
   - robbyant
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LingBot-Depth 源码归档](../../sources/repos/lingbot-depth.md)（<https://github.com/Robbyant/LingBot-Depth>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

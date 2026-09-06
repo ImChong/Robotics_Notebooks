@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/pymycobot.md
 summary: "大象机器人 开源项目 pymycobot（工程与工具）：提供大象机器人多类机械臂和双臂产品的统一Python API，用于连接、状态读取、关节与末端控制及外设集成。…"
 institutions:
   - elephant-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [pymycobot 源码归档](../../sources/repos/pymycobot.md)（<https://github.com/elephantrobotics/pymycobot>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

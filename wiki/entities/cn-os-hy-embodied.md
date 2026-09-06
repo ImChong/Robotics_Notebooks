@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/hy-embodied.md
 summary: "腾讯机器人实验室 开源项目 HY-Embodied（VLA/操作模型）：仓库汇总HY-Embodied系列模型、数据、训练和评测入口，使读者能够从统一位置追踪VLA、世界模型和跨本体版本之间的关系。…"
 institutions:
   - tencent
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [HY-Embodied 源码归档](../../sources/repos/hy-embodied.md)（<https://github.com/Tencent-Hunyuan/HY-Embodied>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

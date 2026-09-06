@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_lingbot_map.md
 summary: "蚂蚁灵波 开源项目 LingBot-Map（评测）：连续RGB帧经过几何上下文Transformer同时估计深度、相机轨迹与点云，窗口化推理和KV缓存支持长序列；仓库包含交互可视化、离线渲染及KITTI和Oxford Spires评测流程，适合作为空间记忆或机器人地图的感知入口。…"
 institutions:
   - robbyant
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LingBot-Map 源码归档](../../sources/repos/cn_os_lingbot_map.md)（<https://github.com/Robbyant/LingBot-Map>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

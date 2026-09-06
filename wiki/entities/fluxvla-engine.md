@@ -13,6 +13,7 @@ related:
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/blogs/limx_cosa_05_release_2026-07-15.md
+  - ../../sources/repos/fluxvla.md
 summary: "Humanoid FluxVLA Engine 是逐际动力开源的人形 VLA 工程底座：统一配置下完成数据处理、训练、仿真评测、推理与端侧部署，即插即用支持 π0/π0.5/GR00T/OpenVLA/LlavaVLA/DreamZero 等策略，与 COSA 大脑系统形成「开放技能层 vs OS 调度」分工。"
 ---
 
@@ -86,5 +87,7 @@ flowchart LR
 - [OpenPI / π₀ 项目](https://github.com/Physical-Intelligence/openpi)
 
 ## 参考来源
+
+- [FluxVLA Engine 源码归档](../../sources/repos/fluxvla.md)（<https://github.com/FluxVLA/FluxVLA>）
 
 - [COSA 0.5 发布：人形 VLA V³-0 的全身能力升级](../../sources/blogs/limx_cosa_05_release_2026-07-15.md)

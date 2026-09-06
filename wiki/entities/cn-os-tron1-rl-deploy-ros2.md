@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/tron1-rl-deploy-ros2.md
 summary: "逐际动力 开源项目 TRON1 RL Deploy ROS2（仿真环境）：ROS 2控制器加载训练导出的ONNX策略，通过低层SDK读取机器人状态并下发关节命令；同一工作区组合机器人描述、Gazebo仿真和可视化工具，先检查Sim2Sim，再切换硬件接口完成TRON1实机部署。…"
 institutions:
   - limx
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [TRON1 RL Deploy ROS2 源码归档](../../sources/repos/tron1-rl-deploy-ros2.md)（<https://github.com/limxdynamics/tron1-rl-deploy-ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

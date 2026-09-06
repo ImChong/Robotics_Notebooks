@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/leisaac.md
 summary: "光轮智能 开源项目 LeIsaac（数据集/Benchmark）：在Isaac Lab中接入SO-101 Leader完成遥操作、数据采集、格式转换和后续策略训练，连接示范输入与机器人学习数据。…"
 institutions:
   - lightwheel
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [LeIsaac 源码归档](../../sources/repos/leisaac.md)（<https://github.com/LightwheelAI/LeIsaac>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -32,6 +32,7 @@ sources:
   - ../../sources/repos/mujoco.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+  - ../../sources/repos/mujoco-lidar.md
 summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。"
 ---
 
@@ -110,6 +111,8 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 
 ## 参考来源
+
+- [MuJoCo-LiDAR 源码归档](../../sources/repos/mujoco-lidar.md)（<https://github.com/discoverse-dev/MuJoCo-LiDAR>）
 
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — MuJoCo + iLQR 在线轨迹优化（Tassa et al. 2012/14）
 - [MuJoCo 物理引擎（仓库归档）](../../sources/repos/mujoco.md)

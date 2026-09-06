@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/embodylink.md
 summary: "越疆科技 开源项目 Embodylink（数据集/Benchmark）：面向越疆机器人提供数据采集、标注、模型训练管理和遥操作工具入口。…"
 institutions:
   - dobot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Embodylink 源码归档](../../sources/repos/embodylink.md)（<https://github.com/Dobot-Arm/Embodylink>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

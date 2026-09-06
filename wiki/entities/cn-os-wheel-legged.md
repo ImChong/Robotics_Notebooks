@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wheel-legged.md
 summary: "达妙科技 开源项目 wheel-legged（工程与工具）：提供达妙轮足机器人控制与开发资料，用于平衡、移动和执行器系统联调。…"
 institutions:
   - dmbots
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wheel-legged 源码归档](../../sources/repos/wheel-legged.md)（<https://github.com/dmBots/wheel-legged>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

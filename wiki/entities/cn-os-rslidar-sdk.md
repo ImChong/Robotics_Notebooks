@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rslidar_sdk.md
 summary: "速腾聚创 开源项目 rslidar_sdk（SDK/驱动）：提供速腾聚创激光雷达ROS与ROS2 SDK，连接雷达数据、点云与机器人感知系统。…"
 institutions:
   - robosense
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [rslidar_sdk 源码归档](../../sources/repos/rslidar_sdk.md)（<https://github.com/RoboSense-LiDAR/rslidar_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

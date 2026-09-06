@@ -12,6 +12,8 @@ related:
   - ../overview/robot-training-stack-layers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
+  - ../../sources/repos/genie_sim.md
+  - ../../sources/repos/genie_sim_3.md
 summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持自然语言/图像生成可交互三维场景，提供 Genie Sim Benchmark 五类能力评测，并对接 RLinf、并行仿真与在线微调。"
 ---
 
@@ -54,6 +56,10 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ / ④ 层：Genie Sim Benchmark 五类能力仿真评测与 sim2real 对接
 
 ## 参考来源
+
+- [Genie Sim 3.0 源码归档](../../sources/repos/genie_sim_3.md)（<https://github.com/AgibotTech/genie_sim>）
+
+- [Genie Sim 3.0 源码归档](../../sources/repos/genie_sim.md)（<https://github.com/AgibotTech/genie_sim>）
 
 - [wechat_embodied_ai_lab_agibot_june_2026_release.md](../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md)
 

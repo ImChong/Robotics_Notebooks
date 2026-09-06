@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/genisom_vln.md
 summary: "智身科技 开源项目 genisom_vln（具身Agent/规划）：具身 Agent：任务规划与技能调度…"
 institutions:
   - zsibot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [genisom_vln 源码归档](../../sources/repos/genisom_vln.md)（<https://github.com/zsibot/genisom_vln>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

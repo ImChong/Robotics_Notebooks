@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wuji-sdk.md
 summary: "舞肌科技 开源项目 wuji-sdk（SDK/驱动）：提供Wuji设备发现、实时数据流和记录接口，可连接数据手套与灵巧手采集链路并为遥操作或离线数据处理提供底层输入。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wuji-sdk 源码归档](../../sources/repos/wuji-sdk.md)（<https://github.com/wuji-technology/wuji-sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/ti5handros1sdk.md
 summary: "钛虎机器人 开源项目 Ti5HandROS1SDK（SDK/驱动）：钛虎五指灵巧手 ROS1 SDK…"
 institutions:
   - ti5robot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [Ti5HandROS1SDK 源码归档](../../sources/repos/ti5handros1sdk.md)（<https://github.com/ti5robot/Ti5HandROS1SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

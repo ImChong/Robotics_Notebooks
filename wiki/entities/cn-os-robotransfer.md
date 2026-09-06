@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/robotransfer.md
 summary: "地平线 开源项目 RoboTransfer（世界模型）：世界模型/预测模型：按条件生成未来状态，服务训练与评测…"
 institutions:
   - horizon-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RoboTransfer 源码归档](../../sources/repos/robotransfer.md)（<https://github.com/HorizonRobotics/RoboTransfer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

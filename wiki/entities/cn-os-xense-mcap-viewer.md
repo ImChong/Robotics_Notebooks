@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/xense-mcap-viewer.md
 summary: "千觉机器人 开源项目 xense-mcap-viewer（工程与工具）：触觉数据 MCAP 可视化工具…"
 institutions:
   - qianjue
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [xense-mcap-viewer 源码归档](../../sources/repos/xense-mcap-viewer.md)（<https://github.com/XenseRobotics-AI/xense-mcap-viewer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

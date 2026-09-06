@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/astribot_msgs.md
 summary: "星尘智能 开源项目 astribot_msgs（仿真环境）：公开星尘智能机器人软件栈使用的自定义消息定义，为仿真与上层模块通信提供接口基础。…"
 institutions:
   - astribot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [astribot_msgs 源码归档](../../sources/repos/astribot_msgs.md)（<https://github.com/Astribot-Dev/astribot_msgs>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

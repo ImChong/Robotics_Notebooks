@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/opendm.md
 summary: "原力灵机 开源项目 OpenDM（VLA/操作模型）：DM0.5根据语言、图像和机器人状态生成动作序列，面向开放指令、长时任务、动态干扰和多本体控制；OpenDM开放基础及任务权重、训练和推理脚本、数据注册示例，以及LIBERO、RoboTwin和SO101后训练流程。…"
 institutions:
   - original-intelligence
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [OpenDM 源码归档](../../sources/repos/opendm.md)（<https://github.com/dexmal/opendm>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

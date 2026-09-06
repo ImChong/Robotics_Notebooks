@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/noetix_sdk_e1.md
 summary: "松延动力 开源项目 noetix_sdk_e1（SDK/驱动）：提供E1人形机器人控制与状态接口，用于算法部署和二次开发。…"
 institutions:
   - noetix
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [noetix_sdk_e1 源码归档](../../sources/repos/noetix_sdk_e1.md)（<https://github.com/Noetix-Robotics/noetix_sdk_e1>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

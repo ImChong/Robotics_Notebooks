@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/astribot_simulation.md
 summary: "星尘智能 开源项目 astribot_simulation（仿真环境）：提供星尘智能机器人相关的仿真开发环境，用于加载模型并验证机器人系统接口。…"
 institutions:
   - astribot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [astribot_simulation 源码归档](../../sources/repos/astribot_simulation.md)（<https://github.com/Astribot-Dev/astribot_simulation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/flexiv_rdk.md
 summary: "非夕科技 开源项目 flexiv_rdk（SDK/驱动）：提供非夕机器人C++与Python开发接口，使控制、状态、力控和应用程序接入真实机器人。…"
 institutions:
   - flexiv
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [flexiv_rdk 源码归档](../../sources/repos/flexiv_rdk.md)（<https://github.com/flexivrobotics/flexiv_rdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

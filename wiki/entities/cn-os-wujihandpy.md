@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wujihandpy.md
 summary: "舞肌科技 开源项目 wujihandpy（工程与工具）：以C++核心和Python绑定提供Wuji Hand设备发现、状态读取和控制接口，是连接上层算法与真实灵巧手的基础SDK。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wujihandpy 源码归档](../../sources/repos/wujihandpy.md)（<https://github.com/wuji-technology/wujihandpy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/wujihandros2.md
 summary: "舞肌科技 开源项目 wujihandros2（工程与工具）：为Wuji Hand提供ROS2状态发布与实时控制接口，可将灵巧手接入遥操作、规划和机器人学习系统。…"
 institutions:
   - wuji-robotics
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [wujihandros2 源码归档](../../sources/repos/wujihandros2.md)（<https://github.com/wuji-technology/wujihandros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/abot-claw.md
 summary: "阿里巴巴 开源项目 ABot-Claw（VLA/操作模型）：统一 VLN、VLA、WAM 与视觉记忆的持续协作机器人框架…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [ABot-Claw 源码归档](../../sources/repos/abot-claw.md)（<https://github.com/amap-cvlab/ABot-Claw>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/ghrc_evaluation_2026.md
 summary: "优必选 开源项目 GHRC_Evaluation_2026（评测）：评测基准与工具…"
 institutions:
   - ubtech
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [GHRC_Evaluation_2026 源码归档](../../sources/repos/ghrc_evaluation_2026.md)（<https://github.com/UBTECH-Robot/GHRC_Evaluation_2026>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

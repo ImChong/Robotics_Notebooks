@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/seertcptest.md
 summary: "仙工智能 开源项目 SeerTCPTest（工程与工具）：提供Robokit NetProtocol TCP API的Qt源码与测试工具，可发送控制请求并检查移动机器人响应和日志。…"
 institutions:
   - seer
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [SeerTCPTest 源码归档](../../sources/repos/seertcptest.md)（<https://github.com/seer-robotics/SeerTCPTest>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/dexrobot_ecosystem.md
 summary: "灵巧智能 开源项目 dexrobot_ecosystem（移动操作）：整合灵巧手底层控制、运动学、URDF、Isaac Sim、MuJoCo和ROS兼容层，连接真实硬件、仿真与操作算法开发。…"
 institutions:
   - psibot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [dexrobot_ecosystem 源码归档](../../sources/repos/dexrobot_ecosystem.md)（<https://github.com/DexRobot/dexrobot_ecosystem>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

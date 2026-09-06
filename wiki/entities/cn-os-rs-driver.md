@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rs_driver.md
 summary: "速腾聚创 开源项目 rs_driver（SDK/驱动）：提供跨平台雷达驱动内核，为上层ROS或自定义应用解析速腾聚创雷达数据。…"
 institutions:
   - robosense
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [rs_driver 源码归档](../../sources/repos/rs_driver.md)（<https://github.com/RoboSense-LiDAR/rs_driver>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/abot-explorer.md
 summary: "阿里巴巴 开源项目 ABot-Explorer（具身Agent/规划）：VLM 驱动、支持 3DGS 与 Habitat 的自主探索智能体…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [ABot-Explorer 源码归档](../../sources/repos/abot-explorer.md)（<https://github.com/amap-cvlab/ABot-Explorer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

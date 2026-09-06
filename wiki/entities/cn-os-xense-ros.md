@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/xense-ros.md
 summary: "千觉机器人 开源项目 xense-ros（SDK/驱动）：Xense 触觉设备 ROS 集成与示例…"
 institutions:
   - qianjue
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [xense-ros 源码归档](../../sources/repos/xense-ros.md)（<https://github.com/XenseRobotics/xense-ros>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

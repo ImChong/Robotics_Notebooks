@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/noetix_sdk_bumi.md
 summary: "松延动力 开源项目 noetix_sdk_bumi（SDK/驱动）：通过DDS提供Bumi机器人的高层与低层控制示例，支持上层应用和本体联调。…"
 institutions:
   - noetix
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [noetix_sdk_bumi 源码归档](../../sources/repos/noetix_sdk_bumi.md)（<https://github.com/Noetix-Robotics/noetix_sdk_bumi>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

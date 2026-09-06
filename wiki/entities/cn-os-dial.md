@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/dial.md
 summary: "小鹏机器人 开源项目 DIAL（VLA/操作模型）：小鹏机器人官方公开的机器人学习研究项目，具体数据、模型与动作接口以仓库和论文材料为准。…"
 institutions:
   - xpeng
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [DIAL 源码归档](../../sources/repos/dial.md)（<https://github.com/xpeng-robotics/DIAL>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/booster_deploy.md
 summary: "加速进化 开源项目 booster_deploy（部署运行时）：策略部署运行时：加载训练策略、下发关节命令…"
 institutions:
   - booster
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [booster_deploy 源码归档](../../sources/repos/booster_deploy.md)（<https://github.com/BoosterRobotics/booster_deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

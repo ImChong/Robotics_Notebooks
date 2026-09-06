@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/aubo_robot.md
 summary: "遨博智能 开源项目 aubo_robot（工程与工具）：为AUBO协作机器人提供ROS工业包、机器人描述、驱动、MoveIt和Gazebo集成。…"
 institutions:
   - aubo
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [aubo_robot 源码归档](../../sources/repos/aubo_robot.md)（<https://github.com/AuboRobot/aubo_robot>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/x-trainer.md
 summary: "越疆科技 开源项目 x-trainer（数据集/Benchmark）：为X-Trainer协作机械臂提供VR和手柄遥操作适配、数据采集与GPU仿真训练入口。…"
 institutions:
   - dobot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [x-trainer 源码归档](../../sources/repos/x-trainer.md)（<https://github.com/embodied-dobot/x-trainer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

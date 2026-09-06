@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/galbotsdk.md
 summary: "银河通用 开源项目 GalbotSDK（SDK/驱动）：官方 SDK：真机控制与状态读取的统一接入层…"
 institutions:
   - galbot
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [GalbotSDK 源码归档](../../sources/repos/galbotsdk.md)（<https://github.com/GalaxyGeneralRobotics/GalbotSDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

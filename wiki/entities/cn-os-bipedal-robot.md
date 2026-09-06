@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/bipedal-robot.md
 summary: "达妙科技 开源项目 bipedal-robot（工程与工具）：公开双足机器人本体与控制相关资料，为执行器、结构和运动控制实验提供基础。…"
 institutions:
   - dmbots
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [bipedal-robot 源码归档](../../sources/repos/bipedal-robot.md)（<https://github.com/dmBots/bipedal-robot>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rynnvla-002.md
 summary: "阿里巴巴 开源项目 RynnVLA-002（VLA/操作模型）：RynnVLA-002在视觉、语言和机器人状态条件下预测动作，面向跨任务和跨本体操作；项目用于检查Rynn系列从模型结构、训练数据到策略评测的更新。…"
 institutions:
   - alibaba
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [RynnVLA-002 源码归档](../../sources/repos/rynnvla-002.md)（<https://github.com/alibaba-damo-academy/RynnVLA-002>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

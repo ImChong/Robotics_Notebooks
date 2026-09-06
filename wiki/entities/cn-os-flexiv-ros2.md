@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/flexiv_ros2.md
 summary: "非夕科技 开源项目 flexiv_ros2（工程与工具）：把Flexiv RDK接入ROS2，为感知、规划和控制应用提供标准中间件接口。…"
 institutions:
   - flexiv
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [flexiv_ros2 源码归档](../../sources/repos/flexiv_ros2.md)（<https://github.com/flexivrobotics/flexiv_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

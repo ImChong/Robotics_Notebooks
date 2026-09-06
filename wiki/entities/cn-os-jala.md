@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/jala.md
 summary: "智在无界 开源项目 JALA（VLA/操作模型）：VLA/策略接入：模型输出动作块驱动本体执行…"
 institutions:
   - agilex-ai
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [JALA 源码归档](../../sources/repos/jala.md)（<https://github.com/BeingBeyond/JALA>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

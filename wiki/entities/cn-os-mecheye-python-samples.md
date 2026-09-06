@@ -9,6 +9,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/mecheye_python_samples.md
 summary: "梅卡曼德 开源项目 mecheye_python_samples（数据采集/工具）：提供Mech-Eye API的Python示例，覆盖相机连接、图像和点云采集以及常见参数设置。…"
 institutions:
   - mech-mind
@@ -61,6 +62,8 @@ institutions:
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
+
+- [mecheye_python_samples 源码归档](../../sources/repos/mecheye_python_samples.md)（<https://github.com/MechMindRobotics/mecheye_python_samples>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
