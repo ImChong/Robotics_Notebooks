@@ -10,7 +10,7 @@
 - **代码：** https://github.com/LightwheelAI/LW-BenchHub
 - **入库日期：** 2026-08-17
 - **一句话说明：** 光轮面向企业的仿真 / 数据工厂叙事页；开源评测底座 LW-BenchHub 的产品入口。
-- **交叉归档：** [lw-benchhub](../repos/lw-benchhub.md)、[lw_benchhub_tour](../repos/lw_benchhub_tour.md)
+- **交叉归档：** [lw-benchhub](../repos/lw-benchhub.md)、[lw_benchhub_tour](../repos/lw_benchhub_tour.md)、[RoboFinals](../sites/lightwheel_robofinals.md)
 
 ---
 

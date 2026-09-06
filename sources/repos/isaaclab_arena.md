@@ -111,7 +111,7 @@ python isaaclab_arena/evaluation/policy_runner.py \
 
 | Benchmark | 说明 |
 |-----------|------|
-| [Lightwheel RoboFinals](https://lightwheel.ai/robofinals) | 高保真工业 benchmark |
+| [Lightwheel RoboFinals](https://lightwheel.ai/robofinals) | 高保真工业 benchmark（100 任务；商业平台，见 [lightwheel_robofinals](../sites/lightwheel_robofinals.md)） |
 | [Lightwheel RoboCasa Tasks](https://github.com/LightwheelAI/LW-BenchHub) | 138+ 任务、50 数据集/任务、7+ 机器人 |
 | [Lightwheel LIBERO Tasks](https://github.com/LightwheelAI/LW-BenchHub) | LIBERO 适配 |
 | [RoboTwin 2.0 (Arena 分支)](https://github.com/RoboTwin-Platform/RoboTwin/tree/IsaacLab-Arena) | 扩展仿真 benchmark |

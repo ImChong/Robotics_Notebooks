@@ -2,18 +2,20 @@
 type: entity
 tags: [paper, world-action-model, 3d-geometry, diffusion-policy, inria]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-06
 arxiv: "2609.02531"
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../overview/embodied-resources-reliability-9-papers-technology-map.md
   - ./paper-gift-intermediate-feature-training.md
 sources:
   - ../../sources/papers/sa_wam_arxiv_2609_02531.md
   - ../../sources/sites/sa-wam.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md
 summary: "SA-WAM（arXiv:2609.02531，Inria/ENS）：对数尺度 depth 编码注入冻结 VAE 的 3D-aware WAM；RoboCasa 76.6%、LIBERO-Plus 86.6%；UR5 随机环境真机显著超 Cosmos-Policy；代码待发布。"
 ---
 
@@ -109,6 +111,7 @@ Depth 归一化消融：对数尺度比线性高 **5.2** 点策略成功率。
 - [sa_wam_arxiv_2609_02531](../../sources/papers/sa_wam_arxiv_2609_02531.md)
 - [sa-wam 项目页](../../sources/sites/sa-wam.md)
 - [具身智能小站 2026-09-03 八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md)
+- [具身智能小站 2026-09-06 九篇资源汇总](../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md)
 
 ## 推荐继续阅读
 

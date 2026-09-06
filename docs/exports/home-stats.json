@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3505,
-  "edge_count": 32219,
+  "node_count": 3511,
+  "edge_count": 32280,
   "coverage": {
-    "covered": 3478,
-    "total": 3478,
+    "covered": 3484,
+    "total": 3484,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-adamimic.md",
+      "detail_id": "entity-paper-adamimic",
+      "label": "AdaMimic：单条参考运动上的自适应全身跟踪",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/isaac-launchable.md",
       "detail_id": "entity-isaac-launchable",
@@ -202,45 +212,34 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-nurec.md",
-      "detail_id": "entity-nvidia-nurec",
-      "label": "NVIDIA Omniverse NuRec",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-launchable.md",
-    "detail_id": "entity-isaac-launchable",
-    "label": "Isaac Launchable",
+    "path": "wiki/entities/paper-adamimic.md",
+    "detail_id": "entity-paper-adamimic",
+    "label": "AdaMimic：单条参考运动上的自适应全身跟踪",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 922
+      "size": 926
     },
     {
       "label": "操作",
-      "size": 676
+      "size": 689
     },
     {
       "label": "视觉-语言-动作",
-      "size": 249
+      "size": 244
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 222
+      "size": 224
     },
     {
       "label": "移动操作",
@@ -256,7 +255,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1424,
+      "degree": 1428,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -279,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 905,
+      "degree": 908,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -310,7 +309,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 541,
+      "degree": 542,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

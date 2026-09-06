@@ -1,5 +1,21 @@
 ## [2026-09-06] ingest | sources/papers/adamimic_arxiv_2510_14454.md — AdaMimic ICRA 2026 Oral 全库 ingest；GitHub 已开源 stage1/stage2
 
+## [2026-09-06] ingest | sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md — 9篇资源汇总；新建 R2S-Eval/RoboTok/EGR 独立节点，6篇复用
+
+## [2026-09-06] ingest | sources/sites/lightwheel_robofinals.md、lightwheel_robofinals_industrial_benchmark.md — 接入 Lightwheel RoboFinals 工业仿真评测平台（RoboFinals-100）；商业 Coming soon；关键页 lightwheel-robofinals；交叉 isaac-lab-arena / lw-benchhub-tour
+
+- **触发：** 用户指定 lightwheel.ai/robofinals 与 industrial-benchmark 媒体文，自动合并 PR
+- **步骤 2.5：** RoboFinals **商业闭源**；底层 Arena + LW-BenchHub **已开源**；AutoDataGen **未列公开仓**
+- **新建：** `lightwheel-robofinals` 实体；两份 sources 归档
+- **交叉：** isaac-lab-arena、lw-benchhub-tour、lightwheel-platform
+
+## [2026-09-06] ingest | sources/sites/nvidia-gtc.md、courses/nvidia_gtc_2025_physical_ai_robotics_playlist.md、courses/nvidia_gtc_2025_humanoid_developer_day.md — 接入 NVIDIA GTC On-Demand 机器人一手资料（Physical AI/Robotics + Humanoid Developer Day 播放列表）；关键页 nvidia-gtc；交叉 physical-ai-learning / cosmos / isaac-gr00t / newton
+
+- **触发：** 用户要求 ingest Nvidia GTC 相关一手资料，自动合并 PR
+- **步骤 2.5：** On-Demand 为官方免费视频回放；无独立训练代码
+- **新建：** `nvidia-gtc` 实体；三份 sources 归档（门户 + 两个 GTC 2025 播放列表）
+- **交叉：** nvidia-physical-ai-learning、nvidia-cosmos、isaac-gr00t、newton-physics、robotics-fundamentals-playlist
+
 ## [2026-09-06] ingest | sources/repos/isaac_launchable.md、sites/nvidia-robotics-fundamentals-playlist.md — 接入 Isaac Launchable（Brev 浏览器 Isaac Lab+Sim）与 Robotics Fundamentals 播放列表；已开源模板；关键页 isaac-launchable；交叉 nvidia-brev / physical-ai-learning / getting-started-isaac-lab
 
 - **触发：** 用户指定 isaac-sim/isaac-launchable、resources.nvidia.com robotics-1 播放列表，并要求自动合并 PR

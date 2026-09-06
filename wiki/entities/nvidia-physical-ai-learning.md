@@ -9,6 +9,7 @@ related:
   - ./nvidia-learn-openusd.md
   - ./nvidia-brev.md
   - ./isaac-launchable.md
+  - ./nvidia-gtc.md
   - ./nvidia-omniverse.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -19,6 +20,7 @@ related:
 sources:
   - ../../sources/sites/nvidia-physical-ai-learning.md
   - ../../sources/sites/nvidia-robotics-fundamentals-playlist.md
+  - ../../sources/sites/nvidia-gtc.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/courses/nvidia_learn_openusd.md
@@ -70,7 +72,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 
 ## Robotics Fundamentals 播放列表（营销漏斗）
 
-NVIDIA [Robotics Fundamentals Learning page](https://resources.nvidia.com/en-us-playlist-for-robotics/robotics-1?xs=954362) 是 **resources.nvidia.com** 上的视频/演讲索引（仿真、ROS、机器人学习、Cosmos、Physical AI 愿景等），主 CTA 指向本门户。它与 **docs.nvidia.com 可跟做课程** 分工明确：播放列表负责种草，动手课仍在本页下列路径（Isaac Sim/Lab/ROS、SO-101 等）。归档见 [`sources/sites/nvidia-robotics-fundamentals-playlist.md`](../../sources/sites/nvidia-robotics-fundamentals-playlist.md)。
+NVIDIA [Robotics Fundamentals Learning page](https://resources.nvidia.com/en-us-playlist-for-robotics/robotics-1?xs=954362) 是 **resources.nvidia.com** 上的视频/演讲索引（仿真、ROS、机器人学习、Cosmos、Physical AI 愿景等），主 CTA 指向本门户。完整 **GTC On-Demand 播放列表与场次索引** 见 [NVIDIA GTC](./nvidia-gtc.md) 实体。它与 **docs.nvidia.com 可跟做课程** 分工明确：播放列表负责种草，动手课仍在本页下列路径（Isaac Sim/Lab/ROS、SO-101 等）。归档见 [`sources/sites/nvidia-robotics-fundamentals-playlist.md`](../../sources/sites/nvidia-robotics-fundamentals-playlist.md)。
 
 ## 与「生成式 AI」的边界（课程共性）
 
@@ -92,6 +94,7 @@ NVIDIA [Robotics Fundamentals Learning page](https://resources.nvidia.com/en-us-
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [NVIDIA Brev](./nvidia-brev.md) — 云 GPU 与 Launchable 环境
 - [Isaac Launchable](./isaac-launchable.md) — 官方 Isaac Lab+Sim 浏览器 Launchable
+- [NVIDIA GTC](./nvidia-gtc.md) — 大会 On-Demand 与机器人播放列表索引
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [LeRobot](./lerobot.md)
 - [Sim2Real](../concepts/sim2real.md)
