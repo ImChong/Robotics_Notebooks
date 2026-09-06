@@ -14,6 +14,7 @@ related:
   - ./openlet.md
   - ./letools.md
   - ./lw-benchhub-tour.md
+  - ./isaac-lab-arena.md
   - ./paper-ros2smolvla.md
   - ./perceptron-isaac-05.md
   - ./rebot-devarm.md

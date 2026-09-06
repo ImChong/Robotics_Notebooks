@@ -264,6 +264,7 @@
 - [Isaac GR00T（人形 VLA 开发平台）](wiki/entities/isaac-gr00t.md) — Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym**、**Isaac Sim** 与 **Isaac Lab** 是 NVIDIA 机器人仿真与学习生态里需要分开理解的三个产品节点。 `📅unknown` `[entity_page]`
 - [Isaac Gym](wiki/entities/isaac-gym.md) — Isaac Gym** 是 NVIDIA 早期推出的 GPU 加速机器人强化学习仿真框架，主打「在单张 GPU 上同时跑几千到上万个环境」的大规模并行训练。 `📅unknown` `[entity_page]`
+- [Isaac Lab-Arena](wiki/entities/isaac-lab-arena.md) — Isaac Lab-Arena** 是 NVIDIA 在 Isaac Lab 之上的 **开源 Alpha 扩展**，面向通才机器人策略的 **任务策展、多样化 `📅unknown` `[entity_page]`
 - [Isaac Lab 默认环境](wiki/entities/isaac-lab-default-environments.md) — Isaac Lab 默认环境**是 Isaac Lab 随框架一起注册进 Gymnasium 的**开箱即跑任务集**：截至 **v3.0.0**（`main` @ `2e44ddb`，2026- `📅unknown` `[entity_page]`
 - [Isaac Lab](wiki/entities/isaac-lab.md) — Isaac Lab** 是 NVIDIA 当前官方主推的机器人学习框架，建立在 **Isaac Sim** 之上，用于 robot learning、locomotion、manipulation `📅unknown` `[entity_page]`
 - [Isaac-RL-Two-wheel-Legged-Bot（lab.flamingo）](wiki/entities/isaac-rl-two-wheel-legged-bot.md) — Isaac-RL-Two-wheel-Legged-Bot** 是 [`jaykorea/Isaac-RL-Two-wheel-Legged-Bot`](https://github.com/ja `📅unknown` `[entity_page]`
