@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/isaac-launchable.md",
+      "detail_id": "entity-isaac-launchable",
+      "label": "Isaac Launchable",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-brev.md",
+      "detail_id": "entity-nvidia-brev",
+      "label": "NVIDIA Brev",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/nexus-humanoid.md",
       "detail_id": "entity-nexus-humanoid",
       "label": "NEXUS（感知型基础策略 · 跨域全身遥操作）",
@@ -23,17 +45,6 @@
       "path": "wiki/entities/compass.md",
       "detail_id": "entity-compass",
       "label": "COMPASS",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-brev.md",
-      "detail_id": "entity-nvidia-brev",
-      "label": "NVIDIA Brev",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
@@ -201,22 +212,12 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robotis-cyclo-mjlab.md",
-      "detail_id": "entity-robotis-cyclo-mjlab",
-      "label": "cyclo_mjlab（ROBOTIS）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nexus-humanoid.md",
-    "detail_id": "entity-nexus-humanoid",
-    "label": "NEXUS（感知型基础策略 · 跨域全身遥操作）",
+    "path": "wiki/entities/isaac-launchable.md",
+    "detail_id": "entity-isaac-launchable",
+    "label": "Isaac Launchable",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
