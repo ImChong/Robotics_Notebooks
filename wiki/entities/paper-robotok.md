@@ -97,6 +97,14 @@ flowchart TB
 - **手轨迹估计误差** — 依赖 3D 手重建与躯干帧估计质量。
 - **与 DemoMimic 分工** — RoboTok 扩数据；[DemoMimic](./paper-demomimic.md) 做单示范接触几何泛化。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| STRAP / Flow / HAND | 外观或子轨迹检索；RoboTok 用 3D 手部轨迹几何 |
+| MimicGen / GRAIL | 生成式扩数据；RoboTok 从互联网持续检索 |
+| [DemoMimic](./paper-demomimic.md) | 单示范接触几何泛化；RoboTok 解决示范来源规模 |
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
