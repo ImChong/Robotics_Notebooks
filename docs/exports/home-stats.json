@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/jetson-ai-lab.md",
+      "detail_id": "entity-jetson-ai-lab",
+      "label": "Jetson AI Lab（边缘 AI 教程 hub）",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-jetson.md",
+      "detail_id": "entity-nvidia-jetson",
+      "label": "NVIDIA Jetson",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/human-atlas.md",
       "detail_id": "entity-human-atlas",
       "label": "Human Atlas（3D 解剖探索器）",
@@ -202,40 +222,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-agibot-x2-urdf.md",
-      "detail_id": "entity-cn-os-agibot-x2-urdf",
-      "label": "agibot_x2_urdf",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-agillink-omnihand-sdk.md",
-      "detail_id": "entity-cn-os-agillink-omnihand-sdk",
-      "label": "agillink_omnihand_sdk",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/human-atlas.md",
-    "detail_id": "entity-human-atlas",
-    "label": "Human Atlas（3D 解剖探索器）",
+    "path": "wiki/entities/jetson-ai-lab.md",
+    "detail_id": "entity-jetson-ai-lab",
+    "label": "Jetson AI Lab（边缘 AI 教程 hub）",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
