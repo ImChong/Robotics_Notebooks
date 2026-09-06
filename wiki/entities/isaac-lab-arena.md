@@ -24,6 +24,8 @@ related:
   - ./robocasa.md
   - ./dexbench.md
   - ./lightwheel-robofinals.md
+  - ./inspect-robots.md
+  - ./robocurve.md
   - ./isaac-teleop.md
   - ../concepts/lerobot-envhub.md
   - ../methods/vla.md
@@ -234,6 +236,7 @@ README 单列：**NIST Board 1**、**NVIDIA Isaac GR00T Industrial**、**[DexBen
 - [Isaac GR00T](./isaac-gr00t.md)
 - [LW BENCHHUB TOUR](./lw-benchhub-tour.md)
 - [DexBench](./dexbench.md)
+- [Inspect Robots](./inspect-robots.md) — `inspect-robots-isaacsim` 真机优先框架的 Isaac Lab embodiment 路径
 - [Isaac Teleop](./isaac-teleop.md)
 - [VLA 方法](../methods/vla.md)
 - [Manipulation 任务](../tasks/manipulation.md)

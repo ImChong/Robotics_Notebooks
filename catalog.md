@@ -558,6 +558,7 @@
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
+- [Inspect Robots](wiki/entities/inspect-robots.md) — Inspect Robots**（GitHub，[文档](https://docs.inspectro `📅unknown` `[entity_page]`
 - [InstructBLIP](wiki/entities/instructblip.md) — InstructBLIP 在 BLIP-2 上做视觉指令调优：用指令感知 Q-Former 抽取与任务相关的视觉特征，提升零样本与指令跟随。 `📅unknown` `[entity_page]`
 - [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），输出对齐的彩色与深度，是人形系统课感知章与大量 G1 真 `📅unknown` `[entity_page]`
 - [Internal Cycloidal Actuator（内嵌摆线一体执行器）](wiki/entities/internal-cycloidal-actuator.md) — Internal Cycloidal Actuator** 是 Aaed Musa 的开源一体关节：[GitHub CAD/BOM](https://github.com/aaedmusa/Int `📅unknown` `[entity_page]`
@@ -2900,6 +2901,7 @@
 - [RoboOrchardLab](wiki/entities/robo-orchard-lab.md) — RoboOrchardLab** 是 **Horizon Robotics（地平线）** 在 **RoboOrchard** 大项目下发布的 **Python 具身 AI 训练与评测框架**：核心 `📅unknown` `[entity_page]`
 - [RoboCasa / RoboCasa365](wiki/entities/robocasa.md) — RoboCasa** 是德州大学奥斯汀分校（UT Austin）团队发布的大规模 **厨房日常任务仿真框架**（MuJoCo + [robosuite](https://github.com/AR `📅unknown` `[entity_page]`
 - [RoboClaw](wiki/entities/roboclaw.md) — RoboClaw**（GitHub: MINT-SJTU/RoboClaw）是上海交通大学 **MINT 实验室 `📅unknown` `[entity_page]`
+- [Robocurve](wiki/entities/robocurve.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
