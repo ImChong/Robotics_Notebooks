@@ -18,6 +18,7 @@ related:
   - ./perceptron-isaac-05.md
   - ./isaac-teleop.md
   - ./nvidia-physical-ai-datasets.md
+  - ./nvidia-gtc.md
 sources:
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
@@ -152,6 +153,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 
 - [Develop Humanoid Robot Policies End-to-End with NVIDIA Isaac GR00T](https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/) — 官方端到端博客  
 - [NVIDIA Learning：GR00T 端到端工作流](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html) — 官方动手教程  
+- [GTC 2025 Humanoid Developer Day — Building Humanoid Robots](./nvidia-gtc.md) — Jim Fan 介绍 GR00T 四部分（On-Demand）
 - [Isaac Teleop + GR00T 1.7 LeRobot 集成（HF Blog）](https://huggingface.co/blog/nvidia/nvidia-isaac-teleop-and-gr00t17-in-lerobot)  
 - [GR00T Reference Workflow for Unitree G1（Isaac ROS）](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_physical_ai/tutorials/tutorials.html) — 真机 MCAP → LeRobot → LEAPP 部署  
 - [LeRobot GR00T 文档](https://github.com/huggingface/lerobot/blob/main/docs/source/groot.mdx) — HF 侧 `groot` policy 工作流  

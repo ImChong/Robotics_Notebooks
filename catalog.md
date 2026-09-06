@@ -375,6 +375,7 @@
 - [NVIDIA Cosmos（世界基础模型平台）](wiki/entities/nvidia-cosmos.md) — NVIDIA Cosmos** 是面向机器人、自动驾驶与智慧基础设施的 **Physical AI 世界基础模型（WFM）开放平台**：同时发布模型权重、视频策展 / 评测工具与训练–推理框架。当 `📅unknown` `[entity_page]`
 - [NVIDIA GEAR Lab（Generalist Embodied Agent Research）](wiki/entities/nvidia-gear-lab.md) — GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **[Linxi  `📅unknown` `[entity_page]`
 - [NVIDIA Getting Started With Isaac Lab](wiki/entities/nvidia-getting-started-isaac-lab.md) — Getting Started With Isaac Lab** 是 Physical AI Learning 门户下的  `📅unknown` `[entity_page]`
+- [NVIDIA GTC（机器人 / Physical AI 一手资料）](wiki/entities/nvidia-gtc.md) — NVIDIA GTC**（GPU Technology Conference，现定位为 **AI Conference**）是 NVIDIA 年度/global 大会：主题演讲、技术分论坛与 Ha `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab Spot locomotion Sim2Real](wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab** 是 NVIDIA D `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab UR10e 工业装配 Sim2Real](wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — Bridging the Sim-to-Real Gap for Industrial Robotic Assembly Applications Using NVIDIA Isaac Lab `📅unknown` `[entity_page]`
 - [NVIDIA Jetson](wiki/entities/nvidia-jetson.md) — NVIDIA Jetson** 是面向 **机器人与边缘 AI** 的嵌入式计算平台：以 **Jetson 模组**（SoM）+ **JetPack SDK** 提供机载 CUDA/TensorR `📅unknown` `[entity_page]`

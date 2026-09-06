@@ -1,3 +1,10 @@
+## [2026-09-06] ingest | sources/sites/nvidia-gtc.md、courses/nvidia_gtc_2025_physical_ai_robotics_playlist.md、courses/nvidia_gtc_2025_humanoid_developer_day.md — 接入 NVIDIA GTC On-Demand 机器人一手资料（Physical AI/Robotics + Humanoid Developer Day 播放列表）；关键页 nvidia-gtc；交叉 physical-ai-learning / cosmos / isaac-gr00t / newton
+
+- **触发：** 用户要求 ingest Nvidia GTC 相关一手资料，自动合并 PR
+- **步骤 2.5：** On-Demand 为官方免费视频回放；无独立训练代码
+- **新建：** `nvidia-gtc` 实体；三份 sources 归档（门户 + 两个 GTC 2025 播放列表）
+- **交叉：** nvidia-physical-ai-learning、nvidia-cosmos、isaac-gr00t、newton-physics、robotics-fundamentals-playlist
+
 ## [2026-09-06] ingest | sources/repos/isaac_launchable.md、sites/nvidia-robotics-fundamentals-playlist.md — 接入 Isaac Launchable（Brev 浏览器 Isaac Lab+Sim）与 Robotics Fundamentals 播放列表；已开源模板；关键页 isaac-launchable；交叉 nvidia-brev / physical-ai-learning / getting-started-isaac-lab
 
 - **触发：** 用户指定 isaac-sim/isaac-launchable、resources.nvidia.com robotics-1 播放列表，并要求自动合并 PR
