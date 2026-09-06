@@ -99,4 +99,5 @@ Edge 限制：分辨率仅 256p/480p，12–30 fps，50–150 帧；当前不支
 - 实体页：**`wiki/entities/cosmos-3.md`**
 - Transfer 族：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)
 - 2.x 配方：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)
+- 视频策展：[`wiki/entities/cosmos-curator.md`](../../wiki/entities/cosmos-curator.md) · [`sources/repos/nvidia_cosmos_curator.md`](./nvidia_cosmos_curator.md)
 - Physical AI 数据：[`wiki/entities/nvidia-physical-ai-datasets.md`](../../wiki/entities/nvidia-physical-ai-datasets.md)
