@@ -756,6 +756,7 @@
 - [AGILE：人形 Loco-Manipulation 学习工作流](wiki/entities/paper-agile-humanoid-loco-manipulation.md) — AGILE**（*A Generic Isaac-Lab based Engine*；论文 *AGILE: A Comprehensive Workflow for Humanoid Loco-M `📅unknown` `[entity_page]`
 - [Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md) — Agile Perceptive Traversal**（*Learning Agile Perceptive Traversal of Sparse 3D Structures for Huma `📅unknown` `[entity_page]`
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
+- [AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人](wiki/entities/paper-ahoy.md) — AHOY**（*Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Di `📅unknown` `[entity_page]`
 - [AlloEgo-VLM：消歧自我中心与环境中心参照系](wiki/entities/paper-alloego-vlm.md) — AlloEgo-VLM**（*AlloEgo-VLM: Disambiguating Allocentric and Egocentric Reference Frames in Vision-L `📅unknown` `[entity_page]`
 - [AME — Attention-Based Map Encoding](wiki/entities/paper-ame-attention-based-map-encoding.md) — AME**（*Attention-Based Map Encoding for Learning Generalized Legged Locomotion*，[Science Robotics  `📅unknown` `[entity_page]`
 - [AMP Locomotion（HMI P023）](wiki/entities/paper-amp-locomotion-quadruped-rewards.md) — AMP Locomotion**（*Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions*，20 `📅unknown` `[entity_page]`
