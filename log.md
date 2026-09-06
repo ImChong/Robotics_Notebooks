@@ -1,9 +1,10 @@
-## [2026-09-06] ingest | sources/repos/compass.md、blogs/nvidia_compass_cross_embodiment_navigation_ai_agents.md、repos/brev_cli.md、sites/nvidia-brev-overview.md — 接入 COMPASS 跨具身导航框架与 NVIDIA Brev 云 GPU；已开源；关键页 compass、nvidia-brev
+## [2026-09-06] ingest | SDPG 双论文同名消歧 — 视觉 RL（arXiv:2605.26478 / HaoxiangYou/SDPG / Yale）+ LLM RLVR（arXiv:2606.04036 / lauyikfung/SDPG / UCLA）；关键页 paper-sdpg-visual-rl-stochastic-decoupled、paper-sdpg-self-distilled-policy-gradient；交叉 reinforcement-learning / sim2real / genesis-sim
 
-- **触发：** 用户指定 NVlabs/COMPASS、NVIDIA 博客、brevdev/brev-cli、Brev 文档，并要求自动合并 PR
-- **步骤 2.5：** COMPASS **已开源** Apache 2.0（HF gated 资产）；brev-cli **已开源** MIT；Brev 云服务为商业 GPU 平台
-- **新建：** `compass`、`nvidia-brev` 实体；四份 sources 归档
-- **交叉：** cross-embodiment-transfer-strategy、physical-ai-learning、getting-started-isaac-lab
+- **触发：** 用户指定两篇 arXiv、两个 GitHub 仓与 Yale 项目页，并要求自动合并 PR
+- **步骤 2.5：** 两仓均 **已开源**；Yale 项目页链出 [HaoxiangYou/SDPG](https://github.com/HaoxiangYou/SDPG)；UCLA 项目页链出 [lauyikfung/SDPG](https://github.com/lauyikfung/SDPG) + verl
+- **消歧：** 缩写 SDPG 指 **Stochastic Decoupled**（机器人视觉）vs **Self-Distilled**（LLM 数学 RLVR）
+- **新建：** 两份 papers/sites/repos 归档 + 两个论文实体（含源码运行时序图）
+- **交叉：** reinforcement-learning、sim2real（Go2）、genesis-sim
 
 ## [2026-09-06] ingest | sources/sites/nvidia-jetson-embedded-systems.md — 接入 Jetson 嵌入式产品线门户（Thor/Orin 谱系、JetPack、Physical AI）；关键页 nvidia-jetson；交叉 jetson-orin-nx / hardware-in-the-loop
 

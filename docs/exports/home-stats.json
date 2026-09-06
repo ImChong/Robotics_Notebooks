@@ -1,28 +1,27 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3500,
-  "edge_count": 32157,
+  "node_count": 3502,
+  "edge_count": 32181,
   "coverage": {
-    "covered": 3473,
-    "total": 3473,
+    "covered": 3475,
+    "total": 3475,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/compass.md",
-      "detail_id": "entity-compass",
-      "label": "COMPASS",
+      "path": "wiki/entities/paper-sdpg-self-distilled-policy-gradient.md",
+      "detail_id": "entity-paper-sdpg-self-distilled-policy-gradient",
+      "label": "SDPG（自蒸馏策略梯度 · LLM RLVR）",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/entities/nvidia-brev.md",
-      "detail_id": "entity-nvidia-brev",
-      "label": "NVIDIA Brev",
+      "path": "wiki/entities/paper-sdpg-visual-rl-stochastic-decoupled.md",
+      "detail_id": "entity-paper-sdpg-visual-rl-stochastic-decoupled",
+      "label": "SDPG（随机解耦策略梯度 · 视觉 RL）",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
@@ -213,20 +212,19 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/compass.md",
-    "detail_id": "entity-compass",
-    "label": "COMPASS",
+    "path": "wiki/entities/paper-sdpg-self-distilled-policy-gradient.md",
+    "detail_id": "entity-paper-sdpg-self-distilled-policy-gradient",
+    "label": "SDPG（自蒸馏策略梯度 · LLM RLVR）",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 941
+      "size": 921
     },
     {
       "label": "操作",
@@ -234,7 +232,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 248
+      "size": 260
     },
     {
       "label": "机器人学习论文笔记",
@@ -254,7 +252,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1423,
+      "degree": 1424,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -270,7 +268,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 905,
+      "degree": 908,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -308,7 +306,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 539,
+      "degree": 541,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

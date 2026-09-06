@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, reinforcement-learning, grpo, sample-efficiency, robotwin, openvla, execution-quality, amazon, ucla]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-06
 arxiv: "2608.17423"
 related:
   - ../methods/vla.md
@@ -155,6 +155,7 @@ RoboTwin 四任务（Lift Pot、Move Can Pot、Handover Block、Beat Block Hamme
 
 - [VLA 方法](../methods/vla.md)
 - [Temporal GRPO](./paper-temporal-grpo.md) — 阶段条件信用（不同轴）
+- [SDPG（LLM 自蒸馏）](./paper-sdpg-self-distilled-policy-gradient.md) — 同为 GRPO 族 + privileged 稠密信号，领域为 LLM 数学 RLVR（arXiv:2606.04036）
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md) — SimpleVLA-RL 入口
 - [RoboTwin](./robotwin.md) — 评测平台
 - [OpenVLA](./openvla.md) — 策略骨干

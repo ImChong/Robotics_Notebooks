@@ -325,6 +325,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 官方入门课模块 4：仿真增强 / Real2Sim / 策略鲁棒三类桥接
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 廉价双臂叠衣：仿真 AWR/RECAP → 真机三桶 BC+DAgger（arXiv:2606.27163，全链路开源）
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）
+- [SDPG（视觉 RL）](../entities/paper-sdpg-visual-rl-stochastic-decoupled.md) — 端到端视觉 on-policy（非蒸馏）：Go2 egocentric 深度导航仿真 **<2 h** 单 GPU → **零样本** 真机（arXiv:2605.26478；[已开源](https://github.com/HaoxiangYou/SDPG)）
 - [HydroGym](../entities/paper-hydrogym.md) — *Nature* 2026 **非机器人** 对照：湍流通道代理训练 → 三维翼型 **零样本** 减阻（~38% 局部 \(c_f\)）；与腿足/操作 sim2real 正交，但共享「代理环境训练→目标域部署」叙事（arXiv:2512.17534）
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — **深度** sim-to-real：真机用 **VFM（Fast-FoundationStereo）** 替代重度 depth randomization，配合 **RFM** 聚焦梯子踏棍（arXiv:2606.05873）
 - [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — **深度** sim-to-real：自遮挡射线合成 + Kinect 风格噪声进 RL 环，再对重建延迟做端到端微调（arXiv:2510.07152）
