@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/papers/adamimic_arxiv_2510_14454.md — AdaMimic ICRA 2026 Oral 全库 ingest；GitHub 已开源 stage1/stage2
+
 ## [2026-09-06] ingest | sources/repos/isaac_launchable.md、sites/nvidia-robotics-fundamentals-playlist.md — 接入 Isaac Launchable（Brev 浏览器 Isaac Lab+Sim）与 Robotics Fundamentals 播放列表；已开源模板；关键页 isaac-launchable；交叉 nvidia-brev / physical-ai-learning / getting-started-isaac-lab
 
 - **触发：** 用户指定 isaac-sim/isaac-launchable、resources.nvidia.com robotics-1 播放列表，并要求自动合并 PR

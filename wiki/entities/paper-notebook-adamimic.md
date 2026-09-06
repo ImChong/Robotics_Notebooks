@@ -1,70 +1,64 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
-status: planned
-updated: 2026-06-26
-venue: "2025.10"
+tags: [paper, humanoid-paper-notebooks, humanoid, motion-tracking, shanghai-ai-lab, sjtu]
+status: complete
+updated: 2026-09-06
+venue: "ICRA 2026 Oral"
 related:
+  - ./paper-adamimic.md
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_adamimic.md
-summary: "AdaMimic：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+  - ../../sources/papers/adamimic_arxiv_2510_14454.md
+summary: "AdaMimic Paper Notebooks 索引节点；全库知识归纳见 paper-adamimic（ICRA 2026 Oral，已 ingest）。"
 ---
 
 # AdaMimic
 
-**AdaMimic: Towards Adaptable Humanoid Control via Adaptive Motion Tracking** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**AdaMimic**（*Towards Adaptable Humanoid Control via Adaptive Motion Tracking*）在 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 中列为 **04_Loco-Manipulation_and_WBC** 待深读条目；本库已完成 ingest，**完整归纳见主实体页** [paper-adamimic](./paper-adamimic.md)。
 
 ## 一句话定义
 
-AdaMimic 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+Paper Notebooks 分类索引节点 → 全库 wiki 实体 [paper-adamimic](./paper-adamimic.md)（单 clip 自适应全身跟踪，ICRA 2026 Oral）。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-
-## 为什么重要
-
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+| AdaMimic | Adaptive Motion Tracking | 本文方法；详见 [paper-adamimic](./paper-adamimic.md) |
+| RL | Reinforcement Learning | PPO 训练跟踪与适配器 |
+| WBC | Whole-Body Control | 全身协调控制语境 |
 
 ## 核心信息
 
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
-| 计划文件夹 | `papers/04_Loco-Manipulation_and_WBC/AdaMimic__Towards_Adaptable_Humanoid_Control_via_Adaptive_Motion_Tracking` |
-
-
-## 实验与评测
-
-- 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
+| 全库实体 | [paper-adamimic](./paper-adamimic.md) |
+| arXiv | [2510.14454](https://arxiv.org/abs/2510.14454) |
+| 深读状态（PNB） | 待撰写（[progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
 
 ## 结论
 
-**本页当前是知识图谱里的占位节点，而不是对 AdaMimic 的归纳——它记录的是「这篇该读、归在哪一类、还没读」。**
-
-- 页面能给出的确定信息只有三项：分类为 04_Loco-Manipulation_and_WBC、深读状态为待撰写、计划文件夹路径已预留。
-- 论文本身的机制、量化 benchmark 与实机结论 **本页均未涵盖**，不要把这里的任何表述当作对该工作的评价。
-- 它的作用是保持图谱完整、可从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点交叉检索到该实体；深读笔记完成后本页应链向笔记站并升格为完整索引实体。
+- 本页保留 **Paper Notebooks 图谱连通**；技术内容、实验表与工程入口一律以 [paper-adamimic](./paper-adamimic.md) 为准。
+- PNB 深读笔记完成后，可在本页补充笔记站外链，无需重复写方法细节。
 
 ## 与其他页面的关系
 
+- **主实体：** [paper-adamimic](./paper-adamimic.md)
+- 重复题名索引：[paper-notebook-towards-adaptable-humanoid-control-via-adaptive](./paper-notebook-towards-adaptable-humanoid-control-via-adaptive.md)
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源
 
+- [paper-adamimic.md](./paper-adamimic.md) — 全库 ingest 主实体
 - [humanoid_pnb_adamimic.md](../../sources/papers/humanoid_pnb_adamimic.md)
-- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [adamimic_arxiv_2510_14454.md](../../sources/papers/adamimic_arxiv_2510_14454.md)
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [AdaMimic 完整实体页](./paper-adamimic.md)
+- [AdaMimic 项目页](https://taohuang13.github.io/adamimic.github.io/)
+- [InternRobotics/AdaMimic](https://github.com/InternRobotics/AdaMimic)

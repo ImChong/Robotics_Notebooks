@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-06
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深读笔记索引）。"
@@ -25,7 +25,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [A Behavior Architecture for Fast Humanoid Robot Door Traversals](../entities/paper-notebook-a-behavior-architecture-for-fast-humanoid-robot.md) — 待深读
 - [A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot](../entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md) — 待深读
 - [AMO](../entities/paper-loco-manip-161-135-amo.md) — 见 wiki 实体页
-- [AdaMimic](../entities/paper-notebook-adamimic.md) — 待深读
+- [AdaMimic](../entities/paper-adamimic.md) — ICRA 2026 Oral；单 clip 自适应全身跟踪（已 ingest）
 - [Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) — 见 wiki 实体页
 - [Agility Meets Stability](../entities/agibot-bfm-2.md) — 见 wiki 实体页
 - [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md) — 见 wiki 实体页
@@ -143,7 +143,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [Task and Motion Planning for Humanoid Loco-manipulation](../entities/paper-notebook-task-and-motion-planning-for-humanoid-loco-manip.md) — 待深读
 - [TextOp](../methods/genmo.md) — 见 wiki 实体页
 - [Thor](../entities/paper-hrl-stack-42-thor.md) — 见 wiki 实体页
-- [Towards Adaptable Humanoid Control via Adaptive Motion Tracking](../entities/paper-notebook-towards-adaptable-humanoid-control-via-adaptive.md) — 待深读
+- [Towards Adaptable Humanoid Control via Adaptive Motion Tracking](../entities/paper-adamimic.md) — 见 [AdaMimic](../entities/paper-adamimic.md)（ICRA 2026 Oral，已 ingest）
 - [Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning](../entities/paper-adaptive-humanoid-control.md) — 见 wiki 实体页
 - [Towards Versatile Humanoid Table Tennis](../entities/paper-notebook-towards-versatile-humanoid-table-tennis.md) — 待深读
 - [TrajBooster](../entities/paper-loco-manip-161-080-trajbooster.md) — 见 wiki 实体页

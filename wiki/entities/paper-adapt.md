@@ -11,7 +11,7 @@ tags:
   - shanghai-ai-lab
   - sjtu
 status: complete
-updated: 2026-09-04
+updated: 2026-09-06
 arxiv: "2608.20087"
 venue: "arXiv 2026"
 related:
@@ -22,6 +22,7 @@ related:
   - ./unitree-g1.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-adapt-text-driven-humanoid.md
+  - ./paper-adamimic.md
   - ./paper-umr-unified-motion-retargeting.md
   - ../methods/table-tennis-strategy-skill-learning.md
   - ../overview/video-contact-control-10-papers-technology-map.md
@@ -162,7 +163,7 @@ Stage1 在随机执行速度下学习跟踪参考发球动作；完整对拉闭�
 - [Unitree G1](./unitree-g1.md) — 真机平台
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 另一 G1 全身动态技能对照
 - [Table Tennis Strategy & Skill](../methods/table-tennis-strategy-skill-learning.md) — 乒乓球分层技能（球类动画对照）
-- [ADAPT（文本驱动扩散先验）](./paper-adapt-text-driven-humanoid.md) — 同名另一篇，ETH G1 语言控制
+- [AdaMimic](./paper-adamimic.md) — 发球残差跟踪所借鉴的单 clip 自适应跟踪框架（ICRA 2026 Oral）
 
 ## 推荐继续阅读
 
