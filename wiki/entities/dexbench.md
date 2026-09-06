@@ -10,8 +10,9 @@ tags:
   - rlwrld
   - nvidia
 status: complete
-updated: 2026-09-05
+updated: 2026-09-06
 related:
+  - ./robocasa.md
   - ./all-hands-up.md
   - ./rldx-1.md
   - ./isaac-lab.md
@@ -53,7 +54,7 @@ summary: "DexBench（RLWRLD × NVIDIA）：工业灵巧操作开放规格——O
 - **补「硬件档案」缺的任务层。** [All Hands Up](./all-hands-up.md) 只映射「哪些硬件轴伤哪些任务」；T00–T17 的正式定义在本站。选型时先看 OSC 崩在哪一轴，再回头看 Kapandji / 背驱 / 指垫。
 - **把「灵巧」从 DoF 改写成能力包络。** 站点明确：灵巧是 **解** 的属性，不是手的属性。两指夹爪若能完成高接触复杂度任务，在该语境下比五指手更 dexterous。这和 [AHU](./all-hands-up.md)「规格表读不出任务成败」同一判断，只是评测对象从硬件换成任务。
 - **工业可比口径，而不是实验室同名不同义。** 物流的 pick 和电子装配的 pick 共享单词、不共享方法。DexBench 用状态转移 + 可验证终态 + 市售物体，强迫不同实验室比同一套初态/终态/失败条件。
-- **落在评测链的 ③ 层，但不是 LIBERO 式仿真 SR 榜。** 见 [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：本页是 **真机工业规格 + 诊断语言**；在 Arena 上架之前，不要拿它和 [DexVerse](./paper-dexverse.md) / RoboCasa 的数字直接比。
+- **落在评测链的 ③ 层，但不是 LIBERO / RoboCasa 式仿真 SR 榜。** 见 [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：本页是 **真机工业规格 + 诊断语言**；厨房仿真成功率对标见 [RoboCasa](./robocasa.md)。
 
 ## 核心原理
 
@@ -174,6 +175,7 @@ flowchart LR
 
 ## 关联页面
 
+- [RoboCasa](./robocasa.md) — 厨房仿真 SR 榜；与本页工业规格 **不同赛道**
 - [All Hands Up](./all-hands-up.md) — 同机构硬件层；本页是它显式留空的任务层
 - [RLDX-1](./rldx-1.md) — 同机构灵巧 VLA；公开评测不在 DexBench 上
 - [Isaac Lab](./isaac-lab.md) — Arena 计划接入处；当前仍是 coming soon
