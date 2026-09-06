@@ -21,6 +21,7 @@ related:
   - ./isaac-gr00t.md
   - ./lerobot.md
   - ./lw-benchhub-tour.md
+  - ./robocasa.md
   - ./dexbench.md
   - ./isaac-teleop.md
   - ../concepts/lerobot-envhub.md
@@ -170,7 +171,7 @@ sequenceDiagram
 
 ### 已列出 / 共建（README & 博客）
 
-- **Lightwheel：** [RoboCasa](https://github.com/LightwheelAI/LW-BenchHub) / LIBERO 任务套件、[RoboFinals](https://lightwheel.ai/robofinals) 工业场景
+- **Lightwheel：** [RoboCasa](./robocasa.md) / LIBERO 任务经 [LW-BenchHub](./lw-benchhub-tour.md) 与 Arena EnvHub 发布
 - **RoboTwin 2.0：** [Arena 分支](https://github.com/RoboTwin-Platform/RoboTwin/tree/IsaacLab-Arena)
 - **LeRobot EnvHub：** [`nvidia/isaaclab-arena-envs`](https://huggingface.co/nvidia/isaaclab-arena-envs)；示例策略 `nvidia/smolvla-arena-gr1-microwave`
 - **医疗：** [Isaac for Healthcare RHEO](https://github.com/isaac-for-healthcare/i4h-workflows/tree/main/workflows/rheo)

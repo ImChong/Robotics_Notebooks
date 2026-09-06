@@ -2580,6 +2580,7 @@
 - [RoamerX（智身四足导航栈）](wiki/entities/roamerx-navigation.md) — RoamerX**（社区开源版 **RoamerX Lite**）是智身科技（GENISOM AI）面向四足机器人的 **ROS 2 导航栈**：在 **Nav2** 基础上增强 **SLAM、全 `📅unknown` `[entity_page]`
 - [RoboBench（MLLM 具身大脑综合评测）](wiki/entities/robo-bench.md) — RoboBench**（*A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied `📅unknown` `[entity_page]`
 - [RoboOrchardLab](wiki/entities/robo-orchard-lab.md) — RoboOrchardLab** 是 **Horizon Robotics（地平线）** 在 **RoboOrchard** 大项目下发布的 **Python 具身 AI 训练与评测框架**：核心 `📅unknown` `[entity_page]`
+- [RoboCasa / RoboCasa365](wiki/entities/robocasa.md) — RoboCasa** 是德州大学奥斯汀分校（UT Austin）团队发布的大规模 **厨房日常任务仿真框架**（MuJoCo + [robosuite](https://github.com/AR `📅unknown` `[entity_page]`
 - [RoboClaw](wiki/entities/roboclaw.md) — RoboClaw**（GitHub: MINT-SJTU/RoboClaw）是上海交通大学 **MINT 实验室 `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`

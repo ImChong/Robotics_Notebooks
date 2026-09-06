@@ -7,6 +7,7 @@
 - **镜像 / 语言：** `/en/` · `/ko/` · `/ja/`（sitemap 无 `/zh/`）
 - **机构：** 瑞沃世界（RLWRLD）· 英伟达（NVIDIA）（新闻稿称合作；站点正文以任务规范为主，未单独署名作者）
 - **入库日期：** 2026-08-29
+- **最近复核：** 2026-09-06（站点 sitemap `lastmod` 仍为 2026-06-23；`RLWRLD/DexBench` 仍 404；规范正文无结构性变更）
 - **sitemap lastmod：** 2026-06-23
 - **配套产品：** 同机构 [All Hands Up](./allhandsup-org.md)（硬件档案）；[RLDX-1](../repos/rldx-1.md)（灵巧操作 VLA）
 - **代码：** 截至入库日 **无独立 GitHub 仓**。`RLWRLD/DexBench`、`RLWRLD/dexbench` 均 404；`RLWRLD` 组织公开仓仅 `RLDX-1`、`openarm_description`、`ethercat_driver_ros2`。NVIDIA [Isaac Lab-Arena](https://github.com/isaac-sim/IsaacLab-Arena) README 将 **NVIDIA DexBench** 列在 “coming soon” 清单（与 NIST Board 1、GR00T Industrial、RoboLab 并列）

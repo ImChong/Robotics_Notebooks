@@ -8338,6 +8338,12 @@
 - **开源核查：** GitHub `eth-siplab/EgoExoMoCap` **已建仓但 Code coming soon**（MIT，待发布）。
 - **关键页：** [`wiki/entities/paper-egoexomocap.md`](wiki/entities/paper-egoexomocap.md)；交叉更新 [`ego-category-04-ego-exo-fusion`](wiki/overview/ego-category-04-ego-exo-fusion.md)、[`paper-notebook-category-14-human-motion`](wiki/overview/paper-notebook-category-14-human-motion.md)。
 
+## [2026-09-06] ingest | sources/repos/robocasa.md + dexbench.org 复核 — RoboCasa365 仿真 benchmark 与 DexBench 工业规格对照
+
+- **意图：** 接入 RoboCasa 官方仓、项目站、文档与 2026-09-01 Leaderboard；复核 dexbench.org（sitemap 仍 2026-06-23，无官方 GitHub）。
+- **开源核查：** RoboCasa **已开源**（MIT + CC BY 4.0 资产）；DexBench **规范已公开、评测仓仍待发布**。
+- **关键页：** [`wiki/entities/robocasa.md`](wiki/entities/robocasa.md)；交叉更新 [`dexbench`](wiki/entities/dexbench.md)、[`isaac-lab-arena`](wiki/entities/isaac-lab-arena.md)。
+
 ## [2026-09-06] ingest | sources/sites/lerobot-envhub-docs.md — LeRobot EnvHub 官方文档与 make_env 契约
 
 - **意图：** 接入 Hugging Face LeRobot EnvHub 文档与 GitHub 主仓评测节，沉淀 `env.py`/`make_env` API、URL 钉扎、`trust_remote_code` 安全闸与 `lerobot-eval` 闭环。
