@@ -3,7 +3,8 @@
   "private": true,
   "description": "Dev tooling only (ESLint for docs/main.js)",
   "scripts": {
-    "lint:js": "eslint docs/main.js"
+    "lint:js": "eslint docs/main.js",
+    "test:frontend": "node --test tests/*.test.cjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
