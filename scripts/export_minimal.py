@@ -6,6 +6,8 @@ import re
 import subprocess
 from pathlib import Path
 from typing import Any, Dict, List
+from urllib.parse import quote
+from xml.sax.saxutils import escape
 
 import yaml
 from build_search_index import generate_search_index
@@ -1104,15 +1106,14 @@ def load_page_aliases(detail_pages: Dict[str, Dict]) -> Dict[str, str]:
     return aliases
 
 
-def generate_sitemap(
-    items: List[Dict], base_url: str = "https://ImChong.github.io/Robotics_Notebooks"
-) -> str:
+def generate_sitemap(items: List[Dict], base_url: str = BASE_URL) -> str:
     """生成 sitemap.xml，包含首页、预览页和所有 detail_pages。"""
+    base_url = base_url.rstrip("/")
     urls = [
         {"loc": base_url + "/", "priority": "1.0", "changefreq": "weekly"},
-        {"loc": base_url + "/docs/index.html", "priority": "0.9", "changefreq": "weekly"},
-        {"loc": base_url + "/docs/tech-map.html", "priority": "0.8", "changefreq": "weekly"},
-        {"loc": base_url + "/docs/hubs.html", "priority": "0.7", "changefreq": "weekly"},
+        {"loc": base_url + "/index.html", "priority": "0.9", "changefreq": "weekly"},
+        {"loc": base_url + "/tech-map.html", "priority": "0.8", "changefreq": "weekly"},
+        {"loc": base_url + "/hubs.html", "priority": "0.7", "changefreq": "weekly"},
     ]
 
     detail_pages = [item for item in items if item.get("type") in ("wiki_page", "entity_page")]
@@ -1128,7 +1129,7 @@ def generate_sitemap(
             priority = "0.6"
         urls.append(
             {
-                "loc": f"{base_url}/docs/detail.html?id={item_id}",
+                "loc": f"{base_url}/detail.html?id={quote(item_id, safe='')}",
                 "priority": priority,
                 "changefreq": "monthly",
             }
@@ -1139,7 +1140,7 @@ def generate_sitemap(
         item_id = item.get("id", "")
         urls.append(
             {
-                "loc": f"{base_url}/docs/roadmap.html?id={item_id}",
+                "loc": f"{base_url}/roadmap.html?id={quote(item_id, safe='')}",
                 "priority": "0.8",
                 "changefreq": "monthly",
             }
@@ -1151,7 +1152,7 @@ def generate_sitemap(
     ]
     for url in urls:
         line = "  <url>"
-        line += f"<loc>{url['loc']}</loc>"
+        line += f"<loc>{escape(url['loc'])}</loc>"
         line += f"<changefreq>{url['changefreq']}</changefreq>"
         line += f"<priority>{url['priority']}</priority>"
         if url.get("lastmod"):
