@@ -2822,35 +2822,32 @@
       // 先切换状态：resumeSimulation2D / 力模拟 tick / fitToScreen 都依赖 is3DView()，
       // 必须在调用它们之前就反映目标视图，否则回到 2D 时力模拟会被旧状态挡住、无法重启。
       spatialViewMode = mode;
+      let initializationFailed = false;
 
       if (mode === '3d') {
-        if (!window.RNGraph3D?.isAvailable?.()) {
+        try {
+          if (!window.RNGraph3D?.isAvailable?.()) throw new Error('3D library unavailable');
+          pauseSimulation2D();
+          svg.style('display', 'none');
+          graphCanvas3d.hidden = false;
+          ensureGraph3DView();
+          if (!graph3dView) throw new Error('3D view unavailable');
+          graph3dView.show();
+          graph3dView.syncFilters();
+          if (isMobile && pinnedNode) applyNodeNeighborHighlight(pinnedNode);
+        } catch (err) {
+          console.warn('3D view unavailable; restoring 2D:', err);
+          initializationFailed = true;
+          mode = '2d';
           spatialViewMode = '2d';
-          window.alert('3D 视图库加载失败，请刷新页面后重试');
-          return;
         }
-        pauseSimulation2D();
-        svg.style('display', 'none');
-        graphCanvas3d.hidden = false;
-        ensureGraph3DView();
-        if (!graph3dView) {
-          spatialViewMode = '2d';
-          graphCanvas3d.hidden = true;
-          graph3dHoverNode = null;
-          hideTooltip();
-          svg.style('display', 'block');
-          syncGraphDomFromSimulation();
-          resumeSimulation2D();
-          window.alert('3D 视图初始化失败，请刷新页面后重试');
-          return;
-        }
-        graph3dView.show();
-        graph3dView.syncFilters();
-        if (isMobile && pinnedNode) applyNodeNeighborHighlight(pinnedNode);
         // 不在切换时自动适配：仅首次力布局结束后由 graph-3d 自动适配一次，
         // 之后只有用户点「适配屏幕」按钮才适配。
-      } else {
-        if (graph3dView) graph3dView.hide();
+      }
+      if (mode === '2d') {
+        // 初始化可能只完成了一部分，清理失败也不能阻止恢复 2D。
+        try { if (graph3dView) graph3dView.hide(); }
+        catch (err) { console.warn('3D view cleanup failed:', err); }
         graphCanvas3d.hidden = true;
         graph3dHoverNode = null;
         hideTooltip();
@@ -2867,6 +2864,9 @@
       syncTimeline3DState();
       syncMagneticCheckbox();
       updateForces();
+      if (initializationFailed) {
+        window.alert('当前无法打开 3D 视图，已恢复 2D。你可以继续浏览，或在支持 WebGL 的浏览器中重试。');
+      }
     }
 
     function syncTimeline3DState() {
