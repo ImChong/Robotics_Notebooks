@@ -2418,7 +2418,9 @@ button.home-wiki-heatmap-cell.is-active {
 .sidebar-toggle {
   display: none;
   position: fixed;
-  bottom: 24px;
+  /* 底部避让站内页脚：--fab-lift 由 main.js 按 .footer 探进视口的高度实时写入
+     （无页脚的页面 / JS 未跑时回退 0px，即原来的贴底 24px） */
+  bottom: calc(24px + var(--fab-lift, 0px));
   left: 20px;
   width: 48px;
   height: 48px;
@@ -2474,7 +2476,7 @@ button.home-wiki-heatmap-cell.is-active {
      右侧要额外减掉滚动条装订线：html 上的 scrollbar-gutter: stable 会把 fixed 元素的
      包含块从右侧缩窄，而 .sidebar-toggle 的 left 仍贴窗口左边缘；(100vw - 100%) 即该
      装订线宽度（无装订线时为 0，移动端 overlay 滚动条自动退化成 right: 20px）。 */
-  bottom: 24px;
+  bottom: calc(24px + var(--fab-lift, 0px));
   right: calc(20px - (100vw - 100%));
   width: 48px;
   height: 48px;
@@ -2534,7 +2536,7 @@ button.home-wiki-heatmap-cell.is-active {
    scrollbar-gutter 装订线，故直接写 left: 20px。首页没有 .sidebar-toggle，不会撞位。 */
 .home-nav-fab {
   position: fixed;
-  bottom: 24px;
+  bottom: calc(24px + var(--fab-lift, 0px));
   left: 20px;
   z-index: 1350;
   display: flex;

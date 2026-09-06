@@ -7358,6 +7358,55 @@
   }
 })();
 
+/* ── 底部浮动按钮避让页脚 ──
+   .sidebar-toggle / .back-to-top / .home-nav-fab 都是 fixed 贴视口底部的浮层，滚到
+   页面末尾时会压住 .footer。这里按页脚探进视口的高度写 :root 上的 --fab-lift，
+   style.css 里三者的 bottom: calc(24px + var(--fab-lift, 0px)) 据此顶到页脚上沿之上。
+   无站内 footer 的页面（graph.html / references.html）直接跳过，变量保持缺省 0px。 */
+(function () {
+  'use strict';
+
+  function init() {
+    var footer = document.querySelector('body > .footer');
+    if (!footer) return;
+
+    var root = document.documentElement;
+    var last = -1;
+
+    function update() {
+      // 页脚顶边高于视口底边多少，就把按钮抬多少；页脚未露头时为 0
+      var lift = Math.round(Math.max(0, window.innerHeight - footer.getBoundingClientRect().top));
+      if (lift === last) return;
+      last = lift;
+      root.style.setProperty('--fab-lift', lift + 'px');
+    }
+
+    // 与页内其他滚动监听一致：rAF 节流
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        update();
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    // 页脚自身高度会随字体加载 / 换行变化，跟着重算
+    if (window.ResizeObserver) new ResizeObserver(onScroll).observe(footer);
+
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 /* ── 全站「回到顶部」按钮（带阅读进度环） ──
    注入判据与 style.css 里 `body:has(> .footer)` 一致：graph.html / references.html
    没有站内 footer，因此自动排除（图谱页全屏画布不加浮层，跳转桩页无需）。 */
