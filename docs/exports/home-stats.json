@@ -9,9 +9,20 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/jetson-ai-lab.md",
-      "detail_id": "entity-jetson-ai-lab",
-      "label": "Jetson AI Lab（边缘 AI 教程 hub）",
+      "path": "wiki/entities/holoscan-sensor-bridge.md",
+      "detail_id": "entity-holoscan-sensor-bridge",
+      "label": "Holoscan Sensor Bridge（HSB）",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-jetson.md",
+      "detail_id": "entity-nvidia-jetson",
+      "label": "NVIDIA Jetson",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
@@ -19,9 +30,9 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/nvidia-jetson.md",
-      "detail_id": "entity-nvidia-jetson",
-      "label": "NVIDIA Jetson",
+      "path": "wiki/entities/jetson-ai-lab.md",
+      "detail_id": "entity-jetson-ai-lab",
+      "label": "Jetson AI Lab（边缘 AI 教程 hub）",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
@@ -211,27 +222,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-agibot-x1-train.md",
-      "detail_id": "entity-cn-os-agibot-x1-train",
-      "label": "agibot_x1_train",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/jetson-ai-lab.md",
-    "detail_id": "entity-jetson-ai-lab",
-    "label": "Jetson AI Lab（边缘 AI 教程 hub）",
+    "path": "wiki/entities/holoscan-sensor-bridge.md",
+    "detail_id": "entity-holoscan-sensor-bridge",
+    "label": "Holoscan Sensor Bridge（HSB）",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
