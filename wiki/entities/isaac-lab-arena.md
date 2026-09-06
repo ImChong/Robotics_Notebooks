@@ -23,6 +23,7 @@ related:
   - ./lw-benchhub-tour.md
   - ./dexbench.md
   - ./isaac-teleop.md
+  - ../concepts/lerobot-envhub.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
@@ -201,7 +202,7 @@ README 单列：**NIST Board 1**、**NVIDIA Isaac GR00T Industrial**、**[DexBen
 ## 与其他页面的关系
 
 - **[Isaac Lab](./isaac-lab.md)** — 底层训练与仿真框架；Arena 编译其 `ManagerBasedRLEnvCfg`
-- **[LeRobot](./lerobot.md)** — `lerobot-eval` 与 EnvHub 是通才策略评测主入口之一
+- **[LeRobot](./lerobot.md)** — `lerobot-eval` 与 [EnvHub](../concepts/lerobot-envhub.md) 是通才策略评测主入口之一
 - **[Isaac GR00T](./isaac-gr00t.md)** — 博客与 `isaaclab_arena_gr00t` 子包的核心评测对象
 - **[LW BENCHHUB TOUR](./lw-benchhub-tour.md)** — Arena 0.1.x + 光轮厨房 + SmolVLA 的工程样例
 - **[DexBench](./dexbench.md)** — 工业灵巧规格；Arena 生态预告，尚未可跑
