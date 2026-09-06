@@ -40,6 +40,16 @@
       "has_repo": true
     },
     {
+      "path": "wiki/entities/paper-merope.md",
+      "detail_id": "entity-paper-merope",
+      "label": "MeRoPE：相机可控视频生成的 Metric 旋转位置编码",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+    },
+    {
       "path": "wiki/entities/cn-os-a3-a3u-robot-model.md",
       "detail_id": "entity-cn-os-a3-a3u-robot-model",
       "label": "A3-A3U-robot-model",
@@ -208,17 +218,6 @@
       "path": "wiki/entities/cn-os-aimrt.md",
       "detail_id": "entity-cn-os-aimrt",
       "label": "AimRT",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-airbot-play-hardware.md",
-      "detail_id": "entity-cn-os-airbot-play-hardware",
-      "label": "AIRBOT-Play-Hardware",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
