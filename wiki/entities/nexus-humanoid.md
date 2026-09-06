@@ -133,6 +133,7 @@ flowchart LR
 - [Perceptive BFM](./paper-perceptive-bfm.md)
 - [SONIC](../methods/sonic-motion-tracking.md)
 - [Teleopit](./paper-teleopit.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — NEXUS 的「地形感知」落在感知栈的「2D→3D 提升与语义建图 → 下游策略消费」两层；项目页未披露具体感知实现，待论文/代码公开后再对号入座
 
 ## 参考来源
 

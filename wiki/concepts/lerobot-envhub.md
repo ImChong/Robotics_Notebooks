@@ -189,6 +189,9 @@ flowchart LR
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md)
 - [VLA](../methods/vla.md)
 - [Sim2Real](./sim2real.md)
+- [具身评测基准选型闭环知识链枢纽](../overview/hub-embodied-eval-benchmark.md) — EnvHub 是「策略任务成功率评测」层的分发底座：`hub_path` + `@commit` 决定评测环境这一侧可不可复现
+- [具身大模型分类学选型闭环知识链枢纽](../overview/hub-embodied-foundation-model.md) — 通才 VLA 跨环境评测的共享环境层，把「选哪家模型」与「在哪套环境上比」解耦
+- [仿真物理保真度知识链枢纽](../overview/hub-physics-fidelity.md) — 环境仓只钉扎代码版本，不钉扎物理保真度：接触/摩擦/执行器建模仍决定 EnvHub 上的分数能否外推真机
 
 ## 一句话记忆
 

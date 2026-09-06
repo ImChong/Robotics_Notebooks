@@ -39,6 +39,11 @@ Paper Notebooks 分类索引节点 → 全库 wiki 实体 [paper-adamimic](./pap
 | arXiv | [2510.14454](https://arxiv.org/abs/2510.14454) |
 | 深读状态（PNB） | 待撰写（[progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
 
+## 实验与评测
+
+- 本页 **不维护** 实验数据：AdaMimic 的评测口径、量化结果与消融见 [paper-adamimic「实验与评测」](./paper-adamimic.md#实验与评测)。
+- 方法栈对应见 [paper-adamimic「核心原理」](./paper-adamimic.md#核心原理)。
+
 ## 结论
 
 - 本页保留 **Paper Notebooks 图谱连通**；技术内容、实验表与工程入口一律以 [paper-adamimic](./paper-adamimic.md) 为准。
