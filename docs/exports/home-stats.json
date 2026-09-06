@@ -1,84 +1,22 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3510,
-  "edge_count": 32266,
+  "node_count": 3511,
+  "edge_count": 32280,
   "coverage": {
-    "covered": 3483,
-    "total": 3483,
+    "covered": 3484,
+    "total": 3484,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-egr.md",
-      "detail_id": "entity-paper-egr",
-      "label": "EGR：面向鲁棒 VLA 的证据门控正则",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-r2s-eval.md",
-      "detail_id": "entity-paper-r2s-eval",
-      "label": "R2S-Eval：真实—仿真校准 + VLM 的机器人策略评测",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robotok.md",
-      "detail_id": "entity-paper-robotok",
-      "label": "RoboTok：互联网规模人类示范检索引擎",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/embodied-resources-reliability-9-papers-technology-map.md",
-      "detail_id": "wiki-overview-embodied-resources-reliability-9-papers-technology-map",
-      "label": "具身资源与可靠性：9 篇论文的阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/isaac-lab-arena.md",
-      "detail_id": "entity-isaac-lab-arena",
-      "label": "Isaac Lab-Arena",
+      "path": "wiki/entities/paper-adamimic.md",
+      "detail_id": "entity-paper-adamimic",
+      "label": "AdaMimic：单条参考运动上的自适应全身跟踪",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/lightwheel-robofinals.md",
-      "detail_id": "entity-lightwheel-robofinals",
-      "label": "Lightwheel RoboFinals",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-gtc.md",
-      "detail_id": "entity-nvidia-gtc",
-      "label": "NVIDIA GTC（机器人 / Physical AI 一手资料）",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/isaac-launchable.md",
@@ -165,6 +103,16 @@
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
+      "path": "wiki/entities/isaac-lab-arena.md",
+      "detail_id": "entity-isaac-lab-arena",
+      "label": "Isaac Lab-Arena",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/robocasa.md",
       "detail_id": "entity-robocasa",
       "label": "RoboCasa / RoboCasa365",
@@ -213,31 +161,81 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/omnigraph.md",
+      "detail_id": "entity-omnigraph",
+      "label": "OmniGraph（Omniverse 可视化脚本）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-kamino.md",
+      "detail_id": "entity-paper-kamino",
+      "label": "Kamino（GPU 闭链约束多体仿真）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-instant-nurec.md",
+      "detail_id": "entity-paper-instant-nurec",
+      "label": "Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/plotly.md",
+      "detail_id": "entity-plotly",
+      "label": "plotly.py（Plotly Python）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-cosmos.md",
+      "detail_id": "entity-nvidia-cosmos",
+      "label": "NVIDIA Cosmos（世界基础模型平台）",
+      "type": "entity",
+      "recency": "2026-09-05",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egr.md",
-    "detail_id": "entity-paper-egr",
-    "label": "EGR：面向鲁棒 VLA 的证据门控正则",
+    "path": "wiki/entities/paper-adamimic.md",
+    "detail_id": "entity-paper-adamimic",
+    "label": "AdaMimic：单条参考运动上的自适应全身跟踪",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 907
+      "size": 926
     },
     {
       "label": "操作",
-      "size": 692
+      "size": 689
     },
     {
       "label": "视觉-语言-动作",
-      "size": 256
+      "size": 244
     },
     {
       "label": "机器人学习论文笔记",
@@ -337,7 +335,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 155,
+      "degree": 156,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -345,7 +343,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 82,
+      "degree": 83,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },

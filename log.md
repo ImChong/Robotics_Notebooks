@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/papers/adamimic_arxiv_2510_14454.md — AdaMimic ICRA 2026 Oral 全库 ingest；GitHub 已开源 stage1/stage2
+
 ## [2026-09-06] ingest | sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md — 9篇资源汇总；新建 R2S-Eval/RoboTok/EGR 独立节点，6篇复用
 
 ## [2026-09-06] ingest | sources/sites/lightwheel_robofinals.md、lightwheel_robofinals_industrial_benchmark.md — 接入 Lightwheel RoboFinals 工业仿真评测平台（RoboFinals-100）；商业 Coming soon；关键页 lightwheel-robofinals；交叉 isaac-lab-arena / lw-benchhub-tour
