@@ -88,6 +88,7 @@
 - [Codex Security（OpenAI）](wiki/entities/codex-security.md) — Codex Security**（`@openai/codex-security`  `📅unknown` `[entity_page]`
 - [Coding Interview University](wiki/entities/coding-interview-university.md) — Coding Interview University**（[jwasham/coding-interview-university](https://github.com/jwasham/cod `📅unknown` `[entity_page]`
 - [ComfyUI](wiki/entities/comfyui.md) — ComfyUI**（Comfy-Org/ComfyUI，官网 [comfy.org](https://comfy.o `📅unknown` `[entity_page]`
+- [COMPASS](wiki/entities/compass.md) — COMPASS**（*Cross-embOdiment Mobility Policy via ResiduAl RL and Skill Synthesis*，[arXiv:2502.16372 `📅unknown` `[entity_page]`
 - [CoppeliaSim](wiki/entities/coppeliasim.md) — CoppeliaSim](https://github.com/CoppeliaRobotics/coppeliaSimLib) 收录于具身智能研究室 [开源项目主表](https://github `📅unknown` `[entity_page]`
 - [CoRe（接触感知全身重定向软件）](wiki/entities/core-retarget.md) — CoRe**（*Contact-Aware Motion Retargeting*，<https://github.com/tmjeong1103/CoRe>，[v0.1.0](https://g `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](wiki/entities/cosmos-3.md) — Cosmos 3**（2026-06，arXiv:2606.02800，[项目页](https://research.nvi `📅unknown` `[entity_page]`
@@ -368,6 +369,7 @@
 - [nordschleife-racer](wiki/entities/nordschleife-racer.md) — nordschleife-racer** 是 **yassin.app** 背后的 **浏览器竞速引擎**：**TypeScript + Three.js** 实现程序化 **纽北** 单圈、 `📅unknown` `[entity_page]`
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`
+- [NVIDIA Brev](wiki/entities/nvidia-brev.md) — NVIDIA Brev** 提供 **即时 GPU 实例** 与 **可分享 Launchable 环境**，在 AWS/GCP/Azure 等云商上预装 NVIDIA 驱动、CUDA、Pytho `📅unknown` `[entity_page]`
 - [NVIDIA Cosmos（世界基础模型平台）](wiki/entities/nvidia-cosmos.md) — NVIDIA Cosmos** 是面向机器人、自动驾驶与智慧基础设施的 **Physical AI 世界基础模型（WFM）开放平台**：同时发布模型权重、视频策展 / 评测工具与训练–推理框架。当 `📅unknown` `[entity_page]`
 - [NVIDIA GEAR Lab（Generalist Embodied Agent Research）](wiki/entities/nvidia-gear-lab.md) — GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **[Linxi  `📅unknown` `[entity_page]`
 - [NVIDIA Getting Started With Isaac Lab](wiki/entities/nvidia-getting-started-isaac-lab.md) — Getting Started With Isaac Lab** 是 Physical AI Learning 门户下的  `📅unknown` `[entity_page]`
