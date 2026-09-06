@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/papers/wh0_arxiv_2606_22136.md — Wh0 深度 ingest（项目页+GitHub+arXiv）；已开源；WM-H 50k + VITRA Co-FT；18 任务 8.3%→38.9%；升格 paper-sa-2606-22136
+
 ## [2026-09-06] ingest | sources/repos/nvidia_cosmos_curator.md — 接入 Cosmos Curator（NVIDIA/cosmos-curator + LHA 文档）；已开源 Apache-2.0；关键页 cosmos-curator；交叉 nvidia-cosmos / cosmos-cookbook / 工具链技术地图
 
 ## [2026-09-06] structural | wiki/overview/nvidia-physical-ai-toolchain-technology-map.md — 按 NVIDIA 端到端工作流截图新建 NVIDIA 工具链汇总节点；七段挂接 30+ 站内 NVIDIA 实体页，回链 isaac-lab / nvidia-cosmos / isaac-gr00t / 训练栈分层地图

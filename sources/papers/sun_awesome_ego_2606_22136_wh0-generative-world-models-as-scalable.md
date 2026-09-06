@@ -12,7 +12,8 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Uses generative video world models as scalable and controllable sources of egocentric human-hand manipulation data to unlock manipulation capabilities of pretrained dexterous VLA models. Produces WM-H, a 50k-episode dataset
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2606-22136-wh0-generative-world-models-as-scalable-sources.md`](../../wiki/entities/paper-sa-2606-22136-wh0-generative-world-models-as-scalable-sources.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2606-22136-wh0-generative-world-models-as-scalable-sources.md`](../../wiki/entities/paper-sa-2606-22136-wh0-generative-world-models-as-scalable-sources.md)（**2026-09-06 升格深度页**）
+- **深度 ingest：** [`wh0_arxiv_2606_22136.md`](./wh0_arxiv_2606_22136.md)、[`../sites/wh0-project.md`](../sites/wh0-project.md)、[`../repos/chenyt31_wh0.md`](../repos/chenyt31_wh0.md)
 
 ---
 
