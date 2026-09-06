@@ -538,6 +538,7 @@
 - [HIW-500（野外人形遥操作数据集）](wiki/entities/hiw-500-dataset.md) — HIW-500**（Humanoids In-the-Wild Dataset，<https://bitrobot-foundation.github.io/humanoids-in-the-wi `📅unknown` `[entity_page]`
 - [HoloAgent](wiki/entities/holoagent.md) — HoloAgent](https://github.com/HorizonRobotics/HoloAgent) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [HoloMotion（HoloMotion-1）](wiki/entities/holomotion.md) — HoloMotion-1** 是 **Horizon Robotics（地平线）** 发布的 **人形全身运动跟踪** 路线：把跟踪策略建成可在 **大规模异质运动语料** 上训练的 **高容量时 `📅unknown` `[entity_page]`
+- [Holoscan Sensor Bridge（HSB）](wiki/entities/holoscan-sensor-bridge.md) — Holoscan Sensor Bridge**（产品页， `📅unknown` `[entity_page]`
 - [holosoma（Amazon FAR 人形 RL + 重定向框架）](wiki/entities/holosoma.md) — holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源 `📅unknown` `[entity_page]`
 - [HRDexDB（人–机器人配对灵巧抓取数据集）](wiki/entities/hrdexdb-dataset.md) — HRDexDB**（Lim et al., arXiv:2604.14944，2026；<https://snuvclab. `📅unknown` `[entity_page]`
 - [HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）](wiki/entities/htd-decoupled-wbc.md) — HTD Decoupled WBC** 是 Humanoid Touch Dream（[方法页](../methods/hum `📅unknown` `[entity_page]`
