@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, paper, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion, amp, motion-prior]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-06
 arxiv: "2603.15546"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md

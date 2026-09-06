@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/repos/nv_tlabs_ardy.md — ARDY 深度 ingest（GitHub+HF+arXiv+PDF）；已开源；升级 ardy 实体（评测/对比/结论/运行时序图）
+
 ## [2026-09-06] ingest | sources/repos/nvidia_osmo.md — NVIDIA OSMO Physical AI YAML 编排器（GitHub+User Guide+developer 页）；已开源；关键页 nvidia-osmo；交叉工具链技术地图 / isaac-lab / HIL
 
 ## [2026-09-06] ingest | sources/sites/nvidia-holoscan-sensor-bridge.md — Holoscan Sensor Bridge（产品页+文档 intro+GitHub）；已开源 Apache-2.0；关键页 holoscan-sensor-bridge；交叉 nvidia-jetson
