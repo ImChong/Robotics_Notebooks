@@ -193,7 +193,7 @@ summary: "{proj.company} 开源项目 {title}（{proj.category}）：{proj.descr
 
 ## 一句话定义
 
-**{title}** 是 [{proj.company}]({proj.org_url.split('、')[0]}) 公开的 **{proj.category}** 开源项目：{proj.description}
+**{title}** 是 [{proj.company}]({proj.org_url.split("、")[0]}) 公开的 **{proj.category}** 开源项目：{proj.description}
 
 ## 英文缩写速查
 
@@ -241,7 +241,7 @@ summary: "{proj.company} 开源项目 {title}（{proj.category}）：{proj.descr
 
 ## 推荐继续阅读
 
-- [{proj.company} 官方组织]({proj.org_url.split('、')[0]})
+- [{proj.company} 官方组织]({proj.org_url.split("、")[0]})
 """
     path.write_text(content, encoding="utf-8")
 
@@ -268,7 +268,9 @@ def main() -> int:
             while entity_path(slug).exists() and slug not in index.values():
                 slug = f"{base}-{i}"
                 i += 1
-            write_stub(p, slug, "wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md")
+            write_stub(
+                p, slug, "wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md"
+            )
             if entity_path(slug).exists():
                 is_new = True
                 created += 1

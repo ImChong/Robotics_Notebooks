@@ -112,9 +112,11 @@ def patch_entity(path: Path, inst_id: str) -> None:
     if inst_id not in fm and re.search(r"^tags:\s*\[", fm, re.M):
         fm = re.sub(
             r"^(tags:\s*\[)([^\]]*)(\])",
-            lambda m: f"{m.group(1)}{m.group(2)}, {inst_id}{m.group(3)}"
-            if inst_id not in m.group(2)
-            else m.group(0),
+            lambda m: (
+                f"{m.group(1)}{m.group(2)}, {inst_id}{m.group(3)}"
+                if inst_id not in m.group(2)
+                else m.group(0)
+            ),
             fm,
             count=1,
             flags=re.M,
@@ -134,7 +136,9 @@ def main() -> None:
         if inst:
             patch_entity(p, inst)
             patched += 1
-    overview = REPO / "wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md"
+    overview = (
+        REPO / "wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md"
+    )
     ot = overview.read_text(encoding="utf-8")
     ot = ot.replace(
         "./hmi-opensource-projects-coverage.md",
