@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md",
+      "detail_id": "entity-paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai",
+      "label": "PAI-Bench: A Comprehensive Benchmark For Physical AI",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/overview/nvidia-physical-ai-toolchain-technology-map.md",
       "detail_id": "wiki-overview-nvidia-physical-ai-toolchain-technology-map",
       "label": "NVIDIA Physical AI 工具链技术地图（汇总节点）",
@@ -215,28 +226,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-alicia-d-ros2.md",
-      "detail_id": "entity-cn-os-alicia-d-ros2",
-      "label": "Alicia-D-ROS2",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/nvidia-physical-ai-toolchain-technology-map.md",
-    "detail_id": "wiki-overview-nvidia-physical-ai-toolchain-technology-map",
-    "label": "NVIDIA Physical AI 工具链技术地图（汇总节点）",
-    "type": "overview",
+    "path": "wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md",
+    "detail_id": "entity-paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai",
+    "label": "PAI-Bench: A Comprehensive Benchmark For Physical AI",
+    "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
