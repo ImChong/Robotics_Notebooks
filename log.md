@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/repos/nvidia_osmo.md — NVIDIA OSMO Physical AI YAML 编排器（GitHub+User Guide+developer 页）；已开源；关键页 nvidia-osmo；交叉工具链技术地图 / isaac-lab / HIL
+
 ## [2026-09-06] ingest | sources/sites/nvidia-holoscan-sensor-bridge.md — Holoscan Sensor Bridge（产品页+文档 intro+GitHub）；已开源 Apache-2.0；关键页 holoscan-sensor-bridge；交叉 nvidia-jetson
 
 ## [2026-09-06] ingest | sources/sites/jetson-ai-lab.md — Jetson AI Lab 2.0 + JetPack 7.2 / L4T r39.2；教程 hub 已开源协作；关键页 jetson-ai-lab；交叉 nvidia-jetson / jetson-orin-nx

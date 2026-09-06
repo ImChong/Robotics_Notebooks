@@ -17,6 +17,7 @@ related:
   - ../entities/isaac-ros-nvblox.md
   - ../entities/isaac-ros-visual-slam.md
   - ../entities/nvidia-jetson.md
+  - ../entities/nvidia-osmo.md
   - ../concepts/software-in-the-loop.md
   - ./robot-training-stack-layers-technology-map.md
 sources:
@@ -119,6 +120,7 @@ flowchart LR
 | **③ 训练平台** | Isaac Lab | [Isaac Lab](../entities/isaac-lab.md)、[Isaac Lab 默认环境](../entities/isaac-lab-default-environments.md)、[三代产品总览](../entities/isaac-gym-isaac-lab.md) | 任务注册与 GPU 并行环境 |
 | **③ 训练管线** | Robot Learning Task / Policy Training Pipeline | [RSL-RL](../entities/rsl-rl.md)、[ProtoMotions](../entities/protomotions.md)、[GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)、[COMPASS](../entities/compass.md) | PPO / 蒸馏 / 全身控制训练后端 |
 | **③ 算力入口** | —（截图未画） | [NVIDIA Brev](../entities/nvidia-brev.md)、[Isaac Launchable](../entities/isaac-launchable.md) | 没有本地 RTX 时怎么起环境 |
+| **横切编排** | Workflow Orchestration（截图未画） | [NVIDIA OSMO](../entities/nvidia-osmo.md) | YAML 串联仿真/训练/边缘 HIL，跨 K8s 集群 |
 | **④ 策略微调** | Fine Tuning Policy | [Isaac GR00T](../entities/isaac-gr00t.md)、[SO-101 Sim2Real 动手课](../entities/nvidia-so101-sim2real-lab-workflow.md) | VLA 后训练与 checkpoint 产出 |
 | **④ 评测** | Isaac Arena | [Isaac Lab-Arena](../entities/isaac-lab-arena.md)、[DexBench](../entities/dexbench.md)、[Lightwheel RoboFinals](../entities/lightwheel-robofinals.md) | 通才策略的大规模并行评测 |
 | **⑤ SIL 测试** | MEGA / Isaac Sim / Isaac ROS | [Software-in-the-Loop](../concepts/software-in-the-loop.md)、[Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)、[Isaac Sim](../entities/isaac-sim.md) | 上机前跑真实软件栈回归 |
@@ -136,6 +138,7 @@ flowchart LR
 | 训练环境 | [Isaac Lab](../entities/isaac-lab.md) | [Isaac Lab 默认环境](../entities/isaac-lab-default-environments.md) |
 | 评测口径 | [Isaac Lab-Arena](../entities/isaac-lab-arena.md) | [具身模型测评纵深路线](../../roadmap/depth-embodied-eval.md) |
 | 上机部署 | [Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md) | [TensorRT](../entities/tensorrt.md) + [Jetson](../entities/nvidia-jetson.md) |
+| 跨段自动化管线 | [NVIDIA OSMO](../entities/nvidia-osmo.md) | [HIL 概念](../concepts/hardware-in-the-loop.md) + [Isaac Sim SDG 教程](https://nvidia.github.io/OSMO/main/user_guide/how_to/isaac_sim_sdg.html) |
 
 ## 局限与风险
 
