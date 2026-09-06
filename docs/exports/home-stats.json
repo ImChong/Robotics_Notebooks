@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/lerobot-envhub.md",
+      "detail_id": "wiki-concepts-lerobot-envhub",
+      "label": "LeRobot EnvHub",
+      "type": "concept",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/isaac-lab-arena.md",
       "detail_id": "entity-isaac-lab-arena",
       "label": "Isaac Lab-Arena",
@@ -204,29 +214,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/cosmos-transfer.md",
-      "detail_id": "entity-cosmos-transfer",
-      "label": "Cosmos Transfer（条件世界翻译）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-lab-arena.md",
-    "detail_id": "entity-isaac-lab-arena",
-    "label": "Isaac Lab-Arena",
-    "type": "entity",
+    "path": "wiki/concepts/lerobot-envhub.md",
+    "detail_id": "wiki-concepts-lerobot-envhub",
+    "label": "LeRobot EnvHub",
+    "type": "concept",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
