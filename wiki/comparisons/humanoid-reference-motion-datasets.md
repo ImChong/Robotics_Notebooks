@@ -17,6 +17,7 @@ related:
   - ../entities/paper-egohtr.md
   - ../entities/exercises-dataset.md
   - ../entities/paper-humantracker.md
+  - ../entities/paper-humaps4d.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/repos/exercises-dataset.md
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
+  - ../../sources/papers/humaps4d_cvpr_2026.md
 ---
 
 # 人形参考运动与操作数据集选型
@@ -56,6 +58,18 @@ sources:
 | [KungFuAthlete](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) | **武术高动态** 视频→GVHMR→GMR；Jump 子集动力学上界；Ground ready |
 | [EgoHTR](../entities/paper-egohtr.md) | **rough-terrain 人–场景 4D**（Aria+IMU 服+扫描）；感知 locomotion 参考；数据/代码待发布 |
 | [HumanTracker](../entities/paper-humantracker.md) | **153 h / 25K 四族光学评测集 + HumanScore**；GMR→29-DoF；**数据待发布**，评测代码已开 |
+| [HUMAPS-4D](../entities/paper-humaps4d.md) | **可穿戴生物力学 4D**（MoCap+RGB+sEMG+足底）；隐私友好姿态/动作识别；**DUA 数据、无代码** |
+
+## 扩展：可穿戴生物力学（HUMAPS-4D）
+
+| 维度 | HUMAPS-4D |
+|------|-----------|
+| **来源** | 棚拍多模态同步采集（Qualisys + Moticon 鞋垫 + sEMG） |
+| **规模** | 32 被试 / 30 动作 / 14 h；>5.76M 同步帧 |
+| **独特模态** | 足底压力 + 16 路 sEMG/IMU + 三层语义语言标注 |
+| **预重定向** | 否（人体 MoCap，非机器人关节空间） |
+| **典型下游** | 鞋垫动作识别、足底→上身 3D 姿态、语义运动分割 |
+| **选型提示** | 研究 **稀疏可穿戴→全身状态** 或隐私友好人体感知 → 读本页；要机器人 tracking 参考库 → 仍选 PHUMA/AMASS |
 
 ## 扩展：高动态极限（KungFuAthlete）
 

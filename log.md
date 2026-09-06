@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/papers/humaps4d_cvpr_2026.md — HUMAPS-4D（CVPR 2026）多模态人体 4D 数据集；数据 DUA 部分开放、代码未发布；关键页 paper-humaps4d；交叉 motion-retargeting / humanoid-reference-motion-datasets
+
 ## [2026-09-06] ingest | sources/sites/robocurve-org.md — 接入 Robocurve + Inspect Robots（站点+GitHub）；框架 MIT 已开源；关键页 robocurve / inspect-robots；交叉 hub-embodied-eval-benchmark / xpolicylab / isaac-lab-arena
 
 ## [2026-09-06] ingest | sources/sites/skild-ai.md — Skild AI 首页再核（omni-bodied/Skild Brain/三平台/人视频）；确认未开源；刷新 skild-ai 实体
