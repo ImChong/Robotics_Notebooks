@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-06
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -38,6 +38,8 @@ related:
   - ../entities/lift-humanoid.md
   - ./humanoid-parallel-joint-kinematics.md
   - ./processor-in-the-loop-sim2real.md
+  - ./hardware-in-the-loop.md
+  - ./software-in-the-loop.md
   - ../methods/crisp-real2sim.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-agentic-real2sim.md
@@ -171,7 +173,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 根据 [xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 的总结，为了提高 Sim2Real 的可复现性，应遵循标准化的工程步骤：
 - **前置阶段**：精确的 URDF 建模与动力学参数初步对齐；若场景物体来自 **生成式 sim-ready 管线**（如 [PhysX-Omni](../entities/physx-omni.md) 导出的 URDF/XML），须单独验收 **惯性、碰撞盒与关节轴** 是否与目标仿真器一致，不宜默认「生成即可用」。
-- **仿真验证**：在 [isaac-gym-isaac-lab](../entities/isaac-gym-isaac-lab.md) 或 [genesis-sim](../entities/genesis-sim.md) 中完成基础策略训练，并通过域随机化覆盖物理参数偏差。
+- **仿真验证**：在 [isaac-gym-isaac-lab](../entities/isaac-gym-isaac-lab.md) 或 [genesis-sim](../entities/genesis-sim.md) 中完成基础策略训练，并通过域随机化覆盖物理参数偏差。软件栈集成可先走 [SIL](./software-in-the-loop.md)，目标硬件就绪后走 [HIL](./hardware-in-the-loop.md) 台架。
 - **评测基础设施**：产业侧亦将可信仿真用于 **real-to-sim 闭环排序**（训练仍主要来自真机），见 [仿真评测基础设施](simulation-evaluation-infrastructure.md) 与 [Genesis World 1.0](../entities/genesis-world-10.md)。
 - **中间件对齐**：统一仿真与真机的控制频率（如 50Hz 策略 + 200Hz 关节 PD）与动作/状态归一化标准。
 - **实物测试**：采用“吊架测试 -> 空转测试 -> 落地测试”的渐进式 SOP。
@@ -331,6 +333,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [LIFT](../entities/lift-humanoid.md) — JAX SAC 大规模预训练 + Brax 物理知情世界模型微调；微调阶段真机确定性采集与模型内随机探索解耦（arXiv:2601.21363）
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 并联踝闭链与仿真训练接口分层（冲击下传载再分配等）
 - [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md) — 固件/总线/调度纳入仿真闭环的腿式迁移路径
+- [Hardware-in-the-Loop](./hardware-in-the-loop.md) — SIL 之后、真机之前的软硬件集成台架验证
+- [Software-in-the-Loop](./software-in-the-loop.md) — 纯仿真软件栈回归
 - [CRISP（Contact-guided Real2Sim）](../methods/crisp-real2sim.md) — 单目视频 → 凸平面场景原语 + 接触补全 → RL 物理闭环的 Real2Sim（ICLR 2026）
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → 数字孪生 + cousins；real-to-sim 评测与 sim-to-real 操作训练闭环（arXiv:2606.28276）
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin；可变形/人形适配（arXiv:2607.19190，代码待开放）
