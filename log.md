@@ -8338,6 +8338,12 @@
 - **开源核查：** GitHub `eth-siplab/EgoExoMoCap` **已建仓但 Code coming soon**（MIT，待发布）。
 - **关键页：** [`wiki/entities/paper-egoexomocap.md`](wiki/entities/paper-egoexomocap.md)；交叉更新 [`ego-category-04-ego-exo-fusion`](wiki/overview/ego-category-04-ego-exo-fusion.md)、[`paper-notebook-category-14-human-motion`](wiki/overview/paper-notebook-category-14-human-motion.md)。
 
+## [2026-09-06] ingest | sources/sites/lerobot-envhub-docs.md — LeRobot EnvHub 官方文档与 make_env 契约
+
+- **意图：** 接入 Hugging Face LeRobot EnvHub 文档与 GitHub 主仓评测节，沉淀 `env.py`/`make_env` API、URL 钉扎、`trust_remote_code` 安全闸与 `lerobot-eval` 闭环。
+- **开源核查：** `huggingface/lerobot` **已开源**（Apache 2.0）；Hub 环境仓为第三方远程代码。
+- **关键页：** [`wiki/concepts/lerobot-envhub.md`](wiki/concepts/lerobot-envhub.md)；交叉更新 [`lerobot`](wiki/entities/lerobot.md)、[`isaac-lab-arena`](wiki/entities/isaac-lab-arena.md)、[`lw-benchhub-tour`](wiki/entities/lw-benchhub-tour.md)。
+
 ## [2026-09-06] ingest | sources/repos/isaaclab_arena.md — NVIDIA Isaac Lab-Arena 通才策略大规模仿真评测框架
 
 - **意图：** 接入 Isaac Lab-Arena 官方仓、文档、开发者页、EnvHub 与技术博客，沉淀 Scene/Embodiment/Task 组合架构、版本矩阵、LeRobot 评测闭环与生态 benchmark 清单。

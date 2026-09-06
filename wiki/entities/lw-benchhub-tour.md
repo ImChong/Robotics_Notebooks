@@ -21,6 +21,7 @@ related:
   - ./isaac-lab-arena.md
   - ./isaac-sim.md
   - ./curobo.md
+  - ../concepts/lerobot-envhub.md
   - ../methods/vla.md
   - ../tasks/bimanual-manipulation.md
   - ../tasks/manipulation.md
@@ -48,7 +49,7 @@ summary: "LW BENCHHUB TOUR 把 SmolVLA 接到光轮 LW-BenchHub 的双臂 Piper 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | VLA | Vision-Language-Action | 本仓评测的 SmolVLA 策略族 |
-| EnvHub | Environment Hub | Arena 用 HF `env.py` 把 Lab 环境接到 LeRobot，策略仓不直接 `import` 任务仓 |
+| EnvHub | Environment Hub | Arena 用 HF `env.py` 把 Lab 环境接到 LeRobot；详见 [LeRobot EnvHub](../concepts/lerobot-envhub.md) |
 | PnP | Pick and Place | 任务 `L90K1PutTheBlackBowlOnThePlate`：黑碗放到盘子 |
 | IK | Inverse Kinematics | Stage 2/4 用 cuRobo 做工作空间可达性闸门 |
 | OOD | Out-of-Distribution | 飞轮刻意把碗放到抓取临界边缘的困难场景 |
