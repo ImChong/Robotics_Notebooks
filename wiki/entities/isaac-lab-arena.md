@@ -23,6 +23,7 @@ related:
   - ./lw-benchhub-tour.md
   - ./robocasa.md
   - ./dexbench.md
+  - ./lightwheel-robofinals.md
   - ./isaac-teleop.md
   - ../concepts/lerobot-envhub.md
   - ../methods/vla.md
@@ -34,6 +35,7 @@ sources:
   - ../../sources/sites/isaac-lab-arena.md
   - ../../sources/blogs/nvidia_isaac_lab_arena_generalist_policy_eval.md
   - ../../sources/sites/huggingface-isaaclab-arena-envs.md
+  - ../../sources/sites/lightwheel_robofinals.md
 summary: "Isaac Lab-Arena 是 NVIDIA 在 Isaac Lab 之上的 Alpha 开源扩展：用 Scene / Embodiment / Task 运行时组装环境，面向 GR00T N、π0、SmolVLA 等通才策略的 GPU 大规模并行评测与 LeRobot EnvHub 生态。"
 ---
 
@@ -171,7 +173,7 @@ sequenceDiagram
 
 ### 已列出 / 共建（README & 博客）
 
-- **Lightwheel：** [RoboCasa](./robocasa.md) / LIBERO 任务经 [LW-BenchHub](./lw-benchhub-tour.md) 与 Arena EnvHub 发布
+- **Lightwheel：** [RoboFinals](./lightwheel-robofinals.md) 工业级 100 任务 benchmark（商业平台）；[RoboCasa](./robocasa.md) / LIBERO 任务经 [LW-BenchHub](./lw-benchhub-tour.md) 与 Arena EnvHub 发布
 - **RoboTwin 2.0：** [Arena 分支](https://github.com/RoboTwin-Platform/RoboTwin/tree/IsaacLab-Arena)
 - **LeRobot EnvHub：** [`nvidia/isaaclab-arena-envs`](https://huggingface.co/nvidia/isaaclab-arena-envs)；示例策略 `nvidia/smolvla-arena-gr1-microwave`
 - **医疗：** [Isaac for Healthcare RHEO](https://github.com/isaac-for-healthcare/i4h-workflows/tree/main/workflows/rheo)
@@ -207,6 +209,7 @@ README 单列：**NIST Board 1**、**NVIDIA Isaac GR00T Industrial**、**[DexBen
 - **[Isaac GR00T](./isaac-gr00t.md)** — 博客与 `isaaclab_arena_gr00t` 子包的核心评测对象
 - **[LW BENCHHUB TOUR](./lw-benchhub-tour.md)** — Arena 0.1.x + 光轮厨房 + SmolVLA 的工程样例
 - **[DexBench](./dexbench.md)** — 工业灵巧规格；Arena 生态预告，尚未可跑
+- **[Lightwheel RoboFinals](./lightwheel-robofinals.md)** — 前沿 VLA 工业评测平台；商业 Coming soon
 
 ## 推荐继续阅读
 

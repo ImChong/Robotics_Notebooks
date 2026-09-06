@@ -1,3 +1,10 @@
+## [2026-09-06] ingest | sources/sites/lightwheel_robofinals.md、lightwheel_robofinals_industrial_benchmark.md — 接入 Lightwheel RoboFinals 工业仿真评测平台（RoboFinals-100）；商业 Coming soon；关键页 lightwheel-robofinals；交叉 isaac-lab-arena / lw-benchhub-tour
+
+- **触发：** 用户指定 lightwheel.ai/robofinals 与 industrial-benchmark 媒体文，自动合并 PR
+- **步骤 2.5：** RoboFinals **商业闭源**；底层 Arena + LW-BenchHub **已开源**；AutoDataGen **未列公开仓**
+- **新建：** `lightwheel-robofinals` 实体；两份 sources 归档
+- **交叉：** isaac-lab-arena、lw-benchhub-tour、lightwheel-platform
+
 ## [2026-09-06] ingest | sources/sites/nvidia-gtc.md、courses/nvidia_gtc_2025_physical_ai_robotics_playlist.md、courses/nvidia_gtc_2025_humanoid_developer_day.md — 接入 NVIDIA GTC On-Demand 机器人一手资料（Physical AI/Robotics + Humanoid Developer Day 播放列表）；关键页 nvidia-gtc；交叉 physical-ai-learning / cosmos / isaac-gr00t / newton
 
 - **触发：** 用户要求 ingest Nvidia GTC 相关一手资料，自动合并 PR
