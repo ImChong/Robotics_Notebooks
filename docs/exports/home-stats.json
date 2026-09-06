@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/nexus-humanoid.md",
+      "detail_id": "entity-nexus-humanoid",
+      "label": "NEXUS（感知型基础策略 · 跨域全身遥操作）",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/compass.md",
       "detail_id": "entity-compass",
       "label": "COMPASS",
@@ -199,22 +210,12 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-egoexomocap.md",
-      "detail_id": "entity-paper-egoexomocap",
-      "label": "EgoExoMoCap",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/compass.md",
-    "detail_id": "entity-compass",
-    "label": "COMPASS",
+    "path": "wiki/entities/nexus-humanoid.md",
+    "detail_id": "entity-nexus-humanoid",
+    "label": "NEXUS（感知型基础策略 · 跨域全身遥操作）",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
