@@ -1495,6 +1495,13 @@
         "sunday-ai"
       ]
     },
+    "robocurve": {
+      "label": "罗伯曲线（Robocurve）",
+      "aliases": [
+        "robocurve",
+        "robocurve-org"
+      ]
+    },
     "roboscience": {
       "label": "机科未来（RoboScience）",
       "aliases": [

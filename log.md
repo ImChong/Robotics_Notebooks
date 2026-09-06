@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/sites/robocurve-org.md — 接入 Robocurve + Inspect Robots（站点+GitHub）；框架 MIT 已开源；关键页 robocurve / inspect-robots；交叉 hub-embodied-eval-benchmark / xpolicylab / isaac-lab-arena
+
 ## [2026-09-06] ingest | sources/sites/skild-ai.md — Skild AI 首页再核（omni-bodied/Skild Brain/三平台/人视频）；确认未开源；刷新 skild-ai 实体
 
 ## [2026-09-06] ingest | sources/repos/nv_tlabs_ardy.md — ARDY 深度 ingest（GitHub+HF+arXiv+PDF）；已开源；升级 ardy 实体（评测/对比/结论/运行时序图）

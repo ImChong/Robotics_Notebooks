@@ -2,10 +2,11 @@
 type: entity
 tags: [vla, policy, evaluation, serving, open-source, infrastructure, robodojo, benchmark, hku, tsinghua, paper]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-06
 arxiv: "2608.09892"
 code: https://github.com/XPolicyLab/XPolicyLab
 related:
+  - ./inspect-robots.md
   - ./robodojo.md
   - ../methods/vla.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -230,6 +231,7 @@ sequenceDiagram
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 摘录榜对照
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 已出现在适配目录与 RoboDojo 分数叙事中的案例
 - [starVLA](../methods/star-vla.md) — 仓内适配之一
+- [Inspect Robots](./inspect-robots.md) — `inspect-robots-xpolicylab` 插件；`--policy xpolicylab` 真机/Isaac 评测
 
 ## 参考来源
 
