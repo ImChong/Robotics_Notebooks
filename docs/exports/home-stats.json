@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3821,
-  "edge_count": 34010,
+  "node_count": 3822,
+  "edge_count": 34017,
   "coverage": {
-    "covered": 3794,
-    "total": 3794,
+    "covered": 3795,
+    "total": 3795,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -237,7 +237,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 913
+      "size": 914
     },
     {
       "label": "操作",
@@ -312,7 +312,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 577,
+      "degree": 578,
       "has_repo": true
     },
     {

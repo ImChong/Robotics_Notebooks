@@ -3617,6 +3617,29 @@
         "arrow-air",
         "arrowair"
       ]
+    },
+    "imt-nord-europe": {
+      "label": "北方高等电信学院（IMT Nord Europe）",
+      "aliases": [
+        "imt-nord-europe",
+        "imt-nord"
+      ]
+    },
+    "imt": {
+      "label": "法国国立高等矿业电信学校联盟（Institut Mines-Télécom）",
+      "aliases": [
+        "imt",
+        "institut-mines-telecom",
+        "mines-telecom"
+      ]
+    },
+    "universite-de-lille": {
+      "label": "里尔大学（Université de Lille）",
+      "aliases": [
+        "universite-de-lille",
+        "univ-lille",
+        "university-of-lille"
+      ]
     }
   }
 }

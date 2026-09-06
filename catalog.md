@@ -1084,6 +1084,7 @@
 - [HumanoidUMI](wiki/entities/paper-humanoidumi.md) — HumanoidUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation**（arXiv:2606. `📅unknown` `[entity_page]`
 - [HumanoidVLN：跨人形本体的物理接地 VLN 仿真与基准](wiki/entities/paper-humanoidvln.md) — HumanoidVLN**（*A Physics-Grounded Simulator and Benchmark for Vision-Language Navigation Across Di `📅unknown` `[entity_page]`
 - [HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）](wiki/entities/paper-humantracker.md) — HumanTracker**（*Towards Comprehensive and Human-Aligned Motion Tracking Benchmark*，南开大学、清华大学、银河通用、 `📅unknown` `[entity_page]`
+- [HUMAPS-4D：足底压力也能推断全身 3D 运动吗？](wiki/entities/paper-humaps4d.md) — HUMAPS-4D**（*A Multimodal Dataset for HUman Motion Analysis with Physiological and Semantic inform `📅unknown` `[entity_page]`
 - [HUMEMBR（人中心记忆驱动的预测式具身导航）](wiki/entities/paper-humembr.md) — HUMEMBR**（*Human-Centered Memory for Embodied Robots* / *Learning Human Routines for Predictive Em `📅unknown` `[entity_page]`
 - [HumoSlope：极端坡面物理引导生物力学步态适应](wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md) — HumoSlope**（*Physics-Guided Biomechanical Gait Adaptation for Humanoid Locomotion on Extreme Slope `📅unknown` `[entity_page]`
 - [Hydra-0：Action Flow 通才世界模型](wiki/entities/paper-hydra-0.md) — Hydra-0**（*Action Flow for Generalist World Modeling and Control*，[arXiv:2608.18077](https://arxiv `📅unknown` `[entity_page]`
