@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, sim2real, visual-rl, humanoid, unitree-g1, isaac-lab, teacher-student, dagger, loco-manipulation, nvidia, cvpr2026]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-06
 related:
   - ./paper-doorman-opening-sim2real-door.md
   - ./paper-viral-humanoid-visual-sim2real.md
@@ -164,8 +164,9 @@ Teacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间
 | [wbc_fsm](./wbc-fsm.md) | 无（本体感知） | WBC + FSM | Locomotion | Unitree G1 |
 | [unitree_rl_mjlab](./unitree-rl-mjlab.md) | 无（本体感知） | PPO / AMP | Locomotion | Unitree 系列 |
 | [GS-Playground](./gs-playground.md) | 3DGS 光真实感 | 视觉 RL | 操作 + 行走 | Go1/G1/Franka |
+| [SDPG（视觉 RL）](./paper-sdpg-visual-rl-stochastic-decoupled.md) | RGB/Depth egocentric | 端到端 on-policy（非蒸馏） | Locomotion + 操作套件 | Go2（论文） |
 
-**核心差异**：GR00T-VisualSim2Real 是目前在 Unitree G1 上做 **真实 RGB 视觉 loco-manipulation** 的最完整 NVIDIA 官方框架，而 wbc_fsm / unitree_rl_mjlab 侧重状态空间 locomotion。
+**核心差异**：GR00T-VisualSim2Real 是目前在 Unitree G1 上做 **真实 RGB 视觉 loco-manipulation** 的最完整 NVIDIA 官方框架，而 wbc_fsm / unitree_rl_mjlab 侧重状态空间 locomotion。若需 **单卡端到端视觉 on-policy** 而非两阶段蒸馏，可对照 [SDPG](./paper-sdpg-visual-rl-stochastic-decoupled.md)（Genesis 栈，Go2 sim2real）。
 
 ## 实测结果
 

@@ -4,7 +4,7 @@ type: entity
 title: Genesis (仿真器)
 tags: [simulation, physics-engine, robot-learning, differentiable, genesis-ai]
 summary: "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
-updated: 2026-08-28
+updated: 2026-09-06
 related:
   - ./igibson.md
   - ../overview/sim-platforms-decade-technology-map.md
@@ -44,6 +44,7 @@ related:
 - **推荐背景**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 Genesis 推荐为实战路线图中的核心工具之一。
 - **对比**：相比 [mujoco](mujoco.md)，Genesis 的并行化程度更高；相比传统的 [sapien](sapien.md)，它在非刚体仿真方面具有显著优势。
 - **轮腿双足示例：** [wheel_legged_genesis](./wheel-legged-genesis.md) 用 Genesis + RSL-RL 训 CJ-003，再迁 MuJoCo。
+- **视觉 on-policy RL：** [SDPG（Stochastic Decoupled Policy Gradient）](./paper-sdpg-visual-rl-stochastic-decoupled.md) 官方实现基于 Genesis + Hydra，单卡 RTX 4080 数小时端到端训 visual MuJoCo 与 egocentric 套件（[HaoxiangYou/SDPG](https://github.com/HaoxiangYou/SDPG)）。
 
 ## 名称辨析（易混品牌）
 

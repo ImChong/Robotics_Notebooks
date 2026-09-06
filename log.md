@@ -1,3 +1,11 @@
+## [2026-09-06] ingest | SDPG 双论文同名消歧 — 视觉 RL（arXiv:2605.26478 / HaoxiangYou/SDPG / Yale）+ LLM RLVR（arXiv:2606.04036 / lauyikfung/SDPG / UCLA）；关键页 paper-sdpg-visual-rl-stochastic-decoupled、paper-sdpg-self-distilled-policy-gradient；交叉 reinforcement-learning / sim2real / genesis-sim
+
+- **触发：** 用户指定两篇 arXiv、两个 GitHub 仓与 Yale 项目页，并要求自动合并 PR
+- **步骤 2.5：** 两仓均 **已开源**；Yale 项目页链出 [HaoxiangYou/SDPG](https://github.com/HaoxiangYou/SDPG)；UCLA 项目页链出 [lauyikfung/SDPG](https://github.com/lauyikfung/SDPG) + verl
+- **消歧：** 缩写 SDPG 指 **Stochastic Decoupled**（机器人视觉）vs **Self-Distilled**（LLM 数学 RLVR）
+- **新建：** 两份 papers/sites/repos 归档 + 两个论文实体（含源码运行时序图）
+- **交叉：** reinforcement-learning、sim2real（Go2）、genesis-sim
+
 ## [2026-09-06] ingest | sources/sites/nvidia-jetson-embedded-systems.md — 接入 Jetson 嵌入式产品线门户（Thor/Orin 谱系、JetPack、Physical AI）；关键页 nvidia-jetson；交叉 jetson-orin-nx / hardware-in-the-loop
 
 - **触发：** 用户指定 <https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/>，并要求自动合并 PR

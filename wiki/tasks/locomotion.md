@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-06
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -159,6 +159,7 @@ flowchart TD
 - **显式楼梯几何条件化：** [Explicit Stair Geometry Conditioning（论文实体页）](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）从点云 BEV 预测 **踢面高度 / 踏面深度 / 航向 / 楼梯状态** 四维 token，直接条件化 **PPO**；在 **Unitree G1** 上零样本实机，户外 **连续 33 级** 上楼，训练分布外踢面高度优于视觉 **MoRE** 基线。
 - **Spot 平地 velocity 零样本部署：** [NVIDIA Isaac Lab Spot locomotion Sim2Real](../entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — **Researcher Kit** + `Isaac-Velocity-Flat-Spot-v0` + RSL-rl PPO → Jetson Orin **ONNX** + `spot-rl-example`；教程级对照 [Spot 分布距离 Sim2Real 论文](../entities/paper-spot-rl-distributional-sim2real.md)。
 - **四足真机安全微调：** [SLowRL（论文实体页）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **Unitree Go2** 上对 jump/trot 做 **冻结主策略 + rank-1 LoRA + Recovery 安全滤波** 真机 PPO 微调，相对全参微调显著降摔倒与墙钟时间（见 [Sim2Real](../concepts/sim2real.md)）。
+- **Go2 视觉 egocentric 零样本：** [SDPG（视觉 RL）](../entities/paper-sdpg-visual-rl-stochastic-decoupled.md)（arXiv:2605.26478）用 RealSense **深度** 端到端 on-policy 训崎岖地形/楼梯导航，仿真 **<2 h** 单 GPU → 真机零样本（对照 [GR00T Visual Sim2Real](../entities/gr00t-visual-sim2real.md) 的 teacher-student 蒸馏路线）。
 - **家用四足低噪行走：** [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md)（arXiv:2502.10983，ICRA 2025）用仿真 **足端接触速度** 作声学代理，配合可变 PD 与开关接触，真机安静度优于索尼商用 quiet 控制器（与人形 [QuietWalk GRF](../entities/paper-quietwalk-humanoid-locomotion.md) 对照）。
 - **轮足多技能盲走：** [MUJICA（论文实体页）](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **Go2-W** 上用 **单策略 + 技能选择器** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机 P3O 约束** 零样本上真机（**1 m 高台**）。
 - **轮足高动态反射避障：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 **M20** 上用分层 RL + 双专家硬切换做快速障碍反射规避（导航全向 / 高动态逃逸），Isaac Lab 与真机抛箱/棍戳/脚踢验证。
