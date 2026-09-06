@@ -9,17 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-adamimic.md",
-      "detail_id": "entity-paper-adamimic",
-      "label": "AdaMimic：单条参考运动上的自适应全身跟踪",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
       "path": "wiki/entities/cn-os-a3-a3u-robot-model.md",
       "detail_id": "entity-cn-os-a3-a3u-robot-model",
       "label": "A3-A3U-robot-model",
@@ -227,18 +216,29 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+    },
+    {
+      "path": "wiki/entities/cn-os-alicia-d-sdk.md",
+      "detail_id": "entity-cn-os-alicia-d-sdk",
+      "label": "Alicia-D-SDK",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adamimic.md",
-    "detail_id": "entity-paper-adamimic",
-    "label": "AdaMimic：单条参考运动上的自适应全身跟踪",
+    "path": "wiki/entities/cn-os-a3-a3u-robot-model.md",
+    "detail_id": "entity-cn-os-a3-a3u-robot-model",
+    "label": "A3-A3U-robot-model",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
   },
   "top_communities": [
     {
