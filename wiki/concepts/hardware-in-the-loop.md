@@ -8,6 +8,7 @@ related:
   - ./sim2real.md
   - ./processor-in-the-loop-sim2real.md
   - ./simulation-evaluation-infrastructure.md
+  - ../entities/nvidia-jetson.md
   - ../entities/isaac-sim.md
   - ../entities/nvidia-physical-ai-learning.md
   - ../entities/humanoid-robot.md
@@ -111,6 +112,7 @@ Martín & Emami（2008）提出 **RHILS** 四子系统：**用户界面、计算
 - [Sim2Real](./sim2real.md) — HIL 之后的全机迁移主线
 - [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md) — 固件/总线路径的邻近概念
 - [仿真评测基础设施](./simulation-evaluation-infrastructure.md)
+- [NVIDIA Jetson](../entities/nvidia-jetson.md) — HIL 与机载推理常用目标硬件
 - [Isaac Sim](../entities/isaac-sim.md)
 - [人形机器人](../entities/humanoid-robot.md) — 流程图中的 HIL 台架节点
 - [Hybrid Imitation Learning](../methods/hil-hybrid-imitation-learning.md) — **不同含义的 HIL**

@@ -373,6 +373,7 @@
 - [NVIDIA Getting Started With Isaac Lab](wiki/entities/nvidia-getting-started-isaac-lab.md) — Getting Started With Isaac Lab** 是 Physical AI Learning 门户下的  `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab Spot locomotion Sim2Real](wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab** 是 NVIDIA D `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab UR10e 工业装配 Sim2Real](wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — Bridging the Sim-to-Real Gap for Industrial Robotic Assembly Applications Using NVIDIA Isaac Lab `📅unknown` `[entity_page]`
+- [NVIDIA Jetson](wiki/entities/nvidia-jetson.md) — NVIDIA Jetson** 是面向 **机器人与边缘 AI** 的嵌入式计算平台：以 **Jetson 模组**（SoM）+ **JetPack SDK** 提供机载 CUDA/TensorR `📅unknown` `[entity_page]`
 - [NVIDIA Learn OpenUSD](wiki/entities/nvidia-learn-openusd.md) — Learn OpenUSD** 是 NVIDIA 维护的 **免费、开源** USD 自学路径（[在线课纲](https://docs.nvidia.com/learn-openusd/lates `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse NuRec](wiki/entities/nvidia-nurec.md) — NVIDIA Omniverse NuRec** 是面向 Physical AI 的 **神经重建与渲染栈**：把真实相机 / LiDAR 吃成可在仿真里重放、改视角的 3D 环境，主交付是带高斯 `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 Isaac Sim 的运行底座。通过利 `📅unknown` `[entity_page]`

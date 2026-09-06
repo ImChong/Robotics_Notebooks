@@ -4,6 +4,7 @@ tags: [entity, hardware, edge-ai, nvidia, jetson, orin, onboard-compute, robotic
 status: complete
 updated: 2026-08-05
 related:
+  - ./nvidia-jetson.md
   - ../concepts/edge-cloud-robotics.md
   - ../concepts/lidar-sensing.md
   - ./quadruped-robot.md
@@ -14,6 +15,7 @@ related:
   - ../overview/quadruped-vln-embodied-workshop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
 sources:
+  - ../../sources/sites/nvidia-jetson-embedded-systems.md
   - ../../sources/sites/nvidia-jetson-orin-nx.md
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
 summary: "NVIDIA Jetson Orin NX：机器人常用机载边缘 AI 模组，承担四足感知/轻量 VLM/导航推理；与桌面 RTX 工作站形成机载–离板分工。"
@@ -82,6 +84,7 @@ flowchart TB
 
 ## 关联页面
 
+- [NVIDIA Jetson 平台家族](./nvidia-jetson.md) — Orin NX 所属产品线总览与跨代选型
 - [边缘–云机器人](../concepts/edge-cloud-robotics.md)
 - [LiDAR 传感](../concepts/lidar-sensing.md)
 - [四足机器人](./quadruped-robot.md)
@@ -91,6 +94,7 @@ flowchart TB
 
 ## 参考来源
 
+- [NVIDIA Jetson Embedded Systems 门户归档](../../sources/sites/nvidia-jetson-embedded-systems.md)
 - [NVIDIA Jetson Orin 产品页归档](../../sources/sites/nvidia-jetson-orin-nx.md)
 - [四足×VLN 实战营课程大纲](../../sources/courses/quadruped_vln_embodied_workshop_2day.md)
 
