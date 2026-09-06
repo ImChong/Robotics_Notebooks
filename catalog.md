@@ -85,6 +85,304 @@
 - [CLIP](wiki/entities/clip.md) — CLIP 用图文对比学习在超大规模配对数据上对齐双编码器，实现强零样本分类与开放词汇检索，是现代 VLM/VLA 视觉塔的重要源头。 `📅unknown` `[entity_page]`
 - [CMU MSCV Semantic 3D Mapping](wiki/entities/cmu-mscv-semantic-3d-mapping.md) — CMU MSCV Semantic 3D Mapping**（[F23 Team 17 项目页](https://mscvprojects.ri.cmu.edu/f23team17/sample- `📅unknown` `[entity_page]`
 - [CMU Optimal Control 2025 学习策展（16-745）](wiki/entities/cmu-optimal-control-curriculum.md) — 一句话：** Zachary Manchester 主讲的 CMU **16-745 `📅unknown` `[entity_page]`
+- [A3-A3U-robot-model](wiki/entities/cn-os-a3-a3u-robot-model.md) — A3-A3U-robot-model** 是 智元机器人 公开的 **本体模型资产** 开源项目：提供A3与A3 Ultra多个版 `📅unknown` `[entity_page]`
+- [A3_Ultra_usd](wiki/entities/cn-os-a3-ultra-usd.md) — A3_Ultra_usd** 是 智元机器人 公开的 **本体模型资产** 开源项目：仿真级USD按Isaac Sim Asset `📅unknown` `[entity_page]`
+- [ABot-3DWorld](wiki/entities/cn-os-abot-3dworld.md) — ABot-3DWorld** 是 阿里巴巴 公开的 **世界模型** 开源项目：文本/图像/多视图/视频生成可探索 3D 世界（高 `📅unknown` `[entity_page]`
+- [ABot-Claw](wiki/entities/cn-os-abot-claw.md) — ABot-Claw** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：统一 VLN、VLA、WAM 与视觉记忆的持续协 `📅unknown` `[entity_page]`
+- [ABot-Explorer](wiki/entities/cn-os-abot-explorer.md) — ABot-Explorer** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：VLM 驱动、支持 3DGS 与 H `📅unknown` `[entity_page]`
+- [ABot-Manipulation](wiki/entities/cn-os-abot-manipulation.md) — ABot-Manipulation** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：ABot-M0.5联合处理移动与 `📅unknown` `[entity_page]`
+- [ABot-Navigation](wiki/entities/cn-os-abot-navigation.md) — ABot-Navigation** 是 阿里巴巴 公开的 **数据集/Benchmark** 开源项目：视觉与语言指令经过场景理解 `📅unknown` `[entity_page]`
+- [ABot-Recon](wiki/entities/cn-os-abot-recon.md) — ABot-Recon** 是 阿里巴巴 公开的 **工程与工具** 开源项目：仅用视频的长时流式 3D 重建 `📅unknown` `[entity_page]`
+- [agibot_D1_Edu-Ultra](wiki/entities/cn-os-agibot-d1-edu-ultra.md) — agibot_D1_Edu-Ultra** 是 智元机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读 `📅unknown` `[entity_page]`
+- [Agibot_D1_Max](wiki/entities/cn-os-agibot-d1-max.md) — Agibot_D1_Max** 是 智元机器人 公开的 **SDK/驱动** 开源项目：C++ SDK通过高层运动接口、状态回调和 `📅unknown` `[entity_page]`
+- [agibot_x1_hardware](wiki/entities/cn-os-agibot-x1-hardware.md) — agibot_x1_hardware** 是 智元机器人 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJ `📅unknown` `[entity_page]`
+- [agibot_x1_infer](wiki/entities/cn-os-agibot-x1-infer.md) — agibot_x1_infer** 是 智元机器人 公开的 **部署运行时** 开源项目：策略部署运行时：加载训练策略、下发关节命 `📅unknown` `[entity_page]`
+- [agibot_x1_train](wiki/entities/cn-os-agibot-x1-train.md) — agibot_x1_train** 是 智元机器人 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真 `📅unknown` `[entity_page]`
+- [agibot_x2_urdf](wiki/entities/cn-os-agibot-x2-urdf.md) — agibot_x2_urdf** 是 智元机器人 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/U `📅unknown` `[entity_page]`
+- [agillink_omnihand_sdk](wiki/entities/cn-os-agillink-omnihand-sdk.md) — agillink_omnihand_sdk** 是 智元机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状 `📅unknown` `[entity_page]`
+- [AimRT](wiki/entities/cn-os-aimrt.md) — AimRT** 是 智元机器人 公开的 **部署运行时** 开源项目：C++运行时通过插件和声明式配置组织线程、资源、通信与部署， `📅unknown` `[entity_page]`
+- [AIRBOT-Play-Hardware](wiki/entities/cn-os-airbot-play-hardware.md) — AIRBOT-Play-Hardware** 是 求之科技 公开的 **本体模型资产** 开源项目：AIRBOT Play `📅unknown` `[entity_page]`
+- [Alicia-D-Leader-ROS](wiki/entities/cn-os-alicia-d-leader-ros.md) — Alicia-D-Leader-ROS** 是 玄雅科技 公开的 **遥操作与数据采集** 开源项目：Alicia-D  `📅unknown` `[entity_page]`
+- [Alicia-D-ROS2](wiki/entities/cn-os-alicia-d-ros2.md) — Alicia-D-ROS2** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：Alicia-D 机械臂 ROS2 `📅unknown` `[entity_page]`
+- [Alicia-D-SDK](wiki/entities/cn-os-alicia-d-sdk.md) — Alicia-D-SDK** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：Alicia-D 六轴机械臂（带夹爪 `📅unknown` `[entity_page]`
+- [Alicia-D-VLM-Grasp](wiki/entities/cn-os-alicia-d-vlm-grasp.md) — Alicia-D-VLM-Grasp** 是 玄雅科技 公开的 **VLA/操作模型** 开源项目：Alicia-D 视 `📅unknown` `[entity_page]`
+- [Alicia-M-SDK](wiki/entities/cn-os-alicia-m-sdk.md) — Alicia-M-SDK** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：Alicia-M 机械臂 SDK `📅unknown` `[entity_page]`
+- [aloha-agilex](wiki/entities/cn-os-aloha-agilex.md) — aloha-agilex** 是 松灵机器人 公开的 **具身Agent/规划** 开源项目：移动操作（Loco-Mani `📅unknown` `[entity_page]`
+- [arcs_ros2](wiki/entities/cn-os-arcs-ros2.md) — arcs_ros2** 是 遨博智能 公开的 **工程与工具** 开源项目：面向AUBO ARCS控制系统提供ROS2硬件接口、机器 `📅unknown` `[entity_page]`
+- [ARIO](wiki/entities/cn-os-ario.md) — ARIO** 是 松灵机器人 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/USD），供仿 `📅unknown` `[entity_page]`
+- [AstraNav-Memory](wiki/entities/cn-os-astranav-memory.md) — AstraNav-Memory** 是 阿里巴巴 公开的 **感知/导航** 开源项目：视觉上下文压缩的终身具身导航（AstraN `📅unknown` `[entity_page]`
+- [AstraNav-World](wiki/entities/cn-os-astranav-world.md) — AstraNav-World** 是 阿里巴巴 公开的 **世界模型** 开源项目：用于前瞻控制与一致性导航的世界模型 `📅unknown` `[entity_page]`
+- [astribot_descriptions](wiki/entities/cn-os-astribot-descriptions.md) — astribot_descriptions** 是 星尘智能 公开的 **本体模型资产** 开源项目：提供星尘智能机器人在仿真 `📅unknown` `[entity_page]`
+- [astribot_msgs](wiki/entities/cn-os-astribot-msgs.md) — astribot_msgs** 是 星尘智能 公开的 **仿真环境** 开源项目：公开星尘智能机器人软件栈使用的自定义消息定义 `📅unknown` `[entity_page]`
+- [astribot_simulation](wiki/entities/cn-os-astribot-simulation.md) — astribot_simulation** 是 星尘智能 公开的 **仿真环境** 开源项目：提供星尘智能机器人相关的仿真开发 `📅unknown` `[entity_page]`
+- [atom-locomotion-deploy](wiki/entities/cn-os-atom-locomotion-deploy.md) — atom-locomotion-deploy** 是 越疆科技 公开的 **仿真环境** 开源项目：把ATOM运动策略接入 `📅unknown` `[entity_page]`
+- [atom-locomotion-training](wiki/entities/cn-os-atom-locomotion-training.md) — atom-locomotion-training** 是 越疆科技 公开的 **运动RL/技能训练** 开源项目：提供AT `📅unknown` `[entity_page]`
+- [aubo_robot](wiki/entities/cn-os-aubo-robot.md) — aubo_robot** 是 遨博智能 公开的 **工程与工具** 开源项目：为AUBO协作机器人提供ROS工业包、机器人描述、驱动 `📅unknown` `[entity_page]`
+- [Being-H](wiki/entities/cn-os-being-h.md) — Being-H** 是 智在无界 公开的 **数据集/Benchmark** 开源项目：从大规模第一视角人类操作视频学习手部动作 `📅unknown` `[entity_page]`
+- [Being-M0](wiki/entities/cn-os-being-m0.md) — Being-M0** 是 智在无界 公开的 **动作重定向** 开源项目：动作重定向：人体/MoCap 动作映射为目标本体训练参 `📅unknown` `[entity_page]`
+- [Being-VL-0.5](wiki/entities/cn-os-being-vl-0-5.md) — Being-VL-0.5** 是 智在无界 公开的 **世界模型** 开源项目：世界模型/预测模型：按条件生成未来状态，服务训练 `📅unknown` `[entity_page]`
+- [Bessica-D-SDK](wiki/entities/cn-os-bessica-d-sdk.md) — Bessica-D-SDK** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：Bessica-D 机械臂 SDK `📅unknown` `[entity_page]`
+- [BIP3D](wiki/entities/cn-os-bip3d.md) — BIP3D** 是 地平线 公开的 **工程与工具** 开源项目：感知/定位/建图模块：为导航与控制提供环境状态 `📅unknown` `[entity_page]`
+- [bipedal-robot](wiki/entities/cn-os-bipedal-robot.md) — bipedal-robot** 是 达妙科技 公开的 **工程与工具** 开源项目：公开双足机器人本体与控制相关资料，为执行器、结构和运动 `📅unknown` `[entity_page]`
+- [booster_assets](wiki/entities/cn-os-booster-assets.md) — booster_assets** 是 加速进化 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJ `📅unknown` `[entity_page]`
+- [booster_deploy](wiki/entities/cn-os-booster-deploy.md) — booster_deploy** 是 加速进化 公开的 **部署运行时** 开源项目：策略部署运行时：加载训练策略、下发 `📅unknown` `[entity_page]`
+- [booster_robotics_sdk](wiki/entities/cn-os-booster-robotics-sdk.md) — booster_robotics_sdk** 是 加速进化 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控 `📅unknown` `[entity_page]`
+- [booster_train](wiki/entities/cn-os-booster-train.md) — booster_train** 是 加速进化 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含 `📅unknown` `[entity_page]`
+- [BumbleBee](wiki/entities/cn-os-bumblebee.md) — BumbleBee** 是 智在无界 公开的 **全身动作跟踪/技能训练** 开源项目：全身动作跟踪策略（带仿真/真机验证） `📅unknown` `[entity_page]`
+- [CE-Nav](wiki/entities/cn-os-ce-nav.md) — CE-Nav** 是 阿里巴巴 公开的 **感知/导航** 开源项目：流引导强化细化的跨本体局部导航 `📅unknown` `[entity_page]`
+- [Chain-of-Action](wiki/entities/cn-os-chain-of-action.md) — Chain-of-Action** 是 字节跳动机器人团队 公开的 **VLA/操作模型** 开源项目：面向机器人操作的轨 `📅unknown` `[entity_page]`
+- [Chengling-PWM](wiki/entities/cn-os-chengling-pwm.md) — Chengling-PWM** 是 智澄AI 公开的 **世界模型** 开源项目：机器人原生 JEPA 物理世界模型：从机器人示 `📅unknown` `[entity_page]`
+- [Click-and-Traverse](wiki/entities/cn-os-click-and-traverse.md) — Click-and-Traverse** 是 银河通用 公开的 **运动RL/技能训练** 开源项目：用户在 `📅unknown` `[entity_page]`
+- [Daimon-Infinity](wiki/entities/cn-os-daimon-infinity.md) — Daimon-Infinity** 是 戴盟机器人 公开的 **数据集/Benchmark** 开源项目：公开包含高分辨率触 `📅unknown` `[entity_page]`
+- [das-datakit](wiki/entities/cn-os-das-datakit.md) — das-datakit** 是 简智机器人 公开的 **数据集/Benchmark** 开源项目：读取MCAP中的相机、深度、触 `📅unknown` `[entity_page]`
+- [data_tools](wiki/entities/cn-os-data-tools.md) — data_tools** 是 松灵机器人 公开的 **数据集/Benchmark** 开源项目：数据采集/转换工具：同步记 `📅unknown` `[entity_page]`
+- [DataEval](wiki/entities/cn-os-dataeval.md) — DataEval** 是 松灵机器人 公开的 **数据集/Benchmark** 开源项目：评测基准与工具 `📅unknown` `[entity_page]`
+- [deep-robotics-sdk2](wiki/entities/cn-os-deep-robotics-sdk2.md) — deep-robotics-sdk2** 是 云深处科技 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制 `📅unknown` `[entity_page]`
+- [deep-robotics-simulation](wiki/entities/cn-os-deep-robotics-simulation.md) — deep-robotics-simulation** 是 云深处科技 公开的 **仿真环境** 开源项目：官方仿真环境与 `📅unknown` `[entity_page]`
+- [deep-robotics-teleoperate](wiki/entities/cn-os-deep-robotics-teleoperate.md) — deep-robotics-teleoperate** 是 云深处科技 公开的 **遥操作与数据采集** 开源项目：遥操 `📅unknown` `[entity_page]`
+- [DeepThinkVLA](wiki/entities/cn-os-deepthinkvla.md) — DeepThinkVLA** 是 面壁智能 公开的 **VLA/操作模型** 开源项目：模型在视觉与语言输入到动作输出之间加入与任务执行 `📅unknown` `[entity_page]`
+- [DemoGrasp](wiki/entities/cn-os-demograsp.md) — DemoGrasp** 是 智在无界 公开的 **具身Agent/规划** 开源项目：移动操作（Loco-Manip）策略接入 `📅unknown` `[entity_page]`
+- [Deploy_Tienkung](wiki/entities/cn-os-deploy-tienkung.md) — Deploy_Tienkung** 是 北京人形机器人创新中心 公开的 **仿真环境** 开源项目：ROS 2控制主库接 `📅unknown` `[entity_page]`
+- [dexrobot_ecosystem](wiki/entities/cn-os-dexrobot-ecosystem.md) — dexrobot_ecosystem** 是 灵巧智能 公开的 **移动操作** 开源项目：整合灵巧手底层控制、运动学、URDF、Is `📅unknown` `[entity_page]`
+- [DIAL](wiki/entities/cn-os-dial.md) — DIAL** 是 小鹏机器人 公开的 **VLA/操作模型** 开源项目：小鹏机器人官方公开的机器人学习研究项目，具体数据 `📅unknown` `[entity_page]`
+- [DiT4DiT](wiki/entities/cn-os-dit4dit.md) — DiT4DiT** 是 妙动科技 公开的 **VLA/操作模型** 开源项目：将视频生成DiT的中间去噪特征与流匹配动作头 `📅unknown` `[entity_page]`
+- [dobot_atom_ros2](wiki/entities/cn-os-dobot-atom-ros2.md) — dobot_atom_ros2** 是 越疆科技 公开的 **工程与工具** 开源项目：为ATOM机器人提供ROS2接口， `📅unknown` `[entity_page]`
+- [EFMNode](wiki/entities/cn-os-efmnode.md) — EFMNode** 是 星海图 公开的 **部署运行时** 开源项目：策略部署运行时：加载训练策略、下发关节命令 `📅unknown` `[entity_page]`
+- [Electronic-Skin-ML](wiki/entities/cn-os-electronic-skin-ml.md) — Electronic-Skin-ML** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：ML 电子皮肤 SDK `📅unknown` `[entity_page]`
+- [Elite_Robots_CS_ROS2_Driver](wiki/entities/cn-os-elite-robots-cs-ros2-driver.md) — Elite_Robots_CS_ROS2_Driver** 是 艾利特机器人 公开的 **SDK/驱动** 开源项目：为艾利特 `📅unknown` `[entity_page]`
+- [Elite_Robots_CS_SDK](wiki/entities/cn-os-elite-robots-cs-sdk.md) — Elite_Robots_CS_SDK** 是 艾利特机器人 公开的 **SDK/驱动** 开源项目：提供艾利特CS系列机器人 `📅unknown` `[entity_page]`
+- [embodied-skill-kit](wiki/entities/cn-os-embodied-skill-kit.md) — embodied-skill-kit** 是 北京人形机器人创新中心 公开的 **具身Agent/规划** 开源项目：具 `📅unknown` `[entity_page]`
+- [EmbodiedGen V2](wiki/entities/cn-os-embodiedgen-v2.md) — EmbodiedGen V2** 是 地平线 公开的 **仿真环境** 开源项目：语言、参考图和编辑指令生成带几何、材质 `📅unknown` `[entity_page]`
+- [Embodylink](wiki/entities/cn-os-embodylink.md) — Embodylink** 是 越疆科技 公开的 **数据集/Benchmark** 开源项目：面向越疆机器人提供数据采集、 `📅unknown` `[entity_page]`
+- [EMGFilters](wiki/entities/cn-os-emgfilters.md) — EMGFilters** 是 傲意科技 公开的 **工程与工具** 开源项目：肌电信号滤波算法库 `📅unknown` `[entity_page]`
+- [engineai_amp](wiki/entities/cn-os-engineai-amp.md) — engineai_amp** 是 众擎机器人 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架 `📅unknown` `[entity_page]`
+- [EngineAI GMR](wiki/entities/cn-os-engineai-gmr.md) — EngineAI GMR** 是 众擎机器人 公开的 **动作重定向** 开源项目：动作重定向：人体/MoCap 动 `📅unknown` `[entity_page]`
+- [engineai_robotics_description](wiki/entities/cn-os-engineai-robotics-description.md) — engineai_robotics_description** 是 众擎机器人 公开的 **本体模型资产** 开源项 `📅unknown` `[entity_page]`
+- [engineai_ros2_workspace](wiki/entities/cn-os-engineai-ros2-workspace.md) — engineai_ros2_workspace** 是 众擎机器人 公开的 **SDK/驱动** 开源项目：官方 S `📅unknown` `[entity_page]`
+- [fairino-python-sdk](wiki/entities/cn-os-fairino-python-sdk.md) — fairino-python-sdk** 是 法奥意威 公开的 **SDK/驱动** 开源项目：提供法奥意威协作机器人P `📅unknown` `[entity_page]`
+- [Fast-in-Slow](wiki/entities/cn-os-fast-in-slow.md) — Fast-in-Slow** 是 智平方 公开的 **具身Agent/规划** 开源项目：以慢速推理系统组织任务并由快速策略执行操作， `📅unknown` `[entity_page]`
+- [fast-livo2-deep-robotics](wiki/entities/cn-os-fast-livo2-deep-robotics.md) — fast-livo2-deep-robotics** 是 云深处科技 公开的 **工程与工具** 开源项目：感知/定位/ `📅unknown` `[entity_page]`
+- [FAST](wiki/entities/cn-os-fast.md) — FAST** 是 智在无界 公开的 **全身动作跟踪/技能训练** 开源项目：全身动作跟踪策略（带仿真/真机验证） `📅unknown` `[entity_page]`
+- [FastUMI_Camera](wiki/entities/cn-os-fastumi-camera.md) — FastUMI_Camera** 是 鹿明机器人 公开的 **数据集/Benchmark** 开源项目：提供FastUMI板载相机 `📅unknown` `[entity_page]`
+- [FastUMI_Data_Conversion](wiki/entities/cn-os-fastumi-data-conversion.md) — FastUMI_Data_Conversion** 是 鹿明机器人 公开的 **数据集/Benchmark** 开源项目：把Fas `📅unknown` `[entity_page]`
+- [FastUMI_Data_Platform_Web](wiki/entities/cn-os-fastumi-data-platform-web.md) — FastUMI_Data_Platform_Web** 是 鹿明机器人 公开的 **数据集/Benchmark** 开源项目：提供 `📅unknown` `[entity_page]`
+- [FastUMI_Ego](wiki/entities/cn-os-fastumi-ego.md) — FastUMI_Ego** 是 鹿明机器人 公开的 **数据集/Benchmark** 开源项目：提供FastUMI第一视角数据采 `📅unknown` `[entity_page]`
+- [flexiv_rdk](wiki/entities/cn-os-flexiv-rdk.md) — flexiv_rdk** 是 非夕科技 公开的 **SDK/驱动** 开源项目：提供非夕机器人C++与Python开发接口 `📅unknown` `[entity_page]`
+- [flexiv_ros2](wiki/entities/cn-os-flexiv-ros2.md) — flexiv_ros2** 是 非夕科技 公开的 **工程与工具** 开源项目：把Flexiv RDK接入ROS2，为感知 `📅unknown` `[entity_page]`
+- [flexiv_tdk](wiki/entities/cn-os-flexiv-tdk.md) — flexiv_tdk** 是 非夕科技 公开的 **数据集/Benchmark** 开源项目：提供非夕机器人遥操作开发接口 `📅unknown` `[entity_page]`
+- [flexiv_trainer](wiki/entities/cn-os-flexiv-trainer.md) — flexiv_trainer** 是 非夕科技 公开的 **VLA/操作模型** 开源项目：面向非夕机器人组织数据、训练和 `📅unknown` `[entity_page]`
+- [fourier_dexhand_sdk](wiki/entities/cn-os-fourier-dexhand-sdk.md) — fourier_dexhand_sdk** 是 傅利叶智能 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接 `📅unknown` `[entity_page]`
+- [fourier-grx-client](wiki/entities/cn-os-fourier-grx-client.md) — fourier-grx-client** 是 傅利叶智能 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入 `📅unknown` `[entity_page]`
+- [fourier_lab](wiki/entities/cn-os-fourier-lab.md) — fourier_lab** 是 傅利叶智能 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真任务与策略导出链路 `📅unknown` `[entity_page]`
+- [frcobot_ros2](wiki/entities/cn-os-frcobot-ros2.md) — frcobot_ros2** 是 法奥意威 公开的 **工程与工具** 开源项目：为法奥意威协作机器人提供ROS2驱动、 `📅unknown` `[entity_page]`
+- [GalaxeaDP](wiki/entities/cn-os-galaxeadp.md) — GalaxeaDP** 是 星海图 公开的 **VLA/操作模型** 开源项目：把相机观测、机器人状态和任务条件映射为连续动作块 `📅unknown` `[entity_page]`
+- [GalaxeaManipSim](wiki/entities/cn-os-galaxeamanipsim.md) — GalaxeaManipSim** 是 星海图 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联调、策略回放与 S `📅unknown` `[entity_page]`
+- [GalaxeaVLA](wiki/entities/cn-os-galaxeavla.md) — GalaxeaVLA** 是 星海图 公开的 **VLA/操作模型** 开源项目：语言、视觉和机器人状态经过VLA生成移动底盘与 `📅unknown` `[entity_page]`
+- [galbot_s1_description](wiki/entities/cn-os-galbot-s1-description.md) — galbot_s1_description** 是 银河通用 公开的 **本体模型资产** 开源项目：官方本 `📅unknown` `[entity_page]`
+- [GalbotSDK](wiki/entities/cn-os-galbotsdk.md) — GalbotSDK** 是 银河通用 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读 `📅unknown` `[entity_page]`
+- [genisom_L1_sdk](wiki/entities/cn-os-genisom-l1-sdk.md) — genisom_L1_sdk** 是 智身科技 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
+- [genisom_model](wiki/entities/cn-os-genisom-model.md) — genisom_model** 是 智身科技 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/USD），供仿 `📅unknown` `[entity_page]`
+- [genisom_robot_sdk](wiki/entities/cn-os-genisom-robot-sdk.md) — genisom_robot_sdk** 是 智身科技 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
+- [genisom_vln](wiki/entities/cn-os-genisom-vln.md) — genisom_vln** 是 智身科技 公开的 **具身Agent/规划** 开源项目：具身 Agent：任务规划与技能调度 `📅unknown` `[entity_page]`
+- [GeoFlowSlam](wiki/entities/cn-os-geoflowslam.md) — GeoFlowSlam** 是 地平线 公开的 **感知/导航** 开源项目：感知/定位/建图模块：为导航与控制提供环境 `📅unknown` `[entity_page]`
+- [gForceSDKEmbedded](wiki/entities/cn-os-gforcesdkembedded.md) — gForceSDKEmbedded** 是 傲意科技 公开的 **SDK/驱动** 开源项目：gForce 肌电臂环 C/C++ 嵌入 `📅unknown` `[entity_page]`
+- [gForceSDKPython](wiki/entities/cn-os-gforcesdkpython.md) — gForceSDKPython** 是 傲意科技 公开的 **SDK/驱动** 开源项目：gForce 肌电臂环 Python SDK `📅unknown` `[entity_page]`
+- [GHRC_Evaluation_2026](wiki/entities/cn-os-ghrc-evaluation-2026.md) — GHRC_Evaluation_2026** 是 优必选 公开的 **评测** 开源项目：评测基准与工具 `📅unknown` `[entity_page]`
+- [GigaWorld-1](wiki/entities/cn-os-gigaworld-1.md) — GigaWorld-1** 是 极佳视界 公开的 **世界模型** 开源项目：GigaWorld-1继续研究机器人动作条件下的未 `📅unknown` `[entity_page]`
+- [GigaWorld-Policy](wiki/entities/cn-os-gigaworld-policy.md) — GigaWorld-Policy** 是 极佳视界 公开的 **VLA/操作模型** 开源项目：以动作和环境变化的联合表征训练机 `📅unknown` `[entity_page]`
+- [Gloria-M-SDK](wiki/entities/cn-os-gloria-m-sdk.md) — Gloria-M-SDK** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：云犀夹爪 Python SDK `📅unknown` `[entity_page]`
+- [GR-MG](wiki/entities/cn-os-gr-mg.md) — GR-MG** 是 字节跳动机器人团队 公开的 **VLA/操作模型** 开源项目：GR-MG 机器人操作生成模型官方实现 `📅unknown` `[entity_page]`
+- [gr00t-agilex](wiki/entities/cn-os-gr00t-agilex.md) — gr00t-agilex** 是 松灵机器人 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块 `📅unknown` `[entity_page]`
+- [GraspVLA](wiki/entities/cn-os-graspvla.md) — GraspVLA** 是 银河通用 公开的 **VLA/操作模型** 开源项目：视觉与语言目标经过空间理解和 `📅unknown` `[entity_page]`
+- [HesaiLidar_ROS_2.0](wiki/entities/cn-os-hesailidar-ros-2-0.md) — HesaiLidar_ROS_2.0** 是 禾赛科技 公开的 **工程与工具** 开源项目：把禾赛激光雷达接入ROS与 `📅unknown` `[entity_page]`
+- [HesaiLidar_SDK_2.0](wiki/entities/cn-os-hesailidar-sdk-2-0.md) — HesaiLidar_SDK_2.0** 是 禾赛科技 公开的 **SDK/驱动** 开源项目：提供禾赛激光雷达数据接收 `📅unknown` `[entity_page]`
+- [hi_dynamic_control](wiki/entities/cn-os-hi-dynamic-control.md) — hi_dynamic_control** 是 高擎机电 公开的 **部署运行时** 开源项目：策略部署运行时：加 `📅unknown` `[entity_page]`
+- [hobot_stereonet](wiki/entities/cn-os-hobot-stereonet.md) — hobot_stereonet** 是 地瓜机器人 公开的 **工程与工具** 开源项目：从双目图像实时估计深度，为机器人三维感知 `📅unknown` `[entity_page]`
+- [HumanTracker](wiki/entities/cn-os-humantracker.md) — HumanTracker** 是 银河通用 公开的 **全身动作跟踪/技能训练** 开源项目：全身动作跟踪策 `📅unknown` `[entity_page]`
+- [hunter_bipedal_control](wiki/entities/cn-os-hunter-bipedal-control.md) — hunter_bipedal_control** 是 桥介数物 公开的 **运动控制** 开源项目：开源双足运动控制框架：非线性 MP `📅unknown` `[entity_page]`
+- [HY-Embodied](wiki/entities/cn-os-hy-embodied.md) — HY-Embodied** 是 腾讯机器人实验室 公开的 **VLA/操作模型** 开源项目：仓库汇总HY-Embodi `📅unknown` `[entity_page]`
+- [JAKA_Lumi](wiki/entities/cn-os-jaka-lumi.md) — JAKA_Lumi** 是 节卡机器人 公开的 **具身Agent/规划** 开源项目：公开JAKA Lumi机器人平台相关开 `📅unknown` `[entity_page]`
+- [jaka_ros2](wiki/entities/cn-os-jaka-ros2.md) — jaka_ros2** 是 节卡机器人 公开的 **工程与工具** 开源项目：为JAKA协作机器人提供ROS2驱动、机器人模型 `📅unknown` `[entity_page]`
+- [JALA](wiki/entities/cn-os-jala.md) — JALA** 是 智在无界 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本体执行 `📅unknown` `[entity_page]`
+- [Kairos](wiki/entities/cn-os-kairos.md) — Kairos** 是 大晓机器人 公开的 **世界模型** 开源项目：Kairos以通用视频、人类行为和真机交互数据逐级训练持续世 `📅unknown` `[entity_page]`
+- [kinect_teleoperate](wiki/entities/cn-os-kinect-teleoperate.md) — kinect_teleoperate** 是 宇树科技 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人 `📅unknown` `[entity_page]`
+- [kuavo_data_challenge](wiki/entities/cn-os-kuavo-data-challenge.md) — kuavo_data_challenge** 是 乐聚机器人 公开的 **数据集/Benchmark** 开源项目：数据采集/ `📅unknown` `[entity_page]`
+- [kuavo-ros-opensource](wiki/entities/cn-os-kuavo-ros-opensource.md) — kuavo-ros-opensource** 是 乐聚机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与 `📅unknown` `[entity_page]`
+- [LeftArmMotionSolver](wiki/entities/cn-os-leftarmmotionsolver.md) — LeftArmMotionSolver** 是 钛虎机器人 公开的 **工程与工具** 开源项目：人形左手七轴运动学解算器 `📅unknown` `[entity_page]`
+- [LeIsaac](wiki/entities/cn-os-leisaac.md) — LeIsaac** 是 光轮智能 公开的 **数据集/Benchmark** 开源项目：在Isaac Lab中接入SO-101 `📅unknown` `[entity_page]`
+- [Leju-GMR](wiki/entities/cn-os-leju-gmr.md) — Leju-GMR** 是 乐聚机器人 公开的 **动作重定向** 开源项目：动作重定向：人体/MoCap 动作映射为目标本体训 `📅unknown` `[entity_page]`
+- [LejuLab-Deploy](wiki/entities/cn-os-lejulab-deploy.md) — LejuLab-Deploy** 是 乐聚机器人 公开的 **运动RL/技能训练** 开源项目：策略部署运行时：加载训练策略、 `📅unknown` `[entity_page]`
+- [LejuLab-Train](wiki/entities/cn-os-lejulab-train.md) — LejuLab-Train** 是 乐聚机器人 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真 `📅unknown` `[entity_page]`
+- [LightNav-0](wiki/entities/cn-os-lightnav-0.md) — LightNav-0** 是 亮源新创 公开的 **感知/导航** 开源项目：紧凑通用具身导航模型（Qwen3-VL 基座）： `📅unknown` `[entity_page]`
+- [Lightwheel-simready-asset](wiki/entities/cn-os-lightwheel-simready-asset.md) — Lightwheel-simready-asset** 是 光轮智能 公开的 **本体模型资产** 开源项目：提供机器人训练和 `📅unknown` `[entity_page]`
+- [Lightwheel-YCB](wiki/entities/cn-os-lightwheel-ycb.md) — Lightwheel-YCB** 是 光轮智能 公开的 **仿真环境** 开源项目：提供刚体、关节体和柔性物体的仿真就绪YCB `📅unknown` `[entity_page]`
+- [limxsdk-lowlevel](wiki/entities/cn-os-limxsdk-lowlevel.md) — limxsdk-lowlevel** 是 逐际动力 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的 `📅unknown` `[entity_page]`
+- [LingBot-Depth](wiki/entities/cn-os-lingbot-depth.md) — LingBot-Depth** 是 蚂蚁灵波 公开的 **工程与工具** 开源项目：把RGB外观与不完整或噪声深度对齐到统一潜空间，输 `📅unknown` `[entity_page]`
+- [LingBot-Map](wiki/entities/cn-os-lingbot-map.md) — LingBot-Map** 是 蚂蚁灵波 公开的 **评测** 开源项目：连续RGB帧经过几何上下文Transformer同时估计深度 `📅unknown` `[entity_page]`
+- [LingBot-Video](wiki/entities/cn-os-lingbot-video.md) — LingBot-Video** 是 蚂蚁灵波 公开的 **世界模型** 开源项目：稠密与MoE视频模型从文本或图像条件生成未来视频，并 `📅unknown` `[entity_page]`
+- [LingBot-Vision](wiki/entities/cn-os-lingbot-vision.md) — LingBot-Vision** 是 蚂蚁灵波 公开的 **评测** 开源项目：以面向几何和密集预测的自监督目标训练视觉编码器，使同一 `📅unknown` `[entity_page]`
+- [linkerhand-python-sdk](wiki/entities/cn-os-linkerhand-python-sdk.md) — linkerhand-python-sdk** 是 灵心巧手 公开的 **SDK/驱动** 开源项目：提供LinkerHand的P `📅unknown` `[entity_page]`
+- [linkerhand-sim](wiki/entities/cn-os-linkerhand-sim.md) — linkerhand-sim** 是 灵心巧手 公开的 **移动操作** 开源项目：提供LinkerHand仿真环境，用于抓取、控 `📅unknown` `[entity_page]`
+- [linkerhand-urdf](wiki/entities/cn-os-linkerhand-urdf.md) — linkerhand-urdf** 是 灵心巧手 公开的 **本体模型资产** 开源项目：提供LinkerHand多款灵巧手URD `📅unknown` `[entity_page]`
+- [Lite3_Navigation](wiki/entities/cn-os-lite3-navigation.md) — Lite3_Navigation** 是 云深处科技 公开的 **工程与工具** 开源项目：感知/定位/建图模块：为导航 `📅unknown` `[entity_page]`
+- [Lite3 RL Deploy](wiki/entities/cn-os-lite3-rl-deploy.md) — Lite3 RL Deploy** 是 云深处科技 公开的 **仿真环境** 开源项目：把训练得到的PyTorch策略转 `📅unknown` `[entity_page]`
+- [Lite3_SLAM](wiki/entities/cn-os-lite3-slam.md) — Lite3_SLAM** 是 云深处科技 公开的 **感知/导航** 开源项目：感知/定位/建图模块：为导航与控制提供环 `📅unknown` `[entity_page]`
+- [livelybot_pi_rl_baseline](wiki/entities/cn-os-livelybot-pi-rl-baseline.md) — livelybot_pi_rl_baseline** 是 高擎机电 公开的 **运动RL/技能训练** 开源项目 `📅unknown` `[entity_page]`
+- [LoongForge](wiki/entities/cn-os-loongforge.md) — LoongForge** 是 百度智能云 公开的 **数据采集/工具** 开源项目：以Megatron-LM为基础统一模型组网、 `📅unknown` `[entity_page]`
+- [LoongMarathonNav](wiki/entities/cn-os-loongmarathonnav.md) — LoongMarathonNav** 是 上海人形机器人创新中心 公开的 **工程与工具** 开源项目：融合RTK、惯导、视觉和激光 `📅unknown` `[entity_page]`
+- [lumos_sdk](wiki/entities/cn-os-lumos-sdk.md) — lumos_sdk** 是 鹿明机器人 公开的 **SDK/驱动** 开源项目：提供鹿明机器人C++集成接口，使状态、设备与控制功 `📅unknown` `[entity_page]`
+- [LW-BenchHub](wiki/entities/cn-os-lw-benchhub.md) — LW-BenchHub** 是 光轮智能 公开的 **评测** 开源项目：基于Isaac Lab Arena统一任务、机器人和 `📅unknown` `[entity_page]`
+- [LW-Egosuite-DevKit](wiki/entities/cn-os-lw-egosuite-devkit.md) — LW-Egosuite-DevKit** 是 光轮智能 公开的 **数据集/Benchmark** 开源项目：转换并可视化人类 `📅unknown` `[entity_page]`
+- [magicbot-gen1_pi0_demo](wiki/entities/cn-os-magicbot-gen1-pi0-demo.md) — magicbot-gen1_pi0_demo** 是 魔法原子 公开的 **VLA/操作模型** 开源项目：展示pi0 `📅unknown` `[entity_page]`
+- [magicbot-mimic](wiki/entities/cn-os-magicbot-mimic.md) — magicbot-mimic** 是 魔法原子 公开的 **全身动作跟踪/技能训练** 开源项目：面向MagicBot `📅unknown` `[entity_page]`
+- [magiclab_deploy](wiki/entities/cn-os-magiclab-deploy.md) — magiclab_deploy** 是 魔法原子 公开的 **运动RL/技能训练** 开源项目：提供魔法原子运动策略的 `📅unknown` `[entity_page]`
+- [Magiclab_GMR](wiki/entities/cn-os-magiclab-gmr.md) — Magiclab_GMR** 是 魔法原子 公开的 **动作重定向** 开源项目：把人体或其他动作源重定向到Magic `📅unknown` `[entity_page]`
+- [magiclab_rl_lab](wiki/entities/cn-os-magiclab-rl-lab.md) — magiclab_rl_lab** 是 魔法原子 公开的 **运动RL/技能训练** 开源项目：为魔法原子机器人提供基 `📅unknown` `[entity_page]`
+- [mechanical_arm_5_0_python](wiki/entities/cn-os-mechanical-arm-5-0-python.md) — mechanical_arm_5_0_python** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：钛虎机械臂 5.0 P `📅unknown` `[entity_page]`
+- [mechanical_arm_5_0_SDK](wiki/entities/cn-os-mechanical-arm-5-0-sdk.md) — mechanical_arm_5_0_SDK** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：钛虎机械臂 5.0 控制 S `📅unknown` `[entity_page]`
+- [mecheye_python_samples](wiki/entities/cn-os-mecheye-python-samples.md) — mecheye_python_samples** 是 梅卡曼德 公开的 **数据采集/工具** 开源项目：提供Mech `📅unknown` `[entity_page]`
+- [mecheye_ros2_interface](wiki/entities/cn-os-mecheye-ros2-interface.md) — mecheye_ros2_interface** 是 梅卡曼德 公开的 **工程与工具** 开源项目：为Mech-Ey `📅unknown` `[entity_page]`
+- [Mini Pi Plus AMP](wiki/entities/cn-os-mini-pi-plus-amp.md) — Mini Pi Plus AMP** 是 高擎机电 公开的 **运动RL/技能训练** 开源项目：高擎官方仓库提 `📅unknown` `[entity_page]`
+- [Mini-Pi-Plus_BeyondMimic](wiki/entities/cn-os-mini-pi-plus-beyondmimic.md) — Mini-Pi-Plus_BeyondMimic** 是 高擎机电 公开的 **全身动作跟踪/技能训练** 开源 `📅unknown` `[entity_page]`
+- [Mini-Pi-Plus_PBHC](wiki/entities/cn-os-mini-pi-plus-pbhc.md) — Mini-Pi-Plus_PBHC** 是 高擎机电 公开的 **全身动作跟踪/技能训练** 开源项目：全身动作 `📅unknown` `[entity_page]`
+- [MiniCPM-Robot](wiki/entities/cn-os-minicpm-robot.md) — MiniCPM-Robot** 是 面壁智能 公开的 **具身Agent/规划** 开源项目：将小型多模态模型用于机器人视觉跟踪、目标理 `📅unknown` `[entity_page]`
+- [mobile_aloha_sim](wiki/entities/cn-os-mobile-aloha-sim.md) — mobile_aloha_sim** 是 松灵机器人 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联调、策 `📅unknown` `[entity_page]`
+- [models](wiki/entities/cn-os-models.md) — models** 是 星动纪元 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/USD），供仿真、训练 `📅unknown` `[entity_page]`
+- [motor-sdk](wiki/entities/cn-os-motor-sdk.md) — motor-sdk** 是 达妙科技 公开的 **SDK/驱动** 开源项目：提供达妙电机设备控制与通信示例，服务关节执行器调试和机器人底 `📅unknown` `[entity_page]`
+- [MotuBrain](wiki/entities/cn-os-motubrain.md) — MotuBrain** 是 生数科技 公开的 **世界模型** 开源项目：MotuBrain把视频、动作和语言统一建模，并面向多本体适配、 `📅unknown` `[entity_page]`
+- [multiMotorTCPAPI](wiki/entities/cn-os-multimotortcpapi.md) — multiMotorTCPAPI** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：多电机 TCP 控制 API `📅unknown` `[entity_page]`
+- [mycobot_ros](wiki/entities/cn-os-mycobot-ros.md) — mycobot_ros** 是 大象机器人 公开的 **仿真环境** 开源项目：为myCobot系列提供ROS模型、驱 `📅unknown` `[entity_page]`
+- [mycobot_ros2](wiki/entities/cn-os-mycobot-ros2.md) — mycobot_ros2** 是 大象机器人 公开的 **仿真环境** 开源项目：为myCobot及相关机器人提供RO `📅unknown` `[entity_page]`
+- [noetix_e1_lab](wiki/entities/cn-os-noetix-e1-lab.md) — noetix_e1_lab** 是 松延动力 公开的 **运动RL/技能训练** 开源项目：为E1人形机器人提供Isaa `📅unknown` `[entity_page]`
+- [noetix_n2_gym](wiki/entities/cn-os-noetix-n2-gym.md) — noetix_n2_gym** 是 松延动力 公开的 **运动RL/技能训练** 开源项目：为N2人形机器人提供Isaa `📅unknown` `[entity_page]`
+- [noetix_sdk_bumi](wiki/entities/cn-os-noetix-sdk-bumi.md) — noetix_sdk_bumi** 是 松延动力 公开的 **SDK/驱动** 开源项目：通过DDS提供Bumi机器人的 `📅unknown` `[entity_page]`
+- [noetix_sdk_e1](wiki/entities/cn-os-noetix-sdk-e1.md) — noetix_sdk_e1** 是 松延动力 公开的 **SDK/驱动** 开源项目：提供E1人形机器人控制与状态接口， `📅unknown` `[entity_page]`
+- [noetix_sdk_n2](wiki/entities/cn-os-noetix-sdk-n2.md) — noetix_sdk_n2** 是 松延动力 公开的 **SDK/驱动** 开源项目：提供N2人形机器人状态读取与控制接 `📅unknown` `[entity_page]`
+- [oglove_ros2_pkg](wiki/entities/cn-os-oglove-ros2-pkg.md) — oglove_ros2_pkg** 是 傲意科技 公开的 **SDK/驱动** 开源项目：OGlove 手势数据手套 ROS2 包 `📅unknown` `[entity_page]`
+- [OmniNav](wiki/entities/cn-os-omninav.md) — OmniNav** 是 阿里巴巴 公开的 **感知/导航** 开源项目：统一前瞻探索与视觉语言导航框架 `📅unknown` `[entity_page]`
+- [Open-AoE](wiki/entities/cn-os-open-aoe.md) — Open-AoE** 是 蚂蚁集团 公开的 **数据集/Benchmark** 开源项目：把消费级手机视频接到数据质检、相机与 `📅unknown` `[entity_page]`
+- [open-dog](wiki/entities/cn-os-open-dog.md) — open-dog** 是 达妙科技 公开的 **工程与工具** 开源项目：公开达妙OpenDog01四足机器人资料，连接关节电机、机械结构 `📅unknown` `[entity_page]`
+- [Open-Robot-Descriptions](wiki/entities/cn-os-open-robot-descriptions.md) — Open-Robot-Descriptions** 是 玄雅科技 公开的 **本体模型资产** 开源项目：开源机器人模型 `📅unknown` `[entity_page]`
+- [OpenDM](wiki/entities/cn-os-opendm.md) — OpenDM** 是 原力灵机 公开的 **VLA/操作模型** 开源项目：DM0.5根据语言、图像和机器人状态生成动作序列，面向开放指令 `📅unknown` `[entity_page]`
+- [OpenDW](wiki/entities/cn-os-opendw.md) — OpenDW** 是 原力灵机 公开的 **世界模型** 开源项目：DW0.5接收语言、图像或视频、机器人类型、状态和动作，用共享骨干及视 `📅unknown` `[entity_page]`
+- [openpi-agilex](wiki/entities/cn-os-openpi-agilex.md) — openpi-agilex** 是 松灵机器人 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作 `📅unknown` `[entity_page]`
+- [OpenWBT](wiki/entities/cn-os-openwbt.md) — OpenWBT** 是 银河通用 公开的 **具身Agent/规划** 开源项目：头显和手柄提供视角、手部目 `📅unknown` `[entity_page]`
+- [OrbbecSDK_ROS2](wiki/entities/cn-os-orbbecsdk-ros2.md) — OrbbecSDK_ROS2** 是 奥比中光 公开的 **SDK/驱动** 开源项目：把奥比中光相机接入ROS2，发布图像、深度和相机参 `📅unknown` `[entity_page]`
+- [OrbbecSDK_v2](wiki/entities/cn-os-orbbecsdk-v2.md) — OrbbecSDK_v2** 是 奥比中光 公开的 **SDK/驱动** 开源项目：提供奥比中光RGB-D相机底层SDK，为机器人感知、标 `📅unknown` `[entity_page]`
+- [Panthera-HT_Main](wiki/entities/cn-os-panthera-ht-main.md) — Panthera-HT_Main** 是 高擎机电 公开的 **本体模型资产** 开源项目：官方本体模型资产（U `📅unknown` `[entity_page]`
+- [Panthera-HT_ROS2](wiki/entities/cn-os-panthera-ht-ros2.md) — Panthera-HT_ROS2** 是 高擎机电 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控 `📅unknown` `[entity_page]`
+- [Panthera-HT_SDK](wiki/entities/cn-os-panthera-ht-sdk.md) — Panthera-HT_SDK** 是 高擎机电 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制 `📅unknown` `[entity_page]`
+- [Pelican-VL](wiki/entities/cn-os-pelican-vl.md) — Pelican-VL** 是 北京人形机器人创新中心 公开的 **具身Agent/规划** 开源项目：Pelican-V `📅unknown` `[entity_page]`
+- [Pelican-VLA 0.5](wiki/entities/cn-os-pelican-vla-0-5.md) — Pelican-VLA 0.5** 是 北京人形机器人创新中心 公开的 **VLA/操作模型** 开源项目：共享Qwen `📅unknown` `[entity_page]`
+- [pika_ros](wiki/entities/cn-os-pika-ros.md) — pika_ros** 是 松灵机器人 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机 `📅unknown` `[entity_page]`
+- [pika_sdk](wiki/entities/cn-os-pika-sdk.md) — pika_sdk** 是 松灵机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
+- [PikaAnyArm](wiki/entities/cn-os-pikaanyarm.md) — PikaAnyArm** 是 松灵机器人 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射 `📅unknown` `[entity_page]`
+- [px_omnisharing_dataprocess_kit](wiki/entities/cn-os-px-omnisharing-dataprocess-kit.md) — px_omnisharing_dataprocess_kit** 是 帕西尼感知科技 公开的 **数据集/Bench `📅unknown` `[entity_page]`
+- [pymycobot](wiki/entities/cn-os-pymycobot.md) — pymycobot** 是 大象机器人 公开的 **工程与工具** 开源项目：提供大象机器人多类机械臂和双臂产品的统一 `📅unknown` `[entity_page]`
+- [pyorbbecsdk](wiki/entities/cn-os-pyorbbecsdk.md) — pyorbbecsdk** 是 奥比中光 公开的 **SDK/驱动** 开源项目：提供OrbbecSDK的Python绑定，便于快速构建深 `📅unknown` `[entity_page]`
+- [rdk_model_zoo](wiki/entities/cn-os-rdk-model-zoo.md) — rdk_model_zoo** 是 地瓜机器人 公开的 **SDK/驱动** 开源项目：提供在RDK平台部署的模型示例与转换入口， `📅unknown` `[entity_page]`
+- [Rethink_VLA](wiki/entities/cn-os-rethink-vla.md) — Rethink_VLA** 是 智在无界 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本体执 `📅unknown` `[entity_page]`
+- [RightArmMotionSolver](wiki/entities/cn-os-rightarmmotionsolver.md) — RightArmMotionSolver** 是 钛虎机器人 公开的 **工程与工具** 开源项目：人形右手运动学解算器 `📅unknown` `[entity_page]`
+- [RLPF](wiki/entities/cn-os-rlpf.md) — RLPF** 是 智在无界 公开的 **全身动作跟踪/技能训练** 开源项目：全身动作跟踪策略（带仿真/真机验证） `📅unknown` `[entity_page]`
+- [RM_API2](wiki/entities/cn-os-rm-api2.md) — RM_API2** 是 睿尔曼智能 公开的 **SDK/驱动** 开源项目：提供睿尔曼机器人新一代控制API，使上层应用读取状 `📅unknown` `[entity_page]`
+- [roban_model_and_sim](wiki/entities/cn-os-roban-model-and-sim.md) — roban_model_and_sim** 是 乐聚机器人 公开的 **本体模型资产** 开源项目：官方仿真环境与模型接入：联 `📅unknown` `[entity_page]`
+- [Robo-ValueRL](wiki/entities/cn-os-robo-valuerl.md) — Robo-ValueRL** 是 北京人形机器人创新中心 公开的 **评测** 开源项目：评测基准与工具 `📅unknown` `[entity_page]`
+- [RoboCore](wiki/entities/cn-os-robocore.md) — RoboCore** 是 玄雅科技 公开的 **工程与工具** 开源项目：Synria 统一高吞吐机器人开发库 `📅unknown` `[entity_page]`
+- [robocup_demo](wiki/entities/cn-os-robocup-demo.md) — robocup_demo** 是 加速进化 公开的 **具身Agent/规划** 开源项目：具身 Agent：任务规划与 `📅unknown` `[entity_page]`
+- [RoboMIND-dataset-utils](wiki/entities/cn-os-robomind-dataset-utils.md) — RoboMIND-dataset-utils** 是 北京人形机器人创新中心 公开的 **数据集/Benchmark `📅unknown` `[entity_page]`
+- [RoboMIND-Sim](wiki/entities/cn-os-robomind-sim.md) — RoboMIND-Sim** 是 北京人形机器人创新中心 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联 `📅unknown` `[entity_page]`
+- [RoboOrchardCore](wiki/entities/cn-os-roboorchardcore.md) — RoboOrchardCore** 是 地平线 公开的 **数据采集/工具** 开源项目：用类型化配置和批量张量容器统一 `📅unknown` `[entity_page]`
+- [RoboOrchardHardware](wiki/entities/cn-os-roboorchardhardware.md) — RoboOrchardHardware** 是 地平线 公开的 **本体模型资产** 开源项目：官方本体模型资产（URD `📅unknown` `[entity_page]`
+- [RoboOrchardSim](wiki/entities/cn-os-roboorchardsim.md) — RoboOrchardSim** 是 地平线 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联调、策略回放 `📅unknown` `[entity_page]`
+- [RoboSplatter](wiki/entities/cn-os-robosplatter.md) — RoboSplatter** 是 地平线 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联调、策略回放与  `📅unknown` `[entity_page]`
+- [robot_dev_config](wiki/entities/cn-os-robot-dev-config.md) — robot_dev_config** 是 地瓜机器人 公开的 **工程与工具** 开源项目：作为TogetheROS.Bot开发入 `📅unknown` `[entity_page]`
+- [Robot_Training_Cases](wiki/entities/cn-os-robot-training-cases.md) — Robot_Training_Cases** 是 云深处科技 公开的 **运动RL/技能训练** 开源项目：并行 RL  `📅unknown` `[entity_page]`
+- [robot_urdf](wiki/entities/cn-os-robot-urdf.md) — robot_urdf** 是 高擎机电 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJ `📅unknown` `[entity_page]`
+- [robotera_vla](wiki/entities/cn-os-robotera-vla.md) — robotera_vla** 是 星动纪元 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本体执行 `📅unknown` `[entity_page]`
+- [RoboticArm-3DVisionGrab](wiki/entities/cn-os-roboticarm-3dvisiongrab.md) — RoboticArm-3DVisionGrab** 是 钛虎机器人 公开的 **工程与工具** 开源项目：机械臂 3D 视觉抓取示例 `📅unknown` `[entity_page]`
+- [RoboTransfer](wiki/entities/cn-os-robotransfer.md) — RoboTransfer** 是 地平线 公开的 **世界模型** 开源项目：世界模型/预测模型：按条件生成未来状态，服 `📅unknown` `[entity_page]`
+- [roh_demos](wiki/entities/cn-os-roh-demos.md) — roh_demos** 是 傲意科技 公开的 **工程与工具** 开源项目：ROHand 灵巧手演示工程 `📅unknown` `[entity_page]`
+- [roh_gen2_firmware](wiki/entities/cn-os-roh-gen2-firmware.md) — roh_gen2_firmware** 是 傲意科技 公开的 **工程与工具** 开源项目：ROHand Gen2 固件与文档 `📅unknown` `[entity_page]`
+- [rohand_gen2_urdf_ros2](wiki/entities/cn-os-rohand-gen2-urdf-ros2.md) — rohand_gen2_urdf_ros2** 是 傲意科技 公开的 **本体模型资产** 开源项目：ROHand Gen2 灵巧手  `📅unknown` `[entity_page]`
+- [rohand_ros_pkg](wiki/entities/cn-os-rohand-ros-pkg.md) — rohand_ros_pkg** 是 傲意科技 公开的 **SDK/驱动** 开源项目：ROHand 仿生灵巧手 ROS 包 `📅unknown` `[entity_page]`
+- [rohand_ros2_pkg](wiki/entities/cn-os-rohand-ros2-pkg.md) — rohand_ros2_pkg** 是 傲意科技 公开的 **SDK/驱动** 开源项目：ROHand 仿生灵巧手 ROS2 包 `📅unknown` `[entity_page]`
+- [ros_gforce](wiki/entities/cn-os-ros-gforce.md) — ros_gforce** 是 傲意科技 公开的 **SDK/驱动** 开源项目：gForce Pro 肌电臂环 ROS 驱动 `📅unknown` `[entity_page]`
+- [ros2_rm_robot](wiki/entities/cn-os-ros2-rm-robot.md) — ros2_rm_robot** 是 睿尔曼智能 公开的 **工程与工具** 开源项目：提供睿尔曼机械臂ROS2驱动与消息接口， `📅unknown` `[entity_page]`
+- [ros2_sdk](wiki/entities/cn-os-ros2-sdk.md) — ros2_sdk** 是 星动纪元 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
+- [ROS2Ti5DualArmManipulation](wiki/entities/cn-os-ros2ti5dualarmmanipulation.md) — ROS2Ti5DualArmManipulation** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：人形双臂操作 ROS `📅unknown` `[entity_page]`
+- [rpo_hardware](wiki/entities/cn-os-rpo-hardware.md) — rpo_hardware** 是 萝卜派对（RoboParty） 公开的 **硬件开源** 开源项目：RPO 人形硬件设计文件：机械 `📅unknown` `[entity_page]`
+- [rs_driver](wiki/entities/cn-os-rs-driver.md) — rs_driver** 是 速腾聚创 公开的 **SDK/驱动** 开源项目：提供跨平台雷达驱动内核，为上层ROS或自定 `📅unknown` `[entity_page]`
+- [rslidar_sdk](wiki/entities/cn-os-rslidar-sdk.md) — rslidar_sdk** 是 速腾聚创 公开的 **SDK/驱动** 开源项目：提供速腾聚创激光雷达ROS与ROS2  `📅unknown` `[entity_page]`
+- [RTR](wiki/entities/cn-os-rtr.md) — RTR** 是 它石智航 公开的 **VLA/操作模型** 开源项目：在连续潜空间学习高频动作块，并以Reuse-then- `📅unknown` `[entity_page]`
+- [RxBrain-1.0](wiki/entities/cn-os-rxbrain-1-0.md) — RxBrain-1.0** 是 腾讯机器人实验室 公开的 **具身Agent/规划** 开源项目：视觉与语言输入形成场景 `📅unknown` `[entity_page]`
+- [RynnBrain](wiki/entities/cn-os-rynnbrain.md) — RynnBrain** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：视觉和语言输入先形成场景与任务表示，再输出任 `📅unknown` `[entity_page]`
+- [RynnEC](wiki/entities/cn-os-rynnec.md) — RynnEC** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：项目研究机器人怎样从多模态观测形成环境理解、任务分 `📅unknown` `[entity_page]`
+- [RynnValue](wiki/entities/cn-os-rynnvalue.md) — RynnValue** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：模型对候选动作或执行轨迹进行价值判断，为策略 `📅unknown` `[entity_page]`
+- [RynnVLA-001](wiki/entities/cn-os-rynnvla-001.md) — RynnVLA-001** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：把语言任务、视觉观测和机器人状态映射为动作序 `📅unknown` `[entity_page]`
+- [RynnVLA-002](wiki/entities/cn-os-rynnvla-002.md) — RynnVLA-002** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：RynnVLA-002在视觉、语言和机器人状 `📅unknown` `[entity_page]`
+- [RynnWorld-4D](wiki/entities/cn-os-rynnworld-4d.md) — RynnWorld-4D** 是 阿里巴巴 公开的 **世界模型** 开源项目：模型联合表达三维空间结构和时间演化，用于预测机器人 `📅unknown` `[entity_page]`
+- [sdk_deploy](wiki/entities/cn-os-sdk-deploy.md) — sdk_deploy** 是 云深处科技 公开的 **SDK/驱动** 开源项目：策略部署运行时：加载训练策略、下发关节 `📅unknown` `[entity_page]`
+- [SeerSdk4j](wiki/entities/cn-os-seersdk4j.md) — SeerSdk4j** 是 仙工智能 公开的 **SDK/驱动** 开源项目：为仙工智能移动机器人控制器提供Java TCP `📅unknown` `[entity_page]`
+- [SeerTCPTest](wiki/entities/cn-os-seertcptest.md) — SeerTCPTest** 是 仙工智能 公开的 **工程与工具** 开源项目：提供Robokit NetProtocol  `📅unknown` `[entity_page]`
+- [sim2real](wiki/entities/cn-os-sim2real.md) — sim2real** 是 高擎机电 公开的 **仿真环境** 开源项目：策略部署运行时：加载训练策略、下发关节命 `📅unknown` `[entity_page]`
+- [SimArt](wiki/entities/cn-os-simart.md) — SimArt** 是 字节跳动机器人团队 公开的 **仿真环境** 开源项目：使用多模态模型把整体网格分解为可用于仿真的关 `📅unknown` `[entity_page]`
+- [SpatialLM](wiki/entities/cn-os-spatiallm.md) — SpatialLM** 是 群核科技 公开的 **世界模型** 开源项目：空间智能大模型（NeurIPS 2025） `📅unknown` `[entity_page]`
+- [Spirit-v1.5](wiki/entities/cn-os-spirit-v1-5.md) — Spirit-v1.5** 是 千寻智能 公开的 **VLA/操作模型** 开源项目：模型根据视觉、语言和机器人状态生成操 `📅unknown` `[entity_page]`
+- [TacCap-Gripper](wiki/entities/cn-os-taccap-gripper.md) — TacCap-Gripper** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：TacCap 多模态触觉数据 `📅unknown` `[entity_page]`
+- [teleop_client](wiki/entities/cn-os-teleop-client.md) — teleop_client** 是 星动纪元 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机器 `📅unknown` `[entity_page]`
+- [teleoperation](wiki/entities/cn-os-teleoperation.md) — teleoperation** 是 傅利叶智能 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机器人动作 `📅unknown` `[entity_page]`
+- [Ti5HandROS1SDK](wiki/entities/cn-os-ti5handros1sdk.md) — Ti5HandROS1SDK** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：钛虎五指灵巧手 ROS1 SDK `📅unknown` `[entity_page]`
+- [tron1-agent](wiki/entities/cn-os-tron1-agent.md) — tron1-agent** 是 逐际动力 公开的 **具身Agent/规划** 开源项目：具身 Agent：任务规划与技能调度 `📅unknown` `[entity_page]`
+- [TRON1 RL Deploy ROS2](wiki/entities/cn-os-tron1-rl-deploy-ros2.md) — TRON1 RL Deploy ROS2** 是 逐际动力 公开的 **仿真环境** 开源项目：ROS 2控制器加载训练导出的 `📅unknown` `[entity_page]`
+- [tron1-ss](wiki/entities/cn-os-tron1-ss.md) — tron1-ss** 是 逐际动力 公开的 **工程与工具** 开源项目：感知/定位/建图模块：为导航与控制提供环境状态 `📅unknown` `[entity_page]`
+- [tron2_env](wiki/entities/cn-os-tron2-env.md) — tron2_env** 是 逐际动力 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
+- [tron2_openpi](wiki/entities/cn-os-tron2-openpi.md) — tron2_openpi** 是 逐际动力 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本 `📅unknown` `[entity_page]`
+- [tron2_rl_lab](wiki/entities/cn-os-tron2-rl-lab.md) — tron2_rl_lab** 是 逐际动力 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真任务 `📅unknown` `[entity_page]`
+- [troncamp-mani](wiki/entities/cn-os-troncamp-mani.md) — troncamp-mani** 是 逐际动力 公开的 **具身Agent/规划** 开源项目：移动操作（Loco-Manip） `📅unknown` `[entity_page]`
+- [TTP](wiki/entities/cn-os-ttp.md) — TTP** 是 智在无界 公开的 **数据集/Benchmark** 开源项目：数据采集/转换工具：同步记录并可转入 LeRob `📅unknown` `[entity_page]`
+- [uf-gym](wiki/entities/cn-os-uf-gym.md) — uf-gym** 是 众为创造 公开的 **运动RL/技能训练** 开源项目：在panda-gym基础上加入UFACTOR `📅unknown` `[entity_page]`
+- [umi-dex](wiki/entities/cn-os-umi-dex.md) — umi-dex** 是 灵心巧手 公开的 **数据集/Benchmark** 开源项目：面向灵巧手操作采集高质量示范数据，连接人类 `📅unknown` `[entity_page]`
+- [UniArmL1](wiki/entities/cn-os-uniarml1.md) — UniArmL1** 是 宇树科技 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机 `📅unknown` `[entity_page]`
+- [UniTacHand](wiki/entities/cn-os-unitachand.md) — UniTacHand** 是 智在无界 公开的 **具身Agent/规划** 开源项目：移动操作（Loco-Manip）策略接入 `📅unknown` `[entity_page]`
+- [UrbanVLA](wiki/entities/cn-os-urbanvla.md) — UrbanVLA** 是 银河通用 公开的 **VLA/操作模型** 开源项目：将第一视角视觉、语言指令与机 `📅unknown` `[entity_page]`
+- [video-prediction-policy](wiki/entities/cn-os-video-prediction-policy.md) — video-prediction-policy** 是 星动纪元 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型 `📅unknown` `[entity_page]`
+- [VideoWorld](wiki/entities/cn-os-videoworld.md) — VideoWorld** 是 字节跳动机器人团队 公开的 **世界模型** 开源项目：从无标注视频学习潜在动态和行为表示， `📅unknown` `[entity_page]`
+- [VIPA-VLA](wiki/entities/cn-os-vipa-vla.md) — VIPA-VLA** 是 智在无界 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本体执行 `📅unknown` `[entity_page]`
+- [Walker_TienKung_DEX_URDF](wiki/entities/cn-os-walker-tienkung-dex-urdf.md) — Walker_TienKung_DEX_URDF** 是 优必选 公开的 **本体模型资产** 开源项目：官方本体模型资产（U `📅unknown` `[entity_page]`
+- [Walker_TienKung_URDF](wiki/entities/cn-os-walker-tienkung-urdf.md) — Walker_TienKung_URDF** 是 优必选 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/ `📅unknown` `[entity_page]`
+- [WalkerS2-Model](wiki/entities/cn-os-walkers2-model.md) — WalkerS2-Model** 是 优必选 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/U `📅unknown` `[entity_page]`
+- [WALL-WM](wiki/entities/cn-os-wall-wm.md) — WALL-WM** 是 自变量机器人 公开的 **世界模型** 开源项目：联合建模场景视频、机器人状态与动作，预测执行后的 `📅unknown` `[entity_page]`
+- [WALL-X](wiki/entities/cn-os-wall-x.md) — WALL-X** 是 自变量机器人 公开的 **VLA/操作模型** 开源项目：语言、视觉和机器人状态经过统一模型生成操作 `📅unknown` `[entity_page]`
+- [wheel-legged](wiki/entities/cn-os-wheel-legged.md) — wheel-legged** 是 达妙科技 公开的 **工程与工具** 开源项目：提供达妙轮足机器人控制与开发资料，用于平衡、移动和执行器 `📅unknown` `[entity_page]`
+- [wheelDog_RL](wiki/entities/cn-os-wheeldog-rl.md) — wheelDog_RL** 是 仙工智能 公开的 **运动RL/技能训练** 开源项目：仙工智能公开的第一阶段轮足机器人强化 `📅unknown` `[entity_page]`
+- [Wiki-GRx-Deploy](wiki/entities/cn-os-wiki-grx-deploy.md) — Wiki-GRx-Deploy** 是 傅利叶智能 公开的 **部署运行时** 开源项目：策略部署运行时：加载训练策略、下发关节命令 `📅unknown` `[entity_page]`
+- [Wiki-GRx-Gazebo](wiki/entities/cn-os-wiki-grx-gazebo.md) — Wiki-GRx-Gazebo** 是 傅利叶智能 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联调、策略回放与 Sim2S `📅unknown` `[entity_page]`
+- [Wiki-GRx-Gym](wiki/entities/cn-os-wiki-grx-gym.md) — Wiki-GRx-Gym** 是 傅利叶智能 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真任务与策略导出链 `📅unknown` `[entity_page]`
+- [Wiki-GRx-Models](wiki/entities/cn-os-wiki-grx-models.md) — Wiki-GRx-Models** 是 傅利叶智能 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/USD）， `📅unknown` `[entity_page]`
+- [Wiki-GRx-Pipeline](wiki/entities/cn-os-wiki-grx-pipeline.md) — Wiki-GRx-Pipeline** 是 傅利叶智能 公开的 **部署运行时** 开源项目：以模型准备、Isaac Gym训练、MuJoC `📅unknown` `[entity_page]`
+- [World In Your Hands](wiki/entities/cn-os-world-in-your-hands.md) — World In Your Hands** 是 它石智航 公开的 **数据集/Benchmark** 开源项目：采集者穿戴O `📅unknown` `[entity_page]`
+- [wuji-description](wiki/entities/cn-os-wuji-description.md) — wuji-description** 是 舞肌科技 公开的 **本体模型资产** 开源项目：提供Wuji Hand及相关 `📅unknown` `[entity_page]`
+- [wuji-hand-teleop](wiki/entities/cn-os-wuji-hand-teleop.md) — wuji-hand-teleop** 是 舞肌科技 公开的 **遥操作与数据采集** 开源项目：通过ROS2接入多种人体 `📅unknown` `[entity_page]`
+- [wuji-mjlab](wiki/entities/cn-os-wuji-mjlab.md) — wuji-mjlab** 是 舞肌科技 公开的 **移动操作** 开源项目：基于mjlab训练Wuji Hand的手内物 `📅unknown` `[entity_page]`
+- [wuji-openpi](wiki/entities/cn-os-wuji-openpi.md) — wuji-openpi** 是 舞肌科技 公开的 **VLA/操作模型** 开源项目：扩展OpenPI以支持双臂与双Wu `📅unknown` `[entity_page]`
+- [wuji-retargeting](wiki/entities/cn-os-wuji-retargeting.md) — wuji-retargeting** 是 舞肌科技 公开的 **动作重定向** 开源项目：把Vision Pro获得的人 `📅unknown` `[entity_page]`
+- [wuji-sdk](wiki/entities/cn-os-wuji-sdk.md) — wuji-sdk** 是 舞肌科技 公开的 **SDK/驱动** 开源项目：提供Wuji设备发现、实时数据流和记录接口， `📅unknown` `[entity_page]`
+- [wujihandpy](wiki/entities/cn-os-wujihandpy.md) — wujihandpy** 是 舞肌科技 公开的 **工程与工具** 开源项目：以C++核心和Python绑定提供Wuji `📅unknown` `[entity_page]`
+- [wujihandros2](wiki/entities/cn-os-wujihandros2.md) — wujihandros2** 是 舞肌科技 公开的 **工程与工具** 开源项目：为Wuji Hand提供ROS2状态发 `📅unknown` `[entity_page]`
+- [X-Tokenizer](wiki/entities/cn-os-x-tokenizer.md) — X-Tokenizer** 是 自变量机器人 公开的 **VLA/操作模型** 开源项目：把不同机器人或任务的连续动作编码 `📅unknown` `[entity_page]`
+- [x-trainer](wiki/entities/cn-os-x-trainer.md) — x-trainer** 是 越疆科技 公开的 **数据集/Benchmark** 开源项目：为X-Trainer协作机械臂 `📅unknown` `[entity_page]`
+- [X-WAM](wiki/entities/cn-os-x-wam.md) — X-WAM** 是 小米集团 公开的 **世界模型** 开源项目：模型联合学习视频世界变化与机器人动作，在共享表征中支持跨 `📅unknown` `[entity_page]`
+- [xArm-Python-SDK](wiki/entities/cn-os-xarm-python-sdk.md) — xArm-Python-SDK** 是 众为创造 公开的 **SDK/驱动** 开源项目：提供UFACTORY系列机械臂的 `📅unknown` `[entity_page]`
+- [xarm_ros2](wiki/entities/cn-os-xarm-ros2.md) — xarm_ros2** 是 众为创造 公开的 **仿真环境** 开源项目：为xArm、UFACTORY 850和Lite6 `📅unknown` `[entity_page]`
+- [xbot_sdk_api](wiki/entities/cn-os-xbot-sdk-api.md) — xbot_sdk_api** 是 星动纪元 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
+- [xense-mcap-viewer](wiki/entities/cn-os-xense-mcap-viewer.md) — xense-mcap-viewer** 是 千觉机器人 公开的 **工程与工具** 开源项目：触觉数据 MCAP 可视 `📅unknown` `[entity_page]`
+- [xense-openpi](wiki/entities/cn-os-xense-openpi.md) — xense-openpi** 是 千觉机器人 公开的 **工程与工具** 开源项目：触觉数据接入 OpenPI（pi0 `📅unknown` `[entity_page]`
+- [xense-ros](wiki/entities/cn-os-xense-ros.md) — xense-ros** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：Xense 触觉设备 ROS 集成与示 `📅unknown` `[entity_page]`
+- [xensesdk](wiki/entities/cn-os-xensesdk.md) — xensesdk** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：Xense 触觉传感器 Python S `📅unknown` `[entity_page]`
+- [xGMR](wiki/entities/cn-os-xgmr.md) — xGMR** 是 北京人形机器人创新中心 公开的 **动作重定向** 开源项目：动作重定向：人体/MoCap 动作映射为 `📅unknown` `[entity_page]`
+- [XGripper](wiki/entities/cn-os-xgripper.md) — XGripper** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：Xense 数据采集夹爪 SDK `📅unknown` `[entity_page]`
+- [xMimic](wiki/entities/cn-os-xmimic.md) — xMimic** 是 北京人形机器人创新中心 公开的 **全身动作跟踪/技能训练** 开源项目：BVH动作由xGMR重定 `📅unknown` `[entity_page]`
+- [XR-1](wiki/entities/cn-os-xr-1.md) — XR-1** 是 北京人形机器人创新中心 公开的 **VLA/操作模型** 开源项目：三阶段流程先学习统一视觉—运动离散 `📅unknown` `[entity_page]`
 - [Codex Security（OpenAI）](wiki/entities/codex-security.md) — Codex Security**（`@openai/codex-security`  `📅unknown` `[entity_page]`
 - [Coding Interview University](wiki/entities/coding-interview-university.md) — Coding Interview University**（[jwasham/coding-interview-university](https://github.com/jwasham/cod `📅unknown` `[entity_page]`
 - [ComfyUI](wiki/entities/comfyui.md) — ComfyUI**（Comfy-Org/ComfyUI，官网 [comfy.org](https://comfy.o `📅unknown` `[entity_page]`
@@ -3254,6 +3552,7 @@
 - [BFM 分类 03：Intrinsic reward 预训练](wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 04：Adaptation](wiki/overview/bfm-category-04-adaptation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 05：Hierarchical control](wiki/overview/bfm-category-05-hierarchical-control.md) — 语言、VLA、扩散与规划器如何通过**层次接口**（技能 token、latent action、action chunk）调用已训练好的底层身体，并由 WBC / 技能执行器承担关节级闭环？（工程分 `📅unknown` `[overview_page]`
+- [国内具身智能开源全景（76 家 · 424 项）](wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 国内具身开源已从单点仓库扩展为「整机全链路 + 模型大脑 + 灵巧手 + 大厂平台 + 产业链 SDK」五层格局；选型应先定层，再进独立实体页核对训练/部署入口。 `📅unknown` `[overview_page]`
 - [国内具身智能实验室三层地图（2026）](wiki/overview/china-embodied-ai-labs-landscape-2026.md) — 国内具身智能高校实验室可按公开产学研现状粗分为 **技术孵化层（组→公司）、深度合作层（校企联合实验室）、基础研究层（重点科研平台）**——三股力量共同构成从论文到产品、从算法到本体的转化链条；划分边 `📅unknown` `[overview_page]`
 - [CLAP / 跨本体 WM / VLA：9 篇论文的阅读坐标](wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) — 具身系统正从单一动作预测走向可模拟、可流式执行、可诊断并可跨本体迁移的闭环——世界模型扩边界，VLA 修解码与安全，感知层补三维交互与参照系。 `📅unknown` `[overview_page]`
 - [接触–预测–适应：10 篇论文的阅读坐标](wiki/overview/contact-predict-adapt-10-papers-technology-map.md) — 具身智能下一站不是更大的「看懂」，而是接触时能调力、预测时忠实于动作、适应时能带着技能与规范迁移。 `📅unknown` `[overview_page]`

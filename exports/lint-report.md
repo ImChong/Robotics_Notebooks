@@ -132,4 +132,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/nexus-humanoid.md
 
-📊 Sources 覆盖率：3484/3484 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3784/3784 (100%) wiki/entity 页有 ingest 来源

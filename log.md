@@ -1,3 +1,10 @@
+## [2026-09-06] ingest | sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md — 国内 76 家机构 424 项开源全景；126 复用 + 298 新建独立实体节点
+
+- **触发：** 用户 ingest 公众号「国内具身智能的开源全景」；要求每项目独立非重复详情节点；自动合并 PR
+- **开源结论：** 清单为 GitHub/Gitee/HF 公开仓库策展；逐仓以 README 为准
+- **新建：** [五层技术地图](wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md)、[424 项覆盖索引](wiki/queries/china-domestic-opensource-424-coverage.md)、298 个 `cn-os-*` 实体
+- **交叉：** [humanoid-motion-intelligence](wiki/entities/humanoid-motion-intelligence.md)、[hmi-opensource-projects-coverage](wiki/queries/hmi-opensource-projects-coverage.md)
+
 ## [2026-09-06] ingest | sources/papers/adamimic_arxiv_2510_14454.md — AdaMimic ICRA 2026 Oral 全库 ingest；GitHub 已开源 stage1/stage2
 
 ## [2026-09-06] ingest | sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md — 9篇资源汇总；新建 R2S-Eval/RoboTok/EGR 独立节点，6篇复用
