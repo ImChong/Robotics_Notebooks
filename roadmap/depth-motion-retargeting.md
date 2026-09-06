@@ -164,6 +164,7 @@ flowchart LR
 - [CoRe](../wiki/entities/paper-core.md) 与 [RMR](../wiki/entities/paper-rmr.md)（本仓库，Humanoids 2025 / IROS 2025）— CoRe 用"几何映射→接触感知精炼→RL 跟踪"三段分工把脚滑/浮空/过加速当参考层问题处理；RMR 提供"先统一源骨架、再映射"的上游两段式，支撑 RGB 视频实时闭环，其实现并入 CoRe v0.1.0 的 DMR 模块；软件 [core-retarget v0.1.0](../wiki/entities/core-retarget.md) 部分开源（Apache-2.0，重定向+精炼可跑，T2M 与 RL 训练未随仓发布）
 - [OmniRetarget](../wiki/entities/paper-hrl-stack-03-omniretarget.md) 与 [Retargeting Matters](../wiki/entities/paper-hrl-stack-01-retargeting_matters.md)（本仓库）— 交互保留与重定向质量对下游的影响
 - [WARP](../wiki/entities/paper-warp-whole-body-retargeting.md)（本仓库，Georgia Tech）— 闭式 c-SEW + lazy mobile-base，把 Meta Quest 离线人类全身演示转为精确、一致、可开环回放的动作，支撑 RB-Y1 零样本全身移动操作 BC；代码未列
+- [UMR](../wiki/entities/paper-umr-unified-motion-retargeting.md)（本仓库，HKUST-GZ / 诺亦腾 / 汉阳大学）— 把人–机对应从"手写关键点表"改成规范 T-pose 上学到的稠密点云索引对应，同一套点对同时传表面位姿与接触向量，换源换机主要复用对应而非重画映射；LAFAN1 全局体段误差低于 GMR，接触任务关节误差相对 OmniRetarget 约 −40–56%，G1 真机旋踢/捡球/爬楼；代码待发布
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)（本仓库）— 四足支线主入口，见下节
 
 ### 四足支线：动物 / 视频关键点 → 四足参考

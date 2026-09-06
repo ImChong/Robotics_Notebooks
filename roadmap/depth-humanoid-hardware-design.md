@@ -108,6 +108,7 @@ flowchart LR
 - [Hardware 101 · 01：机身与材料](../wiki/overview/humanoid-hardware-101-chassis-materials.md) 与 [Hardware 101 · 03：直线传动与轴承](../wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md)
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) 的 L4 一节（刚度/强度/公差三张判据表）
 - [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 跳跃工况 → 衍生式连杆 → FEA/疲劳/模态/重仿真闭环
+- [机器人结构模态分析](../wiki/concepts/robot-structural-modal-analysis.md) — 固有频率 / 振型 / 阻尼比三件套：串联悬臂构型的低阶模态常落在 10 Hz 量级且随姿态漂移，比静强度更早卡死轨迹精度与力控带宽；试验 FRF 与仿真 MAC 怎么对账、激励–模态频率如何在设计期分离
 - [Actuator 102 · 06：工业执行器陷阱](../wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md) — 货架件按平方律失效的机械原因
 - ISO 1101 / ASME Y14.5（几何公差）、ISO 286 / ISO 2768（配合与未注公差）— [ISO 检索入口](https://www.iso.org/search.html?q=1101)
 
@@ -219,6 +220,7 @@ flowchart LR
 - [系统辨识](../wiki/concepts/system-identification.md) 与 [执行器网络](../wiki/methods/actuator-network.md)、[Implicit/Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) — 把整机实测变成可仿真模型
 - [机器人系统工程纵深](../wiki/overview/hub-systems-engineering.md) — 部署、可观测性与 OTA 的整机侧接口
 - GB/T 43200（机器人一体化关节性能与试验方法）— [一手资料索引](../sources/sites/gbt_43200_2023_robot_joint_performance.md)
+- [人形机器人量产工程能力](../wiki/concepts/humanoid-mass-production-engineering.md) — 验收之后的那一步：三大核心件（谐波 / PRS / 无框力矩电机）工艺定型、良率 S 曲线与 CPK 门槛、供应链一致性与 ISO/IEC 可靠性体系，以及汽车 PPAP、3C MES 的跨行业迁移——样机与资本不等于量产
 
 ### 推荐做什么
 - 写一份 bring-up 检查单并真的照着走一遍，记录每一步的中止判据与实际中止次数

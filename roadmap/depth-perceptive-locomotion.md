@@ -161,6 +161,7 @@ flowchart LR
 - [平滑导航路径生成](../wiki/methods/smooth-navigation-path-generation.md)
 - [Sim2Real](../wiki/concepts/sim2real.md)
 - [Query：locomotion 失效模式](../wiki/queries/locomotion-failure-modes.md)
+- [VB-Com](../wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md)（本仓库，ICRA 2026）— 把"感知失效"写成可切换的控制问题而不是再加训练噪声：只吃历史本体的回报估计器判断高程图还靠不靠谱，不靠谱就把控制权交给已学会接触恢复的盲策略；G1/H1 双机验证高速迎面行人与零高程输入下的降级恢复；项目页 Code coming soon
 
 ### 推荐做什么
 - 把 Stage 3 策略接入一个"目标点 → 路径 → 局部越障"的分层栈，在仿真里跑长距离任务

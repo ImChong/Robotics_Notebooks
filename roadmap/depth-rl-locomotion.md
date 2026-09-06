@@ -110,6 +110,7 @@ flowchart LR
 ### 推荐读什么
 - "Emergence of Locomotion Behaviours in Rich Environments" (Heess et al., 2017)
 - [legged_gym](../wiki/entities/legged-gym.md) 与 [Isaac Lab](../wiki/entities/isaac-lab.md)（本仓库实体页 + 官方代码）
+- [RSL-RL](../wiki/entities/rsl-rl.md)（本仓库，ETH RSL × NVIDIA）— legged_gym / Isaac Lab / mjlab 默认后端的那一份 GPU PPO 实现，PPO 与蒸馏共用同一套 runner 抽象；读它才知道训练脚本里几行 runner 配置到底在做什么，可选 BF16 autocast 单次 update 2.39×、显存 −33%；BSD-3-Clause 已开源
 - [Reward Design](../wiki/concepts/reward-design.md)（本仓库）
 - [Query：locomotion reward 设计指南](../wiki/queries/locomotion-reward-design-guide.md)
 - [Query：Humanoid RL Cookbook](../wiki/queries/humanoid-rl-cookbook.md) — 观测/动作空间、超参与训练技巧速查
