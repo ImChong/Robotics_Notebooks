@@ -6742,6 +6742,7 @@
 
     var _searchIndex = null;
     var _searchIndexPromise = null;
+    var _searchGeneration = 0;
 
     var _communityByPath = null;
     var _communityByPathPromise = null;
@@ -7144,6 +7145,7 @@
     }
 
     function renderSearchResults(query) {
+      var generation = ++_searchGeneration;
       _selectedIndex = -1;
       var q = query.trim();
       var communityVal = communityFilter ? communityFilter.value : '';
@@ -7152,6 +7154,7 @@
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
       Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
         .then(function(results) {
+          if (generation !== _searchGeneration) return;
           var indexData = results[0];
           var communityMap = results[1] || new Map();
           var docs = (indexData && indexData.docs) || [];
@@ -7222,6 +7225,7 @@
           }
         })
         .catch(function() {
+          if (generation !== _searchGeneration) return;
           searchResults.innerHTML = '<div role="status" style="color:var(--text-muted);grid-column:1/-1">'
             + '<p>搜索暂时无法加载，请检查网络后重试。</p>'
             + '<button type="button" class="search-retry">重试搜索</button>'
@@ -7252,6 +7256,8 @@
         }
         if (target) window.location.href = target;
       } else if (ev.key === 'Escape') {
+        clearTimeout(_searchTimer);
+        ++_searchGeneration;
         searchInput.value = '';
         searchResults.innerHTML = '';
         _selectedIndex = -1;
@@ -7268,6 +7274,8 @@
     var _searchTimer;
     searchInput.addEventListener('input', function() {
       clearTimeout(_searchTimer);
+      ++_searchGeneration;
+      if (!searchInput.value.trim()) { triggerSearch(); return; }
       _searchTimer = setTimeout(triggerSearch, 120);
     });
     if (communityFilter) {
