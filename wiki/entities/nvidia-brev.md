@@ -6,6 +6,7 @@ updated: 2026-09-06
 related:
   - ./nvidia-physical-ai-learning.md
   - ./nvidia-getting-started-isaac-lab.md
+  - ./isaac-launchable.md
   - ./compass.md
   - ./isaac-sim.md
   - ./isaac-lab.md
@@ -14,7 +15,8 @@ related:
 sources:
   - ../../sources/sites/nvidia-brev-overview.md
   - ../../sources/repos/brev_cli.md
-summary: "NVIDIA Brev 是跨云商的 GPU 开发平台：预配置驱动/CUDA/Docker/Jupyter 实例、Launchables 一键环境、VS Code SSH 与 brev CLI；COMPASS/Isaac 等 Physical AI 教程的无本地 GPU 入口。"
+  - ../../sources/repos/isaac_launchable.md
+summary: "NVIDIA Brev 是跨云商的 GPU 开发平台：预配置驱动/CUDA/Docker/Jupyter 实例、Launchables 一键环境、VS Code SSH 与 brev CLI；Isaac Launchable / COMPASS 等 Physical AI 教程的无本地 GPU 入口。"
 ---
 
 # NVIDIA Brev
@@ -39,7 +41,7 @@ summary: "NVIDIA Brev 是跨云商的 GPU 开发平台：预配置驱动/CUDA/Do
 
 ## 为什么重要
 
-- **Physical AI 课程默认云入口：** [Physical AI Learning](./nvidia-physical-ai-learning.md)、[Isaac Lab 入门课](./nvidia-getting-started-isaac-lab.md) 在无本地 GPU 时指向 **Brev / Isaac Launchable**。
+- **Physical AI 课程默认云入口：** [Physical AI Learning](./nvidia-physical-ai-learning.md)、[Isaac Lab 入门课](./nvidia-getting-started-isaac-lab.md) 在无本地 GPU 时指向 **[Isaac Launchable](./isaac-launchable.md)**（官方 Brev Launchable 模板）或自建 Brev 实例。
 - **COMPASS 等重栈友好：** [COMPASS](./compass.md) Docker + Isaac Lab 3.0 beta 可在 Brev 大显存实例上跑 smoke test 与残差 RL，避免本机驱动/容器摩擦。
 - **Agent 可编程：** [brev-cli](https://github.com/brevdev/brev-cli) 提供 **`brev agent-skill`**，让编码 agent 用自然语言创建/搜索 GPU 实例。
 
@@ -76,7 +78,7 @@ flowchart TB
 ## 局限与风险
 
 - **云费用与配额：** 大显存实例按小时计费；长时间 COMPASS RL 需设 checkpoint 与停机策略。
-- **Launchable 版本钉扎：** Isaac Launchable 可能钉特定 Lab/Sim 版本，与本地/课程 revision 不一致时需核对 README。
+- **Launchable 版本钉扎：** [Isaac Launchable](./isaac-launchable.md) 当前钉 **Lab 3.0.0-beta2-post1 + Sim 6.0.1**；与课程录制版本不一致时需核对 README。
 - **数据合规：** 机器人数据与 HF token 勿提交到可分享 Launchable 除非明确脱敏。
 - **CLI 与平台分离：** `brev-cli` MIT 开源；Brev 云服务本身为 NVIDIA 商业产品。
 
@@ -84,6 +86,7 @@ flowchart TB
 
 - [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md)
 - [Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md)
+- [Isaac Launchable](./isaac-launchable.md) — 官方 Isaac Lab+Sim 浏览器 Launchable
 - [COMPASS](./compass.md)
 - [Isaac Sim](./isaac-sim.md)
 - [Isaac Lab](./isaac-lab.md)
@@ -93,6 +96,7 @@ flowchart TB
 
 - [Brev 文档 Overview 归档](../../sources/sites/nvidia-brev-overview.md)
 - [brev-cli 仓库归档](../../sources/repos/brev_cli.md)
+- [isaac-launchable 仓库归档](../../sources/repos/isaac_launchable.md)
 
 ## 推荐继续阅读
 
