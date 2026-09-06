@@ -126,6 +126,7 @@ flowchart TB
 - [仿真器选型指南（locomotion）](../queries/simulator-selection-guide.md)
 - [MuJoCo vs Isaac Lab](../comparisons/mujoco-vs-isaac-lab.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [NVIDIA Physical AI 工具链技术地图](./nvidia-physical-ai-toolchain-technology-map.md) — 同一批 Isaac 组件在 NVIDIA 单厂商链路里的分段
 - [Agent Reach](../entities/agent-reach.md) — 本文抓取工具链
 
 ## 参考来源

@@ -341,6 +341,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [UR10e 工业装配 Sim2Real（官方博客）](./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — IndustReal + Isaac ROS + UR 力矩阻抗
 - [Isaac Lab 默认环境](./isaac-lab-default-environments.md) — v3.0.0 全部 197 个注册任务的分族清单与命名法
 - [Isaac Sim](./isaac-sim.md) — 仿真底座（USD / PhysX / 传感器）
+- [NVIDIA Physical AI 工具链技术地图](../overview/nvidia-physical-ai-toolchain-technology-map.md) — Isaac Lab 在端到端七段工作流中的位置
 - [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径
 - [Isaac Teleop](./isaac-teleop.md) — Lab 3.x XR 主线（取代 `openxr` 设备栈）；Televiz + LeRobot + 无标记手重建
 - [Isaac Gym](./isaac-gym.md) — 旧一代独立 GPU RL 前身
