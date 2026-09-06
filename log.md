@@ -1,3 +1,5 @@
+## [2026-09-06] ingest | sources/sites/nvidia-holoscan-sensor-bridge.md — Holoscan Sensor Bridge（产品页+文档 intro+GitHub）；已开源 Apache-2.0；关键页 holoscan-sensor-bridge；交叉 nvidia-jetson
+
 ## [2026-09-06] ingest | sources/sites/jetson-ai-lab.md — Jetson AI Lab 2.0 + JetPack 7.2 / L4T r39.2；教程 hub 已开源协作；关键页 jetson-ai-lab；交叉 nvidia-jetson / jetson-orin-nx
 
 ## [2026-09-06] ingest | sources/repos/ashemag_human_atlas.md — 接入 Human Atlas 3D 解剖浏览器；已开源 MIT+CC BY 4.0；关键页 human-atlas；交叉 humanoid-robot / motion-retargeting

@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-06
 related:
   - ./jetson-ai-lab.md
+  - ./holoscan-sensor-bridge.md
   - ./jetson-orin-nx.md
   - ./isaac-gr00t.md
   - ./isaac-sim.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/sites/jetson-ai-lab.md
   - ../../sources/sites/nvidia-jetpack.md
   - ../../sources/sites/jetson-linux-r392-developer-guide.md
+  - ../../sources/sites/nvidia-holoscan-sensor-bridge.md
 summary: "NVIDIA Jetson 是机器人与边缘 Physical AI 的嵌入式 GPU 计算平台家族：JetPack 软件栈 + Orin/Thor 等模组谱系，承担机载感知、VLA/GR00T 推理与 HIL 目标硬件选型。"
 ---
 
@@ -98,7 +100,7 @@ flowchart TB
 
 | 组件 | 作用 |
 |------|------|
-| **JetPack 7** | Linux **6.8** + **Ubuntu 24.04**；CUDA/cuDNN/**TensorRT**；**vLLM/SGLang/Triton**；preemptable RT、MIG、Holoscan Sensor Bridge |
+| **JetPack 7** | Linux **6.8** + **Ubuntu 24.04**；CUDA/cuDNN/**TensorRT**；**vLLM/SGLang/Triton**；preemptable RT、MIG、[Holoscan Sensor Bridge](./holoscan-sensor-bridge.md) |
 | **JetPack 7.2 agentic** | **NemoClaw** 单命令安装；**Jetson Agent Skills**（Device + BSP）；官方 **Yocto/OE4T** 支持 |
 | **Jetson Linux r39.2** | Developer Guide：DevKit vs 量产模组、SDK Manager 刷机、**Module Adaptation and Bring-Up** |
 | **Jetson AI Lab 2.0** | 分步教程：Getting Started/SSH、GenAI、**GR00T/OpenPi Thor**、Cosmos Reason、优化 workshop（见 [专页](./jetson-ai-lab.md)） |
@@ -129,6 +131,7 @@ flowchart TB
 ## 关联页面
 
 - [Jetson AI Lab](./jetson-ai-lab.md) — LLM/VLM/VLA 官方教程 hub
+- [Holoscan Sensor Bridge](./holoscan-sensor-bridge.md) — Sensor-over-Ethernet 低延迟 GPU 传感器流
 - [Jetson Orin NX](./jetson-orin-nx.md) — 四足/轻量机器人常用模组深读
 - [Isaac GR00T](./isaac-gr00t.md) — Thor 部署叙事与开源 VLA 平台
 - [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)

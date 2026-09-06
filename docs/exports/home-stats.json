@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3817,
-  "edge_count": 33969,
+  "node_count": 3818,
+  "edge_count": 33977,
   "coverage": {
-    "covered": 3790,
-    "total": 3790,
+    "covered": 3791,
+    "total": 3791,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -257,7 +257,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 137
+      "size": 138
     }
   ],
   "top_hubs": [
