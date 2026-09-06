@@ -1,22 +1,23 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3814,
-  "edge_count": 33931,
+  "node_count": 3815,
+  "edge_count": 33943,
   "coverage": {
-    "covered": 3787,
-    "total": 3787,
+    "covered": 3788,
+    "total": 3788,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md",
-      "detail_id": "entity-paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai",
-      "label": "PAI-Bench: A Comprehensive Benchmark For Physical AI",
+      "path": "wiki/entities/cosmos-curator.md",
+      "detail_id": "entity-cosmos-curator",
+      "label": "Cosmos Curator（视频策展）",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/overview/nvidia-physical-ai-toolchain-technology-map.md",
@@ -29,14 +30,14 @@
       "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-merope.md",
-      "detail_id": "entity-paper-merope",
-      "label": "MeRoPE：相机可控视频生成的 Metric 旋转位置编码",
+      "path": "wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md",
+      "detail_id": "entity-paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai",
+      "label": "PAI-Bench: A Comprehensive Benchmark For Physical AI",
       "type": "entity",
       "recency": "2026-09-06",
       "source": "git",
       "action": "added",
-      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/cn-os-a3-a3u-robot-model.md",
@@ -227,39 +228,40 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md",
-    "detail_id": "entity-paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai",
-    "label": "PAI-Bench: A Comprehensive Benchmark For Physical AI",
+    "path": "wiki/entities/cosmos-curator.md",
+    "detail_id": "entity-cosmos-curator",
+    "label": "Cosmos Curator（视频策展）",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 908
+      "size": 922
     },
     {
       "label": "操作",
-      "size": 617
+      "size": 633
     },
     {
       "label": "国内开源全景 424 项本库导读",
-      "size": 320
+      "size": 322
     },
     {
       "label": "视觉-语言-动作",
-      "size": 273
+      "size": 242
     },
     {
       "label": "机器人学习论文笔记",
       "size": 229
     },
     {
-      "label": "移动操作",
-      "size": 130
+      "label": "仿真到现实",
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -298,7 +300,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 835,
+      "degree": 836,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -329,7 +331,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 544,
+      "degree": 545,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

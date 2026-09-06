@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-06
 related:
   - ./cosmos-3.md
   - ./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md
@@ -18,6 +18,7 @@ related:
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./cosmos-transfer.md
   - ./cosmos-cookbook.md
+  - ./cosmos-curator.md
   - ./paper-cosmos-transfer1.md
   - ./nvidia-physical-ai-datasets.md
   - ./nvidia-gtc.md
@@ -30,6 +31,8 @@ sources:
   - ../../sources/papers/cosmos_predict25_arxiv_2511_00062.md
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos-cookbook.md
+  - ../../sources/repos/nvidia_cosmos_curator.md
+  - ../../sources/sites/cosmos-curator-docs.md
   - ../../sources/sites/hf-nvidia-cosmos3-collection.md
   - ../../sources/sites/hf-nvidia-physical-ai-collection.md
   - ../../sources/repos/nvidia_cosmos_transfer1.md
@@ -104,6 +107,7 @@ flowchart TB
 |------|--------|------|
 | 新产品 / 全模态 | [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) cookbook | Diffusers、vLLM-Omni、SGLang、NIM；微调走 cosmos-framework |
 | 训练 / 导出 | [cosmos-framework](https://github.com/NVIDIA/cosmos-framework) | `scripts.train` / `inference`；8×H100 recipe；DCP→safetensors→Diffusers |
+| 视频策展 / WebDataset | [Cosmos Curator](./cosmos-curator.md) | split-annotate / dedup / shard；本地 Docker 或 DGX Cloud LHA |
 | 旧视频 WFM / Transfer | [Cosmos Transfer](./cosmos-transfer.md) 1 / 2.5 仓 | README 已写迁移 Cosmos 3；V2V 配方见 [Cookbook](./cosmos-cookbook.md) |
 | 产品试用 | [nvidia.com/ai/cosmos](https://www.nvidia.com/en-us/ai/cosmos/) | Download Models / hosted catalog / Cookbook |
 | HF 权重 | [Cosmos3 collection](https://huggingface.co/collections/nvidia/cosmos3) | Super / Nano / Edge + Action Viewer；详见 [HF 归档](../../sources/sites/hf-nvidia-cosmos3-collection.md) |
@@ -136,6 +140,7 @@ flowchart TB
 - [Cosmos Transfer](./cosmos-transfer.md) — world-to-world 多控翻译
 - [Cosmos-Transfer1 论文](./paper-cosmos-transfer1.md)
 - [Cosmos Cookbook](./cosmos-cookbook.md) — 2.x 可运行配方
+- [Cosmos Curator](./cosmos-curator.md) — 视频切滤标与 WebDataset
 - [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md) — HF 数据集合索引
 
 ## 参考来源
@@ -148,6 +153,8 @@ flowchart TB
 - [Predict2.5 论文摘录](../../sources/papers/cosmos_predict25_arxiv_2511_00062.md)
 - [Cosmos 3 论文摘录](../../sources/papers/cosmos3_arxiv_2606_02800.md)
 - [Cosmos Cookbook 站点](../../sources/sites/cosmos-cookbook.md)
+- [Cosmos Curator 仓库](../../sources/repos/nvidia_cosmos_curator.md)
+- [Cosmos Curator LHA 文档](../../sources/sites/cosmos-curator-docs.md)
 - [HF Cosmos3 集合](../../sources/sites/hf-nvidia-cosmos3-collection.md)
 - [HF Physical AI 集合](../../sources/sites/hf-nvidia-physical-ai-collection.md)
 - [cosmos-transfer1 仓库](../../sources/repos/nvidia_cosmos_transfer1.md)

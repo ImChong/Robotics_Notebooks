@@ -2,13 +2,14 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, sim2real, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-06
 related:
   - ./nvidia-cosmos.md
   - ./cosmos-transfer.md
   - ./paper-cosmos-transfer1.md
   - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md
   - ./cosmos-3.md
+  - ./cosmos-curator.md
   - ./paper-shenlan-wm-11-cosmos-policy.md
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ../methods/generative-world-models.md
@@ -56,7 +57,7 @@ Cookbook 按 **推理 / 训练 / 策展 / 端到端** 组织，而不是按论�
 | **Predict** | T2I / V2W、领域 LoRA、动作条件模拟器、[Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) |
 | **Transfer** | 多控视频翻译与 Sim2Real 增广，见 [Cosmos Transfer](./cosmos-transfer.md) |
 | **Reason** | Prompt 指南、仓库安全、3D grounding、物理合理性 critic |
-| **Curator** | 切镜、字幕、去重、embedding 轨迹聚类 / 离群 |
+| **Curator** | 切镜、字幕、去重、embedding 轨迹聚类 / 离群；详见 [Cosmos Curator](./cosmos-curator.md) |
 | **RL** | 大规模 SFT / RL 滚动（与 cosmos-framework 分工：后者服务 Cosmos 3） |
 
 ### 流程总览（合成数据主路径）

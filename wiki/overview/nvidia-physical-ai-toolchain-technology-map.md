@@ -11,6 +11,7 @@ related:
   - ../entities/isaac-teleop.md
   - ../entities/nvidia-cosmos.md
   - ../entities/cosmos-transfer.md
+  - ../entities/cosmos-curator.md
   - ../entities/nvidia-nurec.md
   - ../entities/nvidia-omniverse.md
   - ../entities/isaac-ros-nvblox.md
@@ -24,7 +25,7 @@ sources:
   - ../../sources/repos/nvidia_cosmos.md
   - ../../sources/repos/nvidia_cosmos_cookbook.md
   - ../../sources/repos/isaac_ros_nvblox.md
-summary: "把本库已有的 NVIDIA 工具实体页按官方端到端 Physical AI 工作流的七段（采集/生成 → 策展增广评分 → 学习训练 → 微调评测 → SIL → 部署 → 真机）挂到同一张流程图上；同时标出截图里本站尚无独立节点的环节（Cosmos Curator、Arbitrator、MEGA 等）。"
+summary: "把本库已有的 NVIDIA 工具实体页按官方端到端 Physical AI 工作流的七段（采集/生成 → 策展增广评分 → 学习训练 → 微调评测 → SIL → 部署 → 真机）挂到同一张流程图上；同时标出截图里本站尚无独立节点的环节（Arbitrator、Custom Checker、MEGA 等）。"
 ---
 
 # NVIDIA Physical AI 工具链技术地图（汇总节点）
@@ -111,7 +112,7 @@ flowchart LR
 | **① 内容生成** | Content Generation | [NVIDIA Omniverse](../entities/nvidia-omniverse.md)、[Learn OpenUSD](../entities/nvidia-learn-openusd.md)、[OmniGraph](../entities/omnigraph.md) | 场景与资产用 USD 怎么组织 |
 | **① NuRec** | NuRec | [NVIDIA NuRec](../entities/nvidia-nurec.md)、[Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) | 真实现场重建成可仿真体积（real2sim） |
 | **① 仿真与渲染** | Simulation & Rendering | [Isaac Sim](../entities/isaac-sim.md)、[Newton Physics](../entities/newton-physics.md)、[NVIDIA Warp](../entities/nvidia-warp.md) | 物理与 RTX 传感器出合成数据 |
-| **② 策展** | Cosmos Curator / Embeddings & Captioning | [NVIDIA Cosmos](../entities/nvidia-cosmos.md)、[Cosmos Cookbook](../entities/cosmos-cookbook.md) | 海量视频怎么切、滤、打标 |
+| **② 策展** | Cosmos Curator / Embeddings & Captioning | [Cosmos Curator](../entities/cosmos-curator.md)、[NVIDIA Cosmos](../entities/nvidia-cosmos.md)、[Cosmos Cookbook](../entities/cosmos-cookbook.md) | 海量视频怎么切、滤、打标 |
 | **② 增广** | Cosmos Transfer | [Cosmos Transfer](../entities/cosmos-transfer.md)、[Cosmos-Transfer1 论文](../entities/paper-cosmos-transfer1.md) | 同一轨迹换外观/天气/材质扩数据 |
 | **② 评分** | Cosmos Evaluator（Arbitrator / Custom Checker / Cosmos Reason） | [Cosmos 3](../entities/cosmos-3.md)、[Predict2.5 / Transfer2.5 论文](../entities/paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) | 生成数据的拒采与质检 |
 | **② 数据集产出** | Augmented & Graded Dataset | [GR00T-Dreams 合成轨迹](../entities/paper-gr00t-dreams-synthetic-trajectories.md)、[MimicGen](../entities/mimicgen.md) | 合成轨迹如何进入训练集 |
@@ -130,6 +131,7 @@ flowchart LR
 |----------|------|------|
 | 场景与资产 | [Isaac Sim](../entities/isaac-sim.md) | [NuRec](../entities/nvidia-nurec.md)（真实现场重建） |
 | 演示数据 | [Isaac Teleop](../entities/isaac-teleop.md) | [Isaac GR00T](../entities/isaac-gr00t.md) 的 HDF5 → LeRobot 转换 |
+| 原始视频未整理 | [Cosmos Curator](../entities/cosmos-curator.md) | [Cosmos Cookbook](../entities/cosmos-cookbook.md) 的 Curator 配方 |
 | 数据不够多样 | [Cosmos Transfer](../entities/cosmos-transfer.md) | [Cosmos Cookbook](../entities/cosmos-cookbook.md) 的可运行配方 |
 | 训练环境 | [Isaac Lab](../entities/isaac-lab.md) | [Isaac Lab 默认环境](../entities/isaac-lab-default-environments.md) |
 | 评测口径 | [Isaac Lab-Arena](../entities/isaac-lab-arena.md) | [具身模型测评纵深路线](../../roadmap/depth-embodied-eval.md) |
@@ -139,7 +141,7 @@ flowchart LR
 
 - **这是厂商视角的自洽图，不是唯一路径**：第③段可换 [MuJoCo / mjlab](./robot-training-stack-layers-technology-map.md) 系，第②段的生成增广也不是训练的必要条件；按段替换比整链锁定更稳。
 - **截图里的多个节点本站没有独立页**（不为凑图造空壳页）：
-  - **Cosmos Curator**、**Arbitrator**、**Custom Checker** — 目前只在 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)、[Cosmos Cookbook](../entities/cosmos-cookbook.md) 内被提及，未单独升格。
+  - **Arbitrator**、**Custom Checker** — 目前只在 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)、[Cosmos 3](../entities/cosmos-3.md) 内被提及，未单独升格。
   - **MEGA** — 本站无任何页面覆盖；**推测**为 Omniverse 侧的大规模工厂/车队数字孪生蓝图，待查证官方资料后再升格，不要按推测写页。
   - **Isaac ROS 主页** — 本站只有 [Nvblox](../entities/isaac-ros-nvblox.md) 与 [Visual SLAM](../entities/isaac-ros-visual-slam.md) 两个组件页，缺框架总览页。
 - **版本漂移**：[Isaac Gym](../entities/isaac-gym.md) 已 deprecated；Cosmos 1.x/2.x 配方（Cookbook）为有限维护，新工作在 Cosmos 3。读本页表格时以各实体页的版本说明为准。
