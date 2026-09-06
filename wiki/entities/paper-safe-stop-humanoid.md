@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, humanoid, safe-stop, reach-avoid, berkeley, cmu, stanford]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-06
 arxiv: "2609.02358"
 related:
   - ../tasks/humanoid-locomotion.md
   - ../concepts/whole-body-control.md
   - ../overview/open-source-system-reliability-8-papers-technology-map.md
+  - ../overview/embodied-resources-reliability-9-papers-technology-map.md
   - ./paper-wm-loco.md
   - ./paper-focus-foot-observation-confidence.md
   - ./paper-fail-passive-gap.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/papers/safe_stop_humanoid_arxiv_2609_02358.md
   - ../../sources/sites/safestop.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md
 summary: "Safe-Stop（arXiv:2609.02358，Berkeley/CMU/Stanford）：急停建模为 reach-avoid；双 stoppability 估计器 + learned stop policy；仅双估计一致才提交停止，否则 damping fallback；G1 OOD 停止成功 96.4%；代码待发布。2026-09-04 再核项目页仍无 GitHub，不另造详情节点。"
 ---
 
@@ -102,6 +104,7 @@ flowchart TB
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [开源系统可靠性 8 篇地图](../overview/open-source-system-reliability-8-papers-technology-map.md)
+- [具身资源与可靠性 9 篇地图](../overview/embodied-resources-reliability-9-papers-technology-map.md)
 - [WM-LOCO](./paper-wm-loco.md) — 同平台 G1 视觉落脚；不管急停
 - [FOCUS](./paper-focus-foot-observation-confidence.md) — 本体里程计可靠度；平台为 A3 Ultra
 - [Fail-Passive Gap](./paper-fail-passive-gap.md) — 认证层急停与「站住保持平衡」缺口
@@ -112,6 +115,7 @@ flowchart TB
 - [safe_stop_humanoid_arxiv_2609_02358](../../sources/papers/safe_stop_humanoid_arxiv_2609_02358.md)
 - [safestop 项目页](../../sources/sites/safestop.md)
 - [具身智能小站 2026-09-03 八篇盘点](../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md)
+- [具身智能小站 2026-09-06 九篇资源汇总](../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md)
 
 ## 推荐继续阅读
 
