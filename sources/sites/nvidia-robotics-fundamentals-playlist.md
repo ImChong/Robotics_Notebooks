@@ -10,7 +10,7 @@
 - **contentId：** 954362
 - **入库日期：** 2026-09-06
 - **一句话说明：** NVIDIA 机器人入门 **视频/资源播放列表** landing：仿真、ROS、机器人学习基础；链到 Physical AI Learning 门户与 GTC/Cosmos 专题页；**非**可执行课程正文（动手课在 docs.nvidia.com）。
-- **沉淀到 wiki：** 交叉更新 [`wiki/entities/nvidia-physical-ai-learning.md`](../../wiki/entities/nvidia-physical-ai-learning.md)；[`wiki/entities/isaac-launchable.md`](../../wiki/entities/isaac-launchable.md) 作为无本地 GPU 时的 Isaac 栈入口
+- **沉淀到 wiki：** [`wiki/entities/nvidia-gtc.md`](../../wiki/entities/nvidia-gtc.md)；交叉 [`wiki/entities/nvidia-physical-ai-learning.md`](../../wiki/entities/nvidia-physical-ai-learning.md)
 
 ---
 
@@ -36,7 +36,7 @@
 同系列相关 landing（页内链接，非本播放列表全部内容）：
 
 - `robotics-2`、`sensor-simulation`
-- GTC 会话：`gtc25-s72431`、`gtc25-s72857`、`gtc26-s81479`、`gtc26-s81488`
+- GTC 会话：`gtc25-s72431`、`gtc25-s72857`、`gtc26-s81479`、`gtc26-s81488`（完整索引见 [`nvidia-gtc`](../../wiki/entities/nvidia-gtc.md)）
 
 ## 与 Physical AI Learning 的分工
 
@@ -49,5 +49,6 @@
 ## 对 wiki 的映射
 
 - 门户选型 → [`wiki/entities/nvidia-physical-ai-learning.md`](../../wiki/entities/nvidia-physical-ai-learning.md)
+- GTC On-Demand → [`wiki/entities/nvidia-gtc.md`](../../wiki/entities/nvidia-gtc.md)
 - Isaac 云环境 → [`wiki/entities/isaac-launchable.md`](../../wiki/entities/isaac-launchable.md)、[`wiki/entities/nvidia-brev.md`](../../wiki/entities/nvidia-brev.md)
 - 仿真底座 → [`wiki/entities/isaac-sim.md`](../../wiki/entities/isaac-sim.md)、[`wiki/entities/isaac-lab.md`](../../wiki/entities/isaac-lab.md)

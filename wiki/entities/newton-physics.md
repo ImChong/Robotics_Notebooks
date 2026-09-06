@@ -20,6 +20,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
   - ./omnisim.md
+  - ./nvidia-gtc.md
 sources:
   - ../../sources/repos/newton-physics.md
   - ../../sources/sites/newton-solvers-catalog.md
