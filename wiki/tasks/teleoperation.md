@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-09-05
+updated: 2026-09-06
 sources:
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
@@ -139,6 +139,7 @@ sources:
 | TeleGate（USTC / AnyWit 2026） | Unitree G1 | **惯性动捕** 全身关节跟踪 | **2.5 h** 自采六类 | **门控选冻结专家** + VAE 历史→未来先验；避免蒸馏统一策略；跑跳/跌倒恢复；见 [论文实体](../entities/paper-telegate.md) |
 | HEFT（清华 / RobotEra 2026） | Unitree G1 + **L7**（175 cm 全尺寸） | **VR 全身参考**（部署吃 raw 流） | PMG 配对 VR + SEED 等 | **PMG** 噪声 VR 跟踪 + **WPC** 窗化双手负载；L7 **24 kg** 重载遥操作 + 高动态跟踪；见 [论文实体](../entities/paper-heft.md) |
 | **Teleopit**（西湖 / 上海创智 2026） | Unitree G1 | **PICO VR** 身体+手+头 | 公开 mocap 子集 + 自采 PICO；**96** 条瓶放置演示 | **全身跟踪 + 连续跨手重定向 + 主动视觉**；History/rewind；五仓开源；ACT/GR00T **90%/95%**；见 [论文实体](../entities/paper-teleopit.md) |
+| **NEXUS**（SJTU，Research Preview 2026） | （待论文） | Live human motion | — | **感知型 foundation policy** + **跨域全身遥操作** + **地形感知**（预览楼梯 sim/real）；Paper/Code **Coming Soon**；见 [实体](../entities/nexus-humanoid.md) |
 | **Immersive Social VR+LLM**（NYUAD 2026） | Unitree H1 + Inspire 手 | **Apple Vision Pro** + 语音 | 多模态遥操作录制（RGB/语音/关节/眼动） | **LLM 语音高层 locomotion** + VR 腕/指操作 + ROS 双向音频社交；新手抓放 **80%** / 社交传方块 **70%**；**系统未开源**；见 [论文实体](../entities/paper-immersive-social-vr-llm-humanoids.md) |
 | **TeleDexter**（清华 / BIGAI / 北大 2026） | Franka + SharpaWave / LeapHand | **NOKOV MoCap**（腕 + 指尖 + 物体 6D） | 七任务真机遥操作 + 50 demos/任务 | **hand–object co-tracking** 低层「小脑」；平均 **75.2% SR**；基线运动学/生成先验近失败；**未开源**；见 [论文实体](../entities/paper-teledexter.md) |
 | **SPD**（斯坦福 / MIT / Scale AI，CoRL 2026） | 双 YAM Pro + Sharpa Wave（56 DoF） | **仿真：** Quest 3 手跟踪；**真机：** Manus + Quest 手柄 | 仿真 **75 h / 5 人一周**；真机 **1–2 h/任务** | 仿真 on-embodiment 预训练 + 真机微调；五项任务胜过从零 BC；**代码数据待发布**；见 [论文实体](../entities/paper-spd.md) |

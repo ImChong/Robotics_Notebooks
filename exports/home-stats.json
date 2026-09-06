@@ -1,13 +1,34 @@
 {
   "generated_at": "2026-09-06",
-  "node_count": 3502,
-  "edge_count": 32181,
+  "node_count": 3503,
+  "edge_count": 32196,
   "coverage": {
-    "covered": 3475,
-    "total": 3475,
+    "covered": 3476,
+    "total": 3476,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/compass.md",
+      "detail_id": "entity-compass",
+      "label": "COMPASS",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-brev.md",
+      "detail_id": "entity-nvidia-brev",
+      "label": "NVIDIA Brev",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-sdpg-self-distilled-policy-gradient.md",
       "detail_id": "entity-paper-sdpg-self-distilled-policy-gradient",
@@ -146,7 +167,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "论文总索引导读（HMI Papers Coverage Guide） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/nvidia-cosmos.md",
@@ -177,8 +198,7 @@
       "recency": "2026-09-05",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-egoexomocap.md",
@@ -189,50 +209,31 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/functional-taxonomy-world-models.md",
-      "detail_id": "wiki-concepts-functional-taxonomy-world-models",
-      "label": "世界模型功能分类（Renderer / Simulator / Planner）",
-      "type": "concept",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/marble-world-model.md",
-      "detail_id": "entity-marble-world-model",
-      "label": "Marble（World Labs 多模态世界模型）",
-      "type": "entity",
-      "recency": "2026-09-05",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sdpg-self-distilled-policy-gradient.md",
-    "detail_id": "entity-paper-sdpg-self-distilled-policy-gradient",
-    "label": "SDPG（自蒸馏策略梯度 · LLM RLVR）",
+    "path": "wiki/entities/compass.md",
+    "detail_id": "entity-compass",
+    "label": "COMPASS",
     "type": "entity",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 921
+      "size": 900
     },
     {
       "label": "操作",
-      "size": 670
+      "size": 679
     },
     {
       "label": "视觉-语言-动作",
-      "size": 260
+      "size": 261
     },
     {
       "label": "机器人学习论文笔记",
@@ -240,7 +241,7 @@
     },
     {
       "label": "移动操作",
-      "size": 77
+      "size": 75
     },
     {
       "label": "强化学习",
@@ -268,14 +269,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 908,
+      "degree": 909,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 904,
+      "degree": 905,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -332,7 +333,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 154,
+      "degree": 155,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -369,7 +370,7 @@
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
-      "degree": 48,
+      "degree": 49,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -385,7 +386,8 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 45
+      "degree": 45,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-ctrl-world",

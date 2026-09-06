@@ -366,6 +366,7 @@
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
 - [新智具身智能（NeoteAI）](wiki/entities/neoteai.md) — 新智具身智能**（上海新智具身智能科技有限公司，NeoteAI）源自 **复旦大学可信具身智能研究院（TEAI）**，以触觉为具身原生模态，产 `📅unknown` `[entity_page]`
 - [Newton Physics（物理引擎）](wiki/entities/newton-physics.md) — Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 NVIDIA Warp 上实现核心计算，集成 [MuJoCo `📅unknown` `[entity_page]`
+- [NEXUS（感知型基础策略 · 跨域全身遥操作）](wiki/entities/nexus-humanoid.md) — NEXUS**（*A Perceptive Foundation Policy for Cross-Domain Whole-Body Teleoperation*，[项目页](https://n `📅unknown` `[entity_page]`
 - [nordschleife-racer](wiki/entities/nordschleife-racer.md) — nordschleife-racer** 是 **yassin.app** 背后的 **浏览器竞速引擎**：**TypeScript + Three.js** 实现程序化 **纽北** 单圈、 `📅unknown` `[entity_page]`
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`

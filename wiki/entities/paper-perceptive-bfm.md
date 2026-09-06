@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, bfm, behavior-foundation-model, motion-tracking, perceptive-locomotion, terrain-adaptation, privileged-training, distillation, transformer, unitree-g1, mocap, teleoperation, parkour, miaodong, mondo-robotics, hkust, hkust-gz, ustc]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-06
 arxiv: "2606.08059"
 venue: "CoRL 2026 · submission"
 code: https://github.com/Mondo-Robotics/PMT
@@ -210,6 +210,7 @@ sequenceDiagram
 | 路线 | 部署参考 | 地形感知 | 预训练/跟踪叙事 | 平台 |
 |------|----------|----------|-----------------|------|
 | **Perceptive BFM** | **Raw 人体参考** | 高程图 + identity-gated 残差 | BFM + PMT 四阶段 | G1 |
+| **[NEXUS](./nexus-humanoid.md)**（预告） | Live human motion（待论文） | **预告** terrain-aware | **Perceptive foundation policy**（无公开细节） | 待论文 |
 | **SONIC / BFM** | 参考跟踪 | 通常无/弱 | 大规模 tracking 预训练 | 多具身 |
 | **RPL** | 跟踪专家 + 蒸馏 | 前/后深度 | 分地形专家 + DAgger | G1 |
 | **Hiking in the Wild** | 课程/技能向 | 深度跑酷 | 持续野外地形通过 | 人形 |
@@ -234,6 +235,7 @@ sequenceDiagram
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)、[Privileged Training](../concepts/privileged-training.md)
 - [SONIC](../methods/sonic-motion-tracking.md)、[BFM（CVAE）](./paper-behavior-foundation-model-humanoid.md)、[RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [NEXUS（Research Preview）](./nexus-humanoid.md) — SJTU 预告：感知 foundation policy + 跨域全身 teleop；**待发布**，勿与本文混读
 - [Unitree G1](./unitree-g1.md)
 
 ## 推荐继续阅读
