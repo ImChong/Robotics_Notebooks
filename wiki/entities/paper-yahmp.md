@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-tracking, sim2real, onnx, empirical-study, unitree-g1, inria, mjlab]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-06
 arxiv: "2607.19903"
 code: https://github.com/hucebot/yahmp
 related:

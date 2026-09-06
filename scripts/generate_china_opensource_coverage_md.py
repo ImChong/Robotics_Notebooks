@@ -68,8 +68,8 @@ def main() -> None:
         "",
         "## 规模",
         "",
-        f"| 指标 | 数值 |",
-        f"|------|------|",
+        "| 指标 | 数值 |",
+        "|------|------|",
         f"| 清单条目 | {len(data)} |",
         f"| 本库可点开详情 | {len(data)} |",
         f"| 复用既有实体 | {reused} |",
@@ -84,7 +84,6 @@ def main() -> None:
         lines.append(f"### {layer_title}")
         lines.append("")
         for company, rows in sorted(by_layer[layer_key].items()):
-            org = rows[0]["org_url"].split("、")[0]
             lines.append(f"#### {company}（{len(rows)}）")
             lines.append("")
             lines.append("| 项目 | 类别 | 本库详情 |")
@@ -185,9 +184,9 @@ def main() -> None:
     olines.extend(
         [
             "",
-            f"## 节点策略（本 ingest）",
+            "## 节点策略（本 ingest）",
             "",
-            f"- **424/424 独立 `wiki/entities/*` 详情节点**（静态站 `detail.html?id=entity-…`）。",
+            "- **424/424 独立 `wiki/entities/*` 详情节点**（静态站 `detail.html?id=entity-…`）。",
             f"- **复用 {reused}** 既有实体（Unitree/智元/HMI 主表等已覆盖项）；**新建 {new_count}** `cn-os-*` 实体补齐缺口。",
             "- 与 [HMI 开源项目主表 166 项](./hmi-opensource-projects-coverage.md) **互补**：主表按技术路线深读算法；本全景按 **国内机构** 查仓库入口。",
             "",
