@@ -11,6 +11,7 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../entities/nvidia-spatial-intelligence-lab.md
   - ../queries/robot-policy-debug-playbook.md
+  - ../queries/simulation-physics-fidelity.md
 sources:
   - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
 summary: "Software-in-the-Loop（SIL）是在仿真虚拟机器人与环境上验证机器人软件、再接 ROS 2 等外部栈的工程方法；Isaac Sim 提供 ROS 2 bridge、OmniGraph 与 Python API，与 Hardware-in-the-Loop（HIL）及 Spatial Intelligence Lab 缩写消歧。"
@@ -89,7 +90,7 @@ flowchart LR
 ## 局限与风险
 
 - **不能替代全部硬件测试：** 课程明确 SIL **减少** 而非 **消除** 对物理样机的需求；接触、延迟、驱动 bug 仍要靠 HIL/真机。
-- **仿真保真度上限：** 传感器噪声、摩擦、通信抖动建模不足会导致「SIL 全绿、真机翻车」——见 [Sim2Real](../concepts/sim2real.md)。
+- **仿真保真度上限：** 传感器噪声、摩擦、通信抖动建模不足会导致「SIL 全绿、真机翻车」——见 [Sim2Real](../concepts/sim2real.md)；该往几何/动力学/接触/执行器哪一层加投，按 [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) 逐层判。
 - **与 Spatial Intelligence Lab 混淆：** 同一缩写 **SIL** 在仓库中亦指 NVIDIA 研究组，上下文靠链接区分。
 
 ## 关联页面
@@ -100,6 +101,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [NVIDIA Spatial Intelligence Lab](../entities/nvidia-spatial-intelligence-lab.md) — **不同含义的 SIL**
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — SIL 通过后仍要逐层核的保真度投资判据
 
 ## 参考来源
 
