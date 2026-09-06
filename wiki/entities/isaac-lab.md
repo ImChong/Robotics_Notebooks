@@ -31,6 +31,7 @@ related:
   - ../comparisons/rl-vs-geometric-control.md
   - ./paper-p3.md
   - ./lw-benchhub-tour.md
+  - ./isaac-lab-arena.md
   - ./dexbench.md
   - ./nvidia-getting-started-isaac-lab.md
   - ./perceptron-isaac-05.md
@@ -62,6 +63,8 @@ sources:
   - ../../sources/repos/wbc_agile.md
   - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
   - ../../sources/repos/rl-vs-gc.md
+  - ../../sources/repos/isaaclab_arena.md
+  - ../../sources/blogs/nvidia_isaac_lab_arena_generalist_policy_eval.md
 summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
 ---
 
@@ -282,7 +285,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ### 和 Manipulation 的关系
 
-灵巧操作与大规模式仿 benchmark 亦在 Isaac Lab 上落地；NVIDIA [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 Lab 上发布 **4,739** 项双手任务库并用 **接触力旋量（CWS）** RL 奖励做 Robotic Grounding，是 [Video to Data](https://nvidia-isaac.github.io/video_to_data/) 管线的训练后端实例。[DexVerse](./paper-dexverse.md)（UNC/HKU/Berkeley，arXiv:2607.08751）则在同一栈上提供 **100** 项模块化 dexterous 任务、**3** 臂 × **6** 手多具身与 **3,180** 条 VR 遥操作多模态示范，用于 IL/VLA 跨任务与视觉泛化评测。RLWRLD × NVIDIA 的 [DexBench](./dexbench.md) 是另一条线：官网给出 **18** 项工业原子任务规格，Isaac Lab-Arena README 将其列为 **coming soon**，截至 2026-08-29 **还不能**当已上架的 Arena 环境用。[LW BENCHHUB TOUR](./lw-benchhub-tour.md) 则展示 Arena EnvHub 如何把 Lab 2.3.x 厨房任务接到 `lerobot-eval` 做双臂 SmolVLA 闭环（钉 Sim 5.1，补丁不可随意升级）。
+灵巧操作与大规模式仿 benchmark 亦在 Isaac Lab 上落地；NVIDIA [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 Lab 上发布 **4,739** 项双手任务库并用 **接触力旋量（CWS）** RL 奖励做 Robotic Grounding，是 [Video to Data](https://nvidia-isaac.github.io/video_to_data/) 管线的训练后端实例。[DexVerse](./paper-dexverse.md)（UNC/HKU/Berkeley，arXiv:2607.08751）则在同一栈上提供 **100** 项模块化 dexterous 任务、**3** 臂 × **6** 手多具身与 **3,180** 条 VR 遥操作多模态示范，用于 IL/VLA 跨任务与视觉泛化评测。RLWRLD × NVIDIA 的 [DexBench](./dexbench.md) 是另一条线：官网给出 **18** 项工业原子任务规格，Isaac Lab-Arena README 将其列为 **coming soon**，截至 2026-08-29 **还不能**当已上架的 Arena 环境用。[Isaac Lab-Arena](./isaac-lab-arena.md) 是 Lab 之上的评测与任务编排扩展（Scene / Embodiment / Task 运行时组装、GPU 大规模并行、LeRobot EnvHub）；[LW BENCHHUB TOUR](./lw-benchhub-tour.md) 则展示 Arena EnvHub 如何把 Lab 2.3.x 厨房任务接到 `lerobot-eval` 做双臂 SmolVLA 闭环（钉 Sim 5.1，补丁不可随意升级）。
 
 见：[Manipulation](../tasks/manipulation.md)
 
@@ -363,7 +366,8 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Sim2Real](../concepts/sim2real.md)
 - [StackForce](./stackforce.md) — CAD/URDF→SimReady Isaac 工程导出与训练向导
 - [Isaac-RL-Two-wheel-Legged-Bot](./isaac-rl-two-wheel-legged-bot.md) — Flamingo 双轮足 Lab 扩展（Sim 4.5 / Lab 2.0 + CaT）
-- [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — Lab-Arena EnvHub + 光轮厨房 + SmolVLA 双臂闭环与数据飞轮
+- [Isaac Lab-Arena](./isaac-lab-arena.md) — Lab 扩展：乐高式任务策展、GPU 并行评测、EnvHub 与社区 benchmark 统一核
+- [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — Arena EnvHub + 光轮厨房 + SmolVLA 双臂闭环与数据飞轮
 
 ## 一句话记忆
 

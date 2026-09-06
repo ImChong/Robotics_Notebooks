@@ -18,6 +18,7 @@ updated: 2026-08-26
 related:
   - ./lerobot.md
   - ./isaac-lab.md
+  - ./isaac-lab-arena.md
   - ./isaac-sim.md
   - ./curobo.md
   - ../methods/vla.md

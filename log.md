@@ -8338,6 +8338,12 @@
 - **开源核查：** GitHub `eth-siplab/EgoExoMoCap` **已建仓但 Code coming soon**（MIT，待发布）。
 - **关键页：** [`wiki/entities/paper-egoexomocap.md`](wiki/entities/paper-egoexomocap.md)；交叉更新 [`ego-category-04-ego-exo-fusion`](wiki/overview/ego-category-04-ego-exo-fusion.md)、[`paper-notebook-category-14-human-motion`](wiki/overview/paper-notebook-category-14-human-motion.md)。
 
+## [2026-09-06] ingest | sources/repos/isaaclab_arena.md — NVIDIA Isaac Lab-Arena 通才策略大规模仿真评测框架
+
+- **意图：** 接入 Isaac Lab-Arena 官方仓、文档、开发者页、EnvHub 与技术博客，沉淀 Scene/Embodiment/Task 组合架构、版本矩阵、LeRobot 评测闭环与生态 benchmark 清单。
+- **开源核查：** GitHub **已开源**（Apache 2.0）；运行依赖 Isaac Sim（专有）；Alpha 状态，DexBench / GR00T Industrial 等仍标 coming soon。
+- **关键页：** [`wiki/entities/isaac-lab-arena.md`](wiki/entities/isaac-lab-arena.md)；交叉更新 [`isaac-lab`](wiki/entities/isaac-lab.md)、[`lerobot`](wiki/entities/lerobot.md)、[`lw-benchhub-tour`](wiki/entities/lw-benchhub-tour.md)。
+
 ## [2026-08-22] ingest | sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md — 古月居 RosClaw / RoboClaw 自然语言控 ROS2 长文
 
 - **意图：** 接入古月居对 RosClaw（OpenClaw × ROS2 插件）三层架构、三种部署模式、工具集与安全的解读；对照 SJTU MINT RoboClaw 跨本体具身助手。
