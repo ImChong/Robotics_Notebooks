@@ -25,6 +25,7 @@ related:
   - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ./figure-ai.md
   - ./humannet.md
+  - ./human-atlas.md
   - ./1x-technologies.md
   - ./quadruped-robot.md
   - ../queries/humanoid-hardware-selection.md
@@ -139,6 +140,7 @@ flowchart TD
 - **设计与分析**：[URDF-Studio](./urdf-studio.md) (专业设计工作站)、[Robot Explorer](./robot-explorer.md) (动力学分析)、[Tnkr](./tnkr.md) (开源整机：CAD/线束/代码/部署一体协作)
 - **仿真平台**：[isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) (NVIDIA)、[mujoco](mujoco.md) (DeepMind)、[Motrix](./motrix.md) (Motphys)
 - **模型预览**：[Robot Viewer](./robot-viewer.md)
+- **参考解剖（非仿真资产）**：[Human Atlas](./human-atlas.md) — BodyParts3D 浏览器 3D atlas，理解人体系统/器官命名与 workspace 讨论
 - **数据集**：Open X-Embodied, Droid；互联网级人中心视频语料见 [HumanNet](./humannet.md)；产业侧人体运动数据供应商例见 [MotionCode](./motioncode.md)（官网宣称对接仿真与 DCC 管线，需单独核实授权与格式）
 
 ## 关联页面
