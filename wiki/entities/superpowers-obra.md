@@ -8,7 +8,7 @@ tags:
   - software-engineering
   - methodology
 status: complete
-updated: 2026-08-31
+updated: 2026-09-07
 related:
   - ./paper-wikiskill.md
   - ./ponytail.md

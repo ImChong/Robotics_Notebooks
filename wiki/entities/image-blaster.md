@@ -18,6 +18,7 @@ related:
   - ./world-labs.md
   - ./spark-3dgs-renderer.md
   - ./img2threejs.md
+  - ./threejs-game-skills.md
   - ./cad-skills.md
   - ./video-shotcraft.md
   - ./mattpocock-skills.md
@@ -165,6 +166,7 @@ sequenceDiagram
 - [World Labs](./world-labs.md) — 公司与 Spark / Atlas 总览
 - [Spark（Web 3DGS）](./spark-3dgs-renderer.md) — `.spz` 的 Web 运行时（Marble 生态）
 - [img2threejs](./img2threejs.md) — 图像→程序化 Three.js；无外部 3D API
+- [Three.js Game Skills](./threejs-game-skills.md) — 完整可发布浏览器游戏九件套 Agent Skills；可选 Tripo/Gemini/ElevenLabs
 - [CAD Skills](./cad-skills.md) — 制造向 STEP/URDF Agent Skills
 - [3D Gen Studio](./3dgenstudio.md) — ComfyUI 网格生产编排（Hunyuan3D 等）
 - [video-shotcraft](./video-shotcraft.md) — 前端/成片向 Agent Skills 对照

@@ -1,3 +1,10 @@
+## [2026-09-07] ingest | sources/repos/threejs-game-skills.md — Three.js Game Skills（九件套 Agent Skills：导演路由 + Vite 脚手架 + Playwright QA）；MIT 已开源、Tripo/Gemini/ElevenLabs 可选 API；关键页 threejs-game-skills；交叉 img2threejs / gsap-skills / image-blaster
+
+- **触发：** 用户指定 <https://github.com/majidmanzarpour/threejs-game-skills>，并要求自动合并 PR
+- **步骤 2.5：** 主仓 MIT 已开源；可选 Tripo / Gemini / ElevenLabs 为闭源付费 API（缺 key 时程序化 fallback）
+- **新建：** `threejs-game-skills` 实体；归档 `threejs-game-skills.md`
+- **交叉：** img2threejs、gsap-skills、image-blaster（实体互链）
+
 ## [2026-09-07] ingest | sources/papers/mint_arxiv_2609_04958.md — MINT 世界系相机+双手基础模型；已开源权重/Viewer/1,021h 数据集
 
 ## [2026-09-07] ingest | sources/papers/redwood_arxiv_2608_26418.md — Architect Labs Redwood AI 加速器（与 1X Redwood WM 消歧）；ALP 两周 RTL→FPGA，未开源

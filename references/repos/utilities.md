@@ -22,5 +22,6 @@
 - **[Draw.io Scientific Illustrator](../../wiki/entities/drawio-scientific-illustrator.md)**: Codex 插件；本机 MCP 可见操控 draw.io 画布，逐步重绘可编辑科研插图。
 - **[FreeCAD MCP](../../wiki/entities/freecad-mcp.md)**: FreeCAD Addon RPC + MCP server，自然语言驱动桌面 CAD。
 - **[CAD Skills](../../wiki/entities/cad-skills.md)**: build123d STEP-first Agent Skills（CAD/URDF/制造交接）。
+- **[Three.js Game Skills](../../wiki/entities/threejs-game-skills.md)**: 浏览器 Three.js 游戏九件套 Agent Skills（导演路由 + Playwright QA + 可选 Tripo/Gemini/ElevenLabs）。
 - **[Manim](../../wiki/entities/manim.md)**: Python 程序化数学/技术讲解动画（对外沟通层）。
 

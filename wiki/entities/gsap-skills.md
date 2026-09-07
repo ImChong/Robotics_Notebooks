@@ -8,11 +8,12 @@ tags:
   - web-animation
   - agent-infrastructure
 status: complete
-updated: 2026-08-30
+updated: 2026-09-07
 related:
   - ./mattpocock-skills.md
   - ./cad-skills.md
   - ./img2threejs.md
+  - ./threejs-game-skills.md
   - ./video-shotcraft.md
   - ./drawio-scientific-illustrator.md
   - ./archify.md
@@ -94,6 +95,7 @@ flowchart TD
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — **通用编码工程** Agent Skills 对照
 - [CAD Skills](./cad-skills.md) — **硬件/CAD/URDF** 垂直 Agent Skills
 - [img2threejs](./img2threejs.md) — **图像→程序化 Three.js** 垂直 Agent Skill（WebGL 资产，非 DOM tween）
+- [Three.js Game Skills](./threejs-game-skills.md) — **完整浏览器 Three.js 游戏** 九件套 Agent Skills（玩法/画面/QA，非 DOM tween）
 - [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill（离线成片；与本页 DOM/Scroll 交互层不同）
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可见 draw.io 科研插图**（Codex Skill + MCP），与 Web 动效不同层
 - [Archify](./archify.md) — **可校验 HTML 系统图**（架构/工作流），不是 DOM tween
