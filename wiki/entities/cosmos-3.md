@@ -10,7 +10,7 @@ tags:
   - wam
   - open-source
 status: complete
-updated: 2026-09-05
+updated: 2026-09-07
 arxiv: "2606.02800"
 related:
   - ./nvidia-cosmos.md

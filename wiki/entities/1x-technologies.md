@@ -3,16 +3,18 @@
 type: entity
 tags: [hardware, humanoid, industry, teleoperation, 1x-technologies]
 status: complete
-updated: 2026-07-26
+updated: 2026-09-07
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ./paper-1xwm-redwood-world-model.md
   - ./humanoid-robot.md
   - ./figure-ai.md
   - ../queries/humanoid-hardware-selection.md
+  - ../queries/humanoid-robot-data-collection-landscape.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
+  - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
   - ../../sources/papers/1x_world_model_redwood.md
   - ../../sources/repos/1x-technologies.md
   - ../../sources/repos/1xgpt.md
@@ -38,7 +40,7 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 ## 为什么重要
 
 - **硬件形态分叉**：同时押注「轮式 + 上半身人形」与「双足全身人形」，反映了商业化上对续航、通过性与成本的权衡。
-- **数据闭环叙事**：家庭场景产品常与大规模真实交互数据、模仿学习与遥操作数据采集联系在一起（具体能力与时间表以官方为准）。
+- **数据闭环叙事**：家庭场景产品常与大规模真实交互数据、模仿学习与遥操作数据采集联系在一起（具体能力与时间表以官方为准）。LeoInAI Substack（2026-09）转述其使用 **Meta Quest 3** 让操作员完成困难任务以供机器人复现。
 - **产业节点**：与美国人形赛道（Figure、Tesla、Agility 等）并行，代表欧洲与美国西海岸混合供应链路线的一支独立力量。
 
 ## 产品与路线（归纳）
@@ -61,6 +63,7 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 - [人形机器人](./humanoid-robot.md)
 - [Figure AI](./figure-ai.md)（美国人形与 VLA 路线的可比节点）
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
+- [人形数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 
 ## 参考来源
