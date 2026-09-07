@@ -1,3 +1,5 @@
+## [2026-09-07] ingest | sources/datasets/cad-1000-hours-markov-ai.md — CAD 1000 Hours 桌面 CAD computer-use 语料（HF 公开）
+
 ## [2026-09-07] ingest | sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md — GigaBrain-WBC-0.5 再复核：arXiv v2；Code 仍 coming soon
 
 ## [2026-09-07] ingest | sources/papers/argus_arxiv_2608_06865.md — ARGUS 深度伪造多 Agent 鉴伪；FaceVid-Forensics-100K；已开源（GitHub+HF）

@@ -73,6 +73,7 @@
 - [BotWorld（机器人资产平台）](wiki/entities/botworld.md) — BotWorld**（<https://botworld.enkeebot.com/>）是 **EnkeeBot** 运营的 **机器人资产社区与分发平台**：把 **URDF/MJCF/SDF  `📅unknown` `[entity_page]`
 - [Brax（JAX 可微物理与 RL 训练）](wiki/entities/brax.md) — Brax** 指 GitHub 仓库 `google/brax`：在 **JAX** 上提供 **刚体仿真** 与 **强化学习 `📅2026-05-18` `[entity_page]`
 - [Brookfield Physical AI Data（地产数据场景）](wiki/entities/brookfield-physical-ai-data.md) — Brookfield Corporation**（BN）等全球地产运营商，在 LeoInAI Substack（2026-09）叙事中代表 **「物业组合 = 数据采集场地」**：跨商场、办公、物 `📅unknown` `[entity_page]`
+- [CAD 1000 Hours（Markov AI）](wiki/entities/cad-1000-hours-dataset.md) — CAD 1000 Hours**（[markov-ai/cad-1000-hours](https://huggingface.co/datasets/markov-ai/cad-1000-hou `📅unknown` `[entity_page]`
 - [CAD Skills](wiki/entities/cad-skills.md) — CAD Skills** 是 earthtojake/text-to-cad 仓库（品牌名 **CAD  `📅2026-06-15` `[entity_page]`
 - [Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Ironless Axial Flux Motor**（[cadenkraft.com Part 1](https://cadenkraft.com/designing-a-coreless-ax `📅unknown` `[entity_page]`
 - [CALVIN](wiki/entities/calvin-benchmark.md) — CALVIN](https://github.com/mees/calvin) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`

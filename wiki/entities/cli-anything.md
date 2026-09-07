@@ -10,7 +10,7 @@ tags:
   - hku
   - open-source
 status: complete
-updated: 2026-08-13
+updated: 2026-09-07
 related:
   - ./deeptutor.md
   - ./hermes-agent.md
@@ -19,6 +19,7 @@ related:
   - ./freecad-mcp.md
   - ./unreal-mcp.md
   - ./cad-skills.md
+  - ./cad-1000-hours-dataset.md
   - ./paper-harnessbank.md
   - ./deepseek-harness.md
   - ./paper-skillcorpus.md

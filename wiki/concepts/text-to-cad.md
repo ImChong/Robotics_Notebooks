@@ -3,7 +3,7 @@ type: concept
 tags: [cad, generative-ai, hardware, design, api, manufacturing, llm, robotics]
 status: complete
 date: 2026-05-14
-updated: 2026-09-05
+updated: 2026-09-07
 related:
   - ../entities/urdf-studio.md
   - ../entities/atom01-hardware.md
@@ -15,6 +15,7 @@ related:
   - ../entities/gencad-3d.md
   - ../entities/cad-skills.md
   - ../entities/multi-agent-cad.md
+  - ../entities/cad-1000-hours-dataset.md
   - ../entities/freecad-mcp.md
   - ./sim2real.md
 sources:
@@ -224,6 +225,7 @@ flowchart LR
 - [GenCAD](../entities/gencad.md) — 图像条件 **CAD program** 生成与检索（MIT，对比学习 + 潜扩散）。
 - [GenCAD-3D](../entities/gencad-3d.md) — 点云/网格条件 **CAD program** 与 **SynthBal** 数据平衡（逆向工程向）。
 - [CAD Skills](../entities/cad-skills.md) — **Agent Skills** 形态的 build123d→STEP→URDF/制造/打印全链路参考实现。
+- [CAD 1000 Hours](../entities/cad-1000-hours-dataset.md) — Markov AI **桌面 CAD 录屏 + 键鼠 + 工程交付物** 大规模 computer-use 语料（HF）。
 - [Multi-Agent CAD（MAC）](../entities/multi-agent-cad.md) — 四段 LangGraph + 确定性翻译器；同一套 Skills 基准上压测试时 token。
 - [FreeCAD MCP](../entities/freecad-mcp.md) — **MCP + 桌面 FreeCAD RPC** 的自然语言建模与 FEM 桥接。
 - [Atom01 Hardware](../entities/atom01-hardware.md) — 开源硬件仓中 **CAD / BOM** 与仿真描述分层的实例。
