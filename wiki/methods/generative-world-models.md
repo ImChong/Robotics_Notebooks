@@ -353,7 +353,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [PhysisForcing](../entities/paper-physisforcing.md) — **训练期区域聚焦分层物理对齐**（像素轨迹 + 语义关系）；Wan/Cosmos 跨骨干，R-Bench SOTA 与 WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）。
 - [Flex-π](../entities/paper-flex-pi.md) — **冻结 Wan VAE 共享编码 RGB+pointmap** 的多流 Joint WAM；部署算力柔性（arXiv:2608.10860；代码待发布）。
 - [Hydra-0](../entities/paper-hydra-0.md) — **action flow** 跨具身 WM 条件 + RoboLab 开环 **r=0.96**；逆向 object-flow 控制 POC（arXiv:2608.18077；未开源）。
-- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234；代码 coming soon）。
+- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234v2；截至 2026-09-07 代码 coming soon）。
 - [LT-Mem](../entities/paper-lt-mem.md) — **波动性感知** Live/Delta/Meta 长期场景记忆 + LT-VQA（arXiv:2608.19059；数据集可下）。
 - [OSCAR](../entities/paper-oscar.md) — **2D 骨架跨具身动作条件** + 大规模数据管线；**2B Cosmos-Predict2.5** 微调，RoboArena 虚拟策略评测与真机强相关（arXiv:2606.04463）。
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。

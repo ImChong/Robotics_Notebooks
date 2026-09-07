@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, behavior-world-model, terrain-interaction, motion-tracking, reinforcement-learning, unitree-g1, tsinghua, gigaai, bjtu, usst, casia, ucas, isaac-lab]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-07
 arxiv: "2608.18234"
 venue: "2026 · arXiv"
 related:
@@ -21,12 +21,12 @@ sources:
   - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
   - ../../sources/sites/gigabrain-wbc-0-5-github-io.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
-summary: "GigaBrain-WBC-0.5（arXiv:2608.18234，清华/GigaAI 等）：首个 humanoid Behavior World Model；因果 Transformer 联合预测 action/state/next-command GMM；自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；截至 2026-08-24 代码 coming soon。"
+summary: "GigaBrain-WBC-0.5（arXiv:2608.18234v2，清华/GigaAI 等）：首个 humanoid Behavior World Model；因果 Transformer 联合预测 action/state/next-command GMM；自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；截至 2026-09-07 代码仍 coming soon。"
 ---
 
 # GigaBrain-WBC-0.5：环境交互行为世界模型
 
-**GigaBrain-WBC-0.5**（*A Behavior World Model for Robust Whole-Body Control with Environment Interaction*；[arXiv:2608.18234](https://arxiv.org/abs/2608.18234)，[项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/)）由 **清华大学 / GigaAI** 等提出：把 whole-body motion tracker 从「复现 reference action」升级为 **Behavior World Model（BWM）** — 每步联合预测 action、next proprioceptive state 与 next latent command 分布，使 policy 内化接触动力学与环境可 admissible 行为；再配合自动 **3D terrain 标注** 与 **在线 OOD filter**，在单一策略里同时覆盖 terrain/object 交互、不可行命令 best-effort、倒地恢复与 G1→Maker L01 迁移。
+**GigaBrain-WBC-0.5**（*A Behavior World Model for Robust Whole-Body Control with Environment Interaction*；[arXiv:2608.18234v2](https://arxiv.org/abs/2608.18234v2)，[项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/)）由 **清华大学 / GigaAI** 等提出：把 whole-body motion tracker 从「复现 reference action」升级为 **Behavior World Model（BWM）** — 每步联合预测 action、next proprioceptive state 与 next latent command 分布，使 policy 内化接触动力学与环境可 admissible 行为；再配合自动 **3D terrain 标注** 与 **在线 OOD filter**，在单一策略里同时覆盖 terrain/object 交互、不可行命令 best-effort、倒地恢复与 G1→Maker L01 迁移。
 
 ## 一句话定义
 
@@ -58,7 +58,7 @@ summary: "GigaBrain-WBC-0.5（arXiv:2608.18234，清华/GigaAI 等）：首个 h
 | **平台** | Unitree G1（29 DoF，50 Hz）；跨具身 Maker L01（G1 checkpoint fine-tune） |
 | **数据** | Bones-Seed / MotionMillion / MotionDecode 中识别 terrain-interaction 子集（合计 ~72.6 h）混合 flat-ground |
 | **栈** | Isaac Lab + PPO；4096 envs（flat）→ 512 envs（terrain + fallen）；MuJoCo sim-to-sim 评测 |
-| **开源** | **待发布**（截至 **2026-08-24** [项目页 Code → coming soon](https://shepherd1226.github.io/gigabrain-wbc-0.5/)，无 GitHub URL） |
+| **开源** | **待发布**（截至 **2026-09-07** [项目页 Code → coming soon](https://shepherd1226.github.io/gigabrain-wbc-0.5/)，无 GitHub/HF；Full demo 仍标注 forthcoming） |
 
 ## 核心原理
 
@@ -100,7 +100,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至复核日（2026-08-24）[项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/) 标注 **Code coming soon**，无可克隆官方仓库。若后续开源，预期路径为：terrain 标注 → Isaac Lab 训练 BWM → MuJoCo 四 regime 评测 → G1 真机部署 + \(R_{safe}\) 在线 filter。
+**不适用** — 截至复核日（**2026-09-07**）[项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/) 仍标注 **Code coming soon**，无可克隆官方仓库。若后续开源，预期路径为：terrain 标注 → Isaac Lab 训练 BWM → MuJoCo 四 regime 评测 → G1 真机部署 + \(R_{safe}\) 在线 filter。
 
 ## 工程实践
 
@@ -115,14 +115,16 @@ flowchart TB
 
 ## 实验与评测
 
-**四 regime（MuJoCo sim-to-sim，Table 3，\(R_{safe}=3\)）：**
+**四 regime（MuJoCo sim-to-sim，Table 3 / 项目页，\(R_{safe}=3\)）：**
 
-| Method | Standard SR↑ | Terrain SR↑ | OOD SR↑ | Fall SR↑† |
-|--------|--------------|-------------|---------|-----------|
-| SONIC | 94.1 | 15.3 | 50.0 | 5.9 |
-| HoloMotion-1 | 89.0 | 18.7 | 67.7 | 0.7 |
-| Humanoid-GPT | 91.9 | 14.0 | 70.6 | 2.9 |
-| **GigaBrain-WBC-0.5** | **96.3** | **81.3** | **83.1** | **99.3** |
+| Method | Std MPKPE↓ | Std SR↑ | Terrain MPKPE↓ | Terrain SR↑ | OOD SR↑ | Fall SR↑† | Jerk↓ |
+|--------|------------|---------|----------------|-------------|---------|-----------|-------|
+| SONIC | 82.3 | 94.1 | 331.2 | 15.3 | 50.0 | 5.9 | 1295.5 |
+| HoloMotion-1 | 109.4 | 89.0 | 330.0 | 18.7 | 67.7 | 0.7 | 2000.0 |
+| Humanoid-GPT | 90.9 | 91.9 | 283.3 | 14.0 | 70.6 | 2.9 | 3598.1 |
+| **GigaBrain-WBC-0.5** | **76.6** | **96.3** | **93.3** | **81.3** | **83.1** | **99.3** | **1050.6** |
+
+单位：MPKPE / RootPos 为 mm；RootVel 为 mm/s；Jerk 为 rad/s³；SR 为 %。
 
 †Fall SR 为 recovery rate（允许起始倒地），与其他 SR 定义不同。
 
@@ -140,7 +142,7 @@ flowchart TB
 4. **OOD + Fall** — **83.1%** OOD SR + **99.3%** fall recovery，且同一策略、无 specialist handoff。
 5. **Flat tracking 不牺牲** — Standard SR **96.3%**、MPKPE **76.6** mm 仍优于 SONIC（82.3 mm）。
 6. **部署** — Mahalanobis retract 闭式、可调 \(R_{safe}\)；真机 footage 项目页标注 forthcoming。
-7. **开源** — 截至 2026-08-24 **coming soon**；复现前勿假设已有 checkpoint。
+7. **开源** — 截至 **2026-09-07** 仍 **coming soon**；复现前勿假设已有 checkpoint。
 
 ## 与其他工作对比
 

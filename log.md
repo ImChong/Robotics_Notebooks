@@ -1,3 +1,5 @@
+## [2026-09-07] ingest | sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md — GigaBrain-WBC-0.5 再复核：arXiv v2；Code 仍 coming soon
+
 ## [2026-09-07] ingest | sources/papers/argus_arxiv_2608_06865.md — ARGUS 深度伪造多 Agent 鉴伪；FaceVid-Forensics-100K；已开源（GitHub+HF）
 
 ## [2026-09-07] ingest | sources/repos/threejs-game-skills.md — Three.js Game Skills（九件套 Agent Skills：导演路由 + Vite 脚手架 + Playwright QA）；MIT 已开源、Tripo/Gemini/ElevenLabs 可选 API；关键页 threejs-game-skills；交叉 img2threejs / gsap-skills / image-blaster
