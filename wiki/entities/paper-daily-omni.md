@@ -12,7 +12,7 @@ tags:
   - fudan
   - agibot
 status: complete
-updated: 2026-07-30
+updated: 2026-09-07
 arxiv: "2505.17862"
 code: https://github.com/Lliar-liar/Daily-Omni
 related:
@@ -197,6 +197,7 @@ sequenceDiagram
 | [ESI-Bench](./esi-bench.md) | 具身 **空间智能** | OmniGibson 主动探索 | 测「为看见而行动」，少覆盖音频 |
 | [EWMBench](./ewmbench.md) | 具身 **世界模型视频** | 开环视频生成 | 评场景/轨迹/语义，非 AVQA |
 | WorldSense 等 AVQA | 日常 AV QA | MCQA | 论文指其缺可扩展自动出题与诊断协议 |
+| [MOSS Transcribe Diarize](./paper-moss-transcribe-diarize.md) | 音频 MLLM **SATS 转写+分离** | 主动推理输出 | 评 **谁说了什么**，非 AV 对齐 MCQA；可作 HRI 上游 |
 
 ## 局限与风险
 
@@ -215,6 +216,7 @@ sequenceDiagram
 - [五大具身模型分类对比](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — VLM 能力边界
 - [统一多模态 token](../methods/unified-multimodal-tokens.md) — omni 融合表征接口
 - [智元灵犀 X1](./agibot-lingxi-x1.md) — 榜首 WITA-Omni 所属产业栈入口
+- [MOSS Transcribe Diarize](./paper-moss-transcribe-diarize.md) — 同生态音频 MLLM，偏转写分离而非 AV 对齐评测
 
 ## 参考来源
 

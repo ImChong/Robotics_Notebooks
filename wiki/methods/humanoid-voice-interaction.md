@@ -2,10 +2,11 @@
 type: method
 tags: [speech, hri, humanoid, asr, tts, llm, vln, interaction]
 status: complete
-updated: 2026-07-23
+updated: 2026-09-07
 related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md
+  - ../entities/paper-moss-transcribe-diarize.md
   - ../entities/paper-vln-10-navid.md
   - ../concepts/ros2-basics.md
   - ../entities/unitree-g1.md
@@ -88,7 +89,7 @@ flowchart LR
 
 | 模块 | 可选实现 |
 |------|----------|
-| ASR | Whisper / 云 API |
+| ASR | Whisper / 云 API；多说话人场景可用 [MOSS Transcribe Diarize](../entities/paper-moss-transcribe-diarize.md) 一体输出 SATS（转写+分离+时间戳） |
 | NLU | 正则槽位 或 小 LLM |
 | TTS | 本地 eng/中文 TTS |
 | 总线 | ROS 2 action / 宇树 SDK 服务 |
@@ -112,6 +113,7 @@ flowchart LR
 ## 局限与风险
 
 - 工厂/赛场噪声使 ASR 掉字；回声消除与麦阵很关键。
+- **多说话人示教/群聊：** 纯 ASR 不区分说话人；需 diarization 或 [SATS 一体模型](../entities/paper-moss-transcribe-diarize.md) 再送 NLU。
 - LLM 幻觉会生成不存在技能——必须接地白名单。
 - **误区**：用开放互联网搜索当工具而不做过滤——人形上风险更高。
 - 隐私：云 ASR 上传音频需合规。
@@ -124,6 +126,7 @@ flowchart LR
 - [G1 软件服务栈](../entities/unitree-g1-software-stack.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 - [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) — 本方法的逐环工程落地（选型/坑/首查项）
+- [MOSS Transcribe Diarize](../entities/paper-moss-transcribe-diarize.md) — 长时多说话人 SATS 开源栈（ASR+diarization 上游）
 
 ## 参考来源
 
