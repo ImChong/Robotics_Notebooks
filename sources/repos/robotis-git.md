@@ -39,7 +39,7 @@
 | LeRobot × Zenoh | [zenoh_ros2_sdk](https://github.com/ROBOTIS-GIT/zenoh_ros2_sdk)、[lerobot_robot_ros2_zenoh](https://github.com/ROBOTIS-GIT/lerobot_robot_ros2_zenoh) | 无 ROS 2 安装下的 LeRobot 机器人接口（α） |
 | 运维 / 文档 | [cyclo_manager](https://github.com/ROBOTIS-GIT/cyclo_manager)、[docs](https://github.com/ROBOTIS-GIT/docs) | FastAPI+Next.js 容器编排；[docs.robotis.com](https://docs.robotis.com/) 源仓 |
 | 真机 AI 工具 | [physical_ai_tools](https://github.com/ROBOTIS-GIT/physical_ai_tools)、[cyclo_intelligence](https://github.com/ROBOTIS-GIT/cyclo_intelligence) | LeRobot+ROS 2 界面；BT+VLA 全栈 |
-| 运动控制 | [cyclo_control](https://github.com/ROBOTIS-GIT/cyclo_control) | WBC / 运动控制器核心与 ROS 包装 |
+| 运动控制 | [cyclo_control](https://github.com/ROBOTIS-GIT/cyclo_control) | WBC / 运动控制器核心与 ROS 包装 → [cyclo-control](../../wiki/entities/cyclo-control.md) |
 | 重定向 | [soma-retargeter](https://github.com/ROBOTIS-GIT/soma-retargeter) | SOMA BVH → 人形（G1 / AI Sapiens 资产） |
 
 ---
@@ -54,6 +54,7 @@
 | Cyclo Lab | [cyclo-lab.md](../../wiki/entities/cyclo-lab.md) |
 | cyclo_mjlab（K1 / mjlab） | [robotis-cyclo-mjlab.md](../../wiki/entities/robotis-cyclo-mjlab.md) |
 | Physical AI Tools | [robotis-physical-ai-tools.md](../../wiki/entities/robotis-physical-ai-tools.md) |
+| Cyclo Control | [cyclo-control](../../wiki/entities/cyclo-control.md) |
 | Cyclo Intelligence | [cyclo-intelligence.md](../../wiki/entities/cyclo-intelligence.md) |
 | Dynamixel SDK | [dynamixel-sdk.md](../../wiki/entities/dynamixel-sdk.md) |
 | MuJoCo Menagerie | [robotis-mujoco-menagerie.md](../../wiki/entities/robotis-mujoco-menagerie.md) |

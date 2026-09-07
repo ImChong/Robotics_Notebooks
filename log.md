@@ -1,3 +1,16 @@
+## [2026-09-07] ingest | sources/repos/cyclo_control.md + natural_disasters.md — ROBOTIS cyclo_control 真机 WBC 栈与 ABYSSAL 程序化海洋天气 demo 独立实体页
+
+- **触发：** 用户指定 <https://github.com/ROBOTIS-GIT/cyclo_control>、<https://github.com/Token-Gremlin/natural-disasters>
+- **开源结论：** 二者均已开源（Apache-2.0 / MIT）；cyclo_control 需 ROS 2 Jazzy + numpy&lt;2
+- **关键页：** [cyclo-control](wiki/entities/cyclo-control.md)、[natural-disasters-abyssal](wiki/entities/natural-disasters-abyssal.md)；[robotis](wiki/entities/robotis.md) Cyclo 表补链
+
+## [2026-09-07] ingest | sources/blogs/wechat_shenlan_weekly_papers_2026-09-04.md — 深蓝 8.31–9.04 周更 21 篇（人形/四足/腿式）；11 篇复用既有 paper-* 节点、新建 10 篇独立实体页
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/h1FBl8iPL8ucERjAL5cIew>；要求每篇论文独立非重复详情节点
+- **开源结论：** RoboGesture / MulDP / SleepWalking / IHMC 行为系统等 **未见** 官方 GitHub；BRIDGE/WM-LOCO 等待发布；QLAUN 宣称将开源
+- **新建实体：** IHMC loco-manipulation 系统、RoboGesture、动态 HRI 数据集协议、下肢零位标定、双凸轮弹性踝、MulDP、Contact-Guided Exploration、eBert NNM、QLAUN、SleepWalking(SWAQ)
+- **复用节点：** WM-LOCO、Safe-Stop、FOCUS、UMR、ADAPT、Agile Perceptive Traversal、Blind Dexterity、PAMoR、Stay Seated、BRIDGE、FWBC-VLA
+
 ## [2026-09-07] ingest | sources/repos/image-blaster.md — image-blaster（Claude Code image-to-world Skills）；编排层 MIT 已开源、Marble/FAL API 闭源；关键页 image-blaster；交叉 Marble / img2threejs / generative-world-models
 
 - **触发：** 用户指定 <https://github.com/neilsonnn/image-blaster>，并要求自动合并 PR

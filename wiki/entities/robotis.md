@@ -11,6 +11,7 @@ related:
   - ./robotis-cyclo-mjlab.md
   - ./robotis-physical-ai-tools.md
   - ./cyclo-intelligence.md
+  - ./cyclo-control.md
   - ./dynamixel-sdk.md
   - ./robotis-mujoco-menagerie.md
   - ./turtlebot3.md
@@ -25,7 +26,7 @@ related:
   - ../tasks/teleoperation.md
 sources:
   - ../../sources/repos/robotis-git.md
-  - ../../sources/repos/cyclo.md
+  - ../../sources/repos/cyclo_control.md
   - ../../sources/repos/cyclo_mjlab.md
   - ../../sources/repos/zenoh_ros2_sdk.md
 ---
@@ -106,16 +107,17 @@ flowchart TB
 | Lab（K1 / mjlab） | [cyclo_mjlab](https://github.com/ROBOTIS-GIT/cyclo_mjlab) | [robotis-cyclo-mjlab.md](./robotis-cyclo-mjlab.md) |
 | Tools（LeRobot 界面） | [physical_ai_tools](https://github.com/ROBOTIS-GIT/physical_ai_tools) | [robotis-physical-ai-tools.md](./robotis-physical-ai-tools.md) |
 | LeRobot × Zenoh（α） | [zenoh_ros2_sdk](https://github.com/ROBOTIS-GIT/zenoh_ros2_sdk) + [lerobot_robot_ros2_zenoh](https://github.com/ROBOTIS-GIT/lerobot_robot_ros2_zenoh) | 本节 + [lerobot.md](./lerobot.md) |
+| Control（真机 WBC） | [cyclo_control](https://github.com/ROBOTIS-GIT/cyclo_control) | [cyclo-control.md](./cyclo-control.md) |
 | Intelligence（BT+VLA） | [cyclo_intelligence](https://github.com/ROBOTIS-GIT/cyclo_intelligence) | [cyclo-intelligence.md](./cyclo-intelligence.md) |
 | MuJoCo 资产 | [robotis_mujoco_menagerie](https://github.com/ROBOTIS-GIT/robotis_mujoco_menagerie) | [robotis-mujoco-menagerie.md](./robotis-mujoco-menagerie.md) |
 | 执行器 SDK | [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) | [dynamixel-sdk.md](./dynamixel-sdk.md) |
 
-`cyclo_control`、`cyclo_manager`、`robotis_hand`、`soma-retargeter` 等：在组织归档与本 hub 导航；深度细节见对应 `sources/repos/`（`soma-retargeter` 已有独立归档）。
+`cyclo_manager`、`robotis_hand`、`soma-retargeter` 等：在组织归档与本 hub 导航；深度细节见对应 `sources/repos/`（`soma-retargeter` 已有独立归档）。
 
 ## 工程实践
 
 1. **先定产品线**：教学轮式 → TurtleBot3 eManual；桌面臂 → OpenMANIPULATOR / OMY；半人形操作 → AI Worker + [ai.robotis.com](https://ai.robotis.com/)；人形 K1 → AI Sapiens docs。
-2. **学习栈**：仿真资产用 [MuJoCo menagerie](./robotis-mujoco-menagerie.md)；**K1 全身**用 [cyclo_mjlab](./robotis-cyclo-mjlab.md) 或 **臂/Worker** 用 [cyclo_lab](./cyclo-lab.md)；真机 LeRobot 流程用 [physical_ai_tools](./robotis-physical-ai-tools.md)（或 Zenoh 路径 `lerobot_robot_ros2_zenoh`）；长程 BT+VLA 部署看 [cyclo_intelligence](./cyclo-intelligence.md)。
+2. **学习栈**：仿真资产用 [MuJoCo menagerie](./robotis-mujoco-menagerie.md)；**K1 全身**用 [cyclo_mjlab](./robotis-cyclo-mjlab.md) 或 **臂/Worker** 用 [cyclo_lab](./cyclo-lab.md)；真机 LeRobot 流程用 [physical_ai_tools](./robotis-physical-ai-tools.md)（或 Zenoh 路径 `lerobot_robot_ros2_zenoh`）；长程 BT+VLA 部署看 [cyclo_intelligence](./cyclo-intelligence.md)；关节级执行看 [cyclo_control](./cyclo-control.md)。
 3. **Docker**：官方镜像多在 `robotis/ros`、`robotis/cyclo-intelligence` 等；Jetson ARM64 与 AMD64 常共用 `container.sh`。
 4. **数据与权重**：[Hugging Face/ROBOTIS](https://huggingface.co/ROBOTIS)。
 5. **厂商 Lab 对照**：与 [unitree_rl_lab](./unitree-rl-lab.md)、[Deep Robotics rl_training](./deeprobotics-rl-training.md)、社区 [robot_lab](./robot-lab.md) 并列选型时，`cyclo_lab` 是 ROBOTIS 官方入口。
@@ -130,7 +132,7 @@ flowchart TB
 ## 关联页面
 
 - [AI Worker](./robotis-ai-worker.md) · [AI Sapiens](./robotis-ai-sapiens.md)
-- [cyclo_lab](./cyclo-lab.md) · [cyclo_mjlab](./robotis-cyclo-mjlab.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
+- [cyclo_lab](./cyclo-lab.md) · [cyclo_mjlab](./robotis-cyclo-mjlab.md) · [cyclo_control](./cyclo-control.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
 - [Dynamixel SDK](./dynamixel-sdk.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)
 - [TurtleBot3](./turtlebot3.md) · [OpenMANIPULATOR 线](./robotis-open-manipulator-line.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
