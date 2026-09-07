@@ -8483,6 +8483,12 @@
 - **开源核查：** GitHub **已开源**（Apache 2.0）；运行依赖 Isaac Sim（专有）；Alpha 状态，DexBench / GR00T Industrial 等仍标 coming soon。
 - **关键页：** [`wiki/entities/isaac-lab-arena.md`](wiki/entities/isaac-lab-arena.md)；交叉更新 [`isaac-lab`](wiki/entities/isaac-lab.md)、[`lerobot`](wiki/entities/lerobot.md)、[`lw-benchhub-tour`](wiki/entities/lw-benchhub-tour.md)。
 
+## [2026-09-07] ingest | sources/repos/arnis.md — Arnis 真实地理 → Minecraft 世界生成
+
+- **意图：** 接入 louis-e/arnis 高 star Rust/Tauri 工具与 arnismc.com 官方站，沉淀 OSM+高程 → Minecraft Java/Bedrock/Luanti 管线与三种生成模式。
+- **开源核查：** GitHub **已开源**（Apache-2.0）；官方下载仅 arnismc.com + GitHub；MapSmith 为浏览器增值服务。
+- **关键页：** [`wiki/entities/arnis.md`](wiki/entities/arnis.md)；交叉更新 [`procedural-terrain-generation`](wiki/concepts/procedural-terrain-generation.md)、[`drive-game`](wiki/entities/drive-game.md)、[`natural-disasters-abyssal`](wiki/entities/natural-disasters-abyssal.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)。
+
 ## [2026-08-22] ingest | sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md — 古月居 RosClaw / RoboClaw 自然语言控 ROS2 长文
 
 - **意图：** 接入古月居对 RosClaw（OpenClaw × ROS2 插件）三层架构、三种部署模式、工具集与安全的解读；对照 SJTU MINT RoboClaw 跨本体具身助手。

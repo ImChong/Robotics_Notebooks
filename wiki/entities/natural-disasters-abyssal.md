@@ -9,6 +9,7 @@ related:
   - ../concepts/domain-randomization.md
   - ../overview/hub-physics-fidelity.md
   - ./img2threejs.md
+  - ./arnis.md
   - ../methods/generative-world-models.md
 sources:
   - ../../sources/repos/natural_disasters.md
@@ -115,6 +116,7 @@ ABYSSAL 是 **图形学向的程序化海洋+极端天气参考实现**——若
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [仿真物理保真度枢纽](../overview/hub-physics-fidelity.md)
 - [img2threejs](./img2threejs.md)
+- [Arnis](./arnis.md) — OSM+高程真实地理 → Minecraft 体素（与 ABYSSAL 同属程序化环境生成邻域）
 
 ## 参考来源
 

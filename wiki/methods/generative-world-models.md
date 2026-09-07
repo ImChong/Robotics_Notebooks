@@ -274,7 +274,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 学习式无限户外地形（示例：InfiniteDiffusion / Terrain Diffusion）
 
-[InfiniteDiffusion / Terrain Diffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md)（SIGGRAPH 2026，arXiv:2512.08309）走 **扩散模型 + 惰性无界采样** 的 **程序化噪声式接口**：按 **seed + 坐标 O(1)** 查询高程/气候，**training-free** 推广 MultiDiffusion 到无限域；**Terrain Diffusion** 用 **分层扩散 + Laplacian 编码** 覆盖地球尺度垂直动态范围，并开源 **[Minecraft Fabric mod](https://modrinth.com/mod/terrain-diffusion)**。与 HomeWorld 的 **室内 furnished 3D**、上文 **像素视频 WM** 正交：它服务 **开放世界户外几何/气候场**，可作为腿式仿真 [程序化地形](../concepts/procedural-terrain-generation.md) 的高保真资产源，但 **不含接触动力学**，接入 RL 仍需 DR 与碰撞对齐。
+[InfiniteDiffusion / Terrain Diffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md)（SIGGRAPH 2026，arXiv:2512.08309）走 **扩散模型 + 惰性无界采样** 的 **程序化噪声式接口**：按 **seed + 坐标 O(1)** 查询高程/气候，**training-free** 推广 MultiDiffusion 到无限域；**Terrain Diffusion** 用 **分层扩散 + Laplacian 编码** 覆盖地球尺度垂直动态范围，并开源 **[Minecraft Fabric mod](https://modrinth.com/mod/terrain-diffusion)**。与 HomeWorld 的 **室内 furnished 3D**、上文 **像素视频 WM** 正交：它服务 **开放世界户外几何/气候场**，可作为腿式仿真 [程序化地形](../concepts/procedural-terrain-generation.md) 的高保真资产源，但 **不含接触动力学**，接入 RL 仍需 DR 与碰撞对齐。对照 **[Arnis](../entities/arnis.md)**：后者用 **OSM + 测绘高程一次性 faithful 导入** 真实街区到 Minecraft，而非学习式无限延展。
 
 ### 语言统一动作的具身世界模型（示例：Qwen-RobotWorld）
 
@@ -376,6 +376,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Gamma-World](../entities/paper-gamma-world-multi-agent.md) — **多智能体** 置换对称编码 + hub 注意力 + 24 FPS 交互 rollout（arXiv:2605.28816）。
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — **静态 sim-ready 全屋 3D** 场景生成与中文住宅平面图数据（arXiv:2606.06390）。
 - [InfiniteDiffusion / Terrain Diffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md) — **学习式无限户外地形**（惰性扩散 + 分层高程/气候场；Minecraft mod 集成，SIGGRAPH 2026）。
+- [Arnis](../entities/arnis.md) — **OSM + 高程 → Minecraft** 真实地理体素导入（Apache-2.0，~17.7k★）。
 - [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md) — 状态空间神经动力学 + 想象 rollout（与像素生成式 WBM 对照）。
 - [世界模型功能分类（Renderer / Simulator / Planner）](../concepts/functional-taxonomy-world-models.md) — 先问输出是观测、状态还是动作
 - [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 压缩定义 + 功能×架构二维表（arXiv:2607.06401）

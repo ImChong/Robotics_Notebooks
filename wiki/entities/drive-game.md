@@ -6,6 +6,7 @@ updated: 2026-09-01
 related:
   - ./nordschleife-racer.md
   - ./starter-kit-racing.md
+  - ./arnis.md
   - ../overview/racing-drift-rl-open-source-landscape.md
   - ../methods/model-predictive-control.md
 sources:
@@ -88,3 +89,4 @@ sequenceDiagram
 
 - [系统逻辑说明（线上）](https://drive-game.pages.dev/data/game_logic.html)
 - [构建日志 making](https://drive-game.pages.dev/making)
+- [Arnis](./arnis.md) — 同为 OSM+高程真实地理管线，输出 Minecraft 体素世界而非 Web 驾驶
