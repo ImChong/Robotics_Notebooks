@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3838,
-  "edge_count": 34145,
+  "node_count": 3839,
+  "edge_count": 34156,
   "coverage": {
-    "covered": 3811,
-    "total": 3811,
+    "covered": 3812,
+    "total": 3812,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-spark-vln.md",
+      "detail_id": "entity-paper-spark-vln",
+      "label": "SPARK-VLN（动态社会视觉–语言导航）",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
     {
       "path": "wiki/entities/arnis.md",
       "detail_id": "entity-arnis",
@@ -195,27 +205,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-r2s-eval.md",
-      "detail_id": "entity-paper-r2s-eval",
-      "label": "R2S-Eval：真实—仿真校准 + VLM 的机器人策略评测",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/arnis.md",
-    "detail_id": "entity-arnis",
-    "label": "Arnis",
+    "path": "wiki/entities/paper-spark-vln.md",
+    "detail_id": "entity-paper-spark-vln",
+    "label": "SPARK-VLN（动态社会视觉–语言导航）",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
   },
   "top_communities": [
     {
@@ -271,7 +271,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 911,
+      "degree": 912,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

@@ -10,7 +10,7 @@ tags:
   - pixel-goal
   - alibaba
 status: complete
-updated: 2026-08-31
+updated: 2026-09-07
 arxiv: "2607.10383"
 related:
   - ../tasks/vision-language-navigation.md
