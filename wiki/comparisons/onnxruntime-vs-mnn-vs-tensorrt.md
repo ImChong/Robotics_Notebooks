@@ -2,7 +2,7 @@
 type: comparison
 tags: [deployment, inference, onnx, onnxruntime, mnn, tensorrt, edge-ai, robotics]
 status: complete
-updated: 2026-07-26
+updated: 2026-09-07
 related:
   - ../entities/onnx.md
   - ../entities/onnxruntime.md

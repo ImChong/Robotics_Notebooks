@@ -2459,6 +2459,13 @@
         "apple-machine-learning-research"
       ]
     },
+    "architect-labs": {
+      "label": "架构实验室（Architect Labs）",
+      "aliases": [
+        "architect-labs",
+        "architectlabs"
+      ]
+    },
     "nudt": {
       "label": "国防科技大学（NUDT）",
       "aliases": [

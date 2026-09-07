@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3855,
-  "edge_count": 34275,
+  "node_count": 3856,
+  "edge_count": 34283,
   "coverage": {
-    "covered": 3828,
-    "total": 3828,
+    "covered": 3829,
+    "total": 3829,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -238,11 +238,11 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 222
+      "size": 224
     },
     {
       "label": "仿真到现实",
-      "size": 164
+      "size": 167
     }
   ],
   "top_hubs": [

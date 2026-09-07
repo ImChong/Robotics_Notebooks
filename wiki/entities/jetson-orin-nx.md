@@ -2,10 +2,11 @@
 type: entity
 tags: [entity, hardware, edge-ai, nvidia, jetson, orin, onboard-compute, robotics]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-07
 related:
   - ./nvidia-jetson.md
   - ./jetson-ai-lab.md
+  - ./paper-redwood-architectlabs-accelerator.md
   - ../concepts/edge-cloud-robotics.md
   - ../concepts/lidar-sensing.md
   - ./quadruped-robot.md
@@ -82,6 +83,7 @@ flowchart TB
 - **不是训练卡：** 大模型 SFT/RL 仍应在桌面 GPU/集群；Orin 超载会导致导航掉帧。
 - **型号差异：** Orin Nano / NX / AGX 算力与接口不同，迁移时重测延迟预算。
 - **供电：** 峰值推理 + 传感器同时工作时需核对机器人电源分配。
+- **新兴定制硅：** physical AI 专用加速器（如 [Redwood（Architect Labs）](./paper-redwood-architectlabs-accelerator.md) 投影相对 Orin Nano 更高 perf/W）尚处 FPGA/投影阶段，量产前仍以 Jetson 生态为默认可采购基线。
 
 ## 关联页面
 
@@ -93,6 +95,7 @@ flowchart TB
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 - [RoamFlow](./paper-roamflow.md) — Go2 + Orin NX 16GB 机载 image-goal 导航（~37 ms 推理）
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [Redwood（Architect Labs AI 加速器）](./paper-redwood-architectlabs-accelerator.md) — physical AI 定制推理硅（勿与 1X Redwood WM 混淆）
 
 ## 参考来源
 
