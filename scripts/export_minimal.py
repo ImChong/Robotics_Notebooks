@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
@@ -1106,6 +1107,41 @@ def load_page_aliases(detail_pages: Dict[str, Dict]) -> Dict[str, str]:
     return aliases
 
 
+def write_page_exports(site_payload: Dict, output_dir: Path) -> None:
+    """Publish metadata and immutable bodies while keeping the full v1 export.
+
+    Hash filenames support all existing IDs (including Unicode) without using
+    IDs as filesystem paths. Only the dedicated generated directory is pruned.
+    """
+    detail_pages = {}
+    body_dir = output_dir / "page-content"
+    body_dir.mkdir(parents=True, exist_ok=True)
+    expected = set()
+    for page_id, entry in site_payload["pages"]["detail_pages"].items():
+        body = json.dumps(
+            {"version": "v1", "id": page_id, "content_markdown": entry["content_markdown"]},
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        filename = f"{hashlib.sha256(body).hexdigest()}.json"
+        expected.add(filename)
+        (body_dir / filename).write_bytes(body)
+        detail_pages[page_id] = {
+            key: value for key, value in entry.items() if key != "content_markdown"
+        }
+        detail_pages[page_id]["content_url"] = f"exports/page-content/{filename}"
+    catalog = {
+        **site_payload,
+        "content_mode": "per-page-v1",
+        "pages": {**site_payload["pages"], "detail_pages": detail_pages},
+    }
+    # Write the catalog after every referenced body exists.
+    write_json(output_dir / "site-catalog-v1.json", catalog)
+    for stale in body_dir.glob("*.json"):
+        if stale.name not in expected:
+            stale.unlink()
+
+
 def generate_sitemap(items: List[Dict], base_url: str = BASE_URL) -> str:
     """生成 sitemap.xml，包含首页、预览页和所有 detail_pages。"""
     base_url = base_url.rstrip("/")
@@ -1180,6 +1216,8 @@ def main() -> None:
     write_json(SITE_OUTPUT, site_payload)
     write_json(DOCS_OUTPUT, payload)
     write_json(DOCS_SITE_OUTPUT, site_payload)
+    write_page_exports(site_payload, OUTPUT.parent)
+    write_page_exports(site_payload, DOCS_OUTPUT.parent)
 
     sitemap_content = generate_sitemap(items, BASE_URL)
     SITEMAP_OUTPUT.parent.mkdir(parents=True, exist_ok=True)

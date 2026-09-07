@@ -29,6 +29,10 @@ docs/exports/wiki-activity.json
 docs/exports/hub-rankings.json
 exports/index-v1.json
 exports/site-data-v1.json
+exports/site-catalog-v1.json
+exports/page-content/
+docs/exports/site-catalog-v1.json
+docs/exports/page-content/
 exports/link-graph.json
 exports/wiki-activity.json
 exports/hub-rankings.json

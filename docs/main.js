@@ -4349,11 +4349,22 @@
 
   function resolveDetailPage(detailId, detailPages) {
     if (!detailId) return null;
-    if (detailPages[detailId]) return detailPages[detailId];
+    if (Object.prototype.hasOwnProperty.call(detailPages, detailId)) return detailPages[detailId];
     if (detailId.indexOf('wiki-entities-') === 0) {
       return detailPages['entity-' + detailId.slice('wiki-entities-'.length)] || null;
     }
     return null;
+  }
+
+  function canonicalRoadmapId(id) {
+    var legacyIds = {
+      'roadmap-route-a-motion-control': 'roadmap-motion-control',
+      'roadmap-if-goal-locomotion-rl': 'roadmap-depth-rl-locomotion',
+      'roadmap-if-goal-imitation-learning': 'roadmap-depth-imitation-learning',
+      'roadmap-if-goal-safe-control': 'roadmap-depth-safe-control',
+      'roadmap-if-goal-contact-manipulation': 'roadmap-depth-contact-manipulation'
+    };
+    return Object.prototype.hasOwnProperty.call(legacyIds, id) ? legacyIds[id] : id;
   }
 
   var DETAIL_MINI_TABLEAU10 = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc948', '#b07aa1', '#ff9da7', '#9c755f', '#bab0ac'];
@@ -5210,13 +5221,13 @@
     if (!detailPage) {
       if (emptySection) emptySection.hidden = false;
       if (emptyState) emptyState.hidden = false;
-      if (titleEl) titleEl.textContent = '未找到对应 detail page';
+      if (titleEl) titleEl.textContent = '未找到这篇知识页';
       if (summaryEl) {
-        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>detail.html?id=wiki-concepts-centroidal-dynamics</code>。';
+        summaryEl.innerHTML = '页面可能已移动或链接不完整。<a href="index.html#wiki-search">返回首页搜索</a>，或<a href="graph.html">浏览知识图谱</a>。';
         removeLoadingState(summaryEl);
       }
       if (metaEl) {
-        metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 detail_pages 项。</p>';
+        metaEl.innerHTML = '';
         removeLoadingState(metaEl);
       }
       renderDetailMetaSource(null);
@@ -5529,23 +5540,12 @@
     const roadmapPages = pages.roadmap_pages || {};
     const detailPages = pages.detail_pages || {};
     const params = new URLSearchParams(window.location.search);
-    const legacyRoadmapIds = {
-      'roadmap-route-a-motion-control': 'roadmap-motion-control'
-    };
     const requestedRoadmapId = params.get('id') || '';
-    const legacyDepthRedirects = {
-      'roadmap-if-goal-locomotion-rl': 'roadmap-depth-rl-locomotion',
-      'roadmap-if-goal-imitation-learning': 'roadmap-depth-imitation-learning',
-      'roadmap-if-goal-safe-control': 'roadmap-depth-safe-control',
-      'roadmap-if-goal-contact-manipulation': 'roadmap-depth-contact-manipulation'
-    };
-    if (legacyDepthRedirects[requestedRoadmapId]) {
-      window.location.replace(
-        'roadmap.html?id=' + encodeURIComponent(legacyDepthRedirects[requestedRoadmapId])
-      );
+    const roadmapId = canonicalRoadmapId(requestedRoadmapId);
+    if (roadmapId !== requestedRoadmapId) {
+      window.location.replace(roadmapHref(roadmapId) + window.location.hash);
       return;
     }
-    const roadmapId = legacyRoadmapIds[requestedRoadmapId] || requestedRoadmapId;
     const roadmapPage = roadmapId ? roadmapPages[roadmapId] : null;
 
     const titleEl = document.getElementById('roadmapTitle');
@@ -6238,15 +6238,100 @@
     }
   }
 
-  function handlePageDataError(error, ids) {
-    // ⚡ Bolt Optimization: Replace chained array operations (.map, .filter, .forEach) with a standard for loop
-    // Expected impact: Eliminates closure creation and intermediate array allocations during error handling.
+  // Catalog and body requests share successful results; rejected requests are retryable.
+  var pageDataRequests = new Map();
+  var loadedPageCatalog = null;
+  var PAGE_CATALOG_URL = 'exports/site-catalog-v1.json';
+
+  function requestPageJson(url, validate) {
+    if (pageDataRequests.has(url)) return pageDataRequests.get(url);
+    var controller = new AbortController();
+    var timer = window.setTimeout(function () { controller.abort(); }, 30000);
+    var request = fetch(url, { signal: controller.signal, cache: 'no-cache' })
+      .then(function (response) {
+        if (!response.ok) {
+          var error = new Error('HTTP ' + response.status);
+          error.status = response.status;
+          throw error;
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        if (!validate(data)) throw new Error('Invalid page data');
+        return data;
+      })
+      .catch(function (error) {
+        pageDataRequests.delete(url);
+        throw error;
+      })
+      .finally(function () { window.clearTimeout(timer); });
+    pageDataRequests.set(url, request);
+    return request;
+  }
+
+  function requestedContentPage(siteData, kind, requestedId) {
+    var pages = siteData.pages;
+    if (kind === 'roadmap') {
+      var roadmapId = canonicalRoadmapId(requestedId);
+      return Object.prototype.hasOwnProperty.call(pages.roadmap_pages, roadmapId) ? pages.detail_pages[roadmapId] : null;
+    }
+    if (kind !== 'detail') return null;
+    var id = Object.prototype.hasOwnProperty.call(pages.page_aliases, requestedId) ? pages.page_aliases[requestedId] : requestedId;
+    return resolveDetailPage(id, pages.detail_pages);
+  }
+
+  function loadSitePageData(kind, requestedId, refreshed) {
+    if (refreshed) pageDataRequests.delete(PAGE_CATALOG_URL);
+    return requestPageJson(PAGE_CATALOG_URL, function (data) {
+      return data && data.version === 'v1' && data.content_mode === 'per-page-v1' &&
+        data.pages && data.pages.detail_pages && data.pages.roadmap_pages && data.pages.page_aliases;
+    }).then(function (catalog) {
+      loadedPageCatalog = catalog;
+      var page = requestedContentPage(catalog, kind, requestedId);
+      if (!page || (kind === 'detail' && page.type === 'roadmap_page')) return catalog;
+      // Only exporter-owned content paths are accepted, never arbitrary URL parameters.
+      if (!/^exports\/page-content\/[a-f0-9]{64}\.json$/.test(page.content_url || '')) {
+        throw new Error('Invalid content URL');
+      }
+      return requestPageJson(page.content_url, function (body) {
+        return body && body.version === 'v1' && body.id === page.id && typeof body.content_markdown === 'string';
+      }).then(function (body) {
+        // Do not hydrate the shared catalog: previews and other entries stay metadata-only.
+        var detailPages = Object.assign({}, catalog.pages.detail_pages);
+        detailPages[page.id] = Object.assign({}, page, { content_markdown: body.content_markdown });
+        return Object.assign({}, catalog, { pages: Object.assign({}, catalog.pages, { detail_pages: detailPages }) });
+      }).catch(function (error) {
+        // A deployment may replace the catalog between the two requests. Refresh once.
+        if (error.status === 404 && !refreshed) return loadSitePageData(kind, requestedId, true);
+        throw error;
+      });
+    });
+  }
+
+  function handlePageDataError(_error, ids) {
+    var first = true;
+    var kind = roadmapPageMount ? 'roadmap' : (detailRoot ? 'detail' : 'catalog');
+    var id = new URLSearchParams(window.location.search).get('id') || '';
+    var page = loadedPageCatalog && requestedContentPage(loadedPageCatalog, kind, id);
     for (var i = 0; i < ids.length; i++) {
       var element = document.getElementById(ids[i]);
-      if (element) {
-        element.innerHTML = '<p class="data-meta">读取 <code>exports/site-data-v1.json</code> 失败：' + escapeHtml(error.message) + '</p>';
-        removeLoadingState(element);
+      if (!element) continue;
+      element.innerHTML = '';
+      removeLoadingState(element);
+      if (!first) continue;
+      first = false;
+      element.innerHTML = '<p role="alert">页面暂时加载失败，请检查网络后重试。</p>' +
+        '<button type="button" class="btn-secondary" data-page-retry>重新加载</button> ' +
+        '<a href="index.html#wiki-search">返回首页搜索</a>';
+      if (page && page.path) {
+        element.innerHTML += ' · <a target="_blank" rel="noopener noreferrer" href="https://github.com/ImChong/Robotics_Notebooks/blob/main/' +
+          escapeHtml(page.path.split('/').map(encodeURIComponent).join('/')) + '">打开原文</a>';
       }
+      element.querySelector('[data-page-retry]').addEventListener('click', function (event) {
+        event.currentTarget.disabled = true;
+        event.currentTarget.textContent = '正在重试…';
+        startPageDataLoad(true);
+      });
     }
   }
 
@@ -6260,14 +6345,10 @@
     document.getElementById('wikiSearchSubtitle') ||
     document.getElementById('homeLatestWikiModule');
 
-  if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapPageMount) {
-    fetch('exports/site-data-v1.json')
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error('HTTP ' + response.status);
-        }
-        return response.json();
-      })
+  function startPageDataLoad(retry) {
+    var kind = roadmapPageMount ? 'roadmap' : (detailRoot ? 'detail' : 'catalog');
+    var id = new URLSearchParams(window.location.search).get('id') || '';
+    return loadSitePageData(kind, id, retry)
       .then(function (siteData) {
         if (previewRoot) renderPreviewPage(siteData);
         if (detailRoot) renderDetailPage(siteData);
@@ -6293,8 +6374,8 @@
         }
         if (detailRoot) {
           handlePageDataError(error, [
-            'detailBreadcrumb',
             'detailSummary',
+            'detailBreadcrumb',
             'detailMeta',
             'detailTocList',
             'detailContent',
@@ -6324,12 +6405,18 @@
         }
         if (roadmapPageMount) {
           handlePageDataError(error, [
-            'roadmapBreadcrumb',
             'roadmapSummary',
-            'roadmapMeta'
+            'roadmapBreadcrumb',
+            'roadmapMeta',
+            'roadmapContent',
+            'roadmapTocList'
           ]);
         }
       });
+  }
+
+  if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapPageMount) {
+    startPageDataLoad(false);
   }
 
   if (homeStatsRoot) {
