@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-07
 arxiv: "2506.07886"
 venue: "ICCV 2025"
 summary: "A unified design supporting multitasking across diverse egocentric perception and synthesis tasks, including gaze prediction, egocentric camera tracking, and monocular depth estimation, and also serves as a generative mo"
 related:
   - ../entities/awesome-egocentric-vision.md
+  - ../entities/paper-reviv4d.md
   - ../overview/sun-awesome-ego-technology-map.md
   - ../methods/vla.md
   - ../methods/imitation-learning.md
@@ -87,6 +88,7 @@ A unified design supporting multitasking across diverse egocentric perception an
 ## 关联页面
 
 - 列表实体：[Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md)
+- 后续统一 4D 重建：[ReViV](../entities/paper-reviv4d.md) — 在 EgoM2P scene-centric 多任务上扩展全身/双手联合分布
 - 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
 - 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
 

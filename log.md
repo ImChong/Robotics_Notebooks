@@ -1,3 +1,5 @@
+## [2026-09-07] ingest | sources/papers/reviv4d_arxiv_2607_17790.md — ReViV 单目 egocentric 统一 4D 重建；GitHub+权重已开源（权重非商用）；关键页 paper-reviv4d
+
 ## [2026-09-07] ingest | sources/papers/redwood_arxiv_2608_26418.md — Architect Labs Redwood AI 加速器（与 1X Redwood WM 消歧）；ALP 两周 RTL→FPGA，未开源
 
 ## [2026-09-07] ingest | sources/papers/moss_transcribe_diarize_arxiv_2601_01554.md — MOSS Transcribe Diarize 0.9B 端到端 SATS（128k/90min）；GitHub+HF 已开源、Pro 仅 MOSI 平台；关键页 paper-moss-transcribe-diarize；交叉 humanoid-voice-interaction / Daily-Omni
