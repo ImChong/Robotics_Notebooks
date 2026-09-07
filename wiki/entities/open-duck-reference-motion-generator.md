@@ -3,13 +3,14 @@
 type: entity
 tags: [imitation, locomotion, placo, reference-motion, open-source, biped, disney, open-duck]
 status: complete
-updated: 2026-05-28
+updated: 2026-09-07
 related:
   - ./open-duck-mini.md
   - ./open-duck-playground.md
   - ../methods/imitation-learning.md
   - ../concepts/reward-design.md
   - ../methods/disney-olaf-character-robot.md
+  - ./open-duck-mini-viewer.md
 sources:
   - ../../sources/repos/open_duck_reference_motion_generator.md
 summary: "Open Duck Reference Motion Generator 用 Rhoban Placo 参数化生成双足参考步态，批量 sweep 后拟合多项式系数，供 Playground 模仿奖励与 Isaac Gym 训练栈消费。"
@@ -66,6 +67,7 @@ uv run scripts/fit_poly.py --ref_motion recordings/
 
 - [Open Duck Mini](./open-duck-mini.md)
 - [Open Duck Playground](./open-duck-playground.md)
+- [Open Duck Mini Viewer](./open-duck-mini-viewer.md) — 浏览器关键帧动作，不是本仓 Placo 轨迹
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Reward Design](../concepts/reward-design.md)
 

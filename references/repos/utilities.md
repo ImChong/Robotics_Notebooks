@@ -11,6 +11,7 @@
 ## Web 端可视化与分析
 - **[robot-explorer](../../wiki/entities/robot-explorer.md)**: 交互式 3D 机器人探索工具，支持运动学分析与可操纵性椭球可视化。
 - **[robot-viewer](../../wiki/entities/robot-viewer.md)**: 多格式（URDF/Xacro/MJCF/USD）查看器，集成 MuJoCo WASM 仿真与实时编辑。
+- **[Open Duck Mini Viewer](../../wiki/entities/open-duck-mini-viewer.md)**: 浏览器内 Open Duck Mini V2 GUI（脚本步态 + URDF，无 MuJoCo）；在线 [Pages demo](https://mertcookimg.github.io/Open_Duck_Mini_Viewer/)。
 
 ## 机器人设计工作站
 - **[urdf-studio](../../wiki/entities/urdf-studio.md)**: 专业级 Web 机器人设计与组装平台，支持 Skeleton/Detail/Hardware 全流程管理与 AI 辅助。

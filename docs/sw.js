@@ -1,5 +1,5 @@
 // Robotics Notebooks Service Worker — 离线缓存支持
-const CACHE_NAME = 'robotics-wiki-2026-09-06';
+const CACHE_NAME = 'robotics-wiki-2026-09-07';
 const CACHE_PREFIX = 'robotics-wiki-';
 const PROJECT_PATH = new URL(self.registration.scope).pathname;
 const ASSETS_TO_CACHE = [
