@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3823,
-  "edge_count": 34046,
+  "node_count": 3833,
+  "edge_count": 34089,
   "coverage": {
-    "covered": 3796,
-    "total": 3796,
+    "covered": 3806,
+    "total": 3806,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -230,11 +230,11 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 717
+      "size": 719
     },
     {
       "label": "操作",
-      "size": 622
+      "size": 614
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -242,7 +242,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 243
+      "size": 257
     },
     {
       "label": "机器人学习论文笔记",
@@ -271,19 +271,19 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 918,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
       "degree": 911,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 909,
-      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-generative-world-models",

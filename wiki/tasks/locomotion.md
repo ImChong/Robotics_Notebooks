@@ -379,6 +379,11 @@ flowchart TD
 - [PRISM](../entities/paper-prism.md) — 多项式本体交互；Humanoid-Gym 生存率大幅高于同容量更大 MLP（arXiv:2607.23473）
 - [Fault-Tolerant Locomotion](../entities/paper-fault-tolerant-locomotion.md) — KYON 68 kg 执行器功率损失容错 + 可学习步态频率（arXiv:2608.07328；未开源）
 - [P³](../entities/paper-p3.md) — VAE-PPO 边缘似然；G1 感知踏石/楼梯/缺口（arXiv:2607.25541）
+- [MulDP](../entities/paper-muldp.md) — 四足跑酷自主导航扩散速度指令；QPND + SR 89.7%（arXiv:2609.03984；未见代码）
+- [Contact-Guided Exploration](../entities/paper-contact-guided-exploration-locomanipulation.md) — 多 Critic 接触探索衰减；ALMA 椅运真机（arXiv:2608.28140）
+- [eBert NNM 步态](../entities/paper-ebert-nonlinear-normal-modes.md) — 高柔顺四足六种非线性正规模涌现步态（arXiv:2609.00539）
+- [QLAUN](../entities/paper-qlaun.md) — 15 kg 全 3D 打印 QDD 模块化四足（arXiv:2609.03623；宣称将开源）
+- [SleepWalking (SWAQ)](../entities/paper-sleepwalking.md) — 特权重建塑造盲走表征；相对 DWAQ 峰值地形 +15%（arXiv:2608.30883）
 
 ## 推荐继续阅读
 

@@ -119,6 +119,11 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [WM-LOCO](../entities/paper-wm-loco.md) — RSSM+PPO 单深度预测特征；仿真沟/踏石上匹配 PPO 为 0%，G1 机载三类平均 93.3%（arXiv:2609.02542；代码待发布）
 - [Safe-Stop](../entities/paper-safe-stop-humanoid.md) — 急停可停止性双估计 + 阻尼 fallback；G1 OOD 停止 96.4%（arXiv:2609.02358；代码待发布）
 - [BRIDGE](../entities/paper-bridge-humanoid.md) — 形态–控制共设计的 80 cm / 12.5 kg / 21 DoF / ~$1500 人形（arXiv:2609.03497；CAD 已放，控制仓待录用）
+- [IHMC 可编辑 loco-manipulation 系统](../entities/paper-ihmc-fast-resilient-loco-manipulation.md) — Affordance Template + 行为树；H1-2/Alex 推门 34 s（arXiv:2609.01518；未见代码）
+- [RoboGesture](../entities/paper-robogesture.md) — 流式语音→G1 语义手势；DiT-CFM + MPC 安全滤波（arXiv:2608.28693；未开源）
+- [下肢关节零位标定](../entities/paper-contact-constrained-joint-offset-calibration.md) — 双支撑脚间变换一致性；AgiBot A2/A3（arXiv:2609.02306；未开源）
+- [双凸轮并联弹性踝](../entities/paper-dual-cam-parallel-elastic-ankle.md) — IIT 2-DoF PEA 单气弹簧双轴补偿（arXiv:2608.30832）
+- [动态多模态 HRI 数据集协议](../entities/paper-dynamic-multimodal-hri-dataset-u1.md) — Unitree U1 三档复杂度采集设计（arXiv:2609.03255；数据待发布）
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，高程图失效时切盲走恢复（G1/H1，ICRA 2026；代码 coming soon）
 - [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide
 - [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
