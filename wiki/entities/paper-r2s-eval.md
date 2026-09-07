@@ -105,6 +105,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md)
 - [Isaac Lab Arena](./isaac-lab-arena.md)
 - [具身资源与可靠性 9 篇地图](../overview/embodied-resources-reliability-9-papers-technology-map.md)
+- [具身评测基准选型闭环知识链枢纽](../overview/hub-embodied-eval-benchmark.md) — R2S-Eval 同时作用于「sim↔real 评测 gap 校准」与「策略任务成功率评测」两层：先用 real-to-sim 校准把仿真拉回真机口径，再用 VLM 偏好排名替换成功率计数
 
 ## 参考来源
 

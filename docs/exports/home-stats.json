@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-06",
   "node_count": 3823,
-  "edge_count": 34027,
+  "edge_count": 34034,
   "coverage": {
     "covered": 3796,
     "total": 3796,
@@ -238,7 +238,7 @@
     },
     {
       "label": "操作",
-      "size": 634
+      "size": 633
     },
     {
       "label": "国内开源全景 424 项本库导读",

@@ -240,6 +240,7 @@ README 单列：**NIST Board 1**、**NVIDIA Isaac GR00T Industrial**、**[DexBen
 - [Isaac Teleop](./isaac-teleop.md)
 - [VLA 方法](../methods/vla.md)
 - [Manipulation 任务](../tasks/manipulation.md)
+- [具身评测基准选型闭环知识链枢纽](../overview/hub-embodied-eval-benchmark.md) — Arena 落在「策略任务成功率评测」层：GPU 大规模 rollout 换吞吐，代价是 sim↔real 评测 gap 仍需另行校准
 
 ## 一句话记忆
 

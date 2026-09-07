@@ -208,6 +208,19 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 与 stop（BehaviorTree 命令名 / 动作枚举）同类运行时命令 token，非机器人
     # 概念/方法/形式化，不应建独立页。
     "play",
+    # alpha：三义被小写 slug 合并——SAC 的熵温度系数 `alpha`（自动 entropy tuning，
+    # 其语义已在 comparisons/ppo-vs-sac.md 与 queries/rl-hyperparameter-guide.md 的
+    # 超参表逐条释义）、互补滤波/估计器的融合系数（concepts/state-estimation.md）、
+    # 以及成熟度或产品标签 **Alpha**（Isaac Lab-Arena 的发布档、KinetIQ 的双臂机型）。
+    # 与 clip（模型名 vs 限幅动词）同类语义噪声，非单一可成页概念。
+    "alpha",
+    # task：各页正文里的 `Task` / **Task** 均为评测框架的类抽象与字段名——Inspect
+    # Robots / Isaac Lab-Arena / Robocurve / DeepInsight 的 `Task`（episode driver，
+    # 与 `Scene`/`Scorer` 并列，语义已在各页 API 表逐条释义）、ScienceDiscovery 的
+    # 子代理调用名 `task`、PRM-as-a-Judge 的 JSONL 字段 `task`；同时是 frontmatter
+    # `type: task` 的类型值。任务域本体归 `wiki/tasks/*`（locomotion /
+    # loco-manipulation / manipulation 等），与 type/tags 同类类型 token，不建概念页。
+    "task",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -238,6 +251,12 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                对照）：与 ethercat / ros2 / urdf 同属「缩写 slug ≠ 页面 stem」，
 #                不应按裸缩写误报为缺页
 #   lerobot    → entities/lerobot.md（Hugging Face 具身智能全栈框架，库/工具）
+#   lerobot-eval → entities/lerobot.md（该框架的评测 CLI 入口，与 `lerobot-train` /
+#                `lerobot-isaac-import` 同属命令表）+ concepts/lerobot-envhub.md
+#                （`lerobot-eval --env.hub_path=...` 是 EnvHub 闭环的调用形态，
+#                该页 CLI 缩写速查与最小复现块逐条释义）：与 onpolicyrunner（类名）、
+#                已作停用词的 `eval`（裸命令名）同类工具链 token，本体是已建页的
+#                框架与环境分发机制，不单建概念页
 #   mjlab      → entities/mjlab.md（库/工具）
 #   mujoco     → entities/mujoco.md（仿真器/工具）
 #   sonic      → methods/sonic-motion-tracking.md（具体方法）
@@ -294,6 +313,12 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                （选型对照）+ entities/navigation2.md / unitree-ros2.md（发行版与
 #                厂商包）：与 wbc / urdf / rl 同属「slug ≠ 页面 stem」，不应按裸名
 #                误报为缺页
+#   ros        → concepts/ros2-basics.md（同一 canonical 定义页；命中处均为泛指
+#                「ROS 生态 / ROS 臂 / ROS 桥 / ROS 话题」的裸名写法，如 AirSim 的
+#                ROS 封装、XTDrone 的 ROS 接口、Inspect Robots 的 `agent` 换 ROS 臂）
+#                + comparisons/ros2-vs-lcm.md（选型对照）+ concepts/rmw-interface.md：
+#                与 ros2 同属「缩写 slug ≠ 页面 stem」的同一概念，另建 concepts/ros.md
+#                只会与 ros2-basics 重复同一来源
 #   action     → formalizations/mdp.md（动作空间 $A$ 的 canonical 定义）+
 #                methods/action-chunking.md（多步动作序列输出）+
 #                concepts/world-action-models.md（动作后果预测）+
@@ -360,6 +385,8 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "joint",  # 关节属性 / WAM Joint 族 / 消融条件名三义，已由 URDF + WAM 等页覆盖
     "lcm",  # 已由 concepts/lcm-basics.md 覆盖（缩写 slug 与页面 stem 不同名）
     "lerobot",  # 已由 entities/lerobot.md 覆盖（框架/工具，与 mjlab / mujoco 同类）
+    # LeRobot 的评测 CLI 入口，已由 entities/lerobot.md + concepts/lerobot-envhub.md 覆盖
+    "lerobot-eval",
     "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
     "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
@@ -372,6 +399,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "rgb-d",  # 传感模态标签，已由六种空间表征 / 三维坐标变换等页覆盖
     "rl",  # 已由 methods/reinforcement-learning.md 覆盖（缩写 slug 与页面 stem 不同名）
     "sim-to-real",  # 已由 concepts/sim2real.md 覆盖（全称写法与页面 stem 不同名）
+    "ros",  # 裸名写法，已由 concepts/ros2-basics.md 覆盖（与 ros2 同一 canonical 页）
     "ros2",  # 已由 concepts/ros2-basics.md 覆盖（slug 与页面 stem 不同名）
     "sonic",
     # state：三义各有归属——决策过程里的状态量已由 formalizations/mdp.md /
