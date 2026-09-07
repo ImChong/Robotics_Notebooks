@@ -2,7 +2,7 @@
 type: method
 tags: [data-engine, vlm, labeling, data-collection, machine-learning]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-07
 related:
   - ../concepts/embodied-scaling-laws.md
   - ../methods/vla.md

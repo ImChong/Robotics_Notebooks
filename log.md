@@ -1,3 +1,5 @@
+## [2026-09-07] ingest | sources/papers/mint_arxiv_2609_04958.md — MINT 世界系相机+双手基础模型；已开源权重/Viewer/1,021h 数据集
+
 ## [2026-09-07] ingest | sources/papers/redwood_arxiv_2608_26418.md — Architect Labs Redwood AI 加速器（与 1X Redwood WM 消歧）；ALP 两周 RTL→FPGA，未开源
 
 ## [2026-09-07] ingest | sources/papers/moss_transcribe_diarize_arxiv_2601_01554.md — MOSS Transcribe Diarize 0.9B 端到端 SATS（128k/90min）；GitHub+HF 已开源、Pro 仅 MOSI 平台；关键页 paper-moss-transcribe-diarize；交叉 humanoid-voice-interaction / Daily-Omni

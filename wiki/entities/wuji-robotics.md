@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand, wuji-robotics]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-07
 related:
   - ./humanoid-robot.md
   - ./allegro-hand.md
@@ -19,9 +19,11 @@ related:
   - ./current-robotics-currentworld.md
   - ./kyber-labs.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ./paper-mint-ego-world-space-camera-hand-motion.md
 sources:
   - ../../sources/sites/wuji_robotics.md
   - ../../sources/sites/allhandsup-org.md
+  - ../../sources/repos/wuji-ego-mint.md
 summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电机（F 系列 / Pan Motor 叙事）与官方文档确认的五指灵巧手 Wuji Hand，配套 SDK、ROS2、MuJoCo 描述与遥操作 Retargeting；研发在上海、量产在常州。"
 ---
 
@@ -115,11 +117,13 @@ summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电�
 - [Kyber Labs](./kyber-labs.md) — 同为产业侧 **五指灵巧手 × 具身 AI** 路线；Kyber 强调背驱动与数百美元级成本叙事
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 无级机器人的执行器/灵巧手硬件是本驱动链的产业实体之一
 - [All Hands Up](./all-hands-up.md) — RLWRLD 将 Wuji Hand V1.1 列为轻量拟人、**不背驱**、小工具表现好的案例（仿真 Kapandji 10/11）
+- [MINT（论文实体）](./paper-mint-ego-world-space-camera-hand-motion.md) — 舞肌联合发布的 egocentric 世界系相机+双手基础模型，含 Wuji Hand MuJoCo retargeting 演示
 
 ## 参考来源
 
 - [舞肌科技原始资料汇编](../../sources/sites/wuji_robotics.md)
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
+- [wuji-ego-mint 代码仓库索引](../../sources/repos/wuji-ego-mint.md)
 
 ## 推荐继续阅读
 
