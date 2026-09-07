@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-argus-deepfake-forensics.md",
+      "detail_id": "entity-paper-argus-deepfake-forensics",
+      "label": "ARGUS：可泛化深度伪造视频检测的多智能体取证推理",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
       "path": "wiki/entities/image-blaster.md",
       "detail_id": "entity-image-blaster",
       "label": "image-blaster",
@@ -197,27 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/queries/humanoid-robot-data-collection-landscape.md",
-      "detail_id": "wiki-queries-humanoid-robot-data-collection-landscape",
-      "label": "Query：人形机器人数据采集产业地图",
-      "type": "query",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/image-blaster.md",
-    "detail_id": "entity-image-blaster",
-    "label": "image-blaster",
+    "path": "wiki/entities/paper-argus-deepfake-forensics.md",
+    "detail_id": "entity-paper-argus-deepfake-forensics",
+    "label": "ARGUS：可泛化深度伪造视频检测的多智能体取证推理",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
   },
   "top_communities": [
     {
