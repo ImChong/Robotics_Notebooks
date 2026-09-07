@@ -38,6 +38,8 @@
 | 参考运动 / 模仿奖励 | [Open_Duck_reference_motion_generator](https://github.com/apirrone/Open_Duck_reference_motion_generator) → [open_duck_reference_motion_generator.md](open_duck_reference_motion_generator.md) |
 | 机载部署（Raspberry Pi Zero 2W） | [Open_Duck_Mini_Runtime](https://github.com/apirrone/Open_Duck_Mini_Runtime) → [open_duck_mini_runtime.md](open_duck_mini_runtime.md) |
 
+社区浏览器预览（非官方仓）：[mertcookimg/Open_Duck_Mini_Viewer](https://github.com/mertcookimg/Open_Duck_Mini_Viewer) → [open_duck_mini_viewer.md](open_duck_mini_viewer.md)
+
 ## 硬件与制造
 
 - **CAD（v2）：** [Onshape 公开文档](https://cad.onshape.com/documents/64074dfcfa379b37d8a47762/w/3650ab4221e215a4f65eb7fe/e/0505c262d882183a25049d05)
@@ -67,5 +69,6 @@
 | MuJoCo Playground 训练 | `wiki/entities/open-duck-playground.md` |
 | 参考运动生成 | `wiki/entities/open-duck-reference-motion-generator.md` |
 | 机载 Runtime | `wiki/entities/open-duck-mini-runtime.md` |
+| 社区浏览器 Viewer | `wiki/entities/open-duck-mini-viewer.md` |
 | 娱乐双足 / BDX 路线 | `wiki/methods/disney-olaf-character-robot.md`（机构与奖励哲学对照） |
 | Sim2Real | `wiki/concepts/sim2real.md` |

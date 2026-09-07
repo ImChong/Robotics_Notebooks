@@ -3,7 +3,7 @@
 type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx, disney, open-duck]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-07
 related:
   - ./open-duck-playground.md
   - ./open-duck-reference-motion-generator.md
@@ -15,10 +15,12 @@ related:
   - ./open-source-humanoid-hardware.md
   - ./disney-research-la.md
   - ./pollen-microduck.md
+  - ./open-duck-mini-viewer.md
 sources:
   - ../../sources/repos/open_duck_mini.md
   - ../../sources/sites/tnkr-open-duck-mini-v2.md
   - ../../sources/sites/disney-research-la.md
+  - ../../sources/repos/open_duck_mini_viewer.md
 summary: "Open Duck Mini 是 Disney BDX 双足角色的开源迷你复刻（v2 约 42 cm、BOM 目标 <$400）：Onshape CAD + Feetech 舵机 + 四仓分工（Hub / Playground / 参考运动 / Runtime），完整覆盖 CAD→MJX→RL→Pi Zero 2W 真机。"
 ---
 
@@ -55,6 +57,8 @@ summary: "Open Duck Mini 是 Disney BDX 双足角色的开源迷你复刻（v2 �
 | [Open_Duck_Playground](./open-duck-playground.md) | MuJoCo Playground RL 环境与训练 |
 | [Open_Duck_reference_motion_generator](./open-duck-reference-motion-generator.md) | Placo 参数化步态 → 模仿奖励系数 |
 | [Open_Duck_Mini_Runtime](./open-duck-mini-runtime.md) | Raspberry Pi Zero 2W 机载推理与硬件驱动 |
+
+社区另有浏览器 GUI（**不是**官方第五仓）：[Open Duck Mini Viewer](./open-duck-mini-viewer.md) 用脚本步态在网页里预览 v2 URDF，不跑 Playground ONNX。
 
 ## 流程总览
 
@@ -119,6 +123,7 @@ flowchart TD
 ## 参考来源
 
 - [sources/repos/open_duck_mini.md](../../sources/repos/open_duck_mini.md)
+- [Open Duck Mini Viewer 仓库归档](../../sources/repos/open_duck_mini_viewer.md)
 - [Tnkr Open Duck Mini V2 项目文档](../../sources/sites/tnkr-open-duck-mini-v2.md)
 - [apirrone/Open_Duck_Mini](https://github.com/apirrone/Open_Duck_Mini)（v2 分支）
 - Disney Research：[Design and Control of a Bipedal Robotic Character (BDX)](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/)
@@ -129,6 +134,7 @@ flowchart TD
 - [Open Duck Playground](./open-duck-playground.md)
 - [Open Duck Reference Motion Generator](./open-duck-reference-motion-generator.md)
 - [Open Duck Mini Runtime](./open-duck-mini-runtime.md)
+- [Open Duck Mini Viewer](./open-duck-mini-viewer.md) — 社区浏览器预览（脚本步态，非官方仓）
 - [Tnkr](./tnkr.md) — 平台级文档与 Open Duck v2 范例项目
 - [Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)
 - [Disney Research LA](./disney-research-la.md) — BDX / Olaf 等官方论文门户

@@ -226,6 +226,7 @@
 | [x] [open_duck_playground.md](repos/open_duck_playground.md) | Open Duck Playground：MuJoCo Playground/MJX RL 训练与 ONNX 导出 |
 | [x] [open_duck_reference_motion_generator.md](repos/open_duck_reference_motion_generator.md) | Open Duck 参考运动：Placo 参数化步态 → 模仿奖励系数 |
 | [x] [open_duck_mini_runtime.md](repos/open_duck_mini_runtime.md) | Open Duck Mini Runtime：Pi Zero 2W 机载 ONNX 与 Feetech 驱动 |
+| [x] [open_duck_mini_viewer.md](repos/open_duck_mini_viewer.md) | Open Duck Mini Viewer：浏览器 URDF GUI（mertcookimg，脚本步态，Pages demo） |
 | [x] [axellwppr_motion_tracking.md](repos/axellwppr_motion_tracking.md) | Axellwppr/motion_tracking：GentleHumanoid 全身跟踪训练/部署（mjlab，含 VR teleop 与 ONNX sim2real） |
 | [x] [amp_mjlab.md](repos/amp_mjlab.md) | AMP_mjlab：Unitree G1 统一 AMP locomotion+recovery 策略（mjlab + rsl_rl） |
 | [x] [amp_for_hardware.md](repos/amp_for_hardware.md) | AMP_for_hardware：四足 AMP 工程基座（Isaac Gym + legged_gym） |
@@ -551,6 +552,7 @@
 | [x] [worldlabs-ai.md](sites/worldlabs-ai.md) | World Labs 官网：Marble / Spark / Marble Labs；Spark 2.0 见 blogs/worldlabs_spark_2_0_streaming_3dgs.md |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |
 | [x] [tnkr-open-duck-mini-v2.md](sites/tnkr-open-duck-mini-v2.md) | Tnkr Open Duck Mini V2 项目文档（Print/BOM/装配/线束/Runtime/部署/训练） |
+| [x] [open-duck-mini-viewer-github-io.md](sites/open-duck-mini-viewer-github-io.md) | Open Duck Mini Viewer GitHub Pages 在线 demo（脚本步态 GUI） |
 | [x] [twist2-project.md](sites/twist2-project.md) | TWIST2 项目页 yanjieze.com/projects/TWIST2（颈增广、PICO 遥操作、分层 visuomotor、开源数据；ICRA 2026） |
 | [x] [unity-com.md](sites/unity-com.md) | Unity 官网与 Unity Engine 产品页（Unity 6/6.5、AI、多平台与 Industry） |
 | [x] [unity-manual-6-5.md](sites/unity-manual-6-5.md) | Unity 6.5 User Manual 与 docs.unity.com 文档门户（含中文） |

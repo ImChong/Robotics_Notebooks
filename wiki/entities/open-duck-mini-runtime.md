@@ -3,7 +3,7 @@
 type: entity
 tags: [deployment, sim2real, embedded, raspberry-pi, open-source, biped, disney, open-duck]
 status: complete
-updated: 2026-07-01
+updated: 2026-09-07
 related:
   - ./open-duck-mini.md
   - ./open-duck-playground.md
@@ -11,6 +11,7 @@ related:
   - ./xpad.md
   - ../concepts/sim2real.md
   - ../concepts/processor-in-the-loop-sim2real.md
+  - ./open-duck-mini-viewer.md
 sources:
   - ../../sources/repos/open_duck_mini_runtime.md
   - ../../sources/sites/tnkr-open-duck-mini-v2.md
@@ -82,6 +83,7 @@ summary: "Open Duck Mini Runtime 在 Raspberry Pi Zero 2W 上运行 ONNX 行走�
 
 - [Open Duck Mini](./open-duck-mini.md)
 - [Open Duck Playground](./open-duck-playground.md)
+- [Open Duck Mini Viewer](./open-duck-mini-viewer.md) — 浏览器预览；关节 home 被 Viewer 对齐，但不能代替本仓上机
 - [Tnkr](./tnkr.md)
 - [xpad](./xpad.md) — Linux USB Xbox 手柄驱动（与蓝牙 HID 路径对照）
 - [Sim2Real](../concepts/sim2real.md)
