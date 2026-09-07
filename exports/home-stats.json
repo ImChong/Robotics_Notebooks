@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/cad-1000-hours-dataset.md",
+      "detail_id": "entity-cad-1000-hours-dataset",
+      "label": "CAD 1000 Hours（Markov AI）",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/paper-argus-deepfake-forensics.md",
       "detail_id": "entity-paper-argus-deepfake-forensics",
       "label": "ARGUS：可泛化深度伪造视频检测的多智能体取证推理",
@@ -198,28 +208,17 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/tesla-optimus.md",
-      "detail_id": "entity-tesla-optimus",
-      "label": "Tesla Optimus",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-argus-deepfake-forensics.md",
-    "detail_id": "entity-paper-argus-deepfake-forensics",
-    "label": "ARGUS：可泛化深度伪造视频检测的多智能体取证推理",
+    "path": "wiki/entities/cad-1000-hours-dataset.md",
+    "detail_id": "entity-cad-1000-hours-dataset",
+    "label": "CAD 1000 Hours（Markov AI）",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
