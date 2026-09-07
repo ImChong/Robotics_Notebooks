@@ -1,3 +1,5 @@
+## [2026-09-07] ingest | sources/papers/moss_transcribe_diarize_arxiv_2601_01554.md — MOSS Transcribe Diarize 0.9B 端到端 SATS（128k/90min）；GitHub+HF 已开源、Pro 仅 MOSI 平台；关键页 paper-moss-transcribe-diarize；交叉 humanoid-voice-interaction / Daily-Omni
+
 ## [2026-09-07] ingest | sources/blogs/wechat_shenlan_motion_retargeting_three_routes_2026-09-07.md — 深蓝运动重定向三路综述；新建 MoReFlow / AdaMorph 实体 + Query 索引；复用 GMR/PHC/H2H/DynaRetarget/ReActor/OmniRetarget 已有页
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/QKPp9grbgpy6-NBNm5Nl-w>，要求每篇论文/项目独立节点
