@@ -3,13 +3,15 @@
 type: entity
 tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-07
 related:
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./benjamin-katz.md
   - ./mit-mini-cheetah.md
   - ./humanoid-robot.md
   - ./quadruped-robot.md
+  - ./tesla-optimus.md
+  - ../queries/humanoid-robot-data-collection-landscape.md
   - ./paper-autonomous-spot-nebula-exploration.md
   - ./paper-spot-rl-distributional-sim2real.md
   - ./patent-boston-dynamics-legged-control-stack.md
@@ -19,6 +21,7 @@ related:
   - ../methods/model-predictive-control.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
+  - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
 summary: "Boston Dynamics 是全球足式机器人的领军企业，旗下的 Atlas 和 Spot 分别定义了人形与四足机器人的最高动态性能标准。其基于解析动力学的模型预测控制（MPC）与全身控制（WBC）技术栈至今仍是行业标杆。"
 ---
 
@@ -53,6 +56,10 @@ Spot 是全球最成功的商业化足式机器人，广泛应用于工业巡检
 ### 3. Stretch (仓储机器人)
 Stretch 是一款针对物流搬运设计的非类人机器人。它拥有一个巨大的多自由度机械臂和一个带有吸盘的末端执行器，安装在全向移动底座上。Stretch 展示了波士顿动力将过去在足式平衡中积累的“质心控制”与“动态操作”技术，成功降维并迁移到工业垂直领域的商业能力。
 
+### 4. 遥操作数据采集（产业读法）
+
+LeoInAI Substack（2026-09）将 Boston Dynamics 列为 **VR 遥操作采数** 代表：操作员佩戴 **VR 头显 + 胸/脚追踪器**，同步记录 **egocentric 视角、手部姿态与关节角**，数据在机器人 onboard 落盘以减少同步缝隙。详见 [人形数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md)。
+
 ## 核心技术路线与工程哲学
 
 1. **基于优化的控制 (Optimization-based Control)**：Boston Dynamics 在过去二十年的长项在于基于解析动力学模型的最优控制算法。Atlas 的平稳运动很大程度上归功于其对 WBC 和接触力摩擦锥（Friction Cone）优化的极致压榨。他们能够在 1000Hz 的频率下实时求解复杂的机器人动力学方程。
@@ -75,6 +82,7 @@ Stretch 是一款针对物流搬运设计的非类人机器人。它拥有一个
 - [Locomotion 任务](../tasks/locomotion.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
+- [人形数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md)
 
 ## 参考来源
 - Boston Dynamics 官方网站与技术博客。

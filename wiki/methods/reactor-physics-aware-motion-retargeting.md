@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, reinforcement-learning, bilevel-optimization, humanoid, quadruped, imitation-learning, paper, humanoid-paper-notebooks]
 status: complete
 date: 2026-05-13
-updated: 2026-08-06
+updated: 2026-09-07
 arxiv: "2605.06593"
 related:
   - ../overview/paper-notebook-category-02-motion-retargeting.md

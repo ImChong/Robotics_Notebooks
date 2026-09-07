@@ -3,16 +3,19 @@
 type: entity
 tags: [hardware, humanoid, industry, vla, figure-ai]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-07
 related:
   - ./humanoid-robot.md
   - ./1x-technologies.md
+  - ./shift-app-nyc.md
+  - ../queries/humanoid-robot-data-collection-landscape.md
   - ../methods/vla.md
   - ../queries/humanoid-hardware-selection.md
   - ../queries/embodied-six-routes-holes.md
 sources:
   - ../../sources/repos/figure-ai.md
   - ../../sources/blogs/wechat_shenlan_embodied_six_routes_holes_2026-09-04.md
+  - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
 summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。"
 ---
 
@@ -42,7 +45,7 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 |------|------|------|
 | **Figure 02** | 全尺寸人形整机 | 面向落地场景的第二代平台（细节以官方规格为准） |
 | **Helix / Helix 02** | VLA 家族 | 官方新闻稿：upper-body → full-body。深蓝 2026-09-04 转述其按时间尺度分层：System 2 语义、System 1 ~200 Hz 全身关节、System 0 ~1 kHz 平衡/接触——**以 Figure 博客为准** |
-| **Index** | 人视频数据平台 | 同文转述：截至 2026-08-25 自称累计超 **1600 万** 条真实世界视频；条数以 Figure 官方为准 |
+| **Index** | 人视频数据平台 | App 下载 + 佩戴录制设备，用户完成日常任务获报酬（[LeoInAI 2026-09](../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md)）；同文转述截至 2026-08-25 自称累计超 **1600 万** 条真实世界视频 |
 
 ## 常见误区或局限
 
@@ -57,6 +60,7 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 - [1X Technologies](./1x-technologies.md)
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — Helix 分层与 Index 数据饥渴的产业读法
+- [人形数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md) — Index 与 Shift 等「服务/众包换数据」对照
 
 ## 参考来源
 

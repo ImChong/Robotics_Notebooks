@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-04
+updated: 2026-09-07
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -298,6 +298,9 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [PHUMA](../entities/dataset-bfm-phuma.md) — 预重定向 G1/H1-2 locomotion（PhySINK）
 - [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) — 真机人形操作多模态集
 - [人形数据五集选型](../comparisons/humanoid-reference-motion-datasets.md)
+- [MoReFlow（flow matching 无配对重定向）](../entities/paper-moreflow-motion-retargeting-flow.md) — VQ-VAE token + flow matching 跨角色对齐（arXiv:2509.25600）
+- [AdaMorph（统一 Transformer 重定向）](../entities/paper-adamorph-unified-motion-retargeting.md) — 12 机种一模型；intent + AdaLN（arXiv:2601.07284；≠ UMR 点云对应）
+- [三路技术地图 Query](../queries/motion-retargeting-three-routes-landscape.md) — 深蓝 2026-09-07 公众号综述索引
 - [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) — interaction mesh 硬约束 + 单演示增广的交互保留重定向（ICRA 2026）
 - [holosoma](../entities/holosoma.md) — OmniRetarget 开源实现与 WBT/locomotion 训练部署框架
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md) — G1 交互重定向轨迹 HuggingFace 公开子集

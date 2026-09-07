@@ -2,7 +2,7 @@
 type: entity
 tags: [teleoperation, data-collection, dexterous-hand, wearable, exoskeleton, manipulation, mimic-robotics]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-07
 related:
   - ./mimic-hand-m1.md
   - ../tasks/teleoperation.md
@@ -11,9 +11,12 @@ related:
   - ../queries/dexterous-data-collection-guide.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../concepts/motion-retargeting.md
+  - ./paxini.md
+  - ../queries/humanoid-robot-data-collection-landscape.md
   - ./twindex.md
 sources:
   - ../../sources/blogs/mimicrobotics_m1_u1_full_stack.md
+  - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
   - ../../sources/sites/mimicrobotics.md
 summary: "mimic wearable U1（umimic，2026-07）：被动外骨骼，刚性连杆强制与 mimic hand M1 相同的运动学、触觉与腕相机布局，以近原生速度采集无重定向灵巧示范，填补 mimic 数据金字塔中层。"
 ---
@@ -48,7 +51,7 @@ summary: "mimic wearable U1（umimic，2026-07）：被动外骨骼，刚性连�
 - **扩展 UMI 到灵巧手：** [UMI](https://umi-gripper.github.io/) 证明 **只操作末端执行器、不占用机器人** 也能采示范；U1 把同一思想从 **二指夹爪** 推到 **全指灵巧**，且 **传感模态与目标手一致**。
 - **中层数据定位：** mimic **数据金字塔** 中，U1 介于 **海量人视频** 与 **昂贵真机遥操作** 之间——比任意 egocentric 视频 **对齐更好**，比工厂内部署机器人 **更易扩展**。
 - **显式设计取舍：** 放弃「适配一切手寸」的通用可穿戴，选择 **固定几何 + 有限手寸范围**，换取 **零 retargeting 延迟** 与 **近人类原生速度**，直接缓解遥操作疲劳与抖动上限问题。
-- **与 M1 共设计：** 拇指 CMC 对位、四指置于机器人指耦合后方等细节，说明 U1 不是后装数据采集配件，而是 **全栈 co-design** 的一环。
+- **工厂共址采集：** LeoInAI Substack（2026-09）描述 Mimic 与制造商合作，技工在产线戴 **外骨骼手套** 作业，数据回流后在 **同一工厂** 部署机械臂——与 [Paxini](./paxini.md) 万㎡工厂路线对照，见 [产业地图](../queries/humanoid-robot-data-collection-landscape.md)。
 
 ## 机制要点
 

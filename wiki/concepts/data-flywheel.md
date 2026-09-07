@@ -3,17 +3,19 @@ type: concept
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-08-29
+updated: 2026-09-07
 related:
   - ./embodied-scaling-laws.md
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/paper-arcadia.md
+  - ../entities/paper-scanford-robot-powered-data-flywheel.md
   - ../entities/skild-s1.md
   - ./robot-in-context-learning.md
   - ./agentic-coding-software-fundamentals.md
 sources:
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
+  - ../../sources/papers/scanford_robot_powered_data_flywheel_arxiv_2511_19647.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
 ---
 
@@ -55,6 +57,8 @@ sources:
 在宏观 AI 进展框架下，DeepMind [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md) 把 **test-time 搜索/推理结果蒸馏回训练集**（AlphaZero 式）与 **仿真/交互轨迹扩增** 列为对抗 **数据墙** 的主通道之一——与具身飞轮「部署产生新数据」同构，但强调 **算力换数据质量** 而非仅堆人类演示。
 
 第三条产业读法：[S1](../entities/skild-s1.md) 主张 **ICL 把新任务部署压到分钟级**（盆栽示例：录示范到真机约 11 分钟），才能把现场交互及时喂回预训练；若每个新任务仍要数小时遥操作 + 微调，飞轮转不起来。这是 **适应延迟** 对飞轮转速的约束，与 LWD 的「别丢失败轨迹」互补。
+
+**野外 VLM 飞轮实例：** [Scanford / RPDF](../entities/paper-scanford-robot-powered-data-flywheel.md)（arXiv:2511.19647）在图书馆部署移动操作机器人，用 **catalog + VLM RAG** 自动策展书脊数据，短部署即可抬升域内识别与困难 OCR——机器人从 FM 消费者变为 **数据生成器**（详见 [产业地图 Query](../queries/humanoid-robot-data-collection-landscape.md)）。
 
 ## 参考来源
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)

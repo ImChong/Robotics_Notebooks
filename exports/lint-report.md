@@ -2,7 +2,7 @@
 
 ## [2026-09-07] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **14** 条信息型预警）：
+共发现 **0** 个问题（另含 **17** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,17 +97,20 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（11 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（14 个）
+- wiki/entities/paper-adamorph-unified-motion-retargeting.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-contact-constrained-joint-offset-calibration.md（缺 对比）
 - wiki/entities/paper-contact-guided-exploration-locomanipulation.md（缺 对比）
 - wiki/entities/paper-dual-cam-parallel-elastic-ankle.md（缺 对比）
 - wiki/entities/paper-dynamic-multimodal-hri-dataset-u1.md（缺 对比）
 - wiki/entities/paper-ebert-nonlinear-normal-modes.md（缺 对比）
 - wiki/entities/paper-ihmc-fast-resilient-loco-manipulation.md（缺 对比）
+- wiki/entities/paper-moreflow-motion-retargeting-flow.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-moss-transcribe-diarize.md（缺 对比）
 - wiki/entities/paper-muldp.md（缺 对比）
 - wiki/entities/paper-qlaun.md（缺 对比）
 - wiki/entities/paper-robogesture.md（缺 对比）
+- wiki/entities/paper-scanford-robot-powered-data-flywheel.md（缺 评测 / 对比）
 - wiki/entities/paper-sleepwalking.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
@@ -117,7 +120,7 @@
 - wiki/entities/paper-dynamic-multimodal-hri-dataset-u1.md（缺 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md（含绝对化措辞「SOTA」，updated=2026-09-06；同主题更新页 wiki/entities/paper-abot-n1.md updated=2026-09-07）
+- wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md（含绝对化措辞「SOTA」，updated=2026-09-06；同主题更新页 wiki/entities/cosmos-3.md updated=2026-09-07）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -137,4 +140,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：3813/3813 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3828/3828 (100%) wiki/entity 页有 ingest 来源

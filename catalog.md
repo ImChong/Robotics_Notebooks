@@ -32,6 +32,7 @@
 - [Embody（Anthropic）](wiki/entities/anthropic-embody.md) — Embody** 是 Anthropic Frontier Red Team 用来量「通用语言模型接到机器人之后能做什么」的评测套件：分数按 **具身 × 控制接口** 堆叠，而不是只报一个聊天模 `📅unknown` `[entity_page]`
 - [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md) — AnyGrasp** 是上海交通大学 MVIG 团队提出的 **通用抓取感知** 系统：在 **平行夹爪** 设定下，从 **单目深度得到的场景点云** 中 **一次性** 预测 **稠密 7-D `📅unknown` `[entity_page]`
 - [ANYmal 四足机器人](wiki/entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
+- [Appen](wiki/entities/appen.md) — Appen**（澳交所：**APX**，悉尼）是全球 **AI 训练与后训练数据** 供应商之一。LeoInAI Substack（2026-09）引用其管理层对 **egocentric 物理操 `📅unknown` `[entity_page]`
 - [AprilTag（视觉 fiducial 与检测库）](wiki/entities/april-tag.md) — AprilTag** 是一类为**机器人、相机标定与 AR** 设计的**视觉基准标记（visual fiducial）**系统：标记可用普通打印机制作，软件从图像中恢复每个标记的 **ID**  `📅unknown` `[entity_page]`
 - [Archify](wiki/entities/archify.md) — Archify**（tt-a1i/archify，MIT）是面向 Cursor、Claude Code、Codex CLI `📅unknown` `[entity_page]`
 - [ARDY：交互式可控 3D 人体运动生成](wiki/entities/ardy.md) — ARDY**（*Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generatio `📅unknown` `[entity_page]`
@@ -71,6 +72,7 @@
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](wiki/entities/botlab-motioncanvas.md) — BotLab** 是 地瓜机器人（D-Robotics） 提供的 **Web 端机器人学习与控制实验台**；应用壳层标题为 **Moti `📅unknown` `[entity_page]`
 - [BotWorld（机器人资产平台）](wiki/entities/botworld.md) — BotWorld**（<https://botworld.enkeebot.com/>）是 **EnkeeBot** 运营的 **机器人资产社区与分发平台**：把 **URDF/MJCF/SDF  `📅unknown` `[entity_page]`
 - [Brax（JAX 可微物理与 RL 训练）](wiki/entities/brax.md) — Brax** 指 GitHub 仓库 `google/brax`：在 **JAX** 上提供 **刚体仿真** 与 **强化学习 `📅2026-05-18` `[entity_page]`
+- [Brookfield Physical AI Data（地产数据场景）](wiki/entities/brookfield-physical-ai-data.md) — Brookfield Corporation**（BN）等全球地产运营商，在 LeoInAI Substack（2026-09）叙事中代表 **「物业组合 = 数据采集场地」**：跨商场、办公、物 `📅unknown` `[entity_page]`
 - [CAD Skills](wiki/entities/cad-skills.md) — CAD Skills** 是 earthtojake/text-to-cad 仓库（品牌名 **CAD  `📅2026-06-15` `[entity_page]`
 - [Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Ironless Axial Flux Motor**（[cadenkraft.com Part 1](https://cadenkraft.com/designing-a-coreless-ax `📅unknown` `[entity_page]`
 - [CALVIN](wiki/entities/calvin-benchmark.md) — CALVIN](https://github.com/mees/calvin) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`
@@ -455,6 +457,7 @@
 - [Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）](wiki/entities/dyna-2.md) — Dyna-2** 是 **Dyna Robotics**（2026-08 研究长文）发布的旗舰 **World-Action Model（WAM）**：在 **≥1,000,000 小时** eg `📅unknown` `[entity_page]`
 - [Dynamixel SDK](wiki/entities/dynamixel-sdk.md) — Dynamixel SDK**（`ROBOTIS-GIT/DynamixelSDK`，~595★，Ap `📅unknown` `[entity_page]`
 - [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是一个 **快速、轻量、可复现验证** 的机器人运动学与动 `📅unknown` `[entity_page]`
+- [Dyson CameraJet](wiki/entities/dyson-camerajet.md) — Dyson CameraJet™**（2026-09 发布，约 **$499**）是带 **100k 像素宏距口腔相机** 与 **Gap Optical Targeting™** 机器学习算法的 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
@@ -561,6 +564,7 @@
 - [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
+- [Innodata](wiki/entities/innodata.md) — Innodata**（纳斯达克：**INOD**）向 AI 实验室与企业提供 **训练数据、评测、对齐与安全** 服务。LeoInAI Substack（2026-09）将其列为「物理 AI 数据 `📅unknown` `[entity_page]`
 - [Inspect Robots](wiki/entities/inspect-robots.md) — Inspect Robots**（GitHub，[文档](https://docs.inspectro `📅unknown` `[entity_page]`
 - [InstructBLIP](wiki/entities/instructblip.md) — InstructBLIP 在 BLIP-2 上做视觉指令调优：用指令感知 Q-Former 抽取与任务相关的视觉特征，提升零样本与指令跟随。 `📅unknown` `[entity_page]`
 - [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），输出对齐的彩色与深度，是人形系统课感知章与大量 G1 真 `📅unknown` `[entity_page]`
@@ -639,6 +643,7 @@
 - [MediaPipe](wiki/entities/mediapipe.md) — MediaPipe** 是 Google 维护的 **端侧机器学习** 开源项目：既有可即插即用的 **Solutions / Tasks**（视觉、文本、音频），也有底层的 **Framewor `📅unknown` `[entity_page]`
 - [MetaHuman（Epic 数字人平台）](wiki/entities/metahuman.md) — MetaHuman** 是 **Epic Games** 在 **Unreal Engine** 生态内提供的 **高保真数字人（digital human）** 创作与动画平台：通过 **Met `📅unknown` `[entity_page]`
 - [MetalHead](wiki/entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
+- [Micro1](wiki/entities/micro1.md) — Micro1** 是面向 **前沿 AI 实验室与 physical AI 团队** 的 **数据标注与评测** 服务商（非上市公司）。LeoInAI Substack（2026-09）引用 CE `📅unknown` `[entity_page]`
 - [MIDAS Hand](wiki/entities/midas-hand.md) — MIDAS Hand**（Modular low-Impedance Direct-drive Anthropomorphic Sensing Hand）是加州大学洛杉矶分校 **Dennis H `📅unknown` `[entity_page]`
 - [mimic hand M1](wiki/entities/mimic-hand-m1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [mimic wearable U1（umimic）](wiki/entities/mimic-wearable-u1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
@@ -747,6 +752,7 @@
 - [One Demo Is Worth a Thousand Trajectories（arXiv:2606.19586）](wiki/entities/paper-action-view-augmentation.md) — One Demo Is Worth a Thousand Trajectories**（Chuer Pan, Litian Liang, Dominik Bauer, Eric Cousineau `📅unknown` `[entity_page]`
 - [执行器约束 RL 高速四足奔跑（MOR）](wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — Actuator-Constrained Reinforcement Learning for High-Speed Quadrupedal Locomotion**（Shin / Song /  `📅unknown` `[entity_page]`
 - [AdaMimic：单条参考运动上的自适应全身跟踪](wiki/entities/paper-adamimic.md) — AdaMimic**（*Towards Adaptable Humanoid Control via Adaptive Motion Tracking*，[arXiv:2510.14454](ht `📅unknown` `[entity_page]`
+- [AdaMorph](wiki/entities/paper-adamorph-unified-motion-retargeting.md) — AdaMorph**（*AdaMorph: Unified Motion Retargeting via Embodiment-Aware Adaptive Transformers*，arXiv `📅unknown` `[entity_page]`
 - [ADAPT：端到端文本驱动人形控制](wiki/entities/paper-adapt-text-driven-humanoid.md) — ADAPT**（*Agile Diffusion Action Priors for Robust and Steerable Online Text-Driven Humanoid Contro `📅unknown` `[entity_page]`
 - [AdaPT（人形网球自适应规划与跟踪）](wiki/entities/paper-adapt.md) — AdaPT**（*Towards Professional Tennis Styles for Humanoid Robots with Adaptive Motion Planning and  `📅unknown` `[entity_page]`
 - [AHC：多行为蒸馏与强化微调的自适应人形控制](wiki/entities/paper-adaptive-humanoid-control.md) — AHC**（*Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tunin `📅unknown` `[entity_page]`
@@ -1273,6 +1279,7 @@
 - [MomAD（Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving · arXiv:2503.03125）](wiki/entities/paper-momad.md) — MomAD**（*Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving*，[2503.03 `📅unknown` `[entity_page]`
 - [Momentum Control（HMI P004）](wiki/entities/paper-momentum-control-hierarchical-id.md) — Momentum Control**（*Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Hum `📅unknown` `[entity_page]`
 - [单目深度估计综述：进展与机遇](wiki/entities/paper-monocular-depth-estimation-survey.md) — Monocular Depth Estimation from a Single Image: Progress and Opportunities**（[arXiv:2609.01172](ht `📅unknown` `[entity_page]`
+- [MoReFlow](wiki/entities/paper-moreflow-motion-retargeting-flow.md) — MoReFlow**（*MoReFlow: Motion Retargeting Learning through Unsupervised Flow Matching*，arXiv:[2509. `📅unknown` `[entity_page]`
 - [MOSS Transcribe Diarize（长时多说话人 SATS）](wiki/entities/paper-moss-transcribe-diarize.md) — MOSS Transcribe Diarize**（*MOSS Transcribe Diarize Technical Report*，[arXiv:2601.01554](https://ar `📅unknown` `[entity_page]`
 - [Motion-as-Prompt：先把运动画给 MLLM 看](wiki/entities/paper-motion-as-prompt.md) — Motion-as-Prompt（MaP）**（*Enhancing Motion Reasoning in Multimodal Large Language Models via Motion `📅unknown` `[entity_page]`
 - [主动空间大脑与泛化动作小脑](wiki/entities/paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md) — 主动空间大脑与泛化动作小脑** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 `📅unknown` `[entity_page]`
@@ -2655,6 +2662,7 @@
 - [SayPlan](wiki/entities/paper-sayplan-llm-scene-graph-planning.md) — SayPlan** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上下文主导型 `📅unknown` `[entity_page]`
 - [SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）](wiki/entities/paper-sc3-eval.md) — SC3-Eval**（*SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation*，[ar `📅unknown` `[entity_page]`
 - [ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-scaling-bfm-humanoid.md) — ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scale `📅unknown` `[entity_page]`
+- [Robot-Powered Data Flywheel（RPDF）](wiki/entities/paper-scanford-robot-powered-data-flywheel.md) — Robot-Powered Data Flywheel**（*Deploying Robots in the Wild for Continual Data Collection and Foun `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
 - [Scheduled Inpainting：交互式生成式运动编辑（GME）](wiki/entities/paper-scheduled-inpainting-gme.md) — Scheduled inpainting**（*Interactive Generative Motion Editing via Scheduled Inpainting*，[arXiv:260 `📅unknown` `[entity_page]`
 - [SCULPT（减法式 3D 部件生成）](wiki/entities/paper-sculpt-subtractive-3d-part-generation.md) — SCULPT**（*Subtractive Composition for 3D Part Generation*，[arXiv:2608.13541](https://arxiv.org/abs `📅unknown` `[entity_page]`
@@ -2863,6 +2871,7 @@
 - [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty 旗下 RoboParty Lab 对外沉淀的 **开放研 `📅unknown` `[entity_page]`
 - [Boston Dynamics 足式控制与硬件专利栈](wiki/entities/patent-boston-dynamics-legged-control-stack.md) — 本页归纳 **Boston Dynamics** 五件与 **Spot / Atlas 类足式平台** 相关的授权或公开专利（见 [`sources/patents/boston_dynamics_l `📅unknown` `[entity_page]`
 - [Tesla 人形机器人膝关节机构（WO2024073135）](wiki/entities/patent-tesla-robot-knee-joint-assembly.md) — 专利 **WO2024073135A1**（*Systems and methods for a robot knee joint assembly*，权利人 **Tesla Inc.**）公开一种  `📅unknown` `[entity_page]`
+- [Paxini（帕西尼感知科技）](wiki/entities/paxini.md) — Paxini**（帕西尼感知科技，深圳）以 **高精度触觉传感** 为核心，构建「传感器–灵巧手–人形」产品矩阵，并运营 **Human-Centered 全模态实景数据采集工厂**（天津、武汉等 `📅unknown` `[entity_page]`
 - [PCB Motor（PCB 定子轴向磁通电机）](wiki/entities/pcb-motor.md) — PCB Motor**（ziteh/pcb-motor）是 **PCB 定子** 的轴向磁通 PMSM/BLDC 开源硬 `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
 - [Perceptron Isaac 0.5](wiki/entities/perceptron-isaac-05.md) — Isaac 0.5**（官方博客 | [技术报告 PDF](https://pub `📅unknown` `[entity_page]`
@@ -2948,6 +2957,7 @@
 - [ROBOTIS（乐百机器人）](wiki/entities/robotis.md) — ROBOTIS（乐百机器人）** 是韩国机器人硬件与开源软件厂商，以 **DYNAMIXEL** 舵机协议栈和 ROS 教育平台闻名；近年将产品线扩展到 **Physical AI**（AI Wo `📅unknown` `[entity_page]`
 - [Roboto Origin（开源人形机器人基线）](wiki/entities/roboto-origin.md) — Roboto Origin（萝博头原型机，RPO）** 是 RoboParty 发布的「全链路开源」人形机器人项目入口，目标不是只给一个仓库，而是提供从硬件到训 `📅unknown` `[entity_page]`
 - [RoboTwin 2.0](wiki/entities/robotwin.md) — RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 SAPIEN (仿真引擎) 仿真引擎之上，旨在解决具身智能（Em `📅unknown` `[entity_page]`
+- [Rokoko](wiki/entities/rokoko.md) — Rokoko** 长期服务于 **3D 动画与影视动捕** 市场，近年将同一套 **人体运动采集** 能力 pivot 到 **人形机器人 / 物理 AI** 数据赛道——代表「已有垂直硬件公司横 `📅unknown` `[entity_page]`
 - [ros2_control](wiki/entities/ros2-control.md) — ros2_control](https://github.com/ros-controls/ros2_control) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
 - [RosClaw](wiki/entities/rosclaw.md) — RosClaw**（GitHub: PlaiPin/rosclaw）把 [OpenClaw](./openclaw.md `📅unknown` `[entity_page]`
 - [RS-Mamba](wiki/entities/rs-mamba.md) — RS-Mamba 面向遥感图像的 Mamba 骨干/任务模型，处理大幅面遥感场景下的长程空间依赖与高效推理。 `📅unknown` `[entity_page]`
@@ -2961,6 +2971,7 @@
 - [SAM3DBody-cpp](wiki/entities/sam3dbody-cpp.md) — SAM3DBody-cpp**（AmmarkoV/SAM3DBody-cpp）是 [SAM 3D Body `📅unknown` `[entity_page]`
 - [SAPIEN (仿真引擎)](wiki/entities/sapien.md) — SAPIEN** (A Scannable Articulated Part Engine) 是一个专门针对**关节体（Articulated Objects）**交互和机器人操作设计的高性能物理 `📅unknown` `[entity_page]`
 - [sbto（DynaRetarget SBTO 官方实现）](wiki/entities/sbto.md) — sbto**（<https://github.com/Atarilab/sbto>，MIT）是 [DynaRetarget](./paper-notebook-dynaretarget-dynam `📅unknown` `[entity_page]`
+- [Scanford（图书馆盘点机器人）](wiki/entities/scanford.md) — Scanford** 是 Robot-Powered Data Flywheel 框架在  `📅unknown` `[entity_page]`
 - [SceneVerse++](wiki/entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
 - [ScienceDiscovery](wiki/entities/sciencediscovery.md) — ScienceDiscovery**（GitHub · [AtomGit](https:/ `📅unknown` `[entity_page]`
@@ -2970,6 +2981,7 @@
 - [SenseNova-U1.5（Preview · NEO-unify）](wiki/entities/sensenova-u1-5.md) — SenseNova-U1.5-8B-MoT (Preview)**（商汤科技，`2026-07-31`，[GitHub](h `📅unknown` `[entity_page]`
 - [SETR（SEgmentation TRansformer）](wiki/entities/setr.md) — SETR** 以 **ViT 编码器** 提取全局 patch 表示，再用渐进上采样或多级聚合解码器输出语义分割图，是 Transformer 进入密集预测的早期代表。 `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
+- [Shift（shiftapp.nyc）](wiki/entities/shift-app-nyc.md) — Shift**（<https://www.shiftapp.nyc/>）是 **MicroAGI** 推出的消费者服务：在纽约为住户提供 **免费专业保洁**，保洁员佩戴 **头载相机** 录制第 `📅unknown` `[entity_page]`
 - [SIDA（Social Media Image Detection Assistant）](wiki/entities/sida.md) — SIDA** 是面向社交媒体图像的 **伪造检测 + 篡改定位 + 文字解释** 多模态助手：在 VLM 词表中引入特殊 token，同时输出真伪类别、篡改掩码与判定理由。 `📅unknown` `[entity_page]`
 - [SimpleFOC（Arduino-FOC 生态）](wiki/entities/simplefoc.md) — SimpleFOC** 指围绕 Arduino-FOC 库形成的开源项目：跨 MCU 的 **磁场定向控制 `📅unknown` `[entity_page]`
 - [SimToolReal](wiki/entities/simtoolreal.md) — SimToolReal](https://github.com/tylerlum/simtoolreal) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXi `📅unknown` `[entity_page]`
@@ -3002,6 +3014,7 @@
 - [TensorBoard](wiki/entities/tensorboard.md) — TensorBoard**（tensorflow/tensorboard）是一套 **Web 端实验检查工 `📅unknown` `[entity_page]`
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`
+- [Tesla Optimus](wiki/entities/tesla-optimus.md) — Tesla Optimus** 是特斯拉的 **通用人形机器人** 项目，与 **FSD 车队视觉数据** 共享部分「真实世界人类行为」数据叙事。LeoInAI Substack（2026-09） `📅unknown` `[entity_page]`
 - [TidyBot2](wiki/entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
 - [Tinkercad](wiki/entities/tinkercad.md) — Tinkercad**（tinkercad.com）是 **Autodesk** 提供的 **免费 Web 应用**：在同一账号与课堂体 `📅unknown` `[entity_page]`
