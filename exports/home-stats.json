@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3858,
-  "edge_count": 34302,
+  "node_count": 3859,
+  "edge_count": 34313,
   "coverage": {
-    "covered": 3831,
-    "total": 3831,
+    "covered": 3832,
+    "total": 3832,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -195,7 +195,8 @@
       "recency": "2026-09-07",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/paper-spark-vln.md",
@@ -221,7 +222,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 680
+      "size": 640
     },
     {
       "label": "操作",
@@ -237,11 +238,11 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 224
+      "size": 223
     },
     {
-      "label": "仿真到现实",
-      "size": 177
+      "label": "具身评测基准选型闭环",
+      "size": 188
     }
   ],
   "top_hubs": [

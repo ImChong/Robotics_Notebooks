@@ -3,7 +3,7 @@ type: entity
 tags: [cad, generative-ai, llm-agents, skills, build123d, urdf, robotics, hardware, manufacturing]
 status: complete
 date: 2026-06-15
-updated: 2026-09-05
+updated: 2026-09-07
 related:
   - ../concepts/text-to-cad.md
   - ./multi-agent-cad.md
