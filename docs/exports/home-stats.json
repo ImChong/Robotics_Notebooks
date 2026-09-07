@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/arnis.md",
+      "detail_id": "entity-arnis",
+      "label": "Arnis",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/natural-disasters-abyssal.md",
+      "detail_id": "entity-natural-disasters-abyssal",
+      "label": "natural-disasters（ABYSSAL）",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/image-blaster.md",
       "detail_id": "entity-image-blaster",
       "label": "image-blaster",
@@ -39,17 +61,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/natural-disasters-abyssal.md",
-      "detail_id": "entity-natural-disasters-abyssal",
-      "label": "natural-disasters（ABYSSAL）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-contact-constrained-joint-offset-calibration.md",
@@ -193,27 +204,18 @@
       "recency": "2026-09-06",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-ahoy.md",
-      "detail_id": "entity-paper-ahoy",
-      "label": "AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/image-blaster.md",
-    "detail_id": "entity-image-blaster",
-    "label": "image-blaster",
+    "path": "wiki/entities/arnis.md",
+    "detail_id": "entity-arnis",
+    "label": "Arnis",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
