@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3837,
-  "edge_count": 34135,
+  "node_count": 3838,
+  "edge_count": 34145,
   "coverage": {
-    "covered": 3810,
-    "total": 3810,
+    "covered": 3811,
+    "total": 3811,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/arnis.md",
+      "detail_id": "entity-arnis",
+      "label": "Arnis",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/natural-disasters-abyssal.md",
+      "detail_id": "entity-natural-disasters-abyssal",
+      "label": "natural-disasters（ABYSSAL）",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/image-blaster.md",
       "detail_id": "entity-image-blaster",
@@ -41,16 +63,6 @@
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
-      "path": "wiki/entities/natural-disasters-abyssal.md",
-      "detail_id": "entity-natural-disasters-abyssal",
-      "label": "natural-disasters（ABYSSAL）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
       "path": "wiki/entities/paper-contact-constrained-joint-offset-calibration.md",
       "detail_id": "entity-paper-contact-constrained-joint-offset-calibration",
       "label": "接触约束人形下肢关节零位标定",
@@ -67,8 +79,7 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-dual-cam-parallel-elastic-ankle.md",
@@ -87,7 +98,8 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "path": "wiki/entities/paper-ebert-nonlinear-normal-modes.md",
@@ -96,8 +108,7 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-ihmc-fast-resilient-loco-manipulation.md",
@@ -115,8 +126,7 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-qlaun.md",
@@ -125,8 +135,7 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-robogesture.md",
@@ -135,8 +144,7 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-sleepwalking.md",
@@ -196,36 +204,27 @@
       "recency": "2026-09-06",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-ahoy.md",
-      "detail_id": "entity-paper-ahoy",
-      "label": "AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/image-blaster.md",
-    "detail_id": "entity-image-blaster",
-    "label": "image-blaster",
+    "path": "wiki/entities/arnis.md",
+    "detail_id": "entity-arnis",
+    "label": "Arnis",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 693
+      "size": 660
     },
     {
       "label": "操作",
-      "size": 575
+      "size": 560
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -237,11 +236,11 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 220
+      "size": 224
     },
     {
       "label": "仿真到现实",
-      "size": 161
+      "size": 164
     }
   ],
   "top_hubs": [
@@ -266,7 +265,7 @@
       "label": "Locomotion",
       "type": "task",
       "degree": 919,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
@@ -280,7 +279,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 840,
+      "degree": 842,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -389,7 +388,7 @@
       "type": "entity",
       "degree": 44,
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "detail_id": "wiki-methods-ase",

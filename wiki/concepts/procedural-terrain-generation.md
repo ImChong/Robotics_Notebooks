@@ -89,6 +89,7 @@ PPO 并行训练
 - [Extreme Parkour](../entities/extreme-parkour.md)
 - [InfiniteDiffusion / Terrain Diffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md) — 学习式无限地形生成（扩散 + 惰性采样）
 - [natural-disasters（ABYSSAL）](../entities/natural-disasters-abyssal.md) — 浏览器 GPU 程序化海洋/极端天气（FFT 海面，非 RL 物理引擎）
+- [Arnis](../entities/arnis.md) — OSM + 高程 → Minecraft 体素世界（真实地理 faithful 导入，非每 reset 随机）
 
 ## 推荐继续阅读
 
