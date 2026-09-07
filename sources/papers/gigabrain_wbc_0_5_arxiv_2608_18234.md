@@ -10,7 +10,7 @@
 - **项目页：** <https://shepherd1226.github.io/gigabrain-wbc-0.5/>
 - **机构：** 清华大学（Tsinghua University）；极佳视界（GigaAI）；上海理工大学（University of Shanghai for Science and Technology）；北京交通大学（Beijing Jiaotong University）；中国科学院自动化研究所（Institute of Automation, CAS）；中国科学院大学（University of Chinese Academy of Sciences）
 - **作者：** Ziyang Cheng、Tianshu Tang、Jinxin Lan、Xinze Chen、Yuhan Gong、Zhichao Liu、Changzhong Wu、Yahao Mao、Zongyan Deng、Mingxuan Ma、Huasen Xi、Yilong Liu、Yutong Wu、Xiaofeng Wang、Yang Wang、Yun Ye、Guan Huang、Xiaojie Jin、Zheng Zhu#、Jiwen Lu#
-- **发表 / 上传：** 2026-08-19（arXiv v1）
+- **发表 / 上传：** 2026-08-18（arXiv v1）；**修订：** 2026-08-23（[v2](https://arxiv.org/abs/2608.18234v2)）
 - **训练栈：** Isaac Lab + PPO；4096 envs（flat）；512 envs（terrain + fallen init）；Unitree G1 29 DoF @ 50 Hz
 - **入库日期：** 2026-08-21
 - **索引来源：** [具身智能小站 8 篇综述](../blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)（<https://mp.weixin.qq.com/s/30hu9SRxbRNXJcGLnNwl_g>）
@@ -24,10 +24,11 @@
 | 数据 | Bones-Seed / MotionMillion / MotionDecode | 识别 terrain-interaction 子集混合 flat-ground |
 | 基线 | SONIC / HoloMotion-1 / Humanoid-GPT | Table 3 sim-to-sim 对照 |
 
-## 开源状态（步骤 2.5，2026-08-24 复核）
+## 开源状态（步骤 2.5，2026-09-07 复核）
 
-- **宣称将开源 / 待发布：** 项目页 Resources **Code → coming soon**；截至 **2026-08-24** 复核仍 **无** GitHub / Hugging Face URL。
+- **宣称将开源 / 待发布：** [项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/) Resources **Code → coming soon**；截至 **2026-09-07** 复核仍 **无** GitHub / Hugging Face URL；GitHub 检索 `gigabrain-wbc` 无官方仓库。
 - **处理：** wiki 标待发布；`## 源码运行时序图` 标不适用。
+- **真机素材：** 项目页 Full demo 仍标注 *Real-robot footage forthcoming*（与 2026-08-24 一致）。
 
 ## 摘要级要点
 

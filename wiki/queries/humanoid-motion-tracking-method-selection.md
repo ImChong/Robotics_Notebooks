@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-29
+updated: 2026-09-07
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/loopermuscle_arxiv_2608_00820.md
@@ -106,7 +106,7 @@ flowchart TD
 
 [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) 把力/柔顺约束写进跟踪目标，适合接触丰富场景。当已有 **通用 tracker（如 SONIC）** 但需在 **楼梯、搬箱、坐椅** 等 **terrain + object** 组合任务上零样本执行时，优先评估 **[SceneBot](../entities/paper-scenebot.md)**：在参考运动外增加 **per-link contact label**（link 应对 terrain/object 施力），并用 **hindsight scene reconstruction** 从无场景动捕合成训练配对数据；论文报告自由空间与 SONIC 同级，而 object/terrain 成功率 **95–100% vs 5–15%**。高层可用规则/遥操作生成 label，部署时 **$c_t=0$** 可回退平地跟踪。
 
-若 **不能** 给 teleoperator 额外 contact label，但仍要 **online reference window + terrain/object + OOD/fall 鲁棒**，可对照 **[GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md)**（arXiv:2608.18234）：**Behavior World Model** 联合预测 action/next-state/next-command GMM，从 retarget corpus **自动恢复 3D terrain 几何**（非 2.5D height field），部署期用 **Mahalanobis retract** 处理不可行命令并把 **fall recovery** 训进同一 tracker；MuJoCo 四 regime 上 Terrain SR **81.3%**、Fall recovery **99.3%**；截至 2026-08-21 代码 **coming soon**。
+若 **不能** 给 teleoperator 额外 contact label，但仍要 **online reference window + terrain/object + OOD/fall 鲁棒**，可对照 **[GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md)**（arXiv:2608.18234v2）：**Behavior World Model** 联合预测 action/next-state/next-command GMM，从 retarget corpus **自动恢复 3D terrain 几何**（非 2.5D height field），部署期用 **Mahalanobis retract** 处理不可行命令并把 **fall recovery** 训进同一 tracker；MuJoCo 四 regime 上 Terrain SR **81.3%**、Fall recovery **99.3%**；截至 **2026-09-07** 代码仍 **coming soon**。
 
 当任务语义由 **「是否真正接触物体」** 定义（擦板 vs 挥手贴近、坐椅承重 vs 悬空蹲姿、搬箱 vs 手路过箱子），且需要 **同一 keypoint 下运行时开关接触** 时，优先评估 **[ContactMimic](../entities/paper-contactmimic.md)**（arXiv:2607.08742）：在 keypoint 外增加 **per-body 二值 contact 指令**，并用 **label 翻转 / 去物体 / 膨胀几何** 增广打破 keypoint–contact 相关；论文在 HUMOTO 10 条仿真与 G1 真机 5 条上验证 contact ✔/✘ controllability，MPJPE 与 BeyondMimic 相当但接触与物体位移显著更高，且搬箱 **无需任务专用奖励**。当前为 **per-motion 策略**，与 SceneBot 的通才单策略形成粒度对照。
 
@@ -218,7 +218,7 @@ flowchart TD
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
 - [SONIC-Transfer](../entities/paper-sonic-transfer.md)
 - [SceneBot](../entities/paper-scenebot.md)
-- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — BWM + 3D terrain 标注 + OOD retract（Code coming soon）
+- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — BWM + 3D terrain 标注 + OOD retract（截至 2026-09-07 Code coming soon）
 - [ContactMimic](../entities/paper-contactmimic.md)
 - [VMP](../entities/paper-notebook-vmp.md)
 - [ZEST](../entities/paper-zest.md) — 工业极简 tracking；Science Robotics 2026，确认未开源
