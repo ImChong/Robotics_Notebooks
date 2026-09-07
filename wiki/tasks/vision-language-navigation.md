@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-09-05
+updated: 2026-09-07
 status: complete
 related:
   - ../entities/paper-abot-n1.md
@@ -31,6 +31,7 @@ related:
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-fsd-vln.md
+  - ../entities/paper-spark-vln.md
   - ../entities/paper-language-to-navigation-goals-rgbd.md
   - ../entities/paper-arcadia.md
   - ../entities/paper-zonda.md
@@ -57,6 +58,7 @@ sources:
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/papers/crosstracer_arxiv_2608_06688.md
   - ../../sources/papers/abot_n1_arxiv_2607_10383.md
+  - ../../sources/papers/spark_vln_arxiv_2607_16806.md
 ---
 
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
@@ -92,6 +94,7 @@ sources:
 - **城市尺度方向感知 VLN**：[DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）用 **商业导航离散方向指令**（非细粒度地标描述），在 **egocentric 图像平面网格** 上做 spatial grounding，并以 **CoT + ReDA recovery** 支撑长程纠偏；CARLA SoTA，**零样本** 迁到 Go2 / 乐聚人形公里级户外——与室内 R2R/REVERIE 栈互补。
 - **多楼层动态零样本 ObjectNav**：[ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 Habitat HM3D/MP3D 上用 **高度差可通行图 + 启发式跨楼层规划**、**多视角 VLM 核验** 与 **行人预测避障**，并自建 **HM3D-DYNA**；相对 ASCENT 等不绑平台 RL PointNav，真机部署 Direct Drive Tech TITA。
 - **慢–快 VLN 基础模型 + 城市闭环基准**：[ABot-N1](../entities/paper-abot-n1.md)（arXiv:2607.10383）用 **4B 慢推理器（CoT + 像素目标）+ 2B 快动作专家** 统一 Point / Object / POI / 指令 / 跟人五任务；开源 **ABotN-PointBench / POIBench** 与 3DGS 闭环评测栈，POI SR **77.3%**、室内外 Point-Goal **95.4% / 92.9%**；**模型权重截至 2026-08-31 未发布**。
+- **动态社会 VLN + 非阻塞推理评测**：[SPARK-VLN](../entities/paper-spark-vln.md)（arXiv:2607.16806）用 **VILA-8B 逐 token 隐状态流** 实时条件化 **rectified flow-matching** 快规划器，缓解 **observation staleness**；自建 Idealized（推理暂停）/ Realistic（推理不暂停）人中心基准，Realistic VLN SR **34.8%**（相对 Wait-then-Act **+10 pp**）、per-update 延迟 **0.185 s**；**截至 2026-09-07 确认未开源**。
 
 ## 核心要素
 
@@ -111,6 +114,12 @@ sources:
 - **零样本统一 agent：** [Uni-LaViRA](../entities/paper-uni-lavira.md)（arXiv:2605.27582）把 VLN-CE / ObjectNav / EQA / Aerial-VLN 写成同一 **Language→Vision→Robot** 翻译环，**无机器人轨迹训练**；OpenUAV SR 40.0%，并与训练式导航基础模型对照。
 - **ROS 2 分层语义导航（待开源）：** [Language-to-Navigation-Goals](../entities/paper-language-to-navigation-goals-rgbd.md)（arXiv:2607.13624）用远程 VLM bbox + RGB-D 投影生成 **Nav2** 目标，TurtleBot3 端到端导航误差约 0.70 m，Go2 真机定位约 0.51 m；与端到端 VLN 策略互补。
 - **快慢双系统（仿真、未开源）：** [FSD-VLN](../entities/paper-fsd-vln.md)（arXiv:2607.08359）冻结 VLM 写 **VLSF**，GR00T N1 系 DiT 异步出 8 类离散飞行动作；未见相对自复现 OpenFly SR 5.1%→**13.6%**，单步/任务时长约减半，但 **H=1 最好**、无真机。勿与 WorldVLN 的世界转移或室内 3 m SR 混读。
+
+### 动态社会 VLN：推理时不暂停仿真
+
+- **设定差异：** [SPARK-VLN](../entities/paper-spark-vln.md) 面向 **室内动态行人** 的语言导航；基准在 **Realistic Dynamic Environment** 中 **推理时行人继续移动**，显式度量 **observation staleness**，相对 R2R/VLN-CE 的冻结仿真协议更贴近部署风险。
+- **方法要点：** 慢 VILA-8B 自回归生成中经 **Token Streamer → 8-slot Bridge** 把隐状态流注入 **flow-matching** 快规划器；相对阻塞式双系统（DualVLN）与单系统（NaVILA），Realistic 阶段 SR/社会合规更稳。
+- **开源边界：** 截至 2026-09-07 **确认未开源**（项目页 Code 占位）；可跑通栈仍走 [四范式](../overview/vln-open-source-repro-paradigms.md)。
 
 ### 城市尺度 Point / POI 闭环基准
 
@@ -180,6 +189,7 @@ sources:
 - **人形物理 VLN 平台**：[HumanoidVLN](../entities/paper-humanoidvln.md) — Isaac Sim 四本体 + FR；933 episode 零样本（arXiv:2608.12860；待开源）。
 - **终身学习闭环**：[Arcadia](../entities/paper-arcadia.md) — 自采 + 生成式 USD + 共享 VLN/VLA 骨干 + Sim-from-Real；G1 46/100（arXiv:2512.00076；部分开源）。
 - **慢–快像素接口 VLN 基础模型**：[ABot-N1](../entities/paper-abot-n1.md) — CoT + 像素目标统一五任务；ABotN-Bench 城市 Point/POI 闭环；基准开源、权重待发布（arXiv:2607.10383）。
+- **动态社会 token streaming VLN**：[SPARK-VLN](../entities/paper-spark-vln.md) — 隐状态流 + flow 快规划器；Idealized/Realistic 人中心基准；未开源（arXiv:2607.16806）。
 
 ## 参考来源
 
@@ -195,6 +205,7 @@ sources:
 - [CrossTracer 论文摘录（arXiv:2608.06688）](../../sources/papers/crosstracer_arxiv_2608_06688.md) — 像素轨迹残差跨本体导航
 - [HumanoidVLN 论文摘录（arXiv:2608.12860）](../../sources/papers/humanoidvln_arxiv_2608_12860.md) — 人形物理 VLN 仿真与基准
 - [ABot-N1 论文摘录（arXiv:2607.10383）](../../sources/papers/abot_n1_arxiv_2607_10383.md) — 慢–快 VLN 基础模型与 ABotN-Bench
+- [SPARK-VLN 论文摘录（arXiv:2607.16806）](../../sources/papers/spark_vln_arxiv_2607_16806.md) — 动态社会 VLN · 逐 token 隐状态流 + flow 快规划器
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — VLN 数据生成与 R2R 实验
 - Anderson et al., *Vision-and-Language Navigation* — R2R 任务经典定义（如需溯源基准起源可查阅原文）
@@ -226,6 +237,7 @@ sources:
 - [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA / Spot 例行找人（对照仿真 EQA）
 - [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 统一具身脑内嵌 VLN-CE（R2R/RxR）与操作/进度接口
 - [ABot-N1](../entities/paper-abot-n1.md) — 慢–快 CoT+像素接口 VLN 基础模型；ABotN-PointBench / POIBench 城市闭环基准
+- [SPARK-VLN](../entities/paper-spark-vln.md) — 逐 token 隐状态流 + flow 快规划器；Idealized/Realistic 动态社会基准；未开源（arXiv:2607.16806）
 - [Project Quiver](../entities/project-quiver.md) — 25 kg 开源户外机架；无官方 VLN 绑定，只作重载真机想象
 
 ## 推荐继续阅读

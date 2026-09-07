@@ -17,7 +17,7 @@ tags:
   - vinmotion
   - usc
 status: complete
-updated: 2026-09-04
+updated: 2026-09-07
 arxiv: "2608.12860"
 related:
   - ../tasks/vision-language-navigation.md

@@ -2701,6 +2701,7 @@
 - [SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移](wiki/entities/paper-sonic-transfer.md) — SONIC-Transfer**（*Cross-Embodiment Transfer of a Frozen Humanoid Whole-Body Controller via Analyti `📅unknown` `[entity_page]`
 - [Space Mining with Robotics：太空采矿机器人综述](wiki/entities/paper-space-mining-with-robotics.md) — Mining beyond Earth with Space Robots: Exploration, Sampling, and Extraction**（[arXiv:2608.21358 `📅unknown` `[entity_page]`
 - [SPARK（Skeleton-Parameter Aligned Retargeting）](wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — SPARK**（*Skeleton-Parameter Aligned Retargeting on Humanoid Robots with Kinodynamic Trajectory Opt `📅unknown` `[entity_page]`
+- [SPARK-VLN（动态社会视觉–语言导航）](wiki/entities/paper-spark-vln.md) — SPARK-VLN**（*Token-Wise Latent Streaming from Slow Reasoners to Fast Planners for Dynamic Vision L `📅unknown` `[entity_page]`
 - [SparkVLA](wiki/entities/paper-sparkvla.md) — SparkVLA: Stop-Aware Hierarchical VLA with Adaptive Action Chunking for Long-Horizon Manipulation `📅unknown` `[entity_page]`
 - [SparseDrive（SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation · arXiv:2405.19620）](wiki/entities/paper-sparsedrive.md) — SparseDrive**（*SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation*，[2405.1 `📅unknown` `[entity_page]`
 - [Spatial Memory Agent：不调参也能长空间记性](wiki/entities/paper-spatial-memory-agent.md) — Spatial Memory Agent（SMA）**（*Experience-Grounded Procedure Memory for Spatial Intelligence*；[arXiv `📅unknown` `[entity_page]`

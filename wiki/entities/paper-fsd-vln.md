@@ -13,7 +13,7 @@ tags:
   - siat
   - pku
 status: complete
-updated: 2026-08-16
+updated: 2026-09-07
 arxiv: "2607.08359"
 summary: "FSD-VLN（arXiv:2607.08359）：空中长程 VLN 快慢双系统——慢路冻结 VLM 写 VLSF，快路 GR00T N1 系 DiT 异步出飞行动作；未见仿真相对自复现 OpenFly SR 约 2.7×，单步/任务时长约减半；H=1 优于长 chunk；确认未开源、无真机。"
 related:

@@ -1,15 +1,4 @@
-## [2026-09-07] ingest | sources/repos/cyclo_control.md + natural_disasters.md — ROBOTIS cyclo_control 真机 WBC 栈与 ABYSSAL 程序化海洋天气 demo 独立实体页
-
-- **触发：** 用户指定 <https://github.com/ROBOTIS-GIT/cyclo_control>、<https://github.com/Token-Gremlin/natural-disasters>
-- **开源结论：** 二者均已开源（Apache-2.0 / MIT）；cyclo_control 需 ROS 2 Jazzy + numpy&lt;2
-- **关键页：** [cyclo-control](wiki/entities/cyclo-control.md)、[natural-disasters-abyssal](wiki/entities/natural-disasters-abyssal.md)；[robotis](wiki/entities/robotis.md) Cyclo 表补链
-
-## [2026-09-07] ingest | sources/blogs/wechat_shenlan_weekly_papers_2026-09-04.md — 深蓝 8.31–9.04 周更 21 篇（人形/四足/腿式）；11 篇复用既有 paper-* 节点、新建 10 篇独立实体页
-
-- **触发：** 用户指定 <https://mp.weixin.qq.com/s/h1FBl8iPL8ucERjAL5cIew>；要求每篇论文独立非重复详情节点
-- **开源结论：** RoboGesture / MulDP / SleepWalking / IHMC 行为系统等 **未见** 官方 GitHub；BRIDGE/WM-LOCO 等待发布；QLAUN 宣称将开源
-- **新建实体：** IHMC loco-manipulation 系统、RoboGesture、动态 HRI 数据集协议、下肢零位标定、双凸轮弹性踝、MulDP、Contact-Guided Exploration、eBert NNM、QLAUN、SleepWalking(SWAQ)
-- **复用节点：** WM-LOCO、Safe-Stop、FOCUS、UMR、ADAPT、Agile Perceptive Traversal、Blind Dexterity、PAMoR、Stay Seated、BRIDGE、FWBC-VLA
+## [2026-09-07] ingest | sources/papers/spark_vln_arxiv_2607_16806.md — SPARK-VLN 动态社会 VLN 逐 token 隐状态流；项目页 Code 占位、确认未开源
 
 ## [2026-09-07] ingest | sources/repos/image-blaster.md — image-blaster（Claude Code image-to-world Skills）；编排层 MIT 已开源、Marble/FAL API 闭源；关键页 image-blaster；交叉 Marble / img2threejs / generative-world-models
 
@@ -8482,12 +8471,6 @@
 - **意图：** 接入 Isaac Lab-Arena 官方仓、文档、开发者页、EnvHub 与技术博客，沉淀 Scene/Embodiment/Task 组合架构、版本矩阵、LeRobot 评测闭环与生态 benchmark 清单。
 - **开源核查：** GitHub **已开源**（Apache 2.0）；运行依赖 Isaac Sim（专有）；Alpha 状态，DexBench / GR00T Industrial 等仍标 coming soon。
 - **关键页：** [`wiki/entities/isaac-lab-arena.md`](wiki/entities/isaac-lab-arena.md)；交叉更新 [`isaac-lab`](wiki/entities/isaac-lab.md)、[`lerobot`](wiki/entities/lerobot.md)、[`lw-benchhub-tour`](wiki/entities/lw-benchhub-tour.md)。
-
-## [2026-09-07] ingest | sources/repos/arnis.md — Arnis 真实地理 → Minecraft 世界生成
-
-- **意图：** 接入 louis-e/arnis 高 star Rust/Tauri 工具与 arnismc.com 官方站，沉淀 OSM+高程 → Minecraft Java/Bedrock/Luanti 管线与三种生成模式。
-- **开源核查：** GitHub **已开源**（Apache-2.0）；官方下载仅 arnismc.com + GitHub；MapSmith 为浏览器增值服务。
-- **关键页：** [`wiki/entities/arnis.md`](wiki/entities/arnis.md)；交叉更新 [`procedural-terrain-generation`](wiki/concepts/procedural-terrain-generation.md)、[`drive-game`](wiki/entities/drive-game.md)、[`natural-disasters-abyssal`](wiki/entities/natural-disasters-abyssal.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)。
 
 ## [2026-08-22] ingest | sources/blogs/wechat_guyue_rosclaw_ros2_natural_language.md — 古月居 RosClaw / RoboClaw 自然语言控 ROS2 长文
 
