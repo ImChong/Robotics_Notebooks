@@ -3,7 +3,7 @@
 type: entity
 tags: [rl, mujoco, mjx, locomotion, imitation, open-source, jax, disney, open-duck]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-07
 related:
   - ./open-duck-mini.md
   - ./open-duck-reference-motion-generator.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/reward-design.md
   - ./pollen-microduck-rl.md
+  - ./open-duck-mini-viewer.md
 sources:
   - ../../sources/repos/open_duck_playground.md
 summary: "Open Duck Playground 在 MuJoCo Playground/MJX 上提供 open_duck_mini_v2 摇杆速度跟踪 RL 环境，支持 Disney BDX 风格模仿奖励、域随机化与 ONNX 导出，是 Open Duck 当前主训练栈。"
@@ -77,6 +78,7 @@ uv run playground/open_duck_mini_v2/runner.py --task flat_terrain_backlash --num
 - [Open Duck Mini](./open-duck-mini.md)
 - [Open Duck Reference Motion Generator](./open-duck-reference-motion-generator.md)
 - [Open Duck Mini Runtime](./open-duck-mini-runtime.md)
+- [Open Duck Mini Viewer](./open-duck-mini-viewer.md) — 浏览器脚本步态预览，不加载本仓 ONNX
 - [mjlab Playground 任务集](./mjlab-playground.md)
 - [Reward Design](../concepts/reward-design.md)
 - [Microduck RL](./pollen-microduck-rl.md) — Pollen 线 mjlab + BAM，对照本页 MJX / 模仿奖励

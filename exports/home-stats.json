@@ -1,13 +1,34 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3835,
-  "edge_count": 34106,
+  "node_count": 3837,
+  "edge_count": 34135,
   "coverage": {
-    "covered": 3808,
-    "total": 3808,
+    "covered": 3810,
+    "total": 3810,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/cyclo-control.md",
+      "detail_id": "entity-cyclo-control",
+      "label": "cyclo_control",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/natural-disasters-abyssal.md",
+      "detail_id": "entity-natural-disasters-abyssal",
+      "label": "natural-disasters（ABYSSAL）",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-contact-constrained-joint-offset-calibration.md",
       "detail_id": "entity-paper-contact-constrained-joint-offset-calibration",
@@ -183,50 +204,28 @@
       "recency": "2026-09-06",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/robocurve.md",
-      "detail_id": "entity-robocurve",
-      "label": "Robocurve",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-osmo.md",
-      "detail_id": "entity-nvidia-osmo",
-      "label": "NVIDIA OSMO（Physical AI 工作流编排）",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-contact-constrained-joint-offset-calibration.md",
-    "detail_id": "entity-paper-contact-constrained-joint-offset-calibration",
-    "label": "接触约束人形下肢关节零位标定",
+    "path": "wiki/entities/cyclo-control.md",
+    "detail_id": "entity-cyclo-control",
+    "label": "cyclo_control",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true,
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 719
+      "size": 693
     },
     {
       "label": "操作",
-      "size": 614
+      "size": 575
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -238,11 +237,11 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 228
+      "size": 220
     },
     {
-      "label": "视觉语言动作纵深路线",
-      "size": 155
+      "label": "仿真到现实",
+      "size": 161
     }
   ],
   "top_hubs": [
@@ -266,7 +265,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 918,
+      "degree": 919,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -281,7 +280,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 839,
+      "degree": 840,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -312,7 +311,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 546,
+      "degree": 548,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -390,7 +389,7 @@
       "type": "entity",
       "degree": 44,
       "has_repo": true,
-      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "detail_id": "wiki-methods-ase",

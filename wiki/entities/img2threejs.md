@@ -19,6 +19,7 @@ related:
   - ./comfyui.md
   - ./gsap-skills.md
   - ./video-shotcraft.md
+  - ./image-blaster.md
   - ./drawio-scientific-illustrator.md
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
@@ -153,7 +154,8 @@ sequenceDiagram
 - [3D Gen Studio](./3dgenstudio.md) — **ComfyUI 网格生产编排**（GLB/OBJ）；同属视觉 3D 资产，产物是网格文件而非可 diff 的 TS 工厂
 - [ComfyUI](./comfyui.md) — 节点式生成运行时；3D Gen Studio 与社区 mesh 工作流的后端
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方 Agent Skills；同属前端垂直技能
-- [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill；同属前端/运动设计技能，产物是时间线成片而非 Three.js 工厂
+- [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill；同属前端/运动设计技能，产物是时间线成片而非 Three.js
+- [image-blaster](./image-blaster.md) — **单图→Marble splat + Hunyuan 网格 + SFX** Agent Skills；依赖付费 3D API，产物是资产文件而非 TS 工厂 工厂
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **图像→可编辑 draw.io 科研图**（Codex MCP）；同属「参考图重绘」，产物是矢量框图而非 Three.js
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库

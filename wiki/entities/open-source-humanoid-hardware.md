@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-07
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
@@ -20,6 +20,7 @@ related:
   - ./agibot-lingxi-x1.md
   - ./openloong.md
   - ./open-duck-mini.md
+  - ./open-duck-mini-viewer.md
   - ./hightorque-robotics.md
   - ../queries/humanoid-hardware-selection.md
   - ../roadmaps/humanoid-control-roadmap.md
@@ -110,7 +111,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 
 ## 2d. Open Duck Mini（迷你娱乐双足 / DIY）
 
-- **特点：** Disney BDX 角色的开源迷你版；Feetech 舵机 + Onshape CAD + 四仓分工（Hub / Playground / 参考运动 / Runtime）。
+- **特点：** Disney BDX 角色的开源迷你版；Feetech 舵机 + Onshape CAD + 四仓分工（Hub / Playground / 参考运动 / Runtime）。社区另有 [浏览器 Viewer](./open-duck-mini-viewer.md) 可零安装预览 v2 URDF。
 - **优点：** 社区活跃、文档与预训练 ONNX 公开；适合学习 **BAM 执行器辨识 + 模仿奖励** 在廉价硬件上的 sim2real。
 - **局限：** 舵机扭矩与背隙限制动态性能；与 Berkeley / 青龙等全尺寸研究平台不可直接类比。
 - **详情：** [Open Duck Mini](./open-duck-mini.md)
@@ -129,6 +130,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [Asimov v1](./asimov-v1.md)
 - [OpenLoong（青龙·公版机）](./openloong.md)
 - [Open Duck Mini](./open-duck-mini.md)
+- [Open Duck Mini Viewer](./open-duck-mini-viewer.md) — 社区浏览器预览
 - [Handroid](./handroid.md) — 桌面双形态（灵巧手 ↔ 人形）研究平台
 - [机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)
 - [机器人开源宝库（微信策展第02期）](../overview/robot-open-source-wechat-issue02-curator.md)

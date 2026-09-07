@@ -557,6 +557,7 @@
 - [Hydra](wiki/entities/hydra-config.md) — Hydra](https://github.com/facebookresearch/hydra) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze `📅unknown` `[entity_page]`
 - [ICRA 2026 REAL-I Challenge](wiki/entities/icra-2026-real-i.md) — REAL-I**（1st Real-World Embodied-AI Learning Challenge）是 **ICRA 2026** 上由 **乐聚** 主办的工业具身赛：提供 **真机评 `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
+- [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Inspect Robots](wiki/entities/inspect-robots.md) — Inspect Robots**（GitHub，[文档](https://docs.inspectro `📅unknown` `[entity_page]`
@@ -707,6 +708,7 @@
 - [OOMWOO](wiki/entities/oomwoo.md) — OOMWOO** 是 **Maker's Pet** 发起的 **可自建开源家用扫地机器人**：以 **ROS 2 + 2D LiDAR + Nav2 / slam_toolbox** 做室内建图 `📅unknown` `[entity_page]`
 - [Open Dreamer](wiki/entities/open-dreamer.md) — Open Dreamer**（next-state/open-dreamer，2026-07）是面向  `📅unknown` `[entity_page]`
 - [Open Duck Mini Runtime](wiki/entities/open-duck-mini-runtime.md) — Open Duck Mini Runtime** 负责在 **Raspberry Pi Zero 2W** 上将 [Open Duck Playground](./open-duck-playgr `📅unknown` `[entity_page]`
+- [Open Duck Mini Viewer](wiki/entities/open-duck-mini-viewer.md) — Open Duck Mini Viewer**（[mertcookimg/Open_Duck_Mini_Viewer](https://github.com/mertcookimg/Open_Du `📅unknown` `[entity_page]`
 - [Open Duck Mini](wiki/entities/open-duck-mini.md) — Open Duck Mini** 是社区驱动的 **BDX 风格迷你双足机器人**：在娱乐角色外形下，把 **低成本舵机硬件** 与 **MuJoCo Playground RL + Disney `📅unknown` `[entity_page]`
 - [Open Duck Playground](wiki/entities/open-duck-playground.md) — Open Duck Playground** 是 Open Duck 项目的 **MuJoCo Playground 训练仓**：在 JAX/MJX 并行仿真里训练 `open_duck_mini `📅unknown` `[entity_page]`
 - [Open Duck Reference Motion Generator](wiki/entities/open-duck-reference-motion-generator.md) — Open Duck Reference Motion Generator** 为 Open Duck 生态提供 **可批量再生的参考运动**：基于 [Placo](https://github.c `📅unknown` `[entity_page]`
