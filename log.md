@@ -1,3 +1,10 @@
+## [2026-09-07] ingest | sources/repos/image-blaster.md — image-blaster（Claude Code image-to-world Skills）；编排层 MIT 已开源、Marble/FAL API 闭源；关键页 image-blaster；交叉 Marble / img2threejs / generative-world-models
+
+- **触发：** 用户指定 <https://github.com/neilsonnn/image-blaster>，并要求自动合并 PR
+- **步骤 2.5：** 仓库 MIT 已开源；环境生成走 World Labs `marble-1.1`、物体/编辑/音效走 FAL（Hunyuan3D、nano-banana、gpt-image-2、elevenlabs-sfx）— **API 闭源、需密钥**
+- **新建：** `image-blaster` 实体；归档 `image-blaster.md`
+- **交叉：** marble-world-model、img2threejs、generative-world-models（方法页未改正文，经实体互链）
+
 ## [2026-09-07] ingest | sources/repos/open_duck_mini_viewer.md + sources/sites/open-duck-mini-viewer-github-io.md — 接入 Open Duck Mini Viewer（浏览器 URDF GUI）；已开源 Apache-2.0 + Pages demo；关键页 open-duck-mini-viewer；交叉官方四仓 / robot-viewer
 
 ## [2026-09-06] structural | roadmap/depth-motion-retargeting.md + depth-vla.md + depth-perceptive-locomotion.md + depth-loco-manipulation.md + depth-rl-locomotion.md + depth-sim2real.md + depth-humanoid-hardware-design.md — 补齐 2026-08-16（roadmap 上次批量触达日）以来入库的 12 个里程碑级知识节点（9 条 bullet）到七条纵深路线「推荐读什么」区块，覆盖运动重定向、VLA 部署、感知失效降级、全身控制基座、RL 训练后端、Sim2Real 标定与在环阶梯、人形结构与量产

@@ -12,6 +12,7 @@ related:
   - ./nvidia-nurec.md
   - ./paper-instant-nurec.md
   - ./paper-simfoundry-real2sim-scene-generation.md
+  - ./image-blaster.md
   - ../methods/generative-world-models.md
   - ../concepts/functional-taxonomy-world-models.md
   - ./paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
@@ -163,6 +164,7 @@ GA 博客把 Marble 写成：把手头模态 **抬成完整 3D 世界**，并随
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 真实传感器 → USDZ，对照「生成世界」
 - [Instant NuRec](./paper-instant-nurec.md) — 驾驶日志前向重建
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 操作场景 sim-ready 孪生
+- [image-blaster](./image-blaster.md) — Claude Code Agent Skills：单图编排 Marble + Hunyuan3D + SFX 资产包
 
 ## 参考来源
 

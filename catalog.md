@@ -556,6 +556,7 @@
 - [Hydra](wiki/entities/hydra-config.md) — Hydra](https://github.com/facebookresearch/hydra) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze `📅unknown` `[entity_page]`
 - [ICRA 2026 REAL-I Challenge](wiki/entities/icra-2026-real-i.md) — REAL-I**（1st Real-World Embodied-AI Learning Challenge）是 **ICRA 2026** 上由 **乐聚** 主办的工业具身赛：提供 **真机评 `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
+- [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Inspect Robots](wiki/entities/inspect-robots.md) — Inspect Robots**（GitHub，[文档](https://docs.inspectro `📅unknown` `[entity_page]`
