@@ -1,3 +1,5 @@
+## [2026-09-07] ingest | Scanford RPDF + LeoInAI 人形数据采集地图 — 论文/项目/Substack 所列实体独立节点
+
 ## [2026-09-07] ingest | sources/papers/spark_vln_arxiv_2607_16806.md — SPARK-VLN 动态社会 VLN 逐 token 隐状态流；项目页 Code 占位、确认未开源
 
 ## [2026-09-07] ingest | sources/repos/image-blaster.md — image-blaster（Claude Code image-to-world Skills）；编排层 MIT 已开源、Marble/FAL API 闭源；关键页 image-blaster；交叉 Marble / img2threejs / generative-world-models
