@@ -9,6 +9,36 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-adamorph-unified-motion-retargeting.md",
+      "detail_id": "entity-paper-adamorph-unified-motion-retargeting",
+      "label": "AdaMorph",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-moreflow-motion-retargeting-flow.md",
+      "detail_id": "entity-paper-moreflow-motion-retargeting-flow",
+      "label": "MoReFlow",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/queries/motion-retargeting-three-routes-landscape.md",
+      "detail_id": "wiki-queries-motion-retargeting-three-routes-landscape",
+      "label": "Query：运动重定向三条技术路线与独立实体索引",
+      "type": "query",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/appen.md",
       "detail_id": "entity-appen",
       "label": "Appen",
@@ -178,42 +208,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/cyclo-control.md",
-      "detail_id": "entity-cyclo-control",
-      "label": "cyclo_control",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-contact-constrained-joint-offset-calibration.md",
-      "detail_id": "entity-paper-contact-constrained-joint-offset-calibration",
-      "label": "接触约束人形下肢关节零位标定",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-contact-guided-exploration-locomanipulation.md",
-      "detail_id": "entity-paper-contact-guided-exploration-locomanipulation",
-      "label": "Contact-Guided Exploration 非抓取移动操作",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/appen.md",
-    "detail_id": "entity-appen",
-    "label": "Appen",
+    "path": "wiki/entities/paper-adamorph-unified-motion-retargeting.md",
+    "detail_id": "entity-paper-adamorph-unified-motion-retargeting",
+    "label": "AdaMorph",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
