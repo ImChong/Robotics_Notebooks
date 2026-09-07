@@ -13,6 +13,7 @@ related:
   - ./articraft.md
   - ./img2threejs.md
   - ./drawio-scientific-illustrator.md
+  - ./cad-1000-hours-dataset.md
   - ./freecad-mcp.md
   - ./mattpocock-skills.md
   - ./sensenova-skills.md
