@@ -1,4 +1,4 @@
-## [2026-09-07] ingest | sources/papers/reviv4d_arxiv_2607_17790.md — ReViV 单目 egocentric 统一 4D 重建；GitHub+权重已开源（权重非商用）；关键页 paper-reviv4d
+## [2026-09-07] ingest | sources/papers/mint_arxiv_2609_04958.md — MINT 世界系相机+双手基础模型；已开源权重/Viewer/1,021h 数据集
 
 ## [2026-09-07] ingest | sources/papers/redwood_arxiv_2608_26418.md — Architect Labs Redwood AI 加速器（与 1X Redwood WM 消歧）；ALP 两周 RTL→FPGA，未开源
 

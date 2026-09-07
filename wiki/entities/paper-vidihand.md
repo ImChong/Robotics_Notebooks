@@ -3,7 +3,7 @@ type: entity
 tags: [paper, hand-pose, egocentric, video-diffusion, perception, manipulation, embodied-ai, ntu, sjtu]
 status: complete
 summary: "ViDiHand（arXiv:2606.30308，NTU/SJTU）：hand-overlay 微调 Wan2.1-VACE，双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO；ARCTIC/HOT3D/HOI4D SOTA；项目页有 Code 链但仓库仍待发布。"
-updated: 2026-08-15
+updated: 2026-09-07
 arxiv: "2606.30308"
 code: "https://github.com/NTUYWANG103/ViDiHand"
 venue: "arXiv 2026"
@@ -192,6 +192,7 @@ flowchart TB
 - [WiLoR](../methods/wilor.md) — per-frame 强基线与失败模式对照
 - [Hand Visibility Detector](./paper-hand-visibility-detector.md) — 单帧逐关节可见性插件；不替代 4D 重建
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 开源检测+HaWoR+VGGT 配方与 Action MPJPE 工程标尺
+- [MINT](./paper-mint-ego-world-space-camera-hand-motion.md) — 世界系相机+双手联合基础模型，摊销 EgoPipeline 级联（已开源）
 - [mimic-video（VAM）](../methods/mimic-video.md) — 另一 video diffusion 表征下游任务轴
 - [Manipulation](../tasks/manipulation.md) — 手部运动作为操作模仿监督
 - [Ego 采集链路](../overview/ego-category-01-data-collection.md) — egocentric 数据进入训练栈
