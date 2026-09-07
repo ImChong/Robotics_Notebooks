@@ -1,13 +1,63 @@
 {
-  "generated_at": "2026-09-06",
+  "generated_at": "2026-09-07",
   "node_count": 3823,
-  "edge_count": 34034,
+  "edge_count": 34046,
   "coverage": {
     "covered": 3796,
     "total": 3796,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/hardware-in-the-loop.md",
+      "detail_id": "wiki-concepts-hardware-in-the-loop",
+      "label": "Hardware-in-the-Loop（HIL，硬件在环）",
+      "type": "concept",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/lerobot-envhub.md",
+      "detail_id": "wiki-concepts-lerobot-envhub",
+      "label": "LeRobot EnvHub",
+      "type": "concept",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/isaac-lab-arena.md",
+      "detail_id": "entity-isaac-lab-arena",
+      "label": "Isaac Lab-Arena",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/nexus-humanoid.md",
+      "detail_id": "entity-nexus-humanoid",
+      "label": "NEXUS（感知型基础策略 · 跨域全身遥操作）",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-r2s-eval.md",
+      "detail_id": "entity-paper-r2s-eval",
+      "label": "R2S-Eval：真实—仿真校准 + VLM 的机器人策略评测",
+      "type": "entity",
+      "recency": "2026-09-06",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-ahoy.md",
       "detail_id": "entity-paper-ahoy",
@@ -38,16 +88,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/isaac-lab-arena.md",
-      "detail_id": "entity-isaac-lab-arena",
-      "label": "Isaac Lab-Arena",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/robocurve.md",
@@ -175,70 +215,26 @@
       "action": "added",
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-abot-3dworld.md",
-      "detail_id": "entity-cn-os-abot-3dworld",
-      "label": "ABot-3DWorld",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-abot-claw.md",
-      "detail_id": "entity-cn-os-abot-claw",
-      "label": "ABot-Claw",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-abot-explorer.md",
-      "detail_id": "entity-cn-os-abot-explorer",
-      "label": "ABot-Explorer",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-abot-manipulation.md",
-      "detail_id": "entity-cn-os-abot-manipulation",
-      "label": "ABot-Manipulation",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ahoy.md",
-    "detail_id": "entity-paper-ahoy",
-    "label": "AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人",
-    "type": "entity",
+    "path": "wiki/concepts/hardware-in-the-loop.md",
+    "detail_id": "wiki-concepts-hardware-in-the-loop",
+    "label": "Hardware-in-the-Loop（HIL，硬件在环）",
+    "type": "concept",
     "recency": "2026-09-06",
     "source": "git",
     "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 913
+      "size": 717
     },
     {
       "label": "操作",
-      "size": 633
+      "size": 622
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -254,7 +250,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 139
+      "size": 153
     }
   ],
   "top_hubs": [
@@ -380,8 +376,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 49,
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
