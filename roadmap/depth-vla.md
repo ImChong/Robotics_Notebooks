@@ -194,6 +194,7 @@ flowchart LR
 - [RTCF](../wiki/entities/paper-rtcf.md)（本仓库）— 免训练测试时纠偏：Progressive Memory Alignment 按执行历史对齐成功轨迹，只把低频运动残差转移给冻结的 PI-FAST；LIBERO 86.4%→88.4%，LIBERO-Long 61.6%→68.6%，CPU 侧约 11 ms/chunk 额外开销；截至入库日无公开代码
 - [Neural Introspection Gating](../wiki/entities/paper-neural-introspection-gating.md)（本仓库，IROS 2026）— 训练无关、可插拔的 VLA 推理调度层：用上一步动作 token logit margin 当免费不确定性信号，门控 VLA-Cache 静态 patch 复用，在保留约 80% 算力节省（1.54 vs 1.43 TFLOPs）的同时收回盲缓存在 LIBERO-Long 上的掉点；适配已部署的 OpenVLA/OpenVLA-OFT；确认未开源
 - [ReflexVLA](../wiki/entities/paper-reflexvla.md)（本仓库）— ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测 + 时序融合骨干 + CUDA Graph）；均值 50.4%、LIBERO 97.2%；代码录用后开放
+- [FlashVLA](../wiki/entities/paper-flashvla.md)（本仓库，UCSD/MIT）— 给流匹配 VLA 接上交错噪声缓冲 + chunk 级因果注意力，稳态每步吐一块动作，用一块缓冲同时压低逐步延迟与异步观测错配，无需额外未来状态预测器；LIBERO 异步 2.43×（96.9%→97.8%），真机单卡 ≥30 Hz；代码与 π₀.₅ 权重已开源
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)（本仓库）
 
 ### 学完输出什么

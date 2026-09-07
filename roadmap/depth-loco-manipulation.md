@@ -84,6 +84,7 @@ flowchart LR
 - [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md)（本仓库）— 感知统一低层 LLC
 - [AGILE](../wiki/entities/paper-agile-humanoid-loco-manipulation.md)（本仓库）— NVIDIA Isaac Lab + RSL-RL 全生命周期工作流（Prepare→Train→Evaluate→Deploy），描述符驱动 Sim2Sim/真机 I/O；G1 与 Booster T1 双机验证 locomotion/recovery/motion imitation/loco-manipulation 五类技能，上身专家微调 GR00T N1.5 仿真闭环 pick&place 90%；已开源
 - [运动基座与全身跟踪（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [上身接口](../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)（本仓库）
+- [HTD 解耦 WBC](../wiki/entities/htd-decoupled-wbc.md)（本仓库，CMU/UTA/Bosch，IROS 2026）— [Humanoid Touch Dream](../wiki/entities/paper-humanoid-touch-dream.md) 的下肢+腰控制器实现：Isaac Lab 单 GPU 训 teacher，再 BC→DAgger 蒸馏出可部署 student，跟踪速度与极端躯干姿态并零样本落到 G1；把"上下身解耦"从接口图落成可跑代码（BSD-3-Clause 已开源），VR 遥操作与上层 HTD 策略仍待发布
 - [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)（本仓库）
 
 ### 学完输出什么
