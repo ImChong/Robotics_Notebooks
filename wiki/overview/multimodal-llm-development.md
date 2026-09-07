@@ -9,7 +9,7 @@ tags:
   - llava
   - curriculum
 status: complete
-updated: 2026-08-12
+updated: 2026-09-07
 summary: "多模态大模型发展路线：对比学习对齐（CLIP）→ 桥接生成（BLIP/BLIP-2）→ 视觉指令微调（LLaVA/InstructBLIP）→ 分割/编辑等具身友好下游（LISA 等）。"
 related:
   - ../concepts/multimodality-basics.md

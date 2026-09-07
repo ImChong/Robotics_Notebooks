@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, locomotion, hardware-design, morphology, spherical-robot, reinforcement-learning, imitation-learning, perception, loco-manipulation, robustness, duke, science-robotics]
 status: complete
-updated: 2026-07-01
+updated: 2026-09-07
 doi: "10.1126/scirobotics.aec1725"
 venue: "Science Robotics 2026"
 code: "https://github.com/generalroboticslab/Argus"

@@ -8,13 +8,14 @@ tags:
   - computer-vision
   - foundation-model
 status: complete
-updated: 2026-08-12
+updated: 2026-09-07
 summary: "SIDA（arXiv:2412.04292，CVPR 2025）：基于多模态大模型的社交媒体图像伪造检测、篡改定位与文字解释框架，扩展 DET/SEG 特殊词元输出真伪判断与掩码。"
 related:
   - ../concepts/multimodality-basics.md
   - ../overview/multimodal-llm-development.md
   - ./lisa.md
   - ./sa2va.md
+  - ./paper-argus-deepfake-forensics.md
   - ./transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
@@ -42,6 +43,7 @@ sources:
 
 - 课程 6.2.3 所列 VLM 下游应用：把「对话式 VLM」接到 **安全/鉴伪** 任务，而不仅是 caption。
 - 与 [LISA](./lisa.md) 的 SEG token 思路相近，但目标从推理分割转向 **伪造检测与解释**。
+- 视频向多 Agent 取证见 [ARGUS 深度伪造鉴伪](./paper-argus-deepfake-forensics.md)（四观测 + Judge；FaceVid-Forensics-100K）。
 - 机器人/具身侧可类比：对传感器或合成数据做「可信度」核验的接口形态。
 
 ## 核心原理
@@ -77,6 +79,7 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [LISA](./lisa.md)
 - [Sa2VA](./sa2va.md)
+- [ARGUS 深度伪造鉴伪](./paper-argus-deepfake-forensics.md)
 - [Transformer CV 课程策展](./transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 以 SEG 词元同时输出掩码与文字解释，属②层分割接口的多模态变体
 

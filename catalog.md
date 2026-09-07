@@ -790,6 +790,7 @@
 - [APOLLO Blender](wiki/entities/paper-apollo-blender.md) — APOLLO Blender**（*A Robotics Library for Visualization and Animation in Blender*，[arXiv:2512.23103 `📅unknown` `[entity_page]`
 - [APT-RL：野外敏捷感知多技能四足 Locomotion](wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — Agile perceptive multi-skill locomotion for quadrupedal robots in the wild**（Jun-Gill Kang / Jaehy `📅unknown` `[entity_page]`
 - [Arcadia（具身终身学习全生命周期）](wiki/entities/paper-arcadia.md) — Arcadia**（*Toward a Full-Lifecycle Framework for Embodied Lifelong Learning*，[arXiv:2512.00076](ht `📅unknown` `[entity_page]`
+- [ARGUS：可泛化深度伪造视频检测的多智能体取证推理](wiki/entities/paper-argus-deepfake-forensics.md) — ARGUS**（*Multi-Agent Forensic Reasoning for Generalizable Deepfake Video Detection*，[arXiv:2608.06 `📅unknown` `[entity_page]`
 - [Argus（Dynamic Symmetry / Dynamic Isotropy）](wiki/entities/paper-argus-dynamic-symmetry.md) — Argus**（*Extreme dynamic symmetry enables omnidirectional and multifunctional robots*，Jiaxun Liu / `📅unknown` `[entity_page]`
 - [ARLI：异步 VLA 的延迟感知 RL 后训练](wiki/entities/paper-arli.md) — ARLI**（*Asynchronous RL with Intermediate Information*；论文 *Learning to Act While Waiting*，[arXiv:2 `📅unknown` `[entity_page]`
 - [Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成](wiki/entities/paper-arm-aware-dexgrasp.md) — Arm-Aware Guided Dexterous Grasp Generation**（[arXiv:2608.16351](https://arxiv.org/abs/2608.16351 `📅unknown` `[entity_page]`
