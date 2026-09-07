@@ -1,3 +1,5 @@
+## [2026-09-07] ingest | sources/papers/redwood_arxiv_2608_26418.md — Architect Labs Redwood AI 加速器（与 1X Redwood WM 消歧）；ALP 两周 RTL→FPGA，未开源
+
 ## [2026-09-07] ingest | sources/papers/moss_transcribe_diarize_arxiv_2601_01554.md — MOSS Transcribe Diarize 0.9B 端到端 SATS（128k/90min）；GitHub+HF 已开源、Pro 仅 MOSI 平台；关键页 paper-moss-transcribe-diarize；交叉 humanoid-voice-interaction / Daily-Omni
 
 ## [2026-09-07] ingest | sources/blogs/wechat_shenlan_motion_retargeting_three_routes_2026-09-07.md — 深蓝运动重定向三路综述；新建 MoReFlow / AdaMorph 实体 + Query 索引；复用 GMR/PHC/H2H/DynaRetarget/ReActor/OmniRetarget 已有页

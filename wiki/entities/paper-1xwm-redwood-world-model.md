@@ -21,6 +21,7 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md
   - ./paper-egowm-egocentric-world-model.md
+  - ./paper-redwood-architectlabs-accelerator.md
   - ./paper-gigaworld-1-policy-evaluation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
 sources:
@@ -141,6 +142,7 @@ sequenceDiagram
 
 - 未见物体交互易幻觉；生产级全任务歧义评测仍未解决。  
 - 易把 `1xgpt` Challenge 误当成 Redwood 引擎开源。  
+- **命名消歧：** 本页「Redwood」指 1X **世界模型评测** 产品叙事；与 [Architect Labs Redwood AI 加速器](./paper-redwood-architectlabs-accelerator.md)（定制推理 NPU）无关。
 - 高相关仍可能在长尾上翻车——WM 筛完仍要抽样真机确认。
 
 ## 与其他工作对比
@@ -157,6 +159,7 @@ sequenceDiagram
 - [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
 - [1X Technologies](./1x-technologies.md)
+- [Redwood（Architect Labs AI 加速器）](./paper-redwood-architectlabs-accelerator.md) — 同名不同实体，推理硅 vs 本页 WM
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 
