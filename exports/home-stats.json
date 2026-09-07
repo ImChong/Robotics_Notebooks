@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/image-blaster.md",
+      "detail_id": "entity-image-blaster",
+      "label": "image-blaster",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/threejs-game-skills.md",
+      "detail_id": "entity-threejs-game-skills",
+      "label": "Three.js Game Skills",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/paper-reviv4d.md",
       "detail_id": "entity-paper-reviv4d",
       "label": "ReViV",
@@ -186,33 +207,12 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-moss-transcribe-diarize.md",
-      "detail_id": "entity-paper-moss-transcribe-diarize",
-      "label": "MOSS Transcribe Diarize（长时多说话人 SATS）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-spark-vln.md",
-      "detail_id": "entity-paper-spark-vln",
-      "label": "SPARK-VLN（动态社会视觉–语言导航）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-reviv4d.md",
-    "detail_id": "entity-paper-reviv4d",
-    "label": "ReViV",
+    "path": "wiki/entities/image-blaster.md",
+    "detail_id": "entity-image-blaster",
+    "label": "image-blaster",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
