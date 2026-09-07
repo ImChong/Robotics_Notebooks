@@ -1,3 +1,10 @@
+## [2026-09-07] ingest | sources/blogs/wechat_shenlan_motion_retargeting_three_routes_2026-09-07.md — 深蓝运动重定向三路综述；新建 MoReFlow / AdaMorph 实体 + Query 索引；复用 GMR/PHC/H2H/DynaRetarget/ReActor/OmniRetarget 已有页
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/QKPp9grbgpy6-NBNm5Nl-w>，要求每篇论文/项目独立节点
+- **新建：** `paper-moreflow-motion-retargeting-flow`、`paper-adamorph-unified-motion-retargeting`、`motion-retargeting-three-routes-landscape` Query；sources 归档 blog/raw + 两篇 arXiv + MoReFlow 项目页
+- **复用：** Retargeting Matters/GMR、PHC、Human2Humanoid、DynaRetarget、ReActor、OmniRetarget 等已有 wiki，避免重复造页
+- **开源：** MoReFlow 项目页、AdaMorph arXiv 截至入库日均无 GitHub → wiki 标待发布/未开源
+
 ## [2026-09-07] ingest | Scanford RPDF + LeoInAI 人形数据采集地图 — 论文/项目/Substack 所列实体独立节点
 
 ## [2026-09-07] ingest | sources/papers/spark_vln_arxiv_2607_16806.md — SPARK-VLN 动态社会 VLN 逐 token 隐状态流；项目页 Code 占位、确认未开源

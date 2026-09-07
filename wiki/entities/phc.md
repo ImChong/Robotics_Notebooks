@@ -4,7 +4,7 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl, nvidia, paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-07
 code: https://github.com/ZhengyiLuo/PHC
 venue: "2023 · ICCV"
 arxiv: "2305.06456"
