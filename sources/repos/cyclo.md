@@ -10,7 +10,7 @@
 - **许可：** Apache-2.0（README 徽章）
 - **入库日期：** 2026-08-07
 - **一句话说明：** Cyclo 公开模块导航仓：列出 Manager / Intelligence / Control / Lab 及 interfaces、applications；标明可选私有 Supervisor/Hub。
-- **沉淀到 wiki：** 合并入 [robotis](../../wiki/entities/robotis.md)（不单独建 stub）
+- **沉淀到 wiki：** [cyclo-control](../../wiki/entities/cyclo-control.md)（Control 模块详情）；组织 hub 见 [robotis](../../wiki/entities/robotis.md)
 
 ---
 
@@ -20,7 +20,7 @@
 |------|------|------|
 | Cyclo Manager | `cyclo_manager` | 运维与系统管理 |
 | Cyclo Intelligence | `cyclo_intelligence` | 模仿学习 / VLA 工作流 |
-| Cyclo Control | `cyclo_control` | 全身控制与执行 |
+| Cyclo Control | `cyclo_control` | 全身控制与执行 → [cyclo-control](../../wiki/entities/cyclo-control.md) |
 | Cyclo Lab | `cyclo_lab` | 仿真与 RL |
 | — | `robotis_interfaces` | 共享接口 |
 | — | `robotis_applications` | 应用集成 |

@@ -9,6 +9,7 @@ related:
   - ./robotis-ai-worker.md
   - ./robotis-physical-ai-tools.md
   - ./cyclo-lab.md
+  - ./cyclo-control.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ../methods/vla.md
   - ./lerobot.md

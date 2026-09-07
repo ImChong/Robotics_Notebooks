@@ -1,13 +1,110 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3833,
-  "edge_count": 34089,
+  "node_count": 3835,
+  "edge_count": 34106,
   "coverage": {
-    "covered": 3806,
-    "total": 3806,
+    "covered": 3808,
+    "total": 3808,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-contact-constrained-joint-offset-calibration.md",
+      "detail_id": "entity-paper-contact-constrained-joint-offset-calibration",
+      "label": "接触约束人形下肢关节零位标定",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-contact-guided-exploration-locomanipulation.md",
+      "detail_id": "entity-paper-contact-guided-exploration-locomanipulation",
+      "label": "Contact-Guided Exploration 非抓取移动操作",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dual-cam-parallel-elastic-ankle.md",
+      "detail_id": "entity-paper-dual-cam-parallel-elastic-ankle",
+      "label": "双凸轮共享气弹簧人形并联弹性踝",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dynamic-multimodal-hri-dataset-u1.md",
+      "detail_id": "entity-paper-dynamic-multimodal-hri-dataset-u1",
+      "label": "动态多模态 HRI 参与度数据集（Unitree U1）",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-ebert-nonlinear-normal-modes.md",
+      "detail_id": "entity-paper-ebert-nonlinear-normal-modes",
+      "label": "eBert：非线性正规模涌现四足步态",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ihmc-fast-resilient-loco-manipulation.md",
+      "detail_id": "entity-paper-ihmc-fast-resilient-loco-manipulation",
+      "label": "IHMC 快速抗扰可编辑人形 loco-manipulation 系统",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-muldp.md",
+      "detail_id": "entity-paper-muldp",
+      "label": "MulDP：四足跑酷自主导航扩散策略",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-qlaun.md",
+      "detail_id": "entity-paper-qlaun",
+      "label": "QLAUN：模块化准直驱 3D 打印四足",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robogesture.md",
+      "detail_id": "entity-paper-robogesture",
+      "label": "RoboGesture：人形实时语义对齐伴随语音手势",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sleepwalking.md",
+      "detail_id": "entity-paper-sleepwalking",
+      "label": "SleepWalking (SWAQ)：特权表征塑造盲走",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/concepts/hardware-in-the-loop.md",
       "detail_id": "wiki-concepts-hardware-in-the-loop",
@@ -110,122 +207,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/nvidia-physical-ai-toolchain-technology-map.md",
-      "detail_id": "wiki-overview-nvidia-physical-ai-toolchain-technology-map",
-      "label": "NVIDIA Physical AI 工具链技术地图（汇总节点）",
-      "type": "overview",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/holoscan-sensor-bridge.md",
-      "detail_id": "entity-holoscan-sensor-bridge",
-      "label": "Holoscan Sensor Bridge（HSB）",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-jetson.md",
-      "detail_id": "entity-nvidia-jetson",
-      "label": "NVIDIA Jetson",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/jetson-ai-lab.md",
-      "detail_id": "entity-jetson-ai-lab",
-      "label": "Jetson AI Lab（边缘 AI 教程 hub）",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/human-atlas.md",
-      "detail_id": "entity-human-atlas",
-      "label": "Human Atlas（3D 解剖探索器）",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/cosmos-curator.md",
-      "detail_id": "entity-cosmos-curator",
-      "label": "Cosmos Curator（视频策展）",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md",
-      "detail_id": "entity-paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai",
-      "label": "PAI-Bench: A Comprehensive Benchmark For Physical AI",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-merope.md",
-      "detail_id": "entity-paper-merope",
-      "label": "MeRoPE：相机可控视频生成的 Metric 旋转位置编码",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-a3-a3u-robot-model.md",
-      "detail_id": "entity-cn-os-a3-a3u-robot-model",
-      "label": "A3-A3U-robot-model",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-a3-ultra-usd.md",
-      "detail_id": "entity-cn-os-a3-ultra-usd",
-      "label": "A3_Ultra_usd",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/hardware-in-the-loop.md",
-    "detail_id": "wiki-concepts-hardware-in-the-loop",
-    "label": "Hardware-in-the-Loop（HIL，硬件在环）",
-    "type": "concept",
-    "recency": "2026-09-06",
+    "path": "wiki/entities/paper-contact-constrained-joint-offset-calibration.md",
+    "detail_id": "entity-paper-contact-constrained-joint-offset-calibration",
+    "label": "接触约束人形下肢关节零位标定",
+    "type": "entity",
+    "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
@@ -249,8 +241,8 @@
       "size": 228
     },
     {
-      "label": "仿真到现实",
-      "size": 153
+      "label": "视觉语言动作纵深路线",
+      "size": 155
     }
   ],
   "top_hubs": [
@@ -289,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 838,
+      "degree": 839,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

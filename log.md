@@ -1,3 +1,9 @@
+## [2026-09-07] ingest | sources/repos/cyclo_control.md + natural_disasters.md — ROBOTIS cyclo_control 真机 WBC 栈与 ABYSSAL 程序化海洋天气 demo 独立实体页
+
+- **触发：** 用户指定 <https://github.com/ROBOTIS-GIT/cyclo_control>、<https://github.com/Token-Gremlin/natural-disasters>
+- **开源结论：** 二者均已开源（Apache-2.0 / MIT）；cyclo_control 需 ROS 2 Jazzy + numpy&lt;2
+- **关键页：** [cyclo-control](wiki/entities/cyclo-control.md)、[natural-disasters-abyssal](wiki/entities/natural-disasters-abyssal.md)；[robotis](wiki/entities/robotis.md) Cyclo 表补链
+
 ## [2026-09-07] ingest | sources/blogs/wechat_shenlan_weekly_papers_2026-09-04.md — 深蓝 8.31–9.04 周更 21 篇（人形/四足/腿式）；11 篇复用既有 paper-* 节点、新建 10 篇独立实体页
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/h1FBl8iPL8ucERjAL5cIew>；要求每篇论文独立非重复详情节点

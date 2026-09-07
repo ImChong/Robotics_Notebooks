@@ -88,6 +88,7 @@ PPO 并行训练
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [Extreme Parkour](../entities/extreme-parkour.md)
 - [InfiniteDiffusion / Terrain Diffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md) — 学习式无限地形生成（扩散 + 惰性采样）
+- [natural-disasters（ABYSSAL）](../entities/natural-disasters-abyssal.md) — 浏览器 GPU 程序化海洋/极端天气（FFT 海面，非 RL 物理引擎）
 
 ## 推荐继续阅读
 
