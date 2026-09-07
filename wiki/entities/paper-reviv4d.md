@@ -22,6 +22,7 @@ related:
   - ../tasks/teleoperation.md
   - ../tasks/manipulation.md
   - ../concepts/edge-cloud-robotics.md
+  - ./paper-mint-ego-world-space-camera-hand-motion.md
 sources:
   - ../../sources/papers/reviv4d_arxiv_2607_17790.md
   - ../../sources/sites/reviv4d.md
@@ -155,6 +156,29 @@ sequenceDiagram
 6. **权重非商用** — 代码可改，但 polybox 权重许可限制产品部署；训练需自行凑 7B token 级数据管线。
 7. **承袭 EgoM2P/4M** — 工程上是对 [EgoM2P](./paper-sa-2506-07886-egom2p-egocentric-multimodal-multitask-pretraini.md) 的 **viewer 侧扩展**，而非替代其条件视频生成能力。
 
+## 与其他工作对比
+
+egocentric 4D 重建这条线上，各家切的「输出集合」不同——先看要什么，再看谁快：
+
+| 工作 | 输出集合 | 推理形态 | 速度（论文自报） | 开源 / 许可 |
+|------|----------|----------|------------------|-------------|
+| **ReViV** | **全身 + 双手 + 注视 + 深度 + 相机**（共享 metric 系） | 单次前向 MGET（2 s clip） | **~0.7 s/clip** | 代码 **Apache 2.0**；权重 **非商用** |
+| [MINT](./paper-mint-ego-world-space-camera-hand-motion.md) | **世界系相机 + 双手 MANO + 存在性**（无全身） | 单次前向（32 帧滑窗） | 单 GPU 前向，需 **≥24 GB** VRAM | 权重 + 训练码 + 标注已开源 |
+| [EgoM2P](./paper-sa-2506-07886-egom2p-egocentric-multimodal-multitask-pretraini.md) | scene-centric 多模态（含条件视频生成） | 单次前向 | — | ReViV 是其 **viewer 侧扩展**，非替代 |
+| EgoAllo / UniEgoMotion | 全身 | 扩散 + 需预计算相机（VIPE） | ~101 s | — |
+| HaMeR / Dyn-HaMR | 双手 | 优化 / 逐帧 + TTO | 72–280 s | — |
+| [WiLoR](../methods/wilor.md) | 单帧双手 | 逐帧检测重建 | 快 | 常用前端基线 |
+| EgoMono4D | 深度 | 连续回归专家 | 比 ReViV 慢 **20×+** | 深度 Abs Rel **0.150** 优于 ReViV 的 0.265 |
+| VIPE | 相机 | Bundle adjustment | 慢 | ATE 优于 ReViV 端到端；ReViV 无可见地面时可用它作锚 |
+
+**⚠️ 不要横向照抄数字：** ReViV 与 MINT 都在 ARCTIC / HOT3D 上报手部误差，但 **不可直接比大小**——(1) 指标变体不同（ReViV 报 **PA**，MINT 报 **PA-MPJPE-p**）；(2) **训练集重叠情况不同**：ARCTIC / HOT3D 在 ReViV 的预训练数据清单里，而 MINT 是把它们当 **零样本** 集评的。要判高下须回到同一协议下重跑。
+
+**选型读法：**
+
+- 要 **全身 + 注视**，或要一个模型吃下所有模态 → ReViV（但商用受权重许可限制）。
+- 只要 **世界系相机 + 双手**、且要 **可商用可自训** → MINT。
+- 要 **高精度 metric 深度** 或 **最准相机轨迹** → 仍需 EgoMono4D / VIPE 类专家，ReViV 的对应通道是「够快够用」而非最准。
+
 ## 局限与风险
 
 - **离散 token 权衡：** 密集深度回归略逊于连续专家模型（论文 Limitations 节）。
@@ -169,6 +193,7 @@ sequenceDiagram
 - [WiLoR](../methods/wilor.md) — 单帧手部重建强基线
 - [遥操作](../tasks/teleoperation.md) — 第一人称示教采集
 - [操作](../tasks/manipulation.md) — 手–物交互任务语境
+- [MINT](./paper-mint-ego-world-space-camera-hand-motion.md) — 同期 egocentric 世界系相机 + 双手前馈模型（无全身，权重可商用）
 
 ## 参考来源
 

@@ -84,6 +84,20 @@ flowchart TB
 4. RA-L 发表。
 5. **未见 GitHub**。
 
+## 与其他工作对比
+
+非抓取 loco-manipulation 的真问题是 **探索期没有接触就没有奖励信号**。各路线给的答案不同：
+
+| 路线 | 怎么渡过探索期 | 需要什么先验 | 退火 / 可否撤掉 | 与本文 |
+|------|----------------|--------------|-----------------|--------|
+| **本文** | **独立 exploration critic** 给稠密「靠近接触点」奖励 | 物体网格 + 通用抓取算法采样候选点 | **可退火**：$w_{exp}(t)$ 训练中衰减到 0 | 本页；论文消融显示优于单 critic 与固定权重 multi-critic |
+| 单 critic + 固定 shaping | 把接触项塞进标量奖励 | 手调权重 | 撤不掉——权重固定 | 页首动机：平滑/能耗惩罚会让策略 **永远不接触** |
+| 固定权重 multi-critic | 分开算优势但权重不变 | 同上 | 撤不掉 | 论文自带对照组，弱于可退火版 |
+| 演示 / 模仿引导（[AMP 风格奖励](../methods/amp-reward.md)） | 用参考动作分布拉近初始策略 | **演示数据** | 通常保留判别器 | 页首动机：演示难覆盖多样几何；本文只要网格不要演示 |
+| [课程学习](../concepts/curriculum-learning.md) | 调 **任务难度** 而非奖励结构 | 难度参数化 | 可退火 | 正交手段，可与本文叠加 |
+
+**读法：** 本文的可迁移点不是「多 critic」这个结构本身（[PPO](../methods/ppo.md) 上加多头很常见），而是 **把接触先验做成一个用完即撤的独立优势项**——先验只负责把策略推过探索期，不污染最终最优解。这正是 [奖励设计](../concepts/reward-design.md) 里 shaping 项「引导 vs 偏置最优解」矛盾的一种解法。
+
 ## 局限与风险
 
 仍依赖仿真物理与抓取候选质量；长视野任务未全覆盖。
@@ -93,6 +107,9 @@ flowchart TB
 - [loco-manipulation](../tasks/loco-manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [paper-muldp.md](./paper-muldp.md)
+- [奖励设计](../concepts/reward-design.md) — shaping 引导 vs 偏置最优解的矛盾
+- [课程学习](../concepts/curriculum-learning.md) — 正交的探索期手段
+- [PPO](../methods/ppo.md) — 多 critic 所依附的底座算法
 
 ## 参考来源
 

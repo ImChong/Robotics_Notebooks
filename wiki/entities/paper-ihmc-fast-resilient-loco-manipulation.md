@@ -86,6 +86,19 @@ flowchart LR
 4. 贡献在 **runtime 结构**，非新学习算法。
 5. 未见开源栈——复现依赖 IHMC 内部系统。
 
+## 与其他工作对比
+
+同样要「人形又快又抗扰地干活」，分歧在 **能力放在哪一层**：
+
+| 路线 | 能力载体 | 改一个新任务变体要多久 | 抗扰来自 | 与本文 |
+|------|----------|------------------------|----------|--------|
+| **本文（IHMC）** | **运行时可编辑的 BT + Affordance Template** | **小时级**（专家在 UI 里改） | [WBC](../concepts/whole-body-control.md) 并发行走/操作 + operator-in-the-loop 修补 | 本页；贡献是 **runtime 结构**，不含新学习算法 |
+| 端到端 RL 门/操作策略 | 策略网络权重 | **天级**（重训 + sim2real） | 策略自身鲁棒性 | 论文称推门 34 s 与文献中学习型门策略 **同量级**；但那是 **跨论文自报数字对比**，非同台实验 |
+| VLA / 大模型编排 | 预训练模型 + 提示 | 取决于数据与微调 | 模型泛化 | 二者可合流，见 [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)：BT 提供可审计骨架，VLA 填语义 |
+| [MoveIt 2](./moveit2.md) / BehaviorTree.CPP | 规划栈 + 通用 BT 库 | 取决于集成 | 规划与重规划 | **页内明说未做实验对照**——「更快」的宣称对这条基线尚未验证 |
+
+**证据分级提醒：** 本页所有时间数字（34 s / 45 s / 2 min 8 s）都来自 **作者自报演示**，且复现依赖 IHMC 内部未开源栈。可迁移的是架构主张——「任务变体多、需要现场改逻辑」的场景，可编辑 BT 优于重训——而不是这些具体秒数。
+
 ## 局限与风险
 
 未与 MoveIt/BehaviorTree.CPP 等做实验对照；数字来自自报演示与文献表。
@@ -96,6 +109,7 @@ flowchart LR
 - [whole-body-control](../concepts/whole-body-control.md)
 - [paper-bridge-humanoid.md](./paper-bridge-humanoid.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
+- [MoveIt 2](./moveit2.md) — 未被实验对照的通用规划栈基线
 
 ## 参考来源
 

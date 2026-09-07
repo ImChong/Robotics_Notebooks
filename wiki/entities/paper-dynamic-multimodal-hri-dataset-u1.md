@@ -9,6 +9,8 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ./paper-pamor.md
   - ../tasks/loco-manipulation.md
+  - ./paper-shrimp.md
+  - ../queries/humanoid-voice-interaction-pipeline.md
 sources:
   - ../../sources/papers/dynamic_multimodal_hri_dataset_arxiv_2609_03255.md
 ---
@@ -40,6 +42,15 @@ sources:
 |----|------|
 | **机构** | 仁川大学（Incheon National University） |
 | **开源** | 见 [工程实践](#工程实践) |
+
+### 数据集速查
+
+| 维度 | 状态（截至 2026-09-07） |
+|------|--------------------------|
+| **规模** | 计划 **N=30** 被试（G\*Power 估算）× 三档复杂度分区；**尚无已采集条目/时长统计**——论文停在协议阶段 |
+| **模态** | 人侧 EmotiBit **EDA / PPG / IMU**；机侧 U1 **关节 / IMU / LiDAR / RGB-D**；每区后 15 项 Likert 自报告 |
+| **许可证** | **未声明** — 数据未发布，无协议、无下载入口 |
+| **重定向就绪度** | **不适用（且不宜误用）** — 采集的是 **生理 + 参与度标注 + 机器人本体感知**，不含人体全身动捕 / SMPL / 骨架序列，因此 **无法作动作重定向源，也不能直接当策略输入**；可复用的是「多模态同步 + 复杂度分区」这套采集框，而非轨迹本身 |
 
 ## 核心原理
 
@@ -83,6 +94,20 @@ flowchart TB
 4. 数据 **尚未公开**。
 5. 论文阶段为 **设计**，非 benchmark 结果。
 
+## 与其他工作对比
+
+同样围绕「人形机器人前的人」，各工作切的是不同环节——本文只占 **采集协议** 一格：
+
+| 工作 | 落点 | 人侧信号 | 机器人侧 | 与本文 |
+|------|------|----------|----------|--------|
+| **本文（U1 HRI 协议）** | 采集协议设计 | EDA/PPG/IMU + 15 项 Likert | Unitree U1 关节/IMU/LiDAR/RGB-D，ROS2 同步 | 本页；**无数据、无模型、无基准结果** |
+| UE-HRI / MHHRI（外部既有数据集） | 已发布参与度数据集 | 音视频 + 部分生理 | 多为固定/桌面平台 | 本文相对增量是 **机器人侧 IMU** 与 **三档复杂度梯度**；但那两者 **已有数据可下载**，本文没有 |
+| [PAMoR](./paper-pamor.md) | 情感 **动作生成** | 无（人只做感知评分） | Unitree G1 实时全身运动 | 同属社交 HRI，方向相反：本文 **读人**，PAMoR **演给人看** |
+| [SHRIMP](./paper-shrimp.md) | LLM 任务规划 + HRI 评估 | 交互指令 | Isaac Sim 仿真 | 同为交互侧，但落在 **规划/仿真评测**，不涉生理信号 |
+| [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) | 交互工程链路 | 语音 | 语音→动作下发 | 本文的问卷/生理标注可作该链路的 **效果度量来源**，前提是数据发布 |
+
+**选型读法：** 现在需要可训练的参与度数据，本文 **不是候选**（未发布）；需要设计自己的采集协议，本文的 **三档复杂度 × 人机双流 ROS2 对齐** 是可直接抄的骨架。
+
 ## 局限与风险
 
 无已采集规模统计；U1 可用性与泛化待验证。
@@ -92,6 +117,8 @@ flowchart TB
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)
 - [paper-pamor.md](./paper-pamor.md)
 - [loco-manipulation](../tasks/loco-manipulation.md)
+- [SHRIMP](./paper-shrimp.md) — LLM 任务规划侧的 HRI 评估对照
+- [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) — 下游交互链路消费方
 
 ## 参考来源
 

@@ -22,6 +22,7 @@ related:
   - ./paper-daily-omni.md
   - ./paper-argus-dynamic-symmetry.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/argus_arxiv_2608_06865.md
   - ../../sources/sites/argus-deepfake-github-io.md
@@ -206,6 +207,7 @@ sequenceDiagram
 - [Daily-Omni](./paper-daily-omni.md) — omni-modal MLLM 评测基准
 - [机器人 ARGUS（对称性）](./paper-argus-dynamic-symmetry.md) — **不同论文**，避免混名
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知可信度上游
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — FaceVid-Forensics-100K 属 ① 认知层评测：OOD 协议（20 个训练外生成器）是「可复现性 vs 真实代表性」取舍的样板；判对真伪 ≠ 下游策略安全
 
 ## 参考来源
 
