@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3851,
-  "edge_count": 34232,
+  "node_count": 3854,
+  "edge_count": 34269,
   "coverage": {
-    "covered": 3824,
-    "total": 3824,
+    "covered": 3827,
+    "total": 3827,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -223,7 +223,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 670
+      "size": 674
     },
     {
       "label": "操作",
@@ -339,7 +339,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 83,
+      "degree": 84,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -353,14 +353,14 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 60,
+      "degree": 61,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
-      "degree": 57,
+      "degree": 60,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
