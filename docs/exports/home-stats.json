@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/image-blaster.md",
+      "detail_id": "entity-image-blaster",
+      "label": "image-blaster",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/open-duck-mini-viewer.md",
+      "detail_id": "entity-open-duck-mini-viewer",
+      "label": "Open Duck Mini Viewer",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/cyclo-control.md",
       "detail_id": "entity-cyclo-control",
       "label": "cyclo_control",
@@ -185,38 +206,17 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humaps4d.md",
-      "detail_id": "entity-paper-humaps4d",
-      "label": "HUMAPS-4D：足底压力也能推断全身 3D 运动吗？",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/inspect-robots.md",
-      "detail_id": "entity-inspect-robots",
-      "label": "Inspect Robots",
-      "type": "entity",
-      "recency": "2026-09-06",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cyclo-control.md",
-    "detail_id": "entity-cyclo-control",
-    "label": "cyclo_control",
+    "path": "wiki/entities/image-blaster.md",
+    "detail_id": "entity-image-blaster",
+    "label": "image-blaster",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
