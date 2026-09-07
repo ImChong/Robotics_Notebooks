@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-reviv4d.md",
+      "detail_id": "entity-paper-reviv4d",
+      "label": "ReViV",
+      "type": "entity",
+      "recency": "2026-09-07",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-mint-ego-world-space-camera-hand-motion.md",
       "detail_id": "entity-paper-mint-ego-world-space-camera-hand-motion",
       "label": "MINT — World-Space Camera and Hand Motion Estimation",
@@ -196,29 +206,17 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/arnis.md",
-      "detail_id": "entity-arnis",
-      "label": "Arnis",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-mint-ego-world-space-camera-hand-motion.md",
-    "detail_id": "entity-paper-mint-ego-world-space-camera-hand-motion",
-    "label": "MINT — World-Space Camera and Hand Motion Estimation",
+    "path": "wiki/entities/paper-reviv4d.md",
+    "detail_id": "entity-paper-reviv4d",
+    "label": "ReViV",
     "type": "entity",
     "recency": "2026-09-07",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
