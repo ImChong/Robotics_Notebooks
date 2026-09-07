@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-07",
-  "node_count": 3856,
-  "edge_count": 34283,
+  "node_count": 3857,
+  "edge_count": 34290,
   "coverage": {
-    "covered": 3829,
-    "total": 3829,
+    "covered": 3830,
+    "total": 3830,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -250,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1435,
+      "degree": 1436,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
