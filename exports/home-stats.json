@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/litereality-agent.md",
+      "detail_id": "entity-litereality-agent",
+      "label": "LiteReality-Agent",
+      "type": "entity",
+      "recency": "2026-09-08",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/mjswan.md",
+      "detail_id": "entity-mjswan",
+      "label": "mjswan",
+      "type": "entity",
+      "recency": "2026-09-08",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-libero-recover.md",
       "detail_id": "entity-paper-libero-recover",
       "label": "LIBERO-Recover：机器人失败恢复基准",
@@ -184,35 +206,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-robogesture.md",
-      "detail_id": "entity-paper-robogesture",
-      "label": "RoboGesture：人形实时语义对齐伴随语音手势",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-scanford-robot-powered-data-flywheel.md",
-      "detail_id": "entity-paper-scanford-robot-powered-data-flywheel",
-      "label": "Robot-Powered Data Flywheel（RPDF）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-libero-recover.md",
-    "detail_id": "entity-paper-libero-recover",
-    "label": "LIBERO-Recover：机器人失败恢复基准",
+    "path": "wiki/entities/litereality-agent.md",
+    "detail_id": "entity-litereality-agent",
+    "label": "LiteReality-Agent",
     "type": "entity",
     "recency": "2026-09-08",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
