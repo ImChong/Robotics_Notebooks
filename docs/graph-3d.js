@@ -1706,6 +1706,22 @@
         refreshAppearance();
       },
 
+      // G0 基线测量：读取 three.js 当帧 draw calls / 三角形数（非业务 UI）
+      getRendererInfo: function () {
+        var r = graph && typeof graph.renderer === 'function' ? graph.renderer() : null;
+        if (!r || !r.info) return null;
+        return {
+          draw_calls: r.info.render.calls,
+          triangles: r.info.render.triangles,
+          lines: r.info.render.lines,
+          points: r.info.render.points,
+          geometries: r.info.memory.geometries,
+          textures: r.info.memory.textures,
+          programs: r.info.programs ? r.info.programs.length : null,
+          pixel_ratio: typeof r.getPixelRatio === 'function' ? r.getPixelRatio() : null,
+        };
+      },
+
       destroy: function () {
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
