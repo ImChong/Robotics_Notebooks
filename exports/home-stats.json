@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-09-08",
-  "node_count": 3864,
-  "edge_count": 34383,
+  "node_count": 3866,
+  "edge_count": 34400,
   "coverage": {
-    "covered": 3837,
-    "total": 3837,
+    "covered": 3839,
+    "total": 3839,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/litereality-agent.md",
+      "detail_id": "entity-litereality-agent",
+      "label": "LiteReality-Agent",
+      "type": "entity",
+      "recency": "2026-09-08",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/mjswan.md",
+      "detail_id": "entity-mjswan",
+      "label": "mjswan",
+      "type": "entity",
+      "recency": "2026-09-08",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/entities/paper-libero-recover.md",
       "detail_id": "entity-paper-libero-recover",
@@ -173,7 +195,7 @@
       "recency": "2026-09-07",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-reviv4d.md",
@@ -184,46 +206,27 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-robogesture.md",
-      "detail_id": "entity-paper-robogesture",
-      "label": "RoboGesture：人形实时语义对齐伴随语音手势",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-scanford-robot-powered-data-flywheel.md",
-      "detail_id": "entity-paper-scanford-robot-powered-data-flywheel",
-      "label": "Robot-Powered Data Flywheel（RPDF）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-libero-recover.md",
-    "detail_id": "entity-paper-libero-recover",
-    "label": "LIBERO-Recover：机器人失败恢复基准",
+    "path": "wiki/entities/litereality-agent.md",
+    "detail_id": "entity-litereality-agent",
+    "label": "LiteReality-Agent",
     "type": "entity",
     "recency": "2026-09-08",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 684
+      "label": "宇树 G1 人形机器人",
+      "size": 754
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 666
+      "label": "操作",
+      "size": 684
     },
     {
       "label": "视觉-语言-动作",
@@ -239,7 +242,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 178
+      "size": 121
     }
   ],
   "top_hubs": [
@@ -310,7 +313,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 548,
+      "degree": 550,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
