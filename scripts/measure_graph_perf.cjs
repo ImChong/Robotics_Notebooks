@@ -199,6 +199,40 @@ function stats(arr) {
       };
     });
 
+    // ── 滑块连续输入：模拟主线程被阻塞时排队的 input 事件一次性回放 ──
+    out.slider_burst = await page.evaluate(async () => {
+      const sl = document.getElementById('sl-degree-top');
+      if (!sl) return { error: 'sl-degree-top 不存在' };
+      const max = Number(sl.max);
+      const longTasks = [];
+      const po = new PerformanceObserver(list => {
+        for (const e of list.getEntries()) longTasks.push(+e.duration.toFixed(1));
+      });
+      try { po.observe({ entryTypes: ['longtask'] }); } catch (e) { /* 不支持则留空 */ }
+
+      const BURST = 12;
+      const t0 = performance.now();
+      for (let i = 0; i < BURST; i++) {
+        sl.value = String(Math.max(10, Math.round(max * (1 - i / BURST))));
+        sl.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      const dispatchMs = performance.now() - t0;      // 事件派发本身占用的主线程时间
+      await new Promise(r => setTimeout(r, 3000));    // 等合并后的重活跑完
+      po.disconnect();
+      const totalMs = performance.now() - t0;
+      sl.value = sl.max;
+      sl.dispatchEvent(new Event('input', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 1500));
+      return {
+        burst_events: BURST,
+        dispatch_blocking_ms: +dispatchMs.toFixed(1),
+        total_ms: +totalMs.toFixed(1),
+        long_tasks_over_50ms: longTasks.length,
+        long_task_total_ms: +longTasks.reduce((s, v) => s + v, 0).toFixed(1),
+        long_task_max_ms: longTasks.length ? Math.max(...longTasks) : 0,
+      };
+    });
+
     // ── 3D：draw calls / 三角形数（先恢复全图，避免沿用上一步的 Top N 筛选）──
     await page.evaluate(async () => {
       const sl = document.getElementById('sl-degree-top');

@@ -3270,12 +3270,31 @@
       updateFilterCount();
     }
 
+    /* 滑块按帧合并：拖动时 input 每帧可触发多次，而 applyFilters() 在全图规模下
+       单次就要上百毫秒（G0 实测 p50 132ms），逐事件执行会把主线程连成一片长任务。
+       这里只保留最后一次值，在下一帧执行一次。 */
+    function coalesceByFrame(fn) {
+      let raf = 0;
+      let pending = null;
+      return value => {
+        pending = value;
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          const v = pending;
+          pending = null;
+          fn(v);
+        });
+      };
+    }
+
     initDegreeTopSlider();
     const slDegreeTop = document.getElementById('sl-degree-top');
     if (slDegreeTop) {
+      const applyDegreeTopCoalesced = coalesceByFrame(setTopDegreeLimit);
       slDegreeTop.addEventListener('input', ev => {
         if (areFiltersLocked()) return;
-        setTopDegreeLimit(ev.target.value);
+        applyDegreeTopCoalesced(ev.target.value);
       });
       slDegreeTop.addEventListener('change', () => {
         if (topDegreeIds) fitToScreen();
@@ -3500,9 +3519,10 @@
     syncRecencyModeUi();
     const slRecencyTop = document.getElementById('sl-recency-top');
     if (slRecencyTop) {
+      const applyRecencyTopCoalesced = coalesceByFrame(setTopRecencyLimit);
       slRecencyTop.addEventListener('input', ev => {
         if (areFiltersLocked()) return;
-        setTopRecencyLimit(ev.target.value);
+        applyRecencyTopCoalesced(ev.target.value);
       });
       slRecencyTop.addEventListener('change', () => {
         if (topRecencyIds) fitToScreen();
@@ -3650,6 +3670,11 @@
     const FORCE_LINK_STRENGTH = 0.72;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
     const FORCE_COLLIDE_STRENGTH = 0.45;
     const FORCE_WARMUP_TICKS = 20;
+    // warmup 分片按时间预算让出主线程：全图单 tick 已远超一帧（G0 实测 ≈46ms），
+    // 固定 tick 数分片仍会攒出长任务。每片至少跑 1 tick 保证推进，故单片可能超预算。
+    // 基线见 docs/checklists/graph-perf-baseline-g0.md。
+    const FORCE_WARMUP_SLICE_MS = 16;
+    let warmupToken = 0;
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
       const list = targetNodes || nodes;
@@ -3676,13 +3701,17 @@
     function randomizeNodePositions() {
       const cx = W / 2;
       const cy = H / 2;
+      // 种子范围随规模走：固定 80px 会把数千节点挤进一个方框，初速可达数百
+      // （G0 实测刷新初期 meanSpeed ≈880），既拖慢早期 tick 也让布局更晃。
+      // 按 √N 放大，密度与小图时相当；下限保留 80 以维持小图的「炸开」观感。
+      const spread = Math.max(80, Math.sqrt(nodes.length) * 8);
       for (const n of nodes) {
         n.fx = null;
         n.fy = null;
         n.vx = 0;
         n.vy = 0;
-        n.x = cx + (Math.random() - 0.5) * 80;
-        n.y = cy + (Math.random() - 0.5) * 80;
+        n.x = cx + (Math.random() - 0.5) * spread;
+        n.y = cy + (Math.random() - 0.5) * spread;
       }
     }
 
@@ -4130,6 +4159,8 @@
      *  reseed=true（刷新布局）走真随机；首屏不传 reseed，沿用已铺好的叶序种子。 */
     function runStabilizedLayout2D(options) {
       const opts = options || {};
+      // 新一轮布局作废上一轮尚未跑完的分片（连点「刷新布局」不叠加 warmup）
+      const myToken = ++warmupToken;
       if (opts.reseed) randomizeNodePositions();
       simulation.stop();
       simulation.alphaTarget(0);
@@ -4137,7 +4168,10 @@
         n.vx = 0;
         n.vy = 0;
       }
-      syncGraphDomFromSimulation();
+      // 分片 warmup 期间浏览器能出帧，若此时把「重铺后挤成一团」的状态画出来，
+      // 用户会先看到一坨再跳到展开态。故只有同步路径（首屏）才预先落 DOM，
+      // 分片路径保留上一帧画面，等 startVisiblePhase() 再一次性切到展开起点。
+      if (!opts.async) syncGraphDomFromSimulation();
 
       const startVisiblePhase = () => {
         // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
@@ -4157,8 +4191,12 @@
       if (opts.async) {
         let i = 0;
         const step = () => {
-          const end = Math.min(i + 10, FORCE_WARMUP_TICKS);
-          for (; i < end; i++) simulation.tick();
+          if (myToken !== warmupToken) return;   // 已被新一轮布局取消
+          const sliceStart = performance.now();
+          do {
+            simulation.tick();
+            i += 1;
+          } while (i < FORCE_WARMUP_TICKS && performance.now() - sliceStart < FORCE_WARMUP_SLICE_MS);
           if (i < FORCE_WARMUP_TICKS) {
             requestAnimationFrame(step);
             return;
@@ -4183,8 +4221,8 @@
       userZoomed2D = false;
       label.style('opacity', 0);
       updateGraphViewport();
-      // 刷新布局：同步短 warmup（仅 20 tick），验收以该按钮手感为准（不用时序动画）。
-      runStabilizedLayout2D({ reseed: true });
+      // 刷新布局：warmup 走按帧预算的分片，避免一次点击攒出秒级长任务（G0 实测最长 1.33s）。
+      runStabilizedLayout2D({ reseed: true, async: true });
     }
 
     /* ── Tick ── */
@@ -5556,10 +5594,11 @@
     });
 
     /* 1. 排斥力 slider（min=50, max=800 → 实际 chargeStrength = -value） */
+    const applyChargeCoalesced = coalesceByFrame(updateForces);
     document.getElementById('sl-charge').addEventListener('input', ev => {
       chargeStrength = -Number(ev.target.value);
       document.getElementById('val-charge').textContent = chargeStrength;
-      updateForces();
+      applyChargeCoalesced();
     });
 
     /* 磁吸模式 checkbox（2D / 3D 各自独立记忆） */
