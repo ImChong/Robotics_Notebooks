@@ -2,10 +2,11 @@
 type: entity
 tags: [software, simulation, mujoco, web, wasm, javascript, deepmind]
 status: complete
-updated: 2026-06-30
+updated: 2026-09-08
 related:
   - ./mujoco.md
   - ./mujoco-mjx.md
+  - ./mjswan.md
   - ./robot-viewer.md
   - ./botlab-motioncanvas.md
   - ./onnxruntime.md
@@ -14,6 +15,7 @@ related:
 sources:
   - ../../sources/repos/mujoco.md
   - ../../sources/repos/mujoco_wasm.md
+  - ../../sources/repos/ttktjmt-mjswan.md
 summary: "MuJoCo WASM 指 DeepMind 官方 @mujoco/mujoco JavaScript/WebAssembly 绑定及浏览器生态；社区 zalo/mujoco_wasm 等 demo 栈支撑论文页、教学与 ONNX Sim2Sim 在线演示。"
 ---
 
@@ -47,7 +49,7 @@ summary: "MuJoCo WASM 指 DeepMind 官方 @mujoco/mujoco JavaScript/WebAssembly 
 | **多线程 `/mt`** | `import loadMujoco from '@mujoco/mujoco/mt'`；用 Web Worker + `SharedArrayBuffer` 并行物理；服务端须设 **COOP/COEP** 隔离头 |
 | **虚拟文件系统** | Emscripten `FS`：在浏览器内存中挂载 MJCF、mesh、纹理后再 `loadFromXML` |
 | **数据缓冲区** | `qpos`、`qvel`、`ctrl`、`xpos` 等为 **TypedArray**，便于与 Three.js 渲染或 JS 策略桥接 |
-| **社区 demo 层** | [zalo/mujoco_wasm](https://github.com/zalo/mujoco_wasm)（MIT）、[mjswan](https://github.com/ttktjmt/mjswan)（实时策略与交互扩展）等 |
+| **社区 demo 层** | [zalo/mujoco_wasm](https://github.com/zalo/mujoco_wasm)（MIT）、[mjswan](./mjswan.md)（Apache-2.0：实时 ONNX 策略 + WebXR 交互 demo）等 |
 
 ## 选型与局限
 
@@ -72,6 +74,7 @@ MJCF 资产 ──► Emscripten FS ──► MjModel / MjData
 
 - [MuJoCo（主引擎）](./mujoco.md) — C/Python 核心与 MJCF 语义
 - [MuJoCo MJX](./mujoco-mjx.md) — JAX/GPU 批量路径（训练侧，非浏览器）
+- [mjswan](./mjswan.md) — 浏览器 RL 策略闭环与静态站 demo 生成
 - [Robot Viewer](./robot-viewer.md) — 集成 `mujoco_wasm` 的 Web 查看与轻仿真
 - [ONNX Runtime](./onnxruntime.md) — 浏览器 WASM/WebGPU 推理
 - [BotLab MotionCanvas](./botlab-motioncanvas.md) — 浏览器编排与策略演示

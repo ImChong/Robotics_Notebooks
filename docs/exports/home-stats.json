@@ -1,13 +1,43 @@
 {
   "generated_at": "2026-09-08",
-  "node_count": 3864,
-  "edge_count": 34383,
+  "node_count": 3866,
+  "edge_count": 34400,
   "coverage": {
-    "covered": 3837,
-    "total": 3837,
+    "covered": 3839,
+    "total": 3839,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-libero-recover.md",
+      "detail_id": "entity-paper-libero-recover",
+      "label": "LIBERO-Recover：机器人失败恢复基准",
+      "type": "entity",
+      "recency": "2026-09-08",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-tacpac.md",
+      "detail_id": "entity-paper-tacpac",
+      "label": "TacPAC：触觉预测驱动的 WAM 实时动作修正",
+      "type": "entity",
+      "recency": "2026-09-08",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-vla-precision.md",
+      "detail_id": "entity-paper-vla-precision",
+      "label": "VLA-Precision：精密实机 VLA 在线强化学习",
+      "type": "entity",
+      "recency": "2026-09-08",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-adamorph-unified-motion-retargeting.md",
       "detail_id": "entity-paper-adamorph-unified-motion-retargeting",
@@ -143,7 +173,7 @@
       "recency": "2026-09-07",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-reviv4d.md",
@@ -162,8 +192,7 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-scanford-robot-powered-data-flywheel.md",
@@ -172,58 +201,27 @@
       "type": "entity",
       "recency": "2026-09-07",
       "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sleepwalking.md",
-      "detail_id": "entity-paper-sleepwalking",
-      "label": "SleepWalking (SWAQ)：特权表征塑造盲走",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/cad-1000-hours-dataset.md",
-      "detail_id": "entity-cad-1000-hours-dataset",
-      "label": "CAD 1000 Hours（Markov AI）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/image-blaster.md",
-      "detail_id": "entity-image-blaster",
-      "label": "image-blaster",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adamorph-unified-motion-retargeting.md",
-    "detail_id": "entity-paper-adamorph-unified-motion-retargeting",
-    "label": "AdaMorph",
+    "path": "wiki/entities/paper-libero-recover.md",
+    "detail_id": "entity-paper-libero-recover",
+    "label": "LIBERO-Recover：机器人失败恢复基准",
     "type": "entity",
-    "recency": "2026-09-07",
+    "recency": "2026-09-08",
     "source": "git",
     "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 684
+      "label": "宇树 G1 人形机器人",
+      "size": 754
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 666
+      "label": "操作",
+      "size": 684
     },
     {
       "label": "视觉-语言-动作",
@@ -239,7 +237,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 178
+      "size": 121
     }
   ],
   "top_hubs": [
@@ -310,7 +308,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 548,
+      "degree": 550,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

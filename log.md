@@ -1,3 +1,10 @@
+## [2026-09-08] ingest | mjswan + LiteReality-Agent — 浏览器 MuJoCo RL demo / LiDAR 室内 agentic 重建
+
+- **触发：** 用户指定 ttktjmt/mjswan 与 LiteReality-Agent 项目页、Blog、PDF、GitHub；要求自动合并 PR
+- **新建：** `mjswan`、`litereality-agent` 实体；sources/repos、sites、blogs 归档
+- **开源：** mjswan Apache-2.0（PyPI/npm）；LiteReality-Agent CLI+App 已开源，TR 标注 coming soon
+- **交叉：** `mujoco-wasm`、`articraft` 互链
+
 ## [2026-09-08] ingest | TacPAC + LIBERO-Recover + VLA-Precision — 触觉 WAM 实时修正 / LIBERO 失败恢复基准 / 精密实机 VLA 在线 RL
 
 - **触发：** 用户指定 TacPAC、LIBERO-Recover、VLA-Precision 三篇 + Agile Perceptive Traversal 项目页；要求自动合并 PR
