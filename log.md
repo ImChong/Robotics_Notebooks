@@ -1,3 +1,11 @@
+## [2026-09-08] ingest | TacPAC + LIBERO-Recover + VLA-Precision — 触觉 WAM 实时修正 / LIBERO 失败恢复基准 / 精密实机 VLA 在线 RL
+
+- **触发：** 用户指定 TacPAC、LIBERO-Recover、VLA-Precision 三篇 + Agile Perceptive Traversal 项目页；要求自动合并 PR
+- **新建：** `paper-tacpac`、`paper-libero-recover`、`paper-vla-precision` 实体；对应 sources/papers、repos、sites 归档
+- **开源：** TacPAC 代码 MIT 已开源、权重/数据待发布；LIBERO-Recover 评测栈+ModelScope 三数据集已开源；VLA-Precision Apache-2.0 全栈已开源
+- **跳过：** Agile Perceptive Traversal 已有 `paper-agile-perceptive-traversal-sparse-3d`（arXiv:2608.29769），不重复 ingest
+- **交叉：** 具身评测枢纽补 LIBERO-Recover（③ 层失败恢复）
+
 ## [2026-09-07] ingest | sources/datasets/cad-1000-hours-markov-ai.md — CAD 1000 Hours 桌面 CAD computer-use 语料（HF 公开）
 
 ## [2026-09-07] ingest | sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md — GigaBrain-WBC-0.5 再复核：arXiv v2；Code 仍 coming soon
