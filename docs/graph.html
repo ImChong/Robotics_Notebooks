@@ -5994,6 +5994,17 @@
       alpha: () => simulation.alpha(),
       alphaTarget: () => simulation.alphaTarget(),
       timelineAnimating: () => timelineAnimating,
+      // G0 基线测量：分离力 tick / DOM 写入 / 社区标签三段耗时（非业务 UI）
+      stop: () => simulation.stop(),
+      simNodeCount: () => simulation.nodes().length,
+      simLinkCount: () => {
+        const f = simulation.force('link');
+        return f && f.links ? f.links().length : -1;
+      },
+      tickOnce: () => simulation.tick(),
+      syncDom: () => syncGraphDomFromSimulation(),
+      syncCommunityLabels: () => updateCommunityLabels(),
+      applyFilters: () => applyFilters(),
     };
 
   })();
