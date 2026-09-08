@@ -189,6 +189,18 @@ def test_covered_elsewhere_base_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_covered_elsewhere_critic_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "非对称 AC 里 **Critic** 读特权状态。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # Critic 是 Actor–Critic 的价值网络半边，已由 methods/reinforcement-learning.md、
+    # concepts/privileged-training.md 与 formalizations/gae.md 等页覆盖
+    assert results["missing_concept_pages"] == []
+
+
 def test_case_insensitive_merge(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     half = lw.MISSING_CONCEPT_PAGE_MIN_PAGES // 2 + 1

@@ -376,6 +376,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
     "cartpole-v1",  # Gymnasium 环境注册 id，已由 concepts/cartpole.md 覆盖
+    # critic：Actor–Critic 的价值网络半边，不单独成页——机制已由
+    # methods/reinforcement-learning.md 的「Actor-Critic」专节（策略网络 + 价值网络
+    # 信息流）定义，非对称变体归 concepts/privileged-training.md 的「Asymmetric
+    # Actor-Critic」节，价值/优势估计的形式化归 formalizations/bellman-equation.md
+    # 与 gae.md；entities/litereality-agent.md 的 `critic` 则是 agent 自查循环里的
+    # 工具名，属另一义。与 rl / wbc 同类「已有归属、slug 与页面 stem 不同名」。
+    "critic",
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
     "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
     "g1",
