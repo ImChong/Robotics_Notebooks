@@ -1,3 +1,5 @@
+## [2026-09-08] ingest | sources/repos/diagram-design.md — 接入 cathrynlavery/diagram-design（39 种 editorial Agent Skill）；已开源 MIT；升格 wiki/entities/diagram-design.md 并交叉更新 Archify / Draw.io Scientific Illustrator
+
 ## [2026-09-08] ingest | mjswan + LiteReality-Agent — 浏览器 MuJoCo RL demo / LiDAR 室内 agentic 重建
 
 - **触发：** 用户指定 ttktjmt/mjswan 与 LiteReality-Agent 项目页、Blog、PDF、GitHub；要求自动合并 PR

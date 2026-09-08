@@ -20,6 +20,7 @@ related:
   - ./gsap-skills.md
   - ./manim.md
   - ./archify.md
+  - ./diagram-design.md
   - ./3dgenstudio.md
   - ./mattpocock-skills.md
   - ../concepts/model-context-protocol.md
@@ -160,6 +161,7 @@ sequenceDiagram
 | [img2threejs](./img2threejs.md) | TypeScript Three.js 工厂 | Agent Skill + forge 脚本 | 程序化 WebGL，非矢量框图 |
 | [Manim](./manim.md) | 讲解视频 | Python 场景脚本 | 公式/动画叙事，非交互编辑器 |
 | [Archify](./archify.md) | 自包含 HTML + 导出图 | Agent Skill + Node CLI | 可校验架构/时序/数据流，非图元编辑 |
+| [Diagram Design](./diagram-design.md) | HTML/SVG/PNG | Agent Skill | editorial 版式、品牌 onboarding；可 import draw.io 但非 `.drawio` 交付 |
 | 本库 Mermaid | Markdown 内流程图 | 无（静态编译） | 知识页结构图、版本友好 |
 
 ## 关联页面
@@ -170,6 +172,7 @@ sequenceDiagram
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方 Agent Skills
 - [Manim](./manim.md) — **程序化数学/技术讲解动画**
 - [Archify](./archify.md) — **可校验 HTML 系统图**（架构/工作流/时序）；要投稿级可编辑图元仍走本页
+- [Diagram Design](./diagram-design.md) — **editorial HTML/SVG**；可 import draw.io 源重绘，但不产出可编辑 `.drawio`
 - [3D Gen Studio](./3dgenstudio.md) — ComfyUI 网格生产 + MCP（三维资产，非 2D 框图）
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 协议层 Host/Client/Server 与传输

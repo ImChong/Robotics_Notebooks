@@ -444,6 +444,7 @@
 - [DexBench（工业灵巧操作基准）](wiki/entities/dexbench.md) — DexBench** 是瑞沃世界（RLWRLD）与英伟达（NVIDIA）发布的 **工业灵巧操作任务规格**：用 **物体状态复杂度（OSC）** 回答「为什么难」，用 **五种 Dexterit `📅unknown` `[entity_page]`
 - [Dexmal DM0.5（OpenDM）](wiki/entities/dexmal-dm05.md) — DM0.5**（技术博客，[GitHub `dexmal/opendm`](https://github.com/dexm `📅unknown` `[entity_page]`
 - [Dexmal DW05（OpenDW）](wiki/entities/dexmal-dw05.md) — DW05**（2026-07，GitHub `dexmal/opendw`，[DW05-Base](https://hugg `📅unknown` `[entity_page]`
+- [Diagram Design](wiki/entities/diagram-design.md) — Diagram Design**（cathrynlavery/diagram-design，M `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
 - [Disney Holotile（全向活动地板）](wiki/entities/disney-holotile.md) — 一句话定义：** Holotile 是 Disney Research / Imagineering 的 **模块化全向地板**：用大量六边形地砖单元形成可 **被动全向行走** 与 **主动可编 `📅unknown` `[entity_page]`
 - [Disney Research LA（研究门户）](wiki/entities/disney-research-la.md) — 一句话定义：** Disney Research Los Angeles 是迪士尼面向全球研究社区的 **产业 `📅unknown` `[entity_page]`
