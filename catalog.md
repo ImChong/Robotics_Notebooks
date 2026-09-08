@@ -644,6 +644,7 @@
 - [mc_rtc](wiki/entities/mc-rtc.md) — mc_rtc](https://github.com/jrl-umi3218/mc_rtc) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [MCAP](wiki/entities/mcap-log-format.md) — MCAP](https://github.com/foxglove/mcap) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`
 - [MediaPipe](wiki/entities/mediapipe.md) — MediaPipe** 是 Google 维护的 **端侧机器学习** 开源项目：既有可即插即用的 **Solutions / Tasks**（视觉、文本、音频），也有底层的 **Framewor `📅unknown` `[entity_page]`
+- [Meshroom](wiki/entities/meshroom.md) — Meshroom**（alicevision/Meshroom，MPL-2.0）是 **AliceVision `📅unknown` `[entity_page]`
 - [MetaHuman（Epic 数字人平台）](wiki/entities/metahuman.md) — MetaHuman** 是 **Epic Games** 在 **Unreal Engine** 生态内提供的 **高保真数字人（digital human）** 创作与动画平台：通过 **Met `📅unknown` `[entity_page]`
 - [MetalHead](wiki/entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
 - [Micro1](wiki/entities/micro1.md) — Micro1** 是面向 **前沿 AI 实验室与 physical AI 团队** 的 **数据标注与评测** 服务商（非上市公司）。LeoInAI Substack（2026-09）引用 CE `📅unknown` `[entity_page]`

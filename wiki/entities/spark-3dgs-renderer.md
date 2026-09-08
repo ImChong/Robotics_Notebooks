@@ -9,6 +9,7 @@ related:
   - ./marble-world-model.md
   - ./aholo-viewer.md
   - ./gs-playground.md
+  - ./meshroom.md
   - ../comparisons/spark-vs-aholo-web-3dgs-renderers.md
   - ../methods/generative-world-models.md
   - ./paper-panolog-ggps.md
@@ -36,7 +37,7 @@ summary: "Spark 是 World Labs 开源的 Web 端 3D Gaussian Splatting 渲染器
 ## 为什么重要
 
 - **3DGS 工程词典**：排序、多对象深度合成、LoD、分块流式与显存分页是 2024–2026 产业界反复出现的瓶颈；Spark 2.0 博客给出了可引用的 **公开实现叙事**（含 Tiny-LoD / Bhatt-LoD、RADC 块格式）。
-- **与机器人知识库的关系**：不替代物理仿真，但可作为 **Real2Sim 外观预览、数字孪生漫游、数据管线质检** 的轻端查看器；与 [生成式世界模型](../methods/generative-world-models.md) 中「3D 世界生成」分支直接相邻。
+- **与机器人知识库的关系**：不替代物理仿真，但可作为 **Real2Sim 外观预览、数字孪生漫游、数据管线质检** 的轻端查看器；与 [生成式世界模型](../methods/generative-world-models.md) 中「3D 世界生成」分支直接相邻。上游 splat 资产常来自 [Meshroom](./meshroom.md)（摄影测量 + [MrGSplat](https://github.com/meshroomHub/mrGSplat)）或 [Marble](./marble-world-model.md) 等导出。
 - **开源可集成**：文档与示例在 [sparkjs.dev](https://sparkjs.dev/)；`build-lod` CLI 可将常见 3DGS 资产转为流式 **.RAD**。
 
 ## 渲染管线（Spark 1.x 主干）
@@ -75,6 +76,7 @@ flowchart LR
 - [World Labs](./world-labs.md)
 - [Marble](./marble-world-model.md) — 官方推荐把 SPZ 送进 Spark
 - [Aholo Viewer](./aholo-viewer.md)
+- [Meshroom](./meshroom.md)
 - [GS-Playground](./gs-playground.md)
 - [Spark vs Aholo（Web 3DGS 渲染选型）](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)
 - [生成式世界模型](../methods/generative-world-models.md)
