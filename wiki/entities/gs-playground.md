@@ -12,6 +12,7 @@ related:
   - ./world-labs.md
   - ./spark-3dgs-renderer.md
   - ./aholo-viewer.md
+  - ./meshroom.md
   - ../methods/crisp-real2sim.md
   - ./flexion-niantic-nvidia-rgb-sim2real-pipeline.md
   - ./paper-panolog-ggps.md
@@ -68,16 +69,16 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 ### Real2Sim 工作流
 
 ```
-真实场景采集（相机矩阵）
+真实场景采集（多视图照片 / 视频）
     ↓
-3DGS 重建（外观建模）
+摄影测量或 3DGS 重建（如 Meshroom + MrGSplat，或自研管线）
     ↓
 导入 GS-Playground（物理 + 渲染耦合）
     ↓
 视觉 RL 训练
 ```
 
-外观直接来自真实世界，zero-shot 迁移时视觉分布对齐已内建。
+外观直接来自真实世界，zero-shot 迁移时视觉分布对齐已内建。**上游几何与 splat 资产** 常用 [Meshroom](./meshroom.md)（AliceVision 摄影测量 + [MrGSplat](https://github.com/meshroomHub/mrGSplat) 插件）或同类工具产出，再导入本框架。
 
 ### 物理引擎
 
@@ -113,6 +114,7 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 主流并行仿真平台，视觉质量较低
 - [MuJoCo](./mujoco.md) — 物理内核参考，GS-Playground 使用自研求解器
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 工作流直接服务 sim2real
+- [Meshroom](./meshroom.md) — 多视图摄影测量与 MrGSplat 上游；产出 mesh / splat 再进仿真
 - [Spark](./spark-3dgs-renderer.md) / [Aholo Viewer](./aholo-viewer.md) — Web 端大场景 3DGS 渲染（见 [对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）
 - [World Labs](./world-labs.md) — 空间世界生成与 Spark 产业侧上下文
 - [Marble](./marble-world-model.md) — 创作者 SaaS 出 splat/collider；本页是批量训练渲染
