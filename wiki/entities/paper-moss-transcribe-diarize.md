@@ -155,16 +155,23 @@ sequenceDiagram
 
 **读榜：** 优先看 **Δcp**——多家商用系统 CER 尚可但 Δcp 很大（Movies 上 Doubao Δcp 20.94），说明分离是瓶颈。GPT-4o / Gemini 3 Pro 对 **长音频** 常无法完整或格式合规输出。
 
-### 与级联/半端到端对比（概念）
+## 与其他工作对比
 
-| 路线 | 代表 | 局限 |
-|------|------|------|
-| 级联 ASR+SD | Whisper + Pyannote | 错误级联、无原生段级时间戳 |
-| LLM 后处理 | DiarizationLM | 非端到端，仍吃前端失配 |
-| 两阶段联合 | Sortformer | 先 SD 再 ASR，非单 pass SATS |
-| 短上下文 MLLM | SpeakerLM | ~50–90 s、≤4 说话人、无原生时间戳段 |
-| 流式分块 | JEDIS-LLM + SPC | 需 cache/分块，边界 artifact |
-| **MOSS Transcribe Diarize** | 0.9B 统一 MLLM | 128k 单 pass；Pro 更强但闭源 |
+SATS（转写 + 说话人 + 时间戳）可以由 **几段拼**，也可以 **一次出**。分歧在 **在哪一步引入说话人**：
+
+| 路线 | 代表 | 说话人在哪引入 | 长音频怎么办 | 主要局限 |
+|------|------|----------------|--------------|----------|
+| 级联 ASR + SD | Whisper + Pyannote（+ WhisperX/MFA 对齐） | **转写之后** 另一模块 | 分块 | 错误级联；**无原生段级时间戳**；块边界身份漂移 |
+| LLM 后处理 | DiarizationLM | 转写之后，由 LLM 修正 | 分块 | 非端到端，**仍吃前端失配** |
+| 两阶段联合 | Sortformer | **先 SD 再 ASR** | 分块 | 非单 pass SATS |
+| 短上下文 MLLM | SpeakerLM | 联合 | 不适用 | ~50–90 **秒**、≤4 说话人、**无原生时间戳段** |
+| 流式分块 MLLM | JEDIS-LLM + Speaker Prompt Cache | 联合 | cache + 分块 | 边界 artifact；需维护 cache |
+| 通用长音频 MLLM | GPT-4o / Gemini 3 Pro | 提示词里要求 | 号称长上下文 | 论文观察：长音频常 **无法完整或格式合规输出** |
+| **本文（MOSS 0.9B）** | 统一音频–文本 MLLM | **单次前向内联合** | **128k 单 pass ≈ 90 min，不分块** | 非流式（future work）；Pro 更强但 **闭源** |
+
+**为什么 Δcp 是这张表的判据：** 上述前四类都把说话人当独立子问题，代价直接体现在 **Δcp = cpCER − CER**——CER 尚可但 Δcp 很大（如 Movies 上某商用系统 Δcp **20.94**）意味着「字认得出、人分不清」。MOSS 在 AISHELL-4 上 Δcp **0.99**、Alimeeting 上甚至 **−2.69**（联合建模让说话人信息反过来帮了转写），这是单 pass 相对级联最实在的结构性收益。
+
+**读表须知：** 表内 MOSS 数值取自 **README 更新值**（技术报告 Table 2 之后有更新），且论文最优数含 **未开源的 Pro**；与商用系统的对比是 **作者自测**，非第三方同台。选型请以自己的音频域复测为准。
 
 ## 结论
 

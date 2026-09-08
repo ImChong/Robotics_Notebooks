@@ -122,6 +122,31 @@ flowchart TB
 6. **工程可复现性为零** — 无开源仓；选型与对标只能引用论文/博文，不能当 Jetson 替代品直接集成。
 7. **与 1X Redwood 无关** — 检索与知识图谱链接时务必区分实体，避免评测 WM 与推理 NPU 混页。
 
+## 与其他工作对比
+
+### 机载 decode 算力的几条路
+
+| 路线 | 代表 | 今天能否用上 | 生态 / 迁移成本 | 能效证据强度 |
+|------|------|--------------|-----------------|--------------|
+| **定制数据流加速器** | **本文 Redwood** | **否** — FPGA 演示，无 SKU、无 RTL、无驱动 | 未知：**无公开编译器 / ONNX / TensorRT 兼容叙事** | **最弱**：FPGA 实测 12.1 tok/s + **ASIC 工艺投影**，非第三方 bench |
+| 通用边缘 GPU SoC | [Jetson Orin NX](./jetson-orin-nx.md) / [Jetson 家族](./nvidia-jetson.md) | **是**，可采购 | 成熟：CUDA / TensorRT / 现成机器人栈 | 强：本文自己拿它当基线 |
+| 软件侧榨性能 | [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) | **是**，零硬件成本 | 低 | 可自测 |
+| 卸载到云 | [边缘–云端协同](../concepts/edge-cloud-robotics.md) | 是 | 中（要处理网络抖动） | 视链路 |
+
+**选型结论：** 今天要给机器人挑机载推理，候选是 **Jetson + 运行时调优 + 必要时云卸载**；Redwood **不是可替代项**，把它读成「定制硅路线的标杆叙述」而非采购选项。3.4× perf/W 要等 **量产硅 + 第三方复测** 才算数——投影不是测量。
+
+### 真正的差异化在流程，不在峰值
+
+| 维度 | 传统 custom silicon | Redwood / ALP 宣称 |
+|------|---------------------|--------------------|
+| 规格 → RTL → 验证 | 数月～数年，多团队 | **2 周**，规格以下 100% 自动生成 |
+| 规格变更后重验证 | 数周 | **≤48 h** redeploy FPGA |
+| 覆盖率 / 首版质量 | 人工迭代 | 各块 **≥95%** coverage，首版 RTL 到 FPGA **零 bug**（公司自述） |
+
+**这才是本文最有可能改变供给的部分：** 若 workload 变化快于 tapeout 周期（physical AI 的常态），能把架构迭代压到周级本身就是竞争力——**但以上全部为公司自述，无第三方审计**。
+
+**命名消歧再提醒：** 检索时务必写「Redwood **Architect Labs / accelerator**」，与 [1X Redwood 世界模型](./paper-1xwm-redwood-world-model.md) 是完全无关的两个实体。
+
 ## 局限与风险
 
 - **未开源、未量产：** 无 RTL/固件/权重；ALP 为商业闭源平台。

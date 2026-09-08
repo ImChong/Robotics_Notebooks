@@ -82,6 +82,20 @@ QLAUN 定位 **科研向低价力矩四足**；开源承诺待落地后更新本
 4. 宣称 **将开源** CAD/软件。
 5. 入库日 **无 URL**。
 
+## 与其他工作对比
+
+低价力矩控制四足这条线上，各家在 **成本 / 载荷 / 可得性** 三者间取舍不同：
+
+| 平台 | 传动 | 结构工艺 | 开源状态 | 与 QLAUN |
+|------|------|----------|----------|----------|
+| **QLAUN** | QDD，8:1 行星 + 4:1 皮带 ≈ **32:1** | **全 PLA 打印** + TPU 足端；三螺栓快换腿 | **宣称将开源**，入库日 **无 URL** | 本页；~15 kg / 12 DoF |
+| [ODRI SOLO / Bolt](./odri-solo-and-bolt.md) | QDD | 打印件 + 碳杆 | **已开源**（CAD + 固件 + 控制） | 页首动机直指其 **载荷比低**；但 SOLO 的开源是 **已兑现的**，这是 QLAUN 目前最大的差距 |
+| [开源 QDD 执行器项目](../comparisons/open-source-qdd-actuator-projects.md) | QDD 各式 | 视项目 | 多数已开源 | 选型时应先看这张对照，QLAUN 未落地前不构成可复现选项 |
+| [eBert](./paper-ebert-nonlinear-normal-modes.md) | **SEA 低刚度** | 常规加工 | 无 | 硬件哲学相反：QLAUN 追求 **高带宽力矩可控**，eBert 追求 **共振涌现** |
+| 商用四足（如 Unitree 系） | 一体化关节 | 量产 | 闭源 | 载荷/耐久更强、可得性更好；QLAUN 的位置是 **MENA 等地区的可负担科研平台** |
+
+**选型读法：** 现在要一台能跑力矩控制实验的开源四足，**候选是 SOLO 一类已开源项目**，不是 QLAUN。QLAUN 的价值待其 CAD/软件真正发布后再评估——本页在此之前应视为 **扩展摘要级的设计公告**。
+
 ## 局限与风险
 
 扩展摘要级细节；长跑耐久与控制器栈未在本页展开。
@@ -91,6 +105,7 @@ QLAUN 定位 **科研向低价力矩四足**；开源承诺待落地后更新本
 - [locomotion](../tasks/locomotion.md)
 - [paper-ebert-nonlinear-normal-modes.md](./paper-ebert-nonlinear-normal-modes.md)
 - [ODRI SOLO/Bolt](./odri-solo-and-bolt.md)
+- [开源 QDD 执行器项目](../comparisons/open-source-qdd-actuator-projects.md) — 已兑现开源的同类对照
 
 ## 参考来源
 

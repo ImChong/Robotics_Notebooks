@@ -11,7 +11,7 @@ tags:
   - georgia-tech
   - cmu
 status: complete
-updated: 2026-09-06
+updated: 2026-09-07
 arxiv: "2512.01989"
 venue: "CVPR 2026 Oral"
 code: https://github.com/SHI-Labs/physical-ai-bench
@@ -194,7 +194,9 @@ sequenceDiagram
 
 ## 结论
 
-**PAI-Bench 是 Physical AI 生成与理解的对照实验场：它证明 SOTA VGM 在 Domain 上系统性低于真源，而 MLLM 在物理视频推理上仍远未接近人类。**
+**PAI-Bench 是 Physical AI 生成与理解的对照实验场：在该论文快照（CVPR 2026 Oral 版，榜上含 Veo3 / Wan2.2-I2V-A14B / Cosmos-Predict2.5 等当期领先 VGM）里，所有参评模型在 Domain 上系统性低于真源（Domain Avg. ≤ 87.1 vs 真源 89.8），而 MLLM 在物理视频推理上仍远未接近人类。**
+
+> **时效性提醒：** 上述排名是 **论文快照**，不是持续榜单结论；VGM 迭代很快，选型前请回到 [官方 leaderboard](https://github.com/SHI-Labs/physical-ai-bench) 核对当期分数。
 
 1. **报分先问轨道** — G（开放生成）/ C（控制翻译）/ U（MLLM 问答）不可混读；Cosmos 论文小数分多指 G 轨 Overall。
 2. **Domain 比 Quality 更 discriminating** — 选型 WFM 时优先看 Domain 与 QA 失败样例，而非 VBench 美学单项。

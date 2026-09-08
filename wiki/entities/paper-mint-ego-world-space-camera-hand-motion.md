@@ -17,6 +17,7 @@ related:
   - ../entities/paper-ego-03-egomimic.md
   - ../entities/wuji-robotics.md
   - ../overview/ego-category-01-data-collection.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/mint_arxiv_2609_04958.md
   - ../../sources/sites/mint-project-page.md
@@ -230,6 +231,7 @@ sequenceDiagram
 - [EgoMimic](./paper-ego-03-egomimic.md) — 世界系手轨迹对机器人模仿的意义
 - [Manipulation](../tasks/manipulation.md) / [Teleoperation](../tasks/teleoperation.md) — 下游任务语境
 - [舞肌科技](./wuji-robotics.md) — 机构与 Wuji Hand 生态
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — MINT 把 ③ 2D→3D 提升层的级联（检测→SLAM→手部重建）摊销进单次前向；但发布轨迹经 scale enlargement、不宜直接作 metric 消费，正是该闭环 ④ 层「感知指标漂亮 ≠ 下游可信输入」的实例
 
 ## 参考来源
 

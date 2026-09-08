@@ -86,6 +86,22 @@ RoboGesture 把 **语义–韵律–安全** 绑成可部署的 listen–respond
 4. ECCV 2026 Poster。
 5. 截至入库日 **未开源**。
 
+## 与其他工作对比
+
+「让人形做出得体的上身动作」有几条路，差别在 **条件信号** 与 **谁保证真机安全**：
+
+| 工作 | 条件输入 | 生成空间 | 真机安全由谁保证 | 与本文 |
+|------|----------|----------|------------------|--------|
+| **RoboGesture** | **原始音频 token**（Mimi codec，多粒度 + beat/300 类语义头） | **直接在机器人空间** | **MPC 安全滤波**（5.6 ms/帧），在线可用 | 本页；G1 + BrainCo 手，41 DoF 上身，≈120 FPS |
+| [PAMoR](./paper-pamor.md) | **文本 + 效价–唤醒（V-A）** | 机器人全身运动（G1） | 未报安全滤波层 | 同为社交人形运动生成、同平台家族；条件是 **情感标签** 而非声学信号 |
+| LivelySpeaker / DiffSHEG 一类 avatar 方法 | 语音/文本 | **虚拟人空间**，再 retarget | retarget 后无在线保证 | 页首动机直指此点：**avatar→retarget 在线不安全**；本文报 BEAT FGD 0.845 优于这批基线 |
+| 文本中间表示管线 | ASR→文本→动作 | 各式 | — | 页首动机：**丢韵律**；本文用音频 token 绕开 |
+| [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) | 完整 listen–respond 链路 | — | — | RoboGesture 是该链路的 **动作输出端**；页内已注明瓶颈常在 **上游语音** 而非运动生成 |
+
+**技巧层面的可迁移点：** **Anti-Inertia Masking**（15% 历史 mask 的 CFG 变体）针对的是自回归运动生成的通病——**模型抄历史、忽视条件信号**。这个问题不限于手势，任何「历史运动 + 外部条件」的流式生成都可能复用该配方。
+
+**证据边界：** BEAT / SemanticBEAT 数字来自论文；**代码与数据截至入库日未开源**，真机结论为四场景演示而非统计评测。
+
 ## 局限与风险
 
 上身为主；未覆盖全身行走协同；数据合成依赖 LLM 场景与 TTS。
@@ -96,6 +112,7 @@ RoboGesture 把 **语义–韵律–安全** 绑成可部署的 listen–respond
 - [paper-pamor.md](./paper-pamor.md)
 - [unitree-g1.md](./unitree-g1.md)
 - [diffusion-motion-generation](../methods/diffusion-motion-generation.md)
+- [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) — 上游语音链路语境
 
 ## 参考来源
 

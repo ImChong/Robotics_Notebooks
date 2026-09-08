@@ -84,6 +84,20 @@ flowchart LR
 4. **QPND 未见公开下载**。
 5. **代码未开源**。
 
+## 与其他工作对比
+
+跑酷导航的分歧在 **上层给低层下发什么**——路点、还是带时序的速度：
+
+| 路线 | 上层输出 | 是否读本体 | 与机身动力学的耦合 | 与本文 |
+|------|----------|------------|--------------------|--------|
+| **MulDP** | **未来速度 horizon**（扩散生成，5 Hz 重规划，取首命令） | **是**（本体 + 决策记忆 DME） | 强——能「提前加速」 | 本页；消融显示去 DME 后 SR 塌到 7.4% |
+| [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) | 扩散导航轨迹 | 弱 | 弱 | 本文自报对照：SR **59.0% → 89.7%**，但那是 **作者复现的 NavDP\***，非原作者同台结果 |
+| 模块化建图 + 规划 | 路点 / 路径 | 否 | 弱——规划器不知道机身能否起跳 | 页首动机：难做动态跑酷 |
+| 端到端 RL / VLA | 直接出动作或速度 | 是 | 强 | 页首动机：训练与数据成本高；MulDP 想以扩散 + 仿真数据集换掉这份成本 |
+| [Contact-Guided Exploration](./paper-contact-guided-exploration-locomanipulation.md) | 全身 loco-manip 动作 | 是 | 强 | 同为四足上层，但解的是 **接触稀疏**，MulDP 解的是 **导航时序** |
+
+**证据强度提醒：** 89.7% 是 **仿真** 数字，QPND 数据集与代码 **均未公开**，NavDP 对照为本文自行复现——把这张表读成「方向对照」而非「排行榜」。可迁移的判断是：**四足导航上层若不读本体、不出时序速度，跑酷类任务会系统性吃亏**。
+
 ## 局限与风险
 
 依赖仿真数据与特定低层 policy；泛化地形未完全展开。
@@ -93,6 +107,7 @@ flowchart LR
 - [locomotion](../tasks/locomotion.md)
 - [diffusion-policy](../methods/diffusion-policy.md)
 - [paper-contact-guided-exploration-locomanipulation.md](./paper-contact-guided-exploration-locomanipulation.md)
+- [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — 本文主要对照的扩散导航基线
 
 ## 参考来源
 

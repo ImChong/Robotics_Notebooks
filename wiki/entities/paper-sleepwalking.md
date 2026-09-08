@@ -84,6 +84,20 @@ SWAQ 证明 **语义辅助目标** 可替代部分 **架构分解**；与 DWAQ �
 4. 云睦产业合作方。
 5. **未开源**。
 
+## 与其他工作对比
+
+盲走这条线的共同问题是「**特权信息怎么用**」——SWAQ 的立场是「用来塑表征，不进部署拓扑」：
+
+| 路线 | 特权信息怎么进模型 | 部署时拓扑 | 训练阶段数 | 与本文 |
+|------|--------------------|------------|------------|--------|
+| **SWAQ（本文）** | **训练-only 解码器** 重建下一步 $Y_{t+1}$，梯度只回传 encoder | history → action（**不喂重建量**） | **1**（单阶段 AC） | 本页；峰值地形 +15.0%、MAC −44.4% vs DWAQ |
+| [DreamWaQ](../methods/dreamwaq.md) | 隐式估计量 **接回 actor 输入** | history → 估计 → action | 1 | 本文主基线；差别是「改输入接口」vs「改表征目标」 |
+| [Teacher–Student / DAgger 蒸馏](../methods/teacher-student-dagger-training.md) | teacher 直接吃特权观测，再蒸馏给 student | history → action | **2** | SWAQ 省掉第二阶段与 teacher 训练成本 |
+| [特权训练](../concepts/privileged-training.md)（范式总览） | 各式 | 各式 | — | 本文是该范式下「**辅助损失** 而非 **架构分解**」的一支 |
+| Causal Transformer 基线 | 靠更强序列模型吸收历史 | history → action | 1 | 论文报更高地形等级与更低 MAC；序列模型强 ≠ 表征里留住了物理量 |
+
+**可迁移判断：** 论文的层探针显示重建量在动作头前 **仍线性可解码**——这是本文最有说服力的一处证据，说明收益来自 **表征里真留住了下一步物理量**，而非单纯多一个正则项。代价是 **要设计者挑对特权量**，这一步没有自动化配方。
+
 ## 局限与风险
 
 仿真地形域为主；重建目标需设计者选特权量。
@@ -93,6 +107,8 @@ SWAQ 证明 **语义辅助目标** 可替代部分 **架构分解**；与 DWAQ �
 - [dreamwaq](../methods/dreamwaq.md)
 - [locomotion](../tasks/locomotion.md)
 - [paper-fwbc-vla.md](./paper-fwbc-vla.md)
+- [特权训练](../concepts/privileged-training.md) — 范式总览
+- [Teacher–Student DAgger 训练](../methods/teacher-student-dagger-training.md) — 两阶段蒸馏对照
 
 ## 参考来源
 
