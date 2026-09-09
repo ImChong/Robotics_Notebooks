@@ -75,7 +75,7 @@ flowchart TB
 
 | 模块 | 常见实现 |
 |------|----------|
-| 实例提案 | [SAM 3](../entities/paper-sam3.md)、Grounding DINO、OWLv2 |
+| 实例提案 | [SAM 3](../entities/paper-sam3.md)、[ENEAS](../entities/paper-eneas.md)、Grounding DINO、OWLv2 |
 | 语言对齐 | [BLIP-2](../entities/paper-blip2.md)、CLIP、现代 VLM 嵌入 |
 | 地图 | 占据 + 语义热力 + 实例记忆（[语义认知地图](../concepts/embodied-semantic-cognitive-map.md)） |
 | 跨楼层 | [TravExplorer](../entities/paper-travexplorer.md) 可通行 3D；[ZONDA](../entities/paper-zonda.md) 高度差启发式 |

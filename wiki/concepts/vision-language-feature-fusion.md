@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, vision-language, feature-fusion, multimodal, alignment, vlm, blip2, embodied-ai]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-09
 related:
   - ./embodied-semantic-cognitive-map.md
   - ../entities/paper-blip2.md
@@ -41,7 +41,7 @@ summary: "视觉–语言特征融合与语义空间对齐：把图像区域特�
 ## 为什么重要
 
 - **课程技术点：** Day2「视觉–语言特征融合 / 语义空间对齐」是语义认知地图与零样本导航的共用底座，需独立概念页。
-- **分工清晰：** [SAM 3](../entities/paper-sam3.md) 解决实例在哪；融合/对齐模块解决「语言指的是不是它」。
+- **分工清晰：** [SAM 3](../entities/paper-sam3.md) 解决实例在哪；融合/对齐模块解决「语言指的是不是它」。[ENEAS](../entities/paper-eneas.md) 把嵌入匹配与条件 VLM 验证合成进分割栈，专打雕像/画作等 doppelganger。
 - **选型语言：** CLIP 式对比、BLIP-2 Q-Former、深层 cross-attn VLM 是三条常见对齐路线。
 
 ## 核心原理
@@ -83,6 +83,7 @@ flowchart LR
 - [具身语义认知地图](./embodied-semantic-cognitive-map.md)
 - [BLIP-2](../entities/paper-blip2.md)
 - [SAM 3](../entities/paper-sam3.md)
+- [ENEAS](../entities/paper-eneas.md) — 嵌入 + 条件 VLM 的本体验证实例
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 
