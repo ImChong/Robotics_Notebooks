@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, animatable-avatar, 3dgs, gaussian-splatting, performance-capture, surface-alignment, telepresence, texture-editing, dataset, max-planck]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-09
 arxiv: "2506.01802"
 venue: "ACM TOG 2026"
 project: https://vcai.mpi-inf.mpg.de/projects/UMA/
@@ -180,6 +180,7 @@ sequenceDiagram
 | [FRAME](./paper-notebook-frame-floor-aligned-representation-for-avatar-mo.md) | egocentric 姿态上游；UMA 吃骨骼驱动做外观/几何合成 |
 | [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) | 3DGS 服务 **VLA 合成演示**；UMA 服务 **photoreal 数字人** |
 | [LUNA](./paper-luna-universal-3d-human-animation.md) | 稀疏未标定图 + 隐式 2D 驱动、推理不走 LBS；UMA 是棚拍多视角 + 骨骼驱动的超精细拟合 |
+| [SOMA（肌肉解剖）](./paper-soma-surface-observations-muscle-anatomy.md) | 同 MPI-INF VCAI 组；UMA 做 **外观/纹理 avatar**，SOMA 做 **内层肌肉形变** |
 
 ## 局限与风险
 
@@ -199,6 +200,7 @@ sequenceDiagram
 - [人形训练数据管线](../queries/humanoid-training-data-pipeline.md) — 多视角数字人捕获在数据金字塔中的位置
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 机器人侧 3DGS 数据工厂对照
 - [LUNA](./paper-luna-universal-3d-human-animation.md) — LBS-free 前馈 3D 人动画（未开源；不是骨骼驱动拟合）
+- [SOMA（肌肉解剖）](./paper-soma-surface-observations-muscle-anatomy.md) — 同组多层软组织/肌肉反演（ECCV 2026）
 
 ## 参考来源
 
