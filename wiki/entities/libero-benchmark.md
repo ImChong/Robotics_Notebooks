@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-28
+updated: 2026-09-09
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-flex-pi.md
   - ../entities/paper-galaxea-g05.md
   - ../entities/paper-reflexvla.md
+  - ../entities/paper-deicticvla.md
   - ../entities/paper-rift-wam.md
   - ../entities/paper-odeworld.md
   - ../queries/hmi-opensource-projects-coverage.md
@@ -122,6 +123,7 @@ flowchart LR
 - [Flex-π](./paper-flex-pi.md) — 多流 WAM；LIBERO 柔性 ckpt 98.5%、固定模式 99.2%；LIBERO-Plus Total 80.9%（arXiv:2608.10860；代码待发布）
 - [G0.5](./paper-galaxea-g05.md) — AR VLA；LIBERO 均 **98.9%** / Long **98.6%**（已开源）
 - [ReflexVLA](./paper-reflexvla.md) — 动态模块后 LIBERO 仍 **97.2%**（与 VLA-Adapter 持平；代码待开放）
+- [DeicticVLA](./paper-deicticvla.md) — Object/Spatial/Goal 子集上 VP-BBox Spatial-ZS 领先；分布内 mean SR **~95%**（arXiv:2608.28108；未开源）
 - [Rift](./paper-rift-wam.md) — 免 rollout WAM；LIBERO **98.8%**、LIBERO-Plus **81.1%**（未开源）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — LIBERO-Para 改写协议；SmolVLA 4.47%→49.12%（arXiv:2608.02497）

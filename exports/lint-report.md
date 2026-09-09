@@ -2,7 +2,7 @@
 
 ## [2026-09-09] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **6** 条信息型预警）：
+共发现 **0** 个问题（另含 **17** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,8 +97,18 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-state-readout-decoupling.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（3 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（13 个）
+- wiki/entities/paper-3dway.md（缺 对比）
+- wiki/entities/paper-aurora-hand-reconstruction.md（缺 对比）
+- wiki/entities/paper-cast-mbrl.md（缺 对比）
 - wiki/entities/paper-causalvae-world-models.md（缺 对比）
+- wiki/entities/paper-foci-policy.md（缺 对比）
+- wiki/entities/paper-focuspool.md（缺 对比）
+- wiki/entities/paper-from-where-to-how.md（缺 对比）
+- wiki/entities/paper-hibridge-dialogue.md（缺 对比）
+- wiki/entities/paper-memforest.md（缺 对比）
+- wiki/entities/paper-motion-based-messaging.md（缺 对比）
+- wiki/entities/paper-remomask-2.md（缺 对比）
 - wiki/entities/paper-state-readout-decoupling.md（缺 对比）
 - wiki/entities/paper-traj-lewm.md（缺 对比）
 
@@ -109,7 +119,7 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-reviv4d.md（含绝对化措辞「SOTA」，updated=2026-09-07；同主题更新页 wiki/entities/paper-ecot.md updated=2026-09-09）
+- wiki/entities/paper-reviv4d.md（含绝对化措辞「SOTA」，updated=2026-09-07；同主题更新页 wiki/entities/paper-deicticvla.md updated=2026-09-09）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -126,7 +136,8 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-aurora-hand-reconstruction.md
 - wiki/entities/paper-eneas.md
 
-📊 Sources 覆盖率：3852/3852 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3864/3864 (100%) wiki/entity 页有 ingest 来源

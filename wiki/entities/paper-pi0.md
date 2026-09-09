@@ -8,7 +8,7 @@ tags:
   - manipulation
   - physical-intelligence
 status: complete
-updated: 2026-09-05
+updated: 2026-09-09
 arxiv: "2410.24164"
 code: https://github.com/Physical-Intelligence/openpi
 related:
@@ -18,6 +18,7 @@ related:
   - ./paper-openvla.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ./paper-dexholdem.md
+  - ./paper-deicticvla.md
 sources:
   - ../../sources/papers/pi0_arxiv_2410_24164.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -116,6 +117,7 @@ sequenceDiagram
 | [Diffusion Policy](./paper-diffusion-policy.md) | 多步去噪动作头，无大规模 VLM |
 | [OpenVLA](./paper-openvla.md) | 自回归离散 token |
 | [π₀.7 方法页](../methods/pi07-policy.md) | 同族后继，多模态提示 |
+| [DeicticVLA](./paper-deicticvla.md) | 以 π₀ 为骨干的三模式 LI/VLI/VI 指示接口（arXiv:2608.28108） |
 
 ## 关联页面
 
@@ -125,6 +127,7 @@ sequenceDiagram
 - [OpenVLA](./paper-openvla.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [DexHoldem](./paper-dexholdem.md) — 真机扑克榜上 π₀ 与 π₀.₅ 并列最高 SPSR
+- [DeicticVLA](./paper-deicticvla.md) — π₀ 全参微调 + SAM 2 指示 mask；真机未见类别 VLI/VI 100% vs LI 16.7%
 
 ## 推荐继续阅读
 
