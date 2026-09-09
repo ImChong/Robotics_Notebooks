@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-capture, markerless, smpl-x, multi-view, dense-landmarks, cvpr-2026, human-motion, eth, max-planck]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-09
 arxiv: "2506.13040"
 venue: "2026 · CVPR Oral"
 code: https://github.com/cuevhv/mamma
@@ -153,6 +153,7 @@ flowchart TB
 - **全身跟踪下游：** [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 精炼 SMPL-X 可作为 WBT/模仿学习参考轨迹输入。
 - **开源 MoCap 对照：** [EasyMocap](./easymocap.md) — 浙大 3DV 多视角 / 镜面 SMPL 工具箱（非商业科研许可）；[FreeMoCap](./freemocap.md) — 低成本多相机平台；[GVHMR](./gvhmr.md) — 单目视频上游；[OpenCap Monocular](./paper-opencap-monocular.md) — 单手机 OpenSim 运动学/动力学。
 - **动捕数据生态：** [AMASS](./amass.md) — 统一 SMPL 大库；MAMMA 提供 **现场采集** 到 SMPL-X 的替代 Vicon 路径。
+- **MPI 人体捕获纵深：** [SOMA（肌肉解剖）](./paper-soma-surface-observations-muscle-anatomy.md) — 同机构多视角人体线，但输出 **内层肌肉形变** 而非 SMPL-X 关节轨迹。
 - **论文笔记索引：** [Human Motion 分类](../overview/paper-notebook-category-14-human-motion.md)
 
 ## 参考来源

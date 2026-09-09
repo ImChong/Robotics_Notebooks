@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/soma_arxiv_2606_09246.md — SOMA/SKIM（ECCV 2026，MPI-INF）肌肉解剖反演；GitHub+数据集已开源
+
 ## [2026-09-09] ingest | sources/papers/functional_slam_arxiv_2609_07497.md — Functional-SLAM（CoRL 2026）在线功能场景图 SLAM；已开源（GitHub+HF）；cosmoh2g.github.io 非本项目页
 
 ## [2026-09-09] ingest | sources/repos/openvino.md + sites/openvino.md + physicalai — 深化 OpenVINO 主仓/文档/Physical AI 机器人运行时并同步 wiki

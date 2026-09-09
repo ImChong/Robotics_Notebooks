@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-09",
-  "node_count": 3894,
-  "edge_count": 34632,
+  "node_count": 3895,
+  "edge_count": 34643,
   "coverage": {
-    "covered": 3867,
-    "total": 3867,
+    "covered": 3868,
+    "total": 3868,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -229,11 +229,11 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 688
+      "size": 687
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 654
+      "size": 598
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -241,15 +241,15 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 267
+      "size": 265
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 222
+      "size": 223
     },
     {
-      "label": "仿真到现实",
-      "size": 155
+      "label": "视觉语言动作纵深路线",
+      "size": 198
     }
   ],
   "top_hubs": [

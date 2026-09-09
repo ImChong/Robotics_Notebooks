@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, body-model, smpl, human-motion, nvidia, gpu, motion-retargeting, warp]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-09
 summary: "SOMA-X 是 NVIDIA 开源的统一参数化人体表示：以 SOMA canonical topology 桥接 SMPL/SMPL-X、MHR、Anny 等异构身份模型，在 Warp 上可微 GPU 前向与 PoseInversion 转换，支撑 SEED、Kimodo、GEM 与 SOMA Retargeter 人形数据管线。"
 related:
   - ../concepts/motion-retargeting.md
@@ -113,6 +113,7 @@ flowchart TB
 
 ## 关联页面
 
+- [SOMA（肌肉解剖反演，MPI-INF ECCV 2026）](./paper-soma-surface-observations-muscle-anatomy.md) — **同名不同工作**：体表观测→肌肉形变，非本页拓扑统一 SOMA
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [SOMA Retargeter](./soma-retargeter.md)
 - [GENMO / GEM](../methods/genmo.md)
