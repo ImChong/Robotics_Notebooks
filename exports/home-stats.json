@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-vgg-ttt.md",
+      "detail_id": "entity-paper-vgg-ttt",
+      "label": "VGG-T³：大规模离线前馈 3D 重建",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-soma-surface-observations-muscle-anatomy.md",
       "detail_id": "entity-paper-soma-surface-observations-muscle-anatomy",
       "label": "SOMA：从体表观测到肌肉解剖",
@@ -203,29 +214,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ecot.md",
-      "detail_id": "entity-paper-ecot",
-      "label": "ECoT：具身思维链推理（Embodied Chain-of-Thought）",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-soma-surface-observations-muscle-anatomy.md",
-    "detail_id": "entity-paper-soma-surface-observations-muscle-anatomy",
-    "label": "SOMA：从体表观测到肌肉解剖",
+    "path": "wiki/entities/paper-vgg-ttt.md",
+    "detail_id": "entity-paper-vgg-ttt",
+    "label": "VGG-T³：大规模离线前馈 3D 重建",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
