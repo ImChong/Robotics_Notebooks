@@ -3561,6 +3561,7 @@
 - [Safe LoRA Update Projection（安全 LoRA 投影更新形式化）](wiki/formalizations/safe-lora-update-projection.md) — Safe LoRA Update Projection** 是 真机安全 RL 微调 「低秩残差  `📅unknown` `[formalization_page]`
 - [SE(3) Representation (位姿表示形式化)](wiki/formalizations/se3-representation.md) — 在机器人学与具身智能中，如何表示物体的**位姿（Pose）**——即位置与姿态的组合，是感知与控制的基础。**SE(3)** (Special Euclidean Group) 描述了三维空间中的刚体 `📅unknown` `[formalization_page]`
 - [Symmetric Cone Programming（对称锥规划）](wiki/formalizations/symmetric-cone-programming.md) — 对称锥规划**：目标与约束可表示在对称锥（非负正交锥、二阶锥、半正定锥等）上的凸优化问题；比 LP/QP 更一般，能精确刻画摩擦锥、力矩椭球与部分时间最优问题。 `📅unknown` `[formalization_page]`
+- [tan_norm 旋转观测表示](wiki/formalizations/tan-norm-rotation.md) — 一句话：** **tan_norm** 把单位四元数 $q$ 编成 6 维向量 $[\,R(q)\mathbf{t}_0 \;\|\; R(q)\mathbf{n}_0\,]$，其中参考切向 $\ `📅unknown` `[formalization_page]`
 - [Task Space Inverse Dynamics (TSID) 形式化](wiki/formalizations/tsid-formulation.md) — TSID** 是一种在保持机器人物理一致性的前提下，实现多任务并行控制的数学框架。它将复杂的运动指令转换为底层的电机力矩。 `📅unknown` `[formalization_page]`
 - [UDP 组播动力学 (UDP Multicast Dynamics)](wiki/formalizations/udp-multicast-dynamics.md) — UDP 组播动力学** 把 LCM 这类“即发即弃”的多播中间件，抽象成一个发送方 → 多个接收方的随机过程网络。它不研究单条消息怎么走， `📅unknown` `[formalization_page]`
 - [Variational Objective (变分目标函数)](wiki/formalizations/variational-objective.md) — 在构建具身智能的世界模型（World Models）时，我们面临的核心数学挑战是如何从高维、嘈杂的观测（图像）中提取紧凑的、具有预测性的隐变量表示。**变分目标函数 (Variational Obje `📅unknown` `[formalization_page]`

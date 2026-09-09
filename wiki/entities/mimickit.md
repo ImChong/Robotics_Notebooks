@@ -12,6 +12,7 @@ related:
   - ../methods/lcp.md
   - ../methods/add.md
   - ../methods/smp.md
+  - ../formalizations/tan-norm-rotation.md
   - ./smp-g1-mjlab.md
   - ../methods/imitation-learning.md
   - ./protomotions.md
@@ -20,6 +21,7 @@ related:
   - ./paper-cmp.md
 sources:
   - ../../sources/repos/mimickit.md
+  - ../../sources/repos/mimickit_tan_norm.md
 summary: "MimicKit 是由 Xue Bin Peng 团队开源的模块化强化学习框架，在统一代码底座上集成 DeepMimic、AMP、AWR、ASE、LCP、ADD、SMP 等运动模仿与物理控制算法，并支持多仿真后端与动作重定向管线。"
 ---
 
@@ -110,6 +112,10 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 | **Agent** | 采样、优化器、网络与（若有）判别器 | `PPOAgent`、`AMPAgent` 等 |
 | **Anim / Tools** | 动作表示、重定向与数据转换 | 与 MoCap、SMPL 系资产对接 |
 
+### 策略观测中的 tan_norm
+
+`char_env.compute_char_obs` 与 DeepMimic 目标观测把根节点、各关节四元数经 `quat_to_tan_norm` 编成 **6 维**块（旋转后的体 x/z 轴），避免四元数 $q \equiv -q$ 歧义；与 motion `.pkl` 里用的 3D 指数映射是两层表示。细节见 [tan_norm 旋转观测表示](../formalizations/tan-norm-rotation.md)。
+
 ### 关联方法与技术路线
 
 | 技术 | 核心页面 | 应用场景 |
@@ -156,6 +162,7 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 ## 参考来源
 
 - 仓库与说明：[sources/repos/mimickit.md](../../sources/repos/mimickit.md)（含 GitHub、Stanford 项目页与 arXiv 索引）
+- tan_norm 观测编码：[sources/repos/mimickit_tan_norm.md](../../sources/repos/mimickit_tan_norm.md)
 - 组内学习笔记（流程与代码导读，非官方文档）：[resources/train/MimicKit/MimicKit.md](../../resources/train/MimicKit/MimicKit.md)、[resources/train/MimicKit/MimicKit 02 关键流程 UML 图.md](../../resources/train/MimicKit/MimicKit 02 关键流程 UML 图.md)
 
 ## 推荐继续阅读
