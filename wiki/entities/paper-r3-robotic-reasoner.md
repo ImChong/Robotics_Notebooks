@@ -10,6 +10,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
   - ./paper-ma-vla.md
+  - ./paper-ecot.md
 sources:
   - ../../sources/papers/r3_robotic_reasoner_arxiv_2608_26053.md
   - ../../sources/sites/r3-robotic-reasoner.md

@@ -10,11 +10,13 @@ tags:
   - berkeley
   - max-planck
 status: complete
-updated: 2026-09-04
+updated: 2026-09-09
 arxiv: "2406.09246"
 code: https://github.com/openvla/openvla
 related:
   - ./openvla.md
+  - ./paper-ecot.md
+  - ./paper-fast-ecot.md
   - ./paper-rt-2.md
   - ./paper-octo.md
   - ../methods/vla.md
@@ -122,10 +124,13 @@ sequenceDiagram
 | [RT-2](./paper-rt-2.md) | 范式源头，闭源更大模型 |
 | [Octo](./paper-octo.md) | 更轻、读出头更灵活 |
 | [π₀](./paper-pi0.md) | 流匹配连续动作，非自回归 bin |
+| [ECoT](./paper-ecot.md) | 同骨干 + 具身思维链训练；泛化 **+28%** 绝对成功率 |
 
 ## 关联页面
 
 - [OpenVLA 软件实体](./openvla.md)
+- [ECoT](./paper-ecot.md) — 基于 OpenVLA 的具身思维链奠基
+- [Fast ECoT](./paper-fast-ecot.md) — ECoT 推理时加速
 - [RT-2](./paper-rt-2.md)
 - [Octo](./paper-octo.md)
 - [VLA](../methods/vla.md)

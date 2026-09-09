@@ -947,6 +947,7 @@
 - [E-SDS（Environment-aware See it, Do it, Sorted）](wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — E-SDS** 面向 **人形感知行走** 的 **奖励函数仍难自动且感知型 RL 仍难手调** 这一交叉痛点：在 **VLM 从单段示范视频合成 Python 奖励** 的 **SDS** 路线 `📅unknown` `[entity_page]`
 - [EATR-Stereo](wiki/entities/paper-eatr-stereo.md) — EATR-Stereo**（*Embodiment-Aware Token Routing of Paired Stereo Evidence for Humanoid Vision-Langua `📅unknown` `[entity_page]`
 - [eBert：非线性正规模涌现四足步态](wiki/entities/paper-ebert-nonlinear-normal-modes.md) — eBert NNM Gaits**（arXiv:2609.00539）由 **慕尼黑工业大学（TUM）、德国航空航天中心（D `📅unknown` `[entity_page]`
+- [ECoT：具身思维链推理（Embodied Chain-of-Thought）](wiki/entities/paper-ecot.md) — ECoT**（*Robotic Control via Embodied Chain-of-Thought Reasoning*，[arXiv:2407.08693](https://arxiv. `📅unknown` `[entity_page]`
 - [Effective Degree：多项式代理量化简洁性](wiki/entities/paper-effective-degree.md) — Effective Degree（ED）** 出自论文 *Quantifying and Optimizing Simplicity via Polynomial Representations `📅unknown` `[entity_page]`
 - [AoE](wiki/entities/paper-ego-01-aoe.md) — AoE** 收录于 具身智能研究室 · Ego 9 篇专题 **第 01/9** 篇，归类 `📅unknown` `[entity_page]`
 - [EgoLive](wiki/entities/paper-ego-02-egolive.md) — EgoLive** 收录于 具身智能研究室 · Ego 9 篇专题 **第 02/9**  `📅unknown` `[entity_page]`
@@ -991,6 +992,7 @@
 - [Fail-Passive Gap：工业人形功能安全的认证缺口](wiki/entities/paper-fail-passive-gap.md) — Toward Certified Functional Safety for Industrial Humanoid Robots**（Caiwu Ding、Tao Cui、Lingyun Wan `📅unknown` `[entity_page]`
 - [FailBench：VLM 当裁判有多可靠](wiki/entities/paper-failbench.md) — FailBench**（*How Reliable are VLMs at Judging Robot Task Success?*，[arXiv:2609.03611](https://arxi `📅unknown` `[entity_page]`
 - [FARO（可行性感知机器人运动优化）](wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — FARO**（*Feasibility-Aware Robot Motion Optimization*，[arXiv:2607.18362](https://arxiv.org/abs/2607 `📅unknown` `[entity_page]`
+- [Fast ECoT：思维复用的高效具身链式推理](wiki/entities/paper-fast-ecot.md) — Fast ECoT**（*Efficient Embodied Chain-of-Thought via Thoughts Reuse*，[arXiv:2506.07639](https://ar `📅unknown` `[entity_page]`
 - [FastGrasp：移动操作器上的学习式全身快速灵巧抓取](wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — FastGrasp**（*Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Mani `📅unknown` `[entity_page]`
 - [FastStair（Learning to Run Up Stairs with Humanoid Robots）](wiki/entities/paper-faststair-humanoid-stair-ascent.md) — FastStair** 是面向 **人形机器人高速上楼梯** 的 **规划引导 + 多阶段强化学习** 工作（arXiv:2601.10365，LimX Dynamics 等）：用 **DCM 落 `📅unknown` `[entity_page]`
 - [Fault-Tolerant Locomotion（执行器失效自适应步态）](wiki/entities/paper-fault-tolerant-locomotion.md) — Learning Fault-Tolerant Locomotion with Adaptive Gait Timing**（[arXiv:2608.07328](https://arxiv.or `📅unknown` `[entity_page]`
