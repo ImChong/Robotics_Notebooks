@@ -516,6 +516,16 @@
 
   // 首页「最新知识节点」紧凑列表：优先 latest_wiki_nodes 中的新增，
   // 不足时从 wiki-activity.days（升序）自新到旧回填，并补齐 recency。
+  function homeLatestItemsOf(homeStats) {
+    if (homeStats && Array.isArray(homeStats.latest_wiki_nodes) && homeStats.latest_wiki_nodes.length) {
+      return homeStats.latest_wiki_nodes;
+    }
+    if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
+      return [homeStats.latest_wiki_node];
+    }
+    return [];
+  }
+
   function collectHomeCompactAddedNodes(items, wikiActivity, maxItems) {
     var limit = typeof maxItems === 'number' && maxItems > 0 ? maxItems : 5;
     var compactItems = [];
@@ -990,12 +1000,7 @@
     var mount = document.getElementById('homeLatestWikiModule');
     if (!mount) return;
     mount.classList.remove('data-loading');
-    var items = [];
-    if (homeStats && Array.isArray(homeStats.latest_wiki_nodes) && homeStats.latest_wiki_nodes.length) {
-      items = homeStats.latest_wiki_nodes;
-    } else if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
-      items = [homeStats.latest_wiki_node];
-    }
+    var items = homeLatestItemsOf(homeStats);
 
     // 首页紧凑模式（mount 带 data-compact）：默认只列最近新增节点（最多 5 条）；
     // 完整时间线与活跃度热力图迁至 change-log.html（可点「显示维护节点」）
@@ -6444,20 +6449,27 @@
 
   if (homeStatsRoot) {
     initHeroStatCountUp();
+    // 首页紧凑列表最多 5 条新增，home-stats 的 latest_wiki_nodes 一般已够用；
+    // 完整时间线与热力图（change-log.html）才需要活动全集，首页不等它。
+    var latestWikiMount = document.getElementById('homeLatestWikiModule');
+    var latestWikiCompact = !!(latestWikiMount && latestWikiMount.hasAttribute('data-compact'));
     var homeStatsFetch = fetch('exports/home-stats.json').then(function (response) {
       if (!response.ok) throw new Error('HTTP ' + response.status);
       return response.json();
     });
     // 热力图数据可缺席（本地未 make graph 时降级为无热力图，不影响时间线）
-    var wikiActivityFetch = fetch('exports/wiki-activity.json')
-      .then(function (response) {
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        return response.json();
-      })
-      .catch(function (error) {
-        console.warn('Wiki activity sync failed:', error);
-        return null;
-      });
+    var fetchWikiActivity = function () {
+      return fetch('exports/wiki-activity.json')
+        .then(function (response) {
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          return response.json();
+        })
+        .catch(function (error) {
+          console.warn('Wiki activity sync failed:', error);
+          return null;
+        });
+    };
+    var wikiActivityFetch = latestWikiCompact ? Promise.resolve(null) : fetchWikiActivity();
     Promise.all([homeStatsFetch, wikiActivityFetch])
       .then(function (results) {
         var stats = results[0];
@@ -6468,6 +6480,13 @@
           renderHotTopics(stats);
           renderHomeHubs(stats);
           renderLatestWikiNode(stats, results[1]);
+          // 只有紧凑列表凑不满 5 条新增时才回填，这时才需要活动全集
+          if (latestWikiCompact &&
+              collectHomeCompactAddedNodes(homeLatestItemsOf(stats), null, 5).length < 5) {
+            fetchWikiActivity().then(function (activity) {
+              if (activity) renderLatestWikiNode(stats, activity);
+            });
+          }
         }, 0);
       })
       .catch(function (error) {
