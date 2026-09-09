@@ -9,6 +9,67 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/eth3d-stereo-benchmark.md",
+      "detail_id": "entity-eth3d-stereo-benchmark",
+      "label": "ETH3D Two-View Stereo Benchmark",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/kitti-stereo-benchmark.md",
+      "detail_id": "entity-kitti-stereo-benchmark",
+      "label": "KITTI Stereo Benchmark",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/middlebury-stereo-benchmark.md",
+      "detail_id": "entity-middlebury-stereo-benchmark",
+      "label": "Middlebury Stereo Evaluation",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dpt.md",
+      "detail_id": "entity-paper-dpt",
+      "label": "DPT：Vision Transformers for Dense Prediction",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-nbs-no-bias-stereo.md",
+      "detail_id": "entity-paper-nbs-no-bias-stereo",
+      "label": "NBS：No Bias Stereo",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/methods/stereo-matching-foundation-models.md",
+      "detail_id": "wiki-methods-stereo-matching-foundation-models",
+      "label": "立体匹配基础模型与基准生态",
+      "type": "method",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-vgg-ttt.md",
       "detail_id": "entity-paper-vgg-ttt",
       "label": "VGG-T³：大规模离线前馈 3D 重建",
@@ -152,79 +213,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-motion-based-messaging.md",
-      "detail_id": "entity-paper-motion-based-messaging",
-      "label": "Motion-based messaging",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-remomask-2.md",
-      "detail_id": "entity-paper-remomask-2",
-      "label": "ReMoMask-2",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/visual-focus-data-efficiency-10-papers-technology-map.md",
-      "detail_id": "wiki-overview-visual-focus-data-efficiency-10-papers-technology-map",
-      "label": "视觉聚焦与数据效率：10 篇论文的阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md",
-      "detail_id": "entity-paper-i3dgs-immediate-3dgs-unordered",
-      "label": "i3dGS（Immediate 3D Gaussian Splat Reconstruction of Unordered Input with Global Consistency）",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-ge-act-2.md",
-      "detail_id": "entity-paper-ge-act-2",
-      "label": "GE-Act 2.0：世界–动作模型预训练与规模扩展",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-eneas.md",
-      "detail_id": "entity-paper-eneas",
-      "label": "ENEAS：文本提示实例跟踪与语义发现",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vgg-ttt.md",
-    "detail_id": "entity-paper-vgg-ttt",
-    "label": "VGG-T³：大规模离线前馈 3D 重建",
+    "path": "wiki/entities/eth3d-stereo-benchmark.md",
+    "detail_id": "entity-eth3d-stereo-benchmark",
+    "label": "ETH3D Two-View Stereo Benchmark",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
