@@ -3661,6 +3661,7 @@
 - [Actuator 102 · 04：热学与力矩控制](wiki/overview/humanoid-actuator-102-thermal-and-control.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [人形机器人算法研究现状](wiki/overview/humanoid-algorithm-research-status.md) — 人形算法研究现状**是对当前研究主战场的分层快照——**下肢/全身运动、loco-manipulation、导航与探索、比赛级感知决策、大模型具身**——对应课程第 1.2 节，并接到本库可继续深 `📅unknown` `[overview_page]`
 - [人形机器人 AMP：运动先验综述视角](wiki/overview/humanoid-amp-motion-prior-survey.md) — AMP（Adversarial Motion Prior）解决的不是「能不能跑」，而是「跑起来之后仍不像一个身体」。** 它把策略生成的状态转移约束在人类运动分布附近，让任务 reward 与参考 `📅unknown` `[overview_page]`
+- [人形机器人八大能力技术地图](wiki/overview/humanoid-eight-capabilities-technology-map.md) — 人形机器人把红杯放进水槽，难的不在「拿起」瞬间，而在 **看清—抓稳—全身协同—不摔—听懂任务—预判后果—靠数据与仿真持续纠错** 的整条链；VLA 与世界模型是身体 API 成熟后的加速器，不是跳过 `📅unknown` `[overview_page]`
 - [Humanoid Hardware 101 · 02：传动与感知链](wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Humanoid Hardware 101 · 01：机身与材料](wiki/overview/humanoid-hardware-101-chassis-materials.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Humanoid Hardware 101 · 04：集成执行器](wiki/overview/humanoid-hardware-101-integrated-actuators.md) — 本页未引入需额外解释的英文缩写（相关术语在正文首次出现处已随文说明）。 `📅unknown` `[overview_page]`

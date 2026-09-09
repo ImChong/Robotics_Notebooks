@@ -32,6 +32,7 @@ related:
   - ../overview/notable-commercial-robot-platforms.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
+  - ../overview/humanoid-eight-capabilities-technology-map.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
@@ -174,6 +175,7 @@ flowchart TD
 - [Project Instinct](./project-instinct.md) — 清华 IIIS / 期智人形「本能级全身控制」公开研究站群（接触丰富 Shadowing、深度跑酷、野外徒步）
 - [ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — IIT×INAIL 人因导向硬件–控制联合优化人形（*Nat Mach Intell* 2026）
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 人形本体的执行器子系统即本驱动链选型闭环的物理载体
+- [人形机器人八大能力技术地图](../overview/humanoid-eight-capabilities-technology-map.md) — 感知/抓取/WBC/平衡/VLA/WM/数据/仿真全栈鸟瞰（魔方AI空间科普）
 - [Hardware-in-the-Loop（硬件在环）](../concepts/hardware-in-the-loop.md) — 流程图「HIL 与台架安全测试」节点；与 Hybrid Imitation Learning 缩写消歧
 
 ## 参考来源

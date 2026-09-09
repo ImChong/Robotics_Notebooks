@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-08",
-  "node_count": 3868,
-  "edge_count": 34420,
+  "generated_at": "2026-09-09",
+  "node_count": 3869,
+  "edge_count": 34454,
   "coverage": {
-    "covered": 3841,
-    "total": 3841,
+    "covered": 3842,
+    "total": 3842,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -37,7 +37,8 @@
       "recency": "2026-09-08",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/mjswan.md",
@@ -221,15 +222,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 703
+      "size": 702
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 689
+      "size": 673
     },
     {
       "label": "视觉-语言-动作",
-      "size": 431
+      "size": 455
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -237,11 +238,11 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 223
+      "size": 224
     },
     {
       "label": "仿真到现实",
-      "size": 132
+      "size": 122
     }
   ],
   "top_hubs": [
@@ -249,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1440,
+      "degree": 1441,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -262,6 +263,14 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "degree": 919,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
@@ -269,18 +278,10 @@
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "degree": 918,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 844,
+      "degree": 845,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -312,7 +313,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 553,
+      "degree": 554,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
