@@ -30,6 +30,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ./bfm-41-papers-technology-map.md
   - ./humanoid-motion-cerebellum-technology-map.md
+  - ./humanoid-eight-capabilities-technology-map.md
   - ./ego-9-papers-technology-map.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
@@ -116,6 +117,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 - [Humanoid Motion Intelligence 知识库](../entities/humanoid-motion-intelligence.md) — 同策展方 GitHub 总仓（六条路线 + 论文/开源双索引；勿镜像）
 - [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md) — 训练流水线组件读法（与本文能力层正交）
 - [训练栈分层技术地图](./robot-training-stack-layers-technology-map.md) — 工具链六层（与本文「身体能力八层」互补）
+- [人形八大能力技术地图](./humanoid-eight-capabilities-technology-map.md) — 魔方AI空间科普视角：感知/抓取/WBC/平衡/VLA/WM/数据/仿真（与本文 42 篇 RL 栈互补）
 - [人形 AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md) — 19 篇 AMP / 运动先验论文的姊妹篇导航（与本文 42 篇栈互补）
 - [运动小脑 64 篇技术地图](./humanoid-motion-cerebellum-technology-map.md) — 同一公众号 2026-06 姊妹篇：论文高度重叠，按「动作小脑」A–I 九组重框（**复用** 本文 `paper-hrl-stack-*` 等节点，不重复建页）
 - [人形机器人运动控制 Know-How](./humanoid-motion-control-know-how.md) — 真实部署中的硬核工程经验（传感器 / 电机 / 热管理）

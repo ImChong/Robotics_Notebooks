@@ -223,6 +223,7 @@ related:
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
 - [Andrej Karpathy](../entities/andrej-karpathy.md) — LLM Wiki 提出者与深度学习/视觉教育索引
 - [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐
+- [人形机器人八大能力技术地图](./humanoid-eight-capabilities-technology-map.md) — 感知/抓取/WBC/平衡/VLA/WM/数据/仿真科普鸟瞰
 
 ## 推荐继续阅读
 
