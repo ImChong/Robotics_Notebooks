@@ -111,6 +111,7 @@ sequenceDiagram
 |------|----------|
 | [CLIP](./paper-clip.md) | 语言对齐强、几何弱 |
 | [OpenVLA](./paper-openvla.md) | 消费本特征作双塔之一 |
+| [NBS](./paper-nbs-no-bias-stereo.md) | **ViT-L 初始化** 纯 attention 立体匹配骨干 |
 | [视觉表征概念](../concepts/visual-representation-for-policy.md) | 策略视觉选型 |
 
 ## 关联页面
@@ -119,6 +120,8 @@ sequenceDiagram
 - [OpenVLA](./paper-openvla.md)
 - [视觉表征与策略](../concepts/visual-representation-for-policy.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [NBS（No Bias Stereo）](./paper-nbs-no-bias-stereo.md) — ViT-L 立体匹配
+- [立体匹配基础模型](../methods/stereo-matching-foundation-models.md)
 
 ## 推荐继续阅读
 

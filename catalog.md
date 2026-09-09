@@ -471,6 +471,7 @@
 - [EngineAI Native SDK](wiki/entities/engineai-native-sdk.md) — EngineAI Native SDK](https://github.com/engineai-robotics/engineai_robotics_native_sdk) 收录于具身智能研究室  `📅unknown` `[entity_page]`
 - [engineai_rl_lab](wiki/entities/engineai-rl-lab.md) — engineai_rl_lab](https://github.com/engineai-robotics/engineai_rl_lab) 收录于具身智能研究室 [开源项目主表](https:// `📅unknown` `[entity_page]`
 - [ESI-Bench（具身空间智能基准）](wiki/entities/esi-bench.md) — ESI-Bench**（*Embodied Spatial Intelligence Benchmark*，arXiv:2605.18746，[项目页](https://esi-bench.git `📅unknown` `[entity_page]`
+- [ETH3D Two-View Stereo Benchmark](wiki/entities/eth3d-stereo-benchmark.md) — ETH3D** 两视图立体评测 提供高分辨率 **室内/室外** 校正双目对，以 **EPE**（end `📅unknown` `[entity_page]`
 - [EuRoC MAV 数据集（The EuRoC Micro Aerial Vehicle Datasets）](wiki/entities/euroc-mav-datasets.md) — EuRoC MAV Datasets**（*The EuRoC Micro Aerial Vehicle Datasets*，[DOI: 10.1177/0278364915620033](htt `📅unknown` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](wiki/entities/ewmbench.md) — EWMBench**（*Embodied World Model Benchmark*，arXiv:2505.09694）把「文生 / 图生视频」模型放在 **机器人操作** 语境里考核：给定  `📅unknown` `[entity_page]`
 - [Exercises Dataset（健身动作目录）](wiki/entities/exercises-dataset.md) — Exercises Dataset**（[hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-datas `📅unknown` `[entity_page]`
@@ -603,6 +604,7 @@
 - [Kimodo（可控人体与人形运动扩散）](wiki/entities/kimodo.md) — Kimodo**（**Ki**nematic **Mo**tion **D**iffusi**o**n）在 **运动学空间** 对骨架姿态序列做 **显式扩散去噪**：在约 **700 小时**  `📅unknown` `[entity_page]`
 - [KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）](wiki/entities/kinetiq-ascend.md) — KinetIQ Ascend** 是 **Humanoid**（thehumanoid.ai）在 **KinetIQ** AI 框架上发布的  `📅unknown` `[entity_page]`
 - [Kinova Gen3](wiki/entities/kinova-gen3.md) — Kinova Gen3** 是 **Kinova** 公司的 **轻型六轴协作机械臂**：面向 **医疗、服务与科研**；产品介绍在 **[Gen3 产品页](https://www.kinova `📅unknown` `[entity_page]`
+- [KITTI Stereo Benchmark](wiki/entities/kitti-stereo-benchmark.md) — KITTI** 立体评测（2012 / `📅unknown` `[entity_page]`
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
 - [Lambda Cloud](wiki/entities/lambda-cloud.md) — Lambda Cloud**（lambda.ai）是 **AI 专用 GPU 云**，以 **Lambda Stack `📅unknown` `[entity_page]`
@@ -650,6 +652,7 @@
 - [MetalHead](wiki/entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
 - [Micro1](wiki/entities/micro1.md) — Micro1** 是面向 **前沿 AI 实验室与 physical AI 团队** 的 **数据标注与评测** 服务商（非上市公司）。LeoInAI Substack（2026-09）引用 CE `📅unknown` `[entity_page]`
 - [MIDAS Hand](wiki/entities/midas-hand.md) — MIDAS Hand**（Modular low-Impedance Direct-drive Anthropomorphic Sensing Hand）是加州大学洛杉矶分校 **Dennis H `📅unknown` `[entity_page]`
+- [Middlebury Stereo Evaluation](wiki/entities/middlebury-stereo-benchmark.md) — Middlebury Stereo** V3 评测 是立体匹配领域 **历史最久** 的公开基准之一， `📅unknown` `[entity_page]`
 - [mimic hand M1](wiki/entities/mimic-hand-m1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [mimic wearable U1（umimic）](wiki/entities/mimic-wearable-u1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [MimicGen](wiki/entities/mimicgen.md) — MimicGen](https://github.com/NVlabs/mimicgen) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
@@ -929,6 +932,7 @@
 - [DiT4DiT（双 DiT 联合视频–动作建模）](wiki/entities/paper-dit4dit-video-action-model.md) — DiT4DiT**（*Jointly Modeling Video Dynamics and Actions for Generalizable Robot Control*，arXiv:2603 `📅unknown` `[entity_page]`
 - [DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）](wiki/entities/paper-doorman-opening-sim2real-door.md) — DoorMan** 是 NVIDIA GEAR 等团队的人形 **视觉 loco-manipulation** 论文（arXiv:2512.01061，CVPR 2026）：策略 **完全在仿真中 `📅unknown` `[entity_page]`
 - [DPC：Direct Perception Control（直接感知控制）](wiki/entities/paper-dpc.md) — DPC**（*Direct Perception Control Model*，项目页，[规范 `📅unknown` `[entity_page]`
+- [DPT：Vision Transformers for Dense Prediction](wiki/entities/paper-dpt.md) — DPT**（*Vision Transformers for Dense Prediction*，[arXiv:2103.13413](https://arxiv.org/abs/2103.134 `📅unknown` `[entity_page]`
 - [Dreamer（HMI P064）](wiki/entities/paper-dreamer-latent-imagination.md) — Dreamer**（*Dream to Control: Learning Behaviors by Latent Imagination*，2019，[arXiv:1912.01603](htt `📅unknown` `[entity_page]`
 - [DreamHand](wiki/entities/paper-dreamhand.md) — DreamHand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recov `📅unknown` `[entity_page]`
 - [DreamMimic：世界模型辅助的视觉全身 Mimic](wiki/entities/paper-dreammimic.md) — DreamMimic**（*Learning Visuomotor Whole-Body Loco-Manipulation via World Model*，[arXiv:2608.22278 `📅unknown` `[entity_page]`
@@ -1340,6 +1344,7 @@
 - [NaP-Control：扩散先验噪声导航的快速全身角色控制](wiki/entities/paper-nap-control.md) — NaP-Control**（*Navigating Diffusion Prior for Versatile and Fast Character Control*，[arXiv:2605.20 `📅unknown` `[entity_page]`
 - [接近–安全跟随：别把跟紧和防撞塞进同一个 reward](wiki/entities/paper-nav-ps-balance.md) — 接近–安全跟随**（*Navigating the Proximity-Safety Balance*；[arXiv:2608.10056](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
 - [NavWAM（目标条件视觉导航 · Navigation World Action Model）](wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) — NavWAM**（*A Navigation World Action Model for Goal-Conditioned Visual Navigation*，arXiv:2606.13494 `📅unknown` `[entity_page]`
+- [NBS：No Bias Stereo](wiki/entities/paper-nbs-no-bias-stereo.md) — NBS**（*No Bias Stereo*，arXiv:2608.28933，[项目页](https://intrinsi `📅unknown` `[entity_page]`
 - [NestDex：嵌套策略 + Copilot 灵巧遥操作](wiki/entities/paper-nestdex.md) — NestDex**（*Nested Policy Learning with Copilot Assisted Teleoperation for Dexterous Manipulation*， `📅unknown` `[entity_page]`
 - [可复现网络的设计原则](wiki/entities/paper-network-design-reproducible.md) — Design Principles for Reproducible Networks**（[arXiv:2609.03852](https://arxiv.org/abs/2609.03852 `📅unknown` `[entity_page]`
 - [Neural GCS](wiki/entities/paper-neural-gcs.md) — Accelerating Mixed Discrete-Continuous Motion Planning via Neural Graphs of Convex Sets**（[arXiv:2 `📅unknown` `[entity_page]`
@@ -3475,6 +3480,7 @@
 - [SONIC（规模化运动跟踪人形控制）](wiki/methods/sonic-motion-tracking.md) — SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标；论文主张网络容量、MoCap 数据与算力三轴 scaling，并以统一 token 接口接入 VR、视频、VLA 等上游。 `📅2026-05-14` `[method_page]`
 - [SPIDER（物理感知采样式灵巧重定向）](wiki/methods/spider-physics-informed-dexterous-retargeting.md) — SPIDER**（*Scalable Physics-Informed DExterous Retargeting*，Pan 等，arXiv:2511.09484）把跨具身迁移写成：**人体演示只 `📅2026-05-17` `[method_page]`
 - [StarVLA](wiki/methods/star-vla.md) — StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。 `📅unknown` `[method_page]`
+- [立体匹配基础模型与基准生态](wiki/methods/stereo-matching-foundation-models.md) — 本页汇总 **双目立体匹配（stereo matching）** 在 **基础模型时代** 的主线方法与评测基准，以 [NBS](../entities/paper-nbs-no-bias-stere `📅unknown` `[method_page]`
 - [Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)](wiki/methods/sumo.md) — Sumo** 是一种由 RAI Institute 提出的层级化机器人控制框架，专门用于解决**动态全身移动操作 (Whole-Body Loco-Manipulation)** 问题。它打破了传 `📅unknown` `[method_page]`
 - [Switch: 敏捷技能切换框架](wiki/methods/switch-framework.md) — Switch** 是由香港科技大学等机构提出的一种针对人形机器人的技能切换方案。它解决了传统运动模仿方法在处理非连续、大跨度动作转换时容易失稳的问题，通过将高层图规划与底层强化学习（RL）控制相结 `📅unknown` `[method_page]`
 - [Table Tennis Strategy & Skill Learning（PhysicsPingPong）](wiki/methods/table-tennis-strategy-skill-learning.md) — PhysicsPingPong**（Wang et al., SIGGRAPH 2024, [arXiv:2407.16210](https://arxiv.org/abs/2407.16210 `📅unknown` `[method_page]`
