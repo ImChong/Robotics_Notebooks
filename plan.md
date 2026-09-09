@@ -357,3 +357,20 @@ MB 为十进制。gzip 为当次线上响应测量，不代表其他环境。Nod
 功能等价性核对：对全部 3,925 页按侧栏 `collectPaperNotebookLinks` 的顺序与 6 条上限模拟「有正文」与「无正文但带 `paper_notebook_links`」两种输入，渲染结果**逐页一致（差异 0 页）**。305 页有论文笔记链接，其中 13 页的链接只出现在正文里，靠导出期扫描保住。
 
 验证：新增 2 项 Python 契约测试（无正文目录保留侧栏所需字段；只在正文里出现的链接仍随目录下发）与 4 项前端行为测试（无正文条目仍出链接、跨字段去重与非笔记链接过滤、空条目不出区块、页面改读目录且不再有读正文的代码路径）；`tests/test_paper_notebook_links_export.py` + `tests/test_page_content_export.py` 15/15 通过，前端 58/58 通过；`check_export_quality.py` 13/13、Ruff 通过。**未做**真实浏览器侧栏交互验收。
+
+## 2026-09-09 本地真实浏览器验收（覆盖编号 4/12、36、9、3）
+
+环境：本仓库云会话内 headless Chromium（`/opt/pw-browsers/chromium`，puppeteer-core 驱动），本地 `python3 -m http.server` 提供静态站；SW 场景另起一份路径前缀为 `/Robotics_Notebooks/` 的服务以匹配线上部署根路径。**该沙箱的浏览器无法直连 `cdn.jsdelivr.net`（`ERR_CONNECTION_RESET`）**，因此公式/图表组件的成功路径用请求拦截把四个 CDN URL 指到本地下载的同一份官方文件（SHA-384 与页面 `integrity` 声明逐一核对一致，浏览器仍照常校验），失败路径则由真实的连接失败直接覆盖。**未测**：手机、Safari、弱网、真机 GPU、LCP/INP。
+
+| 场景 | 观测 |
+| --- | --- |
+| 首页加载（编号 4、36） | `search-index.json` 0 次、`exports/wiki-activity.json` 0 次、`home-stats.json` 1 次；「最近新增」仍渲染 5 行（首行 `2026-09-09 新增 实体 3DWay`）。`link-graph.json` 仍 2 次（迷你图 + 搜索社区索引），属编号 5 范围 |
+| 首页聚焦搜索框（编号 4） | 聚焦后 `search-index.json` 请求 1 次，符合「按搜索意图加载」 |
+| SW 安装（编号 4、12） | 激活后缓存内 16 条：外壳 5 条 + 可选 11 条；四份大数据（搜索索引、全图、活动全集、榜单）**均不在缓存内**。同内容本地测量：旧清单 12 个文件 82,501,887 原始 / 19,007,133 gzip → 新清单 15 个文件 1,041,433 / 286,421（原始 −98.7%、gzip −98.5%），且外壳比原先更完整（新增 `style.css`、`theme-init.js`、`detail.html` 等） |
+| 详情页无公式无图表（编号 9） | `wiki-concepts-can-bus-protocol`：KaTeX / Mermaid 请求 0 次，正文正常渲染 |
+| 详情页含公式与图表（编号 9） | `wiki-concepts-diffusion-model`：按 `katex.min.css`、`katex.min.js`、`mermaid.min.js`、`auto-render.min.js` 顺序各注入 1 次（`auto-render` 在 `katex.min.js` 之后），渲染出 15 个 `.katex` 节点与 1 个 Mermaid SVG |
+| 详情页组件加载失败（编号 9） | 直连 CDN 失败（`ERR_CONNECTION_RESET`）时页面不报错、正文与目录照常显示，公式退化为源码文本、Mermaid 容器留白，符合静默降级设计 |
+| 图谱页 2D（编号 9、3） | `vendor/3d-force-graph.min.js` 0 次、`exports/index-v1.json` 0 次、`exports/site-catalog-v1.json` 1 次 |
+| 图谱页点「3D 立体」（编号 9） | 点击瞬间按钮 `aria-busy="true"`，随后 `3d-force-graph.min.js` 请求 1 次；进入 3D 成功（`aria-pressed=true`、画布可见、按钮恢复可用、无降级弹窗），3,891 节点 / 34,594 边 |
+
+截图（不入库，见 PR 正文）：`home.png`、`detail-plain.png`、`detail-katex-rendered.png`、`detail-mermaid-rendered.png`、`graph-2d.png`、`graph-3d.png`。
