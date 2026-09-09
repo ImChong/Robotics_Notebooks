@@ -224,6 +224,10 @@ $$
 
 [VGG-T³](../entities/paper-vgg-ttt.md)（arXiv:2602.23361，CVPR 2026）在 **VGGT** 全局 attention 处引入 **测试时训练（TTT）**，把变长 KV 几何表示蒸馏进 **固定 MLP**，使离线批处理前馈重建对视图数 **线性扩展**（论文 1k 图约 **54 s**、相对 softmax attention **~11.6×** 加速）。相对 [LingBot-Map](../methods/lingbot-map.md) 的 **在线流式** 设定，它面向 **大图集 / 长视频拆帧** 的一次性重建与 **COLMAP / NeRF 初始化**；冻结场景 MLP 后还可对未见查询图做 **~10 FPS 视觉定位**。许可为 **NVIDIA OneWay Noncommercial**；训练 harness 已开源但数据集实现截至 2026-09-09 仍缺失。
 
+### 10. 相对回归流式重建（R³）
+
+[R³](../entities/paper-r3-relative-regression.md)（arXiv:2605.26519，UMich×西湖×NVIDIA）在 **Depth Anything 3** 骨干上用 **轻量 MLP** 回归 **置信加权成对相对位姿**，替代全局坐标系回归；**372M** 参数、**20+ FPS** 流式、**有界 keyframe bank** 支持长视频回环一致。同一 checkpoint 覆盖 **causal streaming** 与 **full-context offline**；代码 Apache-2.0、权重 CC BY-NC 已开源（评测代码待发布）。相对 LingBot-Map 的 GCA/Paged KV，R³ 更贴近 **SLAM 因子图** 的相对约束直觉。
+
 ## 最小代码骨架
 
 这段代码把状态估计最小闭环写清楚：

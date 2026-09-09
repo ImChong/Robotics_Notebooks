@@ -127,6 +127,11 @@ flowchart LR
 - **[VGG-T³](../entities/paper-vgg-ttt.md)**（arXiv:2602.23361，CVPR 2026）用 **TTT** 把 VGGT 全局 attention **线性化**，面向 **离线千图级** 批处理（1k 图约 **54–58 s**）与 **冻结场景后的查询定位**；LingBot-Map 维持 **视频流式 ~20 FPS** 与 Paged KV，不做离线大图集一次性 TTT。
 - **选型：** 要 **在线 / 近实时单目视频几何** → LingBot-Map；要 **长 support 窗 / COLMAP 替代 / 3DGS 初值** 且可接受 **非商业许可** → VGG-T³（[`nv-dvl/vgg-ttt`](https://github.com/nv-dvl/vgg-ttt) 已开源）。
 
+### 与 R³（相对回归流式重建）的对比
+
+- **[R³](../entities/paper-r3-relative-regression.md)**（arXiv:2605.26519，UMich×西湖×NVIDIA）在 **DA3** 骨干上回归 **置信加权成对相对位姿**，用 **有界 keyframe bank** 做流式回环一致；LingBot-Map 用 **GCA + Paged KV** 维护几何上下文，不依赖显式相对位姿图。
+- **选型：** 要 **端到端流式前馈 + 已开源 Isaac 生态** → LingBot-Map；要 **相对位姿表示 + 双模式（流式/离线）单权重** → R³（[`KevinXu02/R3`](https://github.com/KevinXu02/R3) 已开源，权重 CC BY-NC）。
+
 ### 与 VLA / 空间推理任务的关系
 
 - 可为 [VLA (Vision-Language-Action)](./vla.md) 或 [3D 空间 VQA](../concepts/3d-spatial-vqa.md) 讨论提供**在线度量几何**先验：语义–语言层仍需与几何模块分工或融合。
@@ -136,6 +141,7 @@ flowchart LR
 
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度对照
 - [VGG-T³（线性时间离线 VGGT）](../entities/paper-vgg-ttt.md) — 千图级前馈 pointmap / 查询定位对照
+- [R³（相对回归流式重建）](../entities/paper-r3-relative-regression.md) — DA3 + 成对相对位姿 + keyframe bank 对照
 - [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — 学习型前后端联合精炼对照
 - [VLA (Vision-Language-Action)](./vla.md)
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
