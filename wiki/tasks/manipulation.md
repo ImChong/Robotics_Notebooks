@@ -40,6 +40,7 @@ related:
   - ../entities/paper-embodiedskills.md
   - ../methods/regrind-retargeting-guided-rl.md
   - ../entities/paper-dexverse.md
+  - ../entities/paper-hand-erc-benchmarking-dexterity.md
   - ../entities/dexbench.md
   - ../entities/paper-dexholdem.md
   - ../entities/paper-physmani-dynamic-manipulation-world-model.md
@@ -127,7 +128,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 需要识别物体、理解姿态、估计空间位置；**2D 目标检测**（见 [目标检测](../methods/object-detection.md)、[YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）常作第一级 **物体锚点**；抓取子问题中常需要 **6D/7DoF 抓取位姿** 或 **候选集合**（见 [AnyGrasp](../entities/anygrasp.md) 一类检测式管线）。视觉特征多来自 [视觉骨干](../concepts/vision-backbones.md)（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）预训练微调。
 
 ### 3. 灵巧操作
-很多操作需要多指协调、精细力控（如插头、拧瓶盖）。工业侧把这类任务收成可采购实物 + 状态终态的规格，见 [DexBench](../entities/dexbench.md)（18 原子任务 / OSC；官方评测仓待发布）。真机扑克桌面协议见 [DexHoldem](../entities/paper-dexholdem.md)（ShadowHand + UR10e；报 SPSR 而不是只报做成）。
+很多操作需要多指协调、精细力控（如插头、拧瓶盖）。工业侧把这类任务收成可采购实物 + 状态终态的规格，见 [DexBench](../entities/dexbench.md)（18 原子任务 / OSC；官方评测仓待发布）。HAND ERC 从**手型设计归因**出发给出四层 dexterity benchmark 与 16 项 DexNex 原子任务，见 [HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md)（arXiv:2609.05585；规范站已公开、无官方仿真仓）。真机扑克桌面协议见 [DexHoldem](../entities/paper-dexholdem.md)（ShadowHand + UR10e；报 SPSR 而不是只报做成）。
 
 ### 4. 开放词汇
 现实世界物体种类几乎无限，不可能为每个物体单独训练。
@@ -281,6 +282,7 @@ flowchart TD
 - [DemoMimic（单次示范灵巧泛化）](../entities/paper-demomimic.md) — 接触局部几何 + AR/SCR；16 物体真机 71% 均值（Stanford；代码待发布）
 - [WARP（离线全身重定向）](../entities/paper-warp-whole-body-retargeting.md) — Meta Quest 离线人演示 → 闭式 c-SEW 机器人动作 → BC；全身移动操作数据管线（arXiv:2606.29940）
 - [DexVerse](../entities/paper-dexverse.md) — 100 项多任务多具身灵巧 benchmark + 3,180 VR 示范；IL/VLA 基线均值成功率 34%（arXiv:2607.08751，UNC/HKU/Berkeley）
+- [HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md) — 四层 application/system/hand/component + DexNex 16 原子任务；侧重 in-hand manipulation 与硬件归因（arXiv:2609.05585）
 - [Grasp Pose Estimation (抓取位姿估计)](../methods/grasp-pose-estimation.md) — RGBD/点云 → 6-DoF 抓取候选；GraspNet → Contact-GraspNet → GSNet/AnyGrasp 方法谱系
 
 ## 关联实体
