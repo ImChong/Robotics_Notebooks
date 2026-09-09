@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/functional_slam_arxiv_2609_07497.md — Functional-SLAM（CoRL 2026）在线功能场景图 SLAM；已开源（GitHub+HF）；cosmoh2g.github.io 非本项目页
+
 ## [2026-09-09] ingest | sources/repos/openvino.md + sites/openvino.md + physicalai — 深化 OpenVINO 主仓/文档/Physical AI 机器人运行时并同步 wiki
 
 ## [2026-09-09] ingest | sources/repos/project-superdex.md — 接入 Meta Project SuperDex 灵巧操作平台（Physics/Robotics/Studio/Lab 四模块，已开源 Apache 2.0；Teleop 计划 Q4 2026）
