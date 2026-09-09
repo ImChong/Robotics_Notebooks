@@ -363,17 +363,27 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
-    def test_detail_page_loads_katex_assets(self):
-        content = DETAIL_HTML.read_text(encoding="utf-8")
+    def test_detail_page_loads_katex_on_demand(self):
+        """编号 9：详情页不再无条件引入 KaTeX，改由 main.js 按正文内容注入。
+
+        原静态标签的 integrity 与 crossorigin 必须原样保留在动态加载器里。
+        """
+        detail = DETAIL_HTML.read_text(encoding="utf-8")
+        self.assertNotIn("katex", detail.lower())
+        main_js = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
+            "function ensureKatexLoaded()",
+            "function containerHasMath(container)",
             "katex.min.css",
             "katex.min.js",
-            "auto-render.min.js",
-            "integrity=",
-            'crossorigin="anonymous"',
+            "contrib/auto-render.min.js",
+            "sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+",
+            "sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg",
+            "sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk",
+            "el.crossOrigin = 'anonymous'",
         ]
         for snippet in expected_snippets:
-            self.assertIn(snippet, content)
+            self.assertIn(snippet, main_js)
 
     def test_main_js_invokes_katex_auto_render_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
