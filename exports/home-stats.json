@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-09",
-  "node_count": 3903,
-  "edge_count": 34701,
+  "node_count": 3904,
+  "edge_count": 34710,
   "coverage": {
-    "covered": 3876,
-    "total": 3876,
+    "covered": 3877,
+    "total": 3877,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,7 +234,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 508
+      "size": 509
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -360,7 +360,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 61,
+      "degree": 62,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
