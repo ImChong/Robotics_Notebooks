@@ -6044,6 +6044,8 @@
       syncDom: () => syncGraphDomFromSimulation(),
       syncCommunityLabels: () => updateCommunityLabels(),
       applyFilters: () => applyFilters(),
+      // G2 回归：浮窗里的「显示节点名称」开关已隐藏，验证标签路径需从此处驱动
+      setShowNodeLabels: (on) => setShowNodeLabels(on),
       // G2 基线测量：取度数最高的若干节点 id，供 3D 悬停刷新计时使用
       topNodeIds: (n) => nodes.slice()
         .sort((a, b) => (b._degree || 0) - (a._degree || 0))
