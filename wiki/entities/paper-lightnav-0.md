@@ -123,6 +123,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Light REACT](./light-react.md) — 同机构规模化部署段：全身韧性 ICL
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [VLA](../methods/vla.md)
 - [开源系统闭环 7 篇地图](../overview/open-source-system-loop-7-papers-technology-map.md)

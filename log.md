@@ -1,4 +1,8 @@
-## [2026-09-09] ingest | sources/blogs/wechat_mozhai_humanoid_8_capabilities_2026-09-09.md — 魔方AI空间「人形八大能力」科普；WebFetch 抓取；升格 humanoid-eight-capabilities-technology-map 并挂接感知/抓取/WBC/VLA/WM/数据/仿真既有节点
+## [2026-09-09] ingest | sources/blogs/wechat_lightorigins_light_react_2026-09-09.md + sources/repos/onnxruntime-official.md — 亮源新创 Light REACT 全身韧性 ICL 微信发布；ONNX Runtime 官方文档复核
+
+- **触发：** 用户指定微信公众号 Light REACT 与 onnxruntime.ai/docs；要求自动合并 PR
+- **Light REACT：** 微信抓取；项目页/代码截至入库日未开源；新建 `light-react` 实体与 sources 归档；交叉 `robot-in-context-learning`
+- **ONNX Runtime：** 文档首页/Python 入门/EP API 复核；续更 `onnxruntime-official.md` 与 `onnxruntime` 实体
 
 ## [2026-09-08] ingest | sources/repos/meshroom.md — 接入 AliceVision Meshroom 摄影测量工具箱；已开源 MPL-2.0；升格 wiki/entities/meshroom.md 并交叉更新 GS-Playground / Spark / sim2real
 
