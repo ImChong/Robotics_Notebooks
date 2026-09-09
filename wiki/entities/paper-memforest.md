@@ -9,6 +9,9 @@ code: https://github.com/Celina-love-sweet/MemForest
 related:
   - ../overview/visual-focus-data-efficiency-10-papers-technology-map.md
   - ../methods/imitation-learning.md
+  - ../concepts/robot-in-context-learning.md
+  - ../concepts/embodied-semantic-cognitive-map.md
+  - ../concepts/model-context-protocol.md
 sources:
   - ../../sources/papers/memforest_arxiv_2609_08273.md
   - ../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md
@@ -72,6 +75,18 @@ sequenceDiagram
 - 指标与设置以原文 PDF / 项目页为准；上文 Highlights 来自公众号归纳 + 项目页摘要。
 - 横向对照见 [视觉聚焦与数据效率 10 篇技术地图](../overview/visual-focus-data-efficiency-10-papers-technology-map.md)。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：本页 Highlights 来自公众号归纳 + 项目页摘要（见参考来源），未逐条核对原文实验表，与下列各页不共享同一评测协议。
+
+| 对照 | 差异读法 |
+|------|----------|
+| **Mem0 / M3-Agent**（同文被压缩的宿主系统） | 唯一可比的一组：MemForest 不是替换它们，而是**套在它们上面压历史**。50% 压缩下报 Mem0 保留 97.1% 性能 / 检索 1.89× 加速，M3-Agent 保留 99.7% / 2.24×；70% 压缩时 Mem0 掉到 93.3%。读法是「压缩率–准确率曲线」，不是单点胜负 |
+| **纯语义相似度合并**（本文要替代的默认做法） | 差别在**合并依据**：只按语义相似度合并会把时间上相邻但语义分散的事件拆散；EventTree 用最大生成树式渐进合并同时保时间邻域与全局语义，检索时靠锚点引导传播把邻域一起带回 |
+| [机器人的上下文学习](../concepts/robot-in-context-learning.md) | 该页讲上下文窗口内的少样本适应；MemForest 处理的是**窗口装不下之后**的那一段——两者是同一条「上下文预算」链上的前后段 |
+| [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) | 具身侧的对照记忆形态：认知地图按**空间**组织并可被导航策略消费，EventTree 按**事件/时间**组织、消费方是 LLM 问答。选型判据是下游要查的是「在哪」还是「发生过什么」 |
+| [Model Context Protocol](../concepts/model-context-protocol.md) | 工程侧对照：MCP 解决上下文**怎么接进来**，MemForest 解决接进来的历史**怎么装得下**；不冲突 |
+
 ## 结论
 
 **MemForest 的可迁移主张已写入 Highlights；部署前以原文实验设定与开源边界为准。**
@@ -84,6 +99,9 @@ sequenceDiagram
 
 - [视觉聚焦与数据效率 10 篇技术地图](../overview/visual-focus-data-efficiency-10-papers-technology-map.md)
 - [模仿学习](../methods/imitation-learning.md)
+- [机器人的上下文学习](../concepts/robot-in-context-learning.md) — 同一条上下文预算链的前段
+- [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) — 按空间组织的对照记忆形态
+- [Model Context Protocol](../concepts/model-context-protocol.md) — 上下文接入侧的工程对照
 
 ## 参考来源
 

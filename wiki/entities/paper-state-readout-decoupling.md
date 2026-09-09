@@ -3,6 +3,7 @@ type: entity
 tags: [paper, world-models, latent-dynamics, planning, rollout, gru, tsinghua, hku]
 status: complete
 updated: 2026-09-09
+venue: "预印本 2026（Agentic Intelligence Lab PDF；无 arXiv 编号、无会议）"
 related:
   - ./paper-lewm.md
   - ./paper-traj-lewm.md
@@ -115,6 +116,18 @@ h_0=F_\phi(h^{\text{init}},u_0),\quad h_k=F_\phi(h_{k-1},u_k),\quad \hat z_{t+k+
 - **效率：** 预测器参数 **−53.0~58.2%**；评测时间 **−24.2~62.8%**（均值约 **−44%**）。
 - **长视界 TwoRoom（LeWM）：** H=20 成功率 SRD **46%** vs AR **14%**；开环终端 MSE **−17.2%**；H=20 评测 **515s→68s**。
 - **消融：** 仅加多步监督（AR-MS）几乎无效；**换载体为 hidden state**（AR-GRU 或完整 SRD）才带来主要增益。
+
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| **AR 自回归 rollout**（本文要替代的基线） | 本页最硬的一组：编码器、目标表征、CEM、重规划循环全部不变，只换 predictor 与训练目标。8 设定里 7 组提成功率，预测器参数 −53~58%、评测时间均值 −44%（H=20 时 −86.8%）。唯一退步是 LeWM 上的 Push-T（−7.34 pp），说明接触精细任务不吃这套 |
+| **AR-MS（只加多步监督）/ AR-GRU（只换载体）** | 消融给出的因果归属：只加多步监督几乎无效，**换载体为 hidden state** 才是增益来源。读法上不要把 SRD 记成「多步 loss」，它是接口重构 |
+| **SRD-Transformer 变体** | 载体换成 Transformer 可拿到部分增益但不及 GRU 版；GRU 是实现选择而非机制本身，但「随便换个序列模型都行」也不成立 |
+| [CausalVAE WM Plug-in](./paper-causalvae-world-models.md) | 同组、同一 WM 栈的另一处改动，切口不同：CausalVAE 改 latent 因子的**因果可识别性**，SRD 改**谁承载多步动力学**。论文互引但模块独立，未联合实验 |
+| [Traj-LeWM](./paper-traj-lewm.md) / [LeWM](./paper-lewm.md) | LeWM 是本文的实验骨干之一；Traj-LeWM 改的是**规划打分**（轨迹代价），SRD 改的是**rollout 载体**，二者正交，论文明确提可组合但未做 |
+| [生成式世界模型](../methods/generative-world-models.md) | 范式边界：本文全程在 reconstruction-free latent WM 里讨论，视频生成式 WM 的 rollout 不存在同一个 state–readout coupling，结论不可直接搬 |
+| [潜空间想象](../concepts/latent-imagination.md) | Dreamer 系同样用循环状态推进想象，与 SRD 的差别在于**latent 预测是否回灌转移**——这正是本文归因 compounding error 的那条路径 |
 
 ## 结论
 

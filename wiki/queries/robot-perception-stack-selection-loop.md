@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-09
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -23,6 +23,9 @@ related:
   - ../concepts/vision-backbones.md
   - ../concepts/perception-coordinate-postprocessing.md
   - ../methods/object-detection.md
+  - ../methods/stereo-matching-foundation-models.md
+  - ../methods/fcn-semantic-segmentation.md
+  - ../concepts/image-segmentation-taxonomy.md
   - ../entities/ultralytics.md
   - ../entities/tennis-vision.md
   - ../entities/rf-detr.md
@@ -104,7 +107,7 @@ flowchart TD
 
 整条感知栈的物理入口是**相机/雷达等传感器的选型与标定**，第一道选型是**需不需要 3D/深度**，以及需要时**RGB-D / 双目 / LiDAR 怎么选**：
 
-- **选什么**：纯 2D 平面任务（图像空间视觉伺服、屏幕坐标操作）单目 RGB + 内参标定即可；需要 3D 位置/几何时才上 RGB-D（结构光/ToF）、双目或 LiDAR，并要做内外参标定与多传感时间同步。
+- **选什么**：纯 2D 平面任务（图像空间视觉伺服、屏幕坐标操作）单目 RGB + 内参标定即可；需要 3D 位置/几何时才上 RGB-D（结构光/ToF）、双目或 LiDAR，并要做内外参标定与多传感时间同步。走双目时，**视差算法本身也是一次选型**：今日可部署的开源零样本立体基础模型（FoundationStereo）、经典轻量循环相关场（CREStereo / IGEV）、论文报榜领先但未开源（NBS）三档差别很大，谱系与「已开源 vs 待发布」判据见[立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md)。
 - **取舍主线**：**深度精度 vs 成本/功耗**——结构光近距精度高但室外/反光失效，ToF 抗环境光但分辨率有限，LiDAR 远距稳但贵且稀疏，双目省钱但低纹理处退化；**模态互补 vs 标定/同步复杂度**——多模态融合（RGB-D + LiDAR）覆盖面广，但外参标定与时间同步一旦对不齐，融合反而引入系统性误差。
 - **典型误判**：把「相机给了深度图」当成「每个像素深度都能信」——远距、反光、低纹理、遮挡边缘的深度是主要失效区，这些误差会一路传到 ③层 2D→3D 提升里放大成尺度/位置错误。
 
@@ -112,7 +115,7 @@ flowchart TD
 
 传感器给出图像后，**2D 检测/分割把像素变成「框 / 掩码 / 类别」**，核心是三条正交的选型轴：
 
-- **选什么/调什么**：闭集、类别已知且要实时机载——[YOLO 单阶段](../entities/paper-yolo-unified-realtime-detection.md) / [Ultralytics](../entities/ultralytics.md) 生态（速度-精度可裁剪）；要端到端、去掉 NMS/anchor 手工件——[RF-DETR](../entities/rf-detr.md) 等实时 DETR；类别开放/未知、要精细掩码——[SAM / SAM2](../entities/paper-segment-anything.md) 可提示分割。选型三轴见[目标检测模型选型 Query](./object-detection-model-selection.md)，骨干/表征层见[感知骨干选型 Query](./perception-backbone-selection.md)。
+- **选什么/调什么**：闭集、类别已知且要实时机载——[YOLO 单阶段](../entities/paper-yolo-unified-realtime-detection.md) / [Ultralytics](../entities/ultralytics.md) 生态（速度-精度可裁剪）；要端到端、去掉 NMS/anchor 手工件——[RF-DETR](../entities/rf-detr.md) 等实时 DETR；类别开放/未知、要精细掩码——[SAM / SAM2](../entities/paper-segment-anything.md) 可提示分割。选型三轴见[目标检测模型选型 Query](./object-detection-model-selection.md)，骨干/表征层见[感知骨干选型 Query](./perception-backbone-selection.md)。要的是**逐像素类别图**（可行驶区域、地面/障碍二分、材质分区）而非实例框时，这一层落到语义分割一支：闭集、类别固定就用 [FCN 系全卷积密集预测](../methods/fcn-semantic-segmentation.md)（[U-Net](../methods/unet.md) / [PSPNet](../methods/pspnet.md) / [SegNet](../methods/segnet.md) 同族，机载最省），实例/全景之分见[图像分割任务分类](../concepts/image-segmentation-taxonomy.md)。
 - **取舍主线**：**实时机载算力 vs 服务器侧精度**——机载（Jetson 级）要卡帧率预算，大模型精度高但跑不动；**闭集准 vs 开放词汇泛**——闭集检测器对训练类别准但遇到未见类别失明，开放词汇/可提示分割泛化强但类别语义弱、易过分割。
 - **典型误判**：① 把「benchmark mAP 高」当「机载能实时」——mAP 与机载帧率是两回事，部署要按目标硬件重测时延；② 把「SAM 掩码很精细」当「知道这是什么」——[SAM/SAM2](../entities/paper-sam2.md) 输出的是**无类别语义的掩码**，类别标签要靠额外文本提示或检测器配套，直接拿来当语义分割用会缺语义。
 

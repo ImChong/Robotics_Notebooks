@@ -134,6 +134,17 @@ sequenceDiagram
 - **真机：** Franka FR3，20 任务，**50%→70%**。
 - **消融：** 去掉 LTC 仅保留 endpoint 会损失 Cube/Two-Room 上显著的 success-discrimination；endpoint-matched 对照支持「中间路径」而非仅终点噪声。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [LeWM](./paper-lewm.md)（本文基座与主基线） | 本页最硬的一组：编码器、预测器、CEM 全部保留，只加 LTC 与偏好管线。四任务三 seed 均值 Push-T 96→99、Cube 74→88、Reacher 86→93、Two-Room 87→94；真机 FR3 20 任务 50%→70%。差别在**候选怎么排序**——终点距离 vs 终点 + 整段路径形状 |
+| **DINO-WM**（论文引用的强对照） | 暴露盲区用的参照：Cube 上 LeWM 74% 落后 DINO-WM 86%，本文主张这个差距不全是表征能力问题，而是 endpoint-only 打分丢了路径信息——加 LTC 后 88% |
+| **endpoint-matched 消融** | 排除「终点噪声」这一替代解释的关键对照：终点距离配平后 LTC 仍有区分度，说明起作用的是**中间路径**而非终点估计更准 |
+| [SRD（State–Readout Decoupling）](./paper-state-readout-decoupling.md) | 同生态的正交改动：SRD 改 rollout 载体（减误差累积），Traj-LeWM 改候选评价。两篇互相点名可叠加，但**未做联合实验**，组合收益属待验证 |
+| [CausalVAE WM Plug-in](./paper-causalvae-world-models.md) | 第三个切口：改 latent 因子的因果可识别性。三者分别动 rollout / 打分 / 表征结构，可用来定位自己栈里的瓶颈在哪一环 |
+| [生成式世界模型](../methods/generative-world-models.md) | 范式边界：本文是**非生成式 JEPA 规划**，不重建像素、不做视频预测，也不是 VLA 的替代——与视频 WM 的指标体系不通用 |
+
 ## 结论
 
 **总判：Traj-LeWM 用 <1M 参数的 LTC 把「轨迹形状」补进 LeWM 的训练与规划，在最难的 Cube 上 +14 pp，并给出真机增益——适合已跑通 LeWM 但 endpoint-only 规划触顶的团队。**

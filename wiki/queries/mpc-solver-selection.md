@@ -3,7 +3,7 @@ type: query
 tags: [mpc, solver, osqp, qpoases, acados, optimization, legged-robots]
 status: stable
 summary: "MPC 求解器选型指南"
-updated: 2026-08-18
+updated: 2026-09-09
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/pi_mpc_arxiv_2601_14414.md
@@ -154,6 +154,9 @@ solver = AcadosOcpSolver(ocp, json_file="ocp.json")
 | 全身运动生成 / TO | **Crocoddyl** | DDP 特别适合全身轨迹优化 |
 | OCS2 框架内 | **HPIPM** | OCS2 默认后端，已针对 MPC 优化 |
 | 商业产品 / 极限实时 | **FORCES Pro** | 工业级最快 |
+| 代价/动力学不可微（接触开合、稀疏奖励、黑盒仿真） | **[MPPI](../methods/mppi.md)** 等采样式 | 本页其余求解器都要梯度/凸结构；MPPI 只需前向 rollout，代价换成 GPU 并行采样量 |
+
+> **边界提醒：** MPPI 与上表其余求解器不是同一档竞争者——前者是**免梯度采样式**滚动优化，不给 KKT 意义上的最优性，也没有暖启动收敛保证；当模型可微且能写成 QP/NLP 时，OSQP / Acados 一类仍是更稳更省算力的选择。TD-MPC2 系 MBRL（见 [CAST](../entities/paper-cast-mbrl.md)）用的就是 MPPI 族在学习到的潜动力学上做在线规划。
 
 ---
 
@@ -185,6 +188,7 @@ solver = AcadosOcpSolver(ocp, json_file="ocp.json")
 - [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 离线敏捷 TO 用切空间 + Ipopt，不是嵌入式 QP
 - [TSID](../concepts/tsid.md) — 任务空间逆动力学，依赖 QP 求解器
 - [π MPC](../methods/pi-mpc.md) — parallel-in-horizon ADMM；[MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) 批训练应用
+- [MPPI](../methods/mppi.md) — 免梯度采样式滚动优化，本页各求解器的「模型不可微」逃生口
 
 ---
 

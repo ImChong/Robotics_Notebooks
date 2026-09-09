@@ -12,6 +12,7 @@ related:
   - ../entities/kitti-stereo-benchmark.md
   - ../concepts/state-estimation.md
   - ../entities/nvidia-nurec.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/nbs_arxiv_2608_28933.md
   - ../../sources/papers/stereo_matching_ecosystem_bibliography.md
@@ -134,6 +135,7 @@ flowchart LR
 - [NVIDIA NuRec](../entities/nvidia-nurec.md) — FoundationStereo 机器人重建栈
 - [EATR-Stereo](../entities/paper-eatr-stereo.md) — 人形 **双目 + VLA** 另一路线（策略内融合，非 metric stereo FM）
 - [State Estimation](../concepts/state-estimation.md) — 深度在估计链中的位置
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页是其 ① 传感与标定层的「双目怎么选视差算法」分支：先由该闭环判断要不要 3D/深度、要不要走双目，再回本页在 FoundationStereo / CREStereo / NBS 之间定档
 
 ## 参考来源
 

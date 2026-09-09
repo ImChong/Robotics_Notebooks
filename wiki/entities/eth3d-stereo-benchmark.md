@@ -8,6 +8,7 @@ related:
   - ../methods/stereo-matching-foundation-models.md
   - ./middlebury-stereo-benchmark.md
   - ./kitti-stereo-benchmark.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/eth3d_stereo_benchmark.md
 summary: "ETH3D Two-View Stereo：高分辨率室内外两视图立体 benchmark；EPE/bad@X 像素指标；NBS 报告该榜 SOTA。"
@@ -48,6 +49,7 @@ summary: "ETH3D Two-View Stereo：高分辨率室内外两视图立体 benchmark
 - [NBS](./paper-nbs-no-bias-stereo.md) — ETH3D 榜锚论文
 - [立体匹配生态](../methods/stereo-matching-foundation-models.md)
 - [Middlebury](./middlebury-stereo-benchmark.md) / [KITTI](./kitti-stereo-benchmark.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是**模块级**视差精度评测，不落在该闭环 ①–④ 任一层；EPE/bad@X 改善只说明深度栈更准，是否真提升任务表现仍要回到闭环 ③ 层的策略成功率去测
 
 ## 参考来源
 
