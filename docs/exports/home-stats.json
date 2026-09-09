@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/formalizations/tan-norm-rotation.md",
+      "detail_id": "wiki-formalizations-tan-norm-rotation",
+      "label": "tan_norm 旋转观测表示",
+      "type": "formalization",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-r3-relative-regression.md",
       "detail_id": "entity-paper-r3-relative-regression",
       "label": "R³：相对回归的 3D 重建",
@@ -204,23 +215,13 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hibridge-dialogue.md",
-      "detail_id": "entity-paper-hibridge-dialogue",
-      "label": "HiBRIDGE",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-r3-relative-regression.md",
-    "detail_id": "entity-paper-r3-relative-regression",
-    "label": "R³：相对回归的 3D 重建",
-    "type": "entity",
+    "path": "wiki/formalizations/tan-norm-rotation.md",
+    "detail_id": "wiki-formalizations-tan-norm-rotation",
+    "label": "tan_norm 旋转观测表示",
+    "type": "formalization",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
