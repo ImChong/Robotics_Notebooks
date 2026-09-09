@@ -515,6 +515,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [DPC](../entities/paper-dpc.md) — 去掉冻结运动接口、直接输出 G1 关节 PD 的产业反对命题（未开源）
 - [DyPES-VLA](../entities/paper-dypes-vla.md) — 共享动力学先验 + 本体特化 MoE 跨本体 VLA（arXiv:2608.06374）
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench；代码待开放（arXiv:2608.14379）
+- [DeicticVLA](../entities/paper-deicticvla.md) — LI/VLI/VI 三模式 click→mask 统一 π₀ 策略；LIBERO 子集系统对照 VP/MP 与两阶段训练（arXiv:2608.28108；未开源）
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；中间已承诺动作 + 中间观测条件 DSRL（arXiv:2608.23831；确认未开源）
 - [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL 微调 π₀.₅（arXiv:2608.29768；项目页 2026-09-04 已上线，仍未开源）
 - [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — VLA 的数据/实时/记忆/最后一毫米卡点与「RL 作后训练」坐标

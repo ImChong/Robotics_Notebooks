@@ -1,3 +1,7 @@
+## [2026-09-09] ingest | sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md — 10 篇独立 paper 节点（FocusPool/CAST/MemForest 等）+ 技术地图；4 仓已开源
+
+## [2026-09-09] ingest | sources/papers/deicticvla_arxiv_2608_28108.md — DeicticVLA 三模式 LI/VLI/VI 统一 π₀ VLA；真机未见类别 VLI/VI 100% vs LI 16.7%；截至入库日 arXiv 未列代码
+
 ## [2026-09-09] ingest | sources/papers/i3dgs_arxiv_2607_14481.md — i3dGS（SIGGRAPH 2026）乱序 RGB 即时 3DGS+全局回环；GraphDeco 官方代码已开源（研究许可）；关键页 paper-i3dgs-immediate-3dgs-unordered；交叉 Real2Sim / Gaussian-LIC2 / Instant NuRec
 
 ## [2026-09-09] ingest | sources/papers/hand_visibility_detector_arxiv_2608_11574.md — 复核 Hand Visibility Detector 四链（GitHub/arXiv v1/HF 模型/HF Papers），补 HF Papers 与 2026-09-09 开源核查
