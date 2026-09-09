@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-eneas.md",
+      "detail_id": "entity-paper-eneas",
+      "label": "ENEAS：文本提示实例跟踪与语义发现",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-ecot.md",
       "detail_id": "entity-paper-ecot",
       "label": "ECoT：具身思维链推理（Embodied Chain-of-Thought）",
@@ -201,28 +212,18 @@
       "recency": "2026-09-07",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-dual-cam-parallel-elastic-ankle.md",
-      "detail_id": "entity-paper-dual-cam-parallel-elastic-ankle",
-      "label": "双凸轮共享气弹簧人形并联弹性踝",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ecot.md",
-    "detail_id": "entity-paper-ecot",
-    "label": "ECoT：具身思维链推理（Embodied Chain-of-Thought）",
+    "path": "wiki/entities/paper-eneas.md",
+    "detail_id": "entity-paper-eneas",
+    "label": "ENEAS：文本提示实例跟踪与语义发现",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
