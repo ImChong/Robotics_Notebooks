@@ -6917,15 +6917,12 @@
       return _searchIndexPromise;
     }
 
-    // 供入口卡 pointerdown / 首页 idle 预取；失败静默，不影响后续正式搜索
+    // 仅由搜索意图触发（入口卡 hover/pointerdown、搜索框 focus、#wiki-search 深链）：
+    // 不再无条件 idle 预取整份搜索索引，普通浏览不为搜索付下载与解析成本。
+    // 失败静默，不影响后续正式搜索。
     prefetchWikiSearchIndex = function () {
       ensureSearchIndex().catch(function () {});
     };
-    if (typeof window.requestIdleCallback === 'function') {
-      window.requestIdleCallback(function () { prefetchWikiSearchIndex(); }, { timeout: 2500 });
-    } else {
-      window.setTimeout(function () { prefetchWikiSearchIndex(); }, 1200);
-    }
     // 深链 #wiki-search：搜索模块就绪后再聚焦并预取
     if (window.location.hash === '#wiki-search') {
       prefetchWikiSearchIndex();

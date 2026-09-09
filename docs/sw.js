@@ -2,29 +2,45 @@
 const CACHE_NAME = 'robotics-wiki-2026-09-09';
 const CACHE_PREFIX = 'robotics-wiki-';
 const PROJECT_PATH = new URL(self.registration.scope).pathname;
-const ASSETS_TO_CACHE = [
+// 必要外壳：离线打开首页所需的最小集合，安装时必须齐全；缺一即安装失败，
+// 旧 SW 继续服务，下次访问重试，不留下半套外壳。
+const SHELL_ASSETS = [
   '/Robotics_Notebooks/',
   '/Robotics_Notebooks/index.html',
+  '/Robotics_Notebooks/style.css',
+  '/Robotics_Notebooks/theme-init.js',
+  '/Robotics_Notebooks/main.js',
+];
+// 可选资源：其余页面外壳与小体积数据，逐个缓存，单个失败只降级该资源的离线可用性。
+// 搜索索引、全图、活动全集与榜单不再预取（安装时下载量最大的四份），改为访问时
+// 按 stale-while-revalidate 落缓存，离线可读范围由读者实际打开的内容决定。
+const OPTIONAL_ASSETS = [
   '/Robotics_Notebooks/graph.html',
   '/Robotics_Notebooks/change-log.html',
   '/Robotics_Notebooks/hubs.html',
-  '/Robotics_Notebooks/main.js',
+  '/Robotics_Notebooks/detail.html',
+  '/Robotics_Notebooks/wiki-type-labels.js',
+  '/Robotics_Notebooks/graph-tooltip.js',
+  '/Robotics_Notebooks/graph-node-size.js',
+  '/Robotics_Notebooks/mini-graph.js',
   '/Robotics_Notebooks/vendor/d3.min.js',
-  '/Robotics_Notebooks/search-index.json',
   '/Robotics_Notebooks/exports/home-stats.json',
-  '/Robotics_Notebooks/exports/hub-rankings.json',
-  '/Robotics_Notebooks/exports/link-graph.json',
   '/Robotics_Notebooks/exports/graph-stats.json',
-  '/Robotics_Notebooks/exports/wiki-activity.json',
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
-        console.warn('[SW] 部分资源缓存失败（离线模式下将降级）:', err);
-      });
-    })
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.addAll(SHELL_ASSETS).then(() =>
+        Promise.all(
+          OPTIONAL_ASSETS.map((url) =>
+            cache.add(url).catch((err) => {
+              console.warn('[SW] 可选资源缓存失败（该资源离线不可用）:', url, err);
+            })
+          )
+        )
+      )
+    )
   );
   self.skipWaiting();
 });
