@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/ge_act_2_arxiv_2609_05588.md — GE-Act 2.0（AgiBot WAM 预训练缩放）；代码待发布；升格 wiki/entities/paper-ge-act-2.md
+
 ## [2026-09-09] ingest | sources/papers/eneas_arxiv_2609_03756.md — SperidLabs ENEAS 文本实例跟踪与语义发现；已开源，交叉 SAM3/ObjectNav
 
 ## [2026-09-09] ingest | sources/papers/ecot + fast_ecot — ECoT 奠基与 Fast ECoT 加速；双论文已开源，新建 paper-ecot / paper-fast-ecot
