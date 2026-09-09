@@ -2,10 +2,11 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-09
 related:
   - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md
+  - ./unit-quaternion-so3.md
   - ../concepts/whole-body-control.md
   - ../methods/visual-servoing.md
   - ../formalizations/mdp.md
@@ -15,6 +16,8 @@ sources:
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
   - ../../sources/papers/perception.md
   - ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md
+  - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
+  - ../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md
 summary: "SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。"
 ---
 
@@ -44,7 +47,9 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 | 表示法 | 维度 | 优势 | 劣势 | 推荐场景 |
 |------|-----|-----|-----|---------|
 | **欧拉角 (Euler Angles)** | 3 | 直观，最省空间 | 存在万向节死锁 (Gimbal Lock)；不连续 | 简单的 UI 显示 |
-| **四元数 (Quaternions)** | 4 | 紧凑，无死锁，插值平滑 | 存在双倍覆盖 ($q = -q$)；单位化约束 | 控制器内部状态 |
+| **四元数 (Quaternions)** | 4 | 紧凑，无死锁，插值平滑 | 存在双倍覆盖 ($q = -q$)；单位化约束 | 控制器内部状态、MoCap |
+
+四元数的 Hamilton 积、SLERP 与 **scalar 顺序** 见 [单位四元数与 SO(3)](./unit-quaternion-so3.md)。
 | **旋转矩阵 (Rotation Matrix)** | 9 | 线性，无死锁，唯一 | 自由度冗余 (9D 表示 3D)；需要正交化 | 坐标变换计算 |
 | **6D 连续表示 (6D Rep)** | 6 | **姿态空间连续**；适合神经网络回归 | 需要格拉姆-施密特正交化 | **Deep Learning 姿态估计** |
 
@@ -60,6 +65,7 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
   $$ \mathcal{L}_{rot} = \arccos\left( \frac{\text{Tr}(R_{pred} R_{target}^T) - 1}{2} \right) $$
 
 ## 关联页面
+- [单位四元数与 SO(3)](./unit-quaternion-so3.md) — 四元数专页（Diebel / Shoemake / MR Ch 3）
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 so(3)/se(3) 分工、四元数存储与 exp/log 优化链路
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — TO 里浮动基「变量/差分/积分」三决策的对照实验
@@ -69,6 +75,8 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 - [Modern Robotics 教材](../entities/modern-robotics-book.md) — Ch 3 用李群 / 螺旋理论系统建立 SO(3)/SE(3) 与 twist/wrench 的物理与数学语言
 
 ## 参考来源
+- [Diebel 2006 姿态参数化统一参考](../../sources/papers/diebel_2006_representing_attitude_quaternions.md)
+- [Shoemake 1985 四元数曲线与 SLERP](../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md)
 - Zhou, Y., et al. (2019). *On the continuity of rotation representations in neural networks*. (CVPR 最佳论文候选，提出了 6D 表示)
 - Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 *Rigid-Body Motions* — SO(3)/SE(3) 的李群结构、指数映射、twist 表示。
 - [sources/papers/perception.md](../../sources/papers/perception.md)

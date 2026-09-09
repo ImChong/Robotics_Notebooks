@@ -145,4 +145,4 @@
 - wiki/entities/paper-eneas.md
 - wiki/methods/stereo-matching-foundation-models.md
 
-📊 Sources 覆盖率：3876/3876 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3877/3877 (100%) wiki/entity 页有 ingest 来源

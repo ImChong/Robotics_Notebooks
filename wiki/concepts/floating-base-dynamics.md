@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。"
-updated: 2026-08-18
+updated: 2026-09-09
 ---
 
 # Floating Base Dynamics
@@ -368,11 +368,13 @@ floating base 系统还有一个麻烦点：
 - Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材
 - Lynch & Park (2017), *Modern Robotics*. Ch 8 *Dynamics of Open Chains* — 用李群 / 螺旋理论给出 Lagrange 与 Newton-Euler 形式的统一推导，本科级入口
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
+- [sources/papers/diebel_2006_representing_attitude_quaternions.md](../../sources/papers/diebel_2006_representing_attitude_quaternions.md) — 四元数率 ↔ 角速度、$n_q \neq n_v$
 
 ## 推荐继续阅读
 
 - Featherstone, *Rigid Body Dynamics Algorithms*
 - [Modern Robotics 教材](../entities/modern-robotics-book.md)
+- [单位四元数与 SO(3)](../formalizations/unit-quaternion-so3.md) — 浮动基四元数在 $q$ 中的布局与 $\dot q$ 误区
 - [Centroidal Dynamics](./centroidal-dynamics.md)
 - [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 浮动基 RPY / 四元数 / \(\mathfrak{se}(3)\) 在全身 TO 里的对照
 - [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md) — ABA / RNEA 与 $M(q)$、$g(q)$ 计算
