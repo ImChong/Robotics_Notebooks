@@ -4984,12 +4984,15 @@
         subEdges = edges.filter(e =>
           visibleNodeIds.has(edgeNodeId(e.source)) && visibleNodeIds.has(edgeNodeId(e.target)));
       }
+      const linkForce = simulation.force('link');
+      // 无筛选时 subNodes/subEdges 就是 nodes/edges 本身，引用相同即成员未变，
+      // 省掉一次 O(N+E) 的力重新初始化（有筛选时每次都是新数组，照常重建）。
+      if (simulation.nodes() === subNodes && linkForce.links() === subEdges) return;
       for (const n of nodes) {
         if (!hasFilter || visibleNodeIds.has(n.id)) continue;
         n.vx = 0;
         n.vy = 0;
       }
-      const linkForce = simulation.force('link');
       linkForce.links([]);
       simulation.nodes(subNodes);
       linkForce.links(subEdges);
