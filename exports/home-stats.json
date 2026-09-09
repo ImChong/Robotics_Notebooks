@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-ecot.md",
+      "detail_id": "entity-paper-ecot",
+      "label": "ECoT：具身思维链推理（Embodied Chain-of-Thought）",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-fast-ecot.md",
+      "detail_id": "entity-paper-fast-ecot",
+      "label": "Fast ECoT：思维复用的高效具身链式推理",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-openwam.md",
       "detail_id": "entity-paper-openwam",
       "label": "OpenWAM：系统化世界–动作预训练的开源模块化栈",
@@ -189,36 +211,18 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dynamic-multimodal-hri-dataset-u1.md",
-      "detail_id": "entity-paper-dynamic-multimodal-hri-dataset-u1",
-      "label": "动态多模态 HRI 参与度数据集（Unitree U1）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-ebert-nonlinear-normal-modes.md",
-      "detail_id": "entity-paper-ebert-nonlinear-normal-modes",
-      "label": "eBert：非线性正规模涌现四足步态",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-openwam.md",
-    "detail_id": "entity-paper-openwam",
-    "label": "OpenWAM：系统化世界–动作预训练的开源模块化栈",
+    "path": "wiki/entities/paper-ecot.md",
+    "detail_id": "entity-paper-ecot",
+    "label": "ECoT：具身思维链推理（Embodied Chain-of-Thought）",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
