@@ -17,14 +17,18 @@ function element() {
     querySelectorAll() { return []; }, focus() {}, scrollIntoView() {},
   };
 }
-function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes: [] })) {
+function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes: [] }), options = {}) {
   const timers = new Map();
+  const idleCallbacks = [];
   let timerId = 0;
   const context = vm.createContext({
     AbortController, URLSearchParams, Map, console,
     searchInput: element(), searchResults: element(), communityFilter: element(),
     document: { addEventListener() {}, getElementById() { return null; } },
-    window: { location: { hash: '', search: '' }, requestIdleCallback() {} },
+    window: {
+      location: { hash: options.hash || '', search: options.search || '' },
+      requestIdleCallback(fn) { idleCallbacks.push(fn); },
+    },
     setTimeout(fn, delay) { timers.set(++timerId, { fn, delay }); return timerId; },
     clearTimeout(id) { timers.delete(id); },
     fetch(url, options) {
@@ -38,6 +42,9 @@ function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes
   const end = source.indexOf('\n  }\n\n  function updateRecentVisits', start);
   assert.ok(start >= 0 && end > start, 'search entry block is located');
   vm.runInContext(source.slice(start, end), context);
+  context.runIdle = () => {
+    for (const fn of idleCallbacks.splice(0)) fn();
+  };
   context.expire = (delay) => {
     for (const [id, timer] of [...timers]) {
       if (timer.delay === delay) { timers.delete(id); timer.fn(); }

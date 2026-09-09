@@ -2102,7 +2102,6 @@
 
   <!-- ── D3.js + 3D 图谱 ── -->
   <script src="vendor/d3.min.js"></script>
-  <script src="vendor/3d-force-graph.min.js"></script>
   <script src="wiki-type-labels.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
@@ -2811,6 +2810,55 @@
       return graph3dView;
     }
 
+    /* ── 3D 库懒加载（编号 9）──
+       vendor/3d-force-graph.min.js 约 1.31 MB，2D 浏览用不到：不再随页面静态引入，
+       只在首次进入 3D（点按钮或已保存的 3D 偏好/?view=3d）时注入。加载失败清空
+       Promise 以便重试，并仍走 setSpatialViewMode 既有的失败恢复路径（回到 2D、
+       同步按钮与保存状态、给出提示）。 */
+    let graph3dLibPromise = null;
+    function ensureGraph3DLibrary() {
+      if (window.RNGraph3D?.isAvailable?.()) return Promise.resolve(true);
+      if (graph3dLibPromise) return graph3dLibPromise;
+      graph3dLibPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'vendor/3d-force-graph.min.js';
+        script.onload = () => resolve(true);
+        script.onerror = () => {
+          graph3dLibPromise = null;
+          if (script.parentNode) script.parentNode.removeChild(script);
+          reject(new Error('3D library load failed'));
+        };
+        document.head.appendChild(script);
+      });
+      return graph3dLibPromise;
+    }
+
+    /** 进入 3D 的统一入口：先确保库就位，再走原同步切换；2D 不受影响。 */
+    function requestSpatialViewMode(mode, opts) {
+      if (mode !== '3d') {
+        setSpatialViewMode(mode, opts);
+        return Promise.resolve();
+      }
+      if (window.RNGraph3D?.isAvailable?.()) {
+        setSpatialViewMode('3d', opts);
+        return Promise.resolve();
+      }
+      if (viewMode3dBtn) {
+        viewMode3dBtn.disabled = true;
+        viewMode3dBtn.setAttribute('aria-busy', 'true');
+      }
+      return ensureGraph3DLibrary()
+        .catch((err) => { console.warn('3D library unavailable; falling back to 2D:', err); })
+        .then(() => {
+          if (viewMode3dBtn) {
+            viewMode3dBtn.disabled = false;
+            viewMode3dBtn.removeAttribute('aria-busy');
+          }
+          // 库缺失时这里会命中既有失败路径：恢复 2D + 提示，不另写一套降级。
+          setSpatialViewMode('3d', opts);
+        });
+    }
+
     function setSpatialViewMode(mode, opts) {
       opts = opts || {};
       if (mode !== '2d' && mode !== '3d') return;
@@ -3141,8 +3189,10 @@
     setLoadingProgress(5);
 
     /* ── 加载数据 ──
-       仅首屏阻塞 link-graph.json（~570KB，含 summary）。
-       index-v1.json（~3.4MB）懒加载，供节点侧栏的 tags / related / source_links 使用。 */
+       仅首屏阻塞 link-graph.json（含 summary）。
+       侧栏元数据（tags / related / source_links / paper_notebook_links）懒加载，
+       用无正文的 site-catalog-v1.json（同内容 5.79 MB）而不是含 content_markdown 的
+       index-v1.json（29.83 MB）：正文由详情页按页取，侧栏用不到（编号 3）。 */
     let graphData;
     let indexItems = [];
     try {
@@ -3159,9 +3209,9 @@
       return;
     }
     setLoadingProgress(80);   // 数据解析完成，进入构图渲染
-    fetch('exports/index-v1.json')
+    fetch('exports/site-catalog-v1.json')
       .then(r => r.json())
-      .then(d => { indexItems = d.items || []; })
+      .then(d => { indexItems = Object.values((d.pages && d.pages.detail_pages) || {}); })
       .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
 
     initCommunityMapsFromGraph();
@@ -4000,7 +4050,7 @@
     function enter3dOnLoadOnce() {
       if (entered3dOnLoad) return;
       entered3dOnLoad = true;
-      try { setSpatialViewMode('3d', { force: true }); }
+      try { requestSpatialViewMode('3d', { force: true }); }
       catch (err) { console.error('3D graph init failed on load:', err); }
     }
 
@@ -4422,16 +4472,8 @@
         const norm = normalizeSourceLinkEntry(entry);
         push(norm.url, norm.label);
       });
-      const content = item.content_markdown || '';
-      const mdRe = /\[机器人论文阅读笔记[:：]([^\]]+)\]\((https:\/\/imchong\.github\.io\/(?:Humanoid_)?Robot_Learning_Paper_Notebooks\/papers\/[^)]+\.html)\)/gi;
-      let match;
-      while ((match = mdRe.exec(content)) !== null) {
-        push(match[2], match[1]);
-      }
-      const bareRe = /https:\/\/imchong\.github\.io\/(?:Humanoid_)?Robot_Learning_Paper_Notebooks\/papers\/[^\s)<>"']+\.html/gi;
-      while ((match = bareRe.exec(content)) !== null) {
-        push(match[0], '');
-      }
+      // 正文扫描已移到导出期（collect_paper_notebook_links），结果就在 paper_notebook_links 里；
+      // 侧栏数据不含 content_markdown，这里不再重复扫描。
       return out.slice(0, 6);
     }
 
@@ -5701,7 +5743,7 @@
       viewMode2dBtn.addEventListener('click', () => setSpatialViewMode('2d'));
     }
     if (viewMode3dBtn) {
-      viewMode3dBtn.addEventListener('click', () => setSpatialViewMode('3d'));
+      viewMode3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
     }
     syncTimeline3DState();
 

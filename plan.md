@@ -64,12 +64,12 @@ MB 为十进制。gzip 为当次线上响应测量，不代表其他环境。Nod
 
 | 顺序 | 编号 | 实施范围与主要收益 | 预计投入 |
 | --- | --- | --- | --- |
-| 1 | #4、#12 | 同时移除 SW 大资源预缓存与首页无条件 idle 搜索预取；搜索意图触发加载。普通浏览可避免 16.82 MB 压缩搜索索引及其解析，外壳离线完整性同步处理 | 0.5–1 天 |
-| 2 | #8 | 共享详情各模块的图谱 Promise 与解析对象，5 处解析降到 1 次；失败释放 Promise，图布局不得污染共享原始数据 | 0.5 天 |
-| 3 | #3 | 导出无正文侧栏元数据，按节点交互获取必要信息；保留旧导出供旧客户端使用 | 0.5–1 天 |
-| 4 | #36 | 首页使用最近 5 条新增摘要；统计展示不再等待活动全集，完整活动留给更新记录页 | 0.5 天 |
+| 1（已完成 2026-09-09） | #4、#12 | 同时移除 SW 大资源预缓存与首页无条件 idle 搜索预取；搜索意图触发加载。普通浏览可避免 16.82 MB 压缩搜索索引及其解析，外壳离线完整性同步处理 | 0.5–1 天（实际 ~0.5 天） |
+| 2（已完成 2026-09-09） | #8 | 共享详情各模块的图谱 Promise 与解析对象，5 处解析降到 1 次；失败释放 Promise，图布局不得污染共享原始数据 | 0.5 天（实际 ~0.25 天） |
+| 3（已完成 2026-09-09） | #3 | 导出无正文侧栏元数据，按节点交互获取必要信息；保留旧导出供旧客户端使用 | 0.5–1 天（实际 ~0.5 天） |
+| 4（已完成 2026-09-09） | #36 | 首页使用最近 5 条新增摘要；统计展示不再等待活动全集，完整活动留给更新记录页 | 0.5 天（实际 ~0.25 天） |
 | 5 | #5 | 构建时导出 Top-50 预览子图与独立社区映射；首页预览与社区筛选不再取全图 | 1–1.5 天 |
-| 6 | #9 | 完整图谱按需加载 3D，详情按内容加载 Mermaid/KaTeX；保留首页已有 3D 懒加载与失败恢复 | 1–2 天 |
+| 6（已完成 2026-09-09） | #9 | 完整图谱按需加载 3D，详情按内容加载 Mermaid/KaTeX；保留首页已有 3D 懒加载与失败恢复 | 1–2 天（实际 ~0.75 天） |
 | 7 | #1、#7 | 精简搜索索引、倒排候选集、Worker 内加载与解析；先解决冷启动和全量扫描，再优化 Top-K；沿用 #18/#19 查询样例避免排名退步 | 3–5 天 |
 | 8 | #37 | 详情使用单页元数据/局部邻接数据；减少读取全站目录和图谱，保留内链预览与路线兼容 | 2–4 天 |
 | 图谱专项 | #6、#9、#24、#35 | 见下节 G0–G6：先测量与减负，再做真实子图；Canvas、Worker、3D 批绘制按瓶颈决定 | 分项估时见下节 |
@@ -158,16 +158,16 @@ MB 为十进制。gzip 为当次线上响应测量，不代表其他环境。Nod
 | --- | --- | --- | --- |
 | 待办 | 1 / P1 | 搜索索引精简与倒排候选检索 | 保存同内容基线的原始/gzip体积、解析时间、内存；索引目标减少至少 50%；核心查询无退步 |
 | 已完成 | 2 / P1 | 轻量目录 + 单页正文 | 打开单篇详情不下载全站正文；深链、路线、内链预览正常；缺页与请求失败可恢复 |
-| 待办 | 3 / P1 | 图谱侧栏只加载元数据 | 侧栏索引无 `content_markdown`；标题、标签、关系、来源功能完整 |
-| 部分完成 | 4 / P1 | 默认只预缓存外壳与小数据，按搜索意图预取 | 已移除两份正文全集；剩余搜索索引、全图、榜单、活动全集及首页无条件 idle 预取待移除；搜索意图触发加载，离线内容由用户主动选择 |
+| 已完成 | 3 / P1 | 图谱侧栏只加载元数据 | 侧栏改读无正文的 `site-catalog-v1.json`；标题、标签、关系、来源、论文笔记链接功能完整（笔记链接的正文扫描移到导出期，逐页比对 3,925 页渲染结果一致）；`index-v1.json` 继续生成供旧客户端 |
+| 已完成 | 4 / P1 | 默认只预缓存外壳与小数据，按搜索意图预取 | 安装期只取外壳与两份小统计；搜索索引、全图、活动全集、榜单不再预取，改为访问时落缓存；搜索索引仅由入口卡 hover/pointerdown、搜索框 focus、`#wiki-search` 深链与实际查询触发 |
 | 待办 | 5 / P2 | 导出首页预览子图与社区映射 | 首页 Top-50 与筛选不请求完整图谱；节点 ID 与完整数据一致 |
 | 待办 | 7 / P2 | 搜索 Worker、候选集与 Top-K | 查询计算不阻塞主线程；结果与参考排名一致；取消与超时可恢复 |
-| 部分完成 | 8 / P1 | 共享数据请求与解析 | 正文通道已有共享；图谱同 URL 只请求和解析一次仍待办；失败 Promise 可重试，模拟用副本不污染共享对象 |
-| 部分完成 | 9 / P2 | 3D、公式、Mermaid 按需加载 | 首页 3D 已按需；完整图谱 2D 初始不加载 3D 库、无对应内容页面不请求公式/图表组件仍待办 |
+| 已完成 | 8 / P1 | 共享数据请求与解析 | 正文通道已有共享；详情页图谱同 URL 只请求并解析一次（原 5–6 处各自 fetch + parse）；失败清空 Promise 可重试；局部图谱仍用自建节点/边副本，不污染共享对象。首页迷你图与搜索社区索引另属 #5 范围 |
+| 已完成 | 9 / P2 | 3D、公式、Mermaid 按需加载 | 首页 3D 已按需；详情/路线页按正文内容加载公式与图表组件；完整图谱页 2D 不再静态引入 3D 库，进入 3D 时注入并复用既有失败恢复。G1 推迟的「仅初始化当前视图」（进 3D 前仍先建 2D SVG）不在本项，留在图谱专项 |
 | 部分完成 | 11 / P1 | 构建版本清单或内容哈希 | 正文哈希与 404 刷新目录已实现；HTML、JS、其余 JSON 配套以及升级中断、旧标签页、回滚一致性仍待验收 |
-| 待办 | 12 / P2 | 必要与可选离线资源分开 | CSS 等外壳完整；可选资源失败不阻止安装；离线首页与已缓存详情可用 |
+| 已完成 | 12 / P2 | 必要与可选离线资源分开 | 外壳（含 `style.css`）整批安装，缺一即安装失败并保留旧 SW；可选资源逐个 `cache.add`，失败只降级自身；离线首页与已缓存详情可用 |
 | 已完成（行为测试） | 16 / P2（详情端） | 详情错误提供重试与原文入口 | PR #1852：404、超时、断网可重试或返回首页搜索，目录可用时提供原文入口；真实浏览器验收待补 |
-| 待办 | 36 / P1 | 首页最近更新使用轻量摘要 | 首页只取最多 5 条新增摘要，包含回填必需字段；不请求活动全集，统计不等待完整时间线；更新页保持完整记录 |
+| 已完成 | 36 / P1 | 首页最近更新使用轻量摘要 | 首页紧凑列表只用 `home-stats.json` 的 `latest_wiki_nodes`（当前 20 条全为新增，取前 5）；统计不再等待活动全集，仅在凑不满 5 条时回填；`change-log.html` 完整时间线与热力图不变 |
 | 待办 | 37 / P2 | 单页元数据与局部关系 | #2 后续增量：详情无需全站目录/全图即可展示正文及徽标、小图；深链、内链预览、路线、失败恢复与旧客户端兼容 |
 
 性能目标是待验证的验收目标，不是已实现收益。若准确率或兼容性与体积目标冲突，在 PR 中记录取舍和测量再调整计划。
@@ -260,3 +260,117 @@ MB 为十进制。gzip 为当次线上响应测量，不代表其他环境。Nod
 
 - 独立分支 `codex/refresh-performance-plan`：更新完成状态、线上性能基线和九项投入收益排序，追加 #36/#37，同步前端 checklist；本次不实施上述优化。
 - 本次本地验证：`make ci-preflight` 完整通过（搜索 40/40、导出 13/13，覆盖 3,857 页契约），前端行为测试 33/33，`git diff --check` 通过。只提交两个计划文档，预检产生的无关日期/统计变化不纳入本次 PR；未新增全量 Python、浏览器或 GPU 验收结论。远端 CI 结果见本次 PR。
+
+## 2026-09-09 阶段 B 交付：默认缓存瘦身与搜索按意图加载（编号 4、12）
+
+分支 `claude/performance-optimization-v21ibz`，独立提交。
+
+- `docs/sw.js` 把预缓存拆成 `SHELL_ASSETS`（`/`、`index.html`、`style.css`、`theme-init.js`、`main.js`）与 `OPTIONAL_ASSETS`（其余页面外壳、`wiki-type-labels.js`/`graph-tooltip.js`/`graph-node-size.js`/`mini-graph.js`、`vendor/d3.min.js`、`home-stats.json`、`graph-stats.json`）：外壳整批 `addAll`，缺一即安装失败并保留旧 SW，下次访问重试；可选资源逐个 `cache.add`，单个失败只降级该资源的离线可用性。
+- 安装期不再预取 `search-index.json`、`exports/link-graph.json`、`exports/wiki-activity.json`、`exports/hub-rankings.json`；这些资源改由访问时按既有 stale-while-revalidate 落缓存，离线可读范围由读者实际打开的内容决定。
+- `docs/main.js` 删除首页无条件 `requestIdleCallback`（2.5 s 超时）/ 1.2 s 定时预取。搜索索引只在搜索意图出现时加载：入口卡 `pointerdown`/`mouseenter`、搜索框 `focus`、`#wiki-search` 深链与实际查询；既有「加载离线搜索索引中…」提示与失败重试入口（编号 13）不变。
+
+同内容本地测量（完整历史下 `make ci-preflight` 重新生成后的本地文件，`gzip -6`，**不是线上响应字节**）：
+
+| 安装期不再下载 | 原始字节 | 本地 gzip |
+| --- | ---: | ---: |
+| `search-index.json` | 70,239,003 | 17,151,743 |
+| `exports/link-graph.json` | 5,903,592 | 821,811 |
+| `exports/wiki-activity.json` | 3,822,794 | 529,232 |
+| `exports/hub-rankings.json` | 1,641,166 | 257,572 |
+| 合计 | 81,606,555 | 18,760,358 |
+
+（编号 4 提交信息里的 83,576,837 / 19,087,013 取自更早一次浅克隆下中止的 `make graph` 产物，`wiki-activity.json` 偏大；以本表为准。）
+
+新的必要外壳合计 435,017 原始 / 108,029 gzip 字节（`index.html` 4,872 + `style.css` 24,572 + `theme-init.js` 175 + `main.js` 78,410；`/` 与 `index.html` 同内容未重复计）。可选资源另计，且失败不阻断安装。
+
+代价与边界：关闭 idle 预取把索引成本移到首次搜索意图。同机 Node v22 读取 70,239,003 字节索引 552 ms、`JSON.parse` 2,528 ms（3,925 条），仅为数据结构成本参考，不含浏览器网络与调度；实际等待多数发生在 hover/focus 到输入之间。**未做**真实浏览器 SW 安装/升级/离线验收，未测首次搜索的浏览器端延迟、LCP/INP 与真机表现。
+
+验证：新增 6 项前端行为测试（外壳完整且四份大数据不进安装、可选资源失败不阻断安装、外壳缺失则安装失败、idle 与定时器不触发索引下载、`focus` 只请求一次、`#wiki-search` 深链仍预取），前端合计 39/39 通过；其中 4 项在改动前代码上复现失败。ESLint 通过。
+
+## 2026-09-09 阶段 B 交付：详情页共享图谱请求与解析（编号 8）
+
+- `docs/main.js` 新增 `ensureLinkGraphData()`：详情页的社区徽标、路线徽标、机构徽标、局部图谱与「近期关联更新」（`ensureDetailCommunityIndex` 一并）改为共用同一个 Promise 与同一份解析结果，`exports/link-graph.json` 由每处各自 `fetch` + `response.json()`（5–6 处）降到 1 次请求、1 次解析。
+- 失败不缓存：HTTP 错误或网络失败时清空 Promise 并向各调用方抛出，各自既有 `.catch` 降级不变，下一次调用重新请求。
+- 不污染共享数据：详情局部图谱本来就用自建节点/边对象（`{ id, label, type, community, summary, _degree }` 与 `{ source, target }`）喂 d3 力模拟，共享的原始 `nodes`/`edges` 不写 `x/y/vx/vy`。
+- 未纳入本项：搜索块的 `ensureCommunityByPath()` 保留自带 `AbortController` + 30 秒超时与重试路径（编号 13 的行为测试覆盖），首页 `mini-graph.js` 的独立请求属编号 5（首页预览子图）范围。
+
+同内容本地测量（`exports/link-graph.json` 5,903,592 字节原始 / 821,811 字节 gzip -6，3,891 节点 / 34,594 边）：同机 Node v22 单次 `JSON.parse` 14–29 ms，连续 5 次合计 111 ms。浏览器解析成本与此不同口径，且重复请求可能命中 HTTP 缓存，**不能**据此宣称减少 5 倍网络流量；确定的收益是同一页内解析次数与对象副本从 5–6 份降到 1 份。
+
+验证：新增 3 项行为测试（并发/后续读者共享一次请求与一次解析、失败不缓存且可重试、源码中不再有各自的图谱 `fetch` 站点），前端合计 42/42 通过；ESLint 通过。未做真实浏览器详情页时间线测量。
+
+## 2026-09-09 阶段 B 交付：首页最近更新只取新增摘要（编号 36）
+
+- `docs/main.js` 在首页统计引导处按挂载点是否带 `data-compact` 分流：首页（紧凑列表）不再随统计一起请求 `exports/wiki-activity.json`，`Promise.all` 只等 `home-stats.json`；`change-log.html`（完整时间线 + 热力图）仍先取活动全集，行为不变。
+- 保留回填能力：把首页条目选取抽成 `homeLatestItemsOf()`，渲染后若 `collectHomeCompactAddedNodes(..., 5)` 凑不满 5 条新增，才按需请求活动全集并重渲染一次。当前 `home-stats.json` 的 `latest_wiki_nodes` 为 20 条且全部 `action: added`，正常情况下不会触发回填。
+- 失败与降级不变：活动数据请求失败仍只 `console.warn` 并返回 `null`，不影响统计与列表。
+
+同内容本地测量（完整历史下重新生成，`gzip -6`）：`exports/wiki-activity.json` 3,822,794 字节原始 / 529,232 字节 gzip，150 天、14,589 条节点引用，Node 单次 `JSON.parse` 17 ms。首页默认路径不再下载与解析这份数据，统计与列表也不再排在它后面渲染。**未测**浏览器端 LCP/INP 变化与真机表现。
+
+验证：新增 3 项行为测试（紧凑首页只请求 `home-stats.json` 且以 `null` 活动渲染、条目不足 5 条时回填并二次渲染、更新记录页仍先取活动全集），前端合计 45/45 通过；ESLint 通过。
+
+## 2026-09-09 阶段 B 交付：详情与路线页按内容加载公式/图表组件（编号 9 详情端）
+
+- `docs/detail.html`、`docs/roadmap.html` 各删除 6 行静态外链：KaTeX 样式、两个 KaTeX 字体 `preload`、`katex.min.js`、`contrib/auto-render.min.js` 与 `mermaid@10`。
+- `docs/main.js` 新增 `loadExternalAsset()` / `ensureKatexLoaded()` / `ensureMermaidLoaded()`：同一 URL 只注入一次，`integrity` 与 `crossorigin` 与原静态标签逐字一致，`auto-render` 仍排在 `katex.min.js` 之后；加载失败清除记录，下次渲染可重试，并只 `console.warn` 降级，不阻断正文。
+- `renderDetailMath()` 先按正文文本判定是否出现 KaTeX 配置的定界符（`$$`、`\[`、`\(`），`renderDetailMermaid()` 先看容器里有没有 `.mermaid` 节点；命中才加载对应组件。主题切换、路线阶段与自测折叠的补渲染路径不变（此时组件已在页面上）。
+
+组件体积（`cdn.jsdelivr.net` 实测，`Accept-Encoding: gzip` 的响应体字节 / 解压后原始字节）：
+
+| 组件 | 响应字节 | 原始字节 |
+| --- | ---: | ---: |
+| `mermaid@10/dist/mermaid.min.js` | 993,095 | 3,337,857 |
+| `katex.min.js` | 75,518 | 275,414 |
+| `contrib/auto-render.min.js` | 1,541 | 3,481 |
+| `katex.min.css` | 3,419 | 23,335 |
+| `KaTeX_Size3/Size4-Regular.woff2`（原 preload） | 3,624 + 4,928 | 同左（woff2 已压缩） |
+| 合计 | 1,082,125 | 3,648,639 |
+
+内容分布（`exports/index-v1.json`，3,925 页）：含公式 576 页（14.7%）、含 ```mermaid 1,607 页（40.9%）、两者都有 442 页、**两者都没有 2,184 页（55.6%）**。即超过一半的详情页此前无条件下载这 1.08 MB 压缩组件，改后不再请求；含图表页仍需 Mermaid，含公式页仍需 KaTeX，只是推迟到正文渲染时。
+
+代价与边界：命中公式/图表的页面把组件下载从 HTML 解析期推迟到正文渲染后，首屏公式/图表出现时间可能变晚（未在浏览器实测）；离线首次访问这类页面若 CDN 不可达，则按上面的降级路径不出图。**未做**真实浏览器 LCP/INP、Safari 与真机验收。
+
+验证：新增 5 项行为测试（无公式无图表不加载任何组件、公式页按依赖顺序只加载一次、图表页只加载一次并把既有 `.mermaid` 节点交给渲染器、加载失败静默降级且下次可重试、两个页面外壳不再静态引入），前端合计 50/50 通过；ESLint 通过。既有 `tests/test_content_sync.py::test_detail_page_loads_katex_assets` 断言的是「详情页静态引入 KaTeX」，随本项改写为按需加载契约（详情页不含 katex，`main.js` 保留三处 `integrity` 与 `crossOrigin`），Python 全量 446 项、694 子测试通过。
+
+## 2026-09-09 阶段 B 交付：完整图谱页 3D 库懒加载（编号 9 图谱端）
+
+- `docs/graph.html` 去掉 `<script src="vendor/3d-force-graph.min.js">` 静态引入（本地 1,313,897 字节原始 / 346,310 字节 gzip -6）。默认 2D 浏览不再下载这份 bundle。
+- 新增 `ensureGraph3DLibrary()` 与 `requestSpatialViewMode()`：只有点「3D 立体」或已保存 3D 偏好 / `?view=3d` 自动进入 3D 时才注入脚本；加载期间 3D 按钮 `disabled` + `aria-busy`，完成后恢复。同一次会话只注入一次，加载失败清空 Promise 可重试。
+- 失败不另写降级：库加载失败后仍调用原 `setSpatialViewMode('3d')`，由既有 WebGL/库缺失恢复路径回到 2D、同步按钮与保存状态并给出提示（编号 15 的 6 项测试覆盖，未改动）。`setSpatialViewMode` 保持同步，图谱失败恢复测试不受影响。
+- 不在本项：G1 推迟的「仅初始化当前视图」——进入 3D 前仍先构建 2D SVG 与 warmup，属图谱专项范围。首页 `mini-graph.js` 的 3D 懒加载是既有实现，未改。
+
+验证：新增 4 项行为测试（2D 不下载 bundle、进入 3D 只注入一次且加载期按钮忙、加载失败仍走既有 2D 恢复且可重试、页面不再静态引入），图谱相关合计 10/10、前端合计 54/54 通过。**未做**真实浏览器与真机 GPU 验收；本项只改加载时机，不改变 3D 渲染性能。
+
+## 2026-09-09 阶段 B 交付：图谱侧栏改读无正文目录（编号 3）
+
+- `docs/graph.html` 的侧栏元数据由 `exports/index-v1.json`（含 `content_markdown`）改为已有的 `exports/site-catalog-v1.json`（正文按页拆分后的目录），`indexItems` 取 `pages.detail_pages` 的值数组，其余侧栏代码不变。不新增导出产物，也不改部署流程。
+- `scripts/export_minimal.py` 的 detail 条目在有值时携带 `paper_notebook_links`（导出期 `collect_paper_notebook_links` 已按「映射 → `source_links` → 正文」顺序算好并截断 6 条）。目录随之带上该字段，`graph.html` 的正文正则扫描删除（无正文可扫，属本次改动产生的孤儿代码）。
+- 兼容性：`index-v1.json`、`site-data-v1.json` 继续按原样生成，旧客户端与现有工具不受影响；`site-data-v1.json` 与目录同样新增该字段，导出质量门禁的无损重建比较仍成立（13/13 通过）。
+
+同内容本地测量（重新 `make export` 后，`gzip -6`）：
+
+| 图谱侧栏数据 | 原始字节 | 本地 gzip |
+| --- | ---: | ---: |
+| 原 `exports/index-v1.json` | 29,827,800 | 7,854,231 |
+| 现 `exports/site-catalog-v1.json` | 5,911,738 | 1,245,990 |
+| 变化 | −80.2% | −84.1% |
+
+功能等价性核对：对全部 3,925 页按侧栏 `collectPaperNotebookLinks` 的顺序与 6 条上限模拟「有正文」与「无正文但带 `paper_notebook_links`」两种输入，渲染结果**逐页一致（差异 0 页）**。305 页有论文笔记链接，其中 13 页的链接只出现在正文里，靠导出期扫描保住。
+
+验证：新增 2 项 Python 契约测试（无正文目录保留侧栏所需字段；只在正文里出现的链接仍随目录下发）与 4 项前端行为测试（无正文条目仍出链接、跨字段去重与非笔记链接过滤、空条目不出区块、页面改读目录且不再有读正文的代码路径）；`tests/test_paper_notebook_links_export.py` + `tests/test_page_content_export.py` 15/15 通过，前端 58/58 通过；`check_export_quality.py` 13/13、Ruff 通过。**未做**真实浏览器侧栏交互验收。
+
+## 2026-09-09 本地真实浏览器验收（覆盖编号 4/12、36、9、3）
+
+环境：本仓库云会话内 headless Chromium（`/opt/pw-browsers/chromium`，puppeteer-core 驱动），本地 `python3 -m http.server` 提供静态站；SW 场景另起一份路径前缀为 `/Robotics_Notebooks/` 的服务以匹配线上部署根路径。**该沙箱的浏览器无法直连 `cdn.jsdelivr.net`（`ERR_CONNECTION_RESET`）**，因此公式/图表组件的成功路径用请求拦截把四个 CDN URL 指到本地下载的同一份官方文件（SHA-384 与页面 `integrity` 声明逐一核对一致，浏览器仍照常校验），失败路径则由真实的连接失败直接覆盖。**未测**：手机、Safari、弱网、真机 GPU、LCP/INP。
+
+| 场景 | 观测 |
+| --- | --- |
+| 首页加载（编号 4、36） | `search-index.json` 0 次、`exports/wiki-activity.json` 0 次、`home-stats.json` 1 次；「最近新增」仍渲染 5 行（首行 `2026-09-09 新增 实体 3DWay`）。`link-graph.json` 仍 2 次（迷你图 + 搜索社区索引），属编号 5 范围 |
+| 首页聚焦搜索框（编号 4） | 聚焦后 `search-index.json` 请求 1 次，符合「按搜索意图加载」 |
+| SW 安装（编号 4、12） | 激活后缓存内 16 条：外壳 5 条 + 可选 11 条；四份大数据（搜索索引、全图、活动全集、榜单）**均不在缓存内**。同内容本地测量：旧清单 12 个文件 82,501,887 原始 / 19,007,133 gzip → 新清单 15 个文件 1,041,433 / 286,421（原始 −98.7%、gzip −98.5%），且外壳比原先更完整（新增 `style.css`、`theme-init.js`、`detail.html` 等） |
+| 详情页无公式无图表（编号 9） | `wiki-concepts-can-bus-protocol`：KaTeX / Mermaid 请求 0 次，正文正常渲染 |
+| 详情页含公式与图表（编号 9） | `wiki-concepts-diffusion-model`：按 `katex.min.css`、`katex.min.js`、`mermaid.min.js`、`auto-render.min.js` 顺序各注入 1 次（`auto-render` 在 `katex.min.js` 之后），渲染出 15 个 `.katex` 节点与 1 个 Mermaid SVG |
+| 详情页组件加载失败（编号 9） | 直连 CDN 失败（`ERR_CONNECTION_RESET`）时页面不报错、正文与目录照常显示，公式退化为源码文本、Mermaid 容器留白，符合静默降级设计 |
+| 图谱页 2D（编号 9、3） | `vendor/3d-force-graph.min.js` 0 次、`exports/index-v1.json` 0 次、`exports/site-catalog-v1.json` 1 次 |
+| 图谱页点「3D 立体」（编号 9） | 点击瞬间按钮 `aria-busy="true"`，随后 `3d-force-graph.min.js` 请求 1 次；进入 3D 成功（`aria-pressed=true`、画布可见、按钮恢复可用、无降级弹窗），3,891 节点 / 34,594 边 |
+
+截图（不入库，见 PR 正文）：`home.png`、`detail-plain.png`、`detail-katex-rendered.png`、`detail-mermaid-rendered.png`、`graph-2d.png`、`graph-3d.png`。

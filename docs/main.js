@@ -516,6 +516,16 @@
 
   // 首页「最新知识节点」紧凑列表：优先 latest_wiki_nodes 中的新增，
   // 不足时从 wiki-activity.days（升序）自新到旧回填，并补齐 recency。
+  function homeLatestItemsOf(homeStats) {
+    if (homeStats && Array.isArray(homeStats.latest_wiki_nodes) && homeStats.latest_wiki_nodes.length) {
+      return homeStats.latest_wiki_nodes;
+    }
+    if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
+      return [homeStats.latest_wiki_node];
+    }
+    return [];
+  }
+
   function collectHomeCompactAddedNodes(items, wikiActivity, maxItems) {
     var limit = typeof maxItems === 'number' && maxItems > 0 ? maxItems : 5;
     var compactItems = [];
@@ -990,12 +1000,7 @@
     var mount = document.getElementById('homeLatestWikiModule');
     if (!mount) return;
     mount.classList.remove('data-loading');
-    var items = [];
-    if (homeStats && Array.isArray(homeStats.latest_wiki_nodes) && homeStats.latest_wiki_nodes.length) {
-      items = homeStats.latest_wiki_nodes;
-    } else if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
-      items = [homeStats.latest_wiki_node];
-    }
+    var items = homeLatestItemsOf(homeStats);
 
     // 首页紧凑模式（mount 带 data-compact）：默认只列最近新增节点（最多 5 条）；
     // 完整时间线与活跃度热力图迁至 change-log.html（可点「显示维护节点」）
@@ -2242,25 +2247,100 @@
     Array.from(container.querySelectorAll('.mermaid svg')).forEach(fixMermaidForeignObjectOverflow);
   }
 
+  // ── 公式与图表组件按内容加载（编号 9）──
+  // 详情页与路线页原先在 HTML 里静态引入 KaTeX（CSS + katex.min.js + auto-render）与
+  // Mermaid，无公式、无图表的页面同样要下载。改为渲染正文时按内容注入，
+  // integrity / crossorigin 与原静态标签保持一致。
+  var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
+  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+  var _externalAssetPromises = {};
+
+  /** 同一 URL 只注入一次；失败清除记录，后续渲染可重试。 */
+  function loadExternalAsset(spec) {
+    if (_externalAssetPromises[spec.url]) return _externalAssetPromises[spec.url];
+    var promise = new Promise(function (resolve, reject) {
+      var el;
+      if (spec.style) {
+        el = document.createElement('link');
+        el.rel = 'stylesheet';
+        el.href = spec.url;
+      } else {
+        el = document.createElement('script');
+        el.src = spec.url;
+      }
+      if (spec.integrity) {
+        el.integrity = spec.integrity;
+        el.crossOrigin = 'anonymous';
+      }
+      el.onload = function () { resolve(spec.url); };
+      el.onerror = function () {
+        delete _externalAssetPromises[spec.url];
+        if (el.parentNode) el.parentNode.removeChild(el);
+        reject(new Error('资源加载失败：' + spec.url));
+      };
+      document.head.appendChild(el);
+    });
+    _externalAssetPromises[spec.url] = promise;
+    return promise;
+  }
+
+  function ensureKatexLoaded() {
+    if (typeof window.renderMathInElement === 'function') return Promise.resolve();
+    return Promise.all([
+      loadExternalAsset({
+        url: KATEX_CDN_BASE + 'katex.min.css',
+        style: true,
+        integrity: 'sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+'
+      }),
+      // auto-render 依赖 katex 全局，必须排在 katex.min.js 之后
+      loadExternalAsset({
+        url: KATEX_CDN_BASE + 'katex.min.js',
+        integrity: 'sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg'
+      }).then(function () {
+        return loadExternalAsset({
+          url: KATEX_CDN_BASE + 'contrib/auto-render.min.js',
+          integrity: 'sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk'
+        });
+      })
+    ]);
+  }
+
+  function ensureMermaidLoaded() {
+    if (typeof window.mermaid !== 'undefined') return Promise.resolve();
+    return loadExternalAsset({ url: MERMAID_CDN_URL });
+  }
+
+  /** 正文是否出现 KaTeX 配置的定界符；没有就不加载公式组件。 */
+  function containerHasMath(container) {
+    if (!container) return false;
+    var text = container.textContent || '';
+    return text.indexOf('$$') >= 0 || text.indexOf('\\[') >= 0 || text.indexOf('\\(') >= 0;
+  }
+
   function renderDetailMermaid(container) {
-    if (!container || typeof window.mermaid === 'undefined') return Promise.resolve();
+    if (!container) return Promise.resolve();
     var nodes = Array.from(container.querySelectorAll('.mermaid'));
     if (!nodes.length) return Promise.resolve();
-    nodes.forEach(function (node) {
-      var saved = node.getAttribute('data-mermaid-source');
-      if (saved === null) {
-        saved = node.textContent || '';
-        node.setAttribute('data-mermaid-source', saved);
-      } else {
-        node.removeAttribute('data-processed');
-      }
-      node.textContent = mermaidSourceForCurrentBrowser(saved);
-    });
-    initializeMermaidRenderer(getMermaidFontSizePx());
-    return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
-      patchMermaidSvgLabelOverflow(container);
-      enhanceMermaidZoomTargets(container);
-      bindMermaidZoom(container);
+    return ensureMermaidLoaded().then(function () {
+      if (typeof window.mermaid === 'undefined') return;
+      nodes.forEach(function (node) {
+        var saved = node.getAttribute('data-mermaid-source');
+        if (saved === null) {
+          saved = node.textContent || '';
+          node.setAttribute('data-mermaid-source', saved);
+        } else {
+          node.removeAttribute('data-processed');
+        }
+        node.textContent = mermaidSourceForCurrentBrowser(saved);
+      });
+      initializeMermaidRenderer(getMermaidFontSizePx());
+      return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+        patchMermaidSvgLabelOverflow(container);
+        enhanceMermaidZoomTargets(container);
+        bindMermaidZoom(container);
+      });
+    }).catch(function (error) {
+      console.warn('Mermaid 组件加载失败：', error);
     });
   }
 
@@ -3166,16 +3246,21 @@
   }
 
   function renderDetailMath(container) {
-    if (!container || typeof window.renderMathInElement !== 'function') return;
-    window.renderMathInElement(container, {
-      delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '\\[', right: '\\]', display: true },
-        { left: '\\(', right: '\\)', display: false }
-      ],
-      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
-      ignoredClasses: ['mermaid'],
-      throwOnError: false
+    if (!containerHasMath(container)) return Promise.resolve();
+    return ensureKatexLoaded().then(function () {
+      if (typeof window.renderMathInElement !== 'function') return;
+      window.renderMathInElement(container, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '\\[', right: '\\]', display: true },
+          { left: '\\(', right: '\\)', display: false }
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+        ignoredClasses: ['mermaid'],
+        throwOnError: false
+      });
+    }).catch(function (error) {
+      console.warn('KaTeX 组件加载失败：', error);
     });
   }
 
@@ -3886,14 +3971,37 @@
     };
   }
 
+  // 详情页的社区/路线/机构徽标、局部图谱与「近期关联更新」共用同一份 link-graph.json：
+  // 同 URL 只请求并解析一次（原先 5 处各自 fetch + JSON.parse）。失败时清空 Promise，
+  // 下次调用可重新请求。返回的是共享只读数据：需要力布局的调用方必须先复制节点，
+  // 不能就地写 x/y/vx/vy 等模拟状态。
+  var _linkGraphData = null;
+  var _linkGraphPromise = null;
+  function ensureLinkGraphData() {
+    if (_linkGraphData) return Promise.resolve(_linkGraphData);
+    if (_linkGraphPromise) return _linkGraphPromise;
+    _linkGraphPromise = fetch('exports/link-graph.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        _linkGraphData = data;
+        _linkGraphPromise = null;
+        return data;
+      })
+      .catch(function (error) {
+        _linkGraphPromise = null;
+        throw error;
+      });
+    return _linkGraphPromise;
+  }
+
   function ensureDetailCommunityIndex() {
     if (_detailCommunityIndex) return Promise.resolve(_detailCommunityIndex);
     if (_detailCommunityIndexPromise) return _detailCommunityIndexPromise;
     _detailCommunityIndexPromise = Promise.all([
-      fetch('exports/link-graph.json').then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      }),
+      ensureLinkGraphData(),
       fetch('exports/hub-rankings.json').then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
@@ -4527,7 +4635,7 @@
     if (!currentPath) { section.hidden = true; return; }
 
     Promise.all([
-      fetch('exports/link-graph.json').then(function (r) { return r.json(); }),
+      ensureLinkGraphData(),
       fetch('exports/graph-stats.json').then(function (r) { return r.json(); })
     ]).then(function (res) {
       var gd = res[0];
@@ -4619,7 +4727,7 @@
       return Promise.resolve();
     }
 
-    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
       var topics = TF.depthsForNode({ id: node.id, community: node.community });
@@ -4652,7 +4760,7 @@
       return Promise.resolve();
     }
 
-    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node || !node.community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
       var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
@@ -4680,7 +4788,7 @@
       renderDetailMetaItemRow(instRowId, '所属机构', '');
       return Promise.resolve();
     }
-    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       var ids = (node && node.institutions) || [];
       if (!ids.length) { renderDetailMetaItemRow(instRowId, '所属机构', ''); return; }
@@ -4928,7 +5036,7 @@
     var currentPath = (detailPage && detailPage.path) || '';
     if (!currentPath) return;
 
-    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    ensureLinkGraphData().then(function (gd) {
       var palette = (window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10;
       var communityColor = {};
       var communityLabelMap = {};
@@ -6421,20 +6529,27 @@
 
   if (homeStatsRoot) {
     initHeroStatCountUp();
+    // 首页紧凑列表最多 5 条新增，home-stats 的 latest_wiki_nodes 一般已够用；
+    // 完整时间线与热力图（change-log.html）才需要活动全集，首页不等它。
+    var latestWikiMount = document.getElementById('homeLatestWikiModule');
+    var latestWikiCompact = !!(latestWikiMount && latestWikiMount.hasAttribute('data-compact'));
     var homeStatsFetch = fetch('exports/home-stats.json').then(function (response) {
       if (!response.ok) throw new Error('HTTP ' + response.status);
       return response.json();
     });
     // 热力图数据可缺席（本地未 make graph 时降级为无热力图，不影响时间线）
-    var wikiActivityFetch = fetch('exports/wiki-activity.json')
-      .then(function (response) {
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        return response.json();
-      })
-      .catch(function (error) {
-        console.warn('Wiki activity sync failed:', error);
-        return null;
-      });
+    var fetchWikiActivity = function () {
+      return fetch('exports/wiki-activity.json')
+        .then(function (response) {
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          return response.json();
+        })
+        .catch(function (error) {
+          console.warn('Wiki activity sync failed:', error);
+          return null;
+        });
+    };
+    var wikiActivityFetch = latestWikiCompact ? Promise.resolve(null) : fetchWikiActivity();
     Promise.all([homeStatsFetch, wikiActivityFetch])
       .then(function (results) {
         var stats = results[0];
@@ -6445,6 +6560,13 @@
           renderHotTopics(stats);
           renderHomeHubs(stats);
           renderLatestWikiNode(stats, results[1]);
+          // 只有紧凑列表凑不满 5 条新增时才回填，这时才需要活动全集
+          if (latestWikiCompact &&
+              collectHomeCompactAddedNodes(homeLatestItemsOf(stats), null, 5).length < 5) {
+            fetchWikiActivity().then(function (activity) {
+              if (activity) renderLatestWikiNode(stats, activity);
+            });
+          }
         }, 0);
       })
       .catch(function (error) {
@@ -6917,15 +7039,12 @@
       return _searchIndexPromise;
     }
 
-    // 供入口卡 pointerdown / 首页 idle 预取；失败静默，不影响后续正式搜索
+    // 仅由搜索意图触发（入口卡 hover/pointerdown、搜索框 focus、#wiki-search 深链）：
+    // 不再无条件 idle 预取整份搜索索引，普通浏览不为搜索付下载与解析成本。
+    // 失败静默，不影响后续正式搜索。
     prefetchWikiSearchIndex = function () {
       ensureSearchIndex().catch(function () {});
     };
-    if (typeof window.requestIdleCallback === 'function') {
-      window.requestIdleCallback(function () { prefetchWikiSearchIndex(); }, { timeout: 2500 });
-    } else {
-      window.setTimeout(function () { prefetchWikiSearchIndex(); }, 1200);
-    }
     // 深链 #wiki-search：搜索模块就绪后再聚焦并预取
     if (window.location.hash === '#wiki-search') {
       prefetchWikiSearchIndex();

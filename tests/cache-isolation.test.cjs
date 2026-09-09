@@ -4,10 +4,26 @@ const { resolve } = require('node:path');
 const { test } = require('node:test');
 const vm = require('node:vm');
 
-function harness(networkResponse) {
+function harness(networkResponse, options = {}) {
   const handlers = {}, removed = [], opened = [], installed = [], fetched = [];
   const ownResponse = { source: 'own cache' };
-  const cache = { match: async () => ownResponse, put: async () => {}, addAll: async (urls) => installed.push(...urls) };
+  const unavailable = options.unavailable || [];
+  const cache = {
+    match: async () => ownResponse,
+    put: async () => {},
+    // 逐个可选资源：单个失败只影响自身
+    add: async (url) => {
+      if (unavailable.includes(url)) throw new Error(`offline: ${url}`);
+      installed.push(url);
+    },
+    // 外壳整批：任一缺失即整批失败，不留下半套外壳
+    addAll: async (urls) => {
+      for (const url of urls) {
+        if (unavailable.includes(url)) throw new Error(`offline: ${url}`);
+      }
+      installed.push(...urls);
+    },
+  };
   const context = vm.createContext({
     URL, console,
     self: {
@@ -88,4 +104,43 @@ test('catalog prefers a fresh response while an immutable cached body needs no n
     assert.equal(await result, isCatalog ? fresh : h.ownResponse);
     assert.equal(h.fetched.length, isCatalog ? 1 : 0);
   }
+});
+
+test('installation caches the offline shell and skips the largest data files', async () => {
+  const h = harness();
+  let completion;
+  h.handlers.install({ waitUntil: (p) => { completion = p; } });
+  await completion;
+  const asset = (name) => `/Robotics_Notebooks/${name}`;
+  for (const shell of ['', 'index.html', 'style.css', 'theme-init.js', 'main.js']) {
+    assert.ok(h.installed.includes(asset(shell)), `shell asset must stay precached: ${shell || '/'}`);
+  }
+  for (const heavy of [
+    'search-index.json',
+    'exports/link-graph.json',
+    'exports/wiki-activity.json',
+    'exports/hub-rankings.json',
+  ]) {
+    assert.ok(!h.installed.includes(asset(heavy)), `install must not download ${heavy}`);
+  }
+});
+
+test('an optional asset failure does not block installation', async () => {
+  const h = harness(null, {
+    unavailable: ['/Robotics_Notebooks/vendor/d3.min.js', '/Robotics_Notebooks/exports/graph-stats.json'],
+  });
+  let completion;
+  h.handlers.install({ waitUntil: (p) => { completion = p; } });
+  await completion;
+  assert.ok(h.installed.includes('/Robotics_Notebooks/style.css'));
+  assert.ok(h.installed.includes('/Robotics_Notebooks/graph.html'));
+  assert.ok(!h.installed.includes('/Robotics_Notebooks/vendor/d3.min.js'));
+});
+
+test('a missing shell asset fails installation instead of caching half a shell', async () => {
+  const h = harness(null, { unavailable: ['/Robotics_Notebooks/style.css'] });
+  let completion;
+  h.handlers.install({ waitUntil: (p) => { completion = p; } });
+  await assert.rejects(completion, /style\.css/);
+  assert.deepEqual(h.installed, []);
 });
