@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-soma-surface-observations-muscle-anatomy.md",
+      "detail_id": "entity-paper-soma-surface-observations-muscle-anatomy",
+      "label": "SOMA：从体表观测到肌肉解剖",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-functional-slam.md",
       "detail_id": "entity-paper-functional-slam",
       "label": "Functional-SLAM（在线功能场景图 SLAM）",
@@ -202,23 +213,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fast-ecot.md",
-      "detail_id": "entity-paper-fast-ecot",
-      "label": "Fast ECoT：思维复用的高效具身链式推理",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-functional-slam.md",
-    "detail_id": "entity-paper-functional-slam",
-    "label": "Functional-SLAM（在线功能场景图 SLAM）",
+    "path": "wiki/entities/paper-soma-surface-observations-muscle-anatomy.md",
+    "detail_id": "entity-paper-soma-surface-observations-muscle-anatomy",
+    "label": "SOMA：从体表观测到肌肉解剖",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
