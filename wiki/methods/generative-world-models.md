@@ -15,6 +15,7 @@ related:
   - ../entities/paper-sc3-eval.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ../entities/paper-openwam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
@@ -181,6 +182,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 全模态 Physical AI 平台（示例：Cosmos 3）
 
 **人形 loco-manip 实时 WAM 实例**：[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 以 **Cosmos-Predict2.5-2B** 系 **Video DiT** 为动力学骨干，在 **固定 flow 步单次前向隐状态** 条件下驱动 Motion DiT，相对完整未来帧去噪实现 **~7×** 推理加速（arXiv:2606.09215）。
+
+**系统化 WAM 预训练开源栈**：[OpenWAM](../entities/paper-openwam.md) 把骨干 / 表征 / 架构 / 掩码 / 数据配方 / 去噪策略拆成可组合模块，默认 **Wan2.2-TI2V-5B + ActionDiT + mutual mask + 同步联合去噪**；OpenWAM-α 在 **6,400 h** ego+robot 混合上预训练并在 **8 仿真 + 3 真机** 验证（arXiv:2609.07398；全栈已开源）。
 
 **image-goal 导航 WAM 实例**：[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 在 **Cosmos Predict 2（2B）** 上构建 **九帧 latent canvas**，联合去噪未来 egocentric 观测、goal-progress value 与 action chunk；**policy 模式** 单次扩散即可闭环导航，**无需 CEM**（arXiv:2606.13494）。
 

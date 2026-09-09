@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/openwam_arxiv_2609_07398.md — OpenWAM 模块化 WAM 预训练栈；项目页/GitHub/HF 已开源；新建 paper-openwam 并交叉 WAM/VLA 概念页
+
 ## [2026-09-09] ingest | ingest CausalVAE / Traj-LeWM / SRD 三篇 latent WM 论文 — 新建实体页并交叉链接 LeWM
 
 ## [2026-09-09] ingest | sources/blogs/wechat_lightorigins_light_react_2026-09-09.md + sources/repos/onnxruntime-official.md — 亮源新创 Light REACT 全身韧性 ICL 微信发布；ONNX Runtime 官方文档复核
