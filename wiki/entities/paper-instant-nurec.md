@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, nurec, 3dgs, gaussian-splatting, real2sim, autonomous-driving, feed-forward, simulation]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-09
 arxiv: "2607.14203"
 code: https://github.com/NVIDIA/instant-nurec
 related:

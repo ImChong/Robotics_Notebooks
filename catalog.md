@@ -1118,6 +1118,7 @@
 - [HumoSlope：极端坡面物理引导生物力学步态适应](wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md) — HumoSlope**（*Physics-Guided Biomechanical Gait Adaptation for Humanoid Locomotion on Extreme Slope `📅unknown` `[entity_page]`
 - [Hydra-0：Action Flow 通才世界模型](wiki/entities/paper-hydra-0.md) — Hydra-0**（*Action Flow for Generalist World Modeling and Control*，[arXiv:2608.18077](https://arxiv `📅unknown` `[entity_page]`
 - [HydroGym：流体动力学强化学习平台](wiki/entities/paper-hydrogym.md) — The HydroGym reinforcement learning platform for fluid dynamics**（Lagemann 等，*Nature* 2026，DOI [10 `📅unknown` `[entity_page]`
+- [i3dGS（Immediate 3D Gaussian Splat Reconstruction of Unordered Input with Global Consistency）](wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — i3dGS**（Meuleman et al., arXiv:2607.14481，项目页，[代码](htt `📅unknown` `[entity_page]`
 - [iCrowdNav（意图感知场景表征的视觉人群导航）](wiki/entities/paper-icrowdnav.md) — iCrowdNav**（*Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations `📅unknown` `[entity_page]`
 - [IHMC 快速抗扰可编辑人形 loco-manipulation 系统](wiki/entities/paper-ihmc-fast-resilient-loco-manipulation.md) — IHMC Fast Resilient Loco-Manipulation System**（[arXiv:2609.01518](https://arxiv.org/abs/2609.01518 `📅unknown` `[entity_page]`
 - [Imagine2Real](wiki/entities/paper-imagine2real-zero-shot-hoi.md) — Imagine2Real: Towards Zero-shot Humanoid-Object Interaction via Video Generative Priors**（arXiv:26 `📅unknown` `[entity_page]`
