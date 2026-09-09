@@ -2,7 +2,7 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: drafting
-updated: 2026-08-08
+updated: 2026-09-09
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/state-estimation.md
@@ -122,6 +122,11 @@ flowchart LR
 - **[SLAMFormer-∞](../entities/paper-slamformer-infinity.md)**（arXiv:2608.03429）保留显式 **frontend / local backend / PGGO** 节奏，用 memory condition 攻公里级单目稠密；LingBot-Map 更偏 **端到端流式前馈 + GCA/Paged KV**。
 - **选型：** 要已开源、可跑的流式几何模块 → LingBot-Map；要跟进「联合精炼长程位姿与 pointmap」的学习型 SLAM 路线 → SLAMFormer-∞（官方仓截至 2026-08-08 仍占位）。
 
+### 与 VGG-T³（线性时间离线 VGGT）的对比
+
+- **[VGG-T³](../entities/paper-vgg-ttt.md)**（arXiv:2602.23361，CVPR 2026）用 **TTT** 把 VGGT 全局 attention **线性化**，面向 **离线千图级** 批处理（1k 图约 **54–58 s**）与 **冻结场景后的查询定位**；LingBot-Map 维持 **视频流式 ~20 FPS** 与 Paged KV，不做离线大图集一次性 TTT。
+- **选型：** 要 **在线 / 近实时单目视频几何** → LingBot-Map；要 **长 support 窗 / COLMAP 替代 / 3DGS 初值** 且可接受 **非商业许可** → VGG-T³（[`nv-dvl/vgg-ttt`](https://github.com/nv-dvl/vgg-ttt) 已开源）。
+
 ### 与 VLA / 空间推理任务的关系
 
 - 可为 [VLA (Vision-Language-Action)](./vla.md) 或 [3D 空间 VQA](../concepts/3d-spatial-vqa.md) 讨论提供**在线度量几何**先验：语义–语言层仍需与几何模块分工或融合。
@@ -130,6 +135,7 @@ flowchart LR
 ## 关联页面
 
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度对照
+- [VGG-T³（线性时间离线 VGGT）](../entities/paper-vgg-ttt.md) — 千图级前馈 pointmap / 查询定位对照
 - [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — 学习型前后端联合精炼对照
 - [VLA (Vision-Language-Action)](./vla.md)
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
