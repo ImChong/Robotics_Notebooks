@@ -57,6 +57,8 @@ related:
   - ../entities/paper-zero-wam.md
   - ../entities/paper-glancewam.md
   - ../entities/paper-openwam.md
+  - ../entities/paper-ecot.md
+  - ../entities/paper-fast-ecot.md
   - ../entities/paper-m3-modality-masking.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
   - ../overview/wam-vla-cross-embodiment-9-papers-technology-map.md
@@ -277,6 +279,8 @@ flowchart TD
 - **Indi（arXiv:2608.23478）**：冻结教师 VLM 把示范片段的 **局部目标** 蒸馏进动作解码器中间态；部署零教师。GR00T-N1.7 SimplerEnv-Bridge **64.3→84.7%**、真机 **62.0→68.7%**；**项目页未列训练仓**（见 [Indi](../entities/paper-indi.md)）
 - **GlanceWAM（arXiv:2608.23927）**：视频 WAM 把想象移出控制关键路径，动作头潜空间 **48 ms**；RoboCasa **72.2%**、LIBERO **99.0%**；**MIT + HF 已开源**（见 [GlanceWAM](../entities/paper-glancewam.md)）
 - **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **89.0%**、RoboDojo 真机 **37.6/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
+- **ECoT（CoRL 2024，arXiv:2407.08693）**：奠基 **具身思维链**——VLA 在动作前生成 plan/subtask/运动与 bbox 等接地推理；OpenVLA **+28%** 绝对成功率；**已开源**（见 [ECoT](../entities/paper-ecot.md)）
+- **Fast ECoT（arXiv:2506.07639）**：推理时缓存复用高层 ECoT + 并行模块化生成 + 异步调度；**最高 7.5×** 降延迟、无需重训；**MIT 已开源**（见 [Fast ECoT](../entities/paper-fast-ecot.md)）
 - **M3（arXiv:2608.22419）**：训练期结构化遮蔽腕相机/语言/查询，推理结构不变；RoboTwin Clean **+21.7**，真机长时程完整任务 **+30**；**未开源**（见 [M3](../entities/paper-m3-modality-masking.md)）
 - **FabriVLA（arXiv:2607.08575）**：**0.89B** 轻量 **InternVL3.5-1B + gated self-attention flow-matching + shallow VLM layer fusion**；在公开 **Evo-1 Meta-World** 数据上 **单阶段联合微调**（DeepSpeed FP32 master）；MT50 **tier-avg 90.0%** / episode **92.0%**；代码与 93k 权重已开源（见 [FabriVLA](../entities/paper-fabrivla.md)）；多基准相对位次可对照 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)
 - **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
@@ -529,6 +533,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Indi](../entities/paper-indi.md) — 行为意图蒸馏进 VLA 解码器（arXiv:2608.23478；未开源）
 - [GlanceWAM](../entities/paper-glancewam.md) — 异步 WAM 想象，动作头 48 ms（arXiv:2608.23927；已开源）
 - [OpenWAM](../entities/paper-openwam.md) — 模块化 WAM 预训练栈与 OpenWAM-α（arXiv:2609.07398；已开源）
+- [ECoT](../entities/paper-ecot.md) — 具身思维链奠基（CoRL 2024；arXiv:2407.08693；已开源）
+- [Fast ECoT](../entities/paper-fast-ecot.md) — ECoT 推理加速（arXiv:2506.07639；已开源）
 - [M3](../entities/paper-m3-modality-masking.md) — 双臂 VLA 训练期模态遮蔽（arXiv:2608.22419；未开源）
 - [LD4WAM](../entities/paper-ld4wam.md) — 运动对齐潜动力学桥接人视频与 Joint WAM；确认未开源（arXiv:2608.22403）
 - [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；相对 Joint-WAM 延迟 −42.9%（arXiv:2608.24882；代码待发布）

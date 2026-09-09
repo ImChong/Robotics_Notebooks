@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-09",
-  "node_count": 3874,
-  "edge_count": 34495,
+  "node_count": 3876,
+  "edge_count": 34513,
   "coverage": {
-    "covered": 3847,
-    "total": 3847,
+    "covered": 3849,
+    "total": 3849,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -16,8 +16,7 @@
       "recency": "2026-09-09",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-causalvae-world-models.md",
@@ -88,7 +87,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/litereality-agent.md",
@@ -219,33 +218,32 @@
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 651
-    },
-    {
       "label": "宇树 G1 人形机器人",
-      "size": 534
+      "size": 731
     },
     {
-      "label": "世界动作模型",
-      "size": 324
+      "label": "操作",
+      "size": 689
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 350
     },
     {
       "label": "国内开源全景 424 项本库导读",
       "size": 322
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 256
+      "label": "机器人学习论文笔记",
+      "size": 223
     },
     {
-      "label": "机器人学习论文笔记",
-      "size": 220
+      "label": "仿真到现实",
+      "size": 147
     }
   ],
   "top_hubs": [
@@ -269,7 +267,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 921,
+      "degree": 925,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -334,7 +332,8 @@
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
       "degree": 156,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -370,14 +369,16 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 49,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
       "degree": 48,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

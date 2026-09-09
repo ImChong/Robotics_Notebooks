@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/ecot + fast_ecot — ECoT 奠基与 Fast ECoT 加速；双论文已开源，新建 paper-ecot / paper-fast-ecot
+
 ## [2026-09-09] ingest | sources/papers/openwam_arxiv_2609_07398.md — OpenWAM 模块化 WAM 预训练栈；项目页/GitHub/HF 已开源；新建 paper-openwam 并交叉 WAM/VLA 概念页
 
 ## [2026-09-09] ingest | ingest CausalVAE / Traj-LeWM / SRD 三篇 latent WM 论文 — 新建实体页并交叉链接 LeWM
