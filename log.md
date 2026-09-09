@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/hand_erc_benchmarking_arxiv_2609_05585.md — HAND ERC 多指灵巧评测综述：四层 benchmark + DexNex 16 原子任务；规范站已公开、无官方代码仓
+
 ## [2026-09-09] ingest | sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md — 10 篇独立 paper 节点（FocusPool/CAST/MemForest 等）+ 技术地图；4 仓已开源
 
 ## [2026-09-09] ingest | sources/papers/deicticvla_arxiv_2608_28108.md — DeicticVLA 三模式 LI/VLI/VI 统一 π₀ VLA；真机未见类别 VLI/VI 100% vs LI 16.7%；截至入库日 arXiv 未列代码
