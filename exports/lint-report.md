@@ -2,7 +2,7 @@
 
 ## [2026-09-09] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **5** 条信息型预警）：
+共发现 **0** 个问题（另含 **6** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -126,7 +126,7 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-eneas.md
 
-📊 Sources 覆盖率：3849/3849 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3850/3850 (100%) wiki/entity 页有 ingest 来源

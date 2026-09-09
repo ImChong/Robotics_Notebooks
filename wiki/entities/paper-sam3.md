@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, sam3, open-vocabulary, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-09
 arxiv: "2511.16719"
 code: https://github.com/facebookresearch/sam3
 related:
   - ./paper-segment-anything.md
   - ./paper-sam2.md
+  - ./paper-eneas.md
   - ./paper-blip2.md
   - ../tasks/zero-shot-object-navigation.md
   - ../concepts/vision-language-feature-fusion.md
@@ -141,10 +142,12 @@ SAM 3 把 Segment Anything 从「提示一个物体」推进到「提示一个�
 | [SAM 2](./paper-sam2.md) | 视频 masklet 跟踪强；概念级「找出所有 X」仍弱于 SAM 3 |
 | [OV-SAM3D](./ov-sam3d.md) | 走向 3D 开放词汇分割；SAM 3 停在 2D/视频 PCS |
 | Grounding DINO 等 | 检测框为主；SAM 3 直接出概念级掩码与跟踪 |
+| [ENEAS](./paper-eneas.md) | 文本实例跟踪 + 语义发现；强调离屏重识别与 doppelganger 过滤；SA-Co/VEval 略优 SAM 3 |
 
 ## 关联页面
 
 - [SAM](./paper-segment-anything.md) · [SAM 2](./paper-sam2.md)
+- [ENEAS](./paper-eneas.md) — SAM 3 对照：本体验证与时序记忆
 - [BLIP-2](./paper-blip2.md)
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md)
 - [GO2 三维语义建图 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
