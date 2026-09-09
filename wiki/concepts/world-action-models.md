@@ -45,6 +45,7 @@ related:
   - ../entities/paper-dreammimic.md
   - ../entities/paper-glancewam.md
   - ../entities/paper-openwam.md
+  - ../entities/paper-ge-act-2.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
   - ../entities/paper-egoverse.md
   - ../entities/paper-embodiedvae.md
@@ -236,6 +237,8 @@ sources:
 
 **产业实例（Joint 族 + 动作优先全因果 AR · 闭源）**：[Riemann-1.0](../entities/paper-riemann-1.md)（黎曼动力 / 昆仑万维，2026-07）把交互写成 \(p(a_t\mid z_{<t},s_{<t},a_{<t})\,p(z_t\mid z_{<t},s_{<t},a_{\le t})\)：先出 action chunk 再条件化未来视觉 latent，同一 DiT 兼任策略与世界仿真。三阶段课程（LAM 伪动作 λ=0.1 → 3D 手/UMI/机 λ=0.5 → 机器人-only λ=0.9）吃 **232K+ h** 异构数据；RoboCasa365 **62.6%**（相对 [ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) +8.4）、天机 Marvin 真机均 **85.0% SR**；**确认未开源**。与 Dyna-2 对照：人视频在这里是 **对齐原料**，不是「预训练零机器人」缩放律。
 
+**产业实例（Joint 族 + 分模块从零预训练 · KASO · 万小时缩放 · 闭源）**：[GE-Act 2.0](../entities/paper-ge-act-2.md)（Genie Envisioner Act 2.0，arXiv:2609.05588，AgiBot）以 **CoAE（24 tokens/帧）+ 单步 SVP MeanFlow + IDM** 在操作数据上 **从零预训练**（SVP **39k h** / IDM **32k h**），再用 **KASO** 筛动作相容的视觉未来做联合训练；共训 **300→30,000 h** 零样本 OOD 均值 **G1-OP 44.1% / G2-90D 31.1%**（后者占共训 <2% 仍 **+17.7 pt**）；RTX 5090 **104 ms / 52 步 @ 30 Hz**；**代码待发布**。
+
 **文献实例（Joint 族 + latent foresight 查询冻结生成器 · 部署纯 VLA）**：[InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) 在 **Qwen3.5-2B MoT** 上持续 **VQA/子任务** 共训，用 **50 个 foresight token** 读出紧凑潜码条件化 **冻结 WAN2.2-5B**，以 video flow loss **蒸馏动力学先验** 至 unified expert，再以 **flow matching** 输出连续 action chunk；**推理丢弃视频分支**（~0.1s/步），在 LIBERO-Plus / DOMINO 零样本与真机 **组合指令 OOD** 上报告最强组合泛化（arXiv:2607.04988，上海 AI Lab Physical Intelligence Team）。
 
 **文献实例（VLWA · 双动作对齐 · 人视频主缩放轴）**：[JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md) 以 **VLM ∥ LAC-WM late-fuse → Flow Action Expert** 构成 VLWA：多视角 **LAM** 推断 latent action 条件化世界模型（隐式对齐），可靠人/机轨迹映射进 **130-D** 规范槽与相机系 chunk-relative EE（显式对齐）；部署时 LAC-WM **只抽第一帧特征、不滚像素**。在 AgiBot G1 真机上 seen **92.0** / unseen **75.5**，且人视频缩放未见饱和（京东 Joy Future Academy，arXiv:2608.05674；**未开源**）。
@@ -296,6 +299,7 @@ flowchart TB
 - [sources/papers/dreammimic_arxiv_2608_22278.md](../../sources/papers/dreammimic_arxiv_2608_22278.md) — RSSM 辅助视觉全身蒸馏（对照：WM≠WAM）
 - [sources/papers/glancewam_arxiv_2608_23927.md](../../sources/papers/glancewam_arxiv_2608_23927.md) — 异步稀疏前瞻 WAM（48 ms）
 - [sources/papers/openwam_arxiv_2609_07398.md](../../sources/papers/openwam_arxiv_2609_07398.md) — 模块化 WAM 预训练栈与 OpenWAM-α
+- [sources/papers/ge_act_2_arxiv_2609_05588.md](../../sources/papers/ge_act_2_arxiv_2609_05588.md) — GE-Act 2.0 分模块 WAM 预训练与 KASO
 - [sources/papers/being_m07.md](../../sources/papers/being_m07.md)
 - [sources/papers/worldvln_arxiv_2605_15964.md](../../sources/papers/worldvln_arxiv_2605_15964.md)
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
@@ -351,6 +355,7 @@ flowchart TB
 - [DreamMimic（RSSM 辅助视觉全身蒸馏）](../entities/paper-dreammimic.md) — 世界模型作蒸馏稳定器而非 Joint WAM；代码 Coming soon（arXiv:2608.22278）
 - [GlanceWAM](../entities/paper-glancewam.md) — 异步单帧前瞻，动作头 48 ms；RoboCasa 72.2% / LIBERO 99.0%；已开源（arXiv:2608.23927）
 - [OpenWAM](../entities/paper-openwam.md) — 模块化 Infra + Study 提炼预训练三原则；OpenWAM-α LIBERO 99.3% / RoboTwin2.0-Full 89.0%；全栈已开源（arXiv:2609.07398）
+- [GE-Act 2.0（CoAE+SVP+IDM · KASO · 30k h 缩放）](../entities/paper-ge-act-2.md) — AgiBot 零样本 OOD G1-OP 44.1% / G2-90D 31.1%；104 ms 部署；代码待发布（arXiv:2609.05588）
 - [JoyAI-RA 0.5（双动作对齐 VLWA）](../entities/paper-joyai-ra-05.md) — LAC-WM + 130-D 显式对齐；人视频缩放未见饱和（未开源）
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [World Action Planner（VLM + pose-image WM 规划）](../entities/paper-world-action-planner.md)

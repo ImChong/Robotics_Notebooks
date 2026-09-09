@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-07
+updated: 2026-09-09
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -191,6 +191,7 @@ flowchart TD
 - **FM-VLA**（[实体页](../entities/paper-fm-vla.md)，arXiv:2607.18231）：**力觉长程记忆**——冻结 Force-VAE 压缩整集腕部 wrench 为 **K=8** token（+短窗状态）注入 **π₀.₅**；智元 G1 三项记忆依赖接触任务平均 **83.3%**，推理仅 **+3.3 ms**（官方代码 coming soon）
 - **FA-RDP**（[实体页](../entities/paper-fa-rdp.md)，arXiv:2607.28596）：**频率自适应反应扩散**——接触前 10 Hz 多步保多模态，接触后指示器切 30 Hz MCD 一步采样；Flexiv 翻箱/拨开关/按按钮平均 **81.7%**（代码 coming soon）
 - **World Action Planner**（[实体页](../entities/paper-world-action-planner.md)，arXiv:2607.27599）：**VLM + pose-image 世界模型规划**——想象 rollout 上优化/搜索，LIBERO 组合与新布局显著优于 π₀.₅ / cosmos-policy；代码与 HF 权重已开源
+- **GE-Act 2.0**（[实体页](../entities/paper-ge-act-2.md)，arXiv:2609.05588）：**CoAE + 单步 SVP + IDM** 从零 WAM 预训练，**KASO** 对齐视觉–动作；共训 **30k h** 零样本 OOD 均值 **G1-OP 44.1% / G2-90D 31.1%**；RTX 5090 **104 ms / 52 步**；**代码待发布**
 - **Chronos**（[实体页](../entities/paper-chronos.md)，arXiv:2606.30318）：**全历史 SSM + IMLE + 二阶加速度桥**——历史作策略潜状态；RMBench **73.6%**（相对 π₀.₅ **+62.4 pt**），真机双臂平均 **78%**；RMBench+UR3 代码与 HF ckpt 已开源
 - **VTAP Gripper**（[实体页](../entities/paper-vtap-gripper.md)，arXiv:2607.15448）：**视触觉主动掌 + FlexiTac 三指夹爪**——硬件级指–掌协同与手势条件遥操作重定向；反应抓取 **93.3%**、peg-in-hole **70%**（确认未开源）
 - **NeoteAI 𝒩₀**（[公司实体](../entities/neoteai.md)）：OpenNeoData **5k h** + NeoForce 力场；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) NeoReal **47.2%**；[𝒩₀-TWAM](../entities/paper-n0-twam.md) 真机接触均 **46.3%**（模型代码待 2026-07-31）

@@ -1026,6 +1026,7 @@
 - [Gated Memory Policy（arXiv:2604.18933）](wiki/entities/paper-gated-memory-policy.md) — Gated Memory Policy**（Yihuai Gao, Jeff Jinyun Liu, Shuang Li, Shuran Song；Stanford University；[arX `📅unknown` `[entity_page]`
 - [Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）](wiki/entities/paper-gaussian-lic2.md) — Gaussian-LIC2**（Lang et al., arXiv:2507.04004，项目页， `📅unknown` `[entity_page]`
 - [GaussianDream++](wiki/entities/paper-gaussiandream-plusplus.md) — GaussianDream++: Efficient 3D Gaussian World Modeling for Robotic Manipulation**（[arXiv:2608.25659 `📅unknown` `[entity_page]`
+- [GE-Act 2.0：世界–动作模型预训练与规模扩展](wiki/entities/paper-ge-act-2.md) — GE-Act 2.0**（*GE-Act 2.0: Pretraining and Scaling a World-Action Model for Robotic Manipulation*，全 `📅unknown` `[entity_page]`
 - [GentleHumanoid](wiki/entities/paper-gentlehumanoid.md) — GentleHumanoid**（*Learning Upper-body Compliance for Contact-rich Human and Object Interaction*）是接 `📅unknown` `[entity_page]`
 - [GenTrack：机器人原生运动生成与零样本跟踪的物理对齐](wiki/entities/paper-gentrack.md) — GenTrack**（*Physical Alignment for Robot-Native Motion Generation and Zero-Shot Humanoid Tracking `📅unknown` `[entity_page]`
 - [Geometry-Aware 4D Video Generation for Robot Manipulation（arXiv:2507.01099）](wiki/entities/paper-geometry-aware-4d-video-generation.md) — Geometry-Aware 4D Video Generation for Robot Manipulation**（Zeyi Liu, Shuang Li, Eric Cousineau, S `📅unknown` `[entity_page]`
