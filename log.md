@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/hand_visibility_detector_arxiv_2608_11574.md — 复核 Hand Visibility Detector 四链（GitHub/arXiv v1/HF 模型/HF Papers），补 HF Papers 与 2026-09-09 开源核查
+
 ## [2026-09-09] ingest | sources/papers/ge_act_2_arxiv_2609_05588.md — GE-Act 2.0（AgiBot WAM 预训练缩放）；代码待发布；升格 wiki/entities/paper-ge-act-2.md
 
 ## [2026-09-09] ingest | sources/papers/eneas_arxiv_2609_03756.md — SperidLabs ENEAS 文本实例跟踪与语义发现；已开源，交叉 SAM3/ObjectNav

@@ -9,15 +9,16 @@
 - **默认分支：** `main`
 - **权重：** <https://huggingface.co/ryhara/hand-visibility-detector>（`best.pt` / `best_hamer.pt`）
 - **Demo Space：** <https://huggingface.co/spaces/ryhara/hand-visibility-detector>
+- **Hugging Face Papers：** <https://huggingface.co/papers/2608.11574>
 - **论文：** arXiv:2608.11574 — [`sources/papers/hand_visibility_detector_arxiv_2608_11574.md`](../papers/hand_visibility_detector_arxiv_2608_11574.md)
-- **入库日期：** 2026-08-15
+- **入库日期：** 2026-08-15（2026-09-09 复核）
 - **一句话说明：** 冻结 WiLoR / HaMeR 骨干 + 轻量 visibility head；`HandVisibilityPipeline` 可 `pip`/`uv` 安装。**已开源、可运行**（研究/非商用）。
 
-## 开源核查（2026-08-15）
+## 开源核查（2026-09-09）
 
 | 项 | 状态 |
 |----|------|
-| 仓库可见 | 是（公开；默认 `main`；约 52★） |
+| 仓库可见 | 是（公开；默认 `main`；约 94★） |
 | 项目页 | **无**独立 `*.github.io`；入口即 GitHub + HF |
 | License | GitHub `license` 字段为空。README 写 **research and non-commercial use only**，须同时遵守 WiLoR / WiLoR-mini / HaMeR / MANO / HInt / COCO-WholeBody / Ultralytics 上游条款 |
 | 可运行入口 | **有** — `HandVisibilityPipeline.predict`；`demo.py` / `demo_video.py` / `demo_gradio.py`；`python -m training.train` / `training.evaluate` |
