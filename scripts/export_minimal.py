@@ -1056,6 +1056,10 @@ def build_site_data(items: List[Dict]) -> Dict:
         }
         if item.get("has_repo"):
             entry["has_repo"] = True
+        # 论文笔记链接在导出期已按「映射 → source_links → 正文」顺序算好（上限 6 条），
+        # 随目录下发后，无正文的消费端（图谱侧栏）不必再扫正文。
+        if item.get("paper_notebook_links"):
+            entry["paper_notebook_links"] = item["paper_notebook_links"]
         detail_pages[item["id"]] = entry
 
     home_page = {
