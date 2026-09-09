@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-ge-act-2.md",
+      "detail_id": "entity-paper-ge-act-2",
+      "label": "GE-Act 2.0：世界–动作模型预训练与规模扩展",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-eneas.md",
       "detail_id": "entity-paper-eneas",
       "label": "ENEAS：文本提示实例跟踪与语义发现",
@@ -203,27 +212,16 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-contact-guided-exploration-locomanipulation.md",
-      "detail_id": "entity-paper-contact-guided-exploration-locomanipulation",
-      "label": "Contact-Guided Exploration 非抓取移动操作",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-eneas.md",
-    "detail_id": "entity-paper-eneas",
-    "label": "ENEAS：文本提示实例跟踪与语义发现",
+    "path": "wiki/entities/paper-ge-act-2.md",
+    "detail_id": "entity-paper-ge-act-2",
+    "label": "GE-Act 2.0：世界–动作模型预训练与规模扩展",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
