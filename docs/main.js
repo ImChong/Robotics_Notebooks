@@ -3886,14 +3886,37 @@
     };
   }
 
+  // 详情页的社区/路线/机构徽标、局部图谱与「近期关联更新」共用同一份 link-graph.json：
+  // 同 URL 只请求并解析一次（原先 5 处各自 fetch + JSON.parse）。失败时清空 Promise，
+  // 下次调用可重新请求。返回的是共享只读数据：需要力布局的调用方必须先复制节点，
+  // 不能就地写 x/y/vx/vy 等模拟状态。
+  var _linkGraphData = null;
+  var _linkGraphPromise = null;
+  function ensureLinkGraphData() {
+    if (_linkGraphData) return Promise.resolve(_linkGraphData);
+    if (_linkGraphPromise) return _linkGraphPromise;
+    _linkGraphPromise = fetch('exports/link-graph.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        _linkGraphData = data;
+        _linkGraphPromise = null;
+        return data;
+      })
+      .catch(function (error) {
+        _linkGraphPromise = null;
+        throw error;
+      });
+    return _linkGraphPromise;
+  }
+
   function ensureDetailCommunityIndex() {
     if (_detailCommunityIndex) return Promise.resolve(_detailCommunityIndex);
     if (_detailCommunityIndexPromise) return _detailCommunityIndexPromise;
     _detailCommunityIndexPromise = Promise.all([
-      fetch('exports/link-graph.json').then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      }),
+      ensureLinkGraphData(),
       fetch('exports/hub-rankings.json').then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
@@ -4527,7 +4550,7 @@
     if (!currentPath) { section.hidden = true; return; }
 
     Promise.all([
-      fetch('exports/link-graph.json').then(function (r) { return r.json(); }),
+      ensureLinkGraphData(),
       fetch('exports/graph-stats.json').then(function (r) { return r.json(); })
     ]).then(function (res) {
       var gd = res[0];
@@ -4619,7 +4642,7 @@
       return Promise.resolve();
     }
 
-    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
       var topics = TF.depthsForNode({ id: node.id, community: node.community });
@@ -4652,7 +4675,7 @@
       return Promise.resolve();
     }
 
-    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node || !node.community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
       var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
@@ -4680,7 +4703,7 @@
       renderDetailMetaItemRow(instRowId, '所属机构', '');
       return Promise.resolve();
     }
-    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       var ids = (node && node.institutions) || [];
       if (!ids.length) { renderDetailMetaItemRow(instRowId, '所属机构', ''); return; }
@@ -4928,7 +4951,7 @@
     var currentPath = (detailPage && detailPage.path) || '';
     if (!currentPath) return;
 
-    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    ensureLinkGraphData().then(function (gd) {
       var palette = (window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10;
       var communityColor = {};
       var communityLabelMap = {};
