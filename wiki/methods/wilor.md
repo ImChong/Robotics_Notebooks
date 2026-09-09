@@ -2,7 +2,7 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-08-19
+updated: 2026-09-09
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md

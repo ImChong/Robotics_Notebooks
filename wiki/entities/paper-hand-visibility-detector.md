@@ -15,7 +15,7 @@ tags:
   - omron-sinic-x
   - u-tokyo
 status: complete
-updated: 2026-08-19
+updated: 2026-09-09
 arxiv: "2608.11574"
 code: https://github.com/ryhara/hand_visibility_detector
 related:
@@ -73,7 +73,7 @@ summary: "Hand Visibility Detector（庆应/AIST/欧姆龙 SINIC X/东大，arXi
 | 骨干 | 冻结 [HaMeR](https://geopavlakos.github.io/hamer/) 或 [WiLoR](../methods/wilor.md) 的 ViT（631M）；发布默认走 WiLoR-mini |
 | 输出 | \(V\in[0,1]^{21}\)：每关节「可见」概率（未见 = 遮挡或出画） |
 | 训练数据 | HInt：25,273 / 5,374 |
-| 开源（截至 2026-08-15） | **已开源、可运行**：[`ryhara/hand_visibility_detector`](https://github.com/ryhara/hand_visibility_detector) + HF 权重 / Space。许可为 **研究/非商用**，叠加上游 |
+| 开源（截至 2026-09-09） | **已开源、可运行**：[`ryhara/hand_visibility_detector`](https://github.com/ryhara/hand_visibility_detector) + [HF 权重](https://huggingface.co/ryhara/hand-visibility-detector) / [Space](https://huggingface.co/spaces/ryhara/hand-visibility-detector) / [HF Papers](https://huggingface.co/papers/2608.11574)。许可为 **研究/非商用**，叠加上游 |
 
 ## 方法与核心结构
 
@@ -208,12 +208,13 @@ sequenceDiagram
 - [hand_visibility_detector_arxiv_2608_11574.md](../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md)
 - [hand_visibility_detector 仓库归档](../../sources/repos/hand_visibility_detector.md)
 - [具身智能小站 10 篇盘点（2026-08-19）](../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md)
-- Hara et al. — <https://arxiv.org/abs/2608.11574>
+- Hara et al. — <https://arxiv.org/abs/2608.11574>（v1：<https://arxiv.org/abs/2608.11574v1>）
 - 代码 — <https://github.com/ryhara/hand_visibility_detector>
+- Hugging Face Papers — <https://huggingface.co/papers/2608.11574>
 
 ## 推荐继续阅读
 
-- 官方仓 README 与 HF 模型卡 — <https://github.com/ryhara/hand_visibility_detector>
+- 官方仓 README 与 [HF 模型卡](https://huggingface.co/ryhara/hand-visibility-detector) — <https://github.com/ryhara/hand_visibility_detector>
 - HInt 数据集 — <https://github.com/ddshan/hint>
 - HaMeR — <https://arxiv.org/abs/2312.05251>
 - WiLoR — <https://arxiv.org/abs/2409.12259>

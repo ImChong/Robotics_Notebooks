@@ -2,7 +2,7 @@
 type: entity
 tags: [perception, computer-vision, hand-tracking, pose-estimation, open-source, google, on-device-ml]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-09
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/dexterous-data-collection-guide.md
