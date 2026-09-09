@@ -9,13 +9,14 @@ tags:
   - deep-learning
   - robotics
 status: complete
-updated: 2026-08-12
+updated: 2026-09-09
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-transformer.md
   - ../concepts/vision-backbones.md
   - ../methods/object-detection.md
+  - ../methods/channel-spatial-attention.md
   - ../queries/perception-backbone-selection.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/paper-yolo-unified-realtime-detection.md
@@ -77,6 +78,7 @@ flowchart TB
 - **机载实时检测**（[目标检测](../methods/object-detection.md)：球体/障碍/人）：优先 CNN——低延迟、量化算子成熟，分辨率提升代价可控。
 - **通用预训练视觉表征**（冻结骨干喂策略）：ViT SSL（DINOv2 等）在跨场景迁移与全局语义上常更稳，契合 [视觉骨干](../concepts/vision-backbones.md) 的「预训练 → 下游」链条。
 - **混合务实路线**：Swin/ConvNeXt 等把层次结构与（窗口）注意力结合，在精度—吞吐折中上常是工程默认选择。
+- **不换骨干的第三条路**：CNN 阵营对「全局上下文弱」的低成本答案是[通道–空间注意力](../methods/channel-spatial-attention.md)（SE / CBAM 类模块）——在既有 ResNet 上重加权特征，参数与延迟增量都小，但拿到的是**重加权后的局部特征**，不是 ViT 那种浅层即有的全局 token 关系。数据规模不够上 ViT、又嫌 CNN 局部性太强时先试这一档。
 
 ## 常见误区或局限
 
@@ -89,6 +91,7 @@ flowchart TB
 - [Vision Transformer（概念）](../concepts/vision-transformer.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [目标检测（方法）](../methods/object-detection.md)
+- [通道–空间注意力（方法）](../methods/channel-spatial-attention.md) — CNN 侧补全局上下文的轻量档
 - [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)

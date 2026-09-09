@@ -7,6 +7,7 @@ related:
   - ../methods/stereo-matching-foundation-models.md
   - ./eth3d-stereo-benchmark.md
   - ../concepts/state-estimation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/kitti_stereo_benchmark.md
 summary: "KITTI Stereo 2012/2015：自动驾驶场景最常用双目立体 benchmark；D1-all、EPE 等指标。"
@@ -46,6 +47,7 @@ summary: "KITTI Stereo 2012/2015：自动驾驶场景最常用双目立体 bench
 - [立体匹配生态](../methods/stereo-matching-foundation-models.md)
 - [ETH3D](./eth3d-stereo-benchmark.md)
 - [State Estimation](../concepts/state-estimation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是**模块级**视差精度评测，不落在该闭环 ①–④ 任一层；D1-all 降低只说明深度栈更准，下游导航/操作是否受益仍要回到闭环 ③ 层的策略成功率去测
 
 ## 参考来源
 

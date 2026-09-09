@@ -221,6 +221,14 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # `type: task` 的类型值。任务域本体归 `wiki/tasks/*`（locomotion /
     # loco-manipulation / manipulation 等），与 type/tags 同类类型 token，不建概念页。
     "task",
+    # robot：各页正文里的 `Robot` / **Robot** 全是代码/工具 token，无一在指本体
+    # 概念——LeRobot 的硬件接口类 `Robot`、dynibo 自 URDF 校验缓存的 `Robot` 树、
+    # OpenVINO Physical AI 部署链 `InferenceModel`→`PolicyRuntime`→`Robot`、
+    # FreeCAD 的 **Robot** 工作台、open-duck-mini-viewer 的脚本对象 `Robot`，
+    # 以及 cyclo-intelligence 的 `inference_mode` 枚举值 `robot`（对 `simulation`）。
+    # 与 state / reset / qpos 同类「类名 + 字段值」token；机器人本体的形态学讨论
+    # 已由 concepts/humanoid-vs-other-robots.md 等页承载，不建 concepts/robot.md。
+    "robot",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -384,6 +392,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 工具名，属另一义。与 rl / wbc 同类「已有归属、slug 与页面 stem 不同名」。
     "critic",
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
+    # dinov2：具体的自监督视觉骨干模型，canonical 节点是 entities/paper-dinov2.md
+    # （arXiv:2304.07193 / Meta），选型语境已由 concepts/visual-representation-for-policy.md
+    # 的「冻结通用骨干」一支（R3M / VC-1 / DINOv2 并列）承载；各页正文里的 **DINOv2**
+    # 均为「某方法用它当骨干」的指称（NBS 用 ViT-L 初始化、OpenVLA 几何塔等），
+    # 不是另一个待建的机制页。与 lerobot / mujoco / libero 同类「已由实体页覆盖、
+    # slug 与页面 stem 不同名」。
+    "dinov2",
     "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
     "g1",
     "gmr",

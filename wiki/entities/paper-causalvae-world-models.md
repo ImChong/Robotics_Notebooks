@@ -121,6 +121,17 @@ sequenceDiagram
 - **因果发现：** 学到的结构边与 Physics 一阶相互作用模板可对齐，支持可解释性主张。
 - **局限：** 静态因果层需 staged 训练才稳定；化学/形状域增益小于 Physics；未覆盖像素端到端 JEPA 规划栈（见 LeWM 线）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| **同一骨干不挂因果层**（AE / VAE / GNN / Modular / C-SWM 的原版） | 本页最硬的一组对照：骨干、数据、训练预算都不变，只加因果分支。事实检索 H@1/MRR **基本持平**，反事实 CF-H@1 在 Physics 上 8 配对基线平均 **+102.5%**（GNN-NLL 代表 11.0→41.0），多骨干普遍 **+9~+21** points。读法是「事实不亏、反事实大赚」，不是「预测更准」 |
+| [SRD（State–Readout Decoupling）](./paper-state-readout-decoupling.md) | 同组、同一 WM 栈的另一处改动，**切口不同**：SRD 改 rollout 接口（状态怎么读出），CausalVAE 改 latent 因子**是否可干预识别**。两者不互斥，论文也未联合实验，组合收益属待验证 |
+| [Traj-LeWM](./paper-traj-lewm.md) / [LeWM](./paper-lewm.md) | 同组的目标条件规划线：改的是**用 WM 做什么**（轨迹代价与打分），CausalVAE 改的是**WM 内部表征结构**。另一处边界：LeWM 线走像素端到端 JEPA 规划栈，本文主实验未覆盖该设定 |
+| [生成式世界模型](../methods/generative-world-models.md) | 范式对照：视频生成式 WM 的主指标是像素/视频保真，本文主指标是**检索式因果一致性**（CF-H@1/CF-MRR）。二者指标体系不通用，不可横比 |
+| [潜在想象](../concepts/latent-imagination.md) | Dreamer 系「潜空间想象滚出」的对照：想象轨迹只要求前向预测自洽，不要求潜变量对应可干预的因果因子；需要 do-干预推理时这条差别才显现 |
+| [物理保真输出轴](../overview/world-model-physics-fidelity-outputs.md) | 评测坐标：本文的干预/反事实轴对应该页的同名评测轴，可用来判断某个 WM 的评测是否只停在 rollout 误差 |
+
 ## 结论
 
 **总判：CausalVAE 把「因果可干预」做成 WM 外挂模块，在几乎不牺牲事实预测的前提下，把反事实检索（尤其 Physics）拉到可用区间，并给出可读的潜变量因果图。**

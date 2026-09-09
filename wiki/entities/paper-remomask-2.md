@@ -9,6 +9,11 @@ code: https://github.com/AIGeeksGroup/ReMoMask-2
 related:
   - ../overview/visual-focus-data-efficiency-10-papers-technology-map.md
   - ../methods/imitation-learning.md
+  - ../methods/diffusion-motion-generation.md
+  - ../methods/genmo.md
+  - ../methods/hy-motion-1.md
+  - ../concepts/motion-retargeting-pipeline.md
+  - ../concepts/motion-data-quality.md
 sources:
   - ../../sources/papers/remomask_2_arxiv_2609_08365.md
   - ../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md
@@ -72,6 +77,18 @@ sequenceDiagram
 - 指标与设置以原文 PDF / 项目页为准；上文 Highlights 来自公众号归纳 + 项目页摘要。
 - 横向对照见 [视觉聚焦与数据效率 10 篇技术地图](../overview/visual-focus-data-efficiency-10-papers-technology-map.md)。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：本页 Highlights 来自公众号归纳 + 项目页摘要（见参考来源），未逐条核对原文实验表，与下列各页不共享同一评测协议。
+
+| 对照 | 差异读法 |
+|------|----------|
+| **外部动作空间检索的 RAG-T2M**（含 ReMoMask 一代，本文要改的默认做法） | 差别在**检索库建在哪一层**：检索发生在原始/外部动作空间时，取回的片段要再编码进生成器潜空间，中间隔着一次表示转换；ReMoMask-2 把库直接建在生成器**预量化潜空间**里，取回来的东西与生成器同构，靠轻量 text projector 把文本查询投到同一空间 |
+| [扩散式动作生成](../methods/diffusion-motion-generation.md) | 主要的生成范式对照：扩散逐步去噪，masked motion 生成按掩码并行填充，后者推理步数少；检索增强对两者都可加，但潜空间同构这条只在有离散/量化潜变量的框架里成立 |
+| [GenMo](../methods/genmo.md) / [HY-Motion-1](../methods/hy-motion-1.md) | 库内同类文本到动作生成路线；读法提醒：T2M 指标（FID、R-Precision、MM-Dist）在各自设定下报，**不可直接横比**，选型看是否需要检索库可控与可更新 |
+| [运动重定向流水线](../concepts/motion-retargeting-pipeline.md) | 落地边界：T2M 输出的是**人体动作**，接到机器人还要过重定向与物理可行性检查；文本条件生成得再好也不保证目标本体能执行 |
+| [运动数据质量](../concepts/motion-data-quality.md) | 检索增强的隐含依赖：生成质量的上限由**检索库里的动作质量**决定，库脏则检索出的先验也脏，这一环不由模型结构解决 |
+
 ## 结论
 
 **ReMoMask-2 的可迁移主张已写入 Highlights；部署前以原文实验设定与开源边界为准。**
@@ -84,6 +101,10 @@ sequenceDiagram
 
 - [视觉聚焦与数据效率 10 篇技术地图](../overview/visual-focus-data-efficiency-10-papers-technology-map.md)
 - [模仿学习](../methods/imitation-learning.md)
+- [扩散式动作生成](../methods/diffusion-motion-generation.md) — 生成范式对照
+- [GenMo](../methods/genmo.md) / [HY-Motion-1](../methods/hy-motion-1.md) — 库内同类 T2M 路线
+- [运动重定向流水线](../concepts/motion-retargeting-pipeline.md) — 人体动作到机器人的落地边界
+- [运动数据质量](../concepts/motion-data-quality.md) — 检索库质量即生成上限
 
 ## 参考来源
 

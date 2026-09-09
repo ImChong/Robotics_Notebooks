@@ -7,6 +7,7 @@ related:
   - ../methods/stereo-matching-foundation-models.md
   - ./eth3d-stereo-benchmark.md
   - ./paper-nbs-no-bias-stereo.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/middlebury_stereo_benchmark.md
 summary: "Middlebury Stereo V3：经典立体匹配评测；S²M²、FoundationStereo、Selective-Stereo 等常在此对比。"
@@ -39,6 +40,7 @@ summary: "Middlebury Stereo V3：经典立体匹配评测；S²M²、FoundationS
 
 - [立体匹配生态](../methods/stereo-matching-foundation-models.md)
 - [ETH3D](./eth3d-stereo-benchmark.md) / [KITTI](./kitti-stereo-benchmark.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是**模块级**视差精度评测，不落在该闭环 ①–④ 任一层；场景受控、规模小，刷 bad 指标更不能外推到闭环 ③ 层的任务成功率
 
 ## 参考来源
 

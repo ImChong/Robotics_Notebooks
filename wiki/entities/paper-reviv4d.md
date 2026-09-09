@@ -12,7 +12,7 @@ tags:
   - microsoft
   - tudelft
 status: complete
-updated: 2026-09-07
+updated: 2026-09-09
 arxiv: "2607.17790"
 venue: "ECCV 2026"
 related:
@@ -146,11 +146,11 @@ sequenceDiagram
 
 ## 结论
 
-**ReViV 把 egocentric「场景感知 + 不可见身体运动」收成单一 feed-forward 生成模型，在速度与多任务精度上同时刷新 SOTA，但深度精度与商用许可仍有限制。**
+**ReViV 把 egocentric「场景感知 + 不可见身体运动」收成单一 feed-forward 生成模型，在其自报的对照集上同时拿到速度与多任务精度优势（截至 2026-09 归档口径），但深度精度与商用许可仍有限制。**
 
 1. **单 RGB 输入即够** — 无需预计算 SLAM/点云/外接手部模块，降低可穿戴采集门槛。
 2. **联合分布是关键** — 消融显示 task-specific body 专家与 1-to-1 mask 均显著掉点；跨模态 mask ensemble 学到可迁移先验。
-3. **全身+手+注视 SOTA** — ADT 与 ARCTIC 等集上 PA-MPJPE、FID、Similarity 全面领先扩散/优化基线。
+3. **全身+手+注视三项齐头** — ADT 与 ARCTIC 等集上 PA-MPJPE、FID、Similarity 全面领先论文自选的扩散/优化基线（EgoAllo、UniEgoMotion、HaMeR、Dyn-HaMR）；这是**对照组内**的领先，不是对全领域的断言。
 4. **推理速度可批处理** — ~0.7 s/clip 使长 egocentric 日志处理可行，适合示教数据矿机前端。
 5. **深度仍是短板** — 无 depth expert 初始化 + Cosmos 量化误差；高精度 metric 场景几何仍需 EgoMono4D 类专家或后处理。
 6. **权重非商用** — 代码可改，但 polybox 权重许可限制产品部署；训练需自行凑 7B token 级数据管线。
