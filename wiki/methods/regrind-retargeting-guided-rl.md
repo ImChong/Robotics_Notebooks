@@ -1,10 +1,11 @@
 ---
 type: method
-tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real, mocap, cornell, amazon-far]
+tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real, mocap, cornell, amazon, residual-policy, isaac-lab]
 status: complete
 date: 2026-07-16
-updated: 2026-07-16
+updated: 2026-09-09
 arxiv: "2607.11874"
+code: https://github.com/yunhaif/regrind
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -100,6 +101,58 @@ flowchart LR
 | DexMachina | functional IK + 仿真投影 | RL | scissors 真机 **0/10** |
 | SPIDER | 物理采样 MPC | 开环/MPC | SR **0%**（论文设置） |
 | **REGRIND** | **interaction mesh** | **残差 RL + 增广** | **9–10/10**（除 WUJI-Scissors） |
+
+## 源码运行时序图
+
+官方实现为 [yunhaif/regrind](https://github.com/yunhaif/regrind)（MIT）。主线：**MoCap 演示 →（可选）Drake 重定向 → Isaac Lab 残差 PPO → Play 评测 → 真机 MoCap 闭环**；仓内已附带预计算 `.h5`，可跳过重定向直接训练。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as 用户
+  participant M as MoCap 演示<br/>MANO + 物体 6D
+  participant RT as scripts/retarget_hand_object.py<br/>Drake SQP + MOSEK
+  participant H5 as retargeted .h5
+  participant IL as Isaac Lab 环境<br/>Regrind-*-v0
+  participant TR as scripts/rsl_rl/train.py<br/>残差 PPO + RSI/增广
+  participant PL as scripts/rsl_rl/play.py<br/>-Play-v0
+  participant HW as LEAP/WUJI + UR5e<br/>MoCap 物体反馈
+
+  U->>M: 单次人手–物体演示
+  opt 可选重定向
+    M->>RT: interaction mesh Laplacian
+    RT->>H5: robot/object 轨迹 + keypoints
+  end
+  H5->>IL: load_retargeted_traj
+  IL->>TR: 物体关键点跟踪奖励 + DR/课程
+  TR->>PL: checkpoint
+  PL->>HW: 系统辨识后零样本部署
+```
+
+**复现捷径：** 直接使用仓内预计算轨迹 → `python scripts/rsl_rl/train.py --task Regrind-LeapHand-Scissors-v0 --headless --num_envs 4096`；评测用 `Regrind-*-Play-v0` 与 `--auto_gravity_from_ckpt`（重力课程对齐）。
+
+## 工程实践
+
+| 项 | 建议 |
+|----|------|
+| **环境** | Isaac Sim **5.1.0** + Isaac Lab **2.3.0**；conda 环境 `regrind`；`pip install -e source/regrind` |
+| **跳过重定向** | 仓内已有四任务 retargeted `.h5` → 直接 RL；自采演示再跑 `retarget_hand_object.py` |
+| **重定向依赖** | `pip install -e "source/regrind[retargeting]"`；MOSEK 学术 license 或 `solver=clarabel` |
+| **训练** | `Regrind-{LeapHand,WujiHand}-{Scissors,Screwdriver}-v0`；4096 envs；可选 `--logger wandb` |
+| **评测** | 必须用 `-Play-v0`；`play.py --headless --video` |
+| **Sim2Real** | 摩擦/增益 **系统辨识** 优先；部署期 **MoCap 物体位姿** 闭环（论文隔离感知误差） |
+| **初态鲁棒** | 训练时 SE(3) 增广 ±5 cm / ±30°；勿指望无增广单演示泛化 |
+| **失败模式** | WUJI-Scissors **0/10**：非反驱 + 剪刀 mesh 误差；DexMachina 类无 mesh 易 exploit 仿真 |
+
+## 结论
+
+**REGRIND 证明「人形 WBT 的重定向 + 残差 RL」配方可以落到 contact-rich 灵巧工具操作，但成败关键在 interaction-preserving 参考与 manipulation 级 sim2real 细节，而非更复杂的端到端架构。**
+
+- **真影响指标的是交互保留重定向**：相对 DexMachina / Mink IK / SPIDER，interaction mesh 参考让残差 RL 初始化从 scissors **0–22%** 拉到仿真 **~99%**、真机 **9–10/10**（WUJI-Scissors 除外）。
+- **物体关键点奖励比显式接触先验更稳**：任务进度写在 **物体-centric 关键点** 上，配合 RSI + SE(3) 增广，无需手工接触模式表即可学到剪刀/螺丝刀节律。
+- **SPIDER 轨迹不适合 residual 初始化**：论文四任务 SPIDER→RL **SR 0%**——动力学 MPC 轨迹偏离演示时，**闭环 RL + 运动学交互参考** 是更匹配的下游。
+- **Sim2Real 比 loco 更苛刻**：系统辨识、DR、重力/推力课程与观测设计 **不可省略**；部署仍依赖 **MoCap 物体状态**（vision 蒸馏是明确下一步）。
+- **工程读法**：官方仓可 **跳过重定向直接训**；真机排期应按「参考质量 → RL → 辨识 → MoCap 闭环」顺序验收，WUJI-Scissors 作 **embodiment/资产** 反例保留。
 
 ## 核心信息
 

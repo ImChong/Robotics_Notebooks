@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/regrind_arxiv_2607_11874.md — 复核 REGRIND：补齐结论/源码运行时序图/工程实践，刷新 Isaac Lab 2.3 官方仓与项目页开源核查
+
 ## [2026-09-09] ingest | sources/papers/vgg_ttt_arxiv_2602_23361.md — VGG-T³（CVPR 2026）：TTT 线性化 VGGT 离线千图重建；推理/评测/HF 权重已开源（NVIDIA OneWay NC），训练数据集实现待发布
 
 ## [2026-09-09] ingest | sources/papers/soma_arxiv_2606_09246.md — SOMA/SKIM（ECCV 2026，MPI-INF）肌肉解剖反演；GitHub+数据集已开源
