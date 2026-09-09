@@ -4,7 +4,7 @@ title: ONNX Runtime
 date: 2026-06-25
 tags: [framework, deployment, onnxruntime, inference, edge-ai, microsoft, cpp]
 summary: "ONNX Runtime 是微软主导的生产级 ONNX 推理引擎；1.28.0 起并行提供 CUDA 12/13 GPU 包，CUDA EP 可选用 cuDNN/cuFFT 并取消 nvrtc 链接以缩小 redistributable，是人形机器人 C++ 机载策略推理的主流运行时之一。"
-updated: 2026-07-26
+updated: 2026-09-09
 ---
 
 # ONNX Runtime
@@ -40,14 +40,19 @@ updated: 2026-07-26
 
 ## 核心结构（官方能力归纳）
 
+官方推理路径可记为三步：**导出 ONNX → `InferenceSession` 加载运行 →（可选）EP/图优化调优**。运行时对图做优化后按 EP **划分子图** 到 CPU/GPU 等后端（详见 [文档首页](https://onnxruntime.ai/docs/) 与 [EP 文档](https://onnxruntime.ai/docs/execution-providers/)）。
+
 1. **InferenceSession**：加载 `.onnx`，`session.run()` 喂入输入名→张量字典，得输出列表。
-2. **Execution Providers**：按优先级注册；算子无法在首选 EP 执行时 **回退** 到次选 EP（行为以版本文档为准）。
+2. **Execution Providers**：构造时 `providers=['CUDAExecutionProvider','CPUExecutionProvider']` 按优先级注册；运行时可用 `set_providers()` 改序（会重建 session）。`get_providers()` / `get_provider_options()` 查询当前配置。
 3. **包分发**：
    - `pip install onnxruntime` — CPU 默认构建
-   - `onnxruntime-gpu` — CUDA 路径（须匹配 **CUDA 12 或 13** 与 cuDNN；见下方版本锚点）
+   - `onnxruntime-gpu` — CUDA 路径（默认 CUDA 12.x；11.8 须额外 index URL；须匹配 **CUDA 12 或 13** 与 cuDNN；见版本锚点）
    - `onnxruntime-genai` — 生成式/LLM 扩展
-4. **语言绑定**：C++ 适合机载实时环；Python 适合导出后数值对齐与回归测试。
-5. **训练分支**：ONNX Runtime Training 面向大模型训练加速与 on-device training（机器人控制环较少直接用）。
+   - **同一环境勿同时装 CPU 与 GPU 包**
+4. **多框架导出**：PyTorch `torch.onnx.export`、TF `tf2onnx`、sklearn `skl2onnx`（[Python 入门](https://onnxruntime.ai/docs/get-started/with-python.html)）。
+5. **语言绑定**：C++ 适合机载实时环；Python 适合导出后数值对齐与回归测试；官方提供 **Web JS** 与 **C# Console** QuickStart 模板。
+6. **训练分支**：Large Model Training 与 On-Device Training（机器人控制环较少直接用）。
+7. **验证责任**：ORT 校验 ONNX 规范；**精度、性能与恶意图风险** 由部署方自测（文档首页明确提示）。
 
 ## 版本锚点：1.28.0（CUDA 13 与轻量部署）
 
@@ -124,7 +129,7 @@ flowchart LR
 ## 参考来源
 
 - [ONNX Runtime v1.28.0 Release 归档](../../sources/repos/onnxruntime-v1.28.0.md)
-- [ONNX Runtime 官方站点与文档索引](../../sources/repos/onnxruntime-official.md)
+- [ONNX Runtime 官方站点与文档索引](../../sources/repos/onnxruntime-official.md)（2026-09-09 文档复核）
 
 ## 推荐继续阅读
 

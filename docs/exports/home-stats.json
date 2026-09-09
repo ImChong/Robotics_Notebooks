@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-09",
-  "node_count": 3869,
-  "edge_count": 34454,
+  "node_count": 3870,
+  "edge_count": 34462,
   "coverage": {
-    "covered": 3842,
-    "total": 3842,
+    "covered": 3843,
+    "total": 3843,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -228,7 +228,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 455
+      "size": 454
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -311,7 +311,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 554,
+      "degree": 555,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

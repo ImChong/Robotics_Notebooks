@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-09
 related:
   - ../../roadmap/depth-icl.md
   - ./foundation-policy.md
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-stellavla-structured-icl-vla.md
   - ../entities/paper-zero-wam.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
+  - ../entities/light-react.md
   - ../entities/qwen-robot-manip.md
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
   - ../entities/skild-s1.md
@@ -130,6 +131,7 @@ flowchart LR
 | [S1](../entities/skild-s1.md) | 一条任务视频（可跨场景/视角/本体） | **显式**：预训练任务只经示范指定 | 未见任务最长约 10 min；100k h 档未见 66% vs 语言 VLA 9%（闭源自报） |
 | [HOST](../entities/paper-host-one-shot-human-video.md) | 单条真人视频 + 进度流形 | **显式**：TCC/DTW 对齐 + 自接地级联 | 八任务 62%；29 s；不改权重；代码+HF 权重已开 |
 | [Qwen-RobotManip](../entities/qwen-robot-manip.md) | 近期 H 个 (o,s,a) chunk | in-context policy adaptation | **stochastic context sampling** 防退化为复制最近 chunk |
+| [Light REACT](../entities/light-react.md) | 近期全身交互历史（运动反馈） | **仿真 meta-training** 学读上下文 | **全身** 故障/扰动下重组行走/爬行/恢复；权重冻结；**未开源**（2026-09 产业发布） |
 
 GEN-1.5 与显式 ICL 方法的关键差异：**未把「读完示范后的表现」写入训练目标**；作者假设物理数据分布的 burstiness / 重复循环模式与语言 ICL 涌现机制类似（**假设性解释**）。S1 走相反路线：把「从示范学习」当成预训练外环，并强调语言 prompt 在 **未见长程** 上几乎不 scale。
 
@@ -174,6 +176,7 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [ICL 纵深路线](../../roadmap/depth-icl.md) — Stage 0–5 学习路径（判别边界 → 示范表征 → 遥操作/人视频两条数据线 → 机制选型 → 涌现与评测）
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制
 - [RealAB 14 篇地图](../overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
+- [Light REACT](../entities/light-react.md) — 全身运动反馈作上下文；故障下行走/爬行/恢复（亮源新创部署段）
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 选型链在 VLA 层给出 I/O 边界与时延约束；ICL 是同一层的 **部署期适应旋钮**，长上下文直接吃掉该链关心的每步推理预算
 - [接触力旋量闭环](../queries/contact-wrench-closed-loop.md) — 示范抽象越高越易归纳，但接触力信息正是这条链所需；ICL 上下文用关键点/图节点表示时，力与接触细节被丢在这里
 
@@ -190,3 +193,4 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [GEN-1.5: Embodied Foundation Models are One-Shot Learners（Generalist AI 博客归档）](../../sources/blogs/generalist_gen15_one_shot.md)
 - [S1: In-Context Learning for Robotics（Skild 博客归档）](../../sources/blogs/skild_s1_in_context_learning.md)
 - [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)
+- [亮源新创 Light REACT 全身韧性 ICL 发布（2026-09-09）](../../sources/blogs/wechat_lightorigins_light_react_2026-09-09.md)
