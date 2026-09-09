@@ -244,6 +244,7 @@
     var communityLabelEls = new Map();
     var labelTickBound = false;
     var labelsLayoutReady = false;
+    var nodeLabelsRendered = false;   // 已把节点标签渲染成可见状态（用于「由显到隐」只熄灭一次）
     var baselineCameraDist = null;
     var cameraZoomInteracted = false;
     // 程序化取景（适配屏幕）期间锁定胶囊 scale，避免飞行动画中途
@@ -368,21 +369,52 @@
       return labelLayer;
     }
 
+    // 节点标签默认关闭（showNodeLabels=false，浮窗开关亦已隐藏），此前每次进入 3D 都会
+    // 预建 N 个 div、且每次 syncLabelStyles 无差别写一遍 textContent/color/fontSize。
+    // 改为「按需创建」：只有真正要显示的标签才建元素，未显示的节点不产生任何 DOM。
     function buildLabelEls() {
       var layer = ensureLabelLayer();
       if (!layer) return;
       labelEls.clear();
       communityLabelEls.clear();   // innerHTML='' 会一并清掉社区胶囊，重建时重新创建
       invalidateCommunityCentroids3D();
+      nodeLabelsRendered = false;
       layer.innerHTML = '';
-      sourceNodes.forEach(function (src) {
-        var el = document.createElement('div');
-        el.className = 'graph-3d-label';
-        el.textContent = getNodeLabelText(src);
-        layer.appendChild(el);
-        labelEls.set(src.id, el);
-      });
       syncLabelStyles();
+    }
+
+    // 惰性创建单个节点标签元素，并写入与 syncLabelStyles 一致的静态样式。
+    function ensureNodeLabelEl(id) {
+      var el = labelEls.get(id);
+      if (el) return el;
+      var layer = ensureLabelLayer();
+      if (!layer) return null;
+      var src = resolveSourceNode(id) || nodeById.get(id);
+      if (!src) return null;
+      el = document.createElement('div');
+      el.className = 'graph-3d-label';
+      applyLabelStaticStyle(el, src, getNodeLabelColor());
+      layer.appendChild(el);
+      labelEls.set(id, el);
+      return el;
+    }
+
+    function applyLabelStaticStyle(el, src, color) {
+      el.textContent = getNodeLabelText(src);
+      el.style.color = color;
+      el.style.fontSize = getNodeLabelFontSize(src) + 'px';
+      el.classList.toggle('is-depth-hub', !!isNodeLabelHub(src));
+    }
+
+    // 标签整体不可见时只需把已建元素熄灭一次，之后每帧直接返回。
+    function hideAllNodeLabels() {
+      if (!nodeLabelsRendered) return;
+      nodeLabelsRendered = false;
+      labelEls.forEach(function (el) { setLabelVisible(el, false, '0'); });
+    }
+
+    function nodeLabelsSuppressed() {
+      return !areNodeLabelsVisible() || container.hidden || timelineActive() || !labelsLayoutReady;
     }
 
     function effectiveLabelOpacity(d) {
@@ -398,15 +430,13 @@
 
     function syncLabelStyles() {
       if (!labelLayer) return;
+      if (nodeLabelsSuppressed()) { hideAllNodeLabels(); return; }
+      nodeLabelsRendered = true;
       var color = getNodeLabelColor();
       labelEls.forEach(function (el, id) {
         var d = nodeById.get(id);
         if (!d) return;
-        var src = resolveSourceNode(id) || d;
-        el.textContent = getNodeLabelText(src);
-        el.style.color = color;
-        el.style.fontSize = getNodeLabelFontSize(src) + 'px';
-        el.classList.toggle('is-depth-hub', !!isNodeLabelHub(src));
+        applyLabelStaticStyle(el, resolveSourceNode(id) || d, color);
         var opacity = effectiveLabelOpacity(d);
         var on = opacity > 0.02;
         setLabelVisible(el, on, on ? String(opacity) : '0');
@@ -415,34 +445,37 @@
 
     function syncLabelPositions() {
       if (!graph || container.hidden || !labelLayer) return;
-      if (!areNodeLabelsVisible()) {
-        labelEls.forEach(function (el) {
-          setLabelVisible(el, false);
-        });
-        return;
-      }
+      if (nodeLabelsSuppressed()) { hideAllNodeLabels(); return; }
+      nodeLabelsRendered = true;
       var dist = getCameraDistance();
       if (baselineCameraDist && dist && Math.abs(dist - baselineCameraDist) > baselineCameraDist * 0.04) {
         cameraZoomInteracted = true;
       }
       var graphNodes = graph.graphData().nodes || [];
       graphNodes.forEach(function (d) {
-        var el = labelEls.get(d.id);
-        if (!el || d.x == null || d.y == null) return;
-        var z = d.z != null ? d.z : 0;
-        var src = resolveSourceNode(d.id) || d;
-        var center = graph.graph2ScreenCoords(d.x, d.y, z);
-        if (!center || !isFinite(center.x) || !isFinite(center.y)) {
-          setLabelVisible(el, false);
+        if (d.x == null || d.y == null) return;
+        // 先判可见再投影：不可见节点不做两次 graph2ScreenCoords，也不建元素。
+        var opacity = effectiveLabelOpacity(d);
+        if (opacity <= 0.02) {
+          var stale = labelEls.get(d.id);
+          if (stale) setLabelVisible(stale, false, '0');
           return;
         }
+        var z = d.z != null ? d.z : 0;
+        var center = graph.graph2ScreenCoords(d.x, d.y, z);
+        if (!center || !isFinite(center.x) || !isFinite(center.y)) {
+          var off = labelEls.get(d.id);
+          if (off) setLabelVisible(off, false, '0');
+          return;
+        }
+        var el = ensureNodeLabelEl(d.id);
+        if (!el) return;
+        var src = resolveSourceNode(d.id) || d;
         var rimY = getNodeRadius(src) + 13;
         var bottom = graph.graph2ScreenCoords(d.x, d.y + rimY, z);
         var topY = bottom && isFinite(bottom.y) ? bottom.y : center.y + 12;
         setLabelScreenPos(el, center.x, topY, 'translate3d(' + center.x + 'px,' + topY + 'px,0) translate(-50%,0)');
-        var opacity = effectiveLabelOpacity(d);
-        var on = opacity > 0.02;
-        setLabelVisible(el, on, on ? String(opacity) : '0');
+        setLabelVisible(el, true, String(opacity));
       });
     }
 
@@ -924,22 +957,25 @@
       return mesh;
     }
 
+    // 逐节点外观。此前用 scene.traverse 遍历整棵场景树（节点 + 每条边各一个对象，
+    // 全图约 3.8 万个），其中绝大多数是连线 mesh，白跑一遍判断。改为直接遍历数据侧的
+    // nodes3d 并取库绑定的 __threeObj，工作量降到节点数量级。
     function updateNodeMeshes() {
       if (!graph || !bundledThree) return;
-      var scene = graph.scene && graph.scene();
-      if (!scene) return;
-      scene.traverse(function (obj) {
-        if (!obj.isMesh || !obj.userData || !obj.userData.nodeId || !obj.material) return;
-        var d = nodeById.get(obj.userData.nodeId);
-        if (!d) return;
-        var radius = sphereRadiusFor(d) * timelinePopFactor(obj.userData.nodeId);
+      var data = graph.graphData();
+      var list = (data && data.nodes) || nodes3d;
+      for (var i = 0; i < list.length; i++) {
+        var d = list[i];
+        var obj = d && d.__threeObj;
+        if (!obj || !obj.isMesh || !obj.material) continue;
+        var radius = sphereRadiusFor(d) * timelinePopFactor(d.id);
         var opacity = nodeOpacityFor(d);
         obj.scale.set(radius, radius, radius);
         obj.material.color.set(getNodeColor(d));
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
         obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
-      });
+      }
     }
 
     // 连线加粗：linkWidth 访问器只在「创建连线几何」时把半径烘进圆柱，事后改它不会重建已渲染
@@ -1704,6 +1740,41 @@
         sidebarDirect = new Set();
         sidebarSecondary = new Set();
         refreshAppearance();
+      },
+
+      // G2 基线测量：分离悬停刷新 / 标签同步 / 场景对象数（非业务 UI）
+      measureHover: function (nodeId) {
+        var t = performance.now();
+        hoverNodeId = nodeId || null;
+        refreshAppearance();
+        return +(performance.now() - t).toFixed(2);
+      },
+
+      measureSyncLabels: function () {
+        var t = performance.now();
+        syncLabels();
+        return +(performance.now() - t).toFixed(2);
+      },
+
+      getSceneStats: function () {
+        var scene = graph && typeof graph.scene === 'function' ? graph.scene() : null;
+        if (!scene) return null;
+        var meshes = 0, lines = 0, labels = 0;
+        var nodeMeshes = 0, dimmed = 0, bright = 0;
+        scene.traverse(function (obj) {
+          if (obj.isMesh) {
+            meshes += 1;
+            if (obj.userData && obj.userData.nodeId && obj.material) {
+              nodeMeshes += 1;
+              if (obj.material.opacity < 0.5) dimmed += 1; else bright += 1;
+            }
+          } else if (obj.isLine || obj.isLineSegments) lines += 1;
+        });
+        if (labelLayer) labels = labelLayer.querySelectorAll('.graph-3d-label').length;
+        return {
+          scene_meshes: meshes, scene_lines: lines, label_elements: labels,
+          node_meshes: nodeMeshes, node_dimmed: dimmed, node_bright: bright,
+        };
       },
 
       // G0 基线测量：读取 three.js 当帧 draw calls / 三角形数（非业务 UI）

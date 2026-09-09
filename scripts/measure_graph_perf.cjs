@@ -1,5 +1,6 @@
-// G0 图谱动态渲染性能基线测量（plan.md「2026-09-08 图谱动态渲染性能专项」G0）。
-// 分离记录：力 tick / SVG 坐标写入 / 社区标签 / 筛选，以及刷新布局的长任务与帧耗时、3D draw calls。
+// 图谱动态渲染性能测量（plan.md「2026-09-08 图谱动态渲染性能专项」G0 基线 + G1/G2/G3 前后对比）。
+// 分离记录：力 tick / SVG 坐标写入 / 社区标签 / 筛选，刷新布局的长任务与帧耗时，
+// 3D draw calls / 三角形数 / 场景对象数，以及 3D 悬停刷新与标签同步耗时。
 // 用法：node scripts/measure_graph_perf.cjs [baseUrl] [outJson]
 //   先在 docs/ 下 `python3 -m http.server 8765`（数据需 `make export graph`）。
 // 注意：headless + 软件 WebGL，GPU 帧率不可外推到真机；结论见 docs/checklists/graph-perf-baseline-g0.md。
@@ -199,6 +200,30 @@ function stats(arr) {
       };
     });
 
+    // ── 筛选态下的每 tick 成本与 applyFilters 重算成本（G3 的直接验收口径）──
+    out.cost_split_filtered_ms = await page.evaluate(async (REPEATS, TICK_SAMPLES) => {
+      const dbg = window.__RN_GRAPH2D_DEBUG__;
+      dbg.stop();
+      const collect = async (fn, repeats) => {
+        const xs = [];
+        for (let r = 0; r < repeats; r++) {
+          const t = performance.now();
+          fn();
+          xs.push(performance.now() - t);
+          await new Promise(res => requestAnimationFrame(res));
+        }
+        return xs;
+      };
+      return {
+        force_tick: await collect(() => dbg.tickOnce(), TICK_SAMPLES),
+        sync_dom_total: await collect(() => dbg.syncDom(), TICK_SAMPLES),
+        apply_filters: await collect(() => dbg.applyFilters(), REPEATS),
+      };
+    }, REPEATS, TICK_SAMPLES);
+    for (const k of Object.keys(out.cost_split_filtered_ms)) {
+      out.cost_split_filtered_ms[k] = stats(out.cost_split_filtered_ms[k]);
+    }
+
     // ── 滑块连续输入：模拟主线程被阻塞时排队的 input 事件一次性回放 ──
     out.slider_burst = await page.evaluate(async () => {
       const sl = document.getElementById('sl-degree-top');
@@ -278,8 +303,38 @@ function stats(arr) {
           programs: last.programs,
           pixel_ratio: last.pixel_ratio,
           canvas: cv ? cv.width + 'x' + cv.height : null,
+          scene: typeof v.getSceneStats === 'function' ? v.getSceneStats() : null,
         };
       });
+
+      // 3D 悬停刷新 / 标签同步耗时（G2 的直接验收口径）
+      out.three_d_interaction_ms = await page.evaluate(async (REPEATS) => {
+        const v = window.__RN_GRAPH3D_VIEW__;
+        if (!v || typeof v.measureHover !== 'function') return { available: false };
+        const ids = (window.__RN_GRAPH2D_DEBUG__ && window.__RN_GRAPH2D_DEBUG__.topNodeIds)
+          ? window.__RN_GRAPH2D_DEBUG__.topNodeIds(REPEATS)
+          : [];
+        const hoverOn = [];
+        const hoverOff = [];
+        for (let i = 0; i < REPEATS; i++) {
+          const id = ids[i % Math.max(1, ids.length)] || null;
+          hoverOn.push(v.measureHover(id));
+          await new Promise(res => requestAnimationFrame(res));
+          hoverOff.push(v.measureHover(null));
+          await new Promise(res => requestAnimationFrame(res));
+        }
+        const labels = [];
+        for (let i = 0; i < REPEATS; i++) {
+          labels.push(v.measureSyncLabels());
+          await new Promise(res => requestAnimationFrame(res));
+        }
+        return { available: true, hover_on: hoverOn, hover_off: hoverOff, sync_labels: labels };
+      }, REPEATS);
+      if (out.three_d_interaction_ms.available) {
+        for (const k of ['hover_on', 'hover_off', 'sync_labels']) {
+          out.three_d_interaction_ms[k] = stats(out.three_d_interaction_ms[k]);
+        }
+      }
     } catch (e) {
       out.three_d = { available: false, error: String(e.message) };
     }
