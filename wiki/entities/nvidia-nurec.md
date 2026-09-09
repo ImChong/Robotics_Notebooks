@@ -138,6 +138,7 @@ NuRec 渲染嵌在 Omniverse Kit。Isaac Sim 加载兼容 USDZ 后，用 **`Omni
 - [GS-Playground](./gs-playground.md) — 仿真侧批量 3DGS 渲染吞吐，不是日志重建产品
 - [Marble](./marble-world-model.md) — 生成式 3D 世界（发明未观测区）；本页是传感器日志重建
 - [Sim2Real](../concepts/sim2real.md)
+- [立体匹配基础模型](../methods/stereo-matching-foundation-models.md) — 机器人重建栈中 FoundationStereo 等深度前端
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 
 ## 参考来源
