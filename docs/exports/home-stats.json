@@ -9,38 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/formalizations/tan-norm-rotation.md",
-      "detail_id": "wiki-formalizations-tan-norm-rotation",
-      "label": "tan_norm 旋转观测表示",
-      "type": "formalization",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/formalizations/unit-quaternion-so3.md",
-      "detail_id": "wiki-formalizations-unit-quaternion-so3",
-      "label": "单位四元数与 SO(3)",
-      "type": "formalization",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-r3-relative-regression.md",
-      "detail_id": "entity-paper-r3-relative-regression",
-      "label": "R³：相对回归的 3D 重建",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/eth3d-stereo-benchmark.md",
       "detail_id": "entity-eth3d-stereo-benchmark",
       "label": "ETH3D Two-View Stereo Benchmark",
@@ -71,87 +39,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-dpt.md",
-      "detail_id": "entity-paper-dpt",
-      "label": "DPT：Vision Transformers for Dense Prediction",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-nbs-no-bias-stereo.md",
-      "detail_id": "entity-paper-nbs-no-bias-stereo",
-      "label": "NBS：No Bias Stereo",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/stereo-matching-foundation-models.md",
-      "detail_id": "wiki-methods-stereo-matching-foundation-models",
-      "label": "立体匹配基础模型与基准生态",
-      "type": "method",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-vgg-ttt.md",
-      "detail_id": "entity-paper-vgg-ttt",
-      "label": "VGG-T³：大规模离线前馈 3D 重建",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-soma-surface-observations-muscle-anatomy.md",
-      "detail_id": "entity-paper-soma-surface-observations-muscle-anatomy",
-      "label": "SOMA：从体表观测到肌肉解剖",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-functional-slam.md",
-      "detail_id": "entity-paper-functional-slam",
-      "label": "Functional-SLAM（在线功能场景图 SLAM）",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/project-superdex.md",
-      "detail_id": "entity-project-superdex",
-      "label": "Project SuperDex",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-hand-erc-benchmarking-dexterity.md",
-      "detail_id": "entity-paper-hand-erc-benchmarking-dexterity",
-      "label": "HAND ERC 多指灵巧手 Dexterity 评测综述",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added"
-    },
-    {
       "path": "wiki/entities/paper-3dway.md",
       "detail_id": "entity-paper-3dway",
       "label": "3DWay",
@@ -180,14 +67,36 @@
       "action": "added"
     },
     {
-      "path": "wiki/entities/paper-deicticvla.md",
-      "detail_id": "entity-paper-deicticvla",
-      "label": "DeicticVLA：语言与指示手势三模式统一 VLA",
+      "path": "wiki/entities/paper-causalvae-world-models.md",
+      "detail_id": "entity-paper-causalvae-world-models",
+      "label": "CausalVAE：latent 世界模型的可插拔因果结构模块",
       "type": "entity",
       "recency": "2026-09-09",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dpt.md",
+      "detail_id": "entity-paper-dpt",
+      "label": "DPT：Vision Transformers for Dense Prediction",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-eneas.md",
+      "detail_id": "entity-paper-eneas",
+      "label": "ENEAS：文本提示实例跟踪与语义发现",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/paper-foci-policy.md",
@@ -207,18 +116,108 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-from-where-to-how.md",
+      "detail_id": "entity-paper-from-where-to-how",
+      "label": "Coherent4D / HIGFlow",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hibridge-dialogue.md",
+      "detail_id": "entity-paper-hibridge-dialogue",
+      "label": "HiBRIDGE",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-memforest.md",
+      "detail_id": "entity-paper-memforest",
+      "label": "MemForest",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-motion-based-messaging.md",
+      "detail_id": "entity-paper-motion-based-messaging",
+      "label": "Motion-based messaging",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-remomask-2.md",
+      "detail_id": "entity-paper-remomask-2",
+      "label": "ReMoMask-2",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-state-readout-decoupling.md",
+      "detail_id": "entity-paper-state-readout-decoupling",
+      "label": "SRD：latent 世界模型的状态–读数解耦",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-traj-lewm.md",
+      "detail_id": "entity-paper-traj-lewm",
+      "label": "Traj-LeWM：潜轨迹代价的路径感知世界模型规划",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/stereo-matching-foundation-models.md",
+      "detail_id": "wiki-methods-stereo-matching-foundation-models",
+      "label": "立体匹配基础模型与基准生态",
+      "type": "method",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/formalizations/tan-norm-rotation.md",
+      "detail_id": "wiki-formalizations-tan-norm-rotation",
+      "label": "tan_norm 旋转观测表示",
+      "type": "formalization",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/tan-norm-rotation.md",
-    "detail_id": "wiki-formalizations-tan-norm-rotation",
-    "label": "tan_norm 旋转观测表示",
-    "type": "formalization",
+    "path": "wiki/entities/eth3d-stereo-benchmark.md",
+    "detail_id": "entity-eth3d-stereo-benchmark",
+    "label": "ETH3D Two-View Stereo Benchmark",
+    "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
