@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/humanoid-eight-capabilities-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-eight-capabilities-technology-map",
+      "label": "人形机器人八大能力技术地图",
+      "type": "overview",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/meshroom.md",
       "detail_id": "entity-meshroom",
       "label": "Meshroom",
@@ -197,27 +206,16 @@
       "recency": "2026-09-07",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-qlaun.md",
-      "detail_id": "entity-paper-qlaun",
-      "label": "QLAUN：模块化准直驱 3D 打印四足",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/meshroom.md",
-    "detail_id": "entity-meshroom",
-    "label": "Meshroom",
-    "type": "entity",
-    "recency": "2026-09-08",
+    "path": "wiki/overview/humanoid-eight-capabilities-technology-map.md",
+    "detail_id": "wiki-overview-humanoid-eight-capabilities-technology-map",
+    "label": "人形机器人八大能力技术地图",
+    "type": "overview",
+    "recency": "2026-09-09",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
