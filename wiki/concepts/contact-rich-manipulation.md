@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-09
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -26,6 +26,7 @@ related:
   - ../entities/humantouch.md
   - ../tasks/manipulation.md
   - ../entities/dexbench.md
+  - ../entities/project-superdex.md
   - ../entities/paper-dexholdem.md
   - ../entities/paper-robot-juggling-athenazero.md
   - ./contact-dynamics.md
@@ -141,6 +142,7 @@ sources:
 - [SoftVTBench](../entities/paper-softvtbench.md) — **可变形过程安全评测**：Goal vs Safety Success；FEM 特权态暴露过压「虚假成功」，触觉主要抬高 Safety。
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳段 **自碰撞（critical point）** 的动态操作；用 **任务级 ILC + 逆模型 QP** 而非阻抗执行层直接闭环。
 - [Robot Juggling / AthenaZero](../entities/paper-robot-juggling-athenazero.md) — 多指 **抛/接间歇接触**；真机 **正则化记忆学习** 修正落点，**MRS** 保证连续动态动作不撞限位（arXiv:2608.26800；未开源）
+- [Project SuperDex](../entities/project-superdex.md) — Meta **接触优先物理 + Studio 资产 + Lab RL** 的灵巧操作全栈平台（已开源；Teleop 计划 Q4 2026）。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
 
 ## 常见误区

@@ -180,6 +180,7 @@ flowchart LR
 - [RLDX-1](./rldx-1.md) — 同机构灵巧 VLA；公开评测不在 DexBench 上
 - [Isaac Lab](./isaac-lab.md) — Arena 计划接入处；当前仍是 coming soon
 - [DexVerse](./paper-dexverse.md) — 易混名的开源仿真灵巧 bench
+- [Project SuperDex](./project-superdex.md) — Meta 接触优先仿真全栈；非工业 OSC 规格
 - [DexHoldem](./paper-dexholdem.md) — 易混名的真机扑克协议；分数已出，对象是牌/筹码不是工业 OSC
 - [LeRobot](./lerobot.md) — HF 回放集的封装格式
 - [HRDexDB](./hrdexdb-dataset.md) — 同机构人–机配对抓取数据，不是本任务套件
