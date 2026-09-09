@@ -957,22 +957,25 @@
       return mesh;
     }
 
+    // 逐节点外观。此前用 scene.traverse 遍历整棵场景树（节点 + 每条边各一个对象，
+    // 全图约 3.8 万个），其中绝大多数是连线 mesh，白跑一遍判断。改为直接遍历数据侧的
+    // nodes3d 并取库绑定的 __threeObj，工作量降到节点数量级。
     function updateNodeMeshes() {
       if (!graph || !bundledThree) return;
-      var scene = graph.scene && graph.scene();
-      if (!scene) return;
-      scene.traverse(function (obj) {
-        if (!obj.isMesh || !obj.userData || !obj.userData.nodeId || !obj.material) return;
-        var d = nodeById.get(obj.userData.nodeId);
-        if (!d) return;
-        var radius = sphereRadiusFor(d) * timelinePopFactor(obj.userData.nodeId);
+      var data = graph.graphData();
+      var list = (data && data.nodes) || nodes3d;
+      for (var i = 0; i < list.length; i++) {
+        var d = list[i];
+        var obj = d && d.__threeObj;
+        if (!obj || !obj.isMesh || !obj.material) continue;
+        var radius = sphereRadiusFor(d) * timelinePopFactor(d.id);
         var opacity = nodeOpacityFor(d);
         obj.scale.set(radius, radius, radius);
         obj.material.color.set(getNodeColor(d));
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
         obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
-      });
+      }
     }
 
     // 连线加粗：linkWidth 访问器只在「创建连线几何」时把半径烘进圆柱，事后改它不会重建已渲染
@@ -1757,12 +1760,21 @@
         var scene = graph && typeof graph.scene === 'function' ? graph.scene() : null;
         if (!scene) return null;
         var meshes = 0, lines = 0, labels = 0;
+        var nodeMeshes = 0, dimmed = 0, bright = 0;
         scene.traverse(function (obj) {
-          if (obj.isMesh) meshes += 1;
-          else if (obj.isLine || obj.isLineSegments) lines += 1;
+          if (obj.isMesh) {
+            meshes += 1;
+            if (obj.userData && obj.userData.nodeId && obj.material) {
+              nodeMeshes += 1;
+              if (obj.material.opacity < 0.5) dimmed += 1; else bright += 1;
+            }
+          } else if (obj.isLine || obj.isLineSegments) lines += 1;
         });
         if (labelLayer) labels = labelLayer.querySelectorAll('.graph-3d-label').length;
-        return { scene_meshes: meshes, scene_lines: lines, label_elements: labels };
+        return {
+          scene_meshes: meshes, scene_lines: lines, label_elements: labels,
+          node_meshes: nodeMeshes, node_dimmed: dimmed, node_bright: bright,
+        };
       },
 
       // G0 基线测量：读取 three.js 当帧 draw calls / 三角形数（非业务 UI）
