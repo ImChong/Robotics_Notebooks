@@ -43,6 +43,10 @@
  - `tools/gmr_to_mimickit/` — 将 [GMR](https://github.com/YanjieZe/GMR) 输出转为 MimicKit 格式；
  - `tools/smpl_to_mimickit/` — 将 [AMASS](https://amass.is.tue.mpg.de/) 的 SMPL 动作转为 MimicKit 格式。
 
+### 策略观测：tan_norm
+
+DeepMimic / AMP 等环境的 `root_rot_obs` 与 `joint_rot_obs` 使用 **tan_norm**（6 维：旋转后的参考切向 + 法向），实现见 `mimickit/util/torch_util.py`；摘录与 Zhou 6D 对照见 [`sources/repos/mimickit_tan_norm.md`](mimickit_tan_norm.md)，wiki 页 [`wiki/formalizations/tan-norm-rotation.md`](../../wiki/formalizations/tan-norm-rotation.md)。
+
 ## 与 ProtoMotions 的关系
 
 - **MimicKit**：偏算法与论文复现的轻量框架，运动模仿方法族谱集中、依赖少。

@@ -7,10 +7,12 @@ related:
   - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md
   - ./unit-quaternion-so3.md
+  - ./tan-norm-rotation.md
   - ../concepts/whole-body-control.md
   - ../methods/visual-servoing.md
   - ../formalizations/mdp.md
   - ../entities/paper-se3-tangent-to.md
+  - ../entities/mimickit.md
   - ../methods/trajectory-optimization.md
 sources:
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
@@ -18,6 +20,8 @@ sources:
   - ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md
   - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
   - ../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md
+  - ../../sources/papers/zhou_2019_cvpr_continuity_rotation_representations.md
+  - ../../sources/repos/mimickit_tan_norm.md
 summary: "SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。"
 ---
 
@@ -48,14 +52,17 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 |------|-----|-----|-----|---------|
 | **欧拉角 (Euler Angles)** | 3 | 直观，最省空间 | 存在万向节死锁 (Gimbal Lock)；不连续 | 简单的 UI 显示 |
 | **四元数 (Quaternions)** | 4 | 紧凑，无死锁，插值平滑 | 存在双倍覆盖 ($q = -q$)；单位化约束 | 控制器内部状态、MoCap |
-
-四元数的 Hamilton 积、SLERP 与 **scalar 顺序** 见 [单位四元数与 SO(3)](./unit-quaternion-so3.md)。
 | **旋转矩阵 (Rotation Matrix)** | 9 | 线性，无死锁，唯一 | 自由度冗余 (9D 表示 3D)；需要正交化 | 坐标变换计算 |
 | **6D 连续表示 (6D Rep)** | 6 | **姿态空间连续**；适合神经网络回归 | 需要格拉姆-施密特正交化 | **Deep Learning 姿态估计** |
+| **tan_norm** | 6 | 连续；无 $q \equiv -q$；体 x/z 轴语义 | 命名非文献通用；参考轴固定 | **MimicKit / ProtoMotions 运动模仿观测** |
+
+Hamilton 积、SLERP 与 **scalar 顺序** 见 [单位四元数与 SO(3)](./unit-quaternion-so3.md)。
 
 ### 1. 为什么 6D 表示法更适合 DL？
 传统的四元数和欧拉角在 $\mathbb{R}^n$ 到 $SO(3)$ 的映射过程中存在**不连续点**。这意味着当网络预测值发生微小连续变化时，映射出的旋转可能发生突变。
 6D 表示法通过取旋转矩阵的前两列 $(a_1, a_2)$，并利用正交化重建第三列，实现了全空间的连续映射。
+
+运动模仿栈里的 **[tan_norm](./tan-norm-rotation.md)** 同属 6 维连续族，但编码为 $[\,R(q)\mathbf{t}_0 \,\|\, R(q)\mathbf{n}_0\,]$（固定参考切向/法向），与 Zhou 论文「任意前两列」在实现与语义上不同——读 MimicKit 观测维数时必须区分二者。
 
 ## 损失函数 (Loss Functions)
 
@@ -66,7 +73,9 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 
 ## 关联页面
 - [单位四元数与 SO(3)](./unit-quaternion-so3.md) — 四元数专页（Diebel / Shoemake / MR Ch 3）
+- [tan_norm 旋转观测表示](./tan-norm-rotation.md) — MimicKit / ProtoMotions 的 6D 观测编码与 decode 链
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 so(3)/se(3) 分工、四元数存储与 exp/log 优化链路
+- [MimicKit](../entities/mimickit.md) — char_obs / tar_obs 中的 tan_norm 用法
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — TO 里浮动基「变量/差分/积分」三决策的对照实验
 - [AHMP](../entities/paper-ahmp.md) — 同一切空间内层 + 接触发现
@@ -77,7 +86,8 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 ## 参考来源
 - [Diebel 2006 姿态参数化统一参考](../../sources/papers/diebel_2006_representing_attitude_quaternions.md)
 - [Shoemake 1985 四元数曲线与 SLERP](../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md)
-- Zhou, Y., et al. (2019). *On the continuity of rotation representations in neural networks*. (CVPR 最佳论文候选，提出了 6D 表示)
+- [Zhou et al. CVPR 2019 连续旋转表示](../../sources/papers/zhou_2019_cvpr_continuity_rotation_representations.md)
+- [MimicKit tan_norm 源码摘录](../../sources/repos/mimickit_tan_norm.md)
 - Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 *Rigid-Body Motions* — SO(3)/SE(3) 的李群结构、指数映射、twist 表示。
 - [sources/papers/perception.md](../../sources/papers/perception.md)
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
