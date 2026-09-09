@@ -4885,58 +4885,60 @@
       visibleNodeIds.clear();
       let visible = 0;
 
+      // 每节点原先要新建 4 个 d3 selection（g / glow / circle / label），全图约 1.5 万个。
+      // 这里改写原生元素、并把三个子元素缓存在宿主 <g> 上，输出的属性与此前逐字对应。
       node.each(function(d) {
         const ok = nodeMatchesDegreeTop(d) && nodeMatchesRecencyTop(d)
           && nodeMatchesCurrentFilter(d)
           && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
-        // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
-        const g = d3.select(this);
         const hub = isCurrentTopicHub(d);
-        g.classed('node-depth-hub', hub);
-        g.style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
+        this.classList.toggle('node-depth-hub', hub);
+        // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
+        this.style.opacity = hasFilter ? (ok ? '1' : '0.08') : '1';
         // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
-        g.style('pointer-events', hasFilter && !ok ? 'none' : null);
+        this.style.pointerEvents = hasFilter && !ok ? 'none' : '';
 
+        let parts = this.__nodeParts;
+        if (!parts) {
+          parts = this.__nodeParts = {
+            glow: this.querySelector('.node-glow'),
+            circle: this.querySelector('.node-circle'),
+            label: this.querySelector('.node-label'),
+          };
+        }
         const hubR = hub ? scaledRadius(d) * 1.28 : scaledRadius(d);
-        d3.select(this).select('.node-glow')
-          .attr('r', hubR + 8)
-          .attr('fill-opacity', hub && ok ? 0.28 * recencyDimOf(d) : 0);
-        d3.select(this).select('.node-circle')
-          .attr('r', hubR)
-          .attr('fill-opacity', ok ? recencyDimOf(d) : 0.06)
-          .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) * recencyDimOf(d) : 0.05)
-          .attr('stroke-width', hub ? 2.5 : 1.5);
-        d3.select(this).select('.node-label')
-          .style('font-weight', hub ? 700 : null);
+        const dim = recencyDimOf(d);
+        parts.glow.setAttribute('r', hubR + 8);
+        parts.glow.setAttribute('fill-opacity', hub && ok ? 0.28 * dim : 0);
+        parts.circle.setAttribute('r', hubR);
+        parts.circle.setAttribute('fill-opacity', ok ? dim : 0.06);
+        parts.circle.setAttribute('stroke-opacity', ok ? (hub ? 0.85 : 0.35) * dim : 0.05);
+        parts.circle.setAttribute('stroke-width', hub ? 2.5 : 1.5);
+        parts.label.style.fontWeight = hub ? '700' : '';
       });
       sync2DNodeLabels();
       updateCommunityLabels();
 
-      link
-        .style('opacity', null) // V21 修复：清除 openSidebar 的内联 style 干扰
-        .attr('stroke-opacity', e => {
-          if (!hasFilter) return 1;
-          const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
-          const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
-          if (!s || !t) return 0.2;
-          return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-                  && nodeMatchesRecencyTop(s) && nodeMatchesRecencyTop(t)
-                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
-                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t)) ? 1 : 0.2;
-        })
-        .attr('stroke-width', e => {
-          if (!hasFilter) return linkWidthBase;
-          const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
-          const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
-          if (!s || !t) return linkWidthBase * 0.5;
-          const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-            && nodeMatchesRecencyTop(s) && nodeMatchesRecencyTop(t)
-            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
-            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t);
-          return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
-        });
+      // 连线判据原先对每条边把 12 个节点谓词各跑一遍、且 stroke-opacity 与 stroke-width
+      // 两趟各跑一次（全图约 82 万次谓词调用）。edgeMatchesCurrentFilter 与
+      // nodeMatchesCurrentFilter 实现完全一致，故「两端都命中」== 两端都在 visibleNodeIds
+      // 里，改为两次 Set 查表；三趟属性写入也合并成一趟。
+      link.each(function(e) {
+        // V21 修复：清除 openSidebar 的内联 style 干扰
+        this.style.opacity = '';
+        if (!hasFilter) {
+          this.setAttribute('stroke-opacity', 1);
+          this.setAttribute('stroke-width', linkWidthBase);
+          return;
+        }
+        const sId = typeof e.source === 'object' ? e.source.id : e.source;
+        const tId = typeof e.target === 'object' ? e.target.id : e.target;
+        const edgeOk = visibleNodeIds.has(sId) && visibleNodeIds.has(tId);
+        this.setAttribute('stroke-opacity', edgeOk ? 1 : 0.2);
+        this.setAttribute('stroke-width', edgeOk ? linkWidthBase : linkWidthBase * 0.5);
+      });
       updateCount(visible);
       if (graph3dView && is3DView()) graph3dView.syncFilters();
       if (searchQuery) flyToVisible();
