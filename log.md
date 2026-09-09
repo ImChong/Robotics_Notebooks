@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/r3_arxiv_2605_26519.md — R³ 相对回归流式 3D 重建（UMich×西湖×NVIDIA）；Apache-2.0 代码 + CC BY-NC 权重已开源，评测代码待发布
+
 ## [2026-09-09] ingest | sources/papers/nbs_arxiv_2608_28933.md — NBS 无偏置 ViT 立体匹配 + 13 项基线/基准生态（FoundationStereo/S²M²/IGEV/CroCo/ETH3D 等）；NBS 代码待发布
 
 ## [2026-09-09] ingest | sources/papers/regrind_arxiv_2607_11874.md — 复核 REGRIND：补齐结论/源码运行时序图/工程实践，刷新 Isaac Lab 2.3 官方仓与项目页开源核查
