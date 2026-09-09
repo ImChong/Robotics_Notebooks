@@ -131,6 +131,7 @@ flowchart LR
 - **Seeed reBot 桌面臂：** [reBot-DevArm](./rebot-devarm.md)（B601-DM / B601-RS）提供官方 Wiki 的 LeRobot 入门教程（采数 / 训练路径以 Seeed 文档为准），适合需要 **>1 kg 负载** 且仍走 LeRobot 格式的桌面操作实验。
 - **MHS 预告（2026-08）：** Anthropic [Model Hardware Standard](../concepts/model-hardware-standard.md) 研究预览点名 Hugging Face 将把 MHS 加进 LeRobot，让 agent 发现并操作真实设备。入库日 **规范与 SDK 未开源**，不能当可运行依赖；硬件通路与本页的 **数据集 Hub + 策略训练** 正交。
 - **竞赛全链路对照：** [Learning to Fold / LeHome](./paper-lehome-learning-to-fold.md)（ICRA 2026）在 **SO-ARM101** 上开源采集–训练–推理，并发布仿真/真机 HF 权重；数据侧兼容 LeRobot 格式与 Hub 总线。
+- **Intel 部署路径：** [OpenVINO](./openvino.md) **Physical AI** 运行时官方集成 LeRobot 模型导出，可在 Intel CPU/GPU/NPU 上以 PyTorch 或 OpenVINO 后端跑 `PolicyRuntime` 控制环（与 NVIDIA/Jetson 栈对照选型）。
 
 ## 常见误区
 

@@ -733,7 +733,7 @@
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
 - [OpenTorque Actuator（开源准直驱关节）](wiki/entities/opentorque-actuator.md) — OpenTorque Actuator**（[G-Levine/OpenTorque-Actuator](https://github.com/G-Levine/OpenTorque-Actuat `📅unknown` `[entity_page]`
-- [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理部署工具包**，面向 `📅2026-06-25` `[entity_page]`
+- [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理优化与部署工具包 `📅2026-06-25` `[entity_page]`
 - [OpenVLA](wiki/entities/openvla.md) — OpenVLA**（openvla/openvla）提供可复现的 **Vision-Language-Action（VL `📅unknown` `[entity_page]`
 - [OpenVSLAM](wiki/entities/openvslam.md) — OpenVSLAM** 强调 **模块可替换** 的视觉 SLAM 框架（特征、回环、优化器可插拔）。 `📅unknown` `[entity_page]`
 - [ORB-SLAM3](wiki/entities/orb-slam3.md) — ORB-SLAM3** 是学术与工程界广泛引用的 **视觉/视觉-惯性 SLAM** 开源库。 `📅unknown` `[entity_page]`
