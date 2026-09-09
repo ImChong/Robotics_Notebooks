@@ -8,7 +8,7 @@ tags:
   - evaluation
   - taxonomy
 status: complete
-updated: 2026-09-04
+updated: 2026-09-09
 related:
   - ../concepts/video-as-simulation.md
   - ../concepts/kinematic-vs-dynamic-feasibility.md
