@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - state-estimation
 status: complete
-updated: 2026-08-09
+updated: 2026-09-09
 arxiv: "2608.03429"
 venue: "arXiv 2026"
 related:

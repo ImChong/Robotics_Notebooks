@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-09
 arxiv: "2604.05621"
 venue: "CVPR 2026"
 summary: "Reconstructs functional 3D digital twins of indoor scenes directly from egocentric RGB-D interaction videos, discovering articulated parts and estimating kinematic parameters"
