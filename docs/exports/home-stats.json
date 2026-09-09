@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-functional-slam.md",
+      "detail_id": "entity-paper-functional-slam",
+      "label": "Functional-SLAM（在线功能场景图 SLAM）",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/project-superdex.md",
       "detail_id": "entity-project-superdex",
       "label": "Project SuperDex",
@@ -202,27 +213,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-openwam.md",
-      "detail_id": "entity-paper-openwam",
-      "label": "OpenWAM：系统化世界–动作预训练的开源模块化栈",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/project-superdex.md",
-    "detail_id": "entity-project-superdex",
-    "label": "Project SuperDex",
+    "path": "wiki/entities/paper-functional-slam.md",
+    "detail_id": "entity-paper-functional-slam",
+    "label": "Functional-SLAM（在线功能场景图 SLAM）",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
