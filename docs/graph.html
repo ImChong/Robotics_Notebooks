@@ -3704,8 +3704,11 @@
       // 种子范围随规模走：固定 80px 会把数千节点挤进一个方框，初速可达数百
       // （G0 实测刷新初期 meanSpeed ≈880），既拖慢早期 tick 也让布局更晃。
       // 按 √N 放大，密度与小图时相当；下限保留 80 以维持小图的「炸开」观感。
-      const spread = Math.max(80, Math.sqrt(nodes.length) * 8);
-      for (const n of nodes) {
+      // 只重铺参与模拟的节点：筛选态下被冻结的节点若也随机重铺，其数据坐标会与
+      // 已停更的 DOM 脱节，取消筛选时整片跳位。
+      const simNodes = simulation.nodes();
+      const spread = Math.max(80, Math.sqrt(simNodes.length) * 8);
+      for (const n of simNodes) {
         n.fx = null;
         n.fy = null;
         n.vx = 0;
@@ -3843,6 +3846,11 @@
       .attr('stroke', d => nodeColor(d))
       .attr('stroke-width', 1.5)
       .attr('stroke-opacity', 0.35);
+
+    // 逐 tick 写坐标时按「参与力模拟的子集」遍历数据侧数组，需要 datum → 元素的反查。
+    // 两个选择集都是一次性 join（数据不再重绑），因此这里记一次即长期有效。
+    link.each(function(e) { e.__el = this; });
+    node.each(function(d) { d.__el = this; });
 
     label = node.append('text')
       .attr('class', 'node-label')
@@ -4141,11 +4149,26 @@
     if (filterModeOpensourceBtn) filterModeOpensourceBtn.addEventListener('click', () => setColorMode('opensource'));
     if (filterModeHealthBtn) filterModeHealthBtn.addEventListener('click', () => setColorMode('health'));
 
+    // 只为「正在参与力模拟」的节点/边写坐标：不在模拟里的成员位置根本不会变，
+    // 重写属性等于白写。取值直接问 simulation，因此筛选子图、时序子集与全图三条
+    // 路径共用同一口径，不需要各自维护一份成员表。
     function syncGraphDomFromSimulation() {
-      link
-        .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
-        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
-      node.attr('transform', d => `translate(${d.x},${d.y})`);
+      const simNodes = simulation.nodes();
+      const linkForce = simulation.force('link');
+      const simLinks = linkForce && linkForce.links ? linkForce.links() : edges;
+      for (let i = 0; i < simLinks.length; i++) {
+        const e = simLinks[i];
+        const el = e.__el;
+        if (!el) continue;
+        el.setAttribute('x1', e.source.x);
+        el.setAttribute('y1', e.source.y);
+        el.setAttribute('x2', e.target.x);
+        el.setAttribute('y2', e.target.y);
+      }
+      for (let i = 0; i < simNodes.length; i++) {
+        const n = simNodes[i];
+        if (n.__el) n.__el.setAttribute('transform', `translate(${n.x},${n.y})`);
+      }
       updateCommunityLabels();
     }
 
@@ -4939,9 +4962,37 @@
         this.setAttribute('stroke-opacity', edgeOk ? 1 : 0.2);
         this.setAttribute('stroke-width', edgeOk ? linkWidthBase : linkWidthBase * 0.5);
       });
+      syncFilterSimulation(hasFilter);
       updateCount(visible);
       if (graph3dView && is3DView()) graph3dView.syncFilters();
       if (searchQuery) flyToVisible();
+    }
+
+    /** 把力模拟成员同步为筛选后的真实子图（G3）。
+     *  此前 Top N / 社区 / 类型等普通筛选只改 opacity 与 pointer-events，
+     *  力计算与逐 tick 坐标写入仍是全图规模（G0 第 5 节实测确认）。
+     *  这里复用 syncTimelineSimulation 的成员切换写法：先清空 link 力再换节点集，
+     *  避免 nodes() 重新初始化时校验到已被移除的端点。
+     *  被移出的节点速度清零，位置就地冻结，取消筛选时原地回到力模拟，不产生跳位。
+     *  时序模式自有子集机制（syncTimelineSimulation），不在此处接管。 */
+    function syncFilterSimulation(hasFilter) {
+      if (timelineAnimating) return;
+      let subNodes = nodes;
+      let subEdges = edges;
+      if (hasFilter) {
+        subNodes = nodes.filter(n => visibleNodeIds.has(n.id));
+        subEdges = edges.filter(e =>
+          visibleNodeIds.has(edgeNodeId(e.source)) && visibleNodeIds.has(edgeNodeId(e.target)));
+      }
+      for (const n of nodes) {
+        if (!hasFilter || visibleNodeIds.has(n.id)) continue;
+        n.vx = 0;
+        n.vy = 0;
+      }
+      const linkForce = simulation.force('link');
+      linkForce.links([]);
+      simulation.nodes(subNodes);
+      linkForce.links(subEdges);
     }
 
     /* ── 时序动画（Obsidian Animate：按 recency 从早到晚逐帧显现）── */
