@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-r3-relative-regression.md",
+      "detail_id": "entity-paper-r3-relative-regression",
+      "label": "R³：相对回归的 3D 重建",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/eth3d-stereo-benchmark.md",
       "detail_id": "entity-eth3d-stereo-benchmark",
       "label": "ETH3D Two-View Stereo Benchmark",
@@ -203,27 +214,17 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-memforest.md",
-      "detail_id": "entity-paper-memforest",
-      "label": "MemForest",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/eth3d-stereo-benchmark.md",
-    "detail_id": "entity-eth3d-stereo-benchmark",
-    "label": "ETH3D Two-View Stereo Benchmark",
+    "path": "wiki/entities/paper-r3-relative-regression.md",
+    "detail_id": "entity-paper-r3-relative-regression",
+    "label": "R³：相对回归的 3D 重建",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
