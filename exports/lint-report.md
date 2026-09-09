@@ -140,4 +140,4 @@
 - wiki/entities/paper-aurora-hand-reconstruction.md
 - wiki/entities/paper-eneas.md
 
-📊 Sources 覆盖率：3868/3868 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3869/3869 (100%) wiki/entity 页有 ingest 来源

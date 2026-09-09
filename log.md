@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/vgg_ttt_arxiv_2602_23361.md — VGG-T³（CVPR 2026）：TTT 线性化 VGGT 离线千图重建；推理/评测/HF 权重已开源（NVIDIA OneWay NC），训练数据集实现待发布
+
 ## [2026-09-09] ingest | sources/papers/soma_arxiv_2606_09246.md — SOMA/SKIM（ECCV 2026，MPI-INF）肌肉解剖反演；GitHub+数据集已开源
 
 ## [2026-09-09] ingest | sources/papers/functional_slam_arxiv_2609_07497.md — Functional-SLAM（CoRL 2026）在线功能场景图 SLAM；已开源（GitHub+HF）；cosmoh2g.github.io 非本项目页
