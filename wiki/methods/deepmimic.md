@@ -2,10 +2,11 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng, paper, humanoid, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-09
 code: https://github.com/xbpeng/DeepMimic
 venue: curated
 related:
+  - ../formalizations/unit-quaternion-so3.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -17,6 +18,7 @@ related:
   - ../entities/mimickit.md
 sources:
   - ../../sources/papers/deepmimic.md
+  - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
   - ../../sources/papers/humanoid_rl_stack_11_deepmimic_example_guided_deep_reinforcement_lear.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -94,6 +96,7 @@ sequenceDiagram
 - **原版栈较老（TF1 + SWIG 编译）**：现代复现建议直接用 [MimicKit](../entities/mimickit.md)（同作者，集成 DeepMimic / AMP 等算法，支持 Isaac Gym / Isaac Lab）。
 
 ## 关联页面
+- [单位四元数与 SO(3)](../formalizations/unit-quaternion-so3.md) — motion JSON 中 spherical joint 的 $(w,x,y,z)$ 格式
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [amp-reward](amp-reward.md) — 后续的“无奖励设计”版本。
 - [mimickit](../entities/mimickit.md) — 现代化的实现框架。
@@ -104,6 +107,7 @@ sequenceDiagram
 
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)
+- [sources/papers/modern_robotics_ch3_unit_quaternion.md](../../sources/papers/modern_robotics_ch3_unit_quaternion.md) — 四元数 motion 格式与 MimicKit exp map 分层
 - [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — 跟踪局限与超越路径（讲者自述归纳）
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 

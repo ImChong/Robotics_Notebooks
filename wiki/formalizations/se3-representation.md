@@ -2,10 +2,11 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-09
 related:
   - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md
+  - ./unit-quaternion-so3.md
   - ./tan-norm-rotation.md
   - ../concepts/whole-body-control.md
   - ../methods/visual-servoing.md
@@ -17,6 +18,8 @@ sources:
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
   - ../../sources/papers/perception.md
   - ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md
+  - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
+  - ../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md
   - ../../sources/papers/zhou_2019_cvpr_continuity_rotation_representations.md
   - ../../sources/repos/mimickit_tan_norm.md
 summary: "SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。"
@@ -48,10 +51,12 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 | 表示法 | 维度 | 优势 | 劣势 | 推荐场景 |
 |------|-----|-----|-----|---------|
 | **欧拉角 (Euler Angles)** | 3 | 直观，最省空间 | 存在万向节死锁 (Gimbal Lock)；不连续 | 简单的 UI 显示 |
-| **四元数 (Quaternions)** | 4 | 紧凑，无死锁，插值平滑 | 存在双倍覆盖 ($q = -q$)；单位化约束 | 控制器内部状态 |
+| **四元数 (Quaternions)** | 4 | 紧凑，无死锁，插值平滑 | 存在双倍覆盖 ($q = -q$)；单位化约束 | 控制器内部状态、MoCap |
 | **旋转矩阵 (Rotation Matrix)** | 9 | 线性，无死锁，唯一 | 自由度冗余 (9D 表示 3D)；需要正交化 | 坐标变换计算 |
 | **6D 连续表示 (6D Rep)** | 6 | **姿态空间连续**；适合神经网络回归 | 需要格拉姆-施密特正交化 | **Deep Learning 姿态估计** |
 | **tan_norm** | 6 | 连续；无 $q \equiv -q$；体 x/z 轴语义 | 命名非文献通用；参考轴固定 | **MimicKit / ProtoMotions 运动模仿观测** |
+
+Hamilton 积、SLERP 与 **scalar 顺序** 见 [单位四元数与 SO(3)](./unit-quaternion-so3.md)。
 
 ### 1. 为什么 6D 表示法更适合 DL？
 传统的四元数和欧拉角在 $\mathbb{R}^n$ 到 $SO(3)$ 的映射过程中存在**不连续点**。这意味着当网络预测值发生微小连续变化时，映射出的旋转可能发生突变。
@@ -67,6 +72,7 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
   $$ \mathcal{L}_{rot} = \arccos\left( \frac{\text{Tr}(R_{pred} R_{target}^T) - 1}{2} \right) $$
 
 ## 关联页面
+- [单位四元数与 SO(3)](./unit-quaternion-so3.md) — 四元数专页（Diebel / Shoemake / MR Ch 3）
 - [tan_norm 旋转观测表示](./tan-norm-rotation.md) — MimicKit / ProtoMotions 的 6D 观测编码与 decode 链
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 so(3)/se(3) 分工、四元数存储与 exp/log 优化链路
 - [MimicKit](../entities/mimickit.md) — char_obs / tar_obs 中的 tan_norm 用法
@@ -78,6 +84,8 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 - [Modern Robotics 教材](../entities/modern-robotics-book.md) — Ch 3 用李群 / 螺旋理论系统建立 SO(3)/SE(3) 与 twist/wrench 的物理与数学语言
 
 ## 参考来源
+- [Diebel 2006 姿态参数化统一参考](../../sources/papers/diebel_2006_representing_attitude_quaternions.md)
+- [Shoemake 1985 四元数曲线与 SLERP](../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md)
 - [Zhou et al. CVPR 2019 连续旋转表示](../../sources/papers/zhou_2019_cvpr_continuity_rotation_representations.md)
 - [MimicKit tan_norm 源码摘录](../../sources/repos/mimickit_tan_norm.md)
 - Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 *Rigid-Body Motions* — SO(3)/SE(3) 的李群结构、指数映射、twist 表示。

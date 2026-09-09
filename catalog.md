@@ -3564,6 +3564,7 @@
 - [tan_norm 旋转观测表示](wiki/formalizations/tan-norm-rotation.md) — 一句话：** **tan_norm** 把单位四元数 $q$ 编成 6 维向量 $[\,R(q)\mathbf{t}_0 \;\|\; R(q)\mathbf{n}_0\,]$，其中参考切向 $\ `📅unknown` `[formalization_page]`
 - [Task Space Inverse Dynamics (TSID) 形式化](wiki/formalizations/tsid-formulation.md) — TSID** 是一种在保持机器人物理一致性的前提下，实现多任务并行控制的数学框架。它将复杂的运动指令转换为底层的电机力矩。 `📅unknown` `[formalization_page]`
 - [UDP 组播动力学 (UDP Multicast Dynamics)](wiki/formalizations/udp-multicast-dynamics.md) — UDP 组播动力学** 把 LCM 这类“即发即弃”的多播中间件，抽象成一个发送方 → 多个接收方的随机过程网络。它不研究单条消息怎么走， `📅unknown` `[formalization_page]`
+- [单位四元数与 SO(3)](wiki/formalizations/unit-quaternion-so3.md) — 一句话：** **单位四元数** $q \in S^3 \subset \mathbb{H}$ 用 4 个数紧凑表示三维旋转：无万向锁、复合为 Hamilton 积、平滑插值用 **SLERP `📅unknown` `[formalization_page]`
 - [Variational Objective (变分目标函数)](wiki/formalizations/variational-objective.md) — 在构建具身智能的世界模型（World Models）时，我们面临的核心数学挑战是如何从高维、嘈杂的观测（图像）中提取紧凑的、具有预测性的隐变量表示。**变分目标函数 (Variational Obje `📅unknown` `[formalization_page]`
 - [Action Tokenization (动作分词)](wiki/formalizations/vla-tokenization.md) — 在具身智能大模型（VLA）中，**动作分词 (Action Tokenization)** 是连接符号推理（语言模型）与物理执行（机器人控制）的数学枢纽。它解决了 LLM 架构本质上是离散序列预测器， `📅unknown` `[formalization_page]`
 - [ZMP + LIP 形式化](wiki/formalizations/zmp-lip.md) — LIP (Linear Inverted Pendulum)** 模型是将人形机器人简化为在固定高度平面内运动的质点，而 **ZMP (Zero Moment Point)** 则是判断该系统是否 `📅unknown` `[formalization_page]`

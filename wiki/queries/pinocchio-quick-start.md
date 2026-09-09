@@ -3,9 +3,10 @@ type: query
 tags: [pinocchio, dynamics, kinematics, wbc, python, quick-start]
 status: stable
 summary: "Pinocchio 快速上手：最小可运行动力学示例"
-updated: 2026-08-17
+updated: 2026-09-09
 sources:
   - ../../sources/papers/robot_kinematics_tools.md
+  - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
   - ../../sources/repos/dynibo.md
   - ../../sources/repos/robot-descriptions-py.md
 ---
@@ -190,6 +191,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 
 - [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / Crocoddyl 2020）
 - [sources/repos/robot-descriptions-py.md](../../sources/repos/robot-descriptions-py.md) — Pinocchio loader 的资产入口
+- [sources/papers/modern_robotics_ch3_unit_quaternion.md](../../sources/papers/modern_robotics_ch3_unit_quaternion.md) — 浮动基 $q[3:7]$ 四元数与 $n_q \neq n_v$
 - [Pinocchio 官方文档](https://stack-of-tasks.github.io/pinocchio/)
 - [Pinocchio 示例](https://github.com/stack-of-tasks/pinocchio/tree/master/examples)
 
@@ -198,6 +200,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 ## 关联页面
 
 - [Pinocchio](../entities/pinocchio.md) — Pinocchio 框架详细介绍
+- [单位四元数与 SO(3)](../formalizations/unit-quaternion-so3.md) — `xyzw` 顺序与角速度误区
 - [robot_descriptions.py](../entities/robot-descriptions-py.md) — `loaders.pinocchio` 按名下载 URDF
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $Y_{\mathrm{rb}}$ 之外怎么拼 $I_a$/摩擦列

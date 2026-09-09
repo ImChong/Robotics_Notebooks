@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-09",
-  "node_count": 3904,
-  "edge_count": 34710,
+  "node_count": 3905,
+  "edge_count": 34723,
   "coverage": {
-    "covered": 3877,
-    "total": 3877,
+    "covered": 3878,
+    "total": 3878,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -17,6 +17,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/formalizations/unit-quaternion-so3.md",
+      "detail_id": "wiki-formalizations-unit-quaternion-so3",
+      "label": "单位四元数与 SO(3)",
+      "type": "formalization",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
@@ -183,7 +193,7 @@
       "recency": "2026-09-09",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-foci-policy.md",
@@ -205,16 +215,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-from-where-to-how.md",
-      "detail_id": "entity-paper-from-where-to-how",
-      "label": "Coherent4D / HIGFlow",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -231,11 +231,11 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 696
+      "size": 713
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 509
+      "size": 499
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -243,15 +243,15 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 264
-    },
-    {
-      "label": "世界动作模型",
-      "size": 246
+      "size": 267
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 224
+      "size": 228
+    },
+    {
+      "label": "视觉语言动作纵深路线",
+      "size": 178
     }
   ],
   "top_hubs": [
@@ -352,17 +352,17 @@
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
+      "detail_id": "wiki-methods-deepmimic",
+      "label": "DeepMimic: 示例引导的技能学习",
+      "type": "method",
+      "degree": 64,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
       "degree": 63
-    },
-    {
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "degree": 62,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

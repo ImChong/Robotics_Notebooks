@@ -10,6 +10,7 @@ related:
   - ./3d-coordinate-transforms-vision-robotics.md
   - ./riemannian-manifold-tangent-space.md
   - ./se3-representation.md
+  - ./unit-quaternion-so3.md
   - ../entities/modern-robotics-book.md
   - ../concepts/whole-body-control.md
   - ../methods/model-predictive-control.md
@@ -20,6 +21,9 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
   - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
+  - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
+  - ../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md
 summary: "SO(3)/SE(3) 李群描述合法刚体姿态与位姿，so(3)/se(3) 李代数在切空间提供无约束可微增量；单位四元数是 SO(3) 的工程存储格式。具身智能把旋转优化暴露到网络反传时，典型链路为「流形上表示 → 李代数上优化 → 指数映射回群」。"
 ---
 
@@ -91,6 +95,11 @@ $$
 | 工具 | 维度 | 优势 | 局限 |
 |------|------|------|------|
 | **单位四元数** | 4 | 紧凑、无万向锁、SLERP 平滑 | $\|q\|=1$ 约束；$q \sim -q$；不宜直接 unconstrained 反传 |
+
+Hamilton 积、SLERP、scalar 顺序与 $q\equiv -q$ 的工程处理见专页 [单位四元数与 SO(3)](./unit-quaternion-so3.md)（一手资料：Diebel 2006、Shoemake SIGGRAPH 1985、Modern Robotics Ch 3）。
+
+| 工具 | 维度 | 优势 | 局限 |
+|------|------|------|------|
 | **旋转矩阵** | 9 | 变换复合简单 | 冗余 + 需正交化 |
 | **so(3) 向量** | 3 | 线性、无约束，适合优化 | 表 **增量**，非长期全局姿态 |
 
@@ -147,6 +156,7 @@ flowchart LR
 - [《具身智能基础》专栏地图](../overview/shenlan-embodied-ai-fundamentals-series.md) — 本页为专栏 **01/03**（姿态与刚体运动）
 - [三维坐标变换（视觉–机器人）](./3d-coordinate-transforms-vision-robotics.md) — 专栏 **02/03**（外参中的 $R,t$ 与手眼）
 - [黎曼流形与切空间](./riemannian-manifold-tangent-space.md) — 专栏 **03/03**（SO(3)/SE(3) 的统一几何框架）
+- [单位四元数与 SO(3)](./unit-quaternion-so3.md) — Hamilton 积、SLERP、scalar 顺序与双覆盖
 - [SE(3) Representation](./se3-representation.md) — 欧拉/四元数/矩阵/6D 对比与 DL 损失
 - [Modern Robotics (Lynch-Park)](../entities/modern-robotics-book.md) — Ch 3 系统推导
 - [Whole-Body Control](../concepts/whole-body-control.md) — 任务空间 se(3) 速度
@@ -159,7 +169,10 @@ flowchart LR
 ## 参考来源
 
 - [深蓝具身智能：李群、李代数、四元数（微信公众号归档）](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)
-- Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 *Rigid-Body Motions* — [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
+- [Diebel 2006 姿态参数化](../../sources/papers/diebel_2006_representing_attitude_quaternions.md)
+- [Shoemake 1985 SLERP](../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md)
+- [Modern Robotics Ch 3 摘录](../../sources/papers/modern_robotics_ch3_unit_quaternion.md)
+- Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 — [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
 - [SE(3) Representation（本站形式化）](./se3-representation.md)
 
 ## 推荐继续阅读
