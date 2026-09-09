@@ -2,11 +2,14 @@
 type: entity
 tags: [paper, jepa, world-models, latent-dynamics, planning, mila, nyu, brown, samsung, ami-labs]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-09
 arxiv: "2603.19312"
 venue: "arXiv 2026"
 code: https://github.com/lucas-maes/le-wm
 related:
+  - ./paper-traj-lewm.md
+  - ./paper-state-readout-decoupling.md
+  - ./paper-causalvae-world-models.md
   - ./paper-lejepa.md
   - ./paper-lpwm.md
   - ./paper-levjepa.md
@@ -120,6 +123,8 @@ sequenceDiagram
 | DINO-WM | 冻结大编码器；本页更小更快 |
 | [LpWM](./paper-lpwm.md) | 同一梯子，稀疏目标 |
 | [LeVJEPA](./paper-levjepa.md) | 无动作、无规划 |
+| [Traj-LeWM](./paper-traj-lewm.md) | 同骨干 + LTC 路径感知规划（+3~+14 pp） |
+| [SRD](./paper-state-readout-decoupling.md) | 解耦 rollout 接口，减长视界误差累积 |
 
 ## 结论
 
@@ -132,6 +137,9 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Traj-LeWM](./paper-traj-lewm.md) — 潜轨迹代价扩展
+- [State–Readout Decoupling](./paper-state-readout-decoupling.md) — rollout 解耦
+- [CausalVAE WM Plug-in](./paper-causalvae-world-models.md) — 同组因果动力学线
 - [LeJEPA](./paper-lejepa.md)
 - [LpWM](./paper-lpwm.md)
 - [LeVJEPA](./paper-levjepa.md)
