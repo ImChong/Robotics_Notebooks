@@ -1706,6 +1706,32 @@
         refreshAppearance();
       },
 
+      // G2 基线测量：分离悬停刷新 / 标签同步 / 场景对象数（非业务 UI）
+      measureHover: function (nodeId) {
+        var t = performance.now();
+        hoverNodeId = nodeId || null;
+        refreshAppearance();
+        return +(performance.now() - t).toFixed(2);
+      },
+
+      measureSyncLabels: function () {
+        var t = performance.now();
+        syncLabels();
+        return +(performance.now() - t).toFixed(2);
+      },
+
+      getSceneStats: function () {
+        var scene = graph && typeof graph.scene === 'function' ? graph.scene() : null;
+        if (!scene) return null;
+        var meshes = 0, lines = 0, labels = 0;
+        scene.traverse(function (obj) {
+          if (obj.isMesh) meshes += 1;
+          else if (obj.isLine || obj.isLineSegments) lines += 1;
+        });
+        if (labelLayer) labels = labelLayer.querySelectorAll('.graph-3d-label').length;
+        return { scene_meshes: meshes, scene_lines: lines, label_elements: labels };
+      },
+
       // G0 基线测量：读取 three.js 当帧 draw calls / 三角形数（非业务 UI）
       getRendererInfo: function () {
         var r = graph && typeof graph.renderer === 'function' ? graph.renderer() : null;

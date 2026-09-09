@@ -6044,6 +6044,11 @@
       syncDom: () => syncGraphDomFromSimulation(),
       syncCommunityLabels: () => updateCommunityLabels(),
       applyFilters: () => applyFilters(),
+      // G2 基线测量：取度数最高的若干节点 id，供 3D 悬停刷新计时使用
+      topNodeIds: (n) => nodes.slice()
+        .sort((a, b) => (b._degree || 0) - (a._degree || 0))
+        .slice(0, Math.max(1, n || 5))
+        .map(d => d.id),
     };
 
   })();
