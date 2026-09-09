@@ -2247,25 +2247,100 @@
     Array.from(container.querySelectorAll('.mermaid svg')).forEach(fixMermaidForeignObjectOverflow);
   }
 
+  // ── 公式与图表组件按内容加载（编号 9）──
+  // 详情页与路线页原先在 HTML 里静态引入 KaTeX（CSS + katex.min.js + auto-render）与
+  // Mermaid，无公式、无图表的页面同样要下载。改为渲染正文时按内容注入，
+  // integrity / crossorigin 与原静态标签保持一致。
+  var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
+  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+  var _externalAssetPromises = {};
+
+  /** 同一 URL 只注入一次；失败清除记录，后续渲染可重试。 */
+  function loadExternalAsset(spec) {
+    if (_externalAssetPromises[spec.url]) return _externalAssetPromises[spec.url];
+    var promise = new Promise(function (resolve, reject) {
+      var el;
+      if (spec.style) {
+        el = document.createElement('link');
+        el.rel = 'stylesheet';
+        el.href = spec.url;
+      } else {
+        el = document.createElement('script');
+        el.src = spec.url;
+      }
+      if (spec.integrity) {
+        el.integrity = spec.integrity;
+        el.crossOrigin = 'anonymous';
+      }
+      el.onload = function () { resolve(spec.url); };
+      el.onerror = function () {
+        delete _externalAssetPromises[spec.url];
+        if (el.parentNode) el.parentNode.removeChild(el);
+        reject(new Error('资源加载失败：' + spec.url));
+      };
+      document.head.appendChild(el);
+    });
+    _externalAssetPromises[spec.url] = promise;
+    return promise;
+  }
+
+  function ensureKatexLoaded() {
+    if (typeof window.renderMathInElement === 'function') return Promise.resolve();
+    return Promise.all([
+      loadExternalAsset({
+        url: KATEX_CDN_BASE + 'katex.min.css',
+        style: true,
+        integrity: 'sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+'
+      }),
+      // auto-render 依赖 katex 全局，必须排在 katex.min.js 之后
+      loadExternalAsset({
+        url: KATEX_CDN_BASE + 'katex.min.js',
+        integrity: 'sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg'
+      }).then(function () {
+        return loadExternalAsset({
+          url: KATEX_CDN_BASE + 'contrib/auto-render.min.js',
+          integrity: 'sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk'
+        });
+      })
+    ]);
+  }
+
+  function ensureMermaidLoaded() {
+    if (typeof window.mermaid !== 'undefined') return Promise.resolve();
+    return loadExternalAsset({ url: MERMAID_CDN_URL });
+  }
+
+  /** 正文是否出现 KaTeX 配置的定界符；没有就不加载公式组件。 */
+  function containerHasMath(container) {
+    if (!container) return false;
+    var text = container.textContent || '';
+    return text.indexOf('$$') >= 0 || text.indexOf('\\[') >= 0 || text.indexOf('\\(') >= 0;
+  }
+
   function renderDetailMermaid(container) {
-    if (!container || typeof window.mermaid === 'undefined') return Promise.resolve();
+    if (!container) return Promise.resolve();
     var nodes = Array.from(container.querySelectorAll('.mermaid'));
     if (!nodes.length) return Promise.resolve();
-    nodes.forEach(function (node) {
-      var saved = node.getAttribute('data-mermaid-source');
-      if (saved === null) {
-        saved = node.textContent || '';
-        node.setAttribute('data-mermaid-source', saved);
-      } else {
-        node.removeAttribute('data-processed');
-      }
-      node.textContent = mermaidSourceForCurrentBrowser(saved);
-    });
-    initializeMermaidRenderer(getMermaidFontSizePx());
-    return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
-      patchMermaidSvgLabelOverflow(container);
-      enhanceMermaidZoomTargets(container);
-      bindMermaidZoom(container);
+    return ensureMermaidLoaded().then(function () {
+      if (typeof window.mermaid === 'undefined') return;
+      nodes.forEach(function (node) {
+        var saved = node.getAttribute('data-mermaid-source');
+        if (saved === null) {
+          saved = node.textContent || '';
+          node.setAttribute('data-mermaid-source', saved);
+        } else {
+          node.removeAttribute('data-processed');
+        }
+        node.textContent = mermaidSourceForCurrentBrowser(saved);
+      });
+      initializeMermaidRenderer(getMermaidFontSizePx());
+      return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+        patchMermaidSvgLabelOverflow(container);
+        enhanceMermaidZoomTargets(container);
+        bindMermaidZoom(container);
+      });
+    }).catch(function (error) {
+      console.warn('Mermaid 组件加载失败：', error);
     });
   }
 
@@ -3171,16 +3246,21 @@
   }
 
   function renderDetailMath(container) {
-    if (!container || typeof window.renderMathInElement !== 'function') return;
-    window.renderMathInElement(container, {
-      delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '\\[', right: '\\]', display: true },
-        { left: '\\(', right: '\\)', display: false }
-      ],
-      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
-      ignoredClasses: ['mermaid'],
-      throwOnError: false
+    if (!containerHasMath(container)) return Promise.resolve();
+    return ensureKatexLoaded().then(function () {
+      if (typeof window.renderMathInElement !== 'function') return;
+      window.renderMathInElement(container, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '\\[', right: '\\]', display: true },
+          { left: '\\(', right: '\\)', display: false }
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+        ignoredClasses: ['mermaid'],
+        throwOnError: false
+      });
+    }).catch(function (error) {
+      console.warn('KaTeX 组件加载失败：', error);
     });
   }
 
