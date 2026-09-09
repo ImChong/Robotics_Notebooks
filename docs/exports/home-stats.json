@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-09",
   "node_count": 3870,
-  "edge_count": 34462,
+  "edge_count": 34463,
   "coverage": {
     "covered": 3843,
     "total": 3843,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/light-react.md",
+      "detail_id": "entity-light-react",
+      "label": "Light REACT",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/overview/humanoid-eight-capabilities-technology-map.md",
       "detail_id": "wiki-overview-humanoid-eight-capabilities-technology-map",
@@ -197,22 +206,13 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-muldp.md",
-      "detail_id": "entity-paper-muldp",
-      "label": "MulDP：四足跑酷自主导航扩散策略",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-eight-capabilities-technology-map.md",
-    "detail_id": "wiki-overview-humanoid-eight-capabilities-technology-map",
-    "label": "人形机器人八大能力技术地图",
-    "type": "overview",
+    "path": "wiki/entities/light-react.md",
+    "detail_id": "entity-light-react",
+    "label": "Light REACT",
+    "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
     "action": "added"
