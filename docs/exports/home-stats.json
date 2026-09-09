@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-causalvae-world-models.md",
+      "detail_id": "entity-paper-causalvae-world-models",
+      "label": "CausalVAE：latent 世界模型的可插拔因果结构模块",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-state-readout-decoupling.md",
+      "detail_id": "entity-paper-state-readout-decoupling",
+      "label": "SRD：latent 世界模型的状态–读数解耦",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-traj-lewm.md",
+      "detail_id": "entity-paper-traj-lewm",
+      "label": "Traj-LeWM：潜轨迹代价的路径感知世界模型规划",
+      "type": "entity",
+      "recency": "2026-09-09",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/light-react.md",
       "detail_id": "entity-light-react",
       "label": "Light REACT",
@@ -175,48 +207,18 @@
       "recency": "2026-09-07",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-mint-ego-world-space-camera-hand-motion.md",
-      "detail_id": "entity-paper-mint-ego-world-space-camera-hand-motion",
-      "label": "MINT — World-Space Camera and Hand Motion Estimation",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-moreflow-motion-retargeting-flow.md",
-      "detail_id": "entity-paper-moreflow-motion-retargeting-flow",
-      "label": "MoReFlow",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-moss-transcribe-diarize.md",
-      "detail_id": "entity-paper-moss-transcribe-diarize",
-      "label": "MOSS Transcribe Diarize（长时多说话人 SATS）",
-      "type": "entity",
-      "recency": "2026-09-07",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/light-react.md",
-    "detail_id": "entity-light-react",
-    "label": "Light REACT",
+    "path": "wiki/entities/paper-causalvae-world-models.md",
+    "detail_id": "entity-paper-causalvae-world-models",
+    "label": "CausalVAE：latent 世界模型的可插拔因果结构模块",
     "type": "entity",
     "recency": "2026-09-09",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
