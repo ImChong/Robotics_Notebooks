@@ -1,3 +1,5 @@
+## [2026-09-09] ingest | sources/papers/i3dgs_arxiv_2607_14481.md — i3dGS（SIGGRAPH 2026）乱序 RGB 即时 3DGS+全局回环；GraphDeco 官方代码已开源（研究许可）；关键页 paper-i3dgs-immediate-3dgs-unordered；交叉 Real2Sim / Gaussian-LIC2 / Instant NuRec
+
 ## [2026-09-09] ingest | sources/papers/hand_visibility_detector_arxiv_2608_11574.md — 复核 Hand Visibility Detector 四链（GitHub/arXiv v1/HF 模型/HF Papers），补 HF Papers 与 2026-09-09 开源核查
 
 ## [2026-09-09] ingest | sources/papers/ge_act_2_arxiv_2609_05588.md — GE-Act 2.0（AgiBot WAM 预训练缩放）；代码待发布；升格 wiki/entities/paper-ge-act-2.md
