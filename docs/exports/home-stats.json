@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/ame-1-to-ame-2-technology-map.md",
+      "detail_id": "wiki-overview-ame-1-to-ame-2-technology-map",
+      "label": "AME-1 → AME-2：感知运动系统演进坐标",
+      "type": "overview",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-gwm-first-principles.md",
       "detail_id": "entity-paper-gwm-first-principles",
       "label": "General World Models from First-Principles（生数 / 清华）",
@@ -197,27 +207,17 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-decal.md",
-      "detail_id": "entity-paper-decal",
-      "label": "DeCAL：接触感知灵巧 VLA",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gwm-first-principles.md",
-    "detail_id": "entity-paper-gwm-first-principles",
-    "label": "General World Models from First-Principles（生数 / 清华）",
-    "type": "entity",
+    "path": "wiki/overview/ame-1-to-ame-2-technology-map.md",
+    "detail_id": "wiki-overview-ame-1-to-ame-2-technology-map",
+    "label": "AME-1 → AME-2：感知运动系统演进坐标",
+    "type": "overview",
     "recency": "2026-09-10",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
