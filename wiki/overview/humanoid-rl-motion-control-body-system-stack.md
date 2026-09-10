@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-10
 related:
   - ../entities/paper-hrl-stack-35-dreamdojo.md
   - ./vla-wm-reading-roadmap-14-papers-technology-map.md

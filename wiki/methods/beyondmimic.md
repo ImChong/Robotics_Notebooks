@@ -2,10 +2,11 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-10
 code: https://github.com/HybridRobotics/whole_body_tracking
-venue: "2025 · arXiv"
+venue: "2026 · Science Robotics"
 arxiv: "2508.08241"
+doi: "10.1126/scirobotics.adx8924"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
@@ -37,10 +38,11 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
-summary: "BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿的学习框架：第一阶段以精确物理建模与失败率驱动的自适应采样在单一设置下跟踪高动态动作；第二阶段将多条跟踪策略蒸馏进统一潜空间扩散模型，用 classifier guidance 零样本解决下游任务。"
+summary: "BeyondMimic（*Science Robotics* 2026，DOI adx8924）是两阶段人形全身控制框架：阶段 ① 用锚点相对跟踪 + 极简奖励 + 失败率采样在共享超参下批量学高动态技能；阶段 ② 把跟踪教师蒸馏进潜空间状态–动作扩散模型，测试时用 classifier guidance 零样本完成航点、摇杆、关键帧补全与避障。"
 ---
 
 # BeyondMimic
@@ -57,6 +59,8 @@ summary: "BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿�
 | Isaac Lab | NVIDIA Isaac Lab | 主要验证与训练环境 |
 | Sim2Real | Simulation to Real | 强调物理建模与采样以促迁移 |
 | CG | Classifier Guidance | 测试时用代价函数梯度引导扩散采样朝新目标优化 |
+| SciRob | Science Robotics | 正式发表渠道（2026-08-26，DOI adx8924） |
+| SDF | Signed Distance Field | 避障等任务中构造障碍物排斥代价 |
 
 ## Survey 坐标（策展索引）
 
@@ -85,18 +89,21 @@ summary: "BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿�
 | 分类 hub | [loco-manip-161-category-01-motion-base-wbt](../overview/loco-manip-161-category-01-motion-base-wbt.md) |
 | 索引来源 | [具身智能研究室 · 161 篇人形 Loco-Manip 长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) |
 
-## 论文信息（arXiv:2508.08241）
+## 论文信息（*Science Robotics* · arXiv:2508.08241）
 
 | 字段 | 内容 |
 |------|------|
 | 完整标题 | *BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion* |
-| 作者 | Qiayuan Liao、Takara E. Truong、Xiaoyu Huang、Yuman Gao、Guy Tevet、Koushil Sreenath、C. Karen Liu |
+| 作者 | Qiayuan Liao、Takara E. Truong、Xiaoyu Huang、Guy Tevet、Koushil Sreenath、C. Karen Liu |
 | 机构 | 加州大学伯克利分校（Hybrid Robotics）；斯坦福大学 |
-| arXiv 版本 | v1 2025-08-11 → v4 2025-11-13 |
+| 正式发表 | [*Science Robotics*（2026-08-26）](https://doi.org/10.1126/scirobotics.adx8924)，DOI `10.1126/scirobotics.adx8924` |
+| arXiv 版本 | v1 2025-08-11 → v4 2025-11-13（[2508.08241](https://arxiv.org/abs/2508.08241)） |
 | 代码 | <https://github.com/HybridRobotics/whole_body_tracking>（跟踪阶段开源实现） |
 | 项目页 | <https://beyondmimic.github.io/> |
 
 论文叙事分两个阶段：**① 紧凑 motion-tracking 公式**——单一 MDP 设置与共享超参覆盖高动态技能；**② 统一潜空间扩散 + classifier guidance**——把跟踪技能升格为可组合、可引导的通用控制（详见下文「[第二阶段](#第二阶段统一潜空间扩散与测试时引导)」）。本页前半部分的物理建模与采样细节属于阶段 ①。
+
+> **训练–测试解耦（文内总判断）**：训练只学运动先验，不预设下游任务；航点、摇杆、避障、关键帧补全等任务语义在**测试时**以可微代价函数注入扩散采样，而非为每个任务重训网络。
 
 ## 端到端数据流（概览）
 
@@ -178,15 +185,18 @@ sequenceDiagram
 
 参考数据通常 **不** 作为原始像素输入进策略；策略看到的是已在观测里编码好的 **相对几何与速度误差**（见下）。
 
-### 2. 策略观测（Policy 输入）
+### 2. 策略观测（Policy 输入 · 阶段 ① 跟踪）
 
-BeyondMimic 强调 **历史本体感知的堆叠**：让策略记住接触序列、仿真数值阻尼等短时规律。常见组块包括（名称以各实现为准）：
+BeyondMimic 的 **motion-tracking MDP 刻意不做历史堆叠**：论文 III-B 写明跟踪框架 **does not have a history**，观测为**单步向量**，以降低过拟合仿真特有时序、提升 sim2real（与 [Science Robotics 中文导读](../../sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md) 及消融一致——**不恰当增大观测历史长度反而损害迁移**）。常见组块包括：
 
 | 组块 | 含义 | 调参 / 排错提示 |
 |------|------|------------------|
-| 本体状态 | 关节角 / 角速度、上一步动作、IMU 姿态等 | 缺历史时易出现「抖脚、滑脚」式高频补偿 |
-| 相对参考量 | 根或骨盆相对参考的位姿差、速度差 | 与「统一任务空间奖励」一致；若与奖励坐标不一致会导致 **回报高但观感差** |
-| 相位 / 帧指针 | 当前参考进度或归一化相位 | 长舞 / 行走中帮助衔接；与失败采样联动时，曲线上的 **有效步长** 会随片段难度变化 |
+| 参考相位 | 参考关节角 / 角速度 $\mathbf{c}$，仅作相位信息，**非**直接关节跟踪目标 | 与锚点相对跟踪配合；勿与奖励坐标混用 |
+| 锚体位姿误差 | 参考体（通常为 root / torso）相对当前的三维位置误差 + 旋转矩阵前两列（Rot6D 风格） | 消融显示 Rot6D 连续旋转表示优于四元数 / 轴角 |
+| 本体状态 | 根 twist（根坐标系）、关节角 / 角速度、上一步动作 | 无可靠状态估计时可省略线性位置项与线性 root twist |
+| ~~历史堆叠~~ | **阶段 ① 不使用** | 社区 fork 若自行加 history，需单独评估 sim2real |
+
+**锚点相对跟踪**：以参考体 $b_{\text{ref}}$ 为锚，将各连杆目标位姿表达为相对锚点的变换 $\hat{T}_b$，允许全局 xy / yaw 合理漂移而保留动作风格——这是 compact MDP 能在扰动与 sim2real gap 下仍保持自然度的关键设计之一。
 
 ### 3. 策略动作（Policy 输出）
 
@@ -269,25 +279,27 @@ BeyondMimic 并不针对特定关节设计复杂的 reward，而是采用统一�
 |------|---------|------|
 | **物理建模** | 精确 armature + 关联 PD 增益 | 缩小动力学 Gap，提升部署稳定性 |
 | **采样策略** | 失败率驱动的自适应重采样 | 提高对困难动作片段的训练效率 |
-| **观测空间** | 历史本体感知观测堆叠 | 利用时序上下文记忆仿真特定模式 |
-| **奖励函数** | 统一的任务空间跟踪项 | 简化奖励设计，保持动作自然度 |
+| **观测空间** | **单步**本体 + 锚点误差 + 参考相位（**无**历史堆叠） | 阶段 ② 扩散策略另用 $N$ 步 state–action 历史（论文约 $N{=}4$） |
+| **奖励函数** | 统一的任务空间跟踪项 + 关节限位 / 平滑 / 自碰撞正则 | 简化奖励设计，保持动作自然度 |
 
 ## 训练机制：大道至简
 
-BeyondMimic 证明了只要满足以下三点，简单的 PPO 就能学到极强的动作模仿能力：
-1. **精确的 Armature 补偿**。
-2. **时序历史观测的堆叠**（让策略学会记忆仿真特有的模式）。
-3. **针对性的失败重采样**。
+BeyondMimic 阶段 ① 证明在 **共享 MDP + 共享超参** 下，简单 PPO 即可学到极强的高动态模仿，关键在问题 formulation 而非复杂网络：
 
-论文口径下这套「紧凑公式」的验证方式：在 **LAFAN1** 的 **14 段约 3 分钟长序列** 上逐条训练跟踪策略，**全部使用同一 MDP 设置与共享超参**（不做逐动作调参），覆盖侧空翻（aerial cartwheel）、旋踢（spin-kick）、翻转踢（flip-kick）、冲刺跑等高动态技能，同时保持 SOTA 级人类相似度并可稳定复现地部署到实机。
+1. **锚点相对跟踪 + Rot6D 位姿误差**（允许合理全局漂移）。
+2. **单步观测、无历史堆叠**（避免过拟合仿真时序；扩散阶段才引入历史窗口）。
+3. **精确的 Armature 补偿 + 适度（非暴力）域随机**。
+4. **失败率驱动的自适应片段采样**。
+
+论文口径下这套「紧凑公式」的验证方式：约 **2.5 h** 多样化人类动捕；在 **LAFAN1** 的 **14 段约 3 分钟长序列** 上逐条训练跟踪策略，**全部使用同一 MDP 设置与共享超参**（不做逐动作调参），**21** 个代表性片段 **零样本**部署 **Unitree G1**，覆盖侧空翻、旋踢、翻转踢、冲刺跑、舞蹈、倒地起立等高动态技能。
 
 ## 第二阶段：统一潜空间扩散与测试时引导
 
 论文题目的后半句（*Versatile Humanoid Control via **Guided Diffusion***）对应第二阶段：跟踪只能「复现已有动作」，而下游任务往往在训练中从未出现。BeyondMimic 的做法是把技能压进一个生成模型，再在测试时"掰"向新目标：
 
-- **技能蒸馏进统一潜空间扩散模型**：把第一阶段得到的多条跟踪专家策略蒸馏为 **单一 latent diffusion policy**，支持多样的目标指定、任务间无缝切换与技能的动态组合，而不是每任务一条策略。
-- **Classifier guidance 做测试时优化**：给定简单的代价函数（如到路点的距离、与障碍的距离），在扩散去噪过程中以代价梯度引导采样方向，**无需针对下游任务再训练**。
-- **零样本下游任务**：论文验证了 **motion inpainting（动作补全）**、**joystick 遥操**、**waypoint 导航** 与 **障碍规避**，并将这些能力 **零样本迁移到真实硬件**；实机实验中动捕系统用于给出路点 / 障碍位置并辅助状态估计。
+- **技能蒸馏进统一潜空间扩散模型**：把第一阶段多条跟踪专家策略的 rollout 经 **条件 VAE + DAgger** 压入平滑潜空间，再训练 **Transformer 去噪器**；**联合建模未来状态序列与动作序列**（Diffuse-CLoC 式 state–action co-diffusion），而非仅输出关节角。
+- **Classifier guidance 做测试时优化**：给定简单的代价函数（如到路点的距离、速度指令、与障碍的 SDF 距离、稀疏关键帧硬约束），在扩散去噪迭代过程中，把代价梯度加到潜变量更新步骤，**无需针对下游任务再训练**；多种代价可**直接相加**（如「一边导航一边避障」）。
+- **零样本下游任务**：论文与 *Science Robotics* 实机验证了 **motion inpainting（动作补全）**、**joystick 遥操**、**waypoint 导航** 与 **障碍规避**；动捕 / 外部感知用于路点、障碍几何与部分状态估计，**非**端到端视觉避障。
 
 ```mermaid
 flowchart LR
@@ -312,7 +324,26 @@ flowchart LR
   D2 --> K4
 ```
 
-这一步使 BeyondMimic 与「每任务重训一条 goal-conditioned policy」的路线区分开：**任务语义在测试时以代价函数注入**，策略本体保持不变。也因此它在 BFM 谱系里被归入 **hierarchical control**（见 [论文实体页](../methods/beyondmimic.md) 的 survey 坐标）。
+这一步使 BeyondMimic 与「每任务重训一条 goal-conditioned policy」或「上层规划 + 下层跟踪解耦」的路线区分开：**任务语义在测试时以代价函数注入**，策略本体保持不变；规划与控制在同一扩散模型内 **滚动闭环** 下发动作，规避规划器–控制器失配。也因此它在 BFM 谱系里被归入 **hierarchical control**（见上文 survey 坐标）。
+
+### 实验与消融要点（*Science Robotics* / 中文导读归纳）
+
+| 类别 | 结果（以 DOI 原文为准） |
+|------|-------------------------|
+| 用户调研 | 77 名受试者 vs Unitree 原生控制器：**70.8%** 偏好 BeyondMimic 行走/跑步拟人度；跑步 **84.7%** |
+| 高动态实机 | 室外非理想地面 180° 侧手翻、连续旋踢、360° 翻转踢；腾空骨盆角速度最高 **15.7 rad/s** |
+| 下游速度跟踪 | 仿真行走 / 奔跑速度误差 **12.14% / 13.65%** |
+| 长距奔跑 | 真机 **50 m+** 连续奔跑；受推撞后可恢复任务 |
+| 延迟 | **5 ms** 通信延迟即可失败 → 低延迟 C++ 部署栈是前提 |
+| 预测视野 | 扩散策略约 **0.64 s** 前瞻，适合局部反应式控制 |
+
+### 局限与风险
+
+- **模式切换瞬态**：运动切换起止易踉跄；增大 classifier guidance 权重可改善任务性能但可能破坏去噪稳定性。
+- **引导权重需调参**：不同任务代价的引导强度不能开箱即用。
+- **无原生视觉**：障碍等信息须外部 SDF / 动捕等代价输入，不能端到端相机避障。
+- **上限受 RL 教师约束**：阶段 ② 扩散无法补阶段 ① 学不好的技能。
+- **粗粒度代价优先**：精细动作控制弱于航点 / 速度等粗目标。
 
 ## 评价与影响
 
@@ -327,7 +358,8 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - [sources/papers/loco_manip_161_survey_004_beyondmimic.md](../../sources/papers/loco_manip_161_survey_004_beyondmimic.md) — Loco-Manip 161 #004 策展摘录。
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — Isaac Lab 侧集成任务与训练栈说明。
 - Hybrid Robotics，[whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) — 上游开源实现与 issue 讨论入口（张量命名以仓库为准）。
-- 论文：<https://arxiv.org/abs/2508.08241>（v4，2025-11-13）；项目页：<https://beyondmimic.github.io/>（阶段划分、LAFAN1 实验与下游任务演示，2026-07-11 对照）。
+- 论文：<https://arxiv.org/abs/2508.08241>（v4，2025-11-13）；正式发表：[DOI 10.1126/scirobotics.adx8924](https://doi.org/10.1126/scirobotics.adx8924)（*Science Robotics*，2026-08-26）；项目页：<https://beyondmimic.github.io/>。
+- [wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md](../../sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md) — 深蓝具身智能 *Science Robotics* 中文深度导读（实验数字、路线对照、局限；复用本页不新建实体）。
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 
 ## HMI 开源主表入口
