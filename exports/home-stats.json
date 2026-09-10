@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-raga-real-time-ray-traced-gaussian-shadow-casting.md",
+      "detail_id": "entity-paper-raga-real-time-ray-traced-gaussian-shadow-casting",
+      "label": "RAGA — Real Time Ray Traced Gaussian Shadow Casting",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/overview/ame-1-to-ame-2-technology-map.md",
       "detail_id": "wiki-overview-ame-1-to-ame-2-technology-map",
       "label": "AME-1 → AME-2：感知运动系统演进坐标",
@@ -198,26 +207,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/grid-general-robotics.md",
-      "detail_id": "entity-grid-general-robotics",
-      "label": "GRID（General Robotics Auto-Engineering 平台）",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/ame-1-to-ame-2-technology-map.md",
-    "detail_id": "wiki-overview-ame-1-to-ame-2-technology-map",
-    "label": "AME-1 → AME-2：感知运动系统演进坐标",
-    "type": "overview",
+    "path": "wiki/entities/paper-raga-real-time-ray-traced-gaussian-shadow-casting.md",
+    "detail_id": "entity-paper-raga-real-time-ray-traced-gaussian-shadow-casting",
+    "label": "RAGA — Real Time Ray Traced Gaussian Shadow Casting",
+    "type": "entity",
     "recency": "2026-09-10",
     "source": "git",
-    "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
