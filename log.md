@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/papers/hsimul3r_arxiv_2603_15612.md — HSImul3R 物理在环 simulation-ready HSI 重建；GitHub 占位仓库，wiki 实体页 + DIMOS 交叉引用
+
 ## [2026-09-10] structural | roadmap/depth-embodied-data.md — 新增具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）纵深路线，二十四条纵深入口全站同步
 
 - roadmap/depth-embodied-data.md：新建「具身数据」纵深路线（起点：Open X-Embodiment 跨具身数据聚合，2023），Stage 0 数据口径与金字塔分层（可扩展性 × 机器人对齐两轴 · 真机/UMI/Ego-Exo/仿真/通用五层）→ Stage 1 采集范式与装置选型（六条产业范式 · 遥操作 vs 无机器人示教 vs ego 视频）→ Stage 2 清洗、质量与标注（时序对齐 / 异常过滤 / 重定向误差修复 / VLM 自动打标）→ Stage 3 格式与跨具身聚合（LeRobot 格式 · OXE schema 的边界 · 数据集许可与门控）→ Stage 4 扩增与合成（重定向 / 仿真与 Real2Sim / 生成式增强 / 人视频置换 teleop）→ Stage 5 配比、缩放律与数据飞轮（混合配方 · 开源 vs 闭源自报的 scaling 读法 · 飞轮回流与评测刹车）
