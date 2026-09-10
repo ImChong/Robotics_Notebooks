@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 23 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 24 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -19,7 +19,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（23 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（24 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'teleoperation',
@@ -44,6 +44,7 @@
     'motion-generation',
     'vla',
     'real2sim',
+    'embodied-data',
     'wam'
   ];
 
@@ -71,6 +72,7 @@
     'motion-generation': 'roadmap/depth-motion-generation.md',
     'vla': 'roadmap/depth-vla.md',
     'real2sim': 'roadmap/depth-real2sim.md',
+    'embodied-data': 'roadmap/depth-embodied-data.md',
     'wam': 'roadmap/depth-wam.md'
   };
 
@@ -517,6 +519,34 @@
         'wiki/concepts/video-as-simulation.md'
       ])
     },
+    'embodied-data': {
+      segments: new Set([
+        'data', 'datasets', 'datakit', 'dataeval', 'flywheel', 'lerobot',
+        'egoscale', 'humannet', 'dataset-bfm', 'data-collection',
+        'data-pipeline', 'data-cleaning', 'data-quality', 'data-augmentation',
+        'auto-labeling', 'open-x-embodiment', 'scaling-law'
+      ]),
+      ids: mergeIds('embodied-data', [
+        'wiki/overview/hub-data-pipeline.md',
+        'wiki/concepts/embodied-data-cleaning.md',
+        'wiki/concepts/embodied-scaling-laws.md',
+        'wiki/concepts/motion-data-quality.md',
+        'wiki/concepts/open-x-embodiment.md',
+        'wiki/methods/auto-labeling-pipelines.md',
+        'wiki/methods/generative-data-augmentation.md',
+        'wiki/queries/humanoid-robot-data-collection-landscape.md',
+        'wiki/queries/humanoid-training-data-pipeline.md',
+        'wiki/comparisons/humanoid-reference-motion-datasets.md',
+        'wiki/entities/paper-data-pyramid-embodied-manipulation.md',
+        'wiki/entities/paper-open-x-embodiment.md',
+        'wiki/entities/humanoid-everyday-dataset.md',
+        'wiki/entities/agibot-world-2026.md',
+        'wiki/entities/amass.md',
+        'wiki/entities/handumi.md',
+        'wiki/entities/paper-bifrost-umi.md',
+        'wiki/entities/perceptron-isaac-05.md'
+      ])
+    },
     'icl': {
       segments: new Set([
         'icl', 'in-context', 'one-shot', 'test-time'
@@ -698,6 +728,12 @@
       label: 'Real2Sim',
       wikiPath: DEPTH_HUB_IDS.real2sim,
       description: '把真实世界压成可训练/可评测的仿真资产与场景孪生。'
+    },
+    'embodied-data': {
+      emoji: '🗂️',
+      label: '具身数据',
+      wikiPath: DEPTH_HUB_IDS['embodied-data'],
+      description: '采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与数据飞轮。'
     },
     'wam': {
       emoji: '🔮',

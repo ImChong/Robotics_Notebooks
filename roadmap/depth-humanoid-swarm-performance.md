@@ -243,6 +243,7 @@ flowchart LR
   - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [ICL（具身上下文学习）](depth-icl.md)
+  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
 - 关联知识页：
   - [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)
   - [时钟同步算法](../wiki/concepts/clock-synchronization-algorithms.md)

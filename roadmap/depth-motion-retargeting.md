@@ -347,6 +347,7 @@ flowchart LR
   - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
   - [ICL（具身上下文学习）](depth-icl.md) — 下游：人视频 ICL 的人–机对应依赖这条线
+  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 上游/下游：重定向是数据金字塔里「人 → 本体」的折算段
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 

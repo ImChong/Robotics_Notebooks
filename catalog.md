@@ -3868,6 +3868,7 @@
 - [路线（纵深）：如果目标是 BFM（人形行为基础模型）](roadmap/depth-bfm.md) — 摘要**：面向"想用一个 checkpoint 控住人形全身"的纵深路线，从 RL locomotion 与动捕数据基座、动作跟踪谱系（DeepMimic → ASE → PHC → Masked `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](roadmap/depth-classical-control.md) — 摘要**：面向"想用基于模型的传统控制栈驱动人形机器人"的纵深路线，从简化模型（LIP/ZMP）到 Centroidal 轨迹优化、MPC，再到 TSID/WBC 与真机状态估计，按 Stage  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是接触丰富的操作任务](roadmap/depth-contact-manipulation.md) — 摘要**：面向"装配、拧螺丝、插拔等需要精细接触"的操作任务的纵深路线，按 Stage 0–3 串通从阻抗控制到 ACT / Diffusion Policy 的核心方法；本路线是 [运动控制主路 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与飞轮）](roadmap/depth-embodied-data.md) — 摘要**：面向"想把具身数据当成一条可交付的工程管线来做"的纵深路线，从数据口径与金字塔分层（可扩展性 × 机器人对齐两轴、真机/UMI/Ego-Exo/仿真/通用五层），到采集范式与装置选型（遥 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](roadmap/depth-embodied-eval.md) — 摘要**：面向"训完一个具身模型，接下来怎么『测/证明它』"的纵深路线，从评测目的与四层闭环边界，到 ① 具身大脑/MLLM 认知评测、② 世界模型预测保真度评测、③ 策略成功率与过程/判据评测， `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](roadmap/depth-humanoid-boxing.md) — 摘要**：面向"让两台人形机器人在擂台上像人一样对打"的纵深路线，从对抗全身任务的问题定义与自主 / 遥操作两条产品路线出发，经拳击 MoCap 的全身跟踪基座、技能蒸馏到潜空间动作流形，再到两玩 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](roadmap/depth-humanoid-hardware-design.md) — 摘要**：面向"想从一张任务需求做到一台能上电、能跑控制、能交付的人形整机"的纵深路线，从整机指标与质量/功率/延迟三大预算，到构型与机械布局、结构详设与验证、电气架构与配电、EMC 接地与板级落 `📅unknown` `[roadmap_page]`

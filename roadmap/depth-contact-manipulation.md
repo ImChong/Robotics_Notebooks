@@ -158,6 +158,7 @@ flowchart LR
   - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
   - [ICL（具身上下文学习）](depth-icl.md)
+  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
 - 关联知识页：
   - [Manipulation](../wiki/tasks/manipulation.md)
   - [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)

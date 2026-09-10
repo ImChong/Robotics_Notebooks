@@ -204,6 +204,7 @@ flowchart LR
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
   - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md) — 质心高度、摆动惯量与力矩延迟这些模型参数由那条路线定
   - [ICL（具身上下文学习）](depth-icl.md)
+  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
 - 关联知识页：
   - [Optimal Control](../wiki/concepts/optimal-control.md)
   - [LIP / ZMP](../wiki/concepts/lip-zmp.md)
