@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/repos/unifolm-world-model-action.md — 深度刷新 UnifoLM-WMA-0：项目页归档、三阶段训练/双模式部署/源码时序图；交叉 world-action-models
+
 ## [2026-09-10] ingest | sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md — 11篇 VLM/操作盘点；11/11 独立 paper-* 节点（0 重复 arXiv）
 
 ## [2026-09-10] ingest | sources/papers/puffin_world_arxiv_2609_04196.md — Puffin-World 原生 3D 世界状态统一多模态模型；代码+HF 权重+ Puffin-16M 已开源

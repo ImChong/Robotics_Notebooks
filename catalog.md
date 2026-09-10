@@ -3095,7 +3095,7 @@
 - [UKMARSBOT](wiki/entities/ukmarsbot.md) — UKMARSBOT** 是 UK Micromouse and Robotics Society（UKMARS） 发布的 **低成本入门多用途开源机器 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO](wiki/entities/ultralytics.md) — Ultralytics**（ultralytics/ultralytics，文档 [docs.ultra `📅unknown` `[entity_page]`
 - [UnifoLM-VLA-0（unifolm-vla）](wiki/entities/unifolm-vla.md) — UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识 `📅unknown` `[entity_page]`
-- [UnifoLM-WMA-0（unifolm-world-model-action）](wiki/entities/unifolm-world-model-action.md) — UnifoLM-WMA-0** 是面向通用机器人学习的 **World-Model–Action** 架构：核心世界模型理解机器人与环境的物理交互，并提供 **仿真引擎** 与 **策略增强**  `📅unknown` `[entity_page]`
+- [UnifoLM-WMA-0（unifolm-world-model-action）](wiki/entities/unifolm-world-model-action.md) — UnifoLM-WMA-0** 是 UnifoLM 家族中的 **World-Model–Action（WMA）** 架构：核心世界模型理解机器人与环境的物理交互，并提供 **仿真引擎** 与  `📅unknown` `[entity_page]`
 - [UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统](wiki/entities/unilab.md) — UniLab**（arXiv:2605.30313，清华等联合）质疑仿真主导机器人 RL 的默认前提：**高效训练是否必须把物理放在 GPU 上**。论文将问题重述为 **仿真–学习闭环的系统组织 `📅unknown` `[entity_page]`
 - [UniLidar SDK（L1 / L2）](wiki/entities/unilidar-sdk2.md) — 宇树激光雷达产品线 SDK：**L2 用 `unilidar_sdk2`**，**L1 用 `unilidar_sdk`**。本页合并为一个知识节点，按代际对照，避免两个几乎同构的 stub。 `📅unknown` `[entity_page]`
 - [Unitree 灵巧手 Serial↔DDS 服务](wiki/entities/unitree-dexterous-hand-services.md) — 人形双臂操作常需把厂家手部串口协议桥到 Unitree **DDS** 主题。组织下按手型拆仓；本页合并为**一个节点**，按手型索引。 `📅unknown` `[entity_page]`
