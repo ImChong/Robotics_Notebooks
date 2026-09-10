@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-10",
-  "node_count": 3930,
-  "edge_count": 35036,
+  "node_count": 3937,
+  "edge_count": 35072,
   "coverage": {
-    "covered": 3903,
-    "total": 3903,
+    "covered": 3910,
+    "total": 3910,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -240,8 +240,8 @@
       "size": 227
     },
     {
-      "label": "仿真到现实",
-      "size": 211
+      "label": "具身评测基准选型闭环",
+      "size": 216
     }
   ],
   "top_hubs": [
