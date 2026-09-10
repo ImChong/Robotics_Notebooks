@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-10",
-  "node_count": 3912,
-  "edge_count": 34908,
+  "node_count": 3913,
+  "edge_count": 34918,
   "coverage": {
-    "covered": 3885,
-    "total": 3885,
+    "covered": 3886,
+    "total": 3886,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/telekinesis-rlbotics.md",
+      "detail_id": "entity-telekinesis-rlbotics",
+      "label": "Telekinesis RLbotics",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-d4rt.md",
       "detail_id": "entity-paper-d4rt",
@@ -194,25 +205,18 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hibridge-dialogue.md",
-      "detail_id": "entity-paper-hibridge-dialogue",
-      "label": "HiBRIDGE",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-d4rt.md",
-    "detail_id": "entity-paper-d4rt",
-    "label": "D4RT：按需查询的统一 4D 动态场景重建",
+    "path": "wiki/entities/telekinesis-rlbotics.md",
+    "detail_id": "entity-telekinesis-rlbotics",
+    "label": "Telekinesis RLbotics",
     "type": "entity",
     "recency": "2026-09-10",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
@@ -307,7 +311,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 562,
+      "degree": 563,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

@@ -194,6 +194,7 @@ Gym 时代就强调大规模随机化；Lab / Sim 延续并扩展到视觉与传
 - [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 专家轨迹在 Isaac Gym 50 Hz 并行采集后再训 ArticuACT（arXiv:2608.20251）
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 真实场景 USDZ 体积导入 Sim / Lab
 - [Instant NuRec](./paper-instant-nurec.md) — AV 日志前向 3DGS，可作 NuRec 精修种子
+- [Telekinesis RLbotics](./telekinesis-rlbotics.md) — 跨 Gymnasium/mjlab/Isaac Lab 的 YAML 驱动 PPO 与 ONNX 部署
 
 ## 一句话记忆
 

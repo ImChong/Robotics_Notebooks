@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/repos/telekinesis-rlbotics.md — 接入 Telekinesis RLbotics 跨后端 RL 框架（Gymnasium/mjlab/Isaac Lab + ONNX）；已开源 Apache 2.0
+
 ## [2026-09-10] ingest | sources/repos/humanoid-motion-intelligence.md — 复核 RealXiaoze/humanoid-motion-intelligence：191 篇/586 项/40 数据集/176 家公司；515★；论文导读增量挂接 39/46，7 条待补；开源主表不镜像 586
 
 - **触发：** 用户指定 <https://github.com/RealXiaoze/humanoid-motion-intelligence>，并要求自动合并 PR
