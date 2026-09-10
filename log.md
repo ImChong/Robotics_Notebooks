@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md — BeyondMimic *Science Robotics*（DOI adx8924）中文导读；复用 wiki/methods/beyondmimic.md，不新建实体；交叉 sonic-vs-beyondmimic 对比页
+
 ## [2026-09-10] ingest | PGMT/TANGO/DeCAL/Ostrich 四篇 arXiv:2609 — G1 感知 GMT、全身 VLA 导航、触觉世界模型 VLA、硬接触可微仿真；DeCAL/Ostrich 已开源，PGMT/TANGO 待发布
 
 ## [2026-09-09] ingest | sources/repos/mimickit_tan_norm.md — tan_norm 旋转观测：MimicKit 源码 + Zhou 2019 理论，升格 wiki/formalizations/tan-norm-rotation.md

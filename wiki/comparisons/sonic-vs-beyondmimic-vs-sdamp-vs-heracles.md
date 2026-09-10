@@ -2,12 +2,13 @@
 type: comparison
 tags: [humanoid, whole-body-tracking, wbt, motion-tracking, sonic, beyondmimic, sd-amp, heracles, amp, diffusion, foundation-model, comparison, engineering-selection]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-10
 sources:
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md
   - ../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md
+  - ../../sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md
@@ -36,7 +37,7 @@ summary: "SONIC / BeyondMimic / SD-AMP / Heracles 四条全身运动跟踪（WBT
 
 **背景**：当一段参考动作（MoCap、视频估计、生成模型）落到一台真实人形机器人上时，[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 的「策略学习」阶段是工程系统里 **奖励、数据与算力** 三者博弈最激烈的一段。围绕「**像不像参考**」与「**OOD 怎么活下来**」两条评价线，2024–2026 年间涌现出四条代表性路线——以 **SONIC** 为代表的**规模化监督预训练**、以 **BeyondMimic** 为代表的**精准物理建模 + 失败率自适应采样**、以 **SD-AMP** 为代表的**状态门控双判别器 AMP**、以及以 **Heracles** 为代表的**状态条件扩散中间件**。四者**并非互斥**：SONIC 与 BeyondMimic 共享 motion tracking 基本范式，SD-AMP 与 Heracles 都把「OOD 怎么活下来」当一等问题但落在**奖励层**与**参考层**两个不同抽象——选型的关键不是「谁更先进」，而是 **「你愿意把代价付在数据、参考、策略还是中间件」**。
 
-> **一句话区分**：SONIC「**把 tracking 当预训练任务，靠数据 + 算力 scaling**」；BeyondMimic「**精确 armature + 失败率采样，让简单 PPO 也能干掉复杂参考**」；SD-AMP「**训练期投影重力门控切两个 AMP 判别器，部署期单网络无 FSM**」；Heracles「**在高层参考与底层 tracker 之间插状态条件 flow matching，名义区透传、OOD 区改参考**」。
+> **一句话区分**：SONIC「**把 tracking 当预训练任务，靠数据 + 算力 scaling**」；BeyondMimic「**锚点相对跟踪 + armature + 失败率采样，compact MDP 无历史堆叠；阶段 ② 扩散 + classifier guidance 零样本下游**」；SD-AMP「**训练期投影重力门控切两个 AMP 判别器，部署期单网络无 FSM**」；Heracles「**在高层参考与底层 tracker 之间插状态条件 flow matching，名义区透传、OOD 区改参考**」。
 
 ---
 
@@ -45,7 +46,7 @@ summary: "SONIC / BeyondMimic / SD-AMP / Heracles 四条全身运动跟踪（WBT
 | 方法 | 一句话 | 论文 / 仓库 |
 |------|--------|-------------|
 | **SONIC**（Supersizing Motion Tracking） | 万级 SMPL + 上亿帧 MoCap + 约 2.1 万 GPU 小时把 tracking 当预训练任务训出**单一统一控制策略**，统一 token 接口接 VR / 视频 / 文本 / 音乐 / VLA。 | [arXiv:2511.07820](https://arxiv.org/abs/2511.07820)；[GEAR-SONIC 项目页](https://nvlabs.github.io/GEAR-SONIC/) |
-| **BeyondMimic** | 精确 armature + 历史本体堆叠 + 失败率驱动的自适应重采样，让简单 PPO 在 Isaac Lab 上把长 horizon 模仿做到真机可交付。 | [arXiv:2508.08241](https://arxiv.org/abs/2508.08241)；[HybridRobotics/whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) |
+| **BeyondMimic** | 锚点相对跟踪 + 单步观测 + 失败率采样 + 精确 armature；阶段 ② 潜空间扩散 + classifier guidance 零样本航点/摇杆/避障/补全（*Science Robotics* 2026）。 | [DOI adx8924](https://doi.org/10.1126/scirobotics.adx8924)；[arXiv:2508.08241](https://arxiv.org/abs/2508.08241)；[HybridRobotics/whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) |
 | **SD-AMP**（State-Dependent AMP） | 训练期投影重力门控 \|g_z+1\|>0.6 切 **recovery / locomotion 两个 AMP 判别器**；3 条 LAFAN1 即覆盖走 / 跑 / 起身，部署冻结 ONNX 50 Hz 无 FSM。 | [arXiv:2605.18611](https://arxiv.org/abs/2605.18611) |
 | **Heracles** | 在高层参考 m_t 与底层物理 tracker 之间插入 **状态条件 flow matching 中间件**：近参考时近似恒等映射保 tracking 精度，大偏差时生成类人恢复关键帧 + receding-horizon 闭环重规划。 | [arXiv:2603.27756](https://arxiv.org/abs/2603.27756)；[项目页](https://heracles-humanoid-control.github.io/) |
 
@@ -56,7 +57,7 @@ summary: "SONIC / BeyondMimic / SD-AMP / Heracles 四条全身运动跟踪（WBT
 | 维度 | **SONIC**（规模化预训练） | **BeyondMimic**（精准物理 + 失败采样） | **SD-AMP**（双判别器门控 AMP） | **Heracles**（扩散中间件） |
 |------|---------------------------|------------------------------------------|----------------------------------|------------------------------|
 | **范式定位** | 把 tracking 当大规模监督预训练 | 显式 tracking reward + RL | 对抗式 motion prior + 任务 RL | tracker 不变，只在参考层插生成中间件 |
-| **典型参考池** | 万级 SMPL（Motion-X 等约 700 小时） | 干净棚拍（LAFAN1 等中小规模） | **仅 3 条 LAFAN1**（walk / run / fallAndGetUp） | 复用既有 tracker 训练池；中间件需 paired (p_t, m_t) 数据 |
+| **典型参考池** | 万级 SMPL（Motion-X 等约 700 小时） | 约 2.5 h 动捕 + LAFAN1 等；21 片段 G1 零样本 | **仅 3 条 LAFAN1**（walk / run / fallAndGetUp） | 复用既有 tracker 训练池；中间件需 paired (p_t, m_t) 数据 |
 | **训练目标** | 密集 tracking 损失（监督式 BC + RL） | 统一任务空间 tracking reward + PPO | $R_t + \lambda_{\mathrm{amp}} R_{\mathrm{AMP}}$，$\lambda_{\mathrm{amp}}=0.5$ | flow matching 速度场 MSE + 既有 tracker reward 不变 |
 | **何时切换行为** | 隐式：由数据多样性 + 单策略容量内化 | 隐式：单策略 + 失败率采样把难片段曝光 | **训练期** \|g_z+1\|>0.6 → recovery；否则 loco（部署不读 g_z） | **运行时隐式**：偏差小 → 近恒等；偏差大 → 生成恢复关键帧 |
 | **跨任务一般化** | ✅✅ 单策略 + 多上游 token 接口 | ✅ 同平台多参考 | ✅ 单策略覆盖走 / 跑 / 起身 + 任意速度命令 | ✅ tracker 内化的行为集 + 中间件 OOD 修补 |
