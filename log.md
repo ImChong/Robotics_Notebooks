@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/sites/male-cns-connectome.md — Male CNS v1.0 雄性果蝇全 CNS 连接组及 FlyWire/neuPrint/Neuroglancer/DVID/FlyBrainLab 工具栈
+
 ## [2026-09-10] ingest | sources/papers/raga_arxiv_2606_29329.md — RAGA（ECCV 2026）3DGS avatar 实时光线追踪阴影；项目页未开源
 
 ## [2026-09-10] ingest | sources/blogs/wechat_embodied_station_ame1_ame2_2026-09-10.md — AME-1→AME-2 对照导读；2/2 复用实体 + 技术地图；归档 Kitjesen/ame2 与 AME-2 项目页
