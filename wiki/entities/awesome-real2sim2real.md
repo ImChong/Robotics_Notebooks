@@ -17,6 +17,7 @@ related:
   - ./paper-arcadia.md
   - ./paper-r2s-ego.md
   - ./paper-lucida-r2s.md
+  - ./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
 sources:
@@ -63,7 +64,7 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 | Surveys | MDP 视角 Sim2Real taxonomy、物理仿真器角色、reality gap 综述 |
 | Sim-to-Real | RL 迁移 / 零样本 / DR·适配 / 基础模型增强 |
 | Real-to-Sim | 视频重建（含 CRISP）/ 操作与交互场景 |
-| Real2Sim2Real | 3DGS 框架与仿真管线闭环 |
+| Real2Sim2Real | 3DGS 框架与仿真管线闭环；avatar 阴影见 [RAGA](./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md) |
 | Benchmarks | 仿真器、数据集与评测协议 |
 
 ## 局限与使用注意
@@ -80,7 +81,7 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 - [Sim2Real 残差适配 vs Real2Sim vs 真机 RL](../comparisons/sim2real-vs-real2sim-fine-tuning.md)
 - [CRISP Real2Sim](../methods/crisp-real2sim.md)
 - [如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md) / [Sim2Real Checklist](../queries/sim2real-checklist.md)
-- [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [R2S-EGO](./paper-r2s-ego.md) / [Lucida](./paper-lucida-r2s.md)
+- [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [R2S-EGO](./paper-r2s-ego.md) / [Lucida](./paper-lucida-r2s.md) / [RAGA](./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md)（3DGS avatar 阴影）
 - [Arcadia](./paper-arcadia.md) — 采集 + 生成式 USD + 共享 VLN/VLA + 反馈写回（部分开源）
 - [Awesome World Models](./awesome-world-models.md) / [Awesome Touch](./awesome-touch.md)
 

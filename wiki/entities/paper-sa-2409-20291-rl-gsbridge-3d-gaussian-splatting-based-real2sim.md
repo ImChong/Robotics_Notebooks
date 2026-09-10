@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-10
 arxiv: "2409.20291"
 venue: "arXiv 2024"
 summary: "A novel real-to-sim-to-real framework incorporating 3D Gaussian Splatting into conventional RL simulation pipelines, enabling zero-shot sim-to-real transfer for vision-based deep reinforcement learning"
@@ -89,6 +89,7 @@ A novel real-to-sim-to-real framework incorporating 3D Gaussian Splatting into c
 - 列表实体：[Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)
 - 技术地图：[Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
 - 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
+- 渲染 fidelity：[RAGA](./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md) — 3DGS 场景中 avatar 实时光线追踪阴影（ECCV 2026）
 
 ## 参考来源
 
