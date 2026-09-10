@@ -80,6 +80,7 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 - 保真度取舍：[仿真物理保真度链路](../queries/simulation-physics-fidelity.md)、[Physics Fidelity ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 可微性与接触保真度的冲突
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
 - [NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)
+- [Ostrich](../entities/paper-ostrich.md) — 硬接触非光滑 Newton + IFT 伴随；大步长可微刚体仿真（arXiv:2609.08800，已开源）
 
 
 ## 推荐继续阅读

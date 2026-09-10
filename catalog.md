@@ -906,6 +906,7 @@
 - [DASH：分歧自适应的 OPSD 监督视界](wiki/entities/paper-dash-opsd.md) — DASH**（*Divergence-Adaptive Supervision Horizons*；[arXiv:2608.06243](https://arxiv.org/abs/2608.06 `📅unknown` `[entity_page]`
 - [Data Pyramid for Embodied Manipulation（具身数据金字塔综述）](wiki/entities/paper-data-pyramid-embodied-manipulation.md) — Data Pyramid for Embodied Manipulation**（arXiv:2607.24744，2026 `📅unknown` `[entity_page]`
 - [DayDreamer](wiki/entities/paper-daydreamer-world-models-real-robots.md) — DayDreamer** 收录于 具身智能研究室 · 具身世界模型六路线综述 **学习主导 `📅unknown` `[entity_page]`
+- [DeCAL：接触感知灵巧 VLA](wiki/entities/paper-decal.md) — DeCAL**（*Towards Physically-Grounded Dexterous Vision-Language-Action Models via Contact-Aware Lat `📅unknown` `[entity_page]`
 - [DECOWAM（腿足移动操作解耦全身 WAM）](wiki/entities/paper-decowam.md) — DECOWAM**（*Decoupled Whole-Body World-Action Model for Legged Mobile Manipulation*，[arXiv:2608.201 `📅unknown` `[entity_page]`
 - [DEED：零售人形 VLA 的数据高效后训练与经验驱动学习](wiki/entities/paper-deed.md) — DEED**（*Data-Efficient Post-Training and Experience-Driven Learning*；论文 *Closing the Lab-to-Store  `📅unknown` `[entity_page]`
 - [Deep Whole-Body Control（HMI P042）](wiki/entities/paper-deep-whole-body-control-loco-manip.md) — Deep Whole-Body Control**（*Deep Whole-Body Control: Learning a Unified Policy for Manipulation and `📅unknown` `[entity_page]`
@@ -1740,6 +1741,7 @@
 - [OptiGeo：光学挑战场景的高效单目几何感知](wiki/entities/paper-optigeo.md) — OptiGeo**（*Efficient Monocular Geometry for Embodied Perception in Optically Challenging Scenes*， `📅unknown` `[entity_page]`
 - [OrthoSkillVLA](wiki/entities/paper-orthoskillvla.md) — OrthoSkillVLA: Continual Skill Learning via Gradient-Informed Skill Subspace Adaptation**（[arXiv:2 `📅unknown` `[entity_page]`
 - [OSCAR（跨具身动作条件世界模型）](wiki/entities/paper-oscar.md) — OSCAR**（*OSCAR: Omni-Embodiment Action-Conditioned World Model for Robotics*，arXiv:2606.04463，2026 `📅unknown` `[entity_page]`
+- [Ostrich：硬接触可微动力学](wiki/entities/paper-ostrich.md) — Ostrich**（*Taking Large Strides Through Stiff Contact in Differentiable Dynamics*，[arXiv:2609.0880 `📅unknown` `[entity_page]`
 - [P³：稳定 VAE 策略学习的概率传播](wiki/entities/paper-p3.md) — P³**（*Probabilistic Policy Propagation for Stable VAE-Based Robot Learning*，[arXiv:2607.25541](htt `📅unknown` `[entity_page]`
 - [PAC-MAN](wiki/entities/paper-pac-man-perceptive-cbf-rl.md) — PAC-MAN**（*Perception-Aware CBF-RL for Whole-Body Safety in Humanoid Dodgeball*，[arXiv:2607.28623 `📅unknown` `[entity_page]`
 - [PACE（足式系统化 Sim2Real）](wiki/entities/paper-pace-sim2real-legged-robots.md) — PACE**（**P**recise **A**daptation through **C**ontinuous **E**volution）是 ETH Zurich Robotic System `📅unknown` `[entity_page]`
@@ -1759,6 +1761,7 @@
 - [PETS](wiki/entities/paper-pets-probabilistic-dynamics-mpc.md) — PETS** 收录于 具身智能研究室 · 具身世界模型六路线综述 **规划主导型** 段。 `📅unknown` `[entity_page]`
 - [PFM-HR：面向人形的姿态流匹配先验](wiki/entities/paper-pfm-hr.md) — PFM-HR**（*Pose Flow Matching for Humanoid Robots*；[arXiv:2608.03227](https://arxiv.org/abs/2608.03 `📅unknown` `[entity_page]`
 - [PGIF-MPPI：社交导航的安全成本必须面向未来](wiki/entities/paper-pgif-mppi.md) — PGIF**（*Predictive Gaussian Interaction Fields*；[arXiv:2608.08323](https://arxiv.org/abs/2608.0832 `📅unknown` `[entity_page]`
+- [PGMT：人形感知通用动作跟踪](wiki/entities/paper-pgmt.md) — PGMT**（*Perceptive General Motion Tracking for Humanoid Robots*，[arXiv:2609.08511](https://arxiv.o `📅unknown` `[entity_page]`
 - [Phi-WM 1.0 ActEffect（训练时后果反馈）](wiki/entities/paper-phi-wm-acteffect.md) — ActEffect**（报告 *Phi-WM 1.0 ActEffect: From Predictive Foresight to Consequence Feedback in Robot L `📅unknown` `[entity_page]`
 - [PhyFilter：用物理滤波换数据规模](wiki/entities/paper-phyfilter.md) — PhyFilter**（*Physics Filtering Favors the Generalization of Robot Learning*，[arXiv:2608.22701](htt `📅unknown` `[entity_page]`
 - [PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）](wiki/entities/paper-phygile.md) — PhyGile** 是西北工业大学、上海 AI Lab、中科大、清华、复旦、字节与东北大学等团队的 **文本驱动人形敏捷全身控制** 工作（arXiv:2603.19305）：在 **262 维机 `📅unknown` `[entity_page]`
@@ -2778,6 +2781,7 @@
 - [TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）](wiki/entities/paper-taco-tactile-wm-vla-posttrain.md) — TACO**（*TACO: TActile World Model as a Self-COrrector for Scalable VLA Post-Training*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [TacPAC：触觉预测驱动的 WAM 实时动作修正](wiki/entities/paper-tacpac.md) — TacPAC**（*Tactile Prediction and Real-Time Action Correction in World-Action Models for Contact-Ri `📅unknown` `[entity_page]`
 - [TacRefineNet：边缘突出物体的目标条件触觉抓取精修](wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md) — TacRefineNet**（*Goal-Conditioned Tactile Grasp Refinement for Edge-Prominent Objects*，小米机器人实验室，arX `📅unknown` `[entity_page]`
+- [TANGO：杂乱室内的人形全身 VLA 导航](wiki/entities/paper-tango-vla.md) — TANGO**（*Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Mo `📅unknown` `[entity_page]`
 - [TAPVid-MV：多视角 3D 任意点跟踪基准](wiki/entities/paper-tapvid-mv.md) — TAPVid-MV**（*A Benchmark for Tracking Any Point in 3D Across Multiple Views*，[arXiv:2609.01899](ht `📅unknown` `[entity_page]`
 - [TARCAT](wiki/entities/paper-tarcat.md) — A Taxonomy of Construction Task Activities for Robot Workers**（[arXiv:2608.25395](https://arxiv.or `📅unknown` `[entity_page]`
 - [τ₀-VLA：世界模型引导测试时计算的分层机器人基础模型](wiki/entities/paper-tau0-vla.md) — τ₀-VLA**（*a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation*，[ar `📅unknown` `[entity_page]`
