@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-gwm-first-principles.md",
+      "detail_id": "entity-paper-gwm-first-principles",
+      "label": "General World Models from First-Principles（生数 / 清华）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/overview/gwm-closed-loop-5-papers-technology-map.md",
+      "detail_id": "wiki-overview-gwm-closed-loop-5-papers-technology-map",
+      "label": "GWM 闭环：5 篇资料阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-assembling-two-parts-in-one-hand.md",
       "detail_id": "entity-paper-assembling-two-parts-in-one-hand",
       "label": "单手双件装配（arXiv:2609.10137）",
@@ -187,37 +207,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-ostrich.md",
-      "detail_id": "entity-paper-ostrich",
-      "label": "Ostrich：硬接触可微动力学",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-pgmt.md",
-      "detail_id": "entity-paper-pgmt",
-      "label": "PGMT：人形感知通用动作跟踪",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-assembling-two-parts-in-one-hand.md",
-    "detail_id": "entity-paper-assembling-two-parts-in-one-hand",
-    "label": "单手双件装配（arXiv:2609.10137）",
+    "path": "wiki/entities/paper-gwm-first-principles.md",
+    "detail_id": "entity-paper-gwm-first-principles",
+    "label": "General World Models from First-Principles（生数 / 清华）",
     "type": "entity",
     "recency": "2026-09-10",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
