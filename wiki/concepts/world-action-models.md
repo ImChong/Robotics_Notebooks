@@ -60,6 +60,8 @@ related:
   - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-worldscape-policy-2.md
   - ../entities/unifolm-world-model-action.md
+  - ../entities/paper-gwm-first-principles.md
+  - ../overview/gwm-closed-loop-5-papers-technology-map.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/wam-motion-control-five-paths.md
@@ -101,7 +103,8 @@ sources:
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md
   - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
-  - ../../sources/papers/wall_ss_x_square_2026.md
+  - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
+  - ../../sources/papers/gwm_first_principles_shengshu_2026.md
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
@@ -189,6 +192,8 @@ sources:
 **开源实例（Joint 族 + Wan MoT 三专家 · Dexmal）**：[Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) 在 **Wan 骨干 + MoT** 上分出 **video / action / value** 专家，联合 **未来视频、32D 动作与状态–价值**；发布 **DW05-Base** 与 **RoboTwin 2.0 SFT** 权重及 **RobotWin-style JSONL** 训练/推理栈（2026-07 GitHub + Hugging Face）。
 
 **开源实例（Joint 族 + 宇树官方 · Z1/G1 真机）**：[UnifoLM-WMA-0](../entities/unifolm-world-model-action.md) 以 **视频生成世界模型 + 动作头** 实现 **决策模式**（server–client 真机部署）与 **交互仿真模式**（动作条件未来视频）；**Training / Inference / Checkpoints / Deployment** 全开源，权重 `Base`（Open-X）与 `Dual`（五个 Unitree HF 集），配套 LeRobot v2.1 数据管线与 `unitree_deploy/`（2025-09 GitHub + HF）。
+
+**路线图实例（Joint 族 + 生数 GWM · L3 闭环）**：[GWM First-Principles](../entities/paper-gwm-first-principles.md) 定义理解–想象–行动分级与 D1–D5 数据金字塔；[Motubrain](../entities/paper-motubrain.md) / [Motus2](../entities/paper-motus2.md) 为 L3 产品/论文实例，[WAM 实时异步](../entities/paper-wam-realtime-async.md) 补部署层 RTC 实证（手稿无 arXiv；Motus2 截至入库日未开源）。
 
 **平台实例（Joint 族 + 全模态单栈 · NVIDIA）**：[Cosmos 3](../entities/cosmos-3.md) 在 **MoT** 内用 **Generator** 同时暴露 **policy、forward dynamics、inverse dynamics**，用 **Reasoner** 做具身 CoT 与 2D 轨迹规划，并支持 **Reasoning + Generation**（先文本轨迹再视频再生）；与 Cascaded「先完整视频计划再解码动作」相比，更强调 **同一 checkpoint 多任务 I/O 配置** 与 **开源 serving 栈**（arXiv:2606.02800）。代际与和 [Newton](../entities/newton-physics.md) 的分工见 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)。
 

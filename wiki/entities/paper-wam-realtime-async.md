@@ -12,9 +12,11 @@ tags:
   - shengshu
   - tsinghua
 status: complete
-updated: 2026-08-27
+updated: 2026-09-10
 arxiv: "2608.01880"
 related:
+  - ./paper-gwm-first-principles.md
+  - ../overview/gwm-closed-loop-5-papers-technology-map.md
   - ./paper-motubrain.md
   - ../methods/action-chunking.md
   - ../concepts/world-action-models.md
@@ -29,6 +31,7 @@ related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/blogs/motubrain_beyond_stalls_wam_async.md
   - ../../sources/sites/motubrain-com.md

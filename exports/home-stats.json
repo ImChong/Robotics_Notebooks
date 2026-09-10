@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-10",
-  "node_count": 3926,
-  "edge_count": 34990,
+  "node_count": 3928,
+  "edge_count": 35018,
   "coverage": {
-    "covered": 3899,
-    "total": 3899,
+    "covered": 3901,
+    "total": 3901,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -137,7 +137,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/telekinesis-rlbotics.md",
@@ -222,27 +222,27 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 640
+      "size": 559
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 475
+      "size": 489
     },
     {
       "label": "国内开源全景 424 项本库导读",
       "size": 322
     },
     {
-      "label": "世界动作模型",
-      "size": 302
-    },
-    {
       "label": "视觉-语言-动作",
-      "size": 263
+      "size": 257
     },
     {
       "label": "机器人学习论文笔记",
       "size": 227
+    },
+    {
+      "label": "仿真到现实",
+      "size": 210
     }
   ],
   "top_hubs": [
@@ -281,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 868,
+      "degree": 870,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -391,7 +391,7 @@
       "type": "entity",
       "degree": 44,
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "detail_id": "wiki-methods-ase",

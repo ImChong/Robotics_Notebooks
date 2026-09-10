@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-10
 arxiv: "2512.13030"
 venue: "arXiv 2025"
 summary: "Unified latent action world model."
