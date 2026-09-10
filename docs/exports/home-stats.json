@@ -9,6 +9,81 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/fly-connectomics-stack.md",
+      "detail_id": "wiki-concepts-fly-connectomics-stack",
+      "label": "果蝇连接组工具栈（Fly Connectomics Stack）",
+      "type": "concept",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/dvid.md",
+      "detail_id": "entity-dvid",
+      "label": "DVID",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/flybrainlab.md",
+      "detail_id": "entity-flybrainlab",
+      "label": "FlyBrainLab",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/flywire.md",
+      "detail_id": "entity-flywire",
+      "label": "FlyWire",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/male-cns-connectome.md",
+      "detail_id": "entity-male-cns-connectome",
+      "label": "Male CNS Connectome",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/neuprint.md",
+      "detail_id": "entity-neuprint",
+      "label": "neuPrint",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/neuroglancer.md",
+      "detail_id": "entity-neuroglancer",
+      "label": "Neuroglancer",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
       "path": "wiki/entities/paper-raga-real-time-ray-traced-gaussian-shadow-casting.md",
       "detail_id": "entity-paper-raga-real-time-ray-traced-gaussian-shadow-casting",
       "label": "RAGA — Real Time Ray Traced Gaussian Shadow Casting",
@@ -136,87 +211,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-swingbot.md",
-      "detail_id": "entity-paper-swingbot",
-      "label": "SwingBot（arXiv:2609.10283）",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-underwater-quadruped-attitude-control.md",
-      "detail_id": "entity-paper-underwater-quadruped-attitude-control",
-      "label": "水下四足姿态控制（arXiv:2609.09217）",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vlm-manipulation-11-papers-technology-map.md",
-      "detail_id": "wiki-overview-vlm-manipulation-11-papers-technology-map",
-      "label": "VLM 控制与灵巧操作：11 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-puffin-world.md",
-      "detail_id": "entity-paper-puffin-world",
-      "label": "Puffin-World（原生 3D 世界状态统一多模态世界模型 · arXiv:2609.04196）",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/telekinesis-rlbotics.md",
-      "detail_id": "entity-telekinesis-rlbotics",
-      "label": "Telekinesis RLbotics",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-d4rt.md",
-      "detail_id": "entity-paper-d4rt",
-      "label": "D4RT：按需查询的统一 4D 动态场景重建",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-locateanything.md",
-      "detail_id": "entity-paper-locateanything",
-      "label": "LocateAnything：基于并行框解码的快速高质量视觉-语言定位",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-raga-real-time-ray-traced-gaussian-shadow-casting.md",
-    "detail_id": "entity-paper-raga-real-time-ray-traced-gaussian-shadow-casting",
-    "label": "RAGA — Real Time Ray Traced Gaussian Shadow Casting",
-    "type": "entity",
+    "path": "wiki/concepts/fly-connectomics-stack.md",
+    "detail_id": "wiki-concepts-fly-connectomics-stack",
+    "label": "果蝇连接组工具栈（Fly Connectomics Stack）",
+    "type": "concept",
     "recency": "2026-09-10",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
   },
   "top_communities": [
     {
