@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-10",
   "node_count": 3912,
-  "edge_count": 34862,
+  "edge_count": 34869,
   "coverage": {
     "covered": 3885,
     "total": 3885,
@@ -217,7 +217,7 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 712
+      "size": 687
     },
     {
       "label": "宇树 G1 人形机器人",
@@ -228,12 +228,12 @@
       "size": 322
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 255
+      "label": "世界动作模型",
+      "size": 270
     },
     {
-      "label": "世界动作模型",
-      "size": 244
+      "label": "视觉-语言-动作",
+      "size": 255
     },
     {
       "label": "机器人学习论文笔记",
@@ -245,7 +245,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1452,
+      "degree": 1451,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -269,14 +269,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 921,
+      "degree": 920,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 852,
+      "degree": 853,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -284,7 +284,7 @@
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
       "label": "国内具身开源全景 424 项 · 本库导读",
       "type": "query",
-      "degree": 680,
+      "degree": 681,
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     },
@@ -299,7 +299,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 574,
+      "degree": 573,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

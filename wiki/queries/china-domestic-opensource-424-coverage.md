@@ -527,7 +527,7 @@ sources:
 | --- | --- | --- |
 | LingBot-VLA 2.0 | VLA/操作模型 | [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md) · 复用 |
 | LingBot-VA | 世界模型 | [LingBot-VA](../entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) · 复用 |
-| LingBot-World 2.0 | 世界模型 | [LingBot-World 2.0](../entities/botworld.md) · 复用 |
+| LingBot-World 2.0 | 世界模型 | [LingBot-World 2.0 / Infinity](../entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md) · 复用 |
 | LingBot-Map | 评测 | [LingBot-Map](../entities/cn-os-lingbot-map.md) · 新建 |
 | LingBot-Depth | 工程与工具 | [LingBot-Depth](../entities/cn-os-lingbot-depth.md) · 新建 |
 | LingBot-Vision | 评测 | [LingBot-Vision](../entities/cn-os-lingbot-vision.md) · 新建 |

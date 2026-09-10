@@ -9,7 +9,7 @@
 - **arXiv：** 2607.07534
 - **出处：** arXiv 2026
 - **论文：** <https://arxiv.org/abs/2607.07534>
-- **代码：** 未在清单中标注
+- **代码：** <https://github.com/robbyant/lingbot-world-v2>（2026-09-10 核查）
 
 - **Highlights（清单）：** Advanced iteration featuring unbounded interaction horizon, 60 fps 720p real-time rendering, diverse interactive elements, and agentic harness.
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md`](../../wiki/entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md)

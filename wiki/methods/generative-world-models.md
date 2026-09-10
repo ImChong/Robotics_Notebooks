@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-openwam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
+  - ../entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
   - ../entities/paper-gaia1.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-10
 arxiv: "2601.20540"
 venue: "arXiv 2026"
 summary: "Open-sourced world simulator stemming from video generation with high fidelity and robust dynamics."
