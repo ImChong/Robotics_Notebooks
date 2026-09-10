@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-10",
-  "node_count": 3929,
-  "edge_count": 35026,
+  "node_count": 3930,
+  "edge_count": 35036,
   "coverage": {
-    "covered": 3902,
-    "total": 3902,
+    "covered": 3903,
+    "total": 3903,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -281,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 870,
+      "degree": 871,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
