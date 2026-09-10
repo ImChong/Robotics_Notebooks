@@ -19,6 +19,7 @@ related:
   - ./amp-mjlab.md
   - ./smp-g1-mjlab.md
   - ./unitree-rl-mjlab.md
+  - ./telekinesis-rlbotics.md
   - ./pollen-microduck-rl.md
   - ./paper-pac-man-perceptive-cbf-rl.md
   - ./paper-yahmp.md
@@ -112,6 +113,7 @@ mjlab 架构
 - [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现
 - [senlanke/mimic（mjlab）](./smp-g1-mjlab.md) — G1 上 SMP / CMoE / AME 移植枢纽
 - [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架
+- [Telekinesis RLbotics](./telekinesis-rlbotics.md) — 跨 Gymnasium/mjlab/Isaac Lab 的 YAML 驱动 PPO + ONNX 部署层
 - [Microduck RL](./pollen-microduck-rl.md) — Pollen 桌面双足：BAM XL330 + 共享 61D 观测 + ONNX 热切换
 - [YAHMP](./paper-yahmp.md) — G1 全身 GMT 消融与 ONNX 部署（基于 mjlab）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — mjlab + MuJoCo Warp 上 tiled SMPC 采数与稀疏 FastTD3（代码未开源）

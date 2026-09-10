@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/repos/telekinesis-rlbotics.md — 接入 Telekinesis RLbotics 跨后端 RL 框架（Gymnasium/mjlab/Isaac Lab + ONNX）；已开源 Apache 2.0
+
 ## [2026-09-10] ingest | sources/papers/lingbot_world_v2_arxiv_2607_07534.md + sources/sites/lingbot-world-v2 + sources/repos/lingbot-world-v2 — LingBot-World 2.0 / Infinity（arXiv:2607.07534）升格既有实体页；代码+HF 权重已开源；修正旧链 Robbyant/LingBot-World → robbyant/lingbot-world-v2
 
 ## [2026-09-10] ingest | sources/papers/d4rt_arxiv_2512_08924.md + sources/sites/d4rt-paper.md — D4RT（CVPR 2026 / arXiv:2512.08924）统一查询式动态 4D 重建；升格 wiki/entities/paper-d4rt.md；交叉 genception / state-estimation / hub-state-estimation / paper-vgg-ttt；确认未开源
