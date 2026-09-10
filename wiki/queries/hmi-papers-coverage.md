@@ -3,8 +3,8 @@ title: HMI 论文总索引 · 本库导读
 type: query
 status: complete
 created: 2026-07-31
-updated: 2026-07-31
-summary: 把具身智能研究室论文与项目总索引中的 145 篇论文逐条接到本库对应详情页；同主题多入口共用同一页，不建重复节点。
+updated: 2026-09-10
+summary: 把具身智能研究室论文总索引接到本库详情页：P001–P145 为 2026-07 全覆盖快照；P146–P191 为 2026-09-10 增量挂接（复用已有页，少数待补，不重复造节点）。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
@@ -16,7 +16,7 @@ sources:
 
 ## 一句话定义
 
-这是一张**论文导读表**：把 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 上游 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 总索引中的 **145** 条论文接到本库已有或新建的详情页，避免重复造节点。
+这是一张**论文导读表**：把 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 上游 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 总索引接到本库已有详情页，避免重复造节点。上游现为 **191** 条（`P001`–`P191`）。
 
 ## 英文缩写速查
 
@@ -33,7 +33,11 @@ sources:
 
 - **目录 → 正文。** 上游擅长按问题地图策展；本库负责可交叉引用的机制/工程深读。
 - **禁止重复节点。** 同一论文若已有 `paper-*` / `methods/*` 详情页，导读只挂接，不另建平行实体。
-- **与开源主表互补。** 代码入口见 [开源项目主表导读](./hmi-opensource-projects-coverage.md)；本页覆盖论文解读 ID（P001–P145）。
+- **与开源主表互补。** 代码入口见 [开源项目主表导读](./hmi-opensource-projects-coverage.md)；本页覆盖论文解读 ID（P001–P191）。
+
+## 核心原理
+
+输入是上游 `Pxxx` 稳定编号与分组；机制是「同主题共用一页、缺口显式标待补」；输出是可点开的本库详情或明确的待补清单。不把上游条目数当成方法贡献。
 
 ## 怎么用
 
@@ -43,13 +47,22 @@ sources:
 
 | 规模 | 说明 |
 |------|------|
-| 上游论文条目 | 145 |
-| 均可在本库点开详情 | 145（当前无缺口） |
-| 本次为补齐 | 新建 21 个详情节点 + 升格 2 个原 planned 占位（其余复用已有页） |
+| 上游论文条目（2026-09-10） | **191**（`P001`–`P191`） |
+| 已接到本库详情 | **184**（P001–P145 全覆盖 + P146–P191 中 39 条复用已有页） |
+| 待补独立详情 | **7**：P155 StableMimic、P167 VITRA、P169 Phantom、P171 DexMV、P175 DexNDM、P184 VINE、P185 ALOE — 先读上游 `Pxxx`，不新建平行实体 |
+| 2026-07-31 快照 | 当时 145/145；本次只增量挂接，不重做旧表 |
+
+## 工程实践
+
+| 场景 | 做法 |
+|------|------|
+| 对照上游一篇论文 | 先点本页左侧 `Pxxx` 读策展摘要，再点右侧本库详情看机制/评测/开源边界 |
+| 发现待补行 | 不要在本库另造同名实体；需要深读时对那一篇单独 ingest |
+| 查代码 | 论文开源标注以 arXiv / 项目页为准，仓库入口见 [开源主表导读](./hmi-opensource-projects-coverage.md) |
 
 ## 导读总表（按上游分组）
 
-### 动作数据与重定向（12）
+### 动作数据与重定向（17）
 
 | HMI | 论文 | 本库详情 |
 | --- | --- | --- |
@@ -65,8 +78,13 @@ sources:
 | [P045](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P045.md) | HumanoidMimicGen | [HumanoidMimicGen](../entities/paper-humanoidmimicgen.md) |
 | [P075](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P075.md) | GVHMR | [GVHMR](../entities/gvhmr.md) |
 | [P076](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P076.md) | TRAM | [TRAM](../entities/paper-motion-cerebellum-tram.md) |
+| [P158](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P158.md) | Shooting for Contact | [Shooting for Contact](../entities/paper-shooting-for-contact.md) |
+| [P183](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P183.md) | Open-AoE | [Open-AoE](../entities/cn-os-open-aoe.md) |
+| [P188](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P188.md) | EgoExoMoCap | [EgoExoMoCap](../entities/paper-egoexomocap.md) |
+| [P190](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P190.md) | World In Your Hands | [World In Your Hands](../entities/cn-os-world-in-your-hands.md) |
+| [P171](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P171.md) | DexMV | 本库待补独立详情（先读上游 P171） |
 
-### Locomotion与运动先验（32）
+### Locomotion与运动先验（39）
 
 | HMI | 论文 | 本库详情 |
 | --- | --- | --- |
@@ -102,8 +120,15 @@ sources:
 | [P011](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P011.md) | Rapid Locomotion | [Rapid Locomotion](../entities/paper-rapid-locomotion-rl.md) |
 | [P019](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P019.md) | LEGO-H | [LEGO-H](../entities/paper-notebook-let-humanoids-hike-integrative-skill-development.md) |
 | [P070](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P070.md) | BFM Survey | [BFM Survey](../entities/paper-bfm-survey-tpami-2025.md) |
+| [P147](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P147.md) | GaitSpan | [GaitSpan](../entities/paper-gaitspan-humanoid-locomotion-walking-running.md) |
+| [P148](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P148.md) | ADP | [ADP](../entities/paper-adp.md) |
+| [P149](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P149.md) | DPL | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) |
+| [P150](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P150.md) | Light-Loco-Parkour | [Light-Loco-Parkour](../entities/paper-light-loco-parkour.md) |
+| [P159](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P159.md) | GPC | [GPC](../entities/paper-gpc-generative-pretrained-controllers.md) |
+| [P160](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P160.md) | P³ | [P³](../entities/paper-p3.md) |
+| [P182](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P182.md) | Vision-Driven Soccer | [Vision-Driven Reactive Soccer](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
 
-### 动作跟踪与全身控制（28）
+### 动作跟踪与全身控制（40）
 
 | HMI | 论文 | 本库详情 |
 | --- | --- | --- |
@@ -135,8 +160,20 @@ sources:
 | [P041](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P041.md) | MOSAIC | [MOSAIC](../entities/paper-loco-manip-161-014-mosaic.md) |
 | [P031](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P031.md) | HOVER | [HOVER](../entities/paper-bfm-14-hover.md) |
 | [P040](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P040.md) | Humanoid-GPT | [Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
+| [P151](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P151.md) | ScaleBFM | [ScaleBFM](../entities/paper-scaling-bfm-humanoid.md) |
+| [P152](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P152.md) | YAHMP | [YAHMP](../entities/paper-yahmp.md) |
+| [P153](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P153.md) | Extreme-RGMT | [Extreme-RGMT](../entities/paper-extreme-rgmt.md) |
+| [P154](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P154.md) | RobotDancing | [RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) |
+| [P155](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P155.md) | StableMimic | 本库待补独立详情（先读上游 P155） |
+| [P156](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P156.md) | PFM-HR | [PFM-HR](../entities/paper-pfm-hr.md) |
+| [P157](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P157.md) | Teleopit | [Teleopit](../entities/paper-teleopit.md) |
+| [P163](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P163.md) | HumanTracker | [HumanTracker](../entities/paper-humantracker.md) |
+| [P176](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P176.md) | ZEST | [ZEST](../entities/paper-zest.md) |
+| [P179](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P179.md) | SONIC-Transfer | [SONIC-Transfer](../entities/paper-sonic-transfer.md) |
+| [P189](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P189.md) | RGMT | [Any2Track & RGMT](../methods/any2track.md) · 同主题共用 |
+| [P191](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P191.md) | AdaPT | [AdaPT](../entities/paper-adapt.md) |
 
-### LocoManip（28）
+### LocoManip（31）
 
 | HMI | 论文 | 本库详情 |
 | --- | --- | --- |
@@ -168,8 +205,11 @@ sources:
 | [P049](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P049.md) | HAIC | [HAIC](../entities/paper-haic.md) |
 | [P046](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P046.md) | DemoHLM | [DemoHLM](../entities/paper-loco-manip-161-136-demohlm.md) |
 | [P069](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P069.md) | Humanoid Loco-Manipulation Survey | [Humanoid Loco-Manipulation Survey](../entities/paper-humanoid-loco-manipulation-survey.md) |
+| [P164](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P164.md) | DPC | [DPC](../entities/paper-dpc.md) |
+| [P175](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P175.md) | DexNDM | 本库待补独立详情（先读上游 P175） |
+| [P180](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P180.md) | HTD | [Humanoid Touch Dream](../entities/paper-humanoid-touch-dream.md) |
 
-### 世界模型、VLA与Agent（30）
+### 世界模型、VLA与Agent（47）
 
 | HMI | 论文 | 本库详情 |
 | --- | --- | --- |
@@ -203,8 +243,25 @@ sources:
 | [P062](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P062.md) | LeVERB | [LeVERB](../entities/paper-bfm-36-leverb.md) |
 | [P072](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P072.md) | Embodied World Model Survey | [Embodied World Model Survey](../entities/paper-embodied-world-model-survey.md) |
 | [P071](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P071.md) | VLA Survey | [VLA Survey](../entities/paper-vla-survey-embodied.md) |
+| [P162](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P162.md) | G0.5 | [G0.5](../entities/paper-galaxea-g05.md) |
+| [P165](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P165.md) | Being-H0 | [Being-H0](../entities/paper-notebook-being-h0-vision-language-action-pretraining-from.md) |
+| [P166](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P166.md) | Being-H0.5 | [Being-H 开源栈](../entities/cn-os-being-h.md) · 同家族共用 |
+| [P167](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P167.md) | VITRA | 本库待补独立详情（先读上游 P167） |
+| [P168](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P168.md) | EgoVLA | [EgoVLA](../entities/paper-loco-manip-161-161-egovla.md) |
+| [P169](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P169.md) | Phantom | 本库待补独立详情（先读上游 P169） |
+| [P170](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P170.md) | EgoMimic | [EgoMimic](../entities/paper-ego-03-egomimic.md) |
+| [P172](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P172.md) | GEN-0 | [Generalist AI](../entities/generalist-ai-robotics.md) · 产品线入口 |
+| [P173](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P173.md) | WAM-TTT | [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) |
+| [P174](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P174.md) | LDA-1B | [LDA-1B](../entities/paper-sa-2602-12215-lda-1b-scaling-latent-dynamics-action-model-via.md) |
+| [P177](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P177.md) | Riemann-1.0 | [Riemann-1.0](../entities/paper-riemann-1.md) |
+| [P178](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P178.md) | Matrix-Game 3.5 | [Matrix-Game 3.x 策展](../entities/paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact.md) · 3.5 细节以上游为准 |
+| [P181](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P181.md) | EATR-Stereo | [EATR-Stereo](../entities/paper-eatr-stereo.md) |
+| [P184](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P184.md) | VINE | 本库待补独立详情（先读上游 P184） |
+| [P185](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P185.md) | ALOE | 本库待补独立详情（先读上游 P185） |
+| [P186](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P186.md) | Zero-WAM | [Zero-WAM](../entities/paper-zero-wam.md) |
+| [P187](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P187.md) | WALL-SS | [WALL-SS](../entities/paper-wall-ss.md) |
 
-### 工程与实机部署（15）
+### 工程与实机部署（17）
 
 | HMI | 论文 | 本库详情 |
 | --- | --- | --- |
@@ -223,6 +280,14 @@ sources:
 | [P002](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P002.md) | Whole-Body Behaviors | [Whole-Body Behaviors](../entities/paper-whole-body-behaviors-primitives.md) |
 | [P001](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P001.md) | Operational Space Formulation | [Operational Space Formulation](../entities/paper-operational-space-formulation.md) |
 | [P048](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P048.md) | SIMPLE | [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) |
+| [P146](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P146.md) | PACE | [PACE](../entities/paper-pace-sim2real-legged-robots.md) |
+| [P161](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P161.md) | HumanoidVLN | [HumanoidVLN](../entities/paper-humanoidvln.md) |
+
+## 局限与风险
+
+- **导读是快照，不是镜像。** 上游会继续加 `Pxxx`；本页以 2026-09-10 的 191 条为准，新增条目先读上游总索引。
+- **7 条待补**不另建平行实体：StableMimic / VITRA / Phantom / DexMV / DexNDM / VINE / ALOE。需要深读时再单独 ingest。
+- **同主题共用一页**（如 RGMT 挂 Any2Track、GEN-0 挂 Generalist AI、Matrix-Game 3.5 挂 3.x 策展）时，先看该页开头说明再分支。
 
 ## 关联页面
 
