@@ -20,7 +20,7 @@
 
 神经网络在 $\mathbb{R}^n$ 上回归旋转时，若参数化映射 $f:\mathbb{R}^n \to \mathrm{SO}(3)$ 在欧氏空间不连续，则微小参数变化可能导致输出旋转突变，损失与梯度行为恶化。
 
-**对 wiki 的映射**: [`wiki/formalizations/se3-representation.md`](../../wiki/formalizations/se3-representation.md) 已有 6D 连续表示概述；本页 [`tan-norm-rotation.md`](../../wiki/formalizations/tan-norm-rotation.md) 补充运动模仿栈里的 **tan_norm 工程变体**。
+**对 wiki 的映射**: 选型总表 [`wiki/comparisons/so3-rotation-representations.md`](../../wiki/comparisons/so3-rotation-representations.md)；6D 概述 [`wiki/formalizations/se3-representation.md`](../../wiki/formalizations/se3-representation.md)；运动模仿栈 [`tan-norm-rotation.md`](../../wiki/formalizations/tan-norm-rotation.md)。
 
 ## 摘录 2：6D 连续表示（论文原版）
 

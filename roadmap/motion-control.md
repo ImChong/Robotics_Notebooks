@@ -227,6 +227,7 @@ flowchart LR
 - **[线性代数学习策展](../wiki/entities/linear-algebra-curriculum.md)**（本库 L0 主入口）：[Georgia Tech *Interactive Linear Algebra*](https://textbooks.math.gatech.edu/ila/) + [Axler *Linear Algebra Done Right* 4e（PDF）](https://linear.axler.net/LADR4e.pdf) + [3Blue1Brown 几何直觉](https://www.3blue1brown.com/topics/linear-algebra)；扩展材料（Strang 18.06 等）见策展页
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 2-3：Configuration Space、Rigid-Body Motions
 - [SE(3) 表示](../wiki/formalizations/se3-representation.md)（本仓库）
+- [旋转表示方法对比（SO(3)）](../wiki/comparisons/so3-rotation-representations.md)（本仓库）— 欧拉 / 四元数 / 矩阵 / so(3) / 6D 优劣与选型
 - [Pinocchio](../wiki/entities/pinocchio.md)（本仓库）
 
 ### 学完输出什么

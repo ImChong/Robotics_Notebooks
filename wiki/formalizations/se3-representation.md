@@ -2,12 +2,13 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 related:
   - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md
   - ./unit-quaternion-so3.md
   - ./tan-norm-rotation.md
+  - ../comparisons/so3-rotation-representations.md
   - ../concepts/whole-body-control.md
   - ../methods/visual-servoing.md
   - ../formalizations/mdp.md
@@ -44,6 +45,8 @@ summary: "SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转�
 
 $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} $$
 
+SO(3) 七种表示的维度、奇异、插值与选型决策见专页 [旋转表示方法对比](../comparisons/so3-rotation-representations.md)；本页只保留位姿 $T=(R,t)$ 与 **面向神经网络** 的短表。
+
 ## 主流表示法对比（面向神经网络）
 
 在深度学习模型（如 VLA 或 Pose Estimation）中，选择姿态表示法至关重要，因为它直接影响梯度的平滑性和损失函数的收敛。
@@ -72,6 +75,7 @@ Hamilton 积、SLERP 与 **scalar 顺序** 见 [单位四元数与 SO(3)](./unit
   $$ \mathcal{L}_{rot} = \arccos\left( \frac{\text{Tr}(R_{pred} R_{target}^T) - 1}{2} \right) $$
 
 ## 关联页面
+- [旋转表示方法对比（SO(3)）](../comparisons/so3-rotation-representations.md) — 欧拉 / 矩阵 / 轴角 / 四元数 / so(3) / 6D / tan_norm 选型总表
 - [单位四元数与 SO(3)](./unit-quaternion-so3.md) — 四元数专页（Diebel / Shoemake / MR Ch 3）
 - [tan_norm 旋转观测表示](./tan-norm-rotation.md) — MimicKit / ProtoMotions 的 6D 观测编码与 decode 链
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 so(3)/se(3) 分工、四元数存储与 exp/log 优化链路

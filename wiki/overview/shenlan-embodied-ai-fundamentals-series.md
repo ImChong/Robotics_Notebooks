@@ -2,13 +2,14 @@
 type: overview
 tags: [embodied-ai, fundamentals, geometry, kinematics, shenlan, survey, jacobian]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-10
 related:
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../formalizations/riemannian-manifold-tangent-space.md
   - ../formalizations/se3-representation.md
+  - ../comparisons/so3-rotation-representations.md
   - ../formalizations/forward-kinematics.md
   - ../formalizations/inverse-kinematics.md
   - ../formalizations/robot-jacobian.md
@@ -130,6 +131,7 @@ flowchart TB
 
 ## 关联页面
 
+- [旋转表示方法对比（SO(3)）](../comparisons/so3-rotation-representations.md)
 - [SE(3) Representation](../formalizations/se3-representation.md)
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)
 - [VLA 方法页](../methods/vla.md)
