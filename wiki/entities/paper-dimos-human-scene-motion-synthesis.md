@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, human-scene-interaction, character-animation, reinforcement-learning, motion-synthesis, iccv2023, eth, google]
 status: complete
-updated: 2026-06-09
+updated: 2026-09-10
 arxiv: "2305.12411"
 venue: "2023 · ICCV"
 code: https://github.com/zkf1997/DIMOS
@@ -128,6 +128,7 @@ flowchart TB
 - **生成式运动：** [扩散运动生成](../methods/diffusion-motion-generation.md) — 文本/地形条件扩散 vs DIMOS 的 **RL+CVAE 潜空间控制**。
 - **Real2Sim：** [CRISP](../methods/crisp-real2sim.md) — 从视频恢复可仿真人–场景；DIMOS 从 **语义/路点目标正向合成** 运动。
 - **人形场景交互：** [PhysHSI](./paper-amp-survey-15-physhsi.md) — AMP 驱动的 **真实人形** 搬箱/坐/躺/站起，与 DIMOS 任务重叠但 **平台与物理层级不同**。
+- **Simulation-ready 重建：** [HSImul3R](./paper-hsimul3r.md) — 从 casual video **物理在环重建** 可进仿真器的 HSI，与 DIMOS 的 **RL 运动合成** 问题设定不同但同属 HSI 知识栈。
 - **论文笔记索引：** [Human Motion 分类](../overview/paper-notebook-category-14-human-motion.md)
 
 ## 参考来源

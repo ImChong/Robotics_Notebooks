@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nus]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-10
 arxiv: "2503.19901"
 venue: "2025 · CVPR"
 code: https://github.com/liangpan99/TokenHSI

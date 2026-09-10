@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, human-scene-interaction, generative-model, smpl-x, transformer, vae, synthetic-data, prox, eccv2022, computer-graphics, stanford, eth]
 status: complete
-updated: 2026-06-19
+updated: 2026-09-10
 arxiv: "2207.12824"
 venue: "2022 · ECCV"
 code: https://github.com/zkf1997/COINS
