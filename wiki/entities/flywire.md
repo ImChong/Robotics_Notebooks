@@ -28,6 +28,16 @@ summary: "FlyWire Consortium 构建的雌性果蝇全脑连接组平台：~140K 
 | MRC | Medical Research Council | 英国医学研究理事会 |
 | API | Application Programming Interface | Codex 等程序化接口 |
 
+## 数据集速查
+
+| 维度 | 速查 |
+|------|------|
+| 规模 | **139,255** proofread 神经元、**50M+** 突触、**100K+** 社区 cell labels（Nature 2024 快照）。 |
+| 模态 | EM 体数据 + 神经元分割 mesh / skeleton **形态**数据 + 突触点表（含神经递质预测）+ 文本型细胞类型注释；无 RGB / 深度等机器人传感模态。 |
+| 许可证 | 连接组数据经 Codex 开放探索与程序化获取；注释仓库 `flywire_annotations` 在 GitHub 开源；平台源码非单一公开 monorepo，引用口径以官网 citation 指南为准。 |
+| 适配形态 | 雌性果蝇全脑回路分析与类脑建模输入；非机器人本体轨迹数据。 |
+| 重定向就绪度 | **不适用于运动重定向**（非运动数据）；跨性别复用须走 Male CNS 的 Dimorphism Explorer / Neuroglancer **共注册**场景，不可直接横比统计。 |
+
 ## 为什么重要
 
 - **首个全脑成虫连接组：** 把果蝇脑从「区域统计」推进到 **逐神经元、逐突触** 可查。

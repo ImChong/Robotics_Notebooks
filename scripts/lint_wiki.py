@@ -229,6 +229,18 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 与 state / reset / qpos 同类「类名 + 字段值」token；机器人本体的形态学讨论
     # 已由 concepts/humanoid-vs-other-robots.md 等页承载，不建 concepts/robot.md。
     "robot",
+    # ours：论文实验表里的 **Ours** 行标签（「本文方法」），命中处全是与 baseline
+    # 并列的对照行或消融列（4DAnyone 的生成一致性表、RaGA 的对比可视化、DPL /
+    # T-GMP / iCrowdNav 的成功率与代价表、AME 的 ablation）。它是行文指称而非
+    # 任何机器人概念，与 type/tags/venue 同类「表格/元数据标签」停用词。
+    "ours",
+    # fast：三义被小写 slug 合并——π0-FAST 系的频域动作序列 **tokenizer**
+    # （已由 methods/star-vla.md 的离散 token 分支与 concepts/foundation-policy.md
+    # 的双动作头记述）、智在无界的开源项目 **FAST**（已由 entities/cn-os-fast.md
+    # 覆盖）、以及推理档位/后端名 **Fast**（LocateAnything 的 Fast/Hybrid/Slow 三档、
+    # DM0.5 的 TRT `fast` backend）。非单一可成页概念，与 clip（模型名 vs 限幅动词）、
+    # alpha（熵温度 vs 滤波系数 vs 版本标签）同类语义噪声。
+    "fast",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，

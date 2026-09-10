@@ -107,6 +107,16 @@ sequenceDiagram
 - **OOD：** 四类未见设定仍报告强泛化（细节以 PDF 为准）。
 - **对照：** 相对同质融合 VLA 与无 co-imagination 变体，增益集中在 **接触相位** 与 **遮挡** 场景。
 
+## 与其他工作对比
+
+| 对照路线 | 差异 |
+|----------|------|
+| [AT-VLA](./paper-sa-2605-07308-at-vla-adaptive-tactile-injection-for-enhanced-f.md) | 同样问「触觉何时注入」，但 AT-VLA 是自适应注入本身；DeCAL 把门控接到 **生成式 co-imagination** 上，触觉既进策略也进想象。 |
+| [ContactWorld](./paper-sa-2606-13877-contactworld-what-matters-in-vision-tactile-worl.md) | 同属视触世界模型线，侧重「世界模型里什么最重要」的消融口径；DeCAL 侧重把该表征以 MoT 专家形式接进可执行 VLA。 |
+| [FWBC-VLA](./paper-fwbc-vla.md) / ForceVLA 类 | 通道是 **力/力矩** 低维量；DeCAL 用 **高维触觉** 并预测其 latent 未来，适配遮挡重的灵巧相位。 |
+| 同质融合 VLA（触觉常驻拼接） | 论文的对照增益集中在 **接触相位** 与 **遮挡** 场景，说明常驻拼接会引入非接触阶段的噪声。 |
+| 无 co-imagination 消融 | 去掉联合想象后在接触丰富任务上退化，是「想象要联合视触」这一主张的直接支撑；定量表格见原文（[参考来源](#参考来源)）。 |
+
 ## 结论
 
 **DeCAL 把触觉世界模型写进 VLA 的方式是「门控注入 + 联合想象」，而不是永久拼接触觉通道或单独训一个判别头。**
