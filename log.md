@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/blogs/wechat_embodied_station_ame1_ame2_2026-09-10.md — AME-1→AME-2 对照导读；2/2 复用实体 + 技术地图；归档 Kitjesen/ame2 与 AME-2 项目页
+
 ## [2026-09-10] ingest | sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md — GWM 闭环盘点；新建 paper-gwm-first-principles + 4 复用（功能分类/Motubrain/RTC/Motus2）；5/5 独立节点
 
 ## [2026-09-10] ingest | sources/repos/unifolm-world-model-action.md — 深度刷新 UnifoLM-WMA-0：项目页归档、三阶段训练/双模式部署/源码时序图；交叉 world-action-models

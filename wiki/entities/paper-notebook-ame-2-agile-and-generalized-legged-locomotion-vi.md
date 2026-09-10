@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, biped, reinforcement-learning, perceptive-locomotion, neural-mapping, teacher-student, attention, sim2real, eth, anymal, limx]
 status: stable
 summary: "AME-2：全局+局部 AME 编码器 + 不确定性神经高程映射 + Teacher–Student RL，在 ANYmal-D 与 TRON1 上同时实现 parkour 级敏捷与稀疏/未见地形泛化。"
-updated: 2026-09-04
+updated: 2026-09-10
 arxiv: "2601.08485"
 venue: "arXiv 2026"
 related:
@@ -22,6 +22,9 @@ related:
   - ../overview/paper-notebook-category-03-high-impact-selection.md
 sources:
   - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
+  - ../../sources/blogs/wechat_embodied_station_ame1_ame2_2026-09-10.md
+  - ../../sources/sites/ame-2-leggedrobotics.md
+  - ../../sources/repos/ame2_kitjesen.md
   - ../../sources/papers/ame_arxiv_2506_09588.md
 ---
 
@@ -57,7 +60,8 @@ sources:
 |------|------|
 | 机构 | 苏黎世联邦理工（ETH Zürich）RSL；ETH AI Center |
 | 平台 | ANYmal-D；LimX TRON1 |
-| 项目页 | <https://sites.google.com/leggedrobotics.com/ame-2> |
+| 项目页 | <https://sites.google.com/leggedrobotics.com/ame-2>（[`ame-2-leggedrobotics.md`](../../sources/sites/ame-2-leggedrobotics.md)） |
+| 开源 | **官方训练代码未发布**；社区 [Kitjesen/ame2](https://github.com/Kitjesen/ame2) **非官方** ANYmal-D PyTorch（[`ame2_kitjesen.md`](../../sources/repos/ame2_kitjesen.md)） |
 | 训练 | Isaac Gym；Teacher **80k** / Student **40k** iter；ANYmal **~60×4090-days** |
 | arXiv | <https://arxiv.org/abs/2601.08485> |
 
@@ -126,6 +130,7 @@ Teacher 输入 **3D** 坐标；Student 输入 **4D** $(x,y,z,u)$（$u$ 为不确
 
 - 19 cm **非固定** 梁/踏石、**曲梁浮块**、梁+沟 **组合**、10 cm **高度差双行踏石**、钻石踏石等（Fig. 11）。
 - **主动感知**：首次攀台失败 → 碰撞补全地图 → **重试成功**（对比 generalist **缺长期空间记忆**）。
+- **相对 AME-1（文内对照表）**：训练地形两者均 **>90%**；稀疏 Test1 AME-1 **99.2%** vs teacher **96.8%**；**四组未见混合地形均值** AME-1 **51.2%** vs teacher **95.2%**、部署 student **82.4%** — 差距来自 **技能选择与切换**，非单类踏石能力。详见 [AME-1→AME-2 技术地图](../overview/ame-1-to-ame-2-technology-map.md)。
 
 ### 鲁棒
 
@@ -160,12 +165,16 @@ Teacher 输入 **3D** 坐标；Student 输入 **4D** $(x,y,z,u)$（$u$ 为不确
 ## 参考来源
 
 - [humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md](../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md)
+- [wechat_embodied_station_ame1_ame2_2026-09-10.md](../../sources/blogs/wechat_embodied_station_ame1_ame2_2026-09-10.md) — AME-1 vs AME-2 系统对照
+- [ame-2-leggedrobotics.md](../../sources/sites/ame-2-leggedrobotics.md) — 项目页开源核查
+- [ame2_kitjesen.md](../../sources/repos/ame2_kitjesen.md) — 社区 ANYmal-D 复现（非官方）
 - [ame_arxiv_2506_09588.md](../../sources/papers/ame_arxiv_2506_09588.md)
 - Zhang et al., *AME-2*, [arXiv:2601.08485](https://arxiv.org/abs/2601.08485)
 - He et al., *AME-1*, [arXiv:2506.09588](https://arxiv.org/abs/2506.09588)
 
 ## 关联页面
 
+- [AME-1→AME-2 技术地图](../overview/ame-1-to-ame-2-technology-map.md) — 两代系统对照阅读坐标
 - [AME（AME-1）](./paper-ame-attention-based-map-encoding.md)
 - [Agile Perceptive Traversal](./paper-agile-perceptive-traversal-sparse-3d.md) — 同一 AME-2 编码器用于 PM-01 原始 E1R 猴架穿越（arXiv:2608.29769）
 - [ANYmal](./anymal.md)

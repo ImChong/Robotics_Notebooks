@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier, science-robotics]
 status: stable
 summary: "AME（AME-1，Science Robotics 10(105) eadv3604）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；官方无训练代码，Zenodo 数据 + SII-FUSC 社区 G1 复现。"
-updated: 2026-09-02
+updated: 2026-09-10
 arxiv: "2506.09588"
 doi: "10.1126/scirobotics.adv3604"
 venue: "Science Robotics 2025"
@@ -21,6 +21,7 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/ame_arxiv_2506_09588.md
+  - ../../sources/blogs/wechat_embodied_station_ame1_ame2_2026-09-10.md
   - ../../sources/repos/ame_locomotion_sii_fusc.md
   - ../../sources/repos/senlanke_mimic.md
 ---
@@ -53,6 +54,7 @@ sources:
 - **稀疏地形上的端到端 RL 泛化**：此前 **跑酷类** 端到端策略多 **过拟合训练分布**；**model-based / DTC** 可泛化但 **MPC 在退化高程图下给出不可行 foothold**、训练/部署 **算力重**（DTC 约 **14 天** 收敛）。AME 用 **注意力 map encoding** 在 **同一框架** 内兼顾 **精确落脚 + 不确定性鲁棒 + 跨地形泛化**。
 - **可解释性**：MHA 权重 **可视化对齐未来 foothold**，无需 foothold 监督——对 **perceptive loco 调试与 sim2real** 有工程价值。
 - **跨 embodiment**：**同一架构** 覆盖 **四足 + 人形**，实机 **零样本** 未见垫脚石布局；为 [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) 的 **全局特征 + 神经映射 + teacher–student** 奠定编码器基础（论文中称 **AME-1**）。
+- **相对 AME-2 的边界（文内对照）**：稀疏 Test1 成功率 **99.2%** 并不弱于 AME-2 teacher **96.8%**；差距主要在 **未见混合地形均值**（AME-1 **51.2%** vs AME-2 teacher **95.2%**）——缺 **全局语境 + 在线映射记忆**，而非「不会选 foothold」。详见 [AME-1→AME-2 技术地图](../overview/ame-1-to-ame-2-technology-map.md)。
 
 ## 核心信息
 
@@ -157,11 +159,13 @@ flowchart LR
 ## 参考来源
 
 - [ame_arxiv_2506_09588.md](../../sources/papers/ame_arxiv_2506_09588.md)
+- [wechat_embodied_station_ame1_ame2_2026-09-10.md](../../sources/blogs/wechat_embodied_station_ame1_ame2_2026-09-10.md) — AME-1 vs AME-2 系统对照
 - [ame_locomotion_sii_fusc.md](../../sources/repos/ame_locomotion_sii_fusc.md) — 社区 G1 复现（非官方）
 - He et al., *Attention-Based Map Encoding for Learning Generalized Legged Locomotion*, [*Science Robotics* 10(105), eadv3604](https://doi.org/10.1126/scirobotics.adv3604) · [arXiv:2506.09588](https://arxiv.org/abs/2506.09588)
 
 ## 关联页面
 
+- [AME-1→AME-2 技术地图](../overview/ame-1-to-ame-2-technology-map.md) — 两代系统对照阅读坐标
 - [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 全局特征、神经映射与 teacher–student
 - [ANYmal](./anymal.md)
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)
