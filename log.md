@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/papers/d4rt_arxiv_2512_08924.md + sources/sites/d4rt-paper.md — D4RT（CVPR 2026 / arXiv:2512.08924）统一查询式动态 4D 重建；升格 wiki/entities/paper-d4rt.md；交叉 genception / state-estimation / hub-state-estimation / paper-vgg-ttt；确认未开源
+
 ## [2026-09-10] ingest | sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md — BeyondMimic *Science Robotics*（DOI adx8924）中文导读；复用 wiki/methods/beyondmimic.md，不新建实体；交叉 sonic-vs-beyondmimic 对比页
 
 ## [2026-09-10] ingest | PGMT/TANGO/DeCAL/Ostrich 四篇 arXiv:2609 — G1 感知 GMT、全身 VLA 导航、触觉世界模型 VLA、硬接触可微仿真；DeCAL/Ostrich 已开源，PGMT/TANGO 待发布

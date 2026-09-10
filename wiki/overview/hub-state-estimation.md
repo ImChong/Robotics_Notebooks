@@ -2,11 +2,12 @@
 type: overview
 tags: [hub, hub-state-estimation, slam, odometry, ekf, perception]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-10
 summary: "状态估计知识链汇总：本体感知融合、SLAM/VIO/LIO 选型与 Kalman/优化估计框架，服务 locomotion 与导航中的位姿与速度估计。"
 related:
   - ../entities/paper-slamformer-infinity.md
   - ../entities/paper-glob3r.md
+  - ../entities/paper-d4rt.md
   - ../methods/lingbot-map.md
   - ../queries/slam-second-spring-embodied.md
 ---
@@ -63,6 +64,7 @@ related:
 - [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — memory condition + PGGO 联合长程位姿与 pointmap；官方仓占位（arXiv:2608.03429）
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — ERP 全景户外大规模 3DGS 划分重建（位姿下游 novel-view 资产）
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈 3D 重建（在线几何对照）
+- [D4RT（统一动态 4D 查询重建）](../entities/paper-d4rt.md) — 深度/相机/动态 3D 跟踪统一前馈；确认未开源（CVPR 2026）
 - [Contact Estimation](../concepts/contact-estimation.md)
 - [Terrain Latent Representation](../concepts/terrain-latent-representation.md)
 - [3D Spatial VQA](../concepts/3d-spatial-vqa.md)

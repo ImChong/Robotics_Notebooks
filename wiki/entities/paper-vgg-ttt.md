@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, utoronto, vector-institute, 3d-reconstruction, foundation-model, sfm, pose-estimation, test-time-training, vggt, pointmap, visual-localization]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 arxiv: "2602.23361"
 venue: "CVPR 2026"
 code: https://github.com/nv-dvl/vgg-ttt
@@ -10,6 +10,7 @@ related:
   - ../methods/lingbot-map.md
   - ./paper-glob3r.md
   - ./paper-slamformer-infinity.md
+  - ../entities/paper-d4rt.md
   - ../concepts/state-estimation.md
   - ../overview/hub-state-estimation.md
   - ../concepts/3d-spatial-vqa.md
@@ -149,6 +150,7 @@ sequenceDiagram
 | **TTT3R** | 同为 TTT 系线性替代；项目页 1k 图 **重建不完整**，VGG-T³ **保留全局聚合** |
 | [LingBot-Map](../methods/lingbot-map.md) | **在线流式** GCA + Paged KV（~20 FPS 视频）；VGG-T³ 偏 **离线批处理大图集**，非实时视频前端 |
 | [Glob3R](./paper-glob3r.md) | **离线全局 SfM 精炼**（tracks + BA）；VGG-T³ 是 **单趟前馈**，不做 BA，但更快作 COLMAP/NeRF **初始化** |
+| [D4RT](./paper-d4rt.md) | **动态视频 4D** 统一查询（track/depth/pose）；VGG-T³ 偏 **静态多视图 pointmap**；D4RT **18–300×** 跟踪吞吐 |
 | [SLAMFormer-∞](./paper-slamformer-infinity.md) | 学习型 **在线** dense SLAM + PGGO；VGG-T³ 无显式回环后端，但 **查询定位** 类似「地图已建、读图定位」 |
 
 ## 工程实践
