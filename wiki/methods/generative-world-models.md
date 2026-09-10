@@ -78,6 +78,7 @@ related:
   - ../entities/paper-x-mind.md
   - ../entities/paper-m4world.md
   - ../entities/paper-abot-world-0.md
+  - ../entities/paper-puffin-world.md
   - ../entities/open-dreamer.md
   - ./dwm.md
   - ./mimic-video.md
@@ -354,6 +355,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [GE-Sim 2.0](../entities/ge-sim-2.md) — Agibot **闭环** 操纵视频世界模拟器：本体状态专家 + World Judge + 加速 rollout（arXiv:2605.27491）。
 - [Cosmos 3](../entities/cosmos-3.md) — NVIDIA **全模态 MoT 世界模型平台**：Reasoner + Generator 双路径，覆盖 VLM、视频生成、policy 与正/逆动力学（arXiv:2606.02800）。
 - [Kairos（原生世界–动作模型栈）](../entities/paper-kairos-native-world-model-stack.md) — **regret-aware CEDC + SWA/DSWA/GLA + 4B/3.1 部署导向 WAM**（arXiv:2606.16533 v3，[kairos-agi/kairos](https://github.com/kairos-agi/kairos)）。
+- [Puffin-World](../entities/paper-puffin-world.md) — **physics/geometry/appearance 三类原生 3D 世界状态** + Omni-Camera 物理锚定；单图相机理解、可控视角仿真与 3D 重建统一于 LLM+扩散（arXiv:2609.04196；[代码+权重已开源](https://github.com/KangLiao929/Puffin/tree/main/Puffin-World)）。
 - [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md) — **在线 3D Gaussian 无散度速度场 WM + 3DFA 动态操作**；PhysMani-Bench 16 任务（arXiv:2607.01938，ECCV 2026）。
 - [PanoWorld](../entities/paper-panoworld-real-world-panoramic-generation.md) — **ERP 轨迹可控全景 WM**：DPRC 射线动作 + GMA 几何记忆 + World360 数据集（arXiv:2607.09661）。
 - [PhysisForcing](../entities/paper-physisforcing.md) — **训练期区域聚焦分层物理对齐**（像素轨迹 + 语义关系）；Wan/Cosmos 跨骨干，R-Bench SOTA 与 WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）。

@@ -79,6 +79,7 @@ summary: "按「动作执行后模型用什么记录世界变化」读机器人�
 | **持续状态** | [WorldWeaver](../entities/paper-worldweaver.md) | 寄存器跨片段读写共享世界 |
 | **动作 vs 世界效应** | [DWM Separating](../entities/paper-dwm-separating-world-effects.md) | 拆自主动态；≠ [Dexterous DWM](../methods/dwm.md) |
 | **几何/运动信号** | [RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)、[MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md) | RGB+深度+光流；训练期 4D vs 推理期 4D |
+| **原生 3D 世界状态** | [Puffin-World](../entities/paper-puffin-world.md) | physics（重力/纬度）+ geometry（深度）+ appearance（RGB）；Omni-Camera 物理锚定 |
 | **触觉** | [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) | 视觉·触觉形变·动作联合 |
 | **物理混合** | [PhysCoRe](../entities/paper-physcore.md) | 可微 MPM + 材料估计 + 残差 |
 | **评测诊断** | [Imagined Rollouts…](../entities/paper-imagined-rollouts-kinematic-not-dynamic.md)、[KineBench](../entities/paper-kinebench.md)、[Thinking in Video](../entities/paper-thinking-in-video.md) | iKCE / IDM-free 可执行性 / CGDJ Gap |
