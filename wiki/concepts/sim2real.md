@@ -57,6 +57,7 @@ related:
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/bam-better-actuator-models.md
+  - ../entities/grid-general-robotics.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../entities/paper-rl-vs-gc.md
   - ../comparisons/rl-vs-geometric-control.md

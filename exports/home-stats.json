@@ -1,13 +1,52 @@
 {
   "generated_at": "2026-09-10",
-  "node_count": 3909,
-  "edge_count": 34821,
+  "node_count": 3911,
+  "edge_count": 34850,
   "coverage": {
-    "covered": 3882,
-    "total": 3882,
+    "covered": 3884,
+    "total": 3884,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-decal.md",
+      "detail_id": "entity-paper-decal",
+      "label": "DeCAL：接触感知灵巧 VLA",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-ostrich.md",
+      "detail_id": "entity-paper-ostrich",
+      "label": "Ostrich：硬接触可微动力学",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-pgmt.md",
+      "detail_id": "entity-paper-pgmt",
+      "label": "PGMT：人形感知通用动作跟踪",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tango-vla.md",
+      "detail_id": "entity-paper-tango-vla",
+      "label": "TANGO：杂乱室内的人形全身 VLA 导航",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/eth3d-stereo-benchmark.md",
       "detail_id": "entity-eth3d-stereo-benchmark",
@@ -16,7 +55,7 @@
       "recency": "2026-09-09",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/kitti-stereo-benchmark.md",
@@ -26,7 +65,7 @@
       "recency": "2026-09-09",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/middlebury-stereo-benchmark.md",
@@ -36,7 +75,7 @@
       "recency": "2026-09-09",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/paper-3dway.md",
@@ -165,59 +204,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-state-readout-decoupling.md",
-      "detail_id": "entity-paper-state-readout-decoupling",
-      "label": "SRD：latent 世界模型的状态–读数解耦",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-traj-lewm.md",
-      "detail_id": "entity-paper-traj-lewm",
-      "label": "Traj-LeWM：潜轨迹代价的路径感知世界模型规划",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/stereo-matching-foundation-models.md",
-      "detail_id": "wiki-methods-stereo-matching-foundation-models",
-      "label": "立体匹配基础模型与基准生态",
-      "type": "method",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/formalizations/tan-norm-rotation.md",
-      "detail_id": "wiki-formalizations-tan-norm-rotation",
-      "label": "tan_norm 旋转观测表示",
-      "type": "formalization",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/eth3d-stereo-benchmark.md",
-    "detail_id": "entity-eth3d-stereo-benchmark",
-    "label": "ETH3D Two-View Stereo Benchmark",
+    "path": "wiki/entities/paper-decal.md",
+    "detail_id": "entity-paper-decal",
+    "label": "DeCAL：接触感知灵巧 VLA",
     "type": "entity",
-    "recency": "2026-09-09",
+    "recency": "2026-09-10",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -226,7 +223,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 504
+      "size": 505
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -250,7 +247,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1451,
+      "degree": 1452,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -297,7 +294,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 589,
+      "degree": 590,
       "has_repo": true
     },
     {
@@ -312,7 +309,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 560,
+      "degree": 562,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

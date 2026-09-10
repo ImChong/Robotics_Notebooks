@@ -23,8 +23,9 @@ related:
   - ../concepts/recursive-self-improvement.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/deepseek-harness.md
+  - ../entities/grid-general-robotics.md
   - ../concepts/agentic-coding-software-fundamentals.md
-updated: 2026-08-29
+updated: 2026-09-10
 ---
 
 # 真机策略 autoresearch 闭环搭建指南
@@ -139,3 +140,4 @@ ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Ki
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 有 agent 仍要保留 SE 取舍语言；与「不能跳过环境工程」同构
 - [递归自改进](../concepts/recursive-self-improvement.md) — 实验室内部「实现已代理化、选题仍为人」；本页是真机侧能自动化的前提，不是模型自训练后继者
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — Embody 显示 LLM 训 PPO 多数弱于写控制器；harness 里选范式时不要默认 RL
+- [GRID（General Robotics）](../entities/grid-general-robotics.md) — 商业闭源 **Auto-Engineering** 平台：四类 robotics harness 把机体摄取、混合仿真、技能路径与部署评测收成复利闭环（2026-09 官方博客）
