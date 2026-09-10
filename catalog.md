@@ -1065,6 +1065,7 @@
 - [GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap](wiki/entities/paper-grip.md) — GRIP**（*Ground Reaction Inertial Poser*；arXiv:2603.16233，CVPR  `📅unknown` `[entity_page]`
 - [GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来](wiki/entities/paper-gsr-paravla.md) — Grounded Semantic Re-binding（GSR）**（arXiv:2608.02497，[代码](http `📅unknown` `[entity_page]`
 - [GTA-2（arXiv:2609.09808）](wiki/entities/paper-gta-2.md) — GTA-2**（[GTA-2: A Multi-VLM Framework for Synthesizing Robot Manipulation Skills via Grounded Task `📅unknown` `[entity_page]`
+- [General World Models from First-Principles（生数 / 清华）](wiki/entities/paper-gwm-first-principles.md) — General World Models from First-Principles**（Jun Zhu 等，生数科技 × 清华大学，2026 手稿，[WRC 2026 主题演讲](https:/ `📅unknown` `[entity_page]`
 - [H2R-Bench：世界模型先要过「人到机器人」这一关](wiki/entities/paper-h2r-bench.md) — H2R-Bench**（*Benchmarking Human-to-Robot Manipulation Video Generation in World Models*；[arXiv:260 `📅unknown` `[entity_page]`
 - [World Models（Ha & Schmidhuber）](wiki/entities/paper-ha-schmidhuber-world-models.md) — World Models**（arXiv:1803.10122，2018，David Ha · **谷歌（Google Br `📅unknown` `[entity_page]`
 - [HAF（Humanoid Adaptation Framework）](wiki/entities/paper-haf-humanoid-vla-adaptation.md) — HAF**（*Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action F `📅unknown` `[entity_page]`
@@ -3684,6 +3685,7 @@
 - [具身世界模型六路线技术地图](wiki/overview/embodied-wm-six-routes-technology-map.md) — 世界模型的关键不在网络新旧，而在 **预测被用在哪里、是否改善真实行动**——从动力学预测到世界基础模型，六条路线可并行存在。 `📅unknown` `[overview_page]`
 - [落脚、急停、本体里程计：三篇独立节点](wiki/overview/g1-foothold-safe-stop-focus-technology-map.md) — 穿越稀疏地形、决定能不能急停、以及腿式里程计该不该信这只脚，是三条不该塞进同一详情页的问题。 `📅unknown` `[overview_page]`
 - [48ms WAM / 编排 / 证书：10 篇论文的阅读坐标](wiki/overview/glancewam-vla-crew-10-papers-technology-map.md) — 具身下一阶段是把隐式结构改成显式接口：想象何时发生、行为目标如何进入解码器、谁验证多机动作、模拟如何变成证书、模块怎样在仿真与真机之间保持一致。 `📅unknown` `[overview_page]`
+- [GWM 闭环：5 篇资料阅读坐标](wiki/overview/gwm-closed-loop-5-papers-technology-map.md) — 世界模型术语虽乱，但闭环正在收拢：先用 Fei-Fei 输出三分消歧，再用生数 GWM 报告钉「理解–想象–行动」分级与数据金字塔，最后用 Motubrain + RTC + Motus2 展示  `📅unknown` `[overview_page]`
 - [执行器驱动链选型闭环（知识链汇总）](wiki/overview/hub-actuator-drive-chain.md) — 执行器驱动链选型闭环** 指把策略（RL/MPC）输出的关节力矩指令落到真机时，按 **EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成** 逐层分工的硬 `📅unknown` `[overview_page]`
 - [硬件通信与协议（知识链汇总）](wiki/overview/hub-communication.md) — 通信协议知识链** 回答机器人 **关节驱动、传感器与上层控制器之间** 用什么物理层/协议传数据，以及如何在延迟、带宽、同步与生态之间选型。 `📅unknown` `[overview_page]`
 - [接触力控（知识链汇总）](wiki/overview/hub-contact-force-control.md) — 接触力控知识链** 关注「机器人如何在接触中稳住力」这条**纵向闭环**：从**接触感知/估计**，经**力旋量表示**与**阻抗/导纳/混合力位控制**，到**接触丰富操作策略**，逐层分析每层 `📅unknown` `[overview_page]`

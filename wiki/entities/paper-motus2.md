@@ -16,9 +16,11 @@ tags:
   - buaa
   - bit
 status: complete
-updated: 2026-09-01
+updated: 2026-09-10
 arxiv: "2608.30237"
 related:
+  - ./paper-gwm-first-principles.md
+  - ../overview/gwm-closed-loop-5-papers-technology-map.md
   - ./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md
   - ./paper-motubrain.md
   - ./paper-zeva.md
@@ -31,6 +33,7 @@ related:
   - ../entities/paper-fact.md
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
 sources:
+  - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/motus2_arxiv_2608_30237.md
   - ../../sources/sites/motus2.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
