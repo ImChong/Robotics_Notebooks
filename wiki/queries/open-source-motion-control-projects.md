@@ -3,7 +3,7 @@ title: 开源运动控制项目结构化摘要
 type: query
 status: complete
 created: 2026-04-18
-updated: 2026-04-18
+updated: 2026-09-10
 summary: 将飞书公开文档《【开源】小而美的运动控制项目》整理为适合 Robotics_Notebooks 的方法地图，抽出训练机制优化、模仿学习、世界模型、交互与重定向五条主线。
 sources:
   - ../../sources/papers/motion_control_projects.md

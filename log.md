@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 ## [2026-09-10] ingest | sources/papers/lingbot_world_v2_arxiv_2607_07534.md + sources/sites/lingbot-world-v2 + sources/repos/lingbot-world-v2 — LingBot-World 2.0 / Infinity（arXiv:2607.07534）升格既有实体页；代码+HF 权重已开源；修正旧链 Robbyant/LingBot-World → robbyant/lingbot-world-v2
 
 ## [2026-09-10] ingest | sources/papers/d4rt_arxiv_2512_08924.md + sources/sites/d4rt-paper.md — D4RT（CVPR 2026 / arXiv:2512.08924）统一查询式动态 4D 重建；升格 wiki/entities/paper-d4rt.md；交叉 genception / state-estimation / hub-state-estimation / paper-vgg-ttt；确认未开源
 
 ## [2026-09-10] ingest | sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md — BeyondMimic *Science Robotics*（DOI adx8924）中文导读；复用 wiki/methods/beyondmimic.md，不新建实体；交叉 sonic-vs-beyondmimic 对比页
+=======
+## [2026-09-10] ingest | sources/repos/humanoid-motion-intelligence.md — 复核 RealXiaoze/humanoid-motion-intelligence：191 篇/586 项/40 数据集/176 家公司；515★；论文导读增量挂接 39/46，7 条待补；开源主表不镜像 586
+
+- **触发：** 用户指定 <https://github.com/RealXiaoze/humanoid-motion-intelligence>，并要求自动合并 PR
+- **步骤 2.5：** 主仓已公开（515★ / 44 forks；2026-09-07 推送）；分层许可 CC BY-NC-SA 4.0 + MIT 校验脚本；无可运行训练入口
+- **相对 2026-07-28：** 145→191 篇、166→586 项；新增 `数据集/`（40）、`具身智能公司的开源项目/`（约 81 家）、`强化学习开发者必备开源资料/`
+- **升格：** 刷新 `wiki/entities/humanoid-motion-intelligence.md`；论文导读挂接 P146–P191（7 条待补）；开源主表导读标明 166 项快照、不镜像 586
+- **交叉：** `hmi-papers-coverage`、`hmi-opensource-projects-coverage`、微信 42 篇 RL 栈来源行
+>>>>>>> 0017d966a ([2026-09-10] ingest | sources/repos/humanoid-motion-intelligence.md — 复核人形运动智能知识库：191篇/586项/515★并增量挂接论文导读)
 
 ## [2026-09-10] ingest | PGMT/TANGO/DeCAL/Ostrich 四篇 arXiv:2609 — G1 感知 GMT、全身 VLA 导航、触觉世界模型 VLA、硬接触可微仿真；DeCAL/Ostrich 已开源，PGMT/TANGO 待发布
 
