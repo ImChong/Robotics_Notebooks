@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -59,6 +59,7 @@ related:
   - ../entities/paper-world-action-planner.md
   - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-worldscape-policy-2.md
+  - ../entities/unifolm-world-model-action.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/wam-motion-control-five-paths.md
@@ -116,7 +117,9 @@ sources:
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/awesome-world-models.md
   - ../../sources/repos/dexmal_opendw.md
+  - ../../sources/repos/unifolm-world-model-action.md
   - ../../sources/sites/rekacs2-10k.md
+  - ../../sources/sites/unifolm-world-model-action-github-io.md
   - ../../sources/papers/openwam_arxiv_2609_07398.md
 ---
 
@@ -184,6 +187,8 @@ sources:
 **文献实例（Joint 族 + 操纵测试时仿真 · Agibot）**：[τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) 在 **Wan-2.2 级视频扩散骨干** 上 **联合** 预测未来多视角 latent 与 **action chunk**，并用 **动作条件 rollout + 任务进度轨迹** 在执行前做 **propose–evaluate–revise**；异构 **~2.73 万小时** 数据通过 **模态掩码** 分监督（人视频不伪标机器人动作）。
 
 **开源实例（Joint 族 + Wan MoT 三专家 · Dexmal）**：[Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) 在 **Wan 骨干 + MoT** 上分出 **video / action / value** 专家，联合 **未来视频、32D 动作与状态–价值**；发布 **DW05-Base** 与 **RoboTwin 2.0 SFT** 权重及 **RobotWin-style JSONL** 训练/推理栈（2026-07 GitHub + Hugging Face）。
+
+**开源实例（Joint 族 + 宇树官方 · Z1/G1 真机）**：[UnifoLM-WMA-0](../entities/unifolm-world-model-action.md) 以 **视频生成世界模型 + 动作头** 实现 **决策模式**（server–client 真机部署）与 **交互仿真模式**（动作条件未来视频）；**Training / Inference / Checkpoints / Deployment** 全开源，权重 `Base`（Open-X）与 `Dual`（五个 Unitree HF 集），配套 LeRobot v2.1 数据管线与 `unitree_deploy/`（2025-09 GitHub + HF）。
 
 **平台实例（Joint 族 + 全模态单栈 · NVIDIA）**：[Cosmos 3](../entities/cosmos-3.md) 在 **MoT** 内用 **Generator** 同时暴露 **policy、forward dynamics、inverse dynamics**，用 **Reasoner** 做具身 CoT 与 2D 轨迹规划，并支持 **Reasoning + Generation**（先文本轨迹再视频再生）；与 Cascaded「先完整视频计划再解码动作」相比，更强调 **同一 checkpoint 多任务 I/O 配置** 与 **开源 serving 栈**（arXiv:2606.02800）。代际与和 [Newton](../entities/newton-physics.md) 的分工见 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)。
 
