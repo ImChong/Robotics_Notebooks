@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-locateanything.md",
+      "detail_id": "entity-paper-locateanything",
+      "label": "LocateAnything：基于并行框解码的快速高质量视觉-语言定位",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/grid-general-robotics.md",
+      "detail_id": "entity-grid-general-robotics",
+      "label": "GRID（General Robotics Auto-Engineering 平台）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-decal.md",
       "detail_id": "entity-paper-decal",
       "label": "DeCAL：接触感知灵巧 VLA",
@@ -184,37 +204,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-motion-based-messaging.md",
-      "detail_id": "entity-paper-motion-based-messaging",
-      "label": "Motion-based messaging",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-remomask-2.md",
-      "detail_id": "entity-paper-remomask-2",
-      "label": "ReMoMask-2",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-decal.md",
-    "detail_id": "entity-paper-decal",
-    "label": "DeCAL：接触感知灵巧 VLA",
+    "path": "wiki/entities/paper-locateanything.md",
+    "detail_id": "entity-paper-locateanything",
+    "label": "LocateAnything：基于并行框解码的快速高质量视觉-语言定位",
     "type": "entity",
     "recency": "2026-09-10",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
   },
   "top_communities": [
     {
