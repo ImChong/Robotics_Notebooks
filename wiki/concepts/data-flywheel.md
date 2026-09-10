@@ -12,6 +12,7 @@ related:
   - ../entities/skild-s1.md
   - ./robot-in-context-learning.md
   - ./agentic-coding-software-fundamentals.md
+  - ../entities/grid-general-robotics.md
 sources:
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md

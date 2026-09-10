@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/blogs/generalrobotics_auto_engineering_2026-09-09.md — GRID Auto-Engineering 四类 harness；闭源商业平台；升格 grid-general-robotics 实体
+
 ## [2026-09-09] ingest | sources/repos/mimickit_tan_norm.md — tan_norm 旋转观测：MimicKit 源码 + Zhou 2019 理论，升格 wiki/formalizations/tan-norm-rotation.md
 
 ## [2026-09-09] ingest | sources/papers/r3_arxiv_2605_26519.md — R³ 相对回归流式 3D 重建（UMich×西湖×NVIDIA）；Apache-2.0 代码 + CC BY-NC 权重已开源，评测代码待发布
