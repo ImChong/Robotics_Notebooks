@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -44,6 +44,7 @@ related:
   - ../entities/robo-orchard-lab.md
   - ../entities/paper-partialbigrasp.md
   - ../entities/paper-pointdit.md
+  - ../entities/paper-locateanything.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -206,6 +207,7 @@ flowchart TD
 - [Ultralytics YOLO](../entities/ultralytics.md) · [RF-DETR](../entities/rf-detr.md) · [YOLO 奠基论文](../entities/paper-yolo-unified-realtime-detection.md) — ②层 2D 检测层实体
 - [Tennis-Vision](../entities/tennis-vision.md) — 广播网球检测/跟踪案例：出点率 ≠ 定位精度，单应只在地板平面有效
 - [Segment Anything](../entities/paper-segment-anything.md) · [SAM2](../entities/paper-sam2.md) — ②层可提示分割层实体
+- [LocateAnything](../entities/paper-locateanything.md) — ②层生成式 VLM grounding（PBD 并行框解码；GUI/OCR/指代/检测统一）
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — ③层 2D→3D 语义建图层实体
 - [OccAnyScene](../entities/paper-occanyscene.md) — ③层跨室内外语义占据（视锥高斯 lifting；代码待发布）
 - [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) — ③层离线 3DGS 多粒度开放词汇（已开源；非机载）
