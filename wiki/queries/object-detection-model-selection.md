@@ -2,7 +2,7 @@
 type: query
 tags: [object-detection, perception, computer-vision, real-time, yolo, faster-rcnn, robotics, deployment]
 status: complete
-updated: 2026-07-26
+updated: 2026-09-10
 summary: "目标检测模型选型 Query：从「机载实时 vs 服务器侧高精度」「单阶段 vs 两阶段 / 实时 DETR」「2D 框够不够 vs 要不要级联位姿」三轴出发，给出机器人感知栈里检测器的选型逻辑、部署陷阱与组合 pipeline。"
 related:
   - ../methods/object-detection.md
@@ -14,6 +14,7 @@ related:
   - ../entities/ultralytics.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/rf-detr.md
+  - ../entities/paper-locateanything.md
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
   - ../methods/visual-servoing.md
@@ -103,6 +104,7 @@ sources:
    - 最后几厘米切 [Visual Servoing](../methods/visual-servoing.md) / 触觉对齐
 4. **开放词汇 / 语言指令检测**
    - 开放词汇检测（OWL-ViT / Grounding-DINO）→ 区域抓取 / 任务分解
+   - 生成式 VLM grounding（[LocateAnything](../entities/paper-locateanything.md) **PBD**）→ 统一 det/GUI/OCR/指代，Hybrid **~12.7 BPS**；注意权重 **非商业许可**
    - 边缘部署时用蒸馏版或先检索缩小词表，再交给轻量检测头
 
 ## 关键工程经验
