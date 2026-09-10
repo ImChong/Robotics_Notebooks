@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-10",
-  "node_count": 3914,
-  "edge_count": 34928,
+  "node_count": 3926,
+  "edge_count": 34987,
   "coverage": {
-    "covered": 3887,
-    "total": 3887,
+    "covered": 3899,
+    "total": 3899,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-puffin-world.md",
+      "detail_id": "entity-paper-puffin-world",
+      "label": "Puffin-World（原生 3D 世界状态统一多模态世界模型 · arXiv:2609.04196）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/telekinesis-rlbotics.md",
       "detail_id": "entity-telekinesis-rlbotics",
@@ -16,8 +27,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-d4rt.md",
@@ -195,37 +205,27 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-from-where-to-how.md",
-      "detail_id": "entity-paper-from-where-to-how",
-      "label": "Coherent4D / HIGFlow",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/telekinesis-rlbotics.md",
-    "detail_id": "entity-telekinesis-rlbotics",
-    "label": "Telekinesis RLbotics",
+    "path": "wiki/entities/paper-puffin-world.md",
+    "detail_id": "entity-paper-puffin-world",
+    "label": "Puffin-World（原生 3D 世界状态统一多模态世界模型 · arXiv:2609.04196）",
     "type": "entity",
     "recency": "2026-09-10",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 655
+      "size": 640
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 527
+      "size": 475
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -233,15 +233,15 @@
     },
     {
       "label": "世界动作模型",
-      "size": 259
+      "size": 302
     },
     {
       "label": "视觉-语言-动作",
-      "size": 253
+      "size": 263
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 232
+      "size": 227
     }
   ],
   "top_hubs": [
@@ -249,7 +249,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1451,
+      "degree": 1463,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -280,7 +280,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 855,
+      "degree": 867,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -296,7 +296,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 590,
+      "degree": 602,
       "has_repo": true
     },
     {
