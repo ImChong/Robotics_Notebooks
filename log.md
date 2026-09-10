@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | sources/papers/lingbot_world_v2_arxiv_2607_07534.md + sources/sites/lingbot-world-v2 + sources/repos/lingbot-world-v2 — LingBot-World 2.0 / Infinity（arXiv:2607.07534）升格既有实体页；代码+HF 权重已开源；修正旧链 Robbyant/LingBot-World → robbyant/lingbot-world-v2
+
 ## [2026-09-10] ingest | sources/papers/d4rt_arxiv_2512_08924.md + sources/sites/d4rt-paper.md — D4RT（CVPR 2026 / arXiv:2512.08924）统一查询式动态 4D 重建；升格 wiki/entities/paper-d4rt.md；交叉 genception / state-estimation / hub-state-estimation / paper-vgg-ttt；确认未开源
 
 ## [2026-09-10] ingest | sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md — BeyondMimic *Science Robotics*（DOI adx8924）中文导读；复用 wiki/methods/beyondmimic.md，不新建实体；交叉 sonic-vs-beyondmimic 对比页

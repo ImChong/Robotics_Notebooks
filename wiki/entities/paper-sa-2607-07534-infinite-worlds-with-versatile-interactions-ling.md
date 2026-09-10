@@ -1,103 +1,213 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, world-model, interactive-world-model, video-generation, real-time, robbyant, wan, causal-inference, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-10
 arxiv: "2607.07534"
 venue: "arXiv 2026"
-summary: "Advanced iteration featuring unbounded interaction horizon, 60 fps 720p real-time rendering, diverse interactive elements, and agentic harness."
+code: https://github.com/robbyant/lingbot-world-v2
 related:
+  - ../entities/paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md
+  - ../entities/lingbot-vla-v2.md
+  - ../methods/lingbot-map.md
   - ../entities/awesome-world-models.md
   - ../overview/sun-awesome-wm-technology-map.md
   - ../methods/generative-world-models.md
-  - ../methods/model-based-rl.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+  - ../concepts/world-action-models.md
+  - ../concepts/video-as-simulation.md
+  - ../entities/paper-abot-world-0.md
 sources:
+  - ../../sources/papers/lingbot_world_v2_arxiv_2607_07534.md
+  - ../../sources/sites/lingbot-world-v2-technology-robbant.md
+  - ../../sources/repos/lingbot-world-v2.md
   - ../../sources/papers/sun_awesome_wm_2607_07534_infinite-worlds-with-versatile-interacti.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
-  - ../../sources/repos/awesome-world-models.md
+summary: "LingBot-World 2.0 / Infinity（Robbyant，arXiv:2607.07534）：因果交互世界模型，720p@60fps 亚秒延迟、无界交互视界、Pilot/Director 双 Agent 与多人共 steering；14B+1.3B 权重与 causal-fast 推理已开源（CC BY-NC-SA 4.0，Wan2.2 栈）。"
 ---
 
-# Infinite Worlds with Versatile Interactions (LingBot-World 2.0 / LingBot-Worl...
+# LingBot-World 2.0 / LingBot-World-Infinity
 
-**Infinite Worlds with Versatile Interactions (LingBot-World 2.0 / LingBot-World-Infinity)** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 079/571** 篇，分组 **42 Visual / Video World Models**。本页为知识库 **策展索引级** 详情节点；方法细节与量化指标以原文 PDF / 项目页为准。
+**LingBot-World 2.0**（亦称 **LingBot-World-Infinity**，*Infinite Worlds with Versatile Interactions*，arXiv:[2607.07534](https://arxiv.org/abs/2607.07534)，[项目页](https://technology.robbyant.com/lingbot-world-v2)，[代码](https://github.com/robbyant/lingbot-world-v2)，[HF 权重集合](https://huggingface.co/collections/robbyant/lingbot-world-v2)）是蚂蚁 **Robbyant** 在 [LingBot-World 1.0](./paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md) 上的 **交互式升级**：从「高质量视频世界生成」推进到 **可实时游玩、可多人共 steering、可长时探索而不漂移** 的 **live world simulator**，并引入 **Pilot / Director 双 Agent harness** 把世界建模与角色/事件编排解耦。
+
+> **Awesome 坐标：** 同时收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **079/571**（分组 42 Visual / Video World Models）与 **161/571**（分组 51 General Interactive Frameworks）。
 
 ## 一句话定义
 
-Advanced iteration featuring unbounded interaction horizon, 60 fps 720p real-time rendering, diverse interactive elements, and agentic harness.
+**用因果预训练 + causal-fast 蒸馏，把 14B 视频世界模型做成 720p@60fps、亚秒延迟的可玩交互世界，并用 Pilot/Director Agent 与 action-conditioned 动力学把「玩游戏」延伸到具身仿真与交互数据生成。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WM | World Model | 环境前向预测模型 |
-| WAM | World Action Model | 世界预测与动作联合建模 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
+| WM | World Model | 预测环境未来状态的生成/动力学模型 |
+| I2V | Image-to-Video | 以初始帧 + 条件生成后续视频 |
+| CFG | Classifier-Free Guidance | 无分类器引导采样；causal-pretrain 变体使用 |
+| KV | Key-Value Cache | 因果分块推理中的注意力缓存 |
+| FSDP | Fully Sharded Data Parallel | 多卡 sharded 推理/训练 |
+| NC-SA | NonCommercial ShareAlike | CC BY-NC-SA 4.0 非商业许可 |
 
-## 为什么重要
-
-- Advanced iteration featuring unbounded interaction horizon, 60 fps 720p real-time rendering, diverse interactive elements, and agentic harness.
-- 在 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 与列表实体 [Awesome World Models](../entities/awesome-world-models.md) 及站内方法/任务页交叉，便于从策展索引跳转到学习主线。
-
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
-| 编号 | 079/571 |
-| 分组 | 42 Visual / Video World Models |
-| 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2607.07534> |
+| **机构** | 蚂蚁灵波（Robbyant / Ant Group） |
+| **arXiv** | [2607.07534](https://arxiv.org/abs/2607.07534)（2026-07-08） |
+| **模型** | **14B** 主模型 + **1.3B** 轻量 causal-fast |
+| **实时指标（项目页）** | **720p @ 60 fps**；**亚秒级** 控制延迟 |
+| **开源（截至 2026-09-10）** | **已开源** — 代码 + 5 项 HF 权重（含 14B pretrain/bid、1.3B fast） |
+| **许可** | **CC BY-NC-SA 4.0** |
+| **代码基座** | [Wan2.2](https://github.com/Wan-Video/Wan2.2) |
 
-## 核心机制（归纳）
+## 为什么重要
 
-### 策展导读要点
+- **从「生成短视频」到「可玩世界」：** 1.0 强调高保真开源视频世界；2.0 把 **交互视界、延迟与多用户 steering** 写成一等公民——更接近 [Video as Simulation](../concepts/video-as-simulation.md) 与 [Generative World Models](../methods/generative-world-models.md) 里的 **可部署交互环境** 目标。
+- **Agentic harness 范式：** **Pilot** 负责角色行为规划/执行，**Director** 负责随进度注入新环境元素——与纯 end-to-end 视频模型或单一 VLA 不同，把 **世界动力学** 与 **高层事件编排** 分层，便于 gameplay 与 storytelling。
+- **具身仿真出口：** 项目页明确从 **egocentric / 合成 / web** 视频学 **action-conditioned 视觉动力学**，对接机器人 **未来状态预测、仿真与交互数据生成**——与 [LingBot-VLA 2.0](./lingbot-vla-v2.md)、[LingBot-Map](../methods/lingbot-map.md) 同属 Robbyant **感知–世界–动作** 栈。
+- **开源可复现：** 2026-07-09 首发推理与权重；2026-09-10 README 宣布 **14B 全变体 + 1.3B causal-fast** 齐备；`generate.py` 提供 **KV cache 分块 causal 推理** 路径。
 
-Advanced iteration featuring unbounded interaction horizon, 60 fps 720p real-time rendering, diverse interactive elements, and agentic harness.
+## 四大升级（论文 / README）
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+| # | 升级 | 要点 |
+|---|------|------|
+| 1 | **Unbounded Interaction Horizon** | 因果预训练；长时交互质量一致、控制 **visual drift** |
+| 2 | **Rapid Response** | 蒸馏 **causal-fast**；驱动 **720p 60 fps** 流 |
+| 3 | **Diverse Interactive Elements** | 攻击、射箭、施法、射击等 + **文本驱动事件** |
+| 4 | **Agentic Harness** | **Pilot + Director**；多人 **Player/Director** 共 steering |
 
-## 评测与指标（索引级）
+## 流程总览
 
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2607.07534) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
+```mermaid
+flowchart TB
+  subgraph in [输入]
+    I[初始帧 image]
+    A[action_path 控制序列]
+    P[文本 prompt / 事件]
+  end
+  subgraph agents [Agentic Harness · 在线体验层]
+    PIL[Pilot Agent\n角色行为]
+    DIR[Director Agent\n环境/事件]
+  end
+  subgraph model [LingBot-World-Infinity]
+    ENC[因果视频世界模型\n14B / 1.3B]
+    CF[causal-fast 蒸馏\n少步 + KV cache]
+  end
+  subgraph out [输出]
+    V[720p 60fps 交互视频流]
+    SIM[具身仿真 / 未来状态 / 交互数据]
+  end
+  I --> ENC
+  A --> ENC
+  P --> DIR
+  PIL --> A
+  DIR --> P
+  ENC --> CF --> V
+  V --> SIM
+```
 
-## 与其他工作对比（索引级）
+## 源码运行时序图
 
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **42 Visual / Video World Models** 分组逐条展开。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+`generate.py`（基于 Wan2.2 `i2v-A14B`）的典型 **causal_fast** 多卡推理路径：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 用户 / torchrun
+  participant G as generate.py
+  participant WAN as wan 包 · i2v-A14B
+  participant CKPT as HF 权重目录
+  participant OUT as save_video
+
+  U->>G: --task i2v-A14B --infer_mode causal_fast<br/>--ckpt_dir --image --action_path --prompt
+  G->>CKPT: 加载 14B causal-fast（+ T5/DiT FSDP）
+  G->>WAN: 初始化分布式组 · 解析 frame_num / local_attn_size
+  loop 按 chunk 因果生成
+    WAN->>WAN: 读取 action_path 控制 + KV cache 续写
+    WAN->>WAN: causal_fast 少步采样（无 CFG）
+  end
+  WAN-->>G: 视频 tensor
+  G->>OUT: save_video
+  OUT-->>U: 输出 mp4
+```
+
+**复现路径：** `git clone` → `pip install -r requirements.txt` + `flash-attn` → `huggingface-cli download robbyant/lingbot-world-v2-14b-causal-fast` → `torchrun ... generate.py` 或 `run_fast.sh`。
+
+## 模型变体与选型
+
+| 权重 | 类型 | 典型用途 |
+|------|------|----------|
+| `lingbot-world-v2-14b-causal-fast` | causal-fast | **默认实时交互**；4 steps/chunk |
+| `lingbot-world-v2-14b-causal-pretrain` | causal-pretrain | 研究/高质量；40 steps + CFG |
+| `lingbot-world-v2-14b-bid` | bidirectional | 非因果/双向设定 |
+| `lingbot-world-v2-1.3b-causal-fast` | causal-fast 1.3B | **单 GPU** 轻量部署 |
+| `...-causal-fast-diffusers` | Diffusers | 生态集成 |
+
+## 评测要点
+
+| 维度 | 公开表述 |
+|------|----------|
+| **实时性** | 720p **60 fps**；**亚秒级** 控制延迟（项目页） |
+| **长时交互** | 小时级探索 **无 visual drift**（项目页 / 摘要） |
+| **交互丰富度** | 多样动作 + 文本事件；Pilot/Director 多人 steering |
+| **横向对照** | [ABot-World-0](./paper-abot-world-0.md) 使用 WorldRoamBench 等；LingBot 2.0 以 **实时可玩 + Agent harness** 为主打，完整定量表见 arXiv PDF |
+
+## 对比定位
+
+| 对照 | LingBot-World 2.0 差异 |
+|------|-------------------------|
+| [LingBot-World 1.0](./paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md) | 1.0 偏 **开源高保真视频世界**；2.0 加 **实时可玩 + Agent harness + 无界交互** |
+| [ABot-World-0](./paper-abot-world-0.md) | 同为交互世界；ABot 强调 **5B 可控性** 与 WorldRoamBench；LingBot 2.0 强调 **60fps 实时 + 双 Agent** |
+| Genie 3 / 闭源交互产品 | LingBot 2.0 **权重+推理开源**（NC 许可）；第三方 Reactor/LingGuang 体验 ≠ 官方 WAIC 全能力 demo |
+| [LingBot-VLA 2.0](./lingbot-vla-v2.md) | VLA 输出 **关节动作**；World 2.0 输出 **像素世界演化**——可作 VLA 的 **仿真/数据** 上游 |
+
+## 工程实践
+
+| 项 | 建议 |
+|----|------|
+| **硬件** | 14B causal-fast 示例用 **8×GPU** FSDP；1.3B 面向单卡 |
+| **依赖** | torch **≥2.4**；**flash-attn** 必装；跟随 Wan2.2 文档 |
+| **输入** | `--image` 初始帧 + `--action_path` 控制目录 + `--prompt` |
+| **长序列** | `--frame_num`、`--local_attn_size`、`--sink_size` 控制 KV 窗口 |
+| **许可** | **CC BY-NC-SA 4.0** — 商业机器人产品需合规审查 |
+| **在线试玩** | [Reactor](https://www.reactor.inc/lingbot-world-v2) / [LingGuang](https://www.lingguang.com/support) 方便体验；复现以 GitHub 为准 |
 
 ## 结论
 
-**本条目的站内价值是把「Infinite Worlds with Versatile Interactions (LingBot-World 2.0 / LingBot-Worl...」从外部 Awesome 列表提升为可链接的知识节点，并保留清单 Highlights 作为阅读锚点。**
+**LingBot-World 2.0 把 Robbyant 世界模型线从「能生成」推到「能玩、能共编、能长时跑」——causal-fast + KV cache 是实时 720p60 的工程核心，Pilot/Director 则是把交互复杂度从单一 diffusion 里拆出来的产品化接口。**
 
-- 起作用的是策展坐标：列表分组 **42 Visual / Video World Models** + Highlights 指出的问题设定，而不是本页自行推导的新算法结论。
-- 适用边界：索引级页面不能替代 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 若该工作成为学习主线，应再升格为深度论文实体（补机构、实验表、源码运行时序图或「不适用」说明）。
+- **实时性来自蒸馏 + 缓存，不是单纯放大 1.0：** causal-fast 变体 + chunk-wise KV 才是 60fps 可玩路径；causal-pretrain 仍偏质量研究配置。
+- **Agent harness 是差异化接口：** 多人 Player/Director 共 steering 把「世界模型」变成 **可协作介质**，而不只是单人 prompt 视频。
+- **具身叙事要分清输出模态：** 它生成 **像素世界**，不直接输出关节动作；与 LingBot-VLA 组合才是完整 **sim → policy** 栈。
+- **开源完整度已可复现推理：** 2026-09-10 起 14B 全变体 + 1.3B 齐备；许可 NC 是量产前必查项。
+- **局限诚实：** 项目页承认 **长程世界记忆、物理忠实度、更高效推理** 仍在探索——勿把 demo 级交互等同于物理正确 sim。
 
-## 常见误区
+## 局限与风险
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 同一 arXiv 在全库只允许一个 canonical 详情节点；若已有深度页，应以深度页为准。
-
-## 关联页面
-
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- **长程记忆与物理：** 官方列出 **true long-term world memory**、**faithful physics** 为 open challenges。
+- **第三方 demo 差异：** Reactor/LingGuang 便捷但 README 写明官方 full capability 见 WAIC 2026。
+- **非商业许可：** CC BY-NC-SA 4.0 限制产品化。
+- **算力：** 14B 实时路径默认多卡；真机边缘部署需 1.3B 或进一步蒸馏。
+- **评测口径：** WorldRoamBench 等对照见 [ABot-World-0](./paper-abot-world-0.md)；本页数字以 arXiv / 项目页 / README 为准。
 
 ## 参考来源
 
-- [`sources/papers/sun_awesome_wm_2607_07534_infinite-worlds-with-versatile-interacti.md`](../../sources/papers/sun_awesome_wm_2607_07534_infinite-worlds-with-versatile-interacti.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2607.07534>
+- [lingbot_world_v2_arxiv_2607_07534.md](../../sources/papers/lingbot_world_v2_arxiv_2607_07534.md) — 本次 ingest 主摘录
+- [lingbot-world-v2-technology-robbant.md](../../sources/sites/lingbot-world-v2-technology-robbant.md) — 项目页与开源核查
+- [lingbot-world-v2.md](../../sources/repos/lingbot-world-v2.md) — 官方仓库归档
+- [sun_awesome_wm_2607_07534_...](../../sources/papers/sun_awesome_wm_2607_07534_infinite-worlds-with-versatile-interacti.md) — Awesome 策展坐标
+- 论文 PDF：<https://arxiv.org/pdf/2607.07534>
+
+## 关联页面
+
+- [LingBot-World 1.0（索引）](./paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md)
+- [LingBot-VLA 2.0](./lingbot-vla-v2.md) — 同团队 VLA 栈
+- [LingBot-Map](../methods/lingbot-map.md) — 流式 3D 几何
+- [Generative World Models](../methods/generative-world-models.md)
+- [World Action Models](../concepts/world-action-models.md)
+- [Video as Simulation](../concepts/video-as-simulation.md)
+- [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 
 ## 推荐继续阅读
 
-- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2607.07534)
+- [项目页（交互 demo）](https://technology.robbyant.com/lingbot-world-v2)
+- [GitHub README / Quick Start](https://github.com/robbyant/lingbot-world-v2)
+- [HF 权重集合](https://huggingface.co/collections/robbyant/lingbot-world-v2)

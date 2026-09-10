@@ -7,6 +7,7 @@ arxiv: "2607.06403"
 code: https://github.com/robbyant/lingbot-vla-v2
 related:
   - ./lingbot-vla.md
+  - ../entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md
   - ../methods/vla.md
   - ../methods/being-h07.md
   - ../methods/egoscale.md
