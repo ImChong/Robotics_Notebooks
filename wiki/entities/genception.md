@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, foundation-model, video-generation, video-perception, segmentation, depth-estimation, pose-estimation, deepmind, instruction-tuning, zero-shot, eccv-2026]
 status: complete
-updated: 2026-07-15
+updated: 2026-09-10
 arxiv: "2607.09024"
 venue: ECCV 2026
 related:
@@ -11,6 +11,7 @@ related:
   - ../concepts/vision-backbones.md
   - ../concepts/visual-representation-for-policy.md
   - ../entities/vision-banana.md
+  - ../entities/paper-d4rt.md
   - ../methods/object-detection.md
   - ../methods/vla.md
 sources:
@@ -56,7 +57,7 @@ summary: "GenCeption（ECCV 2026，arXiv:2607.09024，DeepMind 等）将 WAN 2.1
 
 - **范式延伸：** 在 [Vision Banana](./vision-banana.md) 论证 **图像生成预训练** 之后，本文将同一逻辑推进到 **原生视频域**——**时序一致性、4D 几何、运动理解** 成为生成预训练的副产品。
 - **统一架构证据：** 单 **WAN 2.1 DiT + 文本 prompt** 覆盖 **几何（深度/法线/位姿）+ 分割 + 3D 人体**，任务规格从 **改架构** 转为 **改数据格式**（类比 LLM 的 text completion）。
-- **数据效率：** 14B 模型仅用 **~0.9M–1.23M 合成帧** 即可在深度任务逼近 **D4RT / VGGT-Ω**（后者用 **数十至数百倍** 帧数）；对 **机器人数据稀缺** 场景有启示。
+- **数据效率：** 14B 模型仅用 **~0.9M–1.23M 合成帧** 即可在深度任务逼近 **[D4RT](./paper-d4rt.md) / VGGT-Ω**（后者用 **数十至数百倍** 帧数）；对 **机器人数据稀缺** 场景有启示。
 - **涌现世界模型：** 纯合成人视频训练 → **真实视频、多实例、动物/机器人** 零样本泛化，支持「生成骨干内嵌 **物理世界模型**」假说。
 - **机器人/AR 上游：** **4D 人体关键点**（遮挡、ego、多视角）、**grounded 4D 重建**、**语言指代分割** 可直接服务 **遥操作、导航、操作规划** 的多模态感知栈（见 [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md)）。
 

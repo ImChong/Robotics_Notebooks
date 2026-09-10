@@ -2,13 +2,14 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../methods/lingbot-map.md
   - ../entities/paper-glob3r.md
   - ../entities/paper-slamformer-infinity.md
+  - ../entities/paper-d4rt.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-x-ionet-cross-platform-inertial-odometry.md
   - ../entities/paper-p3.md
@@ -227,6 +228,10 @@ $$
 ### 10. 相对回归流式重建（R³）
 
 [R³](../entities/paper-r3-relative-regression.md)（arXiv:2605.26519，UMich×西湖×NVIDIA）在 **Depth Anything 3** 骨干上用 **轻量 MLP** 回归 **置信加权成对相对位姿**，替代全局坐标系回归；**372M** 参数、**20+ FPS** 流式、**有界 keyframe bank** 支持长视频回环一致。同一 checkpoint 覆盖 **causal streaming** 与 **full-context offline**；代码 Apache-2.0、权重 CC BY-NC 已开源（评测代码待发布）。相对 LingBot-Map 的 GCA/Paged KV，R³ 更贴近 **SLAM 因子图** 的相对约束直觉。
+
+### 11. 统一查询式动态 4D 重建（D4RT）
+
+[D4RT](../entities/paper-d4rt.md)（arXiv:2512.08924，CVPR 2026，Google DeepMind）把动态视频 **4D 重建** 写成 **Global Scene Representation + 独立时空查询解码**：一次编码后，对任意 $(u,v,t_{\text{src}},t_{\text{tgt}},t_{\text{cam}})$ 并行输出 3D 位置，统一 **深度 / 相机 / 动态 3D 跟踪 / 全像素 4D**。相对 VGGT 的多解码头与 MegaSaM 的多模块 + 测试时优化，D4RT 在 TAPVid-3D 与多深度基准上 **SOTA 级**，且 3D 跟踪吞吐 **18–300×** 于 prior art。与 [VGG-T³](../entities/paper-vgg-ttt.md) 的 **离线静态 pointmap**、LingBot-Map 的 **流式 SLAM 式几何** 互补——D4RT 更适合 **动态 egocentric 视频上的 4D 对应**。截至入库日 **确认未开源**。
 
 ## 最小代码骨架
 
