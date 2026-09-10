@@ -1,3 +1,5 @@
+## [2026-09-10] ingest | wiki/comparisons/so3-rotation-representations.md — SO(3) 旋转表示选型对比（欧拉/矩阵/轴角/四元数/so(3)/6D/tan_norm）
+
 ## [2026-09-10] ingest | sources/papers/hsimul3r_arxiv_2603_15612.md — HSImul3R 物理在环 simulation-ready HSI 重建；GitHub 占位仓库，wiki 实体页 + DIMOS 交叉引用
 
 ## [2026-09-10] structural | roadmap/depth-embodied-data.md — 新增具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）纵深路线，二十四条纵深入口全站同步

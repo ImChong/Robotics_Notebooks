@@ -2,10 +2,11 @@
 type: formalization
 tags: [kinematics, math, rotation, so3, deep-learning, motion-imitation, mimickit, protomotions]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 related:
   - ./se3-representation.md
   - ./lie-group-rigid-body-motions.md
+  - ../comparisons/so3-rotation-representations.md
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ../methods/deepmimic.md
@@ -120,6 +121,7 @@ flowchart LR
 
 ## 关联页面
 
+- [旋转表示方法对比](../comparisons/so3-rotation-representations.md) — 与欧拉 / 四元数 / Zhou 6D 的选型对照
 - [SE(3) 位姿表示](./se3-representation.md) — 欧拉 / 四元数 / Zhou 6D 总览
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3) 流形与四元数双覆盖
 - [MimicKit](../entities/mimickit.md) — 统一实现与训练入口

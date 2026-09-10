@@ -81,7 +81,7 @@ $W, W_0$ 为 $3\times4$ 四元数率矩阵；分别对应 **世界系** 与 **�
 - 直接法：目标中加入 $(1-\|q\|)^2$ 惩罚 + 仍常需 renormalize。
 - 旋转向量 $q_v:\mathbb{R}^3\to S^3$ 可消二次约束，但仍有 $2\pi$ 周期歧义（Sec. 7）。
 
-**对 wiki 的映射:** 与 Zhou 6D 等无单位约束观测表示的动机对齐；见 [SE(3) 位姿表示](../../wiki/formalizations/se3-representation.md)。
+**对 wiki 的映射:** 与 Zhou 6D 等无单位约束观测表示的动机对齐；选型总表见 [旋转表示方法对比](../../wiki/comparisons/so3-rotation-representations.md)，位姿层见 [SE(3) 位姿表示](../../wiki/formalizations/se3-representation.md)。
 
 ## 建议 wiki 动作
 

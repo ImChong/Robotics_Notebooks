@@ -2,10 +2,11 @@
 type: formalization
 tags: [kinematics, math, quaternion, so3, interpolation, embodied-ai, animation]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-10
 related:
   - ./lie-group-rigid-body-motions.md
   - ./se3-representation.md
+  - ../comparisons/so3-rotation-representations.md
   - ./homogeneous-coordinates-transform.md
   - ../entities/modern-robotics-book.md
   - ../methods/deepmimic.md
@@ -149,6 +150,7 @@ flowchart LR
 ## 关联页面
 
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 exp/log 链路
+- [旋转表示方法对比](../comparisons/so3-rotation-representations.md) — 七种 SO(3) 参数化优缺点与选型
 - [SE(3) 位姿表示](./se3-representation.md) — 欧拉 / 四元数 / 6D 对比
 - [Modern Robotics 教材](../entities/modern-robotics-book.md) — Ch 3 系统推导
 - [DeepMimic](../methods/deepmimic.md) — 四元数 motion 格式与 pose reward
