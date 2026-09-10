@@ -273,6 +273,7 @@ flowchart LR
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — 非结构化地形遥操作的感知前置
   - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
   - [ICL（具身上下文学习）](depth-icl.md) — 下游：采到的示范可直接当上下文提示
+  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 下游：采到的示范如何清洗、标注、入库与配比
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 

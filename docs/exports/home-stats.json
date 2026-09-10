@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-10",
-  "node_count": 3937,
-  "edge_count": 35072,
+  "node_count": 3938,
+  "edge_count": 35166,
   "coverage": {
     "covered": 3910,
     "total": 3910,
@@ -17,7 +17,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/dvid.md",
@@ -28,7 +28,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/flybrainlab.md",
@@ -39,7 +39,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/flywire.md",
@@ -49,7 +49,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/male-cns-connectome.md",
@@ -59,7 +59,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/neuprint.md",
@@ -70,7 +70,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/neuroglancer.md",
@@ -81,7 +81,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-raga-real-time-ray-traced-gaussian-shadow-casting.md",
@@ -130,7 +130,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-duet-dino.md",
@@ -140,7 +140,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-gta-2.md",
@@ -150,7 +150,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-instantmimic.md",
@@ -160,7 +160,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-jepa-policy.md",
@@ -170,7 +170,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-no-free-checker.md",
@@ -180,7 +180,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-pccdiffuser.md",
@@ -190,7 +190,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-semigroup-jepa.md",
@@ -200,7 +200,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-show-harness.md",
@@ -210,7 +210,7 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -222,16 +222,16 @@
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 559
+      "size": 575
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 489
+      "size": 539
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -239,15 +239,15 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 257
+      "size": 258
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 227
+      "size": 230
     },
     {
-      "label": "具身评测基准选型闭环",
-      "size": 216
+      "label": "仿真到现实",
+      "size": 159
     }
   ],
   "top_hubs": [
@@ -302,7 +302,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 602,
+      "degree": 603,
       "has_repo": true
     },
     {
@@ -317,7 +317,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 563,
+      "degree": 564,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

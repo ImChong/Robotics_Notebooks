@@ -273,6 +273,7 @@ flowchart LR
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
   - [WAM（世界–动作模型）](depth-wam.md)
   - [ICL（具身上下文学习）](depth-icl.md)
+  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
 - 关联知识页：
   - [Humanoid Hardware 101：七类子系统技术地图](../wiki/overview/humanoid-hardware-101-technology-map.md)
   - [Humanoid 执行器 102：八章技术地图](../wiki/overview/humanoid-actuator-102-technology-map.md)

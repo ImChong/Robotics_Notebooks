@@ -244,6 +244,7 @@ flowchart LR
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
   - [WAM（世界–动作模型）](depth-wam.md)
   - [ICL（具身上下文学习）](depth-icl.md)
+  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 姊妹路线：仿真侧资产供给，与本路线在扩增阶段汇合
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 

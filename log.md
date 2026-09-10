@@ -1,3 +1,11 @@
+## [2026-09-10] structural | roadmap/depth-embodied-data.md — 新增具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）纵深路线，二十四条纵深入口全站同步
+
+- roadmap/depth-embodied-data.md：新建「具身数据」纵深路线（起点：Open X-Embodiment 跨具身数据聚合，2023），Stage 0 数据口径与金字塔分层（可扩展性 × 机器人对齐两轴 · 真机/UMI/Ego-Exo/仿真/通用五层）→ Stage 1 采集范式与装置选型（六条产业范式 · 遥操作 vs 无机器人示教 vs ego 视频）→ Stage 2 清洗、质量与标注（时序对齐 / 异常过滤 / 重定向误差修复 / VLM 自动打标）→ Stage 3 格式与跨具身聚合（LeRobot 格式 · OXE schema 的边界 · 数据集许可与门控）→ Stage 4 扩增与合成（重定向 / 仿真与 Real2Sim / 生成式增强 / 人视频置换 teleop）→ Stage 5 配比、缩放律与数据飞轮（混合配方 · 开源 vs 闭源自报的 scaling 读法 · 飞轮回流与评测刹车）
+- roadmap/README.md、index.md、roadmap/motion-control.md、README.md、docs/index.html、docs/main.js、docs/depth-filters.js 与其余二十三条 depth-* 路线页：纵深路线数 23 → 24，按里程碑历史序在 Real2Sim（2023）后、WAM（2026）前插入「具身数据」并补双向链接；首页默认展示的四个路线按钮顺延为 VLA / Real2Sim / 具身数据 / WAM
+- docs/depth-filters.js：新增 `embodied-data` 路线视图（segments 走 data / datasets / flywheel / lerobot / open-x-embodiment / scaling-law 等，刻意不收 `dataset` 单词元以免带入 ImageNet/COCO 等纯 CV 数据集页；ids 显式纳入数据金字塔、OXE、采集产业地图、清洗、自动标注、缩放律与飞轮等枢纽页）
+- tests/test_depth_filters.py：DEPTH_ORDER 长度断言 24 → 25（主路线 + 24 条纵深）
+- 派生文件（catalog.md / exports / docs/exports / search-index / sitemap 等）经 make ci-preflight 同步
+
 ## [2026-09-10] ingest | sources/sites/male-cns-connectome.md — Male CNS v1.0 雄性果蝇全 CNS 连接组及 FlyWire/neuPrint/Neuroglancer/DVID/FlyBrainLab 工具栈
 
 ## [2026-09-10] ingest | sources/papers/raga_arxiv_2606_29329.md — RAGA（ECCV 2026）3DGS avatar 实时光线追踪阴影；项目页未开源
