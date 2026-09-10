@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-d4rt.md",
+      "detail_id": "entity-paper-d4rt",
+      "label": "D4RT：按需查询的统一 4D 动态场景重建",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-locateanything.md",
       "detail_id": "entity-paper-locateanything",
       "label": "LocateAnything：基于并行框解码的快速高质量视觉-语言定位",
@@ -194,28 +203,16 @@
       "recency": "2026-09-09",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-memforest.md",
-      "detail_id": "entity-paper-memforest",
-      "label": "MemForest",
-      "type": "entity",
-      "recency": "2026-09-09",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-locateanything.md",
-    "detail_id": "entity-paper-locateanything",
-    "label": "LocateAnything：基于并行框解码的快速高质量视觉-语言定位",
+    "path": "wiki/entities/paper-d4rt.md",
+    "detail_id": "entity-paper-d4rt",
+    "label": "D4RT：按需查询的统一 4D 动态场景重建",
     "type": "entity",
     "recency": "2026-09-10",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
