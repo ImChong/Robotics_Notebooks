@@ -27,6 +27,7 @@ related:
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../entities/paper-resmimic.md
   - ../entities/paper-notebook-vmp.md
+  - ../entities/paper-pgmt.md
   - ../entities/limx-cosa.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -213,6 +214,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 | **Any2Any** | 复用源机参考池 | 运动学对齐层 | LoRA 后训练（约 1% 算力） | 多目标机 LoRA 适配 | LimX Oli/Luna、G1、H1 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | **SONIC-Transfer** | 复用公开 GEAR-SONIC | 闭式关节 codec | 单解码器 LoRA（约 2% cited 算力） | 近亲骨架冻结迁移 | AgiBot X2 Ultra（MuJoCo play 已开） | [SONIC-Transfer](../entities/paper-sonic-transfer.md) |
 | **GMT (RGMT)** | 多任务参考 + 扰动课程 | 上游通用 | 历史编码 + 命令交叉注意力 | 单具身（强抗扰） | Unitree G1 项目页 | [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
+| **PGMT** | 独立 motion + 地形 | 平地先验再注入 | motion-conditioned terrain glimpses + tracking relaxation | 单具身 G1 | Mid-360S + Orin NX | [PGMT](../entities/paper-pgmt.md) |
 | **VMP** | 11 h 未过滤 CMU/Mixamo/Reallusion | IK retarget（LIME） | β-VAE prior + 条件 PPO 跟踪 | 单具身角色平台 | LIME 双足真机 | [VMP](../entities/paper-notebook-vmp.md) |
 
 > **选型直觉**：

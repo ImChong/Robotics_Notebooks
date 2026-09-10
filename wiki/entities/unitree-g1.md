@@ -33,6 +33,8 @@ related:
   - ./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
   - ../roadmaps/humanoid-control-roadmap.md
   - ./paper-umr-unified-motion-retargeting.md
+  - ./paper-pgmt.md
+  - ./paper-tango-vla.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
@@ -121,6 +123,8 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [ParcelStow](./paper-parcelstow.md) — Isaac Lab 上 G1 L6 灵巧手模仿策略的时间鲁棒性评测（arXiv:2609.01453，已开源）
 - [ADAPT（文本驱动）](./paper-adapt-text-driven-humanoid.md) — ETH 端到端扩散先验，G1 50 Hz 在线换 prompt（arXiv:2609.00677，未开源）
 - [UMR](./paper-umr-unified-motion-retargeting.md) — 学习点云对应重定向；G1 跟踪/接触/真机（arXiv:2609.02134，待发布）
+- [PGMT](./paper-pgmt.md) — 感知通用动作跟踪；G1 零样本过 37 cm 障碍（arXiv:2609.08511，未开源）
+- [TANGO](./paper-tango-vla.md) — 全身 VLA 杂乱室内导航；G1 零样本（CoRL 2026，arXiv:2609.09158，未开源）
 - [Unitree 品牌主页](./unitree.md)
 - [UniStore（宇树应用平台）](./unitree-unistore.md)
 - [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)
