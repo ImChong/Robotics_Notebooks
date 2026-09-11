@@ -3,8 +3,9 @@
 type: entity
 tags: [textbook, linear-algebra, education, foundational, kinematics, control, georgia-tech]
 status: complete
-updated: 2026-05-31
+updated: 2026-09-11
 related:
+  - ../formalizations/eigenvalues-eigenvectors.md
   - ../formalizations/se3-representation.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/lqr.md
@@ -13,7 +14,10 @@ related:
   - ../../roadmap/motion-control.md
 sources:
   - ../../sources/courses/gatech_interactive_linear_algebra.md
+  - ../../sources/courses/gatech_ila_sec5_1_eigenvalues_eigenvectors.md
   - ../../sources/courses/axler_linear_algebra_done_right_4e.md
+  - ../../sources/courses/axler_ladr4_ch5_eigenvalues_invariant_subspaces.md
+  - ../../sources/courses/strang_mit_18_06_ila5_eigenvalues.md
   - ../../sources/courses/linear_algebra_teaching_materials_curated.md
 summary: "运动控制 L0 线性代数策展：Georgia Tech 交互教材、Axler LADR4e 与 Strang/3Blue1Brown 等互补入口，按机器人矩阵语言（变换、子空间、最小二乘、谱）组织精读地图。"
 ---
@@ -67,7 +71,7 @@ flowchart LR
 | 正交矩阵、保持长度 | 旋转 \(R\in SO(3)\) | [李群与刚体运动](../formalizations/lie-group-rigid-body-motions.md) |
 | 列空间 / 秩 / 零空间 | 冗余臂 IK、约束是否独立 | [Whole-Body Control](../concepts/whole-body-control.md)（任务堆叠直觉） |
 | 最小二乘、伪逆、QR | 数值 IK、状态估计、批最小二乘标定 | [Trajectory Optimization](../methods/trajectory-optimization.md) |
-| 特征值、对称矩阵、SVD | 线性系统稳定性、LQR、病态雅可比 | [LQR / iLQR](../formalizations/lqr.md) |
+| 特征值、对称矩阵、SVD | 线性系统稳定性、LQR、病态雅可比 | [特征值与特征向量](../formalizations/eigenvalues-eigenvectors.md) · [LQR / iLQR](../formalizations/lqr.md) |
 | 内积、正交投影 | 任务空间投影、QP 解的几何意义 | [Optimal Control](../concepts/optimal-control.md) |
 
 ## 三套主教材怎么选（不必全读完）
@@ -91,6 +95,7 @@ flowchart LR
 - [运动控制成长路线（L0）](../../roadmap/motion-control.md#l0-数学与编程基础) — 本策展的主挂载点
 - [Modern Robotics Book](./modern-robotics-book.md) — L0 之后的刚体「语法书」
 - [SE(3) Representation](../formalizations/se3-representation.md)
+- [特征值与特征向量](../formalizations/eigenvalues-eigenvectors.md)
 - [LQR / iLQR](../formalizations/lqr.md)
 - [Pinocchio](./pinocchio.md)
 - [Numerical Optimization Curriculum](./numerical-optimization-curriculum.md) — L0+ 数值优化（QP / NMPC / TrajOpt 算法）
@@ -100,6 +105,9 @@ flowchart LR
 - [sources/courses/gatech_interactive_linear_algebra.md](../../sources/courses/gatech_interactive_linear_algebra.md)
 - [sources/courses/axler_linear_algebra_done_right_4e.md](../../sources/courses/axler_linear_algebra_done_right_4e.md)
 - [sources/courses/linear_algebra_teaching_materials_curated.md](../../sources/courses/linear_algebra_teaching_materials_curated.md)
+- [sources/courses/gatech_ila_sec5_1_eigenvalues_eigenvectors.md](../../sources/courses/gatech_ila_sec5_1_eigenvalues_eigenvectors.md)
+- [sources/courses/axler_ladr4_ch5_eigenvalues_invariant_subspaces.md](../../sources/courses/axler_ladr4_ch5_eigenvalues_invariant_subspaces.md)
+- [sources/courses/strang_mit_18_06_ila5_eigenvalues.md](../../sources/courses/strang_mit_18_06_ila5_eigenvalues.md)
 
 ## 推荐继续阅读（外部）
 

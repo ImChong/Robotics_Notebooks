@@ -3568,6 +3568,7 @@
 - [Control Lyapunov Function（控制李雅普诺夫函数）](wiki/formalizations/control-lyapunov-function.md) — Control Lyapunov Function（CLF）**：一种用于设计使系统渐近稳定的控制律的数学工具。通过找到一个正定标量函数 $V(x)$，使得在某个控制输入下 $\dot{V}(x `📅unknown` `[formalization_page]`
 - [Convex Functions（凸函数）](wiki/formalizations/convex-functions.md) — 凸函数**：定义域为凸集、且函数图像在任意两点连线之上的函数；凸优化问题的局部最优即全局最优，是 WBC QP、凸 MPC、摩擦锥线性化等工程问题的理论基石。 `📅unknown` `[formalization_page]`
 - [Cross-modal Attention (跨模态注意力)](wiki/formalizations/cross-modal-attention.md) — 在具身大模型（VLA）中，**跨模态注意力 (Cross-modal Attention)** 是实现“理解指令并根据视觉反馈执行动作”的核心数学机制。它允许模型在处理 Token 序列时，显式地计算 `📅unknown` `[formalization_page]`
+- [特征值与特征向量（Eigenvalues & Eigenvectors）](wiki/formalizations/eigenvalues-eigenvectors.md) — 特征值（eigenvalue）** \(\lambda\) 与 **特征向量（eigenvector）** \(v\) 描述线性算子 \(A\) 在特定方向上的**固有伸缩**：\(Av=\lam `📅unknown` `[formalization_page]`
 - [Extended Kalman Filter (EKF)](wiki/formalizations/ekf.md) — 扩展卡尔曼滤波（EKF）**：将标准卡尔曼滤波推广到非线性系统的经典状态估计方法，通过每步线性化（一阶 Taylor 展开）在非线性系统上近似应用 Kalman 递推公式。 `📅unknown` `[formalization_page]`
 - [磁场定向控制（FOC）逐步推导](wiki/formalizations/field-oriented-control-derivation.md) — 本页把 FOC 概念页 中的直觉 **写成可复现的推导链**：为何需要坐标变换 → 如何在 dq 帧得到 \(\tau `📅unknown` `[formalization_page]`
 - [正向运动学（Forward Kinematics）](wiki/formalizations/forward-kinematics.md) — 一句话：** 给定全部关节角（或位移），通过连杆齐次变换连乘，算出末端在基座系下的唯一位姿 $T\in\mathrm{SE}(3)$——没有搜索、没有多解、没有迭代。 `📅unknown` `[formalization_page]`
