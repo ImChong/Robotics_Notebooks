@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10",
+  "generated_at": "2026-09-11",
   "node_count": 3940,
   "edge_count": 35208,
   "coverage": {
@@ -8,70 +8,6 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/comparisons/so3-rotation-representations.md",
-      "detail_id": "wiki-comparisons-so3-rotation-representations",
-      "label": "旋转表示方法对比（SO(3)）",
-      "type": "comparison",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hsimul3r.md",
-      "detail_id": "entity-paper-hsimul3r",
-      "label": "HSImul3R：物理在环的 simulation-ready 人–场景交互重建",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "roadmap/depth-embodied-data.md",
-      "detail_id": "roadmap-depth-embodied-data",
-      "label": "路线（纵深）：如果目标是具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与飞轮）",
-      "type": "roadmap_page",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/fly-connectomics-stack.md",
-      "detail_id": "wiki-concepts-fly-connectomics-stack",
-      "label": "果蝇连接组工具栈（Fly Connectomics Stack）",
-      "type": "concept",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/dvid.md",
-      "detail_id": "entity-dvid",
-      "label": "DVID",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/flybrainlab.md",
-      "detail_id": "entity-flybrainlab",
-      "label": "FlyBrainLab",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
     {
       "path": "wiki/entities/flywire.md",
       "detail_id": "entity-flywire",
@@ -93,67 +29,6 @@
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
-      "path": "wiki/entities/neuprint.md",
-      "detail_id": "entity-neuprint",
-      "label": "neuPrint",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/neuroglancer.md",
-      "detail_id": "entity-neuroglancer",
-      "label": "Neuroglancer",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-raga-real-time-ray-traced-gaussian-shadow-casting.md",
-      "detail_id": "entity-paper-raga-real-time-ray-traced-gaussian-shadow-casting",
-      "label": "RAGA — Real Time Ray Traced Gaussian Shadow Casting",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/ame-1-to-ame-2-technology-map.md",
-      "detail_id": "wiki-overview-ame-1-to-ame-2-technology-map",
-      "label": "AME-1 → AME-2：感知运动系统演进坐标",
-      "type": "overview",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gwm-first-principles.md",
-      "detail_id": "entity-paper-gwm-first-principles",
-      "label": "General World Models from First-Principles（生数 / 清华）",
-      "type": "entity",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/overview/gwm-closed-loop-5-papers-technology-map.md",
-      "detail_id": "wiki-overview-gwm-closed-loop-5-papers-technology-map",
-      "label": "GWM 闭环：5 篇资料阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
       "path": "wiki/entities/paper-assembling-two-parts-in-one-hand.md",
       "detail_id": "entity-paper-assembling-two-parts-in-one-hand",
       "label": "单手双件装配（arXiv:2609.10137）",
@@ -162,6 +37,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-decal.md",
+      "detail_id": "entity-paper-decal",
+      "label": "DeCAL：接触感知灵巧 VLA",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-duet-dino.md",
@@ -211,17 +96,126 @@
       "recency": "2026-09-10",
       "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-ostrich.md",
+      "detail_id": "entity-paper-ostrich",
+      "label": "Ostrich：硬接触可微动力学",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-pccdiffuser.md",
+      "detail_id": "entity-paper-pccdiffuser",
+      "label": "PccDiffuser（arXiv:2609.09745）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pgmt.md",
+      "detail_id": "entity-paper-pgmt",
+      "label": "PGMT：人形感知通用动作跟踪",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-semigroup-jepa.md",
+      "detail_id": "entity-paper-semigroup-jepa",
+      "label": "Semigroup-JEPA（arXiv:2609.10464）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-show-harness.md",
+      "detail_id": "entity-paper-show-harness",
+      "label": "Show-Harness（arXiv:2609.10522）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-swingbot.md",
+      "detail_id": "entity-paper-swingbot",
+      "label": "SwingBot（arXiv:2609.10283）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tango-vla.md",
+      "detail_id": "entity-paper-tango-vla",
+      "label": "TANGO：杂乱室内的人形全身 VLA 导航",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-underwater-quadruped-attitude-control.md",
+      "detail_id": "entity-paper-underwater-quadruped-attitude-control",
+      "label": "水下四足姿态控制（arXiv:2609.09217）",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/comparisons/so3-rotation-representations.md",
+      "detail_id": "wiki-comparisons-so3-rotation-representations",
+      "label": "旋转表示方法对比（SO(3)）",
+      "type": "comparison",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hsimul3r.md",
+      "detail_id": "entity-paper-hsimul3r",
+      "label": "HSImul3R：物理在环的 simulation-ready 人–场景交互重建",
+      "type": "entity",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "roadmap/depth-embodied-data.md",
+      "detail_id": "roadmap-depth-embodied-data",
+      "label": "路线（纵深）：如果目标是具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与飞轮）",
+      "type": "roadmap_page",
+      "recency": "2026-09-10",
+      "source": "git",
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/so3-rotation-representations.md",
-    "detail_id": "wiki-comparisons-so3-rotation-representations",
-    "label": "旋转表示方法对比（SO(3)）",
-    "type": "comparison",
+    "path": "wiki/entities/flywire.md",
+    "detail_id": "entity-flywire",
+    "label": "FlyWire",
+    "type": "entity",
     "recency": "2026-09-10",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
