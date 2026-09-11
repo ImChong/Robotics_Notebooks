@@ -1,3 +1,5 @@
+## [2026-09-11] ingest | sources/sites/sol-pi-nvlabs.md — 接入 NVLabs SoL-Pi（Pi harness 四条效率扩展）；已开源 NVlabs/SoL-Pi
+
 ## [2026-09-11] ingest | sources/papers/facet_0_arxiv_2609_01596.md — Facet-0（arXiv:2609.01596）用户指定再 ingest；步骤 2.5 再核：ManuFacet-1K 已发；GitHub 仍 Code coming soon（+CITATION.cff）；模型卡仍空
 
 - **触发：** 用户指定 arXiv:2609.01596 + 项目页 https://pine-lab-ntu.github.io/facet-0/

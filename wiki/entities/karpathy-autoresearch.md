@@ -9,7 +9,7 @@ tags:
   - autonomous-experimentation
   - research-automation
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 related:
   - ./andrej-karpathy.md
   - ./darwin-skill.md
@@ -22,6 +22,7 @@ related:
   - ./superpowers-obra.md
   - ./hermes-agent.md
   - ./sciencediscovery.md
+  - ./sol-pi.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/karpathy-autoresearch.md
@@ -105,6 +106,7 @@ flowchart LR
 - [Superpowers（obra）](./superpowers-obra.md) — 另一类 agent 技能与交付纪律。
 - [Hermes Agent](./hermes-agent.md) — 常驻代理运行时；可与 autoresearch 组合为「长驻代理 + 夜间实验环」。
 - [ScienceDiscovery](./sciencediscovery.md) — 开放文献/沙箱工作台；对照本仓「锁 `train.py` + 单一 val_bpb」。
+- [SoL-Pi](./sol-pi.md) — NVLabs 在 Pi harness 上规模化 auto-research；显式引用本仓 experiment loop。
 - [ENPIRE](../methods/enpire.md) — 机器人领域的物理 autoresearch 对照（真机 reset + 策略改进）。
 - [Muon](../methods/muon.md) — `train.py` 默认隐藏层优化器；与 [AdamW](../methods/adamw.md) 混用。
 - [Darwin Skill](./darwin-skill.md) — autoresearch 机制在 Agent Skill 优化域的映射。

@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, llm-agents, agent-infrastructure, skills, messaging-gateway, voice, openclaw, embodied-ai]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 related:
   - ./rosclaw.md
   - ./roboclaw.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, llm-agents, agent-harness, self-evolution, quality-diversity, prompt-optimization, evermind, shanda]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-11
 arxiv: "2607.13683"
 related:
   - ./paper-skillcorpus.md
@@ -13,6 +13,7 @@ related:
   - ./superpowers-obra.md
   - ../concepts/ai-auto-research.md
   - ./karpathy-autoresearch.md
+  - ./sol-pi.md
 sources:
   - ../../sources/papers/harnessbank_arxiv_2607_13683.md
 summary: "HarnessBank（arXiv:2607.13683，EverMind / 盛大）：冻结模型下用语义 Harness Gene Bank + 门控筛选做可信 agent-harness 自进化；七基准 Test Pass@1 +5.1%–15.4%；代码 acceptance 后开源。"
