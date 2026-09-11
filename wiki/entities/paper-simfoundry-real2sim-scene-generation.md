@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, omnigibson, 3dgs, vla]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-11
 arxiv: "2606.28276"
 code: https://github.com/NVlabs/SimFoundry
 related:
@@ -227,6 +227,7 @@ sequenceDiagram
 - [Lucida](./paper-lucida-r2s.md) — 室内多视角 → 可编辑资产 + GizmoAct 9-DoF（几何对齐，无策略评测）
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 驾驶/现场神经体积 USDZ；本页是操作 mesh+cousins，不是车队日志
 - [Instant NuRec](./paper-instant-nurec.md) — 前向 3DGS 驾驶世界；闭环看策略排序而非 Pearson
+- [HKTex](./paper-hktex-heat-kernel-textures.md) — sim-ready 物体 mesh 的无 UV 紧凑纹理与 PBR 外观层（ECCV 2026 Best Paper）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 校准层：real-to-sim 策略评测（均值 Pearson 0.911）
 
 ## 参考来源

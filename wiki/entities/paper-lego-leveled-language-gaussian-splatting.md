@@ -13,7 +13,7 @@ tags:
   - whu
   - hkust
 status: complete
-updated: 2026-08-16
+updated: 2026-09-11
 arxiv: "2608.10057"
 venue: "ECCV 2026 · arXiv"
 code: https://github.com/WHU-USI3DV/LEGO
@@ -220,6 +220,7 @@ sequenceDiagram
 - [FindAnything](./findanything.md) — 机载对象级开放词汇对照
 - [OccAnyScene](./paper-occanyscene.md) — 另一条 3DGS 感知（占据，不是语言层级）
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 易混名的 3DGS×VLA 数据工厂
+- [HKTex](./paper-hktex-heat-kernel-textures.md) — 同属「高斯」隐喻但做 mesh 内在纹理而非 3DGS 语义场
 
 ## 参考来源
 

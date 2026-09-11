@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026, nvidia]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-11
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md
@@ -116,6 +116,7 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 工作流直接服务 sim2real
 - [Meshroom](./meshroom.md) — 多视图摄影测量与 MrGSplat 上游；产出 mesh / splat 再进仿真
 - [Spark](./spark-3dgs-renderer.md) / [Aholo Viewer](./aholo-viewer.md) — Web 端大场景 3DGS 渲染（见 [对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）
+- [HKTex](./paper-hktex-heat-kernel-textures.md) — 已知 mesh 上的无 UV 热核纹理（ECCV 2026 Best Paper）；补 sim 资产外观层，不是 splat 观测工厂
 - [World Labs](./world-labs.md) — 空间世界生成与 Spark 产业侧上下文
 - [Marble](./marble-world-model.md) — 创作者 SaaS 出 splat/collider；本页是批量训练渲染
 - [CRISP](../methods/crisp-real2sim.md) — 另一条 Real2Sim 路线：单目视频 + 平面原语与接触物理（ICLR 2026），与 3DGS 外观路径互补对照（见 [选型对比](../comparisons/crisp-vs-gs-playground-real2sim.md)）
