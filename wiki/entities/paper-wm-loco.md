@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, world-model, perceptive-locomotion, foothold, ppo, depth, sim2real, unitree-g1, d-robotics, bupt, soochow, hit]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 arxiv: "2609.02542"
 related:
   - ../tasks/humanoid-locomotion.md

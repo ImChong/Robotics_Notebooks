@@ -3674,6 +3674,13 @@
         "kaust",
         "king-abdullah-university-of-science-and-technology"
       ]
+    },
+    "sharpa-robotics": {
+      "label": "夏帕机器人（Sharpa Robotics）",
+      "aliases": [
+        "sharpa-robotics",
+        "sharpa"
+      ]
     }
   }
 }
