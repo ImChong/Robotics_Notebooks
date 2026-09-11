@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/sol-pi.md",
+      "detail_id": "entity-sol-pi",
+      "label": "SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）",
+      "type": "entity",
+      "recency": "2026-09-11",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-cap-perception-blind-humanoid.md",
       "detail_id": "entity-paper-cap-perception-blind-humanoid",
       "label": "CAP（arXiv:2609.11553）",
@@ -197,27 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hktex-heat-kernel-textures.md",
-      "detail_id": "entity-paper-hktex-heat-kernel-textures",
-      "label": "HKTex：热核纹理（不测地线高斯，也不 Splat）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-cap-perception-blind-humanoid.md",
-    "detail_id": "entity-paper-cap-perception-blind-humanoid",
-    "label": "CAP（arXiv:2609.11553）",
+    "path": "wiki/entities/sol-pi.md",
+    "detail_id": "entity-sol-pi",
+    "label": "SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）",
     "type": "entity",
     "recency": "2026-09-11",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
