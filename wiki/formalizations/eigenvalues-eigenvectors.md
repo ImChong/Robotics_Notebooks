@@ -7,6 +7,7 @@ related:
   - ../entities/linear-algebra-curriculum.md
   - ./lqr.md
   - ./kalman-filter.md
+  - ./damped-systems.md
   - ../methods/newtons-method.md
   - ../concepts/optimal-control.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
@@ -139,6 +140,7 @@ $$\text{连续稳定} \Leftrightarrow \mathrm{Re}(\lambda_i)<0 \;\forall i; \qqu
 - [Kalman Filter](./kalman-filter.md) — 估计协方差谱
 - [Newton 法](../methods/newtons-method.md) — Hessian 特征值修正
 - [Importance Sampling + PCA（eigenfailures）](../entities/paper-importance-sampling-pca-av-failures.md)
+- [阻尼系统（一阶 τ / 二阶 ζ, ωₙ）](./damped-systems.md) — 闭环极点与阶跃响应形状
 
 ## 参考来源
 

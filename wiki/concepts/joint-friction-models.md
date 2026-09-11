@@ -14,6 +14,7 @@ related:
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../methods/actuator-network.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ../formalizations/damped-systems.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
