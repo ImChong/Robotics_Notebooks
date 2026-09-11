@@ -4,6 +4,8 @@
 - **步骤 2.5：** **部分开源** — HF `Pinelab/ManuFacet-1K` READY（25.2 GB / 7,866 rows）；`PINE-Lab-NTU/FACET` 仍仅 README + CITATION.cff；`Pinelab/Facet-0` 卡片仍空
 - **关键页：** [`paper-facet-0`](wiki/entities/paper-facet-0.md) 开源边界日期刷新；sources 交叉链接同步
 
+## [2026-09-11] ingest | sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md — 具身智能小站 14 篇盘点；新建 13 + 复用 Show-Harness；14/14 独立 paper-* 节点
+
 ## [2026-09-11] ingest | sources/papers/deworldsg_arxiv_2607_00889.md — DeWorldSG 3D SSG + V-JEPA2 先验；项目页 Code Coming Soon
 
 ## [2026-09-11] ingest | sources/papers/lingbot_map_arxiv_2604_14141.md — LingBot-Map（arXiv:2604.14141 / ECCV 2026 oral）升格 paper-lingbot-map 实体页；代码+HF 已开源；github.io 镜像 404
