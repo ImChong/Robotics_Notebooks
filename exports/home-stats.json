@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-10",
   "node_count": 3940,
-  "edge_count": 35188,
+  "edge_count": 35208,
   "coverage": {
     "covered": 3912,
     "total": 3912,
@@ -210,8 +210,7 @@
       "type": "entity",
       "recency": "2026-09-10",
       "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
@@ -227,12 +226,12 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 575
+      "label": "宇树 G1 人形机器人",
+      "size": 606
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 543
+      "label": "操作",
+      "size": 573
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -244,7 +243,7 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 230
+      "size": 225
     },
     {
       "label": "仿真到现实",
@@ -272,7 +271,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 933,
+      "degree": 935,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -280,7 +279,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 920,
+      "degree": 921,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -318,7 +317,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 564,
+      "degree": 565,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

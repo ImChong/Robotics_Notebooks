@@ -98,6 +98,17 @@ flowchart TB
 - **对照读法：** 相对 **地形无关 GMT**，核心增益在「参考仍多样但地形使参考不可行」的场景，而非平地舞蹈精度。
 - **横向：** 与 [WM-LOCO](./paper-wm-loco.md)（世界模型特征 + 踏石）、[P³](./paper-p3.md)（VAE-PPO 边缘似然）同属 G1 复杂地形线，但 PGMT 改的是 **tracking + 感知融合**，不是 PPO 似然或 WM 表征。
 
+## 与其他工作对比
+
+| 对照路线 | 差异 |
+|----------|------|
+| 地形无关 GMT（平地通用跟踪） | PGMT 的增益集中在「参考仍多样但地形使参考物理不可行」的场景，而非平地舞蹈跟踪精度。 |
+| [WM-LOCO](./paper-wm-loco.md) | 同为 G1 复杂地形线，但改的是 **世界模型特征 + 踏石** 表征；PGMT 改的是 tracking 策略内的感知融合。 |
+| [P³](./paper-p3.md) | 同为 G1 复杂地形线，走 **VAE-PPO 边缘似然** 的训练目标改造；PGMT 不动 PPO 目标，只加 motion-conditioned glimpses 与 relaxation。 |
+| [SONIC](../methods/sonic-motion-tracking.md) / BeyondMimic 类 | 偏 **规模化参考跟踪**（参考库与跟踪保真度）；PGMT 补的是 **地形感知偏离** 这一维，两者可叠。 |
+| 单纯放大 tracking 容差 | 只放松约束会同时丢上肢意图；PGMT 的 relaxation 是 **下肢可偏、意图仍受约束** 的分部处理。 |
+| 另起一套 locomotion 控制器 | 常见做法是 tracking 与感知行走分两套策略切换；PGMT 保持 **单一策略** 同时覆盖 GMT、复杂地形、遥操作与 recovery。 |
+
 ## 结论
 
 **PGMT 把「通用 motion tracking」从平地推到可感知地形，关键不是换参考库，而是在 tracking 策略内用 motion-conditioned glimpses 做选择性地形适应。**

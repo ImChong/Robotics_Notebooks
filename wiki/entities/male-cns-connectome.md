@@ -29,6 +29,16 @@ summary: "首个完整 proofread 的雄性果蝇 CNS（脑+视叶+VNC）突触�
 | ROI | Region of Interest | 神经纤维网室等解剖分区 |
 | CC-BY | Creative Commons Attribution | 署名即可商用的开放许可 |
 
+## 数据集速查
+
+| 维度 | 速查 |
+|------|------|
+| 规模 | v1.0 覆盖中枢脑 + 视叶 + VNC 全 CNS；**262** 种 sex-specific 与 **114** 种 sexually dimorphic 细胞类型（占中枢脑 **4.8%**）；离线连接权重表约 **1.1 GB**。 |
+| 模态 | EM 体数据 + 神经元 skeleton **形态**数据 + 突触点表（`syn-points-*.feather`）+ 连接权重表 + 细胞类型注释；无 RGB / 深度等机器人传感模态。 |
+| 许可证 | **CC-BY**（署名即可商用）。 |
+| 适配形态 | 雄性果蝇全 CNS 回路分析与跨性别比较；非机器人本体轨迹数据。 |
+| 重定向就绪度 | **不适用于运动重定向**（非运动数据）；形态学分析用 `navis` + `navis-flybrains` 在雄性/雌性模板空间变换，连接表可直接用 `pyarrow` / `pandas` 读入建图。 |
+
 ## 为什么重要
 
 - **性别二态的首个全 CNS 参照：** 鉴定 **262** 种 sex-specific 与 **114** 种 sexually dimorphic 细胞类型（占中枢脑 **4.8%**），揭示二态性如何经连接向全脑传播。

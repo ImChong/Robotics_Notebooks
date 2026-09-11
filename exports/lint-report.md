@@ -2,7 +2,7 @@
 
 ## [2026-09-10] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **20** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,9 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
-- FAST（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Ours（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -98,29 +97,14 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（15 个）
-- wiki/entities/paper-assembling-two-parts-in-one-hand.md（缺 评测 / 对比）
-- wiki/entities/paper-decal.md（缺 对比）
-- wiki/entities/paper-duet-dino.md（缺 评测 / 对比）
-- wiki/entities/paper-gta-2.md（缺 评测 / 对比）
-- wiki/entities/paper-instantmimic.md（缺 评测 / 对比）
-- wiki/entities/paper-jepa-policy.md（缺 评测 / 对比）
-- wiki/entities/paper-no-free-checker.md（缺 评测 / 对比）
-- wiki/entities/paper-ostrich.md（缺 对比）
-- wiki/entities/paper-pccdiffuser.md（缺 评测 / 对比）
-- wiki/entities/paper-pgmt.md（缺 对比）
-- wiki/entities/paper-semigroup-jepa.md（缺 评测 / 对比）
-- wiki/entities/paper-show-harness.md（缺 评测 / 对比）
-- wiki/entities/paper-swingbot.md（缺 评测 / 对比）
-- wiki/entities/paper-tango-vla.md（缺 对比）
-- wiki/entities/paper-underwater-quadruped-attitude-control.md（缺 评测 / 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（2 个）
-- wiki/entities/flywire.md（缺 模态 / 重定向就绪度）
-- wiki/entities/male-cns-connectome.md（缺 规模 / 模态）
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
@@ -134,8 +118,8 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-no-free-checker.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无

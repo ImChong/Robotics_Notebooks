@@ -102,6 +102,16 @@ sequenceDiagram
 - **并行：** 8192 worlds @ 24 GB；MJX checkpoint 吞吐的 **29×**（论文同场景设定）。
 - **演示：** Helhest 三轮滑移转向、Marv 履带翻爪、三角网格 **10 s** 梯度轨迹优化。
 
+## 与其他工作对比
+
+| 对照路线 | 差异 |
+|----------|------|
+| MJX（tape-based 可微） | 需小时间步，反传内存随步数 **线性增长**；Ostrich 大步长 + IFT 伴随做到 **每步 O(1) 记忆**，warm iteration 报告 **211×** 加速、并行吞吐 **29×**（论文同场景设定）。 |
+| Newton Semi-Implicit | 同属 Newton/Warp 生态但仍走小步长；Ostrich warm iteration 报告 **4.7×** 优势，差距小于对 MJX。 |
+| 平滑接触代理模型 | 用可微性换接触几何精度；Ostrich 不做平滑近似，非光滑摩擦锥精确求解，因此在滑移转向、履带翻爪等 **摩擦主导** 行为上不失真。 |
+| MuJoCo（不可微基线） | 作为精度参照：真机 pallet 障碍轨迹上 Ostrich 与 MuJoCo 对齐至 **50×** 步长倍率。 |
+| MJX / Isaac 作 RL 后端 | 论文定位是可微 **轨迹优化 / 系统辨识**，不主张替换大规模 RL 的 forward rollout 后端（见 [工程实践](#工程实践) 的「何时不用」）。 |
+
 ## 结论
 
 **Ostrich 适合「接触几何不能糊、又要长视界梯度优化」的机器人问题，而不是替换所有 MuJoCo 强化学习训练。**
