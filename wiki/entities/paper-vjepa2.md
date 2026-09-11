@@ -10,7 +10,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 arxiv: "2506.09985"
 code: https://github.com/facebookresearch/vjepa2
 related:
@@ -213,6 +213,7 @@ sequenceDiagram
 - [ODEWorld](./paper-odeworld.md) — 连续时间 JVP 速度监督对照（论文视频基线之一）
 - [RISE（酷哇 · 驾驶 WAM）](./paper-rise-adaptive-imagination-wam.md) — 冻结 V-JEPA 2 编码器 + 自适应 latent rollout
 - [LeVJEPA](./paper-levjepa.md) — LeJEPA+SIGReg 视频预训练：不要 EMA/predictor，同数据重训省 5.6–20.8× FLOP；无 AC/规划
+- [DeWorldSG](./paper-deworldsg.md) — 冻结 V-JEPA 2 作 3D SSG 关系 probe（非 latent 规划）
 
 ## 参考来源
 

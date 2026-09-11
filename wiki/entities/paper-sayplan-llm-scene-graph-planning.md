@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-09-11
 arxiv: "2307.01871"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md

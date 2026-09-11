@@ -13,7 +13,7 @@ tags:
   - dut
   - eth-zurich
 status: complete
-updated: 2026-09-09
+updated: 2026-09-11
 arxiv: "2609.07497"
 venue: "CoRL 2026"
 code: https://github.com/Hbelief1998/Functional-SLAM-CoRL_2026

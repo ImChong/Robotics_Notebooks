@@ -1,5 +1,7 @@
 <<<<<<< HEAD
 
+## [2026-09-11] ingest | sources/papers/deworldsg_arxiv_2607_00889.md — DeWorldSG 3D SSG + V-JEPA2 先验；项目页 Code Coming Soon
+
 ## [2026-09-11] ingest | sources/papers/lingbot_map_arxiv_2604_14141.md — LingBot-Map（arXiv:2604.14141 / ECCV 2026 oral）升格 paper-lingbot-map 实体页；代码+HF 已开源；github.io 镜像 404
 
 ## [2026-09-11] ingest | sources/blogs/wechat_shenlan_ge_act_2_scaling_2026-09-11.md — 深蓝AI GE-Act 2.0 Scaling 导读；复用 paper-ge-act-2 实体补全技能覆盖/CoAE/KASO/指令 benchmark
