@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-11",
-  "node_count": 3963,
-  "edge_count": 35388,
+  "node_count": 3964,
+  "edge_count": 35399,
   "coverage": {
-    "covered": 3935,
-    "total": 3935,
+    "covered": 3936,
+    "total": 3936,
     "percent": 100
   },
   "latest_wiki_nodes": [
