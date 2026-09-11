@@ -30,6 +30,7 @@
 ## 对 wiki 的映射
 
 - [`wiki/entities/linear-algebra-curriculum.md`](../../wiki/entities/linear-algebra-curriculum.md)
+- 特征值专节归档：[§5.1 Eigenvalues and Eigenvectors](gatech_ila_sec5_1_eigenvalues_eigenvectors.md) → [`wiki/formalizations/eigenvalues-eigenvectors.md`](../../wiki/formalizations/eigenvalues-eigenvectors.md)
 
 ## 推荐继续阅读（外部）
 

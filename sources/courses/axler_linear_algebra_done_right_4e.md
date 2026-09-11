@@ -29,6 +29,7 @@
 ## 对 wiki 的映射
 
 - [`wiki/entities/linear-algebra-curriculum.md`](../../wiki/entities/linear-algebra-curriculum.md)
+- Ch 5 特征值专节：[axler_ladr4_ch5_eigenvalues_invariant_subspaces.md](axler_ladr4_ch5_eigenvalues_invariant_subspaces.md) → [`wiki/formalizations/eigenvalues-eigenvectors.md`](../../wiki/formalizations/eigenvalues-eigenvectors.md)
 
 ## 推荐继续阅读（外部）
 

@@ -18,7 +18,7 @@
 
 | 材料 | 链接 | 适合谁 |
 |------|------|--------|
-| **MIT 18.06（Gilbert Strang）** | <https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/> | 喜欢讲座 + 四大子空间叙事；与 ILA 主题高度重叠 |
+| **MIT 18.06（Gilbert Strang）** | <https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/> | 喜欢讲座 + 四大子空间叙事；与 ILA 主题高度重叠；特征值见 [strang_mit_18_06_ila5_eigenvalues.md](strang_mit_18_06_ila5_eigenvalues.md) |
 | **Introduction to Linear Algebra（Strang 教材站）** | <https://math.mit.edu/~gs/linearalgebra/> | 需要系统习题与工程应用例题 |
 | **Numerical Linear Algebra（Trefethen & Bau）** | 教材 PDF 常由机构课程分发；经典参考 *Numerical Linear Algebra*, SIAM | 已会矩阵语言、要做**数值 IK / 最小二乘 / QR** 时精读 |
 | **Immersive Math（线性代数卷）** | <https://immersivemath.com/ila/index.html> | 另一套交互式几何导向教材，作 ILA 补充 |

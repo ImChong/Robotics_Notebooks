@@ -3,6 +3,7 @@ type: formalization
 tags: [control, lqr, optimal-control, linear-systems, locomotion]
 status: complete
 related:
+  - ./eigenvalues-eigenvectors.md
   - ./kalman-filter.md
   - ../concepts/optimal-control.md
   - ../methods/model-predictive-control.md
@@ -80,7 +81,7 @@ $$K_t = (R + B^T P_{t+1} B)^{-1} B^T P_{t+1} A$$
 
 ### 稳定性保证
 
-若 $(A, B)$ 可控，$(A, \sqrt{Q})$ 可观，则无限时域 LQR 解全局稳定（Lyapunov 意义下）。
+若 $(A, B)$ 可控，$(A, \sqrt{Q})$ 可观，则无限时域 LQR 解全局稳定（Lyapunov 意义下）。闭环 $A-BK$ 的特征值决定模态衰减速度（见 [特征值与特征向量](./eigenvalues-eigenvectors.md)）。
 
 ## iLQR 问题
 
