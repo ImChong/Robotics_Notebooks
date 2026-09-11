@@ -1,3 +1,9 @@
+## [2026-09-11] ingest | sources/papers/gvla_arxiv_2608_24603.md — GVLA + MiGA（ECCV 2026）；部分开源：MiGA 已 HF 发布，训练代码/权重待发布
+
+- **意图：** 夹爪感知 VLA + 103K 五类夹爪数据集入库
+- **开源结论：** **部分开源** — [`GVLA/MiGA-Dataset`](https://huggingface.co/datasets/GVLA/MiGA-Dataset) + 多子集已发；[`airvlab/G-VLA`](https://github.com/airvlab/G-VLA) 仅项目页
+- **关键页：** [`paper-gvla-gripper-aware-vla`](wiki/entities/paper-gvla-gripper-aware-vla.md)
+
 ## [2026-09-11] ingest | sources/sites/sol-pi-nvlabs.md — 接入 NVLabs SoL-Pi（Pi harness 四条效率扩展）；已开源 NVlabs/SoL-Pi
 
 ## [2026-09-11] ingest | sources/papers/facet_0_arxiv_2609_01596.md — Facet-0（arXiv:2609.01596）用户指定再 ingest；步骤 2.5 再核：ManuFacet-1K 已发；GitHub 仍 Code coming soon（+CITATION.cff）；模型卡仍空
