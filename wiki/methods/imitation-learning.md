@@ -185,6 +185,8 @@ flowchart TD
 - [EgoVerse](../entities/paper-egoverse.md)：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身 **BC/CFM 共训**——共训可涨分，但有效缩放依赖 **域对齐人数据锚定**，有限预算下 **场景多样性** 优先（arXiv:2604.07607）
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)：在 **固定 HPT 与数据混合** 下仅换 **世界预测目标**，实证 **朴素 BC 人–机协同训练** 可因 **具身差距 / misalignment** **损害** 性能，而 **WAM 动力学分支** 使策略能随 **野外 egocentric 人数据** 扩展（Georgia Tech RL²，[项目页](https://gatech-rl2.github.io/egowam.github.io/)）
 - [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)：用 **动作条件世界模型** 在 **共享潜式物理推理空间** 对齐人手与机器人轨迹，配套 **OOL Glove** 与 **mixed-to-human**（混合共训 + 人手 DAgger 纠偏），在真机操作任务上报告 **人类数据缩放与快速适应**（arXiv:2606.23685）
+- [JEPA Policy](../entities/paper-jepa-policy.md)：成对监督 **动作块 + 未来视觉表征** 的扩散-free MIP；共享 Transformer 两次前向；仿真九任务 **83.0%** 均值、相对 100-step Diffusion Policy **33×** 决策加速（arXiv:2609.09630；**已开源**）
+- [InstantMimic](../entities/paper-instantmimic.md)：GPU-native 整环训练系统，标准动作跟踪 **秒级** 收敛、AMASS **37.4 h→约 30 min**（arXiv:2609.09821；**待发布**）
 
 ## 常见问题
 
@@ -207,6 +209,8 @@ flowchart TD
 - [sources/papers/egoverse_arxiv_2604_07607.md](../../sources/papers/egoverse_arxiv_2604_07607.md) — EgoVerse：联盟 egocentric 人示教与跨实验室共训研究（arXiv:2604.07607）
 - [sources/papers/egowam.md](../../sources/papers/egowam.md) — EgoWAM：WAM 人–机协同训练与世界目标消融（项目页）摘录
 - [sources/papers/last_hd_arxiv_2606_23685.md](../../sources/papers/last_hd_arxiv_2606_23685.md) — LaST-HD：潜式物理推理 + OOL Glove 人手→机器人 VLA（arXiv:2606.23685）摘录
+- [sources/papers/jepa-policy_arxiv_2609_09630.md](../../sources/papers/jepa-policy_arxiv_2609_09630.md) — JEPA Policy：配对未来表征的扩散-free IL（arXiv:2609.09630）
+- [sources/papers/instantmimic_arxiv_2609_09821.md](../../sources/papers/instantmimic_arxiv_2609_09821.md) — InstantMimic：GPU-native 物理技能训练系统（arXiv:2609.09821）
 - [sources/sites/nvidia-research-egoscale.md](../../sources/sites/nvidia-research-egoscale.md) — NVIDIA Research EgoScale 官方项目页索引
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：统一 ACT 跨模态触觉真机 IL 基准
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要

@@ -1159,13 +1159,13 @@
 - [InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）](wiki/entities/paper-infinite-diffusion-terrain-diffusion.md) — InfiniteDiffusion**（*Bridging Learned Fidelity and Procedural Utility for Open-World Terrain Gener `📅unknown` `[entity_page]`
 - [Instant Episode Repetition（IER）](wiki/entities/paper-instant-episode-repetition.md) — Instant Episode Repetition（IER）**（*Repetition as Reinforcement: Enhancing Sample Efficiency via In `📅unknown` `[entity_page]`
 - [Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）](wiki/entities/paper-instant-nurec.md) — Instant NuRec** 是 NVIDIA Spatial Intelligence Lab（[项目页](ht `📅unknown` `[entity_page]`
-- [InstantMimic（arXiv:2609.09821）](wiki/entities/paper-instantmimic.md) — InstantMimic**（[InstantMimic: A High Performance System for Learning Physics-based Skills in Secon `📅unknown` `[entity_page]`
+- [InstantMimic：秒级物理技能模仿训练系统](wiki/entities/paper-instantmimic.md) — InstantMimic**（*A High Performance System for Learning Physics-based Skills in Seconds*，[arXiv:260 `📅unknown` `[entity_page]`
 - [INTACT（Search-Free Intent-to-Action World Model）](wiki/entities/paper-intact.md) — INTACT**（*Isomorphic Intent-to-Action Learning for Search-Free World Models*，[arXiv:2607.26056](ht `📅unknown` `[entity_page]`
 - [InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA](wiki/entities/paper-internvla-a15-unified-vla.md) — InternVLA-A1.5**（*Unifying Understanding, Latent Foresight, and Action for Compositional Generaliz `📅unknown` `[entity_page]`
 - [InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）](wiki/entities/paper-interprior.md) — InterPrior** 是 UIUC 与 Amazon 团队的 **物理仿真人–物交互（HOI）** 论文（arXiv:2602.06035，项目页标注 **CVPR 2026 Highligh `📅unknown` `[entity_page]`
 - [IRASim（细粒度操作世界模型 · arXiv:2406.14540）](wiki/entities/paper-irasim.md) — IRASim**（*IRASim: A Fine-Grained World Model for Robot Manipulation*，[arXiv:2406.14540](https://ar `📅unknown` `[entity_page]`
 - [IRWOZ 2.0：工业机器人对话数据集](wiki/entities/paper-irwoz-2.md) — IRWOZ 2.0**（*A Large Language Model-driven Dialogue Dataset for Industrial Robot Conversations*，[a `📅unknown` `[entity_page]`
-- [JEPA Policy（arXiv:2609.09630）](wiki/entities/paper-jepa-policy.md) — JEPA Policy**（[JEPA Policy: Diffusion-Free Imitation Learning via Paired Action and Future Represe `📅unknown` `[entity_page]`
+- [JEPA Policy：扩散-free 的动作与未来表征联合模仿学习](wiki/entities/paper-jepa-policy.md) — JEPA Policy**（*Diffusion-Free Imitation Learning via Paired Action and Future Representation Predi `📅unknown` `[entity_page]`
 - [JoyAI-RA 0.5：双动作对齐的 VLWA 通才操作](wiki/entities/paper-joyai-ra-05.md) — JoyAI-RA 0.5**（*Scaling Robot Manipulation Learning via Dual Action Alignment*，[arXiv:2608.05674 `📅unknown` `[entity_page]`
 - [χ₀ / kai0：资源感知的分布对齐稳健操作](wiki/entities/paper-kai0.md) — χ₀**（公开工程名 **kai0**；*Resource-Aware Robust Manipulation via Taming Distributional Inconsistencies `📅unknown` `[entity_page]`
 - [Kairos（原生世界–动作模型栈 · kairos-agi）](wiki/entities/paper-kairos-native-world-model-stack.md) — Kairos**（*Kairos: A Regret-Aware Native World-Action Model Stack for Physical AI*，[arXiv:2606.1653 `📅unknown` `[entity_page]`
@@ -2868,6 +2868,7 @@
 - [Vesta（A Generalist Embodied Reasoning Model）](wiki/entities/paper-vesta-generalist-embodied-reasoning.md) — Vesta** 是 NVIDIA 等团队提出的 **具身通才 planner VLM**（arXiv:2606.20905）：在 **Qwen3-VL-8B** 上，用 **六类空间导向 SFT  `📅unknown` `[entity_page]`
 - [VGG-T³：大规模离线前馈 3D 重建](wiki/entities/paper-vgg-ttt.md) — VGG-T³**（*Visual Geometry Grounded Test Time Training*，arXiv:[2602.23361](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
 - [Visual General Intelligence（视觉通才智能白皮书）](wiki/entities/paper-vgi-white-paper.md) — Visual General Intelligence: A White Paper**（arXiv:2608.25924） `📅unknown` `[entity_page]`
+- [ViBe：感知人形全身控制的视觉行为适配](wiki/entities/paper-vibe.md) — ViBe**（*Visual Behavior Adaptation for Perceptive Humanoid Whole-Body Control*，[arXiv:2609.09918 `📅unknown` `[entity_page]`
 - [Video2DoorTraversal](wiki/entities/paper-video2door-traversal.md) — Video2DoorTraversal**（*Push Door Traversal via Simulated Door Twins*，[arXiv:2608.20251](https://ar `📅unknown` `[entity_page]`
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
