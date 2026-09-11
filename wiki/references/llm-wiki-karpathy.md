@@ -123,6 +123,7 @@ This document is intentionally abstract. It describes the idea, not a specific i
 - [WikiSkill（论文实体）](../entities/paper-wikiskill.md) — Google Research 将 **LLM Wiki 式持久知识层** 嵌入 **agent skill 进化环** 的实证框架（arXiv:2608.27454）
 - [graphify（Graphify Labs）](../entities/graphify.md) — **自动构图 + 图查询** 技能，覆盖探索陌生代码库/混合语料阶段，与本页 **人工策展 wiki** 互补
 - [Skills For Real Engineers（mattpocock）](../entities/mattpocock-skills.md) — **轻量可组合** 的日常工程技能库（grill、CONTEXT.md、TDD），与 Superpowers 形成流程轻重对照
+- [HumanLayer Skills](../entities/humanlayer-skills.md) — **迭代代理维护环** 与控制论式 loop 脚手架（sensor–controller–actuator、GHA 调度）
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 是本知识库最核心的主题，体现"好问题回写 wiki"原则
 - [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型代表机器人领域对 LLM 范式的借鉴
 - [AI Auto-Research（学术研究自动化）](../concepts/ai-auto-research.md) — 综述视角下的全生命周期 agent 辅助与 **人机共治 / 溯源** 边界，与本页 ingest/query/lint 同构

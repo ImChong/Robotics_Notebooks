@@ -1,3 +1,9 @@
+## [2026-09-11] ingest | sources/repos/humanlayer-skills.md — HumanLayer Claude Code 技能库（control-loop、`<important if>` harness、GHA 迭代维护）；已开源 MIT
+
+- **意图：** 接入 humanlayer/skills 五插件技能集，与 Superpowers / mattpocock 形成交付 vs 日常 vs 托管维护三角
+- **开源结论：** **已开源** — https://github.com/humanlayer/skills（MIT）
+- **关键页：** [`humanlayer-skills`](wiki/entities/humanlayer-skills.md)
+
 ## [2026-09-11] ingest | sources/papers/wm_craftnet_arxiv_2609_07002.md — WM-Craftnet（CoRL 2026，Sharpa）：WSM 循环视触觉状态 + PPO 手内旋转；GitHub 待发布
 
 ## [2026-09-11] ingest | sources/papers/unisim_slam_arxiv_2608_01706.md — UniSim-SLAM（ECCV 2026）统一 Sim(3) 前馈 SLAM；占位仓待发布

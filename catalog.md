@@ -557,6 +557,7 @@
 - [Human Atlas（3D 解剖探索器）](wiki/entities/human-atlas.md) — Human Atlas**（GitHub，[在线演示](https://human-atlas-seven.ve `📅unknown` `[entity_page]`
 - [human-humanoid-tools（hhtools）](wiki/entities/human-humanoid-tools.md) — human-humanoid-tools**（简称 **hhtools**）是 Party OS 首批开源的 **Human-to-Humanoid 动作重定向与 `📅unknown` `[entity_page]`
 - [human2humanoid（LeCAR-Lab）](wiki/entities/human2humanoid.md) — human2humanoid**（<https://github.com/LeCAR-Lab/human2humanoid>）是 CMU **LECAR Lab** 的 **人形全身实时遥操作（h `📅unknown` `[entity_page]`
+- [HumanLayer Skills](wiki/entities/humanlayer-skills.md) — HumanLayer Skills** 是 humanlayer/skills 仓库及其 Claude Code m `📅unknown` `[entity_page]`
 - [HumanNet](wiki/entities/humannet.md) — HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言 `📅unknown` `[entity_page]`
 - [HumanoidBench](wiki/entities/humanoid-bench.md) — HumanoidBench](https://github.com/carlosferrazza/humanoid-bench) 收录于具身智能研究室 [开源项目主表](https://github `📅unknown` `[entity_page]`
 - [Humanoid Everyday](wiki/entities/humanoid-everyday-dataset.md) — Humanoid Everyday**（Zhao et al., arXiv:2510.08807，2025）是 USC 与 `📅unknown` `[entity_page]`

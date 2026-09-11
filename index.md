@@ -123,6 +123,7 @@
 - [World Labs](wiki/entities/world-labs.md)（空间智能：Marble 生成式 3D 世界 + Spark 流式 3DGS Web 渲染）
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md)（编码代理可组合技能 + TDD / worktree / 子代理交付；与 LLM Wiki 规约对照）
 - [Skills For Real Engineers（mattpocock）](wiki/entities/mattpocock-skills.md)（轻量可组合工程技能：grill、CONTEXT.md、TDD、架构卫生；skills.sh 安装）
+- [HumanLayer Skills](wiki/entities/humanlayer-skills.md)（Claude Code 技能：`<important if>` harness、控制论式 agentic loop、GHA 迭代维护）
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md)（Agent Skills 办公技能库：信息图/PPT/Excel/深度研究；Hermes/OpenClaw + SenseNova API）
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md)（常驻自主代理：网关 + 记忆/技能闭环 + 多沙箱 + cron/子代理；MIT）
 - [DeepSeek Harness（dsh）](wiki/entities/deepseek-harness.md)（深度求索官方插件化 agent 运行时：Cordis + Web/headless/Python SDK；MIT，开发者预览）

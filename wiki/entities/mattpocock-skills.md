@@ -19,6 +19,7 @@ related:
   - ./caveman.md
   - ./hermes-agent.md
   - ./sensenova-skills.md
+  - ./humanlayer-skills.md
   - ./cad-skills.md
   - ./gsap-skills.md
   - ./video-shotcraft.md
@@ -97,6 +98,7 @@ flowchart TD
 - [Caveman](caveman.md) — **独立上游** 的输出/上下文压缩插件（与本库同名 skill 对照）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与 agentskills.io 互操作
 - [SenseNova-Skills](sensenova-skills.md) — **办公产出** 向 Agent Skills（与本文 **编码工程** 技能互补）
+- [HumanLayer Skills](humanlayer-skills.md) — **迭代代理维护环** 与控制论式 loop 设计（`<important if>`、GHA 调度）
 - [CAD Skills](cad-skills.md) — **硬件/CAD/URDF** 垂直 Agent Skills（build123d STEP-first 与制造链）
 - [GSAP AI Skills](gsap-skills.md) — **Web 动效 / GSAP** 官方垂直 Agent Skills（timeline、ScrollTrigger、React cleanup）
 - [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（镜头配方卡 + Ink Press 模板）
