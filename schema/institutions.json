@@ -1180,6 +1180,13 @@
         "korea-u"
       ]
     },
+    "unist": {
+      "label": "蔚山国立科学技术院（UNIST）",
+      "aliases": [
+        "unist",
+        "ulsan-national-institute-of-science-and-technology"
+      ]
+    },
     "diden-robotics": {
       "label": "谛映机器人（DIDEN Robotics）",
       "aliases": [
