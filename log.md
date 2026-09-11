@@ -1,3 +1,5 @@
+## [2026-09-11] ingest | InstantMimic / ViBe / JEPA Policy — 三篇 arXiv:2609 深化 ingest：ViBe 新建 G1 视觉后训练实体；InstantMimic/JEPA 补 sites+repos 与主源深读；开源结论：JEPA 已开源、InstantMimic 待发布、ViBe 未开源
+
 ## [2026-09-11] ingest | sources/papers/hktex_eccv_2026_arxiv_2609_07557.md — HKTex（ECCV 2026 Best Paper）无 UV 热核纹理；官方 MIT 仓已开源；升格 paper-hktex-heat-kernel-textures
 
 ## [2026-09-11] ingest | sources/blogs/wechat_freedof_sim2real_four_routes — 自由度FreeDof 四条 Sim2Real 路线对比页；姊妹篇 SysID 已入库

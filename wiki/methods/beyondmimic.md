@@ -26,6 +26,7 @@ related:
   - ../entities/paper-agile-humanoid-loco-manipulation.md
   - ../entities/paper-pfm-hr.md
   - ../entities/paper-umr-unified-motion-retargeting.md
+  - ../entities/paper-vibe.md
 sources:
   - ../../sources/repos/beyondmimic-reproduction.md
   - ../../sources/papers/motion_control_projects.md
@@ -341,7 +342,7 @@ flowchart LR
 
 - **模式切换瞬态**：运动切换起止易踉跄；增大 classifier guidance 权重可改善任务性能但可能破坏去噪稳定性。
 - **引导权重需调参**：不同任务代价的引导强度不能开箱即用。
-- **无原生视觉**：障碍等信息须外部 SDF / 动捕等代价输入，不能端到端相机避障。
+- **无原生视觉**：障碍等信息须外部 SDF / 动捕等代价输入，不能端到端相机避障；后续可在 tracker 上做视觉后训练（如 [ViBe](../entities/paper-vibe.md) 的 LoRA 嫁接路线）。
 - **上限受 RL 教师约束**：阶段 ② 扩散无法补阶段 ① 学不好的技能。
 - **粗粒度代价优先**：精细动作控制弱于航点 / 速度等粗目标。
 
