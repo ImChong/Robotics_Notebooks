@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import unittest
 from pathlib import Path
@@ -178,6 +179,41 @@ console.log(JSON.stringify({ football, ball, multi, singleExact }));
         data = json.loads(out.strip())
         self.assertTrue(data["multi"])
         self.assertTrue(data["singleExact"])
+
+
+class GraphDepthChipsTests(unittest.TestCase):
+    """docs/graph.html 的路线视图 chip 必须由 DEPTH_ORDER 渲染，不能再写死列表。"""
+
+    GRAPH_HTML = ROOT / "docs" / "graph.html"
+
+    def test_static_markup_only_keeps_the_all_chip(self):
+        html = self.GRAPH_HTML.read_text(encoding="utf-8")
+        hardcoded = re.findall(
+            r'<button class="filter-depth-chip[^"]*"[^>]*data-depth="([a-z0-9-]+)"', html
+        )
+        self.assertEqual(hardcoded, ["all"])
+
+    def test_rendered_chips_cover_every_route(self):
+        html = self.GRAPH_HTML.read_text(encoding="utf-8")
+        start = html.index("    function renderDepthChips() {")
+        end = html.index("    renderDepthChips();", start)
+        out = _run_depth_filters_node(
+            """
+const chunks = [];
+const window = { RNDepthFilters: DF };
+const DEPTH_META = DF.DEPTH_META;
+const topicChipsEl = { insertAdjacentHTML: (_pos, html) => chunks.push(html) };
+function escapeHtml(s) { return String(s); }
+"""
+            + html[start:end]
+            + """
+renderDepthChips();
+const keys = [...chunks.join('').matchAll(/data-depth="([a-z0-9-]+)"/g)].map(m => m[1]);
+console.log(JSON.stringify({ keys, order: DF.DEPTH_ORDER }));
+"""
+        )
+        data = json.loads(out.strip())
+        self.assertEqual(data["keys"], data["order"])
 
 
 if __name__ == "__main__":
