@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-vibe.md",
+      "detail_id": "entity-paper-vibe",
+      "label": "ViBe：感知人形全身控制的视觉行为适配",
+      "type": "entity",
+      "recency": "2026-09-11",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-hktex-heat-kernel-textures.md",
       "detail_id": "entity-paper-hktex-heat-kernel-textures",
       "label": "HKTex：热核纹理（不测地线高斯，也不 Splat）",
@@ -197,28 +207,17 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/comparisons/so3-rotation-representations.md",
-      "detail_id": "wiki-comparisons-so3-rotation-representations",
-      "label": "旋转表示方法对比（SO(3)）",
-      "type": "comparison",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hktex-heat-kernel-textures.md",
-    "detail_id": "entity-paper-hktex-heat-kernel-textures",
-    "label": "HKTex：热核纹理（不测地线高斯，也不 Splat）",
+    "path": "wiki/entities/paper-vibe.md",
+    "detail_id": "entity-paper-vibe",
+    "label": "ViBe：感知人形全身控制的视觉行为适配",
     "type": "entity",
     "recency": "2026-09-11",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
