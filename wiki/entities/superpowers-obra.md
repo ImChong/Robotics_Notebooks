@@ -16,6 +16,7 @@ related:
   - ./cangjie-skill.md
   - ./darwin-skill.md
   - ./mattpocock-skills.md
+  - ./humanlayer-skills.md
   - ./hermes-agent.md
   - ./agent-reach.md
   - ./graphify.md
@@ -88,6 +89,7 @@ flowchart TD
 ## 关联页面
 
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — **轻量可组合** 的日常工程技能（grill、CONTEXT.md、TDD）；与本页「重流程交付」对照
+- [HumanLayer Skills](humanlayer-skills.md) — **迭代代理维护环**（control-loop、GHA 调度）；与本页「单次交付管线」互补
 - [Agent Reach](agent-reach.md) — 面向编码代理的 **外网读搜工具链脚手架**（与本页「软件工程流程技能」互补）
 - [graphify（Graphify Labs）](graphify.md) — **本地/仓库内** 多模态知识图技能（与本页「交付流程」互补）
 - [Caveman](caveman.md) — **输出与记忆文件 token 压缩**技能（与本页「交付流程」互补）
