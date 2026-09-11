@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-11
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -175,6 +175,7 @@ flowchart TB
 - **[ORB-SLAM3](../entities/orb-slam3.md)**：多地图、视觉/视觉-惯性；研究基准强，工程需自行对接 ROS 2。
 - **[vS-Graphs](../entities/paper-vs-graphs-visual-slam-scene-graph.md)**：ORB-SLAM3 扩展，在线构建可优化 **3D 场景图**（墙/房间/楼层），适合需要 **布局级语义** 的室内 RGB-D SLAM 研究。
 - **[Functional-SLAM](../entities/paper-functional-slam.md)**：MASt3R-SLAM 扩展，**在线维护功能 3D 场景图**（物体 O、交互单元 U、功能边），RAM++/DeepSeek/SAM3 开放词汇感知 + 功能拓扑辅助回环；CoRL 2026，**代码与 HF 评测数据已开源**。
+- **[DeWorldSG](../entities/paper-deworldsg.md)**：RGB-D 增量 **3D 语义场景图**（深度感知 3D 高斯节点 + V-JEPA 2 关系先验）；ECCV 2026，3DSSG/ReplicaSSG SoTA；**项目页 Code 仍为 Coming Soon**。
 - **[VINS-Fusion](../entities/vins-fusion.md)**：优化式多传感器；支持 GPS 全局融合。
 - **[OpenVINS](../entities/open-vins.md)**：MSCKF 系，便于 **算法对比实验**。
 - **[OpenVSLAM](../entities/openvslam.md)** → 社区多迁移至 **stella_vslam** 分支维护。
