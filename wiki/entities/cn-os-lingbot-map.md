@@ -63,7 +63,8 @@ institutions:
 
 ## 参考来源
 
-- [LingBot-Map 源码归档](../../sources/repos/cn_os_lingbot_map.md)（<https://github.com/Robbyant/LingBot-Map>）
+- [LingBot-Map 官方仓库](../../sources/repos/lingbot-map.md)（<https://github.com/Robbyant/lingbot-map>）
+- [LingBot-Map 论文实体页](../entities/paper-lingbot-map.md)
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

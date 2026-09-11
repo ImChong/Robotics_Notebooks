@@ -1,9 +1,10 @@
 ---
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
-status: drafting
-updated: 2026-09-09
+status: complete
+updated: 2026-09-11
 related:
+  - ../entities/paper-lingbot-map.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/state-estimation.md
   - ../concepts/3d-spatial-vqa.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/repos/lingbot-map.md
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
   - ../../sources/sites/lingbot-map-technology-robbant.md
+  - ../../sources/sites/lingbot-map-github-io.md
   - ../../sources/sites/businesswire-lingbot-map-2026-04-16.md
 summary: "LingBot-Map 是面向流式单目视频的前馈 3D 基础模型：Geometric Context Attention 用锚点接地、局部稠密窗口与轨迹记忆统一长程几何一致性，Paged KV（FlashInfer）支撑万帧级近似常数每帧推理。"
 ---
@@ -32,9 +34,11 @@ LingBot-Map 采用前馈式 Transformer 架构，在单一框架内用 **Geometr
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| GCT | Geometric Context Transformer | LingBot-Map 骨干架构 |
+| GCA | Geometric Context Attention | 锚点/局部窗/轨迹记忆三类几何上下文 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图；GCA 设计受其原则启发 |
+| KV | Key-Value Cache | 流式推理注意力缓存；Paged KV 支撑长序列 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 
 ## 为什么重要
 
@@ -139,6 +143,7 @@ flowchart LR
 
 ## 关联页面
 
+- [LingBot-Map（论文实体页）](../entities/paper-lingbot-map.md) — arXiv:2604.14141 / ECCV 2026 oral
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度对照
 - [VGG-T³（线性时间离线 VGGT）](../entities/paper-vgg-ttt.md) — 千图级前馈 pointmap / 查询定位对照
 - [R³（相对回归流式重建）](../entities/paper-r3-relative-regression.md) — DA3 + 成对相对位姿 + keyframe bank 对照
@@ -156,12 +161,15 @@ flowchart LR
 - [LingBot-Map 仓库](../../sources/repos/lingbot-map.md)
 - [LingBot-Map 论文摘录（arXiv:2604.14141）](../../sources/papers/lingbot_map_arxiv_2604_14141.md)
 - [LingBot-Map 官方项目页](../../sources/sites/lingbot-map-technology-robbant.md)
+- [LingBot-Map GitHub Pages 镜像核查](../../sources/sites/lingbot-map-github-io.md)
 - [Business Wire 发布稿（媒体参考）](../../sources/sites/businesswire-lingbot-map-2026-04-16.md)
 
 ## 推荐继续阅读
 
+- [LingBot-Map 论文实体页](../entities/paper-lingbot-map.md)
 - [Geometric Context Transformer for Streaming 3D Reconstruction（arXiv:2604.14141）](https://arxiv.org/abs/2604.14141)
-- [LingBot-Map 项目页](https://technology.robbyant.com/lingbot-map)
+- [LingBot-Map 项目页](https://technology.robbyant.com/lingbot-map)（主站；[github.io 镜像](https://robbyant.github.io/lingbot-map/) 截至 2026-09-11 404）
 - [Robbyant/lingbot-map（官方代码）](https://github.com/Robbyant/lingbot-map)
+- [robbyant/lingbot-map（HF 权重）](https://huggingface.co/robbyant/lingbot-map)
 - [robbyant/lingbot-map-demo（演示数据，Hugging Face）](https://huggingface.co/datasets/robbyant/lingbot-map-demo/tree/main)
 - [VGGT（几何骨干相关）](https://github.com/facebookresearch/vggt)
