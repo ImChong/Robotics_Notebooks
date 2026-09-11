@@ -2,7 +2,7 @@
 type: overview
 tags: [agibot, embodied-ai, open-source, data-pipeline, simulation, world-models, vla, deployment, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-09-11
 related:
   - ./agibot-release-category-01-data-entry.md
   - ./agibot-release-category-02-sim-training-eval.md

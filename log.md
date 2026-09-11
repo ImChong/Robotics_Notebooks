@@ -1,3 +1,5 @@
+## [2026-09-11] ingest | sources/blogs/wechat_shenlan_ge_act_2_scaling_2026-09-11.md — 深蓝AI GE-Act 2.0 Scaling 导读；复用 paper-ge-act-2 实体补全技能覆盖/CoAE/KASO/指令 benchmark
+
 ## [2026-09-11] ingest | 特征值/特征向量 — GT ILA §5.1 + Axler LADR Ch5 + Strang ILA5/18.06 + Cauchy 1829/1840 一手归档；升格 formalizations/eigenvalues-eigenvectors
 
 ## [2026-09-11] ingest | InstantMimic / ViBe / JEPA Policy — 三篇 arXiv:2609 深化 ingest：ViBe 新建 G1 视觉后训练实体；InstantMimic/JEPA 补 sites+repos 与主源深读；开源结论：JEPA 已开源、InstantMimic 待发布、ViBe 未开源

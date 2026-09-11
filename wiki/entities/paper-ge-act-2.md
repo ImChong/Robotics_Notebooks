@@ -12,7 +12,7 @@ tags:
   - agibot
   - closed-source
 status: complete
-updated: 2026-09-09
+updated: 2026-09-11
 arxiv: "2609.05588"
 related:
   - ../concepts/world-action-models.md
@@ -30,6 +30,7 @@ related:
 sources:
   - ../../sources/papers/ge_act_2_arxiv_2609_05588.md
   - ../../sources/sites/ge-act-v2-project.md
+  - ../../sources/blogs/wechat_shenlan_ge_act_2_scaling_2026-09-11.md
 summary: "GE-Act 2.0（arXiv:2609.05588，AgiBot）：CoAE+SVP+IDM 从零预训练、KASO 对齐视觉–动作；30k h 共训零样本 OOD 均值 G1-OP 44.1%/G2-90D 31.1%；RTX 5090 上 104 ms/52 步；代码待发布。"
 ---
 
@@ -65,8 +66,9 @@ summary: "GE-Act 2.0（arXiv:2609.05588，AgiBot）：CoAE+SVP+IDM 从零预训�
 | 项 | 内容 |
 |----|------|
 | **机构** | 智元机器人（AgiBot Research）；学术合作含南洋理工大学 DeCLaRe Lab 等 |
-| **架构** | **CoAE** → **SVP** → **IDM**；冻结 VLM 接地语言 |
-| **预训练** | SVP **39,000 h**；IDM **32,000 h**（与最大共训池 30k h 不同） |
+| **架构** | **CoAE** → **SVP** → **IDM**；冻结 **Qwen3.5-2B**（2.72B）接地语言 |
+| **规模** | SVP **2.51B**（36 DiT、宽 2048）；IDM **0.56B**（28 块、宽 1152） |
+| **预训练** | SVP **39,000 h**（含 **3,000 h** 无本体第一视角+人类视频）；IDM **32,000 h**（含 **2,000 h** 失败/rollout）；与最大共训池 30k h 不同 |
 | **共训缩放** | **300 / 1,200 / 5,000 / 30,000 h** 嵌套池 |
 | **评测** | **G1-OP**、**G2-90D**；**100 任务 / 20 技能组**；零样本 OOD |
 | **开源** | **待发布** — 项目页 **Code · Coming soon**（截至 **2026-09-09**） |
@@ -75,9 +77,9 @@ summary: "GE-Act 2.0（arXiv:2609.05588，AgiBot）：CoAE+SVP+IDM 从零预训�
 
 ### 三模块流水线
 
-1. **CoAE**：256×384 多视角帧 → **4×6×512** 潜网格（**24 tokens/帧**，64× 压缩）；像素重建 + **SigLIP 2 / V-JEPA 2.1 / DINOv3** 语义/运动/结构对齐。
-2. **SVP**：头部相机 + 指令 → **一次 MeanFlow** 输出完整未来潜序列（动作视界内 **dense**，至任务末 **sparse**）。
-3. **IDM**：当前潜变量 + 预测未来 + 本体感知 → **dense action chunk**（**5 步** flow 去噪）；仅 dense 块部署执行。
+1. **CoAE**：256×384 多视角帧 → **4×6×512** 潜网格（**24 tokens/帧**，64× 压缩；同分辨率 DINOv3 为 **384 tokens**）；像素 + LPIPS + 对抗重建，并对齐 **SigLIP 2 / V-JEPA 2.1 / DINOv3**。冻结 CoAE + 两层逆动力学探针：动作 MAE 比 DINOv3/V-JEPA **高 13–31%**，但 token **1/16**；同 64× 下采样 **DC-AE** MAE **高 54%**；指令–画面匹配 **97.95%**（探针表五项最佳）。
+2. **SVP**：头部相机 + 指令 → **一次 MeanFlow** 输出完整未来潜序列（动作视界内 **dense**，至任务末 **sparse**）；使 IDM 可先独立预训练，再经可微边界接入生成未来。
+3. **IDM**：当前潜变量 + 预测未来 + 本体感知 → **dense action chunk**（**5 步 Euler** flow 去噪，无 guidance）；部署仅执行 chunk **前 30 个 dense 动作**。
 
 单步 SVP 使 IDM 可先独立学真实转移，再经 **可微边界** 接入生成未来；亦支持 KASO 的 **噪声重放**（多候选评估后带梯度复现选中未来）。
 
@@ -87,7 +89,7 @@ summary: "GE-Act 2.0（arXiv:2609.05588，AgiBot）：CoAE+SVP+IDM 从零预训�
 |------|------|
 | 同场景多种合法完成方式 | 生成未来 A，示范记录方式 B → 直接配对训练 **mismatch** |
 | KASO | 多噪声候选 → IDM 在固定高噪声时刻比较与 **记录视频** 的动作响应 → 选最低能量候选 → 保留噪声重放并反传 SVP+IDM |
-| 消融（G2-90D，300 h 连接阶段） | 四物体 **Follow 95%** 持平 E2E+PT；**Pick 37.5%** 优于 **22.5%** |
+| 消融（G2-90D，300 h 连接阶段） | 四物体 **Follow 95%** 持平 E2E+PT；四物体 pick **37.5% vs 22.5%**；单物体 pick **40% vs 12%**（每目标 10/25 次，机制验证非能力榜） |
 
 ### 流程总览
 
@@ -118,8 +120,9 @@ flowchart LR
 | **共训缩放（30k）** | G1-OP 均值 **44.1%**（自 17.1%）；G2-90D **31.1%**（自 13.4%） |
 | **技能覆盖** | G1 **19/20** 组涨分；G2 **18/20**；非零任务 G1 **76/100**、G2 **72/100** |
 | **跨本体** | G2 数据 <2% 仍 **+17.7 pt**；10 组技能各 <5 h（4 组 <1 h） |
-| **技能–成功相关** | Pearson **r=0.80**；Spearman **ρ=0.85** |
-| **指令 grounding** | 物体/颜色/形状/位置等 **≥90%** 试验（同 OOD 协议） |
+| **技能–成功相关** | Pearson **r=0.80**；Spearman **ρ=0.85**；每十倍数据 **+1.94 logit** |
+| **覆盖案例（3 万 h）** | Wipe **824.1 h → 76.7%** vs Sweep **64.6 h → 3.3%**；Straighten **510.5 h** 在 5k h 前为 0%、3 万 h 才 **30%** |
+| **指令 grounding（295 rollout）** | Pick+Place **83.1%** 跟随 / **72.9%** 完整成功；物体/颜色/位置/形状 **≥90%**；尺寸 **82.5%/65.7%**；顺序 **13.3%/26.7%**（与语料频率长尾同构） |
 | **延迟** | RTX 5090 **104 ms**；**52** 可执行步 @ **30 Hz** |
 
 协议：每任务每本体每规模 **10 次**；固定末 checkpoint 与部署设置；**无** per-task 微调或 prompt 调参。
@@ -162,7 +165,9 @@ flowchart LR
 
 - **待发布**：训练细节、超参与评测脚本暂不可第三方复现。
 - **基准私有性**：100 任务 / G1-OP / G2-90D 为 AgiBot 内部协议，与公开仿真榜 **不可直接换算**。
-- **绝对成功率**：30k 档 G2-90D **31.1%** 仍偏低，稀疏本体不能仅靠共享缩放解决。
+- **绝对成功率**：30k 档 G2-90D **31.1%** 仍偏低；**>50%** 任务仍失败；G2 缩放曲线中 **22/100** 轨迹相对低数据档下降。
+- **matched-compute 未隔离**：论文自述为 practical end-to-end scaling comparison，斜率与天花板未定。
+- **人类视频占比低**：SVP 预训练仅 **3,000 h**（约 **8%**）第一视角人类视频，Scaling 上升段可能尚未触顶。
 - **CoAE 压缩代价**：探针动作恢复误差比 DINOv3/V-JEPA **高 13–31%**。
 - **KASO 算力**：每步多候选探测 + 重放，训练成本高于 naive E2E（项目未报 FLOP 明细）。
 
@@ -185,3 +190,4 @@ flowchart LR
 
 - [GE-Act 2.0 论文归档](../../sources/papers/ge_act_2_arxiv_2609_05588.md)
 - [GE-Act 2.0 项目页归档](../../sources/sites/ge-act-v2-project.md)
+- [深蓝AI · GE-Act 2.0 Scaling 导读](../../sources/blogs/wechat_shenlan_ge_act_2_scaling_2026-09-11.md)
