@@ -2547,6 +2547,14 @@ button.home-wiki-heatmap-cell.is-active {
   flex-direction: column-reverse;
   align-items: flex-start;
   gap: 12px;
+  /* 菜单折叠用的是 visibility:hidden（保留过渡），仍然占布局位，
+     容器因此是一个 168x264 左右的透明 fixed 盒子。透明不等于不接收点击，
+     不放行就会吞掉左下角一片区域内卡片/链接的点击（首页「知识图谱」入口卡等）。 */
+  pointer-events: none;
+}
+.home-nav-fab__toggle,
+.home-nav-menu {
+  pointer-events: auto;
 }
 .home-nav-fab__toggle {
   display: inline-flex;
