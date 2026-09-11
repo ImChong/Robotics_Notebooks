@@ -9,7 +9,7 @@ tags:
   - deployment
   - safety
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 summary: "Sim2Real 不是训完再迁移：按误差类型分流到 SysID/前馈、DR、在线适应与分层安全，形成从辨识到部署的持续校准闭环。"
 related:
   - ../concepts/sim2real.md
@@ -26,11 +26,13 @@ related:
   - ../concepts/safety-filter.md
   - ../concepts/robot-safety-state-machine.md
   - ../overview/hub-sim2real.md
+  - ../comparisons/sim2real-four-routes-identifiability.md
   - ../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 

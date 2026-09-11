@@ -3645,6 +3645,7 @@
 - [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 一句话结论：** 需要驱动/导航/规划/可视化生态与可靠工具链时选 **ROS 2**；需要跨进程或跨板的 **高频、低抖动、最新优先** 状态与力矩总线时选 **LCM**（同机极限路径优先共享 `📅unknown` `[comparison_page]`
 - [Second-Order Optimizers：选型对比](wiki/comparisons/second-order-optimizers.md) — 背景**：机器人 Trajectory Optimization、IK、标定与 NMPC 打靶后，常归结为 **非 `📅unknown` `[comparison_page]`
 - [Sim2Real 方法横向对比](wiki/comparisons/sim2real-approaches.md) — Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fi `📅unknown` `[comparison_page]`
+- [Sim2Real 四条路线：可辨识性视角](wiki/comparisons/sim2real-four-routes-identifiability.md) — 仿真里优化 $J_{\mathrm{sim}}(\pi)$，真机却要 $J_{\mathrm{real}}(\pi)$ 高——**系统辨识、域随机化、在线适应、残差学习**出自不同传统，却都在回答同一 `📅unknown` `[comparison_page]`
 - [Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调](wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md) — 背景**：当一台机器人已经在仿真里训出可用策略、但真机上还差最后几成性能时，Sim2Real 链路的**最后一公里**有三种本质不同的修补思路 `📅unknown` `[comparison_page]`
 - [旋转表示方法对比（SO(3)）](wiki/comparisons/so3-rotation-representations.md) — 一句话选型：** 同一旋转属于流形 $SO(3)$，工程上用 **多种坐标** 各干各的——**欧拉角**给人看，**单位四元数**做存储与 SLERP，**旋转矩阵**做链式复合，**so(3 `📅unknown` `[comparison_page]`
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles：四条 WBT 方法谱系对比](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 背景**：当一段参考动作（MoCap、视频估计、生成模型）落到一台真实人形机器人上时，[Whole-Body Tracking Pipeline](../concepts/whole-body-t `📅unknown` `[comparison_page]`

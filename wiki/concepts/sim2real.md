@@ -74,6 +74,7 @@ related:
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
+  - ../comparisons/sim2real-four-routes-identifiability.md
   - ../entities/awesome-real2sim2real.md
   - ../entities/paper-humanoidvln.md
   - ../entities/cosmos-transfer.md

@@ -1,3 +1,5 @@
+## [2026-09-11] ingest | sources/blogs/wechat_freedof_sim2real_four_routes — 自由度FreeDof 四条 Sim2Real 路线对比页；姊妹篇 SysID 已入库
+
 ## [2026-09-10] ingest | wiki/comparisons/so3-rotation-representations.md — SO(3) 旋转表示选型对比（欧拉/矩阵/轴角/四元数/so(3)/6D/tan_norm）
 
 ## [2026-09-10] ingest | sources/papers/hsimul3r_arxiv_2603_15612.md — HSImul3R 物理在环 simulation-ready HSI 重建；GitHub 占位仓库，wiki 实体页 + DIMOS 交叉引用

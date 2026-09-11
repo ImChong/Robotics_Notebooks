@@ -11,6 +11,7 @@
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`--no-images`）；直连一次成功。Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原文归档：** [`sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md`](../raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md)
 - **一句话说明：** 单关节 PD 闭环下，惯量/延迟/摩擦/阻尼在同一条阶跃曲线上纠缠；先建模、再判断结构性不可辨识，再用分级实验把它们拆开，而不是把全部参数丢给优化器。
+- **姊妹篇：** [从域随机化到残差学习：Sim2Real 技术路线梳理](https://mp.weixin.qq.com/s/K_6MibGXWwh9OL9eSZxOMg) — 归档见 [`wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md`](./wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) → [四条路线对比](../../wiki/comparisons/sim2real-four-routes-identifiability.md)
 - **开源状态（步骤 2.5）：** 工程方法文，无项目页、无代码仓 → **步骤 2.5 不适用**（确认无开源代码）。
 
 ## 核心摘录（归纳，非全文）

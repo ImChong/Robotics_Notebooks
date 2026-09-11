@@ -2,7 +2,7 @@
 type: concept
 tags: [dynamics, simulation, urdf, mujoco, sysid, actuator, inertia]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 related:
   - ./armature-modeling.md
   - ./system-identification.md
