@@ -2019,30 +2019,10 @@
             <span class="filter-depth-summary-label">路线视图</span>
             <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
           </summary>
+          <!-- 路线 chip 由 depth-filters.js 的 DEPTH_ORDER / DEPTH_META 渲染（见 renderDepthChips），
+               静态只留「全量」，避免此处列表与单一事实源脱节 -->
           <div class="filter-depth-chips" id="filter-depth-chips">
             <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="motion-control" title="主路线-运动控制"><span>🧭</span><span>主路线-运动控制</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="humanoid-hardware-design" title="整机硬件"><span>🛠️</span><span>整机硬件</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="safe-control" title="安全控制"><span>🛡️</span><span>安全控制</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="contact-manipulation" title="接触操作"><span>🤏</span><span>接触操作</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="navigation" title="导航"><span>🗺️</span><span>导航</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="imitation-learning" title="模仿学习"><span>🎓</span><span>模仿学习</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="rl-locomotion" title="RL 运动控制"><span>🚶</span><span>RL 运动控制</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="loco-manipulation" title="Loco-Manip"><span>🤖</span><span>Loco-Manip</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="humanoid-soccer" title="人形足球"><span>⚽</span><span>人形足球</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="humanoid-swarm-performance" title="人形群控展演"><span>🕺</span><span>人形群控展演</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="humanoid-boxing" title="人形拳击"><span>🥊</span><span>人形拳击</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="bfm" title="BFM"><span>🧠</span><span>BFM</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="perceptive-locomotion" title="感知越障"><span>👁️</span><span>感知越障</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="motion-generation" title="动作生成"><span>✨</span><span>动作生成</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="vla" title="VLA"><span>👀</span><span>VLA</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="real2sim" title="Real2Sim"><span>🌍</span><span>Real2Sim</span></button>
-            <button class="filter-depth-chip" type="button" data-depth="wam" title="WAM"><span>🔮</span><span>WAM</span></button>
           </div>
         </details>
         <details class="filter-depth-section" id="filter-institution-section">
@@ -4873,6 +4853,18 @@
     /* ── 路线视图切换（已合入筛选面板内 <details> 区块）── */
     const topicChipsEl = document.getElementById('filter-depth-chips');
     const topicCurrentEl = document.getElementById('filter-depth-current');
+    /* chip 列表按 DEPTH_ORDER 渲染（含主路线与全部纵深），与 depth-filters.js 单一事实源同步 */
+    function renderDepthChips() {
+      if (!topicChipsEl) return;
+      topicChipsEl.insertAdjacentHTML('beforeend', window.RNDepthFilters.DEPTH_ORDER.map(key => {
+        const meta = DEPTH_META[key] || {};
+        const label = escapeHtml(meta.label || key);
+        return '<button class="filter-depth-chip" type="button" data-depth="' + escapeHtml(key)
+          + '" title="' + label + '"><span>' + (meta.emoji || '🏷️') + '</span><span>'
+          + label + '</span></button>';
+      }).join(''));
+    }
+    renderDepthChips();
     function setActiveTopic(topic) {
       currentDepth = topic || 'all';
       let activeBtn = null;
