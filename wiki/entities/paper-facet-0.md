@@ -8,7 +8,7 @@ tags:
   - flow-matching
   - ntu
 status: complete
-updated: 2026-09-03
+updated: 2026-09-11
 arxiv: "2609.01596"
 code: https://github.com/PINE-Lab-NTU/FACET
 related:
@@ -49,7 +49,7 @@ summary: "Facet-0（arXiv:2609.01596，NTU PINE Lab）：action–wrench 联合�
 - 通用 VLA 在自由空间 pick 已经接近满，失败集中在 **0.10–0.30 mm** 的 align/place/press。
 - 把 wrench **只当输入**（\(\pi_{0.5}\)+F、TA-VLA）仍停在 9–16%——感觉接触不等于按接触后果选动作。
 - ManuFacet-1K 把约 **1000 h** 力同步装配数据补进公开语料。
-- **开源要读边界：** 数据集已上 HF；仓库截至 2026-09-03 **仅 README**。
+- **开源要读边界：** 数据集已上 HF；仓库截至 2026-09-11 **仍仅 README + CITATION.cff**（Code coming soon）。
 
 ## 核心信息
 
@@ -58,7 +58,7 @@ summary: "Facet-0（arXiv:2609.01596，NTU PINE Lab）：action–wrench 联合�
 | **机构** | 南洋理工大学（NTU）PINE Lab |
 | **数据** | ManuFacet-1K（~1000 h，三本体 UR7e/xArm/Franka，两机箱族） |
 | **评测** | RAM / CPU / Disk / GPU / CPU LEVER；20 trial / 格 |
-| **开源** | **部分开源**：[ManuFacet-1K](https://huggingface.co/datasets/Pinelab/ManuFacet-1K) 已发；[FACET](https://github.com/PINE-Lab-NTU/FACET) **Code coming soon**；`Pinelab/Facet-0` 卡片为空 |
+| **开源** | **部分开源**：[ManuFacet-1K](https://huggingface.co/datasets/Pinelab/ManuFacet-1K) 已发；[FACET](https://github.com/PINE-Lab-NTU/FACET) **Code coming soon**（仅 README + CITATION.cff）；`Pinelab/Facet-0` 卡片仍空 |
 
 ### 流程总览
 
@@ -112,7 +112,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用。** [PINE-Lab-NTU/FACET](https://github.com/PINE-Lab-NTU/FACET) 截至 2026-09-03 只有 README（Code coming soon），没有 `train.py` / 推理 CLI。HF 模型卡为空；数据集可下，但不能对齐官方运行时序。
+**不适用。** [PINE-Lab-NTU/FACET](https://github.com/PINE-Lab-NTU/FACET) 截至 2026-09-11 仍只有 README + CITATION.cff（Code coming soon），没有 `train.py` / 推理 CLI。HF 模型卡仍空；数据集可下，但不能对齐官方运行时序。
 
 ## 工程实践
 
