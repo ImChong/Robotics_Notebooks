@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-gvla-gripper-aware-vla.md",
+      "detail_id": "entity-paper-gvla-gripper-aware-vla",
+      "label": "GVLA：夹爪感知的视觉–语言–动作模型",
+      "type": "entity",
+      "recency": "2026-09-11",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/sol-pi.md",
       "detail_id": "entity-sol-pi",
       "label": "SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）",
@@ -198,28 +209,18 @@
       "source": "git",
       "action": "added",
       "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vibe.md",
-      "detail_id": "entity-paper-vibe",
-      "label": "ViBe：感知人形全身控制的视觉行为适配",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/sol-pi.md",
-    "detail_id": "entity-sol-pi",
-    "label": "SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）",
+    "path": "wiki/entities/paper-gvla-gripper-aware-vla.md",
+    "detail_id": "entity-paper-gvla-gripper-aware-vla",
+    "label": "GVLA：夹爪感知的视觉–语言–动作模型",
     "type": "entity",
     "recency": "2026-09-11",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
