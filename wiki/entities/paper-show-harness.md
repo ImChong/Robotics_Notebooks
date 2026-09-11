@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, manipulation, discrete-actions, franka]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-11
 arxiv: "2609.10522"
 code: https://github.com/showlab/Show-Harness
 related:
@@ -10,9 +10,11 @@ related:
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
   - ../overview/vlm-manipulation-11-papers-technology-map.md
+  - ../overview/dexterous-wm-humanoid-14-papers-technology-map.md
 sources:
   - ../../sources/papers/show-harness_arxiv_2609_10522.md
   - ../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md
+  - ../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md
 summary: "离散语义微动作单元连接 VLM 与机器人执行；Franka/AgileX 164 真机 episode；showlab/Show-Harness 已开源。"
 ---
 
@@ -94,10 +96,11 @@ sequenceDiagram
 
 1. 索引来源为公众号导读，实验细节以 arXiv PDF 为准。
 2. 开源结论：**已开源**。
-3. 选型时对照 [11 篇地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中相邻节点，避免重复造页。
+3. 选型时对照 [11 篇地图](../overview/vlm-manipulation-11-papers-technology-map.md) 与 [14 篇地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md) 中相邻节点，避免重复造页。
 
 ## 关联页面
 
+- [灵巧手/WM/人形 14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md)
 - [VLM 与操作 11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md)
 - [模仿学习 (Imitation Learning)](../methods/imitation-learning.md)
 - [Generative World Models](../methods/generative-world-models.md)
@@ -107,6 +110,7 @@ sequenceDiagram
 
 - [show-harness_arxiv_2609_10522.md](../../sources/papers/show-harness_arxiv_2609_10522.md)
 - [wechat 11篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)
+- [wechat 14篇盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md)
 - [arXiv:2609.10522](https://arxiv.org/abs/2609.10522)
 
 ## 推荐继续阅读
