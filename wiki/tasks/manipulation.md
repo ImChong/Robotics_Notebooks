@@ -77,6 +77,7 @@ related:
   - ../entities/paper-minerva-libero.md
   - ../entities/paper-xr2-bimanual-household.md
   - ../entities/paper-artis-gripper.md
+  - ../entities/paper-gvla-gripper-aware-vla.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md

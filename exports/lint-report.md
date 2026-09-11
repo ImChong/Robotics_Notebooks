@@ -141,4 +141,4 @@
 - wiki/entities/paper-evperiscope.md
 - wiki/entities/paper-lingbot-map.md
 
-📊 Sources 覆盖率：3934/3934 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3935/3935 (100%) wiki/entity 页有 ingest 来源

@@ -65,6 +65,7 @@ related:
   - ../entities/paper-streampi.md
   - ../entities/paper-ucag-p.md
   - ../entities/paper-ma-vla.md
+  - ../entities/paper-gvla-gripper-aware-vla.md
   - ../entities/paper-ld4wam.md
   - ../entities/paper-lawa.md
   - ../entities/paper-arli.md
@@ -480,6 +481,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 表征–VLA–WM 六种耦合；TMLR 2026
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — VLA 是五层选型闭环的 **③ 动作执行层**：全模态+本体状态 → 关节/末端控制量，也是「泛化 ↔ 实时带宽」矛盾最尖锐的一层
 - [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md) — Zero-WAM / StreamPI / UCAG-P / MA-VLA 等接口显式化盘点
+- [GVLA（夹爪感知 VLA）](../entities/paper-gvla-gripper-aware-vla.md) — MiGA 103K 五类夹爪 + dual MoA；ECCV 2026；数据已 HF 发布（arXiv:2608.24603）
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — GitHub 高可见项目按复现目标分组
 - [具身 Infra 2026 全景](../overview/embodied-infra-2026-panorama.md) — 闭环周转时间 vs 单点模型分
 - [Query：具身时代 SLAM 精华与糟粕](../queries/slam-second-spring-embodied.md) — 深蓝沙龙：VLA 是 BC，Planning 不会随参数自动出现
