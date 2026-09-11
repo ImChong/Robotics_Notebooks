@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/humanlayer-skills.md",
+      "detail_id": "entity-humanlayer-skills",
+      "label": "HumanLayer Skills",
+      "type": "entity",
+      "recency": "2026-09-11",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-wm-craftnet.md",
       "detail_id": "entity-paper-wm-craftnet",
       "label": "WM-Craftnet：世界联觉模型驱动的鲁棒手内灵巧操作",
@@ -199,28 +210,18 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-lingbot-map.md",
-      "detail_id": "entity-paper-lingbot-map",
-      "label": "LingBot-Map：流式 3D 重建几何上下文 Transformer",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-wm-craftnet.md",
-    "detail_id": "entity-paper-wm-craftnet",
-    "label": "WM-Craftnet：世界联觉模型驱动的鲁棒手内灵巧操作",
+    "path": "wiki/entities/humanlayer-skills.md",
+    "detail_id": "entity-humanlayer-skills",
+    "label": "HumanLayer Skills",
     "type": "entity",
     "recency": "2026-09-11",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
