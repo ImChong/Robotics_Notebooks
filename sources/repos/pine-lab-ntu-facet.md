@@ -9,11 +9,11 @@
 
 ## 一句话说明
 
-Facet-0 官方仓：**截至 2026-09-03 仅 README**，写明 Code coming soon；数据集已在 HF，模型卡为空。
+Facet-0 官方仓：**截至 2026-09-11 仍仅 README + CITATION.cff**，正文写明 Code coming soon；数据集已在 HF，模型卡为空。
 
-## 仓库核查（步骤 2.5，2026-09-03）
+## 仓库核查（步骤 2.5，2026-09-11 再核）
 
-- `contents` API 只返回 `README.md`。
+- `contents` API 只返回 `README.md` 与 `CITATION.cff`（无 `train`/`eval` 脚本）。
 - README 结果表与论文 Table 2 一致（82% vs 15% / π₀.₅ 10% / GR00T N1.7 4%）。
 - **无可辨识训练 / 推理脚本。** 论文实体页「源码运行时序图」标 **不适用**。
 

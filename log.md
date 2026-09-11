@@ -1,13 +1,16 @@
-<<<<<<< HEAD
+## [2026-09-11] ingest | sources/papers/facet_0_arxiv_2609_01596.md — Facet-0（arXiv:2609.01596）用户指定再 ingest；步骤 2.5 再核：ManuFacet-1K 已发；GitHub 仍 Code coming soon（+CITATION.cff）；模型卡仍空
+
+- **触发：** 用户指定 arXiv:2609.01596 + 项目页 https://pine-lab-ntu.github.io/facet-0/
+- **步骤 2.5：** **部分开源** — HF `Pinelab/ManuFacet-1K` READY（25.2 GB / 7,866 rows）；`PINE-Lab-NTU/FACET` 仍仅 README + CITATION.cff；`Pinelab/Facet-0` 卡片仍空
+- **关键页：** [`paper-facet-0`](wiki/entities/paper-facet-0.md) 开源边界日期刷新；sources 交叉链接同步
 
 ## [2026-09-11] ingest | sources/papers/deworldsg_arxiv_2607_00889.md — DeWorldSG 3D SSG + V-JEPA2 先验；项目页 Code Coming Soon
 
 ## [2026-09-11] ingest | sources/papers/lingbot_map_arxiv_2604_14141.md — LingBot-Map（arXiv:2604.14141 / ECCV 2026 oral）升格 paper-lingbot-map 实体页；代码+HF 已开源；github.io 镜像 404
 
 ## [2026-09-11] ingest | sources/blogs/wechat_shenlan_ge_act_2_scaling_2026-09-11.md — 深蓝AI GE-Act 2.0 Scaling 导读；复用 paper-ge-act-2 实体补全技能覆盖/CoAE/KASO/指令 benchmark
-=======
+
 ## [2026-09-11] ingest | 阻尼系统 — MIT 2.003/6.007/2.161 + OpenStax §15.5 一手归档；升格 formalizations/damped-systems（一阶 τ、二阶 ζ/ωₙ）；交叉 SysID/Armature/极点配置/阻抗
->>>>>>> origin/main
 
 ## [2026-09-11] ingest | 特征值/特征向量 — GT ILA §5.1 + Axler LADR Ch5 + Strang ILA5/18.06 + Cauchy 1829/1840 一手归档；升格 formalizations/eigenvalues-eigenvectors
 
