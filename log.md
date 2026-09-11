@@ -1,3 +1,5 @@
+## [2026-09-11] ingest | sources/papers/unisim_slam_arxiv_2608_01706.md — UniSim-SLAM（ECCV 2026）统一 Sim(3) 前馈 SLAM；占位仓待发布
+
 ## [2026-09-11] ingest | sources/papers/gvla_arxiv_2608_24603.md — GVLA + MiGA（ECCV 2026）；部分开源：MiGA 已 HF 发布，训练代码/权重待发布
 
 - **意图：** 夹爪感知 VLA + 103K 五类夹爪数据集入库

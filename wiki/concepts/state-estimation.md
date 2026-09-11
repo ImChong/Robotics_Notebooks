@@ -233,6 +233,10 @@ $$
 
 [D4RT](../entities/paper-d4rt.md)（arXiv:2512.08924，CVPR 2026，Google DeepMind）把动态视频 **4D 重建** 写成 **Global Scene Representation + 独立时空查询解码**：一次编码后，对任意 $(u,v,t_{\text{src}},t_{\text{tgt}},t_{\text{cam}})$ 并行输出 3D 位置，统一 **深度 / 相机 / 动态 3D 跟踪 / 全像素 4D**。相对 VGGT 的多解码头与 MegaSaM 的多模块 + 测试时优化，D4RT 在 TAPVid-3D 与多深度基准上 **SOTA 级**，且 3D 跟踪吞吐 **18–300×** 于 prior art。与 [VGG-T³](../entities/paper-vgg-ttt.md) 的 **离线静态 pointmap**、LingBot-Map 的 **流式 SLAM 式几何** 互补——D4RT 更适合 **动态 egocentric 视频上的 4D 对应**。截至入库日 **确认未开源**。
 
+### 12. 统一 Sim(3) 前馈 SLAM（UniSim-SLAM）
+
+[UniSim-SLAM](../entities/paper-unisim-slam.md)（arXiv:2608.01706，ECCV 2026，UNIST Vision3D Lab）把 **两视图关键帧跟踪** 与 **周期多视图子图精炼** 写成 **互补 Sim(3) 约束**：在帧级关键帧位姿 \(\{T_i\}\) 与子图位姿 \(\{S_m\}\) 上构建 **view–view / view–submap / submap–submap** 三层边，并用深度统计锚定尺度。相对孤立的两视图图优化（ViSTA-SLAM）或纯子图对齐（VGGT-SLAM），它在 **无标定 RGB** 的 TUM RGB-D / 7-Scenes 上报告 SOTA 轨迹（平均 ATE 相对先前最佳降 **38.5% / 45.9%**），且默认 VGGT 前端 **197 ms** 仍优于纯多视图 SLAM 的延迟。注意：官方 GitHub 截至入库日仅为占位仓（`coming soon`），工程复现需等代码发布。
+
 ## 最小代码骨架
 
 这段代码把状态估计最小闭环写清楚：
