@@ -13,6 +13,7 @@ related:
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ./system-identification.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ../formalizations/damped-systems.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
@@ -103,6 +104,7 @@ $$
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 不要把 `armature` 当旋钮；并联时对角项装不下耦合
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 双驱动并联路径上的几何/力映射与惯量建模分工
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — armature（转子等效惯量）是③层执行器建模写回仿真的关键参数
+- [阻尼系统（ζ, ωₙ）](../formalizations/damped-systems.md) — $I_{\mathrm{arm}}$ 进入 $\omega_n=\sqrt{K_p/J_{\mathrm{eff}}}$ 的时间尺度
 
 ## 参考来源
 

@@ -20,6 +20,7 @@ related:
   - ./tsid.md
   - ./gravity-compensation.md
   - ../methods/tactile-impedance-control.md
+  - ../formalizations/damped-systems.md
   - ../tasks/manipulation.md
   - ../queries/contact-rich-manipulation-guide.md
 ---
@@ -125,3 +126,4 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [LAC](../entities/paper-lac.md) — 人形上身线+角刚度命令；角通道走被动运动链（部分开源）
 - [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md)
+- [阻尼系统（M–B–K 与 ζ）](../formalizations/damped-systems.md) — 临界阻尼 $B_d\approx 2\sqrt{M_d K_d}$ 的理论背景

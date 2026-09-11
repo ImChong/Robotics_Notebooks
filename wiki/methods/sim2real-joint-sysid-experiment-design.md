@@ -19,6 +19,7 @@ related:
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/flobaroid.md
+  - ../formalizations/damped-systems.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
@@ -209,6 +210,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) / [闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) / [驱动链枢纽](../overview/hub-actuator-drive-chain.md)
 - [PACE](../entities/paper-pace-sim2real-legged-robots.md) / [BAM](../entities/bam-better-actuator-models.md) / [FloBaRoID](../entities/flobaroid.md)
+- [阻尼系统（ζ, ωₙ）](../formalizations/damped-systems.md) — 闭环二阶读法的形式化背景
 
 ## 参考来源
 

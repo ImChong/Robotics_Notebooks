@@ -12,6 +12,7 @@ related:
   - ../overview/robot-control-paradigm-classical-linear-feedback.md
   - ../methods/pid-control.md
   - ../methods/lqr-ilqr.md
+  - ../formalizations/damped-systems.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 ---
@@ -49,7 +50,7 @@ sources:
 
 ### 1. 指定极点求状态反馈
 
-文内代表实现路径；详见 [关联概念/形式化](../formalizations/lqr.md)。
+文内代表实现路径；详见 [阻尼系统](../formalizations/damped-systems.md) 与 [LQR](../formalizations/lqr.md)。
 
 ### 2. 与相邻体系融合
 
