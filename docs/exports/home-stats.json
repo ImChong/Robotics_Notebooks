@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-unisim-slam.md",
+      "detail_id": "entity-paper-unisim-slam",
+      "label": "UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）",
+      "type": "entity",
+      "recency": "2026-09-11",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-gvla-gripper-aware-vla.md",
       "detail_id": "entity-paper-gvla-gripper-aware-vla",
       "label": "GVLA：夹爪感知的视觉–语言–动作模型",
@@ -199,28 +210,18 @@
       "source": "git",
       "action": "added",
       "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
-    },
-    {
-      "path": "wiki/formalizations/eigenvalues-eigenvectors.md",
-      "detail_id": "wiki-formalizations-eigenvalues-eigenvectors",
-      "label": "特征值与特征向量（Eigenvalues & Eigenvectors）",
-      "type": "formalization",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gvla-gripper-aware-vla.md",
-    "detail_id": "entity-paper-gvla-gripper-aware-vla",
-    "label": "GVLA：夹爪感知的视觉–语言–动作模型",
+    "path": "wiki/entities/paper-unisim-slam.md",
+    "detail_id": "entity-paper-unisim-slam",
+    "label": "UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）",
     "type": "entity",
     "recency": "2026-09-11",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
