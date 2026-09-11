@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-wm-craftnet.md",
+      "detail_id": "entity-paper-wm-craftnet",
+      "label": "WM-Craftnet：世界联觉模型驱动的鲁棒手内灵巧操作",
+      "type": "entity",
+      "recency": "2026-09-11",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-unisim-slam.md",
       "detail_id": "entity-paper-unisim-slam",
       "label": "UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）",
@@ -200,28 +210,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/formalizations/damped-systems.md",
-      "detail_id": "wiki-formalizations-damped-systems",
-      "label": "阻尼系统（Damped Systems）",
-      "type": "formalization",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "community_label": "模型预测控制（Model Predictive Control, MPC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-unisim-slam.md",
-    "detail_id": "entity-paper-unisim-slam",
-    "label": "UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）",
+    "path": "wiki/entities/paper-wm-craftnet.md",
+    "detail_id": "entity-paper-wm-craftnet",
+    "label": "WM-Craftnet：世界联觉模型驱动的鲁棒手内灵巧操作",
     "type": "entity",
     "recency": "2026-09-11",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
