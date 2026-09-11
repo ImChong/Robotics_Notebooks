@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-11",
-  "node_count": 3947,
-  "edge_count": 35291,
+  "node_count": 3961,
+  "edge_count": 35365,
   "coverage": {
-    "covered": 3919,
-    "total": 3919,
+    "covered": 3933,
+    "total": 3933,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -222,7 +222,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 682
+      "size": 686
     },
     {
       "label": "操作",
@@ -234,7 +234,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 268
+      "size": 281
     },
     {
       "label": "机器人学习论文笔记",
@@ -242,7 +242,7 @@
     },
     {
       "label": "世界动作模型",
-      "size": 158
+      "size": 156
     }
   ],
   "top_hubs": [
@@ -250,7 +250,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1462,
+      "degree": 1476,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -266,7 +266,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 936,
+      "degree": 950,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -274,14 +274,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 921,
+      "degree": 922,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 870,
+      "degree": 884,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -297,7 +297,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 605,
+      "degree": 606,
       "has_repo": true
     },
     {
