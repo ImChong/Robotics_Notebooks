@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-11
 related:
   - ./ai-auto-research.md
   - ./embodied-scaling-laws.md
@@ -13,6 +13,7 @@ related:
   - ../entities/karpathy-autoresearch.md
   - ./llm-robotics-control-interfaces.md
   - ../entities/paper-from-agi-to-asi.md
+  - ../entities/sol-pi.md
 sources:
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
@@ -105,6 +106,7 @@ flowchart LR
 - [ASPIRE](../methods/aspire.md) · [ENPIRE](../methods/enpire.md) — 机器人侧的 agent 研发自动化，不是模型自训练后继者
 - [具身规模法则](./embodied-scaling-laws.md) · [Bitter Lesson](./bitter-lesson.md)
 - [From AGI to ASI 白皮书实体](../entities/paper-from-agi-to-asi.md) — 另一条「能力跃迁」论述，勿与 RSI 机制混读
+- [SoL-Pi](../entities/sol-pi.md) — 「先让 harness 更省再 scale RSI」的工业实例；efficiency for efficiency 愿景
 
 ## 参考来源
 

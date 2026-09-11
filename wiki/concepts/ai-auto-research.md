@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ../references/llm-wiki-karpathy.md
@@ -17,6 +17,7 @@ related:
   - ../../schema/ingest-workflow.md
   - ../entities/sciencediscovery.md
   - ../entities/openjiuwen.md
+  - ../entities/sol-pi.md
 sources:
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
   - ../../sources/repos/awesome-ai-auto-research.md
@@ -51,6 +52,7 @@ AI 可以加速「研究形态」的产出，但 **科学实质**（证据、判
 - **机器人 ML 研究栈**：S3（实验编排、paper-to-code、benchmark 复现）与 S4（图表）直接关联 sim2real、RL/IL 管线维护；综述列出的 **PaperBench、MLE-Bench、ResearchCodeBench** 等是评估「agent 能否做研究级实验」的通用标尺。
 - **Agent 基础设施对照**：[Hermes Agent](../entities/hermes-agent.md)（常驻运行时）、[Agent Reach](../entities/agent-reach.md)（外网读搜）、[Superpowers](../entities/superpowers-obra.md)（交付流程技能）分别覆盖执行、检索与工程纪律 — 宜按生命周期阶段 **组合** 而非指望单 agent 端到端。[ScienceDiscovery](../entities/sciencediscovery.md)（[openJiuwen](../entities/openjiuwen.md)）把 S2 文献 MCP 与 S3 沙箱实验收进同一本地工作台，验证靠权限卡与 CAS 而非单一 metric。
 - **S3 最小实例**：[karpathy/autoresearch](../entities/karpathy-autoresearch.md) 把代理限制为只改 `train.py`、固定 5 分钟训练与 **val_bpb** 去留环，人类迭代 `program.md` — 直接演示 **Explore→Execute→Verify** 在 LLM 训练 ablation 上的落地。
+- **S3 harness 搜索实例**：[SoL-Pi](../entities/sol-pi.md) 把同一 propose→implement→validate 环扩到 **Pi coding harness**（152→4 机制、535 环境、capability floor），开源四条 opt-in 效率扩展。
 - **实验室内部对照：** Anthropic Institute 用公开时程与自报工程数据讨论走向 [递归自改进](./recursive-self-improvement.md) 的距离：实现层已高度代理化，**选题与品味仍是人侧瓶颈**；完全 RSI 尚未发生。数字不可外部复现，只当方向信号。
 
 ## 核心结构：四阶段八阶段
@@ -138,6 +140,7 @@ flowchart LR
 - [ScienceDiscovery](../entities/sciencediscovery.md) — 本地科研工作台：MCP 文献 + Bubblewrap + 子代理；对照「开放工具面」而非锁 `train.py`。
 - [openJiuwen](../entities/openjiuwen.md) — 上述工作台所在开源 Agent 平台（WorkSwarm / 协同工程）。
 - [HarnessBank](../entities/paper-harnessbank.md) — agent harness **门控自进化**（验证增益才入库，对照无门控自改）。
+- [SoL-Pi](../entities/sol-pi.md) — NVLabs **Pi 效率扩展** + 规模化 auto-research 发现管线。
 - [DASH](../entities/paper-dash-opsd.md) — OPSD 上 **可验证数学推理** 后训练的自适应蒸馏聚合。
 - [World Action Models（WAM）](./world-action-models.md) — 另一篇生命周期级综述（具身 AI）；可对照「领域综述 + Awesome 列表」维护模式。
 - [递归自改进](./recursive-self-improvement.md) — 实验室内部证据与三情景；实现已代理化，选题仍为人侧。

@@ -3081,6 +3081,7 @@
 - [senlanke/mimic：G1 上的 SMP / CMoE / AME 移植](wiki/entities/smp-g1-mjlab.md) — senlanke/mimic](https://github.com/senlanke/mimic)**（SMP 同系 [SUZ-tsinghua/smp](https://github.com `📅unknown` `[entity_page]`
 - [SMPLOlympics（仿真人形体育环境套件）](wiki/entities/smplolympics.md) — SMPLOlympics**（Luo et al., arXiv:2407.00187）在 **Isaac Gym** 中为 `📅unknown` `[entity_page]`
 - [SOEM](wiki/entities/soem.md) — SOEM（Simple Open EtherCAT Master）** 是面向实时嵌入式与通用 OS 的 **开源 EtherCAT MainDevice 库**：以 ANSI-C 实现用户态主站 `📅unknown` `[entity_page]`
+- [SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）](wiki/entities/sol-pi.md) — SoL-Pi** 是 NVIDIA NVLabs 在 **[Pi](https://github.com/earendil- `📅unknown` `[entity_page]`
 - [SOMA Retargeter](wiki/entities/soma-retargeter.md) — SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](./soma-x.md `📅unknown` `[entity_page]`
 - [SOMA-X（统一参数化人体模型）](wiki/entities/soma-x.md) — SOMA-X**（NVlabs/SOMA-X，PyPI `py-soma-x`，[arXiv:2603.16858](htt `📅unknown` `[entity_page]`
 - [Spark（Web 3DGS 渲染器）](wiki/entities/spark-3dgs-renderer.md) — Spark** 是 World Labs 维护的 **开源 3D Gaussian Splatting（3DGS）** 渲染栈，面向 **THREE.js + `📅unknown` `[entity_page]`

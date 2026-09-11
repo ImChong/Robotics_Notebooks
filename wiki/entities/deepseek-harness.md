@@ -10,7 +10,7 @@ tags:
   - acp
   - open-source
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 related:
   - ./hermes-agent.md
   - ./openclaw.md
