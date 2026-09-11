@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+
+## [2026-09-11] ingest | sources/papers/lingbot_map_arxiv_2604_14141.md — LingBot-Map（arXiv:2604.14141 / ECCV 2026 oral）升格 paper-lingbot-map 实体页；代码+HF 已开源；github.io 镜像 404
+
 ## [2026-09-11] ingest | sources/blogs/wechat_shenlan_ge_act_2_scaling_2026-09-11.md — 深蓝AI GE-Act 2.0 Scaling 导读；复用 paper-ge-act-2 实体补全技能覆盖/CoAE/KASO/指令 benchmark
 =======
 ## [2026-09-11] ingest | 阻尼系统 — MIT 2.003/6.007/2.161 + OpenStax §15.5 一手归档；升格 formalizations/damped-systems（一阶 τ、二阶 ζ/ωₙ）；交叉 SysID/Armature/极点配置/阻抗

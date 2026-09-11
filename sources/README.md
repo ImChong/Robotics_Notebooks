@@ -514,7 +514,8 @@
 | [x] [xiaomi-robotics-1.md](sites/xiaomi-robotics-1.md) | Xiaomi-Robotics-1 品牌站 + PDF 技术报告（100k h UMI 预训练具身基座 VLA；代码/权重待发布） |
 | [x] [splitadapter-github-io.md](sites/splitadapter-github-io.md) | SplitAdapter 项目页 splitadapter.github.io（负载感知因子化适配、G1 真机 demo；arXiv:2606.03297） |
 | [x] [lejurobot.md](sites/lejurobot.md) | 乐聚机器人官网：KUAVO 人形产品线与场景方案 |
-| [x] [lingbot-map-technology-robbant.md](sites/lingbot-map-technology-robbant.md) | LingBot-Map 官方项目页 technology.robbyant.com/lingbot-map（与论文/仓库交叉索引） |
+| [x] [lingbot-map-technology-robbant.md](sites/lingbot-map-technology-robbant.md) | LingBot-Map 官方项目页 technology.robbyant.com/lingbot-map（与论文/仓库/HF 交叉索引） |
+| [x] [lingbot-map-github-io.md](sites/lingbot-map-github-io.md) | LingBot-Map GitHub Pages 镜像 robbyant.github.io/lingbot-map（2026-09-11 核查 404） |
 | [x] [lingbot-vla-technology-robbant.md](sites/lingbot-vla-technology-robbant.md) | LingBot-VLA 1.0 官方项目页 technology.robbyant.com/lingbot-vla |
 | [x] [lingbot-vla-v2-technology-robbant.md](sites/lingbot-vla-v2-technology-robbant.md) | LingBot-VLA 2.0 官方项目页 technology.robbyant.com/lingbot-vla-v2（数据管线、MoE、真机 benchmark 可视化） |
 | [x] [openlet-openatom.md](sites/openlet-openatom.md) | OpenLET 具身智能开源数据集社区（开放原子 × 乐聚） |
