@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/sim2real-four-routes-identifiability.md",
+      "detail_id": "wiki-comparisons-sim2real-four-routes-identifiability",
+      "label": "Sim2Real 四条路线：可辨识性视角",
+      "type": "comparison",
+      "recency": "2026-09-11",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/flywire.md",
       "detail_id": "entity-flywire",
       "label": "FlyWire",
@@ -197,23 +207,14 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "roadmap/depth-embodied-data.md",
-      "detail_id": "roadmap-depth-embodied-data",
-      "label": "路线（纵深）：如果目标是具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与飞轮）",
-      "type": "roadmap_page",
-      "recency": "2026-09-10",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/flywire.md",
-    "detail_id": "entity-flywire",
-    "label": "FlyWire",
-    "type": "entity",
-    "recency": "2026-09-10",
+    "path": "wiki/comparisons/sim2real-four-routes-identifiability.md",
+    "detail_id": "wiki-comparisons-sim2real-four-routes-identifiability",
+    "label": "Sim2Real 四条路线：可辨识性视角",
+    "type": "comparison",
+    "recency": "2026-09-11",
     "source": "git",
     "action": "added",
     "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
