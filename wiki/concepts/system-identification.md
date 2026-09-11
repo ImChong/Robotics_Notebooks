@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-09-04
+updated: 2026-09-11
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-closed-loop-inertia-calibration.md

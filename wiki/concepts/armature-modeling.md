@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, dynamics, simulation, sim2real, actuator]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-11
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-parallel-joint-kinematics.md

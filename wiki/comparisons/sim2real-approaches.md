@@ -7,16 +7,20 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/privileged-training.md
   - ../comparisons/online-vs-offline-rl.md
+  - ./sim2real-four-routes-identifiability.md
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/locomotion_rl.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "Sim2Real 方法横向对比"
-updated: 2026-07-15
+updated: 2026-09-11
 ---
 
 # Sim2Real 方法横向对比
 
 Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fine-tuning（真实环境微调）**。三者可单独使用也可组合，选择取决于 gap 大小、真实数据成本和任务类型。
+
+> **更细的辨识立场对比**（系统辨识 / DR / 在线适应 / 残差学习、分层组合与症状查表）见 [四条路线：可辨识性视角](./sim2real-four-routes-identifiability.md)。
 
 ## 核心对比
 
@@ -173,3 +177,4 @@ Real: student π(a|o) → 用观测历史近似特权信息 → 微调
 - [Privileged Training](../concepts/privileged-training.md) — 特权训练是 DR + Fine-tuning 的桥梁
 - [Online vs Offline RL](./online-vs-offline-rl.md) — Real fine-tuning 涉及 online/offline RL 的选择
 - [Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接微调](./sim2real-vs-real2sim-fine-tuning.md) — 「最后一公里」三策略的成本/安全/数据效率细分
+- [四条路线：可辨识性视角](./sim2real-four-routes-identifiability.md) — SysID / DR / 适应 / 残差立场与组合顺序

@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, sim2real, actuator, friction, armature, identification, experiment-design]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-11
 related:
   - ./joint-actuator-parameter-identification.md
   - ../concepts/system-identification.md
@@ -15,11 +15,13 @@ related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/hub-actuator-drive-chain.md
   - ../overview/hub-sim2real.md
+  - ../comparisons/sim2real-four-routes-identifiability.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/flobaroid.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
   - ../../sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md
 summary: "单关节 PD 闭环下惯量/延迟/摩擦纠缠在同一条曲线上；先判断结构性不可辨识，再按延迟→摩擦→惯量→柔性分级实验拆开，而不是一次丢给优化器。"
 ---

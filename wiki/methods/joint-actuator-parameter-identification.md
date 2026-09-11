@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, actuator, friction, armature, sim2real, identification]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-11
 related:
   - ../concepts/system-identification.md
   - ../concepts/humanoid-closed-loop-inertia-calibration.md

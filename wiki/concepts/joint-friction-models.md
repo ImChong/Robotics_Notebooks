@@ -2,7 +2,7 @@
 type: concept
 tags: [friction, actuator, system-identification, sim2real, modeling]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-11
 related:
   - ./system-identification.md
   - ./friction-compensation.md
