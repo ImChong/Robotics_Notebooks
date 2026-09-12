@@ -1,3 +1,9 @@
+## [2026-09-12] ingest | 8× ECCV 2026 论文批次 — Coprime-PSI / Poppy / RAP / SSVAE / LSRM / Geosubprobe / LAYS / GeoSR
+
+- **意图：** 批量入库波前传感、偏振法线、点云配准、视频 VAE、物体重建、ViT 几何表征、跨视角航向、VLM 空间推理八篇 ECCV 2026 工作
+- **开源结论：** Coprime-PSI、Poppy、RAP、SSVAE、LSRM、Geosubprobe、GeoSR **已开源**；**LAYS 截至入库日项目页未列 GitHub**
+- **关键页：** `paper-sa-2604-03564-coprime-psi-wavefront-sensing`、`paper-sa-2603-27891-poppy`、`paper-sa-2512-01850-register-any-point`、`paper-sa-2512-05394-ssvae`、`paper-sa-2604-05182-lsrm`、`paper-sa-2607-01987-geosubprobe`、`paper-sa-2606-22094-lays`、`paper-sa-2603-26639-geosr`
+
 ## [2026-09-12] ingest | sources/papers/ssla_arxiv_2603_06228.md — SSLA-Det 事件检测（ECCV 2026）；已开源 haohq19/ssla；Gen1/N-Caltech101；交叉 EVA 前置
 
 ## [2026-09-12] ingest | sources/papers/motus2_arxiv_2608_30237.md — Motus2 复核 arXiv v2（2026-09-10）；项目页与 motus-robotics 组织仍无代码仓；刷新 paper-motus2 开源日期

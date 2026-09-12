@@ -121,6 +121,7 @@ flowchart TB
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 - [足球视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md) — 本页是其第二段（线匹配数据关联）
+- [LAYS](../entities/paper-sa-2606-22094-lays.md) — 跨视角地面–卫星 **航向** 估计：列–径向线对齐投票，**20 m** 位置不确定下亚度级 yaw（ECCV 2026 Oral；截至入库日未开源）
 
 ## 参考来源
 

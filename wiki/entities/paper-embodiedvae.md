@@ -114,6 +114,7 @@ flowchart LR
 - [生成式世界模型](../methods/generative-world-models.md)
 - [Ego2Robot](./paper-ego2robot.md) — 数据侧规模化，与表征侧解耦互补
 - [VLA](../methods/vla.md) — 下游策略仍可能吃世界模型滚动
+- [SSVAE](./paper-sa-2512-05394-ssvae.md) — 同为视频 VAE tokenizer 路线，侧重潜空间频谱偏置与扩散可训练性（已开源）
 
 ## 参考来源
 

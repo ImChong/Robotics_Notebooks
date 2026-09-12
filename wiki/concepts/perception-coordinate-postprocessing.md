@@ -104,6 +104,7 @@ flowchart LR
 
 ## 局限与风险
 
+- **相位/波前传感**（自适应光学、散射介质成像）与「像素坐标后处理」不同层：自参考干涉路线见 [Coprime-PSI](../entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md)（ECCV 2026 Oral；已开源）。
 - **平面假设**在机器人大幅俯仰/球不在地面时失效。广播网球侧的定量反例见 [Tennis-Vision](../entities/tennis-vision.md)：空中球走地板单应会投影到射线与地面交点，发球接触可被投出场地。
 - **深度在强光/黑球**上不可靠 → 允许 RGB-only 回退并增大观测噪声。
 - **误区**：在检测节点里写死魔法数外参，不进 TF——后续换相机必炸。

@@ -2,7 +2,7 @@
 
 ## [2026-09-12] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **6** 条信息型预警）：
+共发现 **0** 个问题（另含 **14** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,9 +97,17 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（10 个）
 - wiki/entities/paper-designing-physics-experiments-with-ai.md（缺 对比）
+- wiki/entities/paper-sa-2512-01850-register-any-point.md（缺 对比）
+- wiki/entities/paper-sa-2512-05394-ssvae.md（缺 对比）
 - wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md（缺 对比）
+- wiki/entities/paper-sa-2603-26639-geosr.md（缺 对比）
+- wiki/entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md（缺 对比）
+- wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md（缺 对比）
+- wiki/entities/paper-sa-2604-05182-lsrm.md（缺 对比）
+- wiki/entities/paper-sa-2606-22094-lays.md（缺 对比）
+- wiki/entities/paper-sa-2607-01987-geosubprobe.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -129,4 +137,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-points-as-tori.md
 
-📊 Sources 覆盖率：3945/3945 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3953/3953 (100%) wiki/entity 页有 ingest 来源

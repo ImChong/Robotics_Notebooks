@@ -95,6 +95,7 @@ flowchart TB
 - [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
+- [Geosubprobe](../entities/paper-sa-2607-01987-geosubprobe.md) — 自监督 ViT 几何表征的 **SVD 子空间干预** 分析（DINOv2 vs MAE；ECCV 2026；已开源）
 
 ## 参考来源
 

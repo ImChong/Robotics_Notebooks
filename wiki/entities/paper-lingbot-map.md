@@ -178,6 +178,7 @@ sequenceDiagram
 - [SLAMFormer-∞](./paper-slamformer-infinity.md) — 学习型 dense mono SLAM 对照
 - [VGG-T³](./paper-vgg-ttt.md) — 离线线性化 VGGT 对照
 - [R³](./paper-r3-relative-regression.md) — 相对回归流式重建对照
+- [Register Any Point（RAP）](./paper-sa-2512-01850-register-any-point.md) — 多视角点云配准流匹配生成路线（ECCV 2026；PRBonn/RAP 已开源）
 - [State Estimation](../concepts/state-estimation.md) — 几何估计在控制链上游
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 流式前馈重建在感知栈「表征层」的定位与选型口径

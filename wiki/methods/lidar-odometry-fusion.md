@@ -130,6 +130,7 @@ flowchart LR
 - [SUPER ODOMETRY 2.0](../entities/paper-super-odometry-2.md) — 四级自适应融合 + 学习式 IMU；slim ROS 2 已开
 - [FOCUS](../entities/paper-focus-foot-observation-confidence.md) — 无外感知时的人形腿式 odom；连续 FK 可靠度进 EKF
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md)
+- [Register Any Point（RAP）](../entities/paper-sa-2512-01850-register-any-point.md) — 流匹配单阶段多视角点云配准；RegX 跨域 benchmark（ECCV 2026；已开源）
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 
 ## 参考来源
