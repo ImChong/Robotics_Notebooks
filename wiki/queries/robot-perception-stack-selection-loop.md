@@ -207,6 +207,7 @@ flowchart TD
 - [Ultralytics YOLO](../entities/ultralytics.md) · [RF-DETR](../entities/rf-detr.md) · [YOLO 奠基论文](../entities/paper-yolo-unified-realtime-detection.md) — ②层 2D 检测层实体
 - [Tennis-Vision](../entities/tennis-vision.md) — 广播网球检测/跟踪案例：出点率 ≠ 定位精度，单应只在地板平面有效
 - [Segment Anything](../entities/paper-segment-anything.md) · [SAM2](../entities/paper-sam2.md) — ②层可提示分割层实体
+- [Point2Pose](../entities/paper-point2pose.md) — ③/④层：SAM2 初始化 + 长程 2D 点跟踪 → 多物体 6D 位姿与 per-object 在线 TSDF（已开源）
 - [LocateAnything](../entities/paper-locateanything.md) — ②层生成式 VLM grounding（PBD 并行框解码；GUI/OCR/指代/检测统一）
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — ③层 2D→3D 语义建图层实体
 - [OccAnyScene](../entities/paper-occanyscene.md) — ③层跨室内外语义占据（视锥高斯 lifting；代码待发布）

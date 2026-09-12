@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-11
+updated: 2026-09-12
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -127,7 +127,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 操作涉及多指接触、摩擦、约束——比纯运动控制复杂。
 
 ### 2. 视觉感知
-需要识别物体、理解姿态、估计空间位置；**2D 目标检测**（见 [目标检测](../methods/object-detection.md)、[YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）常作第一级 **物体锚点**；抓取子问题中常需要 **6D/7DoF 抓取位姿** 或 **候选集合**（见 [AnyGrasp](../entities/anygrasp.md) 一类检测式管线）。视觉特征多来自 [视觉骨干](../concepts/vision-backbones.md)（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）预训练微调。
+需要识别物体、理解姿态、估计空间位置；**2D 目标检测**（见 [目标检测](../methods/object-detection.md)、[YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）常作第一级 **物体锚点**；抓取子问题中常需要 **6D/7DoF 抓取位姿** 或 **候选集合**（见 [AnyGrasp](../entities/anygrasp.md) 一类检测式管线）。**多物体 clutter 下的物体系 6D 跟踪与在线 mesh**（无 CAD、遮挡可恢复）见 [Point2Pose](../entities/paper-point2pose.md)。视觉特征多来自 [视觉骨干](../concepts/vision-backbones.md)（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）预训练微调。
 
 ### 3. 灵巧操作
 很多操作需要多指协调、精细力控（如插头、拧瓶盖）。仿真侧 Meta [Project SuperDex](../entities/project-superdex.md) 提供 **接触优先物理引擎 + Gymnasium 风格 Lab** 的端到端灵巧操作平台（已开源 Apache 2.0）。工业侧把这类任务收成可采购实物 + 状态终态的规格，见 [DexBench](../entities/dexbench.md)（18 原子任务 / OSC；官方评测仓待发布）。HAND ERC 从**手型设计归因**出发给出四层 dexterity benchmark 与 16 项 DexNex 原子任务，见 [HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md)（arXiv:2609.05585；规范站已公开、无官方仿真仓）。真机扑克桌面协议见 [DexHoldem](../entities/paper-dexholdem.md)（ShadowHand + UR10e；报 SPSR 而不是只报做成）。
