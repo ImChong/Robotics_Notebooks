@@ -107,8 +107,8 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-deworldsg.md（含绝对化措辞「SoTA」，updated=2026-09-11；同主题更新页 wiki/entities/paper-designing-physics-experiments-with-ai.md updated=2026-09-12）
-- wiki/entities/paper-unisim-slam.md（含绝对化措辞「SOTA」，updated=2026-09-11；同主题更新页 wiki/entities/paper-designing-physics-experiments-with-ai.md updated=2026-09-12）
+- wiki/entities/paper-deworldsg.md（含绝对化措辞「SoTA」，updated=2026-09-11；同主题更新页 wiki/entities/paper-adapt.md updated=2026-09-12）
+- wiki/entities/paper-unisim-slam.md（含绝对化措辞「SOTA」，updated=2026-09-11；同主题更新页 wiki/entities/paper-adapt.md updated=2026-09-12）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
