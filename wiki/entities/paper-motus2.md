@@ -16,7 +16,7 @@ tags:
   - buaa
   - bit
 status: complete
-updated: 2026-09-10
+updated: 2026-09-12
 arxiv: "2608.30237"
 related:
   - ./paper-gwm-first-principles.md
@@ -37,7 +37,7 @@ sources:
   - ../../sources/papers/motus2_arxiv_2608_30237.md
   - ../../sources/sites/motus2.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
-summary: "Motus2（GensPI/清华等，arXiv:2608.30237）：在 Motus 共享 video–action 上暴露 policy/simulator/evaluator 三接口，用人数据金字塔 + 机端 mid-training 与 DiffusionNFT MBRL 闭环自进化灵巧双手；真机五任务宏平均 84%，MBRL+Planning 75%；截至入库日未开源。"
+summary: "Motus2（GensPI/清华等，arXiv:2608.30237v2）：在 Motus 共享 video–action 上暴露 policy/simulator/evaluator 三接口，用人数据金字塔 + 机端 mid-training 与 DiffusionNFT MBRL 闭环自进化灵巧双手；真机五任务宏平均 84%，MBRL+Planning 75%；截至 2026-09-12 未开源。"
 ---
 
 # Motus2（自进化通用世界模型 · arXiv:2608.30237）
@@ -65,7 +65,7 @@ summary: "Motus2（GensPI/清华等，arXiv:2608.30237）：在 Motus 共享 vid
 - **人数据金字塔有量化 scaling：** 立体 ego 子集 2K–20K 原始录制小时上，动作预测误差随数据量对数下降（项目页拟合 \(L=0.101-0.005\cdot\ln(D)\)）。
 - **真机数字可读：** 匹配 SFT 协议下五任务宏平均 **84%**；在 Put Phone / Multi-Finger 上 **MBRL + Planning** 把宏平均从 **65%→75%**。
 - **灵巧 + 触觉 + 记忆同页验证：** 非仅仿真榜——含 **Find Square / Press Button** 长程探测与 **撕纸 / 抽纸杯** 触觉任务。
-- **今日不能复现：** 项目页与 `motus-robotics` 组织截至入库日 **无** 可运行代码仓。
+- **今日不能复现：** 项目页与 `motus-robotics` 组织截至 2026-09-12 **无** 可运行代码仓（arXiv v2 亦未挂 Code/Data）。
 
 ## 核心信息
 
@@ -73,11 +73,11 @@ summary: "Motus2（GensPI/清华等，arXiv:2608.30237）：在 Motus 共享 vid
 |------|------|
 | 作者 | Hongzhe Bi, Zihao Zhou, Yihang Tang, Jingrui Pang, Shuhe Huang, … / Fan Bao, Jun Zhu |
 | 机构 | GensPI（生数科技）；清华大学；北京航空航天大学；北京理工大学 |
-| 出处 | arXiv:2608.30237（2026） |
+| 出处 | arXiv:2608.30237v2（2026-09-10；v1 2026-08-31） |
 | 前作 | Motus（arXiv:2512.13030） |
 | 骨干初始化 | Wan 2.2-TI2V-5B（视频支路） |
 | 机端数据 | mid-training **>100 h** 机器人轨迹 + 人对齐 |
-| 开源（截至 2026-09-01） | **未开源** — 项目页未列 GitHub/权重；组织仅静态站仓 |
+| 开源（截至 2026-09-12） | **未开源** — 项目页未列 GitHub/权重；组织仅静态站仓 |
 
 ## 方法与核心结构
 
@@ -140,7 +140,7 @@ sequenceDiagram
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-01）：[`motus-robotics`](https://github.com/motus-robotics) 组织仅有 [`motus-robotics.github.io`](https://github.com/motus-robotics/motus-robotics.github.io) 静态站，**无** 可辨识训练 / 推理 / 部署入口。官方发布后应补：ego 预训练 → 机端 mid-training（三模式混合）→ SFT / MBRL / tactile expert → Best-of-N 部署 的 `sequenceDiagram`。
+**不适用**（截至 2026-09-12）：[`motus-robotics`](https://github.com/motus-robotics) 组织仅有 [`motus-robotics.github.io`](https://github.com/motus-robotics/motus-robotics.github.io) 静态站，**无** 可辨识训练 / 推理 / 部署入口。官方发布后应补：ego 预训练 → 机端 mid-training（三模式混合）→ SFT / MBRL / tactile expert → Best-of-N 部署 的 `sequenceDiagram`。
 
 ## 工程实践
 
@@ -192,7 +192,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **未开源：** 截至 2026-09-01 无法复现训练与 MBRL 管线；数值以 PDF / 项目页为准。
+- **未开源：** 截至 2026-09-12 无法复现训练与 MBRL 管线；数值以 PDF / 项目页为准。
 - **评测以自有硬件与任务为主：** 与 RoboTwin / LIBERO 等同协议榜 **不可直接横比**；读作「灵巧双手 + 自进化闭环」证据，而非通用仿真 SOTA。
 - **价值模型非校准成功率：** 输出为相对进度排序信号；失败轨迹可能出现「先升后降」形态，部署时需按任务设计阈值。
 - **Global AR 记忆代价：** 仿真更好但 KV 随 episode 增长；默认部署仍用 bounded sliding window。
