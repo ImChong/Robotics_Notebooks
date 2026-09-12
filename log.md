@@ -1,3 +1,5 @@
+## [2026-09-12] ingest | sources/papers/motus2_arxiv_2608_30237.md — Motus2 复核 arXiv v2（2026-09-10）；项目页与 motus-robotics 组织仍无代码仓；刷新 paper-motus2 开源日期
+
 ## [2026-09-12] ingest | sources/papers/point2pose_arxiv_2604_10415.md — Point2Pose 无 CAD 多物体 6D 跟踪；主仓与合成数据生成器已开源
 
 ## [2026-09-12] ingest | sources/papers/wid3r_arxiv_2602_05321.md — Wid3R 宽 FoV 前馈 3D 重建（UMD×NAVER LABS，ECCV 2026）；已开源推理/训练/评测，预处理 TODO

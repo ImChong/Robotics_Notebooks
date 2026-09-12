@@ -7,15 +7,17 @@
 - **机构：** GensPI（生数科技）；清华大学；北京航空航天大学；北京理工大学
 - **前作：** Motus（arXiv:2512.13030）— <https://motus-robotics.github.io/motus>
 - **入库日期：** 2026-09-01
+- **最近复核：** 2026-09-12（arXiv v2 2026-09-10 后重查项目页与 GitHub 组织）
 - **一句话说明：** Motus2 灵巧操作自进化通用世界模型项目页：统一 policy / simulator / evaluator 三接口、人数据金字塔、MBRL + Best-of-N、触觉专家与多本体真机 demo。
 
-## 步骤 2.5 开源核查（截至 2026-09-01）
+## 步骤 2.5 开源核查（截至 2026-09-12）
 
 | 项 | 状态 |
 |----|------|
 | **项目页 Code / GitHub 区** | **未列** 训练/推理/权重仓库链接 |
-| **motus-robotics GitHub 组织** | 仅 [`motus-robotics/motus-robotics.github.io`](https://github.com/motus-robotics/motus-robotics.github.io)（静态站源码） |
+| **motus-robotics GitHub 组织** | 仅 [`motus-robotics/motus-robotics.github.io`](https://github.com/motus-robotics/motus-robotics.github.io)（静态站源码；组织公开仓 **1** 个） |
 | **前作 Motus** | 项目页未在 Motus2 页重复挂链；生数产品线其他页称 Motus 曾开源，**不可**等同 Motus2 可复现 |
+| **arXiv v2（2026-09-10）** | 摘要与三接口叙事未改；**未**新增 Code/Data 链接 |
 | **结论** | **未开源** — 适合读方法与 demo；复现须等官方发布代码/权重 |
 
 ## 公开信息要点
