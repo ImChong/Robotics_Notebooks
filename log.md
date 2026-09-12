@@ -1,3 +1,5 @@
+## [2026-09-12] ingest | sources/papers/points_as_tori_arxiv_2607_16946.md — PAT 点云 SDF（SIGGRAPH 2026）；MIT 已开源
+
 ## [2026-09-11] ingest | sources/repos/humanlayer-skills.md — HumanLayer Claude Code 技能库（control-loop、`<important if>` harness、GHA 迭代维护）；已开源 MIT
 
 - **意图：** 接入 humanlayer/skills 五插件技能集，与 Superpowers / mattpocock 形成交付 vs 日常 vs 托管维护三角

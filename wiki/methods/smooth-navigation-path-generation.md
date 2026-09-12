@@ -2,7 +2,7 @@
 type: method
 tags: [motion-planning, navigation, optimization, path-smoothing, mobile-robot]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-12
 related:
   - ./trajectory-optimization.md
   - ../concepts/collision-distance-optimization.md

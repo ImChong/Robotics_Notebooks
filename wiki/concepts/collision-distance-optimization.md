@@ -2,9 +2,10 @@
 type: concept
 tags: [optimization, collision-avoidance, motion-planning, signed-distance, safety]
 status: complete
-updated: 2026-06-23
+updated: 2026-09-12
 related:
   - ../entities/curobo.md
+  - ../entities/paper-points-as-tori.md
   - ../concepts/safety-filter.md
   - ../methods/smooth-navigation-path-generation.md
   - ../concepts/constrained-optimization.md
@@ -36,7 +37,7 @@ summary: "碰撞距离计算：将几何碰撞检测表述为优化或距离场�
 ### 距离查询
 
 - **Primitive 距离**：球、胶囊、OBB 间闭式距离
-- **Mesh / SDF 场**：预计算体素或 GPU 查表
+- **Mesh / SDF 场**：预计算体素或 GPU 查表；点云可直接距离化见 [Points as Tori（PAT）](../entities/paper-points-as-tori.md)
 - **连续碰撞检测（CCD）**：轨迹段上最小距离
 
 ### 进入优化
