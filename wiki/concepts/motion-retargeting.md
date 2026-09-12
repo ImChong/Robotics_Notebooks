@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-10
+updated: 2026-09-12
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -85,7 +85,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 
 ### 3.7 学习式稠密点云对应（UMR）
 
-[UMR](../entities/paper-umr-unified-motion-retargeting.md)（arXiv:2609.02134）在规范 T-pose 上学人–机外表面点对，再作为约束优化锚点匹配位置、法向与接触向量，**不手写骨架关键点表**。换源（SMPL-X / SOMA / 扫描网格）与换机主要复用同一套索引。跟踪对照 [GMR](../methods/motion-retargeting-gmr.md)，接触对照 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)；代码待发布。
+[UMR](../entities/paper-umr-unified-motion-retargeting.md)（arXiv:2609.02134）在规范 T-pose 上学人–机外表面点对，再作为约束优化锚点匹配位置、法向与接触向量，**不手写骨架关键点表**。换源（SMPL-X / SOMA / 扫描网格）与换机主要复用同一套索引。跟踪对照 [GMR](../methods/motion-retargeting-gmr.md)，接触对照 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)；[官方 GitHub](https://github.com/hanyang9/UMR) 与 [UMR Studio](https://hanyang9.github.io/UMR/umr_studio.html) 已开源（2026-09-12）。
 
 ### 3.7 非拟人三指夹爪遥操作重定向（VTAP）
 
@@ -265,7 +265,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — 端到端工程链路视角：源归一 → 骨架对齐 → IK → 物理筛选 → 配对监督
 - [KDMR](../entities/paper-kdmr.md) — GRF 多接触全身 TO
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + KDTO
-- [UMR（学习点云对应）](../entities/paper-umr-unified-motion-retargeting.md) — 稠密表面对应 + 接触图直传；不手写关键点（arXiv:2609.02134，待发布）
+- [UMR（学习点云对应）](../entities/paper-umr-unified-motion-retargeting.md) — 稠密表面对应 + 接触图直传；不手写关键点（arXiv:2609.02134；[官方 GitHub](https://github.com/hanyang9/UMR) 已开源）
 - [Motion Retargeting Objective（重定向目标函数形式化）](../formalizations/motion-retargeting-objective.md) — 姿态相似 / 末端接触 / 平衡 / 限位 / 平滑项的统一加权和及其三种工程退化
 - [Motion Data Quality（动作数据质量维度）](./motion-data-quality.md) — 形态差距/接触/物理/规模四轴决定重定向是否可省略及需补几层
 - [Teleopit](../entities/paper-teleopit.md) — 归一化指方向 + 距离/拇指帧的跨形态灵巧手在线优化重定向（somehand；arXiv:2608.01834）
