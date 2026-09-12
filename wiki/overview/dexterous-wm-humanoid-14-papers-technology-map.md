@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, dexterous-manipulation, world-model, humanoid, technology-map]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-12
 related:
   - ../entities/paper-show-harness.md
   - ../entities/paper-imle-vla.md
@@ -46,7 +46,7 @@ summary: "具身智能小站 2026-09-11 十四篇盘点：VLM 语义动作接口
 - [Rapid Dexterous Pen Writing](../entities/paper-rapid-dexterous-pen-writing.md) — arXiv:2609.11775（**已开源**）
 - [SEED-UMI](../entities/paper-seed-umi.md) — arXiv:2609.11753（**已开源**）
 - [MaP-WAM](../entities/paper-map-wam.md) — arXiv:2609.11561（**已开源**）
-- [CAP](../entities/paper-cap-perception-blind-humanoid.md) — arXiv:2609.11553（**已开源**）
+- [CAP](../entities/paper-cap-perception-blind-humanoid.md) — arXiv:2609.11553（**待发布**；2026-09-12 再核：GitHub 占位，训练/部署代码未发）
 - [DLSRL](../entities/paper-dlsrl.md) — arXiv:2609.11270（**已开源**）
 - [Differentiable Charts IK Planning](../entities/paper-differentiable-charts-constraint-manifolds.md) — arXiv:2609.10905（**已开源**）
 - [ReactHuman](../entities/paper-reacthuman.md) — arXiv:2609.10895（**部分开源**）

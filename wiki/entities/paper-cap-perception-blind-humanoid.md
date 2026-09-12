@@ -1,116 +1,146 @@
 ---
 type: entity
-tags: [paper, humanoid, locomotion, perception]
+tags: [paper, humanoid, locomotion, perception, world-model, unitree-g1, fudan, tars, hit, sjtu]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-12
 arxiv: "2609.11553"
 code: https://github.com/Hoshi-No-Ai/CAP
 related:
-  - ../methods/vla.md
   - ../methods/generative-world-models.md
-  - ../tasks/manipulation.md
+  - ../tasks/locomotion.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../overview/dexterous-wm-humanoid-14-papers-technology-map.md
+  - ./paper-evperiscope.md
+  - ./unitree-g1.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/cap-perception-blind-humanoid_arxiv_2609_11553.md
+  - ../../sources/sites/cap-github-io.md
+  - ../../sources/repos/hoshi-no-ai-cap.md
   - ../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md
-summary: "去噪世界模型 + 本体感觉 VAE 供给单一策略；Unitree G1 部分遮挡下平滑退化。"
+summary: "CoRL 2026：去噪感知世界模型 + 并行本体 VAE 的单策略人形行走；G1 真机 39/40 受控试验成功（清洁+部分遮挡）；代码待发布。"
 ---
 
 # CAP（arXiv:2609.11553）
 
-**CAP**（[CAP: Continuously Adaptive Perception-Blind Humanoid Locomotion via Learned Denoising](https://arxiv.org/abs/2609.11553)）来自 [具身智能小站 14 篇盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md)。去噪世界模型 + 本体感觉 VAE 供给单一策略；Unitree G1 部分遮挡下平滑退化。
+**CAP**（*Continuously Adaptive Perception-Blind Humanoid Locomotion via Learned Denoising*，[arXiv:2609.11553](https://arxiv.org/abs/2609.11553)，[项目页](https://hoshi-no-ai.github.io/CAP/)，**CoRL 2026**）由复旦大学、TARS Robotics、哈工大、上交等提出：用 **单阶段策略** 覆盖从清洁深度到感知失效的全谱质量，而非在感知/盲走子策略间硬切换。
 
 ## 一句话定义
 
-**深度坏一半时别硬切盲走——用去噪编码与连续感知退化训练实现平滑过渡。**
+**深度坏一半时别硬切盲走——感知世界模型学深度去噪、本体 VAE 并行供深度无关体态，再用噪声课程 + WM 特征 dropout 训练单一策略平滑退化。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作策略 |
-| VLM | Vision-Language Model | 视觉-语言多模态模型 |
-| WM | World Model | 预测未来观测或表征的动力学模型 |
-| IL | Imitation Learning | 模仿学习 |
-| RL | Reinforcement Learning | 强化学习 |
-| DoF | Degrees of Freedom | 自由度 |
+| CAP | Continuously Adaptive Perception-Blind | 本文连续自适应感知-盲走统一框架 |
+| WM | World Model | 此处作感知深度去噪编码器，非规划器 |
+| VAE | Variational Autoencoder | 本体感觉变分编码器，供深度无关体态 |
+| G1 | Unitree G1 | 论文真机平台 |
+| CoRL | Conference on Robot Learning | 发表会议 |
 
 ## 为什么重要
 
-- 纳入本期 **灵巧手 / 世界模型 / 人形控制 / VLA** 主线之一。
-- 开源状态：**已开源**（步骤 2.5 核查，2026-09-11）。
-- 与 [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md) 中同类工作可横向对照。
+- **感知退化是部署常态：** 深度会部分遮挡、间歇失效或带户外伪影；硬切盲走策略易造成步态突变。
+- **单策略覆盖全谱：** 去噪 WM 恢复部分可救信息，并行 proprio VAE 保证深度全失时仍有体态；训练时 **深度噪声课程 + policy-facing WM latent dropout** 覆盖整条质量谱。
+- **真机证据：** Unitree G1 受控试验 + 室内外部署；项目页报告清洁与部分遮挡下 **39/40** 成功（每地形×条件 5 次）。
 
-## 核心机制
+## 核心信息
 
 | 项 | 内容 |
 |----|------|
-| **arXiv** | [2609.11553](https://arxiv.org/abs/2609.11553) |
-| **项目页** | https://hoshi-no-ai.github.io/CAP/ |
-| **代码/资源** | https://github.com/Hoshi-No-Ai/CAP |
-| **开源** | **已开源** |
-| **文内指标** | Unitree G1 室内外测试验证部分遮挡下的平滑退化。 |
+| **机构** | 复旦大学（Fudan）、TARS Robotics、上海创智学院、哈尔滨工业大学（HIT）、上海交通大学（SJTU） |
+| **平台** | Unitree G1 |
+| **会议** | CoRL 2026 |
+| **arXiv** | [2609.11553](https://arxiv.org/abs/2609.11553)（截至 2026-09-12 仍为 **v1**，无新版本） |
+| **项目页** | <https://hoshi-no-ai.github.io/CAP/> |
+| **GitHub** | [Hoshi-No-Ai/CAP](https://github.com/Hoshi-No-Ai/CAP) |
+| **开源** | **待发布** — 2026-09-12 再核：仓库 README 标明 *Code coming soon*；训练/部署代码均未发布 |
 
+## 核心原理
+
+### 双通路、一策略
+
+| 通路 | 作用 |
+|------|------|
+| **感知 WM 去噪器** | 从 **损坏深度** 重建清洁/稳定深度表征 |
+| **本体感觉 VAE** | 高率、**深度无关** 的体态信息，与感知通路 **并行共活** |
+| **单一 locomotion policy** | 消费两路 latent；训练暴露于整条感知质量谱 |
+
+### 流程总览
+
+```mermaid
+flowchart TB
+  depth["深度观测\n（可损坏/遮挡）"]
+  wm["感知世界模型\nlearned denoiser"]
+  prop["本体感觉 VAE\n深度无关体态"]
+  pol["单一行走策略"]
+  act["关节动作"]
+  cur["训练：深度噪声课程\n+ WM latent dropout"]
+  depth --> wm --> pol
+  prop --> pol
+  pol --> act
+  cur -.-> wm
+  cur -.-> pol
+```
+
+### 局限（项目页 / 论文口径）
+
+- **完全遮挡** 时，依赖前向深度的地形（如 **gap、platform**）仍会失败 — 项目页受控试验表：Full cover 下 Platform/Gap/Mixed 为 0/5；Stair 仍 5/5。
 
 ## 源码运行时序图
 
-```mermaid
-sequenceDiagram
-  participant U as 用户/脚本
-  participant R as 官方仓库入口
-  participant M as 模型/规划器
-  participant E as 仿真或真机环境
-  U->>R: clone + 安装依赖
-  U->>M: 加载配置/权重
-  U->>E: rollout / 规划 / 控制
-  M-->>E: 动作或轨迹
-  E-->>U: 成功率/指标日志
-```
-
+**不适用**（截至 **2026-09-12** 官方仓库为占位，README Release status 未勾选 Training / Deployment code；发布后应补本图并对齐 [`sources/repos/hoshi-no-ai-cap.md`](../../sources/repos/hoshi-no-ai-cap.md)。）
 
 ## 实验与评测
 
-| 项 | 文内口径 |
-|----|----------|
-| 要点 | Unitree G1 室内外测试验证部分遮挡下的平滑退化。 |
+### G1 受控试验（项目页，每条件 5 次）
 
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+| 感知条件 | Stair | Platform | Gap | Mixed |
+|----------|-------|----------|-----|-------|
+| Clean | 5/5 | 5/5 | 5/5 | 5/5 |
+| Partial occlusion | 5/5 | 4/5 | 5/5 | 5/5 |
+| Full cover | 5/5 | 0/5 | 0/5 | 0/5 |
+
+- **汇总：** 清洁 + 部分遮挡共 **39/40** 成功。
+- **仿真：** 深度仍有用时匹配或优于感知基线；感知恶化时相对 **二元切换基线** 退化更平滑（项目页 sweep 图）。
 
 ## 与其他工作对比
 
-- **感知失效即 **硬切盲走**（proprioceptive-only 兜底策略）** — 切换瞬间步态突变、易失稳；CAP 训练 **连续感知退化**，用去噪世界模型 + 本体感觉 VAE 供给 **单一策略**，实现平滑过渡而非策略切换。
-- **依赖高度图/高程图的感知式行走（见 [台阶与障碍感知行走](../tasks/stair-obstacle-perceptive-locomotion.md)）** — 假定深度可用且质量稳定；CAP 针对的是深度 **部分遮挡/坏一半** 的中间态。
-- **[EVPeriscope](./paper-evperiscope.md)** — 同为「感知退化」问题，但走 **增补外部传感**（空中事件相机潜望镜）扩展可观测性；CAP 不加硬件，靠 **表征去噪与退化训练** 在既有传感下降级运行。
-- **[Generative World Models](../methods/generative-world-models.md)** — 该页给出世界模型的通用用途；CAP 把它用作 **观测去噪前端** 而非规划器。
-- **[机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)** — 该指南按「传感 → 表征 → 降级策略」分层；CAP 对应其中 **降级/冗余** 一环的学习型方案，文内以 Unitree G1 室内外测试为口径。
-
-- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+| 对照路线 | 差异 |
+|----------|------|
+| 感知/盲走 **子策略路由或切换** | CAP 用 **单策略 + 连续退化训练**，利用部分损坏深度中的可恢复信息 |
+| [台阶与障碍感知行走](../tasks/stair-obstacle-perceptive-locomotion.md) | 假定深度稳定可用；CAP 针对 **中间退化态** |
+| [EVPeriscope](./paper-evperiscope.md) | 增补外部传感扩展可观测性；CAP **不加硬件**，靠去噪与训练课程 |
+| [Generative World Models](../methods/generative-world-models.md) | 通用 WM 分类；CAP 把 WM 当 **观测去噪前端** |
 
 ## 结论
 
-**CAP 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**
+**CAP 把「感知降级」从策略切换问题变成单策略表征与训练课程问题；真机部分遮挡证据强，但完全失深度时前向地形仍难。**
 
-1. 核心贡献：深度坏一半时别硬切盲走——用去噪编码与连续感知退化训练实现平滑过渡。
-2. 开源结论：**已开源** — 以项目页实际链接为准（入库日 2026-09-11）。
-3. 横向对照见 [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md)，避免与同 arXiv 重复造页。
+1. **架构读点：** 去噪 WM + 并行 proprio VAE + 双课程（输入噪声 + latent dropout）是核心三联。
+2. **部署读点：** 部分遮挡与传感器伪影可平滑应对；gap/platform 类任务在 full cover 下勿高估。
+3. **开源边界（2026-09-12 再核）：** GitHub 仓存在但 **代码待发布** — 选型先读论文/项目页，复现需等官方 release。
+4. **arXiv：** 仍 **v1**（2026-09-10 提交），自上次入库无新版本。
+5. **横向：** 见 [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md) 与 [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)。
 
 ## 关联页面
 
 - [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md)
-- [VLA（Vision-Language-Action）](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
-- [Manipulation](../tasks/manipulation.md)
-- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页的感知退化处理对应该链路的「降级/冗余」一环
-- [台阶与障碍感知行走](../tasks/stair-obstacle-perceptive-locomotion.md) — 深度可用时的感知式行走对照
+- [Locomotion](../tasks/locomotion.md)
+- [Unitree G1](./unitree-g1.md)
+- [EVPeriscope](./paper-evperiscope.md)
 
 ## 参考来源
 
 - [cap-perception-blind-humanoid_arxiv_2609_11553.md](../../sources/papers/cap-perception-blind-humanoid_arxiv_2609_11553.md)
+- [cap-github-io 项目页归档](../../sources/sites/cap-github-io.md)
+- [hoshi-no-ai-cap 仓库归档](../../sources/repos/hoshi-no-ai-cap.md)
 - [wechat 14篇盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md)
-- [arXiv:2609.11553](https://arxiv.org/abs/2609.11553)
 
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2609.11553)
-- [项目页/资源](https://hoshi-no-ai.github.io/CAP/)
-- [代码/资源](https://github.com/Hoshi-No-Ai/CAP)
+- [项目页](https://hoshi-no-ai.github.io/CAP/)
+- [YouTube 演示](https://youtu.be/GE_GassSkYM)
