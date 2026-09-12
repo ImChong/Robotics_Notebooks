@@ -127,6 +127,7 @@ flowchart LR
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 - [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) — 本方法的逐环工程落地（选型/坑/首查项）
 - [MOSS Transcribe Diarize](../entities/paper-moss-transcribe-diarize.md) — 长时多说话人 SATS 开源栈（ASR+diarization 上游）
+- [OpenLess](../entities/openless.md) — 桌面端 ASR→润色→光标注入（研究写作/Prompt 口述；**非**机载语音助手）
 
 ## 参考来源
 

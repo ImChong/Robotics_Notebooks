@@ -740,6 +740,7 @@
 - [OpenVINS](wiki/entities/open-vins.md) — OpenVINS** 面向 **VIO 研究** 的可扩展滤波框架，强调可复现与模块配置。 `📅unknown` `[entity_page]`
 - [OpenClaw](wiki/entities/openclaw.md) — OpenClaw**（openclaw.ai，[GitHub: openclaw/openclaw](https://github.com/open `📅unknown` `[entity_page]`
 - [openJiuwen（开放九问）](wiki/entities/openjiuwen.md) — openJiuwen**（openjiuwen.com，GitHub org [openJiuwen-ai](https://githu `📅unknown` `[entity_page]`
+- [OpenLess](wiki/entities/openless.md) — OpenLess**（openless.top，[GitHub: Open-Less/openless](https://github.com/O `📅unknown` `[entity_page]`
 - [OpenLET 具身智能开源数据集社区](wiki/entities/openlet.md) — OpenLET**（<https://openlet.openatom.tech/>）是由 **开放原子开源基金会** 孵化、**乐聚机器人**牵头运营的 **具身智能真机数据枢纽**：遵循开放协 `📅unknown` `[entity_page]`
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
