@@ -2,9 +2,9 @@
 type: entity
 tags: [paper, dataset, eth, stanford, berkeley, tum, humanoid, egocentric, 4d-reconstruction, human-motion, perceptive-locomotion, terrain, motion-retargeting, unitree-g1, smpl-x]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-12
 arxiv: "2607.13472"
-venue: "arXiv 2026"
+venue: "CoRL 2026"
 related:
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./amass.md
@@ -21,7 +21,8 @@ related:
 sources:
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/sites/egohtr-github-io.md
-summary: "EgoHTR（ETH×Stanford×Berkeley×TUM，arXiv:2607.13472）：Aria+Rokoko+BLK2GO 采集 55 条 rough-terrain 场景对齐 4D 人体运动（~1.37 h / 150k 帧）；局部 MPJPE 73.2 mm、全局 W-MPJPE 151.3 mm；支撑 HMR 基准与 G1 感知 locomotion；数据与代码项目页仍标 coming soon（2026-07-27 再核查）。"
+  - ../../sources/sites/egohtr-dataset-huggingface.md
+summary: "EgoHTR（ETH×Stanford×Berkeley×TUM，CoRL 2026 / arXiv:2607.13472）：Aria+Rokoko+BLK2GO 采集 55 条 rough-terrain 场景对齐 4D 人体运动（~1.37 h / 150k 帧）；局部 MPJPE 73.2 mm、全局 W-MPJPE 151.3 mm；数据集已上 HF leggedrobotics/egohtr（~719 GB）；重建/训练代码仍 coming soon（2026-09-12 再核查）。"
 ---
 
 # EgoHTR：第一视角粗糙地形人–场景 4D 演示
@@ -50,11 +51,11 @@ summary: "EgoHTR（ETH×Stanford×Berkeley×TUM，arXiv:2607.13472）：Aria+Rok
 | 字段 | 内容 |
 |------|------|
 | **机构** | 苏黎世联邦理工（ETH Zürich）；斯坦福大学（Stanford）；加州大学伯克利分校（UC Berkeley）；慕尼黑工业大学（TU Munich） |
-| **arXiv** | [2607.13472](https://arxiv.org/abs/2607.13472)（约 2026-07-15 预印本） |
+| **会议 / arXiv** | **CoRL 2026** accepted；[2607.13472](https://arxiv.org/abs/2607.13472)（约 2026-07-15 预印本） |
 | **规模** | **7** 场景 / **8** 被试 / **55** 序列 / **1.37 h** / ~**150k** 帧 @ 30 fps |
 | **传感** | Aria Gen.1 + Rokoko Pro II + Leica BLK2GO（可选第二 Aria / 固定相机） |
 | **下游** | HMR / 4D human-scene 基准；Unitree G1 感知全身跟踪 |
-| **开源（截至 2026-07-27 再核查）** | **宣称将开源 / 待发布**：项目页 Dataset / Code 均为 *coming soon*；无公开下载或可运行仓 |
+| **开源（截至 2026-09-12 再核查）** | **部分开源**：数据集 [HF `leggedrobotics/egohtr`](https://huggingface.co/datasets/leggedrobotics/egohtr)（~**719 GB**）；项目页 **Code (coming soon)**；无可运行重建/训练仓 |
 
 ## 为什么重要
 
@@ -71,8 +72,8 @@ summary: "EgoHTR（ETH×Stanford×Berkeley×TUM，arXiv:2607.13472）：Aria+Rok
 | **表示** | 参数化身体 + ego/exo 视频/SLAM + 场景几何 + 可选 mocap GT |
 | **任务侧重** | **粗糙地形穿越**、场景感知 mimic、4D 重建评测 |
 | **预重定向** | 否（人体参考）；G1 侧另走 OmniRetarget/GMR 管线 |
-| **许可 / 获取** | 以项目页为准；**截至入库日尚未开放下载** |
-| **选型提示** | 要 **场景对齐 + rough terrain** 人演示 → 优先跟进 EgoHTR；要最大人体分布仍选 [AMASS](./amass.md)；要已重定向 G1 locomotion 选 PHUMA |
+| **许可 / 获取** | HF 数据集已发布（访问可能需登录授权）；以项目页 / HF 卡片为准 |
+| **选型提示** | 要 **场景对齐 + rough terrain** 人演示 → 可下载 HF 数据；要最大人体分布仍选 [AMASS](./amass.md)；要已重定向 G1 locomotion 选 PHUMA |
 
 ## 核心原理
 
@@ -133,7 +134,7 @@ flowchart TB
 3. **重建三阶段** — MoCap→SMPL-X、拍手同步（<60 ms）、Aria 锚定 + ICP 到 BLK2GO 场景。
 4. **局部/全局 HPS** — mocap GT 子集 MPJPE **73.2** / PA **54.3** mm；全局 W-MPJPE **151.3** / WA **66.7** mm、RTE **0.09%**。
 5. **下游 mimic** — 高度图条件 PPO + 时间脚接触奖励（踏石 SR +5 pp、收敛更快）；G1 有 beam/box-up 等演示。
-6. **开源按待发布管** — Dataset/Code 项目页 *coming soon*（2026-07-27 再确认）；规模适合基准/fine-tune，不宜单独撑 foundation 预训练。
+6. **部分开源** — 数据集已上 [HF](https://huggingface.co/datasets/leggedrobotics/egohtr)（~719 GB）；重建/训练代码仍 *coming soon*（2026-09-12 再确认）；规模适合基准/fine-tune，不宜单独撑 foundation 预训练。
 
 ## 对比定位
 
@@ -147,7 +148,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-07-27 再核查）：[项目页](https://egohtr.github.io) Dataset / Code 均标 *coming soon*；GitHub org 仅有站点仓 [`egohtr/egohtr.github.io`](https://github.com/egohtr/egohtr.github.io)，无可辨识的训练/重建入口，无法绘制可复现运行时序。开放后应在 `sources/repos/` 补档并补本图。
+**不适用**（截至 2026-09-12 再核查）：[项目页](https://egohtr.github.io) **Code (coming soon)**；GitHub org 仅有站点仓 [`egohtr/egohtr.github.io`](https://github.com/egohtr/egohtr.github.io)，无可辨识的训练/重建入口，无法绘制可复现运行时序。数据集已发布于 [HF](https://huggingface.co/datasets/leggedrobotics/egohtr)；管线代码开放后应在 `sources/repos/` 补档并补本图。
 
 ## 工程实践
 
@@ -155,8 +156,8 @@ flowchart TB
 |----|------|
 | **选型** | 需要 **人–地形耦合参考**（踏石/梁/废墟）时纳入候选；勿与纯人体 AMASS 混为一谈 |
 | **精度预期** | 局部 MPJPE ~73 / PA ~54 mm；全局 W-MPJPE ~151 / WA ~67 mm、RTE ~0.09%（mocap GT 子集） |
-| **上机路径** | 等数据放出 → OmniRetarget/GMR 重定向到 G1 → 加接触奖励的 mimic PPO → 高度图条件策略 |
-| **开源跟进** | 定期复查项目页按钮是否变为有效 URL；勿假设「论文写 open-source」即可复现（2026-07-27 仍未放出） |
+| **上机路径** | 从 [HF 数据集](https://huggingface.co/datasets/leggedrobotics/egohtr) 取 `retarget/` 或自跑 OmniRetarget/GMR → 加接触奖励的 mimic PPO → 高度图条件策略 |
+| **开源跟进** | 数据集已可下载；仍须跟进项目页 **Code** 是否放出重建/训练仓（2026-09-12 仍 coming soon） |
 | **源码运行时序图** | **不适用**（原因见上节） |
 
 ## 局限与风险
@@ -164,7 +165,7 @@ flowchart TB
 - **规模：** 1.37 h 适合基准与 fine-tune，不足以单独撑大规模 foundation 预训练。
 - **场景假设：** 静态环境、无关节物体；手部跟踪未并入身体模型；无事后联合人–场景优化。
 - **硬件失败模式：** 无特征环境、高加速机动可能击穿定位。
-- **开放风险：** **数据与代码尚未公开**；选型与复现计划须按「待发布」管理，避免阻塞工程排期。
+- **开放风险：** **重建/训练代码仍未公开**；HF 数据约 **719 GB** 且可能需授权；复现管线须等官方代码或自研对齐 schema。
 
 ## 关联页面
 
@@ -183,11 +184,13 @@ flowchart TB
 
 - [EgoHTR 论文摘录](../../sources/papers/egohtr_arxiv_2607_13472.md)
 - [EgoHTR 项目页归档](../../sources/sites/egohtr-github-io.md)
+- [EgoHTR 数据集 Hugging Face 归档](../../sources/sites/egohtr-dataset-huggingface.md)
 - Brandes et al., *EgoHTR: Egocentric 4D Demonstrations of Human Terrain Traversal* — <https://arxiv.org/abs/2607.13472>
 - 项目页：<https://egohtr.github.io>
 
 ## 推荐继续阅读
 
 - 项目页方法与数据集浏览器：<https://egohtr.github.io>
+- Hugging Face 数据集：<https://huggingface.co/datasets/leggedrobotics/egohtr>
 - OmniRetarget（交互保留重定向）：<https://arxiv.org/abs/2509.26633>
 - RPL（鲁棒人形感知 locomotion）：<https://arxiv.org/abs/2602.03002>

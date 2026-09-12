@@ -81,6 +81,7 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
 - [NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)
 - [Ostrich](../entities/paper-ostrich.md) — 硬接触非光滑 Newton + IFT 伴随；大步长可微刚体仿真（arXiv:2609.08800，已开源）
+- [Designing physics experiments with AI](../entities/paper-designing-physics-experiments-with-ai.md) — 科学仪器域可微仿真案例：JAX **Differometor** 干涉仪优化（Nature 2026 Review + Learn2Design-2026）
 
 
 ## 推荐继续阅读

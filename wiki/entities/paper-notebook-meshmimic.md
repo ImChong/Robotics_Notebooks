@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-07-27
+updated: 2026-09-12
 arxiv: "2602.15733"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -71,4 +71,4 @@ MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-�
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：MeshMimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/MeshMimic__Geometry-Aware_Humanoid_Motion_Learning_through_3D_Scene_Reconstructi/MeshMimic__Geometry-Aware_Humanoid_Motion_Learning_through_3D_Scene_Reconstructi.html)
-- [EgoHTR](./paper-egohtr.md) — rough-terrain 可穿戴+扫描 4D 对照（数据/代码待发布）
+- [EgoHTR](./paper-egohtr.md) — rough-terrain 可穿戴+扫描 4D 对照（HF 数据已发布，代码待发布）

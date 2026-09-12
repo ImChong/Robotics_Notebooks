@@ -3,7 +3,7 @@ type: comparison
 title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
 summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 KungFuAthlete 高动态与 EgoHTR rough-terrain 人–场景扩展。"
-updated: 2026-08-15
+updated: 2026-09-12
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -26,6 +26,7 @@ sources:
   - ../../sources/sites/humanoideveryday.md
   - ../../sources/papers/kung_fu_athlete_bot.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
+  - ../../sources/sites/egohtr-dataset-huggingface.md
   - ../../sources/repos/exercises-dataset.md
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
   - ../../sources/papers/humaps4d_cvpr_2026.md
@@ -56,7 +57,7 @@ sources:
 | [PHUMA](../entities/dataset-bfm-phuma.md) | **已 PhySINK 重定向到 G1/H1-2** 的 73 h locomotion；宇树友好 |
 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | **真机人形操作** 多模态集；非 MoCap 参考库 |
 | [KungFuAthlete](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) | **武术高动态** 视频→GVHMR→GMR；Jump 子集动力学上界；Ground ready |
-| [EgoHTR](../entities/paper-egohtr.md) | **rough-terrain 人–场景 4D**（Aria+IMU 服+扫描）；感知 locomotion 参考；数据/代码待发布 |
+| [EgoHTR](../entities/paper-egohtr.md) | **rough-terrain 人–场景 4D**（Aria+IMU 服+扫描）；感知 locomotion 参考；**HF 数据已发布**（~719 GB），代码待发布 |
 | [HumanTracker](../entities/paper-humantracker.md) | **153 h / 25K 四族光学评测集 + HumanScore**；GMR→29-DoF；**数据待发布**，评测代码已开 |
 | [HUMAPS-4D](../entities/paper-humaps4d.md) | **可穿戴生物力学 4D**（MoCap+RGB+sEMG+足底）；隐私友好姿态/动作识别；**DUA 数据、无代码** |
 
@@ -113,7 +114,7 @@ flowchart TD
   start --> q5{要武术 / 空翻<br/>极高动态上界?}
   q5 -->|是| kfa[KungFuAthlete Jump/Ground]
   start --> q6{要 rough-terrain<br/>人–场景对齐演示?}
-  q6 -->|是| egohtr[EgoHTR 待开放]
+  q6 -->|是| egohtr[EgoHTR HF 已发布]
   start --> q7{要按失败机制分族<br/>评已有 tracker?}
   q7 -->|是| ht[HumanTracker 数据待发布]
 ```
@@ -125,7 +126,7 @@ flowchart TD
 3. **轻量 recovery 原型**：LaFAN1 子集 → 重定向 → 单策略走/跑/起身（见 [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)）。
 4. **操作策略（非参考轨迹）**：Humanoid Everyday 真机轨迹 → 模仿 / VLA；与 MoCap 库 **互补而非替代**。
 5. **全合成 G1 loco-manip 参考**：[GRAIL Dataset](../entities/grail-locomanipulation-dataset.md) 直接提供 post-SONIC 物理可行 `robot/` + `objects/` 轨迹，适合 tracker / IL / 视觉策略数据混合。
-6. **粗糙地形场景对齐人演示**：[EgoHTR](../entities/paper-egohtr.md)（待开放）→ OmniRetarget/GMR → 高度图条件 mimic；适合 foothold-critical 踏石/梁/废墟，**非** AMASS 规模替代。
+6. **粗糙地形场景对齐人演示**：[EgoHTR](../entities/paper-egohtr.md)（[HF 数据已发布](https://huggingface.co/datasets/leggedrobotics/egohtr)）→ OmniRetarget/GMR → 高度图条件 mimic；适合 foothold-critical 踏石/梁/废墟，**非** AMASS 规模替代。
 
 ## 四段衔接：数据来源 → 质量评估 → 重定向 → 策略输入
 
@@ -158,6 +159,7 @@ flowchart TD
 - [GRAIL 数据集 Hugging Face 归档](../../sources/sites/grail-locomanipulation-huggingface.md)
 - [KungFuAthleteBot 论文 ingest](../../sources/papers/kung_fu_athlete_bot.md)
 - [EgoHTR 论文 ingest](../../sources/papers/egohtr_arxiv_2607_13472.md)
+- [EgoHTR 数据集 HF 归档](../../sources/sites/egohtr-dataset-huggingface.md)
 - [Exercises Dataset 仓库归档](../../sources/repos/exercises-dataset.md) — 健身动作目录（非 MoCap）对照
 - [HumanTracker 论文摘录](../../sources/papers/humantracker_arxiv_2608_13555.md) — 153 h 四族评测集（数据待发布）
 
@@ -170,7 +172,7 @@ flowchart TD
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md)
 - [GRAIL Loco-Manipulation Dataset](../entities/grail-locomanipulation-dataset.md)
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 武术高动态 + tracking∪recovery
-- [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 人–场景 4D；数据/代码待发布
+- [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 人–场景 4D；HF 数据已发布，代码待发布
 - [KungfuBot / PBHC](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — LAFAN/AMASS/视频 → SMPL 训练输入（[repo](../../sources/repos/pbhc.md)）
 - [Unitree G1](../entities/unitree-g1.md)
 - [Exercises Dataset](../entities/exercises-dataset.md) — 健身目录/GIF；勿与本表 MoCap 源混用

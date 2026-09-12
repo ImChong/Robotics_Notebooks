@@ -10,9 +10,9 @@
 - **项目页：** <https://egohtr.github.io>
 - **机构：** 苏黎世联邦理工（ETH Zürich）；斯坦福大学（Stanford）；加州大学伯克利分校（UC Berkeley）；慕尼黑工业大学（TU Munich）
 - **作者：** Alex Brandes、Haig Conti Georges Sajelian、Manthan Patel、Dominik Hollidt、Chenhao Li、Matthias Heyrman、Oliver Hausdörfer、Manuel Kaufmann、Xi Wang、Jonas Frey、Angela P. Schoellig、Christian Holz、Marc Pollefeys、Marco Hutter 等
-- **状态：** arXiv 预印本（约 2026-07-15）；**数据与代码计划开放**（项目页 Dataset / Code 均标 *coming soon*）
+- **状态：** arXiv 预印本（约 2026-07-15）；**CoRL 2026 accepted**（项目页 / HF README）
 - **入库日期：** 2026-07-21
-- **开源再核查：** 2026-07-27 — 项目页仍为 Dataset / Code *coming soon*；GitHub org `egohtr` 仅 `egohtr.github.io` 站点仓
+- **开源再核查：** 2026-09-12 — **数据集已发布** <https://huggingface.co/datasets/leggedrobotics/egohtr>（~719 GB）；项目页 **Code (coming soon)**；GitHub org `egohtr` 仍仅 `egohtr.github.io` 站点仓
 - **一句话说明：** 用 Aria 眼镜 + Rokoko IMU 服 + Leica BLK2GO 扫描，在 rough terrain 上采集 **55** 条场景对齐的 4D 人体运动（约 **1.37 h / 150k** 帧），并以此训练 Unitree G1 感知 locomotion。
 
 ## 摘录 1：问题与贡献
@@ -60,12 +60,12 @@
 
 - **基准（Table 4 节选）：** 外视 JOSH SR **57.2%** / Human3R SR **80.5%**（遮挡、运动模糊下失败）；EgoAllo 虽 SR 100% 但局部 MPJPE **161.1 mm**、PA-MPJPE **111.5 mm**（偏平地先验）；IMU poser 易时序漂移致不可物理交互。数据集可作 fine-tune 资源。
 - **局限：** 规模尚不足以大规模预训练；仅静态环境、无关节物体；手部未并入身体模型；无事后联合人–场景优化；无特征环境 / 高加速机动可能失败。
-- **开放边界（项目页核查，截至 2026-07-27 再确认）：** 页头 **Dataset (coming soon)**、**Code (coming soon)**；GitHub org `egohtr` 仅公开项目站仓 `egohtr/egohtr.github.io`，**无可运行重建/训练仓与数据下载 URL** → 归类 **宣称将开源 / 待发布**。
+- **开放边界（项目页核查，截至 2026-09-12 再确认）：** **Dataset** 已指向 HF [`leggedrobotics/egohtr`](https://huggingface.co/datasets/leggedrobotics/egohtr)；**Code (coming soon)**；GitHub org `egohtr` 仍仅站点仓 → 归类 **部分开源**（数据已发布，重建/训练管线待发布）。HF 归档见 [`sources/sites/egohtr-dataset-huggingface.md`](../sites/egohtr-dataset-huggingface.md)。
 
 **对 wiki 的映射：** sites 归档与实体页「开源状态 / 源码运行时序图：不适用」。
 
 ## 当前提炼状态
 
 - [x] arXiv HTML / 项目页 / GitHub org 已对齐摘录
-- [x] wiki 映射：`wiki/entities/paper-egohtr.md`（2026-07-21 新建；2026-07-27 加深评测数字与开源再核查）
-- [x] 开源边界写入 sites / wiki 局限（无 repos：尚无代码 URL）
+- [x] wiki 映射：`wiki/entities/paper-egohtr.md`（2026-07-21 新建；2026-07-27 加深评测数字；2026-09-12 HF 数据集发布再核查）
+- [x] 开源边界写入 sites / wiki 局限（HF 数据集已发布；repos 仍无训练/重建代码 URL）

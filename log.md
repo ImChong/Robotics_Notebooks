@@ -1,5 +1,13 @@
 ## [2026-09-12] ingest | sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md — 官方 GitHub/Studio 已开源，补 sources 归档与 wiki 实体/交叉引用
 
+## [2026-09-12] ingest | sources/sites/egohtr-github-io.md — EgoHTR 数据集已上 HF leggedrobotics/egohtr（~719 GB）；CoRL 2026；代码仍 coming soon；刷新 wiki/entities/paper-egohtr.md 与选型对照页
+
+## [2026-09-12] ingest | sources/papers/designing_physics_experiments_with_ai_nature_s41586_026_10898_6.md — Nature Review「AI 物理实验设计」+ Learn2Design-2026 / Differometor；竞赛栈 MIT 已开源
+
+- **意图：** 入库 Nature 2026 Review 四问框架，并以 NeurIPS 2026 Learn2Design 引力波探测器设计赛为旗舰案例
+- **开源结论：** **已开源** — Learn2Design-2026、Differometor、dfbench、GraviTune-Dataset（MIT / PyPI）
+- **关键页：** [`paper-designing-physics-experiments-with-ai`](wiki/entities/paper-designing-physics-experiments-with-ai.md)
+
 ## [2026-09-12] ingest | sources/papers/points_as_tori_arxiv_2607_16946.md — PAT 点云 SDF（SIGGRAPH 2026）；MIT 已开源
 
 ## [2026-09-11] ingest | sources/repos/humanlayer-skills.md — HumanLayer Claude Code 技能库（control-loop、`<important if>` harness、GHA 迭代维护）；已开源 MIT
