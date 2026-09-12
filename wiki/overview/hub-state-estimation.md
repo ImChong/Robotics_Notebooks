@@ -2,11 +2,12 @@
 type: overview
 tags: [hub, hub-state-estimation, slam, odometry, ekf, perception]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-12
 summary: "状态估计知识链汇总：本体感知融合、SLAM/VIO/LIO 选型与 Kalman/优化估计框架，服务 locomotion 与导航中的位姿与速度估计。"
 related:
   - ../entities/paper-slamformer-infinity.md
   - ../entities/paper-glob3r.md
+  - ../entities/paper-wid3r.md
   - ../entities/paper-d4rt.md
   - ../methods/lingbot-map.md
   - ../queries/slam-second-spring-embodied.md
@@ -61,6 +62,7 @@ related:
 - [FOCUS（连续足部 FK 可靠度）](../entities/paper-focus-foot-observation-confidence.md) — 人形本体 EKF；接触 ≠ FK 可信（A3 Ultra，arXiv:2609.02222）
 - [Query：具身时代 SLAM 精华与糟粕](../queries/slam-second-spring-embodied.md) — 深蓝沙龙纪要：留下时空基准，丢掉给人看的中间图
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 冻结 Pi3X + tracks → 运动平均/BA；离线高精度建图与渲染
+- [Wid3R（宽 FoV 前馈 3D 重建）](../entities/paper-wid3r.md) — 相机模型 token + 球谐射线；原生鱼眼/360，无需去畸变（ECCV 2026）
 - [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — memory condition + PGGO 联合长程位姿与 pointmap；官方仓占位（arXiv:2608.03429）
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — ERP 全景户外大规模 3DGS 划分重建（位姿下游 novel-view 资产）
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈 3D 重建（在线几何对照）

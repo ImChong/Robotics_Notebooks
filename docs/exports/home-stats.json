@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-09-12",
-  "node_count": 3971,
-  "edge_count": 35520,
+  "node_count": 3972,
+  "edge_count": 35531,
   "coverage": {
-    "covered": 3943,
-    "total": 3943,
+    "covered": 3944,
+    "total": 3944,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-point2pose.md",
-      "detail_id": "entity-paper-point2pose",
-      "label": "Point2Pose",
+      "path": "wiki/entities/paper-wid3r.md",
+      "detail_id": "entity-paper-wid3r",
+      "label": "Wid3R：相机模型条件化的宽视场 3D 重建",
       "type": "entity",
       "recency": "2026-09-12",
       "source": "git",
@@ -209,9 +209,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-point2pose.md",
-    "detail_id": "entity-paper-point2pose",
-    "label": "Point2Pose",
+    "path": "wiki/entities/paper-wid3r.md",
+    "detail_id": "entity-paper-wid3r",
+    "label": "Wid3R：相机模型条件化的宽视场 3D 重建",
     "type": "entity",
     "recency": "2026-09-12",
     "source": "git",
@@ -222,7 +222,7 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 782
+      "size": 784
     },
     {
       "label": "操作",
