@@ -2,10 +2,17 @@
 
 ## [2026-09-12] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **6** 条信息型预警）：
+共发现 **9** 个问题（另含 **14** 条信息型预警）：
 
-### ⚠️ 孤儿页（无入链）（0 个）
-- 无
+### ⚠️ 孤儿页（无入链）（8 个）
+- wiki/entities/paper-sa-2512-01850-register-any-point.md
+- wiki/entities/paper-sa-2512-05394-ssvae.md
+- wiki/entities/paper-sa-2603-26639-geosr.md
+- wiki/entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md
+- wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md
+- wiki/entities/paper-sa-2604-05182-lsrm.md
+- wiki/entities/paper-sa-2606-22094-lays.md
+- wiki/entities/paper-sa-2607-01987-geosubprobe.md
 
 ### ⚠️ 缺少关联页面区块（0 个）
 - 无
@@ -76,8 +83,8 @@
 ### ⚠️ README checklist 链接版本不一致（0 个）
 - 无
 
-### ⚠️ 图谱孤儿节点预警（graph-stats.json）（0 个）
-- 无
+### ⚠️ 图谱孤儿节点预警（graph-stats.json）（1 个）
+- 发现 8 个孤儿节点（无入链）：[{'id': 'wiki/entities/paper-sa-2512-01850-register-any-point.md', 'label': 'RAP：Scaling 3D Point Cloud Registration by Flow Matching', 'out_degree': 3}, {'id': 'wiki/entities/paper-sa-2512-05394-ssvae.md', 'label': 'SSVAE：Delving into Latent Spectral Biasing of Video VAEs for Superior Diffusability', 'out_degree': 3}, {'id': 'wiki/entities/paper-sa-2603-26639-geosr.md', 'label': 'GeoSR：Make Geometry Matter for Spatial Reasoning', 'out_degree': 3}, {'id': 'wiki/entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md', 'label': 'Poppy：Polarization-based Plug-and-Play Guidance for Enhancing Monocular Normal Estimation', 'out_degree': 3}, {'id': 'wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md', 'label': 'Coprime-PSI：Provable and Robust Wavefront Sensing via Self-Reference Interferometry', 'out_degree': 3}, {'id': 'wiki/entities/paper-sa-2604-05182-lsrm.md', 'label': 'LSRM：High-Fidelity Object-Centric Reconstruction via Scaled Context Windows', 'out_degree': 3}, {'id': 'wiki/entities/paper-sa-2606-22094-lays.md', 'label': 'LAYS：Cross-View Yaw Estimation in Location Uncertainty with Line-Aligning Yaw Scoring', 'out_degree': 3}, {'id': 'wiki/entities/paper-sa-2607-01987-geosubprobe.md', 'label': 'Geosubprobe：Understanding Geometric Representations in Self-Supervised Vision Transformers via Subspace Intervention', 'out_degree': 3}]
 
 ### ⚠️ Methods 页面缺少 Formalization/Concept 链接（0 个）
 - 无
@@ -97,9 +104,17 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（10 个）
 - wiki/entities/paper-designing-physics-experiments-with-ai.md（缺 对比）
+- wiki/entities/paper-sa-2512-01850-register-any-point.md（缺 对比）
+- wiki/entities/paper-sa-2512-05394-ssvae.md（缺 对比）
 - wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md（缺 对比）
+- wiki/entities/paper-sa-2603-26639-geosr.md（缺 对比）
+- wiki/entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md（缺 对比）
+- wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md（缺 对比）
+- wiki/entities/paper-sa-2604-05182-lsrm.md（缺 对比）
+- wiki/entities/paper-sa-2606-22094-lays.md（缺 对比）
+- wiki/entities/paper-sa-2607-01987-geosubprobe.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -129,4 +144,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-points-as-tori.md
 
-📊 Sources 覆盖率：3945/3945 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3953/3953 (100%) wiki/entity 页有 ingest 来源
