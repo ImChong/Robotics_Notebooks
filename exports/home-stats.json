@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-12",
   "node_count": 3967,
-  "edge_count": 35430,
+  "edge_count": 35483,
   "coverage": {
     "covered": 3939,
     "total": 3939,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-points-as-tori.md",
+      "detail_id": "entity-paper-points-as-tori",
+      "label": "Points as Tori（PAT）",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/humanlayer-skills.md",
       "detail_id": "entity-humanlayer-skills",
@@ -17,7 +27,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-wm-craftnet.md",
@@ -38,7 +48,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-gvla-gripper-aware-vla.md",
@@ -48,8 +58,7 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/sol-pi.md",
@@ -60,7 +69,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-cap-perception-blind-humanoid.md",
@@ -69,8 +78,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-differentiable-charts-constraint-manifolds.md",
@@ -79,8 +87,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-dlsrl.md",
@@ -89,8 +96,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-evperiscope.md",
@@ -99,8 +105,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-expressive-robotic-pianist.md",
@@ -120,7 +125,7 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-huro.md",
@@ -129,8 +134,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-imle-vla.md",
@@ -139,8 +143,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-map-wam.md",
@@ -150,7 +153,7 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-rapid-dexterous-pen-writing.md",
@@ -159,8 +162,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-reacthuman.md",
@@ -169,8 +171,7 @@
       "type": "entity",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-seed-umi.md",
@@ -190,7 +191,7 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/overview/dexterous-wm-humanoid-14-papers-technology-map.md",
@@ -199,38 +200,27 @@
       "type": "overview",
       "recency": "2026-09-11",
       "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-deworldsg.md",
-      "detail_id": "entity-paper-deworldsg",
-      "label": "DeWorldSG（深度感知 3D 语义场景图 · 世界模型先验）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
       "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanlayer-skills.md",
-    "detail_id": "entity-humanlayer-skills",
-    "label": "HumanLayer Skills",
+    "path": "wiki/entities/paper-points-as-tori.md",
+    "detail_id": "entity-paper-points-as-tori",
+    "label": "Points as Tori（PAT）",
     "type": "entity",
-    "recency": "2026-09-11",
+    "recency": "2026-09-12",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 639
+      "size": 780
     },
     {
       "label": "操作",
-      "size": 560
+      "size": 574
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -238,15 +228,15 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 281
+      "size": 254
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 226
+      "size": 224
     },
     {
-      "label": "视觉语言动作纵深路线",
-      "size": 195
+      "label": "世界动作模型",
+      "size": 158
     }
   ],
   "top_hubs": [
@@ -301,7 +291,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 606,
+      "degree": 609,
       "has_repo": true
     },
     {

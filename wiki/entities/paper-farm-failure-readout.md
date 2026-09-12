@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **另训专用失败检测器 / 异常分类头** — 需要独立数据与训练预算；FARM **不另训监控器**，直接从冻结机器人世界模型的内部预测态读出信号（33,985 参数 readout）。
+- **[Foresight（动作条件失败监测）](./paper-foresight-action-conditioned-failure-monitoring.md)** — 同属「用预测表征做安全闭环」一线，同样以动作条件表征判风险；FARM 的卖点在 **冻结骨干 + 极轻 readout** 与跨本体迁移（PIPER X / SO-101 / Franka）。
+- **把世界模型用于 **规划** 的路线（[MaP-WAM](./paper-map-wam.md)、[UniMPA](./paper-unimpa.md)）** — 那两条线把预测用于生成计划/动作；FARM 只把同一份预测态当 **监控信号源**，不改变策略。
+- **[Generative World Models](../methods/generative-world-models.md)** — 该页给出世界模型的通用训练与用途分类；FARM 属其中「表征复用于运行时安全」的下游用法。
+- **阈值/规则式运行时监控** — 依赖人工设定的力/位姿阈值；FARM 以五折 OOF pooled AUROC 85.68 / AUPRC 88.59 给出学习型 readout 的口径。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **FARM 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

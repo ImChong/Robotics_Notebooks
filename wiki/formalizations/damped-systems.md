@@ -163,6 +163,8 @@ $$M_d(\ddot x-\ddot x_d)+B_d(\dot x-\dot x_d)+K_d(x-x_d)=f_{\mathrm{ext}}$$
 - [Armature 建模](../concepts/armature-modeling.md)
 - [阻抗控制](../concepts/impedance-control.md)
 - [关节摩擦模型](../concepts/joint-friction-models.md)
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 仿真器的关节 `damping` / `armature` 与积分步长决定了 ζ、ωₙ 能否被如实复现，属保真度链路第 ① 建模层与第 ② 数值层
+- [Physics Fidelity ↔ Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md) — 仿真与实机阻尼比失配是关节级 sim2real gap 的常见来源
 
 ## 参考来源
 
