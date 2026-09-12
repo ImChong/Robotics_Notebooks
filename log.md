@@ -1,5 +1,7 @@
 ## [2026-09-12] ingest | sources/repos/openless.md — OpenLess 开源桌面语音输入（ASR+LLM 润色→光标）；已开源；实体 openless；交叉 humanoid-voice-interaction / openclaw
 
+## [2026-09-12] ingest | CAP/IMLE-VLA/FARM/ViBe 四篇深化 + 2026-09-12 再核：CAP 开源更正为待发布；FARM readout CLI 深化；arXiv 均无 v2
+
 ## [2026-09-12] ingest | sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md — 官方 GitHub/Studio 已开源，补 sources 归档与 wiki 实体/交叉引用
 
 ## [2026-09-12] ingest | sources/sites/egohtr-github-io.md — EgoHTR 数据集已上 HF leggedrobotics/egohtr（~719 GB）；CoRL 2026；代码仍 coming soon；刷新 wiki/entities/paper-egohtr.md 与选型对照页
