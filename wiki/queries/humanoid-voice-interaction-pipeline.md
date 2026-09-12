@@ -97,3 +97,4 @@ flowchart LR
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — 第 8.2 节所在的整体课程脉络
 - [大模型赋能人形](../overview/large-model-empowered-humanoids.md) — 语音交互在「大模型赋能」方法地图中的位置
 - [NaVid](../entities/paper-vln-10-navid.md) — 语音→VLN 落地的代表性导航模型
+- [OpenLess](../entities/openless.md) — 开发者本机口述写作工具（ASR 管线对照；不做机器人四环闭环）

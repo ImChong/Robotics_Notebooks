@@ -16,6 +16,7 @@ related:
   - ./sensenova-skills.md
   - ./paper-skillcorpus.md
   - ./paper-harnessbank.md
+  - ./openless.md
   - ../queries/humanoid-voice-interaction-pipeline.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/hierarchical-quadruped-navigation-stack.md
@@ -103,6 +104,7 @@ flowchart LR
 - [DeepTutor（HKUDS）](./deeptutor.md) — 辅导工作区；可 consult OpenClaw 并安装 ClawHub skills
 - [SkillCorpus](./paper-skillcorpus.md) — 社区 `SKILL.md` 策展语料；OpenClaw 为其端到端评测 harness 之一
 - [HarnessBank](./paper-harnessbank.md) — 冻结模型下进化宿主 harness（与技能层互补）
+- [OpenLess](./openless.md) — 桌面语音→润色文本（对照：写作输入 vs 助手技能路由）
 - [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
