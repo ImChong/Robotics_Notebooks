@@ -26,6 +26,8 @@ function harness(failure) {
     isMobile: false, pinnedNode: null, SPATIAL_VIEW_KEY: 'view',
     localStorage: { setItem: (k, v) => storage.set(k, v) },
     svg: { style: (_, value) => { display = value; } },
+    // G4：2D 的边画在独立 canvas 上，显隐必须与 SVG 同进退
+    edgeCanvas: { style: { display: 'block' } },
     pauseSimulation2D: () => { paused++; }, resumeSimulation2D: () => { resumed++; },
     hideTooltip() {}, syncGraphDomFromSimulation() {}, fitToScreen() {}, sync2DNodeLabels() {},
     syncTimeline3DState() {}, syncMagneticCheckbox() {}, updateForces() {},
@@ -40,7 +42,13 @@ function harness(failure) {
   // Run production transition and button/hint rendering; mock only external renderer/DOM APIs.
   vm.runInContext(source.slice(controls, controlsEnd), context);
   vm.runInContext(source.slice(transition, transitionEnd), context);
-  return { context, storage, alerts, display: () => display, resumed: () => resumed, paused: () => paused };
+  return {
+    context, storage, alerts,
+    display: () => display,
+    edgeDisplay: () => context.edgeCanvas.style.display,
+    resumed: () => resumed,
+    paused: () => paused,
+  };
 }
 
 for (const failure of ['library', 'create', 'show', 'cleanup']) {
@@ -49,6 +57,7 @@ for (const failure of ['library', 'create', 'show', 'cleanup']) {
     h.context.setSpatialViewMode('3d');
     assert.equal(h.context.spatialViewMode, '2d');
     assert.equal(h.display(), 'block');
+    assert.equal(h.edgeDisplay(), 'block', '恢复 2D 时边层 canvas 必须一并显示');
     assert.equal(h.context.graphCanvas3d.hidden, true);
     assert.equal(h.context.viewMode2dBtn.attributes['aria-pressed'], 'true');
     assert.equal(h.context.viewMode3dBtn.attributes['aria-pressed'], 'false');
@@ -66,11 +75,13 @@ test('successful 3D entry and return to 2D preserve normal behavior', () => {
   h.context.setSpatialViewMode('3d');
   assert.equal(h.context.spatialViewMode, '3d');
   assert.equal(h.display(), 'none');
+  assert.equal(h.edgeDisplay(), 'none', '进入 3D 时边层 canvas 一并隐藏');
   assert.equal(h.context.viewMode3dBtn.attributes['aria-pressed'], 'true');
   assert.equal(h.storage.get('view'), '3d');
   assert.equal(h.paused(), 1);
   h.context.setSpatialViewMode('2d');
   assert.equal(h.display(), 'block');
+  assert.equal(h.edgeDisplay(), 'block');
   assert.equal(h.storage.get('view'), '2d');
   assert.equal(h.resumed(), 1);
   assert.deepEqual(h.alerts, []);
@@ -82,4 +93,5 @@ test('failed automatic 3D restore clears the saved 3D preference', () => {
   h.context.setSpatialViewMode('3d', { force: true });
   assert.equal(h.storage.get('view'), '2d');
   assert.equal(h.display(), 'block');
+  assert.equal(h.edgeDisplay(), 'block');
 });

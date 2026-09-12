@@ -351,6 +351,11 @@
     /* ── 画布 ── */
     #graph-wrap {
       position: fixed;
+      /* 画布背景由此层提供：边层 canvas 压在 SVG 之下，SVG 自身必须透明 */
+      background:
+        radial-gradient(circle at 20% 20%, rgba(91,156,246,.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122,179,255,.04) 0%, transparent 50%),
+        #191919;
       top: calc(var(--header-h) + 46px);
       left: 0; right: 0;
       /* 不用 bottom:0：移动端 Chrome 底栏收起后 layout viewport 可能不长高，
@@ -361,18 +366,25 @@
       height: calc(var(--app-vh, 100dvh) - var(--header-h) - 46px);
       transition: right .22s cubic-bezier(.4,0,.2,1);
     }
-    #graph-canvas,
+    /* 边层 canvas 在最底、承载节点与交互的 SVG 在其上；两层都绝对定位以固定叠放次序。
+       #graph-wrap::before 的点阵与 #graph-canvas-3d 的 z-index 不变，故整体层序与此前一致。 */
+    #graph-edge-canvas,
+    #graph-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      display: block;
+    }
+    #graph-edge-canvas { pointer-events: none; }
+    #graph-canvas { cursor: grab; }
+    #graph-canvas:active { cursor: grabbing; }
     #graph-canvas-3d {
       width: 100%; height: 100%;
       background:
         radial-gradient(circle at 20% 20%, rgba(91,156,246,.04) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(122,179,255,.04) 0%, transparent 50%),
         #191919;
-      cursor: grab;
       display: block;
-    }
-    #graph-canvas:active { cursor: grabbing; }
-    #graph-canvas-3d {
       position: absolute;
       inset: 0;
       z-index: 2;
@@ -906,7 +918,7 @@
       color: #37352f;
     }
     /* 画布背景 */
-    [data-theme="light"] #graph-canvas,
+    [data-theme="light"] #graph-wrap,
     [data-theme="light"] #graph-canvas-3d {
       background:
         radial-gradient(circle at 20% 20%, rgba(91,156,246,.07) 0%, transparent 50%),
@@ -1868,6 +1880,7 @@
         <div class="graph-loading-pct" id="graph-loading-pct">0%</div>
       </div>
     </div>
+    <canvas id="graph-edge-canvas" aria-hidden="true"></canvas>
     <svg id="graph-canvas"></svg>
     <div id="graph-canvas-3d" hidden aria-label="3D 知识图谱"></div>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
@@ -2857,6 +2870,7 @@
           if (!window.RNGraph3D?.isAvailable?.()) throw new Error('3D library unavailable');
           pauseSimulation2D();
           svg.style('display', 'none');
+          if (edgeCanvas) edgeCanvas.style.display = 'none';
           graphCanvas3d.hidden = false;
           ensureGraph3DView();
           if (!graph3dView) throw new Error('3D view unavailable');
@@ -2880,6 +2894,7 @@
         graph3dHoverNode = null;
         hideTooltip();
         svg.style('display', 'block');
+        if (edgeCanvas) edgeCanvas.style.display = 'block';
         syncGraphDomFromSimulation();
         resumeSimulation2D();
         fitToScreen();
@@ -3600,6 +3615,164 @@
     let W = 0;
     let H = 0;
 
+    /* ── 边层 Canvas（G4）────────────────────────────────────────
+       原先每条边一个 <line>：全图 34k+ 元素，且每 tick 要写 4 个坐标属性
+       （G0 实测边/节点坐标写入 p50 ≈88 ms，约为力计算的 1.9 倍）。
+       改为单张 canvas 批绘制：一帧内按「高亮 / 暗淡」两批各攒一条路径，
+       每批只 stroke 一次。节点、标签与全部交互仍在 SVG，拾取/拖拽/浮窗不变。
+       状态在此处声明（measureGraphViewport 早于绘制函数被调用，需避开 TDZ）。 */
+    const edgeCanvas = document.getElementById('graph-edge-canvas');
+    const edgeCtx = edgeCanvas ? edgeCanvas.getContext('2d') : null;
+    // 边层每帧全量重绘，像素数直接决定光栅化成本与显存占用：
+    // 4 核及以下（多为集显/移动端）按 1 倍像素比绘制，其余封顶 2 倍。
+    const EDGE_CANVAS_MAX_DPR = (navigator.hardwareConcurrency || 8) <= 4 ? 1 : 2;
+    let edgeCanvasDpr = 1;
+    let edgeTransform = d3.zoomIdentity;
+    // 上色模式与原先四处 link.attr(...) 分支一一对应：
+    // filter=applyFilters、hover=悬停、sidebar=侧栏聚焦、timeline=时序动画。
+    let edgePaintMode = 'filter';
+    let edgePaintFocusId = null;
+    let edgePaintFocusColor = null;
+    // 每帧重建 Path2D 或数组会在低配设备上制造 GC 压力，两批坐标复用同一对缓冲。
+    let edgeBufHi = new Float32Array(0);
+    let edgeBufLo = new Float32Array(0);
+    let edgeDrawRaf = 0;
+    let edgeDrawnCount = 0;
+
+    function resizeEdgeCanvas() {
+      if (!edgeCanvas) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, EDGE_CANVAS_MAX_DPR);
+      const cw = Math.max(1, Math.round(W * dpr));
+      const ch = Math.max(1, Math.round(H * dpr));
+      if (edgeCanvas.width === cw && edgeCanvas.height === ch && edgeCanvasDpr === dpr) return;
+      edgeCanvas.width = cw;
+      edgeCanvas.height = ch;
+      edgeCanvasDpr = dpr;
+    }
+
+    /** 当前模式下的两批描边样式：[0] 高亮批、[1] 暗淡批（null 表示该批不画）。
+     *  颜色自带 alpha，canvas 的 globalAlpha 与之相乘，等价于 SVG 的 stroke-opacity。 */
+    function edgeBatchStyles() {
+      const w = linkWidthBase;
+      if (edgePaintMode === 'hover') {
+        return [
+          { color: edgePaintFocusColor, width: w * 1.8, alpha: 0.7 },
+          { color: isDark() ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)', width: w * 0.5, alpha: 0.3 },
+        ];
+      }
+      if (edgePaintMode === 'sidebar') {
+        return [
+          { color: edgePaintFocusColor, width: w * 1.5, alpha: 0.85 },
+          { color: edgeBaseColor(), width: w, alpha: 0.18 },
+        ];
+      }
+      if (edgePaintMode === 'timeline') {
+        return [{ color: edgeBaseColor(), width: w, alpha: 0.35 }, null];
+      }
+      return [
+        { color: edgeBaseColor(), width: w, alpha: 1 },
+        { color: edgeBaseColor(), width: w * 0.5, alpha: 0.2 },
+      ];
+    }
+
+    function strokeEdgeBatch(buf, len, style) {
+      if (!len || !style) return;
+      edgeCtx.globalAlpha = style.alpha;
+      edgeCtx.strokeStyle = style.color;
+      edgeCtx.lineWidth = style.width;
+      edgeCtx.beginPath();
+      for (let i = 0; i < len; i += 4) {
+        edgeCtx.moveTo(buf[i], buf[i + 1]);
+        edgeCtx.lineTo(buf[i + 2], buf[i + 3]);
+      }
+      edgeCtx.stroke();
+      edgeCtx.globalAlpha = 1;
+    }
+
+    /** 重绘整层边。坐标用世界坐标写入，缩放/平移交给 ctx 变换，与 SVG 上的
+     *  gRoot transform 同口径（lineWidth 同样随缩放，粗细观感与原先一致）。 */
+    function drawEdges() {
+      if (edgeDrawRaf) { cancelAnimationFrame(edgeDrawRaf); edgeDrawRaf = 0; }
+      if (!edgeCtx || is3DView()) return;
+      edgeCtx.setTransform(1, 0, 0, 1, 0, 0);
+      edgeCtx.clearRect(0, 0, edgeCanvas.width, edgeCanvas.height);
+
+      const need = edges.length * 4;
+      if (edgeBufHi.length < need) {
+        edgeBufHi = new Float32Array(need);
+        edgeBufLo = new Float32Array(need);
+      }
+      const t = edgeTransform;
+      // 视口裁剪（世界坐标）：两端都落在可视矩形同一侧外就跳过，放大后能省掉绝大部分边。
+      const margin = 64 / t.k;
+      const x0 = -t.x / t.k - margin;
+      const x1 = (W - t.x) / t.k + margin;
+      const y0 = -t.y / t.k - margin;
+      const y1 = (H - t.y) / t.k + margin;
+
+      const mode = edgePaintMode;
+      const focusId = edgePaintFocusId;
+      // hasActiveGraphFilter() 每次要跑十几个判据，逐边调用会放大成几十万次，提到循环外。
+      const hasFilter = hasActiveGraphFilter();
+      const tlOn = timelineAnimating;
+      let hi = 0;
+      let lo = 0;
+      const total = edges.length;
+      for (let i = 0; i < total; i++) {
+        const e = edges[i];
+        const s = e.source;
+        const g = e.target;
+        if (typeof s !== 'object' || typeof g !== 'object' || !s || !g) continue;
+        const sx = s.x;
+        const sy = s.y;
+        const gx = g.x;
+        const gy = g.y;
+        if ((sx < x0 && gx < x0) || (sx > x1 && gx > x1)
+          || (sy < y0 && gy < y0) || (sy > y1 && gy > y1)) continue;
+
+        let highlighted;
+        if (mode === 'timeline') {
+          if (!timelineRevealedIds.has(s.id) || !timelineRevealedIds.has(g.id)) continue;
+          highlighted = true;
+        } else if (mode === 'hover' || mode === 'sidebar') {
+          if (mode === 'sidebar' && tlOn
+            && (!timelineRevealedIds.has(s.id) || !timelineRevealedIds.has(g.id))) continue;
+          // 等价于 edgeHighlightsWithNode(e, focusId)，hasFilter 已提到循环外
+          highlighted = (s.id === focusId || g.id === focusId)
+            && (!hasFilter || (visibleNodeIds.has(s.id) && visibleNodeIds.has(g.id)));
+        } else {
+          highlighted = !hasFilter || (visibleNodeIds.has(s.id) && visibleNodeIds.has(g.id));
+        }
+
+        if (highlighted) {
+          edgeBufHi[hi++] = sx; edgeBufHi[hi++] = sy; edgeBufHi[hi++] = gx; edgeBufHi[hi++] = gy;
+        } else {
+          edgeBufLo[lo++] = sx; edgeBufLo[lo++] = sy; edgeBufLo[lo++] = gx; edgeBufLo[lo++] = gy;
+        }
+      }
+
+      const k = t.k * edgeCanvasDpr;
+      edgeCtx.setTransform(k, 0, 0, k, t.x * edgeCanvasDpr, t.y * edgeCanvasDpr);
+      const styles = edgeBatchStyles();
+      // 暗批先画：原先同一 <g> 内按数据序绘制，暗边可能压住高亮边；
+      // 批绘制下高亮批统一压在最上层，高亮更完整（本次唯一的观感变化）。
+      strokeEdgeBatch(edgeBufLo, lo, styles[1]);
+      strokeEdgeBatch(edgeBufHi, hi, styles[0]);
+      edgeDrawnCount = (hi + lo) / 4;
+    }
+
+    function scheduleEdgeDraw() {
+      if (edgeDrawRaf) return;
+      edgeDrawRaf = requestAnimationFrame(() => { edgeDrawRaf = 0; drawEdges(); });
+    }
+
+    function setEdgePaintMode(mode, focusId, focusColor) {
+      edgePaintMode = mode;
+      edgePaintFocusId = focusId || null;
+      edgePaintFocusColor = focusColor || null;
+      scheduleEdgeDraw();
+    }
+
     function readHeaderHeightPx() {
       const raw = getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim();
       const n = parseFloat(raw);
@@ -3636,6 +3809,7 @@
       W = nextW;
       H = nextH;
       svg.attr('width', W).attr('height', H);
+      resizeEdgeCanvas();
       return true;
     }
 
@@ -3677,6 +3851,9 @@
       .scaleExtent([GRAPH_ZOOM_MIN, GRAPH_ZOOM_MAX])
       .on('zoom', ev => {
         gRoot.attr('transform', ev.transform);
+        // 边层不在 SVG 里，缩放/平移需要同一变换并重绘（按帧合并，避免一次手势多次重绘）
+        edgeTransform = ev.transform;
+        scheduleEdgeDraw();
         userZoomed2D = true;
         sync2DNodeLabels();
       });
@@ -3688,6 +3865,7 @@
       W = 1200;
       H = 800;
       svg.attr('width', W).attr('height', H);
+      resizeEdgeCanvas();
     }
 
     // 2D 力模拟：alpha 从头到尾单调衰减，一次收敛落稳（与 3D 视图同口径）。
@@ -3828,14 +4006,9 @@
       simulation.alpha(0.25).restart();
     }
 
-    /* ── 渲染边 ── */
-    setLoadingProgress(88);   // 开始挂载节点/边 DOM
-    const gEdges = gRoot.append('g').attr('class', 'edges');
-    const link = gEdges.selectAll('line')
-      .data(edges)
-      .join('line')
-      .attr('stroke', edgeBaseColor())
-      .attr('stroke-width', linkWidthBase);
+    /* ── 渲染边：见上方「边层 Canvas（G4）」，此处只画首帧 ── */
+    setLoadingProgress(88);   // 开始挂载节点 DOM
+    drawEdges();
 
     /* ── 渲染节点 ── */
     const gNodes = gRoot.append('g').attr('class', 'nodes');
@@ -3878,8 +4051,8 @@
       .attr('stroke-opacity', 0.35);
 
     // 逐 tick 写坐标时按「参与力模拟的子集」遍历数据侧数组，需要 datum → 元素的反查。
-    // 两个选择集都是一次性 join（数据不再重绑），因此这里记一次即长期有效。
-    link.each(function(e) { e.__el = this; });
+    // 节点选择集是一次性 join（数据不再重绑），因此这里记一次即长期有效；
+    // 边已无 DOM 元素，由边层 canvas 按 edges 数组直接取端点坐标绘制。
     node.each(function(d) { d.__el = this; });
 
     label = node.append('text')
@@ -4184,21 +4357,13 @@
     // 路径共用同一口径，不需要各自维护一份成员表。
     function syncGraphDomFromSimulation() {
       const simNodes = simulation.nodes();
-      const linkForce = simulation.force('link');
-      const simLinks = linkForce && linkForce.links ? linkForce.links() : edges;
-      for (let i = 0; i < simLinks.length; i++) {
-        const e = simLinks[i];
-        const el = e.__el;
-        if (!el) continue;
-        el.setAttribute('x1', e.source.x);
-        el.setAttribute('y1', e.source.y);
-        el.setAttribute('x2', e.target.x);
-        el.setAttribute('y2', e.target.y);
-      }
       for (let i = 0; i < simNodes.length; i++) {
         const n = simNodes[i];
         if (n.__el) n.__el.setAttribute('transform', `translate(${n.x},${n.y})`);
       }
+      // 边层按全量 edges 重绘（含被筛掉的暗边）：原先只更新力模拟子集内的边，
+      // 一端被筛掉的边会留在旧坐标上，这里改为始终跟随两端当前位置。
+      drawEdges();
       updateCommunityLabels();
     }
 
@@ -4528,17 +4693,7 @@
         });
         node.select('.node-glow').attr('fill-opacity', n =>
           n.id === d.id ? 0.18 * recencyDimOf(n) : 0);
-        link
-          .attr('stroke', e => {
-            const dimColor = isDark() ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)';
-            return edgeHighlightsWithNode(e, d.id) ? nodeColor(d) : dimColor;
-          })
-          .attr('stroke-width', e => {
-            return edgeHighlightsWithNode(e, d.id) ? linkWidthBase * 1.8 : linkWidthBase * 0.5;
-          })
-          .attr('stroke-opacity', e => {
-            return edgeHighlightsWithNode(e, d.id) ? 0.7 : 0.3;
-          });
+        setEdgePaintMode('hover', d.id, nodeColor(d));
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
@@ -4558,7 +4713,6 @@
         }
 
         node.select('.node-glow').attr('fill-opacity', 0);
-        link.attr('stroke', edgeBaseColor());
         applyFilters();
         // 移动端固定卡片后，mouseleave 不隐藏 tooltip
         if (!isMobile || !pinnedNode) {
@@ -4978,24 +5132,9 @@
       sync2DNodeLabels();
       updateCommunityLabels();
 
-      // 连线判据原先对每条边把 12 个节点谓词各跑一遍、且 stroke-opacity 与 stroke-width
-      // 两趟各跑一次（全图约 82 万次谓词调用）。edgeMatchesCurrentFilter 与
-      // nodeMatchesCurrentFilter 实现完全一致，故「两端都命中」== 两端都在 visibleNodeIds
-      // 里，改为两次 Set 查表；三趟属性写入也合并成一趟。
-      link.each(function(e) {
-        // V21 修复：清除 openSidebar 的内联 style 干扰
-        this.style.opacity = '';
-        if (!hasFilter) {
-          this.setAttribute('stroke-opacity', 1);
-          this.setAttribute('stroke-width', linkWidthBase);
-          return;
-        }
-        const sId = typeof e.source === 'object' ? e.source.id : e.source;
-        const tId = typeof e.target === 'object' ? e.target.id : e.target;
-        const edgeOk = visibleNodeIds.has(sId) && visibleNodeIds.has(tId);
-        this.setAttribute('stroke-opacity', edgeOk ? 1 : 0.2);
-        this.setAttribute('stroke-width', edgeOk ? linkWidthBase : linkWidthBase * 0.5);
-      });
+      // 边的显隐由边层 canvas 在绘制时按 visibleNodeIds 现算（两端都命中 → 亮批，
+      // 否则暗批），不再逐边写 DOM 属性；这里只需把上色模式切回 filter。
+      setEdgePaintMode('filter');
       syncFilterSimulation(hasFilter);
       updateCount(visible);
       if (graph3dView && is3DView()) graph3dView.syncFilters();
@@ -5104,12 +5243,9 @@
       syncTimelineInteractionState();
     }
 
-    function updateTimelineLinks(revealed) {
-      link.attr('stroke-opacity', e => {
-        const sid = typeof e.source === 'object' ? e.source.id : e.source;
-        const tid = typeof e.target === 'object' ? e.target.id : e.target;
-        return revealed.has(sid) && revealed.has(tid) ? 0.35 : 0;
-      });
+    function updateTimelineLinks() {
+      // 只画两端都已显现的边，判据在边层绘制时按 timelineRevealedIds 现算。
+      setEdgePaintMode('timeline');
     }
 
     // 前进显现单个节点（带 pop-in 动画，用于播放）
@@ -5250,7 +5386,7 @@
       }
       syncTimelineSimulation();                 // 成员 = 已显现子集；暂停时力模拟仍继续
       timelineIdx = targetIdx;
-      updateTimelineLinks(timelineRevealedIds);
+      updateTimelineLinks();
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
@@ -5322,7 +5458,7 @@
         .attr('stroke-opacity', 0);
       node.select('.node-label').style('opacity', 0);
       updateCommunityLabels();         // 时序模式下隐藏社区漂浮标签（退出时由 applyFilters 恢复）
-      link.interrupt().attr('stroke-opacity', 0);
+      setEdgePaintMode('timeline');   // 显现集为空 → 边层此刻不画任何边
       syncTimelineSimulation();
       simulation.stop();
 
@@ -5345,7 +5481,6 @@
       timelineIdx = 0;
       timelineTotal = 0;
       node.interrupt().style('pointer-events', null);  // 恢复指针事件
-      link.interrupt();
       svg.interrupt('tlfit');
       updateTimelineControls();
 
@@ -5657,7 +5792,7 @@
 
     /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
     new MutationObserver(() => {
-      link.attr('stroke', edgeBaseColor());
+      scheduleEdgeDraw();   // 边色随主题变，重绘整层即可
       label.attr('fill', labelFill());
       if (graph3dView) graph3dView.refreshColors();
     }).observe(document.documentElement, {
@@ -5822,16 +5957,8 @@
         if (!tlShown(n.id)) return 0;
         return ((n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05)) * recencyDimOf(n);
       });
-      link
-        .style('opacity', null)
-        .style('stroke-width', null)
-        .attr('stroke', e => edgeHighlightsWithNode(e, d.id) ? nodeColor(d) : edgeBaseColor())
-        .attr('stroke-opacity', e => {
-          const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-          if (!tlShown(sId) || !tlShown(tId)) return 0;
-          return edgeHighlightsWithNode(e, d.id) ? 0.85 : 0.18;
-        })
-        .attr('stroke-width', e => edgeHighlightsWithNode(e, d.id) ? linkWidthBase * 1.5 : linkWidthBase);
+      // 时序模式下未显现的边由边层绘制时跳过（判据同 tlShown）
+      setEdgePaintMode('sidebar', d.id, nodeColor(d));
 
       if (graph3dView && is3DView()) {
         graph3dView.applySidebarHighlight(d, direct, secondary);
@@ -5848,18 +5975,12 @@
 
       if (timelineAnimating) {
         renderTimelineStatic();
-        link.style('opacity', null).style('stroke-width', null)
-            .attr('stroke', edgeBaseColor()).attr('stroke-width', linkWidthBase);
-        updateTimelineLinks(timelineRevealedIds);
+        updateTimelineLinks();   // 切回 timeline 上色模式
         return;
       }
       node.select('.node-glow').attr('fill-opacity', 0);
       node.style('opacity', null);
-      link
-        .style('opacity', null)
-        .style('stroke-width', null)
-        .attr('stroke', edgeBaseColor());
-      applyFilters();
+      applyFilters();            // 内部切回 filter 上色模式
     }
 
     function openSidebar(d) {
@@ -6133,6 +6254,12 @@
       tickOnce: () => simulation.tick(),
       syncDom: () => syncGraphDomFromSimulation(),
       syncCommunityLabels: () => updateCommunityLabels(),
+      // G4：边改 canvas 后 DOM 侧只剩节点，边的成本在此单独计时
+      drawEdges: () => drawEdges(),
+      edgeDrawnCount: () => edgeDrawnCount,
+      edgeCanvasSize: () => (edgeCanvas
+        ? { w: edgeCanvas.width, h: edgeCanvas.height, dpr: edgeCanvasDpr }
+        : null),
       applyFilters: () => applyFilters(),
       // G2 回归：浮窗里的「显示节点名称」开关已隐藏，验证标签路径需从此处驱动
       setShowNodeLabels: (on) => setShowNodeLabels(on),
