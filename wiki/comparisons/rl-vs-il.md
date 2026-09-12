@@ -7,7 +7,7 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
 summary: "RL vs 模仿学习（Imitation Learning）"
-updated: 2026-08-28
+updated: 2026-09-12
 ---
 
 # RL vs 模仿学习（Imitation Learning）
@@ -97,6 +97,10 @@ RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略
 - **需要快速跟上人类意图**：teleoperation、人机协作
 - **行为质量要求高且一致**：医疗、服务机器人
 
+### 任务形态视角（loco vs manip）
+
+相对本页的 **监督信号** 对照，[运控 RL vs 操作 IL/VLA](./locomotion-rl-vs-manipulation-learning-stack.md) 从 **任务结构** 解释为何当代栈常呈现「走路偏 RL、干活偏示范/VLA」：运控目标常已明确、缺接触动力学经验且仿真试错便宜；操作还需场景语义，示范与 VL 预训练往往更划算——并非腿/hand 天然绑定不同算法。
+
 ### 两者结合（最常见）
 
 **IL 初始化 + RL 微调**：
@@ -173,6 +177,7 @@ flowchart TB
 
 ## 关联页面
 
+- [运控 RL vs 操作 IL/VLA](./locomotion-rl-vs-manipulation-learning-stack.md) — 按 loco/manip 任务结构解释算法栈分化与全身合流
 - [机器人学习五大范式](./robot-learning-five-paradigms-taxonomy.md) — 在 RL/IL 之外补齐 LfV、VLA、持续学习
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法详细展开
 - [Imitation Learning](../methods/imitation-learning.md) — IL 方法详细展开

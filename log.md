@@ -1,3 +1,8 @@
+## [2026-09-12] ingest | sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md — 深蓝专栏第 12 篇：运控 RL vs 操作 IL/VLA 知识缺口与合流（UMI on Legs / BeyondMimic / RLT）
+
+- **意图：** 入库《具身智能基础》延伸篇，解释走路偏 RL、干活偏示范/VLA 的任务结构原因
+- **关键页：** [`locomotion-rl-vs-manipulation-learning-stack`](wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md)；交叉 `rl-vs-il`、五大学习范式、深蓝专栏地图
+
 ## [2026-09-12] ingest | sources/repos/openless.md — OpenLess 开源桌面语音输入（ASR+LLM 润色→光标）；已开源；实体 openless；交叉 humanoid-voice-interaction / openclaw
 
 ## [2026-09-12] ingest | CAP/IMLE-VLA/FARM/ViBe 四篇深化 + 2026-09-12 再核：CAP 开源更正为待发布；FARM readout CLI 深化；arXiv 均无 v2

@@ -2,7 +2,7 @@
 type: overview
 tags: [embodied-ai, fundamentals, geometry, kinematics, shenlan, survey, jacobian]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-12
 related:
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../formalizations/lie-group-rigid-body-motions.md
@@ -32,7 +32,8 @@ sources:
   - ../../sources/blogs/wechat_shenlan_robot_jacobian.md
   - ../../sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
-summary: "深蓝具身智能《具身智能基础》专栏（专辑 10 篇已入库）：几何 L0（齐次/李群/坐标/流形）→ RL 最小闭环与运动控制管线 → FK/IK/雅可比。不复述公式，只保留专栏顺序与子节点挂接。"
+  - ../../sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md
+summary: "深蓝具身智能《具身智能基础》专栏（专辑 10 篇已入库 + 延伸第 12 篇）：几何 L0（齐次/李群/坐标/流形）→ RL 最小闭环与运动控制管线 → FK/IK/雅可比；延伸篇补 loco RL vs manip IL/VLA 选型。不复述公式，只保留专栏顺序与子节点挂接。"
 ---
 
 # 《具身智能基础》专栏技术地图
@@ -119,6 +120,15 @@ flowchart TB
 | 冗余臂要边跟末端边避障 | [09 零空间](../formalizations/inverse-kinematics.md) 或 [07 混合 RL-IK](../comparisons/rl-inverse-kinematics-five-approaches.md) |
 | 四足 RL 从最小闭环扩到真机管线 | [04 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) → [06 pipeline](./robot-rl-motion-control-pipeline.md) |
 | 人形运控 RL 五模块 | [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md) |
+| 为何走路偏 RL、干活偏示范/VLA | [运控 RL vs 操作 IL/VLA](../comparisons/locomotion-rl-vs-manipulation-learning-stack.md)（专栏延伸 **12**） |
+
+## 专栏延伸（专辑外）
+
+| 序 | 篇目 | 节点 |
+|----|------|------|
+| 12 | [运控 RL vs 操作 IL/VLA](../comparisons/locomotion-rl-vs-manipulation-learning-stack.md) | 知识缺口与试错经济学；UMI on Legs / BeyondMimic / RLT 合流 |
+
+- Source：[wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md](../../sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md)（`9prT5Ds0paBthAiupFQTqA`）
 
 ## 常见误区
 
@@ -149,6 +159,7 @@ flowchart TB
 - [深蓝具身智能：正向运动学](../../sources/blogs/wechat_shenlan_forward_kinematics.md)
 - [深蓝具身智能：逆运动学](../../sources/blogs/wechat_shenlan_inverse_kinematics.md)
 - [深蓝具身智能：雅可比矩阵](../../sources/blogs/wechat_shenlan_robot_jacobian.md)
+- [深蓝具身智能：运控 RL vs 操作 IL/VLA](../../sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md)（专栏第 12 篇）
 - [专辑清单 JSON](../../sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json)
 
 ## 推荐继续阅读
