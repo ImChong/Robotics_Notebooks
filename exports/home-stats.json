@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-12",
-  "node_count": 3970,
-  "edge_count": 35511,
+  "node_count": 3971,
+  "edge_count": 35522,
   "coverage": {
-    "covered": 3942,
-    "total": 3942,
+    "covered": 3943,
+    "total": 3943,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-wid3r.md",
+      "detail_id": "entity-paper-wid3r",
+      "label": "Wid3R：相机模型条件化的宽视场 3D 重建",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
       "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
@@ -195,30 +206,23 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-reacthuman.md",
-      "detail_id": "entity-paper-reacthuman",
-      "label": "ReactHuman（arXiv:2609.10895）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
-    "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
-    "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
-    "type": "comparison",
+    "path": "wiki/entities/paper-wid3r.md",
+    "detail_id": "entity-paper-wid3r",
+    "label": "Wid3R：相机模型条件化的宽视场 3D 重建",
+    "type": "entity",
     "recency": "2026-09-12",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 781
+      "size": 783
     },
     {
       "label": "操作",
