@@ -1,3 +1,5 @@
+## [2026-09-12] ingest | sources/papers/ssla_arxiv_2603_06228.md — SSLA-Det 事件检测（ECCV 2026）；已开源 haohq19/ssla；Gen1/N-Caltech101；交叉 EVA 前置
+
 ## [2026-09-12] ingest | sources/papers/motus2_arxiv_2608_30237.md — Motus2 复核 arXiv v2（2026-09-10）；项目页与 motus-robotics 组织仍无代码仓；刷新 paper-motus2 开源日期
 
 ## [2026-09-12] ingest | sources/papers/point2pose_arxiv_2604_10415.md — Point2Pose 无 CAD 多物体 6D 跟踪；主仓与合成数据生成器已开源
