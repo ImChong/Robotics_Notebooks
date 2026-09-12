@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **把长程记忆整段喂给执行器的策略** — 上下文随任务长度膨胀、每步都要重读；MaP-WAM 把多模态情景记忆 **编译成分段语言—视觉计划**，执行期按需切换段落。
+- **[UniMPA](./paper-unimpa.md)** — 同为「记忆 + 预测 + 动作」栈，但 UniMPA 把记忆绑到 **动作接地的转移建模**（进度流 / 转移关键像素）；MaP-WAM 走 **显式分段计划** 这一层抽象。
+- **[WAM / 具身 ICL 家族横向对照](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)** — 该页对照 WAM 系方法的上下文利用方式，可用来定位 MaP-WAM 的记忆—计划接口在家族中的位置。
+- **[FARM](./paper-farm-failure-readout.md)** — 同样复用世界模型表征，但用途是 **运行时失败监控**；MaP-WAM 用于 **任务分解与计划切换**。
+- **[Generative World Models](../methods/generative-world-models.md)** — 该页给出世界模型的通用分类；MaP-WAM 的文内口径为 RMBench 83.3%、真机任务 78.0%。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **MaP-WAM 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

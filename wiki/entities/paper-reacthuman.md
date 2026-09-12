@@ -64,6 +64,16 @@ summary: "17 类事件、1000+ 可复现情景；240 Hz 刚体仿真生成真值
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **纯问答 / 选择题式 MLLM 具身评测** — 只看模型「说得对不对」，不验证动作能否执行；ReactHuman 要求把每个动作 **在 240 Hz 刚体仿真里执行出来** 再判分（物理接地）。
+- **成功率单指标的操作 benchmark** — 一个标量掩盖失败原因；ReactHuman 用 **五项诊断指标** 拆开反应决策的不同侧面，覆盖 17 类事件、1000+ 可复现情景。
+- **[FARM](./paper-farm-failure-readout.md)** — 同样关心「出事」，但 FARM 是 **运行时失败读出**（部署期监控）；ReactHuman 是 **离线评测集**（选型期打分）。
+- **[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)** — 该指南按「任务域 → 物理接地度 → 指标可分解性」选基准；ReactHuman 落在 **高物理接地 + 多诊断指标** 一档，但开源边界为 **部分开源**（仅 HF 数据集）。
+- **[仿真 vs 真机评测差距](../concepts/sim-vs-real-eval-gap.md)** — ReactHuman 的真值全部来自刚体仿真；引用其分数时需按该页口径打折看待真机外推。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文对照模型、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **ReactHuman 适合作为本期「部分开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**
@@ -78,6 +88,8 @@ summary: "17 类事件、1000+ 可复现情景；240 Hz 刚体仿真生成真值
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Manipulation](../tasks/manipulation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页在该选型链路中的定位（高物理接地 / 多诊断指标 / 部分开源）
+- [仿真 vs 真机评测差距](../concepts/sim-vs-real-eval-gap.md) — 仿真真值口径下引用分数的折扣读法
 
 ## 参考来源
 

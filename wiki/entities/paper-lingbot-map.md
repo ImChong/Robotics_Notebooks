@@ -180,6 +180,7 @@ sequenceDiagram
 - [R³](./paper-r3-relative-regression.md) — 相对回归流式重建对照
 - [State Estimation](../concepts/state-estimation.md) — 几何估计在控制链上游
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 流式前馈重建在感知栈「表征层」的定位与选型口径
 - [VLA](../methods/vla.md) — 可选几何先验下游
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — 同栈动作模型
 

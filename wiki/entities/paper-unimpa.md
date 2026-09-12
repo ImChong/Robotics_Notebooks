@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **纯视频预测式世界模型** — 预测未来帧但与可执行动作脱钩；UniMPA 用 **动作接地的转移建模**（进度流 + 转移关键像素）把预测绑到动作原型上。
+- **[MaP-WAM](./paper-map-wam.md)** — 同属记忆-预测-动作栈，但 MaP-WAM 先把记忆编译成 **分段计划** 再执行；UniMPA 把记忆库、预测与动作放进 **同一栈** 内联查询。
+- **[Action Chunking](../methods/action-chunking.md)** — 靠固定长度动作块缓解长程一致性；UniMPA 用 **视觉—动作记忆库** 检索动作原型，长度不固定。
+- **[FARM](./paper-farm-failure-readout.md)** — 复用世界模型表征做 **失败监控**；UniMPA 复用它做 **动作生成**，是同一表征的两种下游。
+- **[Generative World Models](../methods/generative-world-models.md)** — 该页给出世界模型的通用分类；UniMPA 的文内评测覆盖 LIBERO、RoboTwin 2.0、VLABench 与双臂真机套件。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **UniMPA 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

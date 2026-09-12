@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **只调初始噪声的 latent RL** — 搜索空间限于采样起点，表达力受限；DLSRL 在 **噪声 latent + 动作表示 latent** 双通道上注入残差适配特征。
+- **直接微调 [Diffusion Policy](../methods/diffusion-policy.md) 权重** — 需反传整个去噪链、易破坏预训练先验；DLSRL **冻结生成器**，只学适配表示，降低在线适配成本。
+- **[在线 RL vs 离线 RL](../comparisons/online-vs-offline-rl.md)** — 本文落在「离线预训练生成策略 + 在线适配」的组合位，文内以 RoboMimic 与 LIBERO 的 **在线适配速度** 为主要观察量。
+- **[IMLE-VLA](./paper-imle-vla.md)** — 同样面向生成式策略的中间表示，但目标是 **单步采样加速**；DLSRL 目标是 **适配/提升成功率**。
+- **[模仿学习 vs 强化学习](../comparisons/rl-vs-il.md)** — 该页给出两类监督信号的取舍；DLSRL 是「IL 打底、RL 精修」的典型折中。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **DLSRL 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

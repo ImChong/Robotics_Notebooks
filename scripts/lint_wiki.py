@@ -179,6 +179,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # `uv sync` / `uv pip install`，复现路径工具链引用），是打包/环境基础设施，
     # 非机器人概念/方法/形式化，不应建独立页；与 arxiv/license/md 同类基础设施停用词。
     "uv",
+    # conda：各页正文里的 `conda` 均为复现路径里的 Python 环境管理器引用
+    # （「`conda` 环境 → `pip install -e .`」「`conda` 环境名 `letools`」），
+    # 是打包/环境基础设施，非机器人概念/方法/形式化，不应建独立页；
+    # 与 uv/arxiv/license/md 同类基础设施停用词。
+    "conda",
     # sequencediagram：各页正文里的 `sequenceDiagram` 均为 Mermaid 图类型关键字
     # （论文实体页「源码运行时序图」章节的写作约定，如「代码发布后应补
     # `sequenceDiagram`」），是文档语法 token，非机器人概念/方法/形式化，
