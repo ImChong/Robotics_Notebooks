@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-12",
-  "node_count": 3966,
-  "edge_count": 35476,
+  "node_count": 3967,
+  "edge_count": 35483,
   "coverage": {
-    "covered": 3938,
-    "total": 3938,
+    "covered": 3939,
+    "total": 3939,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-points-as-tori.md",
+      "detail_id": "entity-paper-points-as-tori",
+      "label": "Points as Tori（PAT）",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/humanlayer-skills.md",
       "detail_id": "entity-humanlayer-skills",
@@ -191,36 +201,26 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-deworldsg.md",
-      "detail_id": "entity-paper-deworldsg",
-      "label": "DeWorldSG（深度感知 3D 语义场景图 · 世界模型先验）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanlayer-skills.md",
-    "detail_id": "entity-humanlayer-skills",
-    "label": "HumanLayer Skills",
+    "path": "wiki/entities/paper-points-as-tori.md",
+    "detail_id": "entity-paper-points-as-tori",
+    "label": "Points as Tori（PAT）",
     "type": "entity",
-    "recency": "2026-09-11",
+    "recency": "2026-09-12",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 703
+      "size": 780
     },
     {
       "label": "操作",
-      "size": 575
+      "size": 574
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -232,7 +232,7 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 230
+      "size": 224
     },
     {
       "label": "世界动作模型",
@@ -244,7 +244,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1479,
+      "degree": 1480,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
