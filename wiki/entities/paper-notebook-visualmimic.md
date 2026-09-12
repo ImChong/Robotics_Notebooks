@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, visual-rl, sim2real, hierarchical-control, teacher-student, dagger, ppo, keypoint-tracking, depth, humanoid-paper-notebooks, stanford]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-12
 arxiv: "2509.20322"
 venue: "2025 · arXiv"
 code: https://github.com/visualmimic/VisualMimic
