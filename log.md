@@ -1,3 +1,5 @@
+## [2026-09-12] ingest | sources/papers/point2pose_arxiv_2604_10415.md — Point2Pose 无 CAD 多物体 6D 跟踪；主仓与合成数据生成器已开源
+
 ## [2026-09-12] ingest | sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md — 深蓝专栏第 12 篇：运控 RL vs 操作 IL/VLA 知识缺口与合流（UMI on Legs / BeyondMimic / RLT）
 
 - **意图：** 入库《具身智能基础》延伸篇，解释走路偏 RL、干活偏示范/VLA 的任务结构原因

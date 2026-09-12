@@ -1812,6 +1812,7 @@
 - [PILOT：非结构化场景感知统一 loco-manipulation 低层控制器](wiki/entities/paper-pilot-perceptive-loco-manipulation.md) — PILOT**（*A Perceptive Integrated Low-level Controller for Loco-manipulation over Unstructured Scen `📅unknown` `[entity_page]`
 - [PlaNet（Learning Latent Dynamics for Planning from Pixels）](wiki/entities/paper-planet-latent-dynamics.md) — PlaNet**（*Deep Planning Network*，arXiv:1811.04551，ICML 2019，Da `📅unknown` `[entity_page]`
 - [PlayWorld](wiki/entities/paper-playworld-autonomous-play-data.md) — PlayWorld** 收录于 具身智能研究室 · 具身世界模型六路线综述 **趋势与判断 `📅unknown` `[entity_page]`
+- [Point2Pose](wiki/entities/paper-point2pose.md) — Point2Pose**（*Occlusion-Recovering 6D Pose Tracking and 3D Reconstruction for Multiple Unknown Obj `📅unknown` `[entity_page]`
 - [PointDiT：像素空间扩散估单目点图](wiki/entities/paper-pointdit.md) — PointDiT**（*PointDiT: Pixel-Space Diffusion for Monocular Geometry Estimation*，[arXiv:2607.02515 `📅unknown` `[entity_page]`
 - [Points as Tori（PAT）](wiki/entities/paper-points-as-tori.md) — Points as Tori（PAT）**（*Fast Pointwise Signed Distance for Point Clouds*，[arXiv:2607.16946](https:/ `📅unknown` `[entity_page]`
 - [POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）](wiki/entities/paper-pot-vla.md) — POT-VLA**（*Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manip `📅unknown` `[entity_page]`
