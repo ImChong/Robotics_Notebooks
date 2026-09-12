@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, reinforcement-learning, motion-tracking, contact-flow, meta-skill, sim2sim, mocap, unitree-g1, vlm, noitom, hkust, hku, whu]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-12
 arxiv: "2606.26201"
 venue: "arXiv 2026"
 related:

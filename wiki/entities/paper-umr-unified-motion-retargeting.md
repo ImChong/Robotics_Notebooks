@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, point-cloud, contact, mujoco, beyondmimic, sonic, unitree-g1, hkust-gz, noitom, hanyang, hkust, hku]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-12
 arxiv: "2609.02134"
 related:
   - ../concepts/motion-retargeting.md
@@ -18,15 +18,17 @@ related:
   - ../comparisons/gmr-vs-nmr-vs-reactor.md
 sources:
   - ../../sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md
-  - ../../sources/sites/adapt-humanoidtennis.md
-summary: "UMR（arXiv:2609.02134，HKUST-GZ / Noitom / 汉阳 / HKUST / HKU）：规范 T-pose 稠密点云对应 + 约束表面匹配，不手写人–机关键点；LAFAN1 上相对 GMR 降全局体段误差、接触任务相对 OmniRetarget 关节误差约 −40–56%；G1 真机旋踢/捡球/爬楼；代码待发布。"
+  - ../../sources/sites/umr-project.md
+  - ../../sources/repos/umr.md
+  - ../../sources/repos/unified-motion-retargeting-unofficial.md
+summary: "UMR（arXiv:2609.02134，HKUST-GZ / Noitom / 汉阳 / HKUST / HKU）：规范 T-pose 稠密点云对应 + 约束表面匹配，不手写人–机关键点；LAFAN1 上相对 GMR 降全局体段误差、接触任务相对 OmniRetarget 关节误差约 −40–56%；G1 真机旋踢/捡球/爬楼；官方 GitHub + UMR Studio 已开源。"
 ---
 
 # UMR：学习点云对应的统一人形重定向
 
-**UMR**（*Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*，[arXiv:2609.02134](https://arxiv.org/abs/2609.02134)）由 **香港科技大学广州校区（HKUST-GZ）**、**诺亦腾机器人（Noitom Robotics）**、**汉阳大学（Hanyang University）**、**香港科技大学（HKUST）**、**香港大学（HKU）** 提出：把人与人形的**外表面点云**当成统一接口，在规范 T-pose 学稠密索引对应，再拿同一套点对做约束优化——表面位姿对齐 + 接触图直传，**不手写骨架/肢体映射**。定量跟踪与接触实验在 **Unitree G1**；定性覆盖身高 0.75–1.83 m 的五台人形。
+**UMR**（*Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*，[arXiv:2609.02134](https://arxiv.org/abs/2609.02134)，[项目页](https://hanyang9.github.io/UMR/umr_project.html)）由 **香港科技大学广州校区（HKUST-GZ）**、**诺亦腾机器人（Noitom Robotics）**、**汉阳大学（Hanyang University）**、**香港科技大学（HKUST）**、**香港大学（HKU）** 提出：把人与人形的**外表面点云**当成统一接口，在规范 T-pose 学稠密索引对应，再拿同一套点对做约束优化——表面位姿对齐 + 接触图直传，**不手写骨架/肢体映射**。定量跟踪与接触实验在 **Unitree G1**；定性覆盖身高 0.75–1.83 m 的五台人形。
 
-> **同名消歧：** 本页是 **表面点云对应** 的 UMR。不要和 AdaMorph（arXiv:2601.07284，embodiment-aware Transformer「统一重定向」）或 PALUM（arXiv:2601.07272）混成一页。[AdaPT](./paper-adapt.md) 项目页写 MoCap「经 UMR 重定向、coming soon」——指的就是这篇，**不是** AdaPT 仓本身。
+> **同名消歧：** 本页是 **表面点云对应** 的 UMR。不要和 AdaMorph（arXiv:2601.07284，embodiment-aware Transformer「统一重定向」）或 PALUM（arXiv:2601.07272）混成一页。[AdaPT](./paper-adapt.md) MoCap 支路用的就是这篇 UMR，**不是** AdaPT 仓本身。
 
 ## 一句话定义
 
@@ -48,6 +50,7 @@ summary: "UMR（arXiv:2609.02134，HKUST-GZ / Noitom / 汉阳 / HKUST / HKU）�
 - **稀疏关键点是可扩展性瓶颈。** [GMR](../methods/motion-retargeting-gmr.md) / 多数 IK 线要为人–机对手工语义；换机几乎等于重做映射。UMR 把对应从「关节表」改成「规范姿态上的表面变形场」。
 - **接触可以跟点走。** 同一索引把人侧接触向量拷到机器人，不必再写「人手掌 ↔ 哪块 link」。相对 [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 的 interaction mesh + 启发式 stance，这是另一条接触保留路径。
 - **下游数字说明参考质量，不只是「看着像」。** BeyondMimic 跟踪、SONIC 大规模 tracker、OmniContact / GRAIL 接触策略都只换参考、协议不动。
+- **官方实现已可复现。** [hanyang9/UMR](https://github.com/hanyang9/UMR) 覆盖多 motion source；[UMR Studio](https://hanyang9.github.io/UMR/umr_studio.html) 提供浏览器 T-pose 与重定向体验（结果不可下载，生产走 GitHub）。
 
 ## 核心信息
 
@@ -57,7 +60,7 @@ summary: "UMR（arXiv:2609.02134，HKUST-GZ / Noitom / 汉阳 / HKUST / HKU）�
 | 平台 | 定量 / 真机：**G1**；定性另含四台 0.75–1.83 m 人形 |
 | 源表示 | MimicKit 角色、BONES-SEED SOMA、LAFAN1 SMPL-X、扫描网格 + 自采 MoCap |
 | 求解 | MuJoCo FK + Clarabel 约束 Gauss-Newton QP |
-| 开源（2026-09-04） | **待发布**：无独立项目页；arXiv 未列仓；AdaPT 页仍写 UMR coming soon |
+| 开源（2026-09-12） | **已开源**：[GitHub](https://github.com/hanyang9/UMR) + [Studio](https://hanyang9.github.io/UMR/umr_studio.html)；SMPL-X 权重不随仓分发；OmniContact BVH 直读需预转 SMPL-X |
 
 ## 核心原理
 
@@ -85,17 +88,44 @@ Chamfer 覆盖目标表面，排斥防塌缩，测地邻边要求变形平滑。
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-04** 无官方训练/推理仓。AdaPT 项目页的 “UMR coming soon” 不能当成可运行入口。
+节点对齐 [`sources/repos/umr.md`](../../sources/repos/umr.md) 与官方 README quick start。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as 用户
+  participant CFG as robot_configs/*.json
+  participant Pipe as humanoid_retarget_pipeline.py
+  participant Corr as Stage I 对应学习
+  participant RT as Stage II QP 重定向
+  participant MJ as MuJoCo viewer
+  participant Out as output/*.npz
+  U->>CFG: Studio 复制 tpose_qpos（新机器人）
+  U->>Pipe: --config + --defaults（按源选择）
+  Pipe->>Corr: 采样 + 训练 / 复用 fingerprint
+  Corr-->>Pipe: 稠密点对绑定
+  loop 逐帧
+    Pipe->>RT: 表面位姿 + 接触残差 QP
+    RT-->>Pipe: qpos
+  end
+  Pipe->>Out: 保存 qpos + metadata
+  U->>MJ: visualize_robot_retarget_result.py --play
+  MJ-->>U: 回放机器人轨迹
+```
+
+关键复现路径：`conda` 环境 → 放置 SMPL-X → `python scripts/humanoid_retarget_pipeline.py --config robot_configs/humanoid_retarget_unitree_g1_example.json`；批处理走 `humanoid_retarget_pipeline_batch.py`（推荐 DP warm start）。
 
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
 | 何时用 | 多源网格（SMPL-X / SOMA / 扫描）要进同一人形数据厂，且不想维护每机关键点表 |
-| 何时不用 | 源只有骨架、没有可用网格/规范 T-pose；或必须开源复现（现无代码） |
+| 何时不用 | 源只有骨架、没有可用网格/规范 T-pose；或必须零依赖 SMPL-X 许可 |
+| 新机器人 | [UMR Studio](https://hanyang9.github.io/UMR/umr_studio.html) 调 T-pose → 复制 config → 跑 pipeline；**无需手写映射** |
 | 吞吐预期 | 对应 setup **~26 s** 一次；之后重定向 **~121 FPS**（论文 LAFAN1 / 4070 Ti SUPER） |
 | 对照实验 | 跟踪先对 [GMR](../methods/motion-retargeting-gmr.md)；接触先对 [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)；下游协议保持 BeyondMimic / SONIC / OmniContact 原配方 |
-| 与 AdaPT | 网球 MoCap 支路宣称走 UMR；视频支路仍是 GVHMR→GMR。仓里还没有 UMR |
+| 与 AdaPT | MoCap / body+racket 可走 `humanoid_retarget_pipeline_adapt.py`；视频支路仍是 GVHMR→GMR |
+| 社区复现 | [longchengzhuo/Unified-Motion-Retargeting](https://github.com/longchengzhuo/Unified-Motion-Retargeting)（MIT，**非官方**；默认 G1+BVH，学习对照用） |
 
 ## 实验与评测
 
@@ -119,14 +149,15 @@ Chamfer 覆盖目标表面，排斥防塌缩，测地邻边要求变形平滑。
 
 ## 结论
 
-**稠密表面对应把「换机重画关键点」换成「T-pose 上学一次点对」；跟踪增益主要出现在难动作和域移，接触增益主要出现在手–物几何，而不是所有场景都碾压 OmniRetarget。**
+**稠密表面对应把「换机重画关键点」换成「T-pose 上学一次点对」；跟踪增益主要出现在难动作和域移，接触增益主要出现在手–物几何，而不是所有场景都碾压 OmniRetarget。官方 GitHub 已发布，可直接进数据厂。**
 
 1. **先看有没有网格。** 没有规范模板就进不了这篇的接口。
 2. **GMR 对照看难动作与 Sim2Sim**，不要只报 Walk/Run 成功率。
 3. **接触对照看关节/物体误差**；OmniContact 成功准则偏松。
 4. **Chair 不是失败声明。** 启发式粘脚在部分 HSI 上仍可能更好。
 5. **SONIC 数字依赖是否开 SMPL encoder。** 关 encoder 才直接反映参考质量。
-6. **代码待发布。** 选型可以记方法，复现要等官方仓。
+6. **复现走官方仓**；Studio 仅供体验，结果不可下载；社区 MIT 复现≠论文多源覆盖。
+7. **OmniContact BVH 需预转 SMPL-X**；勿假设仓内含内部转换器。
 
 ## 与其他工作对比
 
@@ -139,12 +170,14 @@ Chamfer 覆盖目标表面，排斥防塌缩，测地邻边要求变形平滑。
 | [SPARK](./paper-spark-skeleton-aligned-retargeting.md) | 校准 human URDF + kinodynamic TO；UMR 不走 URDF 校准，也不出力矩参考 |
 | Unitree LAFAN1 参考 | 人工策展基线；UMR 成功率接近、关节误差均值更低 |
 | AdaMorph / PALUM | 名字都带 Unified Retargeting，路线是 Transformer / part attention，**不是**本页点云对应 |
+| 社区 [Unified-Motion-Retargeting](https://github.com/longchengzhuo/Unified-Motion-Retargeting) | mink+Clarabel 独立复现；默认 G1+BVH；**非作者维护** |
 
 ## 局限与风险
 
 - **网格假设。** 视频直接出 SMPL 关节、没有可靠表面时，要先补重建，误差会进对应。
 - **仍是运动学参考。** 脚滑/动力学可行性交给 BeyondMimic / SONIC，不是 SPARK/KDMR 那种 kinodynamic 精炼。
-- **开源空窗。** 2026-09-04 只能读论文；AdaPT 仓不含 UMR。
+- **外部依赖。** SMPL-X 许可与 GRAIL baked 模型不随官方仓分发；OmniContact 官方 BVH 路径需自行 SMPL-X 化。
+- **Studio 限制。** 浏览器 CPU 训练、**不可下载结果**；性能不代表原生 GPU 批处理。
 - **Chair / 部分 Sim2Sim 项** Unitree 或 OmniRetarget 仍可能更好，不要写成全面替代。
 
 ## 关联页面
@@ -154,15 +187,18 @@ Chamfer 覆盖目标表面，排斥防塌缩，测地邻边要求变形平滑。
 - [GMR](../methods/motion-retargeting-gmr.md) / [GMR vs NMR vs ReActor](../comparisons/gmr-vs-nmr-vs-reactor.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) / [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) / [GRAIL](./paper-grail.md)
 - [BeyondMimic](../methods/beyondmimic.md) / [SONIC](../methods/sonic-motion-tracking.md)
-- [AdaPT](./paper-adapt.md) — MoCap 支路点名 UMR
+- [AdaPT](./paper-adapt.md) — MoCap / racket 支路用 UMR
 - [Unitree G1](./unitree-g1.md)
 
 ## 参考来源
 
 - [umr_unified_motion_retargeting_arxiv_2609_02134](../../sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md)
-- [AdaPT 项目页归档](../../sources/sites/adapt-humanoidtennis.md) — 「UMR coming soon」交叉证据
+- [UMR 项目页归档](../../sources/sites/umr-project.md)
+- [UMR 官方代码归档](../../sources/repos/umr.md)
+- [Unified-Motion-Retargeting 社区复现](../../sources/repos/unified-motion-retargeting-unofficial.md)
 
 ## 推荐继续阅读
 
 - [arXiv:2609.02134](https://arxiv.org/abs/2609.02134)（HTML 全文含公式与表）
-- [AdaPT 项目页](https://humanoidtennis.github.io/AdaPT/) — 产业侧对 UMR 的「即将发布」标注
+- [官方 GitHub README](https://github.com/hanyang9/UMR) — 多源 quick start 与 batch 配置
+- [UMR Studio](https://hanyang9.github.io/UMR/umr_studio.html) — 新机器人 T-pose 与浏览器体验

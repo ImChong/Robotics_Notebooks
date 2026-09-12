@@ -10,6 +10,10 @@
   - <https://arxiv.org/abs/2609.02134>
   - <https://arxiv.org/html/2609.02134>
   - <https://arxiv.org/pdf/2609.02134>
+  - <https://www.alphaxiv.org/abs/2609.02134>
+- **项目页：** <https://hanyang9.github.io/UMR/umr_project.html>
+- **UMR Studio：** <https://hanyang9.github.io/UMR/umr_studio.html>
+- **代码：** <https://github.com/hanyang9/UMR>（官方）；社区复现 <https://github.com/longchengzhuo/Unified-Motion-Retargeting>（非官方）
 - **作者：** Hanyang Cao、Yuetong Fang（共同一作，HKUST-GZ / Noitom）；Taesoo Kwon（共同一作，Hanyang University）；Runyi Yu（Noitom / HKUST）；Ji Ma（HKU）；Jing Tan、Yangchen Zhou、Baoze Du、Yi Gu、Yukang Gao、Ruoli Dai；通讯 Lei Han（Noitom）、Renjing Xu（HKUST-GZ）
 - **机构：** 香港科技大学广州校区（HKUST-GZ）；诺亦腾机器人（Noitom Robotics）；汉阳大学（Hanyang University）；香港科技大学（HKUST）；香港大学（HKU）
 - **版本：** arXiv:2609.02134（cs.RO，2026-09）
@@ -75,11 +79,14 @@
 
 **真机（Fig. 3）：** 旋踢；捡球后倒走转弯（动捕）；爬楼后跳下。
 
-### 4) 开源核查（步骤 2.5）
-- **用户给出的项目链接即 arXiv：** <https://arxiv.org/abs/2609.02134>。HTML/PDF **未列** GitHub、HF 或独立 `*.github.io`。
-- 论文未写 “code will be released”。
-- 同团队 [AdaPT 项目页](https://humanoidtennis.github.io/AdaPT/) 写：MoCap「retargeted using **UMR (Unified Motion Retargeting, coming soon)**」。
-- **结论（2026-09-04）：待发布。** 无独立项目页、无可运行官方仓。勿把 AdaPT 仓当成 UMR 实现。
+### 4) 开源核查（步骤 2.5，2026-09-12 更新）
+- **项目页已上线：** [umr_project.html](https://hanyang9.github.io/UMR/umr_project.html) 链出 [GitHub](https://github.com/hanyang9/UMR) 与 [UMR Studio](https://hanyang9.github.io/UMR/umr_studio.html)。
+- **官方仓（已开源）：** 训练/推理/批处理、`robot_configs/`、多源 adapter（LAFAN1/SMPL-X、BONES-SEED、GRAIL、OmniContact、OMOMO、MimicKit、AdaPT、NR FBX/BVH）；SMPL-X 权重与 GRAIL baked 模型 **不随仓分发**。
+- **UMR Studio：** 浏览器完整管线（CPU）；因数据许可 **不提供结果下载**——生产复现走 GitHub。
+- **部分边界：** OmniContact 官方 BVH→SMPL-X 内部转换器未公开；LAFAN1 需 [`lafan_to_smplx`](https://github.com/jaraujo98/lafan_to_smplx) 预处理。
+- **AdaPT 项目页「UMR coming soon」：** 相对官方仓已 **过时**（2026-09-12）；MoCap 支路现可对照官方 `humanoid_retarget_pipeline_adapt.py`。
+- **社区复现：** [longchengzhuo/Unified-Motion-Retargeting](https://github.com/longchengzhuo/Unified-Motion-Retargeting)（MIT，自述 unofficial；默认 G1+BVH，≠ 官方多源覆盖）。
+- **结论：已开源（官方）+ 部分数据/转换依赖外部。**
 
 ### 5) 局限（原文）
 需要网格源 + 规范模板。展望：非结构化观测、灵巧手、多智能体。
@@ -93,5 +100,5 @@
 ## 当前提炼状态
 
 - [x] 摘要 + 两阶段公式 + Table I–IV 关键格 + 真机三项
-- [x] 开源核查（arXiv-only + AdaPT coming soon）
+- [x] 开源核查（官方 GitHub + Studio + 非官方复现；2026-09-12）
 - [x] wiki 实体与交叉引用
