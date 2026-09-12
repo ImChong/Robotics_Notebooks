@@ -8,9 +8,10 @@
 - **论文：** <https://arxiv.org/abs/2609.09918>
 - **机构：** 南加州大学（USC）— Lokesh Krishna, Sarvesh Venkatesan, An Zhang, Quan Nguyen
 - **入库日期：** 2026-09-11
+- **再核日期：** 2026-09-12
 - **一句话说明：** 官方落地页：后训练 motion tracker 做感知全身控制；预训练视觉编码器 + cross-attention 抽取器 + LoRA；演示含 Repose Cube（固定规则 planner + 学习型控制器）、Parkour、Dodge Ball、Walk、Omni-Object Loco-Manipulation；户外/低光/ disco 灯光鲁棒性视频。
 
-## 开源状态（步骤 2.5，2026-09-11）
+## 开源状态（步骤 2.5，2026-09-12 再核）
 
 | 项 | 状态 |
 |----|------|

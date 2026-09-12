@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vision, motion-tracking, sim2real, unitree-g1, lora, post-training, usc]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-12
 arxiv: "2609.09918"
 related:
   - ../methods/beyondmimic.md
@@ -15,7 +15,7 @@ related:
 sources:
   - ../../sources/papers/vibe_arxiv_2609_09918.md
   - ../../sources/sites/vibe-control-github-io.md
-summary: "ViBe（arXiv:2609.09918）：USC 在 motion tracker 上做视觉后训练——预训练视觉编码器 + 多 query 抽取器学任务相关外感受反馈，经 LoRA 嫁接进 tracker；G1 四任务零样本 sim2real（路缘行走、跑酷、Repose Cube、全向物体 loco-manipulation、躲避球）；截至入库日未开源。"
+summary: "ViBe（arXiv:2609.09918）：USC 在 motion tracker 上做视觉后训练——预训练视觉编码器 + 多 query 抽取器 + LoRA；G1 四任务零样本 sim2real；2026-09-12 再核仍无代码。"
 ---
 
 # ViBe：感知人形全身控制的视觉行为适配
@@ -40,7 +40,7 @@ summary: "ViBe（arXiv:2609.09918）：USC 在 motion tracker 上做视觉后训
 
 - **补 tracking 的感知缺口：** Motion tracking 可规模化学高动态技能，但 **设计上无外感受反馈**；环境反应通常留给上层 planner。ViBe 把「感知」做成 **tracker 的后训练模块**，而不是另起一套 teacher–student 蒸馏管线。
 - **复用预训练视觉语义：** 相对从零训几何编码器（易 sim2real、丢语义），本文用 **预训练视觉编码器 + 任务相关抽取器**，在任务奖励与参考数据集给定后直接 **策略优化**。
-- **真机证据广：** 项目页展示 **零样本 sim2real**，覆盖路缘行走、跑酷、Repose Cube、全向物体 loco-manipulation、躲避球，并在户外、低光与 disco 灯光下保持鲁棒。
+- **真机证据广：** 项目页与 arXiv 声称 **零样本 sim2real**，覆盖路缘行走、跑酷、Repose Cube、全向物体 loco-manipulation、躲避球；并在户外、低光与 **RGB distractor（disco 灯光）** 下保持鲁棒。
 
 ## 核心信息
 
@@ -48,9 +48,9 @@ summary: "ViBe（arXiv:2609.09918）：USC 在 motion tracker 上做视觉后训
 |----|------|
 | **机构** | 南加州大学（USC） |
 | **平台** | Unitree G1（项目页演示） |
-| **arXiv** | [2609.09918](https://arxiv.org/abs/2609.09918) |
+| **arXiv** | [2609.09918](https://arxiv.org/abs/2609.09918)（截至 2026-09-12 仍为 **v1**，2026-09-09 提交） |
 | **项目页** | <https://lok-i.github.io/vibe-control> |
-| **开源** | **未开源**（截至 2026-09-11 项目页无代码/权重链接） |
+| **开源** | **未开源**（2026-09-12 再核：项目页仍无代码/权重链接） |
 
 ## 核心原理
 
@@ -93,19 +93,28 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-11 项目页未列官方 GitHub 或可运行代码；发布后应补 `sources/repos/` 并更新本图。）
+**不适用**（2026-09-12 再核：项目页仍无官方 GitHub 或可运行代码；发布后应补 `sources/repos/` 并更新本图。）
 
 ## 实验与评测
 
-| 任务族 | 项目页展示要点 |
-|--------|----------------|
+| 任务族 | 项目页 / 论文展示要点 |
+|--------|------------------------|
 | **Walk / Parkour** | 路缘、障碍上的 **感知行走**；注意力图与第三人称 rollout 对照 |
-| **Repose Cube** | 规则 planner + 学习型控制器；含 **外部动力学**（推、搬）与 **视觉鲁棒性**（户外、 disco 灯光） |
+| **Repose Cube** | 规则 planner + 学习型控制器；含 **外部动力学**（推、搬、行李箱/垃圾桶） |
 | **Omni-Object Loco-Manipulation** | 全向物体相关的移动操作 |
 | **Dodge Ball** | 动态障碍躲避 |
+| **视觉鲁棒性** | 户外、低光、**disco 灯光（RGB distractor）** |
 
-- **读法：** 上表来自 [项目页](https://lok-i.github.io/vibe-control) 与 [arXiv 摘要](https://arxiv.org/abs/2609.09918)；定量成功率、训练步数与观测接口以 **原文 PDF** 为准。
+- **读法：** 定量成功率、训练步数与观测接口以 **原文 PDF** 为准。
 - **sim2real 口径：** 论文声称 **零样本** 真机迁移；引用时需对齐具体任务与视觉扰动设定。
+
+### 自上次入库的变化（2026-09-12 再核）
+
+| 项 | 2026-09-11 | 2026-09-12 |
+|----|------------|------------|
+| arXiv 版本 | v1 | **仍 v1** |
+| 项目页内容 | 演示视频 + Repose Cube 交互 | **无可见更新** |
+| 代码/权重 | 未开源 | **仍未开源** |
 
 ## 与其他工作对比
 
@@ -121,10 +130,10 @@ flowchart TB
 **ViBe 把「感知」从 planner 专属责任变成 motion tracker 的可插拔后训练模块，适合已有跟踪栈、缺外感受闭环的人形团队。**
 
 1. **架构读点：** 预训练视觉 + 多 query 抽取 + LoRA，比从零几何编码器更省样本、保留语义。
-2. **任务覆盖广：** 行走、跑酷、物体操作、动态躲避均有真机演示；但 **定量表以 PDF 为准**。
+2. **任务覆盖广：** 行走、跑酷、物体操作、动态躲避均有真机演示；**定量表以 PDF 为准**。
 3. **分层友好：** Repose Cube 证明 **简单 planner + ViBe 控制器** 可解目标导向任务。
-4. **开源边界：** 截至 **2026-09-11** **未开源** — 选型时先当方法论文，复现需等官方发布。
-5. **与 tracking 生态：** 可与 [BeyondMimic](../methods/beyondmimic.md)、[SONIC](../methods/sonic-motion-tracking.md) 等跟踪底座对照，评估「后训练感知」vs「上层 VLA/planner」分工。
+4. **开源边界（2026-09-12 再核）：** **未开源** — 自上次入库 **无变化**。
+5. **与 tracking 生态：** 可与 [BeyondMimic](../methods/beyondmimic.md)、[SONIC](../methods/sonic-motion-tracking.md) 等跟踪底座对照。
 
 ## 关联页面
 
