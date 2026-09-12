@@ -121,6 +121,7 @@ flowchart LR
 - **碰撞与可达性过滤**：网络输出的高分候选不等于「可执行」，仍需结合机械臂 IK / 运动规划做 **可达性筛选**，常见做法是把抓取候选送入 [cuRobo](../entities/curobo.md) 或 MoveIt 做并行检查。
 - **接触执行**：抓取位姿只给到「接近 + 闭合」前的目标，**最后几厘米**通常切换到 [Visual Servoing](./visual-servoing.md) / 阻抗控制（[Impedance Control](../concepts/impedance-control.md)）以吸收深度与标定误差。
 - **触觉闭环**：抓握后通过触觉反馈判定滑移 / 重抓，把检测式 grasp pose 与 [Tactile Sensing](../concepts/tactile-sensing.md) 串联，构成 **完整抓取闭环**。
+- **物体 6D 跟踪 vs 抓取候选**：若任务需要 **多物体在世界系的因果位姿轨迹**（含遮挡恢复与在线 mesh），而非单帧夹爪 6-DoF 候选，见 [Point2Pose](../entities/paper-point2pose.md)（无 CAD RGB-D 跟踪 + TSDF）。
 
 ## 常见误区
 
@@ -141,6 +142,7 @@ flowchart LR
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习的方案组合指南
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 白盒基线 vs SDK 工程闭环、单帧 vs 跨帧、开源 vs License 三对取舍
 - [MANGO-Grasp](../entities/paper-mango-grasp.md) — 多指跨手型马氏场，不是平行爪 6-DoF
+- [Point2Pose](../entities/paper-point2pose.md) — 无 CAD 多物体 6D 位姿跟踪与在线 TSDF（ECCV 2026；已开源）
 
 ## 参考来源
 

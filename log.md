@@ -1,3 +1,5 @@
+## [2026-09-12] ingest | sources/papers/point2pose_arxiv_2604_10415.md — Point2Pose 无 CAD 多物体 6D 跟踪；主仓与合成数据生成器已开源
+
 ## [2026-09-12] ingest | sources/papers/wid3r_arxiv_2602_05321.md — Wid3R 宽 FoV 前馈 3D 重建（UMD×NAVER LABS，ECCV 2026）；已开源推理/训练/评测，预处理 TODO
 
 ## [2026-09-12] ingest | sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md — 深蓝专栏第 12 篇：运控 RL vs 操作 IL/VLA 知识缺口与合流（UMI on Legs / BeyondMimic / RLT）

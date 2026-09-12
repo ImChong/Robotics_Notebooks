@@ -100,7 +100,7 @@ flowchart TB
 | **TSDF** | 到观测表面的截断符号距离 | 表面零交叉在哪 | 多帧深度融合、网格提取 |
 | **ESDF** | 到最近障碍的欧氏符号距离（含梯度） | 离障碍还有多远 | 轨迹优化、安全余量 |
 
-工程落地示例：[Isaac ROS nvblox](../entities/isaac-ros-nvblox.md) 在 GPU 上维护 TSDF/ESDF，供 [Nav2](../overview/navigation-slam-autonomy-stack.md) 类栈做 3D 代价。学习型稠密语义占据（室内外协议不统一时）见 [OccAnyScene](../entities/paper-occanyscene.md)：连续高斯再 splat 到各域栅格，不是在线距离场。
+工程落地示例：[Isaac ROS nvblox](../entities/isaac-ros-nvblox.md) 在 GPU 上维护 TSDF/ESDF，供 [Nav2](../overview/navigation-slam-autonomy-stack.md) 类栈做 3D 代价。操作侧 **per-object 在线 TSDF**（跟踪位姿下融合深度建 mesh）见 [Point2Pose](../entities/paper-point2pose.md)。学习型稠密语义占据（室内外协议不统一时）见 [OccAnyScene](../entities/paper-occanyscene.md)：连续高斯再 splat 到各域栅格，不是在线距离场。
 
 ### 各层关键机制（压缩）
 
@@ -165,6 +165,7 @@ flowchart TB
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — 语义建图代表
 - [GO2 三维语义建图 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 语义地图端到端案例
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 点云直连操作
+- [Point2Pose](../entities/paper-point2pose.md) — RGB-D 多物体 6D 跟踪 + 在线 TSDF mesh
 - [三维坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) — 像素↔相机↔世界底座
 - [视觉表征作为策略输入](./visual-representation-for-policy.md) — 另一条「表征」轴（策略特征，非空间地图）
 - [VLN（任务）](../tasks/vision-language-navigation.md) — 语义地图的语言导航消费方
