@@ -1,5 +1,5 @@
-// 图谱动态渲染性能测量（plan.md「2026-09-08 图谱动态渲染性能专项」G0 基线 + G1/G2/G3 前后对比）。
-// 分离记录：力 tick / SVG 坐标写入 / 社区标签 / 筛选，刷新布局的长任务与帧耗时，
+// 图谱动态渲染性能测量（plan.md「2026-09-08 图谱动态渲染性能专项」G0 基线 + G1–G4 前后对比）。
+// 分离记录：力 tick / DOM 坐标写入 / 边层 canvas 重绘 / 社区标签 / 筛选，刷新布局的长任务与帧耗时，
 // 3D draw calls / 三角形数 / 场景对象数，以及 3D 悬停刷新与标签同步耗时。
 // 用法：node scripts/measure_graph_perf.cjs [baseUrl] [outJson]
 //   先在 docs/ 下 `python3 -m http.server 8765`（数据需 `make export graph`）。
@@ -92,10 +92,14 @@ function stats(arr) {
       const svg = document.getElementById('graph-canvas');
       const lines = svg ? svg.querySelectorAll('.edges line').length : -1;
       const nodeG = svg ? svg.querySelectorAll('.nodes g.node-g').length : -1;
+      // G4 起边不再有 DOM 元素；两种实现都跑同一脚本，按能力探测取数。
+      const canvasEdges = typeof dbg.edgeDrawnCount === 'function' ? dbg.edgeDrawnCount() : null;
       return {
         sim_nodes: dbg.simNodeCount(),
         sim_links: dbg.simLinkCount(),
         dom_link_lines: lines,
+        canvas_edges_drawn: canvasEdges,
+        edge_canvas: typeof dbg.edgeCanvasSize === 'function' ? dbg.edgeCanvasSize() : null,
         dom_node_groups: nodeG,
         dom_community_labels: svg ? svg.querySelectorAll('g.community-label').length : -1,
         dom_total_elements: svg ? svg.getElementsByTagName('*').length : -1,
@@ -122,11 +126,14 @@ function stats(arr) {
         force_tick: await collect(() => dbg.tickOnce(), TICK_SAMPLES),
         sync_dom_total: await collect(() => dbg.syncDom(), TICK_SAMPLES),
         community_labels: await collect(() => dbg.syncCommunityLabels(), TICK_SAMPLES),
+        draw_edges: dbg.drawEdges
+          ? await collect(() => dbg.drawEdges(), TICK_SAMPLES)
+          : [],
         apply_filters: await collect(() => dbg.applyFilters(), REPEATS),
       };
     }, REPEATS, TICK_SAMPLES);
     for (const k of Object.keys(out.cost_split_ms)) {
-      out.cost_split_ms[k] = stats(out.cost_split_ms[k]);
+      out.cost_split_ms[k] = out.cost_split_ms[k].length ? stats(out.cost_split_ms[k]) : null;
     }
     // 派生：边/节点坐标写入 ≈ 全量 DOM 同步 − 社区标签
     out.cost_split_ms.derived_link_node_attrs_p50 =
@@ -195,6 +202,7 @@ function stats(arr) {
         after: { sim_nodes: dbg.simNodeCount(), sim_links: dbg.simLinkCount() },
         dom_after: {
           link_lines: svg.querySelectorAll('.edges line').length,
+          canvas_edges_drawn: typeof dbg.edgeDrawnCount === 'function' ? dbg.edgeDrawnCount() : null,
           node_groups: svg.querySelectorAll('.nodes g.node-g').length,
         },
       };
@@ -217,11 +225,16 @@ function stats(arr) {
       return {
         force_tick: await collect(() => dbg.tickOnce(), TICK_SAMPLES),
         sync_dom_total: await collect(() => dbg.syncDom(), TICK_SAMPLES),
+        draw_edges: dbg.drawEdges
+          ? await collect(() => dbg.drawEdges(), TICK_SAMPLES)
+          : [],
         apply_filters: await collect(() => dbg.applyFilters(), REPEATS),
       };
     }, REPEATS, TICK_SAMPLES);
     for (const k of Object.keys(out.cost_split_filtered_ms)) {
-      out.cost_split_filtered_ms[k] = stats(out.cost_split_filtered_ms[k]);
+      out.cost_split_filtered_ms[k] = out.cost_split_filtered_ms[k].length
+        ? stats(out.cost_split_filtered_ms[k])
+        : null;
     }
 
     // ── 滑块连续输入：模拟主线程被阻塞时排队的 input 事件一次性回放 ──
