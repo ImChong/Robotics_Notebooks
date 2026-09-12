@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **纯机器人数据的 [VLA](../methods/vla.md) 预训练** — 受限于真机采集成本；HuRo 走 **人类视频机器人化** 路线，用重定向动作与机器人对齐观测把人类语料变成可消费的预训练数据。
+- **[SEED-UMI](./paper-seed-umi.md)** — 同为「扩大示范来源」，但 SEED-UMI 靠 **外骨骼硬件** 做人-机一对一配对（精度优先）；HuRo 不加硬件，靠 **流水线改造既有视频**（规模优先，约 63 万 episode / 1.42 亿帧）。
+- **[EgoScale](../methods/egoscale.md)、[MacroData 手部动作](../methods/macrodata-egocentric-hand-action.md)** — 同属第一人称人类数据方向，侧重语料规模与标注管线；HuRo 的重点在 **把观测/动作改造到机器人本体域**（见 [动作重定向](../concepts/motion-retargeting.md)）。
+- **[IMLE-VLA](./paper-imle-vla.md)** — 优化的是 VLA **推理侧**（单步采样、控制频率）；HuRo 优化 **数据侧**，二者可叠不冲突。
+- **[人类视频语料横向对照](../comparisons/humannet-table1-human-video-corpora.md)** — 该页按规模/模态列语料家底，可用于判断 HuRo 流水线的输入来源与覆盖面。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较（含四项真机 OOD 增益的对照组设置）以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **HuRo 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

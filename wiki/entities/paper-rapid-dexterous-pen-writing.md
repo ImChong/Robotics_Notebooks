@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **仿真训练 + sim2real 迁移的手内操作（见 [In-Hand Reorientation](../methods/in-hand-reorientation.md)）** — 依赖手模与接触建模保真度、迁移需随机化；本文 **不做仿真、不收集示范**，靠约 18 秒激励在线估计任务 Jacobian。
+- **示范驱动的 [模仿学习](../methods/imitation-learning.md)** — 需先采集手内示范数据；本文把「学习」压缩成一次 **在线系统辨识**，成本换在激励时间而非数据集。
+- **[OnOff 可微笔刷书法](./paper-onoff-handwriting.md)** — 同为机器人书写，但 OnOff 的核心是 **可微物理笔刷 + 渲染对齐**（online 轨迹与 offline 图像统一）；本文核心是 **实时 Jacobian 估计** 下的手内笔具操控。
+- **[Expressive Robotic Pianist](./paper-expressive-robotic-pianist.md)** — 同属灵巧精细动作，但钢琴一侧靠 **图结构模仿 + 声学模型** 对齐表现力；本文不依赖任何先验示范。
+- **[轨迹优化 vs 强化学习](../comparisons/trajectory-opt-vs-rl.md)** — 该页对照模型式与学习式两条路；本文属「在线辨识模型 + 模型式控制」一侧，文内以空中与纸面轨迹 **亚毫米级平面精度** 为口径。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **Rapid Dexterous Pen Writing 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

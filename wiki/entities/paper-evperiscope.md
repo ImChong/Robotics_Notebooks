@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **[AprilTag](./april-tag.md) 等 **有标记** 相对定位** — 需在目标上贴码、受光照与运动模糊限制；EVPeriscope 用事件相机直接追踪 **旋翼本身的高频信号**，无需额外标记。
+- **普通 RGB 相机做空地相对定位** — 动态范围与运动模糊在夜间/强风下劣化；事件相机的高时间分辨率是文内田野测试（最高 15 mph 风速、夜间）成立的前提。
+- **[微扫视启发事件相机（AMI-EV）](./paper-microsaccade-inspired-event-camera.md)** — 同为事件相机应用，但那条线改造 **传感器前端**（旋转楔形棱镜让静态场景产生事件）；EVPeriscope 不改传感器，改的是 **系统架构**——把无人机当地面机器人的「空中潜望镜」。
+- **[CAP](./paper-cap-perception-blind-humanoid.md)** — 同样面对感知受限，但 CAP 在 **既有传感** 内做表征去噪与退化训练；EVPeriscope 选择 **增补外部视角** 扩展可观测性。
+- **[机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)** — 该指南按「传感 → 表征 → 降级策略」分层；EVPeriscope 属 **传感层异构扩展**（事件相机 + 空地协同）一档。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与田野测试协议以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **EVPeriscope 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**
@@ -90,6 +100,8 @@ sequenceDiagram
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Manipulation](../tasks/manipulation.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属该链路传感层的异构扩展（事件相机 + 空地协同）
+- [微扫视启发事件相机（AMI-EV）](./paper-microsaccade-inspired-event-camera.md) — 事件相机传感器侧改造对照
 
 ## 参考来源
 

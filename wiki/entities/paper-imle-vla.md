@@ -64,6 +64,16 @@ summary: "条件 IMLE 单步动作生成器加速 VLA；L40S 55 Hz vs π₀.₅ 
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **多步去噪的 [Diffusion Policy](../methods/diffusion-policy.md) / π₀ 家族** — 采样需多步迭代，控制频率受限（文内口径 π₀.₅ 约 15 Hz）；IMLE-VLA 用 **条件 IMLE 单步生成** 换实时性（L40S 约 55 Hz），同时保留多模态动作覆盖。
+- **[Action Chunking](../methods/action-chunking.md)** — 靠 **加长开环视界** 摊薄推理开销；IMLE-VLA 文内指出 H=30 虽有 11.0× 动作吞吐，但更长开环牺牲反应性——两条加速路径的代价不同。
+- **[DLSRL](./paper-dlsrl.md)** — 同样动生成式策略的表示层，但目标是 **在线 RL 适配**（冻结生成器 + 双 latent）；IMLE-VLA 换的是 **采样器本身**。
+- **[Show-Harness](./paper-show-harness.md)** — 通过离散语义微动作接口绕开策略推理开销；IMLE-VLA 仍训端到端策略，只压缩采样步数。
+- **[模仿学习 vs 强化学习](../comparisons/rl-vs-il.md)** — 本文落在 IL 侧的生成式策略分支，评测以 LIBERO 四套件均值成功率（98.0%）为口径。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **IMLE-VLA 适合作为本期「待发布」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

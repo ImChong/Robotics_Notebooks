@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **只对音符正确率优化的钢琴机器人** — 目标函数止于「按对键」；本文额外用 **声学模型对齐击键力度**，把表现力（力度与连贯过渡）纳入优化目标。
+- **纯 [模仿学习](../methods/imitation-learning.md) 复制人类指法** — 直接回归示范轨迹，跨手型迁移困难；本文用 **图结构模仿约束** 手指运动，在结构层而非轨迹层对齐。
+- **[Rapid Dexterous Pen Writing](./paper-rapid-dexterous-pen-writing.md)** — 同属灵巧精细动作，但那条线 **不用任何示范**，靠在线 Jacobian 估计；本文以人类演奏示范与声学信号为监督来源。
+- **[OnOff 可微笔刷书法](./paper-onoff-handwriting.md)** — 同为「表现力型」艺术类灵巧任务，OnOff 用可微渲染对齐笔迹，本文用声学模型对齐音色——两者都把 **领域物理模型** 塞进监督链。
+- **[策略评测指标](../concepts/motion-control-policy-evaluation-metrics.md)** — 本文评测以多种曲风与 **听众偏好测试** 为口径，属主观偏好型评估，与成功率类指标不可直接换算。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与听测协议以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **Expressive Robotic Pianist 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**

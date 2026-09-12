@@ -76,6 +76,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
+## 与其他工作对比
+
+- **数值 IK（雅可比迭代 / 优化求解）** — 本身可微但每次求解要迭代、解的分支不稳定；本文直接用 **解析/黑盒 IK** 的解，再用增广正运动学 + 逆函数定理 **恢复梯度**。
+- **把 IK 当黑盒、只在外层做无梯度搜索** — 规划器拿不到梯度，只能采样；本文让黑盒 IK **接入可微规划链路**，在约束流形上直接求梯度。
+- **[RL 求解逆运动学的五条路](../comparisons/rl-inverse-kinematics-five-approaches.md)** — 那五条路用学习型近似替代求解器；本文保留既有 IK 求解器，只补上 **微分结构**，无需训练。
+- **[路径规划五范式分类](../comparisons/robot-path-planning-five-paradigms-taxonomy.md)** — 该页给出采样式/优化式/学习式的坐标；本文落在 **优化式 + 流形约束** 一格，用图册（chart）参数化约束流形。
+- **[轨迹优化 vs 强化学习](../comparisons/trajectory-opt-vs-rl.md)** — 本文属轨迹优化一侧的可微性基础设施，文内以数值实验与下游运动规划任务验证几何路径。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较与数值实验设置以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **Differentiable Charts IK Planning 适合作为本期「已开源」边界下的快速索引页，部署前请核对仓库/README 可运行性。**
