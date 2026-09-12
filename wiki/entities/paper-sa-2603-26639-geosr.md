@@ -76,6 +76,18 @@ flowchart LR
 - **消融：** GUM 单独与 GGF 单独均不及联合训练，说明「去捷径 + 强融合」缺一不可。
 - **HF 权重：** [`SuhZhang/GeoSR-Model`](https://huggingface.co/SuhZhang/GeoSR-Model) 提供完整 checkpoint，便于在自定义 spatial QA 上微调。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：本页数字来自论文与项目页摘录，与下列各页不共享同一评测协议。
+
+| 对照 | 差异读法 |
+|------|----------|
+| 仅 2D VLM（Qwen2.5-VL 等裸骨干） | 同一骨干、同一 QA 接口，差别在**几何 token 进不进来**：裸 VLM 在空间 QA 上可靠 2D 外观捷径答对一部分，换视角/换场景即崩。GeoSR 的 GUM 正是把这条捷径堵掉 |
+| naive 几何拼接（把 3D token 直接 concat） | 同样喂进了几何，但模型**可以不用**——不加 mask 时外观通道信息更密、梯度更好走。论文消融里 GUM 单独与 GGF 单独都不及联合，说明「去捷径」与「强融合」是一对，缺一不可 |
+| [Spatial Reasoning with VLMs](../entities/paper-sa-2509-06266-spatial-reasoning-with-vision-language-models-in.md) | 同一问题域（VLM 空间推理），但**切入层不同**：该页盘点的是任务/评测侧的能力边界，GeoSR 给的是骨干侧的一个具体改法；读法是「先看边界，再看这条改法能推动哪一段」 |
+| [VLA](../methods/vla.md) | **分工而非替代**：GeoSR 输出的是空间 QA 答案，不是关节指令；集成时它当 spatial reasoning head，低层 motor policy 仍归 VLA/控制层 |
+| [生成式世界模型](../methods/generative-world-models.md) | 同为「给策略补 3D/时序结构」，但**证据来源不同**：世界模型靠预测未来帧隐式学几何，GeoSR 靠外部几何 tokenizer 显式注入。后者依赖深度/点云质量，前者依赖预测保真度 |
+
 ## 结论
 
 **GeoSR 以 GUM+GGF 迫使 VLM 使用 3D 几何 token，在 VSI-Bench 51.9、DSR-Bench 66.1 上领先，适合机器人 spatial QA / VLA 前置模块。**

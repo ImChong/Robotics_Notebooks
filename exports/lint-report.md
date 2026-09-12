@@ -2,7 +2,7 @@
 
 ## [2026-09-12] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **14** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,17 +97,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（10 个）
-- wiki/entities/paper-designing-physics-experiments-with-ai.md（缺 对比）
-- wiki/entities/paper-sa-2512-01850-register-any-point.md（缺 对比）
-- wiki/entities/paper-sa-2512-05394-ssvae.md（缺 对比）
-- wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md（缺 对比）
-- wiki/entities/paper-sa-2603-26639-geosr.md（缺 对比）
-- wiki/entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md（缺 对比）
-- wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md（缺 对比）
-- wiki/entities/paper-sa-2604-05182-lsrm.md（缺 对比）
-- wiki/entities/paper-sa-2606-22094-lays.md（缺 对比）
-- wiki/entities/paper-sa-2607-01987-geosubprobe.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -115,9 +106,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-deworldsg.md（含绝对化措辞「SoTA」，updated=2026-09-11；同主题更新页 wiki/entities/paper-adapt.md updated=2026-09-12）
-- wiki/entities/paper-unisim-slam.md（含绝对化措辞「SOTA」，updated=2026-09-11；同主题更新页 wiki/entities/paper-adapt.md updated=2026-09-12）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -125,8 +115,8 @@
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -134,7 +124,7 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-points-as-tori.md
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：3953/3953 (100%) wiki/entity 页有 ingest 来源

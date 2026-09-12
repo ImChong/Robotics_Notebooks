@@ -30,7 +30,7 @@ sources:
   - ../../sources/papers/unisim_slam_arxiv_2608_01706.md
   - ../../sources/sites/vision3d-lab-unisim-slam.md
   - ../../sources/repos/unisim_slam.md
-summary: "UniSim-SLAM（UNIST Vision3D Lab，ECCV 2026，arXiv:2608.01706）：两视图低延迟前端 + 周期多视图子图后端，在统一 Sim(3) 多层因子图上联合优化全局关键帧与子图位姿；TUM RGB-D / 7-Scenes 无标定 SOTA（ATE 相对先前最佳降 38.5% / 45.9%）；官方仓占位，代码待发布。"
+summary: "UniSim-SLAM（UNIST Vision3D Lab，ECCV 2026，arXiv:2608.01706）：两视图低延迟前端 + 周期多视图子图后端，在统一 Sim(3) 多层因子图上联合优化全局关键帧与子图位姿；TUM RGB-D / 7-Scenes 无标定设定下 ATE 相对论文所列先前最佳降 38.5% / 45.9%；官方仓占位，代码待发布。"
 ---
 
 # UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）
@@ -56,7 +56,7 @@ summary: "UniSim-SLAM（UNIST Vision3D Lab，ECCV 2026，arXiv:2608.01706）：�
 
 - **前馈 SLAM 的结构性矛盾被写清楚：** 同一帧在不同视图集合下尺度/位姿可变；只链两视图会漂，只堆子图会慢且重叠不足时难传播修正。
 - **把「经典前后端」带回学习型栈：** 轻量 **两视图前端** 保时序连通；**多视图子图后端** 周期性注入 richer 约束——但不是各做各的对齐，而是 **一张 Sim(3) 图**。
-- **无标定室内 SOTA 有数字：** TUM RGB-D 平均 ATE **0.032 m**（相对 ViSTA-SLAM **0.052** 降 **38.5%**）；7-Scenes **0.020 m**（相对 VGGT-SLAM **0.037** 降 **45.9%**）。
+- **无标定室内领先幅度可量化（论文对照表口径，2026-08）：** TUM RGB-D 平均 ATE **0.032 m**（相对 ViSTA-SLAM **0.052** 降 **38.5%**）；7-Scenes **0.020 m**（相对 VGGT-SLAM **0.037** 降 **45.9%**）。
 - **工程折中可量化：** 默认 VGGT 前端 **197 ms** 得 **0.020 m** ATE；换 STA 前端 **35 ms** 仍 **0.027 m**，优于 MASt3R-SLAM / ViSTA-SLAM。
 
 ## 核心信息
@@ -137,7 +137,7 @@ flowchart TB
 
 1. **真影响：统一 Sim(3) 多层图** — view–view 保连通，view–submap + submap–submap 拧尺度与子图系；\(\phi=0\) 时仍靠时序边传播修正。
 2. **真影响：无标定室内数字** — TUM / 7-Scenes 平均 ATE 相对先前最佳分别降 **38.5% / 45.9%**，重建 Chamfer 亦优于 VGGT-SLAM。
-3. **真影响：前后端可拆骨干** — STA 前端 + VGGT 后端仍 SOTA 级，说明图优化层能消化异构前馈模型。
+3. **真影响：前后端可拆骨干** — STA 前端 + VGGT 后端在论文同一对照表里仍落在第一梯队（35 ms / 0.027 m，优于 MASt3R-SLAM 与 ViSTA-SLAM），说明图优化层能消化异构前馈模型。
 4. **次要代价：前端仍吃大模型** — 默认 VGGT 前端 197 ms，高于 MASt3R-SLAM 90 ms；纯两视图管线在极端低算力场景仍可能更轻。
 5. **部署读法：** 无标定 RGB 稠密 SLAM 研究/原型优先；真机接入仍需等官方代码与实时预算表。
 6. **工程读法：代码占位** — 今日只能读方法与看定性结果；[`UniSim-SLAM`](https://github.com/vision3d-lab/UniSim-SLAM) 尚未放出可运行实现。
