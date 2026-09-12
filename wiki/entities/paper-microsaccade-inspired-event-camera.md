@@ -10,7 +10,7 @@ tags:
   - science-robotics
   - zju
 status: complete
-updated: 2026-08-26
+updated: 2026-09-12
 doi: "10.1126/scirobotics.adj8124"
 arxiv: "2405.17769"
 venue: "Science Robotics 2024"
@@ -18,6 +18,7 @@ related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
   - ./paper-simple-evrgb-cal.md
+  - ./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md
@@ -144,6 +145,7 @@ sequenceDiagram
 ## 关联页面
 
 - [KEMO：事件驱动关键帧记忆 VLA](./paper-kemo-event-driven-keyframe-memory-vla.md)
+- [SSLA-Det](./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md) — 空间稀疏线性注意力异步事件检测（Gen1 / N-Caltech101）
 - [simple-evrgb-cal](./paper-simple-evrgb-cal.md) — 无运动事件—RGB 外参标定（显示器调制 ChArUco）
 - [Sim2Real（仿真到真实迁移概念）](../concepts/sim2real.md)
 

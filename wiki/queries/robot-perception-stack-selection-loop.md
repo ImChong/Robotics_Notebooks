@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-12
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -45,6 +45,9 @@ related:
   - ../entities/paper-partialbigrasp.md
   - ../entities/paper-pointdit.md
   - ../entities/paper-locateanything.md
+  - ../entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md
+  - ../entities/paper-microsaccade-inspired-event-camera.md
+  - ../entities/paper-simple-evrgb-cal.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -219,3 +222,4 @@ flowchart TD
 - [RoboOrchardLab](../entities/robo-orchard-lab.md) — 训练框架入口：`projects/bip3d_grounding` 落 ③层 2D→3D grounding、`finegrasp` 落 ④层下游消费；提供的是统一训练/Model Zoo 管线，选哪个感知模型仍看本页（Apache-2.0）
 - [PartialBiGrasp](../entities/paper-partialbigrasp.md) — ③层反例读法：大/复杂物体单视角只有局部点云时，不重建完整 mesh，只用占据网络补出力闭合判据需要的接触区几何再交 ④层抓取消费（架构仓部分开源，权重 TODO）
 - [PointDiT](../entities/paper-pointdit.md) — ①/③层 RGB-only 点图：像素空间扩散、单步可用；仿射不变，室外弱于 MoGe（已开源）
+- [SSLA-Det](../entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md) · [AMI-EV](../entities/paper-microsaccade-inspired-event-camera.md) · [simple-evrgb-cal](../entities/paper-simple-evrgb-cal.md) — 事件相机支线：②层异步逐事件检测（Gen1/N-Caltech101）+ ①层异构标定；latency–mAP 与 per-event FLOPs 联合选型

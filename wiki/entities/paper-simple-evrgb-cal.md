@@ -8,12 +8,13 @@ tags:
   - perception
   - heilbronn
 status: complete
-updated: 2026-08-26
+updated: 2026-09-12
 arxiv: "2608.22965"
 code: https://github.com/nhessenthaler/simple-evrgb-cal
 venue: "BMVC 2026"
 related:
   - ./paper-microsaccade-inspired-event-camera.md
+  - ./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md
   - ./paper-co-calib-multi-fisheye-calibration.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/open-source-7-papers-system-structure-technology-map.md
@@ -134,6 +135,7 @@ sequenceDiagram
 ## 关联页面
 
 - [AMI-EV](./paper-microsaccade-inspired-event-camera.md) — 事件相机静止纹理
+- [SSLA-Det](./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md) — 标定后的异构栈可接异步事件检测
 - [Co-Calib](./paper-co-calib-multi-fisheye-calibration.md) — 另一条多相机标定
 - [感知栈选型](../queries/robot-perception-stack-selection-loop.md)
 - [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md)
