@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
+      "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
+      "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
+      "type": "comparison",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/openless.md",
       "detail_id": "entity-openless",
       "label": "OpenLess",
@@ -195,28 +204,16 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-seed-umi.md",
-      "detail_id": "entity-paper-seed-umi",
-      "label": "SEED-UMI（arXiv:2609.11753）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/openless.md",
-    "detail_id": "entity-openless",
-    "label": "OpenLess",
-    "type": "entity",
+    "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
+    "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
+    "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
+    "type": "comparison",
     "recency": "2026-09-12",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
