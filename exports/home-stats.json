@@ -1,13 +1,98 @@
 {
   "generated_at": "2026-09-12",
   "node_count": 3981,
-  "edge_count": 35564,
+  "edge_count": 35574,
   "coverage": {
     "covered": 3953,
     "total": 3953,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-sa-2512-01850-register-any-point.md",
+      "detail_id": "entity-paper-sa-2512-01850-register-any-point",
+      "label": "RAP：Scaling 3D Point Cloud Registration by Flow Matching",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sa-2512-05394-ssvae.md",
+      "detail_id": "entity-paper-sa-2512-05394-ssvae",
+      "label": "SSVAE：Delving into Latent Spectral Biasing of Video VAEs for Superior Diffusability",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-sa-2603-26639-geosr.md",
+      "detail_id": "entity-paper-sa-2603-26639-geosr",
+      "label": "GeoSR：Make Geometry Matter for Spatial Reasoning",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md",
+      "detail_id": "entity-paper-sa-2603-27891-poppy-polarization-normal-estimation",
+      "label": "Poppy：Polarization-based Plug-and-Play Guidance for Enhancing Monocular Normal Estimation",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md",
+      "detail_id": "entity-paper-sa-2604-03564-coprime-psi-wavefront-sensing",
+      "label": "Coprime-PSI：Provable and Robust Wavefront Sensing via Self-Reference Interferometry",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sa-2604-05182-lsrm.md",
+      "detail_id": "entity-paper-sa-2604-05182-lsrm",
+      "label": "LSRM：High-Fidelity Object-Centric Reconstruction via Scaled Context Windows",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-sa-2606-22094-lays.md",
+      "detail_id": "entity-paper-sa-2606-22094-lays",
+      "label": "LAYS：Cross-View Yaw Estimation in Location Uncertainty with Line-Aligning Yaw Scoring",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sa-2607-01987-geosubprobe.md",
+      "detail_id": "entity-paper-sa-2607-01987-geosubprobe",
+      "label": "Geosubprobe：Understanding Geometric Representations in Self-Supervised Vision Transformers via Subspace Intervention",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
     {
       "path": "wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md",
       "detail_id": "entity-paper-sa-2603-06228-low-latency-event-based-object-detection-with",
@@ -133,88 +218,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cap-perception-blind-humanoid.md",
-      "detail_id": "entity-paper-cap-perception-blind-humanoid",
-      "label": "CAP（arXiv:2609.11553）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-differentiable-charts-constraint-manifolds.md",
-      "detail_id": "entity-paper-differentiable-charts-constraint-manifolds",
-      "label": "Differentiable Charts IK Planning（arXiv:2609.10905）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-dlsrl.md",
-      "detail_id": "entity-paper-dlsrl",
-      "label": "DLSRL（arXiv:2609.11270）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-evperiscope.md",
-      "detail_id": "entity-paper-evperiscope",
-      "label": "EVPeriscope（arXiv:2609.11920）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-expressive-robotic-pianist.md",
-      "detail_id": "entity-paper-expressive-robotic-pianist",
-      "label": "Expressive Robotic Pianist（arXiv:2609.10844）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-farm-failure-readout.md",
-      "detail_id": "entity-paper-farm-failure-readout",
-      "label": "FARM（arXiv:2609.11445）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-huro.md",
-      "detail_id": "entity-paper-huro",
-      "label": "HuRo（arXiv:2609.10706）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-imle-vla.md",
-      "detail_id": "entity-paper-imle-vla",
-      "label": "IMLE-VLA（arXiv:2609.10915）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md",
-    "detail_id": "entity-paper-sa-2603-06228-low-latency-event-based-object-detection-with",
-    "label": "SSLA-Det：空间稀疏线性注意力事件检测",
+    "path": "wiki/entities/paper-sa-2512-01850-register-any-point.md",
+    "detail_id": "entity-paper-sa-2512-01850-register-any-point",
+    "label": "RAP：Scaling 3D Point Cloud Registration by Flow Matching",
     "type": "entity",
     "recency": "2026-09-12",
     "source": "git",
@@ -269,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 952,
+      "degree": 953,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +293,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 887,
+      "degree": 889,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

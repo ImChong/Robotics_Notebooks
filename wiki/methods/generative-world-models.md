@@ -376,6 +376,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
 - [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
 - [ViTacWorld](../entities/paper-vitacworld.md) — **视触觉** 动作条件 WM：dream 数据增强 + 策略评估（arXiv:2607.22530）。
+- [SSVAE](../entities/paper-sa-2512-05394-ssvae.md) — **视频 VAE 潜空间频谱偏置**（LCR+LMR）换下游扩散 **约 3×** 收敛与 **+10%** 视频 reward（智谱 AI；已开源）。
+- [LSRM](../entities/paper-sa-2604-05182-lsrm.md) — **扩展上下文窗口** 的前馈物体重建与逆渲染（Meta RLR；ECCV 2026 Long Oral；已开源）。
 - [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) — 开源视频基础模型、轨迹运动控制与分钟级 music-to-dance。
 - [RoboInter1.5 / RoboInter-World](../entities/paper-robointer-1-5.md) — **IR 控制视频** 条件世界模型 + VLA 套件（arXiv:2607.18709）。
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — Agibot **5B 统一视频–动作世界模型**：异构掩码预训练 + 测试时 propose–evaluate–revise（技术报告 2026-05-31）。

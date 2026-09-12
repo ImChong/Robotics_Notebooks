@@ -23,7 +23,7 @@ summary: "立体匹配基础模型与经典基线选型轴：NBS 纯 ViT 无偏�
 
 # 立体匹配基础模型与基准生态
 
-本页汇总 **双目立体匹配（stereo matching）** 在 **基础模型时代** 的主线方法与评测基准，以 [NBS](../entities/paper-nbs-no-bias-stereo.md)（*No Bias Stereo*，Intrinsic × Texas A&M，arXiv:2608.28933）为 **「纯 ViT、无相关体」** 范式锚点，串联机器人感知栈中常见的 **FoundationStereo**、**S²M²** 及经典 **IGEV / CREStereo / RAFT-Stereo** 对照。
+本页汇总 **双目立体匹配（stereo matching）** 在 **基础模型时代** 的主线方法与评测基准，以 [NBS](../entities/paper-nbs-no-bias-stereo.md)（*No Bias Stereo*，Intrinsic × Texas A&M，arXiv:2608.28933）为 **「纯 ViT、无相关体」** 范式锚点，串联机器人感知栈中常见的 **FoundationStereo**、**S²M²** 及经典 **IGEV / CREStereo / RAFT-Stereo** 对照。单目法线侧，[Poppy](../entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md) 用测试时偏振引导细化冻结 RGB 骨干的法线估计（ECCV 2026 Oral；已开源）。
 
 ## 一句话定义
 
