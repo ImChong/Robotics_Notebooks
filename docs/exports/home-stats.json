@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-12",
-  "node_count": 3969,
-  "edge_count": 35496,
+  "node_count": 3970,
+  "edge_count": 35511,
   "coverage": {
-    "covered": 3941,
-    "total": 3941,
+    "covered": 3942,
+    "total": 3942,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -265,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 950,
+      "degree": 951,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -296,7 +296,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 609,
+      "degree": 610,
       "has_repo": true
     },
     {
@@ -337,7 +337,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 87,
+      "degree": 88,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },

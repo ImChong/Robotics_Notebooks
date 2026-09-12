@@ -2,7 +2,7 @@
 type: comparison
 tags: [robot-learning, imitation-learning, reinforcement-learning, vla, continual-learning, sim2real, taxonomy, shenlan]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-12
 related:
   - ./rl-vs-il.md
   - ./vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -138,6 +138,7 @@ flowchart LR
 
 ## 关联页面
 
+- [运控 RL vs 操作 IL/VLA](./locomotion-rl-vs-manipulation-learning-stack.md) — 按 loco/manip 任务结构解释算法栈分化（与本文学习信号轴互补）
 - [RL vs IL](./rl-vs-il.md) — 双主干监督信号对照
 - [五大具身模型分类](./vlm-vln-vla-vlx-world-model-taxonomy.md) — 模型族 I/O 边界（正交 taxonomy）
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 选模型族时的姊妹入口；本页回答「用什么学习信号」
