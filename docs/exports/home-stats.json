@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-point2pose.md",
+      "detail_id": "entity-paper-point2pose",
+      "label": "Point2Pose",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
       "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
       "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
@@ -195,25 +206,18 @@
       "recency": "2026-09-11",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-reacthuman.md",
-      "detail_id": "entity-paper-reacthuman",
-      "label": "ReactHuman（arXiv:2609.10895）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
-    "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
-    "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
-    "type": "comparison",
+    "path": "wiki/entities/paper-point2pose.md",
+    "detail_id": "entity-paper-point2pose",
+    "label": "Point2Pose",
+    "type": "entity",
     "recency": "2026-09-12",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
