@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/joint-module-self-development-workflow.md",
+      "detail_id": "wiki-concepts-joint-module-self-development-workflow",
+      "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
+      "type": "concept",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/mjbatch.md",
       "detail_id": "entity-mjbatch",
       "label": "mjbatch（MuJoCo CPU 批量并行）",
@@ -207,29 +217,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-unisim-slam.md",
-      "detail_id": "entity-paper-unisim-slam",
-      "label": "UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mjbatch.md",
-    "detail_id": "entity-mjbatch",
-    "label": "mjbatch（MuJoCo CPU 批量并行）",
-    "type": "entity",
+    "path": "wiki/concepts/joint-module-self-development-workflow.md",
+    "detail_id": "wiki-concepts-joint-module-self-development-workflow",
+    "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
+    "type": "concept",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
