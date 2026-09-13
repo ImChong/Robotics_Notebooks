@@ -1,3 +1,5 @@
+## [2026-09-13] ingest | DAT / Mixed MPM / Biomechanical 3D Body / Particles4All — Newton 接触与 MPM、SAM-3D-Body 生物力学蒸馏、WebGPU 统一粒子；Particles4All 已开源，前三项随 Newton/SAM 生态
+
 ## [2026-09-13] ingest | sources/papers/graspmf_arxiv_2608_26076.md — GraspMF（arXiv:2608.26076）积群 MeanFlow 快速生成抓取；升格 paper-graspmf；交叉 grasp-pose-estimation / RoamFlow；确认未开源
 
 ## [2026-09-13] ingest | sources/papers/chorus_arxiv_2606_12352.md — CHORUS 去中心化多本体 VLA 协作（CoRL 2026）；截至入库日项目页未开源

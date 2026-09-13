@@ -2,8 +2,9 @@
 type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-13
 related:
+  - ./paper-biomechanical-3d-body.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam3dbody-cpp.md
   - ../methods/wilor.md
@@ -44,6 +45,7 @@ summary: "SAM 3D Body（3DB）是 Meta 发布的可提示单图全身人体网�
 - **可提示 = 可纠错**：类似 SAM 的 **keypoint / mask** 条件让操作者或上游检测器在遮挡、截断帧上 **引导推理**，适合半自动标注与遥操作质检。
 - **工程生态已成型**：官方 PyTorch + Hugging Face checkpoint；社区 [SAM3DBody-cpp](./sam3dbody-cpp.md) 提供 **ONNX + 零 Python 运行时** 与 **BVH 动捕导出**，缩短「论文 → 动捕文件 → 重定向」路径。
 - **与生成式运动模型分工明确**：[GENMO](../methods/genmo.md) 等偏 **时序 SMPL 生成/估计**；3DB 偏 **单帧（或可逐帧）几何 HMR**，二者可在视频管线上串联（3DB 逐帧 + 时序平滑 / 生成模型补洞）。
+- **生物力学延伸**：[Biomechanical 3D Body](./paper-biomechanical-3d-body.md)（arXiv:2608.29928）在 3DB 上增加生物力学预测头，用 MuJoCo+JAX IK 蒸馏 **临床语义关节角** —— 网格恢复与生物力学分析的分叉点。
 
 ## 核心结构
 

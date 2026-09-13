@@ -3,7 +3,7 @@ title: 仿真物理保真度链路选型指南
 type: query
 status: complete
 created: 2026-06-25
-updated: 2026-06-25
+updated: 2026-09-13
 summary: 从几何/URDF 精度 → 刚体动力学算法（ABA/RNEA）→ 接触/摩擦模型 → 执行器模型四层物理保真度的端到端取舍决策树，覆盖每层对 sim2real gap 的贡献、建模成本与典型失败模式。
 tags: [simulation, sim2real, physics, dynamics, contact, friction, fidelity]
 sources:
