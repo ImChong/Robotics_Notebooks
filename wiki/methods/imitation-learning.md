@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-13
 related:
   - ../concepts/robot-in-context-learning.md
   - ../concepts/behavioral-cloning-mysteries.md
@@ -24,6 +24,7 @@ related:
   - ../entities/mimickit.md
   - ../entities/humannet.md
   - ../entities/paper-interprior.md
+  - ../entities/paper-egophi.md
   - ../entities/paper-veragmil.md
   - ../entities/paper-imitator-game.md
   - ../entities/paper-host-one-shot-human-video.md
@@ -185,6 +186,7 @@ flowchart TD
 - [EgoVerse](../entities/paper-egoverse.md)：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身 **BC/CFM 共训**——共训可涨分，但有效缩放依赖 **域对齐人数据锚定**，有限预算下 **场景多样性** 优先（arXiv:2604.07607）
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)：在 **固定 HPT 与数据混合** 下仅换 **世界预测目标**，实证 **朴素 BC 人–机协同训练** 可因 **具身差距 / misalignment** **损害** 性能，而 **WAM 动力学分支** 使策略能随 **野外 egocentric 人数据** 扩展（Georgia Tech RL²，[项目页](https://gatech-rl2.github.io/egowam.github.io/)）
 - [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)：用 **动作条件世界模型** 在 **共享潜式物理推理空间** 对齐人手与机器人轨迹，配套 **OOL Glove** 与 **mixed-to-human**（混合共训 + 人手 DAgger 纠偏），在真机操作任务上报告 **人类数据缩放与快速适应**（arXiv:2606.23685）
+- [EgoPHI](../entities/paper-egophi.md)：从 **单目 ego RGB + 物体几何** 预测双手–关节物体 mesh 上 **稠密 3D 接触与力**；SOFA 仿真力监督 + ARCTIC/H2O 评测 + 透光真机 sim-to-real——可作为人类示范的 **物理层标注器** 上游 IL（ECCV 2026，arXiv:2608.13014；**部分开源**）
 - [JEPA Policy](../entities/paper-jepa-policy.md)：成对监督 **动作块 + 未来视觉表征** 的扩散-free MIP；共享 Transformer 两次前向；仿真九任务 **83.0%** 均值、相对 100-step Diffusion Policy **33×** 决策加速（arXiv:2609.09630；**已开源**）
 - [InstantMimic](../entities/paper-instantmimic.md)：GPU-native 整环训练系统，标准动作跟踪 **秒级** 收敛、AMASS **37.4 h→约 30 min**（arXiv:2609.09821；**待发布**）
 
@@ -283,6 +285,7 @@ flowchart TD
 - [AMS](./ams.md) — 物理可行性过滤与混合奖励机制
 - [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — HOI 模仿专家 → 变分蒸馏 → RL 微调的可泛化运动先验（arXiv:2602.06035）
+- [EgoPHI（论文实体）](../entities/paper-egophi.md) — ego 视觉 mesh 级接触+力估计；仿真力监督与真机 sim-to-real（arXiv:2608.13014；ETH SIPLAB）
 - [SkillMimic（论文实体）](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 统一 HOI 模仿 + Contact Graph 学可复用篮球技能（arXiv:2408.15270）
 - [Learning to Ball（论文实体）](../entities/paper-notebook-learning-to-ball.md) — 非结构化对抗模仿学子技能 + soft router 拼长程篮球连招（arXiv:2509.22442）
 - [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — RL 训练期按配置挖掘快速成功并效率加权回放（arXiv:2606.19752）
