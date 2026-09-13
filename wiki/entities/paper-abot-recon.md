@@ -155,6 +155,15 @@ ABot-Recon 证明：**长程流式 3D 不必堆更大记忆**——固定 12 帧
 - **算力：** 实时 FPS 报告在 H100；边缘设备需自行 profile。
 - **与 ABot 系列其它项目区分：** 本页是 **Recon** 流式 3D；[ABot-World](./paper-abot-world-0.md) 等是世界模型/导航另一条线。
 
+## 与其他工作对比
+
+| 对照对象 | 状态与全局量的来源 | 与 ABot-Recon 的差异 |
+|----------|-------------------|---------------------|
+| **学习型长记忆流式重建（论文对照的先前最佳）** | 持久状态 / 多级长程融合随序列增长 | ABot-Recon 把学习态严格限在 **12 帧窗**，内存与算力与视频长度无关；Oxford Spires ATE 反而降约 **−40%** |
+| **[Glob3R](./paper-glob3r.md)** | 滑窗 tracks → 运动平均 + 全局 BA 的**全局 SfM** | Glob3R 用全局优化换精度，属离线/近线；ABot-Recon 是**纯因果流式**，loop closure 仅作可选后处理——两者比较必须先对齐是否启用全局优化 |
+| **[Wid3R](./paper-wid3r.md)** | 前馈多视图，相机模型 token + 球谐射线 | Wid3R 解的是**宽 FoV / 鱼眼原生**的相机表示问题，非长时序；与本页在「输入相机类型」而非「序列长度」维度互补 |
+| **[SAM 3](./paper-sam3.md)** | 开放词汇 2D 分割前端 | 语义 vs 几何分工：ABot-Recon 出点图与轨迹，SAM 3 出实例掩码；二者串联才构成 [2D→3D 语义提升](../concepts/2d-to-3d-semantic-lifting-gap.md)，谁都不替代谁 |
+
 ## 关联页面
 
 - [cn-os-abot-recon](./cn-os-abot-recon.md) — 国内开源全景策展节点

@@ -12,6 +12,7 @@ related:
   - ../concepts/humanoid-mass-production-engineering.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/field-oriented-control.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../../roadmap/depth-humanoid-hardware-design.md
 sources:
@@ -138,6 +139,7 @@ flowchart TD
 - [膝/腿主承力链为何通常避开谐波](./humanoid-knee-harmonic-drive-limits.md) — 谐波 vs 行星分工
 - [电机 TN 曲线](./motor-torque-speed-curve.md) — 性能测试第一张图
 - [电机驱动固件与总线协议](../overview/motor-drive-firmware-bus-protocols.md) — EtherCAT/CANopen 立项锁定
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页的五件套选型与四层测试是该闭环 ①–④ 层在**硬件交付物**侧的落地：驱动器对应 ①②，标定/传动误差补偿对应 ③，整机联调总线时序对应 ④
 - [力矩电机设计纵深路线](../../roadmap/depth-torque-motor-design.md) — 学到「可信关节模组」的学习顺序
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md) — N 个模组连成整机
 

@@ -2,7 +2,7 @@
 
 ## [2026-09-13] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **10** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,17 +91,14 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（1 个）
-- wiki/methods/foot-locking-ik-orangeduck.md（被 5 个页面引用，无 queries/comparisons 落地）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（4 个）
-- wiki/entities/paper-abot-recon.md（缺 对比）
-- wiki/entities/paper-dart-sam3-realtime.md（缺 对比）
-- wiki/entities/paper-graspmf.md（缺 对比）
-- wiki/entities/paper-tract.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -109,9 +106,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-point2pose.md（含绝对化措辞「SOTA」，updated=2026-09-12；同主题更新页 wiki/entities/paper-ctrl-world.md updated=2026-09-13）
-- wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md（含绝对化措辞「SOTA」，updated=2026-09-12；同主题更新页 wiki/entities/paper-ctrl-world.md updated=2026-09-13）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -122,12 +118,11 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-navverse.md
-- wiki/entities/paper-tract.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/concepts/joint-module-self-development-workflow.md
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无

@@ -19,6 +19,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../concepts/world-action-models.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-pi05-open-world-vla.md
   - ./paper-ctrl-world.md
   - ./paper-sc3-eval.md
@@ -195,6 +196,16 @@ TrAct 在 Object / Camera / RobotInit / Cross-Embodiment 四类上均为最佳�
 - **代价是推理算力：** K 与 WM 去噪步数决定延迟；K=5 为低延迟折中，K=20 为论文主结果设定。
 - **待开源后工程价值在完整栈：** VLAT 预训练混合（DROID+EgoDex+Bridge）、轨迹 slot 布局与 VLAC 微调配方是复现关键。
 
+## 与其他工作对比
+
+| 对照对象 | 条件接口 | 闭环用法 | TrAct 的差异 |
+|----------|----------|----------|--------------|
+| **AWM（论文内对照）** | 低维动作向量经 MLP→CLIP 空间 cross-attention 注入 SVD | 同协议选优 | 同训练/评测协议下，轨迹条件在视频指标四设置全胜（agent 视角 FVD 129→38），INTEGRAL 与真机再 **+6~+10 pp** |
+| **[π₀.₅](./paper-pi05-open-world-vla.md)** | 无 WM，开环下发动作块 | 无 | TrAct 以其为骨干与主基线；INTEGRAL 27%→55%、真机 49%→76%，代价是每步 K 次 WM rollout |
+| **[Ctrl-World](./paper-ctrl-world.md)** | 笛卡尔动作**帧级**条件 SVD | policy-in-the-loop | 二者都做想象闭环，但 TrAct 主张 **2D 轨迹比动作更适合条件化像素未来**（具身无关、稠密于图像空间）；接口不同，宜并列阅读而非替换 |
+| **[SC3-Eval](./paper-sc3-eval.md)** | — | 多视角想象一致性评估 | SC3-Eval 评的是想象**是否可信**；TrAct 用想象**做选择**，二者是同一闭环的评估侧与执行侧 |
+| **[PhysisForcing](./paper-physisforcing.md)** | CoTracker 轨迹作**训练期**物理对齐信号 | 无推理期选优 | 同样用点轨迹，但 TrAct 把轨迹提到**推理期条件接口**，并由 VLAT 自己预测轨迹而非仅作监督 |
+
 ## 关联页面
 
 - [生成式世界模型](../methods/generative-world-models.md) — 动作/轨迹条件视频 WM 谱系
@@ -204,6 +215,7 @@ TrAct 在 Object / Camera / RobotInit / Cross-Embodiment 四类上均为最佳�
 - [SC3-Eval](./paper-sc3-eval.md) — 多视角想象评估与防漂移
 - [PhysisForcing](./paper-physisforcing.md) — CoTracker 轨迹作训练期物理对齐的另一用法
 - [操作任务](../tasks/manipulation.md) — 操纵 WM / 闭环选优主线
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — TWM/AWM 视频指标属其 ② 世界模型预测保真度层，LIBERO-INTEGRAL 与真机 SR 属 ③ 策略任务成功率层
 
 ## 参考来源
 

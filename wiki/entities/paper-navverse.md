@@ -14,6 +14,7 @@ related:
   - ./esi-bench.md
   - ../methods/vla.md
   - ../overview/vln-open-source-repro-paradigms.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/navverse_arxiv_2607_19695.md
   - ../../sources/sites/navverse-benchmark-github-io.md
@@ -200,6 +201,7 @@ sequenceDiagram
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — UniNaVid 等基线语境
 - [ESI-Bench](./esi-bench.md) — 另一物理启用具身空间评测轴
 - [VLA](../methods/vla.md) — UniNaVid / LongNav-R1 等方法族
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属其 ③ 策略任务成功率评测层的导航侧基准；因仅有仿真 rollout，结论外推真机仍需 ④ 层 sim↔real 校准
 
 ## 推荐继续阅读
 
