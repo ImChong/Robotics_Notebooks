@@ -14,7 +14,7 @@ tags:
   - jetson
   - ntu
 status: complete
-updated: 2026-08-05
+updated: 2026-09-13
 arxiv: "2606.29934"
 venue: "arXiv"
 summary: "RoamFlow（NTU，arXiv:2606.29934）：MeanFlow 一步轨迹生成 + IL→RL 任务对齐 + 轨迹评估器；Habitat Gibson SR 68.7%/19.6 ms，Go2+Orin NX 真机 SR 1.00；确认未开源。"
@@ -27,6 +27,7 @@ related:
   - ./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
   - ./paper-navwam-goal-conditioned-visual-navigation-wam.md
+  - ./paper-graspmf.md
   - ../methods/diffusion-policy.md
 sources:
   - ../../sources/papers/roamflow_arxiv_2606_29934.md

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ## [2026-09-13] ingest | sources/papers/chorus_arxiv_2606_12352.md — CHORUS 去中心化多本体 VLA 协作（CoRL 2026）；截至入库日项目页未开源
+=======
+## [2026-09-13] ingest | sources/papers/graspmf_arxiv_2608_26076.md — GraspMF（arXiv:2608.26076）积群 MeanFlow 快速生成抓取；升格 paper-graspmf；交叉 grasp-pose-estimation / RoamFlow；确认未开源
+>>>>>>> 915f6daf9 ([2026-09-13] ingest | sources/papers/graspmf_arxiv_2608_26076.md — GraspMF 积群 MeanFlow 快速生成抓取入库并同步索引)
 
 ## [2026-09-13] ingest | sources/papers/egophi_arxiv_2608_13014.md — EgoPHI ego 视觉 mesh 级接触+力估计（ECCV 2026）；部分开源（训练/评测/HF 数据已发布，预训练权重链接待补）
 

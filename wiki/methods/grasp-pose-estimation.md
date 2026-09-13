@@ -2,11 +2,12 @@
 type: method
 tags: [perception, grasping, manipulation, point-cloud, rgbd, 6dof, deep-learning]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-13
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../entities/anygrasp.md
+  - ../entities/paper-graspmf.md
   - ../entities/paper-transgraspnet.md
   - ./contact-net.md
   - ./visual-servoing.md
@@ -109,6 +110,8 @@ flowchart LR
 - **Contact-GraspNet** 标签：在 ACRONYM 等基础上做 **接触点投影**，把抓取标注降到点级，方便稠密监督。
 - **AnyGrasp** 训练数据：在 **约 144 个真实物体、268 场景** 上扩展 GraspNet-1Billion，并通过 **相邻多视点** 自构造时序关联监督。
 
+**生成式分布支路（少步 MeanFlow · 单物体 ACRONYM）：** [GraspMF](../entities/paper-graspmf.md)（arXiv:2608.26076，Purdue）在 $\mathrm{SO}(3)\times\mathbb{R}^3$ 积群上用 **Lie Group-constrained MeanFlow** 采样平行夹爪抓取，**≤5 NFE** 对齐 SE3Dif / EquiGraspFlow 的 SR/EMD，**15.5 ms**（T=5）；与上文「候选采样+打分 / 稠密回归」正交，强调 **多模态覆盖 + 毫秒重规划**。**确认未开源**。
+
 ## 评测指标
 
 - **AP / AP_seen / AP_similar / AP_novel**（GraspNet 标准）：按物体集合的可见性分层评估，看泛化能力。
@@ -142,6 +145,7 @@ flowchart LR
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习的方案组合指南
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 白盒基线 vs SDK 工程闭环、单帧 vs 跨帧、开源 vs License 三对取舍
 - [MANGO-Grasp](../entities/paper-mango-grasp.md) — 多指跨手型马氏场，不是平行爪 6-DoF
+- [GraspMF](../entities/paper-graspmf.md) — ACRONYM 积群 MeanFlow 生成抓取（≤5 NFE；未开源）
 - [Point2Pose](../entities/paper-point2pose.md) — 无 CAD 多物体 6D 位姿跟踪与在线 TSDF（ECCV 2026；已开源）
 
 ## 参考来源
