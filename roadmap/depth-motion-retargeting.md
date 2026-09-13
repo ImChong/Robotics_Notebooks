@@ -244,6 +244,7 @@ flowchart LR
 - [fairmotion](../wiki/entities/fairmotion.md)（本仓库）— BVH / AMASS IO 与 FK 的上游数据基础设施（已归档，仍是格式转换的参照实现）
 - [Blender](../wiki/entities/blender.md) 与 [Robot Viewer](../wiki/entities/robot-viewer.md)（本仓库）— 通用 DCC 侧骨骼编辑与多格式（URDF/MJCF/USD）快速查看
 - [Generative Motion Rig（Disney）](../wiki/entities/generative-motion-rig.md)（本仓库）— 艺术家侧 generative keyframing 的闭源对照，看"编辑器接生成模型"能到什么程度
+- [足锁 IK（Orange Duck 配方）](../wiki/methods/foot-locking-ik-orangeduck.md) 与 [GenoView-InverseKinematics](../wiki/entities/genoview-inverse-kinematics.md)（本仓库）— 动画侧同一问题（已有轨迹 → 人工修整 → 重新导出）的参考实现：两骨 IK + 惯性化足锁 + 趾速接触启发式 + 离线 PBD 式全局脚滑修正；把"脚滑"当速度误差而非摩擦模型，可与上面三条机器人重定向编辑链路对照
 - [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) 与 [Motion Data Quality](../wiki/concepts/motion-data-quality.md)（本仓库）— 人工修整在管线中的位置与验收指标
 
 ### 学完输出什么

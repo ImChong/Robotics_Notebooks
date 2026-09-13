@@ -118,6 +118,7 @@ flowchart LR
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节（本仓库）
 - [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md)（本仓库）— Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，G1 真机 loco-manipulation 显著超 GR00T-N1.6
 - [SLIM-0.5B](../wiki/entities/paper-slim-05b.md)（本仓库）— Stage-1 IDM+FDM 掩码轨迹解耦预训练 + Stage-2 MoT flow 联合微调，与 DeFI 同源"正逆动力学同骨干"思路但把未来预测收窄为纯训练信号（不进控制环）；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556，真机端到端 77.3 ms · 2.01 GiB；已开源（GitHub + HF 权重）
+- [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md)（本仓库）— VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码待发布
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md)（本仓库）— 与 Joint / 部署横切对照
 
 ### 学完输出什么
