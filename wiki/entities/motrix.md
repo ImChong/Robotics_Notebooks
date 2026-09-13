@@ -3,10 +3,12 @@
 type: entity
 title: Motrix (MotrixSim / MotrixLab)
 tags: [simulation, physics-engine, robot-learning, rust, mjcf, web-viewer, motphys]
-summary: "Motrix 是高性能机器人物理仿真与训练平台，采用 Rust 开发，深度兼容 MJCF 格式，并提供浏览器 Web Viewer 零安装验模。"
-updated: 2026-06-18
+summary: "Motrix 是高性能机器人物理仿真与训练平台，采用 Rust 开发，深度兼容 MJCF 格式，并提供浏览器 Web Viewer 零安装验模；MotrixLab 侧含 Microduck 球平衡等 FastSAC 任务。"
+updated: 2026-09-13
 related:
   - ./botworld.md
+  - ./pollen-microduck.md
+  - ../tasks/microduck-ball-balance.md
 ---
 
 # Motrix (Motphys 机器人仿真与训练平台)
@@ -34,8 +36,9 @@ related:
 
 ### 2. MotrixLab (训练平台)
 - **功能**：将仿真环境与 AI 训练流程打通的“一站式”平台。
-- **集成环境**：内置了针对足式机器人的 `legged_gym` 环境，支持四足与双足人形。
-- **算法适配**：支持 SKRL, RSLRL 等主流强化学习框架，并支持 **JAX** 和 **PyTorch** 双后端。
+- **集成环境**：50+ 注册环境，覆盖四足/人形速度跟踪、全身跟踪（WBT）、操作与 **趣味接触任务**（如 [Microduck 球平衡](../tasks/microduck-ball-balance.md)）。
+- **算法适配**：**SKRL**（JAX/PyTorch PPO）、**RSL-RL**（PyTorch PPO）、自研 **FastSAC**（off-policy，异步 Collector/Learner 分进程）；统一 CLI `scripts/train.py task=<env>/<method>`。
+- **Microduck 环境族**：`microduck-walk-flat/rough`（多算法）与 `microduck-ball-balance`（目前仅 `motrix.fastsac`）；MJCF 自 [pollen-microduck-rl](./pollen-microduck-rl.md) 移植。
 
 ### 3. MotrixSim Web Viewer (浏览器端)
 - **入口**：[Motrix Viewer](https://motrix.motphys.com/) — 现代浏览器 + **WebAssembly** 即可运行，无需本地安装；亦作为 [BotWorld](./botworld.md) 插件中心推荐入口，便于从资产广场跳转验模。
@@ -60,8 +63,19 @@ related:
 - **与 [UniLab](unilab.md)**：UniLab 将 **MotrixSim** 与 MuJoCoUni 作为可选 CPU 批量物理后端，经统一 runtime 对接 GPU learner（见论文 arXiv:2605.30313）；项目页亦链到浏览器 MotrixSim demo。
 - **对比 [genesis-sim](genesis-sim.md)**：Genesis 更强调多物理场（流体、柔性体），而 Motrix 更专注于刚体关节型机器人的高频控制与 RL 训练。
 
+## 快速体验：Microduck 蹬球平衡
+
+```bash
+# MotrixLab 仓库内（需 install.sh + GPU）
+python scripts/train.py task=microduck-ball-balance/motrix.fastsac play=true
+```
+
+2048 并行 env、FastSAC 异步训练；用户实测约 **5–10 分钟** 可见策略。任务与奖励细节见 [Microduck 球平衡](../tasks/microduck-ball-balance.md)。
+
 ## 关联页面
 
+- [Microduck 球平衡](../tasks/microduck-ball-balance.md) — `microduck-ball-balance` 任务页
+- [Pollen Microduck](./pollen-microduck.md) — 硬件与 Runtime
 - [UniLab](unilab.md) — 异构 CPU-sim / GPU-learn 训练系统（MotrixSim 后端）
 - [simulation](../../references/repos/simulation.md) (仿真平台导航)
 - [rl-frameworks](../../references/repos/rl-frameworks.md) (RL 框架导航)
@@ -76,6 +90,8 @@ related:
 
 ## 参考来源
 - [Motrix 原始资料](../../sources/repos/motphys-motrix.md)
+- [MotrixLab 仓库归档](../../sources/repos/motrixlab.md)
+- [小鸭子在 MotrixSim 里练起了蹬西瓜](../../sources/blogs/motphys-microduck-ball-balance-motrixsim.md)
 - [MotrixSim Web Viewer 用户指南](../../sources/sites/motrixsim-web-viewer.md)
 - [MotrixSim 官方文档](https://motphys.github.io/motrixsim-docs/)
 - [MotrixLab GitHub](https://github.com/Motphys/MotrixLab)

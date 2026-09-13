@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-12
+updated: 2026-09-13
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -117,6 +117,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 - **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。
 - **作用**：解决姿态、角度、关键点坐标的映射。
 - **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。
+- **动画侧后处理**：游戏/动捕管线常用 **两骨 IK + 惯性化足锁** 或离线约束迭代消脚滑（与机器人 QP 不同层），见 [足锁 IK（Orange Duck）](../methods/foot-locking-ik-orangeduck.md) 与 [GenoView-InverseKinematics](../entities/genoview-inverse-kinematics.md)。
 
 ### 2. 动力学一致化层 (Dynamical Layer)
 - **作用**：在重定向轨迹的基础上，补足物理约束。

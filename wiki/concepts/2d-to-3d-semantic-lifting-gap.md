@@ -2,8 +2,9 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-13
 related:
+  - ../entities/paper-abot-recon.md
   - ./embodied-perception-six-spatial-representations.md
   - ./perception-coordinate-postprocessing.md
   - ./vision-backbones.md
@@ -144,6 +145,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [GO2 三维语义建图 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 2D→3D 语义建图端到端案例
 - [Segment Anything](../entities/paper-segment-anything.md) · [SAM2](../entities/paper-sam2.md) — 提供无类别语义掩码，语义-几何分离的一端
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — 路线③语义-几何联合建图代表
+- [ABot-Recon](../entities/paper-abot-recon.md) — 单目 RGB 流式点图/轨迹几何前端（无开放词汇语义）
 - [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外度量 lifting：像素视锥约束高斯，而不是绝对米制偏移
 - [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) — 离线 3DGS：把多视角 SAM 重分级成结构层级，再接 CLIP / 场景图
 - [PointDiT](../entities/paper-pointdit.md) — 路线①的 RGB-only 点图：像素空间扩散，细结构强，尺度仿射不变

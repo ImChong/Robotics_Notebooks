@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, sam3, open-vocabulary, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-13
 arxiv: "2511.16719"
 code: https://github.com/facebookresearch/sam3
 related:
+  - ./paper-dart-sam3-realtime.md
   - ./paper-segment-anything.md
   - ./paper-sam2.md
   - ./paper-eneas.md
@@ -109,7 +110,7 @@ sequenceDiagram
 | 项 | 建议 |
 |----|------|
 | 与 BLIP-2 分工 | SAM3：哪里有哪些实例；BLIP-2：图文相关性/描述；勿用 BLIP-2 单独当像素级分割器 |
-| 机载 | Orin NX 上优先 TensorRT/FP16；概念检测可离板、掩码跟踪机载 |
+| 机载 | Orin NX 上优先 TensorRT/FP16；多类实时 **检测** 见 [DART](./paper-dart-sam3-realtime.md)（共享骨干 + TRT，免重训） |
 | 建图 | 掩码需深度/LiDAR 融合；见 [2D→3D 语义提升 Gap](../concepts/2d-to-3d-semantic-lifting-gap.md) |
 | 选型 | 只要点选单目标跟视频 → SAM2；要「找出所有椅子」→ SAM3 |
 
@@ -146,7 +147,7 @@ SAM 3 把 Segment Anything 从「提示一个物体」推进到「提示一个�
 
 ## 关联页面
 
-- [SAM](./paper-segment-anything.md) · [SAM 2](./paper-sam2.md)
+- [SAM](./paper-segment-anything.md) · [SAM 2](./paper-sam2.md) · [DART 实时多类检测](./paper-dart-sam3-realtime.md)
 - [ENEAS](./paper-eneas.md) — SAM 3 对照：本体验证与时序记忆
 - [BLIP-2](./paper-blip2.md)
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md)
