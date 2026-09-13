@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12",
+  "generated_at": "2026-09-13",
   "node_count": 3981,
   "edge_count": 35576,
   "coverage": {
@@ -8,6 +8,35 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
+      "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
+      "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
+      "type": "comparison",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-designing-physics-experiments-with-ai.md",
+      "detail_id": "entity-paper-designing-physics-experiments-with-ai",
+      "label": "Designing physics experiments with artificial intelligence",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-points-as-tori.md",
+      "detail_id": "entity-paper-points-as-tori",
+      "label": "Points as Tori（PAT）",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-sa-2512-01850-register-any-point.md",
       "detail_id": "entity-paper-sa-2512-01850-register-any-point",
@@ -28,6 +57,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md",
+      "detail_id": "entity-paper-sa-2603-06228-low-latency-event-based-object-detection-with",
+      "label": "SSLA-Det：空间稀疏线性注意力事件检测",
+      "type": "entity",
+      "recency": "2026-09-12",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-sa-2603-26639-geosr.md",
@@ -94,17 +134,6 @@
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md",
-      "detail_id": "entity-paper-sa-2603-06228-low-latency-event-based-object-detection-with",
-      "label": "SSLA-Det：空间稀疏线性注意力事件检测",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
       "path": "wiki/entities/paper-point2pose.md",
       "detail_id": "entity-paper-point2pose",
       "label": "Point2Pose",
@@ -127,15 +156,6 @@
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
-      "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
-      "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
-      "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
-      "type": "comparison",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added"
-    },
-    {
       "path": "wiki/entities/openless.md",
       "detail_id": "entity-openless",
       "label": "OpenLess",
@@ -145,26 +165,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-designing-physics-experiments-with-ai.md",
-      "detail_id": "entity-paper-designing-physics-experiments-with-ai",
-      "label": "Designing physics experiments with artificial intelligence",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-points-as-tori.md",
-      "detail_id": "entity-paper-points-as-tori",
-      "label": "Points as Tori（PAT）",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/humanlayer-skills.md",
@@ -221,15 +221,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sa-2512-01850-register-any-point.md",
-    "detail_id": "entity-paper-sa-2512-01850-register-any-point",
-    "label": "RAP：Scaling 3D Point Cloud Registration by Flow Matching",
-    "type": "entity",
+    "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
+    "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
+    "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
+    "type": "comparison",
     "recency": "2026-09-12",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
