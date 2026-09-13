@@ -54,7 +54,7 @@ summary: "DART（arXiv:2603.11441）：免重训将 SAM3 转为实时多类别�
 | **基座** | SAM3 ViT-H/14 + 跨模态 decoder（权重不变） |
 | **核心技巧** | 共享骨干 · 批量多类解码 · 检测专用推理 · TensorRT FP16 |
 | **开源** | **已开源**：[mkturkcan/DART](https://github.com/mkturkcan/DART) + [HF 权重](https://huggingface.co/mehmetkeremturkcan/DART) |
-| **与 humanoid DART 区分** | 本页是 **视觉检测** DART；[Humanoid DART](./paper-humanoid-dart.md) / [DART-Control](./dart-control.md) 是运动/控制另一条线 |
+| **与 humanoid DART 区分** | 本页是 **视觉检测** DART；[Humanoid DART](./paper-humanoid-dart.md) / [DART-Control](../methods/dart-control.md) 是运动/控制另一条线 |
 
 ## 核心原理
 

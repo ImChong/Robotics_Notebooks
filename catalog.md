@@ -96,7 +96,7 @@
 - [ABot-Explorer](wiki/entities/cn-os-abot-explorer.md) — ABot-Explorer** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：VLM 驱动、支持 3DGS 与 H `📅unknown` `[entity_page]`
 - [ABot-Manipulation](wiki/entities/cn-os-abot-manipulation.md) — ABot-Manipulation** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：ABot-M0.5联合处理移动与 `📅unknown` `[entity_page]`
 - [ABot-Navigation](wiki/entities/cn-os-abot-navigation.md) — ABot-Navigation** 是 阿里巴巴 公开的 **数据集/Benchmark** 开源项目：视觉与语言指令经过场景理解 `📅unknown` `[entity_page]`
-- [ABot-Recon](wiki/entities/cn-os-abot-recon.md) — ABot-Recon** 是 阿里巴巴 公开的 **工程与工具** 开源项目：仅用视频的长时流式 3D 重建 `📅unknown` `[entity_page]`
+- [ABot-Recon](wiki/entities/cn-os-abot-recon.md) — ABot-Recon** 是 阿里巴巴 的 **单目 RGB 长视频流式 3D 重建** 项目（arXiv:2608.27529） `📅unknown` `[entity_page]`
 - [agibot_D1_Edu-Ultra](wiki/entities/cn-os-agibot-d1-edu-ultra.md) — agibot_D1_Edu-Ultra** 是 智元机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读 `📅unknown` `[entity_page]`
 - [Agibot_D1_Max](wiki/entities/cn-os-agibot-d1-max.md) — Agibot_D1_Max** 是 智元机器人 公开的 **SDK/驱动** 开源项目：C++ SDK通过高层运动接口、状态回调和 `📅unknown` `[entity_page]`
 - [agibot_x1_hardware](wiki/entities/cn-os-agibot-x1-hardware.md) — agibot_x1_hardware** 是 智元机器人 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJ `📅unknown` `[entity_page]`
@@ -764,6 +764,7 @@
 - [4-DoF 视觉引导桌面笔具分拣](wiki/entities/paper-4dof-pen-sorting.md) — Tabletop Pen Manipulation With a Vision-Guided 4-DoF Arm**（[arXiv:2608.15968](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）](wiki/entities/paper-abot-m05-mobile-manipulation-wam.md) — ABot-M0.5**（*ABot-M0.5: Unified Mobility-and-Manipulation World Action Model*，arXiv:2607.00678，AMA `📅unknown` `[entity_page]`
 - [ABot-N1（通用视觉–语言导航基础模型）](wiki/entities/paper-abot-n1.md) — ABot-N1**（*ABot-N1: Toward a General Visual Language Navigation Foundation Model*，[arXiv:2607.1038 `📅unknown` `[entity_page]`
+- [ABot-Recon：局部上下文长视频流式 3D 重建](wiki/entities/paper-abot-recon.md) — ABot-Recon**（*Revisiting Local Context for Long-Horizon Streaming 3D Reconstruction*，[arXiv:2608.2 `📅unknown` `[entity_page]`
 - [ABot-World-0（单卡桌面无限交互世界 Rollout）](wiki/entities/paper-abot-world-0.md) — ABot-World-0**（*ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU*，[arXiv:2 `📅unknown` `[entity_page]`
 - [ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）](wiki/entities/paper-ace-brain-0-5.md) — ACE-Brain-0.5**（*A Unified Embodied Foundational Model for Physical Agentic AI*，[arXiv:2607.04426 `📅unknown` `[entity_page]`
 - [ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎](wiki/entities/paper-ace-data-0.md) — ACE-Data-0**（*Human-Centric Ambient Capture as Embodied Data Engine*，[arXiv:2607.28625](https://ar `📅unknown` `[entity_page]`
@@ -916,6 +917,7 @@
 - [Daily-Omni（日常音视频跨模态时序推理基准）](wiki/entities/paper-daily-omni.md) — Daily-Omni**（*Towards Audio-Visual Reasoning with Temporal Alignment across Modalities*，[arXiv:250 `📅unknown` `[entity_page]`
 - [DAJI（预期关节意图 · 语言条件人形控制）](wiki/entities/paper-daji-anticipatory-joint-intent.md) — DAJI**（*Before the Body Moves: Learning Anticipatory Joint Intent for Language-Conditioned Humanoi `📅unknown` `[entity_page]`
 - [DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）](wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md) — DAPL**（*Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning*，[arXi `📅unknown` `[entity_page]`
+- [DART：SAM3 实时多类别开放词汇检测](wiki/entities/paper-dart-sam3-realtime.md) — DART**（*Detect Anything in Real Time*；论文 *From Single-Prompt Segmentation to Multi-Class Detection `📅unknown` `[entity_page]`
 - [DASH：分歧自适应的 OPSD 监督视界](wiki/entities/paper-dash-opsd.md) — DASH**（*Divergence-Adaptive Supervision Horizons*；[arXiv:2608.06243](https://arxiv.org/abs/2608.06 `📅unknown` `[entity_page]`
 - [Data Pyramid for Embodied Manipulation（具身数据金字塔综述）](wiki/entities/paper-data-pyramid-embodied-manipulation.md) — Data Pyramid for Embodied Manipulation**（arXiv:2607.24744，2026 `📅unknown` `[entity_page]`
 - [DayDreamer](wiki/entities/paper-daydreamer-world-models-real-robots.md) — DayDreamer** 收录于 具身智能研究室 · 具身世界模型六路线综述 **学习主导 `📅unknown` `[entity_page]`
