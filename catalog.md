@@ -668,6 +668,7 @@
 - [Mink](wiki/entities/mink-ik.md) — Mink](https://github.com/kevinzakka/mink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
 - [MIT Mini Cheetah（学习栈与开源边界）](wiki/entities/mit-mini-cheetah.md) — MIT Mini Cheetah**（Sangbae Kim 实验室；执行器由 Benjamin Katz 主导）是约 **0.3 m / 9 kg `📅unknown` `[entity_page]`
 - [Mixamo](wiki/entities/mixamo.md) — Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形 `📅unknown` `[entity_page]`
+- [mjbatch（MuJoCo CPU 批量并行）](wiki/entities/mjbatch.md) — mjbatch**（`kevinzakka/mjbatch`，PyPI：`mjbatch`）是在 **官方 `mu `📅unknown` `[entity_page]`
 - [mjlab_playground（mjlab 任务集合）](wiki/entities/mjlab-playground.md) — mjlab_playground** 是 mjlab 之上的 **示例任务仓库**：把 [MuJoCo Playground](https://playground.m `📅unknown` `[entity_page]`
 - [mjlab (轻量 GPU 加速 RL 框架)](wiki/entities/mjlab.md) — mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 [**MuJoCo War `📅unknown` `[entity_page]`
 - [mjswan](wiki/entities/mjswan.md) — mjswan**（GitHub，在线 Demo） `📅unknown` `[entity_page]`

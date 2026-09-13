@@ -1,3 +1,5 @@
+## [2026-09-13] ingest | sources/repos/mjbatch.md — 接入 MuJoCo CPU 批量并行库 mjbatch（已开源；实体页 + MuJoCo/Mink 交叉引用）
+
 ## [2026-09-13] ingest | sources/papers/eagle_wbc_arxiv_2602_02960.md — EAGLE-WBC ICRA 2026 深化 ingest；项目页核查未开源；升级论文实体页
 
 ## [2026-09-13] ingest | sources/papers/tract_arxiv_2608_24101.md — TrAct 视觉轨迹桥接控制与 WM；代码待发布
