@@ -9,9 +9,9 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-dart-sam3-realtime.md",
-      "detail_id": "entity-paper-dart-sam3-realtime",
-      "label": "DART：SAM3 实时多类别开放词汇检测",
+      "path": "wiki/entities/paper-abot-recon.md",
+      "detail_id": "entity-paper-abot-recon",
+      "label": "ABot-Recon：局部上下文长视频流式 3D 重建",
       "type": "entity",
       "recency": "2026-09-13",
       "source": "git",
@@ -20,9 +20,9 @@
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
-      "path": "wiki/entities/paper-abot-recon.md",
-      "detail_id": "entity-paper-abot-recon",
-      "label": "ABot-Recon：局部上下文长视频流式 3D 重建",
+      "path": "wiki/entities/paper-dart-sam3-realtime.md",
+      "detail_id": "entity-paper-dart-sam3-realtime",
+      "label": "DART：SAM3 实时多类别开放词汇检测",
       "type": "entity",
       "recency": "2026-09-13",
       "source": "git",
@@ -220,9 +220,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dart-sam3-realtime.md",
-    "detail_id": "entity-paper-dart-sam3-realtime",
-    "label": "DART：SAM3 实时多类别开放词汇检测",
+    "path": "wiki/entities/paper-abot-recon.md",
+    "detail_id": "entity-paper-abot-recon",
+    "label": "ABot-Recon：局部上下文长视频流式 3D 重建",
     "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
