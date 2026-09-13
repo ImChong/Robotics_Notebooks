@@ -9,6 +9,47 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-biomechanical-3d-body.md",
+      "detail_id": "entity-paper-biomechanical-3d-body",
+      "label": "Biomechanical 3D Body：从 3D 人体基础模型蒸馏生物力学姿态",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dat-divide-and-truncate.md",
+      "detail_id": "entity-paper-dat-divide-and-truncate",
+      "label": "DAT：Divide and Truncate 多物理无穿透接触",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mixed-mpm-stiff-elastoplasticity.md",
+      "detail_id": "entity-paper-mixed-mpm-stiff-elastoplasticity",
+      "label": "Mixed MPM：刚性弹粘塑性混合物质点法",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/particles4all.md",
+      "detail_id": "entity-particles4all",
+      "label": "Particles4All",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/joint-module-self-development-workflow.md",
       "detail_id": "wiki-concepts-joint-module-self-development-workflow",
       "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
@@ -171,58 +212,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sa-2512-05394-ssvae.md",
-      "detail_id": "entity-paper-sa-2512-05394-ssvae",
-      "label": "SSVAE：Delving into Latent Spectral Biasing of Video VAEs for Superior Diffusability",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md",
-      "detail_id": "entity-paper-sa-2603-06228-low-latency-event-based-object-detection-with",
-      "label": "SSLA-Det：空间稀疏线性注意力事件检测",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sa-2603-26639-geosr.md",
-      "detail_id": "entity-paper-sa-2603-26639-geosr",
-      "label": "GeoSR：Make Geometry Matter for Spatial Reasoning",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sa-2603-27891-poppy-polarization-normal-estimation.md",
-      "detail_id": "entity-paper-sa-2603-27891-poppy-polarization-normal-estimation",
-      "label": "Poppy：Polarization-based Plug-and-Play Guidance for Enhancing Monocular Normal Estimation",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/joint-module-self-development-workflow.md",
-    "detail_id": "wiki-concepts-joint-module-self-development-workflow",
-    "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
-    "type": "concept",
+    "path": "wiki/entities/paper-biomechanical-3d-body.md",
+    "detail_id": "entity-paper-biomechanical-3d-body",
+    "label": "Biomechanical 3D Body：从 3D 人体基础模型蒸馏生物力学姿态",
+    "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
