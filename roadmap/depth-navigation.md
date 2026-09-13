@@ -87,6 +87,7 @@ flowchart LR
 - [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md)（本仓库）— 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
 - [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md)（本仓库）— memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
 - [KILVO](../wiki/entities/paper-kilvo.md)（本仓库）— 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；代码仓占位待开放
+- [ABot-Recon](../wiki/entities/paper-abot-recon.md)（本仓库）— 阿里 AMap CV Lab，固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建，状态不随序列长度增长；Oxford Spires ATE 4.35 m（约 −40%），与 SLAMFormer-∞ 同属单目稠密流式 SLAM 前沿；已开源（GitHub + HF 权重）
 
 ### 学完输出什么
 - 能为给定平台（室内 AMR / 野外四足 / 手持建图）选出合理的 SLAM 配置
@@ -185,6 +186,7 @@ flowchart LR
 - [Matterport3D Simulator](../wiki/entities/matterport3d-simulator.md) 与 [Habitat-Sim](../wiki/entities/habitat-sim.md)（本仓库）
 - [NaVILA](../wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 与 [Qwen-RobotNav](../wiki/entities/qwen-robot-nav.md)（本仓库）— 腿式 / 通才导航 VLA 锚点
 - [HumanoidVLN](../wiki/entities/paper-humanoidvln.md)（本仓库）— Isaac Sim 首个人形物理 VLN 平台与基准，四本体 RL+PD/MPC、87 场景≥100 m²；JanusVLN 平均 SR 43.55%，G1 DualVLN 20 条 sim–real r=0.935
+- [NavVerse](../wiki/entities/paper-navverse.md)（本仓库）— UMich CURLY，Isaac Sim 室内–户外连通导航基准，10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/安全指标；零样本 VLA 完成率最高、模块化方法最安全，专测"出门后还会不会走"的 transition 失败
 
 ### 学完输出什么
 - 一次标准 VLN 基准上的复现与评测记录
