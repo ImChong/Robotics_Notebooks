@@ -296,6 +296,7 @@ flowchart TD
 - **RoboInter1.5**：**230k+** episode 稠密中间表示套件（Data / VQA / VLM / VLA）+ **IR 条件世界模型**；三种 plan-then-execute（IC/EC/Modular + F-CoT）；**数据与 VLM 已开源**，VLA 权重与 World 代码待齐（见 [RoboInter1.5](../entities/paper-robointer-1-5.md)，arXiv:2607.18709）
 - **RynnBrain 1.1 / RynnBrain-VLA（阿里达摩院）**：**Qwen3.5** 系 **2B/9B/122B-A10B** 具身基础模型 + **接触点 / native 3D**；VLA 用 **81 维统一动作空间 + embodiment mask + flow matching + RTC**，在 **G1 / Astribot / Tianji-Wuji** 上同配方优于 **Qwen-Based-VLA** 与 **π₀.₅ / GR00T N1.7**；**基础模型权重与推理已开源**，VLA 训练栈未见公开（见 [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md)，arXiv:2607.17977）
 - **ACE-Brain-0.5（大晓 Ace Robotics）**：**Qwen3-VL 8B** 统一具身脑，把 **空间感知 / 规划 / 导航·操作 / 进度估计** 收进同一闭环；**SSR+**（含 Reactivate）合并异构接口；LIBERO **98.2%**、SimplerEnv-Bridge VLA 变体 **82.3%**、RBM progress VOC 强；**HF 权重已开源**，训练栈未见（见 [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md)，arXiv:2607.04426）
+- **PhysBrain 1.5（DeepCybo / 中关村学院 / ZGCI）**：**Qwen3-VL 2B/8B** 统一 **具身理解 + ActionPiece 动作块 + 未来 RGB/depth/mask 预测**；28 benchmark Overall **72.5** 开源 SOTA；人类交互视频预训练 + 人类/真机/仿真 SFT；**HF 权重 + PhysBrainEvalKit 已开源**，训练栈未见（见 [PhysBrain 1.5](../entities/paper-sa-2512-16793-physbrain-human-egocentric-data-as-a-bridge-from.md)，技术报告 2026 / 前作 arXiv:2512.16793）
 - **LingBot-VLA 1.0**：**Qwen2.5-VL-3B + flow 动作头**；**2 万小时**、**9 类双臂** 真机预训练；开源 **4B** 权重（含 depth 变体）、**GM-100** 数据与 **LeRobot v3.0** 后训练范例；RoboTwin 仿真平均 SR 超 **π₀.₅**（见 [LingBot-VLA](../entities/lingbot-vla.md)，arXiv:2601.18692）
 - **LingBot-VLA 2.0**：**Qwen3-VL-4B + 稀疏 MoE action expert**；约 **6 万小时** 过滤预训练（**5 万 h** 机器人 ×**20** 本体 + **1 万 h** egocentric 人视频）、**55 维统一全身动作** 与 **Dual-Query 深度/视频蒸馏**；GM-100 / 长程移动操作 **generalist** 评测超 **π₀.₅**、**GR00T N1.7** 与 **1.0**；开源 **6B 权重** 与真机部署脚本（见 [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md)，arXiv:2607.06403）
 - **τ₀-VLA**：**分层子任务 + 世界模型引导 TTC**（beam search 比较想象后果）；低层 **Qwen3.5 + MoT flow**、**40 维** 统一动作、**40,115 h** 预训练；长程四任务分层 **45.0%** vs 整任务 **27.5%**；低层 **已开源**、高层 TTC **逐步发布**（见 [τ₀-VLA](../entities/paper-tau0-vla.md)，arXiv:2608.16885）
@@ -511,6 +512,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Embodied Scaling Laws (具身规模法则)](../concepts/embodied-scaling-laws.md) — 数据规模与模型性能的关系
 - [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 具身预训练脑 + 跨本体统一动作空间 VLA
 - [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 统一具身脑：感知–规划–动作–进度闭环 + SSR+
+- [PhysBrain 1.5](../entities/paper-sa-2512-16793-physbrain-human-egocentric-data-as-a-bridge-from.md) — 统一 token 具身理解 / ActionPiece / 未来态预测 + 28 benchmark EvalKit
 - [Auto-labeling Pipelines (自动化标注)](./auto-labeling-pipelines.md) — 构建大规模 VLA 数据集的基石
 - [Foundation Policy Alignment (策略对齐)](../formalizations/foundation-policy-alignment.md) — 跨形态知识共享的形式化
 - [Unified Multimodal Tokens (统一 Token)](./unified-multimodal-tokens.md) — 现代 VLA 的架构趋势

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-13",
   "node_count": 3984,
-  "edge_count": 35625,
+  "edge_count": 35630,
   "coverage": {
     "covered": 3956,
     "total": 3956,
@@ -232,11 +232,15 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 754
+      "size": 653
     },
     {
       "label": "操作",
-      "size": 583
+      "size": 587
+    },
+    {
+      "label": "世界动作模型",
+      "size": 410
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -244,15 +248,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 273
-    },
-    {
-      "label": "世界动作模型",
-      "size": 236
+      "size": 252
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 223
+      "size": 218
     }
   ],
   "top_hubs": [
@@ -276,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 955,
+      "degree": 956,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
