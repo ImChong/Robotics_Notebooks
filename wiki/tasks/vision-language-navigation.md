@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-09-07
+updated: 2026-09-13
 status: complete
 related:
   - ../entities/paper-abot-n1.md
@@ -39,6 +39,7 @@ related:
   - ../entities/paper-s-squared-vla.md
   - ../entities/qwen-robot-nav.md
   - ../entities/paper-refertrack.md
+  - ../entities/paper-navverse.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -238,6 +239,7 @@ sources:
 - [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 统一具身脑内嵌 VLN-CE（R2R/RxR）与操作/进度接口
 - [ABot-N1](../entities/paper-abot-n1.md) — 慢–快 CoT+像素接口 VLN 基础模型；ABotN-PointBench / POIBench 城市闭环基准
 - [SPARK-VLN](../entities/paper-spark-vln.md) — 逐 token 隐状态流 + flow 快规划器；Idealized/Realistic 动态社会基准；未开源（arXiv:2607.16806）
+- [NavVerse](../entities/paper-navverse.md) — Isaac Sim 室内–户外连通基准；ObjNav/PlaceNav/VLN + 安全与 transition 诊断；代码待发布（arXiv:2607.19695）
 - [Project Quiver](../entities/project-quiver.md) — 25 kg 开源户外机架；无官方 VLN 绑定，只作重载真机想象
 
 ## 推荐继续阅读

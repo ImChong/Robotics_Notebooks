@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3989,
-  "edge_count": 35684,
+  "node_count": 3990,
+  "edge_count": 35693,
   "coverage": {
-    "covered": 3961,
-    "total": 3961,
+    "covered": 3962,
+    "total": 3962,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-navverse.md",
+      "detail_id": "entity-paper-navverse",
+      "label": "NavVerse：室内–户外连续具身导航基准",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
     {
       "path": "wiki/entities/genoview-inverse-kinematics.md",
       "detail_id": "entity-genoview-inverse-kinematics",
@@ -206,54 +217,43 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sa-2607-01987-geosubprobe.md",
-      "detail_id": "entity-paper-sa-2607-01987-geosubprobe",
-      "label": "Geosubprobe：Understanding Geometric Representations in Self-Supervised Vision Transformers via Subspace Intervention",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/genoview-inverse-kinematics.md",
-    "detail_id": "entity-genoview-inverse-kinematics",
-    "label": "GenoView-InverseKinematics",
+    "path": "wiki/entities/paper-navverse.md",
+    "detail_id": "entity-paper-navverse",
+    "label": "NavVerse：室内–户外连续具身导航基准",
     "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 625
+      "size": 726
     },
     {
       "label": "操作",
-      "size": 587
-    },
-    {
-      "label": "世界动作模型",
-      "size": 410
+      "size": 582
     },
     {
       "label": "国内开源全景 424 项本库导读",
       "size": 322
     },
     {
+      "label": "世界动作模型",
+      "size": 268
+    },
+    {
       "label": "视觉-语言-动作",
-      "size": 252
+      "size": 254
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 223
+      "size": 221
     }
   ],
   "top_hubs": [
@@ -277,7 +277,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 956,
+      "degree": 957,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
