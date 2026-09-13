@@ -1,3 +1,5 @@
+## [2026-09-13] ingest | sources/papers/navverse_arxiv_2607_19695.md — 新建 NavVerse 室内–户外导航基准实体页；待发布（arXiv+项目页已上线，Isaac Sim 代码未见）
+
 ## [2026-09-13] ingest | sources/papers/physbrain_1_5_technical_report_2026.md — 升格 PhysBrain 1.5 深度实体页；部分开源（HF 2B/8B + PhysBrainEvalKit）；28 benchmark Overall 72.5
 
 ## [2026-09-13] ingest | sources/blogs/wechat_zanehub_joint_module_self_development_workflow.md — 自研关节模组全流程；升格 wiki/concepts/joint-module-self-development-workflow.md

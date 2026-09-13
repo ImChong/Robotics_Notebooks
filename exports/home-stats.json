@@ -1,13 +1,67 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3989,
-  "edge_count": 35684,
+  "node_count": 3990,
+  "edge_count": 35693,
   "coverage": {
-    "covered": 3961,
-    "total": 3961,
+    "covered": 3962,
+    "total": 3962,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/genoview-inverse-kinematics.md",
+      "detail_id": "entity-genoview-inverse-kinematics",
+      "label": "GenoView-InverseKinematics",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/methods/foot-locking-ik-orangeduck.md",
+      "detail_id": "wiki-methods-foot-locking-ik-orangeduck",
+      "label": "足锁 IK（Orange Duck 配方）",
+      "type": "method",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-abot-recon.md",
+      "detail_id": "entity-paper-abot-recon",
+      "label": "ABot-Recon：局部上下文长视频流式 3D 重建",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dart-sam3-realtime.md",
+      "detail_id": "entity-paper-dart-sam3-realtime",
+      "label": "DART：SAM3 实时多类别开放词汇检测",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/tasks/microduck-ball-balance.md",
+      "detail_id": "wiki-tasks-microduck-ball-balance",
+      "label": "Microduck 球平衡（蹬西瓜）",
+      "type": "task",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/concepts/joint-module-self-development-workflow.md",
       "detail_id": "wiki-concepts-joint-module-self-development-workflow",
@@ -163,96 +217,43 @@
       "action": "added",
       "has_repo": true,
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-point2pose.md",
-      "detail_id": "entity-paper-point2pose",
-      "label": "Point2Pose",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wid3r.md",
-      "detail_id": "entity-paper-wid3r",
-      "label": "Wid3R：相机模型条件化的宽视场 3D 重建",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/openless.md",
-      "detail_id": "entity-openless",
-      "label": "OpenLess",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/humanlayer-skills.md",
-      "detail_id": "entity-humanlayer-skills",
-      "label": "HumanLayer Skills",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wm-craftnet.md",
-      "detail_id": "entity-paper-wm-craftnet",
-      "label": "WM-Craftnet：世界联觉模型驱动的鲁棒手内灵巧操作",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/joint-module-self-development-workflow.md",
-    "detail_id": "wiki-concepts-joint-module-self-development-workflow",
-    "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
-    "type": "concept",
+    "path": "wiki/entities/genoview-inverse-kinematics.md",
+    "detail_id": "entity-genoview-inverse-kinematics",
+    "label": "GenoView-InverseKinematics",
+    "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 625
+      "size": 726
     },
     {
       "label": "操作",
-      "size": 587
-    },
-    {
-      "label": "世界动作模型",
-      "size": 410
+      "size": 582
     },
     {
       "label": "国内开源全景 424 项本库导读",
       "size": 322
     },
     {
+      "label": "世界动作模型",
+      "size": 268
+    },
+    {
       "label": "视觉-语言-动作",
-      "size": 252
+      "size": 254
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 223
+      "size": 221
     }
   ],
   "top_hubs": [
@@ -276,7 +277,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 956,
+      "degree": 957,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
