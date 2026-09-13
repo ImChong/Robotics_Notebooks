@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/genoview-inverse-kinematics.md",
+      "detail_id": "entity-genoview-inverse-kinematics",
+      "label": "GenoView-InverseKinematics",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/methods/foot-locking-ik-orangeduck.md",
+      "detail_id": "wiki-methods-foot-locking-ik-orangeduck",
+      "label": "足锁 IK（Orange Duck 配方）",
+      "type": "method",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-abot-recon.md",
       "detail_id": "entity-paper-abot-recon",
       "label": "ABot-Recon：局部上下文长视频流式 3D 重建",
@@ -195,34 +217,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-point2pose.md",
-      "detail_id": "entity-paper-point2pose",
-      "label": "Point2Pose",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wid3r.md",
-      "detail_id": "entity-paper-wid3r",
-      "label": "Wid3R：相机模型条件化的宽视场 3D 重建",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-abot-recon.md",
-    "detail_id": "entity-paper-abot-recon",
-    "label": "ABot-Recon：局部上下文长视频流式 3D 重建",
+    "path": "wiki/entities/genoview-inverse-kinematics.md",
+    "detail_id": "entity-genoview-inverse-kinematics",
+    "label": "GenoView-InverseKinematics",
     "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
