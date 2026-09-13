@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "humanoid", "whole-body-control", "cross-embodiment", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-13
 arxiv: "2602.05791"
 venue: "HMI curated · 2026"
 summary: "XHugWBC（HMI P037）：用物理一致的随机形态扩展训练分布，并以语义关节映射与本体图网络对齐异构人形，检验不更新权重的跨人形控制边界。"

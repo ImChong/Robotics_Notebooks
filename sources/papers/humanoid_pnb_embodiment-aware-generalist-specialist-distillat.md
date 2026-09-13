@@ -7,7 +7,11 @@
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.02960>
-- **入库日期：** 2026-06-07
+- **项目页：** <https://eagle-wbc.github.io/>
+- **会议：** ICRA 2026
+- **机构：** 上海交通大学（SJTU）；上海人工智能实验室（Shanghai AI Lab）
+- **入库日期：** 2026-06-07（Paper Notebooks 锚点）；2026-09-13 深化 ingest 见 [`eagle_wbc_arxiv_2602_02960.md`](eagle_wbc_arxiv_2602_02960.md) 与 [`eagle-wbc-github-io.md`](../sites/eagle-wbc-github-io.md)
+- **代码：** 截至 2026-09-13 项目页未列 GitHub（**确认未开源**）
 - **一句话说明：** EAGLE 把"跨本体人形 WBC"建成一个迭代的"泛化—专家"蒸馏循环：先在一个池子里同时训练多种本体的泛化策略；再为每个本体派生一个专家做精修；最后把各专家的新技能通过 DAgger 蒸馏回泛化策略，反复循环直至收敛——配合一套统一的高维指令接口（蹲、倾、底盘速度等同时支持），最终用一份策略驱动 H1 / G1 / N1 / T1 / Adam 等异构人形。
 
 ## 核心摘录（策展，非全文）
@@ -22,5 +26,7 @@
 
 ## 参考来源（原始）
 
+- 深化归档：[eagle_wbc_arxiv_2602_02960.md](eagle_wbc_arxiv_2602_02960.md)、[eagle-wbc-github-io.md](../sites/eagle-wbc-github-io.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B.html>
 - 论文：<https://arxiv.org/abs/2602.02960>
+- 项目页：<https://eagle-wbc.github.io/>

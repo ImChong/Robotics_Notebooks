@@ -3,7 +3,7 @@ title: 跨具身策略迁移选型指南
 type: query
 status: complete
 created: 2026-05-31
-updated: 2026-08-28
+updated: 2026-09-13
 summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；近亲骨架上 Any2Any 的更严冻结变体对照 SONIC-Transfer；灵巧手层可对照 UHAS（RL 球面）与 AdvDex（VLA 关节槽）；末端/工具接口轴对照 GEN-1 千手；同形态跨配置遗留示教对照 Emergent Transfer；设计侧生成机体可对照 Transformer Transformer。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
@@ -15,6 +15,7 @@ sources:
   - ../../sources/papers/transformer_transformer_arxiv_2607_25798.md
   - ../../sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
+  - ../../sources/papers/eagle_wbc_arxiv_2602_02960.md
 related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -24,6 +25,7 @@ related:
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
   - ../entities/paper-emergent-transfer-cross-config.md
+  - ../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/paper-transformer-transformer.md
   - ../methods/sonic-motion-tracking.md
@@ -50,7 +52,7 @@ related:
 |------|--------|----------|
 | **单具身重训 + 重定向迁移** | 目标机重新跑一遍参考池 → 重定向 → 训练全链路；只复用**数据与配方**，不复用策略权重。 | [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) + [BeyondMimic](../methods/beyondmimic.md) |
 | **Any2Any 高效后训练** | 冻结源机 WBT 专家，差距拆成**无梯度运动学对齐** + **动力学敏感层 LoRA**，约 1% 全量算力迁到新机。 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
-| **多具身联合训练** | 从一开始就把多台机器人塞进同一训练，用统一观测/动作编码吸收差异，训出一个 generalist 骨干。 | [SONIC](../methods/sonic-motion-tracking.md) 多具身路线 / [BFM](../concepts/behavior-foundation-model.md) |
+| **多具身联合训练** | 从一开始就把多台机器人塞进同一训练，用统一观测/动作编码吸收差异，训出一个 generalist 骨干。 | [SONIC](../methods/sonic-motion-tracking.md) 多具身路线 / [BFM](../concepts/behavior-foundation-model.md) / [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md)（generalist→specialist→DAgger 迭代） |
 
 **灵巧手子栈（与上表正交）：** 若迁移对象是 **多指灵巧手** 而非整身人形，[UHAS](../methods/uhas-unified-hand-action-space.md) 用 **规范球面形变 + 级联 IK** 定义共享动作空间，在 [手内重定向](../methods/in-hand-reorientation.md) 上实证 **四手单策略、零样本与 500 iter 微调**（Allegro / LEAP / Shadow / MANO）。若问题是 **人手演示 → VLA 可执行关节**，对照 [AdvDex](../entities/paper-advdex.md) 的 **JAAS（腕 SE(3) + 15 指关节槽）+ 域对抗视觉**——那是监督空间对齐，不是 RL 球面控制器；确认未开源。选型时勿把人形 WBT 的 token/LoRA 经验直接套到手指关节层。
 
@@ -211,6 +213,7 @@ flowchart TD
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) — 高效后训练路径的代表论文
 - [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 近亲骨架、更严冻结的 Any2Any 变体
 - [SONIC](../methods/sonic-motion-tracking.md) — 规模化预训练 / 多具身骨干
+- [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — 跨本体 WBC：迭代 specialist 蒸馏 + 统一速度/高度/pitch 指令（ICRA 2026）
 - [UHAS](../methods/uhas-unified-hand-action-space.md) — 灵巧手 RL 球面统一动作空间
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 VLA 关节槽统一动作空间（确认未开源）
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — WBT 策略学习阶段的方法谱系对比
