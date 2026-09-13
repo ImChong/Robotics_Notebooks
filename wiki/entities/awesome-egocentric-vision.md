@@ -12,6 +12,7 @@ related:
   - ../overview/ego-category-04-ego-exo-fusion.md
   - ./paper-ego4d.md
   - ../methods/egoscale.md
+  - ./paper-egophi.md
   - ../methods/vla.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
@@ -73,6 +74,7 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 - [Ego 分类 01–04](../overview/ego-category-01-data-collection.md) — 采集 / 人→机 / WM / Ego+Exo
 - [Ego4D](./paper-ego4d.md) — 大规模第一人称数据集锚点
 - [EgoScale](../methods/egoscale.md) — 大规模 ego manipulation 标注与迁移
+- [EgoPHI](./paper-egophi.md) — ego 视觉 mesh 级接触+力估计（ECCV 2026，arXiv:2608.13014）
 - [VLA](../methods/vla.md)
 - [Awesome World Models](./awesome-world-models.md) / [Awesome Touch](./awesome-touch.md)
 

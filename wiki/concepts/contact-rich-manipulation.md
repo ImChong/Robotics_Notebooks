@@ -2,9 +2,10 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-13
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
+  - ../entities/paper-egophi.md
   - ../queries/contact-wrench-closed-loop.md
   - ../entities/paper-flying-knots.md
   - ../entities/paper-scenebot.md
@@ -189,6 +190,7 @@ sources:
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — 过程级物理安全 vs 终端 Goal
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可规模化人侧接触–运动–视觉数据（压阻手套；数据待发）
 - [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
+- [EgoPHI](../entities/paper-egophi.md) — **ego 视觉** 预测双手–物体 mesh **per-vertex 接触与 3D 力**；SOFA 仿真监督 + 透光真机 sim-to-real（arXiv:2608.13014；ETH SIPLAB）
 - [FM-VLA](../entities/paper-fm-vla.md) — 力觉长程记忆 VLA：接触事件计数与非马尔可夫接触操作（arXiv:2607.18231）
 - [FA-RDP](../entities/paper-fa-rdp.md) — 频率自适应视觉–力扩散：接触前保多模态、接触后 30 Hz 一步反应（arXiv:2607.28596）
 - [Yale OpenHand Model F3](../entities/yale-openhand.md) — 腕相机形变估力、免 FT 力控擦拭/插销/书法（硬件已开源，力估论文审稿中）
