@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3991,
-  "edge_count": 35704,
+  "node_count": 3992,
+  "edge_count": 35712,
   "coverage": {
-    "covered": 3963,
-    "total": 3963,
+    "covered": 3964,
+    "total": 3964,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -38,7 +38,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "主路线：运动控制算法工程师成长路线 社区"
     },
     {
       "path": "wiki/methods/foot-locking-ik-orangeduck.md",
@@ -49,7 +49,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "主路线：运动控制算法工程师成长路线 社区"
     },
     {
       "path": "wiki/entities/paper-abot-recon.md",
@@ -59,8 +59,7 @@
       "recency": "2026-09-13",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-dart-sam3-realtime.md",
@@ -71,7 +70,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
       "path": "wiki/tasks/microduck-ball-balance.md",
@@ -81,7 +80,8 @@
       "recency": "2026-09-13",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/concepts/joint-module-self-development-workflow.md",
@@ -90,8 +90,7 @@
       "type": "concept",
       "recency": "2026-09-13",
       "source": "git",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/mjbatch.md",
@@ -102,7 +101,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
+      "community_label": "Isaac Lab 社区"
     },
     {
       "path": "wiki/entities/paper-tract.md",
@@ -152,7 +151,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/paper-sa-2512-05394-ssvae.md",
@@ -173,7 +172,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/paper-sa-2603-26639-geosr.md",
@@ -194,8 +193,7 @@
       "recency": "2026-09-12",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md",
@@ -205,8 +203,7 @@
       "recency": "2026-09-12",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-sa-2604-05182-lsrm.md",
@@ -231,28 +228,28 @@
   },
   "top_communities": [
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 726
-    },
-    {
       "label": "操作",
-      "size": 582
-    },
-    {
-      "label": "国内开源全景 424 项本库导读",
-      "size": 322
+      "size": 587
     },
     {
       "label": "世界动作模型",
-      "size": 263
+      "size": 442
+    },
+    {
+      "label": "宇树 G1 人形机器人",
+      "size": 433
+    },
+    {
+      "label": "国内开源全景 424 项本库导读",
+      "size": 320
     },
     {
       "label": "视觉-语言-动作",
-      "size": 259
+      "size": 249
     },
     {
-      "label": "机器人学习论文笔记",
-      "size": 221
+      "label": "仿真到现实",
+      "size": 219
     }
   ],
   "top_hubs": [
@@ -260,7 +257,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1484,
+      "degree": 1485,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -276,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 957,
+      "degree": 958,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -363,7 +360,8 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 63
+      "degree": 63,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
