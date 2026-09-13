@@ -19,6 +19,16 @@
       "has_repo": true
     },
     {
+      "path": "wiki/concepts/joint-module-self-development-workflow.md",
+      "detail_id": "wiki-concepts-joint-module-self-development-workflow",
+      "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
+      "type": "concept",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/mjbatch.md",
       "detail_id": "entity-mjbatch",
       "label": "mjbatch（MuJoCo CPU 批量并行）",
@@ -207,16 +217,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wm-craftnet.md",
-      "detail_id": "entity-paper-wm-craftnet",
-      "label": "WM-Craftnet：世界联觉模型驱动的鲁棒手内灵巧操作",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
