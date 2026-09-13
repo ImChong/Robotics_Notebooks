@@ -26,6 +26,7 @@ related:
   - ./adams.md
   - ./robot-descriptions-py.md
   - ../comparisons/robot-description-catalogs.md
+  - ./mjbatch.md
 sources:
   - ../../sources/repos/mujoco-menagerie.md
   - ../../sources/papers/simulation.md
@@ -109,6 +110,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Barkour（Menagerie MJCF + 敏捷课）](./paper-barkour-quadruped-agility-benchmark.md)
 - [robot_descriptions.py](./robot-descriptions-py.md) — `loaders.mujoco` 与 `*_mj_description`
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
+- [mjbatch](./mjbatch.md) — 官方 Python 绑定之上的 CPU 千路并行层（`bind` / `expand`）
 
 ## 参考来源
 

@@ -8,6 +8,7 @@ related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
+  - ../entities/mjbatch.md
   - ../queries/hmi-opensource-projects-coverage.md
   - ../formalizations/inverse-kinematics.md
 sources:
@@ -89,6 +90,7 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [逆运动学](../formalizations/inverse-kinematics.md) — 数值 IK / DLS / 零空间基本功
+- [mjbatch](./mjbatch.md) — 同作者 MuJoCo CPU 批量并行库
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源
