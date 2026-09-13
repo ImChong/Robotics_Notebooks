@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-13
 related:
   - ../entities/htd-decoupled-wbc.md
   - ../entities/embodied-interview-qa.md
@@ -21,6 +21,7 @@ related:
   - ../queries/when-to-use-wbc-vs-rl.md
   - ./null-space-control.md
   - ../entities/paper-g1-confined-space-wbp.md
+  - ../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
 summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
 ---
 
@@ -200,6 +201,7 @@ print("joint acceleration command:", qdd_star)
 - [Gemini Robotics](../entities/gemini-robotics.md) — 学习式「全身 VLA」产业对照；**不替代** QP/分层 WBC 与接触约束栈
 - [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — 语音高层 locomotion + VR 臂手分层遥操作（H1；非统一全身跟踪）
 - [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无 F/T 残差力同时条件化 VLA 与轮足底盘补偿（arXiv:2609.03889；未开源）
+- [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — generalist→specialist→DAgger 迭代蒸馏 + 统一速度/高度/pitch 指令，单策略跨 H1/G1/T1/N1/Adam（ICRA 2026；未开源）
 
 ## 继续深挖入口
 
