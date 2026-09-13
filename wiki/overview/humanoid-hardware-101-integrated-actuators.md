@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, actuator, electric, hydraulic, category-hub]
 status: complete
-updated: 2026-06-01
+updated: 2026-09-13
 summary: "Humanoid Hardware 101 · 04 集成执行器 — 电动主导（线束+软件）；腿膝踝偏直线高力、肩等大转角用旋转；Atlas 由液压转电、部分灵巧手仍液压。"
 related:
   - ./humanoid-actuator-102-technology-map.md
@@ -12,6 +12,7 @@ related:
   - ./humanoid-hardware-101-linear-transmission-bearings.md
   - ../entities/open-source-humanoid-hardware.md
   - ../concepts/motor-torque-speed-curve.md
+  - ../concepts/joint-module-self-development-workflow.md
   - ../comparisons/motor-em-simulation-software.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
@@ -46,6 +47,7 @@ sources:
 - **Atlas** 液压运行多年后新一代转电；Sanctuary 手、Clone 等仍探索 **微液压/气动**  niche。
 - 选型需平衡：功率密度、可控性、反向驱动、效率、响应、**系统复杂度**。
 - 评估电动关节模组时，[TN 曲线](../concepts/motor-torque-speed-curve.md) 是 datasheet 第一张要看的图；电机预研阶段的电磁/热仿真工具对照见 [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)。
+- 自研旋转关节模组（需求瀑布→传动→五件套→测试）的工程链路见 [自研关节模组开发流程](../concepts/joint-module-self-development-workflow.md)。
 
 ## 关联页面
 

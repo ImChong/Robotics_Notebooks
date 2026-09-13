@@ -3298,6 +3298,7 @@
 - [Implicit / Explicit 执行器建模](wiki/concepts/implicit-explicit-actuator-modeling.md) — 在机器人强化学习里，**implicit** 与 **explicit** 通常指 **仿真执行器（actuator）模型** 如何把策略的高层指令变成关节力矩，而不是指「策略隐式学电机」或「显式地形 `📅unknown` `[wiki_page]`
 - [进程间通信（Inter-Process Communication, IPC）](wiki/concepts/ipc-inter-process-communication.md) — IPC** 是操作系统提供的、让 **隔离进程** 交换数据与同步的原语集合——从 **管道、POSIX 共享内存、消息队列** 到 **Unix/Internet 套接字**；机器人栈在其之上再 `📅unknown` `[wiki_page]`
 - [Joint Friction Models（关节摩擦模型）](wiki/concepts/joint-friction-models.md) — 关节摩擦模型** 描述传动与轴承中 **与速度、负载相关的非线性阻力**，是 URDF 默认参数往往缺失、却强烈影响 **力矩跟踪与 Sim2Real** 的关键项。 `📅unknown` `[wiki_page]`
+- [自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）](wiki/concepts/joint-module-self-development-workflow.md) — 自研关节模组**不是外购电机、减速器、编码器简单拼装，而是从**负载谱与空间/成本约束**出发，经**传动构型选型、五件套集成设计、结构刚度链、标定与控制、装配工艺与四层测试矩阵**，交付可在整机 `📅unknown` `[wiki_page]`
 - [运动学可行与动力学可行](wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 飞书 Know-How 将 **运动学可行和动力学可行** 列为控制问题框架的核心分叉：前者回答「关节角度/末端轨迹是否存在」，后者回答「在给定力矩、摩擦与接触下是否稳定可执行」。 `📅unknown` `[wiki_page]`
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
 - [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一套面向实时系统的消息传递与数据编解码库：提供 publish/subscribe，并用类型描述语言自动生成多语言的强类型序列化代码；传输默认走 **UDP 组播**，无中心数据库、 `📅unknown` `[wiki_page]`

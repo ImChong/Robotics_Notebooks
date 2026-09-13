@@ -209,6 +209,7 @@ flowchart LR
 ### 推荐读什么
 - [电机测功机（Dynamometer）](../wiki/concepts/motor-dynamometer.md) — 磁滞/涡流/磁粉吸收 vs 电力对拖；GB/T 43200 与 IEC 效率试验入口
 - [电机设计流程](../wiki/overview/motor-design-workflow.md) 步骤 6–8（台架 → FOC 验证 → 模组验收）
+- [自研关节模组开发流程](../wiki/concepts/joint-module-self-development-workflow.md) — 传动构型、五件套、装配一致性与四层测试矩阵（本 Stage 交付物的全栈上下文）
 - [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md)
 - [3D 打印开源腿式执行器论文（Urs et al.）](../wiki/entities/paper-3d-printed-open-source-actuators-legged.md) — 热限力矩、效率、背隙与 42 万步态循环验收范例
 - [ODRI 执行器硬件](../wiki/entities/odri-solo-and-bolt.md) · [Berkeley Humanoid Lite](../wiki/entities/berkeley-humanoid-lite.md) — 开源关节/整机验收与装配测试参照
@@ -238,7 +239,7 @@ flowchart LR
 | Stage 3 | 电流采样与电流环 | [FOC 逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) |
 | Stage 4 | 驱动板功率级/采样链路落板 | [Humanoid Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md) |
 | Stage 5 | 力矩标定与补偿 | [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) |
-| Stage 6 | 模组验收与总线力矩模式 | [电机测功机](../wiki/concepts/motor-dynamometer.md) · [底软通信协议](../wiki/overview/motor-drive-firmware-bus-protocols.md) |
+| Stage 6 | 模组验收与总线力矩模式 | [电机测功机](../wiki/concepts/motor-dynamometer.md) · [关节模组开发流程](../wiki/concepts/joint-module-self-development-workflow.md) · [底软通信协议](../wiki/overview/motor-drive-firmware-bus-protocols.md) |
 
 ## 和其他页面的关系
 
