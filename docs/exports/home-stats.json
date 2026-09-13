@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-egophi.md",
+      "detail_id": "entity-paper-egophi",
+      "label": "EgoPHI：从 ego 视觉估计 3D 手–物接触与力",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-navverse.md",
       "detail_id": "entity-paper-navverse",
       "label": "NavVerse：室内–户外连续具身导航基准",
@@ -207,28 +217,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-sa-2606-22094-lays.md",
-      "detail_id": "entity-paper-sa-2606-22094-lays",
-      "label": "LAYS：Cross-View Yaw Estimation in Location Uncertainty with Line-Aligning Yaw Scoring",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-navverse.md",
-    "detail_id": "entity-paper-navverse",
-    "label": "NavVerse：室内–户外连续具身导航基准",
+    "path": "wiki/entities/paper-egophi.md",
+    "detail_id": "entity-paper-egophi",
+    "label": "EgoPHI：从 ego 视觉估计 3D 手–物接触与力",
     "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
