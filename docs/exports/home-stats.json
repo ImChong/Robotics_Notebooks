@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-13",
   "node_count": 3993,
-  "edge_count": 35721,
+  "edge_count": 35727,
   "coverage": {
     "covered": 3965,
     "total": 3965,
@@ -9,65 +9,13 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-graspmf.md",
-      "detail_id": "entity-paper-graspmf",
-      "label": "GraspMF：积群 MeanFlow 快速生成抓取",
-      "type": "entity",
+      "path": "wiki/concepts/joint-module-self-development-workflow.md",
+      "detail_id": "wiki-concepts-joint-module-self-development-workflow",
+      "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
+      "type": "concept",
       "recency": "2026-09-13",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-chorus.md",
-      "detail_id": "entity-paper-chorus",
-      "label": "CHORUS：单一 VLA 权重的去中心化多本体协作",
-      "type": "entity",
-      "recency": "2026-09-13",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-egophi.md",
-      "detail_id": "entity-paper-egophi",
-      "label": "EgoPHI：从 ego 视觉估计 3D 手–物接触与力",
-      "type": "entity",
-      "recency": "2026-09-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-navverse.md",
-      "detail_id": "entity-paper-navverse",
-      "label": "NavVerse：室内–户外连续具身导航基准",
-      "type": "entity",
-      "recency": "2026-09-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/genoview-inverse-kinematics.md",
-      "detail_id": "entity-genoview-inverse-kinematics",
-      "label": "GenoView-InverseKinematics",
-      "type": "entity",
-      "recency": "2026-09-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/methods/foot-locking-ik-orangeduck.md",
-      "detail_id": "wiki-methods-foot-locking-ik-orangeduck",
-      "label": "足锁 IK（Orange Duck 配方）",
-      "type": "method",
-      "recency": "2026-09-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-abot-recon.md",
@@ -91,6 +39,77 @@
       "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
+      "path": "wiki/entities/paper-graspmf.md",
+      "detail_id": "entity-paper-graspmf",
+      "label": "GraspMF：积群 MeanFlow 快速生成抓取",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-navverse.md",
+      "detail_id": "entity-paper-navverse",
+      "label": "NavVerse：室内–户外连续具身导航基准",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tract.md",
+      "detail_id": "entity-paper-tract",
+      "label": "TrAct：用视觉轨迹桥接机器人控制与视觉预测",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-chorus.md",
+      "detail_id": "entity-paper-chorus",
+      "label": "CHORUS：单一 VLA 权重的去中心化多本体协作",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-egophi.md",
+      "detail_id": "entity-paper-egophi",
+      "label": "EgoPHI：从 ego 视觉估计 3D 手–物接触与力",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/genoview-inverse-kinematics.md",
+      "detail_id": "entity-genoview-inverse-kinematics",
+      "label": "GenoView-InverseKinematics",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/methods/foot-locking-ik-orangeduck.md",
+      "detail_id": "wiki-methods-foot-locking-ik-orangeduck",
+      "label": "足锁 IK（Orange Duck 配方）",
+      "type": "method",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/tasks/microduck-ball-balance.md",
       "detail_id": "wiki-tasks-microduck-ball-balance",
       "label": "Microduck 球平衡（蹬西瓜）",
@@ -102,15 +121,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/concepts/joint-module-self-development-workflow.md",
-      "detail_id": "wiki-concepts-joint-module-self-development-workflow",
-      "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
-      "type": "concept",
-      "recency": "2026-09-13",
-      "source": "git",
-      "action": "added"
-    },
-    {
       "path": "wiki/entities/mjbatch.md",
       "detail_id": "entity-mjbatch",
       "label": "mjbatch（MuJoCo CPU 批量并行）",
@@ -120,16 +130,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tract.md",
-      "detail_id": "entity-paper-tract",
-      "label": "TrAct：用视觉轨迹桥接机器人控制与视觉预测",
-      "type": "entity",
-      "recency": "2026-09-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
@@ -215,10 +215,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-graspmf.md",
-    "detail_id": "entity-paper-graspmf",
-    "label": "GraspMF：积群 MeanFlow 快速生成抓取",
-    "type": "entity",
+    "path": "wiki/concepts/joint-module-self-development-workflow.md",
+    "detail_id": "wiki-concepts-joint-module-self-development-workflow",
+    "label": "自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）",
+    "type": "concept",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added"
@@ -230,7 +230,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 447
+      "size": 435
     },
     {
       "label": "世界动作模型",
@@ -245,8 +245,8 @@
       "size": 249
     },
     {
-      "label": "机器人学习论文笔记",
-      "size": 179
+      "label": "仿真到现实",
+      "size": 219
     }
   ],
   "top_hubs": [
