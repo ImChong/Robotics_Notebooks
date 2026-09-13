@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3983,
-  "edge_count": 35608,
+  "node_count": 3984,
+  "edge_count": 35621,
   "coverage": {
-    "covered": 3955,
-    "total": 3955,
+    "covered": 3956,
+    "total": 3956,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/tasks/microduck-ball-balance.md",
+      "detail_id": "wiki-tasks-microduck-ball-balance",
+      "label": "Microduck 球平衡（蹬西瓜）",
+      "type": "task",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/mjbatch.md",
       "detail_id": "entity-mjbatch",
@@ -207,38 +217,26 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-unisim-slam.md",
-      "detail_id": "entity-paper-unisim-slam",
-      "label": "UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mjbatch.md",
-    "detail_id": "entity-mjbatch",
-    "label": "mjbatch（MuJoCo CPU 批量并行）",
-    "type": "entity",
+    "path": "wiki/tasks/microduck-ball-balance.md",
+    "detail_id": "wiki-tasks-microduck-ball-balance",
+    "label": "Microduck 球平衡（蹬西瓜）",
+    "type": "task",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 811
+      "size": 767
     },
     {
       "label": "操作",
-      "size": 582
+      "size": 583
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -246,11 +244,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 273
+      "size": 256
     },
     {
       "label": "世界动作模型",
-      "size": 236
+      "size": 240
     },
     {
       "label": "机器人学习论文笔记",
@@ -286,7 +284,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 923,
+      "degree": 924,
       "community_label": "操作（Manipulation） 社区"
     },
     {

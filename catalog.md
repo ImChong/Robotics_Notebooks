@@ -3584,6 +3584,7 @@
 - [Loco-Manipulation (移动操作)](wiki/tasks/loco-manipulation.md) — 移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。 `📅unknown` `[task_page]`
 - [Locomotion](wiki/tasks/locomotion.md) — 运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。 `📅unknown` `[task_page]`
 - [Manipulation](wiki/tasks/manipulation.md) — 操作**：让机器人的手/末端执行器抓取、移动、操作物体。 `📅unknown` `[task_page]`
+- [Microduck 球平衡（蹬西瓜）](wiki/tasks/microduck-ball-balance.md) — Microduck 球平衡**让约 25 cm / 14-DoF 桌面双足 Microduck 站在一颗 **自由滚动的篮球 `📅unknown` `[task_page]`
 - [楼梯与障碍 Locomotion（感知 / 盲走中心节点）](wiki/tasks/stair-obstacle-perceptive-locomotion.md) — 把「下一步踩哪里、身体多快过障」从平地 tracking 问题，升级为在离散可行接触集上的感知–规划–控制闭环（或盲走下的接触探测闭环）。 `📅unknown` `[task_page]`
 - [Teleoperation（遥操作）](wiki/tasks/teleoperation.md) — 一句话定义**：操作员通过外部设备实时远程控制机器人完成任务，同时采集高质量示范数据用于后续策略学习。 `📅unknown` `[task_page]`
 - [ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation](wiki/tasks/ultra-survey.md) — 统一多模态控制：实现人形机器人自主全身移动操作 `📅unknown` `[task_page]`
