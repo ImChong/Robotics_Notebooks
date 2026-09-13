@@ -2,19 +2,22 @@
 type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, pollen-robotics, pollen, rust, onnx]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-13
 related:
   - ./pollen-microduck-rl.md
+  - ./motrix.md
   - ./pollen-reachy2.md
   - ./open-duck-mini.md
   - ./open-duck-mini-runtime.md
   - ./mjlab.md
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
+  - ../tasks/microduck-ball-balance.md
 sources:
   - ../../sources/sites/pollen-robotics-microduck.md
   - ../../sources/repos/microduck.md
   - ../../sources/repos/microduck_rl.md
+  - ../../sources/repos/motrixlab.md
 summary: "Pollen Robotics Microduck：约 25 cm / 800 g 桌面双足商品；机载 Rust daemon 以 50 Hz 跑 ONNX 策略，训练在隔壁 mjlab 仓。软件 Apache-2.0 已开源，整机预售而非 DIY BOM。"
 ---
 
@@ -112,9 +115,15 @@ flowchart LR
 - **不是研究级人形：** 廉价舵机 + 大头质量比（训练笔记写头部约占体重 38%）决定动态上限；把戏（前滚、踢球）对奖励门控极敏感，见 RL 页。
 - **与 Open Duck Mini 不是同一生态：** Mini 是社区 Feetech + Playground + Pi Zero；Microduck 是 Pollen 商品 + Dynamixel XL330 + mjlab + RK3566。对照读 sim2real，不要混装零件表。
 
+## MotrixLab 侧训练（对照）
+
+除官方 [Microduck RL](./pollen-microduck-rl.md)（mjlab + PPO）外，[MotrixLab](./motrix.md) 已移植 Microduck MJCF 并提供 **`microduck-ball-balance`**：双脚站在自由篮球上全身协调平衡，FastSAC 训练约 5–10 min 可玩。详见 [Microduck 球平衡](../tasks/microduck-ball-balance.md)。
+
 ## 关联页面
 
 - [Microduck RL](./pollen-microduck-rl.md) — 训练、BAM、背隙、奖励课
+- [Motrix](./motrix.md) — MotrixSim / MotrixLab 平台
+- [Microduck 球平衡](../tasks/microduck-ball-balance.md) — MotrixLab 蹬球任务
 - [Pollen Reachy2](./pollen-reachy2.md) — 同一机构的开源移动人形
 - [Open Duck Mini](./open-duck-mini.md) — DIY 迷你双足鸭对照
 - [Open Duck Mini Runtime](./open-duck-mini-runtime.md) — 社区线的上机对照

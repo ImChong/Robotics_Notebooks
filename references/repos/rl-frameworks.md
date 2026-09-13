@@ -32,8 +32,10 @@
 ### MotrixLab
 
 - **MotrixLab** — 基于 MotrixSim (Rust) 的通用机器人训练平台
-- 支持 JAX 和 PyTorch，兼容 MJCF
+- 支持 SKRL / RSL-RL PPO 与自研 **FastSAC**；JAX 与 PyTorch 后端
+- 内置 Microduck 行走与 **`microduck-ball-balance`**（蹬篮球平衡，FastSAC 约 5–10 min demo）
 - [Motphys/MotrixLab](https://github.com/Motphys/MotrixLab)
+- Wiki：[motrix](../../wiki/entities/motrix.md)、[microduck-ball-balance](../../wiki/tasks/microduck-ball-balance.md)
 
 ## 关联页面
 

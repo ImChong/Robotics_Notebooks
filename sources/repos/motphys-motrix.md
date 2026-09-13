@@ -41,6 +41,8 @@
 
 ## 对 Wiki 的映射
 - **wiki/entities/motrix.md** — 实体页（含 Web Viewer）
+- **sources/repos/motrixlab.md** — MotrixLab 训练平台与 Microduck 任务归档
 - **sources/sites/motrixsim-web-viewer.md** — Web Viewer 用户指南归档
+- **wiki/tasks/microduck-ball-balance.md** — Microduck 球平衡任务
 - **references/repos/simulation.md** (更新)
 - **references/repos/rl-frameworks.md** (更新)

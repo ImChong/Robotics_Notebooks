@@ -2,10 +2,12 @@
 type: entity
 tags: [rl, mujoco, mjlab, locomotion, sim2real, pollen-robotics, pollen, onnx, bam, reward-design]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-13
 related:
   - ./pollen-microduck.md
+  - ./motrix.md
   - ./mjlab.md
+  - ../tasks/microduck-ball-balance.md
   - ./bam-better-actuator-models.md
   - ./open-duck-playground.md
   - ../concepts/sim2real.md
@@ -102,6 +104,8 @@ MJCF（Onshape → onshape-to-robot）：
 活列表以 `uv run list-envs` 为准。主线包括：平地/崎岖速度跟踪（可带头姿）、走+跌倒恢复、多姿态起身、指令坐站、喙触地拾取、盲踢 70 mm/15 g 球、前滚、以及轮滑速度 / swizzle / 滑行下蹲 / 下坡 / 轮上起身 / 原地转。
 
 产品页盒内动作是上述集合的子集；训练注册表 strictly 更大。
+
+**MotrixLab 对照：** 本仓 **无**「站球平衡」任务；[MotrixLab](./motrix.md) 的 `microduck-ball-balance`（FastSAC）从本仓 MJCF 移植，专攻双脚蹬篮球保持平衡。见 [Microduck 球平衡](../tasks/microduck-ball-balance.md)。
 
 ## 工程实践
 
