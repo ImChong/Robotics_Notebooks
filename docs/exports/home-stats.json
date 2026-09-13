@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-chorus.md",
+      "detail_id": "entity-paper-chorus",
+      "label": "CHORUS：单一 VLA 权重的去中心化多本体协作",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-egophi.md",
       "detail_id": "entity-paper-egophi",
       "label": "EgoPHI：从 ego 视觉估计 3D 手–物接触与力",
@@ -38,7 +47,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线 社区"
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
     },
     {
       "path": "wiki/methods/foot-locking-ik-orangeduck.md",
@@ -49,7 +58,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线 社区"
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-abot-recon.md",
@@ -101,7 +110,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "Isaac Lab 社区"
+      "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
     },
     {
       "path": "wiki/entities/paper-tract.md",
@@ -204,27 +213,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-sa-2604-05182-lsrm.md",
-      "detail_id": "entity-paper-sa-2604-05182-lsrm",
-      "label": "LSRM：High-Fidelity Object-Centric Reconstruction via Scaled Context Windows",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egophi.md",
-    "detail_id": "entity-paper-egophi",
-    "label": "EgoPHI：从 ego 视觉估计 3D 手–物接触与力",
+    "path": "wiki/entities/paper-chorus.md",
+    "detail_id": "entity-paper-chorus",
+    "label": "CHORUS：单一 VLA 权重的去中心化多本体协作",
     "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
