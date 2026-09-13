@@ -1,3 +1,9 @@
+## [2026-09-13] ingest | sources/papers/dart_arxiv_2603_11441.md + sources/papers/abot_recon_arxiv_2608_27529.md — DART（SAM3 实时多类 OV 检测）与 ABot-Recon（12 帧流式单目 3D）；均已开源
+
+- **DART 步骤 2.5：** **已开源** — mkturkcan/DART + HF 权重；training-free 共享骨干 + TensorRT
+- **ABot-Recon 步骤 2.5：** **已开源** — amap-cvlab/ABot-Recon + HF/Space；项目页链代码与 demo
+- **关键页：** [`paper-dart-sam3-realtime`](wiki/entities/paper-dart-sam3-realtime.md)、[`paper-abot-recon`](wiki/entities/paper-abot-recon.md)；交叉 [`paper-sam3`](wiki/entities/paper-sam3.md)
+
 ## [2026-09-13] ingest | sources/repos/motrixlab.md + sources/blogs/motphys-microduck-ball-balance-motrixsim.md — MotrixLab Microduck 球平衡（蹬西瓜）FastSAC demo；已开源
 
 - **触发：** 用户指定 MotrixLab 训练代码已上传；`python scripts/train.py task=microduck-ball-balance/motrix.fastsac play=true` 约 5–10 min
