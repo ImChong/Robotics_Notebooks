@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/mjbatch.md",
+      "detail_id": "entity-mjbatch",
+      "label": "mjbatch（MuJoCo CPU 批量并行）",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
+    },
+    {
       "path": "wiki/entities/paper-tract.md",
       "detail_id": "entity-paper-tract",
       "label": "TrAct：用视觉轨迹桥接机器人控制与视觉预测",
@@ -207,27 +218,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gvla-gripper-aware-vla.md",
-      "detail_id": "entity-paper-gvla-gripper-aware-vla",
-      "label": "GVLA：夹爪感知的视觉–语言–动作模型",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-tract.md",
-    "detail_id": "entity-paper-tract",
-    "label": "TrAct：用视觉轨迹桥接机器人控制与视觉预测",
+    "path": "wiki/entities/mjbatch.md",
+    "detail_id": "entity-mjbatch",
+    "label": "mjbatch（MuJoCo CPU 批量并行）",
     "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true,
+    "community_label": "仿真与平台生态（Simulation and Platform Ecosystem） 社区"
   },
   "top_communities": [
     {
