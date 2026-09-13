@@ -58,7 +58,7 @@ summary: "SSLA-Det（arXiv:2603.06228，ECCV 2026）：Spatially-Sparse Linear A
 | **机构** | 清华大学精密仪器系；苏黎世大学 Robotics and Perception Group；上海科技大学 |
 | **会议** | ECCV 2026 |
 | **数据集** | [Gen1 Automotive](https://www.prophesee.ai/2020/01/24/prophesee-gen1-automotive-detection-dataset/) · N-Caltech101（[DAGR](https://github.com/uzh-rpg/dagr) 生态预处理） |
-| **精度（论文）** | Gen1 **0.375 mAP** · N-Caltech101 **0.515 mAP**（异步方法 SOTA 表述） |
+| **精度（论文）** | Gen1 **0.375 mAP** · N-Caltech101 **0.515 mAP**（论文口径：发表时异步方法中最优；本页未做独立横评） |
 | **效率（论文）** | vs 最强异步基线 **>20× ↓ per-event 计算** |
 | **前置** | [EVA](https://arxiv.org/abs/2505.11165) A2S 特征学习（Gen1 检测 **0.477 mAP**）— [`sources/repos/eva.md`](../../sources/repos/eva.md) |
 | **开源** | **已开源**：[haohq19/ssla](https://github.com/haohq19/ssla)（train / test / compute_flops + Drive 权重） |

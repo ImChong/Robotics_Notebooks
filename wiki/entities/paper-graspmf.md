@@ -140,6 +140,17 @@ flowchart LR
 - 积群 $\mathrm{SO}(3)\times\mathbb{R}^3$ 未显式建模 **夹爪开度**（7-DoF）；与完整 SE(3)+width 参数化有差距。
 - 真机仅 3 个 household 物体、各 10 次，统计有限。
 
+## 与其他工作对比
+
+| 对照对象 | 采样机制与 NFE | 与 GraspMF 的差异 |
+|----------|---------------|------------------|
+| **SE3Dif** | SE(3) 扩散，**140 NFE** | 同骨干谱系；GraspMF 用 MeanFlow 原生少步把 NFE 压到 **5**（约 39×），真机 T=5 反超 SE3Dif T=70（9/10 vs 3/10 等） |
+| **EquiGraspFlow（EGF）** | SE(3) 等变 flow matching，**80 NFE / ~188 ms** | EGF 的杠杆是**等变性**，GraspMF 的杠杆是**半群一致性 + 积群约束**；真机两者相当（EGF 10/8/10），差距主要在延迟（15.5 ms vs ~188 ms） |
+| **VSIGD** | **140 NFE / ~1124 ms** | 延迟高两个数量级；GraspMF 在 ID/OOD SR 上均最高，是本页 SR–latency Pareto 的主要论据 |
+| **[RoamFlow](./paper-roamflow.md)** | MeanFlow 用于 image-goal **轨迹** | 共享「平均速度少步 + 任务几何约束」叙事，但流形与训练目标不同：GraspMF 在 $\mathrm{SO}(3)\times\mathbb{R}^3$ 上出 **6-DoF 位姿** |
+| **[AnyGrasp](../entities/anygrasp.md) / [GraspNet](../methods/grasp-pose-estimation.md) 栈** | 判别式稠密检测，clutter 场景 SDK | 任务设定不同：本文是**单物体生成式分布**（多模态覆盖 + EMD），不出 clutter 场景排序；且**确认未开源**，工程复现仍走 SE3Dif / EGF |
+| **[MANGO-Grasp](./paper-mango-grasp.md)** | 灵巧手跨手型抓取 | 表示维度不同（多指 vs 平行夹爪）；GraspMF 的积群未显式建模夹爪开度，扩到多指需重设参数化 |
+
 ## 关联页面
 
 - [抓取位姿估计](../methods/grasp-pose-estimation.md) — 判别/稠密检测谱系；本文属 **生成式分布** 支路

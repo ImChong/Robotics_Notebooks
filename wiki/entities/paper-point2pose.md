@@ -147,7 +147,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **单物体精度权衡：** 论文承认相对部分单物体 SOTA **略牺牲精度**，换取多物体与遮挡恢复；高精度单物体 CAD 场景仍可能偏好 FoundationPose 类方法。
+- **单物体精度权衡：** 论文承认相对此前 SOTA 的部分单物体方法 **略牺牲精度**，换取多物体与遮挡恢复；高精度单物体 CAD 场景仍可能偏好 FoundationPose 类方法。
 - **刚体假设：** 方法针对 **刚体**；项目页野外 demo 含可形变物体，实际为近似或局限场景。
 - **依赖 GPU 与较重栈：** SAM2 + 点跟踪器 + 图优化需 NVIDIA CUDA（demo ≥8 GB）；第三方安装与 checkpoint 管理成本高。
 - **深度质量敏感：** RealSense 立体深度噪声影响配准；README 建议 `residual_thres` ~0.006 m、注意光照与纹理。
