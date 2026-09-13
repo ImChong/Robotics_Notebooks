@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-tract.md",
+      "detail_id": "entity-paper-tract",
+      "label": "TrAct：用视觉轨迹桥接机器人控制与视觉预测",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
       "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
       "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
@@ -207,27 +217,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/sol-pi.md",
-      "detail_id": "entity-sol-pi",
-      "label": "SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md",
-    "detail_id": "wiki-comparisons-locomotion-rl-vs-manipulation-learning-stack",
-    "label": "运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？",
-    "type": "comparison",
-    "recency": "2026-09-12",
+    "path": "wiki/entities/paper-tract.md",
+    "detail_id": "entity-paper-tract",
+    "label": "TrAct：用视觉轨迹桥接机器人控制与视觉预测",
+    "type": "entity",
+    "recency": "2026-09-13",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
