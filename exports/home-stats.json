@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3983,
-  "edge_count": 35608,
+  "node_count": 3984,
+  "edge_count": 35625,
   "coverage": {
-    "covered": 3955,
-    "total": 3955,
+    "covered": 3956,
+    "total": 3956,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,11 +234,11 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 811
+      "size": 754
     },
     {
       "label": "操作",
-      "size": 582
+      "size": 583
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -254,7 +254,7 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 218
+      "size": 223
     }
   ],
   "top_hubs": [
@@ -286,7 +286,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 923,
+      "degree": 924,
       "community_label": "操作（Manipulation） 社区"
     },
     {
