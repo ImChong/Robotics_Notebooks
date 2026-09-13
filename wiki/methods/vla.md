@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-13
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -251,6 +251,7 @@ flowchart TD
 - **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
 - **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线
 - **VLAct**：在 StarVLA 栈上做 **表征中心持续预训练**（多头共监督 + 部分统一跨本体动作布局）；16 GPU 开源数据达 LIBERO-Plus **82.6%**、未见 GR-1 仅 20% 轨迹超全数据 GR00T-N1.6（见 [VLAct](../entities/paper-vlact.md)，arXiv:2608.27550）
+- **TrAct（UMich / Stanford，arXiv:2608.24101）**：在 π₀.₅ 上扩展 **VLAT** 联合预测动作与 2D 轨迹，**轨迹条件 SVD 世界模型 + VLAC** 闭环选优；LIBERO-INTEGRAL **27%→55%**、真机 **49%→76%**；**代码待发布**（见 [TrAct](../entities/paper-tract.md)）
 - **GIFT / MINERVA / LIBERO-Recover / XR-2（2026-09-04 九篇盘点 + 2026-09-08）**：[GIFT](../entities/paper-gift-intermediate-feature-training.md) 用几何/可供性/目标区域监督中间特征（LIBERO-Plus 79.6/72.6/87.8%，代码待发布）；[MINERVA](../entities/paper-minerva-libero.md) 用 0.54M task-ID 策略量 LIBERO 容量下限（约 95%，CPU 5.1 ms/chunk，已开源）；[LIBERO-Recover](../entities/paper-libero-recover.md) 从 SOTA 真实执行失败构造 2178 恢复场景（RSR 普遍 −50%+，评测栈已开源）；[XR-2](../entities/paper-xr2-bimanual-household.md) 开放 1500 小时双臂家务数据（策略未见）。横切面见 [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
 - **FWBC-VLA（浙大 / 上海 AI Lab 等，arXiv:2609.03889）**：无 F/T 的 HSR-Force 残差同时条件化 π₀.₅ 与轮足底盘补偿；M20S 擦白板终段 **64%**、开门 **52%**；**确认未开源**（见 [FWBC-VLA](../entities/paper-fwbc-vla.md)）
 - **TANGO（北大 / Berkeley / Princeton 等，CoRL 2026，arXiv:2609.09158）**：首个 **全身 VLA** 语言导航——仿真合成路径→全身运动→障碍编辑→RL tracking 监督 **29-DoF** 关节；G1 零样本 cluttered 真机；**截至 2026-09-10 未开源**（见 [TANGO](../entities/paper-tango-vla.md)）

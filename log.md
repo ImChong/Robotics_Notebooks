@@ -1,3 +1,5 @@
+## [2026-09-13] ingest | sources/papers/tract_arxiv_2608_24101.md — TrAct 视觉轨迹桥接控制与 WM；代码待发布
+
 ## [2026-09-12] ingest | 8× ECCV 2026 论文批次 — Coprime-PSI / Poppy / RAP / SSVAE / LSRM / Geosubprobe / LAYS / GeoSR
 
 - **意图：** 批量入库波前传感、偏振法线、点云配准、视频 VAE、物体重建、ViT 几何表征、跨视角航向、VLM 空间推理八篇 ECCV 2026 工作

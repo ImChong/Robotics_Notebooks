@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-13
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -258,6 +258,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 训练期分层物理对齐（示例：PhysisForcing）
 
 [PhysisForcing](../entities/paper-physisforcing.md)（arXiv:2606.28128，PKU × NVIDIA）针对「**重建损失对接触区与背景一视同仁**」的痛点，在 **DiT 微调** 时用 **深度感知运动掩码** 聚焦操纵/接触区域，并联合 **像素级 CoTracker3 轨迹对齐** 与 **语义级 token 关系对齐**（冻结视频理解编码器）。相对 **preference 后训练** 与 **纯几何单点约束**，它把物理合理拆成 **可局部化、可分层、训练期可微** 的两项损失，且 **推理零额外开销**。**PF-Cosmos** 在 **R-Bench** 报告整体最佳 **63.8**；**WorldArena IDM** 闭环 **16.0%→24.0%**；作 **Fast-WAM** 骨干时 **RoboTwin 2.0** 平均 **+4.6%**——说明物理对齐不只服务开环视频榜，也强化下游 WAM 表征。
+
+### 轨迹条件闭环选优（示例：TrAct）
+
+[TrAct](../entities/paper-tract.md)（arXiv:2608.24101，UMich / Stanford）把 **2D 视觉轨迹** 作为 **控制与世界模型之间的中间接口**：**VLAT** 在 [π₀.₅](../entities/paper-pi05-open-world-vla.md) 上联合预测动作–轨迹对，**TWM**（SVD + ControlNet）以轨迹渲染条件滚未来视频，**VLAC** 对想象 rollout 打分选优。相对动作条件 **AWM**，TWM 在仿真 agent 视角 **PSNR 15.1→24.5**、**FVD 129→38**；闭环使 **LIBERO-INTEGRAL** 平均成功率 **27%→55%**、真机 Franka **49%→76%**。与 [Ctrl-World](../entities/paper-ctrl-world.md) 的笛卡尔动作条件 SVD 对照，TrAct 强调 **轨迹比动作更适合条件化像素未来**；**代码待发布**。
 
 ### Joint 视频–动作 + 测试时想象（示例：τ₀-WM）
 

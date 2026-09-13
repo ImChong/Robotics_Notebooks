@@ -1,5 +1,5 @@
 // Robotics Notebooks Service Worker — 离线缓存支持
-const CACHE_NAME = 'robotics-wiki-2026-09-12';
+const CACHE_NAME = 'robotics-wiki-2026-09-13';
 const CACHE_PREFIX = 'robotics-wiki-';
 const PROJECT_PATH = new URL(self.registration.scope).pathname;
 // 必要外壳：离线打开首页所需的最小集合，安装时必须齐全；缺一即安装失败，

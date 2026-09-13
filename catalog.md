@@ -2855,6 +2855,7 @@
 - [TOPReward：Token 概率作零样本机器人进度奖励](wiki/entities/paper-topreward.md) — TOPReward**（*Token Probabilities as Hidden Zero-Shot Rewards for Robotics*，[arXiv:2602.19313](http `📅unknown` `[entity_page]`
 - [TOSS Framework：人类教学决策的过程模型](wiki/entities/paper-toss-framework.md) — Teaching is a Process: The TOSS Framework for Modeling Human Teaching Decisions in Human-Interacti `📅unknown` `[entity_page]`
 - [TouchWorld：预测–反应式触觉基础模型（灵巧操作）](wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — TouchWorld**（*A Predictive and Reactive Tactile Foundation Model for Dexterous Manipulation*，arXiv `📅unknown` `[entity_page]`
+- [TrAct：用视觉轨迹桥接机器人控制与视觉预测](wiki/entities/paper-tract.md) — TrAct**（*Bridging Robot Control and Visual Prediction with Visual Tracks*，[arXiv:2608.24101](https `📅unknown` `[entity_page]`
 - [Traj-LeWM：潜轨迹代价的路径感知世界模型规划](wiki/entities/paper-traj-lewm.md) — Traj-LeWM**（*Path-Aware World-Model Planning via Latent Trajectory Cost*，[arXiv:2608.14125](https: `📅unknown` `[entity_page]`
 - [TRAMP：地形相关对抗运动先验的视觉辅助双足行走](wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md) — TRAMP**（*Vision-Assisted Bipedal Locomotion on Challenging Terrains via Terrain-Related Adversaria `📅unknown` `[entity_page]`
 - [Transformer Transformer（运动条件机器人共设计 · arXiv:2607.25798）](wiki/entities/paper-transformer-transformer.md) — Transformer Transformer**（Ha、Liu、Song；Stanford / Columbia；[项目页](https://transformer-transformer.gi `📅unknown` `[entity_page]`
