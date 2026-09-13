@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3992,
-  "edge_count": 35712,
+  "node_count": 3993,
+  "edge_count": 35721,
   "coverage": {
-    "covered": 3964,
-    "total": 3964,
+    "covered": 3965,
+    "total": 3965,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-graspmf.md",
+      "detail_id": "entity-paper-graspmf",
+      "label": "GraspMF：积群 MeanFlow 快速生成抓取",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-chorus.md",
       "detail_id": "entity-paper-chorus",
@@ -203,22 +212,12 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md",
-      "detail_id": "entity-paper-sa-2604-03564-coprime-psi-wavefront-sensing",
-      "label": "Coprime-PSI：Provable and Robust Wavefront Sensing via Self-Reference Interferometry",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-chorus.md",
-    "detail_id": "entity-paper-chorus",
-    "label": "CHORUS：单一 VLA 权重的去中心化多本体协作",
+    "path": "wiki/entities/paper-graspmf.md",
+    "detail_id": "entity-paper-graspmf",
+    "label": "GraspMF：积群 MeanFlow 快速生成抓取",
     "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
@@ -227,15 +226,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 587
-    },
-    {
-      "label": "世界动作模型",
-      "size": 442
+      "size": 588
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 433
+      "size": 447
+    },
+    {
+      "label": "世界动作模型",
+      "size": 428
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -246,8 +245,8 @@
       "size": 249
     },
     {
-      "label": "仿真到现实",
-      "size": 219
+      "label": "机器人学习论文笔记",
+      "size": 179
     }
   ],
   "top_hubs": [
@@ -255,7 +254,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1485,
+      "degree": 1486,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
