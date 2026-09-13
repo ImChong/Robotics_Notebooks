@@ -2,7 +2,7 @@
 type: formalization
 tags: [differential-geometry, manifold, optimization, rl, motion-control, so3, se3, embodied-ai, shenlan]
 status: complete
-updated: 2026-06-04
+updated: 2026-09-13
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./lie-group-rigid-body-motions.md
