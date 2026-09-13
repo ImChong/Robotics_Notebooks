@@ -1,3 +1,5 @@
+## [2026-09-13] ingest | sources/papers/chorus_arxiv_2606_12352.md — CHORUS 去中心化多本体 VLA 协作（CoRL 2026）；截至入库日项目页未开源
+
 ## [2026-09-13] ingest | sources/papers/egophi_arxiv_2608_13014.md — EgoPHI ego 视觉 mesh 级接触+力估计（ECCV 2026）；部分开源（训练/评测/HF 数据已发布，预训练权重链接待补）
 
 ## [2026-09-13] ingest | sources/papers/navverse_arxiv_2607_19695.md — 新建 NavVerse 室内–户外导航基准实体页；待发布（arXiv+项目页已上线，Isaac Sim 代码未见）
