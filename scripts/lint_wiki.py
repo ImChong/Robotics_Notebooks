@@ -65,7 +65,7 @@ STALE_CLAIM_PATTERNS = [
     r"最新",
 ]
 
-# 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下五类是
+# 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下六类是
 # 结构性误报，按命中处的上下文豁免，避免为迁就正则去改写本就正确的正文：
 #   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」
 #      「这一行不可直接当 SOTA 通才」等辟谣式写法，本身就在否认该断言；否认也
@@ -83,7 +83,11 @@ STALE_CLAIM_PATTERNS = [
 #      与「常见误区」区块同属结构性区块，扫描前整段剥离；
 #   5) 对照基线的类别名：「相对经典/SOTA 基线，证书平均收窄 51.6%」里的 SOTA 指
 #      被比较的那批既有方法，是对照组标签而非本页对自身的断言；与 2) 的页面名
-#      引用同属指称，故按命中词后紧跟的「基线 / baseline」豁免。
+#      引用同属指称，故按命中词后紧跟的「基线 / baseline」豁免；
+#   6) 历史限定的旧最优：「FROSS (prior SoTA)」「定性对比 prior SoTA FROSS」里的
+#      SoTA 已被 prior / 先前 显式钉在过去，指的是被比较的那个旧最优方法，断言
+#      自带时间限定、不会随领域进展过时；与 5) 同属对照组指称，只是限定词落在
+#      命中词**前**，故按紧邻前缀的「prior / previous / 先前 / 此前」豁免。
 STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不是",
     "并非",
@@ -118,6 +122,12 @@ STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
 # 与「库内页面名引用」同属导航/指称而非结论，故按命中词后**紧跟**的
 # 「基线 / baseline」豁免；只允许夹一两个空白，避免把跨短语的命中一并放行。
 STALE_CLAIM_BASELINE_LABEL_RE = re.compile(r"\s{0,2}(?:基线|baselines?)", re.I)
+# 「prior / previous / 先前 / 此前 + SOTA」把命中词显式钉在历史上（「FROSS (prior
+# SoTA)」指被比较的那个旧最优方法），与「SOTA 基线」同属对照组指称，只是限定词
+# 落在命中词前，故按**紧邻前缀**豁免；只允许夹一两个空白，避免跨短语放行。
+STALE_CLAIM_PRIOR_QUALIFIER_RE = re.compile(r"(?:prior|previous|先前|此前)\s{0,2}$", re.I)
+# 前缀回看的字符数（够容纳「previous 」这类最长限定词 + 空白）
+STALE_CLAIM_PRIOR_QUALIFIER_WINDOW = 12
 # 「最新」后紧跟的行内公式运行时量（如「最新 \((\mathbf{q},\mathbf{e})\)」）：与
 # 「最新状态/读数」同为运行时对象，只是把量写成符号而非名词，同样不随领域进展过时。
 STALE_CLAIM_RUNTIME_MATH_RE = re.compile(r"\s{0,2}\\\([^\n]{0,80}?\\\)")
@@ -959,6 +969,10 @@ def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
                 continue
             if STALE_CLAIM_BASELINE_LABEL_RE.match(body, m.end()):
                 continue
+            if STALE_CLAIM_PRIOR_QUALIFIER_RE.search(
+                body[max(0, m.start() - STALE_CLAIM_PRIOR_QUALIFIER_WINDOW) : m.start()]
+            ):
+                continue
             return m.group(0)
     return None
 
@@ -972,8 +986,8 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
     建议复核。属信息型预警，不计入 lint 失败总数。
 
     命中判定见 :func:`_stale_claim_hit`：否定语境 / 库内页面名引用 / 运行时对象 /
-    对照基线类别名四类结构性误报不算断言；「英文缩写速查」区块是词条释义表，
-    扫描前整段剥离。
+    对照基线类别名 / 历史限定的旧最优（``prior SoTA``）五类结构性误报不算断言；
+    「英文缩写速查」区块是词条释义表，扫描前整段剥离。
     """
     from wiki_abbrev_section import extract_abbrev_section
 

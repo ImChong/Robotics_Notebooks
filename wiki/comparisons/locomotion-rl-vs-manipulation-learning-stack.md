@@ -13,6 +13,7 @@ related:
   - ../methods/beyondmimic.md
   - ../methods/action-chunking.md
   - ../tasks/loco-manipulation.md
+  - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
 sources:
   - ../../sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md
@@ -147,6 +148,7 @@ flowchart TB
 - [Diffusion Policy](../methods/diffusion-policy.md) — 操作多解性
 - [VLA](../methods/vla.md) — 语义条件执行层
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身任务域
+- [Query：具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 本页按「任务形态」分栈，那里按「模型家族（VLM→VLN→VLA→VLX→WM）」分层；先在闭环里定上层家族，再回本页决定下层用 RL 还是 IL
 - [《具身智能基础》专栏地图](../overview/shenlan-embodied-ai-fundamentals-series.md) — 深蓝专栏父节点
 
 ## 推荐继续阅读

@@ -14,6 +14,7 @@ arxiv: "2607.16946"
 venue: "SIGGRAPH 2026 / ACM TOG"
 code: https://github.com/nzfeng/points-as-tori
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/collision-distance-optimization.md
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ../methods/grasp-pose-estimation.md
@@ -167,6 +168,7 @@ sequenceDiagram
 
 ## 与其他页面的关系
 
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — PAT 落在该闭环的「几何表示」一层：从传感器点云直接得到可查询距离场，是体素 ESDF 之外的另一条落地路径
 - [Collision Distance Optimization](../concepts/collision-distance-optimization.md) — SDF 在规划优化中的角色
 - [Embodied Perception Six Spatial Representations](../concepts/embodied-perception-six-spatial-representations.md) — 点云 vs TSDF/ESDF 表示选型
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 点云感知上游

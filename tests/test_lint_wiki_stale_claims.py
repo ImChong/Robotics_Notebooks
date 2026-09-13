@@ -255,6 +255,36 @@ def test_sota_not_followed_by_baseline_is_still_flagged(tmp_path, monkeypatch) -
     assert "SOTA" in results["stale_claims"][0]
 
 
+def test_prior_sota_qualifier_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「prior SoTA」把命中词钉在历史上，指被比较的那个旧最优方法，不是本页断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["scene-graph"],
+        "增量策略减轻重复实例化与错误连边（定性对比 prior SoTA FROSS）。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["scene-graph"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_sota_without_prior_qualifier_is_still_flagged(tmp_path, monkeypatch) -> None:
+    # 豁免只在限定词紧邻命中词前时生效：隔着断言正文的「先前」不构成历史限定。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["scene-graph"],
+        "先前工作各有取舍，本方法仍是该任务的 SOTA。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["scene-graph"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "SOTA" in results["stale_claims"][0]
+
+
 def test_runtime_math_quantity_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
     # 「最新 \((\mathbf{q},\mathbf{e})\)」是写成行内公式的运行时量，与「最新状态」同类。
     wiki = _setup_wiki(tmp_path, monkeypatch)

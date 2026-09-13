@@ -159,6 +159,18 @@ sequenceDiagram
 | `learn2design2026.com` | 官方竞赛站 + 链到上述资源 |
 | Nature Review PDF | 订阅/机构访问；摘要与引用见 Nature 页 |
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：本页是 Review + 竞赛协议摘录，与下列各页不共享评测协议，减阻% 与探测器损失之间没有可比口径。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [HydroGym](./paper-hydrogym.md) | 同为 Nature 级「物理域 benchmark 平台化」叙事，但**外层循环不同**：HydroGym 把流控包成 Gymnasium RL 环（策略与环境反复交互），Learn2Design 是**昂贵仿真 + 黑盒/梯度外层寻优**（4h 内尽量少调用）。选型分水岭是「有没有可交互的 episode 结构」 |
+| [Gymnasium](./gymnasium.md) | 共享基准文化（标准接口 + 公开排行榜），但 Learn2Design **不是** Gym 环境：提交物是优化器类而非策略，评测是隐藏拓扑上的最优损失而非 episode return |
+| [可微仿真](../concepts/differentiable-simulation.md) | 机器人侧可微刚体仿真要解决接触不连续与梯度病态；Differometor 面对的是频域干涉仪（连续、光滑），因此梯度可直接用——**同一技术名词、不同难度档位**，机器人读者不要把 160× 加速直接外推到接触仿真 |
+| [Reinforcement Learning](../methods/reinforcement-learning.md) | RL 是本 Review 四问中「探索方法」一栏的**候选之一**，与贝叶斯优化、进化算法并列；~200 维连续设计变量 + 4h 硬预算下，梯度/进化混合往往比序贯 RL 更省调用 |
+| [Query：具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) | 任务域正交（科学仪器 vs 具身 VLA），但**协议可借鉴**：隐藏测试集 + 提交算法而非提交结果，正是具身基准防「刷单一任务」的同一处方 |
+
 ## 结论
 
 **Nature Review 把 AI 实验设计从「黑盒调参」升格为可讲授的四层栈（空间–仿真–目标–探索）；Learn2Design-2026 用可微干涉仪仿真与隐藏拓扑算法赛证明这套栈在引力波领域已可运营化。**
