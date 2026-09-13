@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3985,
-  "edge_count": 35638,
+  "node_count": 3987,
+  "edge_count": 35658,
   "coverage": {
-    "covered": 3957,
-    "total": 3957,
+    "covered": 3959,
+    "total": 3959,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dart-sam3-realtime.md",
+      "detail_id": "entity-paper-dart-sam3-realtime",
+      "label": "DART：SAM3 实时多类别开放词汇检测",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-abot-recon.md",
+      "detail_id": "entity-paper-abot-recon",
+      "label": "ABot-Recon：局部上下文长视频流式 3D 重建",
+      "type": "entity",
+      "recency": "2026-09-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/tasks/microduck-ball-balance.md",
       "detail_id": "wiki-tasks-microduck-ball-balance",
@@ -108,7 +130,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-sa-2603-26639-geosr.md",
@@ -130,7 +152,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/entities/paper-sa-2604-03564-coprime-psi-wavefront-sensing.md",
@@ -141,7 +163,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/entities/paper-sa-2604-05182-lsrm.md",
@@ -151,8 +173,7 @@
       "recency": "2026-09-12",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-sa-2606-22094-lays.md",
@@ -173,7 +194,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/entities/paper-point2pose.md",
@@ -183,7 +204,8 @@
       "recency": "2026-09-12",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-wid3r.md",
@@ -195,44 +217,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/openless.md",
-      "detail_id": "entity-openless",
-      "label": "OpenLess",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/humanlayer-skills.md",
-      "detail_id": "entity-humanlayer-skills",
-      "label": "HumanLayer Skills",
-      "type": "entity",
-      "recency": "2026-09-11",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/microduck-ball-balance.md",
-    "detail_id": "wiki-tasks-microduck-ball-balance",
-    "label": "Microduck 球平衡（蹬西瓜）",
-    "type": "task",
+    "path": "wiki/entities/paper-dart-sam3-realtime.md",
+    "detail_id": "entity-paper-dart-sam3-realtime",
+    "label": "DART：SAM3 实时多类别开放词汇检测",
+    "type": "entity",
     "recency": "2026-09-13",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 676
+      "size": 645
     },
     {
       "label": "操作",
@@ -244,15 +245,15 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 257
+      "size": 267
     },
     {
       "label": "世界动作模型",
-      "size": 221
+      "size": 252
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 218
+      "size": 223
     }
   ],
   "top_hubs": [

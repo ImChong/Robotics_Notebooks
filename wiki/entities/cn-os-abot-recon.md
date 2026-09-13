@@ -2,15 +2,18 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-09-13
 related:
+  - ./paper-abot-recon.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/abot-recon.md
-summary: "阿里巴巴 开源项目 ABot-Recon（工程与工具）：仅用视频的长时流式 3D 重建…"
+  - ../../sources/papers/abot_recon_arxiv_2608_27529.md
+  - ../../sources/sites/abot-recon.md
+summary: "阿里巴巴 ABot-Recon：固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建；详见论文实体页。"
 institutions:
   - alibaba
 ---
@@ -19,7 +22,7 @@ institutions:
 
 ## 一句话定义
 
-**ABot-Recon** 是 [阿里巴巴](https://github.com/amap-cvlab) 公开的 **工程与工具** 开源项目：仅用视频的长时流式 3D 重建
+**ABot-Recon** 是 [阿里巴巴](https://github.com/amap-cvlab) 的 **单目 RGB 长视频流式 3D 重建** 项目（arXiv:2608.27529）。机制与复现见 canonical 页 [paper-abot-recon](./paper-abot-recon.md)。
 
 ## 英文缩写速查
 
@@ -57,6 +60,7 @@ institutions:
 
 ## 关联页面
 
+- [ABot-Recon 论文实体页](./paper-abot-recon.md) — 方法、评测与 `demo.py` 复现
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
