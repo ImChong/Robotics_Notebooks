@@ -2,7 +2,7 @@
 
 ## [2026-09-13] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **7** 条信息型预警）：
+共发现 **0** 个问题（另含 **8** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,8 +91,8 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（1 个）
+- wiki/methods/foot-locking-ik-orangeduck.md（被 5 个页面引用，无 queries/comparisons 落地）
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
@@ -130,4 +130,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：3959/3959 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3961/3961 (100%) wiki/entity 页有 ingest 来源

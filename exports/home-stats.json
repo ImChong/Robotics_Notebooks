@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-13",
-  "node_count": 3987,
-  "edge_count": 35658,
+  "node_count": 3989,
+  "edge_count": 35679,
   "coverage": {
-    "covered": 3959,
-    "total": 3959,
+    "covered": 3961,
+    "total": 3961,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -233,11 +233,15 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 645
+      "size": 621
     },
     {
       "label": "操作",
-      "size": 583
+      "size": 587
+    },
+    {
+      "label": "世界动作模型",
+      "size": 416
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -245,11 +249,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 267
-    },
-    {
-      "label": "世界动作模型",
-      "size": 252
+      "size": 253
     },
     {
       "label": "机器人学习论文笔记",
@@ -364,7 +364,8 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 63
+      "degree": 63,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

@@ -520,6 +520,7 @@
 - [Genesis World 1.0（Genesis AI 仿真基础设施）](wiki/entities/genesis-world-10.md) — Genesis World 1.0** 是 **Genesis AI**（机器人全栈公司，博客域名 genesis.ai）对外阐述的**仿真基础设施**版本：在初版开源 **Genesis** 仿 `📅unknown` `[entity_page]`
 - [Genie Sim 3.0](wiki/entities/genie-sim-3.md) — Genie Sim 3.0** 是智元 AgibotTech/genie_sim 开源的 **高保真综合仿真平 `📅unknown` `[entity_page]`
 - [Genie Studio Agent](wiki/entities/genie-studio-agent.md) — Genie Studio Agent** 是智元在 2026-06 发布地图 中 `📅unknown` `[entity_page]`
+- [GenoView-InverseKinematics](wiki/entities/genoview-inverse-kinematics.md) — GenoView-InverseKinematics](https://github.com/orangeduck/GenoView-InverseKinematics) 是 Andrew McDo `📅unknown` `[entity_page]`
 - [GigaWorld-0](wiki/entities/gigaworld-0.md) — GigaWorld-0](https://giga-world-0.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [GNM Head（GNM 生态）](wiki/entities/gnm-head.md) — GNM**（**G**enerative a**N**thropometric **M**odel，读音类比 genome）是 Google 推进的 **参数化人体统计模型生态**；截至 2026 `📅unknown` `[entity_page]`
 - [GO-2（智元执行基座）](wiki/entities/go-2.md) — GO-2**（arXiv:2601.11404，项目页：<https://libra-vla.github.io/>）是智元 `📅unknown` `[entity_page]`
@@ -3456,6 +3457,7 @@
 - [FCN 全卷积网络](wiki/methods/fcn-semantic-segmentation.md) — FCN 将分类网全连接改为卷积，实现任意尺寸输入的端到端像素级语义分割，是深度语义分割的起点。 `📅unknown` `[method_page]`
 - [Feedback Linearization Control（反馈线性化控制）](wiki/methods/feedback-linearization-control.md) — 反馈线性化：通过状态反馈与坐标变换消去系统非线性，化为可控线性形式后复用 LQR/PID。 `📅unknown` `[method_page]`
 - [FlashSAC](wiki/methods/flashsac.md) — FlashSAC**（arXiv:2604.04539，[项目页](https://holiday-robot.github `📅unknown` `[method_page]`
+- [足锁 IK（Orange Duck 配方）](wiki/methods/foot-locking-ik-orangeduck.md) — 一句话：** 把「脚滑」当作 **趾在世界空间的速度与源动画不一致**；用 **最小旋转的两骨 IK** 把趾钉到（锁定或离线修正后的）目标，再用 **三次惯性化** 在跟动画与跟地板之间平滑切换 `📅unknown` `[method_page]`
 - [Fuzzy Logic Control（模糊逻辑控制）](wiki/methods/fuzzy-logic-control.md) — 模糊逻辑控制：将操作经验编码为 If-Then 模糊规则，经模糊推理与去模糊得到控制量，无需精确动力学方程。 `📅unknown` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](wiki/methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Gauss-Newton（高斯-牛顿法）](wiki/methods/gauss-newton.md) — Gauss-Newton（GN）**：最小化 $\|r(x)\|^2$ 时，用残差 Jacobian $J(x) = \partial r / \partial x$ 构造 Hessian 近似  `📅unknown` `[method_page]`

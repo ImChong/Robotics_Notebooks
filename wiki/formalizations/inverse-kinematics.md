@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, inverse-kinematics, jacobian, embodied-ai, shenlan, manipulation]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-13
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./forward-kinematics.md
@@ -15,11 +15,14 @@ related:
   - ../entities/ssik.md
   - ../entities/modern-robotics-book.md
   - ../concepts/null-space-control.md
+  - ../methods/foot-locking-ik-orangeduck.md
+  - ../entities/genoview-inverse-kinematics.md
 sources:
   - ../../sources/blogs/wechat_shenlan_inverse_kinematics.md
   - ../../sources/raw/wechat_shenlan_inverse_kinematics_2026-07-23.md
   - ../../sources/papers/modern_robotics_textbook.md
   - ../../sources/papers/null_space_control.md
+  - ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
 summary: "逆运动学求使末端达到目标 SE(3) 位姿的关节角：解可能不存在、不唯一或无穷多。工程主路径是解析（Pieper）→ 雅可比迭代+DLS → 冗余零空间；高维再用生成式候选池。"
 ---
 
@@ -111,8 +114,9 @@ flowchart TB
 | 7 轴沿缝焊接避障 | 零空间次级任务 | $z \propto \nabla_q d_{\mathrm{obs}}$ |
 | 灵巧手精细装配 | 学习型多候选 | 接触不确定下单解不够鲁棒 |
 | 人形浮基全身 | 任务空间 QP / [Pink](../entities/pink-ik.md) / [Mink](../entities/mink-ik.md) | 见 [TSID](../concepts/tsid.md)，不要只跑单臂牛顿法 |
+| 动画/重定向后脚滑 | 两骨 IK + 惯性化足锁 / 离线约束 | 见 [足锁 IK（Orange Duck）](../methods/foot-locking-ik-orangeduck.md)；与机器人 Jacobian IK 分层 |
 
-开源入口：[ssik](../entities/ssik.md)（解析 6R/7R）、[Pink](../entities/pink-ik.md)（Pinocchio 任务 IK）、[Mink](../entities/mink-ik.md)（MuJoCo QP IK）。RL 何时介入见 [五类方案对比](../comparisons/rl-inverse-kinematics-five-approaches.md)。
+开源入口：[ssik](../entities/ssik.md)（解析 6R/7R）、[Pink](../entities/pink-ik.md)（Pinocchio 任务 IK）、[Mink](../entities/mink-ik.md)（MuJoCo QP IK）、[GenoView-InverseKinematics](../entities/genoview-inverse-kinematics.md)（动画足锁示例）。RL 何时介入见 [五类方案对比](../comparisons/rl-inverse-kinematics-five-approaches.md)。
 
 ## 局限与风险
 
@@ -129,6 +133,7 @@ flowchart TB
 - [RL 求解 IK 的五类方案](../comparisons/rl-inverse-kinematics-five-approaches.md)
 - [TSID](../concepts/tsid.md) — 任务空间逆动力学，IK 的力/加速度升级
 - [《具身智能基础》专栏](../overview/shenlan-embodied-ai-fundamentals-series.md) — 本篇为专栏 09
+- [足锁 IK（Orange Duck）](../methods/foot-locking-ik-orangeduck.md) — 动画侧两骨 IK + 足锁，与雅可比迭代互补
 
 ## 参考来源
 
@@ -136,6 +141,7 @@ flowchart TB
 - [抓取落盘](../../sources/raw/wechat_shenlan_inverse_kinematics_2026-07-23.md)
 - [Modern Robotics 教材摘录](../../sources/papers/modern_robotics_textbook.md)（Ch 6）
 - [零空间控制论文簇](../../sources/papers/null_space_control.md)
+- [Orange Duck 足锁 IK 博文](../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md)
 
 ## 推荐继续阅读
 

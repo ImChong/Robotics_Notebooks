@@ -1,3 +1,5 @@
+## [2026-09-13] ingest | sources/blogs/orangeduck_inverse_kinematics_foot_locking.md — 入库 Orange Duck 足锁 IK 博文与 GenoView 仓，升格方法页与实体页
+
 ## [2026-09-13] ingest | sources/papers/dart_arxiv_2603_11441.md + sources/papers/abot_recon_arxiv_2608_27529.md — DART（SAM3 实时多类 OV 检测）与 ABot-Recon（12 帧流式单目 3D）；均已开源
 
 - **DART 步骤 2.5：** **已开源** — mkturkcan/DART + HF 权重；training-free 共享骨干 + TensorRT
