@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, harmonic-drive, knee, leg, roller-screw, qdd]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-13
 related:
   - ./planetary-roller-screw-humanoid-leg-actuation.md
   - ../overview/humanoid-actuator-102-split-architecture.md
@@ -15,8 +15,10 @@ related:
   - ../overview/hub-actuator-drive-chain.md
   - ./humanoid-mass-production-engineering.md
   - ./robot-structural-modal-analysis.md
+  - ./joint-module-self-development-workflow.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
+  - ../../sources/blogs/wechat_zanehub_joint_module_self_development_workflow.md
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
   - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
   - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
@@ -120,6 +122,7 @@ flowchart TB
 - [Query：人形硬件怎么选](../queries/humanoid-hardware-selection.md) — 多路线决策入口
 - [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — 传动机构选型落在驱动链①层之上的整链入口
 - [人形量产工程能力](./humanoid-mass-production-engineering.md) — 谐波柔轮量产良率、CPK 与工艺定型
+- [自研关节模组开发流程](./joint-module-self-development-workflow.md) — 谐波/行星/RV/QDD 构型分工与测试矩阵
 
 ## 参考来源
 

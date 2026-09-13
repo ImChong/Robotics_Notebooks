@@ -4,6 +4,8 @@
 - **步骤 2.5：** **已开源** — GitHub 主仓含 `microduck-ball-balance` 环境与中文文档；MJCF 自 pollen-robotics/microduck_rl 移植
 - **关键页：** [`wiki/tasks/microduck-ball-balance.md`](wiki/tasks/microduck-ball-balance.md)；交叉 [`motrix`](wiki/entities/motrix.md)、[`pollen-microduck`](wiki/entities/pollen-microduck.md)
 
+## [2026-09-13] ingest | sources/blogs/wechat_zanehub_joint_module_self_development_workflow.md — 自研关节模组全流程；升格 wiki/concepts/joint-module-self-development-workflow.md
+
 ## [2026-09-13] ingest | sources/repos/mjbatch.md — 接入 MuJoCo CPU 批量并行库 mjbatch（已开源；实体页 + MuJoCo/Mink 交叉引用）
 
 ## [2026-09-13] ingest | sources/papers/eagle_wbc_arxiv_2602_02960.md — EAGLE-WBC ICRA 2026 深化 ingest；项目页核查未开源；升级论文实体页

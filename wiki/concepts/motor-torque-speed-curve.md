@@ -2,7 +2,7 @@
 type: concept
 tags: [motor, actuator, hardware, humanoid, torque, datasheet]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-13
 related:
   - ./motor-torque-current-curve.md
   - ../comparisons/motor-em-simulation-software.md

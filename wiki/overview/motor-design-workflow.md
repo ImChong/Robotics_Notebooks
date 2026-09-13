@@ -2,7 +2,7 @@
 type: overview
 tags: [motor, actuator, hardware, humanoid, design, foc, simulation]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-13
 related:
   - ../concepts/motor-torque-speed-curve.md
   - ../concepts/motor-torque-current-curve.md
@@ -19,6 +19,7 @@ related:
   - ../entities/ironless-qdd-actuator.md
   - ../entities/cadenkraft-ironless-axial-flux-motor.md
   - ../entities/pygeartrain.md
+  - ../concepts/joint-module-self-development-workflow.md
   - ../concepts/halbach-array.md
   - ../entities/paper-halbach-permanent-multipole-magnets.md
 sources:
@@ -155,6 +156,7 @@ flowchart TD
 
 - 含减速器、驱动器、传感器的 **整机 TN/TI** 与单电机不同。
 - 与 [电机驱动器底软通信协议](../overview/motor-drive-firmware-bus-protocols.md) 联调力矩/阻抗模式，检查延迟与饱和。
+- 减速器选型、双编标定、装配一致性与四层测试矩阵见 [自研关节模组开发流程](../concepts/joint-module-self-development-workflow.md)（本页步骤 1–7 的电机子集在此收口为「可交付模组」）。
 
 ## 常见误区
 
@@ -176,6 +178,7 @@ flowchart TD
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md)
+- [自研关节模组开发流程](../concepts/joint-module-self-development-workflow.md) — 传动构型、五件套、制造与验收全链路
 
 ## 参考来源
 
