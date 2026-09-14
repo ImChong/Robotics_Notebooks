@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, world-model, perceptive-locomotion, foothold, ppo, depth, sim2real, unitree-g1, d-robotics, bupt, soochow, hit]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-14
 arxiv: "2609.02542"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -54,7 +54,7 @@ summary: "WM-LOCO（arXiv:2609.02542，D-Robotics 等）：RSSM 与 PPO 联合�
 | **机构** | 地瓜机器人（D-Robotics）；北京邮电大学（BUPT）；苏州大学（Soochow University）；哈尔滨工业大学（HIT） |
 | **平台** | Unitree G1；IsaacLab 8192 并行环境；单卡 RTX 5880 Ada 48 GB |
 | **感知** | 头戴 RealSense D435；仿真 64×36 渲染、裁到 32×18、0.1–2.5 m、50 Hz |
-| **开源** | **待发布**（项目页 Code coming soon；`M0PUPPET/wm-loco` 仅静态页，截至 2026-09-04） |
+| **开源** | **待发布**（项目页无代码链接；`M0PUPPET/wm-loco` 仅静态页，截至 2026-09-14） |
 
 ## 核心原理
 
@@ -79,7 +79,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-04** 项目页无训练/ONNX 脚本，仅有演示页。
+**不适用** — 截至 **2026-09-14** 项目页与 GitHub 仓均无训练/ONNX 脚本，仅有演示页。
 
 ## 工程实践
 
@@ -99,7 +99,7 @@ flowchart LR
 |------|------|-----|---------|---------------------|
 | 楼梯 | Easy / Med / Hard | 87.0 / 91.4 / 91.3% | **94.2 / 95.7 / 92.0%** | 90% |
 | 沟 | Easy / Med / Hard | 0 / 0 / 0% | **98.0 / 100 / 90.0%** | 90%（0.8 m） |
-| 踏石 | Easy / Med / Hard | 0 / 0 / 0% | **87.0 / 88.3 / 78.2%** | 100%（顶面 0.25 m、同道间隙 0.45 m） |
+| 踏石 | Easy / Med / Hard | 0 / 0 / 0% | **97.1 / 97.3 / 96.4%** | 100%（顶面 0.25 m、同道间隙 0.45 m） |
 
 楼梯质量：步幅 +15–35%、每米步数 −9–21%、骨盆加速度 −24–33%。深度重建热身后 MSE 多低于 \(10^{-3}\)——这是编码保真，**不是**开环前向预测分数。
 
