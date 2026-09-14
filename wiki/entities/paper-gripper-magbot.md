@@ -67,6 +67,16 @@ summary: "三 MagLev mover 耦合成低成本并联 6-DoF 操作器并集成 1-D
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+- **串联关节机械臂** — 常规 6-DoF 臂靠 **串联电机 + 减速器** 堆自由度，成本与惯量都压在关节上；MagBot 把三个 MagLev mover 在平面上耦合出 6-DoF，运动副换成 **磁悬浮无接触驱动**，代价转移到导轨与控制侧。
+- **[并联关节运动学](../concepts/humanoid-parallel-joint-kinematics.md)** — MagBot 属并联构型家族：工作空间比串联小、耦合更强，但等效末端惯量低；该页给出并联链路的正/逆解与标定为何更麻烦，是读本页硬件章节的前置。
+- **[抓取位姿估计](../methods/grasp-pose-estimation.md)** — 本文的 1-DoF 夹爪把抓取自由度压到最低，等于把难度从 **手指构型规划** 转回 **本体定位精度**；与 [AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md) 那条「多指/多位姿」路线正好相反。
+- **[ArtManip](./paper-artmanip.md)（同批）** — 同批中的另一极：ArtManip 在 **多指灵巧手** 上求 in-hand 接触内操作，MagBot 在 **极简末端** 上求低成本本体；两者共同勾出本期「手的自由度该放在哪」的取舍面。
+- **[STAR](./paper-star-vtla.md)（同批）** — STAR 往末端加 **触觉感知**，MagBot 往本体减 **机械自由度**；一个加信息、一个减机构。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。开源状态为 **部分开源**（MagBotSim 仿真侧），硬件复现口径以项目页为准。
+
 ## 结论
 
 **Gripper MagBot 适合作为本期「部分开源」边界下的快速索引页，部署前请核对项目页/仓库可运行性。**

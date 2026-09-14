@@ -65,6 +65,16 @@ summary: "用严格为正的 sigmoid-bounded 熵项稳定保守 Q 学习与 offl
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+- **标准最大熵 RL（SAC 一系）** — 用 $\log$ 形式的熵项，取值可为负，在保守 Q 正则同时生效时会与之相互拉扯；SCQ 换成 **严格为正的 sigmoid-bounded 熵**，保留探索激励但不让熵项反号。差别只在正则项形状，不改 actor–critic 骨架，见 [PPO vs SAC](../comparisons/ppo-vs-sac.md)。
+- **原版保守 Q 学习（CQL）** — 靠压低 OOD 动作的 Q 值换安全，代价是过保守、在线阶段爬不动；SCQ 的卖点正是 **offline→online 接缝处** 不塌，one-shot 演示初始化后可继续在线改进。
+- **[在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md)** — 该页给出两种数据来源方式的根本差异；SCQ 属于其中 **offline-to-online 过渡** 这一档，不是纯离线也不是纯在线。
+- **[ArtManip](./paper-artmanip.md)（同批）** — 同为 RL 路线但改动层级不同：ArtManip 动的是 **环境与课程**（物体生成、随机化、奖励课程），SCQ 动的是 **目标函数里的正则项**；一个换题面，一个换解法。
+- **[DATAFARM](./paper-datafarm.md)（同批）** — 两篇都在回答「怎么少花真机数据」：DATAFARM 用合成示范补 BC，SCQ 用离线数据 + 少量在线交互补 RL；模仿与强化两条路的同一诉求，见 [RL vs IL](../comparisons/rl-vs-il.md)。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline（D4RL 各任务、视觉任务与四类真机）的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。开源状态为 **待发布**，暂无法按代码口径复现对照。
+
 ## 结论
 
 **SCQ 适合作为本期「待发布」边界下的快速索引页，部署前请核对项目页/仓库可运行性。**

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, simulation, mpm, elastoplasticity, granular, snow, fluid, siggraph, nvidia, newton]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-14
 doi: "10.1145/3811345"
 venue: SIGGRAPH 2026
 related:
@@ -84,6 +84,19 @@ flowchart LR
   DAT --> STATE[统一 State / 传感器]
 ```
 
+## 实验与评测
+
+| 项 | 项目页/归档口径 |
+|----|----------------|
+| **吞吐标杆** | **49M 颗粒** 沙体落城，单 GPU **约 4 s/frame**（紧凑 stencil 的直接收益） |
+| **材料谱覆盖** | 沙（颗粒流）、雪（裂缝传播）、弹性固体、近不可压流体、刚性弹塑性断裂 |
+| **离散对照** | 多组速度–应力对可切换；**trilinear 速度** 在精度/吞吐上常具竞争力 |
+| **耦合对照** | one-way（地形仅作碰撞几何）vs **two-way**（颗粒反作用推回关节角色）——演示中腿式机器人因地形改步态 |
+| **RL 实证** | **无** — 论文侧重图形与物理演示，未给可变形地面上的策略训练曲线或 sim2real 结果 |
+
+- **读法：** 4 s/frame 是 **特定场景 + 特定卡** 的演示数字，不是可跨页横比的基准成绩；换颗粒数、材料参数或 GPU 都会变。要估自己的吞吐，跑 Newton `mpm_*` 示例实测。
+- **缺口提醒：** 「能仿真」不等于「能训策略」。大规模腿式 RL on deformable terrain 的样本效率与 [Sim2Real](../concepts/sim2real.md) 迁移，本文没回答，须自行验证。
+
 ## 源码运行时序图
 
 实现随 [Newton](https://github.com/newton-physics/newton) `SolverImplicitMPM` 分发，无独立复现仓库。**不适用**单独 sequenceDiagram；最短路径：`pip install "newton[examples]"` → 运行 `mpm_*` / 刚–颗粒耦合示例 → 观察 `Solver.step` 与刚体状态同步更新。
@@ -103,6 +116,21 @@ flowchart LR
 - **无独立 repo：** 算法变更需跟踪 Newton 版本与 release note。
 - **与 Genesis / 其他 MPM：** [Genesis](./genesis-world-10.md) 等亦支持 MPM；Newton 侧优势在 **与 MuJoCo/Kamino 同栈双向耦合**。
 - **RL 实证：** 论文侧重图形/物理演示；大规模腿式 RL on deformable terrain 仍须自行验证样本效率与 sim2real。
+
+## 与其他工作对比
+
+| 路线 | 擅长材料 | 刚体耦合 | 与 Mixed MPM |
+|------|----------|----------|--------------|
+| **Mixed MPM** | 沙/雪/近不可压流体/**刚性弹塑性** | Newton 内 **双向** | 本页 |
+| 经典显式 MPM | 软颗粒、流体 | 多为 one-way | 刚性与近不可压材料上步长被 CFL 卡死或 stencil 成本爆炸——这正是「混合速度–应力离散」要解的 |
+| [Genesis](./genesis-world-10.md) 等第三方 MPM | 覆盖面接近 | 依各自引擎 | 能力上有重叠；Newton 侧的差异在 **与 MuJoCo Warp / [Kamino](./paper-kamino.md) 同栈双向耦合**，不必跨引擎搬状态 |
+| FEM 软体 | 连续弹性体 | 视实现 | 拓扑不变的软体 FEM 更省；一旦发生 **大流动、断裂、颗粒化**，网格就跟不上了 |
+| [DAT](./paper-dat-divide-and-truncate.md) | 不解材料，只解接触 | 作为后处理服务所有后端 | **不是竞品，是搭档**：MPM 负责颗粒本构，DAT 负责它与刚体/壳相遇时的无穿透几何 |
+| 高度图/解析地形模型 | 只是几何 | 无反作用 | 算力便宜得多；只有当 **颗粒反作用力矩会改变步态** 时，才值得上 MPM |
+
+- **最关键的分歧点：** **要不要 two-way**。one-way 把颗粒当地形贴图，系统性 **低估反作用力矩**；腿式机器人在沙雪上的步态调整恰恰来自这一项。算力预算紧时先问「这个任务的成败取决于反作用吗」，再决定开不开。
+- **选型顺序建议：** 先按 **材料谱** 选流动法则（勿一律默认雪参数），再按 **规模** 选速度–应力离散对（大场景从 trilinear 起步），最后按 **任务** 决定耦合模式。
+- **读法：** 以上为 **路线级** 对照；逐项定量比较以 **原文 PDF** 与项目页为准（[参考来源](#参考来源)）。
 
 ## 关联页面
 

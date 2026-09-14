@@ -1,3 +1,5 @@
+## [2026-09-14] lint | 清零全库 22 条信息型预警：15 篇 paper-* 补「方法/评测/对比」三段式、FolDeX/FoldNet++ 补数据集速查四维、3 页补感知栈枢纽回链、paper-gpt-6-astra 补 venue/code、model 归入已覆盖术语
+
 ## [2026-09-14] ingest | sources/papers/robolab_arxiv_2604_09860.md + sources/sites/williamtheisen-ai-exploring.md — 接入 RoboLab 仿真评测基准与 William Theisen 交互式 AI 学习枢纽
 
 ## [2026-09-14] ingest | sources/papers/gpt_6_astra_embodied_policy_2026.md — 接入 GPT 6 Astra 具身策略独立评测（RoboDojo/RoboLab 十任务，混合 48% vs Direct 26%）；已开源 MIT 评测代码
