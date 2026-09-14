@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-gpt-6-astra-embodied-policy.md",
+      "detail_id": "entity-paper-gpt-6-astra-embodied-policy",
+      "label": "GPT 6 Astra as an Embodied Policy",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-artmanip.md",
       "detail_id": "entity-paper-artmanip",
       "label": "ArtManip（arXiv:2609.12498）",
@@ -199,26 +210,18 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-crvae-deformable-manipulation-partial-obs.md",
-      "detail_id": "entity-paper-crvae-deformable-manipulation-partial-obs",
-      "label": "cRVAE Deformable Manipulation（arXiv:2609.10308）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-artmanip.md",
-    "detail_id": "entity-paper-artmanip",
-    "label": "ArtManip（arXiv:2609.12498）",
+    "path": "wiki/entities/paper-gpt-6-astra-embodied-policy.md",
+    "detail_id": "entity-paper-gpt-6-astra-embodied-policy",
+    "label": "GPT 6 Astra as an Embodied Policy",
     "type": "entity",
     "recency": "2026-09-14",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
