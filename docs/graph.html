@@ -3662,38 +3662,56 @@
       edgeCanvasDpr = dpr;
     }
 
-    /* ── 2D 边层可见度补偿 ──────────────────────────────────────
-       SVG 时代每条边各自合成，密集处重叠的半透明边会互相叠深，观感比单条边深得多；
-       canvas 改为「一批攒一条路径、只 stroke 一次」后同批内重叠不再叠加 alpha，
-       整张图的连线随之变淡。这里只给 2D 边层单独加深颜色 / 加粗，3D 不受影响。
-       嫌太重就调小这两处（比例 → 1.0、alpha → 0.12 / 0.15 即接近旧观感）。 */
-    const EDGE_2D_WIDTH_SCALE = 1.3;
-    function edge2dBaseColor() {
-      return isDark() ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.20)';
+    /* ── 2D 边层配色与粗细 ──────────────────────────────────────
+       颜色：暗色主题画纯白线，亮色主题画石板灰（#64748b，比纯黑更贴节点配色，也不会
+       在白底上显得脏）；不再像以前那样「在底色上蒙一层雾」。
+       粗细：恒定 1.1 个屏幕像素（世界坐标下按 1/k 折算）。此前粗细写死在世界坐标里，
+       适配屏幕（k≈0.26）时一条边只剩 0.3 屏幕像素，抗锯齿把这点墨摊开就是灰的；
+       放大到 k≈3 又粗到 4 px。改成屏幕恒定后，任何缩放都是一条干净细线。
+       不透明度随缩放插值：全图态一屏叠着 3.5 万条边，线一亮就糊成白饼（实测暗色
+       0.22 已白到盖住节点），放大后一屏只剩几十条，这时才画得出真正的白线。
+       k ≤ FAR_K 取 ALPHA_FAR，k ≥ NEAR_K 取 ALPHA_NEAR，中间线性过渡。
+       亮色主题整体再高一档：白底上同样的 alpha 看着比黑底更淡。 */
+    const EDGE_2D_SCREEN_PX = 1.1;
+    const EDGE_2D_FAR_K = 0.35;
+    const EDGE_2D_NEAR_K = 1.5;
+    const EDGE_2D_ALPHA_DARK = { far: 0.12, near: 0.45 };
+    const EDGE_2D_ALPHA_LIGHT = { far: 0.20, near: 0.55 };
+    function edge2dBaseRgb() {
+      return isDark() ? '#ffffff' : '#64748b';
+    }
+    function edge2dBaseAlpha() {
+      const k = edgeTransform.k || 1;
+      const ramp = isDark() ? EDGE_2D_ALPHA_DARK : EDGE_2D_ALPHA_LIGHT;
+      const t = Math.min(1, Math.max(0, (k - EDGE_2D_FAR_K) / (EDGE_2D_NEAR_K - EDGE_2D_FAR_K)));
+      return ramp.far + (ramp.near - ramp.far) * t;
     }
 
     /** 当前模式下的两批描边样式：[0] 高亮批、[1] 暗淡批（null 表示该批不画）。
      *  颜色自带 alpha，canvas 的 globalAlpha 与之相乘，等价于 SVG 的 stroke-opacity。 */
     function edgeBatchStyles() {
-      const w = linkWidthBase * EDGE_2D_WIDTH_SCALE;
+      const k = edgeTransform.k || 1;
+      const w = EDGE_2D_SCREEN_PX / k;
+      const base = edge2dBaseRgb();
+      const a = edge2dBaseAlpha();
       if (edgePaintMode === 'hover') {
         return [
           { color: edgePaintFocusColor, width: w * 1.8, alpha: 0.7 },
-          { color: isDark() ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)', width: w * 0.5, alpha: 0.3 },
+          { color: base, width: w * 0.5, alpha: a * 0.12 },
         ];
       }
       if (edgePaintMode === 'sidebar') {
         return [
           { color: edgePaintFocusColor, width: w * 1.5, alpha: 0.85 },
-          { color: edge2dBaseColor(), width: w, alpha: 0.18 },
+          { color: base, width: w, alpha: a * 0.18 },
         ];
       }
       if (edgePaintMode === 'timeline') {
-        return [{ color: edge2dBaseColor(), width: w, alpha: 0.35 }, null];
+        return [{ color: base, width: w, alpha: a * 0.35 }, null];
       }
       return [
-        { color: edge2dBaseColor(), width: w, alpha: 1 },
-        { color: edge2dBaseColor(), width: w * 0.5, alpha: 0.2 },
+        { color: base, width: w, alpha: a },
+        { color: base, width: w * 0.5, alpha: a * 0.2 },
       ];
     }
 
