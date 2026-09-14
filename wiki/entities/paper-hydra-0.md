@@ -13,6 +13,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/world-models-route-03-virtual-sandbox.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ./robolab.md
 sources:
   - ../../sources/papers/hydra_0_arxiv_2608_18077.md
   - ../../sources/sites/hydra-0-nvidia-isaac.md
@@ -153,6 +154,7 @@ flowchart TB
 - [Ctrl-World](./paper-ctrl-world.md) — 多视角 VLA 闭环 WM
 - [Isaac Lab](./isaac-gym-isaac-lab.md) — 部署投影 sim
 - [虚拟沙盒路线](../overview/world-models-route-03-virtual-sandbox.md)
+- [RoboLab](./robolab.md) — 开环 replay 评测基准（r=0.96 排序一致）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页 RoboLab r=0.96 属其 ② 世界模型预测保真度层向 ③ 策略成功率层的桥接：测的是「开环 replay 能否复现 achieved flow 的结果」，不要当闭环真机成功率读
 
 ## 参考来源

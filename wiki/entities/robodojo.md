@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-14
 related:
   - ./paper-gpt-6-astra-embodied-policy.md
+  - ./robolab.md
   - ./xpolicylab.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -186,6 +187,7 @@ sequenceDiagram
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 已报 RoboDojo 仿真分数的 VLA 案例
 - [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 冻结 2026-07-03 公开视频做过程评测；SR 与 OPD 排名不完全一致
 - [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) — 独立十任务子集：π0.5+GPT 混合 48% vs Direct 26%（50 对齐实例）
+- [RoboLab](./robolab.md) — NVIDIA 高保真 sim 榜 RoboLab-120；真机策略零样本评测；与 RoboArena ρ=0.94
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 仿真栈底座
 
 ## 参考来源

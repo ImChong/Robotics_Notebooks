@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | sources/papers/robolab_arxiv_2604_09860.md + sources/sites/williamtheisen-ai-exploring.md — 接入 RoboLab 仿真评测基准与 William Theisen 交互式 AI 学习枢纽
+
 ## [2026-09-14] ingest | sources/papers/gpt_6_astra_embodied_policy_2026.md — 接入 GPT 6 Astra 具身策略独立评测（RoboDojo/RoboLab 十任务，混合 48% vs Direct 26%）；已开源 MIT 评测代码
 
 ## [2026-09-14] ingest | sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md — 11篇 VLA/TAMP 盘点：新建10篇 paper-*（Dynin/LIT/DATAFARM/UniPart/MagBot/SCQ/STAR/ArtManip/FoldNet++/Pelican-Sim），复用 EVPeriscope；Dynin/LIT/UniPart 已开源

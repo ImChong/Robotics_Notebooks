@@ -18,6 +18,7 @@ related:
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/robodojo.md
+  - ../entities/robolab.md
   - ../entities/paper-prm-as-a-judge.md
   - ../entities/xpolicylab.md
   - ../entities/paper-softvtbench.md

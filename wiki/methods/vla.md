@@ -624,6 +624,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 推荐继续阅读
 
+- [William Theisen AI 学习枢纽](../entities/williamtheisen-ai-learning.md) — 浏览器交互可视化补课 Transformer/RL/CNN 等 ML 基础（非机器人专用）
 - [POT-VLA](../entities/paper-pot-vla.md) — Persistent Object Tokenization：共享角色化 3D 对象记忆条件化 GR00T-N1.7 并做几何谓词验收；G1 **39/80→71/80**（arXiv:2607.18016）
 - [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环部署（约 25 Hz；代码已开，arXiv:2607.26055）
 - [HiFi-UMI](../entities/paper-hifi-umi.md) — 高保真 UMI-only 后训练匹配 teleop；HiFi-UMI-2K 2000 h（arXiv:2607.25895）

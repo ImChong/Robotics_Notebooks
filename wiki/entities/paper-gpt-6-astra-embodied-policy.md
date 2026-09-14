@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-14
 related:
   - ./robodojo.md
+  - ./robolab.md
   - ./paper-pi05-open-world-vla.md
   - ../methods/vla.md
   - ../concepts/foundation-policy.md
@@ -178,6 +179,7 @@ RoboLab 结果为历史运行对照（`robolab120_*_specific_10ep_20260603`）�
 ## 与其他页面的关系
 
 - [RoboDojo](./robodojo.md) — 主评测基准与 π0.5 任务权重来源。
+- [RoboLab](./robolab.md) — 补充评测子集所用基准框架与官方 π0.5 榜单语境。
 - [π0.5](./paper-pi05-open-world-vla.md) — 混合架构中的「小脑」动作先验。
 - [VLA](../methods/vla.md) — 专用策略与通用模型协作的谱系位置。
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 子集选型与榜单读法。

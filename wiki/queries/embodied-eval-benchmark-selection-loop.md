@@ -224,6 +224,7 @@ flowchart TD
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — ②层：off-expert 动作跟随（视觉门控 + \(\mathrm{SE}(3)\) NDTW）；确认未开源
 - [H2R-Bench](../entities/paper-h2r-bench.md) — ②层跨本体切面：人手视频→机器人本体视频五维诊断（本体正确性/功能接触），评测代码与标注待发布
 - [Hydra-0](../entities/paper-hydra-0.md) — ②→③ 桥接：RoboLab 开环 replay 排名与参考成功率 **r=0.96**（κ=0.82），但策略不被生成观测查询，不能当闭环 prospective 成功率读（确认未开源）
+- [RoboLab](../entities/robolab.md) — ③ 层：Isaac Lab 高保真 sim 榜 RoboLab-120；真机策略零样本进仿真；与 RoboArena **ρ=0.94**；π0.5 Default **28%** SR（Apache-2.0 已开源）
 - [RoboSynChallenge](../entities/paper-robosynchallenge.md) — ③/④ 层：合成 state-action 训练、**仅真实世界未见环境**终评的灵巧操作挑战赛协议（框架 + HF 数据已开源）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — ③层社区聚合：多基准 VLA / 灵巧手摘录榜（不重跑）
 - [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji
