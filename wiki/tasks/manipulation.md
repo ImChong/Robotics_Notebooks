@@ -422,6 +422,14 @@ flowchart TD
 - [MINERVA](../entities/paper-minerva-libero.md) — LIBERO 容量下限 0.54M / ~95%，CPU 5.1 ms/chunk（arXiv:2609.03715）
 - [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务（arXiv:2609.03591）
 - [ARTiS](../entities/paper-artis-gripper.md) — 拆解工具夹爪（arXiv:2609.03362）
+- [TFGCA chunked VLA](../entities/paper-tfgca-chunked-vla.md) — 时频几何交叉注意力；LIBERO-Plus +6.3（arXiv:2609.09925；未见代码）
+- [FreqFM VLA](../entities/paper-freqfm-vla-flow-matching.md) — DCT 频率条件 flow matching；LIBERO-Plus +9.3（arXiv:2609.10405；未见代码）
+- [紧凑视觉触觉 WM 提升](../entities/paper-compact-visuotactile-wm-lifting.md) — ~650k 参数 WM；预测好≠策略好（arXiv:2609.09597；未见代码）
+- [RoboDrop VLA 后训练筛选](../entities/paper-robodrop-vla-post-training.md) — 梯度兼容性策展；真机 SR 35%→67.5%（arXiv:2609.10021；未见代码）
+- [CASD 块级语义蒸馏](../entities/paper-casd-chunk-semantic-distillation.md) — 离线 VLM 阶段标签；推理无 VLM（arXiv:2609.08638；未见代码）
+- [空间条件多智能体灵巧操作](../entities/paper-spatially-conditioned-multi-agent-dexterous.md) — 8×8 Soft Delta 阵列；稀疏激活 ~65%（arXiv:2609.06930；未见代码）
+- [cRVAE 可变形体操作](../entities/paper-crvae-deformable-manipulation-partial-obs.md) — 角点→全形状实时估计；Go2 协作避绳（arXiv:2609.10308；未见代码）
+- [FolDeX 可变形衣物基准](../entities/paper-foldex-deformable-clothes-benchmark.md) — 2000+ h 真实数据 + FoldScore（arXiv:2609.10243；未见代码）
 
 
 ## 推荐继续阅读

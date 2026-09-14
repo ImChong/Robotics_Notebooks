@@ -239,6 +239,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 
 ## 关联页面
 
+- [SPOT 长时人形遥操作](../entities/paper-spot-humanoid-teleoperation.md) — 双目鱼眼 + 广 FOV 立体显示；视点-动作解耦（arXiv:2609.07933；未见代码）
 - [Loco-Manipulation](./loco-manipulation.md) — 遥操作在移动操作中的应用
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人类动作到机器人动作的映射
 - [Imitation Learning](../methods/imitation-learning.md) — 遥操作数据的学习方法

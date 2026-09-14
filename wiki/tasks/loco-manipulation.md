@@ -263,6 +263,8 @@ flowchart TD
 
 ## 关联页面
 
+- [GLoRI](../entities/paper-glori-humanoid-loco-manipulation.md) — 全局-局部参考交互闭环全身跟踪；G1 搬箱/捡包 + VIVE 根定位（arXiv:2609.05994；未见代码）
+- [轮式人形形态感知重定向](../entities/paper-morphology-aware-retargeting-wheeled-humanoid.md) — 三轮底座 + BaseDecode 21 维策略（arXiv:2609.11357；未见代码）
 - [RoboReact（论文实体）](../entities/paper-roboreact.md) — 生成 egocentric 视频蒸馏物体中心全身操作技能；G1 四任务均值 SR 81.3%（arXiv:2608.03387；未开源）
 - [SMPC-to-RL（论文实体）](../entities/paper-smpc2rl-loco-manipulation.md) — SMPC 仿真专家 + 稀疏 offline-to-online RL；Spot/G1 真机（arXiv:2608.12063；截至 2026-08-17 未开源）
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流：核验→训练→评测→描述符部署（G1/T1；arXiv:2603.20147）

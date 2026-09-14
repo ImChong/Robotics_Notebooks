@@ -384,6 +384,12 @@ flowchart TD
 - [eBert NNM 步态](../entities/paper-ebert-nonlinear-normal-modes.md) — 高柔顺四足六种非线性正规模涌现步态（arXiv:2609.00539）
 - [QLAUN](../entities/paper-qlaun.md) — 15 kg 全 3D 打印 QDD 模块化四足（arXiv:2609.03623；宣称将开源）
 - [SleepWalking (SWAQ)](../entities/paper-sleepwalking.md) — 特权重建塑造盲走表征；相对 DWAQ 峰值地形 +15%（arXiv:2608.30883）
+- [执行器动力学课程](../entities/paper-actuator-dynamics-curricula-legged-rl.md) — 高刚度→辨识刚度退火；Spot 站立到手倒立 sim2real（arXiv:2609.09492；未见代码）
+- [LLM→STL 四足规约](../entities/paper-llm-stl-quadruped-locomotion.md) — LLM 生成参数化 STL + PPO 鲁棒度奖励（arXiv:2609.07111；未见代码）
+- [Mind the Phase](../entities/paper-mind-the-phase-effective-rank-legged-locomotion.md) — 分相位有效秩诊断；Spot 抖动降约 3×（arXiv:2609.06958；未见代码）
+- [Harness Robotic OS](../entities/paper-harness-robotic-os-quadruped-inspection.md) — 四足巡检统一运行时（arXiv:2609.11225；未见代码）
+- [步态相关负载运输](../entities/paper-gait-dependent-load-carrying-quadruped.md) — 被动背负步态–刚度设计图（arXiv:2609.11059；未见代码）
+- [帧编码腿式运动理论](../entities/paper-frame-coded-legged-locomotion-noisy-terrain.md) — 多足接触有限码可恢复性界限（arXiv:2609.10273；理论无真机策略）
 
 ## 推荐继续阅读
 
