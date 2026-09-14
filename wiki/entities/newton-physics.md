@@ -2,8 +2,11 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, differentiable, linux-foundation, nvidia]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-13
 related:
+  - ./paper-dat-divide-and-truncate.md
+  - ./paper-mixed-mpm-stiff-elastoplasticity.md
+  - ./particles4all.md
   - ./paper-kamino.md
   - ./mujoco.md
   - ./mujoco-playground.md
@@ -26,6 +29,9 @@ sources:
   - ../../sources/sites/newton-solvers-catalog.md
   - ../../sources/repos/newton-kamino-solver.md
   - ../../sources/sites/disney-kamino.md
+  - ../../sources/papers/dat_arxiv_2604_15513.md
+  - ../../sources/papers/mixed_mpm_siggraph_2026.md
+  - ../../sources/sites/nvidia-mixed-mpm.md
   - ../../sources/papers/kamino_arxiv_2603_16536.md
   - ../../sources/sites/nvidia-newton-physics.md
   - ../../sources/sites/newton-physics-docs-overview.md
@@ -70,7 +76,7 @@ summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微�
 | **可扩展** | 模块化求解器与组件；可插拔自定义求解器，支持多物理扩展 |
 | **资产** | `ModelBuilder` 导入 **URDF、MJCF、USD**；OpenUSD 聚合机器人与环境 |
 | **求解器** | 见下表「求解器谱系」；公开 API 八类 + 内部 `coupled` 多求解器耦合 |
-| **接触** | `CollisionPipeline.collide` 填充 `Contacts`（2026-09 文档；不再写 `Model.collide`） |
+| **接触** | `CollisionPipeline.collide` 填充 `Contacts`（2026-09 文档；不再写 `Model.collide`）；多物理 **无穿透** 耦合见 SIGGRAPH 2026 [DAT](./paper-dat-divide-and-truncate.md)（Divide and Truncate / Planar-DAT） |
 | **传感器** | 基于 `State` / `Contacts` 与 extended attributes 的观测管线 |
 
 官方示例已覆盖 **G1 / H1 / ANYmal / Panda / Allegro**、布料与缆索、颗粒–机器人双向耦合、螺母螺栓 / RJ45 接触装配，以及 Kamino 四连杆与异构机构。
@@ -87,7 +93,7 @@ Newton 通过 PEP 562 懒加载导出 `SolverBase` 及下列后端；源码目�
 | `semi_implicit/` | `SolverSemiImplicit` | 通用半隐式体/粒子/肌肉积分 | 多物理基础核 |
 | `vbd/` | `SolverVBD` | 可变形体、刚–软耦合 | Vertex Block Descent |
 | `style3d/` | `SolverStyle3D` | 布料、服装仿真 | Style3D 管线 |
-| `implicit_mpm/` | `SolverImplicitMPM` | 颗粒、雪、流体、刚–颗粒耦合 | MPM 连续介质 |
+| `implicit_mpm/` | `SolverImplicitMPM` | 颗粒、雪、流体、刚–颗粒耦合、**刚性弹塑性** | MPM 连续介质；SIGGRAPH 2026 [Mixed MPM](./paper-mixed-mpm-stiff-elastoplasticity.md) 为 Newton 一等模块 |
 | `kamino/` | `SolverKamino` | **闭链/任意拓扑** 约束多体 | PADMM；**BETA 1** — 见 [Kamino 论文](./paper-kamino.md) |
 | `coupled/` | （内部 API） | 多求解器同场景耦合 | `solver_coupled.py`；非 `__all__` 公开导出 |
 
@@ -158,6 +164,9 @@ flowchart LR
 
 ## 关联页面
 
+- [DAT（多物理无穿透接触）](./paper-dat-divide-and-truncate.md) — 刚–软–壳–杆统一碰撞/接触后处理
+- [Mixed MPM（刚性弹塑性）](./paper-mixed-mpm-stiff-elastoplasticity.md) — `SolverImplicitMPM` 混合离散与刚体双向耦合
+- [Particles4All](./particles4all.md) — 浏览器 WebGPU 统一粒子 PBD 对照（非 Newton 组件）
 - [Kamino（闭链 GPU 求解器论文）](./paper-kamino.md) — `SolverKamino` 算法与 RL 实证
 
 - [NVIDIA Warp](./nvidia-warp.md) — JIT 计算层；本引擎站在其上
@@ -178,6 +187,8 @@ flowchart LR
 
 - [newton-physics 仓库归档](../../sources/repos/newton-physics.md)
 - [Newton 求解器目录再核](../../sources/sites/newton-solvers-catalog.md)
+- [DAT arXiv 2604.15513](../../sources/papers/dat_arxiv_2604_15513.md)
+- [Mixed MPM SIGGRAPH 2026](../../sources/papers/mixed_mpm_siggraph_2026.md)
 - [Kamino arXiv 2603.16536](../../sources/papers/kamino_arxiv_2603_16536.md)
 - [NVIDIA/warp 仓库归档](../../sources/repos/nvidia-warp.md)
 - [mujoco_warp 仓库归档](../../sources/repos/mujoco-warp.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, simulation, physics-engine, gpu, closed-chain, kinematic-loop, reinforcement-learning, newton, warp, disney, nvidia]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-13
 arxiv: "2603.16536"
 venue: arXiv preprint
 code: https://github.com/newton-physics/newton/tree/main/newton/_src/solvers/kamino

@@ -104,6 +104,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/mimickit.md": "运动模仿与控制（MimicKit）",
     "wiki/entities/isaac-gym-isaac-lab.md": "仿真训练（Isaac Gym / Isaac Lab）",
     "wiki/tasks/humanoid-soccer.md": "人形足球（Humanoid Soccer）",
+    "wiki/tasks/humanoid-locomotion.md": "人形机器人移动（Humanoid Locomotion）",
     "roadmap/depth-humanoid-soccer.md": "人形足球纵深路线（Humanoid Soccer Deep-Dive Roadmap）",
     "roadmap/depth-navigation.md": "导航纵深路线（Navigation Deep-Dive Roadmap）",
     "roadmap/depth-perceptive-locomotion.md": "感知越障纵深路线（Perceptive Locomotion Deep-Dive Roadmap）",

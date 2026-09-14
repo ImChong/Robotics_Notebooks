@@ -2,7 +2,7 @@
 type: entity
 tags: [simulation, physics-engine, rendering, compiler, foundation-model, evaluation, genesis-ai]
 status: complete
-updated: 2026-06-18
+updated: 2026-09-13
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./genesis-sim.md
