@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-14
 arxiv: "2504.16054"
 code: https://github.com/Physical-Intelligence/openpi
 venue: "HMI curated · 2025"
@@ -20,6 +20,8 @@ related:
   - ./paper-indi.md
   - ./paper-flashvla.md
   - ./paper-clap-cross-embodiment.md
+  - ./paper-gpt-6-astra-embodied-policy.md
+  - ./robodojo.md
 sources:
   - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -140,6 +142,7 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - [SPD](./paper-spd.md) — 灵巧真机：π0 风格单帧长 chunk 弱于历史+短 chunk（CoRL 2026）
 - [FlashVLA](./paper-flashvla.md) — 在 \(\pi_{0.5}\) 上做流式异步动作解码（arXiv:2608.27384，已开源）
 - [CLAP](./paper-clap-cross-embodiment.md) — 跨本体视频 WM 对 \(\pi_{0.5}\) 做推理时规划（arXiv:2608.27406，已开源）
+- [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) — RoboDojo 十任务上 π0.5 作「小脑」：混合 48% SR，仅 14.4% 步由 GPT 修正
 
 ## 参考来源
 
