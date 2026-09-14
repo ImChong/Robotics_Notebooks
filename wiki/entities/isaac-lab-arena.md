@@ -14,7 +14,7 @@ tags:
   - lightwheel
   - open-source
 status: complete
-updated: 2026-09-06
+updated: 2026-09-14
 related:
   - ./isaac-lab.md
   - ./isaac-sim.md
@@ -37,8 +37,10 @@ sources:
   - ../../sources/sites/isaac-lab-arena.md
   - ../../sources/blogs/nvidia_isaac_lab_arena_generalist_policy_eval.md
   - ../../sources/sites/huggingface-isaaclab-arena-envs.md
+  - ../../sources/sites/lightwheel_robofinals_newton_native_benchmark.md
+  - ../../sources/sites/lightwheel_robofinals_isaac_lab_arena.md
   - ../../sources/sites/lightwheel_robofinals.md
-summary: "Isaac Lab-Arena 是 NVIDIA 在 Isaac Lab 之上的 Alpha 开源扩展：用 Scene / Embodiment / Task 运行时组装环境，面向 GR00T N、π0、SmolVLA 等通才策略的 GPU 大规模并行评测与 LeRobot EnvHub 生态。"
+summary: "Isaac Lab-Arena 是 NVIDIA×Lightwheel 联合的 Alpha 开源评测扩展：Scene/Embodiment/Task 运行时组装；承载 RoboFinals（含 Newton-native 全栈 22 任务）rollout 与 LeRobot EnvHub。"
 ---
 
 # Isaac Lab-Arena
@@ -175,7 +177,7 @@ sequenceDiagram
 
 ### 已列出 / 共建（README & 博客）
 
-- **Lightwheel：** [RoboFinals](./lightwheel-robofinals.md) 工业级 100 任务 benchmark（商业平台）；[RoboCasa](./robocasa.md) / LIBERO 任务经 [LW-BenchHub](./lw-benchhub-tour.md) 与 Arena EnvHub 发布
+- **Lightwheel：** [RoboFinals](./lightwheel-robofinals.md) 工业评测平台（RoboFinals-100 路线图 + **Newton-native 首发 22 任务**）；**BenchHub**（LW-BenchHub）为 Arena 之上的托管/执行层；[RoboCasa](./robocasa.md) / LIBERO 经 EnvHub 开源
 - **RoboTwin 2.0：** [Arena 分支](https://github.com/RoboTwin-Platform/RoboTwin/tree/IsaacLab-Arena)
 - **LeRobot EnvHub：** [`nvidia/isaaclab-arena-envs`](https://huggingface.co/nvidia/isaaclab-arena-envs)；示例策略 `nvidia/smolvla-arena-gr1-microwave`
 - **医疗：** [Isaac for Healthcare RHEO](https://github.com/isaac-for-healthcare/i4h-workflows/tree/main/workflows/rheo)
@@ -211,7 +213,7 @@ README 单列：**NIST Board 1**、**NVIDIA Isaac GR00T Industrial**、**[DexBen
 - **[Isaac GR00T](./isaac-gr00t.md)** — 博客与 `isaaclab_arena_gr00t` 子包的核心评测对象
 - **[LW BENCHHUB TOUR](./lw-benchhub-tour.md)** — Arena 0.1.x + 光轮厨房 + SmolVLA 的工程样例
 - **[DexBench](./dexbench.md)** — 工业灵巧规格；Arena 生态预告，尚未可跑
-- **[Lightwheel RoboFinals](./lightwheel-robofinals.md)** — 前沿 VLA 工业评测平台；商业 Coming soon
+- **[Lightwheel RoboFinals](./lightwheel-robofinals.md)** — 前沿 VLA 工业评测；**Newton-native 全栈 benchmark** 经 Arena 执行 rollout
 
 ## 推荐继续阅读
 

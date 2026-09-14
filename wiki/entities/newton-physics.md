@@ -2,11 +2,12 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, differentiable, linux-foundation, nvidia]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-14
 related:
   - ./paper-dat-divide-and-truncate.md
   - ./paper-mixed-mpm-stiff-elastoplasticity.md
   - ./particles4all.md
+  - ./lightwheel-robofinals.md
   - ./paper-kamino.md
   - ./mujoco.md
   - ./mujoco-playground.md
@@ -38,8 +39,9 @@ sources:
   - ../../sources/repos/nvidia-warp.md
   - ../../sources/repos/mujoco-warp.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+  - ../../sources/sites/lightwheel_robofinals_newton_native_benchmark.md
   - ../../sources/repos/omnisim.md
-summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微物理引擎：基于 NVIDIA Warp，以 MuJoCo Warp 为主要后端，支持 URDF/MJCF/USD 与 XPBD/VBD/MuJoCo/Featherstone/SemiImplicit/Kamino/ImplicitMPM/Style3D，并与 Isaac Lab、MuJoCo Playground、Cosmos Transfer 叙事对接。"
+summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微物理引擎：基于 NVIDIA Warp，以 MuJoCo Warp 为主要后端，支持 URDF/MJCF/USD 与 XPBD/VBD/MuJoCo/Featherstone/SemiImplicit/Kamino/ImplicitMPM/Style3D；Lightwheel RoboFinals 发布首个 Newton-native 全栈评测 benchmark（22 任务）。"
 ---
 
 # Newton Physics（物理引擎）
@@ -66,6 +68,7 @@ summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微�
 - **机器人学习的主干正在 GPU 化**：大规模并行 rollout、可微仿真与系统辨识越来越依赖「Python 友好 + GPU 吞吐 + 可插拔求解器」的引擎，而不仅是单机 CPU 步进。
 - **MuJoCo 生态的 GPU 延伸**：Newton 把 **MuJoCo Warp** 纳入统一框架，同时保留 XPBD / VBD / Featherstone / [Kamino](./paper-kamino.md) / ImplicitMPM / Style3D 等后端，便于在同一套 `Model` / `State` / `Solver` 抽象下做对比与扩展。
 - **与 NVIDIA 机器人栈对齐**：官方叙事与 **Isaac Sim / Isaac Lab**、**MuJoCo Playground** 兼容；Isaac Lab 侧已有 `feature/newton` 与 `newton_kamino` 等 preset。厂商 FAQ 把本引擎（及 Omniverse）放在 **解析仿真** 一侧，把 [Cosmos](./nvidia-cosmos.md) Transfer 放在「仿真视频 → 照片级合成数据」一侧。
+- **评测栈落地**：[Lightwheel RoboFinals](./lightwheel-robofinals.md) 宣称 **首个 fully Newton-native benchmark**——资产/求解器/遥操作/数据/评测全栈在 Newton 重建（首发 22 家庭/医院/工厂任务）；光轮在 Newton **TSC** 参与资产标准与可变形求解器。
 
 ## 核心能力
 
@@ -167,6 +170,7 @@ flowchart LR
 - [DAT（多物理无穿透接触）](./paper-dat-divide-and-truncate.md) — 刚–软–壳–杆统一碰撞/接触后处理
 - [Mixed MPM（刚性弹塑性）](./paper-mixed-mpm-stiff-elastoplasticity.md) — `SolverImplicitMPM` 混合离散与刚体双向耦合
 - [Particles4All](./particles4all.md) — 浏览器 WebGPU 统一粒子 PBD 对照（非 Newton 组件）
+- [Lightwheel RoboFinals](./lightwheel-robofinals.md) — Newton-native 全栈工业评测 benchmark
 - [Kamino（闭链 GPU 求解器论文）](./paper-kamino.md) — `SolverKamino` 算法与 RL 实证
 
 - [NVIDIA Warp](./nvidia-warp.md) — JIT 计算层；本引擎站在其上
@@ -195,6 +199,7 @@ flowchart LR
 - [NVIDIA Developer：Newton Physics](../../sources/sites/nvidia-newton-physics.md)
 - [Newton 官方文档 Overview](../../sources/sites/newton-physics-docs-overview.md)
 - [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
+- [RoboFinals Newton-native 媒体文](../../sources/sites/lightwheel_robofinals_newton_native_benchmark.md)
 - [OmniSim 仓库归档](../../sources/repos/omnisim.md) — Newton 作为唯一后端的仿真器案例
 
 ## 推荐继续阅读
