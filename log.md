@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | sources/papers/metarsi_v1_arxiv_2609_06396.md — MetaRSI-v1 + RSI-Harness；Harness-RSI 已开源，Model/Data-RSI 训练栈未随仓发布
+
 ## [2026-09-14] ingest | sources/papers/steadytray_arxiv_2603_10306.md — 升格 SteadyTray 深度实体，官方代码已开源
 
 ## [2026-09-14] ingest | sources/blogs/wechat_shenlan_weekly_{humanoid_quadruped,manipulation}_2026-09-14.md — 深蓝周更 31 篇：22 新建独立节点 + 9 复用

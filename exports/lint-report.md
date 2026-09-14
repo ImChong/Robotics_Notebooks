@@ -2,7 +2,7 @@
 
 ## [2026-09-14] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **7** 条信息型预警）：
+共发现 **0** 个问题（另含 **9** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,8 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（1 个）
+- model（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -97,10 +97,11 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（4 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（5 个）
 - wiki/entities/paper-axolotl3d.md（缺 评测 / 对比）
 - wiki/entities/paper-biomechanical-3d-body.md（缺 评测 / 对比）
 - wiki/entities/paper-dat-divide-and-truncate.md（缺 评测 / 对比）
+- wiki/entities/paper-metarsi-v1.md（缺 评测）
 - wiki/entities/paper-mixed-mpm-stiff-elastoplasticity.md（缺 评测 / 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
@@ -131,4 +132,4 @@
 - wiki/entities/paper-biomechanical-3d-body.md
 - wiki/entities/paper-visible-reachable-workspace-humanoid-design.md
 
-📊 Sources 覆盖率：3992/3992 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3994/3994 (100%) wiki/entity 页有 ingest 来源

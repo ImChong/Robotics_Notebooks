@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-14
 related:
   - ./ai-auto-research.md
   - ./embodied-scaling-laws.md
@@ -14,6 +14,8 @@ related:
   - ./llm-robotics-control-interfaces.md
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/sol-pi.md
+  - ../entities/paper-metarsi-v1.md
+  - ../entities/rsi-harness.md
 sources:
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
