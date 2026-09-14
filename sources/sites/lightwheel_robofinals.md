@@ -10,7 +10,8 @@
 - **发布日期：** 2025-12-04
 - **入库日期：** 2026-09-06
 - **一句话说明：** 光轮 **RoboFinals**：面向 VLA/通才机器人基础模型的工业级仿真评测平台；核心 **RoboFinals-100**（100 任务）基于 SimReady 资产；底座为 NVIDIA Isaac Lab-Arena；**Coming soon**，需预约 Demo。
-- **代码：** 无独立公开仓库（平台为商业服务）；底层 [Isaac Lab-Arena](https://github.com/NVIDIA/IsaacLab-Arena)（Apache 2.0）、[LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub)（Apache 2.0）已开源
+- **代码：** 无独立公开仓库（平台为商业服务）；底层 [Isaac Lab-Arena](https://github.com/isaac-sim/IsaacLab-Arena)（Apache 2.0）、[LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub)（Apache 2.0）已开源
+- **Newton-native 进展：** 见 [`lightwheel_robofinals_newton_native_benchmark.md`](./lightwheel_robofinals_newton_native_benchmark.md)（2026 媒体文：全栈 Newton 评测 + 22 任务首发集）
 - **沉淀到 wiki：** [`wiki/entities/lightwheel-robofinals.md`](../../wiki/entities/lightwheel-robofinals.md)
 
 ---
@@ -21,7 +22,8 @@
 |----|------|
 | RoboFinals 平台 | **商业闭源服务**（Book a Demo）；截至入库日标注 **Coming soon** |
 | RoboFinals-100 任务/资产 | 未公开完整任务列表与权重；基于 Lightwheel **SimReady** 资产生态 |
-| 评测底座 | **已开源** — [NVIDIA/IsaacLab-Arena](https://github.com/NVIDIA/IsaacLab-Arena)；与光轮联合设计评测与任务层 |
+| 评测底座 | **已开源** — [isaac-sim/IsaacLab-Arena](https://github.com/isaac-sim/IsaacLab-Arena)；与光轮联合设计评测与任务层 |
+| Newton-native 22 任务 | **商业平台内**；全栈资产/求解器/遥操作/数据在 Newton 重建（见 Newton 媒体文归档） |
 | 场景库 | **已开源** — [LightwheelAI/LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub)（RoboCasa/LIBERO 等 138+ 任务） |
 | AutoDataGen | 媒体文介绍为 Isaac Lab 附加包；**未列公开 GitHub**（截至 2026-09-06） |
 

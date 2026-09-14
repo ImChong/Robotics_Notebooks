@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | RoboFinals Newton-native 全栈评测（22 任务）— 更新 lightwheel-robofinals / newton-physics / isaac-lab-arena；Arena 已开源
+
 ## [2026-09-14] ingest | Axolotl3D（arXiv:2607.20660）— NVIDIA SIL 多模态 3D 形状补全；代码待发布；交叉 SIL / text-to-cad
 
 ## [2026-09-13] ingest | DAT / Mixed MPM / Biomechanical 3D Body / Particles4All — Newton 接触与 MPM、SAM-3D-Body 生物力学蒸馏、WebGPU 统一粒子；Particles4All 已开源，前三项随 Newton/SAM 生态
