@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-14",
-  "node_count": 4035,
-  "edge_count": 35990,
+  "node_count": 4036,
+  "edge_count": 36000,
   "coverage": {
-    "covered": 4007,
-    "total": 4007,
+    "covered": 4008,
+    "total": 4008,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -231,7 +231,7 @@
     },
     {
       "label": "世界动作模型",
-      "size": 398
+      "size": 399
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -267,7 +267,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 970,
+      "degree": 971,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -396,11 +396,12 @@
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
-      "detail_id": "wiki-methods-ase",
-      "label": "ASE: 对抗性技能嵌入",
-      "type": "method",
-      "degree": 44,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "detail_id": "entity-paper-pi05-open-world-vla",
+      "label": "π0.5（HMI P059）",
+      "type": "entity",
+      "degree": 45,
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ]
 }
