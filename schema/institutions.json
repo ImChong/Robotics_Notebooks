@@ -3688,6 +3688,14 @@
         "sharpa-robotics",
         "sharpa"
       ]
+    },
+    "cosmosmind": {
+      "label": "宇宙心智（CosmosMind）",
+      "aliases": [
+        "cosmosmind",
+        "cosmosmind-ai",
+        "cosmos-mind"
+      ]
     }
   }
 }

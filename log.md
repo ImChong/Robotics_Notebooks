@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | sources/papers/metarsi_v1_arxiv_2609_06396.md — MetaRSI-v1 + RSI-Harness；Harness-RSI 已开源，Model/Data-RSI 训练栈未随仓发布
+
 ## [2026-09-14] ingest | EgoSuite-Open100K — 光轮×HF 十万小时 egocentric 开放数据首批 1 万小时；数据已开放、DevKit 已开源
 
 ## [2026-09-14] ingest | sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md — Unidata Pico 4 Ultra 量产 egocentric 采集工作流入库；升格 wiki/entities/pico-4-ultra-egocentric-capture.md；采集栈未开源、数据集商业可购

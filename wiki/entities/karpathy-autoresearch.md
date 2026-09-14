@@ -9,7 +9,7 @@ tags:
   - autonomous-experimentation
   - research-automation
 status: complete
-updated: 2026-09-11
+updated: 2026-09-14
 related:
   - ./andrej-karpathy.md
   - ./darwin-skill.md
@@ -23,6 +23,8 @@ related:
   - ./hermes-agent.md
   - ./sciencediscovery.md
   - ./sol-pi.md
+  - ./paper-metarsi-v1.md
+  - ./rsi-harness.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/karpathy-autoresearch.md

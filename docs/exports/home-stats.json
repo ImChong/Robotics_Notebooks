@@ -1,32 +1,34 @@
 {
   "generated_at": "2026-09-14",
-  "node_count": 4022,
-  "edge_count": 35889,
+  "node_count": 4024,
+  "edge_count": 35917,
   "coverage": {
-    "covered": 3994,
-    "total": 3994,
+    "covered": 3996,
+    "total": 3996,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/egosuite-open100k.md",
-      "detail_id": "entity-egosuite-open100k",
-      "label": "EgoSuite-Open100K",
+      "path": "wiki/entities/paper-metarsi-v1.md",
+      "detail_id": "entity-paper-metarsi-v1",
+      "label": "MetaRSI-v1：递归自改进系统的元递归自改进",
       "type": "entity",
       "recency": "2026-09-14",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
-      "path": "wiki/entities/pico-4-ultra-egocentric-capture.md",
-      "detail_id": "entity-pico-4-ultra-egocentric-capture",
-      "label": "Pico 4 Ultra（Egocentric 采集）",
+      "path": "wiki/entities/rsi-harness.md",
+      "detail_id": "entity-rsi-harness",
+      "label": "RSI-Harness（RSIH）",
       "type": "entity",
       "recency": "2026-09-14",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-actuator-dynamics-curricula-legged-rl.md",
@@ -205,40 +207,40 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/egosuite-open100k.md",
-    "detail_id": "entity-egosuite-open100k",
-    "label": "EgoSuite-Open100K",
+    "path": "wiki/entities/paper-metarsi-v1.md",
+    "detail_id": "entity-paper-metarsi-v1",
+    "label": "MetaRSI-v1：递归自改进系统的元递归自改进",
     "type": "entity",
     "recency": "2026-09-14",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 603
+      "size": 611
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 463
+      "size": 456
     },
     {
       "label": "世界动作模型",
-      "size": 392
+      "size": 376
     },
     {
       "label": "国内开源全景 424 项本库导读",
       "size": 309
     },
     {
-      "label": "仿真到现实",
-      "size": 263
+      "label": "视觉-语言-动作",
+      "size": 278
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 251
+      "label": "仿真到现实",
+      "size": 256
     }
   ],
   "top_hubs": [
@@ -349,8 +351,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 63,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "degree": 63
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
