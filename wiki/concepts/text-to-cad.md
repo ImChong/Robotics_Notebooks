@@ -3,7 +3,7 @@ type: concept
 tags: [cad, generative-ai, hardware, design, api, manufacturing, llm, robotics]
 status: complete
 date: 2026-05-14
-updated: 2026-09-07
+updated: 2026-09-14
 related:
   - ../entities/urdf-studio.md
   - ../entities/atom01-hardware.md
@@ -169,7 +169,7 @@ Autodesk 产品线正在把 **AI** 深度嵌入 **Fusion / Maya / Flow** 等工�
 
 ### 9. 面向「3D 资产 / 网格」而非「工业 CAD」的工具
 
-典型取向：**外观、游戏与动画资产、视觉原型**，输出以 **mesh / 纹理** 为主，例如 **Tripo**、**腾讯混元 3D（Hunyuan3D）**、**Meshy**、**Wonder3D** 等路线（见来源索引中的链接）。生成运行时见 [ComfyUI](../entities/comfyui.md)（GPL 节点图引擎）；编排层样本见 [3D Gen Studio](../entities/3dgenstudio.md)：本地 **Kanban/Graph + ComfyUI** 串起文生图→mesh→UV/纹理→GLB/OBJ，并暴露 **MCP** 供代理批处理。相邻但形态不同的一条是 [img2threejs](../entities/img2threejs.md)：单图 → **程序化 Three.js 代码工厂**（Agent Skill + 质量门控），产物可 diff，仍属 **浏览器 WebGL**，不是 STEP/URDF。
+典型取向：**外观、游戏与动画资产、视觉原型**，输出以 **mesh / 纹理** 为主，例如 **Tripo**、**腾讯混元 3D（Hunyuan3D）**、**Meshy**、**Wonder3D** 等路线（见来源索引中的链接）。**遮挡/部分观测** 的保真补全见 NVIDIA SIL [Axolotl3D](../entities/paper-axolotl3d.md)（微调 Hunyuan3D-DiT + 部分点云条件，ECCV 2026）。生成运行时见 [ComfyUI](../entities/comfyui.md)（GPL 节点图引擎）；编排层样本见 [3D Gen Studio](../entities/3dgenstudio.md)：本地 **Kanban/Graph + ComfyUI** 串起文生图→mesh→UV/纹理→GLB/OBJ，并暴露 **MCP** 供代理批处理。相邻但形态不同的一条是 [img2threejs](../entities/img2threejs.md)：单图 → **程序化 Three.js 代码工厂**（Agent Skill + 质量门控），产物可 diff，仍属 **浏览器 WebGL**，不是 STEP/URDF。
 
 - **更适合**：概念造型、渲染、部分粗打印实验；3D Gen Studio 适合 **本地网格生产管线编排**；img2threejs 另适合 **可动画的浏览器 prop / 演示资产**。
 - **不适合默认承担**：精密机器人承力结构、**公差与配合设计**、**可制造性闭环**、**大装配约束**——这些仍应回到 B-rep / 专业 CAD 或脚本 CAD 工作流；仿真关节资产另见 [Articraft](../entities/articraft.md)。

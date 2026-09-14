@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | Axolotl3D（arXiv:2607.20660）— NVIDIA SIL 多模态 3D 形状补全；代码待发布；交叉 SIL / text-to-cad
+
 ## [2026-09-13] ingest | DAT / Mixed MPM / Biomechanical 3D Body / Particles4All — Newton 接触与 MPM、SAM-3D-Body 生物力学蒸馏、WebGPU 统一粒子；Particles4All 已开源，前三项随 Newton/SAM 生态
 
 ## [2026-09-13] ingest | sources/papers/graspmf_arxiv_2608_26076.md — GraspMF（arXiv:2608.26076）积群 MeanFlow 快速生成抓取；升格 paper-graspmf；交叉 grasp-pose-estimation / RoamFlow；确认未开源
