@@ -20,6 +20,27 @@
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
+      "path": "wiki/entities/robolab.md",
+      "detail_id": "entity-robolab",
+      "label": "RoboLab（通用策略高保真仿真评测）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/williamtheisen-ai-learning.md",
+      "detail_id": "entity-williamtheisen-ai-learning",
+      "label": "Exploring Artificial Intelligence（William Theisen 学习枢纽）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-artmanip.md",
       "detail_id": "entity-paper-artmanip",
       "label": "ArtManip（arXiv:2609.12498）",
@@ -190,26 +211,6 @@
       "recency": "2026-09-14",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-casd-chunk-semantic-distillation.md",
-      "detail_id": "entity-paper-casd-chunk-semantic-distillation",
-      "label": "CASD（arXiv:2609.08638）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-compact-visuotactile-wm-lifting.md",
-      "detail_id": "entity-paper-compact-visuotactile-wm-lifting",
-      "label": "Compact Visuotactile WM（arXiv:2609.09597）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
