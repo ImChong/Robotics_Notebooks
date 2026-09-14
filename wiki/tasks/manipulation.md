@@ -150,6 +150,22 @@ flowchart TD
   perc --> task --> pol --> exec
 ```
 
+## 子问题地图
+
+Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触 → 规划 → 学习 → 评测的一串子问题；下表按子问题给出本库的入口页。
+
+| 子问题 | 要回答的问题 | 常见方法 | 对应页面 |
+|--------|--------------|----------|----------|
+| 物体感知与位姿 | 物体是什么、在哪、姿态如何、被遮挡后能否恢复 | 2D 检测做物体锚点、6D 位姿跟踪与在线 mesh、预训练视觉骨干 | [目标检测](../methods/object-detection.md)、[Point2Pose](../entities/paper-point2pose.md)、[视觉骨干](../concepts/vision-backbones.md) |
+| 抓取生成 | 抓哪里、用什么位姿抓、候选如何排序 | 6-DoF/7-DoF 抓取检测、GraspNet 系稠密抓取管线 | [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)、[AnyGrasp](../entities/anygrasp.md)、[Query：抓取策略选型](../queries/grasp-policy-selection.md) |
+| 接触与力控 | 插拔、拧紧时接触力怎么控，打滑与卡死怎么恢复 | 阻抗/柔顺执行层、力或触觉条件策略、触觉残差 RL | [Impedance Control](../concepts/impedance-control.md)、[Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)、[Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md) |
+| 灵巧与手内操作 | 多指如何协调、如何在手内重定向物体 | 统一动作空间、人手演示重定向 + 残差/跟踪 RL | [In-hand Reorientation](../methods/in-hand-reorientation.md)、[UHAS](../methods/uhas-unified-hand-action-space.md)、[REGRIND](../methods/regrind-retargeting-guided-rl.md) |
+| 任务与运动规划 | 多步骤、多臂任务如何排序与避碰 | TAMP + 并行 schedule、GPU 无碰撞运动生成 | [ScheduleStream](../entities/schedulestream.md)、[cuRobo](../entities/curobo.md)、[MoveIt 2](../entities/moveit2.md) |
+| 策略学习与泛化 | 如何从演示或仿真学到对未见物体可用的策略 | IL / 扩散策略、VLA、世界模型与视频–动作模型 | [Imitation Learning](../methods/imitation-learning.md)、[Diffusion Policy](../methods/diffusion-policy.md)、[VLA](../methods/vla.md)、[Query：操作 VLA 与视频-动作架构选型](../queries/manipulation-vla-architecture-selection.md) |
+| 数据与采集 | 演示数据从哪来，人视频能否直接喂给策略 | 遥操作、无机器人手持采集、egocentric 人视频预训练 | [Teleoperation](./teleoperation.md)、[Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md)、[Query：灵巧操作数据管线与 RL 基建](../queries/dexterous-manipulation-data-pipeline.md) |
+| 仿真场景与资产 | 可交互场景与 sim-ready 资产从哪来 | sim-ready 3D 生成、真机视频孪生（Real2Sim） | [PhysX-Omni](../entities/physx-omni.md)、[SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) |
+| 评测 | 成功率之外还看什么、能否在仿真里预判真机 | 原子任务规格、过程/进度评测、虚实成功率校准 | [DexBench](../entities/dexbench.md)、[DexVerse](../entities/paper-dexverse.md)、[PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) |
+
 ## 主要方法路线
 
 ### 传统路线
@@ -228,6 +244,19 @@ flowchart TD
 - **FastGrasp**（[实体页](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)，arXiv:2604.12879）：**移动底盘 + 臂 + LeapHand 全身 RL 快速灵巧抓取**——CVAE 点云引导 + PPO + **二值触觉** 冲击稳定；仿真 **50.09%**、真机 **32–35%**
 - **ADEPT**（[实体页](../entities/paper-adept-dexterity.md)，arXiv:2608.19182）：**16 primitive reposing RL 预训练 + 保守 post-training + 两阶段 vision distill**——Kuka–Allegro / Flexiv–Sharpa **zero-shot** FMB peg insertion 与 dish placement；visuo-tactile **8/10** vs vision **3/10**；Code Coming soon
 - **DemoMimic**（[实体页](../entities/paper-demomimic.md)，Stanford 2026）：**单次人类示范** + **接触局部几何** 与 **AR/SCR** → 仿真 RL 教师蒸馏 **腕部 depth IL**；真机 **16 物体** 平均 **71%** SR，**最小 sim-to-real gap**（相对 DexMachina* / HERMES*）；**Code / arXiv coming soon**
+
+## 方法选型速查
+
+| 目标 | 优先路线 | 关键验证 |
+|------|----------|----------|
+| 已知物体、结构化工位的拾放 | 抓取检测 + 无碰撞运动规划（[AnyGrasp](../entities/anygrasp.md) / [cuRobo](../entities/curobo.md) / [MoveIt 2](../entities/moveit2.md)） | 抓取成功率、循环节拍、可达性与碰撞检查 |
+| 开放词汇、自然语言指定任务 | [VLA](../methods/vla.md) 族 + 少量真机后训练 | 未见物体/未见指令成功率、指令歧义时的失败模式 |
+| 接触丰富的装配、插拔、拧紧 | 阻抗/柔顺执行层 + 力或触觉条件策略 | 接触力峰值、插入成功率、打滑与卡死后的恢复能力 |
+| 多指灵巧、手内重定向 | 人手演示重定向 + 残差或跟踪 RL | 掉落率、重定向角度、sim-to-real 差距 |
+| 双臂 / 多臂并行任务 | TAMP + 并行无碰撞 schedule（[ScheduleStream](../entities/schedulestream.md)） | 完成时间、物体分配可行性、双臂碰撞 |
+| 演示数据稀缺 | 人视频 / egocentric 预训练 + 对齐 mid-training | few-shot 成功率；**务必先验证共训是否负迁移**（本页 EgoWAM 即为反例） |
+| 想在仿真里预判真机表现 | 世界模型 / 视频策略评估 | 虚实成功率相关性 \(r\)（本页 WALL-SS、SC3-Eval、Masked Visual Actions 均报该指标） |
+| 可变形体（布料、绳索） | 任务级 ILC 或可变形专用数据/基准栈 | 折叠、打结完成度；跨物体迁移所需试验次数 |
 
 ## 在人形机器人中的特殊性
 
