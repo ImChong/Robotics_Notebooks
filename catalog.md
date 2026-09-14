@@ -3020,6 +3020,7 @@
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
+- [Pico 4 Ultra（Egocentric 采集）](wiki/entities/pico-4-ultra-egocentric-capture.md) — Pico 4 Ultra** 在 2026 年成为可规模化部署的 **第一人称视频 + 全身/手部姿态** 采集硬件：PICO SDK 允许自研录制服务直接读取 passthrough RGB 与 `📅unknown` `[entity_page]`
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [PlotJuggler](wiki/entities/plotjuggler.md) — PlotJuggler**（PlotJuggler/PlotJuggler，站 [plotjuggler `📅unknown` `[entity_page]`

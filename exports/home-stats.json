@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-14",
-  "node_count": 4020,
-  "edge_count": 35868,
+  "node_count": 4021,
+  "edge_count": 35878,
   "coverage": {
-    "covered": 3992,
-    "total": 3992,
+    "covered": 3993,
+    "total": 3993,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -219,7 +219,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 461
+      "size": 463
     },
     {
       "label": "世界动作模型",
@@ -369,7 +369,7 @@
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
-      "degree": 48,
+      "degree": 49,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },

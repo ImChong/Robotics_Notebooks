@@ -2696,6 +2696,13 @@
         "macrodata-co"
       ]
     },
+    "unidata": {
+      "label": "优数数据（Unidata）",
+      "aliases": [
+        "unidata",
+        "unidata-pro"
+      ]
+    },
     "xspark-ai": {
       "label": "星火人工智能（Xspark AI）",
       "aliases": [
