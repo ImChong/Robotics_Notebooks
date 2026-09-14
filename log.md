@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | sources/papers/steadytray_arxiv_2603_10306.md — 升格 SteadyTray 深度实体，官方代码已开源
+
 ## [2026-09-14] ingest | sources/blogs/wechat_shenlan_weekly_{humanoid_quadruped,manipulation}_2026-09-14.md — 深蓝周更 31 篇：22 新建独立节点 + 9 复用
 
 ## [2026-09-14] ingest | sources/papers/wm_loco_arxiv_2609_02542.md — 复核 WM-LOCO 项目页（代码仍待发布），修正踏石仿真成功率与 Table 1 对齐

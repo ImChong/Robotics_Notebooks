@@ -7,7 +7,10 @@
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SteadyTray__Learning_Object_Balancing_Tasks_in_Humanoid_Tray_Transport_via_Resid/SteadyTray__Learning_Object_Balancing_Tasks_in_Humanoid_Tray_Transport_via_Resid.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2603.10306>
+- **项目页：** <https://steadytray.github.io/> — 归档见 [`sources/sites/steadytray.md`](../sites/steadytray.md)
+- **代码：** <https://github.com/AllenHuangGit/steadytray> — **已开源**（见 [`sources/repos/steadytray.md`](../repos/steadytray.md)）
 - **入库日期：** 2026-06-07
+- **最后更新：** 2026-09-14（升格深度实体 + 官方仓库核查）
 - **一句话说明：** SteadyTray 把"端托盘 + 走路"这件高耦合的活，显式拆成两层 RL：底层用一个稳健的人形行走策略当老师，上层挂一个残差模块专门抵消步态引起的末端抖动；通过四阶段课程（预训练 → 托盘微调 → 残差教师 → 学生蒸馏），在 Unitree G1 上做到 96.9% 速度跟踪成功率 / 74.5% 抗扰鲁棒性，并且零样本 sim-to-real 落地真机。
 
 ## 核心摘录（策展，非全文）

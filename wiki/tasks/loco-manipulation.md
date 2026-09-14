@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-12
+updated: 2026-09-14
 sources:
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
@@ -137,7 +137,7 @@ flowchart TD
 
 ### 5. 残差与自适应学习 (Residual & Adaptive)
 - **核心**：在 **预训练全身先验**（GMT、WBC 等）或高层规划输出之上，用轻量 RL 学习 **残差修正**，注入物体条件、地形或扰动补偿，避免每条任务从零学平衡与步态。
-- **代表作**：[ResMimic](../entities/paper-resmimic.md) (Amazon FAR, 2025, arXiv:2510.05070) — **GMT 预训练 + 物体条件残差**、点云/接触奖励与虚拟力课程，G1 真机 **4.5–5.5 kg** 全身接触搬运；SteadyTray (2026), SEEC (2025)。
+- **代表作**：[ResMimic](../entities/paper-resmimic.md) (Amazon FAR, 2025, arXiv:2510.05070) — **GMT 预训练 + 物体条件残差**、点云/接触奖励与虚拟力课程，G1 真机 **4.5–5.5 kg** 全身接触搬运；[SteadyTray](../entities/paper-notebook-steadytray.md) (UCSD, 2026, arXiv:2603.10306) — **ReST-RL 托盘残差平衡**，G1 真机零样本 sim-to-real，**已开源**；SEEC (2025)。
 
 ### 6. 触觉增强的行为克隆路线 (Touch-Aware BC)
 - **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。
