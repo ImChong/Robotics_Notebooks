@@ -9,18 +9,18 @@
 - **PDF：** <https://arxiv.org/pdf/2609.02542>
 - **HTML：** <https://arxiv.org/html/2609.02542>
 - **项目页：** <https://m0puppet.github.io/wm-loco/> — 归档见 [`sources/sites/wm-loco.md`](../sites/wm-loco.md)
-- **代码：** 截至 2026-09-04 **待发布**（项目页 *Code (coming soon)*；`M0PUPPET/wm-loco` 仅静态页）
+- **代码：** 截至 2026-09-14 **待发布**（项目页无训练/部署链接；`M0PUPPET/wm-loco` 仅 `index.html` / `assets/` 静态页）
 - **机构：** 地瓜机器人（D-Robotics）；北京邮电大学（BUPT）；苏州大学（Soochow）；哈尔滨工业大学（HIT，论文作者页列出 Ao Zhang 第二机构）
 - **入库日期：** 2026-09-04
-- **最后更新：** 2026-09-04
+- **最后更新：** 2026-09-14
 - **一句话说明：** 在稀疏落脚地形上，把 RSSM 世界模型与 PPO 联合训练，用预测性循环特征引导单深度人形策略；G1 机载 93.3% 平均成功。
 
-## 开源状态（步骤 2.5，2026-09-04）
+## 开源状态（步骤 2.5，2026-09-14）
 
 | 组件 | 状态 |
 |------|------|
 | 项目页 | 已上线 |
-| 训练 / ONNX / 权重 | **未见**（页上 Code coming soon） |
+| 训练 / ONNX / 权重 | **未见**（GitHub 仓仅 README / 静态资源） |
 
 **结论：待发布**
 
@@ -34,7 +34,7 @@
 
 ### 2) 稀疏落脚上 PPO 基线归零，世界模型拉开差距
 
-- IsaacLab 8192 env、RTX 5880 Ada；楼梯/沟/踏石 Easy–Hard：PPO 在沟与踏石 **0%**，WM-LOCO 沟 90–100%、踏石 78.2–88.3%、楼梯 92.0–95.7%。
+- IsaacLab 8192 env、RTX 5880 Ada；楼梯/沟/踏石 Easy–Hard：PPO 在沟与踏石 **0%**，WM-LOCO 沟 90–100%、踏石 96.4–97.3%、楼梯 92.0–95.7%。
 - 楼梯步态：步幅 +15–35%、骨盆加速度 −24–33%、机械能 −6–20%。
 - **对 wiki 的映射：** [paper-wm-loco](../../wiki/entities/paper-wm-loco.md)、[P³](../../wiki/entities/paper-p3.md)、[Hiking in the Wild](../../wiki/entities/paper-hiking-in-the-wild.md)
 
