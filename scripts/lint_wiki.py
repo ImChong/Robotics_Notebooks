@@ -440,6 +440,16 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
+    # model：库内 6 处引用全是代码 token，不是待建的机制页——Newton 的
+    # `Model` / `State` / `Solver` 抽象（entities/newton-physics.md、
+    # entities/paper-kamino.md）、后端选择端口名 `model`
+    # （concepts/behavior-tree-vla-orchestration.md）、配置字段名
+    # （entities/rsi-harness.md）、`Model` = `Policy` + `Embodiment` 的组合式
+    # （entities/inspect-robots.md）。作为知识实体的「模型」已按语境分归
+    # methods/model-based-rl.md、methods/generative-world-models.md、
+    # concepts/world-action-models.md、concepts/foundation-policy.md；裸 token
+    # 与 state / qpos / reset 同类，不单建概念页
+    "model",
     "mujoco",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
     "qpos",  # MuJoCo 状态数组字段名，已由广义坐标 $q$ 的形式化/概念页覆盖

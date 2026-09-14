@@ -81,6 +81,16 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+- **端到端一阶段 VLA 微调** — 视觉与动作一起学，模型容易抄视觉捷径（背景、初始位姿、相机位）；LIT 先在 **无图像** 条件下学动作先验，再用终点 SE(3) 监督的潜 token 把视觉接回来，等于把捷径的入口先堵上。
+- **[DATAFARM](./paper-datafarm.md)（同批）** — 对同一个「微调不动 VLA」问题给 **数据侧** 答案（生成时对齐分布），LIT 给 **模型侧** 答案（换接口）；两条正交，可叠加。
+- **[Dynin-Robotics](./paper-dynin-robotics.md)（同批）** — 都报 LIBERO-Plus：LIT 是 **跨四种骨干的相对增量 3.87–10.70 pt**（可插拔改造），Dynin 是 **单一统一骨干的绝对值 73.0%**（重训）；口径不同，两个数字不可直接横比。
+- **[World Action Models](../concepts/world-action-models.md)** — LIT 的潜 token 与 WAM 的潜动作同属「在像素与关节指令之间插一层可迁移表征」，差别在监督信号：LIT 用 **终点 SE(3)**，WAM 系多用 **未来观测重建**。
+- **[LIBERO 基准](./libero-benchmark.md)** — LIBERO-Plus 是其扰动增强变体（相机/布局/语言/噪声/纹理）；LIT 的增益正是冲着这批扰动去的，在原版 LIBERO 上未必等幅体现。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **LIT 适合作为本期「已开源」边界下的快速索引页，部署前请核对项目页/仓库可运行性。**

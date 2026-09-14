@@ -68,6 +68,17 @@ summary: "28 维统一动作空间 + URDF 渲染动作视频 + 稀疏 MoE + 四�
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+- **物理引擎仿真器（[MuJoCo](./mujoco.md) / [Isaac Lab](./isaac-lab.md) 一系）** — 靠显式刚体动力学与接触求解推进状态，保真度由建模精度决定；Pelican-Sim 用 **学出来的世界模型** 推进，靠约百万轨迹的数据覆盖换泛化。取舍面见 [MuJoCo vs Isaac Lab](../comparisons/mujoco-vs-isaac-lab.md) 与 [仿真物理保真度](../concepts/physics-fidelity-sim2real-gap.md)。
+- **单一用途的世界模型** — 多数 WM 只做「预测下一帧」；Pelican-Sim 把同一模型同时当 **数据生成器、策略评测器、动作选择器与策略改进器** 四用，四步 rollout 与 28 维统一动作空间是这四用共享的接口。
+- **[Dynin-Robotics](./paper-dynin-robotics.md)（同批）** — 同批中 WM 的另一种摆法：Dynin 把世界建模塞进 **策略骨干内部** 当辅助任务，Pelican-Sim 把它做成 **策略外部的环境替身**；前者服务表征，后者服务闭环。
+- **[DATAFARM](./paper-datafarm.md) / [FoldNet++](./paper-foldnet-plus-plus.md)（同批）** — 三条造数据路线的对照：TAMP 规划器（DATAFARM）、仿真渲染（FoldNet++）、世界模型 rollout（本页）。Pelican-Sim 的 50 demo + 500 生成轨迹把成功率从 70% 拉到 93%，是「用生成轨迹补稀缺演示」这一档的代表口径。
+- **真机评测** — 文内「策略评测 Pearson **0.994**」是一个 **相关系数**，不是成功率；它说明 WM 给出的排序可信，不等于可以免掉真机验证。相关性的两端具体取哪两组量，归档未写明，以 **原文 PDF** 为准。
+- **[RoboTwin](./robotwin.md)** — 本文主实验床；跨页对照 RoboTwin 数字时要确认任务子集与 demo 预算一致，否则不可横比。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。开源状态为 **待核实**，仓库可运行性以项目页为准。
+
 ## 结论
 
 **Pelican-Sim 1.0 适合作为本期「待核实」边界下的快速索引页，部署前请核对项目页/仓库可运行性。**

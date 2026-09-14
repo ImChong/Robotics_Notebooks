@@ -15,6 +15,7 @@ related:
   - ../methods/vla.md
   - ./paper-datafarm.md
   - ../overview/vla-tamp-planning-11-papers-technology-map.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/unipart_arxiv_2609_12898.md
   - ../../sources/repos/unipart.md
@@ -81,6 +82,17 @@ sequenceDiagram
 
 - **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+- **物体级 3D 检测/分割** — 输出「这是一个杯子」，但操作需要的是「杯盖边缘在哪」；UniPart 把粒度下推到 **部件级**，这正是 [图像分割分类学](../concepts/image-segmentation-taxonomy.md) 里语义/实例/部件三层粒度之分在 3D 上的延伸。
+- **闭集部件分割** — 类别表写死，换个没见过的物体就失效；UniPart 用 **CLIP 文本条件化** 做开放词汇接地，代价是精度受文本–几何对齐质量牵制，且依赖 LangPart-1M 这类大规模文本—部件配对数据（8M 对）。
+- **优化式/迭代式 3D 接地** — 每次查询都要跑优化，机载帧率难保证；UniPart 是 **前馈 3D Transformer**，一次前向出结果，把成本压在训练侧。
+- **[抓取位姿估计](../methods/grasp-pose-estimation.md) 与 [AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md)** — 那条线回答「从哪下手抓得稳」（几何可抓性），UniPart 回答「该抓哪个部件」（语言意图）；两者串联才构成语言条件抓取的完整链路。
+- **[ArtManip](./paper-artmanip.md)（同批）** — 互补而非竞争：UniPart 在 **感知侧** 定位可操作部件，ArtManip 在 **控制侧** 处理接触内操作；一头一尾。
+- **[机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)** — 按该指南分层，UniPart 落在 ③「2D→3D 提升与语义建图」层：它直接在 3D 上出部件级语义，绕开了 [2D→3D 语义提升 Gap](../concepts/2d-to-3d-semantic-lifting-gap.md) 的一部分损失，但对点云质量的依赖相应更重。
+
+- **读法：** 以上为知识库内 **路线级** 对照；与原文 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 结论
 
 **UniPart 适合作为本期「已开源」边界下的快速索引页，部署前请核对项目页/仓库可运行性。**
@@ -95,6 +107,7 @@ sequenceDiagram
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Manipulation](../tasks/manipulation.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 本页属③层「3D 语义几何」一支，出的是部件级开放词汇接地
 
 ## 参考来源
 

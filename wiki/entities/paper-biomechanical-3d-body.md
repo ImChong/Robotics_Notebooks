@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, perception, human-mesh-recovery, biomechanics, sam-3d-body, mujoco, jax, umich, clinical]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-14
 arxiv: "2608.29928"
 related:
   - ./sam-3d-body.md
@@ -12,6 +12,7 @@ related:
   - ../methods/genmo.md
   - ./mujoco.md
   - ../methods/motion-retargeting-gmr.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/biomechanical_3d_body_arxiv_2608_29928.md
 summary: "Biomechanical 3D Body（arXiv:2608.29928）：在 SAM-3D-Body 上增加生物力学预测头，单张 RGB 回归生物力学模型关节角与尺度；用 mesh 预测经 MuJoCo+JAX/Equinox 的 LM 逆运动学生成 in-loop 监督，在公开 SAM-3D-Body 数据上蒸馏；验证 MoVi、BioCV 与临床 cohort。"
@@ -79,6 +80,19 @@ flowchart LR
 | 本文（单图回归） | 快；优于以往 **直接图像→生物力学** 回归 |
 | 轨迹级推理优化 SOTA | 更准；需整段序列、推理成本高 |
 
+## 实验与评测
+
+| 项 | 文内口径 |
+|----|----------|
+| **训练集** | 公开 SAM-3D-Body dataset（无生物力学标注，靠 IK 教师出伪标签） |
+| **验证集** | **MoVi**、**BioCV**、以及 **临床多视角无标记动捕 cohort** 三档 |
+| **对标结论（好的一侧）** | 优于既有 **图像直接回归生物力学** 的方法 |
+| **对标结论（差的一侧）** | **略逊于** 需整段轨迹推理时优化的 SOTA 单目生物力学方法 |
+| **取舍** | 单帧前向 vs 轨迹级优化——本文买的是吞吐，卖的是那一点精度 |
+
+- **读法：** 归档只落下 **相对结论**，未给逐项数值；跨页引用时不要把「优于/略逊于」当成可与其他页数字横比的成绩。
+- **验证域提醒：** 三个验证集都是 **人体生物力学** 数据，不含机器人本体；要接 [GMR](../methods/motion-retargeting-gmr.md) 或人形跟踪，须在目标本体上另做标定与延迟评估。
+
 ## 源码运行时序图
 
 截至入库日 **无官方独立训练/推理仓库**。**不适用**（原因：论文未发布可运行代码；复现依赖未来权重与 SAM-3D-Body 扩展）。可关注 [SAM 3D Body 仓库](https://github.com/facebookresearch/sam-3d-body) 与作者后续发布。
@@ -99,6 +113,21 @@ flowchart LR
 - **与 SMPL 管线：** 生物力学模型语义不同于 SMPL 角；勿直接当 GMR 的 SMPL 输入。
 - **真机：** 论文验证侧重人体生物力学基准；机器人 sim2real 需另做标定与延迟评估。
 
+## 与其他工作对比
+
+| 路线 | 输入 | 输出语义 | 与本文 |
+|------|------|----------|--------|
+| **本文** | 单张 RGB | **生物力学关节角 + 人体尺度** | 本页 |
+| 裸 [SAM 3D Body](./sam-3d-body.md) | 单张 RGB | MHR 网格 + 运动学树角 | 同一编码器；本文是在它上面 **加一头**，只有需要临床语义角时才值得多这一层 |
+| 图像直接回归生物力学 | 单帧 | 生物力学角 | 本文 **优于** 这一档——差别在有没有 IK 教师提供的高质量伪标签 |
+| 轨迹级推理时优化 | **整段序列** | 生物力学角 | 本文 **略逊于** 这一档；对方靠时序一致性与在线优化换精度，代价是延迟与算力 |
+| [GENMO](../methods/genmo.md) 等时序 SMPL 生成 | 视频 | SMPL 参数 | 语义不同：SMPL 角 ≠ 生物力学角，不能互相当输入直接喂 |
+| [WiLoR](../methods/wilor.md) | 单图手部 | 手部网格/姿态 | 部位互补，不重叠——全身生物力学 + 手部细节可拼成一套上游 |
+
+- **最关键的分歧点：** **谁来提供生物力学监督**。这一支缺的从来不是模型容量，而是「图像–生物力学」配对数据；本文的答案是让 **MuJoCo + JAX 的 LM IK 当老师**，与机器人里「用优化器/仿真器蒸馏策略」是同一种思路。
+- **选型口径：** 在线机器人管线（吞吐敏感）优先本文这一档；离线临床分析（精度敏感）仍应把轨迹级优化列为基线。
+- **读法：** 以上为 **路线级** 对照；与各 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+
 ## 关联页面
 
 - [SAM 3D Body](./sam-3d-body.md)
@@ -107,6 +136,7 @@ flowchart LR
 - [WiLoR](../methods/wilor.md) — 手部细节互补
 - [GENMO](../methods/genmo.md) — 时序 SMPL 生成对照
 - [MuJoCo](./mujoco.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 本页属②层「单目人体感知」一支；生物力学角是给下游重定向/跟踪用的表征，不是终点
 
 ## 结论
 

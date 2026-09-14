@@ -8,6 +8,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ./paper-humanoid-leg-generative-design-dynamics.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/visible_reachable_workspace_humanoid_arxiv_2609_08905.md
 summary: "Visible-Reachable Workspace（arXiv:2609.08905）：visible-reachable workspace metric; Duke Humanoid V2 31-DoF dual RGB-D; coverage 38%→97%; less task time and energy；截至入库日未见官方代码。"
@@ -86,6 +87,7 @@ VRW 指标驱动的 co-design 让人形在操作任务上同时获得感知与�
 |------|----------|
 | 仅可达工作空间优化 | 忽视可见性 |
 | 固定头胸相机布局 | 未系统 co-design |
+| [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) | 该闭环从 ①传感层 往下选算法；本页把问题往上推一层——**相机装在哪、关节链怎么排**，决定了后面各层能看到什么。感知栈选型的前置约束，不是它的替代 |
 
 ## 局限与风险
 

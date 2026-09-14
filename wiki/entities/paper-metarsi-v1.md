@@ -127,6 +127,20 @@ sequenceDiagram
 - **最短复现路径：** Node ≥ 22.19 → `./install.sh` → `rsih genome list` → `gee` 或 `rsih :paperlab`。
 - **自指读点：** `harness-rsi` 的 charter / skill / extension **均用 Genome 手段构建**，`src/` 无专供分支 — 对应论文「harness route 用 interface 可达手段编辑 harness」。
 
+## 实验与评测
+
+| 项 | 归档口径 |
+|----|----------|
+| **评测域** | 领域标准评测：**code** + **closed-form science**（答案可机器判定的切片） |
+| **关键设定** | **无 external teacher** — target model 在 loop 内自扮全部角色（提议、执行、判定） |
+| **归档定量数据** | **无** — 归档未落下逐项分数；本页不提供可横比的数字 |
+| **可复现范围** | 仅 **Harness-RSI**（`rsih` / `gee` / Genome 链）；RSI-Harness 的 README 与 HF 卡片均写明 **不含** benchmark / 数据生成 / 训练 / 评测代码 |
+| **不可复现范围** | Data-RSI、Model-RSI 与完整三算子 meta schedule 的训练环 |
+
+- **最该注意的一条：** 论文的主张是「RSI 应突破 format bound、走向开放科学」，但 **验证本身仍在 format-bound 域内完成**（code + closed-form science）。主张与证据之间这段距离，读者须自行判断强度——本页不替读者下结论。
+- **无 teacher 的读法：** 「无 external teacher」是 **自举强度** 的声明，不是成绩本身；它排除了蒸馏更强模型这一条捷径，但不保证改进幅度。
+- **复现提醒：** 装了 RSI-Harness ≠ 复现 MetaRSI。想要论文级结论，须等官方训练/benchmark 栈发布。
+
 ## 工程实践
 
 | 项 | 建议 |

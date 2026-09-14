@@ -106,6 +106,19 @@ flowchart LR
 | **Image-to-3D** | [Pi3X](./paper-glob3r.md) 预测相机 + 稀疏噪声点 | 鲁棒点输入 → 保真 mesh |
 | **物理仿真** | 真实场景部分观测物体 | 补全 mesh 后接入 Kaolin / 仿真栈 |
 
+## 实验与评测
+
+| 项 | 文内/项目页口径 |
+|----|----------------|
+| **基准** | Toys4K、OmniObject3D |
+| **设定** | 干净 与 **合成遮挡** 两档 × 单视图 与 稀疏多视图 两档，共四种组合 |
+| **指标方向** | 几何精度与重建保真；论文与项目页均称优于同期 SOTA |
+| **难例** | 高遮挡类别（自行车、椅子、马、机器人）——靠几何相似的未遮挡区域外推 |
+| **应用侧演示** | 形状编辑、Pi3X → Axolotl3D 图生 3D、真实捕获场景物体补全后接仿真 |
+
+- **读法：** 上表为 **口径** 而非可横比的数字。项目页只给出「优于 SOTA」的定性结论与可视对比，未在归档里落下逐项数值；跨页引用时不要把它当成与 [MILO](./paper-milo.md)、[SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) 等页数字同尺度的成绩。
+- **评测域提醒：** 主基准是 **物体级** 数据集（Toys4K / OmniObject3D），不是机器人场景扫描；Real2Sim 落地前须在自己的扫描数据上重测。
+
 ## 源码运行时序图
 
 截至入库日 **无官方可运行代码**（项目页 Code Coming Soon）。**不适用**（原因：权重与推理脚本未发布）。可关注 [nv-tlabs](https://github.com/nv-tlabs) 与 SIL 项目页更新；骨干可参考 [Hunyuan3D-2](https://github.com/tencent/Hunyuan3D-2) 自建微调实验。
@@ -125,6 +138,20 @@ flowchart LR
 - **绑定 Hunyuan3D 栈：** 微调与 ShapeVAE 解码依赖腾讯混元 3D 生态，迁移到其他 LRM 需重新对齐。
 - **仿真就绪度：** 输出为 **外观 mesh**；碰撞体、关节与物性仍须 [EmbodiedGen](./paper-embodiedgen-v2-sim-ready-world-engine.md) / SimFoundry 式后处理。
 - **评测域：** 主基准为 Toys4K / OmniObject3D 物体；真实机器人场景泛化待验证。
+
+## 与其他工作对比
+
+| 路线 | 输入假设 | 未观测区靠什么定 | 与 Axolotl3D |
+|------|----------|------------------|--------------|
+| **Axolotl3D** | 图像 + 可见性 mask + 相机 + 部分点云 | **部分点云当几何锚** + 扩散先验 | 本页 |
+| 标准 [Hunyuan3D](https://github.com/tencent/Hunyuan3D-2) 类单视图生成 | 单视图、物体 **完全可见** | 纯生成先验 | 同一骨干；Axolotl3D 是它的 **条件补全微调**，物体完整可见时用原版更省事 |
+| [MILO](./paper-milo.md) | 单/少视图 | Hunyuan3D-2.0 作 LRM 脚手架 | 同栈不同用法；MILO **已开源（MIT）**，Axolotl3D 代码 **待发布**，开放程度勿混为一谈 |
+| [Glob3R / Pi3X](./paper-glob3r.md) | 稀疏多视图 | 不补全，只出 **相机与点** | 上游前端：Pi3X → Axolotl3D 是项目页演示的图生 3D 管线 |
+| [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) | 文本/场景描述 | 从零生成场景资产 | 分工不同：那两条是 **生成新资产**，Axolotl3D 是 **补全已有的不完整观测** |
+| 传统点云补全 | 仅点云 | 几何先验，无外观语义 | Axolotl3D 多了图像与 mask，能在高遮挡下用语义判断「这块该长成什么」 |
+
+- **最关键的分歧点：** 是否有 **显式几何锚**。纯生成路线在遮挡区容易「幻觉几何」，Axolotl3D 用部分点云把补全方向钉住——代价是点云质量差时反而被带偏，且整条链绑死在腾讯混元 3D 生态上。
+- **读法：** 以上为 **路线级** 对照；与各 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
 ## 关联页面
 
