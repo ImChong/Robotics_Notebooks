@@ -3650,10 +3650,20 @@
       edgeCanvasDpr = dpr;
     }
 
+    /* ── 2D 边层可见度补偿 ──────────────────────────────────────
+       SVG 时代每条边各自合成，密集处重叠的半透明边会互相叠深，观感比单条边深得多；
+       canvas 改为「一批攒一条路径、只 stroke 一次」后同批内重叠不再叠加 alpha，
+       整张图的连线随之变淡。这里只给 2D 边层单独加深颜色 / 加粗，3D 不受影响。
+       嫌太重就调小这两处（比例 → 1.0、alpha → 0.12 / 0.15 即接近旧观感）。 */
+    const EDGE_2D_WIDTH_SCALE = 1.3;
+    function edge2dBaseColor() {
+      return isDark() ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.20)';
+    }
+
     /** 当前模式下的两批描边样式：[0] 高亮批、[1] 暗淡批（null 表示该批不画）。
      *  颜色自带 alpha，canvas 的 globalAlpha 与之相乘，等价于 SVG 的 stroke-opacity。 */
     function edgeBatchStyles() {
-      const w = linkWidthBase;
+      const w = linkWidthBase * EDGE_2D_WIDTH_SCALE;
       if (edgePaintMode === 'hover') {
         return [
           { color: edgePaintFocusColor, width: w * 1.8, alpha: 0.7 },
@@ -3663,15 +3673,15 @@
       if (edgePaintMode === 'sidebar') {
         return [
           { color: edgePaintFocusColor, width: w * 1.5, alpha: 0.85 },
-          { color: edgeBaseColor(), width: w, alpha: 0.18 },
+          { color: edge2dBaseColor(), width: w, alpha: 0.18 },
         ];
       }
       if (edgePaintMode === 'timeline') {
-        return [{ color: edgeBaseColor(), width: w, alpha: 0.35 }, null];
+        return [{ color: edge2dBaseColor(), width: w, alpha: 0.35 }, null];
       }
       return [
-        { color: edgeBaseColor(), width: w, alpha: 1 },
-        { color: edgeBaseColor(), width: w * 0.5, alpha: 0.2 },
+        { color: edge2dBaseColor(), width: w, alpha: 1 },
+        { color: edge2dBaseColor(), width: w * 0.5, alpha: 0.2 },
       ];
     }
 
