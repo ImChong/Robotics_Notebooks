@@ -2,7 +2,7 @@
 
 ## [2026-09-14] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **0** 个问题（另含 **5** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,7 +97,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（3 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（4 个）
+- wiki/entities/paper-axolotl3d.md（缺 评测 / 对比）
 - wiki/entities/paper-biomechanical-3d-body.md（缺 评测 / 对比）
 - wiki/entities/paper-dat-divide-and-truncate.md（缺 评测 / 对比）
 - wiki/entities/paper-mixed-mpm-stiff-elastoplasticity.md（缺 评测 / 对比）
@@ -129,4 +130,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-biomechanical-3d-body.md
 
-📊 Sources 覆盖率：3969/3969 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3970/3970 (100%) wiki/entity 页有 ingest 来源

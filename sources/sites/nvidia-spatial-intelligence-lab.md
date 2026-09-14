@@ -24,6 +24,7 @@
 | 驾驶神经重建 | [instant-nurec](https://research.nvidia.com/labs/sil/projects/instant-nurec/) / [NVIDIA/instant-nurec](https://github.com/NVIDIA/instant-nurec) | [paper-instant-nurec](../../wiki/entities/paper-instant-nurec.md)、[nvidia-nurec](../../wiki/entities/nvidia-nurec.md) |
 | 文生运动 | [kimodo](https://research.nvidia.com/labs/sil/projects/kimodo/) / [nv-tlabs/kimodo](https://github.com/nv-tlabs/kimodo) | [kimodo](../../wiki/entities/kimodo.md) |
 | 多智能体世界模型 | [gamma-world](https://research.nvidia.com/labs/sil/projects/gamma-world/) / [nv-tlabs/Gamma-World](https://github.com/nv-tlabs/Gamma-World) | [paper-gamma-world-multi-agent](../../wiki/entities/paper-gamma-world-multi-agent.md) |
+| 3D 形状补全 | [axolotl3d](https://research.nvidia.com/labs/sil/projects/axolotl3d/) | [paper-axolotl3d](../../wiki/entities/paper-axolotl3d.md)（**代码待发布**） |
 | 技能嵌入 RL | [nv-tlabs/ASE](https://github.com/nv-tlabs/ASE) | [ASE 方法页](../../wiki/methods/ase.md) |
 | 3D 生成 / 重建 | GET3D、3dgrut、Lyra、GEN3C、ViPE 等 | 见 [nv-tlabs 归档](../repos/nv_tlabs.md) |
 
