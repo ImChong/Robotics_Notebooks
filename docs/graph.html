@@ -3662,56 +3662,59 @@
       edgeCanvasDpr = dpr;
     }
 
-    /* ── 2D 边层配色与粗细 ──────────────────────────────────────
-       颜色：暗色主题画纯白线，亮色主题画石板灰（#64748b，比纯黑更贴节点配色，也不会
-       在白底上显得脏）；不再像以前那样「在底色上蒙一层雾」。
-       粗细：恒定 1.1 个屏幕像素（世界坐标下按 1/k 折算）。此前粗细写死在世界坐标里，
-       适配屏幕（k≈0.26）时一条边只剩 0.3 屏幕像素，抗锯齿把这点墨摊开就是灰的；
-       放大到 k≈3 又粗到 4 px。改成屏幕恒定后，任何缩放都是一条干净细线。
-       不透明度随缩放插值：全图态一屏叠着 3.5 万条边，线一亮就糊成白饼（实测暗色
-       0.22 已白到盖住节点），放大后一屏只剩几十条，这时才画得出真正的白线。
-       k ≤ FAR_K 取 ALPHA_FAR，k ≥ NEAR_K 取 ALPHA_NEAR，中间线性过渡。
-       亮色主题整体再高一档：白底上同样的 alpha 看着比黑底更淡。 */
-    const EDGE_2D_SCREEN_PX = 1.1;
-    const EDGE_2D_FAR_K = 0.35;
-    const EDGE_2D_NEAR_K = 1.5;
-    const EDGE_2D_ALPHA_DARK = { far: 0.12, near: 0.45 };
-    const EDGE_2D_ALPHA_LIGHT = { far: 0.20, near: 0.55 };
+    /* ── 2D 边层配色、粗细与墨量预算 ──────────────────────────
+       颜色：暗色主题画纯白线，亮色主题画石板灰（#64748b，比纯黑更贴节点配色，白底上
+       也不显脏）；颜色只留色相，深浅全交给下面算出来的 alpha。
+       粗细：恒定 EDGE_2D_SCREEN_PX 个屏幕像素（世界坐标按 1/k 折算）。粗细若写死在
+       世界坐标里，适配屏幕（k≈0.26）时一条边只剩 0.3 屏幕像素，抗锯齿一摊就是灰的；
+       放大到 k≈3 又粗到 4 px。屏幕恒定后任何缩放都是一条干净细线。
+       墨量预算：连线要看得清，前提是它还是「线」，不是一片底色。把一帧里真正落笔的
+       线段总长（曼哈顿近似，省掉几万次 sqrt）× 线宽 ÷ 视口面积当作覆盖率，alpha 取
+       目标墨量 ÷ 覆盖率并夹在 [min, max]。高亮批与暗批各自记长度、各自算预算：
+       - 全图态几万条边挤一屏 → 覆盖率高 → alpha 落到下限，骨架清楚而不糊成一片；
+       - 放大或筛选后高亮批只剩几十条 → alpha 拉到上限，那才是真正的白线；
+       - 暗批预算单独给一个很小的值，无论多密都只是一层不抢戏的底纹。
+       亮色主题整体给高一档：同样的 alpha 压在白底上看着更淡。 */
+    const EDGE_2D_SCREEN_PX = 1;
+    const EDGE_2D_INK = {
+      dark: { target: 0.22, min: 0.08, max: 0.75, dimTarget: 0.03, dimMin: 0.02, dimMax: 0.2 },
+      light: { target: 0.26, min: 0.1, max: 0.7, dimTarget: 0.04, dimMin: 0.025, dimMax: 0.22 },
+    };
     function edge2dBaseRgb() {
       return isDark() ? '#ffffff' : '#64748b';
     }
-    function edge2dBaseAlpha() {
-      const k = edgeTransform.k || 1;
-      const ramp = isDark() ? EDGE_2D_ALPHA_DARK : EDGE_2D_ALPHA_LIGHT;
-      const t = Math.min(1, Math.max(0, (k - EDGE_2D_FAR_K) / (EDGE_2D_NEAR_K - EDGE_2D_FAR_K)));
-      return ramp.far + (ramp.near - ramp.far) * t;
+    /** 某一批的基准不透明度：lenWorld 为该批线段总长（世界坐标），widthFactor 为该批
+     *  相对 EDGE_2D_SCREEN_PX 的线宽倍数。 */
+    function edge2dInkAlpha(lenWorld, k, widthFactor, target, minA, maxA) {
+      const coverage = (lenWorld * k * EDGE_2D_SCREEN_PX * widthFactor) / Math.max(1, W * H);
+      if (!(coverage > 0)) return maxA;
+      return Math.min(maxA, Math.max(minA, target / coverage));
     }
 
     /** 当前模式下的两批描边样式：[0] 高亮批、[1] 暗淡批（null 表示该批不画）。
      *  颜色自带 alpha，canvas 的 globalAlpha 与之相乘，等价于 SVG 的 stroke-opacity。 */
-    function edgeBatchStyles() {
+    function edgeBatchStyles(aHi, aLo) {
       const k = edgeTransform.k || 1;
       const w = EDGE_2D_SCREEN_PX / k;
       const base = edge2dBaseRgb();
-      const a = edge2dBaseAlpha();
       if (edgePaintMode === 'hover') {
         return [
           { color: edgePaintFocusColor, width: w * 1.8, alpha: 0.7 },
-          { color: base, width: w * 0.5, alpha: a * 0.12 },
+          { color: base, width: w * 0.5, alpha: aLo },
         ];
       }
       if (edgePaintMode === 'sidebar') {
         return [
           { color: edgePaintFocusColor, width: w * 1.5, alpha: 0.85 },
-          { color: base, width: w, alpha: a * 0.18 },
+          { color: base, width: w * 0.5, alpha: aLo },
         ];
       }
       if (edgePaintMode === 'timeline') {
-        return [{ color: base, width: w, alpha: a * 0.35 }, null];
+        return [{ color: base, width: w, alpha: aHi }, null];
       }
       return [
-        { color: base, width: w, alpha: a },
-        { color: base, width: w * 0.5, alpha: a * 0.2 },
+        { color: base, width: w, alpha: aHi },
+        { color: base, width: w * 0.5, alpha: aLo },
       ];
     }
 
@@ -3758,6 +3761,10 @@
       const tlOn = timelineAnimating;
       let hi = 0;
       let lo = 0;
+      // 落笔线段总长（世界坐标、曼哈顿近似），用于估算覆盖率 → 墨量预算。
+      // 两批各记各的：暗批自己有一份很小的预算，密到什么程度都只是底纹。
+      let hiLen = 0;
+      let loLen = 0;
       const total = edges.length;
       for (let i = 0; i < total; i++) {
         const e = edges[i];
@@ -3785,16 +3792,22 @@
           highlighted = !hasFilter || (visibleNodeIds.has(s.id) && visibleNodeIds.has(g.id));
         }
 
+        const segLen = Math.abs(gx - sx) + Math.abs(gy - sy);
         if (highlighted) {
+          hiLen += segLen;
           edgeBufHi[hi++] = sx; edgeBufHi[hi++] = sy; edgeBufHi[hi++] = gx; edgeBufHi[hi++] = gy;
         } else {
+          loLen += segLen;
           edgeBufLo[lo++] = sx; edgeBufLo[lo++] = sy; edgeBufLo[lo++] = gx; edgeBufLo[lo++] = gy;
         }
       }
 
       const k = t.k * edgeCanvasDpr;
       edgeCtx.setTransform(k, 0, 0, k, t.x * edgeCanvasDpr, t.y * edgeCanvasDpr);
-      const styles = edgeBatchStyles();
+      const ink = isDark() ? EDGE_2D_INK.dark : EDGE_2D_INK.light;
+      const aHi = edge2dInkAlpha(hiLen, t.k, 1, ink.target, ink.min, ink.max);
+      const aLo = edge2dInkAlpha(loLen, t.k, 0.5, ink.dimTarget, ink.dimMin, ink.dimMax);
+      const styles = edgeBatchStyles(aHi, aLo);
       // 暗批先画：原先同一 <g> 内按数据序绘制，暗边可能压住高亮边；
       // 批绘制下高亮批统一压在最上层，高亮更完整（本次唯一的观感变化）。
       strokeEdgeBatch(edgeBufLo, lo, styles[1]);
