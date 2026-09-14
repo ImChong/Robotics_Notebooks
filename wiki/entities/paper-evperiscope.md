@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, perception, aerial, event-camera]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-14
 arxiv: "2609.11920"
 code: https://github.com/grasp-lyrl/evperiscope
 related:
@@ -10,15 +10,17 @@ related:
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
   - ../overview/dexterous-wm-humanoid-14-papers-technology-map.md
+  - ../overview/vla-tamp-planning-11-papers-technology-map.md
 sources:
   - ../../sources/papers/evperiscope_arxiv_2609_11920.md
   - ../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md
+  - ../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md
 summary: "地面机器人事件相机追踪旋翼实现空地无标记相对定位；田野测试含 15 mph 风与夜间。"
 ---
 
 # EVPeriscope（arXiv:2609.11920）
 
-**EVPeriscope**（[EVPeriscope: Extended Perception across Aerial and Ground Vehicles with Event-based Propeller Tracking](https://arxiv.org/abs/2609.11920)）来自 [具身智能小站 14 篇盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md)。地面机器人事件相机追踪旋翼实现空地无标记相对定位；田野测试含 15 mph 风与夜间。
+**EVPeriscope**（[EVPeriscope: Extended Perception across Aerial and Ground Vehicles with Event-based Propeller Tracking](https://arxiv.org/abs/2609.11920)）来自 [具身智能小站 14 篇盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md) 与 [11 篇 VLA/TAMP 盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md)。地面机器人事件相机追踪旋翼实现空地无标记相对定位；田野测试含 15 mph 风与夜间。
 
 ## 一句话定义
 
@@ -97,6 +99,7 @@ sequenceDiagram
 ## 关联页面
 
 - [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md)
+- [11 篇 VLA/TAMP 技术地图](../overview/vla-tamp-planning-11-papers-technology-map.md)
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Manipulation](../tasks/manipulation.md)
@@ -107,6 +110,7 @@ sequenceDiagram
 
 - [evperiscope_arxiv_2609_11920.md](../../sources/papers/evperiscope_arxiv_2609_11920.md)
 - [wechat 14篇盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md)
+- [wechat 11篇 VLA/TAMP 盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md)
 - [arXiv:2609.11920](https://arxiv.org/abs/2609.11920)
 
 ## 推荐继续阅读

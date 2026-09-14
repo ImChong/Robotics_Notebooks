@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md — 11篇 VLA/TAMP 盘点：新建10篇 paper-*（Dynin/LIT/DATAFARM/UniPart/MagBot/SCQ/STAR/ArtManip/FoldNet++/Pelican-Sim），复用 EVPeriscope；Dynin/LIT/UniPart 已开源
+
 ## [2026-09-14] ingest | sources/papers/metarsi_v1_arxiv_2609_06396.md — MetaRSI-v1 + RSI-Harness；Harness-RSI 已开源，Model/Data-RSI 训练栈未随仓发布
 
 ## [2026-09-14] ingest | EgoSuite-Open100K — 光轮×HF 十万小时 egocentric 开放数据首批 1 万小时；数据已开放、DevKit 已开源
