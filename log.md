@@ -1,3 +1,5 @@
+## [2026-09-14] ingest | sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md — Unidata Pico 4 Ultra 量产 egocentric 采集工作流入库；升格 wiki/entities/pico-4-ultra-egocentric-capture.md；采集栈未开源、数据集商业可购
+
 ## [2026-09-14] ingest | sources/papers/steadytray_arxiv_2603_10306.md — 升格 SteadyTray 深度实体，官方代码已开源
 
 ## [2026-09-14] ingest | sources/blogs/wechat_shenlan_weekly_{humanoid_quadruped,manipulation}_2026-09-14.md — 深蓝周更 31 篇：22 新建独立节点 + 9 复用

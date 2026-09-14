@@ -131,4 +131,4 @@
 - wiki/entities/paper-biomechanical-3d-body.md
 - wiki/entities/paper-visible-reachable-workspace-humanoid-design.md
 
-📊 Sources 覆盖率：3992/3992 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3993/3993 (100%) wiki/entity 页有 ingest 来源
