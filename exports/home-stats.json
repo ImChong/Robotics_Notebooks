@@ -9,6 +9,117 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-artmanip.md",
+      "detail_id": "entity-paper-artmanip",
+      "label": "ArtManip（arXiv:2609.12498）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-datafarm.md",
+      "detail_id": "entity-paper-datafarm",
+      "label": "DATAFARM（arXiv:2609.12316）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dynin-robotics.md",
+      "detail_id": "entity-paper-dynin-robotics",
+      "label": "Dynin-Robotics（arXiv:2609.13053）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-foldnet-plus-plus.md",
+      "detail_id": "entity-paper-foldnet-plus-plus",
+      "label": "FoldNet++（arXiv:2609.12433）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gripper-magbot.md",
+      "detail_id": "entity-paper-gripper-magbot",
+      "label": "Gripper MagBot（arXiv:2609.12883）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lit-latent-interface-training.md",
+      "detail_id": "entity-paper-lit-latent-interface-training",
+      "label": "LIT（arXiv:2609.12641）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pelican-sim.md",
+      "detail_id": "entity-paper-pelican-sim",
+      "label": "Pelican-Sim 1.0（arXiv:2609.12036）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-scq-rl.md",
+      "detail_id": "entity-paper-scq-rl",
+      "label": "SCQ（arXiv:2609.12749）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-star-vtla.md",
+      "detail_id": "entity-paper-star-vtla",
+      "label": "STAR（arXiv:2609.12549）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-unipart.md",
+      "detail_id": "entity-paper-unipart",
+      "label": "UniPart（arXiv:2609.12898）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-tamp-planning-11-papers-technology-map.md",
+      "detail_id": "wiki-overview-vla-tamp-planning-11-papers-technology-map",
+      "label": "VLA 微调与规划对齐：11 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/paper-metarsi-v1.md",
       "detail_id": "entity-paper-metarsi-v1",
       "label": "MetaRSI-v1：递归自改进系统的元递归自改进",
@@ -98,124 +209,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-foldex-deformable-clothes-benchmark.md",
-      "detail_id": "entity-paper-foldex-deformable-clothes-benchmark",
-      "label": "FolDeX（arXiv:2609.10243）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-frame-coded-legged-locomotion-noisy-terrain.md",
-      "detail_id": "entity-paper-frame-coded-legged-locomotion-noisy-terrain",
-      "label": "Frame-Coded Legged Locomotion（arXiv:2609.10273）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-freqfm-vla-flow-matching.md",
-      "detail_id": "entity-paper-freqfm-vla-flow-matching",
-      "label": "FreqFM（arXiv:2609.10405）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gait-dependent-load-carrying-quadruped.md",
-      "detail_id": "entity-paper-gait-dependent-load-carrying-quadruped",
-      "label": "Gait-Dependent Load Carrying（arXiv:2609.11059）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-glori-humanoid-loco-manipulation.md",
-      "detail_id": "entity-paper-glori-humanoid-loco-manipulation",
-      "label": "GLoRI（arXiv:2609.05994）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-granular-terrain-humanoid-locomotion.md",
-      "detail_id": "entity-paper-granular-terrain-humanoid-locomotion",
-      "label": "Granular Terrain Humanoid（arXiv:2609.10286）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-harness-robotic-os-quadruped-inspection.md",
-      "detail_id": "entity-paper-harness-robotic-os-quadruped-inspection",
-      "label": "Harness Robotic OS（arXiv:2609.11225）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-llm-stl-quadruped-locomotion.md",
-      "detail_id": "entity-paper-llm-stl-quadruped-locomotion",
-      "label": "LLM-STL Quadruped（arXiv:2609.07111）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-mind-the-phase-effective-rank-legged-locomotion.md",
-      "detail_id": "entity-paper-mind-the-phase-effective-rank-legged-locomotion",
-      "label": "Mind the Phase（arXiv:2609.06958）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-morphology-aware-retargeting-wheeled-humanoid.md",
-      "detail_id": "entity-paper-morphology-aware-retargeting-wheeled-humanoid",
-      "label": "Morphology-Aware Retargeting（arXiv:2609.11357）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-robodreamer-anticipatory-humanoid-locomotion.md",
-      "detail_id": "entity-paper-robodreamer-anticipatory-humanoid-locomotion",
-      "label": "RoboDreamer（arXiv:2609.07096）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-metarsi-v1.md",
-    "detail_id": "entity-paper-metarsi-v1",
-    "label": "MetaRSI-v1：递归自改进系统的元递归自改进",
+    "path": "wiki/entities/paper-artmanip.md",
+    "detail_id": "entity-paper-artmanip",
+    "label": "ArtManip（arXiv:2609.12498）",
     "type": "entity",
     "recency": "2026-09-14",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
