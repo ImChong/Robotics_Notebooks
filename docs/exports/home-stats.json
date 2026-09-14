@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-axolotl3d.md",
+      "detail_id": "entity-paper-axolotl3d",
+      "label": "Axolotl3D：保真 3D 形状补全统一框架",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-biomechanical-3d-body.md",
       "detail_id": "entity-paper-biomechanical-3d-body",
       "label": "Biomechanical 3D Body：从 3D 人体基础模型蒸馏生物力学姿态",
@@ -201,28 +210,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-sa-2512-01850-register-any-point.md",
-      "detail_id": "entity-paper-sa-2512-01850-register-any-point",
-      "label": "RAP：Scaling 3D Point Cloud Registration by Flow Matching",
-      "type": "entity",
-      "recency": "2026-09-12",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-biomechanical-3d-body.md",
-    "detail_id": "entity-paper-biomechanical-3d-body",
-    "label": "Biomechanical 3D Body：从 3D 人体基础模型蒸馏生物力学姿态",
+    "path": "wiki/entities/paper-axolotl3d.md",
+    "detail_id": "entity-paper-axolotl3d",
+    "label": "Axolotl3D：保真 3D 形状补全统一框架",
     "type": "entity",
-    "recency": "2026-09-13",
+    "recency": "2026-09-14",
     "source": "git",
-    "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
