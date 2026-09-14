@@ -2,14 +2,16 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-09-14
 related:
+  - ./egosuite-open100k.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/lw-egosuite-devkit.md
+  - ../../sources/sites/egosuite-open100k-lightwheel.md
 summary: "光轮智能 开源项目 LW-Egosuite-DevKit（数据集/Benchmark）：转换并可视化人类第一视角MCAP数据，用于检查相机、轨迹和多模态记录后再进入训练数据管线。…"
 institutions:
   - lightwheel
@@ -19,7 +21,7 @@ institutions:
 
 ## 一句话定义
 
-**LW-Egosuite-DevKit** 是 [光轮智能](https://github.com/LightwheelAI) 公开的 **数据集/Benchmark** 开源项目：转换并可视化人类第一视角MCAP数据，用于检查相机、轨迹和多模态记录后再进入训练数据管线。
+**LW-Egosuite-DevKit** 是 [光轮智能](https://github.com/LightwheelAI) 公开的 **MCAP 工具链**：转换并可视化 [EgoSuite-Open100K](./egosuite-open100k.md) 等人类第一视角 MCAP 数据，用于检查相机、轨迹和多模态记录后再进入训练数据管线。
 
 ## 英文缩写速查
 
@@ -57,6 +59,7 @@ institutions:
 
 ## 关联页面
 
+- [EgoSuite-Open100K](./egosuite-open100k.md) — 官方十万小时级 egocentric 数据集（本 DevKit 的消费场景）
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
@@ -64,7 +67,7 @@ institutions:
 ## 参考来源
 
 - [LW-Egosuite-DevKit 源码归档](../../sources/repos/lw-egosuite-devkit.md)（<https://github.com/LightwheelAI/LW-Egosuite-DevKit>）
-
+- [EgoSuite-Open100K 项目页归档](../../sources/sites/egosuite-open100k-lightwheel.md)
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读

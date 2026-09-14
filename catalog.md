@@ -236,7 +236,7 @@
 - [LoongMarathonNav](wiki/entities/cn-os-loongmarathonnav.md) — LoongMarathonNav** 是 上海人形机器人创新中心 公开的 **工程与工具** 开源项目：融合RTK、惯导、视觉和激光 `📅unknown` `[entity_page]`
 - [lumos_sdk](wiki/entities/cn-os-lumos-sdk.md) — lumos_sdk** 是 鹿明机器人 公开的 **SDK/驱动** 开源项目：提供鹿明机器人C++集成接口，使状态、设备与控制功 `📅unknown` `[entity_page]`
 - [LW-BenchHub](wiki/entities/cn-os-lw-benchhub.md) — LW-BenchHub** 是 光轮智能 公开的 **评测** 开源项目：基于Isaac Lab Arena统一任务、机器人和 `📅unknown` `[entity_page]`
-- [LW-Egosuite-DevKit](wiki/entities/cn-os-lw-egosuite-devkit.md) — LW-Egosuite-DevKit** 是 光轮智能 公开的 **数据集/Benchmark** 开源项目：转换并可视化人类 `📅unknown` `[entity_page]`
+- [LW-Egosuite-DevKit](wiki/entities/cn-os-lw-egosuite-devkit.md) — LW-Egosuite-DevKit** 是 光轮智能 公开的 **MCAP 工具链**：转换并可视化 [EgoSuite-O `📅unknown` `[entity_page]`
 - [magicbot-gen1_pi0_demo](wiki/entities/cn-os-magicbot-gen1-pi0-demo.md) — magicbot-gen1_pi0_demo** 是 魔法原子 公开的 **VLA/操作模型** 开源项目：展示pi0 `📅unknown` `[entity_page]`
 - [magicbot-mimic](wiki/entities/cn-os-magicbot-mimic.md) — magicbot-mimic** 是 魔法原子 公开的 **全身动作跟踪/技能训练** 开源项目：面向MagicBot `📅unknown` `[entity_page]`
 - [magiclab_deploy](wiki/entities/cn-os-magiclab-deploy.md) — magiclab_deploy** 是 魔法原子 公开的 **运动RL/技能训练** 开源项目：提供魔法原子运动策略的 `📅unknown` `[entity_page]`
@@ -464,6 +464,7 @@
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
+- [EgoSuite-Open100K](wiki/entities/egosuite-open100k.md) — EgoSuite-Open100K** 是 光轮智能（Lightwheel） 与 [Hugging Face](https://huggingf `📅2026-08-26` `[entity_page]`
 - [EgoWorld-100W（百万级自中心操作数据集）](wiki/entities/egoworld-100w.md) — EgoWorld-100W** 是 星际硅途（StellarNex Robotics） 发布的 **头戴第一人称操作视频**  `📅2026-07-24` `[entity_page]`
 - [大象机器人 myAGV](wiki/entities/elephantrobotics-myagv.md) — myAGV** 是 **大象机器人** 的 **开源移动机器人底盘**：强调 **激光雷达、SLAM、ROS/ROS2** 与 **二次开发**；中文支持页在 **[myagv-support/c `📅unknown` `[entity_page]`
 - [大象机器人 myCobot 320](wiki/entities/elephantrobotics-mycobot-320.md) — myCobot 320** 是 **大象机器人（Elephant Robotics）** 的 **桌面六轴协作机械臂**：主打 **轻量、开源、教育/创客**；产品资料在 **[mycobot-3 `📅unknown` `[entity_page]`
