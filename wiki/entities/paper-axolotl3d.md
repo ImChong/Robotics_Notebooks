@@ -141,15 +141,22 @@ flowchart LR
 
 ## 与其他工作对比
 
-| 路线 | 输入假设 | 未观测区靠什么定 | 与 Axolotl3D |
-|------|----------|------------------|--------------|
-| **Axolotl3D** | 图像 + 可见性 mask + 相机 + 部分点云 | **部分点云当几何锚** + 扩散先验 | 本页 |
-| 标准 [Hunyuan3D](https://github.com/tencent/Hunyuan3D-2) 类单视图生成 | 单视图、物体 **完全可见** | 纯生成先验 | 同一骨干；Axolotl3D 是它的 **条件补全微调**，物体完整可见时用原版更省事 |
-| [MILO](./paper-milo.md) | 单/少视图 | Hunyuan3D-2.0 作 LRM 脚手架 | 同栈不同用法；MILO **已开源（MIT）**，Axolotl3D 代码 **待发布**，开放程度勿混为一谈 |
-| [Glob3R / Pi3X](./paper-glob3r.md) | 稀疏多视图 | 不补全，只出 **相机与点** | 上游前端：Pi3X → Axolotl3D 是项目页演示的图生 3D 管线 |
-| [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) | 文本/场景描述 | 从零生成场景资产 | 分工不同：那两条是 **生成新资产**，Axolotl3D 是 **补全已有的不完整观测** |
-| 传统点云补全 | 仅点云 | 几何先验，无外观语义 | Axolotl3D 多了图像与 mask，能在高遮挡下用语义判断「这块该长成什么」 |
+| 路线 | 输入假设 | 未观测区靠什么定 |
+|------|----------|------------------|
+| **Axolotl3D** | 图像 + mask + 相机 + 部分点云 | **部分点云当几何锚** + 扩散先验 |
+| 标准 Hunyuan3D 类单视图生成 | 单视图、物体 **完全可见** | 纯生成先验 |
+| [MILO](./paper-milo.md) | 单 / 少视图 | Hunyuan3D-2.0 作 LRM 脚手架 |
+| [Glob3R / Pi3X](./paper-glob3r.md) | 稀疏多视图 | 不补全，只出 **相机与点** |
+| [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) | 文本 / 场景描述 | 从零生成场景资产 |
+| 传统点云补全 | 仅点云 | 几何先验，无外观语义 |
 
+逐条读法：
+
+- **标准 [Hunyuan3D](https://github.com/tencent/Hunyuan3D-2)** — 同一骨干；Axolotl3D 是它的 **条件补全微调**，物体完整可见时用原版更省事。
+- **MILO** — 同栈不同用法；MILO **已开源（MIT）**，Axolotl3D 代码 **待发布**，开放程度勿混为一谈。
+- **Glob3R / Pi3X** — 上游前端：Pi3X → Axolotl3D 是项目页演示的图生 3D 管线。
+- **SimFoundry / EmbodiedGen V2** — 分工不同：那两条是 **生成新资产**，Axolotl3D 是 **补全已有的不完整观测**。
+- **传统点云补全** — Axolotl3D 多了图像与 mask，能在高遮挡下用语义判断「这块该长成什么」。
 - **最关键的分歧点：** 是否有 **显式几何锚**。纯生成路线在遮挡区容易「幻觉几何」，Axolotl3D 用部分点云把补全方向钉住——代价是点云质量差时反而被带偏，且整条链绑死在腾讯混元 3D 生态上。
 - **读法：** 以上为 **路线级** 对照；与各 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
