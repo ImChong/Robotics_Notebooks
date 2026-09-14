@@ -853,7 +853,12 @@
     }
 
     function linkVisibleFor(l) {
-      if (!areEdgesVisible()) return false;
+      if (!areEdgesVisible()) {
+        // 关闭「显示连线」后仍留下选中 / 悬停节点的连线，其余全部隐藏。
+        var focusId = sidebarNodeId || hoverNodeId;
+        if (!focusId || !edgeHighlightsWithNode) return false;
+        return !!(l._ref && edgeHighlightsWithNode(l._ref, focusId));
+      }
       if (!hasActiveFilter()) return true;
       var visible = getVisibleNodeIds();
       return visible.has(edgeEndpointId(l.source)) && visible.has(edgeEndpointId(l.target));

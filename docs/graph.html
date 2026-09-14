@@ -3739,7 +3739,13 @@
       if (!edgeCtx || is3DView()) return;
       edgeCtx.setTransform(1, 0, 0, 1, 0, 0);
       edgeCtx.clearRect(0, 0, edgeCanvas.width, edgeCanvas.height);
-      if (!showEdges) { edgeDrawnCount = 0; return; }
+      // 关闭「显示连线」后仍画悬停 / 侧栏选中节点的高亮连线，其余连线整批不画；
+      // 没有选中节点（默认 / 时序模式）时整层留空。
+      const focusEdgesOnly = !showEdges;
+      if (focusEdgesOnly && edgePaintMode !== 'hover' && edgePaintMode !== 'sidebar') {
+        edgeDrawnCount = 0;
+        return;
+      }
 
       const need = edges.length * 4;
       if (edgeBufHi.length < need) {
@@ -3791,6 +3797,8 @@
         } else {
           highlighted = !hasFilter || (visibleNodeIds.has(s.id) && visibleNodeIds.has(g.id));
         }
+
+        if (!highlighted && focusEdgesOnly) continue;
 
         const segLen = Math.abs(gx - sx) + Math.abs(gy - sy);
         if (highlighted) {
