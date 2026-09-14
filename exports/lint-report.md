@@ -144,4 +144,4 @@
 - wiki/entities/paper-unipart.md
 - wiki/entities/paper-visible-reachable-workspace-humanoid-design.md
 
-📊 Sources 覆盖率：4008/4008 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4010/4010 (100%) wiki/entity 页有 ingest 来源
