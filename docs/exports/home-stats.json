@@ -31,6 +31,27 @@
       "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
+      "path": "wiki/entities/egosuite-open100k.md",
+      "detail_id": "entity-egosuite-open100k",
+      "label": "EgoSuite-Open100K",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/pico-4-ultra-egocentric-capture.md",
+      "detail_id": "entity-pico-4-ultra-egocentric-capture",
+      "label": "Pico 4 Ultra（Egocentric 采集）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-actuator-dynamics-curricula-legged-rl.md",
       "detail_id": "entity-paper-actuator-dynamics-curricula-legged-rl",
       "label": "Actuator Dynamics Curricula（arXiv:2609.09492）",
@@ -184,26 +205,6 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robodrop-vla-post-training.md",
-      "detail_id": "entity-paper-robodrop-vla-post-training",
-      "label": "RoboDrop（arXiv:2609.10021）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-skillx-humanoid-soccer.md",
-      "detail_id": "entity-paper-skillx-humanoid-soccer",
-      "label": "SkillX（arXiv:2609.06718）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
