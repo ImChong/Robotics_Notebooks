@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, egocentric, egocentric-video, manipulation, data-engine, vla, imitation-learning, handedness, stellarnex-robotics]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-14
 date: 2026-07-24
 related:
   - ./paper-egoworld.md

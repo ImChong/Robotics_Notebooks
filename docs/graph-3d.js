@@ -188,6 +188,7 @@
     var resolveSourceNode = opts.resolveSourceNode || function (id) {
       return sourceNodes.find(function (n) { return n.id === id; });
     };
+    var areEdgesVisible = opts.areEdgesVisible || function () { return true; };
     var areNodeLabelsVisible = opts.areNodeLabelsVisible || function () { return true; };
     var getNodeLabelText = opts.getNodeLabelText || function (d) {
       return d.label || d.id;
@@ -852,6 +853,7 @@
     }
 
     function linkVisibleFor(l) {
+      if (!areEdgesVisible()) return false;
       if (!hasActiveFilter()) return true;
       var visible = getVisibleNodeIds();
       return visible.has(edgeEndpointId(l.source)) && visible.has(edgeEndpointId(l.target));

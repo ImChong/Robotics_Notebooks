@@ -1923,6 +1923,14 @@
       <!-- 「显示节点名称」浮窗选项已隐藏；开关逻辑仍由 showNodeLabels / setShowNodeLabels 保留 -->
 
       <div class="slider-row">
+        <label class="physics-toggle" for="check-show-edges"
+               title="关闭后只显示节点，隐藏全部连线（2D / 3D 共享同一开关）">
+          <input type="checkbox" id="check-show-edges" checked />
+          <span>🔗 显示连线</span>
+        </label>
+      </div>
+
+      <div class="slider-row">
         <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
                title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用；默认开启，可在此关闭）">
           <input type="checkbox" id="check-community-labels" checked />
@@ -2580,10 +2588,13 @@
     const checkMagneticEl = document.getElementById('check-magnetic');
     // 节点名称显隐：2D / 3D 共享同一开关（默认关闭；与磁吸模式各自记忆不同）
     let showNodeLabels = false;
+    // 连线显隐：2D 边层整层不画，3D 走 linkVisibility（同样 2D / 3D 共享同一开关）
+    let showEdges = true;
     let labelsSettled2D = false;
     let userZoomed2D = false;
     let label = null;
     const checkNodeLabelsEl = document.getElementById('check-node-labels');
+    const checkShowEdgesEl = document.getElementById('check-show-edges');
     // 社区聚类中心漂浮标签：默认开启；仅「按社区」着色/筛选时可勾选，其余模式下勾选框置灰
     let showCommunityLabels = true;
     const checkCommunityLabelsEl = document.getElementById('check-community-labels');
@@ -2723,6 +2734,7 @@
         edgeHighlightsWithNode,
         getChargeStrength: () => chargeStrength,
         getMagneticConfig: getMagneticConfig3D,
+        areEdgesVisible: () => showEdges,
         areNodeLabelsVisible: () => showNodeLabels,
         getNodeLabelText: (d) => d._info.title || d.label,
         getNodeLabelFontSize: scaledFontSize,
@@ -3650,10 +3662,20 @@
       edgeCanvasDpr = dpr;
     }
 
+    /* ── 2D 边层可见度补偿 ──────────────────────────────────────
+       SVG 时代每条边各自合成，密集处重叠的半透明边会互相叠深，观感比单条边深得多；
+       canvas 改为「一批攒一条路径、只 stroke 一次」后同批内重叠不再叠加 alpha，
+       整张图的连线随之变淡。这里只给 2D 边层单独加深颜色 / 加粗，3D 不受影响。
+       嫌太重就调小这两处（比例 → 1.0、alpha → 0.12 / 0.15 即接近旧观感）。 */
+    const EDGE_2D_WIDTH_SCALE = 1.3;
+    function edge2dBaseColor() {
+      return isDark() ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.20)';
+    }
+
     /** 当前模式下的两批描边样式：[0] 高亮批、[1] 暗淡批（null 表示该批不画）。
      *  颜色自带 alpha，canvas 的 globalAlpha 与之相乘，等价于 SVG 的 stroke-opacity。 */
     function edgeBatchStyles() {
-      const w = linkWidthBase;
+      const w = linkWidthBase * EDGE_2D_WIDTH_SCALE;
       if (edgePaintMode === 'hover') {
         return [
           { color: edgePaintFocusColor, width: w * 1.8, alpha: 0.7 },
@@ -3663,15 +3685,15 @@
       if (edgePaintMode === 'sidebar') {
         return [
           { color: edgePaintFocusColor, width: w * 1.5, alpha: 0.85 },
-          { color: edgeBaseColor(), width: w, alpha: 0.18 },
+          { color: edge2dBaseColor(), width: w, alpha: 0.18 },
         ];
       }
       if (edgePaintMode === 'timeline') {
-        return [{ color: edgeBaseColor(), width: w, alpha: 0.35 }, null];
+        return [{ color: edge2dBaseColor(), width: w, alpha: 0.35 }, null];
       }
       return [
-        { color: edgeBaseColor(), width: w, alpha: 1 },
-        { color: edgeBaseColor(), width: w * 0.5, alpha: 0.2 },
+        { color: edge2dBaseColor(), width: w, alpha: 1 },
+        { color: edge2dBaseColor(), width: w * 0.5, alpha: 0.2 },
       ];
     }
 
@@ -3696,6 +3718,7 @@
       if (!edgeCtx || is3DView()) return;
       edgeCtx.setTransform(1, 0, 0, 1, 0, 0);
       edgeCtx.clearRect(0, 0, edgeCanvas.width, edgeCanvas.height);
+      if (!showEdges) { edgeDrawnCount = 0; return; }
 
       const need = edges.length * 4;
       if (edgeBufHi.length < need) {
@@ -5840,6 +5863,18 @@
       checkNodeLabelsEl.checked = showNodeLabels;
       checkNodeLabelsEl.addEventListener('change', ev => {
         setShowNodeLabels(ev.target.checked);
+      });
+    }
+
+    /* 显示连线（2D / 3D 共享同一开关） */
+    if (checkShowEdgesEl) {
+      checkShowEdgesEl.checked = showEdges;
+      checkShowEdgesEl.addEventListener('change', ev => {
+        showEdges = !!ev.target.checked;
+        drawEdges();
+        if (graph3dView && typeof graph3dView.syncFilters === 'function') {
+          graph3dView.syncFilters();
+        }
       });
     }
 

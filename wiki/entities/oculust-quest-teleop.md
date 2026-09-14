@@ -3,11 +3,12 @@
 type: entity
 tags: [hardware, teleoperation, vla, data-collection, vr, meta]
 status: complete
-updated: 2026-04-21
+updated: 2026-09-14
 related:
   - ../queries/demo-data-collection-guide.md
   - ../queries/dexterous-data-collection-guide.md
   - ../tasks/manipulation.md
+  - ./pico-4-ultra-egocentric-capture.md
 sources:
   - ../../sources/papers/imitation_learning.md
 summary: "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成本最低、效率最高的数据采集手段之一，通过 VR 头显的手部追踪技术直接映射人类动作到机器人。"
@@ -55,6 +56,7 @@ summary: "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成�
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Manipulation 任务](../tasks/manipulation.md)
+- [Pico 4 Ultra（Egocentric 采集）](./pico-4-ultra-egocentric-capture.md) — 量产离线数据集视角下的 Pico vs Quest 3 对照（全身追踪、89 vs 60 Hz 应用流）
 
 ## 参考来源
 - Fu, Z., et al. (2024). *Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation*.

@@ -2,8 +2,8 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-08-13
-summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k 与 Macrodata 度量手轨迹配方。"
+updated: 2026-09-14
+summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k、Unidata Pico 4 Ultra 量产采集与 Macrodata 度量手轨迹配方。"
 related:
   - ./ego-9-papers-technology-map.md
   - ./ego-category-02-human-to-robot.md
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-ego4d.md
   - ../entities/paper-ego-oscar.md
   - ../methods/macrodata-egocentric-hand-action.md
+  - ../entities/pico-4-ultra-egocentric-capture.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_9_papers_catalog.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/sites/rekacs2-10k.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
+  - ../../sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md
 ---
 
 # Ego 分类 01：数据采集
@@ -63,6 +65,7 @@ sources:
 - [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) — Reka/Claru **10k+ 小时** 无剧本家务 ego 视频（Apache 2.0；raw HF 增量 + processed/captioned）
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 demo 渲染的 **10k+ 小时** ego 视频 + 逐帧键鼠/轨迹（世界模型沙盒；非真实家务）
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 把已采 egocentric RGB **重建为度量 21 关节手轨迹** 的开源配方与 HOT3D Action MPJPE 标尺（采集后的几何标注层）
+- [Pico 4 Ultra（Egocentric 采集）](../entities/pico-4-ultra-egocentric-capture.md) — Unidata **4,050 h** 量产工作流：头显-only vs ZED+Orin 双 rig、episode QA 与 Quest 3 / Aria 选型对照
 
 ## 参考来源
 
@@ -75,6 +78,7 @@ sources:
 - [RekaDaily-10k 研究页归档](../../sources/sites/rekadaily-10k.md)
 - [RekaCS2-10k 新闻页归档](../../sources/sites/rekacs2-10k.md)
 - [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)
+- [unidata_pico_4_ultra_egocentric_data_collection.md](../../sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md)
 
 ## 推荐继续阅读
 
@@ -85,3 +89,4 @@ sources:
 - [EgoWorld-100W 官方介绍](https://stellarnexrobotics.com/blog)
 - [RekaDaily-10k 研究页](https://reka.ai/labs/research/rekadaily-10k-egocentric-household-manipulation-data)
 - [RekaCS2-10k 新闻页](https://reka.ai/news/cs2-10k-a-large-scale-egocentric-counter-strike-2-dataset)
+- [Unidata：Pico 4 Ultra egocentric 采集工作流](https://unidata.pro/blog/pico-4-ultra-for-egocentric-data-collection/)
