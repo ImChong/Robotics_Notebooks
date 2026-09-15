@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-15",
   "node_count": 4042,
-  "edge_count": 36102,
+  "edge_count": 36104,
   "coverage": {
     "covered": 4014,
     "total": 4014,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dwmp.md",
+      "detail_id": "entity-paper-dwmp",
+      "label": "DWMP：双世界模型人形越障",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
     {
       "path": "wiki/entities/orcs.md",
       "detail_id": "entity-orcs",
@@ -202,28 +212,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/williamtheisen-ai-learning.md",
-      "detail_id": "entity-williamtheisen-ai-learning",
-      "label": "Exploring Artificial Intelligence（William Theisen 学习枢纽）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/orcs.md",
-    "detail_id": "entity-orcs",
-    "label": "ORCS（Oracle Robot Control Synthesis）",
+    "path": "wiki/entities/paper-dwmp.md",
+    "detail_id": "entity-paper-dwmp",
+    "label": "DWMP：双世界模型人形越障",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
   },
   "top_communities": [
     {
@@ -232,7 +231,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 457
+      "size": 456
     },
     {
       "label": "世界动作模型",
