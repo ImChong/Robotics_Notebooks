@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/papers/worldroambench_arxiv_2606_31672.md — WorldRoamBench 交互世界模型长程稳定性基准（部分开源：活榜+数据集已开放，评测代码待发布）；新建 paper-worldroambench 实体并交叉 hub-embodied-eval-benchmark / ABot-World-0
+
 ## [2026-09-15] ingest | WBC 经典线 — IJHR 2004 / ICRA 2006 / Khatib 1987 交叉 / ControlIt! / legbot-MPC-WBC；新建 4 实体 + 5 sources；补强 hub-wbc 与 whole-body-control 理论线
 
 ## [2026-09-15] ingest | sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md — RobotsHub MoRE 万字原理→代码深读；交叉补强 paper-amp-survey-08-more 与 sources/repos/more.md（论文/代码差异、调用链）；修正 paper source「Stage 2 冻结 base」表述

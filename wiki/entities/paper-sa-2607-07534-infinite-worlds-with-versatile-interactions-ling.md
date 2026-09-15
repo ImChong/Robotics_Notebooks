@@ -186,7 +186,7 @@ sequenceDiagram
 - **第三方 demo 差异：** Reactor/LingGuang 便捷但 README 写明官方 full capability 见 WAIC 2026。
 - **非商业许可：** CC BY-NC-SA 4.0 限制产品化。
 - **算力：** 14B 实时路径默认多卡；真机边缘部署需 1.3B 或进一步蒸馏。
-- **评测口径：** WorldRoamBench 等对照见 [ABot-World-0](./paper-abot-world-0.md)；本页数字以 arXiv / 项目页 / README 为准。
+- **评测口径：** [WorldRoamBench](./paper-worldroambench.md) 等对照见 [ABot-World-0](./paper-abot-world-0.md)；本页数字以 arXiv / 项目页 / README 为准。
 
 ## 参考来源
 

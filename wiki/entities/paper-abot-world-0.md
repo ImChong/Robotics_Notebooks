@@ -25,6 +25,7 @@ related:
   - ./open-dreamer.md
   - ./paper-kairos-native-world-model-stack.md
   - ./paper-harnesseval-w.md
+  - ./paper-worldroambench.md
 sources:
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
   - ../../sources/repos/abot-world.md
@@ -243,5 +244,5 @@ sequenceDiagram
 
 - 官方项目页与案例视频：<https://amap-cvlab.github.io/ABot-World/>
 - 在线 Studio：<https://abot-world.amap.com>
-- WorldRoamBench（长程交互稳定性基准）：[arXiv:2606.31672](https://arxiv.org/abs/2606.31672)
+- [WorldRoamBench](./paper-worldroambench.md)（长程交互稳定性基准；[arXiv:2606.31672](https://arxiv.org/abs/2606.31672)）
 - 上游 Wan 技术报告：[arXiv:2503.20314](https://arxiv.org/abs/2503.20314)

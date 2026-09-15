@@ -58,7 +58,7 @@
 
 | 设定 | 要点 |
 |------|------|
-| WorldRoamBench | 相对 Genie 3 / HappyOyster / LingBot-World / HY-World 1.5：**5B** 量级下 Strict Acc. **0.5266**（次优，HappyOyster 0.5317）、Partial Acc. **0.7290**、Traj. **0.6752** 等 |
+| WorldRoamBench | 相对 Genie 3 / HappyOyster / LingBot-World / HY-World 1.5：**5B** 量级下 Strict Acc. **0.5266**（次优，HappyOyster 0.5317）、Partial Acc. **0.7290**、Traj. **0.6752** 等；实体页 [paper-worldroambench.md](../../wiki/entities/paper-worldroambench.md) |
 | LongForcing 消融 | 60 s rollout：相对 Causal-Forcing 风格基线，后半程 HPSv3 更高、饱和/模糊/重复更低 |
 | 长程压力 | 小时级 / 日级关键帧仍可辨场景结构与活跃运动；OOD 角色–场景统一键盘控制；涌现接触/足迹/墙体阻挡等物理响应 |
 
