@@ -48,6 +48,9 @@ related:
   - ../entities/paper-speedtuning.md
   - ../entities/letools.md
   - ../entities/let-base-dataset.md
+  - ../entities/paper-sai-sequential-asymmetric-imitation.md
+  - ../entities/paper-trace-causal-memory.md
+  - ../entities/paper-zeno-1-collaborative-intelligence.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -294,6 +297,9 @@ flowchart TD
 - [TwinDEX](../entities/twindex.md) — 三指外骨骼 robot-free 示范 → 同构手策略（闭源；宣称零真机数据）
 - [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 rosbag→LeRobot v3→ACT/VLA 训练部署栈
 - [LET-Base-Dataset](../entities/let-base-dataset.md) — Kuavo 真机操作小时库（CC-BY-NC-SA）
+- [SAI](../entities/paper-sai-sequential-asymmetric-imitation.md) — 双机物理耦合：单遥操作三阶段课程，提升相位同步与伙伴让步（arXiv:2606.16490）
+- [TRACE](../entities/paper-trace-causal-memory.md) — 延迟证据操作：固定槽因果记忆 + 路径签名路由；插件增强 ACT/DP（[corl-trace](https://github.com/Jeong-zju/corl-trace) 已开源）
+- [Zeno-1](../entities/paper-zeno-1-collaborative-intelligence.md) — 3B 去中心化协作 VLA 式基础模型；CPI 闭环伙伴交互（Zeno AI 报告）
 
 ## 推荐继续阅读
 
