@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/centroidal-dynamics.md
@@ -17,6 +17,7 @@ related:
   - ../formalizations/forward-kinematics.md
   - ../formalizations/robot-jacobian.md
   - ../concepts/gravity-compensation.md
+  - ../queries/urdf-link-inertia-real-robot-check.md
   - ../concepts/null-space-control.md
 sources:
   - ../../sources/papers/simulation.md
@@ -85,6 +86,7 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [SE(3) 切空间浮动基 TO](./paper-se3-tangent-to.md) — 用 Pinocchio SE(3) 雅可比做切空间配点 TO
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — `computeJointTorqueRegressor` 只给 $Y_{\mathrm{rb}}$
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — `computeTotalMass` / `centerOfMass` / $g(q)$ 抽检
 - [FloBaRoID](./flobaroid.md) — 线性辨识流水线（iDynTree，非本库）
 
 ## 参考来源

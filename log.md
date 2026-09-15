@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/papers/urdf_link_inertia_real_robot_check.md — URDF 连杆惯量对照真机：规范/CAD 符号/物理一致性/称重与 g(q)；升格 wiki/queries/urdf-link-inertia-real-robot-check.md
+
 ## [2026-09-15] ingest | sources/papers/mgdp_adv_sci_2026.md — MGDP（Adv. Sci. 2026）通用深度感知四足 DRL；HKU×BIT；arclab-hku/MGDP 已开源
 
 ## [2026-09-15] ingest | SAI + TRACE + Zeno-1 — 芝诺/ZJU 协作线：SAI 双机课程（待发布）、TRACE 记忆模块（corl-trace 已开源）、Zeno-1 3B 协作基础模型报告（待发布）

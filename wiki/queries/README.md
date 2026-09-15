@@ -57,6 +57,7 @@
 | [locomotion-reward-design-guide](./locomotion-reward-design-guide.md) | 怎么设计 locomotion RL 的奖励函数？ | RL、Locomotion、Reward Design、Curriculum Learning |
 | [humanoid-rl-cookbook](./humanoid-rl-cookbook.md) | 从零训练人形机器人 RL 策略的完整 checklist？ | RL、Sim2Real、Privileged Training、Curriculum、Deployment |
 | [pinocchio-quick-start](./pinocchio-quick-start.md) | 用 Pinocchio 做机器人动力学计算的最小可运行示例？ | Pinocchio、WBC、Kinematics、Dynamics |
+| [urdf-link-inertia-real-robot-check](./urdf-link-inertia-real-robot-check.md) | URDF 中的机器人连杆惯量如何与真机对比检查？ | URDF、连杆 vs 转子惯量、SysID、重力补偿、Pinocchio |
 | [mpc-solver-selection](./mpc-solver-selection.md) | 机器人 MPC 求解器怎么选：OSQP vs qpOASES vs Acados vs FORCES Pro？ | MPC、QP Solver、Optimization、Acados |
 | [reward-design-guide](./reward-design-guide.md) | 从零设计 locomotion RL 的 reward 函数？核心原则和常见陷阱？ | Reward、Curriculum、Locomotion、PPO |
 | [sim2real-gap-reduction](./sim2real-gap-reduction.md) | sim2real transfer 失败的根因分类与对应缩减策略？ | Sim2Real、DR、ActuatorNet、Privileged Training |

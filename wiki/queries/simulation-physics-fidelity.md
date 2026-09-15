@@ -3,7 +3,7 @@ title: 仿真物理保真度链路选型指南
 type: query
 status: complete
 created: 2026-06-25
-updated: 2026-09-13
+updated: 2026-09-15
 summary: 从几何/URDF 精度 → 刚体动力学算法（ABA/RNEA）→ 接触/摩擦模型 → 执行器模型四层物理保真度的端到端取舍决策树，覆盖每层对 sim2real gap 的贡献、建模成本与典型失败模式。
 tags: [simulation, sim2real, physics, dynamics, contact, friction, fidelity]
 sources:
@@ -11,6 +11,7 @@ sources:
   - ../../sources/repos/sage-sim2real-actuator-gap.md
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
   - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/urdf_link_inertia_real_robot_check.md
   - ../../sources/papers/crisp_real2sim_iclr2026.md
 ---
 
@@ -72,7 +73,7 @@ flowchart TD
 
 ## 第 ① 层：几何 / URDF 精度
 
-URDF 的连杆几何、碰撞体、质量、质心与惯量张量是后三层的输入，**标定误差会被逐级放大**。这是性价比最高的一层：靠真机称重、CAD 复核与 [SysID](../concepts/sim2real.md) 修正即可，不需要靠 DR 覆盖。
+URDF 的连杆几何、碰撞体、质量、质心与惯量张量是后三层的输入，**标定误差会被逐级放大**。这是性价比最高的一层：靠真机称重、CAD 复核与 [SysID](../concepts/system-identification.md) 修正即可，不需要靠 DR 覆盖。分层抽检步骤见 [URDF 连杆惯量对照真机检查](./urdf-link-inertia-real-robot-check.md)。
 
 - **贡献的 gap**：整机姿态长期漂移、足底接触压力分布偏移。
 - **典型失败模式**：质心偏移让仿真里平衡的步态在真机上持续偏向一侧。
@@ -113,7 +114,7 @@ URDF 的连杆几何、碰撞体、质量、质心与惯量张量是后三层的
 - 纵深汇总：[仿真物理保真度（知识链汇总）](../overview/hub-physics-fidelity.md)
 - 因果概念页：[Physics Fidelity ↔ Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
 - 工程主线：[Sim2Real](../concepts/sim2real.md)
-- 各层入口：[URDF 描述](../concepts/urdf-robot-description.md)、[ABA/RNEA](../formalizations/articulated-body-algorithms.md)、[Contact Dynamics](../concepts/contact-dynamics.md)、[Joint Friction Models](../concepts/joint-friction-models.md)、[Friction Compensation](../concepts/friction-compensation.md)、[Differentiable Simulation](../concepts/differentiable-simulation.md)
+- 各层入口：[URDF 描述](../concepts/urdf-robot-description.md)、[URDF 连杆惯量对照真机检查](./urdf-link-inertia-real-robot-check.md)、[ABA/RNEA](../formalizations/articulated-body-algorithms.md)、[Contact Dynamics](../concepts/contact-dynamics.md)、[Joint Friction Models](../concepts/joint-friction-models.md)、[Friction Compensation](../concepts/friction-compensation.md)、[Differentiable Simulation](../concepts/differentiable-simulation.md)
 - 浮动基/质心动力学：[Floating Base Dynamics](../concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 
 ## 参考来源
@@ -122,4 +123,5 @@ URDF 的连杆几何、碰撞体、质量、质心与惯量张量是后三层的
 - [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — 执行器层 sim2real gap 与补偿
 - [sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — 舵机扩展摩擦模型（BAM）
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触动力学一手资料
+- [sources/papers/urdf_link_inertia_real_robot_check.md](../../sources/papers/urdf_link_inertia_real_robot_check.md) — 第 ① 层惯量书桌检查与真机对照
 - [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — real2sim 回写参数路线

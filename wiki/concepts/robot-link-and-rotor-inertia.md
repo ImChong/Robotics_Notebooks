@@ -2,7 +2,7 @@
 type: concept
 tags: [dynamics, simulation, urdf, mujoco, sysid, actuator, inertia]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 related:
   - ./armature-modeling.md
   - ./system-identification.md
@@ -15,8 +15,10 @@ related:
   - ../entities/pinocchio.md
   - ../queries/actuator-drive-chain-selection-loop.md
   - ./gravity-compensation.md
+  - ../queries/urdf-link-inertia-real-robot-check.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
+  - ../../sources/papers/urdf_link_inertia_real_robot_check.md
 summary: "连杆惯量是 URDF/刚体动力学中的 link 空间惯量；转子惯量经减速比以 G² 反射到关节侧，在 MuJoCo 等仿真器中常记为 armature——二者不可混在同一参数位上。"
 ---
 
@@ -70,6 +72,7 @@ summary: "连杆惯量是 URDF/刚体动力学中的 link 空间惯量；转子�
 - CAD 导出时 **惯量积符号** 与 URDF 约定不一致 → 仿真侧向/扭转耦合错误。
 - 未填 `<inertial>` → 默认为零，连杆在动力学中「无质量」。
 - 碰撞几何（`<collision>`）与惯性几何不一致 → 接触对但惯性错。
+- 数字填上了仍可能是错刚体：书桌检查（正定 + 三角不等式）、台秤 $\sum m$、$g(q)$ 残差的分层对照见 [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md)。
 
 ### 在开放链动力学中的位置
 
@@ -157,10 +160,12 @@ flowchart LR
 - [MuJoCo](../entities/mujoco.md) — 仿真器中的 joint 参数
 - [Sim2Real](./sim2real.md) — 质量/惯量随机化与真机偏差
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 连杆与转子惯量是③层执行器建模的惯性参数来源
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — `<inertial>` 如何分层对照台秤 / $g(q)$ / 动力学回归
 
 ## 参考来源
 
 - [机器人连杆惯量与转子惯量（一手资料索引）](../../sources/papers/robot_link_rotor_inertia_primary_refs.md) — URDF 规范、Modern Robotics Ch.8、Gautier & Khalil 1990、MuJoCo `armature` 官方定义
+- [URDF 连杆惯量与真机对照检查（一手资料索引）](../../sources/papers/urdf_link_inertia_real_robot_check.md) — 惯量积符号、物理一致性、称重 / $g(q)$ / Atkeson 回归
 - [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 闭环 vs 开环测 $J_{\mathrm{eff}}$
 
 ## 推荐继续阅读

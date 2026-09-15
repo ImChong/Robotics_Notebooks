@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-09-11
+updated: 2026-09-15
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-closed-loop-inertia-calibration.md
@@ -16,8 +16,10 @@ related:
   - ../queries/sim2real-closed-loop-engineering.md
   - ./sim2real.md
   - ./gravity-compensation.md
+  - ../queries/urdf-link-inertia-real-robot-check.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
+  - ../../sources/papers/urdf_link_inertia_real_robot_check.md
   - ../../sources/papers/system_identification.md
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
@@ -327,11 +329,13 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [SPI-Active（采样式 SysID + 主动探索）](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — GPU 并行采样辨识 Go2 质量/惯量 + 最大化 FIM 的主动激励（CoRL 2025 Oral）
 - [PRIME](../entities/prime-system-id.md) — 接触隐式 MAP：轨迹 + 摩擦接触力 + 惯量联合估计（RSS 2026，已开源）
 - [人形整机闭环惯量标定](./humanoid-closed-loop-inertia-calibration.md) — 量产出厂体检：运动学 / 惯量 / IMU 零偏 / 足底力
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — 把厂商 `<inertial>` 分层对照台秤 / $g(q)$ / 可辨识组合
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — SysID → 训练 → 前馈/适应 → 安全的持续校准闭环
 
 ## 参考来源
 
 - [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — ingest 档案（Nguyen 2011 / Gautier 激励轨迹 / Hwangbo ActuatorNet 2019）
+- [sources/papers/urdf_link_inertia_real_robot_check.md](../../sources/papers/urdf_link_inertia_real_robot_check.md) — URDF `<inertial>` 与真机对照的规范 / 物理一致性 / Atkeson 回归
 - [sources/blogs/wechat_freedof_sim2real_dynamics_identification.md](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节可辨识性与分级实验设计
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — SysID 作为 Sim2Real 起点、勿在默认 URDF 上盲目扩 DR
 - [sources/papers/spi_active_arxiv_2505_14266.md](../../sources/papers/spi_active_arxiv_2505_14266.md) — SPI-Active：采样式辨识 + 主动探索最大化 FIM（CoRL 2025）

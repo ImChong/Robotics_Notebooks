@@ -2,7 +2,7 @@
 type: entity
 tags: [software, system-identification, dynamics, friction, urdf, open-source, iit]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 code: https://github.com/kjyv/FloBaRoID
 related:
   - ../methods/joint-actuator-parameter-identification.md
@@ -13,6 +13,7 @@ related:
   - ./bam-better-actuator-models.md
   - ./paper-pace-sim2real-legged-robots.md
   - ./pinocchio.md
+  - ../queries/urdf-link-inertia-real-robot-check.md
 sources:
   - ../../sources/repos/flobaroid.md
   - ../../sources/papers/joint_actuator_parameter_identification.md
@@ -123,6 +124,7 @@ sequenceDiagram
 - [BAM](./bam-better-actuator-models.md)
 - [PACE](./paper-pace-sim2real-legged-robots.md)
 - [Pinocchio](./pinocchio.md)
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — 辨识写回 URDF 之前的书桌 / 称重 / $g(q)$ 抽检
 
 ## 参考来源
 

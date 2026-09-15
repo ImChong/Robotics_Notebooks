@@ -1,97 +1,23 @@
 {
   "generated_at": "2026-09-15",
-  "node_count": 4046,
-  "edge_count": 36138,
+  "node_count": 4047,
+  "edge_count": 36161,
   "coverage": {
-    "covered": 4018,
-    "total": 4018,
+    "covered": 4019,
+    "total": 4019,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-mgdp-generalized-depth-perception.md",
-      "detail_id": "entity-paper-mgdp-generalized-depth-perception",
-      "label": "MGDP：四足通用深度感知模型",
-      "type": "entity",
+      "path": "wiki/queries/urdf-link-inertia-real-robot-check.md",
+      "detail_id": "wiki-queries-urdf-link-inertia-real-robot-check",
+      "label": "URDF 连杆惯量对照真机检查",
+      "type": "query",
       "recency": "2026-09-15",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sai-sequential-asymmetric-imitation.md",
-      "detail_id": "entity-paper-sai-sequential-asymmetric-imitation",
-      "label": "SAI：序贯非对称模仿学习耦合双机策略",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trace-causal-memory.md",
-      "detail_id": "entity-paper-trace-causal-memory",
-      "label": "TRACE：轨迹路由因果记忆",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-zeno-1-collaborative-intelligence.md",
-      "detail_id": "entity-paper-zeno-1-collaborative-intelligence",
-      "label": "Zeno-1：机器人协作智能基础模型",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dwmp.md",
-      "detail_id": "entity-paper-dwmp",
-      "label": "DWMP：双世界模型人形越障",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/orcs.md",
-      "detail_id": "entity-orcs",
-      "label": "ORCS（Oracle Robot Control Synthesis）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/reward-ai-om1.md",
-      "detail_id": "entity-reward-ai-om1",
-      "label": "OM-1：通才操作策略（Reward AI）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/reward-ai-robotics.md",
-      "detail_id": "entity-reward-ai-robotics",
-      "label": "Reward AI（机器人方向）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-artmanip.md",
@@ -215,18 +141,89 @@
       "recency": "2026-09-14",
       "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-star-vtla.md",
+      "detail_id": "entity-paper-star-vtla",
+      "label": "STAR（arXiv:2609.12549）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-unipart.md",
+      "detail_id": "entity-paper-unipart",
+      "label": "UniPart（arXiv:2609.12898）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-visible-reachable-workspace-humanoid-design.md",
+      "detail_id": "entity-paper-visible-reachable-workspace-humanoid-design",
+      "label": "Visible-Reachable Workspace（arXiv:2609.08905）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/robolab.md",
+      "detail_id": "entity-robolab",
+      "label": "RoboLab（通用策略高保真仿真评测）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/williamtheisen-ai-learning.md",
+      "detail_id": "entity-williamtheisen-ai-learning",
+      "label": "Exploring Artificial Intelligence（William Theisen 学习枢纽）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/vla-tamp-planning-11-papers-technology-map.md",
+      "detail_id": "wiki-overview-vla-tamp-planning-11-papers-technology-map",
+      "label": "VLA 微调与规划对齐：11 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/rsi-harness.md",
+      "detail_id": "entity-rsi-harness",
+      "label": "RSI-Harness（RSIH）",
+      "type": "entity",
+      "recency": "2026-09-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-mgdp-generalized-depth-perception.md",
-    "detail_id": "entity-paper-mgdp-generalized-depth-perception",
-    "label": "MGDP：四足通用深度感知模型",
-    "type": "entity",
+    "path": "wiki/queries/urdf-link-inertia-real-robot-check.md",
+    "detail_id": "wiki-queries-urdf-link-inertia-real-robot-check",
+    "label": "URDF 连杆惯量对照真机检查",
+    "type": "query",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
@@ -235,11 +232,11 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 456
+      "size": 457
     },
     {
       "label": "世界动作模型",
-      "size": 380
+      "size": 333
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -251,7 +248,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 256
+      "size": 258
     }
   ],
   "top_hubs": [

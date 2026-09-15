@@ -8,7 +8,7 @@ tags:
   - sim2real
   - manufacturing
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ./system-identification.md
   - ../methods/joint-actuator-parameter-identification.md
@@ -21,6 +21,7 @@ related:
   - ../entities/prime-system-id.md
   - ../entities/paper-kilvo.md
   - ../queries/sim2real-closed-loop-engineering.md
+  - ../queries/urdf-link-inertia-real-robot-check.md
   - ../queries/contact-wrench-closed-loop.md
 sources:
   - ../../sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md
@@ -143,6 +144,7 @@ flowchart TB
 - [System Identification](./system-identification.md) — 更宽的 SysID 层级；本页是人形量产整机这一刀
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 台架 / 悬空估 \(I_a\) 与摩擦，覆盖不了分布式整机质量
 - [连杆惯量与转子惯量](./robot-link-and-rotor-inertia.md) — URDF 连杆 vs armature，写错位置会污染重力项
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — 出厂闭环之前的书桌 / 称重 / $g(q)$ 抽检
 - [PRIME](../entities/prime-system-id.md) — 接触隐式 MAP 惯量辨识（RSS 2026，已开源）
 - [KILVO](../entities/paper-kilvo.md) — 人形 ESIKF；零偏在线是状态而非出厂常数
 - [Sim2Real 闭环误差分层](../queries/sim2real-closed-loop-engineering.md) — 辨识发生在训练前也发生在部署后

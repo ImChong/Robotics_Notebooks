@@ -61,4 +61,4 @@
 
 - [x] 四类一手来源摘录与 wiki 映射
 - [x] 沉淀统一概念页 `wiki/concepts/robot-link-and-rotor-inertia.md`
-- [ ] 后续可补：SolidWorks/Fusion → URDF 惯量积符号勘误 checklist（工程向）
+- [x] SolidWorks/Fusion → URDF 惯量积符号与真机对照清单：见 [`urdf_link_inertia_real_robot_check.md`](./urdf_link_inertia_real_robot_check.md) 与 [`wiki/queries/urdf-link-inertia-real-robot-check.md`](../../wiki/queries/urdf-link-inertia-real-robot-check.md)
