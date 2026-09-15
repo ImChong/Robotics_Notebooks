@@ -36,6 +36,7 @@ related:
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
+  - ../entities/paper-mgdp-generalized-depth-perception.md
   - ../entities/paper-p3.md
   - ../entities/paper-wm-loco.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
