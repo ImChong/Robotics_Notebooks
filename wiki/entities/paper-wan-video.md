@@ -14,6 +14,7 @@ arxiv: "2503.20314"
 related:
   - ./comfyui.md
   - ./paper-wan-move.md
+  - ./paper-go-with-the-track.md
   - ./paper-wan-dancer.md
   - ./paper-masked-visual-actions.md
   - ./paper-ctrl-world.md

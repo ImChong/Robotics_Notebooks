@@ -116,7 +116,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [Perceptive Humanoid Parkour](../entities/holosoma.md) — 见 wiki 实体页
 - [Physically Consistent Humanoid Loco-Manipulation using Latent Diffusion Models](../entities/paper-notebook-physically-consistent-humanoid-loco-manipulation.md) — 待深读
 - [PvP](../entities/paper-hrl-stack-20-pvp.md) — 见 wiki 实体页
-- [PyRoki](../entities/paper-notebook-pyroki.md) — 待深读
+- [PyRoki](../entities/paper-notebook-pyroki.md) — JAX 模块化运动学优化（IK / TO / retarget）
 - [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) — 待深读
 - [ResMimic](../entities/yanjie-ze.md) — 见 wiki 实体页
 - [RoboStriker](../entities/paper-notebook-robostriker.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html)

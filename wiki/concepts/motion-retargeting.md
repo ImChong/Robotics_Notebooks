@@ -59,7 +59,7 @@ subject to: FK(θ) = p_target (末端位置约束)
             θ_min ≤ θ ≤ θ_max
             接触约束
 ```
-工具：Pinocchio + TSID / Crocoddyl
+工具：Pinocchio + TSID / Crocoddyl；模块化 JAX 栈见 [PyRoki](../entities/paper-notebook-pyroki.md)（手/人形 retarget 示例 + [ProtoMotions](../entities/protomotions.md) v3 默认后端）
 
 ### 3. 基于物理的重定向（Physics-Based Retargeting）
 用物理仿真器验证重定向后的动作是否可执行（不摔倒）：
