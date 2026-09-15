@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ## [2026-09-15] ingest | sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md — 9篇盘点+EffVLA；9新建实体+PhysBrain复用；ACT-LAM/EffVLA/X-WBC等独立节点
+=======
+## [2026-09-15] ingest | LiveCook + Streaming Interventions — Qualcomm 流式烹饪指导线；评测+HF 数据已开源，LiveMamba/合成管线未发布
+>>>>>>> 376fef369 ([2026-09-15] ingest | sources/papers/livecook_arxiv_2511_21998.md — 接入 LiveCook 与 Streaming Interventions（Ego-MC-Bench/Ego-CoMist）；评测+HF 数据已开源)
 
 ## [2026-09-15] ingest | motion-bricks.cpp / MotionBricks / Kimodo 交叉链 / Track4World — 新建 motion-bricks-cpp、paper-motionbricks、paper-track4world 实体与 sources；Kimodo 补 motion-bricks.cpp 下游；Track4World 已开源（HF+GitHub）
 
