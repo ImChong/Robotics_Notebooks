@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-freetoken.md",
+      "detail_id": "entity-paper-freetoken",
+      "label": "FreeToken：边缘原生 MoE 推理",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/paper-puma-lidar-mesh-odometry.md",
       "detail_id": "entity-paper-puma-lidar-mesh-odometry",
       "label": "PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping",
@@ -201,28 +212,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robocoliseum.md",
-      "detail_id": "entity-robocoliseum",
-      "label": "RoboColiseum（Genie Sim 仿真挑战赛）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-puma-lidar-mesh-odometry.md",
-    "detail_id": "entity-paper-puma-lidar-mesh-odometry",
-    "label": "PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping",
+    "path": "wiki/entities/paper-freetoken.md",
+    "detail_id": "entity-paper-freetoken",
+    "label": "FreeToken：边缘原生 MoE 推理",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
