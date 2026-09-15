@@ -14,6 +14,7 @@ related:
   - ../entities/paper-daily-omni.md
   - ../entities/ewmbench.md
   - ../entities/paper-worldscore.md
+  - ../entities/paper-worldroambench.md
   - ../entities/paper-harnesseval-w.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-worldecho-worldsync.md
@@ -35,6 +36,7 @@ sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
+  - ../../sources/papers/worldroambench_arxiv_2606_31672.md
   - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
@@ -82,7 +84,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 | 层次 | 测什么 | 代表基准 | 站内入口 |
 |------|--------|----------|----------|
 | ① 认知评测 | MLLM 作为 embodied brain 的感知/规划/推理能力；另含日常 AV 时序对齐；驾驶人本 Behavior VQA 见 MMHU | RoboBench、ESI-Bench、Daily-Omni；驾驶相邻 **MMHU** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md)、[MMHU](../entities/paper-mmhu.md) |
-| ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度；开放域多场景世界生成另见 WorldScore；交互干预/持久另见 HarnessEval-W；off-expert 动作跟随另见 WorldEcho | EWMBench、GigaWorld-1 WMBench；WorldScore / HarnessEval-W（相邻）；WorldEcho | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[WorldScore](../entities/paper-worldscore.md)、[HarnessEval-W](../entities/paper-harnesseval-w.md)、[WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) |
+| ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度；开放域多场景世界生成另见 WorldScore；**交互世界模型长程稳定性**另见 WorldRoamBench；交互干预/持久另见 HarnessEval-W；off-expert 动作跟随另见 WorldEcho | EWMBench、GigaWorld-1 WMBench；WorldScore / **WorldRoamBench** / HarnessEval-W（相邻）；WorldEcho | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[WorldScore](../entities/paper-worldscore.md)、[WorldRoamBench](../entities/paper-worldroambench.md)、[HarnessEval-W](../entities/paper-harnesseval-w.md)、[WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) |
 | ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**；**真机优先 harness** 另见 **Inspect Robots**；接触安全另见 **SoftVTBench**；工业灵巧规格见 **DexBench**（评测仓待发布）；**多指 dexterity 四层归因**见 **HAND ERC**（DexNex 16 原子任务，规范站已公开）；真机扑克灵巧见 **DexHoldem**（报 SPSR）；成功判据本身另见 **Imitator Game**（目标等价而非轨迹相似）；**执行失败恢复** 另见 **LIBERO-Recover**（RSR，非理想初态） | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[Inspect Robots](../entities/inspect-robots.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[DexBench](../entities/dexbench.md)、[HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md)、[DexHoldem](../entities/paper-dexholdem.md)、[Imitator Game](../entities/paper-imitator-game.md)、[LIBERO-Recover](../entities/paper-libero-recover.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
 | ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、**Robocurve 独立真机报告**、代表性代价；真机样本量不足另见 **Bet4Sim2Real**（仿真库下注换 anytime-valid 区间） | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md)、[Robocurve](../entities/robocurve.md)、[Bet4Sim2Real](../entities/paper-bet4sim2real.md) |
 | ③′ 运控横切 | 被测对象换成 locomotion / whole-body tracking / MPC-WBC 时的指标体系：跟踪误差、命令跟随、求解实时性、硬件裕度 | HumanTracker、HumanoidBench、TrackerLab、Barkour | [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md)、[HumanTracker](../entities/paper-humantracker.md)、[HumanoidBench](../entities/humanoid-bench.md)、[TrackerLab](../entities/trackerlab.md) |
@@ -112,6 +114,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [Daily-Omni](../entities/paper-daily-omni.md) — 日常音视频跨模态时序对齐（① 层）
 - [EWMBench](../entities/ewmbench.md)
 - [WorldScore](../entities/paper-worldscore.md) — 开放域 3D/4D/视频多场景世界生成统一榜（② 层相邻，非操纵轴）
+- [WorldRoamBench](../entities/paper-worldroambench.md) — 交互世界模型长程稳定性（Action/Vision/Physics/Memory 四维；② 层）
 - [HarnessEval-W](../entities/paper-harnesseval-w.md) — 交互式世界模型 agentic 评测（干预/持久证据树；② 层相邻，非操纵轴）
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — off-expert 动作跟随（视觉门控 + \(\mathrm{SE}(3)\) NDTW；② 层）
 - [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)
@@ -134,6 +137,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [RoboBench 论文](../../sources/papers/robo_bench_arxiv_2510_17801.md) — MLLM 具身大脑五维评测
 - [EWMBench 论文](../../sources/papers/ewmbench.md) — 具身世界模型视频生成评测
 - [WorldScore 论文](../../sources/papers/worldscore_arxiv_2504_00983.md) — 多场景相机可控世界生成统一评测
+- [WorldRoamBench 论文](../../sources/papers/worldroambench_arxiv_2606_31672.md) — 交互世界模型长程稳定性基准
 - [HarnessEval-W 论文](../../sources/papers/harnesseval_w_arxiv_2608_16859.md) — 交互式世界模型 agentic 评测
 - [ESI-Bench 论文](../../sources/papers/esi_bench_arxiv_2605_18746.md) — 具身空间智能评测
 - [Daily-Omni 论文](../../sources/papers/daily_omni_arxiv_2505_17862.md) — 日常 AV 跨模态时序对齐
