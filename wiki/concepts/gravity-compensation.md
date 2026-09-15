@@ -2,7 +2,7 @@
 type: concept
 tags: [control, dynamics, feedforward, gravity, rnea, manipulation]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 related:
   - ./friction-compensation.md
   - ../formalizations/articulated-body-algorithms.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-learning-gravity-compensation.md
   - ../queries/pinocchio-quick-start.md
   - ../queries/wbc-implementation-guide.md
+  - ../queries/urdf-link-inertia-real-robot-check.md
 sources:
   - ../../sources/papers/gravity_compensation.md
   - ../../sources/papers/de_luca_learning_gravity_compensation_1993.md
@@ -168,6 +169,7 @@ sequenceDiagram
 - [Impedance Control](./impedance-control.md) — 柔顺环同样要先扣掉重力
 - [Franka Research 3](../entities/franka-research-3.md) — 典型「机体内补偿」协作臂
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — $g(q)$ 属于第 ② 层刚体动力学在控制侧的用法
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — 静止 $\tau \approx g(q)$ 是 URDF 惯量第 3 层验收
 - [接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 示教/阻抗前先扣重力，避免弹簧扛自重
 
 ## 参考来源

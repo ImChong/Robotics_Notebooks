@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-physics-fidelity, simulation, physics, dynamics, contact, friction, sim2real, fidelity]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚体动力学算法（ABA/RNEA）→ 接触/摩擦模型 → 执行器模型四层物理保真度的统一入口，串起各层对 sim2real gap 的贡献、建模成本与取舍，收纳分散的动力学/接触/摩擦/可微仿真概念页。"
 ---
 
@@ -38,7 +38,7 @@ summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚�
 |------|----------|----------|
 | Query | 四层保真度端到端取舍决策树 | [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) |
 | 概念 | 保真度 ↔ sim2real gap 因果 | [Physics Fidelity ↔ Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md) |
-| ① 几何 | URDF 几何/惯量描述 | [URDF 描述](../concepts/urdf-robot-description.md) |
+| ① 几何 | URDF 几何/惯量描述 | [URDF 描述](../concepts/urdf-robot-description.md) · [连杆惯量对照真机](../queries/urdf-link-inertia-real-robot-check.md) |
 | ② 动力学 | ABA/RNEA 递归算法 | [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md) |
 | ③ 接触/摩擦 | 接触与关节摩擦建模 | [Contact Dynamics](../concepts/contact-dynamics.md) · [Joint Friction Models](../concepts/joint-friction-models.md) |
 | ④ 可微/补偿 | 可微仿真与摩擦补偿 | [Differentiable Simulation](../concepts/differentiable-simulation.md) · [Friction Compensation](../concepts/friction-compensation.md) |
@@ -57,6 +57,7 @@ summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚�
 - [Friction Compensation](../concepts/friction-compensation.md)
 - [Differentiable Simulation](../concepts/differentiable-simulation.md)
 - [URDF 描述](../concepts/urdf-robot-description.md)
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md)
 - [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)

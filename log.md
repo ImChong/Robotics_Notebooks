@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/papers/urdf_link_inertia_real_robot_check.md — URDF 连杆惯量对照真机：规范/CAD 符号/物理一致性/称重与 g(q)；升格 wiki/queries/urdf-link-inertia-real-robot-check.md
+
 ## [2026-09-14] lint | 清零全库 22 条信息型预警：15 篇 paper-* 补「方法/评测/对比」三段式、FolDeX/FoldNet++ 补数据集速查四维、3 页补感知栈枢纽回链、paper-gpt-6-astra 补 venue/code、model 归入已覆盖术语
 
 ## [2026-09-14] ingest | sources/papers/robolab_arxiv_2604_09860.md + sources/sites/williamtheisen-ai-exploring.md — 接入 RoboLab 仿真评测基准与 William Theisen 交互式 AI 学习枢纽

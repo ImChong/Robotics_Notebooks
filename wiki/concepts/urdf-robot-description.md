@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, urdf, kinematics, dynamics, modeling, ros]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 related:
   - ../entities/freecad.md
   - ../entities/pinocchio.md
@@ -17,6 +17,7 @@ related:
   - ../entities/awesome-robot-descriptions.md
   - ../entities/fiveages-sim-robot-descriptions.md
   - ../entities/urdf-files-dataset.md
+  - ../queries/urdf-link-inertia-real-robot-check.md
   - ../entities/paper-apollo-blender.md
   - ../comparisons/robot-description-catalogs.md
 sources:
@@ -24,6 +25,7 @@ sources:
   - ../../sources/repos/dynibo.md
   - ../../sources/repos/robot-descriptions-py.md
   - ../../sources/repos/urdf_files_dataset.md
+  - ../../sources/papers/urdf_link_inertia_real_robot_check.md
 summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式；四足课程从 17-link 树解析入手，理解 n_q 与 n_v 差异是动力学编程的前提。"
 ---
 
@@ -68,7 +70,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 
 1. 厂商提供 URDF（如 Unitree / Zsibot）
 2. 导入 [Pinocchio](../entities/pinocchio.md) / [Dynibo](../entities/dynibo.md) / MuJoCo / MATRiX（Dynibo 仅树状 revolute/continuous/prismatic/fixed）
-3. 核对惯量、关节轴向与实机一致
+3. 核对惯量、关节轴向与实机一致（分层抽检见 [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md)）
 4. SysID 修正关键参数（摩擦、转子惯量）
 
 工具：[FreeCAD](../entities/freecad.md)（参数化 CAD 与 STEP 导出）、[URDF Studio](../entities/urdf-studio.md)、[step2urdf](../entities/step2urdf.md)。现成开源描述的选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)：Python 实验用 [robot_descriptions.py](../entities/robot-descriptions-py.md)，ROS 2 / 国内新机用 [fiveages-sim](../entities/fiveages-sim-robot-descriptions.md)，parser 回归用冻结的 [URDF Files Dataset](../entities/urdf-files-dataset.md)。
@@ -92,6 +94,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 - [robot_descriptions.py](../entities/robot-descriptions-py.md)
 - [URDF Files Dataset](../entities/urdf-files-dataset.md) — 322 Bundle 上的 xacro / 解析失败 / 跨源重复统计
 - [APOLLO Blender](../entities/paper-apollo-blender.md) — URDF/URDD 进 Blender 出论文图，不是仿真导入
+- [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — `<inertial>` 与台秤 / $g(q)$ / 辨识回归的对照清单
 
 ## 推荐继续阅读
 
@@ -104,3 +107,4 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 - [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — 运行时树状 URDF → 运动学/动力学库入口对照
 - [sources/repos/robot-descriptions-py.md](../../sources/repos/robot-descriptions-py.md) — Python 统一加载 190+ URDF/MJCF
 - [sources/repos/urdf_files_dataset.md](../../sources/repos/urdf_files_dataset.md) — RA-L 2024 URDF 语料与解析分析
+- [sources/papers/urdf_link_inertia_real_robot_check.md](../../sources/papers/urdf_link_inertia_real_robot_check.md) — `<inertial>` 规范、CAD 符号与真机对照一手索引

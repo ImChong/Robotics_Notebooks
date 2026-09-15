@@ -3,7 +3,7 @@
 type: entity
 tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational, northwestern]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 related:
   - ./python-robotics.md
   - ./learn-robotics-qqfly-guide.md
