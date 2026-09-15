@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/papers/wiyh_arxiv_2512_24310.md — WIYH 论文实体：Oracle Suite + ~1045h 数据已开源，硬件/FM 待发布
+
 ## [2026-09-15] ingest | sources/sites/humanplus-1000.md — HumanPlus-1000（1000h 同步 ego+SMPL-H/MANO/SLAM）；预览 100 session HF 开源 + MIT viewer；升格 wiki/entities/humanplus-1000-dataset.md
 
 ## [2026-09-15] ingest | sources/papers/urdf_link_inertia_real_robot_check.md — URDF 连杆惯量对照真机：规范/CAD 符号/物理一致性/称重与 g(q)；升格 wiki/queries/urdf-link-inertia-real-robot-check.md

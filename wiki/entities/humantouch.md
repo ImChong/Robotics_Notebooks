@@ -13,7 +13,7 @@ tags:
   - xspark-ai
   - sparklab
 status: complete
-updated: 2026-08-07
+updated: 2026-09-15
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md

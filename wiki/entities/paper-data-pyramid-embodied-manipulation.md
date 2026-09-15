@@ -24,7 +24,7 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
 related:
@@ -46,6 +46,7 @@ related:
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./rekadaily-10k-dataset.md
   - ./paper-ace-data-0.md
+  - ./paper-wiyh.md
 sources:
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/sites/embodied-data-pyramid.md
