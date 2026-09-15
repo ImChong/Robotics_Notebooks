@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -241,70 +241,108 @@ flowchart TD
   in --> enc --> dec --> out
 ```
 
-常见实现：
+常见实现按 **主要贡献轴** 分组如下（同一工作可能跨组，只归入最主要的一组）：
+
+### 奠基工作与开源基线
+
+确立 VLA 范式与可复现起点的工作。
+
 - **RT-2**：把 web-scale VLM 能力迁移到机器人控制
 - **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列
 - **π₀.₇**：在 π 系 VLA 上系统化**多模态提示条件**（子任务语言、片段元数据、控制模态、视觉子目标）以合并异质数据并支持推理时 **steering**；官方报告开箱 dexterity 对标 RL 专精与组合/跨本体泛化迹象（见 [π₀.₇](./pi07-policy.md)）
 - **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程
-- **Arcadia**：把操作 VLA 与 VLN 绑在同一 Qwen2.5-VL 骨干，并用真机反馈写回仿真；公开仓只部分兑现数据生成与训练脚本（见 [Arcadia](../entities/paper-arcadia.md)）
-- **Gemini Robotics 2（闭源对照）**：DeepMind 全身人形 VLA + 公开预览 ER 2 agent + On-Device 快速跨本体；**VLA 权重未开源**，ER 编排样例见 [`robotics-samples`](https://github.com/google-gemini/robotics-samples)（[实体页](../entities/gemini-robotics.md)）
-- **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
 - **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线
 - **VLAct**：在 StarVLA 栈上做 **表征中心持续预训练**（多头共监督 + 部分统一跨本体动作布局）；16 GPU 开源数据达 LIBERO-Plus **82.6%**、未见 GR-1 仅 20% 轨迹超全数据 GR00T-N1.6（见 [VLAct](../entities/paper-vlact.md)，arXiv:2608.27550）
-- **TrAct（UMich / Stanford，arXiv:2608.24101）**：在 π₀.₅ 上扩展 **VLAT** 联合预测动作与 2D 轨迹，**轨迹条件 SVD 世界模型 + VLAC** 闭环选优；LIBERO-INTEGRAL **27%→55%**、真机 **49%→76%**；**代码待发布**（见 [TrAct](../entities/paper-tract.md)）
-- **GIFT / MINERVA / LIBERO-Recover / XR-2（2026-09-04 九篇盘点 + 2026-09-08）**：[GIFT](../entities/paper-gift-intermediate-feature-training.md) 用几何/可供性/目标区域监督中间特征（LIBERO-Plus 79.6/72.6/87.8%，代码待发布）；[MINERVA](../entities/paper-minerva-libero.md) 用 0.54M task-ID 策略量 LIBERO 容量下限（约 95%，CPU 5.1 ms/chunk，已开源）；[LIBERO-Recover](../entities/paper-libero-recover.md) 从 SOTA 真实执行失败构造 2178 恢复场景（RSR 普遍 −50%+，评测栈已开源）；[XR-2](../entities/paper-xr2-bimanual-household.md) 开放 1500 小时双臂家务数据（策略未见）。横切面见 [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
-- **FWBC-VLA（浙大 / 上海 AI Lab 等，arXiv:2609.03889）**：无 F/T 的 HSR-Force 残差同时条件化 π₀.₅ 与轮足底盘补偿；M20S 擦白板终段 **64%**、开门 **52%**；**确认未开源**（见 [FWBC-VLA](../entities/paper-fwbc-vla.md)）
-- **TANGO（北大 / Berkeley / Princeton 等，CoRL 2026，arXiv:2609.09158）**：首个 **全身 VLA** 语言导航——仿真合成路径→全身运动→障碍编辑→RL tracking 监督 **29-DoF** 关节；G1 零样本 cluttered 真机；**截至 2026-09-10 未开源**（见 [TANGO](../entities/paper-tango-vla.md)）
-- **DeCAL（北大 / BAAI，CoRL 2026，arXiv:2609.09119）**：MoT + 接触感知门控 + 视触 **latent co-imagination**；六项真机 mean SR **71%** / PSR **83.4%**；[GitHub](https://github.com/AureleoPKU/DeCAL) + ModelScope 已开源（见 [DeCAL](../entities/paper-decal.md)）
-- **Pelican-Unified 1.0**：在 Qwen3-VL 上叠 **推理末态潜变量 \(z\)** 与 **Wan 系 UFG**，用 **同一扩散去噪** 联合生成未来视频与动作块，语言 / 视频 / 动作损失回传共享表示；定位为 **统一具身智能（UEI）** 闭环而非 VLA+世界模型流水线拼接（见 [Pelican-Unified 1.0](./pelican-unified-1.md)）
-- **mimic-video（Video-Action Model, VAM）**：用 **互联网规模视频扩散骨干**（如 Cosmos-Predict2）在 **潜空间** 形成与语言一致的 **视觉动力学计划**，再以 **流匹配动作解码器** 作 **逆动力学** 输出动作块；论文叙事强调相对传统 VLA 的 **样本效率** 与把瓶颈转移到 **视频表征质量**（见 [mimic-video](./mimic-video.md)）
-- **DeFI**：将 **GFDM（SVD 系前向动力学）** 与 **GIDM（DINO+VQ 自监督逆动力学）** 在混合/无标签视频上 **分开预训练**，下游再 **冻结前向 + 扩散适配器** 耦合微调，缓解 2D 预测与 3D 动作的目标纠缠并放大无动作标签人视频（见 [DeFI](./defi-decoupled-dynamics-vla.md)）
-- **RLDX-1**：在 Qwen3-VL 与 GR00T 系训练栈上引入 **MSAT** 多流扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，并配套图捕获与 RTC 的低延迟推理实现
+
+### 产业通才与大规模预训练
+
+以「大底座 + 万小时级真机数据」为主线的通才模型，多数给出统一动作空间与跨本体配方。
+
+- **Gemini Robotics 2（闭源对照）**：DeepMind 全身人形 VLA + 公开预览 ER 2 agent + On-Device 快速跨本体；**VLA 权重未开源**，ER 编排样例见 [`robotics-samples`](https://github.com/google-gemini/robotics-samples)（[实体页](../entities/gemini-robotics.md)）
 - **Xiaomi-Robotics-0**：**Qwen3-VL-4B + DiT flow matching**；两阶段预训练（**Choice Policies** 扩展 VLM → 冻结 VLM 训 DiT）+ 面向 **异步 action chunk** 的后训练（**Λ 形注意力、前缀随机遮蔽、flow 损失重加权** 等），强调仿真与双臂真机 **吞吐/延迟** 叙事（见 [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md)）
-- **UCAG-P（小米具身智能 × 澳门大学，arXiv:2608.26058）**：共享 **相机系腕/抓取锚点几何**，翻译器再出 80 维稀疏命令；人手当独立 embodiment 直接监督；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%** / LIBERO-Plus 零样本 **82.0%**；**代码 coming soon**（见 [UCAG-P](../entities/paper-ucag-p.md)）
 - **Xiaomi-Robotics-1**：**>100k h UMI 预训练**（VLM **自动状态转移标注**）+ **~10k h 跨本体后训练**；**Qwen3-VL + DiT MoT**（**2B/5B/10B**）；预训练 **数据/模型 scaling** 可预测迁移至 **未见环境开箱** 与 **<10h/任务** 少样本微调（**75%** vs **π₀.₅ 40%**）；**RoboCasa365 / [RoboDojo](../entities/robodojo.md)** 等四基准 SOTA（见 [Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md)）；通用操纵 **官方 sim-and-real 公益榜** 与 **XPolicyLab** 适配见 [RoboDojo](../entities/robodojo.md) / [XPolicyLab](../entities/xpolicylab.md)
 - **Qwen-VLA**：**Qwen3.5-4B + 1.15B DiT flow-matching** 的 **通才** 实例；**操作 + VLN + 轨迹** 同一 checkpoint，**embodiment prompt** 切换平台（见 [Qwen-VLA](../entities/qwen-vla.md)）
-- **Perceptron Isaac 0.5（2026-08）**：**36B-A2.5B** 稀疏 Qwen-family 骨干 + **null-expert** 路由；**FAST + Flow/DiT** 双动作接口；用专有未来 percept 自监督把 **1M h** 无动作视频与 teleop 共训，报告达到同一动作损失所需遥操作 **210×** 下降。代码 Apache 2.0；Hub 权重入库日 **COMING SOON**。**不是** NVIDIA Isaac 仿真栈（见 [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)）
-- **DyPES-VLA（HKUST-GZ / COCO Matrix，arXiv:2608.06374）**：用 **未来帧预测** 学 **共享动力学先验（query）**，再用 **本体特化 MoE** 在 **原生动作空间** 出控，避免手工统一动作格式；LIBERO **98.0%** / RoboCasa-GR1 **59.25%** / RoboTwin **89.02%**，真机三本体均值 **75.6%**（代码 coming soon；见 [DyPES-VLA](../entities/paper-dypes-vla.md)）
 - **Qwen-RobotManip**：通义 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 内 **操作专精** VLA；**80-d 跨本体对齐 + Human-to-Robot 合成 + OOD 榜 north star**，与 Qwen-VLA **同 DiT flow 族** 但分域 scaling 叙事（见 [Qwen-RobotManip](../entities/qwen-robot-manip.md)）；相机系 ΔEEF 对照见 [UCAG-P](../entities/paper-ucag-p.md) 的锚点几何
-- **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）
-- **LLM 监督 VLA（Anthropic Embody，2026-07）：** 通用聊天模型不直接出关节，而是对 **MolmoAct** 的 7 维提案做接受/修改/替换。这把操作成功率从直接控制的个位数抬到可用，但 **所有测试模型仍弱于 VLA 单独跑**；过改会伤分，VLA 不会的新场景上最强模型才有净增益。接口抽象见 [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)，评测床见 [Embody](../entities/anthropic-embody.md)。
-- **MotionWAM vs VLA（Mondo / HKUST，arXiv:2606.09215）**：在 **同 Stage 3 演示 + 同 SONIC 低层** 设定下，**视频世界模型隐状态条件** 的 WAM（76.1%）大幅超过 **GR00T-N1.7**（43.9%）等 VLA 微调基线——说明人形 loco-manip 闭环更依赖 **动力学先验** 而非单独加强 **VLM 语义先验**（见 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)）
-- **Being-H0.7**：用 egocentric 人视频 + 机器人演示，在**潜空间**用未来观测分支监督 **latent world–action** 先验；测试时不滚未来像素，直接输出动作，并常与 **action chunking**、异步缓冲（UAC）组合部署
-- **HumanNet**：百万小时量级 **人中心** 一三人称视频语料 + 策展/标注管线；论文在 LingBot-VLA 设定下给出「**约 1000h** egocentric 人视频持续预训练 vs **约 100h** 真机数据」等受控对比，用于讨论 **人类视频小时** 能否在成本上部分替代早期真机预训练（见 [HumanNet](../entities/humannet.md)；论文 Table 1 相关基准语料索引见 [对照页](../comparisons/humannet-table1-human-video-corpora.md)）
-- **EgoScale**：在 **>20k h** 带 **腕 + 重定向高 DoF 手** 标签的 egocentric 人视频上预训练 **流式 VLA**，给出 **人数据规模 ↔ 验证损失（log-linear）↔ 真机灵巧后训练表现** 的实证链条，并以 **小规模视点对齐的人–机 mid-training** 承接 embodiment gap（见 [EgoScale](./egoscale.md)）
-- **GeoSR（ECCV 2026 Oral）**：在几何 token 注入 VLM 的基线上，用 **Geometry-Unleashing Masking** 与 **Geometry-Guided Fusion** 迫使模型在静态/动态空间推理中真正使用 3D 几何；**VSI-Bench 51.9**、**DSR-Bench 66.1**（见 [GeoSR](../entities/paper-sa-2603-26639-geosr.md)；NUS；**已开源**）
-- **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；**代码与权重已开源**（全量处理后数据待发）（见 [EgoSteer](../entities/paper-egosteer.md)，arXiv:2607.09701）
-- **T-Rex**：在 EgoScale 同族 **人视频预训练** 之上，用 **100 h 触觉同步 play mid-training** 与 **变频率 MoT + 异步触觉 flow matching** 实现 **毫秒级触觉反应**；**12 项双手灵巧真机任务** 宏平均 **65%**，且 **朴素拼接触觉会损害 π₀.₅**（见 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）
-- **Green-VLA**：**L0→L1→R0→R1→R2** 五阶段课程 + **DataQA** + **64 维语义统一动作** + flow-matching 专家；**R2** 用 **IQL 轨迹优化** 与 **源噪声分布 actor** 突破 BC 饱和而不直接 RL 穿 flow；主平台 **Green 人形 32 DoF 上身**（见 [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)，arXiv:2602.00919）
-- **Vesta（planner VLM，非 VLA）**：在 **Qwen3-VL-8B** 上 **SFT 统一** 定位 / VLN / 具身推理 / **带 memory 的子任务规划**，作 **System-2 planner** 向 **Gr00t-N1.6** 等 actor 输出文本子任务；四轴 benchmark 平均超最强单基线 **>20 pt**，R2R-CE SR **55.5%** 逼近 navigation specialist（见 [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md)，arXiv:2606.20905）
-- **MINT（RSS 2026）**：用 **SDAT** 在 **DCT 频域** 做多尺度动作分词，**Intent token（低频全局）** 与 **Execution token（高频残差）** 显式解耦；策略以 **next-scale 自回归** 做意图→执行推理，**MINT-Zero** 支持 **单演示 Intent 注入** 的 one-shot 迁移；LIBERO / LIBERO-Plus / 真机报告强泛化与鲁棒性（见 [MINT](../entities/paper-mint-vla.md)，arXiv:2602.08602）
-- **Evo-1（CVPR 2026）**：**0.77B** 轻量 **InternVL3-1B + cross-modulated DiT flow-matching**；**两阶段训练**（冻 VLM 对齐动作头 → 全量微调）**保持 VLM 语义对齐**；**无机器人数据预训练** 即在 Meta-World **80.6%**、LIBERO **94.8%**、RoboTwin **37.8%** 与 xArm6 真机 **78%**；RTX 4090d **2.3 GB / 16.4 Hz**；**官方 LeRobot 集成**（SO100/SO101，`lerobot-record --policy.path`）（见 [Evo-1](../entities/paper-evo1-lightweight-vla.md)，arXiv:2511.04555）
-- **ROS2SmolVLA（arXiv:2608.23320）**：把 **SmolVLA 450M** 接到 **ROS 2 + UR10e** 做 **本地/边缘** 工业轻量臂拾放，而不是再刷桌面 SO-101；349 episode 笛卡尔速度微调，九场景总体 **77.72%**；**Docker + HF 权重已开源**（见 [ROS2SmolVLA](../entities/paper-ros2smolvla.md)）
-- **Indi（arXiv:2608.23478）**：冻结教师 VLM 把示范片段的 **局部目标** 蒸馏进动作解码器中间态；部署零教师。GR00T-N1.7 SimplerEnv-Bridge **64.3→84.7%**、真机 **62.0→68.7%**；**项目页未列训练仓**（见 [Indi](../entities/paper-indi.md)）
-- **GlanceWAM（arXiv:2608.23927）**：视频 WAM 把想象移出控制关键路径，动作头潜空间 **48 ms**；RoboCasa **72.2%**、LIBERO **99.0%**；**MIT + HF 已开源**（见 [GlanceWAM](../entities/paper-glancewam.md)）
-- **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **89.0%**、RoboDojo 真机 **37.6/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
-- **ECoT（CoRL 2024，arXiv:2407.08693）**：奠基 **具身思维链**——VLA 在动作前生成 plan/subtask/运动与 bbox 等接地推理；OpenVLA **+28%** 绝对成功率；**已开源**（见 [ECoT](../entities/paper-ecot.md)）
-- **Fast ECoT（arXiv:2506.07639）**：推理时缓存复用高层 ECoT + 并行模块化生成 + 异步调度；**最高 7.5×** 降延迟、无需重训；**MIT 已开源**（见 [Fast ECoT](../entities/paper-fast-ecot.md)）
-- **M3（arXiv:2608.22419）**：训练期结构化遮蔽腕相机/语言/查询，推理结构不变；RoboTwin Clean **+21.7**，真机长时程完整任务 **+30**；**未开源**（见 [M3](../entities/paper-m3-modality-masking.md)）
-- **FabriVLA（arXiv:2607.08575）**：**0.89B** 轻量 **InternVL3.5-1B + gated self-attention flow-matching + shallow VLM layer fusion**；在公开 **Evo-1 Meta-World** 数据上 **单阶段联合微调**（DeepSpeed FP32 master）；MT50 **tier-avg 90.0%** / episode **92.0%**；代码与 93k 权重已开源（见 [FabriVLA](../entities/paper-fabrivla.md)）；多基准相对位次可对照 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)
-- **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
-- **GaP staging（非纯 VLA，但直接消费 VLA）**：[GaP](../entities/paper-gap-graph-as-policy.md) 在 [变体自动化](../concepts/variational-automation.md) benchmark 上用 **计算图** 做感知/相机位姿等 **结构化 staging**，再 handoff **π₀.₅ / MolmoAct2**；大位姿变化列裸 VLA **~0.20**，**π₀.₅ w/ GaP** 可达 **0.66+**（Pack varied）——说明 **可靠性 gap** 有时靠 **图式工程壳** 而非单点放大 VLA 数据
-- **InternVLA-A1.5**：**Qwen3.5-2B MoT VLM + 460M unified expert**；Stage1 **持续 VQA/子任务/FAST** 共训保语义，Stage2 用 **50 foresight token** 查询 **冻结 WAN2.2** 潜式未来 + **flow matching** 连续动作；**1.2M** 机器人 + **3M** InternVLA-M1 预训练；**六套仿真全榜领先**，真机 **组合指令 OOD 绑定** 与 **13 步 MOF** 显著超 **π₀.₅/Motus**；**训练用世界模型、部署不滚像素**（~0.1s/步）（见 [InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md)，arXiv:2607.04988）
+- **Perceptron Isaac 0.5（2026-08）**：**36B-A2.5B** 稀疏 Qwen-family 骨干 + **null-expert** 路由；**FAST + Flow/DiT** 双动作接口；用专有未来 percept 自监督把 **1M h** 无动作视频与 teleop 共训，报告达到同一动作损失所需遥操作 **210×** 下降。代码 Apache 2.0；Hub 权重入库日 **COMING SOON**。**不是** NVIDIA Isaac 仿真栈（见 [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)）
 - **G0.5（星海图）**：**Qwen3.5-2B 单一解码器** 在同一自回归流里发 **CoT + 动作码**（VLM-as-Actor）；跨本体 **RVQ ActionCodec**（27 维）+ 视觉记忆；R1 真机 **76.7%**、LIBERO **98.9%**、RoboTwin **93.3%**；**GitHub + HF 已开源**（Community License）（见 [G0.5](../entities/paper-galaxea-g05.md)，arXiv:2608.11739）
-- **JoyAI-RA 0.5（京东 Joy Future Academy）**：**VLWA** = VLM + **LAC-WM** + Flow Action Expert；**隐式 latent-action** 吃无标签人视频、**显式 130-D** 规范动作吃可靠轨迹；**内–外环 RL**；AgiBot G1 seen **92.0** / unseen **75.5**，人视频缩放未见饱和；**未开源**（见 [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md)，arXiv:2608.05674）
-- **RoboInter1.5**：**230k+** episode 稠密中间表示套件（Data / VQA / VLM / VLA）+ **IR 条件世界模型**；三种 plan-then-execute（IC/EC/Modular + F-CoT）；**数据与 VLM 已开源**，VLA 权重与 World 代码待齐（见 [RoboInter1.5](../entities/paper-robointer-1-5.md)，arXiv:2607.18709）
 - **RynnBrain 1.1 / RynnBrain-VLA（阿里达摩院）**：**Qwen3.5** 系 **2B/9B/122B-A10B** 具身基础模型 + **接触点 / native 3D**；VLA 用 **81 维统一动作空间 + embodiment mask + flow matching + RTC**，在 **G1 / Astribot / Tianji-Wuji** 上同配方优于 **Qwen-Based-VLA** 与 **π₀.₅ / GR00T N1.7**；**基础模型权重与推理已开源**，VLA 训练栈未见公开（见 [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md)，arXiv:2607.17977）
 - **ACE-Brain-0.5（大晓 Ace Robotics）**：**Qwen3-VL 8B** 统一具身脑，把 **空间感知 / 规划 / 导航·操作 / 进度估计** 收进同一闭环；**SSR+**（含 Reactivate）合并异构接口；LIBERO **98.2%**、SimplerEnv-Bridge VLA 变体 **82.3%**、RBM progress VOC 强；**HF 权重已开源**，训练栈未见（见 [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md)，arXiv:2607.04426）
 - **PhysBrain 1.5（DeepCybo / 中关村学院 / ZGCI）**：**Qwen3-VL 2B/8B** 统一 **具身理解 + ActionPiece 动作块 + 未来 RGB/depth/mask 预测**；28 benchmark Overall **72.5** 开源 SOTA；人类交互视频预训练 + 人类/真机/仿真 SFT；**HF 权重 + PhysBrainEvalKit 已开源**，训练栈未见（见 [PhysBrain 1.5](../entities/paper-sa-2512-16793-physbrain-human-egocentric-data-as-a-bridge-from.md)，技术报告 2026 / 前作 arXiv:2512.16793）
 - **LingBot-VLA 1.0**：**Qwen2.5-VL-3B + flow 动作头**；**2 万小时**、**9 类双臂** 真机预训练；开源 **4B** 权重（含 depth 变体）、**GM-100** 数据与 **LeRobot v3.0** 后训练范例；RoboTwin 仿真平均 SR 超 **π₀.₅**（见 [LingBot-VLA](../entities/lingbot-vla.md)，arXiv:2601.18692）
 - **LingBot-VLA 2.0**：**Qwen3-VL-4B + 稀疏 MoE action expert**；约 **6 万小时** 过滤预训练（**5 万 h** 机器人 ×**20** 本体 + **1 万 h** egocentric 人视频）、**55 维统一全身动作** 与 **Dual-Query 深度/视频蒸馏**；GM-100 / 长程移动操作 **generalist** 评测超 **π₀.₅**、**GR00T N1.7** 与 **1.0**；开源 **6B 权重** 与真机部署脚本（见 [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md)，arXiv:2607.06403）
+- **Dexmal DM0.5（OpenDM）**：**Gemma3-4B VLM + 680M Flow-Matching Action Expert**；**~60s 历史上下文抽象**、**11 类具身 CoT** 与 **DP 动态轨迹对齐**；**已开源** [opendm](https://github.com/dexmal/opendm) 训练/推理与 **DM05** 系列权重（LIBERO **99.0%**、RoboTwin2 Clean/Rand **93.6%/93.3%**、Table30v2 **43% SR**）（见 [Dexmal DM0.5](../entities/dexmal-dm05.md)）
+
+### 世界模型 / 视频耦合（WAM 侧）
+
+把未来观测预测与动作生成耦合训练；分类边界见下文「与 World Action Models（WAM）的关系」。
+
+- **Pelican-Unified 1.0**：在 Qwen3-VL 上叠 **推理末态潜变量 \(z\)** 与 **Wan 系 UFG**，用 **同一扩散去噪** 联合生成未来视频与动作块，语言 / 视频 / 动作损失回传共享表示；定位为 **统一具身智能（UEI）** 闭环而非 VLA+世界模型流水线拼接（见 [Pelican-Unified 1.0](./pelican-unified-1.md)）
+- **mimic-video（Video-Action Model, VAM）**：用 **互联网规模视频扩散骨干**（如 Cosmos-Predict2）在 **潜空间** 形成与语言一致的 **视觉动力学计划**，再以 **流匹配动作解码器** 作 **逆动力学** 输出动作块；论文叙事强调相对传统 VLA 的 **样本效率** 与把瓶颈转移到 **视频表征质量**（见 [mimic-video](./mimic-video.md)）
+- **DeFI**：将 **GFDM（SVD 系前向动力学）** 与 **GIDM（DINO+VQ 自监督逆动力学）** 在混合/无标签视频上 **分开预训练**，下游再 **冻结前向 + 扩散适配器** 耦合微调，缓解 2D 预测与 3D 动作的目标纠缠并放大无动作标签人视频（见 [DeFI](./defi-decoupled-dynamics-vla.md)）
+- **TrAct（UMich / Stanford，arXiv:2608.24101）**：在 π₀.₅ 上扩展 **VLAT** 联合预测动作与 2D 轨迹，**轨迹条件 SVD 世界模型 + VLAC** 闭环选优；LIBERO-INTEGRAL **27%→55%**、真机 **49%→76%**；**代码待发布**（见 [TrAct](../entities/paper-tract.md)）
+- **MotionWAM vs VLA（Mondo / HKUST，arXiv:2606.09215）**：在 **同 Stage 3 演示 + 同 SONIC 低层** 设定下，**视频世界模型隐状态条件** 的 WAM（76.1%）大幅超过 **GR00T-N1.7**（43.9%）等 VLA 微调基线——说明人形 loco-manip 闭环更依赖 **动力学先验** 而非单独加强 **VLM 语义先验**（见 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)）
+- **Being-H0.7**：用 egocentric 人视频 + 机器人演示，在**潜空间**用未来观测分支监督 **latent world–action** 先验；测试时不滚未来像素，直接输出动作，并常与 **action chunking**、异步缓冲（UAC）组合部署
+- **GlanceWAM（arXiv:2608.23927）**：视频 WAM 把想象移出控制关键路径，动作头潜空间 **48 ms**；RoboCasa **72.2%**、LIBERO **99.0%**；**MIT + HF 已开源**（见 [GlanceWAM](../entities/paper-glancewam.md)）
+- **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **89.0%**、RoboDojo 真机 **37.6/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
+- **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
+- **InternVLA-A1.5**：**Qwen3.5-2B MoT VLM + 460M unified expert**；Stage1 **持续 VQA/子任务/FAST** 共训保语义，Stage2 用 **50 foresight token** 查询 **冻结 WAN2.2** 潜式未来 + **flow matching** 连续动作；**1.2M** 机器人 + **3M** InternVLA-M1 预训练；**六套仿真全榜领先**，真机 **组合指令 OOD 绑定** 与 **13 步 MOF** 显著超 **π₀.₅/Motus**；**训练用世界模型、部署不滚像素**（~0.1s/步）（见 [InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md)，arXiv:2607.04988）
+- **JoyAI-RA 0.5（京东 Joy Future Academy）**：**VLWA** = VLM + **LAC-WM** + Flow Action Expert；**隐式 latent-action** 吃无标签人视频、**显式 130-D** 规范动作吃可靠轨迹；**内–外环 RL**；AgiBot G1 seen **92.0** / unseen **75.5**，人视频缩放未见饱和；**未开源**（见 [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md)，arXiv:2608.05674）
 - **τ₀-VLA**：**分层子任务 + 世界模型引导 TTC**（beam search 比较想象后果）；低层 **Qwen3.5 + MoT flow**、**40 维** 统一动作、**40,115 h** 预训练；长程四任务分层 **45.0%** vs 整任务 **27.5%**；低层 **已开源**、高层 TTC **逐步发布**（见 [τ₀-VLA](../entities/paper-tau0-vla.md)，arXiv:2608.16885）
-- **Q-Planning**：**冻结 BC/VLA + 小型离策略 Q-chunking**；推理 **Q 加权平均** N 个 BC flow 采样；在线 **只微调 Q**、吸收失败 rollout；LIBERO-10 **93→99%**、双臂真机 stack-cups **40→90%**；**已开源**（见 [Q-Planning](../entities/paper-qplanning.md)，arXiv:2608.21204）
-- **ARLI**：**异步 VLA + 延迟感知 DSRL**——用已承诺中间动作与 VLM 完成后的中间观测恢复近马尔可夫性；真机双臂 UR5e 三任务约 **40%→近 100%**（100–125 episode）；**确认未开源**（见 [ARLI](../entities/paper-arli.md)，arXiv:2608.23831）
 - **ForeTime-VLA**：从 **Fast-WAM 教师** 蒸馏 **64-D 未来码** 到因果 **π₀.₅**（4 future + 1 phase token）；传送带真机 **44/90** vs π₀.₅ **23/90**；**未开源**（见 [ForeTime-VLA](../entities/paper-foretime-vla.md)，arXiv:2608.20735）
 - **Lumo-2**：**Qwen3.5-4B latent WAM**——**潜空间世界动力学 φ** + **三阶段动作–视觉–语言预对齐**、历史动作记忆与 **BAR 2.71×** 推理加速；**Astribot S1** 上 **22 项** 挑战真机任务全面超 **π₀.₅/Fast-WAM**；人–机共训无需专用迁移机制（见 [Lumo-2](../entities/lumo-2.md)，arXiv:2607.11270）；[Philia](../entities/philia.md) 将其作为 gateway capability 部署
-- **Dexmal DM0.5（OpenDM）**：**Gemma3-4B VLM + 680M Flow-Matching Action Expert**；**~60s 历史上下文抽象**、**11 类具身 CoT** 与 **DP 动态轨迹对齐**；**已开源** [opendm](https://github.com/dexmal/opendm) 训练/推理与 **DM05** 系列权重（LIBERO **99.0%**、RoboTwin2 Clean/Rand **93.6%/93.3%**、Table30v2 **43% SR**）（见 [Dexmal DM0.5](../entities/dexmal-dm05.md)）
+
+### 人类视频与跨本体数据规模化
+
+用 egocentric 人视频、跨本体对齐替换或前置昂贵真机遥操作数据。
+
+- **HumanNet**：百万小时量级 **人中心** 一三人称视频语料 + 策展/标注管线；论文在 LingBot-VLA 设定下给出「**约 1000h** egocentric 人视频持续预训练 vs **约 100h** 真机数据」等受控对比，用于讨论 **人类视频小时** 能否在成本上部分替代早期真机预训练（见 [HumanNet](../entities/humannet.md)；论文 Table 1 相关基准语料索引见 [对照页](../comparisons/humannet-table1-human-video-corpora.md)）
+- **EgoScale**：在 **>20k h** 带 **腕 + 重定向高 DoF 手** 标签的 egocentric 人视频上预训练 **流式 VLA**，给出 **人数据规模 ↔ 验证损失（log-linear）↔ 真机灵巧后训练表现** 的实证链条，并以 **小规模视点对齐的人–机 mid-training** 承接 embodiment gap（见 [EgoScale](./egoscale.md)）
+- **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；**代码与权重已开源**（全量处理后数据待发）（见 [EgoSteer](../entities/paper-egosteer.md)，arXiv:2607.09701）
+- **T-Rex**：在 EgoScale 同族 **人视频预训练** 之上，用 **100 h 触觉同步 play mid-training** 与 **变频率 MoT + 异步触觉 flow matching** 实现 **毫秒级触觉反应**；**12 项双手灵巧真机任务** 宏平均 **65%**，且 **朴素拼接触觉会损害 π₀.₅**（见 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）
+- **UCAG-P（小米具身智能 × 澳门大学，arXiv:2608.26058）**：共享 **相机系腕/抓取锚点几何**，翻译器再出 80 维稀疏命令；人手当独立 embodiment 直接监督；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%** / LIBERO-Plus 零样本 **82.0%**；**代码 coming soon**（见 [UCAG-P](../entities/paper-ucag-p.md)）
+- **DyPES-VLA（HKUST-GZ / COCO Matrix，arXiv:2608.06374）**：用 **未来帧预测** 学 **共享动力学先验（query）**，再用 **本体特化 MoE** 在 **原生动作空间** 出控，避免手工统一动作格式；LIBERO **98.0%** / RoboCasa-GR1 **59.25%** / RoboTwin **89.02%**，真机三本体均值 **75.6%**（代码 coming soon；见 [DyPES-VLA](../entities/paper-dypes-vla.md)）
+
+### 中间表征、推理与动作表示
+
+不换骨干，改中间监督、思维链或动作 tokenization 的路线。
+
+- **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
+- **GIFT / MINERVA / LIBERO-Recover / XR-2（2026-09-04 九篇盘点 + 2026-09-08）**：[GIFT](../entities/paper-gift-intermediate-feature-training.md) 用几何/可供性/目标区域监督中间特征（LIBERO-Plus 79.6/72.6/87.8%，代码待发布）；[MINERVA](../entities/paper-minerva-libero.md) 用 0.54M task-ID 策略量 LIBERO 容量下限（约 95%，CPU 5.1 ms/chunk，已开源）；[LIBERO-Recover](../entities/paper-libero-recover.md) 从 SOTA 真实执行失败构造 2178 恢复场景（RSR 普遍 −50%+，评测栈已开源）；[XR-2](../entities/paper-xr2-bimanual-household.md) 开放 1500 小时双臂家务数据（策略未见）。横切面见 [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
+- **DeCAL（北大 / BAAI，CoRL 2026，arXiv:2609.09119）**：MoT + 接触感知门控 + 视触 **latent co-imagination**；六项真机 mean SR **71%** / PSR **83.4%**；[GitHub](https://github.com/AureleoPKU/DeCAL) + ModelScope 已开源（见 [DeCAL](../entities/paper-decal.md)）
+- **GeoSR（ECCV 2026 Oral）**：在几何 token 注入 VLM 的基线上，用 **Geometry-Unleashing Masking** 与 **Geometry-Guided Fusion** 迫使模型在静态/动态空间推理中真正使用 3D 几何；**VSI-Bench 51.9**、**DSR-Bench 66.1**（见 [GeoSR](../entities/paper-sa-2603-26639-geosr.md)；NUS；**已开源**）
+- **MINT（RSS 2026）**：用 **SDAT** 在 **DCT 频域** 做多尺度动作分词，**Intent token（低频全局）** 与 **Execution token（高频残差）** 显式解耦；策略以 **next-scale 自回归** 做意图→执行推理，**MINT-Zero** 支持 **单演示 Intent 注入** 的 one-shot 迁移；LIBERO / LIBERO-Plus / 真机报告强泛化与鲁棒性（见 [MINT](../entities/paper-mint-vla.md)，arXiv:2602.08602）
+- **Indi（arXiv:2608.23478）**：冻结教师 VLM 把示范片段的 **局部目标** 蒸馏进动作解码器中间态；部署零教师。GR00T-N1.7 SimplerEnv-Bridge **64.3→84.7%**、真机 **62.0→68.7%**；**项目页未列训练仓**（见 [Indi](../entities/paper-indi.md)）
+- **ECoT（CoRL 2024，arXiv:2407.08693）**：奠基 **具身思维链**——VLA 在动作前生成 plan/subtask/运动与 bbox 等接地推理；OpenVLA **+28%** 绝对成功率；**已开源**（见 [ECoT](../entities/paper-ecot.md)）
+- **Fast ECoT（arXiv:2506.07639）**：推理时缓存复用高层 ECoT + 并行模块化生成 + 异步调度；**最高 7.5×** 降延迟、无需重训；**MIT 已开源**（见 [Fast ECoT](../entities/paper-fast-ecot.md)）
+- **M3（arXiv:2608.22419）**：训练期结构化遮蔽腕相机/语言/查询，推理结构不变；RoboTwin Clean **+21.7**，真机长时程完整任务 **+30**；**未开源**（见 [M3](../entities/paper-m3-modality-masking.md)）
+- **RoboInter1.5**：**230k+** episode 稠密中间表示套件（Data / VQA / VLM / VLA）+ **IR 条件世界模型**；三种 plan-then-execute（IC/EC/Modular + F-CoT）；**数据与 VLM 已开源**，VLA 权重与 World 代码待齐（见 [RoboInter1.5](../entities/paper-robointer-1-5.md)，arXiv:2607.18709）
+
+### 轻量化与工程部署
+
+亚十亿参数、边缘算力与现有机器人栈（ROS 2 / LeRobot）集成。
+
+- **Evo-1（CVPR 2026）**：**0.77B** 轻量 **InternVL3-1B + cross-modulated DiT flow-matching**；**两阶段训练**（冻 VLM 对齐动作头 → 全量微调）**保持 VLM 语义对齐**；**无机器人数据预训练** 即在 Meta-World **80.6%**、LIBERO **94.8%**、RoboTwin **37.8%** 与 xArm6 真机 **78%**；RTX 4090d **2.3 GB / 16.4 Hz**；**官方 LeRobot 集成**（SO100/SO101，`lerobot-record --policy.path`）（见 [Evo-1](../entities/paper-evo1-lightweight-vla.md)，arXiv:2511.04555）
+- **FabriVLA（arXiv:2607.08575）**：**0.89B** 轻量 **InternVL3.5-1B + gated self-attention flow-matching + shallow VLM layer fusion**；在公开 **Evo-1 Meta-World** 数据上 **单阶段联合微调**（DeepSpeed FP32 master）；MT50 **tier-avg 90.0%** / episode **92.0%**；代码与 93k 权重已开源（见 [FabriVLA](../entities/paper-fabrivla.md)）；多基准相对位次可对照 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)
+- **ROS2SmolVLA（arXiv:2608.23320）**：把 **SmolVLA 450M** 接到 **ROS 2 + UR10e** 做 **本地/边缘** 工业轻量臂拾放，而不是再刷桌面 SO-101；349 episode 笛卡尔速度微调，九场景总体 **77.72%**；**Docker + HF 权重已开源**（见 [ROS2SmolVLA](../entities/paper-ros2smolvla.md)）
+- **RLDX-1**：在 Qwen3-VL 与 GR00T 系训练栈上引入 **MSAT** 多流扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，并配套图捕获与 RTC 的低延迟推理实现
+
+### 人形全身与分层编排
+
+全身自由度、力/接触补偿，或把 VLA 当作被外壳调度的一段能力。
+
+- **FWBC-VLA（浙大 / 上海 AI Lab 等，arXiv:2609.03889）**：无 F/T 的 HSR-Force 残差同时条件化 π₀.₅ 与轮足底盘补偿；M20S 擦白板终段 **64%**、开门 **52%**；**确认未开源**（见 [FWBC-VLA](../entities/paper-fwbc-vla.md)）
+- **TANGO（北大 / Berkeley / Princeton 等，CoRL 2026，arXiv:2609.09158）**：首个 **全身 VLA** 语言导航——仿真合成路径→全身运动→障碍编辑→RL tracking 监督 **29-DoF** 关节；G1 零样本 cluttered 真机；**截至 2026-09-10 未开源**（见 [TANGO](../entities/paper-tango-vla.md)）
+- **Green-VLA**：**L0→L1→R0→R1→R2** 五阶段课程 + **DataQA** + **64 维语义统一动作** + flow-matching 专家；**R2** 用 **IQL 轨迹优化** 与 **源噪声分布 actor** 突破 BC 饱和而不直接 RL 穿 flow；主平台 **Green 人形 32 DoF 上身**（见 [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)，arXiv:2602.00919）
+- **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）
+- **LLM 监督 VLA（Anthropic Embody，2026-07）：** 通用聊天模型不直接出关节，而是对 **MolmoAct** 的 7 维提案做接受/修改/替换。这把操作成功率从直接控制的个位数抬到可用，但 **所有测试模型仍弱于 VLA 单独跑**；过改会伤分，VLA 不会的新场景上最强模型才有净增益。接口抽象见 [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)，评测床见 [Embody](../entities/anthropic-embody.md)。
+- **Vesta（planner VLM，非 VLA）**：在 **Qwen3-VL-8B** 上 **SFT 统一** 定位 / VLN / 具身推理 / **带 memory 的子任务规划**，作 **System-2 planner** 向 **Gr00t-N1.6** 等 actor 输出文本子任务；四轴 benchmark 平均超最强单基线 **>20 pt**，R2R-CE SR **55.5%** 逼近 navigation specialist（见 [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md)，arXiv:2606.20905）
+- **GaP staging（非纯 VLA，但直接消费 VLA）**：[GaP](../entities/paper-gap-graph-as-policy.md) 在 [变体自动化](../concepts/variational-automation.md) benchmark 上用 **计算图** 做感知/相机位姿等 **结构化 staging**，再 handoff **π₀.₅ / MolmoAct2**；大位姿变化列裸 VLA **~0.20**，**π₀.₅ w/ GaP** 可达 **0.66+**（Pack varied）——说明 **可靠性 gap** 有时靠 **图式工程壳** 而非单点放大 VLA 数据
+
+### 导航与驾驶域（非操作 VLA）
+
+同一范式在导航 / 驾驶域的实例，动作空间与评测与桌面操作不同，勿直接横比。
+
+- **Arcadia**：把操作 VLA 与 VLN 绑在同一 Qwen2.5-VL 骨干，并用真机反馈写回仿真；公开仓只部分兑现数据生成与训练脚本（见 [Arcadia](../entities/paper-arcadia.md)）
 - **DA-Nav（导航 VLM，非操作 VLA）**：把城市户外导航写成 **商业方向指令 + 图像平面离散网格 grounding + CoT 偏离恢复**（Qwen2.5-VL-7B LoRA）；相对连续 waypoint / 分层 NaVILA，强调 **动作表示对齐 2D 视觉推理** 与 **recovery 数据**；CARLA SoTA 并零样本 Go2/人形（见 [DA-Nav](../entities/paper-da-nav.md)，arXiv:2607.11638；**暂未开源**）
 - **FSD-VLN（空中导航双系统，非操作 VLA）**：把 [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) 的 VLM+DiT 迁到 UAV VLN——慢路冻结 VLM 写 VLSF，快路短视界 DiT 出 8 类离散飞行动作；未见相对自复现 OpenFly SR 5.1%→13.6%，单步 402→176 ms（见 [FSD-VLN](../entities/paper-fsd-vln.md)，arXiv:2607.08359；**确认未开源、无真机**）
 - **Green for Go（导航 VLA 推理时 overlay，非新模型）**：SegFormer **绿=可通行 / 红=不可通行** 喂冻结 **OmniVLA**；Grand Tour 最远航点误差 **−27–44%**，但归一化后主要是轨迹缩短约 **30%**；图像目标与 **stop** 几乎无增益（见 [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)，arXiv:2607.05122；**确认未开源**）。**勿与** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) **混淆**。
@@ -399,6 +437,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - **同结果组 quality GRPO：** [Prism-GRPO](../entities/paper-prism-grpo.md)（arXiv:2608.17423）在 success+\(\lambda q\) 下把 all-success/all-failure 组拆成 execution-quality 谱，RoboTwin rollout 最多 **−56%**；基座 [SimpleVLA-RL](https://github.com/PRIME-RL/SimpleVLA-RL) 开源、Prism 补丁未单独发布。
 - **阶段条件 GRPO：** [Temporal GRPO](../entities/paper-temporal-grpo.md)（arXiv:2608.13026）修结果驱动 VLA-RL 的**轨迹级信用混叠**——只在进入同一阶段的 rollout 之间比相对优势并写回对应区间；RoboTwin 宏平均 **75.8%**（+7.0 vs SimpleVLA-RL）；**确认未开源**，勿与 TGRPO 混名。
 - **Chunk 策略自动接管：** [AutoIntervene](../entities/paper-autointervene.md)（arXiv:2608.07065）用 visual-action 支持分位数校准双向人机切换，把干预段变成选择性 DAgger；九项双臂真机上 R2 平均 **80%** 成功且操作员时间低于人工盯梢。
+- **Q-Planning**：**冻结 BC/VLA + 小型离策略 Q-chunking**；推理 **Q 加权平均** N 个 BC flow 采样；在线 **只微调 Q**、吸收失败 rollout；LIBERO-10 **93→99%**、双臂真机 stack-cups **40→90%**；**已开源**（见 [Q-Planning](../entities/paper-qplanning.md)，arXiv:2608.21204）
+- **ARLI**：**异步 VLA + 延迟感知 DSRL**——用已承诺中间动作与 VLM 完成后的中间观测恢复近马尔可夫性；真机双臂 UR5e 三任务约 **40%→近 100%**（100–125 episode）；**确认未开源**（见 [ARLI](../entities/paper-arli.md)，arXiv:2608.23831）
 
 选型时区分：**数据采集质量**（见 [Teleoperation](../tasks/teleoperation.md)）与 **后训练如何从次优经验中提取策略**（见 [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)）。
 
