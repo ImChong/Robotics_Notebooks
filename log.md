@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md — RobotsHub MoRE 万字原理→代码深读；交叉补强 paper-amp-survey-08-more 与 sources/repos/more.md（论文/代码差异、调用链）；修正 paper source「Stage 2 冻结 base」表述
+
 ## [2026-09-15] ingest | sources/repos/understand-anything.md — 接入 Understand Anything（MIT 已开源）；代码库/wiki 交互知识图插件；新建实体并交叉 graphify / LLM Wiki
 
 ## [2026-09-15] ingest | sources/papers/freetoken_arxiv_2608_16157.md — 接入 FreeToken 边缘 MoE serving（已开源 FlashML-org/FreeToken）；新建 paper-freetoken 实体并交叉 kimi-k3 / dsh harness

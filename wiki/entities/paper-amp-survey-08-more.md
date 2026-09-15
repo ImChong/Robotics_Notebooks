@@ -27,6 +27,7 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md
 ---
 
 # MoRE：复杂地形上的人形多步态残差专家混合
@@ -135,6 +136,22 @@ flowchart TB
 
 详见 [sources/repos/more.md](../../sources/repos/more.md)。
 
+### 代码导读（RobotsHub 原理→代码万字深读）
+
+官方仓阅读顺序（与 [TeleHuman/MoRE](https://github.com/TeleHuman/MoRE) 一致）：
+
+| 文件 | 作用 |
+|------|------|
+| `legged_gym/envs/g1_loco/g1_16dof_moe_residual_config.py` | `num_gait=3`、`num_residual_net=3`、`num_amp_frames=5`、深度/相机 DR、40k iter 与 gait 奖励权重 |
+| `rsl_rl/rsl_rl/modules/actor_critic_resi_moe.py` | latent 残差 MoE 前向：`gate → weighted experts → z'`，再与 base actor 特征相加进 `actor_head` |
+| `rsl_rl/rsl_rl/runners/moe_residual_on_policy_runner_multi.py` | 每步态一判别器；`disc_reward * gait_commands[:, idx]` 路由风格奖励 |
+| `rsl_rl/rsl_rl/algorithms/resi_moe_ppo_multi.py` | 先更新多判别器，再 PPO 更新 actor/critic + 残差模块 |
+| `rsl_rl/rsl_rl/algorithms/amp_discriminator_multi.py` | `clamp(1 - 0.25*(D-1)², min=0)` 风格奖励形 |
+
+**论文 vs 代码（复现必记）：** 论文 Fig.2 写 experts 与 gate 同读 actor 特征 + gait command；发布代码对 base actor 与三 expert 使用 `actor_input[:, 3:]`（去掉前 3 维 one-hot gait），**gate 仍读完整 `actor_input`** — 步态指令主要经 gate 混合专家，而非直接进入 expert 输入。Stage 2 **不冻结** base actor：checkpoint 只是初始化，残差与 base **联合** PPO（见 [RobotsHub 万字深读](../../sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md) Q7）。
+
+**训练 vs 部署：** 判别器与 LAFAN1 参考仅在训练期提供 $r^s$；实机链路为「深度编码 → base 草稿 → 专家修正 → gate 混合 → action head → PD」，不增加逐步推理开销。
+
 ## 源码运行时序图
 
 官方实现 [TeleHuman/MoRE](https://github.com/TeleHuman/MoRE)：先 `legged_gym/scripts/train.py --task g1_16dof_loco` 训基础步态，再 `--task g1_16dof_resi_moe` 训残差 MoE；`play.py` 回放；`deploy/deploy_mujoco/deploy_mujoco_with_resi.py` 做 MuJoCo 部署验证。一次完整运行如下：
@@ -210,6 +227,7 @@ sequenceDiagram
 - [humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md](../../sources/papers/humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md) — AMP 19 篇策展索引
 - [humanoid_amp_survey_19_catalog.md](../../sources/papers/humanoid_amp_survey_19_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+- [wechat_robotshub_more_principle_to_code_2026-09-15.md](../../sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md) — RobotsHub 原理→代码万字深读；论文/代码差异与调用链
 - 原始抓取：[wechat_humanoid_amp_19_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)
 
 ## 推荐继续阅读
@@ -218,4 +236,5 @@ sequenceDiagram
 - [MoRE 项目页](https://more-humanoid.github.io/) — 视频与 BibTeX
 - [arXiv:2506.08840](https://arxiv.org/abs/2506.08840) — 方法 Fig.2、奖励表与 benchmark
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) — 策展导读「复杂地形上步态不能只有一种」
+- [RobotsHub：MoRE 原理到代码万字解析](https://mp.weixin.qq.com/s/nSLC5OQAagcYDT6HhSHxIQ) — Fig.2 逐步读法、三类奖励分工、官方仓文件导读
 - [显式楼梯几何条件化](./paper-explicit-stair-geometry-humanoid-locomotion.md) — MoRE 作为视觉复杂地形基线的定量对照
