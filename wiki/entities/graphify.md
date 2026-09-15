@@ -10,7 +10,7 @@ tags:
   - agent-infrastructure
   - mcp
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 related:
   - ./superpowers-obra.md
   - ./agent-reach.md
@@ -19,6 +19,7 @@ related:
   - ./mattpocock-skills.md
   - ./archify.md
   - ../references/llm-wiki-karpathy.md
+  - ./understand-anything.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
 sources:
@@ -51,6 +52,7 @@ PyPI 包名暂为 **`graphifyy`**（双 y），CLI 与技能命令仍为 **`grap
 - **机器人研发常见语料正好命中：** 仿真栈（MuJoCo / Isaac）、ROS2 包、Python 训练脚本、`.md` 实验笔记、arXiv PDF、架构截图混在同一 monorepo 时，graphify 把 **跨文件调用链 + 文档概念 + 论文术语** 放进同一图；上游 README 以 Karpathy 混合语料宣称 **~71.5×** 单次查询相对重读原文的 token 降幅（见上游 `worked/` 与 `BENCHMARKS.md`）。
 - **与本站已有图谱不冲突：** `make graph` 生成的 `exports/link-graph.json` 统计 **wiki 页间 markdown 链接**；graphify 可覆盖 **`sources/`、脚本、未升格原文与多语言代码**，二者可并存。
 - **Cursor 用户路径明确：** `graphify cursor install` 写入 `.cursor/rules/graphify.mdc`（`alwaysApply: true`），与维护本仓库的 Cloud Agent / 本地 Cursor 工作流直接相关。
+- **同类工具对照：** [Understand Anything](./understand-anything.md) 同样做代码库 → 知识图，但强调 **业务域视图、引导 tour、团队 viewer** 与 Claude/Cursor 插件分发；graphify 更偏 **混合语料 + MCP 查询 + token 节省**。
 
 ## 核心结构
 
