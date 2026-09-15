@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-livecook.md",
+      "detail_id": "entity-paper-livecook",
+      "label": "LiveCook：流式多模态烹饪指导与 LiveMamba",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-streaming-interventions.md",
+      "detail_id": "entity-paper-streaming-interventions",
+      "label": "Streaming Interventions：Ego-MC-Bench 与 Ego-CoMist",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-act-lam.md",
       "detail_id": "entity-paper-act-lam",
       "label": "ACT-LAM：重建得更像不等于动作学得更好",
@@ -191,38 +213,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sai-sequential-asymmetric-imitation.md",
-      "detail_id": "entity-paper-sai-sequential-asymmetric-imitation",
-      "label": "SAI：序贯非对称模仿学习耦合双机策略",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trace-causal-memory.md",
-      "detail_id": "entity-paper-trace-causal-memory",
-      "label": "TRACE：轨迹路由因果记忆",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-act-lam.md",
-    "detail_id": "entity-paper-act-lam",
-    "label": "ACT-LAM：重建得更像不等于动作学得更好",
+    "path": "wiki/entities/paper-livecook.md",
+    "detail_id": "entity-paper-livecook",
+    "label": "LiveCook：流式多模态烹饪指导与 LiveMamba",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
