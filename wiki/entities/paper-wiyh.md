@@ -32,6 +32,7 @@ related:
   - ../tasks/teleoperation.md
   - ../concepts/world-action-models.md
   - ../queries/humanoid-training-data-pipeline.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/wiyh_arxiv_2512_24310.md
   - ../../sources/sites/wiyh-tars-ai.md
@@ -182,6 +183,20 @@ sequenceDiagram
 
 WIYH 深度/位姿支持 MegaSAM + TAPIR + Shape of Motion 动态高斯重建；几何指标随任务动态难度变化，验证数据对 **Real2Sim / 空间表征** 的价值（链 [world-action-models](../concepts/world-action-models.md)）。
 
+## 与其他工作对比
+
+> 下表只做 **定位对照**：各数据集的采集本体、标注维度与许可都不同，规模小时数不可当作同一把尺子；策略成功率更不能跨数据集横比（见 [评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) ③ 层的「跨基准直接比榜」误判条）。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [HIW-500](./hiw-500-dataset.md) | 最直接的互补面：HIW-500 是 **真机人形 teleop 轨迹**（可直接监督动作），WIYH 是 **人手演示**（需重定向或跨本体预训练）。前者没有形态 gap 但采集贵，后者便宜但上机要补一层 |
+| [ACE-Data-0](./paper-ace-data-0.md) | 同为人类演示，场景约束相反：ACE-Data-0 走 **家居同步多模态**（受控环境、模态对齐好），WIYH 走 **真实工作流野外采集**（分布广、但无外视跟踪、质量靠 <5 mm 动捕对照与掩码交集过滤） |
+| **Ego4D / EgoDex** | 纯 egocentric 规模派：小时数更大但多数 **没有毫米级 3D 手/腕轨迹与触觉**；WIYH 的主张不是更大，而是 **动作层可用**——这是它能直接进 VLA 预训练的前提 |
+| [HumanTouch](./humantouch.md) | 同做大规模人手 **触觉** 采集；WIYH 把触觉与 3D 轨迹、语言标注、VLM 诊断基准放进 **同一生态**，代价是 ~36.5 TB 的存储门槛 |
+| [Data Pyramid](./paper-data-pyramid-embodied-manipulation.md) | 该页给出数据分层的总框架；WIYH 落在其 **人类 Ego/Exo 层**，本页 §5 的两组实验正是在回答「这一层数据怎么往上兑换成机器人性能」 |
+| **纯机器人 clip 扩量**（要替代的默认做法） | 论文最锋利的一条反例：杂乱场景下把机器人 clip 从 200 堆到 500，成功率 0% → **8%**；换成 500 robot + **800 human** co-train 到 **60%**。即「扩机器人数据」在杂乱域不如「扩人类观测域」 |
+| **仅加载 VLM 权重**（消融对照） | 同一 cross-embodiment 实验里，无预训练 15%、仅 VLM 30%、**VLA 全量预训练 70%**——说明收益来自动作层预训练，不是骨干语义 |
+
 ## 结论
 
 WIYH 是当前少有的 **野外千小时级、3D 动作+触觉+VLM 标注对齐** 的人类操作生态；对工程选型，**人类侧数据值得作为 VLA 预训练与杂乱场景 co-training 的默认候选层**，而非仅当真机 teleop 不够用时的备胎。
@@ -217,6 +232,7 @@ WIYH 是当前少有的 **野外千小时级、3D 动作+触觉+VLM 标注对齐
 - [LeRobot](./lerobot.md) — `wiyh2lerobot` 训练栈对接
 - [VLA](../methods/vla.md) — 跨本体预训练消费范式
 - [cn-os World In Your Hands](./cn-os-world-in-your-hands.md) — 国内开源全景索引节点
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — HVL 三项诊断落在其 ① 具身大脑/MLLM 认知层（测 VLM 看懂没），§5 的跨本体成功率落在 ③ 策略任务成功率层；两层分数不可互相外推
 
 ## 参考来源
 

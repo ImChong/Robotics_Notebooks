@@ -87,7 +87,9 @@ flowchart LR
 | 优化 | **Point-to-plane** 迭代最小化点到局部平面距离 |
 | 入口 | `apps/pipelines/odometry/icp_frame_2_mesh.py` |
 
-### 与常见 LiDAR 栈对比
+## 与其他工作对比
+
+与「点云 / 体素地图 + scan-to-map」这一主流 LiDAR 里程计栈的定位差异：
 
 | 维度 | PUMA | FAST-LIO / LIO-SAM |
 |------|------|---------------------|
