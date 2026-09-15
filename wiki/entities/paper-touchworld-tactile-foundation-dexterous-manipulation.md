@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, world-model, hierarchical-policy, contact-rich, imitation-learning, flow-matching, humanoid, hit, phanes-ai]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.07287"
 related:
   - ../methods/vla.md

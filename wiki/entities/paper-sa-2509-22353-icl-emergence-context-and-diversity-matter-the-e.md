@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2509.22353"
 venue: "arXiv 2025"
 summary: "Studies the emergence of in-context learning in world models."

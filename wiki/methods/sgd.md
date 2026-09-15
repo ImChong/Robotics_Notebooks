@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, sgd, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "SGD 用 mini-batch 随机梯度迭代更新参数，是神经网络训练最基础的一阶优化器，也是理解动量与自适应方法的原点。"
 related:
   - ./sgd-momentum.md

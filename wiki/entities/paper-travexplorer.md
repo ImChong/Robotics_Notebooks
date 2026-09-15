@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, objectnav, zero-shot, multi-floor, quadruped, traversability, vln, sjtu, embodied-ai]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-15
 arxiv: "2605.19958"
 related:
   - ../tasks/zero-shot-object-navigation.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [wam, world-action-models, scaling-laws, egocentric-video, human-robot-transfer, foundation-model, manipulation, dexterous-manipulation, flow-matching, dyna-robotics, closed-source]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 related:
   - ../concepts/world-action-models.md
   - ../concepts/embodied-scaling-laws.md

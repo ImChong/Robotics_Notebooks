@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, memory, long-horizon]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.11561"
 code: https://github.com/aipixel/MaP-WAM
 related:

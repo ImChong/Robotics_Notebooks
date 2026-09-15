@@ -11,7 +11,7 @@ tags:
   - uw
   - ai2
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2608.10860"
 code: "https://github.com/geyan21/flex-pi"
 related:

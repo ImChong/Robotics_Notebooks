@@ -3,7 +3,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, tendon-driven, teleoperation, imitation-learning, nyu]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-15
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md

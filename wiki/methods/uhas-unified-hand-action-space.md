@@ -3,7 +3,7 @@ type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, cross-embodiment, action-representation, sim2real]
 status: complete
 date: 2026-07-11
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ./in-hand-reorientation.md
   - ../concepts/motion-retargeting.md

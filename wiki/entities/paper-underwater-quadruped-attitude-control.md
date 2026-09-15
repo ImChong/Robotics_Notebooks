@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, underwater-robot, quadruped, attitude-control, hardware]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.09217"
 code: https://github.com/ntnu-arl/uw-quadruped-cad
 related:

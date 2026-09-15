@@ -11,7 +11,7 @@ tags:
   - zju
   - cmu
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 doi: "10.1126/scirobotics.adm8484"
 venue: "Science Robotics 2024"
 related:

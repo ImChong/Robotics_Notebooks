@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, search-free, zju, tsinghua, roboparty]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
 related:

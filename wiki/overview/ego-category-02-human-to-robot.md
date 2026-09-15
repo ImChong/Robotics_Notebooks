@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, imitation-learning, vla, mobile-manipulation]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-15
 summary: "Ego 9 篇专题 · 02 人→机器人（3 篇）— 第一视角视频须经对齐与共训才进策略；EgoMimic/EMMA 证 IL 缩放，Gaze2Act 补 VLA 空间意图。"
 related:
   - ./ego-9-papers-technology-map.md

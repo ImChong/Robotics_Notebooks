@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-13
+updated: 2026-09-15
 related:
   - ./paper-abot-recon.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md

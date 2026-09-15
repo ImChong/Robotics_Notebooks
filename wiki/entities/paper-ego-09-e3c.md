@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 venue: "2026 · 项目"
 code: https://e3c-videogen.github.io/
 summary: "3D 环境记忆 + ego/exo 人体姿态控制的第一视角视频生成，服务可推演的世界片段而非短视频观感。"

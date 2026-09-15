@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, reinforcement-learning, sample-efficiency, off-policy, experience-replay, self-imitation, sac, td3, continuous-control, sim2real, uoa]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-15
 arxiv: "2608.17347"
 venue: "RLC 2026"
 code: https://github.com/UoA-CARES/instant-episode-repetition

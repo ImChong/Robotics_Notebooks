@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, wuji, shanghaitech, tsinghua, hku, zju, egocentric, hand-pose, perception, manipulation, embodied-ai, camera-trajectory]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2609.04958"
 code: https://github.com/wuji-technology/wuji-ego-mint
 venue: "arXiv 2026 (under review)"

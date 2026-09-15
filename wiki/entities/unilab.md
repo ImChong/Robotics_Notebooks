@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, robot-rl, systems, heterogeneous-training, cpu-simulation, gpu-learning, mujoco, motrixsim, cross-platform, macos, ppo, sac, tsinghua]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 arxiv: "2605.30313"
 related:
   - ../methods/flashsac.md

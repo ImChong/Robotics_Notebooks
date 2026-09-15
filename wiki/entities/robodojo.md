@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, manipulation, vla, sim2real, evaluation, leaderboard, open-source, ai-mmlab-club, isaac-lab]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 related:
   - ./paper-gpt-6-astra-embodied-policy.md
   - ./robolab.md

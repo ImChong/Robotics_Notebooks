@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, ros2, navigation, nav2, mobile-robot, planning, linux-foundation]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 related:
   - ./python-robotics.md
   - ../overview/navigation-slam-autonomy-stack.md

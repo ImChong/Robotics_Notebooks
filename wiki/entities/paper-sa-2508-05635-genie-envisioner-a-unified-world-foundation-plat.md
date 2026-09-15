@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2508.05635"
 venue: "arXiv 2025"
 code: https://github.com/AgibotTech/Genie-Envisioner

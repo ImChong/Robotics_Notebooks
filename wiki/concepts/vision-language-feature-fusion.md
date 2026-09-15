@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, vision-language, feature-fusion, multimodal, alignment, vlm, blip2, embodied-ai]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 related:
   - ./embodied-semantic-cognitive-map.md
   - ../entities/paper-blip2.md

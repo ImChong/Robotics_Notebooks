@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, evaluation, manipulation, openai, robodojo, pi05, technical-report]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 venue: "Technical Report 2026"
 code: https://github.com/anonymous-report-421/eval-of-gpt-6-astra-as-policy
 related:

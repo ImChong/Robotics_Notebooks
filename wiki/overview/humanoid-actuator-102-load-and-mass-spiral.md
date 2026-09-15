@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, actuator, cost-of-transport, fatigue, category-hub]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 summary: "Actuator 102 · 01 — 每小时约 5000 步、2–3× 体重冲击、亚毫秒退让；CoT 与比力矩门槛（>10–15 Nm/kg）。"
 related:
   - ./humanoid-actuator-102-technology-map.md

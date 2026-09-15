@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, behavior-world-model, terrain-interaction, motion-tracking, reinforcement-learning, unitree-g1, tsinghua, gigaai, bjtu, usst, casia, ucas, isaac-lab]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2608.18234"
 venue: "2026 · arXiv"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, planner, embodied-reasoning, vln, spatial-intelligence, memory, long-horizon, qwen3-vl, nvidia, bimanual, hierarchical-control]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2606.20905"
 related:
   - ../methods/vla.md

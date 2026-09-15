@@ -2,7 +2,7 @@
 type: concept
 tags: [vla, vlm, world-model, embodied-ai, foundation-model, real-time-control, generalization, taxonomy]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 summary: "具身大模型实时性 ↔ 泛化能力取舍概念页：明示模型规模、多模态跨度、世界模型推演步长如何共同决定推理时延与控制带宽的可达边界，以及这条边界如何反向约束分层 / 端到端的选型分界。"
 related:
   - ../queries/embodied-fm-taxonomy-loop.md

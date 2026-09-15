@@ -2,7 +2,7 @@
 type: method
 tags: [rl, multi-agent, swarm, coordination]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-15
 related:
   - ./reinforcement-learning.md
   - ../concepts/rl-runner.md

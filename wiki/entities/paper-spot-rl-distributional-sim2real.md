@@ -7,7 +7,7 @@ tags:
   - legged-robot
   - nvidia
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 arxiv: "2504.17857"
 venue: "arXiv 2025"
 related:

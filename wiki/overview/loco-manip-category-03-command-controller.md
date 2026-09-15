@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, whole-body-control, category-hub, survey, command-space]
 status: complete
-updated: 2026-06-14
+updated: 2026-09-15
 summary: "Loco-Manip 8 篇周报 · 03 命令空间与控制器（2 篇）— 多源数据如何落到解耦命令（VAIC）与多模态统一 WBC（M3imic）？"
 related:
   - ./loco-manip-8-papers-technology-map.md

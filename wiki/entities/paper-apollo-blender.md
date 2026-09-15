@@ -11,7 +11,7 @@ tags:
   - yale
   - apollo-lab
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 arxiv: "2512.23103"
 code: https://github.com/Apollo-Lab-Yale/apollo-py
 related:

@@ -13,7 +13,7 @@ tags:
   - whu
   - hkust
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2608.10057"
 venue: "ECCV 2026 · arXiv"
 code: https://github.com/WHU-USI3DV/LEGO

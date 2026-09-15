@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotic-assembly, rgb-d, keypoint-voting, 6dof-pose]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.19968"
 code: https://github.com/KulunuOS/PVRA
 related:

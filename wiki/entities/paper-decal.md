@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, tactile, dexterous-manipulation, world-model, mot, pku, baai, corl-2026]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.09119"
 venue: "CoRL 2026"
 code: https://github.com/AureleoPKU/DeCAL

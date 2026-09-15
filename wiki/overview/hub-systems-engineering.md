@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 summary: "机器人系统工程知识链：操作系统/网络/数据面/分布式/容器可观测安全，以及 RTOS、DDS、边云、频率解耦、OTA 与安全状态机；标注已有独立节点与本次新建节点。"
 ---
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.08765"
 venue: "EMNLP 2025"
 summary: "Generates transparent, coherent natural language explanations for detected procedural mistakes"

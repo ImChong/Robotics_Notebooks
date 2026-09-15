@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, training-stack, isaac-lab, mujoco, mjlab, unilab, newton, genesis, reinforcement-learning, survey]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ../entities/isaac-lab.md
   - ../entities/mujoco.md

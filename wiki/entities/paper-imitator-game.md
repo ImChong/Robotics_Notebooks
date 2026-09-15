@@ -10,7 +10,7 @@ tags:
   - fudan
   - zju
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.22301"
 code: https://github.com/imitator-game/The-Imitator-Game
 related:

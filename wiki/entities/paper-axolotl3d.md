@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, 3d-generation, shape-completion, point-cloud, multi-view, occlusion, eccv, hunyuan3d, spatial-intelligence]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2607.20660"
 venue: ECCV 2026
 related:

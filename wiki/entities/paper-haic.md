@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, world-model, underactuated-objects, privileged-training, sim2real, unitree-g1, rss2026, tsinghua, hkust-gz, eth, xiaomi]
 status: complete
-updated: 2026-07-26
+updated: 2026-09-15
 arxiv: "2602.11758"
 venue: "RSS 2026"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robbyant, 3d-reconstruction, foundation-model, slam, streaming-perception, pose-estimation, depth-estimation]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2604.14141"
 venue: "ECCV 2026 oral"
 code: https://github.com/Robbyant/lingbot-map

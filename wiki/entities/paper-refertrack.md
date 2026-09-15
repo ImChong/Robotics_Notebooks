@@ -15,7 +15,7 @@ tags:
   - pku
   - futian-laboratory
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 arxiv: "2607.20061"
 venue: "2026 · arXiv"
 code: https://github.com/MedlarTea/referTrack

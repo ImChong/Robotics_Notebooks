@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, llm, stl, ppo, usc, uf]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.07111"
 related:
   - ../tasks/locomotion.md

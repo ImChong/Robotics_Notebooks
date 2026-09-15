@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-planning, tensor, anytime, homotopy, manipulation, purdue, vinuni, tu-darmstadt]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.25830"
 code: https://github.com/CoMMALab/anytime_gtmp
 related:

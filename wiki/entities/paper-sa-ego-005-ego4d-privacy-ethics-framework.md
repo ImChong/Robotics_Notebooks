@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "Ego4D Dataset Documentation"
 summary: "The Ego4D dataset (3,670 hours, 931 participants, 9 countries) adopts **strict privacy and ethical standards** during collection. Participants can opt for blurring, and **612 hours** remain unblurred with explicit consen"
 related:

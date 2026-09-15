@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2504.07892"
 venue: "CVPR 2025"
 summary: "First unsupervised mistake detection method leveraging eye-gaze signals for skilled procedural activities"

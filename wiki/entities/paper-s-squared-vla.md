@@ -10,7 +10,7 @@ tags:
   - dual-stream
   - whut
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2607.13926"
 related:
   - ../methods/vla.md

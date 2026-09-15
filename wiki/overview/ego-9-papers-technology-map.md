@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego, data-collection, imitation-learning, world-models, survey, embodied-ai]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 related:
   - ./ego-category-01-data-collection.md
   - ./ego-category-02-human-to-robot.md

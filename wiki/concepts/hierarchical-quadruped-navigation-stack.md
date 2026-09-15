@@ -2,7 +2,7 @@
 type: concept
 tags: [quadruped, navigation, hierarchical-control, vln, reinforcement-learning, system-integration]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-15
 related:
   - ../entities/roamerx-navigation.md
   - ../entities/matrix-simulation-platform.md

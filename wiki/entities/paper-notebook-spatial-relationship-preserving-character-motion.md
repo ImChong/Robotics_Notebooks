@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-07-10
+updated: 2026-09-15
 venue: "SIGGRAPH 2010"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md

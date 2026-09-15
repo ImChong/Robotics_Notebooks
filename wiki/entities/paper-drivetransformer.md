@@ -8,7 +8,7 @@ tags:
   - parallel
   - sjtu
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: "ICLR 2025"
 arxiv: "2503.07656"
 code: https://github.com/Thinklab-SJTU/DriveTransformer

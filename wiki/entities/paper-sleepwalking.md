@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'legged', 'blind-locomotion', 'rl', 'representation-learning', 'nwpu', 'sjtu']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2608.30883"
 summary: "SWAQ（arXiv:2608.30883，西工大/上交/云睦）：单阶段 AC + 下一步特权物理重建塑造 LSTM 表征；部署仍 history→action；峰值地形 +15% vs DWAQ、MAC −44.4%；未见代码。"
 related:

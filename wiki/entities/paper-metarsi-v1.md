@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, llm-agents, recursive-self-improvement, agent-harness, ai-auto-research, coding-agents, cosmosmind]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.06396"
 code: https://github.com/CosmosMind-ai/RSI-Harness
 related:

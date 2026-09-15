@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.04098"
 venue: "arXiv 2026"
 summary: "Uses eye-tracking as a training-free side channel: gaze fixation captures visual stability, pupil response captures arousal-linked novelty. Dual-Criterion Frame Curator selects frames at 10% budget matching full-stream p"

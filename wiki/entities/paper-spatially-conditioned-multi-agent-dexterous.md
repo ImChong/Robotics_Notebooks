@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous, multi-agent, transformer, cmu]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.06930"
 related:
   - ../tasks/bimanual-manipulation.md

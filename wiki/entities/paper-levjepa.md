@@ -15,7 +15,7 @@ tags:
   - nyu
   - ami-labs
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2608.27395"
 code: https://github.com/MLO-lab/LeVJEPA
 related:

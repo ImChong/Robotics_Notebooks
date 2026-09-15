@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, bimanual, household, dataset, pku]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2609.03591"
 related:
   - ../methods/vla.md

@@ -2,7 +2,7 @@
 type: formalization
 tags: [math, probability, generative-ai, flow-matching, diffusion]
 status: complete
-updated: 2026-07-04
+updated: 2026-09-15
 related:
   - ../methods/hy-motion-1.md
   - ../methods/diffusion-motion-generation.md

@@ -9,7 +9,7 @@ tags:
   - diffusion
   - shenlan
 status: complete
-updated: 2026-08-02
+updated: 2026-09-15
 related:
   - ./autonomous-driving-core-algorithms-series.md
   - ../methods/generative-world-models.md

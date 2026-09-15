@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, assistive-robotics, imitation-learning, vr-simulation, granular-manipulation, iros-2025]
 status: complete
-updated: 2026-08-21
+updated: 2026-09-15
 arxiv: "2608.18258"
 venue: "IROS 2025"
 related:

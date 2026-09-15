@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, animatable-avatar, 3dgs, gaussian-splatting, performance-capture, surface-alignment, telepresence, texture-editing, dataset, max-planck]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2506.01802"
 venue: "ACM TOG 2026"
 project: https://vcai.mpi-inf.mpg.de/projects/UMA/

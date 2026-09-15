@@ -6,7 +6,7 @@ tags:
   - spatial-reasoning
   - embodied-ai
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.15605"
 code: https://github.com/CKL9001/AlloEgo-VLM
 related:

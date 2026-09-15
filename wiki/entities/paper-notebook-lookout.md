@@ -11,7 +11,7 @@ tags:
   - stanford
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2508.14466"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

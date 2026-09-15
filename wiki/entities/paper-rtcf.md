@@ -12,7 +12,7 @@ tags:
   - fudan
   - tongji
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.04527"
 related:
   - ../methods/vla.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, social-robot, continual-learning, hri, cambridge]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.13448"
 code: https://github.com/Cambridge-AFAR/Mind-the-Context
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2512.12437"
 venue: "arXiv 2025"
 summary: "Presents a more efficient and effective approach to training control-related tasks for humanoid robots using Reinforcement Learning"

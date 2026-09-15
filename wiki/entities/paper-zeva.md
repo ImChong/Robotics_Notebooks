@@ -9,7 +9,7 @@ tags:
   - manipulation
   - tsinghua
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.30880"
 code: https://github.com/air-embodied-brain/Zeva
 related:

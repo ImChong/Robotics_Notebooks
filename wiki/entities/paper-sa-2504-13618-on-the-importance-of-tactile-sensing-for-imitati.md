@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2504.13618"
 venue: "IEEE RA-L 2026"
 summary: "Multimodal visuotactile imitation learning framework with modular transformer architecture and flow-based generative model for fast and dexterous manipulation policies."

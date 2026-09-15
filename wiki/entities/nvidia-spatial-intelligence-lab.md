@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, research-lab, spatial-intelligence, 3d-perception, world-models, neural-reconstruction, nvidia]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 related:
   - ./paper-axolotl3d.md
   - ./nvidia-gear-lab.md

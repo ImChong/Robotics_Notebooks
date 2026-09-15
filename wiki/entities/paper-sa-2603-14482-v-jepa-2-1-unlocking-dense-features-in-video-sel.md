@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2603.14482"
 venue: "arXiv 2026"
 code: https://github.com/facebookresearch/vjepa2

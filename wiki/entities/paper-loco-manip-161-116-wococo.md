@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, sequential-contact, reinforcement-learning, whole-body-control, contact-rich, humanoid, cmu, eth]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2406.06005"
 venue: "CoRL 2024 Oral"
 related:

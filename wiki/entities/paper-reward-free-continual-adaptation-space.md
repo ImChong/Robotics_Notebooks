@@ -8,7 +8,7 @@ tags:
   - dreamerv3
   - uni-luxembourg
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 arxiv: "2608.23452"
 code: https://github.com/AndrejOrsula/space_robotics_bench
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, world-model, mamba, teacher-student, ntu, baai, pku, nju]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.07096"
 related:
   - ../tasks/humanoid-locomotion.md

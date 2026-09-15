@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, humanoid-locomotion, loco-manipulation, vla, optimal-control, ocp, crocoddyl, pinocchio, dataset, gr00t, dfki]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2606.25591"
 venue: "2026 · arXiv"
 related:

@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, nesterov, momentum, sgd, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "Nesterov 动量在更新前先沿动量方向前瞻一步再取梯度，在凸优化中达到更优收敛率，是经典动量的理论加强版。"
 related:
   - ./sgd-momentum.md

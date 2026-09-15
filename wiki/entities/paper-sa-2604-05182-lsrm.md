@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-reconstruction, meta]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2604.05182"
 venue: "ECCV 2026 Long Oral"
 code: https://github.com/facebookresearch/Large-Sparse-Reconstruction-Model

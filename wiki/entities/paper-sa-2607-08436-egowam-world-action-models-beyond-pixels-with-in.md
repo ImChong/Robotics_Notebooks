@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.08436"
 venue: "arXiv 2026"
 summary: "World action models beyond pixels using in-the-wild egocentric human data."

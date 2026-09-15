@@ -14,7 +14,7 @@ tags:
   - ict
   - ucas
 status: complete
-updated: 2026-07-10
+updated: 2026-09-15
 venue: "2026 · ICML"
 code: https://github.com/kekeZ66/3D-IC
 related:

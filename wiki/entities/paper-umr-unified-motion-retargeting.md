@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, point-cloud, contact, mujoco, beyondmimic, sonic, unitree-g1, hkust-gz, noitom, hanyang, hkust, hku]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2609.02134"
 related:
   - ../concepts/motion-retargeting.md

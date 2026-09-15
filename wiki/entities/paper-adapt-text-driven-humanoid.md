@@ -9,7 +9,7 @@ tags:
   - unitree-g1
   - eth
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2609.00677"
 related:
   - ./unitree-g1.md

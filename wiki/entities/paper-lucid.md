@@ -13,7 +13,7 @@ tags:
   - university-of-manchester
   - iit
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 arxiv: "2608.07746"
 related:
   - ../tasks/loco-manipulation.md

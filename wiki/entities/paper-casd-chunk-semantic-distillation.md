@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, action-chunking, imitation-learning, ant-group]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.08638"
 related:
   - ../tasks/manipulation.md

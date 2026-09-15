@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2604.10517"
 venue: "ICML 2026"
 summary: "A curriculum-based framework for learning task-oriented spatiotemporal reasoning. Constructs EgoTSR-Data comprising 46 million samples organized into three stages. Achieves 92.4% accuracy on long-horizon logical reasonin"

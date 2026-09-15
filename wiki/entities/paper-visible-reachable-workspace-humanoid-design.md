@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware, perception, duke]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.08905"
 related:
   - ../tasks/manipulation.md

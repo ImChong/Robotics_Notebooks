@@ -14,7 +14,7 @@ tags:
   - cau
   - booster
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 arxiv: "2511.03996"
 doi: "10.1126/scirobotics.aed1152"
 code: https://zenodo.org/records/21620490

@@ -13,7 +13,7 @@ tags:
   - kaust
   - snap
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2606.29329"
 venue: "ECCV 2026"
 related:

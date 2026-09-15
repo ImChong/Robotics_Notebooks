@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, inria]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2202.11742"
 summary: "在线拓扑建图 + 粗粒度全局规划与细粒度局部动作编码动态融合，双尺度图 Transformer 输出决策。"
 related:

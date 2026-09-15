@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, vision, locomotion, perception, mit, exploration]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "ICRA 2020"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

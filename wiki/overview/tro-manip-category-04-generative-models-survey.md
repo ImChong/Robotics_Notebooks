@@ -2,7 +2,7 @@
 type: overview
 tags: [manipulation, category-hub, survey, generative-models, diffusion-policy, imitation-learning]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 summary: "T-RO 5 篇精选 · 04 生成模型综述（1 篇）— 深度生成模型在多模态机器人演示学习中的模型类型、应用与 OOD 设计。"
 related:
   - ./tro-manip-5-papers-technology-map.md

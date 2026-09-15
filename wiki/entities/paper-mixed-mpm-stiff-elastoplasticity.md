@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, simulation, mpm, elastoplasticity, granular, snow, fluid, siggraph, nvidia, newton]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 doi: "10.1145/3811345"
 venue: SIGGRAPH 2026
 related:

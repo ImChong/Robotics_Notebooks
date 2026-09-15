@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, text-to-motion, flow-matching, diffusion-transformer, smpl-h, preference-optimization, digital-human]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 related:
   - ./diffusion-motion-generation.md
   - ./dart-control.md

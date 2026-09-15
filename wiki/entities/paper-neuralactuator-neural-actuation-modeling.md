@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, sim2real, actuator, differentiable-simulation, force-estimation, transformer, servo, dynamixel, openmanipulator, lerobot, mit]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2607.11734"
 code: https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator
 related:

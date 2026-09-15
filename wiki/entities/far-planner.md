@@ -2,7 +2,7 @@
 type: entity
 tags: [planning, navigation, visibility-graph, cmu, open-source, exploration]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 related:
   - ./tare-planner.md
   - ../tasks/autonomous-exploration.md

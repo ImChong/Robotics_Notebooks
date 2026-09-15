@@ -2,7 +2,7 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 related:
   - ../entities/paper-lingbot-map.md
   - ../queries/robot-perception-stack-selection-loop.md

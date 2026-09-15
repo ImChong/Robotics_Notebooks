@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.24934"
 venue: "arXiv 2026"
 summary: "Bridges the embodiment gap by lifting each human demonstration to entity-level representation of hand-object interaction. With only 30 minutes of human videos per task, achieves 92.5% average success across four real-wor"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.18135"
 venue: "arXiv 2026"
 summary: "Utilizes NVIDIA's Isaac Sim and Isaac Lab for training, achieving zero-shot sim-to-real policy transfer to the Unitree Go1 quadruped robot"

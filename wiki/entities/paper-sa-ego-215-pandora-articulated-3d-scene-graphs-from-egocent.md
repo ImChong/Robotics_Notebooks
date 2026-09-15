@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "BMVC 2025"
 summary: "Leverages egocentric data captured as a human naturally explores a scene wearing Project Aria glasses to recover models of articulated object parts. Demonstrates that articulated 3D scene graphs enhance a robot's ability"
 related:

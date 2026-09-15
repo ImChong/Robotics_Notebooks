@@ -2,7 +2,7 @@
 type: formalization
 tags: [vla, machine-learning, robotics, math, tokenization]
 status: complete
-updated: 2026-07-03
+updated: 2026-09-15
 related:
   - ../methods/vla.md
   - ../methods/behavior-cloning.md

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, world-model, teacher-student, imitation-learning, sim2real, paper, humanoid, motion-control, body-system-stack, hkust-gz, xiaomi-robotics, eth, hkust, tsinghua]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 venue: curated
 related:
   - ../entities/paper-haic.md

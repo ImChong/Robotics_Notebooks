@@ -2,7 +2,7 @@
 type: method
 tags: [vla, fleet-scale-rl, offline-to-online-rl, post-training, data-flywheel, agibot, flow-matching]
 status: complete
-updated: 2026-08-09
+updated: 2026-09-15
 related:
   - ./vla.md
   - ./π0-policy.md

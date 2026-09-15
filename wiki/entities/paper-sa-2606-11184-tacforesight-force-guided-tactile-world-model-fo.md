@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.11184"
 venue: "arXiv 2026"
 summary: "Lightweight force-conditioned tactile foresight framework; TacForceWM predicts short-horizon tactile latent dynamics from dual-finger tactile observations conditioned on wrist force/torque; enables proactive contact reas"

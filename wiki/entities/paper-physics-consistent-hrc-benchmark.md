@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-robot-interaction, benchmark, assistive-care, contact-rich]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.02402"
 related:
   - ../tasks/manipulation.md

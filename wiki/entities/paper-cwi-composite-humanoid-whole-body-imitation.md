@@ -15,7 +15,7 @@ tags:
   - hku
   - hkust
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2606.27676"
 venue: "IEEE RAL"
 related:

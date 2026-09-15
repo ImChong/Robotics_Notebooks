@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2603.00913"
 venue: "RSS 2026"
 related:

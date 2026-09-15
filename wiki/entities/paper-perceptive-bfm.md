@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, bfm, behavior-foundation-model, motion-tracking, perceptive-locomotion, terrain-adaptation, privileged-training, distillation, transformer, unitree-g1, mocap, teleoperation, parkour, miaodong, mondo-robotics, hkust, hkust-gz, ustc]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2606.08059"
 venue: "CoRL 2026 · submission"
 code: https://github.com/Mondo-Robotics/PMT

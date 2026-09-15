@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "NeurIPS 2025"
 summary: "Proposes the novel 3D visual span forecasting task, EgoSpanLift lifts 2D gaze predictions into full 3D scene space"
 related:

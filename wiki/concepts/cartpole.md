@@ -11,7 +11,7 @@ tags:
   - nvidia
   - farama
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md

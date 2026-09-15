@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2408.11816"
 venue: "arXiv 2024"
 summary: "Efficient exploration and discriminative world model learning with object-centric abstraction."

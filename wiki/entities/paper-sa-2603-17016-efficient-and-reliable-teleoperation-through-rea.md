@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.17016"
 venue: "arXiv 2026"
 summary: "Proposes a real-to-sim-to-real shared autonomy framework that augments human teleoperation with learned corrective behaviors"

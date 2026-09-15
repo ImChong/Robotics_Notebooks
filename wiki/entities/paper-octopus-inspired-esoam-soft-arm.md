@@ -11,7 +11,7 @@ tags:
   - buaa
   - science-robotics
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 doi: "10.1126/scirobotics.adh7852"
 venue: "Science Robotics 2023"
 related:

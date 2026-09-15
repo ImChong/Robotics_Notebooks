@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, bytedance]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2312.13139"
 venue: ICLR 2024
 summary: "GPT 风格端到端预测动作+未来图像；大规模视频预训练后机器人微调。"

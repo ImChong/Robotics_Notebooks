@@ -8,7 +8,7 @@ tags:
   - robot-learning
   - genesis-ai
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.30983"
 code: https://github.com/EGarrabe/Language-driven-robotic-QD
 related:

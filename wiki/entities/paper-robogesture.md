@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'humanoid', 'tsinghua', 'galbot', 'social-hri', 'co-speech-gesture', 'diffusion', 'unitree-g1']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2608.28693"
 summary: "RoboGesture（arXiv:2608.28693，清华/银河通用等）：300+ 类手势 + 半合成 1000 h 数据；分层语义–声学对齐 + DiT-CFM + Anti-Inertia Masking；G1 真机 ≈120 FPS；项目页未见代码。"
 related:

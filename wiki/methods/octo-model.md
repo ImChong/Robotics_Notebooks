@@ -2,7 +2,7 @@
 type: method
 tags: [vla, open-source, generalist-policy, diffusion, manipulation, hmi-papers]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 code: https://github.com/octo-models/octo
 related:
   - ../entities/paper-octo.md

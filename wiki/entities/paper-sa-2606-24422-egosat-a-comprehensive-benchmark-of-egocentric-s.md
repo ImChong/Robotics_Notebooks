@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.24422"
 venue: "ECCV 2026"
 summary: "The first comprehensive benchmark for egocentric video reasoning in streaming settings, designed to evaluate VLMs on streaming interaction understanding. Contains 1,997 unique videos spanning 165 hours and ~4,800 QA pair"

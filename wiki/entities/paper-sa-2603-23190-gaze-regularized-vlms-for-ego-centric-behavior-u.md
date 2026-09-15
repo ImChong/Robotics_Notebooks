@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.23190"
 venue: "arXiv 2026"
 summary: "Embeds eye-tracking signals into the VLM training pipeline, gaze regularization forces models to prioritize fixated regions, improving semantic metrics by nearly 13%"

@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - berkeley
 status: complete
-updated: 2026-08-16
+updated: 2026-09-15
 arxiv: "2607.27924"
 code: https://github.com/Dstate/ODEWorld
 related:

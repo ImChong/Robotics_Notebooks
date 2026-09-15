@@ -2,7 +2,7 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-15
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2502.13187"
 venue: "arXiv 2025"
 summary: "The first taxonomy that formally frames sim-to-real techniques from key elements of the Markov Decision Process (State, Action, Transition, and Reward). Covers comprehensive literature from classic to advanced methods in"

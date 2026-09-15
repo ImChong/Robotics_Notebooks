@@ -9,7 +9,7 @@ tags:
   - unitree
   - osaka
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.28090"
 related:
   - ../tasks/humanoid-locomotion.md

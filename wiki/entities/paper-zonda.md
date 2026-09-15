@@ -15,7 +15,7 @@ tags:
   - gbu
   - direct-drive-tech
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2607.21025"
 venue: "arXiv 2026"
 related:

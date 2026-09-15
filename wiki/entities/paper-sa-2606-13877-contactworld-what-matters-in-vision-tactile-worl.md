@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.13877"
 venue: "arXiv 2026"
 summary: "Benchmark and systematic empirical study of vision-tactile world models across 12 contact-rich tasks; finds spatially structured and temporally continuous representations achieve strongest planning performance."

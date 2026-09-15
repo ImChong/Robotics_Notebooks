@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, manipulation, memory]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.11875"
 code: https://github.com/JiuTian-VL/UniMPA
 related:

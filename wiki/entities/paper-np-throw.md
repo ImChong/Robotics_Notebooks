@@ -8,7 +8,7 @@ tags:
   - sim2real
   - aist
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2609.00771"
 code: https://github.com/Abdullah-AIST/NP-Throw
 related:

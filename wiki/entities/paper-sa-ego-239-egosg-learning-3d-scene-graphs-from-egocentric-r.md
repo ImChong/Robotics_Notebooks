@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "CVPR 2024"
 summary: "Proposes EgoSG to estimate 3D scene graphs directly from egocentric frame sequences"
 related:

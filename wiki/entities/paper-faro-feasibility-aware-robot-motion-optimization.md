@@ -13,7 +13,7 @@ tags:
   - tum
   - cmu
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2607.18362"
 related:
   - ./paper-motiondisco-extreme-humanoid-loco-manipulation.md

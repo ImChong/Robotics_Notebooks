@@ -9,7 +9,7 @@ tags:
   - vlm
   - 3d-reconstruction
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.03756"
 code: https://github.com/speridlabs/eneas
 related:

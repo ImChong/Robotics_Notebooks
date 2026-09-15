@@ -22,7 +22,7 @@ tags:
 status: complete
 venue: CVPR 2022
 arxiv: "2110.07058"
-updated: 2026-09-14
+updated: 2026-09-15
 code: https://github.com/facebookresearch/Ego4D
 related:
   - ../overview/ego-category-01-data-collection.md

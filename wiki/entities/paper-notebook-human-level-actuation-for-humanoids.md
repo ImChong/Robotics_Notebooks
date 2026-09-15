@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, actuator, benchmark, biomechanics, torque-control, thermal, qdd, sea, teragon-research, humanoid-paper-notebooks]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2511.06796"
 related:
   - ./paper-notebook-quasi-direct-drive-for-low-cost-compliant-roboti.md

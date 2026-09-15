@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - tsinghua
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 arxiv: "2607.10815"
 related:
   - ../tasks/humanoid-locomotion.md

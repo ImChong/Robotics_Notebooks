@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2606.19586"
 venue: "CoRL 2025"
 code: https://chuerpan.com/1001-demos.github.io/

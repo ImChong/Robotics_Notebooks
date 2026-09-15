@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, egocentric, category-hub, survey, vla]
 status: complete
-updated: 2026-06-14
+updated: 2026-09-15
 summary: "Loco-Manip 8 篇周报 · 01 第一视角数据（2 篇）— 人类 ego 视频如何先补任务语义（Ego-Pi），再补全身动作先验（EgoPriMo）？"
 related:
   - ./loco-manip-8-papers-technology-map.md

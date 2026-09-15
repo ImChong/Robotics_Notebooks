@@ -11,7 +11,7 @@ tags:
   - uni-luxembourg
   - unizar
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2503.01783"
 venue: "IEEE RA-L 2026"
 related:

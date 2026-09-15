@@ -12,7 +12,7 @@ tags:
   - multi-view
   - heterogeneous-data
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 related:
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md

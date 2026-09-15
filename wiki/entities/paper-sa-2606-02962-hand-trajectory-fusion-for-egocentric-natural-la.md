@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.02962"
 venue: "EgoVis@CVPR 2026"
 summary: "Integrates hand motion cues into the NLQ grounding task for the first time, improving R@1, IoU=0.3 by 2.54% for hand-object interaction queries"

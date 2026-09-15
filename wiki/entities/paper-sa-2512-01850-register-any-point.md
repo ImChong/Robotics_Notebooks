@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, slam, 3d-reconstruction, stanford]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2512.01850"
 venue: "ECCV 2026"
 code: https://github.com/PRBonn/RAP

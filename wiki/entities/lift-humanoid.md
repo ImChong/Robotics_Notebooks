@@ -12,7 +12,7 @@ tags:
   - booster-robotics
   - unitree
 status: complete
-updated: 2026-07-26
+updated: 2026-09-15
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ../tasks/locomotion.md

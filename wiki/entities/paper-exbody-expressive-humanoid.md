@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "humanoid", "whole-body-tracking", "expressive", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2402.16796"
 code: https://github.com/chengxuxin/expressive-humanoid
 venue: "HMI curated · 2024"

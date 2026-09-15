@@ -3,7 +3,7 @@
 type: entity
 tags: [perception, computer-vision, calibration, fiducial, c, software, mit]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/visual-servoing.md

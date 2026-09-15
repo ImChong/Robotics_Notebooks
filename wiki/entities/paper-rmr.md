@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, rig-unification, korea-university, uiuc, naver-labs, rainbow-robotics]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 doi: "10.1109/IROS60139.2025.11246607"
 venue: "IROS 2025"
 code: https://github.com/tmjeong1103/CoRe

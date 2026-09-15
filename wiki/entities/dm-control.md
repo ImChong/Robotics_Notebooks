@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, mujoco, reinforcement-learning, benchmark, deepmind]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./mujoco.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, urdf, mjcf, pinocchio, mujoco, pybullet, repo, inria]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 summary: "robot_descriptions.py 把 190+ 开源 URDF/MJCF 变成可 pip 安装的 Python 模块：首次 import 下载缓存，再经 Pinocchio/MuJoCo/PyBullet 等 loader 得到可运行模型；包是 Apache-2.0，机型许可证逐条看 README。"
 related:
   - ./awesome-robot-descriptions.md

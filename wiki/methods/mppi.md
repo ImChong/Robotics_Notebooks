@@ -2,7 +2,7 @@
 type: method
 tags: [control, optimization, reinforcement-learning, model-based-rl, mpc]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 related:
   - ./model-based-rl.md
   - ./model-predictive-control.md

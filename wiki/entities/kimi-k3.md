@@ -2,7 +2,7 @@
 type: entity
 tags: [foundation-model, llm, moonshot, coding-agents, multimodal, moe, open-source]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 related:
   - ../methods/muon.md
   - ../queries/real-robot-policy-autoresearch-harness.md

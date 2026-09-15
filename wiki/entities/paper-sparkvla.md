@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'vla', 'action-chunking', 'manipulation', 'long-horizon']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.16172"
 code: https://github.com/huhuhushou/SparkVLA
 related:

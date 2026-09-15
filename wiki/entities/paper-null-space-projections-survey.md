@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, control, redundancy, torque-control, dlr, tum]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 venue: "IJRR 2015"
 related:
   - ../concepts/null-space-control.md

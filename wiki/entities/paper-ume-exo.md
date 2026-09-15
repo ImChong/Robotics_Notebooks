@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, teleoperation, manipulation, bimanual, loco-manipulation, imitation-learning, exoskeleton, haptic, compliant-control, torque-feedback, motion-retargeting, act, umi, data-collection, ant-group, stanford]
 status: complete
-updated: 2026-06-18
+updated: 2026-09-15
 arxiv: "2606.14218"
 venue: "arXiv 2026"
 related:

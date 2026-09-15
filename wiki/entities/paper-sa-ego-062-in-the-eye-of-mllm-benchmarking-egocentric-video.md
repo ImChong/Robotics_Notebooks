@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "NeurIPS 2025 Datasets and Benchmarks Track"
 summary: "The EgoGazeVQA benchmark systematically evaluates the ability of multimodal LLMs to infer user intent via eye movement signals"
 related:

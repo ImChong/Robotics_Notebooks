@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, mini-cheetah, mit, mpc, qdd, locomotion, sim2real, foc, open-source, hardware, actuator]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 code: https://github.com/mit-biomimetics/Cheetah-Software
 related:
   - ./benjamin-katz.md

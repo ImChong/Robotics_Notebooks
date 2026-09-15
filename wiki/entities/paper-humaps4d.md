@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, human-motion, mocap, semg, plantar-pressure, multimodal, cvpr, imt-nord-europe, imt, universite-de-lille]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 venue: "CVPR 2026"
 related:
   - ../concepts/motion-retargeting.md

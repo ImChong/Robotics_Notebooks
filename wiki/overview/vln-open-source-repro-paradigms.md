@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, open-source, reproduction, habitat, vla, embodied-ai]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ./vln-10-papers-technology-map.md
   - ../entities/paper-vln-10-navid.md

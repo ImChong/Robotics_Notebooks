@@ -10,7 +10,7 @@ tags:
   - loco-manipulation
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2511.11218"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md

@@ -11,7 +11,7 @@ tags:
   - computer-vision
 status: complete
 date: 2026-05-21
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ../concepts/text-to-cad.md
   - ./multi-agent-cad.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, visual-rl, sac, architecture, kaist, deepmind]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.07870"
 code: https://github.com/DAVIAN-Robotics/V-Simba
 related:

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, cmu, eth]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2504.12540"
 venue: "2024 · arXiv"
 summary: "planner 与 controller 在扩散框架内协同；BFM 成熟后的分层边界问题。"

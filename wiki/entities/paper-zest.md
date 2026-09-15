@@ -13,7 +13,7 @@ tags:
   - rai-institute
   - boston-dynamics
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2602.00401"
 doi: "10.1126/scirobotics.aec7695"
 venue: "Science Robotics 2026"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, tro-manip-survey, video-pretraining, cross-embodiment, bit]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 venue: "IEEE T-RO 2026 · CVPR 2025 GraphMimic"
 summary: "G3M：视频帧抽象为物体/视觉动作顶点图，图到图生成预训练条件化下游策略；20% 标注达全量性能。"
 related:

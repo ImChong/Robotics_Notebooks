@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "humanoid", "atlas", "mpc", "state-estimation", "boston-dynamics", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 venue: "HMI curated · 2016"
 summary: "Atlas Locomotion（HMI P005）：把足步/全身规划、状态估计与高频反馈控制放进同一条 Atlas 闭环，强调坐标系、频率与状态接口必须统一。"
 related:

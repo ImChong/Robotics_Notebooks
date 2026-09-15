@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, pso, evolutionary-computing, neuroevolution, sustech]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.07539"
 code: https://github.com/EMI-Group/AutoPSO
 related:

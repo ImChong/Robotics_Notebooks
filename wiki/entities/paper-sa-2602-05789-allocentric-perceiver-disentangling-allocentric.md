@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.05789"
 venue: "arXiv 2026"
 summary: "A training-free allocentric perception strategy, recovering metric 3D states from single or multiple images, with about 10% improvement on allocentric tasks"

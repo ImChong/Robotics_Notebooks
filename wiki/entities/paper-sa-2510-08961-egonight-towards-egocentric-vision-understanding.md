@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.08961"
 venue: "arXiv 2025"
 summary: "The first comprehensive benchmark for nighttime egocentric vision with VQA as the core task"

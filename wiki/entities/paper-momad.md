@@ -9,7 +9,7 @@ tags:
   - horizon-robotics
   - tsinghua
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: "CVPR 2025"
 arxiv: "2503.03125"
 code: https://github.com/adept-thu/MomAD

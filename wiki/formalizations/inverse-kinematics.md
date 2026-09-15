@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, inverse-kinematics, jacobian, embodied-ai, shenlan, manipulation]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./forward-kinematics.md

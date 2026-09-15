@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, world-models, evaluation, agentic, harness, video-generation, open-source, mirros]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.16859"
 code: https://github.com/mirros-lab/harnesseval-w
 related:

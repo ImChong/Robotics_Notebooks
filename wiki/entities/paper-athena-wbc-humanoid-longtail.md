@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, long-tail, distillation, teacher-student, reinforcement-learning, xpeng, sonic]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 arxiv: "2607.04837"
 summary: "Athena-WBC（arXiv:2607.04837，小鹏机器人）针对大规模人形 tracking 的训练集长尾残余失败，用能力对齐的 dynamic/balance privileged expert（改奖励与重力课程）+ 按动作路由 DAgger 蒸馏 + RL 微调，在 80 kg 自研人形上相对 SONIC-Base 配方改善长尾恢复与 held-out 跟踪，并提出 STC/TIS/MPJPE-W 评测。"
 related:

@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, world-models, reading-roadmap, technology-map, embodied-ai]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 related:
   - ../entities/paper-clip.md
   - ../entities/paper-dinov2.md

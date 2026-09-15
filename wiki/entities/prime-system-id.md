@@ -14,7 +14,7 @@ tags:
   - unitree-g1
   - hmi-opensource-table
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2605.17681"
 code: https://github.com/well-robotics/PRIME
 related:

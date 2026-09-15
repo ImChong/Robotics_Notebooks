@@ -15,7 +15,7 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2505.21864"
 code: https://github.com/real-stanford/DexUMI
 related:

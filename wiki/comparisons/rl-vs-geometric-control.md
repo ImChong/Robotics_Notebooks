@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, geometric-control, quadrotor, uav, control, comparison, engineering-selection, upenn]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 related:
   - ../entities/paper-rl-vs-gc.md
   - ./mpc-vs-rl.md

@@ -13,7 +13,7 @@ tags:
   - kyon
   - iit
 status: complete
-updated: 2026-08-11
+updated: 2026-09-15
 arxiv: "2608.07328"
 related:
   - ../tasks/locomotion.md

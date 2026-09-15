@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.15892"
 venue: "arXiv 2026"
 summary: "Introduces FlipSet, a diagnostic benchmark for Level-2 visual perspective taking in VLMs. Evaluating 103 VLMs reveals systematic egocentric bias: the vast majority perform below chance"

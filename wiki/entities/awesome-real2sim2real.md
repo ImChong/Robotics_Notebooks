@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, sim2real, real2sim, real2sim2real, domain-randomization, gaussian-splatting, embodied-ai]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ../overview/sun-awesome-r2s2r-technology-map.md
   - ../overview/hub-sim2real.md

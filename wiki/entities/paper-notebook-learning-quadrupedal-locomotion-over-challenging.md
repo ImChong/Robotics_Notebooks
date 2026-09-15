@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, locomotion, privileged-learning, anymal, eth, science-robotics, hmi-papers]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2010.11251"
 venue: "Science Robotics 2020"
 doi: "https://doi.org/10.1126/scirobotics.abc5986"

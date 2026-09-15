@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, parkour, locomotion, transformer, sequence-modeling, future-prediction, amp, rgb-d, perceptive-locomotion, unitree-g1, hkust-gz, scau, gdut, clai-lab]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 arxiv: "2605.25782"
 venue: arXiv
 related:

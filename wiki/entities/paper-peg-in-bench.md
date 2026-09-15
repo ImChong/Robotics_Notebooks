@@ -8,7 +8,7 @@ tags:
   - high-precision
   - aist
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2609.00906"
 related:
   - ../tasks/manipulation.md

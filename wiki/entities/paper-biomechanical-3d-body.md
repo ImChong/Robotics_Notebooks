@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, perception, human-mesh-recovery, biomechanics, sam-3d-body, mujoco, jax, umich, clinical]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2608.29928"
 related:
   - ./sam-3d-body.md

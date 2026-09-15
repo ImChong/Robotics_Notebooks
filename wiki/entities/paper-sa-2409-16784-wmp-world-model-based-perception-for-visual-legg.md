@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2409.16784"
 venue: "arXiv 2024"
 summary: "World model-based perception for visual legged locomotion."

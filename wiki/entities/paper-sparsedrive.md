@@ -8,7 +8,7 @@ tags:
   - bev
   - horizon-robotics
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: "arXiv 2024"
 arxiv: "2405.19620"
 code: https://github.com/swc-17/SparseDrive

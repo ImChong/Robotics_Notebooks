@@ -9,7 +9,7 @@ tags:
   - tencent
   - tsinghua
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2607.17523"
 code: https://github.com/BRZ911/Thinking-in-Video
 related:

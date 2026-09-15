@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, dataset, embodied-ai-lab]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md

@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'quadruped', 'fudan', 'diffusion-policy', 'parkour', 'navigation']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2609.03984"
 summary: "MulDP（arXiv:2609.03984，复旦）：视觉+本体+目标扩散生成速度指令；QPND 数据集；仿真 SR 89.7%；未见官方代码。"
 related:

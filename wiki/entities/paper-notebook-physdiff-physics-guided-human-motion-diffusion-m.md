@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, physics-guided, motion-imitation, iccv, humanoid-paper-notebooks, nvidia]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2212.02500"
 related:
   - ../methods/diffusion-motion-generation.md

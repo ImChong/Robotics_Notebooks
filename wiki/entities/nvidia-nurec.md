@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, nurec, 3dgs, gaussian-splatting, real2sim, sim2real, isaac-sim, isaac-lab, omniverse, autonomous-driving, neural-reconstruction]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./paper-instant-nurec.md
   - ./isaac-gym-isaac-lab.md

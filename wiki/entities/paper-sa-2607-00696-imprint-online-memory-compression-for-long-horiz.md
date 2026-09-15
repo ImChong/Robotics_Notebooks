@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.00696"
 venue: "arXiv 2026"
 summary: "An interaction-centric memory framework formulating long-horizon egocentric memory as online memory compression. Improves QA accuracy from 31.0% to 35.8% on EgoLifeQA, reduces memory footprint by 2.3×"

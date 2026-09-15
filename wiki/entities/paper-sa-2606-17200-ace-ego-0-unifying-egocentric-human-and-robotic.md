@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.17200"
 venue: "arXiv 2026"
 summary: "Unified VLA pretraining framework jointly leveraging heterogeneous data sources with a scalable egocentric video-to-action pipeline converting raw human videos into robot-format pseudo-action trajectories"

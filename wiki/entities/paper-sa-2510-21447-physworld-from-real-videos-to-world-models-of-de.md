@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.21447"
 venue: "arXiv 2025"
 summary: "Leverages simulators to generate physically plausible and diverse demonstrations, learning efficient world models for deformable objects that are 47× faster in inference than SOTA."

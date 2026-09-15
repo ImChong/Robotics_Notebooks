@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.17709"
 venue: "arXiv 2025"
 summary: "Derives and validates mathematical tools needed to develop bi-level RL algorithms that close the Sim2Real performance gap by directly adapting simulator parameters based on real-world performance"

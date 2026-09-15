@@ -17,7 +17,7 @@ tags:
   - kesai
   - tum
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2607.02515"
 code: https://github.com/google-research/pointdit
 related:

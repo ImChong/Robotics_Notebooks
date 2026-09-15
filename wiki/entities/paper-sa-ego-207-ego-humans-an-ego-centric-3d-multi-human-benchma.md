@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "ICCV 2023"
 summary: "Presents EgoHumans, a new multi-view multi-human video benchmark to advance egocentric human 3D pose estimation and tracking"
 related:

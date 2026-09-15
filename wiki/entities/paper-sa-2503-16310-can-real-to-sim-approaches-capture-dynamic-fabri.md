@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2503.16310"
 venue: "arXiv 2025"
 summary: "Presents a rigorous evaluation of Real-to-Sim parameter estimation approaches for fabric manipulation, aligning the physical behavior of simulated fabric with real fabric"

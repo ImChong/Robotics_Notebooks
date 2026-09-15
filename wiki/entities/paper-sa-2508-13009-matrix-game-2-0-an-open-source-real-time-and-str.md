@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.13009"
 venue: "arXiv 2025"
 summary: "Generates interactive videos in real time via few‑step autoregressive diffusion, addressing the long inference time of existing models."

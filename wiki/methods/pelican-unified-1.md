@@ -4,7 +4,7 @@ type: method
 tags: [pelican-unified, uei, vla, world-models, diffusion, joint-wam, embodied-ai, qwen3-vl, x-humanoid]
 status: complete
 date: 2026-05-16
-updated: 2026-07-21
+updated: 2026-09-15
 summary: "Pelican-Unified 1.0 将 Qwen3-VL 作为统一理解与推理模块，把末态稠密潜变量 z 送入 Wan 系 Unified Future Generator，在同一扩散去噪中联合生成未来视频与动作块，使语言、视频与动作损失共同塑造共享表示。"
 related:
   - ../concepts/world-action-models.md

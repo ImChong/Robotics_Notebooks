@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.18214"
 venue: "arXiv 2026"
 summary: "A controllable egocentric video generation simulator, achieving precise control over cameras, human actions and object manipulations"

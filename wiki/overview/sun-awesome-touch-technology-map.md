@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-touch, sun254667, technology-map]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 summary: "Awesome Touch 技术地图：为清单内论文提供独立详情节点索引（新建 57，复用已有 8）。"
 related:
   - ../entities/awesome-touch.md

@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, teleoperation, 1x-technologies]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ./paper-1xwm-redwood-world-model.md

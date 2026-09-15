@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, robot-description, urdf, urdd, preprocessing, yale, apollo-lab, rust, bevy, three-js, collision-geometry, forward-kinematics, arxiv-2512-23135, linux-foundation]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 arxiv: "2512.23135"
 code: https://github.com/Apollo-Lab-Yale/apollo-rust
 related:

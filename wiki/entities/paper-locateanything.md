@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, visual-grounding, object-detection, open-vocabulary, gui-grounding, ocr, nvidia, parallel-decoding]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2605.27365"
 code: https://github.com/NVlabs/Eagle/tree/main/Embodied
 related:

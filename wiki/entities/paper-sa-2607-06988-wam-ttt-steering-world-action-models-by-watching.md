@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.06988"
 venue: "arXiv 2026"
 summary: "Steers world-action models by watching human play at test time."

@@ -2,7 +2,7 @@
 type: overview
 tags: [bfm, behavior-foundation-model, category-hub, awesome-bfm-papers, adaptation]
 status: complete
-updated: 2026-07-11
+updated: 2026-09-15
 summary: "具身智能研究室 BFM 41 篇专题 · 04 Adaptation（4 篇）— 预训练 BFM 如何以低成本适配新任务、新动力学或新机体（样本与工程摩擦）？"
 related:
   - ./bfm-41-papers-technology-map.md

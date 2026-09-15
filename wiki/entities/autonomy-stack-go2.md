@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, go2, unitree, lidar, slam, navigation, cmu, quadruped]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 related:
   - ./point-lio-unilidar.md
   - ./unitree.md

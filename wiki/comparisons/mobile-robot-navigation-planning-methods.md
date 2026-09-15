@@ -2,7 +2,7 @@
 type: comparison
 tags: [path-planning, navigation, local-planning, motion-planning, mobile-robot, comparison, engineering-selection]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 related:
   - ./robot-path-planning-five-paradigms-taxonomy.md
   - ../methods/a-star.md

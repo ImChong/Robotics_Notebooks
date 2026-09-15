@@ -2,7 +2,7 @@
 
 type: entity
 summary: "legged_gym"
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ../entities/extreme-parkour.md
   - ../entities/humanoid-gym.md

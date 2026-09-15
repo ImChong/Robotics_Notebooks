@@ -18,7 +18,7 @@ tags:
   - bytedance
   - adelaide
 status: complete
-updated: 2026-08-16
+updated: 2026-09-15
 arxiv: "2512.00076"
 code: https://github.com/Embodied-Arcadia/EmbodiedKit
 summary: "Arcadia（arXiv:2512.00076）：具身终身学习四段闭环——自主采集、生成式 USD、共享 VLN/VLA 骨干、Sim-from-Real 反馈；VLN-CE-Isaac SR 50.1%，G1+Dex-3 真机导航 46/100、操作 27/100。EmbodiedKit 部分开源：训练/数据脚本可辨识，探索/3DGS/反馈与权重未发布。"

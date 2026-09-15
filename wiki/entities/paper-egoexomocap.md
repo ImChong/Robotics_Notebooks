@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, egocentric, exocentric, ego-exo, hmd, mocap, meta, eth, embodied-ai]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2607.15868"
 venue: "ECCV 2026 Spotlight"
 related:

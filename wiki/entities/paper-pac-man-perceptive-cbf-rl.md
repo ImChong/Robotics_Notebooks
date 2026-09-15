@@ -13,7 +13,7 @@ tags:
   - dodgeball
   - caltech
 status: complete
-updated: 2026-08-01
+updated: 2026-09-15
 arxiv: "2607.28623"
 code: https://github.com/lzyang2000/perceptive_cbf_rl
 summary: "PAC-MAN（arXiv:2607.28623，Caltech AMBER）：感知感知 CBF-RL 人形躲避球——训练期 Link/Joint-CBF + AMP，部署仅机载分割掩膜深度；G1 零样本 19/20、0 跌倒；全栈开源含浏览器 Demo。"

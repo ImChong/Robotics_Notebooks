@@ -8,7 +8,7 @@ tags:
   - planning
   - hust
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: "ICCV 2023"
 arxiv: "2303.12077"
 code: https://github.com/hustvl/VAD

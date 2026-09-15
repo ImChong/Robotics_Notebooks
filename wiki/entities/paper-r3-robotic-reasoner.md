@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, reasoning, reinforcement-learning, long-horizon, cmu]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.26053"
 related:
   - ../methods/vla.md

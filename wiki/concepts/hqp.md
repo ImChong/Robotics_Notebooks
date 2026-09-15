@@ -2,7 +2,7 @@
 type: concept
 tags: [wbc, tsid, optimization, qp, humanoid, control]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 summary: "HQP 用层次化二次规划表达任务优先级，是现代 WBC / TSID 控制器的常见求解框架。"
 sources:
   - ../../sources/papers/whole_body_control.md

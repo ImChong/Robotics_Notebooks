@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, cross-embodiment, distillation, reinforcement-learning, sjtu, shanghai-ai-lab, icra-2026]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2602.02960"
 venue: "ICRA 2026"
 summary: "EAGLE-WBC（arXiv:2602.02960，SJTU / Shanghai AI Lab）用 generalist→specialist 微调→DAgger 回蒸的迭代循环，配合统一速度/高度/pitch 指令接口，让单一策略跨 H1/G1/T1/N1/Adam 等人形 WBC；仿真 5 机、真机 4 机验证，截至入库日未开源。"

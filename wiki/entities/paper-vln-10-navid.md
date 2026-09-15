@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, pku]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2402.15852"
 summary: "将导航历史建模为视频流输入 Vicuna-7B VLM，仅依赖 RGB 视频流输出前进/转向等底层动作。"
 related:

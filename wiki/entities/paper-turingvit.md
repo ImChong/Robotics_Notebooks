@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vision-transformer, visual-encoder, vlm, efficiency, linear-attention, xpeng]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-15
 arxiv: "2606.24253"
 related:
   - ../concepts/vision-transformer.md

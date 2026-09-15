@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.15338"
 venue: "arXiv 2026"
 summary: "Zero-shot RGB sim-to-real framework for deformable manipulation"

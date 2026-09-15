@@ -2,7 +2,7 @@
 type: concept
 tags: [safety, control, cbf, safe-rl, wbc, deployment]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 summary: "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
 related:
   - ./control-barrier-function.md

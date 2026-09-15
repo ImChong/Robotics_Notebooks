@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, hri, egocentric, social-navigation, inria, cea]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.11051"
 code: https://github.com/hucebot/HUI360-Baselines
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'humanoid', 'loco-manipulation', 'behavior-tree', 'affordance-template', 'runtime-editing']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2609.01518"
 summary: "IHMC/UWF（arXiv:2609.01518）：机载 Affordance Template + 行为树 + 可运行时编辑场景动作；全身控制并发行走与操作；H1-2/Alex 推门 34 s、六球分拣 45 s（扰动）；未见官方代码。"
 related:

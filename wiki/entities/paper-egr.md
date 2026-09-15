@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, multimodal-robustness, tactile, regularization, unc]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.03142"
 code: https://github.com/YY-GX/EGR
 related:

@@ -13,7 +13,7 @@ sources:
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "Sim2Real 方法横向对比"
-updated: 2026-09-11
+updated: 2026-09-15
 ---
 
 # Sim2Real 方法横向对比

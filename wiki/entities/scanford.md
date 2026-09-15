@@ -9,7 +9,7 @@ tags:
   - stanford
   - toyota-research
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 summary: "Scanford：Stanford+TRI 的 RPDF 图书馆盘点机器人（Franka FR3+TidyBot++），东亚图书馆两周扫 2103 书架；VLM+RAG 自动标注；未开源。"
 related:
   - ./paper-scanford-robot-powered-data-flywheel.md

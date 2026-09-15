@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.31723"
 venue: "arXiv 2026 (CoRL 2026)"
 summary: "Unified tactile learning framework modeling tactile signals as dynamic interaction cues for both contact understanding and prediction; introduces tactile-action mixed controller."

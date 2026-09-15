@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, network-science, reproducible-assembly, hardware, ceu, northeastern-us]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2609.03852"
 code: https://github.com/Barabasi-Lab/NetworkDesign
 related:

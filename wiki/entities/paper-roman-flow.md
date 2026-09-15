@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, offline-rl, normalizing-flow, manipulation, diffusion-policy]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.20208"
 code: https://github.com/konnyaku28/RoMAN-Flow
 related:

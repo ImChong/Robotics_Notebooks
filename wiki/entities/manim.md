@@ -3,7 +3,7 @@
 type: entity
 tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 related:
   - ./blender.md
   - ./botlab-motioncanvas.md

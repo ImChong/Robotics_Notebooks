@@ -12,7 +12,7 @@ tags:
   - fudan
   - agibot
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2505.17862"
 code: https://github.com/Lliar-liar/Daily-Omni
 related:

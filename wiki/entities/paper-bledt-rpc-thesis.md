@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, thesis, mpc, locomotion, quadruped, mit, control]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "MIT PhD Thesis 2020"
 related:
   - ./paper-extracting-legged-locomotion-heuristics-rpc.md

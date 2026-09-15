@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, data-engine, web-video, retrieval, nvidia]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.03199"
 code: https://github.com/Rice-RobotPI-Lab/RoboTok-Code
 related:

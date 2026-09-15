@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 summary: "世界模型动作后果专题 · 04 — 策略评估与世界模型进入研发链路"
 related:
   - ./robot-world-models-action-consequence-technology-map.md

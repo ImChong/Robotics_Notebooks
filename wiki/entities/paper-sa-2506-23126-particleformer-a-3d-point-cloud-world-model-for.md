@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.23126"
 venue: "arXiv 2025"
 summary: "3D point cloud world model for multi-object, multi-material robotic manipulation."

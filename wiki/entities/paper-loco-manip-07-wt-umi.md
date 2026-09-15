@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, loco-manip-contact-survey, tactile, force-control, admittance-control, teleoperation, whole-body-manipulation, humanoid, georgia-tech]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2606.13232"
 venue: "arXiv 2026"
 related:

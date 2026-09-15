@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - sim2real
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2605.09944"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

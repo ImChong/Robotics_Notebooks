@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.14742"
 venue: "ICML 2026"
 summary: "Employs Group Relative Policy Optimization (GRPO) to enhance the interaction understanding of MLLMs in first-person vision"

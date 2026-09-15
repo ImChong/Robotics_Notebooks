@@ -2,7 +2,7 @@
 type: query
 tags: [query, vla, world-model, reinforcement-learning, imitation-learning, taxonomy, shenlan, embodied-ai]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ./embodied-fm-taxonomy-loop.md

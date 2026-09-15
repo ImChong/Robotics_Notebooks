@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.14433"
 venue: "arXiv 2026"
 summary: "Unified simulation platform with eight representative visuo-tactile manipulation tasks; UniVTAC Encoder improves average success rates by 17.1%."

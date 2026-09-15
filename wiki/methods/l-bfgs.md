@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, l-bfgs, quasi-newton, trajectory-optimization, numerical-methods]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "L-BFGS 只存最近 m 对梯度差分向量，用 two-loop recursion 计算搜索方向，是高维 TrajOpt 与 cuRobo 类运动生成的工业默认。"
 related:
   - ./bfgs.md

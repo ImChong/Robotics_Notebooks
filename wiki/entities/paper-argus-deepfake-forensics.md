@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - ant-group
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2608.06865"
 code: https://github.com/XavierJiezou/ARGUS
 related:

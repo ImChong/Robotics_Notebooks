@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, platform, actuator]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 related:
   - ./motioncode.md
   - ./project-instinct.md

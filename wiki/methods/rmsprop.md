@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, rmsprop, adaptive, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "RMSProp 用梯度平方的指数滑动平均归一化步长，缓解 Adagrad 学习率持续衰减问题，是 Adam 二阶矩估计的直接前驱。"
 related:
   - ./adagrad.md

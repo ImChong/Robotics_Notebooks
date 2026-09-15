@@ -9,7 +9,7 @@ tags:
   - reconstruction
   - cmu
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2607.16946"
 venue: "SIGGRAPH 2026 / ACM TOG"
 code: https://github.com/nzfeng/points-as-tori

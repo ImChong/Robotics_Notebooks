@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "quadruped", "locomotion", "perception", "privileged-learning", "eth", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2201.08117"
 venue: "HMI curated · 2022"
 summary: "Robust Perceptive Locomotion（HMI P012）：用循环 Belief Encoder 融合带噪高程图与本体历史，使四足在外感知失效时仍能退回身体反馈、在野外稳健行走。"

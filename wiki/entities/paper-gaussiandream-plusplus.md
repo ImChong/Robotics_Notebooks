@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, gaussian-splatting, world-model, tuojing, casia, ucas]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.25659"
 code: https://github.com/TuojingAI/GaussianDream
 related:

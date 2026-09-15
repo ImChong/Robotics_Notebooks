@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "world-model", "model-based-rl", "dreamer", "hmi-papers"]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "1912.01603"
 code: https://github.com/danijar/dreamer
 venue: "HMI curated · 2019"

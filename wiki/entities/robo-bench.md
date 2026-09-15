@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, mllm, vla, manipulation, evaluation, pku, baai, huggingface, open-source]
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md

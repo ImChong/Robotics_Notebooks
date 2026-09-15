@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, streaming-tts, causal-generation, human-robot-interaction, low-latency, x-square-robot]
 status: complete
-updated: 2026-08-21
+updated: 2026-09-15
 arxiv: "2608.18661"
 related:
   - ../tasks/teleoperation.md

@@ -11,7 +11,7 @@ tags:
   - model-based-planning
   - harvard
 status: complete
-updated: 2026-08-02
+updated: 2026-09-15
 arxiv: "2607.27599"
 code: https://github.com/XiangchengZhang/world-action-planner
 summary: "World Action Planner（arXiv:2607.27599，Harvard）：pose-image 条件多视角世界模型 + VLM 提议/优化/搜索；组合任务、新布局与零样本显著优于 π₀.₅ / cosmos-policy；代码与 HF 权重已开源。"

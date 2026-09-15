@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, georgia-tech]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2509.04443"
 code: https://ego-moma.github.io/
 summary: "人类移动操作 Ego 数据 + 静态机器人数据共训，绕开大规模移动机器人遥操作成本。"

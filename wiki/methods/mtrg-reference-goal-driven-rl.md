@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, reinforcement-learning, motion-imitation, parkour, goal-conditioned, unitree-g1, sim2real]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./zest.md
   - ../entities/paper-zest.md

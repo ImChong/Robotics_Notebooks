@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, validation, hardware-in-the-loop, ros2, embedded-systems, isaac-sim, nvidia, physical-ai]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 related:
   - ./software-in-the-loop.md
   - ./sim2real.md

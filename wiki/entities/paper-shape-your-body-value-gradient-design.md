@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, robot-design, co-design, multi-embodiment, reinforcement-learning, ppo, urma, value-function, locomotion, mujoco, mjx, quadruped, humanoid, tu-darmstadt, dfki]
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 arxiv: "2606.00702"
 related:
   - ../methods/reinforcement-learning.md

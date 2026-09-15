@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.02205"
 venue: "arXiv 2026"
 summary: "Shapes the closed-loop behavior of physical actuators to match idealized second-order reference dynamics used in simulation. Offers an alternative to making simulators more realistic by shaping reality to match simulatio"

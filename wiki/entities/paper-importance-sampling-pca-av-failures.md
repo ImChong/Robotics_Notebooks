@@ -15,7 +15,7 @@ tags:
   - stanford
   - torc
 status: complete
-updated: 2026-08-01
+updated: 2026-09-15
 arxiv: "2607.18106"
 related:
   - ../methods/safe-rl.md

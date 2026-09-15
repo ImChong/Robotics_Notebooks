@@ -8,7 +8,7 @@ tags:
   - robust-control
   - rss2026
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2603.02642"
 venue: RSS 2026
 related:

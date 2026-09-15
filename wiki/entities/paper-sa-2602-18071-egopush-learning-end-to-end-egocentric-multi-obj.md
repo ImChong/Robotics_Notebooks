@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.18071"
 venue: "arXiv 2026"
 summary: "A policy learning framework enabling egocentric, perception-driven rearrangement without relying on explicit global state estimation. Uses object-centric latent space to encode relative spatial relations"

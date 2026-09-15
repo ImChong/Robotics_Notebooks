@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.06361"
 venue: "arXiv 2025"
 summary: "Open-source, Gymnasium-compatible benchmark for active tactile perception tasks including localization, classification, and volume."

@@ -14,7 +14,7 @@ tags:
   - uiuc
   - unitree
 status: complete
-updated: 2026-08-02
+updated: 2026-09-15
 arxiv: "2507.07825"
 related:
   - ../concepts/privileged-training.md

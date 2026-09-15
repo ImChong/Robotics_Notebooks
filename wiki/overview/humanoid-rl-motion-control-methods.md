@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, reinforcement-learning, imitation-learning, bfm, perception]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 related:
   - ./humanoid-motion-control-know-how-technology-map.md
   - ../../roadmap/depth-rl-locomotion.md

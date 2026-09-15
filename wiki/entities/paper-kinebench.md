@@ -13,7 +13,7 @@ tags:
   - tsinghua
   - npu
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2607.19876"
 code: https://github.com/minecraft-zzz/KineBench
 related:

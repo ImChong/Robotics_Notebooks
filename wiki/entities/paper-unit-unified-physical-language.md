@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - hku
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2604.19734"
 venue: "arXiv 2026"
 code: https://github.com/xpeng-robotics/UniT

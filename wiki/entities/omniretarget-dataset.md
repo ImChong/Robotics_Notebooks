@@ -3,7 +3,7 @@ type: entity
 title: OmniRetarget Dataset（G1 交互重定向轨迹）
 tags: [dataset, humanoid, loco-manipulation, motion-retargeting, unitree-g1, huggingface, amazon-far, omomo]
 summary: "Hugging Face 上的 OmniRetarget 公开子集：约 4.0 小时 Unitree G1 物体/地形/联合交互重定向轨迹（.npz qpos+fps）；OMOMO 与自采 MoCap 来源；LAFAN1 需用 holosoma 自行重定向。"
-updated: 2026-06-08
+updated: 2026-09-15
 status: complete
 related:
   - ./paper-hrl-stack-03-omniretarget.md

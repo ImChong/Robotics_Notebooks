@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, world-models, sparse-representation, planning, nyu, duke, mila, brown, ami-labs]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2608.22764"
 venue: "arXiv 2026"
 code: https://github.com/YilunKuang/lpworldmodel

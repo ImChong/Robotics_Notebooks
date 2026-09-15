@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, biomechanics, anatomy, soft-tissue, multi-view, motion-capture, blendshape, dataset, max-planck, eccv-2026]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2606.09246"
 venue: "ECCV 2026"
 project: https://vcai.mpi-inf.mpg.de/projects/SOMA/

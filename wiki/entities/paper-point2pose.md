@@ -11,7 +11,7 @@ tags:
   - reconstruction
   - tracking
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2604.10415"
 venue: "ECCV 2026"
 code: https://github.com/tzuyuan/point-to-pose

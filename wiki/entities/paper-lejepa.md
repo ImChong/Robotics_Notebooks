@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, self-supervised-learning, sigreg, brown, nyu, meta, lejepa]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2511.08544"
 venue: "arXiv 2025"
 code: https://github.com/rbalestr-lab/lejepa

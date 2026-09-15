@@ -2,7 +2,7 @@
 type: query
 tags: [manipulation, grasping, perception, vla, il, rl, 6dof, anygrasp, graspnet]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 summary: "抓取策略选型 Query：从「开放场景 vs 已知物体」「稀疏 vs 稠密候选」「几何启发式 vs 学习方法 vs 端到端策略」三轴出发，给出真机抓取系统的方案选择与组合路径。"
 related:
   - ../methods/grasp-pose-estimation.md

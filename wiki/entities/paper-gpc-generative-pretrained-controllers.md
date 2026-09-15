@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, physics-based-animation, generative-controller, motion-token, transformer, reinforcement-learning, parameter-efficient-finetuning, nvidia, sfu, siggraph]
 status: complete
-updated: 2026-07-01
+updated: 2026-09-15
 arxiv: "2606.29148"
 venue: "SIGGRAPH Conference Papers 2026"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, egocentric-vision, hand-reconstruction, video-diffusion, manipulation-data, sjtu]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.20308"
 related:
   - ../methods/macrodata-egocentric-hand-action.md

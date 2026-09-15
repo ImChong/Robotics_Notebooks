@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.19476"
 venue: "IEEE RA-L 2026"
 summary: "Investigates role of contact force sensing for training robots to gently reach into constrained clutter."

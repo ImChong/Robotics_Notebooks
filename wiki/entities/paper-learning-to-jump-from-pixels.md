@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, vision, locomotion, quadruped, sim2real, mit, jumping]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2110.15344"
 related:
   - ./mit-mini-cheetah.md

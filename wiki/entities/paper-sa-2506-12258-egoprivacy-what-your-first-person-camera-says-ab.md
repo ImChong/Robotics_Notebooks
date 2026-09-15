@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.12258"
 venue: "ICML 2025"
 summary: "The first large‑scale benchmark for egocentric privacy risk assessment, systematically answering 'what can be inferred about the wearer from first‑person video?'. Covers three privacy categories (demographic, individual,"

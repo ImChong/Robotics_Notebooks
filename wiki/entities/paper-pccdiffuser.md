@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, continuum-robots, motion-planning, diffusion]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.09745"
 code: https://github.com/qiuke-qiuke/pcc_diffuser
 related:

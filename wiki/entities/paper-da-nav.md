@@ -19,7 +19,7 @@ tags:
   - ucas
   - leju
 status: complete
-updated: 2026-08-16
+updated: 2026-09-15
 arxiv: "2607.11638"
 summary: "DA-Nav（arXiv:2607.11638）：用商业导航方向指令做城市尺度户外 VLN；图像平面离散 spatial grounding + CoT 偏离恢复；ReDA 数据集；CARLA SoTA（CSR≈98%），零样本 Go2 / 乐聚 Kuavo-V 公里级导航；截至入库日未开源。"
 related:

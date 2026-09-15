@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-generation, mesh-deformation, remeshing, score-distillation, eccv2026, uchicago, usc, technion]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-15
 arxiv: "2608.17182"
 venue: "ECCV 2026 (Oral)"
 code: https://github.com/threedle/radmesh

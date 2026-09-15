@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, manipulation, multi-gripper, dataset, open-source, physical-intelligence, hust, u-tokyo, mbzuai]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2608.24603"
 venue: "ECCV 2026"
 code: https://github.com/airvlab/G-VLA

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, humanoid, whole-body-control, survey, tpami, limx, sjtu, hku, epfl, zju]
 status: complete
-updated: 2026-07-11
+updated: 2026-09-15
 arxiv: "2506.20487"
 venue: "IEEE TPAMI 2025"
 related:

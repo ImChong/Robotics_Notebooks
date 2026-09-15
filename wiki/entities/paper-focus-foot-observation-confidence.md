@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, odometry, ekf, proprioception, contact-reliability, transformer, sim2real, agibot, whu]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2609.02222"
 related:
   - ../formalizations/ekf.md

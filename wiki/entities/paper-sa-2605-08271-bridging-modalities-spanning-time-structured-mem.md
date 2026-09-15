@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.08271"
 venue: "arXiv 2026"
 summary: "Proposes MAGIC-Video with multimodal memory graph and interleaved narrative chain, outperforming prior best agentic system by 10.1 points on EgoLifeQA"

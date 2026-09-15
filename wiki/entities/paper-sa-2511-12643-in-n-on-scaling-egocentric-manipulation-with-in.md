@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2511.12643"
 venue: "arXiv 2025"
 summary: "Curates PHSD dataset with egocentric data and on-task data directly aligned to target manipulation tasks"

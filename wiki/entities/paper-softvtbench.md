@@ -27,7 +27,7 @@ tags:
   - simple-ai
   - physical-intelligence
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2607.04234"
 code: https://github.com/TuojingAI/SoftVTBench
 related:

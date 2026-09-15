@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.22443"
 venue: "NeurIPS 2025 Datasets and Benchmarks Track"
 summary: "Goal inference benchmark dataset, containing 363 participants and 3,482 records, with human upper limit 93% accuracy and best VLM only 84%"

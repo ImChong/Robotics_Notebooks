@@ -15,7 +15,7 @@ tags:
   - sony
   - nus
 status: complete
-updated: 2026-08-02
+updated: 2026-09-15
 arxiv: "2502.10983"
 related:
   - ../tasks/locomotion.md

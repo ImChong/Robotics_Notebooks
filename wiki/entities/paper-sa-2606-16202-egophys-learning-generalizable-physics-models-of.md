@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.16202"
 venue: "arXiv 2026"
 summary: "Constructs deformable physical digital twins from egocentric RGB-only video using generalizable priors, enabling prediction of dense spring stiffness fields for unseen objects"

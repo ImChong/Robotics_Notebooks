@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, uni-hamburg, iit, humanoid, icub, developmental-robotics, sensorimotor-contingency, science-robotics]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 doi: "10.1126/scirobotics.aed4106"
 venue: "Science Robotics 2026"
 code: "https://github.com/ctu-vras/mobile-paradigm-model"

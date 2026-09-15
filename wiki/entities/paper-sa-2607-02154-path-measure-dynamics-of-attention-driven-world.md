@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.02154"
 venue: "arXiv 2026"
 summary: "Studies how attention enables world models to condition on entire histories for long-term memory."

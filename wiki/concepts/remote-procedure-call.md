@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, networking, rpc, grpc, middleware, ros2, google, ietf, xerox-parc, cncf]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 related:
   - ../entities/grpc.md
   - ./ros2-basics.md

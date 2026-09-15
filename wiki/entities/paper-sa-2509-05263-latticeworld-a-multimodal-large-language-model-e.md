@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2509.05263"
 venue: "arXiv 2025"
 summary: "Takes text descriptions and visual instructions as multimodal input to create large‑scale 3D interactive worlds with dynamic agents, high‑fidelity physics simulation, and real‑time rendering."

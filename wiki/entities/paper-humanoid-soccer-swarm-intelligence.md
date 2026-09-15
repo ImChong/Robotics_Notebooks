@@ -12,7 +12,7 @@ tags:
   - aco
   - flocking
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 venue: "Sensors 2025, 25(11):3496"
 doi: "10.3390/s25113496"
 related:

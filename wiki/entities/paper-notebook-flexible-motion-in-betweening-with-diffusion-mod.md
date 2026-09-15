@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, in-betweening, keyframe-control, siggraph, humanoid-paper-notebooks, ubc, sfu, nvidia]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2405.11126"
 code: https://github.com/setarehc/diffusion-motion-inbetweening
 related:

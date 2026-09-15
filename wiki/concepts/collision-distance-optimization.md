@@ -2,7 +2,7 @@
 type: concept
 tags: [optimization, collision-avoidance, motion-planning, signed-distance, safety]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 related:
   - ../entities/curobo.md
   - ../entities/paper-points-as-tori.md

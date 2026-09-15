@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, parkour, perceptive-locomotion, reinforcement-learning, dagger, sim2real, unitree, shanghai-pil, shanghaitech, tsinghua, humanoid-paper-notebooks]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2406.10759"
 venue: "CoRL 2024"
 related:

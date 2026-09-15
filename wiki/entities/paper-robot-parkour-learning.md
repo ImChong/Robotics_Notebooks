@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "quadruped", "parkour", "locomotion", "privileged-learning", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2309.05665"
 code: https://github.com/ZiwenZhuang/parkour
 venue: "HMI curated · 2023"

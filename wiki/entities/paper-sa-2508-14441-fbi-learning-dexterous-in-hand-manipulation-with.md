@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.14441"
 venue: "arXiv 2025"
 summary: "Flow Before Imitation (FBI) framework dynamically fuses tactile interactions with visual observations through motion dynamics; transformer-based interaction module with one-step diffusion policy for real-time execution."

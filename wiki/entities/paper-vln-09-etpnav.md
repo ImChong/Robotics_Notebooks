@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, ucas]
 status: complete
-updated: 2026-07-10
+updated: 2026-09-15
 arxiv: "2304.03047"
 summary: "连续环境 VLN-CE 下拓扑建图、跨模态规划与底层控制（含避障）三模块串联的端到端框架。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, diffusion-policy, whole-body-control, umi, robot-free, teleoperation, visuomotor, unitree-g1, motion-retargeting, tsinghua, shanghai-pil, spirit-ai, sjtu]
 status: complete
-updated: 2026-07-19
+updated: 2026-09-15
 arxiv: "2602.06643"
 venue: "arXiv 2026"
 related:

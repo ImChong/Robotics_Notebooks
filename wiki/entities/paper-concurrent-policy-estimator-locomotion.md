@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, state-estimation, locomotion, quadruped, sim2real, kaist]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2202.05481"
 related:
   - ./mit-mini-cheetah.md

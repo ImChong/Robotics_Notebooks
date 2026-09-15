@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, deformable-objects, rope, iterative-learning-control, model-based-control, quadratic-programming, imitation-learning, cmu, arxiv2026]
 status: complete
-updated: 2026-07-02
+updated: 2026-09-15
 arxiv: "2602.21302"
 venue: "arXiv preprint"
 related:

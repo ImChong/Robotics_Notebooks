@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, whole-body, reinforcement-learning, mixture-of-experts, fastsac, off-policy, unitree-g1, deepmirror, hkust, mbzuai, loopermuscle]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.00820"
 venue: "2026 · arXiv"
 code: https://github.com/LooperMuscle/Code

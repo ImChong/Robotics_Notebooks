@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bimanual-grasping, 3d-perception, partial-point-cloud, force-closure]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2608.19188"
 related:
   - ../tasks/manipulation.md

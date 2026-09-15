@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vision-language-model, multimodal, q-former, blip2, salesforce, zero-shot, foundation-model]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 arxiv: "2301.12597"
 code: https://github.com/salesforce/LAVIS
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, qdd, actuator, manipulation, compliant-control, backdrivability, low-cost, ros, berkeley, humanoid-paper-notebooks]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "1904.03815"
 code: https://github.com/berkeleyopenarms/blue_core
 venue: "ICRA / RA-L 2019"

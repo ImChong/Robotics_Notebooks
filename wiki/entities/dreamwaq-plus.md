@@ -10,7 +10,7 @@ tags:
   - privileged-training
   - point-cloud
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2409.19709"
 venue: "IEEE T-RO 2026"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, google, texas-am, stereo-matching, depth-estimation, vision-transformer, dinov2, dpt, scaling-laws, intrinsic]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2608.28933"
 related:
   - ../methods/stereo-matching-foundation-models.md

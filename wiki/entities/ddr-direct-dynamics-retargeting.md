@@ -2,7 +2,7 @@
 type: entity
 tags: [motion-retargeting, humanoid, mocap, hmi-opensource-table, project]
 status: draft
-updated: 2026-07-30
+updated: 2026-09-15
 summary: "DDR：跳过先做运动学重定向再补动力学的两阶段流程，直接在物理仿真中用采样式MPC与CEM搜索目标本体动作，使视频模仿参考同时满足任务空间与动力学约束；源码尚未发布。"
 related:
   - ../concepts/motion-retargeting.md

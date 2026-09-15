@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, procedural-terrain, diffusion, world-generation, simulation, siggraph, minecraft, open-source]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: SIGGRAPH 2026
 arxiv: "2512.08309"
 doi: "10.1145/3799902.3811080"

@@ -12,7 +12,7 @@ tags:
   - tencent
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2601.05844"
 code: https://github.com/PKU-MoCCA/dextercap
 related:

@@ -11,7 +11,7 @@ tags:
   - goal-conditioned
   - xiaomi-robotics
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2509.25746"
 code: https://github.com/NoneJou072/tacrefinenet
 related:

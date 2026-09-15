@@ -9,7 +9,7 @@ tags:
   - libero
   - robotwin
 status: complete
-updated: 2026-07-03
+updated: 2026-09-15
 arxiv: "2605.10903"
 code: https://github.com/OpenHelix-Team/CapVector
 related:

@@ -2530,6 +2530,14 @@
         "qcr"
       ]
     },
+    "qualcomm": {
+      "label": "高通人工智能研究院（Qualcomm AI Research）",
+      "aliases": [
+        "qualcomm",
+        "qualcomm-ai-research",
+        "qai"
+      ]
+    },
     "csiro": {
       "label": "联邦科学与工业研究组织（CSIRO）",
       "aliases": [

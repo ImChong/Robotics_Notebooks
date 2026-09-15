@@ -5,7 +5,7 @@ tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-s
 status: complete
 code: https://github.com/facebookresearch/spider
 date: 2026-05-17
-updated: 2026-07-20
+updated: 2026-09-15
 venue: "2025.11"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md

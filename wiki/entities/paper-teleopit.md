@@ -15,7 +15,7 @@ tags:
   - westlake
   - shanghai-innovation-institute
 status: complete
-updated: 2026-08-09
+updated: 2026-09-15
 arxiv: "2608.01834"
 venue: "arXiv"
 code: https://github.com/BotRunner64/Teleopit

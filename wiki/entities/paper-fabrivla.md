@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, lightweight-vla, flow-matching, behavior-cloning, manipulation, meta-world, internvl, umac, youibot, mese, lerobot]
 status: complete
-updated: 2026-07-23
+updated: 2026-09-15
 arxiv: "2607.08575"
 code: https://github.com/Youi-FabriX/FabriVLA
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.28963"
 venue: "arXiv 2026"
 summary: "Scales multi-agent traffic simulation with self-supervised world models."

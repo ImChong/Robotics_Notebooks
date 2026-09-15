@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, efficient-policy, libero, u-tokyo]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2609.03715"
 code: https://github.com/k1000dai/MINERVA
 related:

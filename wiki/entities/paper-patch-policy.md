@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-learning, vision-transformer, dense-representation, vla, imitation-learning]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2607.18236"
 related: [../methods/vla.md, ../concepts/vision-transformer.md, ../tasks/manipulation.md]
 sources: [../../sources/papers/patch_policy_arxiv_2607_18236.md, ../../sources/sites/patch-policy-github-io.md]

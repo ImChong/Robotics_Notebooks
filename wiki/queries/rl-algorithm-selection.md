@@ -3,7 +3,7 @@ type: query
 tags: [rl, locomotion, policy-optimization, humanoid]
 status: complete
 summary: "> **Query 产物**：本页由以下问题触发：「在足式/人形机器人里，PPO / SAC / TD3 怎么选？」"
-updated: 2026-08-28
+updated: 2026-09-15
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/personal/rl_runner_types.md

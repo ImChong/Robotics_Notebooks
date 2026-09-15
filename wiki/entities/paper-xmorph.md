@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, cross-morphology, motion-retargeting, motion-prior, legged, quadruped, hexapod, loco-manipulation, rl, teleoperation, nus, unitree-g1, unitree-go2]
 status: complete
-updated: 2026-08-06
+updated: 2026-09-15
 arxiv: "2606.30290"
 venue: "2026 · arXiv"
 related:

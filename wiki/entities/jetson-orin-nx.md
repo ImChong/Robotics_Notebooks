@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, hardware, edge-ai, nvidia, jetson, orin, onboard-compute, robotics]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ./nvidia-jetson.md
   - ./jetson-ai-lab.md

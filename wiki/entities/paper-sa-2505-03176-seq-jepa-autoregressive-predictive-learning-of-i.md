@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2505.03176"
 venue: "arXiv 2025"
 summary: "Autoregressive predictive learning of invariant-equivariant world models."

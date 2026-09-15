@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, promptable-control]
 status: complete
-updated: 2026-06-18
+updated: 2026-09-15
 summary: "运动小脑 64 篇长文 · E 可提示控制（4 篇）— 可提示小脑等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md

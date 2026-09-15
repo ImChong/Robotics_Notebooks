@@ -2,7 +2,7 @@
 type: concept
 tags: [control, manipulation, hardware, force-control]
 status: complete
-updated: 2026-05-22
+updated: 2026-09-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-force-loop-bandwidth.md

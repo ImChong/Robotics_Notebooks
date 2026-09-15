@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2507.17294"
 venue: "arXiv 2025"
 summary: "Enhances VLA with tactile sensing without fine-tuning the base VLA; leverages pretrained tactile-language model for semantic feedback and diffusion-based controller for action refinement."

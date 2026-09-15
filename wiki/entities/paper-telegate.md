@@ -12,7 +12,7 @@ tags:
   - rss-2026
   - ustc
 status: complete
-updated: 2026-07-03
+updated: 2026-09-15
 arxiv: "2602.09628"
 venue: "RSS 2026 · arXiv"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3dgs, gaussian-splatting, human-avatar, lbs-free, implicit-control, feed-forward, transformer, eccv, hkust, meta]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2606.31981"
 venue: "ECCV 2026"
 project: https://penghtyx.github.io/LUNA/

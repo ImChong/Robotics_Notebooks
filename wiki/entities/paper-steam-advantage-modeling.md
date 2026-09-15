@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, offline-rl, advantage-modeling, vla, post-training, self-supervised, tsinghua, lerobot, manipulation, behavior-cloning]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2606.29834"
 code: https://github.com/RLinf/RLinf
 related:

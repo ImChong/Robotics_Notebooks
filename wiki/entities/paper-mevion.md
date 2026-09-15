@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, open-source-hardware, bimanual-manipulation, teleoperation, imitation-learning, mujoco, ros]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2607.17970"
 related: [../tasks/bimanual-manipulation.md, ./aloha.md, ../tasks/teleoperation.md]
 sources: [../../sources/papers/mevion_arxiv_2607_17970.md, ../../sources/sites/mevion-hardware.md, ../../sources/repos/mevion.md]

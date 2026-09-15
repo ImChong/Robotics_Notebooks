@@ -2,7 +2,7 @@
 type: method
 tags: [perception, grasping, manipulation, point-cloud, rgbd, 6dof, deep-learning]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md

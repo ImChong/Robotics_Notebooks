@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, vln, navigation, objnav, isaac-sim, umich, outdoor-navigation, sim2real]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2607.19695"
 code: https://github.com/UMich-CURLY/NavVerse-Benchmark
 related:

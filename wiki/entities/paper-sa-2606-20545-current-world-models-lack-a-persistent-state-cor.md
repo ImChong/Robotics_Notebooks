@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.20545"
 venue: "arXiv 2026"
 summary: "Argues that generators must maintain a continuously evolving world state rather than rendering plausible frames only at observation time."

@@ -12,7 +12,7 @@ tags:
   - science-robotics
   - edge-computing
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 doi: "10.1126/scirobotics.abk2948"
 venue: "Science Robotics 2022"
 related:

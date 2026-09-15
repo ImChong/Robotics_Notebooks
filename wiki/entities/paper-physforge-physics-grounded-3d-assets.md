@@ -11,7 +11,7 @@ tags:
   - dataset
   - articulated-objects
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2605.05163"
 related:
   - ../concepts/sim2real.md

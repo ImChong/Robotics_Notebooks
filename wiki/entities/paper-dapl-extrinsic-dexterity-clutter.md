@@ -10,7 +10,7 @@ tags:
   - extrinsic-dexterity
   - rss2026
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2603.09882"
 venue: RSS 2026
 related:

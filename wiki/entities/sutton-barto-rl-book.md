@@ -2,7 +2,7 @@
 type: entity
 tags: [reinforcement-learning, education, textbook, theory]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 related:
   - ./richard-sutton.md
   - ../concepts/reinforcement-learning-history.md

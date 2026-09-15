@@ -12,7 +12,7 @@ tags:
   - snu
   - rlwrld
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2607.22535"
 related:
   - ../methods/generative-world-models.md

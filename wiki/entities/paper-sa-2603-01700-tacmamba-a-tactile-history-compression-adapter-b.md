@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.01700"
 venue: "arXiv 2026"
 summary: "Asynchronous architecture: tactile encoder (System 1) performs continuous streaming inference at 100Hz; VLA planner (System 2) queries compressed tactile history on-demand."

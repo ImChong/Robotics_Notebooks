@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, localization, seoul-national-university]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2606.22094"
 venue: "ECCV 2026 Oral"
 summary: "在约 20 m 位置不确定下，用地面列与卫星径向线对齐的 3D 投票实现亚度级跨视角航向估计。"

@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, leju, kuavo, dataset-ecosystem]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 related:
   - ./humanoid-robot.md
   - ./openlet.md

@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'vla', 'reinforcement-learning', 'flow-matching', 'online-rl']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.15139"
 related:
   - ../methods/vla.md

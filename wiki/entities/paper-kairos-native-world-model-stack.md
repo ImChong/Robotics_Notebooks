@@ -14,7 +14,7 @@ tags:
   - huggingface
   - ace-robotics
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 arxiv: "2606.16533"
 code: https://github.com/kairos-agi/kairos
 related:

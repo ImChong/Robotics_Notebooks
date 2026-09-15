@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "amp", "quadruped", "locomotion", "imitation", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2203.15103"
 venue: "HMI curated · 2022"
 summary: "AMP Locomotion（HMI P023）：在四足上证明：保留速度任务奖励、用短段犬类动作 AMP 即可替代大量手工步态塑形项，并部署到 Unitree A1。"

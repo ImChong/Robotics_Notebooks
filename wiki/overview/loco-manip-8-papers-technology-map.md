@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, data-pipeline, survey, embodied-ai]
 status: complete
-updated: 2026-06-18
+updated: 2026-09-15
 related:
   - ./loco-manip-category-01-egocentric-data.md
   - ./loco-manip-category-02-synthetic-data.md

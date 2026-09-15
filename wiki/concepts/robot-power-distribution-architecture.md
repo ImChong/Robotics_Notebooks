@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, electrical-design, power-distribution, bms, safety-circuit, emc, wiring]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 related:
   - ./humanoid-mechanical-layout-design.md
   - ./robot-onboard-communication-architecture.md

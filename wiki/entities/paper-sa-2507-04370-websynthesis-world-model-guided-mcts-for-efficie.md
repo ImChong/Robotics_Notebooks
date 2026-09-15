@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2507.04370"
 venue: "arXiv 2025"
 summary: "World-model-guided MCTS for efficient WebUI trajectory synthesis."

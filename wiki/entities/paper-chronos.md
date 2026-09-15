@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, manipulation, long-horizon, memory, dual-arm, ssm, mamba, imle, physics-informed, hust]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-15
 arxiv: "2606.30318"
 venue: "arXiv 2026 / submitted T-RO"
 code: https://github.com/yulinzhouZYL/Chronos

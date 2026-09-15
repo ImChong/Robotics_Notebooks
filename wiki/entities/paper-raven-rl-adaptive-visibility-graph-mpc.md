@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, navigation, mpc, reinforcement-learning, visibility-graph, hierarchical-control, sim2real, ucla, booster-t1]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2607.15701"
 related:
   - ../comparisons/mpc-vs-rl.md

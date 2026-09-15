@@ -23,7 +23,7 @@ tags:
   - monash
   - rai-institute
 status: complete
-updated: 2026-08-04
+updated: 2026-09-15
 arxiv: "2607.28952"
 doi: "10.1126/scirobotics.aee0787"
 venue: "Science Robotics 2026"

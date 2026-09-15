@@ -2,7 +2,7 @@
 type: formalization
 tags: [linear-algebra, control, stability, spectral-theory, foundational]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 related:
   - ../entities/linear-algebra-curriculum.md
   - ./lqr.md

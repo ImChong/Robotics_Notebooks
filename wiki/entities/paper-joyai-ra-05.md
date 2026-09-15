@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, vlwa, world-models, latent-action, flow-matching, egocentric-vision, human-robot-transfer, manipulation, agibot, jd]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-15
 arxiv: "2608.05674"
 related:
   - ../methods/vla.md

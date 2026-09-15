@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.18090"
 venue: "arXiv 2026"
 summary: "Proposes a robust pipeline that adapts static reconstruction backbones to long-form egocentric video with a mask-aware reconstruction mechanism"

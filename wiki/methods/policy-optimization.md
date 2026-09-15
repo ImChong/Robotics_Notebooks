@@ -21,7 +21,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-09-06
+updated: 2026-09-15
 ---
 
 # Policy Optimization

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, music, imitation-learning]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.10844"
 code: https://github.com/yanhuhuhahei/Preference-ranking-statistics
 related:

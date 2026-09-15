@@ -2,7 +2,7 @@
 type: overview
 tags: [manipulation, imitation-learning, survey, t-ro, embodied-ai, data-scaling, generative-models]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 related:
   - ./tro-manip-category-01-data-scaling.md
   - ./tro-manip-category-02-representation.md

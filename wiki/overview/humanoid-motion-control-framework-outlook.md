@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, motion-control, architecture, vla, bfm, navigation, planning, controller]
 status: complete
-updated: 2026-07-14
+updated: 2026-09-15
 related:
   - ./humanoid-motion-control-know-how-technology-map.md
   - ./humanoid-motion-control-trends.md

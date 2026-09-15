@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hoi, loco-manipulation, imitation-learning, reinforcement-learning, ppo, variational-policy, unitree-g1, physics-simulation, uiuc, amazon, cvpr2026]
 status: complete
-updated: 2026-07-12
+updated: 2026-09-15
 arxiv: "2602.06035"
 venue: "CVPR 2026"
 related:

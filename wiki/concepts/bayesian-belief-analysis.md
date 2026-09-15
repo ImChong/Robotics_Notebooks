@@ -16,7 +16,7 @@ sources:
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/blogs/sutton_one_step_trap.md
 summary: "贝叶斯分析在机器人与 RL 中指用 belief（状态后验分布）递推不确定性并支撑决策；与 GVF 直接长期预测形成方法论对照。"
-updated: 2026-07-14
+updated: 2026-09-15
 ---
 
 # Bayesian Belief Analysis（贝叶斯信念分析）

@@ -3,7 +3,7 @@ type: comparison
 title: 机器人描述目录选型（Awesome / robot_descriptions.py / fiveages-sim / URDF Dataset）
 tags: [urdf, mjcf, dataset, comparison, tooling, ros2, pinocchio, mujoco]
 summary: "四类机器人描述入口怎么选：策展发现、Python 加载、ROS2/Isaac 国内机型包、冻结 URDF 研究语料；Menagerie 仍是 MJCF 权威资产源。"
-updated: 2026-08-17
+updated: 2026-09-15
 status: complete
 related:
   - ../entities/awesome-robot-descriptions.md

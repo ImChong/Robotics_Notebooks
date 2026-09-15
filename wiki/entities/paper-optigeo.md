@@ -8,7 +8,7 @@ tags:
   - navigation
   - hku
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.29881"
 code: https://github.com/mx-liu6/OptiGeo
 related:

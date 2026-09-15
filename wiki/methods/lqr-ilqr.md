@@ -2,7 +2,7 @@
 type: method
 tags: [control, lqr, ilqr, optimal-control, optimization, locomotion]
 status: complete
-updated: 2026-08-09
+updated: 2026-09-15
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-classical-linear-feedback.md

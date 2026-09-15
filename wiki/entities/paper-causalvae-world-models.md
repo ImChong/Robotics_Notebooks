@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, causal-representation, counterfactual-dynamics, latent-dynamics, tsinghua, hku]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2604.07712"
 venue: "ECCV 2026"
 code: https://github.com/Dzyy123/CausalVAE-World-Models

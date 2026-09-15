@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.02436"
 venue: "arXiv 2026"
 summary: "Proposes a geometry-aware implicit memory framework that compresses variable-length histories into fixed-size memory tokens via a lightweight transformer."

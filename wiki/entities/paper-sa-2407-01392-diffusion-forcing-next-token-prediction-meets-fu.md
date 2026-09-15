@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2407.01392"
 venue: "arXiv 2024"
 summary: "Unifies next-token prediction and full-sequence diffusion."

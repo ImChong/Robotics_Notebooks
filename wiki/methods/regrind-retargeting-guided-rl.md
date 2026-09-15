@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real, mocap, cornell, amazon, residual-policy, isaac-lab]
 status: complete
 date: 2026-07-16
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2607.11874"
 code: https://github.com/yunhaif/regrind
 related:

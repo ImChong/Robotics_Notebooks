@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, flow-matching, manipulation]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.10405"
 related:
   - ../tasks/manipulation.md

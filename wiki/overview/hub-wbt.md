@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-wbt, whole-body-tracking, motion-tracking, humanoid]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
 ---
 

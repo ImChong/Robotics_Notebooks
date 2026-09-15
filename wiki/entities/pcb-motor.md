@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, motor, axial-flux, pcb, open-source, kicad, pmsm, bldc]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ../comparisons/open-source-torque-motor-em-design.md
   - ./axfluxmdo.md

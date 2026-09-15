@@ -11,7 +11,7 @@ tags:
   - bytedance
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2507.03227"
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md

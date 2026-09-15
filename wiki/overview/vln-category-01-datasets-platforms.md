@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, datasets, simulation, category-hub, survey]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 summary: "VLN 10 篇盘点 · 01 数据集与仿真平台（3 篇）— 任务如何定义、评测，并从离散导航图走向连续环境与高层目标定位？"
 related:
   - ./vln-10-papers-technology-map.md

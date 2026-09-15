@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, physics-based-animation, hierarchical-rl, imitation-learning, policy-composition, basketball, isaac-gym, soft-router, siggraph-asia-2025, stanford, uc-riverside, roblox, clemson]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2509.22442"
 venue: "ACM TOG / SIGGRAPH Asia 2025"
 code: https://github.com/xupei0610/basketball

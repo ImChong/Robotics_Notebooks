@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, spatial-control, trajectory-control, obstacle-avoidance, iccv, humanoid-paper-notebooks, eth]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2305.12577"
 code: https://github.com/korrawe/guided-motion-diffusion
 related:

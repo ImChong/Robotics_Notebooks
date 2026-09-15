@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, workshop, hci, accessibility, cps]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2608.19422"
 related:
   - ../tasks/manipulation.md

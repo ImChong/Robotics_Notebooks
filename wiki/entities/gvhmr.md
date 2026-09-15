@@ -4,7 +4,7 @@
 type: entity
 tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024, tsinghua, zju]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2409.06662"
 code: https://github.com/zju3dv/GVHMR
 venue: SIGGRAPH Asia 2024

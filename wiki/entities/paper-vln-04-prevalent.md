@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, duke]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2002.10638"
 summary: "首次在 VLN 引入预训练-微调：图像-文本-动作三元组上 Masked LM + 动作预测自监督，再下游微调。"
 related:

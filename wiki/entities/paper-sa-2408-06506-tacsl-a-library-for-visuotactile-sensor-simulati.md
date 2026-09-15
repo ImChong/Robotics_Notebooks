@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2408.06506"
 venue: "IEEE TRO 2025"
 summary: "GPU-based visuotactile sensor simulation over 200× faster than prior SOTA within Isaac Simulator; asymmetric actor-critic distillation (AACD) for sim-to-real transfer."

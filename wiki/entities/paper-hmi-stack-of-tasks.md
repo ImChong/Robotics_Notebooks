@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "wbc", "inverse-kinematics", "stack-of-tasks", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 code: https://github.com/stack-of-tasks/sot-core
 venue: "HMI curated · 2009"
 summary: "Stack of Tasks（HMI P003）：把任务、约束、雅可比与求解器组织成可动态插拔的软件任务栈，用零空间递归完成人形广义逆运动学。"

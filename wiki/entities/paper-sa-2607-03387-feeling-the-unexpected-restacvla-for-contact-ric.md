@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.03387"
 venue: "arXiv 2026 (IROS 2026)"
 summary: "Addresses modality collapse where high-bandwidth visual features overshadow sparse tactile cues; inspired by Predictive Coding."

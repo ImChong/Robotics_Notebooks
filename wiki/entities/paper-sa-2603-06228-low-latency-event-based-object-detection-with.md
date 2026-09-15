@@ -10,7 +10,7 @@ tags:
   - perception
   - tsinghua
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2603.06228"
 venue: "ECCV 2026"
 code: https://github.com/haohq19/ssla

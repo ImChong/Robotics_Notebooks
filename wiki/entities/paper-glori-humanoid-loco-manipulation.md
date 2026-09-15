@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, whole-body, sjtu, unitree-g1]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.05994"
 related:
   - ../tasks/loco-manipulation.md

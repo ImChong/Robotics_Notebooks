@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "Sensors 2026"
 summary: "Systematic taxonomy of major sensor modalities including RGB, depth, tactile sensing, force/torque, proprioception and IMU; reinterprets VLA within a sensor–fusion–action pipeline."
 related:

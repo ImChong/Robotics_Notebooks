@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 related:
   - ./cosmos-3.md
   - ./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md

@@ -12,7 +12,7 @@ tags:
   - shanghai-ai-lab
   - sjtu
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2510.14454"
 venue: "ICRA 2026 Oral"
 code: https://github.com/InternRobotics/AdaMimic

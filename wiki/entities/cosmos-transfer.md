@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, sim2real, video-generation, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./paper-cosmos-transfer1.md
   - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md

@@ -3,7 +3,7 @@
 type: entity
 tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./benjamin-katz.md

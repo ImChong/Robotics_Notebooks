@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md

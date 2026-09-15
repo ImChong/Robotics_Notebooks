@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
   - ./locomotion.md

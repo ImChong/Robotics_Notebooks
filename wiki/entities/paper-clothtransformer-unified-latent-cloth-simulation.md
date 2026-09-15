@@ -11,7 +11,7 @@ tags:
   - ntu
   - shanghai-ai-lab
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2605.27852"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

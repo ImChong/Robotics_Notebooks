@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md

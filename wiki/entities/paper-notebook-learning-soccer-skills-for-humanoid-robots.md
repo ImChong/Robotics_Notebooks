@@ -15,7 +15,7 @@ tags:
   - zju
   - sjtu
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2602.05310"
 code: https://github.com/TeleHuman/HumanoidSoccer
 related:

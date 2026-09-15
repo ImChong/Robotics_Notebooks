@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, leg, linear-actuator, tesla]
 status: complete
-updated: 2026-08-19
+updated: 2026-09-15
 related:
   - ../entities/humanoid-robot.md
   - ../tasks/locomotion.md

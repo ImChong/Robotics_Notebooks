@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, tactile-sensing, visuo-tactile, imitation-learning, behavior-cloning, loco-manipulation, transformer]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 related:
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/htd-decoupled-wbc.md

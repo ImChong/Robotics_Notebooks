@@ -12,7 +12,7 @@ tags:
   - latency
   - anu
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 arxiv: "2608.11521"
 related:
   - ../concepts/world-action-models.md

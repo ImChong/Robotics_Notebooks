@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.07308"
 venue: "arXiv 2026"
 summary: "Adaptive tactile injection strategy for enhanced feedback reaction in VLA models; dynamically determines timing and locations for tactile injection."

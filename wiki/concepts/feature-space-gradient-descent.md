@@ -2,7 +2,7 @@
 type: concept
 tags: [deep-learning, optimization, momentum, muon, preconditioning, transformer]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 summary: "线性层参数梯度下降与特征层梯度下降不对等；通过最小化 XΦ≈∂L/∂Y 的在线回归，可把动量 reinterpret 为输入预条件更新，并统一 SGDM、Newton-Muon 与 DeltaMomentum。"
 related:
   - ../methods/sgd-momentum.md

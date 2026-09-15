@@ -8,7 +8,7 @@ tags:
   - action-chunking
   - sjtu
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 arxiv: "2608.14379"
 venue: "arXiv 2026-08-14"
 related:

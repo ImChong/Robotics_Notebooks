@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2604.01001"
 venue: "arXiv 2026"
 summary: "Closed-loop interactive simulator with persistent dynamic 3D scene states for continuous synthetic interaction video generation"

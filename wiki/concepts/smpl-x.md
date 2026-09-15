@@ -2,7 +2,7 @@
 type: concept
 tags: [human-body-model, motion-retargeting, parametric-model, humanoid, mocap, world-models]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md

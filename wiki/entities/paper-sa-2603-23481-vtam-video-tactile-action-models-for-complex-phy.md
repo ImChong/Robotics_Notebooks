@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.23481"
 venue: "arXiv 2026"
 summary: "Visuo-tactile world action model integrating high-resolution tactile sensing with visual observations within predictive video backbone for robust contact-rich manipulation."

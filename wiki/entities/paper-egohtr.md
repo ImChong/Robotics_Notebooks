@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, eth, stanford, berkeley, tum, humanoid, egocentric, 4d-reconstruction, human-motion, perceptive-locomotion, terrain, motion-retargeting, unitree-g1, smpl-x]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2607.13472"
 venue: "CoRL 2026"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, dexterous-hand, hardware, open-source, desktop-scale, morphology-reconfiguration, reinforcement-learning, imitation-learning, teleoperation, unc-chapel-hill, stanford]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-15
 related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md

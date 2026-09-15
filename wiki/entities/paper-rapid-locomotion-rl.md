@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, locomotion, quadruped, sim2real, mit, agility]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2205.02824"
 code: https://github.com/Improbable-AI/rapid-locomotion-rl
 related:

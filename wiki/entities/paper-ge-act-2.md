@@ -12,7 +12,7 @@ tags:
   - agibot
   - closed-source
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.05588"
 related:
   - ../concepts/world-action-models.md

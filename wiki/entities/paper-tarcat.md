@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, construction-robotics, taxonomy, skill-library, vla, uci]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.25395"
 code: https://github.com/AICPS/TARCAT-Taxonomy
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [perception, 3dmm, face-model, human-mesh, open-source, google, parametric-model]
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam-3d-body.md

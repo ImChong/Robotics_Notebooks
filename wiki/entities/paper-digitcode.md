@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hand-motion, tokenization, retargeting, dexterous-hand, symbolic]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2608.03127"
 related:
   - ../methods/uhas-unified-hand-action-space.md

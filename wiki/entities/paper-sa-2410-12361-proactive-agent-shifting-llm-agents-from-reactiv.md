@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2410.12361"
 venue: "ICLR 2025"
 summary: "Paradigm shifting LLM agents from reactive response to proactive procedural assistance"

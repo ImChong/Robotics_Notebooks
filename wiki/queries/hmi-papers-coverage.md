@@ -3,7 +3,7 @@ title: HMI 论文总索引 · 本库导读
 type: query
 status: complete
 created: 2026-07-31
-updated: 2026-09-10
+updated: 2026-09-15
 summary: 把具身智能研究室论文总索引接到本库详情页：P001–P145 为 2026-07 全覆盖快照；P146–P191 为 2026-09-10 增量挂接（复用已有页，少数待补，不重复造节点）。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md

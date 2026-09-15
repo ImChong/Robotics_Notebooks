@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.25842"
 venue: "arXiv 2026"
 summary: "Introduces Egocentric Scene Graphs (EgoSGs) to overcome MLLM input constraints, achieving state-of-the-art results on HD-EPIC VQA by representing videos as compact, text-based scene graphs"

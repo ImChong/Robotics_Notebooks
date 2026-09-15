@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, optimal-control, ddp, trajectory-optimization, quadruped, notre-dame]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2006.08102"
 code: https://github.com/ROAM-Lab-ND/HS-DDP-MATLAB
 related:

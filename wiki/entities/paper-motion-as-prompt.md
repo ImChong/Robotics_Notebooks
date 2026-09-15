@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, video-reasoning, mllm, visual-prompting, motion, training-free]
 status: complete
-updated: 2026-08-19
+updated: 2026-09-15
 arxiv: "2608.11655"
 code: https://github.com/SunVictor23/MaP
 related:

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, sim2real, actuator, friction, mujoco, dynamixel, system-identification, servo, google]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 code: https://github.com/Rhoban/bam
 related:
   - ../queries/actuator-drive-chain-selection-loop.md

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, microsoft, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2507.23682"
 venue: —
 summary: "ViLLA 框架改进潜在动作与 VLA 整合；零样本潜在动作计划。"

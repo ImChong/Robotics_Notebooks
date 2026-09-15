@@ -2,7 +2,7 @@
 type: entity
 tags: [person, hardware, actuator, quadruped, locomotion, mit, boston-dynamics, physical-intelligence]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ./mit-mini-cheetah.md
   - ./boston-dynamics.md

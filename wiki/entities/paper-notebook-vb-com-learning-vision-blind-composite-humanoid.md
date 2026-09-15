@@ -19,7 +19,7 @@ tags:
   - cuhk
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2502.14814"
 venue: "ICRA 2026"
 related:

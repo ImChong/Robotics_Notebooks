@@ -18,7 +18,7 @@ tags:
   - tsinghua
   - cuhk
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 arxiv: "2608.26583"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md

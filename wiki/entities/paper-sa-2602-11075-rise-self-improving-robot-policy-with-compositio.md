@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, model-based-rl, vla, opendrivelab, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2602.11075"
 venue: "RSS 2026"
 code: https://github.com/OpenDriveLab/RISE

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotic-calligraphy, differentiable-rendering, handwriting, gist, cmu, yonsei, kentech]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2608.03198"
 related:
   - ../concepts/differentiable-simulation.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, parkour, vae, ppo, sim2real, unitree-g1, isaac-lab, rsl-rl, sjtu, tongji, zju, shanghai-innovation-institute]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2607.25541"
 code: https://github.com/ylyem9x/P3_Open
 related:

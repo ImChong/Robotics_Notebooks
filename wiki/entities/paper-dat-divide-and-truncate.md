@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, simulation, contact, multi-physics, collision, siggraph, nvidia, newton]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2604.15513"
 venue: SIGGRAPH 2026
 related:

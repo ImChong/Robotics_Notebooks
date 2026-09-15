@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-mesh-recovery, hmr, smplx, flame, single-image, real-time, expressive, siggraph-2026, idea, motion-capture, teleoperation]
 status: complete
-updated: 2026-07-11
+updated: 2026-09-15
 arxiv: "2601.22693"
 venue: SIGGRAPH 2026
 related:

@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, safety, fsm, fault-tolerance, realtime, deployment]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 related:
   - ../entities/wbc-fsm.md
   - ./safety-filter.md

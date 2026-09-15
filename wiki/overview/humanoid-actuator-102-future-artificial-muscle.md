@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, actuator, artificial-muscle, soft-actuator, category-hub]
 status: complete
-updated: 2026-06-02
+updated: 2026-09-15
 summary: "Actuator 102 · 08 — 电磁平台逼近磁通极限；人工肌肉利柔顺、直线驱动、可变刚度与静音；参考文献导读见 source 索引。"
 related:
   - ./humanoid-actuator-102-technology-map.md

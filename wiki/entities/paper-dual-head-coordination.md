@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'flow-matching', 'robot-monitoring', 'manipulation']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.15748"
 code: https://github.com/kimo423/dual-head-coordination
 related:

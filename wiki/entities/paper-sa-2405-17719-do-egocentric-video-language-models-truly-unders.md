@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2405.17719"
 venue: "ICLR 2025"
 summary: "Systematically evaluates the fine-grained HOI understanding ability of egocentric VLMs for the first time, proposing the EgoHOIBench benchmark"

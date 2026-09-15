@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2502.13092"
 venue: "arXiv 2025"
 summary: "First benchmark for evaluating LLMs' ability to generate symbolic world models."

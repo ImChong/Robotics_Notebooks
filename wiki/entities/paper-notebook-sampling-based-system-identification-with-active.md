@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, sim2real, system-identification, active-exploration, cma-es, locomotion, unitree-go2, unitree-g1, isaac-gym, corl-2025, cmu]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 arxiv: "2505.14266"
 venue: "CoRL 2025 Oral"
 code: https://github.com/LeCAR-Lab/SPI-Active

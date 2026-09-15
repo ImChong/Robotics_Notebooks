@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, loco-manipulation, hoi, generative-models, video-generation, zero-shot, behavior-foundation-model, sparse-keypoints, motion-tracking, mocap, zju, shanghai-ai-lab, cuhk]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2605.22272"
 venue: "2026 · arXiv"
 related:

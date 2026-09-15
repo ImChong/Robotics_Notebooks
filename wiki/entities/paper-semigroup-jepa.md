@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, jepa, physics-generalization, mujoco]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.10464"
 code: https://github.com/sg-jepa/sg-jepa
 related:

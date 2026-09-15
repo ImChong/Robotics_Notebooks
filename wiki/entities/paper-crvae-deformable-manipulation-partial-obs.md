@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, deformable, world-model, mpc, quadruped]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.10308"
 related:
   - ../tasks/manipulation.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, open-vocabulary, detection, sam3, tensorrt, real-time, computer-vision, deployment]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2603.11441"
 code: https://github.com/mkturkcan/DART
 related:

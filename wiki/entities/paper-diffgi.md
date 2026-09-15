@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-generation, geometry-images, thin-shell, garment, diffusion, vae, tsdf, eccv2026, clo-virtual-fashion]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2607.13365"
 venue: "ECCV 2026"
 related:

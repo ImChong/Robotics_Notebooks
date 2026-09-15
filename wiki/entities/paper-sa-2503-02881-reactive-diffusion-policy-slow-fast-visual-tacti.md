@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2503.02881"
 venue: "RSS 2025"
 summary: "TactAR teleoperation system with real-time tactile feedback through AR; Reactive Diffusion Policy (RDP) with two-level hierarchy for contact-rich manipulation skills."

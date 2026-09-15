@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.01941"
 venue: "arXiv 2025"
 summary: "Human-centric, robot-free data collection system leveraging dexterity and force feedback of human motion; comprises 10k demonstration trajectories across 50 tasks."

@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "dataset", "cross-embodiment", "vla", "rt-x", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2310.08864"
 code: https://github.com/google-deepmind/open_x_embodiment
 venue: "HMI curated · 2023"

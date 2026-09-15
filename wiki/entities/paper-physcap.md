@@ -9,7 +9,7 @@ tags:
   - nvidia
   - google-deepmind
 status: complete
-updated: 2026-08-25
+updated: 2026-09-15
 arxiv: "2608.21031"
 related:
   - ../methods/vla.md

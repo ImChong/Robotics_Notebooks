@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, manipulation, vla, evaluation, simulation, isaac-lab, nvidia, open-source, leaderboard]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2604.09860"
 code: https://github.com/NVLabs/RoboLab
 venue: "RSS 2026"

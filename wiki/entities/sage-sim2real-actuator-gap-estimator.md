@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, sim2real, isaac-lab, isaac-sim, actuator, system-identification, humanoid, unitree, dataset]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md

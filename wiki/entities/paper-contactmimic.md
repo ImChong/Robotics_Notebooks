@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, contact-rich, loco-manipulation, hoi, reinforcement-learning, unitree-g1, uiuc, sim2real]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2607.08742"
 venue: "2026 · arXiv"
 summary: "ContactMimic（arXiv:2607.08742）在 keypoint tracking 外显式跟踪 per-body 二值接触指令；以 contact-following 奖励与三种轨迹增广打破关键点–接触相关性，使同一参考下可开启或抑制任务相关物理接触；HUMOTO 10 条仿真与 G1 真机 5 条验证 contact controllability，显著优于 BeyondMimic 且无需任务专用奖励即可完成搬箱等操作。"

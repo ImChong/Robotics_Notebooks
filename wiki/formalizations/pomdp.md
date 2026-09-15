@@ -2,7 +2,7 @@
 type: formalization
 tags: [rl, math, decision-making, perception, uncertainty]
 status: complete
-updated: 2026-07-14
+updated: 2026-09-15
 related:
   - ./mdp.md
   - ../concepts/state-estimation.md

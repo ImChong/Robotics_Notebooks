@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, world-models, latent-dynamics, planning, mila, nyu, brown, samsung, ami-labs]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2603.19312"
 venue: "arXiv 2026"
 code: https://github.com/lucas-maes/le-wm

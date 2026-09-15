@@ -11,7 +11,7 @@ tags:
   - uiuc
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2508.00162"
 code: https://github.com/uiuckimlab/CHILD
 related:

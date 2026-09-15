@@ -2,7 +2,7 @@
 type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 related:
   - ./paper-biomechanical-3d-body.md
   - ../queries/robot-perception-stack-selection-loop.md

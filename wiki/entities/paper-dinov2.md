@@ -7,7 +7,7 @@ tags:
   - representation
   - meta
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2304.07193"
 code: https://github.com/facebookresearch/dinov2
 related:

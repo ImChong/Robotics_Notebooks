@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-08-15
+updated: 2026-09-15
 venue: "2025 SIGGRAPH"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md

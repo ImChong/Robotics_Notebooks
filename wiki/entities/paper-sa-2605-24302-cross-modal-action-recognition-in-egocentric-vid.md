@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.24302"
 venue: "EgoVis@CVPR 2026"
 summary: "A cross-modal architecture based on the Mamba framework, fusing RGB video and temporal hand skeleton data, and proposes four CLS token fusion strategies"

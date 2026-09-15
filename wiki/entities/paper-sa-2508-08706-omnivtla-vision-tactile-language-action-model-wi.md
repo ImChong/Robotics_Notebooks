@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.08706"
 venue: "arXiv 2025"
 summary: "Dual-path tactile encoder with pretrained ViT and semantically-aligned tactile ViT (SA-ViT); introduces ObjTac dataset with 135K tri-modal samples; achieves 96.9% success with grippers and 100% with dexterous hands."

@@ -11,7 +11,7 @@ tags:
   - university-of-tubingen
   - caltech
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 doi: "10.1038/s41586-026-10898-6"
 venue: "Nature 2026 (Review)"
 code: https://github.com/artificial-scientist-lab/Learn2Design-2026

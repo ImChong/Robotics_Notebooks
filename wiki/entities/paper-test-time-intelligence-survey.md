@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, test-time-intelligence, test-time-adaptation]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2609.01679"
 code: https://github.com/mr-eggplant/awesome_test_time_intelligence
 related:

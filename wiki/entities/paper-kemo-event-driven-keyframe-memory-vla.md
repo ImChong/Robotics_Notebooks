@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, manipulation, long-horizon, memory, dual-arm, flow-matching, cuhk, sjtu]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-15
 arxiv: "2606.23589"
 venue: "arXiv 2026"
 related:

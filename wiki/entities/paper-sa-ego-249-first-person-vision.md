@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "Proceedings of the IEEE 2012"
 summary: "A foundational survey in the field, formally defining the research scope, core challenges and application directions of first-person vision for the first time"
 related:

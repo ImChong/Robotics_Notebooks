@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 10：仿真到现实（10 篇深读笔记索引）。"

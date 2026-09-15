@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, 3d-generation, image-to-3d, part-decomposition, diffusion, structured-latent, trellis, sjtu, huawei]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2608.13541"
 related:
   - ./paper-physforge-physics-grounded-3d-assets.md

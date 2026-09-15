@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2512.07668"
 venue: "arXiv 2026"
 summary: "Introduces EgoCampus dataset spanning 25 unique outdoor paths with recordings from 80+ pedestrians using Project Aria glasses"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2308.13093"
 venue: "Meta Reality Labs 2023"
 summary: "The core anonymization system for **Project Aria**, designed to blur **bystander faces and vehicle license plates** at the data acquisition stage. Uses FasterRCNN as the detector and applies Gaussian blur to detected PII"

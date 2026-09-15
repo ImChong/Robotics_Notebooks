@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.06337"
 venue: "arXiv 2026"
 summary: "Grid-free, observation-native atmospheric world model matching the fidelity of established physical frameworks."

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, video-vae, world-model, manipulation, buaa, zgca, ustc, nus, casia, microsoft]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2608.02990"
 code: https://github.com/Mutual-Luo/EmbodiedVAE
 related:

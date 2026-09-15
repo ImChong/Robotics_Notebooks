@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.11117"
 venue: "arXiv 2025"
 summary: "A benchmarking perspective on robot policy evaluation for sim-to-real transfer"

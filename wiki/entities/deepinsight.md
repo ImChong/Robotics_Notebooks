@@ -2,7 +2,7 @@
 type: entity
 tags: [evaluation, physical-ai, humanoid, infrastructure, benchmarking, foundation-model, whole-body-control, xpeng]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-athena-wbc-humanoid-longtail.md

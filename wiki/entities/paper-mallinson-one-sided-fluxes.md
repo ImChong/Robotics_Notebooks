@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, magnetics, halbach, permanent-magnet, ampex, recording]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "IEEE Trans. Magn. 1973"
 related:
   - ../concepts/halbach-array.md

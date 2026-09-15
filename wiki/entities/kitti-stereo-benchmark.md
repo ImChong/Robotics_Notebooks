@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, stereo-matching, kitti, autonomous-driving, computer-vision]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 related:
   - ../methods/stereo-matching-foundation-models.md
   - ./eth3d-stereo-benchmark.md

@@ -14,7 +14,7 @@ tags:
   - baai
   - hkust-gz
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.06375"
 related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md

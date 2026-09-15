@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ros2, franka-panda, position-control, hardware-interface]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.19740"
 related:
   - ./franka-research-3.md

@@ -13,7 +13,7 @@ tags:
   - unitree-g1
   - isaac-lab
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 venue: "draft preprint, 2026（项目页 PDF；暂无 arXiv）"
 code: https://github.com/meetsitaram/sonic-x2
 related:

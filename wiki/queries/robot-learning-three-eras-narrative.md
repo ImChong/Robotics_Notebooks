@@ -2,7 +2,7 @@
 type: query
 tags: [history, embodied-ai, vla, imitation-learning, reinforcement-learning, scaling, google-deepmind, ted-xiao]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 summary: "把『存在性证明 / 基础模型 / Scaling』当作阅读透镜：串联 QT-Opt→SayCan/RT/DIAL/OXE→Gemini 与社区评测，事实以论文与官方发布为准；组织叙事单独标注来源。"
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md

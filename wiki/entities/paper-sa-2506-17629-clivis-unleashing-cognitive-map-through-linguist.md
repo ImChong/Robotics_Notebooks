@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.17629"
 venue: "arXiv 2025"
 summary: "Constructs cognitive maps through linguistic-visual synergy, breaking through the bottleneck of long video reasoning"

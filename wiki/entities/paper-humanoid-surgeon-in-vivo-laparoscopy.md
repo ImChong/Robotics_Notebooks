@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, teleoperation, manipulation, surgical-robotics, healthcare, humanoid, nature, ucsd]
 status: complete
-updated: 2026-07-09
+updated: 2026-09-15
 doi: "10.1038/s41586-026-10796-x"
 venue: "Nature 2026"
 related:

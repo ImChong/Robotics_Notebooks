@@ -10,7 +10,7 @@ tags:
   - ucl
   - uni-freiburg
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2506.07639"
 code: https://github.com/kevinDuan1/Fast-ECoT
 related:

@@ -8,7 +8,7 @@ tags:
   - columbia
   - mit
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2303.04137"
 code: https://github.com/real-stanford/diffusion_policy
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'motion-planning', 'graph-neural-network', 'manipulation', 'gcs']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.15440"
 code: https://github.com/RIVeR-Lab/neural-graphs-of-convex-sets
 related:

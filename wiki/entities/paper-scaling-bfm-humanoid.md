@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, behavior-foundation-model, motion-tracking, scaling-law, transformer, ppo, unitree-g1, isaac-lab, cuhk, sjtu, zju, pku, tsinghua, galbot, shanghai-ai-lab, sim2real]
 status: complete
-updated: 2026-07-18
+updated: 2026-09-15
 arxiv: "2607.15163"
 venue: "arXiv 2026"
 related:

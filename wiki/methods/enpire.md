@@ -3,7 +3,7 @@
 type: method
 tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 date: 2026-06-18
 summary: "ENPIRE 把真机策略自改进封装成 coding agent 可编排的 EN–PI–R–E 闭环：自动 reset/verify 环境、多范式策略改进、并行 rollout 与跨假设演化，在 Push-T、插针、GPU 插拔、扎/剪扎带等灵巧任务上报告约 99% pass@8，并给出 AutoEnvBench 与 MRU/MTU 机队 scaling 指标。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "humanoid", "whole-body-control", "keypoint", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2606.29209"
 code: https://github.com/hazel-hammer/Anybody
 venue: "HMI curated · 2026"

@@ -12,7 +12,7 @@ tags:
   - unitree-g1
   - hit
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.05647"
 code: https://github.com/JixinGao/KILVO
 related:

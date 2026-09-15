@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2606.30457"
 venue: "arXiv 2026"
 code: https://github.com/real-stanford/behavior_prompting

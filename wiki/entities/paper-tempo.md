@@ -13,7 +13,7 @@ tags:
   - zjgsu
   - kth
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2608.07314"
 related:
   - ../methods/vla.md

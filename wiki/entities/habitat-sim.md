@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, embodied-ai, navigation, meta, habitat, gpu-rendering, habitat-lab, bullet]
 status: complete
-updated: 2026-08-09
+updated: 2026-09-15
 related:
   - ./matterport3d-simulator.md
   - ./igibson.md

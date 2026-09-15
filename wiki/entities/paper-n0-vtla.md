@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, neoteai, fudan, vtla, tactile, latent-tokens, offline-rl, flow-matching, contact-rich, vla]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 venue: "Technical Report"
 code: "https://github.com/neoteai/N0-VTLA"
 related:

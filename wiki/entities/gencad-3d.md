@@ -13,7 +13,7 @@ tags:
   - dataset
 status: complete
 date: 2026-05-21
-updated: 2026-05-21
+updated: 2026-09-15
 related:
   - ./gencad.md
   - ../concepts/text-to-cad.md

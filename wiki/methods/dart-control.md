@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, text-to-motion, diffusion, autoregressive, spatial-control, smpl-x, real-time, eth-zurich]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 related:
   - ./diffusion-motion-generation.md
   - ./hy-motion-1.md

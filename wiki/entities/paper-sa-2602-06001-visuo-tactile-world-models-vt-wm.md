@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.06001"
 venue: "arXiv 2026"
 summary: "First multi-task visuo-tactile world model capturing physics of contact through touch reasoning; 33% better object permanence, 29% better compliance with laws of motion; zero-shot real-robot experiments achieve up to 35%"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2505.24853"
 venue: "ICML 2026"
 code: https://project-dexmachina.github.io/

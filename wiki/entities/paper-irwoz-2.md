@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, industrial-hri, dialogue, aalborg]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2609.04030"
 related:
   - ../concepts/llm-robotics-control-interfaces.md

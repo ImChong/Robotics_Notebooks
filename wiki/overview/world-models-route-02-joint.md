@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, joint-architecture, diffusion, autoregressive, wam, shenlan-survey]
 status: complete
-updated: 2026-06-03
+updated: 2026-09-15
 summary: "深蓝世界模型 15 项目 · 02 联合架构（6 篇）— 未来状态与动作在同一扩散/自回归骨干中联合建模，减少级联误差传递；代表 GR-1、UWM、WorldVLA、UVA。"
 related:
   - ./world-models-15-open-source-technology-map.md

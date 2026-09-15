@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, multi-behavior, distillation, amp, teleai, unitree-g1, aaai]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 arxiv: "2511.06371"
 venue: AAAI 2026 Oral
 summary: "AHC（AAAI 2026 Oral）三阶段：起身/行走专精策略（含 AMP）→ MoE 蒸馏统一 π^d → PCGrad 多任务微调得地形自适应 G1 控制器。"

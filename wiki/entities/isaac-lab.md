@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md

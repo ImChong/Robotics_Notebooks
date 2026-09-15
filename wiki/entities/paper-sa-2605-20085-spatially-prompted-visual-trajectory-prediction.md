@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.20085"
 venue: "arXiv 2026"
 summary: "First formalization of Spatially Prompted Visual Trajectory Prediction (SP-VTP). Collects EgoSPT dataset of egocentric spatially prompted manipulation trajectories"

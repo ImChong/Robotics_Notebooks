@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, tro-manip-survey, imitation-learning, data-scaling, hku, agibot, buaa]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 arxiv: "2507.06219"
 summary: "实证任务/本体/演示者三维数据多样性对操作 scaling 的影响；分布去偏得 GO-1-Pro（+15%，等效 2.5× 预训练数据）。"
 related:

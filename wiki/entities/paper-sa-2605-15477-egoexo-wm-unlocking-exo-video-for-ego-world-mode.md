@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.15477"
 venue: "arXiv 2026"
 summary: "Cross-view knowledge transfer pipeline leveraging abundant third-person footage to augment egocentric world model training"

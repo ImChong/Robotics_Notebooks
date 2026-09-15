@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, flow-matching, pose-prior, rl, add, beyondmimic, unitree-g1, hkust-gz, noitom, tsinghua, google]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.03227"
 code: https://github.com/gaoyukang33/PFM-HR
 related:

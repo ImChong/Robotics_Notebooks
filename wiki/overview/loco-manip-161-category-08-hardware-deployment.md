@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 summary: "人形 Loco-Manip 161 篇 · 08 硬件平台、感知配置与部署扩展（11 篇）— 本体、传感器和真实部署系统。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

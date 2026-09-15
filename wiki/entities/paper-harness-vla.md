@@ -19,7 +19,7 @@ tags:
   - hkust
   - zgca
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
 related:

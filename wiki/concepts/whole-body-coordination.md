@@ -6,7 +6,7 @@ summary: "全身协调控制（Whole-Body Coordination）关注多肢体、多�
 sources:
   - ../../sources/papers/whole_body_control.md
   - ../../sources/papers/exoactor.md
-updated: 2026-05-29
+updated: 2026-09-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./whole-body-control.md

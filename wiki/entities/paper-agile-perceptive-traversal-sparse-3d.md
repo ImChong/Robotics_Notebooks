@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, perceptive-locomotion, brachiation, lidar, teacher-student, sim2real, eth, engineai]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.29769"
 related:
   - ./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md

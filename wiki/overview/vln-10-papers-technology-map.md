@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, survey, embodied-ai, datasets, vlm]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 related:
   - ./vln-category-01-datasets-platforms.md
   - ./vln-category-02-algorithm-frameworks.md

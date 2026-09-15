@@ -2,7 +2,7 @@
 type: entity
 tags: [software, reinforcement-learning, api, benchmark, farama]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/reinforcement-learning.md

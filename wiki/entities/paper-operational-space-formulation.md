@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "wbc", "operational-space", "force-control", "classic", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 venue: "HMI curated · 1987"
 summary: "OSF / Operational Space Formulation（HMI P001）：把运动与力控制直接写在末端任务空间动力学上，再用动态一致映射得到关节力矩，为后续任务优先级与全身控制奠基。"
 related:

@@ -13,7 +13,7 @@ tags:
   - sfu
   - agibot
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.26821"
 related:
   - ./paper-pi05-open-world-vla.md

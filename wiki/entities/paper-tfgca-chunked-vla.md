@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, action-chunking, manipulation]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.09925"
 related:
   - ../tasks/manipulation.md

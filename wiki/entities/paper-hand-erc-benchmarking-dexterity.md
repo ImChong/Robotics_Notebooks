@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, dexterous-manipulation, benchmark, in-hand-manipulation, multifingered-hand, mechanical-transparency, northwestern, cmu, texas-am]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.05585"
 venue: "Annual Review of Control, Robotics, and Autonomous Systems Vol. 10 (2027, forthcoming); arXiv 2026-09-04"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, latent-action, vla, empirical-study, fudan, xiaomi]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.19613"
 code: https://github.com/XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning
 related:

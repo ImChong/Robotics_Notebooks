@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, 4d-geometry, representation-alignment, libero, hkust-gz, adelaide]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.08023"
 code: https://github.com/lishanyqy/4DWAM
 related:

@@ -3,7 +3,7 @@ type: concept
 tags: [control, wbc, inverse-dynamics, optimization, humanoid]
 status: complete
 summary: "TSID 用任务空间逆动力学统一处理多任务和接触约束，是全身控制的重要方法页。"
-updated: 2026-08-13
+updated: 2026-09-15
 sources:
   - ../../sources/papers/whole_body_control.md
   - ../../sources/repos/tsid.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, tactile-sensing, visuo-tactile, imitation-learning, behavior-cloning, transformer, whole-body-control, isaac-lab, unitree-g1, teleoperation, contact-rich, cmu, ut-arlington, bosch]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2604.13015"
 venue: "IROS 2026"
 code: https://github.com/chrisyrniu/humanoid-touch-dream

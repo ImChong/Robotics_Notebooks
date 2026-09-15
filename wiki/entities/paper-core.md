@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, contact-aware, reinforcement-learning, sim2real, korea-university, kist, uiuc]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 doi: "10.1109/Humanoids65713.2025.11203055"
 venue: "Humanoids 2025"
 code: https://github.com/tmjeong1103/CoRe

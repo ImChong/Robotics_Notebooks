@@ -7,7 +7,7 @@ tags:
   - compliance
   - collaborative-robot
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 summary: "力输入、运动输出的柔顺控制，适合协作臂与人机交互。"
 related:
   - ../concepts/impedance-control.md

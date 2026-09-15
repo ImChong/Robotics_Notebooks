@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, imitation-learning, real-time, diffusion-policy, sfu, penn]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2609.10915"
 code: https://kianhk6.github.io/IMLE-VLA/
 related:

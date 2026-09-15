@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, sam3, open-vocabulary, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2511.16719"
 code: https://github.com/facebookresearch/sam3
 related:

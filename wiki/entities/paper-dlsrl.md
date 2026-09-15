@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, reinforcement-learning, diffusion-policy, manipulation]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.11270"
 code: https://github.com/xianchaoxiu/DLSRL
 related:

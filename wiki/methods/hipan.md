@@ -3,6 +3,8 @@ type: method
 title: HiPAN（Hierarchical Posture-Adaptive Navigation）
 tags: [quadruped, navigation, rl, hierarchical-rl, depth, curriculum-learning, sim2real, legged]
 summary: "四足在非结构化 3D 场景中的分层导航：高层从深度输出平面速度与体姿态指令，低层做姿态自适应足式跟踪；用路径引导课程缓解短视，teacher–student 蒸馏实现无显式 3D 建图的机载部署。"
+updated: 2026-09-15
+
 ---
 
 # HiPAN（Hierarchical Posture-Adaptive Navigation）

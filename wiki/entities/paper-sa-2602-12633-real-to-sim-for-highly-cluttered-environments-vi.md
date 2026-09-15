@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.12633"
 venue: "arXiv 2026"
 summary: "Reconstructs dynamically consistent 3D scenes from a single RGB-D observation by explicitly modeling inter-object contact and physical constraints, enabling reliable simulation and contact-rich robotic interaction"

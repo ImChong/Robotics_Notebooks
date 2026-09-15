@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, anu, adelaide]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "1711.07280"
 summary: "提出 R2R 数据集、Matterport3D 导航图仿真与 VLN 评测基准，将任务形式化为「全景序列 + 语言指令 → 逐步动作」。"
 related:

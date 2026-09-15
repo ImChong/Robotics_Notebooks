@@ -10,7 +10,7 @@ tags:
   - google
   - virginia-tech
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.27454"
 related:
   - ../references/llm-wiki-karpathy.md

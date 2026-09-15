@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, cmu, novel-view-synthesis, 3dgs, nerf, video-diffusion, eccv-2026]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.23549"
 code: https://github.com/kvuong2711/fix-anything
 related:

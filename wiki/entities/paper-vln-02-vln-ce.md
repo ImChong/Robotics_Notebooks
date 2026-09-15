@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, meta, georgia-tech, oregon-state]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 arxiv: "2004.02857"
 summary: "基于 Habitat 将 VLN 从离散导航图迁移到连续 3D 环境，智能体以底层前进/转向在物理空间移动。"
 related:

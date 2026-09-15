@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.08441"
 venue: "arXiv 2025"
 code: https://github.com/anh-nn01/Time-Aware-World-Model/tree/main?tab=readme-ov-file

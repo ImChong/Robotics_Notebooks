@@ -2,7 +2,7 @@
 type: comparison
 tags: [grasping, perception, manipulation, point-cloud, rgbd, 6dof, anygrasp, graspnet, comparison, engineering-selection]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 sources:
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/perception.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, tro-manip-survey, dexterous-manipulation, reinforcement-learning, zju, nus]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 arxiv: "2602.21811"
 summary: "DexRep 手物几何与空间交互表征 + DRL；40 物体训练在 5000+ 未见物体抓取达 87.9% 成功率。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, text-to-motion, zero-shot, motion-dataset, autoregressive, fsq, iccv, humanoid-paper-notebooks, sjtu, cuhk, fudan, hkust, zju, hku, shanghai-ai-lab]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2507.07095"
 code: https://github.com/VankouF/MotionMillion-Codes
 related:

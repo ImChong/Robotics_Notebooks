@@ -25,7 +25,7 @@ related:
   - ../entities/deepseek-harness.md
   - ../entities/grid-general-robotics.md
   - ../concepts/agentic-coding-software-fundamentals.md
-updated: 2026-09-10
+updated: 2026-09-15
 ---
 
 # 真机策略 autoresearch 闭环搭建指南

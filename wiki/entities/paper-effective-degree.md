@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ml-theory, generalization, regularization, simplicity-bias, polynomial, effective-degree, rl, ppo, clip, icml, tsinghua]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 arxiv: "2605.29823"
 venue: "ICML 2026"
 code: "https://github.com/xinzaixinzai/Effective-Degree"

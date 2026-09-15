@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, adadelta, adaptive, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "Adadelta 用梯度更新量与参数更新量的 RMS 之比自适应缩放步长，无需手动全局学习率，是 Adagrad 的改进变体。"
 related:
   - ./adagrad.md

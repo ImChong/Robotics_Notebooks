@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'manipulation', 'relational', 'object-centric']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08743"
 venue: "ICRA 2026 Beyond Teleoperation Workshop"
 related:

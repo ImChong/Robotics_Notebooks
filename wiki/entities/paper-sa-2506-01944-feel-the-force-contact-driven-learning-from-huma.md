@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.01944"
 venue: "arXiv 2025"
 summary: "Models human tactile-proprioceptive signals during manipulation; trains closed-loop imitation learning policy; achieves 77% success rate across 5 force-sensitive tasks."

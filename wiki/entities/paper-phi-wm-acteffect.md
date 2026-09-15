@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, world-action-model, vla, consequence-feedback, tsinghua]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 venue: "SunRisingAI Lab technical report 2026-08"
 related:
   - ../concepts/world-action-models.md

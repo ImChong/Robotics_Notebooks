@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ../entities/betaflight.md
   - ../entities/wtfos.md

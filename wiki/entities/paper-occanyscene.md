@@ -15,7 +15,7 @@ tags:
   - hitsz
   - peng-cheng-lab
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 arxiv: "2608.08696"
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md

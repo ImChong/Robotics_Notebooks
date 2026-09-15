@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, benchmark, imitation-learning, multi-embodiment, visuomotor, bimanual, contact-rich, isaac-lab, berkeley, hku, unc-chapel-hill]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2607.08751"
 venue: "arXiv 2026"
 related:

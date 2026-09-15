@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, spatial-control, joint-control, iclr, humanoid-paper-notebooks, google]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2310.08580"
 code: https://github.com/neu-vi/omnicontrol
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.01742"
 venue: "AAAI 2026"
 summary: "Proposes a two-stage framework of 'HOI semantic recognition + intention reasoning' for long-term action anticipation"

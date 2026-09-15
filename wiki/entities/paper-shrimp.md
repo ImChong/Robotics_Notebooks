@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hri, task-planning, llm, isaac-sim, uw-madison]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.08884"
 code: https://github.com/Wisc-HCI/SHRIMP
 related:

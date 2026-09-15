@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, locomotion, rl, observation, proprioception, exteroception, state-estimation, privileged-training, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 summary: "主流人形运控策略（RL/IL/跟踪系）的输入按「部署是否可得」分五类：本体感知、指令与参考、历史上下文、外部感知、特权信息（仅训练）；每类的关键工程问题是真机上如何获得——直读、滤波估计、学习估计、感知管线还是上层给定。"
 related:
   - ./state-estimation.md

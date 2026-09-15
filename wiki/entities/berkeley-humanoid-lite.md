@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware, open-source, berkeley, reinforcement-learning, qdd, humanoid-paper-notebooks, cycloidal, actuator]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2504.17249"
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md

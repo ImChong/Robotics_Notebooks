@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2511.00139"
 venue: "arXiv 2025"
 summary: "Shared Autonomy framework where human guides arm pose via VR teleoperation while autonomous DexGrasp-VLA policy handles hand control using real-time tactile and visual feedback."

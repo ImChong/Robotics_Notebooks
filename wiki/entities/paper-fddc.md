@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, single-leg-balance, capture-point, xcom, fastsac, sim2sim, benchmark, unitree-g1, pku, onnx, reward-design]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2608.00500"
 venue: "2026 · arXiv"
 related:

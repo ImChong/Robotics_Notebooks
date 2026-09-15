@@ -12,7 +12,7 @@ tags:
   - centroidal-dynamics
   - training-time-guidance
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 arxiv: "2606.05687"
 code: https://github.com/junhengl/mpc-rl
 related:

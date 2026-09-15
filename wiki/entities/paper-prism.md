@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motor-control, proprioception, polynomial, rl, imitation-learning, diffusion-policy, humanoid, manipulation, sensorless-compliance, umich]
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 arxiv: "2607.23473"
 venue: "2026 · arXiv"
 code: https://github.com/lsh3163/prism

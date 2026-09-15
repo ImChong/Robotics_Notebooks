@@ -14,7 +14,7 @@ tags:
   - dut
   - epfl
 status: complete
-updated: 2026-08-04
+updated: 2026-09-15
 doi: "10.1126/scirobotics.aea7639"
 venue: "Science Robotics 2026"
 related:

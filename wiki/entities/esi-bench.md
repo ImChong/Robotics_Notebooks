@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, spatial-intelligence, mllm, omnigibson, behavior-1k, evaluation, vlm, huggingface]
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/3d-spatial-vqa.md

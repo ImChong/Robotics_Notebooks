@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2501.05031"
 venue: "CVPR 2025"
 summary: "A high-quality benchmark designed to systematically evaluate the embodied cognitive abilities of LVLMs. Features diverse scene video sources, open question formats, and 30 dimensions of embodied cognition"

@@ -16,7 +16,7 @@ related:
   - ../queries/when-to-use-wbc-vs-rl.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
 summary: "WBC vs RL: Whole-Body Control vs Reinforcement Learning"
-updated: 2026-08-26
+updated: 2026-09-15
 sources:
   - ../../sources/papers/whole_body_control.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md

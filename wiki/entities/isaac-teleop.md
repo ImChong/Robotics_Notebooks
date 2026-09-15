@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, teleoperation, isaac, isaac-lab, xr, data-collection, imitation-learning, nvidia]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./isaac-lab.md
   - ./isaac-gym-isaac-lab.md

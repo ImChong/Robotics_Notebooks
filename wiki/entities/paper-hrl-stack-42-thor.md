@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, strong-contact, force-adaptive, whole-body-reaction, unitree-g1, baai, bit]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2510.26280"
 venue: "arXiv 2025"
 related:

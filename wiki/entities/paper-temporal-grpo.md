@@ -11,7 +11,7 @@ tags:
   - openvla
   - iscas
 status: complete
-updated: 2026-08-20
+updated: 2026-09-15
 arxiv: "2608.13026"
 related:
   - ../methods/vla.md

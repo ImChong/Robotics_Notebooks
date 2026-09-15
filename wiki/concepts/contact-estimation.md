@@ -3,7 +3,7 @@ title: Contact Estimation（接触估计）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-05
+updated: 2026-09-15
 summary: 在无直接力传感器时，从关节力矩/速度信号推断足端或末端执行器的接触状态，是步态规划和 WBC 的重要感知前提。
 ---
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, reinforcement-learning, isaac-lab, unitree, sim2real]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 related:
   - ../concepts/wheel-legged-quadruped.md
   - ../concepts/wheel-legged-biped.md

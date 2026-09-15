@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'vla', 'embodied-foundation-model', 'world-model', 'gigaai']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.15875"
 code: https://github.com/open-gigaai/giga-brain-0
 related:

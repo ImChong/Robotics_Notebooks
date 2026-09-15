@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 4dgs, multiview-video, hmr, human-avatar, gaussian-splatting, zju, robbyant, ant-group, hkust, cuhk]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2608.20335"
 venue: "SIGGRAPH Asia 2026"
 code: https://github.com/ant-research/4DAnyone

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "NeurIPS 2025"
 summary: "Proposes the E3VQA multi-view question answering benchmark (4K high-quality QA pairs) and M3CoT prompt technology, with 4.84% improvement on GPT-4o"
 related:

@@ -3,7 +3,7 @@ title: 人形机器人运动控制 Know-How 结构化摘要
 type: query
 status: complete
 created: 2026-04-18
-updated: 2026-07-14
+updated: 2026-09-15
 summary: 将飞书公开文档《人形机器人运动控制 Know-How》提炼为适合 Robotics_Notebooks 的结构化摘要，聚焦学习路线、问题框架与传统控制主干；全主题独立节点见技术地图。
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md

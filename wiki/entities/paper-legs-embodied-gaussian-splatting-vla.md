@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2606.01458"
 related:
   - ../tasks/loco-manipulation.md

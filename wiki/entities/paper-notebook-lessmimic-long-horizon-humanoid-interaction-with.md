@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, horizon-robotics]
 status: stub
-updated: 2026-07-01
+updated: 2026-09-15
 arxiv: "2602.21723"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md

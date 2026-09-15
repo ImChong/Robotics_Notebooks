@@ -2,7 +2,7 @@
 type: method
 tags: [stereo-matching, depth-estimation, computer-vision, foundation-model, robotics-perception, benchmark]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 related:
   - ../entities/paper-nbs-no-bias-stereo.md
   - ../entities/paper-dinov2.md

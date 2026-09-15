@@ -4,7 +4,7 @@ type: entity
 sources:
   - ../../sources/papers/optimal_control.md
 summary: "Crocoddyl"
-updated: 2026-09-04
+updated: 2026-09-15
 tags: [inria]
 
 ---

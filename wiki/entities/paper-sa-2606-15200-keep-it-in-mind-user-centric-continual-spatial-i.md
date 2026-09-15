@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.15200"
 venue: "ICML 2026"
 summary: "Introduces UCS-Bench, a dataset spanning 170+ hours with 8.1K+ timestamped questions for User-Centric Continual Spatial intelligence"

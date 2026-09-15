@@ -2,7 +2,7 @@
 type: method
 tags: [rl, safety, control, cmdp, optimization]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ./reinforcement-learning.md
   - ../concepts/control-barrier-function.md

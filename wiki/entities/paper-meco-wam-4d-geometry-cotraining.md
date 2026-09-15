@@ -9,7 +9,7 @@ tags:
   - inference-efficient
   - midea
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2607.05468"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md

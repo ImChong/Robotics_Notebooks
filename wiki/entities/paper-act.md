@@ -8,7 +8,7 @@ tags:
   - teleoperation
   - stanford
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2304.13705"
 code: https://github.com/tonyzhaozh/act
 related:

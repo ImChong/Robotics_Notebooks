@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 summary: "人形 Loco-Manip 161 篇 · 06 特殊任务、接触规划与视觉闭环（8 篇）— 开门、推物、搬运、触碰等具体接触任务。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

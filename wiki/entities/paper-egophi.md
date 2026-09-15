@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, eth, egocentric, hand-object-interaction, contact, force-estimation, manipulation, eccv2026]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2608.13014"
 venue: "ECCV 2026"
 code: https://github.com/eth-siplab/EgoPHI

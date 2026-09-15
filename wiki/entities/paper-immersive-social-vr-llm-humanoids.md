@@ -13,7 +13,7 @@ tags:
   - unitree
   - nyuad
 status: complete
-updated: 2026-08-09
+updated: 2026-09-15
 arxiv: "2607.07430"
 venue: "arXiv / Humanoids Workshop 2026"
 summary: "NYUAD（arXiv:2607.07430）：Apple Vision Pro 上 LLM 语音高层 locomotion + VR 腕/指操作 + 双向音频社交；H1+Inspire 手；新手抓放 80%、社交传方块 70%；多模态采数服务 IL；官方系统未开源。"

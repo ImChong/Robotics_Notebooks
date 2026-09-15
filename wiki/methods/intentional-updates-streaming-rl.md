@@ -3,7 +3,7 @@ type: method
 tags: [rl, streaming-rl, optimization, td-learning, policy-gradient, eligibility-traces]
 status: complete
 date: 2026-05-10
-updated: 2026-05-10
+updated: 2026-09-15
 related:
   - ./reinforcement-learning.md
   - ./policy-optimization.md
