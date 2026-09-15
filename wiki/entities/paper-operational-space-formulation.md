@@ -10,6 +10,9 @@ related:
   - ../concepts/hybrid-force-position-control.md
   - ../concepts/hqp.md
   - ./paper-hmi-stack-of-tasks.md
+  - ./paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md
+  - ./paper-sentis-khatib-icra-2006-whole-body-control-framework.md
+  - ./controlit.md
   - ../entities/humanoid-motion-intelligence.md
 sources:
   - ../../sources/papers/hmi_p001_operational-space-formulation.md

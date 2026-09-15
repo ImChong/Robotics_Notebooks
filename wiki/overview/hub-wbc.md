@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-wbc, whole-body-control, humanoid, balance, tsid]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 summary: "全身控制（WBC）知识链汇总：质心/接触约束下的层级 QP、TSID/HQP 与 CBF 安全过滤，衔接 MPC 与 RL 策略的执行层。"
 ---
 
@@ -30,6 +30,27 @@ summary: "全身控制（WBC）知识链汇总：质心/接触约束下的层级
 - **RL 策略的「执行壳」**：很多学习策略输出参考，由 WBC 保证可行与安全。
 - **loco-manip 交汇点**：行走与操作共享同一动力学与接触约束。
 
+## 经典理论线（Sentis–Khatib）
+
+人形 **模型-based WBC** 的系统化叙述通常从下列节点读起（2026-09-15 ingest）：
+
+```mermaid
+flowchart LR
+  osf["Khatib 1987\nOperational Space"]
+  ijhr["IJHR 2004\nWhole-Body Dynamic Behavior"]
+  icra["ICRA 2006\nHuman Environments Framework"]
+  sw["ControlIt!\nWBOSC 软件"]
+  osf --> ijhr --> icra --> sw
+```
+
+| 节点 | 角色 | 详情页 |
+|------|------|--------|
+| 理论源头 | 操作空间运动/力统一 | [OSF 1987](../entities/paper-operational-space-formulation.md) |
+| 系统化起点 | 约束–任务–姿态三层优先级 | [IJHR 2004](../entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md) |
+| 代表性论文 | 人类环境人形 WBC 框架 | [ICRA 2006](../entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md) |
+| 开源软件 | WBOSC ROS 中间件 | [ControlIt!](../entities/controlit.md) |
+| MPC 分层参考（四足） | Convex MPC + WBC 分支 | [legbot-MPC-WBC](../entities/legbot-mpc-wbc.md) |
+
 ## 本知识链覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
@@ -55,5 +76,6 @@ summary: "全身控制（WBC）知识链汇总：质心/接触约束下的层级
 ## 参考来源
 
 - 本库归纳自 [Whole-Body Control](../concepts/whole-body-control.md)、[TSID](../concepts/tsid.md)、[HQP](../concepts/hqp.md)
+- 经典线 ingest：[khatib_sentis_ijhr_2004](../../sources/papers/khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md)、[sentis_khatib_icra_2006](../../sources/papers/sentis_khatib_icra_2006_whole_body_control_framework.md)、[controlit_arxiv_1506_01075](../../sources/papers/controlit_arxiv_1506_01075.md)、[legbot_mpc_wbc](../../sources/repos/legbot_mpc_wbc.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbc` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[Whole-Body Control / TSID / HQP 核心论文](../../sources/papers/whole_body_control.md)、[PAC-MAN：感知感知 CBF-RL 全身安全（arXiv:2607.28623）](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)、[GentleHumanoid：上肢柔顺接触交互](../../sources/papers/gentlehumanoid_upper_body_compliance.md)

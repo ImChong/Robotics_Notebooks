@@ -6,10 +6,30 @@
 - **类型：** paper
 - **来源：** arXiv / journal / 开源仓库
 - **入库日期：** 2026-04-08
-- **最后更新：** 2026-04-14
+- **最后更新：** 2026-09-15
 - **一句话说明：** 聚焦任务空间控制、层级 QP 与动力学一致控制，用于支撑 WBC、TSID、HQP 等核心页面。
 
 ## 核心论文摘录（MVP）
+
+### 0) Whole body dynamic behavior and control of human-like robots (Khatib, Sentis, Park, Warren, IJHR 2004)
+- **链接：** <https://doi.org/10.1142/S0219843610000027>
+- **核心贡献：** 人形 WBC **系统化起点**：约束 / 操作任务 / 姿态三层优先级、浮基与接触动力学、操作空间递归投影。
+- **对 wiki 的映射：**
+  - [paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior](../../wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md)
+  - [paper-operational-space-formulation](../../wiki/entities/paper-operational-space-formulation.md)（理论源头）
+
+### 0b) A Whole-Body Control Framework for Humanoids Operating in Human Environments (Sentis & Khatib, ICRA 2006)
+- **链接：** <https://doi.org/10.1109/ROBOT.2006.1642100>
+- **核心贡献：** 人类环境人形 WBC **代表性框架**：可行性监测、阻抗交互、浮基支撑接触工程化。
+- **对 wiki 的映射：**
+  - [paper-sentis-khatib-icra-2006-whole-body-control-framework](../../wiki/entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md)
+  - [controlit](../../wiki/entities/controlit.md)（WBOSC 软件后继）
+
+### 0c) ControlIt! - A Software Framework for Whole-Body Operational Space Control (Fok et al., arXiv:1506.01075)
+- **链接：** <https://arxiv.org/abs/1506.01075> · 代码 <https://github.com/liangfok/controlit>
+- **核心贡献：** WBOSC 开源 ROS 中间件；Task/Constraint 插件；Dreamer 力控验证 ~0.5ms 伺服。
+- **对 wiki 的映射：**
+  - [controlit](../../wiki/entities/controlit.md)
 
 ### 1) Task Space Inverse Dynamics (Del Prete et al.)
 - **链接：** <https://ieeexplore.ieee.org/document/6651572>
@@ -49,5 +69,6 @@
 
 ## 当前提炼状态
 
-- [x] 已补 TSID / HQP / Sentis&Khatib / Crocoddyl / Koolen N-step CP 五条主线摘要
+- [x] 已补 IJHR 2004 / ICRA 2006 / ControlIt! 经典线 + TSID / HQP / Sentis&Khatib 2005 / Crocoddyl / Koolen N-step CP
+- [x] 四足 MPC–WBC 参考：[legbot_mpc_wbc.md](../repos/legbot_mpc_wbc.md)
 - [~] 后续补：加入”QP-WBC 与 NMPC-WBC”架构级对比

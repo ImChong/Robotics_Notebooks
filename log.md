@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | WBC 经典线 — IJHR 2004 / ICRA 2006 / Khatib 1987 交叉 / ControlIt! / legbot-MPC-WBC；新建 4 实体 + 5 sources；补强 hub-wbc 与 whole-body-control 理论线
+
 ## [2026-09-15] ingest | sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md — RobotsHub MoRE 万字原理→代码深读；交叉补强 paper-amp-survey-08-more 与 sources/repos/more.md（论文/代码差异、调用链）；修正 paper source「Stage 2 冻结 base」表述
 
 ## [2026-09-15] ingest | sources/repos/understand-anything.md — 接入 Understand Anything（MIT 已开源）；代码库/wiki 交互知识图插件；新建实体并交叉 graphify / LLM Wiki
