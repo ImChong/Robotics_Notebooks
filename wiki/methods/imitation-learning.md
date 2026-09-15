@@ -145,7 +145,7 @@ flowchart TD
 
 先从演示中提取隐表示或技能 latent，再用于控制。
 
-代表：ASE, CALM, Motion Encoder
+代表：[ASE](./ase.md)、[CALM](../entities/paper-bfm-19-calm.md)、Motion Encoder
 
 ## 和强化学习的关系
 
@@ -177,18 +177,18 @@ flowchart TD
 ### 物理动作模仿与技能跟踪
 
 - [deepmimic](deepmimic.md)：基于轨迹跟踪的显式模仿
-- BeyondMimic：强调精确物理建模与失败驱动采样的模仿学习基座
-- HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计
-- Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿
-- AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作
-- Switch：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换
-- HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务
+- [BeyondMimic](./beyondmimic.md)：强调精确物理建模与失败驱动采样的模仿学习基座
+- [HumanX](./amp-reward.md)：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计
+- [Any2Track](./any2track.md)：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿
+- [AMS (Adaptive Motion Synthesis)](./ams.md)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作
+- [Switch](./switch-framework.md)：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换
+- [HAIC](./haic.md)：引入世界模型的教师-学生两阶段训练，用于物体交互任务
 - [ase](ase.md)：对抗技能嵌入
-- CALM：latent 方向控制
+- [CALM](../entities/paper-bfm-19-calm.md)：latent 方向控制
 
 ### 人类数据侧：大规模演示语料与标注
 
-- CLAW：宇树 G1 的模块化语言-动作数据生成管线
+- [CLAW](./claw.md)：宇树 G1 的模块化语言-动作数据生成管线
 - [HumanNet](../entities/humannet.md)：互联网级 **人中心** 视频语料（论文宣称约百万小时）与交互导向标注管线，可作为「人类侧大规模演示」与 VLA 持续预训练的数据基础设施参照（与真机日志互补，不等价替代物理闭环）
 - [EgoScale](./egoscale.md)：在 **两万小时量级** egocentric 人视频上做 **显式腕–手动作** 预训练，并系统测量 **数据规模–离线验证–真机灵巧** 的缩放关系；用 **对齐人–机 mid-training** 把表示锚到机器人（arXiv:2602.16710）
 - [EgoVerse](../entities/paper-egoverse.md)：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身 **BC/CFM 共训**——共训可涨分，但有效缩放依赖 **域对齐人数据锚定**，有限预算下 **场景多样性** 优先（arXiv:2604.07607）
@@ -198,7 +198,7 @@ flowchart TD
 
 ### 策略结构与训练系统
 
-- HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题
+- [HTD](./humanoid-transformer-touch-dreaming.md)：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题
 - [JEPA Policy](../entities/paper-jepa-policy.md)：成对监督 **动作块 + 未来视觉表征** 的扩散-free MIP；共享 Transformer 两次前向；仿真九任务 **83.0%** 均值、相对 100-step Diffusion Policy **33×** 决策加速（arXiv:2609.09630；**已开源**）
 - [InstantMimic](../entities/paper-instantmimic.md)：GPU-native 整环训练系统，标准动作跟踪 **秒级** 收敛、AMASS **37.4 h→约 30 min**（arXiv:2609.09821；**待发布**）
 
