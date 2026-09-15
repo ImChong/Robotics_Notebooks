@@ -9,7 +9,16 @@
 
 ## 一句话说明
 
-VLA-Precision 官方栈：`uv sync` 分 stage1/stage2/real-robot 组；`main.py --mode train|preprocess|serve-policy|serve-robot|evaluate` 覆盖 OpenPI 全参微调与 ACoB 在线后训练；配置在 `configs/stage1/` 与 `configs/stage2/`。
+VLA-Precision 官方栈：`uv sync --frozen --group stage1|stage2|real-robot`；`main.py --mode norm-stats|train|preprocess|serve-robot|robot-agent-bridge|evaluate` 覆盖 OpenPI 全参微调与 ACoB 在线后训练。Stage II 在线 RL 需 **四进程**：GPU server 上 **learner + actor**，真机侧 **serve-robot + robot-agent-bridge**（同 task/deployment yaml）。配置：`configs/stage1/`、`configs/stage2/tasks/`、`configs/stage2/deployments/`。
+
+### 遥操作与采集（LeRobot 格式）
+
+| 机器人 | 方式 | 仓库 |
+|--------|------|------|
+| UR5e/UR7e | 键盘 | [scy-v/lerobot_ur5e_keyteleop](https://github.com/scy-v/lerobot_ur5e_keyteleop) |
+| UR5e/UR7e | 同构主从 | [scy-v/lerobot_ur5e_isoteleop](https://github.com/scy-v/lerobot_ur5e_isoteleop) |
+| 双 UR | VR | [scy-v/lerobot_ur_dual_vrteleop](https://github.com/scy-v/lerobot_ur_dual_vrteleop) |
+| Franka | 3D 鼠标/VR 或键盘 | [Shenzhaolong1330/lerobot_franka_teleop](https://github.com/Shenzhaolong1330/lerobot_franka_teleop) |
 
 ## 交叉链接
 

@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/papers/vla_precision_arxiv_2609_04355.md — 复核 VLA-Precision（arXiv:2609.04355 v2）；Apache-2.0 全栈已开源；补核心信息表与 Stage II 四进程时序图
+
 ## [2026-09-15] ingest | sources/repos/lok_i_orcs.md — 接入 ORCS 特权人形后训练工具包；开源：代码+HF checkpoint，ViBe 视觉未发布
 
 ## [2026-09-15] ingest | sources/blogs/rewardai_om1.md — 接入 Reward AI OM-1/Omnibody 全栈；开源结论：确认未开源
