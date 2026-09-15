@@ -19,7 +19,7 @@
 - **问题：** 纯本体感知或平地 AMP 难以在 **台阶/沟壑/高台** 等复杂地形上保持 **可切换的人形步态**；MoCap 参考多来自平地，单参考 AMP 也难覆盖高动态平衡动作。
 - **两阶段管线：**
   1. **Stage 1 — Base locomotion：** 随机初始化 actor-critic，**仅用 locomotion 奖励 $\bm{r}^l$**，输入含 **头部深度图** + 本体历史；critic 用特权高程图；无 motion prior、无 gait command。学完后可过楼梯、沟壑、高台与坡地。
-  2. **Stage 2 — Anthropomorphic gaits：** 冻结 base actor 主干，挂载 **Mixture of Latent Residual Experts（MoRE）**；残差 $\bm{z}'_t$ 加到 actor 末层隐特征 $\bm{z}^o_t$ 上再进 action head；输入含 **one-hot gait command** $\bm{c}^g_t$；**多判别器 AMP**（每步态一个）+ **gait-specific 奖励** $\bm{r}^g$ 联合优化。
+  2. **Stage 2 — Anthropomorphic gaits：** 加载 Stage 1 checkpoint 为初始化，挂载 **Mixture of Latent Residual Experts（MoRE）** 并与 base actor **联合 PPO**（非冻结）；残差 $\bm{z}'_t$ 加到 actor 末层隐特征 $\bm{z}^o_t$ 上再进 action head；输入含 **one-hot gait command** $\bm{c}^g_t$；**多判别器 AMP**（每步态一个）+ **gait-specific 奖励** $\bm{r}^g$ 联合优化。
 - **多判别器 AMP：** 每步态 $i$ 独立判别器 $D_{\phi_i}$；风格奖励按 gait command 只从对应判别器取；参考为 LAFAN1 retarget 到 G1 的 **5 步关节角轨迹** $\tau$（非单步转移）。
 - **MoE 残差：** $N$ 个 expert MLP + gate 网络对 expert 输出加权求和，缓解多技能梯度冲突；论文实验取 **3 个 expert**。
 - **三种步态（gait command）：** Walk-Run、High-Knees、Squat（蹲走）；gait rewards 约束基座高度、抬膝高度等，使风格不必完全复制参考动作。

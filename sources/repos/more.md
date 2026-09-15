@@ -84,6 +84,28 @@ python deploy/deploy_mujoco/deploy_mujoco_with_resi.py g1_16dof_resi_moe.yaml
 | `body_mask_data/` | Stage 2 部署适配用 body mask（需外部下载） |
 | `docs/` | 方法示意图与地形预览图 |
 
+## 源码导读（编译自 RobotsHub 万字深读 + README）
+
+推荐阅读顺序：
+
+```
+g1_16dof_moe_residual_config.py
+  → moe_residual_on_policy_runner_multi.py
+  → actor_critic_resi_moe.py
+  → resi_moe_ppo_multi.py
+  → amp_discriminator_multi.py
+```
+
+| 路径 | 要点 |
+|------|------|
+| `legged_gym/envs/g1_loco/g1_16dof_moe_residual_config.py` | `num_gait=3`、`num_residual_net=3`、`num_amp_frames=5`、深度/相机 DR、40k iter |
+| `rsl_rl/rsl_rl/modules/actor_critic_resi_moe.py` | MoE 残差前向；**注意** base/expert 读 `actor_input[:, 3:]`，gate 读完整输入（与论文 Fig.2 文字表述略有差异） |
+| `rsl_rl/rsl_rl/runners/moe_residual_on_policy_runner_multi.py` | `disc_reward * gait_commands[:, idx]` 路由当前步态判别器 |
+| `rsl_rl/rsl_rl/algorithms/resi_moe_ppo_multi.py` | 判别器更新 + PPO 联合更新 base 与残差（**Stage 2 不冻结 base**） |
+| `rsl_rl/rsl_rl/algorithms/amp_discriminator_multi.py` | `clamp(1 - 0.25*(D-1)², min=0)` 风格奖励 |
+
+深读归档：[wechat_robotshub_more_principle_to_code_2026-09-15.md](../blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md)
+
 ## 对 Wiki 的映射
 
 - [MoRE（AMP 专题 #08）](../../wiki/entities/paper-amp-survey-08-more.md) — 方法归纳与文献对照
