@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/repos/awesome-rsi.md — 接入 Prism-Shadow Awesome RSI（50 方法/29 基准）；新建实体页与站点归档；交叉链 recursive-self-improvement / RSI-Harness / HarnessBank
+
 ## [2026-09-15] ingest | sources/papers/pyroki_arxiv_2505_03728.md + go_with_the_track — PyRoki 升格完整实体（JAX IK/TO/retarget，已开源）；Go-with-the-Track SIGGRAPH 2026（reference-anchored point-tracks + Wan2.2，HF 模型/数据已开源）
 
 ## [2026-09-15] ingest | sources/papers/artmanip_arxiv_2609_12498.md — 深读 ArtManip：抓稳+推动铰接关节；ArtGym 已开源；升格 paper-artmanip 与交叉链
