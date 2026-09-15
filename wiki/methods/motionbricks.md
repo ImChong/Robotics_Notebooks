@@ -2,9 +2,7 @@
 type: method
 tags: [generative-model, wbc, humanoid, motion-synthesis, gr00t, nvidia, paper, amp, motion-prior, motion-generation, eth, ut-austin, groot]
 status: complete
-updated: 2026-07-22
-venue: arXiv
-arxiv: "2604.24833"
+updated: 2026-09-15
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../methods/motionbricks.md
@@ -12,13 +10,17 @@ related:
   - ../concepts/whole-body-control.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/kimodo.md
+  - ../entities/paper-motionbricks.md
+  - ../entities/motion-bricks-cpp.md
   - ../entities/unitree-g1.md
   - ../entities/isaac-gym-isaac-lab.md
   - ./imitation-learning.md
   - ../concepts/motion-retargeting.md
 sources:
   - ../../sources/papers/motionbricks.md
+  - ../../sources/sites/motionbricks-project.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
+  - ../../sources/repos/motion-bricks-cpp.md
   - ../../sources/papers/humanoid_amp_survey_05_motionbricks_scalable_real_time_motions_with_mod.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
@@ -104,6 +106,7 @@ MotionBricks 的顶层接口通过「Smart Primitives」实现了极高的任务
 - **极高性能**：单卡吞吐量达 **15,000 FPS**，延迟低至 **2ms**，满足机器人实时控制环路（通常要求 > 100Hz）的需求。
 - **多模态控制**：支持文本、轨迹线、空间点位、风格标签等多种控制信号的无缝混合。
 - **机器人验证**：已在 **Unitree G1** 等全尺寸人形机器人平台上通过了 Sim2Real 验证。
+- **部署/runtime 档**：[motion-bricks.cpp](../entities/motion-bricks-cpp.md) 把 G1 batch-one 推理迁到 **C++/GGML（CPU/Vulkan）**，可选 **GGML SONIC + MuJoCo** 物理跟踪；论文级开源边界见 [paper-motionbricks](../entities/paper-motionbricks.md)。
 
 ## 关联页面
 
@@ -112,6 +115,8 @@ MotionBricks 的顶层接口通过「Smart Primitives」实现了极高的任务
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md) — MotionBricks 为其提供参考轨迹。
 - [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) — 官方单仓中 `motionbricks/` 子项目与一体化文档。
 - [Kimodo](../entities/kimodo.md) — 同生态文生运动与约束式生成（GEAR-SONIC Demo 等场景常与之并列出现）。
+- [paper-motionbricks](../entities/paper-motionbricks.md) — SIGGRAPH 2026 论文实体与开源状态。
+- [motion-bricks.cpp](../entities/motion-bricks-cpp.md) — 社区 C++/GGML 本地运行时。
 - [ARDY](../entities/ardy.md) — 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026；项目页与 Kimodo 并列）。
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 利用 SOMA Retargeter 处理跨骨骼转换。
 - [Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 训练与验证环境。

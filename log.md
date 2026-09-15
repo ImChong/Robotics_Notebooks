@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | motion-bricks.cpp / MotionBricks / Kimodo 交叉链 / Track4World — 新建 motion-bricks-cpp、paper-motionbricks、paper-track4world 实体与 sources；Kimodo 补 motion-bricks.cpp 下游；Track4World 已开源（HF+GitHub）
+
 ## [2026-09-15] ingest | sources/papers/wiyh_arxiv_2512_24310.md — WIYH 论文实体：Oracle Suite + ~1045h 数据已开源，硬件/FM 待发布
 
 ## [2026-09-15] ingest | sources/sites/robocoliseum.md + sources/repos/genie_sim_robocoliseum.md — 接入 RoboColiseum（智元 Genie Sim 四榜仿真挑战赛）；新建 wiki/entities/robocoliseum.md；互链 genie-sim-3、DM0.5、RoboDojo、具身评测选型链

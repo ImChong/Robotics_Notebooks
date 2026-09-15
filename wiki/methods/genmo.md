@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, diffusion, smpl, perception, video-to-control, nvidia]
 status: complete
-updated: 2026-06-17
+updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./hy-motion-1.md

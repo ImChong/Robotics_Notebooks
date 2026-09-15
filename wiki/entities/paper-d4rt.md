@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, 4d-reconstruction, point-tracking, depth-estimation, camera-pose, feedforward, foundation-model, deepmind, oxford, cvpr-2026, dynamic-scene]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2512.08924"
 venue: "CVPR 2026"
 related:

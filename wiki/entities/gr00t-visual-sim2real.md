@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, sim2real, visual-rl, humanoid, unitree-g1, isaac-lab, teacher-student, dagger, loco-manipulation, nvidia, cvpr2026]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 related:
   - ./paper-doorman-opening-sim2real-door.md
   - ./paper-viral-humanoid-visual-sim2real.md

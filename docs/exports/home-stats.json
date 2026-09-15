@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-15",
-  "node_count": 4050,
-  "edge_count": 36203,
+  "node_count": 4053,
+  "edge_count": 36231,
   "coverage": {
-    "covered": 4022,
-    "total": 4022,
+    "covered": 4025,
+    "total": 4025,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -112,8 +112,7 @@
       "recency": "2026-09-15",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/reward-ai-om1.md",
@@ -234,11 +233,11 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 463
+      "size": 462
     },
     {
       "label": "世界动作模型",
-      "size": 337
+      "size": 334
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -246,7 +245,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 258
+      "size": 260
     },
     {
       "label": "视觉-语言-动作",
@@ -338,7 +337,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 160,
+      "degree": 162,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },

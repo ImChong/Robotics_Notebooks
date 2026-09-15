@@ -9,6 +9,7 @@ related:
   - ../entities/paper-glob3r.md
   - ../entities/paper-wid3r.md
   - ../entities/paper-d4rt.md
+  - ../entities/paper-track4world.md
   - ../methods/lingbot-map.md
   - ../queries/slam-second-spring-embodied.md
 ---
@@ -67,6 +68,7 @@ related:
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — ERP 全景户外大规模 3DGS 划分重建（位姿下游 novel-view 资产）
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈 3D 重建（在线几何对照）
 - [D4RT（统一动态 4D 查询重建）](../entities/paper-d4rt.md) — 深度/相机/动态 3D 跟踪统一前馈；确认未开源（CVPR 2026）
+- [Track4World（世界系全像素稠密 3D 跟踪）](../entities/paper-track4world.md) — VGGT 式表示 + 2D-to-3D correlation；ECCV 2026；代码与 HF 权重已开源
 - [Contact Estimation](../concepts/contact-estimation.md)
 - [Terrain Latent Representation](../concepts/terrain-latent-representation.md)
 - [3D Spatial VQA](../concepts/3d-spatial-vqa.md)
