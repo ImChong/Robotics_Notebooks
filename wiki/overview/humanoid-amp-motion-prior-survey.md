@@ -4,6 +4,7 @@ tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, r
 status: complete
 updated: 2026-09-15
 related:
+  - ./mimic-control-evolution-lineage.md
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
   - ../methods/add.md
@@ -18,6 +19,7 @@ related:
   - ../entities/project-instinct.md
   - ../tasks/humanoid-locomotion.md
 sources:
+  - ../../sources/blogs/wechat_pinkrobot_mimic_evolution_deepmimic_beyondmimic_2026-09-15.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
@@ -27,7 +29,7 @@ summary: "依据具身智能研究室 AMP 专题长文，把 19 篇运动先验�
 
 # 人形机器人 AMP：运动先验综述视角
 
-> **本页定位**：为 [具身智能研究室 · AMP 专题长文](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) 提供 **按问题线索组织的阅读坐标**；不复述每篇论文细节，只保留 **与 mimic / 身体系统栈的分工、四段论文地图、演化判断** 与和本库已有页面的挂接。姊妹篇总框架见 [人形 RL 运动控制身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)。
+> **本页定位**：为 [具身智能研究室 · AMP 专题长文](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) 提供 **按问题线索组织的阅读坐标**；不复述每篇论文细节，只保留 **与 mimic / 身体系统栈的分工、四段论文地图、演化判断** 与和本库已有页面的挂接。纵穿 DeepMimic→BeyondMimic 七代主线见姊妹篇 [Mimic 控制演进](./mimic-control-evolution-lineage.md)；八层系统栈见 [人形 RL 运动控制身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)。
 
 ## 一句话观点
 

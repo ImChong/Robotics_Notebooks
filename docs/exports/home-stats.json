@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-15",
-  "node_count": 4076,
-  "edge_count": 36400,
+  "node_count": 4081,
+  "edge_count": 36441,
   "coverage": {
-    "covered": 4048,
-    "total": 4048,
+    "covered": 4053,
+    "total": 4053,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -232,7 +232,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 491
+      "size": 465
     },
     {
       "label": "世界动作模型",
@@ -280,7 +280,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 939,
+      "degree": 947,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -307,20 +307,20 @@
       "has_repo": true
     },
     {
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "degree": 578,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
       "degree": 574,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "degree": 573,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
@@ -344,7 +344,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 88,
+      "degree": 90,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -352,7 +352,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 64,
+      "degree": 67,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
