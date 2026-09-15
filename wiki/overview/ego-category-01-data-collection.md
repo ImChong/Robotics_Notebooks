@@ -13,6 +13,7 @@ related:
   - ../entities/egoworld-100w.md
   - ../entities/rekadaily-10k-dataset.md
   - ../entities/rekacs2-10k-dataset.md
+  - ../entities/humanplus-1000-dataset.md
   - ../entities/paper-egoverse.md
   - ../entities/paper-ego4d.md
   - ../entities/paper-ego-oscar.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/sites/ego4d-data-org.md
   - ../../sources/sites/rekadaily-10k.md
   - ../../sources/sites/rekacs2-10k.md
+  - ../../sources/sites/humanplus-1000.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md
@@ -64,6 +66,7 @@ sources:
 - [EgoWorld-100W](../entities/egoworld-100w.md) — StellarNex **百万级** 第一人称操作语料（**申请制**；四维 Scene×Object×Action×Handedness）；与 ICLR [EgoWorld 视图翻译](../entities/paper-egoworld.md) **同名异物**
 - [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) — Reka/Claru **10k+ 小时** 无剧本家务 ego 视频（Apache 2.0；raw HF 增量 + processed/captioned）
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 demo 渲染的 **10k+ 小时** ego 视频 + 逐帧键鼠/轨迹（世界模型沙盒；非真实家务）
+- [HumanPlus-1000](../entities/humanplus-1000-dataset.md) — HumanPlus **1000+ h** 同步立体 ego + SMPL-H/MANO/SLAM/IMU（HF 预览 100 session；全量申请）
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 把已采 egocentric RGB **重建为度量 21 关节手轨迹** 的开源配方与 HOT3D Action MPJPE 标尺（采集后的几何标注层）
 - [Pico 4 Ultra（Egocentric 采集）](../entities/pico-4-ultra-egocentric-capture.md) — Unidata **4,050 h** 量产工作流：头显-only vs ZED+Orin 双 rig、episode QA 与 Quest 3 / Aria 选型对照
 
@@ -77,6 +80,7 @@ sources:
 - [stellarnex_egoworld_100w.md](../../sources/blogs/stellarnex_egoworld_100w.md)
 - [RekaDaily-10k 研究页归档](../../sources/sites/rekadaily-10k.md)
 - [RekaCS2-10k 新闻页归档](../../sources/sites/rekacs2-10k.md)
+- [HumanPlus-1000 项目页归档](../../sources/sites/humanplus-1000.md)
 - [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)
 - [unidata_pico_4_ultra_egocentric_data_collection.md](../../sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md)
 

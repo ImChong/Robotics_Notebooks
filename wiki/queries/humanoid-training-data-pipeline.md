@@ -3,7 +3,7 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-09-05
+updated: 2026-09-15
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
@@ -13,6 +13,7 @@ sources:
   - ../../sources/repos/omomo_release.md
   - ../../sources/sites/humanoideveryday.md
   - ../../sources/sites/rekadaily-10k.md
+  - ../../sources/sites/humanplus-1000.md
   - ../../sources/papers/luna_arxiv_2606_31981.md
   - ../../sources/papers/ahoy_arxiv_2603_17975.md
 ---
@@ -72,6 +73,7 @@ flowchart TD
 | 纯仿真 teleop + 视觉扩增 | [OASIS](../entities/paper-loco-manip-04-oasis.md) | Real-to-Sim 资产、VR 仿真 teleop、离线域随机化渲染；**纯仿真数据可 ≥ 等量真机 teleop** | 资产/接触精度依赖生成模型；motion 多样性受操作员上限 |
 | 人体视频 | [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) | 规模可极大 | 3D/接触信息弱，需重建 |
 | 家务 egocentric 人视频（开放） | [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) | **10k+ h** 目标、Apache 2.0 ungated、家庭无剧本；可作视觉/语言先验 | **无** 原生手姿/关节；进策略需重建或仅作预训练层 |
+| 同步 ego + 度量全身/手/SLAM | [HumanPlus-1000](../entities/humanplus-1000-dataset.md) | **1000+ h** 目标；HDF5 内 SMPL-H/MANO/SLAM/IMU/深度对齐；MIT viewer | 预览 100 session；**CC BY-NC**；全量申请；仍非机器人 DOF |
 | 面部视频（telepresence/表情） | [Face Anything](../entities/paper-face-anything-4d-face-reconstruction.md) | 前馈 **4D 面部几何+跟踪** | 与全身 SMPL 链路分离；野外泛化待验证 |
 | 标定多视角面部注册 | [SHELLS](../entities/paper-shells-layered-surface-sampling.md) | 固定拓扑 ~18k 顶点、亚秒级前馈；纯合成训练可泛化棚拍 | **未开源**；需标定多视角；非细皱纹/发须外包络 |
 | 多视角着装数字人（telepresence） | [UMA](../entities/paper-uma.md) | 40×6K 长序列 + 可驱动超精细几何/外观；推理与 demo 已开源 | 人物特异单层模板；训练工具待发；非机器人策略数据 |
