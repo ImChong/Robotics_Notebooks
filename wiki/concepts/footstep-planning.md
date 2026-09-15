@@ -11,6 +11,7 @@ sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
 related:
+  - ../entities/paper-se2-navigation-mesh.md
   - ../queries/contact-wrench-closed-loop.md
   - ./capture-point-dcm.md
   - ./terrain-adaptation.md
@@ -44,6 +45,8 @@ related:
 ---
 
 ## 主流方法
+
+全局导航层也可采用 **yaw-aware NavMesh**：[SE(2) Navigation Mesh](../entities/paper-se2-navigation-mesh.md) 在窄门/楼梯等场景保留「正着能过、横着不能」的 restricted 区域，再由 ASA 联合优化位置与航向——与逐步落足规划互补而非替代。
 
 ### 1. 基于 Capture Point / DCM 的反应式规划
 

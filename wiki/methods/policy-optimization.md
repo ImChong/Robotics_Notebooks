@@ -20,6 +20,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
+  - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
+  - ../overview/deep-rl-off-on-policy-evolution.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
 updated: 2026-09-15
 ---
@@ -50,6 +52,8 @@ Policy Optimization 天然适合连续动作空间：
 - 策略直接输出连续动作
 - 梯度来自 reward 信号，不需要显式建模状态转移
 - PPO、SAC 是人形机器人 RL 训练中使用最广泛的两类算法
+
+从 **行为策略 vs 目标策略** 视角梳理 Q-learning→SAC 与 REINFORCE→PPO 完整演进，见 [深度 RL Off/On-policy 技术地图](../overview/deep-rl-off-on-policy-evolution.md)。
 
 ## 核心思想
 

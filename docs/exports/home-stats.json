@@ -1,107 +1,13 @@
 {
   "generated_at": "2026-09-15",
-  "node_count": 4076,
-  "edge_count": 36442,
+  "node_count": 4082,
+  "edge_count": 36505,
   "coverage": {
-    "covered": 4048,
-    "total": 4048,
+    "covered": 4054,
+    "total": 4054,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-worldroambench.md",
-      "detail_id": "entity-paper-worldroambench",
-      "label": "WorldRoamBench：交互世界模型长程稳定性开放基准",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/controlit.md",
-      "detail_id": "entity-controlit",
-      "label": "ControlIt!（Whole-Body Operational Space Control 软件框架）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/legbot-mpc-wbc.md",
-      "detail_id": "entity-legbot-mpc-wbc",
-      "label": "legbot-MPC-WBC（四足 Convex MPC + WBC 参考实现）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md",
-      "detail_id": "entity-paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior",
-      "label": "Whole body dynamic behavior and control of human-like robots（IJHR 2004）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md",
-      "detail_id": "entity-paper-sentis-khatib-icra-2006-whole-body-control-framework",
-      "label": "A Whole-Body Control Framework for Humanoids Operating in Human Environments（ICRA 2006）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/understand-anything.md",
-      "detail_id": "entity-understand-anything",
-      "label": "Understand Anything（Egonex）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-freetoken.md",
-      "detail_id": "entity-paper-freetoken",
-      "label": "FreeToken：边缘原生 MoE 推理",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-puma-lidar-mesh-odometry.md",
-      "detail_id": "entity-paper-puma-lidar-mesh-odometry",
-      "label": "PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-scan2mesh-cvpr2019-dai.md",
-      "detail_id": "entity-paper-scan2mesh-cvpr2019-dai",
-      "label": "Scan2Mesh：From Unstructured Range Scans to 3D Meshes（CVPR 2019）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added"
-    },
     {
       "path": "wiki/entities/awesome-rsi.md",
       "detail_id": "entity-awesome-rsi",
@@ -112,38 +18,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-go-with-the-track.md",
-      "detail_id": "entity-paper-go-with-the-track",
-      "label": "Go-with-the-Track",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-livecook.md",
-      "detail_id": "entity-paper-livecook",
-      "label": "LiveCook：流式多模态烹饪指导与 LiveMamba",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-streaming-interventions.md",
-      "detail_id": "entity-paper-streaming-interventions",
-      "label": "Streaming Interventions：Ego-MC-Bench 与 Ego-CoMist",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-act-lam.md",
@@ -194,6 +68,16 @@
       "action": "added"
     },
     {
+      "path": "wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md",
+      "detail_id": "entity-paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior",
+      "label": "Whole body dynamic behavior and control of human-like robots（IJHR 2004）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/paper-language-guided-tactile.md",
       "detail_id": "entity-paper-language-guided-tactile",
       "label": "Language-Tactile：语言引导跨传感器材料识别",
@@ -203,6 +87,39 @@
       "action": "added"
     },
     {
+      "path": "wiki/entities/paper-motionbricks.md",
+      "detail_id": "entity-paper-motionbricks",
+      "label": "MotionBricks：模块化潜空间实时运动生成",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-puma-lidar-mesh-odometry.md",
+      "detail_id": "entity-paper-puma-lidar-mesh-odometry",
+      "label": "PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sai-sequential-asymmetric-imitation.md",
+      "detail_id": "entity-paper-sai-sequential-asymmetric-imitation",
+      "label": "SAI：序贯非对称模仿学习耦合双机策略",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-saigen.md",
       "detail_id": "entity-paper-saigen",
       "label": "SAIGEN：材料合成自动化平台",
@@ -210,17 +127,99 @@
       "recency": "2026-09-15",
       "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-scan2mesh-cvpr2019-dai.md",
+      "detail_id": "entity-paper-scan2mesh-cvpr2019-dai",
+      "label": "Scan2Mesh：From Unstructured Range Scans to 3D Meshes（CVPR 2019）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md",
+      "detail_id": "entity-paper-sentis-khatib-icra-2006-whole-body-control-framework",
+      "label": "A Whole-Body Control Framework for Humanoids Operating in Human Environments（ICRA 2006）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-trace-causal-memory.md",
+      "detail_id": "entity-paper-trace-causal-memory",
+      "label": "TRACE：轨迹路由因果记忆",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-track4world.md",
+      "detail_id": "entity-paper-track4world",
+      "label": "Track4World：前馈世界系全像素稠密 3D 跟踪",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-vlbiman-plus.md",
+      "detail_id": "entity-paper-vlbiman-plus",
+      "label": "VLBiMan++：VLA 锚定 one-shot 双臂操作",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wiyh.md",
+      "detail_id": "entity-paper-wiyh",
+      "label": "World In Your Hands（WIYH）：野外人类中心操作开源生态",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-x-wbc.md",
+      "detail_id": "entity-paper-x-wbc",
+      "label": "X-WBC：跨具身人形全身控制基础模型",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-zeno-1-collaborative-intelligence.md",
+      "detail_id": "entity-paper-zeno-1-collaborative-intelligence",
+      "label": "Zeno-1：机器人协作智能基础模型",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-worldroambench.md",
-    "detail_id": "entity-paper-worldroambench",
-    "label": "WorldRoamBench：交互世界模型长程稳定性开放基准",
+    "path": "wiki/entities/awesome-rsi.md",
+    "detail_id": "entity-awesome-rsi",
+    "label": "Awesome RSI（Prism-Shadow 精选集）",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
@@ -229,11 +228,11 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 466
+      "size": 474
     },
     {
       "label": "世界动作模型",
-      "size": 336
+      "size": 337
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -277,7 +276,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 939,
+      "degree": 947,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -307,7 +306,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 574,
+      "degree": 580,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -341,7 +340,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 88,
+      "degree": 90,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
@@ -349,7 +348,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 64,
+      "degree": 67,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {

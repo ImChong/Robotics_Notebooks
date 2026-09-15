@@ -11,6 +11,10 @@ related:
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/paper-amp-survey-08-more.md
+  - ../entities/paper-robogauge-moe-quadruped-locomotion.md
+  - ../entities/paper-one-filter-ocr-quadruped-navigation.md
+  - ../entities/paper-se2-navigation-mesh.md
+  - ../entities/repo-go2-backflip.md
   - ../entities/paper-adp.md
   - ../concepts/state-estimation.md
   - ../methods/reinforcement-learning.md
@@ -158,6 +162,8 @@ flowchart TD
 - **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
 - **显式楼梯几何条件化：** [Explicit Stair Geometry Conditioning（论文实体页）](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）从点云 BEV 预测 **踢面高度 / 踏面深度 / 航向 / 楼梯状态** 四维 token，直接条件化 **PPO**；在 **Unitree G1** 上零样本实机，户外 **连续 33 级** 上楼，训练分布外踢面高度优于视觉 **MoRE** 基线。
 - **Spot 平地 velocity 零样本部署：** [NVIDIA Isaac Lab Spot locomotion Sim2Real](../entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — **Researcher Kit** + `Isaac-Velocity-Flat-Spot-v0` + RSL-rl PPO → Jetson Orin **ONNX** + `spot-rl-example`；教程级对照 [Spot 分布距离 Sim2Real 论文](../entities/paper-spot-rl-distributional-sim2real.md)。
+- **四足 Sim2Real 可预测性：** [RoboGauge](../entities/paper-robogauge-moe-quadruped-locomotion.md)（RSS 2026）用跨 Isaac Gym→MuJoCo 指标在真机前选 MoE checkpoint；配套 [GO2 Backflip](../entities/repo-go2-backflip.md) 开源栈展示高动态相位条件 PPO 部署链。
+- **四足安全导航：** [One Filter OCR](../entities/paper-one-filter-ocr-quadruped-navigation.md)（TRO 2026）在任意 locomotion 外挂 HJ 可达性安全滤波；全局规划侧见 [SE(2) NavMesh](../entities/paper-se2-navigation-mesh.md)（yaw-aware 窄通道导航）。
 - **四足真机安全微调：** [SLowRL（论文实体页）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **Unitree Go2** 上对 jump/trot 做 **冻结主策略 + rank-1 LoRA + Recovery 安全滤波** 真机 PPO 微调，相对全参微调显著降摔倒与墙钟时间（见 [Sim2Real](../concepts/sim2real.md)）。
 - **Go2 视觉 egocentric 零样本：** [SDPG（视觉 RL）](../entities/paper-sdpg-visual-rl-stochastic-decoupled.md)（arXiv:2605.26478）用 RealSense **深度** 端到端 on-policy 训崎岖地形/楼梯导航，仿真 **<2 h** 单 GPU → 真机零样本（对照 [GR00T Visual Sim2Real](../entities/gr00t-visual-sim2real.md) 的 teacher-student 蒸馏路线）。
 - **家用四足低噪行走：** [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md)（arXiv:2502.10983，ICRA 2025）用仿真 **足端接触速度** 作声学代理，配合可变 PD 与开关接触，真机安静度优于索尼商用 quiet 控制器（与人形 [QuietWalk GRF](../entities/paper-quietwalk-humanoid-locomotion.md) 对照）。

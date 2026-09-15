@@ -6,6 +6,7 @@ updated: 2026-09-15
 code: https://github.com/xbpeng/DeepMimic
 venue: curated
 related:
+  - ../overview/mimic-control-evolution-lineage.md
   - ../formalizations/unit-quaternion-so3.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-02-motion-imitation.md

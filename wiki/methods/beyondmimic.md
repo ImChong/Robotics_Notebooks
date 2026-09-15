@@ -11,6 +11,7 @@ related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/mimic-control-evolution-lineage.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-05-hierarchical-control.md
