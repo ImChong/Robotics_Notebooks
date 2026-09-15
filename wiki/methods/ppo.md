@@ -28,6 +28,8 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
+  - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
+  - ../overview/deep-rl-off-on-policy-evolution.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
 ---
 

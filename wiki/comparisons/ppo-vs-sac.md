@@ -10,7 +10,9 @@ sources:
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/flashsac_arxiv_2604_04539.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
+  - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
 related:
+  - ../overview/deep-rl-off-on-policy-evolution.md
   - ../methods/flashsac.md
   - ../concepts/rl-runner.md
   - ../methods/ppo.md
@@ -22,7 +24,7 @@ related:
 ---
 # PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型
 
-**背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。两者都已在真实机器人上取得成功，但底层训练范式截然不同：PPO 是 on-policy 算法，依赖大批量并行采样；SAC 是 off-policy 最大熵算法，依赖经验回放提升样本效率。**BRRL / BPO (2026)** 作为新出现的算法，通过有界重要性比率（Bounded Ratio）为 PPO 提供了理论改进，在稳定性上具有更强表现。
+**背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。二者分属 On-policy 与 Off-policy 两条典型演进链的末端代表，完整历史坐标见 [深度 RL Off/On-policy 技术地图](../overview/deep-rl-off-on-policy-evolution.md)。两者都已在真实机器人上取得成功，但底层训练范式截然不同：PPO 是 on-policy 算法，依赖大批量并行采样；SAC 是 off-policy 最大熵算法，依赖经验回放提升样本效率。**BRRL / BPO (2026)** 作为新出现的算法，通过有界重要性比率（Bounded Ratio）为 PPO 提供了理论改进，在稳定性上具有更强表现。
 
 ## 一句话定位
 

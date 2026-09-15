@@ -59,6 +59,8 @@ sources:
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/repos/boyu_ai_hands_on_rl.md
+  - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
+  - ../overview/deep-rl-off-on-policy-evolution.md
 summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
 ---
 
@@ -68,7 +70,7 @@ summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅�
 
 ## 一句话定义
 
-不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己从 PPO 等算法中摸索出最优动作序列。
+不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己从 PPO 等算法中摸索出最优动作序列。Off-policy（DQN→SAC）与 On-policy（REINFORCE→PPO）两条演进主线见 [深度 RL Off/On-policy 技术地图](../overview/deep-rl-off-on-policy-evolution.md)。
 
 ## 英文缩写速查
 

@@ -35,6 +35,8 @@ related:
   - ../entities/nvidia-physical-ai-learning.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../entities/paper-pace-sim2real-legged-robots.md
+  - ../entities/paper-robogauge-moe-quadruped-locomotion.md
+  - ../entities/repo-go2-backflip.md
   - ../entities/lift-humanoid.md
   - ./humanoid-parallel-joint-kinematics.md
   - ./processor-in-the-loop-sim2real.md

@@ -3,7 +3,6 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-09-15
-arxiv: "2602.00678"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -80,12 +79,14 @@ RL 在四足敏捷运动上很有前景，即便仅本体感受也行。但实�
 
 ## 与其他页面的关系
 
+- **本库完整实体（PinkRobot RSS 2026 解读补强）：** [paper-robogauge-moe-quadruped-locomotion](./paper-robogauge-moe-quadruped-locomotion.md)
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源
 
 - [humanoid_pnb_toward-reliable-sim-to-real-predictability-for-m.md](../../sources/papers/humanoid_pnb_toward-reliable-sim-to-real-predictability-for-m.md)
+- [PinkRobot RSS 2026 文献解读](../../sources/blogs/wechat_pinkrobot_robogauge_rss2026_2026-09-15.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html>
 - 论文：<https://arxiv.org/abs/2602.00678>
 
