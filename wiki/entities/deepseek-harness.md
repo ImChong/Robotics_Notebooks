@@ -10,13 +10,14 @@ tags:
   - acp
   - open-source
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 related:
   - ./hermes-agent.md
   - ./openclaw.md
   - ./sciencediscovery.md
   - ./openjiuwen.md
   - ./kimi-k3.md
+  - ./paper-freetoken.md
   - ./cli-anything.md
   - ./paper-harnessbank.md
   - ./paper-harness-vla.md
@@ -63,7 +64,7 @@ summary: "DeepSeek Harness（dsh，deepseek-ai/deepseek-harness，MIT，0.1.0-rc
 
 ## 为什么重要
 
-- **官方 DeepSeek 宿主：** 本库已有 [Hermes Agent](./hermes-agent.md)、[OpenClaw](./openclaw.md)、[Kimi Code / K3](./kimi-k3.md) 等 coding agent 选项；`dsh` 是 DeepSeek 自己的 **可组合运行时**，而不是又一个聊天壳。
+- **官方 DeepSeek 宿主：** 本库已有 [Hermes Agent](./hermes-agent.md)、[OpenClaw](./openclaw.md)、[Kimi Code / K3](./kimi-k3.md) 等 coding agent 选项；`dsh` 是 DeepSeek 自己的 **可组合运行时**，而不是又一个聊天壳。本地大 MoE 可用 [FreeToken](./paper-freetoken.md) `ft launch dsh` 写 provider 并起 CLI。
 - **一切皆插件：** 模型适配、工具、session log、agent loop 都在 Cordis 树上，没有「只能改核心才能加能力」的特权核。换沙箱 / 文件系统 / 子代理 provider 走 **capability seam**，而不是 fork 循环。
 - **可编程入口齐：** `npx` Web UI、`--profile headless` 一次性任务、`DeepSeekHarness` Python SDK（安装后不需本机 Node）适合接到 [autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) 的「读日志 → 改代码 → 再跑」一侧。
 - **同名必须拆开：** [Harness VLA](./paper-harness-vla.md) 与 [RoboHarness](./paper-robo-harness.md) 是 **冻结 VLA + planner** 的具身编排；本页是 **通用 LLM agent OS**。不要按「Harness」三字合并选型。

@@ -12,6 +12,7 @@ related:
   - ../concepts/ai-auto-research.md
   - ./llada2-2-flash.md
   - ./deepseek-harness.md
+  - ./paper-freetoken.md
 sources:
   - ../../sources/blogs/kimi_k3_tech_blog.md
   - ../../sources/courses/kimi_k3_api_quickstart.md
@@ -138,7 +139,7 @@ sequenceDiagram
 ### 自托管部署
 
 - 权重体积约 **1.56 TB**（96 分片 MXFP4）；博客建议 **≥64 加速器 supernode** 部署。
-- 推理引擎：官方 README 链至 **vLLM**、**SGLang**、**TokenSpeed** recipe（2026-07-27 起可用）。
+- 推理引擎：官方 README 链至 **vLLM**、**SGLang**、**TokenSpeed** recipe（2026-07-27 起可用）。消费级单机可另看 [FreeToken](./paper-freetoken.md)（边缘 MoE serving、`ft serve` + OpenAI 兼容 API）。
 - 商用前必读 **Kimi K3 License**（MaaS 营收门槛与大产品署名）。
 
 ## 局限与风险
