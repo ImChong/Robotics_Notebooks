@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/understand-anything.md",
+      "detail_id": "entity-understand-anything",
+      "label": "Understand Anything（Egonex）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/paper-freetoken.md",
       "detail_id": "entity-paper-freetoken",
       "label": "FreeToken：边缘原生 MoE 推理",
@@ -202,22 +213,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-track4world.md",
-      "detail_id": "entity-paper-track4world",
-      "label": "Track4World：前馈世界系全像素稠密 3D 跟踪",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-freetoken.md",
-    "detail_id": "entity-paper-freetoken",
-    "label": "FreeToken：边缘原生 MoE 推理",
+    "path": "wiki/entities/understand-anything.md",
+    "detail_id": "entity-understand-anything",
+    "label": "Understand Anything（Egonex）",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
