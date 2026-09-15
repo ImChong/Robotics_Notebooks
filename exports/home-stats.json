@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-puma-lidar-mesh-odometry.md",
+      "detail_id": "entity-paper-puma-lidar-mesh-odometry",
+      "label": "PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-scan2mesh-cvpr2019-dai.md",
+      "detail_id": "entity-paper-scan2mesh-cvpr2019-dai",
+      "label": "Scan2Mesh：From Unstructured Range Scans to 3D Meshes（CVPR 2019）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/awesome-rsi.md",
       "detail_id": "entity-awesome-rsi",
       "label": "Awesome RSI（Prism-Shadow 精选集）",
@@ -191,39 +211,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-wiyh.md",
-      "detail_id": "entity-paper-wiyh",
-      "label": "World In Your Hands（WIYH）：野外人类中心操作开源生态",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/queries/urdf-link-inertia-real-robot-check.md",
-      "detail_id": "wiki-queries-urdf-link-inertia-real-robot-check",
-      "label": "URDF 连杆惯量对照真机检查",
-      "type": "query",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/awesome-rsi.md",
-    "detail_id": "entity-awesome-rsi",
-    "label": "Awesome RSI（Prism-Shadow 精选集）",
+    "path": "wiki/entities/paper-puma-lidar-mesh-odometry.md",
+    "detail_id": "entity-paper-puma-lidar-mesh-odometry",
+    "label": "PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
