@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, low-cost-robotics, computer-vision, manipulation]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2608.15968"
 code: https://github.com/Anirudhpro/4DoF_vision_robotic_pen_sorting
 related:

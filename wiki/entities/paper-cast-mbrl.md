@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'mbrl', 'reinforcement-learning', 'locomotion']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08853"
 venue: "arXiv 2026"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-capture, monocular-video, biomechanics, opensim, clinical, human-motion, wham, university-of-utah, upstream]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-15
 arxiv: "2603.24733"
 venue: "2026 · arXiv preprint"
 code: https://github.com/utahmobl/opencap-monocular

@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'quadruped', 'embodied-intelligence', 'tum', 'dlr', 'kaist', 'hardware']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2609.00539"
 summary: "TUM/DLR/KAIST（arXiv:2609.00539）：高柔顺 SEA 四足 eBert 识别 6 个 NNM；黑箱步长优化使各模态发展为不同速度步态；具身智能 proof-of-concept。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, rl-pretraining, sim2real, geometric-fabric, visuo-tactile, fmb, nvidia, umich]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.19182"
 venue: "2026 · arXiv"
 related:

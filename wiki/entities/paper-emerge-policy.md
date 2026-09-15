@@ -7,7 +7,7 @@ tags:
   - llm-agents
   - manipulation
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.29896"
 code: https://github.com/EMERGE-Policy/EMERGE-Policy
 related:

@@ -17,7 +17,7 @@ tags:
   - kinetix-ai
   - aloha
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2602.09021"
 code: https://github.com/OpenDriveLab/kai0
 venue: "2026 · arXiv"

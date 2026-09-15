@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, end-to-end-vision, privileged-distillation, multi-critic, amp, sim2real, stairs, parkour, dagger, ppo, hit, honor-robotics, rss-2026, unitree]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2602.06382"
 venue: "RSS 2026"
 related:

@@ -11,7 +11,7 @@ tags:
   - isaac-lab
   - unitree
 status: complete
-updated: 2026-06-05
+updated: 2026-09-15
 arxiv: "2512.16446"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, racing, driving-game, three-js, open-source, arcade]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 related:
   - ./drive-game.md
   - ./nordschleife-racer.md

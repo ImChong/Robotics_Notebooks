@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, human-motion, hmr, monocular-video, smpl, post-processing, cvpr-2026, gvhmr, tram, temporal-dynamics, eth, zju]
 status: complete
-updated: 2026-06-26
+updated: 2026-09-15
 arxiv: "2605.26879"
 related:
   - ../concepts/motion-retargeting-pipeline.md

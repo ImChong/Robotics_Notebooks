@@ -11,7 +11,7 @@ tags:
   - whu
   - sensenova
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: "CVPR 2023"
 arxiv: "2212.10156"
 code: https://github.com/OpenDriveLab/UniAD

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, embodied-agent, runtime]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.11225"
 related:
   - ../tasks/autonomous-exploration.md

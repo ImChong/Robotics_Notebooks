@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dense-prediction, depth-estimation, vision-transformer, monocular-depth]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2103.13413"
 code: https://github.com/isl-org/DPT
 related:

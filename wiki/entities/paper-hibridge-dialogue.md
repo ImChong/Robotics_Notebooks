@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'hri', 'dialogue', 'bayesian']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08678"
 venue: "arXiv 2026"
 related:

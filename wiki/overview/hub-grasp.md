@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-grasp, manipulation, dexterous, grasp]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 summary: "抓取与操作感知知识链汇总：从接触建模、灵巧手运动学到 GraspNet/AnyGrasp 等感知抓取栈，覆盖 pick-place、双手协作与 loco-manip 中的操作子问题。"
 ---
 

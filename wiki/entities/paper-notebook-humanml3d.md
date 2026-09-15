@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2204.09419"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md

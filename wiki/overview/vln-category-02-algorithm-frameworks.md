@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, algorithms, transformer, vlm, category-hub, survey]
 status: complete
-updated: 2026-06-20
+updated: 2026-09-15
 summary: "VLN 10 篇盘点 · 02 算法框架（7 篇）— 预训练对齐、历史记忆、拓扑规划、数据扩展与 VLM 端到端如何演进？"
 related:
   - ./vln-10-papers-technology-map.md

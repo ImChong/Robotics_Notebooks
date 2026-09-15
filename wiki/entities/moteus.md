@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, can-fd, open-source, qdd, mjbots]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./simplefoc.md

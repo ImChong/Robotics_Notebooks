@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, lion, adaptive, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "Lion 是符号搜索发现的轻量优化器，仅用一阶动量并以 sign 函数更新参数，内存省、计算快，在部分视觉与语言任务上可与 AdamW 竞争。"
 related:
   - ./adamw.md

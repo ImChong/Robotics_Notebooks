@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hardware, actuator, qdd, proprioceptive, quadruped, mini-cheetah, mit, foc, can, thesis]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "MIT S.M. thesis 2018"
 code: https://github.com/bgkatz/3phase_integrated
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2512.01078"
 venue: "arXiv 2025"
 summary: "A simulator built on Unreal Engine 5, designed for developing and evaluating LLM/VLM agents in rich real‑world scenarios, providing realistic and open‑ended world simulation."

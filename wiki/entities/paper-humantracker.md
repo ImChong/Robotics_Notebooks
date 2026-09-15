@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, benchmark, preference, reward-model, unitree-g1, eccv2026, galbot, tsinghua, sjtu, pku, shanghai-pil, nankai]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2608.13555"
 venue: "ECCV 2026"
 code: https://github.com/GalaxyGeneralRobotics/HumanTracker

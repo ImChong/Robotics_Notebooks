@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, failure-detection, vlm, metric-ai]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2609.03611"
 code: https://github.com/Metric-AI-Lab/failbench
 related:

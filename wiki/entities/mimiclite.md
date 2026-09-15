@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-tracking, imitation-learning, sim2real, teleoperation, open-source, roboparty]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md

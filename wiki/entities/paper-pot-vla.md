@@ -16,7 +16,7 @@ tags:
   - deepcybo
   - zgca
 status: complete
-updated: 2026-07-29
+updated: 2026-09-15
 arxiv: "2607.18016"
 related:
   - ../methods/vla.md

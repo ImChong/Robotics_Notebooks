@@ -9,7 +9,7 @@ tags:
   - navsim
   - hust
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: "CVPR 2025"
 arxiv: "2411.15139"
 code: https://github.com/hustvl/DiffusionDrive

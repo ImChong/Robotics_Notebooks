@@ -2,7 +2,7 @@
 type: method
 tags: [speech, hri, humanoid, asr, tts, llm, vln, interaction]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md

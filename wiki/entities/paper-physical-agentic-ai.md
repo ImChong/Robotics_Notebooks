@@ -9,7 +9,7 @@ tags:
   - arizona-state
   - unitree
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 arxiv: "2608.22657"
 code: https://github.com/Liuuuxy/physical-agentic-ai
 related:

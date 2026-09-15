@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, manipulation, imitation-learning, human-to-robot, cross-embodiment, world-model, teleoperation, pku, cuhk, baai-aether]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2606.23685"
 code: https://siriyep.github.io/last-hd-project-page/
 related:

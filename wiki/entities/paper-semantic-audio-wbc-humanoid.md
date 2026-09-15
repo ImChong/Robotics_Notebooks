@@ -10,7 +10,7 @@ tags:
   - unitree-g1
   - sim2real
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 arxiv: "2607.14182"
 related:
   - ../tasks/loco-manipulation.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, behavior-foundation-model, closed-loop, motion-planning, diffusion, text-conditioned, exposure-bias, curriculum-learning, unitree-g1, cuhk, shanghai-ai-lab, sim2real, asynchronous-control]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2606.30362"
 venue: "arXiv 2026"
 related:

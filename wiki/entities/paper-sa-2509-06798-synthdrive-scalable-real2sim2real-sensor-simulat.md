@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2509.06798"
 venue: "arXiv 2025"
 summary: "A scalable real2sim2real system that leverages 3D generation to automate asset mining, generation, and rare-case data synthesis"

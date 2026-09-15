@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, temporal-logic, inference-time-guidance, purdue]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2608.13678"
 related:
   - ../methods/generative-world-models.md

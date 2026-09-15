@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2404.08640"
 venue: "CVPR 2024"
 summary: "High-speed human motion capture system leveraging asynchronous event camera footage"

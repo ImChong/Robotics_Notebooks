@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2411.08027"
 venue: "arXiv 2024"
 summary: "A zero‑shot black‑box optimisation framework that combines LLMs’ physical knowledge and program synthesis capabilities with built‑in world models in modern physics engines."

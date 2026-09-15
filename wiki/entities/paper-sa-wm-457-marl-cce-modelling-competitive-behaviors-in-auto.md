@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "ECCV 2024"
 code: https://github.com/qiaoguanren/MARL-CCE
 summary: "Models competitive behaviors under generative world models."

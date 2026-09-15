@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, loco-manip-contact-survey, humanoid, loco-manipulation, suspended-load, underactuated-object, vla, reinforcement-learning, construction-robotics, uf]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2606.00252"
 venue: "arXiv 2026"
 related:

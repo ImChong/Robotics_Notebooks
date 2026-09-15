@@ -3,7 +3,7 @@
 type: entity
 tags: [benchmark, mobile-gui-agent, simulation, online-rl, grpo, evaluation, mllm, vlm, android, playwright, tsinghua]
 status: complete
-updated: 2026-06-02
+updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../comparisons/online-vs-offline-rl.md

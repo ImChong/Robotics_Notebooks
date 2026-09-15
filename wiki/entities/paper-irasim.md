@@ -11,7 +11,7 @@ tags:
   - bytedance
   - hkust
 status: complete
-updated: 2026-08-11
+updated: 2026-09-15
 arxiv: "2406.14540"
 code: https://github.com/bytedance/IRASim
 related:

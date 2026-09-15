@@ -10,7 +10,7 @@ tags:
   - mechanism-design
   - rss2026
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2607.11688"
 venue: RSS 2026
 code: https://github.com/ZZongzheng0918/automated-facial-mechanisms-synthesis

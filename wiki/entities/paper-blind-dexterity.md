@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, manipulation, proprioception, interactive-perception, sim2real, unitree, tu-darmstadt, dfki]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2608.29487"
 related:
   - ./unitree-g1.md

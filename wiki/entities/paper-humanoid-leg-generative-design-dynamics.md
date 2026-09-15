@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware-design, generative-design, electro-hydraulic, eha, lightweight, dynamics-simulation, zju, avic-facri]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 doi: "10.13245/j.hust.260645"
 venue: "华中科技大学学报（自然科学版） 2026, 54(6)"
 related:

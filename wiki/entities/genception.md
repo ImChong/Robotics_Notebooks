@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, foundation-model, video-generation, video-perception, segmentation, depth-estimation, pose-estimation, deepmind, instruction-tuning, zero-shot, eccv-2026]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2607.09024"
 venue: ECCV 2026
 related:

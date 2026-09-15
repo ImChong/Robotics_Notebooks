@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, multi-robot, multi-embodiment, decentralized, mobile-manipulation, corl-2026, stanford, pi05]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2606.12352"
 venue: "CoRL 2026"
 related:

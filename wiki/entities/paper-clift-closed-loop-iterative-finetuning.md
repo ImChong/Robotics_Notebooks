@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, finetuning, closed-loop, reward-model, managed-api, bimanual-manipulation, unitree-g1, berkeley, google-deepmind, nvidia]
 status: complete
-updated: 2026-08-04
+updated: 2026-09-15
 arxiv: "2607.29172"
 related:
   - ./gemini-robotics.md

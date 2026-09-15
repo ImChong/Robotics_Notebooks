@@ -9,7 +9,7 @@ tags:
   - berkeley
   - stanford
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 venue: "CoRL 2024"
 arxiv: "2407.08693"
 code: https://github.com/MichalZawalski/embodied-CoT

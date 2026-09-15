@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, spatial-reasoning, vla, nus]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2603.26639"
 venue: "ECCV 2026 Oral"
 code: https://github.com/SuhZhang/GeoSR

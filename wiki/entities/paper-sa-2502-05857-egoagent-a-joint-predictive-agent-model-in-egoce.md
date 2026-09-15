@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2502.05857"
 venue: "ICCV 2025"
 summary: "Unified Transformer architecture integrating egocentric vision, language, world modeling and action decision heads"

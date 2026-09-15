@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, loco-manipulation, diffusion, reinforcement-learning, goal-conditioned, curriculum-learning, motion-tracking, data-augmentation, unitree-g1, mpi-is]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2606.26855"
 venue: "2026 · arXiv"
 related:

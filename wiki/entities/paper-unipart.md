@@ -7,7 +7,7 @@ tags:
   - manipulation
   - vla
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.12898"
 code: https://github.com/xinqiangyu/UniPart
 related:

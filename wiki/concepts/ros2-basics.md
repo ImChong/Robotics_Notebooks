@@ -2,7 +2,7 @@
 type: concept
 tags: [middleware, software, ros2, architecture, deployment, open-robotics]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, world-models, physical-ai, wfm, sim2real, video-generation, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2503.14492"
 venue: "arXiv 2025"
 code: https://github.com/nvidia-cosmos/cosmos-transfer1

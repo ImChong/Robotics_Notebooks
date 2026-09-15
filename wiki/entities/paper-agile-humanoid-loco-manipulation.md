@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, reinforcement-learning, sim2real, isaac-lab, workflow, unitree-g1, booster, nvidia]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 arxiv: "2603.20147"
 code: https://github.com/nvidia-isaac/WBC-AGILE
 related:

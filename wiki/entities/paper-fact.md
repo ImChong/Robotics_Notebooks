@@ -10,7 +10,7 @@ tags:
   - robotwin
   - ucsd
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 arxiv: "2608.10232"
 code: "https://github.com/Bariona/FACT"
 related:

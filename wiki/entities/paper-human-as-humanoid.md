@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, loco-manipulation, ego-exo, vla, imitation-learning, data-pipeline, motion-retargeting, ik, fk, primeu, zgc-embodyai]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 venue: "2026 · project preprint"
 related:
   - ../overview/loco-manip-contact-technology-map.md

@@ -14,7 +14,7 @@ tags:
   - cmu
   - snu
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2605.21976"
 code: https://github.com/TacObench/TacO
 related:

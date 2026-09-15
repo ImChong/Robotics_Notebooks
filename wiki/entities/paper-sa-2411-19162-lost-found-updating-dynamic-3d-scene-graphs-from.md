@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2411.19162"
 venue: "arXiv 2024"
 summary: "Based solely on egocentric recordings with corresponding hand position and camera pose estimates, tracks the 6DoF poses of moving objects within detected interaction intervals. Outperforms the second-best approach by 34%"

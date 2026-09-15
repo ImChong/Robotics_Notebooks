@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2506.07886"
 venue: "ICCV 2025"
 summary: "A unified design supporting multitasking across diverse egocentric perception and synthesis tasks, including gaze prediction, egocentric camera tracking, and monocular depth estimation, and also serves as a generative mo"

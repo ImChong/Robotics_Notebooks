@@ -2,7 +2,7 @@
 type: overview
 tags: [manipulation, category-hub, survey, video-pretraining, cross-embodiment]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 summary: "T-RO 5 篇精选 · 03 无标签视频预训练（1 篇）— 人类操作视频如何经图到图生成变成可迁移操作策略？"
 related:
   - ./tro-manip-5-papers-technology-map.md

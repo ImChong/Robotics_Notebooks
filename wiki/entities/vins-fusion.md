@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vio, visual-inertial, optimization, uav, hku]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 related:
   - ../entities/open-vins.md
   - ../entities/paper-co-calib-multi-fisheye-calibration.md

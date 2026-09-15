@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "CVPR 2025"
 summary: "A benchmark for evaluating complex egocentric visual reasoning, extending high-quality video data sources with challenging multi-step multimodal questions and spatiotemporally-dense human-annotated reasoning traces"
 related:

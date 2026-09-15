@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2504.19341"
 venue: "ICRA 2025 (Best Paper Nominee)"
 summary: "Robot finger integrating camera-based tactile sensing, acoustic sensing, and peripheral visual sensing; at least 20-fold increase in lifespan; tactile-diffusion policy significantly outperforms haptic-oblivious policies."

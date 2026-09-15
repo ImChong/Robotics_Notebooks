@@ -13,7 +13,7 @@ tags:
   - shanghai-innovation-institute
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2601.12790"
 related:
   - ../overview/paper-notebook-category-08-navigation.md

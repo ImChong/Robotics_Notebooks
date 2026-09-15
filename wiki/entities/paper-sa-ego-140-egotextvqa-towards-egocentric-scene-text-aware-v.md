@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "CVPR 2025"
 summary: "First egocentric video QA benchmark incorporating scene text information for procedural tasks"
 related:

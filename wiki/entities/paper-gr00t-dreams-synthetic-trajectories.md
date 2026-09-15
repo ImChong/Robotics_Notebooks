@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "synthetic-data", "world-model", "gr00t", "nvidia", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 venue: "HMI curated · 2025"
 summary: "GR00T-Dreams（HMI P068）：NVIDIA 合成轨迹 blueprint：少真实遥操 post-train Cosmos → 语言生成视频 dreams → 筛选 → IDM 标动作 → 与真数据共训 VLA。"
 related:

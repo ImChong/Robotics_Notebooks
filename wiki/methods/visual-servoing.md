@@ -2,7 +2,7 @@
 type: method
 tags: [perception, control, visual-servoing, manipulation, camera]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/tactile-sensing.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, in-hand-assembly, reinforcement-learning]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.10137"
 
 related:

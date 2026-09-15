@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, rotation, so3, deep-learning, motion-imitation, mimickit, protomotions]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 related:
   - ./se3-representation.md
   - ./lie-group-rigid-body-motions.md

@@ -9,7 +9,7 @@ tags:
   - hku
   - pengcheng
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.26578"
 related:
   - ../methods/vla.md

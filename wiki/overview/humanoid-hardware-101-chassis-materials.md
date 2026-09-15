@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, chassis, materials, category-hub]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 summary: "Humanoid Hardware 101 · 01 机身与材料 — 按载荷路径选材：铝合金承力骨架、钢耐磨、镁/钛减重、复材肢段、高分子外壳。"
 related:
   - ./humanoid-hardware-101-technology-map.md

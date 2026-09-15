@@ -2,7 +2,7 @@
 type: concept
 tags: [vqa, 3d-scene-understanding, vlm, spatial-reasoning, embodied-ai]
 summary: "3D 空间 VQA 要求模型根据多视图或视频观测回答关于物体几何关系、距离、方位与房间尺度等问题，是检验视觉–语言模型空间推理能力的关键任务。"
-updated: 2026-08-02
+updated: 2026-09-15
 status: complete
 related:
   - ../entities/sceneverse-pp.md

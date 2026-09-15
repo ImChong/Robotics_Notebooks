@@ -7,7 +7,7 @@ tags:
   - statistics
   - iowa-state
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 arxiv: "2608.21572"
 code: https://github.com/ISUSAIL/Bet4Sim2Real-Certificate
 related:

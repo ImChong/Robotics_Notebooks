@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.14398"
 venue: "arXiv 2026"
 summary: "Builds physics‑based world models through executable simulation code, with a framework coordinating planning, code generation, visual review, and physics analysis agents."

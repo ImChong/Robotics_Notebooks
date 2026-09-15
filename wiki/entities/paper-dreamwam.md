@@ -13,7 +13,7 @@ tags:
   - whu
   - horizon
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 arxiv: "2608.04996"
 code: "https://github.com/hustvl/DreamWAM"
 related:

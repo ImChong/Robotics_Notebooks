@@ -19,7 +19,7 @@ tags:
     sun254667-wm,
   ]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2607.06401"
 venue: "arXiv 2026"
 summary: "上海人工智能实验室 perspective：世界模型是有限算力下对物理状态转移的压缩；在 Fei-Fei 渲染/模拟/规划功能轴上补观测级/潜空间/3D 架构轴；WAM 不是第四列；倒金字塔数据与三阶段路线。Awesome Surveys 第 532 条升格。"

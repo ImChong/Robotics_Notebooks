@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, active-learning, confidence, tsinghua]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.25572"
 code: https://github.com/ConfAL-WM/ConfAL-WM
 related:

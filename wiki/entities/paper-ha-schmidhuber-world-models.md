@@ -8,7 +8,7 @@ tags:
   - vae
   - google
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "1803.10122"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md

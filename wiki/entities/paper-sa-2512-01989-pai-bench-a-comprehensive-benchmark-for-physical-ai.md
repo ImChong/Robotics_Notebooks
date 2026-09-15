@@ -11,7 +11,7 @@ tags:
   - georgia-tech
   - cmu
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2512.01989"
 venue: "CVPR 2026 Oral"
 code: https://github.com/SHI-Labs/physical-ai-bench

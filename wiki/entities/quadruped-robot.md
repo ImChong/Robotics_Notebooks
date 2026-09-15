@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 related:
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./humanoid-robot.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.00881"
 venue: "arXiv 2026"
 summary: "A framework maintaining spatial consistency through multimodal egocentric evidence with three core components: Multi-Perspective Spatial Mapping, Tool-Guided Egocentric Reasoning, and Cognitive-Map Distillation"

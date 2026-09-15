@@ -2,7 +2,7 @@
 type: method
 tags: [character-animation, table-tennis, hierarchical-rl, ase, vr, multi-agent, mode-collapse]
 status: complete
-updated: 2026-06-12
+updated: 2026-09-15
 related:
   - ../entities/smplolympics.md
   - ./ase.md

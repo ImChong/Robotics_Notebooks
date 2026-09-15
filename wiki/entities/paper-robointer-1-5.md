@@ -13,7 +13,7 @@ tags:
   - buaa
   - shanghai-ai-lab
 status: complete
-updated: 2026-07-23
+updated: 2026-09-15
 arxiv: "2607.18709"
 related:
   - ../methods/vla.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-evaluation, real-to-sim, vlm, vla, nju, tongji, tsinghua]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.03276"
 related:
   - ../methods/vla.md

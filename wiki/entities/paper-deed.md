@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, post-training, recap, retail, unitree-g1, gr00t, hive-robots, dtu]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2607.20345"
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md

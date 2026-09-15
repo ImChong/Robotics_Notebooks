@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.11291"
 venue: "arXiv 2026"
 summary: "Robotic task and motion planning guided by a hierarchical world model."

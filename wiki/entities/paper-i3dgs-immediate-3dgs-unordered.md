@@ -11,7 +11,7 @@ tags:
   - mapping
   - scene-reconstruction
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2607.14481"
 venue: "SIGGRAPH Conference Papers 2026"
 code: https://github.com/graphdeco-inria/i3dgs

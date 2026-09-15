@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2308.07123"
 venue: "IJCV 2024"
 summary: "Co-authored by authoritative scholars in the field, combined with future scenarios of wearable computing, sorting out research shortcomings and directions to be broken through"

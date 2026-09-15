@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, instruction-generalization, libero, sjtu]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.02497"
 code: https://github.com/AutoLab-SAI-SJTU/GSR-ParaVLA
 related:

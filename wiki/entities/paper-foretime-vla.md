@@ -13,7 +13,7 @@ tags:
   - hit
   - deep-robotics
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 arxiv: "2608.20735"
 related:
   - ./paper-pi05-open-world-vla.md

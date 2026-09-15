@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "wbc", "hierarchical-control", "classic", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 venue: "HMI curated · 2005"
 summary: "Whole-Body Behaviors（HMI P002）：把全身行为拆成有严格优先级的行为基元：高优先级先占用自由度，低优先级只在动态一致零空间内工作。"
 related:

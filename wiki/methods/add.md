@@ -2,7 +2,7 @@
 type: method
 tags: [gan, discriminator, artifacts, xbpeng, paper, humanoid, amp, motion-prior, adversarial-imitation, sfu, nvidia, sony, siggraph]
 status: complete
-updated: 2026-08-08
+updated: 2026-09-15
 venue: SIGGRAPH 2024
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md

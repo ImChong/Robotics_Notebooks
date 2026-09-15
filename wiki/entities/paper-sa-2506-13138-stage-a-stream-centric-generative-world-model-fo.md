@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.13138"
 venue: "arXiv 2025"
 summary: "Stream-centric generative world model for long-horizon driving-scene simulation."

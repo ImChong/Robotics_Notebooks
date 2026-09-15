@@ -10,7 +10,7 @@ tags:
   - privileged-training
   - parkour
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2309.14341"
 venue: "ICRA 2024"
 related:

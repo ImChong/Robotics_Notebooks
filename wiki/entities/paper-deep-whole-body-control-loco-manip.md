@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "loco-manipulation", "rl", "quadruped", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2210.10044"
 venue: "HMI curated · 2022"
 summary: "Deep Whole-Body Control（HMI P042）：用 Advantage Mixing 平衡移动与操作梯度，并配合在线适应估计环境变化，使统一策略在共享身体上协调两类行为。"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "NeurIPS 2025"
 summary: "Converts offline video LLMs into proactive streaming assistants without retraining"
 related:

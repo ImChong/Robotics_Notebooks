@@ -13,7 +13,7 @@ tags:
   - dcc
   - 3d-gen-studio
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 related:
   - ../concepts/text-to-cad.md
   - ./blender.md

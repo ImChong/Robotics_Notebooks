@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, loco-manipulation, teleoperation, robot-free, umi, data-pipeline, diffusion-policy, spatial-keypoint-retargeting, whole-body-control, baai, unitree-g1]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2606.27239"
 venue: "2026 · arXiv"
 related:

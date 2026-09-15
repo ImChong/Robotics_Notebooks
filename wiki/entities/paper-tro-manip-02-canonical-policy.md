@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, tro-manip-survey, se3-equivariant, point-cloud, zju, purdue]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 arxiv: "2505.18474"
 summary: "点云观测映射到规范化 3D 坐标系，使策略学习满足 SE(3) 等变；仿真 +18.0%、真机 +39.7%。"
 related:

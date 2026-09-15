@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, iit, inail, generative-bionics, university-of-manchester, humanoid, hardware-codesign, ergonomics, whole-body-control, physical-hri, locomotion, icub]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 doi: "10.1038/s42256-026-01272-2"
 venue: "Nature Machine Intelligence"
 code: "https://github.com/ami-iit/paper_sartore_2025_ergocub_nature_machine_intelligence"

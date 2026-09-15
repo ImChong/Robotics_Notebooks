@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, exocentric, ego-survey, category-hub, memory, video-generation]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 summary: "Ego 9 篇专题 · 04 Ego+Exo（2 篇）— 第一视角有遮挡与空间盲区；EgoExoMem 与 E³C 指向 Ego+Exo+3D 环境记忆的长期数据与生成形态。"
 related:
   - ./ego-9-papers-technology-map.md

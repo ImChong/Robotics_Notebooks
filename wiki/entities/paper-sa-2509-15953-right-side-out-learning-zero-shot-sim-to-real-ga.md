@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2509.15953"
 venue: "arXiv 2025"
 summary: "A zero-shot sim-to-real framework that solves garment reversal by exploiting task structures through task decomposition and high-fidelity simulation, enabling highly dynamic, severely occluded tasks without laborious hum"

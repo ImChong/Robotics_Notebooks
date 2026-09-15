@@ -14,7 +14,7 @@ tags:
   - tsinghua
   - shanghai-pil
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2607.02332"
 venue: "arXiv"
 code: https://github.com/Axellwppr/motion_tracking

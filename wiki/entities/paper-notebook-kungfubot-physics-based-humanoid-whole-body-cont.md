@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, hit, shanghaitech, neurips-2025]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2506.12851"
 code: https://github.com/TeleHuman/PBHC
 venue: "NeurIPS 2025"

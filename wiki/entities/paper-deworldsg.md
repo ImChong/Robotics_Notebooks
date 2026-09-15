@@ -12,7 +12,7 @@ tags:
   - kaist
   - tum
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2607.00889"
 venue: "ECCV 2026"
 related:

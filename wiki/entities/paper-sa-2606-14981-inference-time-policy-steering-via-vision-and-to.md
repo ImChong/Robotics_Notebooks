@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.14981"
 venue: "arXiv 2026"
 summary: "Visuo-tactile inference-time steering framework formulating multimodal guidance as bi-level optimization; improves overall success by 51% over base policy."

@@ -4,7 +4,7 @@ type: entity
 tags: [biped, cassie, reinforcement-learning, sim2real, pd-control, domain-randomization, berkeley]
 status: stable
 summary: "Cassie 双足：双历史 I/O 架构 + 任务随机化，统一多种动态技能；文中给出策略/PD 分频与 PD 增益缩放随机化等工程细节。"
-updated: 2026-05-22
+updated: 2026-09-15
 arxiv: "2401.16889"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md

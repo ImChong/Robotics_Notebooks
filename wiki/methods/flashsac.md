@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, locomotion, sim2real, humanoid, kaist, darmstadt, dfki]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2604.04539"
 code: https://github.com/Holiday-Robot/FlashSAC
 summary: "FlashSAC 在 SAC 上引入 scaling 式少更新+大模型+高吞吐，并联合权重/特征/梯度范数约束与统一熵+噪声重复探索，使高维机器人 off-policy RL 在墙钟与渐近性能上同时超越 PPO，G1 盲行走 sim-to-real 可从小时级压到分钟级。"

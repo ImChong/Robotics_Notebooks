@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, spatial-intelligence, 3dgs, generative-ai, marble, world-labs, real2sim]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./world-labs.md
   - ./atlas-world-model.md

@@ -11,7 +11,7 @@ tags:
   - unitree-g1
   - princeton
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.27406"
 code: https://github.com/omni-CLAP/clap
 related:

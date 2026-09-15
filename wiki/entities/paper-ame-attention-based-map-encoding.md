@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier, science-robotics]
 status: stable
 summary: "AME（AME-1，Science Robotics 10(105) eadv3604）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；官方无训练代码，Zenodo 数据 + SII-FUSC 社区 G1 复现。"
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2506.09588"
 doi: "10.1126/scirobotics.adv3604"
 venue: "Science Robotics 2025"

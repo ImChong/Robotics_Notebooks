@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, multi-view-tracking, 3d-point-tracking, google-deepmind]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.01899"
 related:
   - ../tasks/manipulation.md

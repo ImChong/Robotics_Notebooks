@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, humanoid, stereo-vision, proprioception, loco-manipulation, manipulation, long-horizon, flow-matching, hit, honor]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.17453"
 venue: "arXiv 2026"
 related:

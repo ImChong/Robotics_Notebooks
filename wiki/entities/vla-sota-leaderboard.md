@@ -2,7 +2,7 @@
 type: entity
 tags: [leaderboard, benchmark, vla, dexterous-manipulation, open-source, sjtu, evomind, meta-world, libero, calvin, robotwin]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md

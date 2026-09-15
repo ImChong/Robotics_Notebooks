@@ -6,7 +6,7 @@ tags:
   - hierarchical
   - long-horizon
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 summary: "移动-抓取-放置等长流程任务的层次化 RL。"
 related:
   - ../overview/robot-control-paradigm-rl-intelligent-control.md

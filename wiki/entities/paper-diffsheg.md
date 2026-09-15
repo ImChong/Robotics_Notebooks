@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, diffusion, co-speech, gesture, expression, talking-head, digital-human, cvpr-2024, hkust, idea]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2401.04747"
 venue: "CVPR 2024"
 code: https://github.com/JeremyCJM/DiffSHEG

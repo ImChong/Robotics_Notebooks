@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.28475"
 venue: "arXiv 2026"
 summary: "GPU visuotactile simulation for online RL and zero-shot real-world deployment."

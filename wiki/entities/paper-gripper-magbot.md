@@ -6,7 +6,7 @@ tags:
   - manipulation
   - hardware
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.12883"
 code: https://ubi-coro.github.io/MagBotSim/magbots.html
 related:

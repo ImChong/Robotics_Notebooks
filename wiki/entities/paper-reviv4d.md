@@ -12,7 +12,7 @@ tags:
   - microsoft
   - tudelft
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2607.17790"
 venue: "ECCV 2026"
 related:

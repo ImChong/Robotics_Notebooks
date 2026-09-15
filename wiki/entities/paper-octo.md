@@ -9,7 +9,7 @@ tags:
   - stanford
   - google
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2405.12213"
 code: https://github.com/octo-models/octo
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, continual-learning, moe, skill-adaptation]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.19589"
 code: https://github.com/Jiaqi-Wangx/OrthoSkillVLA
 related:

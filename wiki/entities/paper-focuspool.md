@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'visuomotor', 'imitation-learning', 'manipulation']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08408"
 venue: "CoRL 2026（预印本）"
 code: https://github.com/RuiyuWANG/FocusPool

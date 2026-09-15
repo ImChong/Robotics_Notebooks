@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2604.01966"
 venue: "CVPR 2026"
 summary: "Large-scale personalized first-person video dataset for long-form QA"

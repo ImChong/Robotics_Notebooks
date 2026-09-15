@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2412.21080"
 venue: "ACM 2025"
 summary: "Lightweight edge-deployable Ego-VLM for procedural assistant scenarios"

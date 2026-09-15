@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, semantic-mapping, open-vocabulary, sam, point-cloud, offline, zju, tencent]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md

@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, contact-rich, world-models, social-navigation, technology-map]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 related:
   - ../entities/paper-tf-art-tactile-force-survey.md
   - ../entities/paper-autopso.md

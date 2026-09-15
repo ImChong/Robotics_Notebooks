@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, trajectory-optimization, se3, floating-base, quadruped, humanoid, patras, athena-rc]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2508.11520"
 code: https://github.com/upatras-lar/se3_trajopt
 related:

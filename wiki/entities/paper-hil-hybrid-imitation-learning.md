@@ -17,7 +17,7 @@ institutions:
   - nvidia
   - sfu
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2505.12619"
 venue: "ACM Transactions on Graphics 2026"
 related:

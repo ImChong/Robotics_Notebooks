@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, rl, post-training, critic, world-model, jepa, manipulation, tongji, shanghai-innovation-institute, fudan]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2607.29613"
 code: https://github.com/sylvestf/WCM
 related:

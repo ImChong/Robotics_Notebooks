@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "IEEE 2025"
 summary: "Proposes a Dual-path Decoupling-Distillation Network for more effective dynamic fusion of modal information and knowledge transfer. Explicitly separates shared and private features of modalities through a dual-path decou"
 related:

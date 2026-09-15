@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, eth]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2605.18734"
 code: https://github.com/RuipingL/EgoExoMem
 summary: "同步 ego-exo 视频上的跨视角记忆推理；提醒 Ego 需 Exo 补全空间结构。"

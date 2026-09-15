@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, manipulation, foundation-models, vla, planning, imitation-learning, hkust-gz, westlake, pku, baai, xjtu, sydney, zju, casia]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2512.22983"
 venue: "arXiv 2025"
 related:

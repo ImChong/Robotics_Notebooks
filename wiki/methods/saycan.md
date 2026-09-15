@@ -2,7 +2,7 @@
 type: method
 tags: [llm, robotics, affordance, planning, language]
 status: complete
-updated: 2026-06-23
+updated: 2026-09-15
 related:
   - ./vla.md
   - ../tasks/manipulation.md

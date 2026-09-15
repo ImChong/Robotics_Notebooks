@@ -11,7 +11,7 @@ tags:
   - humanoid-paper-notebooks
   - ucla
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2512.09431"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

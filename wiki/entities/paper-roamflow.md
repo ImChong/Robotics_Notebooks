@@ -14,7 +14,7 @@ tags:
   - jetson
   - ntu
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2606.29934"
 venue: "arXiv"
 summary: "RoamFlow（NTU，arXiv:2606.29934）：MeanFlow 一步轨迹生成 + IL→RL 任务对齐 + 轨迹评估器；Habitat Gibson SR 68.7%/19.6 ms，Go2+Orin NX 真机 SR 1.00；确认未开源。"

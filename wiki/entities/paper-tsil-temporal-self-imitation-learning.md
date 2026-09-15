@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, reinforcement-learning, imitation-learning, manipulation, ppo, self-imitation, long-horizon, meta-world, isaac-gym, reward-shaping, duke, repo]
 status: complete
-updated: 2026-07-01
+updated: 2026-09-15
 arxiv: "2606.19752"
 related:
   - ../methods/reinforcement-learning.md

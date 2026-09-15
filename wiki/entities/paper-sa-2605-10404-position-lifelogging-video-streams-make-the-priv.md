@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.10404"
 venue: "arXiv 2026"
 summary: "Systematically analyses privacy risks along the entire pipeline of perception, transmission, and storage in life‑logging video streams, pointing out the limitations of existing single‑point privacy protection methods in"

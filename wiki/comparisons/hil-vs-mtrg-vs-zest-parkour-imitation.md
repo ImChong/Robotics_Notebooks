@@ -2,7 +2,7 @@
 type: comparison
 tags: [humanoid, parkour, imitation-learning, motion-tracking, amp, goal-conditioned, unitree-g1, character-animation]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ../methods/hil-hybrid-imitation-learning.md
   - ../entities/paper-hil-hybrid-imitation-learning.md

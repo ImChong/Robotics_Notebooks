@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'quadruped', 'loco-manipulation', 'rl', 'multi-critic', 'eth', 'nvidia']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2608.28140"
 summary: "Pisa/ETH/NVIDIA（arXiv:2608.28140）：多 Critic PPO + 抓取算法接触候选 + 探索权重衰减；箱推/运椅>90%；ALMA 真机椅运；项目页无代码。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [neoteai, fudan, tactile, visuo-tactile, vtla, world-action-models, contact-rich, foundation-model, sensor, dataset]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 related:
   - ./paper-n0-foundation.md
   - ./paper-n0-vtla.md

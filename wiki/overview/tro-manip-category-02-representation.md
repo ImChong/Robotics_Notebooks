@@ -2,7 +2,7 @@
 type: overview
 tags: [manipulation, category-hub, survey, representation, se3-equivariant, dexterous-manipulation]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 summary: "T-RO 5 篇精选 · 02 三维与手物表征（2 篇）— SE(3) 等变规范化与 DexRep 手物几何如何提升操作 OOD 泛化？"
 related:
   - ./tro-manip-5-papers-technology-map.md

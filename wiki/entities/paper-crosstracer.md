@@ -17,7 +17,7 @@ tags:
   - soochow
   - innovation-investment-research-institute
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.06688"
 summary: "CrossTracer（鹏城实验室/南科大等，arXiv:2608.06688）：用归一化像素轨迹拆开 VLA 语义提案与本体可通行残差。VL-Tracer（OmniVLA+LoRA）出无本体轨迹，CE-Adapter 按机器人 ID 改航点；CE-RRT* 从全景分割自动造监督。NaviTrace 总分 45.68（相对 Gemini-2.5-Pro +28.1%）；真机相对 OmniVLA 轮式 SR 0.40→0.65、腿式 0.45→0.70。截至入库日项目页无代码仓，宣称开源/待核实。"
 related:

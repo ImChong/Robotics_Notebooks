@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, underwater-robotics, image-enhancement, frequency-transformer, auv]
 status: complete
-updated: 2026-08-21
+updated: 2026-09-15
 arxiv: "2608.18662"
 related:
   - ../tasks/autonomous-exploration.md

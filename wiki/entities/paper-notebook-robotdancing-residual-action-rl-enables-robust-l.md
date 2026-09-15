@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, motion-tracking, residual-learning, residual-action, ppo, unitree-g1, sim2real, long-horizon, tum, baai, tsinghua, nju, ra-l]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2509.20717"
 venue: "IEEE RA-L 2026 (accepted); arXiv v2 2026-08-03"
 related:

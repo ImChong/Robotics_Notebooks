@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "Frontiers in Robotics and AI 2025"
 summary: "Comprehensive review of multimodal perception integrating vision, language, and tactile information for decision-making in robotics."
 related:

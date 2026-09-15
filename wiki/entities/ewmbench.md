@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, agibot]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md

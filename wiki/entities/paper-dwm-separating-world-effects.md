@@ -9,7 +9,7 @@ tags:
   - action-invariant
   - pku
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 arxiv: "2607.18715"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md

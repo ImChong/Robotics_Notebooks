@@ -13,7 +13,7 @@ tags:
   - best-paper
   - imperial-college
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.07557"
 venue: "ECCV 2026 Best Paper · Long Oral"
 code: https://github.com/circle-group/hktex

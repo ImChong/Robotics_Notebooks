@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.20904"
 venue: "arXiv 2026"
 summary: "A JEPA-based Future Action Anticipation method achieving first place in the EgoVis 2026 EK-100 Action Anticipation Challenge"

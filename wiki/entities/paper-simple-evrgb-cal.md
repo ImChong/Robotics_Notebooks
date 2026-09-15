@@ -8,7 +8,7 @@ tags:
   - perception
   - heilbronn
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2608.22965"
 code: https://github.com/nhessenthaler/simple-evrgb-cal
 venue: "BMVC 2026"

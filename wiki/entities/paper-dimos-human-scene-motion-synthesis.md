@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, human-scene-interaction, character-animation, reinforcement-learning, motion-synthesis, iccv2023, eth, google]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2305.12411"
 venue: "2023 · ICCV"
 code: https://github.com/zkf1997/DIMOS

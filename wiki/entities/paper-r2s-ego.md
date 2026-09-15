@@ -12,7 +12,7 @@ tags:
   - xpeng
   - polyu
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.06827"
 related:
   - ../concepts/sim2real.md

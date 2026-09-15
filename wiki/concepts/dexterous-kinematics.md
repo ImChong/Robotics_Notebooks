@@ -2,7 +2,7 @@
 type: concept
 tags: [dexterity, kinematics, robot-hand, math, manipulation]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-parallel-joint-kinematics.md

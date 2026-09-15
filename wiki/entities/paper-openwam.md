@@ -16,7 +16,7 @@ tags:
   - cuhk
   - sjtu
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.07398"
 code: https://github.com/OpenWAM-Official/OpenWAM
 related:

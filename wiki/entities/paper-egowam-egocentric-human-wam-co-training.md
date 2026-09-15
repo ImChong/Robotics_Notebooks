@@ -12,7 +12,7 @@ tags:
   - georgia-tech
 status: complete
 venue: curated
-updated: 2026-08-26
+updated: 2026-09-15
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md

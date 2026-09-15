@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'in-hand-manipulation', 'reconstruction', 'active-perception']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08493"
 venue: "arXiv 2026"
 related:

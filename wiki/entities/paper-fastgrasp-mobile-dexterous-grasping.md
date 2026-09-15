@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mobile-manipulation, dexterous-grasping, reinforcement-learning, tactile-sensing, whole-body-control, sim2real, shanghaitech, leap-hand]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2604.12879"
 related:
   - ../tasks/manipulation.md

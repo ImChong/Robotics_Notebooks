@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-lab, locomotion, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ./unitree.md
   - ./unitree-rl-gym.md

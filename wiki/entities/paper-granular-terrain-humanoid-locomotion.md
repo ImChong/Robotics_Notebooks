@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, granular-terrain, teacher-student, georgia-tech]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.10286"
 related:
   - ../tasks/humanoid-locomotion.md

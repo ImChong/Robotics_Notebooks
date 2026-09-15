@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.20521"
 venue: "arXiv 2026"
 summary: "Systematic study comparing egocentric human video and teleoperated real-robot trajectories as pretraining data sources. Models pretrained on egocentric data achieve 24% lower validation loss, and 52.5% and 90% higher suc"

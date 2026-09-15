@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, in-context-learning, manipulation, usyd, pku]
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.11671"
 venue: "arXiv 2026"
 related:

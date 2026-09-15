@@ -14,7 +14,7 @@ tags:
   - sony
   - booster
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2512.06571"
 code: https://github.com/Daffan/humanoid-soccer
 related:

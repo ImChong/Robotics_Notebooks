@@ -2,7 +2,7 @@
 type: entity
 tags: [reinforcement-learning, theory, education, scaling-laws, model-based-rl, alberta]
 status: complete
-updated: 2026-07-14
+updated: 2026-09-15
 related:
   - ./sutton-barto-rl-book.md
   - ../concepts/bitter-lesson.md

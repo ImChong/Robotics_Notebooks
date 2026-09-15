@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2411.07690"
 venue: "arXiv 2024"
 summary: "Survey on safety challenges and risks of world models."

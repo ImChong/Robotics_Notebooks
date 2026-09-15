@@ -12,7 +12,7 @@ tags:
   - shanghai-innovation-institute
   - noematrix
 status: complete
-updated: 2026-08-02
+updated: 2026-09-15
 arxiv: "2607.28596"
 summary: "FA-RDP（arXiv:2607.28596，SJTU / 创智 / Noematrix）：多模态指示器在接触前用低频多步扩散、接触后切 30 Hz 流形一致性蒸馏一步采样；Flexiv 三任务真机平均 81.7%；截至 2026-08-02 训练代码 coming soon。"
 related:

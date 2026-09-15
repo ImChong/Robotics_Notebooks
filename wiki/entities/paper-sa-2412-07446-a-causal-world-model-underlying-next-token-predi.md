@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2412.07446"
 venue: "arXiv 2024"
 summary: "Explores the causal world model underlying next-token prediction in GPT."

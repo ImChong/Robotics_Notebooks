@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-09-15
 summary: "人形 Loco-Manip 161 篇 · 10 从人类第一视角视频学习（1 篇）— 人类 egocentric 视频学习操作经验和行为先验。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

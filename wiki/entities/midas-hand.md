@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, direct-drive, tactile-sensing, teleoperation, ucla]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md

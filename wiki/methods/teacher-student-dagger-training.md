@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, privileged-training, dagger, teacher-student, sim2real]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 summary: "飞书 Know-How 模块：Teacher-Student 用仿真特权信息训练教师，再蒸馏或 DAgger 聚合数据训练可部署学生，缓解 BC 分布偏移与 sim2real 观测差距。"
 related:
   - ./dagger.md

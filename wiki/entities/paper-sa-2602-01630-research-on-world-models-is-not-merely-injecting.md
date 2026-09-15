@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.01630"
 venue: "arXiv 2026"
 summary: "Argues that robust world models should be a normative framework integrating interaction, perception, reasoning, and spatial representation."

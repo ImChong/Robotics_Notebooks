@@ -5,7 +5,7 @@ status: stub
 summary: "CLF 负责稳定性（驱动系统到达目标），CBF 负责安全性（阻止系统进入危险区域），两者互补，联合构成 CLF-CBF-QP 实时安全控制框架。"
 sources:
   - ../../sources/papers/optimal_control_theory.md
-updated: 2026-08-01
+updated: 2026-09-15
 related:
   - ../concepts/control-barrier-function.md
   - ../formalizations/control-lyapunov-function.md

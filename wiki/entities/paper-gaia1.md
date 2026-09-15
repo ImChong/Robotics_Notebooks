@@ -8,7 +8,7 @@ tags:
   - video
   - wayve
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "Technical Report"
 arxiv: "2309.17080"
 related:

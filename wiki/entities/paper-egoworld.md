@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, egocentric, exocentric, view-translation, diffusion, latent-diffusion, hand-pose, point-cloud, hoi, image-generation, iclr, lg-electronics, kaist, oxford]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 date: 2026-07-24
 arxiv: "2506.17896"
 venue: "ICLR 2026"

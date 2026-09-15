@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, tro-manip-survey, survey, generative-models, diffusion-policy, fair, nvidia]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 arxiv: "2408.04380"
 summary: "系统梳理 EBM/扩散/动作值图/GAN 及 VAE→流匹配在 LfD 中的应用、OOD 泛化设计与落地局限。"
 related:

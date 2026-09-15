@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, perceptive-locomotion, unitree-g1, sim2real, zju, nus]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.08511"
 related:
   - ../concepts/whole-body-tracking-pipeline.md

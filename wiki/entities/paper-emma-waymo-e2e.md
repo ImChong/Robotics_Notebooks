@@ -9,7 +9,7 @@ tags:
   - waymo
   - google
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 venue: "TMLR"
 arxiv: "2410.23262"
 related:

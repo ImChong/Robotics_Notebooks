@@ -14,7 +14,7 @@ tags:
   - umich
   - berkeley
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 arxiv: "2607.12114"
 related:
   - ../tasks/humanoid-locomotion.md

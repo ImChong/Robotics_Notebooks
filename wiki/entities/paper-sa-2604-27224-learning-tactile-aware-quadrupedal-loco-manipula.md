@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2604.27224"
 venue: "arXiv 2026"
 summary: "Hierarchical policy with real-world human demonstrations for tactile-conditioned visuotactile high-level policy; large-scale RL in simulation for tactile-aware whole-body control; zero-shot transfer improves performance"

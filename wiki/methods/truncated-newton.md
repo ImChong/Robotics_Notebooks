@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, truncated-newton, newton-cg, numerical-methods, large-scale]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "截断牛顿法用共轭梯度近似求解 Newton 方程，在 Hessian-vector product 可得时适合大规模稀疏 NLP，是精确牛顿与拟牛顿之间的折中。"
 related:
   - ./newtons-method.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, face-reconstruction, 4d-tracking, depth-estimation, feed-forward, transformer, tum, huawei, canonical-coordinates]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2604.19702"
 related:
   - ../concepts/visual-representation-for-policy.md

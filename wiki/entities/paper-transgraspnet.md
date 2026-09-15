@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, transparent-object, grasping, depth-completion, laboratory-automation, manipulation, graspnet, pku, sjtu, sustech]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2607.29567"
 venue: "2026 · arXiv"
 related:

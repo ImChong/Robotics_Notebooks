@@ -9,7 +9,7 @@ tags:
   - full-body-manipulation
   - 1x-technologies
 status: complete
-updated: 2026-07-26
+updated: 2026-09-15
 venue: "1X Technologies Technical Progress Report 2025"
 code: https://github.com/1x-technologies/1xgpt
 related:

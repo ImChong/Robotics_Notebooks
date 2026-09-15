@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, representation-learning, dinov2]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2607.01987"
 venue: "ECCV 2026"
 code: https://github.com/Zhou-Weichen/Geosubprobe

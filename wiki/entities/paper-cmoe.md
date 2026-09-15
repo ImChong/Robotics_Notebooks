@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, elevation-map, mixture-of-experts, contrastive-learning, single-stage-rl, unitree-g1, sim2real, fudan, icra]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 arxiv: "2603.03067"
 venue: "ICRA 2026"
 code: https://github.com/Hoshi-No-Ai/CMoE

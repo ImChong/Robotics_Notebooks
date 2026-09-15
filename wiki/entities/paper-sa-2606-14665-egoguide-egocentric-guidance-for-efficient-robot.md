@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.14665"
 venue: "arXiv 2026"
 summary: "A collection interface recording synchronized wrist and head/egocentric observations with online visual-geometric data quality guidance. Introduces a Gated Egocentric Residual Policy for robust learning"

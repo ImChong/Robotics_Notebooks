@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "AAAI 2026"
 summary: "Constructs the Ego-ExoClip pre-training dataset (1.1 million synchronized egocentric-exocentric clip-text pairs), proposing a three-stage progressive mapping learning pipeline"
 related:

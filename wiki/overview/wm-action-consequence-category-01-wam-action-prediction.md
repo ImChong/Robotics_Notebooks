@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 summary: "世界模型动作后果专题 · 01 — WAM 直接执行、修正基础 VLA 还是部署前筛选？并链 DreamWAM / FACT / Flex-π / RTCF 邻近坐标。"
 related:
   - ./robot-world-models-action-consequence-technology-map.md

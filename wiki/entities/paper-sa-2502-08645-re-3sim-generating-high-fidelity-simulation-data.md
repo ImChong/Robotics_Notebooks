@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2502.08645"
 venue: "arXiv 2025"
 summary: "A 3D-photorealistic real-to-sim system addressing geometric and visual sim-to-real gaps, employing advanced 3D reconstruction and neural rendering techniques to faithfully recreate real-world scenarios"

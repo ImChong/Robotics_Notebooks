@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, humanoid-locomotion, unitree-g1, physisink, awesome-bfm-papers]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 summary: "DAVIAN/KAIST 物理可信人形 locomotion 集：PhySINK 重定向后的 G1/H1-2 轨迹约 73 h；Hugging Face 一键下载，ProtoMotions 原生支持，真机 G1 tracking 优于 AMASS 同管线。"
 related:
   - ../concepts/behavior-foundation-model.md

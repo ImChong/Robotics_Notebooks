@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-planning, inverse-kinematics, trajectory-optimization]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.10905"
 code: https://github.com/cohnt/constraint-manifold-charts-ift
 related:

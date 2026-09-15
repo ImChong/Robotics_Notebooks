@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand, wuji-robotics]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ./humanoid-robot.md
   - ./allegro-hand.md

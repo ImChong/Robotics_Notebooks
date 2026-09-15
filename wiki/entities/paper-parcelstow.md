@@ -9,7 +9,7 @@ tags:
   - unitree-g1
   - umd
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2609.01453"
 code: https://github.com/coenwerem/parcelstow
 related:

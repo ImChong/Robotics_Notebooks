@@ -13,7 +13,7 @@ tags:
   - riemann-dynamics
   - kunlun-wanwei
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 venue: "Riemann Dynamics Technical Report 2026"
 related:
   - ../concepts/world-action-models.md

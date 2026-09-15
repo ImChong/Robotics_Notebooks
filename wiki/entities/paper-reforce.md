@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'dexterous-manipulation', 'retargeting', 'force-control', 'teleoperation']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.15560"
 related:
   - ../concepts/motion-retargeting-pipeline.md

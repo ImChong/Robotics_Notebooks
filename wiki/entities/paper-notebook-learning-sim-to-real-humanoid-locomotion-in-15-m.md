@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2512.01996"
 related:
   - ../methods/flashsac.md

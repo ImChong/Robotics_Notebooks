@@ -10,7 +10,7 @@ tags:
   - latent-interface
   - streaming-instruction
 status: complete
-updated: 2026-05-28
+updated: 2026-09-15
 arxiv: "2605.14417"
 code: https://github.com/Hxxxz0/DAJI
 related:

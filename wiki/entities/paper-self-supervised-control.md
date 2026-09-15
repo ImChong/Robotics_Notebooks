@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, continual-learning, self-supervision, uiuc]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2608.19490"
 related:
   - ../methods/vla.md

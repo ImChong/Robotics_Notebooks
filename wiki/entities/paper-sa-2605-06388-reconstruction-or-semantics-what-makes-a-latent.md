@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.06388"
 venue: "arXiv 2025"
 summary: "Investigates what makes a latent space useful for robotic world models."

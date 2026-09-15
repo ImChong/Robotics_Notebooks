@@ -7,7 +7,7 @@ tags:
   - diffusion
   - manipulation
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.13053"
 code: https://github.com/AIDASLab/Dynin-Robotics
 related:

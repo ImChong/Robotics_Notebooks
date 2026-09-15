@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.19201"
 venue: "arXiv 2026"
 summary: "Large-scale OmniViTac dataset with 21,000+ tasks and 86 objects; world-model-based framework with self-supervised tactile encoder, two-stream visuo-tactile world model, contact-aware fusion policy, and 60Hz reflexive con"

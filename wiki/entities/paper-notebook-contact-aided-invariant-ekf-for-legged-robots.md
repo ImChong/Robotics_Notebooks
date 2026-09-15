@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, state-estimation, inekf, legged, lie-group, hmi-papers, humanoid-paper-notebooks]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "1805.10410"
 related:
   - ../concepts/state-estimation.md

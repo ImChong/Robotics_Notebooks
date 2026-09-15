@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.13335"
 venue: "arXiv 2026"
 summary: "Turns egocentric cooking videos into executable symbolic worlds governed by graph-transition rules. Forces agents to update memory and replan without observing the true world state"

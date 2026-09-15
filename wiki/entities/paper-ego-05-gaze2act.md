@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2605.30282"
 code: https://zuo-kuangji.github.io/Gaze2Act/
 summary: "将人类第一视角 gaze 映射到机器人视角，作为 VLA 条件输入，补语言难以精确描述的空间意图。"

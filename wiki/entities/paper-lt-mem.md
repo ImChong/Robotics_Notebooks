@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, lifelong-scene-understanding, spatio-temporal-memory, slam, vqa]
 status: complete
-updated: 2026-08-21
+updated: 2026-09-15
 arxiv: "2608.19059"
 related:
   - ./paper-spatial-memory-agent.md

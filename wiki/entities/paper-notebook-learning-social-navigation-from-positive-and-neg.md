@@ -15,7 +15,7 @@ tags:
   - queens-university
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.12215"
 related:
   - ../overview/paper-notebook-category-08-navigation.md

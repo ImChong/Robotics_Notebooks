@@ -15,7 +15,7 @@ sources:
   - ../../sources/courses/welch_bishop_kalman_filter.md
   - ../../sources/courses/mit_underactuated_kalman_lqr.md
 summary: "线性卡尔曼滤波（KF）：线性高斯系统下的最优递推状态估计"
-updated: 2026-09-05
+updated: 2026-09-15
 ---
 
 # Kalman Filter (KF)

@@ -9,7 +9,7 @@ tags:
   - offline-rl
   - uiuc
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2605.09999"
 venue: RSS 2026
 code: https://github.com/gokulp01/Muninn

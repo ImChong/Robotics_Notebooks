@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2404.09933"
 venue: "arXiv 2024"
 summary: "Defines a new task of HOI referral in egocentric scenarios, accompanied by the HOI-QA evaluation benchmark"

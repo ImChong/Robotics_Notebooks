@@ -9,7 +9,7 @@ tags:
   - model-based-rl
   - tum
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2607.05966"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md

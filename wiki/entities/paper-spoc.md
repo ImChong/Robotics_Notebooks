@@ -8,7 +8,7 @@ tags:
   - manipulation
   - ai2
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2312.02976"
 code: https://github.com/allenai/spoc-robot-training
 related:

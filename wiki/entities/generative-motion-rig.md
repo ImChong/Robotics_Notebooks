@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, generative-animation, motion-authoring, blender, dcc, disney, eth, siggraph, keyframing]
 status: complete
-updated: 2026-08-21
+updated: 2026-09-15
 venue: SIGGRAPH Talks 2026
 doi: "10.1145/3799818.3812088"
 related:

@@ -11,7 +11,7 @@ tags:
   - bjtu
   - ace-robotics
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.04196"
 code: https://github.com/KangLiao929/Puffin/tree/main/Puffin-World
 related:

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, wheel-legged, quadruped, multi-skill, blind-locomotion, constrained-rl, p3o, sim2real, unitree-go2w, isaac-lab, unitree]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2605.13058"
 venue: ICRA 2026
 project: https://hyzenthlayer.github.io/mujica/

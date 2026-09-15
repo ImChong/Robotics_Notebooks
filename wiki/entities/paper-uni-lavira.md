@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vln, objectnav, eqa, aerial-vln, zero-shot, agentic, mllm, navigation, multi-embodiment, unitree-g1, nju, casia, buaa, bmw-nanjing, rochester]
 status: complete
-updated: 2026-08-16
+updated: 2026-09-15
 arxiv: "2605.27582"
 venue: "arXiv 2026"
 related:

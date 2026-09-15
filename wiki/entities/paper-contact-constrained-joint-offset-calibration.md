@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'humanoid', 'calibration', 'agibot', 'proprioception', 'contact']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2609.02306"
 summary: "WHU/AgiBot（arXiv:2609.02306）：双支撑脚间 SE(3) 变换离散度最小化标定 12 维偏置；Hessian 分析 pitch 轴耦合；A3 足高 RMS 4.26→2.20 mm；未开源。"
 related:

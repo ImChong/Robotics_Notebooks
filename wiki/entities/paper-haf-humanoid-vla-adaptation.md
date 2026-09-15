@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, humanoid, loco-manipulation, flow-matching, reinforcement-learning, post-training, behavior-cloning, whole-body-control, pku, x-humanoid, nankai, xjtu]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-15
 arxiv: "2608.16837"
 venue: "arXiv 2026"
 related:

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 

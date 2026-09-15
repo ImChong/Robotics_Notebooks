@@ -11,7 +11,7 @@ tags:
   - baai
   - casia
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.14284"
 code: https://github.com/Yuheng2000/PRM-as-a-Judge
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, trajectory-optimization, contact-planning, cem, se3, inria, patras, athena-rc]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 code: https://github.com/hucebot/ahmp
 related:
   - ./paper-se3-tangent-to.md

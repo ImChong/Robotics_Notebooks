@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.22683"
 venue: "CVPR 2026"
 summary: "First real consumer smart glasses benchmark collected across Ray-Ban Meta, Xiaomi Smart Glasses and Thunderbird V4 with diverse daily scenarios"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, physics-based-animation, human-object-interaction, imitation-learning, hierarchical-rl, basketball, isaac-gym, contact-graph, cvpr2025, hkust, unitree, pku, tsinghua, idea, tencent, cmu]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2408.15270"
 venue: "CVPR 2025 Highlight"
 code: https://github.com/wyhuai/SkillMimic

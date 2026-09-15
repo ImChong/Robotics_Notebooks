@@ -9,7 +9,7 @@ tags:
   - openvla
   - u-tokyo
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 arxiv: "2608.10824"
 related:
   - ../methods/vla.md

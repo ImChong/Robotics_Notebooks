@@ -7,7 +7,7 @@ tags:
   - manipulation
   - sim2real
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.12433"
 related:
   - ../concepts/sim2real.md

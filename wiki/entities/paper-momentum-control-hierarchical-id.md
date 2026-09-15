@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "wbc", "momentum-control", "inverse-dynamics", "humanoid", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 venue: "HMI curated · 2016"
 summary: "Momentum Control（HMI P004）：以质心线/角动量为高层平衡目标，用层级逆动力学在浮基动力学与接触约束内求加速度、接触力与力矩。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, safe-stop, reach-avoid, berkeley, cmu, stanford]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.02358"
 related:
   - ../tasks/humanoid-locomotion.md

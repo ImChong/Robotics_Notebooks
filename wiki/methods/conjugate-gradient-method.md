@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, conjugate-gradient, numerical-methods, linear-systems]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 related:
   - ./quasi-newton-bfgs.md
   - ../formalizations/quadratic-programming.md

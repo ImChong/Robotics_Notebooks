@@ -13,7 +13,7 @@ tags:
   - nus
   - zju
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2607.16806"
 summary: "SPARK-VLN（arXiv:2607.16806）：动态社会 VLN 快慢双系统——VILA-8B 逐 token 流出隐状态经 8-slot Bridge 实时条件化 rectified flow-matching 快规划器；配套 Idealized/Realistic 人中心基准；Realistic SR 34.8%、相对 Wait-then-Act +10 pp、延迟 0.185 s；截至入库日确认未开源。"
 related:

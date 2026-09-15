@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'uav', 'motion-planning', 'end-to-end', 'aerial-robotics']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.15741"
 code: https://github.com/TJU-Aerial-Robotics/YOPO/tree/YOPO-MINCO
 related:

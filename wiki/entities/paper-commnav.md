@@ -12,7 +12,7 @@ tags:
   - multi-agent
   - sapienza
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.01044"
 related:
   - ./habitat-sim.md

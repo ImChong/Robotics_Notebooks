@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2306.09010"
 venue: "arXiv 2023"
 summary: "A reinforcement learning framework with disturbance awareness for robust sim-to-real policy transfer in robot control"

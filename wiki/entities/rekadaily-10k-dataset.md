@@ -3,7 +3,7 @@ type: entity
 title: RekaDaily-10k（家务第一人称视频数据集）
 tags: [dataset, egocentric, egocentric-video, household, manipulation, vla, world-model, huggingface, claru, reka, reka-ai]
 summary: "Reka / Claru 发布的 Apache 2.0 无剧本第一人称家务视频：目标 10,312 小时；raw 档增量上线 HF（入库日约 886h），另有 processed+captioned 档。服务世界模型与 VLA 的家庭视觉先验，非机器人遥操作轨迹。"
-updated: 2026-08-10
+updated: 2026-09-15
 status: complete
 related:
   - ../overview/ego-category-01-data-collection.md

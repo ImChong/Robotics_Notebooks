@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'agent-memory', 'llm-agents']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08273"
 venue: "arXiv 2026"
 code: https://github.com/Celina-love-sweet/MemForest

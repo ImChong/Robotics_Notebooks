@@ -14,7 +14,7 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "Markov Decision Process (MDP)"
-updated: 2026-08-28
+updated: 2026-09-15
 ---
 
 # Markov Decision Process (MDP)

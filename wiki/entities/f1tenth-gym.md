@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, f1tenth, autonomous-driving, racing, reinforcement-learning, upenn]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 related:
   - ../overview/racing-drift-rl-open-source-landscape.md
   - ./barc.md

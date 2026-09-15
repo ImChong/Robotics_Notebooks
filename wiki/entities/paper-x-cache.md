@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, inference-acceleration, world-models, diffusion-cache, autonomous-driving, xpeng]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-15
 arxiv: "2604.20289"
 related:
   - ./paper-x-world.md

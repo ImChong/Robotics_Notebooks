@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, spot, representation]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.06958"
 related:
   - ../tasks/locomotion.md

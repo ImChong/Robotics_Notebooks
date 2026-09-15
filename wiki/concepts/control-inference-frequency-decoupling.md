@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, control, inference, realtime, deployment, vla]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ./rtos-realtime-scheduling.md
   - ./llm-robotics-control-interfaces.md

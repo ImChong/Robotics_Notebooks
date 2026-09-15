@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, theory, locomotion, contact, uiuc]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.10273"
 related:
   - ../tasks/locomotion.md

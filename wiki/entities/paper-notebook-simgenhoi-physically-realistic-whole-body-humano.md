@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2508.14120"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md

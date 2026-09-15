@@ -8,7 +8,7 @@ tags:
   - manipulation
   - bit
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.27371"
 related:
   - ../tasks/manipulation.md

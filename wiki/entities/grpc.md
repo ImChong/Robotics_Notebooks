@@ -2,7 +2,7 @@
 type: entity
 tags: [middleware, rpc, grpc, networking, systems-engineering, google, cncf]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 related:
   - ../concepts/remote-procedure-call.md
   - ../concepts/ros2-basics.md

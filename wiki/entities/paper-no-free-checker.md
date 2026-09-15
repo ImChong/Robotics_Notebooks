@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, verification, robot-policies, benchmark]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.09250"
 code: https://github.com/ZJUSCL/Awesome-Robot-Verifier
 related:

@@ -3,7 +3,7 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, deformable, fem, contact, cloth, offline, blender, zozo, nvidia]
 status: complete
-updated: 2026-05-25
+updated: 2026-09-15
 related:
   - ./paper-ppf-cubic-barrier-contact-solver.md
   - ./mujoco.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, locomotion, residual-learning, motion-prior, ppo, unitree-g1, zju, sim2real, motion-tracking]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2509.20696"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md

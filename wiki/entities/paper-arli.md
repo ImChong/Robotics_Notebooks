@@ -14,7 +14,7 @@ tags:
   - microsoft
   - eth
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.23831"
 related:
   - ../methods/vla.md

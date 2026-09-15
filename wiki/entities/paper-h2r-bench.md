@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, cross-embodiment, manipulation, benchmark, video-generation]
 status: complete
-updated: 2026-08-19
+updated: 2026-09-15
 arxiv: "2608.13049"
 related:
   - ../methods/generative-world-models.md

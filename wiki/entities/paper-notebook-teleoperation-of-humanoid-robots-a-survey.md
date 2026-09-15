@@ -10,7 +10,7 @@ tags:
   - humanoid-paper-notebooks
   - iit
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2301.04317"
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md

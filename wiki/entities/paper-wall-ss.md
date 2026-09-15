@@ -11,7 +11,7 @@ tags:
   - multi-view
   - x-square-robot
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 code: https://github.com/X-Square-Robot/wall-ss
 related:
   - ../methods/generative-world-models.md

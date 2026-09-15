@@ -7,7 +7,7 @@ tags:
   - deep-learning
   - foundation-model
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 summary: "CLIP 用图文对比学习在超大规模配对数据上对齐双编码器，实现强零样本分类与开放词汇检索，是现代 VLM/VLA 视觉塔的重要源头。"
 related:
   - ./paper-clip.md

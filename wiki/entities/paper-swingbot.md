@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, brachiation, reinforcement-learning]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.10283"
 code: https://github.com/TTBray/SwingBot
 related:

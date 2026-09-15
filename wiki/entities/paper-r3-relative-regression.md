@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, umich, westlake, nvidia, 3d-reconstruction, streaming-slam, pose-estimation, feed-forward, depth-anything-3, relative-pose]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2605.26519"
 code: https://github.com/KevinXu02/R3
 related:

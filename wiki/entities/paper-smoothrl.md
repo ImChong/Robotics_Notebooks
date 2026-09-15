@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, online-rl, action-chunking, asynchronous-inference, manipulation, astribot]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.29768"
 related:
   - ./paper-arli.md

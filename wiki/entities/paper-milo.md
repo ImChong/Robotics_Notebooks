@@ -7,7 +7,7 @@ tags:
   - embodied-ai
   - ut-austin
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2608.27407"
 code: https://github.com/ac5113/MILO
 related:

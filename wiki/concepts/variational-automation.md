@@ -2,7 +2,7 @@
 type: concept
 tags: [automation, industrial-robotics, manipulation, agentic-robotics, task-taxonomy, vla, nvidia, berkeley]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 related:
   - ../entities/paper-gap-graph-as-policy.md
   - ../tasks/manipulation.md

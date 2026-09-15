@@ -15,7 +15,7 @@ tags:
   - omron-sinic-x
   - u-tokyo
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2608.11574"
 code: https://github.com/ryhara/hand_visibility_detector
 related:

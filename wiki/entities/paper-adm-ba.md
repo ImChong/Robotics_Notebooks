@@ -8,7 +8,7 @@ tags:
   - robot-perception
   - edinburgh
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2609.01089"
 code: https://github.com/YiranZhou-Robotics/ADM-BA
 related:

@@ -7,7 +7,7 @@ tags:
   - teaching
   - dataset
 status: complete
-updated: 2026-08-25
+updated: 2026-09-15
 arxiv: "2608.21083"
 related:
   - ../methods/reinforcement-learning.md

@@ -11,7 +11,7 @@ tags:
   - science-robotics
   - inspection-robot
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 doi: "10.1126/scirobotics.abm8597"
 venue: "Science Robotics 2022"
 related:

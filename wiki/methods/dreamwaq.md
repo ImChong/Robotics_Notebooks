@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, blind-locomotion, reinforcement-learning, quadruped, terrain-imagination]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 summary: "DreamWaQ（ICRA 2023）四足盲走单阶段 RL：CENet 从本体历史想象隐式地形并估计体速，非对称 Actor–Critic 实现无外感知的鲁棒行走，是 DreamWaQ++ 与飞书「盲走一阶段」模块的基线。"
 related:
   - ../entities/dreamwaq-plus.md

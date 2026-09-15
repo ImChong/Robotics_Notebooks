@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, haptic, wearable, pneumatic, soft-robotics, vr, teleoperation, human-robot-interaction, sssa]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2509.05433"
 related:
   - ../tasks/teleoperation.md

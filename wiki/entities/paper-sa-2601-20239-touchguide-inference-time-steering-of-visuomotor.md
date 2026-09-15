@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2601.20239"
 venue: "RSS 2026"
 summary: "Cross-policy visuo-tactile fusion paradigm fusing modalities within low-dimensional action space."

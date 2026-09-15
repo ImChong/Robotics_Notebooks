@@ -8,7 +8,7 @@ tags:
   - cross-embodiment
   - light-origins
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.30935"
 code: https://github.com/lightorigins/LightNav-0
 related:

@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-real2sim2real, sun254667, technology-map]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 summary: "Awesome-Real2Sim2Real 技术地图：为清单内论文提供独立详情节点索引（新建 57，复用已有 6）。"
 related:
   - ../entities/awesome-real2sim2real.md

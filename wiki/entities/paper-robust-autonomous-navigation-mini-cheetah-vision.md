@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, navigation, vision, quadruped, locomotion, mit, rpc]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "IROS 2020"
 related:
   - ./mit-mini-cheetah.md

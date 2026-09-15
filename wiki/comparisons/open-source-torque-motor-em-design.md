@@ -2,7 +2,7 @@
 type: comparison
 tags: [hardware, actuator, motor, fem, femm, open-source, qdd, pmsm, axial-flux, humanoid]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ./open-source-qdd-actuator-projects.md
   - ./motor-em-simulation-software.md

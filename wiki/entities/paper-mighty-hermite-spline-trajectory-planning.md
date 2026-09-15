@@ -11,7 +11,7 @@ tags:
   - ros2
   - mit-acl
 status: complete
-updated: 2026-06-14
+updated: 2026-09-15
 arxiv: "2511.10822"
 venue: IEEE RA-L 2026
 code: https://github.com/mit-acl/mighty

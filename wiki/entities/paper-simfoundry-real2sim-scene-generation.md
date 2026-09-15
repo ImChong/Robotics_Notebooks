@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, omnigibson, 3dgs, vla]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2606.28276"
 code: https://github.com/NVlabs/SimFoundry
 related:

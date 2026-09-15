@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, tactile, visuo-tactile, vla, world-models, wam, contact-rich, sim2real]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 related:
   - ../overview/sun-awesome-touch-technology-map.md
   - ../overview/hub-tactile.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, world-model, unitree-g1, fudan, tars, hit, sjtu]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2609.11553"
 code: https://github.com/Hoshi-No-Ai/CAP
 related:

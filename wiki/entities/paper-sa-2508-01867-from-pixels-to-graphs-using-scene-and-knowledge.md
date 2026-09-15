@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.01867"
 venue: "arXiv 2025"
 summary: "Proposes a framework incorporating two complementary neuro-symbolic abstractions: scene graphs and commonsense knowledge graphs, instantiated through SceneNet and KnowledgeNet respectively"

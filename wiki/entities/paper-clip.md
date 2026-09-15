@@ -7,7 +7,7 @@ tags:
   - vision-language
   - openai
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2103.00020"
 code: https://github.com/openai/CLIP
 related:

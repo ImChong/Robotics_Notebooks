@@ -15,7 +15,7 @@ related:
   - ../entities/graphify.md
   - ../overview/robot-learning-overview.md
 summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: 2026-08-31
+updated: 2026-09-15
 ---
 
 # LLM Wiki

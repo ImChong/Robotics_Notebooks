@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, open-source, technology-map, vla, space-robotics]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 related:
   - ../entities/paper-indi.md
   - ../entities/paper-reward-free-continual-adaptation-space.md

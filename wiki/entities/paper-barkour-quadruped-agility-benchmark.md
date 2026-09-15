@@ -9,7 +9,7 @@ tags:
   - legged-robot
   - deepmind
 status: complete
-updated: 2026-05-18
+updated: 2026-09-15
 arxiv: "2305.14654"
 venue: "RSS 2018"
 code: https://github.com/google-deepmind/barkour_robot

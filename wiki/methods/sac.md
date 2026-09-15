@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, manipulation]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 summary: "SAC 是连续控制中最主流的 off-policy 最大熵算法：用 Replay Buffer 反复利用经验、双 Q 抑制高估、自动调温度平衡探索与利用，样本效率远高于 PPO，是真机 RL 与精细操作的首选。"
 related:
   - ../concepts/rl-runner.md

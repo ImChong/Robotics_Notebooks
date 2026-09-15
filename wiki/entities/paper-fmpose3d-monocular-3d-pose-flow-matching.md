@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, pose-estimation, 3d-vision, flow-matching, human-motion, cvpr-2026, epfl]
 status: complete
-updated: 2026-07-17
+updated: 2026-09-15
 arxiv: "2602.05755"
 venue: CVPR 2026
 code: https://github.com/AdaptiveMotorControlLab/FMPose3D

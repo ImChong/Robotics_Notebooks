@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.13083"
 venue: "arXiv 2026"
 summary: "Introduces EgoTouch, a large-scale multi-view egocentric dataset with dense tactile supervision for bimanual hand-object interaction, comprising 208 manipulation tasks spanning 1,891 episodes"

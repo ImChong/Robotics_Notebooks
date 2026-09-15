@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vgi, agi, vision-foundation-model, world-models, spatial-ai, embodiment, generative-video, survey, aist, oxford, openai, cambridge, google-deepmind, cmu, harvard, stanford, princeton, nyu, imperial-college]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 arxiv: "2608.25924"
 venue: "arXiv preprint (CVPR 2026 VGI Workshop white paper)"
 related:

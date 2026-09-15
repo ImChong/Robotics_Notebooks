@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2604.20295"
 venue: "ICRA 2026 (Best Student Paper Award)"
 summary: "Lightweight and efficient tactile simulation framework for learning dexterous manipulation."

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, gwm, world-action-models, shengshu, tsinghua, position-paper]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 venue: "Shengshu / Tsinghua manuscript 2026-08 (no arXiv)"
 related:
   - ../concepts/functional-taxonomy-world-models.md

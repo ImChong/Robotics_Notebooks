@@ -18,7 +18,7 @@ tags:
   - stanford
   - columbia
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 arxiv: "2607.25798"
 code: https://github.com/real-stanford/transformer-transformer
 related:

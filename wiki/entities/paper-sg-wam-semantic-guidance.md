@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, vlm, semantic-guidance, libero, hkust-gz]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.08839"
 related:
   - ../concepts/world-action-models.md

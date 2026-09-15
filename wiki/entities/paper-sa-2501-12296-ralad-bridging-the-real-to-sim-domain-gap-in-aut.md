@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2501.12296"
 venue: "arXiv 2025"
 summary: "A novel framework designed to bridge the real-to-sim gap at low cost"

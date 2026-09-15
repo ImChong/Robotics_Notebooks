@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2503.22405"
 venue: "CVPR 2025"
 summary: "Proposes the Adaptive Multiple Normal Action Representation (AMNAR) framework, which predicts all valid next actions and reconstructs their corresponding normal representations to detect fine-grained execution deviations"

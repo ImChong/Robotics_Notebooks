@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, edge-computing, cloud, robotics, deployment]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ./container-orchestration-cicd.md
   - ./model-versioning-ota.md

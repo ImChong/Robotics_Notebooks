@@ -8,7 +8,7 @@ tags:
   - manipulation
   - physical-intelligence
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2410.24164"
 code: https://github.com/Physical-Intelligence/openpi
 related:

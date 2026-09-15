@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-planning, disassembly, rrt, purdue]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.08773"
 related:
   - ../methods/model-predictive-control.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, boxing, marl, self-play, motion-tracking, sim2real, unitree, sjtu, shanghai-ai-lab, shanghai-innovation-institute, pku, hkust-gz, humanoid-paper-notebooks]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2601.22517"
 related:
   - ./rek.md

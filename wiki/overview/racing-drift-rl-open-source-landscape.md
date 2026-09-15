@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, racing, drift, reinforcement-learning, mpc, f1tenth, carla, open-source]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 related:
   - ../methods/reinforcement-learning.md
   - ../methods/model-predictive-control.md

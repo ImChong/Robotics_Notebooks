@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, grasp, vision-language-grasp, cross-hand, hust, keenon, bigai, pku, bytedance]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2609.04096"
 related:
   - ../tasks/manipulation.md

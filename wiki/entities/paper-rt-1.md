@@ -8,7 +8,7 @@ tags:
   - foundation-policy
   - google-deepmind
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2212.06817"
 code: https://github.com/google-research/robotics_transformer
 related:

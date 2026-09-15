@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, inria]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2110.13309"
 summary: "层次化 ViT 编码完整历史全景序列，与历史动作、当前观测一同输入跨模态 Transformer。"
 related:

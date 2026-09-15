@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, latent-dynamics, planning, rollout, gru, tsinghua, hku]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 venue: "预印本 2026（Agentic Intelligence Lab PDF；无 arXiv 编号、无会议）"
 related:
   - ./paper-lewm.md

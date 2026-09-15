@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.13615"
 venue: "arXiv 2026"
 summary: "The first egocentric HOI world model, embedding physical priors into generative diffusion models, distilling geometric and kinematic priors from 3D estimates into physics-informed embeddings"

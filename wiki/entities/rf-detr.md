@@ -11,7 +11,7 @@ tags:
   - perception
   - robotics
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2511.09554"
 venue: "ICLR 2026"
 code: https://github.com/roboflow/rf-detr

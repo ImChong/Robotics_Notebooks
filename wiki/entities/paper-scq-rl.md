@@ -6,7 +6,7 @@ tags:
   - offline-rl
   - deployment
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.12749"
 related:
   - ../methods/reinforcement-learning.md

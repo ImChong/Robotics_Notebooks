@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.02246"
 venue: "arXiv 2026"
 summary: "The first online multimodal temporal action segmentation benchmark for energy awareness, containing 100+ hours of untrimmed videos covering 5 modalities"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2505.22007"
 venue: "arXiv 2025"
 summary: "Pioneering event-stream pipeline for egocentric human pose tracking under fast motion and high dynamic range"

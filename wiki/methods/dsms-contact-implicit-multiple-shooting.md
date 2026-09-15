@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, motion-retargeting, humanoid, trajectory-optimization, contact-implicit, multiple-shooting, contact-rich, sim2real, caltech, depaul]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 related:
   - ../entities/paper-shooting-for-contact.md
   - ../concepts/motion-retargeting.md

@@ -7,7 +7,7 @@ tags:
   - imitation-learning
   - manipulation
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.12316"
 related:
   - ../methods/vla.md

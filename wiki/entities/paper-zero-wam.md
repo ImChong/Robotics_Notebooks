@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, wam, in-context-learning, human-video, manipulation, robottwin, robbyant, hkust, hkust-gz]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2608.26103"
 code: https://github.com/robbyant-research/Zero-WAM
 related:

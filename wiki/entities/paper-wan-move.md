@@ -11,7 +11,7 @@ tags:
   - hku
   - cuhk
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2512.08765"
 related:
   - ./paper-wan-video.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, multi-skill, policy-distillation, conditional-gan, sdu, unitree-g1]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 venue: MDPI Actuators 2026
 doi: "10.3390/act15040212"
 summary: "HAML（MDPI 2026）两阶段：条件对抗多技能 teacher（错配 transition–label 防条件坍缩）→ 历史本体蒸馏 student，G1 单策略覆盖走舞挥手等技能切换。"

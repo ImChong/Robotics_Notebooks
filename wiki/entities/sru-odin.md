@@ -11,7 +11,7 @@ tags:
   - ros
   - isaac-lab
 status: complete
-updated: 2026-07-15
+updated: 2026-09-15
 related:
   - ./paper-sru-spatially-enhanced-recurrent-memory.md
   - ../concepts/sim2real.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, face-reconstruction, multi-view, feed-forward, transformer, dinov2, 3dmm, registration, google, synthetic-data]
 status: complete
-updated: 2026-08-06
+updated: 2026-09-15
 arxiv: "2605.31283"
 related:
   - ./paper-face-anything-4d-face-reconstruction.md

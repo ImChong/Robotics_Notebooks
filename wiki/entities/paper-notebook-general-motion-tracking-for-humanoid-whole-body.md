@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, gmt, motion-tracking]
 status: planned
-updated: 2026-07-21
+updated: 2026-09-15
 venue: "2025.06"
 related:
   - ./paper-gmt.md

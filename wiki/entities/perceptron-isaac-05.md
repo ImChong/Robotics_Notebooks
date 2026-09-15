@@ -3,7 +3,7 @@ type: entity
 tags: [perceptron, vla, foundation-policy, open-source, moe, flow-matching, scaling-laws, umi, teleoperation, lerobot, qwen]
 title: Perceptron Isaac 0.5
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 code: https://github.com/perceptron-ai-inc/isaac
 related:
   - ../methods/vla.md

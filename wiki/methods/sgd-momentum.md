@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, momentum, sgd, training]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 summary: "SGD Momentum 在梯度方向外叠加历史速度，平滑更新轨迹并加速沿一致方向的收敛，是深度网络训练的经典一阶加速技巧。"
 related:
   - ./sgd.md

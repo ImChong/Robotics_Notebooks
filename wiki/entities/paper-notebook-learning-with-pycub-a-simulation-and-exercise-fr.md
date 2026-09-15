@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2506.01756"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md

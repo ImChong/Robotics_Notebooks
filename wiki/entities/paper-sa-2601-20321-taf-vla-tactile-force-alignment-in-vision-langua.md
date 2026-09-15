@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2601.20321"
 venue: "arXiv 2026"
 summary: "Explicitly grounds high-dimensional tactile observations in physical interaction forces."

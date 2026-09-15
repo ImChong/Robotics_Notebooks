@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.22129"
 venue: "NeurIPS 2025"
 summary: "Multimodal dataset collected via Meta Project Aria glasses, combining video, eye tracking and biometric signals for real-life emotion analysis"

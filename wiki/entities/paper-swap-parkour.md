@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, reinforcement-learning, locomotion, perception, parkour, world-model, symmetry, equivariant, rssm, amp, sim2real, zju]
 status: complete
-updated: 2026-07-19
+updated: 2026-09-15
 arxiv: "2606.19928"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

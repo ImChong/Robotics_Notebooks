@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, amp, push-recovery, centroidal, trajectory-optimization, ppo, unitree-g1, kaist, samsung, hanyang, kimm, sim2real]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2607.03454"
 venue: "arXiv 2026"
 related:

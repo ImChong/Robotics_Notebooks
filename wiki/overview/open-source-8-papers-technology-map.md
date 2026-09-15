@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, open-source, technology-map, tactile, mpc, vla]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ../entities/paper-space-mining-with-robotics.md
   - ../entities/paper-vitacphys.md

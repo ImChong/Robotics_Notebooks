@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2601.09988"
 venue: "ICRA 2026"
 code: https://github.com/real-stanford/UMI-FT

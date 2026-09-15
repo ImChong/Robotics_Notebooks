@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, manipulation, discrete-actions, franka]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.10522"
 code: https://github.com/showlab/Show-Harness
 related:

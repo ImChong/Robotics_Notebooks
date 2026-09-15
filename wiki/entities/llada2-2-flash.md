@@ -2,7 +2,7 @@
 type: entity
 tags: [foundation-model, llm, dllm, diffusion, moe, coding-agents, open-source, inclusion-ai, ant-group, zju, westlake]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 related:
   - ../concepts/diffusion-model.md
   - ./kimi-k3.md

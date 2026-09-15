@@ -2,7 +2,7 @@
 type: concept
 tags: [data, machine-learning, manipulation, teleoperation, simulation]
 status: complete
-updated: 2026-05-29
+updated: 2026-09-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../tasks/manipulation.md

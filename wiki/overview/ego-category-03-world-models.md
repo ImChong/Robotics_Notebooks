@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, world-models, humanoid, contact]
 status: complete
-updated: 2026-06-01
+updated: 2026-09-15
 summary: "Ego 9 篇专题 · 03 世界模型（2 篇）— 长时程须区分世界变化与自我运动；Ego-Vision WM 服务接触规划，WEM 解耦 world/ego 视频演化。"
 related:
   - ./ego-9-papers-technology-map.md

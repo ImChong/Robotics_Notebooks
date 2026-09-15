@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, video-vae, world-model, diffusion]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2512.05394"
 venue: "arXiv 2025"
 code: https://github.com/zai-org/SSVAE

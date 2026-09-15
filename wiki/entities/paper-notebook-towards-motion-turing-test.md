@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, benchmark, dataset, motion-evaluation, human-likeness, smpl-x, xmu, oppo, shanghaitech, humanoid-paper-notebooks]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2603.06181"
 venue: "CVPR 2026"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, skill-synthesis, ros, manipulation]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.09808"
 
 related:

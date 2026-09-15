@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, curated-list, text-to-motion, human-motion, smpl, dataset, survey, linux-foundation]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/hy-motion-1.md

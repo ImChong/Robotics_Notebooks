@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "ACL 2025 Findings"
 summary: "Constructs a norm understanding benchmark with **1,853 multiple‑choice questions** covering seven norm categories (safety, privacy, proxemics, politeness, cooperation, coordination/proactivity, and communication/readabil"
 related:

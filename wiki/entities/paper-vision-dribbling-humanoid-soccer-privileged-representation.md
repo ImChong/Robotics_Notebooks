@@ -12,7 +12,7 @@ tags:
   - booster-t1
   - epfl
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 arxiv: "2607.12702"
 related:
   - ../tasks/humanoid-soccer.md

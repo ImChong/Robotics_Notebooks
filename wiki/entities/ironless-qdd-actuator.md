@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, qdd, open-source, cycloidal, bldc, 3d-print, femm, halbach]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ../comparisons/open-source-torque-motor-em-design.md
   - ../comparisons/open-source-qdd-actuator-projects.md

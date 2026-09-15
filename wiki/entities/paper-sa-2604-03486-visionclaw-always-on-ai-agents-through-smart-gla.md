@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2604.03486"
 venue: "arXiv 2026"
 summary: "Persistent background wearable agent enabling hands-free multi-scenario task execution"

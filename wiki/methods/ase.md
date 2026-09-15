@@ -3,7 +3,7 @@
 type: method
 tags: [hierarchical-control, embedding, gan, xbpeng, paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 code: https://github.com/nv-tlabs/ASE
 venue: "2022 · TOG"
 arxiv: "2205.01906"

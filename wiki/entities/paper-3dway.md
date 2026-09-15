@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'vla', 'waypoint', 'manipulation']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08224"
 venue: "ECCV 2026"
 code: https://github.com/ziqin-h/3DWay

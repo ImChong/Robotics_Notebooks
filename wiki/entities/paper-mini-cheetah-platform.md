@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, hardware, platform, mpc, mit, actuator]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "ICRA 2019"
 related:
   - ./mit-mini-cheetah.md

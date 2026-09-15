@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, mpc, flying, utokyo]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.07544"
 related:
   - ../concepts/whole-body-control.md

@@ -8,7 +8,7 @@ tags:
   - rss2014
   - test-of-time
 status: complete
-updated: 2026-07-26
+updated: 2026-09-15
 doi: "10.15607/rss.2014.x.018"
 venue: RSS 2014
 related:

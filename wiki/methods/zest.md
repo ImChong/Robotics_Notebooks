@@ -4,7 +4,7 @@ title: ZEST (Zero-shot Embodied Skill Transfer)
 tags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact, rai-institute, boston-dynamics]
 status: complete
 summary: "ZEST（Science Robotics 2026）用自适应采样与辅助扳手课程，把 MoCap / 视频 / 动画变成 Atlas、G1、Spot 上的零样本高动态技能。论文实体见 paper-zest；确认未开源。"
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ../entities/paper-zest.md
   - ./mtrg-reference-goal-driven-rl.md

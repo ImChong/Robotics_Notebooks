@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2411.06408"
 venue: "IEEE RA-L 2025"
 summary: "Simulation-based multimodal policy learning with all-around tactile sensing and depth camera; transformer-based policy via teacher-student distillation; zero-shot transfer."

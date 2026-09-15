@@ -13,7 +13,7 @@ tags:
   - unified-action-space
   - loco-manip-contact-survey
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2606.09215"
 venue: "arXiv 2026"
 related:

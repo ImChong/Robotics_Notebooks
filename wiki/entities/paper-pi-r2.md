@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, flow-matching, action-chunking, real-time, deployment, gr00t, manipulation, dexterous-hand, cmu]
 status: complete
-updated: 2026-07-30
+updated: 2026-09-15
 arxiv: "2607.26055"
 code: https://github.com/pi-r2-flow/pi-r2-flow
 related:

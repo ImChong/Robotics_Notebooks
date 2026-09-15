@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, text-to-motion, human-motion, latent-diffusion, autoregressive, rectified-flow, unitree-g1, university-of-tubingen, max-planck, imperial-college]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2512.13840"
 venue: "CVPR 2026"
 code: https://github.com/hynann/MoLingo

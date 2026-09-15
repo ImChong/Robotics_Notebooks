@@ -2,7 +2,7 @@
 type: entity
 tags: [course, optimal-control, lqr, mpc, trajectory-optimization, ddp, ilc, kalman-filter, cmu, curriculum]
 status: complete
-updated: 2026-08-09
+updated: 2026-09-15
 related:
   - ../concepts/optimal-control.md
   - ../methods/lqr-ilqr.md

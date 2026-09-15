@@ -2,7 +2,7 @@
 type: entity
 tags: [llm-agents, agent-infrastructure, multi-robot, manipulation, humanoid, astribot, persistent-memory, messaging-gateway]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2607.11377"
 related:
   - ./lumo-2.md

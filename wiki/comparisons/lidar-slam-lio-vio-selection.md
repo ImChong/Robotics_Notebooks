@@ -2,7 +2,7 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ../queries/slam-second-spring-embodied.md
   - ../overview/navigation-slam-autonomy-stack.md

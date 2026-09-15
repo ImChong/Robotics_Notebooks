@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, visuotactile, manipulation, rice]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.09597"
 related:
   - ../tasks/manipulation.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-model, 3d-geometry, diffusion-policy, inria]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.02531"
 related:
   - ../concepts/world-action-models.md

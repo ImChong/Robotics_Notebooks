@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, open-source, stanford, legged, education, research, pupper, ros2, vlm]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ./quadruped-robot.md
   - ./easy-quadruped.md

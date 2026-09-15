@@ -14,7 +14,7 @@ tags:
   - bosch
   - ut-arlington
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 code: https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC
 related:
   - ./paper-humanoid-touch-dream.md

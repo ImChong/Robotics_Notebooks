@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, mpc, wbc, locomotion, mit, control]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "1909.06586"
 code: https://github.com/mit-biomimetics/Cheetah-Software
 related:

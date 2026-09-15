@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-motion-retargeting, motion-retargeting, mocap, humanoid]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 summary: "动作重定向知识链汇总：把人体/动物参考动作映射到人形与异构机器人骨架，衔接 MoCap、IK/优化重定向、动力学精炼（SBTO/DSMS/KDMR/SPARK）、AMP 先验与 WBT 训练数据的全链路导读；含人体→非人形腿式（X-Morph）扩展。"
 ---
 

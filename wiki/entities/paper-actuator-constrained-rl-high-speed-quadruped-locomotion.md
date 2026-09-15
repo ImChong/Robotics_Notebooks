@@ -11,7 +11,7 @@ tags:
   - kaist
   - agency-for-defense-development
 status: complete
-updated: 2026-08-11
+updated: 2026-09-15
 arxiv: "2312.17507"
 venue: "arXiv 2023"
 related:

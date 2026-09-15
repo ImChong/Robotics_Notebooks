@@ -8,7 +8,7 @@ tags:
   - flow-matching
   - ntu
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.01596"
 code: https://github.com/PINE-Lab-NTU/FACET
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'quadruped', 'hardware', 'open-source', 'quasi-direct-drive']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2609.03623"
 summary: "黎巴嫩美国大学（arXiv:2609.03623）：15 kg/12 DoF 全 3D 打印 QDD 四足；RAPID 可换腿；宣称将开源；截至入库日未见仓库。"
 related:

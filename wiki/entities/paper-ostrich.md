@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, differentiable-simulation, contact, gpu-simulation, nvidia, trajectory-optimization]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2609.08800"
 code: https://github.com/aleskucera/ostrich
 related:

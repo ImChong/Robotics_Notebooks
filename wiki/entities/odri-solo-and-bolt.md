@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, biped, hardware, open-source, odri, torque-control, qdd, actuator]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ./paper-open-torque-controlled-modular-robot-solo.md
   - ./quadruped-robot.md

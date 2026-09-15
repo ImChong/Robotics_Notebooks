@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.04600"
 venue: "arXiv 2026"
 summary: "Introduces CoMe-VLA, a cognitive and memory-aware VLA framework leveraging large-scale human egocentric data to learn versatile exploration and manipulation priors"

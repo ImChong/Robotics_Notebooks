@@ -10,7 +10,7 @@ tags:
   - computer-vision
   - hkust
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 arxiv: "2607.05777"
 venue: "arXiv 2026"
 related:

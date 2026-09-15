@@ -9,7 +9,7 @@ tags:
   - world-models
   - alibaba
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2503.20314"
 related:
   - ./comfyui.md

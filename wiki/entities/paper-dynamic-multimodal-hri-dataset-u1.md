@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'humanoid', 'dataset', 'hri', 'multimodal', 'engagement']
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2609.03255"
 summary: "仁川大学协议（arXiv:2609.03255）：Unitree U1 协作导览三档复杂度；同步生理(EDA/PPG)+行为+自报告；30 被试计划；数据尚未发布。"
 related:

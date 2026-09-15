@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, urdf, tooling, parsing, qut, repo]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2308.00514"
 code: https://github.com/Daniella1/urdf_files_dataset
 summary: "URDF Files Dataset 是 322 份 Bundle / 195 个独特机型的冻结语料（RA-L 2024）：用来分析 xacro、网格类型、跨源重复和 parser 分歧，而不是日常仿真加载器。"

@@ -9,7 +9,7 @@ tags:
   - zju
   - hkust
 status: complete
-updated: 2026-08-25
+updated: 2026-09-15
 arxiv: "2608.20817"
 code: https://github.com/GhostTac/GhostTac_CCS
 venue: "ACM CCS 2026"

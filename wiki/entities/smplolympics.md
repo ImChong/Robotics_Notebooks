@@ -3,7 +3,7 @@
 type: entity
 tags: [benchmark, humanoid, simulation, smpl, sports, reinforcement-learning, isaac-gym, cmu, nvidia]
 status: complete
-updated: 2026-06-12
+updated: 2026-09-15
 arxiv: "2407.00187"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-editing, diffusion, generative-animation, inpainting, disney, eth, vfx, dcc]
 status: complete
-updated: 2026-08-21
+updated: 2026-09-15
 arxiv: "2607.29133"
 related:
   - ./generative-motion-rig.md

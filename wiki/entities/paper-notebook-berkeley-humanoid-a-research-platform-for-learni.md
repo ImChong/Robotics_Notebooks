@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, berkeley]
 status: planned
-updated: 2026-06-26
+updated: 2026-09-15
 arxiv: "2407.21781"
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md

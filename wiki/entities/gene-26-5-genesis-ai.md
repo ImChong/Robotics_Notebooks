@@ -2,7 +2,7 @@
 
 type: entity
 tags: [foundation-model, manipulation, dexterous-hand, teleoperation, industry, genesis-ai]
-updated: 2026-05-28
+updated: 2026-09-15
 related:
   - ./genesis-sim.md
   - ./genesis-world-10.md

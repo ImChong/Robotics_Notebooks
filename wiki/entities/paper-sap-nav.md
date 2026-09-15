@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, open-vocabulary-navigation, active-perception, spatial-semantics, zero-shot]
 status: complete
-updated: 2026-08-19
+updated: 2026-09-15
 arxiv: "2608.12707"
 related:
   - ../tasks/vision-language-navigation.md

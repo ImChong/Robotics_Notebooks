@@ -8,7 +8,7 @@ tags:
   - perception
   - deep-learning
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../queries/robot-perception-stack-selection-loop.md

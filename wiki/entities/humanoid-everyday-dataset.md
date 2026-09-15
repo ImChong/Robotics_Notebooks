@@ -3,7 +3,7 @@ type: entity
 title: Humanoid Everyday（开放世界人形操作数据集）
 tags: [dataset, humanoid, manipulation, loco-manipulation, teleoperation, multimodal, usc, tri]
 summary: "USC/TRI 大规模人形真机操作集：260 任务、10.3k 轨迹、300 万+ 帧多模态（RGB/深度/LiDAR/触觉+语言），含 loco-manipulation 与人–机交互，附云端标准化评测平台。"
-updated: 2026-06-16
+updated: 2026-09-15
 status: complete
 related:
   - ../tasks/loco-manipulation.md

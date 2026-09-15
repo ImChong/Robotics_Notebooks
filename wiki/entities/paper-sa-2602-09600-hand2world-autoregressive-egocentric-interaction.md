@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2602.09600"
 venue: "arXiv 2026"
 summary: "Studies egocentric interaction generation from a single scene image under free-space hand gestures. Presents Hand2World, a unified autoregressive framework addressing distribution shift, ambiguity between hand and camera"

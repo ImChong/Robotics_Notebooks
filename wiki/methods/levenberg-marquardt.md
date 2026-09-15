@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, levenberg-marquardt, least-squares, numerical-methods, calibration]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "Levenberg-Marquardt 在 Gauss-Newton 方向上加阻尼 λI，在梯度下降与 GN 之间自适应插值，是病态非线性最小二乘的事实标准。"
 related:
   - ./gauss-newton.md

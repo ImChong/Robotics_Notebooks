@@ -13,7 +13,7 @@ tags:
   - epfl
   - ruyi-dynamics
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 arxiv: "2607.03792"
 summary: "REALM（arXiv:2607.03792）：揭示 REVERIE-CE 等连续 VLN 在 3 m 区域到达与实例可见接地之间的 Last-3-Meter Grounding Gap；提出可插拔末段精修模块 REALM、实例指标 ONS/GS/OracleGS 与 REVERIE-AIM 数据集，在四类 VLN 骨干上一致提升细粒度接地并验证真机 Stretch。"
 related:

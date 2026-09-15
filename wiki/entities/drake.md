@@ -3,7 +3,7 @@
 type: entity
 tags: [software, simulation, optimization, trajectory-optimization, c++, toyota-research, mit]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 related:
   - ../methods/trajectory-optimization.md
   - ../concepts/whole-body-control.md

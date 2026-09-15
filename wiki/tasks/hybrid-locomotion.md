@@ -3,7 +3,7 @@ type: task
 tags: [locomotion, hybrid, wheel-legged, transformable, whole-body]
 status: in-progress
 summary: "Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。"
-updated: 2026-08-28
+updated: 2026-09-15
 sources:
   - ../../sources/papers/x2n_transformable.md
   - ../../sources/papers/mujica_arxiv_2605_13058.md

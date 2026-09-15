@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, loco-manipulation, vla, vlk, 3dgs, synthetic-data, scene-reconstruction, whole-body-tracking, scenebot, unitree-g1, uc-berkeley, stanford, cmu, amazon-far]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2606.30645"
 venue: "2026 · arXiv"
 related:

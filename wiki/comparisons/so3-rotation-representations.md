@@ -2,7 +2,7 @@
 type: comparison
 tags: [kinematics, math, so3, rotation, quaternion, deep-learning, embodied-ai]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 related:
   - ../formalizations/se3-representation.md
   - ../formalizations/unit-quaternion-so3.md

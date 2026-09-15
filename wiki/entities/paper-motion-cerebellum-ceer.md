@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, loco-manip-contact-survey, humanoid, loco-manipulation, whole-body-control, compliance, end-effector-root-interface, hierarchical-control, duke]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2605.19981"
 venue: "arXiv 2026"
 related:

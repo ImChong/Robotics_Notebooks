@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, contact-data, human-video, imitation-learning, reinforcement-learning, isaaclab, humanoid, pku, beihang]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2605.20373"
 venue: "arXiv 2026"
 related:

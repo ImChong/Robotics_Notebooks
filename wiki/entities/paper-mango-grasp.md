@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-grasping, cross-embodiment, 3dgs, astar, ntu, nus]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2608.02014"
 related:
   - ../methods/grasp-pose-estimation.md

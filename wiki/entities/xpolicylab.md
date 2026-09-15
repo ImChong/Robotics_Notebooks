@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, policy, evaluation, serving, open-source, infrastructure, robodojo, benchmark, hku, tsinghua, paper]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2608.09892"
 code: https://github.com/XPolicyLab/XPolicyLab
 related:

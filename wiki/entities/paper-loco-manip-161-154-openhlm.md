@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, humanoid, vla, teleoperation, whole-body-control, tsinghua, shanghai-pil, spirit-ai, unitree-g1]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2606.22174"
 venue: "2026 · arXiv"
 code: https://github.com/OpenHLM-project/OpenHLM

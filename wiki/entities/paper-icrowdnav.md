@@ -18,7 +18,7 @@ tags:
   - peng-cheng-lab
   - reconova
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2606.26047"
 doi: "10.1109/LRA.2026.3677748"
 related:

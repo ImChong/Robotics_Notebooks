@@ -11,7 +11,7 @@ tags:
   - humanoid-paper-notebooks
   - uiuc
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2508.09846"
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md

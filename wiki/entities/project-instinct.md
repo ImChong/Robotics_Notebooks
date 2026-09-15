@@ -4,7 +4,7 @@ type: entity
 tags: [humanoid, rl, sim2real, perception, whole-body-control, research-program, shanghai-pil, tsinghua]
 status: complete
 date: 2026-05-12
-updated: 2026-07-30
+updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-amp-survey-19-embrace_collisions.md

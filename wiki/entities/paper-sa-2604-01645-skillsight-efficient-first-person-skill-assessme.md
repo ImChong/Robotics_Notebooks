@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2604.01645"
 venue: "arXiv 2026"
 summary: "Explores power-efficient, privacy-preserving egocentric skill assessment for deployment on resource-constrained smart glasses"

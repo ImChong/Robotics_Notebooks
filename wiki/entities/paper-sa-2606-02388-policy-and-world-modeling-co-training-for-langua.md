@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.02388"
 venue: "arXiv 2026"
 summary: "Adds auxiliary WM supervision to policy during RL without changing inference."

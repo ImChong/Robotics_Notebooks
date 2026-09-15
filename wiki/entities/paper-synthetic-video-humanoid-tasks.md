@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - ncku
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 arxiv: "2607.21648"
 venue: "arXiv"
 summary: "NCKU（arXiv:2607.21648）：文本提示→Veo 生成视频→SMPL-X/GMR 重定向→motion stitching→DeepMimic 式 RL 跟踪；无真机/无 MoCap 示范，仿真学多样人形任务；确认未开源。"

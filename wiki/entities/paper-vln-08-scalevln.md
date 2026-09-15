@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, anu]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2307.15644"
 summary: "从 HM3D/Gibson 1200+ 场景自动采样路径、风格迁移与指令生成，构建 490 万指令-轨迹对预训练数据。"
 related:

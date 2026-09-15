@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-robot-collaboration, multi-view-fusion, action-admission]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2609.01662"
 code: https://github.com/ZekaiJ/PACT
 related:

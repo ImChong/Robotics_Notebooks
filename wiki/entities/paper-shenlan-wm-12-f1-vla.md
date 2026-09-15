@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, hit, shanghai-ai-lab]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2509.06951"
 venue: —
 summary: "MoE 三模块：感知、视觉预见、控制；下一尺度预测 + 预见引导 IDM。"

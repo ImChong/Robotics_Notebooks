@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, math, optimization]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 related:
   - ./policy-optimization.md
   - ./reinforcement-learning.md

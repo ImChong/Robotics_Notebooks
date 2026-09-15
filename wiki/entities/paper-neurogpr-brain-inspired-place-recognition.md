@@ -13,7 +13,7 @@ tags:
   - science-robotics
   - loop-closure
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 doi: "10.1126/scirobotics.abm6996"
 venue: "Science Robotics 2023"
 related:

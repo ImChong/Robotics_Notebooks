@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3dgs, gaussian-splatting, human-avatar, video-diffusion, monocular-video, eccv, university-of-tubingen, max-planck, imperial-college, kaust]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2603.17975"
 venue: "ECCV 2026"
 project: https://miraymen.github.io/ahoy/

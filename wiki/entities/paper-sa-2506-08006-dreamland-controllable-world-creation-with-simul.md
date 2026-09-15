@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2506.08006"
 venue: "arXiv 2025"
 summary: "Controllable world creation with simulator and generative models."

@@ -8,7 +8,7 @@ tags:
   - manipulation
   - postech
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 arxiv: "2608.23478"
 related:
   - ../methods/vla.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, kinodynamic, trajectory-optimization, contact-rich, grf, beyondmimic, unitree-g1, georgia-tech, locomotion, imitation-learning]
 status: complete
-updated: 2026-08-08
+updated: 2026-09-15
 arxiv: "2603.09956"
 venue: "2026 · arXiv"
 summary: "KDMR（arXiv:2603.09956，Georgia Tech）：用同步 GRF 推断 heel–toe 接触日程，再以多接触全身 TO（CasADi+Pinocchio）强制动力学与无滑约束，产出 BeyondMimic 可学参考；相对 GMR 降跟踪误差并加速 RL；端到端管线宣称正式发表时开源。"

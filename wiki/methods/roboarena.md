@@ -2,7 +2,7 @@
 type: method
 tags: [benchmark, evaluation, generalist-policy, distributed]
 status: complete
-updated: 2026-06-20
+updated: 2026-09-15
 related:
   - ./octo-model.md
   - ../entities/paper-oscar.md

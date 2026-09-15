@@ -8,7 +8,7 @@ tags:
   - digital-twins
   - computer-vision
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md

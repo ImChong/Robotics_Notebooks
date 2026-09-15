@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, motor, magnetics, halbach, permanent-magnet, actuator, femm]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ../entities/paper-mallinson-one-sided-fluxes.md
   - ../entities/paper-halbach-permanent-multipole-magnets.md

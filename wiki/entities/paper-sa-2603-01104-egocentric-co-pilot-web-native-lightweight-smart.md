@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.01104"
 venue: "WWW 2026"
 summary: "Browser-based lightweight wearable assistant architecture requiring no native app installation"

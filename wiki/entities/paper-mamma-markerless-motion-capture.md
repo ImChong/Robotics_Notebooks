@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-capture, markerless, smpl-x, multi-view, dense-landmarks, cvpr-2026, human-motion, eth, max-planck]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2506.13040"
 venue: "2026 · CVPR Oral"
 code: https://github.com/cuevhv/mamma

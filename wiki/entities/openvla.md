@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vla, manipulation, open-source, vision-language-action, stanford]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 related:
   - ./paper-openvla.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md

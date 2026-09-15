@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, lightweight-rl, manipulation, stanford]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 arxiv: "2608.09138"
 code: https://github.com/DaivdYuan/SpeedTuning
 related:

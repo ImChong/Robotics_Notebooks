@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, reinforcement-learning, visual-rl, sim2real, locomotion, manipulation, genesis, yale, sjtu, unitree-go2, on-policy]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2605.26478"
 venue: "arXiv 2026 (under review)"
 code: https://github.com/HaoxiangYou/SDPG

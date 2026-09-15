@@ -12,7 +12,7 @@ tags:
   - quadruped
   - ucl
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2607.05122"
 summary: "Green for Go（arXiv:2607.05122，UCL）：用 SegFormer 绿/红可通行 overlay 给冻结导航 VLA（OmniVLA）做推理时视觉接地；Grand Tour ETH-2 上最远航点误差降 27–44%，但归一化后显示主要是轨迹缩短约 30% 的长度正则；图像目标与 stop 指令几乎无增益。确认未开源。勿与 Green-VLA 通才操作模型混淆。"
 related:

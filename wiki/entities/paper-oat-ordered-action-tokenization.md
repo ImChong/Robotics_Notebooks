@@ -8,7 +8,7 @@ tags:
   - imitation-learning
   - rss2026
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2602.04215"
 venue: RSS 2026
 related:

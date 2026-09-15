@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'reinforcement-learning', 'human-in-the-loop', 'manipulation', 'safety']
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2608.15707"
 code: https://github.com/nuomizai/HIL-RL
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2512.23864"
 venue: "arXiv 2025"
 summary: "Hierarchical perception scheme with macro/local/micro vision; Hierarchical Spatial Alignment (HSA) loss aligns tactile tokens with spatial counterparts; tactile world model predicts future tactile signals; achieves up to"

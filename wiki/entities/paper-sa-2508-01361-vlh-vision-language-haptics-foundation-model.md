@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2508.01361"
 venue: "arXiv 2025"
 summary: "Unifies perception, language, and tactile feedback in aerial robotics and VR; processes visual inputs and language instructions via fine-tuned OpenVLA backbone; achieves 56.7% success for target acquisition and 100% accu"

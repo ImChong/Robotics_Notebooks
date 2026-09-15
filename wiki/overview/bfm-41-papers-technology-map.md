@@ -2,7 +2,7 @@
 type: overview
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, survey, motion-tracking, foundation-model]
 status: complete
-updated: 2026-07-11
+updated: 2026-09-15
 related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-bfm-survey-tpami-2025.md

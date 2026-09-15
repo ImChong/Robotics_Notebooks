@@ -12,7 +12,7 @@ tags:
   - stanford
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2604.00416"
 related:
   - ../overview/paper-notebook-category-08-navigation.md

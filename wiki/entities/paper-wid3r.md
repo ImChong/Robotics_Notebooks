@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, umd, naver-labs, 3d-reconstruction, feed-forward, fisheye, panoramic, camera-model, pose-estimation, pi3]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2602.05321"
 venue: "ECCV 2026"
 code: https://github.com/jdk9405/Wid3R

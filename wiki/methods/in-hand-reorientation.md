@@ -2,7 +2,7 @@
 type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, control]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 related:
   - ../entities/allegro-hand.md
   - ../entities/shadow-hand.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-teledexter.md
   - ../entities/paper-adept-dexterity.md
   - ../entities/paper-wm-craftnet.md
+  - ../entities/paper-artmanip.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/uhas_arxiv_2607_03570.md
@@ -22,6 +23,7 @@ sources:
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/papers/wm_craftnet_arxiv_2609_07002.md
+  - ../../sources/papers/artmanip_arxiv_2609_12498.md
 summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在不借助于外部环境（如桌面）的前提下，通过手指间的协同动作改变掌心中物体位姿的技术。"
 ---
 
@@ -53,6 +55,7 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - **遥操作共跟踪入口**：[TeleDexter](../entities/paper-teledexter.md) 不直接学任务专用重定向策略，而是用 **指尖+物体连续子目标 co-tracking** 在真机遥操作中执行 Cylinder/Cuboid/Bunny 手内重定向（SharpaWave 上 SR 66.7–80%），并采数训下游 Diffusion Policy。
 - **RL 预训练摊销 reorient 段**：[ADEPT](../entities/paper-adept-dexterity.md) 在 16 primitive **object reposing** 预训练中已覆盖 lift / in-hand reorient / transport，再 post-train 对齐 FMB insert 等下游；真机 per-stage 表显示 vision-only 常在 Reorient 后失败，visuo-tactile 可维持至 Insert **8/10**（arXiv:2608.19182）。
 - **世界模型循环状态（非想象 rollout）**：[WM-Craftnet](../entities/paper-wm-craftnet.md) 用 Dreamer 式 **WSM** 从 noisy 腕深+触觉+本体学习 **clean-depth 重建** 与 action-conditioned \(h_t\)，再喂 **PPO** 做无 object ID 多物体 z/x/y 轴旋转；Sharpa 真机 duck z 轴 **16.18 rad / 10/10**，九物体 WSM 先验可迁移四十九物体（CoRL 2026，arXiv:2609.07002；代码待发布）。
+- **铰接物体 in-hand（抓稳 + 推动关节）**：[ArtManip](../entities/paper-artmanip.md) 针对 **内部 prismatic/revolute DoF** 而非整体 6D 重定向：物体 **自由漂浮在掌内**，策略须同时 **维持抓取稳定** 与 **驱动铰接关节**；程序化资产 + 功能抓取合成 → Teacher（特权状态 + 铰接 DR + 课程）→ Student 蒸馏；四类仿真 + 12 真机零样本（arXiv:2609.12498；[ArtGym](https://github.com/youngcv/artgym) 已开源）。
 
 ### 2. 轨迹优化 (Trajectory Optimization)
 将重定向建模为带接触约束的最优控制问题。
@@ -82,6 +85,7 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — 手–物 co-tracking 遥操作中的真机手内重定向
 - [ADEPT（论文实体）](../entities/paper-adept-dexterity.md) — reposing RL 预训练覆盖 in-hand reorient，再 post-train 下游 insert
 - [WM-Craftnet（论文实体）](../entities/paper-wm-craftnet.md) — WSM 循环视触觉状态 + PPO 鲁棒手内旋转（Sharpa，CoRL 2026）
+- [ArtManip（论文实体）](../entities/paper-artmanip.md) — 类别级铰接物体手内操作：抓稳 + 推动内部关节（ArtGym 已开源）
 - [Cross-modal Attention](../formalizations/cross-modal-attention.md)
 
 ## 参考来源

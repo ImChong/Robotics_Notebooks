@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, diffusion, flow-matching, real-time, bimanual, cross-embodiment, xiaomi]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md

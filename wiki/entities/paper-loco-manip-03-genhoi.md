@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, loco-manip-contact-survey, generative-data, generated-video, contact-aware-planning, zero-shot, unitree-g1, hkust-gz, ustc, nus, hku]
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2606.12995"
 venue: "arXiv 2026"
 related:

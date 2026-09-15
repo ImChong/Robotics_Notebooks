@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, marl, motion-retargeting, motion-tracking, reinforcement-learning, mappo, sim2real, unitree-g1, dual-humanoid, human-human-interaction, contact-rich, arxiv2026]
 status: complete
-updated: 2026-06-10
+updated: 2026-09-15
 arxiv: "2603.02856"
 venue: "arXiv preprint"
 related:

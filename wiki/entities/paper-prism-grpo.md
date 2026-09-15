@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, reinforcement-learning, grpo, sample-efficiency, robotwin, openvla, execution-quality, amazon, ucla]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2608.17423"
 related:
   - ../methods/vla.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, humanoid, mllm]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.10895"
 code: https://huggingface.co/datasets/Alan123/reacthuman-benchmark-scaled
 related:

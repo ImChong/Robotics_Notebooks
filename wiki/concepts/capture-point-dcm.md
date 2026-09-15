@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Capture Point / DCM 用线性倒立摆的发散分量描述步行平衡，是步位规划和扰动恢复的核心直觉工具。"
-updated: 2026-08-17
+updated: 2026-09-15
 related:
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-fddc.md

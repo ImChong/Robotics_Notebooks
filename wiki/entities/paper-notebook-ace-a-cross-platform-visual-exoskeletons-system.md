@@ -11,7 +11,7 @@ tags:
   - ucsd
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2408.11805"
 code: https://github.com/ACETeleop/ACETeleop
 related:

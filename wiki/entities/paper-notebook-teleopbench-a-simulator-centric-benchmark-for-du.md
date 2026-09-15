@@ -12,7 +12,7 @@ tags:
   - cuhk
   - hkust-gz
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2505.12748"
 code: https://github.com/cyjdlhy/TeleOpBench
 related:

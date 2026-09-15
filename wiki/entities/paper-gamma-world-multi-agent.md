@@ -9,7 +9,7 @@ tags:
   - diffusion
   - nvidia
 status: complete
-updated: 2026-05-30
+updated: 2026-09-15
 arxiv: "2605.28816"
 code: https://github.com/nv-tlabs/Gamma-World
 related:

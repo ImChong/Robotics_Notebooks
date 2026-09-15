@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, simulation, contact, deformable, fem, graphics, gpu, zozo]
 status: complete
-updated: 2026-05-25
+updated: 2026-09-15
 code: https://github.com/st-tech/ppf-contact-solver#-technical-materials
 related:
   - ./ppf-contact-solver.md

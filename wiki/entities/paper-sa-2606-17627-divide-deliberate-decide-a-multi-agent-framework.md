@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.17627"
 venue: "arXiv 2026"
 summary: "A fully-local, zero-shot multi-agent framework where VLM specialists engage in structured deliberation with peer consultation, improving zero-shot action recognition performance"

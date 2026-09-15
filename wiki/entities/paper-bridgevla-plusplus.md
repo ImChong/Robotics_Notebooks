@@ -11,7 +11,7 @@ tags:
   - ucas
   - bytedance
 status: complete
-updated: 2026-08-08
+updated: 2026-09-15
 arxiv: "2608.05042"
 code: "https://github.com/BridgeVLA/BridgeVLA"
 related:

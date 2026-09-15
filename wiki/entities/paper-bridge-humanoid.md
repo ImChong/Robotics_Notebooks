@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, open-hardware, morphology-control, cmu, hust]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 arxiv: "2609.03497"
 related:
   - ../tasks/humanoid-locomotion.md

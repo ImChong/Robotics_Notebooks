@@ -10,7 +10,7 @@ tags:
   - stanford
   - cmu
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 summary: "逆强化学习从专家演示推断奖励函数，再交给 RL 求策略；MaxEnt 解决轨迹歧义，AIRL 追求可迁移奖励，GAIL 只做占用匹配。"
 related:
   - ./imitation-learning.md

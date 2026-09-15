@@ -10,7 +10,7 @@ tags:
   - lie-group
   - purdue
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2608.26076"
 venue: arXiv
 summary: "GraspMF（Purdue，arXiv:2608.26076）：SO(3)×R³ 积群上 Lie Group-constrained MeanFlow；≤5 NFE 对齐 ACRONYM 扩散/流 SR/EMD，15.5 ms（T=5）；Franka 真机 9/10·9/10·10/10；确认未开源。"

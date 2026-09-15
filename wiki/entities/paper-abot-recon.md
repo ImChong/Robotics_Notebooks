@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-reconstruction, streaming, monocular, slam, computer-vision, alibaba, amap-cvlab]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-15
 arxiv: "2608.27529"
 code: https://github.com/amap-cvlab/ABot-Recon
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2605.20752"
 venue: "arXiv 2025"
 summary: "Feed-forward 3D Gaussian world model for robotic manipulation."

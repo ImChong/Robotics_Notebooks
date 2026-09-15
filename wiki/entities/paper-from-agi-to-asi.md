@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, agi, asi, scaling-laws, foundation-models, world-models, multi-agent, google-deepmind, survey, ai-safety]
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 arxiv: "2606.12683"
 venue: "arXiv preprint (DeepMind technical report)"
 related:

@@ -9,7 +9,7 @@ tags:
   - osaka
   - u-tokyo
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2608.28108"
 venue: "arXiv 2026-08-28"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2607.04500"
 venue: "arXiv 2026"
 summary: "Geographic diversity outperforms data volume for cross-domain generalization; 63K geographically diverse scenes outperform 200K single-geography scenes."

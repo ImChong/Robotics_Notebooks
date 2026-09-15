@@ -8,7 +8,7 @@ tags:
   - manipulation
   - cmu
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.29967"
 code: https://github.com/owenk3/correct_vla
 related:

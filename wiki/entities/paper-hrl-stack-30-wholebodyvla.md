@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, vla, latent-action, whole-body-control, opendrivelab, agibot, hku, fudan]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2512.11047"
 venue: "ICLR 2026"
 related:

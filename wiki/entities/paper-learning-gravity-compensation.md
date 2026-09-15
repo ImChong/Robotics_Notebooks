@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, control, gravity, adaptive-control, sapienza]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-15
 venue: "IJACSP 1993"
 related:
   - ../concepts/gravity-compensation.md

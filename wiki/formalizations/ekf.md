@@ -13,7 +13,7 @@ sources:
   - ../../sources/papers/perception_localization.md
   - ../../sources/courses/mit_underactuated_kalman_lqr.md
 summary: "Extended Kalman Filter (EKF)"
-updated: 2026-09-04
+updated: 2026-09-15
 ---
 
 # Extended Kalman Filter (EKF)

@@ -16,7 +16,7 @@ tags:
   - cuhk
   - icra2026
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.11682"
 venue: "ICRA 2026"
 code: https://github.com/HybridRobotics/Ego-VCP

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, sam2, video-segmentation, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 arxiv: "2408.00714"
 code: https://github.com/facebookresearch/sam2
 related:

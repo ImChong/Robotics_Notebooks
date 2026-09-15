@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2507.00236"
 venue: "arXiv 2025"
 summary: "Proposes a novel sim2real transfer method that generates an adapted camera frame representation from the target domain aligned with the source domain distribution, leveraging foundation models with few-shot fine-tuning a"

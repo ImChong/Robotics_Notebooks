@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, perception, aerial, event-camera]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.11920"
 code: https://github.com/grasp-lyrl/evperiscope
 related:

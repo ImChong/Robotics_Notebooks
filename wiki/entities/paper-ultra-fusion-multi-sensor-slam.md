@@ -16,7 +16,7 @@ tags:
   - cqu
   - scu
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2606.21223"
 venue: "arXiv 2026"
 related:

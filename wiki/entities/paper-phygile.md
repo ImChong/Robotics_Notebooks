@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, text-to-motion, diffusion, motion-tracking, gmt, moe, whole-body-control, shanghai-ai-lab, agile-motion]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2603.19305"
 venue: "2026 · arXiv"
 related:

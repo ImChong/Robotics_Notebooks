@@ -14,7 +14,7 @@ sources:
   - ../../sources/papers/generalized_value_functions_gvf_primary_refs.md
   - ../../sources/blogs/sutton_one_step_trap.md
 summary: "广义价值函数（GVF）用策略条件的折扣 cumulant 累积定义预测性知识，Horde 架构可并行 off-policy 学习数千路长期预测。"
-updated: 2026-07-14
+updated: 2026-09-15
 ---
 
 # Generalized Value Functions (GVFs)

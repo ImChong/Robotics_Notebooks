@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, adagrad, adaptive, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "Adagrad 按参数维度累积历史梯度平方并做 per-parameter 学习率缩放，适合稀疏梯度，但学习率单调衰减可能导致后期停滞。"
 related:
   - ./rmsprop.md

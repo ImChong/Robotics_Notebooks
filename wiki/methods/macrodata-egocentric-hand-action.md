@@ -3,7 +3,7 @@ type: method
 tags: [egocentric, hand-pose, 3d-vision, data-engine, manipulation, imitation-learning, vla, macrodata, wilor, hawor]
 title: Macrodata Egocentric Hand-Action Pipeline
 summary: "Macrodata Labs 工程博客给出的 RGB-only 开源配方：保守 WiLoR 检测 + 时序 HaWoR 手重建 + 窗口化 VGGT-Omega 度量相机轨迹与窄后处理，把 egocentric 视频变成世界系 21 关节度量手轨迹；HOT3D Action MPJPE 52.04 mm、81.23% 覆盖、15.53 FPS@H100。"
-updated: 2026-09-07
+updated: 2026-09-15
 status: complete
 related:
   - ./wilor.md

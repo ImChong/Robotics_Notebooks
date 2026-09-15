@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, fabric, destacking, segmentation, manipulation, hku, osaka]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.10648"
 code: https://github.com/bhattner143/top-layer-fab-seg
 related:

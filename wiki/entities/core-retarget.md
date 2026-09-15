@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, contact-aware, mujoco, soma, kimodo, korea-university, kist, uiuc, unitree-g1]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 code: https://github.com/tmjeong1103/CoRe
 related:
   - ./paper-core.md

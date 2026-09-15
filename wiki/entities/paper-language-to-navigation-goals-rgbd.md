@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vln, semantic-navigation, ros2, nav2, rgb-d, mobile-robot, turtlebot, unitree-go2, upo]
 status: complete
-updated: 2026-08-23
+updated: 2026-09-15
 arxiv: "2607.13624"
 venue: "arXiv 2026"
 related:

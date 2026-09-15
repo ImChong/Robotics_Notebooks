@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.12783"
 venue: "arXiv 2026"
 summary: "Presents a coherent framework unifying diverse world modeling approaches through shared predictive structure; connects world modeling techniques to physical AI applications such as robotics and autonomous driving."

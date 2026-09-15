@@ -11,7 +11,7 @@ tags:
   - berkeley
   - cmu
 status: complete
-updated: 2026-08-03
+updated: 2026-09-15
 arxiv: "2607.05369"
 code: https://github.com/graph-robots/graph-as-policy
 project: https://graph-robots.github.io/gap/

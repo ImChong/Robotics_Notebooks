@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.18208"
 venue: "arXiv 2026"
 summary: "First recurrent architecture iteratively refining latent states with shared transformer blocks, 100× parameter efficiency."

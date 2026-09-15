@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, safety, deployment, jepa, casia]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2609.11445"
 code: https://github.com/HaoranPei-casia/FARM
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1, hku]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2605.18611"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md

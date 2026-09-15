@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, teleoperation, vr, mit]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.07933"
 related:
   - ../tasks/teleoperation.md

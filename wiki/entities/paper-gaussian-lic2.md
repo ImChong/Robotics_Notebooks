@@ -11,7 +11,7 @@ tags:
   - zju
   - mbzuai
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2507.04004"
 venue: "IJRR 2026 (extension); ICRA 2025 (Gaussian-LIC predecessor)"
 related:

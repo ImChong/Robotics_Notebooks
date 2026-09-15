@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2411.14499"
 venue: "arXiv 2024"
 summary: "Broad survey of world models with a focus on prediction and understanding."

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, hku]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2309.11351"
 venue: "2023 · SIGGRAPH Asia"
 code: https://github.com/Frank-ZY-Dou/CASE

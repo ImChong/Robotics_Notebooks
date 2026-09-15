@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-retargeting, transformer, humanoid, deep-learning, unified-model]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2601.07284"
 venue: "arXiv 2026"
 summary: "AdaMorph 用单一 embodiment-aware Transformer 把 SMPL 人类动作映射到 12 种人形：共享 intent encoder + AdaLN 形态调制 + 轻量 output adapter；课程式可微积分保证轨迹/朝向一致，零样本泛化未见舞蹈动作。"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, visual-cot, world-models, predictive-world-model, autonomous-driving, efficiency, xpeng]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-15
 arxiv: "2606.28758"
 related:
   - ../methods/vla.md

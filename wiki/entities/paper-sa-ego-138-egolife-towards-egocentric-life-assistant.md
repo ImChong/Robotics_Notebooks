@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "CVPR 2025"
 summary: "A project to develop an egocentric life assistant that accompanies and enhances personal efficiency through AI-powered wearable glasses"
 related:

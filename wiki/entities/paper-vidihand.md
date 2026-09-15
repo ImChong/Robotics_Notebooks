@@ -3,7 +3,7 @@ type: entity
 tags: [paper, hand-pose, egocentric, video-diffusion, perception, manipulation, embodied-ai, ntu, sjtu]
 status: complete
 summary: "ViDiHand（arXiv:2606.30308，NTU/SJTU）：hand-overlay 微调 Wan2.1-VACE，双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO；ARCTIC/HOT3D/HOI4D SOTA；项目页有 Code 链但仓库仍待发布。"
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2606.30308"
 code: "https://github.com/NTUYWANG103/ViDiHand"
 venue: "arXiv 2026"

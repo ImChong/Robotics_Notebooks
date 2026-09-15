@@ -11,8 +11,7 @@ related:
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/optimal_control_theory.md
-updated: 2026-08-09
-
+updated: 2026-09-15
 ---
 
 # Lyapunov 稳定性

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, in-hand-rotation, world-model, visuotactile, rssm, reinforcement-learning, sim2real, sharpa-robotics]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.07002"
 venue: "CoRL 2026"
 related:

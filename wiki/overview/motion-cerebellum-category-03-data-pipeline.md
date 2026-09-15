@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, data-pipeline]
 status: complete
-updated: 2026-06-18
+updated: 2026-09-15
 summary: "运动小脑 64 篇长文 · C 数据入口（9 篇）— 数据入口等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md

@@ -9,7 +9,7 @@ tags:
   - model-based-rl
   - vla
 status: complete
-updated: 2026-07-26
+updated: 2026-09-15
 related:
   - ../concepts/world-action-models.md
   - ./robot-world-models-training-loop-taxonomy.md

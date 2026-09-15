@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, wheeled, retargeting, hit]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.11357"
 related:
   - ../tasks/loco-manipulation.md

@@ -9,7 +9,7 @@ tags:
   - perception
   - robotics
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 arxiv: "1506.02640"
 venue: "CVPR 2016"
 code: https://github.com/pjreddie/darknet

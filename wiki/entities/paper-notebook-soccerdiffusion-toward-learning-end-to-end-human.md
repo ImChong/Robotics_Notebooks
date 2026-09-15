@@ -12,7 +12,7 @@ tags:
   - uni-hamburg
   - bit-bots
 status: complete
-updated: 2026-07-28
+updated: 2026-09-15
 arxiv: "2504.20808"
 code: https://github.com/bit-bots/SoccerDiffusion
 related:

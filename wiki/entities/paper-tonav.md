@@ -8,7 +8,7 @@ tags:
   - vla
   - hunan
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 arxiv: "2608.22296"
 related:
   - ../tasks/loco-manipulation.md

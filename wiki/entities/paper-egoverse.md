@@ -17,7 +17,7 @@ tags:
   - mit
 status: complete
 venue: arxiv
-updated: 2026-08-28
+updated: 2026-09-15
 code: https://github.com/GaTech-RL2/EgoVerse
 related:
   - ./paper-egowam-egocentric-human-wam-co-training.md

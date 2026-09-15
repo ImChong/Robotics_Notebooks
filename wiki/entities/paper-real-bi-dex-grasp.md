@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bimanual, dexterous-grasp, ddpm, force-sensing, iros]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.10383"
 code: https://github.com/zhangdana483/real_bi_dex_grasp
 related:

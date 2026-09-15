@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, jd]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-15
 arxiv: "2604.23570"
 code: https://robotdata-market.jdcloud.com/console/market
 summary: "大规模真实家政/零售等任务导向 Ego 数据，把「人类视频」推向机器人任务数据。"

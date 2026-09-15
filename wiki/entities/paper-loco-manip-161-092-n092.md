@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-15
 venue: curated
 summary: "161 篇策展索引 #092：Humanoid Touch Dream（IROS 2026）— 量化指标与机制详见 canonical 论文实体页。"
 related:

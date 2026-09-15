@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2511.07381"
 venue: "IEEE RA-L 2026"
 summary: "Exploits SO(2) symmetry of in-hand object rotation for sample-efficient visuotactile policy learning; first tactile learning method to explicitly encode tactile equivariance."

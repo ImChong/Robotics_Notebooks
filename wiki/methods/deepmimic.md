@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng, paper, humanoid, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 code: https://github.com/xbpeng/DeepMimic
 venue: curated
 related:

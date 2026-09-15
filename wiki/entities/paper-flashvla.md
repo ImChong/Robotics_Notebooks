@@ -11,7 +11,7 @@ tags:
   - ucsd
   - mit
 status: complete
-updated: 2026-08-31
+updated: 2026-09-15
 arxiv: "2608.27384"
 code: https://github.com/z-lab/flashvla
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, marl, motion-tracking, imitation-learning, reinforcement-learning, ppo, caregiving, human-human-interaction, phc, cvpr2026, cmu, keio]
 status: complete
-updated: 2026-06-03
+updated: 2026-09-15
 arxiv: "2603.11346"
 venue: "CVPR 2026"
 related:

@@ -12,7 +12,7 @@ tags:
   - pair-lab
   - vanderbilt
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.13362"
 related:
   - ../tasks/teleoperation.md

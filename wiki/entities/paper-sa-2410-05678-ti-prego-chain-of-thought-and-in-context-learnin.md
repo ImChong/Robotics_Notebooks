@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2410.05678"
 venue: "arXiv 2024"
 summary: "Enhances PREGO with chain-of-thought and in-context learning for improved online error detection"

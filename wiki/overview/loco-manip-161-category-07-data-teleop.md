@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 summary: "人形 Loco-Manip 161 篇 · 07 数据采集与遥操作系统（7 篇）— 训练数据如何高效采集。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

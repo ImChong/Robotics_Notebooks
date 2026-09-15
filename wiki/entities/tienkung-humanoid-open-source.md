@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, tienkung, x-humanoid]
 status: complete
-updated: 2026-08-06
+updated: 2026-09-15
 related:
   - ./x-humanoid.md
   - ./humanoid-robot.md

@@ -49,7 +49,7 @@ summary: "具身智能小站 2026-09-14 十一篇盘点：统一扩散 VLA、LIT
 - [Gripper MagBot](../entities/paper-gripper-magbot.md) — arXiv:2609.12883（**部分开源**）
 - [SCQ](../entities/paper-scq-rl.md) — arXiv:2609.12749（**待发布**）
 - [STAR](../entities/paper-star-vtla.md) — arXiv:2609.12549（**待发布**）
-- [ArtManip](../entities/paper-artmanip.md) — arXiv:2609.12498（**待发布**）
+- [ArtManip](../entities/paper-artmanip.md) — arXiv:2609.12498（**已开源**：[ArtGym](https://github.com/youngcv/artgym)）
 - [FoldNet++](../entities/paper-foldnet-plus-plus.md) — arXiv:2609.12433（**待发布**）
 - [Pelican-Sim 1.0](../entities/paper-pelican-sim.md) — arXiv:2609.12036（**部分开源**：占位仓 [ZouShilong1024/Pelican-Sim1.0](https://github.com/ZouShilong1024/Pelican-Sim1.0)，训练栈待发布）
 - [EVPeriscope](../entities/paper-evperiscope.md) — arXiv:2609.11920（**已开源**，复用）

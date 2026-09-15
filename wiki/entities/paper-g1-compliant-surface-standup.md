@@ -11,7 +11,7 @@ tags:
   - ppo
   - mujoco
 status: complete
-updated: 2026-08-25
+updated: 2026-09-15
 arxiv: "2608.20852"
 code: https://github.com/andireposit/Stand-Up-Motion-on-Compliant-Surface-for-Humanoid
 related:

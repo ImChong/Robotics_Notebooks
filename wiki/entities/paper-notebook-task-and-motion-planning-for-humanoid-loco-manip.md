@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2508.14099"
 venue: "2025.08"
 related:

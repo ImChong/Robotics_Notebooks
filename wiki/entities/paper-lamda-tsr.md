@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, autonomous-driving, vlm-distillation, robustness, clemson]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.08815"
 related:
   - ../methods/vla.md

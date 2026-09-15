@@ -14,7 +14,7 @@ tags:
   - georgia-tech
   - george-mason
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 arxiv: "2508.00097"
 venue: "SII 2026 (Best Paper)"
 code: https://github.com/XR-Robotics

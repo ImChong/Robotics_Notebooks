@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, reinforcement-learning, grpo, rlvr, llm, reasoning, post-training, ucla, princeton]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2606.04036"
 venue: "arXiv 2026"
 code: https://github.com/lauyikfung/SDPG

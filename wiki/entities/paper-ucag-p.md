@@ -11,7 +11,7 @@ tags:
   - xiaomi-robotics
   - umac
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2608.26058"
 code: https://github.com/Public-BOTs/UCAG-P
 related:

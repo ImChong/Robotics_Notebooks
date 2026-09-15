@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, tactile, force-aware, contact-rich, ntu, stanford, berkeley, mit, nus, georgia-tech]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.07558"
 code: https://github.com/NTUMARS/Awesome-Tactile-Force-aware-Robot-Learning
 related:

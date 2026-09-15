@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, reinforcement-learning, motion-imitation, sim2real, character-animation, sfu, nvidia, berkeley]
 status: complete
-updated: 2026-07-13
+updated: 2026-09-15
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ./paper-deeprl-locomotion-action-space-sca2017.md

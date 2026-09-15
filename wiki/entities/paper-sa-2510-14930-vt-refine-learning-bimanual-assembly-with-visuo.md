@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2510.14930"
 venue: "CoRL 2025"
 summary: "Combines real-world demonstrations, high-fidelity tactile simulation, and RL for precise bimanual assembly; diffusion policy trained on small demonstrations then refined via large-scale RL in simulated digital twin."

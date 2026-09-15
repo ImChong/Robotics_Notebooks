@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, long-horizon-manipulation, vla, agentic-framework, zju, sjtu]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.02653"
 related:
   - ../methods/vla.md

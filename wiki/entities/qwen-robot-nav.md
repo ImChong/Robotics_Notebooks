@@ -2,7 +2,7 @@
 type: entity
 tags: [navigation, vln, qwen, agentic, mobile-robot, autonomous-driving]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-15
 related:
   - ./qwen-robot-suite.md
   - ../tasks/vision-language-navigation.md

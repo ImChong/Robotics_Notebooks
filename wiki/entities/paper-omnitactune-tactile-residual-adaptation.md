@@ -11,7 +11,7 @@ tags:
   - imitation-learning
   - georgia-tech
 status: complete
-updated: 2026-08-02
+updated: 2026-09-15
 arxiv: "2607.03723"
 related:
   - ../concepts/visuo-tactile-fusion.md

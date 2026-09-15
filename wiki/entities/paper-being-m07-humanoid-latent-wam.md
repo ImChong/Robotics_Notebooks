@@ -11,7 +11,7 @@ tags:
   - unitree-g1
   - beingbeyond
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "BeingBeyond Technical Report 2026"
 related:
   - ../overview/wam-motion-control-five-paths.md

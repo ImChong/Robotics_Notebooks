@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, odometry, sensor-fusion, imu, lidar, slam, cmu, buffalo]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.25427"
 code: https://github.com/superxslam/SuperOdom
 related:

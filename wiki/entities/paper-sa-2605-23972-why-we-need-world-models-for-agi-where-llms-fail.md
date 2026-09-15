@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.23972"
 venue: "arXiv 2026"
 summary: "Argues that world models operate on latent states, making causal prediction and planning more natural."

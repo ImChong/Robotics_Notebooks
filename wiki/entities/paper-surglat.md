@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, surgical-robotics, attention, rcm, cuhk, sustech]
 status: complete
-updated: 2026-08-17
+updated: 2026-09-15
 arxiv: "2608.07876"
 related:
   - ../concepts/null-space-control.md

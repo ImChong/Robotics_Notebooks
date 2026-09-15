@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 venue: curated
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md

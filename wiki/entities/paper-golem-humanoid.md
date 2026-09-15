@@ -10,7 +10,7 @@ tags:
   - notre-dame
   - unitree
 status: complete
-updated: 2026-08-30
+updated: 2026-09-15
 arxiv: "2608.21550"
 related:
   - ../tasks/loco-manipulation.md

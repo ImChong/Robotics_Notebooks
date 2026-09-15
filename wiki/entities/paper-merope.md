@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, video-generation, camera-control, positional-encoding, diffusion, hkust]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 arxiv: "2609.01252"
 project: https://qiaozhijian.github.io/merope/
 summary: "MeRoPE（arXiv:2609.01252，HKUST 等）为相机可控视频生成提出范数保持的 Metric RoPE：正交射线旋转 + 多频 metric 平移 RoPE + 极线视差锚，在 nuScenes 大基线与 PanShot 多样光学上优于 UCPE/PRoPE；骨干 Wan2.2 TI2V-5B，代码待公开。"

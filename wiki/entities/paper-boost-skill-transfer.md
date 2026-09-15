@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, skill-transfer, vq-vae, imitation-learning, libero, snu, georgia-tech]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.10600"
 related:
   - ../methods/imitation-learning.md

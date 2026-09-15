@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, newton, second-order, numerical-methods, trajectory-optimization]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "牛顿法用 Hessian 构造局部二次模型求搜索方向，在强凸邻域二次收敛，是理解 Gauss-Newton、LM 与截断牛顿的曲率基准。"
 related:
   - ./gauss-newton.md

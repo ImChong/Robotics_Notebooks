@@ -3,7 +3,7 @@ title: 操作 VLA 与视频-动作架构选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-27
+updated: 2026-09-15
 related:
   - ../entities/paper-galaxea-g05.md
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md

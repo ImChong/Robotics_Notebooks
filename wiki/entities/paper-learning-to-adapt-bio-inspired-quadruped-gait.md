@@ -12,7 +12,7 @@ tags:
   - gait-selection
   - raisim
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 doi: "10.1038/s42256-025-01065-z"
 venue: "Nature Machine Intelligence 2025"
 related:

@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, muon, orthogonalization, llm-training, transformer, moonshot]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 summary: "Muon 对隐藏层 2D 权重先做 SGD-momentum，再用 Newton–Schulz 迭代近似正交化更新方向；原始提出为博客+代码，Moonshot 在 arXiv:2502.16982 证明其可扩展至 Billion-scale LLM 并约 2× 计算效率。"
 related:
   - ./adamw.md

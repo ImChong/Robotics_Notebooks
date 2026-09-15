@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2509.10063"
 venue: "arXiv 2025"
 summary: "Hardware sensor designed for high sensitivity and wide measurement range; digital twin model for simulation."

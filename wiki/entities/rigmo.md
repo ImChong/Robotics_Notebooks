@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, generative-animation, auto-rigging, mesh-sequence, gaussian-bones, vae, dit, snap, uiuc, ucsc, cmu, ntu, cvpr]
 status: complete
-updated: 2026-07-23
+updated: 2026-09-15
 venue: arXiv 2026 (CVPR 2026 per GitHub README)
 arxiv: "2601.06378"
 related:

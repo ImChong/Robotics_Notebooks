@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.15342"
 venue: "arXiv 2026"
 summary: "A benchmark for evaluating complex egocentric visual reasoning with spatiotemporally-dense human-annotated reasoning traces. Prompting frontier models with hints of 'where' and 'when' to look yields substantial performan"

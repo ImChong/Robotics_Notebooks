@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, skateboarding, hybrid-contact, sim2real, unitree-g1, teleai, shanghaitech, sjtu, hku, ustc]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-15
 arxiv: "2602.03205"
 venue: "RSS 2026"
 code: https://github.com/TeleHuman/humanoid_skateboarding

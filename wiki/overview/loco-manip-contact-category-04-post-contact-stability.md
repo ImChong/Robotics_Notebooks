@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, force-control, impedance-control]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 summary: "Loco-Manip 接触专题 · 04 接触后稳定（7 篇）— 力自适应、阻抗、柔顺、负载摆动与强接触下身体如何持续？"
 related:
   - ./loco-manip-contact-technology-map.md

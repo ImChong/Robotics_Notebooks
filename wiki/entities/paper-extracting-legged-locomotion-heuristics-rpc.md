@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mpc, locomotion, quadruped, mit, heuristics, control]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "ICRA 2020"
 related:
   - ./paper-bledt-rpc-thesis.md

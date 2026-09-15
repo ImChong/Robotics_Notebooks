@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, motion-retargeting, imitation-learning, reinforcement-learning, sim2real, unitree-g1]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 related:
   - ../concepts/motion-retargeting.md
   - ./motion-retargeting-gmr.md

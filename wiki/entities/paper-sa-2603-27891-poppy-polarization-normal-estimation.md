@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-vision, surface-reconstruction]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2603.27891"
 venue: "ECCV 2026 Oral"
 code: https://github.com/irnkim/poppy

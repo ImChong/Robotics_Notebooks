@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, motion-tracking, shanghai-ai-lab, sjtu]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 venue: "ICRA 2026 Oral"
 related:
   - ./paper-adamimic.md

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, education, autonomous-navigation, path-planning, slam, localization, python, textbook, mit]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-15
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../overview/autonomous-driving-core-algorithms-series.md

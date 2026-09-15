@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2605.24496"
 venue: "CVPR 2026 (EPIC-KITCHENS Challenge Champion Solution)"
 summary: "Proposes a decoupled verb-noun detection + dynamic weighted fusion strategy, achieving SOTA accuracy on long untrimmed videos based on VideoMAE-L features"

@@ -20,7 +20,7 @@ tags:
   - nvidia
   - ilia-larchenko
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2606.27163"
 code: https://github.com/IliaLarchenko/lehome_solution
 related:

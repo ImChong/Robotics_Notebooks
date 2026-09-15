@@ -2,7 +2,7 @@
 type: overview
 tags: [manipulation, category-hub, survey, data-scaling, imitation-learning]
 status: complete
-updated: 2026-07-08
+updated: 2026-09-15
 summary: "T-RO 5 篇精选 · 01 数据规模化（1 篇）— 任务/本体/演示者三维多样性如何影响操作 scaling？"
 related:
   - ./tro-manip-5-papers-technology-map.md

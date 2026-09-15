@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2603.20850"
 venue: "CVPR 2026 (Highlight)"
 summary: "Generates realistic bare-hand HOI videos from multi-modal sensing glove data, accompanied by the HandSense dataset"

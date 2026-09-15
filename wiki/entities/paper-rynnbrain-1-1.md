@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, alibaba, embodied-foundation-model, vla, qwen, spatial-grounding, 3d-grounding, contact-point, flow-matching, unitree, astribot, wuji-robotics, scaling, foundation-policy]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2607.17977"
 related:
   - ../methods/vla.md

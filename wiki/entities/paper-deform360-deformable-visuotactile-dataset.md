@@ -9,7 +9,7 @@ tags:
   - visuotactile
   - eccv
 status: complete
-updated: 2026-07-20
+updated: 2026-09-15
 arxiv: "2607.05390"
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md

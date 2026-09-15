@@ -14,7 +14,7 @@ tags:
   - shanghai-innovation-institute
   - cuhk
 status: complete
-updated: 2026-08-19
+updated: 2026-09-15
 arxiv: "2608.16885"
 code: https://github.com/sii-research/tau-0-vla
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, social-navigation, mppi, mpc]
 status: complete
-updated: 2026-08-18
+updated: 2026-09-15
 arxiv: "2608.08323"
 code: https://github.com/ChinmayMundane/PGIF_MPPI
 related:

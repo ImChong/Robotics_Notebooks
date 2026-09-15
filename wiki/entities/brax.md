@@ -3,7 +3,7 @@ type: entity
 tags: [software, simulation, jax, reinforcement-learning, differentiable-physics, google, deepmind]
 status: complete
 date: 2026-05-18
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./mujoco-mjx.md
   - ./mujoco-warp.md

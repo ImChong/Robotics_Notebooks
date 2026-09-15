@@ -12,7 +12,7 @@ tags:
   - mobile-manipulation
   - galaxea
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 arxiv: "2608.11739"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:

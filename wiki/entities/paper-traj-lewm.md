@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, world-models, latent-dynamics, planning, goal-conditioned, casia, sjtu, tsinghua, hku, ustc, pku]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2608.14125"
 venue: "arXiv 2026"
 code: https://github.com/XiaodiHuang-code/Traj_LeWM

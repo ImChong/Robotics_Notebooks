@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-grasping, contact-topology, generative-model, cea-list]
 status: complete
-updated: 2026-08-22
+updated: 2026-09-15
 arxiv: "2608.19776"
 related:
   - ../concepts/dexterous-kinematics.md

@@ -2,7 +2,7 @@
 type: formalization
 tags: [dynamics, robotics, aba, rnea, inverse-dynamics, forward-dynamics]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-15
 related:
   - ./lie-group-rigid-body-motions.md
   - ../concepts/floating-base-dynamics.md

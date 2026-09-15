@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, ucl, unitree-g1, affective-motion, text-driven-control, diffusion, social-hri, composable-diffusion]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-15
 arxiv: "2608.28213"
 venue: "arXiv 2026"
 summary: "PAMoR（arXiv:2608.28213，UCL）：从 G1 运动学闭式标定效价–唤醒（V-A），用可组合潜扩散（文本 + V/A 三先验）在 Unitree G1 上实时生成可独立编辑动作与情感风格的全身运动；感知 Top-1 0.384，接近人体表演 0.44；截至 2026-09-01 未开源。"

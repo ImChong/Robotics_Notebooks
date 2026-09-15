@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, search-and-rescue, exploration, ros2, unitree-go2, utec]
 status: complete
-updated: 2026-08-15
+updated: 2026-09-15
 arxiv: "2608.02571"
 code: https://github.com/ricardoGrando/go2_rescue_eval
 related:

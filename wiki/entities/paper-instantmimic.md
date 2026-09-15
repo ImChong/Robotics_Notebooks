@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, reinforcement-learning, gpu-training, motion-tracking, humanoid, snu, deepmimic]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-15
 arxiv: "2609.09821"
 code: https://github.com/Scripter36/InstantMimic
 related:

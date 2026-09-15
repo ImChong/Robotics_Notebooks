@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, video-generation, action-conditioned, manipulation, alibaba]
 status: complete
-updated: 2026-08-24
+updated: 2026-09-15
 arxiv: "2608.13489"
 code: https://github.com/AMAP-ML/DreamX-Phi
 related:

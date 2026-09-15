@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2301.01380"
 venue: "ICCV 2023"
 summary: "Proves for the first time that models trained with pure first-person data can outperform methods relying on third-person transfer"

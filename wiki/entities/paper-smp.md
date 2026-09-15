@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-prior, diffusion, score-matching, amp, sfu, nvidia, sony, stanford, snap, unitree-g1, siggraph]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-15
 arxiv: "2512.03028"
 venue: "ACM TOG (SIGGRAPH 2026)"
 related:

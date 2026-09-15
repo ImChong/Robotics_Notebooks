@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 venue: "GDPR Local 2026"
 summary: "Reports on strict scrutiny by European data protection authorities, MEPs, and the EDPB on **smart glasses**; the core issue is that **bystanders captured by cameras cannot meaningfully consent**. Both the French CNIL and"
 related:

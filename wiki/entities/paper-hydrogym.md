@@ -14,7 +14,7 @@ tags:
   - tum
   - kth
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 doi: "10.1038/s41586-026-10917-6"
 arxiv: "2512.17534"
 venue: "Nature 2026"

@@ -8,7 +8,7 @@ tags:
   - cuhk
   - oxford
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2609.01260"
 code: https://github.com/verayannn/System-1-and-System-2-in-Motion-Planning
 related:

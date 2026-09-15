@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, trajectory-optimization, contact-rich, contact-implicit, multiple-shooting, sim2real, unitree-g1, caltech, depaul, locomotion, motion-imitation]
 status: complete
-updated: 2026-08-07
+updated: 2026-09-15
 arxiv: "2608.03116"
 venue: "2026 · arXiv"
 code: https://github.com/sesteban951/shooting-for-contact

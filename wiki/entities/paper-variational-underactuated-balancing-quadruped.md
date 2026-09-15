@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, balance, optimal-control, quadruped, qp, notre-dame, mit]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 venue: "IEEE Access 2020"
 related:
   - ./mit-mini-cheetah.md

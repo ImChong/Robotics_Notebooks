@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, failure-recovery, libero, vla, dut]
 status: complete
-updated: 2026-09-08
+updated: 2026-09-15
 arxiv: "2609.05178"
 code: https://github.com/liulin815/LIBERO-Recovery
 related:

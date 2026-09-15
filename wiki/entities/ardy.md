@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, interactive, text-to-motion, nvidia, eth, siggraph, humanoid, open-source]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-15
 venue: SIGGRAPH 2026
 arxiv: "2607.08741"
 doi: "10.1145/3811284"

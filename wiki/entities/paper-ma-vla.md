@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, multi-arm, compositional-generalization, dut]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.25864"
 code: https://github.com/zhangzaibin/future-robots
 related:

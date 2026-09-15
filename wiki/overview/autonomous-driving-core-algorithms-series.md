@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-08-02
+updated: 2026-09-15
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ./e2e-autonomous-driving-top10-algorithms.md

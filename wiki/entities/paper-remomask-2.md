@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'motion-generation', 'retrieval-augmented']
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 arxiv: "2609.08365"
 venue: "arXiv 2026"
 code: https://github.com/AIGeeksGroup/ReMoMask-2

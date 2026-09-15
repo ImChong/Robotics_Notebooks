@@ -8,7 +8,7 @@ tags:
   - world-labs
   - shanghai-ai-lab
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 summary: "Fei-Fei / World Labs 把过载的「世界模型」按 POMDP 闭环拆成 Renderer（输出观测）、Simulator（输出状态）、Planner（输出动作）；仿真是枢纽。上海人工智能实验室补上表征轴，并指出功能分类只描述解码、不定义内部压缩。"
 related:
   - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md

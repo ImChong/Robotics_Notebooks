@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "loco-manipulation", "vision", "legged", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-09-15
 arxiv: "2403.16967"
 venue: "HMI curated · 2024"
 summary: "VBC（HMI P043）：特权高层先学任务目标再蒸馏为视觉策略，低层全身控制执行基座与手臂命令，明确感知规划与身体控制分工。"

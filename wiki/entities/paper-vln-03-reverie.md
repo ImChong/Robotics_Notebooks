@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, adelaide, georgia-tech]
 status: complete
-updated: 2026-07-10
+updated: 2026-09-15
 arxiv: "1904.10151"
 summary: "高层指令（目标物体 + 大致位置）下的远程导航与目标定位；结合路径标注与物体边界框。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2301.08243"
 venue: "arXiv 2023"
 summary: "Self-supervised learning from images with a joint-embedding predictive architecture."

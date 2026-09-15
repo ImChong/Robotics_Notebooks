@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, adam, adaptive, training]
 status: complete
-updated: 2026-06-27
+updated: 2026-09-15
 summary: "Adam 结合梯度一阶矩与平方梯度二阶矩的偏差校正估计，为每个参数提供自适应步长，是深度学习与机器人 RL 最常用的默认优化器之一。"
 related:
   - ./adamw.md

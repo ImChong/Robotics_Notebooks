@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, stereo-matching, depth-estimation, eth3d, computer-vision]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-15
 related:
   - ./paper-nbs-no-bias-stereo.md
   - ../methods/stereo-matching-foundation-models.md

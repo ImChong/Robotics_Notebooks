@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-state-estimation, slam, odometry, ekf, perception]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 summary: "状态估计知识链汇总：本体感知融合、SLAM/VIO/LIO 选型与 Kalman/优化估计框架，服务 locomotion 与导航中的位姿与速度估计。"
 related:
   - ../entities/paper-slamformer-infinity.md

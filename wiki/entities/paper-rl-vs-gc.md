@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadrotor, uav, geometric-control, reinforcement-learning, empirical-study, sim2real, isaac-lab, rss, upenn]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 arxiv: "2506.17832"
 venue: RSS 2025
 code: https://github.com/PratikKunapuli/rl-vs-gc

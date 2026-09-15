@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, sjtu]
 status: complete
-updated: 2026-08-26
+updated: 2026-09-15
 arxiv: "2502.20390"
 venue: "2025 · CVPR"
 code: https://github.com/Sirui-Xu/InterMimic

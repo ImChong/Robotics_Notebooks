@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, llm-reasoning, self-distillation, opsd, rlvr, grpo, math-reasoning, evermind, shanda, casia, ucas, whu, wuhan-ai-research]
 status: complete
-updated: 2026-08-08
+updated: 2026-09-15
 arxiv: "2608.06243"
 code: https://github.com/DBtxy/DASH-OPSD
 related:

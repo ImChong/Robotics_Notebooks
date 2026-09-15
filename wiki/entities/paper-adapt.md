@@ -11,7 +11,7 @@ tags:
   - shanghai-ai-lab
   - sjtu
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2608.20087"
 venue: "arXiv 2026"
 related:

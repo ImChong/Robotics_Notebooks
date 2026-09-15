@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, anu, adelaide]
 status: complete
-updated: 2026-06-25
+updated: 2026-09-15
 arxiv: "2011.13922"
 summary: "在 Transformer 中引入循环状态 token，将历史压缩后与当前全景、指令联合编码以输出下一步动作。"
 related:

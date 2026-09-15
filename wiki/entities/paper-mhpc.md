@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mpc, optimal-control, trajectory-optimization, quadruped, notre-dame]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 arxiv: "2010.08881"
 related:
   - ./paper-hs-ddp-legged.md

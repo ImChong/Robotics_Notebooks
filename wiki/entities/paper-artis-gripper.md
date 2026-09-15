@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, gripper, hardware, disassembly, tool-use, osaka, aist]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 arxiv: "2609.03362"
 code: https://github.com/RomanMykhailyshyn/artis
 related:

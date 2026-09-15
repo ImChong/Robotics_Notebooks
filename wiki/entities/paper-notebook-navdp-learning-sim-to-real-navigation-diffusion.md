@@ -13,7 +13,7 @@ tags:
   - hku
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-05
+updated: 2026-09-15
 arxiv: "2505.08712"
 code: https://github.com/InternRobotics/NavDP
 related:

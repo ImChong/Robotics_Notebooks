@@ -2,7 +2,7 @@
 type: concept
 tags: [terrain, simulation, domain-randomization, reinforcement-learning, curriculum-learning]
 status: complete
-updated: 2026-07-14
+updated: 2026-09-15
 related:
   - ./domain-randomization.md
   - ./curriculum-learning.md

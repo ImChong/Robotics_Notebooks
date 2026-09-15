@@ -11,7 +11,7 @@ tags:
   - mixture-of-transformers
   - dino
 status: complete
-updated: 2026-08-27
+updated: 2026-09-15
 arxiv: "2608.22403"
 related:
   - ../concepts/world-action-models.md

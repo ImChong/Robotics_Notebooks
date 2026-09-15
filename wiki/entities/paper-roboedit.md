@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-data, human-video, video-editing, cross-embodiment, manipulation, ucla, dataset]
 status: complete
-updated: 2026-08-21
+updated: 2026-09-15
 arxiv: "2608.18948"
 venue: "2026 · arXiv"
 related:

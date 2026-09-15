@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, vla, world-models]
 status: complete
-updated: 2026-07-22
+updated: 2026-09-15
 summary: "Loco-Manip 接触专题 · 05 VLA/WM（7 篇）— 上层模型能否调用带接触结构的全身动作接口？"
 related:
   - ./loco-manip-contact-technology-map.md

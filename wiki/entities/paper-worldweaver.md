@@ -11,7 +11,7 @@ tags:
   - ucla
   - adobe
 status: complete
-updated: 2026-07-27
+updated: 2026-09-15
 arxiv: "2607.21594"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md

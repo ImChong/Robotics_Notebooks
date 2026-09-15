@@ -2,7 +2,7 @@
 type: comparison
 tags: [hardware, actuator, qdd, open-source, humanoid, quadruped, foc, motor-control, odri, berkeley]
 status: complete
-updated: 2026-07-25
+updated: 2026-09-15
 related:
   - ../entities/odri-solo-and-bolt.md
   - ../entities/berkeley-humanoid-lite.md

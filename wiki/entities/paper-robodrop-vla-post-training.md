@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, post-training, data-curation, tsinghua]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.10021"
 related:
   - ../tasks/manipulation.md

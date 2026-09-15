@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-scene-interaction, reconstruction, physics-in-the-loop, sim2real, humanoid, ntu, shanghai-ai-lab, ace-robotics]
 status: complete
-updated: 2026-09-10
+updated: 2026-09-15
 arxiv: "2603.15612"
 venue: arXiv
 code: https://github.com/yukangcao/HSImul3R

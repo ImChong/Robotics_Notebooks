@@ -15,7 +15,7 @@ tags:
   - kiel
   - george-mason
 status: complete
-updated: 2026-08-09
+updated: 2026-09-15
 arxiv: "2606.30404"
 venue: "IROS 2026"
 related:

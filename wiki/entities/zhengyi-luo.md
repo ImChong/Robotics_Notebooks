@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, teleoperation, sim2real, motion-tracking, egocentric-vision, cmu, nvidia, gear]
 status: complete
-updated: 2026-06-23
+updated: 2026-09-15
 related:
   - ./smplolympics.md
   - ./jim-fan.md

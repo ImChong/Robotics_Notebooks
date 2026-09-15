@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-capture, imu, physics-simulation, smpl, dataset, cmu, keio, cvpr-2026]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-15
 arxiv: "2603.16233"
 venue: "2026 · CVPR"
 code: https://github.com/RyosukeHori/GRIP

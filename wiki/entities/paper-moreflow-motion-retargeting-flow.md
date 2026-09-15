@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-retargeting, deep-learning, flow-matching, vq-vae, humanoid, gatech]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-15
 arxiv: "2509.25600"
 venue: "arXiv 2025 · ICLR 2026 submitted"
 summary: "MoReFlow 用各角色 VQ-VAE motion tokenizer + conditional flow matching 无配对对齐潜空间，实现可逆、可条件的跨形态运动重定向；相对 GAN 式无监督更稳，覆盖人形与四足。"

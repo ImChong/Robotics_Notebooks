@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, loco-manip-contact-survey, compliance, impedance-control, contact-rich, ppo, teacher-student, sim2real, unitree-g1, stanford]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 arxiv: "2511.04679"
 venue: "arXiv 2025"
 code: https://github.com/Axellwppr/gentle-humanoid

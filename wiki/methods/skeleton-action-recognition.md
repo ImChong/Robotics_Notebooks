@@ -2,7 +2,7 @@
 type: method
 tags: [skeleton, action-recognition, open-vocabulary, language-alignment, heterogeneous, contrastive-learning, transformer]
 status: complete
-updated: 2026-05-01
+updated: 2026-09-15
 related:
   - ./imitation-learning.md
   - ./claw.md

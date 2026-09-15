@@ -12,7 +12,7 @@ tags:
   - vlm
   - llm
 status: complete
-updated: 2026-07-24
+updated: 2026-09-15
 arxiv: "2606.06390"
 code: https://github.com/Kairos-HomeWorld/HomeWorld
 related:

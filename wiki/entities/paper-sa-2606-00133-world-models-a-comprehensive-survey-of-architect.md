@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2606.00133"
 venue: "arXiv 2026"
 summary: "Comprehensive survey covering architectures, methodologies, reasoning paradigms, and applications of world models; proposes a multi-axis taxonomy organized along four dimensions."

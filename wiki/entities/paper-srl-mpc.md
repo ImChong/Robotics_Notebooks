@@ -10,7 +10,7 @@ tags:
   - hku
   - sustech
 status: complete
-updated: 2026-08-25
+updated: 2026-09-15
 arxiv: "2608.21175"
 code: https://github.com/hanruihua/srl_mpc
 related:

@@ -3,7 +3,7 @@ type: entity
 title: OMOMO（人–物交互动捕数据集）
 tags: [dataset, mocap, human-object-interaction, manipulation, smpl-h, stanford, siggraph-asia-2023]
 summary: "Stanford SIGGRAPH Asia 2023 人–物交互数据集：15 物体、约 10 h 全身操纵 MoCap（物体运动 + SMPL-H 人体），常被 OmniRetarget / ResMimic 等用作 G1 loco-manipulation 重定向源。"
-updated: 2026-06-16
+updated: 2026-09-15
 status: complete
 related:
   - ../concepts/motion-retargeting.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, compliance, impedance, admittance, loco-manipulation, teacher-student, unitree-g1, tohoku]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-15
 arxiv: "2608.25405"
 code: https://github.com/lac-humanoid/lac-code
 related:

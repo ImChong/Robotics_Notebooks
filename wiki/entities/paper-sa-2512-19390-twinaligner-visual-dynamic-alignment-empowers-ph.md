@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-08-10
+updated: 2026-09-15
 arxiv: "2512.19390"
 venue: "arXiv 2025"
 summary: "A novel Real2Sim2Real system that addresses both visual and dynamic gaps in robot learning by providing scalable data collection and establishing a trustworthy iterative cycle, accelerating algorithm development"

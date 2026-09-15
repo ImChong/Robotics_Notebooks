@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-08-28
+updated: 2026-09-15
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
