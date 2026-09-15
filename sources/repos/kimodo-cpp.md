@@ -18,6 +18,7 @@
 - 官方 Kimodo Python 栈全 GPU 约 **17 GB VRAM**（文本编码器占大头）；本仓把 **8B LLM2Vec 与运动去噪器串行加载**，把「本地 / 嵌入式 / 无 Python」推理从研究栈里拆出来
 - 与 llama.cpp **不是** 简单包一层：文本侧自实现 **双向 Llama + mean pooling**（LLM2Vec 改了因果注意力），运动侧是独立 root/body Transformer + DDIM
 - 机器人选型上它是 Kimodo **部署档**：能出骨架 GLB / C ABI 运动缓冲，但 **一般约束输入、77 关节 SOMA 展开、蒙皮 GLB、量化权重尚未实现**
+- [motion-bricks.cpp](./motion-bricks-cpp.md) Demo 可选播放 Kimodo 动画并接 GGML SONIC；Kimodo GLB→`.mbstyle` 直转仍为后续工作
 
 ## 能力边界（README，截至 2026-08）
 

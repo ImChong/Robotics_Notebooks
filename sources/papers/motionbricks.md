@@ -5,6 +5,7 @@ date: 2026-04-30
 url: "https://nvlabs.github.io/motionbricks/"
 arxiv: "https://arxiv.org/abs/2604.24833"
 github: "https://github.com/NVlabs/GR00T-WholeBodyControl/tree/main/motionbricks"
+community_cpp: "https://github.com/localai-org/motion-bricks.cpp"
 tags: ["generative-model", "motion-synthesis", "humanoid", "whole-body-control", "GR00T", "Isaac Lab"]
 ---
 
@@ -44,6 +45,11 @@ MotionBricks 采用**模块化潜空间生成底座**，结合高层行为系统
 - **GEAR-SONIC**：共同构成了连接虚拟动画与物理控制的运行环境。
 - **Isaac Lab**：用于机器人仿真与验证。
 - **SOMA Retargeter**：基于 Newton 的优化求解器，用于处理动捕数据到机器人的重定向。
+- **motion-bricks.cpp**：LocalAI 社区 C++/GGML G1 推理移植（[wiki/entities/motion-bricks-cpp.md](../../wiki/entities/motion-bricks-cpp.md)）。
+
+## 开源状态（2026-09-15 项目页核查）
+- **部分开源**：预览代码在 GR00T-WholeBodyControl/motionbricks（G1 交互 Demo + 合成训练管线）。
+- **待发布**：完整嵌入 GR00T WBC robotics formulation 的训练管线（项目页称约一个月后）。
 
 ---
 ## 参考资料

@@ -15,7 +15,7 @@
 ## 为什么值得保留
 
 - NVIDIA 官方实现，配套 [技术报告 PDF](https://research.nvidia.com/labs/sil/projects/kimodo/assets/kimodo_tech_report.pdf)、[项目页](https://research.nvidia.com/labs/sil/projects/kimodo/) 与 [在线文档](https://research.nvidia.com/labs/sil/projects/kimodo/docs)
-- 与 **SOMA（somaskel77）/ Unitree G1 / SMPL-X** 多骨架变体及 **BONES-SEED**、**Rigplay** 数据对齐，便于与 [ProtoMotions](../../wiki/entities/protomotions.md)、[MotionBricks](../../wiki/methods/motionbricks.md)、[GENMO/GEM](../../wiki/methods/genmo.md) 等人形栈对照
+- 与 **SOMA（somaskel77）/ Unitree G1 / SMPL-X** 多骨架变体及 **BONES-SEED**、**Rigplay** 数据对齐，便于与 [ProtoMotions](../../wiki/entities/protomotions.md)、[MotionBricks](../../wiki/methods/motionbricks.md)、[motion-bricks.cpp](../../wiki/entities/motion-bricks-cpp.md)、[GENMO/GEM](../../wiki/methods/genmo.md) 等人形栈对照
 - 提供 **CLI、交互式时间线 Demo、公开评测基准**（[Kimodo-Motion-Gen-Benchmark](https://huggingface.co/datasets/nvidia/Kimodo-Motion-Gen-Benchmark)）、评测管线代码与 [SEED-Timeline-Annotations](https://huggingface.co/datasets/nvidia/SEED-Timeline-Annotations) 细粒度时间轴文本标注
 
 ## 模型变体（README 摘要，2026-05）
