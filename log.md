@@ -1,5 +1,11 @@
 ## [2026-09-15] ingest | sources/papers/wiyh_arxiv_2512_24310.md — WIYH 论文实体：Oracle Suite + ~1045h 数据已开源，硬件/FM 待发布
 
+## [2026-09-15] ingest | sources/sites/robocoliseum.md + sources/repos/genie_sim_robocoliseum.md — 接入 RoboColiseum（智元 Genie Sim 四榜仿真挑战赛）；新建 wiki/entities/robocoliseum.md；互链 genie-sim-3、DM0.5、RoboDojo、具身评测选型链
+
+- **触发：** 用户指定 robocoliseum.ai / genie_sim skills 目录；DM0.5/OpenDM 二次补链（HF LeRobot、RoboDojo-Sim、英文博客）
+- **开源核查（RoboColiseum）：** **部分开源** — challenge skill + 协议在 genie_sim **已开源**；训练数据 ModelScope **已开放**；平台 API/榜单为托管服务；参赛者权重不上传
+- **DM0.5 增量：** 补 `DM05-Lerobot`、`DM05-MEM-Robodojo-Sim`、RoboColiseum 四榜 #1 快照；刷新 dexmal-dm05 / dexmal_opendm
+
 ## [2026-09-15] ingest | sources/sites/humanplus-1000.md — HumanPlus-1000（1000h 同步 ego+SMPL-H/MANO/SLAM）；预览 100 session HF 开源 + MIT viewer；升格 wiki/entities/humanplus-1000-dataset.md
 
 ## [2026-09-15] ingest | sources/papers/urdf_link_inertia_real_robot_check.md — URDF 连杆惯量对照真机：规范/CAD 符号/物理一致性/称重与 g(q)；升格 wiki/queries/urdf-link-inertia-real-robot-check.md

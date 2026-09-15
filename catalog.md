@@ -3096,6 +3096,7 @@
 - [RoboOrchardLab](wiki/entities/robo-orchard-lab.md) — RoboOrchardLab** 是 **Horizon Robotics（地平线）** 在 **RoboOrchard** 大项目下发布的 **Python 具身 AI 训练与评测框架**：核心 `📅unknown` `[entity_page]`
 - [RoboCasa / RoboCasa365](wiki/entities/robocasa.md) — RoboCasa** 是德州大学奥斯汀分校（UT Austin）团队发布的大规模 **厨房日常任务仿真框架**（MuJoCo + [robosuite](https://github.com/AR `📅unknown` `[entity_page]`
 - [RoboClaw](wiki/entities/roboclaw.md) — RoboClaw**（GitHub: MINT-SJTU/RoboClaw）是上海交通大学 **MINT 实验室 `📅unknown` `[entity_page]`
+- [RoboColiseum（Genie Sim 仿真挑战赛）](wiki/entities/robocoliseum.md) — RoboColiseum**（官网，榜单）是智元在 **[Ge `📅unknown` `[entity_page]`
 - [Robocurve](wiki/entities/robocurve.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`

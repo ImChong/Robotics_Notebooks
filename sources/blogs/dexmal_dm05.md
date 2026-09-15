@@ -9,6 +9,7 @@
 - **入库日期：** 2026-07-09
 - **修订日期：** 2026-08-08（补链官方开源仓 OpenDM 与 HF/ModelScope 权重集合）
 - **二次核查：** 2026-08-25（博客叙事与 OpenDM/HF 权重栈一致；无新增基准数值）
+- **三次核查：** 2026-09-15（补英文博客链、DM05-Lerobot、DM05-MEM-Robodojo-Sim、RoboColiseum 四榜 #1）
 - **前代模型：** DM0（2026-02 发布，Dexmal 第一代原生具身基础模型）
 - **开源代码：** <https://github.com/dexmal/opendm>（见 [dexmal_opendm.md](../repos/dexmal_opendm.md)）
 - **基础权重：** <https://huggingface.co/Dexmal/DM05>

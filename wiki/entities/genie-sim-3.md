@@ -2,11 +2,12 @@
 type: entity
 tags: [agibot, simulation, benchmark, sim2real, open-source]
 status: complete
-updated: 2026-06-26
+updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/agibot-june-2026-release-technology-map.md
   - ../overview/agibot-release-category-02-sim-training-eval.md
+  - ./robocoliseum.md
   - ./go-2.md
   - ../queries/simulator-selection-guide.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -14,6 +15,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/repos/genie_sim.md
   - ../../sources/repos/genie_sim_3.md
+  - ../../sources/repos/genie_sim_robocoliseum.md
+  - ../../sources/sites/robocoliseum.md
 summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持自然语言/图像生成可交互三维场景，提供 Genie Sim Benchmark 五类能力评测，并对接 RLinf、并行仿真与在线微调。"
 ---
 
@@ -37,6 +40,7 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 
 - **场景生成：** 一句话或一张图生成可漫游、可训练的三维世界，并输出 RGB、深度、激光雷达等多模态数据。
 - **Genie Sim Benchmark：** 五类核心能力——指令跟随、空间理解、操作执行、扰动适应、Sim2Real 迁移。
+- **RoboColiseum 在线挑战赛：** [RoboColiseum](./robocoliseum.md) 把仿真评测产品化为 **四块独立能力榜**（instruction / spatial / manip / robust）+ **WebSocket 隧道远程推理** + ModelScope **LeRobot v2.1** 训练数据；skill 集成于 genie_sim 开源仓。
 - **训练栈：** 支持 RLinf、并行仿真、标准 Gym 接口与 **在线微调**。
 - **Sim2Real 叙事：** 材料称相同模型在仿真与真机评测差异 **<10%**（策展文建议等待更多任务验证）。
 
@@ -53,6 +57,7 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 - [仿真训练与评测分类 hub](../overview/agibot-release-category-02-sim-training-eval.md)
 - [Paper Notebooks 索引实体](./genie-sim-3.md)
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)
+- [RoboColiseum](./robocoliseum.md) — Genie Sim 在线仿真挑战赛与四榜
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ / ④ 层：Genie Sim Benchmark 五类能力仿真评测与 sim2real 对接
 
 ## 参考来源
@@ -67,3 +72,4 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 
 - [机器人论文阅读笔记：Genie Sim 3.0](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot/Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot.html)
 - [Genie Sim GitHub](https://github.com/AgibotTech/genie_sim)
+- [RoboColiseum 官网](https://robocoliseum.ai/)

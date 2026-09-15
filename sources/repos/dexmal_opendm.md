@@ -9,18 +9,22 @@
 - **技术博客：** <https://www.dexmal.com/blog/dm0.5>（中文）、<https://www.dexmal.com/blog/dm0.5/index_en.html>（英文）
 - **基础权重：** <https://huggingface.co/Dexmal/DM05>（亦见 ModelScope <https://modelscope.cn/models/Dexmal/DM05>）
 - **权重集合：** <https://huggingface.co/collections/Dexmal/dm05> · ModelScope <https://www.modelscope.cn/collections/Dexmal/DM05>
+- **HF 组织：** <https://huggingface.co/Dexmal2026>
+- **LeRobot 基座：** <https://huggingface.co/Dexmal/DM05-Lerobot>
+- **RoboDojo-Sim：** <https://huggingface.co/Dexmal/DM05-MEM-Robodojo-Sim>
 - **MaaS：** <https://maas.dexmal.com/>
 - **入库日期：** 2026-08-08
 - **二次核查：** 2026-08-25（GitHub README + HF `Dexmal/DM05` 模型卡）
+- **三次核查：** 2026-09-15（补 `DM05-Lerobot`、`DM05-MEM-Robodojo-Sim`、英文博客、HF 组织页、RoboColiseum 榜单）
 - **一句话说明：** **OpenDM** 是 Dexmal 为 **DM0.5** 发布的 **训练 / 推理 / 数据注册 / 评测** 开源仓库：提供 **DM05** 基础权重与 LIBERO / RoboTwin2.0 / VLA-Arena / SO101 / Table30v2 等下游 checkpoint，统一经 `script/dm05_launcher.sh` 启动 HTTP 推理（default / TensorRT **fast** backend）与 JSONL SFT。
 
 ## 开源状态（项目页 / README 核查）
 
-| 项 | 状态（截至 2026-08-25） |
+| 项 | 状态（截至 2026-09-15） |
 |----|-------------------------|
 | **训练 / 推理代码** | **已开源**（`opendm/` 包 + `playground/` + `script/dm05_launcher.sh`） |
 | **基础权重** | **已开源**：[Dexmal/DM05](https://huggingface.co/Dexmal/DM05)（≈5.8B 参数量级；HF `pipeline_tag=robotics`） |
-| **下游评测权重** | **已开源**：`DM05-libero`、`DM05-robotwin2`、`DM05-SO101-Pick-Cube`、`DM05-Vla-Arena`、Table30v2 collection |
+| **下游评测权重** | **已开源**：`DM05-libero`、`DM05-robotwin2`、`DM05-SO101-Pick-Cube`、`DM05-Vla-Arena`、Table30v2 collection、`DM05-Lerobot`、`DM05-MEM-Robodojo-Sim` |
 | **数据集** | LIBERO / RoboTwin2.0 等经 HF 数据集卡与 runner 脚本获取（见 docs） |
 | **代码许可** | Apache-2.0（仓库） |
 | **权重许可** | **Gemma**（HF 模型卡 `license: gemma`；商用/再分发须遵守 Gemma 条款） |
@@ -44,6 +48,19 @@
 | **DM05-SO101-Pick-Cube** | SO101 pick-cube LoRA/SFT | [HF](https://huggingface.co/Dexmal/DM05-SO101-Pick-Cube) |
 | **DM05-VLA-Arena** | VLA-Arena 评测 | [HF](https://huggingface.co/Dexmal/DM05-Vla-Arena) |
 | **DM05-Table30v2** | RoboChallenge Table30 v2 集合 | [HF collection](https://huggingface.co/collections/Dexmal/dm05-table30v2) |
+| **DM05-Lerobot** | LeRobot 格式基座（`lerobot-train` SFT） | [HF](https://huggingface.co/Dexmal/DM05-Lerobot) |
+| **DM05-MEM-Robodojo-Sim** | RoboDojo 仿真 generalist（20 帧 head 历史） | [HF](https://huggingface.co/Dexmal/DM05-MEM-Robodojo-Sim) |
+
+## RoboColiseum 公开榜（2026-09-15 API 快照）
+
+| Board | Score | Rank |
+|-------|-------|------|
+| instruction | 0.844 | 1 |
+| spatial | 0.615 | 1 |
+| manip | 0.637 | 1 |
+| robust | 0.734 | 1 |
+
+榜单入口：<https://robocoliseum.ai/leaderboard>；平台见 [robocoliseum.md](../sites/robocoliseum.md)。
 
 ## README 报告基准（与 Pi0 / Pi0.5 / GROOT-N1.7 对照）
 
