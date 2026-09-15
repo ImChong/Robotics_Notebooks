@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/papers/puma_icra_2021_vizzo.md、scan2mesh_cvpr_2019_dai.md — 接入 PUMA（ICRA 2021 mesh LiDAR SLAM，PRBonn 已开源）与 Scan2Mesh（CVPR 2019 学习式 scan→mesh，官方未开源）；与 PUMA 同名消歧
+
 ## [2026-09-15] ingest | sources/repos/awesome-rsi.md — 接入 Prism-Shadow Awesome RSI（50 方法/29 基准）；新建实体页与站点归档；交叉链 recursive-self-improvement / RSI-Harness / HarnessBank
 
 ## [2026-09-15] ingest | sources/papers/pyroki_arxiv_2505_03728.md + go_with_the_track — PyRoki 升格完整实体（JAX IK/TO/retarget，已开源）；Go-with-the-Track SIGGRAPH 2026（reference-anchored point-tracks + Wan2.2，HF 模型/数据已开源）

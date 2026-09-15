@@ -1874,6 +1874,7 @@
 - [PRM-as-a-Judge：机器人执行过程评测](wiki/entities/paper-prm-as-a-judge.md) — PRM-as-a-Judge 1.5**（*A Toolkit for Robot Process Assessment*，[arXiv:2608.14284](https://arxiv.org `📅unknown` `[entity_page]`
 - [Progress Reward Modeling Survey（过程奖励综述 · arXiv:2607.21655）](wiki/entities/paper-progress-reward-modeling-survey.md) — Progress Reward Modeling for Robotic Learning: A Comprehensive Survey**（[arXiv:2607.21655](https:/ `📅unknown` `[entity_page]`
 - [Puffin-World（原生 3D 世界状态统一多模态世界模型 · arXiv:2609.04196）](wiki/entities/paper-puffin-world.md) — Puffin-World**（*Scaling a Unified Multimodal Model with Native 3D World States*，[arXiv:2609.04196 `📅unknown` `[entity_page]`
+- [PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping](wiki/entities/paper-puma-lidar-mesh-odometry.md) — PUMA**（*Poisson Surface Reconstruction for LiDAR Odometry and Mapping*；[ICRA 2021 PDF](https://www `📅unknown` `[entity_page]`
 - [PVRA](wiki/entities/paper-pvra.md) — PVRA: A Pointwise Key-point Voting Framework for Robotic Assembly**（[arXiv:2608.19968](https://arx `📅unknown` `[entity_page]`
 - [QLAUN：模块化准直驱 3D 打印四足](wiki/entities/paper-qlaun.md) — QLAUN**（arXiv:2609.03623）由 **黎巴嫩美国大学（Lebanese American Univers `📅unknown` `[entity_page]`
 - [Q-Planning：冻结 VLA 的离策略 Q 函数自改进](wiki/entities/paper-qplanning.md) — Q-Planning**（*Beyond Imitation: Self-Improving Robot Policies via Off-Policy Q-Planning*，[arXiv:26 `📅unknown` `[entity_page]`
@@ -2807,6 +2808,7 @@
 - [SayPlan](wiki/entities/paper-sayplan-llm-scene-graph-planning.md) — SayPlan** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上下文主导型 `📅unknown` `[entity_page]`
 - [SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）](wiki/entities/paper-sc3-eval.md) — SC3-Eval**（*SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation*，[ar `📅unknown` `[entity_page]`
 - [ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-scaling-bfm-humanoid.md) — ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scale `📅unknown` `[entity_page]`
+- [Scan2Mesh：From Unstructured Range Scans to 3D Meshes（CVPR 2019）](wiki/entities/paper-scan2mesh-cvpr2019-dai.md) — Scan2Mesh**（arXiv:1811.10464，[CVPR 2019 PDF](https://openacces `📅unknown` `[entity_page]`
 - [Robot-Powered Data Flywheel（RPDF）](wiki/entities/paper-scanford-robot-powered-data-flywheel.md) — Robot-Powered Data Flywheel**（*Deploying Robots in the Wild for Continual Data Collection and Foun `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
 - [Scheduled Inpainting：交互式生成式运动编辑（GME）](wiki/entities/paper-scheduled-inpainting-gme.md) — Scheduled inpainting**（*Interactive Generative Motion Editing via Scheduled Inpainting*，[arXiv:260 `📅unknown` `[entity_page]`
