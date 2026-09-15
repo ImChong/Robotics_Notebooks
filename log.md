@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/papers/mgdp_adv_sci_2026.md — MGDP（Adv. Sci. 2026）通用深度感知四足 DRL；HKU×BIT；arclab-hku/MGDP 已开源
+
 ## [2026-09-15] ingest | SAI + TRACE + Zeno-1 — 芝诺/ZJU 协作线：SAI 双机课程（待发布）、TRACE 记忆模块（corl-trace 已开源）、Zeno-1 3B 协作基础模型报告（待发布）
 
 ## [2026-09-15] ingest | sources/sites/skillx.md — SkillX（arXiv:2609.06718）项目页深读复核：松延动力×清华、E1 双部署后端；代码待发布

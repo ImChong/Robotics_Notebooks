@@ -1356,6 +1356,7 @@
 - [Meta-Ctrl：保证计划合法，同时留下常识](wiki/entities/paper-meta-ctrl.md) — Meta-Ctrl**（*Guaranteed Plan Generation by Decoupling Syntactic and Semantic Constraints*，[arXiv:2 `📅unknown` `[entity_page]`
 - [MetaRSI-v1：递归自改进系统的元递归自改进](wiki/entities/paper-metarsi-v1.md) — MetaRSI-v1**（项目页亦称 MetaRSI / RSI2；arXiv:2609.06396，[CosmosMind `📅unknown` `[entity_page]`
 - [MEVION：高力高速双臂数据采集系统](wiki/entities/paper-mevion.md) — MEVION** 是面向重载、高速双臂模仿学习的开源 leader–follower 数据采集平台，用四条 6-DoF 机械臂与平行夹爪扩展 ALOHA 的力速工作区。 `📅unknown` `[entity_page]`
+- [MGDP：四足通用深度感知模型](wiki/entities/paper-mgdp-generalized-depth-perception.md) — MGDP**（*Mastering a Generalized Depth Perception Model for Quadruped Locomotion*，*Advanced Science `📅unknown` `[entity_page]`
 - [Model Hierarchy Predictive Control (MHPC)](wiki/entities/paper-mhpc.md) — Li, Frei & Wensing（圣母大学，arXiv:2010.08881）** 提出 **MHPC**：把传统「先简 `📅unknown` `[entity_page]`
 - [AMI-EV：微扫视启发的事件相机系统](wiki/entities/paper-microsaccade-inspired-event-camera.md) — Microsaccade-inspired event camera for robotics**（Botao He*、Fei Gao*、Cornelia Fermüller* 等，ZJU FAS `📅unknown` `[entity_page]`
 - [MIGHTY（Hermite 样条高效 UAV 轨迹规划）](wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md) — MIGHTY**（*Hermite Spline-based Efficient Trajectory Planning*，arXiv:2511.10822，[IEEE RA-L 2026](ht `📅unknown` `[entity_page]`
