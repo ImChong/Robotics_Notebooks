@@ -7,7 +7,7 @@ tags:
   - vla
   - manipulation
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 arxiv: "2609.12549"
 related:
   - ../tasks/manipulation.md
@@ -71,7 +71,7 @@ summary: "200 小时双臂灵巧数据集 + VTLA 三部分配方：视触联合�
 
 - **纯视觉 VLA** — 遮挡发生在指尖时，视觉就是瞎的；STAR 把触觉接进同一套 VLA 接口（视触联合预训练 + 稀疏全局触觉 token + 稀疏未来触觉预测），属 [视触融合](../concepts/visuo-tactile-fusion.md) 在策略侧的落地，而不是只做感知层融合。
 - **稠密触觉序列输入** — 逐点逐帧喂触觉会把上下文长度打爆；STAR 选 **稀疏全局 token**，用少量维度概括接触分布，代价是丢掉细粒度接触位置。这个取舍是本页与一般 [触觉传感](../concepts/tactile-sensing.md) 方案最关键的分歧点。
-- **[ArtManip](./paper-artmanip.md)（同批）** — 同为灵巧接触任务，路线互为镜像：ArtManip 不加传感，靠 **仿真随机化 + 课程** 求泛化；STAR 不改仿真，靠 **200 小时真机视触数据 + 模型配方** 求泛化。
+- **[ArtManip](./paper-artmanip.md)（同批）** — 同为灵巧接触任务，路线互为镜像：ArtManip 不加传感，靠 **仿真程序化分布 + 特权蒸馏 + 课程** 求 **铰接 in-hand** 泛化（[ArtGym](https://github.com/youngcv/artgym) 已开源）；STAR 不改仿真，靠 **200 小时真机视触数据 + 模型配方** 求泛化。
 - **[Gripper MagBot](./paper-gripper-magbot.md)（同批）** — MagBot 把末端自由度压到 1-DoF 求低成本，STAR 在双臂灵巧手上加模态求精细度；本期「末端该加什么、减什么」的两端。
 - **[StarVLA](../methods/star-vla.md)（同名不同工作）** — 注意区分：那条线是「强 VLM 底座 + 简单 MLP 动作头」的极简 VLA 基准，与本页的视触语动作（VTLA）配方无关，只是名字相近。
 

@@ -23,7 +23,7 @@
 | 05 | Gripper MagBot | [2609.12883](https://arxiv.org/abs/2609.12883) | **部分开源** | [paper-gripper-magbot](../../wiki/entities/paper-gripper-magbot.md) |
 | 06 | SCQ | [2609.12749](https://arxiv.org/abs/2609.12749) | **待发布** | [paper-scq-rl](../../wiki/entities/paper-scq-rl.md) |
 | 07 | STAR | [2609.12549](https://arxiv.org/abs/2609.12549) | **待发布** | [paper-star-vtla](../../wiki/entities/paper-star-vtla.md) |
-| 08 | ArtManip | [2609.12498](https://arxiv.org/abs/2609.12498) | **待发布** | [paper-artmanip](../../wiki/entities/paper-artmanip.md) |
+| 08 | ArtManip | [2609.12498](https://arxiv.org/abs/2609.12498) | **已开源**（[ArtGym](https://github.com/youngcv/artgym)；2026-09-15 复核） | [paper-artmanip](../../wiki/entities/paper-artmanip.md) |
 | 09 | FoldNet++ | [2609.12433](https://arxiv.org/abs/2609.12433) | **待发布** | [paper-foldnet-plus-plus](../../wiki/entities/paper-foldnet-plus-plus.md) |
 | 10 | Pelican-Sim 1.0 | [2609.12036](https://arxiv.org/abs/2609.12036) | **待核实** | [paper-pelican-sim](../../wiki/entities/paper-pelican-sim.md) |
 | 11 | EVPeriscope | [2609.11920](https://arxiv.org/abs/2609.11920) | **已开源** | [paper-evperiscope](../../wiki/entities/paper-evperiscope.md)（复用） |
