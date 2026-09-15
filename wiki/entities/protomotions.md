@@ -56,7 +56,7 @@ summary: "ProtoMotions3 是 NVIDIA 开源的 GPU 加速人形仿真与学习框�
 | 方向 | 要点 |
 |------|------|
 | 数据 | AMASS 全量、PHUMA、BONES / SOMA 骨架、Kimodo 生成动作等；各数据集有独立 **getting_started** 准备文档。 |
-| 重定向 | v3 默认 **PyRoki** 优化式重定向（早期为 Mink）；目标是把 SMPL 系动作 **批量映射** 到指定机器人骨架。 |
+| 重定向 | v3 默认 [**PyRoki**](./paper-notebook-pyroki.md) 优化式重定向（早期为 Mink）；目标是把 SMPL 系动作 **批量映射** 到指定机器人骨架。 |
 | 训练 | 大规模 PPO 族训练循环 + 模块化 **Agent**（官方以 **ADD** 等为例展示「数十行级」接入新算法）。 |
 | 仿真 | Newton、IsaacLab、IsaacGym、MuJoCo 等组合；Genesis 在 README 中标记为未充分测试，但提供接口层示例。 |
 | 任务 | 以 **MDP 组件** 拼装控制逻辑、观测核、任务奖励与实验配置，避免单体式巨型 `Env` 类。 |

@@ -14,7 +14,7 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
-- 知识归纳见 wiki 实体页：[paper-notebook-pyroki](../../wiki/entities/paper-notebook-pyroki.md).
+- 知识归纳见 wiki 实体页：[paper-notebook-pyroki](../../wiki/entities/paper-notebook-pyroki.md)（已升格完整实体，见 [pyroki_arxiv_2505_03728.md](./pyroki_arxiv_2505_03728.md)）。
 
 ## 对 wiki 的映射
 
