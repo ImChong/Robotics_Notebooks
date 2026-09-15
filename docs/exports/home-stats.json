@@ -9,6 +9,39 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-sai-sequential-asymmetric-imitation.md",
+      "detail_id": "entity-paper-sai-sequential-asymmetric-imitation",
+      "label": "SAI：序贯非对称模仿学习耦合双机策略",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-trace-causal-memory.md",
+      "detail_id": "entity-paper-trace-causal-memory",
+      "label": "TRACE：轨迹路由因果记忆",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-zeno-1-collaborative-intelligence.md",
+      "detail_id": "entity-paper-zeno-1-collaborative-intelligence",
+      "label": "Zeno-1：机器人协作智能基础模型",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-dwmp.md",
       "detail_id": "entity-paper-dwmp",
       "label": "DWMP：双世界模型人形越障",
@@ -181,48 +214,18 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unipart.md",
-      "detail_id": "entity-paper-unipart",
-      "label": "UniPart（arXiv:2609.12898）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-visible-reachable-workspace-humanoid-design.md",
-      "detail_id": "entity-paper-visible-reachable-workspace-humanoid-design",
-      "label": "Visible-Reachable Workspace（arXiv:2609.08905）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/robolab.md",
-      "detail_id": "entity-robolab",
-      "label": "RoboLab（通用策略高保真仿真评测）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dwmp.md",
-    "detail_id": "entity-paper-dwmp",
-    "label": "DWMP：双世界模型人形越障",
+    "path": "wiki/entities/paper-sai-sequential-asymmetric-imitation.md",
+    "detail_id": "entity-paper-sai-sequential-asymmetric-imitation",
+    "label": "SAI：序贯非对称模仿学习耦合双机策略",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
-    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
