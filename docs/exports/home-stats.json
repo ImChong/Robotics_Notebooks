@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/deep-rl-off-on-policy-evolution.md",
+      "detail_id": "wiki-overview-deep-rl-off-on-policy-evolution",
+      "label": "深度 RL 两条主线：Off-policy 与 On-policy 演进",
+      "type": "overview",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-one-filter-ocr-quadruped-navigation.md",
       "detail_id": "entity-paper-one-filter-ocr-quadruped-navigation",
       "label": "One Filter to Deploy Them All：OCR 四足安全导航",
@@ -201,27 +210,16 @@
       "recency": "2026-09-15",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-assmpy-soft-robot-orientation.md",
-      "detail_id": "entity-paper-assmpy-soft-robot-orientation",
-      "label": "aSSMPy：软体机器人姿态 aSSM-MPC",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-one-filter-ocr-quadruped-navigation.md",
-    "detail_id": "entity-paper-one-filter-ocr-quadruped-navigation",
-    "label": "One Filter to Deploy Them All：OCR 四足安全导航",
-    "type": "entity",
+    "path": "wiki/overview/deep-rl-off-on-policy-evolution.md",
+    "detail_id": "wiki-overview-deep-rl-off-on-policy-evolution",
+    "label": "深度 RL 两条主线：Off-policy 与 On-policy 演进",
+    "type": "overview",
     "recency": "2026-09-15",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
