@@ -15,6 +15,7 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/humanoid-system-curriculum.md
   - ../entities/paper-super-odometry-2.md
+  - ../entities/paper-puma-lidar-mesh-odometry.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -55,6 +56,7 @@ summary: "里程计与激光雷达融合定位：高频 odom 预测 + 激光 sca
 | 2D EKF 松耦合 | 轮/腿 odom + 激光位姿观测 | 自研 EKF / robot_localization |
 | AMCL 粒子滤波 | odom 运动模型 + 激光似然 | [Nav2](../entities/navigation2.md) |
 | Scan-to-map | 当前扫描 ↔ 静态栅格 | [slam_toolbox](../entities/slam-toolbox.md) 定位模式 |
+| Scan-to-mesh | 当前扫描 ↔ **Poisson 三角 mesh** | [PUMA](../entities/paper-puma-lidar-mesh-odometry.md)（ray cast + P2L；研究管线） |
 | LIO | LiDAR + IMU（紧/松） | [FAST-LIO](../entities/fast-lio.md)、LIO-SAM |
 | 人形 KILV | 关节运动学 + IMU + LiDAR + 相机 | [KILVO](../entities/paper-kilvo.md)（ESIKF + 接触估计 + 模态自适应；代码待开放） |
 | 因子图 | 多传感器因子 | 后端平滑、回环 |
@@ -83,7 +85,7 @@ flowchart LR
 
 | 维度 | 2D 教学栈 | 3D LIO 栈 |
 |------|-----------|-----------|
-| 地图 | 占据栅格 | 点云/体素/ikd-Tree |
+| 地图 | 占据栅格 | 点云/体素/ikd-Tree/**三角 mesh** |
 | 退化 | 长廊、对称房间 | 少结构、雨雾 |
 | 人形特点 | 足式 odom 抖动大 | 需外参与时间同步更严 |
 
@@ -131,6 +133,7 @@ flowchart LR
 - [FOCUS](../entities/paper-focus-foot-observation-confidence.md) — 无外感知时的人形腿式 odom；连续 FK 可靠度进 EKF
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [Register Any Point（RAP）](../entities/paper-sa-2512-01850-register-any-point.md) — 流匹配单阶段多视角点云配准；RegX 跨域 benchmark（ECCV 2026；已开源）
+- [PUMA](../entities/paper-puma-lidar-mesh-odometry.md) — mesh 地图 LiDAR 里程计（Poisson + scan-to-mesh；PRBonn 已开源）
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 
 ## 参考来源

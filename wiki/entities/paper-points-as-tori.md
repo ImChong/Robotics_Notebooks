@@ -20,6 +20,7 @@ related:
   - ../methods/grasp-pose-estimation.md
   - ../methods/smooth-navigation-path-generation.md
   - ../entities/curobo.md
+  - ../entities/paper-puma-lidar-mesh-odometry.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/points_as_tori_arxiv_2607_16946.md
@@ -174,6 +175,7 @@ sequenceDiagram
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 点云感知上游
 - [Smooth Navigation Path Generation](../methods/smooth-navigation-path-generation.md) — 导航 SDF 软惩罚
 - [cuRobo](../entities/curobo.md) — GPU 运动规划中的 SDF 查询对照
+- [PUMA](./paper-puma-lidar-mesh-odometry.md) — PSR 用于 **在线 LiDAR mesh 地图** 与 scan-to-mesh 配准（几何 SLAM）
 
 ## 参考来源
 
