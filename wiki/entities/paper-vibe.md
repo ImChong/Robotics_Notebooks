@@ -2,20 +2,23 @@
 type: entity
 tags: [paper, humanoid, vision, motion-tracking, sim2real, unitree-g1, lora, post-training, usc]
 status: complete
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2609.09918"
 related:
   - ../methods/beyondmimic.md
   - ../methods/sonic-motion-tracking.md
+  - ./orcs.md
   - ./paper-yahmp.md
   - ./unitree-g1.md
   - ../concepts/whole-body-control.md
+  - ../concepts/privileged-training.md
   - ../tasks/loco-manipulation.md
   - ./paper-pac-man-perceptive-cbf-rl.md
 sources:
   - ../../sources/papers/vibe_arxiv_2609_09918.md
   - ../../sources/sites/vibe-control-github-io.md
-summary: "ViBe（arXiv:2609.09918）：USC 在 motion tracker 上做视觉后训练——预训练视觉编码器 + 多 query 抽取器 + LoRA；G1 四任务零样本 sim2real；2026-09-12 再核仍无代码。"
+  - ../../sources/repos/lok_i_orcs.md
+summary: "ViBe（arXiv:2609.09918）：USC 在 motion tracker 上做视觉后训练——预训练视觉编码器 + 多 query 抽取器 + LoRA；G1 四任务零样本 sim2real。2026-09-15：配套 ORCS 已开源特权后训练栈与 HF checkpoint；视觉模块与 student 蒸馏仍未发布。"
 ---
 
 # ViBe：感知人形全身控制的视觉行为适配
@@ -50,7 +53,7 @@ summary: "ViBe（arXiv:2609.09918）：USC 在 motion tracker 上做视觉后训
 | **平台** | Unitree G1（项目页演示） |
 | **arXiv** | [2609.09918](https://arxiv.org/abs/2609.09918)（截至 2026-09-12 仍为 **v1**，2026-09-09 提交） |
 | **项目页** | <https://lok-i.github.io/vibe-control> |
-| **开源** | **未开源**（2026-09-12 再核：项目页仍无代码/权重链接） |
+| **开源** | **部分开源**（2026-09-15）：[ORCS](./orcs.md) 发布特权后训练代码 + [HF `lkrajan/orcs`](https://huggingface.co/lkrajan/orcs) 四任务 checkpoint；**ViBe 视觉后训练与 oracle→student 蒸馏仍未发布** |
 
 ## 核心原理
 
@@ -93,7 +96,9 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（2026-09-12 再核：项目页仍无官方 GitHub 或可运行代码；发布后应补 `sources/repos/` 并更新本图。）
+**ViBe 视觉后训练：仍不适用**（视觉模块未随 ORCS 发布）。
+
+特权任务后训练（SONIC + LoRA adapter、Dodge / PerLoco / UOLM）见 [ORCS](./orcs.md) 实体页运行时序图与 `play`/`train` 入口。
 
 ## 实验与评测
 
@@ -108,13 +113,13 @@ flowchart TB
 - **读法：** 定量成功率、训练步数与观测接口以 **原文 PDF** 为准。
 - **sim2real 口径：** 论文声称 **零样本** 真机迁移；引用时需对齐具体任务与视觉扰动设定。
 
-### 自上次入库的变化（2026-09-12 再核）
+### 自上次入库的变化（2026-09-15 再核）
 
-| 项 | 2026-09-11 | 2026-09-12 |
+| 项 | 2026-09-12 | 2026-09-15 |
 |----|------------|------------|
 | arXiv 版本 | v1 | **仍 v1** |
-| 项目页内容 | 演示视频 + Repose Cube 交互 | **无可见更新** |
-| 代码/权重 | 未开源 | **仍未开源** |
+| 特权后训练栈 | 未发布 | **[ORCS](https://github.com/lok-i/orcs) 开源** + HF `v0.1.0` 四 checkpoint |
+| ViBe 视觉 / 蒸馏 | 未发布 | **仍未发布**（ORCS roadmap：student distillation） |
 
 ## 与其他工作对比
 
@@ -132,21 +137,25 @@ flowchart TB
 1. **架构读点：** 预训练视觉 + 多 query 抽取 + LoRA，比从零几何编码器更省样本、保留语义。
 2. **任务覆盖广：** 行走、跑酷、物体操作、动态躲避均有真机演示；**定量表以 PDF 为准**。
 3. **分层友好：** Repose Cube 证明 **简单 planner + ViBe 控制器** 可解目标导向任务。
-4. **开源边界（2026-09-12 再核）：** **未开源** — 自上次入库 **无变化**。
-5. **与 tracking 生态：** 可与 [BeyondMimic](../methods/beyondmimic.md)、[SONIC](../methods/sonic-motion-tracking.md) 等跟踪底座对照。
+4. **开源边界（2026-09-15）：** **部分开源** — [ORCS](./orcs.md) 覆盖特权 LoRA 后训练与公开 checkpoint；**视觉后训练与可部署 student 仍待发布**。
+5. **与 tracking 生态：** 可与 [BeyondMimic](../methods/beyondmimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[ORCS](./orcs.md) 等跟踪/后训练栈对照。
 
 ## 关联页面
 
+- [ORCS（特权后训练工具包）](./orcs.md)
 - [BeyondMimic](../methods/beyondmimic.md)
+- [SONIC](../methods/sonic-motion-tracking.md)
 - [YAHMP](./paper-yahmp.md)
 - [Unitree G1](./unitree-g1.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
+- [Privileged Training](../concepts/privileged-training.md)
 
 ## 参考来源
 
 - [vibe_arxiv_2609_09918.md](../../sources/papers/vibe_arxiv_2609_09918.md)
 - [vibe-control 项目页归档](../../sources/sites/vibe-control-github-io.md)
+- [lok_i_orcs.md](../../sources/repos/lok_i_orcs.md)
 - [arXiv:2609.09918](https://arxiv.org/abs/2609.09918)
 
 ## 推荐继续阅读

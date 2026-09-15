@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-15
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ../methods/motionbricks.md

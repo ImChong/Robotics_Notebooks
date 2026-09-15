@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-15",
-  "node_count": 4040,
-  "edge_count": 36085,
+  "node_count": 4041,
+  "edge_count": 36096,
   "coverage": {
-    "covered": 4012,
-    "total": 4012,
+    "covered": 4013,
+    "total": 4013,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/orcs.md",
+      "detail_id": "entity-orcs",
+      "label": "ORCS（Oracle Robot Control Synthesis）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/entities/reward-ai-om1.md",
       "detail_id": "entity-reward-ai-om1",
@@ -197,26 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-tamp-planning-11-papers-technology-map.md",
-      "detail_id": "wiki-overview-vla-tamp-planning-11-papers-technology-map",
-      "label": "VLA 微调与规划对齐：11 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/reward-ai-om1.md",
-    "detail_id": "entity-reward-ai-om1",
-    "label": "OM-1：通才操作策略（Reward AI）",
+    "path": "wiki/entities/orcs.md",
+    "detail_id": "entity-orcs",
+    "label": "ORCS（Oracle Robot Control Synthesis）",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
@@ -225,7 +228,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 456
+      "size": 457
     },
     {
       "label": "世界动作模型",
@@ -329,7 +332,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 158,
+      "degree": 160,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },

@@ -753,6 +753,7 @@
 - [OpenVSLAM](wiki/entities/openvslam.md) — OpenVSLAM** 强调 **模块可替换** 的视觉 SLAM 框架（特征、回环、优化器可插拔）。 `📅unknown` `[entity_page]`
 - [ORB-SLAM3](wiki/entities/orb-slam3.md) — ORB-SLAM3** 是学术与工程界广泛引用的 **视觉/视觉-惯性 SLAM** 开源库。 `📅unknown` `[entity_page]`
 - [Orca Hand（虎鲸巧手）](wiki/entities/orca-hand.md) — Orca Hand** 是一套面向 **仿生灵巧手** 复刻与二次开发的开源硬件/软件栈：**orcahand.com** 提供 CAD、 `📅unknown` `[entity_page]`
+- [ORCS（Oracle Robot Control Synthesis）](wiki/entities/orcs.md) — ORCS**（*Optimize, Retarget, Control Suite*，GitHub，[HF 权重](https:/ `📅unknown` `[entity_page]`
 - [OSQP](wiki/entities/osqp.md) — OSQP](https://github.com/osqp/osqp) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-moti `📅unknown` `[entity_page]`
 - [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
