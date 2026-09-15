@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, tamp, world-model, technology-map]
 status: complete
-updated: 2026-09-14
+updated: 2026-09-15
 related:
   - ../entities/paper-dynin-robotics.md
   - ../entities/paper-lit-latent-interface-training.md
@@ -51,7 +51,7 @@ summary: "具身智能小站 2026-09-14 十一篇盘点：统一扩散 VLA、LIT
 - [STAR](../entities/paper-star-vtla.md) — arXiv:2609.12549（**待发布**）
 - [ArtManip](../entities/paper-artmanip.md) — arXiv:2609.12498（**待发布**）
 - [FoldNet++](../entities/paper-foldnet-plus-plus.md) — arXiv:2609.12433（**待发布**）
-- [Pelican-Sim 1.0](../entities/paper-pelican-sim.md) — arXiv:2609.12036（**待核实**）
+- [Pelican-Sim 1.0](../entities/paper-pelican-sim.md) — arXiv:2609.12036（**部分开源**：占位仓 [ZouShilong1024/Pelican-Sim1.0](https://github.com/ZouShilong1024/Pelican-Sim1.0)，训练栈待发布）
 - [EVPeriscope](../entities/paper-evperiscope.md) — arXiv:2609.11920（**已开源**，复用）
 
 ## 关联页面

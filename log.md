@@ -1,3 +1,7 @@
+## [2026-09-15] ingest | sources/papers/dwmp_arxiv_2609_12347.md — 新建 DWMP（G1 双世界模型越障，Koopman+DepthDreamer）；未开源
+
+## [2026-09-15] ingest | LIT + Pelican-Sim 1.0 复核 — LIT 更正官方仓 MAGICLAB-NUS/LIT + HF 权重/数据；Pelican-Sim 更正 ZouShilong1024/Pelican-Sim1.0（部分开源占位仓）
+
 ## [2026-09-15] ingest | sources/papers/vla_precision_arxiv_2609_04355.md — 复核 VLA-Precision（arXiv:2609.04355 v2）；Apache-2.0 全栈已开源；补核心信息表与 Stage II 四进程时序图
 
 ## [2026-09-15] ingest | sources/repos/lok_i_orcs.md — 接入 ORCS 特权人形后训练工具包；开源：代码+HF checkpoint，ViBe 视觉未发布

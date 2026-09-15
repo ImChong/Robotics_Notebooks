@@ -10,6 +10,7 @@ related:
   - ../methods/attention-foot-placement.md
   - ../methods/generative-world-models.md
   - ./paper-p3.md
+  - ./paper-dwmp.md
   - ./paper-hiking-in-the-wild.md
   - ./paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ./paper-safe-stop-humanoid.md
@@ -121,6 +122,7 @@ flowchart LR
 | 匹配 PPO（本文消融） | 同奖励/感知/AMP/MoE，只去掉 RSSM；沟/踏石归零 |
 | [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) | 特权高程专家 + DAgger；WM-LOCO 无蒸馏、无双深度 |
 | [P³](./paper-p3.md) | 改 VAE-PPO 边缘似然；感知仍是高程 CNN。WM-LOCO 改的是 **预测特征** |
+| [DWMP](./paper-dwmp.md) | 同为 RSSM 深度 + G1；DWMP **双异构 WM**（Koopman+DepthDreamer）做 **场地越障**，非落脚沟/踏石 |
 | [Hiking in the Wild](./paper-hiking-in-the-wild.md) | 借足端体积点与边缘惩罚；Hiking 是野外跑酷课，不是沟/踏石归零对照 |
 | [CReF](./paper-cref.md) | 交叉注意融深度，无世界模型；平台是 X2 Ultra |
 | [Safe-Stop](./paper-safe-stop-humanoid.md) | 同为 G1，管的是急停可恢复性，不是落脚穿越 |
