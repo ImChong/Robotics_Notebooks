@@ -21,7 +21,9 @@ related:
   - ../formalizations/bellman-equation.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-v-simba.md
+  - ../overview/deep-rl-off-on-policy-evolution.md
 sources:
+  - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
