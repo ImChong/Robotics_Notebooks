@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/blogs/rewardai_om1.md — 接入 Reward AI OM-1/Omnibody 全栈；开源结论：确认未开源
+
 ## [2026-09-14] lint | 清零全库 22 条信息型预警：15 篇 paper-* 补「方法/评测/对比」三段式、FolDeX/FoldNet++ 补数据集速查四维、3 页补感知栈枢纽回链、paper-gpt-6-astra 补 venue/code、model 归入已覆盖术语
 
 ## [2026-09-14] ingest | sources/papers/robolab_arxiv_2604_09860.md + sources/sites/williamtheisen-ai-exploring.md — 接入 RoboLab 仿真评测基准与 William Theisen 交互式 AI 学习枢纽

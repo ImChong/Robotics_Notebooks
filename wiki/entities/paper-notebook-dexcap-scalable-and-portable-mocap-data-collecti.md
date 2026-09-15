@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-09-15
 arxiv: "2403.07788"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./reward-ai-om1.md
 sources:
   - ../../sources/papers/humanoid_pnb_dexcap-scalable-and-portable-mocap-data-collecti.md
 summary: "DexCap：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -58,6 +59,7 @@ DexCap 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 产业后继：[OM-1（Reward AI）](./reward-ai-om1.md) — 同团队 Omnibody 全栈（闭源；非论文等价物）
 
 ## 参考来源
 
