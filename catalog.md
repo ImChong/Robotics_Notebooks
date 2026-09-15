@@ -3221,6 +3221,7 @@
 - [U-Mamba](wiki/entities/u-mamba.md) — U-Mamba 在 U-Net 式编解码中嵌入 Mamba 块，增强医学图像分割的长程上下文，对应课程作业相关的医学分割线。 `📅unknown` `[entity_page]`
 - [UKMARSBOT](wiki/entities/ukmarsbot.md) — UKMARSBOT** 是 UK Micromouse and Robotics Society（UKMARS） 发布的 **低成本入门多用途开源机器 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO](wiki/entities/ultralytics.md) — Ultralytics**（ultralytics/ultralytics，文档 [docs.ultra `📅unknown` `[entity_page]`
+- [Understand Anything（Egonex）](wiki/entities/understand-anything.md) — Understand Anything**（[Egonex-AI/Understand-Anything](https://github.com/Egonex-AI/Understand-Anyt `📅unknown` `[entity_page]`
 - [UnifoLM-VLA-0（unifolm-vla）](wiki/entities/unifolm-vla.md) — UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识 `📅unknown` `[entity_page]`
 - [UnifoLM-WMA-0（unifolm-world-model-action）](wiki/entities/unifolm-world-model-action.md) — UnifoLM-WMA-0** 是 UnifoLM 家族中的 **World-Model–Action（WMA）** 架构：核心世界模型理解机器人与环境的物理交互，并提供 **仿真引擎** 与  `📅unknown` `[entity_page]`
 - [UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统](wiki/entities/unilab.md) — UniLab**（arXiv:2605.30313，清华等联合）质疑仿真主导机器人 RL 的默认前提：**高效训练是否必须把物理放在 GPU 上**。论文将问题重述为 **仿真–学习闭环的系统组织 `📅unknown` `[entity_page]`

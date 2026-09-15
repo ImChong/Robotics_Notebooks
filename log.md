@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/repos/understand-anything.md — 接入 Understand Anything（MIT 已开源）；代码库/wiki 交互知识图插件；新建实体并交叉 graphify / LLM Wiki
+
 ## [2026-09-15] ingest | sources/papers/freetoken_arxiv_2608_16157.md — 接入 FreeToken 边缘 MoE serving（已开源 FlashML-org/FreeToken）；新建 paper-freetoken 实体并交叉 kimi-k3 / dsh harness
 
 ## [2026-09-15] ingest | sources/papers/puma_icra_2021_vizzo.md、scan2mesh_cvpr_2019_dai.md — 接入 PUMA（ICRA 2021 mesh LiDAR SLAM，PRBonn 已开源）与 Scan2Mesh（CVPR 2019 学习式 scan→mesh，官方未开源）；与 PUMA 同名消歧

@@ -59,6 +59,7 @@ summary: "CLI-Anything（HKUDS）用 7 阶段管线把任意软件/代码库/API
 - **与本库代理栈正交互补：** [OpenClaw](openclaw.md) / [Hermes Agent](hermes-agent.md) 是 **宿主运行时**；[Agent Reach](agent-reach.md) 是 **外网读搜脚手架**；CLI-Anything 专责 **把专业软件暴露成可调用 CLI + skill**。仓内已有 `hermes-skill`、OpenClaw/Claude Code 插件路径。
 - **对抗 GUI-agent 叙事：** 技术报告明确批评截图—点击范式；选型时可作为「computer use 是否必须视觉」的对照锚点（见 [arXiv:2606.03854](https://arxiv.org/abs/2606.03854)）。
 - **与 MCP / Skills 的分工：** [MCP](../concepts/model-context-protocol.md) 标准化 **工具协议**；CLI-Anything 标准化 **应用侧命令面生成与分发**。同一软件可同时存在 MCP 桥（如 FreeCAD MCP）与 CLI harness——按宿主与部署选择。
+- **代码库认知互补：** [Understand Anything](./understand-anything.md) 不负责生成应用 CLI，而是把 **已有仓库** 编译成可浏览知识图；与 CLI-Anything 的「操控软件」分工不同。
 
 ## 核心原理
 
