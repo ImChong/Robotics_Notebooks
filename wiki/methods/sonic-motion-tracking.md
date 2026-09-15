@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-09-12
+updated: 2026-09-15
 arxiv: "2511.07820"
 doi: "10.1126/scirobotics.aed4592"
 venue: "Science Robotics 2026"
@@ -41,6 +41,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../entities/zhengyi-luo.md
   - ../entities/gr00t-wholebodycontrol.md
+  - ../entities/orcs.md
   - ../entities/nvidia-gear-lab.md
   - ../entities/holomotion.md
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
@@ -402,6 +403,7 @@ sequenceDiagram
 - [VLA](./vla.md)：SONIC 可作为低层执行器与 VLA 堆叠时的接口参考。
 - [Teleoperation](../tasks/teleoperation.md)：VR / 视频遥操作与规划器下身的工程组合参考。
 - [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)：官方训练 / 部署单仓与文档站入口。
+- [ORCS](../entities/orcs.md)：USC 开源 **SONIC + LoRA** 任务后训练工具包（Dodge / PerLoco / UOLM）；ViBe 配套工程，student 蒸馏在 roadmap。
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)：论文共同一作与项目核心贡献者之一，主页汇总 SONIC 与相邻人形工作入口。
 - [GentleHumanoid](./gentlehumanoid-motion-tracking.md)：同属 motion tracking 族，但显式优化 **上半身柔顺与可调接触力**，可与 SONIC 的规模化刚性跟踪对照阅读。
 - [Humanoid-GPT](../entities/paper-humanoid-gpt.md)：2B 帧 + Transformer 蒸馏路线；站点直接与 SONIC 对比 daily/dance/高动态/平衡四类行为。

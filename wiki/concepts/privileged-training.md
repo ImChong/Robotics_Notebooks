@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-09-02
+updated: 2026-09-15
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -32,6 +32,7 @@ related:
   - ../queries/sim2real-closed-loop-engineering.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
   - ../entities/htd-decoupled-wbc.md
+  - ../entities/orcs.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/privileged_training.md

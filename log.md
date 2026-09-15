@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/repos/lok_i_orcs.md — 接入 ORCS 特权人形后训练工具包；开源：代码+HF checkpoint，ViBe 视觉未发布
+
 ## [2026-09-15] ingest | sources/blogs/rewardai_om1.md — 接入 Reward AI OM-1/Omnibody 全栈；开源结论：确认未开源
 
 ## [2026-09-14] lint | 清零全库 22 条信息型预警：15 篇 paper-* 补「方法/评测/对比」三段式、FolDeX/FoldNet++ 补数据集速查四维、3 页补感知栈枢纽回链、paper-gpt-6-astra 补 venue/code、model 归入已覆盖术语
