@@ -52,6 +52,7 @@
 - [Awesome Egocentric Vision（sun254667 精选集）](wiki/entities/awesome-egocentric-vision.md) — Awesome Egocentric Vision**（GitHub：[`sun254667/awesome-egocentric-vision`](https://github.com/sun2 `📅unknown` `[entity_page]`
 - [Awesome-Real2Sim2Real（sun254667 精选集）](wiki/entities/awesome-real2sim2real.md) — Awesome-Real2Sim2Real**（GitHub：[`sun254667/Awesome-Real2Sim2Real`](https://github.com/sun254667/Aw `📅unknown` `[entity_page]`
 - [Awesome Robot Descriptions](wiki/entities/awesome-robot-descriptions.md) — Awesome Robot Descriptions](https://github.com/robot-descriptions/awesome-robot-descriptions) 是 `ro `📅unknown` `[entity_page]`
+- [Awesome RSI（Prism-Shadow 精选集）](wiki/entities/awesome-rsi.md) — Awesome RSI**（GitHub：Prism-Shadow/awesome-rsi，站点：[p `📅unknown` `[entity_page]`
 - [Awesome Text-to-Motion（Zilize 精选集）](wiki/entities/awesome-text-to-motion-zilize.md) — Awesome Text-to-Motion**（GitHub 仓名 `awesome-text-to-motion`）是一份 **文本驱动人体运动生成** 的 curated 列表：按 **Su `📅unknown` `[entity_page]`
 - [Awesome Touch（sun254667 精选集）](wiki/entities/awesome-touch.md) — Awesome Touch**（GitHub：`sun254667/awesome-touch`）是一份 `📅unknown` `[entity_page]`
 - [Awesome World Models（sun254667 精选集）](wiki/entities/awesome-world-models.md) — Awesome World Models**（GitHub：[`sun254667/awesome-world-models`](https://github.com/sun254667/awes `📅unknown` `[entity_page]`

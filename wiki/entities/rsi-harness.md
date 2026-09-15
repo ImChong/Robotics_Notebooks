@@ -20,6 +20,7 @@ related:
   - ./hermes-agent.md
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-auto-research.md
+  - ./awesome-rsi.md
   - ../queries/real-robot-policy-autoresearch-harness.md
 sources:
   - ../../sources/repos/rsi-harness.md
@@ -169,6 +170,7 @@ sequenceDiagram
 - [karpathy/autoresearch](./karpathy-autoresearch.md) — 最小 train.py 实验环
 - [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方 agent OS
 - [递归自改进](../concepts/recursive-self-improvement.md) — RSI 概念谱系
+- [Awesome RSI](./awesome-rsi.md) — Harness code artifact 文献索引
 
 ## 参考来源
 

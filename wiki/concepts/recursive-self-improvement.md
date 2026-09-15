@@ -16,9 +16,12 @@ related:
   - ../entities/sol-pi.md
   - ../entities/paper-metarsi-v1.md
   - ../entities/rsi-harness.md
+  - ../entities/awesome-rsi.md
 sources:
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
+  - ../../sources/repos/awesome-rsi.md
+  - ../../sources/sites/awesome-rsi-github-io.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
 ---
 
@@ -109,14 +112,18 @@ flowchart LR
 - [具身规模法则](./embodied-scaling-laws.md) · [Bitter Lesson](./bitter-lesson.md)
 - [From AGI to ASI 白皮书实体](../entities/paper-from-agi-to-asi.md) — 另一条「能力跃迁」论述，勿与 RSI 机制混读
 - [SoL-Pi](../entities/sol-pi.md) — 「先让 harness 更省再 scale RSI」的工业实例；efficiency for efficiency 愿景
+- [Awesome RSI](../entities/awesome-rsi.md) — agent 层 RSI 方法/基准策展（artifact × mode 索引）
 
 ## 参考来源
 
 - [When AI builds itself（Anthropic Institute 归档）](../../sources/sites/anthropic-recursive-self-improvement.md)
 - [AI Auto-Research 综述策展](../../sources/papers/ai_auto_research_survey_2605_18661.md)
+- [Awesome RSI 仓库归档](../../sources/repos/awesome-rsi.md)
+- [Awesome RSI 站点归档](../../sources/sites/awesome-rsi-github-io.md)
 
 ## 推荐继续阅读
 
 - 原文：<https://www.anthropic.com/institute/recursive-self-improvement>
 - METR 任务时程（文内主公开锚点）
 - Kong et al., *AI for Auto-Research* — [arXiv:2605.18661](https://arxiv.org/abs/2605.18661)
+- [Awesome RSI Methods 页](https://prism-shadow.github.io/awesome-rsi/#methods) — 按 artifact 筛选 agent 自进化文献
