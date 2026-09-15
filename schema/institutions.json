@@ -2313,6 +2313,13 @@
         "reconova-information-technology"
       ]
     },
+    "reward-ai": {
+      "label": "励元智能（Reward AI）",
+      "aliases": [
+        "reward-ai",
+        "rewardai"
+      ]
+    },
     "embodied-ai-lab": {
       "label": "具身智能研究室（Embodied AI Lab）",
       "aliases": [
