@@ -152,8 +152,21 @@ print("joint acceleration command:", qdd_star)
 ### Centroidal Dynamics
 用质心动力学代替全关节动力学，更高效但精度略低。
 
+## 经典理论线（Sentis–Khatib）
+
+| 顺序 | 文献 | 本库节点 |
+|------|------|----------|
+| 1 | Khatib (1987) Operational Space Formulation | [OSF 实体](../entities/paper-operational-space-formulation.md) |
+| 2 | Khatib et al. (2004) *Whole body dynamic behavior and control of human-like robots* | [IJHR 2004 实体](../entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md) |
+| 3 | Sentis & Khatib (2006) *A Whole-Body Control Framework for Humanoids Operating in Human Environments* | [ICRA 2006 实体](../entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md) |
+| 4 | Fok et al. (2015) ControlIt! WBOSC 软件 | [ControlIt!](../entities/controlit.md) |
+
+四足 **MPC→WBC** 开源参考：[legbot-MPC-WBC](../entities/legbot-mpc-wbc.md)。总览见 [hub-wbc](../overview/hub-wbc.md)。
+
 ## 参考来源
 
+- [khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md](../../sources/papers/khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md) — WBC 系统化起点（IJHR 2004）
+- [sentis_khatib_icra_2006_whole_body_control_framework.md](../../sources/papers/sentis_khatib_icra_2006_whole_body_control_framework.md) — 人形环境 WBC 框架（ICRA 2006）
 - Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文
 - Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作
 - [sources/repos/isaaclab_decoupled_wbc.md](../../sources/repos/isaaclab_decoupled_wbc.md) — HTD 解耦 WBC（Isaac Lab teacher/student + G1 部署）

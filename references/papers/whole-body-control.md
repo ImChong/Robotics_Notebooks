@@ -11,6 +11,13 @@
 
 ## 代表性论文
 
+### 经典理论线（Sentis–Khatib）
+
+- **Khatib (1987)** — *Operational Space Formulation* — 操作空间运动/力统一；见 [OSF 实体](../../wiki/entities/paper-operational-space-formulation.md)。
+- **Khatib et al. (2004)** — *Whole body dynamic behavior and control of human-like robots* (IJHR) — WBC 系统化起点；见 [IJHR 2004 实体](../../wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md)。
+- **Sentis & Khatib (2006)** — *A Whole-Body Control Framework for Humanoids Operating in Human Environments* (ICRA) — 代表性人形环境框架；见 [ICRA 2006 实体](../../wiki/entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md)。
+- **Fok et al. (2015)** — *ControlIt!* (arXiv:1506.01075) — WBOSC 开源软件；见 [ControlIt!](../../wiki/entities/controlit.md)。
+
 ### 核心方法论
 
 - **Task Space Inverse Dynamics (TSID)** (Del Prete et al.) — 提出在接触约束下的 prioritized motion-force 控制框架，统一求解加速度与接触力。
@@ -20,6 +27,7 @@
 ### 工程框架与工具
 
 - **Mastalli et al. (2020)** — *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control*. 为 WBC 与轨迹优化提供高效求解器。
+- **legbot-MPC-WBC** ([Robot-Nav](https://github.com/Robot-Nav/legbot-MPC-WBC)) — 四足 Convex MPC + WBC 分支 sim2sim/sim2real 参考；见 [legbot-mpc-wbc 实体](../../wiki/entities/legbot-mpc-wbc.md)。
 
 ### 稳定性与平衡分析
 
