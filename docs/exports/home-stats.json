@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/orcs.md",
+      "detail_id": "entity-orcs",
+      "label": "ORCS（Oracle Robot Control Synthesis）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/reward-ai-om1.md",
       "detail_id": "entity-reward-ai-om1",
       "label": "OM-1：通才操作策略（Reward AI）",
@@ -197,26 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-tamp-planning-11-papers-technology-map.md",
-      "detail_id": "wiki-overview-vla-tamp-planning-11-papers-technology-map",
-      "label": "VLA 微调与规划对齐：11 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/reward-ai-om1.md",
-    "detail_id": "entity-reward-ai-om1",
-    "label": "OM-1：通才操作策略（Reward AI）",
+    "path": "wiki/entities/orcs.md",
+    "detail_id": "entity-orcs",
+    "label": "ORCS（Oracle Robot Control Synthesis）",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
