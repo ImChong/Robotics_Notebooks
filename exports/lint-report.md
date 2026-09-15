@@ -2,7 +2,7 @@
 
 ## [2026-09-15] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **24** 条信息型预警）：
+共发现 **0** 个问题（另含 **26** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -101,18 +101,20 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（17 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（19 个）
 - wiki/entities/paper-act-lam.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-assmpy-soft-robot-orientation.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-effvla.md（缺 对比）
 - wiki/entities/paper-emog.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-fmappo.md（缺 方法 / 评测 / 对比）
+- wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md（缺 评测）
 - wiki/entities/paper-language-guided-tactile.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-motionbricks.md（缺 对比）
 - wiki/entities/paper-puma-lidar-mesh-odometry.md（缺 对比）
 - wiki/entities/paper-sai-sequential-asymmetric-imitation.md（缺 对比）
 - wiki/entities/paper-saigen.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-scan2mesh-cvpr2019-dai.md（缺 对比）
+- wiki/entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md（缺 评测）
 - wiki/entities/paper-trace-causal-memory.md（缺 对比）
 - wiki/entities/paper-track4world.md（缺 对比）
 - wiki/entities/paper-vlbiman-plus.md（缺 方法 / 评测 / 对比）
@@ -148,4 +150,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4043/4043 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4047/4047 (100%) wiki/entity 页有 ingest 来源
