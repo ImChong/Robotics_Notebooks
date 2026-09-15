@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/motion-bricks-cpp.md",
+      "detail_id": "entity-motion-bricks-cpp",
+      "label": "motion-bricks.cpp（C++/GGML 本地 MotionBricks 运行时）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-motionbricks.md",
+      "detail_id": "entity-paper-motionbricks",
+      "label": "MotionBricks：模块化潜空间实时运动生成",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-track4world.md",
+      "detail_id": "entity-paper-track4world",
+      "label": "Track4World：前馈世界系全像素稠密 3D 跟踪",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/robocoliseum.md",
       "detail_id": "entity-robocoliseum",
       "label": "RoboColiseum（Genie Sim 仿真挑战赛）",
@@ -183,48 +215,18 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-foldnet-plus-plus.md",
-      "detail_id": "entity-paper-foldnet-plus-plus",
-      "label": "FoldNet++（arXiv:2609.12433）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gpt-6-astra-embodied-policy.md",
-      "detail_id": "entity-paper-gpt-6-astra-embodied-policy",
-      "label": "GPT 6 Astra as an Embodied Policy",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gripper-magbot.md",
-      "detail_id": "entity-paper-gripper-magbot",
-      "label": "Gripper MagBot（arXiv:2609.12883）",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robocoliseum.md",
-    "detail_id": "entity-robocoliseum",
-    "label": "RoboColiseum（Genie Sim 仿真挑战赛）",
+    "path": "wiki/entities/motion-bricks-cpp.md",
+    "detail_id": "entity-motion-bricks-cpp",
+    "label": "motion-bricks.cpp（C++/GGML 本地 MotionBricks 运行时）",
     "type": "entity",
     "recency": "2026-09-15",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
