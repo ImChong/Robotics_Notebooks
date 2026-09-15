@@ -1,3 +1,5 @@
+## [2026-09-15] ingest | sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md — 9篇盘点+EffVLA；9新建实体+PhysBrain复用；ACT-LAM/EffVLA/X-WBC等独立节点
+
 ## [2026-09-15] ingest | motion-bricks.cpp / MotionBricks / Kimodo 交叉链 / Track4World — 新建 motion-bricks-cpp、paper-motionbricks、paper-track4world 实体与 sources；Kimodo 补 motion-bricks.cpp 下游；Track4World 已开源（HF+GitHub）
 
 ## [2026-09-15] ingest | sources/papers/wiyh_arxiv_2512_24310.md — WIYH 论文实体：Oracle Suite + ~1045h 数据已开源，硬件/FM 待发布

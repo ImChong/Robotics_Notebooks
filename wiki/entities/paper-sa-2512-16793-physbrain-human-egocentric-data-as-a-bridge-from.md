@@ -2,8 +2,8 @@
 type: entity
 tags: [paper, deepcybo, zhongguancun-academy, zgca, embodied-foundation-model, vla, qwen, ego, world-model, action-piece, awesome-egocentric-vision]
 status: complete
-updated: 2026-09-13
-arxiv: "2512.16793"
+updated: 2026-09-15
+arxiv: "2609.14973"
 code: https://github.com/DeepCybo-PhysAI/PhysBrainEvalKit
 related:
   - ../concepts/foundation-policy.md
@@ -16,9 +16,12 @@ related:
   - ./paper-human-as-humanoid.md
   - ./awesome-egocentric-vision.md
   - ../overview/sun-awesome-ego-technology-map.md
+  - ../overview/embodied-resources-10-papers-technology-map.md
 sources:
+  - ../../sources/papers/physbrain_15_arxiv_2609_14973.md
   - ../../sources/papers/physbrain_1_5_technical_report_2026.md
   - ../../sources/papers/sun_awesome_ego_2512_16793_physbrain-human-egocentric-data-as-a-bri.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md
   - ../../sources/sites/physbrain-1-5-github-io.md
   - ../../sources/repos/physbrain-1-5.md
   - ../../sources/repos/physbrain-eval-kit.md
