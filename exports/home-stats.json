@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-15",
-  "node_count": 4048,
-  "edge_count": 36174,
+  "node_count": 4049,
+  "edge_count": 36189,
   "coverage": {
-    "covered": 4020,
-    "total": 4020,
+    "covered": 4021,
+    "total": 4021,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -261,7 +261,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1516,
+      "degree": 1517,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -277,7 +277,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 974,
+      "degree": 975,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -308,7 +308,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 621,
+      "degree": 622,
       "has_repo": true
     },
     {

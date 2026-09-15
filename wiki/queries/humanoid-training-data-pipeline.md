@@ -70,6 +70,7 @@ flowchart TD
 | 已重定向 locomotion | [PHUMA](../entities/dataset-bfm-phuma.md) | **物理可信 + 免重定向** | 分布由策展决定 |
 | 真机操作数据 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | 天然物理可行、多模态 | 任务相对策展、非参考库 |
 | 真机 in-the-wild 遥操作 | [HIW-500](../entities/hiw-500-dataset.md) | **500+ h** 家庭场景、语言子任务标注、开源规模大 | 夹爪末端、地域/户型偏差、LeRobot 格式待全量 |
+| 野外人类中心操作（人手） | [WIYH](../entities/paper-wiyh.md) | **~1045 h** · 3D 手/腕+触觉+深度/掩码/VLM 标注；Oracle Suite 采集；跨本体 VLA 预训练实证 | **非机器人轨迹**；CC BY-NC-SA；全量 ~36 TB；需重定向或 co-training |
 | 纯仿真 teleop + 视觉扩增 | [OASIS](../entities/paper-loco-manip-04-oasis.md) | Real-to-Sim 资产、VR 仿真 teleop、离线域随机化渲染；**纯仿真数据可 ≥ 等量真机 teleop** | 资产/接触精度依赖生成模型；motion 多样性受操作员上限 |
 | 人体视频 | [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) | 规模可极大 | 3D/接触信息弱，需重建 |
 | 家务 egocentric 人视频（开放） | [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) | **10k+ h** 目标、Apache 2.0 ungated、家庭无剧本；可作视觉/语言先验 | **无** 原生手姿/关节；进策略需重建或仅作预训练层 |
@@ -80,7 +81,7 @@ flowchart TD
 | 隐式 2D 驱动 3DGS 动画 | [LUNA](../entities/paper-luna-universal-3d-human-animation.md) | RGB / 关键点 / 草图 → 规范高斯形变，推理不走 LBS | **截至 2026-09-05 未开源**；输出是 splat **不是**关节；核心数据专有 |
 | 遮挡 YouTube → 可动画 3DGS | [AHOY](../entities/paper-ahoy.md) | 单目重度遮挡视频 + 扩散幻觉监督 → 完整 pose-dependent avatar | **截至 2026-09-06 未开源**；多阶段优化慢于前馈；幻觉未见区域有风险 |
 
-**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500；要 **绕开真机 teleop 复位/空间成本** 且接受仿真资产管线 → OASIS；要 **公开可商用的家庭 ego 视觉/语言先验**（非机器人轨迹）→ RekaDaily-10k。
+**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500；要 **野外人类手操作 + 3D/触觉/VLM 对齐** 作 VLA 预训练或杂乱场景 co-training → [WIYH](../entities/paper-wiyh.md)；要 **绕开真机 teleop 复位/空间成本** 且接受仿真资产管线 → OASIS；要 **公开可商用的家庭 ego 视觉/语言先验**（非机器人轨迹）→ RekaDaily-10k。
 
 ---
 
