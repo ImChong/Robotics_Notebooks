@@ -270,7 +270,7 @@ flowchart TD
 - **PhysBrain 1.5（DeepCybo / 中关村学院 / ZGCI）**：**Qwen3-VL 2B/8B** 统一 **具身理解 + ActionPiece 动作块 + 未来 RGB/depth/mask 预测**；28 benchmark Overall **72.5** 开源 SOTA；人类交互视频预训练 + 人类/真机/仿真 SFT；**HF 权重 + PhysBrainEvalKit 已开源**，训练栈未见（见 [PhysBrain 1.5](../entities/paper-sa-2512-16793-physbrain-human-egocentric-data-as-a-bridge-from.md)，技术报告 2026 / 前作 arXiv:2512.16793）
 - **LingBot-VLA 1.0**：**Qwen2.5-VL-3B + flow 动作头**；**2 万小时**、**9 类双臂** 真机预训练；开源 **4B** 权重（含 depth 变体）、**GM-100** 数据与 **LeRobot v3.0** 后训练范例；RoboTwin 仿真平均 SR 超 **π₀.₅**（见 [LingBot-VLA](../entities/lingbot-vla.md)，arXiv:2601.18692）
 - **LingBot-VLA 2.0**：**Qwen3-VL-4B + 稀疏 MoE action expert**；约 **6 万小时** 过滤预训练（**5 万 h** 机器人 ×**20** 本体 + **1 万 h** egocentric 人视频）、**55 维统一全身动作** 与 **Dual-Query 深度/视频蒸馏**；GM-100 / 长程移动操作 **generalist** 评测超 **π₀.₅**、**GR00T N1.7** 与 **1.0**；开源 **6B 权重** 与真机部署脚本（见 [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md)，arXiv:2607.06403）
-- **Dexmal DM0.5（OpenDM）**：**Gemma3-4B VLM + 680M Flow-Matching Action Expert**；**~60s 历史上下文抽象**、**11 类具身 CoT** 与 **DP 动态轨迹对齐**；**已开源** [opendm](https://github.com/dexmal/opendm) 训练/推理与 **DM05** 系列权重（LIBERO **99.0%**、RoboTwin2 Clean/Rand **93.6%/93.3%**、Table30v2 **43% SR**）（见 [Dexmal DM0.5](../entities/dexmal-dm05.md)）
+- **Dexmal DM0.5（OpenDM）**：**Gemma3-4B VLM + 680M Flow-Matching Action Expert**；**~60s 历史上下文抽象**、**11 类具身 CoT** 与 **DP 动态轨迹对齐**；**已开源** [opendm](https://github.com/dexmal/opendm) 训练/推理与 **DM05** 系列权重（LIBERO **99.0%**、RoboTwin2 Clean/Rand **93.6%/93.3%**、Table30v2 **43% SR**、[RoboColiseum](../entities/robocoliseum.md) 四榜 **#1**、`DM05-Lerobot` / `DM05-MEM-Robodojo-Sim`）（见 [Dexmal DM0.5](../entities/dexmal-dm05.md)）
 
 ### 世界模型 / 视频耦合（WAM 侧）
 

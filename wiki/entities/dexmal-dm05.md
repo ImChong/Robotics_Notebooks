@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, dexmal, flow-matching, foundation-model, manipulation, navigation, cross-embodiment, open-world, open-source]
 status: complete
-updated: 2026-08-25
+updated: 2026-09-15
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -15,6 +15,9 @@ related:
   - ./lingbot-vla-v2.md
   - ./dexmal-dw05.md
   - ./robotwin.md
+  - ./robocoliseum.md
+  - ./robodojo.md
+  - ./lerobot.md
 sources:
   - ../../sources/blogs/dexmal_dm05.md
   - ../../sources/repos/dexmal_opendm.md
@@ -104,11 +107,12 @@ flowchart TB
 
 ## 开源状态
 
-| 项 | 状态（截至 2026-08-25） |
+| 项 | 状态（截至 2026-09-15） |
 |----|-------------------------|
 | **代码** | **已开源** — [dexmal/opendm](https://github.com/dexmal/opendm)（Apache-2.0） |
 | **基础权重** | **已开源** — [Dexmal/DM05](https://huggingface.co/Dexmal/DM05)（亦见 ModelScope） |
-| **下游权重** | **已开源** — LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 等（见下表） |
+| **下游权重** | **已开源** — LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 / **LeRobot** / **RoboDojo-Sim** 等（见下表） |
+| **HF 组织** | [Dexmal2026](https://huggingface.co/Dexmal2026) |
 | **权重许可** | **Gemma**（HF 模型卡；Gemma3 骨干衍生 checkpoint 须遵守 Gemma 使用条款） |
 | **技术报告 PDF** | 博文为主；细节以 OpenDM docs 与模型卡为准 |
 
@@ -131,6 +135,8 @@ flowchart TB
 | [**DM05-SO101-Pick-Cube**](https://huggingface.co/Dexmal/DM05-SO101-Pick-Cube) | SO101 pick-cube | 见 `docs/*/dm05_so101_lora_training.md` |
 | [**DM05-Vla-Arena**](https://huggingface.co/Dexmal/DM05-Vla-Arena) | VLA-Arena | 见 `docs/*/dm05_vla_arena.md` |
 | [**DM05-Table30v2**](https://huggingface.co/collections/Dexmal/dm05-table30v2) | RoboChallenge Table30 v2 集合 | 见 `docs/*/dm05_robochallenge.md` |
+| [**DM05-Lerobot**](https://huggingface.co/Dexmal/DM05-Lerobot) | **LeRobot 格式** 基座（`lerobot-train` SFT 入口） | `library_name: lerobot`；非任务专用 checkpoint |
+| [**DM05-MEM-Robodojo-Sim**](https://huggingface.co/Dexmal/DM05-MEM-Robodojo-Sim) | [RoboDojo](./robodojo.md) 仿真 generalist（**20 帧 head 历史**） | ARX X5 双臂；chunk 50 / 执行前 25 步 |
 
 ## 源码运行时序图
 
@@ -188,6 +194,7 @@ sequenceDiagram
 | **RoboTwin2.0** | Clean **93.6%** / Rand **93.3%**（平均约 **93.5%**） |
 | **VLA-Arena** | L0 **89.0%** / L1 **53.6%** / L2 **44.1%** |
 | **R2R / RxR**（DM0.5-Nav） | R2R Val-Unseen **SR 59.7%**、**NE 4.8**；RxR 四项指标文称第一 |
+| **[RoboColiseum](./robocoliseum.md)**（2026-09-15 API） | 四榜均 **#1**：instruction **0.844** / spatial **0.615** / manip **0.637** / robust **0.734** |
 | **鲁棒性** | 九组第三视角相机扰动成功率 **80–100%**；人为移动目标/遮挡后仍能重规划 |
 
 ## 与相近路线的关系
@@ -221,6 +228,8 @@ sequenceDiagram
 - [Manipulation](../tasks/manipulation.md) — Table30、LIBERO、RoboTwin 等操作评测语境
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md) — DM0.5-Nav 与 R2R/RxR
 - [RoboTwin 2.0](./robotwin.md) — `DM05-robotwin2` 与数据注册对齐
+- [RoboColiseum](./robocoliseum.md) — Genie Sim 四榜仿真挑战赛（DM0.5 四榜领先）
+- [LeRobot](./lerobot.md) — `DM05-Lerobot` 与 `lerobot-train` 微调入口
 - [Qwen-VLA](./qwen-vla.md) — 操作+导航通才对照
 - [π₀.₇ Policy](../methods/pi07-policy.md) — zero-shot 对比基准 π0.5-Droid 所属路线
 - [Dexmal DW05](./dexmal-dw05.md) — 同机构 Wan+MoT 世界–动作联合开源线
