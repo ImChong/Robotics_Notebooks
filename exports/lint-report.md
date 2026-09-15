@@ -2,7 +2,7 @@
 
 ## [2026-09-15] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **26** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,12 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（5 个）
-- auto（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- computeGeneralizedGravity（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- lerobot-train（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Policy（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Student（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -101,26 +97,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（19 个）
-- wiki/entities/paper-act-lam.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-assmpy-soft-robot-orientation.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-effvla.md（缺 对比）
-- wiki/entities/paper-emog.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-fmappo.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md（缺 评测）
-- wiki/entities/paper-language-guided-tactile.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-motionbricks.md（缺 对比）
-- wiki/entities/paper-puma-lidar-mesh-odometry.md（缺 对比）
-- wiki/entities/paper-sai-sequential-asymmetric-imitation.md（缺 对比）
-- wiki/entities/paper-saigen.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-scan2mesh-cvpr2019-dai.md（缺 对比）
-- wiki/entities/paper-sentis-khatib-icra-2006-whole-body-control-framework.md（缺 评测）
-- wiki/entities/paper-trace-causal-memory.md（缺 对比）
-- wiki/entities/paper-track4world.md（缺 对比）
-- wiki/entities/paper-vlbiman-plus.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-wiyh.md（缺 对比）
-- wiki/entities/paper-x-wbc.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-zeno-1-collaborative-intelligence.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -140,9 +118,8 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
-- wiki/entities/awesome-rsi.md
-- wiki/entities/paper-wiyh.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
