@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, imitation-learning, in-context-learning, one-shot, foundation-policy, scaling, generalist-ai]
 status: complete
 title: GEN-1.5 一次示范学习（Physical Prompting）
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ./generalist-ai-robotics.md
   - ./generalist-gen1-thousand-hands.md

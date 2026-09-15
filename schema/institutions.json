@@ -225,6 +225,21 @@
         "zju"
       ]
     },
+    "zjut": {
+      "label": "浙江工业大学（ZJUT）",
+      "aliases": [
+        "zjut",
+        "zhejiang-university-of-technology"
+      ]
+    },
+    "zeno-ai": {
+      "label": "芝诺机器人（Zeno AI）",
+      "aliases": [
+        "zeno-ai",
+        "zeno",
+        "zenobot"
+      ]
+    },
     "mbzuai": {
       "label": "穆罕默德·本·扎耶德人工智能大学（MBZUAI）",
       "aliases": [
@@ -2311,6 +2326,13 @@
       "aliases": [
         "reconova",
         "reconova-information-technology"
+      ]
+    },
+    "reward-ai": {
+      "label": "励元智能（Reward AI）",
+      "aliases": [
+        "reward-ai",
+        "rewardai"
       ]
     },
     "embodied-ai-lab": {

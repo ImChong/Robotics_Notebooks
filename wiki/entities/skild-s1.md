@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, one-shot, foundation-policy, manipulation, scaling, skild-ai, nvidia]
 title: S1 机器人上下文学习（Skild）
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ./skild-ai.md
   - ../concepts/robot-in-context-learning.md

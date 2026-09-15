@@ -5,7 +5,7 @@
 - **标题：** VLA-Precision: Asymmetric Co-Bootstrapping for Efficient Real-World Online RL of Vision-Language-Action Models
 - **简称：** VLA-Precision
 - **类型：** paper / vla / online-rl / precision-manipulation / real-robot
-- **arXiv：** <https://arxiv.org/abs/2609.04355>
+- **arXiv：** <https://arxiv.org/abs/2609.04355>（v2，2026-09-09 修订）
 - **PDF：** <https://arxiv.org/pdf/2609.04355>
 - **项目页：** <https://vla-precision.github.io/> — 归档见 [`sources/sites/vla-precision-github-io.md`](../sites/vla-precision-github-io.md)
 - **代码：** <https://github.com/scy-v/VLA-Precision> — 归档见 [`sources/repos/scy-v-vla-precision.md`](../repos/scy-v-vla-precision.md)
@@ -13,15 +13,16 @@
 - **入库日期：** 2026-09-08
 - **一句话说明：** 真机 VLA 在线 RL：ACoB 非对称共自举 + ACoB-Stream 闭环架构；九项精密化学任务、四机型平均成功率 98.3%，吞吐最高 10.9× 基线。
 
-## 开源状态（步骤 2.5，2026-09-08）
+## 开源状态（步骤 2.5，2026-09-15 复核）
 
 | 组件 | 状态 |
 |------|------|
-| 项目页 | 已上线，链 GitHub |
-| GitHub | **已开源** Apache-2.0；Stage I OpenPI 微调 + Stage II ACoB 在线 RL 全栈 |
-| 遥操作 | 配套 UR/Franka LeRobot 分支（README 表格） |
+| 项目页 | 已上线，链 arXiv 与 GitHub |
+| GitHub | **已开源** Apache-2.0（2026-09-06 全栈发布）；Stage I OpenPI 微调 + Stage II ACoB 在线 RL |
+| 遥操作 | UR/Franka LeRobot 分支（README §1 表格：keyboard/VR/同构主从） |
+| 评测 | `evaluate` / `openpi-inference`；结果 `results/<experiment>/{vla,openpi-native,acob}/` |
 
-**结论：已开源** — 训练、部署、评测入口完整。
+**结论：已开源** — 训练、四进程 Stage II（learner/actor/serve-robot/bridge）、评测入口完整。
 
 ## 核心摘录
 
@@ -42,5 +43,5 @@
 
 ## 当前提炼状态
 
-- [x] 项目页、GitHub README 核查（2026-09-08）
+- [x] 项目页、GitHub README 核查（2026-09-08；2026-09-15 复核 v2 + README 四进程 Stage II）
 - [x] wiki 映射：`wiki/entities/paper-vla-precision.md`

@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-15",
-  "node_count": 4039,
-  "edge_count": 36092,
+  "node_count": 4047,
+  "edge_count": 36161,
   "coverage": {
-    "covered": 4011,
-    "total": 4011,
+    "covered": 4019,
+    "total": 4019,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/urdf-link-inertia-real-robot-check.md",
+      "detail_id": "wiki-queries-urdf-link-inertia-real-robot-check",
+      "label": "URDF 连杆惯量对照真机检查",
+      "type": "query",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-artmanip.md",
       "detail_id": "entity-paper-artmanip",
@@ -45,7 +56,8 @@
       "recency": "2026-09-14",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-foldex-deformable-clothes-benchmark.md",
@@ -96,7 +108,8 @@
       "recency": "2026-09-14",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-metarsi-v1.md",
@@ -116,7 +129,9 @@
       "type": "entity",
       "recency": "2026-09-14",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-scq-rl.md",
@@ -184,7 +199,8 @@
       "type": "overview",
       "recency": "2026-09-14",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/rsi-harness.md",
@@ -196,33 +212,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/egosuite-open100k.md",
-      "detail_id": "entity-egosuite-open100k",
-      "label": "EgoSuite-Open100K",
-      "type": "entity",
-      "recency": "2026-09-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-artmanip.md",
-    "detail_id": "entity-paper-artmanip",
-    "label": "ArtManip（arXiv:2609.12498）",
-    "type": "entity",
-    "recency": "2026-09-14",
+    "path": "wiki/queries/urdf-link-inertia-real-robot-check.md",
+    "detail_id": "wiki-queries-urdf-link-inertia-real-robot-check",
+    "label": "URDF 连杆惯量对照真机检查",
+    "type": "query",
+    "recency": "2026-09-15",
     "source": "git",
     "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 584
+      "size": 588
     },
     {
       "label": "宇树 G1 人形机器人",
@@ -238,7 +244,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 278
+      "size": 281
     },
     {
       "label": "仿真到现实",
@@ -274,14 +280,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 938,
+      "degree": 939,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 906,
+      "degree": 907,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -297,7 +303,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 614,
+      "degree": 621,
       "has_repo": true
     },
     {
@@ -312,7 +318,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 572,
+      "degree": 573,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -330,7 +336,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 158,
+      "degree": 160,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, online-rl, precision-manipulation, real-robot, chemistry, ustc]
 status: complete
-updated: 2026-09-08
+updated: 2026-09-15
 arxiv: "2609.04355"
 code: https://github.com/scy-v/VLA-Precision
 related:
@@ -23,6 +23,16 @@ summary: "VLA-Precision（arXiv:2609.04355，USTC）：ACoB 非对称共自举 +
 # VLA-Precision：精密实机 VLA 在线强化学习
 
 **VLA-Precision**（*Asymmetric Co-Bootstrapping for Efficient Real-World Online RL of Vision-Language-Action Models*，[arXiv:2609.04355](https://arxiv.org/abs/2609.04355)，[项目页](https://vla-precision.github.io/)，[代码](https://github.com/scy-v/VLA-Precision)）由 **中国科学技术大学（USTC）** 自动化系提出：预训练 VLA 泛化广，但在 **精度与重复性** 任务上仍不可靠；真机在线 RL 能超越演示，但面临 **value 不可靠致策略漂移** 与 **大 VLA 吞吐瓶颈**。VLA-Precision 给出 **ACoB（Asymmetric Co-Bootstrapping）** 算法与 **ACoB-Stream** 闭环架构：早期干预引导行为学习，经验积累后全局 return + 局部偏好排序校准 value，reference-regularized 改进抑制漂移；Stream 侧 invariant-state decoupling + on-demand streaming 带来 **最高 10.9×** 吞吐提升。九项精密化学操纵、四机型 embodiment 上平均成功率 **98.3%**，**45.8 min/task** 训练预算。
+
+## 核心信息
+
+| 项 | 内容 |
+|----|------|
+| **机构** | 中国科学技术大学（USTC）自动化系；精密智能化学国家重点实验室；北航 / 中关村学院 / 合肥 SpinX 等合作 |
+| **基座** | OpenPI 全参微调（Stage I）→ ACoB 真机在线 RL（Stage II） |
+| **平台** | UR5e/UR7e、Franka 等四 embodiment；九项精密化学操纵 |
+| **开源** | **已开源** Apache-2.0（2026-09-06）；[scy-v/VLA-Precision](https://github.com/scy-v/VLA-Precision) + LeRobot 遥操作分支 |
+| **arXiv** | [2609.04355](https://arxiv.org/abs/2609.04355) v2（2026-09-09 修订） |
 
 ## 一句话定义
 
@@ -53,7 +63,7 @@ summary: "VLA-Precision（arXiv:2609.04355，USTC）：ACoB 非对称共自举 +
 | **Stage I** | OpenPI **全参** 微调；LeRobot 演示 → `norm-stats` + `train` |
 | **Stage II ACoB** | 干预引导早期行为 → 全局 return 传播 + 局部偏好排序 → reference-regularized 策略改进 |
 | **ACoB-Stream** | invariant-state decoupling；on-demand streaming；GPU server ↔ 真机 robot bridge |
-| **部署** | `serve-policy` / `serve-robot` / `robot-agent-bridge` 三进程闭环 |
+| **部署** | Stage II 四进程：GPU **learner + actor**；真机 **serve-robot + robot-agent-bridge** |
 | **开源** | **已开源** — `uv sync` 分 stage1/stage2/real-robot 组 |
 
 ### 两阶段流水线
@@ -96,23 +106,29 @@ flowchart LR
 sequenceDiagram
     autonumber
     actor Dev as 开发者
-    participant Main as main.py
-    participant Srv as GPU policy server
-    participant Rob as 真机 robot bridge
+    participant S1 as Stage I train
+    participant Prep as preprocess
+    participant Learner as GPU learner
+    participant Actor as GPU actor
+    participant Rob as serve-robot
+    participant Bridge as robot-agent-bridge
     participant Env as UR/Franka 化学任务
-    Dev->>Main: stage1 train (OpenPI SFT)
-    Dev->>Main: stage2 preprocess (fill buffers)
-    Dev->>Main: stage2 serve-policy (GPU)
-    Dev->>Main: stage2 serve-robot + robot-agent-bridge
+    Dev->>S1: OpenPI SFT (norm-stats + train)
+    Dev->>Prep: 填充 Replay + Context Buffer
+    Dev->>Learner: stage2 train --role learner
+    Dev->>Actor: stage2 train --role actor
+    Dev->>Rob: serve-robot
+    Dev->>Bridge: robot-agent-bridge
     loop 在线 RL episode
         Env->>Rob: 观测
-        Rob->>Srv: streaming 请求
-        Srv-->>Rob: action
-        Rob->>Env: 执行
-        Rob->>Main: 经验写回 buffer
-        Main->>Srv: ACoB 更新
+        Rob->>Bridge: 本地 IO
+        Bridge->>Actor: streaming 请求
+        Actor-->>Bridge: action
+        Bridge->>Rob: 执行
+        Rob->>Learner: 经验写回 buffer
+        Learner->>Actor: ACoB 权重同步
     end
-    Dev->>Main: stage2 evaluate
+    Dev->>Rob: stage2 evaluate
 ```
 
 配置：`configs/stage1/*.yaml`、`configs/stage2/tasks/*.yaml` + `deployments/*.yaml`。
@@ -124,7 +140,7 @@ sequenceDiagram
 | 环境 | `uv sync --group stage1|stage2|real-robot` |
 | 采集 | README 列 UR/Franka LeRobot 遥操作分支 |
 | Stage I | `main.py --stage stage1 --mode norm-stats|train` |
-| Stage II | preprocess → serve-policy + serve-robot + bridge |
+| Stage II | preprocess → learner + actor + serve-robot + bridge（四终端） |
 | 评测 | `--mode evaluate`；结果 `results/<experiment>/acob/` |
 | 扩展 | 见 `docs/EXTENDING.md` 新机器人/任务 |
 

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-15
 related:
   - ../concepts/embodied-foundation-model-hardware-codesign.md
   - ../queries/cross-embodiment-transfer-strategy.md
@@ -16,7 +16,8 @@ related:
   - ../entities/paper-xmorph.md
   - ../entities/paper-ucag-p.md
   - ../entities/paper-crosstracer.md
-summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含同形态跨配置遗留数据三相迁移（Emergent Transfer）、末端/工具接口多样性（如 GEN-1 千手）、physical prompting 人→机/sim→真机（GEN-1.5）、人体→非人形腿式行为先验（X-Morph）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
+  - ../entities/reward-ai-om1.md
+summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含同形态跨配置遗留数据三相迁移（Emergent Transfer）、末端/工具接口多样性（如 GEN-1 千手）、physical prompting 人→机/sim→真机（GEN-1.5）、仅人类可穿戴示范直驱策略跨工业臂/人形（Reward AI OM-1）、人体→非人形腿式行为先验（X-Morph）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
 ---
 
 # 跨具身迁移（知识链汇总）
@@ -60,6 +61,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 | 实体 | X-Morph 人体→非人形腿式 | [X-Morph](../entities/paper-xmorph.md) — 重定向+物理校正+跟踪蒸馏；Go2/六足/B2-Z1 |
 | 实体 | UCAG-P 相机系锚点 VLA | [UCAG-P](../entities/paper-ucag-p.md) — 共享腕/抓取几何，翻译器出各本体命令；操作通才而非 WBT |
 | 实体 | CrossTracer 导航像素残差 | [CrossTracer](../entities/paper-crosstracer.md) — 同一语义轨迹按轮式/腿式改可通行路径；**不是** WBT 换骨架 |
+| 实体 | Reward AI OM-1（Any Body） | [OM-1](../entities/reward-ai-om1.md) — 闭源；仅人类可穿戴示范、无遥操作/机上数据；统一策略接口 + 高频控制跨工业臂/人形 |
 | 概念 | 角色动画 vs 机器人 | [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) |
 | 数据 | 跨具身数据集 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
@@ -82,6 +84,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [X-Morph](../entities/paper-xmorph.md) — 人体运动作非人形腿式可复用行为先验
 - [UCAG-P](../entities/paper-ucag-p.md) — 操作 VLA：相机可观测锚点作跨本体共享动作目标
 - [CrossTracer](../entities/paper-crosstracer.md) — 导航：像素轨迹残差适配轮式/腿式（NaviTrace；待核实开源）
+- [OM-1（Reward AI）](../entities/reward-ai-om1.md) — 人类可穿戴数据直驱；工业臂↔人形同一策略（闭源）
 - [具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md) — 模型通用 vs 硬件形态通用
 
 ## 参考来源
@@ -92,4 +95,5 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [GEN-1.5: Embodied Foundation Models are One-Shot Learners（来源归档）](../../sources/blogs/generalist_gen15_one_shot.md) — physical prompting / 人→机与 sim→真机提示
 - [Towards Machines with a Thousand Hands（来源归档）](../../sources/blogs/generalist_thousand_hands.md) — 跨末端「千手」产业样本
 - [Gemini Robotics 2 全身智能（来源归档）](../../sources/blogs/gemini_robotics_2_whole_body.md) — On-Device 跨本体适配声明
+- [OM-1: Frontier Robot Intelligence…（来源归档）](../../sources/blogs/rewardai_om1.md) — 人类示范直驱跨本体（Reward AI）
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`cross-embodiment` 命中规则）
