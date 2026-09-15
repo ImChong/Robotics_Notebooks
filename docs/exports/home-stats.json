@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-15",
   "node_count": 4066,
-  "edge_count": 36298,
+  "edge_count": 36300,
   "coverage": {
     "covered": 4038,
     "total": 4038,
@@ -302,7 +302,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 622,
+      "degree": 624,
       "has_repo": true
     },
     {
