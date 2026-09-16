@@ -1,3 +1,5 @@
+## [2026-09-16] ingest | sources/blogs/wechat_shenlan_embodied_three_layer_control_2026-09-16.md — 深蓝具身三层控制架构（VLM/MPC-WBC/反射）；新建概念页 + NeuroVLA 论文实体；AlphaBrain 已开源
+
 ## [2026-09-16] ingest | sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md — Mbot 具身 ICL 演化综述（VIMA→S1 八项主线）；补强 robot-in-context-learning 谱系与 Pure ICL/TTT 双层口径
 
 ## [2026-09-16] ingest | sources/papers/dynhair_arxiv_2607_23861.md — DynHair ECCV 2026 显式动态发丝化身；GitHub 占位仓
