@@ -440,6 +440,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - **Chunk 策略自动接管：** [AutoIntervene](../entities/paper-autointervene.md)（arXiv:2608.07065）用 visual-action 支持分位数校准双向人机切换，把干预段变成选择性 DAgger；九项双臂真机上 R2 平均 **80%** 成功且操作员时间低于人工盯梢。
 - **Q-Planning**：**冻结 BC/VLA + 小型离策略 Q-chunking**；推理 **Q 加权平均** N 个 BC flow 采样；在线 **只微调 Q**、吸收失败 rollout；LIBERO-10 **93→99%**、双臂真机 stack-cups **40→90%**；**已开源**（见 [Q-Planning](../entities/paper-qplanning.md)，arXiv:2608.21204）
 - **ARLI**：**异步 VLA + 延迟感知 DSRL**——用已承诺中间动作与 VLM 完成后的中间观测恢复近马尔可夫性；真机双臂 UR5e 三任务约 **40%→近 100%**（100–125 episode）；**确认未开源**（见 [ARLI](../entities/paper-arli.md)，arXiv:2608.23831）
+- **端侧专用推理引擎：** [APXInf](../entities/apxinf.md)（[RLinf/APXinf-robo](https://github.com/RLinf/APXinf-robo)，无问芯穹×清华×上交）把 **π₀.₅** 在 **Jetson Thor** 上从 OpenPI 端侧 **~278 ms** 压到 **~26 ms** 量级（FP8 + onestep；官方 P50 **41.16 ms**）；**OpenPI-compatible serve** + LIBERO-10 **92.2%**（baseline **92.4%**）；与通用 vLLM/TensorRT-LLM **小 batch 实时** 目标错位，见 [VLA 部署指南](../queries/vla-deployment-guide.md)
 
 选型时区分：**数据采集质量**（见 [Teleoperation](../tasks/teleoperation.md)）与 **后训练如何从次优经验中提取策略**（见 [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)）。
 

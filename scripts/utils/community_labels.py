@@ -108,6 +108,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "roadmap/depth-humanoid-soccer.md": "人形足球纵深路线（Humanoid Soccer Deep-Dive Roadmap）",
     "roadmap/depth-navigation.md": "导航纵深路线（Navigation Deep-Dive Roadmap）",
     "roadmap/depth-perceptive-locomotion.md": "感知越障纵深路线（Perceptive Locomotion Deep-Dive Roadmap）",
+    "roadmap/depth-rl-locomotion.md": (
+        "人形 RL 运动控制纵深路线（Humanoid RL Locomotion Deep-Dive Roadmap）"
+    ),
     "roadmap/depth-torque-motor-design.md": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap）",
     "roadmap/depth-humanoid-hardware-design.md": (
         "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap）"

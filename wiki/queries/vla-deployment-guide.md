@@ -49,6 +49,9 @@ sources:
 - **层融合**：TensorRT 会自动合并 Transformer 中的 LayerNorm 和线性层。
 - **算子插件**：针对特定的机器人算子（如旋转矩阵归一化）编写自定义 Plugin。
 
+### 专用 VLA 推理引擎（APXInf）
+通用 LLM serving（vLLM、sglang）优化 **云端大 batch 吞吐**；机器人端侧更关心 **batch=1、多视角、P50/P99 抖动**。[APXInf](../entities/apxinf.md)（[RLinf/APXinf-robo](https://github.com/RLinf/APXinf-robo)）面向 **π₀.₅ on Jetson Thor/Orin**：Rust 运行时 + 融合 CUDA 算子 + **OpenPI-compatible websocket serve**；Thor FP8 官方 P50 **41.16 ms**（onestep **26.32 ms**），LIBERO-10 **92.2%** vs baseline **92.4%**。已有 `openpi-client` 栈可 **只换推理 endpoint**；权重与 `norm_stats.json` 仍走 OpenPI/LeRobot 渠道。
+
 ### 视觉 Encoder 预计算
 如果使用了多视角相机，可以尝试在推理开始前，利用独立的子线程对不同视角的图像进行并行的 Resize 和 Normalization。
 
@@ -105,6 +108,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 上延迟感知 RL 后训练；中间动作 + 中间观测条件 DSRL（确认未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真侧 EnvHub 闭环对照（headless SmolVLA + 双臂 Piper）；不含真机异步/TensorRT
 - [SmolVLA ONNX LIBERO 审计](../entities/paper-smolvla-onnx-libero.md) — PyTorch vs ONNX 闭环成功率–延迟权衡；语言 width 与图审计（arXiv:2609.14146；MIT 脚本已开源）
+- [APXInf](../entities/apxinf.md) — RLinf 生态 π₀.₅ 端侧引擎；Thor FP8 ~26–41 ms；OpenPI serve
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
