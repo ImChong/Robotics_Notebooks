@@ -136,7 +136,7 @@ flowchart LR
 
 ## 关联页面
 
-- [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与技术路线 §19
+- [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与技术路线（「分层控制与接触规划」组）
 - [FARO（可行性感知运动优化）](./paper-faro-feasibility-aware-robot-motion-optimization.md) — 同团队嵌套可行性剪枝
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 演示驱动上游对照
 - [Teleoperation](../tasks/teleoperation.md) — 人类在环采集对照

@@ -1,8 +1,21 @@
+## [2026-09-16] structural | 重复节点普查与批量合并 | 26 个占位/索引页并入同项目 canonical 实体；page-aliases 93 条
+
+- **触发：** 承 cn-os-dit4dit 合并，用户要求普查全库同类重复。
+- **A 类（18 条）：** 424 全景 ingest 的 `cn-os-*` 占位页与同仓库深读页重复；判据为 canonical 页 `code:` 或正文首段 GitHub 链接一致（15 条）+ 同名同机构同项目（3 条）。见 `scripts/dedupe_cn_os_stubs.py`；复用/新建计数 127/297 → 145/279。
+- **B 类（8 条）：** 先按「页面自陈 + 来源佐证」给 20 个深读页补 frontmatter `arxiv:`（排除 9 个 ID 属他人论文的移植/对照/公司页），V30 随即报出 3 处同 ID 重复，另 5 处索引页正文自述重复，一并合并。见 `scripts/dedupe_survey_index_stubs.py`。
+- **门禁：** V30 归零、0 断链；`stale_pages` 因改动三个大策展总表出现本地建议性预警（GitHub Actions 按设计跳过该检查），未批量改写 `updated:` 复核日期。
+
 ## [2026-09-16] structural | 合并重复节点 | wiki/entities/cn-os-dit4dit.md（占位 stub）→ wiki/entities/paper-dit4dit-video-action-model.md（canonical）；同仓库 Mondo-Robotics/DiT4DiT 双节点归一
 
 - **触发：** 用户报告 `detail.html?id=entity-cn-os-dit4dit` 与 `detail.html?id=entity-paper-dit4dit-video-action-model` 两页重复。
 - **判据：** 二者同指 <https://github.com/Mondo-Robotics/DiT4DiT>；前者是国内开源全景 424 项 ingest 生成的 draft 占位页，后者为 arXiv:2603.10448 完整深读页。
 - **处理：** 删除 stub；`schema/page-aliases.json` 登记 `entity-cn-os-dit4dit → entity-paper-dit4dit-video-action-model`；canonical 页补 `miaodong`/`mondo-robotics`/`open-source` 标签与全景来源；424 覆盖表改「复用」，计数 126/298 → 127/297。
+
+## [2026-09-16] ingest | sources/papers/openwam_arxiv_2609_07398.md — OpenWAM 复核增强：HF 论文页 / Foundation 权重 / GitHub 组织链接；预训练数据 40% 真机 + 30% 仿真 + 30% ego；depth-wam Stage 3 交叉引用
+
+- **触发：** 用户指定 OpenWAM 全链接 ingest + 自动合并 PR（主库已于 2026-09-09 入库，本次为复核与链接补全）
+- **步骤 2.5：** 项目页 / GitHub / HF **已开源**（46 检查点 + Foundation 可下载）
+- **关键页：** 增强 [`paper-openwam`](wiki/entities/paper-openwam.md)；[`depth-wam`](roadmap/depth-wam.md) Stage 3 补 OpenWAM 读法
 
 ## [2026-09-16] ingest | sources/papers/wholebodywam_arxiv_2609_16644.md — WholeBodyWAM 深度入库（CUHK/HKU/PKU/Φ）；UWBC+CASA 协调；步骤 2.5 **待发布**
 

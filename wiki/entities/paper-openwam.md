@@ -16,7 +16,7 @@ tags:
   - cuhk
   - sjtu
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2609.07398"
 code: https://github.com/OpenWAM-Official/OpenWAM
 related:
@@ -38,7 +38,7 @@ summary: "OpenWAM（arXiv:2609.07398）：模块化 Infra + 六项对照 Study �
 
 # OpenWAM：系统化世界–动作预训练的开源模块化栈
 
-**OpenWAM**（*An Open, Modular Exploration Towards Systematic World–Action Model Pretraining*，[arXiv:2609.07398](https://arxiv.org/abs/2609.07398)）由 **新加坡国立大学（NUS）**、**清华大学（Tsinghua）**、**北京大学（PKU）**、**香港大学（HKU）**、**浙江大学（ZJU）**、**香港中文大学（CUHK）** 与 **上海交通大学（SJTU）** 等联合提出：把紧耦合的 WAM 实现拆成 **可组合实验程序**，经对照研究沉淀预训练原则，并发布 **OpenWAM-α** 预训练模型与完整工程栈。[项目页](https://openwam-official.github.io/) · [代码](https://github.com/OpenWAM-Official/OpenWAM) · [HF 权重](https://huggingface.co/OpenWAM)
+**OpenWAM**（*An Open, Modular Exploration Towards Systematic World–Action Model Pretraining*，[arXiv:2609.07398](https://arxiv.org/abs/2609.07398)）由 **新加坡国立大学（NUS）**、**清华大学（Tsinghua）**、**北京大学（PKU）**、**香港大学（HKU）**、**浙江大学（ZJU）**、**香港中文大学（CUHK）** 与 **上海交通大学（SJTU）** 等联合提出：把紧耦合的 WAM 实现拆成 **可组合实验程序**，经对照研究沉淀预训练原则，并发布 **OpenWAM-α** 预训练模型与完整工程栈。[项目页](https://openwam-official.github.io/) · [代码](https://github.com/OpenWAM-Official/OpenWAM) · [HF 权重](https://huggingface.co/OpenWAM) · [Foundation](https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model)
 
 ## 一句话定义
 
@@ -69,8 +69,8 @@ summary: "OpenWAM（arXiv:2609.07398）：模块化 Infra + 六项对照 Study �
 | **机构** | 新加坡国立大学（NUS）；清华大学（Tsinghua）；北京大学（PKU）；香港大学（HKU）；浙江大学（ZJU）；香港中文大学（CUHK）；上海交通大学（SJTU） |
 | **三层栈** | **Infra**（模块 + 统一 train/deploy/eval）→ **Study**（Q1–Q6 对照）→ **OpenWAM-α**（规模化预训练） |
 | **OpenWAM-α 骨干** | 冻结 Wan2.2-VAE + umT5；**Wan2.2-TI2V-5B** 视频 DiT + **ActionDiT**；30 层 joint self-attention；**mutual mask** |
-| **预训练数据** | **518.5M 帧（≈6,369 h）**；**70% 机器人 / 30% egocentric 人视频**；**80-D 统一动作空间** |
-| **开源** | **已开源**：[OpenWAM-Official/OpenWAM](https://github.com/OpenWAM-Official/OpenWAM)；HF [`OpenWAM`](https://huggingface.co/OpenWAM)（**46** 检查点） |
+| **预训练数据** | **518.5M 帧（≈6,369 h）**；机器人 **70%**（真机 **40%** + 仿真 **30%**）+ egocentric 人视频 **30%**；**80-D 统一动作空间** |
+| **开源** | **已开源**：[OpenWAM-Official/OpenWAM](https://github.com/OpenWAM-Official/OpenWAM)；HF [`OpenWAM`](https://huggingface.co/OpenWAM)（**46** 检查点）；Foundation [`OpenWAM-Alpha-Pretrain-Foundation-Model`](https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model) |
 
 ## 核心原理
 
@@ -149,7 +149,7 @@ sequenceDiagram
 |----|------|
 | 配置入口 | Hydra：`configs/model/dual_system.yaml` + `wan22_ti2v_5b` + `attention_mask_mode=mutual` |
 | 资源 | 推荐 **8×80GB** 训练 Wan2.2-5B 级骨干；部署默认 `compile`，首帧编译较慢 |
-| 检查点 | HF 46 模型分 Foundation / Study / 下游微调；`download_openwam_checkpoints.py` 自带完整 config |
+| 检查点 | HF **46** 模型分 Foundation / Study / 下游微调；Foundation 见 [`OpenWAM-Alpha-Pretrain-Foundation-Model`](https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model)；`download_openwam_checkpoints.py` 自带完整 config |
 | 评测契约 | 各 `benchmarks/<name>/` 经 WebSocket 连 policy server；RoboDojo 真机走 XPolicyLab |
 | 对照阅读 | 与 [GlanceWAM](./paper-glancewam.md)（异步想象）、[Flex-π](./paper-flex-pi.md)（多流算力柔性）、[DiT4DiT](./paper-dit4dit-video-action-model.md)（双 DiT 联合）并读 |
 
@@ -211,7 +211,8 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [arXiv:2609.07398](https://arxiv.org/abs/2609.07398)
+- [arXiv:2609.07398](https://arxiv.org/abs/2609.07398) · [HF 论文页](https://huggingface.co/papers/2609.07398)
 - [项目页](https://openwam-official.github.io/)
-- [GitHub](https://github.com/OpenWAM-Official/OpenWAM)
+- [GitHub 组织 / 主仓](https://github.com/OpenWAM-Official)
 - [Hugging Face 模型与数据](https://huggingface.co/OpenWAM)
+- [OpenWAM-α Foundation 权重](https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model)

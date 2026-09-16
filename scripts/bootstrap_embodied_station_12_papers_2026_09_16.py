@@ -31,7 +31,7 @@ REUSE = {
     },
 }
 
-PAPERS = [
+PAPERS: list[dict] = [
     {
         "slug": "jeplo",
         "title": "JEPLO: Joint-Embedding Predictive Learning for LiDAR-Based Legged Locomotion",
@@ -311,7 +311,6 @@ def _yaml_list(items: list[str], indent: int = 2) -> str:
 
 
 def _paper_source(p: dict) -> str:
-    ax = p["arxiv"].replace(".", "_")
     lines = [
         f"# {p['short']}（arXiv:{p['arxiv']}）",
         "",
@@ -343,7 +342,7 @@ def _paper_source(p: dict) -> str:
         "## 对 wiki 的映射",
         "",
         f"- [paper-{p['slug']}](../../wiki/entities/paper-{p['slug']}.md)",
-        f"- [12 篇技术地图](../../wiki/overview/vla-deploy-12-papers-technology-map.md)",
+        "- [12 篇技术地图](../../wiki/overview/vla-deploy-12-papers-technology-map.md)",
     ]
     return "\n".join(lines) + "\n"
 
@@ -361,10 +360,8 @@ def _entity(p: dict) -> str:
         site_src = f"  - ../../sources/sites/{slug}.md\n"
     code_line = ""
     if p.get("code"):
-        code_line = f'code: {p["code"]}\n'
-    abbrev = "\n".join(
-        f"| {a} | {b} | {c} |" for a, b, c in p["abbrev"]
-    )
+        code_line = f"code: {p['code']}\n"
+    abbrev = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in p["abbrev"])
     seq = ""
     if p["open"] == "已开源" and p.get("code"):
         seq = """
@@ -385,7 +382,7 @@ sequenceDiagram
 ```
 """
     elif p["open"] == "部分开源":
-        seq = f"""
+        seq = """
 ## 源码运行时序图
 
 **部分开源** — 入库日以项目页媒体/权重发布为主；完整训练管线以官方后续更新为准。
@@ -394,7 +391,7 @@ sequenceDiagram
         seq = f"""
 ## 源码运行时序图
 
-**不适用（{p['open']}）** — 截至 {TODAY} 项目页未列可运行官方仓库。
+**不适用（{p["open"]}）** — 截至 {TODAY} 项目页未列可运行官方仓库。
 """
     proj_line = ""
     if p.get("project"):
@@ -405,25 +402,25 @@ sequenceDiagram
     return f"""---
 type: entity
 tags:
-{_yaml_list(p['tags'], 2)}
+{_yaml_list(p["tags"], 2)}
 status: complete
 updated: {TODAY}
 arxiv: "{ax}"
 {code_line}related:
-{_yaml_list(p['related'] + [f"../overview/vla-deploy-12-papers-technology-map.md"], 2)}
+{_yaml_list(p["related"] + ["../overview/vla-deploy-12-papers-technology-map.md"], 2)}
 sources:
   - {src_paper}
 {repo_src}{site_src}  - {src_blog}
-summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
+summary: "{p["short"]}（arXiv:{ax}）：{p["one_liner"][:120]}"
 ---
 
-# {p['short']}（arXiv:{ax}）
+# {p["short"]}（arXiv:{ax}）
 
-**{p['short']}**（*{p['title']}*，[arXiv:{ax}](https://arxiv.org/abs/{ax}){f"，[项目页]({p['project']})" if p.get("project") else ""}{f"，[代码]({p['code']})" if p.get("code") else ""}）来自 [具身智能小站 12 篇盘点](../../sources/blogs/{BLOG})。
+**{p["short"]}**（*{p["title"]}*，[arXiv:{ax}](https://arxiv.org/abs/{ax}){f"，[项目页]({p['project']})" if p.get("project") else ""}{f"，[代码]({p['code']})" if p.get("code") else ""}）来自 [具身智能小站 12 篇盘点](../../sources/blogs/{BLOG})。
 
 ## 一句话定义
 
-**{p['one_liner']}**
+**{p["one_liner"]}**
 
 ## 英文缩写速查
 
@@ -433,8 +430,8 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 
 ## 为什么重要
 
-- {p['why']}
-- 开源结论：**{p['open']}**（步骤 2.5，{TODAY}）。
+- {p["why"]}
+- 开源结论：**{p["open"]}**（步骤 2.5，{TODAY}）。
 - 与 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md) 中同类工作可横向对照。
 
 ## 核心机制
@@ -442,15 +439,15 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 | 项 | 内容 |
 |----|------|
 | **arXiv** | [{ax}](https://arxiv.org/abs/{ax}) |
-| **开源** | **{p['open']}** |
-| **要点** | {p['mechanism']} |
-| **文内指标** | {p['metrics']} |
+| **开源** | **{p["open"]}** |
+| **要点** | {p["mechanism"]} |
+| **文内指标** | {p["metrics"]} |
 
 {seq}
 
 ## 实验与评测
 
-- {p['metrics']}
+- {p["metrics"]}
 - **读法：** 索引级摘要；逐项对照与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
@@ -459,19 +456,19 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 
 ## 结论
 
-**{p['conclusion']}**
+**{p["conclusion"]}**
 
-1. 开源边界：**{p['open']}** — 以项目页实际链接为准（入库日 {TODAY}）。
-2. 核心机制：{p['mechanism'][:80]}…
+1. 开源边界：**{p["open"]}** — 以项目页实际链接为准（入库日 {TODAY}）。
+2. 核心机制：{p["mechanism"][:80]}…
 3. 部署前核对任务协议与硬件条件，勿直接横比公众号摘录数字。
 
 ## 关联页面
 
-{_yaml_list([f"[{r.split('/')[-1].replace('.md','')}]({r})" for r in p['related']], 0)}
+{_yaml_list([f"[{r.split('/')[-1].replace('.md', '')}]({r})" for r in p["related"]], 0)}
 
 ## 参考来源
 
-- [{slug}_arxiv_{ax.replace('.', '_')}.md](../../sources/papers/{slug}_arxiv_{ax.replace('.', '_')}.md)
+- [{slug}_arxiv_{ax.replace(".", "_")}.md](../../sources/papers/{slug}_arxiv_{ax.replace(".", "_")}.md)
 - [{BLOG}](../../sources/blogs/{BLOG})
 - [arXiv:{ax}](https://arxiv.org/abs/{ax})
 
@@ -483,40 +480,40 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 
 
 def _repo(p: dict) -> str:
-    return f"""# {p['short']} 官方仓库
+    return f"""# {p["short"]} 官方仓库
 
 > 来源归档（repo）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** repo
-- **链接：** {p['code']}
-- **arXiv：** <https://arxiv.org/abs/{p['arxiv']}>
+- **链接：** {p["code"]}
+- **arXiv：** <https://arxiv.org/abs/{p["arxiv"]}>
 - **入库日期：** {TODAY}
-- **一句话说明：** {p['one_liner']}
-- **沉淀到 wiki：** [`wiki/entities/paper-{p['slug']}.md`](../../wiki/entities/paper-{p['slug']}.md)
+- **一句话说明：** {p["one_liner"]}
+- **沉淀到 wiki：** [`wiki/entities/paper-{p["slug"]}.md`](../../wiki/entities/paper-{p["slug"]}.md)
 
 ## 开源状态
 
-- **{p['open']}**：公开仓库（以 README 与 release 为准）。
+- **{p["open"]}**：公开仓库（以 README 与 release 为准）。
 """
 
 
 def _site(p: dict) -> str:
-    return f"""# {p['short']} 项目页
+    return f"""# {p["short"]} 项目页
 
 > 来源归档（site）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** site
-- **链接：** {p['project']}
-- **arXiv：** <https://arxiv.org/abs/{p['arxiv']}>
+- **链接：** {p["project"]}
+- **arXiv：** <https://arxiv.org/abs/{p["arxiv"]}>
 - **入库日期：** {TODAY}
-- **一句话说明：** {p['one_liner']}
-- **沉淀到 wiki：** [`wiki/entities/paper-{p['slug']}.md`](../../wiki/entities/paper-{p['slug']}.md)
+- **一句话说明：** {p["one_liner"]}
+- **沉淀到 wiki：** [`wiki/entities/paper-{p["slug"]}.md`](../../wiki/entities/paper-{p["slug"]}.md)
 
 ## 开源状态
 
-- **{p['open']}**（步骤 2.5 核查，{TODAY}）。
+- **{p["open"]}**（步骤 2.5 核查，{TODAY}）。
 """
 
 
