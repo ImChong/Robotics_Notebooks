@@ -335,6 +335,7 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 - [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)
 - [sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine @ Simons：生成式动作头与长 action chunk 对 IL 的抬升（官方 abstract）
 - [wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md) — 机器人 ICL taxonomy 综述（具身智能之心，2026-08-25）
+- [wechat_mbot_embodied_icl_survey_2026-09.md](../../sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md) — 具身 ICL 演化综述 VIMA→S1（Mbot 具身智能实验室，2026-09）
 - [seohong_behavioral_cloning_mystery.md](../../sources/blogs/seohong_behavioral_cloning_mystery.md) — 真机风格 BC 四条反直觉（仿真复现）
 - [skild_s1_in_context_learning.md](../../sources/blogs/skild_s1_in_context_learning.md) — 视频 ICL 预训练，未见长程操作（闭源）
 

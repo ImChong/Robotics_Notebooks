@@ -1,3 +1,5 @@
+## [2026-09-16] ingest | sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md — Mbot 具身 ICL 演化综述（VIMA→S1 八项主线）；补强 robot-in-context-learning 谱系与 Pure ICL/TTT 双层口径
+
 ## [2026-09-16] ingest | sources/papers/dynhair_arxiv_2607_23861.md — DynHair ECCV 2026 显式动态发丝化身；GitHub 占位仓
 
 ## [2026-09-16] ingest | sources/papers/textop_arxiv_2602_07439.md — TextOp arXiv 深读升格；TeleAI/SJTU/ECUST；GitHub 已开源

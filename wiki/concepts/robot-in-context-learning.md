@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../../roadmap/depth-icl.md
   - ./foundation-policy.md
@@ -30,10 +30,12 @@ related:
   - ../entities/anthropic-embody.md
 sources:
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
+  - ../../sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md
   - ../../sources/blogs/generalist_gen15_one_shot.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
+  - ../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md
 summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、从上下文窗口内的示范或交互证据归纳新映射；须与「映射选择」（π0.7 metadata）、「状态记忆」（MemoryVLA 等）及 test-time training（RoboTTT）区分——只有消解映射本身不确定性的第三类才是真 ICL。"
 ---
 
@@ -74,6 +76,27 @@ summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、�
 
 **判别口诀：** 读完一条 **任务示范** 后，模型「怎么做这件事」变了 → ICL；读完 **历史帧** 后，只是知道「做到哪一步了」→ 记忆；读完 **metadata** 后，只是换了一种执行风格 → 条件化选择。
 
+### 三类学习对象（与上文互补）
+
+[Mbot 具身 ICL 综述（2026-09）](../../sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md) 从 **归纳对象** 再拆一层（可与上表交叉读）：
+
+| 学习对象 | Context 典型来源 | 代表工作 |
+|----------|------------------|----------|
+| **Task / Behavior** | 机器人 demo、人视频、XR 遥操作 | KAT、[GEN-1.5](../entities/generalist-gen15-one-shot.md)、[S1](../entities/skild-s1.md) |
+| **Embodiment / World** | 任务无关主动探索、系统辨识片段 | ICWM、[LocoFormer](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) |
+| **History / Memory** | 自身 rollout、失败、跨 episode 历史 | LocoFormer、[RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) |
+
+未来基础模型很可能在同一上下文窗口内 **同时** 推断「做什么」「身体/环境如何工作」「刚才发生了什么」。
+
+### Pure ICL 与 TTT（双层口径）
+
+| 范式 | 测试时更新主权重 | 典型机制 | 代表 |
+|------|------------------|----------|------|
+| **Pure ICL** | 否 | Attention、KV Cache、Transformer-XL | KAT、ICWM、LocoFormer、GEN-1.5、S1 |
+| **TTT / Fast-Weight** | 否（仅快权重） | 自监督内循环写 Adaptive Memory | [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md)、[WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) |
+
+[WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) 对照实验：**同人视频纯塞进 context（WAM-ICL 7.1%）不如写快权重（46.2%）**，甚至低于无视频 backbone（32.5%）——说明 **并非所有部署证据都能靠加长 context 利用**；[RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) 对 GDN 的对照则显示 **8K 步历史需真梯度式快权重才能持续 scaling**。产业侧 [GEN-1.5](../entities/generalist-gen15-one-shot.md)/[S1](../entities/skild-s1.md) 的 one-shot 仍走 **零梯度 physical/video prompt**；工程上更可能走向 **短期 prompt + 长期 fast weights + retrieval** 混合（见 Mbot 综述 §7.4）。
+
 ```mermaid
 flowchart LR
   subgraph select [映射选择]
@@ -96,6 +119,44 @@ flowchart LR
   W --> F
   F --> A[动作]
 ```
+
+---
+
+## 技术演化谱系（2023–2026）
+
+[Mbot 综述](../../sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md) 将具身 ICL 概括为三阶段、八项主线：
+
+```mermaid
+flowchart LR
+  V[VIMA 2023<br/>Multimodal Prompt] --> K[KAT 2024<br/>Few-shot ICIL]
+  K --> T[Task / Behavior ICL]
+  T --> G[GEN-1.5 2026<br/>Emergent Physical Prompting]
+  T --> S[S1 2026<br/>Video ICL + Long Horizon]
+  K --> I[ICWM 2026<br/>In-Context System ID]
+  I --> E[Embodiment / World]
+  K --> L[LocoFormer 2025<br/>Long-Context Adaptation]
+  L --> R[RoboTTT 2026<br/>8K Context + Fast Weights]
+  R --> W[WAM-TTT 2026<br/>Human Video + Adaptive Memory]
+```
+
+| 阶段 | 年份 | 要点 |
+|------|------|------|
+| **Prompt 化** | 2023–2024 | VIMA 统一多模态 prompt；KAT 冻结 LLM + 关键点 token 做 few-shot ICIL |
+| **在线适应化** | 2025–2026 | ICWM 测试时系统辨识；LocoFormer 跨 episode TXL；RoboTTT/WAM-TTT 快权重记忆 |
+| **Foundation-Scale** | 2026– | GEN-1.5 涌现 physical prompting；S1 显式 ICL 预训练 + 分钟级未见任务 |
+
+**八项对照（文内深读坐标）：**
+
+| 工作 | Context 来源 | 参数更新 | 文内关键数字/证据 |
+|------|--------------|----------|-------------------|
+| VIMA | 文本+图像+视频 prompt | 否 | L4 零样本最高 **2.9×** 于基线 |
+| KAT | ≤10 demo | 否 | **>40 demo** 后纯 ICL 触顶 |
+| ICWM | N=5 任务无关探测 | 否 | 假 context（180° 错位）比无 context 更差 |
+| LocoFormer | 跨 episode rollout | 否 | 10 台未见机零样本 **0.96**，5s 适应 **0.98** |
+| RoboTTT | 人视频+失败+DAgger | 快权重 | **8K** 步 context，比 1K **+63%** |
+| WAM-TTT | 无标注人玩耍视频 | video 侧快权重 | TTT **46.2%** vs WAM-ICL **7.1%** progress |
+| GEN-1.5 | 3–12s sensorimotor demo | 否 | one-shot **~59%**（闭源自报） |
+| S1 | 单条任务视频 | 否 | 100k h 未见 **66%** vs 语言 VLA **9%**（闭源自报） |
 
 ---
 
@@ -153,11 +214,18 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 
 ---
 
-## 开放问题（2026-08 综述归纳）
+## 开放问题与评测方向
+
+### 机制与表征（2026-08 具身智能之心 + 2026-09 Mbot 合并）
 
 1. **涌现机制：** 除 GEN-1.5 外，机器人 ICL 多靠 **显式训练**（S1 是产业侧最强的显式样本）；何种数据分布 / 规模可预测涌现？与显式 ICL 的泛化行为是否系统不同？短程涌现与 **10 分钟未见** 是否同一现象的两端？
 2. **示范形态：** token 序列、图节点、关键点、结构化计划、原始感觉运动序列——抽象高则归纳易但丢接触/力信息；抽象低则保留全信息但对应关系难建立。
 3. **Long-context scaling：** 控制回路需高频动作输出，上下文变长直接增加 **每步推理成本**（不同于语言模型「延迟」问题）；何信息必须逐帧保留、何信息可压成一个 token 仍开放。
+4. **Context 四问（Mbot §4.2）：** 来自哪里、如何表示、存在哪里（Attention vs TXL vs Fast Weights）、如何 **证明真在用 context**（假 context、unseen **task** 而非仅 unseen object）。
+
+### 严格 ICL 评测（Mbot §7.8）
+
+未来 benchmark 宜包含：**同一观测配不同 prompt**、假/冲突 context、完全未见任务、prompt 与执行环境不一致、跨 embodiment、context 长度 scaling curve、移除 context 后的性能落差——避免把普通 OOD 泛化误判为 ICL。
 
 ---
 
@@ -177,6 +245,7 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制
 - [RealAB 14 篇地图](../overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
 - [Light REACT](../entities/light-react.md) — 全身运动反馈作上下文；故障下行走/爬行/恢复（亮源新创部署段）
+- [LocoFormer（待深读）](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — Skild 系跨 episode TXL 运动适应；S1 的技术前序
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 选型链在 VLA 层给出 I/O 边界与时延约束；ICL 是同一层的 **部署期适应旋钮**，长上下文直接吃掉该链关心的每步推理预算
 - [接触力旋量闭环](../queries/contact-wrench-closed-loop.md) — 示范抽象越高越易归纳，但接触力信息正是这条链所需；ICL 上下文用关键点/图节点表示时，力与接触细节被丢在这里
 
@@ -185,10 +254,12 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [GEN-1.5 官方博客归档](../../sources/blogs/generalist_gen15_one_shot.md)
 - Generalist AI 原文：<https://generalistai.com/blog/gen-1.5>
 - Skild S1 原文：<https://www.skild.ai/blogs/s1>
-- 综述原文（微信公众号）：<https://mp.weixin.qq.com/s/V_Dm8kHvB2YxtGY7qScjXA>
+- 综述原文（具身智能之心）：<https://mp.weixin.qq.com/s/V_Dm8kHvB2YxtGY7qScjXA>
+- 演化综述（Mbot 具身智能实验室）：<https://mp.weixin.qq.com/s/WmtTSKS85i2ZJJijFewy3A>
 
 ## 参考来源
 
+- [Embodied ICL 调研综述：Few-Shot → Physical Prompting（Mbot 具身智能实验室，2026-09）](../../sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md)
 - [万字长文：机器人上下文学习到底在学什么（具身智能之心，2026-08-25）](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md)
 - [GEN-1.5: Embodied Foundation Models are One-Shot Learners（Generalist AI 博客归档）](../../sources/blogs/generalist_gen15_one_shot.md)
 - [S1: In-Context Learning for Robotics（Skild 博客归档）](../../sources/blogs/skild_s1_in_context_learning.md)

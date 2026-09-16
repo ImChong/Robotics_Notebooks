@@ -2,7 +2,7 @@
 type: comparison
 tags: [in-context-learning, icl, vla, wam, test-time-training, manipulation, taxonomy]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-16
 related:
   - ../../roadmap/depth-icl.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -20,6 +20,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
+  - ../../sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md
 summary: "四篇可核对论文把「演示当提示」拆成快权重记忆（WAM-TTT/RoboTTT）与纯上下文（StellaVLA/Zero-WAM）两族；跨篇数字不可直接比较，应按漂移轴（场景/构型/扰动/任务/时长）选型而非排名。"
 ---
 
