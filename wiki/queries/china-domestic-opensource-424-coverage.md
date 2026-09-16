@@ -33,8 +33,8 @@ sources:
 |------|------|
 | 清单条目 | 424 |
 | 本库可点开详情 | 424 |
-| 复用既有实体 | 126 |
-| 本 ingest 新建实体 | 298 |
+| 复用既有实体 | 127 |
+| 本 ingest 新建实体 | 297 |
 
 ## 导读总表（按五层格局）
 
@@ -425,7 +425,7 @@ sources:
 
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
-| DiT4DiT | VLA/操作模型 | [DiT4DiT](../entities/cn-os-dit4dit.md) · 新建 |
+| DiT4DiT | VLA/操作模型 | [DiT4DiT](../entities/paper-dit4dit-video-action-model.md) · 复用 |
 
 #### 它石智航（2）
 

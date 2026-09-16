@@ -152,7 +152,6 @@
 - [Deploy_Tienkung](wiki/entities/cn-os-deploy-tienkung.md) — Deploy_Tienkung** 是 北京人形机器人创新中心 公开的 **仿真环境** 开源项目：ROS 2控制主库接 `📅unknown` `[entity_page]`
 - [dexrobot_ecosystem](wiki/entities/cn-os-dexrobot-ecosystem.md) — dexrobot_ecosystem** 是 灵巧智能 公开的 **移动操作** 开源项目：整合灵巧手底层控制、运动学、URDF、Is `📅unknown` `[entity_page]`
 - [DIAL](wiki/entities/cn-os-dial.md) — DIAL** 是 小鹏机器人 公开的 **VLA/操作模型** 开源项目：小鹏机器人官方公开的机器人学习研究项目，具体数据 `📅unknown` `[entity_page]`
-- [DiT4DiT](wiki/entities/cn-os-dit4dit.md) — DiT4DiT** 是 妙动科技 公开的 **VLA/操作模型** 开源项目：将视频生成DiT的中间去噪特征与流匹配动作头 `📅unknown` `[entity_page]`
 - [dobot_atom_ros2](wiki/entities/cn-os-dobot-atom-ros2.md) — dobot_atom_ros2** 是 越疆科技 公开的 **工程与工具** 开源项目：为ATOM机器人提供ROS2接口， `📅unknown` `[entity_page]`
 - [EFMNode](wiki/entities/cn-os-efmnode.md) — EFMNode** 是 星海图 公开的 **部署运行时** 开源项目：策略部署运行时：加载训练策略、下发关节命令 `📅unknown` `[entity_page]`
 - [Electronic-Skin-ML](wiki/entities/cn-os-electronic-skin-ml.md) — Electronic-Skin-ML** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：ML 电子皮肤 SDK `📅unknown` `[entity_page]`

@@ -2228,8 +2228,8 @@
     "org_url": "https://github.com/Mondo-Robotics",
     "name": "DiT4DiT",
     "category": "VLA/操作模型",
-    "slug": "cn-os-dit4dit",
-    "new": true
+    "slug": "paper-dit4dit-video-action-model",
+    "new": false
   },
   {
     "layer": "第二层",

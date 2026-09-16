@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-16",
-  "node_count": 4103,
-  "edge_count": 36671,
+  "node_count": 4102,
+  "edge_count": 36669,
   "coverage": {
-    "covered": 4075,
-    "total": 4075,
+    "covered": 4074,
+    "total": 4074,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -236,7 +236,7 @@
     },
     {
       "label": "国内开源全景 424 项本库导读",
-      "size": 320
+      "size": 319
     },
     {
       "label": "视觉-语言-动作",
@@ -322,7 +322,7 @@
       "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
       "label": "HMI 开源项目主表 · 本库导读",
       "type": "query",
-      "degree": 527,
+      "degree": 526,
       "has_repo": true,
       "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
     }

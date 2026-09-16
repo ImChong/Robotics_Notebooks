@@ -1,3 +1,9 @@
+## [2026-09-16] structural | 合并重复节点 | wiki/entities/cn-os-dit4dit.md（占位 stub）→ wiki/entities/paper-dit4dit-video-action-model.md（canonical）；同仓库 Mondo-Robotics/DiT4DiT 双节点归一
+
+- **触发：** 用户报告 `detail.html?id=entity-cn-os-dit4dit` 与 `detail.html?id=entity-paper-dit4dit-video-action-model` 两页重复。
+- **判据：** 二者同指 <https://github.com/Mondo-Robotics/DiT4DiT>；前者是国内开源全景 424 项 ingest 生成的 draft 占位页，后者为 arXiv:2603.10448 完整深读页。
+- **处理：** 删除 stub；`schema/page-aliases.json` 登记 `entity-cn-os-dit4dit → entity-paper-dit4dit-video-action-model`；canonical 页补 `miaodong`/`mondo-robotics`/`open-source` 标签与全景来源；424 覆盖表改「复用」，计数 126/298 → 127/297。
+
 ## [2026-09-16] ingest | sources/papers/wholebodywam_arxiv_2609_16644.md — WholeBodyWAM 深度入库（CUHK/HKU/PKU/Φ）；UWBC+CASA 协调；步骤 2.5 **待发布**
 
 - **触发：** 用户指定 WholeBodyWAM 专项 ingest + 自动合并 PR

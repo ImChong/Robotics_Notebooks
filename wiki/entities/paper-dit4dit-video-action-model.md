@@ -11,8 +11,12 @@ tags:
   - unitree-g1
   - cosmos-predict
   - joint-training
+  - open-source
+  - china-embodied-opensource
+  - miaodong
+  - mondo-robotics
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.10448"
 code: https://github.com/Mondo-Robotics/DiT4DiT
 related:
@@ -26,10 +30,14 @@ related:
   - ../tasks/loco-manipulation.md
   - ./unitree-g1.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/repos/mondo_robotics_dit4dit.md
   - ../../sources/sites/dit4dit-project.md
+  - ../../sources/repos/dit4dit.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
 summary: "DiT4DiT（arXiv:2603.10448）：端到端双 DiT Video-Action Model——Cosmos-Predict2.5 Video DiT 与 Action DiT 联合 flow matching，用固定 flow 步视频隐状态条件动作；LIBERO 98.6%、RoboCasa-GR1 50.8%，G1 真机桌面与全身 loco-manip 超 GR00T-N1.5；开源代码；同团队后续演进为 MotionWAM 实时人形 WAM。"
 ---
 
@@ -133,12 +141,16 @@ flowchart TB
 - [VLA](../methods/vla.md) — 静态先验基线语境
 - [SONIC](../methods/sonic-motion-tracking.md) — G1 全身低层接口（+SONIC 演示）
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身任务族
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页即该清单「第二层 · 妙动科技 / VLA 操作模型」条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
 - [DiT4DiT 论文摘录（arXiv:2603.10448）](../../sources/papers/dit4dit_arxiv_2603_10448.md)
 - [Mondo-Robotics/DiT4DiT 仓库归档](../../sources/repos/mondo_robotics_dit4dit.md)
 - [DiT4DiT 项目页归档](../../sources/sites/dit4dit-project.md)
+- [DiT4DiT 源码归档（国内开源全景策展）](../../sources/repos/dit4dit.md)
+- [国内具身智能开源全景（微信公众号，2026-09-06）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md) — 以「妙动科技」列出本仓库
 
 ## 推荐继续阅读
 
