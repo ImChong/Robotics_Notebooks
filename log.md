@@ -1,3 +1,5 @@
+## [2026-09-16] ingest | sources/papers/textop_arxiv_2602_07439.md — TextOp arXiv 深读升格；TeleAI/SJTU/ECUST；GitHub 已开源
+
 ## [2026-09-15] ingest | PinkRobot 公众号 5 篇 — Mimic 演进综述、GO2 Backflip 开源、RoboGauge RSS 2026、One Filter OCR TRO 2026、SE(2) NavMesh；新建 overview + 4 实体 + repos/sites；RoboGauge/One Filter 已开源，SE(2) NavMesh 待发布
 
 ## [2026-09-15] ingest | sources/papers/worldroambench_arxiv_2606_31672.md — WorldRoamBench 交互世界模型长程稳定性基准（部分开源：活榜+数据集已开放，评测代码待发布）；新建 paper-worldroambench 实体并交叉 hub-embodied-eval-benchmark / ABot-World-0

@@ -1274,7 +1274,7 @@
 - [GMT（Loco-Manip 161 · #009 索引）](wiki/entities/paper-loco-manip-161-009-gmt.md) — GMT** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
 - [HumanPlus](wiki/entities/paper-loco-manip-161-012-humanplus.md) — HumanPlus** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
 - [MOSAIC](wiki/entities/paper-loco-manip-161-014-mosaic.md) — MOSAIC** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
-- [TextOp](wiki/entities/paper-loco-manip-161-022-textop.md) — TextOp** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
+- [TextOp](wiki/entities/paper-loco-manip-161-022-textop.md) — TextOp**（arXiv:2602.07439，项目页，[G `📅unknown` `[entity_page]`
 - [UniAct](wiki/entities/paper-loco-manip-161-023-uniact.md) — UniAct** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [UniTracker](wiki/entities/paper-loco-manip-161-024-unitracker.md) — UniTracker** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C `📅unknown` `[entity_page]`
 - [人形操作接口](wiki/entities/paper-loco-manip-161-025-n025.md) — 人形操作接口** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`

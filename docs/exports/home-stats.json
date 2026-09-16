@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-16",
   "node_count": 4082,
-  "edge_count": 36505,
+  "edge_count": 36510,
   "coverage": {
     "covered": 4054,
     "total": 4054,
@@ -221,7 +221,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 474
+      "size": 477
     },
     {
       "label": "世界动作模型",
