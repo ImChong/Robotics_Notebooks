@@ -1,3 +1,9 @@
+## [2026-09-16] ingest | sources/papers/openwam_arxiv_2609_07398.md — OpenWAM 复核增强：HF 论文页 / Foundation 权重 / GitHub 组织链接；预训练数据 40% 真机 + 30% 仿真 + 30% ego；depth-wam Stage 3 交叉引用
+
+- **触发：** 用户指定 OpenWAM 全链接 ingest + 自动合并 PR（主库已于 2026-09-09 入库，本次为复核与链接补全）
+- **步骤 2.5：** 项目页 / GitHub / HF **已开源**（46 检查点 + Foundation 可下载）
+- **关键页：** 增强 [`paper-openwam`](wiki/entities/paper-openwam.md)；[`depth-wam`](roadmap/depth-wam.md) Stage 3 补 OpenWAM 读法
+
 ## [2026-09-16] ingest | sources/papers/wholebodywam_arxiv_2609_16644.md — WholeBodyWAM 深度入库（CUHK/HKU/PKU/Φ）；UWBC+CASA 协调；步骤 2.5 **待发布**
 
 - **触发：** 用户指定 WholeBodyWAM 专项 ingest + 自动合并 PR
