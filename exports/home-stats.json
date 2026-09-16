@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-16",
-  "node_count": 4083,
-  "edge_count": 36515,
+  "node_count": 4086,
+  "edge_count": 36537,
   "coverage": {
-    "covered": 4055,
-    "total": 4055,
+    "covered": 4058,
+    "total": 4058,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -222,11 +222,11 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 474
+      "size": 476
     },
     {
       "label": "世界动作模型",
-      "size": 337
+      "size": 345
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -262,7 +262,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 985,
+      "degree": 986,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -293,7 +293,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 625,
+      "degree": 626,
       "has_repo": true
     },
     {

@@ -1,3 +1,10 @@
+## [2026-09-16] ingest | FMP / ResSafe / SmolVLA ONNX LIBERO / X-WBC（复用）— G1 在线 OT 运动先验、残差安全过滤、ONNX 闭环部署审计、跨九机体 WBC
+
+- **FMP（2609.15631）：** 清华/中科院软所；在线 OT+FM 标量运动先验；G1 Isaac Lab **未开源** → `paper-fmp-motion-priors`
+- **ResSafe（2609.15988）：** UC Berkeley；名义+残差安全过滤；项目页 **Code Coming Soon** → `paper-ressafe` + `sources/sites/ressafe-sciautonomy.md`
+- **SmolVLA ONNX（2609.14146）：** `rafiqul713/smolvla-libero-onnx` **已开源**；LIBERO Spatial/Object 成功率–延迟审计 → `paper-smolvla-onnx-libero`
+- **X-WBC（2609.15213）：** **复用** 既有 `paper-x-wbc`（2026-09-15 ingest），本次不重复建页
+
 ## [2026-09-16] ingest | sources/repos/depth-anything-cpp.md — 接入 DA3 C++/ggml 推理引擎 depth-anything.cpp 并归档上游论文
 
 ## [2026-09-15] ingest | PinkRobot 公众号 5 篇 — Mimic 演进综述、GO2 Backflip 开源、RoboGauge RSS 2026、One Filter OCR TRO 2026、SE(2) NavMesh；新建 overview + 4 实体 + repos/sites；RoboGauge/One Filter 已开源，SE(2) NavMesh 待发布
