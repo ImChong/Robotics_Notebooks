@@ -41,7 +41,7 @@ sources:
 | 006 | CLONE | [paper-loco-manip-161-006-clone](../entities/paper-bfm-12-clone.md) |
 | 007 | ExBody2 | [paper-loco-manip-161-007-exbody2](../entities/paper-loco-manip-161-007-exbody2.md) |
 | 008 | FRoM-W1 | [paper-loco-manip-161-008-from-w1](../entities/paper-loco-manip-161-096-from-w1.md) |
-| 009 | GMT | [paper-gmt](../entities/paper-gmt.md) · [161 索引](../entities/paper-loco-manip-161-009-gmt.md) |
+| 009 | GMT | [paper-gmt](../entities/paper-gmt.md) · [161 索引](../entities/paper-gmt.md) |
 | 010 | HOVER | [paper-loco-manip-161-010-hover](../entities/paper-bfm-14-hover.md) |
 | 011 | HoloMotion | [paper-loco-manip-161-011-holomotion](../entities/holomotion.md) |
 | 012 | HumanPlus | [paper-loco-manip-161-012-humanplus](../entities/paper-loco-manip-161-012-humanplus.md) |

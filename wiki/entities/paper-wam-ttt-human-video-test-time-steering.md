@@ -13,9 +13,13 @@ tags:
   - pku
   - galbot
   - tsinghua
+  - curated-index
+  - awesome-world-models
+  - sun254667-wm
 status: complete
+arxiv: "2607.06988"
 venue: arxiv
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
@@ -29,9 +33,20 @@ related:
   - ./paper-zero-wam.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
+  - ../entities/awesome-world-models.md
+  - ../overview/sun-awesome-wm-technology-map.md
+  - ../methods/generative-world-models.md
+  - ../methods/model-based-rl.md
+  - ../tasks/locomotion.md
+  - ../../sources/papers/sun_awesome_wm_2607_06988_wam-ttt-steering-world-action-models-by.md
+  - ../../sources/papers/sun_awesome_wm_catalog.md
+  - ../../sources/repos/awesome-world-models.md
 sources:
   - ../../sources/papers/wam_ttt_arxiv_2607_06988.md
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
+  - ../../sources/papers/sun_awesome_wm_2607_06988_wam-ttt-steering-world-action-models-by.md
+  - ../../sources/papers/sun_awesome_wm_catalog.md
+  - ../../sources/repos/awesome-world-models.md
 summary: "WAM-TTT（PKU/Galbot 等）：在冻结 LDA-1B WAM 的 video expert 上外挂 Spatial-TTT fast-weight 分支；meta-training 用 2286 对人–机相位同步示教 + KV 记忆重建对齐人 Key/Value 与机器人 Query；部署时仅用无标注 egocentric 人视频做自监督视频预测 TTT 更新记忆即可 steer 新任务，无需机器人动作或全模型微调；9 项真机 New 家庭场景平均 46.2% progress，显著优于 WAM-ICL（7.1%）与同骨干 LDA（32.5%）。"
 ---
 
@@ -152,6 +167,9 @@ flowchart TB
 
 - [WAM-TTT 论文摘录](../../sources/papers/wam_ttt_arxiv_2607_06988.md)
 - [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)
+- [`sources/papers/sun_awesome_wm_2607_06988_wam-ttt-steering-world-action-models-by.md`](../../sources/papers/sun_awesome_wm_2607_06988_wam-ttt-steering-world-action-models-by.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 
 ## 推荐继续阅读
 

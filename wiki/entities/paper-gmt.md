@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, humanoid, motion-tracking, whole-body, reinforcement-learning, moe, adaptive-sampling, ppo, dagger, sim2real, unitree-g1, ucsd, sfu, gmt]
+tags: [paper, humanoid, motion-tracking, whole-body, reinforcement-learning, moe, adaptive-sampling, ppo, dagger, sim2real, unitree-g1, ucsd, sfu, gmt, loco-manip-161-survey, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2506.14770"
 code: https://github.com/zixuan417/humanoid-general-motion-tracking
 related:
@@ -18,13 +18,28 @@ related:
   - ./paper-loco-manip-161-007-exbody2.md
   - ./paper-hrl-stack-25-asap.md
   - ./unitree-g1.md
-  - ./paper-loco-manip-161-009-gmt.md
-  - ./paper-notebook-general-motion-tracking-for-humanoid-whole-body.md
   - ./paper-humantracker.md
+  - ../overview/humanoid-loco-manip-161-papers-technology-map.md
+  - ../overview/loco-manip-161-category-01-motion-base-wbt.md
+  - ../tasks/loco-manipulation.md
+  - ../../sources/papers/gmt_arxiv_2506_14770.md
+  - ../../sources/papers/loco_manip_161_survey_009_gmt.md
+  - ../../sources/sites/gmt-humanoid-github-io.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
+  - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
+  - ../overview/humanoid-paper-notebooks-index.md
+  - ../../sources/papers/humanoid_pnb_general-motion-tracking-for-humanoid-whole-body.md
+  - ../../sources/papers/humanoid_pnb_gmt-general-motion-tracking-for-humanoid-whole-b.md
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
   - ../../sources/sites/gmt-humanoid-github-io.md
   - ../../sources/repos/humanoid-general-motion-tracking.md
+  - ../../sources/papers/loco_manip_161_survey_009_gmt.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
+  - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/papers/humanoid_pnb_general-motion-tracking-for-humanoid-whole-body.md
+  - ../../sources/papers/humanoid_pnb_gmt-general-motion-tracking-for-humanoid-whole-b.md
 summary: "GMT（UCSD×SFU，arXiv:2506.14770）：Adaptive Sampling + Motion MoE 训练单一统一全身跟踪策略，AMASS+LAFAN1 策展 8925 clips；IsaacGym 教师–学生后部署 Unitree G1；官方仓部分开源（MuJoCo sim2sim + pretrained）。"
 ---
 
@@ -206,7 +221,6 @@ sequenceDiagram
 - [ExBody2（161 索引）](./paper-loco-manip-161-007-exbody2.md)
 - [ASAP](./paper-hrl-stack-25-asap.md)
 - [Unitree G1](./unitree-g1.md)
-- [161 篇策展索引 GMT](./paper-loco-manip-161-009-gmt.md)
 
 ## 推荐继续阅读
 
@@ -221,3 +235,7 @@ sequenceDiagram
 - [GMT 项目页归档](../../sources/sites/gmt-humanoid-github-io.md)
 - [GMT 代码仓库归档](../../sources/repos/humanoid-general-motion-tracking.md)
 - Chen et al., *GMT: General Motion Tracking for Humanoid Whole-Body Control*, arXiv:2506.14770, 2025. <https://arxiv.org/abs/2506.14770>
+- [loco_manip_161_survey_009_gmt.md](../../sources/papers/loco_manip_161_survey_009_gmt.md) — 161 策展摘录（含历史误述，已交叉更正）
+- [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
+- [humanoid_pnb_general-motion-tracking-for-humanoid-whole-body.md](../../sources/papers/humanoid_pnb_general-motion-tracking-for-humanoid-whole-body.md)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)

@@ -2,6 +2,7 @@
 type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
+arxiv: "2602.15989"
 updated: 2026-09-15
 related:
   - ./paper-biomechanical-3d-body.md

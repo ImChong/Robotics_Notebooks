@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Steers world-action models by watching human play at test time.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md`](../../wiki/entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-wam-ttt-human-video-test-time-steering.md`](../../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md`](../../wiki/entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md)
+- 实体页：[`wiki/entities/paper-wam-ttt-human-video-test-time-steering.md`](../../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)

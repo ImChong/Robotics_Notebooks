@@ -1,8 +1,9 @@
 ---
 type: entity
-tags: [world-models, generative-ai, autoregressive, multi-view, embodied-synthesis, open-source, xiaomi, manipulation, data-augmentation]
+tags: [world-models, generative-ai, autoregressive, multi-view, embodied-synthesis, open-source, xiaomi, manipulation, data-augmentation, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+arxiv: "2607.11643"
+updated: 2026-09-16
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
@@ -13,9 +14,19 @@ related:
   - ./xiaomi-robotics-1.md
   - ./ewmbench.md
   - ./tau0-world-model.md
+  - ../entities/awesome-world-models.md
+  - ../overview/sun-awesome-wm-technology-map.md
+  - ../methods/model-based-rl.md
+  - ../tasks/locomotion.md
+  - ../../sources/papers/sun_awesome_wm_2607_11643_xiaomi-robotics-u0-unified-embodied-synt.md
+  - ../../sources/papers/sun_awesome_wm_catalog.md
+  - ../../sources/repos/awesome-world-models.md
 sources:
   - ../../sources/repos/xiaomi-robotics-u0.md
   - ../../sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md
+  - ../../sources/papers/sun_awesome_wm_2607_11643_xiaomi-robotics-u0-unified-embodied-synt.md
+  - ../../sources/papers/sun_awesome_wm_catalog.md
+  - ../../sources/repos/awesome-world-models.md
 summary: "Xiaomi-Robotics-U0 是 38B 自回归世界基础模型：在 EMU3.5 上持续统一训练 T2I/X2I、多视角具身场景生成、五维可控具身迁移与多 FPS 操纵视频；FlashAR+ 与 vLLM 实现近 83× 图像生成加速；WorldArena 第一，并用生成风格迁移数据将 π₀.₅ 真机 OOD 完成度从 36.9% 提到 63.2%。"
 ---
 
@@ -119,6 +130,9 @@ flowchart TB
 - Li et al., *Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model*, [arXiv:2607.11643](https://arxiv.org/abs/2607.11643)
 - [Robotics @ Xiaomi 项目说明](https://robotics.xiaomi.com/xiaomi-robotics-u0.html)
 - [XiaomiRobotics/Xiaomi-Robotics-U0（GitHub）](https://github.com/XiaomiRobotics/Xiaomi-Robotics-U0)
+- [`sources/papers/sun_awesome_wm_2607_11643_xiaomi-robotics-u0-unified-embodied-synt.md`](../../sources/papers/sun_awesome_wm_2607_11643_xiaomi-robotics-u0-unified-embodied-synt.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 
 ## 推荐继续阅读
 

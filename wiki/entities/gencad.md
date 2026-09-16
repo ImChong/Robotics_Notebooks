@@ -10,6 +10,7 @@ tags:
   - reverse-engineering
   - computer-vision
 status: complete
+arxiv: "2409.16294"
 date: 2026-05-21
 updated: 2026-09-15
 related:

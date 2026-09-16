@@ -12,6 +12,7 @@ tags:
   - nvidia
   - open-source
 status: complete
+arxiv: "2502.16372"
 updated: 2026-09-06
 related:
   - ./isaac-lab.md

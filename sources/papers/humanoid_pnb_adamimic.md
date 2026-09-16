@@ -23,7 +23,7 @@
 ## 对 wiki 的映射
 
 - **主实体页：** [paper-adamimic](../../wiki/entities/paper-adamimic.md)
-- 本文件（PNB 锚点）：[paper-notebook-adamimic](../../wiki/entities/paper-notebook-adamimic.md)
+- 本文件（PNB 锚点）：[paper-adamimic](../../wiki/entities/paper-adamimic.md)
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## 参考来源（原始）

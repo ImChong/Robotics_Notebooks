@@ -3,6 +3,7 @@
 type: entity
 tags: [vla, manipulation, lerobot, diffusion, qwen3-vl, tactile, action-chunking, repo, huggingface]
 status: complete
+arxiv: "2605.03269"
 updated: 2026-09-15
 related:
   - ../methods/vla.md

@@ -22,7 +22,7 @@
 | 006 | CLONE | [paper-loco-manip-161-006-clone](../../wiki/entities/paper-bfm-12-clone.md) |
 | 007 | ExBody2 | [paper-loco-manip-161-007-exbody2](../../wiki/entities/paper-loco-manip-161-007-exbody2.md) |
 | 008 | FRoM-W1 | [paper-loco-manip-161-008-from-w1](../../wiki/entities/paper-loco-manip-161-096-from-w1.md) |
-| 009 | GMT | [paper-loco-manip-161-009-gmt](../../wiki/entities/paper-loco-manip-161-009-gmt.md) |
+| 009 | GMT | [paper-gmt](../../wiki/entities/paper-gmt.md) |
 | 010 | HOVER | [paper-loco-manip-161-010-hover](../../wiki/entities/paper-bfm-14-hover.md) |
 | 011 | HoloMotion | [paper-loco-manip-161-011-holomotion](../../wiki/entities/holomotion.md) |
 | 012 | HumanPlus | [paper-loco-manip-161-012-humanplus](../../wiki/entities/paper-loco-manip-161-012-humanplus.md) |

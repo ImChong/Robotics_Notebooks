@@ -72,4 +72,4 @@ VLA 预训练、世界模型预训练、人→机行为迁移、egocentric 表�
 
 - 主实体：[EgoSuite-Open100K](../../wiki/entities/egosuite-open100k.md)
 - 工具：[LW-Egosuite-DevKit](../../wiki/entities/cn-os-lw-egosuite-devkit.md)
-- 对照：[Ego4D](../../wiki/entities/paper-ego4d.md)、[EgoScale](../../wiki/methods/egoscale.md)、[EgoVerse](../../wiki/entities/paper-sa-2604-07607-egoverse.md)
+- 对照：[Ego4D](../../wiki/entities/paper-ego4d.md)、[EgoScale](../../wiki/methods/egoscale.md)、[EgoVerse](../../wiki/entities/paper-egoverse.md)

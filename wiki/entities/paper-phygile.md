@@ -14,7 +14,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../entities/paper-gmt.md
-  - ../entities/paper-loco-manip-161-009-gmt.md
+  - ../entities/paper-gmt.md
   - ../entities/paper-loco-manip-161-097-harmon.md
   - ../entities/paper-humanoid-gpt.md
   - ../entities/paper-molingo.md

@@ -1,6 +1,14 @@
 {
   "description": "已合并/删除页面的旧 detail 页 ID → canonical 页 ID 映射。合并重复节点删除页面时必须在此登记旧 ID，export_minimal.py 会注入 site-data-v1.json 的 pages.page_aliases，docs/main.js 详情页据此把旧链接重定向到合并后的页面，避免历史 URL 断链。键为旧页面 ID（entity-<stem> 或 wiki-<子目录>-<stem>），值为现存页面 ID。",
   "aliases": {
+    "entity-paper-loco-manip-161-009-gmt": "entity-paper-gmt",
+    "entity-paper-notebook-adamimic": "entity-paper-adamimic",
+    "entity-paper-notebook-aero-hand-open": "entity-paper-aero-hand-open",
+    "entity-paper-notebook-general-motion-tracking-for-humanoid-whole-body": "entity-paper-gmt",
+    "entity-paper-notebook-towards-adaptable-humanoid-control-via-adaptive": "entity-paper-adamimic",
+    "entity-paper-sa-2604-07607-egoverse": "entity-paper-egoverse",
+    "entity-paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching": "entity-paper-wam-ttt-human-video-test-time-steering",
+    "entity-paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi": "entity-xiaomi-robotics-u0",
     "entity-cn-os-abot-manipulation": "entity-paper-abot-m05-mobile-manipulation-wam",
     "entity-cn-os-abot-navigation": "entity-paper-abot-n1",
     "entity-cn-os-abot-recon": "entity-paper-abot-recon",

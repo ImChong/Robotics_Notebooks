@@ -341,7 +341,7 @@ sources:
 | # | 论文 | 详情节点 |
 |---|------|----------|
 | 201 | EgoBench | [paper-sa-2605-27820-egobench](../entities/paper-sa-2605-27820-egobench.md) |
-| 202 | EgoVerse | [paper-sa-2604-07607-egoverse](../entities/paper-sa-2604-07607-egoverse.md) |
+| 202 | EgoVerse | [paper-egoverse](../entities/paper-egoverse.md) |
 
 ### Event Camera-based Perception
 

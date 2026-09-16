@@ -11,8 +11,9 @@ tags:
   - unitree-g1
   - shanghai-ai-lab
   - sjtu
+  - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2510.14454"
 venue: "ICRA 2026 Oral"
 code: https://github.com/InternRobotics/AdaMimic
@@ -26,11 +27,16 @@ related:
   - ./unitree-g1.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
+  - ../overview/humanoid-paper-notebooks-index.md
+  - ../../sources/papers/humanoid_pnb_adamimic.md
+  - ../../sources/papers/adamimic_arxiv_2510_14454.md
+  - ../../sources/papers/humanoid_pnb_towards-adaptable-humanoid-control-via-adaptive.md
 sources:
   - ../../sources/papers/adamimic_arxiv_2510_14454.md
   - ../../sources/sites/adamimic-github-io.md
   - ../../sources/repos/adamimic.md
   - ../../sources/papers/humanoid_pnb_adamimic.md
+  - ../../sources/papers/humanoid_pnb_towards-adaptable-humanoid-control-via-adaptive.md
 summary: "AdaMimic（arXiv:2510.14454，上海 AI Lab / 上交，ICRA 2026 Oral）：单条参考运动经关键帧稀疏化与轻量编辑，两阶段 RL（双 critic 跟踪 + phase/tracking 适配器 time warping）在 G1 上实现敏捷全身适应模仿；GitHub 已开源训练/play（CC BY-NC-SA）。"
 ---
 
@@ -232,8 +238,6 @@ sequenceDiagram
 - [Unitree G1](./unitree-g1.md) — 硬件平台
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [Paper Notebooks · Loco-Manipulation and WBC](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
-- [paper-notebook-adamimic](./paper-notebook-adamimic.md) — Paper Notebooks 短名索引
-- [paper-notebook-towards-adaptable-humanoid-control-via-adaptive](./paper-notebook-towards-adaptable-humanoid-control-via-adaptive.md) — 题名级重复索引
 
 ## 参考来源
 
@@ -242,6 +246,8 @@ sequenceDiagram
 - [adamimic.md](../../sources/repos/adamimic.md) — GitHub 仓库归档
 - [humanoid_pnb_adamimic.md](../../sources/papers/humanoid_pnb_adamimic.md) — Paper Notebooks 进度锚点
 - [arXiv:2510.14454](https://arxiv.org/abs/2510.14454) — 原文
+- [paper-adamimic.md](./paper-adamimic.md) — 全库 ingest 主实体
+- [humanoid_pnb_towards-adaptable-humanoid-control-via-adaptive.md](../../sources/papers/humanoid_pnb_towards-adaptable-humanoid-control-via-adaptive.md)
 
 ## 推荐继续阅读
 

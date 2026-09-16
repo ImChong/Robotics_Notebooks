@@ -12,7 +12,7 @@
 - **代码：** <https://github.com/XiaomiRobotics/Xiaomi-Robotics-U0>
 - **项目页：** <https://robotics.xiaomi.com/xiaomi-robotics-u0.html>
 - **Highlights（清单）：** Xiaomi's unified embodied synthesis with a world foundation model.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi.md`](../../wiki/entities/paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi.md)
+- **沉淀到 wiki：** [`wiki/entities/xiaomi-robotics-u0.md`](../../wiki/entities/xiaomi-robotics-u0.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi.md`](../../wiki/entities/paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi.md)
+- 实体页：[`wiki/entities/xiaomi-robotics-u0.md`](../../wiki/entities/xiaomi-robotics-u0.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)

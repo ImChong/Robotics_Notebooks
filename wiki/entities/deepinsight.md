@@ -2,6 +2,7 @@
 type: entity
 tags: [evaluation, physical-ai, humanoid, infrastructure, benchmarking, foundation-model, whole-body-control, xpeng]
 status: complete
+arxiv: "2606.17574"
 updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md

@@ -23,7 +23,7 @@ overrides:
   - wiki/entities/paper-notebook-a-systematic-study-of-data-modalities-and-strate.md
   AdaMimic__Towards_Adaptable_Humanoid_Control_via_Adaptive_Motion_Tracking:
   - wiki/entities/paper-adamimic.md
-  - wiki/entities/paper-notebook-adamimic.md
+  - wiki/entities/paper-adamimic.md
   Adaptive_Invariant_Extended_Kalman_Filter_for_Legged_Robot_State_Estimation:
   - wiki/entities/paper-notebook-adaptive-invariant-extended-kalman-filter-for-le.md
   Agility_Meets_Stability__Versatile_Humanoid_Control_with_Heterogeneous_Data:
@@ -204,7 +204,7 @@ overrides:
   General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast_Adaptation:
   - wiki/methods/egm-efficient-general-mimic.md
   General_Motion_Tracking_for_Humanoid_Whole-Body_Control:
-  - wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md
+  - wiki/entities/paper-gmt.md
   Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report:
   - wiki/methods/generative-world-models.md
   Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot:
@@ -647,7 +647,7 @@ overrides:
   adversarial-locomotion-and-motion-imitation-for:
   - wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md
   aero-hand-open:
-  - wiki/entities/paper-notebook-aero-hand-open.md
+  - wiki/entities/paper-aero-hand-open.md
   agiloped-agile-open-source-humanoid-robot-for-re:
   - wiki/entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md
   ame-2-agile-and-generalized-legged-locomotion-vi:
@@ -783,7 +783,7 @@ overrides:
   geometry-aware-predictive-safety-filters-on-huma:
   - wiki/entities/paper-notebook-geometry-aware-predictive-safety-filters-on-huma.md
   gmt-general-motion-tracking-for-humanoid-whole-b:
-  - wiki/entities/paper-loco-manip-161-009-gmt.md
+  - wiki/entities/paper-gmt.md
   gtsam-factor-graphs-for-sensor-fusion-in-robotic:
   - wiki/entities/paper-notebook-gtsam-factor-graphs-for-sensor-fusion-in-robotic.md
   h-zero-cross-humanoid-locomotion-pretraining-ena:
@@ -1067,7 +1067,7 @@ overrides:
   toward-humanoid-brain-body-co-design-joint-optim:
   - wiki/entities/paper-notebook-toward-humanoid-brain-body-co-design-joint-optim.md
   towards-adaptable-humanoid-control-via-adaptive:
-  - wiki/entities/paper-notebook-towards-adaptable-humanoid-control-via-adaptive.md
+  - wiki/entities/paper-adamimic.md
   towards-versatile-humanoid-table-tennis-unified:
   - wiki/entities/paper-notebook-towards-versatile-humanoid-table-tennis.md
   track-any-motions-under-any-disturbances:
