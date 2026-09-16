@@ -8,12 +8,14 @@
 - **链接：** <https://github.com/rasbt/LLMs-from-scratch>
 - **配套图书：** Manning, 2024 — ISBN 978-1633437166 — [Manning 书页](http://mng.bz/orYv)
 - **入库日期：** 2026-07-11
-- **一句话说明：** 与同名书同步的 **PyTorch 从零实现 GPT 类 LLM** 教学仓库：文本分词 → 注意力 → GPT 架构 → 预训练 → 分类微调 → 指令微调；附 LoRA、KV cache、多架构 bonus 与加载大模型权重示例。
+- **复核日期：** 2026-09-16（项目页 / GitHub 源码开放核查）
+- **代码：** <https://github.com/rasbt/LLMs-from-scratch>（**已开源**；主线 Ch 2–7 + 附录 A–E 均可运行）
+- **一句话说明：** 与同名书同步的 **PyTorch 从零实现 GPT 类 LLM** 教学仓库：文本分词 → 注意力 → GPT 架构 → 预训练 → 分类微调 → 指令微调；附 LoRA、KV cache、DPO、多架构 from-scratch bonus 与加载大模型权重示例。
 - **沉淀到 wiki：** 是 → [`wiki/entities/llms-from-scratch-raschka.md`](../../wiki/entities/llms-from-scratch-raschka.md)
 
 ## 为什么值得保留
 
-- 社区 **~99k stars** 的 LLM 教育标杆之一，与 Karpathy *Zero to Hero*（micrograd / nanoGPT）形成 **视频驱动 vs 书+notebook 结构化** 互补。
+- 社区 **~105k stars**（2026-09-16）的 LLM 教育标杆之一，与 Karpathy *Zero to Hero*（micrograd / nanoGPT）形成 **视频驱动 vs 书+notebook 结构化** 互补。
 - 主线 **不依赖 HuggingFace 等高层 LLM 库**，用纯 PyTorch 把 tokenizer、MHA、GPT block、预训练环、SFT 拆开讲清 —— 对理解 [VLA](../wiki/methods/vla.md) / [动作分词](../wiki/formalizations/vla-tokenization.md) 背后的 **序列建模与离散 token 接口** 有直接帮助。
 - 笔记本可在普通笔记本 GPU 上跑通；bonus 含 Llama/Qwen/Gemma 等 **from-scratch 变体** 与 DPO 对齐示例，便于从教学小模型过渡到工业架构直觉。
 
@@ -32,7 +34,15 @@
 | 附录 D | 训练环增强（LR schedule 等） | `appendix-D.ipynb` |
 | 附录 E | LoRA 参数高效微调 | `appendix-E.ipynb` |
 
-**Bonus（节选）：** BPE from scratch、KV cache、GQA/MoE/滑动窗口注意力、GPT→Llama 转换、DPO、Qwen3/Llama3.2/Gemma 等 from-scratch 实现。
+**Bonus（节选，2026-09 复核）：**
+
+| 类别 | 代表材料 |
+|------|----------|
+| 分词 / 数据 | BPE from scratch、SimpleTokenizerV3、dataloader 直觉 |
+| 注意力变体 | KV cache、GQA、MLA、滑动窗口、Gated DeltaNet、DeepSeek Sparse Attention (DSA)、Cross-Layer KV Sharing、MoE |
+| 架构 from-scratch | GPT→Llama 转换；Llama 3.2、Qwen3/Qwen3.5、Gemma 3/4、Olmo 3、Tiny Aya 等 |
+| 训练 / 对齐 | LR schedule、Gutenberg 预训练、DPO 偏好对齐、Ollama 评估、用户界面 demo |
+| 续作交叉 | [`reasoning-from-scratch`](https://github.com/rasbt/reasoning-from-scratch) 推理 scaling、GRPO、MMLU/MATH 评测 bonus 链到本仓 README |
 
 ## 核心摘录
 
@@ -50,6 +60,11 @@
 
 - **要点：** 分类头微调 → 指令 SFT → LoRA / DPO bonus，对应机器人侧 **BC 微调、语言条件策略、参数高效适配** 的常见工程阶段。
 - **对 wiki 的映射：** [`wiki/methods/vla.md`](../../wiki/methods/vla.md)、[`roadmap/depth-vla.md`](../../roadmap/depth-vla.md) Stage 0 前置
+
+### 4) Bonus 架构谱系（2025–2026 持续扩展）
+
+- **要点：** Ch 4–5 bonus 已覆盖 GQA/DSA/MoE 等工业注意力与稀疏结构；Ch 5 架构族从 Llama 3.2 扩展到 **Qwen3.5、Gemma 4** 等「同书骨架、换骨干」练习，帮助读者从教学 GPT 过渡到当前开源 LLM 族谱。
+- **对 wiki 的映射：** [`wiki/entities/llms-from-scratch-raschka.md`](../../wiki/entities/llms-from-scratch-raschka.md)、[`wiki/concepts/transformer.md`](../../wiki/concepts/transformer.md)
 
 ## 关联原始资料
 
