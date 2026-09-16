@@ -149,6 +149,15 @@ sequenceDiagram
 | **S2M2 深度** | 障碍实验机载感知 | 分辨率换效率；独占 GPU |
 | **safety_checker** | 监督层 | 与 `drone_state_manager` 协同起飞参数 |
 
+## 与其他平台对比
+
+| 平台 | 尺度 | 定位 | ROS | Fleet 工具 | 机载 GPU 深度+规划 | 全局定位 |
+|------|------|------|-----|------------|-------------------|----------|
+| [Crazyswarm2](./crazyswarm2.md) | 微四轴 | 室内编队/灯光秀 | ROS 2 | 脚本编排 | 否 | 动捕/UWB |
+| [EGO-Planner Swarm](./ego-planner-swarm.md) | 标准多旋翼 | 规划算法栈 | ROS 1/2 | 无官方 fleet | 可选（非捆绑） | 自研/VIO |
+| [野外微型蜂群](./paper-swarm-micro-flying-robots-in-the-wild.md) | 掌心级 | 户外无基础设施规划 | ROS | 无 | 机载深度+VIO | **无动捕** |
+| **SwarmNxt** | OmniNxt 紧凑机 | **平台+运维+集成** | **ROS 2** | **Ansible** | **S2M2+HDSM 捆绑** | **动捕（经 Host）** |
+
 ## 实验与评测
 
 - **场景：** 8×8×4 m 室内动捕；两实验各约 2 min 定量段 + 长时累积（6 机 ~2 h；4 机障碍 ~30 min）。

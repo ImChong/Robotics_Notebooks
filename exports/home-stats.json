@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-16",
-  "node_count": 4103,
-  "edge_count": 36672,
+  "node_count": 4104,
+  "edge_count": 36680,
   "coverage": {
-    "covered": 4075,
-    "total": 4075,
+    "covered": 4076,
+    "total": 4076,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-swarmnxt.md",
+      "detail_id": "entity-paper-swarmnxt",
+      "label": "SwarmNxt（开源软硬件敏捷空中蜂群平台）",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+    },
     {
       "path": "wiki/entities/paper-wholebodywam.md",
       "detail_id": "entity-paper-wholebodywam",
@@ -199,40 +210,31 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-smolvla-onnx-libero.md",
-      "detail_id": "entity-paper-smolvla-onnx-libero",
-      "label": "SmolVLA ONNX LIBERO：闭环部署审计",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-wholebodywam.md",
-    "detail_id": "entity-paper-wholebodywam",
-    "label": "WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调",
+    "path": "wiki/entities/paper-swarmnxt.md",
+    "detail_id": "entity-paper-swarmnxt",
+    "label": "SwarmNxt（开源软硬件敏捷空中蜂群平台）",
     "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 615
+      "size": 605
     },
     {
       "label": "仿真到现实",
-      "size": 492
+      "size": 510
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 462
+      "size": 437
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -240,11 +242,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 257
+      "size": 254
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 193
+      "size": 219
     }
   ],
   "top_hubs": [
