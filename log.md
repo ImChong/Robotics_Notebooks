@@ -1,5 +1,7 @@
 ## [2026-09-16] ingest | sources/sites/awesome-world-action-models-rcl.md — RCL/MBZUAI Awesome World-Action Models（564 条、2×2 四象限）；新建实体并交叉 WAM 概念页；综述 arXiv 待发布
 
+## [2026-09-16] ingest | sources/repos/rasbt_llms_from_scratch.md — 复核 rasbt/LLMs-from-scratch（~105k stars、bonus 架构谱系与源码运行时序图）；已开源
+
 ## [2026-09-16] ingest | sources/blogs/wechat_shenlan_embodied_three_layer_control_2026-09-16.md — 深蓝具身三层控制架构（VLM/MPC-WBC/反射）；新建概念页 + NeuroVLA 论文实体；AlphaBrain 已开源
 
 ## [2026-09-16] ingest | sources/blogs/wechat_mbot_embodied_icl_survey_2026-09.md — Mbot 具身 ICL 演化综述（VIMA→S1 八项主线）；补强 robot-in-context-learning 谱系与 Pure ICL/TTT 双层口径

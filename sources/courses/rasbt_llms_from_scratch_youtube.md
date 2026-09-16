@@ -9,6 +9,7 @@
 - **配套仓库：** <https://github.com/rasbt/LLMs-from-scratch>
 - **配套图书：** Manning, 2024 — [Build a Large Language Model (From Scratch)](http://mng.bz/orYv)
 - **入库日期：** 2026-07-11
+- **复核日期：** 2026-09-16（播放列表与书章对齐关系未变）
 - **一句话说明：** 与同名书/仓库 **章节目录对齐** 的免费 YouTube 代码讲解：7 集共约 **12.5 小时**，作者边讲边写 PyTorch，覆盖环境搭建到指令微调。
 
 ## 为什么值得保留

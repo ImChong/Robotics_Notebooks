@@ -2,7 +2,7 @@
 type: entity
 tags: [education, llm, transformer, gpt, pytorch, tokenization, instruction-tuning, lora, sebastian-raschka]
 status: complete
-updated: 2026-07-11
+updated: 2026-09-16
 related:
   - ../concepts/transformer.md
   - ../concepts/deep-learning-foundations.md
@@ -19,7 +19,7 @@ summary: "《Build a Large Language Model (From Scratch)》：Sebastian Raschka 
 
 # Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）
 
-**《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)（社区 ~99k stars），配套免费 [YouTube 七章播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11) 与可选 Manning 长视频课。对本知识库而言，它是 **LLM 序列建模与微调阶段的结构化入门底座**，适合接 [`roadmap/depth-vla.md`](../../roadmap/depth-vla.md) Stage 0 的 Transformer/LLM 前置，再进入 VLA 论文与工程栈。
+**《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)（社区 ~105k stars，2026-09-16 复核 **已开源**），配套免费 [YouTube 七章播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11) 与可选 Manning 17h+ 长视频课。对本知识库而言，它是 **LLM 序列建模与微调阶段的结构化入门底座**，适合接 [`roadmap/depth-vla.md`](../../roadmap/depth-vla.md) Stage 0 的 Transformer/LLM 前置，再进入 VLA 论文与工程栈。
 
 ## 英文缩写速查
 
@@ -68,6 +68,31 @@ flowchart LR
 | Ch 7 指令微调 | 指令数据、对话格式、评估 | [VLA](../methods/vla.md)（语言条件策略） |
 | 附录 E LoRA | 参数高效微调 | VLA/策略 **小数据适配** 常见手段 |
 | Bonus DPO | 偏好对齐 | 与 RLHF/DPO 对齐文献衔接 |
+| Bonus 架构族 | Qwen3/3.5、Gemma 3/4、DSA、MoE 等 from-scratch | 从教学 GPT 过渡到当前开源 LLM 族谱 |
+
+## 源码运行时序图
+
+主线复现路径（Ch 5 预训练 → Ch 7 指令微调；节点对齐仓库 `ch05/` / `ch07/` README 入口）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant DS as 文本语料 / 指令 JSON
+    participant DL as dataloader (ch02)
+    participant GPT as GPT 模块 (ch04 gpt.py)
+    participant TR as gpt_train.py (ch05)
+    participant FT as gpt_instruction_finetuning.py (ch07)
+    participant OUT as 生成 / 评估
+
+    DS->>DL: BPE 分词 + batch 序列
+    DL->>GPT: token ids + 因果 mask
+    GPT->>TR: 语言建模损失
+    TR->>GPT: 预训练权重 checkpoint
+    GPT->>FT: 加载权重 + 指令格式
+    FT->>OUT: SFT 后采样 / ollama_evaluate
+```
+
+**关键复现路径：** 先跑 `ch05/01_main-chapter-code/gpt_train.py` 得到小 GPT checkpoint，再在 `ch07/01_main-chapter-code/gpt_instruction_finetuning.py` 上做指令 SFT；bonus 中的 DPO / Llama·Qwen from-scratch 为同骨架扩展，非主线必读。
 
 ## 三种学习形态
 
@@ -96,7 +121,8 @@ flowchart LR
 
 - **不涉及** 视觉编码、机器人动作空间或 sim 环境 —— 读完应接 [hub-vla](../../roadmap/depth-vla.md) 与 [LeRobot](./lerobot.md) 等具身栈。
 - **不覆盖** 扩散策略、ACT、WBC 等本库运动控制主线。
-- Bonus 中的 Llama/Qwen from-scratch 用于 **架构直觉**，不等价于能在真机上部署 VLA。
+- Bonus 中的 Llama/Qwen/Gemma from-scratch 用于 **架构直觉**，不等价于能在真机上部署 VLA。
+- 续作 [*Build A Reasoning Model (From Scratch)*](https://github.com/rasbt/reasoning-from-scratch) 覆盖推理 scaling / GRPO，与本仓 bonus 交叉引用，但 **不替代** 本库具身/VLA 主线。
 
 ## 推荐使用方式
 
