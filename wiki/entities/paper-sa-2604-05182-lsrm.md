@@ -1,12 +1,12 @@
 ---
 type: entity
-tags: [paper, 3d-reconstruction, meta]
+tags: [paper, 3d-reconstruction, meta, sparse-attention, inverse-rendering, object-centric]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.05182"
 venue: "ECCV 2026 Long Oral"
 code: https://github.com/facebookresearch/Large-Sparse-Reconstruction-Model
-summary: "用原生稀疏注意力把物体与图像 token 上下文窗口扩到 SOTA 的 20×/2× 以上，前馈重建高保真可重光照 3D 资产。"
+summary: "NSA 稀疏注意力把物体/图像 token 上下文扩到 prior SOTA 的 20×/2×+；两阶段 coarse-to-fine 前馈重建高保真可重光照 3D 资产（Meta Reality Labs）。"
 related:
   - ../methods/generative-world-models.md
   - ../comparisons/cnn-vs-vit-backbones.md
@@ -19,7 +19,7 @@ sources:
 
 # LSRM：High-Fidelity Object-Centric Reconstruction via Scaled Context Windows
 
-**LSRM**（*LSRM: High-Fidelity Object-Centric Reconstruction via Scaled Context Windows*；[arXiv:2604.05182](https://arxiv.org/abs/2604.05182)，[项目页](https://lzqsd.github.io/LSRM.github.io/)，[代码](https://github.com/facebookresearch/Large-Sparse-Reconstruction-Model)）由 **Meta Reality Labs, Research** 提出（ECCV 2026 Long Oral）。
+**LSRM**（*Large Sparse Reconstruction Model*；Zhengqin Li、Cheng Zhang、Jakob Engel、Zhao Dong；[arXiv:2604.05182](https://arxiv.org/abs/2604.05182)，[项目页](https://lzqsd.github.io/LSRM.github.io/)，[代码](https://github.com/facebookresearch/Large-Sparse-Reconstruction-Model)）由 **Meta 现实实验室（Meta Reality Labs Research）** 提出（ECCV 2026 Long Oral）。方法用 **原生稀疏注意力（NSA）** 扩展物中心前馈 3D 重建的 transformer 上下文，在稀疏多视角输入下输出可 **NVS** 与 **逆渲染重光照** 的高保真数字孪生。
 
 ## 一句话定义
 
@@ -29,8 +29,9 @@ sources:
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| LSRM | Large Sparse Reconstruction Model | 本文方法；两阶段稀疏注意力物体重建 |
-| NVS | Novel View Synthesis | 新视角合成；重建质量评测维度之一 |
+| LSRM | Large Sparse Reconstruction Model | 本文方法；NSA + 两阶段 coarse-to-fine 物体重建 |
+| NSA | Native Sparse Attention | 原生稀疏注意力；动态选择 KV block，支撑 20× 物体 token |
+| NVS | Novel View Synthesis | 新视角合成；GSO 等 benchmark |
 | PSNR | Peak Signal-to-Noise Ratio | 峰值信噪比；相对 SOTA 提升 >2.4 dB |
 | LPIPS | Learned Perceptual Image Patch Similarity | 感知相似度；相对 SOTA 降低 >40% |
 | IR | Inverse Rendering | 逆渲染；输出可重光照材质与几何 |
@@ -45,16 +46,18 @@ sources:
 
 | 项 | 内容 |
 |----|------|
-| **机构** | Meta Reality Labs, Research |
+| **机构** | Meta 现实实验室（Meta Reality Labs Research） |
+| **作者** | Zhengqin Li、Cheng Zhang、Jakob Engel、Zhao Dong |
 | **出处** | ECCV 2026 Long Oral |
 | **论文** | <https://arxiv.org/abs/2604.05182> |
 | **项目页** | <https://lzqsd.github.io/LSRM.github.io/> |
-| **开源** | **已开源** — 官方仓库 [`facebookresearch/Large-Sparse-Reconstruction-Model`](https://github.com/facebookresearch/Large-Sparse-Reconstruction-Model)（2026-09-12 项目页核查）。 |
+| **开源** | **已开源** — [`facebookresearch/Large-Sparse-Reconstruction-Model`](https://github.com/facebookresearch/Large-Sparse-Reconstruction-Model)（CC BY-NC 4.0；2026-09-16 项目页复核） |
 | **Hugging Face** | <https://huggingface.co/facebook/Large-Sparse-Reconstruction-Model> |
+| **硬件验证** | **NVIDIA H200**；稀疏 Triton 内核针对 Tensor Core 优化（工程语境，非联合作者机构） |
 
 ## 核心原理
 
-LSRM 用**原生稀疏注意力**扩展物体重建上下文：物体 token 窗口达 SOTA **20×**，图像 token **2×** 以上。两阶段 pipeline——Stage1 稠密粗体积初始化，Stage2 在活跃稀疏体素上做高分辨率残差 refinement——前馈输出可 NVS 与**逆渲染**（重光照）的高保真 3D 资产。稀疏模式避免 dense attention 的 O(n²) 瓶颈。
+LSRM 用 **NSA** 扩展物体重建上下文：物体 token 达 prior SOTA **20×**，图像 token **>2×**。两阶段 pipeline——Stage1 **Dense Reconstruction Transformer** 出粗体积；Stage2 在 **活跃稀疏体素** 上预测高分辨率残差——并配合 **3D-aware spatial routing**（几何距离路由）与 **block-aware sequence parallelism**（All-gather-KV）。前馈输出支持 NVS 与逆渲染；稀疏模式避免 dense attention 的 O(n²) 瓶颈。
 
 ### 流程总览
 
@@ -103,10 +106,13 @@ flowchart LR
 
 | 项 | 建议 |
 |----|------|
-| 复现入口 | https://github.com/facebookresearch/Large-Sparse-Reconstruction-Model |
-| 权重/数据 | https://huggingface.co/facebook/Large-Sparse-Reconstruction-Model |
-| 开源状态 | 已开源 |
-| 依赖风险 | 按 README 安装；GPU/数据集门槛以仓库说明为准 |
+| 复现入口 | `conda create -n lsrm python=3.10` → `bash install.sh` |
+| 权重 | HF `checkpoints/rgb/` + `checkpoints/brdf/` 布局见 README |
+| NVS | `bash test_rgb.sh`（GSO 示例） |
+| 逆渲染 | `bash test_brdf.sh`（ORB/DTC）；`test_brdf_video.sh` 重渲染 |
+| 依赖 | `../dinov3` gated 权重 + `../blender` headless |
+| 算力 | **NVIDIA GPU**；README 在 H200 验证，推理 **<40 GB** |
+| 许可证 | **CC BY-NC 4.0** — 商业部署需另议 |
 
 ## 源码运行时序图
 
@@ -114,24 +120,27 @@ flowchart LR
 sequenceDiagram
     autonumber
     actor Dev as 开发者
-    participant Repo as LSRM
-    participant Views as 稀疏多视角图像
-    participant S1 as Stage1 稠密粗体积
-    participant S2 as Stage2 稀疏高分辨率残差
-    participant Out as NVS / 逆渲染
-    Dev->>Repo: conda install + DINOv3 权重
-    Views->>S1: 物体+图像 token
-    S1->>S2: 初始化活跃稀疏体素
-    S2->>Out: 高保真 3D 表示
-    Out-->>Dev: 新视角合成 / 重光照
+    participant Setup as install.sh + HF checkpoints
+    participant DINO as DINOv3 特征
+    participant S1 as Stage1 Dense Transformer
+    participant S2 as Stage2 Sparse Residual + NSA
+    participant Out as test_rgb / test_brdf
+    participant Blender as Blender relight
+    Dev->>Setup: conda + dinov3 + blender
+    Dev->>Out: bash test_rgb.sh 或 test_brdf.sh
+    Out->>DINO: 多视角 RGB + mask
+    DINO->>S1: 物体+图像 tokens
+    S1->>S2: 粗体积 → 活跃稀疏体素
+    S2->>Out: mesh.obj + UV / BRDF maps
+    Out->>Blender: mesh_rendering / video
 ```
 
-运行时节点对齐 `facebookresearch/Large-Sparse-Reconstruction-Model` README 中的安装与评测脚本。
+运行时对齐 README：`test_rgb.sh`（GSO NVS）、`test_brdf.sh`（ORB/DTC 逆渲染）、`test_brdf_video.sh`（无网络重渲染视频）。
 
 ## 局限与风险
 
-- 论文设定与真实机器人传感器噪声、标定误差、算力预算可能存在差距。
-- 权重与训练数据规模较大，边缘设备需评估推理延迟。
+- **CC BY-NC 4.0** 限制商业直接使用；机器人 sim 资产管线需合规审查。
+- DINOv3 权重 gated；Blender 路径需手动配置。
 
 ## 关联页面
 

@@ -1,3 +1,9 @@
+## [2026-09-16] ingest | sources/papers/lsrm_object_reconstruction_arxiv_2604_05182.md — LSRM 复核增强：Meta Reality Labs 机构对齐、NSA/三贡献/README 复现路径、CC BY-NC 4.0；NVIDIA 仅作 H200/Tensor Core 工程语境
+
+- **触发：** 用户指定 LSRM 项目页 + GitHub；自动合并 PR
+- **步骤 2.5：** GitHub + HF 权重 **已开源**；作者机构为 Meta Reality Labs（非 NVIDIA 联合作者）
+- **关键页：** 增强 [`paper-sa-2604-05182-lsrm`](wiki/entities/paper-sa-2604-05182-lsrm.md)；同步 sources/sites + sources/repos
+
 ## [2026-09-16] ingest | sources/repos/legbot_lab.md — Legbot Lab（Robot-Nav 四足 Isaac Lab PPO/MoE-CTS + ONNX/CycloneDDS 部署）；关联 arXiv:2405.10830 CTS；步骤 2.5 **已开源**
 
 - **触发：** 用户指定 legbot_lab 仓库 + CTS 论文 + 公众号链接；自动合并 PR
