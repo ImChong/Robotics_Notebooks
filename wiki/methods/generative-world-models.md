@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -315,6 +315,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 单卡桌面实时交互世界（示例：ABot-World-0）
 
 [ABot-World-0](../entities/paper-abot-world-0.md)（arXiv:2607.19191，高德 AMAP CV Lab）把交互式视频世界模型写成 **数据闭环 + 双向→因果蒸馏 + 全栈流式共设计**：WorldExplorer 多源采集（游戏 / 仿真 / 互联网）、原始键盘统一漫游与第三人称角色、**LongForcing** 对齐长程学生自 rollout，并在 **单卡 RTX 5090** 上把 **720P** 推到最高约 **16 FPS**（首帧 **1.2 s**，峰值约 **19 GiB**）。相对 M⁴World 的驾驶多传感器仿真与 Open Dreamer 的游戏潜动力学，它更强调 **消费级实时像素世界可玩性**；**推理与 5B 因果学生已开源**，教师权重与约 500 h 数据集仍待发布。
+
+### 数字人化身：显式发丝动力学（示例：DynHair）
+
+[DynHair](../entities/paper-dynhair.md)（ECCV 2026，arXiv:2607.23861）把 **3D Gaussian Splatting** 用于 **动态人头化身** 的 **头发子系统**：多视角视频 → Im2Haircut 发丝先验 + **LSTM–FiLM** 形变（头部角速度/加速度/重力）+ 与 GHA 式上半身 Gaussian 联合可微渲染。相对把头发当作头部纹理的 GaussianAvatars/GHA，强调 **strand 级时序一致**（tLPIPS_ex **0.0045**）与跨主体驱动；GitHub 截至入库日为占位仓。与 [SHELLS](../entities/paper-shells-layered-surface-sampling.md)（多视角人头注册）同属 telepresence 几何资产链。
 
 ### 相邻方向：三维世界生成与流式 3DGS（产业样本）
 

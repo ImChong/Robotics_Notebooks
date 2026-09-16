@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, face-reconstruction, multi-view, feed-forward, transformer, dinov2, 3dmm, registration, google, synthetic-data]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.31283"
 related:
   - ./paper-face-anything-4d-face-reconstruction.md
@@ -128,6 +128,7 @@ flowchart TB
 | 3DMM 回归 / fitting | 线性形状空间表达力与拟合时间受限；SHELLS 直接回归高分辨固定拓扑 |
 | [Face Anything](./paper-face-anything-4d-face-reconstruction.md) | **任意图像序列** 深度+规范坐标 4D；SHELLS 是 **标定多视角 → 度量网格**，偏棚拍注册 |
 | [UMA](./paper-uma.md) | **全身着装** 可驱动 3DGS avatar + 多级表面对齐；SHELLS 专注人头固定拓扑注册 |
+| [DynHair](./paper-dynhair.md) | **动态显式发丝** 3DGS 化身；SHELLS 提供固定拓扑人头注册，DynHair 解决头发动力学 |
 | [GNM Head](./gnm-head.md) | 参数化生成先验；SHELLS 可作注册网格上游再 PCA 建 3DMM |
 | VGGT / DUSt3R / MASt3R | 无结构点图、跨身份无固定拓扑；SHELLS 强调 **跨人/跨时稠密对应** |
 
@@ -143,6 +144,7 @@ flowchart TB
 
 - [Face Anything](./paper-face-anything-4d-face-reconstruction.md) — 单目/序列面部 4D 重建对照
 - [UMA](./paper-uma.md) — 全身着装多视角可驱动 avatar（telepresence 外观资产）
+- [DynHair](./paper-dynhair.md) — 显式发丝动态头发（ECCV 2026）；与 SHELLS 人头注册互补
 - [GNM Head](./gnm-head.md) — Google 开源头脸 3DMM；SHELLS 注册输出可作建库上游
 - [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md) — 前馈几何上游在机器人感知中的位置
 - [Sim2Real](../concepts/sim2real.md) — 合成监督泛化真实采集的对照叙事
