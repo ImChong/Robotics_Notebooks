@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
@@ -103,6 +103,18 @@ $$s_t \sim q_\phi(s_t | s_{t-1}, a_{t-1}, o_t), \quad \hat{o}_t \sim p_\theta(\h
 ---
 
 ## 代表性算法
+
+先按「模型学在哪、动作从哪出」定位，再读下面各节：
+
+| 算法 | 模型形式 | 动作来源 | 主要适用面 |
+|------|----------|----------|------------|
+| [Dreamer / DreamerV3](#dreamer-dreamerv3-hafner-et-al) | RSSM 潜空间 | 想象轨迹训 Actor-Critic | 通用基准、样本稀缺 |
+| [MBPO](#mbpo-model-based-policy-optimization-janner-et-al-2019) | 神经网络集成 | 短 rollout 混合训 SAC | 连续控制、样本效率 |
+| [PETS](#pets-probabilistic-ensembles-with-trajectory-sampling-chua-et-al-2018) | 概率集成 | CEM 在线规划（无策略） | 真机操作、数据极少 |
+| [TD-MPC / TD-MPC2](#td-mpc-td-mpc2) | 隐式潜空间 | MPPI 规划 + TD 价值截断 | 操作 + locomotion |
+| [RWM / RWM-U](#rwm-rwm-u-eth-rsl-工程参考) | 集成 RNN + 特权头 | 想象 rollout 训策略 | 腿足速度跟踪工程栈 |
+| [Online MBRL](#online-mbrl-via-online-optimization-真机一阶更新) | 真机缓冲在线学 | 真实轨迹一阶策略梯度 | 液压/软体等难仿真平台 |
+| [WAM 内嵌 MBRL](#wam-内嵌-mbrl-共享参数-gwm) | 联合 video–action 模型 | 同一模型自问自答 | 灵巧操作闭环 |
 
 ### Dreamer / DreamerV3（Hafner et al.）
 
@@ -248,47 +260,64 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 
 ---
 
-## 参考来源
-
-- Hafner et al., *Mastering Diverse Domains through World Models* (DreamerV3, 2023) — 世界模型通用化
-- Hafner et al., *Training Agents Inside of Scalable World Models* (Dreamer 4, 2025) — <https://arxiv.org/abs/2509.24527>；开源复现 [open-dreamer](../../sources/repos/open-dreamer.md)
-- [lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID：技能级世界模型想象的人形 loco-manipulation
-- Janner et al., *When to Trust Your Model: Model-Based Policy Optimization* (MBPO, 2019) — 短 rollout 混合训练
-- Chua et al., *Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models* (PETS, 2018) — 集成模型 + CEM 规划
-- Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control* (2023) — 潜空间规划 + TD 价值
-- Sutton, *Integrated architectures for learning, planning, and reacting* (Dyna, 1990) — MBRL 经典框架
-- [The One-Step Trap 原始资料](../../sources/blogs/sutton_one_step_trap.md) — Sutton 对单步模型 rollout 的一手批判
-- [incompleteideas.net 一手资料索引](../../sources/sites/incompleteideas-net-rich-sutton.md)
-- **ingest 档案：** [sources/papers/model_based_rl.md](../../sources/papers/model_based_rl.md)
-- [robotic_world_model（Isaac Lab 扩展）](../../sources/repos/leggedrobotics_robotic_world_model.md)
-- [robotic_world_model_lite](../../sources/repos/leggedrobotics_robotic_world_model_lite.md)
-- [sources/papers/wm_robot_survey_arxiv_2605_00080.md](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md) — World Model for Robot Learning 综述（生成式世界模型 + WAM + Model-Based RL 八层栈站位）
-- [sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md) — 真机在线 MBRL（Jacobian-on-real-trajectory；HEAP / 软臂）
-
----
-
 ## 关联页面
+
+### 先读：定位与选型
+
+- [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
+- [Model-Based vs Model-Free 对比](../comparisons/model-based-vs-model-free.md) — 两种范式的多维对比与选型建议
+- [Optimal Control (OCP)](../concepts/optimal-control.md) — MBRL 的数学基础，动力学模型 + 代价函数
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Model-based Runner：真交互训模型 → 想象 rollout → 更新策略
+
+### 模型怎么被用：规划与想象
+
+- [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"
+- [Trajectory Optimization](./trajectory-optimization.md) — MBRL 规划阶段常用轨迹优化作为求解器
+- [Latent Imagination](../concepts/latent-imagination.md) — Dreamer 系核心机制
+
+### 代表实现与工程参考
+
+- [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md) — 潜空间想象 MBRL 里程碑
+- [Open Dreamer](../entities/open-dreamer.md) — Dreamer 4 开源训练/推理/demo
+- [TD-MPC2](../entities/paper-td-mpc2.md) — 隐式 latent MPC 对照
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](../entities/robotic-world-model-eth-rsl.md) — Isaac Lab 扩展与 Lite 离线管线
+- [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md) — 真机缓冲学模型 + 真实轨迹一阶策略更新
+- [LUCID](../entities/paper-lucid.md) — 人形技能级 macro-dynamics 想象控制
+- [Motus2](../entities/paper-motus2.md) — 共享参数 WAM 内嵌 DiffusionNFT MBRL + Best-of-N 灵巧操作
+- [WCM](../entities/paper-wcm-world-critic-model.md) — 反例式对照：世界模型只做 **critic 表征的辅助监督**，不参与想象 rollout 或规划
+
+### 长程预测的理论边界
 
 - [Richard Sutton](../entities/richard-sutton.md) — Options/GVF 与一步陷阱一手论述
 - [Generalized Value Functions (GVFs)](../concepts/generalized-value-functions.md) — Horde 与 span-independent 长期预测
 - [Bayesian Belief Analysis](../concepts/bayesian-belief-analysis.md) — belief 展开与一步陷阱对照
-- [Robotic World Model（ETH RSL，RWM / RWM-U）](../entities/robotic-world-model-eth-rsl.md) — Isaac Lab 扩展与 Lite 离线管线
-- [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md) — 真机缓冲学模型 + 真实轨迹一阶策略更新
-- [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md) — 潜空间想象 MBRL 里程碑
-- [TD-MPC2](../entities/paper-td-mpc2.md) — 隐式 latent MPC 对照
-- [Open Dreamer](../entities/open-dreamer.md) — Dreamer 4 开源训练/推理/demo
-- [Latent Imagination](../concepts/latent-imagination.md) — Dreamer 系核心机制
-- [LUCID](../entities/paper-lucid.md) — 人形技能级 macro-dynamics 想象控制
-- [Motus2](../entities/paper-motus2.md) — 共享参数 WAM 内嵌 DiffusionNFT MBRL + Best-of-N 灵巧操作
-- [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
-- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Model-based Runner：真交互训模型 → 想象 rollout → 更新策略
-- [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"
-- [Trajectory Optimization](./trajectory-optimization.md) — MBRL 规划阶段常用轨迹优化作为求解器
-- [Optimal Control (OCP)](../concepts/optimal-control.md) — MBRL 的数学基础，动力学模型 + 代价函数
-- [WCM](../entities/paper-wcm-world-critic-model.md) — 反例式对照：世界模型只做 **critic 表征的辅助监督**，不参与想象 rollout 或规划
+
+### 下游应用
+
 - [Sim2Real](../concepts/sim2real.md) — MBRL 的样本效率优势直接帮助真实机器人学习
 - [Imitation Learning](./imitation-learning.md) — 可以和 IL 结合：用演示数据初始化模型
-- [Model-Based vs Model-Free 对比](../comparisons/model-based-vs-model-free.md) — 两种范式的多维对比与选型建议
+
+## 参考来源
+
+- Hafner et al., *Mastering Diverse Domains through World Models*（DreamerV3, 2023）— [arXiv:2301.04104](https://arxiv.org/abs/2301.04104)；世界模型通用化
+- Hafner et al., *Training Agents Inside of Scalable World Models*（Dreamer 4, 2025）— [arXiv:2509.24527](https://arxiv.org/abs/2509.24527)；开源复现 [open-dreamer](../../sources/repos/open-dreamer.md)
+- Janner et al., *When to Trust Your Model: Model-Based Policy Optimization*（MBPO, 2019）— [arXiv:1906.08253](https://arxiv.org/abs/1906.08253)；短 rollout 混合训练
+- Chua et al., *Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models*（PETS, 2018）— [arXiv:1805.12114](https://arxiv.org/abs/1805.12114)；集成模型 + CEM 规划
+- Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control*（2023）— [arXiv:2310.16828](https://arxiv.org/abs/2310.16828)；潜空间规划 + TD 价值
+- Sutton, *Dyna, an Integrated Architecture for Learning, Planning, and Reacting*（1991）— [ACM](https://dl.acm.org/doi/10.1145/122344.122377)；MBRL 经典框架
+- [The One-Step Trap 原始资料](../../sources/blogs/sutton_one_step_trap.md) — Sutton 对单步模型 rollout 的一手批判；索引见 [incompleteideas.net](../../sources/sites/incompleteideas-net-rich-sutton.md)
+- **ingest 档案：** [sources/papers/model_based_rl.md](../../sources/papers/model_based_rl.md) — 上述五条核心论文的摘录归档
+- [sources/papers/lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID：技能级世界模型想象的人形 loco-manipulation
+- [sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md) — 真机在线 MBRL（Jacobian-on-real-trajectory；HEAP / 软臂）
+- [sources/papers/wm_robot_survey_arxiv_2605_00080.md](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md) — World Model for Robot Learning 综述（生成式世界模型 + WAM + Model-Based RL 八层栈站位）
+- [robotic_world_model（Isaac Lab 扩展）](../../sources/repos/leggedrobotics_robotic_world_model.md) 与 [robotic_world_model_lite](../../sources/repos/leggedrobotics_robotic_world_model_lite.md) — RWM / RWM-U 双仓
+
+## 推荐继续阅读
+
+- [DreamerV3 论文（arXiv:2301.04104）](https://arxiv.org/abs/2301.04104) — RSSM + 潜空间想象的完整算法与 150+ 任务证据
+- [danijar/dreamerv3 官方实现](https://github.com/danijar/dreamerv3) — 想读代码先看这份 JAX 参考
+- [TD-MPC2 项目页](https://www.tdmpc2.com) — 潜空间 MPC + TD 价值的交互式结果与 [代码](https://github.com/nicklashansen/tdmpc2)
+- [The One-Step Trap（Sutton, 2024）](http://incompleteideas.net/IncIdeas/OneStepTrap.html) — 读完上面任一想象 rollout 管线后必读的反方论证
 
 ## 一句话记忆
 
