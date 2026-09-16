@@ -1244,6 +1244,13 @@
         "zhongqing-robotics"
       ]
     },
+    "robot-nav": {
+      "label": "机器人导航开源社区（Robot-Nav）",
+      "aliases": [
+        "robot-nav",
+        "robot nav"
+      ]
+    },
     "robotis": {
       "label": "乐百机器人（ROBOTIS）",
       "aliases": [
