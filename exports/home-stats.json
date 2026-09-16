@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-dynhair.md",
+      "detail_id": "entity-paper-dynhair",
+      "label": "DynHair：显式动态发丝人头化身",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-fmp-motion-priors.md",
       "detail_id": "entity-paper-fmp-motion-priors",
       "label": "Flow-Matched Motion Priors：在线 OT 模仿奖励",
@@ -194,27 +205,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-puma-lidar-mesh-odometry.md",
-      "detail_id": "entity-paper-puma-lidar-mesh-odometry",
-      "label": "PUMA：Poisson Surface Reconstruction for LiDAR Odometry and Mapping",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fmp-motion-priors.md",
-    "detail_id": "entity-paper-fmp-motion-priors",
-    "label": "Flow-Matched Motion Priors：在线 OT 模仿奖励",
+    "path": "wiki/entities/paper-dynhair.md",
+    "detail_id": "entity-paper-dynhair",
+    "label": "DynHair：显式动态发丝人头化身",
     "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
