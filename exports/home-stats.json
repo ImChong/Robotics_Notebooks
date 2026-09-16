@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/rle-bench.md",
+      "detail_id": "entity-rle-bench",
+      "label": "RLE-Bench（Coding Agent 机器人学习工程资格考）",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/legbot-lab.md",
       "detail_id": "entity-legbot-lab",
       "label": "Legbot Lab（四足 Isaac Lab RL 与 Sim2Real 部署）",
@@ -198,23 +208,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-world-action-models-rcl.md",
-      "detail_id": "entity-awesome-world-action-models-rcl",
-      "label": "Awesome World-Action Models（RCL / MBZUAI）",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/legbot-lab.md",
-    "detail_id": "entity-legbot-lab",
-    "label": "Legbot Lab（四足 Isaac Lab RL 与 Sim2Real 部署）",
+    "path": "wiki/entities/rle-bench.md",
+    "detail_id": "entity-rle-bench",
+    "label": "RLE-Bench（Coding Agent 机器人学习工程资格考）",
     "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
