@@ -6,9 +6,12 @@
 - **类型：** repo
 - **来源：** NUS / Tsinghua / PKU / HKU / ZJU / CUHK / SJTU 等
 - **链接：** <https://github.com/OpenWAM-Official/OpenWAM>
+- **组织：** <https://github.com/OpenWAM-Official>
 - **论文：** <https://arxiv.org/abs/2609.07398>
 - **项目页：** <https://openwam-official.github.io/>
 - **权重集合：** <https://huggingface.co/OpenWAM>
+- **HF 论文页：** <https://huggingface.co/papers/2609.07398>
+- **Foundation 模型：** <https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model>
 - **许可：** 见仓库 LICENSE（README 末段）
 - **入库日期：** 2026-09-09
 - **一句话说明：** 模块化 WAM 研究栈：Hydra 配置、训练 / 部署 / 多基准 WebSocket 评测、OpenWAM-α 与 Study 检查点下载器。
@@ -42,6 +45,6 @@
 ## 开源边界（截至 2026-09-09）
 
 - **已开源**：训练、部署、8+ 基准评测客户端、资产与检查点下载脚本、用法文档 `assets/openwam_usage_docs/`。
-- **权重**：HF `OpenWAM`（46 模型，含 OpenWAM-α Foundation 与下游微调）。
+- **权重**：HF [`OpenWAM`](https://huggingface.co/OpenWAM)（**46** 模型）；Foundation 入口 [`OpenWAM-Alpha-Pretrain-Foundation-Model`](https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model)；下游微调 ckpt 均从此 Foundation 出发。
 - **外部依赖**：RoboDojo 真机评测经 [XPolicyLab](https://github.com/XPolicyLab/XPolicyLab)；部分基准需单独拉环境。
 - **计划中**：SimplerEnv、Calvin 等标注为 Planned。

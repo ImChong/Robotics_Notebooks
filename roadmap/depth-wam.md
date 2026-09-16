@@ -161,6 +161,7 @@ flowchart LR
 - [Motubrain](../wiki/entities/paper-motubrain.md)（本仓库）— UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
 - [Flex-π](../wiki/entities/paper-flex-pi.md)（本仓库）— 6B 多流 Joint WAM，共享冻结 Wan VAE 联合编码 RGB+pointmap+DINOv3，流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布
 - [GlanceWAM](../wiki/entities/paper-glancewam.md)（本仓库）— 单视频 DiT 内异步稀疏前瞻，想象离关键路径、动作头潜空间 48 ms 解码；RoboCasa 72.2%、LIBERO 99.0%；代码与权重已开源
+- [OpenWAM](../wiki/entities/paper-openwam.md)（本仓库）— 模块化 Infra + Study 六项对照提炼预训练三原则；OpenWAM-α Wan2.2-5B + ActionDiT mutual mask；518.5M 帧一阶段 ego+robot 共训；LIBERO 99.3%、RoboTwin2.0-Full 89.0%、RoboDojo 真机 37.6/24.4% SR；GitHub + HF 46 检查点已开源
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态

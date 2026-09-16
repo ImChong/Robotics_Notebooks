@@ -9,8 +9,12 @@
 - **机构：** 新加坡国立大学（NUS）；清华大学（Tsinghua）；北京大学（PKU）；香港大学（HKU）；浙江大学（ZJU）；香港中文大学（CUHK）；上海交通大学（SJTU）
 - **作者：** Yuran Wang、Siqiao Huang、Mingleyang Li、Chenhao Zhang、Jiaqi Liang、Weiyang Jin、Yue Chen、Xuemin Chi、Donghao Zhou、Qize Yu、Yu-Kai Wang、Yuhan Rui、Shenzhe Yao、Zhen Yuan、Zhenhao Shen、Kefei Zhu、Zijie Zhu、Ning Gao、Xiaowei Chi、Guanqi He、Shanghang Zhang、Hao Dong、Lin Shao、Hang Zhao
 - **代码：** <https://github.com/OpenWAM-Official/OpenWAM>
+- **GitHub 组织：** <https://github.com/OpenWAM-Official>
 - **权重 / 数据：** <https://huggingface.co/OpenWAM>
+- **HF 论文页：** <https://huggingface.co/papers/2609.07398>
+- **OpenWAM-α Foundation：** <https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model>
 - **入库日期：** 2026-09-09
+- **复核日期：** 2026-09-16
 - **一句话说明：** 把 WAM 设计空间拆成可组合模块，经六项对照实验提炼三条预训练原则，并发布 OpenWAM-α 全栈（Infra / Study / 预训练模型 + 8 仿真 + 3 真机平台）。
 
 ## 核心摘录（MVP）
@@ -34,7 +38,7 @@
 
 ### 3) OpenWAM-α 架构与数据
 
-- **摘录要点：** **Wan2.2-TI2V-5B** 视频 DiT（width 3072，3D RoPE）+ 专用 **ActionDiT**（width 1024，1D RoPE）；30 层 **joint self-attention** 桥接；**mutual mask**（干净首帧行不看噪声未来与动作）；冻结 **Wan2.2-VAE** 与 **umT5** 语言。预训练 **518.5M 帧（≈6,369 h）**，**70% 机器人 / 30% egocentric 人视频**，**80-D 统一动作空间**。
+- **摘录要点：** **Wan2.2-TI2V-5B** 视频 DiT（width 3072，3D RoPE）+ 专用 **ActionDiT**（width 1024，1D RoPE）；30 层 **joint self-attention** 桥接；**mutual mask**（干净首帧行不看噪声未来与动作）；冻结 **Wan2.2-VAE** 与 **umT5** 语言。预训练 **518.5M 帧（≈6,369 h）**：机器人 **70%**（真机 **40%** + 仿真 **30%**）+ egocentric 人视频 **30%**；**80-D 统一动作空间**。Foundation 权重见 HF [`OpenWAM-Alpha-Pretrain-Foundation-Model`](https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model)。
 - **对 wiki 的映射：**
   - [OpenWAM](../../wiki/entities/paper-openwam.md) — 架构表与流程图。
   - [VLA](../../wiki/methods/vla.md) — 与 π₀ / π₀.₅ / Fast-WAM 等基线对照。
@@ -50,9 +54,9 @@
 - **对 wiki 的映射：**
   - [OpenWAM](../../wiki/entities/paper-openwam.md) — 结论与局限。
 
-### 5) 开源状态（截至 2026-09-09，项目页核查）
+### 5) 开源状态（截至 2026-09-16，项目页 / GitHub / HF 复核）
 
-- **摘录要点：** **已开源**。GitHub `OpenWAM-Official/OpenWAM` 含 Hydra 配置、`openwam/train`、`openwam/deploy` WebSocket 策略服务、**8+ 基准评测客户端**（LIBERO / LIBERO-plus / RoboTwin / RoboCasa365 / RoboCasa GR1 / VLABench / EBench / RoboDojo 等）；HF `OpenWAM` 托管预训练与微调权重；已接入 [XPolicyLab](https://github.com/XPolicyLab/XPolicyLab)。
+- **摘录要点：** **已开源**。GitHub 组织 [`OpenWAM-Official`](https://github.com/OpenWAM-Official) 主仓 `OpenWAM` 含 Hydra 配置、`openwam/train`、`openwam/deploy` WebSocket 策略服务、**8+ 基准评测客户端**（LIBERO / LIBERO-plus / RoboTwin / RoboCasa365 / RoboCasa GR1 / VLABench / EBench / RoboDojo 等）；HF [`OpenWAM`](https://huggingface.co/OpenWAM) 托管 **46** 个检查点（含 Foundation 与 Study）；HF 论文页 [`papers/2609.07398`](https://huggingface.co/papers/2609.07398) 与 Foundation 模型页可独立下载；已接入 [XPolicyLab](https://github.com/XPolicyLab/XPolicyLab)。
 - **对 wiki 的映射：**
   - [openwam 仓库](../repos/openwam.md)
   - [OpenWAM 项目页](../sites/openwam-official.md)
