@@ -34,6 +34,7 @@
 - [ANYmal 四足机器人](wiki/entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
 - [Appen](wiki/entities/appen.md) — Appen**（澳交所：**APX**，悉尼）是全球 **AI 训练与后训练数据** 供应商之一。LeoInAI Substack（2026-09）引用其管理层对 **egocentric 物理操 `📅unknown` `[entity_page]`
 - [AprilTag（视觉 fiducial 与检测库）](wiki/entities/april-tag.md) — AprilTag** 是一类为**机器人、相机标定与 AR** 设计的**视觉基准标记（visual fiducial）**系统：标记可用普通打印机制作，软件从图像中恢复每个标记的 **ID**  `📅unknown` `[entity_page]`
+- [APXInf（VLA 端侧推理引擎）](wiki/entities/apxinf.md) — APXInf**（`RLinf/APXinf-robo`，引擎核心 [`infinigence/ApxInf`](h `📅unknown` `[entity_page]`
 - [Archify](wiki/entities/archify.md) — Archify**（tt-a1i/archify，MIT）是面向 Cursor、Claude Code、Codex CLI `📅unknown` `[entity_page]`
 - [ARDY：交互式可控 3D 人体运动生成](wiki/entities/ardy.md) — ARDY**（*Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generatio `📅unknown` `[entity_page]`
 - [Arnis](wiki/entities/arnis.md) — Arnis**（`louis-e/arnis`，Apache-2.0，~17.7k★）把 **真实世界地理** 编译进  `📅unknown` `[entity_page]`
