@@ -1,24 +1,13 @@
 {
   "generated_at": "2026-09-16",
   "node_count": 4091,
-  "edge_count": 36592,
+  "edge_count": 36586,
   "coverage": {
     "covered": 4063,
     "total": 4063,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/apxinf.md",
-      "detail_id": "entity-apxinf",
-      "label": "APXInf（VLA 端侧推理引擎）",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
     {
       "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
       "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
@@ -48,7 +37,8 @@
       "recency": "2026-09-16",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-dynhair.md",
@@ -89,8 +79,7 @@
       "recency": "2026-09-16",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/depth-anything-cpp.md",
@@ -210,31 +199,39 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-fmappo.md",
+      "detail_id": "entity-paper-fmappo",
+      "label": "FMAPPO：工厂多机任务分配与导航",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/apxinf.md",
-    "detail_id": "entity-apxinf",
-    "label": "APXInf（VLA 端侧推理引擎）",
-    "type": "entity",
+    "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
+    "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
+    "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
+    "type": "concept",
     "recency": "2026-09-16",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 623
+      "size": 608
     },
     {
       "label": "仿真到现实",
-      "size": 491
+      "size": 449
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 439
+      "size": 438
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -242,11 +239,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 254
+      "size": 267
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 218
+      "size": 219
     }
   ],
   "top_hubs": [
@@ -270,7 +267,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 993,
+      "degree": 991,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -308,7 +305,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 580,
+      "degree": 582,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -368,14 +365,6 @@
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
-      "detail_id": "entity-paper-pi05-open-world-vla",
-      "label": "π0.5（HMI P059）",
-      "type": "entity",
-      "degree": 50,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
@@ -390,6 +379,13 @@
       "degree": 49,
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "detail_id": "entity-paper-pi05-open-world-vla",
+      "label": "π0.5（HMI P059）",
+      "type": "entity",
+      "degree": 47,
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ## [2026-09-16] ingest | sources/blogs/wechat_embodied_heart_apxinf_pi05_thor_2026-09-16.md — 具身智能之心 APXInf 端侧 VLA 推理引擎（π₀.₅ Thor 278→26ms）；新建 apxinf 实体 + repos；RLinf/APXinf-robo 已开源
+=======
+## [2026-09-16] ingest | sources/papers/sony_ace_nature_2026.md — Sony AI Ace（Nature 2026）真机竞技乒乓球；部分开源（match CSV + 伪代码）
+>>>>>>> 765737c6e ([2026-09-16] ingest | sources/papers/sony_ace_nature_2026.md — 接入 Sony AI Ace（Nature 2026）真机竞技乒乓球实体页与部分开源归档)
 
 ## [2026-09-16] ingest | sources/sites/awesome-world-action-models-rcl.md — RCL/MBZUAI Awesome World-Action Models（564 条、2×2 四象限）；新建实体并交叉 WAM 概念页；综述 arXiv 待发布
 
