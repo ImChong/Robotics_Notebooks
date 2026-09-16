@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-09-15] lint | health-check | 自动化 wiki 健康检查
+## [2026-09-16] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **26** 条信息型预警）：
+共发现 **0** 个问题（另含 **27** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,9 +52,10 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（5 个）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（6 个）
 - auto（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - computeGeneralizedGravity（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- GPU（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - lerobot-train（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Policy（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Student（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
@@ -150,4 +151,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4048/4048 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4049/4049 (100%) wiki/entity 页有 ingest 来源

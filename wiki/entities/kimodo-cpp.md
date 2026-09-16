@@ -2,10 +2,11 @@
 type: entity
 tags: [repo, cpp, ggml, gguf, deployment, text-to-motion, motion-generation, kimodo, localai, vulkan, unitree-g1, soma, smpl-x]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 code: https://github.com/localai-org/kimodo.cpp
 related:
   - ./kimodo.md
+  - ./depth-anything-cpp.md
   - ../methods/diffusion-motion-generation.md
   - ../comparisons/hy-motion-vs-genmo-vs-kimodo.md
   - ./sam3dbody-cpp.md
