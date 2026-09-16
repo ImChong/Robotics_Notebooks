@@ -10,9 +10,11 @@ related:
   - ../methods/safe-rl.md
   - ./unitree-g1.md
   - ./paper-fmp-motion-priors.md
+  - ../overview/vla-deploy-12-papers-technology-map.md
 sources:
   - ../../sources/papers/ressafe_arxiv_2609_15988.md
   - ../../sources/sites/ressafe-sciautonomy.md
+  - ../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md
 summary: "ResSafe（arXiv:2609.15988，UC Berkeley）：名义策略管性能、残差策略学安全修正，作 G1 隐式安全过滤器；极端平衡与随机载荷仿真+真机；项目页 Code Coming Soon。"
 ---
 

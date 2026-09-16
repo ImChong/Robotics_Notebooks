@@ -2,7 +2,8 @@
 type: entity
 tags: [vla, humanoid, deployment, open-source, limx, training, inference, pi0, groot]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-16
+arxiv: "2609.17210"
 related:
   - ./limx-cosa.md
   - ../methods/vla.md
@@ -10,10 +11,14 @@ related:
   - ../entities/openvla.md
   - ../entities/nvidia-so101-sim2real-lab-workflow.md
   - ../queries/vla-deployment-guide.md
+  - ../overview/vla-deploy-12-papers-technology-map.md
+  - ../overview/vla-deploy-12-papers-technology-map.md
+  - ../overview/vla-deploy-12-papers-technology-map.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/blogs/limx_cosa_05_release_2026-07-15.md
   - ../../sources/repos/fluxvla.md
+  - ../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md
 summary: "Humanoid FluxVLA Engine 是逐际动力开源的人形 VLA 工程底座：统一配置下完成数据处理、训练、仿真评测、推理与端侧部署，即插即用支持 π0/π0.5/GR00T/OpenVLA/LlavaVLA/DreamZero 等策略，与 COSA 大脑系统形成「开放技能层 vs OS 调度」分工。"
 ---
 

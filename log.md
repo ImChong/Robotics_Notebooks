@@ -1,3 +1,9 @@
+## [2026-09-16] ingest | sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md — 具身智能小站 12 篇 VLA 部署/足式/WAM/系统韧性盘点；新建 10 实体 + 技术地图；复用 FluxVLA Engine、ResSafe
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/nsAslK7HCyhUaViGkSVgWA>；要求每篇论文独立非重复详情节点；自动合并 PR
+- **步骤 2.5：** FluxVLA/JEPLO/DIDO/RobResilience/Machine Zygote **已开源**；StereoPatch **部分开源**；SlotDiT/WholeBodyWAM/ProxiDex/WLA³/GoC **待发布**；ResSafe **待发布**（复用）
+- **关键页：** 新建 `paper-jeplo` 等 10 实体；地图 [`vla-deploy-12-papers-technology-map`](wiki/overview/vla-deploy-12-papers-technology-map.md)；复用 [`fluxvla-engine`](wiki/entities/fluxvla-engine.md)、[`paper-ressafe`](wiki/entities/paper-ressafe.md)
+
 ## [2026-09-16] ingest | sources/blogs/wechat_embodied_heart_apxinf_pi05_thor_2026-09-16.md — 具身智能之心 APXInf 端侧 VLA 推理引擎（π₀.₅ Thor 278→26ms）；新建 apxinf 实体 + repos；RLinf/APXinf-robo 已开源
 
 ## [2026-09-16] ingest | sources/papers/sony_ace_nature_2026.md — Sony AI Ace（Nature 2026）真机竞技乒乓球；部分开源（match CSV + 伪代码）
