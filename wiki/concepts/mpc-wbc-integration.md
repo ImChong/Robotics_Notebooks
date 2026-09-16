@@ -169,6 +169,7 @@ QP 优化层：
 
 ## 关联页面
 
+- [具身三层控制架构](./embodied-three-layer-control-architecture.md) — MPC+WBC 所在「小脑层」与大脑/反射边界
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — MPC 层
 - [Whole-Body Control (WBC)](./whole-body-control.md) — WBC 层
 - [Centroidal Dynamics](./centroidal-dynamics.md) — MPC 常用的人形简化动力学模型

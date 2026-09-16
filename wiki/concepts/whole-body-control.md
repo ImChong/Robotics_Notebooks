@@ -187,6 +187,7 @@ print("joint acceleration command:", qdd_star)
 
 ## 关联页面
 
+- [具身三层控制架构](./embodied-three-layer-control-architecture.md) — WBC 在「小脑层」与 VLA 大脑、反射安全链的分工
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷六腿足 / WBC / 遥操作面试速查
 - [Locomotion](../tasks/locomotion.md)
 - [Imitation Learning](../methods/imitation-learning.md)
