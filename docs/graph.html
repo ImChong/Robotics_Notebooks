@@ -3740,8 +3740,11 @@
        细节——canvas 合成是规范行为，各平台一致。
        按下标取模分笔而非切连续段：edges 按源节点聚集，连续段内部本就互相重叠，
        跨笔的重叠反而少；取模能把邻边打散到不同笔里。
-       成本：落笔线段总数不变，只多 N-1 次 path 提交。 */
-    const EDGE_2D_STROKE_CHUNKS = 16;
+       笔数取 48：峰值 alpha = 1-(1-alpha)^N，全图态实测 N=48 与 N=64 的峰值同为
+       243（这一屏最密处约 40 条边相叠，48 笔已等价于不设上限），再加笔数买不到
+       任何东西。成本：落笔线段总数不变，只多 N-1 次 path 提交，实测 drawEdges
+       p50 3.1 ms，与单笔描持平。 */
+    const EDGE_2D_STROKE_CHUNKS = 48;
 
     function strokeEdgeBatch(buf, len, style) {
       if (!len || !style) return;
