@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, text-driven-control, flow-matching, safety, samsung, unitree-g1]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.23983"
 venue: "arXiv 2026"
 summary: "SafeFlow（arXiv:2603.23983，三星 Future Robot AI Group）：VAE 潜空间物理引导整流流 + Reflow 单步采样，叠加训练无关三阶段安全门，在 Unitree G1 上相对 TextOp 将关节越界 43.14%→3.08%、成功率 80.6%→98.5%，完整管线约 67.7 Hz；截至 2026-08-31 未开源。"
