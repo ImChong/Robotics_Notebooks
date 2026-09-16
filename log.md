@@ -1,5 +1,7 @@
 ## [2026-09-16] ingest | sources/repos/depth-anything-cpp.md — 接入 DA3 C++/ggml 推理引擎 depth-anything.cpp 并归档上游论文
 
+## [2026-09-15] ingest | PinkRobot 公众号 5 篇 — Mimic 演进综述、GO2 Backflip 开源、RoboGauge RSS 2026、One Filter OCR TRO 2026、SE(2) NavMesh；新建 overview + 4 实体 + repos/sites；RoboGauge/One Filter 已开源，SE(2) NavMesh 待发布
+
 ## [2026-09-15] ingest | sources/papers/worldroambench_arxiv_2606_31672.md — WorldRoamBench 交互世界模型长程稳定性基准（部分开源：活榜+数据集已开放，评测代码待发布）；新建 paper-worldroambench 实体并交叉 hub-embodied-eval-benchmark / ABot-World-0
 
 ## [2026-09-15] ingest | WBC 经典线 — IJHR 2004 / ICRA 2006 / Khatib 1987 交叉 / ControlIt! / legbot-MPC-WBC；新建 4 实体 + 5 sources；补强 hub-wbc 与 whole-body-control 理论线

@@ -256,6 +256,13 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # DM0.5 的 TRT `fast` backend）。非单一可成页概念，与 clip（模型名 vs 限幅动词）、
     # alpha（熵温度 vs 滤波系数 vs 版本标签）同类语义噪声。
     "fast",
+    # auto：各页正文里的 `auto` / `AUTO` 均为配置项的「自动档」枚举值——core-retarget
+    # 的后端选择（`auto` 优先 C++ 核）、HandUMI 的 `--retarget-mode` 默认值、
+    # FreeToken 的 MoE 执行策略（`auto` 对 MoE 默认 offload）、Kimodo 的
+    # `KIMODO_DEVICE_..._AUTO`、WorldScape-Policy-2 的语言模式（`fine` vs `auto`）。
+    # 它是「让工具自己挑」的默认档位标签，各页已在配置表逐条释义，非机器人
+    # 概念/方法/形式化；与 stop / play（运行时命令名）同类工具链 token，不建独立页。
+    "auto",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -411,6 +418,14 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
     "cartpole-v1",  # Gymnasium 环境注册 id，已由 concepts/cartpole.md 覆盖
+    # computeGeneralizedGravity：Pinocchio 的重力项专用 API 名，本体是已建页的
+    # 重力项 $g(q)$——机制与「不要展开拉格朗日、用 $\mathrm{RNEA}(q,0,0)$」的算法
+    # 口径已由 concepts/gravity-compensation.md 定义，库入口与 `computeStaticTorque`
+    # 的取舍由 entities/pinocchio.md + queries/pinocchio-quick-start.md 逐条释义，
+    # 辨识回写语境见 methods/joint-actuator-parameter-identification.md。与
+    # onpolicyrunner（rsl_rl 的 Runner 类名）同类「具体实现的函数/类名」token，
+    # 不单建概念页。
+    "computegeneralizedgravity",
     # critic：Actor–Critic 的价值网络半边，不单独成页——机制已由
     # methods/reinforcement-learning.md 的「Actor-Critic」专节（策略网络 + 价值网络
     # 信息流）定义，非对称变体归 concepts/privileged-training.md 的「Asymmetric
@@ -436,6 +451,12 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "lerobot",  # 已由 entities/lerobot.md 覆盖（框架/工具，与 mjlab / mujoco 同类）
     # LeRobot 的评测 CLI 入口，已由 entities/lerobot.md + concepts/lerobot-envhub.md 覆盖
     "lerobot-eval",
+    # lerobot-train：与 `lerobot-eval` 成对的同一 CLI 命令表条目（SFT / 后训练入口），
+    # 已由 entities/lerobot.md 的命令表覆盖；各页命中处均为「数据导出后可进
+    # `lerobot-train`」式的入口指称（HandUMI 的 LeRobot 兼容导出、ROS2SmolVLA 的
+    # Docker 录制-训练链、DM05-Lerobot 基座、Perceptron Isaac 的复现路径）。与
+    # lerobot-eval 同类工具链 token，本体是已建页的框架，不单建概念页。
+    "lerobot-train",
     "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
     "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
@@ -452,6 +473,16 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "model",
     "mujoco",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
+    # policy：命中处全是代码 token 与网络分支标签，不是待建的机制页——Inspect
+    # Robots 的 `Model` = `Policy` + `Embodiment` 概念映射表、Isaac Lab 的观测组键
+    # `observations.policy`（LW-BenchHub 改组成 `policy` + `camera_obs`）、ORCS 保持
+    # SONIC 契约的 `policy` / `tokenizer` 通道、RIO 的异步推理 **Policy** 包装节点、
+    # Cosmos-3 的闭环 WM 模式名 `policy`、AMP 架构表里与 **Discriminator** 并列的
+    # **Policy** 网络行。策略作为知识实体已按语境分归 formalizations/mdp.md（策略
+    # $\pi$ 的 canonical 定义）、methods/policy-optimization.md、
+    # concepts/foundation-policy.md 与 concepts/humanoid-policy-network-architecture.md；
+    # 裸 token 与 model / state / reset 同类，不单建概念页。
+    "policy",
     "qpos",  # MuJoCo 状态数组字段名，已由广义坐标 $q$ 的形式化/概念页覆盖
     "qwen3-vl",  # 外部 VLM 底座型号，已在 methods/vla.md 等按「底座」维度记述
     "reset",  # 环境/策略 API 方法名（episode 复位），已由 entities/gymnasium.md 释义
@@ -468,6 +499,15 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # （Newton 的 `Model` / `State` / `Control` 抽象、观测字典键 `state`），与 qpos /
     # reset 同类，不单建概念页
     "state",
+    # student：Teacher–Student 蒸馏里「部署侧半边」的角色名，命中处清一色是
+    # **Teacher** / **Student** 成对的两行训练表（DPL / SOLO 的特权重建蒸馏、
+    # ArtManip 的潜表示蒸馏、HALOMI 的 DAgger、AME-2 的 action distill、
+    # GentleHumanoid 的特权观测裁剪、HAML 的「真机走 Student」）。该机制已由
+    # concepts/privileged-training.md（特权信息与非对称 Actor-Critic）+
+    # methods/teacher-student-dagger-training.md（DAgger 蒸馏流程）+
+    # methods/teacher-student-multi-skill-bfm.md（多技能蒸馏）覆盖；与配对出现的
+    # **Teacher** 同为该机制的半边角色标签，非独立可成页概念，不建 concepts/student.md。
+    "student",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）
     "zero-shot",  # 迁移/评测的条件状语，已由 concepts/sim2real.md 等页覆盖
