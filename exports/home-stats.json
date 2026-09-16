@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/apxinf.md",
+      "detail_id": "entity-apxinf",
+      "label": "APXInf（VLA 端侧推理引擎）",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
       "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
       "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
@@ -199,25 +210,17 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fmappo.md",
-      "detail_id": "entity-paper-fmappo",
-      "label": "FMAPPO：工厂多机任务分配与导航",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
-    "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
-    "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
-    "type": "concept",
+    "path": "wiki/entities/apxinf.md",
+    "detail_id": "entity-apxinf",
+    "label": "APXInf（VLA 端侧推理引擎）",
+    "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
