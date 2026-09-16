@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, humanoid, motion-tracking, benchmark, preference, reward-model, unitree-g1, eccv2026, galbot, tsinghua, sjtu, pku, shanghai-pil, nankai]
+tags: [paper, humanoid, motion-tracking, benchmark, preference, reward-model, unitree-g1, eccv2026, galbot, tsinghua, sjtu, pku, shanghai-pil, nankai, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2608.13555"
 venue: "ECCV 2026"
 code: https://github.com/GalaxyGeneralRobotics/HumanTracker
@@ -18,10 +18,14 @@ related:
   - ./amass.md
   - ./dataset-bfm-phuma.md
   - ../concepts/whole-body-tracking-pipeline.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
   - ../../sources/sites/humantracker-dairuliu-github-io.md
   - ../../sources/repos/humantracker.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_humantracker.md
 summary: "HumanTracker（南开/清华/Galbot 等，arXiv:2608.13555，ECCV 2026）：153 h / 25K 四族光学基准 + 偏好对齐指标 HumanScore（测试对齐 90.83%）。零样本对照 GMT / TWIST2 / SONIC / Humanoid-GPT。评测代码与 HumanScore 权重已开，数据集待发布。"
 ---
 
@@ -212,12 +216,16 @@ sequenceDiagram
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的人形 tracking 代表基准（四族分层 + 偏好对齐指标），双向回链
 - [人形参考运动数据集选型](../comparisons/humanoid-reference-motion-datasets.md) — 与 AMASS / PHUMA 对照
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 重定向 → tracker → 评测的上下文
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
 - [humantracker_arxiv_2608_13555.md](../../sources/papers/humantracker_arxiv_2608_13555.md) — arXiv 策展摘录
 - [humantracker-dairuliu-github-io.md](../../sources/sites/humantracker-dairuliu-github-io.md) — 项目页公开主张
 - [humantracker.md](../../sources/repos/humantracker.md) — 官方评测仓与入口
+- [HumanTracker 源码归档](../../sources/repos/cn_os_humantracker.md)（<https://github.com/GalaxyGeneralRobotics/HumanTracker>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

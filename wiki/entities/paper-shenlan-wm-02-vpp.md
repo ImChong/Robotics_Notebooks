@@ -1,9 +1,9 @@
 ---
 
 type: entity
-tags: [paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua]
+tags: [paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua, china-embodied-opensource]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2412.14803"
 venue: ICML 2025
 summary: "视频扩散生成当前+未来视觉表征，隐式逆动力学；Calvin 与真机灵巧操作显著提升。"
@@ -13,10 +13,14 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_02_vpp.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/video-prediction-policy.md
 ---
 
 # Video Prediction Policy (VPP)
@@ -86,6 +90,8 @@ sources:
 - [shenlan_wm_survey_02_vpp.md](../../sources/papers/shenlan_wm_survey_02_vpp.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [video-prediction-policy 源码归档](../../sources/repos/video-prediction-policy.md)（<https://github.com/roboterax/video-prediction-policy>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

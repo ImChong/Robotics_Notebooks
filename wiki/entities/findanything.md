@@ -2,6 +2,7 @@
 type: entity
 tags: [site, project, semantic-mapping, open-vocabulary, sam, tum, eth]
 status: complete
+arxiv: "2504.08603"
 updated: 2026-07-26
 related:
   - ../queries/robot-perception-stack-selection-loop.md

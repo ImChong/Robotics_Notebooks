@@ -9,6 +9,7 @@ tags:
   - hku
   - open-source
 status: complete
+arxiv: "2604.26962"
 updated: 2026-09-15
 related:
   - ./cli-anything.md

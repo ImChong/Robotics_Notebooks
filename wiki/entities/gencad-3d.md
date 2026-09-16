@@ -12,6 +12,7 @@ tags:
   - mesh
   - dataset
 status: complete
+arxiv: "2509.15246"
 date: 2026-05-21
 updated: 2026-09-15
 related:

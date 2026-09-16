@@ -18,7 +18,7 @@
 - **摘录要点：** 16 关节、7 Feetech 伺服、ESP32-S3；唯一本体感知为电机编码器。覆盖 GRASP 33 类抓取；指尖约 12 N，全开合 ~1.2 Hz；>40 万次循环耐久。
 - **对 wiki 的映射：**
   - [Aero Hand Open](../../wiki/entities/paper-aero-hand-open.md) — 硬件表。
-  - [paper-notebook-aero-hand-open](../../wiki/entities/paper-notebook-aero-hand-open.md) — 由占位升格。
+  - [paper-aero-hand-open](../../wiki/entities/paper-aero-hand-open.md) — 由占位升格。
 
 ### 2) MuJoCo 缆绳级仿真
 

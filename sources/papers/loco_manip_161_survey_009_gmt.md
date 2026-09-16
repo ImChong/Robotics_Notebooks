@@ -23,7 +23,7 @@
 ## 对 wiki 的映射
 
 - 正式实体：[paper-gmt](../../wiki/entities/paper-gmt.md)
-- 161 索引：[paper-loco-manip-161-009-gmt](../../wiki/entities/paper-loco-manip-161-009-gmt.md)
+- 161 索引：[paper-gmt](../../wiki/entities/paper-gmt.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

@@ -2,6 +2,7 @@
 type: entity
 tags: [motion-forecasting, world-models, vlm, ai2, manipulation, video-generation, 3d-trajectory]
 status: complete
+arxiv: "2606.18558"
 updated: 2026-06-18
 related:
   - ../methods/generative-world-models.md

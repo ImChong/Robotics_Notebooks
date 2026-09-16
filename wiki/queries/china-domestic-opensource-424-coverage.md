@@ -33,8 +33,8 @@ sources:
 |------|------|
 | 清单条目 | 424 |
 | 本库可点开详情 | 424 |
-| 复用既有实体 | 126 |
-| 本 ingest 新建实体 | 298 |
+| 复用既有实体 | 145 |
+| 本 ingest 新建实体 | 279 |
 
 ## 导读总表（按五层格局）
 
@@ -195,7 +195,7 @@ sources:
 | Humanoid-Gym | 运动RL/技能训练 | [Humanoid-Gym](../entities/humanoid-gym.md) · 复用 |
 | models | 本体模型资产 | [models](../entities/cn-os-models.md) · 新建 |
 | ros2_sdk | SDK/驱动 | [ros2_sdk](../entities/cn-os-ros2-sdk.md) · 新建 |
-| video-prediction-policy | VLA/操作模型 | [video-prediction-policy](../entities/cn-os-video-prediction-policy.md) · 新建 |
+| video-prediction-policy | VLA/操作模型 | [video-prediction-policy](../entities/paper-shenlan-wm-02-vpp.md) · 复用 |
 | teleop_client | 遥操作与数据采集 | [teleop_client](../entities/cn-os-teleop-client.md) · 新建 |
 | xbot_sdk_api | SDK/驱动 | [xbot_sdk_api](../entities/cn-os-xbot-sdk-api.md) · 新建 |
 | humanoid-lab | 运动RL/技能训练 | [humanoid-lab](../entities/paper-loco-manip-161-069-humanoid.md) · 复用 |
@@ -213,7 +213,7 @@ sources:
 
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
-| GalaxeaVLA | VLA/操作模型 | [GalaxeaVLA](../entities/cn-os-galaxeavla.md) · 新建 |
+| GalaxeaVLA | VLA/操作模型 | [GalaxeaVLA](../entities/paper-galaxea-g05.md) · 复用 |
 | GalaxeaDP | VLA/操作模型 | [GalaxeaDP](../entities/cn-os-galaxeadp.md) · 新建 |
 | GalaxeaManipSim | 仿真环境 | [GalaxeaManipSim](../entities/cn-os-galaxeamanipsim.md) · 新建 |
 | GalaxeaLeRobotToolkit | 数据集/Benchmark | [GalaxeaLeRobotToolkit](../entities/lerobot.md) · 复用 |
@@ -390,7 +390,7 @@ sources:
 
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
-| LightNav-0 | 感知/导航 | [LightNav-0](../entities/cn-os-lightnav-0.md) · 新建 |
+| LightNav-0 | 感知/导航 | [LightNav-0](../entities/paper-lightnav-0.md) · 复用 |
 
 #### 光轮智能（5）
 
@@ -412,27 +412,27 @@ sources:
 
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
-| OpenDM | VLA/操作模型 | [OpenDM](../entities/cn-os-opendm.md) · 新建 |
-| OpenDW | 世界模型 | [OpenDW](../entities/cn-os-opendw.md) · 新建 |
+| OpenDM | VLA/操作模型 | [OpenDM](../entities/dexmal-dm05.md) · 复用 |
+| OpenDW | 世界模型 | [OpenDW](../entities/dexmal-dw05.md) · 复用 |
 
 #### 大晓机器人（1）
 
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
-| Kairos | 世界模型 | [Kairos](../entities/cn-os-kairos.md) · 新建 |
+| Kairos | 世界模型 | [Kairos](../entities/paper-kairos-native-world-model-stack.md) · 复用 |
 
 #### 妙动科技（1）
 
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
-| DiT4DiT | VLA/操作模型 | [DiT4DiT](../entities/cn-os-dit4dit.md) · 新建 |
+| DiT4DiT | VLA/操作模型 | [DiT4DiT](../entities/paper-dit4dit-video-action-model.md) · 复用 |
 
 #### 它石智航（2）
 
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
 | RTR | VLA/操作模型 | [RTR](../entities/cn-os-rtr.md) · 新建 |
-| World In Your Hands | 数据集/Benchmark | [World In Your Hands](../entities/cn-os-world-in-your-hands.md) · 新建 |
+| World In Your Hands | 数据集/Benchmark | [World In Your Hands](../entities/paper-wiyh.md) · 复用 |
 
 #### 戴盟机器人（1）
 
@@ -478,8 +478,8 @@ sources:
 | --- | --- | --- |
 | GigaWorld-0 | 世界模型 | [GigaWorld-0](../entities/gigaworld-0.md) · 复用 |
 | GigaBrain-0 | VLA/操作模型 | [GigaBrain-0](../entities/paper-sa-2510-19430-gigabrain-0-a-world-model-powered-vision-languag.md) · 复用 |
-| GigaWorld-Policy | VLA/操作模型 | [GigaWorld-Policy](../entities/cn-os-gigaworld-policy.md) · 新建 |
-| GigaWorld-1 | 世界模型 | [GigaWorld-1](../entities/cn-os-gigaworld-1.md) · 新建 |
+| GigaWorld-Policy | VLA/操作模型 | [GigaWorld-Policy](../entities/paper-sa-2607-13960-gigaworld-policy-0-5-a-faster-and-stronger-wam-e.md) · 复用 |
+| GigaWorld-1 | 世界模型 | [GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) · 复用 |
 
 #### 求之科技（7）
 
@@ -498,7 +498,7 @@ sources:
 | 项目 | 类别 | 本库详情 |
 | --- | --- | --- |
 | Motus | 世界模型 | [Motus](../entities/paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) · 复用 |
-| MotuBrain | 世界模型 | [MotuBrain](../entities/cn-os-motubrain.md) · 新建 |
+| MotuBrain | 世界模型 | [MotuBrain](../entities/paper-motubrain.md) · 复用 |
 
 #### 简智机器人（1）
 
@@ -528,7 +528,7 @@ sources:
 | LingBot-VLA 2.0 | VLA/操作模型 | [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md) · 复用 |
 | LingBot-VA | 世界模型 | [LingBot-VA](../entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) · 复用 |
 | LingBot-World 2.0 | 世界模型 | [LingBot-World 2.0 / Infinity](../entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md) · 复用 |
-| LingBot-Map | 评测 | [LingBot-Map](../entities/cn-os-lingbot-map.md) · 新建 |
+| LingBot-Map | 评测 | [LingBot-Map](../entities/paper-lingbot-map.md) · 复用 |
 | LingBot-Depth | 工程与工具 | [LingBot-Depth](../entities/cn-os-lingbot-depth.md) · 新建 |
 | LingBot-Vision | 评测 | [LingBot-Vision](../entities/cn-os-lingbot-vision.md) · 新建 |
 | LingBot-Video | 世界模型 | [LingBot-Video](../entities/cn-os-lingbot-video.md) · 新建 |
@@ -555,7 +555,7 @@ sources:
 | GalbotSDK | SDK/驱动 | [GalbotSDK](../entities/cn-os-galbotsdk.md) · 新建 |
 | galbot-mcap2lerobot | 数据集/Benchmark | [galbot-mcap2lerobot](../entities/lerobot.md) · 复用 |
 | galbot_s1_description | 本体模型资产 | [galbot_s1_description](../entities/cn-os-galbot-s1-description.md) · 新建 |
-| HumanTracker | 全身动作跟踪/技能训练 | [HumanTracker](../entities/cn-os-humantracker.md) · 新建 |
+| HumanTracker | 全身动作跟踪/技能训练 | [HumanTracker](../entities/paper-humantracker.md) · 复用 |
 
 #### 面壁智能（2）
 
@@ -642,7 +642,7 @@ sources:
 | --- | --- | --- |
 | HoloAgent | 具身Agent/规划 | [HoloAgent](../entities/holoagent.md) · 复用 |
 | HoloMotion | 全身动作跟踪/技能训练 | [HoloMotion](../entities/holomotion.md) · 复用 |
-| EmbodiedGen V2 | 仿真环境 | [EmbodiedGen V2](../entities/cn-os-embodiedgen-v2.md) · 新建 |
+| EmbodiedGen V2 | 仿真环境 | [EmbodiedGen V2](../entities/paper-embodiedgen-v2-sim-ready-world-engine.md) · 复用 |
 | RoboOrchardCore | 数据采集/工具 | [RoboOrchardCore](../entities/cn-os-roboorchardcore.md) · 新建 |
 | BIP3D | 工程与工具 | [BIP3D](../entities/cn-os-bip3d.md) · 新建 |
 | RoboOrchardLab | 运动RL/技能训练 | [RoboOrchardLab](../entities/robo-orchard-lab.md) · 复用 |
@@ -692,19 +692,19 @@ sources:
 | --- | --- | --- |
 | ABot-World | 世界模型 | [ABot-World](../entities/botworld.md) · 复用 |
 | RynnVLA-002 | VLA/操作模型 | [RynnVLA-002](../entities/cn-os-rynnvla-002.md) · 新建 |
-| RynnBrain | 具身Agent/规划 | [RynnBrain](../entities/cn-os-rynnbrain.md) · 新建 |
-| ABot-Manipulation | VLA/操作模型 | [ABot-Manipulation](../entities/cn-os-abot-manipulation.md) · 新建 |
+| RynnBrain | 具身Agent/规划 | [RynnBrain](../entities/paper-rynnbrain-1-1.md) · 复用 |
+| ABot-Manipulation | VLA/操作模型 | [ABot-Manipulation](../entities/paper-abot-m05-mobile-manipulation-wam.md) · 复用 |
 | RynnEC | 具身Agent/规划 | [RynnEC](../entities/cn-os-rynnec.md) · 新建 |
 | ABot-PhysWorld | 世界模型 | [ABot-PhysWorld](../entities/paper-sa-2603-23376-abot-physworld-interactive-world-foundation-mode.md) · 复用 |
 | RynnVLA-001 | VLA/操作模型 | [RynnVLA-001](../entities/cn-os-rynnvla-001.md) · 新建 |
-| ABot-Navigation | 数据集/Benchmark | [ABot-Navigation](../entities/cn-os-abot-navigation.md) · 新建 |
-| RynnWorld-4D | 世界模型 | [RynnWorld-4D](../entities/cn-os-rynnworld-4d.md) · 新建 |
+| ABot-Navigation | 数据集/Benchmark | [ABot-Navigation](../entities/paper-abot-n1.md) · 复用 |
+| RynnWorld-4D | 世界模型 | [RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md) · 复用 |
 | RynnWorld-Teleop | 遥操作与数据采集 | [RynnWorld-Teleop](../entities/paper-sa-2607-06558-rynnworld-teleop-an-action-conditioned-world-mod.md) · 复用 |
 | RynnValue | 具身Agent/规划 | [RynnValue](../entities/cn-os-rynnvalue.md) · 新建 |
 | ABot-3DWorld | 世界模型 | [ABot-3DWorld](../entities/cn-os-abot-3dworld.md) · 新建 |
 | ABot-Claw | VLA/操作模型 | [ABot-Claw](../entities/cn-os-abot-claw.md) · 新建 |
 | ABot-Explorer | 具身Agent/规划 | [ABot-Explorer](../entities/cn-os-abot-explorer.md) · 新建 |
-| ABot-Recon | 工程与工具 | [ABot-Recon](../entities/cn-os-abot-recon.md) · 新建 |
+| ABot-Recon | 工程与工具 | [ABot-Recon](../entities/paper-abot-recon.md) · 复用 |
 | AstraNav-Memory | 感知/导航 | [AstraNav-Memory](../entities/cn-os-astranav-memory.md) · 新建 |
 | AstraNav-World | 世界模型 | [AstraNav-World](../entities/cn-os-astranav-world.md) · 新建 |
 | CE-Nav | 感知/导航 | [CE-Nav](../entities/cn-os-ce-nav.md) · 新建 |

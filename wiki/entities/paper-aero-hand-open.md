@@ -8,8 +8,9 @@ tags:
   - manipulation
   - hardware
   - mujoco
+  - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2608.28578"
 code: https://github.com/TetherIA/aero-hand-open
 related:
@@ -17,12 +18,15 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/contact-rich-manipulation.md
   - ./paper-deimel-compliant-underactuated-robotic-hand.md
-  - ./paper-notebook-aero-hand-open.md
   - ../overview/paper-notebook-category-12-hardware-design.md
+  - ../overview/humanoid-paper-notebooks-index.md
+  - ../../sources/papers/humanoid_pnb_aero-hand-open.md
+  - ../../sources/papers/aero_hand_open_arxiv_2608_28578.md
 sources:
   - ../../sources/papers/aero_hand_open_arxiv_2608_28578.md
   - ../../sources/sites/aero-hand-open.md
   - ../../sources/repos/aero-hand-open.md
+  - ../../sources/papers/humanoid_pnb_aero-hand-open.md
 summary: "Aero Hand Open（arXiv:2608.28578，TetherIA/Chestnut）：$314 腱驱 7×16 手；MuJoCo 缆绳级模型 + 辨识作动映射 + mujoco_playground RL，in-hand 立方体旋转零样本 sim2real；CAD/SDK/ROS2 全开源。"
 ---
 
@@ -141,7 +145,6 @@ sequenceDiagram
 
 ## 与其他页面的关系
 
-- [paper-notebook-aero-hand-open](./paper-notebook-aero-hand-open.md) — 原 Paper Notebooks 索引占位
 - [Deimel 顺应欠驱动手](./paper-deimel-compliant-underactuated-robotic-hand.md) — 另一欠驱动哲学
 - [Sim2Real](../concepts/sim2real.md) — 作动器级迁移
 - [Manipulation](../tasks/manipulation.md) — 灵巧操作任务语境
@@ -151,6 +154,8 @@ sequenceDiagram
 - [aero_hand_open_arxiv_2608_28578.md](../../sources/papers/aero_hand_open_arxiv_2608_28578.md)
 - [aero-hand-open 项目页](../../sources/sites/aero-hand-open.md)
 - [aero-hand-open 仓库](../../sources/repos/aero-hand-open.md)
+- [paper-aero-hand-open.md](./paper-aero-hand-open.md)
+- [humanoid_pnb_aero-hand-open.md](../../sources/papers/humanoid_pnb_aero-hand-open.md)
 
 ## 推荐继续阅读
 

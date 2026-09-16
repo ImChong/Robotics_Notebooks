@@ -2,6 +2,7 @@
 type: entity
 tags: [world-models, video-generation, manipulation, simulation, closed-loop, agibot, multi-view, evaluation, open-source]
 status: complete
+arxiv: "2605.27491"
 updated: 2026-09-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md

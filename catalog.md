@@ -97,9 +97,6 @@
 - [ABot-3DWorld](wiki/entities/cn-os-abot-3dworld.md) — ABot-3DWorld** 是 阿里巴巴 公开的 **世界模型** 开源项目：文本/图像/多视图/视频生成可探索 3D 世界（高 `📅unknown` `[entity_page]`
 - [ABot-Claw](wiki/entities/cn-os-abot-claw.md) — ABot-Claw** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：统一 VLN、VLA、WAM 与视觉记忆的持续协 `📅unknown` `[entity_page]`
 - [ABot-Explorer](wiki/entities/cn-os-abot-explorer.md) — ABot-Explorer** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：VLM 驱动、支持 3DGS 与 H `📅unknown` `[entity_page]`
-- [ABot-Manipulation](wiki/entities/cn-os-abot-manipulation.md) — ABot-Manipulation** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：ABot-M0.5联合处理移动与 `📅unknown` `[entity_page]`
-- [ABot-Navigation](wiki/entities/cn-os-abot-navigation.md) — ABot-Navigation** 是 阿里巴巴 公开的 **数据集/Benchmark** 开源项目：视觉与语言指令经过场景理解 `📅unknown` `[entity_page]`
-- [ABot-Recon](wiki/entities/cn-os-abot-recon.md) — ABot-Recon** 是 阿里巴巴 的 **单目 RGB 长视频流式 3D 重建** 项目（arXiv:2608.27529） `📅unknown` `[entity_page]`
 - [agibot_D1_Edu-Ultra](wiki/entities/cn-os-agibot-d1-edu-ultra.md) — agibot_D1_Edu-Ultra** 是 智元机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读 `📅unknown` `[entity_page]`
 - [Agibot_D1_Max](wiki/entities/cn-os-agibot-d1-max.md) — Agibot_D1_Max** 是 智元机器人 公开的 **SDK/驱动** 开源项目：C++ SDK通过高层运动接口、状态回调和 `📅unknown` `[entity_page]`
 - [agibot_x1_hardware](wiki/entities/cn-os-agibot-x1-hardware.md) — agibot_x1_hardware** 是 智元机器人 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJ `📅unknown` `[entity_page]`
@@ -152,14 +149,12 @@
 - [Deploy_Tienkung](wiki/entities/cn-os-deploy-tienkung.md) — Deploy_Tienkung** 是 北京人形机器人创新中心 公开的 **仿真环境** 开源项目：ROS 2控制主库接 `📅unknown` `[entity_page]`
 - [dexrobot_ecosystem](wiki/entities/cn-os-dexrobot-ecosystem.md) — dexrobot_ecosystem** 是 灵巧智能 公开的 **移动操作** 开源项目：整合灵巧手底层控制、运动学、URDF、Is `📅unknown` `[entity_page]`
 - [DIAL](wiki/entities/cn-os-dial.md) — DIAL** 是 小鹏机器人 公开的 **VLA/操作模型** 开源项目：小鹏机器人官方公开的机器人学习研究项目，具体数据 `📅unknown` `[entity_page]`
-- [DiT4DiT](wiki/entities/cn-os-dit4dit.md) — DiT4DiT** 是 妙动科技 公开的 **VLA/操作模型** 开源项目：将视频生成DiT的中间去噪特征与流匹配动作头 `📅unknown` `[entity_page]`
 - [dobot_atom_ros2](wiki/entities/cn-os-dobot-atom-ros2.md) — dobot_atom_ros2** 是 越疆科技 公开的 **工程与工具** 开源项目：为ATOM机器人提供ROS2接口， `📅unknown` `[entity_page]`
 - [EFMNode](wiki/entities/cn-os-efmnode.md) — EFMNode** 是 星海图 公开的 **部署运行时** 开源项目：策略部署运行时：加载训练策略、下发关节命令 `📅unknown` `[entity_page]`
 - [Electronic-Skin-ML](wiki/entities/cn-os-electronic-skin-ml.md) — Electronic-Skin-ML** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：ML 电子皮肤 SDK `📅unknown` `[entity_page]`
 - [Elite_Robots_CS_ROS2_Driver](wiki/entities/cn-os-elite-robots-cs-ros2-driver.md) — Elite_Robots_CS_ROS2_Driver** 是 艾利特机器人 公开的 **SDK/驱动** 开源项目：为艾利特 `📅unknown` `[entity_page]`
 - [Elite_Robots_CS_SDK](wiki/entities/cn-os-elite-robots-cs-sdk.md) — Elite_Robots_CS_SDK** 是 艾利特机器人 公开的 **SDK/驱动** 开源项目：提供艾利特CS系列机器人 `📅unknown` `[entity_page]`
 - [embodied-skill-kit](wiki/entities/cn-os-embodied-skill-kit.md) — embodied-skill-kit** 是 北京人形机器人创新中心 公开的 **具身Agent/规划** 开源项目：具 `📅unknown` `[entity_page]`
-- [EmbodiedGen V2](wiki/entities/cn-os-embodiedgen-v2.md) — EmbodiedGen V2** 是 地平线 公开的 **仿真环境** 开源项目：语言、参考图和编辑指令生成带几何、材质 `📅unknown` `[entity_page]`
 - [Embodylink](wiki/entities/cn-os-embodylink.md) — Embodylink** 是 越疆科技 公开的 **数据集/Benchmark** 开源项目：面向越疆机器人提供数据采集、 `📅unknown` `[entity_page]`
 - [EMGFilters](wiki/entities/cn-os-emgfilters.md) — EMGFilters** 是 傲意科技 公开的 **工程与工具** 开源项目：肌电信号滤波算法库 `📅unknown` `[entity_page]`
 - [engineai_amp](wiki/entities/cn-os-engineai-amp.md) — engineai_amp** 是 众擎机器人 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架 `📅unknown` `[entity_page]`
@@ -184,7 +179,6 @@
 - [frcobot_ros2](wiki/entities/cn-os-frcobot-ros2.md) — frcobot_ros2** 是 法奥意威 公开的 **工程与工具** 开源项目：为法奥意威协作机器人提供ROS2驱动、 `📅unknown` `[entity_page]`
 - [GalaxeaDP](wiki/entities/cn-os-galaxeadp.md) — GalaxeaDP** 是 星海图 公开的 **VLA/操作模型** 开源项目：把相机观测、机器人状态和任务条件映射为连续动作块 `📅unknown` `[entity_page]`
 - [GalaxeaManipSim](wiki/entities/cn-os-galaxeamanipsim.md) — GalaxeaManipSim** 是 星海图 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联调、策略回放与 S `📅unknown` `[entity_page]`
-- [GalaxeaVLA](wiki/entities/cn-os-galaxeavla.md) — GalaxeaVLA** 是 星海图 公开的 **VLA/操作模型** 开源项目：语言、视觉和机器人状态经过VLA生成移动底盘与 `📅unknown` `[entity_page]`
 - [galbot_s1_description](wiki/entities/cn-os-galbot-s1-description.md) — galbot_s1_description** 是 银河通用 公开的 **本体模型资产** 开源项目：官方本 `📅unknown` `[entity_page]`
 - [GalbotSDK](wiki/entities/cn-os-galbotsdk.md) — GalbotSDK** 是 银河通用 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读 `📅unknown` `[entity_page]`
 - [genisom_L1_sdk](wiki/entities/cn-os-genisom-l1-sdk.md) — genisom_L1_sdk** 是 智身科技 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
@@ -195,8 +189,6 @@
 - [gForceSDKEmbedded](wiki/entities/cn-os-gforcesdkembedded.md) — gForceSDKEmbedded** 是 傲意科技 公开的 **SDK/驱动** 开源项目：gForce 肌电臂环 C/C++ 嵌入 `📅unknown` `[entity_page]`
 - [gForceSDKPython](wiki/entities/cn-os-gforcesdkpython.md) — gForceSDKPython** 是 傲意科技 公开的 **SDK/驱动** 开源项目：gForce 肌电臂环 Python SDK `📅unknown` `[entity_page]`
 - [GHRC_Evaluation_2026](wiki/entities/cn-os-ghrc-evaluation-2026.md) — GHRC_Evaluation_2026** 是 优必选 公开的 **评测** 开源项目：评测基准与工具 `📅unknown` `[entity_page]`
-- [GigaWorld-1](wiki/entities/cn-os-gigaworld-1.md) — GigaWorld-1** 是 极佳视界 公开的 **世界模型** 开源项目：GigaWorld-1继续研究机器人动作条件下的未 `📅unknown` `[entity_page]`
-- [GigaWorld-Policy](wiki/entities/cn-os-gigaworld-policy.md) — GigaWorld-Policy** 是 极佳视界 公开的 **VLA/操作模型** 开源项目：以动作和环境变化的联合表征训练机 `📅unknown` `[entity_page]`
 - [Gloria-M-SDK](wiki/entities/cn-os-gloria-m-sdk.md) — Gloria-M-SDK** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：云犀夹爪 Python SDK `📅unknown` `[entity_page]`
 - [GR-MG](wiki/entities/cn-os-gr-mg.md) — GR-MG** 是 字节跳动机器人团队 公开的 **VLA/操作模型** 开源项目：GR-MG 机器人操作生成模型官方实现 `📅unknown` `[entity_page]`
 - [gr00t-agilex](wiki/entities/cn-os-gr00t-agilex.md) — gr00t-agilex** 是 松灵机器人 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块 `📅unknown` `[entity_page]`
@@ -205,13 +197,11 @@
 - [HesaiLidar_SDK_2.0](wiki/entities/cn-os-hesailidar-sdk-2-0.md) — HesaiLidar_SDK_2.0** 是 禾赛科技 公开的 **SDK/驱动** 开源项目：提供禾赛激光雷达数据接收 `📅unknown` `[entity_page]`
 - [hi_dynamic_control](wiki/entities/cn-os-hi-dynamic-control.md) — hi_dynamic_control** 是 高擎机电 公开的 **部署运行时** 开源项目：策略部署运行时：加 `📅unknown` `[entity_page]`
 - [hobot_stereonet](wiki/entities/cn-os-hobot-stereonet.md) — hobot_stereonet** 是 地瓜机器人 公开的 **工程与工具** 开源项目：从双目图像实时估计深度，为机器人三维感知 `📅unknown` `[entity_page]`
-- [HumanTracker](wiki/entities/cn-os-humantracker.md) — HumanTracker** 是 银河通用 公开的 **全身动作跟踪/技能训练** 开源项目：全身动作跟踪策 `📅unknown` `[entity_page]`
 - [hunter_bipedal_control](wiki/entities/cn-os-hunter-bipedal-control.md) — hunter_bipedal_control** 是 桥介数物 公开的 **运动控制** 开源项目：开源双足运动控制框架：非线性 MP `📅unknown` `[entity_page]`
 - [HY-Embodied](wiki/entities/cn-os-hy-embodied.md) — HY-Embodied** 是 腾讯机器人实验室 公开的 **VLA/操作模型** 开源项目：仓库汇总HY-Embodi `📅unknown` `[entity_page]`
 - [JAKA_Lumi](wiki/entities/cn-os-jaka-lumi.md) — JAKA_Lumi** 是 节卡机器人 公开的 **具身Agent/规划** 开源项目：公开JAKA Lumi机器人平台相关开 `📅unknown` `[entity_page]`
 - [jaka_ros2](wiki/entities/cn-os-jaka-ros2.md) — jaka_ros2** 是 节卡机器人 公开的 **工程与工具** 开源项目：为JAKA协作机器人提供ROS2驱动、机器人模型 `📅unknown` `[entity_page]`
 - [JALA](wiki/entities/cn-os-jala.md) — JALA** 是 智在无界 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本体执行 `📅unknown` `[entity_page]`
-- [Kairos](wiki/entities/cn-os-kairos.md) — Kairos** 是 大晓机器人 公开的 **世界模型** 开源项目：Kairos以通用视频、人类行为和真机交互数据逐级训练持续世 `📅unknown` `[entity_page]`
 - [kinect_teleoperate](wiki/entities/cn-os-kinect-teleoperate.md) — kinect_teleoperate** 是 宇树科技 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人 `📅unknown` `[entity_page]`
 - [kuavo_data_challenge](wiki/entities/cn-os-kuavo-data-challenge.md) — kuavo_data_challenge** 是 乐聚机器人 公开的 **数据集/Benchmark** 开源项目：数据采集/ `📅unknown` `[entity_page]`
 - [kuavo-ros-opensource](wiki/entities/cn-os-kuavo-ros-opensource.md) — kuavo-ros-opensource** 是 乐聚机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与 `📅unknown` `[entity_page]`
@@ -220,12 +210,10 @@
 - [Leju-GMR](wiki/entities/cn-os-leju-gmr.md) — Leju-GMR** 是 乐聚机器人 公开的 **动作重定向** 开源项目：动作重定向：人体/MoCap 动作映射为目标本体训 `📅unknown` `[entity_page]`
 - [LejuLab-Deploy](wiki/entities/cn-os-lejulab-deploy.md) — LejuLab-Deploy** 是 乐聚机器人 公开的 **运动RL/技能训练** 开源项目：策略部署运行时：加载训练策略、 `📅unknown` `[entity_page]`
 - [LejuLab-Train](wiki/entities/cn-os-lejulab-train.md) — LejuLab-Train** 是 乐聚机器人 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真 `📅unknown` `[entity_page]`
-- [LightNav-0](wiki/entities/cn-os-lightnav-0.md) — LightNav-0** 是 亮源新创 公开的 **感知/导航** 开源项目：紧凑通用具身导航模型（Qwen3-VL 基座）： `📅unknown` `[entity_page]`
 - [Lightwheel-simready-asset](wiki/entities/cn-os-lightwheel-simready-asset.md) — Lightwheel-simready-asset** 是 光轮智能 公开的 **本体模型资产** 开源项目：提供机器人训练和 `📅unknown` `[entity_page]`
 - [Lightwheel-YCB](wiki/entities/cn-os-lightwheel-ycb.md) — Lightwheel-YCB** 是 光轮智能 公开的 **仿真环境** 开源项目：提供刚体、关节体和柔性物体的仿真就绪YCB `📅unknown` `[entity_page]`
 - [limxsdk-lowlevel](wiki/entities/cn-os-limxsdk-lowlevel.md) — limxsdk-lowlevel** 是 逐际动力 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的 `📅unknown` `[entity_page]`
 - [LingBot-Depth](wiki/entities/cn-os-lingbot-depth.md) — LingBot-Depth** 是 蚂蚁灵波 公开的 **工程与工具** 开源项目：把RGB外观与不完整或噪声深度对齐到统一潜空间，输 `📅unknown` `[entity_page]`
-- [LingBot-Map](wiki/entities/cn-os-lingbot-map.md) — LingBot-Map** 是 蚂蚁灵波 公开的 **评测** 开源项目：连续RGB帧经过几何上下文Transformer同时估计深度 `📅unknown` `[entity_page]`
 - [LingBot-Video](wiki/entities/cn-os-lingbot-video.md) — LingBot-Video** 是 蚂蚁灵波 公开的 **世界模型** 开源项目：稠密与MoE视频模型从文本或图像条件生成未来视频，并 `📅unknown` `[entity_page]`
 - [LingBot-Vision](wiki/entities/cn-os-lingbot-vision.md) — LingBot-Vision** 是 蚂蚁灵波 公开的 **评测** 开源项目：以面向几何和密集预测的自监督目标训练视觉编码器，使同一 `📅unknown` `[entity_page]`
 - [linkerhand-python-sdk](wiki/entities/cn-os-linkerhand-python-sdk.md) — linkerhand-python-sdk** 是 灵心巧手 公开的 **SDK/驱动** 开源项目：提供LinkerHand的P `📅unknown` `[entity_page]`
@@ -256,7 +244,6 @@
 - [mobile_aloha_sim](wiki/entities/cn-os-mobile-aloha-sim.md) — mobile_aloha_sim** 是 松灵机器人 公开的 **仿真环境** 开源项目：官方仿真环境与模型接入：联调、策 `📅unknown` `[entity_page]`
 - [models](wiki/entities/cn-os-models.md) — models** 是 星动纪元 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/USD），供仿真、训练 `📅unknown` `[entity_page]`
 - [motor-sdk](wiki/entities/cn-os-motor-sdk.md) — motor-sdk** 是 达妙科技 公开的 **SDK/驱动** 开源项目：提供达妙电机设备控制与通信示例，服务关节执行器调试和机器人底 `📅unknown` `[entity_page]`
-- [MotuBrain](wiki/entities/cn-os-motubrain.md) — MotuBrain** 是 生数科技 公开的 **世界模型** 开源项目：MotuBrain把视频、动作和语言统一建模，并面向多本体适配、 `📅unknown` `[entity_page]`
 - [multiMotorTCPAPI](wiki/entities/cn-os-multimotortcpapi.md) — multiMotorTCPAPI** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：多电机 TCP 控制 API `📅unknown` `[entity_page]`
 - [mycobot_ros](wiki/entities/cn-os-mycobot-ros.md) — mycobot_ros** 是 大象机器人 公开的 **仿真环境** 开源项目：为myCobot系列提供ROS模型、驱 `📅unknown` `[entity_page]`
 - [mycobot_ros2](wiki/entities/cn-os-mycobot-ros2.md) — mycobot_ros2** 是 大象机器人 公开的 **仿真环境** 开源项目：为myCobot及相关机器人提供RO `📅unknown` `[entity_page]`
@@ -270,8 +257,6 @@
 - [Open-AoE](wiki/entities/cn-os-open-aoe.md) — Open-AoE** 是 蚂蚁集团 公开的 **数据集/Benchmark** 开源项目：把消费级手机视频接到数据质检、相机与 `📅unknown` `[entity_page]`
 - [open-dog](wiki/entities/cn-os-open-dog.md) — open-dog** 是 达妙科技 公开的 **工程与工具** 开源项目：公开达妙OpenDog01四足机器人资料，连接关节电机、机械结构 `📅unknown` `[entity_page]`
 - [Open-Robot-Descriptions](wiki/entities/cn-os-open-robot-descriptions.md) — Open-Robot-Descriptions** 是 玄雅科技 公开的 **本体模型资产** 开源项目：开源机器人模型 `📅unknown` `[entity_page]`
-- [OpenDM](wiki/entities/cn-os-opendm.md) — OpenDM** 是 原力灵机 公开的 **VLA/操作模型** 开源项目：DM0.5根据语言、图像和机器人状态生成动作序列，面向开放指令 `📅unknown` `[entity_page]`
-- [OpenDW](wiki/entities/cn-os-opendw.md) — OpenDW** 是 原力灵机 公开的 **世界模型** 开源项目：DW0.5接收语言、图像或视频、机器人类型、状态和动作，用共享骨干及视 `📅unknown` `[entity_page]`
 - [openpi-agilex](wiki/entities/cn-os-openpi-agilex.md) — openpi-agilex** 是 松灵机器人 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作 `📅unknown` `[entity_page]`
 - [OpenWBT](wiki/entities/cn-os-openwbt.md) — OpenWBT** 是 银河通用 公开的 **具身Agent/规划** 开源项目：头显和手柄提供视角、手部目 `📅unknown` `[entity_page]`
 - [OrbbecSDK_ROS2](wiki/entities/cn-os-orbbecsdk-ros2.md) — OrbbecSDK_ROS2** 是 奥比中光 公开的 **SDK/驱动** 开源项目：把奥比中光相机接入ROS2，发布图像、深度和相机参 `📅unknown` `[entity_page]`
@@ -322,12 +307,10 @@
 - [rslidar_sdk](wiki/entities/cn-os-rslidar-sdk.md) — rslidar_sdk** 是 速腾聚创 公开的 **SDK/驱动** 开源项目：提供速腾聚创激光雷达ROS与ROS2  `📅unknown` `[entity_page]`
 - [RTR](wiki/entities/cn-os-rtr.md) — RTR** 是 它石智航 公开的 **VLA/操作模型** 开源项目：在连续潜空间学习高频动作块，并以Reuse-then- `📅unknown` `[entity_page]`
 - [RxBrain-1.0](wiki/entities/cn-os-rxbrain-1-0.md) — RxBrain-1.0** 是 腾讯机器人实验室 公开的 **具身Agent/规划** 开源项目：视觉与语言输入形成场景 `📅unknown` `[entity_page]`
-- [RynnBrain](wiki/entities/cn-os-rynnbrain.md) — RynnBrain** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：视觉和语言输入先形成场景与任务表示，再输出任 `📅unknown` `[entity_page]`
 - [RynnEC](wiki/entities/cn-os-rynnec.md) — RynnEC** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：项目研究机器人怎样从多模态观测形成环境理解、任务分 `📅unknown` `[entity_page]`
 - [RynnValue](wiki/entities/cn-os-rynnvalue.md) — RynnValue** 是 阿里巴巴 公开的 **具身Agent/规划** 开源项目：模型对候选动作或执行轨迹进行价值判断，为策略 `📅unknown` `[entity_page]`
 - [RynnVLA-001](wiki/entities/cn-os-rynnvla-001.md) — RynnVLA-001** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：把语言任务、视觉观测和机器人状态映射为动作序 `📅unknown` `[entity_page]`
 - [RynnVLA-002](wiki/entities/cn-os-rynnvla-002.md) — RynnVLA-002** 是 阿里巴巴 公开的 **VLA/操作模型** 开源项目：RynnVLA-002在视觉、语言和机器人状 `📅unknown` `[entity_page]`
-- [RynnWorld-4D](wiki/entities/cn-os-rynnworld-4d.md) — RynnWorld-4D** 是 阿里巴巴 公开的 **世界模型** 开源项目：模型联合表达三维空间结构和时间演化，用于预测机器人 `📅unknown` `[entity_page]`
 - [sdk_deploy](wiki/entities/cn-os-sdk-deploy.md) — sdk_deploy** 是 云深处科技 公开的 **SDK/驱动** 开源项目：策略部署运行时：加载训练策略、下发关节 `📅unknown` `[entity_page]`
 - [SeerSdk4j](wiki/entities/cn-os-seersdk4j.md) — SeerSdk4j** 是 仙工智能 公开的 **SDK/驱动** 开源项目：为仙工智能移动机器人控制器提供Java TCP `📅unknown` `[entity_page]`
 - [SeerTCPTest](wiki/entities/cn-os-seertcptest.md) — SeerTCPTest** 是 仙工智能 公开的 **工程与工具** 开源项目：提供Robokit NetProtocol  `📅unknown` `[entity_page]`
@@ -352,7 +335,6 @@
 - [UniArmL1](wiki/entities/cn-os-uniarml1.md) — UniArmL1** 是 宇树科技 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机 `📅unknown` `[entity_page]`
 - [UniTacHand](wiki/entities/cn-os-unitachand.md) — UniTacHand** 是 智在无界 公开的 **具身Agent/规划** 开源项目：移动操作（Loco-Manip）策略接入 `📅unknown` `[entity_page]`
 - [UrbanVLA](wiki/entities/cn-os-urbanvla.md) — UrbanVLA** 是 银河通用 公开的 **VLA/操作模型** 开源项目：将第一视角视觉、语言指令与机 `📅unknown` `[entity_page]`
-- [video-prediction-policy](wiki/entities/cn-os-video-prediction-policy.md) — video-prediction-policy** 是 星动纪元 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型 `📅unknown` `[entity_page]`
 - [VideoWorld](wiki/entities/cn-os-videoworld.md) — VideoWorld** 是 字节跳动机器人团队 公开的 **世界模型** 开源项目：从无标注视频学习潜在动态和行为表示， `📅unknown` `[entity_page]`
 - [VIPA-VLA](wiki/entities/cn-os-vipa-vla.md) — VIPA-VLA** 是 智在无界 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本体执行 `📅unknown` `[entity_page]`
 - [Walker_TienKung_DEX_URDF](wiki/entities/cn-os-walker-tienkung-dex-urdf.md) — Walker_TienKung_DEX_URDF** 是 优必选 公开的 **本体模型资产** 开源项目：官方本体模型资产（U `📅unknown` `[entity_page]`
@@ -367,7 +349,6 @@
 - [Wiki-GRx-Gym](wiki/entities/cn-os-wiki-grx-gym.md) — Wiki-GRx-Gym** 是 傅利叶智能 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真任务与策略导出链 `📅unknown` `[entity_page]`
 - [Wiki-GRx-Models](wiki/entities/cn-os-wiki-grx-models.md) — Wiki-GRx-Models** 是 傅利叶智能 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/USD）， `📅unknown` `[entity_page]`
 - [Wiki-GRx-Pipeline](wiki/entities/cn-os-wiki-grx-pipeline.md) — Wiki-GRx-Pipeline** 是 傅利叶智能 公开的 **部署运行时** 开源项目：以模型准备、Isaac Gym训练、MuJoC `📅unknown` `[entity_page]`
-- [World In Your Hands](wiki/entities/cn-os-world-in-your-hands.md) — World In Your Hands** 是 它石智航 公开的 **数据集/Benchmark** 开源项目：采集者穿戴O `📅unknown` `[entity_page]`
 - [wuji-description](wiki/entities/cn-os-wuji-description.md) — wuji-description** 是 舞肌科技 公开的 **本体模型资产** 开源项目：提供Wuji Hand及相关 `📅unknown` `[entity_page]`
 - [wuji-hand-teleop](wiki/entities/cn-os-wuji-hand-teleop.md) — wuji-hand-teleop** 是 舞肌科技 公开的 **遥操作与数据采集** 开源项目：通过ROS2接入多种人体 `📅unknown` `[entity_page]`
 - [wuji-mjlab](wiki/entities/cn-os-wuji-mjlab.md) — wuji-mjlab** 是 舞肌科技 公开的 **移动操作** 开源项目：基于mjlab训练Wuji Hand的手内物 `📅unknown` `[entity_page]`
@@ -1279,7 +1260,6 @@
 - [WT-UMI](wiki/entities/paper-loco-manip-07-wt-umi.md) — WT-UMI**（*Whole-Body Tactile UMI for Force-Supervised Humanoid Manipulation*）把 UMI 式示范接口扩展为 **全身触觉 `📅unknown` `[entity_page]`
 - [X-OP](wiki/entities/paper-loco-manip-08-x-op.md) — X-OP** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 08/ `📅unknown` `[entity_page]`
 - [ExBody2](wiki/entities/paper-loco-manip-161-007-exbody2.md) — ExBody2** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
-- [GMT（Loco-Manip 161 · #009 索引）](wiki/entities/paper-loco-manip-161-009-gmt.md) — GMT** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
 - [HumanPlus](wiki/entities/paper-loco-manip-161-012-humanplus.md) — HumanPlus** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
 - [MOSAIC](wiki/entities/paper-loco-manip-161-014-mosaic.md) — MOSAIC** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [TextOp](wiki/entities/paper-loco-manip-161-022-textop.md) — TextOp**（arXiv:2602.07439，项目页，[G `📅unknown` `[entity_page]`
@@ -1461,12 +1441,10 @@
 - [A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot](wiki/entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md) — A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot** 已列入 [Robot  `📅unknown` `[entity_page]`
 - [ACE：跨平台低成本视觉—外骨骼灵巧遥操作](wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md) — ACE**（*A Cross-Platform Visual-Exoskeletons System for Low-Cost Dexterous Teleoperation*，[arXiv:24 `📅unknown` `[entity_page]`
 - [ActiveUMI](wiki/entities/paper-notebook-activeumi-robotic-manipulation-with-active-perce.md) — ActiveUMI: Robotic Manipulation with Active Perception from Robot‑Free Human Demonstrations** 已列入  `📅unknown` `[entity_page]`
-- [AdaMimic](wiki/entities/paper-notebook-adamimic.md) — AdaMimic**（*Towards Adaptable Humanoid Control via Adaptive Motion Tracking*）在 [Robot Learning Pap `📅unknown` `[entity_page]`
 - [Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training](wiki/entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md) — Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training** 已列入 [Robot Learning `📅unknown` `[entity_page]`
 - [Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation](wiki/entities/paper-notebook-adaptive-invariant-extended-kalman-filter-for-le.md) — Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation** 已列入 [Robot Learning  `📅unknown` `[entity_page]`
 - [AdaptNet](wiki/entities/paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha.md) — AdaptNet: Policy Adaptation for Physics-Based Character Control** 已列入 [Robot Learning Paper Notebo `📅unknown` `[entity_page]`
 - [Denoising World Model Locomotion（HMI P017）](wiki/entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) — Advancing Humanoid Locomotion: Mastering Challenging Terrains with Denoising World Model Learning `📅unknown` `[entity_page]`
-- [Aero Hand Open（Paper Notebooks 索引）](wiki/entities/paper-notebook-aero-hand-open.md) — Aero Hand Open** 已由 完整论文实体（[arXiv:2608.28578](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
 - [AGILOped](wiki/entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md) — AGILOped: Agile Open-Source Humanoid Robot for Research** 已列入 [Robot Learning Paper Notebooks](htt `📅unknown` `[entity_page]`
 - [AME-2 — Agile and Generalized Legged Locomotion](wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 一句话定义**：在 AME（AME-1） 的 **本体条件地图注意力** 之上，引入 **全局地形上下 `📅unknown` `[entity_page]`
 - [AMOR](wiki/entities/paper-notebook-amor-adaptive-character-control-through-multi-ob.md) — AMOR: Adaptive Character Control through Multi-Objective Reinforcement Learning** 已列入 [Robot Learn `📅unknown` `[entity_page]`
@@ -1575,7 +1553,6 @@
 - [GAIT](wiki/entities/paper-notebook-gait.md) — GAIT: Legged Robot Proprioceptive State Estimation with Attention over Inertial-Leg Tokens** 收录于  `📅unknown` `[entity_page]`
 - [GaussGym](wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md) — GaussGym: An open-source real-to-sim framework for learning locomotion from pixels** 已列入 [Robot Le `📅unknown` `[entity_page]`
 - [GBC](wiki/entities/paper-notebook-gbc.md) — GBC: Generalized Behavior-Cloning Framework for Whole-Body Humanoid Imitation** 已列入 [Robot Learnin `📅unknown` `[entity_page]`
-- [General Motion Tracking for Humanoid Whole-Body Control（Paper Notebooks 计划）](wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md) — General Motion Tracking / GMT** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Rob `📅unknown` `[entity_page]`
 - [Geometry-Aware Predictive Safety Filters on Humanoids](wiki/entities/paper-notebook-geometry-aware-predictive-safety-filters-on-huma.md) — Geometry-Aware Predictive Safety Filters on Humanoids** 已列入 [Robot Learning Paper Notebooks](https `📅unknown` `[entity_page]`
 - [Go to Zero：MotionMillion 与零样本动作生成](wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md) — Go to Zero**（*Towards Zero-shot Motion Generation with Million-scale Data*，ICCV 2025 Highlight，[ar `📅unknown` `[entity_page]`
 - [GTSAM](wiki/entities/paper-notebook-gtsam-factor-graphs-for-sensor-fusion-in-robotic.md) — GTSAM: Factor graphs for Sensor Fusion in Robotics** 已列入 [Robot Learning Paper Notebooks](https:// `📅unknown` `[entity_page]`
@@ -1788,7 +1765,6 @@
 - [TOP](wiki/entities/paper-notebook-top-time-optimization-policy-for-stable-and-accu.md) — TOP: Time Optimization Policy for Stable and Accurate Standing Manipulation with Humanoid Robots `📅unknown` `[entity_page]`
 - [Toward Humanoid Brain-Body Co-design](wiki/entities/paper-notebook-toward-humanoid-brain-body-co-design-joint-optim.md) — Toward Humanoid Brain-Body Co-design: Joint Optimization of Control and Morphology for Fall Recove `📅unknown` `[entity_page]`
 - [Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](wiki/entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md) — Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion** 收录于 [Robo `📅unknown` `[entity_page]`
-- [Towards Adaptable Humanoid Control via Adaptive Motion Tracking](wiki/entities/paper-notebook-towards-adaptable-humanoid-control-via-adaptive.md) — 题名级 Paper Notebooks 占位节点 → 已合并至 paper-adamimic。 `📅unknown` `[entity_page]`
 - [Towards Motion Turing Test：量化人形动作类人度](wiki/entities/paper-notebook-towards-motion-turing-test.md) — Towards Motion Turing Test: Evaluating Human-Likeness in Humanoid Robots**（[arXiv:2603.06181](http `📅unknown` `[entity_page]`
 - [Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots](wiki/entities/paper-notebook-towards-proprioception-aware-embodied-planning-f.md) — Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots** 收录于 [Robot Learning  `📅unknown` `[entity_page]`
 - [Towards Versatile Humanoid Table Tennis](wiki/entities/paper-notebook-towards-versatile-humanoid-table-tennis.md) — Towards Versatile Humanoid Table Tennis: Unified Reinforcement Learning with Prediction Augmentati `📅unknown` `[entity_page]`
@@ -2572,7 +2548,6 @@
 - [LSRM：High-Fidelity Object-Centric Reconstruction via Scaled Context Windows](wiki/entities/paper-sa-2604-05182-lsrm.md) — LSRM**（*LSRM: High-Fidelity Object-Centric Reconstruction via Scaled Context Windows*；[arXiv:2604. `📅unknown` `[entity_page]`
 - [FunRec](wiki/entities/paper-sa-2604-05621-funrec-reconstructing-functional-3d-scenes-from.md) — FunRec: Reconstructing Functional 3D Scenes from Egocentric Interaction Videos** 收录于 [Awesome Egoc `📅unknown` `[entity_page]`
 - [InSpatio-World](wiki/entities/paper-sa-2604-07209-inspatio-world-a-real-time-4d-world-simulator-vi.md) — InSpatio-World: A Real-Time 4D World Simulator via Spatiotemporal Autoregressive Modeling** 收录于 [A `📅unknown` `[entity_page]`
-- [EgoVerse](wiki/entities/paper-sa-2604-07607-egoverse.md) — EgoVerse** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision `📅unknown` `[entity_page]`
 - [EgoEverything](wiki/entities/paper-sa-2604-08342-egoeverything-a-benchmark-for-human-behavior-ins.md) — EgoEverything: A Benchmark for Human Behavior Inspired Long Context Egocentric Video Understanding `📅unknown` `[entity_page]`
 - [Sim1](wiki/entities/paper-sa-2604-08544-sim1-physics-aligned-simulator-as-zero-shot-data.md) — Sim1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds** 收录于 [Awesome-Real2 `📅unknown` `[entity_page]`
 - [Matrix-Game 3.0](wiki/entities/paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact.md) — Matrix-Game 3.0: Real-Time and Streaming Interactive World Model with Long-Horizon Memory** 收录于 [A `📅unknown` `[entity_page]`
@@ -2749,7 +2724,6 @@
 - [A Definition and Roadmap for World Models](wiki/entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 上海 AI Lab Physical Intelligence Team 的 **perspective**：世界模型不是「能出像素的视频生成器」，而是 **有限算力下对物理状态转移的压缩**；在 F `📅unknown` `[entity_page]`
 - [RynnWorld-Teleop](wiki/entities/paper-sa-2607-06558-rynnworld-teleop-an-action-conditioned-world-mod.md) — RynnWorld-Teleop: An Action-Conditioned World Model for Digital Teleoperation** 收录于 [Awesome World `📅unknown` `[entity_page]`
 - [Grounding Spatial Relations in a Compact World Model](wiki/entities/paper-sa-2607-06925-grounding-spatial-relations-in-a-compact-world-m.md) — Grounding Spatial Relations in a Compact World Model: Instruction Leakage and a Goal-Free Dynamics `📅unknown` `[entity_page]`
-- [WAM-TTT](wiki/entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md) — WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time** 收录于 [Awesome World Mod `📅unknown` `[entity_page]`
 - [LingBot-World 2.0 / LingBot-World-Infinity](wiki/entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md) — LingBot-World 2.0**（亦称 **LingBot-World-Infinity**，*Infinite Worlds with Versatile Interactions*，ar `📅unknown` `[entity_page]`
 - [EgoWAM](wiki/entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md) — EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data** 收录于 [Awesome Wo `📅unknown` `[entity_page]`
 - [Whareformer](wiki/entities/paper-sa-2607-08537-whareformer-learning-to-track-what-is-where-in-l.md) — Whareformer: Learning to Track What is Where in Long Egocentric Videos** 收录于 [Awesome Egocentric V `📅unknown` `[entity_page]`
@@ -2758,7 +2732,6 @@
 - [Stateful Worlds, Stateless Elasticity](wiki/entities/paper-sa-2607-10389-stateful-worlds-stateless-elasticity-exact-state.md) — Stateful Worlds, Stateless Elasticity: Exact-State Serving for Interactive World Models** 收录于 [Awe `📅unknown` `[entity_page]`
 - [LightMem-Ego](wiki/entities/paper-sa-2607-11487-lightmem-ego-your-ai-memory-for-everyday-life.md) — LightMem-Ego: Your AI Memory for Everyday Life** 收录于 [Awesome Egocentric Vision](https://github.co `📅unknown` `[entity_page]`
 - [Vinci2](wiki/entities/paper-sa-2607-11523-vinci2-providing-proactive-assistance-in-continu.md) — Vinci2: Providing Proactive Assistance in Continuous Egocentric Videos** 收录于 [Awesome Egocentric V `📅unknown` `[entity_page]`
-- [Xiaomi-Robotics-U0](wiki/entities/paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi.md) — Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model** 收录于 [Awesome World Mo `📅unknown` `[entity_page]`
 - [FlowWAM](wiki/entities/paper-sa-2607-13017-flowwam-optical-flow-as-a-unified-action-represe.md) — FlowWAM: Optical Flow as a Unified Action Representation for World Action Models** 收录于 [Awesome Wo `📅unknown` `[entity_page]`
 - [GigaWorld-Policy-0.5](wiki/entities/paper-sa-2607-13960-gigaworld-policy-0-5-a-faster-and-stronger-wam-e.md) — GigaWorld-Policy-0.5: A Faster and Stronger WAM Empowered by AutoResearch** 收录于 [Awesome World Mod `📅unknown` `[entity_page]`
 - [From Pixels to States](wiki/entities/paper-sa-2607-14076-from-pixels-to-states-rethinking-interactive-wor.md) — From Pixels to States: Rethinking Interactive World Models as Game Engines** 收录于 [Awesome World Mo `📅unknown` `[entity_page]`

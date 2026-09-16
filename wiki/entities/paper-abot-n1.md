@@ -9,8 +9,10 @@ tags:
   - chain-of-thought
   - pixel-goal
   - alibaba
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.10383"
 related:
   - ../tasks/vision-language-navigation.md
@@ -22,10 +24,14 @@ related:
   - ../entities/paper-arcadia.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
   - ../overview/vln-10-papers-technology-map.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/abot_n1_arxiv_2607_10383.md
   - ../../sources/sites/abot-n1.md
   - ../../sources/repos/abot-navigation.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_abot_navigation.md
 summary: "ABot-N1（arXiv:2607.10383，高德 AMAP CV Lab）：慢–快 VLN 基础模型——4B 慢推理器输出 CoT + 像素目标，2B 快动作专家生成连续航点；五任务统一；POI SR 77.3%、室内外 Point-Goal 95.4%/92.9%；开源 ABotN-Bench 与评测栈，模型权重截至入库日未发布。"
 ---
 
@@ -192,12 +198,16 @@ sequenceDiagram
 - [ABot-M0.5](./paper-abot-m05-mobile-manipulation-wam.md) — 同机构移动操作 WAM
 - [ABot-World-0](./paper-abot-world-0.md) — 同机构交互式世界模型
 - [Qwen-VLA](./qwen-vla.md) — Qwen 系通才 VLA 对照
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
 - [ABot-N1 论文归档](../../sources/papers/abot_n1_arxiv_2607_10383.md)（[arXiv:2607.10383](https://arxiv.org/abs/2607.10383)）
 - [ABot-N1 项目页归档](../../sources/sites/abot-n1.md)
 - [ABot-Navigation 仓库归档](../../sources/repos/abot-navigation.md)
+- [ABot-Navigation 源码归档](../../sources/repos/cn_os_abot_navigation.md)（<https://github.com/amap-cvlab/ABot-Navigation>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

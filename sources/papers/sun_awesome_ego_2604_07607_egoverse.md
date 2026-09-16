@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** 策展清单收录条目；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2604-07607-egoverse.md`](../../wiki/entities/paper-sa-2604-07607-egoverse.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-egoverse.md`](../../wiki/entities/paper-egoverse.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2604-07607-egoverse.md`](../../wiki/entities/paper-sa-2604-07607-egoverse.md)
+- 实体页：[`wiki/entities/paper-egoverse.md`](../../wiki/entities/paper-egoverse.md)
 - 列表实体：[`wiki/entities/awesome-egocentric-vision.md`](../../wiki/entities/awesome-egocentric-vision.md)

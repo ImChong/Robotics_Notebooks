@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, alibaba, embodied-foundation-model, vla, qwen, spatial-grounding, 3d-grounding, contact-point, flow-matching, unitree, astribot, wuji-robotics, scaling, foundation-policy]
+tags: [paper, alibaba, embodied-foundation-model, vla, qwen, spatial-grounding, 3d-grounding, contact-point, flow-matching, unitree, astribot, wuji-robotics, scaling, foundation-policy, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.17977"
 related:
   - ../methods/vla.md
@@ -16,10 +16,14 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
   - ./paper-temporal-grpo.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/sites/rynnbrain-alibaba-damo.md
   - ../../sources/repos/rynnbrain.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_rynnbrain.md
 summary: "RynnBrain 1.1（阿里达摩院，arXiv:2607.17977）：Qwen3.5 系 2B/9B/122B-A10B 具身基础模型；新增接触点预测与（2B/9B）原生 3D grounding；RynnBrain-VLA 用 81 维统一动作空间+mask+flow matching，在 G1/Astribot/Tianji-Wuji 上优于同配方 Qwen-VLA 与 π₀.₅/GR00T；权重与基础模型推理已开源，VLA 训练栈未公开。"
 ---
 
@@ -193,6 +197,8 @@ sequenceDiagram
 - [ACE-Brain-0.5](./paper-ace-brain-0-5.md) — 同 Qwen3-VL 族统一具身脑；强调进度自监控与 SSR+。
 - [Manipulation](../tasks/manipulation.md) / [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 真机操作任务背景。
 - [Temporal GRPO](./paper-temporal-grpo.md) — 冻结 RynnBrain-4B 作阶段提案（arXiv:2608.13026）
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 推荐继续阅读
 
@@ -207,3 +213,5 @@ sequenceDiagram
 - [RynnBrain 1.1 论文摘录](../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md)
 - [RynnBrain 项目页归档](../../sources/sites/rynnbrain-alibaba-damo.md)
 - [RynnBrain 仓库归档](../../sources/repos/rynnbrain.md)
+- [RynnBrain 源码归档](../../sources/repos/cn_os_rynnbrain.md)（<https://github.com/alibaba-damo-academy/RynnBrain>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

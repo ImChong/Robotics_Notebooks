@@ -15,9 +15,13 @@ tags:
   - eth
   - meta
   - mit
+  - curated-index
+  - awesome-egocentric-vision
+  - sun254667-ego
 status: complete
+arxiv: "2604.07607"
 venue: arxiv
-updated: 2026-09-15
+updated: 2026-09-16
 code: https://github.com/GaTech-RL2/EgoVerse
 related:
   - ./paper-egowam-egocentric-human-wam-co-training.md
@@ -33,10 +37,19 @@ related:
   - ../overview/ego-category-01-data-collection.md
   - ../overview/ego-category-02-human-to-robot.md
   - ./paper-ego2robot.md
+  - ../entities/awesome-egocentric-vision.md
+  - ../overview/sun-awesome-ego-technology-map.md
+  - ../tasks/teleoperation.md
+  - ../../sources/papers/sun_awesome_ego_2604_07607_egoverse.md
+  - ../../sources/papers/sun_awesome_ego_catalog.md
+  - ../../sources/repos/awesome-egocentric-vision.md
 sources:
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
   - ../../sources/sites/egoverse-ai.md
   - ../../sources/repos/egoverse.md
+  - ../../sources/papers/sun_awesome_ego_2604_07607_egoverse.md
+  - ../../sources/papers/sun_awesome_ego_catalog.md
+  - ../../sources/repos/awesome-egocentric-vision.md
 summary: "EgoVerse（Georgia Tech 等联盟，arXiv:2604.07607）：活的 egocentric 人示教生态（A 标准化学术 + I 产业野外）与 EgoDB；1,362 h / 80k episodes；跨实验室三具身研究证明人–机共训有效，但缩放需域对齐锚定，场景多样性主导有限预算泛化；代码 MIT 已开源。"
 ---
 
@@ -221,6 +234,9 @@ sequenceDiagram
 - [EgoVerse 项目页归档](../../sources/sites/egoverse-ai.md)
 - [EgoVerse 官方仓库归档](../../sources/repos/egoverse.md)
 - [UCAG-P 论文摘录](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 把 EgoVerse 等人手小时写入相机系锚点共训
+- [`sources/papers/sun_awesome_ego_2604_07607_egoverse.md`](../../sources/papers/sun_awesome_ego_2604_07607_egoverse.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
+- [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 
 ## 推荐继续阅读
 

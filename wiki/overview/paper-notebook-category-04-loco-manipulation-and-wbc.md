@@ -56,8 +56,8 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [From Language to Locomotion](../entities/paper-notebook-from-language-to-locomotion.md) — 待深读
 - [From Motion to Behavior](../entities/paper-notebook-from-motion-to-behavior.md) — 待深读
 - [GBC](../entities/paper-notebook-gbc.md) — 待深读
-- [GMT](../entities/paper-gmt.md) — Adaptive Sampling + Motion MoE 统一全身跟踪（正式实体）；[161 索引](../entities/paper-loco-manip-161-009-gmt.md)
-- [General Motion Tracking for Humanoid Whole-Body Control](../entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md) — Paper Notebooks 待深读占位
+- [GMT](../entities/paper-gmt.md) — Adaptive Sampling + Motion MoE 统一全身跟踪（正式实体）；[161 索引](../entities/paper-gmt.md)
+- [General Motion Tracking for Humanoid Whole-Body Control](../entities/paper-gmt.md) — Paper Notebooks 待深读占位
 - [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) — 见 wiki 实体页
 - [H2-COMPACT](../entities/paper-loco-manip-161-062-h2-compact.md) — 见 wiki 实体页
 - [HAFO](../entities/paper-notebook-hafo.md) — 待深读

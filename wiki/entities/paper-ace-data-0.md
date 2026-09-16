@@ -17,7 +17,7 @@ tags:
   - ntu
   - ace-robotics
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.28625"
 related:
   - ./paper-data-pyramid-embodied-manipulation.md

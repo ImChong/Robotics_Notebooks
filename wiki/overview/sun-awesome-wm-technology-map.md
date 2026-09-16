@@ -363,7 +363,7 @@ sources:
 | 211 | VPP: Video Prediction Policy – A Generalist Robot Policy with Predictive Visual Representa | [paper-shenlan-wm-02-vpp](../entities/paper-shenlan-wm-02-vpp.md) |
 | 212 | Vidarc: Embodied Video Diffusion Model for Closed-loop Control | [paper-sa-2512-17661-vidarc-embodied-video-diffusion-model-for-closed](../entities/paper-sa-2512-17661-vidarc-embodied-video-diffusion-model-for-closed.md) |
 | 213 | VideoVLA: Video Generators Can Be Generalizable Robot Manipulators | [paper-sa-2512-06963-videovla-video-generators-can-be-generalizable-r](../entities/paper-sa-2512-06963-videovla-video-generators-can-be-generalizable-r.md) |
-| 214 | WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time | [paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching](../entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md) |
+| 214 | WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time | [paper-wam-ttt-human-video-test-time-steering](../entities/paper-wam-ttt-human-video-test-time-steering.md) |
 | 215 | WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-W | [paper-sa-2607-03461-worldbagel-uncovering-the-power-of-unified-multi](../entities/paper-sa-2607-03461-worldbagel-uncovering-the-power-of-unified-multi.md) |
 | 216 | WorldVLA: Towards Autoregressive Action World Model | [paper-shenlan-wm-07-worldvla](../entities/paper-shenlan-wm-07-worldvla.md) |
 | 217 | dVLA: Diffusion Vision-Language-Action Model with Multimodal Chain-of-Thought | [paper-sa-2509-25681-dvla-diffusion-vision-language-action-model-with](../entities/paper-sa-2509-25681-dvla-diffusion-vision-language-action-model-with.md) |
@@ -447,7 +447,7 @@ sources:
 | 270 | Genie Envisioner: A Unified World Foundation Platform for Robotic Manipulation | [paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat](../entities/paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat.md) |
 | 271 | ViPRA: Video Prediction for Robot Actions | [paper-sa-2511-07732-vipra-video-prediction-for-robot-actions](../entities/paper-sa-2511-07732-vipra-video-prediction-for-robot-actions.md) |
 | 272 | WoW: Towards a World omniscient World model Through Embodied Interaction | [paper-sa-2509-22642-wow-towards-a-world-omniscient-world-model-throu](../entities/paper-sa-2509-22642-wow-towards-a-world-omniscient-world-model-throu.md) |
-| 273 | Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model | [paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi](../entities/paper-sa-2607-11643-xiaomi-robotics-u0-unified-embodied-synthesis-wi.md) |
+| 273 | Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model | [xiaomi-robotics-u0](../entities/xiaomi-robotics-u0.md) |
 | 274 | iVideoGPT: Interactive VideoGPTs are Scalable World Models | [paper-sa-2405-15223-ivideogpt-interactive-videogpts-are-scalable-wor](../entities/paper-sa-2405-15223-ivideogpt-interactive-videogpts-are-scalable-wor.md) |
 
 ### 812 Manipulation
@@ -582,7 +582,7 @@ sources:
 | 385 | Robotic World Model: A Neural Network Simulator for Robust Policy Optimization in Robotics | [paper-sa-2501-10100-robotic-world-model-a-neural-network-simulator-f](../entities/paper-sa-2501-10100-robotic-world-model-a-neural-network-simulator-f.md) |
 | 386 | UVA: Unified Video Action Model | [paper-shenlan-wm-10-uva](../entities/paper-shenlan-wm-10-uva.md) |
 | 387 | UWM: Unified World Models – Coupling Video and Action Diffusion for Pretraining on Large R | [paper-shenlan-wm-08-uwm](../entities/paper-shenlan-wm-08-uwm.md) |
-| 388 | WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time | [paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching](../entities/paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching.md) |
+| 388 | WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time | [paper-wam-ttt-human-video-test-time-steering](../entities/paper-wam-ttt-human-video-test-time-steering.md) |
 
 ### 816 Policy Evaluation with World Models
 

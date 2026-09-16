@@ -8,8 +8,10 @@ tags:
   - optical-flow
   - manipulation
   - alibaba
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.06559"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
@@ -21,10 +23,14 @@ related:
   - ../entities/paper-meco-wam-4d-geometry-cotraining.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
   - ../entities/paper-rynnbrain-1-1.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/rynnworld-4d.md
 summary: "RynnWorld-4D（arXiv:2607.06559）：统一扩散同步生成 RGB、深度、光流；Rynn4D 2.544 亿帧；RynnWorld-4D-Policy 单次前向读 4D latent 出动作，真机双手任务大幅领先所报基线（Hand-over 28.57% vs π₀ 2.86%，原文口径）。"
 ---
 
@@ -159,3 +165,5 @@ flowchart TB
 - [具身智能研究室 · 世界模型物理保真度导读（2026-07-27）](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
 - [RynnWorld-4D 论文（arXiv:2607.06559）](https://arxiv.org/abs/2607.06559)
 - [RynnBrain 1.1 论文摘录（arXiv:2607.17977）](../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md)
+- [RynnWorld-4D 源码归档](../../sources/repos/rynnworld-4d.md)（<https://github.com/alibaba-damo-academy/RynnWorld-4D>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

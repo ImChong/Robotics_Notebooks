@@ -9,7 +9,7 @@
 - **分类：** 具身Agent/规划
 - **入库日期：** 2026-09-06
 - **一句话说明：** 阿里巴巴 开源项目 RynnBrain（具身Agent/规划），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-rynnbrain.md`](../../wiki/entities/cn-os-rynnbrain.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-rynnbrain-1-1.md`](../../wiki/entities/paper-rynnbrain-1-1.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-rynnbrain.md](../../wiki/entities/cn-os-rynnbrain.md)
+- [wiki/entities/paper-rynnbrain-1-1.md](../../wiki/entities/paper-rynnbrain-1-1.md)

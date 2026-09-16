@@ -9,7 +9,7 @@ related:
   - ./paper-ego4d.md
   - ./egoworld-100w.md
   - ./rekadaily-10k-dataset.md
-  - ./paper-sa-2604-07607-egoverse.md
+  - ./paper-egoverse.md
   - ../methods/egoscale.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -72,7 +72,7 @@ institutions:
 - **把「人视频预训练」推到十万小时且全标注开放：** 相对 [Ego4D](./paper-ego4d.md)（~3.7k h、任务基准导向）与 [EgoWorld-100W](./egoworld-100w.md)（百万条但申请制），本集强调 **已上线 Hub 的可下载小时数 + 手/身 3D 姿态 + 商业许可**，与 [EgoScale](../methods/egoscale.md) 等人视频缩放叙事直接对话。
 - **头/腕双配置覆盖操纵盲区：** [EgoPro](https://huggingface.co/datasets/LightwheelAI/EgoPro) 针对接触、遮挡、细粒度抓取补强头戴像素不足——与仅头戴的大规模语料形成 **可选型组合**。
 - **LeRobot v3 原生：** 降低进 [VLA](../methods/vla.md) / 模仿学习管线的格式摩擦；MCAP 路径对接 [LW-Egosuite-DevKit](./cn-os-lw-egosuite-devkit.md) 与 Foxglove/LW-VIZ 质检。
-- **标准对齐：** 通过 [EgoVerse](./paper-sa-2604-07607-egoverse.md) 联盟推进 egocentric 采集/标注/共享规范，缓解跨数据集拼接时的 schema 碎片化。
+- **标准对齐：** 通过 [EgoVerse](./paper-egoverse.md) 联盟推进 egocentric 采集/标注/共享规范，缓解跨数据集拼接时的 schema 碎片化。
 
 ## 核心结构 / 机制
 
@@ -143,7 +143,7 @@ flowchart TB
 - [LW-Egosuite-DevKit](./cn-os-lw-egosuite-devkit.md) — 官方 MCAP 工具链
 - [Ego4D](./paper-ego4d.md) — 经典大规模 egocentric 日常语料对照
 - [EgoScale](../methods/egoscale.md) — 人视频规模 ↔ VLA 性能实证
-- [EgoVerse](./paper-sa-2604-07607-egoverse.md) — 联盟式 egocentric 标准与共训
+- [EgoVerse](./paper-egoverse.md) — 联盟式 egocentric 标准与共训
 - [EgoWorld-100W](./egoworld-100w.md) — 百万条申请制商业语料对照
 - [VLA](../methods/vla.md) — 典型消费模型族
 - [Manipulation](../tasks/manipulation.md) — 操纵任务语境

@@ -17,7 +17,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ../entities/paper-twist2.md
   - ../entities/paper-gmt.md
-  - ../entities/paper-loco-manip-161-009-gmt.md
+  - ../entities/paper-gmt.md
   - ../entities/isaac-lab.md
   - ./paper-humanoidmimicgen.md
 sources:

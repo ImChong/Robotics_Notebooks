@@ -833,8 +833,8 @@
     "org_url": "https://github.com/roboterax",
     "name": "video-prediction-policy",
     "category": "VLA/操作模型",
-    "slug": "cn-os-video-prediction-policy",
-    "new": true
+    "slug": "paper-shenlan-wm-02-vpp",
+    "new": false
   },
   {
     "layer": "第一层",
@@ -1184,8 +1184,8 @@
     "org_url": "https://github.com/OpenGalaxea",
     "name": "GalaxeaVLA",
     "category": "VLA/操作模型",
-    "slug": "cn-os-galaxeavla",
-    "new": true
+    "slug": "paper-galaxea-g05",
+    "new": false
   },
   {
     "layer": "第一层",
@@ -1967,8 +1967,8 @@
     "org_url": "https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC",
     "name": "HumanTracker",
     "category": "全身动作跟踪/技能训练",
-    "slug": "cn-os-humantracker",
-    "new": true
+    "slug": "paper-humantracker",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2030,8 +2030,8 @@
     "org_url": "https://github.com/tars-robotics",
     "name": "World In Your Hands",
     "category": "数据集/Benchmark",
-    "slug": "cn-os-world-in-your-hands",
-    "new": true
+    "slug": "paper-wiyh",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2201,8 +2201,8 @@
     "org_url": "https://github.com/open-gigaai",
     "name": "GigaWorld-Policy",
     "category": "VLA/操作模型",
-    "slug": "cn-os-gigaworld-policy",
-    "new": true
+    "slug": "paper-sa-2607-13960-gigaworld-policy-0-5-a-faster-and-stronger-wam-e",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2210,8 +2210,8 @@
     "org_url": "https://github.com/open-gigaai",
     "name": "GigaWorld-1",
     "category": "世界模型",
-    "slug": "cn-os-gigaworld-1",
-    "new": true
+    "slug": "paper-gigaworld-1-policy-evaluation",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2219,8 +2219,8 @@
     "org_url": "https://github.com/kairos-agi",
     "name": "Kairos",
     "category": "世界模型",
-    "slug": "cn-os-kairos",
-    "new": true
+    "slug": "paper-kairos-native-world-model-stack",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2228,8 +2228,8 @@
     "org_url": "https://github.com/Mondo-Robotics",
     "name": "DiT4DiT",
     "category": "VLA/操作模型",
-    "slug": "cn-os-dit4dit",
-    "new": true
+    "slug": "paper-dit4dit-video-action-model",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2246,8 +2246,8 @@
     "org_url": "https://github.com/thu-ml、https://github.com/shengshu-ai",
     "name": "MotuBrain",
     "category": "世界模型",
-    "slug": "cn-os-motubrain",
-    "new": true
+    "slug": "paper-motubrain",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2255,8 +2255,8 @@
     "org_url": "https://github.com/dexmal",
     "name": "OpenDM",
     "category": "VLA/操作模型",
-    "slug": "cn-os-opendm",
-    "new": true
+    "slug": "dexmal-dm05",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2264,8 +2264,8 @@
     "org_url": "https://github.com/dexmal",
     "name": "OpenDW",
     "category": "世界模型",
-    "slug": "cn-os-opendw",
-    "new": true
+    "slug": "dexmal-dw05",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2372,8 +2372,8 @@
     "org_url": "https://github.com/Robbyant",
     "name": "LingBot-Map",
     "category": "评测",
-    "slug": "cn-os-lingbot-map",
-    "new": true
+    "slug": "paper-lingbot-map",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2516,8 +2516,8 @@
     "org_url": "https://github.com/lightorigins",
     "name": "LightNav-0",
     "category": "感知/导航",
-    "slug": "cn-os-lightnav-0",
-    "new": true
+    "slug": "paper-lightnav-0",
+    "new": false
   },
   {
     "layer": "第二层",
@@ -2876,8 +2876,8 @@
     "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
     "name": "RynnBrain",
     "category": "具身Agent/规划",
-    "slug": "cn-os-rynnbrain",
-    "new": true
+    "slug": "paper-rynnbrain-1-1",
+    "new": false
   },
   {
     "layer": "第四层",
@@ -2885,8 +2885,8 @@
     "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
     "name": "ABot-Manipulation",
     "category": "VLA/操作模型",
-    "slug": "cn-os-abot-manipulation",
-    "new": true
+    "slug": "paper-abot-m05-mobile-manipulation-wam",
+    "new": false
   },
   {
     "layer": "第四层",
@@ -2921,8 +2921,8 @@
     "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
     "name": "ABot-Navigation",
     "category": "数据集/Benchmark",
-    "slug": "cn-os-abot-navigation",
-    "new": true
+    "slug": "paper-abot-n1",
+    "new": false
   },
   {
     "layer": "第四层",
@@ -2930,8 +2930,8 @@
     "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
     "name": "RynnWorld-4D",
     "category": "世界模型",
-    "slug": "cn-os-rynnworld-4d",
-    "new": true
+    "slug": "paper-rynnworld-4d-rgb-depth-flow",
+    "new": false
   },
   {
     "layer": "第四层",
@@ -2984,8 +2984,8 @@
     "org_url": "https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy",
     "name": "ABot-Recon",
     "category": "工程与工具",
-    "slug": "cn-os-abot-recon",
-    "new": true
+    "slug": "paper-abot-recon",
+    "new": false
   },
   {
     "layer": "第四层",
@@ -3137,8 +3137,8 @@
     "org_url": "https://github.com/HorizonRobotics",
     "name": "EmbodiedGen V2",
     "category": "仿真环境",
-    "slug": "cn-os-embodiedgen-v2",
-    "new": true
+    "slug": "paper-embodiedgen-v2-sim-ready-world-engine",
+    "new": false
   },
   {
     "layer": "第四层",

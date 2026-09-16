@@ -13,8 +13,10 @@ tags:
   - manipulation
   - huggingface
   - ace-robotics
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.16533"
 code: https://github.com/kairos-agi/kairos
 related:
@@ -30,10 +32,14 @@ related:
   - ./paper-flex-pi.md
   - ./paper-homeworld-whole-home-scene-generation.md
   - ../tasks/manipulation.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/kairos_arxiv_2606_16533.md
   - ../../sources/repos/kairos.md
   - ../../sources/sites/kairos-acerobotics.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_kairos.md
 summary: "Kairos（arXiv:2606.16533 v3）：regret-aware 原生世界–动作栈——以 control-sufficient state 为目标，CEDC + 统一 MoT + SWA/DSWA/GLA + 部署协同；Kairos-4B/3.1 开源推理与 LIBERO-Plus/RoboTwin WAM 权重。"
 ---
 
@@ -253,6 +259,8 @@ sequenceDiagram
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — Cosmos 系双 DiT 实时人形 WAM
 - [Manipulation](../tasks/manipulation.md) — LIBERO / RoboTwin 操纵评测语境
 - [Flex-π](./paper-flex-pi.md) — 同属 MoT Joint WAM；部署流掩码 vs Kairos CEDC / 已开源 4B
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
@@ -260,6 +268,8 @@ sequenceDiagram
 - [kairos-agi/kairos 代码索引](../../sources/repos/kairos.md)
 - [Kairos 平台页归档](../../sources/sites/kairos-acerobotics.md)
 - [历史仓名索引（重定向）](../../sources/repos/kairos_sensenova.md)
+- [Kairos 源码归档](../../sources/repos/cn_os_kairos.md)（<https://github.com/kairos-agi/Kairos>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

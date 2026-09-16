@@ -2,6 +2,7 @@
 type: entity
 tags: [repo, body-model, smpl, human-motion, nvidia, gpu, motion-retargeting, warp]
 status: complete
+arxiv: "2603.16858"
 updated: 2026-09-15
 summary: "SOMA-X 是 NVIDIA 开源的统一参数化人体表示：以 SOMA canonical topology 桥接 SMPL/SMPL-X、MHR、Anny 等异构身份模型，在 Warp 上可微 GPU 前向与 PoseInversion 转换，支撑 SEED、Kimodo、GEM 与 SOMA Retargeter 人形数据管线。"
 related:

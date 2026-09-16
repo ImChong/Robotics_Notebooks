@@ -2,6 +2,7 @@
 type: entity
 tags: [paper, computer-vision, foundation-model, image-generation, segmentation, depth-estimation, deepmind, instruction-tuning, zero-shot]
 status: complete
+arxiv: "2604.20329"
 updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md

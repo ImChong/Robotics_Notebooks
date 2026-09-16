@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, curated-index, awesome-world-models, sun254667-wm, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.13960"
 venue: "arXiv 2026"
 code: https://github.com/open-gigaai/giga-world-policy
@@ -14,10 +14,14 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2607_13960_gigaworld-policy-0-5-a-faster-and-strong.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/giga-world-policy.md
 ---
 
 # GigaWorld-Policy-0.5
@@ -91,6 +95,8 @@ Faster and stronger WAM with a mixture-of-experts transformer architecture, achi
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
@@ -98,6 +104,8 @@ Faster and stronger WAM with a mixture-of-experts transformer architecture, achi
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.13960>
+- [GigaWorld-Policy 源码归档](../../sources/repos/giga-world-policy.md)（<https://github.com/open-gigaai/giga-world-policy>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

@@ -1,3 +1,16 @@
+## [2026-09-16] structural | 重复节点普查与批量合并 | 26 个占位/索引页并入同项目 canonical 实体；page-aliases 93 条
+
+- **触发：** 承 cn-os-dit4dit 合并，用户要求普查全库同类重复。
+- **A 类（18 条）：** 424 全景 ingest 的 `cn-os-*` 占位页与同仓库深读页重复；判据为 canonical 页 `code:` 或正文首段 GitHub 链接一致（15 条）+ 同名同机构同项目（3 条）。见 `scripts/dedupe_cn_os_stubs.py`；复用/新建计数 127/297 → 145/279。
+- **B 类（8 条）：** 先按「页面自陈 + 来源佐证」给 20 个深读页补 frontmatter `arxiv:`（排除 9 个 ID 属他人论文的移植/对照/公司页），V30 随即报出 3 处同 ID 重复，另 5 处索引页正文自述重复，一并合并。见 `scripts/dedupe_survey_index_stubs.py`。
+- **门禁：** V30 归零、0 断链；`stale_pages` 因改动三个大策展总表出现本地建议性预警（GitHub Actions 按设计跳过该检查），未批量改写 `updated:` 复核日期。
+
+## [2026-09-16] structural | 合并重复节点 | wiki/entities/cn-os-dit4dit.md（占位 stub）→ wiki/entities/paper-dit4dit-video-action-model.md（canonical）；同仓库 Mondo-Robotics/DiT4DiT 双节点归一
+
+- **触发：** 用户报告 `detail.html?id=entity-cn-os-dit4dit` 与 `detail.html?id=entity-paper-dit4dit-video-action-model` 两页重复。
+- **判据：** 二者同指 <https://github.com/Mondo-Robotics/DiT4DiT>；前者是国内开源全景 424 项 ingest 生成的 draft 占位页，后者为 arXiv:2603.10448 完整深读页。
+- **处理：** 删除 stub；`schema/page-aliases.json` 登记 `entity-cn-os-dit4dit → entity-paper-dit4dit-video-action-model`；canonical 页补 `miaodong`/`mondo-robotics`/`open-source` 标签与全景来源；424 覆盖表改「复用」，计数 126/298 → 127/297。
+
 ## [2026-09-16] ingest | sources/papers/swarmnxt_arxiv_2609_11382.md — SwarmNxt 开源蜂群平台（EPFL LIS + HKUST）；OmniNxt 机体 + Ansible fleet + ROS 2（HDSM/MPC/S2M2）；步骤 2.5 **已开源**
 
 - **触发：** 用户指定 arXiv:2609.11382 + GitHub swarm-nxt；自动合并 PR
@@ -5067,8 +5080,8 @@
 - **新建 sites：** [`sources/sites/gmt-humanoid-github-io.md`](sources/sites/gmt-humanoid-github-io.md)
 - **新建 repos：** [`sources/repos/humanoid-general-motion-tracking.md`](sources/repos/humanoid-general-motion-tracking.md)
 - **新建 wiki：** [`wiki/entities/paper-gmt.md`](wiki/entities/paper-gmt.md)
-- **校正：** [`wiki/entities/paper-loco-manip-161-009-gmt.md`](wiki/entities/paper-loco-manip-161-009-gmt.md)、[`sources/papers/loco_manip_161_survey_009_gmt.md`](sources/papers/loco_manip_161_survey_009_gmt.md) — 纠正公众号「扩散/流匹配」误述
-- **交叉更新：** [`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/queries/humanoid-motion-tracking-method-selection.md`](wiki/queries/humanoid-motion-tracking-method-selection.md)、[`wiki/entities/paper-phygile.md`](wiki/entities/paper-phygile.md)、[`wiki/entities/paper-resmimic.md`](wiki/entities/paper-resmimic.md)、[`wiki/methods/egm-efficient-general-mimic.md`](wiki/methods/egm-efficient-general-mimic.md)、[`wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md`](wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md)、[`wiki/entities/paper-humanoidarena.md`](wiki/entities/paper-humanoidarena.md)、[`wiki/overview/loco-manip-161-category-01-motion-base-wbt.md`](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)、[`wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md`](wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- **校正：** [`wiki/entities/paper-gmt.md`](wiki/entities/paper-gmt.md)、[`sources/papers/loco_manip_161_survey_009_gmt.md`](sources/papers/loco_manip_161_survey_009_gmt.md) — 纠正公众号「扩散/流匹配」误述
+- **交叉更新：** [`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/queries/humanoid-motion-tracking-method-selection.md`](wiki/queries/humanoid-motion-tracking-method-selection.md)、[`wiki/entities/paper-phygile.md`](wiki/entities/paper-phygile.md)、[`wiki/entities/paper-resmimic.md`](wiki/entities/paper-resmimic.md)、[`wiki/methods/egm-efficient-general-mimic.md`](wiki/methods/egm-efficient-general-mimic.md)、[`wiki/entities/paper-gmt.md`](wiki/entities/paper-gmt.md)、[`wiki/entities/paper-humanoidarena.md`](wiki/entities/paper-humanoidarena.md)、[`wiki/overview/loco-manip-161-category-01-motion-base-wbt.md`](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)、[`wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md`](wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## [2026-07-21] ingest | sources/papers/glob3r_arxiv_2607_09225.md — Glob3R（HKUST×通义×NJU×Fudan）全局 SfM + 3D 基础模型；升格 wiki/entities/paper-glob3r.md；交叉 wiki/methods/lingbot-map.md、wiki/concepts/state-estimation.md、wiki/overview/topic-state-estimation.md、wiki/overview/navigation-slam-autonomy-stack.md；官方仓 aigc3d/Glob3R 占位（Inference TODO）
 
