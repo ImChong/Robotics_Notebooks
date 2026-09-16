@@ -3036,7 +3036,7 @@
 - [WCM：给 VLA 强化学习换一个会预测世界的 Critic](wiki/entities/paper-wcm-world-critic-model.md) — WCM**（*World Critic Model*；论文 *WCM: A World Critic Model for Vision-Language-Action Reinforcement  `📅unknown` `[entity_page]`
 - [WEM（World-Ego Modeling / World-Ego Model）](wiki/entities/paper-wem-world-ego-modeling.md) — WEM**（*World-Ego Model*，arXiv:2605.19957，项目页，[代码](https://g `📅unknown` `[entity_page]`
 - [Whole-Body Behaviors（HMI P002）](wiki/entities/paper-whole-body-behaviors-primitives.md) — Whole-Body Behaviors**（*Synthesis of Whole-Body Behaviors through Hierarchical Control of Behavior `📅unknown` `[entity_page]`
-- [WholeBodyWAM（arXiv:2609.16644）](wiki/entities/paper-wholebodywam.md) — WholeBodyWAM**（*WholeBodyWAM: Generalizing Pre-trained World-Action Priors to Humanoid Loco-Manipu `📅unknown` `[entity_page]`
+- [WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调](wiki/entities/paper-wholebodywam.md) — WholeBodyWAM**（*WholeBodyWAM: Generalizing Pre-trained World-Action Priors to Humanoid Loco-Manipu `📅unknown` `[entity_page]`
 - [Why Action Chunking Improves BC（延迟策略与隐式集成）](wiki/entities/paper-why-action-chunking-improves-bc.md) — Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[项目页](https: `📅unknown` `[entity_page]`
 - [Wid3R：相机模型条件化的宽视场 3D 重建](wiki/entities/paper-wid3r.md) — Wid3R**（*Wide Field-of-View 3D Reconstruction via Camera Model Conditioning*，arXiv:[2602.05321](ht `📅unknown` `[entity_page]`
 - [WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）](wiki/entities/paper-wikiskill.md) — WikiSkill**（*Compiling Agent Experience into Persistent Knowledge for Skill Evolution*，[arXiv:2608 `📅unknown` `[entity_page]`
