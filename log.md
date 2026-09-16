@@ -1,3 +1,5 @@
+## [2026-09-16] ingest | sources/papers/dynhair_arxiv_2607_23861.md — DynHair ECCV 2026 显式动态发丝化身；GitHub 占位仓
+
 ## [2026-09-16] ingest | sources/papers/textop_arxiv_2602_07439.md — TextOp arXiv 深读升格；TeleAI/SJTU/ECUST；GitHub 已开源
 
 ## [2026-09-15] ingest | PinkRobot 公众号 5 篇 — Mimic 演进综述、GO2 Backflip 开源、RoboGauge RSS 2026、One Filter OCR TRO 2026、SE(2) NavMesh；新建 overview + 4 实体 + repos/sites；RoboGauge/One Filter 已开源，SE(2) NavMesh 待发布
