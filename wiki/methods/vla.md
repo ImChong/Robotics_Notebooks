@@ -516,6 +516,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/crosstracer_arxiv_2608_06688.md](../../sources/papers/crosstracer_arxiv_2608_06688.md) — CrossTracer：像素轨迹残差跨本体导航（arXiv:2608.06688）
 
 ## 关联页面
+- [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md) — VLA 常居「大脑层」；与 MPC/WBC、反射安全链的分工
+- [NeuroVLA](../entities/paper-neurovla.md) — 皮层–小脑–脊髓式脑启发 VLA（AlphaBrain 开源）
 - [Imitator Game](../entities/paper-imitator-game.md) — 字幕条件 VLA vs 人视频条件：L3 功能替代与未见任务零样本都弱（arXiv:2608.22301）
 - [HOST](../entities/paper-host-one-shot-human-video.md) — 人视频 one-shot 不改 VLA 权重；先预测机器人未来观测再出动作（arXiv:2607.20033）
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷三 VLA/IL 面试速查（短答案 + 频次）；深读仍以本页与实体为准
