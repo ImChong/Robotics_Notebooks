@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, umich, westlake, nvidia, 3d-reconstruction, streaming-slam, pose-estimation, feed-forward, depth-anything-3, relative-pose]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.26519"
 code: https://github.com/KevinXu02/R3
 related:
+  - ./depth-anything-cpp.md
   - ../methods/lingbot-map.md
   - ./paper-vgg-ttt.md
   - ./paper-glob3r.md
@@ -209,6 +210,7 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - 项目页流式演示与对比：<https://kevinxu02.github.io/r3-site/>
+- [depth-anything.cpp](./depth-anything-cpp.md) — DA3 的 C++/ggml 本地推理运行时
 - Depth Anything 3（上游骨干）：<https://github.com/ByteDance-Seed/Depth-Anything-3>
 - VGGT（全局回归基线）：<https://github.com/facebookresearch/vggt>
 - LingBot-Map（流式对照）：<https://arxiv.org/abs/2604.14141>
