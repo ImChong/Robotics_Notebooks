@@ -133,6 +133,7 @@ $$
 - [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — AMP 正则躲避反射 + 训练期 CBF；官方仓适配 AMP_mjlab / mjlab。
 - [ParkourFormer](../entities/paper-parkourformer.md) — 把预测的未来两步 AMP 状态拼进判别序列，再条件化当前动作。
+- [FMP（Flow-Matched Motion Priors）](../entities/paper-fmp-motion-priors.md) — 在线 OT+flow matching 标量运动先验奖励；G1 上对照 AMP 与 barycentric OT（arXiv:2609.15631）
 
 ## 进阶：MimicKit 与 ADD
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, 3d-tracking, scene-flow, dense-tracking, feedforward, vggt, eccv-2026, hkust, tencent, dynamic-scene]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.02573"
 venue: "ECCV 2026"
 related:

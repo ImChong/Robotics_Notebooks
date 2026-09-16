@@ -153,3 +153,4 @@ Safety Filter
 - [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 算法安全过滤 ≠ 可认证保护停；双足切电本身是危害
 - [LLM 机器人控制接口](./llm-robotics-control-interfaces.md) — 访问级别即能力
 - [Model Hardware Standard](./model-hardware-standard.md) — 设备驱动层强制安全限（研究预览）
+- [ResSafe](../entities/paper-ressafe.md) — G1 残差 RL 作隐式安全过滤；性能与安全 decoupling（arXiv:2609.15988；代码待发布）

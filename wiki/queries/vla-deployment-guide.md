@@ -104,6 +104,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态任务 + CUDA Graph；代码待开放
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 上延迟感知 RL 后训练；中间动作 + 中间观测条件 DSRL（确认未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真侧 EnvHub 闭环对照（headless SmolVLA + 双臂 Piper）；不含真机异步/TensorRT
+- [SmolVLA ONNX LIBERO 审计](../entities/paper-smolvla-onnx-libero.md) — PyTorch vs ONNX 闭环成功率–延迟权衡；语言 width 与图审计（arXiv:2609.14146；MIT 脚本已开源）
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
