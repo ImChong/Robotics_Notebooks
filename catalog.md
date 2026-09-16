@@ -442,6 +442,7 @@
 - [DeepSeek Harness](wiki/entities/deepseek-harness.md) — DeepSeek Harness**（`dsh`，[deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-ha `📅unknown` `[entity_page]`
 - [DeepTutor（HKUDS）](wiki/entities/deeptutor.md) — DeepTutor**（HKUDS/DeepTutor，Apache-2.0）是香港大学 [HKUDS](https:/ `📅unknown` `[entity_page]`
 - [Deformable DETR](wiki/entities/deformable-detr.md) — Deformable DETR** 将 DETR 中的密集注意力替换为 **多尺度可变形注意力**：每个 query 只采样少量关键采样点，显著加快收敛并改善小目标检测。 `📅unknown` `[entity_page]`
+- [depth-anything.cpp（DA3 的 C++/ggml 本地几何推理）](wiki/entities/depth-anything-cpp.md) — depth-anything.cpp**（[localai-org/depth-anything.cpp](https://github.com/localai-org/depth-anythin `📅unknown` `[entity_page]`
 - [DETR（DEtection TRansformer）](wiki/entities/detr.md) — DETR** 用 Transformer 编解码器把目标检测变成固定数量的 **集合预测**：object queries 经交叉注意力读图像特征，匈牙利算法对齐预测与真值，**推理端去掉 NMS `📅unknown` `[entity_page]`
 - [DexBench（工业灵巧操作基准）](wiki/entities/dexbench.md) — DexBench** 是瑞沃世界（RLWRLD）与英伟达（NVIDIA）发布的 **工业灵巧操作任务规格**：用 **物体状态复杂度（OSC）** 回答「为什么难」，用 **五种 Dexterit `📅unknown` `[entity_page]`
 - [Dexmal DM0.5（OpenDM）](wiki/entities/dexmal-dm05.md) — DM0.5**（技术博客，[GitHub `dexmal/opendm`](https://github.com/dexm `📅unknown` `[entity_page]`
