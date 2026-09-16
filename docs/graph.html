@@ -3677,6 +3677,15 @@
        - 暗批预算单独给一个很小的值，无论多密都只是一层不抢戏的底纹。
        亮色主题整体给高一档：同样的 alpha 压在白底上看着更淡。 */
     const EDGE_2D_SCREEN_PX = 1;
+    /* 设备线宽必须避开 1.0：Skia 对「设备线宽 ≤ 1」走 hairline，逐段单独混合，交叉处
+       alpha 会累加；> 1 则先把描边转成填充再整条 path 一次合成，不累加。实测同一批线
+       在设备线宽 1.0 与 1.01 之间，交叠处 alpha 从 133 掉到 10。而这里的设备线宽恰好
+       = EDGE_2D_SCREEN_PX × 该批宽度倍数 × edgeCanvasDpr，于是 DPR 1（Linux / Windows
+       100%）走累加、画出浓密交叠，DPR 1.25（Windows 125% 缩放）与 DPR 2（高分屏）不
+       累加、连线淡到几乎看不见——同一份数据，三个平台三种观感。
+       统一抬到 1.0 以上，全平台只走「不累加」这一条路径，也正是下面墨量预算本就假设的
+       那条；被抬粗的那部分按比例扣 alpha，落笔墨量不变。 */
+    const EDGE_2D_MIN_DEVICE_PX = 1.05;
     const EDGE_2D_INK = {
       dark: { target: 0.22, min: 0.08, max: 0.75, dimTarget: 0.03, dimMin: 0.02, dimMax: 0.2 },
       light: { target: 0.26, min: 0.1, max: 0.7, dimTarget: 0.04, dimMin: 0.025, dimMax: 0.22 },
@@ -3692,44 +3701,63 @@
       return Math.min(maxA, Math.max(minA, target / coverage));
     }
 
+    /** 单批描边参数。widthFactor 为该批相对 EDGE_2D_SCREEN_PX 的线宽倍数，alpha 为墨量
+     *  预算给出的基准不透明度。线宽先折算到设备像素抬过 hairline 阈值，再换回世界坐标
+     *  （绘制时的变换是 k × dpr）；抬粗多少就按比例扣多少 alpha，两者乘积即落笔墨量。 */
+    function edgeStroke(color, widthFactor, alpha) {
+      const k = edgeTransform.k || 1;
+      const dpr = edgeCanvasDpr;
+      const wantDevicePx = EDGE_2D_SCREEN_PX * widthFactor * dpr;
+      const devicePx = Math.max(EDGE_2D_MIN_DEVICE_PX, wantDevicePx);
+      return {
+        color,
+        width: devicePx / (k * dpr),
+        alpha: alpha * (wantDevicePx / devicePx),
+      };
+    }
+
     /** 当前模式下的两批描边样式：[0] 高亮批、[1] 暗淡批（null 表示该批不画）。
      *  颜色自带 alpha，canvas 的 globalAlpha 与之相乘，等价于 SVG 的 stroke-opacity。 */
     function edgeBatchStyles(aHi, aLo) {
-      const k = edgeTransform.k || 1;
-      const w = EDGE_2D_SCREEN_PX / k;
       const base = edge2dBaseRgb();
       if (edgePaintMode === 'hover') {
-        return [
-          { color: edgePaintFocusColor, width: w * 1.8, alpha: 0.7 },
-          { color: base, width: w * 0.5, alpha: aLo },
-        ];
+        return [edgeStroke(edgePaintFocusColor, 1.8, 0.7), edgeStroke(base, 0.5, aLo)];
       }
       if (edgePaintMode === 'sidebar') {
-        return [
-          { color: edgePaintFocusColor, width: w * 1.5, alpha: 0.85 },
-          { color: base, width: w * 0.5, alpha: aLo },
-        ];
+        return [edgeStroke(edgePaintFocusColor, 1.5, 0.85), edgeStroke(base, 0.5, aLo)];
       }
       if (edgePaintMode === 'timeline') {
-        return [{ color: base, width: w, alpha: aHi }, null];
+        return [edgeStroke(base, 1, aHi), null];
       }
-      return [
-        { color: base, width: w, alpha: aHi },
-        { color: base, width: w * 0.5, alpha: aLo },
-      ];
+      return [edgeStroke(base, 1, aHi), edgeStroke(base, 0.5, aLo)];
     }
+
+    /* 一批拆成几笔描。同一条 path 里的重叠只算一次覆盖，整批一笔描完，密处与疏处
+       同色，全图态就是一层没有结构的灰雾；边的疏密恰恰是这张图最该看见的信息。
+       拆成 N 笔后，落在不同笔里的重叠在 canvas 合成层面逐笔叠加，一个被 j 笔覆盖的
+       像素得到 1-(1-alpha)^j：疏处仍是 alpha，密处逼近饱和，疏密重新有了对比。
+       这正是此前 DPR 1 上 hairline 逐段混合顺手给出的效果，只是不再依赖光栅器实现
+       细节——canvas 合成是规范行为，各平台一致。
+       按下标取模分笔而非切连续段：edges 按源节点聚集，连续段内部本就互相重叠，
+       跨笔的重叠反而少；取模能把邻边打散到不同笔里。
+       成本：落笔线段总数不变，只多 N-1 次 path 提交。 */
+    const EDGE_2D_STROKE_CHUNKS = 16;
 
     function strokeEdgeBatch(buf, len, style) {
       if (!len || !style) return;
       edgeCtx.globalAlpha = style.alpha;
       edgeCtx.strokeStyle = style.color;
       edgeCtx.lineWidth = style.width;
-      edgeCtx.beginPath();
-      for (let i = 0; i < len; i += 4) {
-        edgeCtx.moveTo(buf[i], buf[i + 1]);
-        edgeCtx.lineTo(buf[i + 2], buf[i + 3]);
+      const chunks = Math.min(EDGE_2D_STROKE_CHUNKS, len / 4);
+      const stride = chunks * 4;
+      for (let c = 0; c < chunks; c++) {
+        edgeCtx.beginPath();
+        for (let i = c * 4; i < len; i += stride) {
+          edgeCtx.moveTo(buf[i], buf[i + 1]);
+          edgeCtx.lineTo(buf[i + 2], buf[i + 3]);
+        }
+        edgeCtx.stroke();
       }
-      edgeCtx.stroke();
       edgeCtx.globalAlpha = 1;
     }
 
