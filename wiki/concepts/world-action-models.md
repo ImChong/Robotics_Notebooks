@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -82,6 +82,8 @@ related:
   - ../entities/paper-data-pyramid-embodied-manipulation.md
   - ../tasks/loco-manipulation.md
   - ./ai-auto-research.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../entities/awesome-world-models.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
@@ -118,6 +120,9 @@ sources:
   - ../../sources/papers/riemann_1_0.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
+  - ../../sources/sites/awesome-world-action-models-rcl.md
+  - ../../sources/papers/rcl_wam_robot_learning_survey.md
   - ../../sources/repos/awesome-world-models.md
   - ../../sources/repos/dexmal_opendw.md
   - ../../sources/repos/unifolm-world-model-action.md
@@ -161,9 +166,24 @@ sources:
 
 仓库内已有 **潜空间世界–动作** 先验的实例讨论，可与本概念对照阅读：[Being-H0.7](../methods/being-h07.md)。
 
-## 架构族谱（综述taxonomy）
+## 架构族谱（综述 taxonomy）
 
-综述将实现路线粗分为 **Cascaded** 与 **Joint** 两族；二者差别在于 **世界预测与动作解码的模块边界** 与 **训练时的监督如何共享**。
+### OpenMOSS 主线：Cascaded vs Joint
+
+[OpenMOSS 2605.12090](../../sources/papers/world_action_models_survey_2605.md) 将实现路线粗分为 **Cascaded** 与 **Joint** 两族；二者差别在于 **世界预测与动作解码的模块边界** 与 **训练时的监督如何共享**。
+
+### RCL 主线：2×2（架构 × 预测–动作接口）
+
+[MBZUAI / RCL 综述](../../sources/papers/rcl_wam_robot_learning_survey.md) 与 [Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md) 把两轴 **解耦**：
+
+| 轴 | 选项 | 直觉 |
+|----|------|------|
+| **架构** | One Model / Dual-system | 世界与动作是否共享同一骨干 vs 分专家 |
+| **接口** | Joint prediction / IDM | 联合出 \((\mathbf{O}, \mathbf{A})\) vs 先 \(p(\mathbf{O}\mid h,\ell)\) 再 \(p(\mathbf{A}\mid h,\mathbf{O})\) |
+
+形成 **Q1–Q4** 四象限（站点可交互筛选）。**Joint training alone 不决定 One Model**；部分 IDM 推理时不显式滚完整未来。选型时可用 RCL 象限对照下文 Cascaded/Joint 实例。
+
+**control utility 准则**（RCL 强调）：动作接地、时空一致、闭环改进、实时预算 — 避免只用视觉保真评价 WAM。
 
 ### Cascaded WAM
 
@@ -317,6 +337,9 @@ flowchart TB
 - [sources/papers/riemann_1_0.md](../../sources/papers/riemann_1_0.md) — Riemann-1.0 全因果动作优先 WAM（闭源）
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md)
 - [sources/sites/awesome-wam-openmoss.md](../../sources/sites/awesome-wam-openmoss.md)
+- [sources/repos/awesome-world-action-models-rcl.md](../../sources/repos/awesome-world-action-models-rcl.md)
+- [sources/sites/awesome-world-action-models-rcl.md](../../sources/sites/awesome-world-action-models-rcl.md)
+- [sources/papers/rcl_wam_robot_learning_survey.md](../../sources/papers/rcl_wam_robot_learning_survey.md)
 - [sources/repos/awesome-world-models.md](../../sources/repos/awesome-world-models.md) — Awesome World Models 全谱策展（含 WAM/VLA 分册）
 - [sources/sites/rekacs2-10k.md](../../sources/sites/rekacs2-10k.md)
 
@@ -326,6 +349,7 @@ flowchart TB
 - [世界模型定义与路线图（上海人工智能实验室）](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 具身闭环 + 生成世界模型作视觉计划；与 WAM「联合建模」同构的议程层坐标
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
+- [Awesome World-Action Models（RCL / MBZUAI）](../entities/awesome-world-action-models-rcl.md) — 564 条 WAM 生态策展；2×2 四象限 + Reading reports
 - [Dyna-2](../entities/dyna-2.md) — 百万小时人视频 Joint WAM 跨具身缩放（闭源）
 - [Riemann-1.0](../entities/paper-riemann-1.md) — 全因果动作优先 AR WAM；RoboCasa365 62.6%、真机 85% SR（闭源）
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 动作接地预测 latent + 紧凑 MoT flow 策略（非像素 rollout）
@@ -389,4 +413,5 @@ flowchart TB
 
 - Wang et al., *World Action Models: The Next Frontier in Embodied AI* — [arXiv:2605.12090](https://arxiv.org/abs/2605.12090)
 - OpenMOSS **Awesome-WAM** 论文库与导航 — [GitHub 仓库](https://github.com/OpenMOSS/Awesome-WAM) · [静态站点](https://openmoss.github.io/Awesome-WAM)
+- RCL / MBZUAI **Awesome World-Action Models** — [项目页](https://rcl-robotics.github.io/Awesome-World-Action-Models/) · [GitHub](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [Awesome World Models（sun254667）](https://github.com/sun254667/awesome-world-models) — 更广的 WM 全谱策展对照

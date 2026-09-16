@@ -55,6 +55,7 @@
 - [Awesome RSI（Prism-Shadow 精选集）](wiki/entities/awesome-rsi.md) — Awesome RSI**（GitHub：Prism-Shadow/awesome-rsi，站点：[p `📅unknown` `[entity_page]`
 - [Awesome Text-to-Motion（Zilize 精选集）](wiki/entities/awesome-text-to-motion-zilize.md) — Awesome Text-to-Motion**（GitHub 仓名 `awesome-text-to-motion`）是一份 **文本驱动人体运动生成** 的 curated 列表：按 **Su `📅unknown` `[entity_page]`
 - [Awesome Touch（sun254667 精选集）](wiki/entities/awesome-touch.md) — Awesome Touch**（GitHub：`sun254667/awesome-touch`）是一份 `📅unknown` `[entity_page]`
+- [Awesome World-Action Models（RCL / MBZUAI）](wiki/entities/awesome-world-action-models-rcl.md) — Awesome World-Action Models**（GitHub：[rcl-robotics/Awesome-World-Action-Models](https://github.com `📅unknown` `[entity_page]`
 - [Awesome World Models（sun254667 精选集）](wiki/entities/awesome-world-models.md) — Awesome World Models**（GitHub：[`sun254667/awesome-world-models`](https://github.com/sun254667/awes `📅unknown` `[entity_page]`
 - [AWS EC2 GPU](wiki/entities/aws-ec2-gpu.md) — Amazon EC2 GPU 实例**是 AWS 弹性计算中的 **NVIDIA GPU 虚拟机**产品线，从入门级 **g4dn（T4）** 到 **p5（H100）** / **p5e（H20 `📅unknown` `[entity_page]`
 - [Axellwppr / motion_tracking](wiki/entities/axellwppr-motion-tracking.md) — 一句话定义**：Axellwppr/motion_tracking 是 [HEFT](./paper `📅unknown` `[entity_page]`
