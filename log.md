@@ -1,3 +1,9 @@
+## [2026-09-16] ingest | sources/repos/legbot_lab.md — Legbot Lab（Robot-Nav 四足 Isaac Lab PPO/MoE-CTS + ONNX/CycloneDDS 部署）；关联 arXiv:2405.10830 CTS；步骤 2.5 **已开源**
+
+- **触发：** 用户指定 legbot_lab 仓库 + CTS 论文 + 公众号链接；自动合并 PR
+- **步骤 2.5：** GitHub Apache-2.0；`PPO` / `PPO-CTS-MOE` / `WF-CTS-MOE` 分支；训练+MuJoCo sim2sim+C++ 部署+串口网关 **已开源**
+- **关键页：** 新建 [`legbot-lab`](wiki/entities/legbot-lab.md)、[`paper-cts-concurrent-teacher-student-locomotion`](wiki/entities/paper-cts-concurrent-teacher-student-locomotion.md)；交叉 [`legbot-mpc-wbc`](wiki/entities/legbot-mpc-wbc.md)、[`teacher-student-dagger-training`](wiki/methods/teacher-student-dagger-training.md)
+
 ## [2026-09-16] structural | 重复节点普查与批量合并 | 26 个占位/索引页并入同项目 canonical 实体；page-aliases 93 条
 
 - **触发：** 承 cn-os-dit4dit 合并，用户要求普查全库同类重复。

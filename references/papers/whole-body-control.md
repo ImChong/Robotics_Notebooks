@@ -28,6 +28,7 @@
 
 - **Mastalli et al. (2020)** — *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control*. 为 WBC 与轨迹优化提供高效求解器。
 - **legbot-MPC-WBC** ([Robot-Nav](https://github.com/Robot-Nav/legbot-MPC-WBC)) — 四足 Convex MPC + WBC 分支 sim2sim/sim2real 参考；见 [legbot-mpc-wbc 实体](../../wiki/entities/legbot-mpc-wbc.md)。
+- **legbot_lab** ([Robot-Nav](https://github.com/Robot-Nav/legbot_lab)) — 四足 Isaac Lab PPO / MoE-CTS RL + ONNX 部署；见 [Legbot Lab 实体](../../wiki/entities/legbot-lab.md) 与 [CTS 论文页](../../wiki/entities/paper-cts-concurrent-teacher-student-locomotion.md)。
 
 ### 稳定性与平衡分析
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, quadruped, mpc, wbc, sim2real, mujoco, pinocchio, open-source, mit]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 code: https://github.com/Robot-Nav/legbot-MPC-WBC
 summary: "legbot-MPC-WBC：四足 Convex MPC（MIT Cheetah 3 路线）+ WBC 分支；Pinocchio+MuJoCo sim2sim/sim2real；MPC 规划接触力、低层执行。"
 related:
@@ -11,6 +11,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../overview/hub-wbc.md
   - ./paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md
+  - ./legbot-lab.md
 sources:
   - ../../sources/repos/legbot_mpc_wbc.md
 ---
@@ -35,6 +36,7 @@ sources:
 
 ## 为什么重要
 
+- **Robot-Nav 生态：** 同团队 [Legbot Lab](./legbot-lab.md) 提供 **RL/PPO–CTS** 线，与本仓 **MPC–WBC** 模型控制线互补。
 - **用户指定开源参考：** 与经典人形 WBC 论文互补，展示 **MPC→执行层** 在同一仓库的可复现分层。
 - **算法出处清晰：** 基于 Kim et al. MIT Cheetah 3 convex MPC；README 含 sim2real 频率工程笔记（15 Hz→30–40 Hz）。
 - **双分支对照：** `main`（纯 Convex MPC）vs `WBC`（MPC-WBC）便于理解何时需要低层 WBC。
