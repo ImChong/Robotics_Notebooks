@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2311.04567"
 venue: "WACV 2024"
 summary: "UnityGraph-based unsupervised procedure learning from unlabeled instructional videos"

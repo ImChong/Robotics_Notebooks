@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2312.15719"
 venue: "arXiv 2023"
 summary: "Reconstructs stable hand-object grasping states from monocular egocentric videos for the first time"

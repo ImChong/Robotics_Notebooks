@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.14268"
 venue: "arXiv 2026"
 summary: "Tencent Hunyuan's multi‑modal world model framework that accepts text, single‑/multi‑view images, and videos as input, and generates 3DGS scenes. It includes WorldLens, a high‑performance 3DGS rendering platform for inte"

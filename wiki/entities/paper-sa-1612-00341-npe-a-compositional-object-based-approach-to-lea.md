@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "1612.00341"
 venue: "arXiv 2016"
 summary: "Compositional object-based approach to learning physical dynamics."

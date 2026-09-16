@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.17056"
 venue: "arXiv 2026"
 summary: "Proposes the Ego4OOD domain generalization benchmark, containing 8 geographically distinct domains, and introduces a clustering-based covariate shift metric"

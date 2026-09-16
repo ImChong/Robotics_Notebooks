@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2602.09076"
 venue: "arXiv 2026"
 summary: "Finds that robots can forecast human movement efficiently by watching their legs, providing actionable insights for designing sensing capabilities for social robot navigation"

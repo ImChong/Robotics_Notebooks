@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "ICCV 2025 Workshop"
 summary: "Focuses on binocular/stereo egocentric and 360° panoramic perspectives for multi-modal scene understanding and perception, measuring both first-person views and third-person panoptic views"
 related:

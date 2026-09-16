@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2403.04253"
 venue: "arXiv 2024"
 code: https://github.com/chandar-lab/Recall2Imagine

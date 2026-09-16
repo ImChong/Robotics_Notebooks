@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.00113"
 venue: "arXiv 2026"
 summary: "Surveys world models for robotic manipulation through three questions: what future representation to predict, how prediction connects to action, and when to use it in robot learning pipelines."

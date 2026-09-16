@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.16395"
 venue: "arXiv 2026"
 summary: "Redefines world models as fully differentiable physics engines with a decoupled neural architecture (OrbiSim‑Dynamics and OrbiSim‑Vision), supporting end‑to‑end differentiable contact modelling, gradient‑based policy opt"

@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, motion-tracking, rl, ppo, dagger, moe, curriculum, unitree-g1, imitation-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../entities/paper-gmt.md
   - ./limmt-gqs-motion-curation.md

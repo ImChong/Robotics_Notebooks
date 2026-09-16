@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2411.05619"
 venue: "arXiv 2024"
 summary: "Towards generalizable and scalable world models for embodied decision-making."

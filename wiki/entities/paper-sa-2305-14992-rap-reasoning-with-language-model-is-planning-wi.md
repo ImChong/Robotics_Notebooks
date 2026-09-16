@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2305.14992"
 venue: "arXiv 2023"
 summary: "Formalizes LLM reasoning as planning with a world model."

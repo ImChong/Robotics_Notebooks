@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.08639"
 venue: "arXiv 2026"
 summary: "Video-action foundation model with semantic visual-action tokenizer, causal pretraining, sparse MoE."

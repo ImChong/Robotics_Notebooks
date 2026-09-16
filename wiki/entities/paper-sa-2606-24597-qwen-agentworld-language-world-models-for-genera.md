@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.24597"
 venue: "arXiv 2026"
 summary: "First native language world models (35B-A3B and 397B-A17B) simulating agentic environments across 7 domains via long CoT reasoning, trained on >10M interaction trajectories."

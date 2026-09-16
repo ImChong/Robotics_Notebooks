@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2502.08123"
 venue: "arXiv 2025"
 summary: "Introduces a gradient-based approach for learning task graphs from procedural activities, optimizing edge weights via maximum likelihood"

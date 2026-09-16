@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2503.17359"
 venue: "arXiv 2025"
 summary: "Proposes interactive generative video (IGV) as the foundation of generative game engines (GGE), supporting unlimited novel content generation."

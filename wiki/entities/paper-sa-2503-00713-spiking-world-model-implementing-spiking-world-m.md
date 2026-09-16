@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2503.00713"
 venue: "arXiv 2025"
 summary: "Implements spiking world models with multi-compartment neurons for MBRL."

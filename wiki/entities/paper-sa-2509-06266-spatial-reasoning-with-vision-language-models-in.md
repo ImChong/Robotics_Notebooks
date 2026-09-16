@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2509.06266"
 venue: "ICLR 2026"
 summary: "Proposes the Ego3D-Bench spatial reasoning benchmark (8,600+ QA pairs), and the Ego3D-VLM post-training framework"

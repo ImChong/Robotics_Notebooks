@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2412.13772"
 venue: "arXiv 2024"
 summary: "Efficient occupancy world model via decoupled dynamic flow and image-assisted training."

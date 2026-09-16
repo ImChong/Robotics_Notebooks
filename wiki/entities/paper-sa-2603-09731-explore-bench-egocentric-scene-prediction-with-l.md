@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.09731"
 venue: "arXiv 2026"
 summary: "A benchmark for egocentric scene prediction with long-horizon reasoning: given an initial-scene image and action sequence, models predict the final scene. Reveals significant performance gap between MLLMs and humans"

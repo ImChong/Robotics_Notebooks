@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "arXiv 2026"
 summary: "Stores persistent 3D scene content directly as latent tokens, avoiding repeated RGB rendering, and updates caches during generation."
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "AAAI 2026"
 summary: "Releases the GazeNav dataset with synchronized wearable eye-tracking, RGB footage and robot navigation trajectories"
 related:

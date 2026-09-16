@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.02096"
 venue: "arXiv 2026"
 summary: "A benchmark constructed from long-form Ego4D videos containing 1,498 referring expressions with average video duration of 45 minutes, exhibiting extreme target sparsity and complex human-object interactions"

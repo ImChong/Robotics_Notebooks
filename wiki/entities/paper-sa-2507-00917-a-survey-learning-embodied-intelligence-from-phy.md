@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2507.00917"
 venue: "arXiv 2025"
 summary: "A systematic survey of recent advances in learning embodied AI through the integration of physical simulators and world models."

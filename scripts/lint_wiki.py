@@ -263,6 +263,14 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 它是「让工具自己挑」的默认档位标签，各页已在配置表逐条释义，非机器人
     # 概念/方法/形式化；与 stop / play（运行时命令名）同类工具链 token，不建独立页。
     "auto",
+    # gpu：各页正文里的 `GPU` / **GPU** 全是算力硬件与后端档位标签——实体页
+    # 「硬件要求」表行（DexMal DM05「训练建议 8 卡 / 推理 1 卡」、HKTex 的
+    # `--gpu 0`、depth-anything-cpp 的 `DA_GGML_CUDA` / `METAL` / `VULKAN`）、
+    # 推理设备枚举（OpenVINO 的 `CPU` / `GPU` / `NPU`）、仿真后端名
+    # （wheel-legged-genesis 的 `gpu` / `cuda` backend），以及 cuRobo「把运动生成
+    # 搬到 GPU 上批量并行」的算力叙述。它是计算硬件/后端基础设施，非机器人
+    # 概念/方法/形式化；与 uv / conda / arxiv 同类基础设施停用词，不建独立页。
+    "gpu",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -471,6 +479,14 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # concepts/world-action-models.md、concepts/foundation-policy.md；裸 token
     # 与 state / qpos / reset 同类，不单建概念页
     "model",
+    # mpc：模型预测控制的缩写写法，canonical 定义页是 methods/model-predictive-control.md
+    # （滚动时域求解 OCP 的机制），子族与集成口径分归
+    # methods/nonlinear-model-predictive-control.md、methods/centroidal-nmpc-wbc-stack.md、
+    # concepts/mpc-wbc-integration.md、concepts/srbd-convex-mpc-wbc.md，选型对照归
+    # comparisons/mpc-vs-rl.md；各页命中处均为「**MPC** 在简化模型上求反力剖面」
+    # 「**MPC** 生成到 reset posture 的轨迹」式的指称。与 rl / wbc / urdf 同属
+    # 「缩写 slug ≠ 页面 stem」，不应按裸缩写误报为缺页。
+    "mpc",
     "mujoco",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
     # policy：命中处全是代码 token 与网络分支标签，不是待建的机制页——Inspect

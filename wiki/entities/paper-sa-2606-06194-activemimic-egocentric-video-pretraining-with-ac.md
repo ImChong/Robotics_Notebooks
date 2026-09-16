@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.06194"
 venue: "arXiv 2026"
 summary: "A pretraining framework that recovers synchronized camera and wrist trajectories from a single body-worn RGB camera to address the performance gap between egocentric video and robot data pretraining"

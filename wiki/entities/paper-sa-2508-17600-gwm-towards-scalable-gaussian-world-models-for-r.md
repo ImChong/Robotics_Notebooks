@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2508.17600"
 venue: "arXiv 2025"
 summary: "A 3D Gaussian Splatting‑based world model that enhances visual representation learning and serves as a robust neural simulator for model‑based reinforcement learning."

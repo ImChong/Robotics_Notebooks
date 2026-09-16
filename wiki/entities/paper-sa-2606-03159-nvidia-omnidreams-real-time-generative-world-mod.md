@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.03159"
 venue: "arXiv 2026"
 summary: "NVIDIA's real‑time generative world model for closed‑loop autonomous driving simulation, with an action‑conditioned generative world model at its core, fine‑tuned on Cosmos for mid‑ and post‑training."
