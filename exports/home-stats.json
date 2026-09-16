@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-wholebodywam.md",
+      "detail_id": "entity-paper-wholebodywam",
+      "label": "WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-dido-wam.md",
       "detail_id": "entity-paper-dido-wam",
       "label": "DIDO（arXiv:2609.15570）",
@@ -97,15 +106,6 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-wholebodywam.md",
-      "detail_id": "entity-paper-wholebodywam",
-      "label": "WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added"
     },
     {
       "path": "wiki/entities/paper-wla3.md",
@@ -213,15 +213,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dido-wam.md",
-    "detail_id": "entity-paper-dido-wam",
-    "label": "DIDO（arXiv:2609.15570）",
+    "path": "wiki/entities/paper-wholebodywam.md",
+    "detail_id": "entity-paper-wholebodywam",
+    "label": "WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调",
     "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
