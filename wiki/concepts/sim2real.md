@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -34,6 +34,8 @@ related:
   - ../entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
   - ../entities/nvidia-physical-ai-learning.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
+  - ../entities/paper-splitadapter-load-aware-loco-manipulation.md
+  - ../entities/paper-sony-ai-ace-table-tennis.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-robogauge-moe-quadruped-locomotion.md
   - ../entities/repo-go2-backflip.md
@@ -238,6 +240,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **补充参照（室内 ObjectNav · Habitat→轮腿双足）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 [Habitat-Sim](../entities/habitat-sim.md) 离散动作空间评测后，真机用 **同一非平台参数 + MPPI 连续跟踪** 部署 Direct Drive Tech TITA；迁移重点在 \(H_{\text{agent}}\) / 膨胀半径与离板 VLM，而非重训低层 RL（截至入库日方法未开源）。低层运控复现另见 [tita_rl](../entities/tita-rl.md)。
 - **补充参照（人形 · Planner–IDM 少样本适应）：** [FADA](../entities/paper-fada-humanoid.md)（arXiv:2606.28476，CMU）把策略分解为 **规划器 + 逆动力学模型（IDM）**：源域 oracle+DAgger 训练后，部署 **冻结 planner**、仅用约 **2 分钟** 目标域 rollout 的观测–动作对 **LoRA 微调 IDM** 对齐动力学；G1/T1 真机高精度全身任务成功率 **20%→90%**，无需目标 reward 或仿真重标定——适合讨论「**只改执行映射、不改任务意图**」的 few-shot sim2real。
 - **补充参照（人形 loco-manip · 冻结策略适配）：** [SplitAdapter](../entities/paper-splitadapter-load-aware-loco-manipulation.md)（arXiv:2606.03297）在 **冻结 AMP 搬箱策略** 上学习 **物体/负载** 与 **动力学** 双分支历史适配（分裂世界模型 + GRL + 分层 FiLM），针对 **载荷与搬放高度变化** 与 **sim–real 动力学差** 的耦合；MuJoCo sim-to-sim 与 **Unitree G1 零样本** 重载（6 kg）全流程成功率显著提升，可与 RMA 式「单 latent 外参估计」对照阅读。
+- **补充参照（竞技乒乓球 · 非对称 SAC）：** [Sony AI Ace](../entities/paper-sony-ai-ace-table-tennis.md)（Nature 2026）在仿真 **单拍 SAC** 训多技能回球：critic 见真值球态、actor 仅见 **噪声传感历史**，经 **FAOC/MPC** 安全层 **零样本** 上真机并在 ITTF 规则下 **3/5 胜 elite**；开源仅 **match CSV + 伪代码**（部分开源）。
 
 ### Real2Sim：从视频构造可仿真资产
 

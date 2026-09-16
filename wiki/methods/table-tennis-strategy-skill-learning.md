@@ -2,8 +2,9 @@
 type: method
 tags: [character-animation, table-tennis, hierarchical-rl, ase, vr, multi-agent, mode-collapse]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
+  - ../entities/paper-sony-ai-ace-table-tennis.md
   - ../entities/smplolympics.md
   - ./ase.md
   - ./amp-reward.md
@@ -74,11 +75,12 @@ flowchart TB
 
 ## 常见误区
 
-- **不是人形机器人真机**——物理 **角色动画**；与人形硬件跑酷/模仿真机工作正交。
+- **不是人形机器人真机**——物理 **角色动画**；与人形硬件跑酷/模仿真机工作正交。真机 ITTF 竞技对照见 [Sony AI Ace](../entities/paper-sony-ai-ace-table-tennis.md)（Nature 2026）。
 - **开源完整度有限**：GitHub 主要发布数据链接，训练代码需联系作者（见仓库 README）。
 
 ## 关联页面
 
+- [Sony AI Ace](../entities/paper-sony-ai-ace-table-tennis.md) — 真机 ITTF 规则下击败 elite 选手的 8-DOF 系统
 - [SMPLOlympics](../entities/smplolympics.md) — 统一体育环境与乒乓球基线
 - [乒乓球分层技能选型指南](../queries/table-tennis-hierarchical-skill-learning-guide.md) — ASE 专家 + mixer + 策略层选型
 - [Imitation Learning](./imitation-learning.md) — 技能层模仿学习背景
