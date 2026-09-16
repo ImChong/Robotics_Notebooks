@@ -162,7 +162,7 @@ flowchart TB
 
 ## 关联页面
 
-- [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务语境与路线 §20
+- [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务语境与路线（「冻结先验之上」组）
 - [Manipulation](../tasks/manipulation.md) — 灵巧操作与高 DoF 手
 - [ResMimic](./paper-resmimic.md) — GMT→残差 loco-manip 对照
 - [HALOMI](./paper-halomi-humanoid-loco-manipulation.md) — 数据驱动/VLA 路线对照
