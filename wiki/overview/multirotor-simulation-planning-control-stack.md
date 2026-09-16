@@ -2,8 +2,9 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
+  - ../entities/paper-swarmnxt.md
   - ../entities/betaflight.md
   - ../entities/wtfos.md
   - ../entities/px4-autopilot.md
@@ -54,7 +55,10 @@ sources:
   - ../../sources/repos/plfm_radar.md
   - ../../sources/repos/project-quiver.md
   - ../../sources/sites/arrowair-quiver.md
-summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner 局部规划、AirSim/Flightmare/XTDrone 仿真、PyBullet Gym 与群体 RL、Crazyflie+Crazyswarm 微四轴真机编队、Quiver 25 kg ArduPilot 开源机架——按「飞控—机架—规划—仿真—RL—真机 swarm」分层选型。"
+  - ../../sources/papers/swarmnxt_arxiv_2609_11382.md
+  - ../../sources/repos/swarm_nxt.md
+  - ../../sources/repos/omninxt.md
+summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner 局部规划、AirSim/Flightmare/XTDrone 仿真、PyBullet Gym 与群体 RL、Crazyflie+Crazyswarm 微四轴真机编队、SwarmNxt/OmniNxt 视觉蜂群平台、Quiver 25 kg ArduPilot 开源机架——按「飞控—机架—规划—仿真—RL—真机 swarm」分层选型。"
 ---
 
 # 多旋翼仿真—规划—飞控开源栈总览
@@ -63,7 +67,7 @@ summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner �
 
 ## 一句话总结
 
-**飞控与通信** 分两支：**自主导航 / 研究** 以 [PX4](../entities/px4-autopilot.md) + [MAVSDK](../entities/mavsdk.md) 为事实标准；**FPV 手飞 / 竞速** 走 [Betaflight](../entities/betaflight.md)（MSP + Betaflight App，非 MAVLink）。**数字图传 / 眼镜端**（DJI HD FPV）社区扩展见 [wtfOS](../entities/wtfos.md)（opkg 包、MSP OSD 叠加，**非飞控**）。**运动规划** 常用 [EGO-Planner Swarm](../entities/ego-planner-swarm.md)，新一代联合时空优化可参考 [MIGHTY](../entities/paper-mighty-hermite-spline-trajectory-planning.md)（Hermite 样条 · RA-L 2026）；**无先验地图 + 有限 FOV 主动感知** 见 [FLAP](../entities/paper-flap-fov-active-perception-3d-navigation.md)（传感器系 FOV 惩罚 · arXiv 2026）；**仿真** 分三路——**Gazebo 教学栈**（[XTDrone](../entities/xtdrone.md)）、**高保真视觉**（[AirSim](../entities/airsim.md)、[Flightmare](../entities/flightmare.md)）、**轻量 RL**（[gym-pybullet-drones](../entities/gym-pybullet-drones.md)、[quad-swarm-rl](../entities/quad-swarm-rl.md)）；**真机微四轴 swarm** 走 [Crazyflie Firmware](../entities/crazyflie-firmware.md) + [Crazyswarm2](../entities/crazyswarm2.md)。**户外作业级开源机架** 见 [Project Quiver](../entities/project-quiver.md)（25 kg MTOW、ArduPilot、三接口载荷）。
+**飞控与通信** 分两支：**自主导航 / 研究** 以 [PX4](../entities/px4-autopilot.md) + [MAVSDK](../entities/mavsdk.md) 为事实标准；**FPV 手飞 / 竞速** 走 [Betaflight](../entities/betaflight.md)（MSP + Betaflight App，非 MAVLink）。**数字图传 / 眼镜端**（DJI HD FPV）社区扩展见 [wtfOS](../entities/wtfos.md)（opkg 包、MSP OSD 叠加，**非飞控**）。**运动规划** 常用 [EGO-Planner Swarm](../entities/ego-planner-swarm.md)，新一代联合时空优化可参考 [MIGHTY](../entities/paper-mighty-hermite-spline-trajectory-planning.md)（Hermite 样条 · RA-L 2026）；**无先验地图 + 有限 FOV 主动感知** 见 [FLAP](../entities/paper-flap-fov-active-perception-3d-navigation.md)（传感器系 FOV 惩罚 · arXiv 2026）；**仿真** 分三路——**Gazebo 教学栈**（[XTDrone](../entities/xtdrone.md)）、**高保真视觉**（[AirSim](../entities/airsim.md)、[Flightmare](../entities/flightmare.md)）、**轻量 RL**（[gym-pybullet-drones](../entities/gym-pybullet-drones.md)、[quad-swarm-rl](../entities/quad-swarm-rl.md)）；**真机微四轴 swarm** 走 [Crazyflie Firmware](../entities/crazyflie-firmware.md) + [Crazyswarm2](../entities/crazyswarm2.md)；**GPU 视觉 + Ansible fleet 蜂群基线** 见 [SwarmNxt](../entities/paper-swarmnxt.md)（OmniNxt 机体 · HDSM+MPC+S2M2 · arXiv 2026）。**户外作业级开源机架** 见 [Project Quiver](../entities/project-quiver.md)（25 kg MTOW、ArduPilot、三接口载荷）。
 
 ## 英文缩写速查
 
@@ -200,6 +204,7 @@ flowchart TB
 ### 真机群体
 
 - **[Crazyswarm2](../entities/crazyswarm2.md)**：Crazyflie 大规模编队，ROS2 + 动捕/UWB。
+- **[SwarmNxt](../entities/paper-swarmnxt.md)**：OmniNxt + ROS 2 + Ansible 并行部署；HDSM 去中心化规划 + 自适应 MPC + S2M2 机载深度；室内动捕验证 6 机高速互避碰（与 Crazyswarm 互补：更重算力/感知、非微四轴尺度）。
 
 ### 机载感知硬件（补充）
 
@@ -272,6 +277,7 @@ flowchart TB
 - [FSD-VLN（空中长程 VLN · 快慢双系统）](../entities/paper-fsd-vln.md)
 - [电机驱动器底软通信协议总览](./motor-drive-firmware-bus-protocols.md)（DroneCAN 行）
 - [野外微型飞行机器人蜂群](../entities/paper-swarm-micro-flying-robots-in-the-wild.md)
+- [SwarmNxt（开源软硬件蜂群平台）](../entities/paper-swarmnxt.md)
 - [EuRoC MAV 数据集](../entities/euroc-mav-datasets.md)
 
 
