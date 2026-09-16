@@ -1,3 +1,9 @@
+## [2026-09-16] ingest | sources/papers/wholebodywam_arxiv_2609_16644.md — WholeBodyWAM 深度入库（CUHK/HKU/PKU/Φ）；UWBC+CASA 协调；步骤 2.5 **待发布**
+
+- **触发：** 用户指定 WholeBodyWAM 专项 ingest + 自动合并 PR
+- **步骤 2.5：** 项目页无 GitHub；BibTeX 匿名审稿版 → **待发布**
+- **关键页：** 扩写 [`paper-wholebodywam`](wiki/entities/paper-wholebodywam.md)；同步 [`sources/sites/wholebodywam`](sources/sites/wholebodywam.md)；注册 `phi-institute`
+
 ## [2026-09-16] ingest | sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md — 具身智能小站 12 篇 VLA 部署/足式/WAM/系统韧性盘点；新建 10 实体 + 技术地图；复用 FluxVLA Engine、ResSafe
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/nsAslK7HCyhUaViGkSVgWA>；要求每篇论文独立非重复详情节点；自动合并 PR
