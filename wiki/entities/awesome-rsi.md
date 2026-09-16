@@ -12,6 +12,7 @@ related:
   - ./karpathy-autoresearch.md
   - ./sol-pi.md
   - ./deepseek-harness.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/repos/awesome-rsi.md
   - ../../sources/sites/awesome-rsi-github-io.md
@@ -91,6 +92,7 @@ flowchart LR
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 学术研究自动化全谱
 - [RSI-Harness](./rsi-harness.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [HarnessBank](./paper-harnessbank.md)
 - [karpathy/autoresearch](./karpathy-autoresearch.md) · [SoL-Pi](./sol-pi.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 清单里的 29 条 benchmark 测的是 **agent 自进化**（Online/Offline 演化协议），与该闭环的四层具身评测正交：不要把 RSI 榜位当成具身策略的任一层能力证据
 
 ## 参考来源
 

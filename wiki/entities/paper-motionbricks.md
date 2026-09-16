@@ -102,6 +102,19 @@ sequenceDiagram
 | 延迟/吞吐 | ~2 ms / ~15k FPS |
 | 机器人 | Unitree G1 全身控制演示 |
 
+## 与其他工作对比
+
+> 下表只做 **定位对照**：本页数字来自论文与项目页，与下列各页不共享同一评测协议，吞吐/延迟数字尤其依赖硬件与实现，不可直接横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Kimodo](./kimodo.md) | 同生态的两个 **延迟档位**：Kimodo 走 **文本 + 运动学约束的扩散编辑**，强在质量与可控编辑；MotionBricks 走 **命令式实时生成**（~2 ms），强在控制环内可用。选型问的是「离线出一段好动作」还是「每个控制周期都要一段」 |
+| [ARDY](./ardy.md) | 同为交互式生成路线，但骨干形态不同：ARDY 是 **自回归扩散**；MotionBricks 是 **模块化潜空间 + 多头 tokenizer**（Root / Pose / Contact 分头），后者把实时性放在首位 |
+| [AMP 运动先验](../methods/amp-reward.md) | 代表 **判别式** 运动先验一支：用判别器给 RL 打「像不像数据」的奖励，技能库随判别器与数据集绑定；MotionBricks 是 **生成式** 演进——直接产出参考轨迹，单骨干覆盖 350k+ clips，不必 per-skill 重训判别器 |
+| 传统动画图 / blend tree | 论文要替代的默认做法：状态机 + 混合树需人工布线，技能越多越脆；项目页 UE5 Demo 强调 **无 foot-locking / blending** 即为此条的直接证据 |
+| [SONIC](../methods/sonic-motion-tracking.md) | **不是竞品而是下游**：MotionBricks 出的是参考全身轨迹，物理执行仍交给跟踪/WBC 层。读本页时不要把生成吞吐当成真机跟踪成功率 |
+| [motion-bricks.cpp](./motion-bricks-cpp.md) | 同一方法的 **社区 C++/GGML 移植**，非独立方法；能力边界以 NVIDIA 预览 + parity 报告为准，Smart Object 全谱与 Kimodo style 转换仍不完整 |
+
 ## 结论
 
 **MotionBricks 把「生成式运动」做成可嵌入控制栈的实时意图 API，而不是离线动画工具。**

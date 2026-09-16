@@ -100,6 +100,19 @@ sequenceDiagram
 - **LIBERO-Plus 七扰动轴**：**六轴列最佳**；camera **+7.9** vs ABot-M0；Init **+37.9** vs OpenVLA-OFT；仅 sensor noise 落后（与 MLP head 消融一致）。
 - **真机 SO-ARM101**：配方不变，五语言分拣任务 **40/50**（多物体指令成功率递减）。
 
+## 与其他工作对比
+
+> 下表只做 **定位对照**：EffVLA 的贡献是「固定骨干 + 固定管线 + 延迟配对」的 **设计空间扫掠**，与下列各页多数不共享同一训练数据与评测协议，成功率不可直接横比（跨基准横比的误读见 [评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) ③ 层）。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [OpenVLA / OpenVLA-OFT](./openvla.md) | 同为 LIBERO 系 head 设计的参照系，但优化轴相反：OFT 主要在 **解码形态**（并行解码、连续动作、L1 回归）上做加法；EffVLA 的结论是这些表达力技巧属 **补偿项**，在 head 与语言骨干对齐后收益缩水，而 Init 轴上 EffVLA 领先 OFT **+37.9** |
+| [StarVLA](../methods/star-vla.md) | 同持「强 VLM 底座 + 轻 head 足够」的极简主张；EffVLA 把它从经验口号做成 **可测量的单杠杆**——VLM-init 带来 **+7.1** 点且 **零延迟成本**，并给出 CKA 0.76 vs 0.24 的对齐度证据 |
+| [π₀ / π₀.₇ 系](../methods/pi07-policy.md) | π 系代表 **flow matching 动作头** 一支；EffVLA 的消融显示对齐之后 flow matching 反而 **−4.4**，即「先买表达力」在延迟配对下不划算。注意二者训练数据规模差一个量级，本条只读 head 形态的取舍 |
+| [MINERVA](./paper-minerva-libero.md) | 同为「LIBERO 上做极小参数量」的效率工作，但砍的位置不同：MINERVA 砍到 0.54M **task-ID 策略**（不带语言泛化），EffVLA 保留完整 V+L 骨干、把膝点定在 ~**3.75B**。MINERVA 报 CPU 5.1 ms/chunk，EffVLA 报 RTX 5090 39.2 ms/chunk，**硬件不同不可横比** |
+| [LIBERO / LIBERO-Plus](./libero-benchmark.md) | 评测底座本身：EffVLA 的主证据落在 **LIBERO-Plus 七扰动轴**（六轴列最佳）而非标准四 suite（98.2%，已与顶行同 band 饱和）——读这类结果要先看是标准榜还是扰动榜 |
+| [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) | 桌面 VLA 相对位次的索引入口；本页数字来自项目页，未与该榜逐条核对同协议，不要把两处成功率并排成一张表 |
+
 ## 结论
 
 **EffVLA 把 VLA 效率问题收成「先对齐 head，再 modest 扩容量，别在未对齐时买 flow/多 pass」。**

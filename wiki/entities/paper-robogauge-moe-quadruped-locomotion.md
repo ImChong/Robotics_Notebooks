@@ -138,6 +138,19 @@ sequenceDiagram
   Dep->>Go2: 仅本体感受部署
 ```
 
+## 与其他工作对比
+
+> 下表只做 **定位对照**：RoboGauge 分数是 **sim-to-sim** proxy，与真机成功率、训练 reward、terrain level 都不是同一把尺子，**不可互相换算或跨工作横比**。
+
+| 对照 | 差异读法 |
+|------|----------|
+| **用训练 reward / terrain level 选 checkpoint**（要替代的默认做法） | 两者都会被 **奖励过拟合** 污染，在复杂地形上尤其失真；RoboGauge 的 8 维指标取 **几何平均**，刻意惩罚「偏科」策略——这是它比训练曲线更可信的机制来源 |
+| **直接上真机试错** | 最可信但风险高、效率低；本文把筛选前移到 Isaac Gym→MuJoCo 的跨引擎压测。代价明确：**Sim-to-Sim ≠ Sim-to-Real**，RoboGauge 只是保守 proxy，不能替代最终真机验收 |
+| [CMoE](./paper-cmoe.md) | 同用 MoE 于四足运动，但 **MoE 放的位置** 是关键分歧：本文放在 representation encoder（latent MoE + 统一 actor），并在消融中指出 **action 侧 MoE 更易发散** |
+| **单体 student encoder**（无 MoE） | 用一个网络吃下所有地形与命令，隐空间纠缠；MoE 的收益是把隐式地形与指令建模 **分解到门控专家**，让仅本体感受策略获得更可分的表示 |
+| [域随机化](../concepts/domain-randomization.md) | **训练侧手段而非评估手段**：DR 让策略更鲁棒，RoboGauge 把 DR 当成 **压测维度之一**（terrain × 难度 × DR）来度量鲁棒性。两者在闭环里互为输入，论文附录也显示训练侧 command sampling 改动可动分数约 +11% |
+| [Sim2Real](../concepts/sim2real.md) | 定位入口：本文属该页谱系里 **「先用仿真预测可迁移性」** 一支，而非缩小 gap 本身。真机证据集中在 **四足 Go2 / 仅本体感受**，对人形可迁移的是方法论，不是任何已有人形结果 |
+
 ## 结论
 
 **本文核心贡献是「可预测的迁移」而非「MoE 本身」——RoboGauge 把真机试错前移为跨引擎可重复筛选；MoE 则是让仅本体感受策略在多地形上获得更可分的隐式表示。**

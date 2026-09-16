@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-09-15
+venue: "RSS 2026"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
