@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/legbot-lab.md",
+      "detail_id": "entity-legbot-lab",
+      "label": "Legbot Lab（四足 Isaac Lab RL 与 Sim2Real 部署）",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-cts-concurrent-teacher-student-locomotion.md",
+      "detail_id": "entity-paper-cts-concurrent-teacher-student-locomotion",
+      "label": "CTS：并发 Teacher–Student 腿足 Locomotion 强化学习",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-swarmnxt.md",
       "detail_id": "entity-paper-swarmnxt",
       "label": "SwarmNxt（开源软硬件敏捷空中蜂群平台）",
@@ -189,39 +209,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dynhair.md",
-      "detail_id": "entity-paper-dynhair",
-      "label": "DynHair：显式动态发丝人头化身",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fmp-motion-priors.md",
-      "detail_id": "entity-paper-fmp-motion-priors",
-      "label": "Flow-Matched Motion Priors：在线 OT 模仿奖励",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-swarmnxt.md",
-    "detail_id": "entity-paper-swarmnxt",
-    "label": "SwarmNxt（开源软硬件敏捷空中蜂群平台）",
+    "path": "wiki/entities/legbot-lab.md",
+    "detail_id": "entity-legbot-lab",
+    "label": "Legbot Lab（四足 Isaac Lab RL 与 Sim2Real 部署）",
     "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
