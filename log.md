@@ -1,3 +1,9 @@
+## [2026-09-16] ingest | sources/papers/swarmnxt_arxiv_2609_11382.md — SwarmNxt 开源蜂群平台（EPFL LIS + HKUST）；OmniNxt 机体 + Ansible fleet + ROS 2（HDSM/MPC/S2M2）；步骤 2.5 **已开源**
+
+- **触发：** 用户指定 arXiv:2609.11382 + GitHub swarm-nxt；自动合并 PR
+- **步骤 2.5：** 项目页 / GitHub / OmniNxt 硬件 **已开源**；全局位姿依赖动捕（非机载 SLAM）
+- **关键页：** 新建 [`paper-swarmnxt`](wiki/entities/paper-swarmnxt.md)；交叉 [`multirotor-simulation-planning-control-stack`](wiki/overview/multirotor-simulation-planning-control-stack.md)
+
 ## [2026-09-16] ingest | sources/papers/openwam_arxiv_2609_07398.md — OpenWAM 复核增强：HF 论文页 / Foundation 权重 / GitHub 组织链接；预训练数据 40% 真机 + 30% 仿真 + 30% ego；depth-wam Stage 3 交叉引用
 
 - **触发：** 用户指定 OpenWAM 全链接 ingest + 自动合并 PR（主库已于 2026-09-09 入库，本次为复核与链接补全）
