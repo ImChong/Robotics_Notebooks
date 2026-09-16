@@ -10,8 +10,10 @@ tags:
   - mixture-of-transformers
   - dream-forcing
   - alibaba
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md
@@ -25,9 +27,13 @@ related:
   - ../entities/paper-abot-world-0.md
   - ../overview/loco-manip-contact-category-05-vla-world-models.md
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/abot-manipulation.md
 summary: "ABot-M0.5（arXiv:2607.00678）：移动操作专用 WAM——帧级 latent action 桥接 video latent 与执行控制，双层 D-MoT 解耦移动/操作子空间，Dream Forcing 在自生成视频上对齐逆动力学；RoboCasa365 平均 46.6%（+Condensed Memory）、LIBERO 99.4%、LIBERO-Plus WAM 对照 83.4%。"
 ---
 
@@ -149,10 +155,14 @@ flowchart TB
 - [Riemann-1.0](./paper-riemann-1.md) — 闭源动作优先 WAM；RoboCasa365 62.6% vs 本页 54.2%，RoboTwin 同档 94.3/94.1
 - [ABot-World-0](./paper-abot-world-0.md) — 同机构交互式视频世界模型（勿与本页混淆）
 - [Loco-Manip 接触 · 05 VLA/WM](../overview/loco-manip-contact-category-05-vla-world-models.md) — 上层模型与接触结构接口
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
 - [ABot-M0.5 论文摘录（arXiv:2607.00678）](../../sources/papers/abot_m05_arxiv_2607_00678.md)
+- [ABot-Manipulation 源码归档](../../sources/repos/abot-manipulation.md)（<https://github.com/amap-cvlab/ABot-Manipulation>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

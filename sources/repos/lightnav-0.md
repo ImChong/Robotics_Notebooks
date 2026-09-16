@@ -9,7 +9,7 @@
 - **分类：** 感知/导航
 - **入库日期：** 2026-09-06
 - **一句话说明：** 亮源新创 开源项目 LightNav-0（感知/导航），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-lightnav-0.md`](../../wiki/entities/cn-os-lightnav-0.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-lightnav-0.md`](../../wiki/entities/paper-lightnav-0.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-lightnav-0.md](../../wiki/entities/cn-os-lightnav-0.md)
+- [wiki/entities/paper-lightnav-0.md](../../wiki/entities/paper-lightnav-0.md)

@@ -30,7 +30,7 @@
   - 通过位姿 **序贯组合** 恢复全局轨迹与点云。
 - **抗漂移：** 轻量运动–视觉旋转 refiner + **composition-aware pose loss** 监督多步组合。
 
-**对 wiki 的映射：** 升格 [`wiki/entities/paper-abot-recon.md`](../../wiki/entities/paper-abot-recon.md)；升级原 [`cn-os-abot-recon`](../../wiki/entities/cn-os-abot-recon.md) 策展页。
+**对 wiki 的映射：** 升格 [`wiki/entities/paper-abot-recon.md`](../../wiki/entities/paper-abot-recon.md)；原 `cn-os-abot-recon` 策展页其后并入该页。
 
 ## 摘录 2：评测亮点（README / 论文）
 

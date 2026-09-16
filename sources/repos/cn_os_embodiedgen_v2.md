@@ -9,7 +9,7 @@
 - **分类：** 仿真环境
 - **入库日期：** 2026-09-06
 - **一句话说明：** 地平线 开源项目 EmbodiedGen V2（仿真环境），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-embodiedgen-v2.md`](../../wiki/entities/cn-os-embodiedgen-v2.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md`](../../wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-embodiedgen-v2.md](../../wiki/entities/cn-os-embodiedgen-v2.md)
+- [wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md](../../wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md)

@@ -11,8 +11,10 @@ tags:
   - manipulation
   - mobile-manipulation
   - galaxea
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2608.11739"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:
@@ -28,11 +30,15 @@ related:
   - ./libero-benchmark.md
   - ../tasks/manipulation.md
   - ../concepts/world-action-models.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
   - ../../sources/sites/opengalaxea-g05.md
   - ../../sources/repos/galaxea-vla.md
   - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/galaxeavla.md
 summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在同一自回归流里发 CoT 与动作 token；跨本体 RVQ ActionCodec + 视觉记忆。真机 76.7%、LIBERO 98.9%、RoboTwin 93.3%。GitHub + HF 权重已开源（Community License）。"
 ---
 
@@ -201,6 +207,8 @@ sequenceDiagram
 - [Manipulation](../tasks/manipulation.md) — 桌面与移动操作语境
 - [World Action Models](../concepts/world-action-models.md) — 联合未来对照，不是本模型
 - [Riemann-1.0](./paper-riemann-1.md) — 闭源 WAM；真机对照表里本页厨房 SR 35% vs 其 90%（公司自报）
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
@@ -212,6 +220,8 @@ sequenceDiagram
 - 项目页 — <https://opengalaxea.github.io/G05/>
 - 代码 — <https://github.com/OpenGalaxea/GalaxeaVLA>
 - 权重 — <https://huggingface.co/OpenGalaxea/G05>
+- [GalaxeaVLA 源码归档](../../sources/repos/galaxeavla.md)（<https://github.com/OpenGalaxea/GalaxeaVLA>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

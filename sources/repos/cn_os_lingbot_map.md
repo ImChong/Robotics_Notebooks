@@ -9,7 +9,7 @@
 - **分类：** 评测
 - **入库日期：** 2026-09-06
 - **一句话说明：** 蚂蚁灵波 开源项目 LingBot-Map（评测），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-lingbot-map.md`](../../wiki/entities/cn-os-lingbot-map.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-lingbot-map.md`](../../wiki/entities/paper-lingbot-map.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-lingbot-map.md](../../wiki/entities/cn-os-lingbot-map.md)
+- [wiki/entities/paper-lingbot-map.md](../../wiki/entities/paper-lingbot-map.md)

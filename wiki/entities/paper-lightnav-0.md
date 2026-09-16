@@ -7,19 +7,25 @@ tags:
   - embodied-navigation
   - cross-embodiment
   - light-origins
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2608.30935"
 code: https://github.com/lightorigins/LightNav-0
 related:
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
   - ../overview/open-source-system-loop-7-papers-technology-map.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/lightnav0_arxiv_2608_30935.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
   - ../../sources/sites/lightnav-0.md
   - ../../sources/repos/lightorigins-lightnav-0.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/lightnav-0.md
 summary: "LightNav-0（arXiv:2608.30935，Light Origins）：dual-channel pointing + RVQ action tokenizer 统一 VLM 空间意图；2K+ 场景 4K+ h 数据；10 个导航仿真达论文投稿时最优单目成功率 + 跨本体零样本真机；lightorigins/LightNav-0 与 HF 权重已开源。"
 ---
 
@@ -127,6 +133,8 @@ sequenceDiagram
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [VLA](../methods/vla.md)
 - [开源系统闭环 7 篇地图](../overview/open-source-system-loop-7-papers-technology-map.md)
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 推荐继续阅读
 
@@ -139,3 +147,5 @@ sequenceDiagram
 - [具身智能小站 2026-09-01 七篇盘点](../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md)
 - [LightNav-0 项目页](../../sources/sites/lightnav-0.md)
 - [lightorigins/LightNav-0](../../sources/repos/lightorigins-lightnav-0.md)
+- [LightNav-0 源码归档](../../sources/repos/lightnav-0.md)（<https://github.com/lightorigins/LightNav-0>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [vla, dexmal, flow-matching, foundation-model, manipulation, navigation, cross-embodiment, open-world, open-source]
+tags: [vla, dexmal, flow-matching, foundation-model, manipulation, navigation, cross-embodiment, open-world, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -18,9 +18,13 @@ related:
   - ./robocoliseum.md
   - ./robodojo.md
   - ./lerobot.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/dexmal_dm05.md
   - ../../sources/repos/dexmal_opendm.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/opendm.md
 summary: "Dexmal DM0.5（OpenDM）：Gemma3-4B VLM + 680M Flow-Matching Action Expert 的开放世界 VLA；约 60s 历史上下文、11 类具身 CoT 与 DP 轨迹对齐；官方开源训练/推理栈与 DM05 / LIBERO / RobotWin2 / Table30v2 等权重。"
 ---
 
@@ -220,6 +224,8 @@ sequenceDiagram
 - [DM0.5 技术博客](https://www.dexmal.com/blog/dm0.5)
 - [DM05 Hugging Face 模型页](https://huggingface.co/Dexmal/DM05)
 - [DM05 Hugging Face collection](https://huggingface.co/collections/Dexmal/dm05)
+- [OpenDM 源码归档](../../sources/repos/opendm.md)（<https://github.com/dexmal/opendm>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 关联页面
 
@@ -233,6 +239,8 @@ sequenceDiagram
 - [Qwen-VLA](./qwen-vla.md) — 操作+导航通才对照
 - [π₀.₇ Policy](../methods/pi07-policy.md) — zero-shot 对比基准 π0.5-Droid 所属路线
 - [Dexmal DW05](./dexmal-dw05.md) — 同机构 Wan+MoT 世界–动作联合开源线
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 推荐继续阅读
 

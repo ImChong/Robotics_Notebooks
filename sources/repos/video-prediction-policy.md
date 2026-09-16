@@ -9,7 +9,7 @@
 - **分类：** VLA/操作模型
 - **入库日期：** 2026-09-06
 - **一句话说明：** 星动纪元 开源项目 video-prediction-policy（VLA/操作模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-video-prediction-policy.md`](../../wiki/entities/cn-os-video-prediction-policy.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-shenlan-wm-02-vpp.md`](../../wiki/entities/paper-shenlan-wm-02-vpp.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-video-prediction-policy.md](../../wiki/entities/cn-os-video-prediction-policy.md)
+- [wiki/entities/paper-shenlan-wm-02-vpp.md](../../wiki/entities/paper-shenlan-wm-02-vpp.md)

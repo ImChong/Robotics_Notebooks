@@ -15,14 +15,15 @@ tags:
   - world-action-models
   - lerobot
   - tars-robotics
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2512.24310"
 code: https://github.com/tars-robotics/World-In-Your-Hands
 related:
   - ./paper-ace-data-0.md
   - ./paper-data-pyramid-embodied-manipulation.md
-  - ./cn-os-world-in-your-hands.md
   - ./humantouch.md
   - ./lerobot.md
   - ./hiw-500-dataset.md
@@ -33,11 +34,14 @@ related:
   - ../concepts/world-action-models.md
   - ../queries/humanoid-training-data-pipeline.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/wiyh_arxiv_2512_24310.md
   - ../../sources/sites/wiyh-tars-ai.md
   - ../../sources/datasets/wiyh.md
   - ../../sources/repos/world-in-your-hands.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
 summary: "WIYH（TARS Robotics，arXiv:2512.24310）：Oracle Suite 可穿戴野外采集 + ~1045 h 多模态人类操作数据 + HVL 感知 benchmark；跨本体 VLA 预训练与重定向 co-training 将杂乱场景成功率提升至 60%；数据与 devkit 已开源（CC BY-NC-SA 4.0）。"
 ---
 
@@ -69,7 +73,7 @@ summary: "WIYH（TARS Robotics，arXiv:2512.24310）：Oracle Suite 可穿戴野
 - **模态对齐最全之一：** 相对 Ego4D / Ego-Exo4D / EgoDex（Table 1），WIYH 在 **野外** 设定下同时提供标定 RGB、**3D 动作**、深度、掩码、**触觉**、原子指令与 VLM 标注——适合 VLA / WAM / 空间智能联合训练。
 - **采集可规模化：** Oracle Suite 相对遥操作 **~5×** 日产量（720 vs 150 episodes/天），且遮挡下仍输出 **3D 手骨架**（优于 VR 2D 骨架）。
 - **跨本体实证：** 人类手数据预训练 + 少量夹爪后训练，真机任务平均成功率 **15%→70%**；杂乱场景 co-training **8%→60%**——为人侧数据进机器人策略提供可量化论据。
-- **国内开源标杆：** 与 [HumanTouch](./humantouch.md)、[ACE-Data-0](./paper-ace-data-0.md) 等同属「人类中心操作数据」轴，但 WIYH 强调 **工业/服务野外场景** 与 **官方全量 HF 发布**（见 [cn-os 节点](./cn-os-world-in-your-hands.md)）。
+- **国内开源标杆：** 与 [HumanTouch](./humantouch.md)、[ACE-Data-0](./paper-ace-data-0.md) 等同属「人类中心操作数据」轴，但 WIYH 强调 **工业/服务野外场景** 与 **官方全量 HF 发布**。
 
 ## 核心信息
 
@@ -231,8 +235,9 @@ WIYH 是当前少有的 **野外千小时级、3D 动作+触觉+VLM 标注对齐
 - [HumanTouch](./humantouch.md) — 另一大规模人手触觉采集叙事
 - [LeRobot](./lerobot.md) — `wiyh2lerobot` 训练栈对接
 - [VLA](../methods/vla.md) — 跨本体预训练消费范式
-- [cn-os World In Your Hands](./cn-os-world-in-your-hands.md) — 国内开源全景索引节点
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — HVL 三项诊断落在其 ① 具身大脑/MLLM 认知层（测 VLM 看懂没），§5 的跨本体成功率落在 ③ 策略任务成功率层；两层分数不可互相外推
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
@@ -240,6 +245,7 @@ WIYH 是当前少有的 **野外千小时级、3D 动作+触觉+VLM 标注对齐
 - [项目页归档](../../sources/sites/wiyh-tars-ai.md)
 - [HF 数据集归档](../../sources/datasets/wiyh.md)
 - [GitHub 仓库归档](../../sources/repos/world-in-your-hands.md)
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

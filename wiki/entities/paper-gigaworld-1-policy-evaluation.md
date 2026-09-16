@@ -8,8 +8,10 @@ tags:
   - manipulation
   - simulation
   - gigaai
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.02642"
 related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
@@ -24,9 +26,14 @@ related:
   - ../entities/paper-driftworld.md
   - ../entities/paper-wall-ss.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/current_robotics_currentworld.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/giga-world-1.md
+  - ../../sources/repos/cn_os_gigaworld_1.md
 summary: "GigaWorld-1（arXiv:2607.02642）：WMBench + 7 类视频 WM、4 种动作编码、32.4 万+ rollout 系统研究；结论：长时序动作忠实 rollout 比短时视觉逼真更决定评估质量；发布 GigaWorld-1 评估器（+14.9% WMES）。"
 ---
 
@@ -158,3 +165,6 @@ flowchart TB
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [GigaWorld-1 论文（arXiv:2607.02642）](https://arxiv.org/abs/2607.02642)
+- [GigaWorld-1 源码归档](../../sources/repos/cn_os_gigaworld_1.md)（<https://github.com/open-gigaai/giga-world-1>）
+- [GigaWorld-1 源码归档](../../sources/repos/giga-world-1.md)（<https://github.com/open-gigaai/giga-world-1>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

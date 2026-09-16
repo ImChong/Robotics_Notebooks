@@ -1,21 +1,23 @@
 ---
 type: entity
-tags: [paper, 3d-reconstruction, streaming, monocular, slam, computer-vision, alibaba, amap-cvlab]
+tags: [paper, 3d-reconstruction, streaming, monocular, slam, computer-vision, alibaba, amap-cvlab, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2608.27529"
 code: https://github.com/amap-cvlab/ABot-Recon
 related:
-  - ./cn-os-abot-recon.md
   - ../concepts/2d-to-3d-semantic-lifting-gap.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-sam3.md
   - ./paper-wid3r.md
   - ./paper-glob3r.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/abot_recon_arxiv_2608_27529.md
   - ../../sources/repos/abot-recon.md
   - ../../sources/sites/abot-recon.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
 summary: "ABot-Recon（arXiv:2608.27529）：固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建；每步预测点图与相邻相对位姿并序贯组合；Oxford Spires ATE 4.35 m（约 −40%）。"
 institutions:
   - alibaba
@@ -166,16 +168,18 @@ ABot-Recon 证明：**长程流式 3D 不必堆更大记忆**——固定 12 帧
 
 ## 关联页面
 
-- [cn-os-abot-recon](./cn-os-abot-recon.md) — 国内开源全景策展节点
 - [2D→3D 语义提升 Gap](../concepts/2d-to-3d-semantic-lifting-gap.md)
 - [机器人感知栈选型](../queries/robot-perception-stack-selection-loop.md)
 - [SAM 3](./paper-sam3.md) — 开放词汇 2D 前端对照
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
 - [ABot-Recon 论文摘录（arXiv:2608.27529）](../../sources/papers/abot_recon_arxiv_2608_27529.md)
 - [ABot-Recon 代码仓](../../sources/repos/abot-recon.md)
 - [ABot-Recon 项目页](../../sources/sites/abot-recon.md)
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

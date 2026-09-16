@@ -15,7 +15,7 @@
 - **入库日期：** 2026-09-06（策展快照）；**2026-09-13** 深化论文 ingest
 - **一句话说明：** 固定 **12 帧**局部上下文的单目 RGB 长视频流式 3D 重建：每步预测点图 + 相邻相对位姿，序贯组合全局几何；单目即可、有界内存。
 - **开源状态：** **已开源**（`demo.py`、`abot_recon.ABotRecon` API、HF 自动拉权重、可选 FlashInfer/cuRoPE）
-- **沉淀到 wiki：** [paper-abot-recon](../../wiki/entities/paper-abot-recon.md)、[cn-os-abot-recon](../../wiki/entities/cn-os-abot-recon.md)
+- **沉淀到 wiki：** [paper-abot-recon](../../wiki/entities/paper-abot-recon.md)（原 `cn-os-abot-recon` 策展页已并入此页）
 
 ---
 
@@ -55,6 +55,6 @@ python demo.py --image-dir examples/images --output-dir outputs/demo --no-loop-c
 | 主题 | wiki |
 |------|------|
 | 论文实体 | `wiki/entities/paper-abot-recon.md` |
-| 国内开源策展 | `wiki/entities/cn-os-abot-recon.md` |
+| 国内开源策展 | `wiki/entities/paper-abot-recon.md`（原 `cn-os-abot-recon`，已合并） |
 | 项目页 | `sources/sites/abot-recon.md` |
 | 论文摘录 | `sources/papers/abot_recon_arxiv_2608_27529.md` |

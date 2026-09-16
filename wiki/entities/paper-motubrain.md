@@ -10,8 +10,10 @@ tags:
   - humanoid
   - shengshu
   - tsinghua
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.27792"
 related:
   - ./paper-gwm-first-principles.md
@@ -25,11 +27,15 @@ related:
   - ./robotwin.md
   - ../tasks/manipulation.md
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/motubrain_arxiv_2604_27792.md
   - ../../sources/repos/motubrain.md
   - ../../sources/sites/motubrain-com.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_motubrain.md
 summary: "Motubrain（生数科技 / 清华，arXiv:2604.27792）：UniDiffuser 式 Joint WAM，三流 MoT + H-bridge；RoboTwin 2.0 95.8/96.1，WorldArena EWMScore 63.77；50–100 条同本体轨迹适配。官方仓仅 PDF，训练/推理待发布。"
 ---
 
@@ -164,6 +170,8 @@ flowchart TB
 - [RoboTwin 2.0](./robotwin.md) — 主仿真榜
 - [Manipulation](../tasks/manipulation.md)
 - [WAM 动作后果分类 01](../overview/wm-action-consequence-category-01-wam-action-prediction.md)
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
@@ -173,6 +181,8 @@ flowchart TB
 - Motubrain Team — <https://arxiv.org/abs/2604.27792>
 - 官网：<https://www.motubrain.com/zh/>
 - 技术页：<https://www.genspi.com/zh/motubrain/>
+- [MotuBrain 源码归档](../../sources/repos/cn_os_motubrain.md)（<https://github.com/shengshu-ai/MotuBrain>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 

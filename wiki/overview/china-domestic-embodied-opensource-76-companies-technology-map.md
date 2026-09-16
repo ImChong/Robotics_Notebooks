@@ -55,7 +55,7 @@ flowchart TB
 ## 节点策略（本 ingest）
 
 - **424/424 独立 `wiki/entities/*` 详情节点**（静态站 `detail.html?id=entity-…`）。
-- **复用 127** 既有实体（Unitree/智元/HMI 主表等已覆盖项）；**新建 297** `cn-os-*` 实体补齐缺口。
+- **复用 145** 既有实体（Unitree/智元/HMI 主表等已覆盖项）；**新建 279** `cn-os-*` 实体补齐缺口。
 - 与 [HMI 开源项目主表 166 项](../queries/hmi-opensource-projects-coverage.md) **互补**：主表按技术路线深读算法；本全景按 **国内机构** 查仓库入口。
 
 ## 读法建议

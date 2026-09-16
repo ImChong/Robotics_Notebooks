@@ -9,7 +9,7 @@
 - **分类：** 世界模型
 - **入库日期：** 2026-09-06
 - **一句话说明：** 阿里巴巴 开源项目 RynnWorld-4D（世界模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-rynnworld-4d.md`](../../wiki/entities/cn-os-rynnworld-4d.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md`](../../wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-rynnworld-4d.md](../../wiki/entities/cn-os-rynnworld-4d.md)
+- [wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md](../../wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md)

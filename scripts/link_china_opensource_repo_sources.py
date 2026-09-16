@@ -31,12 +31,12 @@ MANUAL_URLS: dict[tuple[str, str], str] = {
         "cn-os-sim2real",
         "sim2real",
     ): "https://github.com/HighTorque-Robotics/sim2real-inference_code",
-    ("cn-os-gigaworld-1", "GigaWorld-1"): "https://github.com/open-gigaai/giga-world-1",
+    ("paper-gigaworld-1-policy-evaluation", "GigaWorld-1"): "https://github.com/open-gigaai/giga-world-1",
     (
         "cn-os-rxbrain-1-0",
         "RxBrain-1.0",
     ): "https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0",
-    ("cn-os-embodiedgen-v2", "EmbodiedGen V2"): "https://github.com/HorizonRobotics/EmbodiedGen",
+    ("paper-embodiedgen-v2-sim-ready-world-engine", "EmbodiedGen V2"): "https://github.com/HorizonRobotics/EmbodiedGen",
     ("genie-sim-3", "Genie Sim 3.0"): "https://github.com/AgibotTech/genie_sim",
     ("agibot-world-2026", "AgiBot-World"): "https://github.com/AgibotTech/AgiBot-World",
     (

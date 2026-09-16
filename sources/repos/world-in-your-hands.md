@@ -32,4 +32,4 @@
 ## 对 wiki 的映射
 
 - [wiki/entities/paper-wiyh.md](../../wiki/entities/paper-wiyh.md) — 论文实体页（主入口）
-- [wiki/entities/cn-os-world-in-your-hands.md](../../wiki/entities/cn-os-world-in-your-hands.md) — 国内开源全景节点
+- [wiki/entities/paper-wiyh.md](../../wiki/entities/paper-wiyh.md) — 国内开源全景节点

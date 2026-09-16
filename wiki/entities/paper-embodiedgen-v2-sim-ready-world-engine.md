@@ -7,8 +7,10 @@ tags:
   - 3d-generation
   - embodied-ai
   - horizon-robotics
+  - open-source
+  - china-embodied-opensource
 status: complete
-updated: 2026-07-14
+updated: 2026-09-16
 arxiv: "2607.07459"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
@@ -18,10 +20,14 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-deform360-deformable-visuotactile-dataset.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/repos/embodiedgen.md
   - ../../sources/datasets/embodiedgen-data.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_embodiedgen_v2.md
 summary: "EmbodiedGen V2（arXiv:2607.07459）：开源 sim-ready 3D 世界引擎；统一表征生成带碰撞/物理/affordance/模拟器接口的任务世界；83.3% 免改可用；RL 仿真 9.7%→79.8%、真机 21.7%→75.0%；配套 EmbodiedGenData（~4.1K 资产 / 346 GB）。"
 ---
 
@@ -172,3 +178,5 @@ flowchart TB
 - [EmbodiedGenData 数据集](../../sources/datasets/embodiedgen-data.md)
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [EmbodiedGen V2 论文（arXiv:2607.07459）](https://arxiv.org/abs/2607.07459)
+- [EmbodiedGen V2 源码归档](../../sources/repos/cn_os_embodiedgen_v2.md)（<https://github.com/HorizonRobotics/EmbodiedGen>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

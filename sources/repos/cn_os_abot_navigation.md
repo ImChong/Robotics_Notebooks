@@ -9,7 +9,7 @@
 - **分类：** 数据集/Benchmark
 - **入库日期：** 2026-09-06
 - **一句话说明：** 阿里巴巴 开源项目 ABot-Navigation（数据集/Benchmark），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-abot-navigation.md`](../../wiki/entities/cn-os-abot-navigation.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-abot-n1.md`](../../wiki/entities/paper-abot-n1.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-abot-navigation.md](../../wiki/entities/cn-os-abot-navigation.md)
+- [wiki/entities/paper-abot-n1.md](../../wiki/entities/paper-abot-n1.md)

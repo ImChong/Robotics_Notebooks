@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [world-models, wam, video-action-model, dexmal, manipulation, diffusion, mixture-of-transformers, robotwin, open-source]
+tags: [world-models, wam, video-action-model, dexmal, manipulation, diffusion, mixture-of-transformers, robotwin, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-08-25
+updated: 2026-09-16
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -14,8 +14,12 @@ related:
   - ./robotwin.md
   - ./paper-abot-m05-mobile-manipulation-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/repos/dexmal_opendw.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/opendw.md
 summary: "Dexmal DW05（OpenDW）：Wan 骨干 + MoT 三专家头联合未来视频、32D 动作与状态–价值建模；开源 DW05-Base 与 RoboTwin 2.0 SFT 权重、训练与 RobotWin-style JSONL 推理管线。"
 ---
 
@@ -133,6 +137,8 @@ flowchart TB
 - [OpenDW GitHub](https://github.com/dexmal/opendw)
 - [DW05-Base（Hugging Face）](https://huggingface.co/Dexmal/DW05-Base)
 - [DW05-Robotwin（Hugging Face）](https://huggingface.co/Dexmal/DW05-Robotwin)
+- [OpenDW 源码归档](../../sources/repos/opendw.md)（<https://github.com/dexmal/opendw>）
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 关联页面
 
@@ -142,6 +148,8 @@ flowchart TB
 - [RoboTwin 2.0](./robotwin.md)
 - [mimic-video（VAM）](../methods/mimic-video.md)
 - [Manipulation](../tasks/manipulation.md)
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 推荐继续阅读
 

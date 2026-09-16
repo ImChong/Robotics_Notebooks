@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, robbyant, 3d-reconstruction, foundation-model, slam, streaming-perception, pose-estimation, depth-estimation]
+tags: [paper, robbyant, 3d-reconstruction, foundation-model, slam, streaming-perception, pose-estimation, depth-estimation, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.14141"
 venue: "ECCV 2026 oral"
 code: https://github.com/Robbyant/lingbot-map
@@ -16,11 +16,15 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/vla.md
   - ./lingbot-vla-v2.md
+  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+  - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
   - ../../sources/sites/lingbot-map-technology-robbant.md
   - ../../sources/sites/lingbot-map-github-io.md
   - ../../sources/repos/lingbot-map.md
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+  - ../../sources/repos/cn_os_lingbot_map.md
 summary: "LingBot-Map（Robbyant，arXiv:2604.14141，ECCV 2026 oral）：GCT 流式前馈 3D 基础模型，GCA 统一锚点/局部稠密窗/轨迹记忆，Paged KV（FlashInfer）支撑 ~20 FPS、>10k 帧；代码+HF 权重+评测脚本已开源（Apache-2.0）。"
 ---
 
@@ -184,6 +188,8 @@ sequenceDiagram
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 流式前馈重建在感知栈「表征层」的定位与选型口径
 - [VLA](../methods/vla.md) — 可选几何先验下游
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — 同栈动作模型
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
 
@@ -192,6 +198,7 @@ sequenceDiagram
 - [LingBot-Map GitHub Pages 镜像核查](../../sources/sites/lingbot-map-github-io.md)
 - [LingBot-Map 官方仓库](../../sources/repos/lingbot-map.md)
 - Chen et al., *LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction* — <https://arxiv.org/abs/2604.14141>
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 
