@@ -9,6 +9,37 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-fmp-motion-priors.md",
+      "detail_id": "entity-paper-fmp-motion-priors",
+      "label": "Flow-Matched Motion Priors：在线 OT 模仿奖励",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ressafe.md",
+      "detail_id": "entity-paper-ressafe",
+      "label": "ResSafe：G1 残差安全过滤",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-smolvla-onnx-libero.md",
+      "detail_id": "entity-paper-smolvla-onnx-libero",
+      "label": "SmolVLA ONNX LIBERO：闭环部署审计",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/depth-anything-cpp.md",
       "detail_id": "entity-depth-anything-cpp",
       "label": "depth-anything.cpp（DA3 的 C++/ggml 本地几何推理）",
@@ -174,46 +205,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sai-sequential-asymmetric-imitation.md",
-      "detail_id": "entity-paper-sai-sequential-asymmetric-imitation",
-      "label": "SAI：序贯非对称模仿学习耦合双机策略",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-saigen.md",
-      "detail_id": "entity-paper-saigen",
-      "label": "SAIGEN：材料合成自动化平台",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-scan2mesh-cvpr2019-dai.md",
-      "detail_id": "entity-paper-scan2mesh-cvpr2019-dai",
-      "label": "Scan2Mesh：From Unstructured Range Scans to 3D Meshes（CVPR 2019）",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/depth-anything-cpp.md",
-    "detail_id": "entity-depth-anything-cpp",
-    "label": "depth-anything.cpp（DA3 的 C++/ggml 本地几何推理）",
+    "path": "wiki/entities/paper-fmp-motion-priors.md",
+    "detail_id": "entity-paper-fmp-motion-priors",
+    "label": "Flow-Matched Motion Priors：在线 OT 模仿奖励",
     "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
