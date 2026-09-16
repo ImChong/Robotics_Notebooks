@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, autopilot, px4, mavlink, uav, multirotor, open-source, linux-foundation]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-16
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../concepts/sim2real.md

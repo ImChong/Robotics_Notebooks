@@ -108,9 +108,9 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（3 个）
-- wiki/entities/paper-livecook.md（含绝对化措辞「SOTA」，updated=2026-09-15；同主题更新页 wiki/entities/paper-abot-m05-mobile-manipulation-wam.md updated=2026-09-16）
-- wiki/entities/paper-pelican-sim.md（含绝对化措辞「SOTA」，updated=2026-09-15；同主题更新页 wiki/entities/humantouch.md updated=2026-09-16）
-- wiki/entities/paper-streaming-interventions.md（含绝对化措辞「SOTA」，updated=2026-09-15；同主题更新页 wiki/entities/paper-abot-m05-mobile-manipulation-wam.md updated=2026-09-16）
+- wiki/entities/paper-livecook.md（含绝对化措辞「SOTA」，updated=2026-09-15；同主题更新页 wiki/entities/paper-adapt-text-driven-humanoid.md updated=2026-09-16）
+- wiki/entities/paper-pelican-sim.md（含绝对化措辞「SOTA」，updated=2026-09-15；同主题更新页 wiki/entities/paper-adapt-text-driven-humanoid.md updated=2026-09-16）
+- wiki/entities/paper-streaming-interventions.md（含绝对化措辞「SOTA」，updated=2026-09-15；同主题更新页 wiki/entities/paper-adapt-text-driven-humanoid.md updated=2026-09-16）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -130,4 +130,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4048/4048 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4076/4076 (100%) wiki/entity 页有 ingest 来源
