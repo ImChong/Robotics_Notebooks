@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15",
+  "generated_at": "2026-09-16",
   "node_count": 4082,
   "edge_count": 36505,
   "coverage": {
@@ -8,6 +8,63 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/deep-rl-off-on-policy-evolution.md",
+      "detail_id": "wiki-overview-deep-rl-off-on-policy-evolution",
+      "label": "深度 RL 两条主线：Off-policy 与 On-policy 演进",
+      "type": "overview",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-one-filter-ocr-quadruped-navigation.md",
+      "detail_id": "entity-paper-one-filter-ocr-quadruped-navigation",
+      "label": "One Filter to Deploy Them All：OCR 四足安全导航",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-robogauge-moe-quadruped-locomotion.md",
+      "detail_id": "entity-paper-robogauge-moe-quadruped-locomotion",
+      "label": "RoboGauge：MoE 四足运动与 Sim-to-Real 可预测性",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-se2-navigation-mesh.md",
+      "detail_id": "entity-paper-se2-navigation-mesh",
+      "label": "SE(2) Navigation Mesh",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/repo-go2-backflip.md",
+      "detail_id": "entity-repo-go2-backflip",
+      "label": "GO2 Backflip（Robot-Nav / PPO-backflip）",
+      "type": "entity",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/mimic-control-evolution-lineage.md",
+      "detail_id": "wiki-overview-mimic-control-evolution-lineage",
+      "label": "Mimic 控制演进：DeepMimic → BeyondMimic",
+      "type": "overview",
+      "recency": "2026-09-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
     {
       "path": "wiki/entities/awesome-rsi.md",
       "detail_id": "entity-awesome-rsi",
@@ -146,80 +203,16 @@
       "source": "git",
       "action": "added",
       "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trace-causal-memory.md",
-      "detail_id": "entity-paper-trace-causal-memory",
-      "label": "TRACE：轨迹路由因果记忆",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-track4world.md",
-      "detail_id": "entity-paper-track4world",
-      "label": "Track4World：前馈世界系全像素稠密 3D 跟踪",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-vlbiman-plus.md",
-      "detail_id": "entity-paper-vlbiman-plus",
-      "label": "VLBiMan++：VLA 锚定 one-shot 双臂操作",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wiyh.md",
-      "detail_id": "entity-paper-wiyh",
-      "label": "World In Your Hands（WIYH）：野外人类中心操作开源生态",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-x-wbc.md",
-      "detail_id": "entity-paper-x-wbc",
-      "label": "X-WBC：跨具身人形全身控制基础模型",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-zeno-1-collaborative-intelligence.md",
-      "detail_id": "entity-paper-zeno-1-collaborative-intelligence",
-      "label": "Zeno-1：机器人协作智能基础模型",
-      "type": "entity",
-      "recency": "2026-09-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/awesome-rsi.md",
-    "detail_id": "entity-awesome-rsi",
-    "label": "Awesome RSI（Prism-Shadow 精选集）",
-    "type": "entity",
+    "path": "wiki/overview/deep-rl-off-on-policy-evolution.md",
+    "detail_id": "wiki-overview-deep-rl-off-on-policy-evolution",
+    "label": "深度 RL 两条主线：Off-policy 与 On-policy 演进",
+    "type": "overview",
     "recency": "2026-09-15",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
