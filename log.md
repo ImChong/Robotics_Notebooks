@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | WholeBodyWAM·UniMotion-4K / Real-Time EXPO-FT / GR00T Drifting / RecMorph — 四篇 arXiv:2609.18197–18359 批量入库
+
+- **触发：** 用户指定四论文 + 项目/仓库链接；自动合并 PR
+- **步骤 2.5：** WholeBodyWAM·UniMotion / Real-Time EXPO-FT **待发布**；GR00T Drifting（LeRobot fork + HF）/ RecMorph **已开源**
+- **关键页：** 新建 `paper-wholebodywam-unimotion-4k`、`paper-real-time-expo-ft`、`paper-groot-drifting-action-head`、`paper-recmorph`；`paper-wholebodywam` 补同名异文交叉引用
+
 ## [2026-09-16] ingest | RLE-Bench — 接入 coding agent 机器人学习工程资格考（Harvard×GT）；sources 四件 + wiki/entities/rle-bench.md；MIT 仓已开源
 
 ## [2026-09-16] ingest | sources/papers/lsrm_object_reconstruction_arxiv_2604_05182.md — LSRM 复核增强：Meta Reality Labs 机构对齐、NSA/三贡献/README 复现路径、CC BY-NC 4.0；NVIDIA 仅作 H200/Tensor Core 工程语境

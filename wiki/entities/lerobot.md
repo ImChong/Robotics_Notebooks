@@ -55,7 +55,7 @@ sources:
 ## 核心组件
 
 - **Dataset Library**：支持加载和上传大规模机器人演示数据集（LeRobotDataset v3）。
-- **Policy Library**：内置 ACT、Diffusion、π0/π0.5、GR00T N、SmolVLA 等策略实现。
+- **Policy Library**：内置 ACT、Diffusion、π0/π0.5、GR00T N、SmolVLA 等策略实现；社区 fork 含 [GR00T Drifting 单步 action head 审计](./paper-groot-drifting-action-head.md)（`RealManShao/lerobot@feat/drif-ov`）。
 - **Hardware Interface**：统一 `Robot` 类连接电机、传感器与真机；第三方 `lerobot_robot_*` 插件自动发现。
 - **EnvHub / 仿真评测**：`lerobot.envs.make_env` 与 `lerobot-eval` 从 Hub 拉取 `env.py` 环境，或走内置 `libero` / `metaworld` 等 `--env.type`。详见 [LeRobot EnvHub](../concepts/lerobot-envhub.md)。
 

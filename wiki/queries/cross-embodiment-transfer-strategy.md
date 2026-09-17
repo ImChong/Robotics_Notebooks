@@ -211,6 +211,7 @@ flowchart TD
 - [Sim2Real](../concepts/sim2real.md) — 三路径共用的真机部署与安全层
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 多具身联合训练的「身体基础模型」叙事
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) — 高效后训练路径的代表论文
+- [RecMorph](../entities/paper-recmorph.md) — UNIMAL/四足广义形态控制：拓扑 DFS 序 + 空间 RNN（arXiv:2609.18359；已开源）
 - [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 近亲骨架、更严冻结的 Any2Any 变体
 - [SONIC](../methods/sonic-motion-tracking.md) — 规模化预训练 / 多具身骨干
 - [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — 跨本体 WBC：迭代 specialist 蒸馏 + 统一速度/高度/pitch 指令（ICRA 2026）
