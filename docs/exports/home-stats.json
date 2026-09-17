@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4088,
-  "edge_count": 36723,
+  "node_count": 4089,
+  "edge_count": 36743,
   "coverage": {
-    "covered": 4060,
-    "total": 4060,
+    "covered": 4061,
+    "total": 4061,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/vla-evolution-lineage.md",
+      "detail_id": "wiki-overview-vla-evolution-lineage",
+      "label": "VLA 演进：从动作 Token 到分层具身智能体",
+      "type": "overview",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/concepts/robot-joint-bearing-selection.md",
       "detail_id": "wiki-concepts-robot-joint-bearing-selection",
@@ -197,26 +207,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-proxidex.md",
-      "detail_id": "entity-paper-proxidex",
-      "label": "ProxiDex（arXiv:2609.16586）",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/robot-joint-bearing-selection.md",
-    "detail_id": "wiki-concepts-robot-joint-bearing-selection",
-    "label": "机器人关节轴承选型（载荷路径与五笔账）",
-    "type": "concept",
+    "path": "wiki/overview/vla-evolution-lineage.md",
+    "detail_id": "wiki-overview-vla-evolution-lineage",
+    "label": "VLA 演进：从动作 Token 到分层具身智能体",
+    "type": "overview",
     "recency": "2026-09-17",
     "source": "git",
     "action": "added",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -229,7 +230,7 @@
     },
     {
       "label": "全身控制",
-      "size": 343
+      "size": 345
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -265,7 +266,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1002,
+      "degree": 1004,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

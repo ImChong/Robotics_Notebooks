@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-17
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -10,6 +10,7 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ../overview/vla-evolution-lineage.md
   - ../entities/paper-unified-robot-learning-survey.md
   - ../overview/embodied-infra-2026-panorama.md
   - ../queries/slam-second-spring-embodied.md
@@ -146,6 +147,7 @@ related:
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/anthropic-embody.md
 sources:
+  - ../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -209,7 +211,7 @@ sources:
 
 ## 一句话定义
 
-VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。在 [Foundation Policy](../concepts/foundation-policy.md) 抽象下，VLA 是 manipulation 域最主流的 foundation policy 实例。
+VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。在 [Foundation Policy](../concepts/foundation-policy.md) 抽象下，VLA 是 manipulation 域最主流的 foundation policy 实例。按历史脉络纵览 SayCan→RT-2→π₀→Helix 02 的三次结构迁移，见 [VLA 演进技术地图](../overview/vla-evolution-lineage.md)。
 
 ## 英文缩写速查
 
@@ -459,6 +461,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 参考来源
 
+- [wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md](../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md) — PinkRobot：VLA 从动作 token 到分层具身智能体的演进综述
 - [wechat_shenlan_robot_learning_five_paradigms.md](../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md) — 深蓝具身智能：机器人学习五大范式中的多模态 / VLA 定位
 - [wechat_shenlan_five_embodied_model_taxonomy.md](../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md) — 深蓝具身智能五大模型（VLM/VLN/VLA/VLX/WM）分类与协同链路
 - [深蓝具身智能：2025 VLA 开源复现景观（微信公众号）](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — OpenPI、VLA-Adapter、RLinf 等 11 项 GitHub 栈策展索引

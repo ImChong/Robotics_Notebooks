@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md — PinkRobot VLA 演进综述（动作 token → Action Expert → 多时间尺度层级）；新建 `vla-evolution-lineage` 技术地图
+
+- **触发：** 用户指定微信公众号 <https://mp.weixin.qq.com/s/w2QP2RXmpA5juqUjyd0tsQ>；自动合并 PR
+- **步骤 2.5：** 综述文；所引 RT-2/π₀/OpenVLA/GR00T 等开源状态见各实体页，本篇不重复核查
+- **关键页：** 新建 [`vla-evolution-lineage`](wiki/overview/vla-evolution-lineage.md)；交叉 [VLA 方法页](wiki/methods/vla.md)
+
 ## [2026-09-17] ingest | sources/blogs/wechat_zanehub_robot_joint_bearing_selection.md — Zane Hub 关节轴承选型（载荷路径/五笔账/润滑失效判据）；升格 `robot-joint-bearing-selection` 概念页
 
 - **触发：** 用户指定微信公众号 <https://mp.weixin.qq.com/s/rweTJtjvt8LaJLLM8eEYBg>
