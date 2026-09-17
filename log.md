@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | sources/sites/protobuf-dev-docs.md + sources/repos/protobuf.md — Protocol Buffers 一手资料（protobuf.dev + GitHub）；新建 `protocol-buffers` 实体；交叉 gRPC / RPC 概念；自动合并 PR
+
+- **触发：** 用户要求 Protobuf 一手资料 ingest
+- **步骤 2.5：** **已开源**（BSD-3-Clause；protocolbuffers/protobuf ~72k★）
+- **关键页：** 新建 [`protocol-buffers`](wiki/entities/protocol-buffers.md)；更新 [`grpc`](wiki/entities/grpc.md)、[`remote-procedure-call`](wiki/concepts/remote-procedure-call.md)
+
 ## [2026-09-17] ingest | sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md — 具身小站 9 篇（看/做/迁移）；9/9 独立节点（7 新建 + RecMorph/EXPO-FT 复用）；自动合并 PR
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/w6w1FzL2FG7vlFa27UYE6w>

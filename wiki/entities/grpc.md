@@ -11,9 +11,11 @@ related:
   - ../queries/real-time-control-middleware-guide.md
   - ../overview/hub-communication.md
   - ./freecad-mcp.md
+  - ./protocol-buffers.md
 sources:
   - ../../sources/repos/grpc.md
   - ../../sources/sites/grpc-io-docs.md
+  - ../../sources/repos/protobuf.md
   - ../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md
   - ../../sources/sites/rfc-5531-onc-rpc.md
 summary: "gRPC：CNCF 孵化中的高性能 RPC 框架；Protobuf IDL + HTTP/2；unary/流式四种调用；机器人中适合服务/边云 API，不适合 1 kHz 力矩环。"
@@ -67,7 +69,7 @@ sequenceDiagram
   Stub->>App: 返回 / 抛错(DEADLINE_EXCEEDED…)
 ```
 
-一手：[grpc.io Core concepts](../../sources/sites/grpc-io-docs.md)；仓内 `CONCEPTS.md` / `doc/PROTOCOL-HTTP2.md`。
+一手：[grpc.io Core concepts](../../sources/sites/grpc-io-docs.md)；仓内 `CONCEPTS.md` / `doc/PROTOCOL-HTTP2.md`。默认 IDL/载荷见 [Protocol Buffers](./protocol-buffers.md)。
 
 ## 工程实践
 
@@ -95,6 +97,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Protocol Buffers（默认 IDL/载荷）](./protocol-buffers.md)
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [网络协议栈](../concepts/network-protocol-stack.md)

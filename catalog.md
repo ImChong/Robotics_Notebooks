@@ -3093,6 +3093,7 @@
 - [Project Instinct](wiki/entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [Project Quiver](wiki/entities/project-quiver.md) — Project Quiver**（Arrow-air/project-quiver）是 Arrow A `📅unknown` `[entity_page]`
 - [Project SuperDex](wiki/entities/project-superdex.md) — Project SuperDex** 是 Meta（[facebookresearch](https://github.com/facebookresearch/project_superdex `📅unknown` `[entity_page]`
+- [Protocol Buffers（Protobuf）](wiki/entities/protocol-buffers.md) — Protocol Buffers** 是 Google 开源的 **语言中立、平台中立** 结构化数据 **序列化机制**：用 **`.proto` IDL** 定义 `message`/`enu `📅unknown` `[entity_page]`
 - [ProtoMotions: 大规模人形机器人仿真框架](wiki/entities/protomotions.md) — ProtoMotions**（当前主线为 **ProtoMotions3**）是 NVIDIA Labs 维护的 **GPU 加速仿真 + 强化学习训练** 框架：面向 **动画角色** 与  `📅unknown` `[entity_page]`
 - [ProxSuite](wiki/entities/proxsuite.md) — ProxSuite](https://github.com/Simple-Robotics/proxsuite) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [PULSE](wiki/entities/pulse-physics.md) — PULSE**（*Universal Humanoid Motion Representations for Physics-Based Control*，[arXiv:2310.04582](h `📅unknown` `[entity_page]`

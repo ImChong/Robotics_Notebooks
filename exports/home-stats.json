@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4098,
-  "edge_count": 36797,
+  "node_count": 4099,
+  "edge_count": 36805,
   "coverage": {
-    "covered": 4070,
-    "total": 4070,
+    "covered": 4071,
+    "total": 4071,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -223,12 +223,12 @@
       "size": 620
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 420
+      "label": "全身控制",
+      "size": 421
     },
     {
-      "label": "全身控制",
-      "size": 364
+      "label": "宇树 G1 人形机器人",
+      "size": 420
     },
     {
       "label": "国内开源全景 424 项本库导读",

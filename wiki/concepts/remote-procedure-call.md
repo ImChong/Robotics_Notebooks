@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-15
 related:
   - ../entities/grpc.md
+  - ../entities/protocol-buffers.md
   - ./ros2-basics.md
   - ./dds-communication.md
   - ./rmw-interface.md
@@ -65,6 +66,7 @@ summary: "Remote Procedure Call（RPC）：把本地过程调用语义扩展到�
 |----|----------|----------|
 | **概念** | Birrell & Nelson TOCS 1984 | 语义与设计议题 |
 | **历史线协议** | [RFC 5531 ONC RPC](../../sources/sites/rfc-5531-onc-rpc.md) | Program/Procedure、XDR 消息、与传输/绑定解耦 |
+| **序列化 / IDL** | [Protocol Buffers 实体](../entities/protocol-buffers.md) / [protobuf.dev](../../sources/sites/protobuf-dev-docs.md) | `.proto`、protoc、wire format、字段演进 |
 | **现代框架** | [gRPC 文档](../../sources/sites/grpc-io-docs.md) / [grpc/grpc](../../sources/repos/grpc.md) | Protobuf IDL、四种 RPC、HTTP/2、多语言 stub |
 
 RFC 5531 写明：规范 **不论证**「为何用 RPC」，概念背景指向 Birrell & Nelson；且 **binding 可独立于 RPC 报文协议**。
