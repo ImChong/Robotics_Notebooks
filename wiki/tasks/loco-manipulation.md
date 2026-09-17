@@ -353,6 +353,7 @@ flowchart TD
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — DP 规划器 + RL 跟踪器联合微调的人形 loco-manip（arXiv:2603.13707，Booster T1）
 - [SplitAdapter（论文实体）](../entities/paper-splitadapter-load-aware-loco-manipulation.md) — 冻结 AMP 搬箱策略 + 因子化世界模型/FiLM 负载感知适配（arXiv:2606.03297）
 - [CoorDex（论文实体）](../entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — body/hand 潜先验协调残差、连续高 DoF dexterous loco-manipulation（arXiv:2606.23680）
+- [WEAVE（论文实体）](../entities/paper-weave.md) — SMPL-X HOI → 接触感知重定向 + Kimodo；G1+Inspire 九物体 PPO tracking（arXiv:2609.16683；已开源）
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact-prompted 单策略 WBT：自由空间+地形+搬箱/上楼；hindsight 场景重建数据引擎（arXiv:2606.27581）
 - [ContactMimic（论文实体）](../entities/paper-contactmimic.md) — keypoint + per-body contact 指令；增广解耦与 G1 真机 contact ✔/✘ controllability（arXiv:2607.08742）
 
