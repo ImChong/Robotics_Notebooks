@@ -113,7 +113,7 @@ sequenceDiagram
 - **算力：** VLM 骨干推理延迟需结合部署平台评估。
 - **数据引擎：** 大规模仿真数据生成细节以仓库 README 为准。
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
 | 维度 | LightNav-0 | 模块化导航栈（建图 + 规划） | 任务专用导航策略头 | 通用 VLA 直出动作 |
 |------|-----------|------------------------|-----------------|-----------------|
@@ -133,7 +133,7 @@ sequenceDiagram
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [VLA](../methods/vla.md)
 - [开源系统闭环 7 篇地图](../overview/open-source-system-loop-7-papers-technology-map.md)
-- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 站内对应条目页
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 推荐继续阅读

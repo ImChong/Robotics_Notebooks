@@ -17,7 +17,7 @@ summary: "PDF-HR 训练一个神经距离场：输入一个机器人姿态，输
 
 # PDF-HR
 
-**PDF-HR: Pose Distance Fields for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**PDF-HR: Pose Distance Fields for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -46,7 +46,7 @@ PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到"
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -55,7 +55,7 @@ PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到"
 - 真正起作用的是「连续可微」这一性质：同一个距离场能同时充当 RL 的奖励整形项、模仿学习的正则项与运动重定向的姿态打分器，不必为每种用法各写一套约束。
 - 它学的是「到已知合理姿态语料库的最短距离」，因此能力上限由语料库覆盖度决定——语料未覆盖的姿态会被一律判为低可信，这是它的适用边界。
 - 定位是旁挂组件而非新控制架构：不改动策略结构，收益也因此偏向姿态可信度与约束满足，而不是任务成功率本身。
-- 本页属 04_Loco-Manipulation_and_WBC 类目下的策展索引级条目，量化 benchmark 与消融以深读笔记和论文 PDF 为准，不宜直接引本页下指标结论。
+- 本页属 04_Loco-Manipulation_and_WBC 类目下的策展清单索引条目，量化 benchmark 与消融以深读笔记和论文 PDF 为准，不宜直接引本页下指标结论。
 
 ## 与其他页面的关系
 

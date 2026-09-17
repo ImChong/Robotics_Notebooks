@@ -14,7 +14,7 @@ summary: "越来越多人形被部署到医院、养老等场所，常由人远�
 
 # Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots with Torso-Arm Coordination
 
-**Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots with Torso-Arm Coordination** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots with Torso-Arm Coordination** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ summary: "越来越多人形被部署到医院、养老等场所，常由人远�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ summary: "越来越多人形被部署到医院、养老等场所，常由人远�
 - 机器人发起一侧同时依赖**可达性、任务目标与推断的人类意图**三者；意图推断不准时优势会退化，这是共享自主的固有风险。
 - 评价维度刻意超出成功率：任务表现、**可操作度（manipulability）**与能效并列，并纳入参与者偏好——作者的立场是遥操作系统不能只用任务指标评判。
 - 适用边界是医院/养老等辅助场景下的**移动人形**远程操控；偏好结论出自 N=17 的样本，向其他人群与任务推广时应谨慎。
-- 已被 ICRA 2025 接收；本页只是笔记编译的索引级摘要，量化细节以深读笔记与论文 PDF 为准。
+- 已被 ICRA 2025 接收；本页只是笔记编译的笔记摘要，量化细节以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

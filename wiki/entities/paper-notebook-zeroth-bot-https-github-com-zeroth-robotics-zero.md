@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_zeroth-bot-https-github-com-zeroth-robotics-zero.md
-summary: "Zeroth Bot：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Zeroth Bot：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Zeroth Bot
 
-**[Zeroth Bot](https://github.com/zeroth-robotics/zeroth-bot)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**[Zeroth Bot](https://github.com/zeroth-robotics/zeroth-bot)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Zeroth Bot 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,16 +48,16 @@ Zeroth Bot 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 ## 结论
 
-**本页当前的价值是图谱占位与检索锚点，而不是对 Zeroth Bot 的技术判断——真正的结论要等深读笔记落地后重写。**
+**本页当前的价值是待读条目与检索锚点，而不是对 Zeroth Bot 的技术判断——真正的结论要等深读笔记落地后重写。**
 
 - 页面能确定的只有元信息：分类 12_Hardware_Design、PROGRESS.md 标记为待深读、计划文件夹路径；核心信息表里没有 arXiv 字段，该条目的一手入口是 GitHub 仓库而非论文。
 - 因此不应把本页当作引用该工作的技术依据；需要结论时请回到上游仓库，或等待笔记站的深读页。
-- 适用边界很窄：本页只服务于 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点之间的交叉检索，避免知识图谱缺失该实体。
-- 升格条件明确：深读笔记完成后本页应链向笔记站并补齐「实验与评测」，届时本节需整体重写。
+- 适用边界很窄：本页只服务于 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页之间的交叉检索，方便你按分类找到它。
+- 深读笔记完成后，本页会补上笔记链接与实质要点。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
+- 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -14,7 +14,7 @@ summary: "现有人形模仿学习的指标（如关节位置误差 MPJPE）只�
 
 # Benchmarking Humanoid Imitation Learning with Motion Difficulty
 
-**Benchmarking Humanoid Imitation Learning with Motion Difficulty** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Benchmarking Humanoid Imitation Learning with Motion Difficulty** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "现有人形模仿学习的指标（如关节位置误差 MPJPE）只�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ summary: "现有人形模仿学习的指标（如关节位置误差 MPJPE）只�
 - 配套产物是难度分层的 **MD-AMASS** 切分，以及 **MID**（最大可模仿难度）与 **DSJE**（按难度分层的关节误差）两个指标，把「比 SOTA」改写成「在每个难度档分别比 SOTA」。
 - 它要纠正的盲区很明确：MPJPE 这类指标只反映策略「学得多像」，不反映「这段动作本身有多难」，聚合数字因此会被容易的动作稀释。
 - 适用边界：难度定义建立在刚体动力学与力矩敏感度之上，衡量的是动力学意义上的难，不覆盖感知或任务语义层面的难度。
-- 本页为策展索引级摘要，量化 benchmark 与消融以 [参考来源](#参考来源) 中的深读笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，量化 benchmark 与消融以 [参考来源](#参考来源) 中的深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

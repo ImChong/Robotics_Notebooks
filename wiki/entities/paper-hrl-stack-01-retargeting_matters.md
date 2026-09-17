@@ -46,7 +46,7 @@ GMR 的核心命题很直接：**retargeting matters**。论文指出，humanoid
 - 这篇论文的价值在于，它没有把 retargeting 当成 **“训练前处理一下数据”** 的小步骤，而是系统评估了 **重定向质量对 motion tracking policy 的影响**。
 - 论文比较了 GMR、PHC、ProtoMotions、Unitree 官方重定向等方法，并通过用户研究和 sim2sim 成功率说明：一个重定向结果既要接近源动作，又要适合训练控制器。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

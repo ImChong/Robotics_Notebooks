@@ -14,7 +14,7 @@ summary: "基于模仿学习的视觉运动策略表现强，但常对第一视�
 
 # EgoDemoGen
 
-**EgoDemoGen: Egocentric Demonstration Generation for Viewpoint Generalization in Robotic Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**EgoDemoGen: Egocentric Demonstration Generation for Viewpoint Generalization in Robotic Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ EgoDemoGen 要：**无需多视角数据**，**生成**新视角下的配对演�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ EgoDemoGen 要：**无需多视角数据**，**生成**新视角下的配对演�
 - 收益量级明确：仿真成功率绝对提升 **+24.6% / +16.9%**，真机在不同视角条件下提升 **+16.0% / +23.0%**，说明合成演示不止在仿真里自洽，也迁得到真机。
 - 适用边界：方法针对的是第一视角的视角偏移，前提是已有单视角演示可供迁移；IK 滤波会筛掉不可行轨迹，新视角与源视角差得越远，可用样本越少。
 - 与 EgoMI 的主动视觉路线形成对照：后者改变「机器人怎么看」，本文改变「训练数据里有哪些视角」，二者是同一问题的两种解法。
-- 本页为索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

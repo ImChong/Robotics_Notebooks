@@ -39,7 +39,7 @@ sources:
 - 统一头/手/身体/根目标的神经全身接口，供上层规划器调用。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#14/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -69,7 +69,7 @@ sources:
 
 - 关键取舍是 **goal / reference / command 条件化**——一套策略覆盖多种目标条件技能，而不是每类目标各训一个控制器。
 - 边界写得很直白：goal-conditioned 跟踪 **不等于 unlimited skills**，仍受数据分布、接触建模与实机 Sim2Real 约束。
-- 工程可及性较好（代码 <https://github.com/NVlabs/HOVER/>），但本页属 **索引级归纳**（#14/41，02 Goal-conditioned 学习），量化指标以原文与项目页为准。
+- 工程可及性较好（代码 <https://github.com/NVlabs/HOVER/>），但本页属 **清单索引归纳**（#14/41，02 Goal-conditioned 学习），量化指标以原文与项目页为准。
 
 ## 常见误区
 

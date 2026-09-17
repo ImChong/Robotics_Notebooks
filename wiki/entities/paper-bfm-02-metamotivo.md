@@ -39,7 +39,7 @@ sources:
 - 与 BFM-Zero 对照：zero-shot WBC 依赖可调用行为表示，任务变时尽量在潜空间找方向而非重训。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#02/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -69,7 +69,7 @@ sources:
 
 - 起作用的机制是 **forward-backward / successor 结构** 把异构任务压进可调用的身体潜空间，上层用 **目标姿态、奖励向量或 latent prompt** 检索与组合行为。
 - 评价口径与单技能 motion tracking 不同：看 **覆盖面与可组合性**，而非单一参考的跟踪成功率；常见误读是把它当「更大的动作数据集」。
-- 边界：本页是 **#02/41 索引级策展编译**，量化 benchmark、消融与实机指标须回原文 PDF / 项目页；工程侧有官方开源实现（facebookresearch/metamotivo）可直接上手。
+- 边界：本页是 **#02/41 清单索引策展编译**，量化 benchmark、消融与实机指标须回原文 PDF / 项目页；工程侧有官方开源实现（facebookresearch/metamotivo）可直接上手。
 
 ## 常见误区
 

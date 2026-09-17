@@ -14,7 +14,7 @@ summary: "隐式贝塞尔运动模型（Implicit Bézier Motion Model, IBMM）�
 
 # Implicit Bézier Motion Model for Precise Spatial and Temporal Control
 
-**Implicit Bézier Motion Model for Precise Spatial and Temporal Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Implicit Bézier Motion Model for Precise Spatial and Temporal Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -65,7 +65,7 @@ IBMM 要：**任意时间控制点**、**任意帧约束任意末端**、且可*
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ IBMM 要：**任意时间控制点**、**任意帧约束任意末端**、且可*
 - 由此得到的空间控制力是「任意帧约束任意末端关节」，这正是前作 BMM 固定控制点做不到的。
 - 另一项新能力是全局缓入/缓出手柄，本页称其为首个在生成自然运动时无需人工标注即可全局控制时间的方法。
 - 定位边界要认清：目标是动画艺术家的编辑工作流，不是机器人控制器；对机器人的迁移价值在于「紧凑可控的轨迹参数化」这一思路，而非直接可用的策略。
-- 本页为深读笔记编译的索引级摘要（Disney Research Studios，SIGGRAPH MIG 2025），量化对比与消融以深读笔记和论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要（Disney Research Studios，SIGGRAPH MIG 2025），量化对比与消融以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

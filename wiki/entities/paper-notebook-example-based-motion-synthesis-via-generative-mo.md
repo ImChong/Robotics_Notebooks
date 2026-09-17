@@ -14,7 +14,7 @@ summary: "GenMM 是一个生成模型，从单段或少量范例序列中\"挖�
 
 # Example-based Motion Synthesis via Generative Motion Matching
 
-**Example-based Motion Synthesis via Generative Motion Matching** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Example-based Motion Synthesis via Generative Motion Matching** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ GenMM 要：**免训练**、高质量、可处理复杂骨架、从单/少范例
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -78,7 +78,7 @@ GenMM 要：**免训练**、高质量、可处理复杂骨架、从单/少范例
 - 覆盖面来自同一框架的复用而非新增模块：动作补全、关键帧引导生成、无限循环、动作重组都是同一套匹配—细化流程的变体。
 - 边界也由此界定：它是"从范例里挖"，多样性建立在给定范例之上，定位是范例驱动的扩增与合成，而不是习得范例之外的新技能语义。
 - 对人形的意义在本页被明确指向数据侧：契合人形稀缺动作数据的扩增需求，可为技能库提供多样参考动作。
-- 适用边界：本页为深读笔记编译的索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
+- 适用边界：本页为深读笔记编译的笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 

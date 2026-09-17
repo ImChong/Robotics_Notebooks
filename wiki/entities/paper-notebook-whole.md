@@ -14,7 +14,7 @@ summary: "第一视角视频里手和物体动不动就互相遮挡、还会出�
 
 # WHOLE
 
-**WHOLE: World-Grounded Hand-Object Lifted from Egocentric Videos** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**WHOLE: World-Grounded Hand-Object Lifted from Egocentric Videos** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "第一视角视频里手和物体动不动就互相遮挡、还会出�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ summary: "第一视角视频里手和物体动不动就互相遮挡、还会出�
 - 起作用的是「联合先验 + 测试时引导」这对组合：先验负责在互相遮挡、目标出画时补全合理的手–物构型，VLM 抽出的接触线索与手/物分割掩膜则在采样时把结果拉回观测。
 - 产物是世界坐标系下的 MANO 手姿与 6D 物体轨迹，一次性给出而非拼接对齐，这也是它相对「分头估 + 后处理」更稳的直接原因。
 - 依赖链较长是主要风险：引导质量取决于 VLM 接触线索与分割掩膜是否可靠，本页未给出这些上游失效时的退化表现。
-- 本页仍是索引级实体；量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页仍是清单索引实体；量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

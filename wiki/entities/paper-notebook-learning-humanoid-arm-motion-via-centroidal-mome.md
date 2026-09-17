@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-humanoid-arm-motion-via-centroidal-mome.md
-summary: "Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Reinforcement Learning：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Reinforcement Learning：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Reinforcement Learning
 
-**Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Reinforcement Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Reinforcement Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Rei
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -52,11 +52,11 @@ Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Rei
 
 - 可确认信息只有分类 05_Locomotion、arXiv 2507.04140 与深读状态「待撰写」；机制线索仅为「质心动量正则化的多智能体强化学习用于人形手臂动作」。
 - 分类与标题只能作为线索，不能替代结论：智能体如何划分、质心动量正则项怎么起作用，本页都无法回答。
-- 因此当前唯一正当用途是占位与交叉检索——本页「实验与评测」已声明 benchmark 与实机指标待笔记补充，引用前应回到 arXiv 原文或等 [humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md) 下的深读笔记落地。
+- 因此当前唯一正当用途是待读与交叉检索——本页「实验与评测」已声明 benchmark 与实机指标待笔记补充，引用前应回到 arXiv 原文或等 [humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md) 下的深读笔记落地。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

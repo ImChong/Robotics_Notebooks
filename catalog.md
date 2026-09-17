@@ -1753,7 +1753,7 @@
 - [SMAP](wiki/entities/paper-notebook-smap.md) — SMAP: Self-supervised Motion Adaptation for Physically Plausible Humanoid Whole-body Control** 已列入 `📅unknown` `[entity_page]`
 - [SoccerDiffusion：从比赛录像学端到端人形足球](wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md) — SoccerDiffusion**（*Toward Learning End-to-End Humanoid Robot Soccer from Gameplay Recordings*，[arX `📅unknown` `[entity_page]`
 - [SoftMimic](wiki/entities/paper-notebook-softmimic-learning-compliant-whole-body-control.md) — SoftMimic: Learning Compliant Whole-body Control from Examples** 已列入 [Robot Learning Paper Noteboo `📅unknown` `[entity_page]`
-- [SPARK（安全自主工具箱 · Paper Notebooks 占位）](wiki/entities/paper-notebook-spark.md) — SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Robot Learning Paper Notebook `📅unknown` `[entity_page]`
+- [SPARK（安全自主工具箱 · Paper Notebooks 待读）](wiki/entities/paper-notebook-spark.md) — SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Robot Learning Paper Notebook `📅unknown` `[entity_page]`
 - [Spatial Relationship Preserving Character Motion Adaptation](wiki/entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — Spatial Relationship Preserving Character Motion Adaptation** 收录于 [Robot Learning Paper Notebooks `📅unknown` `[entity_page]`
 - [Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion](wiki/entities/paper-notebook-spectral-normalization-for-lipschitz-constrained.md) — Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion** 已列入 [R `📅unknown` `[entity_page]`
 - [Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation](wiki/entities/paper-notebook-stability-aware-retargeting-for-humanoid-multi-c.md) — Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation** 收录于 [Robot Learning Paper N `📅unknown` `[entity_page]`
@@ -4058,21 +4058,21 @@
 
 - [技术栈地图总览](tech-map/README.md) — 本目录用于承载 `Robotics_Notebooks` 的技术栈地图、模块依赖关系、标准化模块卡片，以及研究方向导航。 `📅unknown` `[tech_map_node]`
 - [模块依赖关系图](tech-map/dependency-graph.md) — 本页的目标不是做花哨图，而是先把 `Robotics_Notebooks` 当前最重要的依赖关系讲清楚。 `📅unknown` `[tech_map_node]`
-- [Humanoid Locomotion](tech-map/modules/control/humanoid-locomotion.md) — 人形双足步行、平衡与扰动恢复是当前主攻方向之一。 `📅unknown` `[tech_map_node]`
-- [MPC](tech-map/modules/control/mpc.md) — 模型预测控制是连接模型、约束与优化求解的重要方法。 `📅unknown` `[tech_map_node]`
-- [Whole-Body Control](tech-map/modules/control/whole-body-control.md) — 全身控制是人形机器人运动控制的重要枢纽。 `📅unknown` `[tech_map_node]`
-- [Behavior Cloning](tech-map/modules/il/behavior-cloning.md) — 模仿学习最基础的切入口。 `📅unknown` `[tech_map_node]`
-- [Diffusion Policy](tech-map/modules/il/diffusion-policy.md) — 当前模仿学习中的重要生成式方法之一。 `📅unknown` `[tech_map_node]`
-- [Motion Retarget](tech-map/modules/il/motion-retarget.md) — 连接人体动作数据与人形机器人技能迁移的关键模块。 `📅unknown` `[tech_map_node]`
+- [人形 Locomotion（双足行走）](tech-map/modules/control/humanoid-locomotion.md) — 人形双足行走要同时解决三件事：**怎么迈步**（步态与落脚点）、**怎么不摔**（平衡与扰动恢复）、**地形变了怎么办**（感知与自适应）。它是本站的主线任务之一，传统控制（MPC + WBC）与强化 `📅unknown` `[tech_map_node]`
+- [MPC（模型预测控制）](tech-map/modules/control/mpc.md) — MPC** 在每个控制周期里用模型向前滚动预测一段时间，在满足约束的前提下解一个优化问题，只执行第一步再重新求解。它是「有模型、要满足硬约束、还要实时」这类运控问题的默认答案——腿足机器人的落脚点 `📅unknown` `[tech_map_node]`
+- [WBC（全身控制）](tech-map/modules/control/whole-body-control.md) — WBC** 负责把上层给出的多个任务目标（质心轨迹、末端位姿、姿态、接触力）与机器人的物理约束（动力学、关节限位、摩擦锥）一起写成一个优化问题，解出这一拍该发给每个关节的力矩。它是人形运控栈里承上 `📅unknown` `[tech_map_node]`
+- [Behavior Cloning（行为克隆）](tech-map/modules/il/behavior-cloning.md) — BC** 把「学策略」直接当成监督学习：收集专家的「状态 → 动作」数据对，训一个网络去拟合。它是模仿学习里门槛最低的一条路，也是 Diffusion Policy、VLA 等后续方法的共同底座； `📅unknown` `[tech_map_node]`
+- [Diffusion Policy](tech-map/modules/il/diffusion-policy.md) — Diffusion Policy** 把动作生成写成一次去噪过程：不再直接回归单个动作，而是从噪声出发迭代生成一段动作序列（action chunk）。这让策略能表达多模态的动作分布——同一个场景 `📅unknown` `[tech_map_node]`
+- [Motion Retargeting（动作重定向）](tech-map/modules/il/motion-retarget.md) — 人的动作数据不能直接喂给机器人：骨骼长度、关节数量、力矩上限、可行接触都不一样。**动作重定向** 就是把人体动作映射成机器人可执行的参考轨迹，它是「人类动作数据 → 人形技能」这条数据链上绕不开的一 `📅unknown` `[tech_map_node]`
 - [人形策略网络架构](tech-map/modules/il/policy-network-architecture.md) — 从浅层 MLP（DeepMimic / AMP）到 Diffusion chunk、VLA 与 WAM 的策略骨干演化；强调论文 Method 常见披露项与「小 MLP + 强系统」的真机现实。 `📅unknown` `[tech_map_node]`
-- [线性代数](tech-map/modules/math/linear-algebra.md) — 机器人场景重点：向量空间、矩阵变换、特征值分解、最小二乘、雅可比相关计算。 `📅unknown` `[tech_map_node]`
+- [线性代数](tech-map/modules/math/linear-algebra.md) — 机器人场景里的线性代数重点是能直接用上的那几块：向量空间与矩阵变换（坐标系与位姿）、特征值分解（稳定性与主方向）、最小二乘与伪逆（超定 / 欠定求解，WBC 与 IK 的常客）、以及雅可比相关的计算。 `📅unknown` `[tech_map_node]`
 - [模块模板](tech-map/modules/module-template.md) — - `📅unknown` `[tech_map_node]`
-- [Humanoid RL](tech-map/modules/rl/humanoid-rl.md) — 聚焦人形机器人 locomotion 与 skill learning 中的强化学习问题。 `📅unknown` `[tech_map_node]`
-- [PPO](tech-map/modules/rl/ppo.md) — PPO 是机器人强化学习中最常见、最实用的基础算法之一。 `📅unknown` `[tech_map_node]`
-- [动力学](tech-map/modules/robotics/dynamics.md) — 重点包括牛顿欧拉法、拉格朗日法、浮动基动力学、接触建模。 `📅unknown` `[tech_map_node]`
-- [运动学](tech-map/modules/robotics/kinematics.md) — 重点包括正逆运动学、雅可比、微分运动学。 `📅unknown` `[tech_map_node]`
-- [刚体运动](tech-map/modules/robotics/rigid-body-motion.md) — 重点包括旋转表示、坐标变换、SE(3)、Twist/Wrench。 `📅unknown` `[tech_map_node]`
-- [Deployment](tech-map/modules/system/deployment.md) — 部署阶段关注控制频率、硬件接口、安全性与调试闭环。 `📅unknown` `[tech_map_node]`
+- [人形强化学习](tech-map/modules/rl/humanoid-rl.md) — 把 RL 用到人形上，难点不在算法本身，而在 **奖励怎么设计、仿真怎么建、随机化开多大、策略怎么迁到真机**。这条模块线索串起训练栈的五个模块（环境、奖励、课程、网络、迁移），也是本站 sim2re `📅unknown` `[tech_map_node]`
+- [PPO](tech-map/modules/rl/ppo.md) — PPO** 用一个裁剪过的目标函数限制每次更新的策略变化幅度，换来「调参不那么容易崩」的稳定性。它算法上不是最先进的，却是机器人 RL 里事实上的默认起点：并行仿真友好、超参相对鲁棒、几乎所有腿足 `📅unknown` `[tech_map_node]`
+- [动力学](tech-map/modules/robotics/dynamics.md) — 动力学回答「要多大的力矩才能这么动」。人形与腿足场景有三个绕不开的重点：**浮动基** 动力学（机器人不固定在地面上）、**质心 / 中心动量** 这类降维模型（MPC 常用），以及 **接触建模 `📅unknown` `[tech_map_node]`
+- [运动学](tech-map/modules/robotics/kinematics.md) — 运动学只回答「几何上怎么动」，不管力与质量：**正运动学** 由关节角算末端位姿，**逆运动学** 反过来由目标位姿求关节角，**雅可比** 把关节速度与末端速度联系起来，也是奇异位形、可操作度与力映 `📅unknown` `[tech_map_node]`
+- [刚体运动](tech-map/modules/robotics/rigid-body-motion.md) — 刚体运动是描述「位姿」的数学工具：旋转的多种表示（旋转矩阵、四元数、轴角）、齐次变换与 **SE(3)**，以及速度与力的配对表示（Twist / Wrench）。它看起来只是记号约定，但坐标系、外参 `📅unknown` `[tech_map_node]`
+- [部署（上真机）](tech-map/modules/system/deployment.md) — 从「仿真里能跑」到「真机上能跑」，中间隔着一整套工程问题：控制频率与推理频率怎么解耦、硬件接口与驱动器怎么接、出错了进什么安全状态、怎么留下可复盘的日志。这一模块收敛的是真机落地阶段最容易踩坑、也最难 `📅unknown` `[tech_map_node]`
 - [ROS 2（系统集成层）](tech-map/modules/system/ros2.md) — ROS 2**（Robot Operating System 2）是机器人全栈里**系统集成与多进程编排**的事实标准中间件：它把感知、规划、控制、标定与调试工具接到同一套通信与工具链上，是 [S `📅unknown` `[tech_map_node]`
 - [仿真（系统集成层）](tech-map/modules/system/simulation.md) — 仿真是控制、学习与部署之间的中介层：策略训练、控制器调试与场景复现多在仿真中完成，真机落地前通常还要经过 Sim2Real、 `📅unknown` `[tech_map_node]`
 - [全栈技术域总览](tech-map/overview.md) — 本页不是单纯列方向，而是 `Robotics_Notebooks` 的技术栈模块入口页。 `📅unknown` `[tech_map_node]`
@@ -4082,19 +4082,19 @@
 
 - [参考导航 / References](references/README.md) — 这里不是原始资料堆，也不是知识页正文。 `📅unknown` `[reference_page]`
 - [Benchmark 索引 / Benchmarks](references/benchmarks/README.md) — 这里用于整理 locomotion、humanoid、learning control 等方向最常见的 benchmark 与环境。 `📅unknown` `[reference_page]`
-- [Humanoid Environments](references/benchmarks/humanoid-environments.md) — 用于整理人形机器人常用训练环境与评测场景。 `📅unknown` `[reference_page]`
-- [Locomotion Benchmarks](references/benchmarks/locomotion-benchmarks.md) — 用于整理平地行走、越障、跑酷、复杂地形运动等 benchmark。 `📅unknown` `[reference_page]`
+- [人形训练环境](references/benchmarks/humanoid-environments.md) — 人形策略训练几乎都跑在这几套环境之上。选型的分歧点不在「哪个更强」，而在 **你要并行多少环境、要不要接触精度、以及打算怎么迁到真机**。 `📅unknown` `[reference_page]`
+- [Locomotion 评测](references/benchmarks/locomotion-benchmarks.md) — 腿足 / 人形运动没有单一的「跑分榜」：不同论文的任务、地形、指标与随机化口径都不一样，跨论文比数字前先确认这几件事是否对齐。 `📅unknown` `[reference_page]`
 - [论文导航 / Papers](references/papers/README.md) — 这里不是论文全文仓库，也不是逐篇精读笔记区。 `📅unknown` `[reference_page]`
-- [Humanoid Hardware](references/papers/humanoid-hardware.md) — 聚焦人形机器人硬件架构、执行器设计、传感器集成与系统工程。 `📅unknown` `[reference_page]`
+- [Humanoid Hardware](references/papers/humanoid-hardware.md) — 本页收的是人形硬件方向的代表性平台与论文：硬件架构、执行器设计、传感器集成与整机系统工程。 `📅unknown` `[reference_page]`
 - [Imitation Learning](references/papers/imitation-learning.md) — 聚焦行为克隆、DAgger、Diffusion Policy、动作块输出与技能嵌入相关论文。 `📅unknown` `[reference_page]`
 - [Latent Skill Prior](references/papers/latent-skill-prior.md) — 聚焦如何将运动技能压缩到隐空间（Latent Space），并通过先验（Prior）引导强化学习生成既稳定又自然的行为。 `📅unknown` `[reference_page]`
 - [Locomotion RL](references/papers/locomotion-rl.md) — 聚焦人形/腿足机器人 locomotion 中的强化学习论文。 `📅unknown` `[reference_page]`
 - [MPC (Model Predictive Control)](references/papers/mpc.md) — 聚焦模型预测控制在机器人（特别是腿式/人形）中的理论、工程实现与应用论文。 `📅unknown` `[reference_page]`
 - [Optimal Control](references/papers/optimal-control.md) — 最优控制理论基础、动态规划与轨迹优化奠基工作。 `📅unknown` `[reference_page]`
-- [Survey Papers](references/papers/survey-papers.md) — 用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的领域综述（Review/Survey）。 `📅unknown` `[reference_page]`
+- [Survey Papers](references/papers/survey-papers.md) — 想快速建立某个方向的全局认识时，先读综述。本页收的是机器人学习、运动控制、人形与模仿学习方向的代表性综述。 `📅unknown` `[reference_page]`
 - [Whole-Body Control](references/papers/whole-body-control.md) — 聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。 `📅unknown` `[reference_page]`
 - [开源生态 / Repos](references/repos/README.md) — 这里不是代码仓库镜像，而是开源项目与工具链的导航层。 `📅unknown` `[reference_page]`
-- [Humanoid Projects](references/repos/humanoid-projects.md) — 聚焦人形机器人运动控制、模仿学习、感知与部署相关开源项目。 `📅unknown` `[reference_page]`
+- [Humanoid Projects](references/repos/humanoid-projects.md) — 本页收的是人形方向可以直接上手的开源项目：运动控制、模仿学习、感知与真机部署。 `📅unknown` `[reference_page]`
 - [Manipulation Perception（操作 / 抓取感知工具）](references/repos/manipulation-perception.md) — 面向 **pick-and-place、bin picking、动态抓取** 等任务中「从视觉/深度到抓取位姿」这一层的开源与半开源工具索引。适合已理解 **[Manipulation](../../ `📅unknown` `[reference_page]`
 - [Retarget Tools](references/repos/retarget-tools.md) — Retarget Tools：** 人体/动物运动到机器人执行空间的开源工具与代表性项目导航（几何重定向、物理补丁、视频/单目估计与轨迹编辑），与知识库 [Motion Retargeting（动 `📅unknown` `[reference_page]`
 - [RL Frameworks](references/repos/rl-frameworks.md) — 人形/腿足机器人 RL 训练常用开源框架。 `📅unknown` `[reference_page]`

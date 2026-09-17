@@ -14,7 +14,7 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 
 # Quantum deep reinforcement learning for humanoid robot navigation task
 
-**Quantum deep reinforcement learning for humanoid robot navigation task** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Quantum deep reinforcement learning for humanoid robot navigation task** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 - 真正起作用的是替换范围的克制：只把 actor 的核心网络换成 PQC（编码电路 + 变分电路），量子测量结果仍由一层经典网络映射成连续动作的均值与方差，SAC 框架的其余部分不动。
 - 定位上它绕开传统建图 / 规划，直接在高维状态空间里学控制；这也意味着它继承的是 SAC 的训练特性，而非量子算法本身带来的保证。
 - 适用边界由基准决定：Humanoid-v4 / Walker2d-v4 是 MuJoCo 里的仿真人形 / 双足任务，本页未涉及真机导航，不能据此推断 Sim2Real 可用性。
-- 本页为 **策展索引级** 摘要（分类 08_Navigation），量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要（分类 08_Navigation），量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 

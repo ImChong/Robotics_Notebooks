@@ -74,7 +74,7 @@ summary: "6 种机器人、1K T 恤、1K 环境资产、120K episode 合成数�
 |----|----------|
 | 要点 | 120K episode；跨机器人与未见衣物部署测试。 |
 
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
 ## 与其他工作对比
 

@@ -40,7 +40,7 @@ sources:
 - **末段精修上游：** [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 将 ETPNav-ZS/FT 作为四类 plug-and-play 骨干之一，在 REVERIE-AIM 上 ONS@0.1m 相对无精修基线约 **翻倍**（arXiv:2607.03792）。
 - 连续环境 VLN-CE 下拓扑建图、跨模态规划与底层控制（含避障）三模块串联的端到端框架。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

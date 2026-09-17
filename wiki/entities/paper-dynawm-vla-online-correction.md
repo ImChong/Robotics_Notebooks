@@ -101,7 +101,7 @@ flowchart LR
 | Multi-object sequencing | 多物体 + 语言绑定序贯 |
 | Velocity variation | 目标速度变化 |
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
 |----|------------------------|

@@ -22,7 +22,7 @@ sources:
 
 # UniVLA
 
-**UniVLA: Unified Vision-Language-Action Model** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 209/571** 篇，分组 **62 Joint WAM & Unified VLA-World Models**。本页为知识库 **策展索引级** 详情节点；方法细节与量化指标以原文 PDF / 项目页为准。
+**UniVLA: Unified Vision-Language-Action Model** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 209/571** 篇，分组 **62 Joint WAM & Unified VLA-World Models**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
 ## 一句话定义
 
@@ -40,10 +40,10 @@ Unified vision-language-action model.
 ## 为什么重要
 
 - Unified vision-language-action model.
-- 在 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 与列表实体 [Awesome World Models](../entities/awesome-world-models.md) 及站内方法/任务页交叉，便于从策展索引跳转到学习主线。
+- 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
+- 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -61,30 +61,30 @@ Unified vision-language-action model.
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
 
-## 评测与指标（索引级）
+## 评测与指标
 
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
+- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
 - 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2506.19850) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **62 Joint WAM & Unified VLA-World Models** 分组逐条展开。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
+- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **62 Joint WAM & Unified VLA-World Models** 分组逐条展开。
+- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
 - 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
 
 ## 结论
 
-**本条目的站内价值是把「UniVLA」从外部 Awesome 列表提升为可链接的知识节点，并保留清单 Highlights 作为阅读锚点。**
+**这一页能给你的是「UniVLA」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
 
-- 起作用的是策展坐标：列表分组 **62 Joint WAM & Unified VLA-World Models** + Highlights 指出的问题设定，而不是本页自行推导的新算法结论。
-- 适用边界：索引级页面不能替代 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 若该工作成为学习主线，应再升格为深度论文实体（补机构、实验表、源码运行时序图或「不适用」说明）。
+- 可确证的只有清单坐标：分组 **62 Joint WAM & Unified VLA-World Models**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
+- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
+- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
 
 ## 常见误区
 
 1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 同一 arXiv 在全库只允许一个 canonical 详情节点；若已有深度页，应以深度页为准。
+2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
 
 ## 关联页面
 

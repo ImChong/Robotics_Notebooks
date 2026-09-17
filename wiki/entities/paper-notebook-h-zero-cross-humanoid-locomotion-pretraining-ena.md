@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_h-zero-cross-humanoid-locomotion-pretraining-ena.md
-summary: "H-Zero：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "H-Zero：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # H-Zero
 
-**H-Zero: Cross-Humanoid Locomotion Pretraining Enables Few-shot Novel Embodiment Transfer** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**H-Zero: Cross-Humanoid Locomotion Pretraining Enables Few-shot Novel Embodiment Transfer** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ H-Zero 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ H-Zero 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 结论
 
-**本页是 H-Zero 的阅读进度占位，不是方法归纳：目前页面能确定的只有分类归属与论文入口，跨形态预训练的具体做法与迁移代价一律以待撰写的深读笔记为准。**
+**本页是 H-Zero 的阅读进度待读，不是方法归纳：目前页面能确定的只有分类归属与论文入口，跨形态预训练的具体做法与迁移代价一律以待撰写的深读笔记为准。**
 
 - 页面正文未给出任何方法、指标或消融，「实验与评测」已明确标注待笔记完成后补充。
 - 适用边界：可用于按 05_Locomotion 分类检索与追踪阅读进度，不可当作 H-Zero 的结论来引用。
-- 后续动作是升格而非改写：笔记完成后本页应链向笔记站并深化归纳，成为完整索引实体。
+- 深读笔记完成后，本页会补上笔记链接与实质要点。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

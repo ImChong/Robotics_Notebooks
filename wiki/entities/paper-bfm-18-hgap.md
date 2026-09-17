@@ -38,7 +38,7 @@ generalist planner 管理低层人形控制；BFM 进入系统后的分层问题
 - generalist planner 管理低层人形控制；BFM 进入系统后的分层问题。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#18/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

@@ -14,7 +14,7 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 
 # Walk the PLANC
 
-**Walk the PLANC: Physics-Guided RL for Agile Humanoid Locomotion on Constrained Footholds** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Walk the PLANC: Physics-Guided RL for Agile Humanoid Locomotion on Constrained Footholds** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -70,7 +70,7 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -80,7 +80,7 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 - 落地链路是 **师生蒸馏三阶段**（特权教师 → 无特权学生 → PPO 抗噪微调），在 Unitree G1（21 个驱动自由度）上做出踏脚石行走，对未见石块深度零样本泛化，并可抵抗 ±100 Nm / 0.2 s 的外部推力扰动。
 - 适用边界是 **强离散接触地形**（踏脚石、沟壑、稀疏落脚点）；LIP 终究是降阶近似，复杂富接触 / 三维地形下可能损失最优性。
 - 主要风险在感知闭环：真机依赖动捕 + 高程图获取落脚点，野外感知尚未自洽；评测也集中在踏脚石与稀疏落脚，更广义地形的泛化待验证。
-- 开源状态需谨慎：源码目前为匿名仓库，以项目主页后续正式开源为准；本页只是深读笔记编译的索引级摘要，量化 benchmark 与消融以笔记页与论文 PDF 为准。
+- 开源状态需谨慎：源码目前为匿名仓库，以项目主页后续正式开源为准；本页只是深读笔记编译的笔记摘要，量化 benchmark 与消融以笔记页与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -116,7 +116,7 @@ flowchart TB
 3. **可直接喂给人形 RL tracker：** 输出是 SMPL-X marker 轨迹，上机器人需 **重定向 + 接触/平衡约束**；与 [CRISP](../methods/crisp-real2sim.md)「先仿真就绪资产再 RL」是互补上下游。
 4. **与 GAMMA 重复：** GAMMA 只做 **无碰撞意识的 waypoint 行走**；DIMOS 是其在 **室内 HSI** 上的扩展而非简单复现。
 
-## 实验与评测（索引级）
+## 实验与评测
 
 - **Locomotion：** 相对 SAMP Unity demo 与 GAMMA，在合成 clutter 场景上 **多样性、穿透、感知自然度** 更优。
 - **Interaction：** 坐/躺 OOD 测试（不同椅形、朝向、初始姿态）优于 SAMP；可展示 Replica/PROX 重建场景、户外点云长椅、Shap-E 生成椅子。

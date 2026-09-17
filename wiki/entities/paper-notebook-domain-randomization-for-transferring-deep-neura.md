@@ -14,7 +14,7 @@ summary: "在视觉参数随机化的仿真环境里训练神经网络，让真�
 
 # Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World
 
-**Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：01_Foundational_RL）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：01_Foundational_RL）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "在视觉参数随机化的仿真环境里训练神经网络，让真�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -51,7 +51,7 @@ summary: "在视觉参数随机化的仿真环境里训练神经网络，让真�
 
 - 起作用的就是 **视觉参数随机化** 本身——训练分布覆盖得够广，真实世界便只是"另一个变体"，因此无需任何真实数据即可完成 sim-to-real 迁移。
 - 定位是 01_Foundational_RL 的方法基石，是后续 Sim2Real 工程主线的起点，而非某个具体任务上的最优解。
-- 本页为策展索引级摘要，随机化的具体维度、量化 benchmark 与消融以深读笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，随机化的具体维度、量化 benchmark 与消融以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

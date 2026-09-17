@@ -65,7 +65,7 @@ summary: "三 MagLev mover 耦合成低成本并联 6-DoF 操作器并集成 1-D
 |----|----------|
 | 要点 | 默认与单轨两种构型；仿真与真机 pick-and-place 演示。 |
 
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
 ## 与其他工作对比
 

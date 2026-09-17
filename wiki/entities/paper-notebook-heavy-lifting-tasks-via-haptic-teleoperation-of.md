@@ -14,7 +14,7 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 
 # Heavy lifting tasks via haptic teleoperation of a wheeled humanoid
 
-**Heavy lifting tasks via haptic teleoperation of a wheeled humanoid** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Heavy lifting tasks via haptic teleoperation of a wheeled humanoid** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 - 分工映射是另一半设计：身体管姿态与移动、手臂管操作，让操作者的自然动作经 HMI 全身重定向到机器人。
 - 平衡辅助被做成 **可调量**（手动或自动调节对负载扰动的倾斜），本质是在「操作者掌控感」与「系统稳定性」之间留一个旋钮，而不是替操作者一次性做决定。
 - 适用边界：验证规模是至多 **2.5 kg（机器人质量 21%）** 的杠铃/箱子，平台是可调高度的轮式人形，不宜外推到足式平台或更高负载。
-- 本页只是深读笔记的索引级摘要，量化 benchmark 与消融以深读笔记和论文 PDF 为准。
+- 本页只是深读笔记的笔记摘要，量化 benchmark 与消融以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

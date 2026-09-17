@@ -14,7 +14,7 @@ summary: "本文提出 AINA 框架，让机器人从 Aria Gen 2 智能眼镜采�
 
 # Dexterity from Smart Lenses
 
-**Dexterity from Smart Lenses: Multi-Fingered Robot Manipulation with In-the-Wild Human Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Dexterity from Smart Lenses: Multi-Fingered Robot Manipulation with In-the-Wild Human Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ AINA 要：用**智能眼镜**采集的**野外人类演示**学多指策略，*
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ AINA 要：用**智能眼镜**采集的**野外人类演示**学多指策略，*
 - 取舍很明确：放弃在线纠正、强化学习与仿真，换极短的部署链路与对背景变化的鲁棒性；代价是策略上限被野外人类演示本身的质量与覆盖度框住。
 - 适用边界看证据形态：本页给出的支撑是 **9 个日常操作任务** 上的多指迁移，超出该任务分布的能力本页并未声称。
 - 定位上与 In-N-On、EgoDex、EgoMI 同属「从第一视角人类数据学操作」路线，差别在于 AINA 把 **采集端硬件（智能眼镜）** 当成规模化的关键变量。
-- 本页为深读笔记编译的索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

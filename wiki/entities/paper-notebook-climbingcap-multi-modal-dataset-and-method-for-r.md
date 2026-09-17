@@ -14,7 +14,7 @@ summary: "人体动作恢复（HMR）研究多聚焦地面动作（如跑步）�
 
 # ClimbingCap
 
-**ClimbingCap: Multi-Modal Dataset and Method for Rock Climbing in World Coordinate** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**ClimbingCap: Multi-Modal Dataset and Method for Rock Climbing in World Coordinate** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ ClimbingCap 要：建数据集（AscendMotion）+ 方法，在世界坐标下连
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ ClimbingCap 要：建数据集（AscendMotion）+ 方法，在世界坐标下连
 - AscendMotion 的规模与构成（41.2 万帧 RGB / LiDAR / IMU、22 位熟练攀岩教练、12 面岩壁）是方法能成立的前提；论文认定的瓶颈本来就是数据缺口而非模型容量。
 - 对人形研究的价值主要在数据侧而非控制侧：攀岩这类多接触、离地的极限动作可作为高难技能的参考动作源，全局位置恢复也呼应世界系跟踪需求。
 - 边界要说清：这是人体动作恢复工作（CVPR 2025），不涉及机器人本体控制，迁移到人形还需重定向与可行性这一层。
-- 本页为深读笔记编译的索引级摘要，量化指标以笔记页与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化指标以笔记页与论文 PDF 为准。
 
 ## 与其他页面的关系
 

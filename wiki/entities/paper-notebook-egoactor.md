@@ -14,7 +14,7 @@ summary: "EgoActor 把\"高层语言指令 → 低层人形动作\"的落地过�
 
 # EgoActor
 
-**EgoActor: Grounding Task Planning into Spatial-aware Egocentric Actions for Humanoid Robots via Visual-Language Models** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**EgoActor: Grounding Task Planning into Spatial-aware Egocentric Actions for Humanoid Robots via Visual-Language Models** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ EgoActor 把"高层语言指令 → 低层人形动作"的落地过程统一成�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ EgoActor 把"高层语言指令 → 低层人形动作"的落地过程统一成�
 - 亚秒级推理与 4B / 8B 双尺寸表明它是奔着可部署去的在线策略，而非离线规划器；覆盖仿真与真机两类环境也说明其目标不是单一 benchmark。
 - 输入侧只保留第一视角 RGB 与指令，这既是"egocentric"的卖点，也界定了可用范围：可获得的空间信息以当前视野为限，头部姿态因此被列为动作原语之一。
 - 本页归入 08_Navigation 而非操作类，提示其重心是空间感知驱动的到达与交互落地。
-- 适用边界：本页为索引级实体，机制描述停留在摘要层；量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
+- 适用边界：本页为清单索引实体，机制描述停留在摘要层；量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 

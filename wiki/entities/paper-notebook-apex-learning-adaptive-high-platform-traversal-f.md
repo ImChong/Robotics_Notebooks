@@ -14,7 +14,7 @@ summary: "把\"高平台穿越\"从起跳式改成攀爬式：用 6 个 *(climb-
 
 # APEX
 
-**APEX: Learning Adaptive High-Platform Traversal for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**APEX: Learning Adaptive High-Platform Traversal for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "把\"高平台穿越\"从起跳式改成攀爬式：用 6 个 *(climb-
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ summary: "把\"高平台穿越\"从起跳式改成攀爬式：用 6 个 *(climb-
 - 真正起作用的是两件事：climb-up / climb-down / walk / crawl / stand-up / lie-down 六个子技能构成的动作词表，以及棘轮式进度奖励（ratchet progress reward）——只对「已达到的最佳进度」记账，从而抑制反复试探刷出的伪进步。
 - 硬指标是 G1 上零样本翻越 0.8 m（约腿长 114%）的台子且全程不跳跃：难度来自高度与接触序列，而非速度，这也框定了它的适用场景。
 - 感知入口是局部 LiDAR 几何而非全局地图，意味着策略依赖近场几何质量，这既是它能零样本迁移的原因，也是可预期的失败面。
-- 本页只到索引级：消融、成功率与失败模式需回到深读笔记与论文 PDF，不要把一句话定义当成完整实验证据。
+- 本页只到清单索引：消融、成功率与失败模式需回到深读笔记与论文 PDF，不要把一句话定义当成完整实验证据。
 
 ## 与其他页面的关系
 

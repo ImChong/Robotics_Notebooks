@@ -14,7 +14,7 @@ summary: "把交互式化身的运动系统（motor system）建成一个生成�
 
 # PRIMAL
 
-**PRIMAL: Physically Reactive and Interactive Motor Model for Avatar Learning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**PRIMAL: Physically Reactive and Interactive Motor Model for Avatar Learning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ PRIMAL 要：一个**生成式运动模型**，从单帧持续生成、实时响
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ PRIMAL 要：一个**生成式运动模型**，从单帧持续生成、实时响
 - 从 **单帧续写** 加上 **实时响应外部冲量**，这两条才是它对在线控制友好的原因，也是与纯离线动作生成路线的分界。
 - 适用边界是交互式角色动画：集成 Unreal Engine 做角色动画、对比的是动作生成 SOTA 基线，而非真机控制器；迁移到人形仍需补物理与硬件层的工作。
 - 与人形关切的对照：其「持续生成 + 抗冲量恢复」与人形扰动下自然恢复同向，可作为本仓 13 物理动画方向的方法源。
-- 本页为 **深读笔记编译** 的索引级摘要，量化 benchmark 与消融以笔记页和论文 PDF 为准。
+- 本页为 **深读笔记编译** 的笔记摘要，量化 benchmark 与消融以笔记页和论文 PDF 为准。
 
 ## 与其他页面的关系
 

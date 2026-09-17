@@ -42,7 +42,7 @@ OmniXtreme 的关键词是 generality barrier in high-dynamic humanoid control�
 - 论文通过高容量架构和 actuation-aware refinement，把通用技能学习和具体技能精修解耦。它还非常现实地讨论了真机失败案例：一些失败出现在 impulsive landing phase，可能触发 motor overcurrent、power limits、battery undervoltage 等硬件保护。
 - 很多论文在仿真里讲高动态动作时，容易忽略真实硬件边界。真实人形机器人不是无限力矩、无限散热、无限抗冲击的系统。越高动态，越容易碰到电机、电池、结构强度和控制频率限制。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -73,7 +73,7 @@ OmniXtreme 的关键词是 generality barrier in high-dynamic humanoid control�
 - 它给出的解法是 **解耦**：高容量架构承担通用技能学习，actuation-aware refinement 承担具体高动态技能的精修，而不是指望单一策略同时兼顾两端。
 - 少见地把失败归因落到 **硬件边界**：impulsive landing phase 可能触发电机过流、功率限制、电池欠压等保护 — 高动态的真实上限常由电机、散热、结构强度与控制频率决定，而非策略容量。
 - 边界提醒：motion tracking 的「泛化」通常仅指 **参考分布内**，换数据源或接触条件仍可能崩塌。
-- 本页为 **策展索引级**，量化 benchmark 与实机指标以原文 / 项目页为准；同台对照可看 [Extreme-RGMT](./paper-extreme-rgmt.md)（强调参考质量变化下的鲁棒性）。
+- 本页为 **清单索引**，量化 benchmark 与实机指标以原文 / 项目页为准；同台对照可看 [Extreme-RGMT](./paper-extreme-rgmt.md)（强调参考质量变化下的鲁棒性）。
 
 ## 常见误区
 

@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanoidpano-hybrid-spherical-panoramic-lidar-cr.md
-summary: "HumanoidPano：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "HumanoidPano：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # HumanoidPano
 
-**HumanoidPano: Hybrid Spherical Panoramic-LiDAR Cross-Modal Perception for Humanoid Robots** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：08_Navigation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**HumanoidPano: Hybrid Spherical Panoramic-LiDAR Cross-Modal Perception for Humanoid Robots** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：08_Navigation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ HumanoidPano 的人形机器人学习论文条目，当前处于 Paper Notebooks
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,7 +48,7 @@ HumanoidPano 的人形机器人学习论文条目，当前处于 Paper Notebooks
 
 ## 结论
 
-**HumanoidPano 在本库是导航分类下的占位实体：它标记了「球面全景 + LiDAR 跨模态感知」这条人形感知路线，但页面尚不提供机制细节。**
+**HumanoidPano 在本库是导航分类下的待读条目：它标记了「球面全景 + LiDAR 跨模态感知」这条人形感知路线，但页面尚不提供机制细节。**
 
 - 本页的作用是保证 08_Navigation 分类下该论文节点不缺失，而非给出可引用的技术判断。
 - 从标题可读出的定位是面向人形机器人的混合球面全景-LiDAR 跨模态感知。
@@ -56,7 +56,7 @@ HumanoidPano 的人形机器人学习论文条目，当前处于 Paper Notebooks
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
+- 分类页：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

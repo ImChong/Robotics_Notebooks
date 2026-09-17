@@ -41,7 +41,7 @@ OmniTrack 关注 physics-consistent reference。它的出发点是：从人类�
 - OmniTrack 的思路是解耦：先由 privileged generalist policy 生成更严格满足物理约束的参考，再训练通用跟踪器。也就是说，不是直接追踪 raw retargeted motions，而是先把参考轨迹变得更物理一致。
 - 这篇论文的意义在于，它把 reference quality 放在了 motion tracking 系统中心。它不是让控制器无限背锅，而是先清理参考本身。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -76,7 +76,7 @@ OmniTrack 的思路是解耦：先由 privileged generalist policy 生成更严�
 - 起作用的机制是 **解耦**：先由 privileged generalist policy 生成更严格满足物理约束的参考，再在其上训练通用跟踪器，而不是直接追踪 raw retargeted motions。
 - 它针对的失败源很具体——重定向数据中的 **浮空、脚滑、不稳定接触与噪声**；这类缺陷不会被更强的跟踪器吸收，只会转化成训练时的奖励冲突。
 - 由此得到的能力定义值得记住：通用 tracker 的核心不是「什么都追」，而是 **知道什么参考值得追、怎么把参考变成可追**。
-- 边界：motion tracking 的泛化通常仍指 **参考分布内**，换数据源或接触条件仍可能崩塌；本页为策展索引级，量化 benchmark 与实机指标以原文 / 项目页为准。
+- 边界：motion tracking 的泛化通常仍指 **参考分布内**，换数据源或接触条件仍可能崩塌；本页为清单索引，量化 benchmark 与实机指标以原文 / 项目页为准。
 
 ## 常见误区
 

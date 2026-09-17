@@ -36,7 +36,7 @@ Robot Motion Diffusion Model 先从本体状态与关节序列、仿真交互数
 - Robot Motion Diffusion Model 先从本体状态与关节序列、仿真交互数据、接触力/触觉信号恢复场景、目标或运动表征，再用PPO/RL 策略训练、ACT/行为克隆模仿学习、扩散策略/流匹配生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
 - 人形 Loco-Manip 161 篇 **#102/161** · 生成式运动、语言控制与轨迹规划。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -53,9 +53,9 @@ Robot Motion Diffusion Model 先从本体状态与关节序列、仿真交互数
 
 Robot Motion Diffusion Model 先从本体状态与关节序列、仿真交互数据、接触力/触觉信号恢复场景、目标或运动表征，再用PPO/RL 策略训练、ACT/行为克隆模仿学习、扩散策略/流匹配生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
 
-## 评测与指标（索引级）
+## 评测与指标
 
-- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
+- 本条目为 161 篇清单索引条目，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
 - 评测原始出处：[原文 / 项目页](https://la.disneyresearch.com/publication/robot-motion-diffusion-model-motion-generation-for-robotic-characters/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 

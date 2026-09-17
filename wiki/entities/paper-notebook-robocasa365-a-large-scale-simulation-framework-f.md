@@ -14,7 +14,7 @@ summary: "RoboCasa365 是一个面向通才机器人训练与评测的大规模�
 
 # RoboCasa365
 
-**RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ RoboCasa365 要：一个**大规模、多形态、系统化**的训练与评测�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ RoboCasa365 要：一个**大规模、多形态、系统化**的训练与评测�
 - 多形态支持（单臂移动平台、人形、带臂四足）是这一版的分水岭：人形在其中是一等公民，而非附带兼容。
 - 适用边界写在数据本身：场景主体是**厨房**与日常任务，结论能否外推到非家居场景，本页没有作出承诺。
 - 与本仓 11_Simulation_Benchmark 下的 RoboCasa、ManiSkill-HAB、BiGym 一脉相承，差别在规模与跨形态覆盖，而不在评测哲学。
-- 本页为深读笔记编译的索引级摘要；具体基线成绩与消融以笔记页和论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要；具体基线成绩与消融以笔记页和论文 PDF 为准。
 
 ## 与其他页面的关系
 

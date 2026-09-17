@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_orca-open-source-reliable-cost-effective-anthrop.md
-summary: "ORCA：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "ORCA：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # ORCA
 
-**ORCA: Open-Source, Reliable, Cost-Effective, Anthropomorphic Robotic Hand for Uninterrupted Dexterous Task Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**ORCA: Open-Source, Reliable, Cost-Effective, Anthropomorphic Robotic Hand for Uninterrupted Dexterous Task Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ ORCA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,7 +48,7 @@ ORCA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 结论
 
-**ORCA 的标题本身就是一张取舍清单：开源、可靠、低成本、拟人四项并列，并用「Uninterrupted」把「灵巧任务学习不被硬件打断」写成了设计目标；但本页仍是待深读占位。**
+**ORCA 的标题本身就是一张取舍清单：开源、可靠、低成本、拟人四项并列，并用「Uninterrupted」把「灵巧任务学习不被硬件打断」写成了设计目标；但本页仍是待读。**
 
 - 可确认信息：分类 12_Hardware_Design、arXiv 2504.04259、深读状态「待撰写」；本页对结构、驱动方式与成本数字均无任何记录。
 - 值得先记住的是定位而非性能：这是硬件设计条目，衡量它的标尺应是可复制性与可靠性，而不是策略层面的任务成功率。
@@ -56,7 +56,7 @@ ORCA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
+- 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

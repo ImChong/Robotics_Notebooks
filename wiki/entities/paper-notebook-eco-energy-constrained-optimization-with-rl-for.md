@@ -14,7 +14,7 @@ summary: "把电机能耗从「多目标奖励里的一堆加权项」里拆出�
 
 # ECO Energy Constrained Optimization with RL for Humanoid Walking
 
-**ECO Energy Constrained Optimization with RL for Humanoid Walking** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**ECO Energy Constrained Optimization with RL for Humanoid Walking** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "把电机能耗从「多目标奖励里的一堆加权项」里拆出�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -51,7 +51,7 @@ summary: "把电机能耗从「多目标奖励里的一堆加权项」里拆出�
 
 - 真正起作用的是问题的重述方式——能耗作为 **显式不等式约束**（再配合镜像对称 / 参考运动类约束），用 **PPO-Lagrangian** 在仿真中稳定求解，避开了奖励权重之间反复对拉的调参困境。
 - 结果的可信度落在实机对照上：在 **BRUCE** 上做到比 **MPC** 与普通 **PPO** 显著更低能耗的稳健对称行走——省能与稳健在这里不是二选一。
-- 本页为策展索引级摘要，约束阈值设定、能耗度量定义与消融细节以深读笔记与论文 PDF 为准，不宜直接引用本页做量化对比。
+- 本页为策展笔记摘要，约束阈值设定、能耗度量定义与消融细节以深读笔记与论文 PDF 为准，不宜直接引用本页做量化对比。
 
 ## 与其他页面的关系
 

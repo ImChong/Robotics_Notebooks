@@ -44,7 +44,7 @@ summary: "依据具身智能小站 2026-08-28 九篇开源盘点，把近期工�
 ## 为什么单独做这张地图
 
 - 公众号把 9 篇放在「WAM、VLA、跨本体」同一叙事里，并强调开放资源形态已经分化。
-- **9/9 本 ingest 新建独立 `paper-*` 节点**；GaussianDream++ 与既有 Awesome 索引级 GaussianDream 是 **不同 arXiv**，不合并。
+- **9/9 本 ingest 新建独立 `paper-*` 节点**；GaussianDream++ 与既有 Awesome 清单索引 GaussianDream 是 **不同 arXiv**，不合并。
 - 需要横切面索引，避免 9 个实体成孤岛。
 
 ## 流程总览
@@ -102,7 +102,7 @@ flowchart TB
 1. **接口显式化**：Zero-WAM 把任务写成视频上下文；StreamPI 把时间写成注意力结构；UCAG-P 把动作写成相机几何；R³ / MA-VLA 分别把推理预算与多臂角色写成可调用接口。
 2. **训练期世界 ≠ 部署期世界**：GaussianDream++ 把三维监督留在训练；ConfAL-WM 用置信度决定补哪些区域。
 3. **开放资源要拆开看**：9 篇都有项目页或仓，但可下载资产只有 MA-VLA、ConfAL-WM、TARCAT 标注与 SuperOdom slim 明确可跑；其余多为发布计划。
-4. **GaussianDream++ 不复用 2605.20752 节点**：前作是 Awesome 索引级页，++ 是独立深度实体。
+4. **GaussianDream++ 不复用 2605.20752 节点**：前作是 Awesome 清单索引页，++ 是独立深度实体。
 
 ## 关联页面
 

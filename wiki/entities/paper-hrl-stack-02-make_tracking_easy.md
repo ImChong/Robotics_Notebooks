@@ -46,7 +46,7 @@ NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。�
 - 它的核心思路是：不要只把 retargeting 看成逐帧几何优化，而要把它看成 **数据分布学习**。论文提出 CEPR 等机制，用层次化和 VAE-based motion clustering 的方式，把大量动作组织成 latent motifs，再学习更稳定的重定向过程。
 - NMR 的重要性在于，它把 **“重定向质量”** 进一步推到了模型化层面。GMR 强调 retargeting matters，NMR 则进一步问：如果传统 retargeting 本身不稳定，能不能训练一个神经网络来学习更好的 retargeting 分布？
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

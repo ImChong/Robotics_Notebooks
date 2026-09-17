@@ -14,7 +14,7 @@ summary: "去噪扩散概率模型（DDPM）逐步、小增量地合成样本—
 
 # TEDi
 
-**TEDi: Temporally-Entangled Diffusion for Long-Term Motion Synthesis** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**TEDi: Temporally-Entangled Diffusion for Long-Term Motion Synthesis** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ TEDi 要：把扩散的渐进性"搬到"运动时间轴，**滑动缓冲**式地
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ TEDi 要：把扩散的渐进性"搬到"运动时间轴，**滑动缓冲**式地
 - 起作用的机制是 **运动缓冲区 + 随时间变化的去噪**：每个扩散步只推进运动时间轴、扩散时间轴保持静止，干净帧从缓冲区滑出、末端续接新噪声，从而同时绕开「一次性生成超长序列代价高且不稳」与「朴素自回归易断裂/漂移」两个坑。
 - 适用边界是**生成范式而非控制器**：本页定位在角色动画式的长时程动作合成，对人形长时程动作/规划是可借鉴的结构，但不等于可直接部署的全身控制。
 - 边生成边执行的自回归特性契合在线控制（本页指其与 UniAct 的流式思路相通），这是它对具身任务最有迁移价值的一面。
-- 本页为深读笔记编译的索引级摘要，未给出量化 benchmark 与消融；长时程稳定性到底能撑多久，须回到笔记页与论文 PDF 核对。
+- 本页为深读笔记编译的笔记摘要，未给出量化 benchmark 与消融；长时程稳定性到底能撑多久，须回到笔记页与论文 PDF 核对。
 
 ## 与其他页面的关系
 

@@ -58,7 +58,7 @@ summary: "ActiveScale（arXiv:2609.18514）：历史帧 + 相机 pose token 的�
 
 - Bag / Drawer / Table（遮挡下操作）+ Pot / Box（主动搜索）；每任务 150 demo、20 rollouts。
 - Ablation：mid-training、history-only、history+pose 逐项贡献 SR/TP。
-- **读法：** 索引级摘要；硬件栈（Cobot-Magic + Quest 2）与 baseline 协议以原文为准。
+- **读法：** 清单摘要；硬件栈（Cobot-Magic + Quest 2）与 baseline 协议以原文为准。
 
 ## 结论
 

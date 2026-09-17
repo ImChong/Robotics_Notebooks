@@ -14,7 +14,7 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 
 # Unified Humanoid Fall-Safety Policy from a Few Demonstrations
 
-**Unified Humanoid Fall-Safety Policy from a Few Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Unified Humanoid Fall-Safety Policy from a Few Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 - 真正起作用的是三融合而非单点技巧：稀疏人类示范提供安全反应的先验、RL 负责在扰动分布上泛化、自适应扩散式「安全反应记忆」按情境检索合适反应——三者缺一，统一策略就退化回分段方案。
 - 少示范是本文的成本主张：安全数据本身昂贵且危险，从少量演示学到鲁棒全身行为，比堆大规模跌落数据更现实。
 - 页面给出的验证口径是仿真 + Unitree G1 真机：稳健 sim-to-real、降低跌落冲击、多扰动场景下持续快速恢复；注意「持续快速恢复」是多次扰动下的能力，不是单次演示。
-- 证据层级是主要局限：本页为深读笔记的索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
+- 证据层级是主要局限：本页为深读笔记的笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
 - 定位上，本文与 SafeFall、自保护跌落、Robot Crash Course、VIGOR 同属人形跌落安全研究簇；差异点不在某一段做得更强，而在「统一」——因此比较时应看真实不按剧本的跌倒，而非分段基准。
 
 ## 与其他页面的关系

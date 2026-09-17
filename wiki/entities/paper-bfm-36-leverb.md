@@ -41,7 +41,7 @@ sources:
 - 视觉-语言指令压成适合全身的 latent；语义到身体接口。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#36/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

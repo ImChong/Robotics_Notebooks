@@ -152,7 +152,7 @@ sequenceDiagram
 - **非机器人专用：** 不解析 USD/URDF 语义或仿真时钟；工程价值在 **研发 harness 与代码库认知**。
 - **与 Karpathy wiki 分工：** `/understand-knowledge` 是 **探索视图**；本库 ingest 仍要求人工写回 `wiki/` 与 `sources/`。
 
-## 与其他工具对比（索引级）
+## 与其他工具对比
 
 | 对照 | 差异读法 |
 |------|----------|

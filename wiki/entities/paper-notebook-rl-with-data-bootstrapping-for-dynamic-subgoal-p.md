@@ -14,7 +14,7 @@ summary: "安全、实时导航是人形应用的基础，但现有双足导航�
 
 # Reinforcement Learning with Data Bootstrapping for Dynamic Subgoal Pursuit in Humanoid Robot Navigation
 
-**Reinforcement Learning with Data Bootstrapping for Dynamic Subgoal Pursuit in Humanoid Robot Navigation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Reinforcement Learning with Data Bootstrapping for Dynamic Subgoal Pursuit in Humanoid Robot Navigation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "安全、实时导航是人形应用的基础，但现有双足导航�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "安全、实时导航是人形应用的基础，但现有双足导航�
 - 子目标定义在 **机器人中心坐标系**，贴合双足的局部决策；相比一次性全局规划更适应杂乱、动态变化的环境。
 - 适用边界：验证是在 Agility Digit 上、多种随机障碍场景的 **仿真** 中完成的，成功率与适应性优于原模型法及其它学习法——本页未记录真机结果。
 - 框架上限受低层 MPC 约束：高层 RL 选得再好，也只能在 MPC 能稳定执行的子目标集合内起作用。
-- 本页为 **深读笔记编译** 的索引级摘要，量化 benchmark 与消融以笔记页和论文 PDF 为准。
+- 本页为 **深读笔记编译** 的笔记摘要，量化 benchmark 与消融以笔记页和论文 PDF 为准。
 
 ## 与其他页面的关系
 

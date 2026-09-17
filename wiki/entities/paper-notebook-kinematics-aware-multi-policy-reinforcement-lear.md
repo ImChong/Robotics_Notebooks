@@ -14,7 +14,7 @@ summary: "人形机器人有类人形态，在工业里潜力大。但现有 loc
 
 # Kinematics-Aware Multi-Policy Reinforcement Learning for Force-Capable Humanoid Loco-Manipulation
 
-**Kinematics-Aware Multi-Policy Reinforcement Learning for Force-Capable Humanoid Loco-Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Kinematics-Aware Multi-Policy Reinforcement Learning for Force-Capable Humanoid Loco-Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "人形机器人有类人形态，在工业里潜力大。但现有 loc
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "人形机器人有类人形态，在工业里潜力大。但现有 loc
 - 关键取舍是解耦三阶段（上身 / 下身 / delta 指令）：放弃端到端联合学习，换取可训练性——页面已点明直接端到端学「又灵巧又发力」收敛慢、性能差；代价是需要 delta 指令策略去缝合上下身。
 - 适用边界是 **高负载工业搬运/推压** 类任务；只追求灵巧操作的场景用不上这套力课程，反而多付训练成本。
 - 定位上与 HAFO、FALCON、CHIP、HMC 等力/柔顺路线同向，上下身分治则呼应 EGM 的专家分设，本文的差异点在于把运动学先验写进奖励而非留给黑箱探索。
-- 本页为深读笔记的索引级摘要，量化 benchmark 与消融以笔记和论文 PDF 为准。
+- 本页为深读笔记的笔记摘要，量化 benchmark 与消融以笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -66,7 +66,7 @@ summary: "人形全身荡杠：生物启发关键帧 + privileged transition；�
 | 机制 | 生物启发 **关键帧** + **privileged transition** |
 
 - **单次 vs 连续的落差是重点：** 约 90% 的单次成功率经八次串联后掉到 40–60%，与独立失败复合（$0.9^8 \approx 43\%$）的量级一致；读表时应把连续完成率理解为 **单次成功率的复合结果**，引用时不要只报单次数字。是否另有衔接相位的额外失效，需看原文逐次分解。
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md) 与项目页；本体、杠距设定与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md) 与项目页；本体、杠距设定与消融以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
 ## 与其他工作对比
 

@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_physics-based-motion-tracking-of-contact-rich-in.md
-summary: "Physics-Based Motion Tracking of Contact-Rich Interacting Characters：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Physics-Based Motion Tracking of Contact-Rich Interacting Characters：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Physics-Based Motion Tracking of Contact-Rich Interacting Characters
 
-**Physics-Based Motion Tracking of Contact-Rich Interacting Characters** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Physics-Based Motion Tracking of Contact-Rich Interacting Characters** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Physics-Based Motion Tracking of Contact-Rich Interacting Characters 的人形�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Physics-Based Motion Tracking of Contact-Rich Interacting Characters 的人形�
 
 ## 结论
 
-**本页目前只是知识图谱里的占位节点：论文已进入待深读队列，但「接触密集的交互角色动作跟踪」究竟怎么做、做到什么程度，本库尚无自己的判断。**
+**本页目前只是一条待读记录：论文已进入待深读队列，但「接触密集的交互角色动作跟踪」究竟怎么做、做到什么程度，本库尚无自己的判断。**
 
 - 可确认的只有分类归属（13_Physics-Based_Animation）与 arXiv 出处；核心机制、消融与实机指标全部待深读补齐。
-- 当前价值在于 **可检索性**：把该论文实体挂在分类父节点与总索引之下，避免知识图谱出现缺口。
+- 当前价值只是 **可检索**：这篇挂在分类页与总索引之下，方便你找到它。
 - 深读笔记完成前，本页不应被当作结论来源；判断请以 PROGRESS.md 与论文原文为准。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
+- 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

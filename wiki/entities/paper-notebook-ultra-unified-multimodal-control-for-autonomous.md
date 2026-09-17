@@ -14,7 +14,7 @@ summary: "ULTRA 是一个统一的多模态控制器——有动作参考时能�
 
 # ULTRA
 
-**ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ ULTRA 是一个统一的多模态控制器——有动作参考时能精确跟�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -51,7 +51,7 @@ ULTRA 是一个统一的多模态控制器——有动作参考时能精确跟�
 
 - 关键取舍在「统一」二字——一套多模态控制器同时吃动作参考与视觉/指令两类输入，而不是为两种模式各训一个策略再切换。
 - 无参考模式依赖第一人称视觉感知与「简单任务指令」，能力上限因此受视觉可观测性与指令粒度约束；本页未给出该模式与跟踪模式的精度对比。
-- 本页仍是索引级实体，核心机制尚待从深读笔记消化；量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页仍是清单索引实体，核心机制尚待从深读笔记消化；量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

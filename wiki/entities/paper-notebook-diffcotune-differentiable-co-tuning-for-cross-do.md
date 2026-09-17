@@ -14,7 +14,7 @@ summary: "机器人控制器部署常受建模差异所困——为可计算而�
 
 # DiffCoTune
 
-**DiffCoTune: Differentiable Co-Tuning for Cross-domain Robot Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：10_Sim-to-Real），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DiffCoTune: Differentiable Co-Tuning for Cross-domain Robot Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：10_Sim-to-Real），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "机器人控制器部署常受建模差异所困——为可计算而�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ summary: "机器人控制器部署常受建模差异所困——为可计算而�
 - 适用面宽是本文的卖点：模型法与学习法控制器都能调，任务从低维倒立摆一直到高维四足与双足跟踪，说明框架不绑定某一类控制器。
 - 前提也是限制：整套方法建立在 **可微仿真器可用** 之上，可微性与梯度质量是隐含门槛；对不可微或梯度病态的接触动力学，这条路径未必成立。
 - 与本仓 10_Sim-to-Real 模块的 MOSAIC、ZEST 属并行的不同路线：它们各走各的迁移思路，本文押在「梯度可用」这一假设上。
-- 本页为索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

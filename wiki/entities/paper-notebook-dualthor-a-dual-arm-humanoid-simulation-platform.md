@@ -14,7 +14,7 @@ summary: "开发能在真实场景做复杂交互任务的具身智能体，仍�
 
 # DualTHOR
 
-**DualTHOR: A Dual-Arm Humanoid Simulation Platform for Contingency-Aware Planning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DualTHOR: A Dual-Arm Humanoid Simulation Platform for Contingency-Aware Planning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ DualTHOR 要：一个**双臂人形、含意外机制**的物理仿真平台 + V
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ DualTHOR 要：一个**双臂人形、含意外机制**的物理仿真平台 + V
 - 最有信息量的结果来自 VLM 评测：当前 VLM 在 **双臂协调** 上能力有限，且 **面对现实意外时鲁棒性下降**——高层规划与底层执行之间的鸿沟被显式暴露出来。
 - 适用边界：它是测试床而非控制方法，产出的是评测结论与研究资源；任务面向家务场景，结论主要覆盖室内交互操作，不应外推到高动态运动或户外地形。
 - 与本仓 11_Simulation_Benchmark 其它平台的对照：多数平台面向单臂或简化抓取，本文补的正是「双臂人形」与「失败建模」这两块空白。
-- 本页为索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

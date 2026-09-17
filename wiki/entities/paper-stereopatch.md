@@ -60,7 +60,7 @@ summary: "StereoPatch（arXiv:2609.15509）：把注册后的度量深度绑定�
 ## 实验与评测
 
 - RoboMimic 等仿真任务与真机 rollout 视频（项目页）；具体成功率以原文为准。
-- **读法：** 索引级摘要；逐项对照与 baseline 以原文 PDF 为准。
+- **读法：** 清单摘要；逐项对照与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
 

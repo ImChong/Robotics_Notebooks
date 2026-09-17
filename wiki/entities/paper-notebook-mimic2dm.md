@@ -14,7 +14,7 @@ summary: "不再依赖 off-the-shelf 的 3D 重建，直接用从野生视频抽
 
 # Mimic2DM
 
-**Mimic2DM: Generating and Mimicking 2D Motions for 3D Character Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Mimic2DM: Generating and Mimicking 2D Motions for 3D Character Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "不再依赖 off-the-shelf 的 3D 重建，直接用从野生视频抽
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ summary: "不再依赖 off-the-shelf 的 3D 重建，直接用从野生视频抽
 - 关键机制是监督信号的降级——2D 关键点 + 重投影误差把物理仿真中的角色控制器从训练到生成端到端做穿，绕开了 off-the-shelf 3D 重建这一层的成本与误差。
 - 多视角聚合后仍能长出 3D 追踪能力，说明放弃 3D 输入不等于放弃 3D 结果，只是把重建的负担挪到了控制器与多视角约束一侧。
 - 适用边界正是它挑的场景：舞蹈、球类、动物步态这类数据匮乏、物理可信度难保证的复杂动作；对已有高质量 3D 动捕的常规动作，这条路的优势并不明显。
-- 本页仍是索引级实体，详细机制待从深读笔记消化后补充，量化对比以笔记与论文 PDF 为准。
+- 本页仍是清单索引实体，详细机制待从深读笔记消化后补充，量化对比以笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_let-humanoids-hike-integrative-skill-development.md
-summary: "Let Humanoids Hike! Integrative Skill Development on Complex Trails：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Let Humanoids Hike! Integrative Skill Development on Complex Trails：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Let Humanoids Hike! Integrative Skill Development on Complex Trails
 
-**Let Humanoids Hike! Integrative Skill Development on Complex Trails** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Let Humanoids Hike! Integrative Skill Development on Complex Trails** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Let Humanoids Hike! Integrative Skill Development on Complex Trails 的人形机
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Let Humanoids Hike! Integrative Skill Development on Complex Trails 的人形机
 
 ## 结论
 
-**本页目前只是「让人形去徒步」这条复杂地形 locomotion 线索的占位节点：坐标已定，方法结论未定。**
+**本页目前只是「让人形去徒步」这条复杂地形 locomotion 线索的待读条目：坐标已定，方法结论未定。**
 
 - 可确认的只有索引层信息——arXiv 2505.06218、分类 05_Locomotion 与计划中的笔记文件夹；标题强调的是「在复杂步道上做整合式技能培养」，即多技能协同而非单一步态，但整合方式页内未展开。
-- 适用边界：可作为检索入口，经[分类父节点](../overview/paper-notebook-category-05-locomotion.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与其他 locomotion 工作交叉定位；不足以支撑地形泛化能力的横向比较。
+- 适用边界：可作为检索入口，经[分类页](../overview/paper-notebook-category-05-locomotion.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与其他 locomotion 工作交叉定位；不足以支撑地形泛化能力的横向比较。
 - 风险提示：量化 benchmark、消融与实机指标本页均无，深读状态以 PROGRESS.md 为准，结论须回到 arXiv 原文核对。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

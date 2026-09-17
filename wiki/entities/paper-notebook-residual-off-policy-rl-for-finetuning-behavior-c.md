@@ -14,7 +14,7 @@ summary: "行为克隆（BC）能学到不错的视觉运动策略，但受限�
 
 # Residual Off-Policy RL for Finetuning Behavior Cloning Policies
 
-**Residual Off-Policy RL for Finetuning Behavior Cloning Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Residual Off-Policy RL for Finetuning Behavior Cloning Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ BC 与 RL 各有短板： - **BC**：受演示质量限制、边际收益递减�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ BC 与 RL 各有短板： - **BC**：受演示质量限制、边际收益递减�
 - 起作用的是 **残差结构 + 离策略 RL** 的组合，缺一不可：前者让探索始终停留在 BC 行为附近（安全），后者让昂贵的真机交互数据可被反复复用（样本高效）。
 - **只需稀疏二值奖励** 是关键工程红利——真机任务最难写的恰恰是稠密奖励，这一步被绕开了。
 - 适用边界写在前提里：必须先有一个能用的 BC 基座。BC 受演示质量与采集人力限制、离线数据边际收益递减，残差修正的是「最后一段」，不是从零学会任务。
-- 里程碑意义在于据作者所知 **首次在带灵巧手的人形真机上跑通 RL**，多项视觉任务取得 SOTA；但本页仅为索引级摘要，量化指标以深读笔记与论文 PDF 为准。
+- 里程碑意义在于据作者所知 **首次在带灵巧手的人形真机上跑通 RL**，多项视觉任务取得 SOTA；但本页仅为笔记摘要，量化指标以深读笔记与论文 PDF 为准。
 - 同簇对照：与 ResMimic、SteadyTray 共享「冻结基座 + 学残差」思路，差别在于本文把它推到了真机高 DoF 视觉操作这一最难的场景。
 
 ## 与其他页面的关系

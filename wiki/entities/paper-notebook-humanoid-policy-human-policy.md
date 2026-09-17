@@ -14,7 +14,7 @@ summary: "用多样数据训练人形操作策略能增强鲁棒与跨任务/跨
 
 # Humanoid Policy ~ Human Policy
 
-**Humanoid Policy ~ Human Policy** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Humanoid Policy ~ Human Policy** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "用多样数据训练人形操作策略能增强鲁棒与跨任务/跨
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ summary: "用多样数据训练人形操作策略能增强鲁棒与跨任务/跨
 - 收益来自协同训练：人类数据带来规模与采集效率，机器人数据保证本体对齐，二者缺一不可；论文的对照面是「只用机器人数据」。
 - 适用边界是遥操作成本高、且人类与人形动作空间可映射的操作类任务；具身差距过大时统一表示这一前提本身就会松动。
 - 与 H-RDT、Being-H0、In-N-On 同属「人类数据驱动人形操作」方法簇（作者群高度重叠），本页的区分点是可微重定向 + 统一状态-动作表示。
-- 本页为深读笔记编译的索引级摘要，量化 benchmark 与消融以深读笔记和论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化 benchmark 与消融以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

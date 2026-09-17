@@ -50,7 +50,7 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 
 - **技术地图：** [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
 - **目录 source：** [sun_awesome_ego_catalog.md](../../sources/papers/sun_awesome_ego_catalog.md)
-- 新建索引级实体 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
+- 新建清单索引页 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
 
 ## 核心结构（怎么读）
 

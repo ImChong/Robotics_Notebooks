@@ -10,12 +10,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-bipedal-locomotion-on-gear-driven-human.md
-summary: "Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs
 
-**Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -31,8 +31,8 @@ Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMU
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -49,16 +49,16 @@ Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMU
 
 ## 结论
 
-**本页是「齿轮传动人形 + 足部 IMU」这条线索在知识图谱中的占位锚点，而不是一份可引用的技术结论。**
+**本页是「齿轮传动人形 + 足部 IMU」这条线索的待读条目，而不是一份可引用的技术结论。**
 
 - 目前唯一可核验的是元信息：分类 05_Locomotion、arXiv 2504.00614、计划笔记文件夹路径与 PROGRESS.md 中的待深读状态。
 - 标题给出的线索（齿轮传动人形、足部安装 IMU）在正文中尚未展开，机制、消融与实机指标全部空缺。
-- 适用边界：只适合作为检索入口与图谱连边（分类父节点 / 总索引），任何技术判断都应回到 PROGRESS.md 与论文原文。
-- 升格条件明确：深读笔记完成后本页应由 planned 升级为完整索引实体并回链笔记站。
+- 适用边界：只适合作为检索入口（分类页 / 总索引），任何技术判断都应回到 PROGRESS.md 与论文原文。
+- 深读笔记完成后，本页会补上笔记链接与实质要点。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_predictive-sampling-real-time-behaviour-synthesi.md
-summary: "Predictive Sampling：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Predictive Sampling：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Predictive Sampling
 
-**Predictive Sampling: Real-time Behaviour Synthesis with MuJoCo** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Predictive Sampling: Real-time Behaviour Synthesis with MuJoCo** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Predictive Sampling 的人形机器人学习论文条目，当前处于 Paper No
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Predictive Sampling 的人形机器人学习论文条目，当前处于 Paper No
 
 ## 结论
 
-**本页目前是占位实体而非内容实体：Predictive Sampling 已进入 Paper Notebooks 待深读清单，但页面尚未承载任何机制级归纳。**
+**本页目前是待读条目而非内容实体：Predictive Sampling 已进入 Paper Notebooks 待深读清单，但页面尚未承载任何机制级归纳。**
 
 - 现阶段可确认的只有策展元数据：分类 14_Human_Motion、arXiv 2212.00541、深读笔记待撰写。
-- 页面的作用是保持知识图谱完整，让分类父节点与总索引不至于缺失该论文实体。
+- 页面的作用只是登记，让你能从分类页与总索引找到这篇论文。
 - 机制、实验与适用边界须等深读笔记完成后回填；在此之前不宜把本页当作可引用的技术结论来源。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
+- 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -71,7 +71,7 @@ sequenceDiagram
 ## 实验与评测
 
 - 多地形 sim-to-real；依赖 Unitree Go2、Mid-360 LiDAR、Isaac Lab/MuJoCo 与 Jetson 等具体条件。
-- **读法：** 索引级摘要；逐项对照与 baseline 以原文 PDF 为准。
+- **读法：** 清单摘要；逐项对照与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
 

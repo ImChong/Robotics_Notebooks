@@ -14,7 +14,7 @@ summary: "本文提出 BiBo 系统，让 GPT-4 这类视觉语言模型（VLM）
 
 # Endowing GPT-4 with a Humanoid Body
 
-**Endowing GPT-4 with a Humanoid Body: Building the Bridge Between Off-the-Shelf VLMs and the Physical World** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Endowing GPT-4 with a Humanoid Body: Building the Bridge Between Off-the-Shelf VLMs and the Physical World** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ BiBo 要：用现成 VLM 的开放世界泛化 + 轻量桥接，**少数据**地
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -74,7 +74,7 @@ BiBo 要：用现成 VLM 的开放世界泛化 + 轻量桥接，**少数据**地
 
 - 分工是这套系统的核心取舍：**具身指令编译器** 负责语义规划（高层命令→低层运动参数），**基于扩散的运动执行器** 负责物理执行与对环境反馈的自适应——语义与执行被刻意解耦。
 - 「对环境反馈自适应」是从开环生成走向闭环可用的关键一步，也是这类 VLM 驱动方案能否离开演示视频的分水岭。
-- 报告结果为开放环境交互任务成功率 **90.2%**、文本引导动作执行精度较此前方法 **提升 16.3%**；本页为索引级摘要，评测协议与基线定义须回到深读笔记与论文 PDF 核对。
+- 报告结果为开放环境交互任务成功率 **90.2%**、文本引导动作执行精度较此前方法 **提升 16.3%**；本页为笔记摘要，评测协议与基线定义须回到深读笔记与论文 PDF 核对。
 - 省数据的收益与风险同源：能力上限被交给了现成 VLM 本身，未经具身适配的语义判断会原样传导到执行端。
 - 与 SENTINEL、FRoM-W1 等语言-动作工作构成 **端到端训练 vs 借用现成 VLM** 的路线对照。
 

@@ -14,7 +14,7 @@ summary: "RL 在四足敏捷运动上很有前景，即便仅本体感受也行�
 
 # Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion
 
-**Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ RL 在四足敏捷运动上很有前景，即便仅本体感受也行。但实�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ RL 在四足敏捷运动上很有前景，即便仅本体感受也行。但实�
 - 起作用的是两件互补的东西：门控专家把隐式地形与指令建模分解，让仅本体感受的策略获得部署鲁棒性与泛化；RoboGauge 则用跨地形、难度、域随机化的 sim-to-sim 多维本体感受指标去预测 sim-to-real 可迁移性。
 - 页面给出的真机证据集中在 Unitree Go2：雪、沙、楼梯、斜坡、30cm 障碍等未见地形稳健通行，高速测试达 4 m/s，并涌现与高速稳定相关的窄步态——后者提示 RL 能自发找到与稳定相关的运动模式，而非被显式奖励规定。
 - 适用边界要说清：本文平台是四足、感知是本体感受 only；本页对人形的价值是**评估方法论与 MoE 思想可迁移**，而不是已给出人形结果。真机越贵越危险，预测式评估的收益越大。
-- 主要局限在证据层级：本页只是深读笔记的索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
+- 主要局限在证据层级：本页只是深读笔记的笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
 - 定位上，MoE 的专家分设呼应 EGM 一路的结构化分解；本文的增量在于把它和一套可迁移性预测套件绑在一起交付。
 
 ## 与其他页面的关系

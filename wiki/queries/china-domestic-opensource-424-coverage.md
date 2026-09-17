@@ -1,22 +1,22 @@
 ---
-title: 国内具身开源全景 424 项 · 本库导读
+title: 国内具身开源全景 424 项 · 阅读导航
 type: query
 status: complete
 created: 2026-09-06
 updated: 2026-09-06
-summary: "把具身智能研究室「76 家机构 · 424 个开源项目」全景清单逐条接到本库独立详情页；复用既有实体，缺口以 cn-os-* 实体补齐。"
+summary: "具身智能研究室「76 家机构 · 424 个开源项目」全景清单的站内阅读导航：每个项目对应站内哪一页、按机构与方向怎么找。"
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
 
-> **Query 产物**：「国内 76 家机构 424 个开源项目，在本库分别对应哪一页？」
+> **Query 产物**：「国内这 424 个开源项目，我想找的那个在站内哪一页、同方向还有谁？」
 
-# 国内具身开源全景 424 项 · 本库导读
+# 国内具身开源全景 424 项 · 阅读导航
 
 ## 一句话定义
 
-把 [国内具身智能开源全景](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)（76 家 · 424 项）接到本库 **独立 `wiki/entities/*` 详情节点**，避免同名仓库在清单与 HMI 主表间迷路。
+把 [国内具身智能开源全景](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)（76 家机构 · 424 个项目）拆成可逐条点开的详情页，并按机构与方向组织，方便你直接定位到想找的那个项目。
 
 ## 英文缩写速查
 

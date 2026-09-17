@@ -14,7 +14,7 @@ summary: "ZeroWBC 把\"教人形机器人做事\"的重心从昂贵的真机遥�
 
 # ZeroWBC
 
-**ZeroWBC: Learning Natural Visuomotor Humanoid Control Directly from Human Egocentric Video** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**ZeroWBC: Learning Natural Visuomotor Humanoid Control Directly from Human Egocentric Video** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ ZeroWBC 把"教人形机器人做事"的重心从昂贵的真机遥操作搬到�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ ZeroWBC 把"教人形机器人做事"的重心从昂贵的真机遥操作搬到�
 - 关键取舍是 **不做重定向**：不把人体动作硬塞进机器人形态，而是从第一视角图像 + 少量机载本体感觉直接输出全身关节命令，代价是策略必须自行消化人机形态差异。
 - 「Zero」指的是对大规模真机遥操作的 **近零依赖**，不是零数据；换回的收益是坐下、踢、迈步、伸手等多样自然交互行为，而不是被僵硬步态模板卡死。
 - 外部输入几乎只有第一视角视觉、本体感觉仅「少量」，因此该设定的适用边界与失败模式高度依赖观测质量，这一点本页未展开。
-- 本页为 **策展索引级** 摘要，量化 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准。
+- 本页为 **策展清单索引** 摘要，量化 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

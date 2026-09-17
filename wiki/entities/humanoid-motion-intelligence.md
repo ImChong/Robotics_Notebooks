@@ -110,8 +110,8 @@ flowchart TB
 | 想解决什么 | 上游入口 |
 |------------|----------|
 | 建立完整技术路线 / 新手路径 | [`技术路线/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/README.md) |
-| 查论文与稳定 ID（Pxxx） | [`论文与项目/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)（**191** 条）→ 本库导读见 [HMI 论文总索引 · 本库导读](../queries/hmi-papers-coverage.md) |
-| 找代码与复现入口 | [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)（**586** 项）→ 本库导读见 [HMI 开源项目主表 · 本库导读](../queries/hmi-opensource-projects-coverage.md) |
+| 查论文与稳定 ID（Pxxx） | [`论文与项目/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)（**191** 条）→ 站内导航见 [HMI 论文总索引 · 阅读导航](../queries/hmi-papers-coverage.md) |
+| 找代码与复现入口 | [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)（**586** 项）→ 站内导航见 [HMI 开源项目主表 · 阅读导航](../queries/hmi-opensource-projects-coverage.md) |
 | 按公司查官方开源 | [`具身智能公司的开源项目/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E5%85%AC%E5%8F%B8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE)（约 81 家页面；只收可核验归属） |
 | 查训练数据 | [`数据集/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E6%95%B0%E6%8D%AE%E9%9B%86/README.md)（40 个 `Dxxx`） |
 | 国内机构开源全景（76 家 · 424 项） | [微信全景 2026-09-06](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md) → [五层技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) + [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) |
@@ -144,8 +144,8 @@ flowchart TB
 - [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) — 动作小脑横切面
 - [AMP 运动先验综述](../overview/humanoid-amp-motion-prior-survey.md) — 运动先验姊妹篇
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 移动操作全谱
-- [HMI 论文总索引 · 本库导读](../queries/hmi-papers-coverage.md) — 总索引接到本库详情页（P146–P191 为本次增量挂接）
-- [HMI 开源项目主表 · 本库导读](../queries/hmi-opensource-projects-coverage.md) — 166 项快照导读；上游现 586 项
+- [HMI 论文总索引 · 阅读导航](../queries/hmi-papers-coverage.md) — 总索引接到本库详情页（P146–P191 为本次增量挂接）
+- [HMI 开源项目主表 · 阅读导航](../queries/hmi-opensource-projects-coverage.md) — 166 项快照导读；上游现 586 项
 - [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 2026-09-06 公众号五层机构清单
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 逐条独立实体节点导读
 - [开源运动控制项目结构化摘要](../queries/open-source-motion-control-projects.md) — 本库另一条开源项目方法地图

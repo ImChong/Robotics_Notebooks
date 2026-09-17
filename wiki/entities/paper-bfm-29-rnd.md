@@ -41,7 +41,7 @@ sources:
 - 内在奖励探索经典；身体预训练常需自发现新状态。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#29/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

@@ -14,7 +14,7 @@ summary: "用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把\"驱动电�
 
 # Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand
 
-**Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把\"驱动电�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ summary: "用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把\"驱动电�
 - 真正起作用的是两件事的组合：**拮抗式 Bowden 缆绳驱动 + 滚动接触关节优化**，使手部远端只剩 236 g 结构件，仍能输出 >18 N 指尖力、抓起 >100 倍自重的负载。
 - 它瞄准的是一个具体的人形工程约束——「手臂载荷不够、手却必须像人手」：减掉的是远端质量与对手臂载荷的占用，而不是系统总重。
 - 定位是 **硬件设计（12_Hardware_Design）** 而非学习方法，评价维度是机构学与驱动指标，与策略泛化类工作不可直接比较。
-- 本页只是索引级实体：详细机制与完整量化指标、消融均未在此展开，不宜仅凭上述几个数字下工程可用性结论，需回到深读笔记与论文 PDF。
+- 本页只是清单索引实体：详细机制与完整量化指标、消融均未在此展开，不宜仅凭上述几个数字下工程可用性结论，需回到深读笔记与论文 PDF。
 
 ## 与其他页面的关系
 

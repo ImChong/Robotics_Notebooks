@@ -14,7 +14,7 @@ summary: "混合现实（MR）系统常需仅从末端（主要是头与手）�
 
 # MANIKIN
 
-**MANIKIN: Biomechanically Accurate Neural Inverse Kinematics for Human Motion Estimation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**MANIKIN: Biomechanically Accurate Neural Inverse Kinematics for Human Motion Estimation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -65,7 +65,7 @@ MANIKIN 要：**精确对齐输入末端**、**物理/生物力学可信**、且
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ MANIKIN 要：**精确对齐输入末端**、**物理/生物力学可信**、且
 - 生物力学侧的做法是精炼 SMPL：嵌入解剖学约束、缩减特定参数的自由度，用收窄可行域换物理可信度。
 - 适用场景是 MR 这类只有头与手稀疏末端观测、且要求快速推理的设定；输入形态一变，摆转角这条解析路径未必仍然成立。
 - 对机器人的借鉴在配方而非模型本身：神经预测 + 解析 IK + 生物力学约束这套结构，可迁移到人形从末端目标解全身姿势，也正对上动作重定向/跟踪里末端对齐与避免穿地的诉求。
-- 本页为深读笔记编译的索引级摘要，超越 SOTA 的量化对比以深读笔记与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，超越 SOTA 的量化对比以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

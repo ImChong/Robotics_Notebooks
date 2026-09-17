@@ -144,7 +144,7 @@ sequenceDiagram
 | Agent | `ft launch claude|codex|dsh|opencode|openclaw`；`--dry-run` 预览配置 |
 | 对照栈 | 思路受 SGLang / vLLM / mini-sglang 启发；与云 API 比的是 **数据驻留 + 超大 MoE 本地可达** |
 
-## 实验与评测（论文宣称，索引级）
+## 实验与评测（论文宣称，清单索引）
 
 | 维度 | 要点 |
 |------|------|
@@ -166,7 +166,7 @@ sequenceDiagram
 5. **与机器人栈的关系是「研究 harness 后端」** — 接 dsh/Codex 写仿真与训练代码，不替代 [VLA](../methods/vla.md) 等 embodied 策略。
 6. **桌面 app vs CLI** — 产品页安装包降低门槛；复现与定制仍走 GitHub 开源引擎。
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
 | 对照 | 差异读法 |
 |------|----------|

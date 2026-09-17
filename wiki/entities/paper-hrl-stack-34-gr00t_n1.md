@@ -64,7 +64,7 @@ GR00T N1 是双系统 **Vision-Language-Action（VLA）** 模型：**System 2** 
 - 论文把「人形 foundation model」落到可复现开源栈：**GR00T-N1-2B**（总参数 2.2B，其中 VLM 1.34B）、训练数据与 RoboCasa / DexMG / GR-1 仿真 benchmark 一并公开。
 - 核心工程贡献不仅是 VLA 口号，而是 **跨具身动作接口**（per-embodiment 状态/动作 MLP、action chunk、latent/IDM 伪动作）与 **数据金字塔共训练**，缓解单一人形硬件数据孤岛问题。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

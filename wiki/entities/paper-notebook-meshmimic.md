@@ -15,7 +15,7 @@ summary: "MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的�
 
 # MeshMimic
 
-**MeshMimic: Geometry-Aware Humanoid Motion Learning through 3D Scene Reconstruction** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**MeshMimic: Geometry-Aware Humanoid Motion Learning through 3D Scene Reconstruction** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -45,7 +45,7 @@ MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -54,7 +54,7 @@ MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-�
 - 真正起作用的是两段流水线：先做 3D 视觉重建（人体 SMPL-X、场景几何、接触），再用运动优化 + 接触不变重定向把人类动作搬到人形上。
 - 它瞄准的失败模式很具体——脚滑、穿模、接触不一致，这些正是缺少环境几何的传统 MoCap 数据带来的典型问题。
 - 取舍是可得性优先：输入只要普通单目 RGB 视频，数据来源门槛极低；对精度更敏感的场景，本页给出的对照是 [EgoHTR](./paper-egohtr.md)——可穿戴+扫描锚定厘米级，并有 foothold 精度门槛实证。
-- 边界：本页为索引级实体，量化 benchmark 与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
+- 边界：本页为清单索引实体，量化 benchmark 与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 

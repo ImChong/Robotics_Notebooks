@@ -128,7 +128,7 @@ flowchart LR
   - **生成 → 微调 → 真机** 三段对比：breakdance、cartwheel、high kick、180°/360° spin jump。
   - **更多真机**：crawl、frog jump、monkey、jump、spin kick、hop、punch、kneel、wave 等。
 - **论文主张**：相对既有 text-driven 人形控制，将可行动作推进到 **高动态、高难度全身** 区间，而非停留于行走与低动态。
-- **量化协议**：完整 benchmark、消融与成功率/跟踪误差表以 **arXiv PDF** 为准；本页为策展索引级摘要。
+- **量化协议**：完整 benchmark、消融与成功率/跟踪误差表以 **arXiv PDF** 为准；本页为策展清单摘要。
 
 ## 结论
 

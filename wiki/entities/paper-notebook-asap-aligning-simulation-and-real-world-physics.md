@@ -15,7 +15,7 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 
 # ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills
 
-**ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -44,7 +44,7 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -54,7 +54,7 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 - 收益集中在侧跳、前跳、踢球、球星庆祝这类全身敏捷技能的跟踪误差下降，说明目标是高动态动作的物理保真，而不是常规行走的鲁棒性。
 - 代价是流程必须闭到真机：需要真机轨迹采集与二次微调，这是它与纯仿真域随机化方案之间最根本的取舍。
 - 参考动作来自人类视频重定向，因此上游重定向质量与机器人可行域会一并进入误差链。
-- 本页为策展索引级摘要，量化 benchmark 与消融以深读笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，量化 benchmark 与消融以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -15,7 +15,7 @@ summary: "TTT-Parkour 把\"对一段陌生地形拍 RGB-D 视频 → 前馈式�
 
 # TTT-Parkour
 
-**TTT-Parkour: Rapid Test-Time Training for Perceptive Robot Parkour** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**TTT-Parkour: Rapid Test-Time Training for Perceptive Robot Parkour** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -44,7 +44,7 @@ TTT-Parkour 把"对一段陌生地形拍 RGB-D 视频 → 前馈式快速重建�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ TTT-Parkour 把"对一段陌生地形拍 RGB-D 视频 → 前馈式快速重建�
 - 真正起作用的是 **重建-微调闭环**：RGB-D 视频 → 前馈式快速网格重建 → 仿真内微调预训练跑酷策略 → 零样本回真机；前馈重建的速度是这条链路能压进 10 分钟的前提。
 - 它解除的是一个具体限制——**只能在程序化生成的简单地形上训练**；因此楔块、桩柱、箱子、梯形台、窄梁这类极端地形才进入可通行范围（Unitree G1 实机验证）。
 - 适用边界：属于 **部署前的地形适配**，需要先对目标地形取景重建，并不是行进途中的在线适应；对无法预先扫描或动态变化的地形不适用。
-- 本页为 **索引级实体**，成功率、重建质量与微调时长的量化结果以深读笔记与论文 PDF 为准。
+- 本页为 **清单索引实体**，成功率、重建质量与微调时长的量化结果以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

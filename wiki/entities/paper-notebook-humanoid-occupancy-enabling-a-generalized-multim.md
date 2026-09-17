@@ -16,7 +16,7 @@ summary: "人形技术快速演进，厂商推出各式异构视觉感知模块�
 
 # Humanoid Occupancy
 
-**Humanoid Occupancy: Enabling A Generalized Multimodal Occupancy Perception System on Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Humanoid Occupancy: Enabling A Generalized Multimodal Occupancy Perception System on Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "人形技术快速演进，厂商推出各式异构视觉感知模块�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "人形技术快速演进，厂商推出各式异构视觉感知模块�
 - 人形特有的难点被单独当作设计对象处理——**运动学干扰与肢体遮挡**，靠传感器布局策略去缓解，而不是单纯堆网络容量。
 - 网络侧真正起作用的是**多模态融合 + 时序整合**：用时间上的冗余换取单帧被遮挡时的鲁棒性。
 - **首个面向人形的全景占据数据集**是最可复用的产出，也是"标准化通用视觉模块"这一更大目标的第一块砖。
-- 边界在于本页只到索引级：具体精度、消融与实机表现均以深读笔记与论文 PDF 为准，不要把系统性主张读成已验证的性能承诺。
+- 边界在于本页只到清单索引：具体精度、消融与实机表现均以深读笔记与论文 PDF 为准，不要把系统性主张读成已验证的性能承诺。
 
 ## 与其他页面的关系
 

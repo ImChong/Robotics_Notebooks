@@ -72,7 +72,7 @@ sequenceDiagram
 ## 实验与评测
 
 - LIBERO 99.0%、LIBERO-Plus 76.6%、RoboTwin 92.0%（作者报告）；含真机长程与泛化实验。
-- **读法：** 索引级摘要；逐项对照与 baseline 以原文 PDF 为准。
+- **读法：** 清单摘要；逐项对照与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
 

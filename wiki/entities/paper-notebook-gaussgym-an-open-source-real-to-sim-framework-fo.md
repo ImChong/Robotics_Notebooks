@@ -11,12 +11,12 @@ related:
   - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/humanoid_pnb_gaussgym-an-open-source-real-to-sim-framework-fo.md
-summary: "GaussGym：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "GaussGym：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # GaussGym
 
-**GaussGym: An open-source real-to-sim framework for learning locomotion from pixels** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**GaussGym: An open-source real-to-sim framework for learning locomotion from pixels** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -32,8 +32,8 @@ GaussGym 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -50,16 +50,16 @@ GaussGym 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 ## 结论
 
-**本页当前的价值不在于讲清 GaussGym 的方法，而在于先为「开源 real-to-sim + 从像素学运动」这个待深读条目在图谱里占好位置。**
+**本页当前的价值不在于讲清 GaussGym 的方法，而在于先登记「开源 real-to-sim + 从像素学运动」这个待读条目。**
 
 - 可确认的定位线索只有标题与分类：归入 **05_Locomotion**，主题是开源 real-to-sim 框架与从像素学习运动，与本库 Sim2Real 主线同向。
 - 深读笔记尚未撰写，量化 benchmark、消融与实机指标一律缺席，**不要把本页当作方法性判断的来源**。
-- 现阶段的可靠用途是检索入口与图谱占位；细节请走 arXiv 原文与 PROGRESS.md 待深读清单。
-- 笔记完成后本页应升格为完整索引实体，届时本节需整体重写。
+- 现阶段的可靠用途是检索入口与待读条目；细节请走 arXiv 原文与 PROGRESS.md 待深读清单。
+- 笔记完成后本页应补成完整摘要，届时本节需整体重写。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 外观/真机对照（站内完整实体）：[R2S-EGO](./paper-r2s-ego.md) 以 GaussGym 为稀疏 Real-to-Sim 主基线（arXiv:2608.06827）
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 资产与迁移总图

@@ -71,7 +71,7 @@ flowchart TB
 
 - 起作用的两件事很朴素：单工作站 GPU 上并行数千环境压缩 wall-clock，课程按表现升降地形难度稳住早期探索，于是平地数分钟、粗糙地形约二十分钟。
 - 使用边界在配置耦合上：`legged_gym` 的 `control.stiffness` / `control.damping` / `decimation` 默认组合与本文属同一假设族，扫增益或做消融时必须固定随机种子、地形课程阶段与 decimation，只改增益分组，才对得上原文 ablation 精神。
-- 本页为索引级：量化指标、消融与 sim2real / 实机结果以原文 PDF 与参考来源为准；引用时注意本文 arXiv 是 **2109.11978**，**2212.03238** 属于 [Walk These Ways](./paper-walk-these-ways-quadruped-mob.md)。
+- 本页是清单索引：量化指标、消融与 sim2real / 实机结果以原文 PDF 与参考来源为准；引用时注意本文 arXiv 是 **2109.11978**，**2212.03238** 属于 [Walk These Ways](./paper-walk-these-ways-quadruped-mob.md)。
 
 ## 与其他工作对比
 

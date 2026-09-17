@@ -14,7 +14,7 @@ summary: "LCP 的核心主张很硬：与其在 reward 里拧各种“平滑惩�
 
 # Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies
 
-**Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies (LCP)** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：01_Foundational_RL）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies (LCP)** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：01_Foundational_RL）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ LCP 的核心主张很硬：与其在 reward 里拧各种“平滑惩罚”旋�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ LCP 的核心主张很硬：与其在 reward 里拧各种“平滑惩罚”旋�
 - 真正起作用的是那个可微的梯度惩罚（Lipschitz 约束）——它让策略「天生不抖」，而不是在推理链路上再挂一级处理。
 - 相对 reward shaping，省掉了一堆需要手调的平滑惩罚项；相对低通滤波，策略输出后不再需要额外的后处理环节。
 - 定位在 01_Foundational_RL，是 sim-to-real 落地阶段的通用训练手段，而非针对某一任务的方法。
-- 本页为策展索引级实体，详细机制与量化结果待从深读笔记消化，以笔记与论文 PDF 为准。
+- 本页为策展清单索引实体，详细机制与量化结果待从深读笔记消化，以笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

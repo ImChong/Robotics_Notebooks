@@ -15,7 +15,7 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 
 # Control Operators for Interactive Character Animation
 
-**Control Operators for Interactive Character Animation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Control Operators for Interactive Character Animation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 - 真正起作用的机制是「一个直观概念 ↔ 一段固定编码结构」的双面定义：算子对设计师是"沿这条轨迹走""朝这个目标看""按摇杆方向/速度移动""在某时刻到达某位置"，对网络则是一段可拼接的编码，于是多技能、多控制模式的控制器可以由非技术用户自行组装并训练。
 - 与骨干模型解耦是它可信度的来源：同一套算子在 Learned Motion Matching 变体 和本文新提出的流匹配（flow-matching）自回归模型上都做了演示，说明这是接口层设计而非某个模型的技巧。
 - 评价方式也随之改变——本文用工业界从业者的用户研究来验证易用性；这类"非 ML 用户能否用起来"的证据与常规动作质量指标不可互相替代。
-- 适用边界：本页为索引级实体，机制描述停留在摘要层；量化 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
+- 适用边界：本页为清单索引实体，机制描述停留在摘要层；量化 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
 - 本页归入 14_Human_Motion（SIGGRAPH Asia 2025，frontmatter 给出开源仓库地址），可经[分类父节点](../overview/paper-notebook-category-14-human-motion.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)交叉检索。
 
 ## 与其他页面的关系

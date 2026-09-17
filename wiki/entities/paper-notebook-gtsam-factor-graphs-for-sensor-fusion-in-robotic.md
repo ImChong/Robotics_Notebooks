@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_gtsam-factor-graphs-for-sensor-fusion-in-robotic.md
-summary: "GTSAM：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "GTSAM：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # GTSAM
 
-**GTSAM: Factor graphs for Sensor Fusion in Robotics** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：09_State_Estimation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**GTSAM: Factor graphs for Sensor Fusion in Robotics** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：09_State_Estimation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ GTSAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ GTSAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 结论
 
-**本页把「因子图做机器人传感器融合」的 GTSAM 收成状态估计方向的占位节点，但它目前不承载任何方法性判断。**
+**本页把「因子图做机器人传感器融合」的 GTSAM 收成状态估计方向的待读条目，但它目前不承载任何方法性判断。**
 
 - 深读状态为待撰写：页面没有核心机制、流程与实验区块，量化指标与消融全部缺席。
-- 本条目在本库归入 **09_State_Estimation**，且来源标注为 `curated` 而非 arXiv 条目，检索时应从分类父节点进入。
-- 现阶段唯一可靠的用途是图谱占位与交叉检索；因子图的具体实现细节需回到 PROGRESS.md 与上游资料。
+- 本条目在本库归入 **09_State_Estimation**，且来源标注为 `curated` 而非 arXiv 条目，检索时应从分类页进入。
+- 现阶段唯一可靠的用途是待读条目与交叉检索；因子图的具体实现细节需回到 PROGRESS.md 与上游资料。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
+- 分类页：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

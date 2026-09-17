@@ -50,7 +50,7 @@ summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集�
 
 - **技术地图：** [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md)
 - **目录 source：** [sun_awesome_touch_catalog.md](../../sources/papers/sun_awesome_touch_catalog.md)
-- 新建索引级实体 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
+- 新建清单索引页 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
 
 ## 核心结构（怎么读）
 

@@ -14,7 +14,7 @@ summary: "人形能做多样操作，前提是鲁棒精确的站立控制器。�
 
 # TOP
 
-**TOP: Time Optimization Policy for Stable and Accurate Standing Manipulation with Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**TOP: Time Optimization Policy for Stable and Accurate Standing Manipulation with Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ TOP 要：通过**调上身动作时间轨迹**，从源头减轻平衡负担，
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ TOP 要：通过**调上身动作时间轨迹**，从源头减轻平衡负担，
 - 这条思路的隐含前提是 **上身动作的时间安排可以被调整**；若任务对动作时序有外部约束（必须按固定节拍完成），"错峰"这一自由度就不存在，方法收益随之下降。
 - 适用边界是 **站立操作**：论文处理的是站立姿态下的平衡-精度-时效三角，本页未涉及行走中操作或移动底座场景。
 - 与「一味强化下身抗扰」的路线相比，TOP 明确把后者判为治标不治本；与 Mobile-TeleVision 的相通之处在于同样承认上身与下身对"精确 vs 鲁棒"有不同需求，应分开设计。
-- 本页为 **深读笔记编译** 的索引级摘要，"优于已有方法"是定性结论，具体 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准。
+- 本页为 **深读笔记编译** 的笔记摘要，"优于已有方法"是定性结论，具体 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

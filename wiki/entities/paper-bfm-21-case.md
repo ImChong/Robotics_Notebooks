@@ -39,7 +39,7 @@ sources:
 - 条件技能嵌入；与「按 prompt 调身体」同思路。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#21/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -69,7 +69,7 @@ sources:
 
 - 它与 goal-conditioned 一族共享同一机制假设：以 **goal / reference / command** 为条件训练全身跟踪或交互策略，数据侧融合 MoCap、视频、遥操作与 HOI，控制侧看抗扰、恢复与跨参考泛化。
 - 它在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」，边界也正在此：条件技能嵌入不等于无限技能，仍受数据分布、接触建模与实机 Sim2Real 约束。
-- 本页为索引级坐标（awesome-bfm #21/41，**02 Goal-conditioned 学习**，2023 · SIGGRAPH Asia，代码 <https://github.com/Frank-ZY-Dou/CASE>）；量化 benchmark、消融与实机指标以原文 PDF / 项目页为准。
+- 本页为清单坐标（awesome-bfm #21/41，**02 Goal-conditioned 学习**，2023 · SIGGRAPH Asia，代码 <https://github.com/Frank-ZY-Dou/CASE>）；量化 benchmark、消融与实机指标以原文 PDF / 项目页为准。
 
 ## 常见误区
 

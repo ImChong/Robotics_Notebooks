@@ -37,7 +37,7 @@ sources:
 - 潜空间要「细」才可被上层精确调用；FB-AW / FB-AWARE 在连续控制 benchmark 上优于粗表征。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#03/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -66,7 +66,7 @@ sources:
 
 - 起作用的是 FB / successor 结构把异构任务压进同一身体潜空间，上层用 **目标姿态、奖励向量或 latent prompt** 检索与组合行为，而不是为每个技能单独训策略。
 - 评价维度与单技能 motion tracking 不同：BFM 关心 **覆盖面与可组合性**，用「单条参考跟得多准」去衡量它会得出错误结论。
-- 本页是索引级坐标（awesome-bfm #03/41，**01 Forward-backward 表征**，2024 · arXiv）；连续控制 benchmark 的具体数值、消融与实机指标需回原文 PDF 与 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的实验段落。
+- 本页是清单坐标（awesome-bfm #03/41，**01 Forward-backward 表征**，2024 · arXiv）；连续控制 benchmark 的具体数值、消融与实机指标需回原文 PDF 与 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的实验段落。
 
 ## 常见误区
 

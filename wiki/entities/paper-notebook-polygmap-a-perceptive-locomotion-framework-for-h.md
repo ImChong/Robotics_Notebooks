@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_polygmap-a-perceptive-locomotion-framework-for-h.md
-summary: "PolygMap：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "PolygMap：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # PolygMap
 
-**PolygMap: A Perceptive Locomotion Framework for Humanoid Robot Stair Climbing** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**PolygMap: A Perceptive Locomotion Framework for Humanoid Robot Stair Climbing** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ PolygMap 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ PolygMap 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 ## 结论
 
-**本页是 PolygMap（面向人形爬楼的感知型运动框架）的占位索引：论文已排入待深读队列，本库尚未形成对其方法与效果的独立判断。**
+**本页是 PolygMap（面向人形爬楼的感知型运动框架）的待读条目：论文已排入待深读队列，本库尚未形成对其方法与效果的独立判断。**
 
 - 可确认的只有定位——05_Locomotion 之下的 **感知型爬楼** 框架——以及 arXiv 出处；核心机制与量化指标待深读补齐。
-- 当前价值在于图谱完整性：作为分类父节点与总索引之下的可检索子节点存在。
+- 当前价值只是可检索：这篇挂在分类页与总索引之下。
 - 本页不含任何实验数据，涉及爬楼成功率或泛化能力的说法都须回到论文原文。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

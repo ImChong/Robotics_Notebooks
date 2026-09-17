@@ -12,12 +12,12 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_hub.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
-summary: "HuB：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "HuB：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # HuB
 
-**HuB: Learning Extreme Humanoid Balance** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**HuB: Learning Extreme Humanoid Balance** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -33,8 +33,8 @@ HuB 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -51,16 +51,16 @@ HuB 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 结论
 
-**HuB（Learning Extreme Humanoid Balance）在本库被挂在 loco-manipulation/WBC 分类下，作为「极限平衡」方向的占位节点存在，实质内容尚未写入。**
+**HuB（Learning Extreme Humanoid Balance）在本库被挂在 loco-manipulation/WBC 分类下，作为「极限平衡」方向的待读条目存在，实质内容尚未写入。**
 
 - 唯一的方向线索来自标题与分类：极限平衡问题，归入 **04_Loco-Manipulation_and_WBC**，与全身控制主线同族。
 - 「极限平衡」如何定义、用什么任务与指标衡量，本页均无依据，不应据此下效果判断。
 - 与同分类多数条目不同，本页的深读进度追踪指向 **progress.json** 而非 PROGRESS.md，后续 ingest 时注意来源差异。
-- 计划文件夹路径已定，笔记完成后应把本页升格为完整索引实体并重写本节。
+- 计划文件夹路径已定，笔记完成后应把本页补成完整摘要并重写本节。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；文中以 HuB 为「特权平衡→蒸馏上真机」对照（arXiv:2608.00500）
 

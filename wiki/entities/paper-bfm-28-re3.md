@@ -42,7 +42,7 @@ sources:
 - 状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD 失败。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#28/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

@@ -93,7 +93,7 @@ flowchart TB
 | **训练输入 / 可部署就绪度** | dense 3D 粒子 + mesh 可直接作 **3D 粒子 WM 策略输入**；2D 多视角视频供 **video WM 训练输入**；PhysTwin + MPC 已示范 **零微调可部署** 到未见 xArm 真机（属 offline benchmark，非在线控制指令流） |
 | **对比 prior** | 唯一同时具备 **Mesh+Calib+Markerless+Tactile+360°+41 Views** 的大规模 real deformable 集（Table 1） |
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
 |----|------------------------|

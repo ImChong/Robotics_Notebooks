@@ -18,7 +18,7 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 
 # Learning Sim-to-Real Humanoid Locomotion in 15 Minutes
 
-**Learning Sim-to-Real Humanoid Locomotion in 15 Minutes** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Learning Sim-to-Real Humanoid Locomotion in 15 Minutes** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -48,7 +48,7 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -58,7 +58,7 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 - 关键指标是训练墙钟时间（单张 RTX 4090 上约 15 分钟）与真机可迁移性（G1 / T1 完成 sim-to-real），而不是最终性能上限。
 - 配方具备一定通用性：同一套做法也能加速全身人形动作跟踪，相对 PPO 更快。
 - 与 [FlashSAC](../methods/flashsac.md) 对照：本文属小网络路线的前驱，FlashSAC 在同一 off-policy 墙钟加速脉络上改用更大网络与范数约束，继续挑战 PPO 的默认地位。
-- 本页为策展索引级摘要，量化 benchmark 与消融以深读笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，量化 benchmark 与消融以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

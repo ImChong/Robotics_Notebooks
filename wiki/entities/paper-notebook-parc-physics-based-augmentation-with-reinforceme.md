@@ -13,12 +13,12 @@ sources:
   - ../../sources/papers/humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md
   - ../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
-summary: "PARC：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "PARC：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # PARC
 
-**[PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers](https://michaelx.io/parc/index.html)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**[PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers](https://michaelx.io/parc/index.html)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 [human five 对 Jason Peng 分享的归纳](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) 与 [NUS 研讨会讲者视频](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md) 均概括其核心为 **生成器—跟踪器迭代数据增强**：14 分钟初始移动数据经多轮仿真反馈扩至 900+ 分钟，并涌现原数据集中不存在的攀爬策略；机制总览见 [灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)。
 
@@ -36,8 +36,8 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -58,13 +58,13 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 真正起作用的机制是 **迭代数据增强**：14 分钟初始移动数据经多轮仿真反馈扩至 900+ 分钟，并涌现原数据集中不存在的攀爬策略。
 - 定位在物理动画（13_Physics-Based_Animation）：它回答的是「运动数据从哪来」，而不是直接交付一个可上真机的控制器。
-- 本页仍是 **计划索引实体**：深读笔记未撰写，量化 benchmark、消融与实机指标暂缺，引用数字请回到讲者视频与 human five 归纳的原文核对。
+- 本页仍是 **待读条目**：深读笔记未撰写，量化 benchmark、消融与实机指标暂缺，引用数字请回到讲者视频与 human five 归纳的原文核对。
 - 机制总览可对照 [灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)。
 - 人形 robot-native、语言条件、测零样本 tracker 覆盖的对照：[GenTrack](./paper-gentrack.md)。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
+- 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 人形后训练对照：[GenTrack](./paper-gentrack.md)
 

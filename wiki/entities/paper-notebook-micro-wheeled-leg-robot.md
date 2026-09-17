@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_micro-wheeled-leg-robot.md
-summary: "Micro-Wheeled_leg-Robot：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Micro-Wheeled_leg-Robot：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Micro-Wheeled_leg-Robot
 
-**Micro-Wheeled_leg-Robot** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Micro-Wheeled_leg-Robot** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Micro-Wheeled_leg-Robot 的人形机器人学习论文条目，当前处于 Pape
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Micro-Wheeled_leg-Robot 的人形机器人学习论文条目，当前处于 Pape
 
 ## 结论
 
-**本页是尚未深读的占位实体：它承担的是图谱完整性，而不是对这项硬件工作的评价。**
+**本页是尚未深读的待读条目：它只是让这条线不漏掉这一篇，而不是对这项硬件工作的评价。**
 
-- 该条目已列入 Paper Notebooks 的 PROGRESS.md 待深读清单，分类为 12_Hardware_Design，可从总索引与分类父节点检索到。
+- 该条目已列入 Paper Notebooks 的 PROGRESS.md 待深读清单，分类为 12_Hardware_Design，可从总索引与分类页检索到。
 - 深读笔记尚未撰写，本页不含结构设计、量化 benchmark 或实机指标，不应作为技术结论的依据。
-- 升格路径清晰：笔记写入计划文件夹后，本页需链向笔记站并补齐机制与评测归纳。
+- 深读笔记完成后，本页会补上笔记链接与实质要点。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
+- 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -14,7 +14,7 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 
 # LOVON
 
-**LOVON: Legged Open-Vocabulary Object Navigator** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**LOVON: Legged Open-Vocabulary Object Navigator** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 - 分工上，开放词汇检测负责摆脱预定义类别的束缚，LLM 负责把长任务拆成有序基础指令，L2MM 负责把语言落到运动控制目标；三者缺一，长时程任务就断在某一环。
 - 适用边界是「按一句话找到目标并走过去」这类目标导航，本页未涉及到达之后的操作能力。
 - 跨本体即插即用是它的落地卖点：同一框架可直接在 Go2 / B2 / H1-2 上运行，迁移成本低，并已提供项目主页与开源仓库。
-- 本页为深读笔记编译的索引级摘要，成功率、消融等量化结论需回到 [深读笔记与论文 PDF](#参考来源)。
+- 本页为深读笔记编译的笔记摘要，成功率、消融等量化结论需回到 [深读笔记与论文 PDF](#参考来源)。
 
 ## 与其他页面的关系
 

@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_rgmp-recurrent-geometric-prior-multimodal-policy.md
-summary: "RGMP：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "RGMP：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # RGMP
 
-**RGMP: Recurrent Geometric-prior Multimodal Policy for Generalizable Humanoid Robot Manipulation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：06_Manipulation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**RGMP: Recurrent Geometric-prior Multimodal Policy for Generalizable Humanoid Robot Manipulation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：06_Manipulation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ RGMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ RGMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 结论
 
-**本页是 RGMP 的待深读占位实体：标题给出了它的三个关键词——循环结构、几何先验、多模态策略——但本库尚未核验其中任何一条。**
+**本页是 RGMP 的待读条目：标题给出了它的三个关键词——循环结构、几何先验、多模态策略——但本库尚未核验其中任何一条。**
 
 - 已落地的信息仅为分类 06_Manipulation 与 arXiv 2511.09141；「实验与评测」明确留空，可泛化操作的主张目前只有标题层面的依据。
 - 本页不能作为量化指标或消融结论的引用出处，需要数据时直接走 arXiv 原文。
-- 当前用途是保持知识图谱连通：上溯 [06_Manipulation 分类父节点](../overview/paper-notebook-category-06-manipulation.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；深读笔记完成后升格为完整索引实体。
+- 当前用途只是检索入口：上溯 [06_Manipulation 分类页](../overview/paper-notebook-category-06-manipulation.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；深读笔记完成后补成完整摘要。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
+- 分类页：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

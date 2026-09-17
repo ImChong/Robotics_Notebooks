@@ -14,7 +14,7 @@ summary: "从人类演示模仿学习能有效教机器人操作，但数据采�
 
 # DexMimicGen
 
-**DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ DexMimicGen 要：从**极少量人类演示**在仿真里**自动合成大规�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ DexMimicGen 要：从**极少量人类演示**在仿真里**自动合成大规�
 - 落地靠 **real-to-sim-to-real** 闭环收口：以真实人形的易拉罐分拣任务验证合成数据能迁到真机，而不是只在仿真里自评。
 - 适用边界：起点仍是人类源演示，属「少演示放大」而非零演示生成；论文自陈评估了数据生成与策略学习的多种设计选择，说明结果对这些选择敏感，换任务时不能默认沿用。
 - 定位：与 HumanoidGen、Mimicking-Bench 同属人形操作数据生态（同出 NVIDIA/UT 系），差异在于本文主攻 **双手灵巧** 这一数据最稀缺、最该自动化的方向。
-- 本页为索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 
@@ -90,7 +90,7 @@ DexMimicGen 要：从**极少量人类演示**在仿真里**自动合成大规�
 
 - 数值与消融以论文 PDF / 官方仓库为准。
 - 与相邻 VLA / 仿真 / 数据生成页交叉阅读，避免重复造页。
-- 若仅有索引级摘要，部署前必须回一手 README。
+- 若仅有笔记摘要，部署前必须回一手 README。
 
 ## 参考来源
 

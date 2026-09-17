@@ -71,7 +71,7 @@ sequenceDiagram
 ## 实验与评测
 
 - 框架级案例研究；以论文与仓库 README 为准。
-- **读法：** 索引级摘要；逐项对照与 baseline 以原文 PDF 为准。
+- **读法：** 清单摘要；逐项对照与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
 

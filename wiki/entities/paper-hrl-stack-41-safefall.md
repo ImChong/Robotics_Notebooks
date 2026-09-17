@@ -41,7 +41,7 @@ SafeFall 做的是 protective control for humanoid robots。它的出发点非�
 - SafeFall 不是让机器人永远不摔，而是在检测到跌倒不可避免时，激活保护策略，减少硬件冲击。系统包含一个轻量 GRU-based fall predictor 和一个 damage mitigation policy。正常控制时它保持 dormant，不干扰 nominal controller。
 - 论文在 Unitree G1 上做真实实验，包括不同方向外力推扰、走路时误踩台阶、高速跑步绊倒等场景，并报告最大关节力、接触力等指标改善。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

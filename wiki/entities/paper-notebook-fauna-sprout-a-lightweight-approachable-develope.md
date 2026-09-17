@@ -14,7 +14,7 @@ summary: "Sprout 把\"在共享人类空间里安全、表达丰富、上手即�
 
 # Fauna Sprout
 
-**Fauna Sprout: A lightweight, approachable, developer-ready humanoid robot** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Fauna Sprout: A lightweight, approachable, developer-ready humanoid robot** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ Sprout 把"在共享人类空间里安全、表达丰富、上手即用"放在�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ Sprout 把"在共享人类空间里安全、表达丰富、上手即用"放在�
 - 安全不是靠软件兜底，而是写进本体：**22.7 kg / 107 cm** 的轻量身体 + 软外壳 + 顺应电机 + **受限关节扭矩**，属于结构层面的本质安全，而非事后加限位。
 - 「开箱即开发」由配套软件栈定义：**VR 遥操作** 负责采数据、**Isaac Lab** 训练的全身 RL 策略负责控制，**360° 面部 LED 表情头** 承担人机交互的表达层。
 - 取舍是显性的：受限扭矩与轻量化本身就是对负载与爆发能力的让步——它的目标是一台可接近的开发平台，不是性能标杆。
-- 本页为策展索引级摘要，具体规格、评测与实机指标以深读笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，具体规格、评测与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

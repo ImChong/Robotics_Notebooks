@@ -37,7 +37,7 @@ sources:
 - 未来状态分布作为可复用控制表示的数学底座。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#06/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -66,7 +66,7 @@ sources:
 
 - 机制侧属 **01 Forward-backward 表征**：学 FB / successor 结构，把异构任务压进可调用的身体潜空间，再由目标姿态、奖励向量或 latent prompt 组合行为。
 - 定位是 **理论底座（2021 · arXiv）而非人形系统论文**，本页只保留 survey 坐标（#06/41）与交叉引用，未列代码/项目。
-- 边界：索引级策展编译，量化 benchmark、消融与实机指标一律以原文 PDF 为准。
+- 边界：清单索引策展编译，量化 benchmark、消融与实机指标一律以原文 PDF 为准。
 
 ## 常见误区
 

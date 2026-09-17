@@ -14,7 +14,7 @@ summary: "高质量基准是具身 AI 的基础，能推动长时程导航、操
 
 # ManiSkill-HAB
 
-**ManiSkill-HAB: A Benchmark for Low-Level Manipulation in Home Rearrangement Tasks** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**ManiSkill-HAB: A Benchmark for Low-Level Manipulation in Home Rearrangement Tasks** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ ManiSkill-HAB 要：一个 **GPU 加速、真实低层、可大规模生成演�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ ManiSkill-HAB 要：一个 **GPU 加速、真实低层、可大规模生成演�
 - 相比此前实现取得 3 倍以上提速且显存更省，是让「真实低层」这个更贵的设定仍能规模化训练与采集的前提；没有这一条，前一条就落不了地。
 - RL / IL 基线加上基于规则的轨迹过滤，把基准从一套任务变成能大规模产出可控演示数据的流水线，这是低成本扩数据的实用手段。
 - 适用边界：任务载体是家居重排中的移动机械臂而非人形，指标不能直接搬用；但重排与低层操作的经验对人形家务场景仍然适用。
-- 本页为索引级摘要，具体任务集合、基线数值与消融以深读笔记和论文 PDF 为准。
+- 本页为笔记摘要，具体任务集合、基线数值与消融以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

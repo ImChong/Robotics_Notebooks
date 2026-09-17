@@ -14,7 +14,7 @@ summary: "Domain Randomization（DR）是 sim-to-real 领域最常用的方法�
 
 # Understanding Domain Randomization for Sim-to-real Transfer
 
-**Understanding Domain Randomization for Sim-to-real Transfer** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：01_Foundational_RL）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Understanding Domain Randomization for Sim-to-real Transfer** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：01_Foundational_RL）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ Domain Randomization（DR）是 sim-to-real 领域最常用的方法之一，但
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -51,7 +51,7 @@ Domain Randomization（DR）是 sim-to-real 领域最常用的方法之一，但
 
 - 关键论断是**历史依赖策略对 DR 的成功至关重要**，这把「DR 要不要配历史观测/记忆结构」从工程经验变成了有理论依据的必要条件。
 - 它的价值在解释而非刷点：回答的是「为什么不需要任何现实数据也能迁移」，并不提供新的随机化技巧或更强的 sim-to-real 管线。
-- 本页为策展索引级摘要，理论框架的假设、定理成立条件与实验设置均以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
+- 本页为策展笔记摘要，理论框架的假设、定理成立条件与实验设置均以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 

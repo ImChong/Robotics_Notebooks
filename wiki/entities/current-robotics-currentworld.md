@@ -149,7 +149,7 @@ flowchart TB
 - [Ctrl-World](./paper-ctrl-world.md) — 开源多视角 VLA 闭环 WM（ICLR 2026）
 - [ViTacWorld](./paper-vitacworld.md) — 视触觉动作条件 WM
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — 策略评估器研究与 WMES
-- [Hi-WM](./paper-sa-2604-21741-hi-wm-human-in-the-world-model-for-scalable-robo.md) — 同公司 Human-in-the-World-Model 论文（索引级）
+- [Hi-WM](./paper-sa-2604-21741-hi-wm-human-in-the-world-model-for-scalable-robo.md) — 同公司 Human-in-the-World-Model 论文（清单索引）
 - [OSCAR](./paper-oscar.md) — 用 2D 骨架统一跨本体条件的对照路线
 - [WALL-SS](./paper-wall-ss.md) — next-scale AR 虚实成功率校准对照（训练代码待发布）
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — Curr-0 / CurrentWorld 所服务的任务

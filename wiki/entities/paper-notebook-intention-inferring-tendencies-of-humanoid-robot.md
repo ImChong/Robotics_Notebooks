@@ -14,7 +14,7 @@ summary: "INTENTION 想让机器人不再依赖精确物理模型 + 预编排动
 
 # INTENTION
 
-**INTENTION: Inferring Tendencies of Humanoid Robot Motion Through Interactive Intuition and Grounded VLM** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**INTENTION: Inferring Tendencies of Humanoid Robot Motion Through Interactive Intuition and Grounded VLM** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：08_Navigation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -64,7 +64,7 @@ INTENTION 想让机器人不再依赖精确物理模型 + 预编排动作序列�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -74,7 +74,7 @@ INTENTION 想让机器人不再依赖精确物理模型 + 预编排动作序列�
 - 真正的卖点指标是 **去指令依赖**：在未见场景无需反复给指令即可推断合适的交互行为，这也是判断该框架成不成立的关键。
 - 适用边界与风险：它绕开的正是精确物理模型，因此对质量/摩擦/形状敏感的精细力控并非其主场；决策质量还取决于记忆图里已经积累了什么。
 - 工程落地：截至笔记撰写时 **未见公开源码或项目页**，复现门槛应按此预期，不要假设可直接跑通。
-- 本页为深读笔记的索引级摘要，量化 benchmark 与消融以笔记和论文 PDF 为准。
+- 本页为深读笔记的笔记摘要，量化 benchmark 与消融以笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

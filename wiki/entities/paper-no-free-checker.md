@@ -70,7 +70,7 @@ summary: "综述约 150 个 robot policy verifier；人类/规则/学习型/模�
 
 - **本文不报策略成功率：** 核心贡献是 **分类学与可比性口径**，不是可运行策略或新基准；引用时不要当作成绩单来源。
 - **接入选型闭环：** 九项指标可作为 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) 中「用什么判成功」一环的对照清单，枢纽索引见 [评测基准枢纽](../overview/hub-embodied-eval-benchmark.md)。
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)；分类边界与逐项指标定义以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)；分类边界与逐项指标定义以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
 ## 与其他工作对比
 

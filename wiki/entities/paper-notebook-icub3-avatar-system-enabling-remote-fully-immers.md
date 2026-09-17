@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_icub3-avatar-system-enabling-remote-fully-immers.md
-summary: "iCub3 Avatar System：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "iCub3 Avatar System：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # iCub3 Avatar System
 
-**iCub3 Avatar System: Enabling Remote Fully-Immersive Embodiment of Humanoid Robots** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：07_Teleoperation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**iCub3 Avatar System: Enabling Remote Fully-Immersive Embodiment of Humanoid Robots** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：07_Teleoperation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ iCub3 Avatar System 的人形机器人学习论文条目，当前处于 Paper No
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ iCub3 Avatar System 的人形机器人学习论文条目，当前处于 Paper No
 
 ## 结论
 
-**本页把 iCub3 Avatar System 作为「远程全沉浸具身」这条遥操作路线的占位节点收入图谱，实质内容待深读补齐。**
+**本页把 iCub3 Avatar System 登记为「远程全沉浸具身」这条遥操作路线下的待读条目，实质内容待深读补齐。**
 
-- 页面上最有价值的图谱信息其实是硬件演化线：[ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) 是自 iCub3 优化出的人因协作整机。
+- 页面上最有价值的信息其实是硬件演化线：[ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) 是自 iCub3 优化出的人因协作整机。
 - 深读笔记未撰写，沉浸式 avatar 的传感、反馈通道与延迟指标都不在本页，不能据此评估系统表现。
-- 分类为 **07_Teleoperation**，现阶段按分类父节点与总索引做交叉检索即可；细节请回到 arXiv 原文。
+- 分类为 **07_Teleoperation**，现阶段按分类页与总索引做交叉检索即可；细节请回到 arXiv 原文。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)
+- 分类页：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 同族硬件演化：[ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — 自 iCub3 优化出的人因协作整机（*Nat Mach Intell* 2026）
 

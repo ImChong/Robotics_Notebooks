@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_amor-adaptive-character-control-through-multi-ob.md
-summary: "AMOR：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "AMOR：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # AMOR
 
-**AMOR: Adaptive Character Control through Multi-Objective Reinforcement Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**AMOR: Adaptive Character Control through Multi-Objective Reinforcement Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ AMOR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ AMOR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 结论
 
-**本页是 AMOR 的占位索引节点：能被引用的只有归档事实（13_Physics-Based_Animation、待深读、arXiv 入口），技术结论一概尚未成立。**
+**本页是 AMOR 的待读条目节点：能被引用的只有归档事实（13_Physics-Based_Animation、待深读、arXiv 入口），技术结论一概尚未成立。**
 
 - 可依赖的信息限于分类、计划文件夹路径与 <https://arxiv.org/abs/2505.23708>；机制与指标待深读笔记补齐。
-- 适用边界：用于按分类检索与保持图谱连边完整，**不可**作为该论文结论的引用来源。
-- 升格条件：PROGRESS.md 中该条完成深读后，本页应链向笔记站并把占位式「一句话定义」替换为实质归纳。
+- 适用边界：用于按分类检索，**不可**作为该论文结论的引用来源。
+- 深读笔记完成后，本页会补上笔记链接与实质要点。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
+- 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

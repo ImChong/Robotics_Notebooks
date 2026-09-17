@@ -10,12 +10,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_jaeger.md
-summary: "JAEGER：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "JAEGER：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # JAEGER
 
-**JAEGER: Dual-Level Humanoid Whole-Body Controller** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**JAEGER: Dual-Level Humanoid Whole-Body Controller** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -31,8 +31,8 @@ JAEGER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -49,7 +49,7 @@ JAEGER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 结论
 
-**JAEGER（Dual-Level Humanoid Whole-Body Controller）在本库作为「双层全身控制器」方向的占位节点存在，双层究竟如何切分尚无页面依据。**
+**JAEGER（Dual-Level Humanoid Whole-Body Controller）在本库作为「双层全身控制器」方向的待读条目存在，双层究竟如何切分尚无页面依据。**
 
 - 标题给出的唯一机制线索是 **dual-level** 结构，分类为 04_Loco-Manipulation_and_WBC，属 WBC 主线。
 - 页面无核心机制与实验区块，任何关于其效果的判断都应等深读笔记完成后再下。
@@ -57,7 +57,7 @@ JAEGER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

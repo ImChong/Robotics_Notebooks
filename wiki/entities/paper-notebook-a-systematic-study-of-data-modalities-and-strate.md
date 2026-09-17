@@ -14,7 +14,7 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 
 # A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation
 
-**A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 - 一个易被忽略的副作用被摆到台面上：**纯机器人数据训练会损害模型原有的视觉-语言能力**，协同训练在这里更像是对通用能力的「保养」，而不只是数据扩增。
 - 负结果同样是产出：离散动作 token 收益甚微、CoT 条件在其基准上无性能增益——提醒不要盲目堆技巧。
 - 说服力来自规模与对照密度而非新方法：4000 小时机器人/人类操作数据 + 5000 万视觉-语言样本，跨 89 个策略、5.8 万次仿真与 2835 次真机 rollout（TRI）。
-- 适用边界：结论是 **数据配方层面** 的实证，绑定其所用基准、模态划分与 VLA 架构；本页仅为深读笔记的索引级编译，具体消融数值以笔记与论文 PDF 为准。
+- 适用边界：结论是 **数据配方层面** 的实证，绑定其所用基准、模态划分与 VLA 架构；本页仅为深读笔记的清单索引编译，具体消融数值以笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

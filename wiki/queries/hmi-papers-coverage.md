@@ -1,22 +1,22 @@
 ---
-title: HMI 论文总索引 · 本库导读
+title: HMI 论文总索引 · 阅读导航
 type: query
 status: complete
 created: 2026-07-31
 updated: 2026-09-15
-summary: 把具身智能研究室论文总索引接到本库详情页：P001–P145 为 2026-07 全覆盖快照；P146–P191 为 2026-09-10 增量挂接（复用已有页，少数待补，不重复造节点）。
+summary: 具身智能研究室论文总索引（P001–P191）的站内阅读导航：每条论文对应站内哪一页、按主题怎么串着读。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
 
-> **Query 产物**：本页由以下问题触发：「论文与项目目录里的论文，在本知识库里是否都有独立详情节点？」
-> 综合来源：[Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)、上游 [论文与项目 README](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)、姊妹导读 [HMI 开源项目主表 · 本库导读](./hmi-opensource-projects-coverage.md)
+> **Query 产物**：「论文总索引里的这篇，站内有没有对应的详情页、同主题还有哪些？」
+> 综合来源：[Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)、上游 [论文与项目 README](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)、姊妹导读 [HMI 开源项目主表 · 阅读导航](./hmi-opensource-projects-coverage.md)
 
-# HMI 论文总索引 · 本库导读
+# HMI 论文总索引 · 阅读导航
 
 ## 一句话定义
 
-这是一张**论文导读表**：把 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 上游 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 总索引接到本库已有详情页，避免重复造节点。上游现为 **191** 条（`P001`–`P191`）。
+这是一张**论文导读表**：把 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 的 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 总索引逐条接到站内详情页，方便你按稳定编号（Pxxx）定位与串读。上游现为 **191** 条（`P001`–`P191`）。
 
 ## 英文缩写速查
 
@@ -292,7 +292,7 @@ sources:
 ## 关联页面
 
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
-- [HMI 开源项目主表 · 本库导读](./hmi-opensource-projects-coverage.md)
+- [HMI 开源项目主表 · 阅读导航](./hmi-opensource-projects-coverage.md)
 - [开源运动控制项目结构化摘要](./open-source-motion-control-projects.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
 

@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-to-walk-in-costume-adversarial-motion-p.md
-summary: "Learning to Walk in Costume：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Learning to Walk in Costume：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Learning to Walk in Costume
 
-**Learning to Walk in Costume: Adversarial Motion Priors for Aesthetically Constrained Humanoids** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Learning to Walk in Costume: Adversarial Motion Priors for Aesthetically Constrained Humanoids** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Learning to Walk in Costume 的人形机器人学习论文条目，当前处于 
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,7 +48,7 @@ Learning to Walk in Costume 的人形机器人学习论文条目，当前处于 
 
 ## 结论
 
-**这条目指向一个少见的问题设定——人形穿着戏服行走，把「美学约束」写成硬约束而不是装饰；但本页仍是待深读占位，方法效果无从判断。**
+**这条目指向一个少见的问题设定——人形穿着戏服行走，把「美学约束」写成硬约束而不是装饰；但本页仍是待读，方法效果无从判断。**
 
 - 可确认信息：分类 05_Locomotion、arXiv 2509.05581、深读状态「待撰写」；副标题给出的机制线索是用对抗式运动先验（Adversarial Motion Priors）应对受美学约束的人形。
 - 值得记的是问题定位而非结果：外观/造型约束被显式写进标题，说明它在本工作中属于设计目标的一部分，而不是事后补的评价维度。
@@ -56,7 +56,7 @@ Learning to Walk in Costume 的人形机器人学习论文条目，当前处于 
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

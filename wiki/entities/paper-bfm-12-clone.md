@@ -38,7 +38,7 @@ sources:
 - 长时程闭环遥操作；片段演示不足以支撑复杂任务级 BFM 数据。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#12/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -68,7 +68,7 @@ sources:
 
 - 它所属的路线是 **goal / reference / command 条件化** 的全身跟踪与交互策略，数据侧融合 MoCap、视频、遥操作与 HOI，控制侧看抗扰、恢复与跨参考泛化。
 - 边界要摆明：goal-conditioned 跟踪不等于无限技能，仍受数据分布、接触建模与实机 Sim2Real 约束——闭环遥操作扩的是 **数据覆盖**，不是物理可行域。
-- 工程状态可查：2025 · CoRL，代码开放于 <https://github.com/humanoid-clone/CLONE/>；本页为索引级坐标（#12/41，**02 Goal-conditioned 学习**），量化 benchmark 与实机指标以原文与项目页为准。
+- 工程状态可查：2025 · CoRL，代码开放于 <https://github.com/humanoid-clone/CLONE/>；本页为清单坐标（#12/41，**02 Goal-conditioned 学习**），量化 benchmark 与实机指标以原文与项目页为准。
 
 ## 常见误区
 

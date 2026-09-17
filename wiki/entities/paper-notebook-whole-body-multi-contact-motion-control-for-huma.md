@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_whole-body-multi-contact-motion-control-for-huma.md
-summary: "Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed Tactile Sensors：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed Tactile Sensors：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed Tactile Sensors
 
-**Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed Tactile Sensors** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed Tactile Sensors** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed
 
 ## 结论
 
-**本页是一个占位节点：题名把这条工作定位为「靠分布式触觉传感支撑人形全身多接触运动控制」，即让身体各处的接触都成为可测量、可利用的支撑，而非只依赖足底；但深读笔记未撰写，实现与效果无从核实。**
+**本页是一个待读条目：题名把这条工作定位为「靠分布式触觉传感支撑人形全身多接触运动控制」，即让身体各处的接触都成为可测量、可利用的支撑，而非只依赖足底；但深读笔记未撰写，实现与效果无从核实。**
 
 - 从题名可确定的定位是 **分布式触觉传感 → 全身多接触运动控制**，属于硬件传感与控制耦合的路线，而非纯策略学习。
 - 当前处于 PROGRESS.md **待深读** 阶段，传感器布置、控制器形式与实机指标均缺失。
-- 检索时需注意：本页在笔记站被归入 **14_Human_Motion** 而非 WBC 分类，按分类父节点查找可能遗漏，建议同时从总索引进入。
+- 检索时需注意：本页在笔记站被归入 **14_Human_Motion** 而非 WBC 分类，按分类页查找可能遗漏，建议同时从总索引进入。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
+- 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -14,7 +14,7 @@ summary: "把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设�
 
 # Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids
 
-**Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ summary: "把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设�
 - 三段是递进不是并列：先讲清五大固有特性（冗余、独立、各向异性、可变力臂、非线性弹性），再用硬件模块把它们「管住」，最后靠反射 + 学习把它们「用好」。
 - 价值定位是 JSK 实验室腱-驱动肌骨型人形在设计/控制/学习上的经验沉淀，适合作为该路线的入口与索引，而不是某个单点方法的对比基线。
 - 适用边界：结论整体绑定在腱-驱动肌骨这一硬件路线上，脱离该结构后不直接成立。
-- 本页为策展索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 
