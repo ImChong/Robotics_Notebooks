@@ -17,6 +17,12 @@
     html {
       height: 100%;
       height: 100dvh;
+      /* style.css 给 html 设了 scrollbar-gutter: stable（详情页短/长切换时防主栏横移）。
+         本页 body 已 overflow:hidden、永不滚动，但 html 的 overflow-x 不是 visible，
+         滚动容器仍是 html，gutter 照常常驻约 15px；而 #graph-wrap 是 position:fixed，
+         包含块为已扣掉 gutter 的初始包含块，画布右侧因此永远少一条 ~15px 的死带
+         （实测 1920 窗口下 wrap.clientWidth=1905），贴边节点被切掉。本页关掉 gutter。 */
+      scrollbar-gutter: auto;
     }
     body {
       overflow: hidden;
