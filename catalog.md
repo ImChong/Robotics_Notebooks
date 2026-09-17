@@ -670,6 +670,7 @@
 - [Modern Robotics (Lynch-Park 教材)](wiki/entities/modern-robotics-book.md) — Modern Robotics: Mechanics, Planning, and Control** 是 Kevin M. Lynch（Northwestern）与 Frank C. Park（ `📅unknown` `[entity_page]`
 - [MolmoMotion](wiki/entities/molmo-motion.md) — MolmoMotion**（Ai2 博客 | [arXiv:2606.18558](https://arxiv.o `📅unknown` `[entity_page]`
 - [MOS9 开源人形机器人](wiki/entities/mos9-open-source-humanoid.md) — MOS9 开源人形机器人](https://github.com/THMOS2025/MOS-9-Open-Source-Humanoid-Robot) 收录于具身智能研究室 [开源项目主表](ht `📅unknown` `[entity_page]`
+- [Eclipse Mosquitto](wiki/entities/mosquitto.md) — Eclipse Mosquitto** 是最广泛部署的 **开源 MQTT Broker** 之一，附带 **libmosquitto** C 库与 `mosquitto_pub` / `mosq `📅unknown` `[entity_page]`
 - [moteus（mjbots 关节驱动器）](wiki/entities/moteus.md) — moteus** 是 mjbots 的开源无刷伺服控制器栈（GitHub）：多板 `📅unknown` `[entity_page]`
 - [motion-bricks.cpp（C++/GGML 本地 MotionBricks 运行时）](wiki/entities/motion-bricks-cpp.md) — motion-bricks.cpp**（[localai-org/motion-bricks.cpp](https://github.com/localai-org/motion-bricks.c `📅unknown` `[entity_page]`
 - [motion_imitation（四足模仿动物）](wiki/entities/motion-imitation-quadruped.md) — motion_imitation**（<https://github.com/erwincoumans/motion_imitation>）是 Xue Bin Peng 等论文 [*Learnin `📅unknown` `[entity_page]`
@@ -3424,6 +3425,7 @@
 - [电机转矩-电流曲线（TI 曲线）](wiki/concepts/motor-torque-current-curve.md) — TI 曲线**（Torque-Current Curve，转矩-电流曲线）描述电机输出转矩与驱动电流之间的关系。对永磁同步电机（PMSM）和无刷电机（BLDC），它在理想区近似直线，斜率即 **力 `📅unknown` `[wiki_page]`
 - [电机转矩-转速曲线（TN 曲线）](wiki/concepts/motor-torque-speed-curve.md) — TN 曲线**（Torque-Speed Curve，转矩-转速曲线）以转速为横轴、输出转矩为纵轴，刻画电机/关节模组在全速域内的力矩能力边界；评估人形或腿足执行器时，它通常是 datasheet `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](wiki/concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`
+- [MQTT 通信协议](wiki/concepts/mqtt-protocol.md) — MQTT（Message Queuing Telemetry Transport）** 是 OASIS 维护的 **Client–Server 发布/订阅** 消息传输协议：Client 只与  `📅unknown` `[wiki_page]`
 - [多头注意力（Multi-Head Attention）](wiki/concepts/multi-head-attention.md) — Multi-Head Attention（MHA）** 把 Query/Key/Value 投影到 $h$ 个子空间，各自做缩放点积注意力后拼接再投影，使模型在不同表示子空间 **并行关注不同关系 `📅unknown` `[wiki_page]`
 - [多模态基础概念](wiki/concepts/multimodality-basics.md) — 多模态（Multimodality）** 指在同一模型中联合表示并交互 **两种以上感官/符号模态**（常见为视觉+语言），目标是学习跨模态对齐的语义，以支持检索、描述、问答与具身指令跟随。 `📅unknown` `[wiki_page]`
 - [网络协议栈基础（TCP / UDP / HTTP / DNS / TLS / 负载均衡）](wiki/concepts/network-protocol-stack.md) — 网络协议栈基础** 给出机器人研发与部署中最常用的传输/应用层协议角色划分：**哪些适合可靠服务，哪些适合低延迟传感/控制数据**。 `📅unknown` `[wiki_page]`

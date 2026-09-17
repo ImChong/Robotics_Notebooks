@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | sources/sites/mqtt-oasis-primary-refs.md — OASIS MQTT 3.1.1/5.0 一手规范 + Mosquitto；升格 `mqtt-protocol` 概念页；自动合并 PR
+
+- **触发：** 用户指定 MQTT 通信协议一手资料 ingest
+- **步骤 2.5：** OASIS 规范 **公开可读**；Eclipse Mosquitto **已开源**（EPL-2.0）
+- **关键页：** 新建 [`mqtt-protocol`](wiki/concepts/mqtt-protocol.md)、[`mosquitto`](wiki/entities/mosquitto.md)；交叉 hub-communication / PlotJuggler / Wokwi
+
 ## [2026-09-17] ingest | sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md — 具身小站 9 篇（看/做/迁移）；9/9 独立节点（7 新建 + RecMorph/EXPO-FT 复用）；自动合并 PR
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/w6w1FzL2FG7vlFa27UYE6w>
