@@ -57,6 +57,17 @@ summary: "FIERCE（arXiv:2609.18651）：progress + failure-risk 双信号 RL，
 - 强调 **低延迟专才** 相对通用策略在重复操作上的优势（细节以 PDF 为准）。
 - **读法：** 与 [Real-Time EXPO-FT](./paper-real-time-expo-ft.md) 同属「通用→可部署专才」谱系，但 FIERCE 侧重 progress–failure 奖励塑形。
 
+## 与其他工作对比
+
+| 对照对象 | 差异 |
+|----------|------|
+| 直接部署通用 VLA | 语义泛化强但推理慢、重复精度不稳；FIERCE 用通用策略做 **初始化** 而非终态 |
+| 纯回报 RL 微调 | 稀疏成功/失败信号在插销入孔类接触任务上样本效率低；本文把奖励拆成 **observed progress** + **action-conditioned failure risk** 两路 |
+| 从零训小模型 | 丢掉通用先验，重新采数据；FIERCE 走 **蒸馏式专才化**，上限受 generalist 质量约束 |
+| [Real-Time EXPO-FT](./paper-real-time-expo-ft.md) | 同属「通用→可部署」谱系但正交：EXPO-FT 在线 **编辑动作** 对抗延迟，FIERCE 离线 **改结构 + 奖励塑形** 降延迟 |
+
+定量对照（延迟、重复成功率、消融）以原文 PDF 为准；代码仓当前仅 placeholder README，无法独立复现。
+
 ## 结论
 
 **FIERCE 把专才化问题从「再训一个小模型」改写成「用进展与失败信号引导的 RL 蒸馏」——值得跟踪代码落地后的奖励实现细节。**

@@ -120,6 +120,36 @@ sequenceDiagram
 - **最短审计路径：** HF 权重 → `lerobot-eval` LIBERO 三套件 → 对照 `Experiment-result/LIBERO_latency_stats/` 延迟 CSV。
 - **勿误用：** `base_model_path` 仅提供 processor/元数据，**不是** Drifting 训练好的 action head。
 
+## 实验与评测
+
+**延迟（`Experiment-result/LIBERO_latency_stats/` CSV）**
+
+| 口径 | GR00T N1.7 flow-matching | Drifting 单步 | 倍率 |
+|------|--------------------------|---------------|------|
+| Action head | **45.3 ms** | **5.0 ms** | ~9× |
+| Backbone + head | **70 ms** | **30.6 ms** | ~2.3× |
+
+**LIBERO 闭环成功率（三 seed）**
+
+| 套件 | Drifting | 读法 |
+|------|----------|------|
+| Spatial | **64 ± 4%** | 与 GR00T 基线对照读，非独立分数 |
+| Long | **26 ± 2.6%** | 长程 open-loop chunk 风险最高的一档 |
+
+- **方差低说明退化是系统性的：** 三 seed 标准差在 ±4 pp 以内，成功率下降 **不是** seed 运气问题。
+- **评测设定：** LIBERO **同步** 评测，未覆盖 stale-observation / 真机延迟；overlap-conditioned 扩展存在但 **未在本评测中验证**。
+- **可独立复现：** HF 权重 → `lerobot-eval` LIBERO 三套件 → 比对官方 latency CSV。
+
+## 与其他工作对比
+
+| 对照对象 | 差异 |
+|----------|------|
+| GR00T N1.7 原版（flow-matching DiT head） | 同 backbone、同 LeRobot 预处理，**只换 action head**；因此延迟与成功率的差值可直接归因到单步化，是本文最干净的对照 |
+| 多步扩散/flow 动作头通用做法 | 用迭代去噪换动作质量；Drifting 用 **恰好 1 次** 前向换延迟，代价是 one-step mode averaging |
+| [GlanceWAM](./paper-glancewam.md) | 同样追 WAM/VLA 延迟，但优化的是 **感知/前端预算**；本文是 **action head 微观审计** |
+| [Real-Time EXPO-FT](./paper-real-time-expo-ft.md) | 问题正交：EXPO-FT 处理 **观测陈旧**（延迟已存在时怎么补救），本文处理 **延迟本身从哪来** |
+| GR00T RTC（overlap 引导） | Drifting **不支持** RTC；依赖 overlap 的部署需保留 GR00T 基线或另找 async 方案 |
+
 ## 工程实践
 
 | 项 | 建议 |

@@ -75,7 +75,7 @@ flowchart LR
 
 | 设定 | 读法 |
 |------|------|
-| **Streaming zero-shot** | SOTA MLLM mistake F1 接近 0；Gemini-2.5-Flash IC-Acc 23.1% 已属前列 |
+| **Streaming zero-shot** | 论文对照的强 MLLM 基线 mistake F1 接近 0；Gemini-2.5-Flash IC-Acc 23.1% 已属其中前列 |
 | **Streaming fine-tuned LiveMamba** | Main Set IC-Acc **31.5%**，mistake F1 **0.13**；Advanced Planning mistake F1 **0.19** |
 | **Turn-based fine-tuned** | 单步隔离后 LiveMamba IC-Acc **51.0%**，mistake F1 **0.19** — 说明多步误差传播是主要难点 |
 | **指标族** | IC-Acc；Mistake Prec / Rec / F1；BERTScore；ROUGE-L |
@@ -134,7 +134,7 @@ sequenceDiagram
 ## 局限与风险
 
 - **模型未开源：** 只能评测自有模型，无法直接复现 LiveMamba 数字。
-- **Streaming 极难：** 多步设定下 SOTA 普遍接近失效，勿用 turn-based 分数代替部署预期。
+- **Streaming 极难：** 多步设定下论文所测的强基线普遍接近失效（对照组为其投稿时的公开模型），勿用 turn-based 分数代替部署预期。
 - **域窄：** 以烹饪 procedural activity 为主，迁移到其他技能需新标注。
 - **依赖 CaptainCook4D：** 竞赛入门需额外下载原始 GoPro 视频并抽帧。
 

@@ -115,6 +115,17 @@ flowchart TB
 
 详细数值以 [arXiv PDF](https://arxiv.org/abs/2606.10804) 为准；本页不搬运完整实验表。
 
+## 与其他工作对比
+
+| 对照对象 | 差异 |
+|----------|------|
+| pose-map / skeleton 驱动管线 | 骨架图在遮挡、多角色深度歧义与跨物种 driving 上丢信息；SCAIL-2 直接拼 **视觉 latent**，把中间表示从管线里删掉 |
+| background inpainting 式角色替换 | 需要显式 inpainting 中间步；本文用 **In-Context Mask**（environment switch + character binding）在同一前向内完成 |
+| SCAIL-1（arXiv:2512.05905） | 前作强调 **3D-consistent pose ICL**，仍保留 pose 中间表示；SCAIL-2 更激进地 bypass 它——复现入口不可混用 |
+| [RigMo](./rigmo.md) / [Generative Motion Rig](./generative-motion-rig.md) | 输出层不同：这两者产出 **3D rig / 关键帧资产**，SCAIL-2 产出 **2D 视频表演** |
+| 轻量 pose retarget | 延迟与算力低一个量级；SCAIL-2 用 14B 视频扩散换可用上限，动态/多角色场景才值这个成本 |
+| 机器人策略栈（[VLA](../methods/vla.md) 等） | **不可比**：本文输出是视频，不是关节力矩或 WBC 指令；真机链路需接 [Motion Retargeting](../concepts/motion-retargeting.md) 与物理跟踪，边界见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) |
+
 ## 结论
 
 **SCAIL-2 把「受控角色动画」从 skeleton/inpainting 管线推进到 latent 视频扩散上的统一 in-context 接口，在开源权重与 ComfyUI 生态下具备强工程可用性，但仍是视频生成而非物理机器人控制。**
