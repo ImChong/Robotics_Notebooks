@@ -14,7 +14,7 @@ summary: "InEKFormer 把经典 不变扩展卡尔曼滤波（InEKF） 的几何�
 
 # InEKFormer
 
-**InEKFormer: A Hybrid State Estimator for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**InEKFormer: A Hybrid State Estimator for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ InEKFormer 把经典 不变扩展卡尔曼滤波（InEKF） 的几何结构保�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ InEKFormer 把经典 不变扩展卡尔曼滤波（InEKF） 的几何结构保�
 - 验证放在 **RH5 真机数据**上，对照 **InEKF 与 KalmanNet** 两条基线——一条经典、一条学习式滤波，比较位置摆得比较公允。
 - 已暴露的失败模式很具体：**自回归训练不做鲁棒化就会发散**，这是混合式估计器落地前必须先解决的现实问题。
 - 本工作的定位是可行性验证——证明 Transformer 能进人形高维状态估计，而非宣称已经超越经典滤波。
-- 本页仅索引级：具体误差数字与消融以深读笔记与论文 PDF 为准。
+- 本页仅清单索引：具体误差数字与消融以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -15,7 +15,7 @@ summary: "AutoOdom 把\"足式机器人本体感知里程计（只用 IMU + 关�
 
 # AutoOdom
 
-**AutoOdom: Learning Auto-regressive Proprioceptive Odometry for Legged Locomotion** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**AutoOdom: Learning Auto-regressive Proprioceptive Odometry for Legged Locomotion** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -44,7 +44,7 @@ AutoOdom 把"足式机器人本体感知里程计（只用 IMU + 关节传感器
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -54,7 +54,7 @@ AutoOdom 把"足式机器人本体感知里程计（只用 IMU + 关节传感器
 - 关键指标是 Booster T1 上 **ATE / RPE 相比 Legolas 下降 36%–59%**，衡量的是轨迹级精度，不是单步速度估计。
 - 适用边界：输入只有 IMU + 关节传感器，属本体感知里程计，优点是不受光照/纹理影响，但不替代视觉或激光 SLAM。
 - 主要成本在第二阶段依赖真机数据；跨本体、跨步态的迁移性本页未交代。
-- 本页为索引级摘要，量化 benchmark 与消融以深读笔记与论文 PDF 为准。
+- 本页为笔记摘要，量化 benchmark 与消融以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

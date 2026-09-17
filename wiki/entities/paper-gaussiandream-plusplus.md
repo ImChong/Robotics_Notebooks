@@ -16,14 +16,14 @@ sources:
   - ../../sources/sites/gaussiandream-series.md
   - ../../sources/repos/gaussiandream.md
   - ../../sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md
-summary: "GaussianDream++（arXiv:2608.25659）：20 个世界令牌嵌入 VLA；训练期高斯监督、推理期移除解码；LIBERO 98.6% / 真机 52.5%；相对索引级 GaussianDream（2605.20752）为独立节点。"
+summary: "GaussianDream++（arXiv:2608.25659）：20 个世界令牌嵌入 VLA；训练期高斯监督、推理期移除解码；LIBERO 98.6% / 真机 52.5%；相对清单索引页 GaussianDream（2605.20752）为独立节点。"
 ---
 
 # GaussianDream++
 
 **GaussianDream++: Efficient 3D Gaussian World Modeling for Robotic Manipulation**（[arXiv:2608.25659](https://arxiv.org/abs/2608.25659)，[项目页](https://tuojingai.github.io/GaussianDream-Series-project-page/)）——拓境智能（Tuojing Intelligence）；中国科学院自动化研究所（CASIA）；中国科学院大学（UCAS）等。
 
-本页覆盖 **++（2608.25659）**。前作 [GaussianDream](./paper-sa-2605-20752-gaussiandream-a-feed-forward-3d-gaussian-world-m.md)（[arXiv:2605.20752](https://arxiv.org/abs/2605.20752)）是 Awesome 索引级节点，**不是**同一论文，勿合并。
+本页覆盖 **++（2608.25659）**。前作 [GaussianDream](./paper-sa-2605-20752-gaussiandream-a-feed-forward-3d-gaussian-world-m.md)（[arXiv:2605.20752](https://arxiv.org/abs/2605.20752)）是 Awesome 清单索引页，**不是**同一论文，勿合并。
 
 ## 一句话定义
 
@@ -116,13 +116,13 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-- 相对索引级 [GaussianDream](./paper-sa-2605-20752-gaussiandream-a-feed-forward-3d-gaussian-world-m.md)：本页是深度实体，覆盖 ++ 机制与指标。
+- 相对清单索引页 [GaussianDream](./paper-sa-2605-20752-gaussiandream-a-feed-forward-3d-gaussian-world-m.md)：本页是深度实体，覆盖 ++ 机制与指标。
 - 相对几何增强 VLA：++ 同时监督当前结构与短时程演化。
 - 相对在线世界模型 rollout：推理不做高斯解码或未来展开。
 
 ## 关联页面
 
-- [GaussianDream（索引级前作）](./paper-sa-2605-20752-gaussiandream-a-feed-forward-3d-gaussian-world-m.md)
+- [GaussianDream（清单索引前作）](./paper-sa-2605-20752-gaussiandream-a-feed-forward-3d-gaussian-world-m.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [VLA](../methods/vla.md)
 - [LIBERO](./libero-benchmark.md)

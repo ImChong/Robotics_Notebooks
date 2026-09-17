@@ -101,7 +101,7 @@ flowchart TB
 | **语言条件 VLN** | 见 [视觉–语言导航](../tasks/vision-language-navigation.md)；本文为 **image-goal**（目标图像而非自然语言） |
 | **[WorldVLN](./paper-worldvln-aerial-vln-wam.md)** | 同为 WAM 导航实例，但面向 **UAV VLN** 与 **自回归潜转移** |
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径（以论文 / 项目页为准） |
 |----|--------------------------------|

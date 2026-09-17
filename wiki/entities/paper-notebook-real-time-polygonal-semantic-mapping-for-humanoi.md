@@ -10,12 +10,12 @@ related:
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
 sources:
   - ../../sources/papers/humanoid_pnb_real-time-polygonal-semantic-mapping-for-humanoi.md
-summary: "Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing
 
-**Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -31,8 +31,8 @@ Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing 的人形
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -49,7 +49,7 @@ Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing 的人形
 
 ## 结论
 
-**本页是「人形爬楼实时多边形语义建图」一文的待深读占位节点，它当前最有用的信息其实是一条消歧指引，而不是方法归纳。**
+**本页是「人形爬楼实时多边形语义建图」一文的待读条目，它当前最有用的信息其实是一条消歧指引，而不是方法归纳。**
 
 - 已确定的定位信息只有分类 05_Locomotion 与 arXiv 2411.01919；方法与指标尚未消化，「实验与评测」明确留空。
 - 页面显式给出消歧：若实际问题是 GO2 运动点云质量与 SAM 2D→3D，应改读 [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)，而不是把本页当答案。
@@ -57,9 +57,9 @@ Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing 的人形
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
-- **勿与 GO2+SAM 流水线混同**：本页仍是「待深读」占位；若问题是 **GO2 运动点云质量 + SAM 2D→3D**，先读 [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。
+- **勿与 GO2+SAM 流水线混同**：本页仍是「待深读」待读；若问题是 **GO2 运动点云质量 + SAM 2D→3D**，先读 [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。
 
 ## 参考来源
 

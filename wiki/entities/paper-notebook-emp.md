@@ -10,12 +10,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_emp.md
-summary: "EMP：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "EMP：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # EMP
 
-**EMP: Executable Motion Prior for Humanoid Robot Standing Upper-body Motion Imitation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**EMP: Executable Motion Prior for Humanoid Robot Standing Upper-body Motion Imitation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -31,8 +31,8 @@ EMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -49,15 +49,15 @@ EMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 ## 结论
 
-**EMP 在本库目前只是一条「已排期、未深读」的占位实体：它补的是知识图谱的完整性，而不是可直接引用的方法结论。**
+**EMP 目前还没读：本页只登记了它的分类位置与原文入口，给不出可直接引用的方法结论。**
 
 - 本页能确认的只有索引层信息——arXiv 2507.15649（2025.07）、分类 04_Loco-Manipulation_and_WBC 与计划中的笔记文件夹；标题指向「站立姿态下的上半身动作模仿」这一子问题，但机制与实验细节页内一概未展开。
-- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为技术选型或方法对比的依据。
-- 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 progress.json 跟踪，结论以论文原文为准。
+- 适用边界：适合经[分类页](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为技术选型或方法对比的依据。
+- 主要风险是把待读条目误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 progress.json 跟踪，结论以论文原文为准。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

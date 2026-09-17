@@ -15,7 +15,7 @@ summary: "本文探索用人形机器人经遥操作执行医疗任务，以缓�
 
 # Humanoids in Hospitals
 
-**Humanoids in Hospitals: A Technical Study of Humanoid Robot Surrogates for Dexterous Medical Interventions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Humanoids in Hospitals: A Technical Study of Humanoid Robot Surrogates for Dexterous Medical Interventions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ summary: "本文探索用人形机器人经遥操作执行医疗任务，以缓�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ summary: "本文探索用人形机器人经遥操作执行医疗任务，以缓�
 - 结果分层清晰：通气与超声引导任务有可观的定量表现，而 **力限与传感灵敏度** 制约了精密穿针一类的临床精度——这是硬件瓶颈，也直接指向本体改进方向。
 - 适用边界：全程为遥操作而非自主，平台是 Unitree G1 双臂系统；本文定位是可行性与局限的系统评测，不是可临床部署的方案，但为后续自主化/学习化医疗操作奠基。
 - 路线延伸：同 UCSD 团队的 [Humanoid Surgeon（Nature 2026）](./paper-humanoid-surgeon-in-vivo-laparoscopy.md) 把这条线推进到 in vivo 腹腔镜的系统评估。
-- 本页为深读笔记的索引级摘要，七类流程的具体指标以笔记与论文 PDF 为准。
+- 本页为深读笔记的笔记摘要，七类流程的具体指标以笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

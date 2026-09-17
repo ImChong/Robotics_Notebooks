@@ -37,7 +37,7 @@ FB 嵌入统一表示，面对不同 reward 推导策略；为 BFM「先学可�
 - FB 嵌入统一表示，面对不同 reward 推导策略；为 BFM「先学可迁移结构」打底。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#05/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -67,7 +67,7 @@ FB 嵌入统一表示，面对不同 reward 推导策略；为 BFM「先学可�
 
 - 机制核心是 **forward-backward（FB）/ successor 结构**：异构任务被压进同一可调用的身体潜空间，上层用目标姿态、奖励向量或 latent prompt 检索与组合，而非逐技能重训。
 - 评价口径随之改变：BFM 关心**覆盖面与可组合性**，而不是单一参考跟踪的成功率——这是它与单技能 motion tracking 的分野。
-- 本页是索引级策展编译，机制归纳之外的量化 benchmark、消融与实机指标须回到 NeurIPS 2021 原文 PDF 与 `controllable_agent` 项目页。
+- 本页是清单索引策展编译，机制归纳之外的量化 benchmark、消融与实机指标须回到 NeurIPS 2021 原文 PDF 与 `controllable_agent` 项目页。
 
 ## 常见误区
 

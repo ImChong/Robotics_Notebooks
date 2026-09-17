@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_is-imitation-learning-the-route-to-humanoid-robo.md
-summary: "Is imitation learning the route to humanoid robots?：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Is imitation learning the route to humanoid robots?：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Is imitation learning the route to humanoid robots?
 
-**Is imitation learning the route to humanoid robots?** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：06_Manipulation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Is imitation learning the route to humanoid robots?** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：06_Manipulation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Is imitation learning the route to humanoid robots? 的人形机器人学习论�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Is imitation learning the route to humanoid robots? 的人形机器人学习论�
 
 ## 结论
 
-**本页记录的是一个尚未展开的路线之问——模仿学习是否是通往人形机器人的路径；页面当前只提供占位，不提供答案。**
+**本页记录的是一个尚未展开的路线之问——模仿学习是否是通往人形机器人的路径；页面当前只提供待读，不提供答案。**
 
 - 归入 06_Manipulation，说明这一追问在本库中被放在操作能力的语境下考察。
-- 本页作用是保持知识图谱完整，避免该论文实体缺失。
+- 本页只是登记这篇论文的分类位置，方便检索。
 - 深读笔记尚未撰写，关于该问题的任何结论都不应从本页引用，论证与量化待笔记补充。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
+- 分类页：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

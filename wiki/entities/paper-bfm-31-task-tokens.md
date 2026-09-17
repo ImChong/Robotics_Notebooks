@@ -37,7 +37,7 @@ sources:
 - 轻量 task token 适配，把重训身体转为换任务条件。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **04 Adaptation**（#31/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -62,7 +62,7 @@ sources:
 
 - 它与同组 adaptation 路线共享同一命题：在预训练 BFM 上用 **task token、动力学适配或少量示范** 迁移到新任务/新机体，核心是在 **保留基座能力** 的同时低成本吸收新约束。
 - 适用前提是决定性的：这类方法默认已有 **强预训练基座**；基座弱时 adapter 收益有限——先评估基座覆盖面，再谈适配技巧。
-- 本页为索引级坐标（awesome-bfm #31/41，**04 Adaptation**，2025 · arXiv）；量化 benchmark、消融与实机指标以原文 PDF 为准。
+- 本页为清单坐标（awesome-bfm #31/41，**04 Adaptation**，2025 · arXiv）；量化 benchmark、消融与实机指标以原文 PDF 为准。
 
 ## 常见误区
 

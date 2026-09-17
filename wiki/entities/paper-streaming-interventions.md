@@ -113,7 +113,7 @@ sequenceDiagram
 | 微调 | 论文使用 Qwen3.5-2B/9B/27B 等；读者需自建 streaming fine-tune（无官方脚本） |
 | 博客 | [Ego-MC-Bench 导读](https://apratimbh.github.io/blogs/ego-mc-bench/) 补充采集与指标说明 |
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
 | 维度 | Ego-MC-Bench / Ego-CoMist | [LiveCook](./paper-livecook.md) CC4D 线 | Videollm-online / LiveCC |
 |------|---------------------------|----------------------------------------|--------------------------|

@@ -39,7 +39,7 @@ sources:
 - 轨迹作为预训练对象；行为基座不必只靠传统 RL 交互。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#24/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -70,7 +70,7 @@ sources:
 - 起作用的是数据形态而非新控制器——轨迹直接作为预训练对象，goal / reference / command 的条件化能力从离线数据长出来。
 - 在 taxonomy 中归 **02 Goal-conditioned 学习**，回答的仍是「身体能覆盖多少目标条件技能」，而非覆盖面之外的实机鲁棒性。
 - 局限与同族一致：条件化跟踪不等于 unlimited skills，仍受数据分布、接触建模与实机 Sim2Real 约束。
-- 本页为索引级策展编译，量化 benchmark 与消融以 arXiv:2305.02968 原文及 `facebookresearch/mtm` 为准。
+- 本页为清单索引策展编译，量化 benchmark 与消融以 arXiv:2305.02968 原文及 `facebookresearch/mtm` 为准。
 
 ## 常见误区
 

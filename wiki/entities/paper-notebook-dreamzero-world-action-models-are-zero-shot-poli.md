@@ -14,7 +14,7 @@ summary: "DreamZero 提出 World Action Model (WAM)：在预训练视频扩散�
 
 # DreamZero
 
-**DreamZero: World Action Models are Zero-shot Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DreamZero: World Action Models are Zero-shot Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ SOTA **VLA** 擅长语义泛化（换物体、换语言指令），但在**新�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -91,7 +91,7 @@ SOTA **VLA** 擅长语义泛化（换物体、换语言指令），但在**新�
 
 - 数值与消融以论文 PDF / 官方仓库为准。
 - 与相邻 VLA / 仿真 / 数据生成页交叉阅读，避免重复造页。
-- 若仅有索引级摘要，部署前必须回一手 README。
+- 若仅有笔记摘要，部署前必须回一手 README。
 
 ## 参考来源
 

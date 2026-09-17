@@ -99,7 +99,7 @@ flowchart TB
 - **行走 GRF：** 云端/离线可用混合 **机器学习 + 仿真**（[opencap-processing-grf](https://github.com/opencap-org/opencap-processing-grf)）。
 - **其他活动动力学：** [opencap-processing](https://github.com/opencap-org/opencap-processing) 离线管线。
 
-## 实验与评测（索引级）
+## 实验与评测
 
 | 任务 | 关键结果 |
 |------|----------|

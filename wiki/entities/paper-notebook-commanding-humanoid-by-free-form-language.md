@@ -14,7 +14,7 @@ summary: "让人形听懂并执行自由形式自然语言指令，是迈向无�
 
 # Commanding Humanoid by Free-form Language
 
-**Commanding Humanoid by Free-form Language: A Large Language Action Model with Unified Motion Vocabulary** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Commanding Humanoid by Free-form Language: A Large Language Action Model with Unified Motion Vocabulary** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "让人形听懂并执行自由形式自然语言指令，是迈向无�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "让人形听懂并执行自由形式自然语言指令，是迈向无�
 - 两道坎被明确对应到两个手段：成对语言-动作数据稀缺由统一词表与跨本体设计缓解，物理不稳定由 RL 阶段兜底，任一步单独用都不够。
 - 跨本体设计是泛化的来源之一：同一套语言接口可推广到不同人形，评测同时覆盖仿真与真实跨本体实验。
 - 对照定位：与 UniAct 的 FSQ 码本属于同一思路（离散动作码本作为语言模型与控制之间的接口）；与 FRoM-W1、ULTRA、SafeFlow、UniAct 同属语言/多模态驱动全身控制簇，宜横向比较各自的生成器与稳定化手段。
-- 适用边界：本页为深读笔记的索引级编译，「更好泛化、多样动作、高物理保真」是论文自述结论，量化 benchmark 与消融以笔记与论文 PDF 为准。
+- 适用边界：本页为深读笔记的清单索引编译，「更好泛化、多样动作、高物理保真」是论文自述结论，量化 benchmark 与消融以笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

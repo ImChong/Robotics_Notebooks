@@ -38,7 +38,7 @@ PvP 的全称是 Proprioceptive-Privileged Contrastive Representations。它关�
 - 真实机器人部署时能用的通常是 proprioception，例如关节角、关节速度、IMU、历史动作等；但仿真训练时可以获得更完整的 privileged states，例如身体速度、接触状态、地形信息等。PvP 试图利用二者之间的互补关系，通过对比学习得到紧凑、任务相关的 latent representation。
 - 这篇论文不一定像跑酷、开门那样有很强的视频冲击力，但它解决的是很多控制器的基础问题：**怎么把训练时看得到、部署时看不到的信息，变成部署时仍然有用的表征。**
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

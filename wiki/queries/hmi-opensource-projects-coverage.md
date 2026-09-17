@@ -1,22 +1,22 @@
 ---
-title: HMI 开源项目主表 · 本库导读
+title: HMI 开源项目主表 · 阅读导航
 type: query
 status: complete
 created: 2026-07-30
 updated: 2026-09-10
-summary: 把具身智能研究室开源项目主表接到本库详情页：166 项为 2026-07 深读快照；上游 2026-09-10 已扩到 586 项，本页不镜像全表。
+summary: 具身智能研究室开源项目主表的站内阅读导航：表中项目对应站内哪一页、该从哪读起。下表是 2026-07 的 166 项快照，上游 2026-09-10 已扩到 586 项，本页不镜像全表。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
 
-> **Query 产物**：本页由以下问题触发：「开源项目主表里的项目，在本知识库里分别对应哪一页、该怎么读？」
+> **Query 产物**：「开源项目主表里的项目，站内对应哪一页、该从哪读起？」
 > 综合来源：[Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)、[开源运动控制项目结构化摘要](./open-source-motion-control-projects.md)、上游 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
-# HMI 开源项目主表 · 本库导读
+# HMI 开源项目主表 · 阅读导航
 
 ## 一句话定义
 
-这是一张**导读表**：把 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 上游策展的 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 接到本库已有的方法 / 论文 / 工程详情页。下表是 **2026-07-30 的 166 项深读快照**；上游现为 **586** 项，新增条目以主表原文为准，不要把本页当成完整镜像。
+这是一张**导读表**：把 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 策展的 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 里的项目，逐条接到站内对应的方法 / 论文 / 工程页，方便你顺着表往下读。下表是 **2026-07-30 的 166 项深读快照**；上游现为 **586** 项，新增条目以主表原文为准，不要把本页当成完整镜像。
 
 ## 英文缩写速查
 
@@ -188,7 +188,7 @@ sources:
 
 | 上游项目 | 本库详情 |
 | --- | --- |
-| [ASAP](https://github.com/LeCAR-Lab/ASAP) | [ASAP](../entities/paper-hrl-stack-25-asap.md) · 索引级笔记见 [paper-notebook-asap](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
+| [ASAP](https://github.com/LeCAR-Lab/ASAP) | [ASAP](../entities/paper-hrl-stack-25-asap.md) · 清单索引页见 [paper-notebook-asap](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
 | [BEHAVIOR / OmniGibson](https://github.com/StanfordVL/BEHAVIOR-1K) | [BEHAVIOR-1K](../entities/behavior-1k.md) · 同主题共用 |
 | [Brax](https://github.com/google/brax) | [Brax（JAX 可微物理与 RL 训练）](../entities/brax.md) |
 | [CALVIN](https://github.com/mees/calvin) | [CALVIN](../entities/calvin-benchmark.md) |

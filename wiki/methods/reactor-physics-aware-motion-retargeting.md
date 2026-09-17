@@ -44,7 +44,7 @@ summary: "ReActor 将跨具身运动重定向建成物理仿真中的双层问�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 02_Motion_Retargeting（[分类父节点](../overview/paper-notebook-category-02-motion-retargeting.md)） |
-| 深读状态 | 索引级实体已建，深读笔记待消化（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
+| 深读状态 | 清单索引页已建，深读笔记待消化（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
 | 总索引 | [humanoid-paper-notebooks-index](../overview/humanoid-paper-notebooks-index.md) |
 
 ## 为什么重要

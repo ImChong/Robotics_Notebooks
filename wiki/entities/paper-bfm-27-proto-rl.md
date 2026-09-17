@@ -38,7 +38,7 @@ sources:
 - 原型表示组织行为空间，便于上层组合与选择技能。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#27/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -64,7 +64,7 @@ sources:
 
 - 起作用的是 **intrinsic reward**（探索、多样性、后继态等）驱动的无任务预训练，产出可迁移的探索先验，从而降低下游冷启动的样本需求。
 - 边界很硬：intrinsic 预训练不替代任务奖励，它提供的是 **探索覆盖**，下游仍需任务信号或示范对齐才能定向到具体行为。
-- 本页为索引级坐标（awesome-bfm #27/41，**03 Intrinsic reward 预训练**，2021 · ICML，代码 <https://github.com/denisyarats/proto>）；量化 benchmark、消融与实机指标以原文 PDF 为准。
+- 本页为清单坐标（awesome-bfm #27/41，**03 Intrinsic reward 预训练**，2021 · ICML，代码 <https://github.com/denisyarats/proto>）；量化 benchmark、消融与实机指标以原文 PDF 为准。
 
 ## 常见误区
 

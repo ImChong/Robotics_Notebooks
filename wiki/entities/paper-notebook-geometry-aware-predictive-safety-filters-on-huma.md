@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_geometry-aware-predictive-safety-filters-on-huma.md
-summary: "Geometry-Aware Predictive Safety Filters on Humanoids：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Geometry-Aware Predictive Safety Filters on Humanoids：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Geometry-Aware Predictive Safety Filters on Humanoids
 
-**Geometry-Aware Predictive Safety Filters on Humanoids** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Geometry-Aware Predictive Safety Filters on Humanoids** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Geometry-Aware Predictive Safety Filters on Humanoids 的人形机器人学习�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Geometry-Aware Predictive Safety Filters on Humanoids 的人形机器人学习�
 
 ## 结论
 
-**本页当前是知识图谱里的占位节点，而不是对这篇论文的判断：它的作用是先把该条目挂进 05_Locomotion 分类不丢链，实质结论要等深读笔记完成后回填。**
+**本页当前是一条待读记录，而不是对这篇论文的判断：它只登记了这篇属于 05_Locomotion，实质结论要等深读笔记完成后回填。**
 
 - 页面现状：status 为 planned，正文只有分类归属与 PROGRESS.md 待深读状态，没有可供归纳的机制、指标或实验内容。
 - 从标题能读出的定位仅限于「人形 + 几何感知的预测式安全滤波」，归类在 05_Locomotion；任何关于方法细节或效果的判断在本页都缺乏依据。
-- 使用方式：把本页当检索入口——分类父节点 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 与 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走 arXiv 原文。
+- 使用方式：把本页当检索入口——分类页 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 与 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走 arXiv 原文。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

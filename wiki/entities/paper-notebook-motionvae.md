@@ -14,7 +14,7 @@ summary: "MotionVAE 通过自回归条件变分自编码器（CVAE）构建了�
 
 # Character Controllers using Motion VAEs
 
-**Character Controllers using Motion VAEs** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Character Controllers using Motion VAEs** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -51,7 +51,7 @@ MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构
 
 - 真正起作用的是潜空间本身——平滑与逼真由潜空间的结构保证，高层控制器（如 RL）只需采样潜变量即可获得可控动作，无需靠奖励项硬凑动作质量。
 - 定位在 13_Physics-Based_Animation，面向角色动作的可控生成；本页未涉及真机迁移或 Sim2Real 层面的结论。
-- 本页仅为策展索引级实体，机制细节与量化结论待从深读笔记消化后补充，引用请以笔记页与论文 PDF 为准。
+- 本页仅为策展清单索引实体，机制细节与量化结论待从深读笔记消化后补充，引用请以笔记页与论文 PDF 为准。
 
 ## 与其他页面的关系
 

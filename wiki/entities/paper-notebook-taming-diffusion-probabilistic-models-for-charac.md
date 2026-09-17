@@ -14,7 +14,7 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 
 # Taming Diffusion Probabilistic Models for Character Control
 
-**Taming Diffusion Probabilistic Models for Character Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Taming Diffusion Probabilistic Models for Character Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 - 起作用的是三招组合而非单点：条件单独 token 化保证控制信号不被历史淹没；对历史动作做无分类器引导，在「跟随历史」与「保持多样」之间提供调节旋钮；启发式未来轨迹外延则纯粹为算力买单。
 - 「单一统一模型覆盖多风格 + 多样行走技能」是它相对逐风格专用模型的核心定位；但本页未给出多样性与控制精度之间的量化权衡。
 - 适用边界是角色动画：评价对象是动画质量与交互响应，不是真机可执行的全身控制；迁移到人形 loco 控制只是本页给出的方向性判断（与 Heracles / SafeFlow 的生成式控制呼应），而非论文已验证的结论。
-- 本页只是深读笔记的索引级编译；量化 benchmark 与消融必须回到深读笔记与 SIGGRAPH 2024 原文。
+- 本页只是深读笔记的清单索引编译；量化 benchmark 与消融必须回到深读笔记与 SIGGRAPH 2024 原文。
 
 ## 与其他页面的关系
 

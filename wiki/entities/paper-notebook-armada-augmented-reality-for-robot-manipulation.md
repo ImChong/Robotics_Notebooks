@@ -14,7 +14,7 @@ summary: "遥操作采集机器人模仿数据受硬件可得性瓶颈——问�
 
 # ARMADA
 
-**ARMADA: Augmented Reality for Robot Manipulation and Robot-Free Data Acquisition** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**ARMADA: Augmented Reality for Robot Manipulation and Robot-Free Data Acquisition** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ ARMADA 要：用 **AR + 虚拟机器人反馈**，让用户徒手采到**硬件�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ ARMADA 要：用 **AR + 虚拟机器人反馈**，让用户徒手采到**硬件�
 - 证据来自 15 人、3 个任务、3 种反馈条件的用户研究，加上把采集轨迹直接在实体机器人上回放——「有没有反馈」这个变量被单独隔离出来验证。
 - 适用边界：它解决的是 **数据采集端** 的硬件门槛，对硬件贵、可达性受限的人形尤其有价值，但本身不给出策略学习或任务成功率的结论。
 - 定位对照：与 EgoDex 同属 Apple 系 Vision Pro 采集工作，可放在一起看数据侧路线。
-- 本页为深读笔记编译的索引级摘要，量化 benchmark 与消融以 [参考来源](#参考来源) 中的笔记页与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化 benchmark 与消融以 [参考来源](#参考来源) 中的笔记页与论文 PDF 为准。
 
 ## 与其他页面的关系
 

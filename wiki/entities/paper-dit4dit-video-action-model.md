@@ -93,7 +93,7 @@ flowchart TB
   OT --> AT
 ```
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径 |
 |----|----------|
@@ -141,7 +141,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 静态先验基线语境
 - [SONIC](../methods/sonic-motion-tracking.md) — G1 全身低层接口（+SONIC 演示）
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身任务族
-- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页即该清单「第二层 · 妙动科技 / VLA 操作模型」条目的 canonical 详情节点
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页即该清单「第二层 · 妙动科技 / VLA 操作模型」条目的 站内对应条目页
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源

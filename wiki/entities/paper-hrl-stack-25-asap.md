@@ -37,7 +37,7 @@ ASAP 的完整思想是 Aligning Simulation and Real Physics。它关注敏捷�
 - 1在仿真中用人类动作数据预训练 motion tracking policies；
 - 3基于真实数据训练 delta action/model，修正仿真状态和真实状态之间的偏差。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

@@ -167,7 +167,7 @@ sequenceDiagram
 | **记忆资产** | 仓内 `resources/libero/memory/` 含任务级 md / 结果 json |
 | **开源边界** | Pi0.5+LIBERO-PRO 为默认完整路径；RLDX-1 / RoboCasa / 真机 / WAM 条目以 README Feature Matrix 为准（2026-08-10 仍未全部打勾） |
 
-## 实验要点（索引级）
+## 实验要点
 
 > 数字以 [arXiv:2607.08448v3](https://arxiv.org/pdf/2607.08448v3) / [项目页](https://harnessvla.github.io/) 为准。
 

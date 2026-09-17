@@ -14,7 +14,7 @@ summary: "为复刻人类的灵巧、感知体验与动作模式，本文用一�
 
 # Learning Visuotactile Skills with Two Multifingered Hands
 
-**Learning Visuotactile Skills with Two Multifingered Hands** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Learning Visuotactile Skills with Two Multifingered Hands** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "为复刻人类的灵巧、感知体验与动作模式，本文用一�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "为复刻人类的灵巧、感知体验与动作模式，本文用一�
 - 学习侧的结论是视觉与触觉协同——在需多指灵巧的长时程、高精度任务上，两种反馈结合才能从人类演示学到复杂双手技能。
 - 消融同时覆盖数据规模、感知模态与视觉预处理三个维度，这比单纯「我们也上了触觉」更有价值，为后续系统提供了取舍依据。
 - 适用边界：结论产生于模仿学习范式下的人类演示数据，本页不涉及无演示或纯自主探索的设定。
-- 本页为深读笔记编译的索引级摘要，具体消融数值以深读笔记与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，具体消融数值以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

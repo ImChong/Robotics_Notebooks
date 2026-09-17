@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-activescale.md",
+      "detail_id": "entity-paper-activescale",
+      "label": "ActiveScale（arXiv:2609.18514）",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-scail-2.md",
       "detail_id": "entity-paper-scail-2",
       "label": "SCAIL-2：端到端 In-Context 受控角色动画",
@@ -51,15 +60,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-activescale.md",
-      "detail_id": "entity-paper-activescale",
-      "label": "ActiveScale（arXiv:2609.18514）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
     },
     {
       "path": "wiki/entities/paper-deformsmith.md",
@@ -213,15 +213,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-scail-2.md",
-    "detail_id": "entity-paper-scail-2",
-    "label": "SCAIL-2：端到端 In-Context 受控角色动画",
+    "path": "wiki/entities/paper-activescale.md",
+    "detail_id": "entity-paper-activescale",
+    "label": "ActiveScale（arXiv:2609.18514）",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -237,7 +235,7 @@
       "size": 424
     },
     {
-      "label": "国内开源全景 424 项本库导读",
+      "label": "国内开源全景 424 项阅读导航",
       "size": 301
     },
     {
@@ -291,11 +289,11 @@
     },
     {
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
-      "label": "国内具身开源全景 424 项 · 本库导读",
+      "label": "国内具身开源全景 424 项 · 阅读导航",
       "type": "query",
       "degree": 682,
       "has_repo": true,
-      "community_label": "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage） 社区"
+      "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
     },
     {
       "detail_id": "wiki-methods-imitation-learning",

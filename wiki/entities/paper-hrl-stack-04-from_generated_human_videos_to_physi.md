@@ -43,7 +43,7 @@ sources:
 - 生成视频可能在视觉上合理，但会有形变、遮挡、肢体穿模、动作不连续、人体比例不稳定等问题。对人眼来说，这些瑕疵可能可以忽略；但对机器人来说，一点姿态错误就可能变成无法执行的轨迹。
 - 论文提出两阶段管线：先把生成视频 lift 成 4D human representation，再重定向到 humanoid morphology；之后用 GenMimic 这样的 physics-aware RL policy 来跟踪 3D keypoints，并引入 symmetry 和 keypoint-weighted rewards。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -78,7 +78,7 @@ sources:
 - 关键取舍是承认生成视频的缺陷类型（形变、遮挡、肢体穿模、动作不连续、人体比例不稳定）对人眼可忽略、对机器人致命，因而把纠错放在 **管线中段** 而不是压给策略端。
 - 机制是两阶段：生成视频 **lift 成 4D human representation** → 重定向到 **humanoid morphology**，再由 GenMimic 式 **physics-aware RL policy** 跟踪 3D keypoints，并引入 symmetry 与 keypoint-weighted rewards。
 - 因此它属于 [身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的 **01 数据 · 重定向 · 遥操作** 层：参考质量的上限往往 **早于** RL 策略就已决定，重定向不是「训练前脚本」。
-- 本页为策展索引级条目，量化 benchmark、消融与实机指标以原文 PDF / 项目页为准；开源边界同样以项目页为准，训练代码待发布时需再核。
+- 本页为清单索引条目，量化 benchmark、消融与实机指标以原文 PDF / 项目页为准；开源边界同样以项目页为准，训练代码待发布时需再核。
 
 ## 常见误区
 

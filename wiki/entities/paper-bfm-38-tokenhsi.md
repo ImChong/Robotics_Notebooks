@@ -41,7 +41,7 @@ sources:
 - 人-场景交互 task token 化；坐下/跨越等是结构化事件。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#38/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

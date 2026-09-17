@@ -14,7 +14,7 @@ summary: "机器人从人类视频学操作，要跨越具身差距。人在做�
 
 # EgoMI
 
-**EgoMI: Learning Active Vision and Whole-Body Manipulation from Egocentric Human Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**EgoMI: Learning Active Vision and Whole-Body Manipulation from Egocentric Human Demonstrations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ EgoMI 要：把**头部主动运动**显式建模，并用**记忆**应对视角
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ EgoMI 要：把**头部主动运动**显式建模，并用**记忆**应对视角
 - 证据形态是对照而非绝对指标：在带可动相机头的双臂机器人上，**显式建模头部运动的策略持续优于基线**。
 - 适用边界写得很直白——迁移目标是 **半人形（双臂 + 可动头）**，本页并未把结论外推到全身人形。
 - 与 Vision in Action、Learning to Look 等主动感知工作同向，EgoMI 的独特处在于主动视觉是 **作为演示数据的一部分被采集和模仿**，而不只是机器人侧的一个控制模块。
-- 本页为深读笔记编译的索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-differentiable-reachability-maps-for-op.md
-summary: "Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation
 
-**Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion
 
 ## 结论
 
-**本页是「可微可达性映射」这篇工作的占位索引节点：它现在能提供的是图谱位置与溯源入口，而不是可引用的方法结论。**
+**本页是「可微可达性映射」这篇工作的待读条目节点：它现在能提供的是分类位置与溯源入口，而不是可引用的方法结论。**
 
 - 页面可确认的信息只有三项：分类 14_Human_Motion、arXiv 2508.11275、深读状态「待撰写」；标题给出的唯一机制线索是把可达性映射做成可微形式、服务于基于优化的人形运动生成。
-- 适用边界很窄：可当检索入口与知识图谱占位用，不能当技术判断依据——本页「实验与评测」已明确量化 benchmark、消融与实机指标都要等深读笔记完成后才补。
-- 主要风险是把占位页误读成结论页；升格触发点是 PROGRESS.md 上的深读笔记落地，届时应改链笔记站并重写正文，向上仍挂在 [paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)。
+- 适用边界很窄：可当检索入口与知识待读条目用，不能当技术判断依据——本页「实验与评测」已明确量化 benchmark、消融与实机指标都要等深读笔记完成后才补。
+- 主要风险是把待读条目误读成结论页；深读笔记完成后本页会补上笔记链接并重写，分类入口仍是 [paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
+- 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

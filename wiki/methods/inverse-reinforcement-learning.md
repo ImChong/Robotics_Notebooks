@@ -141,7 +141,7 @@ BC 走 `D → π` 的捷径；IRL 多一圈 `D → r → π`，贵在内环 RL�
 | 只要「像 MoCap」的风格项，任务奖励另写 | [AMP](./amp-reward.md) | 指望 AMP 恢复任务意图 |
 | 奖励能手写且仿真便宜 | 直接 [RL](./reinforcement-learning.md) | 用 IRL 给本可手写的项 |
 
-2024–2026 操作主线是 BC / ACT / Diffusion，不是 IRL。IRL 仍出现在：**意图推断**、**奖励迁移**、对抗风格先验（AMP 族）、以及把世界模型当奖励的工作（索引级节点 [IRL-VLA](../entities/paper-sa-2508-06571-irl-vla-training-an-vision-language-action-polic.md)）。
+2024–2026 操作主线是 BC / ACT / Diffusion，不是 IRL。IRL 仍出现在：**意图推断**、**奖励迁移**、对抗风格先验（AMP 族）、以及把世界模型当奖励的工作（清单索引页 [IRL-VLA](../entities/paper-sa-2508-06571-irl-vla-training-an-vision-language-action-polic.md)）。
 
 ### 可运行入口（步骤 2.5）
 

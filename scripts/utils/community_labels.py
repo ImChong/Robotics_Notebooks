@@ -119,15 +119,15 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
         "八大机器人控制体系分类（Eight Robot Control Paradigms Taxonomy）"
     ),
     "wiki/queries/hmi-opensource-projects-coverage.md": (
-        "开源项目本库导读（HMI Open-Source Projects Guide）"
+        "开源项目阅读导航（HMI Open-Source Projects Guide）"
     ),
     "wiki/queries/china-domestic-opensource-424-coverage.md": (
-        "国内开源全景 424 项本库导读（China Domestic Open-Source Coverage）"
+        "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage）"
     ),
     "wiki/queries/robot-perception-stack-selection-loop.md": (
         "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop）"
     ),
-    "wiki/queries/hmi-papers-coverage.md": ("论文总索引导读（HMI Papers Coverage Guide）"),
+    "wiki/queries/hmi-papers-coverage.md": ("论文总索引阅读导航（HMI Papers Coverage Guide）"),
     "wiki/queries/embodied-eval-benchmark-selection-loop.md": (
         "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop）"
     ),

@@ -42,7 +42,7 @@ HALO 解决 heavy-loaded humanoid agile motion skills。真实机器人执行任
 - HALO 用 differentiable simulation 做两阶段系统辨识。第一阶段校准名义机器人模型，减少固有 sim-to-real 差异；第二阶段识别 payload mass distribution，处理带负载后的动力学变化。
 - 论文的实验包括真实机器人上的高动态动作和负载情况。它强调，通过显式减少结构化模型误差，可以让 RL 策略在重载条件下更稳定地零样本迁移。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

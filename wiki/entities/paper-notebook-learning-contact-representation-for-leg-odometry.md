@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-contact-representation-for-leg-odometry.md
-summary: "Learning Contact Representation for Leg Odometry：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Learning Contact Representation for Leg Odometry：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Learning Contact Representation for Leg Odometry
 
-**Learning Contact Representation for Leg Odometry** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：09_State_Estimation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Learning Contact Representation for Leg Odometry** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：09_State_Estimation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Learning Contact Representation for Leg Odometry 的人形机器人学习论文�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Learning Contact Representation for Leg Odometry 的人形机器人学习论文�
 
 ## 结论
 
-**本页当前是知识图谱里的占位节点，而不是对这篇论文的归纳：它先把实体在 09_State_Estimation 下的位置占住，实质内容要等深读笔记补齐。**
+**本页当前是一条待读记录，而不是对这篇论文的归纳：它只登记了这篇属于 09_State_Estimation，实质内容要等深读笔记补齐。**
 
 - 页面可确证的只有三件事：分类归属 09_State_Estimation、PROGRESS.md 上的「待深读」状态、arXiv 编号 2606.05501；核心机制、量化指标与消融均无记录。
-- 适用边界：可用于按分类检索与占位链接，不能当作该工作的技术依据或引用来源。
+- 适用边界：可用于按分类检索与待读链接，不能当作该工作的技术依据或引用来源。
 - 主要风险是被误读成已完成的摘要；深读状态以上游 PROGRESS.md 为准，笔记撰写完成后本页需按完整索引实体重写。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
+- 分类页：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -216,7 +216,7 @@ sequenceDiagram
 
 | 维度 | 本页 RISE（酷哇） | [OpenDriveLab RISE](./paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md) | [X-Foresight](./paper-x-foresight.md) | [Latent-WAM](./paper-sa-2603-24581-latent-wam-latent-world-action-modeling-for-end.md) |
 |------|-------------------|----------------------------------------------------------------------|----------------------------------------|--------------------------------------------------------------------------------|
-| 问题 | 测试时想象预算 | 组合 WM 里做想象 RL 再上真机操作 | 驾驶 VLA 联合世界因果与动作 | 端到端驾驶的潜空间 WAM（本库索引级） |
+| 问题 | 测试时想象预算 | 组合 WM 里做想象 RL 再上真机操作 | 驾驶 VLA 联合世界因果与动作 | 端到端驾驶的潜空间 WAM（本库清单索引） |
 | 想象 | 逐步 Roll/Stop | 想象环境里更新策略 | chunk-wise 自回归未来 camera token | 固定想象策略（RISE 文中对照） |
 | 域 | NAVSIM / nuScenes | 操作 / 真机 | 车端大规模数据 | 驾驶规划 |
 | 开源 | 代码+数据，无权重 | 已开源 `OpenDriveLab/RISE` | 未开源 | 以清单/原文为准 |
@@ -241,7 +241,7 @@ sequenceDiagram
 - [Model-Based RL](../methods/model-based-rl.md) — 想象用于训练 vs 本页想象用于测试时规划
 - [V-JEPA 2](./paper-vjepa2.md) — 冻结编码器
 - [X-Foresight](./paper-x-foresight.md) — 驾驶域 Joint 世界–动作对照
-- [Latent-WAM](./paper-sa-2603-24581-latent-wam-latent-world-action-modeling-for-end.md) — NAVSIM v2 表中的固定想象基线（索引级）
+- [Latent-WAM](./paper-sa-2603-24581-latent-wam-latent-world-action-modeling-for-end.md) — NAVSIM v2 表中的固定想象基线（清单索引）
 - [OpenDriveLab RISE](./paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md) — **同名不同文**
 - [端到端自动驾驶十大算法技术地图](../overview/e2e-autonomous-driving-top10-algorithms.md) — 驾驶 E2E 阅读坐标（本页不在原十篇名单内）
 

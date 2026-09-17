@@ -91,7 +91,7 @@ flowchart LR
 | **imagine-and-rank** | 多候选想象再排序；间接 |
 | **地面室内 VLN 四范式** | 见 [VLN 开源复现路径](../overview/vln-open-source-repro-paradigms.md)；WorldVLN 聚焦 **UAV + WAM**，与 Habitat/R2R 离散栈互补 |
 
-## 实验要点（索引级）
+## 实验要点
 
 - **基准：** 项目页展示 **室外（UAV-Flow）** 与 **室内（IndoorUAV）** 仿真，以及 **室内外真机** 部署视频；论文摘要报告相对 **Vision-Language-Action 基线** **成功率提升 12%+**，困难样本优势更大（具体表格以 PDF 为准）。
 - **分析轴（项目页 Training Analysis）：** WAM 是否比 VLA **更易学**、**自回归** 是否必要、**Action-aware GRPO** 相对纯 SFT 的增益（含定性「更直接改善动作执行」表述）。

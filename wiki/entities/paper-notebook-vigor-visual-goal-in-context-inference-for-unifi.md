@@ -14,7 +14,7 @@ summary: "VIGOR 提出了一个统一的人形机器人跌落安全框架，将�
 
 # VIGOR
 
-**VIGOR: Visual Goal-In-Context Inference for Unified Humanoid Fall Safety** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**VIGOR: Visual Goal-In-Context Inference for Unified Humanoid Fall Safety** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ VIGOR 提出了一个统一的人形机器人跌落安全框架，将跌落避�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -51,7 +51,7 @@ VIGOR 提出了一个统一的人形机器人跌落安全框架，将跌落避�
 
 - 关键机制是 **单一视觉条件策略** 统一三阶段——避障 / 缓冲 / 起身不再需要分别训练再靠状态机拼接，减少了阶段切换处的失配风险。
 - 能力来源同时也是边界：本页强调的场景是复杂非结构化地形下的零样本跌落保护，依赖视觉输入；视觉退化或超出该地形分布时的表现本页未涉及。
-- 本页为 **策展索引级** 摘要，量化 benchmark、消融与实机指标均未展开，须以深读笔记与论文 PDF 为准。
+- 本页为 **策展清单索引** 摘要，量化 benchmark、消融与实机指标均未展开，须以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

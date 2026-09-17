@@ -65,7 +65,7 @@ summary: "对齐配置密度与轨迹潜变量分布的 TAMP 数据生成，使�
 |----|----------|
 | 要点 | 三桌面 + 布料折叠：DATAFARM 56.7%，raw TAMP 8.3%，人工遥操 61.7%；OOD 可变形物体微调后 85%。 |
 
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
 ## 与其他工作对比
 

@@ -14,7 +14,7 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 
 # Coordinated Humanoid Manipulation with Choice Policies
 
-**Coordinated Humanoid Manipulation with Choice Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Coordinated Humanoid Manipulation with Choice Policies** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 - 本页点名的经验性发现是 **手眼协调对长时程任务成功至关重要**，提示全身操作策略应显式建模视觉与手部动作的耦合，而不是只把它当作附带的观测通道。
 - 适用边界：结论来自洗碗机装载与擦白板两个真实任务，属家务尺度的全身移动操作；跨任务、跨本体的推广性本页未给出证据。
 - 与 HiWET、Learning Humanoid End-Effector Control 等末端跟踪工作的对照：后者以臂末端跟踪本身为目标，本文把末端跟踪降级为遥操作接口的一个子模块，重心放在全身协调与策略形式上。
-- 本页为索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

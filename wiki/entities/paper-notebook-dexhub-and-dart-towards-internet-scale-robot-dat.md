@@ -14,7 +14,7 @@ summary: "构建通才机器人系统受制于多样高质量数据的稀缺。�
 
 # DexHub and DART
 
-**DexHub and DART: Towards Internet Scale Robot Data Collection** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DexHub and DART: Towards Internet Scale Robot Data Collection** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ DexHub/DART 要：用**云仿真 + AR 众包**采集，建**公共数据库**，
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ DexHub/DART 要：用**云仿真 + AR 众包**采集，建**公共数据库**，
 - DexHub 是"意在成为"公共仓库，属于目标而非既成事实：数据库的价值随社区参与规模放大，因此本工作的成败与其说在方法，不如说在生态。
 - 对人形尤其友好的原因是硬件稀缺：绕开本体即可采集，把瓶颈从机器人数量转移到云与人力。
 - 定位对照：与 ARMADA（AR 无机器人采集）思路相通、规模更大，两者同属"降低采集硬件依赖"这条线。
-- 适用边界：本页为深读笔记编译的索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
+- 适用边界：本页为深读笔记编译的笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 

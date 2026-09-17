@@ -140,7 +140,7 @@ sequenceDiagram
 - **最短路径：** 配 `GOOGLE_API_KEY` → 跑通 Perception 三阶段或 Prediction 两阶段。
 - **换模型：** 按 jsonl 生成到 `outputs/<model>/`，复用 judge 阶段比较 Gap。
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径（以论文 / README 为准） |
 |----|--------------------------------|

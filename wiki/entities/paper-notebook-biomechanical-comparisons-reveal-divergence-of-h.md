@@ -14,7 +14,7 @@ summary: "GDAF 提出一个与控制器无关、面向生物力学的评估框�
 
 # Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits
 
-**Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：05_Locomotion）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ GDAF 提出一个与控制器无关、面向生物力学的评估框架，把"�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ GDAF 提出一个与控制器无关、面向生物力学的评估框架，把"�
 - 0.5–1.85 m/s 共 28 个速度档的连续扫描是关键设计：偏离是否随速度系统性变化，只有扫描才看得出来，单速度点评测无法支撑该结论。
 - 适用边界要留意：被测对象是一个 SOTA RL 人形控制器，结论指向这类控制器的倾向而非所有步态方案；框架本身与控制器无关，可复用到其他策略上。
 - 它的定位是评测框架而非控制方法——能诊断差距，但不提供缩小差距的手段。
-- 本页为策展索引级摘要，指标定义与量化结果以深读笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，指标定义与量化结果以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

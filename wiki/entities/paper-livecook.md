@@ -119,7 +119,7 @@ sequenceDiagram
 | 竞赛入门 | 先按 [ai_coach_cooking_2026](https://github.com/varworkshop/ai_coach_cooking_2026) 下载 CaptainCook4D 并抽帧，再对接同一 `eval.py` |
 | 复现 LiveMamba | **无官方训练仓**；需自建 streaming 训练管线并自行实现 ICAug/CFAug |
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
 | 维度 | LiveCook / LiveMamba | Turn-based VLM 教练 | 离线视频字幕/步骤生成 |
 |------|---------------------|---------------------|----------------------|

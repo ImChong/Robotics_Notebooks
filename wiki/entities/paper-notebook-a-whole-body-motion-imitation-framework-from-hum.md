@@ -10,12 +10,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_a-whole-body-motion-imitation-framework-from-hum.md
-summary: "A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot
 
-**A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -31,8 +31,8 @@ A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid R
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -49,15 +49,15 @@ A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid R
 
 ## 结论
 
-**本页当前提供的是「图谱占位」而不是论文解读：它把这条 04_Loco-Manipulation_and_WBC 条目挂进知识库以保持检索连通，实质技术判断要等深读笔记落地。**
+**本页当前提供的是「待读条目」而不是论文解读：它把这条 04_Loco-Manipulation_and_WBC 条目挂进知识库以保持检索连通，实质技术判断要等深读笔记落地。**
 
 - 页面已确认的信息仅有分类（04_Loco-Manipulation_and_WBC）、深读状态与计划文件夹路径；从人类数据做全身动作模仿的具体机制、量化 benchmark 与实机指标均尚未记录。
-- 适用边界很窄：可用于交叉检索与图谱完整性，不能作为该论文技术结论的引用依据。
-- 升格条件明确——progress.json 中该条目的深读笔记完成后，本页应链向笔记站并重写为完整索引实体。
+- 适用边界很窄：可用于按分类检索，不能作为该论文技术结论的引用依据。
+- 深读笔记完成后，本页会补上笔记链接与实质要点。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

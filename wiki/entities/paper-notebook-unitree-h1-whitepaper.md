@@ -16,7 +16,7 @@ summary: "Unitree H1 是全球首款能够完成原地后空翻的全尺寸电�
 
 # Unitree H1 Humanoid Robot Whitepaper & Specifications
 
-**Unitree H1 Humanoid Robot Whitepaper & Specifications** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Unitree H1 Humanoid Robot Whitepaper & Specifications** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：12_Hardware_Design）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -44,7 +44,7 @@ Unitree H1 是全球首款能够完成原地后空翻的全尺寸电驱动人形
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ Unitree H1 是全球首款能够完成原地后空翻的全尺寸电驱动人形
 
 - 起作用的是 **自研高扭矩密度电机 + 较强机载算力** 这一组合：前者支撑后空翻这类高爆发全身动作，后者让它能承载具身智能的在机实验，这也是它成为科研「国民级」平台的直接原因。
 - 引用边界：本页归入 12_Hardware_Design，合适的用法是作为实验本体与硬件前提（配套 SDK 入口见 frontmatter `code` 字段），而不是当成方法论工作来对比。
-- 本页仍是 **索引级实体**：具体规格数字、量化指标与详细机制未展开，须以深读笔记与白皮书原文为准。
+- 本页仍是 **清单索引实体**：具体规格数字、量化指标与详细机制未展开，须以深读笔记与白皮书原文为准。
 
 ## 与其他页面的关系
 

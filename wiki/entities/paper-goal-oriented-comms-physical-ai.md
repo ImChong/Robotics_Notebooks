@@ -58,7 +58,7 @@ summary: "Goal-Oriented Comms for Physical AI（arXiv:2609.15895）：用 3D 框
 ## 实验与评测
 
 - 系统级时延/带宽/任务成功率；以 testbed 论文为准。
-- **读法：** 索引级摘要；逐项对照与 baseline 以原文 PDF 为准。
+- **读法：** 清单摘要；逐项对照与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
 

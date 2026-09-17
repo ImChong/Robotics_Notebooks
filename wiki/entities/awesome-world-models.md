@@ -55,7 +55,7 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 
 - **技术地图（全部分组表）：** [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - **目录 source：** [sun_awesome_wm_catalog.md](../../sources/papers/sun_awesome_wm_catalog.md)
-- **命名：** 新建索引级实体为 `wiki/entities/paper-sa-*`；若库内已有同 arXiv 的 `paper-*` canonical 页则复用。
+- **命名：** 新建清单索引页为 `wiki/entities/paper-sa-*`；若库内已有同 arXiv 的 `paper-*` canonical 页则复用。
 
 ## 核心结构（怎么读）
 
@@ -75,7 +75,7 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 
 ## 关联页面
 
-- [VLA / 世界模型 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — LaDi-WM / RISE / PointWorld 已从索引级升格
+- [VLA / 世界模型 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — LaDi-WM / RISE / PointWorld 已从清单索引升级为独立深读页
 - [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 清单论文 → 独立详情节点
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合世界–动作范式
 - [Generative World Models](../methods/generative-world-models.md) — 生成式 / 视频世界模型方法页

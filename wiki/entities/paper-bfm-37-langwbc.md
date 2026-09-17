@@ -41,7 +41,7 @@ sources:
 - 语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#37/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

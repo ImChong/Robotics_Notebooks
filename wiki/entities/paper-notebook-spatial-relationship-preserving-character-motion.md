@@ -14,7 +14,7 @@ summary: "本文提出一种编辑与重定向运动的新方法，专门针对�
 
 # Spatial Relationship Preserving Character Motion Adaptation
 
-**Spatial Relationship Preserving Character Motion Adaptation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Spatial Relationship Preserving Character Motion Adaptation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -65,7 +65,7 @@ summary: "本文提出一种编辑与重定向运动的新方法，专门针对�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ summary: "本文提出一种编辑与重定向运动的新方法，专门针对�
 - 保空间关系与减少穿插是同一个优化的两个产物，而不是两道后处理——这是它相对朴素编辑/重定向的核心差异。
 - 适用边界要说清：它做的是 **运动学层面** 的编辑与重定向，不含物理仿真与控制，产出是动画而非可执行控制器。
 - 对当代的价值在思想源头：呼应本仓 04 的 PAIR（接触/关系保持的交互重定向），也为「接触/关系保持」的数据生成提供了早期范式。
-- 本页为 **深读笔记编译** 的索引级摘要，算法细节与结果以笔记页和论文 PDF 为准。
+- 本页为 **深读笔记编译** 的笔记摘要，算法细节与结果以笔记页和论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -11,12 +11,12 @@ related:
   - ./paper-spark-skeleton-aligned-retargeting.md
 sources:
   - ../../sources/papers/humanoid_pnb_spark.md
-summary: "SPARK（安全自主与遥操作工具箱）：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。勿与 arXiv:2603.11480 骨架对齐重定向 SPARK 混淆。"
+summary: "SPARK（安全自主与遥操作工具箱）：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。勿与 arXiv:2603.11480 骨架对齐重定向 SPARK 混淆。"
 ---
 
-# SPARK（安全自主工具箱 · Paper Notebooks 占位）
+# SPARK（安全自主工具箱 · Paper Notebooks 待读）
 
-**SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 > **同名消歧：** 动力学重定向论文 [SPARK: Skeleton-Parameter Aligned Retargeting](./paper-spark-skeleton-aligned-retargeting.md)（arXiv:2603.11480）是另一工作，见该实体页。
 
@@ -34,8 +34,8 @@ SPARK 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -52,7 +52,7 @@ SPARK 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 结论
 
-**本页是 SPARK 的占位子节点：它标记的是一个「工具箱」类条目——安全自主与遥操作的工程基础设施，而非一篇给出新方法结论的论文页。**
+**本页是 SPARK 的待读条目：它标记的是一个「工具箱」类条目——安全自主与遥操作的工程基础设施，而非一篇给出新方法结论的论文页。**
 
 - 页面上唯一确定的信息是归类与计划路径：分类 04_Loco-Manipulation_and_WBC、计划文件夹 `papers/04_Loco-Manipulation_and_WBC/SPARK__A_Toolbox_for_Safe_Humanoid_Autonomy_and_Teleoperation`，深读状态仍为「待撰写」。
 - 适用边界：可用于分类检索与交叉链接，不可当作工具箱能力、接口或安全保证的依据——本页未给出任何模块说明与量化结果。
@@ -60,7 +60,7 @@ SPARK 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 同名消歧：[SPARK（骨架对齐重定向）](./paper-spark-skeleton-aligned-retargeting.md)
 

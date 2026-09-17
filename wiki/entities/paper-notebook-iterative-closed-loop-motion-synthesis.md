@@ -14,7 +14,7 @@ summary: "物理人形跟踪策略训练受限于「数据集难度上限」—�
 
 # Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control
 
-**Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "物理人形跟踪策略训练受限于「数据集难度上限」—�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -51,7 +51,7 @@ summary: "物理人形跟踪策略训练受限于「数据集难度上限」—�
 
 - 闭环的四个环节缺一不可——文本→动作扩散合成、控制器训练、多模态 Agent 失败诊断、提示词进化；其中诊断与提示词进化才是把「控制器现在打不过什么」翻译回数据生成的接口，也是它区别于一次性合成数据集的地方。
 - 它针对的是动捕数据「昂贵 + 难度分布固定」这个上限问题，覆盖武术、舞蹈、格斗、体育、体操五大专业动作域，属于用生成数据扩能力边界而非改跟踪算法。
-- 边界：本页为索引级摘要，且条目归在 13_Physics-Based_Animation——结论目前落在物理仿真人形跟踪，真机迁移与量化指标需回到深读笔记与论文 PDF。
+- 边界：本页为笔记摘要，且条目归在 13_Physics-Based_Animation——结论目前落在物理仿真人形跟踪，真机迁移与量化指标需回到深读笔记与论文 PDF。
 
 ## 与其他页面的关系
 

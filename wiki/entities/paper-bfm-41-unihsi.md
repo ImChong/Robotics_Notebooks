@@ -38,7 +38,7 @@ contact chain 组织交互；任务难在接触顺序而非单姿态。
 - contact chain 组织交互；任务难在接触顺序而非单姿态。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#41/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -64,7 +64,7 @@ contact chain 组织交互；任务难在接触顺序而非单姿态。
 
 - 它归在 **05 Hierarchical control**：上层（语言/规划器/扩散）调用已封装的底层全身能力，contact chain 就是这里的命令空间；命令空间、时序与安全层的设计决定上层能否稳定用身体。
 - 归因提醒同样适用：链条描述得再好，执行不下去时瓶颈通常在 **底层跟踪鲁棒性**，而非上层 token 或链式表示本身。
-- 本页为索引级坐标（awesome-bfm #41/41，2023 · ICLR，代码 <https://github.com/OpenRobotLab/UniHSI>）；量化 benchmark、消融与实机指标以原文 PDF / 项目页为准。
+- 本页为清单坐标（awesome-bfm #41/41，2023 · ICLR，代码 <https://github.com/OpenRobotLab/UniHSI>）；量化 benchmark、消融与实机指标以原文 PDF / 项目页为准。
 
 ## 常见误区
 

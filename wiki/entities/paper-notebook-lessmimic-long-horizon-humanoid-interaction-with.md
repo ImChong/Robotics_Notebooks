@@ -15,7 +15,7 @@ summary: "LessMimic 用距离场（Distance Field, DF）作为统一的交互表
 
 # LessMimic
 
-**LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -44,7 +44,7 @@ LessMimic 用距离场（Distance Field, DF）作为统一的交互表征——�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ LessMimic 用距离场（Distance Field, DF）作为统一的交互表征——�
 - 真正起作用的机制是距离场（Distance Field）作为统一交互表征：不同物体、不同技能共享同一套输入描述，因而不必为每个任务准备参考轨迹。
 - 两个可对照的能力口径是尺度鲁棒性（0.4×～1.6× 尺度变化下单策略仍可用）与长时序组合（最长 40 个连续技能）。
 - 「不依赖运动参考」是它相对 mimic 系方法的核心区分点：省掉了参考数据这一环，代价与收益都要落在表征设计上。
-- 边界：本页是索引级实体，消融、成功率与实机指标一律以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)），本页不构成可引用的评测证据。
+- 边界：本页是清单索引实体，消融、成功率与实机指标一律以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)），本页不构成可引用的评测证据。
 
 ## 与其他页面的关系
 

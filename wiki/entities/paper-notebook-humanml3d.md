@@ -17,7 +17,7 @@ summary: "HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之�
 
 # Generating Diverse and Natural 3D Human Motions from Textual Descriptions
 
-**Generating Diverse and Natural 3D Human Motions from Textual Descriptions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Generating Diverse and Natural 3D Human Motions from Textual Descriptions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -49,7 +49,7 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -59,7 +59,7 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 - 影响力体现在被持续沿用——[MoLingo](./paper-molingo.md) 仍以 HumanML3D 为训评锚点，并在其上扩展 MARDM-67 / MS-272 / TMR-263 等多协议对照。
 - 使用时注意评测协议并不唯一：跨论文比较 FID 等指标前需先对齐协议，否则数字不可直接并列。
 - 检索定位上与 [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) 分工明确：那边是文献索引，本页是数据集本体。
-- 本页为策展索引级摘要，详细机制待从深读笔记消化，量化 benchmark 以笔记与论文 PDF 为准。
+- 本页为策展笔记摘要，详细机制待从深读笔记消化，量化 benchmark 以笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

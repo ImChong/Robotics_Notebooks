@@ -10,12 +10,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_whole-body-model-predictive-control-of-legged-ro.md
-summary: "Whole-Body Model-Predictive Control of Legged Robots with MuJoCo：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Whole-Body Model-Predictive Control of Legged Robots with MuJoCo：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Whole-Body Model-Predictive Control of Legged Robots with MuJoCo
 
-**Whole-Body Model-Predictive Control of Legged Robots with MuJoCo** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Whole-Body Model-Predictive Control of Legged Robots with MuJoCo** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -31,8 +31,8 @@ Whole-Body Model-Predictive Control of Legged Robots with MuJoCo 的人形机器
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -49,15 +49,15 @@ Whole-Body Model-Predictive Control of Legged Robots with MuJoCo 的人形机器
 
 ## 结论
 
-**本页目前只是图谱里的占位节点：题名指向「以 MuJoCo 作为动力学后端做腿足机器人全身 MPC」这条工程路线，但页面本身尚未给出任何方法细节或结果。**
+**本页目前只是待读条目：题名指向「以 MuJoCo 作为动力学后端做腿足机器人全身 MPC」这条工程路线，但页面本身尚未给出任何方法细节或结果。**
 
 - 本页可确认的只有条目级信息：分类 04_Loco-Manipulation_and_WBC、arXiv 2503.04613、发表 2025.03、深读状态「待撰写」。
 - 求解器设置、实时性预算、与学习式控制的取舍等均未涉及，不应据此页判断该路线的可行性或成本。
-- 当前职责只是维持与 [分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；实质结论待深读笔记完成后回填。
+- 当前职责只是维持与 [分类页](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；实质结论待深读笔记完成后回填。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

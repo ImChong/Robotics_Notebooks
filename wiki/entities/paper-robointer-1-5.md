@@ -117,7 +117,7 @@ flowchart TB
 
 - **数据/基准规模：** RoboInter-Data **>230k** episode · **571** 场景 · **6** 类机械臂 · **10+** 类 IR；RoboInter-VQA 约 **9** 空间 + **20** 时间类、总量约 **2.3M** 量级；新增 **RoboInter-CV** 作长程控制视频基准。
 - **VLM（Planner）：** 在 Qwen2.5-VL / LLaVA-OneVision 上微调，用 `evaluation_intermediate*.py` 评 IR 理解/生成指标（当前唯一可社区端复现的评测口径）。
-- **VLA 与 World（index-level）：** 论文报告 RoboInter-World 的未来预测可提升 VLA 动作精度、三种范式（IC-E2E / EC-E2E / Modular）各有取舍；但 VLA 权重与 World 代码待齐，**per-task 成功率尚不能社区端复现**，此处按索引级记录。
+- **VLA 与 World（index-level）：** 论文报告 RoboInter-World 的未来预测可提升 VLA 动作精度、三种范式（IC-E2E / EC-E2E / Modular）各有取舍；但 VLA 权重与 World 代码待齐，**per-task 成功率尚不能社区端复现**，此处按清单式记录。
 
 ## 源码运行时序图
 

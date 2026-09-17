@@ -55,7 +55,7 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 
 - **技术地图：** [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
 - **目录 source：** [sun_awesome_r2s2r_catalog.md](../../sources/papers/sun_awesome_r2s2r_catalog.md)
-- 新建索引级实体 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
+- 新建清单索引页 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
 
 ## 核心结构（怎么读）
 

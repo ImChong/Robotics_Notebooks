@@ -14,7 +14,7 @@ summary: "把\"电机 + 减速箱 + 控制器 + 通信延迟\"全部用一个 LS
 
 # Learning Agile and Dynamic Motor Skills for Legged Robots
 
-**Learning Agile and Dynamic Motor Skills for Legged Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Learning Agile and Dynamic Motor Skills for Legged Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "把\"电机 + 减速箱 + 控制器 + 通信延迟\"全部用一个 LS
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ summary: "把\"电机 + 减速箱 + 控制器 + 通信延迟\"全部用一个 LS
 - 训练侧的取舍是速度优先：在 RaiSim 里以神经网络代替传统刚体力学，换来高速 RL 迭代。
 - 结果覆盖三类能力（速度指令跟随、最高 1.5 m/s 奔跑、任意倒地姿态自主翻身爬起），其中奔跑比厂家 MPC 快 25%，说明学习式控制器已能在同一硬件上超过调好的传统方案。
 - 适用边界：结论建立在 ANYmal 这一具体平台的致动器辨识之上，换硬件需要重新采数据、重训致动器网络。
-- 本页为策展索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准，不要把本页当数据来源引用。
+- 本页为策展笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准，不要把本页当数据来源引用。
 
 ## 与其他页面的关系
 

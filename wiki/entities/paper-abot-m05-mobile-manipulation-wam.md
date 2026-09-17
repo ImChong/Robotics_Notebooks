@@ -103,7 +103,7 @@ flowchart TB
 | **逆动力学监督** | GT 或联合扩散噪声 | **SFT2：自 dreamed 视频条件** |
 | **主评测语境** | 桌面/通用操纵 | **RoboCasa365 移动操作 + 多榜** |
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
 |----|------------------------|
@@ -155,7 +155,7 @@ flowchart TB
 - [Riemann-1.0](./paper-riemann-1.md) — 闭源动作优先 WAM；RoboCasa365 62.6% vs 本页 54.2%，RoboTwin 同档 94.3/94.1
 - [ABot-World-0](./paper-abot-world-0.md) — 同机构交互式视频世界模型（勿与本页混淆）
 - [Loco-Manip 接触 · 05 VLA/WM](../overview/loco-manip-contact-category-05-vla-world-models.md) — 上层模型与接触结构接口
-- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
+- [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 站内对应条目页
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源

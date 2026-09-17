@@ -15,7 +15,7 @@ summary: "Being-H0 是一个在大规模人类视频上训练的灵巧视觉-语
 
 # Being-H0
 
-**Being-H0: Vision-Language-Action Pretraining from Large-Scale Human Videos** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Being-H0: Vision-Language-Action Pretraining from Large-Scale Human Videos** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ Being-H0 要：把**人手**当基础操作器，从**网络规模人类视频**
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ Being-H0 要：把**人手**当基础操作器，从**网络规模人类视频**
 - 部件级运动 token 化（毫米级重建精度）是前置条件而非附加项——离散化精度不够，灵巧性在进入 VLA 之前就已损失。
 - 数据侧靠动捕 / VR / RGB-only 视频混合出百万级运动指令集，主要论据是随模型与数据规模的良好扩展，而不是单点任务成绩。
 - 它回应的是两个具体瓶颈：合成数据的 sim-to-real 差距、遥操作演示的规模与多样性不足；与 H-RDT、In-N-On 同属「人类视频 → 灵巧操作」路线。
-- 本页为深读笔记编译的索引级摘要，真机操作的量化结果与消融以笔记页与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，真机操作的量化结果与消融以笔记页与论文 PDF 为准。
 
 ## 与其他页面的关系
 

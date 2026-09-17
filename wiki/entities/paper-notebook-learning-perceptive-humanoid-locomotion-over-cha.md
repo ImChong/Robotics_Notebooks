@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-perceptive-humanoid-locomotion-over-cha.md
-summary: "Learning Perceptive Humanoid Locomotion over Challenging Terrain：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Learning Perceptive Humanoid Locomotion over Challenging Terrain：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Learning Perceptive Humanoid Locomotion over Challenging Terrain
 
-**Learning Perceptive Humanoid Locomotion over Challenging Terrain** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Learning Perceptive Humanoid Locomotion over Challenging Terrain** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Learning Perceptive Humanoid Locomotion over Challenging Terrain 的人形机器
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Learning Perceptive Humanoid Locomotion over Challenging Terrain 的人形机器
 
 ## 结论
 
-**本页是 05_Locomotion 下的计划索引实体，价值在于占位而非归纳：真正的技术内容要等深读笔记写完才会出现。**
+**本页是 05_Locomotion 下的待读条目，价值在于待读而非归纳：真正的技术内容要等深读笔记写完才会出现。**
 
 - 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2503.00692；复杂地形感知行走的机制与实机指标均无记录。
-- 适用边界：适合按分类父节点与总索引检索时的落点，不适合作为技术依据引用。
-- 主要风险是被误读成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后本页需升格重写。
+- 适用边界：适合按分类页与总索引检索时的落点，不适合作为技术依据引用。
+- 主要风险是被误读成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后本页会重写。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

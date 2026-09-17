@@ -11,12 +11,12 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_booster-gym-an-end-to-end-rl-framework-for-human.md
   - ../../sources/repos/booster_gym.md
-summary: "Booster Gym：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Booster Gym：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Booster Gym
 
-**Booster Gym: An End-to-End RL Framework for Humanoid Robot Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Booster Gym: An End-to-End RL Framework for Humanoid Robot Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -32,8 +32,8 @@ Booster Gym 的人形机器人学习论文条目，当前处于 Paper Notebooks 
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -50,16 +50,16 @@ Booster Gym 的人形机器人学习论文条目，当前处于 Paper Notebooks 
 
 ## 结论
 
-**本页深读状态仍是占位，但它已经不是孤立节点：Booster Gym 在本库中先以「被别人用作底层」的身份获得了存在感。**
+**本页深读状态仍是待读，但它已经不是孤立节点：Booster Gym 在本库中先以「被别人用作底层」的身份获得了存在感。**
 
 - 唯一有实质分量的线索来自下游引用——[RAVEN](./paper-raven-rl-adaptive-visibility-graph-mpc.md) 的真机导航栈以 Booster Gym 作底层 locomotion，上层再接 DAVG-cfMPC；这说明它的定位是**可被复用的端到端 RL 行走底座**，而非某个单点算法。
 - 除此之外可依赖的仅有归档信息：分类 05_Locomotion、计划文件夹路径与 <https://arxiv.org/abs/2506.15132>；框架细节、消融与实机指标待深读笔记补齐。
 - 适用边界：本页可用于按分类检索、并作为 RAVEN 一类工作的上游锚点，**不可**作为该论文技术结论的引用来源。
-- 升格条件：PROGRESS.md 中该条完成深读后，本页应链向笔记站并把占位式「一句话定义」替换为实质归纳。
+- 深读笔记完成后，本页会补上笔记链接与实质要点。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

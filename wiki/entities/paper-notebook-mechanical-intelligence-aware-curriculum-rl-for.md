@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_mechanical-intelligence-aware-curriculum-rl-for.md
-summary: "Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation
 
-**Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuatio
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuatio
 
 ## 结论
 
-**本页是 05_Locomotion 下的计划索引实体：仅登记了这篇「并联驱动 + 课程式 RL」工作的存在，机制与结论整体留白。**
+**本页是 05_Locomotion 下的待读条目：仅登记了这篇「并联驱动 + 课程式 RL」工作的存在，机制与结论整体留白。**
 
 - 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2507.00273；课程如何设计、并联驱动带来的机械智能如何被利用，页面均未记录。
-- 适用边界：可用于分类检索与占位链接，不能作为该工作的技术依据或引用来源。
-- 主要风险是被误读成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后应升格重写并链向笔记站。
+- 适用边界：可用于分类检索与待读链接，不能作为该工作的技术依据或引用来源。
+- 主要风险是被误读成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后本页会补上笔记链接并重写。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

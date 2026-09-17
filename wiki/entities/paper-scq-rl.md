@@ -63,7 +63,7 @@ summary: "用严格为正的 sigmoid-bounded 熵项稳定保守 Q 学习与 offl
 |----|----------|
 | 要点 | D4RL、视觉任务与四类真实机器人；one-shot 演示初始化后无需 HIL 在线改进。 |
 
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md) 与项目页；具体对照方法、任务集与逐项指标以 **原文 PDF** 为准。
 
 ## 与其他工作对比
 

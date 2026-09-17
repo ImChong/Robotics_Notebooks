@@ -13,12 +13,12 @@ sources:
   - ../../sources/papers/humanoid_pnb_softmimic-learning-compliant-whole-body-control.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
-summary: "SoftMimic：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "SoftMimic：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # SoftMimic
 
-**SoftMimic: Learning Compliant Whole-body Control from Examples** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**SoftMimic: Learning Compliant Whole-body Control from Examples** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -35,8 +35,8 @@ SoftMimic 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 ## 为什么重要
 
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **I 柔顺与接触**（60/64）：接触：柔顺全身控制也在成为 tracking 条件。
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -53,15 +53,15 @@ SoftMimic 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 ## 结论
 
-**本页目前是双索引下的占位节点：SoftMimic 在运动小脑技术地图里已有明确定位，但论文自身的机制归纳仍待深读笔记补齐。**
+**本页目前是双索引下的待读条目：SoftMimic 在运动小脑技术地图里已有明确定位，但论文自身的机制归纳仍待深读笔记补齐。**
 
 - 已确认的定位是：[运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 将其归入 **I 柔顺与接触**（60/64），对应「柔顺全身控制也在成为 tracking 条件」这一趋势判断。
 - 其余均为策展元数据：分类 14_Human_Motion、arXiv 2510.17792、深读笔记待撰写。
-- 页面的作用是保持知识图谱完整；机制、实验与适用边界须等深读笔记完成后回填，此前不宜作为技术结论引用。
+- 页面的作用是让你能按分类找到它；机制、实验与适用边界须等深读笔记完成后回填，此前不宜作为技术结论引用。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
+- 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 关联页面

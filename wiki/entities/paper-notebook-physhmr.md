@@ -14,7 +14,7 @@ summary: "把 HMR 从\"先估姿态、再做物理后修\"的两段式拼接，�
 
 # PhysHMR
 
-**PhysHMR: Learning Humanoid Control Policies from Vision for Physically Plausible Human Motion Reconstruction** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**PhysHMR: Learning Humanoid Control Policies from Vision for Physically Plausible Human Motion Reconstruction** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：13_Physics-Based_Animation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "把 HMR 从\"先估姿态、再做物理后修\"的两段式拼接，�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ summary: "把 HMR 从\"先估姿态、再做物理后修\"的两段式拼接，�
 - 全局对齐刻意做成「软」的：不强拟合绝对 3D 位置，而以射线约束保留深度歧义的自由度，把最终解交给物理与运动先验裁决。
 - 输出直接是物理仿真中可执行的动作，省掉了两段式里「物理后修」那一段；相应地，结果好坏与仿真环境的保真度绑定。
 - 定位属 13_Physics-Based_Animation，是「视频 → 物理可执行人体动作」这条链路上的工作，而非直接面向真机的控制策略。
-- 本页为策展索引级实体：量化 benchmark、消融与实机指标未在此给出，须以深读笔记与论文 PDF 为准。
+- 本页为策展清单索引实体：量化 benchmark、消融与实机指标未在此给出，须以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -14,7 +14,7 @@ summary: "从单张彩色图恢复 3D 人-物交互（HOI）很难：深度歧�
 
 # PICO
 
-**PICO: Reconstructing 3D People In Contact with Objects** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**PICO: Reconstructing 3D People In Contact with Objects** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ PICO 要：泛化到**自然图像 + 新物体类**的 3D HOI 重建。
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ PICO 要：泛化到**自然图像 + 新物体类**的 3D HOI 重建。
 - 数据侧的降本手法本身就是贡献：视觉基础模型检索 3D 网格 + 每补丁仅 2 次点击把 DAMON 身体接触补丁投影到物体，以最小人工换来丰富的身-物接触对应。
 - 泛化边界靠「不预知几何」换来：能处理许多现有方法覆盖不到的物体类别，但深度歧义、遮挡与物体形状外观差异这三个固有难点只是被接触约束缓解，并未消失。
 - 对本仓的价值主要不在人体重建，而在**接触先验**：双侧接触标注可为人形抓取/操作提供目标与接触监督。
-- 本页为深读笔记编译的索引级摘要，量化 benchmark 与消融以笔记页和论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化 benchmark 与消融以笔记页和论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -139,7 +139,7 @@ sequenceDiagram
 - **最短冒烟：** 按 `examples/README.md` 写 `local_video.npy` → `configs/eval/local_smoke.yaml`。
 - **完整评测：** `prepare_third_party.py` + `maniskill_wan26.yaml`（Wan2.6-i2v + 全感知）。
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
 |----|------------------------|

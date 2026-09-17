@@ -10,12 +10,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_signbot.md
-summary: "SignBot：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "SignBot：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # SignBot
 
-**SignBot: Learning Human-to-Humanoid Sign Language Interaction** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**SignBot: Learning Human-to-Humanoid Sign Language Interaction** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -31,8 +31,8 @@ SignBot 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -49,15 +49,15 @@ SignBot 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 结论
 
-**本页是 SignBot 的待深读占位节点；目前可确认的主要是一个归类判断——「人到人形的手语交互」被放进 04_Loco-Manipulation_and_WBC，而不是纯感知或语言类目。**
+**本页是 SignBot 的待读条目；目前可确认的主要是一个归类判断——「人到人形的手语交互」被放进 04_Loco-Manipulation_and_WBC，而不是纯感知或语言类目。**
 
 - 标题界定的问题是双向的手语交互，即以表达为目的的上肢/全身动作，这解释了它落在全身控制类目下的原因。
 - 深读笔记尚未撰写、「实验与评测」明确留空，本页不可作为任何量化指标或实机结论的出处。
-- 核心信息表未给 arXiv 行，深读状态与计划文件夹以 progress.json 为准；上溯路径为 [04_Loco-Manipulation_and_WBC 分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)。
+- 核心信息表未给 arXiv 行，深读状态与计划文件夹以 progress.json 为准；上溯路径为 [04_Loco-Manipulation_and_WBC 分类页](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -14,7 +14,7 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 
 # High-Speed and Impact Resilient Teleoperation of Humanoid Robots
 
-**High-Speed and Impact Resilient Teleoperation of Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**High-Speed and Impact Resilient Teleoperation of Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：07_Teleoperation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 - 本页最值得记住的判断是 **本体硬件不可被算法替代**：带宽不足的执行器补不出抗冲击能力，这是对「算法万能」叙事的直接反例。
 - 适用边界绑定在 **Nadia 这一特定本体与执行器方案** 上：换成低带宽传动的平台，同一套动捕 + 流式链路未必能复现高速表现。
 - 下游价值可能大于遥操作本身：高速抗冲击让「动态、接触丰富」的演示采集成为可能，直接服务后续学习类方法的数据侧。
-- 本页为 **深读笔记索引实体**，量化 benchmark 与实机指标以笔记页与论文 PDF 为准（见 [参考来源](#参考来源)）。
+- 本页为 **笔记摘要**，量化 benchmark 与实机指标以笔记页与论文 PDF 为准（见 [参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 

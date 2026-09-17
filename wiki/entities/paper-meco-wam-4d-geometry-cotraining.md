@@ -107,7 +107,7 @@ flowchart TB
 | **因果性** | 易 future leak | **read-mask + asymmetric visibility** |
 | **算力** | 高 | **与 base WAM 同延迟** |
 
-## 实验要点（索引级）
+## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
 |----|------------------------|

@@ -14,7 +14,7 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 
 # Humanoid Hanoi
 
-**Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -68,7 +68,7 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 - 起作用的机制是 **DAgger 式数据聚合**——把域随机化下的闭环技能执行 rollout 回灌进共享 WBC 的训练，而不是换一个更强的控制器结构。
 - 关键取舍在接口设计：一个任务无关 WBC 服务所有技能，换来技能组合的统一闭环接口，代价就是必须显式覆盖组合分布。
 - 主要失败模式已被点名：**朴素复用预训练 WBC**——单个技能好用不等于串起来好用，长时程上鲁棒性会被逐步侵蚀。
-- 评测靠自建的 **Humanoid Hanoi** 汉诺塔式长时程重排基准，仿真加 Digit V3 实测，并量化共享相对非共享基线的收益；本页为索引级摘要，具体数值以深读笔记与论文 PDF 为准。
+- 评测靠自建的 **Humanoid Hanoi** 汉诺塔式长时程重排基准，仿真加 Digit V3 实测，并量化共享相对非共享基线的收益；本页为笔记摘要，具体数值以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

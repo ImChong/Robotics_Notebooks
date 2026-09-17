@@ -14,7 +14,7 @@ summary: "人形在灵巧、平衡、行走上进步显著，但在音乐表演�
 
 # Robot Drummer
 
-**Robot Drummer: Learning Rhythmic Skills for Humanoid Drumming** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Robot Drummer: Learning Rhythmic Skills for Humanoid Drumming** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ Robot Drummer 要：把打鼓建模成可学的**定时接触序列**，让人�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ Robot Drummer 要：把打鼓建模成可学的**定时接触序列**，让人�
 - 长时程靠工程手段化解：乐曲被切成定长片段并行训练，这是能完成数分钟级多肢协调演奏的直接原因。
 - 涌现行为是额外收获而非设计目标：交叉臂击打与自适应鼓棒分配未被显式指定，说明双臂之间的分工可以交给 RL 自行发现。
 - 证据覆盖 30+ 首摇滚/金属/爵士曲目并取得高 F1；本库把它归入 06_Manipulation，视角是高动态多肢协调的试金石，与羽毛球、足球等体育任务同类。
-- 本页为深读笔记编译的索引级摘要，量化 benchmark、消融与实机指标以深读笔记和论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化 benchmark、消融与实机指标以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

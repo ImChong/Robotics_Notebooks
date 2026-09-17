@@ -17,7 +17,7 @@ summary: "LATENT 只用 5 小时、3 × 5 米小场地采集的\"业余网球动
 
 # LATENT
 
-**LATENT: Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**LATENT: Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -46,7 +46,7 @@ LATENT 只用 5 小时、3 × 5 米小场地采集的"业余网球动作碎片"�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -56,7 +56,7 @@ LATENT 只用 5 小时、3 × 5 米小场地采集的"业余网球动作碎片"�
 - **Latent Action Barrier (LAB)** 是让这套结构不崩的关键约束——把策略压在动作先验分布内，等于承认 latent 空间之外的区域不可信。
 - 数据条件本身就是边界：碎片化、业余水平、小场地采集说明方法对数据质量要求很低，但技能上限也随之受先验覆盖范围限制。
 - 载体是 **Unitree G1**，检验形式是真人对打的连续回合，属交互式评测而非固定轨迹跟踪。
-- 本页为索引级实体：具体成功率、消融与实机指标以深读笔记与论文 PDF 为准。
+- 本页为清单索引实体：具体成功率、消融与实机指标以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

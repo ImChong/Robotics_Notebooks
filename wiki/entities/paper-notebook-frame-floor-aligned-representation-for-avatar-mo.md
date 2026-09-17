@@ -14,7 +14,7 @@ summary: "用头戴、朝身立体相机做第一视角动捕对 VR/AR 至关重
 
 # FRAME
 
-**FRAME: Floor-aligned Representation for Avatar Motion from Egocentric Video** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**FRAME: Floor-aligned Representation for Avatar Motion from Egocentric Video** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ FRAME 要：地面对齐 + 设备位姿与相机融合，实时高精度地预�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ FRAME 要：地面对齐 + 设备位姿与相机融合，实时高精度地预�
 - 收益集中在两处：**300 FPS 实时**，以及消除以往方法的常见伪影、真实场景下 **下肢预测** 更优；后者恰是朝身相机遮挡最重的部位，也是这套表示最该被检验的地方。
 - 适用边界：本页把 FRAME 定位为面向 **VR/AR 的第一视角动捕**，对机器人而言它是上游感知，不是控制策略。
 - 与人形的连接点在状态估计——本页把它与 ZeroWBC 等 egocentric 控制所需的状态估计放在同一条链的上游，也是「从人类视频学全身控制」的前置件。
-- 本页为深读笔记编译的索引级摘要，SOTA 对比的具体 benchmark 与数值以深读笔记与论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，SOTA 对比的具体 benchmark 与数值以深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -77,7 +77,7 @@ sequenceDiagram
 | 机制 | 重力条件化 **latent rollout** + **SIGReg** 正则 |
 | 产物 | 代码与 **Hugging Face 权重** 已开源 |
 
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md) 与项目页；具体重力区间、误差指标与基线以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md) 与项目页；具体重力区间、误差指标与基线以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 - **评的是外推不是拟合：** 分布内预测误差不足以支持本文主张，读表时须锁定 **未见重力** 那一列。
 
 ## 与其他工作对比

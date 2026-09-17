@@ -37,7 +37,7 @@ sources:
 - 代表 VLN 与大模型融合方向：无需显式地图/里程计/深度，仿真与 Turtlebot4 真机均验证可行。
 - 将导航历史建模为视频流输入 Vicuna-7B VLM，仅依赖 RGB 视频流输出前进/转向等底层动作。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -66,7 +66,7 @@ sources:
 
 - 关键机制是以 Vicuna-7B VLM 处理 RGB 视频流形式的历史，直接输出前进/转向等底层动作，代表 VLN 与大模型融合的路线。
 - 证据覆盖仿真与 Turtlebot4 真机，说明纯 RGB 输入在该设定下可行；代价是能力与算力负担都转移到了 VLM 侧。
-- 使用边界：本页为策展索引级（RSS 2024，VLN 地图 [02 算法框架](../overview/vln-category-02-algorithm-frameworks.md) #10/10），量化指标以原文为准；benchmark 提升不等于真机部署。
+- 使用边界：本页为清单索引（RSS 2024，VLN 地图 [02 算法框架](../overview/vln-category-02-algorithm-frameworks.md) #10/10），量化指标以原文为准；benchmark 提升不等于真机部署。
 
 ## 常见误区
 

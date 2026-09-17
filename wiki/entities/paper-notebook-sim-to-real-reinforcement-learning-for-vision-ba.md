@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_sim-to-real-reinforcement-learning-for-vision-ba.md
-summary: "Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids
 
-**[Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids](https://toruowo.github.io/recipe/)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：06_Manipulation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**[Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids](https://toruowo.github.io/recipe/)** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：06_Manipulation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Hu
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Hu
 
 ## 结论
 
-**本页是该 sim-to-real 灵巧操作工作的待深读占位节点：标题把三个约束叠在一起——人形本体、视觉输入、真机迁移——但本库尚未核验其中任何一条的做法。**
+**本页是该 sim-to-real 灵巧操作工作的待读条目：标题把三个约束叠在一起——人形本体、视觉输入、真机迁移——但本库尚未核验其中任何一条的做法。**
 
 - 已确定的只有分类 06_Manipulation 与正文标题给出的项目主页入口；核心信息表没有 arXiv 行，深读状态以 PROGRESS.md 为准。
 - 「实验与评测」明确留空，任何关于成功率、泛化范围或迁移代价的说法都不能引用本页。
-- 当前用途是保持图谱连通：上溯 [06_Manipulation 分类父节点](../overview/paper-notebook-category-06-manipulation.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)，细节走项目主页与原文。
+- 当前用途只是检索入口：上溯 [06_Manipulation 分类页](../overview/paper-notebook-category-06-manipulation.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)，细节走项目主页与原文。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
+- 分类页：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

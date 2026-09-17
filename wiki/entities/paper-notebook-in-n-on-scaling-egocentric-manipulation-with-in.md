@@ -14,7 +14,7 @@ summary: "第一视角（egocentric）视频是学操作策略的宝贵可扩展
 
 # In-N-On
 
-**In-N-On: Scaling Egocentric Manipulation with in-the-wild and on-task Data** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**In-N-On: Scaling Egocentric Manipulation with in-the-wild and on-task Data** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -75,7 +75,7 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 - 规模与对齐是两件事：PHSD 用 **1000+ 小时野外** 数据买规模、**20+ 小时任务对齐** 数据买对齐；后者体量很小但负责鲁棒性，这正是「只拿人类数据做简单预训练」漏掉的部分。
 - 承载载体是 **Human0**（大型语言条件流匹配策略）加域适应；论文把域适应放在必备位置，而非可选加分项——人↔人形的差距不会靠数据量自动消失。
 - 最值得注意的是涌现性质：仅凭人类数据就能听语言指令、少样本学习，说明当前瓶颈更多在 **数据配方**，而不只是机器人本体数据不够。
-- 边界：本页为索引级摘要，域差距具体缩到什么程度、量化 benchmark 与消融均以深读笔记和论文 PDF 为准。
+- 边界：本页为笔记摘要，域差距具体缩到什么程度、量化 benchmark 与消融均以深读笔记和论文 PDF 为准。
 - 谱系上与 Dexterity from Smart Lenses、EgoDex 同属「第一视角数据规模化」路线，差别在本文补的是 **使用配方** 而非又一个采集设备。
 
 ## 与其他页面的关系

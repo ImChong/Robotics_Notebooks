@@ -157,7 +157,7 @@ GRAIL 的评测重点在「生成数据能否规模化、能否落到真机可�
 - **作为微调混合数据：** 以 **95% GRAIL + 5% 遥操作** 混合微调 [GR00T](./paper-hrl-stack-34-gr00t_n1.md)，抓取成功率优于纯遥操作，并减少「卡在目标附近」类失败。
 - **重建质量兜底：** metric 4D HOI 依赖 GENMO / WiLoR / FoundationPose 与已知 3D 上下文的联合优化，接触/深度不合理项被惩罚；`robot/` 与 `objects/` 为 post-RL 物理可行轨迹，而非纯 kinematic retarget。
 
-> 以上为论文 / 项目页 / HF 数据集口径的索引级指标；完整设定与消融以 [arXiv:2606.05160](https://arxiv.org/abs/2606.05160) 为准。
+> 以上为论文 / 项目页 / HF 数据集口径的清单式指标；完整设定与消融以 [arXiv:2606.05160](https://arxiv.org/abs/2606.05160) 为准。
 
 ## 源码运行时序图
 

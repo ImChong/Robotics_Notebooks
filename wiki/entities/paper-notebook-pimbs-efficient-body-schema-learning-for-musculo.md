@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_pimbs-efficient-body-schema-learning-for-musculo.md
-summary: "PIMBS：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "PIMBS：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # PIMBS
 
-**PIMBS: Efficient Body Schema Learning for Musculoskeletal Humanoids** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**PIMBS: Efficient Body Schema Learning for Musculoskeletal Humanoids** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ PIMBS 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ PIMBS 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 结论
 
-**本页是 PIMBS 的占位子节点，价值在于让肌骨人形（12_Hardware_Design）这一分支在图谱里不缺项，而不是给出 body schema 学习的结论。**
+**本页是 PIMBS 的待读条目，价值在于让肌骨人形（12_Hardware_Design）这一分支不漏掉这一篇，而不是给出 body schema 学习的结论。**
 
 - 页面上唯一确定的信息是归类与计划路径：分类 12_Hardware_Design、计划文件夹 `papers/12_Hardware_Design/pimbs-efficient-body-schema-learning-for-musculo`，深读状态仍为「待撰写」。
-- 适用边界：可用于分类检索与 ingest 起点，不可当作方法或指标依据——本页未给出任何机制描述与量化结果。
+- 适用边界：可用于分类检索，不可当作方法或指标依据——本页未给出任何机制描述与量化结果。
 - 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 PROGRESS.md 与 <https://arxiv.org/abs/2506.20343>。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
+- 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

@@ -78,7 +78,7 @@ sequenceDiagram
 | 本体 | 平行夹爪 **单臂 / 双臂**；Franka 与 AgileX |
 | 真机 | **164** 个真机 episode |
 
-- **读法：** 本页为索引级摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md) 与项目页；具体对照方法、任务集与逐项成功率以 **原文 PDF** 为准（[参考来源](#参考来源)）。
+- **读法：** 本页为清单摘要，上表取自 [公众号盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md) 与项目页；具体对照方法、任务集与逐项成功率以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 - **注意 2B 这条线：** 「零样本大模型」与「小模型微调」两档同时成立，说明收益主要来自 **离散语义微动作接口**，而非某个特定底座。
 
 ## 与其他工作对比

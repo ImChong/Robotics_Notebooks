@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_robust-and-versatile-bipedal-jumping-control-thr.md
-summary: "Robust and Versatile Bipedal Jumping Control through Reinforcement Learning：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Robust and Versatile Bipedal Jumping Control through Reinforcement Learning：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Robust and Versatile Bipedal Jumping Control through Reinforcement Learning
 
-**Robust and Versatile Bipedal Jumping Control through Reinforcement Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Robust and Versatile Bipedal Jumping Control through Reinforcement Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Robust and Versatile Bipedal Jumping Control through Reinforcement Learning 的�
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Robust and Versatile Bipedal Jumping Control through Reinforcement Learning 的�
 
 ## 结论
 
-**本页是该论文的占位索引：一篇用 RL 做双足跳跃控制、同时主打「鲁棒」与「多样」的工作，但本库尚未深读其奖励设计与迁移细节。**
+**本页是该论文的待读条目：一篇用 RL 做双足跳跃控制、同时主打「鲁棒」与「多样」的工作，但本库尚未深读其奖励设计与迁移细节。**
 
 - 可确认的只有分类归属（05_Locomotion）与 arXiv 出处；核心机制、消融与实机指标全部待深读补齐。
 - 跳跃是高动态、对 Sim2Real 差异最敏感的技能之一，「鲁棒」与「多样」如何同时达成正是该被追问的地方——本页尚无答案。
-- 当前价值是图谱可检索性；引用任何跳跃距离或成功率数字前请回到论文原文。
+- 当前价值只是可检索；引用任何跳跃距离或成功率数字前请回到论文原文。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

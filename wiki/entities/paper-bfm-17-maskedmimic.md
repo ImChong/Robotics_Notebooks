@@ -42,7 +42,7 @@ sources:
 - 稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#17/41）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -73,7 +73,7 @@ sources:
 - 它归在 **goal / reference / command 条件化** 一族：目标是扩展人形可执行动作库，数据侧融合 MoCap、视频、遥操作与 HOI，控制侧看抗扰、恢复与跨参考泛化。
 - 它回答的是 BFM taxonomy 里「身体能覆盖多少目标条件技能」，而不是某条参考跟得多准；用单参考跟踪指标衡量会错配评价维度。
 - 边界不变：条件形态更灵活不等于无限技能，仍受数据分布、接触建模与实机 Sim2Real 约束——遮蔽补全放宽的是 **输入约束**，不是物理可行域。
-- 工程侧代码/项目指向 <https://github.com/NVlabs/ProtoMotions>（2024 · TOG）；本页为索引级坐标（#17/41，**02 Goal-conditioned 学习**），量化 benchmark 与实机指标以原文 PDF 为准。
+- 工程侧代码/项目指向 <https://github.com/NVlabs/ProtoMotions>（2024 · TOG）；本页为清单坐标（#17/41，**02 Goal-conditioned 学习**），量化 benchmark 与实机指标以原文 PDF 为准。
 
 ## 常见误区
 

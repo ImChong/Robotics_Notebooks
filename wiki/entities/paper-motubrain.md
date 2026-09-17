@@ -146,7 +146,7 @@ flowchart TB
 
 | 对照 | 差异读法 |
 |------|----------|
-| [Motus](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) | 范式前作（站内仍是 Awesome 索引级）；Motubrain 是规模与真机工程 |
+| [Motus](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) | 范式前作（站内仍是 Awesome 清单索引）；Motubrain 是规模与真机工程 |
 | 传统 VLA（π₀ / π₀.₅） | 观察→动作映射；Motubrain 显式学世界演化再出动作 |
 | [WAM 概念](../concepts/world-action-models.md) | 本页是生数线的产品级实例 |
 | Fast-WAM / Being-H0.7 / LingBot-VA | RoboTwin 表内世界模型对照，均低于全文 Motubrain |

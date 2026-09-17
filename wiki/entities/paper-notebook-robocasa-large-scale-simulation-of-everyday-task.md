@@ -14,7 +14,7 @@ summary: "AI 的进展很大程度由规模化驱动，但机器人受限于缺�
 
 # RoboCasa
 
-**RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ RoboCasa 要：用**逼真仿真 + 生成式 AI + 自动轨迹生成**，把环�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -77,7 +77,7 @@ RoboCasa 要：用**逼真仿真 + 生成式 AI + 自动轨迹生成**，把环�
 - 数据飞轮的关键在自动轨迹生成，而不在资产数量：数千 3D 资产、150+ 物体类别是分母，能以最小人力产出可训练轨迹才是分子。
 - 结论的形态是「趋势」而非「达标」：论文给出的是合成数据大规模模仿学习呈现的规模化趋势与真实任务上的前景，而不是某个任务的绝对成功率承诺。
 - 覆盖边界是以厨房为核心的日常任务，因此对人形家务落地高度相关；把结论外推到非厨房场景在本页没有依据。后续 RoboCasa365 是同一路线的放大版本。
-- 本页为深读笔记编译的索引级摘要，量化 benchmark、消融与实机指标以深读笔记和论文 PDF 为准。
+- 本页为深读笔记编译的笔记摘要，量化 benchmark、消融与实机指标以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 
@@ -91,7 +91,7 @@ RoboCasa 要：用**逼真仿真 + 生成式 AI + 自动轨迹生成**，把环�
 
 - 数值与消融以论文 PDF / 官方仓库为准。
 - 与相邻 VLA / 仿真 / 数据生成页交叉阅读，避免重复造页。
-- 若仅有索引级摘要，部署前必须回一手 README。
+- 若仅有笔记摘要，部署前必须回一手 README。
 
 ## 参考来源
 

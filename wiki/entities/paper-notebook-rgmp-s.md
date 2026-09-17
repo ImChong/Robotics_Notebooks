@@ -14,7 +14,7 @@ summary: "RGMP-S 把\"人形机器人做长程操作\"拆成两段：上层让 V
 
 # Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation
 
-**Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ RGMP-S 把"人形机器人做长程操作"拆成两段：上层让 VLM 在轻量
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ RGMP-S 把"人形机器人做长程操作"拆成两段：上层让 VLM 在轻量
 - 上层真正起作用的不只是 VLM，而是给它补的**轻量级 2D 几何先验**——它把「看懂场景」落到可选技能与可拆分的子任务上。
 - 下层 RASNet 的目标很具体：在**稀疏示范**下学到时间一致的动作并抑制过拟合，这正是长程任务里最容易崩的一段。
 - 验证覆盖 ManiSkill2 仿真与 3 个真机平台，说明这套分层配方不是只在单一平台成立；但具体成功率与消融本页未给出。
-- 本页为策展索引级摘要，量化 benchmark 与实机指标以深读笔记和论文 PDF 为准。
+- 本页为策展笔记摘要，量化 benchmark 与实机指标以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

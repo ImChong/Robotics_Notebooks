@@ -122,7 +122,7 @@ flowchart TB
 - **三阶段 L-BFGS：** 重投影 → 全参数 + 鲁棒 Geman-McClure → 接触排斥/吸引 + Huber；含 shape/pose 正则与帧间关节平滑。
 - 重投影项按 **p_vis 加权、σ 归一化**，自动降权不可见或高不确定 landmark。
 
-## 实验与评测（索引级）
+## 实验与评测
 
 - **2D landmark：** MammaNet（+mask）在 RICH、Harmony4D、CHI3D、MAMMAEval-S/D、MOYO 上优于 Look-Ma* / CameraHMR。
 - **3D 拟合（MPJPE/PVE mm）：** 全面领先学术基线；双人 Harmony4D/CHI3D 增益明显。

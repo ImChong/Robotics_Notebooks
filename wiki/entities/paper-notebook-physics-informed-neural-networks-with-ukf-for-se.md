@@ -14,7 +14,7 @@ summary: "要让一台没有关节力矩传感器的人形机器人也能做力�
 
 # Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots
 
-**Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "要让一台没有关节力矩传感器的人形机器人也能做力�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ summary: "要让一台没有关节力矩传感器的人形机器人也能做力�
 - 摩擦之所以被单独挑出来学，是因为谐波减速器的非线性摩擦恰是解析模型最难刻画的部分；这也意味着方法的收益与传动形式强相关。
 - 有效性判据是力矩跟踪 RMSE：ergoCub 腿部 6 个关节落到 0.08–1.41 Nm，整体优于工业界默认基线 RNEA。
 - 证据来自 ergoCub 真机平衡实验，超出该场景（例如高动态步态或落地冲击）的表现本页无据可依。
-- 本页为 09_State_Estimation 类目下的索引级摘要，完整消融与实现细节以深读笔记和论文 PDF 为准。
+- 本页为 09_State_Estimation 类目下的笔记摘要，完整消融与实现细节以深读笔记和论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -14,7 +14,7 @@ summary: "不是又一篇新算法，而是一篇「实测对比」基准论文�
 
 # An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems
 
-**An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：09_State_Estimation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ summary: "不是又一篇新算法，而是一篇「实测对比」基准论文�
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -53,7 +53,7 @@ summary: "不是又一篇新算法，而是一篇「实测对比」基准论文�
 - 精度侧 Apple ARKit 综合最稳最准（相对位姿误差约 0.02 m/s 漂移），但 **只能跑 iOS、对 ROS / Linux 不友好**——工程取舍就卡在这一条上。
 - 另两个失败模式很具体：T265 栽在 **单目尺度漂移**，ZED 2 栽在 **旋转估计破坏正交性**；这类问题属于系统性缺陷，不是调参能绕过的。
 - 适用边界：结论绑定在被测的这四款商用闭源产品上，是选型硬证据而非关于 VIO 方法的普适结论。
-- 本页仅为策展索引级摘要，完整量化结果以 [参考来源](#参考来源) 中的深读笔记与论文 PDF 为准。
+- 本页仅为策展笔记摘要，完整量化结果以 [参考来源](#参考来源) 中的深读笔记与论文 PDF 为准。
 
 ## 与其他页面的关系
 

@@ -24,7 +24,7 @@ summary: "LaDi-WM（arXiv:2505.11528，NUDT/PKU/SZU，CoRL 2025）：DINOv2+SigL
 
 # LaDi-WM：隐空间扩散世界模型做预测式操作
 
-**LaDi-WM**（*A Latent Diffusion-based World Model for Predictive Manipulation*，[arXiv:2505.11528](https://arxiv.org/abs/2505.11528)，[项目页](https://guhuangai.github.io/LaDiWM.github.io/)，[代码](https://github.com/GuHuangAI/LaDiWM)）由 **国防科技大学 / 北京大学 / 深圳大学** 提出（CoRL 2025）：在 **DINOv2 + SigLIP** 隐空间做交互扩散动力学，用世界模型未来预测多次引导策略。Awesome World Models **第 306/571**（812 Manipulation）索引级节点在此升格为阅读主线详情。
+**LaDi-WM**（*A Latent Diffusion-based World Model for Predictive Manipulation*，[arXiv:2505.11528](https://arxiv.org/abs/2505.11528)，[项目页](https://guhuangai.github.io/LaDiWM.github.io/)，[代码](https://github.com/GuHuangAI/LaDiWM)）由 **国防科技大学 / 北京大学 / 深圳大学** 提出（CoRL 2025）：在 **DINOv2 + SigLIP** 隐空间做交互扩散动力学，用世界模型未来预测多次引导策略。Awesome World Models **第 306/571**（812 Manipulation）清单索引页在此升格为阅读主线详情。
 
 ## 一句话定义
 

@@ -101,7 +101,7 @@ flowchart TB
 
 固定规划窗 $\Delta t$ 与执行间隔 $N_{\mathrm{exec}}$；长程恢复靠** successive replan** 涌现，不要求单次预测整条跌倒–站起轨迹。底层 tracker 观测、奖励形式与训练时一致，仅将 $\mathbf{m}_t$ 换为 middleware 输出的 $\mathbf{m}'_t$。
 
-### 4）底层 tracker 与 token 设计（索引级）
+### 4）底层 tracker 与 token 设计
 
 论文 §3.3 同时升级 **通用跟踪策略**（29 DoF 观测分解、Rot6D 根误差、FSQ 运动 token 等），使中间件输出与大规模 tracking 生态兼容；细节以 [PDF](https://arxiv.org/pdf/2603.27756) 为准。
 

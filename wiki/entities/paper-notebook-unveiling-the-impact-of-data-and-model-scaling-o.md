@@ -14,7 +14,7 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 
 # Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots
 
-**Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
 
 ## 一句话定义
 
@@ -66,7 +66,7 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -76,7 +76,7 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 - 「规模化研究本身是贡献」这一定位意味着页面报告的收益（重建 MPJPE 提升 37%、文本-动作对齐 FID 提升 25%）应读作规模投入的回报证据，而不是某个模块的单点改进。
 - 适用边界在**高层控制**：数据源自人类动作视频，本页给出的指标衡量的是动作重建与文本-动作对齐质量；底层全身控制的具体表现需回到笔记与原文。
 - 数据观上与 SUGAR、UniAct 一致，语义控制上与 FRoM-W1、SENTINEL 等语言-动作工作呼应——本页把它读成人形数据飞轮的一环，而非孤立方法。
-- 本页是深读笔记的索引级编译；消融与完整 benchmark 以笔记页与论文 PDF 为准。
+- 本页是深读笔记的清单索引编译；消融与完整 benchmark 以笔记页与论文 PDF 为准。
 
 ## 与其他页面的关系
 

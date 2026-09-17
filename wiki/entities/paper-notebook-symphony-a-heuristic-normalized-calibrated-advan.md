@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_symphony-a-heuristic-normalized-calibrated-advan.md
-summary: "Symphony：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Symphony：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Symphony
 
-**Symphony: A Heuristic Normalized Calibrated Advantage Actor and Critic Algorithm in application for Humanoid Robots** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Symphony: A Heuristic Normalized Calibrated Advantage Actor and Critic Algorithm in application for Humanoid Robots** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Symphony 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Symphony 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 ## 结论
 
-**Symphony 在本库还只是一个占位索引：条目已挂进 05_Locomotion 的图谱，但「启发式归一化校准优势」的 actor-critic 究竟改了什么、换来什么，本页给不出答案。**
+**Symphony 在本库还只是一个待读条目：条目已归到 05_Locomotion 分类下，但「启发式归一化校准优势」的 actor-critic 究竟改了什么、换来什么，本页给不出答案。**
 
 - 本页可确认的只有条目级信息：分类 05_Locomotion、arXiv 2512.10477、深读状态「待撰写」。
 - 算法改动点、与标准 actor-critic 的差异、在人形上的量化收益均未涉及，不应据此页做方法选型或效果判断。
-- 当前唯一职责是避免知识图谱缺失该实体，并维持与 [分类父节点](../overview/paper-notebook-category-05-locomotion.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；深读笔记完成后本节应重写。
+- 当前唯一职责是方便你按分类找到它，并维持与 [分类页](../overview/paper-notebook-category-05-locomotion.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；深读笔记完成后本节应重写。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

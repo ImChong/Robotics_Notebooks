@@ -16,7 +16,7 @@ sources:
 
 # BABEL（BFM 行为数据）
 
-**BABEL** 列入 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 数据集表（2021 · CVPR）。本页为 **索引级** 说明；规模与许可以官方页面为准。
+**BABEL** 列入 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 数据集表（2021 · CVPR）。本页为 **清单索引** 说明；规模与许可以官方页面为准。
 
 ## 英文缩写速查
 
@@ -29,7 +29,7 @@ sources:
 - 动作语义标注，连接语言与动作。
 - BFM 数据链路的瓶颈往往在 **能否变成机器人可信、可执行、可迁移** 的训练材料，而非单纯 clip 数量（见 [BFM 技术地图](../overview/bfm-41-papers-technology-map.md) § 数据集）。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

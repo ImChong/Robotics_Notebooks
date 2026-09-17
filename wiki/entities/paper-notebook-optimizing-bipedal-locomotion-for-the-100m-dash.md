@@ -9,12 +9,12 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_optimizing-bipedal-locomotion-for-the-100m-dash.md
-summary: "Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
 # Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running
 
-**Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -30,8 +30,8 @@ Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
 ## 核心信息
 
@@ -48,15 +48,15 @@ Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running
 
 ## 结论
 
-**本页是 05_Locomotion 下的计划索引实体：只登记了这篇「百米冲刺双足运动优化 + 与人类跑步对比」的存在，优化方法与对比结论均待深读笔记补齐。**
+**本页是 05_Locomotion 下的待读条目：只登记了这篇「百米冲刺双足运动优化 + 与人类跑步对比」的存在，优化方法与对比结论均待深读笔记补齐。**
 
 - 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2508.03070；速度指标、优化目标与人机对比数据全部无记录。
-- 适用边界：可用于分类检索与图谱连边，不能作为速度成绩或人机差距的引用来源。
-- 深读状态以上游 PROGRESS.md 为准；笔记完成后本页需升格为完整索引实体并深化归纳。
+- 适用边界：可用于分类检索，不能作为速度成绩或人机差距的引用来源。
+- 深读状态以上游 PROGRESS.md 为准；笔记完成后本页需补成完整摘要并深化归纳。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
 ## 参考来源

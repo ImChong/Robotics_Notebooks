@@ -14,7 +14,7 @@ summary: "HumanoidVLM 把\"挑阻抗参数 + 选抓取角\"这件老靠手调的
 
 # HumanoidVLM
 
-**HumanoidVLM: Vision-Language-Guided Impedance Control for Contact-Rich Humanoid Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation）。本页为 **索引级实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**HumanoidVLM: Vision-Language-Guided Impedance Control for Contact-Rich Humanoid Manipulation** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
 
 ## 一句话定义
 
@@ -43,7 +43,7 @@ HumanoidVLM 把"挑阻抗参数 + 选抓取角"这件老靠手调的事，外包
 
 ## 实验与评测
 
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 结论
 
@@ -52,7 +52,7 @@ HumanoidVLM 把"挑阻抗参数 + 选抓取角"这件老靠手调的事，外包
 - 真正起作用的是两个很小的数据库（**9 个任务 + 9 个物体**）里**实验验证过的 stiffness/damping 与手指角**，由 FAISS-RAG 检索取出，直接喂给 G1 的任务空间阻抗控制器。
 - 报告指标是 14 个测试场景 **93% 命中率**——衡量的是"参数查得对不对"，不是长时程操作的成功率，读数时别放大。
 - 适用边界由数据库覆盖决定：任务或物体落在 9+9 之外时管线没有外推机制，这是最直接的失败模式。
-- 定位是接触富集人形操作里替代手调参数的**轻量管线**，价值在工程可用而非方法新颖；本页仅索引级，机制细节待从深读笔记消化。
+- 定位是接触富集人形操作里替代手调参数的**轻量管线**，价值在工程可用而非方法新颖；本页仅清单索引，机制细节待从深读笔记消化。
 
 ## 与其他页面的关系
 

@@ -33,7 +33,7 @@ sources:
 ## 为什么重要
 
 - Awesome 列表本身不是知识图谱节点；若不升格论文实体，首页/图谱无法挂上具体工作。
-- 本地图 **优先复用** 库内已有 arXiv canonical 页，仅对缺失条目新建索引级 `paper-sa-*` 节点。
+- 本地图 **优先复用** 库内已有 arXiv canonical 页，仅对缺失条目新建清单索引页 `paper-sa-*`。
 - 统计：清单可解析条目 **63**（新建详情节点 **57**，复用已有 **6**）。
 
 ## 覆盖范围
@@ -162,7 +162,7 @@ sources:
 
 ## 局限与风险
 
-- 索引级节点保留清单 Highlights，**不替代** 深度论文页；主线工作应继续升格。
+- 清单索引页保留清单 Highlights，**不替代** 深度论文页；主线工作应继续升格。
 - 清单可能含非 arXiv 链接（OpenReview / IEEE）；无 arXiv 条目以标题 slug 建节点，后续若补 arXiv 需合并去重。
 - 上游更新后需重跑 `python3 scripts/generate_sun254667_awesome_paper_entities.py` 再 `make ci-preflight`。
 
