@@ -3866,7 +3866,7 @@
 - [真机安全微调（知识链汇总）](wiki/overview/hub-safe-fine-tuning.md) — 真机安全 RL 微调** 在已有 sim2real 策略能跑的基础上，于 **真实机器人上继续在线优化**，并用 **安全集约束、低秩更新或 Recovery 策略** 限制探索导致的摔倒与硬件风 `📅unknown` `[overview_page]`
 - [Sim2Real（知识链汇总）](wiki/overview/hub-sim2real.md) — Sim2Real（Simulation to Real）** 研究如何把 **仿真里训练好的策略** 稳定迁移到真实机器人，弥合动力学、感知、延迟与接触上的分布差距。 `📅unknown` `[overview_page]`
 - [状态估计（知识链汇总）](wiki/overview/hub-state-estimation.md) — 状态估计** 从 **IMU、关节编码器、相机、LiDAR、雷达等传感器** 融合出机器人位姿、速度与接触/地形状态，是感知式 locomotion 与导航的控制输入基础。 `📅unknown` `[overview_page]`
-- [机器人系统工程（知识链汇总）](wiki/overview/hub-systems-engineering.md) — 机器人系统工程知识链** 回答：策略与控制之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界。 `📅unknown` `[overview_page]`
+- [机器人系统工程（知识链汇总）](wiki/overview/hub-systems-engineering.md) — 机器人系统工程知识链** 回答：策略与控制算法之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界在哪里。 `📅unknown` `[overview_page]`
 - [触觉与力觉（知识链汇总）](wiki/overview/hub-tactile.md) — 触觉知识链** 研究机器人如何通过 **力、触觉与接触状态** 闭环调节交互，使抓取、装配与 loco-manip 在不确定接触下仍稳定可控。 `📅unknown` `[overview_page]`
 - [视觉感知骨干（知识链汇总）](wiki/overview/hub-vision-backbone.md) — 视觉感知骨干知识链** 关注机器人策略与 VLA **上游的视觉表征**：从 CNN/ViT 骨干到检测/分割头，再到 **policy 可用的特征接口**。 `📅unknown` `[overview_page]`
 - [VLA 与基础策略（知识链汇总）](wiki/overview/hub-vla.md) — VLA（Vision-Language-Action）** 把 **视觉观测、自然语言指令与机器人动作** 统一到同一策略或基础模型中，面向多任务操作与 loco-manip 的「一个模型多种技能 `📅unknown` `[overview_page]`
