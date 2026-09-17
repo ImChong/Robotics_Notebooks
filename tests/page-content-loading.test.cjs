@@ -175,7 +175,7 @@ test('actual detail and roadmap renderers retain alias redirects and fragments',
   const redirects = [];
   h.context.window.location.replace = (href) => redirects.push(href);
   h.context.window.location.hash = '#section';
-  vm.runInContext(source.slice(source.indexOf('  function renderDetailPage('), source.indexOf('  function renderModulePage(')), h.context);
+  vm.runInContext(source.slice(source.indexOf('  function renderDetailPage('), source.indexOf('  function renderRoadmapPage(')), h.context);
   vm.runInContext(source.slice(source.indexOf('  function renderRoadmapPage('), source.indexOf('  function renderRoadmapMarkdownBody(')), h.context);
   h.context.window.location.search = '?id=old';
   h.context.renderDetailPage(data);

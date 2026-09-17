@@ -5537,110 +5537,6 @@
     });
   }
 
-  function renderModulePage(siteData) {
-    if (!siteData || !siteData.pages) return;
-
-    const pages = siteData.pages;
-    const modulePages = pages.module_pages || {};
-    const detailPages = pages.detail_pages || {};
-    const params = new URLSearchParams(window.location.search);
-    const moduleId = params.get('id') || '';
-    const modulePage = moduleId ? modulePages[moduleId] : null;
-
-    const titleEl = document.getElementById('moduleTitle');
-    const summaryEl = document.getElementById('moduleSummary');
-    const metaEl = document.getElementById('moduleMeta');
-    const entryEl = document.getElementById('moduleEntryList');
-    const referenceEl = document.getElementById('moduleReferenceList');
-    const roadmapEl = document.getElementById('moduleRoadmapList');
-    const relatedModuleEl = document.getElementById('moduleRelatedModules');
-    const emptyState = document.getElementById('moduleEmptyState');
-    const emptySection = document.getElementById('module-empty-section');
-    const breadcrumb = document.getElementById('moduleBreadcrumb');
-
-    if (!modulePage) {
-      if (emptySection) emptySection.hidden = false;
-      if (emptyState) emptyState.hidden = false;
-      if (titleEl) titleEl.textContent = '未找到对应 module page';
-      if (summaryEl) {
-        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>module.html?id=control</code>。';
-        removeLoadingState(summaryEl);
-      }
-      if (metaEl) {
-        metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 module_pages 项。</p>';
-        removeLoadingState(metaEl);
-      }
-      renderInternalLinks(entryEl, [], detailPages, { emptyText: '当前无可展示的模块入口项。' });
-      renderInternalLinks(referenceEl, [], detailPages, { emptyText: '当前无可展示的 references。' });
-      renderInternalLinks(roadmapEl, [], detailPages, { emptyText: '当前无可展示的 roadmap 入口。' });
-      renderChipList(relatedModuleEl, [], {});
-      if (breadcrumb) removeLoadingState(breadcrumb);
-      return;
-    }
-
-    if (emptySection) emptySection.hidden = true;
-    if (emptyState) emptyState.hidden = true;
-    document.title = (modulePage.title || moduleId) + ' | Robotics Notebooks';
-
-    if (titleEl) titleEl.textContent = modulePage.title || moduleId;
-    if (summaryEl) {
-      summaryEl.innerHTML = escapeHtml(modulePage.summary || '当前模块暂无摘要。');
-      removeLoadingState(summaryEl);
-    }
-    if (metaEl) {
-      metaEl.innerHTML = [
-        '<p><strong>module_id：</strong><code>' + escapeHtml(modulePage.module_id || moduleId) + '</code></p>',
-        '<p><strong>tag：</strong>' + escapeHtml(modulePage.tag || '-') + '</p>',
-        '<p><strong>入口项：</strong>' + escapeHtml((modulePage.entry_items || []).length) + '</p>',
-        '<p><strong>深挖入口：</strong>' + escapeHtml((modulePage.references || []).length) + '</p>'
-      ].join('');
-      removeLoadingState(metaEl);
-    }
-    if (breadcrumb) {
-      breadcrumb.innerHTML = [
-        '<a href="index.html">首页</a>',
-        '<span>/</span>',
-        '<span>' + escapeHtml(modulePage.title || moduleId) + '</span>'
-      ].join('');
-      removeLoadingState(breadcrumb);
-    }
-
-    renderInternalLinks(entryEl, modulePage.entry_items, detailPages, { emptyText: '当前模块暂无入口项。' });
-    renderInternalLinks(referenceEl, modulePage.references, detailPages, { emptyText: '当前模块暂无 references。' });
-    if (roadmapEl) {
-      const roadmapPages = pages.roadmap_pages || {};
-      if (Array.isArray(modulePage.roadmaps) && modulePage.roadmaps.length) {
-        var roadmapHtml = '';
-        for (var i = 0; i < modulePage.roadmaps.length; i++) {
-          var id = modulePage.roadmaps[i];
-          const page = roadmapPages[id] || {};
-          roadmapHtml += [
-            '<article class="card data-card">',
-            '  <div>',
-            '    <h3><a href="' + escapeHtml(roadmapHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
-            '    <p class="card-meta">roadmap_page</p>',
-            '    <p>' + escapeHtml(page.summary || '当前路线暂无摘要') + '</p>',
-            '  </div>',
-            '  <div class="chip-list">',
-            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(roadmapHref(id)) + '">打开路线页</a>',
-            '  </div>',
-            '</article>'
-          ].join('');
-        }
-        roadmapEl.innerHTML = roadmapHtml;
-      } else {
-        roadmapEl.innerHTML = '<article class="card"><p>当前模块暂无 roadmap 入口。</p></article>';
-      }
-      removeLoadingState(roadmapEl);
-    }
-    renderChipList(relatedModuleEl, modulePage.related_modules, {
-      renderItem: function (id) {
-        const relatedModule = modulePages[id] || {};
-        return '<a class="data-chip" href="' + escapeHtml(moduleHref(id)) + '">' + escapeHtml(relatedModule.title || id) + '</a>';
-      }
-    });
-  }
-
   function renderRoadmapPage(siteData) {
     if (!siteData || !siteData.pages) return;
 
@@ -5808,232 +5704,6 @@
       removeLoadingState(contentEl);
     }
     syncRoadmapStagesMetaHref(roadmapPage);
-  }
-
-  function renderTechMapNodeCard(node, detailPages) {
-    const related = Array.isArray(node.related) ? node.related.slice(0, 3) : [];
-    const detail = detailPages[node.id] || {};
-    const detailSummary = detail.summary || node.summary;
-    const hasIngest = detail.has_ingest;
-    const ingestBadge = hasIngest
-      ? '<span class="ingest-badge" title="已有 sources/ ingest 来源：' + escapeHtml(detail.ingest_source || '') + '">📄 ingest</span>'
-      : '<span class="ingest-badge ingest-missing" title="暂无 sources/papers/ 对应条目">— no ingest</span>';
-    var relatedHtml = '';
-    if (related.length) {
-      for (var i = 0; i < related.length; i++) {
-        relatedHtml += '<li><a href="' + escapeHtml(detailHref(related[i])) + '"><code>' + escapeHtml(related[i]) + '</code></a></li>';
-      }
-    } else {
-      relatedHtml = '<li>当前节点暂无 related</li>';
-    }
-
-    return [
-      '<article class="card data-card" data-layer="' + escapeHtml(node.layer || 'meta') + '">',
-      '  <div>',
-      '    <h3><a href="' + escapeHtml(detailHref(node.id)) + '">' + escapeHtml(node.title || node.id) + '</a></h3>',
-      '    <p class="card-meta">layer: ' + escapeHtml(node.layer || 'meta') + ' · kind: ' + escapeHtml(node.node_kind || '-') + ' · ' + ingestBadge + '</p>',
-      '    <p>' + escapeHtml(detailSummary || '暂无节点摘要') + '</p>',
-      '  </div>',
-      '  <div class="chip-list">',
-      '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
-      '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(node.id)) + '">打开详情页</a>',
-      '  </div>',
-      '  <ul>' + relatedHtml + '</ul>',
-      '</article>'
-    ].join('');
-  }
-
-  function renderTechMapGroupedNodes(nodes, detailPages) {
-    const grouped = nodes.reduce(function (acc, node) {
-      const layer = node.layer || 'meta';
-      if (!acc[layer]) acc[layer] = [];
-      acc[layer].push(node);
-      return acc;
-    }, {});
-    var html = '';
-    for (var layer in grouped) {
-      if (Object.prototype.hasOwnProperty.call(grouped, layer)) {
-        const layerNodes = grouped[layer];
-        var cardsHtml = '';
-        for (var i = 0; i < layerNodes.length; i++) {
-          cardsHtml += renderTechMapNodeCard(layerNodes[i], detailPages);
-        }
-        html += [
-          '<details class="tech-map-group" open>',
-          '  <summary class="tech-map-group-summary">' + escapeHtml(layer) + ' · ' + escapeHtml(layerNodes.length) + '</summary>',
-          '  <div class="card-grid data-grid tech-map-group-grid">',
-               cardsHtml,
-          '  </div>',
-          '</details>'
-        ].join('');
-      }
-    }
-    return html;
-  }
-
-  function renderTechMapNodes(nodes, detailPages, activeLayer) {
-    const nodeGrid = document.getElementById('techMapNodeGrid');
-    if (!nodeGrid) return;
-
-    const visibleNodes = activeLayer === 'all'
-      ? nodes
-      : nodes.filter(function (node) { return (node.layer || 'meta') === activeLayer; });
-
-    nodeGrid.innerHTML = visibleNodes.length
-      ? renderTechMapGroupedNodes(visibleNodes, detailPages)
-      : '<article class="card"><p>当前筛选条件下暂无 tech-map 节点。</p></article>';
-    removeLoadingState(nodeGrid);
-  }
-
-  function renderTechMapFilters(layerCounts, activeLayer, onSelect) {
-    const chipList = document.getElementById('techMapFilterList');
-    const stateText = document.getElementById('techMapFilterState');
-    const toggleText = document.getElementById('filter-toggle-text');
-    const badge = document.getElementById('filter-badge');
-    if (!chipList) return;
-
-    const layers = ['all'].concat(Object.keys(layerCounts));
-
-    // 更新浮窗内的状态文字
-    if (stateText) {
-      stateText.textContent = activeLayer === 'all'
-        ? '当前展示全部 layer'
-        : '当前展示 ' + activeLayer + ' layer';
-    }
-
-    // 更新按钮文字 + badge
-    if (toggleText) {
-      toggleText.textContent = activeLayer === 'all' ? '筛选' : activeLayer;
-    }
-    if (badge) {
-      if (activeLayer === 'all') {
-        badge.style.display = 'none';
-        badge.textContent = '';
-      } else {
-        badge.style.display = 'inline';
-        badge.textContent = '●';
-      }
-    }
-
-    // 渲染 layer chips 到浮窗
-    // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
-    // Expected impact: Eliminates closure creation and array allocation during layout generation.
-    var totalCount = 0;
-    var layerCountsKeys = Object.keys(layerCounts);
-    for (var k = 0; k < layerCountsKeys.length; k++) {
-      totalCount += layerCounts[layerCountsKeys[k]];
-    }
-
-    var chipsHtml = '';
-    for (var i = 0; i < layers.length; i++) {
-      var layer = layers[i];
-      var count = layer === 'all' ? totalCount : layerCounts[layer];
-      var activeClass = layer === activeLayer ? ' data-chip-active' : '';
-      chipsHtml += '<button type="button" class="data-chip data-chip-button' + activeClass + '" data-layer="' + escapeHtml(layer) + '">' + escapeHtml(layer) + ' · ' + escapeHtml(count) + '</button>';
-    }
-    chipList.innerHTML = chipsHtml;
-
-    var buttons = chipList.querySelectorAll('[data-layer]');
-    for (var j = 0; j < buttons.length; j++) {
-      buttons[j].addEventListener('click', function () {
-        onSelect(this.getAttribute('data-layer'));
-        // 选完后关闭浮窗
-        var panel = document.getElementById('filter-panel');
-        if (panel) panel.hidden = true;
-      });
-    }
-  }
-
-  function renderTechMapPage(siteData) {
-    if (!siteData || !siteData.pages) return;
-
-    const techMapPage = siteData.pages.tech_map_page || {};
-    const detailPages = siteData.pages.detail_pages || {};
-    const nodes = Array.isArray(techMapPage.nodes) ? techMapPage.nodes : [];
-    const heroSummary = document.getElementById('techMapHeroSummary');
-    const graphMeta = document.getElementById('techMapGraphMeta');
-    const layerList = document.getElementById('techMapLayerList');
-    const params = new URLSearchParams(window.location.search);
-
-    const layerCounts = nodes.reduce(function (acc, node) {
-      const layer = node.layer || 'meta';
-      acc[layer] = (acc[layer] || 0) + 1;
-      return acc;
-    }, {});
-
-    if (heroSummary) {
-      const layerCount = Object.keys(layerCounts).length;
-      heroSummary.innerHTML = '当前 tech-map 共收录 <strong>' + escapeHtml(nodes.length) + '</strong> 个节点，覆盖 <strong>' + escapeHtml(layerCount) + '</strong> 个 layer。第一阶段先用 layer 分布 + 节点卡片验证页面消费模型，不急着上复杂可视化。';
-      removeLoadingState(heroSummary);
-    }
-
-    if (graphMeta) {
-      graphMeta.innerHTML = [
-        '<p><strong>overview：</strong><a href="' + escapeHtml(detailHref((techMapPage.graph_meta || {}).overview_id || '')) + '"><code>' + escapeHtml((techMapPage.graph_meta || {}).overview_id || '-') + '</code></a></p>',
-        '<p><strong>dependency_graph：</strong><a href="' + escapeHtml(detailHref((techMapPage.graph_meta || {}).dependency_graph_id || '')) + '"><code>' + escapeHtml((techMapPage.graph_meta || {}).dependency_graph_id || '-') + '</code></a></p>',
-        '<p class="data-meta">当前页面直接消费 <code>tech_map_page</code>，节点统一回流到 detail page。</p>'
-      ].join('');
-      removeLoadingState(graphMeta);
-    }
-
-    renderChipList(layerList, Object.keys(layerCounts), {
-      renderItem: function (layer) {
-        return '<span class="data-chip">' + escapeHtml(layer) + ' · ' + escapeHtml(layerCounts[layer]) + '</span>';
-      }
-    });
-
-    const allowedLayers = ['all'].concat(Object.keys(layerCounts));
-    const requestedLayer = params.get('layer') || 'all';
-    const initialLayer = allowedLayers.indexOf(requestedLayer) >= 0 ? requestedLayer : 'all';
-
-    function syncTechMapLayerInUrl(layer) {
-      const url = new URL(window.location.href);
-      if (layer === 'all') {
-        url.searchParams.delete('layer');
-      } else {
-        url.searchParams.set('layer', layer);
-      }
-      history.replaceState({}, '', url.toString());
-    }
-
-    var currentLayer = initialLayer;
-    function updateTechMapLayer(nextLayer) {
-      currentLayer = allowedLayers.indexOf(nextLayer) >= 0 ? nextLayer : 'all';
-      syncTechMapLayerInUrl(currentLayer);
-      renderTechMapFilters(layerCounts, currentLayer, updateTechMapLayer);
-      renderTechMapNodes(nodes, detailPages, currentLayer);
-    }
-
-    updateTechMapLayer(currentLayer);
-
-    /* ── 筛选浮窗交互（参照 physics-panel 模式）── */
-    var filterToggle = document.getElementById('filter-toggle');
-    var filterPanel = document.getElementById('filter-panel');
-    var filterClose = document.getElementById('filter-close');
-
-    if (filterToggle && filterPanel) {
-      filterToggle.addEventListener('click', function () {
-        filterPanel.hidden = !filterPanel.hidden;
-      });
-    }
-    if (filterClose) {
-      filterClose.addEventListener('click', function () {
-        filterPanel.hidden = true;
-      });
-    }
-    document.addEventListener('click', function (ev) {
-      if (!filterPanel || filterPanel.hidden) return;
-      var onToggle = ev.target.closest && ev.target.closest('#filter-toggle');
-      var onPanel = ev.target.closest && ev.target.closest('#filter-panel');
-      if (!onToggle && !onPanel) {
-        filterPanel.hidden = true;
-      }
-    });
-    document.addEventListener('keydown', function (ev) {
-      if (ev.key === 'Escape' && filterPanel && !filterPanel.hidden) {
-        filterPanel.hidden = true;
-      }
-    });
   }
 
   function renderPreviewPage(siteData) {
@@ -6445,8 +6115,6 @@
 
   const previewRoot = document.getElementById('previewSummary');
   const detailRoot = document.getElementById('detailTitle');
-  const techMapRoot = document.getElementById('techMapNodeGrid');
-  const moduleRoot = document.getElementById('moduleEntryList');
   const roadmapPageMount = document.getElementById('roadmapTitle');
   const homeStatsRoot =
     document.getElementById('heroNodeCount') ||
@@ -6460,8 +6128,6 @@
       .then(function (siteData) {
         if (previewRoot) renderPreviewPage(siteData);
         if (detailRoot) renderDetailPage(siteData);
-        if (techMapRoot) renderTechMapPage(siteData);
-        if (moduleRoot) renderModulePage(siteData);
         if (roadmapPageMount) renderRoadmapPage(siteData);
       })
       .catch(function (error) {
@@ -6492,25 +6158,6 @@
             'detailSourceList'
           ]);
         }
-        if (techMapRoot) {
-          handlePageDataError(error, [
-            'techMapHeroSummary',
-            'techMapGraphMeta',
-            'techMapLayerList',
-            'techMapNodeGrid'
-          ]);
-        }
-        if (moduleRoot) {
-          handlePageDataError(error, [
-            'moduleBreadcrumb',
-            'moduleSummary',
-            'moduleMeta',
-            'moduleEntryList',
-            'moduleReferenceList',
-            'moduleRoadmapList',
-            'moduleRelatedModules'
-          ]);
-        }
         if (roadmapPageMount) {
           handlePageDataError(error, [
             'roadmapSummary',
@@ -6523,7 +6170,7 @@
       });
   }
 
-  if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapPageMount) {
+  if (previewRoot || detailRoot || roadmapPageMount) {
     startPageDataLoad(false);
   }
 
