@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-17
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -33,6 +33,7 @@ related:
   - ../entities/paper-failbench.md
   - ../entities/paper-libero-recover.md
   - ../entities/rle-bench.md
+  - ../entities/paper-karma-hand-metric.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
@@ -54,6 +55,7 @@ sources:
   - ../../sources/papers/bet4sim2real_arxiv_2608_21572.md
   - ../../sources/sites/rle-bench-github-io.md
   - ../../sources/blogs/rle_bench_introducing_blog_2026-09-14.md
+  - ../../sources/papers/karma_hand_metric_arxiv_2605_15548.md
 summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
 ---
 
@@ -92,6 +94,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 | ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、**Robocurve 独立真机报告**、代表性代价；真机样本量不足另见 **Bet4Sim2Real**（仿真库下注换 anytime-valid 区间） | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md)、[Robocurve](../entities/robocurve.md)、[Bet4Sim2Real](../entities/paper-bet4sim2real.md) |
 | ③′ 运控横切 | 被测对象换成 locomotion / whole-body tracking / MPC-WBC 时的指标体系：跟踪误差、命令跟随、求解实时性、硬件裕度 | HumanTracker、HumanoidBench、TrackerLab、Barkour | [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md)、[HumanTracker](../entities/paper-humantracker.md)、[HumanoidBench](../entities/humanoid-bench.md)、[TrackerLab](../entities/trackerlab.md) |
 | ③″ agentic 工程 | **Coding agent** 能否像 RLE 一样在仿真中 **观察—实验—改代码—交付 artifact**（控机 / harness / recipe / 感知 / 机械设计） | **RLE-Bench**（Harbor + hidden test；RLE Index） | [RLE-Bench](../entities/rle-bench.md)、[ASPIRE](../methods/aspire.md)、[ENPIRE](../methods/enpire.md) |
+| ③‴ 手型 kinematic | **URDF 阶段** rolling-pinch **平移/旋转/seed** 下界（无控制器） | **KaRMA**（KaRMA-T/R/S；16 手榜） | [KaRMA](../entities/paper-karma-hand-metric.md)、[HAND ERC](../entities/paper-hand-erc-benchmarking-dexterity.md)、[All Hands Up](../entities/all-hands-up.md) |
 | 端到端 | 四层如何逐层选型取舍 | 选型决策树 | [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) |
 
 ## 评测选型的关键取舍
@@ -112,6 +115,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [FailBench](../entities/paper-failbench.md) — VLM 失败裁判跨源基准；接触装配 balanced accuracy ≤0.60（③ 层相邻）
 - [LIBERO-Recover](../entities/paper-libero-recover.md) — 从真实执行失败态测 RSR；标准 LIBERO 排名不能预测恢复力（③ 层相邻）
 - [RLE-Bench](../entities/rle-bench.md) — coding agent 全栈 RLE 资格考：九任务四工作流 + Harbor hidden test（③″ agentic 工程）
+- [KaRMA](../entities/paper-karma-hand-metric.md) — URDF-only rolling-pinch 运动学指标 KaRMA-T/R/S（③‴ 手型 kinematic 预筛）
 - [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md) — 运控模型（locomotion / WBT / MPC-WBC）侧的指标体系，与 ③ 层任务成功率互补
 - [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)
 - [RoboBench](../entities/robo-bench.md)

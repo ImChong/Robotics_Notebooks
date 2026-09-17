@@ -2,7 +2,7 @@
 type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, control]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 related:
   - ../entities/allegro-hand.md
   - ../entities/shadow-hand.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-adept-dexterity.md
   - ../entities/paper-wm-craftnet.md
   - ../entities/paper-artmanip.md
+  - ../entities/paper-karma-hand-metric.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/uhas_arxiv_2607_03570.md
@@ -83,6 +84,7 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 外在灵巧触觉精修对照
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 三指 + 主动掌的手内重定向 / singulation 硬件实例
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — 手–物 co-tracking 遥操作中的真机手内重定向
+- [KaRMA（运动学指标）](../entities/paper-karma-hand-metric.md) — URDF rolling-pinch T/R/S 下界，补 task 前 kinematic 预筛
 - [ADEPT（论文实体）](../entities/paper-adept-dexterity.md) — reposing RL 预训练覆盖 in-hand reorient，再 post-train 下游 insert
 - [WM-Craftnet（论文实体）](../entities/paper-wm-craftnet.md) — WSM 循环视触觉状态 + PPO 鲁棒手内旋转（Sharpa，CoRL 2026）
 - [ArtManip（论文实体）](../entities/paper-artmanip.md) — 类别级铰接物体手内操作：抓稳 + 推动内部关节（ArtGym 已开源）
