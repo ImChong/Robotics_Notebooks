@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.16569"
 venue: "arXiv 2026"
 summary: "Uses a pretrained VLM as the source of both scene understanding and cross-scan matching for egocentric scene registration, outperforming geometric and learned scene-graph baselines"

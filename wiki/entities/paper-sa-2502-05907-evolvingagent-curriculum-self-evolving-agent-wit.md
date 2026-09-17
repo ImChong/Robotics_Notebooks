@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2502.05907"
 venue: "arXiv 2025"
 summary: "Agent autonomous evolution with continual world model for long-horizon tasks."

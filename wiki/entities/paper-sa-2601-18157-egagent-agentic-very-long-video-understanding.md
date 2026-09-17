@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.18157"
 venue: "arXiv 2026"
 summary: "An agent-based reasoning framework based on entity scene graphs, capable of processing continuous video streams across days, supporting structured multi-hop reasoning and audio-visual hybrid retrieval"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.13741"
 venue: "CVPR 2026"
 summary: "Nearly 1,000 multi-view egocentric clips captured by 12 synchronized cameras surrounding a 4-camera VR headset rig"

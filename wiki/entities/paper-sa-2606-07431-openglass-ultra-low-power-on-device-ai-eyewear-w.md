@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.07431"
 venue: "arXiv 2026"
 summary: "Fully open-source event camera wearable hardware stack paired with lightweight edge inference algorithms"

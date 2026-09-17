@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, deepcybo, zhongguancun-academy, zgca, embodied-foundation-model, vla, qwen, ego, world-model, action-piece, awesome-egocentric-vision]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2609.14973"
 code: https://github.com/DeepCybo-PhysAI/PhysBrainEvalKit
 related:

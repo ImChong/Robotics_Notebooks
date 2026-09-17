@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2509.07996"
 venue: "arXiv 2025 (v4 2026)"
 summary: "First specialized survey on 3D and 4D world modeling and generation; establishes precise definitions and a structured taxonomy covering VideoGen, OccGen, and LiDARGen; systematically summarizes domain-specific datasets a"

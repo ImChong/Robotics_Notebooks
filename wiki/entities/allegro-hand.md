@@ -14,6 +14,7 @@ related:
   - ./kyber-labs.md
   - ./all-hands-up.md
   - ./paper-adept-dexterity.md
+  - ./paper-karma-hand-metric.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/sites/allhandsup-org.md
@@ -70,6 +71,7 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 - [Kyber Labs](./kyber-labs.md) — 产业侧背驱动五指手与 skills-based AI 路线对照
 - [All Hands Up](./all-hands-up.md) — RLWRLD 画廊含 Allegro V5 Plus（16 DoF、背驱、仿真 Kapandji 9/11）
 - [ADEPT（论文实体）](./paper-adept-dexterity.md) — Kuka–Allegro 灵巧 RL 预训练 + sim2real FMB
+- [KaRMA（运动学指标）](./paper-karma-hand-metric.md) — 16 手榜 **KaRMA-R 最高**（0.335），T 第二
 
 ## 参考来源
 - Wonik Robotics Official Documentation.

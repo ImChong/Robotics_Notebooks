@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.02921"
 venue: "arXiv 2026"
 summary: "Introduces R3D-Bench with 3,033 quantitative spatial reasoning questions across 15 types built on Aria Digital Twin. Proposes R3D model-agnostic spatial tool-calling framework achieving 73.5% mean relative accuracy"

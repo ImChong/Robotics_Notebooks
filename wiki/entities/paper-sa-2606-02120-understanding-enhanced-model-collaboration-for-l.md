@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.02120"
 venue: "arXiv 2026"
 summary: "Proposes UE-MCM combining efficient coarse-grained video understanding with accurate fine-grained action reasoning. Handles long-tailed distribution of mistake instances with complementary optimization objectives"

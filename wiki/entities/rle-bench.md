@@ -13,7 +13,7 @@ tags:
   - georgia-tech
   - open-source
 status: complete
-updated: 2026-09-16
+updated: 2026-09-17
 related:
   - ../methods/aspire.md
   - ../methods/enpire.md
@@ -25,11 +25,12 @@ related:
   - ../concepts/llm-robotics-control-interfaces.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ./walterzhu-astra-and-beyond.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/sites/rle-bench-github-io.md
   - ../../sources/blogs/rle_bench_introducing_blog_2026-09-14.md
   - ../../sources/repos/rle-bench.md
-  - ../../sources/blogs/walterzhu8_gpt6_astra_embodied_ai_2026-09-16.md
 summary: "RLE-Bench（Harvard×Georgia Tech，2026）：九任务族四工作流评测 coding agent 能否像机器人学习工程师一样在物理仿真中观察—实验—改代码—交付 artifact；Harbor 沙箱 + hidden test；RLE Index 四族等权 0–100；MIT 仓已开源。"
 ---
 
@@ -149,7 +150,7 @@ sequenceDiagram
 | **物理设计** | 普遍低分；T08 可达 shelf/payload 满分仍 **稳定性归零** | **可见目标 ≠ 物理可行**；MJCF 连通性/静稳态需单独查 |
 | **T01 harness** | 多数模型 L2/L3 更省更准；Astra **L1 最强但加 harness 反 hurt** | 强 agent 可能 **over-scaffold**；读分必须带 interface level |
 
-外部解读：[Walter Zhu X 长文](../../sources/blogs/walterzhu8_gpt6_astra_embodied_ai_2026-09-16.md) 从 **tool orchestration / 逆物理 / agentic scaling** 解释 Astra 路线，与 T01–T05 演示互参（**非 RLE-Bench 官方文档**）。
+外部解读：[Walter Zhu：Astra and Beyond](./walterzhu-astra-and-beyond.md) 从 **tool orchestration / 逆物理 / agentic scaling** 解释 Astra 路线，与 T01–T05 演示互参（**非 RLE-Bench 官方文档**）。
 
 ## 工程实践
 
@@ -187,13 +188,14 @@ sequenceDiagram
 - [RoboCasa](./robocasa.md) — T01/T02 厨房仿真后端
 - [LIBERO benchmark](./libero-benchmark.md) — T05 VLA 轨之一
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 本榜位于 **③ 策略层 adjacent：agentic 工程 qualification**
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — T06 位姿估计 / T07 bin clearing 与 T01 的 L2 档（SAM3 / Contact-GraspNet scaffolding）对应该闭环的感知选型口径
 
 ## 参考来源
 
 - [RLE-Bench 项目页](../../sources/sites/rle-bench-github-io.md)
 - [Introducing RLE-Bench 官方博客](../../sources/blogs/rle_bench_introducing_blog_2026-09-14.md)
 - [RLE-Bench GitHub 仓](../../sources/repos/rle-bench.md)
-- [Walter Zhu：GPT-6 Astra 与具身 AI（X 长文）](../../sources/blogs/walterzhu8_gpt6_astra_embodied_ai_2026-09-16.md)
+- [Walter Zhu：Astra and Beyond](./walterzhu-astra-and-beyond.md) — GPT-6 Astra 概念解读（X 长文独立节点）
 
 ## 推荐继续阅读
 

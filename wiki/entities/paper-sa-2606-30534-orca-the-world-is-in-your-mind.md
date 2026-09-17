@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.30534"
 venue: "arXiv 2026"
 summary: "BAAI's general world foundation model learning a unified latent space from multimodal signals; pre-trained on 125K hours of video and 160M event annotations."

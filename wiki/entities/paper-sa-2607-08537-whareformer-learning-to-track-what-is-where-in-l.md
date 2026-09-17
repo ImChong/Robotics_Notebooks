@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.08537"
 venue: "ECCV 2026"
 summary: "The first learning-based solution to the 'Out of Sight, Not out of Mind' (OSNOM) task. A transformer-based model with an updatable memory of established tracks and a track assignment module. Trained on 56 videos, achieve"

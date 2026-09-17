@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.12498"
 venue: "SIGGRAPH 2026"
 summary: "Differentiable forearm representation + unified arm-hand Transformer. MPJPE reduced by 28% on HOT3D across all lens types"

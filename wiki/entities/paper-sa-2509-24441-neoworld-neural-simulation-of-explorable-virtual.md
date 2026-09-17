@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2509.24441"
 venue: "arXiv 2025"
 summary: "A deep learning framework that supports user‑driven object manipulation and physics‑based dynamic simulation, enabling interactive world generation in continuously expanding 3D environments."

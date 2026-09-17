@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.00393"
 venue: "arXiv 2026"
 summary: "Enhances 4D world models using in-the-wild monocular videos."

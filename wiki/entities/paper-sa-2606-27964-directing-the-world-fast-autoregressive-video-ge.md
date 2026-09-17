@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.27964"
 venue: "arXiv 2026"
 summary: "Fast autoregressive video generation via compositional human-camera control."

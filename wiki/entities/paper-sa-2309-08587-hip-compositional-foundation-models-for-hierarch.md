@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2309.08587"
 venue: "arXiv 2023"
 code: https://github.com/anuragajay/hip/tree/main

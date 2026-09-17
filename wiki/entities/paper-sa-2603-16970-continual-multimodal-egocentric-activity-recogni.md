@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.16970"
 venue: "arXiv 2026"
 summary: "Proposes the MAND modality-aware framework, improving the AUC of novel activity detection by 10%"

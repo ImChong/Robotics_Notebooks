@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2501.00358"
 venue: "ICCV 2025"
 summary: "An LLM-based agent that constructs scene memory from both egocentric video and embodied sensory inputs (depth and pose sensing). Achieves gains of 6.5% on Ego4D-VQ3D, 2.6% on OpenEQA, and 15.3% on EnvQA"

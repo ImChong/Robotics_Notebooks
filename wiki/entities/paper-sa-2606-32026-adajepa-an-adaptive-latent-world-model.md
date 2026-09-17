@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.32026"
 venue: "arXiv 2026"
 code: https://github.com/agentic-learning-ai-lab/adajepa

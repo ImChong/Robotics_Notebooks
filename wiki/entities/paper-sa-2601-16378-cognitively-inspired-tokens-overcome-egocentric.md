@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.16378"
 venue: "arXiv 2026"
 summary: "Multimodal language models perform well on semantic vision-language tasks but fail at spatial reasoning that requires adopting another agent's visual perspective, reflecting a persistent egocentric bias"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2510.18135"
 venue: "arXiv 2025"
 summary: "The first open platform for benchmarking world models in a closed‑loop world, mirroring real agent‑environment interactions, with unified online planning strategies and standardised action APIs."

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2504.16680"
 venue: "arXiv 2025"
 summary: "Learning robotic policies without a physics simulator."

@@ -1218,6 +1218,7 @@
 - [χ₀ / kai0：资源感知的分布对齐稳健操作](wiki/entities/paper-kai0.md) — χ₀**（公开工程名 **kai0**；*Resource-Aware Robust Manipulation via Taming Distributional Inconsistencies `📅unknown` `[entity_page]`
 - [Kairos（原生世界–动作模型栈 · kairos-agi）](wiki/entities/paper-kairos-native-world-model-stack.md) — Kairos**（*Kairos: A Regret-Aware Native World-Action Model Stack for Physical AI*，[arXiv:2606.1653 `📅unknown` `[entity_page]`
 - [Kamino（GPU 闭链约束多体仿真）](wiki/entities/paper-kamino.md) — Kamino** 是 Disney Research 与 NVIDIA 提出的 **GPU 原生物理求解器**（arXiv [2603.16536](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
+- [KaRMA：机器人手精细操作运动学指标](wiki/entities/paper-karma-hand-metric.md) — KaRMA**（*A Kinematic Metric for Fine Manipulation Ability in Robotic Hands*，[arXiv:2605.15548](htt `📅unknown` `[entity_page]`
 - [KDMR（Kinodynamic Motion Retargeting）](wiki/entities/paper-kdmr.md) — KDMR**（*Kinodynamic Motion Retargeting for Humanoid Locomotion via Multi-Contact Whole-Body Trajec `📅unknown` `[entity_page]`
 - [KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）](wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) — KEMO**（arXiv:2606.23589，项目页， `📅unknown` `[entity_page]`
 - [Whole body dynamic behavior and control of human-like robots（IJHR 2004）](wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md) — Whole body dynamic behavior and control of human-like robots**（Khatib, Sentis, Park, Warren；*Inter `📅unknown` `[entity_page]`
@@ -3271,6 +3272,7 @@
 - [VMamba](wiki/entities/vmamba.md) — VMamba 提出 2D 选择性扫描（SS2D）等视觉化状态空间模块，构建分层 Visual State Space 骨干，在分类/检测/分割上挑战 ViT。 `📅unknown` `[entity_page]`
 - [Voxgraph](wiki/entities/voxgraph.md) — Voxgraph** 在 **TSDF 子图** 上进行 **位姿图优化**，适合多会话对齐与稠密地图融合。 `📅unknown` `[entity_page]`
 - [WalkTheDog](wiki/entities/walk-the-dog.md) — WalkTheDog**（*Cross-Morphology Motion Alignment via Phase Manifolds*，SIGGRAPH 2024）由 Peizhuo Li 等提 `📅unknown` `[entity_page]`
+- [Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond](wiki/entities/walterzhu-astra-and-beyond.md) — Walter Zhu（朱文涛，@walterzhu8）** 2026-09-16 在 X 发布的 [长文](https://x.com/walterzhu8/status/210025599936 `📅unknown` `[entity_page]`
 - [WaytoAGI（通往 AGI 之路）](wiki/entities/waytoagi.md) — WaytoAGI**（飞书知识库首页 <https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e>，官网 <https://www.w `📅unknown` `[entity_page]`
 - [wbc_fsm (G1 全身控制 FSM 部署框架)](wiki/entities/wbc-fsm.md) — wbc_fsm** 是 **ccrpRepo / ZSTU Robotics** 针对 **Unitree G1** 人形机器人开发的 C++ 部署框架，以**有限状态机（FSM）**组织多种控制 `📅unknown` `[entity_page]`
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`

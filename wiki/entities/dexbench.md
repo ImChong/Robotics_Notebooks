@@ -10,7 +10,7 @@ tags:
   - rlwrld
   - nvidia
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 related:
   - ./robocasa.md
   - ./all-hands-up.md
@@ -25,6 +25,7 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/dexterous-data-collection-guide.md
+  - ./paper-karma-hand-metric.md
 sources:
   - ../../sources/sites/dexbench-org.md
   - ../../sources/sites/allhandsup-org.md

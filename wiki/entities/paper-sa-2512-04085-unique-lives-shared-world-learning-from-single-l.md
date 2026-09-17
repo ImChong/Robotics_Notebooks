@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2512.04085"
 venue: "arXiv 2025"
 summary: "Studies the learning problem of ultra-long life-cycle videos from a single individual"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.07859"
 venue: "arXiv 2026"
 summary: "A gaze-empowered egocentric video understanding framework to detect driver cognitive distraction"

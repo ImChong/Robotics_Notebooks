@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2404.01688"
 venue: "CVPR 2024"
 summary: "Online real-time mistake detection framework tailored for egocentric procedural videos"

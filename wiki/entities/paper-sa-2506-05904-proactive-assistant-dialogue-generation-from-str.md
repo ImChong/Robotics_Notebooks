@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2506.05904"
 venue: "EMNLP 2025"
 summary: "Generates context-aware proactive assistant dialogues from streaming egocentric procedural videos"

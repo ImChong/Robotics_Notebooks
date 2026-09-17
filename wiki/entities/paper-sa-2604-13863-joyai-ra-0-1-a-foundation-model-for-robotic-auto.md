@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.13863"
 venue: "arXiv 2026"
 summary: "VLA embodied foundation model with multi-source multi-level pretraining integrating web data, large-scale egocentric human manipulation videos, simulation trajectories, and real-robot data"

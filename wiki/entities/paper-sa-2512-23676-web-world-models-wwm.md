@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2512.23676"
 venue: "arXiv 2025"
 summary: "World states and “physics” are implemented in ordinary web code to ensure logical consistency; LLMs generate context, narratives, and high‑level decisions on top of this structured latent state."

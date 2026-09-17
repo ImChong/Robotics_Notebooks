@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.01346"
 venue: "arXiv 2026"
 summary: "Surveys world model architectures and their deployment contexts in safety-critical domains, characterizing the world model asset inventory and threat surface."

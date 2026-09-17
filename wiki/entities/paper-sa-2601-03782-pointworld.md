@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, 3d, point-cloud, cross-embodiment, nvidia, stanford, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.03782"
 venue: "CVPR 2026 Highlight"
 code: https://github.com/NVlabs/PointWorld

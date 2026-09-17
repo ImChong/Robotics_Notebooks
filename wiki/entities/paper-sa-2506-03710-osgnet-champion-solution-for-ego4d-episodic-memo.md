@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2506.03710"
 venue: "CVPR 2025 Challenge All-Track Champion"
 summary: "Proposes an early fusion temporal localization architecture, winning all three tracks of the Ego4D Episodic Memory Challenge"

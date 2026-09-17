@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2409.01600"
 venue: "arXiv 2024"
 summary: "Proposes action scene graphs for long-form understanding of egocentric videos, enabling structured analysis of human activities from wearable device captures"

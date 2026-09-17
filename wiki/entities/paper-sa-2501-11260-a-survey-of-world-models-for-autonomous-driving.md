@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2501.11260"
 venue: "arXiv 2025"
 summary: "Comprehensive survey of world models for autonomous driving, covering methods from video generation to 4D occupancy forecasting."

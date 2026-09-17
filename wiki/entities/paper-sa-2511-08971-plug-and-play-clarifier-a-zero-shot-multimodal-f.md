@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2511.08971"
 venue: "AAAI 2026"
 summary: "Zero-shot intent resolution framework boosting wearable instruction execution accuracy from 58% to 87%"

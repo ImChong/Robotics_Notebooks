@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2504.08388"
 venue: "arXiv 2025"
 summary: "A real‑time interactive world model on Minecraft that generates game scenes using a visual‑action autoregressive Transformer."

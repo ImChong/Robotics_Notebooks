@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.23376"
 venue: "arXiv 2026"
 summary: "14B Diffusion Transformer generating visually realistic, physically plausible, and action-controllable videos."
