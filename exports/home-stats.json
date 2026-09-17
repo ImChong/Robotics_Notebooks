@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-17",
   "node_count": 4080,
-  "edge_count": 36641,
+  "edge_count": 36642,
   "coverage": {
     "covered": 4052,
     "total": 4052,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/rle-bench.md",
+      "detail_id": "entity-rle-bench",
+      "label": "RLE-Bench（Coding Agent 机器人学习工程资格考）",
+      "type": "entity",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
       "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
@@ -197,28 +207,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-world-action-models-rcl.md",
-      "detail_id": "entity-awesome-world-action-models-rcl",
-      "label": "Awesome World-Action Models（RCL / MBZUAI）",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
-    "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
-    "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
-    "type": "concept",
+    "path": "wiki/entities/rle-bench.md",
+    "detail_id": "entity-rle-bench",
+    "label": "RLE-Bench（Coding Agent 机器人学习工程资格考）",
+    "type": "entity",
     "recency": "2026-09-16",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {

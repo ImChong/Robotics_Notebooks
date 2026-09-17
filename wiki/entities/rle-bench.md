@@ -25,6 +25,7 @@ related:
   - ../concepts/llm-robotics-control-interfaces.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/sites/rle-bench-github-io.md
   - ../../sources/blogs/rle_bench_introducing_blog_2026-09-14.md
@@ -187,6 +188,7 @@ sequenceDiagram
 - [RoboCasa](./robocasa.md) — T01/T02 厨房仿真后端
 - [LIBERO benchmark](./libero-benchmark.md) — T05 VLA 轨之一
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 本榜位于 **③ 策略层 adjacent：agentic 工程 qualification**
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — T06 位姿估计 / T07 bin clearing 与 T01 的 L2 档（SAM3 / Contact-GraspNet scaffolding）对应该闭环的感知选型口径
 
 ## 参考来源
 
