@@ -21,9 +21,11 @@ related:
   - ./paper-wam-realtime-async.md
   - ./paper-arli.md
   - ../tasks/manipulation.md
+  - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
   - ../../sources/papers/real_time_expo_ft_arxiv_2609_18207.md
   - ../../sources/sites/real-time-expo-ft.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md
 summary: "Real-Time EXPO-FT（arXiv:2609.18207，Stanford）：慢 VLA 提案 chunk + 快 edit policy 按最新观测修正 + Q 选候选；Kinetix 10/10 环境 delayed 设定最优；真机 10 min 在线数据 42%→97%；代码待发布。"
 ---
 
@@ -125,6 +127,7 @@ flowchart LR
 
 - [Real-Time EXPO-FT 论文归档](../../sources/papers/real_time_expo_ft_arxiv_2609_18207.md)
 - [Real-Time EXPO-FT 项目页](../../sources/sites/real-time-expo-ft.md)
+- [具身小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md)
 
 ## 推荐继续阅读
 

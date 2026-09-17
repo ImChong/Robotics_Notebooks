@@ -19,9 +19,11 @@ related:
   - ./paper-any2any-cross-embodiment-wbt.md
   - ./paper-sa-2505-07096-x-sim-cross-embodiment-learning-via-real-to-sim.md
   - ../entities/unitree-go2.md
+  - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
   - ../../sources/papers/recmorph_arxiv_2609_18359.md
   - ../../sources/repos/recmorph.md
+  - ../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md
 summary: "RecMorph（arXiv:2609.18359）：运动学树 DFS 序 + 双向空间 RNN 做跨 limb 通信；UNIMAL 五任务 mean final performance 与 FT 吞吐最优；Isaac Lab 四足共享策略 Go1/Go2 40 trial 零 fall；GitHub 已开源。"
 ---
 
@@ -140,6 +142,7 @@ sequenceDiagram
 
 - [RecMorph 论文归档](../../sources/papers/recmorph_arxiv_2609_18359.md)
 - [RecMorph 仓库归档](../../sources/repos/recmorph.md)
+- [具身小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md)
 
 ## 推荐继续阅读
 
