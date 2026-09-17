@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-scail-2.md",
+      "detail_id": "entity-paper-scail-2",
+      "label": "SCAIL-2：端到端 In-Context 受控角色动画",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/concepts/mqtt-protocol.md",
       "detail_id": "wiki-concepts-mqtt-protocol",
       "label": "MQTT 通信协议",
@@ -199,29 +210,18 @@
       "recency": "2026-09-17",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-groot-drifting-action-head.md",
-      "detail_id": "entity-paper-groot-drifting-action-head",
-      "label": "GR00T Drifting Action Head：单步 VLA 速度–成功率审计",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/mqtt-protocol.md",
-    "detail_id": "wiki-concepts-mqtt-protocol",
-    "label": "MQTT 通信协议",
-    "type": "concept",
+    "path": "wiki/entities/paper-scail-2.md",
+    "detail_id": "entity-paper-scail-2",
+    "label": "SCAIL-2：端到端 In-Context 受控角色动画",
+    "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
