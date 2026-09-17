@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md — 具身小站 9 篇（看/做/迁移）；9/9 独立节点（7 新建 + RecMorph/EXPO-FT 复用）；自动合并 PR
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/w6w1FzL2FG7vlFa27UYE6w>
+- **步骤 2.5：** WetRobo / StrucPhysVideo / RecMorph **已开源**；FIERCE **部分开源**（仓 placeholder）；ActiveScale / EXPO-FT / DeformSmith / InterMASH / FPSA **待发布**
+- **关键页：** [`perception-action-transfer-9-papers-technology-map`](wiki/overview/perception-action-transfer-9-papers-technology-map.md)
+
 ## [2026-09-17] ingest | sources/papers/convergent_binocular_stereo_scirobotics_2026.md — CBS 会聚双目立体 + CBS-BM；Zenodo MIT 已开源；交叉 DIJIT / stereo-matching 方法页
 
 ## [2026-09-17] ingest | sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md — PinkRobot VLA 演进综述（动作 token → Action Expert → 多时间尺度层级）；新建 `vla-evolution-lineage` 技术地图
