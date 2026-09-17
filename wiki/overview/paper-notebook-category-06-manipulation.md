@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）。"
@@ -28,7 +28,7 @@ summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）
 - [ActiveUMI](../entities/paper-notebook-activeumi-robotic-manipulation-with-active-perce.md) — 待深读
 - [Being-H0](../entities/paper-notebook-being-h0-vision-language-action-pretraining-from.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos.html)
 - [Bimanual Dexterity for Complex Tasks](../entities/paper-notebook-bimanual-dexterity-for-complex-tasks.md) — 待深读
-- [DexCap](../entities/paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti.md) — 待深读
+- [DexCap](../entities/paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti.md) — 见 wiki 实体页（RSS 2024；MIT + HF 数据）
 - [DexHub and DART](../entities/paper-notebook-dexhub-and-dart-towards-internet-scale-robot-dat.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html)
 - [DexUMI](../entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md) — 待深读
 - [DexterCap](../entities/paper-notebook-dextercap.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object.html)

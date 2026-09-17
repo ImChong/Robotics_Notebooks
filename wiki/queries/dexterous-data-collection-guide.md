@@ -63,7 +63,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **原理**：利用手部追踪算法（如 [MediaPipe](../entities/mediapipe.md) 或专有引擎）实时估计人类操作者的指关节角度，并通过**重定向 (Retargeting)** 映射到灵巧手的 URDF 模型上。
 - **优点**：无需佩戴繁琐设备，操作者手部无约束。
 - **缺点**：视觉遮挡严重（例如手指重叠时）；缺乏力反馈，操作者很难感知抓握力度。需要按关节降权时，可在 21 点之上叠加 [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md) 的可见概率（HInt 上系统评过，不是检测器整手分）。
-- **代表项目**：AnyTeleop, DexCap；开源硬件侧 [RUKA-v2 Hand](../entities/ruka-v2-hand.md) 已集成 **AnyTeleop 向量重定向 + OpenTeach/Oculus VR** 遥操作管线；[MIDAS Hand](../entities/midas-hand.md) 提供 **MediaPipe 摄像头 + MANUS 手套** 双模态重定向与 **283 taxel 触觉同步流**（`midas-hand-org` 四仓库）。
+- **代表项目**：AnyTeleop；**[DexCap](../entities/paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti.md)**（SLAM+EMF 可穿戴 mocap → 点云 Diffusion Policy，MIT 已开源）；开源硬件侧 [RUKA-v2 Hand](../entities/ruka-v2-hand.md) 已集成 **AnyTeleop 向量重定向 + OpenTeach/Oculus VR** 遥操作管线；[MIDAS Hand](../entities/midas-hand.md) 提供 **MediaPipe 摄像头 + MANUS 手套** 双模态重定向与 **283 taxel 触觉同步流**（`midas-hand-org` 四仓库）。
 - **固定运动学外骨骼（产业参考）**：[mimic wearable U1](../entities/mimic-wearable-u1.md) 用 **刚性连杆强制 M1 可达空间**，复制腕相机与指尖触觉布局，以 **零软件重定向** 采集中层数据——与视觉方案互补，见 [mimic 数据金字塔](../entities/mimic-hand-m1.md#数据金字塔中的位置)。自变量 [TwinDEX](../entities/twindex.md)（2026-09）把同一思想做成 **三指 7 主动外骨骼 ↔ 同构机械手**，宣称纯 robot-free 数据的 data-efficiency 与真机遥操作重叠、吞吐 **5.3×**；**未开源**，勿与同机构 XRZero-G0（VR+夹爪）混为一谈。
 - **配对数据集参考**：[HRDexDB](../entities/hrdexdb-dataset.md) 采用 **XSens + MANUS 手套** 遥操 xArm6 + 多灵巧手，在 23 路同步相机下采集 **同物体人–机配对** 3D 轨迹与触觉（与纯视觉 teleop 的遮挡权衡不同）。
 
