@@ -14,6 +14,16 @@
 
 ---
 
+## 2026-09-17 — 下线 tech-map.html / module.html
+
+读者视角内容审计（[docs/checklists/reader-facing-content-audit-v1.md](checklists/reader-facing-content-audit-v1.md)）发现两页仍是施工期口径且主导航无入口，确认用不到后删除：
+
+- 删除 `docs/tech-map.html`、`docs/module.html` 与配套测试 `tests/test_tech_map_page.py`、`tests/test_module_page.py`。
+- `docs/main.js` 移除仅服务这两页的渲染链（`renderTechMapPage` / `renderTechMapNodes` / `renderTechMapFilters` / `renderTechMapGroupedNodes` / `renderTechMapNodeCard` / `renderModulePage`）与挂载分支，共 -355 行；`docs/style.css` 移除随之失去调用方的 `.ingest-badge` 规则。
+- `scripts/export_minimal.py` 的 sitemap 静态路由去掉 `/tech-map.html`（否则线上 sitemap 指向 404）；`tests/test_sitemap_routes.py` 静态路由数 4 → 3。
+- 遗留静态页 `docs/modules/*.html`、`docs/relations/*.html`（7 个）的导航条去掉指向已删除页面的「技术栈地图」链接。
+- `tech-map/*.md` 本身仍照常导出为 `detail.html` 详情页，知识内容不受影响。
+
 ## 2026-06-12 — 仓库清理第二批：站点大 JSON 改为部署时生成
 
 依据清理计划第二批（架构项）执行：
