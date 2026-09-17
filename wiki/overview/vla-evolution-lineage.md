@@ -18,10 +18,13 @@ related:
   - ../entities/paper-openvla.md
   - ../entities/isaac-gr00t.md
   - ../entities/gemini-robotics.md
+  - ../entities/helix-25.md
+  - ../entities/figure-ai.md
   - ../concepts/embodied-three-layer-control-architecture.md
   - ../concepts/foundation-policy.md
 sources:
   - ../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md
+  - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
 summary: "依据 PinkRobot 万字综述，把 VLA 主线整理为三次结构迁移（动作 token → 连续 Action Expert → 多时间尺度层级）与六代代表性工作；附动作表示机制对照与 System 2/1/0 频率分工。"
 ---
 
@@ -63,9 +66,10 @@ flowchart LR
   end
   subgraph p3 ["阶段③ 多时间尺度"]
     HX["Helix / Helix 02"]
+    H25["Helix 2.5 · Index 零样本家庭"]
     GR["GR00T N1.7"]
     PI07["π₀.7 / MEM / RLT"]
-    HX --> GR --> PI07
+    HX --> H25 --> GR --> PI07
   end
   p1 --> p2 --> p3
 ```
@@ -99,6 +103,7 @@ flowchart LR
 | 动作 token 效率 | FAST、OFT | 频域 token / 并行 chunk | [action-chunking](../methods/action-chunking.md) |
 | 人形工业 VLA | GR00T N1.7 | Flow DiT + 部署导出 | [Isaac GR00T](../entities/isaac-gr00t.md) |
 | 三系统全身 | Helix 02 | 7–9 / 200 / 1000 Hz | [Gemini / Figure 对照](../entities/gemini-robotics.md) |
+| Index 预训练 + 家庭零样本 | Helix 2.5 | 单基座 · 30 unseen homes · 56% vs 9% ablation | [Helix 2.5](../entities/helix-25.md) |
 | 经验与记忆 | π\*₀.₆、MEM、RLT、π₀.7 | RECAP、多尺度记忆、steering | [π₀.₇](../methods/pi07-policy.md) |
 
 ## 动作表示机制选型
@@ -169,8 +174,10 @@ flowchart TB
 - [RT-2 项目页](https://robotics-transformer2.github.io/)
 - [Physical Intelligence · π₀](https://www.pi.website/blog/pi0)
 - [Figure · Helix 02](https://www.figure.ai/news/helix-02)
+- [Figure · Helix 2.5](https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization)
 - [Open X-Embodiment](https://robotics-transformer-x.github.io/)
 
 ## 参考来源
 
 - [PinkRobot · VLA 演进：从动作 Token 到分层具身智能体](../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md)
+- [Figure · Helix 2.5 官方新闻归档](../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md)
