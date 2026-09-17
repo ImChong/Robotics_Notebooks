@@ -3267,6 +3267,7 @@
 - [VMamba](wiki/entities/vmamba.md) — VMamba 提出 2D 选择性扫描（SS2D）等视觉化状态空间模块，构建分层 Visual State Space 骨干，在分类/检测/分割上挑战 ViT。 `📅unknown` `[entity_page]`
 - [Voxgraph](wiki/entities/voxgraph.md) — Voxgraph** 在 **TSDF 子图** 上进行 **位姿图优化**，适合多会话对齐与稠密地图融合。 `📅unknown` `[entity_page]`
 - [WalkTheDog](wiki/entities/walk-the-dog.md) — WalkTheDog**（*Cross-Morphology Motion Alignment via Phase Manifolds*，SIGGRAPH 2024）由 Peizhuo Li 等提 `📅unknown` `[entity_page]`
+- [Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond](wiki/entities/walterzhu-astra-and-beyond.md) — Walter Zhu（朱文涛，@walterzhu8）** 2026-09-16 在 X 发布的 [长文](https://x.com/walterzhu8/status/210025599936 `📅unknown` `[entity_page]`
 - [WaytoAGI（通往 AGI 之路）](wiki/entities/waytoagi.md) — WaytoAGI**（飞书知识库首页 <https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e>，官网 <https://www.w `📅unknown` `[entity_page]`
 - [wbc_fsm (G1 全身控制 FSM 部署框架)](wiki/entities/wbc-fsm.md) — wbc_fsm** 是 **ccrpRepo / ZSTU Robotics** 针对 **Unitree G1** 人形机器人开发的 C++ 部署框架，以**有限状态机（FSM）**组织多种控制 `📅unknown` `[entity_page]`
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`

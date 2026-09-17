@@ -1,37 +1,26 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4080,
-  "edge_count": 36642,
+  "node_count": 4081,
+  "edge_count": 36654,
   "coverage": {
-    "covered": 4052,
-    "total": 4052,
+    "covered": 4053,
+    "total": 4053,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/walterzhu-astra-and-beyond.md",
+      "detail_id": "entity-walterzhu-astra-and-beyond",
+      "label": "Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/rle-bench.md",
       "detail_id": "entity-rle-bench",
       "label": "RLE-Bench（Coding Agent 机器人学习工程资格考）",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
-      "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
-      "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
-      "type": "concept",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neurovla.md",
-      "detail_id": "entity-paper-neurovla",
-      "label": "NeuroVLA：脑启发流体反射具身控制",
       "type": "entity",
       "recency": "2026-09-16",
       "source": "git",
@@ -207,17 +196,26 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
+      "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
+      "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
+      "type": "concept",
+      "recency": "2026-09-16",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/rle-bench.md",
-    "detail_id": "entity-rle-bench",
-    "label": "RLE-Bench（Coding Agent 机器人学习工程资格考）",
+    "path": "wiki/entities/walterzhu-astra-and-beyond.md",
+    "detail_id": "entity-walterzhu-astra-and-beyond",
+    "label": "Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond",
     "type": "entity",
-    "recency": "2026-09-16",
+    "recency": "2026-09-17",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
@@ -266,7 +264,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 996,
+      "degree": 997,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -281,7 +279,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 914,
+      "degree": 915,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

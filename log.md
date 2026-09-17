@@ -1,3 +1,5 @@
+## [2026-09-17] ingest | Walter Zhu X 长文 — 升格独立实体 wiki/entities/walterzhu-astra-and-beyond.md（GPT-6 Astra 概念解读）
+
 ## [2026-09-16] ingest | RLE-Bench — 接入 coding agent 机器人学习工程资格考（Harvard×GT）；sources 四件 + wiki/entities/rle-bench.md；MIT 仓已开源
 
 ## [2026-09-16] ingest | sources/papers/lsrm_object_reconstruction_arxiv_2604_05182.md — LSRM 复核增强：Meta Reality Labs 机构对齐、NSA/三贡献/README 复现路径、CC BY-NC 4.0；NVIDIA 仅作 H200/Tensor Core 工程语境
