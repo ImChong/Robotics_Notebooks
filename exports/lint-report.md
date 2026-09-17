@@ -2,7 +2,7 @@
 
 ## [2026-09-17] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **19** 条信息型预警）：
+共发现 **0** 个问题（另含 **20** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,8 +94,8 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-bifur-circuits.md
 
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（15 个）
 - wiki/entities/paper-activescale.md（缺 对比）
@@ -121,9 +121,9 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（3 个）
-- wiki/entities/paper-livecook.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/paper-groot-drifting-action-head.md updated=2026-09-17）
+- wiki/entities/paper-livecook.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/paper-bifur-circuits.md updated=2026-09-17）
 - wiki/entities/paper-pelican-sim.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/dexbench.md updated=2026-09-17）
-- wiki/entities/paper-streaming-interventions.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/paper-groot-drifting-action-head.md updated=2026-09-17）
+- wiki/entities/paper-streaming-interventions.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/paper-bifur-circuits.md updated=2026-09-17）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -143,4 +143,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-activescale.md
 
-📊 Sources 覆盖率：4074/4074 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4075/4075 (100%) wiki/entity 页有 ingest 来源
