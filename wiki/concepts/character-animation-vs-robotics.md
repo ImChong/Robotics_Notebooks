@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-09-15
+updated: 2026-09-17
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -22,6 +22,7 @@ related:
   - ../entities/robot-motion-keyframe-editors.md
   - ../entities/generative-motion-rig.md
   - ../entities/rigmo.md
+  - ../entities/paper-scail-2.md
   - ../entities/paper-nap-control.md
   - ../entities/blender.md
   - ../entities/manim.md
@@ -146,6 +147,8 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 - 与 ASE 等 latent 技能做「艺术家可拖动」的高层接口。
 
 **生成式 DCC 绑定（Disney Generative Motion Rig，SIGGRAPH Talks 2026）：** [Generative Motion Rig](../entities/generative-motion-rig.md) 把通用 betweener 嵌进 **Blender 插件**，用稀疏关键帧 / Neural Motion Curves / 噪声采样做 **generative keyframing**，并与传统 FK 层混合——这是 **角色动画端** 的生成式操控形态（插件未开源）。同组 [Scheduled Inpainting / GME](../entities/paper-scheduled-inpainting-gme.md)（arXiv:2607.29133）补 **exemplar MoCap 保留式编辑**（延长/拼接/合成 + direct manipulation，training-free 推理）。资产发现侧对照：[RigMo](../entities/rigmo.md) 从无标注 mesh 序列学 Gaussian bones，产出可动画结构而非 DCC UI。注意缩写 **GMR** 在仓库内默认指 [General Motion Retargeting](../methods/motion-retargeting-gmr.md)。
+
+**端到端视频角色动画（SCAIL-2，arXiv:2606.10804）：** [SCAIL-2](../entities/paper-scail-2.md) 在 **latent 视频扩散** 上用 In-Context mask + Mode-Specific RoPE **统一**单/多角色动画与替换，**bypass skeleton/inpainting 中间表示**；官方已开源推理与 HF 权重。输出仍是 **2D 视频表演**，真机需经 retarget + 物理筛选——与 DeepMimic/AMP 的 **3D 物理角色** 及 Disney GMR 的 **DCC 关键帧** 形成第三条「纯生成视频」切片。
 
 ## 决策矩阵（什么时候应该用 character 视角）
 

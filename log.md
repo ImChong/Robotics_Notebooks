@@ -1,3 +1,5 @@
+## [2026-09-17] ingest | sources/papers/scail2_arxiv_2606_10804.md — SCAIL-2 端到端 in-context 角色动画；已开源推理/训练/HF 权重
+
 ## [2026-09-17] ingest | sources/sites/protobuf-dev-docs.md + sources/repos/protobuf.md — Protocol Buffers 一手资料（protobuf.dev + GitHub）；新建 `protocol-buffers` 实体；交叉 gRPC / RPC 概念；自动合并 PR
 
 - **触发：** 用户要求 Protobuf 一手资料 ingest

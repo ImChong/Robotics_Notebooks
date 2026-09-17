@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-17
 related:
   - ../entities/kimodo.md
   - ../entities/kimodo-cpp.md

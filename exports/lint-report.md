@@ -2,7 +2,7 @@
 
 ## [2026-09-17] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **18** 条信息型预警）：
+共发现 **0** 个问题（另含 **19** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,7 +97,7 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（14 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（15 个）
 - wiki/entities/paper-activescale.md（缺 对比）
 - wiki/entities/paper-convergent-binocular-stereo.md（缺 对比）
 - wiki/entities/paper-deformsmith.md（缺 评测 / 对比）
@@ -108,6 +108,7 @@
 - wiki/entities/paper-karma-hand-metric.md（缺 对比）
 - wiki/entities/paper-real-time-expo-ft.md（缺 评测 / 对比）
 - wiki/entities/paper-recmorph.md（缺 评测 / 对比）
+- wiki/entities/paper-scail-2.md（缺 对比）
 - wiki/entities/paper-strucphysvideo.md（缺 评测 / 对比）
 - wiki/entities/paper-weave.md（缺 评测 / 对比）
 - wiki/entities/paper-wetrobo.md（缺 评测 / 对比）
@@ -142,4 +143,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-activescale.md
 
-📊 Sources 覆盖率：4073/4073 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4074/4074 (100%) wiki/entity 页有 ingest 来源
