@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4087,
-  "edge_count": 36713,
+  "node_count": 4088,
+  "edge_count": 36723,
   "coverage": {
-    "covered": 4059,
-    "total": 4059,
+    "covered": 4060,
+    "total": 4060,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -26,8 +26,7 @@
       "recency": "2026-09-17",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/walterzhu-astra-and-beyond.md",
@@ -56,7 +55,7 @@
       "recency": "2026-09-17",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-recmorph.md",
@@ -85,7 +84,7 @@
       "recency": "2026-09-16",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-neurovla.md",
@@ -165,7 +164,8 @@
       "type": "entity",
       "recency": "2026-09-16",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-jeplo.md",
@@ -186,7 +186,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-proxidex.md",
@@ -204,8 +204,7 @@
       "type": "entity",
       "recency": "2026-09-16",
       "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
@@ -221,15 +220,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 631
-    },
-    {
-      "label": "仿真到现实",
-      "size": 425
+      "size": 611
     },
     {
       "label": "宇树 G1 人形机器人",
       "size": 423
+    },
+    {
+      "label": "全身控制",
+      "size": 343
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -237,7 +236,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 275
+      "size": 281
     },
     {
       "label": "机器人学习论文笔记",

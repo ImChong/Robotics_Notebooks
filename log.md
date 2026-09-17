@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | sources/blogs/wechat_zanehub_robot_joint_bearing_selection.md — Zane Hub 关节轴承选型（载荷路径/五笔账/润滑失效判据）；升格 `robot-joint-bearing-selection` 概念页
+
+- **触发：** 用户指定微信公众号 <https://mp.weixin.qq.com/s/rweTJtjvt8LaJLLM8eEYBg>
+- **步骤 2.5：** N/A（工程经验文，无项目代码）
+- **关键页：** 新建 [`robot-joint-bearing-selection`](wiki/concepts/robot-joint-bearing-selection.md)；交叉 Hardware 101 · 轴承 / 自研关节模组流程
+
 ## [2026-09-17] ingest | sources/papers/weave_arxiv_2609_16683.md — WEAVE 人–物 HOI → G1+Inspire dexterous loco-manipulation（清华/大工/港中文）；步骤 2.5 **已开源**
 
 - **触发：** 用户指定 WEAVE 项目页 ingest

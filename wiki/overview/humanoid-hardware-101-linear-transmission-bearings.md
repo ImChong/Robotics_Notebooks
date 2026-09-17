@@ -2,15 +2,17 @@
 type: overview
 tags: [humanoid, hardware, ball-screw, roller-screw, bearing, category-hub]
 status: complete
-updated: 2026-06-01
+updated: 2026-09-17
 summary: "Humanoid Hardware 101 · 03 直线传动与轴承 — 滚珠丝杠占 BOM ~20%、行星滚柱丝杠为膝踝髋瓶颈；交叉滚子轴承承弯矩。"
 related:
   - ./humanoid-hardware-101-technology-map.md
   - ./humanoid-hardware-101-actuation-sensing-chain.md
   - ./humanoid-hardware-101-integrated-actuators.md
+  - ../concepts/robot-joint-bearing-selection.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/blogs/wechat_zanehub_robot_joint_bearing_selection.md
 ---
 
 # Humanoid Hardware 101 · 03：直线传动与轴承
@@ -38,6 +40,7 @@ sources:
 
 - 深沟球、角接触、推力等按载荷选型；**交叉滚子轴承** 同时抗径向/轴向/弯矩，用于髋膝肩腕等核心关节。
 - 手部微型高精度轴承难享大宗规模效应。
+- **深度选型：** 谐波柔性轴承、RV 主轴承、载荷谱寿命与预紧配合见 [机器人关节轴承选型](../concepts/robot-joint-bearing-selection.md)（Zane Hub，2026-09-17）。
 
 ## 关联页面
 

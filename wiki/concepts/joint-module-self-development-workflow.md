@@ -13,6 +13,7 @@ related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/field-oriented-control.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ./robot-joint-bearing-selection.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../../roadmap/depth-humanoid-hardware-design.md
 sources:
