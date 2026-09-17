@@ -2,17 +2,17 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-09-15
-summary: "机器人系统工程知识链：操作系统/网络/数据面/分布式/容器可观测安全，以及 RTOS、DDS、边云、频率解耦、OTA 与安全状态机；标注已有独立节点与本次新建节点。"
+updated: 2026-09-17
+summary: "机器人系统工程知识链：按实时控制面 / 机载软件面 / 数据与服务面 / 部署与运维面 / 安全与合规五层，索引 OS、IPC、网络、数据库、缓存、消息、分布式、容器、可观测性、RTOS、DDS、边云、频率解耦、OTA 与安全状态机等站内节点。"
 ---
 
 # 机器人系统工程（知识链汇总）
 
-> **知识链入口**：本页是「系统工程 / Systems Engineering」知识链入口，覆盖从 Linux 主控到云边发布的非算法基座能力。
+> **知识链入口**：本页是「系统工程 / Systems Engineering」知识链的统一入口，覆盖从驱动器 MCU 到云端发布的非算法基座能力；图谱视角见 [路线视图](../../docs/graph.html?depth=humanoid-hardware-design)。
 
 ## 一句话定义
 
-**机器人系统工程知识链** 回答：策略与控制之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界。
+**机器人系统工程知识链** 回答：策略与控制算法之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界在哪里。
 
 ## 英文缩写速查
 
@@ -28,31 +28,30 @@ summary: "机器人系统工程知识链：操作系统/网络/数据面/分布�
 ## 为什么重要
 
 - 人形/足式落地故障大量来自 **调度抖动、总线超时、错误的中间件选型、无安全 FSM、不可回滚的模型更新**，而非单点 reward 设计。
-- 研发效率依赖 **容器化训练、可观测性、数据面一致性**；与 1 kHz 运控环是两套语义，必须分层。
+- 研发效率依赖 **容器化训练、可观测性、数据面一致性**；这与 1 kHz 运控环是两套语义，必须分层看待。
 
-## 主题盘点：已有 vs 新建
+## 本知识链覆盖什么
 
-| 主题簇 | 状态 | 独立节点 |
-|--------|------|----------|
-| 操作系统（进程/线程/内存/FS/调度） | **新建** | [operating-system-basics](../concepts/operating-system-basics.md) |
-| 进程间通信（IPC 原语与中间件分层） | **新建** | [ipc-inter-process-communication](../concepts/ipc-inter-process-communication.md) |
-| 网络（TCP/UDP/HTTP/DNS/TLS/LB） | **新建**（UDP 组播形式化已有） | [network-protocol-stack](../concepts/network-protocol-stack.md)、[udp-multicast-dynamics](../formalizations/udp-multicast-dynamics.md) |
-| 数据库（索引/事务/锁/隔离/复制/分片） | **新建** | [database-fundamentals](../concepts/database-fundamentals.md) |
-| 缓存（穿透/雪崩/击穿/一致性） | **新建** | [cache-consistency-pitfalls](../concepts/cache-consistency-pitfalls.md) |
-| 消息系统（队列/重复/顺序/幂等） | **新建** | [message-queue-reliability](../concepts/message-queue-reliability.md) |
-| 分布式（CAP/选主/一致性/超时/重试） | **新建** | [distributed-systems-basics](../concepts/distributed-systems-basics.md) |
-| 容器与部署（Docker/K8s/CI·CD） | **新建** | [container-orchestration-cicd](../concepts/container-orchestration-cicd.md) |
-| 可观测性（Logs/Metrics/Tracing） | **新建** | [observability-logs-metrics-tracing](../concepts/observability-logs-metrics-tracing.md) |
-| 安全（认证/授权/密钥/供应链） | **新建** | [software-security-basics](../concepts/software-security-basics.md)；工具实体 [Codex Security](../entities/codex-security.md) |
-| 实时 OS 与实时调度 | **新建**（查询页已有实践） | [rtos-realtime-scheduling](../concepts/rtos-realtime-scheduling.md)、[real-time-control-middleware-guide](../queries/real-time-control-middleware-guide.md) |
-| ROS 2 | **已有** | [ros2-basics](../concepts/ros2-basics.md) |
-| DDS 通信机制 | **新建**（原仅嵌在 ROS 2 页） | [dds-communication](../concepts/dds-communication.md) |
-| CAN / EtherCAT / UDP | **已有** | [can-bus-protocol](../concepts/can-bus-protocol.md)、[ethercat-protocol](../concepts/ethercat-protocol.md)、[udp-multicast-dynamics](../formalizations/udp-multicast-dynamics.md) |
-| 边缘计算与云端协同 | **新建** | [edge-cloud-robotics](../concepts/edge-cloud-robotics.md) |
-| 控制频率与推理频率解耦 | **新建** | [control-inference-frequency-decoupling](../concepts/control-inference-frequency-decoupling.md) |
-| 模型版本管理与 OTA | **新建** | [model-versioning-ota](../concepts/model-versioning-ota.md) |
-| 硬件/通信故障与安全状态机 | **新建**（实体 FSM 已有） | [robot-safety-state-machine](../concepts/robot-safety-state-machine.md)、[wbc-fsm](../entities/wbc-fsm.md) |
-| 工业功能安全认证边界 | **已有论文实体** | [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 人形主动安全态 vs ISO 13849 切电 |
+| 层次 | 读者常问的问题 | 站内入口 |
+|------|----------------|----------|
+| **实时控制面** | 控制环为什么抖？截止时间怎么保证？ | [RTOS 与实时调度](../concepts/rtos-realtime-scheduling.md)、[实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md) |
+| | 大模型推理慢，控制环怎么不被拖垮？ | [控制频率与推理频率解耦](../concepts/control-inference-frequency-decoupling.md) |
+| | 通信断了、驱动器报错，机器人该进什么状态？ | [机器人安全状态机](../concepts/robot-safety-state-machine.md)、[WBC FSM](../entities/wbc-fsm.md) |
+| | 关节数据走哪条总线？ | [CAN 总线](../concepts/can-bus-protocol.md)、[EtherCAT](../concepts/ethercat-protocol.md)、[UDP 组播动力学](../formalizations/udp-multicast-dynamics.md) |
+| **机载软件面** | 进程、线程、内存、调度如何影响机器人程序？ | [操作系统基础](../concepts/operating-system-basics.md) |
+| | 同机多进程之间怎么传数据最快？ | [进程间通信（IPC）](../concepts/ipc-inter-process-communication.md) |
+| | ROS 2 的节点/话题/QoS 怎么用？底下发生了什么？ | [ROS 2 基础](../concepts/ros2-basics.md)、[DDS 通信机制](../concepts/dds-communication.md) |
+| **数据与服务面** | TCP/UDP/HTTP/DNS/TLS 在遥测与远程运维里怎么选？ | [网络协议栈](../concepts/network-protocol-stack.md) |
+| | 采集数据怎么存、怎么查得快？ | [数据库基础](../concepts/database-fundamentals.md) |
+| | 缓存为什么会穿透/雪崩/读到脏数据？ | [缓存一致性陷阱](../concepts/cache-consistency-pitfalls.md) |
+| | 消息重复、乱序、丢失怎么办？ | [消息队列可靠性](../concepts/message-queue-reliability.md) |
+| | 多机/多服务的一致性与超时重试怎么设计？ | [分布式系统基础](../concepts/distributed-systems-basics.md) |
+| **部署与运维面** | 训练与部署环境怎么复现？怎么自动发布？ | [容器编排与 CI/CD](../concepts/container-orchestration-cicd.md) |
+| | 出了问题怎么定位？该采哪些信号？ | [可观测性：日志/指标/链路](../concepts/observability-logs-metrics-tracing.md) |
+| | 策略模型怎么灰度、怎么回滚？ | [模型版本管理与 OTA](../concepts/model-versioning-ota.md) |
+| | 哪些算力放机上、哪些放云端？断网怎么办？ | [边缘计算与云端协同](../concepts/edge-cloud-robotics.md) |
+| **安全与合规** | 认证、授权、密钥、供应链风险怎么管？ | [软件安全基础](../concepts/software-security-basics.md)、[Codex Security](../entities/codex-security.md) |
+| | 工业功能安全认证能直接套到人形上吗？ | [Fail-Passive Gap](../entities/paper-fail-passive-gap.md)（人形主动安全态 vs ISO 13849 切电） |
 
 ## 分层读法
 
@@ -67,9 +66,22 @@ flowchart TB
   cloud --> edge --> host --> rt --> bus --> mcu
 ```
 
-- **数据面**（DB/缓存/消息/分布式/容器/安全）服务云与边。
-- **控制面**（RTOS、总线、频率解耦、安全 FSM）服务机载截止时间。
-- 中间件选型见 [通信协议知识链](./hub-communication.md)。
+- **数据面**（数据库/缓存/消息/分布式/容器/安全）服务云与边，语义是吞吐与一致性。
+- **控制面**（RTOS、总线、频率解耦、安全 FSM）服务机载截止时间，语义是最坏延迟。
+- 两者交界处的中间件选型见 [通信协议知识链](./hub-communication.md)。
+
+## 从哪里开始读
+
+- **在调实时控制环** → [操作系统基础](../concepts/operating-system-basics.md) → [RTOS 与实时调度](../concepts/rtos-realtime-scheduling.md) → [控制/推理频率解耦](../concepts/control-inference-frequency-decoupling.md) → [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
+- **在搭训练与部署栈** → [容器编排与 CI/CD](../concepts/container-orchestration-cicd.md) → [可观测性](../concepts/observability-logs-metrics-tracing.md) → [模型版本管理与 OTA](../concepts/model-versioning-ota.md) → [边缘计算与云端协同](../concepts/edge-cloud-robotics.md)
+- **在做上机安全设计** → [机器人安全状态机](../concepts/robot-safety-state-machine.md) → [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) → [软件安全基础](../concepts/software-security-basics.md)
+
+## 与其他知识链的关系
+
+- **[硬件通信与协议](./hub-communication.md)**：本页负责 OS/部署/安全语义，总线与中间件的横向选型在通信链。
+- **[WBC](./hub-wbc.md)**：全身控制的截止时间预算依赖本页的实时调度与安全 FSM。
+- **[状态估计](./hub-state-estimation.md)**：多传感器时间对齐依赖通信与时钟层能力。
+- **[数据管线](./hub-data-pipeline.md)**：采集数据的存储、消息与可观测基础设施在本页。
 
 ## 关联页面
 
@@ -78,8 +90,6 @@ flowchart TB
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [Deployment 技术地图](../../tech-map/modules/system/deployment.md)
-- [Codex Security](../entities/codex-security.md)（AppSec CLI/SDK，挂 CI 的可选扫描层）
-- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 认证外部链 vs 机侧未评级反应链
 
 ## 参考来源
 
