@@ -1,52 +1,51 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4082,
-  "edge_count": 36670,
+  "node_count": 4086,
+  "edge_count": 36703,
   "coverage": {
-    "covered": 4054,
-    "total": 4054,
+    "covered": 4058,
+    "total": 4058,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-karma-hand-metric.md",
-      "detail_id": "entity-paper-karma-hand-metric",
-      "label": "KaRMA：机器人手精细操作运动学指标",
+      "path": "wiki/entities/paper-groot-drifting-action-head.md",
+      "detail_id": "entity-paper-groot-drifting-action-head",
+      "label": "GR00T Drifting Action Head：单步 VLA 速度–成功率审计",
       "type": "entity",
       "recency": "2026-09-17",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/entities/walterzhu-astra-and-beyond.md",
-      "detail_id": "entity-walterzhu-astra-and-beyond",
-      "label": "Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond",
+      "path": "wiki/entities/paper-real-time-expo-ft.md",
+      "detail_id": "entity-paper-real-time-expo-ft",
+      "label": "Real-Time EXPO-FT：实时残差 RL 修正 VLA",
       "type": "entity",
       "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
-      "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
-      "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
-      "type": "concept",
-      "recency": "2026-09-16",
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-neurovla.md",
-      "detail_id": "entity-paper-neurovla",
-      "label": "NeuroVLA：脑启发流体反射具身控制",
+      "path": "wiki/entities/paper-recmorph.md",
+      "detail_id": "entity-paper-recmorph",
+      "label": "RecMorph：跨形态共享控制策略",
       "type": "entity",
-      "recency": "2026-09-16",
+      "recency": "2026-09-17",
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-wholebodywam-unimotion-4k.md",
+      "detail_id": "entity-paper-wholebodywam-unimotion-4k",
+      "label": "WholeBodyWAM · UniMotion-4K（4100 小时全身运动世界模型）",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/rle-bench.md",
@@ -116,8 +115,7 @@
       "type": "entity",
       "recency": "2026-09-16",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-jeplo.md",
@@ -138,7 +136,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-proxidex.md",
@@ -156,7 +154,8 @@
       "type": "entity",
       "recency": "2026-09-16",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-robresilience.md",
@@ -166,7 +165,8 @@
       "recency": "2026-09-16",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/entities/paper-slotdit.md",
@@ -175,8 +175,7 @@
       "type": "entity",
       "recency": "2026-09-16",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-stereopatch.md",
@@ -195,8 +194,7 @@
       "type": "entity",
       "recency": "2026-09-16",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/overview/vla-deploy-12-papers-technology-map.md",
@@ -209,28 +207,27 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-karma-hand-metric.md",
-    "detail_id": "entity-paper-karma-hand-metric",
-    "label": "KaRMA：机器人手精细操作运动学指标",
+    "path": "wiki/entities/paper-groot-drifting-action-head.md",
+    "detail_id": "entity-paper-groot-drifting-action-head",
+    "label": "GR00T Drifting Action Head：单步 VLA 速度–成功率审计",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 636
+      "size": 631
     },
     {
       "label": "仿真到现实",
-      "size": 427
+      "size": 425
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 420
+      "size": 423
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -238,11 +235,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 288
+      "size": 275
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 217
+      "size": 218
     }
   ],
   "top_hubs": [
@@ -250,7 +247,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1534,
+      "degree": 1536,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -266,7 +263,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 997,
+      "degree": 1002,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -274,7 +271,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 950,
+      "degree": 951,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -353,7 +350,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 64
+      "degree": 65
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

@@ -21,6 +21,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-dido-wam.md
+  - ./paper-wholebodywam-unimotion-4k.md
   - ../overview/vla-deploy-12-papers-technology-map.md
 sources:
   - ../../sources/papers/wholebodywam_arxiv_2609_16644.md
@@ -32,6 +33,8 @@ summary: "WholeBodyWAM（arXiv:2609.16644，CUHK/HKU/PKU/Φ）：保留预训练
 # WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调
 
 **WholeBodyWAM**（*WholeBodyWAM: Generalizing Pre-trained World-Action Priors to Humanoid Loco-Manipulation via WBC-Grounded Coordination*，[arXiv:2609.16644](https://arxiv.org/abs/2609.16644)，[项目页](https://wholebodywam.github.io/)）由 **香港中文大学（CUHK）**、**香港大学（HKU）**、**北京大学（PKU）** 与 **斐研究院（Phi Institute / Φ-Institute）** 提出：在共享 Diffusion Transformer 内 **保留** 预训练视觉—操作先验，通过 **UWBC 统一全身控制接口** 与 **CASA 协调注意力** 将世界—动作模型 **接地** 到异构 WBC，使人形 loco-manipulation 不必从零重学全身行为。
+
+> **同名区分：** 另一篇 WholeBodyWAM（arXiv:[2609.18197](https://arxiv.org/abs/2609.18197)，UniMotion-4K motion prior + MoT，南开/清华等）见 [paper-wholebodywam-unimotion-4k](./paper-wholebodywam-unimotion-4k.md)。
 
 ## 一句话定义
 

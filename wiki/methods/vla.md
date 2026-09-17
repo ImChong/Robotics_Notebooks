@@ -570,6 +570,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [DeicticVLA](../entities/paper-deicticvla.md) — LI/VLI/VI 三模式 click→mask 统一 π₀ 策略；LIBERO 子集系统对照 VP/MP 与两阶段训练（arXiv:2608.28108；未开源）
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；中间已承诺动作 + 中间观测条件 DSRL（arXiv:2608.23831；确认未开源）
 - [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL 微调 π₀.₅（arXiv:2608.29768；项目页 2026-09-04 已上线，仍未开源）
+- [Real-Time EXPO-FT](../entities/paper-real-time-expo-ft.md) — EXPO-FT + 慢 VLA 提案 / 快 edit / Q 选 chunk 的实时 RL 微调（arXiv:2609.18207；待发布）
+- [GR00T Drifting Action Head](../entities/paper-groot-drifting-action-head.md) — GR00T N1.7 单步 action head 速度–成功率审计（arXiv:2609.18108；LeRobot fork 已开源）
 - [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — VLA 的数据/实时/记忆/最后一毫米卡点与「RL 作后训练」坐标
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间；确认未开源（arXiv:2608.14028）
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件；工具仓已开源（arXiv:2608.14284）

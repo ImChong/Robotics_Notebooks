@@ -1,6 +1,8 @@
-## [2026-09-17] ingest | KaRMA（MIT IROS 2026）— URDF 手内 rolling-pinch 运动学指标 KaRMA-T/R/S；sources 三件 + paper-karma-hand-metric 实体；GitHub 已开源
+## [2026-09-17] ingest | WholeBodyWAM·UniMotion-4K / Real-Time EXPO-FT / GR00T Drifting / RecMorph — 四篇 arXiv:2609.18197–18359 批量入库
 
-## [2026-09-17] ingest | Walter Zhu X 长文 — 升格独立实体 wiki/entities/walterzhu-astra-and-beyond.md（GPT-6 Astra 概念解读）
+- **触发：** 用户指定四论文 + 项目/仓库链接；自动合并 PR
+- **步骤 2.5：** WholeBodyWAM·UniMotion / Real-Time EXPO-FT **待发布**；GR00T Drifting（LeRobot fork + HF）/ RecMorph **已开源**
+- **关键页：** 新建 `paper-wholebodywam-unimotion-4k`、`paper-real-time-expo-ft`、`paper-groot-drifting-action-head`、`paper-recmorph`；`paper-wholebodywam` 补同名异文交叉引用
 
 ## [2026-09-16] ingest | RLE-Bench — 接入 coding agent 机器人学习工程资格考（Harvard×GT）；sources 四件 + wiki/entities/rle-bench.md；MIT 仓已开源
 

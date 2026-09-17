@@ -1111,6 +1111,7 @@
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
 - [GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap](wiki/entities/paper-grip.md) — GRIP**（*Ground Reaction Inertial Poser*；arXiv:2603.16233，CVPR  `📅unknown` `[entity_page]`
 - [Gripper MagBot（arXiv:2609.12883）](wiki/entities/paper-gripper-magbot.md) — Gripper MagBot**（[From Transportation to Manipulation: Enabling Grasping in Magnetic Robotics](htt `📅unknown` `[entity_page]`
+- [GR00T Drifting Action Head：单步 VLA 速度–成功率审计](wiki/entities/paper-groot-drifting-action-head.md) — One-Step Drifting Action Heads for GR00T N1.7**（[arXiv:2609.18108](https://arxiv.org/abs/2609.1810 `📅unknown` `[entity_page]`
 - [GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来](wiki/entities/paper-gsr-paravla.md) — Grounded Semantic Re-binding（GSR）**（arXiv:2608.02497，[代码](http `📅unknown` `[entity_page]`
 - [GTA-2（arXiv:2609.09808）](wiki/entities/paper-gta-2.md) — GTA-2**（[GTA-2: A Multi-VLM Framework for Synthesizing Robot Manipulation Skills via Grounded Task `📅unknown` `[entity_page]`
 - [GVLA：夹爪感知的视觉–语言–动作模型](wiki/entities/paper-gvla-gripper-aware-vla.md) — GVLA**（*Gripper-aware Vision Language Action Models*，[arXiv:2608.24603](https://arxiv.org/abs/2608 `📅unknown` `[entity_page]`
@@ -1889,7 +1890,9 @@
 - [ReactHuman（arXiv:2609.10895）](wiki/entities/paper-reacthuman.md) — ReactHuman**（[ReactHuman: A Physics-Grounded Benchmark for Human-Like Reactive Decision-Making in  `📅unknown` `[entity_page]`
 - [ReactiveBFM](wiki/entities/paper-reactivebfm.md) — ReactiveBFM** 是港中大与上海人工智能实验室提出的 **闭环全身运动规划–控制** 框架（arXiv:2606.30362，[项目页](https://xiao-chen.tech/r `📅unknown` `[entity_page]`
 - [真机双臂灵巧抓取：单视角也要协作接触](wiki/entities/paper-real-bi-dex-grasp.md) — 真机双臂灵巧抓取**（*Real-World Cooperative Bimanual Dexterous Grasp of Large Objects from Single-View Obse `📅unknown` `[entity_page]`
+- [Real-Time EXPO-FT：实时残差 RL 修正 VLA](wiki/entities/paper-real-time-expo-ft.md) — Real-Time EXPO-FT**（*Reinforcement Learning for Real-Time Vision-Language-Action Policies*，[arXiv: `📅unknown` `[entity_page]`
 - [REALM（Last-3-Meter VLN · 实例级接地）](wiki/entities/paper-realm-last-3-meter-vln-grounding.md) — REALM**（*From Region Arrival to Instance-Level Grounding in Vision-and-Language Navigation*，arXiv: `📅unknown` `[entity_page]`
+- [RecMorph：跨形态共享控制策略](wiki/entities/paper-recmorph.md) — RecMorph**（*Topology-Guided Spatial Recurrence for Generalized Morphology Control*，[arXiv:2609.183 `📅unknown` `[entity_page]`
 - [Redwood（Architect Labs AI 加速器）](wiki/entities/paper-redwood-architectlabs-accelerator.md) — Redwood**（*Redwood: A Frontier AI Accelerator Designed, Verified, and Deployed from Scratch in 2 W `📅unknown` `[entity_page]`
 - [ReferTrack（Referring Then Tracking · arXiv:2607.20061）](wiki/entities/paper-refertrack.md) — ReferTrack**（*Referring Then Tracking for Embodied Visual Tracking*，[arXiv:2607.20061](https://arx `📅unknown` `[entity_page]`
 - [ReflexVLA：动态任务低延迟 VLA](wiki/entities/paper-reflexvla.md) — ReflexVLA**（*Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Criti `📅unknown` `[entity_page]`
@@ -3013,6 +3016,7 @@
 - [WCM：给 VLA 强化学习换一个会预测世界的 Critic](wiki/entities/paper-wcm-world-critic-model.md) — WCM**（*World Critic Model*；论文 *WCM: A World Critic Model for Vision-Language-Action Reinforcement  `📅unknown` `[entity_page]`
 - [WEM（World-Ego Modeling / World-Ego Model）](wiki/entities/paper-wem-world-ego-modeling.md) — WEM**（*World-Ego Model*，arXiv:2605.19957，项目页，[代码](https://g `📅unknown` `[entity_page]`
 - [Whole-Body Behaviors（HMI P002）](wiki/entities/paper-whole-body-behaviors-primitives.md) — Whole-Body Behaviors**（*Synthesis of Whole-Body Behaviors through Hierarchical Control of Behavior `📅unknown` `[entity_page]`
+- [WholeBodyWAM · UniMotion-4K（4100 小时全身运动世界模型）](wiki/entities/paper-wholebodywam-unimotion-4k.md) — WholeBodyWAM**（*Learning Whole-Body World Action Models with Scalable Motion Priors*，[arXiv:2609.1 `📅unknown` `[entity_page]`
 - [WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调](wiki/entities/paper-wholebodywam.md) — WholeBodyWAM**（*WholeBodyWAM: Generalizing Pre-trained World-Action Priors to Humanoid Loco-Manipu `📅unknown` `[entity_page]`
 - [Why Action Chunking Improves BC（延迟策略与隐式集成）](wiki/entities/paper-why-action-chunking-improves-bc.md) — Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[项目页](https: `📅unknown` `[entity_page]`
 - [Wid3R：相机模型条件化的宽视场 3D 重建](wiki/entities/paper-wid3r.md) — Wid3R**（*Wide Field-of-View 3D Reconstruction via Camera Model Conditioning*，arXiv:[2602.05321](ht `📅unknown` `[entity_page]`
