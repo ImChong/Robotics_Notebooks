@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: ['paper', 'vla', 'tooling', 'manipulation', 'sim2real']
+tags: ['paper', 'vla', 'coding-agents', 'manipulation', 'sim2real']
 status: complete
 updated: 2026-09-17
 arxiv: "2609.18435"
