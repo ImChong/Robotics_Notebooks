@@ -3,8 +3,9 @@
 type: entity
 tags: [hardware, humanoid, industry, vla, figure-ai]
 status: complete
-updated: 2026-09-07
+updated: 2026-09-17
 related:
+  - ./helix-25.md
   - ./humanoid-robot.md
   - ./1x-technologies.md
   - ./shift-app-nyc.md
@@ -14,6 +15,7 @@ related:
   - ../queries/embodied-six-routes-holes.md
 sources:
   - ../../sources/repos/figure-ai.md
+  - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/blogs/wechat_shenlan_embodied_six_routes_holes_2026-09-04.md
   - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
 summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。"
@@ -45,13 +47,14 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 |------|------|------|
 | **Figure 02** | 全尺寸人形整机 | 面向落地场景的第二代平台（细节以官方规格为准） |
 | **Helix / Helix 02** | VLA 家族 | 官方新闻稿：upper-body → full-body。深蓝 2026-09-04 转述其按时间尺度分层：System 2 语义、System 1 ~200 Hz 全身关节、System 0 ~1 kHz 平衡/接触——**以 Figure 博客为准** |
-| **Index** | 人视频数据平台 | App 下载 + 佩戴录制设备，用户完成日常任务获报酬（[LeoInAI 2026-09](../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md)）；同文转述截至 2026-08-25 自称累计超 **1600 万** 条真实世界视频 |
+| **Helix 2.5** | Index 预训练全身策略 | 2026-09-17：Index 从零预训练 → 三项 locomanipulation 微调 → **30 家庭零样本** 固定 checkpoint；Index ablation **9%→56%**；详见 [Helix 2.5](./helix-25.md) |
+| **Index** | 人视频数据平台 | App 下载 + 佩戴录制设备，用户完成日常任务获报酬（[LeoInAI 2026-09](../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md)）；同文转述截至 2026-08-25 自称累计超 **1600 万** 条真实世界视频；Helix 2.5 文称约 **35 分钟/秒** 新经验采集 |
 
 ## 常见误区或局限
 
 - **合作关系变化快**：曾与 OpenAI 在模型侧合作的新闻较多；后续转向自研 Helix。**选型讨论应以最新官方博客为准**，媒体报道仅作时间线辅助。
 - **演示 ≠ 量产能力**：语音指令、抓取未知物体等亮点多在受控或半受控场景验证。
-- **学术可用性**：Figure 不是典型「科研开箱平台」，复现其完整栈依赖未公开的模型与数据。
+- **学术可用性**：Figure 不是典型「科研开箱平台」，复现其完整栈依赖未公开的模型与数据；Helix 2.5 / Index **截至 2026-09-17 未开源**（见 [Helix 2.5 归档](../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md)）。
 
 ## 关联页面
 
@@ -65,6 +68,7 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 ## 参考来源
 
 - [Figure AI 原始资料](../../sources/repos/figure-ai.md)
+- [Helix 2.5 官方新闻归档](../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md)
 - [深蓝六条路线（转述 Helix 02 / Index）](../../sources/blogs/wechat_shenlan_embodied_six_routes_holes_2026-09-04.md)
 
 ## 推荐继续阅读

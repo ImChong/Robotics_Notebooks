@@ -211,7 +211,7 @@ sources:
 
 ## 一句话定义
 
-VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。在 [Foundation Policy](../concepts/foundation-policy.md) 抽象下，VLA 是 manipulation 域最主流的 foundation policy 实例。按历史脉络纵览 SayCan→RT-2→π₀→Helix 02 的三次结构迁移，见 [VLA 演进技术地图](../overview/vla-evolution-lineage.md)。
+VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。在 [Foundation Policy](../concepts/foundation-policy.md) 抽象下，VLA 是 manipulation 域最主流的 foundation policy 实例。按历史脉络纵览 SayCan→RT-2→π₀→Helix 02→[Helix 2.5](../entities/helix-25.md) 的三次结构迁移与 Index 家庭零样本泛化，见 [VLA 演进技术地图](../overview/vla-evolution-lineage.md)。
 
 ## 英文缩写速查
 

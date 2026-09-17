@@ -3,8 +3,9 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-16
+updated: 2026-09-17
 sources:
+  - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
@@ -364,6 +365,7 @@ flowchart TD
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术
 - [VLA](../methods/vla.md)
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind GR2：闭源全身 VLA + ER 编排的产业对照（权重未开源）
+- [Helix 2.5](../entities/helix-25.md) — Figure Index 预训练 + 30 家庭零样本 locomanipulation（整理/叠毛巾/铺床；Index ablation 9%→56%，2026-09 博客）
 - [FetchMan（论文实体）](../entities/paper-fetchman.md) — MolmoSpaces 15 万场景 BC+Flow-GRPO；G1 真机 loco-manip 73.3% zero-shot（arXiv:2608.17027；GitHub 占位仓，2026-09-01 前补代码）
 - [Flexion Reflect v1.0](../entities/flexion-reflect-v1.md) — 产业长程自主栈：Reflect-VLM mission + VLA/RL 运动 + Reflex WBC + FlexComm（2026-06 博客）
 - [OpenHLM（论文实体）](../entities/paper-loco-manip-161-154-openhlm.md) — 全身原生人形 VLA 经验配方（arXiv:2606.22174，已开源）

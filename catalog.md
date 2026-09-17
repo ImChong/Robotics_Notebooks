@@ -533,6 +533,7 @@
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
 - [hdl_graph_slam](wiki/entities/hdl-graph-slam.md) — hdl_graph_slam** 以 **NDT 配准 + 位姿图优化** 构建室外 3D 激光 SLAM。 `📅unknown` `[entity_page]`
+- [Helix 2.5（Index 预训练 · 30 家庭零样本全身）](wiki/entities/helix-25.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md) — Hermes Agent** 是 Nous Research 维护的开源自主代理栈（[NousResearch/hermes-agent `📅unknown` `[entity_page]`
 - [高擎机电（HighTorque Robotics）](wiki/entities/hightorque-robotics.md) — 高擎机电（HighTorque Robotics）** 是广州高擎机电科技有限公司旗下品牌，定位「具身智能时代的 PC」：用自研高功率密度关节模组，把 **65 cm 级小型人形（Mini Pi  `📅unknown` `[entity_page]`
 - [HIW-500（野外人形遥操作数据集）](wiki/entities/hiw-500-dataset.md) — HIW-500**（Humanoids In-the-Wild Dataset，<https://bitrobot-foundation.github.io/humanoids-in-the-wi `📅unknown` `[entity_page]`

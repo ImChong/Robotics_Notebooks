@@ -1,3 +1,5 @@
+## [2026-09-17] ingest | sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md — Helix 2.5 Index 预训练与 30 家庭零样本全身 locomanipulation；未开源
+
 ## [2026-09-17] ingest | sources/papers/cap-perception-blind-humanoid_arxiv_2609_11553.md — CAP 单策略 WM 去噪人形行走；步骤 2.5 代码待发布；交叉楼梯障碍/loco/WM 方法页；自动合并 PR
 
 - **触发：** 用户指定项目页 + GitHub + arXiv:2609.11553
