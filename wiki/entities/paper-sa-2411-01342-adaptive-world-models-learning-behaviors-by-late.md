@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2411.01342"
 venue: "arXiv 2024"
 summary: "Learns behaviors by latent imagination under non-stationarity."

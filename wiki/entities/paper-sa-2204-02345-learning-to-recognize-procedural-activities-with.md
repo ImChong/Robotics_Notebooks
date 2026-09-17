@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2204.02345"
 venue: "CVPR 2022"
 summary: "Distant supervision based procedural activity recognition framework"

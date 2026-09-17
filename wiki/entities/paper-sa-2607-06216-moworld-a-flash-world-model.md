@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.06216"
 venue: "arXiv 2026"
 summary: "First NPU-based real-time interactive world model achieving 50 FPS with 30%-50% inference cost."

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.06561"
 venue: "arXiv 2026"
 summary: "A two-stage framework for egocentric 4D reasoning tasks featuring task-adaptive thinking templates and reward functions that improve performance on complex spatial and temporal reasoning challenges"

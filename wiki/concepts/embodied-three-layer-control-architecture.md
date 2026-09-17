@@ -9,7 +9,8 @@ related:
   - ./whole-body-control.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
-  - ../methods/mpc.md
+  - ../methods/model-predictive-control.md
+  - ../overview/hub-embodied-foundation-model.md
   - ../tasks/locomotion.md
   - ../entities/paper-neurovla.md
 sources:
@@ -124,6 +125,7 @@ flowchart TB
 - [人形策略网络架构](./humanoid-policy-network-architecture.md) — 高层大模型与低层小 MLP 共存
 - [Locomotion](../tasks/locomotion.md) — 任务层评价与能力需求
 - [NeuroVLA](../entities/paper-neurovla.md) — 生物启发三层 VLA 实例
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 大脑层选哪一类模型（VLM/VLN/VLA/VLX/WM）由该闭环定口径
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2508.01915"
 venue: "IEEE TVCG 2025"
 summary: "Audio-event triggered selective frame capture reducing total power consumption by 87%"

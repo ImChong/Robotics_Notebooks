@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2507.12508"
 venue: "arXiv 2025"
 summary: "Test-time scaling with world models for spatial reasoning."

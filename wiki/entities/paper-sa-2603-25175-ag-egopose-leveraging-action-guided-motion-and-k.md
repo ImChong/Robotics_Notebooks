@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.25175"
 venue: "arXiv 2026"
 summary: "Action-conditioned motion modeling + kinematic joint embedding for robust wearable camera pose estimation"

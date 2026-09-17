@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.01437"
 venue: "GAZE 2026 @ CVPR 2026"
 summary: "A controlled study examining the role of future-privileged supervision in causal egocentric gaze estimation. Optimal performance corresponds to roughly 1.7–3.3 seconds of future context"

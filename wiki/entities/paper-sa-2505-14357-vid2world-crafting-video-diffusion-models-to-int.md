@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2505.14357"
 venue: "arXiv 2025"
 summary: "Crafts video diffusion models into interactive world models."

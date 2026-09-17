@@ -4,7 +4,7 @@ type: method
 tags: [humanoid, motion-tracking, impedance-control, compliance, contact-rich, ppo, teacher-student, sim2real, unitree-g1, mjlab, human-robot-interaction, paper, rl, motion-control, body-system-stack, stanford]
 status: complete
 code: https://github.com/Axellwppr/gentle-humanoid
-updated: 2026-09-15
+updated: 2026-09-16
 venue: curated
 related:
   - ../entities/paper-gentlehumanoid.md

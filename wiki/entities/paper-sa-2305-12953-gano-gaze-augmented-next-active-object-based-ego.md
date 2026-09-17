@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2305.12953"
 venue: "arXiv 2023"
 summary: "Aims at the next active object prediction task, proposing a gaze-guided attention mechanism"

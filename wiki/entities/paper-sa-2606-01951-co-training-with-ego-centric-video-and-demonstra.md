@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.01951"
 venue: "arXiv 2026"
 summary: "Cross-domain co-training converts egocentric walking videos into mobile robot imitation datasets"

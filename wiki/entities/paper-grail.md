@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, synthetic-data, sim2real, motion-control, generated-video, loco-manip-contact-survey, nvidia, ucla, unitree-g1]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.05160"
 venue: "arXiv 2026"
 summary: "GRAIL（NVIDIA/UCLA，arXiv:2606.05160）是一条全数字人形 loco-manipulation 数据生成管线：先在已知 3D 资产、场景、相机和机器人比例下用 VFM 合成 HOI 视频，再用 GENMO/WiLoR/FoundationPose 与特权 3D 配置重建 metric 4D HOI，重定向到 Unitree G1 并训练 task-general tracker 与 egocentric RGB 策略；官方 NVlabs/GRAIL 已开源 Docker、pipeline entrypoints、checkpoint 下载和 Hugging Face 数据集。"

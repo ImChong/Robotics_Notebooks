@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2503.06789"
 venue: "arXiv 2025"
 summary: "Multi-modal QA framework aligning audio, video, embedded sensors and natural language for procedural scenarios"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, world-models, physical-ai, wfm, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2501.03575"
 venue: "arXiv 2025 (v3)"
 code: https://github.com/NVIDIA/cosmos

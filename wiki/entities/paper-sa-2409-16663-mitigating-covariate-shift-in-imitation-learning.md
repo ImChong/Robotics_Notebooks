@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2409.16663"
 venue: "arXiv 2024"
 summary: "Mitigates covariate shift in imitation learning for AVs using latent space generative world models."

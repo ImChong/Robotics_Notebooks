@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.12701"
 venue: "arXiv 2026"
 summary: "Xiaomi's joint world model integrating reconstruction and generation."

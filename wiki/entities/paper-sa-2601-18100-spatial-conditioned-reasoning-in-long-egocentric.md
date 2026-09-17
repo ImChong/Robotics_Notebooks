@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.18100"
 venue: "arXiv 2026"
 summary: "Explores the impact of explicit spatial signals on long-form VLM reasoning, introducing the finely re-annotated Sanpo-D dataset"

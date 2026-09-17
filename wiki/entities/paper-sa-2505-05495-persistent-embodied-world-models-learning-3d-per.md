@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2505.05495"
 venue: "arXiv 2025"
 summary: "Learning 3D persistent embodied world models."

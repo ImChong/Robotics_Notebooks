@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2512.19283"
 venue: "arXiv 2026"
 summary: "Diffusion-based reconstruction generalized across all wearable camera hardware, with geometry-aware visibility augmentation module"

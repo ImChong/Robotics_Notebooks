@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2602.14721"
 venue: "arXiv 2026"
 summary: "Built from over one million real web interactions; outperforms GPT-5 as a world model for inference-time search."

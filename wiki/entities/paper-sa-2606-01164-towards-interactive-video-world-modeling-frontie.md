@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.01164"
 venue: "arXiv 2026"
 summary: "Systematically reviews recent research trends, technical developments, evaluation benchmarks, and future directions in interactive world modeling."

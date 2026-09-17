@@ -2,7 +2,7 @@
 type: method
 tags: [rl, sampling, data-generation, humanoid, physics-feasibility, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia, hku, tsinghua]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 code: https://github.com/OpenDriveLab/AMS
 venue: "2025 · arXiv"
 arxiv: "2511.17373"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.19105"
 venue: "arXiv 2026"
 summary: "Proposes a hierarchical reasoning and diffusion framework to generate language-described 3D human motion from first-person videos"

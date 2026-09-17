@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2508.21556"
 venue: "arXiv 2025"
 summary: "The first unified framework to jointly recover human pose, object motion, and contact dynamics solely from head and wrist tracking, using a novel tri-variate diffusion process with independent noise schedules"

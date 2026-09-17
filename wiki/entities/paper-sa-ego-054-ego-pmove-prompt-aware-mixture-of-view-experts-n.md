@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "AAAI 2026"
 summary: "First method exploring cross-view gaze correlation, prompt-driven multi-view expert mixture architecture"
 related:

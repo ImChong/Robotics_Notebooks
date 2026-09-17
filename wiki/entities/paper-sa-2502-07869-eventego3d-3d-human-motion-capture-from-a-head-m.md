@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2502.07869"
 venue: "arXiv 2025"
 summary: "End-to-end pipeline for fisheye event-based full-body motion capture on head-worn devices"

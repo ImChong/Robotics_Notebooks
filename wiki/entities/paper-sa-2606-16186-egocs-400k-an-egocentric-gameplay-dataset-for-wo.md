@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.16186"
 venue: "arXiv 2026"
 summary: "A large-scale replay-grounded egocentric Counter-Strike dataset for world models, built from public professional CS match demos preserving human gameplay trajectories"

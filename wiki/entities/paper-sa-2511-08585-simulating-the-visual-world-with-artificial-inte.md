@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2511.08585"
 venue: "arXiv 2025"
 summary: "Defines physical world models as complex digital engines that encode comprehensive world knowledge to simulate real‑world dynamics, following intrinsic physical and mathematical laws."

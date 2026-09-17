@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.23803"
 venue: "EgoVis@CVPR 2026"
 summary: "Systematic benchmark of dynamic 3DGS on egocentric vs. exocentric footage, confirming consistent quality degradation from the first-person viewpoint"

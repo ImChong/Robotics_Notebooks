@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2405.19917"
 venue: "ECCV 2024"
 summary: "Systematically studies the cross-domain few-shot scenario of egocentric action recognition for the first time, proposing a multimodal distillation framework"

@@ -8,7 +8,7 @@ tags:
   - streaming
   - coaching
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2511.21998"
 venue: NeurIPS 2025
 code: https://github.com/Qualcomm-AI-research/qualcomm_interactive_cooking_eval

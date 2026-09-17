@@ -11,7 +11,7 @@ tags:
   - cmu
   - uiuc
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.15284"
 venue: "ECCV 2026"
 code: https://github.com/miccooper9/egowm

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.14282"
 venue: "arXiv 2026"
 summary: "An efficient egocentric perception system for embodied intelligence on smart AR glasses, leveraging gaze, pose, and inertial signals to infer user intent and retain only the most informative parts of perceptual input"

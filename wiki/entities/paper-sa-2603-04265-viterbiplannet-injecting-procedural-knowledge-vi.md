@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.04265"
 venue: "CVPR 2026"
 summary: "Differentiable Viterbi algorithm injects step-by-step procedural priors into VLA planning modules"

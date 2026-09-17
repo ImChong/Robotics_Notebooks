@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.09169"
 venue: "arXiv 2026"
 summary: "A temporally guided stereo framework coupling short-term motion evidence with projection-guided feature sampling. Achieves SOTA on UnrealEgo2 and UnrealEgo-RW"

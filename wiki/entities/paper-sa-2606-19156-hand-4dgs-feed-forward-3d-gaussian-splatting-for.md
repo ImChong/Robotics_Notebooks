@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.19156"
 venue: "arXiv 2026"
 summary: "Dynamic 3D hand reconstruction from egocentric videos essential for AR/VR and AI glasses, addressing fast head motion, rapid hand dynamics, severe occlusions, and single-view ambiguity"

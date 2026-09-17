@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2512.11061"
 venue: "arXiv 2025"
 summary: "VLMs act as agents to autonomously construct scene representations and select compatible physics simulators (rigid‑body, fluid, etc.), inferring latent dynamics from static scenes."

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.11523"
 venue: "ECCV 2026"
 summary: "Advances on-device assistant Vinci from reactive response toward proactivity. Presents EgoServe, the first large-scale benchmark for proactive assistance with 3,000+ service instances across 10 categories. Proposes EgoMe"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2503.05573"
 venue: "arXiv 2025"
 summary: "Intrinsic disagreement-based RL for vehicle exploration via curiosity-driven generalized world models."

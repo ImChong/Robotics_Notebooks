@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2307.05463"
 venue: "ICCV 2023"
 summary: "Improved VLP with backbone-level fusion architecture"

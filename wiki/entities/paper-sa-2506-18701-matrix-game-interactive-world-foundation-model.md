@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2506.18701"
 venue: "arXiv 2025"
 summary: "An interactive world foundation model for controllable game‑world generation, trained with a two‑stage pipeline."

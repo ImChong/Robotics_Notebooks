@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, human-video, data-generation, imitation-learning, interaction-skills, unitree-g1, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2602.02473"
 venue: "arXiv 2026"
 related:

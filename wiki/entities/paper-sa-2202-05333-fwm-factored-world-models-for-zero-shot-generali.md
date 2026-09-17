@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2202.05333"
 venue: "arXiv 2022"
 summary: "Factored world models for zero-shot generalization."

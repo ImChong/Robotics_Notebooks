@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.19242"
 venue: "arXiv 2026"
 summary: "Two-stage post-training (flow matching + DPO physics preference alignment) for physically plausible scene continuations."
