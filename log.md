@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | sources/papers/weave_arxiv_2609_16683.md — WEAVE 人–物 HOI → G1+Inspire dexterous loco-manipulation（清华/大工/港中文）；步骤 2.5 **已开源**
+
+- **触发：** 用户指定 WEAVE 项目页 ingest
+- **步骤 2.5：** GitHub `xiaohu-art/Weave` + HF `appolyn/Weave` **已开源**
+- **关键页：** 新建 [`paper-weave`](wiki/entities/paper-weave.md)
+
 ## [2026-09-17] ingest | WholeBodyWAM·UniMotion-4K / Real-Time EXPO-FT / GR00T Drifting / RecMorph — 四篇 arXiv:2609.18197–18359 批量入库
 
 - **触发：** 用户指定四论文 + 项目/仓库链接；自动合并 PR
