@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -52,6 +52,7 @@ related:
   - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ./stair-obstacle-perceptive-locomotion.md
+  - ../entities/paper-cap-perception-blind-humanoid.md
   - ../entities/paper-p3.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
@@ -341,6 +342,7 @@ flowchart TD
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
 - [DPL（单深度感知人形行走）](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — arXiv:2510.07152（IEEE RA-L；深度合成 + 交叉注意力高程重建 + 盲骨干多教师；TienKung Ultra；代码未开源）
 - [SOLO（长程感知人形运动）](../entities/paper-solo.md) — arXiv:2608.26583（QR + TA-MSE；天工 Omni 零样本 1.5 km；截至入库日未开源）
+- [CAP（单策略感知-盲走连续适应）](../entities/paper-cap-perception-blind-humanoid.md) — arXiv:2609.11553（CoRL 2026；WM 去噪 + proprio VAE；G1 部分遮挡 39/40；代码待发布）
 - [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins 2026-08-03（稀疏种子 Real2Sim2Real + 转移组 RL；Lightbot 0 无技能标签深度跑酷；代码未开源）
 - [ParkourFormer](../entities/paper-parkourformer.md) — arXiv:2605.25782（query 历史 + 未来两步本体监督；G1 九类地形单策略 93.85%；代码 Coming Soon）
 - [SMPLOlympics](../entities/smplolympics.md) — arXiv:2407.00187（SMPL 仿真人形 10 项奥运运动 benchmark；PPO/AMP/PULSE 基线）

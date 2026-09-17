@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-17
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -15,6 +15,8 @@ related:
   - ../entities/paper-sc3-eval.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ../entities/paper-cap-perception-blind-humanoid.md
+  - ../entities/paper-wm-loco.md
   - ../entities/paper-openwam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md
@@ -185,6 +187,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 全模态 Physical AI 平台（示例：Cosmos 3）
 
 **人形 loco-manip 实时 WAM 实例**：[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 以 **Cosmos-Predict2.5-2B** 系 **Video DiT** 为动力学骨干，在 **固定 flow 步单次前向隐状态** 条件下驱动 Motion DiT，相对完整未来帧去噪实现 **~7×** 推理加速（arXiv:2606.09215）。
+
+**人形行走「WM 作观测去噪前端」实例**：[CAP](../entities/paper-cap-perception-blind-humanoid.md)（CoRL 2026，arXiv:2609.11553）把 **感知世界模型** 训成 **损坏深度 → 清洁深度表征** 的 learned denoiser，与并行 **proprio VAE** 共喂 **单一 locomotion policy**；训练侧用 **深度噪声课程 + policy-facing WM latent dropout** 覆盖整条感知质量谱。此处 WM **不做想象 rollout 规划**，而是 **表征恢复 + 连续退化** — 与 [WM-LOCO](../entities/paper-wm-loco.md) 的 RSSM 共训、MotionWAM 的 Video DiT 动力学头属不同分工；代码截至 2026-09-17 **待发布**。
 
 **系统化 WAM 预训练开源栈**：[OpenWAM](../entities/paper-openwam.md) 把骨干 / 表征 / 架构 / 掩码 / 数据配方 / 去噪策略拆成可组合模块，默认 **Wan2.2-TI2V-5B + ActionDiT + mutual mask + 同步联合去噪**；OpenWAM-α 在 **6,400 h** ego+robot 混合上预训练并在 **8 仿真 + 3 真机** 验证（arXiv:2609.07398；全栈已开源）。
 
