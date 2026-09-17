@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, world-model, unitree-g1, fudan, tars, hit, sjtu]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 arxiv: "2609.11553"
 code: https://github.com/Hoshi-No-Ai/CAP
 related:
@@ -18,7 +18,7 @@ sources:
   - ../../sources/sites/cap-github-io.md
   - ../../sources/repos/hoshi-no-ai-cap.md
   - ../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md
-summary: "CoRL 2026：去噪感知世界模型 + 并行本体 VAE 的单策略人形行走；G1 真机 39/40 受控试验成功（清洁+部分遮挡）；代码待发布。"
+summary: "CoRL 2026：去噪感知世界模型 + 并行本体 VAE 的单策略人形行走；G1 真机 39/40 受控试验成功（清洁+部分遮挡）；2026-09-17 再核代码仍待发布。"
 ---
 
 # CAP（arXiv:2609.11553）
@@ -52,10 +52,10 @@ summary: "CoRL 2026：去噪感知世界模型 + 并行本体 VAE 的单策略�
 | **机构** | 复旦大学（Fudan）、TARS Robotics、上海创智学院、哈尔滨工业大学（HIT）、上海交通大学（SJTU） |
 | **平台** | Unitree G1 |
 | **会议** | CoRL 2026 |
-| **arXiv** | [2609.11553](https://arxiv.org/abs/2609.11553)（截至 2026-09-12 仍为 **v1**，无新版本） |
+| **arXiv** | [2609.11553](https://arxiv.org/abs/2609.11553)（截至 2026-09-17 仍为 **v1**，无新版本） |
 | **项目页** | <https://hoshi-no-ai.github.io/CAP/> |
 | **GitHub** | [Hoshi-No-Ai/CAP](https://github.com/Hoshi-No-Ai/CAP) |
-| **开源** | **待发布** — 2026-09-12 再核：仓库 README 标明 *Code coming soon*；训练/部署代码均未发布 |
+| **开源** | **待发布** — 2026-09-17 再核：README *Code release is in preparation*；训练/部署代码均未发布 |
 
 ## 核心原理
 
@@ -84,13 +84,26 @@ flowchart TB
   cur -.-> pol
 ```
 
-### 局限（项目页 / 论文口径）
+## 工程实践
 
-- **完全遮挡** 时，依赖前向深度的地形（如 **gap、platform**）仍会失败 — 项目页受控试验表：Full cover 下 Platform/Gap/Mixed 为 0/5；Stair 仍 5/5。
+| 环节 | 要点 |
+|------|------|
+| **感知前端** | 损坏深度进 **WM 去噪器** 重建稳定表征；勿假设深度始终 in-distribution |
+| **并行本体支路** | 高率 **proprio VAE** 与 WM latent **共活**，深度全失时仍供体态 |
+| **训练课程** | **深度噪声课程**（输入侧）+ **policy-facing WM latent dropout**（特征侧）覆盖整条质量谱 |
+| **部署读法** | 部分遮挡 / 户外伪影可平滑应对；**gap/platform** 在 full cover 下勿高估 |
+| **复现入口** | 截至 2026-09-17 仅论文 PDF + 项目页视频；代码待 [Hoshi-No-Ai/CAP](https://github.com/Hoshi-No-Ai/CAP) 发布 |
+
+## 局限与风险
+
+- **完全遮挡：** 依赖前向深度的地形（**gap、platform**）仍会失败 — 项目页受控试验：Full cover 下 Platform/Gap/Mixed **0/5**；Stair 仍 **5/5**。
+- **单策略 vs 切换：** 相对 [VB-Com](./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) 等 **双策略路由**，CAP 赌 **连续退化训练** 能吃掉中间态；切换边界更软但 full-blind 前向地形仍难。
+- **WM 角色：** 此处 WM 是 **观测去噪前端**，非规划器 — 勿与 [Generative World Models](../methods/generative-world-models.md) 里「想象 rollout」混读。
+- **开源：** 训练/部署代码 **待发布** — 选型先读论文与项目页，勿假设可逐行复现。
 
 ## 源码运行时序图
 
-**不适用**（截至 **2026-09-12** 官方仓库为占位，README Release status 未勾选 Training / Deployment code；发布后应补本图并对齐 [`sources/repos/hoshi-no-ai-cap.md`](../../sources/repos/hoshi-no-ai-cap.md)。）
+**不适用**（截至 **2026-09-17** 官方仓库为占位，README Release status 未勾选 Training / Deployment code；发布后应补本图并对齐 [`sources/repos/hoshi-no-ai-cap.md`](../../sources/repos/hoshi-no-ai-cap.md)。）
 
 ## 实验与评测
 
@@ -120,8 +133,8 @@ flowchart TB
 
 1. **架构读点：** 去噪 WM + 并行 proprio VAE + 双课程（输入噪声 + latent dropout）是核心三联。
 2. **部署读点：** 部分遮挡与传感器伪影可平滑应对；gap/platform 类任务在 full cover 下勿高估。
-3. **开源边界（2026-09-12 再核）：** GitHub 仓存在但 **代码待发布** — 选型先读论文/项目页，复现需等官方 release。
-4. **arXiv：** 仍 **v1**（2026-09-10 提交），自上次入库无新版本。
+3. **开源边界（2026-09-17 再核）：** GitHub 仓存在但 **代码待发布** — 选型先读论文/项目页，复现需等官方 release。
+4. **arXiv：** 仍 **v1**（2026-09-10 提交），自入库无新版本。
 5. **横向：** 见 [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md) 与 [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)。
 
 ## 关联页面

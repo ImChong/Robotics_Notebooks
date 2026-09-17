@@ -8,10 +8,10 @@
 - **论文：** <https://arxiv.org/abs/2609.11553>
 - **项目页：** <https://hoshi-no-ai.github.io/CAP/>
 - **入库日期：** 2026-09-12
-- **再核日期：** 2026-09-12
+- **再核日期：** 2026-09-17
 - **一句话说明：** 官方 GitHub 占位仓：含 README、teaser 资源与 `gh-pages` 网站分支；**训练与部署代码尚未公开**（README Release status 仅勾选网站与论文）。
 
-## Release status（README，2026-09-12）
+## Release status（README，2026-09-17）
 
 | 项 | 状态 |
 |----|------|

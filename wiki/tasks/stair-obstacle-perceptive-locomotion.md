@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -40,6 +40,7 @@ related:
   - ../entities/paper-p3.md
   - ../entities/paper-wm-loco.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
+  - ../entities/paper-cap-perception-blind-humanoid.md
   - ../entities/paper-solo.md
   - ../entities/paper-cmoe.md
   - ../entities/smp-g1-mjlab.md
@@ -147,6 +148,7 @@ flowchart TB
 | **有**（低成本深度，无显式高程中间层） | **坡/楼梯/高台/宽沟 · 单阶段** | [TRAMP](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) | 层次特征 + MoE actor + 平地/楼梯地形相关 AMP；SJTU 人形真机户外杂乱场景；IEEE RA-L 2026；代码未开源 |
 | **有**（雷达/仿真高程图 0.7×1.1 m） | **沟/台阶/栏/混合 · MoE 门控** | [CMoE](../entities/paper-cmoe.md) | SwAV 式对比学习防 Vanilla MoE 均匀激活；G1 真机 80 cm 沟、20 cm 连续台阶；ICRA 2026；官方 Isaac Gym [`Hoshi-No-Ai/CMoE`](https://github.com/Hoshi-No-Ai/CMoE)，mjlab 移植见 [senlanke/mimic `CMoE-G1`](../entities/smp-g1-mjlab.md) |
 | **复合**（机载高程图 + 盲策略切换） | **沟/栏/动态障碍 · 感知失效恢复** | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) | 视觉/盲双策略 + 仅本体回报估计器；G1/H1 真机；100% 高程噪声下完成率约 85%；ICRA 2026；代码 coming soon |
+| **复合**（损坏深度 + WM 去噪 + 本体 VAE，**单策略**） | **楼梯/台/沟 · 感知质量连续退化** | [CAP](../entities/paper-cap-perception-blind-humanoid.md) | 深度噪声课程 + WM latent dropout；G1 清洁+部分遮挡 **39/40**；full cover 下 gap/platform 仍 0/5；CoRL 2026；代码待发布 |
 
 ### 四足 · 楼梯与崎岖
 
@@ -206,6 +208,7 @@ flowchart TB
 | 人形 **稀疏悬空结构 / 猴架荡杆** + 原始固态 LiDAR（非高程图） | [Agile Perceptive Traversal](../entities/paper-agile-perceptive-traversal-sparse-3d.md) |
 | 人形 **BFM 式开放 raw 参考** + **地形感知落脚/间隙**（楼梯/块/户外） | [Perceptive BFM](../entities/paper-perceptive-bfm.md) |
 | 人形 **感知失效/动态障碍** 时在视觉策略与盲走间切换 | [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) |
+| 人形 **单策略** 覆盖清洁深度→部分遮挡→间歇失效（WM 去噪 + proprio VAE） | [CAP](../entities/paper-cap-perception-blind-humanoid.md) |
 | 已有 **VAE-PPO** 感知行走、课程上不去 / clip 异常 | [P³](../entities/paper-p3.md) |
 | 四足 **极限跑酷** 端到端 | [Extreme Parkour](../entities/extreme-parkour.md) |
 | 四足 **世界模型跑酷** + 对称等变 | [SWAP](../entities/paper-swap-parkour.md) |
@@ -214,7 +217,7 @@ flowchart TB
 ## 常见误区
 
 1. **「有相机 = 感知楼梯」** — 传感器数据必须进入 **可优化目标**（策略输入或奖励）；仅堆传感器而策略盲感知仍会高摔（E-SDS 的 Foundation-Only 对照）。
-2. **「盲走永远不如感知」** — 盲走在平坦/轻度起伏可更省算力；楼梯/缺口往往要先 **接触探测** 再改步态，速度上限更低。[VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) 则在高程图失效时切回盲策略做接触恢复，而不是把评测级噪声硬塞进单条感知策略。
+2. **「盲走永远不如感知」** — 盲走在平坦/轻度起伏可更省算力；楼梯/缺口往往要先 **接触探测** 再改步态，速度上限更低。[VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) 在高程图失效时切回盲策略；[CAP](../entities/paper-cap-perception-blind-humanoid.md) 则赌 **单策略 + 去噪 WM + 噪声课程** 平滑吃掉中间退化态，但 full cover 下前向 gap/platform 仍会失败。
 3. **「上楼梯文献可类推下楼」** — 下楼对前向质心、踏空与制动要求不同，仓库内 **下楼** 以 E-SDS 等为显式分水岭案例。
 4. **把本页当论文深读** — 单篇机制细节见各 **entity** 页与 [Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)；本页只做 **挂接与对照**。
 
@@ -225,6 +228,7 @@ flowchart TB
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形高程图与障碍反应
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 感知到动作的通用闭环
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合：感知缺失时切盲走恢复（G1/H1，ICRA 2026）
+- [CAP](../entities/paper-cap-perception-blind-humanoid.md) — 单策略 WM 去噪 + proprio VAE 连续适应感知质量谱（G1，CoRL 2026）
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口
 - [WM-LOCO](../entities/paper-wm-loco.md) — RSSM 预测特征；仿真沟/踏石上匹配 PPO 为 0%；G1 机载 93.3%
 - [CReF](../entities/paper-cref.md) — 单阶段 raw 深度交叉注意 + 可支撑落脚奖励；X2 Ultra 零样本（arXiv:2603.29452）

@@ -1,3 +1,9 @@
+## [2026-09-17] ingest | sources/papers/cap-perception-blind-humanoid_arxiv_2609_11553.md — CAP 单策略 WM 去噪人形行走；步骤 2.5 代码待发布；交叉楼梯障碍/loco/WM 方法页；自动合并 PR
+
+- **触发：** 用户指定项目页 + GitHub + arXiv:2609.11553
+- **步骤 2.5：** **待发布** — [Hoshi-No-Ai/CAP](https://github.com/Hoshi-No-Ai/CAP) README *Code release is in preparation*；arXiv 仍 v1
+- **关键页：** [`paper-cap-perception-blind-humanoid`](wiki/entities/paper-cap-perception-blind-humanoid.md)；挂接 [`stair-obstacle-perceptive-locomotion`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)
+
 ## [2026-09-17] ingest | sources/papers/bifur_circuits_uist_2026 — Bifur-circuits UIST 2026 超材料积木实体；Open Source 待发布
 
 ## [2026-09-17] ingest | sources/papers/humanoid_pnb_dexcap — DexCap RSS 2024 升格完整实体；MIT 代码 + HF 数据已开源
