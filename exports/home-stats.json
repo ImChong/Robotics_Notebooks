@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-17",
   "node_count": 4102,
-  "edge_count": 36834,
+  "edge_count": 36839,
   "coverage": {
     "covered": 4074,
     "total": 4074,
@@ -228,7 +228,7 @@
     },
     {
       "label": "全身控制",
-      "size": 430
+      "size": 431
     },
     {
       "label": "宇树 G1 人形机器人",
@@ -299,7 +299,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 626,
+      "degree": 627,
       "has_repo": true
     },
     {
