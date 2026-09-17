@@ -29,7 +29,7 @@ summary: "Streaming Interventions（2026）：Ego-MC-Bench 真机纠错基准 + 
 
 ## 一句话定义
 
-**Video LLM 的下一道门槛不是「会不会解说步骤」，而是 streaming 下对 mistake 的及时检测与纠错话术——真机 Ego-MC-Bench 上 SOTA 仍接近失效，Ego-CoMist 用反事实合成把小规模高效模型拉到可部署区间。**
+**Video LLM 的下一道门槛不是「会不会解说步骤」，而是 streaming 下对 mistake 的及时检测与纠错话术——真机 Ego-MC-Bench 上论文所测的最强通用 video LLM 仍接近失效，Ego-CoMist 用反事实合成把小规模高效模型拉到可部署区间。**
 
 ## 英文缩写速查
 
@@ -43,7 +43,7 @@ summary: "Streaming Interventions（2026）：Ego-MC-Bench 真机纠错基准 + 
 ## 为什么重要
 
 - **Ego-MC-Bench** 在真实厨房采集，专家给出 instruction–feedback 对，多视角同步标注 mistake 出现时刻——比仿真/纯 CaptainCook4D 更接近部署场景。
-- 实验证明 **SOTA video LLM 几乎不会纠错**：per-recipe step 上 Gemini-3-Flash mistake F1 仅 **0.18**，多数开源模型 F1 为 0。
+- 实验证明 **论文对照的最强 video LLM 几乎不会纠错**：per-recipe step 上 Gemini-3-Flash mistake F1 仅 **0.18**，多数开源模型 F1 为 0。
 - **Ego-CoMist** 把大量无交互烹饪视频转为「带反事实错误 + 纠正反馈」监督样本，缓解 mistake-intervention 训练数据稀缺。
 - 微调后 **Qwen3.5-2B（Ego-CoMist+）** 达 F1 **0.20**，显示小模型 + 合成数据对边缘端助手的潜力。
 
@@ -120,7 +120,7 @@ sequenceDiagram
 | 场景 | **真厨房** 专家干预 | CaptainCook4D 仿真/标注扩展 | 通用在线视频理解 |
 | 任务焦点 | **纠错时机 + 话术** | 步骤指导 + mistake alert | 流式 caption / 对话 |
 | 训练数据 | Ego-CoMist **反事实合成** | ICAug / CFAug | 预训练为主 |
-| Mistake F1（SOTA 量级） | Gemini-3-Flash **~0.18** zero-shot | 同量级 streaming 难点 | 高 Rec、低 Prec 假象 |
+| Mistake F1（最强基线量级） | Gemini-3-Flash **~0.18** zero-shot | 同量级 streaming 难点 | 高 Rec、低 Prec 假象 |
 
 - **勿与 turn-based 分数横比：** LiveCook 论文已证明 streaming 比单步隔离难一个数量级。
 - **小模型路线：** Ego-CoMist+ 对 2B 模型增益大于 27B，边缘部署应优先看小模型+合成数据而非盲目放大参数量。

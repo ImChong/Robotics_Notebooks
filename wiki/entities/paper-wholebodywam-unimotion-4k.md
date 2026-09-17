@@ -103,13 +103,38 @@ flowchart TB
 
 **不适用** — 截至 **2026-09-17** 项目页 Code 为 Coming Soon，无可运行官方仓库；待 release 后按 README 补 sequenceDiagram。
 
+## 实验与评测
+
+| 维度 | 数字 | 读法 |
+|------|------|------|
+| 真机主指标 | 天工 3.0 六项 whole-body 任务平均 **72.2%** | 全文主结论所依赖的唯一真机口径 |
+| Motion pretrain scaling | 0 → 4K+ h：MPJRE **↓27.5%**，真机任务分 **57.1% → 67.6%** | motion 预测与真机控制 **同向改善**，支持「prior 有效」而非过拟合指标 |
+| 数据效率 | 有 4K+ h pretrain 时，**50%** 目标示范即达 **46.9%** | 在同等示范预算下换算成采集成本更有说服力 |
+| 消融：去 Stage-I | **59.1%** | motion 预训练本身贡献可观 |
+| 消融：阻断 Motion→Action cross-attn | **46.3%** | 通路比数据量更关键——有 prior 但接不上等于没有 |
+| OOD 泛化 | Toy Pickup 篮位移 15 cm **55.0%**；Kneeling 未见玩具 **75.0%** | 空间/物体级变体，非新任务族 |
+| 推理延迟 | **363 ms @ A100**，**不 decode 未来视频** | 保留 predictive foresight 的同时控住闭环 replan 周期 |
+
+代码与 UniMotion-4K **待发布**（2026-09-17），上述数字均为作者自报，暂不可独立复现。
+
+## 与其他工作对比
+
+| 对照对象 | 数字 / 差异 |
+|----------|-------------|
+| GR00T N1.7 | 同六项真机任务 **60.8%** vs 本文 **72.2%**（**+11.4 pp**）——主基线 |
+| FastWAM | 本文用 **50%** 示范（46.9%）即超过 FastWAM **全量**（42.9%），差异在 **有无可迁移 motion prior** |
+| τ₀-WM（接入同一 Motion Expert） | **39.4% → 62.7%**，说明 prior **不绑死** 本文原生 WAM 栈，可外挂到别的 WAM |
+| 只堆目标机全身示范 | 目标机数据贵且难扩；本文把廉价的人类/异构人形 motion 升格为 **predictive prior** 而非直接 action 标签 |
+| 端到端 torque 控制 | 本文 **腿仍交 RL WBC**，只有臂/手/头/腰走 WAM chunk；loco-manipulation 上限受 WBC 质量约束 |
+| [WholeBodyWAM（2609.16644）](./paper-wholebodywam.md) | **同名异文**：走 WBC-grounded（UWBC+CASA）路线，机构与数据集均不同；citation 务必核对 arXiv ID |
+| [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | 另一条人形 loco-manip WAM 路线，可与本文并读比较 motion prior 的引入方式 |
+
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
 | 数据效率 | 有 4K+ h motion pretrain 时，**50%** 目标示范可达 **46.9%**，优于 FastWAM 全量 **42.9%** |
 | 消融读法 | 去 Stage-I → **59.1%**；阻断 Motion→Action → **46.3%** — motion prior 与 cross-attn 都关键 |
-| 对照 | GR00T N1.7 **60.8%**、FastWAM、τ₀-WM + Motion Expert |
 | OOD | Toy Pickup 篮位移 15 cm：**55.0% vs 46.3%**；Kneeling 未见玩具 **75.0% vs 63.3%** |
 | 同名勿混 | arXiv **2609.16644** 走 WBC-grounded 路线，数据集与机构均不同 |
 

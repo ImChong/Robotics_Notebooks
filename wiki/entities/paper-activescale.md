@@ -8,6 +8,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ./paper-real-time-expo-ft.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
   - ../../sources/papers/activescale_arxiv_2609_18514.md
@@ -60,6 +61,18 @@ summary: "ActiveScale（arXiv:2609.18514）：历史帧 + 相机 pose token 的�
 - Ablation：mid-training、history-only、history+pose 逐项贡献 SR/TP。
 - **读法：** 清单摘要；硬件栈（Cobot-Magic + Quest 2）与 baseline 协议以原文为准。
 
+## 与其他工作对比
+
+| 对照对象 | 差异 |
+|----------|------|
+| 固定视角 VLA（π₀.5 基座本身） | 本文即以其为起点：加历史帧 + pose 头后五任务 mean SR 30.0%→70.0%、TP 41.6%→78.4%；差值即「主动视角」带来的增量 |
+| 仅加历史帧（history-only 消融） | 论文 ablation 显示只喂历史帧不足以复现全量增益，**pose 监督** 是 SR/TP 双涨的关键项 |
+| [Real-Time EXPO-FT](./paper-real-time-expo-ft.md) | 同为「让 VLA 在真实执行条件下可用」，但正交：EXPO-FT 解决 **观测陈旧/动作跟不上**，ActiveScale 解决 **观测里根本没有目标** |
+| 被动多相机堆叠 | 多相机靠硬件覆盖视野，成本与标定随视角数增长；本文用 **单头主动转视角 + pose token** 换取覆盖，代价转移到数据与训练 |
+| [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) | 选型读法：遮挡/搜索类任务才值得上主动感知链；静态桌面任务用被动感知栈即可 |
+
+定量表格、baseline 协议与硬件栈细节以原文为准（见 [参考来源](#参考来源)）。
+
 ## 结论
 
 **ActiveScale 把主动感知从「额外相机控制脚本」升格为 VLA 的可监督接口——成效高度依赖 mid-training 规模与 AMP 级采集闭环。**
@@ -74,6 +87,7 @@ summary: "ActiveScale（arXiv:2609.18514）：历史帧 + 相机 pose token 的�
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [Real-Time EXPO-FT](./paper-real-time-expo-ft.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 - [9 篇技术地图](../overview/perception-action-transfer-9-papers-technology-map.md)
 
 ## 参考来源

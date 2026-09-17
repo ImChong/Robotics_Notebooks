@@ -113,7 +113,7 @@ flowchart TB
 
 **Pelican-Sim 1.0 把「数值动作 + URDF 动作视频」双条件写进可四步滚动的通用 WM，在百万轨迹规模上同时服务生成数据与策略决策四类闭环。**
 
-1. **真影响指标：** 论文自报三数据集视频质量 SOTA 档（对照组为其投稿时的公开 WM 基线，非持续横比结论）；RoboTwin 50+500 轨迹把 π0.5 成功率拉到 **93%**。
+1. **真影响指标：** 论文自报三数据集视频质量领先其投稿时的公开 WM 基线（非持续横比结论）；RoboTwin 50+500 轨迹把 π0.5 成功率拉到 **93%**。
 2. **次要代价：** 四步蒸馏牺牲部分逐步去噪细节；跨本体仍依赖 28 维零填充约定。
 3. **部署读法：** 下游用冻结 Qwen3-VL-2B 评测器；真机仍需独立验证生成轨迹物理可信度。
 4. **复现边界：** 官方仓 **[ZouShilong1024/Pelican-Sim1.0](https://github.com/ZouShilong1024/Pelican-Sim1.0)** 当前为占位；**勿**用 [Open-X-Humanoid/Pelican-Sim1.0](https://github.com/Open-X-Humanoid/Pelican-Sim1.0) 旧链。

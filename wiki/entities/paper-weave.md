@@ -125,6 +125,31 @@ sequenceDiagram
 - **最短复现路径：** `bash install.sh` → `python scripts/rsl_rl/train.py --task=G1-Inspire-HOI-v0 --config-dir ./configs/track --config-name train`。
 - **数据路径：** reference 默认 `data/train/`（九物体）；HF 数据集供下游 HOI 学习。
 
+## 实验与评测
+
+| 维度 | 数字 / 口径 |
+|------|-------------|
+| 数据规模 | 9 物体；**7,869** train / **1,605** test references（**19.56 h** / **3.67 h**） |
+| 训练序列 | success **92.45%** |
+| 未见 interaction 序列 | success **64.98%** —— 注意是 **同物体集合内的新序列**，非新物体 zero-shot |
+| 联合 vs 专精 | 专精策略跟踪误差常更低，但 **interaction completion** 上联合策略（27k iter）可超过九个专精策略的聚合 |
+| 优化器消融 | 3k iter 小预算下 **SimBaV2 + Muon** 样本效率优于 MLP + AdamW |
+| 数据 release | **~23 h** 物理执行 rollout + 接触标注，可供下游 HOI 策略与物理一致 motion 生成复用 |
+| 评测环境 | Isaac Sim / Isaac Lab 仿真为主；**真机 sim-to-real 不是本文主 claim** |
+
+代码与 HF 数据集 **已开源**，上述指标可独立复现（见 [参考来源](#参考来源)）。
+
+## 与其他工作对比
+
+| 对照对象 | 差异 |
+|----------|------|
+| 只重定向手臂的 HOI 迁移 | 缺 approach 阶段，策略「站着够不到就失败」；WEAVE 用 **Kimodo 补全** 把走过去的 locomotion 串进同一 reference |
+| 纯 kinematic motion mimic | 只对齐关节轨迹，不管接触是否成立；WEAVE 把 **link 级 in-contact / neutral / separated 标签** 写进奖励 |
+| [CoorDex](./paper-coordex-dexterous-humanoid-loco-manipulation.md) | 同为 G1 dexterous loco-manip RL，但走 **潜先验 + 残差** 路线；WEAVE 走 HOI reference 跟踪 |
+| [HALOMI](./paper-halomi-humanoid-loco-manipulation.md) | 无机器人示范 + VLA 路线；WEAVE 依赖 SMPL-X 人–物捕获与重定向管线 |
+| 每物体一策略 | 跟踪误差更低但不可扩展；WEAVE 用 **单策略 9 物体** 换泛化与完成率 |
+| VLA / 世界模型路线 | 正交：本文是 **RL tracking + HOI retarget** 轴上的强 baseline，不产出语言条件通用策略 |
+
 ## 工程实践
 
 | 项 | 建议 |

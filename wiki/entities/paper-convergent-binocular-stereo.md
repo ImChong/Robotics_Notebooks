@@ -144,6 +144,18 @@ Zenodo 包入口为 `python3 run_one.py`；内存优化见 `algo.py` TODO。完�
   - **全场景平均水平视差与深度误差** CBS **优于** parallel。
 - **定位：** 面向 **需要类人主动双目行为的人形头**；固定平行 rig / 车载双目仍优先 parallel FM（FoundationStereo 等）。
 
+## 与其他工作对比
+
+| 对照对象 | 几何假设 | 与 CBS 的关系 |
+|----------|----------|---------------|
+| Parallel stereo 基础模型（FoundationStereo / IGEV / CREStereo，见 [立体匹配基础模型](../methods/stereo-matching-foundation-models.md)） | 光轴平行、极线水平、仅估水平视差 | 同台 CBS-BM 下 broadly competitive；CBS 在 **重复纹理** 与 **全场景平均误差** 更优，但固定平行 rig 仍应优先 parallel 栈 |
+| [DIJIT 主动双目头](./paper-notebook-dijit-a-robotic-head-for-an-active-observer.md) | 同系硬件，focus 在自由度与扫视 | 互补：DIJIT 提供 **会聚/扫视能力与标定链**，CBS 补上「会聚之后深度怎么算」 |
+| [EATR-Stereo](./paper-eatr-stereo.md) | 双目 token 在 VLA 策略内融合 | 层级不同：EATR 在 **策略层** 吃双目，CBS 在 **metric stereo 前端** 解会聚几何 |
+| [Now You See That](./paper-now-you-see-that-humanoid-vision-locomotion.md) | 立体深度驱动人形 locomotion RL | 下游消费者：CBS 输出 metric depth 后可接该类 loco/manip 感知链 |
+| Chi 2025 MASc 前身工作 | 同会聚几何、diagonal epipolar 搜索 | CBS 是其期刊化演进：补 **CBS-BM 基准** 与 MIT 许可代码归档 |
+
+定量对照表以原文与 [Zenodo 归档](../../sources/repos/convergent_binocular_stereo_zenodo.md) 的 `plots/analysis/` 为准。
+
 ## 工程实践
 
 | 步骤 | 动作 |

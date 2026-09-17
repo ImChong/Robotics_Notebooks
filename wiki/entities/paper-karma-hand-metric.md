@@ -192,7 +192,7 @@ sequenceDiagram
 - **Capsule 近似：** 非 URDF mesh；错误 tip → **低分无报错**。
 - **与 [DexBench](./dexbench.md) OSC / [HAND ERC](./paper-hand-erc-benchmarking-dexterity.md) DexNex 正交：** 不评工业任务终态或系统级 16 原子任务。
 
-## 与其他基准/指标的定位
+## 与其他基准/指标的对比定位
 
 | 工具 | 测什么 | 输入 | 与 KaRMA |
 |------|--------|------|----------|
