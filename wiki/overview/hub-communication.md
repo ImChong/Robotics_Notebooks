@@ -1,8 +1,8 @@
 ---
 type: overview
-tags: [hub, hub-communication, ethercat, can, ros2, firmware, bus, rpc, grpc]
+tags: [hub, hub-communication, ethercat, can, ros2, firmware, bus, rpc, grpc, mqtt, iot]
 status: complete
-updated: 2026-09-03
+updated: 2026-09-17
 summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场总线（EtherCAT/CAN/UART）到 ROS 2 / LCM / RPC 软件中间件，覆盖人形与移动机器人底层数据链路选型。"
 ---
 
@@ -25,6 +25,7 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 | LCM | Lightweight Communications Marshaling | 轻量 pub/sub，常用于低延迟控制 |
 | RPC | Remote Procedure Call | 请求/响应远程调用；见 [RPC 概念](../concepts/remote-procedure-call.md) |
 | gRPC | gRPC Remote Procedure Calls | 现代 RPC 框架（HTTP/2）；见 [gRPC](../entities/grpc.md) |
+| MQTT | Message Queuing Telemetry Transport | IoT pub/sub；Broker 路由；见 [MQTT 协议](../concepts/mqtt-protocol.md) |
 
 ## 为什么重要
 
@@ -43,6 +44,7 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 | 中间件 | ROS 2 vs LCM | [ROS2 Basics](../concepts/ros2-basics.md)、[ROS2 vs LCM](../comparisons/ros2-vs-lcm.md) |
 | DDS | ROS 2 底层 QoS/RTPS | [DDS 通信机制](../concepts/dds-communication.md) |
 | RPC | 请求/响应服务面 | [远程过程调用](../concepts/remote-procedure-call.md)、[gRPC](../entities/grpc.md) |
+| IoT / 遥测 | 边云状态、远程运维 | [MQTT 协议](../concepts/mqtt-protocol.md)、[Mosquitto](../entities/mosquitto.md) |
 | 时钟 | 分布式同步 | [Clock Synchronization](../concepts/clock-synchronization-algorithms.md) |
 | 整机架构 | 分域/拓扑/延迟预算 | [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) |
 | 系统工程 | OS/边云/OTA/安全 FSM | [系统工程知识链](./hub-systems-engineering.md) |

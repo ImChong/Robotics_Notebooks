@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4099,
-  "edge_count": 36805,
+  "node_count": 4101,
+  "edge_count": 36823,
   "coverage": {
-    "covered": 4071,
-    "total": 4071,
+    "covered": 4073,
+    "total": 4073,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/protocol-buffers.md",
+      "detail_id": "entity-protocol-buffers",
+      "label": "Protocol Buffers（Protobuf）",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    },
     {
       "path": "wiki/entities/paper-activescale.md",
       "detail_id": "entity-paper-activescale",
@@ -196,26 +207,18 @@
       "source": "git",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neurovla.md",
-      "detail_id": "entity-paper-neurovla",
-      "label": "NeuroVLA：脑启发流体反射具身控制",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-activescale.md",
-    "detail_id": "entity-paper-activescale",
-    "label": "ActiveScale（arXiv:2609.18514）",
+    "path": "wiki/entities/protocol-buffers.md",
+    "detail_id": "entity-protocol-buffers",
+    "label": "Protocol Buffers（Protobuf）",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
   },
   "top_communities": [
     {

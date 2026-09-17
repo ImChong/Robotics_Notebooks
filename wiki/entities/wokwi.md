@@ -11,6 +11,8 @@ related:
   - ./tinkercad.md
   - ../concepts/uart-serial-communication.md
   - ../concepts/processor-in-the-loop-sim2real.md
+  - ../concepts/mqtt-protocol.md
+  - ./mosquitto.md
 sources:
   - ../../sources/sites/wokwi-com.md
 summary: "Wokwi：浏览器端嵌入式电路仿真器，覆盖 Arduino/ESP32/STM32/Pico 与传感器外设；支持 Wi-Fi/MQTT、逻辑分析仪、GDB、VS Code/CLion 与 wokwi-cli CI——用于机器人固件 bring-up 与教学，而非刚体物理 RL 训练。"
