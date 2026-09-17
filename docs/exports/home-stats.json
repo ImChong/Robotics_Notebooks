@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-weave.md",
+      "detail_id": "entity-paper-weave",
+      "label": "WEAVE：从人–物交互学习全身灵巧 Loco-Manipulation",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-karma-hand-metric.md",
       "detail_id": "entity-paper-karma-hand-metric",
       "label": "KaRMA：机器人手精细操作运动学指标",
@@ -196,29 +206,17 @@
       "source": "git",
       "action": "added",
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robresilience.md",
-      "detail_id": "entity-paper-robresilience",
-      "label": "RobResilience（arXiv:2609.17349）",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-karma-hand-metric.md",
-    "detail_id": "entity-paper-karma-hand-metric",
-    "label": "KaRMA：机器人手精细操作运动学指标",
+    "path": "wiki/entities/paper-weave.md",
+    "detail_id": "entity-paper-weave",
+    "label": "WEAVE：从人–物交互学习全身灵巧 Loco-Manipulation",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
