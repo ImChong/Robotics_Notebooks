@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.15417"
 venue: "arXiv 2026"
 summary: "Proposes converting videos into Temporal Action Graphs with a multi-stage prompting pipeline, enabling efficient in-context few-shot learning across 11 open-weight VLMs from 2B to 235B parameters"

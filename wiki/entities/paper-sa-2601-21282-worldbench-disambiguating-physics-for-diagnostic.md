@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.21282"
 venue: "arXiv 2025"
 summary: "Provides a more fine‑grained and scalable framework through concept‑specific evaluation, rigorously assessing the physical reasoning capabilities of video generation and world models."

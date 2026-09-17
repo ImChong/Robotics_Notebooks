@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2508.06990"
 venue: "arXiv 2025"
 summary: "Imaginative world modeling with scene graphs for embodied agent navigation."

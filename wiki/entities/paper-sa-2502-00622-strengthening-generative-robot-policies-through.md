@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2502.00622"
 venue: "arXiv 2025"
 summary: "Strengthens generative robot policies through predictive world modeling."

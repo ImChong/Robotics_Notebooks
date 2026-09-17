@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, compliance, hindsight-perturbation, force-control, vla, nvidia, stanford, ut-austin]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2512.14689"
 venue: "arXiv 2025"
 related:

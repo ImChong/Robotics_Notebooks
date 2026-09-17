@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.18431"
 venue: "arXiv 2026"
 summary: "Multi-robot cooperative egocentric spatial reasoning using multimodal large language models"

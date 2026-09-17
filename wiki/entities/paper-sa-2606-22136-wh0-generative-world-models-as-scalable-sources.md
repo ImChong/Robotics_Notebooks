@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, dexterity, egocentric, world-models, synthetic-data, sim2real, open-source, nju, sjtu, shanghai-innovation-institute]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.22136"
 venue: "Under review (arXiv 2026-06)"
 project: https://chenyt31.github.io/wh0.github.io/

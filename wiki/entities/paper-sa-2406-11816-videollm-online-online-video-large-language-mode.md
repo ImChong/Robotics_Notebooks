@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2406.11816"
 venue: "CVPR 2024"
 summary: "Online video LLM framework designed for streaming egocentric video input"

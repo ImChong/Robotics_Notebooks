@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.19559"
 venue: "arXiv 2026"
 summary: "A fine-grained egocentric benchmark comprising 3,172 verifiable QA pairs over 351 egocentric videos across 12 sub-task groups"

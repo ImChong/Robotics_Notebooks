@@ -121,6 +121,28 @@ sequenceDiagram
 | 与分层栈关系 | 大脑/小脑/脊髓 **同网不同模块**；真机仍建议保留 **独立反射安全链** |
 | 功耗叙事 | 神经形态 FPGA 为论文亮点；通用 GPU 训练/推理功耗远高于 0.4 W 宣传点 |
 
+## 评测与可复现口径
+
+| 维度 | 归档可核对的口径 |
+|------|------------------|
+| 仿真基准 | **LIBERO** 四套件混合（`libero_all`）训练 + LIBERO eval 管线；公开权重 `neurovla-libero-all4suite` |
+| 评测入口 | `deployment/model_server/server_policy.py --ckpt_path ... --port ...` → LIBERO eval 客户端 |
+| 真机报告 | 运动 **抖动显著下降**、碰撞撤退 **<20 ms**、长时序任务优于无状态 MLP 动作头 |
+| 功耗报告 | 自研神经形态处理器 **~0.4 W** 量级；通用 GPU 训练/推理不适用该数字 |
+| 动作规格 | `action_dim=7`、chunk 16（LIBERO 发布配置） |
+
+- **读法提醒：** 上述抖动 / 反射 / 功耗均为 **论文与仓库自报**，[来源归档](../../sources/papers/neurovla_arxiv_2601_14628.md) 未收录逐项横比表；与其他 VLA 的成功率对照请以各自 LIBERO 套件与评测脚本重跑为准，勿跨页直接横比数字（口径见 [具身大模型评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)）。
+- **最短复现路径：** `pip install -e .` → `huggingface-cli download` 权重 → 起 `server_policy.py` → LIBERO eval。
+
+## 与其他工作对比
+
+| 对照 | 差异点 | 取舍 |
+|------|--------|------|
+| 单动作头 VLA（[VLA](../methods/vla.md)） | NeuroVLA 把动作头换成 **LIF 脉冲残差 + 连续解码**，膜电位跨步保留即隐式时序记忆 | 换来事件稀疏与短延迟，代价是训练栈与部署链更复杂 |
+| MPC/WBC 小脑栈（[MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)） | 小脑层在此是 **学习式自适应模块**，不是 QP 求解器 | 二者可并存：VLA 出目标、WBC 跟踪；不必二选一 |
+| 经典阈值反射层（[具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md)） | 「脊髓」是可训练模块而非固定阈值比较 | 行为不如纯阈值反射易形式化验证，真机须与独立急停链 **并联** |
+| 分层策略网络（[人形策略网络架构](../concepts/humanoid-policy-network-architecture.md)） | 三层同网不同模块，而非大模型 + 独立小 MLP 双进程 | 模块边界可解释，但无法按层独立换版 |
+
 ## 局限与风险
 
 - **分层边界学习化：** 脊髓模块可训练，行为不如纯阈值反射易形式化验证。

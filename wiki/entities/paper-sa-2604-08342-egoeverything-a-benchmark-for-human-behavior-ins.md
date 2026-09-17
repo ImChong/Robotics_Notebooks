@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2604.08342"
 venue: "arXiv 2026"
 summary: "A benchmark that explicitly considers human behavior by leveraging human attention signals, abstracted from gaze data, when generating questions"

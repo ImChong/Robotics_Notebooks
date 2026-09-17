@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, contact-representation, root-trajectory, digital-twin, recovery, reinforcement-learning, unitree-g1, humanoid]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.01126"
 venue: "arXiv 2026"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2406.10788"
 venue: "arXiv 2024"
 summary: "A dual Gaussian‑Particle representation that models the physical world while supporting future state prediction and online observation correction."

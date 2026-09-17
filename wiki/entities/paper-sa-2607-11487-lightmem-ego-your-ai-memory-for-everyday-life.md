@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2607.11487"
 venue: "arXiv 2026"
 summary: "Connects lightweight smartphone or AI-glasses-style clients with a backend ingesting egocentric visual-audio streams as a memory companion"

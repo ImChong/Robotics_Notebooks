@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, world-models, wam, vla, model-based-rl, embodied-ai, autonomous-driving]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 related:
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ./paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md

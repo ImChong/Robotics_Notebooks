@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2509.13903"
 venue: "arXiv 2025"
 summary: "Towards general cognitive robotics with foundation world models."

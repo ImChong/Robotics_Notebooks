@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2506.06253"
 venue: "arXiv 2025"
 summary: "Systematically sorts out the direction of egocentric-exocentric collaborative learning, covering three paradigms: exocentric-assisted egocentric, egocentric-assisted exocentric, and joint learning"

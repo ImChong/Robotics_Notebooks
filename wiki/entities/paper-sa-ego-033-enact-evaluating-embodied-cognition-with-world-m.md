@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "ICLR 2026"
 summary: "A benchmark for evaluating embodied cognition through egocentric interaction world modeling, revealing that VLMs perform better on inverse tasks than forward prediction"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "IJCV 2026, Vol.134"
 summary: "Using only a small amount of real annotated data combined with synthetic data, AP is improved by 11.69% on VISOR, and the HOI-Synth synthetic data generation pipeline is open-sourced"
 related:

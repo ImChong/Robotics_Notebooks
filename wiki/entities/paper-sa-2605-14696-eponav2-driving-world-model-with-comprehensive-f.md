@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2605.14696"
 venue: "arXiv 2026"
 summary: "Driving world model with comprehensive future reasoning."

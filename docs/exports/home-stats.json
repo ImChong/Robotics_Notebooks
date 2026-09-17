@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-17",
   "node_count": 4081,
-  "edge_count": 36650,
+  "edge_count": 36654,
   "coverage": {
     "covered": 4053,
     "total": 4053,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/walterzhu-astra-and-beyond.md",
+      "detail_id": "entity-walterzhu-astra-and-beyond",
+      "label": "Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/rle-bench.md",
       "detail_id": "entity-rle-bench",
@@ -16,8 +25,7 @@
       "recency": "2026-09-16",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/legbot-lab.md",
@@ -198,29 +206,16 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neurovla.md",
-      "detail_id": "entity-paper-neurovla",
-      "label": "NeuroVLA：脑启发流体反射具身控制",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/rle-bench.md",
-    "detail_id": "entity-rle-bench",
-    "label": "RLE-Bench（Coding Agent 机器人学习工程资格考）",
+    "path": "wiki/entities/walterzhu-astra-and-beyond.md",
+    "detail_id": "entity-walterzhu-astra-and-beyond",
+    "label": "Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond",
     "type": "entity",
-    "recency": "2026-09-16",
+    "recency": "2026-09-17",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -229,7 +224,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 456
+      "size": 455
     },
     {
       "label": "宇树 G1 人形机器人",

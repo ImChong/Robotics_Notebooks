@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2511.09515"
 venue: "arXiv 2025"
 summary: "World model-based policy optimization for VLAs."

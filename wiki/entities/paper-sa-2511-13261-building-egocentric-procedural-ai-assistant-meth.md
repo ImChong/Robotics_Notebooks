@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2511.13261"
 venue: "arXiv 2025"
 summary: "For the first time, systematically proposes a complete technical framework for first-person procedural AI assistants, defining three core tasks: error detection, procedural learning, and visual question answering, as wel"

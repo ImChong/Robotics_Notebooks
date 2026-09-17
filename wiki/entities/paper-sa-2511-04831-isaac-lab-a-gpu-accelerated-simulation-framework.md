@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2511.04831"
 venue: "arXiv 2025"
 summary: "An open‑source GPU‑accelerated physics simulation engine jointly developed by NVIDIA, Google DeepMind, and Disney Research, specifically designed for robotics and simulation research. Built on NVIDIA Warp, it aims to pro"

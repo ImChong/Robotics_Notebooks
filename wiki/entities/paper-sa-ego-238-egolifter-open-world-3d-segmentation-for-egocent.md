@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "ECCV 2024"
 summary: "A method for open-world 3D segmentation for egocentric perception"
 related:

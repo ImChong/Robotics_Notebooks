@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.03694"
 venue: "arXiv 2026"
 summary: "A novel egocentric dataset and optimized tracking pipeline reduce identity switches in social robotics by addressing challenges like occlusions and complex social dynamics"

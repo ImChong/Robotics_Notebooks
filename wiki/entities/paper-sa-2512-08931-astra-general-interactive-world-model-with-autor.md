@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2512.08931"
 venue: "ICLR 2026"
 summary: "General interactive world model with autoregressive denoising."

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, world-model, locomotion, denoising, hmi-papers, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2408.14472"
 venue: "HMI curated · Paper Notebooks"
 related:

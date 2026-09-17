@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, diffusion-policy, rl-finetuning, hierarchical-control, georgia-tech, booster-t1]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2603.13707"
 venue: "IEEE RA-L 2026"
 summary: "REFINE-DP（arXiv:2603.13707，Georgia Tech IRIM，IEEE RA-L）：分层 DP 笛卡尔规划器 + RL loco-manip 跟踪器，DPPO/PPO 联合微调缩小规划–控制分布错配；Booster T1 开门/搬箱等任务仿真 >90% SR，约 50 条示教≈纯扩数据 1000 条；截至 2026-08-02 训练代码未开源。"

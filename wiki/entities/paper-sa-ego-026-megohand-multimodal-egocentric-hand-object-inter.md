@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "NeurIPS 2025"
 summary: "Proposes a two-layer architecture framework, using VLM to infer motion priors at the high level, and generating fine-grained trajectories based on DiT flow matching at the low level"
 related:

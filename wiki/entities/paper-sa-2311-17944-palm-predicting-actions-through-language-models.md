@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2311.17944"
 venue: "arXiv 2023"
 summary: "Introduces large language models into long-term temporal action anticipation for the first time"

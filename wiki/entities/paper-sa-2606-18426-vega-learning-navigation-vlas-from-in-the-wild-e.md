@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2606.18426"
 venue: "arXiv 2026"
 summary: "An approach for training navigation Vision-Language-Action models from unlabeled egocentric navigation videos. Reconstructs local scene geometry, samples navigation goals, and generates obstacle-aware trajectories. Reduc"

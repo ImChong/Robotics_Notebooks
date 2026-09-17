@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "The Indian Express / Moneycontrol 2026"
 summary: "Reports on India becoming a hotspot for egocentric AI data collection and the resulting privacy concerns. Points out that egocentric recordings may **inadvertently capture faces, private conversations, sensitive workflow"
 related:

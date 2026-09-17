@@ -14,7 +14,7 @@ tags:
   - isaac-lab
   - teleoperation
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2601.17440"
 related:
   - ../queries/robot-perception-stack-selection-loop.md

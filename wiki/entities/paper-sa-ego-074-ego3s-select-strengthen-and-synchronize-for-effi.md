@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 venue: "ICML 2026"
 summary: "Proposes a novel three-stage Ego3S framework to ground models' reasoning in interaction evidence, addressing the unique challenges of egocentric reasoning compared to third-person understanding"
 related:

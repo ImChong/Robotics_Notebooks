@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2508.11836"
 venue: "arXiv 2025"
 summary: "Low-data world model learning as programs from gameplay video."

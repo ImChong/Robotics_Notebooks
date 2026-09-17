@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-16
 arxiv: "2511.01237"
 venue: "arXiv 2026"
 summary: "Injects gaze-derived features into ViT attention mechanism, biasing spatial feature selection toward human-attended regions"
