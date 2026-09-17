@@ -18,6 +18,8 @@
 ## 对 wiki 的映射
 
 - [paper-notebook-dijit-a-robotic-head-for-an-active-observer](../../wiki/entities/paper-notebook-dijit-a-robotic-head-for-an-active-observer.md)
+- [Convergent Binocular Stereo（CBS）](../../wiki/entities/paper-convergent-binocular-stereo.md) — 同实验室会聚深度算法与 CBS-BM（Science Robotics 2026）
+- [dijit-binocular-robotic-head GitLab 归档](../repos/dijit-binocular-robotic-head.md)
 - 分类父节点：[paper-notebook-category-12-hardware-design](../../wiki/overview/paper-notebook-category-12-hardware-design.md)
 
 ## 参考来源（原始）

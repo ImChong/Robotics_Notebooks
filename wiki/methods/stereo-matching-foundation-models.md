@@ -2,7 +2,7 @@
 type: method
 tags: [stereo-matching, depth-estimation, computer-vision, foundation-model, robotics-perception, benchmark]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 related:
   - ../entities/paper-nbs-no-bias-stereo.md
   - ../entities/paper-dinov2.md
@@ -56,6 +56,7 @@ summary: "立体匹配基础模型与经典基线选型轴：NBS 纯 ViT 无偏�
 | **零样本基础模型** | FoundationStereo | 大规模预训练 → 零样本泛化 | 是 |
 | **可扩展 FM** | S²M² | 可靠深度 + 可扩展训练 | 是 |
 | **无偏置 ViT** | NBS | DINOv2-L + 交替 attention + DPT；**无** correlation volume | **待发布** |
+| **会聚主动双目** | CBS | Gabor + 粗到细；水平/垂直视差；**非平行几何** | **已开源**（Zenodo） |
 
 ## 方法谱系（详表）
 
@@ -69,6 +70,7 @@ summary: "立体匹配基础模型与经典基线选型轴：NBS 纯 ViT 无偏�
 | [FoundationStereo](https://github.com/NVlabs/FoundationStereo) | CVPR 2025 | 零样本基础模型 | **已开源** | **机器人栈最常用** 开源立体 FM |
 | [S²M²](https://github.com/junhong-3dv/s2m2) | ICCV 2025 | 可扩展可靠深度 | **已开源** | Middlebury/ETH3D 常报榜 |
 | [NBS](../entities/paper-nbs-no-bias-stereo.md) | arXiv 2026 | **无相关体纯 ViT** | **未开源** | ETH3D/SimpleProc SOTA + 最高效率 |
+| [CBS](../entities/paper-convergent-binocular-stereo.md) | Sci. Robot. 2026 | **会聚几何** Gabor 粗到细 | **已开源**（[Zenodo](https://doi.org/10.5281/zenodo.21053380)） | **主动人形头**；CBS-BM 基准；非 parallel 替代 |
 
 ### 骨干与头（NBS 栈）
 
@@ -84,6 +86,7 @@ summary: "立体匹配基础模型与经典基线选型轴：NBS 纯 ViT 无偏�
 | [ETH3D Two-View](https://www.eth3d.net/low_res_two_view.php) | 高分辨率室内外 | EPE, bad@1/4 | [eth3d-stereo-benchmark](../entities/eth3d-stereo-benchmark.md) |
 | [Middlebury V3](https://vision.middlebury.edu/stereo/eval3/) | 经典实验室场景 | bad %, avg err | [middlebury-stereo-benchmark](../entities/middlebury-stereo-benchmark.md) |
 | [KITTI 2012/2015](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo) | 自动驾驶驾驶 | D1-all, EPE | [kitti-stereo-benchmark](../entities/kitti-stereo-benchmark.md) |
+| **CBS-BM** | 会聚主动双目（自然图像） | 水平视差/深度误差 vs parallel | [paper-convergent-binocular-stereo](../entities/paper-convergent-binocular-stereo.md) |
 
 **读榜提示：** NBS 主表强调 **ETH3D + SimpleProc（程序生成 OOD）+ XYZ-IBD（工业）**；Middlebury / KITTI 需查各论文原文是否提交。
 
@@ -98,6 +101,7 @@ flowchart LR
     FS[FoundationStereo\n已开源 ZS]
     NBS[NBS\n纯 ViT SOTA 待代码]
     LEG[CREStereo / IGEV\n轻量经典]
+    CBS[CBS\n会聚主动双目]
   end
   subgraph down [下游]
     SLAM[SLAM / VIO]
@@ -107,7 +111,9 @@ flowchart LR
   CAM --> FS
   CAM --> NBS
   CAM --> LEG
+  CAM --> CBS
   FS --> SLAM
+  CBS --> MANIP
   FS --> R2S
   FS --> MANIP
 ```
@@ -121,11 +127,13 @@ flowchart LR
 | **边缘低算力** | CREStereo（~9.5M） | NBS 报 351M params — 非边缘向 |
 | **已有 IGEV 系管线** | Selective-IGEV 升级 | NBS 定性优于 Selective-IGEV |
 | **评测** | 先定基准：室内精细 → ETH3D；驾驶 → KITTI；经典 → Middlebury | 指标不可横比 |
+| **主动会聚人形头** | [CBS](../entities/paper-convergent-binocular-stereo.md) + [DIJIT](../entities/paper-notebook-dijit-a-robotic-head-for-an-active-observer.md) | parallel FM **不**覆盖 vergence 几何；CBS-BM 49 场景 |
 
 ## 局限与风险
 
 - **NBS 未开源** — 论文 SOTA 与工程可用模型存在 **时间差**。
-- **校正与标定：** 所有方法假设 **已校正双目**；机器人安装误差会直接进深度误差。
+- **校正与标定：** parallel 方法假设 **已校正平行双目**；**会聚几何** 需 CBS 类算法 + 电机标定（见 [CBS](../entities/paper-convergent-binocular-stereo.md)）。
+- **平行 vs 会聚：** 固定 rig 优先 parallel FM；**主动 vergence 人形头** 不应硬套 parallel rectification。
 - **Sim2Real：** 深度噪声对 manipulation 比 loco 更敏感（参见 [REGRIND](../methods/regrind-retargeting-guided-rl.md) 等线的 sim2real 讨论）。
 
 ## 关联页面
@@ -134,6 +142,8 @@ flowchart LR
 - [DINOv2](../entities/paper-dinov2.md) / [DPT](../entities/paper-dpt.md) — NBS 骨干与头
 - [NVIDIA NuRec](../entities/nvidia-nurec.md) — FoundationStereo 机器人重建栈
 - [EATR-Stereo](../entities/paper-eatr-stereo.md) — 人形 **双目 + VLA** 另一路线（策略内融合，非 metric stereo FM）
+- [Convergent Binocular Stereo（CBS）](../entities/paper-convergent-binocular-stereo.md) — **会聚主动双目** metric 深度 + CBS-BM
+- [DIJIT](../entities/paper-notebook-dijit-a-robotic-head-for-an-active-observer.md) — CBS 硬件同系主动头
 - [State Estimation](../concepts/state-estimation.md) — 深度在估计链中的位置
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页是其 ① 传感与标定层的「双目怎么选视差算法」分支：先由该闭环判断要不要 3D/深度、要不要走双目，再回本页在 FoundationStereo / CREStereo / NBS 之间定档
 
