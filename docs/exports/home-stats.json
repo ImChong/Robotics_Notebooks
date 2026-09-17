@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4100,
-  "edge_count": 36818,
+  "node_count": 4101,
+  "edge_count": 36826,
   "coverage": {
-    "covered": 4072,
-    "total": 4072,
+    "covered": 4073,
+    "total": 4073,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -23,6 +23,17 @@
       "path": "wiki/entities/mosquitto.md",
       "detail_id": "entity-mosquitto",
       "label": "Eclipse Mosquitto",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    },
+    {
+      "path": "wiki/entities/protocol-buffers.md",
+      "detail_id": "entity-protocol-buffers",
+      "label": "Protocol Buffers（Protobuf）",
       "type": "entity",
       "recency": "2026-09-17",
       "source": "git",
@@ -199,15 +210,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wholebodywam-unimotion-4k.md",
-      "detail_id": "entity-paper-wholebodywam-unimotion-4k",
-      "label": "WholeBodyWAM · UniMotion-4K（4100 小时全身运动世界模型）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
