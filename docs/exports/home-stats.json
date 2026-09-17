@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/mqtt-protocol.md",
+      "detail_id": "wiki-concepts-mqtt-protocol",
+      "label": "MQTT 通信协议",
+      "type": "concept",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    },
+    {
+      "path": "wiki/entities/mosquitto.md",
+      "detail_id": "entity-mosquitto",
+      "label": "Eclipse Mosquitto",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    },
+    {
       "path": "wiki/entities/paper-activescale.md",
       "detail_id": "entity-paper-activescale",
       "label": "ActiveScale（arXiv:2609.18514）",
@@ -186,36 +208,18 @@
       "recency": "2026-09-17",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/concepts/embodied-three-layer-control-architecture.md",
-      "detail_id": "wiki-concepts-embodied-three-layer-control-architecture",
-      "label": "具身机器人三层控制架构（大脑 / 小脑 / 脊髓）",
-      "type": "concept",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neurovla.md",
-      "detail_id": "entity-paper-neurovla",
-      "label": "NeuroVLA：脑启发流体反射具身控制",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-activescale.md",
-    "detail_id": "entity-paper-activescale",
-    "label": "ActiveScale（arXiv:2609.18514）",
-    "type": "entity",
+    "path": "wiki/concepts/mqtt-protocol.md",
+    "detail_id": "wiki-concepts-mqtt-protocol",
+    "label": "MQTT 通信协议",
+    "type": "concept",
     "recency": "2026-09-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
   },
   "top_communities": [
     {
