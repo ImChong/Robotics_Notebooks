@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-16",
-  "node_count": 4079,
-  "edge_count": 36626,
+  "generated_at": "2026-09-17",
+  "node_count": 4080,
+  "edge_count": 36641,
   "coverage": {
-    "covered": 4051,
-    "total": 4051,
+    "covered": 4052,
+    "total": 4052,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -26,8 +26,7 @@
       "recency": "2026-09-16",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/legbot-lab.md",
@@ -224,15 +223,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 604
+      "size": 637
     },
     {
       "label": "仿真到现实",
-      "size": 514
+      "size": 455
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 421
+      "size": 423
     },
     {
       "label": "国内开源全景 424 项本库导读",
@@ -240,11 +239,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 282
+      "size": 275
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 218
+      "size": 217
     }
   ],
   "top_hubs": [
@@ -370,8 +369,7 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 50,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
