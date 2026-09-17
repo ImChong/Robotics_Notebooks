@@ -14,6 +14,7 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ./vla-sota-leaderboard.md
+  - ./walterzhu-astra-and-beyond.md
 sources:
   - ../../sources/papers/gpt_6_astra_embodied_policy_2026.md
   - ../../sources/sites/gpt-6-astra-embodied-policy-eval.md
@@ -186,6 +187,7 @@ RoboLab 结果为历史运行对照（`robolab120_*_specific_10ep_20260603`）�
 - [VLA](../methods/vla.md) — 专用策略与通用模型协作的谱系位置。
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 子集选型与榜单读法。
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 社区摘录榜；本文为非官方独立重跑。
+- [Walter Zhu：Astra and Beyond](./walterzhu-astra-and-beyond.md) — 概念/路线解读（X 长文；非定量协议）
 
 ## 推荐继续阅读
 

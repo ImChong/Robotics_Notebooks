@@ -10,15 +10,11 @@
 - **发表日期：** 2026-09-16（基于 EIT HAI 组 2026-09-15 报告改编）
 - **入库日期：** 2026-09-16
 - **抓取方式：** fxtwitter API 提取 X Article 全文
-- **一句话说明：** 从 **逆图形/逆物理** 与 **具身编排** 两轴解读 GPT-6 Astra：强模型作 tool orchestrator、可蒸馏 teleop 数据、real-to-sim-to-real；并预测 **低 DoF 操纵泛化将很快解决**、**具身 GPT moment 可能来自传统 LLM 侧**——与 RLE-Bench 上 Astra 作为头部 coding agent 的观测互参。
+- **一句话说明：** 从 **逆图形/逆物理** 与 **具身编排** 两轴解读 GPT-6 Astra：强模型作 tool orchestrator、可蒸馏 teleop 数据、real-to-sim-to-real；并预测 **低 DoF 操纵泛化将很快解决**、**具身 GPT moment 可能来自传统 LLM 侧**。
 
-## 与 RLE-Bench  ingest 的关系
+## 开源核查
 
-本文 **未点名 RLE-Bench**，但与官方博客中 **GPT-6 Astra** 大量演示（T01 厨房、T04 tracking、T07 bin 等）同期发布。策展映射：
-
-- Astra **不直接控手** 却可 **自建仿真+reward+RL 管线** → 对齐 RLE-Bench **Policy Development / Harness** 工作流。
-- **感知–行动闭环** 与 **agentic scaling** 论述 → 对齐 RLE-Bench 的 Build–Act–Observe–Revise 评测哲学。
-- **专用工具/expert 调用**（3D 重建、VLA、低层 SDK）→ 对齐 T01 L2/L3 harness 与 T02「为其他 agent 造工具」。
+本文为 **社交媒体评论/演讲改编**，无代码仓；**不适用** 步骤 2.5 项目页核查。
 
 ## 核心摘录（归纳，非全文）
 
@@ -56,6 +52,5 @@
 
 ## 对 wiki 的映射
 
-- 交叉：[RLE-Bench](../../wiki/entities/rle-bench.md) — Astra 初榜与任务演示的 **外部解读**
-- 交叉：[ASPIRE](../../wiki/methods/aspire.md)、[ENPIRE](../../wiki/methods/enpire.md) — coding agent 闭环工程
-- 交叉：[Generative World Models](../../wiki/methods/generative-world-models.md) — 逆物理 / world model 叙事
+- **主实体页：** [Walter Zhu：Astra and Beyond](../../wiki/entities/walterzhu-astra-and-beyond.md)
+- 交叉：[GPT 6 Astra 具身策略评测](../../wiki/entities/paper-gpt-6-astra-embodied-policy.md)、[RLE-Bench](../../wiki/entities/rle-bench.md)、[Generative World Models](../../wiki/methods/generative-world-models.md)、[ASPIRE](../../wiki/methods/aspire.md)
