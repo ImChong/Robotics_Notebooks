@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-convergent-binocular-stereo.md",
+      "detail_id": "entity-paper-convergent-binocular-stereo",
+      "label": "Convergent Binocular Stereo（CBS）",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
       "path": "wiki/overview/vla-evolution-lineage.md",
       "detail_id": "wiki-overview-vla-evolution-lineage",
       "label": "VLA 演进：从动作 Token 到分层具身智能体",
@@ -196,28 +207,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-machine-zygote.md",
-      "detail_id": "entity-paper-machine-zygote",
-      "label": "Machine Zygote（arXiv:2609.17300）",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/vla-evolution-lineage.md",
-    "detail_id": "wiki-overview-vla-evolution-lineage",
-    "label": "VLA 演进：从动作 Token 到分层具身智能体",
-    "type": "overview",
+    "path": "wiki/entities/paper-convergent-binocular-stereo.md",
+    "detail_id": "entity-paper-convergent-binocular-stereo",
+    "label": "Convergent Binocular Stereo（CBS）",
+    "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true,
+    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
   },
   "top_communities": [
     {
