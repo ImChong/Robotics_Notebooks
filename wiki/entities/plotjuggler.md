@@ -15,6 +15,8 @@ related:
   - ./plotly.md
   - ./tensorboard.md
   - ../comparisons/ros2-vs-lcm.md
+  - ../concepts/mqtt-protocol.md
+  - ./mosquitto.md
 sources:
   - ../../sources/repos/plotjuggler.md
   - ../../sources/sites/plotjuggler-io.md
