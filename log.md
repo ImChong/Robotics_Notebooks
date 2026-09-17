@@ -1,3 +1,5 @@
+## [2026-09-17] ingest | sources/papers/bifur_circuits_uist_2026 — Bifur-circuits UIST 2026 超材料积木实体；Open Source 待发布
+
 ## [2026-09-17] ingest | sources/papers/humanoid_pnb_dexcap — DexCap RSS 2024 升格完整实体；MIT 代码 + HF 数据已开源
 
 ## [2026-09-17] ingest | sources/papers/scail2_arxiv_2606_10804.md — SCAIL-2 端到端 in-context 角色动画；已开源推理/训练/HF 权重

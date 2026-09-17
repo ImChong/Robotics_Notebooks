@@ -58,6 +58,7 @@ related:
   - ../entities/curobo.md
   - ../entities/kinetiq-ascend.md
   - ../entities/sunday-robotics-act2.md
+  - ../entities/paper-bifur-circuits.md
   - ../entities/generalist-gen15-one-shot.md
   - ../entities/paper-host-one-shot-human-video.md
   - ../entities/paper-zero-wam.md
@@ -244,6 +245,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - **FastGrasp**（[实体页](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)，arXiv:2604.12879）：**移动底盘 + 臂 + LeapHand 全身 RL 快速灵巧抓取**——CVAE 点云引导 + PPO + **二值触觉** 冲击稳定；仿真 **50.09%**、真机 **32–35%**
 - **ADEPT**（[实体页](../entities/paper-adept-dexterity.md)，arXiv:2608.19182）：**16 primitive reposing RL 预训练 + 保守 post-training + 两阶段 vision distill**——Kuka–Allegro / Flexiv–Sharpa **zero-shot** FMB peg insertion 与 dish placement；visuo-tactile **8/10** vs vision **3/10**；Code Coming soon
 - **DemoMimic**（[实体页](../entities/paper-demomimic.md)，Stanford 2026）：**单次人类示范** + **接触局部几何** 与 **AR/SCR** → 仿真 RL 教师蒸馏 **腕部 depth IL**；真机 **16 物体** 平均 **71%** SR，**最小 sim-to-real gap**（相对 DexMachina* / HERMES*）；**Code / arXiv coming soon**
+- **Bifur-circuits**（[实体页](../entities/paper-bifur-circuits.md)，UIST 2026，MIT HCIE）：**auxetic 超材料积木** 经 mechanical bifurcation 指数扩展稳态构型，内嵌 **I2C 拓扑感知**；MIT News 指向 **可重构夹爪 / 辅助具** 原型，但论文示范为 **可变家具与 tangible 控制器**，**无 grasp benchmark**；Open Source **待发布**
 
 ## 方法选型速查
 

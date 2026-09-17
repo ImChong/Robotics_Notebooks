@@ -138,6 +138,7 @@ sequenceDiagram
 - [模仿学习](../methods/imitation-learning.md)
 - [SpeedTuning](./paper-speedtuning.md)
 - [SG-WAM（语义引导）](./paper-sg-wam-semantic-guidance.md) — 语言如何进入 WAM，对照语言如何进入可编辑计划
+- [Bifur-circuits（UIST 2026）](./paper-bifur-circuits.md) — 同期 HCI 硬件：模块化超材料 + 构型自感知，对照 SHRIMP 的「可编辑计划」叙事
 
 ## 参考来源
 
