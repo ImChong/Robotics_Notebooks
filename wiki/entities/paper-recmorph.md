@@ -107,6 +107,28 @@ sequenceDiagram
 - **UNIMAL 最短路径：** `conda env create -f environment/unimal.yml` → `pip install -e unimal` → `bash scripts/train_unimal.sh ft birnn 1409`。
 - **Isaac Lab 路径：** 见 `isaaclab/recmorph_locomotion/` 与仓库 docs。
 
+## 实验与评测
+
+| 评测栈 | 结果 | 读法 |
+|--------|------|------|
+| UNIMAL 五任务（Flat / Incline / Exploration / Varied Terrain / Obstacle） | mean final training performance 在评估对照中领先；FT 任务 **推理吞吐最高** | 精度与吞吐同时占优，是「线性 token 复杂度」主张的直接证据 |
+| 形态泛化 | 支持至 **30 limb** 的 unseen body | 泛化对象是 **procedural 形态**，不是新任务族 |
+| Isaac Lab 四足共享策略（Go1 / Go2 / ANYmal-B / ANYmal-C） | nominal velocity RMSE 较 specialist MLP **↓43.5%**；macro-average 最佳 | 一条策略控四平台，且优于各自专精 MLP |
+| 物理试验 | Go1 / Go2 共 **40** trials **零 fall** | 样本量有限，属可行性验证而非可靠性统计 |
+| 消融族 | BiRNN 主结果；BiLSTM / BiGRU / BiMamba2 共用 tokenization 与管线 | 可单独 ablate recurrence 族，排除「只是换了个序列模型」的解释 |
+
+严格评测入口（held-out morphology、friction sweep）见仓库文档；代码 **已开源**，上述数字可独立复现。
+
+## 与其他工作对比
+
+| 对照对象 | 差异 |
+|----------|------|
+| GNN 式 limb 通信 | 逐边消息传递能表达拓扑，但跨 limb 的长程变换弱；RecMorph 用 **DFS 序 + 双向 recurrence** 沿拓扑序 transport 信息 |
+| Transformer 式全连接通信 | 表达力强但 token 数增长时注意力开销为二次；本文在固定宽深下做到 **线性** token 复杂度 |
+| Specialist MLP（每平台一策略） | 单平台精度基线；共享策略在 Isaac Lab 上 RMSE **↓43.5%**，说明跨形态共享不必牺牲精度 |
+| [Any2Any 跨具身 WBT](./paper-any2any-cross-embodiment-wbt.md) | 作用域不同：Any2Any 做 **人形 whole-body tracking 迁移**，RecMorph 做 **形态 token 序列通信** |
+| [X-Sim](./paper-sa-2505-07096-x-sim-cross-embodiment-learning-via-real-to-sim.md) | 走 real-to-sim 数据侧跨具身；RecMorph 走 **架构侧**，两者可叠加 |
+
 ## 工程实践
 
 | 项 | 建议 |

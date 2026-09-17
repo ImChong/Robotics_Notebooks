@@ -11,6 +11,7 @@ tags:
   - mit
 status: complete
 updated: 2026-09-17
+venue: "UIST 2026"
 related:
   - ../tasks/manipulation.md
   - ./paper-shrimp.md
