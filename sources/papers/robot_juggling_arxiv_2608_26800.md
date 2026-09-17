@@ -7,7 +7,7 @@
 - **arXiv abs：** <https://arxiv.org/abs/2608.26800>
 - **arXiv HTML：** <https://arxiv.org/html/2608.26800v1>
 - **PDF：** <https://arxiv.org/pdf/2608.26800>
-- **项目页：** **无独立 juggling 项目页**；硬件背景见 RAI 博客 [`sources/sites/rai-athenazero-blog.md`](../sites/rai-athenazero-blog.md)
+- **项目页：** **无独立 juggling 项目页**；硬件见 SciRob [`athenazero_scirobotics_aee1868.md`](athenazero_scirobotics_aee1868.md) 与 RAI 博客 [`sources/sites/rai-athenazero-blog.md`](../sites/rai-athenazero-blog.md)
 - **代码 / 数据：** 截至 2026-09-05 **未列** GitHub / Hugging Face / 数据集
 - **作者：** Taeyoon Lee\*、Chunpeng Wang、Christopher G. Atkeson、Alfred A. Rizzi、Nicolas Rojas（\* 通讯：tlee@rai-inst.com）
 - **机构：** 机器人与人工智能研究所（RAI Institute）；卡内基梅隆大学（CMU，Atkeson）

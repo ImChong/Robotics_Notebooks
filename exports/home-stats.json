@@ -1,32 +1,21 @@
 {
   "generated_at": "2026-09-17",
-  "node_count": 4104,
-  "edge_count": 36869,
+  "node_count": 4105,
+  "edge_count": 36878,
   "coverage": {
-    "covered": 4076,
-    "total": 4076,
+    "covered": 4077,
+    "total": 4077,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/helix-25.md",
-      "detail_id": "entity-helix-25",
-      "label": "Helix 2.5（Index 预训练 · 30 家庭零样本全身）",
+      "path": "wiki/entities/paper-activescale.md",
+      "detail_id": "entity-paper-activescale",
+      "label": "ActiveScale（arXiv:2609.18514）",
       "type": "entity",
       "recency": "2026-09-17",
       "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/vla-evolution-lineage.md",
-      "detail_id": "wiki-overview-vla-evolution-lineage",
-      "label": "VLA 演进：从动作 Token 到分层具身智能体",
-      "type": "overview",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-bifur-circuits.md",
@@ -39,57 +28,15 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-activescale.md",
-      "detail_id": "entity-paper-activescale",
-      "label": "ActiveScale（arXiv:2609.18514）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-scail-2.md",
-      "detail_id": "entity-paper-scail-2",
-      "label": "SCAIL-2：端到端 In-Context 受控角色动画",
+      "path": "wiki/entities/paper-convergent-binocular-stereo.md",
+      "detail_id": "entity-paper-convergent-binocular-stereo",
+      "label": "Convergent Binocular Stereo（CBS）",
       "type": "entity",
       "recency": "2026-09-17",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/concepts/mqtt-protocol.md",
-      "detail_id": "wiki-concepts-mqtt-protocol",
-      "label": "MQTT 通信协议",
-      "type": "concept",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
-    },
-    {
-      "path": "wiki/entities/mosquitto.md",
-      "detail_id": "entity-mosquitto",
-      "label": "Eclipse Mosquitto",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
-    },
-    {
-      "path": "wiki/entities/protocol-buffers.md",
-      "detail_id": "entity-protocol-buffers",
-      "label": "Protocol Buffers（Protobuf）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/paper-deformsmith.md",
@@ -122,6 +69,17 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "path": "wiki/entities/paper-groot-drifting-action-head.md",
+      "detail_id": "entity-paper-groot-drifting-action-head",
+      "label": "GR00T Drifting Action Head：单步 VLA 速度–成功率审计",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/paper-intermash.md",
       "detail_id": "entity-paper-intermash",
       "label": "InterMASH（arXiv:2609.18504）",
@@ -130,6 +88,16 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-karma-hand-metric.md",
+      "detail_id": "entity-paper-karma-hand-metric",
+      "label": "KaRMA：机器人手精细操作运动学指标",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-real-time-expo-ft.md",
@@ -152,6 +120,17 @@
       "has_repo": true
     },
     {
+      "path": "wiki/entities/paper-scail-2.md",
+      "detail_id": "entity-paper-scail-2",
+      "label": "SCAIL-2：端到端 In-Context 受控角色动画",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-strucphysvideo.md",
       "detail_id": "entity-paper-strucphysvideo",
       "label": "StrucPhysVideo（arXiv:2609.18430）",
@@ -161,6 +140,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-weave.md",
+      "detail_id": "entity-paper-weave",
+      "label": "WEAVE：从人–物交互学习全身灵巧 Loco-Manipulation",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-wetrobo.md",
@@ -173,68 +162,78 @@
       "has_repo": true
     },
     {
-      "path": "wiki/overview/perception-action-transfer-9-papers-technology-map.md",
-      "detail_id": "wiki-overview-perception-action-transfer-9-papers-technology-map",
-      "label": "感知–动作–迁移：9 篇论文阅读坐标",
-      "type": "overview",
+      "path": "wiki/entities/paper-wholebodywam-unimotion-4k.md",
+      "detail_id": "entity-paper-wholebodywam-unimotion-4k",
+      "label": "WholeBodyWAM · UniMotion-4K（4100 小时全身运动世界模型）",
+      "type": "entity",
       "recency": "2026-09-17",
       "source": "git",
       "action": "added"
     },
     {
-      "path": "wiki/entities/paper-convergent-binocular-stereo.md",
-      "detail_id": "entity-paper-convergent-binocular-stereo",
-      "label": "Convergent Binocular Stereo（CBS）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-joint-bearing-selection.md",
-      "detail_id": "wiki-concepts-robot-joint-bearing-selection",
-      "label": "机器人关节轴承选型（载荷路径与五笔账）",
-      "type": "concept",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-weave.md",
-      "detail_id": "entity-paper-weave",
-      "label": "WEAVE：从人–物交互学习全身灵巧 Loco-Manipulation",
+      "path": "wiki/entities/helix-25.md",
+      "detail_id": "entity-helix-25",
+      "label": "Helix 2.5（Index 预训练 · 30 家庭零样本全身）",
       "type": "entity",
       "recency": "2026-09-17",
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/overview/vla-evolution-lineage.md",
+      "detail_id": "wiki-overview-vla-evolution-lineage",
+      "label": "VLA 演进：从动作 Token 到分层具身智能体",
+      "type": "overview",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/mqtt-protocol.md",
+      "detail_id": "wiki-concepts-mqtt-protocol",
+      "label": "MQTT 通信协议",
+      "type": "concept",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
+    },
+    {
+      "path": "wiki/entities/mosquitto.md",
+      "detail_id": "entity-mosquitto",
+      "label": "Eclipse Mosquitto",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/helix-25.md",
-    "detail_id": "entity-helix-25",
-    "label": "Helix 2.5（Index 预训练 · 30 家庭零样本全身）",
+    "path": "wiki/entities/paper-activescale.md",
+    "detail_id": "entity-paper-activescale",
+    "label": "ActiveScale（arXiv:2609.18514）",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 606
+      "size": 618
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 432
+      "size": 421
     },
     {
       "label": "全身控制",
-      "size": 418
+      "size": 420
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -254,7 +253,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1545,
+      "degree": 1546,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
