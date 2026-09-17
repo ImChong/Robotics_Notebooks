@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-karma-hand-metric.md",
+      "detail_id": "entity-paper-karma-hand-metric",
+      "label": "KaRMA：机器人手精细操作运动学指标",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/walterzhu-astra-and-beyond.md",
       "detail_id": "entity-walterzhu-astra-and-beyond",
       "label": "Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond",
@@ -195,26 +206,18 @@
       "recency": "2026-09-16",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-sony-ai-ace-table-tennis.md",
-      "detail_id": "entity-paper-sony-ai-ace-table-tennis",
-      "label": "Sony AI Ace：自主竞技乒乓球机器人",
-      "type": "entity",
-      "recency": "2026-09-16",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/walterzhu-astra-and-beyond.md",
-    "detail_id": "entity-walterzhu-astra-and-beyond",
-    "label": "Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond",
+    "path": "wiki/entities/paper-karma-hand-metric.md",
+    "detail_id": "entity-paper-karma-hand-metric",
+    "label": "KaRMA：机器人手精细操作运动学指标",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
   },
   "top_communities": [
     {
