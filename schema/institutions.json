@@ -3214,6 +3214,14 @@
         "tohoku-university"
       ]
     },
+    "york-university": {
+      "label": "约克大学（York University）",
+      "aliases": [
+        "york-university",
+        "yorku",
+        "york-u"
+      ]
+    },
     "vinuni": {
       "label": "荣大学（VinUniversity）",
       "aliases": [

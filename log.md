@@ -1,3 +1,5 @@
+## [2026-09-17] ingest | sources/papers/convergent_binocular_stereo_scirobotics_2026.md — CBS 会聚双目立体 + CBS-BM；Zenodo MIT 已开源；交叉 DIJIT / stereo-matching 方法页
+
 ## [2026-09-17] ingest | sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md — PinkRobot VLA 演进综述（动作 token → Action Expert → 多时间尺度层级）；新建 `vla-evolution-lineage` 技术地图
 
 - **触发：** 用户指定微信公众号 <https://mp.weixin.qq.com/s/w2QP2RXmpA5juqUjyd0tsQ>；自动合并 PR

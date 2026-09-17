@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-09-17
 arxiv: "2512.07998"
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
@@ -78,6 +78,7 @@ DIJIT 的核心是：不把相机当成被动取景器，而是当成会「主�
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 会聚深度算法：[Convergent Binocular Stereo（CBS）](./paper-convergent-binocular-stereo.md) — 同实验室；DIJIT 提供 vergence/version/cyclotorsion，CBS 提供会聚几何下的 metric 深度与 CBS-BM 基准
 
 ## 参考来源
 
