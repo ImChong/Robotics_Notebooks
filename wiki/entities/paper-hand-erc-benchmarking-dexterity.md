@@ -16,6 +16,7 @@ related:
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../entities/all-hands-up.md
   - ../entities/yale-openhand.md
+  - ../entities/paper-karma-hand-metric.md
 sources:
   - ../../sources/papers/hand_erc_benchmarking_arxiv_2609_05585.md
   - ../../sources/sites/hand-erc-benchmarking.md

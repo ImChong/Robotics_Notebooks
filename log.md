@@ -1,3 +1,5 @@
+## [2026-09-17] ingest | KaRMA（MIT IROS 2026）— URDF 手内 rolling-pinch 运动学指标 KaRMA-T/R/S；sources 三件 + paper-karma-hand-metric 实体；GitHub 已开源
+
 ## [2026-09-17] ingest | Walter Zhu X 长文 — 升格独立实体 wiki/entities/walterzhu-astra-and-beyond.md（GPT-6 Astra 概念解读）
 
 ## [2026-09-16] ingest | RLE-Bench — 接入 coding agent 机器人学习工程资格考（Harvard×GT）；sources 四件 + wiki/entities/rle-bench.md；MIT 仓已开源

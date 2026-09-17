@@ -2,7 +2,7 @@
 
 ## [2026-09-17] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **1** 条信息型预警）：
+共发现 **0** 个问题（另含 **4** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,8 +97,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-karma-hand-metric.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -106,8 +106,10 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-pelican-sim.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/rle-bench.md updated=2026-09-17）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（3 个）
+- wiki/entities/paper-livecook.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/paper-karma-hand-metric.md updated=2026-09-17）
+- wiki/entities/paper-pelican-sim.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/dexbench.md updated=2026-09-17）
+- wiki/entities/paper-streaming-interventions.md（含绝对化措辞「SOTA」，updated=2026-09-16；同主题更新页 wiki/entities/paper-karma-hand-metric.md updated=2026-09-17）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -127,4 +129,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4053/4053 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4054/4054 (100%) wiki/entity 页有 ingest 来源
