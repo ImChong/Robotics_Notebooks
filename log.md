@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/repos/embodichain.md — DexForce EmbodiChain 端到端 GPU 具身平台；已开源（Apache 2.0）；新建实体页并挂接 RoboSynChallenge / 仿真器选型；自动合并 PR
+
 ## [2026-09-18] ingest | sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md — 具身小站 10 篇接触/WAM 盘点；10/10 独立节点新建；自动合并 PR
 
 ## [2026-09-18] ingest | sources/repos/supertuxkart-stk-code.md — SuperTuxKart GPL 卡丁车；Git+SVN 双仓已开源

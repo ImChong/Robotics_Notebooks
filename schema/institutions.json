@@ -1672,6 +1672,12 @@
         "dexmal-robotics"
       ]
     },
+    "dexforce": {
+      "label": "灵巧智能（DexForce）",
+      "aliases": [
+        "dexforce"
+      ]
+    },
     "phi-institute": {
       "label": "斐研究院（Phi Institute）",
       "aliases": [

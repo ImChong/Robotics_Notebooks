@@ -23,3 +23,4 @@ EmbodiChain 栈上的合成数据挑战赛：sim 训练、real 评测；PI0/PI0.
 ## 与 wiki 的关系
 
 - 实体页：[paper-robosynchallenge](../../wiki/entities/paper-robosynchallenge.md) — 含源码运行时序图。
+- 仿真/训练底座：[EmbodiChain](../repos/embodichain.md) → [wiki/entities/embodichain.md](../../wiki/entities/embodichain.md)
