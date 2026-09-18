@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/unifolm-wla.md",
+      "detail_id": "entity-unifolm-wla",
+      "label": "UnifoLM-WLA-1.0（unifolm-wla）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-ici-vla-spatiotemporal-icl.md",
       "detail_id": "entity-paper-ici-vla-spatiotemporal-icl",
       "label": "ICI-VLA（时空对齐 In-Context 模仿 · VLA）",
@@ -214,28 +224,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-039-unsupervised-adversarial-domain-adaptation-for-s.md",
-      "detail_id": "entity-paper-as-039-unsupervised-adversarial-domain-adaptation-for-s",
-      "label": "Unsupervised adversarial domain adaptation for sim-to-real transfer of tactil...",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ici-vla-spatiotemporal-icl.md",
-    "detail_id": "entity-paper-ici-vla-spatiotemporal-icl",
-    "label": "ICI-VLA（时空对齐 In-Context 模仿 · VLA）",
+    "path": "wiki/entities/unifolm-wla.md",
+    "detail_id": "entity-unifolm-wla",
+    "label": "UnifoLM-WLA-1.0（unifolm-wla）",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
