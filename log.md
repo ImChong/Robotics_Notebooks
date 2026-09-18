@@ -12,6 +12,12 @@
 
 ## [2026-09-18] ingest | sources/blogs/wechat_cmoe_principle_to_code_2026-09-18.md — CMoE 万字原理→代码深读；交叉补强 paper-cmoe 与 repos/cmoe（157 维输入、VAE 下一帧、gate detach）；自动合并 PR
 
+## [2026-09-18] ingest | sources/blogs/wechat_embodied_ai_lab_30_papers_humanoid_motion_control_2026-09-18.md — 具身智能研究室 30 篇人形运动控制盘点；30/30 canonical 节点复用；新建技术地图；自动合并 PR
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/mpUYlark4cwawDlXJnADmA>
+- **去重：** **30/30** 独立 `wiki/entities/paper-*.md` 已存在；**0 新建实体**、**0 重复 arXiv**
+- **关键页：** [`humanoid-motion-control-30-papers-technology-map`](wiki/overview/humanoid-motion-control-30-papers-technology-map.md)
+
 ## [2026-09-17] ingest | sources/papers/athenazero_scirobotics_aee1868.md — SciRob AthenaZero 低惯量双臂硬件；有效质量分析部分开源
 
 ## [2026-09-17] ingest | sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md — Helix 2.5 Index 预训练与 30 家庭零样本全身 locomanipulation；未开源

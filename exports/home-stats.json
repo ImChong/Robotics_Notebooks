@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4111,
-  "edge_count": 36929,
+  "node_count": 4112,
+  "edge_count": 36969,
   "coverage": {
-    "covered": 4083,
-    "total": 4083,
+    "covered": 4084,
+    "total": 4084,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -55,7 +55,8 @@
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-atomicvla.md",
@@ -66,6 +67,15 @@
       "source": "git",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
+      "label": "人形运动控制：30 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-athenazero.md",
@@ -166,7 +176,8 @@
       "recency": "2026-09-17",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-real-time-expo-ft.md",
@@ -197,17 +208,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-strucphysvideo.md",
-      "detail_id": "entity-paper-strucphysvideo",
-      "label": "StrucPhysVideo（arXiv:2609.18430）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -224,15 +224,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 631
-    },
-    {
-      "label": "宇树 G1 人形机器人",
-      "size": 427
+      "size": 612
     },
     {
       "label": "全身控制",
-      "size": 378
+      "size": 442
+    },
+    {
+      "label": "宇树 G1 人形机器人",
+      "size": 421
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -370,7 +370,8 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 52,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
