@@ -1326,6 +1326,7 @@
 - [HTD-Refine：对齐高阶时序动力学的单目人体运动恢复](wiki/entities/paper-htd-refine-monocular-hmr.md) — HTD-Refine**（arXiv:2605.26879，CVPR 2026 Oral Award Candidate，浙大 / Ant / UT Austin）研究 **单目 world-gr `📅unknown` `[entity_page]`
 - [HUI360：社交机器人要先预测人会不会靠近](wiki/entities/paper-hui360.md) — HUI360**（*A 360° Egocentric Dataset and Baselines for Human-Robot Interaction Anticipation*；[arXiv `📅unknown` `[entity_page]`
 - [Human-as-Humanoid](wiki/entities/paper-human-as-humanoid.md) — Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Align `📅unknown` `[entity_page]`
+- [HumanCLAW：VLM 能否通过身体行动？](wiki/entities/paper-humanclaw.md) — HumanCLAW**（*Can Vision-Language Models Act Through a Body?*，[arXiv:2607.27180](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Humanoid-DART](wiki/entities/paper-humanoid-dart.md) — Humanoid-DART: Humanoid Loco-Manipulation using Diffusion-guided Augmentation through Relabeling a `📅unknown` `[entity_page]`
 - [Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）](wiki/entities/paper-humanoid-gpt.md) — Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR `📅unknown` `[entity_page]`
 - [动力学仿真驱动的人形机器人下肢衍生式设计](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 罗元春 / 纵怀志 / 周蕾\* / 张军辉**（浙江大学 流体动力基础件与机电系统全国重点实验室；[中航工业西安飞行自动控制研究所](htt `📅unknown` `[entity_page]`

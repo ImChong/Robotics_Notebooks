@@ -462,6 +462,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
   [GaP](../entities/paper-gap-graph-as-policy.md) 的 **VA** benchmark 显示 π₀.₅ 在 **小扰动 LIBERO** 上 **0.96**，在 **大位姿/排列变化** 列可跌至 **~0.20**；工业持久自动化需另看 [变体自动化](../concepts/variational-automation.md) 刻度与 **图式/agentic** 互补路线。
 - **误区 5：VLA 端到端分数高 ⇒ System 2 认知完备。**
   [RoboBench](../entities/robo-bench.md) 显示 SOTA MLLM 在 **隐式指令、robot-view 感知、执行失败诊断** 等轴仍远低于人类；且 RoboBench 分与 **CALVIN/LIBERO** 下游 VLA 相关——选型 VLM 骨干时宜同时看 **操纵流水线认知诊断** 与 **控制基准**。
+- **误区 6：VLM/VLA「会看」⇒ 能通过身体闭环行动。**
+  [HumanCLAW](../entities/paper-humanclaw.md) 在 1,218 条 HSSD egocentric find–navigate–interact 回合上测 **冻结 VLM 的 action intelligence**；九款 SOTA VLM 最高 InteractSR 仅 **16.8%**，FindSR 与 NavSR/InteractSR 断崖暴露 **embodied self-awareness** 缺口——勿用静态 VQA 或桌面 VLA 分数外推全身决策能力。
 
 ## 参考来源
 
@@ -558,6 +560,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md) — Robbyant 务实 VLA 基础模型（6B、全身统一动作、真机部署链）
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 视觉–语言模型的度量空间推理任务
 - [RoboBench](../entities/robo-bench.md) — MLLM 作为操纵流水线 **embodied brain** 的五维认知诊断；与 CALVIN/LIBERO VLA 相关
+- [HumanCLAW](../entities/paper-humanclaw.md) — 冻结 VLM 全身 egocentric action intelligence benchmark（HSSD 1,218 episodes；Apache 2.0 harness 已开源）
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 语言条件下的室内导航基准任务
 - [SceneVerse++](../entities/sceneverse-pp.md) — 网页规模 3D 场景理解数据集与自动标注管线参照
 - [Embodied Scaling Laws (具身规模法则)](../concepts/embodied-scaling-laws.md) — 数据规模与模型性能的关系
