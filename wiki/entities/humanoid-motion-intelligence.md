@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, dataset, embodied-ai-lab]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 related:
+  - ../overview/humanoid-motion-control-30-papers-technology-map.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -24,6 +25,7 @@ related:
   - ../../roadmap/motion-control.md
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_30_papers_humanoid_motion_control_2026-09-18.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
@@ -62,7 +64,7 @@ summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：�
 
 ## 为什么重要
 
-- **把微信长文落成可克隆仓库**：本库已大量 ingest「具身智能研究室」综述（[42 篇身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)、[64 篇运动小脑](../overview/humanoid-motion-cerebellum-technology-map.md) 等）；该仓是同一策展逻辑的 **GitHub 主站**，便于 Agent 全目录检索与人类对照更新。
+- **把微信长文落成可克隆仓库**：本库已大量 ingest「具身智能研究室」综述（[42 篇身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)、[64 篇运动小脑](../overview/humanoid-motion-cerebellum-technology-map.md)、[30 篇运动控制六线](../overview/humanoid-motion-control-30-papers-technology-map.md) 等）；该仓是同一策展逻辑的 **GitHub 主站**，便于 Agent 全目录检索与人类对照更新。
 - **按最终解决的问题分类**：AMP / Mimic / Diffusion / Transformer 只作方法标签；主轴是「数据 → 身体能力 → 物理交互 → 上层调用 → 部署」。
 - **开源、数据与产业旁路齐全**：论文表标注开源程度；另有数据集 `Dxxx`、按公司拆开的官方开源、招聘快照——使用前必须回一手来源核时效。
 - **规模在扩，不要整仓镜像**：2026-07 入库时约 145 篇 / 166 项；本次复核已到 **191 / 586**。本库只交叉引用 + 导读挂接，不复制上游表格。

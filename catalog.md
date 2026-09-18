@@ -3900,6 +3900,7 @@
 - [人形 Loco-Manip 161 篇技术地图](wiki/overview/humanoid-loco-manip-161-papers-technology-map.md) — 人形 loco-manip 的 161 篇工作可按 **能力形成顺序** 读：先 **运控底座与全身跟踪** 稳住身体，再建 **上半身移动操作接口**；随后接入 **视觉、生成式语言/轨迹、人类动捕 `📅unknown` `[overview_page]`
 - [传统运动控制方法栈（Model-based）](wiki/overview/humanoid-model-based-control-stack.md) — 飞书 Know-How **「传统运动控制方法（Model Base）」** 的图谱父节点：按保真度与实时性递进组织 **七段主链**，每段在 wiki 中有独立方法/概念页，并统一遵循 **原理 → `📅unknown` `[overview_page]`
 - [运动小脑技术地图：64 篇论文的九组视角](wiki/overview/humanoid-motion-cerebellum-technology-map.md) — 走路是底座，全身跟踪是身体接口，Loco-Manip 是任务形态**——VLA 与世界模型 demo 再一致，也绕不开一层能把稀疏意图翻译成 **可执行、可恢复、可迁移** 全身运动的 **动作小 `📅unknown` `[overview_page]`
+- [人形运动控制：30 篇论文阅读坐标](wiki/overview/humanoid-motion-control-30-papers-technology-map.md) — 搬一次箱子的完整任务，把「数据怎么表达 → 动作带来什么后果 → 感知怎么修正控制 → 身体怎么借环境支撑 → 全身怎么协调操作 → 连续运行怎么扛切换与停止」串成一条可检查的链路——这 30 篇 `📅unknown` `[overview_page]`
 - [人形机器人技术框架路线展望](wiki/overview/humanoid-motion-control-framework-outlook.md) — 人形运控的长期架构可能在 **经典分层（导航–规划–控制–估计）** 与 **端到端学习** 之间摆动；真正可规模化的路线取决于数据效率、动力学耦合与是否坚持全身模型。 `📅unknown` `[overview_page]`
 - [人形机器人运动控制 Know-How 技术地图](wiki/overview/humanoid-motion-control-know-how-technology-map.md) — 把 RoboParty Know-How 从「飞书目录树」映射为可检索、可交叉引用的 **wiki 知识图**：宏观趋势与学习路线在上层，**Model-based 七段主链** 与 **Learni `📅unknown` `[overview_page]`
 - [人形机器人运动控制 Know-How](wiki/overview/humanoid-motion-control-know-how.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
