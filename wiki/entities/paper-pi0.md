@@ -8,7 +8,7 @@ tags:
   - manipulation
   - physical-intelligence
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2410.24164"
 code: https://github.com/Physical-Intelligence/openpi
 related:
@@ -128,6 +128,7 @@ sequenceDiagram
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [DexHoldem](./paper-dexholdem.md) — 真机扑克榜上 π₀ 与 π₀.₅ 并列最高 SPSR
 - [DeicticVLA](./paper-deicticvla.md) — π₀ 全参微调 + SAM 2 指示 mask；真机未见类别 VLI/VI 100% vs LI 16.7%
+- [AtomicVLA](./paper-atomicvla.md) — openpi 基座上 SG-MoE 原子技能；LIBERO-LONG +10% vs π₀（arXiv:2603.07648）
 
 ## 推荐继续阅读
 

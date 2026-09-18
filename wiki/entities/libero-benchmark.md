@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-09-16
+updated: 2026-09-18
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -131,6 +131,7 @@ flowchart LR
 - [Temporal GRPO](./paper-temporal-grpo.md) — LIBERO-Long 阶段信用探针 99.1%；看 \(\Delta p_k\) 落在哪一段（arXiv:2608.13026）
 - [ODEWorld](./paper-odeworld.md) — 连续时间 WM；全量 LIBERO 训视频，LIBERO-LONG 序列子目标 **83.6%**（arXiv:2607.27924）
 - [Embody](./anthropic-embody.md) — 用 LIBERO 厨房场景评 **LLM 直接控制 vs 监督 MolmoAct**，不是 VLA SOTA 榜
+- [AtomicVLA](./paper-atomicvla.md) — SG-MoE 原子技能 VLA；LIBERO +2.4%、LIBERO-LONG +10% vs π₀（已开源）
 
 ## 参考来源
 

@@ -1,3 +1,9 @@
+## [2026-09-18] ingest | sources/papers/atomicvla_arxiv_2603_07648.md — AtomicVLA CVPR 2026 原子技能 SG-MoE VLA；步骤 2.5 GitHub+HF 已开源（openpi 基座）；自动合并 PR
+
+- **触发：** 用户指定 arXiv:2603.07648 + GitHub zhanglk9/AtomicVLA
+- **步骤 2.5：** **已开源** MIT；HF [likui/AtomicVLA-libero](https://huggingface.co/likui/AtomicVLA-libero)
+- **关键页：** [`paper-atomicvla`](wiki/entities/paper-atomicvla.md)；交叉 [`vla`](wiki/methods/vla.md)、[`paper-orthoskillvla`](wiki/entities/paper-orthoskillvla.md)
+
 ## [2026-09-18] ingest | sources/blogs/wechat_cmoe_principle_to_code_2026-09-18.md — CMoE 万字原理→代码深读；交叉补强 paper-cmoe 与 repos/cmoe（157 维输入、VAE 下一帧、gate detach）；自动合并 PR
 
 ## [2026-09-17] ingest | sources/papers/athenazero_scirobotics_aee1868.md — SciRob AthenaZero 低惯量双臂硬件；有效质量分析部分开源
