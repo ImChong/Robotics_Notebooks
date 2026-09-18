@@ -235,12 +235,29 @@
       '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
   }
 
+  /**
+   * 浮窗标题 / 摘要是纯文本，公式交给 KaTeX auto-render：
+   * 先把 `$...$` 归一为 `\(...\)`（货币判定复用 main.js），`$$`、`\[`、`\(` 原样透传。
+   * escapeHtml 后的 `&lt;` 等实体会在文本节点还原，不影响 KaTeX 解析。
+   */
+  function prepareMathText(text) {
+    var api = window.RNMath;
+    if (api && api.normalizeDollarMath) return api.normalizeDollarMath(text);
+    return String(text || '');
+  }
+
+  /** 浮窗内容注入 DOM 后调用：按内容懒加载 KaTeX 并渲染，无公式则不请求组件。 */
+  function renderTooltipMath(el) {
+    var api = window.RNMath;
+    if (el && api && api.render) api.render(el);
+  }
+
   function buildNodeTooltipHtml(opts) {
     opts = opts || {};
     var badges = buildMetaBadgesHtml(opts);
-    var title = escapeHtml(String(opts.title || opts.id || ''));
+    var title = escapeHtml(prepareMathText(opts.title || opts.id || ''));
     var summary = opts.summary
-      ? '<div class="tt-summary">' + escapeHtml(String(opts.summary)) + '</div>'
+      ? '<div class="tt-summary">' + escapeHtml(prepareMathText(opts.summary)) + '</div>'
       : '';
     var extra = opts.extraHtml || '';
     var link = opts.linkHtml || '';
@@ -266,6 +283,7 @@
     communityBadgeStyleAttr: communityBadgeStyleAttr,
     buildMetaBadgesHtml: buildMetaBadgesHtml,
     buildCommunityBadgeHtml: buildCommunityBadgeHtml,
-    buildNodeTooltipHtml: buildNodeTooltipHtml
+    buildNodeTooltipHtml: buildNodeTooltipHtml,
+    renderMath: renderTooltipMath
   };
 })();
