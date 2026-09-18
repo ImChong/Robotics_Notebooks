@@ -117,6 +117,7 @@ related:
   - ../entities/paper-internvla-a15-unified-vla.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-embodiedskills.md
+  - ../entities/paper-atomicvla.md
   - ../entities/paper-robo-harness.md
   - ../entities/paper-fm-vla.md
   - ../entities/paper-chronos.md
@@ -319,6 +320,7 @@ flowchart TD
 - **Fast ECoT（arXiv:2506.07639）**：推理时缓存复用高层 ECoT + 并行模块化生成 + 异步调度；**最高 7.5×** 降延迟、无需重训；**MIT 已开源**（见 [Fast ECoT](../entities/paper-fast-ecot.md)）
 - **M3（arXiv:2608.22419）**：训练期结构化遮蔽腕相机/语言/查询，推理结构不变；RoboTwin Clean **+21.7**，真机长时程完整任务 **+30**；**未开源**（见 [M3](../entities/paper-m3-modality-masking.md)）
 - **RoboInter1.5**：**230k+** episode 稠密中间表示套件（Data / VQA / VLM / VLA）+ **IR 条件世界模型**；三种 plan-then-execute（IC/EC/Modular + F-CoT）；**数据与 VLM 已开源**，VLA 权重与 World 代码待齐（见 [RoboInter1.5](../entities/paper-robointer-1-5.md)，arXiv:2607.18709）
+- **AtomicVLA（CVPR 2026）**：**统一规划–执行**——联合 **task plan + atomic skill + fine-grained action**；**SG-MoE** 原子技能库 + **routing encoder** 持续扩技能；LIBERO-LONG **+10%**（vs π₀）、CALVIN 链长 **+0.22 / +0.25**（vs π₀ / π₀.₅）；**MIT 已开源**（openpi 基座，见 [AtomicVLA](../entities/paper-atomicvla.md)，arXiv:2603.07648）
 
 ### 轻量化与工程部署
 
@@ -619,6 +621,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [JoyAI-RA 0.5（双动作对齐 VLWA）](../entities/paper-joyai-ra-05.md) — LAC-WM + 130-D 规范动作 + 内–外环 RL；AgiBot 真机人视频缩放（arXiv:2608.05674；未开源）
 - [Harness VLA（冻结 VLA + 记忆增强 harness）](../entities/paper-harness-vla.md) — 固定原语库编排 `vla_act`；LIBERO-Pro / RoboCasa365 / RoboTwin C2R（arXiv:2607.08448v3，[RPent](https://github.com/RLinf/RPent)）
 - [EmbodiedSkills（AgentLoop + skill contract）](../entities/paper-embodiedskills.md) — Qwen3-VL guarded runtime + OpenPI/π₀.₅；RoboTwin **86.20%**、LIBERO **97.40%**（arXiv:2609.01281，[已开源](https://github.com/DCDmllm/EmbodiedSkills)）
+- [AtomicVLA（原子技能 SG-MoE）](../entities/paper-atomicvla.md) — 统一 plan/skill/action + routing 持续扩技能；LIBERO-LONG **+10%** vs π₀（arXiv:2603.07648，[已开源](https://github.com/zhanglk9/AtomicVLA)）
 - [RoboHarness（异构策略编排）](../entities/paper-robo-harness.md) — VLA+RL+TAMP 能力边界路由与 Memory Bridge；LIBERO-LoHo 95.2%（arXiv:2607.18060；仓暂为项目页镜像）
 - [FM-VLA（力觉长程记忆）](../entities/paper-fm-vla.md) — Force-VAE 压缩 wrench 历史注入 π₀.₅；接触计数任务平均 83.3%、+3.3 ms（arXiv:2607.18231）
 - [KEMO（事件关键帧视觉记忆）](../entities/paper-kemo-event-driven-keyframe-memory-vla.md) — 运动学峰 + DINOv2 去重选帧插拔 π₀.₅（arXiv:2606.23589）

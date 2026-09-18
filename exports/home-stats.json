@@ -1,13 +1,62 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4110,
-  "edge_count": 36917,
+  "node_count": 4111,
+  "edge_count": 36929,
   "coverage": {
-    "covered": 4082,
-    "total": 4082,
+    "covered": 4083,
+    "total": 4083,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-gpt-policy.md",
+      "detail_id": "entity-paper-gpt-policy",
+      "label": "GPT-Policy：VLM 代理的上下文机器人学习",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kino.md",
+      "detail_id": "entity-paper-kino",
+      "label": "KINO：关键帧接口连接 VLM 规划与人形全身控制",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-lawam.md",
+      "detail_id": "entity-paper-lawam",
+      "label": "LaWAM：LeRobot 原生潜空间 World Action Model",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-passage.md",
+      "detail_id": "entity-paper-passage",
+      "label": "PASSAGE：场景对齐的人形感知 clutter 穿越",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vla-ulap.md",
+      "detail_id": "entity-paper-vla-ulap",
+      "label": "VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-athenazero.md",
       "detail_id": "entity-paper-athenazero",
@@ -107,8 +156,7 @@
       "recency": "2026-09-17",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-real-time-expo-ft.md",
@@ -160,65 +208,14 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-wetrobo.md",
-      "detail_id": "entity-paper-wetrobo",
-      "label": "WetRobo（arXiv:2609.18435）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-wholebodywam-unimotion-4k.md",
-      "detail_id": "entity-paper-wholebodywam-unimotion-4k",
-      "label": "WholeBodyWAM · UniMotion-4K（4100 小时全身运动世界模型）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/helix-25.md",
-      "detail_id": "entity-helix-25",
-      "label": "Helix 2.5（Index 预训练 · 30 家庭零样本全身）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-evolution-lineage.md",
-      "detail_id": "wiki-overview-vla-evolution-lineage",
-      "label": "VLA 演进：从动作 Token 到分层具身智能体",
-      "type": "overview",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/mqtt-protocol.md",
-      "detail_id": "wiki-concepts-mqtt-protocol",
-      "label": "MQTT 通信协议",
-      "type": "concept",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-athenazero.md",
-    "detail_id": "entity-paper-athenazero",
-    "label": "AthenaZero：低惯量双臂动态操作平台",
+    "path": "wiki/entities/paper-gpt-policy.md",
+    "detail_id": "entity-paper-gpt-policy",
+    "label": "GPT-Policy：VLM 代理的上下文机器人学习",
     "type": "entity",
-    "recency": "2026-09-17",
+    "recency": "2026-09-18",
     "source": "git",
     "action": "added",
     "has_repo": true,
@@ -227,7 +224,7 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 632
+      "size": 631
     },
     {
       "label": "宇树 G1 人形机器人",
@@ -235,7 +232,7 @@
     },
     {
       "label": "全身控制",
-      "size": 393
+      "size": 378
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -243,7 +240,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 280
+      "size": 278
     },
     {
       "label": "机器人学习论文笔记",
@@ -255,7 +252,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1548,
+      "degree": 1549,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -271,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1017,
+      "degree": 1019,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -372,7 +369,7 @@
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
-      "degree": 51,
+      "degree": 52,
       "has_repo": true
     },
     {

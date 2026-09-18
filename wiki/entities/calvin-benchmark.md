@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-09-15
+updated: 2026-09-18
 summary: "CALVIN：把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。"
 related:
   - ../concepts/sim2real.md
@@ -10,6 +10,7 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
   - ./paper-tempo.md
+  - ./paper-atomicvla.md
 sources:
   - ../../sources/repos/calvin-benchmark.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -92,6 +93,7 @@ flowchart LR
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [TEMPO](./paper-tempo.md) — 在 CALVIN ABC→D 上做语义–动作双频 RL 后训练（SR5 81.7%）
 - [SLIM-0.5B](./paper-slim-05b.md) — 紧凑 latent 策略；ABC→D avg length 4.556（开源权重）
+- [AtomicVLA](./paper-atomicvla.md) — 链长 avg task length +0.22 / +0.25 vs π₀ / π₀.₅（arXiv:2603.07648）
 
 ## 参考来源
 

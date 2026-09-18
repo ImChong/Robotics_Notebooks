@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, elevation-map, mixture-of-experts, contrastive-learning, single-stage-rl, unitree-g1, sim2real, fudan, icra]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2603.03067"
 venue: "ICRA 2026"
 code: https://github.com/Hoshi-No-Ai/CMoE
@@ -27,6 +27,7 @@ sources:
   - ../../sources/sites/cmoe-github-io.md
   - ../../sources/repos/cmoe.md
   - ../../sources/repos/senlanke_mimic.md
+  - ../../sources/blogs/wechat_cmoe_principle_to_code_2026-09-18.md
 summary: "CMoE（Fudan，ICRA 2026）：单阶段 PPO + 高程图 MoE，用 SwAV 式地形对比学习解决 Vanilla MoE 门控均匀激活；G1 真机 20 cm 台阶、80 cm 沟；官方 Isaac Gym 代码已开源。"
 ---
 
@@ -131,7 +132,7 @@ flowchart TB
 
 | 模块 | 作用 |
 |------|------|
-| β-VAE 状态估计 | 从历史本体预测体速与 \(z^H\)，缓解部分可观测（式 3–4） |
+| β-VAE 状态估计 | 从历史本体 **预测下一帧** \(o_{t+1}\)（非重构当前帧）+ 显式体速 MSE + KL；部署只保留 encoder 的 \(\tilde v, z^H\)（式 3–4） |
 | 地形 AE | 高程图自预测 MSE，提取 \(z^E\)（式 5） |
 | MoE actor-critic | 5 专家 + **共享门控**；输出 softmax 加权（式 6） |
 | 地形对比 SwAV | \(g^z\) 与 \(e^z\) prototype 分配互预测；同轨迹为正、跨轨迹为负（式 7–8） |
@@ -166,6 +167,20 @@ sequenceDiagram
 ```
 
 训练入口：`legged_gym/legged_gym/scripts/train.py`；算法实现在 `rsl_rl/rsl_rl/algorithms/cmoe_ppo.py`。真机部署需自建雷达→高程图节点，仓库未提供独立 onboard 包。
+
+## 官方代码导读（157 维输入与 dense MoE）
+
+与 [RobotsHub MoRE 万字深读](../../sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md) 同系列，[CMoE 原理→代码万字解读](../../sources/blogs/wechat_cmoe_principle_to_code_2026-09-18.md) 沿 Fig.3 对照 [`cmoe_actor_critic.py`](https://github.com/Hoshi-No-Ai/CMoE/blob/main/rsl_rl/rsl_rl/modules/cmoe_actor_critic.py)：
+
+| 文件 | 作用 |
+|------|------|
+| `rsl_rl/modules/cmoe_actor_critic.py` | 组装 157 维 `actor_input`、gate softmax、5 expert 加权动作、**`gate_weights.detach()`** 融合 critic value |
+| `rsl_rl/modules/state_estimator.py` | β-VAE：历史 → 体速 + \(z^H\)；训练用 decoder 预测 \(o_{t+1}\) |
+| `rsl_rl/modules/terrain_estimator.py` | 高程 AE → \(z^E\) |
+| `rsl_rl/algorithms/cmoe_ppo.py` | PPO + estimator + SwAV 对比联合优化 |
+| `legged_gym/scripts/train.py` | `--task=g1cmoe --alg=cmoe` |
+
+**157 维 `actor_input`（gate 与 5 expert 共用）：** 45（当前 obs）+ 3（估计体速）+ 16（\(z^H\)）+ 77（高程图）+ 16（\(z^E\)）。**Dense MoE：** 每步 5 个 expert **全部前向**，非 sparse top-1；最终 \(\mu=\sum_i w_i\mu_i\)，探索噪声用顶层共享 `std`。**Critic 侧：** `evaluate()` 用同一组 gate 权重但 **detach**，value loss 不回传 gate（代码实现细节，论文 Fig.3 未单独强调）。
 
 ## 工程实践
 
@@ -240,6 +255,8 @@ sequenceDiagram
 - **无公开权重：** 复现真机数字需完整自训 + 感知对齐，周期较长。
 - **高程图单点故障：** 雷达/定位失效则策略失明；无深度盲走回退。官方只给社区高程图指针，不随仓提供雷达节点。
 - **对比超参敏感：** prototype 数与温度在 §IV-A 固定为 32/0.2，换地形课是否仍稳未充分报告。
+- **消融不完整：** 文内与论文均未单独拆开「地形 AE vs 对比损失」「单共享 Critic vs 多 Critic」；Expert 2–5 无逐一枚举屏蔽实验（仅 Expert 1 有干预证据）。
+- **Dense 算力：** 5 expert 每步全算，无 sparse MoE 的推理省算力收益。
 - **全身跑酷未覆盖：** 结论节称未来扩展到 whole-body parkour；当前以下肢穿越为主。
 - **专家数固定为 5：** 更多地形类型是否需更多专家，论文未系统扫描。
 
@@ -263,6 +280,7 @@ sequenceDiagram
 - [CMoE 项目页归档](../../sources/sites/cmoe-github-io.md)
 - [CMoE 官方代码归档](../../sources/repos/cmoe.md)
 - [senlanke/mimic 归档](../../sources/repos/senlanke_mimic.md) — mjlab `CMoE-G1` 移植
+- [wechat_cmoe_principle_to_code_2026-09-18.md](../../sources/blogs/wechat_cmoe_principle_to_code_2026-09-18.md) — 万字逐模块原理→代码深读；157 维输入、VAE 下一帧预测、gate detach
 
 ## 推荐继续阅读
 
@@ -272,3 +290,4 @@ sequenceDiagram
 - [YouTube 演示](https://www.youtube.com/watch?v=Q95Ssg1FP7A) — 真机混合地形
 - [elevation_mapping_humanoid](https://github.com/smoggy-P/elevation_mapping_humanoid) — 官方指向的 MID-360 高程图
 - [rl_sar](https://github.com/fan-ziqi/rl_sar) — 官方指向的 G1 真机部署框架
+- [CMoE 原理到代码万字解析](https://mp.weixin.qq.com/s/l6cy5nodRTfORY8SKwXXDw) — Fig.3 逐步读法、SwAV/Sinkhorn 与 `cmoe_actor_critic.py` 对照
