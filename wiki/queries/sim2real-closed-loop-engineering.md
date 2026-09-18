@@ -9,7 +9,7 @@ tags:
   - deployment
   - safety
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 summary: "Sim2Real 不是训完再迁移：按误差类型分流到 SysID/前馈、DR、在线适应与分层安全，形成从辨识到部署的持续校准闭环。"
 related:
   - ../concepts/sim2real.md
@@ -20,6 +20,7 @@ related:
   - ../concepts/curriculum-learning.md
   - ../concepts/privileged-training.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
+  - ./rl-sim2real-deployment-conditions.md
   - ./sim2real-checklist.md
   - ./sim2real-gap-reduction.md
   - ./domain-randomization-guide.md

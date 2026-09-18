@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-18
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -78,6 +78,7 @@ related:
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
+  - ../queries/rl-sim2real-deployment-conditions.md
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../entities/awesome-real2sim2real.md
   - ../entities/paper-humanoidvln.md
@@ -98,6 +99,7 @@ sources:
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/blogs/wechat_shenlan_rl_sim2real_deployment_2026-09-18.md
   - ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
   - ../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md
   - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
@@ -270,6 +272,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Robot Juggling 论文归档](../../sources/papers/robot_juggling_arxiv_2608_26800.md) — 不完美先验 + 真机记忆学习（非 zero-shot）
 - [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 「非训后一步」闭环叙事与误差分流（深蓝具身智能，2026-07-28）
+- [sources/blogs/wechat_shenlan_rl_sim2real_deployment_2026-09-18.md](../../sources/blogs/wechat_shenlan_rl_sim2real_deployment_2026-09-18.md) — 真机部署七类条件对齐与「策略究竟学会什么」（深蓝具身智能，2026-09-18）
 - [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — Teacher-Student 作为仿真→真机后置模块
 - [Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md) — 迁移路线与代表工作
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践
@@ -327,6 +330,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）
 - [RMA（论文实体）](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块；A1 异步 10/100 Hz 部署
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南
+- [Query：RL 真机部署 — 策略成立的条件](../queries/rl-sim2real-deployment-conditions.md) — 动作/观测/时序/身体/地面七类条件对齐（深蓝 2026-09-18）
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 缩小 **视觉** sim2real gap 以合成 VLA 训练数据（arXiv:2606.01458）
 - [SHELLS（论文实体）](../entities/paper-shells-layered-surface-sampling.md) — 纯合成多视角训练 → 真实棚拍人头注册泛化（视觉/几何域，非策略控制）
 - [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 仿真 VR teleop + Path-Tracing 视觉域随机化；**纯仿真数据** 训练 G1 loco-manip 零样本可 ≥ 等量真机 teleop（arXiv:2606.08548）
