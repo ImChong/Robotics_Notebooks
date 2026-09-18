@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, robot-rl, systems, heterogeneous-training, cpu-simulation, gpu-learning, mujoco, motrixsim, cross-platform, macos, ppo, sac, tsinghua]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2605.30313"
 related:
   - ../methods/flashsac.md
@@ -28,7 +28,7 @@ summary: "UniLab（arXiv:2605.30313）用 CPU 批量刚体仿真 + GPU 策略学
 
 # UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统
 
-**UniLab**（arXiv:2605.30313，清华等联合）质疑仿真主导机器人 RL 的默认前提：**高效训练是否必须把物理放在 GPU 上**。论文将问题重述为 **仿真–学习闭环的系统组织**：CPU 侧 **MuJoCoUni** 或 **MotrixSim** 做批量刚体 rollout，GPU 侧跑 PPO / SAC / TD3 / APPO / FlashSAC 等，经 **统一 runtime** 管理缓冲、调度与参数同步；在代表任务上报告 **3–10×** 端到端墙钟增益，并展示 **macOS（MPS/MLX）、AMD ROCm、Intel XPU** 可训练性。
+**UniLab**（arXiv:2605.30313，**CoRL 2026 Accepted**，清华等联合）质疑仿真主导机器人 RL 的默认前提：**高效训练是否必须把物理放在 GPU 上**。论文将问题重述为 **仿真–学习闭环的系统组织**：CPU 侧 **MuJoCoUni** 或 **MotrixSim** 做批量刚体 rollout，GPU 侧跑 PPO / SAC / TD3 / APPO / FlashSAC / HIM-PPO / HORA 等，经 **统一 runtime** 管理缓冲、调度与参数同步；在代表任务上报告 **3–10×** 端到端墙钟增益，并展示 **macOS（MPS/MLX）、AMD ROCm、Intel XPU** 可训练性。项目页（2026-09）宣称 **14 个任务已上线**、**17 项**浏览器 MotrixSim 策略试玩与六类 to-real 演示。
 
 ## 一句话定义
 
@@ -111,6 +111,11 @@ flowchart TB
 - **CPU 吞吐：** 批量 CPU 仿真在研究的 env 规模下可为异构路径提供足够 **steps/s**；复杂接触/灵巧操作场景 CPU 相对 GPU 仿真优势更明显（论文 Figure 4 / Table 2）。
 - **可移植性：** M5 Max、AMD 8060S、ROCm、Intel Arc 等有训练曲线与墙钟表（附录细节以论文为准）。
 - **To-real：** 六类真机任务概览（仿真效率为主结论，迁移需单独实验）。
+- **跨平台墙钟（项目页附录表，分钟）：** 同一任务在不同硬件上可训练——例如 FastSAC G1 Walk Flat：RTX 4090 **18.3**、4090+9950X3D **3.0**、M5 Max **18.8**、M4 **62.4**、Intel XPU 185H **115.4**；异构拆分在强 CPU 工作站上收益最明显。
+
+## 浏览器策略试玩（项目页）
+
+[项目主页](https://unilabsim.github.io) 为多数 shipped 任务提供 **MotrixSim 浏览器 demo**（无需本地安装即可体验策略行为），覆盖 Go1/Go2/Go2w 四足与轮足、G1 人形（walk / dance / flip / climb / box tracking 等）、Sharpa 灵巧手 in-hand、Go2+airbot loco-manipulation、Stewart 平台平衡等。适合快速理解任务定义与策略风格；**复现训练**仍应走 [官方仓库](https://github.com/unilabsim/UniLab)。
 
 ## 与相邻栈怎么选
 

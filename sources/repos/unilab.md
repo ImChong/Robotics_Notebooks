@@ -7,7 +7,8 @@
 - **代码：** <https://github.com/unilabsim/UniLab>
 - **论文：** <https://arxiv.org/abs/2605.30313>
 - **项目页：** <https://unilabsim.github.io>
-- **入库日期：** 2026-05-31
+- **入库日期：** 2026-05-31（初入库）；**复核：** 2026-09-18
+- **开源状态：** **已开源**（Apache-2.0；GitHub API 2026-09-17 更新，~939 stars）
 - **一句话说明：** 完整可扩展训练系统：CPU 批量物理（MuJoCoUni / MotrixSim）+ GPU learner + 共享内存 IPC；统一训练/评测入口与 task/backend 接口。
 - **沉淀到 wiki：** [UniLab](../../wiki/entities/unilab.md)
 
@@ -19,9 +20,10 @@
 |------|------|
 | **定位** | 异构 **CPU-sim / GPU-learn** 机器人 RL 训练栈，非「又一个 GPU 驻留仿真器」 |
 | **物理后端** | MuJoCoUni、MotrixSim（CPU batch） |
-| **算法** | PPO、APPO、SAC、TD3、FlashSAC 等（以 README / 文档为准） |
+| **算法** | PPO、APPO、HIM-PPO、SAC、TD3、FlashSAC、FastSAC、HORA（项目页 7 算法；以 README 为准） |
 | **平台** | Linux CUDA、Apple Silicon（MPS/MLX）、AMD ROCm、Intel XPU |
-| **机器人** | 四足（Go1/Go2）、人形（G1）、灵巧手（Allegro/Sharpa）、轮足（Go2w）等 |
+| **机器人** | 四足（Go1/Go2）、人形（G1）、灵巧手（Allegro/Sharpa）、轮足（Go2w）、机械臂/Stewart 等 **5 类** |
+| **任务** | 项目页宣称 **14 tasks shipped**（walk / parkour / dance / flip / skate / loco-manip / dex-manip 等 7 族） |
 | **IPC** | 主机共享内存缓冲 + 无锁权重发布；减少采集器与 learner 互等 |
 
 ## 与本仓库知识的关系
