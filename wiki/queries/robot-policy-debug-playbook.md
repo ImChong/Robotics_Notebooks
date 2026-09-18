@@ -5,7 +5,9 @@ status: complete
 summary: RL 策略仿真中表现良好但真机失效时的系统排查手册，覆盖训练问题、部署问题、硬件问题三条排查路径。
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/blogs/wechat_shenlan_rl_sim2real_deployment_2026-09-18.md
 related:
+  - ./rl-sim2real-deployment-conditions.md
   - ./sim2real-checklist.md
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
@@ -16,6 +18,8 @@ related:
   - ../entities/tensorboard.md
   - ../entities/weights-and-biases.md
   - ../comparisons/wandb-vs-tensorboard.md
+updated: 2026-09-18
+
 ---
 
 # RL 策略真机调试 Playbook
