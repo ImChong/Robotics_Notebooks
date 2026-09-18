@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/papers/nphm_arxiv_2212_02761.md — NPHM 神经参数化完整人头；代码+预训练已开源，全量扫描需申请
+
 ## [2026-09-18] ingest | sources/papers/behaviorworldgen_arxiv_2608_22187.md — BehaviorWorldGen 行为感知轨迹闭环；项目页未开源；NAVSIM 低分桶增益最大
 
 ## [2026-09-18] ingest | sources/sites/unilabsim-project.md — 复核 UniLab 项目页：CoRL 2026、14 任务、17 浏览器 demo、跨平台墙钟表
