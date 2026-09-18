@@ -2,7 +2,7 @@
 
 ## [2026-09-18] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **9** 条信息型预警）：
+共发现 **0** 个问题（另含 **19** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,13 +97,23 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（7 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（17 个）
+- wiki/entities/paper-agile-wam.md（缺 对比）
 - wiki/entities/paper-behaviorworldgen.md（缺 对比）
+- wiki/entities/paper-coref-gs.md（缺 对比）
 - wiki/entities/paper-gpt-policy.md（缺 对比）
+- wiki/entities/paper-inspect-view-selection.md（缺 对比）
 - wiki/entities/paper-kino.md（缺 对比）
 - wiki/entities/paper-lawam.md（缺 对比）
 - wiki/entities/paper-nphm.md（缺 评测 / 对比）
+- wiki/entities/paper-omnimimic.md（缺 对比）
+- wiki/entities/paper-particlesplat.md（缺 对比）
 - wiki/entities/paper-passage.md（缺 对比）
+- wiki/entities/paper-prede.md（缺 对比）
+- wiki/entities/paper-rebarsim.md（缺 对比）
+- wiki/entities/paper-rom-nav.md（缺 对比）
+- wiki/entities/paper-uloha.md（缺 对比）
+- wiki/entities/paper-viloman.md（缺 对比）
 - wiki/entities/paper-vla-ulap.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
@@ -113,7 +123,7 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-groot-drifting-action-head.md（含绝对化措辞「SOTA」，updated=2026-09-17；同主题更新页 wiki/entities/paper-atomicvla.md updated=2026-09-18）
+- wiki/entities/paper-groot-drifting-action-head.md（含绝对化措辞「SOTA」，updated=2026-09-17；同主题更新页 wiki/entities/paper-agile-wam.md updated=2026-09-18）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -133,4 +143,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-passage.md
 
-📊 Sources 覆盖率：4089/4089 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4100/4100 (100%) wiki/entity 页有 ingest 来源

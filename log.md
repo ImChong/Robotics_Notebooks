@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md — 具身小站 10 篇接触/WAM 盘点；10/10 独立节点新建；自动合并 PR
+
 ## [2026-09-18] ingest | sources/repos/supertuxkart-stk-code.md — SuperTuxKart GPL 卡丁车；Git+SVN 双仓已开源
 
 ## [2026-09-18] ingest | sources/papers/nphm_arxiv_2212_02761.md — NPHM 神经参数化完整人头；代码+预训练已开源，全量扫描需申请
