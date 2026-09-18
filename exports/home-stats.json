@@ -1,13 +1,24 @@
 {
-  "generated_at": "2026-09-17",
-  "node_count": 4104,
-  "edge_count": 36869,
+  "generated_at": "2026-09-18",
+  "node_count": 4105,
+  "edge_count": 36878,
   "coverage": {
-    "covered": 4076,
-    "total": 4076,
+    "covered": 4077,
+    "total": 4077,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-athenazero.md",
+      "detail_id": "entity-paper-athenazero",
+      "label": "AthenaZero：低惯量双臂动态操作平台",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/entities/paper-activescale.md",
       "detail_id": "entity-paper-activescale",
@@ -200,40 +211,31 @@
       "action": "added",
       "has_repo": true,
       "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
-    },
-    {
-      "path": "wiki/entities/mosquitto.md",
-      "detail_id": "entity-mosquitto",
-      "label": "Eclipse Mosquitto",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-activescale.md",
-    "detail_id": "entity-paper-activescale",
-    "label": "ActiveScale（arXiv:2609.18514）",
+    "path": "wiki/entities/paper-athenazero.md",
+    "detail_id": "entity-paper-athenazero",
+    "label": "AthenaZero：低惯量双臂动态操作平台",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 606
+      "size": 618
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 432
+      "size": 421
     },
     {
       "label": "全身控制",
-      "size": 418
+      "size": 420
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -253,7 +255,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1545,
+      "degree": 1546,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

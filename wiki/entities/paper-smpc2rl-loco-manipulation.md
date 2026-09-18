@@ -15,7 +15,7 @@ tags:
   - tum
   - eth
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 arxiv: "2608.12063"
 related:
   - ../tasks/loco-manipulation.md

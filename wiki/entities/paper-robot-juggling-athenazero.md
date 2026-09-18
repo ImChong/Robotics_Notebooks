@@ -12,10 +12,11 @@ tags:
   - rai-institute
   - cmu
 status: complete
-updated: 2026-09-15
+updated: 2026-09-17
 arxiv: "2608.26800"
 venue: "arXiv:2608.26800"
 related:
+  - ./paper-athenazero.md
   - ../tasks/manipulation.md
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/sim2real.md
@@ -27,15 +28,16 @@ related:
   - ../comparisons/online-vs-offline-rl.md
 sources:
   - ../../sources/papers/robot_juggling_arxiv_2608_26800.md
+  - ../../sources/papers/athenazero_scirobotics_aee1868.md
   - ../../sources/sites/rai-athenazero-blog.md
-summary: "RAI/CMU（arXiv:2608.26800）：正则化记忆学习在抛接进行中实时修正任务命令，互达集 MRS 保证连续抛接不撞限位；AthenaZero 多指手 <5 分钟学会五种三球花样。先验零样本一轮都完不成，但仍作学习正则。截至入库日确认未开源。"
+summary: "RAI/CMU（arXiv:2608.26800）：正则化记忆学习在抛接进行中实时修正任务命令，互达集 MRS 保证连续抛接不撞限位；AthenaZero 多指手 <5 分钟学会五种三球花样。硬件见 SciRob aee1868（有效质量分析部分开源）；学习栈仍确认未开源。"
 ---
 
 # Robot Juggling：分钟级真机动态操作学习
 
 **Robot Juggling**（*Rapid On-Robot Learning for Dynamic Manipulation Skills: Robot Juggling*，[arXiv:2608.26800](https://arxiv.org/abs/2608.26800)）由 **RAI Institute / CMU**（Lee / Wang / Atkeson / Rizzi / Rojas）提出：在 **AthenaZero** 双臂多指手上，用 **正则化记忆学习** 把不完美先验与真机经验融合，并用 **互达集（MRS）** 约束任务级规划，使机器人在 **不到 5 分钟** 真机交互内学会五种经典 **三球抛接** 花样。
 
-> **落地状态：** 截至 2026-09-05 **无官方代码/数据**；方法以 arXiv 与补充视频为准。硬件背景见 [RAI AthenaZero 博客](https://rai-inst.com/resources/blog/bimanual-robot-for-dynamic-manipulation/)。
+> **落地状态：** 学习栈截至 2026-09-17 **仍无官方代码**；方法以 arXiv 与补充视频为准。硬件平台见 [AthenaZero（SciRob aee1868）](./paper-athenazero.md) — 有效质量分析 [MIT 开源](https://github.com/rai-opensource/effective_mass_analysis)，真机控制未开源。
 
 ## 一句话定义
 
@@ -70,7 +72,7 @@ summary: "RAI/CMU（arXiv:2608.26800）：正则化记忆学习在抛接进行�
 | **控制** | ROS2 Humble；Ruckig 1 kHz 轨迹；逆动力学跟踪 |
 | **学习** | 正则化记忆学习；\(\gamma=0.001\)；抛球实时写记忆、接球不学 |
 | **评测** | 五种三球花样 + 花样间切换；连续抛次数 / 落点分布 / 安全性消融 |
-| **开源** | **确认未开源**（截至 2026-09-05：arXiv 与 RAI 博客均未列代码） |
+| **开源** | **学习栈确认未开源**；同平台硬件 [SciRob aee1868](./paper-athenazero.md) 已释有效质量分析 + Zenodo 数据 |
 
 ## 核心原理
 
@@ -164,6 +166,7 @@ flowchart TB
 
 ## 关联页面
 
+- [AthenaZero 硬件平台（SciRob）](./paper-athenazero.md) — 低惯量双臂与有效质量设计
 - [Manipulation](../tasks/manipulation.md) — 动态操作任务族
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 间歇接触 + 力/时序敏感
 - [Sim2Real](../concepts/sim2real.md) — 先验不完美时的真机适应，而非 zero-shot 部署
@@ -176,6 +179,7 @@ flowchart TB
 ## 参考来源
 
 - [Robot Juggling 论文归档](../../sources/papers/robot_juggling_arxiv_2608_26800.md)
+- [AthenaZero SciRob 论文归档](../../sources/papers/athenazero_scirobotics_aee1868.md)
 - [RAI AthenaZero 博客归档](../../sources/sites/rai-athenazero-blog.md)
 - arXiv：<https://arxiv.org/abs/2608.26800>
 - RAI 博客：<https://rai-inst.com/resources/blog/bimanual-robot-for-dynamic-manipulation/>

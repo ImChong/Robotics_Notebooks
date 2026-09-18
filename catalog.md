@@ -820,6 +820,7 @@
 - [AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）](wiki/entities/paper-assistmimic.md) — AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026 `📅unknown` `[entity_page]`
 - [aSSMPy：软体机器人姿态 aSSM-MPC](wiki/entities/paper-assmpy-soft-robot-orientation.md) — aSSMPy**（arXiv:2609.14376，[代码](https://github.com/karakaron/aS `📅unknown` `[entity_page]`
 - [Athena-WBC：面向人形全身控制长尾的能力对齐策略专家](wiki/entities/paper-athena-wbc-humanoid-longtail.md) — Athena-WBC**（*Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control*，arXiv:2 `📅unknown` `[entity_page]`
+- [AthenaZero：低惯量双臂动态操作平台](wiki/entities/paper-athenazero.md) — AthenaZero**（*A low-inertia, bimanual robot for dynamic manipulation*，[*Science Robotics* 11(118)， `📅unknown` `[entity_page]`
 - [Atlas Locomotion（HMI P005）](wiki/entities/paper-atlas-locomotion-optimization-stack.md) — Atlas Locomotion**（*Optimization-based Locomotion Planning, Estimation, and Control Design for the `📅unknown` `[entity_page]`
 - [AURORA](wiki/entities/paper-aurora-hand-reconstruction.md) — AURORA**（*Active Uncertainty-Driven Re-Orientation for In-Hand Reconstruction*，[arXiv:2609.08493 `📅unknown` `[entity_page]`
 - [AutoIntervene（Action Chunk 自动接管）](wiki/entities/paper-autointervene.md) — AutoIntervene**（*Calibrated Intervention for Action-Chunking Imitation Learning Policies*，[arXiv:2 `📅unknown` `[entity_page]`
