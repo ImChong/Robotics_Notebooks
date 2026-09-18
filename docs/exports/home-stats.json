@@ -9,16 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-atomicvla.md",
-      "detail_id": "entity-paper-atomicvla",
-      "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
       "path": "wiki/entities/paper-gpt-policy.md",
       "detail_id": "entity-paper-gpt-policy",
       "label": "GPT-Policy：VLM 代理的上下文机器人学习",
@@ -66,6 +56,16 @@
       "recency": "2026-09-18",
       "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-atomicvla.md",
+      "detail_id": "entity-paper-atomicvla",
+      "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-athenazero.md",
@@ -211,14 +211,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-atomicvla.md",
-    "detail_id": "entity-paper-atomicvla",
-    "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
+    "path": "wiki/entities/paper-gpt-policy.md",
+    "detail_id": "entity-paper-gpt-policy",
+    "label": "GPT-Policy：VLM 代理的上下文机器人学习",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
