@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-pointer-cad-v2.md",
+      "detail_id": "entity-paper-pointer-cad-v2",
+      "label": "Pointer-CAD v2（Plan-Then-Construct 参数精度 CAD 生成）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/unifolm-wla.md",
       "detail_id": "entity-unifolm-wla",
       "label": "UnifoLM-WLA-1.0（unifolm-wla）",
@@ -213,28 +224,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-038-sim-to-real-visual-grasping-via-state-representa.md",
-      "detail_id": "entity-paper-as-038-sim-to-real-visual-grasping-via-state-representa",
-      "label": "Sim-to-real visual grasping via state representation learning based on combin...",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unifolm-wla.md",
-    "detail_id": "entity-unifolm-wla",
-    "label": "UnifoLM-WLA-1.0（unifolm-wla）",
+    "path": "wiki/entities/paper-pointer-cad-v2.md",
+    "detail_id": "entity-paper-pointer-cad-v2",
+    "label": "Pointer-CAD v2（Plan-Then-Construct 参数精度 CAD 生成）",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
