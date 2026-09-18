@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/repos/embodichain.md — DexForce EmbodiChain 端到端 GPU 具身平台；已开源（Apache 2.0）；新建实体页并挂接 RoboSynChallenge / 仿真器选型
+
 ## [2026-09-18] ingest | sources/repos/supertuxkart-stk-code.md — SuperTuxKart GPL 卡丁车；Git+SVN 双仓已开源
 
 ## [2026-09-18] ingest | sources/papers/nphm_arxiv_2212_02761.md — NPHM 神经参数化完整人头；代码+预训练已开源，全量扫描需申请

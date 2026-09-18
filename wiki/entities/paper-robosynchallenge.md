@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, synthetic-data, benchmark, challenge, vla, sim2real]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2608.12416"
 code: https://github.com/EDEM-AI/RoboSynChallenge
 related:
@@ -12,10 +12,12 @@ related:
   - ../queries/dexterous-manipulation-data-pipeline.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./libero-benchmark.md
+  - ./embodichain.md
 sources:
   - ../../sources/papers/robosynchallenge_arxiv_2608_12416.md
   - ../../sources/sites/robosynchallenge.md
   - ../../sources/repos/robosynchallenge.md
+  - ../../sources/repos/embodichain.md
   - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
 summary: "RoboSynChallenge（arXiv:2608.12416）：合成 state-action 训练、仅真实世界评测的灵巧操作挑战赛；EmbodiChain 框架 + HF 21 套数据与多策略 checkpoint 已开源。"
 ---
@@ -49,7 +51,7 @@ summary: "RoboSynChallenge（arXiv:2608.12416）：合成 state-action 训练、
 | 项 | 内容 |
 |----|------|
 | **出处** | arXiv:2608.12416（2026-08） |
-| **训练** | 合成 state-action（EmbodiChain 栈） |
+| **训练** | 合成 state-action（[EmbodiChain](./embodichain.md) 栈） |
 | **评测** | **仅真实世界**未见环境 |
 | **开源（截至 2026-08-19）** | **已开源**：GitHub 框架 + HF 数据/权重 |
 
@@ -82,7 +84,7 @@ sequenceDiagram
     Eval-->>Dev: 泛化分数
 ```
 
-- **最短复现：** 装 EmbodiChain → 下 HF 数据 → 跑官方训练入口 → 对照 `evaluation_results/`。
+- **最短复现：** 装 [EmbodiChain](./embodichain.md) → 下 HF 数据 → 跑官方训练入口 → 对照 `evaluation_results/`。
 
 ## 工程实践
 
@@ -104,7 +106,7 @@ sequenceDiagram
 ## 局限与风险
 
 - 真实评测环境访问/硬件门槛可能高于 sim。
-- 合成分布与 real gap 仍依赖 EmbodiChain 质量。
+- 合成分布与 real gap 仍依赖 [EmbodiChain](./embodichain.md) 质量。
 - 并非所有任务权重都已发布，需查 HF org 页面。
 
 ## 实验与评测
@@ -124,6 +126,7 @@ sequenceDiagram
 - [灵巧操作数据管线](../queries/dexterous-manipulation-data-pipeline.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ③ 策略成功率 + ④ sim↔real 校准：本页把两层压进同一挑战赛协议
 - [LIBERO](./libero-benchmark.md)
+- [EmbodiChain](./embodichain.md) — 挑战赛仿真/训练底座
 
 ## 参考来源
 

@@ -28,6 +28,7 @@ related:
   - ../entities/mjlab.md
   - ../entities/spear-sim.md
   - ../entities/omnisim.md
+  - ../entities/embodichain.md
   - ../entities/adams.md
   - ../entities/autodl.md
   - ../entities/gpufree.md
@@ -64,6 +65,7 @@ related:
 | 无 CUDA / CPU 物理 + GPU 学习异构 | **UniLab** |
 | 跨项目理解「谁在跟谁竞争」 | 先读 **[训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)** |
 | 编码代理驱动场景 / HTTP+MCP 对话式仿真 | **[OmniSim](../entities/omnisim.md)**（Webots fork，Newton 唯一后端；不是 Isaac Lab 替代） |
+| DexForce 一体化 GPU 数据/训练/Sim2Real 流水线 | **[EmbodiChain](../entities/embodichain.md)**（Alpha；RoboSynChallenge 底座；须 DexForce PyPI index） |
 | 本地缺 GPU / 多卡，需租国内云算力 | 见 [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) |
 | 海外数据栈 / 无法用国内平台 | 见 [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md) |
 
