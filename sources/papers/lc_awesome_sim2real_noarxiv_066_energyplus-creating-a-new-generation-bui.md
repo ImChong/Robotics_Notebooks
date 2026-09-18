@@ -7,7 +7,7 @@
 - **编号：** 066/139
 - **入库日期：** 2026-09-18
 - **arXiv：** （无 / 非 arXiv）
-- **出处：** 见清单
+- **出处：** Energy and Buildings
 - **论文：** <https://www.sciencedirect.com/science/article/abs/pii/S0378778800001146>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Other Benchmarks。 本页为策展索引级节点，细节以原文为准。

@@ -99,6 +99,18 @@ flowchart TB
 | 任务 | Object pickup, transport, placement |
 | 真机 | G1 单手/双手；placement OOD 位置 |
 
+## 与其他工作对比
+
+> 下表做**定位对照**：44% → 92% 是本文稀疏 VLM keyframe 设定下的消融数字，与下列各页不共享任务与评测协议。
+
+| 对照 | 差异读法 |
+|------|----------|
+| **端到端 VLA loco-manip**（本文要替代的默认做法） | 同为语言到全身动作，差别在**中间有没有可检查的量**：端到端一步到关节，KINO 中间是 whole-body keyframe，于是「规划错」与「跟踪失败」可分开诊断。代价是能力上限被 keyframe 库覆盖卡住 |
+| [GPT-Policy](./paper-gpt-policy.md) | 同为 VLM 当高层，接口粒度相反：GPT-Policy 让 VLM 自由发 tool request，KINO 把 VLM 限制在**离散候选**里选。自由度 vs 可控性 |
+| [RobotKeyframing（ETH Coros 组）](https://arxiv.org/abs/2407.11562) | 同组前作、同一低层接口：那篇解决「怎么跟踪一串 keyframe」，KINO 换的是 keyframe 的**来源**（VLM + 库检索）。低层复现应先读前作 |
+| [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) | 该页归纳语言模型的输出形态；KINO 属「选离散动作原语」一支，与出连续目标一支的取舍是**可训性 vs 表达力** |
+| [Unitree G1](./unitree-g1.md) | 真机边界：单手/双手 pickup / transport / placement，placement 可超出训练参考位置；任务族仍窄，勿按平台通用能力读 |
+
 ## 结论
 
 **KINO 说明：VLM 不必直接输出关节或 EEF——whole-body keyframe 是可行中间语言，但低层必须用 saliency -aware 训练吃 sparse 规划信号。**

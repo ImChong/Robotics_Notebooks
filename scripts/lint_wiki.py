@@ -70,7 +70,8 @@ STALE_CLAIM_PATTERNS = [
 #   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」
 #      「这一行不可直接当 SOTA 通才」等辟谣式写法，本身就在否认该断言；否认也
 #      可落在动词上（「0.1–0.2 pp 不足以支撑『全面 SOTA』叙事」「WM 不负责单独
-#      变成 SOTA VLA」），与「不是 / 不可」同为「不 + 谓词」的辟谣；中文里
+#      变成 SOTA VLA」「诚实的 technical report：不包装成 SOTA」），与
+#      「不是 / 不可」同为「不 + 谓词」的辟谣；中文里
 #      辟谣也可后置（「0.066 vs 0.067，读『SOTA 碾压』会过读」），落笔顺序相反、
 #      语义同为否认，故前置线索回看、后置线索前看，都限制在命中词同句内；
 #   2) 库内页面名：「VLA SOTA Leaderboard」是 entities/vla-sota-leaderboard.md 的
@@ -99,6 +100,7 @@ STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不可",
     "不足以",  # 「0.1–0.2 pp 不足以支撑『全面 SOTA』叙事」：否认落在谓词上
     "不负责",  # 「WM 不负责单独变成 SOTA VLA」：同为「不 + 谓词」的辟谣
+    "不包装",  # 「诚实的 technical report：不包装成 SOTA」：同为「不 + 谓词」的辟谣
     "未必",
     "勿",
 )

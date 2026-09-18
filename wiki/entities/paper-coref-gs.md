@@ -76,6 +76,18 @@ sequenceDiagram
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：CoQuad-Ref 上的结果未与下列各页核对同一评测协议，不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Gaussian-LIC2](./paper-gaussian-lic2.md) | 同为 Gaussian map，止步点不同：Gaussian-LIC2 解决**建图本身**（LiDAR–惯性–相机耦合出图），CoRef-GS 接在建好的多机局部图之后做对齐与指代。选型先确认缺的是图，还是图上的语义 |
+| [ParticleSplat](./paper-particlesplat.md) | 同批次另一条 GS 路线，服务对象相反：ParticleSplat 把 GS 压成对象中心粒子喂策略，CoRef-GS 把多智能体 GS 拼起来喂语言指代。一个朝**控制**收敛，一个朝**理解**发散 |
+| [INSPECT](./paper-inspect-view-selection.md) | 同批次里同样在解「视野不够」，手段相反：INSPECT 让单机器人**主动换视角**，CoRef-GS **合并已有视角**。前者花动作预算，后者花通信与对齐预算 |
+| [导航 / SLAM / 自主栈](../overview/navigation-slam-autonomy-stack.md) | 该页给多机建图与导航的栈位；CoRef-GS 落在「共享地图之上的指代理解」层，不替代前端里程计或回环 |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **跟进** 档位 |
+
 ## 结论
 
 **CoRef-GS 代表「跟进」档位的 gaussian-splatting 方向样本——部署前以开源状态与评测协议为准绳。**

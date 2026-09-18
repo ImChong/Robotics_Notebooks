@@ -3,6 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-09-18
+venue: "IEEE International Conference on Robotics and Automation"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页为策展索引级节点，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -46,7 +47,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 |------|------|
 | 编号 | 130/139 |
 | 分组 | Transportation Environments |
-| 出处 | 见清单 / 原文 |
+| 出处 | IEEE International Conference on Robotics and Automation |
 | 论文 | <https://ieeexplore.ieee.org/document/7989179> |
 
 ## 核心机制（归纳）

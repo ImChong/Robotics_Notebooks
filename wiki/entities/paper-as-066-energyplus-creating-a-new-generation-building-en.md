@@ -3,6 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-09-18
+venue: "Energy and Buildings"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Other Benchmarks。 本页为策展索引级节点，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -46,7 +47,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Other Benchmarks。 本页为策展�
 |------|------|
 | 编号 | 066/139 |
 | 分组 | Other Benchmarks |
-| 出处 | 见清单 / 原文 |
+| 出处 | Energy and Buildings |
 | 论文 | <https://www.sciencedirect.com/science/article/abs/pii/S0378778800001146> |
 
 ## 核心机制（归纳）

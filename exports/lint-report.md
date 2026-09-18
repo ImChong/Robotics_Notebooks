@@ -2,7 +2,7 @@
 
 ## [2026-09-18] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **35** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,41 +94,11 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（14 个）
-- wiki/entities/paper-as-017-fear-field-adaptive-constraints-for-safe-environ.md
-- wiki/entities/paper-as-025-uncertainty-aware-action-advising-for-deep-reinf.md
-- wiki/entities/paper-as-060-lidar-object-detection-and-sensor-fusion-in-simu.md
-- wiki/entities/paper-as-065-benchmarking-safe-exploration-in-deep-reinforcem.md
-- wiki/entities/paper-as-066-energyplus-creating-a-new-generation-building-en.md
-- wiki/entities/paper-as-069-openai-gym-retro.md
-- wiki/entities/paper-as-073-sim-to-real-interactive-recommendation-via-off-d.md
-- wiki/entities/paper-as-081-a-simple-framework-for-intrinsic-reward-shaping.md
-- wiki/entities/paper-as-095-design-and-use-paradigms-for-gazebo-an-open-sour.md
-- wiki/entities/paper-as-097-mujoco-a-physics-engine-for-model-based-control.md
-- wiki/entities/paper-as-099-pybullet-real-time-physics-simulation.md
-- wiki/entities/paper-as-128-cityflow-a-multi-agent-reinforcement-learning-en.md
-- wiki/entities/paper-as-129-deepdrive-zero.md
-- wiki/entities/paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat.md
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（18 个）
-- wiki/entities/paper-agile-wam.md（缺 对比）
-- wiki/entities/paper-behaviorworldgen.md（缺 对比）
-- wiki/entities/paper-coref-gs.md（缺 对比）
-- wiki/entities/paper-gpt-policy.md（缺 对比）
-- wiki/entities/paper-inspect-view-selection.md（缺 对比）
-- wiki/entities/paper-kino.md（缺 对比）
-- wiki/entities/paper-lawam.md（缺 对比）
-- wiki/entities/paper-nphm.md（缺 评测 / 对比）
-- wiki/entities/paper-omnimimic.md（缺 对比）
-- wiki/entities/paper-particlesplat.md（缺 对比）
-- wiki/entities/paper-passage.md（缺 对比）
-- wiki/entities/paper-pointer-cad-v2.md（缺 对比）
-- wiki/entities/paper-prede.md（缺 对比）
-- wiki/entities/paper-rebarsim.md（缺 对比）
-- wiki/entities/paper-rom-nav.md（缺 对比）
-- wiki/entities/paper-uloha.md（缺 对比）
-- wiki/entities/paper-viloman.md（缺 对比）
-- wiki/entities/paper-vla-ulap.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -136,8 +106,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-groot-drifting-action-head.md（含绝对化措辞「SOTA」，updated=2026-09-17；同主题更新页 wiki/entities/embodichain.md updated=2026-09-18）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -148,13 +118,13 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-humanclaw.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-passage.md
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：4243/4243 (100%) wiki/entity 页有 ingest 来源

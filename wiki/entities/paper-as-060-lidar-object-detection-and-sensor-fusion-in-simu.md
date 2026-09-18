@@ -3,6 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-09-18
+venue: "Chalmers University of Technology (master's thesis)"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页为策展索引级节点，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -46,7 +47,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 |------|------|
 | 编号 | 060/139 |
 | 分组 | Observation / Sensor Fusion |
-| 出处 | 见清单 / 原文 |
+| 出处 | Chalmers University of Technology (master's thesis) |
 | 论文 | <https://odr.chalmers.se/items/f604fa2f-b3e9-4e78-8e78-486f933fe311> |
 
 ## 核心机制（归纳）

@@ -65,6 +65,17 @@ summary: "ULOHA（arXiv:2609.19200）：水下双臂 dry leader + 三相机 + Le
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：ULOHA 9 任务上的 ACT / Diffusion / SmolVLA 结果与下列各页不共享任务与传感器设定，不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [SmolVLA ONNX / LIBERO](./paper-smolvla-onnx-libero.md) | 同为跑 SmolVLA，问题相反：那页问「同一策略怎么压到端侧跑得动」，ULOHA 问「换成有气泡、有浮力的介质，同一批 IL 基线还剩多少」。前者变算力，后者变物理环境 |
+| [LeRobot](./lerobot.md) | ULOHA 把水下双臂接进 LeRobot 数据/训练栈，本身不新增算法；读它主要读**平台与采集形态**（dry leader + 三相机），不是新策略 |
+| [模仿学习](../methods/imitation-learning.md) | 该页归纳 IL 方法族；ULOHA 是「换介质做压力测试」的一份实证，与陆上 ACT/Diffusion 论文的差别在**扰动来源**（气泡遮挡、浮力漂移）而非网络结构 |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **扫读** 档位，按「系统/平台」类读，而非方法创新 |
+
 ## 结论
 
 **ULOHA 代表「扫读」档位的 underwater 方向样本——部署前以开源状态与评测协议为准绳。**

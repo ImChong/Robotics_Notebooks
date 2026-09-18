@@ -7,7 +7,7 @@
 - **编号：** 128/139
 - **入库日期：** 2026-09-18
 - **arXiv：** （无 / 非 arXiv）
-- **出处：** 见清单
+- **出处：** The World Wide Web Conference (WWW)
 - **论文：** <http://dx.doi.org/10.1145/3308558.3314139>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页为策展索引级节点，细节以原文为准。

@@ -7,7 +7,7 @@
 - **编号：** 130/139
 - **入库日期：** 2026-09-18
 - **arXiv：** （无 / 非 arXiv）
-- **出处：** 见清单
+- **出处：** IEEE International Conference on Robotics and Automation
 - **论文：** <https://ieeexplore.ieee.org/document/7989179>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页为策展索引级节点，细节以原文为准。

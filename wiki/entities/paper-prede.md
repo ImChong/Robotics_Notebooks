@@ -77,6 +77,18 @@ sequenceDiagram
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：28 配置覆盖 75% 是本文自身校准协议下的数字，与下列各页不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [LaWAM](./paper-lawam.md) / [GlanceWAM](./paper-glancewam.md) | 这两页在**架构层**降 WAM 成本（潜空间 subgoal / 异步前瞻），PreDE 不改架构，只在**量化配置**上做离线取舍。换模型 vs 换数值精度 |
+| [Agile-WAM](./paper-agile-wam.md) | 同批次另一条部署成本路线，阶段互补：Agile-WAM 设计期轻量化，PreDE 部署期筛配置，可叠加 |
+| **逐配置跑闭环实测**（本文要替代的默认做法） | 同为决定「这个量化配置能不能上」，差别在**要花多少闭环预算**：逐配置实测最可信但最贵，PreDE 用少量闭环开发数据校准离线动作偏差阈值来提前接受/拒绝。省的是闭环次数，代价是阈值本身要先标定 |
+| [World Action Models](../concepts/world-action-models.md) | 该页给 WAM 谱系；PreDE 属少见的**评测/运维向**工作，读它别当成新策略 |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **扫读** 档位 |
+
 ## 结论
 
 **Predict Before You Deploy 代表「扫读」档位的 wam 方向样本——部署前以开源状态与评测协议为准绳。**

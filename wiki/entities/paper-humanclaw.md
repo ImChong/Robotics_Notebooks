@@ -25,6 +25,7 @@ related:
   - ./paper-sa-2604-03486-visionclaw-always-on-ai-agents-through-smart-gla.md
   - ./paper-harness-vla.md
   - ./robo-bench.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/humanclaw_arxiv_2607_27180.md
   - ../../sources/sites/human-claw-github-io.md
@@ -212,6 +213,7 @@ Progressive **find → navigate → interact**：
 - [HarnessVLA](./paper-harness-vla.md) — 工程 harness 编排 VLA；HumanCLAW harness 编排 **VLM + 技能运动**
 - [RoboBench](./robo-bench.md) — MLLM 操纵认知诊断；HumanCLAW 测 **全身闭环行动**
 - [VisionClaw](./paper-sa-2604-03486-visionclaw-always-on-ai-agents-through-smart-gla.md) — 同名 Claw、不同问题（可穿戴 always-on agent）
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — HumanCLAW 落在「冻结 VLM + 全身闭环行动」这一档；与 VLA 策略成功率榜不共享协议，选基准时按该页分层读
 
 ## 参考来源
 

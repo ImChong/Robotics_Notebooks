@@ -3,6 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-09-18
+venue: "NeurIPS 2021 Offline Reinforcement Learning Workshop"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Benchmarks。 本页为策展索引级节点，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -46,7 +47,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Benchmarks。 本�
 |------|------|
 | 编号 | 073/139 |
 | 分组 | Recommender System Benchmarks |
-| 出处 | 见清单 / 原文 |
+| 出处 | NeurIPS 2021 Offline Reinforcement Learning Workshop |
 | 论文 | <https://offline-rl-neurips.github.io/2021/pdf/50.pdf> |
 
 ## 核心机制（归纳）

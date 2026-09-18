@@ -3,6 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-09-18
+venue: "IJCAI-23 AISafety-SafeRL Workshop (CEUR-WS Vol-3505)"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页为策展索引级节点，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -46,7 +47,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 |------|------|
 | 编号 | 017/139 |
 | 分组 | Action / Action Space Scale |
-| 出处 | 见清单 / 原文 |
+| 出处 | IJCAI-23 AISafety-SafeRL Workshop (CEUR-WS Vol-3505) |
 | 论文 | <https://ceur-ws.org/Vol-3505/paper_3.pdf> |
 
 ## 核心机制（归纳）

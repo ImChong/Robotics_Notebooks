@@ -65,6 +65,18 @@ summary: "OmniMimic（arXiv:2609.20566）：时间反转 + 动力学补全 + 矢
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：仿真 RMSE −63.1% 与「真机无微调」未与下列各页核对同一评测协议，不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [RecMorph](./paper-recmorph.md) | 同为扩大 locomotion 的监督覆盖，入口不同：RecMorph 动的是形态/结构侧，OmniMimic 动的是**参考运动本身**（时间反转、动力学补全、矢状面反射）。一个改机器人，一个改数据 |
+| [ViLoMan](./paper-viloman.md) | 同批次里另一条「先造监督再落策略」：ViLoMan 从人–物交互重定向拿人形 loco-manip 监督，OmniMimic 在同 embodiment 内做几何/动力学增广。跨 embodiment vs 同分布扩充，覆盖边界由此决定 |
+| **按风格分别训策略 + 运行时切换**（本文要替代的默认做法） | 同为支持多风格全向步态，差别在**专家怎么组织**：分风格训练靠外部切换逻辑，OmniMimic 用共享 actor + 软门控残差专家，切换由门控隐式完成 |
+| [Sim2Real](../concepts/sim2real.md) | 「真机无微调部署」是强主张；该页给判读口径（随机化范围、测试分布），读零微调结论前应先对齐这些前提 |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **扫读** 档位 |
+
 ## 结论
 
 **OmniMimic 代表「扫读」档位的 locomotion 方向样本——部署前以开源状态与评测协议为准绳。**

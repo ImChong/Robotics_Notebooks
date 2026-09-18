@@ -136,6 +136,18 @@ sequenceDiagram
 | Self history | Lemon / Exploration **3/3** |
 | HRI | Tic-tac-toe / Pointed fruit **3/3** |
 
+## 与其他工作对比
+
+> 下表做**定位对照**：项目页 3 trials/condition 是探索性规模，与下列各页的 benchmark 数字不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) | 同一模型的两种问法：那页在 RoboDojo 上做定量 benchmark，GPT-Policy 补真机十任务 + 五类 context 消融。一个测「能力有多少」，一个测「上下文怎么喂才用得上」 |
+| [KINO](./paper-kino.md) | 同为 VLM 当高层，**接口粒度不同**：KINO 让 VLM 在预定义 whole-body keyframe 库里选，GPT-Policy 让 VLM 发 structured tool request 再过 IK/时序校验。前者上限被库覆盖卡住，后者被校验器与 latency 卡住 |
+| **微调 VLA**（本文要划清界限的对照） | 项目页的分工说法：VLA/WAM 擅 fast low-level，VLM agent 擅 reasoning / adaptation / replanning。GPT-Policy 测的是 **ICL 而非微调**——无梯度更新，也无 task-specific 参数持久化。代价是每决策的 token 与延迟，与 VLA 的 50 Hz 不在同一控制类 |
+| [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) | 该页归纳「语言模型到底输出什么」；GPT-Policy 落在「tool request + 约束适配器」一支，与直接出关节/EEF 的取舍是**可校验性 vs 频率** |
+| [Foundation Policy](../concepts/foundation-policy.md) | 该页讨论通用策略的构成；GPT-Policy 提供一个反向读法——通用性可以来自**不训练**，但这把成本从训练期挪到了每一次推理 |
+
 ## 结论
 
 **GPT-Policy 表明：固定通用 VLM 已具备可观 in-context 操纵能力，但「计划对」≠「执行稳」——context 质量、IK 校验与 latency 仍是部署瓶颈。**

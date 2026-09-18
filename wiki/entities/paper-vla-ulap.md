@@ -95,6 +95,18 @@ flowchart TB
 | SO-101 真机 | **95.2–100%** baseline SR；time **−47.9–58.0%**；energy **−52.1–62.5%** |
 | LIBERO-Safety | vs π₀.₅ **+11.0 / +15.5 pp** |
 
+## 与其他工作对比
+
+> 下表做**定位对照**：19.9 ms / 0.183 J 与 284.3 ms / 50.55 J 分别在 Orin Nano 与 A6000 上测得，硬件不同不可直接相减；能耗按 successful-episode 计，失败 trial 不计会偏乐观。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [APXInf](./apxinf.md) | 同为降端侧推理成本，**系统形态相反**：APXInf 把单个模型压到 onboard 跑完，VLA-ULAP 接受云端大 VLA + 极小本地 predictor 混合。前者不依赖链路，后者省的是调用次数 |
+| [π₀.₅](./paper-pi05-open-world-vla.md) | 本文的对照基线：latency-aware LIBERO-Safety 上 +11.0 / +15.5 pp，约减半 VLA 调用。注意优势只在 **latency-aware** 设定下显现，静态 LIBERO 不足以说明 |
+| **ACT / SP-VLA**（论文对照组） | 同为加速路线，发力点不同：SP-VLA 压 VLA 自身推理，ULAP 不碰 VLA 内部表征、**独立训练**一个填空头。后者的工程好处是边缘侧可单独迭代 |
+| [Harness VLA](./paper-harness-vla.md) | 抽象层不同：Harness 在 agent 编排层调度策略，VLA-ULAP 调度的是**同一任务内的调用节奏**。两者可叠加 |
+| [Action Chunking](../methods/action-chunking.md) | ULAP 填的正是 chunk 与 chunk 之间的空档；该页给 chunk 执行语义，读「减 48.8–76.7% 调用」应按 chunk 计而非按控制步计 |
+
 ## 结论
 
 **VLA-ULAP 给「大模型在云端、控制在边缘」一个可量化配方：7M ULAP 足够保住 95%+ 成功率，同时砍掉一半以上 VLA 调用。**

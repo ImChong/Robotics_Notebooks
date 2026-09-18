@@ -124,6 +124,18 @@ flowchart TB
 - **传统指标（0.5B，OmniCAD-Plan）：** Line/Circle F1 ~96–98% 已饱和；**Arc F1** Ours **63.59%** vs Pointer-CAD **51.00%**；Mean CD **3.15** vs **3.69**（改善有限，印证形状指标不敏感）。
 - **通用 LLM 写 CADQuery：** 论文附录对比 Qwen3/Gemini/GPT/Claude；在 proposed metrics 上整体弱于专用方法（细节见补充材料）。
 
+## 与其他工作对比
+
+> 下表做**定位对照**：本页数字取自论文 OmniCAD-Plan(+) 表格（**未归一化**到单位立方体），与下列各页的评测设定不通用。
+
+| 对照 | 差异读法 |
+|------|----------|
+| **Pointer-CAD v1 / CADmium**（本文的直接基线） | 同为命令序列 CAD 生成，差别在**连续参数从哪来**：v1 的指针只引 B-rep 实体、数值仍走量化词表，CADmium 同样受限；v2 把数值也改成从计划字典指针检索。OmniCAD-Plan+ 上 RMR@3 **90.97%** vs **61.42% / 43.41%** 就是这一处的代价差 |
+| **LLM 直接写 CADQuery 代码**（Qwen3 / Gemini / GPT / Claude） | 参数天然连续、无量化误差，但 token 约为命令序列 **4×**；v2 要的是「命令序列的效率 + 代码路线的精度」。论文附录在 proposed metrics 上通用 LLM 整体弱于专用方法 |
+| [GenCAD](./gencad.md) / [GenCAD-3D](./gencad-3d.md) | 目标函数不同：这两条以 CD 类形状指标为主；v2 明确指出 CD 分不开 5 mm 与 5.1 mm——Mean CD **3.15 vs 3.69** 改善有限，Arc F1 却从 **51.00%** 到 **63.59%**。要形状原型走前者，要公差走 v2 |
+| [Multi-Agent CAD](./multi-agent-cad.md) / [CAD Skills](./cad-skills.md) | 抽象层不同：这两条在**编排 / 工具链**层组织 LLM 与 build123d / STEP，v2 改的是单模型的表示层。正交，可叠加 |
+| [文字生成 CAD](../concepts/text-to-cad.md) | 该页给能力边界；v2 把「尺寸真值」显式拉出来，但仍不等于工程图 + GD&T + DFM，下游审图不可省 |
+
 ## 结论
 
 **Pointer-CAD v2 把 Text-to-CAD 的主战场从「看起来像」推进到「尺寸对、单位对、可修」——计划阶段写公制参数、构造阶段用指针取连续值，是命令序列路线里针对工业公差的明确架构回答。**

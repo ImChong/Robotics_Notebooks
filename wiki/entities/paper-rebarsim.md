@@ -65,6 +65,18 @@ summary: "Visual Sim-to-Real Learning for Robotic Insertion under Geometric Vari
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：1.4 mm 间隙与真机零样本 SR 91.3% 是本文现场设定下的数字，与下列各页不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [FPSA / R2S2R](./paper-fpsa-r2s2r.md) | 同为缩 sim2real 差距，方向相反：R2S2R 先把真实回灌进仿真再迁回，RebarSim 直接在仿真里用特权 teacher 蒸馏视觉 student。一个改仿真，一个改训练流程 |
+| [ViLoMan](./paper-viloman.md) | 同批次里同样是「特权 teacher → 视觉 student + DAgger」，任务尺度是两端极值：ViLoMan 做人形全身 loco-manip，RebarSim 做 1.4 mm 间隙精密插入。同一配方能覆盖这个跨度本身是看点 |
+| **直接在真机上采数据训插入策略**（本文要替代的默认做法） | 同为拿到可用插入策略，差别在**几何变化从哪来**：真机采集覆盖不了钢筋尺寸/位姿的全部变体，仿真里可批量枚举。代价是要为此补齐视觉域差，DAgger 就在补这一段 |
+| [Sim2Real](../concepts/sim2real.md) | 91.3% 是零样本数字；该页给「零样本」的前提口径（标定、光照、物体分布），换现场不可直接沿用 |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **扫读** 档位 |
+
 ## 结论
 
 **Visual Sim-to-Real Learning for Robotic Insertion under Geometric Variations 代表「扫读」档位的 sim2real 方向样本——部署前以开源状态与评测协议为准绳。**

@@ -3,6 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-09-18
+venue: "PyBullet project site (no formal publication)"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页为策展索引级节点，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -46,7 +47,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页为策
 |------|------|
 | 编号 | 099/139 |
 | 分组 | Robotics Environments |
-| 出处 | 见清单 / 原文 |
+| 出处 | PyBullet project site (no formal publication) |
 | 论文 | <https://pybullet.org/wordpress/> |
 
 ## 核心机制（归纳）

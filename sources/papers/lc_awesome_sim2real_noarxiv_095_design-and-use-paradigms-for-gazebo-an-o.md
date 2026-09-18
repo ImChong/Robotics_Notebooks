@@ -7,7 +7,7 @@
 - **编号：** 095/139
 - **入库日期：** 2026-09-18
 - **arXiv：** （无 / 非 arXiv）
-- **出处：** 见清单
+- **出处：** IEEE/RSJ International Conference on Intelligent Robots and Systems
 - **论文：** <https://ieeexplore.ieee.org/document/1389727>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页为策展索引级节点，细节以原文为准。
