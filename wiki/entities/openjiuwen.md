@@ -105,7 +105,7 @@ ScienceDiscovery 的 Explanation 写明 agent 环是 **本仓 TypeScript `native
 - **官网 ≠ 单一可运行仓库。** 首页主推 WorkSwarm；ScienceDiscovery 与 JiuwenSymbiosis 要进对应 GitHub/AtomGit 仓。
 - **营销数字未进本页。** 第三方新闻里的 PinchBench / BiomniBench 分数，官网与 ScienceDiscovery README 均未给出可复核表；需要时回官方文档，不要当 SOTA 事实引用。
 - **单用户信任模型出现在垂直仓。** ScienceDiscovery 明确无 TLS、单 token、禁止当多租户生产服务。
-- **具身仓未在本次 ingest 深挖。** JiuwenSymbiosis 对机器人读者更贴，但按「一次一条资料」只登记入口。
+- **具身仓尚未深挖。** JiuwenSymbiosis 对机器人读者更贴，本页目前只给入口。
 
 ## 关联页面
 

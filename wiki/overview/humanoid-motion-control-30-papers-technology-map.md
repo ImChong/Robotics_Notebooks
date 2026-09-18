@@ -15,14 +15,14 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_30_papers_humanoid_motion_control_2026-09-18.md
   - ../../sources/raw/wechat_embodied_ai_lab_30_papers_humanoid_motion_control_2026-09-18.md
-summary: "具身智能研究室 2026-09-18 三十篇盘点：从数据表达到连续任务六条问题线；30/30 独立 canonical 详情节点（本 ingest 复用既有实体，0 重复 arXiv）。"
+summary: "具身智能研究室 2026-09-18 三十篇盘点：从数据表达到连续任务六条问题线；30 篇各有一页，可逐篇点开深读。"
 ---
 
 # 人形运动控制：30 篇论文阅读坐标
 
 > **本页定位**：为 [具身智能研究室 · 30 篇盘点](https://mp.weixin.qq.com/s/mpUYlark4cwawDlXJnADmA)（2026-09-18）提供按 **六条问题线** 组织的阅读坐标；方法细节见各 canonical 实体页。
 >
-> **节点策略：** **30/30 独立详情节点均已存在**（本 ingest **0 新建**、**30 复用**）；Riemann 以 [paper-riemann-1](../entities/paper-riemann-1.md) 为 canonical，勿与策展 stub 混读。
+> **怎么用：** 30 篇 **各有一页**，可从下表直接点开；Riemann 以 [paper-riemann-1](../entities/paper-riemann-1.md) 为准，别与清单摘要页混读。
 
 ## 一句话观点
 
@@ -41,9 +41,9 @@ summary: "具身智能研究室 2026-09-18 三十篇盘点：从数据表达到�
 
 ## 为什么单独做这张地图
 
-- 公众号把跨度极大的 30 篇放进 **同一任务叙事**（搬箱 loco-manip），需要横切面索引而非 30 次重复 ingest。
-- 与 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) GitHub 知识库同源；本页只做 **站内 canonical 链接**，不镜像方法细节。
-- **去重核查（2026-09-18）：** 30 篇各对应唯一 `wiki/entities/paper-*.md`；**0** 重复 arXiv canonical 页。
+- 公众号把跨度极大的 30 篇放进 **同一任务叙事**（搬箱 loco-manip），这里按问题线重排，便于按需取用。
+- 与 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) GitHub 知识库同源；本页只给 **入口与坐标**，方法细节在各篇详情页里。
+- 每篇只有 **一个** 详情页，从哪条问题线点进去读到的都是同一页。
 
 ## 流程总览
 

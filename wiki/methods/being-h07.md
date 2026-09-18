@@ -134,7 +134,7 @@ flowchart TB
 
 ## 参考来源
 
-- [sources/papers/being_h07.md](../../sources/papers/being_h07.md) — 本次 ingest 归档与摘录映射
+- [sources/papers/being_h07.md](../../sources/papers/being_h07.md) — 原文归档与摘录对应位置
 - [Being-H0.7 项目页](https://research.beingbeyond.com/being-h07) — 方法叙述、基准与系统部署说明
 - Luo, H., et al. (2026). *Being-H0.7: A Latent World-Action Model from Egocentric Videos.* arXiv:2605.00078.
 

@@ -13,12 +13,12 @@ sources:
   - ../../sources/papers/wm_loco_arxiv_2609_02542.md
   - ../../sources/papers/safe_stop_humanoid_arxiv_2609_02358.md
   - ../../sources/papers/focus_foot_observation_confidence_arxiv_2609_02222.md
-summary: "WM-LOCO / Safe-Stop / FOCUS 三篇独立详情节点的横切阅读坐标：视觉落脚、急停可停止性、连续足部里程计；Safe-Stop 复用 2026-09-03 已有页，不重复造节点。"
+summary: "WM-LOCO / Safe-Stop / FOCUS 三篇的横切阅读坐标：视觉落脚、急停可停止性、连续足部里程计；三篇各有一页，可逐篇点开。"
 ---
 
 # 落脚、急停、本体里程计：三篇独立节点
 
-> **本页定位**：给 WM-LOCO、Safe-Stop、FOCUS 提供 **横切阅读坐标**；方法细节只在各自 `paper-*` 页。Safe-Stop 在 [八篇可靠性地图](./open-source-system-reliability-8-papers-technology-map.md) 已有节点，本次 **复用**。
+> **本页定位**：给 WM-LOCO、Safe-Stop、FOCUS 提供 **横切阅读坐标**；方法细节在各自详情页里。Safe-Stop 也收在 [八篇可靠性地图](./open-source-system-reliability-8-papers-technology-map.md)，可从那边换个角度对照。
 
 ## 一句话观点
 
@@ -36,7 +36,7 @@ summary: "WM-LOCO / Safe-Stop / FOCUS 三篇独立详情节点的横切阅读坐
 ## 为什么单独做这张地图
 
 - 三篇 arXiv 同日窗口（2609.02542 / 02358 / 02222），问题正交：策略落脚、安全停止、状态估计。
-- **3/3 独立详情节点**：新建 WM-LOCO、FOCUS；**复用** [paper-safe-stop-humanoid](../entities/paper-safe-stop-humanoid.md)；**0 重复 arXiv 节点**。
+- **三篇各有一页**：[WM-LOCO](../entities/paper-wm-loco.md)、[Safe-Stop](../entities/paper-safe-stop-humanoid.md)、[FOCUS](../entities/paper-focus-foot-observation-confidence.md)，可分别点开深读。
 - FOCUS 真机是 **AgiBot A3 Ultra**，不要读成「又一篇 G1 论文」。
 
 ## 流程总览

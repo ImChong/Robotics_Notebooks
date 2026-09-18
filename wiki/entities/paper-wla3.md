@@ -62,7 +62,7 @@ summary: "WLA³（arXiv:2609.15870）：从相邻世界状态变化学 latent ac
 
 ## 与其他工作对比
 
-- 横向索引见 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md)；与同 arXiv 节点不重复造页。
+- 横向索引见 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md)。
 
 ## 结论
 

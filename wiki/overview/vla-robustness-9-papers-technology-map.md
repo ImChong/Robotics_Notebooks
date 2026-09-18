@@ -42,8 +42,8 @@ summary: "依据具身智能小站 2026-08-23 九篇盘点，把近期工作读�
 ## 为什么单独做这张地图
 
 - 公众号把 9 篇放在「更长上下文 → 更可控动作分布 → 真实硬件反馈」同一叙事里。
-- 站内已有 VLA、action chunking、retargeting 节点；需要横切面索引避免 9 个实体成孤岛。
-- **Revisiting Open-Loop** 在先前 ingest 已有 complete 页，本专辑复用、不重复造页。
+- 站内已有 VLA、action chunking、retargeting 页面；这张地图把 9 篇与它们放在一起对照。
+- **Revisiting Open-Loop** 站内已有完整详情页，可直接点开深读。
 
 ## 流程总览
 

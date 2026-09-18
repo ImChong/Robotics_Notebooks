@@ -190,7 +190,7 @@ sequenceDiagram
 
 ## 参考来源
 
-- [lingbot_world_v2_arxiv_2607_07534.md](../../sources/papers/lingbot_world_v2_arxiv_2607_07534.md) — 本次 ingest 主摘录
+- [lingbot_world_v2_arxiv_2607_07534.md](../../sources/papers/lingbot_world_v2_arxiv_2607_07534.md) — 主要摘录来源
 - [lingbot-world-v2-technology-robbant.md](../../sources/sites/lingbot-world-v2-technology-robbant.md) — 项目页与开源核查
 - [lingbot-world-v2.md](../../sources/repos/lingbot-world-v2.md) — 官方仓库归档
 - [sun_awesome_wm_2607_07534_...](../../sources/papers/sun_awesome_wm_2607_07534_infinite-worlds-with-versatile-interacti.md) — Awesome 策展坐标

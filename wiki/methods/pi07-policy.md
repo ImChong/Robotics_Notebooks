@@ -102,7 +102,7 @@ flowchart LR
 
 ## 参考来源
 
-- [sources/papers/pi07.md](../../sources/papers/pi07.md) — 本次 ingest 的论文 + 博客统一归档
+- [sources/papers/pi07.md](../../sources/papers/pi07.md) — 论文 + 官方博客的统一归档
 - Physical Intelligence, *$\pi_{0.7}$ : a Steerable Generalist Robotic Foundation Model with Emergent Capabilities*, arXiv:2604.15483 — <https://arxiv.org/abs/2604.15483>
 - Physical Intelligence, *π0.7: a Steerable Model with Emergent Capabilities*（博客）— <https://www.pi.website/blog/pi07>
 

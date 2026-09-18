@@ -192,7 +192,7 @@ sequenceDiagram
 - [Evo-1](./paper-evo1-lightweight-vla.md) — 另一条亚十亿轻量 VLA（刷分 vs 工业接口）
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 2026 补充入口
 - [Indi](./paper-indi.md) — 同专辑：给 VLA 解码器意图而非换工业接口
-- [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md) — 复用本节点，不重复造页
+- [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md) — 本篇在该专辑里的横向坐标
 
 ## 参考来源
 

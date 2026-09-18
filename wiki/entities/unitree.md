@@ -375,7 +375,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 
 - [unitree_slam 源码归档](../../sources/repos/unitree_slam.md)（<https://github.com/unitreerobotics/unitree_slam>）
 
-- [unitreerobotics 组织归档](../../sources/repos/unitree.md) — 本次 ingest 主来源（组织级仓库地图与开源状态）
+- [unitreerobotics 组织归档](../../sources/repos/unitree.md) — 主要来源（组织级仓库地图与开源状态）
 - [UniStore 官方门户归档](../../sources/sites/unitree-unistore.md)
 - [unitree_ros / unitree_ros_to_real 归档](../../sources/repos/unitree_ros.md)
 - [unitree_rl_mjlab 归档](../../sources/repos/unitree_rl_mjlab.md)

@@ -186,7 +186,7 @@ sequenceDiagram
 
 ## 参考来源
 
-- [sources/papers/effective_degree_arxiv_2605_29823.md](../../sources/papers/effective_degree_arxiv_2605_29823.md) — 本次 ingest 归档
+- [sources/papers/effective_degree_arxiv_2605_29823.md](../../sources/papers/effective_degree_arxiv_2605_29823.md) — 原文归档
 - [sources/repos/effective-degree.md](../../sources/repos/effective-degree.md) — 官方代码与入口
 - [arXiv:2605.29823](https://arxiv.org/abs/2605.29823) — 论文（ICML 2026）
 - [GitHub: Effective-Degree](https://github.com/xinzaixinzai/Effective-Degree) — 官方实现
