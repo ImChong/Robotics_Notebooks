@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/repos/mpc_python.md — CVXPY iMPC 路径跟踪教学仓；MIT 已开源
+
 ## [2026-09-18] ingest | sources/papers/humanclaw_arxiv_2607_27180.md — HumanCLAW action intelligence benchmark；已开源 harness + HF 权重
 
 ## [2026-09-18] ingest | sources/repos/awesome-sim2real.md — 接入 LongchaoDa AwesomeSim2Real 与 2502.13187v3 综述；139 条独立 paper-as 节点 + 深读综述页

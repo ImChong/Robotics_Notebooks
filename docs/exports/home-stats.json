@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4266,
-  "edge_count": 38093,
+  "node_count": 4267,
+  "edge_count": 38103,
   "coverage": {
-    "covered": 4238,
-    "total": 4238,
+    "covered": 4239,
+    "total": 4239,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -241,27 +241,27 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 575
+      "size": 589
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 483
+      "size": 480
     },
     {
       "label": "全身控制",
-      "size": 433
+      "size": 362
+    },
+    {
+      "label": "仿真到现实",
+      "size": 332
     },
     {
       "label": "国内开源全景 424 项阅读导航",
       "size": 290
     },
     {
-      "label": "仿真到现实",
-      "size": 281
-    },
-    {
       "label": "视觉-语言-动作",
-      "size": 248
+      "size": 250
     }
   ],
   "top_hubs": [
@@ -387,8 +387,7 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 52,
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",

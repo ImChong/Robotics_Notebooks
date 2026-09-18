@@ -10,6 +10,7 @@ related:
   - ./oomwoo.md
   - ./ukmarsbot.md
   - ../concepts/micromouse.md
+  - ./mpc-python.md
 sources:
   - ../../sources/repos/mushr.md
   - ../../sources/repos/ukmarsbot.md
@@ -57,6 +58,7 @@ summary: "MuSHR 是华盛顿大学 PRL 的多智能体非完整约束小车平�
 - [OOMWOO](./oomwoo.md) — 另一类低成本 ROS 2 整机（家用清扫形态）
 - [UKMARSBOT](./ukmarsbot.md) — 无 ROS 的嵌入式竞赛/教学差速平台对照
 - [Micromouse](../concepts/micromouse.md) — 迷宫竞速压缩栈
+- [mpc_python](./mpc-python.md) — 非 ROS 的 CVXPY iMPC + MuJoCo MuSHR 路径跟踪 demo
 
 ## 推荐继续阅读
 

@@ -681,6 +681,7 @@
 - [MotionCode™](wiki/entities/motioncode.md) — MotionCode**（官网 motioncode.ai）将自身定位为「解码人体运动」的实体，公开业务拆为 **Move / Media /  `📅2026-05-07` `[entity_page]`
 - [Motrix (Motphys 机器人仿真与训练平台)](wiki/entities/motrix.md) — Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研 `📅unknown` `[entity_page]`
 - [MoveIt 2](wiki/entities/moveit2.md) — MoveIt 2** 是面向 **ROS 2** 的开源 **运动规划、操作与运动学** 框架（[moveit/moveit2](https://github.com/moveit/moveit2 `📅2026-06-15` `[entity_page]`
+- [mpc_python](wiki/entities/mpc-python.md) — mpc_python**（mcarfagno/mpc_python）是一个 **MIT** 开源教学仓库：用  `📅unknown` `[entity_page]`
 - [MuJoCo MJX（MuJoCo XLA）](wiki/entities/mujoco-mjx.md) — MuJoCo MJX**（常写作 **MJX**）是 Google DeepMind 在 **JAX** 上对 MuJoCo 物理引擎的 **重实现**：通过 PyP `📅2026-05-18` `[entity_page]`
 - [MuJoCo Playground](wiki/entities/mujoco-playground.md) — MuJoCo Playground**（[google-deepmind/mujoco_playground](https://github.com/google-deepmind/mujoco_ `📅unknown` `[entity_page]`
 - [MuJoCo Warp（MJWarp）](wiki/entities/mujoco-warp.md) — MuJoCo Warp**（常写作 **MJWarp**）是 Google DeepMind 与 NVIDIA **作为 Newton 的一部分**  `📅unknown` `[entity_page]`
