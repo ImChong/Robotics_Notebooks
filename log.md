@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/papers/birdriver_iclr_2026.md — BIRDriver ICLR 2026：BEV+VLM key points+PLUTO；InterPlan SOTA；代码未开源
+
 ## [2026-09-18] ingest | sources/papers/unitracker_arxiv_2507_07356.md — UniTracker arXiv 深读；Oracle+CVAE G1 tracker；确认训练代码未开源
 
 ## [2026-09-18] ingest | sources/repos/mpc_python.md — CVXPY iMPC 路径跟踪教学仓；MIT 已开源

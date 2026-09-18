@@ -9,7 +9,7 @@ tags:
   - diffusion
   - shenlan
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 related:
   - ./autonomous-driving-core-algorithms-series.md
   - ../methods/generative-world-models.md
@@ -19,6 +19,7 @@ related:
   - ../entities/paper-mmhu.md
   - ../entities/paper-uniad.md
   - ../entities/paper-diffusiondrive.md
+  - ../entities/paper-birdriver.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
 summary: "深蓝AI《端到端自动驾驶：十大前沿算法盘点》技术地图：UniAD→VAD→DriveVLM→EMMA→GAIA-1→SparseDrive→Senna→MomAD→DriveTransformer→DiffusionDrive；每篇独立完整实体页。"
@@ -85,7 +86,7 @@ flowchart TB
 
 1. **要可解释中间量 + 联合优化基线** → [UniAD](../entities/paper-uniad.md)
 2. **要车端算力** → [VAD](../entities/paper-vad-vectorized-scene.md) / [SparseDrive](../entities/paper-sparsedrive.md)
-3. **要长尾常识** → [DriveVLM](../entities/paper-drivevlm.md) / [Senna](../entities/paper-senna.md) / [EMMA](../entities/paper-emma-waymo-e2e.md)
+3. **要长尾常识** → [DriveVLM](../entities/paper-drivevlm.md) / [Senna](../entities/paper-senna.md) / [EMMA](../entities/paper-emma-waymo-e2e.md) / [BIRDriver](../entities/paper-birdriver.md)（单帧 BEV key points + PLUTO；InterPlan 长尾；代码待发布）
 4. **要仿真想象** → [GAIA-1](../entities/paper-gaia1.md)（对照 [M⁴World](../entities/paper-m4world.md)）
 5. **要量产轨迹平滑** → [MomAD](../entities/paper-momad.md)
 6. **要并行扩展** → [DriveTransformer](../entities/paper-drivetransformer.md)

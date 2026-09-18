@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4267,
-  "edge_count": 38111,
+  "node_count": 4268,
+  "edge_count": 38118,
   "coverage": {
-    "covered": 4239,
-    "total": 4239,
+    "covered": 4240,
+    "total": 4240,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -243,7 +243,7 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 588
+      "size": 589
     },
     {
       "label": "宇树 G1 人形机器人",
@@ -294,7 +294,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1026,
+      "degree": 1027,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
