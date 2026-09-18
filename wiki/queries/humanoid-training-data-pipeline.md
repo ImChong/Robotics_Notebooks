@@ -3,7 +3,7 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-09-16
+updated: 2026-09-18
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
@@ -77,6 +77,7 @@ flowchart TD
 | 同步 ego + 度量全身/手/SLAM | [HumanPlus-1000](../entities/humanplus-1000-dataset.md) | **1000+ h** 目标；HDF5 内 SMPL-H/MANO/SLAM/IMU/深度对齐；MIT viewer | 预览 100 session；**CC BY-NC**；全量申请；仍非机器人 DOF |
 | 面部视频（telepresence/表情） | [Face Anything](../entities/paper-face-anything-4d-face-reconstruction.md) | 前馈 **4D 面部几何+跟踪** | 与全身 SMPL 链路分离；野外泛化待验证 |
 | 标定多视角面部注册 | [SHELLS](../entities/paper-shells-layered-surface-sampling.md) | 固定拓扑 ~18k 顶点、亚秒级前馈；纯合成训练可泛化棚拍 | **未开源**；需标定多视角；非细皱纹/发须外包络 |
+| 完整人头神经 morphable model | [NPHM](../entities/paper-nphm.md) | CVPR 2023：5200+ 扫描训练；SDF+形变+局部场；**GitHub+预训练** 可拟合 | 全量扫描 **申请表**；默认 **点云拟合** 非单目 RGB（见 MonoNPHM） |
 | 多视角着装数字人（telepresence） | [UMA](../entities/paper-uma.md) | 40×6K 长序列 + 可驱动超精细几何/外观；推理与 demo 已开源 | 人物特异单层模板；训练工具待发；非机器人策略数据 |
 | 隐式 2D 驱动 3DGS 动画 | [LUNA](../entities/paper-luna-universal-3d-human-animation.md) | RGB / 关键点 / 草图 → 规范高斯形变，推理不走 LBS | **截至 2026-09-05 未开源**；输出是 splat **不是**关节；核心数据专有 |
 | 遮挡 YouTube → 可动画 3DGS | [AHOY](../entities/paper-ahoy.md) | 单目重度遮挡视频 + 扩散幻觉监督 → 完整 pose-dependent avatar | **截至 2026-09-06 未开源**；多阶段优化慢于前馈；幻觉未见区域有风险 |

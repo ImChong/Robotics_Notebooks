@@ -3764,6 +3764,12 @@
         "megvii",
         "megvii-research"
       ]
+    },
+    "synthesia": {
+      "label": "合成数字人（Synthesia）",
+      "aliases": [
+        "synthesia"
+      ]
     }
   }
 }

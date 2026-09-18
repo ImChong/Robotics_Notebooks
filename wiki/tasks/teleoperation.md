@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-09-16
+updated: 2026-09-18
 sources:
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
@@ -359,6 +359,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [SHELLS（论文实体）](../entities/paper-shells-layered-surface-sampling.md) — 标定多视角前馈稠密语义人头；telepresence / 表情 performance 注册上游（arXiv:2605.31283）
 - [UMA（论文实体）](../entities/paper-uma.md) — 多级表面对齐超精细可驱动着装人体；VR telepresence / 变焦数字人资产（arXiv:2506.01802，部分开源）
 - [DynHair（论文实体）](../entities/paper-dynhair.md) — 多视角显式发丝动态人头化身；telepresence 头发动力学（ECCV 2026，arXiv:2607.23861，GitHub 占位仓）
+- [NPHM（论文实体）](../entities/paper-nphm.md) — 神经参数化 **完整人头** morphable model（SDF 身份 + 形变表情 + 局部场；CVPR 2023，代码+预训练已开源）
 
 ## 推荐继续阅读
 

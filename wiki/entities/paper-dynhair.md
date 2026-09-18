@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, digital-human, 3dgs, gaussian-splatting, hair-dynamics, avatar, eccv-2026, eth, mpi, tum]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-18
 arxiv: "2607.23861"
 venue: "ECCV 2026"
 related:
