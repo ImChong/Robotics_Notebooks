@@ -835,6 +835,7 @@
 - [Barkour（四足敏捷评测基准与开源生态）](wiki/entities/paper-barkour-quadruped-agility-benchmark.md) — Barkour** 是 Google DeepMind 提出的 **四足敏捷 locomotion 基准**：把 **犬敏捷赛** 中的障碍序列与 **时间型评分** 压缩进 **约 5 m ×  `📅unknown` `[entity_page]`
 - [BFM（Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-behavior-foundation-model-humanoid.md) — BFM** 是北大、港中大（深圳）、上交、复旦与 **上海人工智能实验室** 合作的人形 **whole-body control（WBC）基础模型** 论文（arXiv:2509.13780， `📅unknown` `[entity_page]`
 - [Behavior Prompting Policy（arXiv:2606.30457）](wiki/entities/paper-behavior-prompting-policy.md) — Behavior Prompting Policy**（Austin Patel, Ben Pekarek, Joel Enrique Castro Hernandez, Shuran Song； `📅unknown` `[entity_page]`
+- [BehaviorWorldGen（行为感知结构化世界生成闭环）](wiki/entities/paper-behaviorworldgen.md) — BehaviorWorldGen**（*Closing the Loop between Action Models and World Simulators via Controllable B `📅unknown` `[entity_page]`
 - [Being-M0.7（人形潜空间 World–Action Model）](wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Being-M0.7**（*Being-M0.7: A Latent World-Action Model for Humanoid Robots*，BeingBeyond Technical R `📅unknown` `[entity_page]`
 - [Bet4Sim2Real：用仿真下注收紧真机证书](wiki/entities/paper-bet4sim2real.md) — Betting for Sim-to-Real Performance Certificates**（[arXiv:2608.21572](https://arxiv.org/abs/2608.2 `📅unknown` `[entity_page]`
 - [Zero-shot Whole-body Humanoid Control via Behavioral Foundation Models](wiki/entities/paper-bfm-02-metamotivo.md) — Zero-shot Whole-body Humanoid Control via Behavioral Foundation Models** 收录于 [awesome-bfm-papers `📅unknown` `[entity_page]`
