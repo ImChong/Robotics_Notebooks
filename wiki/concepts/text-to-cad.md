@@ -3,7 +3,7 @@ type: concept
 tags: [cad, generative-ai, hardware, design, api, manufacturing, llm, robotics]
 status: complete
 date: 2026-05-14
-updated: 2026-09-15
+updated: 2026-09-18
 related:
   - ../entities/urdf-studio.md
   - ../entities/atom01-hardware.md
@@ -13,6 +13,7 @@ related:
   - ../entities/comfyui.md
   - ../entities/gencad.md
   - ../entities/gencad-3d.md
+  - ../entities/paper-pointer-cad-v2.md
   - ../entities/cad-skills.md
   - ../entities/multi-agent-cad.md
   - ../entities/cad-1000-hours-dataset.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/repos/comfyui.md
   - ../../sources/papers/gencad_arxiv_2409_16294.md
   - ../../sources/papers/gencad3d_arxiv_2509_15246.md
+  - ../../sources/papers/pointer_cad_v2_arxiv_2606_29301.md
 summary: "文字生成 CAD 已从纯研究演示进入可用早期：适合概念件与参数化初稿，复杂装配与生产级 DFM 仍依赖专业 CAD；机器人方向更稳的是 LLM + CadQuery/OpenSCAD 参数化脚本再导出 STEP。"
 ---
 
@@ -164,8 +166,9 @@ Autodesk 产品线正在把 **AI** 深度嵌入 **Fusion / Maya / Flow** 等工�
 |------|----------|------|
 | **[GenCAD](../entities/gencad.md)** | **渲染图** | 对比学习对齐 CAD–图像潜空间 + **潜扩散**；生成 **完整命令历史** 与同库 **检索**（arXiv:2409.16294） |
 | **[GenCAD-3D](../entities/gencad-3d.md)** | **点云 / 网格** | 在冻结 CAD 自编码器上对齐 **DGCNN / FeaStNet**；**SynthBal** 缓解复杂度长尾；含真实 **激光扫描** 子集（arXiv:2509.15246） |
+| **[Pointer-CAD v2](../entities/paper-pointer-cad-v2.md)** | **文本** | **Plan-Then-Construct** + 指针参数字典；**连续公制尺寸** 与 Vertex/Edge/Face 精度指标（arXiv:2606.29301；代码待发布） |
 
-机器人夹具/结构件若从 **扫描或渲染** 起步，可把二者视为 **「几何观测 → 可编辑 CAD program」** 的参照实现；仍须 **人工审图、公差与 DFM** 签核，再进入 STEP→仿真/加工链。
+机器人夹具/结构件若从 **扫描或渲染** 起步，可把 GenCAD 家族视为 **「几何观测 → 可编辑 CAD program」** 的参照实现；若从 **文本尺寸约束** 出发且在乎 **毫米级参数真值**，应同时对照 Pointer-CAD v2。仍须 **人工审图、公差与 DFM** 签核，再进入 STEP→仿真/加工链。
 
 ### 9. 面向「3D 资产 / 网格」而非「工业 CAD」的工具
 
@@ -224,6 +227,7 @@ flowchart LR
 - [3D Gen Studio](../entities/3dgenstudio.md) — 本地 ComfyUI 网格生产编排（Kanban/Graph/MCP；GLB/OBJ，非 STEP）。
 - [GenCAD](../entities/gencad.md) — 图像条件 **CAD program** 生成与检索（MIT，对比学习 + 潜扩散）。
 - [GenCAD-3D](../entities/gencad-3d.md) — 点云/网格条件 **CAD program** 与 **SynthBal** 数据平衡（逆向工程向）。
+- [Pointer-CAD v2](../entities/paper-pointer-cad-v2.md) — **Plan-Then-Construct** 命令序列 + 公制参数指针（ECCV 2026）。
 - [CAD Skills](../entities/cad-skills.md) — **Agent Skills** 形态的 build123d→STEP→URDF/制造/打印全链路参考实现。
 - [CAD 1000 Hours](../entities/cad-1000-hours-dataset.md) — Markov AI **桌面 CAD 录屏 + 键鼠 + 工程交付物** 大规模 computer-use 语料（HF）。
 - [Multi-Agent CAD（MAC）](../entities/multi-agent-cad.md) — 四段 LangGraph + 确定性翻译器；同一套 Skills 基准上压测试时 token。
@@ -245,6 +249,7 @@ flowchart LR
 - [文字生成 CAD / 对话式 CAD 工具（原始资料索引）](../../sources/sites/text-to-cad-tools.md)
 - [GenCAD 论文摘录（arXiv:2409.16294）](../../sources/papers/gencad_arxiv_2409_16294.md)
 - [GenCAD-3D 论文摘录（arXiv:2509.15246）](../../sources/papers/gencad3d_arxiv_2509_15246.md)
+- [Pointer-CAD v2 论文摘录（arXiv:2606.29301）](../../sources/papers/pointer_cad_v2_arxiv_2606_29301.md)
 - [CAD Skills 仓库源归档（earthtojake/text-to-cad）](../../sources/repos/earthtojake-text-to-cad.md)
 - [MAC 仓库源归档（Pan-Chera/Multi-Agent-CAD）](../../sources/repos/multi-agent-cad.md)
 - [img2threejs 仓库源归档](../../sources/repos/img2threejs.md)

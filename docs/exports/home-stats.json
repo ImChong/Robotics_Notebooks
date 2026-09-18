@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4270,
-  "edge_count": 38140,
+  "node_count": 4271,
+  "edge_count": 38147,
   "coverage": {
-    "covered": 4242,
-    "total": 4242,
+    "covered": 4243,
+    "total": 4243,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -247,7 +247,7 @@
     },
     {
       "label": "全身控制",
-      "size": 447
+      "size": 463
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -306,7 +306,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 732,
+      "degree": 733,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

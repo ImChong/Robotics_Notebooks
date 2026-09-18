@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/papers/pointer_cad_v2_arxiv_2606_29301.md — Pointer-CAD v2 Plan-Then-Construct 入库；GitHub 待发布代码
+
 ## [2026-09-18] ingest | sources/repos/unifolm-wla.md — UnifoLM-WLA-1.0：6B 全身 WLA + ER-1/ER-Flow 权重；部分开源（后训练/WLA-Base 待发布）；自动合并 PR
 
 - **触发：** 用户指定项目页 / GitHub / Hugging Face（UnifoLM-WLA-1.0、ER-1、ER-Flow）
