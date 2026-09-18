@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-ici-vla-spatiotemporal-icl.md",
+      "detail_id": "entity-paper-ici-vla-spatiotemporal-icl",
+      "label": "ICI-VLA（时空对齐 In-Context 模仿 · VLA）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/paper-birdriver.md",
       "detail_id": "entity-paper-birdriver",
       "label": "BIRDriver：BEV  informed 的 VLM 推理驾驶员",
@@ -215,28 +225,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-040-unsupervised-pixel-level-domain-adaptation-with.md",
-      "detail_id": "entity-paper-as-040-unsupervised-pixel-level-domain-adaptation-with",
-      "label": "Unsupervised pixel-level domain adaptation with generative adversarial networks",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-birdriver.md",
-    "detail_id": "entity-paper-birdriver",
-    "label": "BIRDriver：BEV  informed 的 VLM 推理驾驶员",
+    "path": "wiki/entities/paper-ici-vla-spatiotemporal-icl.md",
+    "detail_id": "entity-paper-ici-vla-spatiotemporal-icl",
+    "label": "ICI-VLA（时空对齐 In-Context 模仿 · VLA）",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
