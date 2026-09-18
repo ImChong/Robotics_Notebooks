@@ -2,7 +2,7 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 sources:
   - ../../sources/repos/unitree.md
   - ../../sources/repos/unitree_ros2.md
@@ -27,6 +27,7 @@ related:
   - ./unitree-lerobot.md
   - ./unifolm-vla.md
   - ./unifolm-world-model-action.md
+  - ./unifolm-wla.md
   - ./unitree-dexterous-hand-services.md
   - ./z1-sdk.md
   - ./unilidar-sdk2.md
@@ -79,6 +80,7 @@ related:
 | XR | Extended Reality | 扩展现实（含 VR/AR）；官方 `xr_teleoperate` 遥操作入口 |
 | VLA | Vision-Language-Action | 视觉–语言–动作模型；UnifoLM-VLA-0 属此类 |
 | WMA | World-Model-Action | 世界模型–动作架构；UnifoLM-WMA-0 属此类 |
+| WLA | Whole-body Language-Action | 全身协调语言–动作；UnifoLM-WLA-1.0 属此类 |
 | IL | Imitation Learning | 模仿学习；官方 `unitree_lerobot` 对接 LeRobot 训练 |
 
 ## 为什么重要
@@ -162,7 +164,7 @@ Unitree 现在已经明显不只是四足公司。
 | **经典仿真 / URDF** | [unitree_ros](./unitree-ros.md)、[unitree_mujoco](./unitree-mujoco.md)、[unitree_guide](./unitree-guide.md) | URDF 资产、Gazebo 关节实验、MuJoCo Sim2Sim |
 | **RL 训练** | [unitree_rl_gym](./unitree-rl-gym.md)、[unitree_rl_lab](./unitree-rl-lab.md)、[unitree_rl_mjlab](./unitree-rl-mjlab.md) | 速度跟踪 / 模仿 → Sim2Sim → Sim2Real |
 | **遥操作与 IL** | [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md)、[unitree_lerobot](./unitree-lerobot.md) | XR 采数、Isaac Lab 仿真采数、对接 [LeRobot](./lerobot.md) |
-| **基础模型** | [unifolm-vla](./unifolm-vla.md)、[unifolm-world-model-action](./unifolm-world-model-action.md) | 官方 UnifoLM VLA / WMA；权重与数据多在 Hugging Face |
+| **基础模型** | [unifolm-vla](./unifolm-vla.md)、[unifolm-world-model-action](./unifolm-world-model-action.md)、[unifolm-wla](./unifolm-wla.md) | 官方 UnifoLM VLA / WMA / WLA；权重与数据多在 Hugging Face |
 
 ```mermaid
 flowchart TB
@@ -184,7 +186,7 @@ flowchart TB
     XR["xr_teleoperate"]
     SIM["unitree_sim_isaaclab"]
     LR["unitree_lerobot"]
-    VLA["UnifoLM-VLA / WMA"]
+    VLA["UnifoLM-VLA / WMA / WLA"]
     XR --> SIM --> LR --> VLA
   end
   subgraph verify["验证与部署"]
@@ -224,7 +226,7 @@ flowchart TB
 | 仿真 | [unitree_mujoco](./unitree-mujoco.md)、[unitree_guide](./unitree-guide.md)、[unitree_model](./unitree-model.md) | 对应同名仓（model 为 deprecated→HF 指针） |
 | RL | [unitree_rl_gym](./unitree-rl-gym.md)、[unitree_rl_lab](./unitree-rl-lab.md)、[unitree_rl_mjlab](./unitree-rl-mjlab.md) | 三选一后端 |
 | 遥操作 / IL | [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md)、[unitree_lerobot](./unitree-lerobot.md) | XR 周边 `televuer`/`teleimager`/`kinect_teleoperate` 并入 XR 页 sources |
-| 基础模型 | [unifolm-vla](./unifolm-vla.md)、[unifolm-world-model-action](./unifolm-world-model-action.md) | 对应仓 |
+| 基础模型 | [unifolm-vla](./unifolm-vla.md)、[unifolm-world-model-action](./unifolm-world-model-action.md)、[unifolm-wla](./unifolm-wla.md) | 对应仓 |
 | 感知 | [UniLidar SDK](./unilidar-sdk2.md)、[point_lio_unilidar](./point-lio-unilidar.md) | L1+L2 SDK 合并；Point-LIO 适配 |
 | 手臂 / 手 | [Z1 软件栈](./z1-sdk.md)、[灵巧手服务](./unitree-dexterous-hand-services.md) | Z1 四仓合并；Dex1/Inspire/Brainco/Linker 合并 |
 | 开源整机 | [Qmini](./qmini.md) | `Qmini` |
@@ -370,6 +372,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 - 中文社区策展镜像（非官方）：[WaytoAGI · AI硬件](./waytoagi.md) — 飞书栏目含宇树简介等 PDF 转载，硬件与 SDK 仍以本页官方入口为准
 - UnifoLM-WMA 项目页：<https://unigen-x.github.io/unifolm-world-model-action.github.io>
 - UnifoLM-VLA 项目页：<https://unigen-x.github.io/unifolm-vla.github.io>
+- UnifoLM-WLA 项目页：<https://unigen-x.github.io/unifolm-wla.github.io/>
 
 ## 参考来源
 
@@ -400,6 +403,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 - [unitree_lerobot](./unitree-lerobot.md)
 - [UnifoLM-VLA](./unifolm-vla.md)
 - [UnifoLM-WMA](./unifolm-world-model-action.md)
+- [UnifoLM-WLA](./unifolm-wla.md)
 - [四足机器人](./quadruped-robot.md)
 - [人形机器人](./humanoid-robot.md)
 - [legged_gym](./legged-gym.md)

@@ -38,7 +38,7 @@
 | MuJoCo Sim2Sim | [unitree-mujoco.md](../../wiki/entities/unitree-mujoco.md) |
 | RL 三线 | [unitree-rl-gym.md](../../wiki/entities/unitree-rl-gym.md) · [unitree-rl-lab.md](../../wiki/entities/unitree-rl-lab.md) · [unitree-rl-mjlab.md](../../wiki/entities/unitree-rl-mjlab.md) |
 | 遥操作 / IL | [xr-teleoperate.md](../../wiki/entities/xr-teleoperate.md) · [unitree-sim-isaaclab.md](../../wiki/entities/unitree-sim-isaaclab.md) · [unitree-lerobot.md](../../wiki/entities/unitree-lerobot.md) |
-| UnifoLM | [unifolm-vla.md](../../wiki/entities/unifolm-vla.md) · [unifolm-world-model-action.md](../../wiki/entities/unifolm-world-model-action.md) |
+| UnifoLM | [unifolm-vla.md](../../wiki/entities/unifolm-vla.md) · [unifolm-world-model-action.md](../../wiki/entities/unifolm-world-model-action.md) · [unifolm-wla.md](../../wiki/entities/unifolm-wla.md) |
 | 感知 / 臂 / 手 | [unilidar-sdk2.md](../../wiki/entities/unilidar-sdk2.md) · [point-lio-unilidar.md](../../wiki/entities/point-lio-unilidar.md) · [z1-sdk.md](../../wiki/entities/z1-sdk.md) · [unitree-dexterous-hand-services.md](../../wiki/entities/unitree-dexterous-hand-services.md) |
 
 各单仓 `sources/repos/<name>.md` 的「沉淀到 wiki」字段指向上表合并页或标注仅归档。
