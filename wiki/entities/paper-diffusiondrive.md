@@ -17,6 +17,7 @@ related:
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
   - ../overview/autonomous-driving-core-algorithms-series.md
   - ../methods/generative-world-models.md
+  - ./paper-behaviorworldgen.md
   - ./paper-s-squared-vla.md
   - ./paper-m4world.md
   - ../methods/vla.md
@@ -51,7 +52,7 @@ summary: "DiffusionDrive（arXiv:2411.15139，CVPR 2025 Highlight）：先预测
 
 - 扩散策略擅长多模态动作，但数十步去噪无法上车实时。
 - 截断扩散证明生成式规划可以同时要质量与帧率。
-- 与站内 [paper-s-squared-vla](./paper-s-squared-vla.md) 等 NAVSIM 对照常用基线。
+- 与站内 [paper-s-squared-vla](./paper-s-squared-vla.md) 等 NAVSIM 对照常用基线；[BehaviorWorldGen](./paper-behaviorworldgen.md) 以其为 E2E 微调基线（PDMS 87.7→88.6，低分交互桶增益最大）。
 
 ## 核心信息
 

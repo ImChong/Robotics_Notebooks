@@ -1,4 +1,4 @@
-## [2026-09-18] ingest | sources/blogs/wechat_shenlan_rl_sim2real_deployment_2026-09-18.md — RL 真机部署条件 query 页与 Sim2Real 交叉链接
+## [2026-09-18] ingest | sources/papers/behaviorworldgen_arxiv_2608_22187.md — BehaviorWorldGen 行为感知轨迹闭环；项目页未开源；NAVSIM 低分桶增益最大
 
 ## [2026-09-18] ingest | sources/sites/unilabsim-project.md — 复核 UniLab 项目页：CoRL 2026、14 任务、17 浏览器 demo、跨平台墙钟表
 
