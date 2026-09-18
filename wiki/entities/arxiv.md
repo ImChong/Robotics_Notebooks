@@ -2,12 +2,13 @@
 type: entity
 tags: [software, research, publication, preprint, open-access, literature, arxiv, cornell]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-18
 related:
   - ../comparisons/robotics-research-venues.md
   - ../overview/robot-learning-overview.md
   - ./weights-and-biases.md
   - ./lerobot.md
+  - ./arxivisual.md
 sources:
   - ../../sources/sites/arxiv-org.md
   - ../../sources/sites/robotics-venues-primary-refs.md
@@ -91,6 +92,7 @@ flowchart TB
 | 本库 ingest 单篇论文 | 先写 `sources/papers/<slug>_arxiv_<id>.md`，元数据链 `https://arxiv.org/abs/<id>`；再按 [ingest-workflow](../../schema/ingest-workflow.md) 升格 wiki |
 | 引用与对账 | 固定 `vN` 或在正文写明「截至入库日最新版」；录用后补 IEEE Xplore / PMLR / proceedings 最终入口 |
 | 机器拉取 | 走 [API 文档](https://info.arxiv.org/help/api/index.html) 与 Terms；致谢开放互操作；**勿**冒充官方品牌 |
+| 可视化速读 | 把 `arxiv.org/abs/<id>` 改为 `arxivisual.org/abs/<id>` 可生成 scrollytelling + Manim 短片（见 [arXivisual](./arxivisual.md)；非官方服务） |
 | 学科筛选 | 机器人主线优先 `cs.RO`，再扩 `cs.LG` / `cs.CV` / `eess.SY`；避免只按关键词在全站噪音检索 |
 | 开源判断 | arXiv **只证明有预印本**；代码/数据是否开放必须查项目页（步骤 2.5） |
 
@@ -114,6 +116,7 @@ flowchart TB
 - [机器人学习总览](../overview/robot-learning-overview.md) — 领域入口；发表与引用小节回链本页
 - [Weights & Biases](./weights-and-biases.md) — 另一类「研究基础设施」宏观实体（实验追踪，非文献档案）
 - [LeRobot](./lerobot.md) — 开源机器人学习框架；权重/数据常并行出现在 Hugging Face，论文仍多挂 arXiv
+- [arXivisual](./arxivisual.md) — arXiv 之上的 AI Manim scrollytelling 阅读层（非 peer review）
 
 ## 参考来源
 

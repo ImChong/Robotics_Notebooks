@@ -1,3 +1,9 @@
+## [2026-09-18] ingest | sources/sites/arxivisual-org.md — arXivisual arXiv 论文 Manim scrollytelling 工具；GitHub 可本地运行（无 LICENSE 文件）；交叉 arxiv/manim；自动合并 PR
+
+- **触发：** 用户指定 <https://arxivisual.org>
+- **步骤 2.5：** **已开源**（rajshah6/arXivisual 可复现）；**截至入库日无 LICENSE 文件**
+- **关键页：** [`arxivisual`](wiki/entities/arxivisual.md)
+
 ## [2026-09-18] ingest | sources/papers/lawam_arxiv_2606_15768.md + passage/kino/vla-ulap/gpt-policy — 五篇论文 batch ingest；LaWAM/GPT-Policy 已开源；自动合并 PR
 
 - **触发：** 用户指定 LaWAM（RLinf/LeRobot）、PASSAGE、KINO、VLA-ULAP、GPT-Policy
