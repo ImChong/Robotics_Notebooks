@@ -1815,6 +1815,20 @@
     return rendered;
   }
 
+  /**
+   * 纯文本片段（图谱节点浮窗的标题 / 摘要等）里的 `$...$` 归一为 `\(...\)`，
+   * 货币判定与正文 renderInlineMarkdown 保持一致，`$$...$$` 与 `\[...\]` 原样保留。
+   */
+  function normalizeDollarMath(text) {
+    // 与 renderInlineMarkdown 同序：先让 `$$...$$` 整体匹配，避免被内层 `$...$` 拆开
+    return String(text || '').replace(/\$\$[\s\S]+?\$\$|\$\s*([^$]+?)\s*\$/g, function (match, expr) {
+      if (expr == null) return match;
+      var trimmed = String(expr).trim();
+      if (!trimmed || isCurrencyDollarPair(trimmed)) return match;
+      return '\\(' + normalizeMathExpr(trimmed) + '\\)';
+    });
+  }
+
   /** Strip markdown-only escapes (e.g. ^\* setpoints) that break KaTeX inside math. */
   function normalizeMathExpr(expr) {
     return String(expr || '').replace(/\\\*/g, '*');
@@ -2246,6 +2260,13 @@
     if (!container) return;
     Array.from(container.querySelectorAll('.mermaid svg')).forEach(fixMermaidForeignObjectOverflow);
   }
+
+  // 图谱节点浮窗（graph-tooltip.js / mini-graph.js / graph.html）复用正文同一套公式渲染：
+  // 按内容懒加载 KaTeX，无公式的浮窗不会请求组件。
+  window.RNMath = {
+    normalizeDollarMath: normalizeDollarMath,
+    render: renderDetailMath
+  };
 
   // ── 公式与图表组件按内容加载（编号 9）──
   // 详情页与路线页原先在 HTML 里静态引入 KaTeX（CSS + katex.min.js + auto-render）与
@@ -4540,6 +4561,7 @@
     function showTooltip(ev, d, html) {
       if (!tooltipEl) return;
       tooltipEl.innerHTML = html;
+      renderDetailMath(tooltipEl);
       tooltipEl.setAttribute('aria-hidden', 'false');
       tooltipEl.style.width = '';
       tooltipEl.style.transform = '';
