@@ -171,6 +171,8 @@ COMMUNITY_HUB_ALIASES: dict[str, str] = {
     ),
     "wiki/overview/sun-awesome-touch-technology-map.md": "wiki/concepts/tactile-sensing.md",
     "wiki/overview/sun-awesome-r2s2r-technology-map.md": "wiki/concepts/sim2real.md",
+    # LongchaoDa AwesomeSim2Real 技术地图：同属 Sim2Real 主题，归并到 sim2real 枢纽
+    "wiki/overview/lc-awesome-sim2real-technology-map.md": "wiki/concepts/sim2real.md",
 }
 
 

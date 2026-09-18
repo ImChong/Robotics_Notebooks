@@ -9,260 +9,261 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/mpc-python.md",
-      "detail_id": "entity-mpc-python",
-      "label": "mpc_python",
+      "path": "wiki/entities/paper-as-004-control-delay-in-reinforcement-learning-for-real.md",
+      "detail_id": "entity-paper-as-004-control-delay-in-reinforcement-learning-for-real",
+      "label": "Control delay in reinforcement learning for real-time dynamic systems",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-humanclaw.md",
-      "detail_id": "entity-paper-humanclaw",
-      "label": "HumanCLAW：VLM 能否通过身体行动？",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/awesome-sim2real.md",
-      "detail_id": "entity-awesome-sim2real",
-      "label": "AwesomeSim2Real（LongchaoDa）",
+      "path": "wiki/entities/paper-as-005-delay-aware-vnf-scheduling-a-reinforcement-learn.md",
+      "detail_id": "entity-paper-as-005-delay-aware-vnf-scheduling-a-reinforcement-learn",
+      "label": "Delay-aware VNF scheduling",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-001-1.md",
-      "detail_id": "entity-paper-as-001-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-006-dynamic-modeling-for-reinforcement-learning-with.md",
+      "detail_id": "entity-paper-as-006-dynamic-modeling-for-reinforcement-learning-with",
+      "label": "Dynamic Modeling for Reinforcement Learning with Random Delay",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-002-1.md",
-      "detail_id": "entity-paper-as-002-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-007-dynamic-collaborative-optimization-of-end-to-end.md",
+      "detail_id": "entity-paper-as-007-dynamic-collaborative-optimization-of-end-to-end",
+      "label": "Dynamic collaborative optimization of end-to-end delay and power consumption ...",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-005-1.md",
-      "detail_id": "entity-paper-as-005-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-008-habits-action-sequences-and-reinforcement-learni.md",
+      "detail_id": "entity-paper-as-008-habits-action-sequences-and-reinforcement-learni",
+      "label": "Habits, action sequences and reinforcement learning",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-006-1.md",
-      "detail_id": "entity-paper-as-006-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-009-hierarchical-decision-and-control-for-continuous.md",
+      "detail_id": "entity-paper-as-009-hierarchical-decision-and-control-for-continuous",
+      "label": "Hierarchical decision and control for continuous multitarget problem",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-008-1.md",
-      "detail_id": "entity-paper-as-008-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-011-reinforcement-learning-based-vnf-scheduling-with.md",
+      "detail_id": "entity-paper-as-011-reinforcement-learning-based-vnf-scheduling-with",
+      "label": "Reinforcement learning based VNF scheduling with end-to-end delay guarantee",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-011-1.md",
-      "detail_id": "entity-paper-as-011-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-013-reinforcement-learning-framework-for-delay-sensi.md",
+      "detail_id": "entity-paper-as-013-reinforcement-learning-framework-for-delay-sensi",
+      "label": "Reinforcement learning framework for delay sensitive energy harvesting wirele...",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-013-1.md",
-      "detail_id": "entity-paper-as-013-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-016-utilizing-reinforcement-learning-to-autonomously.md",
+      "detail_id": "entity-paper-as-016-utilizing-reinforcement-learning-to-autonomously",
+      "label": "Utilizing reinforcement learning to autonomously mange buffers in a delay tol...",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-015-1.md",
-      "detail_id": "entity-paper-as-015-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-017-fear-field-adaptive-constraints-for-safe-environ.md",
+      "detail_id": "entity-paper-as-017-fear-field-adaptive-constraints-for-safe-environ",
+      "label": "Fear Field",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-016-1.md",
-      "detail_id": "entity-paper-as-016-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-025-uncertainty-aware-action-advising-for-deep-reinf.md",
+      "detail_id": "entity-paper-as-025-uncertainty-aware-action-advising-for-deep-reinf",
+      "label": "Uncertainty-aware action advising for deep reinforcement learning agents",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-018-1.md",
-      "detail_id": "entity-paper-as-018-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-030-coupled-real-synthetic-domain-adaptation-for-rea.md",
+      "detail_id": "entity-paper-as-030-coupled-real-synthetic-domain-adaptation-for-rea",
+      "label": "Coupled real-synthetic domain adaptation for real-world deep depth enhancement",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-023-1.md",
-      "detail_id": "entity-paper-as-023-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-032-domain-adaption-as-auxiliary-task-for-sim-to-rea.md",
+      "detail_id": "entity-paper-as-032-domain-adaption-as-auxiliary-task-for-sim-to-rea",
+      "label": "Domain adaption as auxiliary task for sim-to-real transfer in vision-based ne...",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-029-1.md",
-      "detail_id": "entity-paper-as-029-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-033-mic-masked-image-consistency-for-context-enhance.md",
+      "detail_id": "entity-paper-as-033-mic-masked-image-consistency-for-context-enhance",
+      "label": "MIC",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-030-1.md",
-      "detail_id": "entity-paper-as-030-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-034-retinagan-an-object-aware-approach-to-sim-to-rea.md",
+      "detail_id": "entity-paper-as-034-retinagan-an-object-aware-approach-to-sim-to-rea",
+      "label": "Retinagan",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-031-1.md",
-      "detail_id": "entity-paper-as-031-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-036-self-supervised-sim-to-real-adaptation-for-visua.md",
+      "detail_id": "entity-paper-as-036-self-supervised-sim-to-real-adaptation-for-visua",
+      "label": "Self-supervised sim-to-real adaptation for visual robotic manipulation",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-032-1.md",
-      "detail_id": "entity-paper-as-032-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-038-sim-to-real-visual-grasping-via-state-representa.md",
+      "detail_id": "entity-paper-as-038-sim-to-real-visual-grasping-via-state-representa",
+      "label": "Sim-to-real visual grasping via state representation learning based on combin...",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-035-1.md",
-      "detail_id": "entity-paper-as-035-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-039-unsupervised-adversarial-domain-adaptation-for-s.md",
+      "detail_id": "entity-paper-as-039-unsupervised-adversarial-domain-adaptation-for-s",
+      "label": "Unsupervised adversarial domain adaptation for sim-to-real transfer of tactil...",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-as-037-1.md",
-      "detail_id": "entity-paper-as-037-1",
-      "label": "1",
+      "path": "wiki/entities/paper-as-040-unsupervised-pixel-level-domain-adaptation-with.md",
+      "detail_id": "entity-paper-as-040-unsupervised-pixel-level-domain-adaptation-with",
+      "label": "Unsupervised pixel-level domain adaptation with generative adversarial networks",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-042-using-simulation-and-domain-adaptation-to-improv.md",
+      "detail_id": "entity-paper-as-042-using-simulation-and-domain-adaptation-to-improv",
+      "label": "Using simulation and domain adaptation to improve efficiency of deep robotic ...",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mpc-python.md",
-    "detail_id": "entity-mpc-python",
-    "label": "mpc_python",
+    "path": "wiki/entities/paper-as-004-control-delay-in-reinforcement-learning-for-real.md",
+    "detail_id": "entity-paper-as-004-control-delay-in-reinforcement-learning-for-real",
+    "label": "Control delay in reinforcement learning for real-time dynamic systems",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 589
+      "size": 588
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 480
+      "size": 513
     },
     {
       "label": "全身控制",
-      "size": 362
-    },
-    {
-      "label": "仿真到现实",
-      "size": 332
+      "size": 373
     },
     {
       "label": "国内开源全景 424 项阅读导航",
-      "size": 290
+      "size": 303
     },
     {
       "label": "视觉-语言-动作",
       "size": 250
+    },
+    {
+      "label": "仿真到现实",
+      "size": 218
     }
   ],
   "top_hubs": [
@@ -306,6 +307,14 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "degree": 732,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
       "label": "国内具身开源全景 424 项 · 阅读导航",
       "type": "query",
@@ -324,17 +333,8 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 606,
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "degree": 597,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 605,
+      "has_repo": true
     },
     {
       "detail_id": "wiki-methods-model-based-rl",
