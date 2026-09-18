@@ -3230,6 +3230,7 @@
 - [STMR 四足时空重定向](wiki/entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
 - [ACT-2（Sunday Robotics · Generalizing Reliability）](wiki/entities/sunday-robotics-act2.md) — ACT-2** 是 **Sunday Robotics**（2026-07 博客预览）在自研移动平台 **Memo** 上部署的 **第二代家用机器人基础模型**：在 **ACT-1**（2025 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md) — Superpowers** 是 obra/superpowers 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
+- [SuperTuxKart](wiki/entities/supertuxkart.md) — SuperTuxKart**（项目主页，代码，[R `📅unknown` `[entity_page]`
 - [Sutton & Barto RL 教材](wiki/entities/sutton-barto-rl-book.md) — Reinforcement Learning: An Introduction**（Richard S. Sutton & Andrew G. Barto）是强化学习领域的**标准教材**：以 M `📅unknown` `[entity_page]`
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
 - [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
