@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
+      "label": "人形运动控制：30 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/supertuxkart.md",
       "detail_id": "entity-supertuxkart",
       "label": "SuperTuxKart",
@@ -58,15 +67,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
-      "label": "人形运动控制：30 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added"
     },
     {
       "path": "wiki/entities/paper-gpt-policy.md",
@@ -211,15 +211,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/supertuxkart.md",
-    "detail_id": "entity-supertuxkart",
-    "label": "SuperTuxKart",
-    "type": "entity",
+    "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
+    "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
+    "label": "人形运动控制：30 篇论文阅读坐标",
+    "type": "overview",
     "recency": "2026-09-18",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
