@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/mpc-python.md",
+      "detail_id": "entity-mpc-python",
+      "label": "mpc_python",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/paper-humanclaw.md",
       "detail_id": "entity-paper-humanclaw",
       "label": "HumanCLAW：VLM 能否通过身体行动？",
@@ -215,28 +226,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-038-1.md",
-      "detail_id": "entity-paper-as-038-1",
-      "label": "1",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanclaw.md",
-    "detail_id": "entity-paper-humanclaw",
-    "label": "HumanCLAW：VLM 能否通过身体行动？",
+    "path": "wiki/entities/mpc-python.md",
+    "detail_id": "entity-mpc-python",
+    "label": "mpc_python",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
