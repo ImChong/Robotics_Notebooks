@@ -3408,6 +3408,7 @@
 - [Ultralytics YOLO](wiki/entities/ultralytics.md) — Ultralytics**（ultralytics/ultralytics，文档 [docs.ultra `📅unknown` `[entity_page]`
 - [Understand Anything（Egonex）](wiki/entities/understand-anything.md) — Understand Anything**（[Egonex-AI/Understand-Anything](https://github.com/Egonex-AI/Understand-Anyt `📅unknown` `[entity_page]`
 - [UnifoLM-VLA-0（unifolm-vla）](wiki/entities/unifolm-vla.md) — UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识 `📅unknown` `[entity_page]`
+- [UnifoLM-WLA-1.0（unifolm-wla）](wiki/entities/unifolm-wla.md) — UnifoLM-WLA-1.0** 是 UnifoLM 家族全面升级后的 **6B 通用人形机器人基础模型**（**Whole-body Language-Action，WLA**）：在具身推理骨 `📅unknown` `[entity_page]`
 - [UnifoLM-WMA-0（unifolm-world-model-action）](wiki/entities/unifolm-world-model-action.md) — UnifoLM-WMA-0** 是 UnifoLM 家族中的 **World-Model–Action（WMA）** 架构：核心世界模型理解机器人与环境的物理交互，并提供 **仿真引擎** 与  `📅unknown` `[entity_page]`
 - [UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统](wiki/entities/unilab.md) — UniLab**（arXiv:2605.30313，**CoRL 2026 Accepted**，清华等联合）质疑仿真主导机器人 RL 的默认前提：**高效训练是否必须把物理放在 GPU 上**。 `📅unknown` `[entity_page]`
 - [UniLidar SDK（L1 / L2）](wiki/entities/unilidar-sdk2.md) — 宇树激光雷达产品线 SDK：**L2 用 `unilidar_sdk2`**，**L1 用 `unilidar_sdk`**。本页合并为一个知识节点，按代际对照，避免两个几乎同构的 stub。 `📅unknown` `[entity_page]`
