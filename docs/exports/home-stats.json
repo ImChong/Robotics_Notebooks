@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-humanclaw.md",
+      "detail_id": "entity-paper-humanclaw",
+      "label": "HumanCLAW：VLM 能否通过身体行动？",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/awesome-sim2real.md",
       "detail_id": "entity-awesome-sim2real",
       "label": "AwesomeSim2Real（LongchaoDa）",
@@ -216,29 +226,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-042-1.md",
-      "detail_id": "entity-paper-as-042-1",
-      "label": "1",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/awesome-sim2real.md",
-    "detail_id": "entity-awesome-sim2real",
-    "label": "AwesomeSim2Real（LongchaoDa）",
+    "path": "wiki/entities/paper-humanclaw.md",
+    "detail_id": "entity-paper-humanclaw",
+    "label": "HumanCLAW：VLM 能否通过身体行动？",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
