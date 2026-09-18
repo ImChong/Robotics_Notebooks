@@ -821,140 +821,140 @@
 - [Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成](wiki/entities/paper-arm-aware-dexgrasp.md) — Arm-Aware Guided Dexterous Grasp Generation**（[arXiv:2608.16351](https://arxiv.org/abs/2608.16351 `📅unknown` `[entity_page]`
 - [ARTiS：面向拆解的自适应工具夹爪](wiki/entities/paper-artis-gripper.md) — ARTiS**（*Adaptive Robotic Tool Gripper in Disassembly Systems*，[arXiv:2609.03362](https://arxiv.or `📅unknown` `[entity_page]`
 - [ArtManip：类别级铰接物体手内操作](wiki/entities/paper-artmanip.md) — ArtManip**（*ArtManip: Category-Level Articulated In-Hand Manipulation*，[arXiv:2609.12498](https:// `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-001-1.md) — 1** 收录于 AwesomeSim2Real **第 001/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-002-1.md) — 1** 收录于 AwesomeSim2Real **第 002/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-005-1.md) — 1** 收录于 AwesomeSim2Real **第 005/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-006-1.md) — 1** 收录于 AwesomeSim2Real **第 006/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-008-1.md) — 1** 收录于 AwesomeSim2Real **第 008/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-011-1.md) — 1** 收录于 AwesomeSim2Real **第 011/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-013-1.md) — 1** 收录于 AwesomeSim2Real **第 013/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-015-1.md) — 1** 收录于 AwesomeSim2Real **第 015/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-016-1.md) — 1** 收录于 AwesomeSim2Real **第 016/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-018-1.md) — 1** 收录于 AwesomeSim2Real **第 018/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-023-1.md) — 1** 收录于 AwesomeSim2Real **第 023/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-029-1.md) — 1** 收录于 AwesomeSim2Real **第 029/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-030-1.md) — 1** 收录于 AwesomeSim2Real **第 030/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-031-1.md) — 1** 收录于 AwesomeSim2Real **第 031/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-032-1.md) — 1** 收录于 AwesomeSim2Real **第 032/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-035-1.md) — 1** 收录于 AwesomeSim2Real **第 035/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-037-1.md) — 1** 收录于 AwesomeSim2Real **第 037/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-038-1.md) — 1** 收录于 AwesomeSim2Real **第 038/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-042-1.md) — 1** 收录于 AwesomeSim2Real **第 042/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-043-1.md) — 1** 收录于 AwesomeSim2Real **第 043/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-047-1.md) — 1** 收录于 AwesomeSim2Real **第 047/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-049-1.md) — 1** 收录于 AwesomeSim2Real **第 049/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-056-1.md) — 1** 收录于 AwesomeSim2Real **第 056/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-061-1.md) — 1** 收录于 AwesomeSim2Real **第 061/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-062-1.md) — 1** 收录于 AwesomeSim2Real **第 062/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-064-1.md) — 1** 收录于 AwesomeSim2Real **第 064/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-065-1.md) — 1** 收录于 AwesomeSim2Real **第 065/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-066-1.md) — 1** 收录于 AwesomeSim2Real **第 066/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-067-1.md) — 1** 收录于 AwesomeSim2Real **第 067/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-072-1.md) — 1** 收录于 AwesomeSim2Real **第 072/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-081-1.md) — 1** 收录于 AwesomeSim2Real **第 081/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-083-1.md) — 1** 收录于 AwesomeSim2Real **第 083/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-084-1.md) — 1** 收录于 AwesomeSim2Real **第 084/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-086-1.md) — 1** 收录于 AwesomeSim2Real **第 086/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-087-1.md) — 1** 收录于 AwesomeSim2Real **第 087/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-094-1.md) — 1** 收录于 AwesomeSim2Real **第 094/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-099-1.md) — 1** 收录于 AwesomeSim2Real **第 099/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-101-1.md) — 1** 收录于 AwesomeSim2Real **第 101/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-102-1.md) — 1** 收录于 AwesomeSim2Real **第 102/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-103-1.md) — 1** 收录于 AwesomeSim2Real **第 103/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-104-1.md) — 1** 收录于 AwesomeSim2Real **第 104/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-105-1.md) — 1** 收录于 AwesomeSim2Real **第 105/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-106-1.md) — 1** 收录于 AwesomeSim2Real **第 106/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-107-1.md) — 1** 收录于 AwesomeSim2Real **第 107/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-108-1.md) — 1** 收录于 AwesomeSim2Real **第 108/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-109-1.md) — 1** 收录于 AwesomeSim2Real **第 109/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-114-1.md) — 1** 收录于 AwesomeSim2Real **第 114/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-118-1.md) — 1** 收录于 AwesomeSim2Real **第 118/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-119-1.md) — 1** 收录于 AwesomeSim2Real **第 119/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1207-4708-1.md) — 1** 收录于 AwesomeSim2Real **第 070/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-122-1.md) — 1** 收录于 AwesomeSim2Real **第 122/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-124-1.md) — 1** 收录于 AwesomeSim2Real **第 124/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-134-1.md) — 1** 收录于 AwesomeSim2Real **第 134/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-135-1.md) — 1** 收录于 AwesomeSim2Real **第 135/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-136-1.md) — 1** 收录于 AwesomeSim2Real **第 136/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-137-1.md) — 1** 收录于 AwesomeSim2Real **第 137/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-139-1.md) — 1** 收录于 AwesomeSim2Real **第 139/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1606-01540-1.md) — 1** 收录于 AwesomeSim2Real **第 100/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1612-03801-1.md) — 1** 收录于 AwesomeSim2Real **第 069/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1703-00472-1.md) — 1** 收录于 AwesomeSim2Real **第 014/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1705-10667-1.md) — 1** 收录于 AwesomeSim2Real **第 112/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1708-08611-1.md) — 1** 收录于 AwesomeSim2Real **第 020/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1710-03641-1.md) — 1** 收录于 AwesomeSim2Real **第 098/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1711-03938-1.md) — 1** 收录于 AwesomeSim2Real **第 138/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1711-06606-1.md) — 1** 收录于 AwesomeSim2Real **第 041/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1712-05474-1.md) — 1** 收录于 AwesomeSim2Real **第 068/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1802-00265-1.md) — 1** 收录于 AwesomeSim2Real **第 040/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1805-10000-1.md) — 1** 收录于 AwesomeSim2Real **第 077/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1808-00720-1.md) — 1** 收录于 AwesomeSim2Real **第 076/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1809-02176-1.md) — 1** 收录于 AwesomeSim2Real **第 113/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1809-06256-1.md) — 1** 收录于 AwesomeSim2Real **第 039/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1810-07286-1.md) — 1** 收录于 AwesomeSim2Real **第 012/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1810-08700-1.md) — 1** 收录于 AwesomeSim2Real **第 024/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1901-09184-1.md) — 1** 收录于 AwesomeSim2Real **第 025/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1904-04762-1.md) — 1** 收录于 AwesomeSim2Real **第 117/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1904-12901-1.md) — 1** 收录于 AwesomeSim2Real **第 009/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1905-12767-1.md) — 1** 收录于 AwesomeSim2Real **第 075/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1909-04847-1.md) — 1** 收录于 AwesomeSim2Real **第 074/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1909-12271-1.md) — 1** 收录于 AwesomeSim2Real **第 090/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1910-04054-1.md) — 1** 收录于 AwesomeSim2Real **第 010/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1910-04700-1.md) — 1** 收录于 AwesomeSim2Real **第 096/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1910-07113-1.md) — 1** 收录于 AwesomeSim2Real **第 048/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1910-10897-1.md) — 1** 收录于 AwesomeSim2Real **第 097/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-1911-04074-1.md) — 1** 收录于 AwesomeSim2Real **第 132/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2001-01046-1.md) — 1** 收录于 AwesomeSim2Real **第 111/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2005-04078-1.md) — 1** 收录于 AwesomeSim2Real **第 063/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2008-01279-1.md) — 1** 收录于 AwesomeSim2Real **第 121/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2008-01594-1.md) — 1** 收录于 AwesomeSim2Real **第 123/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2009-12293-1.md) — 1** 收录于 AwesomeSim2Real **第 028/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2010-02966-1.md) — 1** 收录于 AwesomeSim2Real **第 007/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2010-03978-1.md) — 1** 收录于 AwesomeSim2Real **第 110/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2010-09776-1.md) — 1** 收录于 AwesomeSim2Real **第 133/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2011-03148-1.md) — 1** 收录于 AwesomeSim2Real **第 036/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2011-03807-1.md) — 1** 收录于 AwesomeSim2Real **第 019/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2011-07215-1.md) — 1** 收录于 AwesomeSim2Real **第 095/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2011-12421-1.md) — 1** 收录于 AwesomeSim2Real **第 033/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2101-06557-1.md) — 1** 收录于 AwesomeSim2Real **第 131/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2101-11992-1.md) — 1** 收录于 AwesomeSim2Real **第 003/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2103-12768-1.md) — 1** 收录于 AwesomeSim2Real **第 034/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2104-08441-1.md) — 1** 收录于 AwesomeSim2Real **第 022/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2104-11213-1.md) — 1** 收录于 AwesomeSim2Real **第 089/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2108-07555-1.md) — 1** 收录于 AwesomeSim2Real **第 004/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2109-12674-1.md) — 1** 收录于 AwesomeSim2Real **第 129/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2110-11073-1.md) — 1** 收录于 AwesomeSim2Real **第 073/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2112-03227-1.md) — 1** 收录于 AwesomeSim2Real **第 092/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2201-08434-1.md) — 1** 收录于 AwesomeSim2Real **第 046/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2204-04340-1.md) — 1** 收录于 AwesomeSim2Real **第 115/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2210-14413-1.md) — 1** 收录于 AwesomeSim2Real **第 130/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2301-04195-1.md) — 1** 收录于 AwesomeSim2Real **第 091/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2302-14838-1.md) — 1** 收录于 AwesomeSim2Real **第 079/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2303-00001-1.md) — 1** 收录于 AwesomeSim2Real **第 082/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2303-08774-1.md) — 1** 收录于 AwesomeSim2Real **第 058/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2304-11496-1.md) — 1** 收录于 AwesomeSim2Real **第 127/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2307-07666-1.md) — 1** 收录于 AwesomeSim2Real **第 021/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2307-12388-1.md) — 1** 收录于 AwesomeSim2Real **第 120/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2308-14284-1.md) — 1** 收录于 AwesomeSim2Real **第 125/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2309-12645-1.md) — 1** 收录于 AwesomeSim2Real **第 071/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2309-14594-1.md) — 1** 收录于 AwesomeSim2Real **第 044/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2310-08710-1.md) — 1** 收录于 AwesomeSim2Real **第 128/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2310-18847-1.md) — 1** 收录于 AwesomeSim2Real **第 060/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2403-06420-1.md) — 1** 收录于 AwesomeSim2Real **第 026/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2403-11000-1.md) — 1** 收录于 AwesomeSim2Real **第 059/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2405-04491-1.md) — 1** 收录于 AwesomeSim2Real **第 126/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2405-10020-1.md) — 1** 收录于 AwesomeSim2Real **第 052/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2405-17104-1.md) — 1** 收录于 AwesomeSim2Real **第 055/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2406-07394-1.md) — 1** 收录于 AwesomeSim2Real **第 080/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2406-08406-1.md) — 1** 收录于 AwesomeSim2Real **第 088/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2407-02231-1.md) — 1** 收录于 AwesomeSim2Real **第 017/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2407-15815-1.md) — 1** 收录于 AwesomeSim2Real **第 045/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2409-18382-1.md) — 1** 收录于 AwesomeSim2Real **第 078/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2410-12831-1.md) — 1** 收录于 AwesomeSim2Real **第 054/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2410-22332-1.md) — 1** 收录于 AwesomeSim2Real **第 027/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2412-05789-1.md) — 1** 收录于 AwesomeSim2Real **第 051/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
-- [1](wiki/entities/paper-as-2412-08619-1.md) — 1** 收录于 AwesomeSim2Real **第 053/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [Control delay in reinforcement learning for real-time dynamic systems](wiki/entities/paper-as-004-control-delay-in-reinforcement-learning-for-real.md) — Control delay in reinforcement learning for real-time dynamic systems: A memoryless approach** 收录于 `📅unknown` `[entity_page]`
+- [Delay-aware VNF scheduling](wiki/entities/paper-as-005-delay-aware-vnf-scheduling-a-reinforcement-learn.md) — Delay-aware VNF scheduling: A reinforcement learning approach with variable action set** 收录于 [Awes `📅unknown` `[entity_page]`
+- [Dynamic Modeling for Reinforcement Learning with Random Delay](wiki/entities/paper-as-006-dynamic-modeling-for-reinforcement-learning-with.md) — Dynamic Modeling for Reinforcement Learning with Random Delay** 收录于 [AwesomeSim2Real](https://gith `📅unknown` `[entity_page]`
+- [Dynamic collaborative optimization of end-to-end delay and power consumption ...](wiki/entities/paper-as-007-dynamic-collaborative-optimization-of-end-to-end.md) — Dynamic collaborative optimization of end-to-end delay and power consumption in wireless sensor ne `📅unknown` `[entity_page]`
+- [Habits, action sequences and reinforcement learning](wiki/entities/paper-as-008-habits-action-sequences-and-reinforcement-learni.md) — Habits, action sequences and reinforcement learning** 收录于 [AwesomeSim2Real](https://github.com/Lon `📅unknown` `[entity_page]`
+- [Hierarchical decision and control for continuous multitarget problem](wiki/entities/paper-as-009-hierarchical-decision-and-control-for-continuous.md) — Hierarchical decision and control for continuous multitarget problem: Policy evaluation with actio `📅unknown` `[entity_page]`
+- [Reinforcement learning based VNF scheduling with end-to-end delay guarantee](wiki/entities/paper-as-011-reinforcement-learning-based-vnf-scheduling-with.md) — Reinforcement learning based VNF scheduling with end-to-end delay guarantee** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Reinforcement learning framework for delay sensitive energy harvesting wirele...](wiki/entities/paper-as-013-reinforcement-learning-framework-for-delay-sensi.md) — Reinforcement learning framework for delay sensitive energy harvesting wireless sensor networks**  `📅unknown` `[entity_page]`
+- [Utilizing reinforcement learning to autonomously mange buffers in a delay tol...](wiki/entities/paper-as-016-utilizing-reinforcement-learning-to-autonomously.md) — Utilizing reinforcement learning to autonomously mange buffers in a delay tolerant network node**  `📅unknown` `[entity_page]`
+- [Fear Field](wiki/entities/paper-as-017-fear-field-adaptive-constraints-for-safe-environ.md) — Fear Field: Adaptive constraints for safe environment transitions in Shielded Reinforcement Learni `📅unknown` `[entity_page]`
+- [Uncertainty-aware action advising for deep reinforcement learning agents](wiki/entities/paper-as-025-uncertainty-aware-action-advising-for-deep-reinf.md) — Uncertainty-aware action advising for deep reinforcement learning agents** 收录于 [AwesomeSim2Real](h `📅unknown` `[entity_page]`
+- [Coupled real-synthetic domain adaptation for real-world deep depth enhancement](wiki/entities/paper-as-030-coupled-real-synthetic-domain-adaptation-for-rea.md) — Coupled real-synthetic domain adaptation for real-world deep depth enhancement** 收录于 [AwesomeSim2R `📅unknown` `[entity_page]`
+- [Domain adaption as auxiliary task for sim-to-real transfer in vision-based ne...](wiki/entities/paper-as-032-domain-adaption-as-auxiliary-task-for-sim-to-rea.md) — Domain adaption as auxiliary task for sim-to-real transfer in vision-based neuro-robotic control `📅unknown` `[entity_page]`
+- [MIC](wiki/entities/paper-as-033-mic-masked-image-consistency-for-context-enhance.md) — MIC: Masked image consistency for context-enhanced domain adaptation** 收录于 [AwesomeSim2Real](https `📅unknown` `[entity_page]`
+- [Retinagan](wiki/entities/paper-as-034-retinagan-an-object-aware-approach-to-sim-to-rea.md) — Retinagan: An object-aware approach to sim-to-real transfer** 收录于 [AwesomeSim2Real](https://github `📅unknown` `[entity_page]`
+- [Self-supervised sim-to-real adaptation for visual robotic manipulation](wiki/entities/paper-as-036-self-supervised-sim-to-real-adaptation-for-visua.md) — Self-supervised sim-to-real adaptation for visual robotic manipulation** 收录于 [AwesomeSim2Real](htt `📅unknown` `[entity_page]`
+- [Sim-to-real visual grasping via state representation learning based on combin...](wiki/entities/paper-as-038-sim-to-real-visual-grasping-via-state-representa.md) — Sim-to-real visual grasping via state representation learning based on combining pixel-level and f `📅unknown` `[entity_page]`
+- [Unsupervised adversarial domain adaptation for sim-to-real transfer of tactil...](wiki/entities/paper-as-039-unsupervised-adversarial-domain-adaptation-for-s.md) — Unsupervised adversarial domain adaptation for sim-to-real transfer of tactile images** 收录于 [Aweso `📅unknown` `[entity_page]`
+- [Unsupervised pixel-level domain adaptation with generative adversarial networks](wiki/entities/paper-as-040-unsupervised-pixel-level-domain-adaptation-with.md) — Unsupervised pixel-level domain adaptation with generative adversarial networks** 收录于 [AwesomeSim2 `📅unknown` `[entity_page]`
+- [Using simulation and domain adaptation to improve efficiency of deep robotic ...](wiki/entities/paper-as-042-using-simulation-and-domain-adaptation-to-improv.md) — Using simulation and domain adaptation to improve efficiency of deep robotic grasping** 收录于 [Aweso `📅unknown` `[entity_page]`
+- [Asymmetric Actor Critic for Image-Based Robot Learning](wiki/entities/paper-as-044-asymmetric-actor-critic-for-image-based-robot-le.md) — Asymmetric Actor Critic for Image-Based Robot Learning** 收录于 [AwesomeSim2Real](https://github.com/ `📅unknown` `[entity_page]`
+- [Bridging the Reality Gap Between Virtual and Physical Environments Through Re...](wiki/entities/paper-as-045-bridging-the-reality-gap-between-virtual-and-phy.md) — Bridging the Reality Gap Between Virtual and Physical Environments Through Reinforcement Learning `📅unknown` `[entity_page]`
+- [ChatGPT Label](wiki/entities/paper-as-051-chatgpt-label-comparing-the-quality-of-human-gen.md) — ChatGPT Label: Comparing the Quality of Human-Generated and LLM-Generated Annotations in Low-resou `📅unknown` `[entity_page]`
+- [LiDAR Object Detection and-Sensor Fusion in Simulation Environments Sensor mo...](wiki/entities/paper-as-060-lidar-object-detection-and-sensor-fusion-in-simu.md) — LiDAR Object Detection and-Sensor Fusion in Simulation Environments Sensor modelling towards advan `📅unknown` `[entity_page]`
+- [Longitudinal vehicle speed estimation for four-wheel-independently-actuated e...](wiki/entities/paper-as-061-longitudinal-vehicle-speed-estimation-for-four-w.md) — Longitudinal vehicle speed estimation for four-wheel-independently-actuated electric vehicles base `📅unknown` `[entity_page]`
+- [Sensor fusion for robot control through deep reinforcement learning](wiki/entities/paper-as-063-sensor-fusion-for-robot-control-through-deep-rei.md) — Sensor fusion for robot control through deep reinforcement learning** 收录于 [AwesomeSim2Real](https: `📅unknown` `[entity_page]`
+- [Benchmarking Safe Exploration in Deep Reinforcement Learning](wiki/entities/paper-as-065-benchmarking-safe-exploration-in-deep-reinforcem.md) — Benchmarking Safe Exploration in Deep Reinforcement Learning** 收录于 [AwesomeSim2Real](https://githu `📅unknown` `[entity_page]`
+- [EnergyPlus](wiki/entities/paper-as-066-energyplus-creating-a-new-generation-building-en.md) — EnergyPlus: creating a new-generation building energy simulation program** 收录于 [AwesomeSim2Real](h `📅unknown` `[entity_page]`
+- [OpenAI Gym Retro](wiki/entities/paper-as-069-openai-gym-retro.md) — OpenAI Gym Retro** 收录于 AwesomeSim2Real **第 069/13 `📅unknown` `[entity_page]`
+- [Sim-to-Real Interactive Recommendation via Off-Dynamics Reinforcement Learning](wiki/entities/paper-as-073-sim-to-real-interactive-recommendation-via-off-d.md) — Sim-to-Real Interactive Recommendation via Off-Dynamics Reinforcement Learning** 收录于 [AwesomeSim2R `📅unknown` `[entity_page]`
+- [A simple framework for intrinsic reward-shaping for rl using llm feedback](wiki/entities/paper-as-081-a-simple-framework-for-intrinsic-reward-shaping.md) — A simple framework for intrinsic reward-shaping for rl using llm feedback** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Adaptive Reinforcement Learning with LLM-augmented Reward Functions](wiki/entities/paper-as-082-adaptive-reinforcement-learning-with-llm-augment.md) — Adaptive Reinforcement Learning with LLM-augmented Reward Functions** 收录于 [AwesomeSim2Real](https: `📅unknown` `[entity_page]`
+- [DISCOVERSE](wiki/entities/paper-as-084-discoverse-efficient-robot-simulation-in-complex.md) — DISCOVERSE: Efficient Robot Simulation in Complex High-Fidelity Environments** 收录于 [AwesomeSim2Rea `📅unknown` `[entity_page]`
+- [NeuronsGym](wiki/entities/paper-as-087-neuronsgym-a-hybrid-framework-and-benchmark-for.md) — NeuronsGym: A Hybrid Framework and Benchmark for Robot Tasks with Sim2Real Policy Learning** 收录于  `📅unknown` `[entity_page]`
+- [Robust Gymnasium](wiki/entities/paper-as-090-robust-gymnasium-a-unified-modular-benchmark-for.md) — Robust Gymnasium: A Unified Modular Benchmark for Robust Reinforcement Learning** 收录于 [AwesomeSim2 `📅unknown` `[entity_page]`
+- [Design and use paradigms for Gazebo, an open-source multi-robot simulator](wiki/entities/paper-as-095-design-and-use-paradigms-for-gazebo-an-open-sour.md) — Design and use paradigms for Gazebo, an open-source multi-robot simulator** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [MuJoCo](wiki/entities/paper-as-097-mujoco-a-physics-engine-for-model-based-control.md) — MuJoCo: A physics engine for model-based control** 收录于 [AwesomeSim2Real](https://github.com/Longch `📅unknown` `[entity_page]`
+- [PyBullet](wiki/entities/paper-as-099-pybullet-real-time-physics-simulation.md) — PyBullet: Real-Time Physics Simulation** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aweso `📅unknown` `[entity_page]`
+- [dm_control](wiki/entities/paper-as-101-dm-control-software-and-tasks-for-continuous-con.md) — dm_control: Software and tasks for continuous control** 收录于 [AwesomeSim2Real](https://github.com/L `📅unknown` `[entity_page]`
+- [A Brief Survey of Sim2Real Methods for Robot Learning](wiki/entities/paper-as-103-a-brief-survey-of-sim2real-methods-for-robot-lea.md) — A Brief Survey of Sim2Real Methods for Robot Learning** 收录于 [AwesomeSim2Real](https://github.com/L `📅unknown` `[entity_page]`
+- [A Survey on Sim-to-Real Transfer Methods for Robotic Manipulation](wiki/entities/paper-as-104-a-survey-on-sim-to-real-transfer-methods-for-rob.md) — A Survey on Sim-to-Real Transfer Methods for Robotic Manipulation** 收录于 [AwesomeSim2Real](https:// `📅unknown` `[entity_page]`
+- [A survey of sim-to-real transfer techniques applied to reinforcement learning...](wiki/entities/paper-as-105-a-survey-of-sim-to-real-transfer-techniques-appl.md) — A survey of sim-to-real transfer techniques applied to reinforcement learning for bioinspired robo `📅unknown` `[entity_page]`
+- [Crossing the reality gap](wiki/entities/paper-as-106-crossing-the-reality-gap-a-survey-on-sim-to-real.md) — Crossing the reality gap: A survey on sim-to-real transferability of robot controllers in reinforc `📅unknown` `[entity_page]`
+- [How simulation helps autonomous driving](wiki/entities/paper-as-107-how-simulation-helps-autonomous-driving-a-survey.md) — How simulation helps autonomous driving: A survey of sim2real, digital twins, and parallel intelli `📅unknown` `[entity_page]`
+- [Parallel learning](wiki/entities/paper-as-108-parallel-learning-overview-and-perspective-for-c.md) — Parallel learning: Overview and perspective for computational learning across Syn2Real and Sim2Rea `📅unknown` `[entity_page]`
+- [Sim-to-Real Transfer in Deep Reinforcement Learning for Robotics](wiki/entities/paper-as-109-sim-to-real-transfer-in-deep-reinforcement-learn.md) — Sim-to-Real Transfer in Deep Reinforcement Learning for Robotics: a Survey** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Adversarial discriminative domain adaptation](wiki/entities/paper-as-111-adversarial-discriminative-domain-adaptation.md) — Adversarial discriminative domain adaptation** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa `📅unknown` `[entity_page]`
+- [Crossing the gap](wiki/entities/paper-as-116-crossing-the-gap-a-deep-dive-into-zero-shot-sim.md) — Crossing the gap: A deep dive into zero-shot sim-to-real transfer for dynamics** 收录于 [AwesomeSim2R `📅unknown` `[entity_page]`
+- [Domain randomization for transferring deep neural networks from simulation to...](wiki/entities/paper-as-117-domain-randomization-for-transferring-deep-neura.md) — Domain randomization for transferring deep neural networks from simulation to the real world** 收录于 `📅unknown` `[entity_page]`
+- [The Arcade Learning Environment](wiki/entities/paper-as-1207-4708-the-arcade-learning-environment-an-evaluation-pl.md) — The Arcade Learning Environment: An Evaluation Platform for General Agents** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Grounded action transformation for robot learning in simulation](wiki/entities/paper-as-121-grounded-action-transformation-for-robot-learnin.md) — Grounded action transformation for robot learning in simulation** 收录于 [AwesomeSim2Real](https://gi `📅unknown` `[entity_page]`
+- [Stochastic grounded action transformation for robot learning in simulation](wiki/entities/paper-as-123-stochastic-grounded-action-transformation-for-ro.md) — Stochastic grounded action transformation for robot learning in simulation** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [CityFlow](wiki/entities/paper-as-128-cityflow-a-multi-agent-reinforcement-learning-en.md) — CityFlow: A Multi-Agent Reinforcement Learning Environment for Large Scale City Traffic Scenario `📅unknown` `[entity_page]`
+- [Deepdrive Zero](wiki/entities/paper-as-129-deepdrive-zero.md) — Deepdrive Zero** 收录于 AwesomeSim2Real **第 129/139 `📅unknown` `[entity_page]`
+- [Duckietown](wiki/entities/paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat.md) — Duckietown: An open, inexpensive and flexible platform for autonomy education and research** 收录于  `📅unknown` `[entity_page]`
+- [Highway-Env](wiki/entities/paper-as-131-highway-env-an-environment-for-autonomous-drivin.md) — Highway-Env: An Environment for Autonomous Driving Decision-Making** 收录于 [AwesomeSim2Real](https:/ `📅unknown` `[entity_page]`
+- [Microscopic Traffic Simulation using SUMO](wiki/entities/paper-as-134-microscopic-traffic-simulation-using-sumo.md) — Microscopic Traffic Simulation using SUMO** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aw `📅unknown` `[entity_page]`
+- [OpenAI Gym](wiki/entities/paper-as-1606-01540-openai-gym.md) — OpenAI Gym** 收录于 AwesomeSim2Real **第 098/139** 篇， `📅unknown` `[entity_page]`
+- [DeepMind Lab](wiki/entities/paper-as-1612-03801-deepmind-lab.md) — DeepMind Lab** 收录于 AwesomeSim2Real **第 068/139**  `📅unknown` `[entity_page]`
+- [Reinforcement learning for pivoting task](wiki/entities/paper-as-1703-00472-reinforcement-learning-for-pivoting-task.md) — Reinforcement learning for pivoting task** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Awe `📅unknown` `[entity_page]`
+- [Conditional adversarial domain adaptation](wiki/entities/paper-as-1705-10667-conditional-adversarial-domain-adaptation.md) — Conditional adversarial domain adaptation** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aw `📅unknown` `[entity_page]`
+- [Safe reinforcement learning via shielding](wiki/entities/paper-as-1708-08611-safe-reinforcement-learning-via-shielding.md) — Safe reinforcement learning via shielding** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aw `📅unknown` `[entity_page]`
+- [Continuous Adaptation via Meta-Learning in Nonstationary and Competitive Envi...](wiki/entities/paper-as-1710-03641-continuous-adaptation-via-meta-learning-in-nonst.md) — Continuous Adaptation via Meta-Learning in Nonstationary and Competitive Environments** 收录于 [Aweso `📅unknown` `[entity_page]`
+- [CARLA](wiki/entities/paper-as-1711-03938-carla-an-open-urban-driving-simulator.md) — CARLA: An open urban driving simulator** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aweso `📅unknown` `[entity_page]`
+- [Unsupervised reverse domain adaptation for synthetic medical images via adver...](wiki/entities/paper-as-1711-06606-unsupervised-reverse-domain-adaptation-for-synth.md) — Unsupervised reverse domain adaptation for synthetic medical images via adversarial training** 收录于 `📅unknown` `[entity_page]`
+- [AI2-THOR](wiki/entities/paper-as-1712-05474-ai2-thor-an-interactive-3d-environment-for-visua.md) — AI2-THOR: An Interactive 3D Environment for Visual AI** 收录于 [AwesomeSim2Real](https://github.com/L `📅unknown` `[entity_page]`
+- [Vr-goggles for robots](wiki/entities/paper-as-1802-00265-vr-goggles-for-robots-real-to-sim-domain-adaptat.md) — Vr-goggles for robots: Real-to-sim domain adaptation for visual control** 收录于 [AwesomeSim2Real](ht `📅unknown` `[entity_page]`
+- [Virtual-Taobao](wiki/entities/paper-as-1805-10000-virtual-taobao-virtualizing-real-world-online-re.md) — Virtual-Taobao: Virtualizing Real-world Online Retail Environment for Reinforcement Learning** 收录于 `📅unknown` `[entity_page]`
+- [RecoGym](wiki/entities/paper-as-1808-00720-recogym-a-reinforcement-learning-environment-for.md) — RecoGym: A Reinforcement Learning Environment for the problem of Product Recommendation in Online  `📅unknown` `[entity_page]`
+- [Multi-adversarial domain adaptation](wiki/entities/paper-as-1809-02176-multi-adversarial-domain-adaptation.md) — Multi-adversarial domain adaptation** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeS `📅unknown` `[entity_page]`
+- [Sensor transfer](wiki/entities/paper-as-1809-06256-sensor-transfer-learning-optimal-sensor-effect-i.md) — Sensor transfer: Learning optimal sensor effect image augmentation for sim-to-real domain adaptati `📅unknown` `[entity_page]`
+- [At human speed](wiki/entities/paper-as-1810-07286-at-human-speed-deep-reinforcement-learning-with.md) — At human speed: Deep reinforcement learning with action delay** 收录于 [AwesomeSim2Real](https://gith `📅unknown` `[entity_page]`
+- [Safe reinforcement learning with model uncertainty estimates](wiki/entities/paper-as-1810-08700-safe-reinforcement-learning-with-model-uncertain.md) — Safe reinforcement learning with model uncertainty estimates** 收录于 [AwesomeSim2Real](https://githu `📅unknown` `[entity_page]`
+- [Action robust reinforcement learning and applications in continuous control](wiki/entities/paper-as-1901-09184-action-robust-reinforcement-learning-and-applica.md) — Action robust reinforcement learning and applications in continuous control** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Active Domain Randomization](wiki/entities/paper-as-1904-04762-active-domain-randomization.md) — Active Domain Randomization** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Challenges of real-world reinforcement learning](wiki/entities/paper-as-1904-12901-challenges-of-real-world-reinforcement-learning.md) — Challenges of real-world reinforcement learning** 收录于 [AwesomeSim2Real](https://github.com/Longcha `📅unknown` `[entity_page]`
+- [Reinforcement Learning for Slate-based Recommender Systems](wiki/entities/paper-as-1905-12767-reinforcement-learning-for-slate-based-recommend.md) — Reinforcement Learning for Slate-based Recommender Systems: A Tractable Decomposition and Practica `📅unknown` `[entity_page]`
+- [Recsim](wiki/entities/paper-as-1909-04847-recsim-a-configurable-simulation-platform-for-re.md) — Recsim: A configurable simulation platform for recommender systems** 收录于 [AwesomeSim2Real](https:/ `📅unknown` `[entity_page]`
+- [RLBench](wiki/entities/paper-as-1909-12271-rlbench-the-robot-learning-benchmark-learning-en.md) — RLBench: The Robot Learning Benchmark & Learning Environment** 收录于 [AwesomeSim2Real](https://githu `📅unknown` `[entity_page]`
+- [Mvfst-rl](wiki/entities/paper-as-1910-04054-mvfst-rl-an-asynchronous-rl-framework-for-conges.md) — Mvfst-rl: An asynchronous rl framework for congestion control with delayed actions** 收录于 [AwesomeS `📅unknown` `[entity_page]`
+- [Assistive Gym](wiki/entities/paper-as-1910-04700-assistive-gym-a-physics-simulation-framework-for.md) — Assistive Gym: A Physics Simulation Framework for Assistive Robotics** 收录于 [AwesomeSim2Real](https `📅unknown` `[entity_page]`
+- [Solving Rubik's Cube with a Robot Hand](wiki/entities/paper-as-1910-07113-solving-rubik-s-cube-with-a-robot-hand.md) — Solving Rubik's Cube with a Robot Hand** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aweso `📅unknown` `[entity_page]`
+- [Meta-World](wiki/entities/paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi.md) — Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning** 收录于 [Aweso `📅unknown` `[entity_page]`
+- [SUMMIT](wiki/entities/paper-as-1911-04074-summit-a-simulator-for-urban-driving-in-massive.md) — SUMMIT: A Simulator for Urban Driving in Massive Mixed Traffic** 收录于 [AwesomeSim2Real](https://git `📅unknown` `[entity_page]`
+- [Adversarial-learned loss for domain adaptation](wiki/entities/paper-as-2001-01046-adversarial-learned-loss-for-domain-adaptation.md) — Adversarial-learned loss for domain adaptation** 收录于 [AwesomeSim2Real](https://github.com/Longchao `📅unknown` `[entity_page]`
+- [A sim2real deep learning approach for the transformation of images from multi...](wiki/entities/paper-as-2005-04078-a-sim2real-deep-learning-approach-for-the-transf.md) — A sim2real deep learning approach for the transformation of images from multiple vehicle-mounted c `📅unknown` `[entity_page]`
+- [Reinforced grounded action transformation for sim-to-real transfer](wiki/entities/paper-as-2008-01279-reinforced-grounded-action-transformation-for-si.md) — Reinforced grounded action transformation for sim-to-real transfer** 收录于 [AwesomeSim2Real](https:/ `📅unknown` `[entity_page]`
+- [An imitation from observation approach to transfer learning with dynamics mis...](wiki/entities/paper-as-2008-01594-an-imitation-from-observation-approach-to-transf.md) — An imitation from observation approach to transfer learning with dynamics mismatch** 收录于 [AwesomeS `📅unknown` `[entity_page]`
+- [robosuite](wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md) — robosuite: A modular simulation framework and benchmark for robot learning** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Reinforcement learning with random delays](wiki/entities/paper-as-2010-02966-reinforcement-learning-with-random-delays.md) — Reinforcement learning with random delays** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aw `📅unknown` `[entity_page]`
+- [A brief review of domain adaptation](wiki/entities/paper-as-2010-03978-a-brief-review-of-domain-adaptation.md) — A brief review of domain adaptation** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeS `📅unknown` `[entity_page]`
+- [SMARTS](wiki/entities/paper-as-2010-09776-smarts-scalable-multi-agent-reinforcement-learni.md) — SMARTS: Scalable Multi-Agent Reinforcement Learning Training School for Autonomous Driving** 收录于  `📅unknown` `[entity_page]`
+- [Rl-cyclegan](wiki/entities/paper-as-2011-03148-rl-cyclegan-reinforcement-learning-aware-simulat.md) — Rl-cyclegan: Reinforcement learning aware simulation-to-real** 收录于 [AwesomeSim2Real](https://githu `📅unknown` `[entity_page]`
+- [Sim-to-real transfer for vision-and-language navigation](wiki/entities/paper-as-2011-03807-sim-to-real-transfer-for-vision-and-language-nav.md) — Sim-to-real transfer for vision-and-language navigation** 收录于 [AwesomeSim2Real](https://github.com `📅unknown` `[entity_page]`
+- [SoftGym](wiki/entities/paper-as-2011-07215-softgym-benchmarking-deep-reinforcement-learning.md) — SoftGym: Benchmarking Deep Reinforcement Learning for Deformable Object Manipulation** 收录于 [Awesom `📅unknown` `[entity_page]`
+- [Bi-directional domain adaptation for sim2real transfer of embodied navigation...](wiki/entities/paper-as-2011-12421-bi-directional-domain-adaptation-for-sim2real-tr.md) — Bi-directional domain adaptation for sim2real transfer of embodied navigation agents** 收录于 [Awesom `📅unknown` `[entity_page]`
+- [TrafficSim](wiki/entities/paper-as-2101-06557-trafficsim-learning-to-simulate-realistic-multi.md) — TrafficSim: Learning to Simulate Realistic Multi-Agent Behaviors** 收录于 [AwesomeSim2Real](https://g `📅unknown` `[entity_page]`
+- [Acting in delayed environments with non-stationary markov policies](wiki/entities/paper-as-2101-11992-acting-in-delayed-environments-with-non-stationa.md) — Acting in delayed environments with non-stationary markov policies** 收录于 [AwesomeSim2Real](https:/ `📅unknown` `[entity_page]`
+- [Da4event](wiki/entities/paper-as-2103-12768-da4event-towards-bridging-the-sim-to-real-gap-fo.md) — Da4event: towards bridging the sim-to-real gap for event cameras using domain adaptation** 收录于 [Aw `📅unknown` `[entity_page]`
+- [Action advising with advice imitation in deep reinforcement learning](wiki/entities/paper-as-2104-08441-action-advising-with-advice-imitation-in-deep-re.md) — Action advising with advice imitation in deep reinforcement learning** 收录于 [AwesomeSim2Real](https `📅unknown` `[entity_page]`
+- [ManipulaTHOR](wiki/entities/paper-as-2104-11213-manipulathor-a-framework-for-visual-object-manip.md) — ManipulaTHOR: A Framework for Visual Object Manipulation** 收录于 [AwesomeSim2Real](https://github.co `📅unknown` `[entity_page]`
+- [Revisiting state augmentation methods for reinforcement learning with stochas...](wiki/entities/paper-as-2108-07555-revisiting-state-augmentation-methods-for-reinfo.md) — Revisiting state augmentation methods for reinforcement learning with stochastic delays** 收录于 [Awe `📅unknown` `[entity_page]`
+- [MetaDrive](wiki/entities/paper-as-2109-12674-metadrive-composing-diverse-driving-scenarios-fo.md) — MetaDrive: Composing Diverse Driving Scenarios for Generalizable Reinforcement Learning** 收录于 [Awe `📅unknown` `[entity_page]`
+- [RL4RS](wiki/entities/paper-as-2110-11073-rl4rs-a-real-world-dataset-for-reinforcement-lea.md) — RL4RS: A Real-World Dataset for Reinforcement Learning based Recommender System** 收录于 [AwesomeSim2 `📅unknown` `[entity_page]`
+- [CALVIN](wiki/entities/paper-as-2112-03227-calvin-a-benchmark-for-language-conditioned-poli.md) — CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation T `📅unknown` `[entity_page]`
+- [DROPO](wiki/entities/paper-as-2201-08434-dropo-sim-to-real-transfer-with-offline-domain-r.md) — DROPO: Sim-to-real transfer with offline domain randomization** 收录于 [AwesomeSim2Real](https://gith `📅unknown` `[entity_page]`
+- [Sim-to-real learning for bipedal locomotion under unsensed dynamic loads](wiki/entities/paper-as-2204-04340-sim-to-real-learning-for-bipedal-locomotion-unde.md) — Sim-to-real learning for bipedal locomotion under unsensed dynamic loads** 收录于 [AwesomeSim2Real](h `📅unknown` `[entity_page]`
+- [InterSim](wiki/entities/paper-as-2210-14413-intersim-interactive-traffic-simulation-via-expl.md) — InterSim: Interactive Traffic Simulation via Explicit Relation Modeling** 收录于 [AwesomeSim2Real](ht `📅unknown` `[entity_page]`
+- [Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks](wiki/entities/paper-as-2301-04195-delving-deeper-into-out-of-distribution-detectio.md) — Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [EvoPrompting](wiki/entities/paper-as-2302-14838-evoprompting-language-models-for-code-level-neur.md) — EvoPrompting: language models for code-level neural architecture search** 收录于 [AwesomeSim2Real](ht `📅unknown` `[entity_page]`
+- [Reward design with language models](wiki/entities/paper-as-2303-00001-reward-design-with-language-models.md) — Reward design with language models** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeSi `📅unknown` `[entity_page]`
+- [Gpt-4 technical report](wiki/entities/paper-as-2303-08774-gpt-4-technical-report.md) — Gpt-4 technical report** 收录于 AwesomeSim2Real **第  `📅unknown` `[entity_page]`
+- [AutoVRL](wiki/entities/paper-as-2304-11496-autovrl-a-high-fidelity-autonomous-ground-vehicl.md) — AutoVRL: A High Fidelity Autonomous Ground Vehicle Simulator for Sim-to-Real Deep Reinforcement Le `📅unknown` `[entity_page]`
+- [Efficient action robust reinforcement learning with probabilistic policy exec...](wiki/entities/paper-as-2307-07666-efficient-action-robust-reinforcement-learning-w.md) — Efficient action robust reinforcement learning with probabilistic policy execution uncertainty** 收 `📅unknown` `[entity_page]`
+- [Uncertainty-aware Grounded Action Transformation towards Sim-to-Real Transfer...](wiki/entities/paper-as-2307-12388-uncertainty-aware-grounded-action-transformation.md) — Uncertainty-aware Grounded Action Transformation towards Sim-to-Real Transfer for Traffic Signal C `📅unknown` `[entity_page]`
+- [Prompt to Transfer](wiki/entities/paper-as-2308-14284-prompt-to-transfer-sim-to-real-transfer-for-traf.md) — Prompt to Transfer: Sim-to-Real Transfer for Traffic Signal Control with Prompt Learning** 收录于 [Aw `📅unknown` `[entity_page]`
+- [KuaiSim](wiki/entities/paper-as-2309-12645-kuaisim-a-comprehensive-simulator-for-recommende.md) — KuaiSim: A Comprehensive Simulator for Recommender Systems** 收录于 [AwesomeSim2Real](https://github. `📅unknown` `[entity_page]`
+- [Learning Vision-Based Bipedal Locomotion for Challenging Terrain](wiki/entities/paper-as-2309-14594-learning-vision-based-bipedal-locomotion-for-cha.md) — Learning Vision-Based Bipedal Locomotion for Challenging Terrain** 收录于 [AwesomeSim2Real](https://g `📅unknown` `[entity_page]`
+- [Waymax](wiki/entities/paper-as-2310-08710-waymax-an-accelerated-data-driven-simulator-for.md) — Waymax: An Accelerated, Data-Driven Simulator for Large-Scale Autonomous Driving Research** 收录于 [A `📅unknown` `[entity_page]`
+- [World model based sim2real transfer for visual navigation](wiki/entities/paper-as-2310-18847-world-model-based-sim2real-transfer-for-visual-n.md) — World model based sim2real transfer for visual navigation** 收录于 [AwesomeSim2Real](https://github.c `📅unknown` `[entity_page]`
+- [RLingua](wiki/entities/paper-as-2403-06420-rlingua-improving-reinforcement-learning-sample.md) — RLingua: Improving Reinforcement Learning Sample Efficiency in Robotic Manipulations With Large La `📅unknown` `[entity_page]`
+- [Quantifying the sim2real gap for GPS and IMU sensors](wiki/entities/paper-as-2403-11000-quantifying-the-sim2real-gap-for-gps-and-imu-sen.md) — Quantifying the sim2real gap for GPS and IMU sensors** 收录于 [AwesomeSim2Real](https://github.com/Lo `📅unknown` `[entity_page]`
+- [TorchDriveEnv](wiki/entities/paper-as-2405-04491-torchdriveenv-a-reinforcement-learning-benchmark.md) — TorchDriveEnv: A Reinforcement Learning Benchmark for Autonomous Driving with Reactive, Realistic, `📅unknown` `[entity_page]`
+- [Natural Language Can Help Bridge the Sim2Real Gap](wiki/entities/paper-as-2405-10020-natural-language-can-help-bridge-the-sim2real-ga.md) — Natural Language Can Help Bridge the Sim2Real Gap** 收录于 [AwesomeSim2Real](https://github.com/Longc `📅unknown` `[entity_page]`
+- [LLM-Optic](wiki/entities/paper-as-2405-17104-llm-optic-unveiling-the-capabilities-of-large-la.md) — LLM-Optic: Unveiling the Capabilities of Large Language Models for Universal Visual Grounding** 收录 `📅unknown` `[entity_page]`
+- [Accessing gpt-4 level mathematical olympiad solutions via monte carlo tree se...](wiki/entities/paper-as-2406-07394-accessing-gpt-4-level-mathematical-olympiad-solu.md) — Accessing gpt-4 level mathematical olympiad solutions via monte carlo tree self-refine with llama- `📅unknown` `[entity_page]`
+- [RRLS](wiki/entities/paper-as-2406-08406-rrls-robust-reinforcement-learning-suite.md) — RRLS : Robust Reinforcement Learning Suite** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/A `📅unknown` `[entity_page]`
+- [Safety-Driven Deep Reinforcement Learning Framework for Cobots](wiki/entities/paper-as-2407-02231-safety-driven-deep-reinforcement-learning-framew.md) — Safety-Driven Deep Reinforcement Learning Framework for Cobots: A Sim2Real Approach** 收录于 [Awesome `📅unknown` `[entity_page]`
+- [Learning to Manipulate Anywhere](wiki/entities/paper-as-2407-15815-learning-to-manipulate-anywhere-a-visual-general.md) — Learning to Manipulate Anywhere: A Visual Generalizable Framework For Reinforcement Learning** 收录于 `📅unknown` `[entity_page]`
+- [CurricuLLM](wiki/entities/paper-as-2409-18382-curricullm-automatic-task-curricula-design-for-l.md) — CurricuLLM: Automatic Task Curricula Design for Learning Complex Robot Skills using Large Language `📅unknown` `[entity_page]`
+- [Segment as You Wish--Free-Form Language-Based Segmentation for Medical Images](wiki/entities/paper-as-2410-12831-segment-as-you-wish-free-form-language-based-seg.md) — Segment as You Wish--Free-Form Language-Based Segmentation for Medical Images** 收录于 [AwesomeSim2Re `📅unknown` `[entity_page]`
+- [Local Policies Enable Zero-shot Long-horizon Manipulation](wiki/entities/paper-as-2410-22332-local-policies-enable-zero-shot-long-horizon-man.md) — Local Policies Enable Zero-shot Long-horizon Manipulation** 收录于 [AwesomeSim2Real](https://github.c `📅unknown` `[entity_page]`
+- [InfiniteWorld](wiki/entities/paper-as-2412-05789-infiniteworld-a-unified-scalable-simulation-fram.md) — InfiniteWorld: A Unified Scalable Simulation Framework for General Visual-Language Robot Interacti `📅unknown` `[entity_page]`
+- [Synthetic Vision](wiki/entities/paper-as-2412-08619-synthetic-vision-training-vision-language-models.md) — Synthetic Vision: Training Vision-Language Models to Understand Physics** 收录于 [AwesomeSim2Real](ht `📅unknown` `[entity_page]`
 - [单手双件装配（arXiv:2609.10137）](wiki/entities/paper-assembling-two-parts-in-one-hand.md) — 单手双件装配**（Assembling Two Parts in One Hand）来自 [具身智能小站 11 篇盘点](. `📅unknown` `[entity_page]`
 - [AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）](wiki/entities/paper-assistmimic.md) — AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026 `📅unknown` `[entity_page]`
 - [aSSMPy：软体机器人姿态 aSSM-MPC](wiki/entities/paper-assmpy-soft-robot-orientation.md) — aSSMPy**（arXiv:2609.14376，[代码](https://github.com/karakaron/aS `📅unknown` `[entity_page]`

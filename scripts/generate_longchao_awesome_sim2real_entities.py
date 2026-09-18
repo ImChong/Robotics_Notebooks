@@ -118,7 +118,7 @@ def parse_readme(path: Path) -> list[dict]:
         if not nm:
             i += 1
             continue
-        title = nm.group(1).strip()
+        title = nm.group(2).strip()
         blob_parts = [line]
         i += 1
         while i < len(lines):
@@ -134,9 +134,9 @@ def parse_readme(path: Path) -> list[dict]:
         blob = " ".join(p.strip() for p in blob_parts if p.strip())
         aids = ARXIV_RE.findall(blob)
         pub = ""
-        pm = re.search(r"\*\s*([^*]+)\*\.\s*([^[]+)\.\s*\d{4}", blob)
+        pm = re.search(r"\*\s*([^*]+?)\.?\s*\*\.?\s*([^*\[]*?)\.?\s*(?:19|20)\d{2}", blob)
         if pm:
-            pub = re.sub(r"\s+", " ", pm.group(2)).strip().rstrip(".")
+            pub = re.sub(r"\s+", " ", pm.group(2)).strip(". ")
         code = None
         cm = re.search(r"github\.com/([^/\)\s]+/[^/\)\s\"']+)", blob, re.I)
         if cm:
