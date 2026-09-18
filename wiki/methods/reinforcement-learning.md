@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-18
 related:
   - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md

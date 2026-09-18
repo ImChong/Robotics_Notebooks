@@ -51,9 +51,15 @@ CMoE 提出 **单阶段 RL**：MoE actor-critic + **对比学习**——**同地
 
 **对 wiki 的映射：** [楼梯/障碍感知 locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[Humanoid Locomotion](../../wiki/tasks/humanoid-locomotion.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)。
 
+## 摘录 4：原理→代码万字解读（2026-09-18 交叉 ingest）
+
+[微信公众号万字逐模块解读](https://mp.weixin.qq.com/s/l6cy5nodRTfORY8SKwXXDw) 沿 Fig.3 对照官方 `cmoe_actor_critic.py`：157 维共享输入、VAE **下一帧**预测（decoder 仅训练）、dense 5-expert 连续加权、`gate_weights.detach()` 隔离 critic 对 gate 的梯度。归档于 [`sources/blogs/wechat_cmoe_principle_to_code_2026-09-18.md`](../blogs/wechat_cmoe_principle_to_code_2026-09-18.md)。
+
+**对 wiki 的映射：** 交叉补强 [`paper-cmoe`](../../wiki/entities/paper-cmoe.md)「官方代码导读」与 [`sources/repos/cmoe.md`](../repos/cmoe.md) 路径表；不新建实体。
+
 ## 对 wiki 的映射（汇总）
 
-- 新建实体页：[`wiki/entities/paper-cmoe.md`](../../wiki/entities/paper-cmoe.md)
+- 实体页：[`wiki/entities/paper-cmoe.md`](../../wiki/entities/paper-cmoe.md)
 - 交叉更新：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md`](../../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)、[`wiki/entities/smp-g1-mjlab.md`](../../wiki/entities/smp-g1-mjlab.md)
 
 ## 参考来源（原始）

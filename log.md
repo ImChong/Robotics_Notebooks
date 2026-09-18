@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/blogs/wechat_cmoe_principle_to_code_2026-09-18.md — CMoE 万字原理→代码深读；交叉补强 paper-cmoe 与 repos/cmoe（157 维输入、VAE 下一帧、gate detach）；自动合并 PR
+
 ## [2026-09-17] ingest | sources/papers/athenazero_scirobotics_aee1868.md — SciRob AthenaZero 低惯量双臂硬件；有效质量分析部分开源
 
 ## [2026-09-17] ingest | sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md — Helix 2.5 Index 预训练与 30 家庭零样本全身 locomanipulation；未开源
