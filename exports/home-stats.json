@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/rl-sim2real-deployment-conditions.md",
+      "detail_id": "wiki-queries-rl-sim2real-deployment-conditions",
+      "label": "RL 真机部署：策略成立的条件是什么？",
+      "type": "query",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/arxivisual.md",
       "detail_id": "entity-arxivisual",
       "label": "arXivisual：arXiv 论文可视化阅读器",
@@ -198,28 +207,16 @@
       "recency": "2026-09-17",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-recmorph.md",
-      "detail_id": "entity-paper-recmorph",
-      "label": "RecMorph：跨形态共享控制策略",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/arxivisual.md",
-    "detail_id": "entity-arxivisual",
-    "label": "arXivisual：arXiv 论文可视化阅读器",
-    "type": "entity",
+    "path": "wiki/queries/rl-sim2real-deployment-conditions.md",
+    "detail_id": "wiki-queries-rl-sim2real-deployment-conditions",
+    "label": "RL 真机部署：策略成立的条件是什么？",
+    "type": "query",
     "recency": "2026-09-18",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
