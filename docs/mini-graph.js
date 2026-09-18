@@ -71,6 +71,9 @@
   function showTooltip(ev, d, nodeFill, communityLabelMap) {
     if (!tooltip) return;
     tooltip.innerHTML = tooltipHtml(d, nodeFill, communityLabelMap);
+    if (window.RNGraphTooltip && window.RNGraphTooltip.renderMath) {
+      window.RNGraphTooltip.renderMath(tooltip);
+    }
     tooltip.setAttribute('aria-hidden', 'false');
     tooltip.style.width = '';
     tooltip.style.transform = '';

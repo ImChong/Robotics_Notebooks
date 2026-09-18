@@ -14,7 +14,7 @@ summary: "依据具身智能研究室 2026-09-06 公众号「76 家公司、424+
 
 # 国内具身智能开源全景（76 家 · 424 项）
 
-> **本页定位**：[国内具身智能的开源全景](https://mp.weixin.qq.com/s/L2XQBhesU8EiS2nKM7HErw)（2026-09-06）的阅读坐标；**424/424 独立详情节点**见 [覆盖索引](../queries/china-domestic-opensource-424-coverage.md)。
+> **本页定位**：[国内具身智能的开源全景](https://mp.weixin.qq.com/s/L2XQBhesU8EiS2nKM7HErw)（2026-09-06）的阅读坐标；**424 个项目逐条可点开**，见 [阅读导航](../queries/china-domestic-opensource-424-coverage.md)。
 
 ## 一句话观点
 
@@ -52,17 +52,17 @@ flowchart TB
 | 第四层 | 6 | 模型层与开发者工具链 | [44 项索引](../queries/china-domestic-opensource-424-coverage.md) |
 | 第五层 | 16 | 机械臂/相机/雷达 ROS 驱动 | [63 项索引](../queries/china-domestic-opensource-424-coverage.md) |
 
-## 节点策略（本 ingest）
+## 这份清单能查到什么
 
-- **424/424 独立 `wiki/entities/*` 详情节点**（静态站 `detail.html?id=entity-…`）。
-- **复用 145** 既有实体（Unitree/智元/HMI 主表等已覆盖项）；**新建 279** `cn-os-*` 实体补齐缺口。
+- **424 个项目都有独立详情页**：仓库地址、所属机构、技术方向一页可见。
+- **76 家机构 · 19 个技术方向**，可按机构或方向横向比对同类项目。
 - 与 [HMI 开源项目主表 166 项](../queries/hmi-opensource-projects-coverage.md) **互补**：主表按技术路线深读算法；本全景按 **国内机构** 查仓库入口。
 
 ## 读法建议
 
 1. **选整机厂** — 从智元/宇树/天工等实体页沿 RL → Sim2Sim → SDK 链路读。
 2. **选 VLA/世界模型** — 第二层公司实体 + [VLA](../methods/vla.md)。
-3. **查是否已有方法页** — 覆盖索引标注「复用」时优先读原方法/论文页。
+3. **查方法原理** — 详情页里若链到方法/论文页，从那里读算法细节。
 
 ## 关联页面
 

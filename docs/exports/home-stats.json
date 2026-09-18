@@ -1,241 +1,261 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4253,
-  "edge_count": 37991,
+  "node_count": 4265,
+  "edge_count": 38085,
   "coverage": {
-    "covered": 4225,
-    "total": 4225,
+    "covered": 4237,
+    "total": 4237,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/supertuxkart.md",
-      "detail_id": "entity-supertuxkart",
-      "label": "SuperTuxKart",
+      "path": "wiki/entities/awesome-sim2real.md",
+      "detail_id": "entity-awesome-sim2real",
+      "label": "AwesomeSim2Real（LongchaoDa）",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-nphm.md",
-      "detail_id": "entity-paper-nphm",
-      "label": "NPHM（Learning Neural Parametric Head Models）",
+      "path": "wiki/entities/paper-as-001-1.md",
+      "detail_id": "entity-paper-as-001-1",
+      "label": "1",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/queries/rl-sim2real-deployment-conditions.md",
-      "detail_id": "wiki-queries-rl-sim2real-deployment-conditions",
-      "label": "RL 真机部署：策略成立的条件是什么？",
-      "type": "query",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-behaviorworldgen.md",
-      "detail_id": "entity-paper-behaviorworldgen",
-      "label": "BehaviorWorldGen（行为感知结构化世界生成闭环）",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/arxivisual.md",
-      "detail_id": "entity-arxivisual",
-      "label": "arXivisual：arXiv 论文可视化阅读器",
+      "path": "wiki/entities/paper-as-002-1.md",
+      "detail_id": "entity-paper-as-002-1",
+      "label": "1",
       "type": "entity",
       "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
-      "label": "人形运动控制：30 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-gpt-policy.md",
-      "detail_id": "entity-paper-gpt-policy",
-      "label": "GPT-Policy：VLM 代理的上下文机器人学习",
+      "path": "wiki/entities/paper-as-005-1.md",
+      "detail_id": "entity-paper-as-005-1",
+      "label": "1",
       "type": "entity",
       "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-kino.md",
-      "detail_id": "entity-paper-kino",
-      "label": "KINO：关键帧接口连接 VLM 规划与人形全身控制",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-lawam.md",
-      "detail_id": "entity-paper-lawam",
-      "label": "LaWAM：LeRobot 原生潜空间 World Action Model",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-passage.md",
-      "detail_id": "entity-paper-passage",
-      "label": "PASSAGE：场景对齐的人形感知 clutter 穿越",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vla-ulap.md",
-      "detail_id": "entity-paper-vla-ulap",
-      "label": "VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-atomicvla.md",
-      "detail_id": "entity-paper-atomicvla",
-      "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-athenazero.md",
-      "detail_id": "entity-paper-athenazero",
-      "label": "AthenaZero：低惯量双臂动态操作平台",
-      "type": "entity",
-      "recency": "2026-09-17",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-activescale.md",
-      "detail_id": "entity-paper-activescale",
-      "label": "ActiveScale（arXiv:2609.18514）",
+      "path": "wiki/entities/paper-as-006-1.md",
+      "detail_id": "entity-paper-as-006-1",
+      "label": "1",
       "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-bifur-circuits.md",
-      "detail_id": "entity-paper-bifur-circuits",
-      "label": "Bifur-circuits：可 bifurcate 的交互式模块化超材料积木",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-convergent-binocular-stereo.md",
-      "detail_id": "entity-paper-convergent-binocular-stereo",
-      "label": "Convergent Binocular Stereo（CBS）",
-      "type": "entity",
-      "recency": "2026-09-17",
+      "recency": "2026-09-18",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-deformsmith.md",
-      "detail_id": "entity-paper-deformsmith",
-      "label": "DeformSmith（arXiv:2609.18620）",
+      "path": "wiki/entities/paper-as-008-1.md",
+      "detail_id": "entity-paper-as-008-1",
+      "label": "1",
       "type": "entity",
-      "recency": "2026-09-17",
+      "recency": "2026-09-18",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-fierce.md",
-      "detail_id": "entity-paper-fierce",
-      "label": "FIERCE（arXiv:2609.18651）",
+      "path": "wiki/entities/paper-as-011-1.md",
+      "detail_id": "entity-paper-as-011-1",
+      "label": "1",
       "type": "entity",
-      "recency": "2026-09-17",
+      "recency": "2026-09-18",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-fpsa-r2s2r.md",
-      "detail_id": "entity-paper-fpsa-r2s2r",
-      "label": "FPSA R2S2R（arXiv:2609.18293）",
+      "path": "wiki/entities/paper-as-013-1.md",
+      "detail_id": "entity-paper-as-013-1",
+      "label": "1",
       "type": "entity",
-      "recency": "2026-09-17",
+      "recency": "2026-09-18",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-groot-drifting-action-head.md",
-      "detail_id": "entity-paper-groot-drifting-action-head",
-      "label": "GR00T Drifting Action Head：单步 VLA 速度–成功率审计",
+      "path": "wiki/entities/paper-as-015-1.md",
+      "detail_id": "entity-paper-as-015-1",
+      "label": "1",
       "type": "entity",
-      "recency": "2026-09-17",
+      "recency": "2026-09-18",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-016-1.md",
+      "detail_id": "entity-paper-as-016-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-018-1.md",
+      "detail_id": "entity-paper-as-018-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-023-1.md",
+      "detail_id": "entity-paper-as-023-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-029-1.md",
+      "detail_id": "entity-paper-as-029-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-030-1.md",
+      "detail_id": "entity-paper-as-030-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-031-1.md",
+      "detail_id": "entity-paper-as-031-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-032-1.md",
+      "detail_id": "entity-paper-as-032-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-035-1.md",
+      "detail_id": "entity-paper-as-035-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-037-1.md",
+      "detail_id": "entity-paper-as-037-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-038-1.md",
+      "detail_id": "entity-paper-as-038-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-as-042-1.md",
+      "detail_id": "entity-paper-as-042-1",
+      "label": "1",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/supertuxkart.md",
-    "detail_id": "entity-supertuxkart",
-    "label": "SuperTuxKart",
+    "path": "wiki/entities/awesome-sim2real.md",
+    "detail_id": "entity-awesome-sim2real",
+    "label": "AwesomeSim2Real（LongchaoDa）",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 580
+      "size": 588
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 480
+      "size": 447
     },
     {
       "label": "全身控制",
-      "size": 364
+      "size": 388
     },
     {
       "label": "仿真到现实",
-      "size": 331
+      "size": 333
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -243,7 +263,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 250
+      "size": 260
     }
   ],
   "top_hubs": [
@@ -251,7 +271,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1683,
+      "degree": 1689,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -259,7 +279,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1088,
+      "degree": 1091,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -274,7 +294,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1020,
+      "degree": 1024,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +302,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 921,
+      "degree": 922,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -290,7 +310,7 @@
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
       "label": "国内具身开源全景 424 项 · 阅读导航",
       "type": "query",
-      "degree": 682,
+      "degree": 681,
       "has_repo": true,
       "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
     },
@@ -298,14 +318,14 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 627,
+      "degree": 630,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 602,
+      "degree": 606,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -313,7 +333,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 592,
+      "degree": 597,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

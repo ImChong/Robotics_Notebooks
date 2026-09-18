@@ -3,7 +3,7 @@ type: overview
 tags: [overview, curated-index, awesome-real2sim2real, sun254667, technology-map]
 status: complete
 updated: 2026-09-18
-summary: "Awesome-Real2Sim2Real 技术地图：为清单内论文提供独立详情节点索引（新建 57，复用已有 6）。"
+summary: "Awesome-Real2Sim2Real 技术地图：把清单里的 63 篇论文逐条拆成站内可点开的一页，按清单分组浏览。"
 related:
   - ../entities/awesome-real2sim2real.md
   - ../methods/reinforcement-learning.md
@@ -15,11 +15,11 @@ sources:
 
 # Awesome-Real2Sim2Real 技术地图
 
-> 本页把 [Awesome-Real2Sim2Real](https://github.com/sun254667/Awesome-Real2Sim2Real) 清单中的论文条目映射为站内 **独立详情节点**（`wiki/entities/paper-sa-*` 或已有 canonical 页），供图谱与 `detail.html` 检索。
+> 本页把 [Awesome-Real2Sim2Real](https://github.com/sun254667/Awesome-Real2Sim2Real) 清单里的论文逐条拆成站内可点开的一页，方便按分组浏览、搜索，并顺着链接读同方向的工作。
 
 ## 一句话定义
 
-**Awesome-Real2Sim2Real 技术地图** = 外部 Awesome 策展列表的站内节点化索引（按清单分组浏览，一点即达论文实体页）。
+**Awesome-Real2Sim2Real 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。
 
 ## 英文缩写速查
 
@@ -32,9 +32,9 @@ sources:
 
 ## 为什么重要
 
-- Awesome 列表本身不是知识图谱节点；若不升格论文实体，首页/图谱无法挂上具体工作。
-- 本地图 **优先复用** 库内已有 arXiv canonical 页，仅对缺失条目新建清单索引页 `paper-sa-*`。
-- 统计：清单可解析条目 **63**（新建详情节点 **57**，复用已有 **6**）。
+- 原清单每条只有标题 + 链接，翻起来只能靠搜索框；这里逐条给出一页，可检索、可顺着相关内容继续读。
+- 站内已有深读页的条目直接链过去；其余给出 **清单摘要页**：标题、原文链接与它在清单里的位置一页可见。
+- 清单共 **63** 条，每条都能点开。
 
 ## 覆盖范围
 
@@ -162,9 +162,9 @@ sources:
 
 ## 局限与风险
 
-- 清单索引页保留清单 Highlights，**不替代** 深度论文页；主线工作应继续升格。
-- 清单可能含非 arXiv 链接（OpenReview / IEEE）；无 arXiv 条目以标题 slug 建节点，后续若补 arXiv 需合并去重。
-- 上游更新后需重跑 `python3 scripts/generate_sun254667_awesome_paper_entities.py` 再 `make ci-preflight`。
+- 清单摘要页只给清单要点，**不替代** 原文；要深读请从论文链接进。
+- 清单里混有非 arXiv 链接（OpenReview / IEEE），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
+- 上游清单仍在更新，本页是 2026-09-15 的快照；最新条目以上游仓库为准。
 
 ## 关联页面
 

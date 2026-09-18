@@ -50,7 +50,7 @@ summary: "依据具身智能研究室 2026-09-02 阅读路线，把 10 篇 VLA/�
 ## 为什么单独做这张地图
 
 - 公众号把 14 篇串成 **入门路线 + 进阶路线 + WM 补充**，不是平铺榜单。
-- **14/14 独立 `paper-*` 节点**：本 ingest **新建 10**、**复用 4**（LaDi-WM / DreamDojo / RISE / PointWorld）；**0 重复 arXiv 节点**。
+- **14 篇各有一页**，其中 LaDi-WM / DreamDojo / RISE / PointWorld 已是完整深读页。
 - Octo 的 `arxiv` 从方法页迁到 [paper-octo](../entities/paper-octo.md)，避免与方法页双节点。
 
 ## 流程总览

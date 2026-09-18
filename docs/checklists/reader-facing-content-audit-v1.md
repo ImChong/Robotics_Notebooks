@@ -1,6 +1,6 @@
 # 读者视角内容审计 v1 (Reader-Facing Content Audit)
 
-审计日期：2026-09-17 · 基线提交：`f3d1d87d` · 最近更新：2026-09-17（A 类改写完成）
+审计日期：2026-09-17 · 基线提交：`f3d1d87d` · 最近更新：2026-09-18（B 类「ingest 记账」一栏清零）
 目标：站点面向 **读者** 而非维护者。本文件全量扫描站点节点，定位仍带维护者口径的内容与页面，并按 checkbox 跟踪进度。
 
 扫描口径：`scripts/export_minimal.py:840-864` 的 `collect_paths()` glob，共 **4135** 个导出节点（`wiki/*`、`roadmap/*`、`references/*`、`tech-map/*`）。
@@ -8,7 +8,7 @@
 **进度总览**
 
 - [x] **A 类：整页不面向读者的节点**（1071 + 168 + 136 + 15 + 3 页，已全部改写为读者口径）
-- [ ] **B 类：正常页面里混入的维护者段落**（升格指令已随 A 类清零；其余见下）
+- [ ] **B 类：正常页面里混入的维护者段落**（升格指令随 A 类清零、ingest 记账 2026-09-18 清零；其余见下）
 - [x] **C 类：站点 UI 层的维护者口径**（`tech-map.html` / `module.html` 已删除）
 - [ ] **D 类：发布在站点域下但无 UI 入口的维护文档**（待定，倾向保留）
 
@@ -40,9 +40,22 @@
 | 「应再升格为深度论文实体」等升格指令 | 872 页 | **0** | [x] 随 A 类清零 |
 | 「占位子节点 / 图谱占位」 | 172 页 | **0** | [x] 随 A 类清零 |
 | 指向上游 `PROGRESS.md` 的「待深读」状态 | 178 页 | 178 页 | [ ] 表格行 `\| 深读状态 \| 待撰写 \|`，指向上游进度文件，读者可理解但仍偏内部 |
-| 仓库工作流（`schema/ingest-workflow.md`、`make ci-preflight`、「上游更新后需重跑 `scripts/generate_*`」） | 33 页 | 33 页 | [ ] 主要在 `wiki/overview/` 技术地图页 |
+| ingest 记账（「本 ingest 新建 N / 复用 M」「0 重复 arXiv 节点」「不重复造页」「· 新建 / · 复用」列） | 65 页 | **0** | [x] 2026-09-18 改写，见下方说明 |
+| 仓库工作流（`schema/ingest-workflow.md`、`make ci-preflight`、「上游更新后需重跑 `scripts/generate_*`」） | 33 页 | 28 页 | [ ] 剩余均在 **以 agent / skill 工具为主题的实体页**，用本仓库流程做对照是读者需要的信息；其余（4 个 `sun-awesome-*` 地图的「需重跑脚本」）已随上条清零 |
+| 页首 `> **Query 产物**：…` 标签 | 80 页 | 同左 | [ ] 「Query 产物」是本库 ingest 动作名，读者不需要知道页面由哪次查询触发；改动需同时动 `scripts/lint_wiki.py:1277`（硬校验该字符串）与 `scripts/scaffold_wiki_page.py`，属独立一轮 |
 | `（本仓库）` 标注 | 22 个 roadmap 页 / 564 处 | 同左 | [ ] `roadmap/depth-*.md` 链接列表几乎每行一个 |
 | `## 参考来源` 直接列 `sources/xxx.md` 仓库路径 | 4080 页 / 25943 条 | 同左 | [ ] 前端降级为 GitHub blob 外链（`docs/main.js:1752-1757`），读者被踢出站到裸 Markdown；应显示为「来源笔记」而非文件路径 |
+
+### B-ingest · ingest 记账口径（2026-09-18 已改写）
+
+起因：读者反馈 [424 项阅读导航](https://imchong.github.io/Robotics_Notebooks/detail.html?id=wiki-queries-china-domestic-opensource-424-coverage) 表格里每行尾部的「· 新建 / · 复用」对读者无意义 —— 那是 ingest 时「这页是不是这轮新造的」的维护者记账。同族措辞全库清理：
+
+- **424 全景两页 + 生成器**（`scripts/generate_china_opensource_coverage_md.py`）：表格去掉 `· 新建 / · 复用` 列尾标注；「规模」表的 `复用既有实体 / 本 ingest 新建实体` 换成 `覆盖机构 / 项目方向`；overview 的 `## 节点策略（本 ingest）` 改为 `## 这份清单能查到什么`。顺带修掉生成器里 HMI 主表的相对路径（`./` → `../queries/`，重跑会写出死链）。
+- **26 张技术地图**：`N/N 独立 paper-* 节点：本 ingest 新建 X、复用 Y；0 重复 arXiv 节点` → `N 篇各有一页，可逐篇点开核对…`；`避免 N 个实体成孤岛`（14 处）→ `把 N 篇放在一页里横向对照`。
+- **4 张 `sun-awesome-*` 地图 + 生成器**（`scripts/generate_sun254667_awesome_paper_entities.py`）：去掉「Awesome 列表本身不是知识图谱节点」「新建 225 / 复用 24」「上游更新后需重跑 `scripts/generate_*` 再 `make ci-preflight`」，改为读者口径的「原清单每条只有标题 + 链接…」与「本页是 <date> 的快照」。
+- **约 30 个实体 / 方法 / 对比页**：`本次 ingest 归档` → `原文归档`；`与同 arXiv 节点不重复造页`、`复用本页不新建实体`、`不要再为 xxx 新建实体` 等直接删去或改为读者能用的说法；`均已升格为 wiki/entities/ 详情页（可搜索、进图谱）` → `各有一页，可直接点开或搜索`。
+
+两个生成器已同步改写 —— 否则下次重跑会把维护者口径写回去。
 
 ## C 类：站点 UI 层的维护者口径 — 已完成
 

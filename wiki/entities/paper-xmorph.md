@@ -156,7 +156,7 @@ flowchart TB
 
 ## 参考来源
 
-- [sources/papers/xmorph_arxiv_2606_30290.md](../../sources/papers/xmorph_arxiv_2606_30290.md) — 本次 ingest 归档
+- [sources/papers/xmorph_arxiv_2606_30290.md](../../sources/papers/xmorph_arxiv_2606_30290.md) — 原文归档
 - [sources/sites/maker-rat-morph-github-io.md](../../sources/sites/maker-rat-morph-github-io.md) — 项目页与开源核查
 - [arXiv:2606.30290](https://arxiv.org/abs/2606.30290) — 论文与附录
 - [项目页](https://maker-rat.github.io/morph/) — 演示与入口
