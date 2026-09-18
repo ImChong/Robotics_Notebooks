@@ -2,7 +2,7 @@
 type: comparison
 tags: [in-context-learning, icl, vla, wam, test-time-training, manipulation, taxonomy]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-18
 related:
   - ../../roadmap/depth-icl.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/paper-robottt-test-time-training-vla-context.md
   - ../entities/paper-stellavla-structured-icl-vla.md
+  - ../entities/paper-ici-vla-spatiotemporal-icl.md
   - ../entities/paper-zero-wam.md
   - ../entities/generalist-gen15-one-shot.md
   - ../entities/skild-s1.md
@@ -133,6 +134,10 @@ flowchart TB
 - [HOST](../entities/paper-host-one-shot-human-video.md) — 开源零梯度单视频；进度对齐 + 自接地
 - [The Imitator Game](../entities/paper-imitator-game.md) — 意图级模仿基准，不是方法路线
 
+## 后续补充：ICI-VLA（2026-09）
+
+[ICI-VLA](../entities/paper-ici-vla-spatiotemporal-icl.md)（[arXiv:2609.07581](https://arxiv.org/abs/2609.07581)）与 StellaVLA 同属 **零梯度纯 ICL**，但示范形态为 **子任务 micro-demo + DTW 相位检索**（text-action VLA-0 接口），而非结构化语言 verbalization。RoboTwin 2.0 平均 **60.4%**（朴素 ICL 仅 **10.7%**）表明 **检索对齐** 是瓶颈；与上表四路线 **无同 backbone 并排**，仅作 fifth 坐标点参考。
+
 ## 参考来源
 
 - [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)
@@ -142,3 +147,4 @@ flowchart TB
 
 - 原文（微信公众号）：<https://mp.weixin.qq.com/s/vIUalf3vZI3AV-HWSVruew>
 - 四篇 arXiv：[2607.06988](https://arxiv.org/abs/2607.06988) · [2607.15275](https://arxiv.org/abs/2607.15275) · [2608.11671](https://arxiv.org/abs/2608.11671) · [2608.26103](https://arxiv.org/abs/2608.26103)
+- ICI-VLA（补充坐标）：[2609.07581](https://arxiv.org/abs/2609.07581)
