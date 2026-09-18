@@ -20,13 +20,14 @@ import unicodedata
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 TODAY = date.today().isoformat()
 CACHE = Path("/tmp/awesome-sim2real-readme.md")
 
 LIST_KEY = "sim2real"
-LIST_META = {
+LIST_META: dict[str, Any] = {
     "repo": "AwesomeSim2Real",
     "title": "AwesomeSim2Real",
     "url": "https://github.com/LongchaoDa/AwesomeSim2Real",
@@ -224,9 +225,7 @@ def render_source(e: dict, wiki_rel: str, idx: int, total: int) -> str:
 """
 
 
-def render_entity(
-    e: dict, src_rel: str, idx: int, total: int, tech_map_rel: str
-) -> str:
+def render_entity(e: dict, src_rel: str, idx: int, total: int, tech_map_rel: str) -> str:
     short = e["title"].split(":")[0].strip() if ":" in e["title"] else e["title"]
     if len(short) > 80:
         short = short[:77] + "..."
@@ -366,8 +365,8 @@ def render_catalog(rows: list[dict]) -> str:
         f"> 由 `{LIST_META['url']}` 解析生成；入库日 {TODAY}。",
         "",
         f"- **列表实体：** [`{LIST_META['entity']}`](../../{LIST_META['entity']})",
-        f"- **技术地图：** [`wiki/overview/lc-awesome-sim2real-technology-map.md`](../../wiki/overview/lc-awesome-sim2real-technology-map.md)",
-        f"- **配套综述：** [arXiv:2502.13187](https://arxiv.org/abs/2502.13187v3)",
+        "- **技术地图：** [`wiki/overview/lc-awesome-sim2real-technology-map.md`](../../wiki/overview/lc-awesome-sim2real-technology-map.md)",
+        "- **配套综述：** [arXiv:2502.13187](https://arxiv.org/abs/2502.13187v3)",
         f"- **条目数：** {len(rows)}",
         "",
         "| # | 标题 | arXiv | 分组 | wiki |",
