@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/papers/behaviorworldgen_arxiv_2608_22187.md — BehaviorWorldGen 行为感知轨迹闭环；项目页未开源；NAVSIM 低分桶增益最大
+
 ## [2026-09-18] ingest | sources/sites/unilabsim-project.md — 复核 UniLab 项目页：CoRL 2026、14 任务、17 浏览器 demo、跨平台墙钟表
 
 ## [2026-09-18] ingest | sources/sites/arxivisual-org.md — arXivisual arXiv 论文 Manim scrollytelling 工具；GitHub 可本地运行（无 LICENSE 文件）；交叉 arxiv/manim；自动合并 PR

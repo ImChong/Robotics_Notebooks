@@ -197,6 +197,8 @@ sources:
 
 **文献实例（Cascaded + 驾驶测试时自适应想象）**：[RISE（酷哇）](../entities/paper-rise-adaptive-imagination-wam.md) 在 Encoder–Predictor–Planner 上插 **Roll/Stop Scheduler**：用 Future Planning Gain 对代价逐步决定是否再滚 latent，而不是全局固定 \(H\)；NAVSIM v1 PDMS **91.5** / v2 EPDMS **90.8**，平均 2.40 步。配套 CounterDrive 反事实集。**不是** OpenDriveLab 同名操作 RISE（arXiv:2602.11075）。
 
+**文献实例（Cascaded + 行为轨迹闭环数据增广）**：[BehaviorWorldGen](../entities/paper-behaviorworldgen.md) 把 **BehaviorFlow**（meta-action 交通流）放在 **轨迹层**，world simulator 只负责 **渲染观测**；合成 **interaction-aware** 轨迹–像素对 refine VLA / E2E 规划器。DiffusionDrive 在 NAVSIM **低 PDMS 分桶** 增益远大于 aggregate（`[0,0.15)` **0→34.8**），说明闭环价值在 **周车行为可信** 而非 ego 像素 alone。
+
 ### Joint WAM
 
 `future + action`：在 **共享骨干** 下联合预测未来与动作（自回归统一词表、扩散/流匹配单引擎或多引擎等）。

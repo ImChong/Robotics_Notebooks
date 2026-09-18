@@ -3748,6 +3748,22 @@
         "cosmosmind-ai",
         "cosmos-mind"
       ]
+    },
+    "afari": {
+      "label": "千里科技 AFARI（AFARI, Qianli Technology）",
+      "aliases": [
+        "afari",
+        "qianli",
+        "qianli-tech",
+        "qianli-technology"
+      ]
+    },
+    "megvii": {
+      "label": "旷视（MEGVII）",
+      "aliases": [
+        "megvii",
+        "megvii-research"
+      ]
     }
   }
 }

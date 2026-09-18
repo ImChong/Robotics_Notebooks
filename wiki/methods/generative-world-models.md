@@ -379,6 +379,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [M⁴World](../entities/paper-m4world.md)（arXiv:2607.14005，美团 × CASIA × BIT）在共享 **DiT** 潜空间上联合生成 **环视视频 + 同步 LiDAR range map**，并把物体条件从几何 box 扩展为 **布局 + SigLIP/文本外观**；经 Teacher Forcing → 4-step ODE → Self-Forcing/DMD → 长视频微调，支撑 **分钟级** 因果流式，并用 VLM judge 评可控性。相对 X-World 的 **动作条件评测底座**，M⁴World 更强调 **物体级交互操纵与相机–LiDAR 多模态**；截至入库日 **未开源**。
 
+### 行为感知轨迹闭环（示例：BehaviorWorldGen）
+
+[BehaviorWorldGen](../entities/paper-behaviorworldgen.md)（arXiv:2608.22187，AFARI/千里科技 × MEGVII）针对 **action model ↔ world simulator 自改进闭环** 里 **周车交互不真实** 的瓶颈：先用 **BehaviorFlow**（meta-action 条件交通流）在 **结构化轨迹** 层联合 rollout 多车，再交给 **可插拔 renderer**（项目页演示 **动作条件 AWM** 与 **3DGS 场景外推**）生成多视角观测，并与 interaction-aware 标签配对 refine **ChainFlow-VLA / DiffusionDrive**。NAVSIM 上 DiffusionDrive PDMS **87.7→88.6**，**低分交互分桶** 增益最大（`[0,0.15)` **0→34.8**）；截至入库日 **未开源**。与 M⁴World / X-World 的 **像素 WM 底座** 正交：本文强调 **轨迹接口 + 行为可控数据增广**，而非单模型端到端生成。
+
 ### 多智能体共享世界（示例：Gamma-World）
 
 当环境中有 **多个同时可控主体**（多人游戏、多机编队）时，世界模型除「动作–像素对齐」外，还需 **跨体一致的世界演化** 与 **可扩展的身份编码**。[Gamma-World](../entities/paper-gamma-world-multi-agent.md)（arXiv:2605.28816）用 **Simplex Rotary Agent Encoding**（置换对称、无 slot ID）与 **Sparse Hub Attention**（跨体通信线性于智能体数）扩展交互式视频 WM，并经教师–学生蒸馏实现约 **24 FPS** 流式 rollout；**2 人训练可零样本泛化 4 人**。与单流 [WEM](../entities/paper-wem-world-ego-modeling.md) 的 world/ego 长程分解正交：γ-World 强调 **主体数与实时交互**，而非单机器人导航–操作交错。
