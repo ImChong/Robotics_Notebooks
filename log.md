@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/repos/awesome-sim2real.md — 接入 LongchaoDa AwesomeSim2Real 与 2502.13187v3 综述；139 条独立 paper-as 节点 + 深读综述页
+
 ## [2026-09-18] ingest | sources/repos/embodichain.md — DexForce EmbodiChain 端到端 GPU 具身平台；已开源（Apache 2.0）；新建实体页并挂接 RoboSynChallenge / 仿真器选型；自动合并 PR
 
 ## [2026-09-18] ingest | sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md — 具身小站 10 篇接触/WAM 盘点；10/10 独立节点新建；自动合并 PR

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2502.01536"
 venue: "IEEE Robotics and Automation Letters 2025"
 summary: "A Real-to-Sim-to-Real framework that generates photorealistic and physically interactive digital twin simulation environments for visual navigation and locomotion learning"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2602.16863"
 venue: "arXiv 2026"
 summary: "Proposes an object-centric policy for zero-shot dexterous tool manipulation. Generalizes across a diverse set of everyday tools, achieving strong zero-shot performance"

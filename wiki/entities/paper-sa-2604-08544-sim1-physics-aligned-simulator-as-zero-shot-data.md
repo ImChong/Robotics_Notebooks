@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2604.08544"
 venue: "arXiv 2026"
 summary: "A physics-aligned real-to-sim-to-real data engine that grounds simulation in the physical world, validating physics-aligned simulation as scalable supervision for deformable manipulation"

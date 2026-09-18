@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** The first taxonomy that formally frames sim-to-real techniques from key elements of the Markov Decision Process (State, Action, Transition, and Reward). Covers comprehensive literature from classic to advanced methods including sim-to-real techniques empowered by foundation models. Summarizes the formal evaluation p...
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2502-13187-a-survey-of-sim-to-real-methods-in-rl-progress-p.md`](../../wiki/entities/paper-sa-2502-13187-a-survey-of-sim-to-real-methods-in-rl-progress-p.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-survey-sim2real-rl-foundation-models.md`](../../wiki/entities/paper-survey-sim2real-rl-foundation-models.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2502-13187-a-survey-of-sim-to-real-methods-in-rl-progress-p.md`](../../wiki/entities/paper-sa-2502-13187-a-survey-of-sim-to-real-methods-in-rl-progress-p.md)
+- 实体页：[`wiki/entities/paper-survey-sim2real-rl-foundation-models.md`](../../wiki/entities/paper-survey-sim2real-rl-foundation-models.md)
 - 列表实体：[`wiki/entities/awesome-real2sim2real.md`](../../wiki/entities/awesome-real2sim2real.md)

@@ -19,7 +19,7 @@ tags:
   - fau
   - style3d
 status: complete
-updated: 2026-09-16
+updated: 2026-09-18
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md

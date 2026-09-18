@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2603.18719"
 venue: "arXiv 2025"
 summary: "Ontology-guided diffusion for zero-shot visual sim-to-real transfer"

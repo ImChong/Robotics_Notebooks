@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2502.17894"
 venue: "Proceedings of MLR 2025"
 summary: "Introduces FetchBot, a sim-to-real framework for object fetching in cluttered scenes. Curates a large-scale synthetic dataset featuring 1M diverse scenes and 500k representative demonstrations"

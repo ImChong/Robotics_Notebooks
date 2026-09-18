@@ -3,7 +3,7 @@ type: query
 tags: [sim2real, deployment, locomotion, humanoid, rl]
 status: complete
 summary: "从仿真到真机部署的完整工程清单（含快速部署检查 3 分钟版）。"
-updated: 2026-07-28
+updated: 2026-09-18
 related:
   - ./sim2real-gap-reduction.md
   - ./sim2real-closed-loop-engineering.md

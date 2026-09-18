@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2412.00259"
 venue: "IEEE Robotics and Automation Letters 2025"
 summary: "One-shot real-to-sim via end-to-end differentiable simulation and rendering"

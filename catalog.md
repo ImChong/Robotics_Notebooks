@@ -55,6 +55,7 @@
 - [Awesome-Real2Sim2Real（sun254667 精选集）](wiki/entities/awesome-real2sim2real.md) — Awesome-Real2Sim2Real**（GitHub：[`sun254667/Awesome-Real2Sim2Real`](https://github.com/sun254667/Aw `📅unknown` `[entity_page]`
 - [Awesome Robot Descriptions](wiki/entities/awesome-robot-descriptions.md) — Awesome Robot Descriptions](https://github.com/robot-descriptions/awesome-robot-descriptions) 是 `ro `📅unknown` `[entity_page]`
 - [Awesome RSI（Prism-Shadow 精选集）](wiki/entities/awesome-rsi.md) — Awesome RSI**（GitHub：Prism-Shadow/awesome-rsi，站点：[p `📅unknown` `[entity_page]`
+- [AwesomeSim2Real（LongchaoDa）](wiki/entities/awesome-sim2real.md) — AwesomeSim2Real**（GitHub：[LongchaoDa/AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeSim2Rea `📅unknown` `[entity_page]`
 - [Awesome Text-to-Motion（Zilize 精选集）](wiki/entities/awesome-text-to-motion-zilize.md) — Awesome Text-to-Motion**（GitHub 仓名 `awesome-text-to-motion`）是一份 **文本驱动人体运动生成** 的 curated 列表：按 **Su `📅unknown` `[entity_page]`
 - [Awesome Touch（sun254667 精选集）](wiki/entities/awesome-touch.md) — Awesome Touch**（GitHub：`sun254667/awesome-touch`）是一份 `📅unknown` `[entity_page]`
 - [Awesome World-Action Models（RCL / MBZUAI）](wiki/entities/awesome-world-action-models-rcl.md) — Awesome World-Action Models**（GitHub：[rcl-robotics/Awesome-World-Action-Models](https://github.com `📅unknown` `[entity_page]`
@@ -819,6 +820,140 @@
 - [Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成](wiki/entities/paper-arm-aware-dexgrasp.md) — Arm-Aware Guided Dexterous Grasp Generation**（[arXiv:2608.16351](https://arxiv.org/abs/2608.16351 `📅unknown` `[entity_page]`
 - [ARTiS：面向拆解的自适应工具夹爪](wiki/entities/paper-artis-gripper.md) — ARTiS**（*Adaptive Robotic Tool Gripper in Disassembly Systems*，[arXiv:2609.03362](https://arxiv.or `📅unknown` `[entity_page]`
 - [ArtManip：类别级铰接物体手内操作](wiki/entities/paper-artmanip.md) — ArtManip**（*ArtManip: Category-Level Articulated In-Hand Manipulation*，[arXiv:2609.12498](https:// `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-001-1.md) — 1** 收录于 AwesomeSim2Real **第 001/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-002-1.md) — 1** 收录于 AwesomeSim2Real **第 002/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-005-1.md) — 1** 收录于 AwesomeSim2Real **第 005/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-006-1.md) — 1** 收录于 AwesomeSim2Real **第 006/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-008-1.md) — 1** 收录于 AwesomeSim2Real **第 008/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-011-1.md) — 1** 收录于 AwesomeSim2Real **第 011/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-013-1.md) — 1** 收录于 AwesomeSim2Real **第 013/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-015-1.md) — 1** 收录于 AwesomeSim2Real **第 015/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-016-1.md) — 1** 收录于 AwesomeSim2Real **第 016/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-018-1.md) — 1** 收录于 AwesomeSim2Real **第 018/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-023-1.md) — 1** 收录于 AwesomeSim2Real **第 023/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-029-1.md) — 1** 收录于 AwesomeSim2Real **第 029/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-030-1.md) — 1** 收录于 AwesomeSim2Real **第 030/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-031-1.md) — 1** 收录于 AwesomeSim2Real **第 031/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-032-1.md) — 1** 收录于 AwesomeSim2Real **第 032/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-035-1.md) — 1** 收录于 AwesomeSim2Real **第 035/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-037-1.md) — 1** 收录于 AwesomeSim2Real **第 037/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-038-1.md) — 1** 收录于 AwesomeSim2Real **第 038/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-042-1.md) — 1** 收录于 AwesomeSim2Real **第 042/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-043-1.md) — 1** 收录于 AwesomeSim2Real **第 043/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-047-1.md) — 1** 收录于 AwesomeSim2Real **第 047/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-049-1.md) — 1** 收录于 AwesomeSim2Real **第 049/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-056-1.md) — 1** 收录于 AwesomeSim2Real **第 056/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-061-1.md) — 1** 收录于 AwesomeSim2Real **第 061/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-062-1.md) — 1** 收录于 AwesomeSim2Real **第 062/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-064-1.md) — 1** 收录于 AwesomeSim2Real **第 064/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-065-1.md) — 1** 收录于 AwesomeSim2Real **第 065/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-066-1.md) — 1** 收录于 AwesomeSim2Real **第 066/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-067-1.md) — 1** 收录于 AwesomeSim2Real **第 067/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-072-1.md) — 1** 收录于 AwesomeSim2Real **第 072/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-081-1.md) — 1** 收录于 AwesomeSim2Real **第 081/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-083-1.md) — 1** 收录于 AwesomeSim2Real **第 083/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-084-1.md) — 1** 收录于 AwesomeSim2Real **第 084/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-086-1.md) — 1** 收录于 AwesomeSim2Real **第 086/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-087-1.md) — 1** 收录于 AwesomeSim2Real **第 087/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-094-1.md) — 1** 收录于 AwesomeSim2Real **第 094/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-099-1.md) — 1** 收录于 AwesomeSim2Real **第 099/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-101-1.md) — 1** 收录于 AwesomeSim2Real **第 101/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-102-1.md) — 1** 收录于 AwesomeSim2Real **第 102/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-103-1.md) — 1** 收录于 AwesomeSim2Real **第 103/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-104-1.md) — 1** 收录于 AwesomeSim2Real **第 104/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-105-1.md) — 1** 收录于 AwesomeSim2Real **第 105/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-106-1.md) — 1** 收录于 AwesomeSim2Real **第 106/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-107-1.md) — 1** 收录于 AwesomeSim2Real **第 107/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-108-1.md) — 1** 收录于 AwesomeSim2Real **第 108/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-109-1.md) — 1** 收录于 AwesomeSim2Real **第 109/139** 篇，分组 **Surv `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-114-1.md) — 1** 收录于 AwesomeSim2Real **第 114/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-118-1.md) — 1** 收录于 AwesomeSim2Real **第 118/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-119-1.md) — 1** 收录于 AwesomeSim2Real **第 119/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1207-4708-1.md) — 1** 收录于 AwesomeSim2Real **第 070/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-122-1.md) — 1** 收录于 AwesomeSim2Real **第 122/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-124-1.md) — 1** 收录于 AwesomeSim2Real **第 124/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-134-1.md) — 1** 收录于 AwesomeSim2Real **第 134/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-135-1.md) — 1** 收录于 AwesomeSim2Real **第 135/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-136-1.md) — 1** 收录于 AwesomeSim2Real **第 136/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-137-1.md) — 1** 收录于 AwesomeSim2Real **第 137/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-139-1.md) — 1** 收录于 AwesomeSim2Real **第 139/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1606-01540-1.md) — 1** 收录于 AwesomeSim2Real **第 100/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1612-03801-1.md) — 1** 收录于 AwesomeSim2Real **第 069/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1703-00472-1.md) — 1** 收录于 AwesomeSim2Real **第 014/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1705-10667-1.md) — 1** 收录于 AwesomeSim2Real **第 112/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1708-08611-1.md) — 1** 收录于 AwesomeSim2Real **第 020/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1710-03641-1.md) — 1** 收录于 AwesomeSim2Real **第 098/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1711-03938-1.md) — 1** 收录于 AwesomeSim2Real **第 138/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1711-06606-1.md) — 1** 收录于 AwesomeSim2Real **第 041/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1712-05474-1.md) — 1** 收录于 AwesomeSim2Real **第 068/139** 篇，分组 **Othe `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1802-00265-1.md) — 1** 收录于 AwesomeSim2Real **第 040/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1805-10000-1.md) — 1** 收录于 AwesomeSim2Real **第 077/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1808-00720-1.md) — 1** 收录于 AwesomeSim2Real **第 076/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1809-02176-1.md) — 1** 收录于 AwesomeSim2Real **第 113/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1809-06256-1.md) — 1** 收录于 AwesomeSim2Real **第 039/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1810-07286-1.md) — 1** 收录于 AwesomeSim2Real **第 012/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1810-08700-1.md) — 1** 收录于 AwesomeSim2Real **第 024/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1901-09184-1.md) — 1** 收录于 AwesomeSim2Real **第 025/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1904-04762-1.md) — 1** 收录于 AwesomeSim2Real **第 117/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1904-12901-1.md) — 1** 收录于 AwesomeSim2Real **第 009/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1905-12767-1.md) — 1** 收录于 AwesomeSim2Real **第 075/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1909-04847-1.md) — 1** 收录于 AwesomeSim2Real **第 074/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1909-12271-1.md) — 1** 收录于 AwesomeSim2Real **第 090/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1910-04054-1.md) — 1** 收录于 AwesomeSim2Real **第 010/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1910-04700-1.md) — 1** 收录于 AwesomeSim2Real **第 096/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1910-07113-1.md) — 1** 收录于 AwesomeSim2Real **第 048/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1910-10897-1.md) — 1** 收录于 AwesomeSim2Real **第 097/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-1911-04074-1.md) — 1** 收录于 AwesomeSim2Real **第 132/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2001-01046-1.md) — 1** 收录于 AwesomeSim2Real **第 111/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2005-04078-1.md) — 1** 收录于 AwesomeSim2Real **第 063/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2008-01279-1.md) — 1** 收录于 AwesomeSim2Real **第 121/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2008-01594-1.md) — 1** 收录于 AwesomeSim2Real **第 123/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2009-12293-1.md) — 1** 收录于 AwesomeSim2Real **第 028/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2010-02966-1.md) — 1** 收录于 AwesomeSim2Real **第 007/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2010-03978-1.md) — 1** 收录于 AwesomeSim2Real **第 110/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2010-09776-1.md) — 1** 收录于 AwesomeSim2Real **第 133/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2011-03148-1.md) — 1** 收录于 AwesomeSim2Real **第 036/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2011-03807-1.md) — 1** 收录于 AwesomeSim2Real **第 019/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2011-07215-1.md) — 1** 收录于 AwesomeSim2Real **第 095/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2011-12421-1.md) — 1** 收录于 AwesomeSim2Real **第 033/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2101-06557-1.md) — 1** 收录于 AwesomeSim2Real **第 131/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2101-11992-1.md) — 1** 收录于 AwesomeSim2Real **第 003/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2103-12768-1.md) — 1** 收录于 AwesomeSim2Real **第 034/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2104-08441-1.md) — 1** 收录于 AwesomeSim2Real **第 022/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2104-11213-1.md) — 1** 收录于 AwesomeSim2Real **第 089/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2108-07555-1.md) — 1** 收录于 AwesomeSim2Real **第 004/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2109-12674-1.md) — 1** 收录于 AwesomeSim2Real **第 129/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2110-11073-1.md) — 1** 收录于 AwesomeSim2Real **第 073/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2112-03227-1.md) — 1** 收录于 AwesomeSim2Real **第 092/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2201-08434-1.md) — 1** 收录于 AwesomeSim2Real **第 046/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2204-04340-1.md) — 1** 收录于 AwesomeSim2Real **第 115/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2210-14413-1.md) — 1** 收录于 AwesomeSim2Real **第 130/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2301-04195-1.md) — 1** 收录于 AwesomeSim2Real **第 091/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2302-14838-1.md) — 1** 收录于 AwesomeSim2Real **第 079/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2303-00001-1.md) — 1** 收录于 AwesomeSim2Real **第 082/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2303-08774-1.md) — 1** 收录于 AwesomeSim2Real **第 058/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2304-11496-1.md) — 1** 收录于 AwesomeSim2Real **第 127/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2307-07666-1.md) — 1** 收录于 AwesomeSim2Real **第 021/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2307-12388-1.md) — 1** 收录于 AwesomeSim2Real **第 120/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2308-14284-1.md) — 1** 收录于 AwesomeSim2Real **第 125/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2309-12645-1.md) — 1** 收录于 AwesomeSim2Real **第 071/139** 篇，分组 **Reco `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2309-14594-1.md) — 1** 收录于 AwesomeSim2Real **第 044/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2310-08710-1.md) — 1** 收录于 AwesomeSim2Real **第 128/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2310-18847-1.md) — 1** 收录于 AwesomeSim2Real **第 060/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2403-06420-1.md) — 1** 收录于 AwesomeSim2Real **第 026/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2403-11000-1.md) — 1** 收录于 AwesomeSim2Real **第 059/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2405-04491-1.md) — 1** 收录于 AwesomeSim2Real **第 126/139** 篇，分组 **Tran `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2405-10020-1.md) — 1** 收录于 AwesomeSim2Real **第 052/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2405-17104-1.md) — 1** 收录于 AwesomeSim2Real **第 055/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2406-07394-1.md) — 1** 收录于 AwesomeSim2Real **第 080/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2406-08406-1.md) — 1** 收录于 AwesomeSim2Real **第 088/139** 篇，分组 **Robo `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2407-02231-1.md) — 1** 收录于 AwesomeSim2Real **第 017/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2407-15815-1.md) — 1** 收录于 AwesomeSim2Real **第 045/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2409-18382-1.md) — 1** 收录于 AwesomeSim2Real **第 078/139** 篇，分组 **Rewa `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2410-12831-1.md) — 1** 收录于 AwesomeSim2Real **第 054/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2410-22332-1.md) — 1** 收录于 AwesomeSim2Real **第 027/139** 篇，分组 **Acti `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2412-05789-1.md) — 1** 收录于 AwesomeSim2Real **第 051/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
+- [1](wiki/entities/paper-as-2412-08619-1.md) — 1** 收录于 AwesomeSim2Real **第 053/139** 篇，分组 **Obse `📅unknown` `[entity_page]`
 - [单手双件装配（arXiv:2609.10137）](wiki/entities/paper-assembling-two-parts-in-one-hand.md) — 单手双件装配**（Assembling Two Parts in One Hand）来自 [具身智能小站 11 篇盘点](. `📅unknown` `[entity_page]`
 - [AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）](wiki/entities/paper-assistmimic.md) — AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026 `📅unknown` `[entity_page]`
 - [aSSMPy：软体机器人姿态 aSSM-MPC](wiki/entities/paper-assmpy-soft-robot-orientation.md) — aSSMPy**（arXiv:2609.14376，[代码](https://github.com/karakaron/aS `📅unknown` `[entity_page]`
@@ -2168,7 +2303,6 @@
 - [MaskGWM](wiki/entities/paper-sa-2502-11663-maskgwm-a-generalizable-driving-world-model-with.md) — MaskGWM: A Generalizable Driving World Model with Video Mask Reconstruction** 收录于 [Awesome World M `📅unknown` `[entity_page]`
 - [V-JEPA Learns Intuitive Physics](wiki/entities/paper-sa-2502-11831-v-jepa-learns-intuitive-physics.md) — V-JEPA Learns Intuitive Physics** 收录于 [Awesome World Models](https://github.com/sun254667/awesome- `📅unknown` `[entity_page]`
 - [Text2World](wiki/entities/paper-sa-2502-13092-text2world-benchmarking-large-language-models-fo.md) — Text2World: Benchmarking Large Language Models for Symbolic World Model Generation** 收录于 [Awesome  `📅unknown` `[entity_page]`
-- [A Survey of Sim-to-Real Methods in RL](wiki/entities/paper-sa-2502-13187-a-survey-of-sim-to-real-methods-in-rl-progress-p.md) — A Survey of Sim-to-Real Methods in RL: Progress, Prospects and Challenges with Foundation Models `📅unknown` `[entity_page]`
 - [Learning To Explore With Predictive World Model Via Self-Supervised Learning](wiki/entities/paper-sa-2502-13200-learning-to-explore-with-predictive-world-model.md) — Learning To Explore With Predictive World Model Via Self-Supervised Learning** 收录于 [Awesome World  `📅unknown` `[entity_page]`
 - [FetchBot](wiki/entities/paper-sa-2502-17894-fetchbot-learning-generalizable-object-fetching.md) — FetchBot: Learning Generalizable Object Fetching in Cluttered Scenes via Zero-Shot Sim2Real** 收录于  `📅unknown` `[entity_page]`
 - [Accelerating Model-Based RL with State-Space World Models](wiki/entities/paper-sa-2502-20168-accelerating-model-based-rl-with-state-space-wor.md) — Accelerating Model-Based RL with State-Space World Models** 收录于 [Awesome World Models](https://git `📅unknown` `[entity_page]`
@@ -2923,6 +3057,7 @@
 - [亚厘米级管道检测机器人：DEA 驱动的蠕动穿管软体机器人](wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md) — A pipeline inspection robot for navigating tubular environments in the sub-centimeter scale**（Tang `📅unknown` `[entity_page]`
 - [SUPER ODOMETRY 2.0](wiki/entities/paper-super-odometry-2.md) — SUPER ODOMETRY 2.0: Resilient Odometry via Hierarchical Adaptation**（[arXiv:2608.25427](https://ar `📅unknown` `[entity_page]`
 - [SurgLAT：腹腔镜要跟的是意图轨迹，不是器械中心](wiki/entities/paper-surglat.md) — SurgLAT**（*Surgical Latent Attention Tracking*；[arXiv:2608.07876](https://arxiv.org/abs/2608.07876 `📅unknown` `[entity_page]`
+- [Sim2Real RL 综述（2502.13187）](wiki/entities/paper-survey-sim2real-rl-foundation-models.md) — A Survey of Sim-to-Real Methods in RL: Progress, Prospects and Challenges with Foundation Models `📅unknown` `[entity_page]`
 - [SWAP：对称等变世界模型四足跑酷](wiki/entities/paper-swap-parkour.md) — SWAP**（*Symmetric Equivariant World-Model for Agile Robot Parkour*，Lan et al., [arXiv:2606.19928 `📅unknown` `[entity_page]`
 - [野外微型飞行机器人蜂群（Swarm of Micro Flying Robots in the Wild）](wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md) — Swarm of micro flying robots in the wild**（Xin Zhou、Xiangyong Wen、Zhepei Wang 等，ZJU FAST-Lab，Chao  `📅unknown` `[entity_page]`
 - [SwarmNxt（开源软硬件敏捷空中蜂群平台）](wiki/entities/paper-swarmnxt.md) — SwarmNxt**（*Open-source Software-Hardware Platform for Fast and Agile Aerial Swarms*，Toumieh、Mistr `📅unknown` `[entity_page]`
@@ -3934,6 +4069,7 @@
 - [人形机器人发展历史](wiki/overview/humanoid-robot-history.md) — 人形机器人发展历史**梳理双足类人平台从实验室样机到可量产科研整机的关键里程碑，帮助理解今日 G1 等课程平台为何同时继承 **模型基平衡 `📅unknown` `[overview_page]`
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 **数据稀缺** 下仍能 **组合行为、适应新目标与物体**——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互 `📅unknown` `[overview_page]`
 - [大模型赋能人形机器人](wiki/overview/large-model-empowered-humanoids.md) — 大模型赋能人形**泛指用 **LLM / VLM / VLA** 等预训练模型承接语义理解与任务规划（有时含直接动作），再通过技能库、导航栈或端到端策略驱动人形执行——课程第 8.1 节的方法地图 `📅unknown` `[overview_page]`
+- [AwesomeSim2Real 技术地图](wiki/overview/lc-awesome-sim2real-technology-map.md) — AwesomeSim2Real 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文策展列表的站内节点化索引（按 MDP 四要素 + 领域分组浏览）。 `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 01：运控基座与通用全身跟踪](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 02：上半身中心控制与移动操作接口](wiki/overview/loco-manip-161-category-02-upper-body-interface.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 03：视觉感知驱动的人形移动操作](wiki/overview/loco-manip-161-category-03-visuomotor.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

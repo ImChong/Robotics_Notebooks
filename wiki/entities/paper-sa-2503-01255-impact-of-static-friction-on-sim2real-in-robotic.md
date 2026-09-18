@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2503.01255"
 venue: "arXiv 2025"
 summary: "Investigates the underexplored impact of Static friction on the Sim2Real gap, proposing a Static friction-aware domain randomization method to bridge the simulation-to-reality transfer"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2503.00370"
 venue: "arXiv 2025"
 summary: "Simulating object dynamics from real-world perception shows great promise for digital twins and robotic manipulation but demands labor-intensive measurements"

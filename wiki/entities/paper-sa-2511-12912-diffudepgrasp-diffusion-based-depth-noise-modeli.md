@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2511.12912"
 venue: "arXiv 2025"
 summary: "A deploy-efficient sim2real framework enabling zero-shot transfer through simulation-exclusive policy training, achieving a 95.7% average success rate on 12-object grasping with zero-shot transfer and strong generalizati"
