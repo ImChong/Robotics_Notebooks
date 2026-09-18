@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/blogs/wechat_shenlan_rl_sim2real_deployment_2026-09-18.md — RL 真机部署条件 query 页与 Sim2Real 交叉链接
+
 ## [2026-09-18] ingest | sources/sites/unilabsim-project.md — 复核 UniLab 项目页：CoRL 2026、14 任务、17 浏览器 demo、跨平台墙钟表
 
 ## [2026-09-18] ingest | sources/sites/arxivisual-org.md — arXivisual arXiv 论文 Manim scrollytelling 工具；GitHub 可本地运行（无 LICENSE 文件）；交叉 arxiv/manim；自动合并 PR
