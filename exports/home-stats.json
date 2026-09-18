@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/rl-sim2real-deployment-conditions.md",
+      "detail_id": "wiki-queries-rl-sim2real-deployment-conditions",
+      "label": "RL 真机部署：策略成立的条件是什么？",
+      "type": "query",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-behaviorworldgen.md",
       "detail_id": "entity-paper-behaviorworldgen",
       "label": "BehaviorWorldGen（行为感知结构化世界生成闭环）",
@@ -198,22 +207,13 @@
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-real-time-expo-ft.md",
-      "detail_id": "entity-paper-real-time-expo-ft",
-      "label": "Real-Time EXPO-FT：实时残差 RL 修正 VLA",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-behaviorworldgen.md",
-    "detail_id": "entity-paper-behaviorworldgen",
-    "label": "BehaviorWorldGen（行为感知结构化世界生成闭环）",
-    "type": "entity",
+    "path": "wiki/queries/rl-sim2real-deployment-conditions.md",
+    "detail_id": "wiki-queries-rl-sim2real-deployment-conditions",
+    "label": "RL 真机部署：策略成立的条件是什么？",
+    "type": "query",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added"
