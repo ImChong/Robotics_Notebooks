@@ -7,7 +7,7 @@
 - **编号：** 017/139
 - **入库日期：** 2026-09-18
 - **arXiv：** （无 / 非 arXiv）
-- **出处：** 见清单
+- **出处：** IJCAI-23 AISafety-SafeRL Workshop (CEUR-WS Vol-3505)
 - **论文：** <https://ceur-ws.org/Vol-3505/paper_3.pdf>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页为策展索引级节点，细节以原文为准。

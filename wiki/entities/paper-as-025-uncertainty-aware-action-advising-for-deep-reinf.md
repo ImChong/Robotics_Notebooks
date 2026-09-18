@@ -3,6 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-09-18
+venue: "Proceedings of the AAAI Conference on Artificial Intelligence"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页为策展索引级节点，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -46,7 +47,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 |------|------|
 | 编号 | 025/139 |
 | 分组 | Action / Action Uncertainty |
-| 出处 | 见清单 / 原文 |
+| 出处 | Proceedings of the AAAI Conference on Artificial Intelligence |
 | 论文 | <https://cdn.aaai.org/ojs/6036/6036-13-9261-1-10-20200513.pdf> |
 
 ## 核心机制（归纳）

@@ -157,6 +157,18 @@ flowchart TB
 | [0.15, 0.3) | 20.8 | **39.4** | +18.6 |
 | [0.3, 0.45) | 38.2 | **60.0** | +21.8 |
 
+## 与其他工作对比
+
+> 下表做**定位对照**：本页 PDMS 数字取自论文 / 项目页表格，与下列各页的评测设定不通用；跨页搬运前须确认基准与基线模型。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [DiffusionDrive](./paper-diffusiondrive.md) | 被改进对象而非竞争者：DiffusionDrive 是 NAVSIM 上的 E2E 基线，本文给它补合成数据后 aggregate PDMS 87.7→88.6、`[0,0.15)` 分桶 0.0→34.8。读增益要看分桶，aggregate 会低估 |
+| [M⁴World](./paper-m4world.md) | 同为驾驶世界模型，**周车逻辑由谁承担**不同：M⁴World 在多视角 + LiDAR 生成里处理物体级交互，本文把交互提前到**轨迹层**由 BehaviorFlow 显式生成，渲染器只负责像素。一个让 WM 兼职，一个把职责拆开 |
+| [X-World](./paper-x-world.md) / [RISE 自适应想象 WAM](./paper-rise-adaptive-imagination-wam.md) | 同属「想象出数据再回灌策略」，控制旋钮不同：这两页的想象由模型自行展开，本文用可枚举的 meta-action（cut-in / 让行 / 急避）当旋钮。可审计性 vs 多样性 |
+| [WorldScore](./paper-worldscore.md) | 正交而非对照：WorldScore 评世界模型自身（相机可控性、生成质量），本文锚的是**下游驾驶策略闭环分数**。世界模型好看不等于策略变好，两类指标要分开报 |
+| [端到端自动驾驶十大算法](./../overview/e2e-autonomous-driving-top10-algorithms.md) | 产业 E2E 地图；本文不是一条新 E2E 算法，而是给这些算法补数据的上游件 |
+
 ## 结论
 
 BehaviorWorldGen 说明驾驶 **action–world 自改进闭环** 的瓶颈往往在 **周车行为生成**，而非 ego 像素 imagination  alone；BehaviorFlow 把 **可解释 meta-action 交通流** 插入轨迹层，再用可插拔 simulator 渲染，是 **工程上可模块替换** 的闭环架构。

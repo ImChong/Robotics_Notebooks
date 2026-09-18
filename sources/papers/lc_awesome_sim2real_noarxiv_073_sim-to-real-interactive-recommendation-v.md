@@ -7,7 +7,7 @@
 - **编号：** 073/139
 - **入库日期：** 2026-09-18
 - **arXiv：** （无 / 非 arXiv）
-- **出处：** 见清单
+- **出处：** NeurIPS 2021 Offline Reinforcement Learning Workshop
 - **论文：** <https://offline-rl-neurips.github.io/2021/pdf/50.pdf>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Benchmarks。 本页为策展索引级节点，细节以原文为准。

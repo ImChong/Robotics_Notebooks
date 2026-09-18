@@ -7,7 +7,7 @@
 - **编号：** 025/139
 - **入库日期：** 2026-09-18
 - **arXiv：** （无 / 非 arXiv）
-- **出处：** 见清单
+- **出处：** Proceedings of the AAAI Conference on Artificial Intelligence
 - **论文：** <https://cdn.aaai.org/ojs/6036/6036-13-9261-1-10-20200513.pdf>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页为策展索引级节点，细节以原文为准。

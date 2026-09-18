@@ -142,6 +142,20 @@ def test_not_responsible_for_negation_is_not_flagged(tmp_path, monkeypatch) -> N
     assert _run([claim, newer])["stale_claims"] == []
 
 
+def test_not_packaged_as_negation_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「不包装成 SOTA」同为「不 + 谓词」的辟谣，本身就在否认该断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["vla"],
+        "诚实的 technical report：不包装成 SOTA；列出 one-step mode averaging 等因素。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
 def test_postpositioned_overread_cue_is_not_flagged(tmp_path, monkeypatch) -> None:
     # 「读『SOTA 碾压』会过读」是后置辟谣：落笔顺序与「不是 SoTA」相反，语义同为否认。
     wiki = _setup_wiki(tmp_path, monkeypatch)

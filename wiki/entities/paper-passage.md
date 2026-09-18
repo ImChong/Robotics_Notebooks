@@ -24,6 +24,7 @@ related:
   - ./paper-humantracker.md
   - ../methods/reinforcement-learning.md
   - ../concepts/terrain-adaptation.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/passage_arxiv_2609_18732.md
 summary: "PASSAGE（arXiv:2609.18732）：VR+动捕 100 h 场景对齐 motion 训练 flow-matching planner（6.25 Hz）+ 50 Hz 感知 WBC tracker；Jetson Orin 全 onboard 50 布局穿越；6→100 h scaling 48.1%→68.9% contact-free SR。"
@@ -104,6 +105,18 @@ flowchart LR
 | 实机 | **50** unseen physical layouts，无 prebuilt map / offboard |
 | Ablations | 各 stage 贡献见论文 simulation 组件消融 |
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：PASSAGE 截至入库日未开源代码/数据，其 68.9%/70.3% 与 50 布局实机结果与下列各页不共享评测协议。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [SSR 开放世界穿越](./paper-ssr-humanoid-open-world-traversal.md) | 同为 onboard 感知穿越，差别在**行为多样性从哪来**：SSR 走单阶段深度 PPO，多样性来自奖励与探索；PASSAGE 走 100 h 场景对齐人体 motion，多样性来自数据分布。读法对应两种成本——调奖励 vs 采数据 |
+| **task-specific RL / curated motion library**（本文要替代的默认做法） | 同为「让机器人会跨、会挤、会低头」，差别在**是否需要技能标注**：技能库按障碍类型分别训练并在运行时切换，PASSAGE 无技能标注、由 planner 隐式组合。代价是组合能力被数据覆盖面卡住，而非被切换逻辑卡住 |
+| [HumanTracker](./paper-humantracker.md) | 同作者网络的上游件：HumanTracker 评的是 **motion tracking 本身**，PASSAGE 把 tracker 冻结后只在 planner 侧做 RL post-training。两页合读可分清「跟踪不准」与「参考轨迹选得不对」两类失败 |
+| [楼梯与障碍感知 locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) | 该页归纳这一任务族的评测口径；PASSAGE 是其中「稠密 clutter + 无预建图」一支，与台阶/连续地形一支的取舍是**几何复杂度 vs 高度变化幅度** |
+| [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) | 提醒读法：planner 吃的是 multi-layer elevation map，成绩上限被 LiDAR 建图与 occupancy 质量卡住——数据再多，感知栈偏了一样撞 |
+
 ## 结论
 
 **PASSAGE 把 clutter 穿越从「分技能 RL」推向「场景对齐 motion 数据 + 通用 planner–tracker」——scaling 曲线和 onboard 闭环是主要证据。**
@@ -126,6 +139,7 @@ flowchart LR
 - [Humanoid locomotion](../tasks/humanoid-locomotion.md)
 - [SSR 开放世界穿越](./paper-ssr-humanoid-open-world-traversal.md)
 - [HumanTracker](./paper-humantracker.md) — 同作者网络 motion 评测
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — planner 输入的 elevation/occupancy 栈选型入口
 
 ## 参考来源
 

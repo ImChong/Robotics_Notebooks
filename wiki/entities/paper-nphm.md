@@ -173,6 +173,28 @@ sequenceDiagram
 - **算力与存储：** 两阶段训练 + 320GB 预处理，对小团队不友好。
 - **与机器人策略距离：** 输出是 **人头几何资产**，不直接提供 manipulation / locomotion 策略。
 
+## 实验与评测
+
+**协议：** 23 identities × 427 expressions；输入为**反投影单视角点云**（每表情 2500 点 + 随机略变 frontal，每身份一次背面）；拟合时**联合**优化 identity 与全部 expression codes（`fitting_pointclouds.py`）。
+
+| 项 | 内容 |
+|----|------|
+| 指标 | Chamfer-L1 / L2、Normal Consistency、F-Score @1mm / @5mm（`scripts/evaluation/eval.py`） |
+| 采样方式 | 渲染反投影采样点，减轻闭口内腔被过度惩罚 |
+| 主消融 | **NPM**（`npm.yaml`，无 `-local`）vs **NPHM**（`-local` 启用局部场）——隔离局部场对细节的贡献 |
+| 读法 | 数值须在**原始尺度**下对齐；论文报告优于同期隐式头模基线，逐项表格以 arXiv PDF 为准（本页不搬运具体数字） |
+
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| **传统 3DMM**（本文要替代的默认做法） | 同为参数化人头，差别在**覆盖范围与表示**：经典 3DMM 多偏面部、拓扑不完整且用线性基；NPHM 覆盖含颅顶/耳廓的完整几何，用 canonical SDF + 神经形变场。代价是拟合要跑优化，不再是一次线性求解 |
+| [SHELLS](./paper-shells-layered-surface-sampling.md) | 同为高保真人头几何，**推理形态相反**：SHELLS 是标定多视角一次前馈出固定拓扑，NPHM 是单扫描/点云做迭代拟合。要速度选前者，要可采样可迁移的潜码选后者 |
+| **MonoNPHM（同组后续）** | 同一模型族的输入模态延伸：本仓默认可跑通的是 3D 点云 / 扫描拟合，单目 RGB 视频 tracking 属 MonoNPHM 独立仓，勿假设本仓直接支持 |
+| [DynHair](./paper-dynhair.md) | 同系但分工不同：DynHair 把头发从 Gaussian 纹理中解耦，NPHM 提供其下的**静态参数化头几何**基座。两者叠用而非二选一 |
+| [Face Anything](./paper-face-anything-4d-face-reconstruction.md) | 同为面部几何，NPHM 强调**完整头 + 解耦潜码**，该页强调单目 4D。分界是**是否需要可采样 / 可迁移的参数空间** |
+| [策略的视觉表征](../concepts/visual-representation-for-policy.md) | 提醒读法：NPHM 输出是人头几何资产，不是策略输入；与机器人控制的距离见该页与「局限与风险」 |
+
 ## 结论
 
 NPHM 是 **完整人头神经 morphable model** 的 CVPR 2023 代表作：用 **SDF 身份 + 形变场表情 + 局部场细节** 在超大规模自采扫描上做到 SOTA 级拟合/重建，并给出 **可运行开源栈**。

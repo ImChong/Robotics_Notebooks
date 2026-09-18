@@ -65,6 +65,19 @@ summary: "ParticleSplat（arXiv:2609.19463）：DLP 粒子扩展到 3D Gaussian 
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：RLBench 73% / MimicGen 56.1% 是各自 benchmark 协议下的数字，与下列各页不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [StrucPhysVideo](./paper-strucphysvideo.md) | 同为给模型加「对象/结构」先验，**消费端不同**：StrucPhysVideo 用在视频生成侧，ParticleSplat 用在策略输入侧。同一直觉的两个出口 |
+| [CoRef-GS](./paper-coref-gs.md) | 同批次另一条 GS 路线，方向相反：CoRef-GS 朝多智能体场景理解发散，ParticleSplat 朝策略表征收敛 |
+| [Agile-WAM](./paper-agile-wam.md) | 同批次里另一条「动作头之前先补什么」：ParticleSplat 补几何/对象结构，Agile-WAM 补触觉。对应「看不清」与「摸不出」两类失败 |
+| **需要掩码监督的对象中心表征**（本文要避开的默认做法） | 同为把场景拆成对象，差别在**拆分从哪来**：多数做法依赖分割掩码，ParticleSplat 走无掩码自监督分解，省的是标注，换来的是分解质量不可控 |
+| [模仿学习](../methods/imitation-learning.md) | 策略 SR 是 IL 协议下的数字；该页给协议差异读法，换 benchmark 不可直接搬 |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **扫读** 档位 |
+
 ## 结论
 
 **ParticleSplat 代表「扫读」档位的 gaussian-splatting 方向样本——部署前以开源状态与评测协议为准绳。**

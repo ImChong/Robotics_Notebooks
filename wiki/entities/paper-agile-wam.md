@@ -65,6 +65,18 @@ summary: "Agile-WAM（arXiv:2609.20761）：轻量触觉 WAM：共享 latent + v
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：11.9 ms 与相对 +29.4% 未与下列各页核对同一评测协议，不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [LaWAM](./paper-lawam.md) | 同为「给 WAM 减负」，减的维度不同：LaWAM 把未来观测从像素换成潜空间 subgoal（省生成开销）；Agile-WAM 省的是模型规模，并**反向加了一路触觉**。同样低延迟，不是同一条路线 |
+| [ParticleSplat](./paper-particlesplat.md) | 同批次里另一条「在动作头之前先补结构」：ParticleSplat 补对象中心 3D 几何，Agile-WAM 补接触时的触觉量。对应两类失败——看不清物体 vs 摸不出接触状态 |
+| [PreDE](./paper-prede.md) | 同批次里另一条 WAM 部署成本路线，但**发力阶段不同**：Agile-WAM 在设计期做轻量化，PreDE 在部署期筛量化配置。两者正交，可叠加 |
+| [World Action Models](../concepts/world-action-models.md) | 该页给 WAM 概念谱系；Agile-WAM 属「多模态 + flow matching 动作生成」一支，与纯视觉 WAM 的取舍是**传感器栈成本 vs 接触任务覆盖** |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **深读** 档位，其余九篇分工见该页索引表 |
+
 ## 结论
 
 **Agile-WAM 代表「深读」档位的 wam 方向样本——部署前以开源状态与评测协议为准绳。**

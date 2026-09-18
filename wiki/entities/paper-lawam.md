@@ -139,6 +139,19 @@ sequenceDiagram
 | 真机三任务 | **90.0%** 平均（pick-place 93.3 / drawer 86.7 / towel 90.0） |
 | vs 像素 WAM | 墙钟最高 **24×** 加速（同表 latency–SR） |
 
+## 与其他工作对比
+
+> 下表做**定位对照**：LIBERO 98.6% / RoboTwin 91.22% 与 24× 墙钟加速分别取自论文与项目页同表 latency–SR 对照，跨页搬运前须对齐 benchmark 与硬件。
+
+| 对照 | 差异读法 |
+|------|----------|
+| **像素 WAM**（Cosmos-Policy、LingBot-VA 等，本文要替代的默认做法） | 同为「让策略先想一步未来」，差别在**未来长什么样**：像素 WAM 生成 RGB rollout，LaWAM 只出一个 DINOv3 潜特征 subgoal。省掉像素生成、保留动力学条件，是本页最直接的一条主张 |
+| [GlanceWAM](./paper-glancewam.md) | 同为压 WAM 墙钟，路线互补：GlanceWAM 保留像素但改**异步单帧前瞻**，LaWAM 彻底不生成像素。前者对已有视频 WM 改动小，后者要换表征空间 |
+| [WAM 实时异步](./paper-wam-realtime-async.md) | 该页讲把预测与执行拆到不同节拍；LaWAM 的 187 ms/chunk 来自**单次非迭代前向**。两条降延迟手段正交，可叠加 |
+| [Harness VLA](./paper-harness-vla.md) | 抽象层不同：Harness 在 agent 编排层调度多个策略，LaWAM 换的是单个策略内部的未来表征。选型先确认瓶颈在编排还是单步延迟 |
+| [Action Chunking](../methods/action-chunking.md) | LaWAM 的 subgoal 正是喂给 chunk 级动作专家的条件；该页给 chunk 执行语义，读 187 ms 应按「每 chunk 一次」而非「每步一次」计 |
+| [LeRobot](./lerobot.md) | 工程分界：LaWAM 已官方进 LeRobot 文档与权重，多数同类 WAM 仍是旁路脚本——复现成本的差别在这里，不在 SR |
+
 ## 结论
 
 **LaWAM 证明：WAM 的「未来条件」不必是视频——一个 DINOv3 潜 subgoal 就够撑起 SOTA 级成功率，且直接进 LeRobot 训练栈。**

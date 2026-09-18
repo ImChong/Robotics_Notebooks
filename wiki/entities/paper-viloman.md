@@ -65,6 +65,18 @@ summary: "ViLoMan（arXiv:2609.19340）：人类–物体交互重定向 + 特�
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：G1 关门演示与下列各页不共享任务与评测协议，不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [WholeBodyWAM](./paper-wholebodywam.md) | 同为人形全身操作，中间件不同：WholeBodyWAM 走世界模型预测，ViLoMan 走特权 teacher 蒸馏到机载深度 + 本体。预测未来 vs 压缩专家 |
+| [RebarSim](./paper-rebarsim.md) | 同批次里同一套「特权 teacher → 视觉 student + DAgger」配方的另一端：RebarSim 用在毫米级插入，ViLoMan 用在全身关门。配方能跨这个尺度本身是看点 |
+| [OmniMimic](./paper-omnimimic.md) | 同批次另一条「先造监督」：OmniMimic 在同 embodiment 内增广步态，ViLoMan 跨 embodiment 重定向人–物交互。监督从哪来，决定覆盖边界 |
+| [Loco-manipulation](../tasks/loco-manipulation.md) | 该页给任务族评测口径；ViLoMan 属「机载感知 + 全身接触」一支，与分离式先导航后操作一支的取舍是**接触时机是否需要与步态协同** |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **扫读** 档位 |
+
 ## 结论
 
 **ViLoMan 代表「扫读」档位的 humanoid 方向样本——部署前以开源状态与评测协议为准绳。**

@@ -76,6 +76,18 @@ sequenceDiagram
 - 定量指标与 baseline 协议以 arXiv PDF 与项目页为准；本页为清单级摘要。
 - 读法：先确认任务设定（仿真/真机、传感器、成功定义）再对比 SR/延迟/路径长度等 headline 数字。
 
+## 与其他工作对比
+
+> 本页为清单级摘要，下表只做**定位对照**：本文数字未与下列各页核对同一评测协议，不可横比。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [ActiveScale](./paper-activescale.md) | 同为主动感知，**监督来源不同**：ActiveScale 在机器人自身数据上扩规模，INSPECT 把监督借自智能眼镜助手的问答/证据确认。前者瓶颈在采数据，后者瓶颈在两种任务分布是否真对齐 |
+| [CoRef-GS](./paper-coref-gs.md) | 同批次里「视野不够」的另一解：CoRef-GS 合并多机器人已有视角，INSPECT 让单体主动去换。动作预算 vs 通信预算 |
+| **测试时看遍候选图像的选视角做法**（本文要避开的默认做法） | 同为选视角，差别在**推理时要不要先把候选都看一遍**：INSPECT 用 claim-indexed 监督把选择能力训进模型，测试时不看候选图像，省的是候选渲染/拍摄的那一轮开销 |
+| [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) | 该页给感知栈分层；INSPECT 落在「视角选择」这一层，上游标定与分割质量不由它负责 |
+| [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md) | 同批次横向对照入口：本文列 **跟进** 档位 |
+
 ## 结论
 
 **INSPECT 代表「跟进」档位的 active-perception 方向样本——部署前以开源状态与评测协议为准绳。**
