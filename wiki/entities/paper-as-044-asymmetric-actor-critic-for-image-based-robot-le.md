@@ -8,8 +8,8 @@ summary: "LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Random
 related:
   - ../entities/awesome-sim2real.md
   - ../overview/lc-awesome-sim2real-technology-map.md
+  - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
-  - ../concepts/domain-randomization.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
 sources:
@@ -87,7 +87,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
-- 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
 
 ## 参考来源
 

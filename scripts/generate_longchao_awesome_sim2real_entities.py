@@ -33,9 +33,9 @@ LIST_META: dict[str, Any] = {
     "url": "https://github.com/LongchaoDa/AwesomeSim2Real",
     "entity": "wiki/entities/awesome-sim2real.md",
     "hub_methods": [
+        "../concepts/sim2real.md",
         "../methods/reinforcement-learning.md",
         "../concepts/domain-randomization.md",
-        "../concepts/sim2real.md",
     ],
     "hub_tasks": ["../tasks/locomotion.md", "../tasks/manipulation.md"],
     "abbrev": [

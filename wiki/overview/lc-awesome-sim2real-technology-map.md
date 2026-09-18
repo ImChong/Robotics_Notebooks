@@ -6,7 +6,7 @@ updated: 2026-09-18
 summary: "AwesomeSim2Real 技术地图：为清单内论文提供独立详情节点索引（新建 134，复用已有 5）。"
 related:
   - ../entities/awesome-sim2real.md
-  - ../methods/reinforcement-learning.md
+  - ../concepts/sim2real.md
   - ../tasks/locomotion.md
   - ../entities/paper-survey-sim2real-rl-foundation-models.md
 sources:
@@ -308,7 +308,7 @@ sources:
 
 - [AwesomeSim2Real（列表实体）](../entities/awesome-sim2real.md)
 - [Sim2Real RL Survey（2502.13187）](../entities/paper-survey-sim2real-rl-foundation-models.md)
-- [reinforcement-learning.md](../methods/reinforcement-learning.md)
+- [sim2real.md](../concepts/sim2real.md)
 - [locomotion.md](../tasks/locomotion.md)
 
 ## 参考来源
