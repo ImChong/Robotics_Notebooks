@@ -37,6 +37,10 @@ TODAY = date.today().isoformat()
 
 # 索引页 slug -> 深读页 slug
 MERGE_MAP: dict[str, str] = {
+    # LongchaoDa Sim2Real 综述深读页 supersede sun254667 索引 stub
+    "paper-sa-2502-13187-a-survey-of-sim-to-real-methods-in-rl-progress-p": (
+        "paper-survey-sim2real-rl-foundation-models"
+    ),
     # V30 在补齐深读页 frontmatter arxiv: 后报出的同 ID 重复
     "paper-sa-2604-07607-egoverse": "paper-egoverse",
     "paper-sa-2607-06988-wam-ttt-steering-world-action-models-by-watching": (
