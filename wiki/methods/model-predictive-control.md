@@ -266,6 +266,7 @@ print("apply control:", u.ravel())
 - [MPC Solver Selection](../queries/mpc-solver-selection.md) — OSQP / Acados 等选型
 - [SRL-MPC](../entities/paper-srl-mpc.md) — RL 读取 GSF 在线调形状感知 HOCBF-MPC 参数（arXiv:2608.21175）
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — F1/10 **LearningMPC** 与 **drift-mpc-ackermann** 等非线性/学习 MPC 真机栈
+- [mpc_python](../entities/mpc-python.md) — **CVXPY 迭代线性化 MPC** 路径跟踪 + MuJoCo/MuSHR demo（MIT，~520★；教学向 QP 闭环）
 
 ## 推荐继续阅读
 
