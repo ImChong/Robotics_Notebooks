@@ -9,6 +9,117 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-agile-wam.md",
+      "detail_id": "entity-paper-agile-wam",
+      "label": "Agile-WAM（arXiv:2609.20761）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-coref-gs.md",
+      "detail_id": "entity-paper-coref-gs",
+      "label": "CoRef-GS（arXiv:2609.20586）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-inspect-view-selection.md",
+      "detail_id": "entity-paper-inspect-view-selection",
+      "label": "INSPECT（arXiv:2609.20615）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-omnimimic.md",
+      "detail_id": "entity-paper-omnimimic",
+      "label": "OmniMimic（arXiv:2609.20566）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-particlesplat.md",
+      "detail_id": "entity-paper-particlesplat",
+      "label": "ParticleSplat（arXiv:2609.19463）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-prede.md",
+      "detail_id": "entity-paper-prede",
+      "label": "Predict Before You Deploy（arXiv:2609.19441）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-rebarsim.md",
+      "detail_id": "entity-paper-rebarsim",
+      "label": "Visual Sim-to-Real Learning for Robotic Insertion under Geometric Variations（arXiv:2609.20477）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rom-nav.md",
+      "detail_id": "entity-paper-rom-nav",
+      "label": "Learning Safe Humanoid Navigation from Reduced Order Models（arXiv:2609.19272）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-uloha.md",
+      "detail_id": "entity-paper-uloha",
+      "label": "ULOHA（arXiv:2609.19200）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-viloman.md",
+      "detail_id": "entity-paper-viloman",
+      "label": "ViLoMan（arXiv:2609.19340）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/contact-wm-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-contact-wm-10-papers-technology-map",
+      "label": "接触–世界模型–系统：10 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/embodichain.md",
       "detail_id": "entity-embodichain",
       "label": "EmbodiChain",
@@ -97,128 +208,17 @@
       "recency": "2026-09-18",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-lawam.md",
-      "detail_id": "entity-paper-lawam",
-      "label": "LaWAM：LeRobot 原生潜空间 World Action Model",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-passage.md",
-      "detail_id": "entity-paper-passage",
-      "label": "PASSAGE：场景对齐的人形感知 clutter 穿越",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vla-ulap.md",
-      "detail_id": "entity-paper-vla-ulap",
-      "label": "VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-atomicvla.md",
-      "detail_id": "entity-paper-atomicvla",
-      "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-athenazero.md",
-      "detail_id": "entity-paper-athenazero",
-      "label": "AthenaZero：低惯量双臂动态操作平台",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-activescale.md",
-      "detail_id": "entity-paper-activescale",
-      "label": "ActiveScale（arXiv:2609.18514）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-bifur-circuits.md",
-      "detail_id": "entity-paper-bifur-circuits",
-      "label": "Bifur-circuits：可 bifurcate 的交互式模块化超材料积木",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-convergent-binocular-stereo.md",
-      "detail_id": "entity-paper-convergent-binocular-stereo",
-      "label": "Convergent Binocular Stereo（CBS）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-deformsmith.md",
-      "detail_id": "entity-paper-deformsmith",
-      "label": "DeformSmith（arXiv:2609.18620）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fierce.md",
-      "detail_id": "entity-paper-fierce",
-      "label": "FIERCE（arXiv:2609.18651）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-fpsa-r2s2r.md",
-      "detail_id": "entity-paper-fpsa-r2s2r",
-      "label": "FPSA R2S2R（arXiv:2609.18293）",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/embodichain.md",
-    "detail_id": "entity-embodichain",
-    "label": "EmbodiChain",
+    "path": "wiki/entities/paper-agile-wam.md",
+    "detail_id": "entity-paper-agile-wam",
+    "label": "Agile-WAM（arXiv:2609.20761）",
     "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
