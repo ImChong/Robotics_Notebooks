@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-atomicvla.md",
+      "detail_id": "entity-paper-atomicvla",
+      "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-athenazero.md",
       "detail_id": "entity-paper-athenazero",
       "label": "AthenaZero：低惯量双臂动态操作平台",
@@ -200,29 +210,17 @@
       "source": "git",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/mqtt-protocol.md",
-      "detail_id": "wiki-concepts-mqtt-protocol",
-      "label": "MQTT 通信协议",
-      "type": "concept",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-athenazero.md",
-    "detail_id": "entity-paper-athenazero",
-    "label": "AthenaZero：低惯量双臂动态操作平台",
+    "path": "wiki/entities/paper-atomicvla.md",
+    "detail_id": "entity-paper-atomicvla",
+    "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
     "type": "entity",
-    "recency": "2026-09-17",
+    "recency": "2026-09-18",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
