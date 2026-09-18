@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, smp, cmoe, ame, score-matching, diffusion, mixture-of-experts, perceptive-locomotion, mjlab, unitree, humanoid, locomotion, tsinghua, fudan]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 related:
   - ./paper-smp.md
   - ../methods/smp.md

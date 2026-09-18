@@ -62,6 +62,22 @@ CMoE/
         └── runners/   # cmoe_on_policy_runner
 ```
 
+## 关键源码路径（原理→代码导读）
+
+与 [wechat_cmoe_principle_to_code_2026-09-18.md](../blogs/wechat_cmoe_principle_to_code_2026-09-18.md) 及 [`paper-cmoe`](../../wiki/entities/paper-cmoe.md) 对齐：
+
+| 文件 | 要点 |
+|------|------|
+| `rsl_rl/rsl_rl/modules/cmoe_actor_critic.py` | `act()` 组装 **157 维** `actor_input`（45+3+16+77+16）；`gating_network` → 5 维 softmax；5 expert 加权 mean；`evaluate()` 中 `gate_weights.detach()` |
+| `rsl_rl/rsl_rl/modules/state_estimator.py` | β-VAE：历史本体 → 显式体速 + \(z^H\)；训练用下一帧预测 + KL |
+| `rsl_rl/rsl_rl/modules/terrain_estimator.py` | 高程 AE → \(z^E\) |
+| `rsl_rl/rsl_rl/modules/expert_actor_critic.py` | 单个 expert 的 actor/critic 子网 |
+| `rsl_rl/rsl_rl/algorithms/cmoe_ppo.py` | PPO + estimator 更新 + `compute_contrastive_loss` |
+| `rsl_rl/rsl_rl/runners/cmoe_on_policy_runner.py` | 训练循环入口 |
+| `legged_gym/legged_gym/envs/.../g1_cmoe_config.py` | task `g1cmoe` 环境与奖励 |
+
+**`actor_input` 组装顺序（`cmoe_actor_critic.act`）：** `obs_history[:,:45]` → cat 体速(3) → cat \(z^H\)(16) → cat 高程(77) → cat \(z^E\)(16) → 送 gate 与全部 5 expert。
+
 ## 训练与可视化
 
 ```bash
