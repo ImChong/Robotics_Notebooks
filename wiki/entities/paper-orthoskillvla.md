@@ -9,6 +9,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../entities/libero-benchmark.md
+  - ./paper-atomicvla.md
   - ../overview/video-contact-control-10-papers-technology-map.md
 sources:
   - ../../sources/papers/orthoskillvla_arxiv_2608_19589.md
@@ -99,6 +100,7 @@ sequenceDiagram
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [libero-benchmark](../entities/libero-benchmark.md)
+- [AtomicVLA](./paper-atomicvla.md) — SG-MoE 原子技能库 + routing 持续学习对照
 - [视频–接触–控制 10 篇技术地图](../overview/video-contact-control-10-papers-technology-map.md)
 
 ## 参考来源
