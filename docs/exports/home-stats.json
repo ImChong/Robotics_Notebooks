@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4115,
-  "edge_count": 37001,
+  "node_count": 4116,
+  "edge_count": 37011,
   "coverage": {
-    "covered": 4087,
-    "total": 4087,
+    "covered": 4088,
+    "total": 4088,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/rl-sim2real-deployment-conditions.md",
+      "detail_id": "wiki-queries-rl-sim2real-deployment-conditions",
+      "label": "RL 真机部署：策略成立的条件是什么？",
+      "type": "query",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-behaviorworldgen.md",
       "detail_id": "entity-paper-behaviorworldgen",
@@ -198,22 +207,13 @@
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-real-time-expo-ft.md",
-      "detail_id": "entity-paper-real-time-expo-ft",
-      "label": "Real-Time EXPO-FT：实时残差 RL 修正 VLA",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-behaviorworldgen.md",
-    "detail_id": "entity-paper-behaviorworldgen",
-    "label": "BehaviorWorldGen（行为感知结构化世界生成闭环）",
-    "type": "entity",
+    "path": "wiki/queries/rl-sim2real-deployment-conditions.md",
+    "detail_id": "wiki-queries-rl-sim2real-deployment-conditions",
+    "label": "RL 真机部署：策略成立的条件是什么？",
+    "type": "query",
     "recency": "2026-09-18",
     "source": "git",
     "action": "added"
@@ -229,7 +229,7 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 421
+      "size": 422
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -241,7 +241,7 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 217
+      "size": 216
     }
   ],
   "top_hubs": [
