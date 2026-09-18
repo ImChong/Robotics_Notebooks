@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/papers/ici_vla_arxiv_2609_07581.md — ICI-VLA 时空对齐 micro-demo 检索 ICL；开源核查：截至入库日无官方代码
+
 ## [2026-09-18] ingest | sources/papers/birdriver_iclr_2026.md — BIRDriver ICLR 2026：BEV+VLM key points+PLUTO；InterPlan SOTA；代码未开源
 
 ## [2026-09-18] ingest | sources/papers/unitracker_arxiv_2507_07356.md — UniTracker arXiv 深读；Oracle+CVAE G1 tracker；确认训练代码未开源

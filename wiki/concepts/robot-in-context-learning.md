@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-18
 related:
   - ../../roadmap/depth-icl.md
   - ./foundation-policy.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-behavior-prompting-policy.md
   - ../entities/qwen-robot-manip.md
   - ../entities/paper-stellavla-structured-icl-vla.md
+  - ../entities/paper-ici-vla-spatiotemporal-icl.md
   - ../entities/paper-zero-wam.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/light-react.md
@@ -165,7 +166,7 @@ flowchart LR
 ### 1. 遥操作轨迹（同坐标系示范）
 
 - **训练塑造归纳能力：** One-Shot Imitation Learning 等在训练时构造「一条示范 + 一次查询」，优化 **读完示范后的执行表现**。
-- **表征形态：** ICRT 类 **图像/状态/动作 token 交错序列**；Instant Policy **图 diffusion**；KAT **关键点 + 文本 Transformer**；BPP **示范 embedding + cross-attention**（见 [BPP 实体](../entities/paper-behavior-prompting-policy.md)）；[StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) **结构化计划、子目标与 2D/3D 运动 verbalization**。
+- **表征形态：** ICRT 类 **图像/状态/动作 token 交错序列**；Instant Policy **图 diffusion**；KAT **关键点 + 文本 Transformer**；BPP **示范 embedding + cross-attention**（见 [BPP 实体](../entities/paper-behavior-prompting-policy.md)）；[StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) **结构化计划、子目标与 2D/3D 运动 verbalization**；[ICI-VLA](../entities/paper-ici-vla-spatiotemporal-icl.md) **子任务 micro-demo + DTW 相位对齐检索**（text-action VLA-0 接口）。
 - **Action tokenizer：** 相邻动作在 latent 空间是否平滑（如 LipVQ-VAE）直接影响从示范归纳出的控制是否可执行。
 - **配对数据：** 同任务多条示范互相作 prompt/query；或仿真程序化生成（SynthICL）。
 - **后装能力：** RICL 在预训练 VLA（如 π0-FAST）上做小规模 in-context post-training。
@@ -240,6 +241,7 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [The Imitator Game](../entities/paper-imitator-game.md) — 意图级模仿基准；L3 / 未见零样本把「视频条件」打回原形
 - [Zero-WAM](../entities/paper-zero-wam.md) — 人视频当 WAM 任务规格；HumanGen ICL 对 + IFP；代码待发布
 - [StellaVLA](../entities/paper-stellavla-structured-icl-vla.md) — 结构化检索示范；VLA-Arena 0.63；无官方代码
+- [ICI-VLA](../entities/paper-ici-vla-spatiotemporal-icl.md) — DTW 对齐 micro-demo 检索 ICL；LIBERO 97.7%、RoboTwin 2.0 60.4%；无官方代码
 - [四路线对比（WAM-TTT / RoboTTT / StellaVLA / Zero-WAM）](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 2026-08 可核对论文纵横向坐标系
 - [ICL 纵深路线](../../roadmap/depth-icl.md) — Stage 0–5 学习路径（判别边界 → 示范表征 → 遥操作/人视频两条数据线 → 机制选型 → 涌现与评测）
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制

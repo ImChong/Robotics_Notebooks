@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-17
+updated: 2026-09-18
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, test-time-training, long-horizon, manipulation, nvidia, stanford, ut-austin]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2607.15275"
 venue: "arXiv 2026 / NVIDIA GEAR"
 related:

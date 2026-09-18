@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, in-context-learning, manipulation, usyd, pku]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2608.11671"
 venue: "arXiv 2026"
 related:
@@ -11,6 +11,7 @@ related:
   - ../tasks/manipulation.md
   - ./paper-behavior-prompting-policy.md
   - ./paper-robottt-test-time-training-vla-context.md
+  - ./paper-ici-vla-spatiotemporal-icl.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
   - ./paper-zero-wam.md
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
