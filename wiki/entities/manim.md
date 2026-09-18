@@ -3,7 +3,7 @@
 type: entity
 tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 related:
   - ./blender.md
   - ./botlab-motioncanvas.md
@@ -14,6 +14,8 @@ related:
   - ../concepts/character-animation-vs-robotics.md
   - ../methods/deepmimic.md
   - ./paper-apollo-blender.md
+  - ./arxivisual.md
+  - ./arxiv.md
 sources:
   - ../../sources/sites/manim-community.md
   - ../../sources/repos/manim-community.md
@@ -122,6 +124,7 @@ flowchart LR
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [DeepMimic（图形学起源的模仿学习）](../methods/deepmimic.md)
 - [APOLLO Blender](./paper-apollo-blender.md) — 3D 机型论文图；公式讲解仍走本页
+- [arXivisual](./arxivisual.md) — LLM 批量生成 Manim 嵌入 [arXiv](./arxiv.md) scrollytelling 阅读器
 
 ## 参考来源
 
