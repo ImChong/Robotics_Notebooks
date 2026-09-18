@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4106,
-  "edge_count": 36918,
+  "node_count": 4107,
+  "edge_count": 36930,
   "coverage": {
-    "covered": 4078,
-    "total": 4078,
+    "covered": 4079,
+    "total": 4079,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
+      "label": "人形运动控制：30 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-athenazero.md",
       "detail_id": "entity-paper-athenazero",
@@ -200,34 +209,21 @@
       "source": "git",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/mqtt-protocol.md",
-      "detail_id": "wiki-concepts-mqtt-protocol",
-      "label": "MQTT 通信协议",
-      "type": "concept",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-athenazero.md",
-    "detail_id": "entity-paper-athenazero",
-    "label": "AthenaZero：低惯量双臂动态操作平台",
-    "type": "entity",
-    "recency": "2026-09-17",
+    "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
+    "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
+    "label": "人形运动控制：30 篇论文阅读坐标",
+    "type": "overview",
+    "recency": "2026-09-18",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 595
+      "size": 594
     },
     {
       "label": "宇树 G1 人形机器人",
@@ -255,7 +251,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1546,
+      "degree": 1547,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -271,7 +267,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1011,
+      "degree": 1013,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -372,7 +368,7 @@
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
-      "degree": 50,
+      "degree": 51,
       "has_repo": true
     },
     {
