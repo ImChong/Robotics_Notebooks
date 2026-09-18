@@ -200,7 +200,7 @@ flowchart TB
 
 ## 参考来源
 
-- [sources/papers/cmp_arxiv_2608_03234.md](../../sources/papers/cmp_arxiv_2608_03234.md) — 本次 ingest 归档
+- [sources/papers/cmp_arxiv_2608_03234.md](../../sources/papers/cmp_arxiv_2608_03234.md) — 原文归档
 - [arXiv:2608.03234](https://arxiv.org/abs/2608.03234) — 论文与附录
 
 ## 推荐继续阅读

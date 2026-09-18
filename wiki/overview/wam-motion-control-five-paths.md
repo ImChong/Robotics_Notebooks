@@ -73,7 +73,7 @@ flowchart TB
   P5 -.->|"不直接接管平衡与接触"| DATA["数据入口 / 评测 / 条件空间"]
 ```
 
-| 位置 | 世界模型做什么 | 代表节点（复用，不重复造页） |
+| 位置 | 世界模型做什么 | 代表页面 |
 |------|----------------|------------------------------|
 | **① 在线规划** | 潜空间展开候选动作，价值/失败筛选，只执行第一步 | [Ego-VCP](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
 | **② 模型式 RL / 适配** | 想象轨迹上继续训/微调策略；不确定性或解析动力学先验 | [RWM-U](../entities/robotic-world-model-eth-rsl.md)、[LIFT](../entities/lift-humanoid.md) |

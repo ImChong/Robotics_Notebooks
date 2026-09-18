@@ -88,7 +88,7 @@ flowchart TD
 
 1. **三路互补** — IK 给实时与可解释性，DL 给风格/跨形态，物理层给真机 contact 与 dynamics。
 2. **ICRA 2026 文内焦点** — OmniRetarget 的 interaction mesh 解决「几何对齐丢交互」；不是替代 GMR，而是复杂操作的上游数据引擎。
-3. **新建节点** — 本次 ingest 补 [MoReFlow](../entities/paper-moreflow-motion-retargeting-flow.md)、[AdaMorph](../entities/paper-adamorph-unified-motion-retargeting.md)；其余 6 项复用已有 wiki，避免重复造页。
+3. **站内可点开** — 八项工作各有详情页，其中 [MoReFlow](../entities/paper-moreflow-motion-retargeting-flow.md)、[AdaMorph](../entities/paper-adamorph-unified-motion-retargeting.md) 是本页新补的两页。
 4. **下游统一** — 重定向产出 reference → RL tracking / BC 仍是 [motion-retargeting-pipeline](../concepts/motion-retargeting-pipeline.md) 标准后半段。
 
 ## 参考来源

@@ -157,7 +157,7 @@ flowchart TB
 
 ## 参考来源
 
-- [wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md](../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md) — 本次 ingest 的公众号编译
+- [wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md](../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md) — 三篇的公众号中文编译
 - [zest.md](../../sources/papers/zest.md)
 - [sonic-humanoid-motion-tracking.md](../../sources/repos/sonic-humanoid-motion-tracking.md)
 - [humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md](../../sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md)

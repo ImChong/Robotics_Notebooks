@@ -32,8 +32,8 @@ def main() -> None:
     by_layer: dict[str, dict[str, list[dict]]] = defaultdict(lambda: defaultdict(list))
     for row in data:
         by_layer[row["layer"]][row["company"]].append(row)
-    new_count = sum(1 for r in data if r["new"])
-    reused = len(data) - new_count
+    company_count = len({r["company"] for r in data})
+    category_count = len({r["category"] for r in data})
 
     # Coverage query
     lines = [
@@ -70,10 +70,10 @@ def main() -> None:
         "",
         "| 指标 | 数值 |",
         "|------|------|",
-        f"| 清单条目 | {len(data)} |",
-        f"| 本库可点开详情 | {len(data)} |",
-        f"| 复用既有实体 | {reused} |",
-        f"| 本 ingest 新建实体 | {new_count} |",
+        f"| 清单项目 | {len(data)} |",
+        f"| 可点开的站内详情页 | {len(data)} |",
+        f"| 覆盖机构 | {company_count} |",
+        f"| 项目方向（类别） | {category_count} |",
         "",
         "## 导读总表（按五层格局）",
         "",
@@ -86,13 +86,10 @@ def main() -> None:
         for company, rows in sorted(by_layer[layer_key].items()):
             lines.append(f"#### {company}（{len(rows)}）")
             lines.append("")
-            lines.append("| 项目 | 类别 | 本库详情 |")
+            lines.append("| 项目 | 类别 | 站内详情页 |")
             lines.append("| --- | --- | --- |")
             for r in rows:
-                note = "新建" if r["new"] else "复用"
-                lines.append(
-                    f"| {r['name']} | {r['category']} | {link(r['slug'], r['name'])} · {note} |"
-                )
+                lines.append(f"| {r['name']} | {r['category']} | {link(r['slug'], r['name'])} |")
             lines.append("")
         lines.append("")
     lines.extend(
@@ -133,7 +130,7 @@ def main() -> None:
         "",
         "# 国内具身智能开源全景（76 家 · 424 项）",
         "",
-        "> **本页定位**：[国内具身智能的开源全景](https://mp.weixin.qq.com/s/L2XQBhesU8EiS2nKM7HErw)（2026-09-06）的阅读坐标；**424/424 独立详情节点**见 [覆盖索引](../queries/china-domestic-opensource-424-coverage.md)。",
+        "> **本页定位**：[国内具身智能的开源全景](https://mp.weixin.qq.com/s/L2XQBhesU8EiS2nKM7HErw)（2026-09-06）的阅读坐标；**424 个项目逐条可点开**，见 [阅读导航](../queries/china-domestic-opensource-424-coverage.md)。",
         "",
         "## 一句话观点",
         "",
@@ -184,17 +181,17 @@ def main() -> None:
     olines.extend(
         [
             "",
-            "## 节点策略（本 ingest）",
+            "## 这份清单能查到什么",
             "",
-            "- **424/424 独立 `wiki/entities/*` 详情节点**（静态站 `detail.html?id=entity-…`）。",
-            f"- **复用 {reused}** 既有实体（Unitree/智元/HMI 主表等已覆盖项）；**新建 {new_count}** `cn-os-*` 实体补齐缺口。",
-            "- 与 [HMI 开源项目主表 166 项](./hmi-opensource-projects-coverage.md) **互补**：主表按技术路线深读算法；本全景按 **国内机构** 查仓库入口。",
+            f"- **{len(data)} 个项目都有独立详情页**：仓库地址、所属机构、技术方向一页可见。",
+            f"- **{company_count} 家机构 · {category_count} 个技术方向**，可按机构或方向横向比对同类项目。",
+            "- 与 [HMI 开源项目主表 166 项](../queries/hmi-opensource-projects-coverage.md) **互补**：主表按技术路线深读算法；本全景按 **国内机构** 查仓库入口。",
             "",
             "## 读法建议",
             "",
             "1. **选整机厂** — 从智元/宇树/天工等实体页沿 RL → Sim2Sim → SDK 链路读。",
             "2. **选 VLA/世界模型** — 第二层公司实体 + [VLA](../methods/vla.md)。",
-            "3. **查是否已有方法页** — 覆盖索引标注「复用」时优先读原方法/论文页。",
+            "3. **查方法原理** — 详情页里若链到方法/论文页，从那里读算法细节。",
             "",
             "## 关联页面",
             "",

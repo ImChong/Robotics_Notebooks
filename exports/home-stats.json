@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-18",
   "node_count": 4117,
-  "edge_count": 37020,
+  "edge_count": 37019,
   "coverage": {
     "covered": 4089,
     "total": 4089,
@@ -291,7 +291,7 @@
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
       "label": "国内具身开源全景 424 项 · 阅读导航",
       "type": "query",
-      "degree": 682,
+      "degree": 681,
       "has_repo": true,
       "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
     },

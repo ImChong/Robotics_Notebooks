@@ -23,7 +23,7 @@ summary: "TMLR 2026 综述（arXiv:2609.03927，Fujitsu / CMU）：用表征–V
 
 **Toward Unified Robot Learning: Bridging Representation, Vision-Language-Action, and World Models**（[arXiv:2609.03927](https://arxiv.org/abs/2609.03927)，*TMLR 2026*）由 **富士通美国研究院（Fujitsu Research of America）**、**富士通（Fujitsu Limited）** 与 **卡内基梅隆大学（CMU）** 撰写：把现有方法收成 **理解（表征）/ 行动（VLA）/ 推理（世界模型）** 三轴，再用六种耦合类型解释五类开放问题。作者认为碎片化系统的病根是 **模块各长各的**，不是再堆一个更大的单点模型。
 
-> **读法：** 这是坐标系综述，不是新算法。表 1 的「四格全覆盖」是作者自报。文内点名的 OpenVLA、π₀、PointWorld、Open-X 等 **复用已有详情节点**，不在本 ingest 造空壳。
+> **读法：** 这是坐标系综述，不是新算法。表 1 的「四格全覆盖」是作者自报。文内点名的 OpenVLA、π₀、PointWorld、Open-X 等在站内 **各有详情页**，可直接点开深读。
 
 ## 一句话定义
 

@@ -16,7 +16,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_lumina_embodied_infra_2026-09-03.md
   - ../../sources/raw/wechat_lumina_embodied_infra_2026-09-03.md
-summary: "依据 Lumina 2026-09-03 Infra 长文：具身竞争力看记录-学习-检查-复盘的闭环周转时间；30 条参考文献映射到已有独立节点，缺页待升格、不重复造页。"
+summary: "依据 Lumina 2026-09-03 Infra 长文：具身竞争力看记录-学习-检查-复盘的闭环周转时间；30 条参考文献逐条给出站内对应页，暂无详情页的条目也标了出来。"
 ---
 
 # 具身智能 Infra 2026：闭环比单点模型更拉开差距
@@ -73,7 +73,7 @@ COBALT、AXIS、MagicSim、ManipulationNet、HELP、AtomVLA、LifeLong-RFT 等�
 ## 局限与风险
 
 - 公众号是综述叙事，不是一次对照实验。
-- 30 篇并非本 ingest 的新建清单；缺页保持待升格。
+- 30 篇是原文的引用清单，不是本页的书单；站内暂无详情页的条目已标出，要读请走原文入口。
 - 文内「安全停机」指运营能力，**不是** [Safe-Stop 论文](../entities/paper-safe-stop-humanoid.md)。
 
 ## 关联页面
