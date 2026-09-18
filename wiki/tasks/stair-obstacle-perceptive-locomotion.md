@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-18
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-deep-whole-body-parkour.md
   - ../entities/paper-hiking-in-the-wild.md
   - ../entities/paper-ssr-humanoid-open-world-traversal.md
+  - ../entities/paper-passage.md
   - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../entities/paper-pilot-perceptive-loco-manipulation.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
@@ -136,6 +137,7 @@ flowchart TB
 | **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hiking-in-the-wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
 | **有**（64×48 前向深度，无高程中间层） | **上下楼梯 · 沟/台 · 室内 OOD** | [CReF](../entities/paper-cref.md) | 本体查询交叉注意 + GRU highway；足端点云可支撑落脚奖励；X2 Ultra 零样本 15/30 cm 楼梯 20/20、40 cm 台、80 cm 沟；训练代码未开源 |
 | **有**（36×36 第一视角深度） | **上下楼梯 · 沟/台 · 户外长程** | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) | 想象落脚点 + 潜空间对称 + 分地形 AMP；AgiBot X2 零样本 **1.3 km** 户外；90 cm 沟 / 45 cm 台 |
+| **有**（3D LiDAR + elevation map） | **clutter 穿越（step/squeeze/duck）** | [PASSAGE](../entities/paper-passage.md) | Flow-matching planner **6.25 Hz** + WBC tracker **50 Hz**；100 h scene-aligned 数据；Jetson Orin 全 onboard **50** 布局 |
 | **有**（24×32 立体深度 + 8 步增广） | **双向长楼梯 · 沟/台 · 跑酷** | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) | 特权 height → 深度 DAgger；多 critic/discriminator；**30+ 级楼梯**、RDT-Bench **98.9%**；RSS 2026 |
 | **有**（LiDAR 11×11 高程 + cross-attn） | **楼梯/高台 + 边走边操作** | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) | 单阶段 MoE 全身 LLC；G1 非结构化 loco-manipulation；相对 HOMIE/AMO 更低跟踪误差 |
 | **有**（前+后深度，特权高程蒸馏） | **双向楼梯/坡/垫脚石 + 载荷** | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) | 分地形专家 + DAgger；DFSV/RSM 鲁棒多向；G1 真机 2 kg 载荷、22–30 cm 台阶与 60 cm 缝垫脚石 |

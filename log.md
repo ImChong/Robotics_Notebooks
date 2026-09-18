@@ -1,3 +1,9 @@
+## [2026-09-18] ingest | sources/papers/lawam_arxiv_2606_15768.md + passage/kino/vla-ulap/gpt-policy — 五篇论文 batch ingest；LaWAM/GPT-Policy 已开源；自动合并 PR
+
+- **触发：** 用户指定 LaWAM（RLinf/LeRobot）、PASSAGE、KINO、VLA-ULAP、GPT-Policy
+- **步骤 2.5：** LaWAM **已开源**（RLinf/LaWAM + HF）；GPT-Policy **已开源**（cheng-haha/GPT-Policy）；PASSAGE / KINO / VLA-ULAP **arXiv v1 未列代码**
+- **关键页：** [`paper-lawam`](wiki/entities/paper-lawam.md)、[`paper-passage`](wiki/entities/paper-passage.md)、[`paper-kino`](wiki/entities/paper-kino.md)、[`paper-vla-ulap`](wiki/entities/paper-vla-ulap.md)、[`paper-gpt-policy`](wiki/entities/paper-gpt-policy.md)
+
 ## [2026-09-17] ingest | sources/papers/athenazero_scirobotics_aee1868.md — SciRob AthenaZero 低惯量双臂硬件；有效质量分析部分开源
 
 ## [2026-09-17] ingest | sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md — Helix 2.5 Index 预训练与 30 家庭零样本全身 locomanipulation；未开源
