@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, evaluation, manipulation, openai, robodojo, pi05, technical-report]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 venue: "Technical Report 2026"
 code: https://github.com/anonymous-report-421/eval-of-gpt-6-astra-as-policy
 related:
@@ -193,6 +193,7 @@ RoboLab 结果为历史运行对照（`robolab120_*_specific_10ep_20260603`）�
 
 - [Awesome Astra Embodied AI](https://github.com/zjwzcx/Awesome-Astra-Embodied-AI) — 社区 Astra 具身实践索引
 - [Robocurve GPT-6 Astra 实测](https://openai.robocurve.org/gpt-6-astra/) — 独立 YAM 机械臂报告
+- [GPT-Policy](./paper-gpt-policy.md) — 五类 in-context 真机 ablation 与开源 harness（arXiv:2609.19138）
 - [GPT-Policy-Eval](https://github.com/cheng-haha/GPT-Policy-Eval) — 单次视频示范→真机执行案例
 
 ## 参考来源

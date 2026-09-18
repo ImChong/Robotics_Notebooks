@@ -2,7 +2,7 @@
 
 ## [2026-09-18] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **1** 条信息型预警）：
+共发现 **0** 个问题（另含 **7** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,8 +97,12 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（5 个）
+- wiki/entities/paper-gpt-policy.md（缺 对比）
+- wiki/entities/paper-kino.md（缺 对比）
+- wiki/entities/paper-lawam.md（缺 对比）
+- wiki/entities/paper-passage.md（缺 对比）
+- wiki/entities/paper-vla-ulap.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -124,7 +128,7 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-passage.md
 
-📊 Sources 覆盖率：4079/4079 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4084/4084 (100%) wiki/entity 页有 ingest 来源

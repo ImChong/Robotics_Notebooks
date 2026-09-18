@@ -1,3 +1,9 @@
+## [2026-09-18] ingest | sources/papers/lawam_arxiv_2606_15768.md + passage/kino/vla-ulap/gpt-policy — 五篇论文 batch ingest；LaWAM/GPT-Policy 已开源；自动合并 PR
+
+- **触发：** 用户指定 LaWAM（RLinf/LeRobot）、PASSAGE、KINO、VLA-ULAP、GPT-Policy
+- **步骤 2.5：** LaWAM **已开源**（RLinf/LaWAM + HF）；GPT-Policy **已开源**（cheng-haha/GPT-Policy）；PASSAGE / KINO / VLA-ULAP **arXiv v1 未列代码**
+- **关键页：** [`paper-lawam`](wiki/entities/paper-lawam.md)、[`paper-passage`](wiki/entities/paper-passage.md)、[`paper-kino`](wiki/entities/paper-kino.md)、[`paper-vla-ulap`](wiki/entities/paper-vla-ulap.md)、[`paper-gpt-policy`](wiki/entities/paper-gpt-policy.md)
+
 ## [2026-09-18] ingest | sources/papers/atomicvla_arxiv_2603_07648.md — AtomicVLA CVPR 2026 原子技能 SG-MoE VLA；步骤 2.5 GitHub+HF 已开源（openpi 基座）；自动合并 PR
 
 - **触发：** 用户指定 arXiv:2603.07648 + GitHub zhanglk9/AtomicVLA

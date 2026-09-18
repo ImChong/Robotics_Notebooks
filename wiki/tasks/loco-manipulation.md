@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-17
+updated: 2026-09-18
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -143,6 +143,7 @@ flowchart TD
 
 #### 训练期质心 MPC 地标奖励 + 部署期纯 RL（CD-MPC · πⁿ MPC）
 - **核心**：**训练时** 用 **质心动力学 MPC（CD-MPC）** 批求解预测轨迹，转为 **landmark guidance reward** 监督 PPO；**部署时** 仅 MLP 关节策略（无在线 MPC）；配套 **[πⁿ MPC](../methods/pi-mpc.md)** 实现长时域 × 数千环境 GPU 批 ADMM。
+- **代表作**：[KINO](../entities/paper-kino.md)（ETH Coros，arXiv:2609.18869）— VLM 选 **whole-body keyframe** → 场景重定向 → RL WBC；G1 pickup/transport/place；saliency 采样 **44%→92%**；代码待发布。
 - **代表作**：[MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) (Caltech/JHU, 2026, arXiv:2606.05687) — Themis 真机行走、推恢复、未知负重与 **290 kg 推车** loco-manipulation；[junhengl/mpc-rl](https://github.com/junhengl/mpc-rl) 开源。
 
 #### LLM 引导程序搜索 + 接触显式轨迹优化（Motion Discovery · 无示范）
