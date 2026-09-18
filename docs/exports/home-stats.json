@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/arxivisual.md",
+      "detail_id": "entity-arxivisual",
+      "label": "arXivisual：arXiv 论文可视化阅读器",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
       "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
       "label": "人形运动控制：30 篇论文阅读坐标",
@@ -197,27 +208,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-scail-2.md",
-      "detail_id": "entity-paper-scail-2",
-      "label": "SCAIL-2：端到端 In-Context 受控角色动画",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-motion-control-30-papers-technology-map.md",
-    "detail_id": "wiki-overview-humanoid-motion-control-30-papers-technology-map",
-    "label": "人形运动控制：30 篇论文阅读坐标",
-    "type": "overview",
+    "path": "wiki/entities/arxivisual.md",
+    "detail_id": "entity-arxivisual",
+    "label": "arXivisual：arXiv 论文可视化阅读器",
+    "type": "entity",
     "recency": "2026-09-18",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
