@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-18",
-  "node_count": 4117,
-  "edge_count": 37020,
+  "node_count": 4128,
+  "edge_count": 37101,
   "coverage": {
-    "covered": 4089,
-    "total": 4089,
+    "covered": 4100,
+    "total": 4100,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -224,15 +224,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 607
-    },
-    {
-      "label": "全身控制",
-      "size": 443
+      "size": 617
     },
     {
       "label": "宇树 G1 人形机器人",
       "size": 422
+    },
+    {
+      "label": "全身控制",
+      "size": 404
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -244,7 +244,7 @@
     },
     {
       "label": "机器人学习论文笔记",
-      "size": 216
+      "size": 215
     }
   ],
   "top_hubs": [
@@ -252,7 +252,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1549,
+      "degree": 1554,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -268,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1019,
+      "degree": 1023,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -276,14 +276,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 953,
+      "degree": 956,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 921,
+      "degree": 922,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -299,14 +299,14 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 627,
+      "degree": 629,
       "has_repo": true
     },
     {
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 590,
+      "degree": 594,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -370,8 +370,7 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 52,
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
