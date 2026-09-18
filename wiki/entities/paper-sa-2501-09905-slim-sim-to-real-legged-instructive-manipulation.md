@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2501.09905"
 venue: "arXiv 2025"
 summary: "Presents a low-cost legged mobile manipulation system that solves long-horizon real-world tasks, trained by reinforcement learning purely in simulation. A single policy autonomously solves long-horizon tasks involving se"

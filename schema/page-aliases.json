@@ -1,6 +1,7 @@
 {
   "description": "已合并/删除页面的旧 detail 页 ID → canonical 页 ID 映射。合并重复节点删除页面时必须在此登记旧 ID，export_minimal.py 会注入 site-data-v1.json 的 pages.page_aliases，docs/main.js 详情页据此把旧链接重定向到合并后的页面，避免历史 URL 断链。键为旧页面 ID（entity-<stem> 或 wiki-<子目录>-<stem>），值为现存页面 ID。",
   "aliases": {
+    "entity-paper-sa-2502-13187-a-survey-of-sim-to-real-methods-in-rl-progress-p": "entity-paper-survey-sim2real-rl-foundation-models",
     "entity-paper-loco-manip-161-009-gmt": "entity-paper-gmt",
     "entity-paper-notebook-adamimic": "entity-paper-adamimic",
     "entity-paper-notebook-aero-hand-open": "entity-paper-aero-hand-open",

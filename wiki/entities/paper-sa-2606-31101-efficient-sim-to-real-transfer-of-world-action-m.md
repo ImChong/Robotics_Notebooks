@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2606.31101"
 venue: "arXiv 2026"
 summary: "Presents the first zero-shot sim-to-real transfer of a world-action model for robotic manipulation. Achieves 35% average success across four real-world tasks using fully automated simulation demonstrations"

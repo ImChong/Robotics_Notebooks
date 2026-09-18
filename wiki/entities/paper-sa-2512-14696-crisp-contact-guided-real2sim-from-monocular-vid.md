@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2512.14696"
 venue: "NeurIPS 2025"
 summary: "Recovers simulatable human motion and scene geometry from monocular video. Reduces motion tracking failure rates from 55.2% to 6.9% on human-centric video benchmarks, while delivering 43% faster RL simulation throughput."

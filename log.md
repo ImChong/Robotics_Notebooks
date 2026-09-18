@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/repos/awesome-sim2real.md — 接入 LongchaoDa AwesomeSim2Real 与 2502.13187v3 综述；139 条独立 paper-as 节点 + 深读综述页
+
 ## [2026-09-18] ingest | sources/repos/supertuxkart-stk-code.md — SuperTuxKart GPL 卡丁车；Git+SVN 双仓已开源
 
 ## [2026-09-18] ingest | sources/papers/nphm_arxiv_2212_02761.md — NPHM 神经参数化完整人头；代码+预训练已开源，全量扫描需申请

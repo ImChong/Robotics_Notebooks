@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, sim2real, real2sim, real2sim2real, domain-randomization, gaussian-splatting, embodied-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 related:
   - ../overview/sun-awesome-r2s2r-technology-map.md
   - ../overview/hub-sim2real.md
@@ -20,6 +20,8 @@ related:
   - ./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
+  - ./awesome-sim2real.md
+  - ./paper-survey-sim2real-rl-foundation-models.md
 sources:
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
@@ -83,6 +85,7 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 - [如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md) / [Sim2Real Checklist](../queries/sim2real-checklist.md)
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) / [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [R2S-EGO](./paper-r2s-ego.md) / [Lucida](./paper-lucida-r2s.md) / [RAGA](./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md)（3DGS avatar 阴影）
 - [Arcadia](./paper-arcadia.md) — 采集 + 生成式 USD + 共享 VLN/VLA + 反馈写回（部分开源）
+- [AwesomeSim2Real（LongchaoDa）](./awesome-sim2real.md) / [Sim2Real RL 综述（2502.13187）](./paper-survey-sim2real-rl-foundation-models.md)
 - [Awesome World Models](./awesome-world-models.md) / [Awesome Touch](./awesome-touch.md)
 
 ## 参考来源

@@ -2,7 +2,7 @@
 type: comparison
 tags: [sim2real, system-identification, domain-randomization, online-adaptation, residual-learning, identifiability, locomotion, deployment]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-18
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -150,4 +150,4 @@ flowchart TD
 
 - [自由度FreeDof 原文：四条路线梳理](https://mp.weixin.qq.com/s/K_6MibGXWwh9OL9eSZxOMg)
 - [PACE（RSS 2023）](https://arxiv.org/abs/2307.11497) — 执行器辨识与零样本腿足部署
-- [Da et al. Sim2Real Survey（2025）](https://arxiv.org/abs/2502.13187) — 四要素分类与 `LongchaoDa/AwesomeSim2Real` 资源索引
+- [Sim2Real RL 综述（2502.13187）](../entities/paper-survey-sim2real-rl-foundation-models.md) — MDP 四要素 taxonomy 与 [AwesomeSim2Real](../entities/awesome-sim2real.md) 资源索引

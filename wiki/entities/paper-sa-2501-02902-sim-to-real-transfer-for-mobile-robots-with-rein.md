@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2501.02902"
 venue: "arXiv 2025"
 summary: "A comprehensive framework for sim-to-real transfer of mobile robots using reinforcement learning"

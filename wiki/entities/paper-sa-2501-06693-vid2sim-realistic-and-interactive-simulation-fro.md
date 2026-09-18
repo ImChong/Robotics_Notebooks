@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2501.06693"
 venue: "CVPR 2025"
 summary: "A novel framework that bridges the sim2real gap through a scalable real2sim pipeline for neural 3D scene reconstruction and simulation. Given a monocular video, generates photo-realistic and physically interactable 3D si"

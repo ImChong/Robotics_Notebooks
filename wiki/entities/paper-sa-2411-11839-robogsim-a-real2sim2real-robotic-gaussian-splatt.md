@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2411.11839"
 venue: "arXiv 2024"
 summary: "A Real2Sim2Real robotic Gaussian Splatting simulator for synthesizing simulated data with novel views, objects, trajectories, and scenes"

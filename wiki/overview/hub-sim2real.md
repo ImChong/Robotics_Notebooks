@@ -47,6 +47,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 | 工程 | 单关节 SysID 实验 | [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) |
 | 工程 | 硬件在环 | [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md) |
 | 工程 | 处理器在环 | [Processor-in-the-Loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md) |
+| 文献索引 | RL Sim2Real（MDP 四要素 + 综述 2502.13187） | [AwesomeSim2Real](../entities/awesome-sim2real.md)（LongchaoDa） |
 | 文献索引 | Sim2Real / Real2Sim / R2S2R 闭环策展 | [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)（sun254667；2024–2026） |
 
 ## 与其他知识链的关系
@@ -62,6 +63,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 - [Privileged Training](../concepts/privileged-training.md)
 - [Data Flywheel](../concepts/data-flywheel.md)
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)
+- [AwesomeSim2Real（LongchaoDa）](../entities/awesome-sim2real.md) — RL Sim2Real MDP taxonomy + [2502.13187 综述](../entities/paper-survey-sim2real-rl-foundation-models.md)
 - [Awesome-Real2Sim2Real（精选集）](../entities/awesome-real2sim2real.md) — Sim2Real / Real2Sim / Real2Sim2Real 闭环文献索引
 
 ## 参考来源
@@ -70,5 +72,6 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 - [自由度FreeDof：四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) — SysID / DR / 适应 / 残差可辨识性对比
 - [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节 SysID 实验入口（姊妹篇）
 - [深蓝具身智能公众号文归档](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 闭环叙事入口
+- **ingest 档案：** [sources/repos/awesome-sim2real.md](../../sources/repos/awesome-sim2real.md) — AwesomeSim2Real（LongchaoDa）+ 2502.13187 综述
 - **ingest 档案：** [sources/repos/awesome-real2sim2real.md](../../sources/repos/awesome-real2sim2real.md) — Awesome-Real2Sim2Real 迁移闭环策展清单
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`sim2real` 命中规则）

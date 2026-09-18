@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 arxiv: "2510.10637"
 venue: "arXiv 2025"
 summary: "A Real2Sim2Real framework that uses 3D Gaussian Splatting and mesh primitives to create scalable, high-fidelity, and physically interactive simulation environments, enabling successful zero-shot sim-to-real transfer"

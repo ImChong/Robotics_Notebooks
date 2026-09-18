@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-18
 arxiv: "2507.05198"
 venue: "arXiv 2025"
 code: https://github.com/GigaAI-research/EmbodieDreamer
