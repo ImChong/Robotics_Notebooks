@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 summary: "人形 Loco-Manip 161 篇 · 01 运控基座与通用全身跟踪（31 篇）— 底层身体控制、运动跟踪、抗扰动与通用动作执行。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

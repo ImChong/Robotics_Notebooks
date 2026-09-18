@@ -7,18 +7,23 @@
 - **Loco-Manip 161 分类：** 01 运控基座与通用全身跟踪
 - **机构：** Shanghai Jiao Tong Univeristy、Shanghai Artificial Intelligence Laboratory、Shanghai Innovation Institute、Peking University
 - **项目页：** https://yinkangning0124.github.io/Humanoid-UniTracker/
-- **发表日期：** 2025年9月18日
-- **入库日期：** 2026-06-26
-- **一句话说明：** UniTracker 把相机图像/多视角观测、本体状态与关节序列、仿真交互数据转成可跟踪的身体目标，并通过教师-学生知识迁移、PPO/RL 策略训练、扩散策略/流匹配训练或组合全身策略，最终输出全身轨迹/动作序列、低层控制器目标。关键点是用特权信息训练教师策略，再把能力蒸馏到只能使用部署观测的学生策略。
+- **arXiv：** <https://arxiv.org/abs/2507.07356>
+- **GitHub（项目页镜像）：** <https://github.com/yinkangning0124/Humanoid-UniTracker>（训练代码截至 2026-09-18 **未发布**）
+- **发表日期：** 2025年9月18日（arXiv v1：2025-07-10）
+- **入库日期：** 2026-06-26（161 策展）；**2026-09-18** 深读 ingest 见 [`unitracker_arxiv_2507_07356.md`](unitracker_arxiv_2507_07356.md)
+- **一句话说明：** Oracle 特权 PPO → CVAE 在线蒸馏的 G1 通才全身 tracker；deploy 为 25 步本体历史 + 稀疏 goal（**非**相机观测）；partial/full latent 对齐缓解 MLP+DAgger 漂移。深读归纳见 wiki 实体页。
 
 ## 核心摘录（策展，非全文）
 
 - **在 161 篇地图中的位置：** 01 运控基座与通用全身跟踪，编号 **024/161**。
-- **算法实现总结（公众号）：** UniTracker 把相机图像/多视角观测、本体状态与关节序列、仿真交互数据转成可跟踪的身体目标，并通过教师-学生知识迁移、PPO/RL 策略训练、扩散策略/流匹配训练或组合全身策略，最终输出全身轨迹/动作序列、低层控制器目标。关键点是用特权信息训练教师策略，再把能力蒸馏到只能使用部署观测的学生策略。
+- **算法实现总结（公众号，已部分过时）：** 早期摘要误写「相机/多视角」；arXiv 正文为特权 Oracle + CVAE 蒸馏，deploy 侧为本体历史 + goal。
+- **深读要点（2026-09-18）：** AMASS 11,313 + PHC 过滤 + H2O retarget；Table I Ours SR **91.83** vs DAgger w/o CVAE **88.21**；MDM/GVHMR 下游；**代码未开源**。
 
 ## 对 wiki 的映射
 
 - [paper-loco-manip-161-024-unitracker](../../wiki/entities/paper-loco-manip-161-024-unitracker.md)
+- [unitracker_arxiv_2507_07356.md](unitracker_arxiv_2507_07356.md)
+- [humanoid-unitracker-github-io.md](../sites/humanoid-unitracker-github-io.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

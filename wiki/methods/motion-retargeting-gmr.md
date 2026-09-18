@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-18
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md

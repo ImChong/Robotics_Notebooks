@@ -9,12 +9,13 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2507.07356>
 - **入库日期：** 2026-06-11
-- **一句话说明：** 列入 Paper Notebooks 阅读进度，深读笔记尚未完成；本文件为 **进度 → wiki** 溯源锚点。
+- **一句话说明：** 姊妹仓库进度锚点；**Robotics_Notebooks 侧已于 2026-09-18 完成 arXiv 深读 ingest**（见 [`unitracker_arxiv_2507_07356.md`](unitracker_arxiv_2507_07356.md)）。
 
 ## 核心摘录（策展，非全文）
 
-- 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
-- 知识归纳见 wiki 实体页：[paper-loco-manip-161-024-unitracker](../../wiki/entities/paper-loco-manip-161-024-unitracker.md).
+- 本文件锚定 Paper Notebooks **待深读** 条目；跨库知识归纳以本仓库 wiki 为准。
+- 知识归纳见 wiki 实体页：[paper-loco-manip-161-024-unitracker](../../wiki/entities/paper-loco-manip-161-024-unitracker.md)
+- arXiv 归档：[unitracker_arxiv_2507_07356.md](unitracker_arxiv_2507_07356.md)（Oracle + CVAE 蒸馏；**训练代码未开源**）
 
 ## 对 wiki 的映射
 
