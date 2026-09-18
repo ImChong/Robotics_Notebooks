@@ -1,3 +1,5 @@
+## [2026-09-18] ingest | sources/repos/supertuxkart-stk-code.md — SuperTuxKart GPL 卡丁车；Git+SVN 双仓已开源
+
 ## [2026-09-18] ingest | sources/papers/nphm_arxiv_2212_02761.md — NPHM 神经参数化完整人头；代码+预训练已开源，全量扫描需申请
 
 ## [2026-09-18] ingest | sources/papers/behaviorworldgen_arxiv_2608_22187.md — BehaviorWorldGen 行为感知轨迹闭环；项目页未开源；NAVSIM 低分桶增益最大

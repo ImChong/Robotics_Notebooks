@@ -107,6 +107,7 @@ flowchart TB
 | **drive-game** | OSM/DEM 真几何纽北 + **240 Hz** Pacejka 物理；Web/Android | [drive-game.pages.dev](https://drive-game.pages.dev) 可本地 `npm run dev` | 已开源 MIT | [drive-game](../entities/drive-game.md) |
 | **nordschleife-racer** | TS 程序化纽北 + 漂移物理 + Supabase 多人/榜 | 玩：[yassin.app](https://yassin.app)；仓为引擎切片 | 引擎 MIT；GLB/后端未入库 | [nordschleife-racer](../entities/nordschleife-racer.md) |
 | **starter-kit-racing** | Kenney Godot→JS 街机移植；GridMap 编辑器 | [Pages 在线](https://mrdoob.github.io/Starter-Kit-Racing/)；CDN 零构建 | 已开源 MIT | [starter-kit-racing](../entities/starter-kit-racing.md) |
+| **SuperTuxKart** | GPL 卡丁车；Git code + SVN assets；趣味物理、在线多人 | 原生 Linux/Win/macOS/Android/Switch；Releases **1.5** | 已开源 GPL | [supertuxkart](../entities/supertuxkart.md) |
 
 ```mermaid
 flowchart LR
@@ -114,6 +115,9 @@ flowchart LR
     DG[drive-game<br/>OSM 真几何 240Hz]
     NR[nordschleife-racer<br/>程序化纽北 多人]
     SK[starter-kit-racing<br/>GridMap 街机]
+  end
+  subgraph native ["原生开源竞速"]
+    STK[SuperTuxKart<br/>GPL 卡丁 多人]
   end
   subgraph research ["科研训练栈"]
     FG[f1tenth_gym]

@@ -6,6 +6,7 @@ updated: 2026-09-15
 related:
   - ./drive-game.md
   - ./nordschleife-racer.md
+  - ./supertuxkart.md
   - ../overview/racing-drift-rl-open-source-landscape.md
 sources:
   - ../../sources/repos/starter_kit_racing.md

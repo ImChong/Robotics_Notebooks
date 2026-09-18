@@ -6,6 +6,7 @@ updated: 2026-09-15
 related:
   - ./nordschleife-racer.md
   - ./starter-kit-racing.md
+  - ./supertuxkart.md
   - ./arnis.md
   - ../overview/racing-drift-rl-open-source-landscape.md
   - ../methods/model-predictive-control.md
