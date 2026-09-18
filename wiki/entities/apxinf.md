@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, inference, edge, jetson, open-source, infinigence, tsinghua, sjtu, rlinf, pi0, deployment]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-18
 code: https://github.com/RLinf/APXinf-robo
 related:
   - ../methods/vla.md

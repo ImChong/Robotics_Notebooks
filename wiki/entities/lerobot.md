@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持数据采集、训练、EnvHub 仿真评测与实物部署。"
-updated: 2026-09-15
+updated: 2026-09-18
 related:
   - ../concepts/lerobot-envhub.md
   - ./paper-imitator-game.md
@@ -100,7 +100,7 @@ flowchart LR
 | 类别 | 示例 | 说明 |
 |------|------|------|
 | **VLA 预训练** | `lerobot/pi0_base`、`lerobot/pi05_base` | π 系基础权重，下载量高 |
-| **世界–动作** | `lerobot/fastwam_base`、VLA-JEPA 系列 | Collections 打包；仿真 / 真机迁移研究 |
+| **世界–动作** | `lerobot/fastwam_base`、VLA-JEPA 系列、[LaWAM](./paper-lawam.md)（`jialei02/lawam-libero-sft-lerobot`） | Collections 打包；仿真 / 真机迁移研究；LaWAM 有官方 `lawam.mdx` 文档 |
 | **平台化 checkpoint** | `lerobot/MolmoAct2-SO100_101-LeRobot` | SO100/101 等低成本臂 |
 | **社区后训练** | `lerobot/lingbot_va_*` | 与 [LingBot-VLA 2.0](./lingbot-vla-v2.md) 生态交叉 |
 | **任务示范** | `lerobot/folding_latest` | 叠衣等端到端策略 |

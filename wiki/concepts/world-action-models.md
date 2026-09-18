@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-18
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -44,6 +44,7 @@ related:
   - ../entities/paper-ld4wam.md
   - ../entities/paper-dreammimic.md
   - ../entities/paper-glancewam.md
+  - ../entities/paper-lawam.md
   - ../entities/paper-openwam.md
   - ../entities/paper-ge-act-2.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
@@ -419,6 +420,7 @@ flowchart TB
 
 - [Rift（免视频 rollout 的未来 cache）](../entities/paper-rift-wam.md) — anticipation token 一次写 K/V；LIBERO 98.8% / 1.1× 延迟（未开源）
 - [LAWA（潜动作作未来意图）](../entities/paper-lawa.md) — 测试时去噪 latent 意图而非像素；RoboCasa 65.6/80.8%；代码待发布（arXiv:2608.24882）
+- [LaWAM](../entities/paper-lawam.md) — DINOv3 潜 subgoal 条件 VLA；LIBERO 98.6%（187 ms）；LeRobot 原生；已开源（arXiv:2606.15768，CoRL 2026）
 - [GlanceWAM](../entities/paper-glancewam.md) — 异步单帧前瞻，动作头 48 ms；RoboCasa 72.2% / LIBERO 99.0%；已开源（arXiv:2608.23927）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — Motubrain 平台六策略实证
 - [ActEffect / Phi-WM 1.0](../entities/paper-phi-wm-acteffect.md) — 训练时受控 WM 反馈，部署一次前向（LIBERO 98.8%；确认未开源）
