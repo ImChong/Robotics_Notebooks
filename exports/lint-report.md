@@ -2,7 +2,7 @@
 
 ## [2026-09-18] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **37** 条信息型预警）：
+共发现 **0** 个问题（另含 **34** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,24 +94,21 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（17 个）
-- wiki/entities/paper-as-018-1.md
-- wiki/entities/paper-as-023-1.md
-- wiki/entities/paper-as-062-1.md
-- wiki/entities/paper-as-065-1.md
-- wiki/entities/paper-as-066-1.md
-- wiki/entities/paper-as-067-1.md
-- wiki/entities/paper-as-072-1.md
-- wiki/entities/paper-as-081-1.md
-- wiki/entities/paper-as-087-1.md
-- wiki/entities/paper-as-094-1.md
-- wiki/entities/paper-as-099-1.md
-- wiki/entities/paper-as-101-1.md
-- wiki/entities/paper-as-102-1.md
-- wiki/entities/paper-as-134-1.md
-- wiki/entities/paper-as-135-1.md
-- wiki/entities/paper-as-137-1.md
-- wiki/entities/paper-as-139-1.md
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（14 个）
+- wiki/entities/paper-as-017-fear-field-adaptive-constraints-for-safe-environ.md
+- wiki/entities/paper-as-025-uncertainty-aware-action-advising-for-deep-reinf.md
+- wiki/entities/paper-as-060-lidar-object-detection-and-sensor-fusion-in-simu.md
+- wiki/entities/paper-as-065-benchmarking-safe-exploration-in-deep-reinforcem.md
+- wiki/entities/paper-as-066-energyplus-creating-a-new-generation-building-en.md
+- wiki/entities/paper-as-069-openai-gym-retro.md
+- wiki/entities/paper-as-073-sim-to-real-interactive-recommendation-via-off-d.md
+- wiki/entities/paper-as-081-a-simple-framework-for-intrinsic-reward-shaping.md
+- wiki/entities/paper-as-095-design-and-use-paradigms-for-gazebo-an-open-sour.md
+- wiki/entities/paper-as-097-mujoco-a-physics-engine-for-model-based-control.md
+- wiki/entities/paper-as-099-pybullet-real-time-physics-simulation.md
+- wiki/entities/paper-as-128-cityflow-a-multi-agent-reinforcement-learning-en.md
+- wiki/entities/paper-as-129-deepdrive-zero.md
+- wiki/entities/paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat.md
 
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（17 个）
 - wiki/entities/paper-agile-wam.md（缺 对比）
