@@ -9,7 +9,8 @@
 - **项目主页：** <https://unilabsim.github.io>
 - **代码：** <https://github.com/unilabsim/UniLab>
 - **机构：** THU、SJTU、SII、Motphys、DISCOVER Robotics、Dexmal 等（多校/产业联合）
-- **入库日期：** 2026-05-31
+- **会议：** CoRL 2026 **Accepted**（项目页与 BibTeX `note`，2026-09 复核）
+- **入库日期：** 2026-05-31（初入库）；**复核：** 2026-09-18
 - **一句话说明：** 将 **CPU 批量刚体仿真** 与 **GPU 策略学习** 经统一 runtime（共享内存缓冲、参数同步、采集–更新调度）解耦，在单机单 GPU/单 CPU 上相对 GPU 驻留仿真基线实现 **3–10×** 端到端墙钟效率，并支持 macOS（MPS/MLX）、ROCm、Intel XPU。
 
 ## 摘要级要点
