@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17",
+  "generated_at": "2026-09-18",
   "node_count": 4105,
   "edge_count": 36878,
   "coverage": {
@@ -8,6 +8,17 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-athenazero.md",
+      "detail_id": "entity-paper-athenazero",
+      "label": "AthenaZero：低惯量双臂动态操作平台",
+      "type": "entity",
+      "recency": "2026-09-17",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/entities/paper-activescale.md",
       "detail_id": "entity-paper-activescale",
@@ -200,27 +211,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
-    },
-    {
-      "path": "wiki/entities/mosquitto.md",
-      "detail_id": "entity-mosquitto",
-      "label": "Eclipse Mosquitto",
-      "type": "entity",
-      "recency": "2026-09-17",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-activescale.md",
-    "detail_id": "entity-paper-activescale",
-    "label": "ActiveScale（arXiv:2609.18514）",
+    "path": "wiki/entities/paper-athenazero.md",
+    "detail_id": "entity-paper-athenazero",
+    "label": "AthenaZero：低惯量双臂动态操作平台",
     "type": "entity",
     "recency": "2026-09-17",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
