@@ -523,6 +523,9 @@
     }
     .tt-title { font-size: .92rem; font-weight: 700; color: #e8e8e4; margin-bottom: 5px; line-height: 1.3; }
     .tt-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    /* 浮窗内 KaTeX 公式：跟随标题/摘要字号与颜色，长公式横向滚动而不撑宽浮窗 */
+    #graph-tooltip .katex { font-size: 1em; }
+    #graph-tooltip .katex-display { margin: .4em 0; overflow-x: auto; overflow-y: hidden; }
     .tt-link {
       display: inline-block;
       font-size: .72rem;
@@ -4425,6 +4428,7 @@
     function refreshMetaBadges() {
       if (pinnedNode && tooltip && !tooltip.classList.contains('hidden')) {
         tooltip.innerHTML = tooltipHtml(pinnedNode);
+        window.RNGraphTooltip?.renderMath?.(tooltip);
       }
       if (sidebarNode && sidebar?.classList.contains('open') && sbMetaBadges) {
         sbMetaBadges.innerHTML = buildNodeMetaBadges(sidebarNode);
@@ -4609,6 +4613,7 @@
     function showTooltip(ev, d) {
       if (!d) return;
       tooltip.innerHTML = tooltipHtml(d);
+      window.RNGraphTooltip?.renderMath?.(tooltip);
       tooltip.classList.remove('hidden');
       // 清理可能残留的 left/top/width，确保重新计算尺寸
       tooltip.style.left = '';

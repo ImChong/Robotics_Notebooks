@@ -62,7 +62,7 @@ summary: "ProxiDex（arXiv:2609.16586）：把手—物体接近关系转为硬�
 
 ## 与其他工作对比
 
-- 横向索引见 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md)；与同 arXiv 节点不重复造页。
+- 横向索引见 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md)。
 
 ## 结论
 

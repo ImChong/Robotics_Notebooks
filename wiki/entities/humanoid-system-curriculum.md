@@ -45,7 +45,7 @@ summary: "深蓝学院《人形机器人系统—理论与实践》八章策展�
 
 1. **系统课而非单点方法**：覆盖「能动 → 能定位 → 能规划 → 能探索 → 能看球 → 能听懂指令」整条工程链，适合作为人形入门第二阶段（在 [运动控制主路线](../../roadmap/motion-control.md) 之后）。
 2. **与四足策展对照**：[四足控制策展](./quadruped-control-curriculum.md) 偏动力学/SysID/DR；本课偏 **G1 服务栈 + 导航规划 + 足球感知 + 大模型导航**。
-3. **开源可复现节点齐全**：TARE/FAR、PythonRobotics/Nav2、NaVid、YOLO 均可落到仓库已有或新建实体页。
+3. **开源可复现资源齐全**：TARE/FAR、PythonRobotics/Nav2、NaVid、YOLO 在站内都能找到对应详情页。
 
 ## 推荐学习路径
 

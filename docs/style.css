@@ -3713,6 +3713,15 @@ button.home-wiki-heatmap-cell.is-active {
   color: rgba(255, 255, 255, 0.45);
   line-height: 1.5;
 }
+/* 浮窗内 KaTeX 公式：跟随标题/摘要字号与颜色，长公式横向滚动而不撑宽浮窗 */
+.graph-hover-tooltip .katex {
+  font-size: 1em;
+}
+.graph-hover-tooltip .katex-display {
+  margin: 0.4em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
 .graph-hover-tooltip .tt-link {
   display: inline-block;
   font-size: 0.72rem;

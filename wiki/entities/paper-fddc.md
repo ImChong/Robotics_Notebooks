@@ -165,7 +165,7 @@ flowchart TB
 
 ## 参考来源
 
-- [sources/papers/fddc_arxiv_2608_00500.md](../../sources/papers/fddc_arxiv_2608_00500.md) — 本次 ingest 归档
+- [sources/papers/fddc_arxiv_2608_00500.md](../../sources/papers/fddc_arxiv_2608_00500.md) — 原文归档
 - [arXiv:2608.00500](https://arxiv.org/abs/2608.00500) — 论文与附录
 
 ## 推荐继续阅读

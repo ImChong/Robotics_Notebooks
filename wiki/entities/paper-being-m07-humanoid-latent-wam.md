@@ -142,7 +142,7 @@ flowchart TB
 
 ## 参考来源
 
-- [sources/papers/being_m07.md](../../sources/papers/being_m07.md) — 本次 ingest 归档与摘录映射
+- [sources/papers/being_m07.md](../../sources/papers/being_m07.md) — 原文归档与摘录对应位置
 - [Being-M0.7 项目页](https://research.beingbeyond.com/being-m07) — Overview、数据配方与演示视频
 - Yue, J., et al. (2026). *Being-M0.7: A Latent World-Action Model for Humanoid Robots.* BeingBeyond Technical Report.
 

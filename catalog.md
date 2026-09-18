@@ -4014,10 +4014,10 @@
 - [Sergey Levine：表达力更强的连续动作策略](wiki/overview/sergey-levine-diffusion-expressive-policies.md) — 学习式控制对动作分布族「名义上中立」，但实践里 **扩散 / flow 动作头** 通过吃下高维多模态分布，使 **长 action chunk** 成为默认接口——先显著抬升模仿学习，再把同一表达力 `📅unknown` `[overview_page]`
 - [《具身智能基础》专栏技术地图](wiki/overview/shenlan-embodied-ai-fundamentals-series.md) — 具身智能的大模型叙事容易掩盖两条必须打通的暗线：**几何**（多坐标系与弯曲状态空间上的合法变换）和 **运动学接口**（任务空间目标必须在关节空间执行）。专栏前半用齐次矩阵把刚体写进可连乘的 $4\ `📅unknown` `[overview_page]`
 - [十年仿真平台技术地图（TOP 8）](wiki/overview/sim-platforms-decade-technology-map.md) — 仿真平台的发展轨迹清晰反映具身智能研究重心的演进：**没有单一「赢家通吃」**，而是从 MuJoCo 的物理奠基，经 [AI2-THOR](../en `📅unknown` `[overview_page]`
-- [Awesome Egocentric Vision 技术地图](wiki/overview/sun-awesome-ego-technology-map.md) — Awesome Egocentric Vision 技术地图** = 外部 Awesome 策展列表的站内节点化索引（按清单分组浏览，一点即达论文实体页）。 `📅unknown` `[overview_page]`
-- [Awesome-Real2Sim2Real 技术地图](wiki/overview/sun-awesome-r2s2r-technology-map.md) — Awesome-Real2Sim2Real 技术地图** = 外部 Awesome 策展列表的站内节点化索引（按清单分组浏览，一点即达论文实体页）。 `📅unknown` `[overview_page]`
-- [Awesome Touch 技术地图](wiki/overview/sun-awesome-touch-technology-map.md) — Awesome Touch 技术地图** = 外部 Awesome 策展列表的站内节点化索引（按清单分组浏览，一点即达论文实体页）。 `📅unknown` `[overview_page]`
-- [Awesome World Models 技术地图](wiki/overview/sun-awesome-wm-technology-map.md) — Awesome World Models 技术地图** = 外部 Awesome 策展列表的站内节点化索引（按清单分组浏览，一点即达论文实体页）。 `📅unknown` `[overview_page]`
+- [Awesome Egocentric Vision 技术地图](wiki/overview/sun-awesome-ego-technology-map.md) — Awesome Egocentric Vision 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
+- [Awesome-Real2Sim2Real 技术地图](wiki/overview/sun-awesome-r2s2r-technology-map.md) — Awesome-Real2Sim2Real 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
+- [Awesome Touch 技术地图](wiki/overview/sun-awesome-touch-technology-map.md) — Awesome Touch 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
+- [Awesome World Models 技术地图](wiki/overview/sun-awesome-wm-technology-map.md) — Awesome World Models 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
 - [T-RO 2026 操作学习：5 篇论文技术地图](wiki/overview/tro-manip-5-papers-technology-map.md) — 2026 年上半年 T-RO 操作学习代表作共同指向：**规模化数据 + 更高级表征（SE(3) 等变、手物几何）+ 无标签视频结构化预训练 + 生成式策略** 正在并行重塑泛化能力；同时 **任务/ `📅unknown` `[overview_page]`
 - [T-RO 分类 01：数据规模化](wiki/overview/tro-manip-category-01-data-scaling.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [T-RO 分类 02：三维与手物表征](wiki/overview/tro-manip-category-02-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
