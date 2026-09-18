@@ -1425,7 +1425,7 @@
 - [MOSAIC](wiki/entities/paper-loco-manip-161-014-mosaic.md) — MOSAIC** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [TextOp](wiki/entities/paper-loco-manip-161-022-textop.md) — TextOp**（arXiv:2602.07439，项目页，[G `📅unknown` `[entity_page]`
 - [UniAct](wiki/entities/paper-loco-manip-161-023-uniact.md) — UniAct** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
-- [UniTracker](wiki/entities/paper-loco-manip-161-024-unitracker.md) — UniTracker** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C `📅unknown` `[entity_page]`
+- [UniTracker：通用全身运动跟踪（CVAE + 特权蒸馏）](wiki/entities/paper-loco-manip-161-024-unitracker.md) — UniTracker**（*Learning Universal Whole-Body Motion Tracker for Humanoid Robots*，[arXiv:2507.07356 `📅unknown` `[entity_page]`
 - [人形操作接口](wiki/entities/paper-loco-manip-161-025-n025.md) — 人形操作接口** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [人形机器人富有表现力的全身控制](wiki/entities/paper-loco-manip-161-026-n026.md) — 人形机器人富有表现力的全身控制** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGd `📅unknown` `[entity_page]`
 - [人形机器人行为基础模型](wiki/entities/paper-loco-manip-161-027-n027.md) — 人形机器人行为基础模型** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0 `📅unknown` `[entity_page]`
