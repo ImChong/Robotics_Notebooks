@@ -6,6 +6,7 @@ updated: 2026-07-24
 related:
   - ./unitree.md
   - ./unifolm-world-model-action.md
+  - ./unifolm-wla.md
   - ./unitree-lerobot.md
   - ./lerobot.md
   - ../concepts/world-action-models.md
@@ -67,11 +68,12 @@ pip install "flash-attn==2.5.6" --no-build-isolation
 
 - FlashAttention / CUDA / 钉扎 LeRobot commit 使环境脆弱，勿随意升级。
 - 「12 类任务单策略」等声明需对照官方评测设定，不能直接外推到任意现场。
-- 与 WMA（世界模型–动作）是**并行家族成员**，不是互相替代的同一仓库。
+- 与 WMA / [WLA-1.0](./unifolm-wla.md) 是**并行家族成员**，不是互相替代的同一仓库；WLA 为更新一代 6B 全身模型，本仓仍是 **可端到端训练** 的 VLA-0 落点。
 
 ## 关联页面
 
 - [UnifoLM-WMA](./unifolm-world-model-action.md)
+- [UnifoLM-WLA-1.0](./unifolm-wla.md)
 - [unitree_lerobot](./unitree-lerobot.md)
 - [World-Action Models](../concepts/world-action-models.md)
 - [Manipulation](../tasks/manipulation.md)

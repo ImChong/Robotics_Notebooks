@@ -1,3 +1,9 @@
+## [2026-09-18] ingest | sources/repos/unifolm-wla.md — UnifoLM-WLA-1.0：6B 全身 WLA + ER-1/ER-Flow 权重；部分开源（后训练/WLA-Base 待发布）；自动合并 PR
+
+- **触发：** 用户指定项目页 / GitHub / Hugging Face（UnifoLM-WLA-1.0、ER-1、ER-Flow）
+- **步骤 2.5：** **部分开源** — ER-1/ER-Flow 权重与 UniBot-V1 数据集已发布；Post-Train Code 与 UnifoLM-WLA-Base **待发布**
+- **关键页：** [`unifolm-wla`](wiki/entities/unifolm-wla.md)
+
 ## [2026-09-18] ingest | sources/papers/ici_vla_arxiv_2609_07581.md — ICI-VLA 时空对齐 micro-demo 检索 ICL；开源核查：截至入库日无官方代码
 
 ## [2026-09-18] ingest | sources/papers/birdriver_iclr_2026.md — BIRDriver ICLR 2026：BEV+VLM key points+PLUTO；InterPlan SOTA；代码未开源

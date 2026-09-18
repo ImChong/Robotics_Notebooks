@@ -6,6 +6,7 @@ updated: 2026-09-10
 related:
   - ./unitree.md
   - ./unifolm-vla.md
+  - ./unifolm-wla.md
   - ./unitree-lerobot.md
   - ./z1-sdk.md
   - ../concepts/world-action-models.md
@@ -141,11 +142,12 @@ cd external/dlimp && pip install -e .
 
 - **环境钉扎**：pinocchio / ffmpeg / 子模块 `dlimp`；部署侧另需 `unitree_sdk2_python` 与真机网络拓扑（与 [`xr_teleoperate`](./xr-teleoperate.md) 图像服务流程耦合）。
 - **演示窗口右上角** 为未来动作 **世界模型预测视频**，不等于开环一定成功；决策模式仍依赖 server–client 延迟与 `action_horizon` 设定。
-- **与 VLA 分工**：[`unifolm-vla`](./unifolm-vla.md) 走视觉–语言–动作；本仓强调 **显式世界动态** 与 **仿真数据合成**，选型看是否需要交互式 WM 而非比星标。
+- **与 VLA / WLA 分工**：[`unifolm-vla`](./unifolm-vla.md) 走视觉–语言–动作；[`unifolm-wla`](./unifolm-wla.md) 为 6B 全身 WLA 新主线；本仓强调 **显式世界动态** 与 **仿真数据合成**，选型看是否需要交互式 WM 而非比星标。
 
 ## 关联页面
 
 - [UnifoLM-VLA](./unifolm-vla.md)
+- [UnifoLM-WLA-1.0](./unifolm-wla.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Z1 软件栈](./z1-sdk.md)
