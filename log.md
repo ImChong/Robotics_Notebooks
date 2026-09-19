@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md — 多模空间一周 VLA 趋势（21 篇）；新建 17 实体 + 技术地图；复用 TEMPO/SLIM/ω-0；升级 World Tokens 补 arXiv:2608.09730
+
 ## [2026-09-19] ingest | sources/repos/text2mujoco.md — 接入 Text2MuJoCo Agent Skill（NL→可验证 MuJoCo 包）；GitHub 已开源
 
 ## [2026-09-19] ingest | sources/papers/tf8_reaction_force_sea_tmrb_2021.md — 接入 MIT TF8 MC-RFSEA 仿生膝踝假肢；项目页核查确认未开源

@@ -24,11 +24,13 @@ related:
   - ../methods/action-chunking.md
   - ./libero-benchmark.md
   - ./calvin-benchmark.md
+  - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/slim_05b_arxiv_2608_09771.md
   - ../../sources/sites/kzz1031-slim-project-page.md
   - ../../sources/repos/slim.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "SLIM-0.5B（arXiv:2608.09771，Fudan×BAAI×THU×RUC）：0.47B MoT 策略；Stage-1 掩码轨迹 IDM+FDM 学动作接地预测 latent，Stage-2 flow-matching 部署；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556；真机 77.3ms·2.01GiB；已开源+HF 权重。"
 ---
 
