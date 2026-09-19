@@ -9,6 +9,60 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
+      "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
+      "label": "Physical AI 策展清单：natnew vs aichr",
+      "type": "comparison",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-legged-locomotion-learning.md",
+      "detail_id": "entity-awesome-legged-locomotion-learning",
+      "label": "awesome-legged-locomotion-learning",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-legged-robot-learning-clearlab.md",
+      "detail_id": "entity-awesome-legged-robot-learning-clearlab",
+      "label": "Awesome-Legged-Robot-Learning（ClearLab @ SUSTech）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/awesome-physical-ai-aichr.md",
+      "detail_id": "entity-awesome-physical-ai-aichr",
+      "label": "awesome-physical-ai（aichr）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-physical-ai-natnew.md",
+      "detail_id": "entity-awesome-physical-ai-natnew",
+      "label": "awesome-physical-ai（natnew）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
       "detail_id": "wiki-concepts-embodied-data-collection-four-layers-taxonomy",
       "label": "具身数据采集：四层术语地图",
@@ -157,67 +211,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-recoverfly-aerial-vln.md",
-      "detail_id": "entity-paper-recoverfly-aerial-vln",
-      "label": "RecoverFly（arXiv:2608.09467）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tdhd-surgical-dual-arm.md",
-      "detail_id": "entity-paper-tdhd-surgical-dual-arm",
-      "label": "TDHD（arXiv:2608.09125）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vane.md",
-      "detail_id": "entity-paper-vane",
-      "label": "VANE（arXiv:2608.09448）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vla-action-post-training-depth-decodability.md",
-      "detail_id": "entity-paper-vla-action-post-training-depth-decodability",
-      "label": "VLA Depth Decodability（arXiv:2608.08904）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wa-specdec.md",
-      "detail_id": "entity-paper-wa-specdec",
-      "label": "WA-SpecDec（arXiv:2608.08725）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
-    "detail_id": "wiki-concepts-embodied-data-collection-four-layers-taxonomy",
-    "label": "具身数据采集：四层术语地图",
-    "type": "concept",
+    "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
+    "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
+    "label": "Physical AI 策展清单：natnew vs aichr",
+    "type": "comparison",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
