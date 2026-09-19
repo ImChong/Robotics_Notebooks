@@ -10,7 +10,7 @@ tags:
   - acp
   - open-source
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 related:
   - ./hermes-agent.md
   - ./openclaw.md
@@ -24,6 +24,7 @@ related:
   - ./paper-robo-harness.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ./agent-lightning.md
+  - ./typesafe-jev.md
   - ../concepts/ai-auto-research.md
   - ../references/llm-wiki-karpathy.md
 sources:
