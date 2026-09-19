@@ -3559,6 +3559,7 @@
 - [动态障碍物滤波（导航地图制作）](wiki/concepts/dynamic-obstacle-filtering.md) — 动态障碍物滤波**在建图或代价地图流水线中识别并抑制 **非静态占用**（行人、临时堆物、扫描拖影），使二维导航地图主要表达墙体/家具等持久结构——对应课程第 4.1 节「动态障碍物剔除与二维导航 `📅unknown` `[wiki_page]`
 - [边缘计算与云端协同（Edge–Cloud Robotics）](wiki/concepts/edge-cloud-robotics.md) — 边缘–云端协同** 把机器人能力拆到 **低延迟本地闭环** 与 **高算力云端批处理**：边缘保安全与控制，云端保学习、存储与队级优化。 `📅unknown` `[wiki_page]`
 - [Embodied Data Cleaning (具身数据清洗)](wiki/concepts/embodied-data-cleaning.md) — 具身数据清洗**：在具身智能（Embodied AI）中，将人类示教或自动采集的原始“脏数据”转化为高质量、可用于训练的专家演示轨迹（Expert Trajectories）的过程。 `📅unknown` `[wiki_page]`
+- [具身数据采集：四层术语地图](wiki/concepts/embodied-data-collection-four-layers-taxonomy.md) — 具身数据采集术语** 常被混在同一句话里，但分别回答四个问题：**从谁的位置看（视角）**、**用什么传感（设备）**、**人怎样示范（教法）**、**最终记什么（产物）**；贯穿四层的主线是  `📅unknown` `[wiki_page]`
 - [概念：具身大模型实时性 ↔ 泛化能力取舍](wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [具身大模型与本体协同设计](wiki/concepts/embodied-foundation-model-hardware-codesign.md) — 具身大模型与本体协同设计**指：具身智能的「通用」首先是 **在特定本体边界内扩大可执行任务覆盖面**，而非脱离硬件的万能模型；大模型公司下场自研执行器、传感与整机，是为了把 **数据闭环、分层控 `📅unknown` `[wiki_page]`
 - [具身感知六种空间表征](wiki/concepts/embodied-perception-six-spatial-representations.md) — 具身感知六种空间表征**把常被并列混谈的 **2D 视觉、深度、点云、占据栅格/距离场、语义地图、隐式地图** 拆成感知栈上的不同层级：它们回答的问题不同（看见什么 → 多远 → 表面在哪 → 能 `📅unknown` `[wiki_page]`

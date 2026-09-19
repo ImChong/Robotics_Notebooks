@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4307,
-  "edge_count": 38412,
+  "node_count": 4308,
+  "edge_count": 38432,
   "coverage": {
-    "covered": 4279,
-    "total": 4279,
+    "covered": 4280,
+    "total": 4280,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -226,11 +226,11 @@
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 542
+      "size": 543
     },
     {
       "label": "全身控制",
-      "size": 484
+      "size": 486
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -238,7 +238,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 255
+      "size": 254
     },
     {
       "label": "仿真到现实",
@@ -265,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1051,
+      "degree": 1052,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -289,7 +289,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 737,
+      "degree": 738,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -305,7 +305,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 632,
+      "degree": 634,
       "has_repo": true
     },
     {

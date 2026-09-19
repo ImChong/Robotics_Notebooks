@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-15
+updated: 2026-09-19
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -263,6 +263,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 ---
 
 ## 关联页面
+- [具身数据采集四层术语地图](./embodied-data-collection-four-layers-taxonomy.md) — MoCap 教法层与重定向在动作标签形成中的位置
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — 端到端工程链路视角：源归一 → 骨架对齐 → IK → 物理筛选 → 配对监督
 - [KDMR](../entities/paper-kdmr.md) — GRF 多接触全身 TO
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + KDTO

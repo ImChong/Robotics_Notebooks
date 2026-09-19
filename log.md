@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md — 具身智能前沿四层采集术语地图；升格 wiki/concepts/embodied-data-collection-four-layers-taxonomy.md；交叉 teleoperation / IL / IMU / motion-retargeting
+
 ## [2026-09-19] ingest | sources/blogs/wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md — 飞一样的成长 IMU 原理/算法/相机驱动协同；升格 wiki/concepts/imu-principles-algorithms-camera-sync.md
 
 ## [2026-09-19] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md — 多模空间一周 VLA 趋势（21 篇）；新建 17 实体 + 技术地图；复用 TEMPO/SLIM/ω-0；升级 World Tokens 补 arXiv:2608.09730
