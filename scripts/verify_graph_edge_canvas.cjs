@@ -94,12 +94,23 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
       && Math.abs(canvasInfo.cssH - canvasInfo.wrapH) <= 1, JSON.stringify(canvasInfo));
     check('像素比不超过上限 2', !!canvasInfo && canvasInfo.dpr <= 2, `dpr=${canvasInfo && canvasInfo.dpr}`);
 
-    // ── 3. 默认态 ──
+    // ── 3. 默认态（连线默认关闭，仅节点）──
     const inkDefault = await ink();
     const drawnDefault = await dbg(() => window.__RN_GRAPH2D_DEBUG__.edgeDrawnCount());
-    check('默认态画出连线', inkDefault > 1000 && drawnDefault > 0,
-      `ink=${inkDefault}，drawn=${drawnDefault}`);
+    const showEdgesDefault = await dbg(() => !document.getElementById('check-show-edges').checked);
+    check('默认态关闭连线', showEdgesDefault && inkDefault === 0 && drawnDefault === 0,
+      `checked=${!showEdgesDefault}，ink=${inkDefault}，drawn=${drawnDefault}`);
     await page.screenshot({ path: path.join(outDir, 'graph-edge-canvas-default.png') });
+
+    // 后续边层用例需要显式打开「显示连线」（开关在参数面板内）
+    await page.click('#physics-toggle');
+    await page.waitForSelector('#physics-panel:not([hidden])');
+    await page.click('#check-show-edges');
+    await sleep(1200);
+    const inkWithEdges = await ink();
+    const drawnWithEdges = await dbg(() => window.__RN_GRAPH2D_DEBUG__.edgeDrawnCount());
+    check('勾选后画出连线', inkWithEdges > 1000 && drawnWithEdges > 0,
+      `ink=${inkWithEdges}，drawn=${drawnWithEdges}`);
 
     // ── 4. 悬停高亮 ──
     const hoverId = await dbg(() => {
@@ -116,7 +127,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     });
     await sleep(700);
     const inkHover = await ink();
-    check('悬停切到高亮上色', !!hoverId && inkHover > 0 && inkHover !== inkDefault,
+    check('悬停切到高亮上色', !!hoverId && inkHover > 0 && inkHover !== inkWithEdges,
       `node=${hoverId}，ink=${inkHover}`);
     await page.screenshot({ path: path.join(outDir, 'graph-edge-canvas-hover.png') });
     await page.evaluate((id) => {
@@ -188,7 +199,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     await page.screenshot({ path: path.join(outDir, 'graph-edge-canvas-timeline.png') });
     await page.click('#timeline-animate');
     await sleep(2500);
-    check('退出时序后边层恢复', (await ink()) > 1000);
+    check('退出时序后边层恢复（连线仍开启）', (await ink()) > 1000);
 
     // ── 9. 2D → 3D → 2D ──
     await page.click('#view-mode-3d');
