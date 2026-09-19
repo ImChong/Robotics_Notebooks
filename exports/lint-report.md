@@ -108,8 +108,8 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-humanclaw.md（含绝对化措辞「SOTA」，updated=2026-09-18；同主题更新页 wiki/entities/paper-astronex-world-1.md updated=2026-09-19）
-- wiki/entities/paper-lawam.md（含绝对化措辞「SOTA」，updated=2026-09-18；同主题更新页 wiki/entities/paper-astronex-world-1.md updated=2026-09-19）
+- wiki/entities/paper-humanclaw.md（含绝对化措辞「SOTA」，updated=2026-09-18；同主题更新页 wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md updated=2026-09-19）
+- wiki/entities/paper-lawam.md（含绝对化措辞「SOTA」，updated=2026-09-18；同主题更新页 wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md updated=2026-09-19）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -129,4 +129,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4257/4257 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4258/4258 (100%) wiki/entity 页有 ingest 来源
