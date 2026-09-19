@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-19",
   "node_count": 4325,
-  "edge_count": 38663,
+  "edge_count": 38234,
   "coverage": {
     "covered": 4296,
     "total": 4296,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "roadmap/depth-rsi.md",
+      "detail_id": "roadmap-depth-rsi",
+      "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
+      "type": "roadmap_page",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
     {
       "path": "wiki/entities/cloudflare-security-audit-skill.md",
       "detail_id": "entity-cloudflare-security-audit-skill",
@@ -17,7 +27,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-rsi-survey-2607-07663.md",
@@ -28,7 +38,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/queries/rsi-four-tier-five-pushes.md",
@@ -38,18 +48,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
-    },
-    {
-      "path": "roadmap/depth-rsi.md",
-      "detail_id": "roadmap-depth-rsi",
-      "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
-      "type": "roadmap_page",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/acados.md",
@@ -60,7 +59,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/lingbot-world.md",
@@ -70,8 +69,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/mujoco-menagerie.md",
@@ -111,7 +109,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/awesome-legged-locomotion-learning.md",
@@ -142,7 +140,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/awesome-physical-ai-natnew.md",
@@ -152,8 +150,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
@@ -163,7 +160,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "path": "wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md",
@@ -172,8 +169,7 @@
       "type": "concept",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/concepts/robot-data-supervision-signal-types.md",
@@ -182,8 +178,7 @@
       "type": "concept",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/overview/embodied-data-collection-to-flywheel-album.md",
@@ -192,8 +187,7 @@
       "type": "overview",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/concepts/imu-principles-algorithms-camera-sync.md",
@@ -203,7 +197,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-activefly-bench.md",
@@ -213,32 +207,27 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cloudflare-security-audit-skill.md",
-    "detail_id": "entity-cloudflare-security-audit-skill",
-    "label": "Security Audit Skill（Cloudflare）",
-    "type": "entity",
+    "path": "roadmap/depth-rsi.md",
+    "detail_id": "roadmap-depth-rsi",
+    "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
+    "type": "roadmap_page",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
-      "label": "移动操作",
-      "size": 756
-    },
-    {
       "label": "操作",
-      "size": 575
+      "size": 621
     },
     {
-      "label": "具身评测基准选型闭环",
-      "size": 451
+      "label": "宇树 G1 人形机器人",
+      "size": 609
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -246,11 +235,15 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 277
+      "size": 250
     },
     {
       "label": "仿真到现实",
-      "size": 215
+      "size": 216
+    },
+    {
+      "label": "机器人学习论文笔记",
+      "size": 194
     }
   ],
   "top_hubs": [
@@ -339,7 +332,7 @@
       "type": "method",
       "degree": 165,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -347,14 +340,14 @@
       "type": "method",
       "degree": 90,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 67,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -368,15 +361,14 @@
       "type": "entity",
       "degree": 60,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 53,
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -384,7 +376,7 @@
       "type": "entity",
       "degree": 50,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -392,14 +384,13 @@
       "type": "entity",
       "degree": 49,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 46,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "degree": 46
     },
     {
       "detail_id": "entity-paper-ctrl-world",
