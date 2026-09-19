@@ -22,12 +22,14 @@ related:
   - ../methods/defi-decoupled-dynamics-vla.md
   - ./calvin-benchmark.md
   - ../overview/vla-open-source-repro-landscape-2025.md
+  - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ../../roadmap/depth-vla.md
   - ../comparisons/online-vs-offline-rl.md
   - ./paper-temporal-grpo.md
 sources:
   - ../../sources/papers/tempo_arxiv_2608_07314.md
   - ../../sources/sites/tempo-anonymous-4open.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "TEMPO（arXiv:2608.07314，ZJSU/KTH）：冻结 VLM，对 semantic projection 与 action expert 分设 TD3 环并双频更新；FLOWER 后训练在 CALVIN ABC→D 达 SR5 81.7%/Avg.Len. 4.59；真机两任务奖励高于单环 FLOWER-RL；截至 2026-08-11 确认未开源。"
 ---
 

@@ -24,6 +24,7 @@ related:
   - ./paper-dypes-vla.md
   - ../concepts/world-action-models.md
   - ../tasks/loco-manipulation.md
+  - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ../tasks/teleoperation.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/vla.md
@@ -31,6 +32,7 @@ related:
 sources:
   - ../../sources/papers/omega0_arxiv_2608_06375.md
   - ../../sources/sites/omega0-github-io.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来观测 embedding + 扩散全身动作 latent 的并发人形 loco-manipulation WAM；ω-HOME 40h+；G1 上 11 任务 Omni 成功率 81.8%；代码/数据 WIP。"
 ---
 

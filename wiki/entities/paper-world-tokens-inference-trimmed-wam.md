@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-29
+updated: 2026-09-19
 venue: curated
+arxiv: "2608.09730"
 
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
@@ -12,6 +13,8 @@ related:
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
+  - ../../sources/papers/world_tokens_arxiv_2608_09730.md
 summary: "World Tokens（具身世界模型六路线专题）：训练期世界监督、推理期裁剪生成分支的 WAM 趋势代表。"
 ---
 
@@ -42,7 +45,7 @@ summary: "World Tokens（具身世界模型六路线专题）：训练期世界�
 | 项 | 内容 |
 |----|------|
 | **路线** | 行动主导型 |
-| **出处** | （策展文未给 arXiv；以原文为准） |
+| **arXiv** | [2608.09730](https://arxiv.org/abs/2608.09730) |
 | **文内角色** | 训练期世界监督、推理期裁剪生成分支的 WAM 趋势代表。 |
 
 ## 结论
@@ -74,6 +77,8 @@ summary: "World Tokens（具身世界模型六路线专题）：训练期世界�
 
 ## 参考来源
 
+- [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
+- [world_tokens_arxiv_2608_09730.md](../../sources/papers/world_tokens_arxiv_2608_09730.md)
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
 
 ## 推荐继续阅读
