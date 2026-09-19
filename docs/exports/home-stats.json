@@ -9,6 +9,57 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/acados.md",
+      "detail_id": "entity-acados",
+      "label": "acados",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/lingbot-world.md",
+      "detail_id": "entity-lingbot-world",
+      "label": "LingBot-World",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/mujoco-menagerie.md",
+      "detail_id": "entity-mujoco-menagerie",
+      "label": "MuJoCo Menagerie",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/tienkung-lab.md",
+      "detail_id": "entity-tienkung-lab",
+      "label": "TienKung-Lab",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/robot-opensource-algorithms-compendium-wechat.md",
+      "detail_id": "wiki-overview-robot-opensource-algorithms-compendium-wechat",
+      "label": "开源机器人算法大全（微信策展）— 索引",
+      "type": "overview",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
       "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
       "label": "Physical AI 策展清单：natnew vs aichr",
@@ -160,63 +211,13 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hermite-curves-vla-trajectory-priors.md",
-      "detail_id": "entity-paper-hermite-curves-vla-trajectory-priors",
-      "label": "Hermite Curves VLA（arXiv:2608.01265）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hymes-hybrid-memory-manipulation.md",
-      "detail_id": "entity-paper-hymes-hybrid-memory-manipulation",
-      "label": "HyMeS（arXiv:2608.09410）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-jepa-wam.md",
-      "detail_id": "entity-paper-jepa-wam",
-      "label": "JEPA-WAM（arXiv:2608.09381）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mamba-smolvla-expert.md",
-      "detail_id": "entity-paper-mamba-smolvla-expert",
-      "label": "Mamba SmolVLA Expert（arXiv:2608.21407）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-onevomemory.md",
-      "detail_id": "entity-paper-onevomemory",
-      "label": "OnEvoMemory（arXiv:2608.08749）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
-    "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
-    "label": "Physical AI 策展清单：natnew vs aichr",
-    "type": "comparison",
+    "path": "wiki/entities/acados.md",
+    "detail_id": "entity-acados",
+    "label": "acados",
+    "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
