@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-19
 related:
   - ./humanoid-motion-control-30-papers-technology-map.md
   - ../entities/paper-hrl-stack-35-dreamdojo.md
@@ -13,6 +13,7 @@ related:
   - ./humanoid-rl-policy-training-five-modules.md
   - ./humanoid-motion-control-know-how.md
   - ../tasks/humanoid-locomotion.md
+  - ../entities/paper-evolution-humanoid-locomotion-control.md
   - ../tasks/loco-manipulation.md
   - ../tasks/ultra-survey.md
   - ../methods/deepmimic.md
@@ -51,6 +52,8 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 # 人形机器人 RL 运动控制：身体系统栈视角
 
 > **本页定位**：把一篇按论文堆栈整理的综述（42 篇 humanoid RL 控制工作）压缩成「按系统层组织」的检索表，便于跨页面查阅；不复述每篇论文细节，只保留**层间分工**与**研究判断**。
+>
+> **期刊级总览入口：** [Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）](../entities/paper-evolution-humanoid-locomotion-control.md) — 三时代 + System1/2 统一视图，280 refs companion；与本页 42 篇 RL 栈 **互补**（本篇偏范式史与经典–学习–生成式全谱，本页偏 RL 身体系统八层）。
 
 ## 一句话观点
 
@@ -189,3 +192,4 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 - [两万字长文，读懂人形机器人强化学习运动控制：42 篇论文搭起的算法圣经（微信公众号原文）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
 - [具身智能研究室 · 人形机器人 RL 运动控制 42 篇综述（仓库内归档）](../../sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md)
 - [Humanoid Motion Intelligence（GitHub 知识库归档）](../../sources/repos/humanoid-motion-intelligence.md)
+- [Evolution of Humanoid Locomotion Control（Science Robotics 2026）](../entities/paper-evolution-humanoid-locomotion-control.md) — 期刊 Review + [companion 280 refs](https://github.com/purdue-tracelab/Humanoid-Locomotion-Survey)

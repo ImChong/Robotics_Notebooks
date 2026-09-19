@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4275,
-  "edge_count": 38196,
+  "node_count": 4276,
+  "edge_count": 38211,
   "coverage": {
-    "covered": 4247,
-    "total": 4247,
+    "covered": 4248,
+    "total": 4248,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -274,7 +274,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1093,
+      "degree": 1094,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -305,7 +305,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 733,
+      "degree": 734,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -328,7 +328,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 607,
+      "degree": 608,
       "has_repo": true
     },
     {

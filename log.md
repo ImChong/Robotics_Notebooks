@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | Evolution of Humanoid Locomotion Control（SciRobotics 2026 Review）：三时代 locomotion 控制综述 + companion 280 refs
+
 ## [2026-09-19] ingest | sources/blogs/typesafe_ai_introducing_system_one_models_jev.md — Jev System One Model 升格 typesafe-jev 实体（SDK 已开源）
 
 ## [2026-09-19] ingest | sources/papers/seen2scene_arxiv_2603_28548.md — Seen2Scene visibility-guided flow 3D 场景补全升格 paper-seen2scene（已开源）

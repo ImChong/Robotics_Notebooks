@@ -44,6 +44,8 @@ updated: 2026-04-20
 
 ## 推荐论文路线（按时间）
 
+**总览锚点（先读）：** [Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）](../entities/paper-evolution-humanoid-locomotion-control.md) — 三时代框架 + getting-started 七步 RL 路线；[companion 280 refs](https://github.com/purdue-tracelab/Humanoid-Locomotion-Survey) 按 section 组织。
+
 1. PPO (Schulman 2017) — RL 基础
 2. AMP (Peng 2021) — 对抗模仿学习
 3. ASE (Peng 2022) — 对抗技能嵌入
@@ -52,6 +54,7 @@ updated: 2026-04-20
 
 ## 参考来源
 
+- Gu et al., *Evolution of Humanoid Locomotion Control*, [Science Robotics 2026](https://doi.org/10.1126/scirobotics.aed3973) — 范式史总览 + 实践入门
 - Peng et al., *AMP: Adversarial Motion Priors* (2021) — RL 模仿运动风格代表
 - Peng et al., *ASE: Large-Scale Reusable Adversarial Skill Embeddings* (2022) — 技能空间嵌入
 - Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — PPO 训练框架
