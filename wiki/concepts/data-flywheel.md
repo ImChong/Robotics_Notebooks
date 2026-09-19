@@ -41,7 +41,7 @@ sources:
 ## 为什么重要？
 
 具身智能的最终落地依赖于 [embodied-scaling-laws](embodied-scaling-laws.md)。数据飞轮是实现规模效应的核心手段：
-- **突破“人力”瓶颈**：传统的遥操作（Teleoperation）数据采集昂贵且低效，飞轮效应通过仿真（[robotwin](../entities/robotwin.md)）或自监督学习减少对人的依赖。
+- **突破“人力”瓶颈**：传统的遥操作（Teleoperation）数据采集昂贵且低效，飞轮效应通过仿真（[robotwin](../entities/robotwin.md)）或自监督学习减少对人的依赖。灵巧侧 [TeleDexter](../entities/paper-teledexter.md) 把 co-tracking 小脑当作 **金字塔尖示范** 引擎：50 demos/任务即可训 Diffusion Policy，但依赖重型 MoCap 且 object-specific。
 - **长尾场景覆盖**：通过策略在真机或仿真中失败的案例，自动触发针对性的数据补全（[generative-data-augmentation](../methods/generative-data-augmentation.md)），从而攻克边缘情况（Edge Cases）。
 
 ## 核心闭环
@@ -86,6 +86,7 @@ sources:
 - [机器人 In-Context Learning](./robot-in-context-learning.md)
 - [LWD](../methods/lwd.md) — 失败轨迹也进飞轮的 RL 读法
 - [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md) — 数据架构难改，且是 AI 自己的输入上下文；schema 选错会污染飞轮
+- [TeleDexter（论文实体）](../entities/paper-teledexter.md) — 灵巧 co-tracking 遥操作采数→DP 的飞轮实例
 
 ## 推荐继续阅读
 

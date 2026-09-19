@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/papers/teledexter_arxiv_2607_11481.md — TeleDexter 2026-09-19 复核查：官方仍未开源；补 Pen Spinning / 数据金字塔尖 / data-flywheel 交叉
+
 ## [2026-09-19] ingest | sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md — 微信「开源机器人算法大全」16 项索引；新建 acados / mujoco-menagerie / tienkung-lab / lingbot-world + overview；校正 AMP/ALOHA/Diffusion/LingBot 失效 GitHub 链
 
 ## [2026-09-19] ingest | sources/repos/awesome-legged-locomotion-learning.md + awesome-physical-ai（natnew/aichr）— 腿足 locomotion 双清单 + Physical AI 双同名仓；新建 4 entity + 1 comparison；natnew 含 GitHub Pages 文档站

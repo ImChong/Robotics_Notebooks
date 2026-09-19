@@ -13,8 +13,8 @@
 - **作者：** Puhao Li\*、Zeyuan Chen\*、Yingying Wu\*、Pengkun Wei、Yuyang Li、Tianyu Wang、Jiaxiao Shi、Mingrui Yu、Baoxiong Jia、Song-Chun Zhu、Tengyu Liu†、Siyuan Huang†（\* 共同一作，† 通讯）
 - **仿真 / 训练：** Isaac Gym；SAPG；约 62k 并行环境、4× RTX 5090；单物体参考运动约 50 分钟
 - **真机：** Franka FR3 + SharpaWave（22 DoF）/ LeapHand（16 DoF）；NOKOV MoCap 30 Hz
-- **开源状态：** **未开源**（截至 2026-07-28：项目页未列代码；GitHub 无 `teledexter` 公开仓）
-- **入库日期：** 2026-07-28
+- **开源状态：** **未开源**（截至 2026-09-19：项目页仍无官方代码链；仅见非官方 [ice4133/TeleDexter](https://github.com/ice4133/TeleDexter) 第三方仓）
+- **入库日期：** 2026-07-28（2026-09-19 复核查）
 - **一句话说明：** 提出 hand–object **co-tracking** 低层控制器：操作员给出同步指尖位姿与物体位姿目标，仿真单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署，七项灵巧遥操作平均 **75.2% SR**，并可采数训 Diffusion Policy。
 
 ## 相关资料（策展）

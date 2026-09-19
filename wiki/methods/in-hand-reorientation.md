@@ -2,7 +2,7 @@
 type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, control]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-19
 related:
   - ../entities/allegro-hand.md
   - ../entities/shadow-hand.md
