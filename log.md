@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/papers/tf8_reaction_force_sea_tmrb_2021.md — 接入 MIT TF8 MC-RFSEA 仿生膝踝假肢；项目页核查确认未开源
+
 ## [2026-09-19] ingest | sources/repos/addyosmani-agent-skills.md — 接入 Addy Osmani Agent Skills 实体页与 skills.addy.ie 核查
 
 ## [2026-09-19] ingest | sources/repos/open-code-review.md — 接入阿里巴巴 Open Code Review 实体页与项目页核查

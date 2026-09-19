@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4285,
-  "edge_count": 38295,
+  "node_count": 4286,
+  "edge_count": 38302,
   "coverage": {
-    "covered": 4257,
-    "total": 4257,
+    "covered": 4258,
+    "total": 4258,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -99,7 +99,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-evolution-humanoid-locomotion-control.md",
@@ -233,15 +233,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 580
+      "size": 575
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 535
+      "size": 538
     },
     {
       "label": "全身控制",
-      "size": 415
+      "size": 422
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -249,7 +249,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 250
+      "size": 255
     },
     {
       "label": "仿真到现实",
@@ -378,7 +378,8 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
