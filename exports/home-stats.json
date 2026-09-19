@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4274,
-  "edge_count": 38188,
+  "node_count": 4275,
+  "edge_count": 38196,
   "coverage": {
-    "covered": 4246,
-    "total": 4246,
+    "covered": 4247,
+    "total": 4247,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -37,7 +37,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-agile-wam.md",
@@ -245,7 +245,7 @@
     },
     {
       "label": "全身控制",
-      "size": 506
+      "size": 492
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -288,7 +288,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1029,
+      "degree": 1030,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -382,7 +382,8 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 52,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",

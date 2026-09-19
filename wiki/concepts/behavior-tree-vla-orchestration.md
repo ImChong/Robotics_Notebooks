@@ -2,10 +2,11 @@
 type: concept
 tags: [behavior-tree, vla, orchestration, deployment, ros2, physical-ai, robotis]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 summary: "行为树与 VLA 结合：用 BT 编排策略加载/暂停/复位与宏动作，VLA 负责语言条件下的连续操作 chunk；BT 提供可组合、可恢复的任务结构，VLA 提供语义技能执行。"
 related:
   - ../methods/vla.md
+  - ../entities/typesafe-jev.md
   - ../entities/cyclo-intelligence.md
   - ../entities/navigation2.md
   - ../methods/saycan.md
@@ -108,6 +109,8 @@ BT 节点可传入：
 | 失败恢复 | 需额外监控与重规划 | BT **Sequence/Loop + STOP** 天然插入恢复支路 |
 
 二者可叠加：BT 某一叶节点仍可调用 **VLM 重规划**；本概念页聚焦 **工程上已常见的「BT 管流程、VLA 管操作段」**。
+
+**毫秒级分支层：** 若节点只需在离散标签间路由（escalate / auto / 选技能 ID），[TypeSafe Jev](../entities/typesafe-jev.md) 等 **System One** API 可在 BT 外提供 **typed probability**，避免 LLM 字符串 parse；**VLA 仍负责连续操作 chunk**。
 
 ## 常见误区或局限
 
