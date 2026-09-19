@@ -6,6 +6,7 @@ tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持数据采集、训练、EnvHub 仿真评测与实物部署。"
 updated: 2026-09-18
 related:
+  - ../overview/robot-opensource-algorithms-compendium-wechat.md
   - ../concepts/lerobot-envhub.md
   - ./paper-imitator-game.md
   - ./paper-evo1-lightweight-vla.md

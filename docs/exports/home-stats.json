@@ -1,13 +1,66 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4316,
-  "edge_count": 38498,
+  "node_count": 4321,
+  "edge_count": 38550,
   "coverage": {
-    "covered": 4288,
-    "total": 4288,
+    "covered": 4293,
+    "total": 4293,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
+      "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
+      "label": "Physical AI 策展清单：natnew vs aichr",
+      "type": "comparison",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-legged-locomotion-learning.md",
+      "detail_id": "entity-awesome-legged-locomotion-learning",
+      "label": "awesome-legged-locomotion-learning",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/awesome-legged-robot-learning-clearlab.md",
+      "detail_id": "entity-awesome-legged-robot-learning-clearlab",
+      "label": "Awesome-Legged-Robot-Learning（ClearLab @ SUSTech）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/awesome-physical-ai-aichr.md",
+      "detail_id": "entity-awesome-physical-ai-aichr",
+      "label": "awesome-physical-ai（aichr）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-physical-ai-natnew.md",
+      "detail_id": "entity-awesome-physical-ai-natnew",
+      "label": "awesome-physical-ai（natnew）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
     {
       "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
       "detail_id": "wiki-concepts-embodied-data-collection-four-layers-taxonomy",
@@ -157,72 +210,23 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-recoverfly-aerial-vln.md",
-      "detail_id": "entity-paper-recoverfly-aerial-vln",
-      "label": "RecoverFly（arXiv:2608.09467）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tdhd-surgical-dual-arm.md",
-      "detail_id": "entity-paper-tdhd-surgical-dual-arm",
-      "label": "TDHD（arXiv:2608.09125）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vane.md",
-      "detail_id": "entity-paper-vane",
-      "label": "VANE（arXiv:2608.09448）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vla-action-post-training-depth-decodability.md",
-      "detail_id": "entity-paper-vla-action-post-training-depth-decodability",
-      "label": "VLA Depth Decodability（arXiv:2608.08904）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wa-specdec.md",
-      "detail_id": "entity-paper-wa-specdec",
-      "label": "WA-SpecDec（arXiv:2608.08725）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
-    "detail_id": "wiki-concepts-embodied-data-collection-four-layers-taxonomy",
-    "label": "具身数据采集：四层术语地图",
-    "type": "concept",
+    "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
+    "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
+    "label": "Physical AI 策展清单：natnew vs aichr",
+    "type": "comparison",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 716
+      "size": 719
     },
     {
       "label": "操作",
@@ -230,7 +234,7 @@
     },
     {
       "label": "主路线：运动控制算法工程师成长路线",
-      "size": 434
+      "size": 458
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -238,11 +242,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 282
+      "size": 279
     },
     {
       "label": "仿真到现实",
-      "size": 216
+      "size": 215
     }
   ],
   "top_hubs": [
@@ -258,14 +262,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1099,
+      "degree": 1103,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1055,
+      "degree": 1056,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -281,7 +285,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 950,
+      "degree": 951,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -305,7 +309,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 638,
+      "degree": 639,
       "has_repo": true
     },
     {

@@ -12,6 +12,7 @@ related:
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/paper-amp-survey-08-more.md
   - ../entities/paper-robogauge-moe-quadruped-locomotion.md
+  - ../overview/robot-opensource-algorithms-compendium-wechat.md
   - ../entities/awesome-legged-locomotion-learning.md
   - ../entities/awesome-legged-robot-learning-clearlab.md
   - ../entities/paper-one-filter-ocr-quadruped-navigation.md
@@ -403,6 +404,7 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [开源机器人算法大全（微信策展索引）](../overview/robot-opensource-algorithms-compendium-wechat.md) — RSL-RL、TienKung-Lab、unitree_rl_gym 等 16 项工程入口
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）
 - Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）
 - Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）
