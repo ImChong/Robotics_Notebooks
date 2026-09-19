@@ -15,6 +15,7 @@ related:
   - ../entities/archify.md
   - ../entities/superpowers-obra.md
   - ../entities/open-code-review.md
+  - ../entities/agent-skills-addyosmani.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ./ai-auto-research.md
   - ./data-flywheel.md
