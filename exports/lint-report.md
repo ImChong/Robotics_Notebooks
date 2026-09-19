@@ -2,7 +2,7 @@
 
 ## [2026-09-19] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **4** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -107,8 +107,9 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-humanclaw.md（含绝对化措辞「SOTA」，updated=2026-09-18；同主题更新页 wiki/entities/paper-legged-robots-advances-challenges.md updated=2026-09-19）
+- wiki/entities/paper-lawam.md（含绝对化措辞「SOTA」，updated=2026-09-18；同主题更新页 wiki/entities/paper-legged-robots-advances-challenges.md updated=2026-09-19）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -128,4 +129,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4247/4247 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4248/4248 (100%) wiki/entity 页有 ingest 来源

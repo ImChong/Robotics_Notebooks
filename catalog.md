@@ -1174,6 +1174,7 @@
 - [ESRP：具身场景家具重排规划](wiki/entities/paper-esrp.md) — ESRP**（*Embodied Scene Rearrangement Planning*，[arXiv:2608.27371](https://arxiv.org/abs/2608.27371 `📅unknown` `[entity_page]`
 - [EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）](wiki/entities/paper-eventvla-visual-evidence-memory.md) — EventVLA**（arXiv:2606.20092，[项目页](https://ganlin-yang.github.i `📅unknown` `[entity_page]`
 - [Evo-1：轻量 VLA 与语义对齐保持](wiki/entities/paper-evo1-lightweight-vla.md) — Evo-1**（*Lightweight Vision-Language-Action Model with Preserved Semantic Alignment*，arXiv:[2511.0 `📅unknown` `[entity_page]`
+- [Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）](wiki/entities/paper-evolution-humanoid-locomotion-control.md) — Evolution of Humanoid Locomotion Control**（Yan Gu* / Guanya Shi* / Fan Shi* 等；Aaron D. Ames†、Hao S `📅unknown` `[entity_page]`
 - [EVPeriscope（arXiv:2609.11920）](wiki/entities/paper-evperiscope.md) — EVPeriscope**（[EVPeriscope: Extended Perception across Aerial and Ground Vehicles with Event-based `📅unknown` `[entity_page]`
 - [ExBody（HMI P028）](wiki/entities/paper-exbody-expressive-humanoid.md) — ExBody**（*Expressive Whole-Body Control for Humanoid Robots*，2024，[arXiv:2402.16796](https://arxiv `📅unknown` `[entity_page]`
 - [显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md) — 显式楼梯几何条件化**（arXiv:2605.09944，AIRS / CUHK-Shenzhen / MBZUAI）针对 **人形楼梯爬升** 提出：不把地形压进 **高维隐式 embeddin `📅unknown` `[entity_page]`

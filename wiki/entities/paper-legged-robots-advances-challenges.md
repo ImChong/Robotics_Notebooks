@@ -23,7 +23,7 @@ tags:
   - monash
   - rai-institute
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 arxiv: "2607.28952"
 doi: "10.1126/scirobotics.aee0787"
 venue: "Science Robotics 2026"
@@ -225,12 +225,12 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | 本文（SciRobotics Review 2026） | [仿生多模态综述](./paper-bioinspired-multimodal-robotics.md) | [Ha et al. IJRR 2025](https://doi.org/10.1177/02783649241312698) | [Locomotion 任务页](../tasks/locomotion.md) |
-|------|--------------------------------|--------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------|
-| 范围 | 人形+四足陆地五柱 + 社会/政策 | 跨介质仿生多模态 | 学习控制专向 | 本库任务索引 |
-| 贡献形态 | 能力盘点 + DSL 命名 + 四项政策优先 | 五指标 + 切换分类 + 三模块 | 方法谱系 | 工程导航 |
-| 社会层 | **显式**（PDF + 通稿） | 弱 | 弱 | 无 |
-| 代码 | 无 | 无 | 无（综述） | 指向各系统页 |
+| 维度 | 本文（SciRobotics Review 2026） | [Evolution of Humanoid Locomotion Control](./paper-evolution-humanoid-locomotion-control.md) | [仿生多模态综述](./paper-bioinspired-multimodal-robotics.md) | [Ha et al. IJRR 2025](https://doi.org/10.1177/02783649241312698) |
+|------|--------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------|
+| 范围 | 人形+四足陆地五柱 + 社会/政策 | **人形 locomotion 控制** 三时代范式史 | 跨介质仿生多模态 | 学习控制专向 |
+| 贡献形态 | 能力盘点 + DSL 命名 + 四项政策优先 | 三时代 + System1/2 + 280 refs companion | 五指标 + 切换分类 + 三模块 | 方法谱系 |
+| 社会层 | **显式**（PDF + 通稿） | 弱（侧重控制栈） | 弱 | 弱 |
+| 代码 | 无 | companion PDF/阅读列表 | 无 | 无（综述） |
 
 ## 局限与风险
 
@@ -246,6 +246,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — SysID / 域随机化主迁移范式
 - [MPC](../methods/model-predictive-control.md) — 经典动态行走与 RL 混合对照
 - [Capture Point / DCM](../concepts/capture-point-dcm.md) — 与 ZMP/动态平衡史对照
+- [Evolution of Humanoid Locomotion Control](./paper-evolution-humanoid-locomotion-control.md) — 同刊 2026 **人形 locomotion 控制** 深潜 Review（280 refs companion）
 - [仿生多模态机器人综述](./paper-bioinspired-multimodal-robotics.md) — 同刊 Issue 116 跨介质对照
 - [Challenging Terrain Locomotion](./paper-notebook-learning-quadrupedal-locomotion-over-challenging.md) — Lee et al. 2020 经典被引
 - [APT-RL](./paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — 感知敏捷四足前沿
