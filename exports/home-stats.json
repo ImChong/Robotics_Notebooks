@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/cloudflare-security-audit-skill.md",
+      "detail_id": "entity-cloudflare-security-audit-skill",
+      "label": "Security Audit Skill（Cloudflare）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
+    },
+    {
       "path": "wiki/entities/paper-rsi-survey-2607-07663.md",
       "detail_id": "entity-paper-rsi-survey-2607-07663",
       "label": "RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环",
@@ -203,22 +214,12 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-anycam-vla.md",
-      "detail_id": "entity-paper-anycam-vla",
-      "label": "AnyCamVLA（arXiv:2603.05868）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-rsi-survey-2607-07663.md",
-    "detail_id": "entity-paper-rsi-survey-2607-07663",
-    "label": "RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环",
+    "path": "wiki/entities/cloudflare-security-audit-skill.md",
+    "detail_id": "entity-cloudflare-security-audit-skill",
+    "label": "Security Audit Skill（Cloudflare）",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
