@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/receding-horizon-policy-execution.md",
+      "detail_id": "wiki-concepts-receding-horizon-policy-execution",
+      "label": "滚动预测执行（Receding-Horizon Policy Execution）",
+      "type": "concept",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/manda-robotics-open-policy-evaluation.md",
       "detail_id": "entity-manda-robotics-open-policy-evaluation",
       "label": "Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）",
@@ -212,29 +222,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-129-deepdrive-zero.md",
-      "detail_id": "entity-paper-as-129-deepdrive-zero",
-      "label": "Deepdrive Zero",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/manda-robotics-open-policy-evaluation.md",
-    "detail_id": "entity-manda-robotics-open-policy-evaluation",
-    "label": "Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）",
-    "type": "entity",
+    "path": "wiki/concepts/receding-horizon-policy-execution.md",
+    "detail_id": "wiki-concepts-receding-horizon-policy-execution",
+    "label": "滚动预测执行（Receding-Horizon Policy Execution）",
+    "type": "concept",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
