@@ -13,6 +13,7 @@ arxiv: "2304.13705"
 code: https://github.com/tonyzhaozh/act
 related:
   - ../methods/action-chunking.md
+  - ../concepts/receding-horizon-policy-execution.md
   - ./paper-diffusion-policy.md
   - ./paper-why-action-chunking-improves-bc.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
@@ -82,7 +83,7 @@ flowchart LR
 
 - 推理频率可以从控制频率里解耦
 - 双手必须联合建模，不要两只胳膊各训一个策略
-- 时间集成减抖，但会引入开环播放风险
+- 时间集成减抖，但 **TE ≠ Diffusion Policy 式 receding horizon**（见 [滚动预测执行](../concepts/receding-horizon-policy-execution.md)）
 - 后续 VLA 的 chunk 多从此处工程化
 - 机制深挖读 [action-chunking](../methods/action-chunking.md)
 
@@ -120,6 +121,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Action Chunking](../methods/action-chunking.md)
+- [滚动预测执行](../concepts/receding-horizon-policy-execution.md) — ACT TE 与 DP RH 对照
 - [Diffusion Policy](./paper-diffusion-policy.md)
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md)
 - [ParcelStow](./paper-parcelstow.md) — ACT 在 G1 包裹插入上的速度扫频：标称 100%，\(r=2\) 53%

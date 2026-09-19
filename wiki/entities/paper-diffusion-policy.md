@@ -13,6 +13,7 @@ arxiv: "2303.04137"
 code: https://github.com/real-stanford/diffusion_policy
 related:
   - ../methods/diffusion-policy.md
+  - ../concepts/receding-horizon-policy-execution.md
   - ./paper-pi0.md
   - ./paper-act.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
@@ -80,7 +81,7 @@ flowchart LR
 
 **动作分布多峰时，先用扩散/流模型，再决定要不要接语言骨干。**
 
-- chunk 预测降低逐步误差累积
+- chunk 预测降低逐步误差累积；部署用 **receding horizon**（执行前缀 \(T_e\)、丢弃后缀、重规划）
 - 去噪迭代是延迟税，实时部署要蒸馏或减步
 - 本页无语言输入；接 VLM 才变成 VLA 动作头
 - [π₀](./paper-pi0.md) 用流匹配把多步税压下去
@@ -120,6 +121,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Diffusion Policy 方法页](../methods/diffusion-policy.md)
+- [滚动预测执行](../concepts/receding-horizon-policy-execution.md) — DP 经典 RH vs ACT TE
 - [π₀](./paper-pi0.md)
 - [ACT](./paper-act.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)

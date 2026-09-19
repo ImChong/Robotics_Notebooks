@@ -67,6 +67,10 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - 使策略能做更长时间的协调规划
 - 典型长度：16～32 步
 
+### 滚动执行（Receding Horizon）
+
+原论文把 **receding-horizon control** 写进部署设计：一次去噪得到长度 \(T_p\) 的 chunk，**只执行前 \(T_e\) 步**（\(T_e < T_p\)），再用新观测 **重新预测** 下一段；未执行后缀 **丢弃**，而非与下一 chunk 融合。这与 ACT 默认的 **Temporal Ensembling**（每步重叠预测 + 加权平均） **不是同一执行协议**。机制对照见 [滚动预测执行](../concepts/receding-horizon-policy-execution.md)。
+
 ## 两种主要实现变体
 
 ### DDPM（基于 UNet 的扩散策略）
@@ -159,6 +163,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [FA-RDP（论文实体）](../entities/paper-fa-rdp.md) — 接触丰富操作上频率自适应视觉–力扩散（arXiv:2607.28596）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — 以 DP 为载体消融 chunk 部署（Delay / RDE）；结论针对机制而非扩散本身
 - [Action Chunking](./action-chunking.md) — DP 默认输出动作块时的训练 / 部署读法
+- [滚动预测执行（Receding Horizon）](../concepts/receding-horizon-policy-execution.md) — DP 经典 RH vs ACT TE 对照
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — Simons 2026 报告：为何生成式动作头抬升 IL / offline RL
 - [Seeker](../entities/paper-seeker.md) — 动作监督 ROI 作 DP 输入瓶颈；MimicGen 62.6%、xArm 域内 76.7%（arXiv:2608.13422；已开源）
 - [SPD](../entities/paper-spd.md) — 仿真 75 h 预训练的历史条件 DiT；灵巧真机短微调（CoRL 2026）

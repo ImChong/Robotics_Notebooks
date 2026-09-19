@@ -3616,6 +3616,7 @@
 - [Procedural Terrain Generation（程序化地形生成）](wiki/concepts/procedural-terrain-generation.md) — 程序化地形生成**：在仿真器中 **按规则或噪声参数** 自动生成多样地形 mesh/高度场，而非手工建模单个场景，用于 **批量训练** 四足越障与泛化评估。 `📅unknown` `[wiki_page]`
 - [处理器在环 Sim2Real（Processor-in-the-loop）](wiki/concepts/processor-in-the-loop-sim2real.md) — 处理器在环 Sim2Real**：不把控制器当成「数学上完美的函数」，而把**真实固件执行路径**（线程优先级、周期抖动、总线协议、嵌入式浮点语义）当作与环境动力学并列的**闭环组成部分**，在仿 `📅unknown` `[wiki_page]`
 - [过程奖励建模（Progress Reward Modeling）](wiki/concepts/progress-reward-modeling.md) — 过程奖励 / 进度模型** 回答执行中的问题：在当前目标下，机器人是在 **推进、停滞，还是回退**？它把「终局成功」之外的稠密、可比较信号用于 RL、监控、重排、过滤与恢复。 `📅unknown` `[wiki_page]`
+- [滚动预测执行（Receding-Horizon Policy Execution）](wiki/concepts/receding-horizon-policy-execution.md) — 滚动预测执行**：模仿学习 / VLA 部署里，策略 **不是每步只吐一个动作**，而是 **预测一段未来 action sequence**，**只执行其中前缀**，再在下一周期用 **更新后的 `📅unknown` `[wiki_page]`
 - [递归自改进（Recursive Self-Improvement）](wiki/concepts/recursive-self-improvement.md) — 递归自改进（RSI）** 是：在足够算力下，AI 系统 **充分自主地设计、训练并部署自己的后继者**——不是「帮人写训练脚本」，而是把后继模型的规格与优化闭环从人类手里接过去。 `📅unknown` `[wiki_page]`
 - [强化学习史（Sutton & Barto §1.6）](wiki/concepts/reinforcement-learning-history.md) — 强化学习史**：Sutton & Barto 将现代 RL 追溯为 **试错学习**（心理学与早期 AI）、**最优控制 / 动态规划**（Bellman、MDP）与 **时序差分学习**（Sam `📅unknown` `[wiki_page]`
 - [远程过程调用（Remote Procedure Call, RPC）](wiki/concepts/remote-procedure-call.md) — RPC** 是一种分布式通信范式：调用方像调用本地过程一样发起远程方法，运行时负责 **参数编解码、跨机传递、远端执行与结果返回**；经典论述见 Birrell & Nelson（1984），线上 `📅unknown` `[wiki_page]`
