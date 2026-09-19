@@ -134,6 +134,7 @@ flowchart TD
     - **REINFORCE**：最基础的策略梯度方法。
     - **[SDPG（视觉 RL）](../entities/paper-sdpg-visual-rl-stochastic-decoupled.md)**：随机解耦 + 混合 batch-rendered/physics-only 并行，单卡端到端视觉 on-policy（arXiv:2605.26478；[Genesis 实现已开源](https://github.com/HaoxiangYou/SDPG)）。
     - **[SDPG（LLM RLVR）](../entities/paper-sdpg-self-distilled-policy-gradient.md)**：GRPO + privileged 全词表自蒸馏 + ref KL（arXiv:2606.04036；[verl 实现已开源](https://github.com/lauyikfung/SDPG)）；**与视觉 SDPG 仅缩写相同**。
+    - **[Agent Lightning](../entities/agent-lightning.md)**：微软开源 **agent harness → verl + vLLM** 轨迹 RL 栈（Gateway 代理、K8s rollout）；与腿足/仿真 RL 正交，但共享 verl 生态。
 - **Q-Learning**：学习状态-动作价值函数 (Q-function)。
     - **DQN**：深度 Q 网络，适用于离散动作。
 - **Actor-Critic (行动者-评论家)**：结合两者优势。

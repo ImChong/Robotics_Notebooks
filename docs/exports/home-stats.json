@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-18",
-  "node_count": 4271,
-  "edge_count": 38159,
+  "generated_at": "2026-09-19",
+  "node_count": 4272,
+  "edge_count": 38169,
   "coverage": {
-    "covered": 4243,
-    "total": 4243,
+    "covered": 4244,
+    "total": 4244,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -245,7 +245,7 @@
     },
     {
       "label": "全身控制",
-      "size": 505
+      "size": 506
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -327,7 +327,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 605,
+      "degree": 607,
       "has_repo": true
     },
     {

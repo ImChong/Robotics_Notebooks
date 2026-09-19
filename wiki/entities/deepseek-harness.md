@@ -23,6 +23,7 @@ related:
   - ./paper-harness-vla.md
   - ./paper-robo-harness.md
   - ../queries/real-robot-policy-autoresearch-harness.md
+  - ./agent-lightning.md
   - ../concepts/ai-auto-research.md
   - ../references/llm-wiki-karpathy.md
 sources:
@@ -212,6 +213,7 @@ sequenceDiagram
 - [HarnessBank](./paper-harnessbank.md) — 冻结模型下进化 **宿主** harness（概念相邻、实现不同）
 - [Harness VLA](./paper-harness-vla.md) — **同名不同物**：冻结 VLA + LLM planner（RPent）
 - [RoboHarness](./paper-robo-harness.md) — 具身策略族编排，勿与本页合并
+- [Agent Lightning](./agent-lightning.md) — **harness 零改动** 的 agentic RL 训练环（Gateway + verl）
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — coding agent 后端选型
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化阶段论
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs 可执行 agent 运行时
