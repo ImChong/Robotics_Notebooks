@@ -19,6 +19,36 @@
       "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
     },
     {
+      "path": "wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md",
+      "detail_id": "wiki-concepts-embodied-data-flywheel-minimal-closed-loop",
+      "label": "具身数据飞轮：最小闭环（避免空转）",
+      "type": "concept",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/robot-data-supervision-signal-types.md",
+      "detail_id": "wiki-concepts-robot-data-supervision-signal-types",
+      "label": "机器人数据：监督信号类型分流",
+      "type": "concept",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/embodied-data-collection-to-flywheel-album.md",
+      "detail_id": "wiki-overview-embodied-data-collection-to-flywheel-album",
+      "label": "具身数据从采集到飞轮（系列地图）",
+      "type": "overview",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
       "path": "wiki/concepts/imu-principles-algorithms-camera-sync.md",
       "detail_id": "wiki-concepts-imu-principles-algorithms-camera-sync",
       "label": "IMU：原理、算法与摄像头驱动协同",
@@ -173,36 +203,6 @@
       "detail_id": "entity-paper-wa-specdec",
       "label": "WA-SpecDec（arXiv:2608.08725）",
       "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wam-diff2.md",
-      "detail_id": "entity-paper-wam-diff2",
-      "label": "WAM-Diff2（arXiv:2608.01035）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wnm-3d-vln.md",
-      "detail_id": "entity-paper-wnm-3d-vln",
-      "label": "WNM-3D（arXiv:2608.07267）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-weekly-trends-2026-08-10-part1-technology-map.md",
-      "detail_id": "wiki-overview-vla-weekly-trends-2026-08-10-part1-technology-map",
-      "label": "一周 VLA 研究趋势（2026.08.10–08.16 · 第一篇）",
-      "type": "overview",
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
