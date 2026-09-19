@@ -10,6 +10,7 @@ related:
   - ./rsi-harness.md
   - ./paper-metarsi-v1.md
   - ./paper-harnessbank.md
+  - ./paper-rsi-survey-2607-07663.md
   - ./karpathy-autoresearch.md
   - ./sol-pi.md
   - ./deepseek-harness.md
@@ -43,7 +44,7 @@ summary: "Prism-Shadow 维护的 Awesome RSI：按 RSI artifact（改什么）�
 - **消歧「RSI」一词**：本库 [递归自改进](../concepts/recursive-self-improvement.md) 概念页侧重 **宏观 RSI**（AI 设计后继模型）；Awesome RSI 聚焦 **已发表 agent 机制** — prompt 进化、harness 自改、记忆蒸馏、技能库共演化等 **可对照实现**。
 - **artifact 先行选型**：同一篇工作常跨多 artifact（如 Gödel Agent 同时标 Harness code 与 Context）；站点多 tag 筛选比单维 README 更适合 **「我想改 harness 不改权重」** 的部署约束。
 - **基准与方法对齐**：29 条 benchmark 标注被测 workflow 中演化的 artifact 与 Online/Offline 协议 — 读 [HarnessBank](./paper-harnessbank.md) / [MetaRSI-v1](./paper-metarsi-v1.md) 时可回查同类评测语境。
-- **与 Auto-Research 分工**：[AI Auto-Research](../concepts/ai-auto-research.md) 覆盖 **学术全生命周期**；Awesome RSI 深耕 **agent 状态自更新** 子空间，二者在 S3 实验自动化与 harness 进化处交叉。
+- **与 Auto-Research 分工**：[AI Auto-Research](../concepts/ai-auto-research.md) 覆盖 **学术全生命周期**；Awesome RSI 深耕 **agent 状态自更新** 子空间；[RSI Survey（2607.07663）](./paper-rsi-survey-2607-07663.md) 提供 **1,250 篇全谱系 taxonomy + 验证层级** 与开源语料。
 
 ## 核心结构（怎么读）
 

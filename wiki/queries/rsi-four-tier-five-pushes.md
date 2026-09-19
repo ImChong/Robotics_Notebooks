@@ -12,14 +12,16 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/karpathy-autoresearch.md
   - ../entities/paper-motus2.md
+  - ../entities/paper-rsi-survey-2607-07663.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ../methods/aspire.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
+  - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「RSI 从 EURISKO 到 GPT-5.6 RSI Index 究竟走到了哪一层？会自我改进是否等于智能爆炸？」
-> 综合来源：[递归自改进](../concepts/recursive-self-improvement.md)、[Awesome RSI](../entities/awesome-rsi.md)、[AI Auto-Research](../concepts/ai-auto-research.md)、[Motus2](../entities/paper-motus2.md)；叙事骨架编译自 [Datawhale 2026 RSI 科普综述](../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md)（赵志民）。
+> 综合来源：[递归自改进](../concepts/recursive-self-improvement.md)、[Awesome RSI](../entities/awesome-rsi.md)、[RSI Survey 实体](../entities/paper-rsi-survey-2607-07663.md)、[AI Auto-Research](../concepts/ai-auto-research.md)、[Motus2](../entities/paper-motus2.md)；叙事骨架编译自 [Datawhale 2026 RSI 科普综述](../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md)（赵志民）；机制 taxonomy 与验证层级对齐 [arXiv:2607.07663](../../sources/papers/rsi_survey_arxiv_2607_07663.md)。
 
 # RSI 四层标准与五次边界推进
 
@@ -137,6 +139,7 @@ flowchart LR
 
 - [递归自改进（宏观）](../concepts/recursive-self-improvement.md) — Anthropic 生产率、三情景与具身跟随假设
 - [Awesome RSI](../entities/awesome-rsi.md) — 50+ 方法 / 29 基准的 artifact 索引
+- [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 1,250 篇两轴 taxonomy + 验证层级 + 开源语料
 - [RSI-Harness](../entities/rsi-harness.md) · [MetaRSI-v1](../entities/paper-metarsi-v1.md) — harness 一等对象与三算子框架
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md) — 最小训练脚本自改环
 - [Motus2](../entities/paper-motus2.md) — 第五次推进中的 GWM 真机有界闭环
@@ -144,6 +147,7 @@ flowchart LR
 
 ## 参考来源
 
+- [RSI Survey 论文归档（arXiv:2607.07663）](../../sources/papers/rsi_survey_arxiv_2607_07663.md)
 - [Datawhale RSI 科普综述（微信公众号归档）](../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md)
 - [原始 WebFetch 落盘](../../sources/raw/wechat_datawhale_rsi_survey_2026-09-19.md)
 
