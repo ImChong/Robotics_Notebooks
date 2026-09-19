@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
+      "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
+      "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/agent-skills-addyosmani.md",
       "detail_id": "entity-agent-skills-addyosmani",
       "label": "Agent Skills（Addy Osmani）",
@@ -206,29 +215,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-066-energyplus-creating-a-new-generation-building-en.md",
-      "detail_id": "entity-paper-as-066-energyplus-creating-a-new-generation-building-en",
-      "label": "EnergyPlus",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/agent-skills-addyosmani.md",
-    "detail_id": "entity-agent-skills-addyosmani",
-    "label": "Agent Skills（Addy Osmani）",
+    "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
+    "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
+    "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
