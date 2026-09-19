@@ -1,3 +1,12 @@
+## [2026-09-19] structural | roadmap/depth-rsi.md — 新增第 25 条纵深路线「RSI（递归自我改进）」并接入首页/路线视图/主路线
+
+- **触发：** 维护者要求"首页增加一条关于 RSI（Recursive Self-Improvement）的纵深路线"。仓库已在 2026-09-19 入库 [`recursive-self-improvement`](wiki/concepts/recursive-self-improvement.md) 概念页与 [`rsi-four-tier-five-pushes`](wiki/queries/rsi-four-tier-five-pushes.md) query 页，但没有对应学习路线页。
+- **新建：** [`roadmap/depth-rsi.md`](roadmap/depth-rsi.md)（Stage 0–5）：判别边界（四层标准 × artifact 维度）→ 持久改进（记忆 / 技能库，ASPIRE / autoresearch）→ 权重级有界闭环（STaR-SPIN 谱系 + Motus2 65%→75% / LWD 车队级）→ 打分器与验证锚（CAI→Self-Rewarding 与真机 reset/verify，ENPIRE）→ harness 进化（DGM / MetaRSI / RSI-Harness / HarnessBank / SoL-Pi）→ 研究过程、ignition 门槛与治理（AI4AI-Bench 0.250、AIDE² 未过 ignition test、人侧选题瓶颈）。
+- **排序位：** 按各方向起点里程碑历史顺序，置于安全控制（CLF，1983）与接触操作（阻抗控制，1985）之间，起点取 **EURISKO 自改启发式，1983**（query 页「第 0 次推进/前史」）；因此首页默认折叠区可见，需展开。
+- **接入点：** `docs/depth-filters.js`（DEPTH_ORDER / HUB_IDS / FILTERS / META，24→25 条，emoji ♻️；segments 只取 `rsi` / `autoresearch` / `auto-research` / `self-improvement`，避免 `harness` 误命中 robo-harness / HarnessEval 等同名不同义节点，其余用显式 ids）、`docs/index.html` 首页按钮与纵深路线计数、`docs/main.js` 折叠文案、`README.md` / `index.md` / `roadmap/README.md` / `roadmap/motion-control.md` 四处清单、24 条既有 depth 页的「其它纵深路径」互链，以及 RSI 概念页与 query 页的回链。
+- **口径：** 本路线全部数字沿用既有 wiki 页表述并保留证据等级标注（RSI Index / AIDE² / 内部生产率为厂商自报或预印本，Motus2 截至入库日未开源）。
+- **验证：** `tests/test_depth_filters.py` 期望长度 25→26；见本条对应提交的 CI 结果。
+
 ## [2026-09-19] ingest | sources/papers/rsi_survey_arxiv_2607_07663.md — arXiv:2607.07663 RSI 全谱系 survey（1,250 篇两轴 taxonomy + 验证层级）；开源语料 deepgrounding/recursive-self-improvement；升格 paper-rsi-survey-2607-07663 实体
 
 ## [2026-09-19] ingest | sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md — Datawhale RSI 四层标准与五次推进；升格 wiki/queries/rsi-four-tier-five-pushes.md

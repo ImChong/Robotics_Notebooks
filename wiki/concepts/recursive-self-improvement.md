@@ -4,6 +4,7 @@ tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, ant
 status: complete
 updated: 2026-09-19
 related:
+  - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
   - ./ai-auto-research.md
   - ./embodied-scaling-laws.md
@@ -123,6 +124,7 @@ flowchart LR
 
 ## 关联页面
 
+- [RSI 纵深路线](../../roadmap/depth-rsi.md) — Stage 0–5 学习路径（判别边界 → 持久改进 → 权重级有界闭环 → 打分器与验证锚 → harness 进化 → ignition 与治理）
 - [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — 记忆→权重→打分→harness→研究过程的技术史与 2026 信号
 - [AI Auto-Research](./ai-auto-research.md) — 学术全生命周期自动化；人机共治与 RSI 的当前距离
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 物理世界能自动化的前提

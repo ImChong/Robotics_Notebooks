@@ -244,6 +244,7 @@ flowchart LR
   - [BFM（人形行为基础模型）](depth-bfm.md)
   - [WAM（世界–动作模型）](depth-wam.md)
   - [ICL（具身上下文学习）](depth-icl.md)
+  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
   - [人形 RL 运动控制](depth-rl-locomotion.md)
   - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)

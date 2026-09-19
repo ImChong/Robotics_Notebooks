@@ -153,6 +153,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
         "仿真迁移闭环策展地图（Awesome Real2Sim2Real Technology Map）"
     ),
     "roadmap/depth-vla.md": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA）",
+    "roadmap/depth-rsi.md": (
+        "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI）"
+    ),
     "roadmap/depth-teleoperation.md": "遥操作纵深路线（Teleoperation Deep-Dive Roadmap）",
     "wiki/queries/simulator-selection-guide.md": "仿真器选型指南（Simulator Selection Guide）",
     "wiki/methods/ppo.md": "近端策略优化（Proximal Policy Optimization, PPO）",

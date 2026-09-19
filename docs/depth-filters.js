@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 24 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 25 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -19,7 +19,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（24 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（25 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'teleoperation',
@@ -27,6 +27,7 @@
     'classical-control',
     'humanoid-hardware-design',
     'safe-control',
+    'rsi',
     'contact-manipulation',
     'navigation',
     'imitation-learning',
@@ -55,6 +56,7 @@
     'classical-control': 'roadmap/depth-classical-control.md',
     'humanoid-hardware-design': 'roadmap/depth-humanoid-hardware-design.md',
     'safe-control': 'roadmap/depth-safe-control.md',
+    'rsi': 'roadmap/depth-rsi.md',
     'contact-manipulation': 'roadmap/depth-contact-manipulation.md',
     'navigation': 'roadmap/depth-navigation.md',
     'imitation-learning': 'roadmap/depth-imitation-learning.md',
@@ -234,6 +236,29 @@
       ids: mergeIds('safe-control', [
         'wiki/overview/hub-safe-fine-tuning.md',
         'wiki/concepts/control-barrier-function.md'
+      ])
+    },
+    'rsi': {
+      segments: new Set([
+        'rsi', 'autoresearch', 'auto-research', 'self-improvement'
+      ]),
+      ids: mergeIds('rsi', [
+        'wiki/concepts/recursive-self-improvement.md',
+        'wiki/concepts/ai-auto-research.md',
+        'wiki/queries/rsi-four-tier-five-pushes.md',
+        'wiki/queries/real-robot-policy-autoresearch-harness.md',
+        'wiki/methods/aspire.md',
+        'wiki/methods/enpire.md',
+        'wiki/methods/lwd.md',
+        'wiki/entities/awesome-rsi.md',
+        'wiki/entities/rsi-harness.md',
+        'wiki/entities/karpathy-autoresearch.md',
+        'wiki/entities/paper-metarsi-v1.md',
+        'wiki/entities/paper-rsi-survey-2607-07663.md',
+        'wiki/entities/paper-harnessbank.md',
+        'wiki/entities/paper-motus2.md',
+        'wiki/entities/paper-from-agi-to-asi.md',
+        'wiki/entities/sol-pi.md'
       ])
     },
     'contact-manipulation': {
@@ -626,6 +651,12 @@
       label: '安全控制',
       wikiPath: DEPTH_HUB_IDS['safe-control'],
       description: 'CLF / CBF / Safe RL：把可证明安全约束接进控制与学习环。'
+    },
+    'rsi': {
+      emoji: '♻️',
+      label: 'RSI',
+      wikiPath: DEPTH_HUB_IDS.rsi,
+      description: '递归自我改进：记忆 → 权重 → 打分器 → harness → 研究过程的逐层自改进闭环。'
     },
     'contact-manipulation': {
       emoji: '🤏',

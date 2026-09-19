@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4323,
-  "edge_count": 38579,
+  "node_count": 4324,
+  "edge_count": 38652,
   "coverage": {
     "covered": 4295,
     "total": 4295,
@@ -17,7 +17,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
     },
     {
       "path": "wiki/queries/rsi-four-tier-five-pushes.md",
@@ -27,7 +27,18 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
+    },
+    {
+      "path": "roadmap/depth-rsi.md",
+      "detail_id": "roadmap-depth-rsi",
+      "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
+      "type": "roadmap_page",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
     },
     {
       "path": "wiki/entities/acados.md",
@@ -38,7 +49,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/lingbot-world.md",
@@ -49,7 +60,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/mujoco-menagerie.md",
@@ -89,7 +100,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/awesome-legged-locomotion-learning.md",
@@ -120,7 +131,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/awesome-physical-ai-natnew.md",
@@ -131,7 +142,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
@@ -141,7 +152,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md",
@@ -151,7 +162,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/robot-data-supervision-signal-types.md",
@@ -161,7 +172,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/overview/embodied-data-collection-to-flywheel-album.md",
@@ -171,7 +182,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/imu-principles-algorithms-camera-sync.md",
@@ -181,7 +192,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/paper-activefly-bench.md",
@@ -202,16 +213,6 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cmu-drive-v2v-vla.md",
-      "detail_id": "entity-paper-cmu-drive-v2v-vla",
-      "label": "CMU-Drive / V2V-VLA（arXiv:2608.07621）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -223,20 +224,20 @@
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 719
+      "size": 756
     },
     {
       "label": "操作",
-      "size": 569
+      "size": 575
     },
     {
-      "label": "主路线：运动控制算法工程师成长路线",
-      "size": 458
+      "label": "具身评测基准选型闭环",
+      "size": 451
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -244,7 +245,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 279
+      "size": 277
     },
     {
       "label": "仿真到现实",
@@ -373,7 +374,8 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
