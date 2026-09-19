@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/agent-skills-addyosmani.md",
+      "detail_id": "entity-agent-skills-addyosmani",
+      "label": "Agent Skills（Addy Osmani）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/open-code-review.md",
       "detail_id": "entity-open-code-review",
       "label": "Open Code Review（Alibaba OCR）",
@@ -206,23 +217,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-069-openai-gym-retro.md",
-      "detail_id": "entity-paper-as-069-openai-gym-retro",
-      "label": "OpenAI Gym Retro",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/open-code-review.md",
-    "detail_id": "entity-open-code-review",
-    "label": "Open Code Review（Alibaba OCR）",
+    "path": "wiki/entities/agent-skills-addyosmani.md",
+    "detail_id": "entity-agent-skills-addyosmani",
+    "label": "Agent Skills（Addy Osmani）",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
