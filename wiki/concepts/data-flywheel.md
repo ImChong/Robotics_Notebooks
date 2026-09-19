@@ -5,6 +5,9 @@ tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
 updated: 2026-09-19
 related:
+  - ./embodied-data-flywheel-minimal-closed-loop.md
+  - ./robot-data-supervision-signal-types.md
+  - ../overview/embodied-data-collection-to-flywheel-album.md
   - ../entities/ken-goldberg-agentic-robotics-goosebumps.md
   - ./embodied-scaling-laws.md
   - ../entities/paper-from-agi-to-asi.md
@@ -75,6 +78,9 @@ sources:
 
 ## 关联页面
 
+- [飞轮最小闭环（避免空转）](./embodied-data-flywheel-minimal-closed-loop.md) — 最短信息链：执行→反馈→更新→回归
+- [监督信号分流](./robot-data-supervision-signal-types.md) — 示范/rollout/接管/Ego 各教什么
+- [系列专辑：从采集到飞轮](../overview/embodied-data-collection-to-flywheel-album.md)
 - [Embodied Scaling Laws](./embodied-scaling-laws.md)
 - [S1（Skild）](../entities/skild-s1.md) — 分钟级 ICL 部署叙事
 - [机器人 In-Context Learning](./robot-in-context-learning.md)

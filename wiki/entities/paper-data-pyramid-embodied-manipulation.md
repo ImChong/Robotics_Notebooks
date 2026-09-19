@@ -24,7 +24,7 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-09-16
+updated: 2026-09-19
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
 related:
@@ -35,6 +35,7 @@ related:
   - ../concepts/functional-taxonomy-world-models.md
   - ../concepts/sim2real.md
   - ../concepts/data-flywheel.md
+  - ../overview/embodied-data-collection-to-flywheel-album.md
   - ../methods/vla.md
   - ../methods/egoscale.md
   - ../methods/dagger.md
@@ -48,6 +49,7 @@ related:
   - ./paper-ace-data-0.md
   - ./paper-wiyh.md
 sources:
+  - ../../sources/blogs/wechat_jushen_qianyan_data_pyramid_recipe_2026-09-05.md
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/sites/embodied-data-pyramid.md
   - ../../sources/repos/awesome-embodied-data-pyramid.md

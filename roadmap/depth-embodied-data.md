@@ -51,6 +51,7 @@ flowchart LR
 - 给目标任务写一页"数据规格书"：观测键、动作语义、控制频率、成败标签、必须保留的元数据（本体、场景、操作者）
 
 ### 推荐读什么
+- [具身数据从采集到飞轮（四篇系列地图）](../wiki/overview/embodied-data-collection-to-flywheel-album.md)（本仓库）— 术语→金字塔→飞轮→监督分流的公众号连载枢纽
 - [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md)（本仓库）— 五层金字塔与三类基础模型的数据配方视角，本阶段的骨架页
 - [训练数据管线（知识链汇总）](../wiki/overview/hub-data-pipeline.md)（本仓库）— 原始动作 → 质量评估 → 重定向 → 策略输入的端到端链路
 - [Motion Data Quality（动作数据质量维度）](../wiki/concepts/motion-data-quality.md)（本仓库）— 四轴质量口径及其与重定向必要性的因果
