@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-19
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -147,6 +147,9 @@ related:
   - ../entities/perceptron-isaac-05.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/anthropic-embody.md
+  - ../entities/ken-goldberg-agentic-robotics-goosebumps.md
+  - ../entities/paper-gap-graph-as-policy.md
+  - ../concepts/variational-automation.md
 sources:
   - ../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md

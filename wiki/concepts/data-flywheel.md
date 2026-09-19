@@ -3,8 +3,9 @@ type: concept
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-09-15
+updated: 2026-09-19
 related:
+  - ../entities/ken-goldberg-agentic-robotics-goosebumps.md
   - ./embodied-scaling-laws.md
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/paper-arcadia.md
@@ -14,6 +15,7 @@ related:
   - ./agentic-coding-software-fundamentals.md
   - ../entities/grid-general-robotics.md
 sources:
+  - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/papers/scanford_robot_powered_data_flywheel_arxiv_2511_19647.md
@@ -60,6 +62,8 @@ sources:
 第三条产业读法：[S1](../entities/skild-s1.md) 主张 **ICL 把新任务部署压到分钟级**（盆栽示例：录示范到真机约 11 分钟），才能把现场交互及时喂回预训练；若每个新任务仍要数小时遥操作 + 微调，飞轮转不起来。这是 **适应延迟** 对飞轮转速的约束，与 LWD 的「别丢失败轨迹」互补。
 
 **野外 VLM 飞轮实例：** [Scanford / RPDF](../entities/paper-scanford-robot-powered-data-flywheel.md)（arXiv:2511.19647）在图书馆部署移动操作机器人，用 **catalog + VLM RAG** 自动策展书脊数据，短部署即可抬升域内识别与困难 OCR——机器人从 FM 消费者变为 **数据生成器**（详见 [产业地图 Query](../queries/humanoid-robot-data-collection-landscape.md)）。
+
+**产线「数据雪崩」读法：** [Ken Goldberg Agentic Robotics](../entities/ken-goldberg-agentic-robotics-goosebumps.md) 把 Ambi Robotics **1 亿+** pick 日志（含失败）称为 **data avalanche**——相对 LLM token 的 **robot data gap**，产线 specialist 部署是 **可规模采集** 的路径；与通才 VLA 融资热度对比，**paid useful work** 仍小，但 **VA + agentic 图** 可把日志直接喂回 **生成模型 / 策略改进**。
 
 ## 参考来源
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
