@@ -2,7 +2,7 @@
 type: concept
 tags: [automation, industrial-robotics, manipulation, agentic-robotics, task-taxonomy, vla, nvidia, berkeley]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 related:
   - ../entities/paper-gap-graph-as-policy.md
   - ../tasks/manipulation.md
@@ -10,9 +10,11 @@ related:
   - ../methods/aspire.md
   - ../concepts/foundation-policy.md
   - ../concepts/simulation-evaluation-infrastructure.md
+  - ../entities/ken-goldberg-agentic-robotics-goosebumps.md
 sources:
   - ../../sources/papers/gap_arxiv_2607_05369.md
   - ../../sources/sites/gap-graph-robots-project.md
+  - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
 summary: "变体自动化（VA）是介于固定自动化与通才机器人之间的任务类：工位、机器人与传感器已知，对象几何与初始位姿在有界分布内变化，需持久可靠执行——GaP（arXiv:2607.05369）以此为目标提出计算图策略与 8 项开放 benchmark。"
 ---
 

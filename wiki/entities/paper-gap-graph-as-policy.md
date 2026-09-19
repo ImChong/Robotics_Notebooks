@@ -11,7 +11,7 @@ tags:
   - berkeley
   - cmu
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 arxiv: "2607.05369"
 code: https://github.com/graph-robots/graph-as-policy
 project: https://graph-robots.github.io/gap/
@@ -24,10 +24,12 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ./paper-robo-harness.md
+  - ./ken-goldberg-agentic-robotics-goosebumps.md
 sources:
   - ../../sources/papers/gap_arxiv_2607_05369.md
   - ../../sources/sites/gap-graph-robots-project.md
   - ../../sources/repos/graph_robots_graph_as_policy.md
+  - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
 summary: "GaP（arXiv:2607.05369，NVIDIA / UC Berkeley 等）：多 agent harness 将 VA 任务编译为有向计算图（MORSL 技能 + 静态类型检查），在 Isaac 仿真中排练自学习优化图，再以 edge 解释器持久执行；8 项 VA benchmark 上显著优于 VLA/TAMP/单 agent CaP，并可 staging VLA 获 >2× 增益。"
 ---
 
@@ -195,6 +197,7 @@ flowchart TB
 - [RoboHarness](./paper-robo-harness.md) — 异构策略编排 + Memory Bridge（相对 GaP 的图 staging）
 - [Manipulation](../tasks/manipulation.md) — 操作任务栈中的 agentic / 工业分支
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 署名与 agentic 研究网络
+- [Ken Goldberg：Agentic Robotics 范式位移](./ken-goldberg-agentic-robotics-goosebumps.md) — ICRA plenary / X 长文对 AR 总框架与产线部署叙事
 - [Simulation Evaluation Infrastructure](../concepts/simulation-evaluation-infrastructure.md) — Isaac 内环排练
 
 ## 推荐继续阅读
