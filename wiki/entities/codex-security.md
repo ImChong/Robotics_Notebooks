@@ -10,6 +10,7 @@ related:
   - ../overview/hub-systems-engineering.md
   - ../concepts/model-versioning-ota.md
   - ./hermes-agent.md
+  - ./cloudflare-security-audit-skill.md
 sources:
   - ../../sources/repos/codex-security.md
   - ../../sources/sites/openai-codex-security-docs.md
@@ -132,6 +133,7 @@ sequenceDiagram
 - [可观测性](../concepts/observability-logs-metrics-tracing.md)
 - [系统工程知识链](../overview/hub-systems-engineering.md)
 - [模型版本管理与 OTA](../concepts/model-versioning-ota.md)
+- [Cloudflare Security Audit Skill](cloudflare-security-audit-skill.md) — 六阶段 agent 审计 + coverage ledger + 对抗验证（与本工具 SARIF/CI 扫描互补）
 
 ## 参考来源
 

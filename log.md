@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/repos/cloudflare-security-audit-skill.md — Cloudflare 六阶段 security-audit Agent Skill（~15.8k stars, MIT）；升格 wiki/entities/cloudflare-security-audit-skill.md；交叉 software-security-basics / codex-security
+
 ## [2026-09-19] structural | roadmap/depth-rsi.md — 新增第 25 条纵深路线「RSI（递归自我改进）」并接入首页/路线视图/主路线
 
 - **触发：** 维护者要求"首页增加一条关于 RSI（Recursive Self-Improvement）的纵深路线"。仓库已在 2026-09-19 入库 [`recursive-self-improvement`](wiki/concepts/recursive-self-improvement.md) 概念页与 [`rsi-four-tier-five-pushes`](wiki/queries/rsi-four-tier-five-pushes.md) query 页，但没有对应学习路线页。
