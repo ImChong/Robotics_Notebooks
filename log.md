@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/papers/rsi_survey_arxiv_2607_07663.md — arXiv:2607.07663 RSI 全谱系 survey（1,250 篇两轴 taxonomy + 验证层级）；开源语料 deepgrounding/recursive-self-improvement；升格 paper-rsi-survey-2607-07663 实体
+
 ## [2026-09-19] ingest | sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md — Datawhale RSI 四层标准与五次推进；升格 wiki/queries/rsi-four-tier-five-pushes.md
 
 ## [2026-09-19] ingest | sources/papers/teledexter_arxiv_2607_11481.md — TeleDexter 2026-09-19 复核查：官方仍未开源；补 Pen Spinning / 数据金字塔尖 / data-flywheel 交叉

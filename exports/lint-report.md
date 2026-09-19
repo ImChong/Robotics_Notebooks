@@ -2,7 +2,7 @@
 
 ## [2026-09-19] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **24** 条信息型预警）：
+共发现 **0** 个问题（另含 **26** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -98,7 +98,7 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（17 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（18 个）
 - wiki/entities/paper-activefly-bench.md（缺 对比）
 - wiki/entities/paper-anycam-vla.md（缺 对比）
 - wiki/entities/paper-cmu-drive-v2v-vla.md（缺 对比）
@@ -110,6 +110,7 @@
 - wiki/entities/paper-mamba-smolvla-expert.md（缺 对比）
 - wiki/entities/paper-onevomemory.md（缺 对比）
 - wiki/entities/paper-recoverfly-aerial-vln.md（缺 对比）
+- wiki/entities/paper-rsi-survey-2607-07663.md（缺 评测）
 - wiki/entities/paper-tdhd-surgical-dual-arm.md（缺 对比）
 - wiki/entities/paper-vane.md（缺 对比）
 - wiki/entities/paper-vla-action-post-training-depth-decodability.md（缺 对比）
@@ -136,9 +137,10 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/comparisons/awesome-physical-ai-curated-lists.md
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（3 个）
 - wiki/entities/paper-activefly-bench.md
 - wiki/entities/paper-cmu-drive-v2v-vla.md
+- wiki/entities/paper-rsi-survey-2607-07663.md
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -146,4 +148,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4294/4294 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4295/4295 (100%) wiki/entity 页有 ingest 来源
