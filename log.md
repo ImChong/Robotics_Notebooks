@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md — Datawhale RSI 四层标准与五次推进；升格 wiki/queries/rsi-four-tier-five-pushes.md
+
 ## [2026-09-19] ingest | sources/papers/teledexter_arxiv_2607_11481.md — TeleDexter 2026-09-19 复核查：官方仍未开源；补 Pen Spinning / 数据金字塔尖 / data-flywheel 交叉
 
 ## [2026-09-19] ingest | sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md — 微信「开源机器人算法大全」16 项索引；新建 acados / mujoco-menagerie / tienkung-lab / lingbot-world + overview；校正 AMP/ALOHA/Diffusion/LingBot 失效 GitHub 链
