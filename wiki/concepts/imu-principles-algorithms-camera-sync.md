@@ -4,6 +4,7 @@ tags: [imu, sensor-fusion, ahrs, vio, eis, embedded-linux, calibration, percepti
 status: complete
 updated: 2026-09-19
 related:
+  - ./embodied-data-collection-four-layers-taxonomy.md
   - ./sensor-fusion.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../formalizations/kalman-filter.md
@@ -167,6 +168,7 @@ flowchart LR
 - [EKF](../formalizations/ekf.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [Sim2Real 检查清单](../queries/sim2real-checklist.md)
+- [具身数据采集四层术语地图](./embodied-data-collection-four-layers-taxonomy.md) — 设备层 IMU/SLAM 在 UMI 等采集方案中的角色
 
 ## 参考来源
 

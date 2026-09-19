@@ -2,8 +2,9 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 related:
+  - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../concepts/robot-in-context-learning.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../entities/skild-s1.md
@@ -222,6 +223,7 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 
 ### 先读：定位与对照
 
+- [具身数据采集四层术语地图](../concepts/embodied-data-collection-four-layers-taxonomy.md) — 演示数据从视角/设备/教法到 episode 与动作标签的判读主线
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）

@@ -3,8 +3,9 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-09-18
+updated: 2026-09-19
 sources:
+  - ../../sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
   - ../../sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md
@@ -298,6 +299,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [Diffusion Policy](../methods/diffusion-policy.md) — 遥操作数据训练的扩散策略
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md) — 使用触觉遥操作数据训练接触感知策略
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 遥操作采集数据的实操指南
+- [具身数据采集四层术语地图](../concepts/embodied-data-collection-four-layers-taxonomy.md) — 视角/设备/教法/产物判读；teleop 在教法层的定位
 
 ### 采集接口与硬件（穿戴 / 手持 / 主从）
 
