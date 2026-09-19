@@ -61,6 +61,7 @@ related:
 - [Ultra-Fusion（多传感器 SLAM）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 统一滑窗 LVIO/LVWIO、退化调度与在线时空标定（arXiv:2606.21223）
 - [X-IONet（跨平台惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 单 IMU 行人/四足 IO + EKF（IEEE RA-L 2026）
 - [FOCUS（连续足部 FK 可靠度）](../entities/paper-focus-foot-observation-confidence.md) — 人形本体 EKF；接触 ≠ FK 可信（A3 Ultra，arXiv:2609.02222）
+- [OmniCalib（免标定板人形自校准）](../entities/paper-omnicalib.md) — 上肢 14 零位+RGB-D 外参、下肢 12 零位、头 rig；AGIBOT A3 Ultra（arXiv:2609.19582；未开源）
 - [Query：具身时代 SLAM 精华与糟粕](../queries/slam-second-spring-embodied.md) — 深蓝沙龙纪要：留下时空基准，丢掉给人看的中间图
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 冻结 Pi3X + tracks → 运动平均/BA；离线高精度建图与渲染
 - [Wid3R（宽 FoV 前馈 3D 重建）](../entities/paper-wid3r.md) — 相机模型 token + 球谐射线；原生鱼眼/360，无需去畸变（ECCV 2026）

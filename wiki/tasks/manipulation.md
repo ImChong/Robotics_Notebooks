@@ -227,6 +227,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 #### 触觉与力反馈
 
 - **T-Rex**（[实体页](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）：**触觉反应式灵巧操作**——人视频预训练 + **100 h 触觉 play mid-training** + 变频率 MoT；开源触觉数据集与 **12 任务** 双手真机基准
+- **GALATEA**（[实体页](../entities/paper-galatea.md)，arXiv:2609.10050）：**生成 HOI 视频 → 仿真 SAPG 跟踪 → BC+DAgger 蒸馏** 跨物体灵巧控制器；1500+ 轨迹仿真落地；GitHub **2026-11 前**完整发布
 - **OmniTacTune**（[实体页](../entities/paper-omnitactune-tactile-residual-adaptation.md)，arXiv:2607.03723）：**策略无关触觉残差真机 RL**——冻结 Flow/ACT/DP/π₀.₅ 视觉基策略，**40–80 min** 在线练习把接触丰富任务 **5–40% → 85–100%**；**无需离线触觉演示**
 - **FM-VLA**（[实体页](../entities/paper-fm-vla.md)，arXiv:2607.18231）：**力觉长程记忆**——冻结 Force-VAE 压缩整集腕部 wrench 为 **K=8** token（+短窗状态）注入 **π₀.₅**；智元 G1 三项记忆依赖接触任务平均 **83.3%**，推理仅 **+3.3 ms**（官方代码 coming soon）
 - **FA-RDP**（[实体页](../entities/paper-fa-rdp.md)，arXiv:2607.28596）：**频率自适应反应扩散**——接触前 10 Hz 多步保多模态，接触后指示器切 30 Hz MCD 一步采样；Flexiv 翻箱/拨开关/按按钮平均 **81.7%**（代码 coming soon）

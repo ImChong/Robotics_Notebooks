@@ -217,6 +217,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 开源视频先验与轨迹可控 I2V（示例：Wan / Wan-Move / Wan-Dancer）
 
+[Astronex-World 1.0](../entities/paper-astronex-world-1.md)（arXiv:2609.20034，Astronex / NUIST）在 **Wan2.2-TI2V-5B** 上 post-train **5B 可控视频世界基座**：**PRoPE** 相机 + **64-D 动作/embodiment** + timed event；块因果 **KV 流式** 832×480@24fps（**1× L20**）；五阶段训练 **2× L20**；WBench Full **70.0**；**Apache-2.0 已开源**（GitHub + HF 权重）。
+
 [Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**；[Go-with-the-Track](../entities/paper-go-with-the-track.md)（arXiv:2606.20891，SIGGRAPH 2026）在 **Wan2.2** 上引入 **reference-anchored point-tracks**，把 **多参考图合成** 与 **轨迹运动控制** 统一到单模型；[Wan-Dancer](../entities/paper-wan-dancer.md)（arXiv:2607.09581）同在 Wan-I2V 上做分层 **music-to-dance**，把连贯生成推到 **分钟级 720p**。三者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM / 参考视频先验的 **上游对照**。[DreamX-Phi 1.0](../entities/paper-dreamx-phi.md)（arXiv:2608.13489，阿里 AMAP）把 **Wan2.2-TI2V-5B** 做成动作条件操纵 WM：每臂 **SE(3)** 经 PRoPE-style 编码注入 attention，并加 depth / SAM3 / 冻结 V-JEPA；自报 WorldArena 2.0 Track 1 第一。**权重与推理待赛后**，入库日仓为占位 README。
 
 ### 原生 CEDC + 混合线性时序记忆（示例：Kairos）
