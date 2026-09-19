@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, mujoco, mjx, reinforcement-learning, locomotion, manipulation, time-to-robot, deepmind]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-19
 related:
   - ./mujoco.md
   - ./mujoco-mjx.md
