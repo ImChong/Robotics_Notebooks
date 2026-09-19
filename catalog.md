@@ -7,6 +7,7 @@
 
 - [1X Technologies](wiki/entities/1x-technologies.md) — 1X Technologies** 专注于「能在真实环境里长期运行的人形机器人」，当前公开产品线以 **轮式人形 EVE**（面向仓储 / 安防 / 医疗等结构化场景）与 **双足 NEO**（强 `📅unknown` `[entity_page]`
 - [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio**（visualbruno/3DGenStudio，官网 [3dgenstu `📅unknown` `[entity_page]`
+- [acados](wiki/entities/acados.md) — acados**](https://github.com/acados/acados) 是面向 **模型预测控制（MPC）** 与 **最优控制问题（OCP）** 的开源求解框架：用 **Rea `📅unknown` `[entity_page]`
 - [ACMOP（交流电机自动优化框架）](wiki/entities/acmop.md) — ACMOP**（horychen/ACMOP，*Alternating Current Machine Optimizat `📅unknown` `[entity_page]`
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](wiki/entities/adams.md) — ADAMS** 是面向三维机械系统的 **多体动力学（Multibody Dynamics, MBD）** 自动建模与数值仿真程序谱系：名称与核心数值配方来自 Nicolae Orlandea 在 `📅unknown` `[entity_page]`
 - [AERIS-10（PLFM_RADAR）](wiki/entities/aeris-10-plfm-radar.md) — AERIS-10** 是 GitHub 上高关注度的 **开源脉冲线性调频（PLFM）相控阵雷达** 全栈：从原理图、PCB、FPGA 固件到 Python 可视化一应俱全，适合研究 **波束赋形 `📅unknown` `[entity_page]`
@@ -632,6 +633,7 @@
 - [线性代数学习策展（机器人 L0）](wiki/entities/linear-algebra-curriculum.md) — 一句话：** 机器人运动控制把位姿、速度、力都写成向量和矩阵；本页把 Georgia Tech ILA、[Axl `📅unknown` `[entity_page]`
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LingBot-VLA](wiki/entities/lingbot-vla.md) — LingBot-VLA**（*A Pragmatic VLA Foundation Model*，[arXiv:2601.18692](https://arxiv.org/abs/2601.186 `📅unknown` `[entity_page]`
+- [LingBot-World](wiki/entities/lingbot-world.md) — robbyant/lingbot-world**](https://github.com/robbyant/lingbot-world)（蚂蚁 **Robbyant / 灵波**）是 **开源世 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
 - [LISA](wiki/entities/lisa.md) — LISA 让多模态 LLM 通过特殊分割 token 调用分割解码器，实现推理式分割（reasoning segmentation）：由复杂语言描述直接得到掩码。 `📅unknown` `[entity_page]`
 - [LiteReality-Agent](wiki/entities/litereality-agent.md) — LiteReality-Agent**（项目页，[Blog/PDF](https: `📅unknown` `[entity_page]`
@@ -690,6 +692,7 @@
 - [Motrix (Motphys 机器人仿真与训练平台)](wiki/entities/motrix.md) — Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研 `📅unknown` `[entity_page]`
 - [MoveIt 2](wiki/entities/moveit2.md) — MoveIt 2** 是面向 **ROS 2** 的开源 **运动规划、操作与运动学** 框架（[moveit/moveit2](https://github.com/moveit/moveit2 `📅2026-06-15` `[entity_page]`
 - [mpc_python](wiki/entities/mpc-python.md) — mpc_python**（mcarfagno/mpc_python）是一个 **MIT** 开源教学仓库：用  `📅unknown` `[entity_page]`
+- [MuJoCo Menagerie](wiki/entities/mujoco-menagerie.md) — google-deepmind/mujoco_menagerie**](https://github.com/google-deepmind/mujoco_menagerie) 是 DeepMi `📅unknown` `[entity_page]`
 - [MuJoCo MJX（MuJoCo XLA）](wiki/entities/mujoco-mjx.md) — MuJoCo MJX**（常写作 **MJX**）是 Google DeepMind 在 **JAX** 上对 MuJoCo 物理引擎的 **重实现**：通过 PyP `📅2026-05-18` `[entity_page]`
 - [MuJoCo Playground](wiki/entities/mujoco-playground.md) — MuJoCo Playground**（[google-deepmind/mujoco_playground](https://github.com/google-deepmind/mujoco_ `📅unknown` `[entity_page]`
 - [MuJoCo Warp（MJWarp）](wiki/entities/mujoco-warp.md) — MuJoCo Warp**（常写作 **MJWarp**）是 Google DeepMind 与 NVIDIA **作为 Newton 的一部分**  `📅unknown` `[entity_page]`
@@ -3430,6 +3433,7 @@
 - [Three.js Game Skills](wiki/entities/threejs-game-skills.md) — Three.js Game Skills** 是 [majidmanzarpour/threejs-game-skills](https://github.com/majidmanzarpour/ `📅unknown` `[entity_page]`
 - [TidyBot2](wiki/entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
+- [TienKung-Lab](wiki/entities/tienkung-lab.md) — Open-X-Humanoid/TienKung-Lab**](https://github.com/Open-X-Humanoid/TienKung-Lab) 是 **北京人形机器人创新中心（ `📅unknown` `[entity_page]`
 - [Tinkercad](wiki/entities/tinkercad.md) — Tinkercad**（tinkercad.com）是 **Autodesk** 提供的 **免费 Web 应用**：在同一账号与课堂体 `📅unknown` `[entity_page]`
 - [Tinymovr（紧凑开源关节驱动）](wiki/entities/tinymovr.md) — Tinymovr**（现属 Motion Layer，仓 [motionlayer/Tinymovr](https://github. `📅unknown` `[entity_page]`
 - [tita_rl](wiki/entities/tita-rl.md) — tita_rl** 是 直驱科技（Direct Drive Tech） 为 **TITA 轮腿双足** 提供的官方强化学习训练仓（Gi `📅unknown` `[entity_page]`
@@ -4194,6 +4198,7 @@
 - [Robot Learning Overview](wiki/overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第01期）— 索引](wiki/overview/robot-open-source-wechat-issue01-curator.md) — 本页把第三方微信清单中的 **10 个开源机器人/平台**拆成独立实体节点，并在此集中列出**官方文档与组织级 GitHub**入口，避免把网盘短链当作唯一分发源。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第02期）— 索引](wiki/overview/robot-open-source-wechat-issue02-curator.md) — 本页对应转载清单 **第 11–20 号**共 **10** 条开源机器人/平台入口，拆成独立实体节点，并集中指向 **官方文档、GitHub 组织与论文/数据集页**；个人网盘与 360 共享链不作 `📅unknown` `[overview_page]`
+- [开源机器人算法大全（微信策展）— 索引](wiki/overview/robot-opensource-algorithms-compendium-wechat.md) — 本页把 微信公众号清单 中的 **16 项开源资源**拆成 **独立、不重复** 的 wiki `📅unknown` `[overview_page]`
 - [机器人 RL 运动控制完整管线](wiki/overview/robot-rl-motion-control-pipeline.md) — 一句话：** 最小闭环 只证明 S–A–R–P 能转；真机管线还要分层执行、稳定更新、特权蒸馏、 `📅unknown` `[overview_page]`
 - [机器人训练栈分层技术地图](wiki/overview/robot-training-stack-layers-technology-map.md) — 仿真框架**没有突然洗牌**，但机器人学习工具链正在**变厚**：竞争焦点从「谁每秒仿真步数更高」转向「整条训练–评估–真机闭环的返工成本谁更低」——大平台、物理验证、任务入口、异构运行时、底层连接器 `📅unknown` `[overview_page]`
 - [机器人世界模型：动作后果预测技术地图](wiki/overview/robot-world-models-action-consequence-technology-map.md) — 世界模型近期工作的共同转向是：**动作发出去之前，模型能否提前知道世界会怎么变**——从看懂当前帧，走向预测倾倒、形变、接触与推偏等 **物理后果**，并进入执行、修正、筛选或后训练闭环。 `📅unknown` `[overview_page]`

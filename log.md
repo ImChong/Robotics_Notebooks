@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md — 微信「开源机器人算法大全」16 项索引；新建 acados / mujoco-menagerie / tienkung-lab / lingbot-world + overview；校正 AMP/ALOHA/Diffusion/LingBot 失效 GitHub 链
+
 ## [2026-09-19] ingest | sources/repos/awesome-legged-locomotion-learning.md + awesome-physical-ai（natnew/aichr）— 腿足 locomotion 双清单 + Physical AI 双同名仓；新建 4 entity + 1 comparison；natnew 含 GitHub Pages 文档站
 
 ## [2026-09-19] ingest | sources/papers/masked_visual_actions_arxiv_2607_19343.md — 复核 Masked Visual Actions（arXiv:2607.19343）；更新项目页/仓库开源核查（渲染工具仍 coming soon）；刷新 paper-masked-visual-actions 实体

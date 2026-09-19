@@ -9,7 +9,7 @@
 - **分类：** 运动RL/技能训练
 - **入库日期：** 2026-09-06
 - **一句话说明：** 北京人形机器人创新中心 开源项目 TienKung-Lab（运动RL/技能训练），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/tienkung-humanoid-open-source.md`](../../wiki/entities/tienkung-humanoid-open-source.md)
+- **沉淀到 wiki：** [`wiki/entities/tienkung-lab.md`](../../wiki/entities/tienkung-lab.md)（运控训练框架 canonical）；本体资料见 [`tienkung-humanoid-open-source`](../../wiki/entities/tienkung-humanoid-open-source.md)
 
 ## 开源状态
 
