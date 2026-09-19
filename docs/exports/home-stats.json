@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4283,
-  "edge_count": 38274,
+  "node_count": 4284,
+  "edge_count": 38283,
   "coverage": {
-    "covered": 4255,
-    "total": 4255,
+    "covered": 4256,
+    "total": 4256,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -98,7 +98,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-seen2scene.md",
@@ -129,7 +129,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-agile-wam.md",
@@ -241,7 +241,7 @@
     },
     {
       "label": "全身控制",
-      "size": 454
+      "size": 415
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -378,8 +378,7 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 53,
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",

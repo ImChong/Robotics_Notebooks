@@ -730,6 +730,7 @@
 - [ONNX](wiki/entities/onnx.md) — ONNX**（**Open Neural Network Exchange**）是由社区维护、托管于 **LF AI & Data Foundation**（Linux Foundation 旗下 `📅2026-06-25` `[entity_page]`
 - [ONNX Runtime](wiki/entities/onnxruntime.md) — ONNX Runtime**（常缩写 **ORT**）是由 **Microsoft** 主导的开源 **ONNX 推理与训练加速引擎**。它提供 **Python、C++、C#、Java、Java `📅2026-06-25` `[entity_page]`
 - [OOMWOO](wiki/entities/oomwoo.md) — OOMWOO** 是 **Maker's Pet** 发起的 **可自建开源家用扫地机器人**：以 **ROS 2 + 2D LiDAR + Nav2 / slam_toolbox** 做室内建图 `📅unknown` `[entity_page]`
+- [Open Code Review（Alibaba OCR）](wiki/entities/open-code-review.md) — Open Code Review**（仓库 alibaba/open-code-review，npm  `📅unknown` `[entity_page]`
 - [Open Dreamer](wiki/entities/open-dreamer.md) — Open Dreamer**（next-state/open-dreamer，2026-07）是面向  `📅unknown` `[entity_page]`
 - [Open Duck Mini Runtime](wiki/entities/open-duck-mini-runtime.md) — Open Duck Mini Runtime** 负责在 **Raspberry Pi Zero 2W** 上将 [Open Duck Playground](./open-duck-playgr `📅unknown` `[entity_page]`
 - [Open Duck Mini Viewer](wiki/entities/open-duck-mini-viewer.md) — Open Duck Mini Viewer**（[mertcookimg/Open_Duck_Mini_Viewer](https://github.com/mertcookimg/Open_Du `📅unknown` `[entity_page]`
