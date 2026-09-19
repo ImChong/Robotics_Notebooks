@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-evolution-humanoid-locomotion-control.md",
+      "detail_id": "entity-paper-evolution-humanoid-locomotion-control",
+      "label": "Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/typesafe-jev.md",
       "detail_id": "entity-typesafe-jev",
       "label": "Jev（TypeSafe AI · System One Model）",
@@ -213,27 +223,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-behaviorworldgen.md",
-      "detail_id": "entity-paper-behaviorworldgen",
-      "label": "BehaviorWorldGen（行为感知结构化世界生成闭环）",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/typesafe-jev.md",
-    "detail_id": "entity-typesafe-jev",
-    "label": "Jev（TypeSafe AI · System One Model）",
+    "path": "wiki/entities/paper-evolution-humanoid-locomotion-control.md",
+    "detail_id": "entity-paper-evolution-humanoid-locomotion-control",
+    "label": "Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
