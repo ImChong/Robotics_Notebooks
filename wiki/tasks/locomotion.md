@@ -12,6 +12,8 @@ related:
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/paper-amp-survey-08-more.md
   - ../entities/paper-robogauge-moe-quadruped-locomotion.md
+  - ../entities/awesome-legged-locomotion-learning.md
+  - ../entities/awesome-legged-robot-learning-clearlab.md
   - ../entities/paper-one-filter-ocr-quadruped-navigation.md
   - ../entities/paper-se2-navigation-mesh.md
   - ../entities/repo-go2-backflip.md
