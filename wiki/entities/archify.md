@@ -10,7 +10,7 @@ tags:
   - agent-infrastructure
   - open-source
 status: complete
-updated: 2026-08-30
+updated: 2026-09-19
 related:
   - ./diagram-design.md
   - ./drawio-scientific-illustrator.md

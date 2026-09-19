@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-19
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-wasm.md
@@ -27,6 +27,7 @@ related:
   - ./robot-descriptions-py.md
   - ../comparisons/robot-description-catalogs.md
   - ./mjbatch.md
+  - ./text2mujoco.md
 sources:
   - ../../sources/repos/mujoco-menagerie.md
   - ../../sources/papers/simulation.md
@@ -83,7 +84,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 
 主表定位：为常见机器人维护可直接运行的 MJCF 资产（网格、执行器、传感器、默认姿态）。算法对照应复用同一资产以减少模型适配差异。本库在本页索引 Menagerie，不另建重复实体；Barkour 等机体见 [Barkour](./paper-barkour-quadruped-agility-benchmark.md)。
 
-覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。Python 侧按名加载 Menagerie 镜像模块，见 [robot_descriptions.py](./robot-descriptions-py.md) 的 `*_mj_description`；与 Awesome / ROS 2 仓的选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)。
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。Python 侧按名加载 Menagerie 镜像模块，见 [robot_descriptions.py](./robot-descriptions-py.md) 的 `*_mj_description`；与 Awesome / ROS 2 仓的选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)。若需从 **自然语言** 快速生成 **可验证** 的 micro-scene 包（spec + MJCF + 交互 API + smoke test），见 Agent Skill [Text2MuJoCo](./text2mujoco.md)。
 
 ## 关联页面
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](./adams.md) — 工业 MBD 程序谱系原点（Orlandea 1973/1977）；与开源 RL 引擎分工不同

@@ -2,7 +2,7 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl, omnisim]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-19
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
@@ -14,6 +14,7 @@ related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/mujoco-playground.md
+  - ../entities/text2mujoco.md
   - ../entities/unilab.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
@@ -60,6 +61,7 @@ related:
 | 四足课程 / MuJoCo+UE 联合 / 智身 SDK 闭环 | **[MATRiX](../entities/matrix-simulation-platform.md)** |
 | 极速原型验证 / 新兴框架尝鲜 | **Genesis** |
 | 缩短想法→真机验证墙钟（MJX 生态） | **MuJoCo Playground** |
+| NL 描述 → 可验证 MuJoCo 交互包（Agent Skill） | **[Text2MuJoCo](../entities/text2mujoco.md)** |
 | 已有 MJCF、要 NVIDIA GPU 吞吐、PyTorch / Newton | **[MuJoCo Warp](../entities/mujoco-warp.md)**（经 [mjlab](../entities/mjlab.md) / Newton；AD 未通） |
 | 只要可微 kernel / 自写 GPU 仿真，不要引擎 | **[NVIDIA Warp](../entities/nvidia-warp.md)**（`warp-lang`；`warp.sim` 已弃用） |
 | 无 CUDA / CPU 物理 + GPU 学习异构 | **UniLab** |
