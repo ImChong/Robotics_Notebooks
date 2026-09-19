@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-19
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
@@ -85,6 +85,8 @@ $$\text{真实经验} \rightarrow \text{学习模型} \rightarrow \text{模型�
 代表：MPC（Model Predictive Control）、MPPI、CEM。
 
 **导航世界模型对照：** 传统 **navigation world model**（如 NWM、Cosmos Predict 2）常在预测未来后用 **CEM** 在动作空间搜索轨迹；[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 把 **未来观测、value 与 action** 绑进 **同一扩散策略**，默认 **policy 模式** 直接输出 action chunk，在 go stanford image-goal 与真机上相对 **NWM+CEM** 报告增益（arXiv:2606.13494）——可视作 **learned model + 内嵌策略** 相对 **learned model + 外置 CEM** 的工程对照。
+
+**可控视频 WM 基座（后训练入口）：** [Astronex-World 1.0](../entities/paper-astronex-world-1.md)（arXiv:2609.20034）预留 **64-D action I/O**，可作 imagined rollout 的视觉层；robotics post-train 仍待单独验收。
 
 $$a^* = \arg\max_{\{a_t\}_{t=0}^{H}} \sum_{t=0}^{H} r(s_t, a_t)$$
 

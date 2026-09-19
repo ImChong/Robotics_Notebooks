@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4278,
-  "edge_count": 38241,
+  "node_count": 4282,
+  "edge_count": 38268,
   "coverage": {
-    "covered": 4250,
-    "total": 4250,
+    "covered": 4254,
+    "total": 4254,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -237,11 +237,11 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 578
+      "size": 579
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 509
+      "size": 535
     },
     {
       "label": "全身控制",
@@ -265,7 +265,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1692,
+      "degree": 1695,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -273,14 +273,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1094,
+      "degree": 1095,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-overview-sun-awesome-wm-technology-map",
       "label": "Awesome World Models 技术地图",
       "type": "overview",
-      "degree": 1036,
+      "degree": 1037,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -296,7 +296,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 924,
+      "degree": 927,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -304,7 +304,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 734,
+      "degree": 735,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -320,7 +320,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 631,
+      "degree": 632,
       "has_repo": true
     },
     {
@@ -334,7 +334,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 575,
+      "degree": 577,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     }
