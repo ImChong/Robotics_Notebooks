@@ -11,11 +11,12 @@
 - **作者：** Hadi Alzayer（Stanford / UMD）、Wenlong Huang、Haonan Chen（Stanford / Harvard）、Christopher Luey、Lvmin Zhang、Maneesh Agrawala、Gordon Wetzstein、Li Fei-Fei、Yilun Du（Harvard）、Jiajun Wu（Stanford）、Jia-Bin Huang（UMD）
 - **机构：** 斯坦福大学（Stanford）、马里兰大学学院公园分校（University of Maryland, College Park）、哈佛大学（Harvard University）
 - **入库日期：** 2026-07-22
+- **最后核查：** 2026-09-19
 - **一句话说明：** 提出 **Masked Visual Actions**：把动作写成视频中任意实体的 **像素空间部分揭示轨迹**；同一检查点既可作 **前向动力学**（揭示机器人 → 预测场景），也可作 **逆向**（揭示物体目标运动 → 合成机器人运动）。仅用约 **15 小时** 掩码数据微调 Wan-Fun-Control 2.2 14B（LoRA），支撑策略评估（RoboCasa 成功率相关 **r=0.982**）、Best-of-N 规划与 IDM 动作抽取。
 
-## 开源状态（项目页 + 仓库核查，2026-07-22）
+## 开源状态（项目页 + 仓库核查，2026-09-19）
 
-- **部分开源：** 项目页挂 GitHub；官方仓含 **推理脚本 + DiffSynth LoRA 训练配方 + HF 双专家 LoRA**（Apache-2.0）；**DROID URDF 控制视频渲染工具** README 仍 *coming soon*；项目页本地 `paper.pdf` **404**（以 arXiv 为准）。论文正文写 “will release code, data, and model weights”——截至入库日代码与权重入口已可见，完整数据/渲染管线未齐。
+- **部分开源：** 项目页挂 GitHub；官方仓含 **推理脚本 + DiffSynth LoRA 训练配方 + HF 双专家 LoRA**（Apache-2.0）；**DROID URDF 控制视频渲染工具** README 仍 *coming soon*（2026-09-19 复核未变）。论文 PDF 以 [arXiv:2607.19343](https://arxiv.org/pdf/2607.19343) 为准。代码与权重入口可运行；完整数据/渲染管线未齐。
 
 ## 摘要级要点
 

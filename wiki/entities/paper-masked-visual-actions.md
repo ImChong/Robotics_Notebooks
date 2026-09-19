@@ -13,7 +13,7 @@ tags:
   - umd
   - harvard
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 arxiv: "2607.19343"
 related:
   - ../methods/generative-world-models.md
@@ -129,10 +129,11 @@ flowchart LR
 | 策略评估 · 仿真 | RoboCasa 多任务 WM vs GT 成功率 **r = 0.982**（存在正向任务进度偏置） |
 | 策略评估 · 真机 | 四任务 × 20 演示；仿真进度分布与真机对齐 |
 | 动作抽取 | 逆设定 + IDM；CoffeeServeMug 上相对 DP / ACT / SmolVLA 有竞争力（图 11 约 **90%**） |
+| 极端泛化 · 项目页 | 条件为 orangutan 掩码动作仍可补全场景（训练域外 stress test） |
 
 ## 开源状态
 
-**部分开源**（截至 **2026-07-22** 项目页与 README 核查）：
+**部分开源**（截至 **2026-09-19** 项目页与 README 复核）：
 
 | 产物 | 状态 |
 |------|------|

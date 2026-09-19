@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/papers/masked_visual_actions_arxiv_2607_19343.md — 复核 Masked Visual Actions（arXiv:2607.19343）；更新项目页/仓库开源核查（渲染工具仍 coming soon）；刷新 paper-masked-visual-actions 实体
+
 ## [2026-09-19] ingest | 具身智能前沿专辑「具身数据从采集到飞轮」— 补 #2–#4 三篇 sources + 系列 overview；新建 flywheel-minimal-closed-loop / supervision-signal-types；#1 已入库；交叉 data-pyramid / data-flywheel / depth-embodied-data
 
 ## [2026-09-19] ingest | sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md — 具身智能前沿四层采集术语地图；升格 wiki/concepts/embodied-data-collection-four-layers-taxonomy.md；交叉 teleoperation / IL / IMU / motion-retargeting

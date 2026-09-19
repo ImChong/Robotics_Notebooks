@@ -11,7 +11,7 @@ tags:
   - mit
   - harvard
 status: complete
-updated: 2026-09-16
+updated: 2026-09-19
 arxiv: "2607.15065"
 related:
   - ../methods/generative-world-models.md
