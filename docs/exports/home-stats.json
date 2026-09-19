@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
+      "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
+      "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md",
       "detail_id": "entity-paper-tf8-reaction-force-sea-prosthesis",
       "label": "TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢",
@@ -205,28 +215,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-065-benchmarking-safe-exploration-in-deep-reinforcem.md",
-      "detail_id": "entity-paper-as-065-benchmarking-safe-exploration-in-deep-reinforcem",
-      "label": "Benchmarking Safe Exploration in Deep Reinforcement Learning",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md",
-    "detail_id": "entity-paper-tf8-reaction-force-sea-prosthesis",
-    "label": "TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢",
+    "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
+    "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
+    "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
