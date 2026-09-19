@@ -13,6 +13,7 @@ status: complete
 updated: 2026-09-19
 related:
   - ./superpowers-obra.md
+  - ./agent-skills-addyosmani.md
   - ./agent-reach.md
   - ./hermes-agent.md
   - ./mattpocock-skills.md
@@ -141,6 +142,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Superpowers（obra）](superpowers-obra.md) — 交付管线中的 **requesting-code-review** 与 TDD 节奏
+- [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — **`code-review-and-quality` + `/review`** 流程技能；与 OCR **CLI 工具** 互补
 - [HumanLayer Skills](humanlayer-skills.md) — 迭代代理维护与 **control-loop** 式评审
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量日常工程 skill，与 OCR **垂直工具** 对照
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架；与 OCR **仓库内评审** 互补

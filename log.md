@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/repos/addyosmani-agent-skills.md — 接入 Addy Osmani Agent Skills 实体页与 skills.addy.ie 核查
+
 ## [2026-09-19] ingest | sources/repos/open-code-review.md — 接入阿里巴巴 Open Code Review 实体页与项目页核查
 
 ## [2026-09-19] ingest | sources/papers/gaussiangpt_arxiv_2603_26661.md — GaussianGPT（ECCV 2026 Oral）自回归 3D Gaussian 场景生成；已开源代码+checkpoint

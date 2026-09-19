@@ -16,6 +16,7 @@ related:
   - ./cangjie-skill.md
   - ./darwin-skill.md
   - ./superpowers-obra.md
+  - ./agent-skills-addyosmani.md
   - ./caveman.md
   - ./hermes-agent.md
   - ./sensenova-skills.md
@@ -94,6 +95,7 @@ flowchart TD
 ## 关联页面
 
 - [Superpowers（obra）](superpowers-obra.md) — **重流程、可强制** 的编码交付技能库（worktree、子代理评审）
+- [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — **全 SDLC 技能包**（25 skills + 9 commands）；上游 [comparison.md](https://github.com/addyosmani/agent-skills/blob/main/docs/comparison.md) 与本页、Superpowers 三角对照
 - [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（与 grill/TDD 正交）
 - [Caveman](caveman.md) — **独立上游** 的输出/上下文压缩插件（与本库同名 skill 对照）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与 agentskills.io 互操作
