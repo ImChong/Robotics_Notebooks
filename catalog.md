@@ -54,6 +54,10 @@
 - [autonomy_stack_go2](wiki/entities/autonomy-stack-go2.md) — autonomy_stack_go2**（[jizhang-cmu/autonomy_stack_go2](https://github.com/jizhang-cmu/autonomy_stac `📅unknown` `[entity_page]`
 - [Autoware](wiki/entities/autoware.md) — Autoware**（autowarefoundation/autoware）由 Autowar `📅unknown` `[entity_page]`
 - [Awesome Egocentric Vision（sun254667 精选集）](wiki/entities/awesome-egocentric-vision.md) — Awesome Egocentric Vision**（GitHub：[`sun254667/awesome-egocentric-vision`](https://github.com/sun2 `📅unknown` `[entity_page]`
+- [awesome-legged-locomotion-learning](wiki/entities/awesome-legged-locomotion-learning.md) — gaiyi7788/awesome-legged-locomotion-learning`](https://github.com/gaiyi7788/awesome-legged-locomot `📅unknown` `[entity_page]`
+- [Awesome-Legged-Robot-Learning（ClearLab @ SUSTech）](wiki/entities/awesome-legged-robot-learning-clearlab.md) — clearlab-sustech/Awesome-Legged-Robot-Learning`](https://github.com/clearlab-sustech/Awesome-Legge `📅unknown` `[entity_page]`
+- [awesome-physical-ai（aichr）](wiki/entities/awesome-physical-ai-aichr.md) — aichr/awesome-physical-ai`](https://github.com/aichr/awesome-physical-ai) 是 **aichr** 组织维护的 Physic `📅unknown` `[entity_page]`
+- [awesome-physical-ai（natnew）](wiki/entities/awesome-physical-ai-natnew.md) — natnew/awesome-physical-ai`](https://github.com/natnew/awesome-physical-ai) 是一份 **工程导向** 的 Physica `📅unknown` `[entity_page]`
 - [Awesome-Real2Sim2Real（sun254667 精选集）](wiki/entities/awesome-real2sim2real.md) — Awesome-Real2Sim2Real**（GitHub：[`sun254667/Awesome-Real2Sim2Real`](https://github.com/sun254667/Aw `📅unknown` `[entity_page]`
 - [Awesome Robot Descriptions](wiki/entities/awesome-robot-descriptions.md) — Awesome Robot Descriptions](https://github.com/robot-descriptions/awesome-robot-descriptions) 是 `ro `📅unknown` `[entity_page]`
 - [Awesome RSI（Prism-Shadow 精选集）](wiki/entities/awesome-rsi.md) — Awesome RSI**（GitHub：Prism-Shadow/awesome-rsi，站点：[p `📅unknown` `[entity_page]`
@@ -3957,6 +3961,7 @@
 
 - [AMP vs ADD vs SMP：运动先验变体对比](wiki/comparisons/amp-add-smp-motion-prior-variants.md) — 背景**：在人形 RL 中，显式 tracking 奖励容易带来「能完成任务但不像人」的步态。AMP 用判别器学习参考动作分布；社区在此基础 `📅unknown` `[comparison_page]`
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](wiki/comparisons/anygrasp-vs-graspnet.md) — 背景**：在「点云 / RGBD → 6-DoF 抓取候选」这条链路上，最常被同时提及的是 **GraspNet 家族**（GraspNet-1Billion / Contact-GraspNet `📅unknown` `[comparison_page]`
+- [Physical AI 策展清单：natnew vs aichr](wiki/comparisons/awesome-physical-ai-curated-lists.md) — GitHub 上存在两个均名为 **awesome-physical-ai** 的独立仓库，入库时须按 **org 前缀** 区分，避免链错或重复节点。 `📅unknown` `[comparison_page]`
 - [CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）](wiki/comparisons/can-vs-ethercat-joint-bus.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [国内 GPU 云平台选型（机器人学习与仿真）](wiki/comparisons/china-gpu-cloud-platforms.md) — 本地工作站不足以支撑 Isaac Lab、mjlab 或多卡 [PPO](../methods/reinforcement-learning.m `📅unknown` `[comparison_page]`
 - [CLF vs CBF：稳定性与安全性的对偶工具](wiki/comparisons/clf-vs-cbf.md) —  工具 | 全称 | 核心角色  `📅unknown` `[comparison_page]`

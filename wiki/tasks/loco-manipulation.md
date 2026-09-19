@@ -434,6 +434,7 @@ flowchart TD
 ## 参考来源
 - [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身 loco-manip 产品叙事归档
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
+- [Awesome-Legged-Robot-Learning（ClearLab）](../entities/awesome-legged-robot-learning-clearlab.md) — SUSTech 腿足/WBC arXiv 精选
 - [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)
 - [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础

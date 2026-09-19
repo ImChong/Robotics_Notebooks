@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/repos/awesome-legged-locomotion-learning.md + awesome-physical-ai（natnew/aichr）— 腿足 locomotion 双清单 + Physical AI 双同名仓；新建 4 entity + 1 comparison；natnew 含 GitHub Pages 文档站
+
 ## [2026-09-19] ingest | sources/papers/masked_visual_actions_arxiv_2607_19343.md — 复核 Masked Visual Actions（arXiv:2607.19343）；更新项目页/仓库开源核查（渲染工具仍 coming soon）；刷新 paper-masked-visual-actions 实体
 
 ## [2026-09-19] ingest | 具身智能前沿专辑「具身数据从采集到飞轮」— 补 #2–#4 三篇 sources + 系列 overview；新建 flywheel-minimal-closed-loop / supervision-signal-types；#1 已入库；交叉 data-pyramid / data-flywheel / depth-embodied-data
