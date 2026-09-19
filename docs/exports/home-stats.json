@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4308,
-  "edge_count": 38432,
+  "node_count": 4311,
+  "edge_count": 38469,
   "coverage": {
-    "covered": 4280,
-    "total": 4280,
+    "covered": 4283,
+    "total": 4283,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -15,7 +15,38 @@
       "type": "concept",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md",
+      "detail_id": "wiki-concepts-embodied-data-flywheel-minimal-closed-loop",
+      "label": "具身数据飞轮：最小闭环（避免空转）",
+      "type": "concept",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/robot-data-supervision-signal-types.md",
+      "detail_id": "wiki-concepts-robot-data-supervision-signal-types",
+      "label": "机器人数据：监督信号类型分流",
+      "type": "concept",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/embodied-data-collection-to-flywheel-album.md",
+      "detail_id": "wiki-overview-embodied-data-collection-to-flywheel-album",
+      "label": "具身数据从采集到飞轮（系列地图）",
+      "type": "overview",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
     },
     {
       "path": "wiki/concepts/imu-principles-algorithms-camera-sync.md",
@@ -25,7 +56,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-activefly-bench.md",
@@ -35,7 +66,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-anycam-vla.md",
@@ -45,7 +76,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-cmu-drive-v2v-vla.md",
@@ -55,7 +86,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-cross-view-action-consistency-vla.md",
@@ -65,7 +96,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-depth-wise-probing-driving-vla.md",
@@ -75,7 +106,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-hermite-curves-vla-trajectory-priors.md",
@@ -85,7 +116,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-hymes-hybrid-memory-manipulation.md",
@@ -95,7 +126,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-jepa-wam.md",
@@ -105,7 +136,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-mamba-smolvla-expert.md",
@@ -115,7 +146,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-onevomemory.md",
@@ -125,7 +156,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-recoverfly-aerial-vln.md",
@@ -135,7 +166,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-tdhd-surgical-dual-arm.md",
@@ -145,7 +176,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-vane.md",
@@ -155,7 +186,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-vla-action-post-training-depth-decodability.md",
@@ -165,7 +196,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-wa-specdec.md",
@@ -175,37 +206,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wam-diff2.md",
-      "detail_id": "entity-paper-wam-diff2",
-      "label": "WAM-Diff2（arXiv:2608.01035）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wnm-3d-vln.md",
-      "detail_id": "entity-paper-wnm-3d-vln",
-      "label": "WNM-3D（arXiv:2608.07267）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-weekly-trends-2026-08-10-part1-technology-map.md",
-      "detail_id": "wiki-overview-vla-weekly-trends-2026-08-10-part1-technology-map",
-      "label": "一周 VLA 研究趋势（2026.08.10–08.16 · 第一篇）",
-      "type": "overview",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -215,20 +216,21 @@
     "type": "concept",
     "recency": "2026-09-19",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
   },
   "top_communities": [
     {
+      "label": "移动操作",
+      "size": 716
+    },
+    {
       "label": "操作",
-      "size": 593
+      "size": 569
     },
     {
-      "label": "宇树 G1 人形机器人",
-      "size": 543
-    },
-    {
-      "label": "全身控制",
-      "size": 486
+      "label": "主路线：运动控制算法工程师成长路线",
+      "size": 434
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -236,11 +238,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 254
+      "size": 279
     },
     {
       "label": "仿真到现实",
-      "size": 218
+      "size": 215
     }
   ],
   "top_hubs": [
@@ -303,7 +305,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 634,
+      "degree": 638,
       "has_repo": true
     },
     {
@@ -329,7 +331,7 @@
       "type": "method",
       "degree": 165,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -337,14 +339,14 @@
       "type": "method",
       "degree": 90,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 67,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -358,15 +360,14 @@
       "type": "entity",
       "degree": 60,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 53,
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -374,7 +375,7 @@
       "type": "entity",
       "degree": 50,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -382,13 +383,14 @@
       "type": "entity",
       "degree": 49,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 46
+      "degree": 46,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-ctrl-world",

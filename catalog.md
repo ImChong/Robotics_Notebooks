@@ -3560,6 +3560,7 @@
 - [边缘计算与云端协同（Edge–Cloud Robotics）](wiki/concepts/edge-cloud-robotics.md) — 边缘–云端协同** 把机器人能力拆到 **低延迟本地闭环** 与 **高算力云端批处理**：边缘保安全与控制，云端保学习、存储与队级优化。 `📅unknown` `[wiki_page]`
 - [Embodied Data Cleaning (具身数据清洗)](wiki/concepts/embodied-data-cleaning.md) — 具身数据清洗**：在具身智能（Embodied AI）中，将人类示教或自动采集的原始“脏数据”转化为高质量、可用于训练的专家演示轨迹（Expert Trajectories）的过程。 `📅unknown` `[wiki_page]`
 - [具身数据采集：四层术语地图](wiki/concepts/embodied-data-collection-four-layers-taxonomy.md) — 具身数据采集术语** 常被混在同一句话里，但分别回答四个问题：**从谁的位置看（视角）**、**用什么传感（设备）**、**人怎样示范（教法）**、**最终记什么（产物）**；贯穿四层的主线是  `📅unknown` `[wiki_page]`
+- [具身数据飞轮：最小闭环（避免空转）](wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md) — 飞轮空转** 指只增加采集量却不改变下一版系统；**最小闭环** 要求：策略能在目标机器人上执行 → 每次执行留下可判定的结果与必要纠正 → 反馈触发可归因的更新并通过回归测试后再部署。 `📅unknown` `[wiki_page]`
 - [概念：具身大模型实时性 ↔ 泛化能力取舍](wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [具身大模型与本体协同设计](wiki/concepts/embodied-foundation-model-hardware-codesign.md) — 具身大模型与本体协同设计**指：具身智能的「通用」首先是 **在特定本体边界内扩大可执行任务覆盖面**，而非脱离硬件的万能模型；大模型公司下场自研执行器、传感与整机，是为了把 **数据闭环、分层控 `📅unknown` `[wiki_page]`
 - [具身感知六种空间表征](wiki/concepts/embodied-perception-six-spatial-representations.md) — 具身感知六种空间表征**把常被并列混谈的 **2D 视觉、深度、点云、占据栅格/距离场、语义地图、隐式地图** 拆成感知栈上的不同层级：它们回答的问题不同（看见什么 → 多远 → 表面在哪 → 能 `📅unknown` `[wiki_page]`
@@ -3652,6 +3653,7 @@
 - [Reward Design](wiki/concepts/reward-design.md) — 奖励函数设计（Reward Design）**：强化学习中定义智能体优化目标的核心环节。奖励函数的好坏直接决定策略能不能学出来、学出来后的行为是否符合预期。 `📅unknown` `[wiki_page]`
 - [RL Runner（训练循环编排）](wiki/concepts/rl-runner.md) — RL Runner 是强化学习框架里驱动「采集 → 计算学习信号 → 更新（或只评测）」的编排层。算法给出损失与更新公式；环境给出 `step`；Runner 决定何时采、采完怎么用、用完是否丢掉、要 `📅unknown` `[wiki_page]`
 - [RMW（ROS Middleware Interface）](wiki/concepts/rmw-interface.md) — RMW** 是 ROS 2 的 **中间件抽象接口**：用纯 C API 把 `rcl` / 客户端库与底层通信实现（通常是某家 **DDS/RTPS**，经 `rmw_*` 适配包）隔开，从而支 `📅unknown` `[wiki_page]`
+- [机器人数据：监督信号类型分流](wiki/concepts/robot-data-supervision-signal-types.md) — 同一次任务** 可能产生相机、关节、动作、成败、接管与 Ego 视频等多种记录，但它们回答的 **训练提问** 不同；混成「具身数据大池」会丢失监督含义，让模型收到比任务所需更粗或更错的答案。 `📅unknown` `[wiki_page]`
 - [机器人 In-Context Learning（上下文学习）](wiki/concepts/robot-in-context-learning.md) — 机器人 In-Context Learning（ICL，上下文学习）**：在 **不更新模型权重** 的前提下，把一段 **示范轨迹、人类视频或任务无关交互片段** 放进策略的 **上下文窗口 `📅unknown` `[wiki_page]`
 - [机器人关节轴承选型（载荷路径与五笔账）](wiki/concepts/robot-joint-bearing-selection.md) — 关节轴承**占 BOM 比例不高，却处在 **径向–轴向–倾覆力矩** 复合载荷的关键节点；选型不是翻样本选最大 C 值，而是先画清 **谐波 / RV / 直驱** 各自载荷路径，再用 **载荷 `📅unknown` `[wiki_page]`
 - [连杆惯量与转子惯量（Robot Link vs Rotor Inertia）](wiki/concepts/robot-link-and-rotor-inertia.md) — 人形与腿足机器人的「关节有多沉」，在工程上往往来自 **两件不同的事**：**连杆刚体惯量**（机械结构质量分布）与 **电机转子经减速器反射的等效惯量**（传动链旋转部件）。混淆两者会导致仿真偏轻、 `📅unknown` `[wiki_page]`
@@ -4041,6 +4043,7 @@
 - [Ego 分类 02：人→机器人](wiki/overview/ego-category-02-human-to-robot.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Ego 分类 03：世界模型](wiki/overview/ego-category-03-world-models.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Ego 分类 04：Ego+Exo 融合](wiki/overview/ego-category-04-ego-exo-fusion.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [具身数据从采集到飞轮（系列地图）](wiki/overview/embodied-data-collection-to-flywheel-album.md) — 本系列** 用四步把具身数据讲清楚：先拆采集术语（四层地图），再排数据配方（五层金字塔），然后定义飞轮最短闭环（避免空转），最后按监督信号分流（示范/失败/接管/Ego 各教什么）。 `📅unknown` `[overview_page]`
 - [具身智能 Infra 2026：闭环比单点模型更拉开差距](wiki/overview/embodied-infra-2026-panorama.md) — 模型像发动机；Infra 决定燃料、监控、上线测试和可追溯维修要几天还是几分钟。 `📅unknown` `[overview_page]`
 - [具身资源合集：10 篇论文的阅读坐标](wiki/overview/embodied-resources-10-papers-technology-map.md) — 这一批工作的共同点是：把「能否复现」与「指标是否对准控制目标」同时摆上台面——从潜动作、VLA head 设计到跨具身 WBC 与实验室自动化。 `📅unknown` `[overview_page]`
 - [具身资源与可靠性：9 篇论文的阅读坐标](wiki/overview/embodied-resources-reliability-9-papers-technology-map.md) — 竞争点正从「更大的策略模型」扩展到数据检索、感知鲁棒、空间几何、接触安全、可信评测与开源资产栈——每篇论文应对应唯一 `paper-*` 详情节点。 `📅unknown` `[overview_page]`

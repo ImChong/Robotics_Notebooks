@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | 具身智能前沿专辑「具身数据从采集到飞轮」— 补 #2–#4 三篇 sources + 系列 overview；新建 flywheel-minimal-closed-loop / supervision-signal-types；#1 已入库；交叉 data-pyramid / data-flywheel / depth-embodied-data
+
 ## [2026-09-19] ingest | sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md — 具身智能前沿四层采集术语地图；升格 wiki/concepts/embodied-data-collection-four-layers-taxonomy.md；交叉 teleoperation / IL / IMU / motion-retargeting
 
 ## [2026-09-19] ingest | sources/blogs/wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md — 飞一样的成长 IMU 原理/算法/相机驱动协同；升格 wiki/concepts/imu-principles-algorithms-camera-sync.md

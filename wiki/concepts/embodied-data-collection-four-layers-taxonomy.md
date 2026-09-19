@@ -4,6 +4,7 @@ tags: [data-collection, teleoperation, imitation-learning, umi, mocap, ego-exo, 
 status: complete
 updated: 2026-09-19
 related:
+  - ../overview/embodied-data-collection-to-flywheel-album.md
   - ../tasks/teleoperation.md
   - ../methods/imitation-learning.md
   - ./imu-principles-algorithms-camera-sync.md
@@ -161,6 +162,7 @@ flowchart TB
 - [HuMI](../entities/paper-notebook-humanoid-manipulation-interface.md) — MoCap + UMI 全身无机器人示范实例
 - [DROID Policy Learning](../entities/droid-policy-learning.md) — 大规模 VR teleop 数据集
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 实操向采集 checklist
+- [具身数据从采集到飞轮（系列专辑 #1）](../overview/embodied-data-collection-to-flywheel-album.md)
 
 ## 参考来源
 
