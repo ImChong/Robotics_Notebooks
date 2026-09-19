@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/repos/open-code-review.md — 接入阿里巴巴 Open Code Review 实体页与项目页核查
+
 ## [2026-09-19] ingest | sources/papers/gaussiangpt_arxiv_2603_26661.md — GaussianGPT（ECCV 2026 Oral）自回归 3D Gaussian 场景生成；已开源代码+checkpoint
 
 ## [2026-09-19] ingest | 六篇 arXiv 2609 批次 — 新建 GALATEA/OmniCalib/G1 屋顶坡面/Astronex-World 实体页；Agile-WAM 与 INSPECT 已存在跳过
