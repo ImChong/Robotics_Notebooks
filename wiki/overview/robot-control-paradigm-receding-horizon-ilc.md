@@ -8,14 +8,16 @@ tags:
   - constraints
   - repetitive
 status: complete
-updated: 2026-08-09
-summary: "MPC 处理约束与多目标滚动优化；ILC 利用重复运动历史误差改进跟踪精度。"
+updated: 2026-09-19
+summary: "MPC 处理约束与多目标滚动优化；ILC 利用重复运动历史误差改进跟踪精度；与 IL 策略滚动执行（Diffusion Policy / ACT）同名异构。"
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../methods/model-predictive-control.md
   - ../methods/iterative-learning-control.md
+  - ../concepts/receding-horizon-policy-execution.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
+  - ../../sources/papers/receding_horizon_il_primary_refs.md
 ---
 
 
@@ -43,6 +45,8 @@ sources:
 
 MPC 每步求解有限时域 OCP 仅执行首控制量；ILC 将上批次全程误差映射为下一批次前馈补偿 $u_{k+1}=u_k + L e_k$。
 
+**与 IL 策略滚动执行区分：** 模仿学习里的 [滚动预测执行](../concepts/receding-horizon-policy-execution.md)（如 [Diffusion Policy](../entities/paper-diffusion-policy.md) 的 receding horizon、[ACT](../entities/paper-act.md) 的 temporal ensemble）共享「有限视界 + 前缀执行 + 重规划」骨架，但 **无显式动力学 OCP**，且 ACT 默认 **重叠融合** 与 DP 式 **丢弃后缀** 不等价。
+
 ## 代表性算法
 
 | 算法 | 节点 |
@@ -62,10 +66,12 @@ MPC 算力与建模成本；ILC 仅适用于 **重复轨迹**，对非重复任�
 
 - [Model Predictive Control](../methods/model-predictive-control.md)
 - [Iterative Learning Control](../methods/iterative-learning-control.md)
+- [滚动预测执行（IL 策略）](../concepts/receding-horizon-policy-execution.md) — DP vs ACT 一手对照
 
 ## 参考来源
 
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝具身智能《机器人控制算法八大体系详解：从 PID 到强化学习》（<https://mp.weixin.qq.com/s/Kp12BMBiC7YiIiDPi_P8-g>）
+- [receding_horizon_il_primary_refs.md](../../sources/papers/receding_horizon_il_primary_refs.md) — IL 侧 receding horizon 与 ACT TE 对照
 
 ## 推荐继续阅读
 

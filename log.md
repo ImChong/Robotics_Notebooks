@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/papers/receding_horizon_il_primary_refs.md — 滚动预测执行（DP receding horizon vs ACT temporal ensemble）升格 wiki/concepts/receding-horizon-policy-execution.md；交叉 action-chunking、diffusion-policy、paper-diffusion-policy、paper-act
+
 ## [2026-09-19] ingest | Manda Robotics 开源通用策略 RoboLab-120 横评（五策略 6000 episode）
 
 ## [2026-09-19] ingest | Evolution of Humanoid Locomotion Control（SciRobotics 2026 Review）：三时代 locomotion 控制综述 + companion 280 refs

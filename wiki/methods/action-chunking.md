@@ -19,8 +19,10 @@ sources:
   - ../../sources/papers/revisiting_open_loop_action_chunking_arxiv_2608_15938.md
   - ../../sources/papers/arli_arxiv_2608_23831.md
   - ../../sources/papers/video2door_traversal_arxiv_2608_20251.md
+  - ../../sources/papers/receding_horizon_il_primary_refs.md
   - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 related:
+  - ../concepts/receding-horizon-policy-execution.md
   - ../entities/paper-act.md
   - ./behavior-cloning.md
   - ./humanoid-transformer-touch-dreaming.md
@@ -97,7 +99,8 @@ $$
 常见实现：
 
 - **固定长度 chunk**：每次输出未来 4~32 步动作
-- **重叠滚动执行**：每次只执行前半段，后半段被下一次预测覆盖
+- **重叠滚动执行（经典 receding horizon）**：每次只执行前缀 \(T_e\)，未执行后缀被下一次预测 **丢弃**——[Diffusion Policy](../entities/paper-diffusion-policy.md) 原论文写法；详见 [滚动预测执行](../concepts/receding-horizon-policy-execution.md)
+- **Temporal Ensembling（ACT 默认）**：**每步** 都预测重叠 chunk，对同一时刻的多条预测 **加权融合**——**不等价** 于上一种 RH
 - **带 buffer 的异步执行**：策略线程低频更新 chunk，控制线程高频消费 chunk
 
 ## 和单步预测的区别
@@ -229,3 +232,4 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Video2DoorTraversal（论文实体）](../entities/paper-video2door-traversal.md) — ArticuACT 在 ACT chunk=100 上加机器人系 Plücker 与交互进度辅助头（arXiv:2608.20251；代码待发布）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 上对照 sync/async/blend/simple/infer/train（arXiv:2608.01880）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 生成式动作头如何使长 chunk 在实践上可行
+- [滚动预测执行（Receding Horizon）](../concepts/receding-horizon-policy-execution.md) — DP 经典 RH vs ACT TE 一手对照

@@ -22,7 +22,8 @@
 
 - 训练：对专家动作加噪，网络预测噪声；推理：从高斯噪声逐步去噪得到动作序列。
 - 相对 GMM/VAE 更适合多峰动作；去噪步数是速度–质量权衡。
-- **对 wiki 的映射：** [paper-diffusion-policy](../../wiki/entities/paper-diffusion-policy.md)；方法页 [diffusion-policy](../../wiki/methods/diffusion-policy.md)
+- **滚动执行（receding horizon）：** 策略预测长度 \(T_p\) 的动作序列，部署时 **只执行前 \(T_e\) 步**（\(T_e < T_p\)），再用新观测 **重新去噪** 下一段——论文明确将此作为核心控制设计之一（非逐步单动作回归）。
+- **对 wiki 的映射：** [paper-diffusion-policy](../../wiki/entities/paper-diffusion-policy.md)；方法页 [diffusion-policy](../../wiki/methods/diffusion-policy.md)；概念页 [receding-horizon-policy-execution](../../wiki/concepts/receding-horizon-policy-execution.md)
 
 ## 当前提炼状态
 
