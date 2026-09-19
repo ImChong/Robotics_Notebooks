@@ -2,8 +2,9 @@
 type: entity
 tags: [curated-list, recursive-self-improvement, llm-agents, agent-harness, self-evolution, benchmarks]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 related:
+  - ../queries/rsi-four-tier-five-pushes.md
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-auto-research.md
   - ./rsi-harness.md
@@ -77,7 +78,7 @@ flowchart LR
 | 三算子 RSI 框架 | [MetaRSI-v1](./paper-metarsi-v1.md) |
 | 最小实验环 / 训练脚本自改 | [karpathy/autoresearch](./karpathy-autoresearch.md) |
 | Harness 效率再 scale | [SoL-Pi](./sol-pi.md) |
-| 宏观 RSI 与具身跟随 | [递归自改进](../concepts/recursive-self-improvement.md) |
+| 宏观 RSI 与具身跟随 | [递归自改进](../concepts/recursive-self-improvement.md) · [四层×五次 query](../queries/rsi-four-tier-five-pushes.md) |
 
 ## 局限与使用注意
 

@@ -2,8 +2,9 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 related:
+  - ../queries/rsi-four-tier-five-pushes.md
   - ./ai-auto-research.md
   - ./embodied-scaling-laws.md
   - ./bitter-lesson.md
@@ -18,6 +19,7 @@ related:
   - ../entities/rsi-harness.md
   - ../entities/awesome-rsi.md
 sources:
+  - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
   - ../../sources/repos/awesome-rsi.md
@@ -49,6 +51,19 @@ summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自
 4. **治理含义与单边暂停。** 作者认为可信全球放慢需要可验证停训；单边暂停只换领跑者。本库不展开军控，只把这条标成「能力叙事旁的约束」。
 
 ## 核心原理
+
+### 四层 RSI 标准（与五次推进）
+
+[Datawhale RSI 科普综述](../queries/rsi-four-tier-five-pushes.md) 用可观察标准把常见混读拆开：
+
+| 层 | 名称 | 2026 文内状态 |
+|----|------|----------------|
+| 1 | 持久改进（权重/记忆/harness/流程） | 已有较直接证据 |
+| 2 | 有界 RSI（边界内 propose–eval–accept） | AIDE² 等阶段性信号 |
+| 3 | ignition（更会设计下一轮改进） | 尚无充分公开证据 |
+| 4 | 稳健可控（隐藏评测、对齐、审计） | 远未解决 |
+
+**会自我改进 ≠ 会自我加速。** OpenAI **RSI Index**（GPT-5.6 Sol 57.9%）衡量「参与改进 AI」的研发能力，不是 ignition 证明。具身侧 [Motus2](../entities/paper-motus2.md) 等属于第五次推进中的 **有界权重级闭环**，详表见 query 页。
 
 ### 还差哪一块
 
@@ -106,6 +121,7 @@ flowchart LR
 
 ## 关联页面
 
+- [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — 记忆→权重→打分→harness→研究过程的技术史与 2026 信号
 - [AI Auto-Research](./ai-auto-research.md) — 学术全生命周期自动化；人机共治与 RSI 的当前距离
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 物理世界能自动化的前提
 - [ASPIRE](../methods/aspire.md) · [ENPIRE](../methods/enpire.md) — 机器人侧的 agent 研发自动化，不是模型自训练后继者
@@ -116,6 +132,7 @@ flowchart LR
 
 ## 参考来源
 
+- [Datawhale RSI 科普综述（2026-09-19）](../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md)
 - [When AI builds itself（Anthropic Institute 归档）](../../sources/sites/anthropic-recursive-self-improvement.md)
 - [AI Auto-Research 综述策展](../../sources/papers/ai_auto_research_survey_2605_18661.md)
 - [Awesome RSI 仓库归档](../../sources/repos/awesome-rsi.md)
