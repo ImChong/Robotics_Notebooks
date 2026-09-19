@@ -9,6 +9,186 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-activefly-bench.md",
+      "detail_id": "entity-paper-activefly-bench",
+      "label": "ActiveFly-Bench（arXiv:2607.10180）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-anycam-vla.md",
+      "detail_id": "entity-paper-anycam-vla",
+      "label": "AnyCamVLA（arXiv:2603.05868）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cmu-drive-v2v-vla.md",
+      "detail_id": "entity-paper-cmu-drive-v2v-vla",
+      "label": "CMU-Drive / V2V-VLA（arXiv:2608.07621）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cross-view-action-consistency-vla.md",
+      "detail_id": "entity-paper-cross-view-action-consistency-vla",
+      "label": "Cross-View Action Consistency（arXiv:2608.06965）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-depth-wise-probing-driving-vla.md",
+      "detail_id": "entity-paper-depth-wise-probing-driving-vla",
+      "label": "Depth-Wise Probing Driving VLA（arXiv:2608.07361）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hermite-curves-vla-trajectory-priors.md",
+      "detail_id": "entity-paper-hermite-curves-vla-trajectory-priors",
+      "label": "Hermite Curves VLA（arXiv:2608.01265）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hymes-hybrid-memory-manipulation.md",
+      "detail_id": "entity-paper-hymes-hybrid-memory-manipulation",
+      "label": "HyMeS（arXiv:2608.09410）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-jepa-wam.md",
+      "detail_id": "entity-paper-jepa-wam",
+      "label": "JEPA-WAM（arXiv:2608.09381）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mamba-smolvla-expert.md",
+      "detail_id": "entity-paper-mamba-smolvla-expert",
+      "label": "Mamba SmolVLA Expert（arXiv:2608.21407）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-onevomemory.md",
+      "detail_id": "entity-paper-onevomemory",
+      "label": "OnEvoMemory（arXiv:2608.08749）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-recoverfly-aerial-vln.md",
+      "detail_id": "entity-paper-recoverfly-aerial-vln",
+      "label": "RecoverFly（arXiv:2608.09467）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tdhd-surgical-dual-arm.md",
+      "detail_id": "entity-paper-tdhd-surgical-dual-arm",
+      "label": "TDHD（arXiv:2608.09125）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vane.md",
+      "detail_id": "entity-paper-vane",
+      "label": "VANE（arXiv:2608.09448）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vla-action-post-training-depth-decodability.md",
+      "detail_id": "entity-paper-vla-action-post-training-depth-decodability",
+      "label": "VLA Depth Decodability（arXiv:2608.08904）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wa-specdec.md",
+      "detail_id": "entity-paper-wa-specdec",
+      "label": "WA-SpecDec（arXiv:2608.08725）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wam-diff2.md",
+      "detail_id": "entity-paper-wam-diff2",
+      "label": "WAM-Diff2（arXiv:2608.01035）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wnm-3d-vln.md",
+      "detail_id": "entity-paper-wnm-3d-vln",
+      "label": "WNM-3D（arXiv:2608.07267）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-weekly-trends-2026-08-10-part1-technology-map.md",
+      "detail_id": "wiki-overview-vla-weekly-trends-2026-08-10-part1-technology-map",
+      "label": "一周 VLA 研究趋势（2026.08.10–08.16 · 第一篇）",
+      "type": "overview",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/text2mujoco.md",
       "detail_id": "entity-text2mujoco",
       "label": "Text2MuJoCo",
@@ -26,204 +206,17 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md",
-      "detail_id": "entity-paper-tf8-reaction-force-sea-prosthesis",
-      "label": "TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/agent-skills-addyosmani.md",
-      "detail_id": "entity-agent-skills-addyosmani",
-      "label": "Agent Skills（Addy Osmani）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/open-code-review.md",
-      "detail_id": "entity-open-code-review",
-      "label": "Open Code Review（Alibaba OCR）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sa-2603-26661-gaussiangpt.md",
-      "detail_id": "entity-paper-sa-2603-26661-gaussiangpt",
-      "label": "GaussianGPT：Towards Autoregressive 3D Gaussian Scene Generation",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-astronex-world-1.md",
-      "detail_id": "entity-paper-astronex-world-1",
-      "label": "Astronex-World 1.0（arXiv:2609.20034）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-g1-slope-adaptive-roofing-locomotion.md",
-      "detail_id": "entity-paper-g1-slope-adaptive-roofing-locomotion",
-      "label": "G1 斜坡全身作业 Locomotion（arXiv:2609.20558）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-galatea.md",
-      "detail_id": "entity-paper-galatea",
-      "label": "GALATEA（arXiv:2609.10050）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-omnicalib.md",
-      "detail_id": "entity-paper-omnicalib",
-      "label": "OmniCalib（arXiv:2609.19582）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/receding-horizon-policy-execution.md",
-      "detail_id": "wiki-concepts-receding-horizon-policy-execution",
-      "label": "滚动预测执行（Receding-Horizon Policy Execution）",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/manda-robotics-open-policy-evaluation.md",
-      "detail_id": "entity-manda-robotics-open-policy-evaluation",
-      "label": "Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-evolution-humanoid-locomotion-control.md",
-      "detail_id": "entity-paper-evolution-humanoid-locomotion-control",
-      "label": "Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/typesafe-jev.md",
-      "detail_id": "entity-typesafe-jev",
-      "label": "Jev（TypeSafe AI · System One Model）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-seen2scene.md",
-      "detail_id": "entity-paper-seen2scene",
-      "label": "Seen2Scene：Visibility-Guided Flow 真实 3D 场景补全",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/humanoid-testing-workflow.md",
-      "detail_id": "wiki-concepts-humanoid-testing-workflow",
-      "label": "人形机器人测试流程（L0–L5 六级递进）",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/agent-lightning.md",
-      "detail_id": "entity-agent-lightning",
-      "label": "Agent Lightning（Microsoft）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-agile-wam.md",
-      "detail_id": "entity-paper-agile-wam",
-      "label": "Agile-WAM（arXiv:2609.20761）",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-017-fear-field-adaptive-constraints-for-safe-environ.md",
-      "detail_id": "entity-paper-as-017-fear-field-adaptive-constraints-for-safe-environ",
-      "label": "Fear Field",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-025-uncertainty-aware-action-advising-for-deep-reinf.md",
-      "detail_id": "entity-paper-as-025-uncertainty-aware-action-advising-for-deep-reinf",
-      "label": "Uncertainty-aware action advising for deep reinforcement learning agents",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/text2mujoco.md",
-    "detail_id": "entity-text2mujoco",
-    "label": "Text2MuJoCo",
+    "path": "wiki/entities/paper-activefly-bench.md",
+    "detail_id": "entity-paper-activefly-bench",
+    "label": "ActiveFly-Bench（arXiv:2607.10180）",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
