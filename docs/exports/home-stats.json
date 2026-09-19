@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/text2mujoco.md",
+      "detail_id": "entity-text2mujoco",
+      "label": "Text2MuJoCo",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
       "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
       "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
@@ -204,28 +214,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-060-lidar-object-detection-and-sensor-fusion-in-simu.md",
-      "detail_id": "entity-paper-as-060-lidar-object-detection-and-sensor-fusion-in-simu",
-      "label": "LiDAR Object Detection and-Sensor Fusion in Simulation Environments Sensor mo...",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
-    "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
-    "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
+    "path": "wiki/entities/text2mujoco.md",
+    "detail_id": "entity-text2mujoco",
+    "label": "Text2MuJoCo",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
