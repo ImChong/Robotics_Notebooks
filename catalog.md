@@ -10,6 +10,7 @@
 - [ACMOP（交流电机自动优化框架）](wiki/entities/acmop.md) — ACMOP**（horychen/ACMOP，*Alternating Current Machine Optimizat `📅unknown` `[entity_page]`
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](wiki/entities/adams.md) — ADAMS** 是面向三维机械系统的 **多体动力学（Multibody Dynamics, MBD）** 自动建模与数值仿真程序谱系：名称与核心数值配方来自 Nicolae Orlandea 在 `📅unknown` `[entity_page]`
 - [AERIS-10（PLFM_RADAR）](wiki/entities/aeris-10-plfm-radar.md) — AERIS-10** 是 GitHub 上高关注度的 **开源脉冲线性调频（PLFM）相控阵雷达** 全栈：从原理图、PCB、FPGA 固件到 Python 可视化一应俱全，适合研究 **波束赋形 `📅unknown` `[entity_page]`
+- [Agent Lightning（Microsoft）](wiki/entities/agent-lightning.md) — Agent Lightning**（microsoft/agent-lightning）是微软研究院 `📅2026-09-19` `[entity_page]`
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`
 - [AGILE（智元感控一体）](wiki/entities/agibot-agile.md) — AGILE** 是智元在 2026-06 发布地图 中推出的 **感控一体能力底 `📅unknown` `[entity_page]`
 - [BFM-2（智元运控基座）](wiki/entities/agibot-bfm-2.md) — BFM-2** 是智元在 2026-06 发布地图 中推出的 **运动小脑 /  `📅unknown` `[entity_page]`
