@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, manipulation, vla, evaluation, simulation, isaac-lab, nvidia, open-source, leaderboard]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 arxiv: "2604.09860"
 code: https://github.com/NVLabs/RoboLab
 venue: "RSS 2026"
@@ -11,6 +11,7 @@ related:
   - ./paper-pi05-open-world-vla.md
   - ./paper-hydra-0.md
   - ./paper-gpt-6-astra-embodied-policy.md
+  - ./manda-robotics-open-policy-evaluation.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -142,6 +143,7 @@ sequenceDiagram
 | [RoboDojo](./robodojo.md) | sim+real 统一协议；42 sim + 18 real | 互补；RoboDojo 强调真机 RealEval 与公益榜 |
 | [Hydra-0 开环 replay](./paper-hydra-0.md) | WM 预测保真度 → 策略 SR 代理 | 用 RoboLab 五策略得 r=0.96 |
 | [GPT 6 Astra 评测](./paper-gpt-6-astra-embodied-policy.md) | 独立十任务子集对照 | 非官方全榜复现 |
+| [Manda 五策略横评](./manda-robotics-open-policy-evaluation.md) | **全 RoboLab-120** 开源策略 head-to-head + 行为审计 | Isaac Sim 6 fork；aggregate 对齐官方榜 |
 
 ## 结论
 
@@ -175,6 +177,7 @@ sequenceDiagram
 - [RoboDojo](./robodojo.md) — 另一套 sim+real 通用操纵评测与公益榜。
 - [π0.5](./paper-pi05-open-world-vla.md) — 榜单核心 VLA 基线之一。
 - [Hydra-0](./paper-hydra-0.md) — 用 RoboLab 开环评估 WM 预测质量。
+- [Manda 开源策略横评](./manda-robotics-open-policy-evaluation.md) — 全 RoboLab-120 五策略行为审计（2026-09）。
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 第三层策略成功率选型。
 - [Isaac Lab](./isaac-gym-isaac-lab.md) — 仿真底座。
 

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4276,
-  "edge_count": 38211,
+  "node_count": 4277,
+  "edge_count": 38223,
   "coverage": {
-    "covered": 4248,
-    "total": 4248,
+    "covered": 4249,
+    "total": 4249,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -27,7 +27,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-seen2scene.md",
@@ -58,7 +58,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-agile-wam.md",
@@ -246,7 +246,7 @@
     },
     {
       "label": "全身控制",
-      "size": 492
+      "size": 507
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -289,7 +289,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1030,
+      "degree": 1031,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -382,9 +382,8 @@
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
-      "degree": 52,
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "degree": 53,
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",

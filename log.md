@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | Manda Robotics 开源通用策略 RoboLab-120 横评（五策略 6000 episode）
+
 ## [2026-09-19] ingest | Evolution of Humanoid Locomotion Control（SciRobotics 2026 Review）：三时代 locomotion 控制综述 + companion 280 refs
 
 ## [2026-09-19] ingest | sources/blogs/typesafe_ai_introducing_system_one_models_jev.md — Jev System One Model 升格 typesafe-jev 实体（SDK 已开源）
