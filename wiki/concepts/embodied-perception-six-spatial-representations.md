@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 related:
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md

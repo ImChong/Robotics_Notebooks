@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/papers/seen2scene_arxiv_2603_28548.md — Seen2Scene visibility-guided flow 3D 场景补全升格 paper-seen2scene（已开源）
+
 ## [2026-09-19] ingest | sources/blogs/wechat_zanehub_humanoid_testing_workflow_2026-09-19.md — Zane Hub 人形 L0–L5 测试流程升格 wiki/concepts/humanoid-testing-workflow.md
 
 ## [2026-09-19] ingest | sources/repos/agent_lightning.md — 接入 Microsoft Agent Lightning v1.0 agentic RL 框架（Gateway+Controller+verl）；已开源

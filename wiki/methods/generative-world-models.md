@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-19
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -398,6 +398,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 静态 sim-ready 全屋 3D（示例：HomeWorld）
 
 与 **video rollout** 不同，[HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md)（arXiv:2606.06390）走 **文本 → 四阶段分层流水线 → sim-ready furnished 全屋 3D** 路线：K-D tree LLM 平面图 + 图像 roaming 软装 + VLM 递归修正 + surface-centric 可操纵小物；强调 **300K 中国住宅矢量平面图** 与 **>15 manipulable objects/scene**。它回答的是 **仿真环境资产从哪来**，而非 **给定动作后下一帧像素长什么样**——与 [Video-as-Simulation](../concepts/video-as-simulation.md) 中 GE-Sim / UniSim 等 **动态** 模拟器互补。
+
+### 真实 partial scan → 完整 TSDF（示例：Seen2Scene）
+
+[Seen2Scene](../entities/paper-seen2scene.md)（ECCV 2026，arXiv:2603.28548）走 **visibility-guided flow matching on sparse TSDF**：在 **不完整真实 3D 扫描**（3D-FRONT / ScanNet++ / ARKitScenes 融合）上 mask 未知体素，用 **masked sparse VAE + layout 条件 sparse transformer** 学场景分布，**ControlNet** 注入部分扫描做 **scan completion**；亦支持 text/layout 从零生成。相对 HomeWorld 的 **text→全屋合成**，Seen2Scene 更贴近 **Real2Sim 上游「扫到的几何补全」**；相对 SG-NN / NKSR 等重建基线，它是 **生成式 latent flow** 而非局部 SDF 插值。**已开源**（[`quan-meng/seen2scene`](https://github.com/quan-meng/seen2scene) + HF 权重/样本数据）。
 
 ### 学习式无限户外地形（示例：InfiniteDiffusion / Terrain Diffusion）
 
