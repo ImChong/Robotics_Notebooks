@@ -9,6 +9,45 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-astronex-world-1.md",
+      "detail_id": "entity-paper-astronex-world-1",
+      "label": "Astronex-World 1.0（arXiv:2609.20034）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-g1-slope-adaptive-roofing-locomotion.md",
+      "detail_id": "entity-paper-g1-slope-adaptive-roofing-locomotion",
+      "label": "G1 斜坡全身作业 Locomotion（arXiv:2609.20558）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-galatea.md",
+      "detail_id": "entity-paper-galatea",
+      "label": "GALATEA（arXiv:2609.10050）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-omnicalib.md",
+      "detail_id": "entity-paper-omnicalib",
+      "label": "OmniCalib（arXiv:2609.19582）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/concepts/receding-horizon-policy-execution.md",
       "detail_id": "wiki-concepts-receding-horizon-policy-execution",
       "label": "滚动预测执行（Receding-Horizon Policy Execution）",
@@ -178,61 +217,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-095-design-and-use-paradigms-for-gazebo-an-open-sour.md",
-      "detail_id": "entity-paper-as-095-design-and-use-paradigms-for-gazebo-an-open-sour",
-      "label": "Design and use paradigms for Gazebo, an open-source multi-robot simulator",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-097-mujoco-a-physics-engine-for-model-based-control.md",
-      "detail_id": "entity-paper-as-097-mujoco-a-physics-engine-for-model-based-control",
-      "label": "MuJoCo",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-099-pybullet-real-time-physics-simulation.md",
-      "detail_id": "entity-paper-as-099-pybullet-real-time-physics-simulation",
-      "label": "PyBullet",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-128-cityflow-a-multi-agent-reinforcement-learning-en.md",
-      "detail_id": "entity-paper-as-128-cityflow-a-multi-agent-reinforcement-learning-en",
-      "label": "CityFlow",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/receding-horizon-policy-execution.md",
-    "detail_id": "wiki-concepts-receding-horizon-policy-execution",
-    "label": "滚动预测执行（Receding-Horizon Policy Execution）",
-    "type": "concept",
+    "path": "wiki/entities/paper-astronex-world-1.md",
+    "detail_id": "entity-paper-astronex-world-1",
+    "label": "Astronex-World 1.0（arXiv:2609.20034）",
+    "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
