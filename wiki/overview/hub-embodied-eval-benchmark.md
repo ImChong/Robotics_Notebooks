@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-19
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/robodojo.md
   - ../entities/robolab.md
+  - ../entities/manda-robotics-open-policy-evaluation.md
   - ../entities/paper-prm-as-a-judge.md
   - ../entities/xpolicylab.md
   - ../entities/paper-softvtbench.md
@@ -90,7 +91,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 |------|--------|----------|----------|
 | ① 认知评测 | MLLM 作为 embodied brain 的感知/规划/推理能力；另含日常 AV 时序对齐；驾驶人本 Behavior VQA 见 MMHU | RoboBench、ESI-Bench、Daily-Omni；驾驶相邻 **MMHU** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md)、[MMHU](../entities/paper-mmhu.md) |
 | ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度；开放域多场景世界生成另见 WorldScore；**交互世界模型长程稳定性**另见 WorldRoamBench；交互干预/持久另见 HarnessEval-W；off-expert 动作跟随另见 WorldEcho | EWMBench、GigaWorld-1 WMBench；WorldScore / **WorldRoamBench** / HarnessEval-W（相邻）；WorldEcho | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[WorldScore](../entities/paper-worldscore.md)、[WorldRoamBench](../entities/paper-worldroambench.md)、[HarnessEval-W](../entities/paper-harnesseval-w.md)、[WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) |
-| ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**；**真机优先 harness** 另见 **Inspect Robots**；接触安全另见 **SoftVTBench**；工业灵巧规格见 **DexBench**（评测仓待发布）；**多指 dexterity 四层归因**见 **HAND ERC**（DexNex 16 原子任务，规范站已公开）；真机扑克灵巧见 **DexHoldem**（报 SPSR）；成功判据本身另见 **Imitator Game**（目标等价而非轨迹相似）；**执行失败恢复** 另见 **LIBERO-Recover**（RSR，非理想初态） | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[Inspect Robots](../entities/inspect-robots.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[DexBench](../entities/dexbench.md)、[HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md)、[DexHoldem](../entities/paper-dexholdem.md)、[Imitator Game](../entities/paper-imitator-game.md)、[LIBERO-Recover](../entities/paper-libero-recover.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
+| ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**、**RoboLab**；**开源策略横评 + 失败模式审计** 另见 **Manda 2026**；**真机优先 harness** 另见 **Inspect Robots**；接触安全另见 **SoftVTBench**；工业灵巧规格见 **DexBench**（评测仓待发布）；**多指 dexterity 四层归因**见 **HAND ERC**（DexNex 16 原子任务，规范站已公开）；真机扑克灵巧见 **DexHoldem**（报 SPSR）；成功判据本身另见 **Imitator Game**（目标等价而非轨迹相似）；**执行失败恢复** 另见 **LIBERO-Recover**（RSR，非理想初态） | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[RoboLab](../entities/robolab.md)、[Manda 开源策略横评](../entities/manda-robotics-open-policy-evaluation.md)、[Inspect Robots](../entities/inspect-robots.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[DexBench](../entities/dexbench.md)、[HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md)、[DexHoldem](../entities/paper-dexholdem.md)、[Imitator Game](../entities/paper-imitator-game.md)、[LIBERO-Recover](../entities/paper-libero-recover.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
 | ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、**Robocurve 独立真机报告**、代表性代价；真机样本量不足另见 **Bet4Sim2Real**（仿真库下注换 anytime-valid 区间） | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md)、[Robocurve](../entities/robocurve.md)、[Bet4Sim2Real](../entities/paper-bet4sim2real.md) |
 | ③′ 运控横切 | 被测对象换成 locomotion / whole-body tracking / MPC-WBC 时的指标体系：跟踪误差、命令跟随、求解实时性、硬件裕度 | HumanTracker、HumanoidBench、TrackerLab、Barkour | [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md)、[HumanTracker](../entities/paper-humantracker.md)、[HumanoidBench](../entities/humanoid-bench.md)、[TrackerLab](../entities/trackerlab.md) |
 | ③″ agentic 工程 | **Coding agent** 能否像 RLE 一样在仿真中 **观察—实验—改代码—交付 artifact**（控机 / harness / recipe / 感知 / 机械设计） | **RLE-Bench**（Harbor + hidden test；RLE Index） | [RLE-Bench](../entities/rle-bench.md)、[ASPIRE](../methods/aspire.md)、[ENPIRE](../methods/enpire.md) |
@@ -128,6 +129,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — off-expert 动作跟随（视觉门控 + \(\mathrm{SE}(3)\) NDTW；② 层）
 - [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)
 - [RoboDojo](../entities/robodojo.md)
+- [RoboLab](../entities/robolab.md) — 120 任务高保真 sim 榜
+- [Manda 开源策略横评](../entities/manda-robotics-open-policy-evaluation.md) — RoboLab-120 五策略 6k episode 行为审计（2026-09）
 - [Inspect Robots](../entities/inspect-robots.md) — 真机优先 EvalLog + Rerun harness（③ 层；MIT）
 - [Robocurve](../entities/robocurve.md) — 独立 physical AI 能力报告（④ 层 adjacent）
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 过程评测 OPD（③ 层，可挂已有 rollout）
