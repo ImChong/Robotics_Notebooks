@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'humanoid', 'hardware', 'actuator', 'iit', 'parallel-elastic-actuator']
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 arxiv: "2608.30832"
 summary: "IIT HHCM（arXiv:2608.30832）：2-DoF 踝 PEA 用双凸轮+单气弹簧同时补偿 pitch/roll；耦合模型+凸轮优化；FEA 验证；无软件发布。"
 related:

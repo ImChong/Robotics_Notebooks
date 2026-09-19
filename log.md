@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/papers/tf8_reaction_force_sea_tmrb_2021.md — 接入 MIT TF8 MC-RFSEA 仿生膝踝假肢；项目页核查确认未开源
+
 ## [2026-09-19] ingest | sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md — Ken Goldberg Agentic Robotics X 长文与 ICRA plenary 策展页
 
 ## [2026-09-19] ingest | sources/repos/addyosmani-agent-skills.md — 接入 Addy Osmani Agent Skills 实体页与 skills.addy.ie 核查

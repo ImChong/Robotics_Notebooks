@@ -14,6 +14,7 @@
 |------|------|----------|
 | Seok et al., *Actuator Design for High Force Proprioception in Dynamic Legged Locomotion* (MIT) | 2012 | QDD、反射惯量、力控带宽；足式动态机器人执行器范式 |
 | Pratt & Williamson, *Series Elastic Actuators* (MIT) | 1995 | SEA 原始定义；Digit / Valkyrie 柔顺路线理论基石 |
+| Carney et al., *Reaction Force SEA for Bionic Knee and Ankle Prostheses* (MIT / TF8) | 2021 | MC-RFSEA 穿戴式 powered 膝/踝；gait-clamped co-design；见 [paper-tf8-reaction-force-sea-prosthesis](../../wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md) |
 | Seok et al., *Design Principles for Highly Efficient Quadrupeds… MIT Cheetah* (MIT) | 2015 | QDD 工程落地：电机、热管理、系统集成 |
 
 ## 行走物理与生物力学

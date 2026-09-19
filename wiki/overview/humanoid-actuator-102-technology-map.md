@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, actuator, backdrivability, reflected-inertia, qdd, sea, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 related:
   - ./humanoid-actuator-102-load-and-mass-spiral.md
   - ./humanoid-actuator-102-split-architecture.md

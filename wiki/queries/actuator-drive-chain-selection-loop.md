@@ -2,7 +2,7 @@
 type: query
 tags: [actuator, eda, foc, motor-control, ethercat, sim2real, hardware, selection-loop]
 status: complete
-updated: 2026-08-14
+updated: 2026-09-19
 summary: "执行器驱动链选型闭环知识链：把 EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链，从分散的硬件/固件/建模实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、数据手册参数与实测曲线差在哪、建模保真度 vs 辨识成本如何取舍、总线周期 ≠ 闭环带宽。"
 sources:
   - ../../sources/sites/kicad-org.md

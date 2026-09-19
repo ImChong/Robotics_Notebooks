@@ -1,21 +1,22 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4286,
-  "edge_count": 38309,
+  "node_count": 4287,
+  "edge_count": 38316,
   "coverage": {
-    "covered": 4258,
-    "total": 4258,
+    "covered": 4259,
+    "total": 4259,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
-      "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
-      "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
+      "path": "wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md",
+      "detail_id": "entity-paper-tf8-reaction-force-sea-prosthesis",
+      "label": "TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢",
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/agent-skills-addyosmani.md",
@@ -108,7 +109,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-evolution-humanoid-locomotion-control.md",
@@ -218,26 +219,27 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md",
-    "detail_id": "entity-ken-goldberg-agentic-robotics-goosebumps",
-    "label": "Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）",
+    "path": "wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md",
+    "detail_id": "entity-paper-tf8-reaction-force-sea-prosthesis",
+    "label": "TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 580
+      "size": 575
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 535
+      "size": 538
     },
     {
       "label": "全身控制",
-      "size": 415
+      "size": 424
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -245,7 +247,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 250
+      "size": 255
     },
     {
       "label": "仿真到现实",
@@ -374,7 +376,8 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
