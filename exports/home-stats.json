@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4306,
-  "edge_count": 38405,
+  "node_count": 4307,
+  "edge_count": 38412,
   "coverage": {
-    "covered": 4278,
-    "total": 4278,
+    "covered": 4279,
+    "total": 4279,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -205,7 +205,8 @@
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -221,15 +222,15 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 607
+      "size": 593
     },
     {
       "label": "宇树 G1 人形机器人",
-      "size": 538
+      "size": 542
     },
     {
       "label": "全身控制",
-      "size": 445
+      "size": 484
     },
     {
       "label": "国内开源全景 424 项阅读导航",

@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/blogs/wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md — 飞一样的成长 IMU 原理/算法/相机驱动协同；升格 wiki/concepts/imu-principles-algorithms-camera-sync.md
+
 ## [2026-09-19] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md — 多模空间一周 VLA 趋势（21 篇）；新建 17 实体 + 技术地图；复用 TEMPO/SLIM/ω-0；升级 World Tokens 补 arXiv:2608.09730
 
 ## [2026-09-19] ingest | sources/repos/text2mujoco.md — 接入 Text2MuJoCo Agent Skill（NL→可验证 MuJoCo 包）；GitHub 已开源

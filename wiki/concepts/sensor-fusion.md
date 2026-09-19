@@ -3,6 +3,7 @@ type: concept
 tags: [sensor-fusion, perception, localization, vio, ekf, state-estimation]
 updated: 2026-09-15
 related:
+  - ./imu-principles-algorithms-camera-sync.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./state-estimation.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md
@@ -116,6 +117,7 @@ summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提�
 ---
 
 ## 关联页面
+- [IMU：原理、算法与摄像头驱动协同](./imu-principles-algorithms-camera-sync.md) — 六轴测量、标定、Mahony/Madgwick/EKF 与 V4L2/IIO 同步
 - [Ultra-Fusion（多传感器 SLAM 论文实体）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 退化感知紧耦合 LVIO/LVWIO 与大规模基准
 - [状态估计（State Estimation）](./state-estimation.md)
 - [接触估计（Contact Estimation）](./contact-estimation.md)
