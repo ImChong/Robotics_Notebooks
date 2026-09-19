@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, dexterous-teleoperation, hand-object-co-tracking, sim2real, reinforcement-learning, imitation-learning, in-hand-manipulation, tool-use, bigai, tsinghua, pku]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-19
 arxiv: "2607.11481"
 venue: "arXiv 2026"
-summary: "TeleDexter（arXiv:2607.11481，清华/BIGAI/北大）用 hand–object co-tracking 低层控制器把操作员的同步指尖与物体位姿意图映射为接触丰富执行；Isaac Gym 单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署到 SharpaWave/LeapHand，七任务平均 75.2% SR；示范可训 Diffusion Policy。截至 2026-07-28 未开源。"
+summary: "TeleDexter（arXiv:2607.11481，清华/BIGAI/北大）用 hand–object co-tracking 低层控制器把操作员的同步指尖与物体位姿意图映射为接触丰富执行；Isaac Gym 单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署到 SharpaWave/LeapHand，七任务平均 75.2% SR；示范可训 Diffusion Policy。项目页另展示 Pen Spinning 与 LeapHand 连续随机子目标；截至 2026-09-19 官方未开源。"
 related:
   - ../tasks/teleoperation.md
+  - ../concepts/data-flywheel.md
   - ../concepts/contact-rich-manipulation.md
   - ../methods/in-hand-reorientation.md
   - ../methods/diffusion-policy.md
@@ -58,14 +59,14 @@ sources:
 | **平台** | Franka FR3 + **SharpaWave**（22 DoF）/ **LeapHand**（16 DoF） |
 | **接口** | NOKOV MoCap 30 Hz（腕 + 指尖 + 物体 6D） |
 | **训练** | Isaac Gym；~62k 并行环境；~10¹⁰ env steps；4× RTX 5090 |
-| **开源** | **未开源**（截至 2026-07-28；见工程实践） |
+| **开源** | **未开源**（截至 2026-09-19；见工程实践） |
 
 ## 为什么重要
 
 - **补上「意图 → 接触执行」断层。** 纯运动学重定向（DexRT / GeoRT）镜像关节却忽略动力学；DexGen 类生成先验在长程闭环易漂移。TeleDexter 让操作员显式指定 **指尖 + 物体** 双目标，把 how 交给 RL。
 - **真机数字拉开差距。** SharpaWave 七任务平均 **75.2% SR / 87.1% TP**；DexRT 5.7%、GeoRT/DexGen ≈0%。差距从第一次手内重定向或 finger gaiting 就出现。
-- **同时是数据引擎。** 现有遥操作采不到的接触模式，可用 50 条示范训出非平凡 Diffusion Policy（锤击 73.3%、装灯泡 46.7%、扫刷 40.0%）。
-- **跨具身配方可复用。** 同一人类 HOI 参考，仅改几何重定向即可训 LeapHand 与 SharpaWave。
+- **同时是数据引擎。** 项目页把示范定位为 dexterous-data **金字塔尖**——接触丰富、超 pick-and-place；现有遥操作采不到的接触模式，可用 50 条示范训出非平凡 Diffusion Policy（锤击 73.3%、装灯泡 46.7%、扫刷 40.0%）。与 [Data Flywheel](../concepts/data-flywheel.md) 的「部署→示范→下游策略」闭环同构，但强调 **MoCap co-tracking 小脑** 作为采数前置。
+- **跨具身配方可复用。** 同一人类 HOI 参考，仅改几何重定向即可训 LeapHand 与 SharpaWave；部署侧还可 **连续随机子目标** 跟踪（含 Pen Spinning 长程转笔）。
 
 ## 流程总览
 
@@ -141,7 +142,7 @@ flowchart TB
 |----|------|
 | 项目页 | <https://bigai-dex.github.io/blog/teledexter/> |
 | arXiv / PDF | [2607.11481](https://arxiv.org/abs/2607.11481) · [paper_teledexter.pdf](https://bigai-dex.github.io/blog/teledexter/paper_teledexter.pdf) |
-| **开源状态** | **未开源**（2026-07-28 核查：项目页 metalinks 仅 arXiv；GitHub 搜索 `teledexter` 为 0；未见 HF/数据集链接） |
+| **开源状态** | **未开源**（2026-09-19 复核查：项目页 metalinks 仍仅 arXiv；未见官方 HF/数据集；GitHub 仅 [ice4133/TeleDexter](https://github.com/ice4133/TeleDexter) 非官方第三方仓） |
 | 源码运行时序图 | **不适用**（无可运行官方仓库 / README 入口） |
 | 可参考开源基线工具 | [dex-retargeting](https://github.com/dexsuite/dex-retargeting)、[GeoRT](https://github.com/facebookresearch/GeoRT)、[SimToolReal](https://github.com/tylerlum/simtoolreal) |
 | 复现门槛 | 需 NOKOV 类 MoCap、Isaac Gym 大规模并行、物体级人类示范与专用训练 run |
@@ -166,7 +167,7 @@ flowchart TB
 | 低层 | 单阶段 RL co-tracking | 无动力学先验 | 生成先验（易长程漂移） | robot–object co-tracking RL |
 | 典型任务 | 手内重定向 + 多阶段工具 | 抓取 / 准静态 | 接触局部增强 | 开门 / 搬箱等 loco-manip |
 | 真机证据 | 七任务 **75.2% SR** | 本评测近失败 | 本评测近失败 | G1 长期开门等演示 |
-| 开源 | **未开源**（2026-07-28） | dex-retargeting / GeoRT 等工具开源 | 见其仓库 | **已开源** IsaacLab |
+| 开源 | **未开源**（2026-09-19） | dex-retargeting / GeoRT 等工具开源 | 见其仓库 | **已开源** IsaacLab |
 
 定性对照：TeleDexter 的核心增量是把「物体位姿」写进遥操作目标并交给仿真发现接触；HDMI 共享「物体进闭环」思想，但面向人形全身而非灵巧手指遥操作采数。
 
@@ -182,6 +183,7 @@ flowchart TB
 
 - [Teleoperation](../tasks/teleoperation.md) — 遥操作主任务页与系统对照表
 - [深度遥操作路线 Stage 4](../../roadmap/depth-teleoperation.md) — 手指/灵巧手纵深
+- [Data Flywheel](../concepts/data-flywheel.md) — 灵巧采数→下游策略的飞轮读法
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触丰富操作概念
 - [In-hand Reorientation](../methods/in-hand-reorientation.md) — 手内重定向方法谱系
 - [Diffusion Policy](../methods/diffusion-policy.md) / [Behavior Cloning](../methods/behavior-cloning.md) — 下游自主策略
