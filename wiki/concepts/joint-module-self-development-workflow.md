@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, joint-module, manufacturing, testing, harmonic-drive]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-19
 related:
   - ../overview/motor-design-workflow.md
   - ../overview/humanoid-hardware-101-integrated-actuators.md
@@ -10,6 +10,7 @@ related:
   - ../concepts/motor-torque-speed-curve.md
   - ../concepts/humanoid-knee-harmonic-drive-limits.md
   - ../concepts/humanoid-mass-production-engineering.md
+  - ../concepts/humanoid-testing-workflow.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/field-oriented-control.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -114,6 +115,8 @@ flowchart TD
 
 ### 测试验证矩阵（四层）
 
+对应 [人形测试 L0–L5 链路](./humanoid-testing-workflow.md) 中的 **L2 关节模组** 视角；整机与子系统见该页 L3–L5。
+
 | 层级 | 内容 |
 |------|------|
 | **性能** | 扭矩–转速特性、[TN 曲线](./motor-torque-speed-curve.md)、传动误差/背隙、扭转刚度、温升、噪声振动 |
@@ -143,6 +146,7 @@ flowchart TD
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页的五件套选型与四层测试是该闭环 ①–④ 层在**硬件交付物**侧的落地：驱动器对应 ①②，标定/传动误差补偿对应 ③，整机联调总线时序对应 ④
 - [力矩电机设计纵深路线](../../roadmap/depth-torque-motor-design.md) — 学到「可信关节模组」的学习顺序
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md) — N 个模组连成整机
+- [人形机器人测试流程（L0–L5）](./humanoid-testing-workflow.md) — 从仿真到场景化验收的整机测试左移框架
 
 ## 参考来源
 

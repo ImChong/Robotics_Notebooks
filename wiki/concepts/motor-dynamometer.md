@@ -2,7 +2,7 @@
 type: concept
 tags: [motor, actuator, hardware, humanoid, dynamometer, test-bench, torque]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-19
 related:
   - ./motor-torque-speed-curve.md
   - ./motor-torque-current-curve.md
