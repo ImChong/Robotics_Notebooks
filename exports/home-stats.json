@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/manda-robotics-open-policy-evaluation.md",
+      "detail_id": "entity-manda-robotics-open-policy-evaluation",
+      "label": "Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
       "path": "wiki/entities/paper-evolution-humanoid-locomotion-control.md",
       "detail_id": "entity-paper-evolution-humanoid-locomotion-control",
       "label": "Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）",
@@ -212,28 +223,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat.md",
-      "detail_id": "entity-paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat",
-      "label": "Duckietown",
-      "type": "entity",
-      "recency": "2026-09-18",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-evolution-humanoid-locomotion-control.md",
-    "detail_id": "entity-paper-evolution-humanoid-locomotion-control",
-    "label": "Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）",
+    "path": "wiki/entities/manda-robotics-open-policy-evaluation.md",
+    "detail_id": "entity-manda-robotics-open-policy-evaluation",
+    "label": "Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）",
     "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
   },
   "top_communities": [
     {
