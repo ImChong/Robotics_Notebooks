@@ -60,6 +60,17 @@ summary: "层次 AR→扩散蒸馏的高效智驾 VLA：分块适配/蒸馏/跨�
 - **文内口径：** NAVSIM、Bench2Drive、LingoQA、DriveBench、COCO
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [JEPA-WAM](./paper-jepa-wam.md) | 同批「世界模型」段，改的位置不同：本文把自回归预训练**蒸馏成离散扩散**、靠并行解码减轻暴露偏差，JEPA-WAM 换的是预测所在的**表征空间**（V-JEPA 潜空间）。一个改解码，一个改表征 |
+| [World Tokens](./paper-world-tokens-inference-trimmed-wam.md) | 同批同为降低世界模型的部署代价，手段不同：World Tokens 训练期加世界监督、推理期**裁掉生成分支**；本文保留生成但换成可并行的离散扩散。一个是不生成，一个是生成得更快 |
+| [Depth-Wise Probing Driving VLA](./paper-depth-wise-probing-driving-vla.md) / [CMU-Drive / V2V-VLA](./paper-cmu-drive-v2v-vla.md) | 同批三条智驾 VLA 的不同取舍：本文改解码范式，Depth-Wise 剪层，CMU-Drive 加协同与通信头。选型先确认瓶颈落在暴露偏差、时延还是多车信息缺失 |
+| [Diffusion Policy](../methods/diffusion-policy.md) / [Generative World Models](../methods/generative-world-models.md) | 前者给扩散式动作生成的机制背景，后者给「生成未来 → 驱动动作」一族的谱系；本文的特别之处是**离散**扩散且**由 AR 蒸馏而来**，不是从头训一个扩散头——分块 / 跨尺度整模蒸馏是这条路径的工程主体 |
+
 ## 结论
 
 **WAM-Diff2 适合作为本期「世界模型」路线的快速索引页。**

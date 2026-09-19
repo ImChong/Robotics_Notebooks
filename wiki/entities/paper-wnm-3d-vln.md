@@ -59,6 +59,17 @@ summary: "3D 场景条件闭环 VLN 世界导航模型：冻结几何编码器�
 - **文内口径：** GN-Bench
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [AnyCamVLA](./paper-anycam-vla.md) | 同批「空间感知」段两条，改的层不同：本文换**表征**（冻结几何编码器把单目历史整合成 3D 场景条件 token），AnyCamVLA 修**图像**（测试期合成回训练视角）。前者从根上不绑某个相机摆位，后者部署更轻、可套在已训好的策略上 |
+| [RecoverFly](./paper-recoverfly-aerial-vln.md) | 同批同为闭环 VLN 且都用 RL 优化，分工互补：本文改条件表征并联合生成未来视角与动作，RecoverFly 改训练信号（失败感知 + 长尾课程）。表征与训练法正交，可叠加 |
+| [World Action Models](../concepts/world-action-models.md) | 「联合生成未来视角与动作」正是 WAM 的接口形态；本文把它从桌面操作搬到**导航**，条件由 2D 帧换成 3D 场景——读法上属 WAM 谱系的导航分支，而非另起一套 |
+| [VLN 任务页](../tasks/vision-language-navigation.md) | 该页给任务定义；本文的对照组是「2D 条件」与「强 VLM 策略」两类，「优于」须锁定 GN-Bench 同一协议，勿与其他 VLN 榜的成功率混读 |
+
 ## 结论
 
 **WNM-3D 适合作为本期「空间感知」路线的快速索引页。**

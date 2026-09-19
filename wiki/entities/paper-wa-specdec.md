@@ -59,6 +59,17 @@ summary: "世界感知 VLA 投机解码：按环境与接触风险调节猜测�
 - **文内口径：** LIBERO、SIMPLER-Env
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Mamba SmolVLA Expert](./paper-mamba-smolvla-expert.md) | 同批同为压动作生成开销，层次不同：那条换**算子**（注意力 → 选择性 SSM，参数更少），本文改**解码流程**（猜测 + 校验，一次过更多动作）。两条正交，可叠加 |
+| [Depth-Wise Probing Driving VLA](./paper-depth-wise-probing-driving-vla.md) | 同批同为提速，省的维度不同：那条省**层数**（深度方向早读剪层），本文省**串行步数** |
+| [TDHD](./paper-tdhd-surgical-dual-arm.md) | 同批同为「多算一份再决定用不用」，目标相反：本文用猜测–校验**换速度**，TDHD 用双计划分歧**换可靠性**。本文「按环境与接触风险调猜测与校验标准」正是把安全轴接回速度轴的那一步——读加速比时必须连着接触风险档位一起读 |
+| [控制频率与推理频率解耦](../concepts/control-inference-frequency-decoupling.md) | 该页讲高频执行环与低频推理怎么接；投机解码抬的是**推理侧吞吐**，不改执行环节拍，部署收益要按该页的接口形态折算，不能直接当控制带宽提升 |
+
 ## 结论
 
 **WA-SpecDec 适合作为本期「异常处理」路线的快速索引页。**

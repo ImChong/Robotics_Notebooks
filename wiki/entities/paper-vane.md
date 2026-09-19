@@ -59,6 +59,17 @@ summary: "可靠 VLA 测试时训练：在独立「试用区」结合当前画�
 - **文内口径：** SimplerEnv-WidowX / Google Robot
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [WAM-TTT / RoboTTT / StellaVLA / Zero-WAM 对比](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) | 该页把部署期适配分成**快权重记忆**与**纯上下文**两族；VANE 属前者，但多加一道**门**——先在独立试用区看执行结果，确认有帮助才启用、否则撤回。读 VANE 该比的是「有无验证回滚」，不是 TTT 本身 |
+| [HyMeS](./paper-hymes-hybrid-memory-manipulation.md) / [OnEvoMemory](./paper-onevomemory.md) | 同批同为部署期演化，改的对象不同：这两条改**记忆**（外置代码规则 / 价值引导模块），VANE 改**权重**。改权重能修正策略本身，代价是可能破坏已经稳定的控制闭环——试用区正是为这个代价设的 |
+| [Sim2Real](../concepts/sim2real.md) | TTT 的动机是部署分布与训练分布不一致；该页给这条 gap 的来源，VANE 的取舍是**在线补**而非训练前堵，因此跨任务干扰成为它独有的一类失败模式 |
+| [VLA](../methods/vla.md) | 该页的默认假设是部署期权重冻结；VANE 打破这一点，选型前先确认目标场景是否真的允许在线改权重（安全认证、可复现性要求往往不允许） |
+
 ## 结论
 
 **VANE 适合作为本期「架构模块」路线的快速索引页。**

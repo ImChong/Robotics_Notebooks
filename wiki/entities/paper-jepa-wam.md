@@ -60,6 +60,17 @@ summary: "V-JEPA 潜空间联合嵌入世界动作模型：共享预测器学习
 - **文内口径：** LIBERO、LIBERO-Plus、RoboTwin 2.0；实机 AgileX COBOT Magic 双臂
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [WAM-Diff2](./paper-wam-diff2.md) | 同批「世界模型」段，未来信号的处理位置相反：本文在 V-JEPA **潜空间**里用共享预测器同时学视觉变化与连续动作，WAM-Diff2 走的是把自回归蒸馏成离散扩散的**解码器**改造。一个改表征，一个改解码 |
+| [World Tokens](./paper-world-tokens-inference-trimmed-wam.md) | 同批同为降低世界模型的部署代价：World Tokens 训练期加世界监督、推理期**裁掉**生成分支；本文干脆不生成像素，预测停在潜空间。目标一致，一个事后裁，一个事前不长 |
+| [ω-0](./paper-omega-0.md) | 同批同为潜空间未来 embedding 条件的 WAM，落点不同：ω-0 面向人形全身 loco-manipulation，本文强调**可接入已有 VLA 而不改感知–动作通路**——那是一条集成成本主张，不是能力主张，选型时别当成能力对比 |
+| [World Action Models](../concepts/world-action-models.md) | 该页给 WAM 的概念谱系；本文落在「联合嵌入预测 + 不改下游通路」这一支，与生成式像素 rollout 一支的取舍是**保真度 vs 墙钟与集成成本** |
+
 ## 结论
 
 **JEPA-WAM 适合作为本期「世界模型」路线的快速索引页。**

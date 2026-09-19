@@ -15,6 +15,7 @@ related:
   - ../entities/rsi-harness.md
   - ../entities/paper-harnessbank.md
   - ../entities/sol-pi.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
   - ../../sources/repos/recursive-self-improvement-deepgrounding.md
@@ -153,6 +154,21 @@ sequenceDiagram
 | 文献 lint | 用 `corpus_v2.csv` 查遗漏 thread；对照 [Awesome RSI](./awesome-rsi.md) artifact 维度 |
 | 对标 Auto-Research | 生命周期问题 → [2605.18661 概念页](../concepts/ai-auto-research.md)；机制/闭环 → 本文 |
 | 机器人 harness | §3 harness 进化与 [RSI-Harness](./rsi-harness.md)、[MetaRSI-v1](./paper-metarsi-v1.md) 同轴 — 仍须外部 reset/verify |
+
+## 语料与评测口径
+
+**本文不自带 benchmark**：它是文献综述，「实验」等于 **语料构建与分类**，可核对的量是语料统计而非任何模型分数。读它的数字前先认清这一点。
+
+| 可核对量 | 口径 | 怎么复核 |
+|----------|------|----------|
+| **1,250 篇** | 种子 871（7 条 arXiv 检索线）+ 定向补充 379 | `reclassify_corpus.py` → `artifacts/corpus_v2.csv` 行数 |
+| **四类 + Foundations 的篇数与 2026 占比** | Deployment 393 / Training 340 / Self-evaluation 318 / Auto Research 139 / Foundations 60；2026 占比 57%–82% | 按 `category` 分组统计 CSV；`build_figures_v2.py` 再生 Figure 2/6 与 Table 1 |
+| **单篇归类是否合理** | 规则分类 + 显式 `OVERRIDES` | 用 arXiv ID 查 CSV 的 `category` 与 override 记录 |
+| **验证层级 ↔ 改进强度** | 作者的**定性规律**，非受控实验 | 不可复核为定量结论；只能当读新闻时的分档提示 |
+
+- **没有测的东西：** 不给方法间的胜负排名，不给成功率/加速比，也不给 impact——语料 74% 出自 2026，引用近零。
+- **误读防线：** 某一格篇数多只说明**这一年有人在写**，不等于该路线更有效；`closed loop × self-evaluation` 那格篇数薄，恰恰是**测量缺口**而非风险低。
+- **和真正的能力评测分层：** 要判断某条自改进 loop 是否真有效，仍得回到具体任务的成功率协议——分层读法见 [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)，本文只给「这条 loop 属哪一格、靠哪层验证器兜底」的前置判据。
 
 ## 局限与风险
 

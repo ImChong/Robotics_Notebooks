@@ -59,6 +59,17 @@ summary: "智驾 VLA 规划 token 逐层探针：导航意图与规划信息在�
 - **文内口径：** Bench2Drive
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [VLA Depth Decodability](./paper-vla-action-post-training-depth-decodability.md) | 同批两篇**逐层探针**诊断，结论指向相反的用法：本文探规划 token，发现导航意图与规划信息**浅层已出现**，指向剪层提速；那篇探深度信息，发现动作后训练令其全层退化，指向把被削掉的写入修回来。同一诊断工具，一个用于减，一个用于修 |
+| [WA-SpecDec](./paper-wa-specdec.md) | 同批同为提速，省的维度不同：本文省**层数**（深度方向早读），WA-SpecDec 省**串行步数**（投机解码）。两条正交，可叠加 |
+| [CMU-Drive / V2V-VLA](./paper-cmu-drive-v2v-vla.md) / [WAM-Diff2](./paper-wam-diff2.md) | 同批三条智驾 VLA 的不同取舍：本文做**减法**（剪层），CMU-Drive 做**加法**（多出语言推理与通信头），WAM-Diff2 改**解码范式**（AR→离散扩散并行解码）。选型先确认瓶颈是时延、协同信息还是暴露偏差 |
+| [实时性 ↔ 泛化取舍](../concepts/embodied-fm-latency-generalization-tradeoff.md) | 该页给「规模 / 模态跨度换时延」这条边界；本文的读法是——若浅层已含规划信息，深层那部分算力就不落在这条取舍线上，剪掉不必然掉泛化。但「未见明确任务退化」只在 Bench2Drive 口径下成立，换域须重测 |
+
 ## 结论
 
 **Depth-Wise Probing Driving VLA 适合作为本期「性能提升」路线的快速索引页。**

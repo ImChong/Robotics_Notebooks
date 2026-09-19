@@ -60,6 +60,17 @@ summary: "零样本相机适配 VLA：测试时用前馈新视角合成将画面
 - **文内口径：** LIBERO、LIBERO-Plus；实机 Franka Panda
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Cross-View Action Consistency](./paper-cross-view-action-consistency-vla.md) | 同批同题（相机位姿一变策略就掉点），**介入时机相反**：本文在**测试期**把观测合成回训练相机配置，那条在**训练期**用跨视角流匹配一致性把策略练成视角不敏感。本文免训、可套在已有策略上，代价是推理多一次视角合成；那条要重训，但部署零额外开销 |
+| [WNM-3D](./paper-wnm-3d-vln.md) | 同批「空间感知」段的另一条，抽象轴不同：本文修的是**图像层**的视角错配，WNM-3D 换的是**表征层**（3D 场景条件替代 2D 条件）。图像层改法部署更轻，表征层改法从根上不依赖某个相机摆位 |
+| [VLA Depth Decodability](./paper-vla-action-post-training-depth-decodability.md) | 本文是在**补**几何一致性，那条诊断的是几何信息**为什么会缺**（动作后训练削弱深度可解码性）。合读的判据是：该在输入端补，还是该护住骨干里已有的几何表征 |
+| [Sim2Real](../concepts/sim2real.md) | 相机内外参错配是「换场地就掉点」的常见落点；本文把它当**渲染域的可补偿偏移**处理，与视角随机化一族的取舍是「推理多一次合成」vs「训练多一批数据」 |
+
 ## 结论
 
 **AnyCamVLA 适合作为本期「空间感知」路线的快速索引页。**

@@ -12,6 +12,7 @@ arxiv: "2607.10180"
 related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/activefly_bench_arxiv_2607_10180.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
@@ -60,6 +61,17 @@ summary: "空中具身问答与 VLA 对齐基准：拆分问答、观察行为�
 
 - **文内口径：** ActiveFly-Bench（自建）
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
+
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [CMU-Drive / V2V-VLA](./paper-cmu-drive-v2v-vla.md) | 同批「评测 · 多智能体」段的另一条自建闭环基准，**域与协作轴相反**：ActiveFly 测单机空中 agent 的**纵向分层**（问答 → 观察行为规划 → 语言引导控制），CMU-Drive 测多车之间的**横向协同**与通信策略。两者都是自建协议，也都不能与 LIBERO 系桌面操作榜混读 |
+| [RecoverFly](./paper-recoverfly-aerial-vln.md) | 同批同为空中具身，一测一训：本页出的是**基准**（怎么测），RecoverFly 出的是**训练范式**（失败感知 RL 后训练）。两页之间缺的正是「用哪套口径判定纠错成功」——RecoverFly 报 TravelUAV，与本基准不同协议 |
+| [VLN 任务页](../tasks/vision-language-navigation.md) | 该页给「语言指令 → 三维空间动作」的任务定义；ActiveFly 把它从地面推到**空中 + 主动问答**，多出一层「该飞到哪去看」的观察行为规划，这层在常规 VLN 指标里不单列 |
+| [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) | 选基准先定层：ActiveFly 横跨「认知问答」与「策略成功率」两层，且真实 + 仿真户外数据 + 实机验证三档混编——按该页的分层读法确认自己要测的是哪一档，再决定是否引入 |
 
 ## 结论
 

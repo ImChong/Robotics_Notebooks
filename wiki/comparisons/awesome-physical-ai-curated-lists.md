@@ -8,6 +8,7 @@ related:
   - ../entities/awesome-physical-ai-aichr.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/repos/awesome-physical-ai-natnew.md
   - ../../sources/repos/awesome-physical-ai-aichr.md
@@ -59,6 +60,7 @@ GitHub 上存在两个均名为 **awesome-physical-ai** 的独立仓库，入库
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [VLA](../methods/vla.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Query：具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 本页比的是两份**第三方清单**的收录口径，两边的分类都随各自维护者口味漂移；要按 VLM→VLN→VLA→VLX→WM 的家族分层定选型，以那里的库内 canonical taxonomy 为准，清单只当条目入口
 
 ## 参考来源
 

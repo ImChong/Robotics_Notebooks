@@ -198,7 +198,7 @@ Progressive **find → navigate → interact**：
 
 ## 结论
 
-**HumanCLAW 用可复现的 Half-Physics 闭环证明：当前 SOTA VLM 普遍缺乏 embodied self-awareness——会找、偶能到，但几乎不会在与身体相关的时刻做对交互决策。**
+**HumanCLAW 用可复现的 Half-Physics 闭环证明：论文 initial release 评测的九个前沿 VLM 普遍缺乏 embodied self-awareness——会找、偶能到，但几乎不会在与身体相关的时刻做对交互决策。**
 
 - **InteractSR 才是真门槛：** FindSR 50–75% 与 InteractSR 0–17% 的断崖说明，**静态具身 QA / 识别** 不能替代 **闭环全身 action intelligence**。
 - **Navigation 瓶颈在 egocentric self-localization：** 68% 已 active-find 仍 Nav 失败，且 early-stop / never-confirm 双向错误——读 VLM 导航能力应优先看 **自身位移与到达确认**，而非 scene description 质量。

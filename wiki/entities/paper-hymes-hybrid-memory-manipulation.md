@@ -60,6 +60,17 @@ summary: "Skills in Weights, Memory in Code：VLA 学低层可复用动作，cod
 - **文内口径：** RoboMemArena；实机 LeRobot SO 101
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [OnEvoMemory](./paper-onevomemory.md) | 同批两条长程记忆路线，分界在**记忆存在哪里**：HyMeS 把记忆放进 coding agent 维护的**显式代码 / 规则**，OnEvoMemory 放进策略内的**价值引导记忆模块**。前者可读、可改、可审计，代价是多带一个 agent；后者与策略同栈，可直接加在已有预训练策略上 |
+| [VANE](./paper-vane.md) | 同批同为部署期自适应，改的对象不同：VANE 改**权重**（试用区验证有效才启用），HyMeS 改**记忆内容**而权重里的技能不动。VANE 的风险是更新破坏控制闭环，HyMeS 的风险在高层规则误判阶段完成 |
+| [Action Chunking](../methods/action-chunking.md) | 「技能在权重」那半边正是 chunk 级可复用动作；该页给这层的执行语义，HyMeS 加的是它之上的阶段判定与记忆更新，两层的失败模式要分开归因 |
+| [VLA](../methods/vla.md) | 该页默认单模型端到端；HyMeS 明确**拆成两个学习主体**（VLA 学低层动作 + coding agent 学高层记忆管理）。选型先确认任务是否真的依赖跨 episode 的长期记忆，否则这层拆分只是额外复杂度 |
+
 ## 结论
 
 **HyMeS 适合作为本期「类 Agent、长程记忆」路线的快速索引页。**
