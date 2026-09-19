@@ -1,6 +1,6 @@
 # 贡献指南
 
-感谢你愿意改进本知识库。**提交前可先按下面三步选对命令**，不必一次背完整工作流。
+感谢你愿意改进本知识库。**提交前可先按下面三步选对命令**，不必一次背完整工作流。读者入口见 [README.md](README.md)；本页面向维护者。
 
 ## 提交前跑什么（三步）
 
@@ -15,6 +15,35 @@
 - **内容进哪个目录**：[`schema/content-directories.md`](schema/content-directories.md)
 - **本地与 CI 命令对照**（提交前防踩坑）：[`docs/contributing-ci.md`](docs/contributing-ci.md)
 - 协作与提交约定：[`AGENTS.md`](AGENTS.md)（含中文 commit 格式、`make ci-preflight` 要求）
+
+## 项目结构
+
+| 目录 | 用途 |
+|------|------|
+| `wiki/` | **结构化知识库**。包含 Concepts, Methods, Tasks 等核心页面。 |
+| `roadmap/` | **成长路线**。规划了从基础到进阶的系统学习路径。 |
+| `tech-map/` | **技术地图**。展示模块间依赖关系与技术栈全景。 |
+| `sources/` | **原始资料**。Ingest 之前的原始论文摘录、GitHub 仓库导航。 |
+| `references/` | **论文/Repo 索引**。按主题分类的深度阅读资源。 |
+| `schema/` | **维护规范**（ingest、命名、内链、页面类型、log 与 lint 用 JSON）。索引见 [schema/README.md](schema/README.md)。 |
+| `scripts/` | **维护工具**。用于 lint、搜索、索引生成和统计更新；脚本一览见 [scripts/README.md](scripts/README.md)。 |
+| `docs/` | **展示层**。GitHub Pages 托管的 D3.js 交互式图谱与详情页。 |
+| `docs/checklists/` | **执行清单归档**。当前技术栈推进、前端优化与历史阶段清单。 |
+
+不知道新资料或新页面该进哪个目录？见 [内容目录怎么选](schema/content-directories.md)。
+
+## 维护看板
+
+- 当前技术栈执行清单：[v31](docs/checklists/tech-stack-next-phase-checklist-v31.md)
+- 前端体验优化清单：[frontend-optimization-v1](docs/checklists/frontend-optimization-v1.md)
+- 历史执行清单索引：[docs/checklists/README.md](docs/checklists/README.md)
+
+## 日常维护（Ingest / Wiki / Lint / 搜索）
+
+1. **Ingest**：发现好的论文或 Repo，按 [`schema/ingest-workflow.md`](schema/ingest-workflow.md) 先写入 `sources/`。
+2. **Wiki 完善**：把 `sources/` 提炼成 `wiki/` 页面，并按 [linking](schema/linking.md) 建立交叉引用（不要把 source 原样转存成 wiki）。
+3. **Lint**：提交前用 `make lint`（改了 wiki / 导出链则用 `make ci-preflight`）检查断链与孤儿页。
+4. **本地搜索**：`python3 scripts/search_wiki.py <关键词>`。读者走站点搜索即可，不必装 CLI。
 
 ## 快速开始
 
@@ -37,6 +66,7 @@ python3 scripts/scaffold_wiki_page.py concept "页面标题" --slug page-slug
 ```
 
 页面主干顺序与各类型要求见 [Page Types](schema/page-types.md)。
+
 ## 提交前钩子（可选）
 
 安装：`pip install -r requirements-dev.txt`，然后 **`make install-hooks`**（即 `pre-commit install`）。提交时将自动运行 **Ruff**（与 CI 对齐）。
