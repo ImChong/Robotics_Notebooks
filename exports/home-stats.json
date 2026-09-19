@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4322,
-  "edge_count": 38565,
+  "node_count": 4323,
+  "edge_count": 38637,
   "coverage": {
     "covered": 4294,
     "total": 4294,
@@ -9,118 +9,45 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "roadmap/depth-rsi.md",
+      "detail_id": "roadmap-depth-rsi",
+      "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
+      "type": "roadmap_page",
+      "recency": "2026-09-19",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "路线（纵深）：如果目标是 RSI（递归自我改进） 社区"
+    },
+    {
+      "path": "wiki/concepts/recursive-self-improvement.md",
+      "detail_id": "wiki-concepts-recursive-self-improvement",
+      "label": "递归自改进（Recursive Self-Improvement）",
+      "type": "concept",
+      "recency": "2026-09-19",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "路线（纵深）：如果目标是 RSI（递归自我改进） 社区"
+    },
+    {
       "path": "wiki/queries/rsi-four-tier-five-pushes.md",
       "detail_id": "wiki-queries-rsi-four-tier-five-pushes",
       "label": "RSI 四层标准与五次边界推进",
       "type": "query",
       "recency": "2026-09-19",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "路线（纵深）：如果目标是 RSI（递归自我改进） 社区"
     },
     {
-      "path": "wiki/entities/acados.md",
-      "detail_id": "entity-acados",
-      "label": "acados",
-      "type": "entity",
+      "path": "roadmap/motion-control.md",
+      "detail_id": "roadmap-motion-control",
+      "label": "主路线：运动控制算法工程师成长路线",
+      "type": "roadmap_page",
       "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/lingbot-world.md",
-      "detail_id": "entity-lingbot-world",
-      "label": "LingBot-World",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/mujoco-menagerie.md",
-      "detail_id": "entity-mujoco-menagerie",
-      "label": "MuJoCo Menagerie",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/tienkung-lab.md",
-      "detail_id": "entity-tienkung-lab",
-      "label": "TienKung-Lab",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/robot-opensource-algorithms-compendium-wechat.md",
-      "detail_id": "wiki-overview-robot-opensource-algorithms-compendium-wechat",
-      "label": "开源机器人算法大全（微信策展）— 索引",
-      "type": "overview",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
-      "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
-      "label": "Physical AI 策展清单：natnew vs aichr",
-      "type": "comparison",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-legged-locomotion-learning.md",
-      "detail_id": "entity-awesome-legged-locomotion-learning",
-      "label": "awesome-legged-locomotion-learning",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/awesome-legged-robot-learning-clearlab.md",
-      "detail_id": "entity-awesome-legged-robot-learning-clearlab",
-      "label": "Awesome-Legged-Robot-Learning（ClearLab @ SUSTech）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/awesome-physical-ai-aichr.md",
-      "detail_id": "entity-awesome-physical-ai-aichr",
-      "label": "awesome-physical-ai（aichr）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-physical-ai-natnew.md",
-      "detail_id": "entity-awesome-physical-ai-natnew",
-      "label": "awesome-physical-ai（natnew）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
@@ -128,39 +55,9 @@
       "label": "具身数据采集：四层术语地图",
       "type": "concept",
       "recency": "2026-09-19",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md",
-      "detail_id": "wiki-concepts-embodied-data-flywheel-minimal-closed-loop",
-      "label": "具身数据飞轮：最小闭环（避免空转）",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-data-supervision-signal-types.md",
-      "detail_id": "wiki-concepts-robot-data-supervision-signal-types",
-      "label": "机器人数据：监督信号类型分流",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/embodied-data-collection-to-flywheel-album.md",
-      "detail_id": "wiki-overview-embodied-data-collection-to-flywheel-album",
-      "label": "具身数据从采集到飞轮（系列地图）",
-      "type": "overview",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/imu-principles-algorithms-camera-sync.md",
@@ -168,73 +65,176 @@
       "label": "IMU：原理、算法与摄像头驱动协同",
       "type": "concept",
       "recency": "2026-09-19",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
-      "community_label": "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
-      "path": "wiki/entities/paper-activefly-bench.md",
-      "detail_id": "entity-paper-activefly-bench",
-      "label": "ActiveFly-Bench（arXiv:2607.10180）",
-      "type": "entity",
+      "path": "wiki/concepts/receding-horizon-policy-execution.md",
+      "detail_id": "wiki-concepts-receding-horizon-policy-execution",
+      "label": "滚动预测执行（Receding-Horizon Policy Execution）",
+      "type": "concept",
       "recency": "2026-09-19",
-      "source": "git",
+      "source": "log.md",
       "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-testing-workflow.md",
+      "detail_id": "wiki-concepts-humanoid-testing-workflow",
+      "label": "人形机器人测试流程（L0–L5 六级递进）",
+      "type": "concept",
+      "recency": "2026-09-19",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/unifolm-wla.md",
+      "detail_id": "entity-unifolm-wla",
+      "label": "UnifoLM-WLA-1.0（unifolm-wla）",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/arxivisual.md",
+      "detail_id": "entity-arxivisual",
+      "label": "arXivisual：arXiv 论文可视化阅读器",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lawam.md",
+      "detail_id": "entity-paper-lawam",
+      "label": "LaWAM：LeRobot 原生潜空间 World Action Model",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-passage.md",
+      "detail_id": "entity-paper-passage",
+      "label": "PASSAGE：场景对齐的人形感知 clutter 穿越",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kino.md",
+      "detail_id": "entity-paper-kino",
+      "label": "KINO：关键帧接口连接 VLM 规划与人形全身控制",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-vla-ulap.md",
+      "detail_id": "entity-paper-vla-ulap",
+      "label": "VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gpt-policy.md",
+      "detail_id": "entity-paper-gpt-policy",
+      "label": "GPT-Policy：VLM 代理的上下文机器人学习",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-atomicvla.md",
+      "detail_id": "entity-paper-atomicvla",
+      "label": "AtomicVLA：原子技能学习的统一规划–执行 VLA",
+      "type": "entity",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-anycam-vla.md",
-      "detail_id": "entity-paper-anycam-vla",
-      "label": "AnyCamVLA（arXiv:2603.05868）",
+      "path": "wiki/entities/paper-orthoskillvla.md",
+      "detail_id": "entity-paper-orthoskillvla",
+      "label": "OrthoSkillVLA",
       "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
+      "recency": "2026-09-18",
+      "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-cmu-drive-v2v-vla.md",
-      "detail_id": "entity-paper-cmu-drive-v2v-vla",
-      "label": "CMU-Drive / V2V-VLA（arXiv:2608.07621）",
+      "path": "wiki/entities/paper-1xwm-redwood-world-model.md",
+      "detail_id": "entity-paper-1xwm-redwood-world-model",
+      "label": "1X World Model（1XWM / Redwood 评测引擎）",
       "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
-      "path": "wiki/entities/paper-cross-view-action-consistency-vla.md",
-      "detail_id": "entity-paper-cross-view-action-consistency-vla",
-      "label": "Cross-View Action Consistency（arXiv:2608.06965）",
+      "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
+      "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
+      "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
       "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "recency": "2026-09-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/rsi-four-tier-five-pushes.md",
-    "detail_id": "wiki-queries-rsi-four-tier-five-pushes",
-    "label": "RSI 四层标准与五次边界推进",
-    "type": "query",
+    "path": "roadmap/depth-rsi.md",
+    "detail_id": "roadmap-depth-rsi",
+    "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
+    "type": "roadmap_page",
     "recency": "2026-09-19",
-    "source": "git",
+    "source": "log.md",
     "action": "added",
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "has_repo": true,
+    "community_label": "路线（纵深）：如果目标是 RSI（递归自我改进） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 719
+      "size": 756
     },
     {
       "label": "操作",
-      "size": 569
+      "size": 575
     },
     {
-      "label": "主路线：运动控制算法工程师成长路线",
-      "size": 458
+      "label": "具身评测基准选型闭环",
+      "size": 451
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -242,7 +242,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 279
+      "size": 277
     },
     {
       "label": "仿真到现实",
@@ -371,7 +371,8 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",

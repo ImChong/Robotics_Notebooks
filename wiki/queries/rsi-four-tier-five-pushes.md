@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-19
 summary: "用四层 RSI 标准（持久改进→有界闭环→ignition→开放式）与五次边界推进梳理 LLM/agent 自进化史：记忆、权重、AI 打分、harness 与研究过程逐层内收；2026 夏闭环可净正转几圈，点火与开放式 RSI 仍待证。"
 related:
+  - ../../roadmap/depth-rsi.md
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-auto-research.md
   - ../entities/awesome-rsi.md
@@ -135,6 +136,7 @@ flowchart LR
 
 ## 关联页面
 
+- [RSI 纵深路线](../../roadmap/depth-rsi.md) — 把四层标准与五次推进展开成 Stage 0–5 的可执行学习路径
 - [递归自改进（宏观）](../concepts/recursive-self-improvement.md) — Anthropic 生产率、三情景与具身跟随假设
 - [Awesome RSI](../entities/awesome-rsi.md) — 50+ 方法 / 29 基准的 artifact 索引
 - [RSI-Harness](../entities/rsi-harness.md) · [MetaRSI-v1](../entities/paper-metarsi-v1.md) — harness 一等对象与三算子框架

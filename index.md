@@ -16,6 +16,7 @@
 | 想学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
 | 想设计人形整机硬件（机械 + 电气 + 通信） | [整机硬件设计纵深路线](roadmap/depth-humanoid-hardware-design.md) |
 | 想学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
+| 想让研发闭环自己变强（递归自我改进） | [RSI 纵深路线](roadmap/depth-rsi.md) |
 | 想做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
 | 想让机器人自主从 A 到 B | [导航纵深路线](roadmap/depth-navigation.md) |
 | 想学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
