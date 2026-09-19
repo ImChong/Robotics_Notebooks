@@ -50,10 +50,10 @@ flowchart LR
 - 读 probability flow 形式化页，推一遍"SDE → 概率流 ODE"的等价关系
 
 ### 推荐读什么
-- [Diffusion Model](../wiki/concepts/diffusion-model.md)（本仓库）— 生成基础主入口
-- [Probability Flow](../wiki/formalizations/probability-flow.md)（本仓库）— 流匹配的数学骨架
-- [Diffusion-based Motion Generation](../wiki/methods/diffusion-motion-generation.md)（本仓库）— 动作生成总览页
-- [Awesome Text-to-Motion](../wiki/entities/awesome-text-to-motion-zilize.md)（本仓库）— 领域论文地图
+- [Diffusion Model](../wiki/concepts/diffusion-model.md) — 生成基础主入口
+- [Probability Flow](../wiki/formalizations/probability-flow.md) — 流匹配的数学骨架
+- [Diffusion-based Motion Generation](../wiki/methods/diffusion-motion-generation.md) — 动作生成总览页
+- [Awesome Text-to-Motion](../wiki/entities/awesome-text-to-motion-zilize.md) — 领域论文地图
 
 ### 学完输出什么
 - 能推导扩散训练目标与采样过程
@@ -80,10 +80,10 @@ flowchart LR
 - 对比两个数据集的文本标注风格，思考"改写 LLM"为什么成为生成管线标配
 
 ### 推荐读什么
-- [HumanML3D](../wiki/entities/dataset-bfm-humanml3d.md)、[KIT-ML](../wiki/entities/dataset-bfm-kit-ml.md)、[BABEL](../wiki/entities/dataset-bfm-babel.md)（本仓库）— 文本-动作数据基座
-- [Motion-X](../wiki/entities/dataset-bfm-motion-x.md) 与 [PoseScript](../wiki/entities/dataset-bfm-posescript.md)（本仓库）— 规模与细粒度标注扩展
-- [Go to Zero / MotionMillion](../wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md)（本仓库）— 百万级数据与零样本评测
-- [Human Motion 论文分类页](../wiki/overview/paper-notebook-category-14-human-motion.md)（本仓库）
+- [HumanML3D](../wiki/entities/dataset-bfm-humanml3d.md)、[KIT-ML](../wiki/entities/dataset-bfm-kit-ml.md)、[BABEL](../wiki/entities/dataset-bfm-babel.md) — 文本-动作数据基座
+- [Motion-X](../wiki/entities/dataset-bfm-motion-x.md) 与 [PoseScript](../wiki/entities/dataset-bfm-posescript.md) — 规模与细粒度标注扩展
+- [Go to Zero / MotionMillion](../wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md) — 百万级数据与零样本评测
+- [Human Motion 论文分类页](../wiki/overview/paper-notebook-category-14-human-motion.md)
 
 ### 学完输出什么
 - 能读写 SMPL 系动作数据并解析主流表示格式
@@ -109,11 +109,11 @@ flowchart LR
 - 精读三线对比页，为"数据引擎 / 视频驱动 / 导演式编辑"三种场景各选一条骨干并说明理由
 
 ### 推荐读什么
-- [HY-Motion 1.0](../wiki/methods/hy-motion-1.md)、[GENMO](../wiki/methods/genmo.md)、[Kimodo](../wiki/entities/kimodo.md)（本仓库）— 规模化三线
-- [ARDY](../wiki/entities/ardy.md)（本仓库）— 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026）
-- [HY-Motion vs GENMO vs Kimodo 选型对比](../wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md)（本仓库）— 谱系主入口
-- [Guided Motion Diffusion](../wiki/entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) 与 [OmniControl](../wiki/entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md)（本仓库）— 可控生成机制
-- [Flexible Motion In-betweening](../wiki/entities/paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md)（本仓库）— 关键帧补全
+- [HY-Motion 1.0](../wiki/methods/hy-motion-1.md)、[GENMO](../wiki/methods/genmo.md)、[Kimodo](../wiki/entities/kimodo.md) — 规模化三线
+- [ARDY](../wiki/entities/ardy.md) — 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026）
+- [HY-Motion vs GENMO vs Kimodo 选型对比](../wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 谱系主入口
+- [Guided Motion Diffusion](../wiki/entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) 与 [OmniControl](../wiki/entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md) — 可控生成机制
+- [Flexible Motion In-betweening](../wiki/entities/paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md) — 关键帧补全
 
 ### 学完输出什么
 - 一个跑通的文本-动作生成 demo 与生成质量的定性判断标准
@@ -140,12 +140,12 @@ flowchart LR
 - 把生成轨迹喂给一个开源跟踪器（SONIC / BeyondMimic 系），统计可跟踪比例
 
 ### 推荐读什么
-- [PhysDiff](../wiki/entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md)（本仓库）— 物理引导扩散
-- [PhyGile](../wiki/entities/paper-phygile.md)（本仓库）— robot-native 生成 + GMT 闭环
-- [Gen2Humanoid](../wiki/entities/gen2humanoid.md)（本仓库）— 生成 → 重定向端到端管线
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）— 跟踪侧消费者
-- [合成视频人形任务生成（NCKU）](../wiki/entities/paper-synthetic-video-humanoid-tasks.md)（本仓库）— 文本提示 → Veo 生成视频 → SMPL-X/GMR 重定向 → motion stitching → DeepMimic 式 RL 跟踪，全程无真机、无 MoCap 示范即可在仿真里学多样人形任务；确认未开源
-- [GenTrack](../wiki/entities/paper-gentrack.md)（本仓库，AAAI 2027）— 生成器–跟踪器在线互训打破"单向管线冻结一边很快过时"的耦合瓶颈，接 ProtoMotions/SONIC checkpoint 做后训练而非从头训，KL 锚 + rehearsal 防生成器塌成慢动作；SONIC 支 LAFAN1 跟踪 SR 85→90；确认未开源
+- [PhysDiff](../wiki/entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md) — 物理引导扩散
+- [PhyGile](../wiki/entities/paper-phygile.md) — robot-native 生成 + GMT 闭环
+- [Gen2Humanoid](../wiki/entities/gen2humanoid.md) — 生成 → 重定向端到端管线
+- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) — 跟踪侧消费者
+- [合成视频人形任务生成（NCKU）](../wiki/entities/paper-synthetic-video-humanoid-tasks.md) — 文本提示 → Veo 生成视频 → SMPL-X/GMR 重定向 → motion stitching → DeepMimic 式 RL 跟踪，全程无真机、无 MoCap 示范即可在仿真里学多样人形任务；确认未开源
+- [GenTrack](../wiki/entities/paper-gentrack.md)（AAAI 2027）— 生成器–跟踪器在线互训打破"单向管线冻结一边很快过时"的耦合瓶颈，接 ProtoMotions/SONIC checkpoint 做后训练而非从头训，KL 锚 + rehearsal 防生成器塌成慢动作；SONIC 支 LAFAN1 跟踪 SR 85→90；确认未开源
 
 ### 学完输出什么
 - 一条"文本 → 生成 → 重定向 → 跟踪验证"的端到端管线
@@ -172,11 +172,11 @@ flowchart LR
 - 对比"固定参考跟踪"与"在线生成参考"在 OOD 场景的成功率报告，理解在线生成换来什么
 
 ### 推荐读什么
-- [Diffusion-based Motion Generation](../wiki/methods/diffusion-motion-generation.md)（本仓库）— 控制环内生成器总览
-- [Learning Whole-Body Humanoid Locomotion](../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 与 [Heracles](../wiki/entities/paper-heracles-humanoid-diffusion.md)（本仓库）— 扩散规划与恢复中间件
-- [OMG](../wiki/entities/paper-omg-omni-modal-humanoid-control.md) 与 [MotionBricks](../wiki/methods/motionbricks.md)（本仓库）— 多模态接口与实时基元
-- [GPC](../wiki/entities/paper-gpc-generative-pretrained-controllers.md)（本仓库）— token 化生成控制器
-- [Muninn](../wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md)（本仓库）— training-free 轨迹扩散缓存加速：probe 稳定性 + conformal 标定偏差预算，最高约 4.6× 墙钟加速且可证轨迹偏离界，可直接叠在现有扩散规划器 / Diffusion Policy 上
+- [Diffusion-based Motion Generation](../wiki/methods/diffusion-motion-generation.md) — 控制环内生成器总览
+- [Learning Whole-Body Humanoid Locomotion](../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 与 [Heracles](../wiki/entities/paper-heracles-humanoid-diffusion.md) — 扩散规划与恢复中间件
+- [OMG](../wiki/entities/paper-omg-omni-modal-humanoid-control.md) 与 [MotionBricks](../wiki/methods/motionbricks.md) — 多模态接口与实时基元
+- [GPC](../wiki/entities/paper-gpc-generative-pretrained-controllers.md) — token 化生成控制器
+- [Muninn](../wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md) — training-free 轨迹扩散缓存加速：probe 稳定性 + conformal 标定偏差预算，最高约 4.6× 墙钟加速且可证轨迹偏离界，可直接叠在现有扩散规划器 / Diffusion Policy 上
 
 ### 学完输出什么
 - 能为"生成器 + 跟踪器"耦合系统设计训练与部署方案（含延迟预算）
@@ -209,7 +209,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 扩散 / 流匹配基础 | [Diffusion Model](../wiki/concepts/diffusion-model.md) |
 | Stage 1 | 表示与数据集 | [HumanML3D](../wiki/entities/dataset-bfm-humanml3d.md) |
@@ -221,37 +221,15 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — 姊妹路线：生成负责"造动作"，重定向负责"落到机器人"
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 行为先验的策略权重侧表达
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — Diffusion Policy 一系与本路线共享生成式建模基础
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — 语义接口与分层设计的邻接路线
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪器训练的训练侧前置
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 D 的展开版
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [动作重定向](depth-motion-retargeting.md) — 生成动作折到可执行本体
+  - [BFM](depth-bfm.md) — 生成参考进入跟踪/行为模型
+  - [VLA](depth-vla.md) — 文本/多模态条件的另一条动作出口
+  - [群控展演](depth-humanoid-swarm-performance.md) — 编舞与群舞的产品向展开
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Diffusion-based Motion Generation](../wiki/methods/diffusion-motion-generation.md) 与 [HY-Motion vs GENMO vs Kimodo 选型对比](../wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md)
 - "Human Motion Diffusion Model" (Tevet et al., 2022, MDM) — 文本驱动动作扩散生成范式的确立

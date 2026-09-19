@@ -52,9 +52,9 @@ flowchart LR
 ### 推荐读什么
 - [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文：MDP → PPO/SAC 章节 + [hrl.boyuai.com](https://hrl.boyuai.com/chapter) 在线 notebook；配套 [伯禹免费视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)
 - Spinning Up (OpenAI) — Part 1: Key Concepts
-- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
-- [强化学习史（试错学习 / 最优控制 / 时序差分三脉汇合）](../wiki/concepts/reinforcement-learning-history.md)（本仓库）— Sutton & Barto §1.6；读懂谱系有助于区分 RL 与监督学习及 model-based 控制
-- [PPO](../wiki/methods/ppo.md) · [SAC](../wiki/methods/sac.md)（本仓库）
+- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)
+- [强化学习史（试错学习 / 最优控制 / 时序差分三脉汇合）](../wiki/concepts/reinforcement-learning-history.md) — Sutton & Barto §1.6；读懂谱系有助于区分 RL 与监督学习及 model-based 控制
+- [PPO](../wiki/methods/ppo.md) · [SAC](../wiki/methods/sac.md)
 - [Query：机器人任务里 PPO 与 SAC 怎么选](../wiki/queries/ppo-vs-sac-for-robots.md)
 
 ### 学完输出什么
@@ -81,8 +81,8 @@ flowchart LR
 - 在 IsaacGym 或 Mujoco 里跑通一个人形环境
 
 ### 推荐读什么
-- [Locomotion](../wiki/tasks/locomotion.md)（本仓库）
-- [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)（本仓库）
+- [Locomotion](../wiki/tasks/locomotion.md)
+- [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)
 
 ### 学完输出什么
 - 能解释为什么 RL 适合做 locomotion
@@ -109,12 +109,12 @@ flowchart LR
 
 ### 推荐读什么
 - "Emergence of Locomotion Behaviours in Rich Environments" (Heess et al., 2017)
-- [legged_gym](../wiki/entities/legged-gym.md) 与 [Isaac Lab](../wiki/entities/isaac-lab.md)（本仓库实体页 + 官方代码）
-- [RSL-RL](../wiki/entities/rsl-rl.md)（本仓库，ETH RSL × NVIDIA）— legged_gym / Isaac Lab / mjlab 默认后端的那一份 GPU PPO 实现，PPO 与蒸馏共用同一套 runner 抽象；读它才知道训练脚本里几行 runner 配置到底在做什么，可选 BF16 autocast 单次 update 2.39×、显存 −33%；BSD-3-Clause 已开源
-- [Reward Design](../wiki/concepts/reward-design.md)（本仓库）
+- [legged_gym](../wiki/entities/legged-gym.md) 与 [Isaac Lab](../wiki/entities/isaac-lab.md)（实体页 + 官方代码）
+- [RSL-RL](../wiki/entities/rsl-rl.md)（ETH RSL × NVIDIA）— legged_gym / Isaac Lab / mjlab 默认后端的那一份 GPU PPO 实现，PPO 与蒸馏共用同一套 runner 抽象；读它才知道训练脚本里几行 runner 配置到底在做什么，可选 BF16 autocast 单次 update 2.39×、显存 −33%；BSD-3-Clause 已开源
+- [Reward Design](../wiki/concepts/reward-design.md)
 - [Query：locomotion reward 设计指南](../wiki/queries/locomotion-reward-design-guide.md)
 - [Query：Humanoid RL Cookbook](../wiki/queries/humanoid-rl-cookbook.md) — 观测/动作空间、超参与训练技巧速查
-- [FDDC](../wiki/entities/paper-fddc.md)（本仓库）— 把 capture point 改写成支撑足相对、机载可重构的动态 CoM 观测直接进 actor，配人体科学奖励（MoS/TTB/踝→膝 rate）；单腿平衡基准 Perfect 95.6%，八个通用 SOTA（含 SONIC）均 0%，去掉动态 CoM 观测掉 40 pt；G1 无蒸馏部署，宣称开源但入库日无 URL
+- [FDDC](../wiki/entities/paper-fddc.md) — 把 capture point 改写成支撑足相对、机载可重构的动态 CoM 观测直接进 actor，配人体科学奖励（MoS/TTB/踝→膝 rate）；单腿平衡基准 Perfect 95.6%，八个通用 SOTA（含 SONIC）均 0%，去掉动态 CoM 观测掉 40 pt；G1 无蒸馏部署，宣称开源但入库日无 URL
 
 ### 学完输出什么
 - 一个能在平地上稳定行走的人形 RL 策略（仿真内）
@@ -140,9 +140,9 @@ flowchart LR
 - 理解"RL 提供动作 prior，QP/WBC 负责实时跟踪"这个模式
 
 ### 推荐读什么
-- "AMP: Adversarial Motion Priors" (Peng et al., 2021) — 配合 [AMP Reward](../wiki/methods/amp-reward.md)、[DeepMimic](../wiki/methods/deepmimic.md)（本仓库）
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
-- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
+- "AMP: Adversarial Motion Priors" (Peng et al., 2021) — 配合 [AMP Reward](../wiki/methods/amp-reward.md)、[DeepMimic](../wiki/methods/deepmimic.md)
+- [Whole-Body Control](../wiki/concepts/whole-body-control.md)
+- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)
 - [Query：什么时候用 WBC、什么时候用 RL](../wiki/queries/when-to-use-wbc-vs-rl.md)
 
 ### 学完输出什么
@@ -170,13 +170,13 @@ flowchart LR
 - 调 DR 范围，观察策略鲁棒性变化
 
 ### 推荐读什么
-- [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
-- [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
-- [System Identification](../wiki/concepts/system-identification.md)（本仓库）
-- [Actuator Network](../wiki/methods/actuator-network.md) 与 [Implicit vs Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md)（本仓库）— 执行器 gap 是 sim2real 的第一大坑
-- [Fault-Tolerant Locomotion](../wiki/entities/paper-fault-tolerant-locomotion.md)（本仓库）— 执行器功率损失下的非对称 actor–critic + 可学习步态频率；KYON 68 kg 真机平地（未开源）
-- [FlashSAC](../wiki/methods/flashsac.md)（本仓库）— scaling 式 off-policy SAC 改进：少更新 + 大模型 + 范数约束，G1 盲行走 sim2real 训练由小时级压到约 20 分钟
-- [PACE（足式系统化 Sim2Real）](../wiki/entities/paper-pace-sim2real-legged-robots.md)（本仓库）— chirp 悬空数据辨识紧凑关节动力学参数 + 四项物理能量 reward，无需动力学域随机化即可零样本部署
+- [Sim2Real](../wiki/concepts/sim2real.md)
+- [Domain Randomization](../wiki/concepts/domain-randomization.md)
+- [System Identification](../wiki/concepts/system-identification.md)
+- [Actuator Network](../wiki/methods/actuator-network.md) 与 [Implicit vs Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) — 执行器 gap 是 sim2real 的第一大坑
+- [Fault-Tolerant Locomotion](../wiki/entities/paper-fault-tolerant-locomotion.md) — 执行器功率损失下的非对称 actor–critic + 可学习步态频率；KYON 68 kg 真机平地（未开源）
+- [FlashSAC](../wiki/methods/flashsac.md) — scaling 式 off-policy SAC 改进：少更新 + 大模型 + 范数约束，G1 盲行走 sim2real 训练由小时级压到约 20 分钟
+- [PACE（足式系统化 Sim2Real）](../wiki/entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据辨识紧凑关节动力学参数 + 四项物理能量 reward，无需动力学域随机化即可零样本部署
 - [Query：Sim2Real 部署检查清单](../wiki/queries/sim2real-checklist.md)
 - [Query：腿式/人形 RL 的 PD 增益设置](../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
 
@@ -219,7 +219,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | RL 基础 | [Reinforcement Learning](../wiki/methods/reinforcement-learning.md) |
 | Stage 1 | locomotion 概念 | [Locomotion](../wiki/tasks/locomotion.md) |
@@ -230,37 +230,16 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — sim2real 执行器建模的硬件侧源头
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [Sim2Real](depth-sim2real.md) — 本路线 Stage 4 的完整展开
+  - [感知越障](depth-perceptive-locomotion.md) — 盲走基线之上的外感知
+  - [Loco-Manipulation](depth-loco-manipulation.md) — 行走策略接到操作
+  - [传统模型控制](depth-classical-control.md) — WBC/MPC 与 RL 的组合与对照
+  - [BFM](depth-bfm.md) — 跟踪/技能先验，常作 RL 的运动底座
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)
 - [Locomotion](../wiki/tasks/locomotion.md)

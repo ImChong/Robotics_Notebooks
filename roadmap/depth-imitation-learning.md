@@ -53,7 +53,7 @@ flowchart LR
 
 ### 推荐读什么
 - "Illustrated Guide to LSTM" (Google Blog)
-- [Transformer](../wiki/concepts/transformer.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)（本仓库）
+- [Transformer](../wiki/concepts/transformer.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)
 - 跑通一个 Motion Transformer 官方 Demo（如果能访问）
 
 ### 学完输出什么
@@ -81,10 +81,10 @@ flowchart LR
 
 ### 推荐读什么
 - "A Reduction of Imitation Learning and Stochastic Gradient Descent to Online Learning" (Ross & Bagnell, 2010)
-- [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
-- [Behavior Cloning](../wiki/methods/behavior-cloning.md) 与 [DAgger](../wiki/methods/dagger.md)（本仓库）
-- [Inverse Reinforcement Learning](../wiki/methods/inverse-reinforcement-learning.md)（本仓库）— 演示 → 奖励 → 策略；GAIL 只匹配占用
-- [RL vs IL 对比](../wiki/comparisons/rl-vs-il.md)（本仓库）
+- [Imitation Learning](../wiki/methods/imitation-learning.md)
+- [Behavior Cloning](../wiki/methods/behavior-cloning.md) 与 [DAgger](../wiki/methods/dagger.md)
+- [Inverse Reinforcement Learning](../wiki/methods/inverse-reinforcement-learning.md) — 演示 → 奖励 → 策略；GAIL 只匹配占用
+- [RL vs IL 对比](../wiki/comparisons/rl-vs-il.md)
 
 ### 学完输出什么
 - 能解释 compounding error 是什么、为什么出现
@@ -111,9 +111,9 @@ flowchart LR
 - 观察迁移后动作的可行性（关节限位、自碰撞、地面穿透）
 
 ### 推荐读什么
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）
-- [GMR vs NMR vs ReACTOR 重定向方案对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)（本仓库）
-- [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)
+- [GMR vs NMR vs ReACTOR 重定向方案对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)
+- [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)
 - "ASE: Adversarial Skill Embeddings" (Peng et al., 2022) — 有 retargeting pipeline 描述
 
 ### 学完输出什么
@@ -142,11 +142,11 @@ flowchart LR
 
 ### 推荐读什么
 - "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion" (Chi et al., 2023)
-- [Diffusion Policy](../wiki/methods/diffusion-policy.md)（本仓库）
-- [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)（本仓库）— ACT 一系的核心机制
-- [Why Action Chunking Improves BC](../wiki/entities/paper-why-action-chunking-improves-bc.md)（本仓库，CoRL 2026）— 消融拆穿"时序一致性/更短 horizon"两个常见假说，chunk 收益主因是延迟观测条件化 + 隐式集成；同一策略用 Randomized Delay Ensemble 部署即可匹配标准 chunk 执行，真机三任务验证
-- [Seeker](../wiki/entities/paper-seeker.md)（本仓库）— 冻结 DINOv3 + 动作监督 ROI，不靠 gaze/affordance/阶段提示逼近特权 Oracle（62.6 vs 64.2），同一 ROI 可跨 RGB/点云模态复用；MimicGen 62.6%，xArm 真机域内 76.7%/OOD 60.0%；MIT 已开源
-- [Revisiting Open-Loop Execution](../wiki/entities/paper-revisiting-open-loop-action-chunking.md)（本仓库，MIT/Berkeley）— 与上一条对照：长 open-loop execution horizon 的主因是短上下文模仿非马尔可夫专家，足够上下文后闭环 reactive 反而最优；提出 double encoder 稳定长上下文 Diffusion Policy
+- [Diffusion Policy](../wiki/methods/diffusion-policy.md)
+- [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md) — ACT 一系的核心机制
+- [Why Action Chunking Improves BC](../wiki/entities/paper-why-action-chunking-improves-bc.md)（CoRL 2026）— 消融拆穿"时序一致性/更短 horizon"两个常见假说，chunk 收益主因是延迟观测条件化 + 隐式集成；同一策略用 Randomized Delay Ensemble 部署即可匹配标准 chunk 执行，真机三任务验证
+- [Seeker](../wiki/entities/paper-seeker.md) — 冻结 DINOv3 + 动作监督 ROI，不靠 gaze/affordance/阶段提示逼近特权 Oracle（62.6 vs 64.2），同一 ROI 可跨 RGB/点云模态复用；MimicGen 62.6%，xArm 真机域内 76.7%/OOD 60.0%；MIT 已开源
+- [Revisiting Open-Loop Execution](../wiki/entities/paper-revisiting-open-loop-action-chunking.md)（MIT/Berkeley）— 与上一条对照：长 open-loop execution horizon 的主因是短上下文模仿非马尔可夫专家，足够上下文后闭环 reactive 反而最优；提出 double encoder 稳定长上下文 Diffusion Policy
 
 ### 学完输出什么
 - 一个用 Diffusion Policy 训练的动作策略
@@ -172,11 +172,11 @@ flowchart LR
 - 在能找到的开源代码上跑一个 two-skill interpolation 实验
 
 ### 推荐读什么
-- [ASE](../wiki/methods/ase.md) 与 [AMP Reward](../wiki/methods/amp-reward.md)（本仓库）
-- [Inverse Reinforcement Learning](../wiki/methods/inverse-reinforcement-learning.md)（本仓库）— MaxEnt / GAIL / AIRL，对抗模仿的理论前身
-- [Learning from Play (LMP)](../wiki/methods/learning-from-play-lmp.md)（本仓库）
-- [人形 AMP / Motion Prior 综述地图](../wiki/overview/humanoid-amp-motion-prior-survey.md)（本仓库）— AMP 家族全景
-- [CMP](../wiki/entities/paper-cmp.md)（本仓库）— 用高优势 rollout + demo 锚定的相关度，把 AMP/SMP 的任务无关先验软重权成上下文条件适配器；五任务回报与样本效率双升，参考失衡场景下 AMP 掉点 11.5% 而 CMP 仅 2.8%；截至 2026-08-18 无官方代码
+- [ASE](../wiki/methods/ase.md) 与 [AMP Reward](../wiki/methods/amp-reward.md)
+- [Inverse Reinforcement Learning](../wiki/methods/inverse-reinforcement-learning.md) — MaxEnt / GAIL / AIRL，对抗模仿的理论前身
+- [Learning from Play (LMP)](../wiki/methods/learning-from-play-lmp.md)
+- [人形 AMP / Motion Prior 综述地图](../wiki/overview/humanoid-amp-motion-prior-survey.md) — AMP 家族全景
+- [CMP](../wiki/entities/paper-cmp.md) — 用高优势 rollout + demo 锚定的相关度，把 AMP/SMP 的任务无关先验软重权成上下文条件适配器；五任务回报与样本效率双升，参考失衡场景下 AMP 掉点 11.5% 而 CMP 仅 2.8%；截至 2026-08-18 无官方代码
 - "Learning Latent Plans from Play" (Lynch et al., 2020)
 
 ### 学完输出什么
@@ -204,9 +204,9 @@ flowchart LR
 - 设计一个简单的 domain randomization 实验
 
 ### 推荐读什么
-- [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
-- [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
-- [SPD](../wiki/entities/paper-spd.md)（本仓库，CoRL 2026，斯坦福/MIT/Scale AI）— 仿真 VR 遥操作采 75 h on-embodiment 演示预训练扩散 Transformer，56-DoF 双臂灵巧手每任务仅 1–2 h 真机微调，五项任务均胜过从零 BC
+- [Sim2Real](../wiki/concepts/sim2real.md)
+- [Domain Randomization](../wiki/concepts/domain-randomization.md)
+- [SPD](../wiki/entities/paper-spd.md)（CoRL 2026，斯坦福/MIT/Scale AI）— 仿真 VR 遥操作采 75 h on-embodiment 演示预训练扩散 Transformer，56-DoF 双臂灵巧手每任务仅 1–2 h 真机微调，五项任务均胜过从零 BC
 
 ### 学完输出什么
 - 对 IL 策略的 sim2real 差距有第一手认识
@@ -240,7 +240,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 时序建模基础 | [Transformer](../wiki/concepts/transformer.md) |
 | Stage 1 | BC / DAgger | [Behavior Cloning](../wiki/methods/behavior-cloning.md) |
@@ -252,37 +252,16 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 2 的展开版
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — Stage 3 生成式建模在人体动作侧的展开版
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 6 方向 C 的展开版
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 6 方向 D 的展开版
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 成功判据（目标等价 vs 轨迹相似）的评测侧
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md) — 姊妹路线：训练期从示范学 vs 部署期从上下文学
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 上游：策略吃的数据从哪来、按什么口径验收
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [遥操作](depth-teleoperation.md) — 示范数据的主要采集入口
+  - [VLA](depth-vla.md) — 在 IL 骨干上接视觉–语言条件
+  - [动作重定向](depth-motion-retargeting.md) — 人演示变成机器人参考
+  - [具身数据](depth-embodied-data.md) — 示范清洗、聚合与配比
+  - [接触操作](depth-contact-manipulation.md) — IL 在精细接触任务上的主战场
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
 - [Behavior Cloning](../wiki/methods/behavior-cloning.md)

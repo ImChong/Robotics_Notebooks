@@ -219,7 +219,7 @@ flowchart LR
 - [Query：现场机器人排障](../wiki/queries/field-robotics-troubleshooting.md) — 真机故障的分布决定验收项优先级
 - [系统辨识](../wiki/concepts/system-identification.md) 与 [执行器网络](../wiki/methods/actuator-network.md)、[Implicit/Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) — 把整机实测变成可仿真模型
 - [机器人系统工程纵深](../wiki/overview/hub-systems-engineering.md) — 部署、可观测性与 OTA 的整机侧接口
-- GB/T 43200（机器人一体化关节性能与试验方法）— [一手资料索引](../sources/sites/gbt_43200_2023_robot_joint_performance.md)
+- GB/T 43200（机器人一体化关节性能与试验方法）— 一手资料索引
 - [人形机器人量产工程能力](../wiki/concepts/humanoid-mass-production-engineering.md) — 验收之后的那一步：三大核心件（谐波 / PRS / 无框力矩电机）工艺定型、良率 S 曲线与 CPK 门槛、供应链一致性与 ISO/IEC 可靠性体系，以及汽车 PPAP、3C MES 的跨行业迁移——样机与资本不等于量产
 
 ### 推荐做什么
@@ -236,7 +236,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 指标与质量/功率/延迟三大预算 | [Humanoid Hardware 101 技术地图](../wiki/overview/humanoid-hardware-101-technology-map.md) · [控制环路延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) |
 | Stage 1 | DoF 分配、执行器布置、惯量分布 | [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) |
@@ -250,31 +250,11 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 三条设计链的知识主页：[机械布局](../wiki/concepts/humanoid-mechanical-layout-design.md)、[配电架构](../wiki/concepts/robot-power-distribution-architecture.md)、[通信架构](../wiki/concepts/robot-onboard-communication-architecture.md)；本路线是它们的学习顺序展开版
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — 关节级底座，本路线的直接上游
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) — 消费本路线交付的质心高度与惯量参数
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — Stage 6 数字副本的下游消费者
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [力矩电机设计](depth-torque-motor-design.md) — 关节级底座，本路线的直接上游
+  - [传统模型控制](depth-classical-control.md) — 消费本路线交付的质心高度与惯量参数
+  - [遥操作](depth-teleoperation.md) — 整机通信延迟与力反馈接口的下游用户
+  - [Sim2Real](depth-sim2real.md) — 执行器与整机参数如何进仿真
 - 关联知识页：
   - [Humanoid Hardware 101：七类子系统技术地图](../wiki/overview/humanoid-hardware-101-technology-map.md)
   - [Humanoid 执行器 102：八章技术地图](../wiki/overview/humanoid-actuator-102-technology-map.md)
@@ -284,12 +264,10 @@ flowchart LR
 
 ## 参考来源
 
-本路线基于以下原始资料与 wiki 编译页的归纳：
-
-- [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md)、[机器人整机配电架构](../wiki/concepts/robot-power-distribution-architecture.md)、[机器人整机通信架构](../wiki/concepts/robot-onboard-communication-architecture.md) 及其 sources
-- [Humanoid Hardware 101 系列](../wiki/overview/humanoid-hardware-101-technology-map.md)（sources：Hardware 101 微信长文）与 [Humanoid 执行器 102 系列](../wiki/overview/humanoid-actuator-102-technology-map.md)
-- [GB/T 43200-2023 机器人一体化关节性能及试验方法（一手资料）](../sources/sites/gbt_43200_2023_robot_joint_performance.md)
-- [电机测功机一手资料索引](../sources/sites/motor_dynamometer_primary_refs.md)
+- [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md)、[机器人整机配电架构](../wiki/concepts/robot-power-distribution-architecture.md)、[机器人整机通信架构](../wiki/concepts/robot-onboard-communication-architecture.md)
+- [Humanoid Hardware 101 系列](../wiki/overview/humanoid-hardware-101-technology-map.md) 与 [Humanoid 执行器 102 系列](../wiki/overview/humanoid-actuator-102-technology-map.md)
+- GB/T 43200-2023 机器人一体化关节性能及试验方法
+- 电机测功机常用资料：GB/T 43200、IEC 60034-2-1、Magtrol 手册、ODrive 开源对拖、AIP 关节对拖
 - IEC 60204-1（机械电气设备与停止类别）、ISO 13849-1（安全相关控制部件 PL）、ISO 13482（个人护理机器人安全）、IEC 61000-4 系列（EMC 抗扰）
 - ISO 11898 系列（CAN/CAN-FD）、ETG.1000 系列（EtherCAT 与分布式时钟）、IEEE 1588（PTP）
 - Kato et al., WABOT-1（早稻田大学，1973）— 首台全尺寸人形整机集成，本方向的起点里程碑

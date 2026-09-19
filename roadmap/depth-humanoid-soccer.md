@@ -50,9 +50,9 @@ flowchart LR
 - 看一场 RoboCup Adult-Size 决赛录像，按分层地图标注每次失误发生在哪一层
 
 ### 推荐读什么
-- [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md)（本仓库）— 本路线的任务地图与技术路线总入口
-- [Locomotion 任务页](../wiki/tasks/locomotion.md) 与 [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)（本仓库）
-- [Booster RoboCup Demo](../wiki/entities/booster-robocup-demo.md)（本仓库）— 一个完整比赛软件栈长什么样
+- [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md) — 本路线的任务地图与技术路线总入口
+- [Locomotion 任务页](../wiki/tasks/locomotion.md) 与 [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)
+- [Booster RoboCup Demo](../wiki/entities/booster-robocup-demo.md) — 一个完整比赛软件栈长什么样
 
 ### 学完输出什么
 - 能解释足球为什么比单项 locomotion / 射门难，难在哪一层
@@ -79,10 +79,10 @@ flowchart LR
 - 给行走策略加推搡与碰撞扰动课程，记录失稳恢复率的变化
 
 ### 推荐读什么
-- [HTWK-Gym](../wiki/methods/htwk-gym.md)（本仓库）— Booster T1/K1 平台的足球专项 RL 框架
-- [Balance Recovery 任务页](../wiki/tasks/balance-recovery.md)（本仓库）— 跌倒恢复谱系
-- [Unitree G1](../wiki/entities/unitree-g1.md)（本仓库）— 足球科研的主力平台之一
-- [WBC vs RL 对比](../wiki/comparisons/wbc-vs-rl.md)（本仓库）— 运动基座两条路线的取舍
+- [HTWK-Gym](../wiki/methods/htwk-gym.md) — Booster T1/K1 平台的足球专项 RL 框架
+- [Balance Recovery 任务页](../wiki/tasks/balance-recovery.md) — 跌倒恢复谱系
+- [Unitree G1](../wiki/entities/unitree-g1.md) — 足球科研的主力平台之一
+- [WBC vs RL 对比](../wiki/comparisons/wbc-vs-rl.md) — 运动基座两条路线的取舍
 
 ### 学完输出什么
 - 一个能接受任意速度/航向命令、被碰撞后能爬起的行走基座
@@ -109,10 +109,10 @@ flowchart LR
 - 录一段真实球滚动视频，对比检测结果与训练时的噪声假设差多少
 
 ### 推荐读什么
-- [Object Detection](../wiki/methods/object-detection.md)（本仓库）— 检测方法谱系
-- [Query：目标检测模型选型](../wiki/queries/object-detection-model-selection.md) 与 [Query：感知 backbone 选型](../wiki/queries/perception-backbone-selection.md)（本仓库）
-- [Vision-Driven Reactive Soccer](../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)（本仓库）— 视觉驱动反应式足球技能
-- [Booster RoboCup Demo](../wiki/entities/booster-robocup-demo.md)（本仓库）— YOLOv8 感知在整队系统里的位置
+- [Object Detection](../wiki/methods/object-detection.md) — 检测方法谱系
+- [Query：目标检测模型选型](../wiki/queries/object-detection-model-selection.md) 与 [Query：感知 backbone 选型](../wiki/queries/perception-backbone-selection.md)
+- [Vision-Driven Reactive Soccer](../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — 视觉驱动反应式足球技能
+- [Booster RoboCup Demo](../wiki/entities/booster-robocup-demo.md) — YOLOv8 感知在整队系统里的位置
 
 ### 学完输出什么
 - 一条满足时延预算的机载检测 + 定位管线
@@ -139,11 +139,11 @@ flowchart LR
 - 逐项消融：去掉运动参考、去掉噪声建模、去掉课程分段，记录哪个环节掉点最狠
 
 ### 推荐读什么
-- [Query：人形足球技能学习方法选型](../wiki/queries/humanoid-soccer-skill-learning-method-selection.md)（本仓库）— PAiD vs RoboNaldo 选型总入口
-- [PAiD Framework](../wiki/methods/paid-framework.md) 与 [Learning Soccer Skills for Humanoid Robots](../wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md)（本仓库）— 渐进感知–动作融合，G1 真机 91.3% 踢球成功率
-- [RoboNaldo](../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md)（本仓库）— 亚米级定点射门与 13 m/s 级触球球速
-- [Learning Agile Striker Skills](../wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md)（本仓库）— 四阶段教师–学生蒸馏
-- [Query：奖励设计指南](../wiki/queries/reward-design-guide.md)（本仓库）
+- [Query：人形足球技能学习方法选型](../wiki/queries/humanoid-soccer-skill-learning-method-selection.md) — PAiD vs RoboNaldo 选型总入口
+- [PAiD Framework](../wiki/methods/paid-framework.md) 与 [Learning Soccer Skills for Humanoid Robots](../wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md) — 渐进感知–动作融合，G1 真机 91.3% 踢球成功率
+- [RoboNaldo](../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — 亚米级定点射门与 13 m/s 级触球球速
+- [Learning Agile Striker Skills](../wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md) — 四阶段教师–学生蒸馏
+- [Query：奖励设计指南](../wiki/queries/reward-design-guide.md)
 
 ### 学完输出什么
 - 一个能在仿真里完成"追球 → 对齐 → 定向射门"的闭环技能，含教师–学生蒸馏版本
@@ -170,11 +170,11 @@ flowchart LR
 - 读 ARTEMIS 的 behavior planner 结构，画出"感知 → 战术 → 技能"的信息流图
 
 ### 推荐读什么
-- [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)（本仓库）— 群控范式总览
-- [ARTEMIS 冠军系统](../wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md)（本仓库）— 集中式战术层，RoboCup 2024 Adult-Size 冠军
-- [Swarm Intelligence 人形足球](../wiki/entities/paper-humanoid-soccer-swarm-intelligence.md)（本仓库）— 去中心化 4v4 对照
-- [MARL](../wiki/methods/marl.md) 与 [CTDE vs 去中心化 MARL](../wiki/comparisons/ctde-vs-decentralized-marl.md)（本仓库）
-- [SPL 极低带宽协调](../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md)（本仓库 sources）
+- [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md) — 群控范式总览
+- [ARTEMIS 冠军系统](../wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md) — 集中式战术层，RoboCup 2024 Adult-Size 冠军
+- [Swarm Intelligence 人形足球](../wiki/entities/paper-humanoid-soccer-swarm-intelligence.md) — 去中心化 4v4 对照
+- [MARL](../wiki/methods/marl.md) 与 [CTDE vs 去中心化 MARL](../wiki/comparisons/ctde-vs-decentralized-marl.md)
+- [SPL 极低带宽协调](https://arxiv.org/abs/2401.15026)
 
 ### 学完输出什么
 - 一个 2v2 仿真对抗里可运行的角色分配 + 编队方案
@@ -207,7 +207,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 任务全景与耦合 | [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md) |
 | Stage 1 | 运动基座 | [HTWK-Gym](../wiki/methods/htwk-gym.md) |
@@ -219,31 +219,11 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) — 对抗自博弈侧的姊妹路线
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 运动基座的训练侧前置
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — "感知进策略"的邻接路线
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 参考动作进 RL 的前置
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — 感知与定位工程的邻接路线
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [RL 运动控制](depth-rl-locomotion.md) — 全向行走与踢球技能的训练底座
+  - [感知越障](depth-perceptive-locomotion.md) — 追球时的地形与视觉
+  - [群控展演](depth-humanoid-swarm-performance.md) — 多机协调的另一条产品线
+  - [人形拳击](depth-humanoid-boxing.md) — 对抗全身技能的邻接场景
 - 关联知识页：
   - [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md)
   - [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)
@@ -252,8 +232,6 @@ flowchart LR
   - [MARL](../wiki/methods/marl.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md) 与 [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)
 - 首届 RoboCup（Nagoya, 1997）— 人形足球方向的赛事起点；RoboCup 2050 目标为整队人形对阵人类世界杯冠军

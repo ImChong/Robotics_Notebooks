@@ -52,10 +52,10 @@ flowchart LR
 - 对自己的场景写一句话：我缺的是映射、状态还是选择？——缺状态就别去堆示范
 
 ### 推荐读什么
-- [机器人 In-Context Learning（概念 taxonomy）](../wiki/concepts/robot-in-context-learning.md)（本仓库）— 概念枢纽，三类不确定性与判别口诀
-- [π0.7](../wiki/methods/pi07-policy.md)（本仓库）— 映射选择的正面样本：metadata 选映射，不改函数形式
-- [LLM 控制接口](../wiki/concepts/llm-robotics-control-interfaces.md) · [Embody](../wiki/entities/anthropic-embody.md)（本仓库）— 通用 LLM 控机器人的代际优势来自短时程重试，截掉远期上下文多数模型不掉分
-- [具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)（本仓库）— ICL 是 VLA 层的"部署期适应旋钮"，不是新的一层
+- [机器人 In-Context Learning（概念 taxonomy）](../wiki/concepts/robot-in-context-learning.md) — 概念枢纽，三类不确定性与判别口诀
+- [π0.7](../wiki/methods/pi07-policy.md) — 映射选择的正面样本：metadata 选映射，不改函数形式
+- [LLM 控制接口](../wiki/concepts/llm-robotics-control-interfaces.md) · [Embody](../wiki/entities/anthropic-embody.md) — 通用 LLM 控机器人的代际优势来自短时程重试，截掉远期上下文多数模型不掉分
+- [具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — ICL 是 VLA 层的"部署期适应旋钮"，不是新的一层
 
 ### 学完输出什么
 - 一张三类不确定性对照表（上下文内容 × 读完之后什么变了 × 是否真 ICL）
@@ -81,10 +81,10 @@ flowchart LR
 - 给自己的任务列一张"必须保留 / 可以压成一个 token"的信息清单——接触力通常在第一栏
 
 ### 推荐读什么
-- [StellaVLA](../wiki/entities/paper-stellavla-structured-icl-vla.md)（本仓库）— 离线 VLM 把原始示范转成结构化 in-context 示范；VLA-Arena overall 0.63、LIBERO 98.8%、LIBERO-Plus 85.1%；截至入库日无可运行官方代码
-- [BPP（Behavior Prompting Policy）](../wiki/entities/paper-behavior-prompting-policy.md)（本仓库）— 单次人类示范作 behavior prompt + cross-attention；训练与部署代码已开源
-- [机器人 ICL 综述归档（具身智能之心，2026-08-25）](../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md)（本仓库）— ICRT / Instant Policy / KAT / SynthICL / RICL 的表征谱系
-- [接触力旋量闭环](../wiki/queries/contact-wrench-closed-loop.md)（本仓库）— 高抽象表征把力与接触细节丢在哪里
+- [StellaVLA](../wiki/entities/paper-stellavla-structured-icl-vla.md) — 离线 VLM 把原始示范转成结构化 in-context 示范；VLA-Arena overall 0.63、LIBERO 98.8%、LIBERO-Plus 85.1%；截至入库日无可运行官方代码
+- [BPP（Behavior Prompting Policy）](../wiki/entities/paper-behavior-prompting-policy.md) — 单次人类示范作 behavior prompt + cross-attention；训练与部署代码已开源
+- [机器人 ICL 综述（具身智能之心，2026-08-25）](https://mp.weixin.qq.com/s/V_Dm8kHvB2YxtGY7qScjXA) — ICRT / Instant Policy / KAT / SynthICL / RICL 的表征谱系
+- [接触力旋量闭环](../wiki/queries/contact-wrench-closed-loop.md) — 高抽象表征把力与接触细节丢在哪里
 
 ### 学完输出什么
 - 一份"示范表征选型便签"：上下文长度、归纳难度、丢失信息三栏
@@ -111,10 +111,10 @@ flowchart LR
 - 做一次"复制捷径"消融：把上下文示范换成同任务的另一条、无关任务的一条、以及空上下文，三档成功率若无差异说明模型没在读示范
 
 ### 推荐读什么
-- [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）— one-shot / few-shot 训练目标的传统路线
-- [Qwen-RobotManip](../wiki/entities/qwen-robot-manip.md)（本仓库）— in-context 适配 + stochastic context sampling；>38,100 h 开源预训练
-- [Foundation Policy](../wiki/concepts/foundation-policy.md)（本仓库）— ICL 是部署期适应手段，不改变"大规模预训练通用策略"母类定义
-- [RealAB 14 篇技术地图](../wiki/overview/realab-14-papers-technology-map-2026.md)（本仓库）— BPP 等 in-context 操作索引
+- [Imitation Learning](../wiki/methods/imitation-learning.md) — one-shot / few-shot 训练目标的传统路线
+- [Qwen-RobotManip](../wiki/entities/qwen-robot-manip.md) — in-context 适配 + stochastic context sampling；>38,100 h 开源预训练
+- [Foundation Policy](../wiki/concepts/foundation-policy.md) — ICL 是部署期适应手段，不改变"大规模预训练通用策略"母类定义
+- [RealAB 14 篇技术地图](../wiki/overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
 
 ### 学完输出什么
 - 一条可复现的 in-context 训练配方（配对构造 + 上下文采样策略 + 未见集划分）
@@ -142,11 +142,11 @@ flowchart LR
 - 把失败样本按 **对齐失败 / 重定向失败 / 归纳失败** 分三类计数——这三类的修法完全不同
 
 ### 推荐读什么
-- [HOST](../wiki/entities/paper-host-one-shot-human-video.md)（本仓库）— 单条人视频、平均 29 s、不改权重；八任务 62%，已掌握技能保留约 99%；代码 + HF 权重已开源
-- [MimicDroid](../wiki/entities/paper-notebook-mimicdroid-in-context-learning-for-humanoid-robo.md)（本仓库）— 仅用人类玩耍视频训练人形 ICL：轨迹配对 + 运动学重定向 + patch masking；配套开源仿真基准，真机成功率近两倍
-- [Zero-WAM](../wiki/entities/paper-zero-wam.md)（本仓库）— 人视频作 in-context 任务规格；HumanGen 74.2K 配对 / 8.6K 任务；RoboTwin 2.0 未见 46.95%
-- [The Imitator Game](../wiki/entities/paper-imitator-game.md)（本仓库）— L0–L3 意图级模仿基准；L3 功能替代崩溃，给这条线画能力上界
-- [跨具身知识链](../wiki/overview/hub-cross-embodiment.md)（本仓库）— 人视频 / 仿真 prompt→真机与重定向、域随机的机制差异
+- [HOST](../wiki/entities/paper-host-one-shot-human-video.md) — 单条人视频、平均 29 s、不改权重；八任务 62%，已掌握技能保留约 99%；代码 + HF 权重已开源
+- [MimicDroid](../wiki/entities/paper-notebook-mimicdroid-in-context-learning-for-humanoid-robo.md) — 仅用人类玩耍视频训练人形 ICL：轨迹配对 + 运动学重定向 + patch masking；配套开源仿真基准，真机成功率近两倍
+- [Zero-WAM](../wiki/entities/paper-zero-wam.md) — 人视频作 in-context 任务规格；HumanGen 74.2K 配对 / 8.6K 任务；RoboTwin 2.0 未见 46.95%
+- [The Imitator Game](../wiki/entities/paper-imitator-game.md) — L0–L3 意图级模仿基准；L3 功能替代崩溃，给这条线画能力上界
+- [跨具身知识链](../wiki/overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机的机制差异
 
 ### 学完输出什么
 - 一条能跑通的"人视频 → 机器人执行"最短链路，并说得清哪一环最脆
@@ -174,11 +174,11 @@ flowchart LR
 - 算一笔账：上下文长度 × 每步推理耗时 vs 控制频率要求，先确定预算再挑方法
 
 ### 推荐读什么
-- [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM 四路线对比](../wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)（本仓库）— 快权重 vs 零梯度的定性坐标系（不做性能排序）
-- [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md)（本仓库）— fast weights 把上下文扩到 8K 步，长程双臂装配报告约 +87%
-- [WAM-TTT](../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md)（本仓库）— 冻结 WAM 上的人视频测试时 steering；46.2% vs WAM-ICL 7.1%
-- [VLA](../wiki/methods/vla.md) 长程记忆增强小节（本仓库）— [KEMO](../wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) / [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md) / [GMP](../wiki/entities/paper-gated-memory-policy.md) 的记忆路线，对照读
-- [WAM 纵深](depth-wam.md) Stage 4（本仓库）— 部署期"执行 / 修正 / 筛选"接口，与本阶段选型同构
+- [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM 四路线对比](../wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 快权重 vs 零梯度的定性坐标系（不做性能排序）
+- [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md) — fast weights 把上下文扩到 8K 步，长程双臂装配报告约 +87%
+- [WAM-TTT](../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — 冻结 WAM 上的人视频测试时 steering；46.2% vs WAM-ICL 7.1%
+- [VLA](../wiki/methods/vla.md) 长程记忆增强小节— [KEMO](../wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) / [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md) / [GMP](../wiki/entities/paper-gated-memory-policy.md) 的记忆路线，对照读
+- [WAM 纵深](depth-wam.md) Stage 4— 部署期"执行 / 修正 / 筛选"接口，与本阶段选型同构
 
 ### 学完输出什么
 - 一张"我的栈该用零梯度上下文 / 快权重 TTT / 记忆增强哪一类"的选型表，含每步预算列
@@ -204,11 +204,11 @@ flowchart LR
 - 把 GEN-1.5 / S1 的宣称逐条标注为"可复现 / 闭源自报 / 假设性解释"，训练自己的证据分级习惯
 
 ### 推荐读什么
-- [GEN-1.5](../wiki/entities/generalist-gen15-one-shot.md)（本仓库）— 涌现式 one-shot 的产业样本（闭源自报）
-- [S1（Skild）](../wiki/entities/skild-s1.md)（本仓库）— 显式 ICL 预训练；未见长程操作（闭源自报）
-- [ICL Emergence: Context and Diversity Matter](../wiki/entities/paper-sa-2509-22353-icl-emergence-context-and-diversity-matter-the-e.md)（本仓库）— 世界模型侧的涌现条件研究
-- [具身缩放律](../wiki/concepts/embodied-scaling-laws.md) · [数据飞轮](../wiki/concepts/data-flywheel.md)（本仓库）— 规模与数据循环侧的背景
-- [具身模型测评纵深](depth-embodied-eval.md)（本仓库）— 未见集划分与成功率之外的过程指标
+- [GEN-1.5](../wiki/entities/generalist-gen15-one-shot.md) — 涌现式 one-shot 的产业样本（闭源自报）
+- [S1（Skild）](../wiki/entities/skild-s1.md) — 显式 ICL 预训练；未见长程操作（闭源自报）
+- [ICL Emergence: Context and Diversity Matter](../wiki/entities/paper-sa-2509-22353-icl-emergence-context-and-diversity-matter-the-e.md) — 世界模型侧的涌现条件研究
+- [具身缩放律](../wiki/concepts/embodied-scaling-laws.md) · [数据飞轮](../wiki/concepts/data-flywheel.md) — 规模与数据循环侧的背景
+- [具身模型测评纵深](depth-embodied-eval.md) — 未见集划分与成功率之外的过程指标
 
 ### 学完输出什么
 - 一份自己的 ICL 评测协议文档，能直接贴进论文或技术报告
@@ -218,7 +218,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 什么才算真 ICL | [机器人 In-Context Learning](../wiki/concepts/robot-in-context-learning.md) |
 | Stage 1 | 示范表征与 action token | [StellaVLA](../wiki/entities/paper-stellavla-structured-icl-vla.md) |
@@ -230,40 +230,18 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md) — 上游：ICL 的示范从哪来
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 姊妹路线：训练期从示范学 vs 部署期从上下文学
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — ICL 是 VLA 层的部署期适应旋钮
-  - [WAM（世界–动作模型）](depth-wam.md) — Stage 4 的部署职责三分与本路线选型同构
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 身体级协调；可与上下文适应分层叠用
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — Stage 5 未见集与协议的展开版
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — Stage 1 高抽象示范丢掉的力/接触信息在这里补
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 3 人–机对应的工程侧
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [导航（SLAM → Nav2 → VLN → 导航 VLA）](depth-navigation.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [模仿学习](depth-imitation-learning.md) — 权重更新的对照路径；本路线强调读完示范就做
+  - [VLA](depth-vla.md) — 上下文条件常挂在 VLA 骨干上
+  - [WAM](depth-wam.md) — 显式预知后果 vs 上下文里隐式适应
+  - [遥操作](depth-teleoperation.md) — 一条示范从哪里来
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
-本路线基于以下原始资料与 wiki 编译页的归纳：
-
 - [机器人 In-Context Learning 概念页](../wiki/concepts/robot-in-context-learning.md)
 - [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM 四路线对比](../wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)
-- [sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md](../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md) — ICL taxonomy 综述（含 One-Shot Imitation Learning, NeurIPS 2017 起点谱系）
-- [sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md](../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md) — 四篇可核对论文纵横向解读
-- [sources/blogs/generalist_gen15_one_shot.md](../sources/blogs/generalist_gen15_one_shot.md) · [sources/blogs/skild_s1_in_context_learning.md](../sources/blogs/skild_s1_in_context_learning.md) — 产业侧 one-shot 宣称（闭源自报）
+- [万字长文 ｜ GEN-1.5 火了，但机器人的「上下文学习」到底在学什么？](https://mp.weixin.qq.com/s/V_Dm8kHvB2YxtGY7qScjXA) — ICL taxonomy 综述（含 One-Shot Imitation Learning, NeurIPS 2017 起点谱系）
+- [目前最接近具身 ICL 如何实现的必读论文解读](https://mp.weixin.qq.com/s/vIUalf3vZI3AV-HWSVruew) — 四篇可核对论文纵横向解读
+- [GEN-1.5: Embodied Foundation Models are One-Shot Learners](https://generalistai.com/blog/gen-1.5) · [Introducing S1: In-Context Learning for Robotics](https://www.skild.ai/blogs/s1) — 产业侧 one-shot 宣称（闭源自报）

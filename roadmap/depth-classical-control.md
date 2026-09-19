@@ -100,8 +100,8 @@ flowchart LR
 - [Friction Cone](../wiki/formalizations/friction-cone.md)
 - [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)
 - Orin et al., *Centroidal dynamics of a humanoid robot* (2013)
-- [SE(3) 切空间浮动基轨迹优化](../wiki/entities/paper-se3-tangent-to.md)（本仓库）— 同一 Ipopt 配点设定下对比欧拉/四元数/SE(3) 切空间参数化，G1 后空翻与 Go2 侧空翻只有切空间翻成功
-- [AHMP](../wiki/entities/paper-ahmp.md)（本仓库）— 在 SE(3) 切空间 TO 之外加一层 CEM-MD 接触序列发现，Talos 扶手走廊 20/20 可行；与上一条同属 Patras LAR 谱系
+- [SE(3) 切空间浮动基轨迹优化](../wiki/entities/paper-se3-tangent-to.md) — 同一 Ipopt 配点设定下对比欧拉/四元数/SE(3) 切空间参数化，G1 后空翻与 Go2 侧空翻只有切空间翻成功
+- [AHMP](../wiki/entities/paper-ahmp.md) — 在 SE(3) 切空间 TO 之外加一层 CEM-MD 接触序列发现，Talos 扶手走廊 20/20 可行；与上一条同属 Patras LAR 谱系
 
 ### 推荐做什么
 - 用 [Crocoddyl](../wiki/entities/crocoddyl.md) 或手写 DDP 求解一个 centroidal 轨迹优化问题
@@ -156,7 +156,7 @@ flowchart LR
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Contact Estimation](../wiki/concepts/contact-estimation.md)
 - [Query：WBC 实现指南](../wiki/queries/wbc-implementation-guide.md) 与 [Query：WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
 - [重力补偿](../wiki/concepts/gravity-compensation.md) — 真机落地前的悬空 $\tau=g(q)$ 验收
-- [G1 Confined-Space WBP](../wiki/entities/paper-g1-confined-space-wbp.md)（本仓库）— 三阶段全身规划（环境 TO→可微 SCA→全阶动力学）+ 残差 RL 跟踪，Unitree G1 真机穿越超 NIST 狭窄环境；代码未开源
+- [G1 Confined-Space WBP](../wiki/entities/paper-g1-confined-space-wbp.md) — 三阶段全身规划（环境 TO→可微 SCA→全阶动力学）+ 残差 RL 跟踪，Unitree G1 真机穿越超 NIST 狭窄环境；代码未开源
 
 ### 推荐做什么
 - 用 TSID（或 [Drake](../wiki/entities/drake.md) / 自研 QP）实现一个站立平衡 WBC，接上 Stage 3 的 MPC 输出
@@ -170,7 +170,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 动力学与 QP 基础 | [Floating-Base Dynamics](../wiki/concepts/floating-base-dynamics.md) |
 | Stage 1 | 简化模型步态 | [LIP / ZMP](../wiki/concepts/lip-zmp.md) |
@@ -181,31 +181,11 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — Stage 4 WBC 输出的关节力矩由这条路线的力矩闭环兑现
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md) — 质心高度、摆动惯量与力矩延迟这些模型参数由那条路线定
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [安全控制](depth-safe-control.md) — 把 CLF/CBF 嵌进 WBC/MPC 的约束层
+  - [RL 运动控制](depth-rl-locomotion.md) — 与 model-based 主干对照、可组合
+  - [力矩电机设计](depth-torque-motor-design.md) — WBC 输出的关节力矩由这条路线的力矩闭环兑现
+  - [整机硬件设计](depth-humanoid-hardware-design.md) — 质心高度、摆动惯量与力矩延迟这些模型参数由那里定
 - 关联知识页：
   - [Optimal Control](../wiki/concepts/optimal-control.md)
   - [LIP / ZMP](../wiki/concepts/lip-zmp.md)
@@ -216,8 +196,6 @@ flowchart LR
 - [WBC vs RL 对比](../wiki/comparisons/wbc-vs-rl.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [LIP / ZMP](../wiki/concepts/lip-zmp.md)
 - [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)

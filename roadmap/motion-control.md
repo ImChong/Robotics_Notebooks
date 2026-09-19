@@ -226,9 +226,9 @@ flowchart LR
 ### 推荐读什么
 - **[线性代数学习策展](../wiki/entities/linear-algebra-curriculum.md)**（本库 L0 主入口）：[Georgia Tech *Interactive Linear Algebra*](https://textbooks.math.gatech.edu/ila/) + [Axler *Linear Algebra Done Right* 4e（PDF）](https://linear.axler.net/LADR4e.pdf) + [3Blue1Brown 几何直觉](https://www.3blue1brown.com/topics/linear-algebra)；扩展材料（Strang 18.06 等）见策展页
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 2-3：Configuration Space、Rigid-Body Motions
-- [SE(3) 表示](../wiki/formalizations/se3-representation.md)（本仓库）
-- [旋转表示方法对比（SO(3)）](../wiki/comparisons/so3-rotation-representations.md)（本仓库）— 欧拉 / 四元数 / 矩阵 / so(3) / 6D 优劣与选型
-- [Pinocchio](../wiki/entities/pinocchio.md)（本仓库）
+- [SE(3) 表示](../wiki/formalizations/se3-representation.md)
+- [旋转表示方法对比（SO(3)）](../wiki/comparisons/so3-rotation-representations.md) — 欧拉 / 四元数 / 矩阵 / so(3) / 6D 优劣与选型
+- [Pinocchio](../wiki/entities/pinocchio.md)
 
 ### 学完输出什么
 - 能用 NumPy 写简单矩阵运算
@@ -313,11 +313,11 @@ flowchart TD
 
 ### 推荐读什么
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 4-6：Forward Kinematics、Velocity Kinematics、Inverse Kinematics
-- [正向运动学](../wiki/formalizations/forward-kinematics.md) / [逆运动学](../wiki/formalizations/inverse-kinematics.md) / [雅可比矩阵](../wiki/formalizations/robot-jacobian.md)（本仓库；深蓝《具身智能基础》08–10）
+- [正向运动学](../wiki/formalizations/forward-kinematics.md) / [逆运动学](../wiki/formalizations/inverse-kinematics.md) / [雅可比矩阵](../wiki/formalizations/robot-jacobian.md)（深蓝《具身智能基础》08–10）
 - [斯坦福《机器人学导论》(B站)](https://www.bilibili.com/video/BV17T421k78T/)
 - 跑通 Pinocchio 官方 Tutorial
-- [Humanoid Robot](../wiki/entities/humanoid-robot.md)（本仓库）
-- [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)（本仓库）
+- [Humanoid Robot](../wiki/entities/humanoid-robot.md)
+- [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)
 
 ### 学完输出什么
 - 能自己建模一个简单机器人并计算正逆运动学
@@ -407,10 +407,10 @@ flowchart TD
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 5、Ch 8：Statics、Dynamics of Open Chains
 - Featherstone 《Robot Dynamics》相关章节
 - Pinocchio 文档的 Centroidal 部分
-- [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)（本仓库）
-- [Gravity Compensation](../wiki/concepts/gravity-compensation.md)（本仓库）— $g(q)=\mathrm{RNEA}(q,0,0)$ 的控制用法
-- [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)（本仓库）
-- [Contact Dynamics](../wiki/concepts/contact-dynamics.md)（本仓库）
+- [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)
+- [Gravity Compensation](../wiki/concepts/gravity-compensation.md) — $g(q)=\mathrm{RNEA}(q,0,0)$ 的控制用法
+- [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)
+- [Contact Dynamics](../wiki/concepts/contact-dynamics.md)
 
 ### 学完输出什么
 - 能解释正逆动力学在机器人控制里的作用
@@ -495,10 +495,10 @@ flowchart TD
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 9、Ch 11：Trajectory Generation、Robot Control
 - [Underactuated Robotics](https://arxiv.org/abs/1709.10219)（TEDRAKE）
 - 《Robotics: Modelling, Planning and Control》- Siciliano 相关章节
-- [LQR](../wiki/formalizations/lqr.md)（本仓库）
-- [Optimal Control](../wiki/concepts/optimal-control.md)（本仓库）
-- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
+- [LQR](../wiki/formalizations/lqr.md)
+- [Optimal Control](../wiki/concepts/optimal-control.md)
+- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)
+- [Whole-Body Control](../wiki/concepts/whole-body-control.md)
 
 ### 学完输出什么
 - 能解释 LQR 和 MPC 的区别
@@ -656,9 +656,9 @@ flowchart LR
 
 **推荐读什么：**
 - Kajita et al., "Biped walking pattern generation by using preview control of zero-moment point"
-- [LIP / ZMP](../wiki/concepts/lip-zmp.md)（本仓库）
-- [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)（本仓库）
-- [ZMP / LIP 形式化](../wiki/formalizations/zmp-lip.md)（本仓库）
+- [LIP / ZMP](../wiki/concepts/lip-zmp.md)
+- [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)
+- [ZMP / LIP 形式化](../wiki/formalizations/zmp-lip.md)
 
 **学完输出什么：**
 - 能解释 ZMP 和支撑多边形的关系
@@ -719,8 +719,8 @@ flowchart TD
 
 **推荐读什么：**
 - Orin et al., "Centroidal dynamics of a humanoid robot"
-- [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)（本仓库）
-- [Contact Dynamics](../wiki/concepts/contact-dynamics.md)（本仓库）
+- [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)
+- [Contact Dynamics](../wiki/concepts/contact-dynamics.md)
 
 **学完输出什么：**
 - 能解释 centroidal dynamics 和 LIP 的区别
@@ -779,10 +779,10 @@ flowchart LR
 
 **推荐读什么：**
 - "Convex MPC for Bipedal Locomotion" (Bellicoso et al.)
-- [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)（本仓库）
-- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
-- [MPC 调参指南](../wiki/queries/mpc-tuning-guide.md)（本仓库）
-- [MPC 求解器选型](../wiki/queries/mpc-solver-selection.md)（本仓库）
+- [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)
+- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)
+- [MPC 调参指南](../wiki/queries/mpc-tuning-guide.md)
+- [MPC 求解器选型](../wiki/queries/mpc-solver-selection.md)
 
 **学完输出什么：**
 - 能实现一个简化版的 centroidal MPC
@@ -844,11 +844,11 @@ flowchart TD
 
 **推荐读什么：**
 - Del Prete et al., "Prioritized motion-force control of constrained fully-actuated robots"
-- [TSID](../wiki/concepts/tsid.md)（本仓库）
-- [TSID Formulation](../wiki/formalizations/tsid-formulation.md)（本仓库）
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
-- [WBC 实现指南](../wiki/queries/wbc-implementation-guide.md)（本仓库）
-- [WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)（本仓库）
+- [TSID](../wiki/concepts/tsid.md)
+- [TSID Formulation](../wiki/formalizations/tsid-formulation.md)
+- [Whole-Body Control](../wiki/concepts/whole-body-control.md)
+- [WBC 实现指南](../wiki/queries/wbc-implementation-guide.md)
+- [WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
 
 **学完输出什么：**
 - 能用 TSID 框架实现一个多层优先级 WBC
@@ -976,10 +976,10 @@ flowchart TD
 **推荐读什么：**
 - [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文 RL 基础与 PPO/SAC 实践（[在线书](https://hrl.boyuai.com/) / [视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)）
 - Spinning Up (OpenAI)
-- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
-- [Policy Optimization](../wiki/methods/policy-optimization.md)（本仓库）
-- [PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)（本仓库）
-- [POMDP](../wiki/formalizations/pomdp.md)（本仓库）— 真机部署前必读
+- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)
+- [Policy Optimization](../wiki/methods/policy-optimization.md)
+- [PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)
+- [POMDP](../wiki/formalizations/pomdp.md) — 真机部署前必读
 
 **学完输出什么：**
 - 能解释 PPO 的核心思路
@@ -1041,11 +1041,11 @@ flowchart TD
 - "DeepMimic" (Peng et al.)
 - "AMP: Adversarial Motion Priors"
 - legged_gym / IsaacGymEnvs
-- [legged_gym](../wiki/entities/legged-gym.md)（本仓库）
-- [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)（本仓库）
-- [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)（本仓库）
-- [MPC vs RL](../wiki/comparisons/mpc-vs-rl.md)（本仓库）
-- [Query：开源运动控制项目导航](../wiki/queries/open-source-motion-control-projects.md)（本仓库）
+- [legged_gym](../wiki/entities/legged-gym.md)
+- [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)
+- [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)
+- [MPC vs RL](../wiki/comparisons/mpc-vs-rl.md)
+- [Query：开源运动控制项目导航](../wiki/queries/open-source-motion-control-projects.md)
 
 **学完输出什么：**
 - 能在仿真里训练一个人形行走 RL 策略
@@ -1106,10 +1106,10 @@ flowchart TD
 **推荐读什么：**
 - "ASE: Adversarial Skill Embeddings"
 - "DeepMimic"
-- [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
-- [Behavior Cloning](../wiki/methods/behavior-cloning.md)（本仓库）
-- [DAgger](../wiki/methods/dagger.md)（本仓库）
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）
+- [Imitation Learning](../wiki/methods/imitation-learning.md)
+- [Behavior Cloning](../wiki/methods/behavior-cloning.md)
+- [DAgger](../wiki/methods/dagger.md)
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md)
 
 **学完输出什么：**
 - 能把一段 MoCap 数据迁移到人形机器人上
@@ -1174,12 +1174,12 @@ flowchart TD
 - 把重定向产物接到一个跟踪策略上（[DeepMimic](../wiki/methods/deepmimic.md) / [AMP 奖励](../wiki/methods/amp-reward.md) 风格），用"策略跟不跟得住"反过来验证重定向质量
 
 **推荐读什么：**
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）— 概念主入口
-- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）— 采集 → 对齐 → 求解 → 筛选的端到端链路
-- [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md)（本仓库）— 目标函数与约束的形式化
-- [GMR vs NMR vs ReActor](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)（本仓库）— 三条路线选型
-- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md)（本仓库）— 本节最容易踩的认知坑
-- [Motion Data Quality](../wiki/concepts/motion-data-quality.md)、[人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) — 概念主入口
+- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) — 采集 → 对齐 → 求解 → 筛选的端到端链路
+- [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md) — 目标函数与约束的形式化
+- [GMR vs NMR vs ReActor](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 三条路线选型
+- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 本节最容易踩的认知坑
+- [Motion Data Quality](../wiki/concepts/motion-data-quality.md)、[人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)
 - 想继续深入：[纵深路线：动作重定向](depth-motion-retargeting.md)（Stage 0–6 完整谱系，含四足支线与轨迹编辑器工具链）
 
 **学完输出什么：**
@@ -1250,12 +1250,12 @@ flowchart TD
 - 调 domain randomization 参数观察效果
 
 ### 推荐读什么
-- [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
-- [System Identification](../wiki/concepts/system-identification.md)（本仓库）
-- [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
-- [Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)（本仓库）
-- [Sim2Real 工程 Checklist](../wiki/queries/sim2real-checklist.md#快速部署检查)（本仓库）
-- [机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)（本仓库）
+- [Sim2Real](../wiki/concepts/sim2real.md)
+- [System Identification](../wiki/concepts/system-identification.md)
+- [Domain Randomization](../wiki/concepts/domain-randomization.md)
+- [Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)
+- [Sim2Real 工程 Checklist](../wiki/queries/sim2real-checklist.md#快速部署检查)
+- [机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)
 
 ### 学完输出什么
 - 一个能跑的人形 RL 策略（仿真内）
@@ -1340,7 +1340,7 @@ flowchart TD
 - 运动控制需要 **准确的本体状态**（关节角、躯干位姿、足端是否着地）。状态估计差一点，下游 WBC / MPC 全乱套。L4 的 TSID / WBC 实际上严重依赖一个低延迟的状态估计器。
 - 真机 sim2real（L6）gap 一大半来自 **执行器模型不准** + **状态估计噪声**。
 
-**入口页**：[State Estimation](../wiki/concepts/state-estimation.md) · [SLAM (本仓库相关)](../wiki/tasks/locomotion.md)
+**入口页**：[State Estimation](../wiki/concepts/state-estimation.md) · [SLAM](../wiki/tasks/locomotion.md)
 
 ### L7.2 决策与规划层（Motion Planning / Task Planning）
 
@@ -1427,7 +1427,7 @@ flowchart TD
 
 近三年机器人 AI 正在快速重塑，下面这几个方向并行推进；它们不是替代 L4 的传统控制，而是 **在传统控制之上叠了一层"通用化 / 端到端"**：
 
-| 方向 | 关键问题 | 代表工作 / 关键词 | 本仓库入口 |
+| 方向 | 关键问题 | 代表工作 / 关键词 | 知识页入口 |
 |------|---------|----------------|-----------|
 | **Humanoid Foundation Model** | 一个大模型驱动多种人形机器人 | GR00T (NVIDIA), Helix (Figure), Astribot | [Locomotion 任务地图](../wiki/tasks/locomotion.md) |
 | **VLA（Vision-Language-Action）** | 用语言指令驱动机器人完成操作 | RT-2, OpenVLA, π0, Pi-0.5 | [Imitation Learning](../wiki/methods/imitation-learning.md) |

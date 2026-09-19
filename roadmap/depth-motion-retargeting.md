@@ -57,12 +57,12 @@ flowchart LR
 - 找一段公开动捕数据，直接把人体关节角复制到人形模型上，观察脚滑与穿模——建立"为什么必须重定向"的第一手直觉
 
 ### 推荐读什么
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）— 概念主入口
-- [动作重定向知识链汇总](../wiki/overview/hub-motion-retargeting.md)（本仓库）
-- [Character Animation vs Robotics](../wiki/concepts/character-animation-vs-robotics.md)（本仓库）— 两界评价标准差异
-- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md)（本仓库）— 「能摆出这个姿势」≠「站得住、跟得上」，与本页动画/机器人评价线差异同源
-- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）— 管线定位
-- [四足机器人](../wiki/entities/quadruped-robot.md)（本仓库）— 四足支线的目标平台特征：支撑域、步态、控制频率
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) — 概念主入口
+- [动作重定向知识链汇总](../wiki/overview/hub-motion-retargeting.md)
+- [Character Animation vs Robotics](../wiki/concepts/character-animation-vs-robotics.md) — 两界评价标准差异
+- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 「能摆出这个姿势」≠「站得住、跟得上」，与本页动画/机器人评价线差异同源
+- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) — 管线定位
+- [四足机器人](../wiki/entities/quadruped-robot.md) — 四足支线的目标平台特征：支撑域、步态、控制频率
 
 ### 学完输出什么
 - 能一句话说清重定向解决什么、为什么不能跳过
@@ -89,9 +89,9 @@ flowchart LR
 - 把同一段动作分别用关节空间映射与任务空间 IK 重定向，对比末端误差
 
 ### 推荐读什么
-- [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md)（本仓库）— 优化目标形式化
-- [Gauss–Newton](../wiki/methods/gauss-newton.md)、[Levenberg–Marquardt](../wiki/methods/levenberg-marquardt.md)、[L-BFGS](../wiki/methods/l-bfgs.md)（本仓库）— 求解器族
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 的"主要方法"分节（本仓库）
+- [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md) — 优化目标形式化
+- [Gauss–Newton](../wiki/methods/gauss-newton.md)、[Levenberg–Marquardt](../wiki/methods/levenberg-marquardt.md)、[L-BFGS](../wiki/methods/l-bfgs.md) — 求解器族
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 的"主要方法"分节
 
 ### 学完输出什么
 - 一个能跑的末端约束 IK 重定向脚本
@@ -119,14 +119,14 @@ flowchart LR
 - 四足方向：取一段动物片段（如 motion_imitation 自带的 `dog_pace` / `dog_trot`），统计足端接触相位与基座速度是否自洽——不自洽的片段正是四足重定向脚滑的源头
 
 ### 推荐读什么
-- [AMASS](../wiki/entities/amass.md) 与 [LAFAN1](../wiki/entities/lafan1-dataset.md)（本仓库）— 动捕数据基座
-- [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）— 选型主入口
-- [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md)（本仓库）— 视频/低成本采集
-- [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md)（本仓库）— 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
-- [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md)（本仓库）— 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
-- [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md)（本仓库）— 质量量化
-- [motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md)（本仓库）— `data/motions/` 里的动物片段是四足重定向最容易拿到的起步数据
-- [LaFAN1](../wiki/entities/lafan1-dataset.md) 与 [PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md)（本仓库）— 动画侧四足骨架数据（dog set）与人↔狗互映射演示
+- [AMASS](../wiki/entities/amass.md) 与 [LAFAN1](../wiki/entities/lafan1-dataset.md) — 动捕数据基座
+- [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 选型主入口
+- [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md) — 视频/低成本采集
+- [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md) — 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
+- [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md) — 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
+- [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md) — 质量量化
+- [motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md) — `data/motions/` 里的动物片段是四足重定向最容易拿到的起步数据
+- [LaFAN1](../wiki/entities/lafan1-dataset.md) 与 [PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md) — 动画侧四足骨架数据（dog set）与人↔狗互映射演示
 
 ### 学完输出什么
 - 一份自己方向的数据源选型表（成本 / 质量 / 覆盖度三列）
@@ -155,17 +155,17 @@ flowchart LR
 - 四足方向：先做空间重定向（足端 + 基座关键点，按腿长比例缩放），检查 trot / pace 的接触相位是否被保留，再用时间缩放把峰值关节速度压回机器人可执行范围——把 STMR 的 SMR/TMR 拆解亲手走一遍
 
 ### 推荐读什么
-- [GMR](../wiki/methods/motion-retargeting-gmr.md)、[NMR](../wiki/methods/neural-motion-retargeting-nmr.md)、[ReActor](../wiki/methods/reactor-physics-aware-motion-retargeting.md)（本仓库）— 三条代表路线
-- [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)（本仓库）— 谱系主入口
-- [DynaRetarget / SBTO](../wiki/methods/dynaretarget-sbto-motion-retargeting.md) 与 [SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md)（本仓库）— 物理感知扩展
-- [KDMR](../wiki/entities/paper-kdmr.md)（本仓库）— GRF 锚定多接触全身轨迹优化（CasADi + Pinocchio），把 heel–toe 接触日程与动力学/无滑约束一并写进 NLP；相对 GMR 下游跟踪误差降约 27–47%（Walk/Twister），G1 零样本部署；宣称发表时开源，截至入库日无官方代码
-- [SPARK](../wiki/entities/paper-spark-skeleton-aligned-retargeting.md)（本仓库）— 先校准 human URDF 骨架再 IK，再经 KTO→ID→KDTO 渐进轨迹优化补力矩监督；多机型 IK 误差相对 GMR 降 65–83%，G1 side flip 上 KDTO+T 显著加速 BeyondMimic 收敛；未开源
-- [Shooting for Contact / DSMS](../wiki/entities/paper-shooting-for-contact.md)（本仓库）— 接触隐式直接仿真多重打靶，无需预设接触时刻表即可把运动学参考精炼为动力学可行轨迹；backflip 落地成功率与 DynaRetarget 同档（98.7%），较 OmniRetarget（9.3%）高一个数量级，G1 零样本爬行/180° 跳转；trajopt/MPC 已开源
-- [CoRe](../wiki/entities/paper-core.md) 与 [RMR](../wiki/entities/paper-rmr.md)（本仓库，Humanoids 2025 / IROS 2025）— CoRe 用"几何映射→接触感知精炼→RL 跟踪"三段分工把脚滑/浮空/过加速当参考层问题处理；RMR 提供"先统一源骨架、再映射"的上游两段式，支撑 RGB 视频实时闭环，其实现并入 CoRe v0.1.0 的 DMR 模块；软件 [core-retarget v0.1.0](../wiki/entities/core-retarget.md) 部分开源（Apache-2.0，重定向+精炼可跑，T2M 与 RL 训练未随仓发布）
-- [OmniRetarget](../wiki/entities/paper-hrl-stack-03-omniretarget.md) 与 [Retargeting Matters](../wiki/entities/paper-hrl-stack-01-retargeting_matters.md)（本仓库）— 交互保留与重定向质量对下游的影响
-- [WARP](../wiki/entities/paper-warp-whole-body-retargeting.md)（本仓库，Georgia Tech）— 闭式 c-SEW + lazy mobile-base，把 Meta Quest 离线人类全身演示转为精确、一致、可开环回放的动作，支撑 RB-Y1 零样本全身移动操作 BC；代码未列
-- [UMR](../wiki/entities/paper-umr-unified-motion-retargeting.md)（本仓库，HKUST-GZ / 诺亦腾 / 汉阳大学）— 把人–机对应从"手写关键点表"改成规范 T-pose 上学到的稠密点云索引对应，同一套点对同时传表面位姿与接触向量，换源换机主要复用对应而非重画映射；LAFAN1 全局体段误差低于 GMR，接触任务关节误差相对 OmniRetarget 约 −40–56%，G1 真机旋踢/捡球/爬楼；代码待发布
-- [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)（本仓库）— 四足支线主入口，见下节
+- [GMR](../wiki/methods/motion-retargeting-gmr.md)、[NMR](../wiki/methods/neural-motion-retargeting-nmr.md)、[ReActor](../wiki/methods/reactor-physics-aware-motion-retargeting.md) — 三条代表路线
+- [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 谱系主入口
+- [DynaRetarget / SBTO](../wiki/methods/dynaretarget-sbto-motion-retargeting.md) 与 [SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) — 物理感知扩展
+- [KDMR](../wiki/entities/paper-kdmr.md) — GRF 锚定多接触全身轨迹优化（CasADi + Pinocchio），把 heel–toe 接触日程与动力学/无滑约束一并写进 NLP；相对 GMR 下游跟踪误差降约 27–47%（Walk/Twister），G1 零样本部署；宣称发表时开源，截至入库日无官方代码
+- [SPARK](../wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — 先校准 human URDF 骨架再 IK，再经 KTO→ID→KDTO 渐进轨迹优化补力矩监督；多机型 IK 误差相对 GMR 降 65–83%，G1 side flip 上 KDTO+T 显著加速 BeyondMimic 收敛；未开源
+- [Shooting for Contact / DSMS](../wiki/entities/paper-shooting-for-contact.md) — 接触隐式直接仿真多重打靶，无需预设接触时刻表即可把运动学参考精炼为动力学可行轨迹；backflip 落地成功率与 DynaRetarget 同档（98.7%），较 OmniRetarget（9.3%）高一个数量级，G1 零样本爬行/180° 跳转；trajopt/MPC 已开源
+- [CoRe](../wiki/entities/paper-core.md) 与 [RMR](../wiki/entities/paper-rmr.md)（Humanoids 2025 / IROS 2025）— CoRe 用"几何映射→接触感知精炼→RL 跟踪"三段分工把脚滑/浮空/过加速当参考层问题处理；RMR 提供"先统一源骨架、再映射"的上游两段式，支撑 RGB 视频实时闭环，其实现并入 CoRe v0.1.0 的 DMR 模块；软件 [core-retarget v0.1.0](../wiki/entities/core-retarget.md) 部分开源（Apache-2.0，重定向+精炼可跑，T2M 与 RL 训练未随仓发布）
+- [OmniRetarget](../wiki/entities/paper-hrl-stack-03-omniretarget.md) 与 [Retargeting Matters](../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) — 交互保留与重定向质量对下游的影响
+- [WARP](../wiki/entities/paper-warp-whole-body-retargeting.md)（Georgia Tech）— 闭式 c-SEW + lazy mobile-base，把 Meta Quest 离线人类全身演示转为精确、一致、可开环回放的动作，支撑 RB-Y1 零样本全身移动操作 BC；代码未列
+- [UMR](../wiki/entities/paper-umr-unified-motion-retargeting.md)（HKUST-GZ / 诺亦腾 / 汉阳大学）— 把人–机对应从"手写关键点表"改成规范 T-pose 上学到的稠密点云索引对应，同一套点对同时传表面位姿与接触向量，换源换机主要复用对应而非重画映射；LAFAN1 全局体段误差低于 GMR，接触任务关节误差相对 OmniRetarget 约 −40–56%，G1 真机旋踢/捡球/爬楼；代码待发布
+- [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md) — 四足支线主入口，见下节
 
 ### 四足支线：动物 / 视频关键点 → 四足参考
 
@@ -237,15 +237,15 @@ flowchart LR
 - 做一次 **格式往返测试**：原始 → 编辑器导出 → 重新导入，检查四元数顺序、FPS、关节名顺序是否完全还原
 
 ### 推荐读什么
-- [机器人关键帧与运动编辑工具（选型入口）](../wiki/entities/robot-motion-keyframe-editors.md)（本仓库）— 三条编辑链路的运行形态 / 描述格式 / 交换格式 / 物理与 IK 对照
-- [human-humanoid-tools（hhtools）](../wiki/entities/human-humanoid-tools.md)（本仓库）— 工作台级重定向：双后端、Any Motion / Any URDF、R2R 机器人互转
-- [SOMA Retargeter](../wiki/entities/soma-retargeter.md)、[robot_retargeter](../wiki/entities/robot-retargeter.md)、[mocap_retarget](../wiki/entities/mocap-retarget.md)（本仓库）— 库级与脚本级重定向器的一手实现
-- [human2humanoid](../wiki/entities/human2humanoid.md) 与 [MimicKit](../wiki/entities/mimickit.md)（本仓库）— 与遥操作栈 / 模仿训练框架同仓的重定向入口
-- [fairmotion](../wiki/entities/fairmotion.md)（本仓库）— BVH / AMASS IO 与 FK 的上游数据基础设施（已归档，仍是格式转换的参照实现）
-- [Blender](../wiki/entities/blender.md) 与 [Robot Viewer](../wiki/entities/robot-viewer.md)（本仓库）— 通用 DCC 侧骨骼编辑与多格式（URDF/MJCF/USD）快速查看
-- [Generative Motion Rig（Disney）](../wiki/entities/generative-motion-rig.md)（本仓库）— 艺术家侧 generative keyframing 的闭源对照，看"编辑器接生成模型"能到什么程度
-- [足锁 IK（Orange Duck 配方）](../wiki/methods/foot-locking-ik-orangeduck.md) 与 [GenoView-InverseKinematics](../wiki/entities/genoview-inverse-kinematics.md)（本仓库）— 动画侧同一问题（已有轨迹 → 人工修整 → 重新导出）的参考实现：两骨 IK + 惯性化足锁 + 趾速接触启发式 + 离线 PBD 式全局脚滑修正；把"脚滑"当速度误差而非摩擦模型，可与上面三条机器人重定向编辑链路对照
-- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) 与 [Motion Data Quality](../wiki/concepts/motion-data-quality.md)（本仓库）— 人工修整在管线中的位置与验收指标
+- [机器人关键帧与运动编辑工具（选型入口）](../wiki/entities/robot-motion-keyframe-editors.md) — 三条编辑链路的运行形态 / 描述格式 / 交换格式 / 物理与 IK 对照
+- [human-humanoid-tools（hhtools）](../wiki/entities/human-humanoid-tools.md) — 工作台级重定向：双后端、Any Motion / Any URDF、R2R 机器人互转
+- [SOMA Retargeter](../wiki/entities/soma-retargeter.md)、[robot_retargeter](../wiki/entities/robot-retargeter.md)、[mocap_retarget](../wiki/entities/mocap-retarget.md) — 库级与脚本级重定向器的一手实现
+- [human2humanoid](../wiki/entities/human2humanoid.md) 与 [MimicKit](../wiki/entities/mimickit.md) — 与遥操作栈 / 模仿训练框架同仓的重定向入口
+- [fairmotion](../wiki/entities/fairmotion.md) — BVH / AMASS IO 与 FK 的上游数据基础设施（已归档，仍是格式转换的参照实现）
+- [Blender](../wiki/entities/blender.md) 与 [Robot Viewer](../wiki/entities/robot-viewer.md) — 通用 DCC 侧骨骼编辑与多格式（URDF/MJCF/USD）快速查看
+- [Generative Motion Rig（Disney）](../wiki/entities/generative-motion-rig.md) — 艺术家侧 generative keyframing 的闭源对照，看"编辑器接生成模型"能到什么程度
+- [足锁 IK（Orange Duck 配方）](../wiki/methods/foot-locking-ik-orangeduck.md) 与 [GenoView-InverseKinematics](../wiki/entities/genoview-inverse-kinematics.md) — 动画侧同一问题（已有轨迹 → 人工修整 → 重新导出）的参考实现：两骨 IK + 惯性化足锁 + 趾速接触启发式 + 离线 PBD 式全局脚滑修正；把"脚滑"当速度误差而非摩擦模型，可与上面三条机器人重定向编辑链路对照
+- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) 与 [Motion Data Quality](../wiki/concepts/motion-data-quality.md) — 人工修整在管线中的位置与验收指标
 
 ### 学完输出什么
 - 一张自己的工具链选型表：重定向器形态 / 编辑器 / 交换格式 / 是否带物理 / 是否需要数据外发
@@ -274,11 +274,11 @@ flowchart LR
 - 四足方向：在 legged_gym / Genesis 上复现一条"动物片段 → 跟踪策略"，并对比同一段动作在时间缩放前后的跟踪成功率——这是 TMR 有没有用的最直接实验
 
 ### 推荐读什么
-- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md)（本仓库）
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 跟踪侧消费者
-- [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）
-- [Teleoperation](../wiki/tasks/teleoperation.md)（本仓库）— 实时重定向的应用面
-- [legged_gym](../wiki/entities/legged-gym.md)、[AMP 奖励设计](../wiki/methods/amp-reward.md) 与 [Locomotion](../wiki/tasks/locomotion.md)（本仓库）— 四足支线的跟踪训练侧与任务层落点
+- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md)
+- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 跟踪侧消费者
+- [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
+- [Teleoperation](../wiki/tasks/teleoperation.md) — 实时重定向的应用面
+- [legged_gym](../wiki/entities/legged-gym.md)、[AMP 奖励设计](../wiki/methods/amp-reward.md) 与 [Locomotion](../wiki/tasks/locomotion.md) — 四足支线的跟踪训练侧与任务层落点
 
 ### 学完输出什么
 - 一条从参考动作走到可跟踪策略的端到端管线
@@ -311,7 +311,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 问题定义与管线定位 | [Motion Retargeting](../wiki/concepts/motion-retargeting.md) |
 | Stage 1 | IK / 优化目标 | [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md) |
@@ -325,43 +325,22 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 姊妹路线：生成负责"造动作"，重定向负责"落到机器人"
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 5 下游的策略学习侧
-  - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 6 方向 D 的主要数据消费者
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪训练的训练侧前置，也是 Stage 3 四足支线 legged_gym 跟踪的训练侧
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — 方向 B 灵巧手接触的邻接路线
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md) — 下游：人视频 ICL 的人–机对应依赖这条线
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 上游/下游：重定向是数据金字塔里「人 → 本体」的折算段
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [遥操作](depth-teleoperation.md) — 实时、在环的重定向消费者
+  - [模仿学习](depth-imitation-learning.md) — 人演示 → 机器人参考的下游
+  - [动作生成](depth-motion-generation.md) — 合成动作再折算到本体
+  - [BFM](depth-bfm.md) — 跟踪与行为先验依赖重定向质量
+  - [具身数据](depth-embodied-data.md) — 数据金字塔里「人 → 本体」的折算段
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
-本路线基于以下原始资料的归纳：
-
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [动作重定向知识链汇总](../wiki/overview/hub-motion-retargeting.md)
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md)、[Go2 Motion Imitation](../wiki/entities/go2-motion-imitation.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md) — 四足支线来源
 - [机器人关键帧与运动编辑工具](../wiki/entities/robot-motion-keyframe-editors.md)、[human-humanoid-tools](../wiki/entities/human-humanoid-tools.md)、[SOMA Retargeter](../wiki/entities/soma-retargeter.md)、[robot_retargeter](../wiki/entities/robot-retargeter.md)、[mocap_retarget](../wiki/entities/mocap-retarget.md) — Stage 4 工具链来源
-- 一手仓库 README：[cyoahs/robot_motion_editor](https://github.com/cyoahs/robot_motion_editor)（[归档](../sources/repos/cyoahs-robot-motion-editor.md)）、[Stanford-TML/robot_keyframe_kit](https://github.com/Stanford-TML/robot_keyframe_kit)（[归档](../sources/repos/stanford-tml-robot-keyframe-kit.md)）、[project-instinct/robot-motion-editor](https://github.com/project-instinct/robot-motion-editor)（[归档](../sources/repos/project-instinct-robot-motion-editor.md)）— 轨迹/关键帧编辑器的格式与功能细节
+- 一手仓库 README：[cyoahs/robot_motion_editor](https://github.com/cyoahs/robot_motion_editor)、[Stanford-TML/robot_keyframe_kit](https://github.com/Stanford-TML/robot_keyframe_kit)、[project-instinct/robot-motion-editor](https://github.com/project-instinct/robot-motion-editor) — 轨迹/关键帧编辑器的格式与功能细节
 - "Retargetting Motion to New Characters" (Gleicher, SIGGRAPH 1998) — 动作重定向问题的奠基工作
 - "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking" (GMR, arXiv:2505.02833) — 重定向质量对下游跟踪的影响
 - "Spatio-Temporal Motion Retargeting for Quadruped Robots" (STMR, IEEE T-RO 2025, arXiv:2404.11557) — 四足空间/时间重定向的显式拆解

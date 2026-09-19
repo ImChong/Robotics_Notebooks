@@ -50,11 +50,11 @@ flowchart LR
 - 看一场 REK 或 Unitree 拳击演示录像，标注哪些动作像预设脚本、哪些像实时反应
 
 ### 推荐读什么
-- [RoboStriker](../wiki/entities/paper-notebook-robostriker.md)（本仓库）— 自主人形拳击的分层决策代表，本路线的锚点论文
-- [REK 人形格斗联赛](../wiki/entities/rek.md)（本仓库）— VR 遥操作全接触格斗的产业样本
-- [URKL 人形格斗联赛](../wiki/entities/urkl.md)（本仓库）— EngineAI 统一 T800 **自主算法** 格斗联赛（官方 FAQ 宣称将开源本届赛事相关代码）
-- [Towards Motion Turing Test](../wiki/entities/paper-notebook-towards-motion-turing-test.md)（本仓库）— 拳击类动态行为的类人度差距量化
-- [Teleoperation 任务页](../wiki/tasks/teleoperation.md)（本仓库）— 竞技向全身遥操作的谱系位置
+- [RoboStriker](../wiki/entities/paper-notebook-robostriker.md) — 自主人形拳击的分层决策代表，本路线的锚点论文
+- [REK 人形格斗联赛](../wiki/entities/rek.md) — VR 遥操作全接触格斗的产业样本
+- [URKL 人形格斗联赛](../wiki/entities/urkl.md) — EngineAI 统一 T800 **自主算法** 格斗联赛（官方 FAQ 宣称将开源本届赛事相关代码）
+- [Towards Motion Turing Test](../wiki/entities/paper-notebook-towards-motion-turing-test.md) — 拳击类动态行为的类人度差距量化
+- [Teleoperation 任务页](../wiki/tasks/teleoperation.md) — 竞技向全身遥操作的谱系位置
 
 ### 学完输出什么
 - 能说清自主拳击与遥操作格斗是两个不同的问题，各自卡在哪
@@ -80,10 +80,10 @@ flowchart LR
 - 对比"逐帧跟踪 reward"与"跟踪 + AMP 风格"两种训法下出拳动作的力量感差异
 
 ### 推荐读什么
-- [WBT 纵深](../wiki/overview/hub-wbt.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
-- [GMR 重定向](../wiki/methods/motion-retargeting-gmr.md) 与 [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）
-- [DeepMimic](../wiki/methods/deepmimic.md) 与 [AMP](../wiki/methods/amp-reward.md)（本仓库）
-- [Query：人形运动跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）
+- [WBT 纵深](../wiki/overview/hub-wbt.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)
+- [GMR 重定向](../wiki/methods/motion-retargeting-gmr.md) 与 [Motion Retargeting](../wiki/concepts/motion-retargeting.md)
+- [DeepMimic](../wiki/methods/deepmimic.md) 与 [AMP](../wiki/methods/amp-reward.md)
+- [Query：人形运动跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ### 学完输出什么
 - 一个能在仿真里跟踪拳击动作片段的全身策略
@@ -110,10 +110,10 @@ flowchart LR
 - 在 latent 空间做插值，观察"直拳 → 勾拳"之间的过渡动作是否自然
 
 ### 推荐读什么
-- [RoboStriker](../wiki/entities/paper-notebook-robostriker.md)（本仓库）— 超球面潜空间动作流形的蒸馏做法
-- [ASE](../wiki/methods/ase.md)（本仓库）— 对抗技能嵌入
-- [SMPLOlympics](../wiki/entities/smplolympics.md)（本仓库）— PULSE latent 作分层 RL 动作空间的体育任务对照
-- [BFM 纵深路线](depth-bfm.md)（本仓库）— 潜空间行为先验的展开版
+- [RoboStriker](../wiki/entities/paper-notebook-robostriker.md) — 超球面潜空间动作流形的蒸馏做法
+- [ASE](../wiki/methods/ase.md) — 对抗技能嵌入
+- [SMPLOlympics](../wiki/entities/smplolympics.md) — PULSE latent 作分层 RL 动作空间的体育任务对照
+- [BFM 纵深路线](depth-bfm.md) — 潜空间行为先验的展开版
 
 ### 学完输出什么
 - 一个覆盖出拳/闪避/步法的潜空间技能流形，附随机采样与插值的可行性检查
@@ -141,11 +141,11 @@ flowchart LR
 - 复现一个简化版潜空间自博弈（哪怕 2D 简化模型），对比直接关节空间自博弈的收敛差异
 
 ### 推荐读什么
-- [RoboStriker](../wiki/entities/paper-notebook-robostriker.md)（本仓库）— LS-NFSP 的完整做法
-- [SMPLOlympics](../wiki/entities/smplolympics.md)（本仓库）— 拳击/击剑交替自博弈基线
-- [MARL](../wiki/methods/marl.md)（本仓库）— 多智能体训练范式总览
+- [RoboStriker](../wiki/entities/paper-notebook-robostriker.md) — LS-NFSP 的完整做法
+- [SMPLOlympics](../wiki/entities/smplolympics.md) — 拳击/击剑交替自博弈基线
+- [MARL](../wiki/methods/marl.md) — 多智能体训练范式总览
 - Bansal et al., *Emergent Complexity via Multi-Agent Competition* — [arXiv:1710.03748](https://arxiv.org/abs/1710.03748)：MuJoCo 人形对抗自博弈起点
-- [PhysicsPingPong](../wiki/methods/table-tennis-strategy-skill-learning.md)（本仓库）— agent–agent 对打的邻接样本
+- [PhysicsPingPong](../wiki/methods/table-tennis-strategy-skill-learning.md) — agent–agent 对打的邻接样本
 
 ### 学完输出什么
 - 一个在仿真里能攻防转换的双智能体拳击对局
@@ -172,10 +172,10 @@ flowchart LR
 - 按 REK 页面的安全监控结构，为自己的系统画一张"限幅 / 保护 / 停机"三层安全架构图
 
 ### 推荐读什么
-- [SafeFall](../wiki/entities/paper-hrl-stack-41-safefall.md)（本仓库）— 人形跌倒保护控制
-- [REK](../wiki/entities/rek.md)（本仓库）— 全接触格斗的安全监控与硬件运营
-- [Unitree G1](../wiki/entities/unitree-g1.md)（本仓库）— 主力格斗平台的硬件边界
-- [Query：奖励设计指南](../wiki/queries/reward-design-guide.md)（本仓库）— 安全项进 reward 的做法
+- [SafeFall](../wiki/entities/paper-hrl-stack-41-safefall.md) — 人形跌倒保护控制
+- [REK](../wiki/entities/rek.md) — 全接触格斗的安全监控与硬件运营
+- [Unitree G1](../wiki/entities/unitree-g1.md) — 主力格斗平台的硬件边界
+- [Query：奖励设计指南](../wiki/queries/reward-design-guide.md) — 安全项进 reward 的做法
 
 ### 学完输出什么
 - 一套含跌倒保护与限幅停机的部署方案
@@ -204,7 +204,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 全景与两条路线 | [RoboStriker](../wiki/entities/paper-notebook-robostriker.md) |
 | Stage 1 | 跟踪基座 | [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) |
@@ -216,31 +216,11 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md) — 对球竞技侧的姊妹路线
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 1 数据管线的展开版
-  - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 2 潜空间先验的展开版
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 跟踪基座的方法前置
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — RL 训练管线的前置
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [BFM](depth-bfm.md) — 跟踪与潜空间技能先验
+  - [动作重定向](depth-motion-retargeting.md) — MoCap/拳击动作折到本体
+  - [人形足球](depth-humanoid-soccer.md) — 另一类对抗全身任务
+  - [遥操作](depth-teleoperation.md) — VR 全接触格斗的采集/对打入口
 - 关联知识页：
   - [RoboStriker](../wiki/entities/paper-notebook-robostriker.md)
   - [REK](../wiki/entities/rek.md)
@@ -250,10 +230,8 @@ flowchart LR
 
 ## 参考来源
 
-本路线基于以下原始资料的归纳：
-
-- [RoboStriker 摘录](../sources/papers/humanoid_pnb_robostriker.md)（arXiv:2601.22517）— 跟踪 → 潜空间 → LS-NFSP 的完整分层做法
-- [REK 官网归档](../sources/sites/rek-com.md) — VR 遥操作全接触格斗联赛
-- [SMPLOlympics 摘录](../sources/papers/smplolympics_arxiv_2407_00187.md)（arXiv:2407.00187）— 拳击/击剑交替自博弈基线
+- [RoboStriker](https://arxiv.org/abs/2601.22517)（arXiv:2601.22517）— 跟踪 → 潜空间 → LS-NFSP 的完整分层做法
+- [REK 官网](https://rek.com/) — VR 遥操作全接触格斗联赛
+- [SMPLOlympics](https://arxiv.org/abs/2407.00187)（arXiv:2407.00187）— 拳击/击剑交替自博弈基线
 - Bansal et al., *Emergent Complexity via Multi-Agent Competition* (2017, arXiv:1710.03748) — MuJoCo 人形对抗自博弈起点
-- [Towards Motion Turing Test 摘录](../sources/papers/humanoid_pnb_towards-motion-turing-test.md) — 拳击类动态行为类人度差距
+- [Towards Motion Turing Test](https://arxiv.org/abs/2603.06181) — 拳击类动态行为类人度差距

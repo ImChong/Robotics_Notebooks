@@ -53,10 +53,10 @@ flowchart LR
 - 写一页"我要回答的评测问题"：给谁看（自己迭代 / 对外发版 / 论文投稿）、能承受多少真机 rollout 成本、可接受多大的外推风险
 
 ### 推荐读什么
-- [具身评测基准选型闭环（知识链汇总）](../wiki/overview/hub-embodied-eval-benchmark.md)（本仓库）— 本路线的枢纽页
-- [Query：具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md)（本仓库）— 四层决策树与逐层误判速查
-- [仿真评测可复现性 ↔ 真实代表性取舍](../wiki/concepts/sim-vs-real-eval-gap.md)（本仓库）— 这条 gap 的物理根因
-- [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)（本仓库）— 姊妹链：先选模型家族，再回本路线做验收
+- [具身评测基准选型闭环（知识链汇总）](../wiki/overview/hub-embodied-eval-benchmark.md) — 本路线的枢纽页
+- [Query：具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md) — 四层决策树与逐层误判速查
+- [仿真评测可复现性 ↔ 真实代表性取舍](../wiki/concepts/sim-vs-real-eval-gap.md) — 这条 gap 的物理根因
+- [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — 姊妹链：先选模型家族，再回本路线做验收
 
 ### 学完输出什么
 - 一张"我的评测链停在第几层、还缺哪一层"的自检表
@@ -82,10 +82,10 @@ flowchart LR
 - 拿一组 QA 失败样本做归因：是感知没看见、是规划不可行、还是能说对但下发不出可执行动作
 
 ### 推荐读什么
-- [RoboBench](../wiki/entities/robo-bench.md)（本仓库）— 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，并专门验证了认知分与 CALVIN/LIBERO-10 下游 VLA 显著相关
-- [ESI-Bench](../wiki/entities/esi-bench.md)（本仓库）— OmniGibson 上 10 类 29 子类 3081 题，要求主动闭合感知–行动环，暴露 MLLM 的行动盲与元认知缺口
-- [Daily-Omni](../wiki/entities/paper-daily-omni.md)（本仓库）— 日常音视频跨模态时序对齐（684 视频 / 1197 MCQA），补"环境声与画面是否对齐理解"这一维
-- [MMHU](../wiki/entities/paper-mmhu.md)（本仓库）— 驾驶场景人本 Behavior VQA，相邻域对照
+- [RoboBench](../wiki/entities/robo-bench.md) — 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，并专门验证了认知分与 CALVIN/LIBERO-10 下游 VLA 显著相关
+- [ESI-Bench](../wiki/entities/esi-bench.md) — OmniGibson 上 10 类 29 子类 3081 题，要求主动闭合感知–行动环，暴露 MLLM 的行动盲与元认知缺口
+- [Daily-Omni](../wiki/entities/paper-daily-omni.md) — 日常音视频跨模态时序对齐（684 视频 / 1197 MCQA），补"环境声与画面是否对齐理解"这一维
+- [MMHU](../wiki/entities/paper-mmhu.md) — 驾驶场景人本 Behavior VQA，相邻域对照
 
 ### 学完输出什么
 - 一份认知维度分解报告：哪一维是瓶颈、哪一维已饱和
@@ -111,13 +111,13 @@ flowchart LR
 - 造一组 off-expert 动作序列喂进 WM，检查视觉是否仍有效、末端是否跟随指令
 
 ### 推荐读什么
-- [EWMBench](../wiki/entities/ewmbench.md)（本仓库）— Agibot-World 子集统一初始化后三轴打分，数据与评测代码开源
-- [GigaWorld-1 策略评估](../wiki/entities/paper-gigaworld-1-policy-evaluation.md)（本仓库）— WMBench + 7 类视频 WM、4 种动作编码、32.4 万+ rollout；核心结论是**长时序动作忠实 rollout 比短时视觉逼真更决定评估质量**
-- [WorldEcho / WorldSync](../wiki/entities/paper-worldecho-worldsync.md)（本仓库）— 视觉门控 + \(\mathrm{SE}(3)\) NDTW 专测 off-expert 动作跟随
-- [WorldScore](../wiki/entities/paper-worldscore.md)（本仓库）— 开放域 3D/4D/视频多场景世界生成的 Ctrl/Quality/Dynamics 统一榜（相邻轴，**不要**用来代替操纵保真）
-- [HarnessEval-W](../wiki/entities/paper-harnesseval-w.md)（本仓库）— 交互式世界模型 agentic 评测：干预/持久证据树，Intentional 排序与人类 ρ=0.93
-- [SC3-Eval](../wiki/entities/paper-sc3-eval.md)（本仓库）— 反向用法：把自一致视频生成本身当真机 VLA 策略评估器，闭环 Pearson 0.929
-- [如何评测具身世界模型（综述式追问）](../wiki/entities/paper-sa-2606-15032-how-should-world-models-be-evaluated-for-embodie.md)（本仓库）
+- [EWMBench](../wiki/entities/ewmbench.md) — Agibot-World 子集统一初始化后三轴打分，数据与评测代码开源
+- [GigaWorld-1 策略评估](../wiki/entities/paper-gigaworld-1-policy-evaluation.md) — WMBench + 7 类视频 WM、4 种动作编码、32.4 万+ rollout；核心结论是**长时序动作忠实 rollout 比短时视觉逼真更决定评估质量**
+- [WorldEcho / WorldSync](../wiki/entities/paper-worldecho-worldsync.md) — 视觉门控 + \(\mathrm{SE}(3)\) NDTW 专测 off-expert 动作跟随
+- [WorldScore](../wiki/entities/paper-worldscore.md) — 开放域 3D/4D/视频多场景世界生成的 Ctrl/Quality/Dynamics 统一榜（相邻轴，**不要**用来代替操纵保真）
+- [HarnessEval-W](../wiki/entities/paper-harnesseval-w.md) — 交互式世界模型 agentic 评测：干预/持久证据树，Intentional 排序与人类 ρ=0.93
+- [SC3-Eval](../wiki/entities/paper-sc3-eval.md) — 反向用法：把自一致视频生成本身当真机 VLA 策略评估器，闭环 Pearson 0.929
+- [如何评测具身世界模型（综述式追问）](../wiki/entities/paper-sa-2606-15032-how-should-world-models-be-evaluated-for-embodie.md)
 
 ### 学完输出什么
 - 一份"世界侧指标 vs 策略侧指标"双清单，明确哪些指标只是画质代理
@@ -145,14 +145,14 @@ flowchart LR
 - 把失败 rollout 按模式聚类（抓取失败 / 子任务切换失败 / 超时 / 过压），而不是只报一个均值
 
 ### 推荐读什么
-- [RoboDojo](../wiki/entities/robodojo.md)（本仓库）— 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
-- [PRM-as-a-Judge](../wiki/entities/paper-prm-as-a-judge.md)（本仓库）— 把 rollout 视频打成进度曲线做过程评测（OPD / FNS / DRR / SQS），在 RoboDojo 上**打乱了 SR 排名**
-- [Imitator Game](../wiki/entities/paper-imitator-game.md)（本仓库）— L0–L3 意图级模仿基准：成功判据改为**目标等价而非轨迹相似**，L3 功能替代崩溃、未见任务零样本 <13%
-- [SoftVTBench](../wiki/entities/paper-softvtbench.md)（本仓库）— 可变形视触觉任务同时报 Goal Success 与 Safety Success，只看 Goal 会掩盖过压
-- [ReflexVLA / ReflexBench](../wiki/entities/paper-reflexvla.md)（本仓库）— 延迟感知的动态任务评测
-- [DexBench](../wiki/entities/dexbench.md)（本仓库）— 工业灵巧规格（OSC 六轴 / 18 任务），主张 breakdown curve 而非单一 SR；注意其评测仓仍标 coming soon，是**规格页而非可跑仿真榜**
-- [ManiSkill-HAB](../wiki/entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) · [Mimicking-Bench](../wiki/entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)（本仓库）— 低层操作 / 人形模仿套件
-- [VLA SOTA Leaderboard](../wiki/entities/vla-sota-leaderboard.md)（本仓库）— 桌面 VLA 相对位次的外部索引（分数摘自论文，注意协议差异）
+- [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
+- [PRM-as-a-Judge](../wiki/entities/paper-prm-as-a-judge.md) — 把 rollout 视频打成进度曲线做过程评测（OPD / FNS / DRR / SQS），在 RoboDojo 上**打乱了 SR 排名**
+- [Imitator Game](../wiki/entities/paper-imitator-game.md) — L0–L3 意图级模仿基准：成功判据改为**目标等价而非轨迹相似**，L3 功能替代崩溃、未见任务零样本 <13%
+- [SoftVTBench](../wiki/entities/paper-softvtbench.md) — 可变形视触觉任务同时报 Goal Success 与 Safety Success，只看 Goal 会掩盖过压
+- [ReflexVLA / ReflexBench](../wiki/entities/paper-reflexvla.md) — 延迟感知的动态任务评测
+- [DexBench](../wiki/entities/dexbench.md) — 工业灵巧规格（OSC 六轴 / 18 任务），主张 breakdown curve 而非单一 SR；注意其评测仓仍标 coming soon，是**规格页而非可跑仿真榜**
+- [ManiSkill-HAB](../wiki/entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) · [Mimicking-Bench](../wiki/entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) — 低层操作 / 人形模仿套件
+- [VLA SOTA Leaderboard](../wiki/entities/vla-sota-leaderboard.md) — 桌面 VLA 相对位次的外部索引（分数摘自论文，注意协议差异）
 
 ### 学完输出什么
 - 一份带**失败模式分解**的评测报告，而不是单一成功率
@@ -183,16 +183,16 @@ flowchart LR
 - 把失败 rollout 按机制归档（摔倒、打滑、膝盖反关节、脚底震荡），它们比平均 reward 更能指导下一轮改动
 
 ### 推荐读什么
-- [运控模型评测指标](../wiki/concepts/motion-control-policy-evaluation-metrics.md)（本仓库）— **本阶段的概念主页**：四组指标（跟踪误差 / 命令跟随 / model-based 求解 / 硬件部署）、可比性四项对齐、难度分层与三段验收的完整定义
-- [HumanTracker](../wiki/entities/paper-humantracker.md)（本仓库）— 153 h / 25K 四族光学基准 + 偏好对齐指标 HumanScore；把 GMT / TWIST2 / SONIC / Humanoid-GPT 的参考表示、rollout 记账、终止准则与指标实现钉死后再对照；族均衡对齐率 90.83%，评测代码与 HumanScore 权重已开、数据集待发布
-- [Motion Difficulty Score / MD-AMASS](../wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md)（本仓库）— 用刚体动力学给出与策略无关的动作难度分，配 MID（最大可模仿难度）与 DSJE（按难度分层的关节误差），把"比 SOTA"变成"每个难度档分别比"
-- [HumanoidBench](../wiki/entities/humanoid-bench.md)（本仓库）— 统一 MuJoCo 下 15 项全身操作 + 12 项运动任务，附 Dreamer / SAC / PPO / TD-MPC2 基线，用于检验算法能否同时扛住高维身体控制与任务交互
-- [TrackerLab](../wiki/entities/trackerlab.md)（本仓库）— 多本体 / 多动作数据 / 多跟踪配置共享实验接口，把参考表示、奖励与机器人模型的影响**分开**比较；换本体后突然退化时先用它排除环境差异
-- [Barkour](../wiki/entities/paper-barkour-quadruped-agility-benchmark.md)（本仓库）— 四足敏捷课把多障碍序列 + 计时扣分压成 0–1 敏捷分，便于对比"专长切换 vs Transformer 通才"与 sim2real 管线
-- [Mimicking-Bench](../wiki/entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)（本仓库）— 人形模仿的泛化性评测套件
-- [Locomotion 任务页 · 评价指标与工程落地检查](../wiki/tasks/locomotion.md) · [全身跟踪管线](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
-- [人形策略奖励函数](../wiki/concepts/humanoid-policy-reward-functions.md)（本仓库）— 读它是为了**区分**训练奖励项与验收指标，不要互相顶替
-- [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）— 选型侧的姊妹页
+- [运控模型评测指标](../wiki/concepts/motion-control-policy-evaluation-metrics.md) — **本阶段的概念主页**：四组指标（跟踪误差 / 命令跟随 / model-based 求解 / 硬件部署）、可比性四项对齐、难度分层与三段验收的完整定义
+- [HumanTracker](../wiki/entities/paper-humantracker.md) — 153 h / 25K 四族光学基准 + 偏好对齐指标 HumanScore；把 GMT / TWIST2 / SONIC / Humanoid-GPT 的参考表示、rollout 记账、终止准则与指标实现钉死后再对照；族均衡对齐率 90.83%，评测代码与 HumanScore 权重已开、数据集待发布
+- [Motion Difficulty Score / MD-AMASS](../wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md) — 用刚体动力学给出与策略无关的动作难度分，配 MID（最大可模仿难度）与 DSJE（按难度分层的关节误差），把"比 SOTA"变成"每个难度档分别比"
+- [HumanoidBench](../wiki/entities/humanoid-bench.md) — 统一 MuJoCo 下 15 项全身操作 + 12 项运动任务，附 Dreamer / SAC / PPO / TD-MPC2 基线，用于检验算法能否同时扛住高维身体控制与任务交互
+- [TrackerLab](../wiki/entities/trackerlab.md) — 多本体 / 多动作数据 / 多跟踪配置共享实验接口，把参考表示、奖励与机器人模型的影响**分开**比较；换本体后突然退化时先用它排除环境差异
+- [Barkour](../wiki/entities/paper-barkour-quadruped-agility-benchmark.md) — 四足敏捷课把多障碍序列 + 计时扣分压成 0–1 敏捷分，便于对比"专长切换 vs Transformer 通才"与 sim2real 管线
+- [Mimicking-Bench](../wiki/entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) — 人形模仿的泛化性评测套件
+- [Locomotion 任务页 · 评价指标与工程落地检查](../wiki/tasks/locomotion.md) · [全身跟踪管线](../wiki/concepts/whole-body-tracking-pipeline.md)
+- [人形策略奖励函数](../wiki/concepts/humanoid-policy-reward-functions.md) — 读它是为了**区分**训练奖励项与验收指标，不要互相顶替
+- [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md) — 选型侧的姊妹页
 
 ### 学完输出什么
 - 一份运控评测表：**Succ + 误差类指标 + 人类偏好/敏捷分**按动作族或难度档分报，而不是单一均值
@@ -219,11 +219,11 @@ flowchart LR
 - 真机样本不足时，用下注式方法给出区间而不是点估计
 
 ### 推荐读什么
-- [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md)（本仓库）— 可复现性 ↔ 代表性代价表与缩小 gap 的三条工程路线
-- [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md)（本仓库）— 把评测当可扩展闭环基建，把迭代速度从墙钟瓶颈换成算力瓶颈的前提条件
-- [Bet4Sim2Real](../wiki/entities/paper-bet4sim2real.md)（本仓库）— 仿真库逐次下注换 anytime-valid 真机性能证书，平均收窄 51.6%；G1/NIST/Go2 回放已开源
-- [RoboDojo](../wiki/entities/robodojo.md) 的 RealEval 云真机（本仓库）— 标准化真机侧的一种现成答案
-- [Sim-to-Real 迁移下的策略评测](../wiki/entities/paper-sa-2508-11117-robot-policy-evaluation-for-sim-to-real-transfer.md) · [高斯重建做 real-to-sim 策略评测](../wiki/entities/paper-sa-2511-04665-real-to-sim-robot-policy-evaluation-with-gaussia.md)（本仓库）
+- [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — 可复现性 ↔ 代表性代价表与缩小 gap 的三条工程路线
+- [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) — 把评测当可扩展闭环基建，把迭代速度从墙钟瓶颈换成算力瓶颈的前提条件
+- [Bet4Sim2Real](../wiki/entities/paper-bet4sim2real.md) — 仿真库逐次下注换 anytime-valid 真机性能证书，平均收窄 51.6%；G1/NIST/Go2 回放已开源
+- [RoboDojo](../wiki/entities/robodojo.md) 的 RealEval 云真机— 标准化真机侧的一种现成答案
+- [Sim-to-Real 迁移下的策略评测](../wiki/entities/paper-sa-2508-11117-robot-policy-evaluation-for-sim-to-real-transfer.md) · [高斯重建做 real-to-sim 策略评测](../wiki/entities/paper-sa-2511-04665-real-to-sim-robot-policy-evaluation-with-gaussia.md)
 - [Sim2Real 纵深](depth-sim2real.md) · [Real2Sim 纵深](depth-real2sim.md) — 迁移侧与资产侧的展开版
 
 ### 学完输出什么
@@ -257,7 +257,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 四层边界与代理指标陷阱 | [具身评测基准选型闭环](../wiki/overview/hub-embodied-eval-benchmark.md) |
 | Stage 1 | MLLM 认知评测 | [RoboBench](../wiki/entities/robo-bench.md) |
@@ -270,51 +270,29 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) — Stage 4 的 model-based 评测轴（求解耗时 / 约束违反 / 鲁棒裕度）
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — Stage 3 接触/软体安全指标的工程侧
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — Stage 3 成功判据（目标等价 vs 轨迹相似）的建模侧
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — Stage 4 被测对象之一：locomotion 策略
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 4 参考轨迹质量的上游
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — Stage 5 的迁移侧姊妹路线
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 4 被测对象之一：全身跟踪与协调
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — 被测对象之一：语义策略
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — Stage 5 评测资产的来源侧
-  - [WAM（世界–动作模型）](depth-wam.md) — 被测对象之一，同时也是 Stage 2 评估器的提供方
-  - [ICL（具身上下文学习）](depth-icl.md) — 被测对象之一：未见任务 one-shot 评测协议
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 互为闭环：飞轮回流的数据要靠评测口径刹车
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [Sim2Real](depth-sim2real.md) — 评测 gap 与真机部署对照
+  - [具身数据](depth-embodied-data.md) — 飞轮的验收侧
+  - [VLA](depth-vla.md) — 认知/操作成功率评测的主要对象
+  - [RL 运动控制](depth-rl-locomotion.md) — 运控指标与跟踪评测
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
-本路线基于以下 wiki 编译页与原始资料的归纳：
-
 - [具身评测基准选型闭环（知识链汇总）](../wiki/overview/hub-embodied-eval-benchmark.md)
 - [Query：具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md)
 - [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) · [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md)
-- [sources/papers/robo_bench_arxiv_2510_17801.md](../sources/papers/robo_bench_arxiv_2510_17801.md) — RoboBench，arXiv:2510.17801
-- [sources/papers/esi_bench_arxiv_2605_18746.md](../sources/papers/esi_bench_arxiv_2605_18746.md) — ESI-Bench，arXiv:2605.18746
-- [sources/papers/ewmbench.md](../sources/papers/ewmbench.md) — EWMBench
-- [sources/papers/robodojo_arxiv_2607_04434.md](../sources/papers/robodojo_arxiv_2607_04434.md) — RoboDojo，arXiv:2607.04434
-- [sources/papers/prm_as_a_judge_arxiv_2608_14284.md](../sources/papers/prm_as_a_judge_arxiv_2608_14284.md) — PRM-as-a-Judge 1.5，arXiv:2608.14284
-- [sources/papers/imitator_game_arxiv_2608_22301.md](../sources/papers/imitator_game_arxiv_2608_22301.md) — Imitator Game，arXiv:2608.22301
-- [sources/papers/bet4sim2real_arxiv_2608_21572.md](../sources/papers/bet4sim2real_arxiv_2608_21572.md) — Bet4Sim2Real，arXiv:2608.21572
-- [sources/papers/sc3_eval_arxiv_2606_18610.md](../sources/papers/sc3_eval_arxiv_2606_18610.md) — SC3-Eval，arXiv:2606.18610
+- [RoboBench: A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied Brain](https://robo-bench.github.io) — RoboBench，arXiv:2510.17801
+- [ESI-Bench: Towards Embodied Spatial Intelligence that Closes the Perception-Action Loop](https://arxiv.org/abs/2605.18746) — ESI-Bench，arXiv:2605.18746
+- [EWMBench: Evaluating Scene, Motion, and Semantic Quality in Embodied World Models](https://arxiv.org/html/2505.09694v2#S1) — EWMBench
+- [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies](https://robodojo-benchmark.com/) — RoboDojo，arXiv:2607.04434
+- [PRM-as-a-Judge 1.5: A Toolkit for Robot Process Assessment](https://arxiv.org/abs/2608.14284) — PRM-as-a-Judge 1.5，arXiv:2608.14284
+- [The Imitator Game: Benchmarking Robot Imitative Ability Beyond Action Prediction](https://arxiv.org/abs/2608.22301) — Imitator Game，arXiv:2608.22301
+- [Betting for Sim-to-Real Performance Certificates](https://arxiv.org/abs/2608.21572) — Bet4Sim2Real，arXiv:2608.21572
+- [SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation](https://arxiv.org/abs/2606.18610) — SC3-Eval，arXiv:2606.18610
 - [运控模型评测指标](../wiki/concepts/motion-control-policy-evaluation-metrics.md) — Stage 4 的概念沉淀页
-- [sources/papers/humantracker_arxiv_2608_13555.md](../sources/papers/humantracker_arxiv_2608_13555.md) — HumanTracker，arXiv:2608.13555（Stage 4 跟踪评测协议与 HumanScore）
-- [sources/repos/humanoid-bench.md](../sources/repos/humanoid-bench.md) · [sources/repos/trackerlab.md](../sources/repos/trackerlab.md) — Stage 4 运控评测套件与统一跟踪实验接口
-- [wiki/tasks/locomotion.md](../wiki/tasks/locomotion.md) 的「评价指标」与「工程落地检查」小节
-- [sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md](../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — 机器人训练栈分层
+- [HumanTracker: Towards Comprehensive and Human-Aligned Motion Tracking Benchmark](https://arxiv.org/abs/2608.13555) — HumanTracker，arXiv:2608.13555（Stage 4 跟踪评测协议与 HumanScore）
+- [HumanoidBench](https://github.com/carlosferrazza/humanoid-bench) · [TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) — Stage 4 运控评测套件与统一跟踪实验接口
+- [Locomotion](../wiki/tasks/locomotion.md) 的「评价指标」与「工程落地检查」小节
+- [有了Isaac Lab和MuJoCo，为什么还会出现 mjlab、Newton、UniLab、Genesis？](https://mp.weixin.qq.com/s/Z9pgVa48wQKLYVRD3psnhw) — 机器人训练栈分层

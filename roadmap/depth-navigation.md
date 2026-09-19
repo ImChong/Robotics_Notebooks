@@ -50,10 +50,10 @@ flowchart LR
 - 装一个 ROS 2 工作空间，用 turtlebot 仿真跑通"建图 → 定位 → 点到点导航"闭环
 
 ### 推荐读什么
-- [导航·SLAM·自动驾驶开源栈总览](../wiki/overview/navigation-slam-autonomy-stack.md)（本仓库）— 本路线的开源栈地图总入口
-- [ROS 2 基础](../wiki/concepts/ros2-basics.md)（本仓库）
-- [PythonRobotics](../wiki/entities/python-robotics.md)（本仓库）— 算法层入门示例集
-- [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md)（本仓库）— 腿式平台的分层参照
+- [导航·SLAM·自动驾驶开源栈总览](../wiki/overview/navigation-slam-autonomy-stack.md) — 本路线的开源栈地图总入口
+- [ROS 2 基础](../wiki/concepts/ros2-basics.md)
+- [PythonRobotics](../wiki/entities/python-robotics.md) — 算法层入门示例集
+- [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 腿式平台的分层参照
 
 ### 学完输出什么
 - 能画出一张四层导航栈框图并标出每层的输入输出
@@ -80,14 +80,14 @@ flowchart LR
 - 拿一个公开数据集跑 FAST-LIO 与 ORB-SLAM3，各自记录漂移与失效场景
 
 ### 推荐读什么
-- [LiDAR / LIO / VIO 开源选型对比](../wiki/comparisons/lidar-slam-lio-vio-selection.md)（本仓库）— 选型主入口
-- [SLAM Toolbox](../wiki/entities/slam-toolbox.md)、[Cartographer](../wiki/entities/cartographer.md)、[FAST-LIO](../wiki/entities/fast-lio.md)、[ORB-SLAM3](../wiki/entities/orb-slam3.md)（本仓库）
-- [State Estimation](../wiki/concepts/state-estimation.md) 与 [Sensor Fusion](../wiki/concepts/sensor-fusion.md)（本仓库）
-- [Ultra-Fusion](../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md)（本仓库）— 韧性多传感器融合前沿
-- [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md)（本仓库）— 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
-- [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md)（本仓库）— memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
-- [KILVO](../wiki/entities/paper-kilvo.md)（本仓库）— 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；代码仓占位待开放
-- [ABot-Recon](../wiki/entities/paper-abot-recon.md)（本仓库）— 阿里 AMap CV Lab，固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建，状态不随序列长度增长；Oxford Spires ATE 4.35 m（约 −40%），与 SLAMFormer-∞ 同属单目稠密流式 SLAM 前沿；已开源（GitHub + HF 权重）
+- [LiDAR / LIO / VIO 开源选型对比](../wiki/comparisons/lidar-slam-lio-vio-selection.md) — 选型主入口
+- [SLAM Toolbox](../wiki/entities/slam-toolbox.md)、[Cartographer](../wiki/entities/cartographer.md)、[FAST-LIO](../wiki/entities/fast-lio.md)、[ORB-SLAM3](../wiki/entities/orb-slam3.md)
+- [State Estimation](../wiki/concepts/state-estimation.md) 与 [Sensor Fusion](../wiki/concepts/sensor-fusion.md)
+- [Ultra-Fusion](../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — 韧性多传感器融合前沿
+- [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md) — 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
+- [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md) — memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
+- [KILVO](../wiki/entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；代码仓占位待开放
+- [ABot-Recon](../wiki/entities/paper-abot-recon.md) — 阿里 AMap CV Lab，固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建，状态不随序列长度增长；Oxford Spires ATE 4.35 m（约 −40%），与 SLAMFormer-∞ 同属单目稠密流式 SLAM 前沿；已开源（GitHub + HF 权重）
 
 ### 学完输出什么
 - 能为给定平台（室内 AMR / 野外四足 / 手持建图）选出合理的 SLAM 配置
@@ -113,10 +113,10 @@ flowchart LR
 - 给一条 A* 路径加平滑优化（最小化 jerk / 曲率），对比跟踪误差
 
 ### 推荐读什么
-- [Navigation2（Nav2）](../wiki/entities/navigation2.md)（本仓库）
-- [平滑导航路径生成](../wiki/methods/smooth-navigation-path-generation.md)（本仓库）
-- [RoamerX（智身四足导航栈）](../wiki/entities/roamerx-navigation.md)（本仓库）— Nav2 在四足上的增强实践
-- [Isaac ROS Visual SLAM](../wiki/entities/isaac-ros-visual-slam.md)（本仓库）— GPU 加速感知建图选项
+- [Navigation2（Nav2）](../wiki/entities/navigation2.md)
+- [平滑导航路径生成](../wiki/methods/smooth-navigation-path-generation.md)
+- [RoamerX（智身四足导航栈）](../wiki/entities/roamerx-navigation.md) — Nav2 在四足上的增强实践
+- [Isaac ROS Visual SLAM](../wiki/entities/isaac-ros-visual-slam.md) — GPU 加速感知建图选项
 
 ### 学完输出什么
 - 一个调通的 Nav2 仿真系统，能在含障碍环境里可靠点到点
@@ -143,18 +143,18 @@ flowchart LR
 - 把学习型局部策略接到 Stage 2 的全局规划下，跑长距离混合任务
 
 ### 推荐读什么
-- [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md) 与 [HiPAN](../wiki/methods/hipan.md)（本仓库）
-- [NoMaD](../wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) 与 [NavDP](../wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)（本仓库）
-- [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md)（本仓库）— 人形导航深读锚点
-- [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md)（本仓库）— RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
-- [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)（本仓库）— 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
-- [iCrowdNav](../wiki/entities/paper-icrowdnav.md)（本仓库）— RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（代码待发布）
-- [SPLC](../wiki/entities/paper-splc.md)（本仓库）— **自动社交偏好准则** 学 Offline RL 奖励并挂 IQL/CQL/TD3BC；仿真相对手调/人工偏好基线提升成功率，TurtleBot4 真机验证（代码 coming soon）
-- [CommNav](../wiki/entities/paper-commnav.md)（本仓库）— **主动向路人打听** 目标时空线索的社交导航（Habitat 3.0c + COMM；ES +10 pp；代码待发布）
-- [RoamFlow](../wiki/entities/paper-roamflow.md)（本仓库）— MeanFlow 一步（少步）轨迹生成 + IL→RL 任务对齐 + 轨迹评估器筛选；Habitat Gibson SR 68.7%/19.6 ms 全面超 NoMaD/NavDP，Go2 + Orin NX 真机 20 runs SR 1.00；确认未开源
-- [HUMEMBR](../wiki/entities/paper-humembr.md)（本仓库）— **身份感知多日记忆** + LLM 工具检索的 PersonEQA / Spot 例行找人（代码已开源；COBD 数据暂私有）
-- [接近–安全跟随](../wiki/entities/paper-nav-ps-balance.md)（本仓库，IROS 2026）— 把人群跟随拆成稀疏奖励 + 独立 cost 阈值（PPO-Lagrangian + DtACI），不再把跟紧和防撞塞进同一个 reward；ID 成功率 78.08%，代码已开源
-- [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md)（本仓库）— 深读论文全景入口 |
+- [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md) 与 [HiPAN](../wiki/methods/hipan.md)
+- [NoMaD](../wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) 与 [NavDP](../wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)
+- [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md) — 人形导航深读锚点
+- [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
+- [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
+- [iCrowdNav](../wiki/entities/paper-icrowdnav.md) — RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（代码待发布）
+- [SPLC](../wiki/entities/paper-splc.md) — **自动社交偏好准则** 学 Offline RL 奖励并挂 IQL/CQL/TD3BC；仿真相对手调/人工偏好基线提升成功率，TurtleBot4 真机验证（代码 coming soon）
+- [CommNav](../wiki/entities/paper-commnav.md) — **主动向路人打听** 目标时空线索的社交导航（Habitat 3.0c + COMM；ES +10 pp；代码待发布）
+- [RoamFlow](../wiki/entities/paper-roamflow.md) — MeanFlow 一步（少步）轨迹生成 + IL→RL 任务对齐 + 轨迹评估器筛选；Habitat Gibson SR 68.7%/19.6 ms 全面超 NoMaD/NavDP，Go2 + Orin NX 真机 20 runs SR 1.00；确认未开源
+- [HUMEMBR](../wiki/entities/paper-humembr.md) — **身份感知多日记忆** + LLM 工具检索的 PersonEQA / Spot 例行找人（代码已开源；COBD 数据暂私有）
+- [接近–安全跟随](../wiki/entities/paper-nav-ps-balance.md)（IROS 2026）— 把人群跟随拆成稀疏奖励 + 独立 cost 阈值（PPO-Lagrangian + DtACI），不再把跟紧和防撞塞进同一个 reward；ID 成功率 78.08%，代码已开源
+- [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md) — 深读论文全景入口 |
 
 ### 学完输出什么
 - 一个"经典全局 + 学习局部"的混合导航 demo
@@ -181,12 +181,12 @@ flowchart LR
 - 按四范式路径挑一条复现（推荐从模块化 VLFM 一系入手），记录每步的工程坑
 
 ### 推荐读什么
-- [视觉–语言导航（VLN）任务页](../wiki/tasks/vision-language-navigation.md)（本仓库）— 主线索引页
-- [VLN 10 篇论文技术地图](../wiki/overview/vln-10-papers-technology-map.md) 与 [VLN 开源复现四范式](../wiki/overview/vln-open-source-repro-paradigms.md)（本仓库）
-- [Matterport3D Simulator](../wiki/entities/matterport3d-simulator.md) 与 [Habitat-Sim](../wiki/entities/habitat-sim.md)（本仓库）
-- [NaVILA](../wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 与 [Qwen-RobotNav](../wiki/entities/qwen-robot-nav.md)（本仓库）— 腿式 / 通才导航 VLA 锚点
-- [HumanoidVLN](../wiki/entities/paper-humanoidvln.md)（本仓库）— Isaac Sim 首个人形物理 VLN 平台与基准，四本体 RL+PD/MPC、87 场景≥100 m²；JanusVLN 平均 SR 43.55%，G1 DualVLN 20 条 sim–real r=0.935
-- [NavVerse](../wiki/entities/paper-navverse.md)（本仓库）— UMich CURLY，Isaac Sim 室内–户外连通导航基准，10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/安全指标；零样本 VLA 完成率最高、模块化方法最安全，专测"出门后还会不会走"的 transition 失败
+- [视觉–语言导航（VLN）任务页](../wiki/tasks/vision-language-navigation.md) — 主线索引页
+- [VLN 10 篇论文技术地图](../wiki/overview/vln-10-papers-technology-map.md) 与 [VLN 开源复现四范式](../wiki/overview/vln-open-source-repro-paradigms.md)
+- [Matterport3D Simulator](../wiki/entities/matterport3d-simulator.md) 与 [Habitat-Sim](../wiki/entities/habitat-sim.md)
+- [NaVILA](../wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 与 [Qwen-RobotNav](../wiki/entities/qwen-robot-nav.md) — 腿式 / 通才导航 VLA 锚点
+- [HumanoidVLN](../wiki/entities/paper-humanoidvln.md) — Isaac Sim 首个人形物理 VLN 平台与基准，四本体 RL+PD/MPC、87 场景≥100 m²；JanusVLN 平均 SR 43.55%，G1 DualVLN 20 条 sim–real r=0.935
+- [NavVerse](../wiki/entities/paper-navverse.md) — UMich CURLY，Isaac Sim 室内–户外连通导航基准，10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/安全指标；零样本 VLA 完成率最高、模块化方法最安全，专测"出门后还会不会走"的 transition 失败
 
 ### 学完输出什么
 - 一次标准 VLN 基准上的复现与评测记录
@@ -219,7 +219,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 导航栈分层 | [导航·SLAM·自动驾驶开源栈总览](../wiki/overview/navigation-slam-autonomy-stack.md) |
 | Stage 1 | SLAM 与状态估计 | [LiDAR / LIO / VIO 选型对比](../wiki/comparisons/lidar-slam-lio-vio-selection.md) |
@@ -231,37 +231,15 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — 腿式平台局部越障的展开版
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的邻接路线
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接地的模型侧展开版
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [感知越障](depth-perceptive-locomotion.md) — 腿式平台上「往哪迈」与「往哪走」的交界
+  - [VLA](depth-vla.md) — 导航 VLA / VLN 的模型侧展开
+  - [Loco-Manipulation](depth-loco-manipulation.md) — 到点之后还要动手
+  - [WAM](depth-wam.md) — 出动作前预知场景如何变
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [导航·SLAM·自动驾驶开源栈总览](../wiki/overview/navigation-slam-autonomy-stack.md) 与 [VLN 10 篇论文技术地图](../wiki/overview/vln-10-papers-technology-map.md)
 - "On the Representation and Estimation of Spatial Uncertainty" (Smith & Cheeseman, 1986) — 概率 SLAM 起点

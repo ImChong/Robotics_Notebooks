@@ -231,7 +231,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 力矩从哪来、TN/TI 怎么读 | [TN 曲线](../wiki/concepts/motor-torque-speed-curve.md) |
 | Stage 1 | 指标反推与三大物种选型 | [Actuator 102 · 07：决策矩阵与三大物种](../wiki/overview/humanoid-actuator-102-decision-species.md) |
@@ -245,31 +245,11 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 工序主干总览：[电机设计流程（规格 → 仿真 → 样机 → 控制）](../wiki/overview/motor-design-workflow.md)；本路线是其学习顺序展开版
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) — Stage 4 WBC 输出的关节力矩由本路线的力矩闭环兑现
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md) — 关节模组之上的整机层：功率/延迟预算与总线拓扑在那里收口
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — sim2real 执行器建模（Stage 5）的下游消费者
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — 阻抗/力控接口建立在本路线的力矩模式之上
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [整机硬件设计](depth-humanoid-hardware-design.md) — 关节模组之上的整机功率/延迟预算与总线拓扑
+  - [传统模型控制](depth-classical-control.md) — Stage 4 WBC 输出的关节力矩由本路线的力矩闭环兑现
+  - [Sim2Real](depth-sim2real.md) — 执行器建模与真机对齐的下游
+  - [接触操作](depth-contact-manipulation.md) — 阻抗/力控接口建立在本路线的力矩模式之上
 - 关联知识页：
   - [Humanoid 执行器 102：八章技术地图](../wiki/overview/humanoid-actuator-102-technology-map.md)
   - [Humanoid Hardware 101 · 04：集成执行器](../wiki/overview/humanoid-hardware-101-integrated-actuators.md)
@@ -279,13 +259,11 @@ flowchart LR
 
 ## 参考来源
 
-本路线基于以下原始资料与 wiki 编译页的归纳：
-
-- [电机设计流程（规格 → 仿真 → 样机 → 控制）](../wiki/overview/motor-design-workflow.md) 及其 sources（Motor-CAD 官方资料、电机曲线与电磁仿真 FAQ、SimpleFOC 文档）
-- [电机测功机一手资料索引](../sources/sites/motor_dynamometer_primary_refs.md)（GB/T 43200、IEC 60034-2-1、Magtrol 手册、ODrive 开源对拖、AIP 关节对拖）
-- [Humanoid 执行器 102 系列](../wiki/overview/humanoid-actuator-102-technology-map.md)（sources：执行器 102 微信长文）
-- [开源 QDD / 力矩关节执行器学习策展](../sources/personal/open_source_qdd_actuator_learning_curator.md) 与 [对比页](../wiki/comparisons/open-source-qdd-actuator-projects.md)
-- [开源力矩电机电磁设计完整度策展](../sources/personal/open_source_torque_motor_em_design_curator.md) 与 [对比页](../wiki/comparisons/open-source-torque-motor-em-design.md)
+- [电机设计流程（规格 → 仿真 → 样机 → 控制）](../wiki/overview/motor-design-workflow.md)
+- 电机测功机常用资料：GB/T 43200、IEC 60034-2-1、Magtrol 手册、ODrive 开源对拖、AIP 关节对拖
+- [Humanoid 执行器 102 系列](../wiki/overview/humanoid-actuator-102-technology-map.md)
+- [开源 QDD / 力矩关节执行器对比](../wiki/comparisons/open-source-qdd-actuator-projects.md)
+- [开源力矩电机电磁设计完整度对比](../wiki/comparisons/open-source-torque-motor-em-design.md)
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md)
 - Blaschke, *The Principle of Field Orientation as Applied to the New Transvektor Closed-Loop Control System* (1972) — FOC 起点
 - Wensing et al., *Proprioceptive Actuator Design in the MIT Cheetah* (IEEE T-RO, 2017) — QDD/本体感知执行器设计范式

@@ -53,11 +53,11 @@ flowchart LR
 - 对自己的场景写一句话：我想自动化的是 **执行** 还是 **判断**？——想自动化判断的，先回到 Stage 0 重读四道门
 
 ### 推荐读什么
-- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md)（本仓库）— 本路线的判别底座：四层表、五次推进与 2026 信号读法
-- [RSI 全谱系 survey（arXiv:2607.07663）](../wiki/entities/paper-rsi-survey-2607-07663.md)（本仓库）— 1,250 篇文献的 **改进对象 × 闭环程度** 两轴 taxonomy，把有界 self-refinement 与开放式 RSI 切开；语料与脚本已开源
-- [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md)（本仓库）— Anthropic 的完整 RSI 定义、内部生产率数字与三情景；含"具身跟随"假设
-- [Awesome RSI](../wiki/entities/awesome-rsi.md)（本仓库）— 50+ 方法 / 29 基准按 **artifact × mode** 策展，是查证归类的索引入口
-- [AI Auto-Research](../wiki/concepts/ai-auto-research.md)（本仓库）— 研究全生命周期自动化：与 RSI 相邻但不同的问题设定
+- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) — 本路线的判别底座：四层表、五次推进与 2026 信号读法
+- [RSI 全谱系 survey（arXiv:2607.07663）](../wiki/entities/paper-rsi-survey-2607-07663.md) — 1,250 篇文献的 **改进对象 × 闭环程度** 两轴 taxonomy，把有界 self-refinement 与开放式 RSI 切开；语料与脚本已开源
+- [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — Anthropic 的完整 RSI 定义、内部生产率数字与三情景；含"具身跟随"假设
+- [Awesome RSI](../wiki/entities/awesome-rsi.md) — 50+ 方法 / 29 基准按 **artifact × mode** 策展，是查证归类的索引入口
+- [AI Auto-Research](../wiki/concepts/ai-auto-research.md) — 研究全生命周期自动化：与 RSI 相邻但不同的问题设定
 
 ### 学完输出什么
 - 一张 artifact × 层级对照表，新论文拿来能一句话归格
@@ -84,10 +84,10 @@ flowchart LR
 - 机器人侧做一次技能库实验：把一个调通的控制程序参数化存起来，换一个近邻任务，统计 token 与试错次数是否下降
 
 ### 推荐读什么
-- [ASPIRE](../wiki/methods/aspire.md)（本仓库）— 逐原语多模态 trace + 进化搜索 + 技能库蒸馏；LIBERO-Pro / Robosuite / BEHAVIOR-1K 上超 CaP-Agent0 与 VLA 基线
-- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第一次推进（本仓库）— Reflexion 谱系与"参数不变"的边界
-- [karpathy/autoresearch](../wiki/entities/karpathy-autoresearch.md)（本仓库）— 三文件最小闭环：固定预算 + 固定 metric 的 keep/discard，人类迭代 program.md 作为可读技能层
-- [数据飞轮](../wiki/concepts/data-flywheel.md)（本仓库）— 经验留存的数据侧同构机制
+- [ASPIRE](../wiki/methods/aspire.md) — 逐原语多模态 trace + 进化搜索 + 技能库蒸馏；LIBERO-Pro / Robosuite / BEHAVIOR-1K 上超 CaP-Agent0 与 VLA 基线
+- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第一次推进— Reflexion 谱系与"参数不变"的边界
+- [karpathy/autoresearch](../wiki/entities/karpathy-autoresearch.md) — 三文件最小闭环：固定预算 + 固定 metric 的 keep/discard，人类迭代 program.md 作为可读技能层
+- [数据飞轮](../wiki/concepts/data-flywheel.md) — 经验留存的数据侧同构机制
 
 ### 学完输出什么
 - 一条跑得起来的 propose–eval–persist 最小闭环（可回滚、有日志）
@@ -115,10 +115,10 @@ flowchart LR
 - 做一次坍缩检查：把第 N 轮模型放回原始 held-out 集，看是否出现"自评分涨、外部分跌"
 
 ### 推荐读什么
-- [Motus2](../wiki/entities/paper-motus2.md)（本仓库）— 真机权重级有界闭环的代表；五任务宏平均 84%，MBRL+Planning 75%；截至入库日未开源
-- [LWD](../wiki/methods/lwd.md)（本仓库）— 车队级 offline-to-online：异构部署经验 → 单一通用策略持续改进
-- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第二次推进（本仓库）— STaR / SPIN 与"目标分布仍人类"的边界
-- [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) · [Bitter Lesson](../wiki/concepts/bitter-lesson.md)（本仓库）— 规模与结构之争的背景读法
+- [Motus2](../wiki/entities/paper-motus2.md) — 真机权重级有界闭环的代表；五任务宏平均 84%，MBRL+Planning 75%；截至入库日未开源
+- [LWD](../wiki/methods/lwd.md) — 车队级 offline-to-online：异构部署经验 → 单一通用策略持续改进
+- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第二次推进— STaR / SPIN 与"目标分布仍人类"的边界
+- [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) · [Bitter Lesson](../wiki/concepts/bitter-lesson.md) — 规模与结构之争的背景读法
 
 ### 学完输出什么
 - 一份有界闭环实验记录：边界定义（谁冻结了什么）+ 每轮增益 + 坍缩检查结论
@@ -147,11 +147,11 @@ flowchart LR
 - 真机侧：挑一个任务把 reset 与 verify 完全自动化，统计一次 eval 的墙钟与人工介入次数
 
 ### 推荐读什么
-- [ENPIRE](../wiki/methods/enpire.md)（本仓库）— EN–PI–R–E 闭环：自动 reset/verify、多范式策略改进、并行 rollout；灵巧任务报告约 99% pass@8
-- [真机策略 autoresearch harness 指南](../wiki/queries/real-robot-policy-autoresearch-harness.md)（本仓库）— 环境侧、范式选型、rollout 预算与机队 scaling 的实操选型
-- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md)「四道门」小节（本仓库）— 验证器锚、分布外、递归增益、能力–控制同步
-- [RSI 全谱系 survey](../wiki/entities/paper-rsi-survey-2607-07663.md)（本仓库）— 把 self-evaluation 单列为第四技术类：evaluator 设计空间是全场共同天花板
-- [具身模型测评纵深](depth-embodied-eval.md)（本仓库）— 未见集划分与过程指标的展开版
+- [ENPIRE](../wiki/methods/enpire.md) — EN–PI–R–E 闭环：自动 reset/verify、多范式策略改进、并行 rollout；灵巧任务报告约 99% pass@8
+- [真机策略 autoresearch harness 指南](../wiki/queries/real-robot-policy-autoresearch-harness.md) — 环境侧、范式选型、rollout 预算与机队 scaling 的实操选型
+- [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md)「四道门」小节— 验证器锚、分布外、递归增益、能力–控制同步
+- [RSI 全谱系 survey](../wiki/entities/paper-rsi-survey-2607-07663.md) — 把 self-evaluation 单列为第四技术类：evaluator 设计空间是全场共同天花板
+- [具身模型测评纵深](depth-embodied-eval.md) — 未见集划分与过程指标的展开版
 
 ### 学完输出什么
 - 一份 accept 协议文档（集合 / seed / 阈值 / 否决权），可直接贴进项目 README
@@ -180,10 +180,10 @@ flowchart LR
 - 机器人侧：把"改控制程序"当 harness 搜索做一遍，对照 ASPIRE 的进化搜索设定
 
 ### 推荐读什么
-- [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md)（本仓库）— Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
-- [RSI-Harness](../wiki/entities/rsi-harness.md)（本仓库）— Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
-- [HarnessBank](../wiki/entities/paper-harnessbank.md)（本仓库）— 冻结模型下的门控式 harness 自进化
-- [SoL-Pi](../wiki/entities/sol-pi.md)（本仓库）— auto-research 环筛效率扩展；先把 harness 做省再谈 scale
+- [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
+- [RSI-Harness](../wiki/entities/rsi-harness.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
+- [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的门控式 harness 自进化
+- [SoL-Pi](../wiki/entities/sol-pi.md) — auto-research 环筛效率扩展；先把 harness 做省再谈 scale
 - [Awesome RSI Methods 页](https://prism-shadow.github.io/awesome-rsi/#methods)（外链）— 按 artifact 筛选同类工作
 
 ### 学完输出什么
@@ -213,11 +213,11 @@ flowchart LR
 - 若做机器人：把 [真机 autoresearch harness 指南](../wiki/queries/real-robot-policy-autoresearch-harness.md) 的选型表填完，确认自己缺的是环境、评估还是改进范式
 
 ### 推荐读什么
-- [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md)（本仓库）— 三情景、Amdahl 瓶颈与"怎么读内部数字"对照表
-- [From AGI to ASI](../wiki/entities/paper-from-agi-to-asi.md)（本仓库）— DeepMind 的四条能力路径与六类瓶颈；与 RSI 机制勿混读
-- [AI Auto-Research](../wiki/concepts/ai-auto-research.md)（本仓库）— 人机共治、分层验证与跨阶段溯源
-- [Datawhale RSI 科普综述（2026-09-19）](../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md)（本仓库）— 五次推进叙事与 2026 夏信号的一手归档
-- [When AI builds itself（Anthropic Institute 归档）](../sources/sites/anthropic-recursive-self-improvement.md)（本仓库）— 宏观论述原文归档
+- [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — 三情景、Amdahl 瓶颈与"怎么读内部数字"对照表
+- [From AGI to ASI](../wiki/entities/paper-from-agi-to-asi.md) — DeepMind 的四条能力路径与六类瓶颈；与 RSI 机制勿混读
+- [AI Auto-Research](../wiki/concepts/ai-auto-research.md) — 人机共治、分层验证与跨阶段溯源
+- [Datawhale RSI 科普综述（2026-09-19）](https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A) — 五次推进叙事与 2026 夏信号
+- [When AI builds itself（Anthropic Institute）](https://www.anthropic.com/institute/recursive-self-improvement) — 宏观论述原文
 
 ### 学完输出什么
 - 一份带证据等级标注的 RSI 现状简报，能直接用于团队决策
@@ -227,7 +227,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 四层标准与 artifact 维度 | [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) |
 | Stage 1 | 改进怎么留下来 | [ASPIRE](../wiki/methods/aspire.md) · [karpathy/autoresearch](../wiki/entities/karpathy-autoresearch.md) |
@@ -239,41 +239,20 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 姊妹路线：改数据供给 vs 改改进机制本身
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — Stage 3 accept 门的评测底座
-  - [ICL（具身上下文学习）](depth-icl.md) — 部署期不动权重的适应；与本路线的"改权重/改机制"正交
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 仿真里的自进化增益能否落真机
-  - [模仿学习与技能迁移](depth-imitation-learning.md) · [人形 RL 运动控制](depth-rl-locomotion.md) — Stage 2 权重级闭环的改进范式来源
-  - [WAM（世界–动作模型）](depth-wam.md) — Motus2 式"策略/想象器/评委同参"的模型侧背景
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — 车队级持续改进的策略载体
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — 真机 reset/verify 最难的一类任务
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [导航（SLAM → Nav2 → VLN → 导航 VLA）](depth-navigation.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [具身测评](depth-embodied-eval.md) — 未见集划分与过程指标，是验证器锚的展开
+  - [具身数据](depth-embodied-data.md) — 飞轮与配比是数据侧的自改进同构
+  - [VLA](depth-vla.md) — 真机策略自改进闭环最常见的改进对象
+  - [ICL](depth-icl.md) — 权重不动的另一条改进路径，用来对照 RSI 边界
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
-本路线基于以下原始资料与 wiki 编译页的归纳：
-
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) — 四层判据与五次推进叙事轴
 - [RSI 全谱系 survey（arXiv:2607.07663）](../wiki/entities/paper-rsi-survey-2607-07663.md) — 两轴 taxonomy 与验证层级
 - [递归自改进（概念页）](../wiki/concepts/recursive-self-improvement.md) — 宏观论述、内部数字读法与三情景
-- [sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md](../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md) — Datawhale RSI 科普综述（赵志民）
-- [sources/sites/anthropic-recursive-self-improvement.md](../sources/sites/anthropic-recursive-self-improvement.md) — When AI builds itself（Anthropic Institute）
-- [sources/papers/ai_auto_research_survey_2605_18661.md](../sources/papers/ai_auto_research_survey_2605_18661.md) — AI for Auto-Research 综述
-- [sources/repos/awesome-rsi.md](../sources/repos/awesome-rsi.md) · [sources/sites/awesome-rsi-github-io.md](../sources/sites/awesome-rsi-github-io.md) — agent 层 RSI 文献索引
+- [这是一篇把"RSI"讲明白的科普级综述！](https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A) — Datawhale RSI 科普综述（赵志民）
+- [When AI builds itself](https://www.anthropic.com/institute/recursive-self-improvement) — When AI builds itself（Anthropic Institute）
+- [AI for Auto-Research: Roadmap & User Guide（综述预印本）](https://arxiv.org/abs/2605.18661) — AI for Auto-Research 综述
+- [Awesome RSI](https://github.com/Prism-Shadow/awesome-rsi) — agent 层 RSI 文献索引

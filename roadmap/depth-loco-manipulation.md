@@ -50,10 +50,10 @@ flowchart LR
 - 读任务页把 2024–2026 技术路线（分层 / 生成式 / VLA / 残差 / 触觉增强）过一遍，画一张自己的分类表
 
 ### 推荐读什么
-- [Loco-Manipulation 任务页](../wiki/tasks/loco-manipulation.md)（本仓库）— 本路线的任务地图与技术路线总入口
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md) 与 [Whole-Body Coordination](../wiki/concepts/whole-body-coordination.md)（本仓库）
-- [Manipulation 任务地图](../wiki/tasks/manipulation.md) 与 [Humanoid Locomotion](../wiki/tasks/humanoid-locomotion.md)（本仓库）
-- [ULTRA 统一移动操作综述](../wiki/tasks/ultra-survey.md)（本仓库）
+- [Loco-Manipulation 任务页](../wiki/tasks/loco-manipulation.md) — 本路线的任务地图与技术路线总入口
+- [Whole-Body Control](../wiki/concepts/whole-body-control.md) 与 [Whole-Body Coordination](../wiki/concepts/whole-body-coordination.md)
+- [Manipulation 任务地图](../wiki/tasks/manipulation.md) 与 [Humanoid Locomotion](../wiki/tasks/humanoid-locomotion.md)
+- [ULTRA 统一移动操作综述](../wiki/tasks/ultra-survey.md)
 
 ### 学完输出什么
 - 能解释移动操作为什么比"行走 + 操作"难，难在哪一层
@@ -80,12 +80,12 @@ flowchart LR
 - 对比"上身固定 / 上身随机动作"两种课程下，下身策略的抗扰能力
 
 ### 推荐读什么
-- [HOMIE](../wiki/entities/paper-loco-manip-161-040-homie.md) 与 [FALCON](../wiki/entities/paper-loco-manip-161-109-falcon.md)（本仓库）— 上下身解耦锚点
-- [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md)（本仓库）— 感知统一低层 LLC
-- [AGILE](../wiki/entities/paper-agile-humanoid-loco-manipulation.md)（本仓库）— NVIDIA Isaac Lab + RSL-RL 全生命周期工作流（Prepare→Train→Evaluate→Deploy），描述符驱动 Sim2Sim/真机 I/O；G1 与 Booster T1 双机验证 locomotion/recovery/motion imitation/loco-manipulation 五类技能，上身专家微调 GR00T N1.5 仿真闭环 pick&place 90%；已开源
-- [运动基座与全身跟踪（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [上身接口](../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)（本仓库）
-- [HTD 解耦 WBC](../wiki/entities/htd-decoupled-wbc.md)（本仓库，CMU/UTA/Bosch，IROS 2026）— [Humanoid Touch Dream](../wiki/entities/paper-humanoid-touch-dream.md) 的下肢+腰控制器实现：Isaac Lab 单 GPU 训 teacher，再 BC→DAgger 蒸馏出可部署 student，跟踪速度与极端躯干姿态并零样本落到 G1；把"上下身解耦"从接口图落成可跑代码（BSD-3-Clause 已开源），VR 遥操作与上层 HTD 策略仍待发布
-- [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)（本仓库）
+- [HOMIE](../wiki/entities/paper-loco-manip-161-040-homie.md) 与 [FALCON](../wiki/entities/paper-loco-manip-161-109-falcon.md) — 上下身解耦锚点
+- [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md) — 感知统一低层 LLC
+- [AGILE](../wiki/entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab + RSL-RL 全生命周期工作流（Prepare→Train→Evaluate→Deploy），描述符驱动 Sim2Sim/真机 I/O；G1 与 Booster T1 双机验证 locomotion/recovery/motion imitation/loco-manipulation 五类技能，上身专家微调 GR00T N1.5 仿真闭环 pick&place 90%；已开源
+- [运动基座与全身跟踪（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [上身接口](../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
+- [HTD 解耦 WBC](../wiki/entities/htd-decoupled-wbc.md)（CMU/UTA/Bosch，IROS 2026）— [Humanoid Touch Dream](../wiki/entities/paper-humanoid-touch-dream.md) 的下肢+腰控制器实现：Isaac Lab 单 GPU 训 teacher，再 BC→DAgger 蒸馏出可部署 student，跟踪速度与极端躯干姿态并零样本落到 G1；把"上下身解耦"从接口图落成可跑代码（BSD-3-Clause 已开源），VR 遥操作与上层 HTD 策略仍待发布
+- [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)
 
 ### 学完输出什么
 - 一个"下身行走 + 上身跟踪"的分层全身控制 demo
@@ -111,10 +111,10 @@ flowchart LR
 - 读 HumanoidMimicGen 的技能片段适配管线，画出"1 条演示 → 1000 条轨迹"的数据流图
 
 ### 推荐读什么
-- [Teleoperation 任务页](../wiki/tasks/teleoperation.md)（本仓库）
-- [数据与遥操作（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-07-data-teleop.md) 与 [Loco-Manip 8 篇数据入口技术地图](../wiki/overview/loco-manip-8-papers-technology-map.md)（本仓库）
-- [HumanoidMimicGen](../wiki/entities/paper-humanoidmimicgen.md) 与 [LEGS](../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)（本仓库）
-- [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md)（本仓库）— 主动感知 + 无机器人示范
+- [Teleoperation 任务页](../wiki/tasks/teleoperation.md)
+- [数据与遥操作（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-07-data-teleop.md) 与 [Loco-Manip 8 篇数据入口技术地图](../wiki/overview/loco-manip-8-papers-technology-map.md)
+- [HumanoidMimicGen](../wiki/entities/paper-humanoidmimicgen.md) 与 [LEGS](../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)
+- [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — 主动感知 + 无机器人示范
 
 ### 学完输出什么
 - 能为给定预算（有 / 无真机、有 / 无动捕）选出可行的数据采集方案
@@ -141,12 +141,12 @@ flowchart LR
 - 逐项消融：去掉预训练先验、去掉残差、去掉物体观测，记录哪个环节掉点最狠
 
 ### 推荐读什么
-- [ResMimic](../wiki/entities/paper-resmimic.md) 与 [VisualMimic](../wiki/entities/paper-notebook-visualmimic.md)（本仓库）
-- [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) 与 [CoorDex](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)（本仓库）
-- [SplitAdapter](../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)（本仓库）
-- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
-- [SMPC-to-RL](../wiki/entities/paper-smpc2rl-loco-manipulation.md)（本仓库）— 仿真 SMPC 当可交互专家数据机，稀疏奖励 offline-to-online FastTD3 接冻结低层；Spot 推箱/扶胎与 G1 推箱真机可部署，策略比教师更快
-- [FetchMan](../wiki/entities/paper-fetchman.md)（本仓库）— MolmoSpaces 15 万场景脚本演示 → BC → Flow-GRPO 突破 BC 天花板；G1 真机 loco-manip 零样本 73.3%；GitHub 占位仓（2026-09-01 前补代码）
+- [ResMimic](../wiki/entities/paper-resmimic.md) 与 [VisualMimic](../wiki/entities/paper-notebook-visualmimic.md)
+- [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) 与 [CoorDex](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)
+- [SplitAdapter](../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)
+- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)
+- [SMPC-to-RL](../wiki/entities/paper-smpc2rl-loco-manipulation.md) — 仿真 SMPC 当可交互专家数据机，稀疏奖励 offline-to-online FastTD3 接冻结低层；Spot 推箱/扶胎与 G1 推箱真机可部署，策略比教师更快
+- [FetchMan](../wiki/entities/paper-fetchman.md) — MolmoSpaces 15 万场景脚本演示 → BC → Flow-GRPO 突破 BC 天花板；G1 真机 loco-manip 零样本 73.3%；GitHub 占位仓（2026-09-01 前补代码）
 
 ### 学完输出什么
 - 一个能在仿真里完成"走近 + 全身接触搬运"的技能策略
@@ -173,13 +173,13 @@ flowchart LR
 - 用一个开源 VLA 在移动操作仿真基准（RoboCasa 类）上跑评测，记录失败模式
 
 ### 推荐读什么
-- [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)（本仓库）
-- [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)（本仓库）
-- [ω-0](../wiki/entities/paper-omega-0.md)（本仓库）— 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%，大幅超同族基线（ψ-0 44.5%、DiT4DiT 43.6%、Fast-WAM 37.1%）；代码/数据 WIP
-- [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [VLA](../wiki/methods/vla.md)（本仓库）
-- [人形 Loco-Manip 161 篇技术地图](../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)（本仓库）— 十类能力形成顺序全景
-- [RoboReact](../wiki/entities/paper-roboreact.md)（本仓库）— 单帧 egocentric RGB-D + 语言生成人类交互视频并编译成物体中心关键帧技能，测试时去掉 VLM 靠再接地 + HOMIE 执行；G1 长程双臂操作四任务均值 SR 81.3%
-- [HAF](../wiki/entities/paper-haf-humanoid-vla-adaptation.md)（本仓库）— 三阶段层次 action flow + DCT 频谱潜空间 SAC，把通才 flow-matching VLA 适配到天工全身 loco-manipulation；均分 70.5%，超 π₀.₅（53.3%）与 GR00T N1.7（38.1%）
+- [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
+- [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
+- [ω-0](../wiki/entities/paper-omega-0.md) — 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%，大幅超同族基线（ψ-0 44.5%、DiT4DiT 43.6%、Fast-WAM 37.1%）；代码/数据 WIP
+- [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [VLA](../wiki/methods/vla.md)
+- [人形 Loco-Manip 161 篇技术地图](../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md) — 十类能力形成顺序全景
+- [RoboReact](../wiki/entities/paper-roboreact.md) — 单帧 egocentric RGB-D + 语言生成人类交互视频并编译成物体中心关键帧技能，测试时去掉 VLM 靠再接地 + HOMIE 执行；G1 长程双臂操作四任务均值 SR 81.3%
+- [HAF](../wiki/entities/paper-haf-humanoid-vla-adaptation.md) — 三阶段层次 action flow + DCT 频谱潜空间 SAC，把通才 flow-matching VLA 适配到天工全身 loco-manipulation；均分 70.5%，超 π₀.₅（53.3%）与 GR00T N1.7（38.1%）
 
 ### 学完输出什么
 - 能画出"分层 / 生成式 / VLA / WAM"四条路线的架构对比图
@@ -212,7 +212,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 行走 × 操作耦合 | [Loco-Manipulation 任务页](../wiki/tasks/loco-manipulation.md) |
 | Stage 1 | 全身控制基座 | [HOMIE](../wiki/entities/paper-loco-manip-161-040-homie.md) |
@@ -224,37 +224,15 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — 上肢精细接触侧的展开版
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 下身基座的训练侧前置
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 数据与技能学习的前置
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接口的展开版
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 全身行为先验的展开版
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 B 的邻接路线
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [RL 运动控制](depth-rl-locomotion.md) — 行走底座
+  - [接触操作](depth-contact-manipulation.md) — 操作侧的接触力与 IL
+  - [遥操作](depth-teleoperation.md) — 上下身解耦采集的常见入口
+  - [导航](depth-navigation.md) — 到点移动与全身协调的交界
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Loco-Manipulation 任务页](../wiki/tasks/loco-manipulation.md) 与 [人形 Loco-Manip 161 篇技术地图](../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)
 - "Coordinating Locomotion and Manipulation of a Mobile Manipulator" (Yamamoto & Yun, 1994) — 移动操作协调控制起点

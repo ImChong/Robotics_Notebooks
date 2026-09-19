@@ -51,10 +51,10 @@ flowchart LR
 - 用分类学页给 VLM / VLN / VLA / WAM / BFM 各找一个代表工作，写一页纸对照表
 
 ### 推荐读什么
-- [Behavior Foundation Model](../wiki/concepts/behavior-foundation-model.md)（本仓库）— taxonomy 主入口
-- [BFM 41 篇技术地图](../wiki/overview/bfm-41-papers-technology-map.md)（本仓库）
-- [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)（本仓库）
-- [Foundation Policy](../wiki/concepts/foundation-policy.md)（本仓库）— 与 BFM 的母子概念关系
+- [Behavior Foundation Model](../wiki/concepts/behavior-foundation-model.md) — taxonomy 主入口
+- [BFM 41 篇技术地图](../wiki/overview/bfm-41-papers-technology-map.md)
+- [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
+- [Foundation Policy](../wiki/concepts/foundation-policy.md) — 与 BFM 的母子概念关系
 
 ### 学完输出什么
 - 能一句话说清 BFM 是什么、不是什么
@@ -80,10 +80,10 @@ flowchart LR
 - 用一套 AMASS 数据跑通 retargeting 到目标人形模型，检查关节限位与穿模
 
 ### 推荐读什么
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）
-- [AMASS](../wiki/entities/amass.md) 与 [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）
-- [Humanoid-X](../wiki/entities/dataset-bfm-humanoid-x.md) 等 dataset-bfm 系列（本仓库）
-- [Reward 设计](../wiki/concepts/reward-design.md)（本仓库）
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)
+- [AMASS](../wiki/entities/amass.md) 与 [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)
+- [Humanoid-X](../wiki/entities/dataset-bfm-humanoid-x.md) 等 dataset-bfm 系列
+- [Reward 设计](../wiki/concepts/reward-design.md)
 
 ### 学完输出什么
 - 一条能从动捕数据走到仿真参考轨迹的完整数据管线
@@ -109,15 +109,15 @@ flowchart LR
 - 对比"单片段模仿"与"全库跟踪"策略在未见动作上的表现
 
 ### 推荐读什么
-- 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)（本仓库）
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 工程可用的跟踪基座
-- [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md)（本仓库）— BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
-- [PFM-HR](../wiki/entities/paper-pfm-hr.md)（本仓库）— 无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励，冻结挂载 ADD/BeyondMimic 不改部署栈；高动态技能（Backflip、Double Kong 等）样本效率相对 PDF-HR 提升 14–29%，LaFAN1 通用跟踪位置误差相对 ADD/PDF-HR 均降约 8–10%；代码仓占位待开放
-- [ZEST](../wiki/entities/paper-zest.md)（本仓库，Science Robotics 2026，RAI Institute × Boston Dynamics）— 用 ViCap（视频到动捕）当天出参考、极简观测/奖励配方跨 100 kg Atlas / 35 kg G1 / 12-DoF Spot 复用；全尺寸 Atlas 首次稳定做出膝/肘/躯干贴地多接触技能（爬行、前滚、地板舞）；确认未开源
-- [HumanTracker](../wiki/entities/paper-humantracker.md)（本仓库）— 四族光学跟踪基准 + HumanScore，把参考表示/rollout 记账/终止准则钉死统一评测 GMT/TWIST2/SONIC/Humanoid-GPT；族均衡对齐率 90.83%，比最强单条解析诊断高约 6.8 点；评测代码已开源，153h/25K 数据集待发布
-- [GigaBrain-WBC-0.5](../wiki/entities/paper-gigabrain-wbc-0-5.md)（本仓库）— 首个 humanoid Behavior World Model：因果 Transformer 联合预测 action/state/next-command GMM，自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；代码 coming soon
-- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
-- [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）
+- 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)
+- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 工程可用的跟踪基座
+- [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md) — BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
+- [PFM-HR](../wiki/entities/paper-pfm-hr.md) — 无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励，冻结挂载 ADD/BeyondMimic 不改部署栈；高动态技能（Backflip、Double Kong 等）样本效率相对 PDF-HR 提升 14–29%，LaFAN1 通用跟踪位置误差相对 ADD/PDF-HR 均降约 8–10%；代码仓占位待开放
+- [ZEST](../wiki/entities/paper-zest.md)（Science Robotics 2026，RAI Institute × Boston Dynamics）— 用 ViCap（视频到动捕）当天出参考、极简观测/奖励配方跨 100 kg Atlas / 35 kg G1 / 12-DoF Spot 复用；全尺寸 Atlas 首次稳定做出膝/肘/躯干贴地多接触技能（爬行、前滚、地板舞）；确认未开源
+- [HumanTracker](../wiki/entities/paper-humantracker.md) — 四族光学跟踪基准 + HumanScore，把参考表示/rollout 记账/终止准则钉死统一评测 GMT/TWIST2/SONIC/Humanoid-GPT；族均衡对齐率 90.83%，比最强单条解析诊断高约 6.8 点；评测代码已开源，153h/25K 数据集待发布
+- [GigaBrain-WBC-0.5](../wiki/entities/paper-gigabrain-wbc-0-5.md) — 首个 humanoid Behavior World Model：因果 Transformer 联合预测 action/state/next-command GMM，自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；代码 coming soon
+- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)
+- [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ### 学完输出什么
 - 一个跑通的人形动作跟踪 demo
@@ -143,9 +143,9 @@ flowchart LR
 - 在小环境里复现一个 DIAYN 式技能发现实验，观察技能多样性
 
 ### 推荐读什么
-- 三线分类页：[FB 表征](../wiki/overview/bfm-category-01-forward-backward-representation.md)、[Goal-conditioned](../wiki/overview/bfm-category-02-goal-conditioned-learning.md)、[Intrinsic-reward](../wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md)（本仓库）
-- 代表工作：[BFM4Humanoid](../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[BFM-Zero](../wiki/entities/paper-bfm-zero.md)、[MetaMotivo](../wiki/entities/paper-bfm-02-metamotivo.md)、[DIAYN](../wiki/entities/paper-bfm-30-diayn.md)（本仓库）
-- [TeCH](../wiki/entities/paper-tech-humanoid-control.md)（本仓库）— 基于 TLDR 对比时间距离表征的无监督预训练：隐空间密集进度奖励 + off-policy，零样本跟踪/目标到达；G1 上跟踪精度对标 SONIC 且 GPU 时长降近两个数量级
+- 三线分类页：[FB 表征](../wiki/overview/bfm-category-01-forward-backward-representation.md)、[Goal-conditioned](../wiki/overview/bfm-category-02-goal-conditioned-learning.md)、[Intrinsic-reward](../wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md)
+- 代表工作：[BFM4Humanoid](../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[BFM-Zero](../wiki/entities/paper-bfm-zero.md)、[MetaMotivo](../wiki/entities/paper-bfm-02-metamotivo.md)、[DIAYN](../wiki/entities/paper-bfm-30-diayn.md)
+- [TeCH](../wiki/entities/paper-tech-humanoid-control.md) — 基于 TLDR 对比时间距离表征的无监督预训练：隐空间密集进度奖励 + off-policy，零样本跟踪/目标到达；G1 上跟踪精度对标 SONIC 且 GPU 时长降近两个数量级
 
 ### 学完输出什么
 - 能向同事讲清三条预训练线的信号来源、适用场景与代价
@@ -173,10 +173,10 @@ flowchart LR
 - 在仿真里把一个语言指令 pipeline 接到动作跟踪低层（哪怕先用有限状态机中转）
 
 ### 推荐读什么
-- 适应两线分类页：[Adaptation](../wiki/overview/bfm-category-04-adaptation.md) 与 [Hierarchical](../wiki/overview/bfm-category-05-hierarchical-control.md)（本仓库）
-- [LangWBC](../wiki/entities/paper-bfm-37-langwbc.md) 与 [LeVERB](../wiki/entities/paper-bfm-36-leverb.md)（本仓库）
-- [GR00T-WholeBodyControl](../wiki/entities/gr00t-wholebodycontrol.md) 与 [Humanoid-VLA](../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md)（本仓库）
-- [ReactiveBFM](../wiki/entities/paper-reactivebfm.md)（本仓库）
+- 适应两线分类页：[Adaptation](../wiki/overview/bfm-category-04-adaptation.md) 与 [Hierarchical](../wiki/overview/bfm-category-05-hierarchical-control.md)
+- [LangWBC](../wiki/entities/paper-bfm-37-langwbc.md) 与 [LeVERB](../wiki/entities/paper-bfm-36-leverb.md)
+- [GR00T-WholeBodyControl](../wiki/entities/gr00t-wholebodycontrol.md) 与 [Humanoid-VLA](../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md)
+- [ReactiveBFM](../wiki/entities/paper-reactivebfm.md)
 
 ### 学完输出什么
 - 能为"人形 + 语言任务"设计一套分层方案，并说清接口选型的取舍
@@ -209,7 +209,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | BFM 定义与分类学 | [Behavior Foundation Model](../wiki/concepts/behavior-foundation-model.md) |
 | Stage 1 | 训练与数据基座 | [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) |
@@ -221,37 +221,15 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — 姊妹路线：BFM 管身体级协调，VLA 管任务级语义
-  - [WAM（世界–动作模型）](depth-wam.md) — 前向后果耦合；可与 VLA / BFM 分层叠用
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 本路线的训练侧前置
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 1 动捕数据基座的展开版
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 行为先验的显式轨迹层表达
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 动作数据与 retargeting 的展开版
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的展开版
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — Stage 5 方向 A 的邻接路线
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 验收环节：怎么证明这个 checkpoint 真的更好
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [动作重定向](depth-motion-retargeting.md) — 参考运动进跟踪器的前置
+  - [动作生成](depth-motion-generation.md) — 参考运动的合成来源
+  - [RL 运动控制](depth-rl-locomotion.md) — 跟踪/技能常作 locomotion 先验
+  - [人形拳击](depth-humanoid-boxing.md) — 潜空间技能与对抗的产品向展开
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Behavior Foundation Model](../wiki/concepts/behavior-foundation-model.md) 与 [BFM 41 篇技术地图](../wiki/overview/bfm-41-papers-technology-map.md)
 - "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills" (Peng et al., 2018) — 动作跟踪谱系起点

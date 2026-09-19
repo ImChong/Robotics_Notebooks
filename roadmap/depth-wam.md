@@ -51,9 +51,9 @@ flowchart LR
 - 从 [Awesome-WAM](../wiki/concepts/world-action-models.md) / OpenMOSS 列表挑 3 篇，各用一句话归入 Cascaded 或 Joint
 
 ### 推荐读什么
-- [World Action Models（WAM）](../wiki/concepts/world-action-models.md)（本仓库）— 概念枢纽
-- [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)（本仓库）
-- [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)（本仓库）— WAM 对应五层闭环的 **⑤ 推演层 · 联合建模**
+- [World Action Models（WAM）](../wiki/concepts/world-action-models.md) — 概念枢纽
+- [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
+- [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — WAM 对应五层闭环的 **⑤ 推演层 · 联合建模**
 - Wang et al., *World Action Models* — [arXiv:2605.12090](https://arxiv.org/abs/2605.12090)
 
 ### 学完输出什么
@@ -80,15 +80,15 @@ flowchart LR
 - 在纸上画出一条 Cascaded 管线的信息流：观测 → 未来表征 → IDM / 动作头 → 控制
 
 ### 推荐读什么
-- [Generative World Models](../wiki/methods/generative-world-models.md)（本仓库）
-- [Model-Based RL](../wiki/methods/model-based-rl.md)（本仓库）
-- [机器人世界模型训练闭环 taxonomy](../wiki/overview/robot-world-models-training-loop-taxonomy.md)（本仓库）
-- [τ₀-World Model（τ0-WM）](../wiki/entities/tau0-world-model.md)（本仓库）— 联合预测 + 测试时修订的对照实例
-- [PhysisForcing](../wiki/entities/paper-physisforcing.md)（本仓库）— 训练期分层物理对齐（像素级轨迹 + 语义级 token 关系），推理零额外开销："视频保真 ≠ 物理可信"的正面解法
-- [PhysMani](../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)（本仓库）— 在线学习的无散度 3D Gaussian 速度场世界模型与 future-aware 策略并行耦合，面向快速动态目标操作（ECCV 2026）
-- [Xiaomi-Robotics-U0](../wiki/entities/xiaomi-robotics-u0.md)（本仓库）— 38B 统一自回归世界基础模型：T2I/X2I 与多视角具身场景生成/迁移/操纵视频共训，不内置策略头，作为下游 VLA 的合成数据引擎——「视觉逼真≠动作可推断」的直接例证
-- [ODEWorld](../wiki/entities/paper-odeworld.md)（本仓库）— PT-Flow 在物理时间上学 latent ODE 速度场，JVP 一阶监督 + 动力学解耦缓解 JEPA 坍塌；LIBERO 长程视频 PSNR 19.46，AgileX+X-VLA 55%→80%；推理与权重已开源
-- [Hydra-0](../wiki/entities/paper-hydra-0.md)（本仓库）— 用图像平面稀疏 action flow 作跨具身 WM 条件，robot EPE −90.4%、RoboLab 开环 r=0.96；2,202 h 训练；确认未开源
+- [Generative World Models](../wiki/methods/generative-world-models.md)
+- [Model-Based RL](../wiki/methods/model-based-rl.md)
+- [机器人世界模型训练闭环 taxonomy](../wiki/overview/robot-world-models-training-loop-taxonomy.md)
+- [τ₀-World Model（τ0-WM）](../wiki/entities/tau0-world-model.md) — 联合预测 + 测试时修订的对照实例
+- [PhysisForcing](../wiki/entities/paper-physisforcing.md) — 训练期分层物理对齐（像素级轨迹 + 语义级 token 关系），推理零额外开销："视频保真 ≠ 物理可信"的正面解法
+- [PhysMani](../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md) — 在线学习的无散度 3D Gaussian 速度场世界模型与 future-aware 策略并行耦合，面向快速动态目标操作（ECCV 2026）
+- [Xiaomi-Robotics-U0](../wiki/entities/xiaomi-robotics-u0.md) — 38B 统一自回归世界基础模型：T2I/X2I 与多视角具身场景生成/迁移/操纵视频共训，不内置策略头，作为下游 VLA 的合成数据引擎——「视觉逼真≠动作可推断」的直接例证
+- [ODEWorld](../wiki/entities/paper-odeworld.md) — PT-Flow 在物理时间上学 latent ODE 速度场，JVP 一阶监督 + 动力学解耦缓解 JEPA 坍塌；LIBERO 长程视频 PSNR 19.46，AgileX+X-VLA 55%→80%；推理与权重已开源
+- [Hydra-0](../wiki/entities/paper-hydra-0.md) — 用图像平面稀疏 action flow 作跨具身 WM 条件，robot EPE −90.4%、RoboLab 开环 r=0.96；2,202 h 训练；确认未开源
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"
@@ -114,12 +114,12 @@ flowchart LR
 - 任选一篇 Cascaded 论文，标出推理时是否仍生成完整未来视频
 
 ### 推荐读什么
-- [DeFI（解耦动力学 VLA）](../wiki/methods/defi-decoupled-dynamics-vla.md)（本仓库）
-- [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节（本仓库）
-- [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md)（本仓库）— Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，G1 真机 loco-manipulation 显著超 GR00T-N1.6
-- [SLIM-0.5B](../wiki/entities/paper-slim-05b.md)（本仓库）— Stage-1 IDM+FDM 掩码轨迹解耦预训练 + Stage-2 MoT flow 联合微调，与 DeFI 同源"正逆动力学同骨干"思路但把未来预测收窄为纯训练信号（不进控制环）；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556，真机端到端 77.3 ms · 2.01 GiB；已开源（GitHub + HF 权重）
-- [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md)（本仓库）— VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码待发布
-- [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md)（本仓库）— 与 Joint / 部署横切对照
+- [DeFI（解耦动力学 VLA）](../wiki/methods/defi-decoupled-dynamics-vla.md)
+- [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节
+- [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，G1 真机 loco-manipulation 显著超 GR00T-N1.6
+- [SLIM-0.5B](../wiki/entities/paper-slim-05b.md) — Stage-1 IDM+FDM 掩码轨迹解耦预训练 + Stage-2 MoT flow 联合微调，与 DeFI 同源"正逆动力学同骨干"思路但把未来预测收窄为纯训练信号（不进控制环）；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556，真机端到端 77.3 ms · 2.01 GiB；已开源（GitHub + HF 权重）
+- [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md) — VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码待发布
+- [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md) — 与 Joint / 部署横切对照
 
 ### 学完输出什么
 - 能画出 Cascaded WAM 的模块边界，并指出对齐失败时通常坏在哪一环
@@ -145,23 +145,23 @@ flowchart LR
 - 对照 ABot-M0.5 的 Dream Forcing：解释自生成视频 latent 上训逆动力学在对齐什么
 
 ### 推荐读什么
-- [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)（本仓库）
-- [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（本仓库）
-- [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)（本仓库）
-- [Dexmal DW05（OpenDW）](../wiki/entities/dexmal-dw05.md)（本仓库）— Wan 骨干 + MoT 三专家头联合视频/动作/价值的开源 Joint WAM，含训练/推理全栈与 RoboTwin 2.0 微调评测包
-- [Lumo-2（Latent World-Action Model）](../wiki/entities/lumo-2.md)（本仓库）— Qwen3.5-4B 潜空间世界–动作模型，三阶段渐进模态预对齐 + BAR 块解码，真机 22 项挑战全面超 π₀.₅/Fast-WAM
-- [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)、[Kairos](../wiki/entities/paper-kairos-native-world-model-stack.md)（本仓库）
-- [Cosmos 3](../wiki/entities/cosmos-3.md)（本仓库）— 平台级 Joint / 多任务 I/O 对照
-- [WorldScape Policy 2.0](../wiki/entities/paper-worldscape-policy-2.md)（本仓库）— 事件级 VLM 记忆（三视图检索 + 门控）与视觉短期记忆双通路分工，semantic forcing 对齐；RoboTwin 2.0 94.3%，clean-only 训练下 C2R 47.9% 大幅超 Fast-WAM 39.1%，真机跨本体迁移 10–20%→60–70%；代码/权重截至入库日未发布
-- [ω-0](../wiki/entities/paper-omega-0.md)（本仓库）— 潜空间未来观测 embedding + SONIC 全身动作 latent 扩散的人形并发 loco-manip Joint WAM；ω-HOME 40h+/4827 episodes，G1 上 11 任务 Omni 成功率 81.8% 大幅超 ψ-0（44.5%）/DiT4DiT（43.6%）/Fast-WAM（37.1%）；代码/数据 WIP
-- [DreamWAM](../wiki/entities/paper-dreamwam.md)（本仓库）— 训练期用 RGB+Flow 联合去噪与 Depth/DINO 门控残差监督 beyond-RGB 未来（外观+运动+几何+语义），推理仍 RGB-only；LIBERO-Plus 69.16%→75.47%、真机视觉扰动 55.6%→74.4%；代码/权重已开源
-- [Dyna-2](../wiki/entities/dyna-2.md)（本仓库）— Dyna Robotics 闭源旗舰 WAM：≥1M h egocentric 人视频预训练（零机器人数据），报告人 held-out 与人→机零样本幂律；消融主张 video co-training 是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；未开源
-- [Riemann-1.0](../wiki/entities/paper-riemann-1.md)（本仓库）— 黎曼动力闭源全因果 AR WAM：动作优先再条件化未来视觉；232K+ h 人/UMI/机三阶段课程；RoboCasa365 62.6%（+8.4 vs ABot-M0.5）、天机 Marvin 真机均 85.0% SR；无 arXiv / 未开源
-- [FACT](../wiki/entities/paper-fact.md)（本仓库）— 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
-- [Motubrain](../wiki/entities/paper-motubrain.md)（本仓库）— UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
-- [Flex-π](../wiki/entities/paper-flex-pi.md)（本仓库）— 6B 多流 Joint WAM，共享冻结 Wan VAE 联合编码 RGB+pointmap+DINOv3，流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布
-- [GlanceWAM](../wiki/entities/paper-glancewam.md)（本仓库）— 单视频 DiT 内异步稀疏前瞻，想象离关键路径、动作头潜空间 48 ms 解码；RoboCasa 72.2%、LIBERO 99.0%；代码与权重已开源
-- [OpenWAM](../wiki/entities/paper-openwam.md)（本仓库）— 模块化 Infra + Study 六项对照提炼预训练三原则；OpenWAM-α Wan2.2-5B + ActionDiT mutual mask；518.5M 帧一阶段 ego+robot 共训；LIBERO 99.3%、RoboTwin2.0-Full 89.0%、RoboDojo 真机 37.6/24.4% SR；GitHub + HF 46 检查点已开源
+- [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
+- [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
+- [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
+- [Dexmal DW05（OpenDW）](../wiki/entities/dexmal-dw05.md) — Wan 骨干 + MoT 三专家头联合视频/动作/价值的开源 Joint WAM，含训练/推理全栈与 RoboTwin 2.0 微调评测包
+- [Lumo-2（Latent World-Action Model）](../wiki/entities/lumo-2.md) — Qwen3.5-4B 潜空间世界–动作模型，三阶段渐进模态预对齐 + BAR 块解码，真机 22 项挑战全面超 π₀.₅/Fast-WAM
+- [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)、[Kairos](../wiki/entities/paper-kairos-native-world-model-stack.md)
+- [Cosmos 3](../wiki/entities/cosmos-3.md) — 平台级 Joint / 多任务 I/O 对照
+- [WorldScape Policy 2.0](../wiki/entities/paper-worldscape-policy-2.md) — 事件级 VLM 记忆（三视图检索 + 门控）与视觉短期记忆双通路分工，semantic forcing 对齐；RoboTwin 2.0 94.3%，clean-only 训练下 C2R 47.9% 大幅超 Fast-WAM 39.1%，真机跨本体迁移 10–20%→60–70%；代码/权重截至入库日未发布
+- [ω-0](../wiki/entities/paper-omega-0.md) — 潜空间未来观测 embedding + SONIC 全身动作 latent 扩散的人形并发 loco-manip Joint WAM；ω-HOME 40h+/4827 episodes，G1 上 11 任务 Omni 成功率 81.8% 大幅超 ψ-0（44.5%）/DiT4DiT（43.6%）/Fast-WAM（37.1%）；代码/数据 WIP
+- [DreamWAM](../wiki/entities/paper-dreamwam.md) — 训练期用 RGB+Flow 联合去噪与 Depth/DINO 门控残差监督 beyond-RGB 未来（外观+运动+几何+语义），推理仍 RGB-only；LIBERO-Plus 69.16%→75.47%、真机视觉扰动 55.6%→74.4%；代码/权重已开源
+- [Dyna-2](../wiki/entities/dyna-2.md) — Dyna Robotics 闭源旗舰 WAM：≥1M h egocentric 人视频预训练（零机器人数据），报告人 held-out 与人→机零样本幂律；消融主张 video co-training 是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；未开源
+- [Riemann-1.0](../wiki/entities/paper-riemann-1.md) — 黎曼动力闭源全因果 AR WAM：动作优先再条件化未来视觉；232K+ h 人/UMI/机三阶段课程；RoboCasa365 62.6%（+8.4 vs ABot-M0.5）、天机 Marvin 真机均 85.0% SR；无 arXiv / 未开源
+- [FACT](../wiki/entities/paper-fact.md) — 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
+- [Motubrain](../wiki/entities/paper-motubrain.md) — UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
+- [Flex-π](../wiki/entities/paper-flex-pi.md) — 6B 多流 Joint WAM，共享冻结 Wan VAE 联合编码 RGB+pointmap+DINOv3，流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布
+- [GlanceWAM](../wiki/entities/paper-glancewam.md) — 单视频 DiT 内异步稀疏前瞻，想象离关键路径、动作头潜空间 48 ms 解码；RoboCasa 72.2%、LIBERO 99.0%；代码与权重已开源
+- [OpenWAM](../wiki/entities/paper-openwam.md) — 模块化 Infra + Study 六项对照提炼预训练三原则；OpenWAM-α Wan2.2-5B + ActionDiT mutual mask；518.5M 帧一阶段 ego+robot 共训；LIBERO 99.3%、RoboTwin2.0-Full 89.0%、RoboDojo 真机 37.6/24.4% SR；GitHub + HF 46 检查点已开源
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态
@@ -187,9 +187,9 @@ flowchart LR
 - 为自己的场景选一类部署接口，写清输入输出与是否冻结基础 VLA
 
 ### 推荐读什么
-- [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)（本仓库）
-- [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)（本仓库）
-- [VT-WAM](../wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) · [MECo-WAM](../wiki/entities/paper-meco-wam-4d-geometry-cotraining.md)（本仓库）
+- [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)
+- [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
+- [VT-WAM](../wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) · [MECo-WAM](../wiki/entities/paper-meco-wam-4d-geometry-cotraining.md)
 - [接触操作纵深](depth-contact-manipulation.md) — 力 / 触觉工程侧展开
 
 ### 学完输出什么
@@ -223,7 +223,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | VLA / WM / WAM 边界与族谱 | [World Action Models](../wiki/concepts/world-action-models.md) |
 | Stage 1 | 生成式 WM 与动力学基座 | [Generative World Models](../wiki/methods/generative-world-models.md) |
@@ -235,40 +235,18 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — 姊妹路线：VLA 管反应式语义策略，WAM 管前向后果耦合
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 身体级协调；可与 WAM / VLA 分层叠用
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 验收环节：世界模型保真度与策略评估器的评测层
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 动作头与人数据共训的展开版
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Joint WAM 在全身任务上的主战场之一
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 B 的展开版
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — Stage 4 触觉 / 力控工程侧
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md) — 机制对照：零梯度上下文 vs 快权重 TTT
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](README.md)）：
+  - [VLA](depth-vla.md) — 直接出动作的对照范式
+  - [ICL](depth-icl.md) — 上下文适应 vs 显式世界–动作联合
+  - [动作生成](depth-motion-generation.md) — 未来视频/动作的生成侧
+  - [具身测评](depth-embodied-eval.md) — 世界模型保真与策略成功率
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
-本路线基于以下原始资料与 wiki 编译页的归纳：
-
 - [World Action Models（WAM）概念页](../wiki/concepts/world-action-models.md)
-- [sources/papers/world_action_models_survey_2605.md](../sources/papers/world_action_models_survey_2605.md) — Wang et al., arXiv:2605.12090
+- [World Action Models: The Next Frontier in Embodied AI（综述预印本）](https://arxiv.org/abs/2605.12090) — Wang et al., arXiv:2605.12090
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md) 与 2026-07 策展 12 篇实体页
 - [机器人世界模型训练闭环 taxonomy](../wiki/overview/robot-world-models-training-loop-taxonomy.md)
 - [GlanceWAM / VLA Crew 10 篇技术地图（2026-08-30 策展）](../wiki/overview/glancewam-vla-crew-10-papers-technology-map.md)
