@@ -11,6 +11,7 @@
 - **论文：** <https://arxiv.org/abs/2607.19343>
 - **项目页：** <https://masked-visual-actions.github.io>
 - **入库日期：** 2026-07-22
+- **最后核查：** 2026-09-19
 - **一句话说明：** 在 **Wan2.2-Fun-A14B-Control** 上训 **双专家 LoRA**（高噪声 / 低噪声 DiT）的薄封装：不改视频模型本身，用 [DiffSynth-Studio](https://github.com/modelscope/DiffSynth-Studio)（钉定 commit `3743b130…`）做训练与推理；输入 **control video**（如 URDF 渲染机器人）+ **reference image** + **text prompt**，输出 RGB 视频。
 
 ## 入口速查（对齐 README）

@@ -9,16 +9,17 @@
 - **代码：** <https://github.com/HadiZayer/masked-visual-actions>
 - **权重：** <https://huggingface.co/HadiZayer/masked-visual-actions>
 - **入库日期：** 2026-07-22
+- **最后核查：** 2026-09-19（用户指定 re-ingest）
 - **一句话说明：** 官方项目页展示 **Masked Visual Actions**（像素空间掩码轨迹作统一动作接口）：同一视频世界模型在 **前向**（机器人掩码 → 场景响应）与 **逆**（物体掩码 → 机器人运动）两种设定下工作，并演示策略评估、Best-of-N 规划与跨未见具身泛化。
 
-## 开源状态（项目页核查，2026-07-22）
+## 开源状态（项目页 + GitHub 核查，2026-09-19）
 
 | 项 | 状态 |
 |----|------|
-| Paper | arXiv **已发布**（2607.19343）；项目页 `paper.pdf` 链接 **404** / BibTeX 仍为 `XXXX.XXXXX` 占位 |
+| Paper | arXiv **已发布**（[2607.19343](https://arxiv.org/abs/2607.19343)，PDF：<https://arxiv.org/pdf/2607.19343>）；项目页底部 BibTeX **已补齐**；Paper 按钮若仍指向本地 `paper.pdf` 可能 **404** — 以 arXiv 为准 |
 | Code | 已挂链 — [HadiZayer/masked-visual-actions](https://github.com/HadiZayer/masked-visual-actions) |
-| Checkpoints | README / 脚本指向 HF `HadiZayer/masked-visual-actions`（双专家 LoRA） |
-| 复现范围 | **部分开源**：推理 + DiffSynth LoRA 训练配方可运行；**DROID URDF 渲染工具** README 写 *coming soon* |
+| Checkpoints | HF [`HadiZayer/masked-visual-actions`](https://huggingface.co/HadiZayer/masked-visual-actions)（双专家 LoRA） |
+| 复现范围 | **部分开源**：`infer.py` + `train_control.sh` + DiffSynth 钉定 commit 可运行；**DROID URDF 控制视频渲染** README 仍为 *coming soon* |
 | License | 仓库 **Apache-2.0** |
 
 ## 页面结构（策展）
@@ -28,7 +29,8 @@
 - **Policy Evaluation** — 毛巾 / 毛绒等真机演示与模型仿真对齐
 - **Why Masked Visual Actions?** — 对照 Skeleton / EEF；未见夹爪与双臂具身上更稳
 - **Comparison** — vs Ctrl-World / Wan-Move / Wan-I2V（DROID + BEHAVIOR）
-- **Failure Cases** — 精细接触、参考帧未见区域伪影
+- **Extreme Generalization** — 条件为 orangutan 掩码动作时仍可补全场景（训练域外具身 stress test）
+- **Failure Cases** — 精细/subtle 接触易不自然；参考帧未见的物体部位（如杯柄）易伪影
 
 ## 对 wiki 的映射
 
