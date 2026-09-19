@@ -2,10 +2,11 @@
 type: roadmap_page
 tags: [roadmap, humanoid, career, hardware, manufacturing, testing, mechanical]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-19
 related:
   - ./humanoid-control-roadmap.md
   - ../concepts/humanoid-mass-production-engineering.md
+  - ../concepts/humanoid-testing-workflow.md
   - ../overview/humanoid-hardware-101-technology-map.md
   - ../../roadmap/depth-humanoid-hardware-design.md
   - ../queries/humanoid-hardware-selection.md
@@ -77,7 +78,7 @@ flowchart LR
 |------|----------|----------|
 | **机械结构** | 结构工程师、试制工程师 | 选一个关节/连杆/夹爪，完成需求→建模→打样→测试 |
 | **执行器/关节模组** | 关节模组、执行器、传动工程师 | 从测试/集成/供应商工程进入，关注力矩、回差、温升、编码器安装 |
-| **测试与验证** | 测试、可靠性、标定工程师 | 把寿命、温升、步态稳定、故障模式变成 **可重复方法与数据** |
+| **测试与验证** | 测试、可靠性、标定工程师 | 把寿命、温升、步态稳定、故障模式变成 **可重复方法与数据**；见 [人形测试 L0–L5](../concepts/humanoid-testing-workflow.md) |
 | **制造与工艺** | 工艺、制造、SQE、NPI | 从 DFM/DFA、工装、CPK、MES 理解样机→量产；见 [量产工程能力](../concepts/humanoid-mass-production-engineering.md) |
 
 ## 工程实践

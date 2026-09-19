@@ -1,3 +1,5 @@
+## [2026-09-19] ingest | sources/blogs/wechat_zanehub_humanoid_testing_workflow_2026-09-19.md — Zane Hub 人形 L0–L5 测试流程升格 wiki/concepts/humanoid-testing-workflow.md
+
 ## [2026-09-19] ingest | sources/repos/agent_lightning.md — 接入 Microsoft Agent Lightning v1.0 agentic RL 框架（Gateway+Controller+verl）；已开源
 
 ## [2026-09-18] lint | 清零全库 35 条信息型预警：14 篇 lc-awesome-sim2real 策展索引页按核验来源补 venue（DOI/Crossref/CEUR/项目页逐条确认）、18 篇 paper-* 补「与其他工作对比」（NPHM 另补「实验与评测」）、paper-humanclaw 回链评测基准枢纽、paper-passage 回链感知栈枢纽、stale-claim 巡检把「不包装成 SOTA」纳入「不 + 谓词」辟谣豁免并补回归测试

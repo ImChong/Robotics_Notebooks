@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, harmonic-drive, knee, leg, roller-screw, qdd]
 status: complete
-updated: 2026-09-13
+updated: 2026-09-19
 related:
   - ./planetary-roller-screw-humanoid-leg-actuation.md
   - ../overview/humanoid-actuator-102-split-architecture.md
