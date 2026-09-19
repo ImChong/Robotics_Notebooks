@@ -3420,7 +3420,7 @@
 - [UniLidar SDK（L1 / L2）](wiki/entities/unilidar-sdk2.md) — 宇树激光雷达产品线 SDK：**L2 用 `unilidar_sdk2`**，**L1 用 `unilidar_sdk`**。本页合并为一个知识节点，按代际对照，避免两个几乎同构的 stub。 `📅unknown` `[entity_page]`
 - [Unitree 灵巧手 Serial↔DDS 服务](wiki/entities/unitree-dexterous-hand-services.md) — 人形双臂操作常需把厂家手部串口协议桥到 Unitree **DDS** 主题。组织下按手型拆仓；本页合并为**一个节点**，按手型索引。 `📅unknown` `[entity_page]`
 - [Unitree G1 软件服务栈](wiki/entities/unitree-g1-software-stack.md) — G1 软件服务栈**指在 Unitree G1 上通过 **unitree_sdk2 / CycloneDDS**（及可选 ROS 2 桥）暴露的 **运控、 `📅unknown` `[entity_page]`
-- [Unitree G1 (人形机器人)](wiki/entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
+- [Unitree G1 (人形机器人)](wiki/entities/unitree-g1.md) — Unitree G1** 是宇树科技在 H1 之后推出的量产型高性价比人形机器人：小型、可折叠、全关节力控、自带 3D LiDAR 与深度相机，配合官方 RL / 遥操作开源栈，已成为学术界人形运 `📅unknown` `[entity_page]`
 - [unitree_guide](wiki/entities/unitree-guide.md) — unitree_guide** 是宇树公开的四足控制教学项目，亦是图书《四足机器人控制算法——建模、控制与实践》的配套软件。 `📅unknown` `[entity_page]`
 - [unitree_legged_sdk](wiki/entities/unitree-legged-sdk.md) — unitree_legged_sdk** 主要用于 PC 与运控板之间的通信（亦可在其它机器上经 UDP 使用）。现行 tag（如 v3.8.x）文档写明主支持 **Go1**；Laikago/B `📅unknown` `[entity_page]`
 - [unitree_lerobot](wiki/entities/unitree-lerobot.md) — unitree_lerobot** 把 LeRobot 训练栈接到 Unitree **G1 + 灵巧手** 数据流：数据转换、策略训练验证、仿真回放与真机推理。 `📅unknown` `[entity_page]`
