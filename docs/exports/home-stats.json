@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-19",
-  "node_count": 4322,
-  "edge_count": 38565,
+  "node_count": 4323,
+  "edge_count": 38579,
   "coverage": {
-    "covered": 4294,
-    "total": 4294,
+    "covered": 4295,
+    "total": 4295,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-rsi-survey-2607-07663.md",
+      "detail_id": "entity-paper-rsi-survey-2607-07663",
+      "label": "RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
     {
       "path": "wiki/queries/rsi-four-tier-five-pushes.md",
       "detail_id": "wiki-queries-rsi-four-tier-five-pushes",
@@ -201,26 +212,17 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cross-view-action-consistency-vla.md",
-      "detail_id": "entity-paper-cross-view-action-consistency-vla",
-      "label": "Cross-View Action Consistency（arXiv:2608.06965）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/rsi-four-tier-five-pushes.md",
-    "detail_id": "wiki-queries-rsi-four-tier-five-pushes",
-    "label": "RSI 四层标准与五次边界推进",
-    "type": "query",
+    "path": "wiki/entities/paper-rsi-survey-2607-07663.md",
+    "detail_id": "entity-paper-rsi-survey-2607-07663",
+    "label": "RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环",
+    "type": "entity",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [

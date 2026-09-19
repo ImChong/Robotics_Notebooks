@@ -254,6 +254,7 @@
         'wiki/entities/rsi-harness.md',
         'wiki/entities/karpathy-autoresearch.md',
         'wiki/entities/paper-metarsi-v1.md',
+        'wiki/entities/paper-rsi-survey-2607-07663.md',
         'wiki/entities/paper-harnessbank.md',
         'wiki/entities/paper-motus2.md',
         'wiki/entities/paper-from-agi-to-asi.md',

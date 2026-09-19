@@ -19,10 +19,12 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/rsi-harness.md
   - ../entities/awesome-rsi.md
+  - ../entities/paper-rsi-survey-2607-07663.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
+  - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
   - ../../sources/repos/awesome-rsi.md
   - ../../sources/sites/awesome-rsi-github-io.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
@@ -131,9 +133,11 @@ flowchart LR
 - [From AGI to ASI 白皮书实体](../entities/paper-from-agi-to-asi.md) — 另一条「能力跃迁」论述，勿与 RSI 机制混读
 - [SoL-Pi](../entities/sol-pi.md) — 「先让 harness 更省再 scale RSI」的工业实例；efficiency for efficiency 愿景
 - [Awesome RSI](../entities/awesome-rsi.md) — agent 层 RSI 方法/基准策展（artifact × mode 索引）
+- [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 1,250 篇机制 taxonomy + 验证层级 + 开源语料
 
 ## 参考来源
 
+- [RSI Survey 论文归档（arXiv:2607.07663）](../../sources/papers/rsi_survey_arxiv_2607_07663.md)
 - [Datawhale RSI 科普综述（2026-09-19）](../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md)
 - [When AI builds itself（Anthropic Institute 归档）](../../sources/sites/anthropic-recursive-self-improvement.md)
 - [AI Auto-Research 综述策展](../../sources/papers/ai_auto_research_survey_2605_18661.md)
@@ -145,4 +149,5 @@ flowchart LR
 - 原文：<https://www.anthropic.com/institute/recursive-self-improvement>
 - METR 任务时程（文内主公开锚点）
 - Kong et al., *AI for Auto-Research* — [arXiv:2605.18661](https://arxiv.org/abs/2605.18661)
+- Chen et al., *Recursive Self-Improvement in AI* — [arXiv:2607.07663](https://arxiv.org/abs/2607.07663) · [语料仓库](https://github.com/deepgrounding/recursive-self-improvement)
 - [Awesome RSI Methods 页](https://prism-shadow.github.io/awesome-rsi/#methods) — 按 artifact 筛选 agent 自进化文献

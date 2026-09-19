@@ -19,10 +19,12 @@ related:
   - ../entities/openjiuwen.md
   - ../entities/sol-pi.md
   - ../entities/paper-metarsi-v1.md
+  - ../entities/paper-rsi-survey-2607-07663.md
   - ../entities/rsi-harness.md
   - ../entities/agent-lightning.md
 sources:
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
+  - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
   - ../../sources/repos/awesome-ai-auto-research.md
   - ../../sources/repos/karpathy-autoresearch.md
   - ../../sources/sites/awesome-ai-auto-research.md
@@ -147,10 +149,12 @@ flowchart LR
 - [DASH](../entities/paper-dash-opsd.md) — OPSD 上 **可验证数学推理** 后训练的自适应蒸馏聚合。
 - [World Action Models（WAM）](./world-action-models.md) — 另一篇生命周期级综述（具身 AI）；可对照「领域综述 + Awesome 列表」维护模式。
 - [递归自改进](./recursive-self-improvement.md) — 实验室内部证据与三情景；实现已代理化，选题仍为人侧。
+- [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 自改进机制全谱系 survey（改什么 × 闭环 × 验证层级）；与本文生命周期轴正交互补。
 
 ## 参考来源
 
 - [sources/papers/ai_auto_research_survey_2605_18661.md](../../sources/papers/ai_auto_research_survey_2605_18661.md)
+- [sources/papers/rsi_survey_arxiv_2607_07663.md](../../sources/papers/rsi_survey_arxiv_2607_07663.md)
 - [sources/repos/awesome-ai-auto-research.md](../../sources/repos/awesome-ai-auto-research.md)
 - [sources/repos/karpathy-autoresearch.md](../../sources/repos/karpathy-autoresearch.md)
 - [sources/sites/awesome-ai-auto-research.md](../../sources/sites/awesome-ai-auto-research.md)

@@ -54,6 +54,7 @@ flowchart LR
 
 ### 推荐读什么
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md)（本仓库）— 本路线的判别底座：四层表、五次推进与 2026 信号读法
+- [RSI 全谱系 survey（arXiv:2607.07663）](../wiki/entities/paper-rsi-survey-2607-07663.md)（本仓库）— 1,250 篇文献的 **改进对象 × 闭环程度** 两轴 taxonomy，把有界 self-refinement 与开放式 RSI 切开；语料与脚本已开源
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md)（本仓库）— Anthropic 的完整 RSI 定义、内部生产率数字与三情景；含"具身跟随"假设
 - [Awesome RSI](../wiki/entities/awesome-rsi.md)（本仓库）— 50+ 方法 / 29 基准按 **artifact × mode** 策展，是查证归类的索引入口
 - [AI Auto-Research](../wiki/concepts/ai-auto-research.md)（本仓库）— 研究全生命周期自动化：与 RSI 相邻但不同的问题设定
@@ -149,6 +150,7 @@ flowchart LR
 - [ENPIRE](../wiki/methods/enpire.md)（本仓库）— EN–PI–R–E 闭环：自动 reset/verify、多范式策略改进、并行 rollout；灵巧任务报告约 99% pass@8
 - [真机策略 autoresearch harness 指南](../wiki/queries/real-robot-policy-autoresearch-harness.md)（本仓库）— 环境侧、范式选型、rollout 预算与机队 scaling 的实操选型
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md)「四道门」小节（本仓库）— 验证器锚、分布外、递归增益、能力–控制同步
+- [RSI 全谱系 survey](../wiki/entities/paper-rsi-survey-2607-07663.md)（本仓库）— 把 self-evaluation 单列为第四技术类：evaluator 设计空间是全场共同天花板
 - [具身模型测评纵深](depth-embodied-eval.md)（本仓库）— 未见集划分与过程指标的展开版
 
 ### 学完输出什么
@@ -269,6 +271,7 @@ flowchart LR
 本路线基于以下原始资料与 wiki 编译页的归纳：
 
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) — 四层判据与五次推进叙事轴
+- [RSI 全谱系 survey（arXiv:2607.07663）](../wiki/entities/paper-rsi-survey-2607-07663.md) — 两轴 taxonomy 与验证层级
 - [递归自改进（概念页）](../wiki/concepts/recursive-self-improvement.md) — 宏观论述、内部数字读法与三情景
 - [sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md](../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md) — Datawhale RSI 科普综述（赵志民）
 - [sources/sites/anthropic-recursive-self-improvement.md](../sources/sites/anthropic-recursive-self-improvement.md) — When AI builds itself（Anthropic Institute）

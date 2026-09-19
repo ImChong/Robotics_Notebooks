@@ -2142,6 +2142,7 @@
 - [ROS2SmolVLA：工业轻量臂上的本地小型 VLA](wiki/entities/paper-ros2smolvla.md) — ROS2SmolVLA**（*Enabling Small Vision-Language-Action Models for Integration into Industrial-Grade  `📅unknown` `[entity_page]`
 - [ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）](wiki/entities/paper-rove-humanoid-vla-intervention.md) — ROVE** 是 XPENG Robotics 与复旦、港中文、上交等团队提出的 **人形 VLA 后训练 RL 框架**（arXiv:2606.17011，[项目页](https://xpeng `📅unknown` `[entity_page]`
 - [RPL：复杂地形上的鲁棒人形多向感知行走](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Yuanhang Zhang 等，Am `📅unknown` `[entity_page]`
+- [RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环](wiki/entities/paper-rsi-survey-2607-07663.md) — Recursive Self-Improvement in AI**（Chen, Wang & Qu；[arXiv:2607.07663](https://arxiv.org/abs/2607.0 `📅unknown` `[entity_page]`
 - [RT-1：规模化真机控制的 Robotics Transformer](wiki/entities/paper-rt-1.md) — RT-1**（*RT-1: Robotics Transformer for Real-World Control at Scale*，[arXiv:2212.06817](https://arx `📅unknown` `[entity_page]`
 - [RT-2：用 VLM 把网页知识迁到机器人控制](wiki/entities/paper-rt-2.md) — RT-2**（*RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*，[arXiv:2307 `📅unknown` `[entity_page]`
 - [RTCF（Retrieve in Time, Correct in Frequency · arXiv:2608.04527）](wiki/entities/paper-rtcf.md) — RTCF**（*Retrieve in Time, Correct in Frequency*，[arXiv:2608.04527](https://arxiv.org/abs/2608.0452 `📅unknown` `[entity_page]`

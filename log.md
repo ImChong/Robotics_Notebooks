@@ -7,6 +7,8 @@
 - **口径：** 本路线全部数字沿用既有 wiki 页表述并保留证据等级标注（RSI Index / AIDE² / 内部生产率为厂商自报或预印本，Motus2 截至入库日未开源）。
 - **验证：** `tests/test_depth_filters.py` 期望长度 25→26；见本条对应提交的 CI 结果。
 
+## [2026-09-19] ingest | sources/papers/rsi_survey_arxiv_2607_07663.md — arXiv:2607.07663 RSI 全谱系 survey（1,250 篇两轴 taxonomy + 验证层级）；开源语料 deepgrounding/recursive-self-improvement；升格 paper-rsi-survey-2607-07663 实体
+
 ## [2026-09-19] ingest | sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md — Datawhale RSI 四层标准与五次推进；升格 wiki/queries/rsi-four-tier-five-pushes.md
 
 ## [2026-09-19] ingest | sources/papers/teledexter_arxiv_2607_11481.md — TeleDexter 2026-09-19 复核查：官方仍未开源；补 Pen Spinning / 数据金字塔尖 / data-flywheel 交叉
