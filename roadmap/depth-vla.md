@@ -51,13 +51,13 @@ flowchart LR
 - 用 [LeRobot](../wiki/entities/lerobot.md) 跑通一个现成策略的推理 demo（只推理、不训练）
 
 ### 推荐读什么
-- [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)（本仓库）
-- [Foundation Policy](../wiki/concepts/foundation-policy.md)（本仓库）— VLA 的母概念页
-- [具身基础模型纵深](../wiki/overview/hub-embodied-foundation-model.md)（本仓库）
-- [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)（本仓库）
-- [LLMs-from-scratch（Raschka）](../wiki/entities/llms-from-scratch-raschka.md)（本仓库）— **可选前置**：Transformer/GPT 从零实现；配套 [YouTube 播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11)
-- [Karpathy Zero to Hero（YouTube）](../wiki/entities/andrej-karpathy.md)（本仓库）— **可选技术轨前置**：[10 集播放列表](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ)（micrograd → GPT → GPT-2）；配套 [`nn-zero-to-hero`](https://github.com/karpathy/nn-zero-to-hero)
-- [Andrej Karpathy LLM 科普（YouTube）](../wiki/entities/andrej-karpathy.md)（本仓库）— **可选前置（偏直觉）**：[Intro to LLMs（~1 h）](https://www.youtube.com/watch?v=zjkBMFhNj_g) → [Deep Dive into LLMs（~3.5 h）](https://www.youtube.com/watch?v=7xTGNNLPyMI)；建立 pretrain/SFT/RLHF、工具调用与上下文窗口心智模型，再读 VLA 论文更省力
+- [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
+- [Foundation Policy](../wiki/concepts/foundation-policy.md) — VLA 的母概念页
+- [具身基础模型纵深](../wiki/overview/hub-embodied-foundation-model.md)
+- [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)
+- [LLMs-from-scratch（Raschka）](../wiki/entities/llms-from-scratch-raschka.md) — **可选前置**：Transformer/GPT 从零实现；配套 [YouTube 播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11)
+- [Karpathy Zero to Hero（YouTube）](../wiki/entities/andrej-karpathy.md) — **可选技术轨前置**：[10 集播放列表](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ)（micrograd → GPT → GPT-2）；配套 [`nn-zero-to-hero`](https://github.com/karpathy/nn-zero-to-hero)
+- [Andrej Karpathy LLM 科普（YouTube）](../wiki/entities/andrej-karpathy.md) — **可选前置（偏直觉）**：[Intro to LLMs（~1 h）](https://www.youtube.com/watch?v=zjkBMFhNj_g) → [Deep Dive into LLMs（~3.5 h）](https://www.youtube.com/watch?v=7xTGNNLPyMI)；建立 pretrain/SFT/RLHF、工具调用与上下文窗口心智模型，再读 VLA 论文更省力
 
 ### 学完输出什么
 - 能一句话说清 VLA 是什么、不是什么
@@ -83,9 +83,9 @@ flowchart LR
 - 同一任务上对比 ACT 与 Diffusion Policy 的成功率与推理延迟
 
 ### 推荐读什么
-- [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)（本仓库）
-- [Diffusion Policy](../wiki/methods/diffusion-policy.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)（本仓库）
-- [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
+- [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)
+- [Diffusion Policy](../wiki/methods/diffusion-policy.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)
+- [Imitation Learning](../wiki/methods/imitation-learning.md)
 
 ### 学完输出什么
 - 一个能在仿真里跑通的视觉-动作模仿策略
@@ -112,17 +112,17 @@ flowchart LR
 - 用 LoRA 把一个小 VLA 微调到自己的数据上，记录数据量–成功率曲线
 
 ### 推荐读什么
-- [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md)（本仓库）— 主线索引页
-- [VLA / 世界模型 14 篇阅读路线](../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md)（本仓库）— CLIP→RT→OpenVLA→π₀ + 四篇 WM，每篇独立 `paper-*`
-- [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md)、[RT-1](../wiki/entities/paper-rt-1.md)、[RT-2](../wiki/entities/paper-rt-2.md)、[OpenVLA](../wiki/entities/paper-openvla.md)、[Octo](../wiki/entities/paper-octo.md)（本仓库）
-- [π0](../wiki/entities/paper-pi0.md) 与 [π0.7](../wiki/methods/pi07-policy.md)（本仓库）
-- [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)（本仓库）
-- [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md)（本仓库）— 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅
-- [LingBot-VLA](../wiki/entities/lingbot-vla.md)（本仓库）— Qwen2.5-VL-3B + flow 动作头，2 万小时双臂真机预训练；开源 4B 权重与 LeRobot v3.0 后训练栈，RoboTwin 仿真领先 π₀.₅
-- [BridgeVLA++](../wiki/entities/paper-bridgevla-plusplus.md)（本仓库）— 多视图 heatmap 对齐 3D VLA 加统一时空记忆（粗阶段关键帧检索 + 细阶段初始几何），RMBench 记忆依赖任务 18.9%→96.0%，RLBench 93.7%；代码与权重已开源
-- [Galaxea G0.5](../wiki/entities/paper-galaxea-g05.md)（本仓库）— VLM-as-Actor + 学出来的 ActionCodec 27 维去掉自回归 token 税，原生 CoT 直接 attend；真机六设定 76.7% vs π0.5 53.3%，LIBERO 98.9% / RoboTwin 93.3%；GalaxeaVLA + HF 权重已开源（G0.5 Community License，非商用）
-- [GSR / ParaVLA](../wiki/entities/paper-gsr-paravla.md)（本仓库）— 指出 VLA 指令改写崩溃来自联合 V-L 路由而非不懂语义，冻结 T5 重绑原生视觉并重训动作专家；LIBERO-Para 上 SmolVLA +44.6 pp；训练与 HF 权重已开源
-- [Indi](../wiki/entities/paper-indi.md)（本仓库）— 冻结教师 VLM 把示范片段的局部行为意图蒸馏进动作解码器，部署时无需教师；GR00T-N1.7 在 SimplerEnv-Bridge 64.3%→84.7%，真机 62.0%→68.7%
+- [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md) — 主线索引页
+- [VLA / 世界模型 14 篇阅读路线](../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — CLIP→RT→OpenVLA→π₀ + 四篇 WM，每篇独立 `paper-*`
+- [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md)、[RT-1](../wiki/entities/paper-rt-1.md)、[RT-2](../wiki/entities/paper-rt-2.md)、[OpenVLA](../wiki/entities/paper-openvla.md)、[Octo](../wiki/entities/paper-octo.md)
+- [π0](../wiki/entities/paper-pi0.md) 与 [π0.7](../wiki/methods/pi07-policy.md)
+- [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)
+- [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md) — 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅
+- [LingBot-VLA](../wiki/entities/lingbot-vla.md) — Qwen2.5-VL-3B + flow 动作头，2 万小时双臂真机预训练；开源 4B 权重与 LeRobot v3.0 后训练栈，RoboTwin 仿真领先 π₀.₅
+- [BridgeVLA++](../wiki/entities/paper-bridgevla-plusplus.md) — 多视图 heatmap 对齐 3D VLA 加统一时空记忆（粗阶段关键帧检索 + 细阶段初始几何），RMBench 记忆依赖任务 18.9%→96.0%，RLBench 93.7%；代码与权重已开源
+- [Galaxea G0.5](../wiki/entities/paper-galaxea-g05.md) — VLM-as-Actor + 学出来的 ActionCodec 27 维去掉自回归 token 税，原生 CoT 直接 attend；真机六设定 76.7% vs π0.5 53.3%，LIBERO 98.9% / RoboTwin 93.3%；GalaxeaVLA + HF 权重已开源（G0.5 Community License，非商用）
+- [GSR / ParaVLA](../wiki/entities/paper-gsr-paravla.md) — 指出 VLA 指令改写崩溃来自联合 V-L 路由而非不懂语义，冻结 T5 重绑原生视觉并重训动作专家；LIBERO-Para 上 SmolVLA +44.6 pp；训练与 HF 权重已开源
+- [Indi](../wiki/entities/paper-indi.md) — 冻结教师 VLM 把示范片段的局部行为意图蒸馏进动作解码器，部署时无需教师；GR00T-N1.7 在 SimplerEnv-Bridge 64.3%→84.7%，真机 62.0%→68.7%
 
 ### 学完输出什么
 - 能画出典型 VLA 的三段式结构（视觉编码 → 语义 backbone → 动作专家）并说清各家差异
@@ -148,16 +148,16 @@ flowchart LR
 - 对比"有 / 无人类视频预训练"的下游微调差距（读论文实验即可）
 
 ### 推荐读什么
-- [VLA 开源复现全景 2025](../wiki/overview/vla-open-source-repro-landscape-2025.md)（本仓库）
-- [具身数据金字塔综述](../wiki/entities/paper-data-pyramid-embodied-manipulation.md)（本仓库）— 五层数据生态 × 六维属性的类目级坐标系；「该补哪一层数据」的选型框架
-- [EgoScale](../wiki/methods/egoscale.md)、[HumanNet](../wiki/entities/humannet.md)、[mimic-video](../wiki/methods/mimic-video.md)（本仓库）
-- [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)（本仓库）
-- [DeFI](../wiki/methods/defi-decoupled-dynamics-vla.md) 与 [具身 Scaling Laws](../wiki/concepts/embodied-scaling-laws.md)（本仓库）
-- [Xiaomi-Robotics-1](../wiki/entities/xiaomi-robotics-1.md)（本仓库）— 10 万小时 embodiment-free UMI 预训练 + 跨本体后训练，验证数据/模型规模双向可预测 scaling，预训练收益直接迁移到未见环境开箱成功率
-- [JoyAI-RA 0.5](../wiki/entities/paper-joyai-ra-05.md)（本仓库）— VLWA：latent-action 隐式对齐吃无标签人视频 + 130-D 规范动作显式对齐吃可靠轨迹，双通道监督把人视频当主缩放轴；AgiBot G1 真机 seen 92.0/unseen 75.5 大幅超 π₀.₅（74.0），人视频缩放在最大测试规模仍未见饱和；确认未开源
-- [ACE-Data-0](../wiki/entities/paper-ace-data-0.md)（本仓库）— 真实家居双尺度同步度量 HOI/HSI（ego/exo/运动/物体/音频/触觉）；150 h 中规模高保真人类演示层，与 EgoScale/RekaDaily「拼小时」互补；HF gated 研究许可，训练代码未见
-- [RoboEdit](../wiki/entities/paper-roboedit.md)（本仓库）— 把人类操作 RGB 视频编辑为物理 plausible 机器人视频 + 3D hand states，自动构造 14M 帧 RoboEdit-14M（7 种本体）；编辑 SOTA + 真机 Franka 下游控制；无官方代码
-- [Ego2Robot](../wiki/entities/paper-ego2robot.md)（本仓库）— 第一人称人视频经重定向 + 臂合成 + 三级质检，合成 15 形态 18,561 h 机器人数据；与真机共训提升 RoboTwin 解耦 OOD；管线未开源
+- [VLA 开源复现全景 2025](../wiki/overview/vla-open-source-repro-landscape-2025.md)
+- [具身数据金字塔综述](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 五层数据生态 × 六维属性的类目级坐标系；「该补哪一层数据」的选型框架
+- [EgoScale](../wiki/methods/egoscale.md)、[HumanNet](../wiki/entities/humannet.md)、[mimic-video](../wiki/methods/mimic-video.md)
+- [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)
+- [DeFI](../wiki/methods/defi-decoupled-dynamics-vla.md) 与 [具身 Scaling Laws](../wiki/concepts/embodied-scaling-laws.md)
+- [Xiaomi-Robotics-1](../wiki/entities/xiaomi-robotics-1.md) — 10 万小时 embodiment-free UMI 预训练 + 跨本体后训练，验证数据/模型规模双向可预测 scaling，预训练收益直接迁移到未见环境开箱成功率
+- [JoyAI-RA 0.5](../wiki/entities/paper-joyai-ra-05.md) — VLWA：latent-action 隐式对齐吃无标签人视频 + 130-D 规范动作显式对齐吃可靠轨迹，双通道监督把人视频当主缩放轴；AgiBot G1 真机 seen 92.0/unseen 75.5 大幅超 π₀.₅（74.0），人视频缩放在最大测试规模仍未见饱和；确认未开源
+- [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 真实家居双尺度同步度量 HOI/HSI（ego/exo/运动/物体/音频/触觉）；150 h 中规模高保真人类演示层，与 EgoScale/RekaDaily「拼小时」互补；HF gated 研究许可，训练代码未见
+- [RoboEdit](../wiki/entities/paper-roboedit.md) — 把人类操作 RGB 视频编辑为物理 plausible 机器人视频 + 3D hand states，自动构造 14M 帧 RoboEdit-14M（7 种本体）；编辑 SOTA + 真机 Franka 下游控制；无官方代码
+- [Ego2Robot](../wiki/entities/paper-ego2robot.md) — 第一人称人视频经重定向 + 臂合成 + 三级质检，合成 15 形态 18,561 h 机器人数据；与真机共训提升 RoboTwin 解耦 OOD；管线未开源
 
 ### 学完输出什么
 - 能说清 VLA 数据金字塔（真机演示 / 仿真 / 人类视频 / 互联网视频）各层的作用与代价
@@ -183,19 +183,19 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
-- [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md)（本仓库）— 异步 action chunk 部署
-- [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)（本仓库）
-- [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md)（本仓库）— 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
-- [行为树 VLA 编排](../wiki/concepts/behavior-tree-vla-orchestration.md)（本仓库）
-- [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md)（本仓库）— 稀疏视觉证据记忆端到端 VLA，用基础锚点 + 前瞻式关键帧预测解决长程操作的记忆瓶颈，是行为树编排之外的模型内记忆路线
-- [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md)（本仓库）— 在 VLA 层内嵌测试时训练，将 visuomotor 上下文压缩进固定大小 fast weights，扩到约 8K 步且支持部署后在线自纠偏
-- [ActFovea](../wiki/entities/paper-actfovea.md)（本仓库）— 不重训、不改权重的 VLA 运行时防护层，用动作条件中央凹 + 时空视觉–动作一致性检测扰动；LIBERO 40 任务上把视觉叠加攻击下的成功率从 49.3% 拉回 90.3%，2000 次重放试验 100% 及时安全失败
-- [RoboHarness](../wiki/entities/paper-robo-harness.md)（本仓库）— 把 VLA / RL / TAMP 等异构策略封装为 agentic skills，用理解/记忆/自进化辅助技能做能力边界路由，Memory Bridge 稳定交接；LIBERO-LoHo 上 95.2% 成功，远超 π₀.₅ 的 6.4%；官方仓暂为项目页镜像
-- [RTCF](../wiki/entities/paper-rtcf.md)（本仓库）— 免训练测试时纠偏：Progressive Memory Alignment 按执行历史对齐成功轨迹，只把低频运动残差转移给冻结的 PI-FAST；LIBERO 86.4%→88.4%，LIBERO-Long 61.6%→68.6%，CPU 侧约 11 ms/chunk 额外开销；截至入库日无公开代码
-- [Neural Introspection Gating](../wiki/entities/paper-neural-introspection-gating.md)（本仓库，IROS 2026）— 训练无关、可插拔的 VLA 推理调度层：用上一步动作 token logit margin 当免费不确定性信号，门控 VLA-Cache 静态 patch 复用，在保留约 80% 算力节省（1.54 vs 1.43 TFLOPs）的同时收回盲缓存在 LIBERO-Long 上的掉点；适配已部署的 OpenVLA/OpenVLA-OFT；确认未开源
-- [ReflexVLA](../wiki/entities/paper-reflexvla.md)（本仓库）— ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测 + 时序融合骨干 + CUDA Graph）；均值 50.4%、LIBERO 97.2%；代码录用后开放
-- [FlashVLA](../wiki/entities/paper-flashvla.md)（本仓库，UCSD/MIT）— 给流匹配 VLA 接上交错噪声缓冲 + chunk 级因果注意力，稳态每步吐一块动作，用一块缓冲同时压低逐步延迟与异步观测错配，无需额外未来状态预测器；LIBERO 异步 2.43×（96.9%→97.8%），真机单卡 ≥30 Hz；代码与 π₀.₅ 权重已开源
-- [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)（本仓库）
+- [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
+- [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)
+- [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md) — 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
+- [行为树 VLA 编排](../wiki/concepts/behavior-tree-vla-orchestration.md)
+- [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆端到端 VLA，用基础锚点 + 前瞻式关键帧预测解决长程操作的记忆瓶颈，是行为树编排之外的模型内记忆路线
+- [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md) — 在 VLA 层内嵌测试时训练，将 visuomotor 上下文压缩进固定大小 fast weights，扩到约 8K 步且支持部署后在线自纠偏
+- [ActFovea](../wiki/entities/paper-actfovea.md) — 不重训、不改权重的 VLA 运行时防护层，用动作条件中央凹 + 时空视觉–动作一致性检测扰动；LIBERO 40 任务上把视觉叠加攻击下的成功率从 49.3% 拉回 90.3%，2000 次重放试验 100% 及时安全失败
+- [RoboHarness](../wiki/entities/paper-robo-harness.md) — 把 VLA / RL / TAMP 等异构策略封装为 agentic skills，用理解/记忆/自进化辅助技能做能力边界路由，Memory Bridge 稳定交接；LIBERO-LoHo 上 95.2% 成功，远超 π₀.₅ 的 6.4%；官方仓暂为项目页镜像
+- [RTCF](../wiki/entities/paper-rtcf.md) — 免训练测试时纠偏：Progressive Memory Alignment 按执行历史对齐成功轨迹，只把低频运动残差转移给冻结的 PI-FAST；LIBERO 86.4%→88.4%，LIBERO-Long 61.6%→68.6%，CPU 侧约 11 ms/chunk 额外开销；截至入库日无公开代码
+- [Neural Introspection Gating](../wiki/entities/paper-neural-introspection-gating.md)（IROS 2026）— 训练无关、可插拔的 VLA 推理调度层：用上一步动作 token logit margin 当免费不确定性信号，门控 VLA-Cache 静态 patch 复用，在保留约 80% 算力节省（1.54 vs 1.43 TFLOPs）的同时收回盲缓存在 LIBERO-Long 上的掉点；适配已部署的 OpenVLA/OpenVLA-OFT；确认未开源
+- [ReflexVLA](../wiki/entities/paper-reflexvla.md) — ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测 + 时序融合骨干 + CUDA Graph）；均值 50.4%、LIBERO 97.2%；代码录用后开放
+- [FlashVLA](../wiki/entities/paper-flashvla.md)（UCSD/MIT）— 给流匹配 VLA 接上交错噪声缓冲 + chunk 级因果注意力，稳态每步吐一块动作，用一块缓冲同时压低逐步延迟与异步观测错配，无需额外未来状态预测器；LIBERO 异步 2.43×（96.9%→97.8%），真机单卡 ≥30 Hz；代码与 π₀.₅ 权重已开源
+- [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)
 
 ### 学完输出什么
 - 一份目标平台上的 VLA 部署延迟分解与优化清单
@@ -228,7 +228,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 具身基础模型分类学 | [VLM/VLN/VLA/VLX/世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) |
 | Stage 1 | 模仿学习策略基座 | [Diffusion Policy](../wiki/methods/diffusion-policy.md) |
@@ -240,37 +240,16 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 姊妹路线：VLA 管任务级语义，BFM 管身体级协调
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 验收环节：VLA 成功率/泛化怎么测才不骗人
-  - [WAM（世界–动作模型）](depth-wam.md) — 姊妹路线：VLA 管反应式语义策略，WAM 管前向后果耦合
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 1 的展开版
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的展开版
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 D 的展开版
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 语义接口与分层设计的邻接路线
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md) — 部署期适应旋钮：不动权重、读一条示范就换映射
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [模仿学习](depth-imitation-learning.md) — VLA Stage 1 重叠的 BC/ACT/DP 底座
+  - [WAM](depth-wam.md) — 出动作前显式预知世界
+  - [导航](depth-navigation.md) — 导航 VLA / VLN
+  - [具身数据](depth-embodied-data.md) — 跨具身语料与配比
+  - [ICL](depth-icl.md) — 不动权重的上下文适应
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md)
 - [VLA 开源复现全景 2025](../wiki/overview/vla-open-source-repro-landscape-2025.md)

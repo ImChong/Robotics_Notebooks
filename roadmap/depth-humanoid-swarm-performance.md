@@ -51,9 +51,9 @@ flowchart LR
 - 画一张"群舞 / 走位 / 特技"三任务对"同步精度 / 规划复杂度 / 安全预算"三轴的需求矩阵
 
 ### 推荐读什么
-- [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)（本仓库）— 多机群控范式总览；其"常见误区"一节正是本路线与足球群控的分界线
-- [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md)（本仓库）— 在线协调范式的对照任务
-- [Unitree G1](../wiki/entities/unitree-g1.md)（本仓库）— 展演与科研两栖的主力平台
+- [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md) — 多机群控范式总览；其"常见误区"一节正是本路线与足球群控的分界线
+- [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md) — 在线协调范式的对照任务
+- [Unitree G1](../wiki/entities/unitree-g1.md) — 展演与科研两栖的主力平台
 
 ### 学完输出什么
 - 能说清一场机器人群舞里哪些部分是预编排、哪些必须在线闭环
@@ -80,11 +80,11 @@ flowchart LR
 - 用音乐驱动生成模型产一段候选编舞，对比其物理可行化前后的动作保真度
 
 ### 推荐读什么
-- [DeepMimic](../wiki/methods/deepmimic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 动作跟踪两代代表
-- [SONIC](../wiki/methods/sonic-motion-tracking.md)（本仓库）— 规模化跟踪预训练，音乐 token 条件接口
-- [GENMO](../wiki/methods/genmo.md) 与 [HY-Motion 1.0](../wiki/methods/hy-motion-1.md)（本仓库）— 音乐/文本驱动动作生成
-- [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）— 曲目库选型
-- [Disney Olaf 角色机器人](../wiki/methods/disney-olaf-character-robot.md)（本仓库）— "好看优先"的展演型控制范例
+- [DeepMimic](../wiki/methods/deepmimic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 动作跟踪两代代表
+- [SONIC](../wiki/methods/sonic-motion-tracking.md) — 规模化跟踪预训练，音乐 token 条件接口
+- [GENMO](../wiki/methods/genmo.md) 与 [HY-Motion 1.0](../wiki/methods/hy-motion-1.md) — 音乐/文本驱动动作生成
+- [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 曲目库选型
+- [Disney Olaf 角色机器人](../wiki/methods/disney-olaf-character-robot.md) — "好看优先"的展演型控制范例
 
 ### 学完输出什么
 - 一条能把任意舞蹈动捕变成单机可执行策略的管线，含节拍误差报表
@@ -111,10 +111,10 @@ flowchart LR
 - 给时间轴加"跳段对齐"容错逻辑，测试单机摔倒后重新入列的恢复时间
 
 ### 推荐读什么
-- [时钟同步算法](../wiki/concepts/clock-synchronization-algorithms.md)（本仓库）— PTP / 分布式时钟统一框架
-- [UDP 组播动力学](../wiki/formalizations/udp-multicast-dynamics.md)（本仓库）— 丢包-迟到-乱序-不一致四类随机过程
-- [硬件通信与协议纵深](../wiki/overview/hub-communication.md)（本仓库）— 底层数据链路选型
-- [Balance Recovery 任务页](../wiki/tasks/balance-recovery.md)（本仓库）— 摔倒恢复是失步容错的底座
+- [时钟同步算法](../wiki/concepts/clock-synchronization-algorithms.md) — PTP / 分布式时钟统一框架
+- [UDP 组播动力学](../wiki/formalizations/udp-multicast-dynamics.md) — 丢包-迟到-乱序-不一致四类随机过程
+- [硬件通信与协议纵深](../wiki/overview/hub-communication.md) — 底层数据链路选型
+- [Balance Recovery 任务页](../wiki/tasks/balance-recovery.md) — 摔倒恢复是失步容错的底座
 
 ### 学完输出什么
 - 一份可执行的编舞时间轴格式定义 + 多机同步回放的仿真 demo
@@ -141,10 +141,10 @@ flowchart LR
 - 把走位轨迹叠加到 Stage 2 的时间轴上，验证"边走边跳"时同步质量的退化量
 
 ### 推荐读什么
-- [Crazyswarm2](../wiki/entities/crazyswarm2.md)（本仓库）— 大规模真机编队的工程参考（定位 → 轨迹 → 监控全链路）
-- [EGO-Planner Swarm](../wiki/entities/ego-planner-swarm.md) 与 [Swarm in the Wild](../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md)（本仓库）— 去中心化互避碰两代方案
-- [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)（本仓库）— 编队/站位的人形侧约束
-- [LiDAR SLAM / LIO / VIO 选型](../wiki/comparisons/lidar-slam-lio-vio-selection.md)（本仓库）— 场地定位技术选型
+- [Crazyswarm2](../wiki/entities/crazyswarm2.md) — 大规模真机编队的工程参考（定位 → 轨迹 → 监控全链路）
+- [EGO-Planner Swarm](../wiki/entities/ego-planner-swarm.md) 与 [Swarm in the Wild](../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md) — 去中心化互避碰两代方案
+- [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md) — 编队/站位的人形侧约束
+- [LiDAR SLAM / LIO / VIO 选型](../wiki/comparisons/lidar-slam-lio-vio-selection.md) — 场地定位技术选型
 
 ### 学完输出什么
 - 一个 N 机换队形的走位规划器，含指派、避碰与节拍对齐
@@ -171,11 +171,11 @@ flowchart LR
 - 对一个高动态技能做消融：去掉动力学对齐（ASAP 类）后真机成功率掉多少，倒推特技上台的最低对齐要求
 
 ### 推荐读什么
-- [KungFuAthleteBot](../wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md)（本仓库）— 高动态武术跟踪 + 抗扰恢复
-- [KungfuBot](../wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) 与 [KungfuBot2](../wiki/entities/paper-notebook-kungfubot-2.md)（本仓库）— 物理可行化的功夫技能
-- [ASAP](../wiki/entities/paper-hrl-stack-25-asap.md)（本仓库）— 高动态技能的仿真-真机对齐
-- [TeamHOI](../wiki/entities/paper-amp-survey-17-teamhoi.md) 与 [TeamPlay](../wiki/entities/paper-bfm-23-teamplay.md)（本仓库）— 多机物理协作前沿
-- [SMPLOlympics](../wiki/entities/smplolympics.md)（本仓库）— 高动态技能的仿真基准
+- [KungFuAthleteBot](../wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术跟踪 + 抗扰恢复
+- [KungfuBot](../wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) 与 [KungfuBot2](../wiki/entities/paper-notebook-kungfubot-2.md) — 物理可行化的功夫技能
+- [ASAP](../wiki/entities/paper-hrl-stack-25-asap.md) — 高动态技能的仿真-真机对齐
+- [TeamHOI](../wiki/entities/paper-amp-survey-17-teamhoi.md) 与 [TeamPlay](../wiki/entities/paper-bfm-23-teamplay.md) — 多机物理协作前沿
+- [SMPLOlympics](../wiki/entities/smplolympics.md) — 高动态技能的仿真基准
 
 ### 学完输出什么
 - 一段 4 机以上、含至少一个高动态技能的群体节目仿真 demo，附失败传播分析
@@ -208,7 +208,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 任务谱系与范式 | [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md) |
 | Stage 1 | 单机动作基座 | [BeyondMimic](../wiki/methods/beyondmimic.md) |
@@ -220,31 +220,11 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md) — 对抗环境在线群控的姊妹路线
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) — 高动态对抗技能的邻接路线
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — 单机动作基座的数据侧前置
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 编舞素材的生成侧前置
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪策略的训练侧前置
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 参考动作进策略的方法论前置
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 特技上真机的部署侧前置
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 展演场地/道具的可仿真资产侧
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 单基座控全身的谱系路线
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — 场地定位工程的邻接路线
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [动作生成](depth-motion-generation.md) — 群舞编排的动作来源
+  - [动作重定向](depth-motion-retargeting.md) — 把编舞折到多台本体
+  - [人形足球](depth-humanoid-soccer.md) — 多机战术协调的对照场景
+  - [导航](depth-navigation.md) — 编队走位与定位
 - 关联知识页：
   - [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)
   - [时钟同步算法](../wiki/concepts/clock-synchronization-algorithms.md)
@@ -254,10 +234,8 @@ flowchart LR
 
 ## 参考来源
 
-本路线基于以下原始资料的归纳：
-
 - [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md) — 群控范式与"预录时间轴 + 分布式时钟 vs 在线战术"的分界
 - 2016 央视春晚 540 台 UBTECH Alpha 1S 群舞 — 规模化预编排回放的大众里程碑（本路线起点）；2025 央视春晚 16 台 Unitree H1《秧BOT》 — 全身动控 + 激光 SLAM 定位 + 集群调度的工程集成里程碑
-- [KungFuAthleteBot 摘录](../sources/papers/kung_fu_athlete_bot.md)（arXiv:2602.13656）— 高动态武术跟踪与抗扰恢复
+- [KungFuAthleteBot](https://kungfuathletebot.github.io/)（arXiv:2602.13656）— 高动态武术跟踪与抗扰恢复
 - [Swarm in the Wild](../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md)（Science Robotics 2022）与 [Crazyswarm2](../wiki/entities/crazyswarm2.md) — 无人机 swarm 编队/避碰工具箱的迁移参照
 - [TeamHOI](../wiki/entities/paper-amp-survey-17-teamhoi.md)（arXiv:2603.07988）— 多机物理协作的去中心化策略前沿

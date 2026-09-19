@@ -51,11 +51,11 @@ flowchart LR
 - 给目标任务写一页"数据规格书"：观测键、动作语义、控制频率、成败标签、必须保留的元数据（本体、场景、操作者）
 
 ### 推荐读什么
-- [具身数据从采集到飞轮（四篇系列地图）](../wiki/overview/embodied-data-collection-to-flywheel-album.md)（本仓库）— 术语→金字塔→飞轮→监督分流的公众号连载枢纽
-- [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md)（本仓库）— 五层金字塔与三类基础模型的数据配方视角，本阶段的骨架页
-- [训练数据管线（知识链汇总）](../wiki/overview/hub-data-pipeline.md)（本仓库）— 原始动作 → 质量评估 → 重定向 → 策略输入的端到端链路
-- [Motion Data Quality（动作数据质量维度）](../wiki/concepts/motion-data-quality.md)（本仓库）— 四轴质量口径及其与重定向必要性的因果
-- [人形训练数据管线选型指南](../wiki/queries/humanoid-training-data-pipeline.md)（本仓库）— 参考运动来源 / 重定向方案 / 训练范式三层互相约束的决策树
+- [具身数据从采集到飞轮（四篇系列地图）](../wiki/overview/embodied-data-collection-to-flywheel-album.md) — 术语→金字塔→飞轮→监督分流的公众号连载枢纽
+- [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 五层金字塔与三类基础模型的数据配方视角，本阶段的骨架页
+- [训练数据管线（知识链汇总）](../wiki/overview/hub-data-pipeline.md) — 原始动作 → 质量评估 → 重定向 → 策略输入的端到端链路
+- [Motion Data Quality（动作数据质量维度）](../wiki/concepts/motion-data-quality.md) — 四轴质量口径及其与重定向必要性的因果
+- [人形训练数据管线选型指南](../wiki/queries/humanoid-training-data-pipeline.md) — 参考运动来源 / 重定向方案 / 训练范式三层互相约束的决策树
 
 ### 学完输出什么
 - 一页目标任务的数据规格书（观测键 / 动作语义 / 频率 / 标签 / 元数据）
@@ -83,12 +83,12 @@ flowchart LR
 - 搭一个最小采集台账：每条 episode 记录操作者、场景、本体、失败原因，为 Stage 2 的过滤留下依据
 
 ### 推荐读什么
-- [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md)（本仓库）— 六条范式与独立实体索引，本阶段的全景页
-- [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md)（本仓库）— 硬件选型、质量保障与常见陷阱
-- [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md)（本仓库）— 灵巧采集的选型对照
-- [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md)（本仓库）— 无机器人示教接口的夹爪侧与人形全身侧两种形态
-- [ACE-Data-0](../wiki/entities/paper-ace-data-0.md)（本仓库）— 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
-- [EgoScale](../wiki/methods/egoscale.md) · [EgoMimic](../wiki/entities/paper-ego-03-egomimic.md)（本仓库）— 第一视角人视频作为可缩放监督源
+- [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) — 六条范式与独立实体索引，本阶段的全景页
+- [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md) — 硬件选型、质量保障与常见陷阱
+- [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
+- [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
+- [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
+- [EgoScale](../wiki/methods/egoscale.md) · [EgoMimic](../wiki/entities/paper-ego-03-egomimic.md) — 第一视角人视频作为可缩放监督源
 
 ### 学完输出什么
 - 一张"范式 × 单位可用轨迹成本 × 对齐度"的选型表
@@ -117,11 +117,11 @@ flowchart LR
 - 用一个 VLM 给同一批轨迹自动打标，人工抽检 50 条算准确率，判断自动标注能否替代人工质检
 
 ### 推荐读什么
-- [Embodied Data Cleaning（具身数据清洗）](../wiki/concepts/embodied-data-cleaning.md)（本仓库）— 时序对齐 / 异常过滤 / 重定向修复 / 分段剪辑四步管线，本阶段的核心页
-- [Auto-labeling Pipelines](../wiki/methods/auto-labeling-pipelines.md)（本仓库）— VLM 自动生成描述与成功率标签
-- [HumanNet](../wiki/entities/humannet.md)（本仓库）— 采集 → 处理 → 标注三阶段大规模管线，含 robot-ready 子集的量化判据
-- [灵巧操作数据管线与 RL 训练基建指南](../wiki/queries/dexterous-manipulation-data-pipeline.md)（本仓库）— 清洗产物如何接上训练基建
-- [Motion Data Quality](../wiki/concepts/motion-data-quality.md)（本仓库）— 用四轴口径给清洗结果打分
+- [Embodied Data Cleaning（具身数据清洗）](../wiki/concepts/embodied-data-cleaning.md) — 时序对齐 / 异常过滤 / 重定向修复 / 分段剪辑四步管线，本阶段的核心页
+- [Auto-labeling Pipelines](../wiki/methods/auto-labeling-pipelines.md) — VLM 自动生成描述与成功率标签
+- [HumanNet](../wiki/entities/humannet.md) — 采集 → 处理 → 标注三阶段大规模管线，含 robot-ready 子集的量化判据
+- [灵巧操作数据管线与 RL 训练基建指南](../wiki/queries/dexterous-manipulation-data-pipeline.md) — 清洗产物如何接上训练基建
+- [Motion Data Quality](../wiki/concepts/motion-data-quality.md) — 用四轴口径给清洗结果打分
 
 ### 学完输出什么
 - 一条可复跑的清洗脚本 + 每步淘汰率报表
@@ -149,11 +149,11 @@ flowchart LR
 - 挑 3 个公开数据集（如 [AMASS](../wiki/entities/amass.md)、[AgiBot World 2026](../wiki/entities/agibot-world-2026.md)、[Humanoid Everyday](../wiki/entities/humanoid-everyday-dataset.md)），逐条核对模态、许可与本体元数据是否齐备
 
 ### 推荐读什么
-- [Open X-Embodiment](../wiki/concepts/open-x-embodiment.md) 与 [OXE / RT-X 详情页](../wiki/entities/paper-open-x-embodiment.md)（本仓库）— 跨具身聚合的边界与正迁移证据链
-- [LeRobot（Hugging Face）](../wiki/entities/lerobot.md)（本仓库）— 采集–训练–评测–部署同框的数据抽象
-- [人形参考运动与操作数据集选型](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）— AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday 的对照
-- [AgiBot World 2026](../wiki/entities/agibot-world-2026.md) · [NVIDIA Physical AI 数据集](../wiki/entities/nvidia-physical-ai-datasets.md)（本仓库）— 真机操作与官方合集两类公开数据源，注意门控与许可
-- [das-datakit](../wiki/entities/cn-os-das-datakit.md) · [DataEval](../wiki/entities/cn-os-dataeval.md)（本仓库）— MCAP 解析/转换与数据集评测的开源工具侧
+- [Open X-Embodiment](../wiki/concepts/open-x-embodiment.md) 与 [OXE / RT-X 详情页](../wiki/entities/paper-open-x-embodiment.md) — 跨具身聚合的边界与正迁移证据链
+- [LeRobot（Hugging Face）](../wiki/entities/lerobot.md) — 采集–训练–评测–部署同框的数据抽象
+- [人形参考运动与操作数据集选型](../wiki/comparisons/humanoid-reference-motion-datasets.md) — AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday 的对照
+- [AgiBot World 2026](../wiki/entities/agibot-world-2026.md) · [NVIDIA Physical AI 数据集](../wiki/entities/nvidia-physical-ai-datasets.md) — 真机操作与官方合集两类公开数据源，注意门控与许可
+- [das-datakit](../wiki/entities/cn-os-das-datakit.md) · [DataEval](../wiki/entities/cn-os-dataeval.md) — MCAP 解析/转换与数据集评测的开源工具侧
 
 ### 学完输出什么
 - 一份自己数据的格式说明（schema + 元数据字段 + 许可）
@@ -181,11 +181,11 @@ flowchart LR
 - 挑一类长尾失败（滑脱、遮挡、错抓），用生成式增强补 200 条，验证补的是不是模型真正缺的分布
 
 ### 推荐读什么
-- [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md)（本仓库）— 长尾与罕见物理交互的低成本合成
-- [Perceptron Isaac 0.5](../wiki/entities/perceptron-isaac-05.md)（本仓库）— 通用视频置换 teleop 的开源等高线，本阶段最可操作的量化锚点
-- [EgoScale](../wiki/methods/egoscale.md)（本仓库）— 人视频预训练 + 小规模视点对齐 mid-training 的两段式配方
-- [Real2Sim 纵深](depth-real2sim.md) 与 [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md)（本仓库）— 仿真侧资产供给的姊妹路线
-- [PHUMA](../wiki/entities/dataset-bfm-phuma.md) 与 [动作重定向纵深](depth-motion-retargeting.md)（本仓库）— 人 → 本体折算的物理可靠性侧
+- [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) — 长尾与罕见物理交互的低成本合成
+- [Perceptron Isaac 0.5](../wiki/entities/perceptron-isaac-05.md) — 通用视频置换 teleop 的开源等高线，本阶段最可操作的量化锚点
+- [EgoScale](../wiki/methods/egoscale.md) — 人视频预训练 + 小规模视点对齐 mid-training 的两段式配方
+- [Real2Sim 纵深](depth-real2sim.md) 与 [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 仿真侧资产供给的姊妹路线
+- [PHUMA](../wiki/entities/dataset-bfm-phuma.md) 与 [动作重定向纵深](depth-motion-retargeting.md) — 人 → 本体折算的物理可靠性侧
 
 ### 学完输出什么
 - 一张自己场景的"便宜数据 → 有效真机样本"折算率表
@@ -221,7 +221,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 数据口径与金字塔分层 | [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) |
 | Stage 1 | 采集范式与装置选型 | [人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) |
@@ -235,41 +235,21 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)（本路线是 L5/L7 训练输入与数据基础设施环节的展开版）
 - 知识链汇总页：[训练数据管线（知识链汇总）](../wiki/overview/hub-data-pipeline.md) — 本路线的 wiki 侧枢纽
 - 姊妹路线：[Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 仿真侧资产供给，与本路线在 Stage 4 汇合
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md) — Stage 1 采集装置的硬件侧展开
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线产物的第一消费者
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 4 人 → 本体折算的方法侧
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 飞轮的验收侧
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [遥操作](depth-teleoperation.md) — Stage 1 采集装置的硬件侧
+  - [模仿学习](depth-imitation-learning.md) — 本路线产物的第一消费者
+  - [动作重定向](depth-motion-retargeting.md) — 人 → 本体折算的方法侧
+  - [VLA](depth-vla.md) — 大规模跨具身数据的主要训练出口
+  - [具身测评](depth-embodied-eval.md) — 飞轮的验收侧
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
-本路线基于以下 wiki 编译页与原始资料的归纳：
-
-- [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) 与 [data_pyramid_embodied_manipulation_arxiv_2607_24744.md](../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md)
-- [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) 与 [leoinai_humanoid_robot_datacollection_2026-09-06.md](../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md)
-- [具身数据清洗](../wiki/concepts/embodied-data-cleaning.md) 与 [HumanNet 论文摘录](../sources/papers/humannet.md)
+- [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) 与 [Data Pyramid for Embodied Manipulation](https://arxiv.org/abs/2607.24744)
+- [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) 与 [Humanoid Robot Data: Collection Methods and Investment Opportunities](https://leoinai.substack.com/p/invest-humanoid-robot-datacollection)
+- [具身数据清洗](../wiki/concepts/embodied-data-cleaning.md) 与 [HumanNet 论文](https://arxiv.org/abs/2605.06747)
 - [Open X-Embodiment](../wiki/concepts/open-x-embodiment.md) 与 [OXE / RT-X 详情页](../wiki/entities/paper-open-x-embodiment.md)（[arXiv:2310.08864](https://arxiv.org/abs/2310.08864)）
-- [Embodied Scaling Laws](../wiki/concepts/embodied-scaling-laws.md) 与 [egoscale_arxiv_2602_16710.md](../sources/papers/egoscale_arxiv_2602_16710.md)、[perceptron_isaac_05.md](../sources/blogs/perceptron_isaac_05.md)
-- [Data Flywheel](../wiki/concepts/data-flywheel.md) 与 [scanford_robot_powered_data_flywheel_arxiv_2511_19647.md](../sources/papers/scanford_robot_powered_data_flywheel_arxiv_2511_19647.md)
+- [Embodied Scaling Laws](../wiki/concepts/embodied-scaling-laws.md) 与 [EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data](https://arxiv.org/html/2602.16710v1#S1)、[Introducing Isaac 0.5](https://www.perceptron.inc/blog/introducing-isaac-0-5)
+- [Data Flywheel](../wiki/concepts/data-flywheel.md) 与 [Robot-Powered Data Flywheels: Deploying Robots in the Wild for Continual Data Collection and Foundation Model Adaptation](https://arxiv.org/abs/2511.19647)
 - [训练数据管线（知识链汇总）](../wiki/overview/hub-data-pipeline.md)、[Motion Data Quality](../wiki/concepts/motion-data-quality.md)、[Auto-labeling Pipelines](../wiki/methods/auto-labeling-pipelines.md)

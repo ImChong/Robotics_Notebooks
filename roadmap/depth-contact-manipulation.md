@@ -46,6 +46,10 @@ flowchart LR
 - [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)
 - Mason, *Mechanics of Robotic Manipulation* — Chapter 1-2
 
+### 推荐做什么
+- 列一张表：prehensile / non-prehensile / contact-rich 各举 2 个任务，并标出更适合刚性抓取还是阻抗控制
+- 读完 Mason *Mechanics of Robotic Manipulation* Chapter 1–2 后，用自己的话解释阻抗控制在接触任务里解决什么
+
 ### 学完输出什么
 - 能区分 prehensile / non-prehensile / contact-rich 操作
 - 理解阻抗控制（impedance control）的基本原理
@@ -89,7 +93,7 @@ flowchart LR
 - [Query：操作任务里的模仿学习](../wiki/queries/il-for-manipulation.md)
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集方案选型
 - [DexVerse](../wiki/entities/paper-dexverse.md) — 100 任务 × 3 臂 × 6 手灵巧操作 benchmark；π₀.₅ / DP3 均值成功率仅 34%，暴露跨技能泛化与亚厘米接触对齐瓶颈
-- [DexBench](../wiki/entities/dexbench.md)（本仓库）— RLWRLD × NVIDIA 工业灵巧操作开放规格：OSC 六轴诊断难度、五种 Dexterity Regime 规定能力包络，18 任务 / 55 用例 + 可采购实物；官方评测仓与 Isaac Lab-Arena 集成待发布
+- [DexBench](../wiki/entities/dexbench.md) — RLWRLD × NVIDIA 工业灵巧操作开放规格：OSC 六轴诊断难度、五种 Dexterity Regime 规定能力包络，18 任务 / 55 用例 + 可采购实物；官方评测仓与 Isaac Lab-Arena 集成待发布
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
 
 ### 推荐做什么
@@ -119,7 +123,7 @@ flowchart LR
 - [FastGrasp](../wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — CVAE 点云抓取引导 + 全身 RL + 二值触觉反馈的移动高速灵巧抓取 sim2real
 - [TouchWorld](../wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉基础模型：触觉世界模型预测接触子目标 + TRT 高频残差，人形长程六任务真机成功率 65.0%（干净）/ 53.7%（人为扰动）
 - [REGRIND](../wiki/methods/regrind-retargeting-guided-rl.md) — 单次人手–物体动捕重定向 + 残差 RL 跟踪物体关键点，零样本部署 LEAP/WUJI 完成剪刀、螺丝刀等 contact-rich 工具操作
-- [ADEPT](../wiki/entities/paper-adept-dexterity.md)（本仓库，NVIDIA/密歇根）— 16 primitive reposing RL 预训练 + BC/critic-warmup/conservative PPO 后训练 + 两阶段 vision distill；Kuka–Allegro 与 Flexiv–Sharpa zero-shot 真机，触觉 8/10 vs 纯视觉 3/10；代码 Coming soon
+- [ADEPT](../wiki/entities/paper-adept-dexterity.md)（NVIDIA/密歇根）— 16 primitive reposing RL 预训练 + BC/critic-warmup/conservative PPO 后训练 + 两阶段 vision distill；Kuka–Allegro 与 Flexiv–Sharpa zero-shot 真机，触觉 8/10 vs 纯视觉 3/10；代码 Coming soon
 - Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
 
 ### 推荐做什么
@@ -132,34 +136,23 @@ flowchart LR
 
 ---
 
+## 快速入口汇总
+
+| 阶段 | 核心问题 | 知识页入口 |
+|------|---------|-----------|
+| Stage 0 | 区分 prehensile / contact-rich | [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md) |
+| Stage 1 | 阻抗 / 导纳 / 力控 | [Impedance Control](../wiki/concepts/impedance-control.md) |
+| Stage 2 | IL 用于操作 | [Imitation Learning](../wiki/methods/imitation-learning.md) |
+| Stage 3 | 真机接触与触觉 | [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md) |
+
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — 阻抗/力控接口所依赖的关节力矩模式从这里来
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — 本路线向"移动中操作"的扩展版
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — 灵巧手交互重定向的邻接路线
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 接触/软体任务的 Goal + Safety 双指标评测
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [模仿学习](depth-imitation-learning.md) — contact-rich 任务现在的主流方案是 IL
+  - [遥操作](depth-teleoperation.md) — 示范采集与手指接触保持
+  - [Loco-Manipulation](depth-loco-manipulation.md) — 本路线向「移动中操作」的扩展
+  - [动作重定向](depth-motion-retargeting.md) — 灵巧手交互重定向的邻接路线
 - 关联知识页：
   - [Manipulation](../wiki/tasks/manipulation.md)
   - [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)
@@ -169,8 +162,6 @@ flowchart LR
   - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Manipulation](../wiki/tasks/manipulation.md)
 - [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)

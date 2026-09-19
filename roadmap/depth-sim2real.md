@@ -50,9 +50,9 @@ flowchart LR
 - 给三大类方法各写一句适用判据（何时该标定、何时该随机化、何时该在线适应）
 
 ### 推荐读什么
-- [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）— 概念枢纽，含工程流程总览图
-- [Sim2Real 方法横向对比](../wiki/comparisons/sim2real-approaches.md)（本仓库）— 三大类路线的选型决策树
-- [Query：如何缩小 sim2real gap](../wiki/queries/sim2real-gap-reduction.md)（本仓库）
+- [Sim2Real](../wiki/concepts/sim2real.md) — 概念枢纽，含工程流程总览图
+- [Sim2Real 方法横向对比](../wiki/comparisons/sim2real-approaches.md) — 三大类路线的选型决策树
+- [Query：如何缩小 sim2real gap](../wiki/queries/sim2real-gap-reduction.md)
 - Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks* — DR 奠基论文；Peng et al. 2018, *Sim-to-Real Transfer with Dynamics Randomization*
 
 ### 学完输出什么
@@ -81,13 +81,13 @@ flowchart LR
 - 用 SAGE 式重放对齐给自己的平台做一份执行器 gap 画像
 
 ### 推荐读什么
-- [System Identification](../wiki/concepts/system-identification.md)（本仓库）
-- [Implicit / Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) · [Armature 建模](../wiki/concepts/armature-modeling.md)（本仓库）
-- [Actuator Network](../wiki/methods/actuator-network.md)（本仓库）— 数据驱动执行器模型
-- [BAM 扩展摩擦模型](../wiki/entities/paper-bam-extended-friction-servo-actuators.md) · [PACE](../wiki/entities/paper-pace-sim2real-legged-robots.md)（本仓库）— 解析辨识两条代表路线
-- [SAGE（执行器 Sim2Real 间隙估计）](../wiki/entities/sage-sim2real-actuator-gap-estimator.md)（本仓库）
-- [人形整机闭环惯量标定](../wiki/concepts/humanoid-closed-loop-inertia-calibration.md) 与 [PRIME](../wiki/entities/prime-system-id.md)（本仓库，RSS 2026）— 单关节台架量的是空关节，覆盖不了整机分布式质量与终身漂移：运动学 / 惯量 / IMU 零偏 / 足底力四张单子要做成可随负载更新、可绑机身序列号的闭环；PRIME 给出可跑实现（可微 Anitescu 接触 + Crocoddyl，MAP 联合估轨迹/接触力/物理一致惯量，G1 与 Go2 已验证，BSD-3-Clause 已开源）
-- [人形机器人并联关节解算](../wiki/concepts/humanoid-parallel-joint-kinematics.md)（本仓库）
+- [System Identification](../wiki/concepts/system-identification.md)
+- [Implicit / Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) · [Armature 建模](../wiki/concepts/armature-modeling.md)
+- [Actuator Network](../wiki/methods/actuator-network.md) — 数据驱动执行器模型
+- [BAM 扩展摩擦模型](../wiki/entities/paper-bam-extended-friction-servo-actuators.md) · [PACE](../wiki/entities/paper-pace-sim2real-legged-robots.md) — 解析辨识两条代表路线
+- [SAGE（执行器 Sim2Real 间隙估计）](../wiki/entities/sage-sim2real-actuator-gap-estimator.md)
+- [人形整机闭环惯量标定](../wiki/concepts/humanoid-closed-loop-inertia-calibration.md) 与 [PRIME](../wiki/entities/prime-system-id.md)（RSS 2026）— 单关节台架量的是空关节，覆盖不了整机分布式质量与终身漂移：运动学 / 惯量 / IMU 零偏 / 足底力四张单子要做成可随负载更新、可绑机身序列号的闭环；PRIME 给出可跑实现（可微 Anitescu 接触 + Crocoddyl，MAP 联合估轨迹/接触力/物理一致惯量，G1 与 Go2 已验证，BSD-3-Clause 已开源）
+- [人形机器人并联关节解算](../wiki/concepts/humanoid-parallel-joint-kinematics.md)
 
 ### 学完输出什么
 - 一份 URDF/执行器验收 checklist 与本平台的执行器 gap 画像
@@ -114,11 +114,11 @@ flowchart LR
 - 为本平台写一份 DR 参数表，每项标注范围依据（标定值 ± 不确定度，而非拍脑袋）
 
 ### 推荐读什么
-- [Domain Randomization](../wiki/concepts/domain-randomization.md) · [Curriculum Learning](../wiki/concepts/curriculum-learning.md)（本仓库）
-- [Privileged Training](../wiki/concepts/privileged-training.md)（本仓库）
-- [RMA（Rapid Motor Adaptation）](../wiki/entities/paper-rma-rapid-motor-adaptation.md)（本仓库）— 在线适应代表作
-- [MUJICA](../wiki/entities/paper-mujica-wheel-legged-multi-skill.md)（本仓库）— 电机包络约束进 P3O 的零样本实例
-- [执行器约束 RL 高速四足](../wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md)（本仓库，arXiv:2312.17507）— MOR 约束 + 减速器映射；HOUND 6.5 m/s 与高速 sim2real 消融
+- [Domain Randomization](../wiki/concepts/domain-randomization.md) · [Curriculum Learning](../wiki/concepts/curriculum-learning.md)
+- [Privileged Training](../wiki/concepts/privileged-training.md)
+- [RMA（Rapid Motor Adaptation）](../wiki/entities/paper-rma-rapid-motor-adaptation.md) — 在线适应代表作
+- [MUJICA](../wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — 电机包络约束进 P3O 的零样本实例
+- [执行器约束 RL 高速四足](../wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md)（arXiv:2312.17507）— MOR 约束 + 减速器映射；HOUND 6.5 m/s 与高速 sim2real 消融
 
 ### 学完输出什么
 - 一份带范围依据的 DR 参数表
@@ -144,10 +144,10 @@ flowchart LR
 - 任选一篇视觉 sim2real 工作，画出它在"随机化 / 蒸馏 / VFM 替代"三分中的位置
 
 ### 推荐读什么
-- [GR00T-VisualSim2Real](../wiki/entities/gr00t-visual-sim2real.md)（本仓库）— PPO Teacher + DAgger RGB Student，G1 零样本
-- [LadderMan](../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)（本仓库）— 真机用 VFM 深度替代重度 depth randomization
-- [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)（本仓库）— 合成深度预训练 + 深度噪声增强的零样本导航
-- [LEGS](../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) · [OASIS](../wiki/entities/paper-loco-manip-04-oasis.md)（本仓库）— 3DGS / 路径追踪视觉 DR 合成数据
+- [GR00T-VisualSim2Real](../wiki/entities/gr00t-visual-sim2real.md) — PPO Teacher + DAgger RGB Student，G1 零样本
+- [LadderMan](../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 真机用 VFM 深度替代重度 depth randomization
+- [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — 合成深度预训练 + 深度噪声增强的零样本导航
+- [LEGS](../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) · [OASIS](../wiki/entities/paper-loco-manip-04-oasis.md) — 3DGS / 路径追踪视觉 DR 合成数据
 
 ### 学完输出什么
 - 一份"状态策略 → 视觉策略"的迁移决策记录（随机化 / 蒸馏 / VFM 三选或组合）
@@ -174,14 +174,14 @@ flowchart LR
 - 完整跑一遍 sim2real checklist，产出一次 sim2sim 回归报告再上真机
 
 ### 推荐读什么
-- [Query：Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)（本仓库）— 完整工程清单（含 3 分钟快速版）
-- [处理器在环 Sim2Real](../wiki/concepts/processor-in-the-loop-sim2real.md)（本仓库）
-- [Software-in-the-Loop](../wiki/concepts/software-in-the-loop.md) 与 [Hardware-in-the-Loop](../wiki/concepts/hardware-in-the-loop.md)（本仓库）— 把上一条补成 SIL → PIL → HIL 的完整在环阶梯：哪些环节可以留在纯软件回归（仿真机器人 + ROS 2 bridge），哪些必须把真实控制器 / 驱动 / 总线接进实时闭环再上整机；含 OPAL-RT 与 RHILS 的一手工程口径，并与同缩写的 Hybrid Imitation Learning 消歧
-- [Query：RL 策略真机调试 Playbook](../wiki/queries/robot-policy-debug-playbook.md)（本仓库）
-- [ONNX](../wiki/entities/onnx.md) · [ONNX Runtime vs MNN vs TensorRT](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)（本仓库）
-- [Open Duck Mini](../wiki/entities/open-duck-mini.md)（本仓库）— 低成本平台全链路 sim2real 公开参考
-- [NVIDIA Isaac Lab · Spot Locomotion Sim2Real](../wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md)（本仓库）— 官方教程：Isaac-Velocity-Flat-Spot-v0 训平地速度跟踪，Jetson Orin 上 ONNX 推理 + Spot SDK 零样本部署
-- [NVIDIA Isaac Lab · UR10e Industrial Assembly Sim2Real](../wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md)（本仓库）— 官方案例：RL 出 motion/insertion、Isaac ROS 做 6D 感知、UR Direct Torque 阻抗环 500 Hz 真机执行的零样本装配
+- [Query：Sim2Real Checklist](../wiki/queries/sim2real-checklist.md) — 完整工程清单（含 3 分钟快速版）
+- [处理器在环 Sim2Real](../wiki/concepts/processor-in-the-loop-sim2real.md)
+- [Software-in-the-Loop](../wiki/concepts/software-in-the-loop.md) 与 [Hardware-in-the-Loop](../wiki/concepts/hardware-in-the-loop.md) — 把上一条补成 SIL → PIL → HIL 的完整在环阶梯：哪些环节可以留在纯软件回归（仿真机器人 + ROS 2 bridge），哪些必须把真实控制器 / 驱动 / 总线接进实时闭环再上整机；含 OPAL-RT 与 RHILS 的一手工程口径，并与同缩写的 Hybrid Imitation Learning 消歧
+- [Query：RL 策略真机调试 Playbook](../wiki/queries/robot-policy-debug-playbook.md)
+- [ONNX](../wiki/entities/onnx.md) · [ONNX Runtime vs MNN vs TensorRT](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [Open Duck Mini](../wiki/entities/open-duck-mini.md) — 低成本平台全链路 sim2real 公开参考
+- [NVIDIA Isaac Lab · Spot Locomotion Sim2Real](../wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — 官方教程：Isaac-Velocity-Flat-Spot-v0 训平地速度跟踪，Jetson Orin 上 ONNX 推理 + Spot SDK 零样本部署
+- [NVIDIA Isaac Lab · UR10e Industrial Assembly Sim2Real](../wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — 官方案例：RL 出 motion/insertion、Isaac ROS 做 6D 感知、UR Direct Torque 阻抗环 500 Hz 真机执行的零样本装配
 
 ### 学完输出什么
 - 一份本平台的部署 SOP 文档与 sim2sim 回归报告
@@ -214,7 +214,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 域差画像与方法三分 | [Sim2Real](../wiki/concepts/sim2real.md) |
 | Stage 1 | 资产与执行器对齐 | [System Identification](../wiki/concepts/system-identification.md) |
@@ -226,42 +226,20 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)（本路线是 L6 的展开版）
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 本路线的**反向补集**：Real2Sim 修仿真侧资产，本路线迁移到真机，常串联
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 本路线消费其训练产物；训练侧直接前置
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — Stage 1 执行器模型的硬件侧展开版
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — Stage 3 感知进策略的任务侧展开版
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md) — Stage 1 执行器/延迟参数的整机侧来源
-  - [安全控制（CLF/CBF）](depth-safe-control.md) — Stage 5 方向 A 安全壳的理论侧
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md) — 姊妹路线：迁移看策略能否跑，评测看排名能否外推
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [RL 运动控制](depth-rl-locomotion.md) — 本路线最常见的策略训练上游
+  - [Real2Sim](depth-real2sim.md) — 反向补集：修仿真资产 vs 把策略搬上真机
+  - [具身测评](depth-embodied-eval.md) — sim↔real 校准与评测 gap
+  - [力矩电机设计](depth-torque-motor-design.md) — 执行器层 gap 的硬件源头
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
-本路线基于以下原始资料与 wiki 编译页的归纳：
-
 - [Sim2Real 概念页](../wiki/concepts/sim2real.md) 与 [Sim2Real 方法横向对比](../wiki/comparisons/sim2real-approaches.md)
-- [sources/papers/sim2real.md](../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
-- [sources/papers/rma_arxiv_2107_04034.md](../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
-- [sources/repos/xbotics-embodied-guide.md](../sources/repos/xbotics-embodied-guide.md) — Sim2Real SOP 工程步骤
-- [sources/repos/sage-sim2real-actuator-gap.md](../sources/repos/sage-sim2real-actuator-gap.md) — 执行器层 gap 度量工具链
-- [sources/courses/nvidia_sim_to_real_so101_isaac.md](../sources/courses/nvidia_sim_to_real_so101_isaac.md) — DR / Co-training / Cosmos / SAGE+GapONet 四类策略对照
+- Tobin et al., *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* (2017, [arXiv:1703.06907](https://arxiv.org/abs/1703.06907))
+- [RMA: Rapid Motor Adaptation for Legged Robots](https://arxiv.org/abs/2107.04034) — RMA（RSS 2021）
+- [Xbotics-Embodied-Guide (Xbotics 社区具身智能学习指南)](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-Guide) — Sim2Real SOP 工程步骤
+- [SAGE: Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage) — 执行器层 gap 度量工具链
+- [Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac](https://docs.nvidia.com/learning/physical-ai/sim-to-real-so-101/latest/index.html) — DR / Co-training / Cosmos / SAGE+GapONet 四类策略对照
 - Tobin et al. 2017（Domain Randomization 奠基）；Peng et al. 2018（Dynamics Randomization）
