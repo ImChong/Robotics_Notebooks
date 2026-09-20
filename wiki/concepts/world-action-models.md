@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -59,6 +59,7 @@ related:
   - ../entities/paper-x-mind.md
   - ../entities/paper-world-action-planner.md
   - ../entities/paper-rise-adaptive-imagination-wam.md
+  - ../entities/paper-xpace.md
   - ../entities/paper-worldscape-policy-2.md
   - ../entities/unifolm-world-model-action.md
   - ../entities/paper-gwm-first-principles.md
@@ -274,6 +275,8 @@ flowchart TB
 **产业实例（动作优先全因果 AR · 闭源）**：[Riemann-1.0](../entities/paper-riemann-1.md)（黎曼动力 / 昆仑万维，2026-07）把交互写成 \(p(a_t\mid z_{<t},s_{<t},a_{<t})\,p(z_t\mid z_{<t},s_{<t},a_{\le t})\)：先出 action chunk 再条件化未来视觉 latent，同一 DiT 兼任策略与世界仿真。三阶段课程（LAM 伪动作 λ=0.1 → 3D 手/UMI/机 λ=0.5 → 机器人-only λ=0.9）吃 **232K+ h** 异构数据；RoboCasa365 **62.6%**（相对 [ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) +8.4）、天机 Marvin 真机均 **85.0% SR**；**确认未开源**。与 Dyna-2 对照：人视频在这里是 **对齐原料**，不是「预训练零机器人」缩放律。
 
 **产业实例（分模块从零预训练 · KASO · 万小时缩放 · 闭源）**：[GE-Act 2.0](../entities/paper-ge-act-2.md)（Genie Envisioner Act 2.0，arXiv:2609.05588，AgiBot）以 **CoAE（24 tokens/帧）+ 单步 SVP MeanFlow + IDM** 在操作数据上 **从零预训练**（SVP **39k h** / IDM **32k h**），再用 **KASO** 筛动作相容的视觉未来做联合训练；共训 **300→30,000 h** 零样本 OOD 均值 **G1-OP 44.1% / G2-90D 31.1%**（后者占共训 <2% 仍 **+17.7 pt**）；RTX 5090 **104 ms / 52 步 @ 30 Hz**；**代码待发布**。
+
+**产业实例（WAM + simulator 合一 · 异构经验 + recovery 自改进 · 闭源）**：[XPACE](../entities/paper-xpace.md)（XPENG Robotics，arXiv:2609.17372）用 **共享 causal Video Transformer** 同时担任 **world action model**（联合预测 16-step action chunk 与未来视频）与 **world simulator**（skeleton + camera pose 条件视觉）；**~5000h** 数据分 L1 无动作视频 / L2 人动作 / L3 bridge / L4 IRON teleop，失败–恢复集 **只训 simulator**。Stage I 无动作视频适配 → Stage II flow-matching 粗到细 human→robot → Stage III 分叉：**SGF** 适配 simulator 合成 deviation–recovery，policy 以 **8% 合成 recovery** 微调。IRON 真机三任务平均成功率 **68.3%**（DreamZero 40.0% / GR00T 6.7%），recovery 后 **86.7%**；叠碗等 **robot demo 缺失** 任务仍可从 human/bridge 迁移；**确认未开源**（项目页仅链 xpeng-robotics 组织）。
 
 **文献实例（三阶段动作–动力学–语言预对齐 · Astribot S1 22 任务）**：[Lumo-2](../entities/lumo-2.md) 以 **Qwen3.5-4B** 联合建模 **潜空间世界动力学 φ** 与 **VQ 动作 chunk**，经 **Stage1 动力学↔动作、Stage2 视觉–语言语义、Stage3 VLWA 共训** 缓解「重建好但不好控」；推理用 **BAR 块解码 2.71×** 加速与历史动作记忆；在 **22 项** 真机挑战任务上全面超 **π₀.₅/Fast-WAM**，并展示 VisionPro / egocentric 人视频 **无专用迁移** 的共训增益（arXiv:2607.11270）。系统部署语境见同团队 [Philia](../entities/philia.md) agent 运行时。
 
