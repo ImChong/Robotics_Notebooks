@@ -87,6 +87,7 @@ flowchart LR
 - [NVIDIA Omniverse NuRec](../wiki/entities/nvidia-nurec.md) — 官方 USDZ 体积与 Isaac / AV 两条重建入口
 - [Instant NuRec](../wiki/entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS（~1.5 s），作逐场景 NuRec 种子；办公室扫描不要套这条 CLI
 - [i3dGS](../wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — 乱序 RGB 照片流 **即时** 3DGS 重建 + 全局回环（SIGGRAPH 2026；GraphDeco 官方代码已开源）；漫游捕获 / 补拍混采的上游，不含碰撞 mesh
+- [Skyfall-GS](../wiki/entities/paper-skyfall-gs.md) — **卫星影像** → city-block 可漫游 3DGS（ECCV 2026；Stage 1 伪深度 + Stage 2 IDU/FlowEdit；Apache 2.0 已开源）；远程城市几何锚定，非街景 COLMAP
 - [Spark vs Aholo：Web 大场景 3DGS 渲染选型](../wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md) — 重建资产的浏览器可视化栈
 
 ### 学完输出什么
