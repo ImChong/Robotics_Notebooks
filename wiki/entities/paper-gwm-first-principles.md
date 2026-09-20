@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, gwm, world-action-models, shengshu, tsinghua, position-paper]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 venue: "Shengshu / Tsinghua manuscript 2026-08 (no arXiv)"
 related:
   - ../concepts/functional-taxonomy-world-models.md
@@ -10,6 +10,7 @@ related:
   - ./paper-motubrain.md
   - ./paper-motus2.md
   - ./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md
+  - ./paper-vidu-s2.md
   - ./paper-wam-realtime-async.md
   - ./paper-data-pyramid-embodied-manipulation.md
   - ../methods/generative-world-models.md
@@ -43,7 +44,7 @@ summary: "General World Models from First-Principles（生数/清华，2026 手�
 ## 为什么重要
 
 - **给「世界模型」过载词提供第二套坐标：** 功能分类问 **输出什么**；本报告问 **闭环缺哪一环** 与 **自主性到哪一级**。
-- **把生数产品线写进可检验路线图：** L1 [Vidu Q3]、L2 [Vidu S1]、L3 [Motus / Motubrain](./paper-motubrain.md)——便于对照 [Motus2](./paper-motus2.md) 的「三接口 GWM + 自进化」是否仍算 L3 口径。
+- **把生数产品线写进可检验路线图：** L1 [Vidu Q3]、L2 [Vidu S1 → S2](./paper-vidu-s2.md)（S2：实时 Avatar + 流式 Editing）、L3 [Motus / Motubrain](./paper-motubrain.md)——便于对照 [Motus2](./paper-motus2.md) 的「三接口 GWM + 自进化」是否仍算 L3 口径。
 - **数据 recipe 可执行：** D 金字塔 + **50–100 条** 目标机轨迹适配（Motubrain 披露）与 [PKU Data Pyramid](./paper-data-pyramid-embodied-manipulation.md) 并行存在，选型时勿混层号。
 
 ## 核心信息
@@ -73,7 +74,7 @@ summary: "General World Models from First-Principles（生数/清华，2026 手�
 
 ```mermaid
 flowchart LR
-  L1["L1 世界生成\nVidu Q3"] --> L2["L2 交互世界\nVidu S1"]
+  L1["L1 世界生成\nVidu Q3"] --> L2["L2 交互世界\nVidu S1 → S2"]
   L2 --> L3["L3 可行动世界\nMotus / Motubrain"]
   L3 --> L4["L4 自主智能体\n（未实现）"]
   L4 --> L5["L5 世界组织者\n（未实现）"]
@@ -160,7 +161,7 @@ flowchart TB
 
 - **无 arXiv / 战略页重定向** — 手稿难以版本锁定；引用应以 WRC 稿与实例论文为准。
 - **L4–L5 仅为路线图** — 不应提前当作已交付能力。
-- **Vidu Q3/S1 未建独立 paper 节点** — 属产品映射，非本次 arXiv 盘点对象。
+- **Vidu Q3/S1/S2：** Q3/S1 仍属产品映射；**[Vidu S2](./paper-vidu-s2.md)**（arXiv:2609.11638）已升格独立 paper 节点（Demo/API 可用，代码未开源）。
 - **与 Data Pyramid 综述易混淆** — 写作与 ingest 必须显式区分 D1–D5 定义。
 
 ## 源码运行时序图
