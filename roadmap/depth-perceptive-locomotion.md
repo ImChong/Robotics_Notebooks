@@ -102,7 +102,7 @@ flowchart LR
 - [DreamWaQ++](../wiki/entities/dreamwaq-plus.md)
 - [PIE：感知一阶段鲁棒行走](../wiki/methods/pie-perceptive-locomotion.md) — 单阶段视觉跑酷框架，深度图+本体经多头估计器输出显式高度图与隐式环境表征，与两阶段 teacher-student 路线对照
 - [Teacher-Student 与 DAgger 训练](../wiki/methods/teacher-student-dagger-training.md) — 特权教师蒸馏可部署学生的通用范式，本 Stage teacher-student 感知策略路线的方法页
-- [P³](../wiki/entities/paper-p3.md)（本仓库）— 指出 DreamWaQ/PIE 等主流 VAE-PPO 感知策略训练难收敛的根因是单样本似然误把分量高斯当边缘策略；用多样本边缘化（MM）修正后训练诊断保住率 64.6%→100%，比最强 MC-only 少 20%+ 收敛步，MuJoCo 与 G1 真机均最优；官方仓开源 Isaac Lab + rl_p3 训练/评测脚本
+- [P³](../wiki/entities/paper-p3.md) — 指出 DreamWaQ/PIE 等主流 VAE-PPO 感知策略训练难收敛的根因是单样本似然误把分量高斯当边缘策略；用多样本边缘化（MM）修正后训练诊断保住率 64.6%→100%，比最强 MC-only 少 20%+ 收敛步，MuJoCo 与 G1 真机均最优；官方仓开源 Isaac Lab + rl_p3 训练/评测脚本
 - Miki et al., *Learning Robust Perceptive Locomotion for Quadrupedal Robots in the Wild* (2022)
 
 ### 推荐做什么
@@ -132,11 +132,11 @@ flowchart LR
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - [Humanoid Parkour Learning 深读笔记](../wiki/entities/paper-notebook-humanoid-parkour-learning.md)
 - [Footstep Planning](../wiki/concepts/footstep-planning.md) — 与 model-based 落脚点方法对照
-- [Light-Loco-Parkour](../wiki/entities/paper-light-loco-parkour.md)（本仓库）— 稀疏人体动作种子 Real2Sim2Real 扩成地形族 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏成单一无技能标签深度策略；Lightbot 0 攀爬至 0.83H、踏石 99.9%，Orin Nano 边缘算力 50 Hz；代码未开源
-- [ParkourFormer](../wiki/entities/paper-parkourformer.md)（本仓库）— Transformer 用当前状态查询历史，监督未来两步 AMP 状态并条件化动作；G1 九类地形单策略平均穿越 93.85%；去 MSE 下楼塌到 9.50%；代码未开源
-- [TRAMP](../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)（本仓库，SJTU，IEEE RA-L 2026）— 单阶段视觉辅助 RL：层次特征提取 + MoE actor + 地形相关 AMP，机载低成本深度；真机验证坡/楼梯/高台/宽沟与户外杂乱场景；代码未开源
-- [CMoE](../wiki/entities/paper-cmoe.md)（本仓库，Fudan，ICRA 2026）— 单阶段 PPO + 高程图 MoE，用 SwAV 式地形对比学习解决 vanilla MoE 门控均匀激活；G1 真机 20 cm 台阶、80 cm 沟；官方 Isaac Gym 代码已开源
-- [CReF](../wiki/entities/paper-cref.md)（本仓库，浙大/山大）— 单阶段前向深度 + 本体交叉注意力与 GRU highway 融合，不做 2.5D 建图或几何辅助目标；AgiBot X2 Ultra 零样本楼梯/40 cm 台/80 cm 沟；训练代码未开源
+- [Light-Loco-Parkour](../wiki/entities/paper-light-loco-parkour.md) — 稀疏人体动作种子 Real2Sim2Real 扩成地形族 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏成单一无技能标签深度策略；Lightbot 0 攀爬至 0.83H、踏石 99.9%，Orin Nano 边缘算力 50 Hz；代码未开源
+- [ParkourFormer](../wiki/entities/paper-parkourformer.md) — Transformer 用当前状态查询历史，监督未来两步 AMP 状态并条件化动作；G1 九类地形单策略平均穿越 93.85%；去 MSE 下楼塌到 9.50%；代码未开源
+- [TRAMP](../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)（SJTU，IEEE RA-L 2026）— 单阶段视觉辅助 RL：层次特征提取 + MoE actor + 地形相关 AMP，机载低成本深度；真机验证坡/楼梯/高台/宽沟与户外杂乱场景；代码未开源
+- [CMoE](../wiki/entities/paper-cmoe.md)（Fudan，ICRA 2026）— 单阶段 PPO + 高程图 MoE，用 SwAV 式地形对比学习解决 vanilla MoE 门控均匀激活；G1 真机 20 cm 台阶、80 cm 沟；官方 Isaac Gym 代码已开源
+- [CReF](../wiki/entities/paper-cref.md)（浙大/山大）— 单阶段前向深度 + 本体交叉注意力与 GRU highway 融合，不做 2.5D 建图或几何辅助目标；AgiBot X2 Ultra 零样本楼梯/40 cm 台/80 cm 沟；训练代码未开源
 
 ### 推荐做什么
 - 复现一个开源 parkour 工作（Extreme Parkour / humanoid parkour）在仿真里的训练
@@ -161,7 +161,7 @@ flowchart LR
 - [平滑导航路径生成](../wiki/methods/smooth-navigation-path-generation.md)
 - [Sim2Real](../wiki/concepts/sim2real.md)
 - [Query：locomotion 失效模式](../wiki/queries/locomotion-failure-modes.md)
-- [VB-Com](../wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md)（本仓库，ICRA 2026）— 把"感知失效"写成可切换的控制问题而不是再加训练噪声：只吃历史本体的回报估计器判断高程图还靠不靠谱，不靠谱就把控制权交给已学会接触恢复的盲策略；G1/H1 双机验证高速迎面行人与零高程输入下的降级恢复；项目页 Code coming soon
+- [VB-Com](../wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md)（ICRA 2026）— 把"感知失效"写成可切换的控制问题而不是再加训练噪声：只吃历史本体的回报估计器判断高程图还靠不靠谱，不靠谱就把控制权交给已学会接触恢复的盲策略；G1/H1 双机验证高速迎面行人与零高程输入下的降级恢复；项目页 Code coming soon
 
 ### 推荐做什么
 - 把 Stage 3 策略接入一个"目标点 → 路径 → 局部越障"的分层栈，在仿真里跑长距离任务
@@ -175,7 +175,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 盲走基线 | [Terrain Adaptation](../wiki/concepts/terrain-adaptation.md) |
 | Stage 1 | 地形表征 | [Terrain Latent Representation](../wiki/concepts/terrain-latent-representation.md) |
@@ -186,31 +186,11 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 本路线的直接前置
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [安全控制（CLF/CBF）](depth-safe-control.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 4 导航栈整合的全局侧展开版
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [RL 运动控制](depth-rl-locomotion.md) — 盲走基线与训练管线
+  - [导航](depth-navigation.md) — 大范围「往哪走」vs 落足「往哪迈」
+  - [Loco-Manipulation](depth-loco-manipulation.md) — 越障之后还要操作
+  - [Sim2Real](depth-sim2real.md) — 感知策略上真机的域差
 - 关联知识页：
   - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
   - [FastStair](../wiki/entities/paper-faststair-humanoid-stair-ascent.md) — Stage 3 人形高速上楼 · 规划引导 RL
@@ -224,10 +204,8 @@ flowchart LR
 
 ## 参考来源
 
-本路线基于以下原始资料的归纳：
-
 - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
-- [FastStair 论文摘录（arXiv:2601.10365）](../sources/papers/faststair_arxiv_2601_10365.md)
+- [FastStair](https://arxiv.org/abs/2601.10365)（arXiv:2601.10365）
 - [Terrain Adaptation](../wiki/concepts/terrain-adaptation.md)
 - [Privileged Training](../wiki/concepts/privileged-training.md)
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)

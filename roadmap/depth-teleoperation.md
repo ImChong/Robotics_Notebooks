@@ -52,10 +52,10 @@ flowchart LR
 - 读一篇综述，建立"接口 × 机器人 × 数据规模"的三维选型直觉
 
 ### 推荐读什么
-- [Teleoperation（遥操作）](../wiki/tasks/teleoperation.md)（本仓库）— 主入口：挑战 / 系统对比表 / 到策略学习的 pipeline
-- [Teleoperation of Humanoid Robots: A Survey（论文笔记）](../wiki/entities/paper-notebook-teleoperation-of-humanoid-robots-a-survey.md)（本仓库）— 综述级全景
-- [操作演示数据采集指南（Query）](../wiki/queries/demo-data-collection-guide.md)（本仓库）— 采集侧实操
-- [ROVE](../wiki/entities/paper-rove-humanoid-vla-intervention.md)（本仓库）— 为什么"部署期接管 ≠ 专家示范"
+- [Teleoperation（遥操作）](../wiki/tasks/teleoperation.md) — 主入口：挑战 / 系统对比表 / 到策略学习的 pipeline
+- [Teleoperation of Humanoid Robots: A Survey（论文笔记）](../wiki/entities/paper-notebook-teleoperation-of-humanoid-robots-a-survey.md) — 综述级全景
+- [操作演示数据采集指南（Query）](../wiki/queries/demo-data-collection-guide.md) — 采集侧实操
+- [ROVE](../wiki/entities/paper-rove-humanoid-vla-intervention.md) — 为什么"部署期接管 ≠ 专家示范"
 
 ### 学完输出什么
 - 能一句话说清遥操作解决什么、三种输出形态各要什么
@@ -82,15 +82,15 @@ flowchart LR
 - 把同一个抓取任务分别用 leader 臂与 VR 手柄采一遍，对比末端精度与操作员疲劳
 
 ### 推荐读什么
-- [数据手套 vs 视觉遥操作（对比）](../wiki/comparisons/data-gloves-vs-vision-teleop.md)（本仓库）— 采集通道选型主入口
-- [XRoboToolkit](../wiki/entities/paper-xrobotoolkit.md)（本仓库）— OpenXR 跨平台 XR 遥操作中间层（PICO/Quest）
-- [ACE 跨平台视觉外骨骼系统（论文笔记）](../wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md) 与 [NuExo 上肢外骨骼（论文笔记）](../wiki/entities/paper-notebook-nuexo-a-wearable-exoskeleton-covering-all-upper.md)（本仓库）— 外骨骼 cockpit
-- [UME-EXO](../wiki/entities/paper-ume-exo.md)（本仓库）— 外骨骼实时力矩反馈 + 全身臂形采集
-- [HandUMI](../wiki/entities/handumi.md) 与 [mimic wearable U1](../wiki/entities/mimic-wearable-u1.md)（本仓库）— 无机器人手持/外骨骼采集
-- [HiFi-UMI](../wiki/entities/paper-hifi-umi.md)（本仓库）— 高保真无机器人双臂 UMI（~3 mm 精度、<40 µs 同步、六视角），zero-robot 后训练匹配同域遥操作；开源 HiFi-UMI-2K（2000 h，CC BY 4.0），采数系统代码截至入库日未发布
-- [RIO（Robot I/O）](../wiki/entities/robot-io-rio.md)（本仓库）— 多设备遥操作的 Node 化抽象
-- [xpad](../wiki/entities/xpad.md) 与 [Oculus Quest Teleop](../wiki/entities/oculust-quest-teleop.md)、[Isaac Teleop](../wiki/entities/isaac-teleop.md)（本仓库）— 手柄内核驱动 / VR / 仿真内录制
-- [ALOHA](../wiki/entities/aloha.md)（本仓库）— 低成本 leader–follower 双臂
+- [数据手套 vs 视觉遥操作（对比）](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集通道选型主入口
+- [XRoboToolkit](../wiki/entities/paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（PICO/Quest）
+- [ACE 跨平台视觉外骨骼系统（论文笔记）](../wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md) 与 [NuExo 上肢外骨骼（论文笔记）](../wiki/entities/paper-notebook-nuexo-a-wearable-exoskeleton-covering-all-upper.md) — 外骨骼 cockpit
+- [UME-EXO](../wiki/entities/paper-ume-exo.md) — 外骨骼实时力矩反馈 + 全身臂形采集
+- [HandUMI](../wiki/entities/handumi.md) 与 [mimic wearable U1](../wiki/entities/mimic-wearable-u1.md) — 无机器人手持/外骨骼采集
+- [HiFi-UMI](../wiki/entities/paper-hifi-umi.md) — 高保真无机器人双臂 UMI（~3 mm 精度、<40 µs 同步、六视角），zero-robot 后训练匹配同域遥操作；开源 HiFi-UMI-2K（2000 h，CC BY 4.0），采数系统代码截至入库日未发布
+- [RIO（Robot I/O）](../wiki/entities/robot-io-rio.md) — 多设备遥操作的 Node 化抽象
+- [xpad](../wiki/entities/xpad.md) 与 [Oculus Quest Teleop](../wiki/entities/oculust-quest-teleop.md)、[Isaac Teleop](../wiki/entities/isaac-teleop.md) — 手柄内核驱动 / VR / 仿真内录制
+- [ALOHA](../wiki/entities/aloha.md) — 低成本 leader–follower 双臂
 
 ### 学完输出什么
 - 一份自己方向的接口选型表（末端 / 手指 / 力触觉 / 下身 / 成本五列）
@@ -118,11 +118,11 @@ flowchart LR
 - 给回路人为注入 100–200 ms 延迟，观察精细对齐任务的成功率退化，试一版预测性显示
 
 ### 推荐读什么
-- [ssik（解析逆运动学）](../wiki/entities/ssik.md)（本仓库）— 6R/7R 臂 `q_seed` 最近分支与 `seed_tolerance` 跳变检测
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）— 重定向问题与管线
-- [GMR（运动学重定向）](../wiki/methods/motion-retargeting-gmr.md)（本仓库）— 先几何对齐、物理留给下游
-- [Whole-Body Bilateral Teleoperation（论文笔记）](../wiki/entities/paper-notebook-whole-body-bilateral-teleoperation-with-multi-st.md)（本仓库）— 多站点双边遥操作稳定
-- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md)（本仓库）— "摆得出姿势" ≠ "站得住、跟得上"
+- [ssik（解析逆运动学）](../wiki/entities/ssik.md) — 6R/7R 臂 `q_seed` 最近分支与 `seed_tolerance` 跳变检测
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) — 重定向问题与管线
+- [GMR（运动学重定向）](../wiki/methods/motion-retargeting-gmr.md) — 先几何对齐、物理留给下游
+- [Whole-Body Bilateral Teleoperation（论文笔记）](../wiki/entities/paper-notebook-whole-body-bilateral-teleoperation-with-multi-st.md) — 多站点双边遥操作稳定
+- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md) — "摆得出姿势" ≠ "站得住、跟得上"
 
 ### 学完输出什么
 - 一个能跑的 VR → 臂末端解析 IK 实时跟踪脚本，带构型连续与跳变保护
@@ -151,16 +151,16 @@ flowchart LR
 - 对同一段全身遥操作分别用"逐帧硬跟踪"与"运动流形约束"低层，对比稳定性与可行域
 
 ### 推荐读什么
-- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md)（本仓库）— 全身跟踪主链路
-- [SONIC（规模化运动跟踪）](../wiki/methods/sonic-motion-tracking.md) 与 [TWIST2](../wiki/entities/paper-twist2.md)（本仓库）— 双 GMT 后端，头手三点驱动上身 + 规划补下身
-- [BFM-Zero](../wiki/entities/paper-bfm-zero.md)（本仓库）与 [BFM 纵深](depth-bfm.md)— 运动流形约束的低层，VR 遥操作是其接口之一
-- [HEFT](../wiki/entities/paper-heft.md)（本仓库）— 嘈杂 raw VR + WPC 双手负载，全尺寸 L7 重载遥操作
-- [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md)（本仓库）— VR 长程 loco-manip + 感知 MoE 全身 LLC
-- [CLOT](../wiki/entities/paper-amp-survey-16-clot.md)（本仓库）— 闭环全局位姿的长时程无漂移全身遥操作
-- [TeleGate](../wiki/entities/paper-telegate.md)（本仓库）— 门控选冻结专家 + VAE 运动先验，高动态跑跳/跌倒恢复
-- [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md)（本仓库）— Quest 双手 9D keypoint + 速度/身高蒸馏接口，无需全身 MoCap
-- [Teleopit](../wiki/entities/paper-teleopit.md)（本仓库）— PICO VR 单一传感源统一驱动全身跟踪 + 跨形态灵巧手优化重定向 + 主动视觉，History Encoder + failure-aware rewind；持出集 Mocap SR 91.7% / PICO SR 100.0%，均超 TWIST2/SONIC/HoloMotion；96 条演示训 ACT 90% / GR00T 95%，五仓开源
-- [CHILD 全身人形遥操作系统（论文笔记）](../wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md) 与 [HOMIE 等动学外骨骼 cockpit（论文笔记）](../wiki/entities/paper-loco-manip-161-040-homie.md)（本仓库）
+- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md) — 全身跟踪主链路
+- [SONIC（规模化运动跟踪）](../wiki/methods/sonic-motion-tracking.md) 与 [TWIST2](../wiki/entities/paper-twist2.md) — 双 GMT 后端，头手三点驱动上身 + 规划补下身
+- [BFM-Zero](../wiki/entities/paper-bfm-zero.md) 与 [BFM 纵深](depth-bfm.md) — 运动流形约束的低层，VR 遥操作是其接口之一
+- [HEFT](../wiki/entities/paper-heft.md) — 嘈杂 raw VR + WPC 双手负载，全尺寸 L7 重载遥操作
+- [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md) — VR 长程 loco-manip + 感知 MoE 全身 LLC
+- [CLOT](../wiki/entities/paper-amp-survey-16-clot.md) — 闭环全局位姿的长时程无漂移全身遥操作
+- [TeleGate](../wiki/entities/paper-telegate.md) — 门控选冻结专家 + VAE 运动先验，高动态跑跳/跌倒恢复
+- [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — Quest 双手 9D keypoint + 速度/身高蒸馏接口，无需全身 MoCap
+- [Teleopit](../wiki/entities/paper-teleopit.md) — PICO VR 单一传感源统一驱动全身跟踪 + 跨形态灵巧手优化重定向 + 主动视觉，History Encoder + failure-aware rewind；持出集 Mocap SR 91.7% / PICO SR 100.0%，均超 TWIST2/SONIC/HoloMotion；96 条演示训 ACT 90% / GR00T 95%，五仓开源
+- [CHILD 全身人形遥操作系统（论文笔记）](../wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md) 与 [HOMIE 等动学外骨骼 cockpit（论文笔记）](../wiki/entities/paper-loco-manip-161-040-homie.md)
 
 ### 学完输出什么
 - 一条从 VR 稀疏输入到全身可执行动作的端到端遥操作回路
@@ -188,16 +188,16 @@ flowchart LR
 - 给手部重定向加一个接触保持项（指尖-物面距离约束），统计脱触帧比例下降
 
 ### 推荐读什么
-- [数据手套 vs 视觉遥操作（对比）](../wiki/comparisons/data-gloves-vs-vision-teleop.md)（本仓库）— 手部采集两条通道的主对比
-- [Dexterous Kinematics（灵巧手运动学）](../wiki/concepts/dexterous-kinematics.md) 与 [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md)（本仓库）— 手部映射抽象
-- [TopoRetarget](../wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md)、[SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) 与 [DynaRetarget vs TopoRetarget（对比）](../wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md)（本仓库）— 接触保持灵巧手重定向
-- [Bunny-VisionPro 实时双手灵巧遥操作（论文笔记）](../wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)、[DexUMI（论文笔记）](../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)、[DexterCap（论文笔记）](../wiki/entities/paper-notebook-dextercap.md)（本仓库）— 视觉/手持手指采集
-- [TeleDexter](../wiki/entities/paper-teledexter.md)（本仓库）— **hand–object co-tracking** 低层控制器：MoCap 指尖+物体目标 → 仿真 RL 零样本真机；七任务平均 **75.2% SR**，并作灵巧采数引擎（**未开源**）
-- [NestDex](../wiki/entities/paper-nestdex.md)（本仓库）— **copilot 嵌套采数**：人控臂 + 1-DoF clutch，内层本体感觉手技能生成手指；部署时外层 visuomotor **卸掉内层**（arXiv:2608.13362，**未开源**）
-- [OSMO 开源触觉手套（论文笔记）](../wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) 与 [ByteDexter 20-DOF 灵巧手遥操作（论文笔记）](../wiki/entities/paper-notebook-dexterous-teleoperation-of-20-dof-bytedexter-han.md)（本仓库）— 触觉手套 / 高 DOF 手
-- [HapMorph](../wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) 与 [Touch Dreaming 触觉策略](../wiki/methods/humanoid-transformer-touch-dreaming.md)（本仓库）— 操作员侧力触觉显示 / 机器人侧触觉进策略
-- 灵巧手硬件谱系：[Shadow Hand](../wiki/entities/shadow-hand.md)、[Allegro Hand](../wiki/entities/allegro-hand.md)、[RUKA v2](../wiki/entities/ruka-v2-hand.md)、[ORCA Hand](../wiki/entities/orca-hand.md)、[mimic hand M1](../wiki/entities/mimic-hand-m1.md)、[MIDAS Hand](../wiki/entities/midas-hand.md)、[Handroid](../wiki/entities/handroid.md)（本仓库）
-- [CoordEx 灵巧人形 loco-manipulation](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)（本仓库）— 全身 + 灵巧手协同遥操作
+- [数据手套 vs 视觉遥操作（对比）](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 手部采集两条通道的主对比
+- [Dexterous Kinematics（灵巧手运动学）](../wiki/concepts/dexterous-kinematics.md) 与 [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 手部映射抽象
+- [TopoRetarget](../wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md)、[SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) 与 [DynaRetarget vs TopoRetarget（对比）](../wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 接触保持灵巧手重定向
+- [Bunny-VisionPro 实时双手灵巧遥操作（论文笔记）](../wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)、[DexUMI（论文笔记）](../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)、[DexterCap（论文笔记）](../wiki/entities/paper-notebook-dextercap.md) — 视觉/手持手指采集
+- [TeleDexter](../wiki/entities/paper-teledexter.md) — **hand–object co-tracking** 低层控制器：MoCap 指尖+物体目标 → 仿真 RL 零样本真机；七任务平均 **75.2% SR**，并作灵巧采数引擎（**未开源**）
+- [NestDex](../wiki/entities/paper-nestdex.md) — **copilot 嵌套采数**：人控臂 + 1-DoF clutch，内层本体感觉手技能生成手指；部署时外层 visuomotor **卸掉内层**（arXiv:2608.13362，**未开源**）
+- [OSMO 开源触觉手套（论文笔记）](../wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) 与 [ByteDexter 20-DOF 灵巧手遥操作（论文笔记）](../wiki/entities/paper-notebook-dexterous-teleoperation-of-20-dof-bytedexter-han.md) — 触觉手套 / 高 DOF 手
+- [HapMorph](../wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) 与 [Touch Dreaming 触觉策略](../wiki/methods/humanoid-transformer-touch-dreaming.md) — 操作员侧力触觉显示 / 机器人侧触觉进策略
+- 灵巧手硬件谱系：[Shadow Hand](../wiki/entities/shadow-hand.md)、[Allegro Hand](../wiki/entities/allegro-hand.md)、[RUKA v2](../wiki/entities/ruka-v2-hand.md)、[ORCA Hand](../wiki/entities/orca-hand.md)、[mimic hand M1](../wiki/entities/mimic-hand-m1.md)、[MIDAS Hand](../wiki/entities/midas-hand.md)、[Handroid](../wiki/entities/handroid.md)
+- [CoordEx 灵巧人形 loco-manipulation](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — 全身 + 灵巧手协同遥操作
 
 ### 学完输出什么
 - 一条从人手姿态（手套或视觉）到灵巧手可执行指令的实时手部重定向回路
@@ -224,14 +224,14 @@ flowchart LR
 - 对"有/无失败示范过滤"两组数据各训一版策略，验证数据质量对收敛的影响
 
 ### 推荐读什么
-- [Imitation Learning](../wiki/methods/imitation-learning.md) 与 [Diffusion Policy](../wiki/methods/diffusion-policy.md)（本仓库）— 遥操作数据的主要消费者
-- [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) 与 [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md)（本仓库）— 无机器人示范 → 人形全身 visuomotor
-- [ROVE](../wiki/entities/paper-rove-humanoid-vla-intervention.md)（本仓库）— 部署期 MoCap 接管与次优接管轨迹的 RL 后训练
-- [AutoIntervene](../wiki/entities/paper-autointervene.md)（本仓库）— action-chunking 策略的校准双向接管（部署期）
-- [NestDex](../wiki/entities/paper-nestdex.md)（本仓库）— 采数期 copilot；外层 BC 部署不再依赖内层手技能（arXiv:2608.13362）
-- [HIW-500 数据集](../wiki/entities/hiw-500-dataset.md)（本仓库）— 500+ h / 23K+ 集家庭级全身遥操作开源集
-- [TeleopBench（论文笔记）](../wiki/entities/paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md) 与 [HumanoidArena](../wiki/entities/paper-humanoidarena.md)（本仓库）— 遥操作 / 分层控制评测后端
-- [EgoDex（论文笔记）](../wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md)（本仓库）— 大规模 egocentric 灵巧数据
+- [Imitation Learning](../wiki/methods/imitation-learning.md) 与 [Diffusion Policy](../wiki/methods/diffusion-policy.md) — 遥操作数据的主要消费者
+- [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) 与 [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — 无机器人示范 → 人形全身 visuomotor
+- [ROVE](../wiki/entities/paper-rove-humanoid-vla-intervention.md) — 部署期 MoCap 接管与次优接管轨迹的 RL 后训练
+- [AutoIntervene](../wiki/entities/paper-autointervene.md) — action-chunking 策略的校准双向接管（部署期）
+- [NestDex](../wiki/entities/paper-nestdex.md) — 采数期 copilot；外层 BC 部署不再依赖内层手技能（arXiv:2608.13362）
+- [HIW-500 数据集](../wiki/entities/hiw-500-dataset.md) — 500+ h / 23K+ 集家庭级全身遥操作开源集
+- [TeleopBench（论文笔记）](../wiki/entities/paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md) 与 [HumanoidArena](../wiki/entities/paper-humanoidarena.md) — 遥操作 / 分层控制评测后端
+- [EgoDex（论文笔记）](../wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) — 大规模 egocentric 灵巧数据
 
 **进阶方向：**
 - **无遥操作合成 vs 遥操作采集成本**——参考 [动作生成纵深](depth-motion-generation.md) 与 [Real2Sim/合成演示](depth-real2sim.md) 一侧的对照
@@ -246,7 +246,7 @@ flowchart LR
 
 ## 快速入口汇总
 
-| 阶段 | 核心问题 | 本仓库入口 |
+| 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 问题定义与输出形态 | [Teleoperation](../wiki/tasks/teleoperation.md) |
 | Stage 1 | 输入接口与硬件 | [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) |
@@ -258,29 +258,15 @@ flowchart LR
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — 本路线 Stage 2/4 用其重定向工具箱；差别在"实时、在环、带延迟"
-  - [模仿学习与技能迁移](depth-imitation-learning.md) — 遥操作示范的主要下游消费者
-  - [BFM（人形行为基础模型）](depth-bfm.md) — 全身遥操作低层的流形约束来源与数据消费者
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — 全身遥操作的典型任务面
-  - [接触丰富的操作任务](depth-contact-manipulation.md) — 手指遥操作接触保持的邻接路线
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 全身跟踪策略的训练侧前置
-  - [VLA（视觉-语言-动作模型）](depth-vla.md) — 遥操作数据训练 VLA、部署期干预接管
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 无遥操作合成演示的对照侧
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 全身遥操作策略上真机的部署侧
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)、[人形群控展演](depth-humanoid-swarm-performance.md) — 竞技/展演向的遥操作极端场景
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — 非结构化地形遥操作的感知前置
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [ICL（具身上下文学习）](depth-icl.md) — 下游：采到的示范可直接当上下文提示
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) — 下游：采到的示范如何清洗、标注、入库与配比
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [模仿学习与技能迁移](depth-imitation-learning.md) — 遥操作示范的主要下游
+  - [动作重定向](depth-motion-retargeting.md) — Stage 2/4 用其工具箱；差别在实时、在环、带延迟
+  - [具身数据](depth-embodied-data.md) — 示范如何清洗、标注、入库与配比
+  - [接触操作](depth-contact-manipulation.md) — 手指遥操作接触保持的邻接路线
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Teleoperation（遥操作）](../wiki/tasks/teleoperation.md) 与 [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 主入口与接口选型
 - Goertz, *Master-Slave Manipulator*（Argonne National Laboratory, 1954）— 主从机械手遥操作的奠基工作，遥操作/远程机器人学的起点

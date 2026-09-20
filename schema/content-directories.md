@@ -42,4 +42,4 @@
 - Schema 总索引：[README.md](README.md)
 - Ingest 操作步骤：[ingest-workflow.md](ingest-workflow.md)
 - 内链写法：[linking.md](linking.md)
-- 仓库总览：[README.md](../README.md) 中「项目结构」表
+- 仓库总览：[CONTRIBUTING.md](../CONTRIBUTING.md) 中「项目结构」表

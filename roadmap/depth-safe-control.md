@@ -45,6 +45,10 @@ flowchart LR
 - [Lyapunov 稳定性形式化](../wiki/formalizations/lyapunov.md)
 - Khalil, *Nonlinear Systems* — Chapter 4（稳定性定义）
 
+### 推荐做什么
+- 选一个一阶或二阶简单系统，手写一个 Lyapunov 函数并验证导数负半定
+- 对照 Khalil *Nonlinear Systems* Chapter 4，把稳定性定义和自己的证明对上
+
 ### 学完输出什么
 - 能手工验证一个简单系统的 Lyapunov 稳定性
 - 理解正定函数和负半定导数的含义
@@ -115,34 +119,22 @@ flowchart LR
 
 ---
 
+## 快速入口汇总
+
+| 阶段 | 核心问题 | 知识页入口 |
+|------|---------|-----------|
+| Stage 0 | Lyapunov 稳定性 | [Lyapunov 稳定性](../wiki/formalizations/lyapunov.md) |
+| Stage 1 | CLF / CBF 与 CBF-QP | [Control Barrier Function](../wiki/concepts/control-barrier-function.md) |
+| Stage 2 | 嵌入 WBC / MPC | [Safety Filter](../wiki/concepts/safety-filter.md) |
+| Stage 3 | Safe RL / CMDP | [Safe RL](../wiki/methods/safe-rl.md) |
+
 ## 和其他页面的关系
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 其它纵深路径：
-  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
-  - [人形 RL 运动控制](depth-rl-locomotion.md)
-  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
-  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
-  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
-  - [模仿学习与技能迁移](depth-imitation-learning.md)
-  - [接触丰富的操作任务](depth-contact-manipulation.md)
-  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
-  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
-  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
-  - [VLA（视觉-语言-动作模型）](depth-vla.md)
-  - [WAM（世界–动作模型）](depth-wam.md)
-  - [BFM（人形行为基础模型）](depth-bfm.md)
-  - [具身模型测评（认知 → 世界模型保真 → 策略成功率 → sim↔real 校准）](depth-embodied-eval.md)
-  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
-  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
-  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
-  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
-  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
-  - [ICL（具身上下文学习）](depth-icl.md)
-  - [RSI（递归自我改进）](depth-rsi.md) — 元层面：把研发闭环本身做成可自改进的对象（记忆 → 权重 → 打分器 → harness → 研究过程）
-  - [具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md)
+- 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [传统模型控制](depth-classical-control.md) — Safety Filter / CBF 约束嵌进 WBC/MPC
+  - [RL 运动控制](depth-rl-locomotion.md) — Stage 3 Safe RL 的策略训练侧
+  - [接触操作](depth-contact-manipulation.md) — 接触力边界是另一类安全约束
 - 关联知识页：
   - [Lyapunov 稳定性](../wiki/formalizations/lyapunov.md)
   - [Control Lyapunov Function](../wiki/formalizations/control-lyapunov-function.md)
@@ -154,8 +146,6 @@ flowchart LR
   - [Query：CLF+CBF 在 WBC/MPC 中联合使用](../wiki/queries/clf-cbf-in-wbc.md)
 
 ## 参考来源
-
-本路线基于以下原始资料的归纳：
 
 - [Lyapunov 稳定性](../wiki/formalizations/lyapunov.md)
 - [Control Lyapunov Function](../wiki/formalizations/control-lyapunov-function.md)
