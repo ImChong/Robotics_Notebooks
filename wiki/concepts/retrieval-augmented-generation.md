@@ -9,6 +9,7 @@ related:
   - ./ai-auto-research.md
   - ./transformer.md
   - ../methods/vla.md
+  - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/painode-125-langchain.md
   - ../entities/easy-vibe.md
   - ../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md
@@ -126,6 +127,7 @@ flowchart LR
 - [AI Auto-Research（学术研究自动化）](./ai-auto-research.md) — RAG 在 S2 文献综合中的位置
 - [Transformer](./transformer.md) — 现代 RAG 生成器骨干
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 多模态策略与 catalog/技能检索
+- [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — RAG 提供的可更新、可溯源非参数记忆，是该闭环 ① VLM 层「语义真值从哪来」的一条实现路径（对比把知识烧进参数）
 - [SafeHumanoid（VLM-RAG 阻抗控制）](../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md)
 - [Robot-Powered Data Flywheel（Scanford）](../entities/paper-scanford-robot-powered-data-flywheel.md)
 - [数据飞轮（Data Flywheel）](./data-flywheel.md)

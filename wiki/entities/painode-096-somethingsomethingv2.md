@@ -62,6 +62,7 @@ Action recognition dataset frequently used to pretrain manipulation perception.
 | 官方入口 | <https://developer.qualcomm.com/software/ai-datasets/something-something> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 重定向就绪度 | **需人→机重定向**：人手-物交互动作识别视频，**无** 机器人关节标签；常用于感知预训练，作动作监督须先做手姿与接触重定向（索引级判断，以官方文档 / 数据卡为准） |
 
 调试时先确认链接指向的是官方仓/文档而不是镜像或过期 fork，再决定是否升格为深度实体页。
 

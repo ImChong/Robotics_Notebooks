@@ -9,6 +9,7 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/repos/pai_awesome_benchmark_023_teach.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -77,6 +78,7 @@ Interactive benchmark for embodied dialog and task execution in household enviro
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 对话驱动的家务任务执行评测，横跨该闭环第 ① 层（多轮对话理解）与第 ③ 层（任务完成成功率）
 
 ## 参考来源
 

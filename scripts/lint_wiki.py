@@ -142,6 +142,19 @@ STALE_CLAIM_SPAN_CHAR_RE = re.compile(r"[A-Za-z0-9 -]")
 MISSING_CONCEPT_TERM_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+\-]{1,30}$")
 # 被至少这么多不同页面引用才视为"高频"，避免低频术语刷屏。
 MISSING_CONCEPT_PAGE_MIN_PAGES = 6
+# 策展索引页（painode-* / paper-sa-* / paper-as-* / paper-pai-* 等）模板里的
+# **分类学标签**，两种写法：
+#   「该条目在 Physical AI 清单中的角色是 **resource**，分组 **Newsletters & Blogs**。」
+#   「…收录于 awesome-physical-ai（natnew）**第 009/384** 条，分组 **Benchmarks**。」
+# 「角色是」后面是清单的 type 枚举（resource / community / hardware / course /
+# standard / person / list / dataset / lab / method / conference / company / book /
+# benchmark…），「分组」后面是分组名（Benchmarks / Datasets / Companies / Books /
+# Courses / Manipulation…）。上千个策展页共用这两句模板，会把 20 个元数据标签一起
+# 顶成「高频缺页候选」，把真正的缺页信号挤出候选榜。
+# 这里只剔除**标签本身连同它的提示词**，不动周围正文；也不逐个加停用词——那会让
+# 同一批词在别处作为真概念出现时也被静音（与 venue/type 那类「无论出现在哪都是
+# 字段名」的停用词不同，benchmark / manipulation / dataset 在别处是真概念）。
+CURATED_TAXONOMY_LABEL_RE = re.compile(r"清单中的角色是 \*\*[^*\n]+\*\*|分组 \*\*[^*\n]+\*\*")
 # 候选输出上限，避免淹没健康报告。
 MISSING_CONCEPT_PAGE_MAX_CANDIDATES = 15
 # 明显非概念的高频 token（frontmatter 键 / 布尔值等），不计入候选。
@@ -468,6 +481,14 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 不是另一个待建的机制页。与 lerobot / mujoco / libero 同类「已由实体页覆盖、
     # slug 与页面 stem 不同名」。
     "dinov2",
+    # onnx：canonical 节点已是 entities/onnx.md（LF AI & Data 的开放模型交换标准，
+    # 逐条释义计算图 IR / operators / `.onnx` 格式），执行引擎侧由 entities/onnxruntime.md
+    # 承载，选型取舍由 comparisons/onnxruntime-vs-mnn-vs-tensorrt.md 定调（该页开篇即
+    # 点明「ONNX 是格式规范，其余是执行引擎」）。各页正文里的 **ONNX** 均为部署路径
+    # 指称（「checkpoint → ONNX → TensorRT」「50 Hz ONNX C++ 推理」「export_onnx=True」），
+    # 即 Sim2Real 部署层的格式契约，不是另一个待建的机制页。与 dinov2 / lerobot /
+    # mujoco / libero 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
+    "onnx",
     "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
     "g1",
     "gmr",
@@ -873,6 +894,8 @@ def _check_missing_concept_pages(pages: list[Path], results: dict[str, Any]) -> 
         content = page.read_text(encoding="utf-8")
         body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
         body = re.sub(r"```.*?```", "", body, flags=re.DOTALL)  # 仅去围栏块，保留行内反引号
+        # 策展索引页模板里的分类学标签：粗体是清单 type 枚举与分组名，非概念
+        body = CURATED_TAXONOMY_LABEL_RE.sub("", body)
         rel_str = str(page.relative_to(REPO_ROOT)) if page.is_relative_to(REPO_ROOT) else str(page)
         terms_in_page: set[str] = set()
         for m in re.finditer(r"\*\*([^*\n]+)\*\*", body):
@@ -1702,6 +1725,14 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
 # （Field-Oriented Control，磁场定向控制）前缀命中，但二者毫无关系。
 TAG_KEYWORD_FALSE_POSITIVE_TOKENS: frozenset[str] = frozenset({"focal"})
 
+# 整标签级已知假阳：``detection`` 这个 token 本身是感知栈关键词（object-detection /
+# promptable-detection 靠它命中），无法按 token 豁免，否则真阳一起漏。但
+# ``ood-detection`` 的 "detection" 判的是**策略执行流形的预测偏差**（部署期
+# OOD 监控与 sim2real 失配诊断，观测量是本体感知/动力学残差），与视觉感知栈的
+# 「2D 检测/分割选什么头」毫无关系；这类页回链感知栈枢纽只会污染知识链。
+# 故按**整标签**豁免，与 focal/foc 同为「前缀匹配分不开的两个领域」补丁。
+TAG_KEYWORD_FALSE_POSITIVE_TAGS: frozenset[str] = frozenset({"ood-detection"})
+
 
 def _tag_keyword_match(tags: set[str], keywords: tuple[str, ...]) -> bool:
     """按连字符 token 前缀匹配 tag 与关键词，覆盖 ``eda-tool`` / ``foc-driver`` /
@@ -1709,6 +1740,8 @@ def _tag_keyword_match(tags: set[str], keywords: tuple[str, ...]) -> bool:
     ``impedance`` / ``bipedal`` / ``pedagogy`` / ``bytedance`` 误判为含 ``eda``。
     """
     for tag in tags:
+        if tag in TAG_KEYWORD_FALSE_POSITIVE_TAGS:
+            continue
         for token in tag.split("-"):
             if token in TAG_KEYWORD_FALSE_POSITIVE_TOKENS:
                 continue

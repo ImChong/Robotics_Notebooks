@@ -6,6 +6,7 @@ updated: 2026-09-20
 related:
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
+  - ../queries/simulation-physics-fidelity.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ../concepts/sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -159,6 +160,7 @@ flowchart TB
 
 - [训练栈分层技术地图](../overview/robot-training-stack-layers-technology-map.md) — 六层互补视角（大平台 / sim2sim / 任务入口 / 异构运行时 / 连接器 / 闭环评估）
 - [仿真器选型指南（locomotion）](../queries/simulator-selection-guide.md)
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 该闭环的几何/URDF → 刚体动力学 → 接触/摩擦 → 执行器四层保真度，都落在本页「物理引擎」这一层内部；换物理后端时要重验的正是这四层
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Sim2Real](sim2real.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) — 同源 GitHub 知识库入口

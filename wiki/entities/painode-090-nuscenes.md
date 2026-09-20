@@ -62,6 +62,7 @@ Multisensor autonomous-driving dataset with rich annotations for perception and 
 | 官方入口 | <https://www.nuscenes.org/> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 重定向就绪度 | **不适用**：多传感器驾驶感知 / 规划标注，**无** 机器人关节或手姿字段；属感知与规划语料，不能重定向成本体动作（索引级判断，以官方文档 / 数据卡为准） |
 
 调试时先确认链接指向的是官方仓/文档而不是镜像或过期 fork，再决定是否升格为深度实体页。
 

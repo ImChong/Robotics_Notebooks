@@ -14,6 +14,7 @@ related:
   - ./eigenvalues-eigenvectors.md
   - ./lyapunov.md
   - ../concepts/robot-simulation-three-layers.md
+  - ../queries/simulation-physics-fidelity.md
   - ../methods/inverse-dynamics-control.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../formalizations/adjoint-sensitivity-analysis.md
@@ -162,6 +163,7 @@ flowchart TD
 - [eigenvalues-eigenvectors](./eigenvalues-eigenvectors.md) — 常系数特征方程
 - [lyapunov](./lyapunov.md) — 稳定性与存在性语言
 - [robot-simulation-three-layers](../concepts/robot-simulation-three-layers.md) — 仿真栈与积分器位置
+- [simulation-physics-fidelity](../queries/simulation-physics-fidelity.md) — 积分格式的精度阶/刚性/辛结构取舍，是该闭环第 ② 层「刚体动力学算法」保真度的数值侧开关
 - [sim2real-joint-sysid-experiment-design](../methods/sim2real-joint-sysid-experiment-design.md) — 辨识实验中的动态响应
 
 ## 参考来源

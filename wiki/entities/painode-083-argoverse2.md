@@ -62,6 +62,7 @@ High-quality motion-forecasting and 3D tracking datasets for real-world embodied
 | 官方入口 | <https://www.argoverse.org/av2.html> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 重定向就绪度 | **不适用**：车载运动预测 / 3D 跟踪标注，**无** 机器人关节或手姿字段；可作感知与轨迹预测预训练语料，不能重定向成本体动作（索引级判断，以官方文档 / 数据卡为准） |
 
 调试时先确认链接指向的是官方仓/文档而不是镜像或过期 fork，再决定是否升格为深度实体页。
 

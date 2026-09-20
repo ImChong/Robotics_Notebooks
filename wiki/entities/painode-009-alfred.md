@@ -9,6 +9,7 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/repos/pai_awesome_benchmark_009_alfred.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -77,6 +78,7 @@ Vision-language benchmark for household instruction following and embodied task 
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 家务指令跟随 + 具身任务完成度评测，落在该闭环第 ③ 层「策略任务成功率评测」；语言条件的子目标判定同时触及第 ① 层「具身大脑」的指令理解
 
 ## 参考来源
 

@@ -7,6 +7,7 @@ tags:
   - sim2real
 status: complete
 updated: 2026-09-20
+venue: "CDC 1988"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
@@ -54,6 +55,20 @@ summary: "提出机器人惯性参数基参数（base parameters）概念：部�
 
 **不适用（不适用）** — 经典文献或策展资源，无可运行官方代码仓。
 
+
+## 实验与评测
+
+- **本页为索引级节点**（FreeDof 44 篇梳理 [02/44]）：正文固化文内角色与机制要点，**未转存原文实验表**。
+- **回原文须核对的证据**：本页要点是用 QR 分解找出动力学回归矩阵的基，对应证据是**秩亏结构与基参数集的推导**，属理论性结论；文内数值验证按 1988 年机型规模。
+- **读法：** 先对齐平台、任务、指标定义与成功阈值，再读任何数字；勿从公众号摘录外推。
+
+## 与其他工作对比
+
+| 维度 | 读法 |
+|------|------|
+| **文内路线** | 归类 **系统辨识**；同路线其他节点见 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) |
+| **横比口径** | 「哪些参数只能成组辨识」是结构性结论、与机型无关；但具体的可辨识性数值条件随机型与激励轨迹而变，须自行核算。 |
+| **开源状态** | **不适用** — 部署 / 复现前以项目页或原文 Code availability 为准 |
 
 ## 结论
 

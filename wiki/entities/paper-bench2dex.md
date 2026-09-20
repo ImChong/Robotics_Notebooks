@@ -18,6 +18,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../entities/paper-handedit.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/bench2dex_arxiv_2609_15726.md
   - ../../sources/sites/bench2dex-github-io.md
@@ -139,6 +140,7 @@ sequenceDiagram
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [paper-handedit](./paper-handedit.md)
+- [embodied-eval-benchmark-selection-loop](../queries/embodied-eval-benchmark-selection-loop.md) — 跨 12 灵巧手 × 四通道七扰动的成功率横评，属该闭环第 ③ 层「策略任务成功率评测」；「每 task–embodiment–channel 50 rollouts 是评估 episode 而非重训 replicate」正是该层要求交代的可复现性口径
 
 ## 参考来源
 

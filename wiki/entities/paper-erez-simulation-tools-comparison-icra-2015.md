@@ -7,6 +7,7 @@ tags:
   - sim2real
 status: complete
 updated: 2026-09-20
+venue: "ICRA 2015"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
@@ -54,6 +55,20 @@ summary: "横比主流物理引擎的速度–精度权衡，说明引擎选择�
 
 **不适用（不适用）** — 经典文献或策展资源，无可运行官方代码仓。
 
+
+## 实验与评测
+
+- **本页为索引级节点**（FreeDof 44 篇梳理 [20/44]）：正文固化文内角色与机制要点，**未转存原文实验表**。
+- **回原文须核对的证据**：本页要点是「统一任务下 benchmark 多引擎接触与积分行为差异」，对应证据是同一算例下各引擎的速度–精度曲线与接触 / 积分行为差异表。
+- **读法：** 先对齐平台、任务、指标定义与成功阈值，再读任何数字；勿从公众号摘录外推。
+
+## 与其他工作对比
+
+| 维度 | 读法 |
+|------|------|
+| **文内路线** | 归类 **域随机化**；同路线其他节点见 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) |
+| **横比口径** | 结论绑定 2015 年的引擎版本与 CPU 硬件；速度结论不能照搬到今天的 GPU 并行训练栈。 |
+| **开源状态** | **不适用** — 部署 / 复现前以项目页或原文 Code availability 为准 |
 
 ## 结论
 

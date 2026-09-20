@@ -2,7 +2,7 @@
 
 ## [2026-09-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **90** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,22 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（15 个）
-- Resource（被 32 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Hardware（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Course（被 18 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- standard（被 16 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Benchmark（被 14 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Courses（被 14 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- person（被 13 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- list（被 12 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Datasets（被 11 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Manipulation（被 11 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Benchmarks（被 10 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- lab（被 10 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- method（被 10 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- conference（被 9 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -108,104 +94,37 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（6 个）
-- wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md
-- wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md
-- wiki/entities/paper-gevers-identification-information-matrix-2009.md
-- wiki/entities/paper-golemo-neural-augmented-robot-simulation.md
-- wiki/entities/paper-kadian-sim2real-predictivity.md
-- wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（37 个）
-- wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md（缺 评测 / 对比）
-- wiki/entities/paper-autotamp.md（缺 评测 / 对比）
-- wiki/entities/paper-awesome-humanoid-robot-learning.md（缺 评测 / 对比）
-- wiki/entities/paper-cogact.md（缺 评测 / 对比）
-- wiki/entities/paper-diffusion-vla.md（缺 评测 / 对比）
-- wiki/entities/paper-embodiedgpt.md（缺 评测 / 对比）
-- wiki/entities/paper-epopt-robust-policies-model-ensembles.md（缺 评测 / 对比）
-- wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md（缺 评测 / 对比）
-- wiki/entities/paper-eysenbach-off-dynamics-rl.md（缺 评测 / 对比）
-- wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md（缺 评测 / 对比）
-- wiki/entities/paper-gevers-identification-information-matrix-2009.md（缺 评测 / 对比）
-- wiki/entities/paper-golemo-neural-augmented-robot-simulation.md（缺 评测 / 对比）
-- wiki/entities/paper-instruction2act.md（缺 评测 / 对比）
-- wiki/entities/paper-kadian-sim2real-predictivity.md（缺 评测 / 对比）
-- wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md（缺 评测 / 对比）
-- wiki/entities/paper-kovalev-differentiable-simulation-locomotion-sysid.md（缺 评测 / 对比）
-- wiki/entities/paper-le-lidec-contact-models-comparative-analysis.md（缺 评测 / 对比）
-- wiki/entities/paper-llm-p.md（缺 评测 / 对比）
-- wiki/entities/paper-look-before-you-leap.md（缺 评测 / 对比）
-- wiki/entities/paper-muratore-bayesian-optimization-domain-randomization.md（缺 评测 / 对比）
-- wiki/entities/paper-omnimanip.md（缺 评测 / 对比）
-- wiki/entities/paper-peng-dynamics-randomization-sim2real.md（缺 评测 / 对比）
-- wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md（缺 评测 / 对比）
-- wiki/entities/paper-rapt-sim2real-ood-detection.md（缺 评测 / 对比）
-- wiki/entities/paper-rarl-robust-adversarial-rl.md（缺 评测 / 对比）
-- wiki/entities/paper-rdt-1b.md（缺 评测 / 对比）
-- wiki/entities/paper-saycan.md（缺 评测 / 对比）
-- wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md（缺 评测 / 对比）
-- wiki/entities/paper-skyfall-gs.md（缺 对比）
-- wiki/entities/paper-smith-legged-robots-keep-learning.md（缺 评测 / 对比）
-- wiki/entities/paper-spatialvla.md（缺 评测 / 对比）
-- wiki/entities/paper-splatsim-gaussian-splatting-sim2real.md（缺 评测 / 对比）
-- wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md（缺 评测 / 对比）
-- wiki/entities/paper-text2motion.md（缺 评测 / 对比）
-- wiki/entities/paper-up-osi-universal-policy-online-sysid.md（缺 评测 / 对比）
-- wiki/entities/paper-vidu-s2.md（缺 对比）
-- wiki/entities/paper-voxposer.md（缺 评测 / 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（9 个）
-- wiki/entities/painode-083-argoverse2.md（缺 重定向就绪度）
-- wiki/entities/painode-085-bridgedatav2.md（缺 重定向就绪度）
-- wiki/entities/painode-089-epickitchens100.md（缺 重定向就绪度）
-- wiki/entities/painode-090-nuscenes.md（缺 重定向就绪度）
-- wiki/entities/painode-092-rh20t.md（缺 重定向就绪度）
-- wiki/entities/painode-093-rlds.md（缺 重定向就绪度）
-- wiki/entities/painode-094-robomind.md（缺 重定向就绪度）
-- wiki/entities/painode-096-somethingsomethingv2.md（缺 重定向就绪度）
-- wiki/entities/painode-097-waymoopendataset.md（缺 重定向就绪度）
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（2 个）
-- wiki/concepts/robot-simulation-three-layers.md
-- wiki/formalizations/ode-solving-methods.md
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
-- wiki/concepts/humanoid-cognitive-reliability-gap.md
-- wiki/concepts/retrieval-augmented-generation.md
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（14 个）
-- wiki/entities/painode-009-alfred.md
-- wiki/entities/painode-010-arnold.md
-- wiki/entities/painode-011-carlaleaderboard.md
-- wiki/entities/painode-012-colosseum.md
-- wiki/entities/painode-013-furniturebench.md
-- wiki/entities/painode-018-minedojo.md
-- wiki/entities/painode-019-openeqa.md
-- wiki/entities/painode-021-robothor.md
-- wiki/entities/painode-023-teach.md
-- wiki/entities/painode-024-vlabench.md
-- wiki/entities/paper-bench2dex.md
-- wiki/entities/paper-handedit.md
-- wiki/entities/paper-kadian-sim2real-predictivity.md
-- wiki/entities/paper-robovad.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-mechanical-intelligence-info-theory.md
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（4 个）
-- wiki/entities/paper-leap-quadruped-active-perception.md
-- wiki/entities/paper-pose-semantic-legged-exploration.md
-- wiki/entities/paper-rapt-sim2real-ood-detection.md
-- wiki/entities/paper-robovad.md
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：4626/4626 (100%) wiki/entity 页有 ingest 来源

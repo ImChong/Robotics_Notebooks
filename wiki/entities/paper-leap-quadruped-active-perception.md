@@ -13,6 +13,7 @@ related:
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/leap-quadruped-active-perception_arxiv_2609_17628.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
@@ -76,6 +77,7 @@ summary: "LEAP（四足主动感知）（arXiv:2609.17628）：连续深度图�
 - [locomotion](../tasks/locomotion.md)
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 - [sim2real](../concepts/sim2real.md)
+- [robot-perception-stack-selection-loop](../queries/robot-perception-stack-selection-loop.md) — 把连续深度图融合成视线无关信念地图，是该闭环第 ① 层「有深度图 ≠ 深度处处可信」的一条主动感知解法；凝视控制则落在第 ④ 层「感知帧率 ≠ 控制闭环带宽」
 
 ## 参考来源
 
