@@ -8,7 +8,6 @@ related:
   - ./humanoid-vs-other-robots.md
   - ../concepts/motion-retargeting.md
   - ../methods/dynaretarget-sbto-motion-retargeting.md
-  - ../queries/humanoid-motion-control-know-how.md
   - ../overview/humanoid-motion-control-know-how-technology-map.md
 sources:
   - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md

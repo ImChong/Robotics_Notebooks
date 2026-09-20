@@ -5,7 +5,7 @@ status: complete
 updated: 2026-07-23
 related:
   - ./humanoid-robot-history.md
-  - ../roadmaps/humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
   - ./hub-locomotion.md
   - ./large-model-empowered-humanoids.md
   - ./navigation-slam-autonomy-stack.md
@@ -48,7 +48,7 @@ summary: "人形算法研究现状鸟瞰：运动控制、loco-manip、导航探
 
 | 层次 | 近期主流问题 | 代表方法族 | 本库入口 |
 |------|--------------|------------|----------|
-| 双足/全身运动 | 跟踪、抗扰、起身、地形 | PPO、AMP、BFM、运动扩散 | [Humanoid Locomotion](../tasks/humanoid-locomotion.md)、[控制路线图](../roadmaps/humanoid-control-roadmap.md) |
+| 双足/全身运动 | 跟踪、抗扰、起身、地形 | PPO、AMP、BFM、运动扩散 | [Humanoid Locomotion](../tasks/humanoid-locomotion.md)、[运动控制主路线](../../roadmap/motion-control.md) |
 | 移动操作 | 力交互、全身协调 | 分层/统一策略、接触课程 | [Loco-Manipulation](../tasks/loco-manipulation.md) |
 | 导航自主 | 建图、避障、探索 | LiDAR SLAM、A\*/DWA、TARE/FAR | [导航栈](./navigation-slam-autonomy-stack.md)、[自主探索](../tasks/autonomous-exploration.md) |
 | 比赛感知决策 | 球/线/对抗 | YOLO + 线几何 + EKF + 技能 RL | [Humanoid Soccer](../tasks/humanoid-soccer.md) |
@@ -102,7 +102,7 @@ flowchart TB
 ## 关联页面
 
 - [人形发展历史](./humanoid-robot-history.md)
-- [人形控制学习路线图](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 - [运动控制纵深](./hub-locomotion.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 
@@ -113,5 +113,5 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [人形控制学习路线图](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 - [大模型赋能人形](./large-model-empowered-humanoids.md)

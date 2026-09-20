@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4613,
-  "edge_count": 40470,
+  "node_count": 4610,
+  "edge_count": 40415,
   "coverage": {
-    "covered": 4584,
-    "total": 4584,
+    "covered": 4582,
+    "total": 4582,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -231,7 +231,7 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 758
+      "size": 767
     },
     {
       "label": "操作",
@@ -247,11 +247,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 242
+      "size": 240
     },
     {
       "label": "全身控制",
-      "size": 197
+      "size": 203
     }
   ],
   "top_hubs": [
@@ -275,7 +275,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1134,
+      "degree": 1132,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -290,7 +290,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 964,
+      "degree": 962,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -314,14 +314,14 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 643,
+      "degree": 642,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 623,
+      "degree": 622,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

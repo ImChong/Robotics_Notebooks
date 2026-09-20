@@ -45,7 +45,6 @@ RL 理论 → Teacher-Student+DAgger → DreamWaQ（CENet，速度估计最关�
 ## 对 wiki 的映射
 
 - **图谱索引：** [humanoid-motion-control-know-how-technology-map.md](../../wiki/overview/humanoid-motion-control-know-how-technology-map.md)
-- **Query 摘要：** [humanoid-motion-control-know-how.md](../../wiki/queries/humanoid-motion-control-know-how.md)
 
 ## 当前提炼状态
 

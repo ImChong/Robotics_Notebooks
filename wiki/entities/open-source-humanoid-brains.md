@@ -6,7 +6,7 @@ updated: 2026-04-21
 related:
   - ./humanoid-robot.md
   - ../queries/real-time-control-middleware-guide.md
-  - ../roadmaps/humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "主流开源人形机器人“大脑”（主控电脑）选型：对比了 NVIDIA Jetson Orin、高性能 X86 工控机及国产边缘算力平台的性能边界与适用场景。"
@@ -58,7 +58,7 @@ summary: "主流开源人形机器人“大脑”（主控电脑）选型：对�
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)

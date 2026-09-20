@@ -15,4 +15,4 @@
 - [Sim2Real](../../../wiki/concepts/sim2real.md)
 - [Domain Randomization](../../../wiki/concepts/domain-randomization.md)
 - [仿真评测基础设施](../../../wiki/concepts/simulation-evaluation-infrastructure.md)
-- [模块依赖关系图](../../dependency-graph.md)
+- [运动控制主路线](../../../roadmap/motion-control.md) — 控制主干的学习先后顺序

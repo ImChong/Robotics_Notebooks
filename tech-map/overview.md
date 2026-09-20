@@ -142,7 +142,7 @@ State Estimation / System Identification / Sim2Real
 作用：把知识图谱转成成长路线。
 
 建议从这里进入：
-- [Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../roadmap/motion-control.md)
 - [roadmap/README.md](../roadmap/README.md)
 
 这个模块解决的问题：

@@ -226,8 +226,6 @@ flowchart LR
   - [BFM](depth-bfm.md) — 生成参考进入跟踪/行为模型
   - [VLA](depth-vla.md) — 文本/多模态条件的另一条动作出口
   - [群控展演](depth-humanoid-swarm-performance.md) — 编舞与群舞的产品向展开
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

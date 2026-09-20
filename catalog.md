@@ -4563,7 +4563,6 @@
 ### Tech-map Nodes（技术栈节点）
 
 - [技术栈地图总览](tech-map/README.md) — 本目录用于承载 `Robotics_Notebooks` 的技术栈地图、模块依赖关系、标准化模块卡片，以及研究方向导航。 `📅unknown` `[tech_map_node]`
-- [模块依赖关系图](tech-map/dependency-graph.md) — 本页的目标不是做花哨图，而是先把 `Robotics_Notebooks` 当前最重要的依赖关系讲清楚。 `📅unknown` `[tech_map_node]`
 - [人形 Locomotion（双足行走）](tech-map/modules/control/humanoid-locomotion.md) — 人形双足行走要同时解决三件事：**怎么迈步**（步态与落脚点）、**怎么不摔**（平衡与扰动恢复）、**地形变了怎么办**（感知与自适应）。它是本站的主线任务之一，传统控制（MPC + WBC）与强化 `📅unknown` `[tech_map_node]`
 - [MPC（模型预测控制）](tech-map/modules/control/mpc.md) — MPC** 在每个控制周期里用模型向前滚动预测一段时间，在满足约束的前提下解一个优化问题，只执行第一步再重新求解。它是「有模型、要满足硬约束、还要实时」这类运控问题的默认答案——腿足机器人的落脚点 `📅unknown` `[tech_map_node]`
 - [WBC（全身控制）](tech-map/modules/control/whole-body-control.md) — WBC** 负责把上层给出的多个任务目标（质心轨迹、末端位姿、姿态、接触力）与机器人的物理约束（动力学、关节限位、摩擦锥）一起写成一个优化问题，解出这一拍该发给每个关节的力矩。它是人形运控栈里承上 `📅unknown` `[tech_map_node]`

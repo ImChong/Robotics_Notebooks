@@ -17,7 +17,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/mpc-wbc-integration.md
   - ./robot-lab.md
-  - ../roadmaps/humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
   - ../queries/humanoid-hardware-selection.md
 sources:
   - ../../sources/repos/openloong.md
@@ -242,7 +242,7 @@ OpenLoong 软件以 **`loongOpen` GitHub 组织** 与 **AtomGit `openloong` 组�
 | 对比轴 | OpenLoong 青龙 | 参考页 |
 |--------|----------------|--------|
 | 尺寸与定位 | 全尺寸公版、43 DOF | [开源人形硬件对比](./open-source-humanoid-hardware.md) |
-| 运控范式 | MPC+WBC + 自研 C++ 框架 | [whole-body-control](../concepts/whole-body-control.md)、[humanoid-control-roadmap](../roadmaps/humanoid-control-roadmap.md) |
+| 运控范式 | MPC+WBC + 自研 C++ 框架 | [whole-body-control](../concepts/whole-body-control.md)、[运动控制主路线](../../roadmap/motion-control.md) |
 | 仿真迁移 | MuJoCo / 全链 sim SDK | [sim2real](../concepts/sim2real.md)、[mujoco](./mujoco.md) |
 | 国内同类 | 天工、灵犀 X1、傅利叶 N1 | [天工](./tienkung-humanoid-open-source.md)、[灵犀 X1](./agibot-lingxi-x1.md) |
 
@@ -266,4 +266,4 @@ OpenLoong 软件以 **`loongOpen` GitHub 组织** 与 **AtomGit `openloong` 组�
 - [OpenLoong 社区 · 青龙公版机](https://www.openloong.org.cn/cn/projects/openloong)
 - [OpenLoong Dynamics Control API 文档](https://www.openloong.org.cn/pages/api/html/index.html)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)
-- [人形机器人控制路线图](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)

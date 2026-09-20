@@ -331,8 +331,6 @@ flowchart LR
   - [动作生成](depth-motion-generation.md) — 合成动作再折算到本体
   - [BFM](depth-bfm.md) — 跟踪与行为先验依赖重定向质量
   - [具身数据](depth-embodied-data.md) — 数据金字塔里「人 → 本体」的折算段
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

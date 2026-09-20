@@ -328,7 +328,7 @@ flowchart TD
 - [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation
 - [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战
 - [Balance Recovery](./balance-recovery.md)：扰动恢复，鲁棒 locomotion 的核心子能力
-- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — locomotion 实战经验结构化摘要
+- [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md) — locomotion 真机调试经验
 - [Query：开源运动控制项目导航](../queries/open-source-motion-control-projects.md) — 主流开源框架与项目概览
 
 ## 继续深挖入口
@@ -410,6 +410,6 @@ flowchart TD
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）
 - Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）
 - Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线
+- [运动控制主路线](../../roadmap/motion-control.md) — 人形运控的学习成长路线
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)

@@ -98,7 +98,7 @@ related:
 
 - [Locomotion](../tasks/locomotion.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)
-- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md)
+- [人形机器人运动控制 Know-How](./humanoid-motion-control-know-how.md)
 
 ### 2. Manipulation
 
@@ -160,7 +160,7 @@ related:
 
 ### 路线 A：先把控制主干学通
 
-如果你想做人形运动控制、MPC、WBC、状态估计，建议从 [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) 或 [Locomotion](../tasks/locomotion.md) 一路往下读。这样能先建立“机器人为什么需要这些结构”的系统直觉。
+如果你想做人形运动控制、MPC、WBC、状态估计，建议从 [运动控制主路线](../../roadmap/motion-control.md) 或 [Locomotion](../tasks/locomotion.md) 一路往下读。这样能先建立“机器人为什么需要这些结构”的系统直觉。
 
 ### 路线 B：从数据驱动方法切入
 
@@ -196,7 +196,7 @@ related:
 
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 知识库构建模式来源
 - [Andrej Karpathy](../entities/andrej-karpathy.md) — 模式提出者；Tesla Autopilot 视觉栈、CS231n 与 Zero to Hero 教育主线
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人控制的学习路线
+- [运动控制主路线](../../roadmap/motion-control.md) — 人形运控 L−1 → L7 的完整学习路线
 
 ## 参考来源
 
@@ -222,7 +222,7 @@ related:
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
 - [Andrej Karpathy](../entities/andrej-karpathy.md) — LLM Wiki 提出者与深度学习/视觉教育索引
-- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐
+- [人形机器人运动控制 Know-How](./humanoid-motion-control-know-how.md) — 真机调试的工程经验（传感器 / 电机热管理 / 地形）
 - [人形机器人八大能力技术地图](./humanoid-eight-capabilities-technology-map.md) — 感知/抓取/WBC/平衡/VLA/WM/数据/仿真科普鸟瞰
 
 ## 推荐继续阅读

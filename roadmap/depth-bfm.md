@@ -226,8 +226,6 @@ flowchart LR
   - [动作生成](depth-motion-generation.md) — 参考运动的合成来源
   - [RL 运动控制](depth-rl-locomotion.md) — 跟踪/技能常作 locomotion 先验
   - [人形拳击](depth-humanoid-boxing.md) — 潜空间技能与对抗的产品向展开
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

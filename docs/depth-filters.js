@@ -157,7 +157,6 @@
         'wiki/methods/vla.md',
         'wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md',
         'wiki/overview/shenlan-embodied-ai-fundamentals-series.md',
-        'wiki/queries/humanoid-motion-control-know-how.md',
         'wiki/queries/mpc-solver-selection.md',
         'wiki/queries/mpc-tuning-guide.md',
         'wiki/queries/open-source-motion-control-projects.md',
@@ -165,7 +164,6 @@
         'wiki/queries/sim2real-checklist.md',
         'wiki/queries/wbc-implementation-guide.md',
         'wiki/queries/wbc-tuning-guide.md',
-        'wiki/roadmaps/humanoid-control-roadmap.md',
         'wiki/tasks/locomotion.md',
         'wiki/tasks/manipulation.md'
       ])

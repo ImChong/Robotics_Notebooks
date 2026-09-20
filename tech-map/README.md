@@ -5,5 +5,4 @@
 ## 核心内容
 
 - [全栈技术域总览](overview.md)
-- [模块依赖关系图](dependency-graph.md)
 - [模块模板](modules/module-template.md)

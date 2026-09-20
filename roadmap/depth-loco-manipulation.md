@@ -229,8 +229,6 @@ flowchart LR
   - [接触操作](depth-contact-manipulation.md) — 操作侧的接触力与 IL
   - [遥操作](depth-teleoperation.md) — 上下身解耦采集的常见入口
   - [导航](depth-navigation.md) — 到点移动与全身协调的交界
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
