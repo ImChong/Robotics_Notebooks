@@ -24,6 +24,7 @@ related:
   - ./robodojo.md
   - ./robolab.md
   - ./apxinf.md
+  - ./paper-autohorizon.md
 sources:
   - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
   - ../../sources/repos/humanoid-motion-intelligence.md

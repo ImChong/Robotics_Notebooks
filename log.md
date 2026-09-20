@@ -1,3 +1,8 @@
+## [2026-09-20] ingest | sources/papers/autohorizon_arxiv_2602_21445.md — AutoHorizon（VLA Knows Its Limits，ECCV 2026）：test-time 动态 execution horizon；π0.5 LIBERO 代码已开源
+
+- **意图：** 用户指定 ingest；步骤 2.5：GitHub Apache-2.0 评测栈已发布，权重走 OpenPI，无官方 HF。
+- **关键页：** [paper-autohorizon](wiki/entities/paper-autohorizon.md)
+
 ## [2026-09-20] ingest | sources/repos/browserskill.md — BrowserSkill（腾讯 MIT）：bsk CLI + 扩展借登录态浏览器；交叉 deepseek-harness / agent-reach
 
 - **意图：** 接入 Tencent/BrowserSkill；步骤 2.5：GitHub + 商店扩展 + npm dsh 插件均已发布。

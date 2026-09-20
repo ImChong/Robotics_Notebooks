@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -17,6 +17,7 @@ sources:
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/revisiting_open_loop_action_chunking_arxiv_2608_15938.md
+  - ../../sources/papers/autohorizon_arxiv_2602_21445.md
   - ../../sources/papers/arli_arxiv_2608_23831.md
   - ../../sources/papers/video2door_traversal_arxiv_2608_20251.md
   - ../../sources/papers/receding_horizon_il_primary_refs.md
@@ -46,6 +47,7 @@ related:
   - ../entities/paper-smoothrl.md
   - ../entities/paper-video2door-traversal.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
+  - ../entities/paper-autohorizon.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
 ---
@@ -85,6 +87,8 @@ related:
 [Revisiting Open-Loop Execution](../entities/paper-revisiting-open-loop-action-chunking.md)（MIT / Berkeley，arXiv:2608.15938）进一步把 **长 open-loop execution horizon** 归因于 **短上下文（常见 \(T_o=1\)–\(2\)）策略模仿非马尔可夫专家**：复合误差有影响，但通常弱于专家隐状态不可观；**加长观测上下文**（如 8–20 帧）+ **double encoder** 可让 \(T_{\mathrm{exec}}^*\rightarrow 1\) 的 **完全 reactive** 策略在数据充足时优于短上下文长开环执行——与 Why AC 的「不必播完整 chunk」形成 **execution horizon ↔ context length** 互补轴。
 
 [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) 给出第三条证据：在人类风格（窄、时间相关）数据上，**无限数据** 的纯闭环 \(\pi(a_t\mid s_t)\) 可以完全失败，而 length-25 开环能做；把过去 24 帧状态拼进闭环 **并不** 自动追上开环（因果混淆 / 输入空间更大）。与 Revisiting 合并读：开环是短记忆补丁；要让闭环赢，上下文必须编码 **专家隐状态**（接触意图、分段决策），而不是更长的关节角窗口。
+
+[AutoHorizon](../entities/paper-autohorizon.md)（ECCV 2026，flow VLA / π0.5）在 **不改权重** 的 test-time 用 **action self-attention** 为每个 chunk **动态估计 execution horizon**：稳定段拉长前缀、接触段缩短以提高 replan 频率；LIBERO 上接近 per-task static oracle。与上文「加长 \(T_o\)」正交——AutoHorizon 调 **执行协议**，Revisiting 调 **条件输入**。
 
 ## 主要技术路线
 

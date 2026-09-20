@@ -15,6 +15,7 @@ related:
   - ../entities/paper-diffusion-policy.md
   - ../entities/paper-act.md
   - ../entities/paper-why-action-chunking-improves-bc.md
+  - ../entities/paper-autohorizon.md
   - ./control-inference-frequency-decoupling.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
   - ../methods/model-predictive-control.md

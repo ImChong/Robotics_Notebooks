@@ -208,4 +208,4 @@
 - wiki/entities/paper-rapt-sim2real-ood-detection.md
 - wiki/entities/paper-robovad.md
 
-📊 Sources 覆盖率：4625/4625 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4626/4626 (100%) wiki/entity 页有 ingest 来源

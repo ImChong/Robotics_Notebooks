@@ -1324,6 +1324,20 @@
         "zju-uiuc"
       ]
     },
+    "uic": {
+      "label": "伊利诺伊大学芝加哥分校（UIC）",
+      "aliases": [
+        "uic",
+        "university-of-illinois-chicago"
+      ]
+    },
+    "cisco-research": {
+      "label": "思科研究（Cisco Research）",
+      "aliases": [
+        "cisco-research",
+        "cisco"
+      ]
+    },
     "ucsc": {
       "label": "加州大学圣克鲁兹分校（UC Santa Cruz）",
       "aliases": [
