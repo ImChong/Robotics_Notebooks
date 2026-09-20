@@ -11,7 +11,7 @@ tags:
   - manipulation
   - stanford
 status: complete
-updated: 2026-09-17
+updated: 2026-09-20
 arxiv: "2609.18207"
 related:
   - ../methods/vla.md
@@ -23,6 +23,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md
   - ../../sources/papers/real_time_expo_ft_arxiv_2609_18207.md
   - ../../sources/sites/real-time-expo-ft.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md

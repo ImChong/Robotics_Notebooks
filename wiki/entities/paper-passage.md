@@ -15,7 +15,7 @@ tags:
   - nankai
   - shanghai-pil
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2609.18732"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -26,6 +26,7 @@ related:
   - ../concepts/terrain-adaptation.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/passage_arxiv_2609_18732.md
 summary: "PASSAGE（arXiv:2609.18732）：VR+动捕 100 h 场景对齐 motion 训练 flow-matching planner（6.25 Hz）+ 50 Hz 感知 WBC tracker；Jetson Orin 全 onboard 50 布局穿越；6→100 h scaling 48.1%→68.9% contact-free SR。"
 ---

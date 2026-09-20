@@ -11,7 +11,7 @@ tags:
   - isaac-lab
   - uf
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 arxiv: "2609.20558"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -21,6 +21,7 @@ related:
   - ./paper-humoslope-physics-guided-slope-locomotion.md
   - ../methods/ppo.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/g1_slope_adaptive_roofing_arxiv_2609_20558.md
 summary: "G1 屋顶斜坡全身作业（arXiv:2609.20558，UF）：PICO 演示→G1 重定向→metric 屋顶 mesh 轨迹优化→Isaac Lab 相位门控 RL；钉枪/锤/推 clearance 0.26–0.53 cm，真机 MPJPE <80 mm。"
 ---

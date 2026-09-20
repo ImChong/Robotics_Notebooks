@@ -8,7 +8,7 @@ tags:
   - caltech
   - amazon
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2609.19272"
 
 related:
@@ -18,6 +18,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../overview/contact-wm-10-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/rom_nav_arxiv_2609_19272.md
   - ../../sources/sites/rom-nav.md
   - ../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md
