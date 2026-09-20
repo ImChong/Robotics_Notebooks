@@ -2,8 +2,9 @@
 type: overview
 tags: [humanoid, perception, grasping, wbc, balance, vla, world-model, simulation, data, survey, mozhai]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-20
 related:
+  - ../concepts/humanoid-cognitive-reliability-gap.md
   - ../entities/humanoid-robot.md
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ../overview/hub-grasp.md
@@ -34,7 +35,7 @@ summary: "依据魔方AI空间 2026-09 长文，用「红杯入水槽」串起�
 
 # 人形机器人八大能力技术地图
 
-> **本页定位**：为微信公众号 [**魔方AI空间**](https://mp.weixin.qq.com/s/-33IGrRqnxM6ALuI5ynODg)（猫先生M · 【从零走向 AGI】系列）提供 **八大能力阅读坐标**；不复述厂商 Demo 细节，只保留 **能力分工、层间依赖、按缺口选入口** 与和本库实体页的挂接。与 [身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)（42 篇 RL 综述视角）**互补**：本页更偏 **产业科普 + 全栈鸟瞰**。
+> **本页定位**：为微信公众号 [**魔方AI空间**](https://mp.weixin.qq.com/s/-33IGrRqnxM6ALuI5ynODg)（猫先生M · 【从零走向 AGI】系列）提供 **八大能力阅读坐标**；不复述厂商 Demo 细节，只保留 **能力分工、层间依赖、按缺口选入口** 与和本库实体页的挂接。与 [身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)（42 篇 RL 综述视角）**互补**：本页更偏 **产业科普 + 全栈鸟瞰**。若关心 **VLA 已会抓仍缺「过马路」式认知可靠性**，见 [人形认知可靠性鸿沟](../concepts/humanoid-cognitive-reliability-gap.md)（**不同「八种能力」框架**，勿混读）。
 
 ## 一句话观点
 

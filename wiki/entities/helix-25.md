@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, loco-manipulation, vla, foundation-policy, zero-shot, figure-ai, index]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-20
 related:
   - ./figure-ai.md
   - ../methods/vla.md

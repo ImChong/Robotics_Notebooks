@@ -3599,6 +3599,7 @@
 - [Hierarchical Quadruped Navigation Stack（四足分层导航栈）](wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 四足分层导航栈** 将 **语义/语言目标、全局路径、局部运动、关节力矩** 拆成多层模块，避免「一个端到端网络从像素直接到电机」的工程不可控性。 `📅unknown` `[wiki_page]`
 - [HQP（Hierarchical QP）](wiki/concepts/hqp.md) — 分层二次规划（Hierarchical Quadratic Programming，HQP）**：全身控制（WBC）中处理多任务优先级冲突的优化框架，通过将任务按优先级分层求解，确保高优先级任务精 `📅unknown` `[wiki_page]`
 - [人形整机闭环惯量标定（出厂体检）](wiki/concepts/humanoid-closed-loop-inertia-calibration.md) — 量产人形从「能演示」到「能稳定干活」，先要一份与身体一致的参数报告：运动学、惯量、IMU 零偏、足底力。工业臂那套**拆关节上台架**覆盖不了分布式质量与终身漂移；足式闭环会把上游误差放大进 [WBC `📅unknown` `[wiki_page]`
+- [人形认知可靠性鸿沟（抓杯 vs 过马路）](wiki/concepts/humanoid-cognitive-reliability-gap.md) — 人形认知可靠性鸿沟**指：当前 VLA 与技能组合已让机器人 increasingly 会「抓杯子」（目标识别 + 手眼协调），但距离「过马路」式 **有 `📅unknown` `[wiki_page]`
 - [人形膝/腿主承力链为何通常避开谐波减速器](wiki/concepts/humanoid-knee-harmonic-drive-limits.md) — 谐波减速器**擅长高精度、小体积、低回差的旋转传动，但人形**膝、踝等反复落地冲击的主承力关节**优先要解决冲击载荷谱、高周疲劳、动态刚度、反驱与低远端惯量——两套需求并不完全同向，因此工程上通常 `📅unknown` `[wiki_page]`
 - [人形机器人量产工程能力](wiki/concepts/humanoid-mass-production-engineering.md) — 人形机器人量产经验**不是「做出能走路的样机」，而是把关节级 **工艺 know-how、良率爬坡、供应链一致性与可靠性验证** 固化成可重复放大产线的 **制造可行性**——核心件（谐波减速器、 `📅unknown` `[wiki_page]`
 - [人形整机机械布局设计（构型 → 传动布置 → 质量分布 → 刚度与公差）](wiki/concepts/humanoid-mechanical-layout-design.md) — 人形整机机械布局设计**回答：给定任务指标（身高、负载、续航、动态等级），**关节自由度怎么分配、执行器往哪儿放、质量与惯量怎么分布、结构刚度与公差链留多少余量**——它决定了后续控制与 RL 能 `📅unknown` `[wiki_page]`
