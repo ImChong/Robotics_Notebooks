@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4652,
-  "edge_count": 40698,
+  "node_count": 4653,
+  "edge_count": 40708,
   "coverage": {
-    "covered": 4624,
-    "total": 4624,
+    "covered": 4625,
+    "total": 4625,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/laya.md",
+      "detail_id": "entity-laya",
+      "label": "Laya（System 1 决策引擎）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
     {
       "path": "wiki/entities/paper-autotamp.md",
       "detail_id": "entity-paper-autotamp",
@@ -177,8 +188,7 @@
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-xpace.md",
@@ -198,36 +208,27 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-awesome-humanoid-robot-learning.md",
-      "detail_id": "entity-paper-awesome-humanoid-robot-learning",
-      "label": "Awesome Humanoid Robot Learning",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-autotamp.md",
-    "detail_id": "entity-paper-autotamp",
-    "label": "AutoTAMP",
+    "path": "wiki/entities/laya.md",
+    "detail_id": "entity-laya",
+    "label": "Laya（System 1 决策引擎）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "动作块输出（Action Chunking） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 787
+      "size": 845
     },
     {
       "label": "操作",
-      "size": 643
+      "size": 641
     },
     {
       "label": "仿真到现实",
@@ -238,12 +239,12 @@
       "size": 295
     },
     {
-      "label": "动作块输出",
+      "label": "视觉-语言-动作",
       "size": 241
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 239
+      "label": "全身控制",
+      "size": 190
     }
   ],
   "top_hubs": [

@@ -12,6 +12,7 @@ tags:
 status: complete
 updated: 2026-09-19
 related:
+  - ./browserskill.md
   - ./hermes-agent.md
   - ./openclaw.md
   - ./sciencediscovery.md
@@ -205,6 +206,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [BrowserSkill](./browserskill.md) — 官方 dsh 插件 `@wxg-prc-cpg/browser-skill-dsh-plugin`：借登录态 Chrome/Edge，`browser_*` 工具 + Web UI 会话视图
 - [Hermes Agent](./hermes-agent.md) — 常驻 agent OS（网关 / 记忆 / cron）；对照「插件树 vs 单体 AIAgent」
 - [OpenClaw](./openclaw.md) — 个人助手 + 技能目录；具身课里作语音控制平面
 - [ScienceDiscovery](./sciencediscovery.md) — 本地科研工作台（MCP 文献 + bwrap）；对照「科学 Connector vs 通用 coding 环」
