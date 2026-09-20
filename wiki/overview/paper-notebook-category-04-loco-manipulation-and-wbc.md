@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深读笔记索引）。"

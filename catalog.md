@@ -1748,7 +1748,7 @@
 - [手眼自主配送](wiki/entities/paper-loco-manip-161-126-n126.md) — 手眼自主配送** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [Open-TeleVision](wiki/entities/paper-loco-manip-161-131-open-television.md) — Open-TeleVision** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGd `📅unknown` `[entity_page]`
 - [AMO](wiki/entities/paper-loco-manip-161-135-amo.md) — AMO** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
-- [DemoHLM](wiki/entities/paper-loco-manip-161-136-demohlm.md) — DemoHLM** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
+- [DemoHLM：一条仿真示范通吃十项人形 Loco-Manipulation](wiki/entities/paper-loco-manip-161-136-demohlm.md) — DemoHLM**（*From One Demonstration to Generalizable Humanoid Loco-Manipulation*；[arXiv:2510.11258 `📅unknown` `[entity_page]`
 - [Gallant](wiki/entities/paper-loco-manip-161-137-gallant.md) — Gallant** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
 - [Mobile-TeleVision](wiki/entities/paper-loco-manip-161-138-mobile-television.md) — Mobile-TeleVision** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyP `📅unknown` `[entity_page]`
 - [ToddlerBot](wiki/entities/paper-loco-manip-161-141-toddlerbot.md) — ToddlerBot** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C `📅unknown` `[entity_page]`
