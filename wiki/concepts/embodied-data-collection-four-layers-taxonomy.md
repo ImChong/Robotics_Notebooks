@@ -2,7 +2,7 @@
 type: concept
 tags: [data-collection, teleoperation, imitation-learning, umi, mocap, ego-exo, episode, action-labels, demonstration]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 related:
   - ../overview/embodied-data-collection-to-flywheel-album.md
   - ../tasks/teleoperation.md

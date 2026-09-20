@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4328,
-  "edge_count": 38336,
+  "node_count": 4329,
+  "edge_count": 38356,
   "coverage": {
-    "covered": 4299,
-    "total": 4299,
+    "covered": 4300,
+    "total": 4300,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -46,7 +46,8 @@
       "type": "roadmap_page",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
@@ -66,8 +67,7 @@
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-anycam-vla.md",
@@ -86,8 +86,7 @@
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-cross-view-action-consistency-vla.md",
@@ -127,7 +126,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-jepa-wam.md",
@@ -146,8 +145,7 @@
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-onevomemory.md",
@@ -157,7 +155,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-recoverfly-aerial-vln.md",
@@ -166,8 +164,7 @@
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-rsi-survey-2607-07663.md",
@@ -187,8 +184,7 @@
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-vane.md",
@@ -197,8 +193,7 @@
       "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-vla-action-post-training-depth-decodability.md",
@@ -223,28 +218,28 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 642
-    },
-    {
       "label": "宇树 G1 人形机器人",
-      "size": 545
+      "size": 739
     },
     {
-      "label": "世界动作模型",
-      "size": 339
+      "label": "操作",
+      "size": 600
     },
     {
       "label": "国内开源全景 424 项阅读导航",
-      "size": 303
+      "size": 302
     },
     {
       "label": "视觉-语言-动作",
-      "size": 265
+      "size": 257
     },
     {
       "label": "全身控制",
-      "size": 254
+      "size": 218
+    },
+    {
+      "label": "仿真到现实",
+      "size": 217
     }
   ],
   "top_hubs": [
@@ -252,7 +247,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1695,
+      "degree": 1696,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -354,8 +349,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 65,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "degree": 65
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

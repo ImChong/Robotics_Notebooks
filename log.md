@@ -1,3 +1,5 @@
+## [2026-09-20] ingest | sources/blogs/wechat_airs_embodied_data_five_routes_2026-09-15.md — AIRS 具身数采五大路线盘点；升格 embodied-data-collection-five-routes-landscape query 页；交叉四层术语地图 / depth-embodied-data
+
 ## [2026-09-20] ingest | sources/papers/vidu_s2_arxiv_2609_11638.md — Vidu S2（arXiv:2609.11638）实时 Avatar/Editing + spatial video；Demo/API 可用、代码未开源；升格 paper-vidu-s2；交叉 GWM First-Principles
 
 ## [2026-09-20] ingest | sources/papers/skyfall_gs_arxiv_2510_15869.md — Skyfall-GS（ECCV 2026）卫星影像合成 city-block 3DGS；Stage 1 伪深度+外观 / Stage 2 IDU+FlowEdit；Apache 2.0 已开源；升格 paper-skyfall-gs；交叉 Real2Sim / GS-Playground
