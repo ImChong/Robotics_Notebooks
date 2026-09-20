@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3dgs, gaussian-splatting, panoramic, erp, outdoor-reconstruction, novel-view-synthesis, dataset, partitioning, insta360, sysu, scut, ucas, heu, whu]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2607.08769"
 venue: "arXiv 2026"
 project: https://insta360-research-team.github.io/GGPS-Website/

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md

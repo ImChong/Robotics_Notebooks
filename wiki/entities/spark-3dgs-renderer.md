@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, 3dgs, gaussian-splatting, web, threejs, webgl2, streaming, lod, open-source, linux-foundation]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-20
 related:
   - ./world-labs.md
   - ./marble-world-model.md
