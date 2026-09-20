@@ -8,7 +8,7 @@ tags:
   - proprioception
   - perception
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 arxiv: "2609.19582"
 related:
   - ./paper-contact-constrained-joint-offset-calibration.md
@@ -17,6 +17,7 @@ related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/omnicalib_arxiv_2609_19582.md
 summary: "OmniCalib（arXiv:2609.19582）：免标定板任务结构化人形自校准——上肢 14 零位+RGB-D 外参、下肢 12 零位、头部多相机 rig；AGIBOT A3 Ultra 验证，ICP 2.09 mm、下肢 RMS 0.063°。"
 ---

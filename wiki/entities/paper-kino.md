@@ -11,7 +11,7 @@ tags:
   - eth
   - unitree-g1
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2609.18869"
 related:
   - ../tasks/loco-manipulation.md
@@ -21,6 +21,7 @@ related:
   - ./unitree-g1.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/kino_arxiv_2609_18869.md
 summary: "KINO（arXiv:2609.18869，ETH Coros 组）：VLM 选预定义 whole-body keyframe 库 → 场景重定向 → keyframe-conditioned RL WBC；saliency 采样 44%→92%；仿真 + Unitree G1 pickup/transport/place。"
 ---

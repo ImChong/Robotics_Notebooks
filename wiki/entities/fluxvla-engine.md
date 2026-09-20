@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, humanoid, deployment, open-source, limx, training, inference, pi0, groot]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-20
 arxiv: "2609.17210"
 related:
   - ./limx-cosa.md
@@ -16,6 +16,7 @@ related:
   - ../overview/vla-deploy-12-papers-technology-map.md
   - ../tasks/loco-manipulation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md
   - ../../sources/blogs/limx_cosa_05_release_2026-07-15.md
   - ../../sources/repos/fluxvla.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md
