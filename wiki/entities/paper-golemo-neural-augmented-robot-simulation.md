@@ -18,7 +18,7 @@ sources:
 summary: "保留解析物理模型，用 RNN 学习残差修正不可建模的历史相关误差（回差、延迟等）。"
 ---
 
-# Sim-to-real transfer with neural-augmented robot simulation（FreeDof [30/44]）
+# Sim-to-real transfer with neural-augmented robot simulation
 
 **Sim-to-real transfer with neural-augmented robot simulation**（CoRL 2018）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[30/44]**，归类 **残差学习**。
 

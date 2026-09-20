@@ -18,7 +18,7 @@ sources:
 summary: "经典机器人动力学参数辨识起点，奠定从输入–输出数据反推动力学参数的范式。"
 ---
 
-# Parameter identification of robot dynamics（FreeDof [01/44]）
+# Parameter identification of robot dynamics
 
 **Parameter identification of robot dynamics**（CDC 1985）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[01/44]**，归类 **系统辨识**。
 

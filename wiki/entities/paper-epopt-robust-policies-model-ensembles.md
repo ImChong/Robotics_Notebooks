@@ -19,7 +19,7 @@ sources:
 summary: "用模型集成中回报最差样本更新策略，把优化重点从期望移向尾部。"
 ---
 
-# EPOpt: learning robust neural network policies using model ensembles（FreeDof [17/44]）
+# EPOpt: learning robust neural network policies using model ensembles
 
 **EPOpt: learning robust neural network policies using model ensembles**（[arXiv:1610.01283](https://arxiv.org/abs/1610.01283)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[17/44]**，归类 **域随机化**。
 

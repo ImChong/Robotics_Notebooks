@@ -19,7 +19,7 @@ sources:
 summary: "Yanjie Ze 维护的人形机器人学习论文与代码精选列表，Sim2Real 与人形 loco-manip 更新频繁。"
 ---
 
-# Awesome Humanoid Robot Learning（FreeDof [44/44]）
+# Awesome Humanoid Robot Learning
 
 **Awesome Humanoid Robot Learning**（GitHub 策展仓库）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[44/44]**，归类 **资源**。
 

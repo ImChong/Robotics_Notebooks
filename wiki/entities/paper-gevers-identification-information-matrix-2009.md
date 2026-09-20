@@ -18,7 +18,7 @@ sources:
 summary: "从信息矩阵与实验设计理论回答：激励要多丰富才足以区分待辨参数。"
 ---
 
-# Identification and the information matrix: how to get just sufficiently rich?（FreeDof [06/44]）
+# Identification and the information matrix: how to get just sufficiently rich?
 
 **Identification and the information matrix: how to get just sufficiently rich?**（IEEE TAC 2009）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[06/44]**，归类 **系统辨识**。
 

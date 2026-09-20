@@ -19,7 +19,7 @@ sources:
 summary: "从 Signorini、库仑摩擦与最大耗散原理比较各引擎接触近似及其物理松弛。"
 ---
 
-# Contact models in robotics: a comparative analysis（FreeDof [22/44]）
+# Contact models in robotics: a comparative analysis
 
 **Contact models in robotics: a comparative analysis**（[arXiv:2304.06372](https://arxiv.org/abs/2304.06372)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[22/44]**，归类 **域随机化**。
 

@@ -20,7 +20,7 @@ sources:
 summary: "仿真学习标称执行流形，部署时用预测偏差做 OOD 检测与 sim2real 失配诊断。"
 ---
 
-# RAPT: model-predictive out-of-distribution detection and failure diagnosis for sim-to-real humanoid deployment（FreeDof [37/44]）
+# RAPT: model-predictive out-of-distribution detection and failure diagnosis for sim-to-real humanoid deployment
 
 **RAPT: model-predictive out-of-distribution detection and failure diagnosis for sim-to-real humanoid deployment**（[arXiv:2602.01515](https://arxiv.org/abs/2602.01515)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[37/44]**，归类 **监控与评测**。
 

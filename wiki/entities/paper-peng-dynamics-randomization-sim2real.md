@@ -19,7 +19,7 @@ sources:
 summary: "将域随机化从视觉扩展到质量、摩擦、时延等动力学参数，训练对参数分布鲁棒的策略。"
 ---
 
-# Sim-to-real transfer of robotic control with dynamics randomization（FreeDof [10/44]）
+# Sim-to-real transfer of robotic control with dynamics randomization
 
 **Sim-to-real transfer of robotic control with dynamics randomization**（[arXiv:1710.06537](https://arxiv.org/abs/1710.06537)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[10/44]**，归类 **域随机化**。
 

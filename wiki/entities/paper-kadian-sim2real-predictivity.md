@@ -18,7 +18,7 @@ sources:
 summary: "系统研究仿真评测指标能否预测真机表现，为 benchmark 设计提供依据。"
 ---
 
-# Sim2Real predictivity: does evaluation in simulation predict real-world performance?（FreeDof [38/44]）
+# Sim2Real predictivity: does evaluation in simulation predict real-world performance?
 
 **Sim2Real predictivity: does evaluation in simulation predict real-world performance?**（RA-L 2020）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[38/44]**，归类 **监控与评测**。
 

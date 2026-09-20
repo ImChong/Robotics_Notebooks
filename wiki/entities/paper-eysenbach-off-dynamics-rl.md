@@ -19,7 +19,7 @@ sources:
 summary: "训练分类器判断仿真轨迹在真机上的可信度，无需显式目标动力学模型即可面向迁移训练。"
 ---
 
-# Off-dynamics reinforcement learning: training for transfer with domain classifiers（FreeDof [35/44]）
+# Off-dynamics reinforcement learning: training for transfer with domain classifiers
 
 **Off-dynamics reinforcement learning: training for transfer with domain classifiers**（[arXiv:2006.13916](https://arxiv.org/abs/2006.13916)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[35/44]**，归类 **残差学习**。
 

@@ -19,7 +19,7 @@ sources:
 summary: "通用策略 + 在线辨识器：从历史估计动力学参数并调节动作，是在线适应早期形态。"
 ---
 
-# Preparing for the unknown: learning a universal policy with online system identification（FreeDof [23/44]）
+# Preparing for the unknown: learning a universal policy with online system identification
 
 **Preparing for the unknown: learning a universal policy with online system identification (UP-OSI)**（[arXiv:1702.02453](https://arxiv.org/abs/1702.02453)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[23/44]**，归类 **在线适应**。
 

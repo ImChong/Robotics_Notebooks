@@ -20,7 +20,7 @@ sources:
 summary: "并行 IsaacSim/IsaacGym/Genesis 等多引擎训练，把随机化从参数层扩到动力学结构层。"
 ---
 
-# PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization（FreeDof [19/44]）
+# PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization
 
 **PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization**（[arXiv:2510.01708](https://arxiv.org/abs/2510.01708)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[19/44]**，归类 **域随机化**。
 
