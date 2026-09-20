@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19",
+  "generated_at": "2026-09-20",
   "node_count": 4325,
   "edge_count": 38303,
   "coverage": {
@@ -8,6 +8,16 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "roadmap/depth-rsi.md",
+      "detail_id": "roadmap-depth-rsi",
+      "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
+      "type": "roadmap_page",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
     {
       "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
       "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
@@ -192,29 +202,17 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/cloudflare-security-audit-skill.md",
-      "detail_id": "entity-cloudflare-security-audit-skill",
-      "label": "Security Audit Skill（Cloudflare）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
-    "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
-    "label": "Physical AI 策展清单：natnew vs aichr",
-    "type": "comparison",
+    "path": "roadmap/depth-rsi.md",
+    "detail_id": "roadmap-depth-rsi",
+    "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
+    "type": "roadmap_page",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "动作块输出（Action Chunking） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
