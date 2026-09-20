@@ -79,7 +79,14 @@ PAPERS: list[dict] = [
         "code": None,
         "project": "https://dreamingcontactsound.github.io/",
         "open": "待发布",
-        "tags": ["paper", "manipulation", "force-control", "audio", "video-generation", "zero-shot"],
+        "tags": [
+            "paper",
+            "manipulation",
+            "force-control",
+            "audio",
+            "video-generation",
+            "zero-shot",
+        ],
         "one_liner": "Seedance 2.0 联合生成视频与音频；视频得运动轨迹，音频响度构造期望力曲线，1 kHz 阻抗+力调节闭环执行；四类任务 40 次试验力感知 90% vs 运动学 20%。",
         "why": "擦拭、剥离、按压等任务正确轨迹不等于正确接触力；视频生成只显示「去哪」不显示「多用力」。",
         "mechanism": "MolmoPoint+SAM2+TAPIP3D 从视频得 EE 路径；SAM-Audio 分离接触声并映射响度→力曲线；Franka 力调节闭环。",
@@ -163,7 +170,14 @@ PAPERS: list[dict] = [
         "code": None,
         "project": "https://fetch-my-beer.github.io/",
         "open": "待发布",
-        "tags": ["paper", "manipulation", "liquid-transport", "hierarchical-policy", "diffusion", "sim2real"],
+        "tags": [
+            "paper",
+            "manipulation",
+            "liquid-transport",
+            "hierarchical-policy",
+            "diffusion",
+            "sim2real",
+        ],
         "one_liner": "流体仿真筛选稳定轨迹 + VLM 过滤不稳定姿态；高层语言视觉给 SE(3) 目标，潜扩散控制器生成平滑动作块；仅合成示范零样本 sim-to-real 液体运输。",
         "why": "装满液体的容器即使抓取成功，急停/转向仍可能洒出；需轨迹级动态稳定而非仅到达目标。",
         "mechanism": "合成抓取+流体仿真验证 → 分层：高层 SE(3) 目标 + 潜空间扩散密集动作块；强调 motion smoothness。",
@@ -318,7 +332,7 @@ def _entity(p: dict) -> str:
     slug = p["slug"]
     src_paper = f"../../sources/papers/{slug}_arxiv_{ax.replace('.', '_')}.md"
     src_blog = f"../../sources/blogs/{BLOG}"
-    code_line = f'code: {p["code"]}\n' if p.get("code") else ""
+    code_line = f"code: {p['code']}\n" if p.get("code") else ""
     repo_src = f"  - ../../sources/repos/{slug.replace('-', '_')}.md\n" if p.get("code") else ""
     site_src = f"  - ../../sources/sites/{slug}.md\n" if p.get("project") else ""
     proj_line = f"- [项目页]({p['project']})\n" if p.get("project") else ""
@@ -396,7 +410,7 @@ summary: "{p["short"]}（arXiv:{ax}）：{p["one_liner"][:120]}"
 
 ## 参考来源
 
-- [{slug}_arxiv_{ax.replace(".", "_")}.md](../../sources/papers/{slug}_arxiv_{ax.replace('.', '_')}.md)
+- [{slug}_arxiv_{ax.replace(".", "_")}.md](../../sources/papers/{slug}_arxiv_{ax.replace(".", "_")}.md)
 - [{BLOG}](../../sources/blogs/{BLOG})
 - [arXiv:{ax}](https://arxiv.org/abs/{ax})
 
@@ -451,7 +465,13 @@ def _blog() -> str:
         ("01", "ElastiQP", "2609.19080", "paper-elastiqp", "新建"),
         ("02", "WAVE-Go", "2609.18193", "paper-wave-go", "复用"),
         ("03", "GPT-Policy", "2609.19138", "paper-gpt-policy", "复用"),
-        ("04", "Dreaming the Sound of Contact", "2609.19137", "paper-dreaming-sound-of-contact", "新建"),
+        (
+            "04",
+            "Dreaming the Sound of Contact",
+            "2609.19137",
+            "paper-dreaming-sound-of-contact",
+            "新建",
+        ),
         ("05", "WholeBodyWAM", "2609.18197", "paper-wholebodywam-unimotion-4k", "复用"),
         ("06", "FIERCE", "2609.18651", "paper-fierce", "复用"),
         ("07", "RoboVAD", "2609.17843", "paper-robovad", "新建"),
@@ -661,8 +681,11 @@ def _patch_wave_go() -> None:
     text = path.read_text(encoding="utf-8")
     text = text.replace("**待发布**", "**已开源**")
     text = text.replace("**待发布**（步骤 2.5，2026-09-20）", "**已开源**（步骤 2.5，2026-09-20）")
-    if 'code: https://github.com/vigorlee/wave-go' not in text:
-        text = text.replace('arxiv: "2609.18193"\n', 'arxiv: "2609.18193"\ncode: https://github.com/vigorlee/wave-go\n')
+    if "code: https://github.com/vigorlee/wave-go" not in text:
+        text = text.replace(
+            'arxiv: "2609.18193"\n',
+            'arxiv: "2609.18193"\ncode: https://github.com/vigorlee/wave-go\n',
+        )
     if "sources/repos/wave_go.md" not in text:
         text = text.replace(
             "  - ../../sources/papers/wave-go_arxiv_2609_18193.md\n",
