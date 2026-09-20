@@ -1,5 +1,9 @@
 ## [2026-09-20] ingest | sources/repos/awesome-physical-ai-natnew.md + awesome-physical-ai-aichr.md — 纵深节点化双清单并集；去重后 384 条独立详情节点（新建 241、复用 143，两清单交叉 33）。二次全库去重把 8 个误建索引页并回已有 canonical（H2O / ExBody / Nav2 / Pupper / Miki perceptive loco / Rapid Locomotion / OpenMANIPULATOR / DexUMI）。开源结论：清单仓已开源，条目级以各项目页为准（索引级未逐仓核）；关键页 wiki/overview/awesome-physical-ai-technology-map.md。无法消歧：Stanford RISELab URL→SKKU；Apollo Robot URL→apollo.auto；AME 清单 DOI adv5733 vs AME-1 eadv3604；Dex-UMI Benchmark 所列 arXiv:2602.16710 实为 EgoScale；Rapid Locomotion 所列 arXiv:2207.07802 实为人再识别论文，已按标题并入 Margolis 2205.02824。
 
+## [2026-09-20] ingest | sources/repos/learnprompt.md — 接入 LearnPrompt 中文 AI Practice Wiki 与 8 路径教程索引；升格 learnprompt 实体页
+
+## [2026-09-20] ingest | sources/papers/birdriver_iclr_2026.md — BIRDriver（ICLR 2026）二次核查：OpenReview PDF 链补全；开源仍确认未发布；刷新 paper-birdriver 核查日期
+
 ## [2026-09-20] ingest | sources/papers/simplememvla_arxiv_2609_05533.md — SimpleMemVLA（arXiv:2609.05533）原生视频上下文记忆 VLA；OpenBMB 全栈已开源；升格 paper-simplememvla；交叉 vla 长程记忆谱系
 
 ## [2026-09-20] ingest | sources/blogs/wechat_airs_embodied_data_five_routes_2026-09-15.md — AIRS 具身数采五大路线盘点；升格 embodied-data-collection-five-routes-landscape query 页；交叉四层术语地图 / depth-embodied-data
