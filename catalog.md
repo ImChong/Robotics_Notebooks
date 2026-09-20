@@ -2278,6 +2278,7 @@
 - [ABot-AgentOS](wiki/entities/paper-pai-2607-10350-abotagentos.md) — ABot-AgentOS** 收录于 awesome-physical-ai（natnew）**第 255/384** 条，分组 **Production Patterns / Reference `📅unknown` `[entity_page]`
 - [PaLM-E（HMI P053）](wiki/entities/paper-palm-e-embodied-language-model.md) — PaLM-E**（*PaLM-E: An Embodied Multimodal Language Model*，2023，[arXiv:2303.03378](https://arxiv.org `📅unknown` `[entity_page]`
 - [PAMoR](wiki/entities/paper-pamor.md) — PAMoR**（*Parameterized Affective Motion Generation in Real Time for Humanoid Robots*，[arXiv:2608.2 `📅unknown` `[entity_page]`
+- [PanoGS-SLAM（Panoramic 3D Gaussian Splatting SLAM）](wiki/entities/paper-panogs-slam.md) — PanoGS-SLAM**（*Panoramic 3D Gaussian Splatting SLAM*，[arXiv:2609.17387](https://arxiv.org/abs/2609 `📅unknown` `[entity_page]`
 - [PanoLOG / G²PS：全景户外大规模 3DGS 划分重建](wiki/entities/paper-panolog-ggps.md) — PanoLOG**（*Geometry and Gradient-based Partitioning for Panoramic Outdoor Reconstruction*，[arXiv:2 `📅unknown` `[entity_page]`
 - [PanoWorld：真实世界全景可控生成](wiki/entities/paper-panoworld-real-world-panoramic-generation.md) — PanoWorld**（*Real-World Panoramic Generation*，[arXiv:2607.09661](https://arxiv.org/abs/2607.09661 `📅unknown` `[entity_page]`
 - [ParcelStow：模仿学习是否保留时间鲁棒性？](wiki/entities/paper-parcelstow.md) — ParcelStow**（*Does Imitation Learning Preserve Temporal Robustness in Dexterous Manipulation?*，[ar `📅unknown` `[entity_page]`
