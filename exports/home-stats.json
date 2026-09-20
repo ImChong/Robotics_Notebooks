@@ -9,6 +9,147 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-autotamp.md",
+      "detail_id": "entity-paper-autotamp",
+      "label": "AutoTAMP",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cogact.md",
+      "detail_id": "entity-paper-cogact",
+      "label": "CogACT",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-diffusion-vla.md",
+      "detail_id": "entity-paper-diffusion-vla",
+      "label": "Diffusion-VLA",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-embodiedgpt.md",
+      "detail_id": "entity-paper-embodiedgpt",
+      "label": "EmbodiedGPT",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-instruction2act.md",
+      "detail_id": "entity-paper-instruction2act",
+      "label": "Instruction2Act",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-llm-p.md",
+      "detail_id": "entity-paper-llm-p",
+      "label": "LLM+P",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-look-before-you-leap.md",
+      "detail_id": "entity-paper-look-before-you-leap",
+      "label": "Look Before You Leap（LBYL）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-omnimanip.md",
+      "detail_id": "entity-paper-omnimanip",
+      "label": "OmniManip",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rdt-1b.md",
+      "detail_id": "entity-paper-rdt-1b",
+      "label": "RDT-1B（Robotics Diffusion Transformer）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-saycan.md",
+      "detail_id": "entity-paper-saycan",
+      "label": "SayCan（Do As I Can）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-spatialvla.md",
+      "detail_id": "entity-paper-spatialvla",
+      "label": "SpatialVLA",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-text2motion.md",
+      "detail_id": "entity-paper-text2motion",
+      "label": "Text2Motion",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-voxposer.md",
+      "detail_id": "entity-paper-voxposer",
+      "label": "VoxPoser",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/overview/embodied-ai-guide-wechat-album-curator.md",
+      "detail_id": "wiki-overview-embodied-ai-guide-wechat-album-curator",
+      "label": "Embodied-AI-Guide 微信专辑 — 五篇策展索引",
+      "type": "overview",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
       "path": "wiki/concepts/robot-simulation-three-layers.md",
       "detail_id": "wiki-concepts-robot-simulation-three-layers",
       "label": "机器人仿真三层分工（Physics / Platform / Learning）",
@@ -67,157 +208,17 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-epopt-robust-policies-model-ensembles.md",
-      "detail_id": "entity-paper-epopt-robust-policies-model-ensembles",
-      "label": "EPOpt: learning robust neural network policies using model ensembles",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md",
-      "detail_id": "entity-paper-erez-simulation-tools-comparison-icra-2015",
-      "label": "Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-eysenbach-off-dynamics-rl.md",
-      "detail_id": "entity-paper-eysenbach-off-dynamics-rl",
-      "label": "Off-dynamics reinforcement learning: training for transfer with domain classifiers",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md",
-      "detail_id": "entity-paper-gautier-khalil-inertial-parameter-identification-1988",
-      "label": "On the identification of the inertial parameters of robots",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gevers-identification-information-matrix-2009.md",
-      "detail_id": "entity-paper-gevers-identification-information-matrix-2009",
-      "label": "Identification and the information matrix: how to get just sufficiently rich?",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-golemo-neural-augmented-robot-simulation.md",
-      "detail_id": "entity-paper-golemo-neural-augmented-robot-simulation",
-      "label": "Sim-to-real transfer with neural-augmented robot simulation",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kadian-sim2real-predictivity.md",
-      "detail_id": "entity-paper-kadian-sim2real-predictivity",
-      "label": "Sim2Real predictivity: does evaluation in simulation predict real-world performance?",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md",
-      "detail_id": "entity-paper-khosla-robot-dynamics-parameter-identification-1985",
-      "label": "Parameter identification of robot dynamics",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kovalev-differentiable-simulation-locomotion-sysid.md",
-      "detail_id": "entity-paper-kovalev-differentiable-simulation-locomotion-sysid",
-      "label": "Achieving precise and reliable locomotion with differentiable simulation-based system identification",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-le-lidec-contact-models-comparative-analysis.md",
-      "detail_id": "entity-paper-le-lidec-contact-models-comparative-analysis",
-      "label": "Contact models in robotics: a comparative analysis",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-muratore-bayesian-optimization-domain-randomization.md",
-      "detail_id": "entity-paper-muratore-bayesian-optimization-domain-randomization",
-      "label": "Data-efficient domain randomization with Bayesian optimization",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-peng-dynamics-randomization-sim2real.md",
-      "detail_id": "entity-paper-peng-dynamics-randomization-sim2real",
-      "label": "Sim-to-real transfer of robotic control with dynamics randomization",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md",
-      "detail_id": "entity-paper-polysim-multi-simulator-humanoid-sim2real",
-      "label": "PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rapt-sim2real-ood-detection.md",
-      "detail_id": "entity-paper-rapt-sim2real-ood-detection",
-      "label": "RAPT: model-predictive out-of-distribution detection and failure diagnosis for sim-to-real humanoid deployment",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/robot-simulation-three-layers.md",
-    "detail_id": "wiki-concepts-robot-simulation-three-layers",
-    "label": "机器人仿真三层分工（Physics / Platform / Learning）",
-    "type": "concept",
+    "path": "wiki/entities/paper-autotamp.md",
+    "detail_id": "entity-paper-autotamp",
+    "label": "AutoTAMP",
+    "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+    "community_label": "动作块输出（Action Chunking） 社区"
   },
   "top_communities": [
     {
