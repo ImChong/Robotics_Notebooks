@@ -6,8 +6,9 @@
 - **类型：** repo
 - **来源：** ccrpRepo（GitHub 个人项目）
 - **链接：** https://github.com/ccrpRepo/AMP_mjlab
-- **入库日期：** 2026-04-29
-- **一句话说明：** 基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略，用单个 actor-critic + 判别器同时学习 locomotion 与 fall-recovery，消除模式切换的行为断裂。
+- **入库日期：** 2026-04-29（2026-09-20 与 SD-AMP 论文交叉标注）
+- **关联论文：** [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — **工程侧对照**，非官方实现
+- **一句话说明：** 基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略，用单个 actor-critic + **单判别器** 同时学习 locomotion 与 fall-recovery；**未实现** SD-AMP 的 **双判别器 + 重力门控**，但覆盖同类 walk/run/get-up 工程目标。
 - **沉淀到 wiki：** 是 → [`wiki/entities/amp-mjlab.md`](../../wiki/entities/amp-mjlab.md)
 
 ---

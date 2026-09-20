@@ -7,10 +7,12 @@
 - **arXiv HTML：** <https://arxiv.org/html/2605.18611v1>
 - **arXiv abs：** <https://arxiv.org/abs/2605.18611>
 - **PDF：** <https://arxiv.org/pdf/2605.18611>
-- **机构：** The University of Hong Kong（Yidan Lu, Yichao Zhong, Liu Zhao, Wanyue Li；通讯作者 Peng Lu）
+- **机构：** The University of Hong Kong（香港大学 / HKU）
+- **作者：** Yidan Lu, Yichao Zhong, Liu Zhao, Wanyue Li, Peng Lu（通讯）
+- **年份：** 2026（arXiv v1 2026-05）
 - **硬件：** Unitree G1（真机验证，无部署期显式模式切换）
-- **入库日期：** 2026-05-25
-- **开源状态（2026-07-20 再核）：** 论文 HTML / abs **无** 官方 GitHub；工程侧统一 walk/run/recovery 对照见 [AMP_mjlab](../repos/amp_mjlab.md)（非本文双判别器实现）。
+- **入库日期：** 2026-05-25（2026-09-20 再核刷新）
+- **开源状态（2026-09-20 步骤 2.5）：** 论文 HTML / abs **无** 官方 GitHub 或项目页 Code 链；**第三方** [AMP_mjlab](../repos/amp_mjlab.md)（`ccrpRepo/AMP_mjlab`）实现 **统一 walk/run/recovery 单策略 + 单判别器 + 分区参考库**，**未实现** 本文 **双判别器 + 投影重力门控**。
 - **一句话说明：** 用**状态相关 AMP（SD-AMP）**在训练期按投影重力门控切换 recovery / 速度条件 locomotion 两个判别器，**三条 LAFAN1 参考片段**即可让**单一策略**在 G1 上统一走、跑与俯卧/仰卧起身，部署为 50 Hz 冻结 ONNX、无运行时 FSM。
 
 ## 摘要级要点
@@ -24,7 +26,7 @@
 - **参考数据：** LAFAN1 三条 retarget 到 G1：`walk1_subject1`、`run1_subject2`、`fallAndGetUp2_subject2`；locomotion 分支以概率 $(1-\hat{v}_t)$ / $\hat{v}_t$ 混合 walk/run 转移。
 - **观测 / 动作：** 单帧 96 维（角速度、投影重力、速度命令、相对关节位、关节速、上步动作）；**4 帧堆叠 → 384 维**；动作 29 维关节目标位置 + 底层 PD。
 - **训练 / 部署：** Isaac Lab + PPO；收敛后导出 ONNX，真机 50 Hz C++ FSM 读关节状态发 PD 目标；**无 sim2real 额外微调**叙述（仅训练期标准域随机化）。
-- **实验：** 正常模式速度跟踪约 $[-0.5,1.0]$ m/s；快速模式（操作员显式启用安全约束）约 $[-1.5,3.0]$ m/s；俯卧 / 仰卧起身后连贯 **recovery → walk → run** 硬件 rollout。
+- **实验：** 正常模式速度跟踪约 $[-0.5,1.0]$ m/s；快速模式（操作员显式启用安全约束）约 $[-1.5,3.0]$ m/s；**俯卧（prone）与仰卧（supine）** 跌倒恢复后连贯 **recovery → walk → run** 硬件 rollout（同一控制器、无运行时 mode 命令）。
 
 ## 核心摘录（面向 wiki 编译）
 

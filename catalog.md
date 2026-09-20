@@ -3456,7 +3456,7 @@
 - [UniAD（Planning-oriented Autonomous Driving · arXiv:2212.10156）](wiki/entities/paper-uniad.md) — UniAD**（*Planning-oriented Autonomous Driving*，2212.10156，CVPR `📅unknown` `[entity_page]`
 - [统一流体-机器人多物理可微仿真（Realizing Robotic Swimming with Unified Fluid-Robot Multiphysics）](wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md) — Unified Fluid-Robot Multiphysics**（*Realizing Robotic Swimming with Unified Fluid-Robot Multiphysi `📅unknown` `[entity_page]`
 - [统一机器人学习综述：表征、VLA 与世界模型](wiki/entities/paper-unified-robot-learning-survey.md) — Toward Unified Robot Learning: Bridging Representation, Vision-Language-Action, and World Models `📅unknown` `[entity_page]`
-- [SD-AMP：统一走、跑与起身的对抗运动先验](wiki/entities/paper-unified-walk-run-recovery-sdamp.md) — State-Dependent Adversarial Motion Priors（SD-AMP）** 是香港大学团队提出的统一人形控制框架（arXiv:2605.18611）：在 **Unitr `📅unknown` `[entity_page]`
+- [SD-AMP：统一走、跑与起身的对抗运动先验](wiki/entities/paper-unified-walk-run-recovery-sdamp.md) — State-Dependent Adversarial Motion Priors（SD-AMP）** 是香港大学（HKU）团队提出的统一人形控制框架（arXiv:2605.18611，2026） `📅unknown` `[entity_page]`
 - [UniMPA（arXiv:2609.11875）](wiki/entities/paper-unimpa.md) — UniMPA**（[UniMPA: A Unified Memory-Prediction-Action Model via Action-Grounded Transition Modeling `📅unknown` `[entity_page]`
 - [UniPart（arXiv:2609.12898）](wiki/entities/paper-unipart.md) — UniPart**（[UniPart: Towards Zero-shot Language-Grounded 3D Part Segmentation for Embodied Interact `📅unknown` `[entity_page]`
 - [UniSim-SLAM（Feed-Forward SLAM with Unified Sim(3) Optimization）](wiki/entities/paper-unisim-slam.md) — UniSim-SLAM**（*Feed-Forward SLAM with Unified Sim(3) Optimization*，[arXiv:2608.01706](https://arxi `📅unknown` `[entity_page]`

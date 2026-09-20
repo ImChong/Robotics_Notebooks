@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1, hku]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2605.18611"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -21,6 +21,7 @@ related:
   - ../queries/humanoid-motion-tracking-method-selection.md
 sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/repos/amp_mjlab.md
   - ../../sources/papers/humanoid_amp_survey_10_unified_walking_running_and_recovery_for_humanoi.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
@@ -30,7 +31,18 @@ summary: "SD-AMP（arXiv:2605.18611）用投影重力门控在训练期切换 re
 
 # SD-AMP：统一走、跑与起身的对抗运动先验
 
-**State-Dependent Adversarial Motion Priors（SD-AMP）** 是香港大学团队提出的统一人形控制框架（arXiv:2605.18611）：在 **Unitree G1** 上用**单一 RL 策略**覆盖行走、跑步与跌倒恢复，真机验证且**部署期无需显式模式命令**。核心是把经典 [AMP](../methods/amp-reward.md) 的全局参考分布换成**训练期状态门控**，使风格正则始终与当前行为 regime 一致。
+**State-Dependent Adversarial Motion Priors（SD-AMP）** 是香港大学（HKU）团队提出的统一人形控制框架（arXiv:2605.18611，2026）：在 **Unitree G1** 上用 **PPO + 状态相关 AMP** 训练**单一策略**，覆盖行走、跑步与 **俯卧/仰卧** 跌倒恢复，真机验证且**部署期无需显式模式命令**。核心是把经典 [AMP](../methods/amp-reward.md) 的全局参考分布换成**训练期投影重力门控**，使 recovery 与 locomotion 各走独立判别器。
+
+## 核心信息
+
+| 项 | 内容 |
+|----|------|
+| **作者** | Yidan Lu, Yichao Zhong, Liu Zhao, Wanyue Li, Peng Lu（通讯） |
+| **机构** | The University of Hong Kong（香港大学） |
+| **平台** | Unitree G1 真机 + Isaac Lab 仿真 |
+| **方法** | PPO + **State-Dependent Adversarial Motion Priors**（双判别器 + 固定重力门控） |
+| **任务** | 行走、奔跑、**俯卧/仰卧** 跌倒恢复（统一策略，无部署 FSM） |
+| **开源** | **未开源**（无官方仓库）；工程对照 [AMP_mjlab](./amp-mjlab.md)（单判别器，非双判别器实现） |
 
 ## 英文缩写速查
 
@@ -123,18 +135,26 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 2. **三条参考 = 能力上限：** 论文主张的是**先验分离**而非 MoCap 规模；换平台仍需 retarget 与任务奖励调参。
 3. **SD-AMP = Selective AMP：** [Selective AMP](../../sources/papers/multi-gait-learning.md) 按**步态周期 vs 高动态**决定是否加 AMP；本文按**机体是否跌倒**切换**不同判别器**。
 
-## 开源状态（项目页核查，2026-07-20）
+## 开源状态（步骤 2.5 核查，2026-09-20）
 
 | 资源 | 状态 |
 |------|------|
 | arXiv | <https://arxiv.org/abs/2605.18611> |
-| 官方代码 | **未发布**（论文 HTML / abs **无** GitHub 或项目页 Code 链） |
-| 工程对照 | [AMP_mjlab](./amp-mjlab.md)（`ccrpRepo/AMP_mjlab`）实现 **统一 walk/run/recovery**，但是 **单判别器 + 分区参考库**，**不是**本文双判别器 + 重力门控的官方仓 |
-| 源码运行时序图 | **不适用**（无官方可运行仓）；工程侧流程见 AMP_mjlab 页的训练到部署流程图 |
+| 官方代码 | **未发布** — arXiv HTML / abs **无** GitHub、Hugging Face 或项目页 Code 链 |
+| **第三方 code** | [AMP_mjlab](./amp-mjlab.md)（[`ccrpRepo/AMP_mjlab`](https://github.com/ccrpRepo/AMP_mjlab)）— **已开源**；工程侧 **统一 walk/run/recovery 单策略**，**单 AMP 判别器 + WalkRun/Recovery 分区参考**；**未实现** 本文 **双判别器 + \(\|g_z+1\|>0.6\) 重力门控** |
+| 源码运行时序图 | **不适用**（无官方可运行仓）；第三方训练–部署流程见 [AMP_mjlab](./amp-mjlab.md) Mermaid |
 
 ## 实验与评测
 
-- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+| 维度 | 要点（论文报告） |
+|------|------------------|
+| **仿真** | Isaac Lab + PPO；$\lambda_{\mathrm{amp}}=0.5$；4×96 维历史观测 → 384 维；29 维关节目标 + PD |
+| **速度跟踪** | 正常模式约 **$[-0.5, 1.0]$ m/s**；快速模式（操作员显式启用）约 **$[-1.5, 3.0]$ m/s** |
+| **恢复** | **俯卧（prone）与仰卧（supine）** 跌倒后起身，并与 walk→run **同一冻结策略** 连贯执行 |
+| **部署** | 50 Hz **ONNX** C++ 推理；**无** sim2real 额外微调叙述（标准域随机化） |
+| **参考数据** | LAFAN1 三条 retarget：`walk1_subject1`、`run1_subject2`、`fallAndGetUp2_subject2` |
+
+定量 ablation 与完整曲线见 [arXiv HTML](https://arxiv.org/html/2605.18611v1) 与 PDF。
 
 ## 结论
 
@@ -155,6 +175,7 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 ## 参考来源
 
 - [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
+- [AMP_mjlab 第三方工程对照](../../sources/repos/amp_mjlab.md)
 - Peng et al., *AMP: Adversarial Motion Priors* (2021) — 方法基线
 - Harvey et al., *LAFAN1* (2020) — 三条参考动作来源
 - [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md) — 五条 LAFAN1 参考 + 频谱先验，G1 冲刺 6 m/s
