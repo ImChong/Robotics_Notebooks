@@ -4,7 +4,7 @@ tags: [roadmap, humanoid, career, hardware, manufacturing, testing, mechanical]
 status: complete
 updated: 2026-09-19
 related:
-  - ./humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
   - ../concepts/humanoid-mass-production-engineering.md
   - ../concepts/humanoid-testing-workflow.md
   - ../overview/humanoid-hardware-101-technology-map.md
@@ -41,7 +41,7 @@ summary: "面向非算法专长的工程人员：从结构/执行器/测试/制�
 ## 为什么重要
 
 - **行业阶段变化**：人形机器人正从「展示技术」转向「验证生产力」——整机企业与明星算法岗之外，结构、执行器、测试、供应链、现场调试同样缺人。
-- **与算法路线互补**：[Humanoid Control Roadmap](./humanoid-control-roadmap.md) 与 [motion-control 主路线](../../roadmap/motion-control.md) 服务运控算法工程师；本页服务 **把原理做成稳定产品** 的 practitioner。
+- **与算法路线互补**：[运动控制主路线](../../roadmap/motion-control.md) 服务运控算法工程师；本页服务 **把原理做成稳定产品** 的 practitioner。
 - **降低错误预期**：只搜「人形机器人算法工程师」会漏掉大量真实岗位；只学大模型概念无法承担完整机器人工程。
 
 ## 核心原理
@@ -92,7 +92,7 @@ flowchart LR
 | 软件/计算机/算法 | ROS2、仿真、运动学/动力学、感知融合、控制/步态 | 传感器噪声、通信延迟、限位、急停、电池电压 |
 | 产品/项目/售后 | 场景调研、应用工程、现场部署、任务编排、交付/运维 | 节拍、故障恢复、安全隔离、维护成本、数据闭环 |
 
-**算法向深度路线**仍请走 [Humanoid Control Roadmap](./humanoid-control-roadmap.md)；**整机硬件纵深**见 [depth-humanoid-hardware-design](../../roadmap/depth-humanoid-hardware-design.md)。
+**算法向深度路线**仍请走[运动控制主路线](../../roadmap/motion-control.md)；**整机硬件纵深**见 [depth-humanoid-hardware-design](../../roadmap/depth-humanoid-hardware-design.md)。
 
 ### 12 个月学习顺序（从单机构，非整机）
 
@@ -138,7 +138,7 @@ flowchart LR
 
 ## 关联页面
 
-- [Humanoid Control Roadmap](./humanoid-control-roadmap.md) — 运控算法工程师互补路线
+- [运动控制主路线](../../roadmap/motion-control.md) — 运控算法工程师互补路线
 - [人形机器人量产工程能力](../concepts/humanoid-mass-production-engineering.md) — 制造/良率/CPK 姊妹页（同作者线）
 - [Humanoid Hardware 101 技术地图](../overview/humanoid-hardware-101-technology-map.md) — 六/七类子系统全景
 - [depth-humanoid-hardware-design](../../roadmap/depth-humanoid-hardware-design.md) — 整机硬件 Stage 0–6 纵深

@@ -23,7 +23,7 @@ related:
   - ./open-duck-mini-viewer.md
   - ./hightorque-robotics.md
   - ../queries/humanoid-hardware-selection.md
-  - ../roadmaps/humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/papers/humanoid_hardware.md
@@ -135,7 +135,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)
 - [机器人开源宝库（微信策展第02期）](../overview/robot-open-source-wechat-issue02-curator.md)
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 - [ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — IIT 系人因 codesign；公开的是优化/控制软件而非 DIY 整机 BOM
 
 ## 参考来源

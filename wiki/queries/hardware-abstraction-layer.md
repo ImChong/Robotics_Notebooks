@@ -5,7 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ./ethercat-master-optimization.md
-  - ../roadmaps/humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
   - ../overview/humanoid-motion-control-know-how.md
 sources:
   - ../../sources/papers/sim2real.md
@@ -15,7 +15,7 @@ summary: "硬件抽象层（HAL）设计指南：探讨了在机器人软件栈�
 # 机器人硬件抽象层 (HAL) 设计指南
 
 > **Query 产物**：本页由以下问题触发：「如何写一套代码，既能跑在仿真里，又能跑在不同品牌的机器人硬件上？硬件抽象层该怎么分层？」
-> 综合来源：[Control Roadmap](../roadmaps/humanoid-control-roadmap.md)、[Humanoid Know-how](../overview/humanoid-motion-control-know-how.md)
+> 综合来源：[运动控制主路线](../../roadmap/motion-control.md)、[Humanoid Know-how](../overview/humanoid-motion-control-know-how.md)
 
 ---
 
@@ -79,7 +79,7 @@ HAL 运行在高频控制环（1kHz+）中。
 
 ## 关联页面
 - [EtherCAT 主站优化](./ethercat-master-optimization.md)
-- [人形机器人运动控制学习路线](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 - [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)
 
 ## 参考来源

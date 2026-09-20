@@ -410,6 +410,6 @@ flowchart TD
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）
 - Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）
 - Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线
+- [运动控制主路线](../../roadmap/motion-control.md) — 人形运控的学习成长路线
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)

@@ -12,14 +12,14 @@ class WikiRoadmapsExportTests(unittest.TestCase):
     def test_collect_paths_includes_wiki_roadmaps(self):
         paths = collect_paths()
         rel_paths = {p.relative_to(ROOT).as_posix() for p in paths}
-        self.assertIn("wiki/roadmaps/humanoid-control-roadmap.md", rel_paths)
+        self.assertIn("wiki/roadmaps/humanoid-practitioner-entry-roadmap.md", rel_paths)
 
-    def test_humanoid_control_roadmap_exports_to_detail_pages(self):
+    def test_humanoid_practitioner_entry_roadmap_exports_to_detail_pages(self):
         page_id = path_to_id(
-            ROOT / "wiki" / "roadmaps" / "humanoid-control-roadmap.md",
+            ROOT / "wiki" / "roadmaps" / "humanoid-practitioner-entry-roadmap.md",
             ROOT,
         )
-        self.assertEqual(page_id, "wiki-roadmaps-humanoid-control-roadmap")
+        self.assertEqual(page_id, "wiki-roadmaps-humanoid-practitioner-entry-roadmap")
 
         site_data = json.loads((ROOT / "exports" / "site-data-v1.json").read_text(encoding="utf-8"))
         detail_pages = site_data["pages"]["detail_pages"]

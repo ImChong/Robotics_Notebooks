@@ -5984,7 +5984,6 @@
       techMapSummary.innerHTML = [
         '<h4>graph_meta</h4>',
         '<p class="data-meta">overview_id: <code>' + escapeHtml((techMapPage.graph_meta || {}).overview_id || '-') + '</code></p>',
-        '<p class="data-meta">dependency_graph_id: <code>' + escapeHtml((techMapPage.graph_meta || {}).dependency_graph_id || '-') + '</code></p>',
         '<p class="data-submeta">当前 tech-map 共 ' + escapeHtml(techMapNodes.length) + ' 个节点，覆盖 ' + escapeHtml(uniqueLayers.length) + ' 个 layer，可直接生成第一版分层节点视图。</p>'
       ].join('');
       removeLoadingState(techMapSummary);
