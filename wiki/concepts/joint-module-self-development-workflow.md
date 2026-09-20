@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, joint-module, manufacturing, testing, harmonic-drive]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 related:
   - ../overview/motor-design-workflow.md
   - ../overview/humanoid-hardware-101-integrated-actuators.md
@@ -14,11 +14,13 @@ related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/field-oriented-control.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ../queries/humanoid-joint-motor-topology-selection.md
   - ./robot-joint-bearing-selection.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../../roadmap/depth-humanoid-hardware-design.md
 sources:
   - ../../sources/blogs/wechat_zanehub_joint_module_self_development_workflow.md
+  - ../../sources/blogs/wechat_zanehub_joint_motor_topology_selection_2026-09-20.md
 summary: "自研旋转关节模组是需求瀑布、传动构型、电机–减速–编码–驱动五件套、结构刚度链、标定控制、装配一致性与四层测试矩阵串成的长链路；负载谱与扭矩密度先于单点峰值扭矩，批次离散度决定整机调参成本。"
 ---
 

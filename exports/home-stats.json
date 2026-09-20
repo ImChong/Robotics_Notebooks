@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4325,
-  "edge_count": 38303,
+  "node_count": 4326,
+  "edge_count": 38318,
   "coverage": {
-    "covered": 4296,
-    "total": 4296,
+    "covered": 4297,
+    "total": 4297,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/humanoid-joint-motor-topology-selection.md",
+      "detail_id": "wiki-queries-humanoid-joint-motor-topology-selection",
+      "label": "人形关节电机拓扑选型：三种路线如何分工？",
+      "type": "query",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "roadmap/depth-rsi.md",
       "detail_id": "roadmap-depth-rsi",
@@ -192,27 +202,17 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wnm-3d-vln.md",
-      "detail_id": "entity-paper-wnm-3d-vln",
-      "label": "WNM-3D（arXiv:2608.07267）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-rsi.md",
-    "detail_id": "roadmap-depth-rsi",
-    "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
-    "type": "roadmap_page",
-    "recency": "2026-09-19",
+    "path": "wiki/queries/humanoid-joint-motor-topology-selection.md",
+    "detail_id": "wiki-queries-humanoid-joint-motor-topology-selection",
+    "label": "人形关节电机拓扑选型：三种路线如何分工？",
+    "type": "query",
+    "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
