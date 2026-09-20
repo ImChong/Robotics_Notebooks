@@ -98,7 +98,7 @@ related:
 
 - [Locomotion](../tasks/locomotion.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)
-- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md)
+- [人形机器人运动控制 Know-How](./humanoid-motion-control-know-how.md)
 
 ### 2. Manipulation
 
@@ -222,7 +222,7 @@ related:
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
 - [Andrej Karpathy](../entities/andrej-karpathy.md) — LLM Wiki 提出者与深度学习/视觉教育索引
-- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐
+- [人形机器人运动控制 Know-How](./humanoid-motion-control-know-how.md) — 真机调试的工程经验（传感器 / 电机热管理 / 地形）
 - [人形机器人八大能力技术地图](./humanoid-eight-capabilities-technology-map.md) — 感知/抓取/WBC/平衡/VLA/WM/数据/仿真科普鸟瞰
 
 ## 推荐继续阅读

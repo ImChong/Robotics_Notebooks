@@ -4,7 +4,6 @@ tags: [humanoid, motion-control, know-how, roboparty, roadmap, model-based, rein
 status: complete
 updated: 2026-09-15
 related:
-  - ../queries/humanoid-motion-control-know-how.md
   - ./humanoid-motion-control-trends.md
   - ./humanoid-model-based-control-stack.md
   - ./humanoid-rl-motion-control-methods.md
@@ -141,7 +140,6 @@ flowchart TB
 
 ## 关联页面
 
-- [Query：Know-How 结构化摘要](../queries/humanoid-motion-control-know-how.md) — 2026-04 对飞书结构的 query 产物
 - [八层身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) — 42 篇 RL 论文的系统视角（与本文互补）
 - [Roboto Origin](../entities/roboto-origin.md)、[RoboParty](../entities/roboparty.md) — 文档与开源栈出处
 

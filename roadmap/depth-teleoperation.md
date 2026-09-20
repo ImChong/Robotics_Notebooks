@@ -263,8 +263,6 @@ flowchart LR
   - [动作重定向](depth-motion-retargeting.md) — Stage 2/4 用其工具箱；差别在实时、在环、带延迟
   - [具身数据](depth-embodied-data.md) — 示范如何清洗、标注、入库与配比
   - [接触操作](depth-contact-manipulation.md) — 手指遥操作接触保持的邻接路线
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

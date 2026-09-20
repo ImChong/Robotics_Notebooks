@@ -244,8 +244,6 @@ flowchart LR
   - [具身数据](depth-embodied-data.md) — 飞轮与配比是数据侧的自改进同构
   - [VLA](depth-vla.md) — 真机策略自改进闭环最常见的改进对象
   - [ICL](depth-icl.md) — 权重不动的另一条改进路径，用来对照 RSI 边界
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

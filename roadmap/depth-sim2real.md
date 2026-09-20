@@ -231,8 +231,6 @@ flowchart LR
   - [Real2Sim](depth-real2sim.md) — 反向补集：修仿真资产 vs 把策略搬上真机
   - [具身测评](depth-embodied-eval.md) — sim↔real 校准与评测 gap
   - [力矩电机设计](depth-torque-motor-design.md) — 执行器层 gap 的硬件源头
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

@@ -328,7 +328,7 @@ flowchart TD
 - [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation
 - [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战
 - [Balance Recovery](./balance-recovery.md)：扰动恢复，鲁棒 locomotion 的核心子能力
-- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — locomotion 实战经验结构化摘要
+- [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md) — locomotion 真机调试经验
 - [Query：开源运动控制项目导航](../queries/open-source-motion-control-projects.md) — 主流开源框架与项目概览
 
 ## 继续深挖入口

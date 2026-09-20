@@ -8,8 +8,8 @@ updated: 2026-04-20
 
 # Humanoid Control Roadmap
 
-> 本页是 [humanoid-control-roadmap](humanoid-control-roadmap.md) 的简短版摘要。
-> **完整版路线请看 → [motion-control](../../roadmap/motion-control.md)**
+> 本页是 **简版入口**：四阶段速览 + 先修知识。
+> **完整版路线（L−1 → L7，含每层练习与自测）请看 → [运动控制主路线](../../roadmap/motion-control.md)**
 
 面向人形机器人运动控制算法工程师的学习研究路线。
 

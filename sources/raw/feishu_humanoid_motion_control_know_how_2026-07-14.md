@@ -32,5 +32,4 @@ RoboParty 飞书公开文档《人形机器人运动控制 Know-How》是一份*
 ## 对 wiki 的映射
 
 - 技术地图父节点：[humanoid-motion-control-know-how-technology-map.md](../../wiki/overview/humanoid-motion-control-know-how-technology-map.md)
-- 结构化摘要（2026-04 query）：[humanoid-motion-control-know-how.md](../../wiki/queries/humanoid-motion-control-know-how.md)
 - 源归档：[humanoid_motion_control_know_how.md](../papers/humanoid_motion_control_know_how.md)

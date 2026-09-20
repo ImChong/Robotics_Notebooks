@@ -213,7 +213,7 @@ flowchart LR
 - 选型参考：[Query：跨形态迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 ### 推荐读什么
-- 参考 [Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md) 的进阶纵深部分
+- 这四个方向各有独立纵深页：见主路线的[可选纵深索引](motion-control.md#depth-optional-index)
 
 ---
 
@@ -236,8 +236,6 @@ flowchart LR
   - [Loco-Manipulation](depth-loco-manipulation.md) — 行走策略接到操作
   - [传统模型控制](depth-classical-control.md) — WBC/MPC 与 RL 的组合与对照
   - [BFM](depth-bfm.md) — 跟踪/技能先验，常作 RL 的运动底座
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

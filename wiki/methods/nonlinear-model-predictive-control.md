@@ -78,7 +78,7 @@ summary: "非线性模型预测控制 NMPC：每步求解非线性 OCP，可处�
 
 ## 推荐继续阅读
 
-- [Humanoid Motion Control Know-How](../queries/humanoid-motion-control-know-how.md) — SRBD vs CD-NMPC 路线
+- [SRBD + 凸 MPC + WBC](../concepts/srbd-convex-mpc-wbc.md) — 与 CD-NMPC 的路线分叉
 - Acados / OCS2 文档
 
 ## 参考来源
