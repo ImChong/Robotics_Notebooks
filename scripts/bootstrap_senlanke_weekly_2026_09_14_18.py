@@ -466,8 +466,6 @@ def render_wiki(p: dict) -> str:
     slug = p["slug"]
     src_paper = f"../../sources/papers/{slug}_arxiv_{arxiv.replace('.', '_')}.md"
     src_blog = f"../../sources/blogs/{p['blog']}"
-    wiki_name = f"paper-{slug}.md"
-    related_wiki = [f"./paper-{s}.md" if s.startswith("paper-") else r for s, r in zip([], p["related"])]
     related_wiki = p["related"]
     return f"""---
 type: entity
