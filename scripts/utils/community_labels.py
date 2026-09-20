@@ -30,6 +30,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
         "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols）"
     ),
     "wiki/concepts/contact-rich-manipulation.md": "接触丰富型操作（Contact-Rich Manipulation）",
+    "wiki/concepts/data-flywheel.md": "具身数据飞轮（Data Flywheel）",
     "wiki/methods/vla.md": "视觉-语言-动作（Vision-Language-Action, VLA）",
     "wiki/overview/vla-open-source-repro-landscape-2025.md": (
         "视觉语言动作开源复现景观（VLA Open-Source Reproduction Landscape）"
