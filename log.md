@@ -1,3 +1,8 @@
+## [2026-09-20] ingest | sources/repos/laya.md — Laya System 1 决策引擎（Apache 2.0 自托管）；交叉 typesafe-jev / agent 编排
+
+- **意图：** 接入 Convai Laya 开源仓库；步骤 2.5：GitHub + HF 权重 + PyPI 均已发布。
+- **关键页：** [laya](wiki/entities/laya.md)
+
 ## [2026-09-20] ingest | sources/raw/wechat_lumina_embodied_practice_album_4608355279393816579.md — Lumina 微信专辑 5 篇（LLM 规划/Code-as-Policy/VLA 综述×2/DP）；新建策展索引 + 13 个缺失 paper 实体，已有页只回链
 
 - **意图：** 专辑 4608355279393816579 全篇入库；正文 CAPTCHA，对照 Embodied-AI-Guide algorithm.md §3–§5。

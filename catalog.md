@@ -616,6 +616,7 @@
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
 - [Lambda Cloud](wiki/entities/lambda-cloud.md) — Lambda Cloud**（lambda.ai）是 **AI 专用 GPU 云**，以 **Lambda Stack `📅unknown` `[entity_page]`
+- [Laya（System 1 决策引擎）](wiki/entities/laya.md) — Laya**（GitHub，PyPI，[HF  `📅unknown` `[entity_page]`
 - [开源机器人学学习指南（qqfly）](wiki/entities/learn-robotics-qqfly-guide.md) — 一句话：** learn-robotics.qqfly.net 是 qqfly 维护的 **CC BY 4.0 中文自学手 `📅unknown` `[entity_page]`
 - [LearnPrompt](wiki/entities/learnprompt.md) — LearnPrompt** 是 LearnPrompt/LearnPrompt 组织下的 **中文 AI `📅unknown` `[entity_page]`
 - [Legbot Lab（四足 Isaac Lab RL 与 Sim2Real 部署）](wiki/entities/legbot-lab.md) — Legbot Lab**（Robot-Nav/legbot_lab，Apache-2.0）是面向自研 **Le `📅unknown` `[entity_page]`

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4651,
-  "edge_count": 40692,
+  "node_count": 4652,
+  "edge_count": 40698,
   "coverage": {
-    "covered": 4623,
-    "total": 4623,
+    "covered": 4624,
+    "total": 4624,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -239,7 +239,7 @@
     },
     {
       "label": "动作块输出",
-      "size": 240
+      "size": 241
     },
     {
       "label": "视觉-语言-动作",
@@ -259,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1303,
+      "degree": 1304,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
