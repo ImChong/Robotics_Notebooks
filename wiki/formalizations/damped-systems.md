@@ -4,6 +4,7 @@ tags: [control, dynamics, classical-control, damping, second-order, foundational
 status: complete
 updated: 2026-09-11
 related:
+  - ./ode-solving-methods.md
   - ./eigenvalues-eigenvectors.md
   - ./lqr.md
   - ../methods/pole-placement-control.md
@@ -45,6 +46,7 @@ summary: "一阶时间常数 τ 与二阶阻尼比 ζ、自然频率 ωₙ 是�
 - **调增益：** PD 闭环 $\omega_n=\sqrt{K_p/J_{\mathrm{eff}}}$、$\zeta=(K_d+b)/(2\sqrt{K_p J_{\mathrm{eff}}})$；改 $K_d$ 主要改 $\zeta$，不改 $\omega_n$。
 - **设柔顺：** 阻抗控制选 $M_d,B_d,K_d$；临界阻尼 $B_d\approx 2\sqrt{M_d K_d}$ 抑制接触后振荡。
 - **连谱理论：** 闭环极点 = 状态矩阵特征值；与 [特征值与特征向量](./eigenvalues-eigenvectors.md) 同一套 $s$ 平面语言。
+- **连 ODE 解法：** 二阶常系数方程的特征根与数值积分选型见 [ODE 求解决策链](./ode-solving-methods.md)。
 
 ## 核心原理
 

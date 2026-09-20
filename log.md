@@ -1,3 +1,8 @@
+## [2026-09-20] ingest | sources/blogs/wechat_ode_solving_methods_decision_chain_2026-09-20.md — 公众号 ODE 解析决策链+数值法长文；升格 wiki/formalizations/ode-solving-methods.md，交叉 damped-systems / robot-simulation-three-layers
+
+- **意图：** WebFetch 抓取 mp.weixin.qq.com 科普教程；无单一项目页。
+- **关键页：** [ode-solving-methods](wiki/formalizations/ode-solving-methods.md)
+
 ## [2026-09-20] ingest | sources/repos/qwen-image-2-1.md + sources/blogs/qwen_image_2_1_blog.md — Qwen-Image-2.1 统一 T2I/编辑/RGBA；开源结论：已开源（GitHub+HF+ModelScope）；新建 qwen-image-2-1 实体，交叉 generative-data-augmentation
 
 - **意图：** 通义 2026-09-20 图像模型发布；步骤 2.5 核查 GitHub/HF/ModelScope 权重与 Diffusers Day-0。
