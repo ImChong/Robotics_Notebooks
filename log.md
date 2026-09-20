@@ -1,3 +1,8 @@
+## [2026-09-20] ingest | sources/repos/browserskill.md — BrowserSkill（腾讯 MIT）：bsk CLI + 扩展借登录态浏览器；交叉 deepseek-harness / agent-reach
+
+- **意图：** 接入 Tencent/BrowserSkill；步骤 2.5：GitHub + 商店扩展 + npm dsh 插件均已发布。
+- **关键页：** [browserskill](wiki/entities/browserskill.md)
+
 ## [2026-09-20] ingest | sources/repos/laya.md — Laya System 1 决策引擎（Apache 2.0 自托管）；交叉 typesafe-jev / agent 编排
 
 - **意图：** 接入 Convai Laya 开源仓库；步骤 2.5：GitHub + HF 权重 + PyPI 均已发布。

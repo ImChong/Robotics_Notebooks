@@ -10,6 +10,7 @@ tags:
 status: complete
 date: 2026-05-21
 related:
+  - ./browserskill.md
   - ./caveman.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
