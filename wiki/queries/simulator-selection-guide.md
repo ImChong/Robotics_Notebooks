@@ -2,15 +2,17 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl, omnisim]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+  - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
   - ../../sources/papers/adams_orlandea_primary_refs.md
   - ../../sources/repos/omnisim.md
 related:
+  - ../concepts/robot-simulation-three-layers.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/mujoco-playground.md
@@ -75,7 +77,7 @@ related:
 
 ## 训练栈分层（补充视角）
 
-本页下文仍是 **MuJoCo / Isaac Lab / Genesis 三选一** 的经典对比。若问题变成「为什么已有 Isaac Lab 和 MuJoCo 还会出现 mjlab、Newton、UniLab、Genesis World」，应优先读 [训练栈分层技术地图](../overview/robot-training-stack-layers-technology-map.md)：**六层互补**（大平台 / 物理 sim2sim / 任务入口 / 异构运行时 / 底层连接器 / 闭环评估），竞争焦点在 **整条闭环返工成本** 而非单一峰值 FPS。若需理解 **2010–2023 代表性平台史**（MuJoCo → BEHAVIOR-1K），见 [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)。
+本页下文仍是 **MuJoCo / Isaac Lab / Genesis 三选一** 的经典对比。入门可先读 [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md)（物理 / 平台 / 学习框架 + Sim2Real 三问）。若问题变成「为什么已有 Isaac Lab 和 MuJoCo 还会出现 mjlab、Newton、UniLab、Genesis World」，应优先读 [训练栈分层技术地图](../overview/robot-training-stack-layers-technology-map.md)：**六层互补**（大平台 / 物理 sim2sim / 任务入口 / 异构运行时 / 底层连接器 / 闭环评估），竞争焦点在 **整条闭环返工成本** 而非单一峰值 FPS。若需理解 **2010–2023 代表性平台史**（MuJoCo → BEHAVIOR-1K），见 [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)。
 
 | 层 | 代表 | 与本页三选关系 |
 |----|------|----------------|

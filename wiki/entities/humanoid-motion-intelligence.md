@@ -18,6 +18,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/humanoid-locomotion.md
   - ../concepts/motion-retargeting.md
+  - ../concepts/robot-simulation-three-layers.md
   - ../concepts/sim2real.md
   - ../methods/vla.md
   - ../entities/awesome-text-to-motion-zilize.md
@@ -25,6 +26,7 @@ related:
   - ../../roadmap/motion-control.md
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
   - ../../sources/blogs/wechat_embodied_ai_lab_30_papers_humanoid_motion_control_2026-09-18.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
