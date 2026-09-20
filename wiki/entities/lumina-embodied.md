@@ -2,8 +2,9 @@
 type: entity
 tags: [community, embodied-ai, lumina, talks, curation, jobs, isaac-sim, vla]
 status: complete
-updated: 2026-08-08
+updated: 2026-09-20
 related:
+  - ../overview/embodied-ai-guide-wechat-album-curator.md
   - ./embodied-interview-qa.md
   - ./waytoagi.md
   - ./robotwin.md
@@ -17,6 +18,7 @@ sources:
   - ../../sources/sites/lumina-embodied-ai.md
   - ../../sources/repos/lumina-eai.md
   - ../../sources/repos/embodied-ai-guide.md
+  - ../../sources/raw/wechat_lumina_embodied_practice_album_4608355279393816579.md
 summary: "Lumina 具身智能社区（lumina-embodied.ai）是中文具身研究者维护的门户：Talks/Events、Embodied-AI-Guide 与 Isaac Sim 教程、Lumina Call 招聘，以及 EAI-100 策展；本页作社区导航锚点，不替代论文与开源栈的结构化编译。"
 ---
 

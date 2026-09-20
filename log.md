@@ -1,3 +1,8 @@
+## [2026-09-20] ingest | sources/raw/wechat_lumina_embodied_practice_album_4608355279393816579.md — Lumina 微信专辑 5 篇（LLM 规划/Code-as-Policy/VLA 综述×2/DP）；新建策展索引 + 13 个缺失 paper 实体，已有页只回链
+
+- **意图：** 专辑 4608355279393816579 全篇入库；正文 CAPTCHA，对照 Embodied-AI-Guide algorithm.md §3–§5。
+- **关键页：** [embodied-ai-guide-wechat-album-curator](wiki/overview/embodied-ai-guide-wechat-album-curator.md)；新增 SayCan/VoxPoser/LLM+P/CogACT/SpatialVLA/RDT-1B 等实体。
+
 ## [2026-09-20] ingest | sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md — SD-AMP（arXiv:2605.18611，HKU）PPO+双判别器重力门控；开源结论：官方未发布，第三方 AMP_mjlab 单判别器工程对照；刷新 paper-unified-walk-run-recovery-sdamp
 
 - **意图：** 用户指定 ingest；步骤 2.5 再核 arXiv 无官方 code，明确 AMP_mjlab 边界。

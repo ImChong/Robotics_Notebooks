@@ -47,6 +47,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/unitree-g1.md": "宇树 G1 人形机器人（Unitree G1）",
     "wiki/methods/behavior-cloning.md": "行为克隆（Behavior Cloning, BC）",
     "wiki/tasks/manipulation.md": "操作（Manipulation）",
+    "wiki/tasks/bimanual-manipulation.md": "双臂协调操作（Bimanual Manipulation）",
     "wiki/tasks/teleoperation.md": "遥操作（Teleoperation）",
     "wiki/tasks/loco-manipulation.md": "移动操作（Loco-Manipulation, Loco-Manip）",
     "wiki/overview/bfm-41-papers-technology-map.md": (
