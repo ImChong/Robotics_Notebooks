@@ -31,7 +31,7 @@ related:
   - ./paper-humanoidvln.md
   - ./paper-fail-passive-gap.md
   - ./paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
-  - ../roadmaps/humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
   - ./paper-umr-unified-motion-retargeting.md
   - ./paper-pgmt.md
   - ./paper-tango-vla.md
@@ -136,7 +136,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [CLAW (宇树 G1 全身动作数据生成管线)](../methods/claw.md)
 - [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 在 G1 上做接触丰富双臂任务的闭环迭代微调（装箱 / 插杯 / 双臂交接）
 - [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — G1 上 3DGS 合成 loco-manip VLA 数据（arXiv:2606.01458）
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 - [ExoActor](../methods/exoactor.md) — G1 上的视频生成驱动的零样本交互控制系统。
 - [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) — G1 机载深度零样本躲避球（CBF-RL，19/20）
 - [BifrostUMI（论文实体）](./paper-bifrost-umi.md) — 无机器人示范 + SKR + WBC 的全身 visuomotor 管线。

@@ -98,7 +98,7 @@
 ## 对 wiki 的映射
 
 - [humanoid-practitioner-entry-roadmap](../../wiki/roadmaps/humanoid-practitioner-entry-roadmap.md)（本次升格主页面）
-- [humanoid-control-roadmap](../../wiki/roadmaps/humanoid-control-roadmap.md)（算法/运控向互补路线）
+- [运动控制主路线](../../roadmap/motion-control.md)（算法/运控向互补路线）
 - [humanoid-mass-production-engineering](../../wiki/concepts/humanoid-mass-production-engineering.md)（制造/量产姊妹页）
 - [depth-humanoid-hardware-design](../../roadmap/depth-humanoid-hardware-design.md)（整机硬件纵深）
 - [humanoid-hardware-101-technology-map](../../wiki/overview/humanoid-hardware-101-technology-map.md)（七类子系统地图）
@@ -110,7 +110,7 @@
 ## 可信度与使用边界
 
 - 第三方工程叙事；岗位名称与行业阶段会随企业组织变化；市场出货量/成本数字受口径影响，个人选型应观察真实产品、客户场景与工程团队稳定性。
-- 与 [humanoid-control-roadmap](../../wiki/roadmaps/humanoid-control-roadmap.md) 分工：本归档偏 **机械/测试/制造/应用工程** 等非算法主线的入场；运控算法工程师请走控制路线。
+- 与[运动控制主路线](../../roadmap/motion-control.md) 分工：本归档偏 **机械/测试/制造/应用工程** 等非算法主线的入场；运控算法工程师请走控制路线。
 
 ## 当前提炼状态
 

@@ -827,8 +827,6 @@ def build_item(path: Path) -> dict[str, Any]:
         if len(parts) >= 3 and parts[1] == "modules":
             item["node_kind"] = "module"
             item["layer"] = parts[2]
-        elif path.name == "dependency-graph.md":
-            item["node_kind"] = "dependency_graph"
         elif path.name == "overview.md":
             item["node_kind"] = "overview"
         else:
@@ -855,7 +853,6 @@ def collect_paths() -> List[Path]:
         "references/repos/*.md",
         "references/benchmarks/*.md",
         "tech-map/overview.md",
-        "tech-map/dependency-graph.md",
         "tech-map/modules/*/*.md",
         "tech-map/research-directions/*.md",
     ]
@@ -1024,7 +1021,6 @@ def build_site_data(items: List[Dict]) -> Dict:
     tech_map_page = {
         "graph_meta": {
             "overview_id": "tech-node-overview",
-            "dependency_graph_id": "tech-node-dependency-graph",
         },
         "nodes": [
             {

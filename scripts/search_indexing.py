@@ -248,7 +248,6 @@ def iter_searchable_paths() -> List[Path]:
         "references/repos/*.md",
         "references/benchmarks/*.md",
         "tech-map/overview.md",
-        "tech-map/dependency-graph.md",
         "tech-map/modules/*/*.md",
         "tech-map/research-directions/*.md",
     ]

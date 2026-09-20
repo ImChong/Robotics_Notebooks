@@ -9,7 +9,7 @@ code: https://github.com/purdue-tracelab/Humanoid-Locomotion-Survey
 summary: "Science Robotics Review：六十年人形 locomotion 控制三时代（经典模型/优化→大规模仿真 RL→生成式智能），统一 System1/2 双层视图与 physics-guided generative intelligence 方向；280 引用 companion 已开源。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
-  - ../roadmaps/humanoid-control-roadmap.md
+  - ../../roadmap/motion-control.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
@@ -60,7 +60,7 @@ sources:
 
 - **人形控制「总综述」锚点：** 相对 [Legged robots advances & challenges](./paper-legged-robots-advances-challenges.md) 的 **硬件–自主–伦理五柱**，本篇 **聚焦 locomotion 控制范式史** 与 **方法族地图**，适合作为 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的 **SciRobotics 正式入口**。
 - **三时代框架可教学：** 把「经典栈没死，只是进了 simulator/reward」讲清楚，避免 **RL 取代物理** 或 **物理否定 learning** 的二元叙事。
-- **实践向 getting-started：** 文内列 **开源/商业硬件**、**OCS2/Isaac Lab/MJLab** 工具链与 **七步 RL 进度表**，可直接挂接 [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)。
+- **实践向 getting-started：** 文内列 **开源/商业硬件**、**OCS2/Isaac Lab/MJLab** 工具链与 **七步 RL 进度表**，可直接挂接 [运动控制主路线](../../roadmap/motion-control.md)。
 - **开放问题对齐部署：** 安全/recovery 测试、成本可及性、loco-manipulation 与 **双层 cognitive–motor hierarchy** 与当前产业痛点一致。
 
 ## 核心原理
@@ -127,7 +127,7 @@ flowchart LR
 | [Legged robots advances & challenges](./paper-legged-robots-advances-challenges.md) | 同刊 SciRobotics 2026 **腿式总览**（人形+四足+政策）；本篇 **深潜 humanoid locomotion 控制** |
 | [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) | 本库 **42 篇 RL 综述** 坐标；本篇 **期刊级正式 Review + 280 refs** |
 | [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md) | 专精 **AMP 横切面**；本篇 **全范式史**（含经典 MPC/HZD） |
-| [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) | 学习 **路径**；本篇 **文献史 + 原则** |
+| [运动控制主路线](../../roadmap/motion-control.md) | 学习 **路径**；本篇 **文献史 + 原则** |
 
 ## 结论
 
@@ -135,7 +135,7 @@ flowchart LR
 
 - **入门读法：** DOI 摘要 → GitHub PDF → 按所处时代跳 **Modeling** 或 **Learning from simulation** 阅读列表。
 - **经典栈未过时：** OCS2/acados + MPC/WBC 仍是 **System 1 实时层** 主流；RL 多占 **仿真预训练 + 残差/跟踪** 层。
-- **RL 七步路线：** 文内 Isaac Lab 进度表可对齐 [roadmap](../roadmaps/humanoid-control-roadmap.md) 阶段二–三。
+- **RL 七步路线：** 文内 Isaac Lab 进度表可对齐[主路线](../../roadmap/motion-control.md) L5 的 RL 与 sim2real 层。
 - **生成式时代：** world model / diffusion 进 **Emerging**；部署前仍缺 **可靠性标准**（文内强调 recovery/impact 测试）。
 - **硬件选型：** 开源（Berkeley Humanoid、ToddlerBot）vs 商业（[Unitree G1](./unitree-g1.md) 等）决定 **复现 vs 产能** 权衡。
 - **勿混淆官方与伴侣站：** [locomotion.html](https://thejerrycheng.github.io/locomotion.html) 便于 **检索 280 refs**，引用仍以 **DOI + companion** 为准。
@@ -165,7 +165,7 @@ flowchart LR
 ## 关联页面
 
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 - [Humanoid Locomotion 任务](../tasks/humanoid-locomotion.md)
 - [Legged robots advances & challenges](./paper-legged-robots-advances-challenges.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)

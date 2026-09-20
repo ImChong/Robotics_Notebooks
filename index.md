@@ -142,7 +142,6 @@
 回答"模块之间是什么关系"。
 
 - [技术栈模块总览](tech-map/overview.md)
-- [模块依赖关系图](tech-map/dependency-graph.md)
 
 ### references/ — 论文导航
 按主题整理的论文列表，补充 wiki 的深度阅读需求。

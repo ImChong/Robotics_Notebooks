@@ -134,7 +134,7 @@
   "path": "roadmap/motion-control.md",
   "summary": "从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。",
   "tags": ["roadmap", "motion-control", "humanoid"],
-  "related": ["wiki-roadmaps-humanoid-control-roadmap"],
+  "related": ["wiki-entities-modern-robotics-book"],
   "source_links": [],
   "status": "active",
   "stages": [
@@ -231,7 +231,7 @@
   "id": "tech-node-centroidal-dynamics",
   "type": "tech_map_node",
   "title": "Centroidal Dynamics",
-  "path": "tech-map/dependency-graph.md",
+  "path": "tech-map/overview.md",
   "summary": "机器人整体质心与动量的中层建模模块。",
   "tags": ["tech-map", "control", "dynamics"],
   "related": ["wiki-concepts-centroidal-dynamics"],
@@ -312,7 +312,7 @@ roadmap/motion-control.md
 references/papers/locomotion-rl.md
 → reference-papers-locomotion-rl
 
-tech-map/dependency-graph.md 中的节点“Centroidal Dynamics”
+tech-map/overview.md 中的节点“Centroidal Dynamics”
 → tech-node-centroidal-dynamics
 ```
 

@@ -38,7 +38,7 @@
 - [Imitation Learning](../methods/imitation-learning.md)
 
 ## 推荐继续阅读
-- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
 ```
 
 ## source 到 wiki 的关系

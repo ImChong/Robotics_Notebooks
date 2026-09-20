@@ -116,7 +116,7 @@ ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现�
 - [Sim2Real](../../../wiki/concepts/sim2real.md)
 - [仿真（系统集成层）](./simulation.md)
 - [部署](./deployment.md)
-- [模块依赖关系图](../../dependency-graph.md)
+- [运动控制主路线](../../../roadmap/motion-control.md) — 控制主干的学习先后顺序
 
 ## 难度 / 优先级
 

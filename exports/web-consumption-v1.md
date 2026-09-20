@@ -204,8 +204,7 @@
 ```json
 {
   "graph_meta": {
-    "overview_id": "tech-node-overview",
-    "dependency_graph_id": "tech-node-dependency-graph"
+    "overview_id": "tech-node-overview"
   },
   "nodes": [
     {
