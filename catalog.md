@@ -4253,6 +4253,7 @@
 - [Lyapunov 稳定性](wiki/formalizations/lyapunov.md) — Lyapunov 稳定性**：通过构造一个随系统状态变化的标量函数 $V(x)$ 来判断平衡点附近的误差是否收敛。对机器人控制来说，它回答的是："这个控制器不仅能把误差压小，而且能持续保持稳定吗？ `📅unknown` `[formalization_page]`
 - [Markov Decision Process (MDP)](wiki/formalizations/mdp.md) — 马尔可夫决策过程**：在离散时间步中，智能体根据当前状态选择动作，环境根据转移概率回应新状态和奖励的数学框架，是强化学习的理论基础。 `📅unknown` `[formalization_page]`
 - [Motion Retargeting Objective（动作重定向目标函数形式化）](wiki/formalizations/motion-retargeting-objective.md) — Motion Retargeting Objective** 是 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipe `📅unknown` `[formalization_page]`
+- [常微分方程求解决策链（ODE Solving Methods）](wiki/formalizations/ode-solving-methods.md) — 常微分方程（ODE）** 求解的难点通常不在「会不会套公式」，而在 **识别结构并选对路线**：解析法沿决策链归类（可分离、线性、恰当、降阶、常系数、Laplace…）；数值法则转向 **误差阶、 `📅unknown` `[formalization_page]`
 - [Partially Observable MDP (POMDP)](wiki/formalizations/pomdp.md) — 在真实的机器人应用中，我们永远无法获取完美的、全知全能的状态 $s$。传感器噪声、视觉遮挡和未知的物理参数使得系统处于**部分可观测 (Partial Observability)** 状态。 `📅unknown` `[formalization_page]`
 - [Probability Flow (概率流形式化)](wiki/formalizations/probability-flow.md) — 在具身智能的生成式动作建模（如 **π₀** 或 **Diffusion Policy**）中，**概率流 (Probability Flow)** 是连接噪声分布与真实动作分布的数学“传送带”。它将 `📅unknown` `[formalization_page]`
 - [Quadratic Programming（二次规划）](wiki/formalizations/quadratic-programming.md) — 二次规划（QP）**：目标为凸二次函数、约束为线性的优化问题；是 WBC、凸 MPC、控制分配与许多 TrajOpt 子步骤的统一数学形式。 `📅unknown` `[formalization_page]`

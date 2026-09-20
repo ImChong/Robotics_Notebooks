@@ -17,6 +17,7 @@ related:
   - ../entities/genesis-sim.md
   - ../entities/newton-physics.md
   - ../entities/humanoid-motion-intelligence.md
+  - ../formalizations/ode-solving-methods.md
 sources:
   - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
 summary: "机器人仿真按物理计算、场景平台、学习框架三层分工；选型须区分吞吐量与单步延迟、软接触与软体建模，并用 Sim2Real 三问与四问清单衡量真机价值而非峰值 FPS。"
@@ -52,7 +53,7 @@ summary: "机器人仿真按物理计算、场景平台、学习框架三层分�
 
 | 层次 | 主要处理什么 | 代表性工具 |
 |------|--------------|------------|
-| **① 物理计算** | 动力学、碰撞、接触、材料形变 | [MuJoCo](../entities/mujoco.md)、PhysX、[Newton](../entities/newton-physics.md)、[Genesis](../entities/genesis-sim.md) 内部求解器 |
+| **① 物理计算** | 动力学、碰撞、接触、材料形变；底层常归结为 **ODE/DAE 时间推进**（见 [ODE 求解决策链](../formalizations/ode-solving-methods.md)） | [MuJoCo](../entities/mujoco.md)、PhysX、[Newton](../entities/newton-physics.md)、[Genesis](../entities/genesis-sim.md) 内部求解器 |
 | **② 场景与系统仿真** | 机器人/物体、渲染、传感器、控制程序连接 | [Isaac Sim](../entities/isaac-sim.md)、Gazebo、SAPIEN、Genesis |
 | **③ 学习与任务组织** | 观测、动作、奖励、随机化、训练与评测 | [Isaac Lab](../entities/isaac-lab.md)、[mjlab](../entities/mjlab.md)、[MuJoCo Playground](../entities/mujoco-playground.md)、ManiSkill |
 
