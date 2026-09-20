@@ -9,151 +9,139 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-panogs-slam.md",
-      "detail_id": "entity-paper-panogs-slam",
-      "label": "PanoGS-SLAM（Panoramic 3D Gaussian Splatting SLAM）",
+      "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
+      "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
+      "label": "Validating robotics simulators on real-world impacts（FreeDof [21/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-decentralized-multi-humanoid-pickup.md",
-      "detail_id": "entity-paper-decentralized-multi-humanoid-pickup",
-      "label": "去中心化多人形搬运（arXiv:2609.17824）",
+      "path": "wiki/entities/paper-awesome-humanoid-robot-learning.md",
+      "detail_id": "entity-paper-awesome-humanoid-robot-learning",
+      "label": "Awesome Humanoid Robot Learning（FreeDof [44/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-dreaming-sound-of-contact.md",
-      "detail_id": "entity-paper-dreaming-sound-of-contact",
-      "label": "Dreaming the Sound of Contact（arXiv:2609.19137）",
+      "path": "wiki/entities/paper-epopt-robust-policies-model-ensembles.md",
+      "detail_id": "entity-paper-epopt-robust-policies-model-ensembles",
+      "label": "EPOpt: learning robust neural network policies using model ensembles（FreeDof [17/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-elastiqp.md",
-      "detail_id": "entity-paper-elastiqp",
-      "label": "ElastiQP（arXiv:2609.19080）",
+      "path": "wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md",
+      "detail_id": "entity-paper-erez-simulation-tools-comparison-icra-2015",
+      "label": "Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX（FreeDof [20/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-fetch-my-beer.md",
-      "detail_id": "entity-paper-fetch-my-beer",
-      "label": "Fetch My Beer（arXiv:2609.18119）",
+      "path": "wiki/entities/paper-eysenbach-off-dynamics-rl.md",
+      "detail_id": "entity-paper-eysenbach-off-dynamics-rl",
+      "label": "Off-dynamics reinforcement learning: training for transfer with domain classifiers（FreeDof [35/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-opendexgrasp.md",
-      "detail_id": "entity-paper-opendexgrasp",
-      "label": "OpenDexGrasp（arXiv:2609.18117）",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-pointzero.md",
-      "detail_id": "entity-paper-pointzero",
-      "label": "PointZero（arXiv:2609.19142）",
+      "path": "wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md",
+      "detail_id": "entity-paper-gautier-khalil-inertial-parameter-identification-1988",
+      "label": "On the identification of the inertial parameters of robots（FreeDof [02/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-robovad.md",
-      "detail_id": "entity-paper-robovad",
-      "label": "RoboVAD（arXiv:2609.17843）",
+      "path": "wiki/entities/paper-gevers-identification-information-matrix-2009.md",
+      "detail_id": "entity-paper-gevers-identification-information-matrix-2009",
+      "label": "Identification and the information matrix: how to get just sufficiently rich?（FreeDof [06/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-wave-go.md",
-      "detail_id": "entity-paper-wave-go",
-      "label": "WAVE-Go（arXiv:2609.18193）",
+      "path": "wiki/entities/paper-golemo-neural-augmented-robot-simulation.md",
+      "detail_id": "entity-paper-golemo-neural-augmented-robot-simulation",
+      "label": "Sim-to-real transfer with neural-augmented robot simulation（FreeDof [30/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/overview/constraint-control-11-papers-technology-map.md",
-      "detail_id": "wiki-overview-constraint-control-11-papers-technology-map",
-      "label": "约束冲突与可继续执行：11 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/queries/embodied-six-routes-survey-lineage.md",
-      "detail_id": "wiki-queries-embodied-six-routes-survey-lineage",
-      "label": "六条路线 × 12 篇综述：补课线，不是终局赌注",
-      "type": "query",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/retrieval-augmented-generation.md",
-      "detail_id": "wiki-concepts-retrieval-augmented-generation",
-      "label": "Retrieval-Augmented Generation（RAG，检索增强生成）",
-      "type": "concept",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/easy-vibe.md",
-      "detail_id": "entity-easy-vibe",
-      "label": "Easy-Vibe（Datawhale）",
+      "path": "wiki/entities/paper-kadian-sim2real-predictivity.md",
+      "detail_id": "entity-paper-kadian-sim2real-predictivity",
+      "label": "Sim2Real predictivity: does evaluation in simulation predict real-world performance?（FreeDof [38/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/learnprompt.md",
-      "detail_id": "entity-learnprompt",
-      "label": "LearnPrompt",
+      "path": "wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md",
+      "detail_id": "entity-paper-khosla-robot-dynamics-parameter-identification-1985",
+      "label": "Parameter identification of robot dynamics（FreeDof [01/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/painode-176-attentionbasedmapencodingforgen.md",
-      "detail_id": "entity-painode-176-attentionbasedmapencodingforgen",
-      "label": "Attention-Based Map Encoding for Generalized Legged Locomotion",
+      "path": "wiki/entities/paper-kovalev-differentiable-simulation-locomotion-sysid.md",
+      "detail_id": "entity-paper-kovalev-differentiable-simulation-locomotion-sysid",
+      "label": "Achieving precise and reliable locomotion with differentiable simulation-based system identification（FreeDof [07/44]）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-le-lidec-contact-models-comparative-analysis.md",
+      "detail_id": "entity-paper-le-lidec-contact-models-comparative-analysis",
+      "label": "Contact models in robotics: a comparative analysis（FreeDof [22/44]）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-muratore-bayesian-optimization-domain-randomization.md",
+      "detail_id": "entity-paper-muratore-bayesian-optimization-domain-randomization",
+      "label": "Data-efficient domain randomization with Bayesian optimization（FreeDof [15/44]）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md",
+      "detail_id": "entity-paper-pai-1808-00177-learningdexterousinhandmanipulat",
+      "label": "Learning Dexterous In-Hand Manipulation (OpenAI)",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -162,20 +150,9 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/overview/awesome-physical-ai-technology-map.md",
-      "detail_id": "wiki-overview-awesome-physical-ai-technology-map",
-      "label": "Awesome Physical AI 技术地图",
-      "type": "overview",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-001-2025gspaperlist.md",
-      "detail_id": "entity-painode-001-2025gspaperlist",
-      "label": "2025 GS Paper List",
+      "path": "wiki/entities/paper-pai-1906-01728-bayessim.md",
+      "detail_id": "entity-paper-pai-1906-01728-bayessim",
+      "label": "BayesSim",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -184,9 +161,9 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/painode-002-awesome3dgaussiansplatting.md",
-      "detail_id": "entity-painode-002-awesome3dgaussiansplatting",
-      "label": "Awesome 3D Gaussian Splatting",
+      "path": "wiki/entities/paper-pai-1910-13325-simopt.md",
+      "detail_id": "entity-paper-pai-1910-13325-simopt",
+      "label": "SimOpt",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -195,37 +172,55 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/painode-003-depthanything.md",
-      "detail_id": "entity-painode-003-depthanything",
-      "label": "Depth Anything",
+      "path": "wiki/entities/paper-peng-dynamics-randomization-sim2real.md",
+      "detail_id": "entity-paper-peng-dynamics-randomization-sim2real",
+      "label": "Sim-to-real transfer of robotic control with dynamics randomization（FreeDof [10/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/painode-004-groundedsam2.md",
-      "detail_id": "entity-painode-004-groundedsam2",
-      "label": "Grounded SAM 2",
+      "path": "wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md",
+      "detail_id": "entity-paper-polysim-multi-simulator-humanoid-sim2real",
+      "label": "PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization（FreeDof [19/44]）",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rapt-sim2real-ood-detection.md",
+      "detail_id": "entity-paper-rapt-sim2real-ood-detection",
+      "label": "RAPT: model-predictive out-of-distribution detection and failure diagnosis for sim-to-real humanoid deployment（FreeDof [37/44]）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rarl-robust-adversarial-rl.md",
+      "detail_id": "entity-paper-rarl-robust-adversarial-rl",
+      "label": "Robust adversarial reinforcement learning（FreeDof [18/44]）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-panogs-slam.md",
-    "detail_id": "entity-paper-panogs-slam",
-    "label": "PanoGS-SLAM（Panoramic 3D Gaussian Splatting SLAM）",
+    "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
+    "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
+    "label": "Validating robotics simulators on real-world impacts（FreeDof [21/44]）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
