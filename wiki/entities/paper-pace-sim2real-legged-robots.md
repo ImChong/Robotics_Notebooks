@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, sim2real, system-identification, actuator, locomotion, isaac-lab, anymal, quadruped, energy-efficiency, eth, ppo]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2509.06342"
 venue: IJRR (submitted)
 code: https://github.com/leggedrobotics/pace-sim2real
@@ -22,10 +22,13 @@ related:
   - ./paper-notebook-sampling-based-system-identification-with-active.md
   - ./robotic-world-model-eth-rsl.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/pace_sim2real_arxiv_2509_06342.md
   - ../../sources/repos/pace-sim2real.md
   - ../../sources/sites/pace-filipbjelonic-com.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "ETH RSL 的 PACE：chirp 悬空数据 + CMA-ES 辨识紧凑关节动力学，再以 PMSM 物理能量四项 reward 在 Isaac Lab 盲训 locomotion 并零样本上真机；ANYmal CoT 1.27（−32%），无需动力学 DR。"
 ---
 

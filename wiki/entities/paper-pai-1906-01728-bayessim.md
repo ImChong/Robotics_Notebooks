@@ -10,11 +10,14 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/pai_awesome_1906_01728_bayessim.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
   - ../../sources/repos/awesome-physical-ai-aichr.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 ---
 
 # BayesSim

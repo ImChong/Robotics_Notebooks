@@ -4,7 +4,7 @@ type: entity
 tags: [humanoid, reinforcement-learning, sim2real, legged, digit, pd-control, berkeley]
 status: stable
 summary: "UC Berkeley：全尺寸 Digit 人形上大规模并行 RL + 因果 Transformer 策略，零样本户外行走与 sim2real 流水线（含关节 PD 部署链）。"
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2303.03381"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
@@ -12,8 +12,11 @@ related:
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../entities/legged-gym.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 ---
 
 # Real-World Humanoid Locomotion with Reinforcement Learning（Digit）

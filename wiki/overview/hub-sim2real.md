@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-sim2real, deployment, domain-randomization, transfer]
 status: complete
-updated: 2026-09-11
+updated: 2026-09-20
 summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 concepts/sim2real，本页仅作知识链导航。"
 ---
 
@@ -41,6 +41,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 | 方法 | 域随机化 | [Domain Randomization](../concepts/domain-randomization.md) |
 | 对比 | 迁移路线选型 | [Sim2Real Approaches](../comparisons/sim2real-approaches.md) |
 | 对比 | 四条路线（可辨识性轴） | [Sim2Real Four Routes](../comparisons/sim2real-four-routes-identifiability.md) |
+| 文献索引 | FreeDof 44 篇参考文献 | [Sim2Real 44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) |
 | 对比 | 残差 vs Real2Sim vs 真机 RL | [Sim2Real vs Real2Sim Fine-Tuning](../comparisons/sim2real-vs-real2sim-fine-tuning.md) |
 | 工程 | 部署清单 | [Sim2Real Checklist](../queries/sim2real-checklist.md)（含快速部署检查） |
 | 工程 | 闭环误差分层 | [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) |

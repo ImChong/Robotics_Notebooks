@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, residual-learning, reinforcement-learning, td3, manipulation, assembly, real-world-rl, siemens, berkeley]
 status: complete
-updated: 2026-07-28
+updated: 2026-09-20
 arxiv: "1812.03201"
 related:
   - ../methods/residual-policy-learning.md
@@ -11,9 +11,12 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/contact-rich-manipulation.md
   - ./paper-reskill-residual-skill-policies.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/personal/residual-policy-reading-list.md
   - ../../sources/sites/residualrl-github-io.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "Residual Reinforcement Learning for Robot Control（ICRA 2019，Siemens/UC Berkeley/Hamburg TU）：u=π_H(s_m)+π_θ(s_m,s_o)，传统反馈控制器打底、TD3 残差处理接触与摩擦；Sawyer 真机积木插入约 3 小时学会，初姿扰动下 15/20 vs 手工控制器 2/20；官方代码未开源。"
 ---
 

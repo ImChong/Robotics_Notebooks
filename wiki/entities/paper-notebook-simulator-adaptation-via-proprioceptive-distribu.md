@@ -2,13 +2,16 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2604.11090"
 related:
   - ../overview/paper-notebook-category-10-sim-to-real.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_pnb_simulator-adaptation-via-proprioceptive-distribu.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "仿真训出来的腿足策略一上真机就掉点，根源是仿真与真实动力学有偏差。常见做法是去改策略（域随机化、在线适配），本文反其道：去改仿真器——让仿真更像真机，再在校准后的仿真里训策略就能直接迁移。难点在于「怎么衡量仿真像不像真机」：传统做法要逐时刻对齐轨迹，依赖动捕/特权传感、对时间对齐敏感。本文提出本体感知分布匹配（Proprioceptive Distribution Matching）：把真机与仿真各自跑一段，只看「关节观测 + 动作」的统计分布像不像，无需时间对齐、无需外部传感。用黑盒优化在这个分布距离上辨识仿真参数（或学习 action-delta / 残差执行器模型），不到 5 分钟真机数据就能显著降低漂移，效果可比肩用特权状态对齐的基线。"
 ---
 

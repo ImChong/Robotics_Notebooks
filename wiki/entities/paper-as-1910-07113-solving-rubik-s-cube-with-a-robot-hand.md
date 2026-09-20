@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "1910.07113"
 venue: "CoRR"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。 本页为策展索引级节点，细节以原文为准。"
@@ -13,10 +13,13 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/lc_awesome_sim2real_1910_07113_solving-rubik-s-cube-with-a-robot-hand.md
   - ../../sources/papers/lc_awesome_sim2real_catalog.md
   - ../../sources/repos/awesome-sim2real.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 ---
 
 # Solving Rubik's Cube with a Robot Hand

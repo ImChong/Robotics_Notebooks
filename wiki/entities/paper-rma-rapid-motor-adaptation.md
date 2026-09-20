@@ -9,7 +9,7 @@ tags:
   - privileged-training
   - online-adaptation
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2107.04034"
 venue: "RSS 2021"
 related:
@@ -22,11 +22,14 @@ related:
   - ./unitree.md
   - ./extreme-parkour.md
   - ./paper-legged-load-adapt-unknown-dynamic-load.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/rma_arxiv_2107_04034.md
   - ../../sources/sites/rma-legged-robots-github-io.md
   - ../../sources/repos/antonilo_rl_locomotion.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "RMA（RSS 2021）：特权环境 extrinsics 训练 base policy，历史本体–动作监督训练 adaptation module；A1 异步 10/100 Hz 零微调部署，秒级适应变地形与载荷。"
 tags: [quadruped, reinforcement-learning, locomotion, sim2real, privileged-training, online-adaptation, berkeley, cmu]
 

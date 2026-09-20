@@ -2,7 +2,7 @@
 
 ## [2026-09-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **45** 条信息型预警）：
+共发现 **0** 个问题（另含 **75** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -108,11 +108,38 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（6 个）
+- wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md
+- wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md
+- wiki/entities/paper-gevers-identification-information-matrix-2009.md
+- wiki/entities/paper-golemo-neural-augmented-robot-simulation.md
+- wiki/entities/paper-kadian-sim2real-predictivity.md
+- wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（24 个）
+- wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md（缺 评测 / 对比）
+- wiki/entities/paper-awesome-humanoid-robot-learning.md（缺 评测 / 对比）
+- wiki/entities/paper-epopt-robust-policies-model-ensembles.md（缺 评测 / 对比）
+- wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md（缺 评测 / 对比）
+- wiki/entities/paper-eysenbach-off-dynamics-rl.md（缺 评测 / 对比）
+- wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md（缺 评测 / 对比）
+- wiki/entities/paper-gevers-identification-information-matrix-2009.md（缺 评测 / 对比）
+- wiki/entities/paper-golemo-neural-augmented-robot-simulation.md（缺 评测 / 对比）
+- wiki/entities/paper-kadian-sim2real-predictivity.md（缺 评测 / 对比）
+- wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md（缺 评测 / 对比）
+- wiki/entities/paper-kovalev-differentiable-simulation-locomotion-sysid.md（缺 评测 / 对比）
+- wiki/entities/paper-le-lidec-contact-models-comparative-analysis.md（缺 评测 / 对比）
+- wiki/entities/paper-muratore-bayesian-optimization-domain-randomization.md（缺 评测 / 对比）
+- wiki/entities/paper-peng-dynamics-randomization-sim2real.md（缺 评测 / 对比）
+- wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md（缺 评测 / 对比）
+- wiki/entities/paper-rapt-sim2real-ood-detection.md（缺 评测 / 对比）
+- wiki/entities/paper-rarl-robust-adversarial-rl.md（缺 评测 / 对比）
+- wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md（缺 评测 / 对比）
 - wiki/entities/paper-skyfall-gs.md（缺 对比）
+- wiki/entities/paper-smith-legged-robots-keep-learning.md（缺 评测 / 对比）
+- wiki/entities/paper-splatsim-gaussian-splatting-sim2real.md（缺 评测 / 对比）
+- wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md（缺 评测 / 对比）
+- wiki/entities/paper-up-osi-universal-policy-online-sysid.md（缺 评测 / 对比）
 - wiki/entities/paper-vidu-s2.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
@@ -142,7 +169,7 @@
 - wiki/concepts/humanoid-cognitive-reliability-gap.md
 - wiki/concepts/retrieval-augmented-generation.md
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（12 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（13 个）
 - wiki/entities/painode-009-alfred.md
 - wiki/entities/painode-010-arnold.md
 - wiki/entities/painode-011-carlaleaderboard.md
@@ -154,14 +181,16 @@
 - wiki/entities/painode-023-teach.md
 - wiki/entities/painode-024-vlabench.md
 - wiki/entities/paper-bench2dex.md
+- wiki/entities/paper-kadian-sim2real-predictivity.md
 - wiki/entities/paper-robovad.md
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-mechanical-intelligence-info-theory.md
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（3 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（4 个）
 - wiki/entities/paper-leap-quadruped-active-perception.md
 - wiki/entities/paper-pose-semantic-legged-exploration.md
+- wiki/entities/paper-rapt-sim2real-ood-detection.md
 - wiki/entities/paper-robovad.md
 
-📊 Sources 覆盖率：4583/4583 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4606/4606 (100%) wiki/entity 页有 ingest 来源

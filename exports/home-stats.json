@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4611,
-  "edge_count": 40425,
+  "node_count": 4634,
+  "edge_count": 40567,
   "coverage": {
-    "covered": 4583,
-    "total": 4583,
+    "covered": 4606,
+    "total": 4606,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -230,15 +230,15 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 751
+      "size": 753
     },
     {
       "label": "操作",
-      "size": 650
+      "size": 642
     },
     {
       "label": "仿真到现实",
-      "size": 307
+      "size": 331
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -249,8 +249,8 @@
       "size": 250
     },
     {
-      "label": "全身控制",
-      "size": 203
+      "label": "具身评测基准选型闭环",
+      "size": 193
     }
   ],
   "top_hubs": [
@@ -289,7 +289,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 962,
+      "degree": 985,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

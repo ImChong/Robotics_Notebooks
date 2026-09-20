@@ -2,13 +2,16 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "1901.08652"
 related:
   - ../overview/paper-notebook-category-03-high-impact-selection.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_pnb_learning-agile-and-dynamic-motor-skills-for-legg.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "把\"电机 + 减速箱 + 控制器 + 通信延迟\"全部用一个 LSTM 致动器网络（actuator network） 离线辨识，然后在 RaiSim 里以神经网络代替传统刚体力学做高速 RL 训练，最终把策略零样本搬到 ANYmal 上，让它能跟随速度指令、奔跑（最高 1.5 m/s，比厂家 MPC 快 25%）以及从任意倒地姿态自主翻身爬起——首次系统性证明 sim-to-real RL 可以在真实四足上稳定落地。"
 ---
 
