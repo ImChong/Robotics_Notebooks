@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, autonomous-driving, motion-planning, end-to-end, vlm, bev, nuplan, long-tail, iclr2026, tsinghua, huawei, ucas, casia]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 venue: "ICLR 2026"
 openreview: TuU95FWkyH
 related:
@@ -15,7 +15,7 @@ related:
 sources:
   - ../../sources/papers/birdriver_iclr_2026.md
   - ../../sources/sites/birdriver-iclr-2026-proceedings.md
-summary: "BIRDriver（ICLR 2026）：单帧 BEV + Qwen2.5VL-3B 输出 ≤3 相对 key points，经 PLUTO 规划器闭环出轨迹；三任务加权 SFT 提升数值精度；InterPlan 长尾 SOTA；截至 2026-09-18 官方代码未发布。"
+summary: "BIRDriver（ICLR 2026）：单帧 BEV + Qwen2.5VL-3B 输出 ≤3 相对 key points，经 PLUTO 规划器闭环出轨迹；三任务加权 SFT 提升数值精度；InterPlan 长尾 SOTA；截至 2026-09-20 官方代码未发布。"
 ---
 
 # BIRDriver：BEV  informed 的 VLM 推理驾驶员
@@ -58,7 +58,7 @@ summary: "BIRDriver（ICLR 2026）：单帧 BEV + Qwen2.5VL-3B 输出 ≤3 相�
 | **VLM 基座** | Qwen2.5VL-3B（LoRA rank 16，8×H800，5 epoch） |
 | **规划基座** | [PLUTO](https://github.com/jchengai/pluto)（PointEncoder + 1M split 微调，8×4090） |
 | **数据** | 838,824 VLM 样本（Key Point : Spatial Loc : Scene Stepwise = **10:1:2**） |
-| **开源（截至 2026-09-18）** | **BIRDriver 确认未开源**；PLUTO 与 Qwen 权重可独立获取，**非完整复现栈** |
+| **开源（截至 2026-09-20）** | **BIRDriver 确认未开源**；PLUTO 与 Qwen 权重可独立获取，**非完整复现栈** |
 
 ## 核心原理
 
@@ -107,7 +107,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-18）：论文与 OpenReview **未发布** BIRDriver 官方仓库。放出后预期路径：nuPlan 场景 → BEV 渲染 → VLM 推理 key points → PLUTO 联合解码 → nuPlan 闭环仿真（CLS）。
+**不适用**（截至 2026-09-20）：论文、OpenReview 与 ICLR Proceedings **未发布** BIRDriver 官方仓库。放出后预期路径：nuPlan 场景 → BEV 渲染 → VLM 推理 key points → PLUTO 联合解码 → nuPlan 闭环仿真（CLS）。
 
 可独立对照的相邻开源栈：[jchengai/pluto](https://github.com/jchengai/pluto)（规划器基座）。
 
@@ -174,4 +174,4 @@ flowchart TB
 - [DriveVLM](./paper-drivevlm.md) — VLM waypoint + Dual 架构对照
 - [Senna](./paper-senna.md) — 语言决策与数值规划解耦
 - PLUTO 基座论文与代码：<https://github.com/jchengai/pluto>
-- OpenReview：<https://openreview.net/forum?id=TuU95FWkyH>
+- OpenReview：<https://openreview.net/forum?id=TuU95FWkyH> · [PDF](https://openreview.net/pdf?id=TuU95FWkyH)
