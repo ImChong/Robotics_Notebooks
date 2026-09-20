@@ -1,3 +1,5 @@
+## [2026-09-20] ingest | sources/papers/vidu_s2_arxiv_2609_11638.md — Vidu S2（arXiv:2609.11638）实时 Avatar/Editing + spatial video；Demo/API 可用、代码未开源；升格 paper-vidu-s2；交叉 GWM First-Principles
+
 ## [2026-09-20] ingest | sources/papers/skyfall_gs_arxiv_2510_15869.md — Skyfall-GS（ECCV 2026）卫星影像合成 city-block 3DGS；Stage 1 伪深度+外观 / Stage 2 IDU+FlowEdit；Apache 2.0 已开源；升格 paper-skyfall-gs；交叉 Real2Sim / GS-Playground
 
 ## [2026-09-20] ingest | sources/blogs/wechat_zanehub_joint_motor_topology_selection_2026-09-20.md — Zane Hub 无框/空心杯/轴向磁通关节电机选型；升格 wiki/queries/humanoid-joint-motor-topology-selection.md；交叉 joint-module-self-development-workflow / humanoid-hardware-101-integrated-actuators

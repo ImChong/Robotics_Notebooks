@@ -313,6 +313,8 @@ flowchart TB
 
 **文献实例（语义/像素分层记忆 · 多模态可控接口）**：[WorldScape Policy 2.0](../entities/paper-worldscape-policy-2.md) 把「历史」拆成两条互不混用的通路——**VLM 分支** 维护 **长短期事件记忆**（global-history / local-active / event-boundary 三视图 + 紧凑全历史 bank，按 \(1-\cos\) 语义变化自动选边界，无需在线标注），检索后经**逐 token 门控**融合进 4 个隐式规划 token；**causal DiT 分支** 只留近 **4 个 chunk** 干净 VAE latent 作视觉 prefill，目标图/演示视频则作 **rollout 全程持久前缀**。训练用 **semantic forcing**（T5 事件字幕做 stop-grad 语义靶，\(\lambda_s=0.001\)）把 `fine` 模式的显式语义搬进 `auto` 模式隐通路。配套 **ManipEvent-5M**（4.89M 事件段 / 744K episode / 512M 帧）做事件级预训练。RoboTwin 2.0 标准榜 **94.3%**（已饱和，对同档仅 +0.2~+0.7），但 **C2R OOD 协议 47.9%**（Fast-WAM 39.1）与真机视觉提示任务（叠积木目标图/演示视频 **60%/70%** vs \(\pi_{0.5}\) 10%/20%）差距显著；消融显示记忆三件套的增益主要落在 randomized（**+8.81**）而非 clean（+5.14）。代码与权重截至 2026-08 未发布（arXiv:2607.18840，Manifold AI / 清华 / 上交）。
 
+**文献实例（生数产品线 · L2 实时交互）**：[Vidu S2](../entities/paper-vidu-s2.md)（arXiv:2609.11638）分 **S2-Avatar**（720p 实时语音数字人）与 **S2-Editing**（流式四参考图编辑）；[Demo](https://vidu.com/vidu-stream) + API 可用，**代码未开源**——属 [GWM L2](../entities/paper-gwm-first-principles.md) 交互世界，非 WAM 动作输出。
+
 **文献实例（生数产品线 · GWM 自进化）**：[Motus2](../entities/paper-motus2.md) 在 Motus 共享 video–action 上暴露 **policy / simulator / evaluator** 三接口，以 **~130K h ego 人数据金字塔**、机端 mid-training 与 **DiffusionNFT MBRL + Best-of-N** 闭环灵巧双手真机（五任务宏平均 **84%**，MBRL+Planning **75%**）；轻量 tactile expert 与 global AR 记忆在同页验证。截至 2026-09-01 **未开源**。
 
 **文献实例（生数产品线）**：[Motubrain](../entities/paper-motubrain.md) 在 Motus 的 UniDiffuser video–action 上做三流 MoT 与真机工程，RoboTwin 2.0 报 **95.8 / 96.1**；异步 chunk 怎么切见同团队 [WAM 实时异步部署](../entities/paper-wam-realtime-async.md)（仓均为占位）。
