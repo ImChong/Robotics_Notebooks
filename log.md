@@ -1,3 +1,5 @@
+## [2026-09-20] ingest | sources/repos/easy-vibe.md — Datawhale Easy-Vibe 3+1 阶段教程入库，升格 wiki/entities/easy-vibe.md
+
 ## [2026-09-20] ingest | sources/papers/lewis_rag_neurips_2020.md + rag_survey — RAG 奠基论文与综述入库，升格 wiki/concepts/retrieval-augmented-generation.md
 
 ## [2026-09-20] ingest | sources/repos/awesome-physical-ai-natnew.md + awesome-physical-ai-aichr.md — 纵深节点化双清单并集；去重后 384 条独立详情节点（新建 241、复用 143，两清单交叉 33）。二次全库去重把 8 个误建索引页并回已有 canonical（H2O / ExBody / Nav2 / Pupper / Miki perceptive loco / Rapid Locomotion / OpenMANIPULATOR / DexUMI）。开源结论：清单仓已开源，条目级以各项目页为准（索引级未逐仓核）；关键页 wiki/overview/awesome-physical-ai-technology-map.md。无法消歧：Stanford RISELab URL→SKKU；Apollo Robot URL→apollo.auto；AME 清单 DOI adv5733 vs AME-1 eadv3604；Dex-UMI Benchmark 所列 arXiv:2602.16710 实为 EgoScale；Rapid Locomotion 所列 arXiv:2207.07802 实为人再识别论文，已按标题并入 Margolis 2205.02824。

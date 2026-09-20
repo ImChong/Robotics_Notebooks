@@ -458,6 +458,7 @@
 - [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是一个 **快速、轻量、可复现验证** 的机器人运动学与动 `📅unknown` `[entity_page]`
 - [Dyson CameraJet](wiki/entities/dyson-camerajet.md) — Dyson CameraJet™**（2026-09 发布，约 **$499**）是带 **100k 像素宏距口腔相机** 与 **Gap Optical Targeting™** 机器学习算法的 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
+- [Easy-Vibe（Datawhale）](wiki/entities/easy-vibe.md) — Easy-Vibe**（datawhalechina/easy-vibe）是 Datawhale 维护 `📅unknown` `[entity_page]`
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
 - [EgoSuite-Open100K](wiki/entities/egosuite-open100k.md) — EgoSuite-Open100K** 是 光轮智能（Lightwheel） 与 [Hugging Face](https://huggingf `📅2026-08-26` `[entity_page]`

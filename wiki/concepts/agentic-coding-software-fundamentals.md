@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-08-29
+updated: 2026-09-20
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身。吴恩达 AI Engineering Skills Map 把软件基础拆成全栈、数据、架构、安全可靠、生产运维五项。"
 related:
   - ../entities/mattpocock-skills.md
@@ -22,6 +22,7 @@ related:
   - ../methods/enpire.md
   - ../references/llm-wiki-karpathy.md
   - ../entities/learnprompt.md
+  - ../entities/easy-vibe.md
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
 ---

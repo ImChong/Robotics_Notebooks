@@ -22,6 +22,7 @@ related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
+  - ./easy-vibe.md
 sources:
   - ../../sources/repos/learnprompt.md
   - ../../sources/sites/learnprompt-pro.md
@@ -49,7 +50,7 @@ summary: "LearnPrompt 是 Carl（卡尔的 AI 沃茨）维护的永久免费开�
 ## 为什么重要（对本知识库读者）
 
 - **维护本库的「中文说明书」：** Robotics_Notebooks 采用 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) + [ingest/query/lint](../../schema/ingest-workflow.md)；LearnPrompt 的 **Obsidian AI** 与 **Agent Skills** 路径讲的就是 **Markdown 作 Agent 记忆、重复 ingest 流程写成 Skill** — 与本站 `AGENTS.md`、Cloud Agent、`make ci-preflight` 文化同向。
-- **Coding Agent 选型前的中文热身：** [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲 **取舍语言**；LearnPrompt **AI 编程 / Claude Code / Codex** 路径讲 **第一轮任务卡与审查** — 宜先建立交付习惯再读本站 [mattpocock/skills](mattpocock-skills.md)、[Superpowers](superpowers-obra.md) 等英文 skills 生态。
+- **Coding Agent 选型前的中文热身：** [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲 **取舍语言**；LearnPrompt **AI 编程 / Claude Code / Codex** 路径讲 **第一轮任务卡与审查** — 宜先建立交付习惯再读本站 [mattpocock/skills](mattpocock-skills.md)、[Superpowers](superpowers-obra.md) 等英文 skills 生态。[Easy-Vibe](easy-vibe.md) 则提供 **3 阶段产品/全栈课纲** 与 **游戏化 RAG 附录**，适合零基础快赢后再进 LearnPrompt 的 Harness/Skill 深路径。
 - **OpenClaw / Hermes 文档侧链：** 本站 [OpenClaw](openclaw.md)、[Hermes Agent](hermes-agent.md) 偏 **运行时角色与机器人交叉**；LearnPrompt [OpenClaw 架构导读](https://www.learnprompt.pro/agent-frameworks/openclaw-architecture-guide/) 补 **Gateway / Node / Channel 消息流** 中文 walkthrough。
 - **Skill 生态对照：** **鲁班**（skill 公共化打磨）vs [Nuwa Skill](nuwa-skill.md)（人物认知蒸馏）vs [Addy Osmani Agent Skills](agent-skills-addyosmani.md)（工程技能目录）；[andrej-karpathy-skills](https://github.com/LearnPrompt/andrej-karpathy-skills) 与 [Andrej Karpathy](andrej-karpathy.md) 实体页 **分层**：wiki 编译事实，skills 编译工作方法。
 
@@ -103,6 +104,7 @@ flowchart LR
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 工程技能目录
 - [Andrej Karpathy](andrej-karpathy.md) — andrej-karpathy-skills 人物源
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 取舍语言框架
+- [Easy-Vibe（Datawhale）](easy-vibe.md) — vibe coding 系统课与交互 RAG 附录
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
 ## 参考来源
