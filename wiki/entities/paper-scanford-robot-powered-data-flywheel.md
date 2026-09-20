@@ -9,7 +9,7 @@ tags:
   - stanford
   - toyota-research
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2511.19647"
 summary: "RPDF（arXiv:2511.19647）：野外部署机器人边执行任务边为 VLM 自动产标注数据；Scanford 两周扫 2103 书架，书识别 32%→71.8%、困难 OCR 显著提升；节省 18.7 h；截至入库日未开源。"
 related:

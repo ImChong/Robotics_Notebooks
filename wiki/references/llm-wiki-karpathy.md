@@ -6,6 +6,7 @@ sources:
   - ../../sources/blogs/karpathy_llm_wiki_gist.md
   - ../../sources/sites/karpathy-ai.md
 related:
+  - ../concepts/retrieval-augmented-generation.md
   - ../entities/paper-wikiskill.md
   - ../entities/ponytail.md
   - ../entities/nuwa-skill.md
@@ -16,7 +17,7 @@ related:
   - ../entities/understand-anything.md
   - ../overview/robot-learning-overview.md
 summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: 2026-09-15
+updated: 2026-09-20
 ---
 
 # LLM Wiki
@@ -28,7 +29,7 @@ updated: 2026-09-15
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | LLM | Large Language Model | 负责读源、写 wiki、交叉引用与 lint 的维护代理 |
-| RAG | Retrieval-Augmented Generation | 查询时检索片段再生成；本模式强调 **预编译 wiki** 优于纯 RAG |
+| RAG | Retrieval-Augmented Generation | 查询时检索片段再生成；详见 [RAG 概念页](../concepts/retrieval-augmented-generation.md)；本模式强调 **预编译 wiki** 优于纯 RAG |
 | BM25 | Best Matching 25 | 经典稀疏检索；Gist 推荐 qmd 等 hybrid BM25/vector 检索 wiki |
 | MCP | Model Context Protocol | 代理工具协议；qmd 等可提供 MCP 供 LLM 原生搜索 wiki |
 
