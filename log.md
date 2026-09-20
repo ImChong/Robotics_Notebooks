@@ -1,3 +1,9 @@
+## [2026-09-20] ingest | sources/sites/bench2dex-github-io.md + handedit.github.io — Bench2Dex / HandEdit 项目页核查；开源结论：均已发布代码与数据/评测；升格/刷新 paper-bench2dex、新建 paper-handedit
+
+- **意图：** 步骤 2.5 核查两项目页；Bench2Dex 从「待发布」更正为已开源（GitHub + HF/ModelScope）；HandEdit 新建完整 ingest。
+- **开源结论：** Bench2Dex 训练/遥操作/评测已开源；HandEdit 评测工具链 + HF 数据集已开源。
+- **关键页：** [paper-bench2dex](wiki/entities/paper-bench2dex.md)、[paper-handedit](wiki/entities/paper-handedit.md)
+
 ## [2026-09-20] ingest | sources/papers/panogs_slam_arxiv_2609_17387.md — 全景 3DGS-SLAM；代码待发布
 
 ## [2026-09-20] ingest | sources/blogs/wechat_freedof_sim2real_four_routes — 44 篇参考文献独立详情节点 + 技术地图
