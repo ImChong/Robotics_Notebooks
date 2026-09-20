@@ -9,10 +9,12 @@ status: complete
 updated: 2026-09-20
 arxiv: "2609.17824"
 related:
+  - ../overview/constraint-control-11-papers-technology-map.md
   - ../concepts/humanoid-multi-robot-coordination.md
   - ../tasks/loco-manipulation.md
   - ./paper-recal-collision-aware-wbc.md
 sources:
+  - ../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md
   - ../../sources/papers/decentralized-multi-humanoid-pickup_arxiv_2609_17824.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
 summary: "去中心化多人形搬运（arXiv:2609.17824）：每机物体局部附着区 + 相同策略 + 局部观测、无直接通信；单机拾取至十机协同与交接，迁移两台 Digit V3。"

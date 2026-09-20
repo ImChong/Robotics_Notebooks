@@ -15,6 +15,7 @@ status: complete
 updated: 2026-09-17
 arxiv: "2609.18197"
 related:
+  - ../overview/constraint-control-11-papers-technology-map.md
   - ../concepts/world-action-models.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
@@ -23,6 +24,7 @@ related:
   - ./paper-openwam.md
   - ../methods/vla.md
 sources:
+  - ../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md
   - ../../sources/papers/wholebodywam_unimotion_arxiv_2609_18197.md
   - ../../sources/sites/wholebodywam-unimotion.md
 summary: "WholeBodyWAM·UniMotion-4K（arXiv:2609.18197，南开/北京人形创新中心/BIT/清华）：4.1K+ h 异构全身 motion 预训练 Motion Expert，再 MoT 联合 Video–Action 接地天工 3.0；真机六项平均 72.2%（+11.4 pp vs GR00T N1.7）；代码待发布。"
