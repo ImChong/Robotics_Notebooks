@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4330,
-  "edge_count": 38372,
+  "node_count": 4331,
+  "edge_count": 38389,
   "coverage": {
-    "covered": 4301,
-    "total": 4301,
+    "covered": 4302,
+    "total": 4302,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/robot-simulation-three-layers.md",
+      "detail_id": "wiki-concepts-robot-simulation-three-layers",
+      "label": "机器人仿真三层分工（Physics / Platform / Learning）",
+      "type": "concept",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+    },
     {
       "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
       "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
@@ -57,7 +67,7 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "Data Flywheel (具身数据飞轮) 社区"
     },
     {
       "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
@@ -185,7 +195,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "Data Flywheel (具身数据飞轮) 社区"
     },
     {
       "path": "wiki/entities/paper-tdhd-surgical-dual-arm.md",
@@ -195,31 +205,22 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-vane.md",
-      "detail_id": "entity-paper-vane",
-      "label": "VANE（arXiv:2608.09448）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
-    "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
-    "label": "具身数据采集五大路线产业地图",
-    "type": "query",
+    "path": "wiki/concepts/robot-simulation-three-layers.md",
+    "detail_id": "wiki-concepts-robot-simulation-three-layers",
+    "label": "机器人仿真三层分工（Physics / Platform / Learning）",
+    "type": "concept",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
   },
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 691
+      "size": 693
     },
     {
       "label": "操作",
@@ -262,7 +263,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1056,
+      "degree": 1058,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -278,7 +279,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 954,
+      "degree": 955,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
