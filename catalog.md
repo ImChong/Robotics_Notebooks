@@ -3613,6 +3613,7 @@
 - [quad-swarm-rl](wiki/entities/quad-swarm-rl.md) — quad-swarm-rl**（Zhehui-Huang/quad-swarm-rl）是 **多四 `📅unknown` `[entity_page]`
 - [四足控制学习策展（仿真 → RL → 实机）](wiki/entities/quadruped-control-curriculum.md) — 一句话：** 四足 loco 的完整工程闭环是 **建模 → 辨识 → 并行 RL → 域随机化 → 摩擦补偿与蒸馏 → 导航集成**；本页把 [《四足机器人：从动力学建模到强化学习》](../. `📅unknown` `[entity_page]`
 - [四足机器人（Quadruped Robot）](wiki/entities/quadruped-robot.md) — 四足机器人是以四条腿与环境形成间歇接触的腿足平台，侧重崎岖地形移动与户外部署，常与强化学习 locomotion、Sim2Real 及分层导航结合。 `📅unknown` `[entity_page]`
+- [Qwen-Image-2.1](wiki/entities/qwen-image-2-1.md) — Qwen-Image-2.1**（GitHub · [Hugging Face](https://huggi `📅unknown` `[entity_page]`
 - [Qwen-RobotManip](wiki/entities/qwen-robot-manip.md) — Qwen-RobotManip**（GitHub | [深度博客](https://qwen.ai/blo `📅unknown` `[entity_page]`
 - [Qwen-RobotNav](wiki/entities/qwen-robot-nav.md) — Qwen-RobotNav**（GitHub | [深度博客](https://qwen.ai/blog?id `📅unknown` `[entity_page]`
 - [Qwen-Robot Suite](wiki/entities/qwen-robot-suite.md) — Qwen-Robot Suite**（官方总览博客）把 **视觉–语言理解** 与 **三类物理动作域** 对 `📅unknown` `[entity_page]`
