@@ -273,6 +273,23 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 搬到 GPU 上批量并行」的算力叙述。它是计算硬件/后端基础设施，非机器人
     # 概念/方法/形式化；与 uv / conda / arxiv 同类基础设施停用词，不建独立页。
     "gpu",
+    # l1：两类语义被同一 slug 合并——(a) 回归损失/距离（EffVLA 的「单 pass L1」、
+    # 小米 Choice Policies 的「L1 选优 winner-take-all」），该机制已由
+    # formalizations/behavior-cloning-loss.md 的连续动作回归损失一节覆盖；
+    # (b) 三套互不相干的分级阶梯里的「第 1 级」标签——人形测试的 L0–L5 部件台架级
+    # （concepts/humanoid-testing-workflow.md）、GWM 能力路线图 L1–L5
+    # （entities/paper-gwm-first-principles.md）、LIBERO-Recover 的 L1–L4 恢复难度
+    # （entities/paper-libero-recover.md），各页已在自己的分级表逐条释义。
+    # 非单一可成页概念，与 clip（模型名 vs 限幅动词）、alpha（熵温度 vs 滤波系数
+    # vs 版本标签）同类语义噪声。
+    "l1",
+    # python：各页正文里的 `Python` / **Python** 全是语言/环境版本约束与脚本入口
+    # 标签——实体页「依赖」表行（cyclo-control 的 `numpy<2`、EmbodiChain 的
+    # 3.10–3.12、TypeSafe JEV 的 `uv add typesafe-sdk`）、多语言 SDK/插件并列
+    # （PlotJuggler 的 Lua 与 Python 自定义函数编辑器）、以及「用 Python 而非 ad hoc
+    # 脚本」的接口叙述（ScheduleStream）。它是编程语言/打包环境基础设施，非机器人
+    # 概念/方法/形式化；与 uv / conda / printf 同类工具链停用词，不建独立页。
+    "python",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，

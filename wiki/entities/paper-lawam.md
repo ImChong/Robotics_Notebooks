@@ -154,7 +154,7 @@ sequenceDiagram
 
 ## 结论
 
-**LaWAM 证明：WAM 的「未来条件」不必是视频——一个 DINOv3 潜 subgoal 就够撑起 SOTA 级成功率，且直接进 LeRobot 训练栈。**
+**LaWAM 证明：WAM 的「未来条件」不必是视频——一个 DINOv3 潜 subgoal 就够撑起 LIBERO 98.6% / RoboTwin 91.22% 的成功率，且直接进 LeRobot 训练栈。**
 
 1. **选 WAM 先看表征空间** — 潜特征 subgoal 比像素 rollout 更适合 chunk 控制接口。
 2. **两阶段解耦 LaWM 与 VLA** — 大规模无标签视频学动力学，小数据 robot 轨迹做 SFT 集成。

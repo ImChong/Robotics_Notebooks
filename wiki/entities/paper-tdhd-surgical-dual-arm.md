@@ -60,6 +60,17 @@ summary: "双臂手术 VLA 的轨迹分歧视界决策：生成两份轻微扰�
 - **文内口径：** 实机 RM65-B 双臂 + dVRK 改造末端
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Hermite Curves VLA](./paper-hermite-curves-vla-trajectory-priors.md) | 同批同为治理「固定长度执行的累积偏差」，一测一训：TDHD 在**执行期**用两份轻微扰动计划的分歧当触发器提前停下重规划，Hermite 在**训练期**把动作引向平滑曲线。TDHD 不改训练目标，Hermite 不加运行时开销 |
+| [Action Chunking](../methods/action-chunking.md) | TDHD 实质是给 chunk 配一个**提前终止判据**；该页讲「部署不必等于播放整段 chunk」，本文给的是判断该在哪一步截断的一种具体信号 |
+| [WA-SpecDec](./paper-wa-specdec.md) | 同批同为「多算一份再决定用不用」，目标相反：WA-SpecDec 用猜测–校验**换速度**，TDHD 用双计划分歧**换可靠性**（宁可停下重规划）。安全敏感场景按后者读 |
+| [双臂操作](../tasks/bimanual-manipulation.md) | 该页给双臂协同的一般约束；手术场景把误差容限压到针与组织的量级，是本文选「提前停」而非「事后纠」的直接原因，也是它难以直接搬到桌面抓放的原因 |
+
 ## 结论
 
 **TDHD 适合作为本期「架构模块」路线的快速索引页。**

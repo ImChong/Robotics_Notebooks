@@ -60,6 +60,17 @@ summary: "空中 VLN 失败感知 RL 后训练：token 级优化、反复学习�
 - **文内口径：** TravelUAV
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [TEMPO](./paper-tempo.md) | 同批「训练范式」段的另一条 RL 后训练，组织方式不同：本文做 **token 级**优化并反复重练未解的失败案例（分阶段长尾课程 + 参考策略约束），TEMPO 走的是冻结 VLM、对 projection 与 action expert 分设 TD3 环双频更新。前者围绕**失败样本**做课程，后者围绕**模块分工**做解耦 |
+| [ActiveFly-Bench](./paper-activefly-bench.md) | 同批同为空中具身，一训一测：本文给失败感知的训练范式，ActiveFly 给分层评测基准。两页之间缺的正是「用哪套口径判定纠错成功」——本文报的是 TravelUAV，不与 ActiveFly 自建基准同协议 |
+| [WNM-3D](./paper-wnm-3d-vln.md) | 同批同为闭环 VLN，改的层不同：WNM-3D 换**条件表征**（3D 场景条件 + 联合生成未来视角与动作），本文换**训练信号**。表征与训练法正交，可叠加 |
+| [VLN 任务页](../tasks/vision-language-navigation.md) | 该页给任务定义与常见评价口径；本文把重点从「一次走对」移到**走错之后能否纠回**，这一轴在多数 VLN 榜上不单列，是读本文成功率时最容易错配的地方 |
+
 ## 结论
 
 **RecoverFly 适合作为本期「训练范式」路线的快速索引页。**

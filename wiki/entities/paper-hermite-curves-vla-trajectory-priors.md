@@ -60,6 +60,17 @@ summary: "用 Hermite 曲线作 VLA 轨迹先验：训练阶段引导动作接�
 - **文内口径：** LIBERO、LIBERO-Plus；实机 Franka / Cybopal / ARX
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Cross-View Action Consistency](./paper-cross-view-action-consistency-vla.md) | 同批「架构模块」段，同属**训练期加约束、部署零额外计算**一族；差别在约束打在哪：Hermite 约束轨迹的**形状先验**（贴近平滑曲线），Cross-View 约束**跨视角的动作一致性** |
+| [TDHD](./paper-tdhd-surgical-dual-arm.md) | 同批同为治理固定长度执行的累积偏差，手段一训一测：Hermite 训练期把动作引向平滑曲线，TDHD 执行期靠双计划分歧提前截断重规划。前者管不到运行时决策，后者不改训练目标 |
+| [Action Chunking](../methods/action-chunking.md) | 曲线先验作用的正是 chunk 内那段轨迹；该页讲 chunk 为何在 open-loop 段漂移，本文给的是「让这段漂得更平滑」的一种约束形式 |
+| [VLA](../methods/vla.md) | 论文自比了「直接预测曲线参数 / 曲线修正」等变体，结论是训练期引导最实用——即**不改推理接口**才是本条主张的关键，读法应与那些改动作头结构的路线分开 |
+
 ## 结论
 
 **Hermite Curves VLA 适合作为本期「架构模块」路线的快速索引页。**

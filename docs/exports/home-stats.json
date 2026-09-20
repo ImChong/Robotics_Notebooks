@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-19",
   "node_count": 4325,
-  "edge_count": 38234,
+  "edge_count": 38303,
   "coverage": {
     "covered": 4296,
     "total": 4296,
@@ -9,25 +9,121 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "roadmap/depth-rsi.md",
-      "detail_id": "roadmap-depth-rsi",
-      "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
-      "type": "roadmap_page",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/cloudflare-security-audit-skill.md",
-      "detail_id": "entity-cloudflare-security-audit-skill",
-      "label": "Security Audit Skill（Cloudflare）",
-      "type": "entity",
+      "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
+      "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
+      "label": "Physical AI 策展清单：natnew vs aichr",
+      "type": "comparison",
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-activefly-bench.md",
+      "detail_id": "entity-paper-activefly-bench",
+      "label": "ActiveFly-Bench（arXiv:2607.10180）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-anycam-vla.md",
+      "detail_id": "entity-paper-anycam-vla",
+      "label": "AnyCamVLA（arXiv:2603.05868）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cmu-drive-v2v-vla.md",
+      "detail_id": "entity-paper-cmu-drive-v2v-vla",
+      "label": "CMU-Drive / V2V-VLA（arXiv:2608.07621）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-cross-view-action-consistency-vla.md",
+      "detail_id": "entity-paper-cross-view-action-consistency-vla",
+      "label": "Cross-View Action Consistency（arXiv:2608.06965）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-depth-wise-probing-driving-vla.md",
+      "detail_id": "entity-paper-depth-wise-probing-driving-vla",
+      "label": "Depth-Wise Probing Driving VLA（arXiv:2608.07361）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hermite-curves-vla-trajectory-priors.md",
+      "detail_id": "entity-paper-hermite-curves-vla-trajectory-priors",
+      "label": "Hermite Curves VLA（arXiv:2608.01265）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hymes-hybrid-memory-manipulation.md",
+      "detail_id": "entity-paper-hymes-hybrid-memory-manipulation",
+      "label": "HyMeS（arXiv:2608.09410）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-jepa-wam.md",
+      "detail_id": "entity-paper-jepa-wam",
+      "label": "JEPA-WAM（arXiv:2608.09381）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mamba-smolvla-expert.md",
+      "detail_id": "entity-paper-mamba-smolvla-expert",
+      "label": "Mamba SmolVLA Expert（arXiv:2608.21407）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-onevomemory.md",
+      "detail_id": "entity-paper-onevomemory",
+      "label": "OnEvoMemory（arXiv:2608.08749）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-recoverfly-aerial-vln.md",
+      "detail_id": "entity-paper-recoverfly-aerial-vln",
+      "label": "RecoverFly（arXiv:2608.09467）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-rsi-survey-2607-07663.md",
@@ -41,193 +137,93 @@
       "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
-      "path": "wiki/queries/rsi-four-tier-five-pushes.md",
-      "detail_id": "wiki-queries-rsi-four-tier-five-pushes",
-      "label": "RSI 四层标准与五次边界推进",
-      "type": "query",
+      "path": "wiki/entities/paper-tdhd-surgical-dual-arm.md",
+      "detail_id": "entity-paper-tdhd-surgical-dual-arm",
+      "label": "TDHD（arXiv:2608.09125）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-vane.md",
+      "detail_id": "entity-paper-vane",
+      "label": "VANE（arXiv:2608.09448）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-vla-action-post-training-depth-decodability.md",
+      "detail_id": "entity-paper-vla-action-post-training-depth-decodability",
+      "label": "VLA Depth Decodability（arXiv:2608.08904）",
+      "type": "entity",
       "recency": "2026-09-19",
       "source": "git",
       "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wa-specdec.md",
+      "detail_id": "entity-paper-wa-specdec",
+      "label": "WA-SpecDec（arXiv:2608.08725）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-wam-diff2.md",
+      "detail_id": "entity-paper-wam-diff2",
+      "label": "WAM-Diff2（arXiv:2608.01035）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wnm-3d-vln.md",
+      "detail_id": "entity-paper-wnm-3d-vln",
+      "label": "WNM-3D（arXiv:2608.07267）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/cloudflare-security-audit-skill.md",
+      "detail_id": "entity-cloudflare-security-audit-skill",
+      "label": "Security Audit Skill（Cloudflare）",
+      "type": "entity",
+      "recency": "2026-09-19",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/acados.md",
-      "detail_id": "entity-acados",
-      "label": "acados",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/lingbot-world.md",
-      "detail_id": "entity-lingbot-world",
-      "label": "LingBot-World",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/mujoco-menagerie.md",
-      "detail_id": "entity-mujoco-menagerie",
-      "label": "MuJoCo Menagerie",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/tienkung-lab.md",
-      "detail_id": "entity-tienkung-lab",
-      "label": "TienKung-Lab",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/robot-opensource-algorithms-compendium-wechat.md",
-      "detail_id": "wiki-overview-robot-opensource-algorithms-compendium-wechat",
-      "label": "开源机器人算法大全（微信策展）— 索引",
-      "type": "overview",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
-      "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
-      "label": "Physical AI 策展清单：natnew vs aichr",
-      "type": "comparison",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-legged-locomotion-learning.md",
-      "detail_id": "entity-awesome-legged-locomotion-learning",
-      "label": "awesome-legged-locomotion-learning",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/awesome-legged-robot-learning-clearlab.md",
-      "detail_id": "entity-awesome-legged-robot-learning-clearlab",
-      "label": "Awesome-Legged-Robot-Learning（ClearLab @ SUSTech）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/awesome-physical-ai-aichr.md",
-      "detail_id": "entity-awesome-physical-ai-aichr",
-      "label": "awesome-physical-ai（aichr）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-physical-ai-natnew.md",
-      "detail_id": "entity-awesome-physical-ai-natnew",
-      "label": "awesome-physical-ai（natnew）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/embodied-data-collection-four-layers-taxonomy.md",
-      "detail_id": "wiki-concepts-embodied-data-collection-four-layers-taxonomy",
-      "label": "具身数据采集：四层术语地图",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md",
-      "detail_id": "wiki-concepts-embodied-data-flywheel-minimal-closed-loop",
-      "label": "具身数据飞轮：最小闭环（避免空转）",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/robot-data-supervision-signal-types.md",
-      "detail_id": "wiki-concepts-robot-data-supervision-signal-types",
-      "label": "机器人数据：监督信号类型分流",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/embodied-data-collection-to-flywheel-album.md",
-      "detail_id": "wiki-overview-embodied-data-collection-to-flywheel-album",
-      "label": "具身数据从采集到飞轮（系列地图）",
-      "type": "overview",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/imu-principles-algorithms-camera-sync.md",
-      "detail_id": "wiki-concepts-imu-principles-algorithms-camera-sync",
-      "label": "IMU：原理、算法与摄像头驱动协同",
-      "type": "concept",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-activefly-bench.md",
-      "detail_id": "entity-paper-activefly-bench",
-      "label": "ActiveFly-Bench（arXiv:2607.10180）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-rsi.md",
-    "detail_id": "roadmap-depth-rsi",
-    "label": "路线（纵深）：如果目标是 RSI（递归自我改进）",
-    "type": "roadmap_page",
+    "path": "wiki/comparisons/awesome-physical-ai-curated-lists.md",
+    "detail_id": "wiki-comparisons-awesome-physical-ai-curated-lists",
+    "label": "Physical AI 策展清单：natnew vs aichr",
+    "type": "comparison",
     "recency": "2026-09-19",
     "source": "git",
     "action": "added",
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "has_repo": true,
+    "community_label": "动作块输出（Action Chunking） 社区"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 621
-    },
-    {
       "label": "宇树 G1 人形机器人",
       "size": 609
+    },
+    {
+      "label": "操作",
+      "size": 605
     },
     {
       "label": "国内开源全景 424 项阅读导航",
@@ -235,7 +231,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 250
+      "size": 248
     },
     {
       "label": "仿真到现实",
@@ -290,7 +286,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 741,
+      "degree": 744,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

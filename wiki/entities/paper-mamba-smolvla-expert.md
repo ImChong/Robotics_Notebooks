@@ -59,6 +59,17 @@ summary: "用 Mamba 选择性状态空间替代 SmolVLA action expert 中的因�
 - **文内口径：** LIBERO
 - **读法：** 本页为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 摘要；逐项指标以 **原文 PDF** 为准。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**：本页与下列同批各页均为 [公众号策展](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) 的索引级摘要，未逐条核对原文实验表，彼此**不共享同一评测协议**，不可据此横比数字。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [选择性状态空间模型](../concepts/state-space-model-ssm.md) / [RNN·CNN·Transformer·Mamba 对比](../comparisons/rnn-cnn-transformer-mamba.md) | 这两页给「用 SSM 换注意力」的一般理由（近线性复杂度 + 长程建模）；本文是把该替换**只做在 action expert 上**、VLM 骨干不动的一个具体落点，读法应是局部换算子而非换骨干 |
+| [WA-SpecDec](./paper-wa-specdec.md) | 同批同为压动作生成开销，层次不同：本文换**算子**（因果自注意力 → Mamba，参数更少），WA-SpecDec 改**解码流程**（投机 + 校验）。两条正交，可叠加 |
+| [Action Chunking](../methods/action-chunking.md) | 本文的卖点是「连续多步执行时任务成功率保留更好」，落点正是 chunk 的 open-loop 段；该页解释这段为何会漂，读本文应看**多步保留**而非单步规划成功率 |
+| [实时性 ↔ 泛化取舍](../concepts/embodied-fm-latency-generalization-tradeoff.md) | 「成功率接近 Transformer 且参数更少」是这条取舍线上的一次移动；跨设定搬运前须确认 action expert 以外的骨干规模一致，否则省下的参数量不可比 |
+
 ## 结论
 
 **Mamba SmolVLA Expert 适合作为本期「架构模块」路线的快速索引页。**
