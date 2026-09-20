@@ -2,7 +2,7 @@
 type: query
 tags: [data-collection, humanoid, teleoperation, investment, physical-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 summary: "Query：综合 LeoInAI Substack（2026-09-06）与 Scanford 论文，梳理人形/机器人训练数据采集六条范式及独立实体索引。"
 related:
   - ../entities/paper-scanford-robot-powered-data-flywheel.md
@@ -62,6 +62,7 @@ sources:
 - [Data Flywheel](../concepts/data-flywheel.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Query：五大数采路线（AIRS）](./embodied-data-collection-five-routes-landscape.md) — 真机/UMI/动捕/Ego/仿真五路线装备分支
 
 ## 推荐继续阅读
 

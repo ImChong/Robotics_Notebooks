@@ -2,7 +2,7 @@
 type: overview
 tags: [data-collection, data-pyramid, data-flywheel, supervision, album, embodied-data]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../entities/paper-data-pyramid-embodied-manipulation.md
@@ -77,6 +77,7 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Open X-Embodiment](../concepts/open-x-embodiment.md)
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md)
+- [Query：五大数采路线产业地图](../queries/embodied-data-collection-five-routes-landscape.md) — AIRS 2026-09 装备分支盘点
 
 ## 参考来源
 
