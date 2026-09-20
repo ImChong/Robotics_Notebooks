@@ -9,6 +9,97 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-decentralized-multi-humanoid-pickup.md",
+      "detail_id": "entity-paper-decentralized-multi-humanoid-pickup",
+      "label": "去中心化多人形搬运（arXiv:2609.17824）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dreaming-sound-of-contact.md",
+      "detail_id": "entity-paper-dreaming-sound-of-contact",
+      "label": "Dreaming the Sound of Contact（arXiv:2609.19137）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-elastiqp.md",
+      "detail_id": "entity-paper-elastiqp",
+      "label": "ElastiQP（arXiv:2609.19080）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-fetch-my-beer.md",
+      "detail_id": "entity-paper-fetch-my-beer",
+      "label": "Fetch My Beer（arXiv:2609.18119）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-opendexgrasp.md",
+      "detail_id": "entity-paper-opendexgrasp",
+      "label": "OpenDexGrasp（arXiv:2609.18117）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-pointzero.md",
+      "detail_id": "entity-paper-pointzero",
+      "label": "PointZero（arXiv:2609.19142）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robovad.md",
+      "detail_id": "entity-paper-robovad",
+      "label": "RoboVAD（arXiv:2609.17843）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wave-go.md",
+      "detail_id": "entity-paper-wave-go",
+      "label": "WAVE-Go（arXiv:2609.18193）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/constraint-control-11-papers-technology-map.md",
+      "detail_id": "wiki-overview-constraint-control-11-papers-technology-map",
+      "label": "约束冲突与可继续执行：11 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/queries/embodied-six-routes-survey-lineage.md",
       "detail_id": "wiki-queries-embodied-six-routes-survey-lineage",
       "label": "六条路线 × 12 篇综述：补课线，不是终局赌注",
@@ -125,115 +216,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-006-nerfgsforrobotics.md",
-      "detail_id": "entity-painode-006-nerfgsforrobotics",
-      "label": "NeRF + GS for Robotics",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-009-alfred.md",
-      "detail_id": "entity-painode-009-alfred",
-      "label": "ALFRED",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-010-arnold.md",
-      "detail_id": "entity-painode-010-arnold",
-      "label": "ARNOLD",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-011-carlaleaderboard.md",
-      "detail_id": "entity-painode-011-carlaleaderboard",
-      "label": "CARLA Leaderboard",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-012-colosseum.md",
-      "detail_id": "entity-painode-012-colosseum",
-      "label": "Colosseum",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-013-furniturebench.md",
-      "detail_id": "entity-painode-013-furniturebench",
-      "label": "FurnitureBench",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-018-minedojo.md",
-      "detail_id": "entity-painode-018-minedojo",
-      "label": "MineDojo",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-019-openeqa.md",
-      "detail_id": "entity-painode-019-openeqa",
-      "label": "OpenEQA",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-021-robothor.md",
-      "detail_id": "entity-painode-021-robothor",
-      "label": "RoboTHOR",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/embodied-six-routes-survey-lineage.md",
-    "detail_id": "wiki-queries-embodied-six-routes-survey-lineage",
-    "label": "六条路线 × 12 篇综述：补课线，不是终局赌注",
-    "type": "query",
+    "path": "wiki/entities/paper-decentralized-multi-humanoid-pickup.md",
+    "detail_id": "entity-paper-decentralized-multi-humanoid-pickup",
+    "label": "去中心化多人形搬运（arXiv:2609.17824）",
+    "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
