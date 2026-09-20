@@ -2,7 +2,7 @@
 
 ## [2026-09-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **75** 条信息型预警）：
+共发现 **0** 个问题（另含 **76** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -54,7 +54,7 @@
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（15 个）
 - Resource（被 32 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- Community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Hardware（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Course（被 18 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - standard（被 16 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
@@ -169,7 +169,7 @@
 - wiki/concepts/humanoid-cognitive-reliability-gap.md
 - wiki/concepts/retrieval-augmented-generation.md
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（13 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（14 个）
 - wiki/entities/painode-009-alfred.md
 - wiki/entities/painode-010-arnold.md
 - wiki/entities/painode-011-carlaleaderboard.md
@@ -181,6 +181,7 @@
 - wiki/entities/painode-023-teach.md
 - wiki/entities/painode-024-vlabench.md
 - wiki/entities/paper-bench2dex.md
+- wiki/entities/paper-handedit.md
 - wiki/entities/paper-kadian-sim2real-predictivity.md
 - wiki/entities/paper-robovad.md
 
@@ -193,4 +194,4 @@
 - wiki/entities/paper-rapt-sim2real-ood-detection.md
 - wiki/entities/paper-robovad.md
 
-📊 Sources 覆盖率：4606/4606 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4607/4607 (100%) wiki/entity 页有 ingest 来源

@@ -28,7 +28,7 @@
 | 10 | WEAVE | [2609.16683](https://arxiv.org/abs/2609.16683) | 已开源 | [paper-weave](../../wiki/entities/paper-weave.md) **复用** |
 | 11 | 双足整体 loco-manip | [2609.18930](https://arxiv.org/abs/2609.18930) | 待发布 | [paper-holistic-biped-loco-manip](../../wiki/entities/paper-holistic-biped-loco-manip.md) **新建** |
 | 12 | Project Kitchen | [2609.18650](https://arxiv.org/abs/2609.18650) | 待发布 | [paper-project-kitchen](../../wiki/entities/paper-project-kitchen.md) **新建** |
-| 13 | Bench2Dex | [2609.15726](https://arxiv.org/abs/2609.15726) | 待发布 | [paper-bench2dex](../../wiki/entities/paper-bench2dex.md) **新建** |
+| 13 | Bench2Dex | [2609.15726](https://arxiv.org/abs/2609.15726) | 已开源 | [paper-bench2dex](../../wiki/entities/paper-bench2dex.md) **新建** |
 | 14 | FluxVLA Engine | [2609.17210](https://arxiv.org/abs/2609.17210) | 已开源 | [fluxvla-engine](../../wiki/entities/fluxvla-engine.md) **复用**（工程实体，非重复 `paper-*`） |
 
 ## 对 wiki 的映射
