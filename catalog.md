@@ -3065,6 +3065,7 @@
 - [SHRIMP：先在仿真里改计划，再让协作臂执行](wiki/entities/paper-shrimp.md) — SHRIMP**（*Simulation-driven Human-in-the-loop Refinement Interface for Manipulation Planning*；[arX `📅unknown` `[entity_page]`
 - [SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）](wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — SimFoundry** 是 NVIDIA GEAR Lab 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606. `📅unknown` `[entity_page]`
 - [simple-evrgb-cal：无运动的事件—RGB 标定](wiki/entities/paper-simple-evrgb-cal.md) — Simplified Cross-Modal Calibration for Heterogeneous Event-RGB Stereo Systems**（[arXiv:2608.22965 `📅unknown` `[entity_page]`
+- [SimpleMemVLA（Native-Video Memory for VLA）](wiki/entities/paper-simplememvla.md) — SimpleMemVLA**（arXiv:2609.05533，[OpenBMB/SimpleMemVLA](https:/ `📅unknown` `[entity_page]`
 - [Situation-aware Frontier：四足搜救的局势感知前沿排序](wiki/entities/paper-situation-aware-frontier-quadruped-sar.md) — Situation Aware Frontier Prioritization**（arXiv:2608.02571，[代码 `📅unknown` `[entity_page]`
 - [腿式 RL 技能组合（arXiv:2609.14647）](wiki/entities/paper-skill-composition-legged-rl.md) — 腿式 RL 技能组合**（*Skill Composition for Legged Robot Reinforcement Learning*，[arXiv:2609.14647](https: `📅unknown` `[entity_page]`
 - [SkillCorpus：开放 Skill 生态的策展与评测](wiki/entities/paper-skillcorpus.md) — SkillCorpus**（arXiv:2607.15557）由 **恒心智能（EverMind）/ 盛大集团 / 北京大学 `📅unknown` `[entity_page]`
