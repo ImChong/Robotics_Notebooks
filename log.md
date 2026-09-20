@@ -1,3 +1,8 @@
+## [2026-09-20] ingest | sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md — SD-AMP（arXiv:2605.18611，HKU）PPO+双判别器重力门控；开源结论：官方未发布，第三方 AMP_mjlab 单判别器工程对照；刷新 paper-unified-walk-run-recovery-sdamp
+
+- **意图：** 用户指定 ingest；步骤 2.5 再核 arXiv 无官方 code，明确 AMP_mjlab 边界。
+- **关键页：** [paper-unified-walk-run-recovery-sdamp](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)
+
 ## [2026-09-20] ingest | sources/blogs/wechat_ode_solving_methods_decision_chain_2026-09-20.md — 公众号 ODE 解析决策链+数值法长文；升格 wiki/formalizations/ode-solving-methods.md，交叉 damped-systems / robot-simulation-three-layers
 
 - **意图：** WebFetch 抓取 mp.weixin.qq.com 科普教程；无单一项目页。
