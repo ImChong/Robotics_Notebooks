@@ -10,6 +10,7 @@ related:
   - ./transformer.md
   - ../methods/vla.md
   - ../entities/painode-125-langchain.md
+  - ../entities/easy-vibe.md
   - ../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md
   - ../entities/paper-scanford-robot-powered-data-flywheel.md
   - ../concepts/data-flywheel.md
@@ -129,6 +130,7 @@ flowchart LR
 - [Robot-Powered Data Flywheel（Scanford）](../entities/paper-scanford-robot-powered-data-flywheel.md)
 - [数据飞轮（Data Flywheel）](./data-flywheel.md)
 - [LangChain](../entities/painode-125-langchain.md)
+- [Easy-Vibe（Datawhale）](../entities/easy-vibe.md) — Stage 3 / 附录 **交互式 RAG** 教程
 
 ## 参考来源
 
