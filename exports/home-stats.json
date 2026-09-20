@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4329,
-  "edge_count": 38356,
+  "node_count": 4330,
+  "edge_count": 38372,
   "coverage": {
-    "covered": 4300,
-    "total": 4300,
+    "covered": 4301,
+    "total": 4301,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -219,27 +219,27 @@
   "top_communities": [
     {
       "label": "宇树 G1 人形机器人",
-      "size": 739
+      "size": 691
     },
     {
       "label": "操作",
-      "size": 600
+      "size": 608
     },
     {
       "label": "国内开源全景 424 项阅读导航",
-      "size": 302
+      "size": 300
     },
     {
       "label": "视觉-语言-动作",
       "size": 257
     },
     {
-      "label": "全身控制",
-      "size": 218
-    },
-    {
       "label": "仿真到现实",
       "size": 217
+    },
+    {
+      "label": "全身控制",
+      "size": 209
     }
   ],
   "top_hubs": [
@@ -286,7 +286,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 744,
+      "degree": 745,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
