@@ -89,3 +89,13 @@ test('graph.html no longer sorts the timeline by frontmatter/mtime recency', () 
   assert.match(source, /return ta - tb;/);
   assert.doesNotMatch(source, /getNodeRecency\(a\)\.localeCompare/);
 });
+
+test('teardown interrupts node-circle pop-in so fill-opacity cannot snap back to 0', () => {
+  const teardown = source.slice(
+    source.indexOf('    function teardownTimelineMode()'),
+    source.indexOf('    function exitTimelineMode()')
+  );
+  assert.match(teardown, /node\.select\('\.node-circle'\)\.interrupt\(\)/);
+  assert.match(teardown, /syncGraphDomFromSimulation\(\)/);
+  assert.match(source, /function enterTimelineMode\(\) \{\n      if \(timelineAnimating\) return;/);
+});

@@ -2853,6 +2853,9 @@
         setSpatialViewMode(mode, opts);
         return Promise.resolve();
       }
+      // 异步加载 3D 库期间 setSpatialViewMode 还没跑，时序仍会把 2D 节点藏掉。
+      // 先拆除时序，等库就绪时切过去的是完整 2D 图，失败回 2D 也不会停在空图。
+      if (timelineAnimating) teardownTimelineMode();
       if (window.RNGraph3D?.isAvailable?.()) {
         setSpatialViewMode('3d', opts);
         return Promise.resolve();
@@ -5552,6 +5555,7 @@
     }
 
     function enterTimelineMode() {
+      if (timelineAnimating) return;
       if (typeof closeSidebar === 'function') closeSidebar();
       hideTooltip();
 
@@ -5603,7 +5607,12 @@
       timelineRevealedIds.clear();
       timelineIdx = 0;
       timelineTotal = 0;
-      node.interrupt().style('pointer-events', null);  // 恢复指针事件
+      // 子元素上的 pop-in transition 不会被 g.interrupt() 取消；不打断的话
+      // applyFilters 写完 fill-opacity 仍可能被旧 transition 盖回 0，图谱看起来「没了」。
+      node.interrupt().style('pointer-events', null);
+      node.select('.node-circle').interrupt();
+      node.select('.node-glow').interrupt();
+      node.select('.node-label').interrupt();
       svg.interrupt('tlfit');
       updateTimelineControls();
 
@@ -5612,6 +5621,7 @@
       simulation.nodes(nodes);
       linkForce.links(edges);
       applyFilters();                 // 复位节点显隐，清除时序遗留的 opacity
+      syncGraphDomFromSimulation();   // 成员已是全图，把还原后的坐标写回 DOM
     }
 
     function exitTimelineMode() {
@@ -5633,7 +5643,7 @@
        graph3dView.timelineBegin/Seek/End：按首次加入日从最老到最新把节点逐个种到已激活邻居附近、
        加入力模拟子集并重排，整图随时间「冒一个、重排一次」地生长；相机随子集自适应缩放。 */
     function enterTimelineMode3D() {
-      if (!graph3dView) return;
+      if (!graph3dView || timelineAnimating) return;
       if (typeof closeSidebar === 'function') closeSidebar();
       hideTooltip();
 
@@ -6388,6 +6398,39 @@
         activity: n._activityDate || null,
         ts: timelineTsOf(n),
       })),
+      timeline3D: () => timeline3D,
+      visibility: () => {
+        const svgEl = document.getElementById('graph-canvas');
+        const svgDisplay = svgEl ? window.getComputedStyle(svgEl).display : 'none';
+        let shown = 0;
+        let hidden = 0;
+        let peNone = 0;
+        node.each(function () {
+          const opRaw = this.style.opacity;
+          const op = opRaw === '' || opRaw == null ? 1 : parseFloat(opRaw);
+          const circle = this.querySelector('.node-circle');
+          const fo = circle ? parseFloat(circle.getAttribute('fill-opacity') || '1') : 0;
+          const visible = svgDisplay !== 'none' && op > 0.15 && fo > 0.05;
+          if (visible) shown += 1; else hidden += 1;
+          if (this.style.pointerEvents === 'none') peNone += 1;
+        });
+        return {
+          svgDisplay,
+          shown,
+          hidden,
+          peNone,
+          timelineAnimating,
+          timelinePlaying,
+          timeline3D,
+          timelineIdx,
+          simNodes: simulation.nodes().length,
+          total: nodes.length,
+          countText: document.getElementById('graph-node-count')?.textContent || '',
+          canvas3dHidden: !!(graphCanvas3d && graphCanvas3d.hidden),
+          graph3dCounts: (graph3dView && typeof graph3dView.getGraphDataCounts === 'function')
+            ? graph3dView.getGraphDataCounts() : null,
+        };
+      },
       // G0 基线测量：分离力 tick / DOM 写入 / 社区标签三段耗时（非业务 UI）
       stop: () => simulation.stop(),
       simNodeCount: () => simulation.nodes().length,

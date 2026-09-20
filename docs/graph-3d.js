@@ -1763,6 +1763,15 @@
         return +(performance.now() - t).toFixed(2);
       },
 
+      getGraphDataCounts: function () {
+        if (!graph || typeof graph.graphData !== 'function') return { nodes: 0, links: 0 };
+        var gd = graph.graphData() || {};
+        return {
+          nodes: Array.isArray(gd.nodes) ? gd.nodes.length : 0,
+          links: Array.isArray(gd.links) ? gd.links.length : 0,
+        };
+      },
+
       getSceneStats: function () {
         var scene = graph && typeof graph.scene === 'function' ? graph.scene() : null;
         if (!scene) return null;
