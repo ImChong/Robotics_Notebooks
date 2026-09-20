@@ -19,6 +19,17 @@
       "has_repo": true
     },
     {
+      "path": "wiki/entities/easy-vibe.md",
+      "detail_id": "entity-easy-vibe",
+      "label": "Easy-Vibe（Datawhale）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/learnprompt.md",
       "detail_id": "entity-learnprompt",
       "label": "LearnPrompt",
@@ -209,17 +220,6 @@
       "path": "wiki/entities/painode-023-teach.md",
       "detail_id": "entity-painode-023-teach",
       "label": "TEACh",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-024-vlabench.md",
-      "detail_id": "entity-painode-024-vlabench",
-      "label": "VLABench",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
