@@ -370,6 +370,8 @@ flowchart TD
 
 ## 关联页面
 
+- [senlanke 周更论文索引（2026-09-14–18）](../overview/senlanke-weekly-2026-09-14-18-technology-map.md) — 腿式 28 篇 arXiv 唯一节点
+
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 接步态 vs 直接力矩
 - [Embody](../entities/anthropic-embody.md) — Go2/G1 上的语言模型 locomotion 评测

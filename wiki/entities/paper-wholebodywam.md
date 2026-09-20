@@ -12,7 +12,7 @@ tags:
   - pku
   - phi-institute
 status: complete
-updated: 2026-09-16
+updated: 2026-09-20
 arxiv: "2609.16644"
 related:
   - ../concepts/world-action-models.md
@@ -24,6 +24,7 @@ related:
   - ./paper-wholebodywam-unimotion-4k.md
   - ../overview/vla-deploy-12-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/wholebodywam_arxiv_2609_16644.md
   - ../../sources/sites/wholebodywam.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md

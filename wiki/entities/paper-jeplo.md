@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'locomotion', 'lidar', 'jepa', 'sim2real', 'unitree']
 status: complete
-updated: 2026-09-16
+updated: 2026-09-20
 arxiv: "2609.15770"
 code: https://github.com/ASIG-X/JEPLO
 related:
@@ -12,6 +12,7 @@ related:
   - ./unitree-g1.md
   - ../overview/vla-deploy-12-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/jeplo_arxiv_2609_15770.md
   - ../../sources/repos/jeplo.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md

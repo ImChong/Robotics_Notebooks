@@ -15,7 +15,7 @@ tags:
   - dut
   - cuhk
 status: complete
-updated: 2026-09-17
+updated: 2026-09-20
 arxiv: "2609.16683"
 related:
   - ../tasks/loco-manipulation.md
@@ -28,6 +28,7 @@ related:
   - ./paper-loco-manip-161-074-pro-hoi.md
   - ./unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md
   - ../../sources/papers/weave_arxiv_2609_16683.md
   - ../../sources/sites/weave-xiaohu-art.md
   - ../../sources/repos/weave.md

@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
   - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md

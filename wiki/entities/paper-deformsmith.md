@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'simulation', 'deformable', 'manipulation', 'nankai']
 status: complete
-updated: 2026-09-17
+updated: 2026-09-20
 arxiv: "2609.18620"
 related:
   - ../tasks/manipulation.md
@@ -10,6 +10,7 @@ related:
   - ../methods/generative-world-models.md
   - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md
   - ../../sources/papers/deformsmith_arxiv_2609_18620.md
   - ../../sources/sites/deformsmith.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md

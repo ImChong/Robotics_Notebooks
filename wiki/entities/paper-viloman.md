@@ -7,7 +7,7 @@ tags:
   - rl
   - sim2real
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2609.19340"
 
 related:
@@ -17,6 +17,7 @@ related:
   - ../concepts/sim2real.md
   - ../overview/contact-wm-10-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/viloman_arxiv_2609_19340.md
   - ../../sources/sites/viloman.md
   - ../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md

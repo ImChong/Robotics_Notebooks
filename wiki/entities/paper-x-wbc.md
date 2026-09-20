@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, cross-embodiment]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2609.15213"
 code: https://github.com/LogosRoboticsGroup/x-wbc
 related:
   - ../overview/embodied-resources-10-papers-technology-map.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
   - ../../sources/papers/x_wbc_arxiv_2609_15213.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md
 summary: "X-WBC（arXiv:2609.15213）：九种仿真人形联合训练；VR 稀疏观测；四台真机同一接口；形态差异需专属模块。"

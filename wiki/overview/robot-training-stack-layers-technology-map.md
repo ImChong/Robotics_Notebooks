@@ -2,8 +2,9 @@
 type: overview
 tags: [simulation, training-stack, isaac-lab, mujoco, mjlab, unilab, newton, genesis, reinforcement-learning, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
+  - ../concepts/robot-simulation-three-layers.md
   - ../entities/isaac-lab.md
   - ../entities/mujoco.md
   - ../entities/mujoco-playground.md
@@ -21,6 +22,7 @@ related:
   - ./robot-world-models-training-loop-taxonomy.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+  - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
 summary: "依据具身智能研究室 2026-06 长文，把 Isaac Lab、MuJoCo 生态、mjlab、UniLab、Newton、Genesis World 整理为六层训练–评估基础设施地图；主判断：框架未洗牌，但最贵成本正从峰值仿真速度转向整条闭环返工。"
 ---
 
@@ -30,7 +32,7 @@ summary: "依据具身智能研究室 2026-06 长文，把 Isaac Lab、MuJoCo �
 
 ## 一句话观点
 
-仿真框架**没有突然洗牌**，但机器人学习工具链正在**变厚**：竞争焦点从「谁每秒仿真步数更高」转向「整条训练–评估–真机闭环的返工成本谁更低」——大平台、物理验证、任务入口、异构运行时、底层连接器与闭环评估基础设施**分层共存**。
+仿真框架**没有突然洗牌**，但机器人学习工具链正在**变厚**：竞争焦点从「谁每秒仿真步数更高」转向「整条训练–评估–真机闭环的返工成本谁更低」——大平台、物理验证、任务入口、异构运行时、底层连接器与闭环评估基础设施**分层共存**。若只需 **物理 / 平台 / 学习框架** 三层入门坐标，见 [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md)。
 
 ## 英文缩写速查
 
@@ -123,6 +125,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md) — 物理 / 平台 / 学习框架入门
 - [仿真器选型指南（locomotion）](../queries/simulator-selection-guide.md)
 - [MuJoCo vs Isaac Lab](../comparisons/mujoco-vs-isaac-lab.md)
 - [Sim2Real](../concepts/sim2real.md)

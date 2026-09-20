@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'dexterous-manipulation', 'tactile', 'proximity', 'manipulation']
 status: complete
-updated: 2026-09-16
+updated: 2026-09-20
 arxiv: "2609.16586"
 related:
   - ../tasks/manipulation.md
@@ -11,6 +11,7 @@ related:
   - ./paper-stereopatch.md
   - ../overview/vla-deploy-12-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md
   - ../../sources/papers/proxidex_arxiv_2609_16586.md
   - ../../sources/sites/proxidex.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md
