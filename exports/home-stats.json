@@ -33,7 +33,7 @@
     {
       "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
       "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
-      "label": "Validating robotics simulators on real-world impacts（FreeDof [21/44]）",
+      "label": "Validating robotics simulators on real-world impacts",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -43,7 +43,7 @@
     {
       "path": "wiki/entities/paper-awesome-humanoid-robot-learning.md",
       "detail_id": "entity-paper-awesome-humanoid-robot-learning",
-      "label": "Awesome Humanoid Robot Learning（FreeDof [44/44]）",
+      "label": "Awesome Humanoid Robot Learning",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -53,7 +53,7 @@
     {
       "path": "wiki/entities/paper-epopt-robust-policies-model-ensembles.md",
       "detail_id": "entity-paper-epopt-robust-policies-model-ensembles",
-      "label": "EPOpt: learning robust neural network policies using model ensembles（FreeDof [17/44]）",
+      "label": "EPOpt: learning robust neural network policies using model ensembles",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -63,7 +63,7 @@
     {
       "path": "wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md",
       "detail_id": "entity-paper-erez-simulation-tools-comparison-icra-2015",
-      "label": "Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX（FreeDof [20/44]）",
+      "label": "Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -73,7 +73,7 @@
     {
       "path": "wiki/entities/paper-eysenbach-off-dynamics-rl.md",
       "detail_id": "entity-paper-eysenbach-off-dynamics-rl",
-      "label": "Off-dynamics reinforcement learning: training for transfer with domain classifiers（FreeDof [35/44]）",
+      "label": "Off-dynamics reinforcement learning: training for transfer with domain classifiers",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -83,7 +83,7 @@
     {
       "path": "wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md",
       "detail_id": "entity-paper-gautier-khalil-inertial-parameter-identification-1988",
-      "label": "On the identification of the inertial parameters of robots（FreeDof [02/44]）",
+      "label": "On the identification of the inertial parameters of robots",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -93,7 +93,7 @@
     {
       "path": "wiki/entities/paper-gevers-identification-information-matrix-2009.md",
       "detail_id": "entity-paper-gevers-identification-information-matrix-2009",
-      "label": "Identification and the information matrix: how to get just sufficiently rich?（FreeDof [06/44]）",
+      "label": "Identification and the information matrix: how to get just sufficiently rich?",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -103,7 +103,7 @@
     {
       "path": "wiki/entities/paper-golemo-neural-augmented-robot-simulation.md",
       "detail_id": "entity-paper-golemo-neural-augmented-robot-simulation",
-      "label": "Sim-to-real transfer with neural-augmented robot simulation（FreeDof [30/44]）",
+      "label": "Sim-to-real transfer with neural-augmented robot simulation",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -113,7 +113,7 @@
     {
       "path": "wiki/entities/paper-kadian-sim2real-predictivity.md",
       "detail_id": "entity-paper-kadian-sim2real-predictivity",
-      "label": "Sim2Real predictivity: does evaluation in simulation predict real-world performance?（FreeDof [38/44]）",
+      "label": "Sim2Real predictivity: does evaluation in simulation predict real-world performance?",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -123,7 +123,7 @@
     {
       "path": "wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md",
       "detail_id": "entity-paper-khosla-robot-dynamics-parameter-identification-1985",
-      "label": "Parameter identification of robot dynamics（FreeDof [01/44]）",
+      "label": "Parameter identification of robot dynamics",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -133,7 +133,7 @@
     {
       "path": "wiki/entities/paper-kovalev-differentiable-simulation-locomotion-sysid.md",
       "detail_id": "entity-paper-kovalev-differentiable-simulation-locomotion-sysid",
-      "label": "Achieving precise and reliable locomotion with differentiable simulation-based system identification（FreeDof [07/44]）",
+      "label": "Achieving precise and reliable locomotion with differentiable simulation-based system identification",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -143,7 +143,7 @@
     {
       "path": "wiki/entities/paper-le-lidec-contact-models-comparative-analysis.md",
       "detail_id": "entity-paper-le-lidec-contact-models-comparative-analysis",
-      "label": "Contact models in robotics: a comparative analysis（FreeDof [22/44]）",
+      "label": "Contact models in robotics: a comparative analysis",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -153,7 +153,7 @@
     {
       "path": "wiki/entities/paper-muratore-bayesian-optimization-domain-randomization.md",
       "detail_id": "entity-paper-muratore-bayesian-optimization-domain-randomization",
-      "label": "Data-efficient domain randomization with Bayesian optimization（FreeDof [15/44]）",
+      "label": "Data-efficient domain randomization with Bayesian optimization",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -196,7 +196,7 @@
     {
       "path": "wiki/entities/paper-peng-dynamics-randomization-sim2real.md",
       "detail_id": "entity-paper-peng-dynamics-randomization-sim2real",
-      "label": "Sim-to-real transfer of robotic control with dynamics randomization（FreeDof [10/44]）",
+      "label": "Sim-to-real transfer of robotic control with dynamics randomization",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",
@@ -206,7 +206,7 @@
     {
       "path": "wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md",
       "detail_id": "entity-paper-polysim-multi-simulator-humanoid-sim2real",
-      "label": "PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization（FreeDof [19/44]）",
+      "label": "PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization",
       "type": "entity",
       "recency": "2026-09-20",
       "source": "git",

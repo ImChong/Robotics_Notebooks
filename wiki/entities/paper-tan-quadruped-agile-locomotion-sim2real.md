@@ -19,7 +19,7 @@ sources:
 summary: "腿足 Sim2Real 经典流水线：电机辨识、时延补偿、动力学随机化与推力扰动。"
 ---
 
-# Sim-to-real: learning agile locomotion for quadruped robots（FreeDof [11/44]）
+# Sim-to-real: learning agile locomotion for quadruped robots
 
 **Sim-to-real: learning agile locomotion for quadruped robots**（[arXiv:1804.10332](https://arxiv.org/abs/1804.10332)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[11/44]**，归类 **域随机化**。
 

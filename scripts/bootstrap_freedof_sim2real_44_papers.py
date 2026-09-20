@@ -1104,7 +1104,7 @@ sources:
 summary: "{p["one_liner"][:160]}"
 ---
 
-# {p["title"].split("(")[0].strip()}（FreeDof [{p["ref"]:02d}/44]）
+# {p["title"].split("(")[0].strip()}
 
 **{p["title"]}**（{ax_link}）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/{BLOG}) 参考文献 **[{p["ref"]:02d}/44]**，归类 **{p["section"]}**。
 

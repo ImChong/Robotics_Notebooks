@@ -18,7 +18,7 @@ sources:
 summary: "横比主流物理引擎的速度–精度权衡，说明引擎选择本身影响 Sim2Real。"
 ---
 
-# Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX（FreeDof [20/44]）
+# Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX
 
 **Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX**（ICRA 2015）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[20/44]**，归类 **域随机化**。
 

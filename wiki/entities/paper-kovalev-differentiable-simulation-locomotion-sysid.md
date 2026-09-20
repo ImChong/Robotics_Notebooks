@@ -19,7 +19,7 @@ sources:
 summary: "用可微仿真梯度替代纯采样优化，在高维参数空间做精确 locomotion SysID。"
 ---
 
-# Achieving precise and reliable locomotion with differentiable simulation-based system identification（FreeDof [07/44]）
+# Achieving precise and reliable locomotion with differentiable simulation-based system identification
 
 **Achieving precise and reliable locomotion with differentiable simulation-based system identification**（[arXiv:2508.04696](https://arxiv.org/abs/2508.04696)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[07/44]**，归类 **系统辨识**。
 

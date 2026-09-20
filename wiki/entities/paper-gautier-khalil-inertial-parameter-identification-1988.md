@@ -18,7 +18,7 @@ sources:
 summary: "提出机器人惯性参数基参数（base parameters）概念：部分参数只能成组辨识。"
 ---
 
-# On the identification of the inertial parameters of robots（FreeDof [02/44]）
+# On the identification of the inertial parameters of robots
 
 **On the identification of the inertial parameters of robots**（CDC 1988）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[02/44]**，归类 **系统辨识**。
 

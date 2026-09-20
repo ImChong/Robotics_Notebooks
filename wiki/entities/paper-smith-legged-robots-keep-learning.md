@@ -19,7 +19,7 @@ sources:
 summary: "真机持续微调 locomotion 策略，机器人可在真实世界中自行恢复与学习。"
 ---
 
-# Legged robots that keep on learning: fine-tuning locomotion policies in the real world（FreeDof [36/44]）
+# Legged robots that keep on learning: fine-tuning locomotion policies in the real world
 
 **Legged robots that keep on learning: fine-tuning locomotion policies in the real world**（[arXiv:2110.05457](https://arxiv.org/abs/2110.05457)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[36/44]**，归类 **残差学习**。
 

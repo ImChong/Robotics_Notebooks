@@ -19,7 +19,7 @@ sources:
 summary: "用方块抛落与 Cassie 跳跃落地真机冲击数据检验 Drake/MuJoCo/Bullet。"
 ---
 
-# Validating robotics simulators on real-world impacts（FreeDof [21/44]）
+# Validating robotics simulators on real-world impacts
 
 **Validating robotics simulators on real-world impacts**（[arXiv:2110.00541](https://arxiv.org/abs/2110.00541)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[21/44]**，归类 **域随机化**。
 

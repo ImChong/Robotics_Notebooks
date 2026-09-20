@@ -19,7 +19,7 @@ sources:
 summary: "用贝叶斯优化调 DR 分布，只需成功率等稀疏表现信号，无需逐时刻轨迹对齐。"
 ---
 
-# Data-efficient domain randomization with Bayesian optimization（FreeDof [15/44]）
+# Data-efficient domain randomization with Bayesian optimization
 
 **Data-efficient domain randomization with Bayesian optimization**（[arXiv:2003.02471](https://arxiv.org/abs/2003.02471)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[15/44]**，归类 **域随机化**。
 
