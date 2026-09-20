@@ -1,13 +1,46 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4601,
-  "edge_count": 40360,
+  "node_count": 4602,
+  "edge_count": 40372,
   "coverage": {
-    "covered": 4572,
-    "total": 4572,
+    "covered": 4573,
+    "total": 4573,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/learnprompt.md",
+      "detail_id": "entity-learnprompt",
+      "label": "LearnPrompt",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/painode-176-attentionbasedmapencodingforgen.md",
+      "detail_id": "entity-painode-176-attentionbasedmapencodingforgen",
+      "label": "Attention-Based Map Encoding for Generalized Legged Locomotion",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/overview/awesome-physical-ai-technology-map.md",
+      "detail_id": "wiki-overview-awesome-physical-ai-technology-map",
+      "label": "Awesome Physical AI 技术地图",
+      "type": "overview",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/painode-001-2025gspaperlist.md",
       "detail_id": "entity-painode-001-2025gspaperlist",
@@ -194,51 +227,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-026-introductiontoautonomousrobots.md",
-      "detail_id": "entity-painode-026-introductiontoautonomousrobots",
-      "label": "Introduction to Autonomous Robots",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-028-planningalgorithms.md",
-      "detail_id": "entity-painode-028-planningalgorithms",
-      "label": "Planning Algorithms",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-029-probabilisticrobotics.md",
-      "detail_id": "entity-painode-029-probabilisticrobotics",
-      "label": "Probabilistic Robotics",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/painode-001-2025gspaperlist.md",
-    "detail_id": "entity-painode-001-2025gspaperlist",
-    "label": "2025 GS Paper List",
+    "path": "wiki/entities/learnprompt.md",
+    "detail_id": "entity-learnprompt",
+    "label": "LearnPrompt",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
@@ -263,7 +263,7 @@
     },
     {
       "label": "全身控制",
-      "size": 213
+      "size": 201
     }
   ],
   "top_hubs": [
