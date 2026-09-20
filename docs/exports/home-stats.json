@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/learnprompt.md",
+      "detail_id": "entity-learnprompt",
+      "label": "LearnPrompt",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
       "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
       "label": "具身数据采集五大路线产业地图",
@@ -195,26 +206,18 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-vane.md",
-      "detail_id": "entity-paper-vane",
-      "label": "VANE（arXiv:2608.09448）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
-    "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
-    "label": "具身数据采集五大路线产业地图",
-    "type": "query",
+    "path": "wiki/entities/learnprompt.md",
+    "detail_id": "entity-learnprompt",
+    "label": "LearnPrompt",
+    "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {

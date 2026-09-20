@@ -166,6 +166,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
         "主路线：运动控制算法工程师成长路线（Motion Control Algorithm Engineer Growth Roadmap）"
     ),
     "wiki/entities/isaac-lab.md": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab）",
+    "wiki/entities/lerobot.md": "具身智能框架（LeRobot, Hugging Face）",
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"
