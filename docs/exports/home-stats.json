@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/robot-simulation-three-layers.md",
+      "detail_id": "wiki-concepts-robot-simulation-three-layers",
+      "label": "机器人仿真三层分工（Physics / Platform / Learning）",
+      "type": "concept",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/formalizations/ode-solving-methods.md",
+      "detail_id": "wiki-formalizations-ode-solving-methods",
+      "label": "常微分方程求解决策链（ODE Solving Methods）",
+      "type": "formalization",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/qwen-image-2-1.md",
       "detail_id": "entity-qwen-image-2-1",
       "label": "Qwen-Image-2.1",
@@ -186,37 +206,17 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rarl-robust-adversarial-rl.md",
-      "detail_id": "entity-paper-rarl-robust-adversarial-rl",
-      "label": "Robust adversarial reinforcement learning",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md",
-      "detail_id": "entity-paper-schwarke-differentiable-simulation-locomotion-corl",
-      "label": "Learning deployable locomotion control via differentiable simulation",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/qwen-image-2-1.md",
-    "detail_id": "entity-qwen-image-2-1",
-    "label": "Qwen-Image-2.1",
-    "type": "entity",
+    "path": "wiki/concepts/robot-simulation-three-layers.md",
+    "detail_id": "wiki-concepts-robot-simulation-three-layers",
+    "label": "机器人仿真三层分工（Physics / Platform / Learning）",
+    "type": "concept",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
   },
   "top_communities": [
     {
