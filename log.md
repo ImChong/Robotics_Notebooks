@@ -1,3 +1,5 @@
+## [2026-09-20] ingest | sources/repos/awesome-physical-ai-natnew.md + awesome-physical-ai-aichr.md — 纵深节点化双清单并集；去重后 384 条独立详情节点（新建 249、复用 135，两清单交叉 33）；开源结论：清单仓已开源，条目级以各项目页为准（索引级未逐仓核）；关键页 wiki/overview/awesome-physical-ai-technology-map.md；歧义项 Stanford RISELab URL 指向 SKKU、Apollo Robot 指向 apollo.auto
+
 ## [2026-09-20] ingest | sources/papers/simplememvla_arxiv_2609_05533.md — SimpleMemVLA（arXiv:2609.05533）原生视频上下文记忆 VLA；OpenBMB 全栈已开源；升格 paper-simplememvla；交叉 vla 长程记忆谱系
 
 ## [2026-09-20] ingest | sources/blogs/wechat_airs_embodied_data_five_routes_2026-09-15.md — AIRS 具身数采五大路线盘点；升格 embodied-data-collection-five-routes-landscape query 页；交叉四层术语地图 / depth-embodied-data

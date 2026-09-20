@@ -766,6 +766,218 @@
 - [OSQP](wiki/entities/osqp.md) — OSQP](https://github.com/osqp/osqp) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-moti `📅unknown` `[entity_page]`
 - [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
+- [2025 GS Paper List](wiki/entities/painode-001-2025gspaperlist.md) — 2025 GS Paper List** 收录于 awesome-physical-ai（aichr）**第 001/384** 条，分组 **3D Computer Vision**。本页为知识 `📅unknown` `[entity_page]`
+- [Awesome 3D Gaussian Splatting](wiki/entities/painode-002-awesome3dgaussiansplatting.md) — Awesome 3D Gaussian Splatting** 收录于 awesome-physical-ai（aichr）**第 002/384** 条，分组 **3D Computer Vis `📅unknown` `[entity_page]`
+- [Depth Anything](wiki/entities/painode-003-depthanything.md) — Depth Anything** 收录于 awesome-physical-ai（aichr）**第 003/384** 条，分组 **3D Computer Vision**。本页为知识库  `📅unknown` `[entity_page]`
+- [Grounded SAM 2](wiki/entities/painode-004-groundedsam2.md) — Grounded SAM 2** 收录于 awesome-physical-ai（aichr）**第 004/384** 条，分组 **3D Computer Vision**。本页为知识库  `📅unknown` `[entity_page]`
+- [MiDaS](wiki/entities/painode-005-midas.md) — MiDaS** 收录于 awesome-physical-ai（aichr）**第 005/384** 条，分组 **3D Computer Vision**。本页为知识库 **策展索引级** 详 `📅unknown` `[entity_page]`
+- [NeRF + GS for Robotics](wiki/entities/painode-006-nerfgsforrobotics.md) — NeRF + GS for Robotics** 收录于 awesome-physical-ai（aichr）**第 006/384** 条，分组 **3D Computer Vision**。本 `📅unknown` `[entity_page]`
+- [ALFRED](wiki/entities/painode-009-alfred.md) — ALFRED** 收录于 awesome-physical-ai（natnew）**第 009/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点；细节 `📅unknown` `[entity_page]`
+- [ARNOLD](wiki/entities/painode-010-arnold.md) — ARNOLD** 收录于 awesome-physical-ai（natnew）**第 010/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点；细节 `📅unknown` `[entity_page]`
+- [CARLA Leaderboard](wiki/entities/painode-011-carlaleaderboard.md) — CARLA Leaderboard** 收录于 awesome-physical-ai（natnew）**第 011/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [Colosseum](wiki/entities/painode-012-colosseum.md) — Colosseum** 收录于 awesome-physical-ai（natnew）**第 012/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点 `📅unknown` `[entity_page]`
+- [FurnitureBench](wiki/entities/painode-013-furniturebench.md) — FurnitureBench** 收录于 awesome-physical-ai（natnew）**第 013/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [MineDojo](wiki/entities/painode-018-minedojo.md) — MineDojo** 收录于 awesome-physical-ai（natnew）**第 018/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [OpenEQA](wiki/entities/painode-019-openeqa.md) — OpenEQA** 收录于 awesome-physical-ai（natnew）**第 019/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点；细 `📅unknown` `[entity_page]`
+- [RoboTHOR](wiki/entities/painode-021-robothor.md) — RoboTHOR** 收录于 awesome-physical-ai（natnew）**第 021/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [TEACh](wiki/entities/painode-023-teach.md) — TEACh** 收录于 awesome-physical-ai（natnew）**第 023/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点；细节以 `📅unknown` `[entity_page]`
+- [VLABench](wiki/entities/painode-024-vlabench.md) — VLABench** 收录于 awesome-physical-ai（aichr）**第 024/384** 条，分组 **Benchmarks**。本页为知识库 **策展索引级** 详情节点；细 `📅unknown` `[entity_page]`
+- [A Mathematical Introduction to Robotic Manipulation](wiki/entities/painode-025-amathematicalintroductiontorobot.md) — A Mathematical Introduction to Robotic Manipulation** 收录于 awesome-physical-ai（natnew）**第 025/384 `📅unknown` `[entity_page]`
+- [Introduction to Autonomous Robots](wiki/entities/painode-026-introductiontoautonomousrobots.md) — Introduction to Autonomous Robots** 收录于 awesome-physical-ai（natnew）**第 026/384** 条，分组 **Books**。本页 `📅unknown` `[entity_page]`
+- [Planning Algorithms](wiki/entities/painode-028-planningalgorithms.md) — Planning Algorithms** 收录于 awesome-physical-ai（natnew）**第 028/384** 条，分组 **Books**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Probabilistic Robotics](wiki/entities/painode-029-probabilisticrobotics.md) — Probabilistic Robotics** 收录于 awesome-physical-ai（natnew）**第 029/384** 条，分组 **Books**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [Reinforcement Learning](wiki/entities/painode-030-reinforcementlearninganintroducti.md) — Reinforcement Learning: An Introduction** 收录于 awesome-physical-ai（natnew）**第 030/384** 条，分组 **Book `📅unknown` `[entity_page]`
+- [Robotics, Vision and Control](wiki/entities/painode-031-roboticsvisionandcontrol.md) — Robotics, Vision and Control** 收录于 awesome-physical-ai（natnew）**第 031/384** 条，分组 **Books**。本页为知识库  `📅unknown` `[entity_page]`
+- [Hugging Face Discord](wiki/entities/painode-032-huggingfacediscord.md) — Hugging Face Discord** 收录于 awesome-physical-ai（natnew）**第 032/384** 条，分组 **Community**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [Pollen Robotics Discord](wiki/entities/painode-033-pollenroboticsdiscord.md) — Pollen Robotics Discord** 收录于 awesome-physical-ai（natnew）**第 033/384** 条，分组 **Community**。本页为知识库  `📅unknown` `[entity_page]`
+- [r/MachineLearning](wiki/entities/painode-034-rmachinelearning.md) — r/MachineLearning** 收录于 awesome-physical-ai（aichr）**第 034/384** 条，分组 **Community**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [r/robotics](wiki/entities/painode-035-rrobotics.md) — r/robotics** 收录于 awesome-physical-ai（natnew、aichr）**第 035/384** 条，分组 **Community**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [r/ROS](wiki/entities/painode-036-rros.md) — r/ROS** 收录于 awesome-physical-ai（aichr）**第 036/384** 条，分组 **Community**。本页为知识库 **策展索引级** 详情节点；细节以官方 `📅unknown` `[entity_page]`
+- [Robot Learning Discord](wiki/entities/painode-037-robotlearningdiscord.md) — Robot Learning Discord** 收录于 awesome-physical-ai（natnew）**第 037/384** 条，分组 **Community**。本页为知识库  `📅unknown` `[entity_page]`
+- [Robotics Stack Exchange](wiki/entities/painode-038-roboticsstackexchange.md) — Robotics Stack Exchange** 收录于 awesome-physical-ai（natnew）**第 038/384** 条，分组 **Community**。本页为知识库  `📅unknown` `[entity_page]`
+- [ROS Discourse](wiki/entities/painode-039-xrosdiscourse.md) — ROS Discourse** 收录于 awesome-physical-ai（natnew、aichr）**第 039/384** 条，分组 **Community**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Agility Robotics](wiki/entities/painode-041-agilityrobotics.md) — Agility Robotics** 收录于 awesome-physical-ai（natnew）**第 041/384** 条，分组 **Companies / Hardware Platfo `📅unknown` `[entity_page]`
+- [Apptronik](wiki/entities/painode-042-apptronik.md) — Apptronik** 收录于 awesome-physical-ai（natnew）**第 042/384** 条，分组 **Companies**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [Covariant](wiki/entities/painode-044-covariant.md) — Covariant** 收录于 awesome-physical-ai（natnew）**第 044/384** 条，分组 **Companies**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [Dexterity](wiki/entities/painode-045-dexterity.md) — Dexterity** 收录于 awesome-physical-ai（natnew）**第 045/384** 条，分组 **Companies**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [Intrinsic](wiki/entities/painode-046-intrinsic.md) — Intrinsic** 收录于 awesome-physical-ai（natnew）**第 046/384** 条，分组 **Companies**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [Sanctuary AI](wiki/entities/painode-048-sanctuaryai.md) — Sanctuary AI** 收录于 awesome-physical-ai（natnew）**第 048/384** 条，分组 **Companies**。本页为知识库 **策展索引级** 详情 `📅unknown` `[entity_page]`
+- [Sunday Robotics](wiki/entities/painode-050-sundayrobotics.md) — Sunday Robotics** 收录于 awesome-physical-ai（natnew）**第 050/384** 条，分组 **Companies**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Wayve](wiki/entities/painode-053-wayve.md) — Wayve** 收录于 awesome-physical-ai（natnew）**第 053/384** 条，分组 **Companies**。本页为知识库 **策展索引级** 详情节点；细节以官 `📅unknown` `[entity_page]`
+- [CoRL](wiki/entities/painode-054-corl.md) — CoRL** 收录于 awesome-physical-ai（natnew、aichr）**第 054/384** 条，分组 **Conferences / Community**。本页为知识库  `📅unknown` `[entity_page]`
+- [HRI](wiki/entities/painode-055-hri.md) — HRI** 收录于 awesome-physical-ai（natnew）**第 055/384** 条，分组 **Conferences**。本页为知识库 **策展索引级** 详情节点；细节以官 `📅unknown` `[entity_page]`
+- [Humanoids](wiki/entities/painode-056-humanoids.md) — Humanoids** 收录于 awesome-physical-ai（natnew）**第 056/384** 条，分组 **Conferences**。本页为知识库 **策展索引级** 详情节 `📅unknown` `[entity_page]`
+- [ICLR](wiki/entities/painode-057-iclr.md) — ICLR** 收录于 awesome-physical-ai（natnew）**第 057/384** 条，分组 **Conferences**。本页为知识库 **策展索引级** 详情节点；细节以 `📅unknown` `[entity_page]`
+- [ICML](wiki/entities/painode-058-icml.md) — ICML** 收录于 awesome-physical-ai（natnew）**第 058/384** 条，分组 **Conferences**。本页为知识库 **策展索引级** 详情节点；细节以 `📅unknown` `[entity_page]`
+- [ICRA](wiki/entities/painode-059-icra.md) — ICRA** 收录于 awesome-physical-ai（natnew、aichr）**第 059/384** 条，分组 **Conferences / Community**。本页为知识库  `📅unknown` `[entity_page]`
+- [IROS](wiki/entities/painode-060-iros.md) — IROS** 收录于 awesome-physical-ai（natnew、aichr）**第 060/384** 条，分组 **Conferences / Community**。本页为知识库  `📅unknown` `[entity_page]`
+- [NeurIPS](wiki/entities/painode-061-neurips.md) — NeurIPS** 收录于 awesome-physical-ai（natnew）**第 061/384** 条，分组 **Conferences**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [RSS](wiki/entities/painode-062-rss.md) — RSS** 收录于 awesome-physical-ai（natnew、aichr）**第 062/384** 条，分组 **Conferences / Community**。本页为知识库  `📅unknown` `[entity_page]`
+- [16-745 — Optimal Control and Reinforcement Learning (CMU)](wiki/entities/painode-063-16745optimalcontrolandreinforce.md) — 16-745 — Optimal Control and Reinforcement Learning (CMU)** 收录于 awesome-physical-ai（natnew）**第 063 `📅unknown` `[entity_page]`
+- [16-831 — Introduction to Robot Learning (CMU)](wiki/entities/painode-064-16831introductiontorobotlearnin.md) — 16-831 — Introduction to Robot Learning (CMU)** 收录于 awesome-physical-ai（natnew）**第 064/384** 条，分组  `📅unknown` `[entity_page]`
+- [CS 224R — Deep RL for Robotics (Stanford)](wiki/entities/painode-065-cs224rdeeprlforroboticsstanfor.md) — CS 224R — Deep RL for Robotics (Stanford)** 收录于 awesome-physical-ai（natnew、aichr）**第 065/384** 条，分 `📅unknown` `[entity_page]`
+- [CS 234 — Reinforcement Learning (Stanford)](wiki/entities/painode-066-cs234reinforcementlearningstanfo.md) — CS 234 — Reinforcement Learning (Stanford)** 收录于 awesome-physical-ai（natnew）**第 066/384** 条，分组 **C `📅unknown` `[entity_page]`
+- [CS 285 — Deep Reinforcement Learning (Berkeley)](wiki/entities/painode-067-cs285deepreinforcementlearningb.md) — CS 285 — Deep Reinforcement Learning (Berkeley)** 收录于 awesome-physical-ai（natnew）**第 067/384** 条，分 `📅unknown` `[entity_page]`
+- [CS 287 — Advanced Robotics (Berkeley)](wiki/entities/painode-068-cs287advancedroboticsberkeley.md) — CS 287 — Advanced Robotics (Berkeley)** 收录于 awesome-physical-ai（natnew）**第 068/384** 条，分组 **Course `📅unknown` `[entity_page]`
+- [CS 336 — Robot Learning (Stanford)](wiki/entities/painode-069-cs336robotlearningstanford.md) — CS 336 — Robot Learning (Stanford)** 收录于 awesome-physical-ai（natnew）**第 069/384** 条，分组 **Courses `📅unknown` `[entity_page]`
+- [Deep RL Bootcamp](wiki/entities/painode-070-deeprlbootcamp.md) — Deep RL Bootcamp** 收录于 awesome-physical-ai（natnew）**第 070/384** 条，分组 **Courses**。本页为知识库 **策展索引级**  `📅unknown` `[entity_page]`
+- [DeepMind x UCL RL Lecture Series](wiki/entities/painode-071-deepmindxuclrllectureseries.md) — DeepMind x UCL RL Lecture Series** 收录于 awesome-physical-ai（natnew）**第 071/384** 条，分组 **Courses**。本 `📅unknown` `[entity_page]`
+- [Fast.ai Practical Deep Learning](wiki/entities/painode-072-fastaipracticaldeeplearning.md) — Fast.ai Practical Deep Learning** 收录于 awesome-physical-ai（natnew）**第 072/384** 条，分组 **Courses**。本页 `📅unknown` `[entity_page]`
+- [Hugging Face Deep RL Course](wiki/entities/painode-073-huggingfacedeeprlcourse.md) — Hugging Face Deep RL Course** 收录于 awesome-physical-ai（natnew）**第 073/384** 条，分组 **Courses**。本页为知识库 `📅unknown` `[entity_page]`
+- [MIT Underactuated Robotics](wiki/entities/painode-074-mitunderactuatedrobotics.md) — MIT Underactuated Robotics** 收录于 awesome-physical-ai（natnew）**第 074/384** 条，分组 **Courses**。本页为知识库  `📅unknown` `[entity_page]`
+- [NVIDIA DLI Robotics](wiki/entities/painode-075-nvidiadlirobotics.md) — NVIDIA DLI Robotics** 收录于 awesome-physical-ai（natnew）**第 075/384** 条，分组 **Courses**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Spinning Up in Deep RL (OpenAI)](wiki/entities/painode-076-spinningupindeeprlopenai.md) — Spinning Up in Deep RL (OpenAI)** 收录于 awesome-physical-ai（natnew）**第 076/384** 条，分组 **Courses**。本页 `📅unknown` `[entity_page]`
+- [zero2robot](wiki/entities/painode-077-zero2robot.md) — zero2robot** 收录于 awesome-physical-ai（natnew）**第 077/384** 条，分组 **Courses**。本页为知识库 **策展索引级** 详情节点；细 `📅unknown` `[entity_page]`
+- [MIT Foundation Models & AI](wiki/entities/painode-080-mitfoundationmodelsai.md) — MIT Foundation Models & AI** 收录于 awesome-physical-ai（aichr）**第 080/384** 条，分组 **Courses & Tutorial `📅unknown` `[entity_page]`
+- [Physical AI for Science](wiki/entities/painode-081-physicalaiforscience.md) — Physical AI for Science** 收录于 awesome-physical-ai（aichr）**第 081/384** 条，分组 **Courses & Tutorials `📅unknown` `[entity_page]`
+- [Argoverse 2](wiki/entities/painode-083-argoverse2.md) — Argoverse 2** 收录于 awesome-physical-ai（natnew）**第 083/384** 条，分组 **Datasets**。本页为知识库 **策展索引级** 详情节点 `📅unknown` `[entity_page]`
+- [BridgeData V2](wiki/entities/painode-085-bridgedatav2.md) — BridgeData V2** 收录于 awesome-physical-ai（natnew、aichr）**第 085/384** 条，分组 **Datasets**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [EPIC-KITCHENS-100](wiki/entities/painode-089-epickitchens100.md) — EPIC-KITCHENS-100** 收录于 awesome-physical-ai（natnew）**第 089/384** 条，分组 **Datasets**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [nuScenes](wiki/entities/painode-090-nuscenes.md) — nuScenes** 收录于 awesome-physical-ai（natnew）**第 090/384** 条，分组 **Datasets**。本页为知识库 **策展索引级** 详情节点；细节 `📅unknown` `[entity_page]`
+- [RH20T](wiki/entities/painode-092-rh20t.md) — RH20T** 收录于 awesome-physical-ai（natnew）**第 092/384** 条，分组 **Datasets**。本页为知识库 **策展索引级** 详情节点；细节以官方 `📅unknown` `[entity_page]`
+- [RLDS](wiki/entities/painode-093-rlds.md) — RLDS** 收录于 awesome-physical-ai（natnew）**第 093/384** 条，分组 **Datasets**。本页为知识库 **策展索引级** 详情节点；细节以官方文 `📅unknown` `[entity_page]`
+- [RoboMIND](wiki/entities/painode-094-robomind.md) — RoboMIND** 收录于 awesome-physical-ai（natnew）**第 094/384** 条，分组 **Datasets**。本页为知识库 **策展索引级** 详情节点；细节 `📅unknown` `[entity_page]`
+- [Something-Something V2](wiki/entities/painode-096-somethingsomethingv2.md) — Something-Something V2** 收录于 awesome-physical-ai（natnew）**第 096/384** 条，分组 **Datasets**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [Waymo Open Dataset](wiki/entities/painode-097-waymoopendataset.md) — Waymo Open Dataset** 收录于 awesome-physical-ai（natnew）**第 097/384** 条，分组 **Datasets**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [AutoGPTQ](wiki/entities/painode-098-autogptq.md) — AutoGPTQ** 收录于 awesome-physical-ai（aichr）**第 098/384** 条，分组 **Edge AI & Inference**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [llama.cpp](wiki/entities/painode-099-llamacpp.md) — llama.cpp** 收录于 awesome-physical-ai（aichr）**第 099/384** 条，分组 **Edge AI & Inference**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [TensorRT-LLM for Edge](wiki/entities/painode-102-tensorrtllmforedge.md) — TensorRT-LLM for Edge** 收录于 awesome-physical-ai（aichr）**第 102/384** 条，分组 **Edge AI & Inference**。本 `📅unknown` `[entity_page]`
+- [vLLM](wiki/entities/painode-103-vllm.md) — vLLM** 收录于 awesome-physical-ai（aichr）**第 103/384** 条，分组 **Edge AI & Inference**。本页为知识库 **策展索引级** 详 `📅unknown` `[entity_page]`
+- [Bench2Drive](wiki/entities/painode-104-bench2drive.md) — Bench2Drive** 收录于 awesome-physical-ai（natnew）**第 104/384** 条，分组 **Evaluation Methodology**。本页为知识库  `📅unknown` `[entity_page]`
+- [CARLA ScenarioRunner](wiki/entities/painode-105-carlascenariorunner.md) — CARLA ScenarioRunner** 收录于 awesome-physical-ai（natnew）**第 105/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
+- [CodaLab Competitions](wiki/entities/painode-106-codalabcompetitions.md) — CodaLab Competitions** 收录于 awesome-physical-ai（natnew）**第 106/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
+- [EvalAI](wiki/entities/painode-110-evalai.md) — EvalAI** 收录于 awesome-physical-ai（natnew）**第 110/384** 条，分组 **Evaluation Methodology**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [nuPlan Devkit](wiki/entities/painode-112-nuplandevkit.md) — nuPlan Devkit** 收录于 awesome-physical-ai（natnew）**第 112/384** 条，分组 **Evaluation Methodology**。本页为知识 `📅unknown` `[entity_page]`
+- [RoboHive](wiki/entities/painode-114-robohive.md) — RoboHive** 收录于 awesome-physical-ai（natnew）**第 114/384** 条，分组 **Evaluation Methodology**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [SimplerEnv](wiki/entities/painode-116-xsimplerenv.md) — SimplerEnv** 收录于 awesome-physical-ai（natnew）**第 116/384** 条，分组 **Evaluation Methodology**。本页为知识库  `📅unknown` `[entity_page]`
+- [Statistical Reliability of RL Evaluations](wiki/entities/painode-117-statisticalreliabilityofrlevalua.md) — Statistical Reliability of RL Evaluations** 收录于 awesome-physical-ai（natnew）**第 117/384** 条，分组 **Ev `📅unknown` `[entity_page]`
+- [Waymo Open Challenges](wiki/entities/painode-118-waymoopenchallenges.md) — Waymo Open Challenges** 收录于 awesome-physical-ai（natnew）**第 118/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
+- [copper-rs](wiki/entities/painode-124-copperrs.md) — copper-rs** 收录于 awesome-physical-ai（aichr）**第 124/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [LangChain](wiki/entities/painode-125-langchain.md) — LangChain** 收录于 awesome-physical-ai（aichr）**第 125/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [LlamaFactory](wiki/entities/painode-126-llamafactory.md) — LlamaFactory** 收录于 awesome-physical-ai（aichr）**第 126/384** 条，分组 **Frameworks & Libraries**。本页为知识库  `📅unknown` `[entity_page]`
+- [OpenHands](wiki/entities/painode-128-openhands.md) — OpenHands** 收录于 awesome-physical-ai（aichr）**第 128/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [RAI](wiki/entities/painode-129-rai.md) — RAI** 收录于 awesome-physical-ai（aichr）**第 129/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [ROS 2 AI](wiki/entities/painode-130-xros2ai.md) — ROS 2 AI** 收录于 awesome-physical-ai（aichr）**第 130/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [EU AI Act](wiki/entities/painode-131-euaiact.md) — EU AI Act** 收录于 awesome-physical-ai（natnew）**第 131/384** 条，分组 **Governance & Policy**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [EU Machinery Regulation (EU 2023/1230)](wiki/entities/painode-132-eumachineryregulationeu20231230.md) — EU Machinery Regulation (EU 2023/1230)** 收录于 awesome-physical-ai（natnew）**第 132/384** 条，分组 **Gover `📅unknown` `[entity_page]`
+- [IEEE 7000 Series](wiki/entities/painode-133-ieee7000series.md) — IEEE 7000 Series** 收录于 awesome-physical-ai（natnew）**第 133/384** 条，分组 **Governance & Policy**。本页为知识 `📅unknown` `[entity_page]`
+- [ISO 10218 / ISO/TS 15066](wiki/entities/painode-134-iso10218isots15066.md) — ISO 10218 / ISO/TS 15066** 收录于 awesome-physical-ai（natnew）**第 134/384** 条，分组 **Governance & Policy `📅unknown` `[entity_page]`
+- [ISO 13482](wiki/entities/painode-135-iso13482.md) — ISO 13482** 收录于 awesome-physical-ai（natnew）**第 135/384** 条，分组 **Governance & Policy**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [ISO 26262](wiki/entities/painode-136-iso26262.md) — ISO 26262** 收录于 awesome-physical-ai（natnew）**第 136/384** 条，分组 **Governance & Policy**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [ISO/IEC 42001](wiki/entities/painode-137-isoiec42001.md) — ISO/IEC 42001** 收录于 awesome-physical-ai（natnew）**第 137/384** 条，分组 **Governance & Policy**。本页为知识库  `📅unknown` `[entity_page]`
+- [NIST AI Risk Management Framework](wiki/entities/painode-138-nistairiskmanagementframework.md) — NIST AI Risk Management Framework** 收录于 awesome-physical-ai（natnew）**第 138/384** 条，分组 **Governance `📅unknown` `[entity_page]`
+- [NIST AI RMF Generative AI Profile](wiki/entities/painode-139-nistairmfgenerativeaiprofile.md) — NIST AI RMF Generative AI Profile** 收录于 awesome-physical-ai（natnew）**第 139/384** 条，分组 **Governance `📅unknown` `[entity_page]`
+- [OECD AI Principles](wiki/entities/painode-140-oecdaiprinciples.md) — OECD AI Principles** 收录于 awesome-physical-ai（natnew）**第 140/384** 条，分组 **Governance & Policy**。本页为 `📅unknown` `[entity_page]`
+- [UK AI Safety Institute](wiki/entities/painode-141-ukaisafetyinstitute.md) — UK AI Safety Institute** 收录于 awesome-physical-ai（natnew）**第 141/384** 条，分组 **Governance & Policy `📅unknown` `[entity_page]`
+- [UL 4600](wiki/entities/painode-142-ul4600.md) — UL 4600** 收录于 awesome-physical-ai（natnew）**第 142/384** 条，分组 **Governance & Policy**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [UNECE R155](wiki/entities/painode-143-unecer155.md) — UNECE R155** 收录于 awesome-physical-ai（natnew）**第 143/384** 条，分组 **Governance & Policy**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [UNECE R156](wiki/entities/painode-144-unecer156.md) — UNECE R156** 收录于 awesome-physical-ai（natnew）**第 144/384** 条，分组 **Governance & Policy**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [White House Executive Order on AI (14110)](wiki/entities/painode-145-whitehouseexecutiveorderonai14.md) — White House Executive Order on AI (14110)** 收录于 awesome-physical-ai（natnew）**第 145/384** 条，分组 **Go `📅unknown` `[entity_page]`
+- [AnySkin](wiki/entities/painode-146-anyskin.md) — AnySkin** 收录于 awesome-physical-ai（aichr）**第 146/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [DexSkin](wiki/entities/painode-148-dexskin.md) — DexSkin** 收录于 awesome-physical-ai（aichr）**第 148/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Dynamixel](wiki/entities/painode-149-dynamixel.md) — Dynamixel** 收录于 awesome-physical-ai（aichr）**第 149/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [GelSight](wiki/entities/painode-151-gelsight.md) — GelSight** 收录于 awesome-physical-ai（aichr）**第 151/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [Google Coral](wiki/entities/painode-152-googlecoral.md) — Google Coral** 收录于 awesome-physical-ai（aichr）**第 152/384** 条，分组 **Hardware & Actuation**。本页为知识库  `📅unknown` `[entity_page]`
+- [Intel Neural Compute Stick](wiki/entities/painode-153-intelneuralcomputestick.md) — Intel Neural Compute Stick** 收录于 awesome-physical-ai（aichr）**第 153/384** 条，分组 **Hardware & Actuati `📅unknown` `[entity_page]`
+- [Clearpath Robotics](wiki/entities/painode-156-clearpathrobotics.md) — Clearpath Robotics** 收录于 awesome-physical-ai（natnew）**第 156/384** 条，分组 **Hardware Platforms**。本页为知 `📅unknown` `[entity_page]`
+- [Dex-UMI](wiki/entities/painode-157-dexumi.md) — Dex-UMI** 收录于 awesome-physical-ai（natnew）**第 157/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Gello](wiki/entities/painode-161-gello.md) — Gello** 收录于 awesome-physical-ai（natnew）**第 161/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展索引级**  `📅unknown` `[entity_page]`
+- [Hello Robot Stretch](wiki/entities/painode-162-hellorobotstretch.md) — Hello Robot Stretch** 收录于 awesome-physical-ai（natnew）**第 162/384** 条，分组 **Hardware Platforms**。本页为 `📅unknown` `[entity_page]`
+- [Kinova](wiki/entities/painode-163-kinova.md) — Kinova** 收录于 awesome-physical-ai（natnew）**第 163/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Kuka iiwa](wiki/entities/painode-164-kukaiiwa.md) — Kuka iiwa** 收录于 awesome-physical-ai（natnew）**第 164/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [Open Dynamic Robot Initiative](wiki/entities/painode-165-opendynamicrobotinitiative.md) — Open Dynamic Robot Initiative** 收录于 awesome-physical-ai（natnew）**第 165/384** 条，分组 **Hardware Platf `📅unknown` `[entity_page]`
+- [Open Manipulator](wiki/entities/painode-166-openmanipulator.md) — Open Manipulator** 收录于 awesome-physical-ai（natnew）**第 166/384** 条，分组 **Hardware Platforms**。本页为知识库 `📅unknown` `[entity_page]`
+- [PAL Robotics TIAGo](wiki/entities/painode-167-palroboticstiago.md) — PAL Robotics TIAGo** 收录于 awesome-physical-ai（natnew）**第 167/384** 条，分组 **Hardware Platforms**。本页为知 `📅unknown` `[entity_page]`
+- [Reachy Mini](wiki/entities/painode-169-reachymini.md) — Reachy Mini** 收录于 awesome-physical-ai（natnew）**第 169/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [SO-ARM100](wiki/entities/painode-170-soarm100.md) — SO-ARM100** 收录于 awesome-physical-ai（natnew）**第 170/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [Stanford Pupper](wiki/entities/painode-171-stanfordpupper.md) — Stanford Pupper** 收录于 awesome-physical-ai（natnew）**第 171/384** 条，分组 **Hardware Platforms**。本页为知识库  `📅unknown` `[entity_page]`
+- [UMI Gripper](wiki/entities/painode-172-umigripper.md) — UMI Gripper** 收录于 awesome-physical-ai（natnew）**第 172/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [Universal Robots](wiki/entities/painode-173-universalrobots.md) — Universal Robots** 收录于 awesome-physical-ai（natnew）**第 173/384** 条，分组 **Hardware Platforms**。本页为知识库 `📅unknown` `[entity_page]`
+- [xArm](wiki/entities/painode-174-xarm.md) — xArm** 收录于 awesome-physical-ai（natnew）**第 174/384** 条，分组 **Hardware Platforms**。本页为知识库 **策展索引级** 详 `📅unknown` `[entity_page]`
+- [Attention-Based Map Encoding for Generalized Legged Locomotion](wiki/entities/painode-176-attentionbasedmapencodingforgen.md) — Attention-Based Map Encoding for Generalized Legged Locomotion** 收录于 awesome-physical-ai（natnew） `📅unknown` `[entity_page]`
+- [CASSI (Max Planck / Martius Lab)](wiki/entities/painode-188-cassimaxplanckmartiuslab.md) — CASSI (Max Planck / Martius Lab)** 收录于 awesome-physical-ai（natnew）**第 188/384** 条，分组 **Locomotion `📅unknown` `[entity_page]`
+- [Expressive Whole-Body Control](wiki/entities/painode-191-expressivewholebodycontrol.md) — Expressive Whole-Body Control** 收录于 awesome-physical-ai（natnew）**第 191/384** 条，分组 **Locomotion**。本 `📅unknown` `[entity_page]`
+- [FLD — Fourier Latent Dynamics (MIT Biomimetics)](wiki/entities/painode-192-fldfourierlatentdynamicsmitbiom.md) — FLD — Fourier Latent Dynamics (MIT Biomimetics)** 收录于 awesome-physical-ai（natnew）**第 192/384** 条，分 `📅unknown` `[entity_page]`
+- [WASABI (Max Planck / Martius Lab)](wiki/entities/painode-208-wasabimaxplanckmartiuslab.md) — WASABI (Max Planck / Martius Lab)** 收录于 awesome-physical-ai（natnew）**第 208/384** 条，分组 **Locomotion `📅unknown` `[entity_page]`
+- [3D Diffusion Policy (DP3)](wiki/entities/painode-209-3ddiffusionpolicydp3.md) — 3D Diffusion Policy (DP3)** 收录于 awesome-physical-ai（natnew）**第 209/384** 条，分组 **Manipulation**。本页为 `📅unknown` `[entity_page]`
+- [ALOHA Unleashed](wiki/entities/painode-211-alohaunleashed.md) — ALOHA Unleashed** 收录于 awesome-physical-ai（natnew）**第 211/384** 条，分组 **Manipulation / Key Papers**。 `📅unknown` `[entity_page]`
+- [CLIPort](wiki/entities/painode-213-cliport.md) — CLIPort** 收录于 awesome-physical-ai（natnew）**第 213/384** 条，分组 **Manipulation**。本页为知识库 **策展索引级** 详情节点 `📅unknown` `[entity_page]`
+- [Contact-GraspNet](wiki/entities/painode-214-contactgraspnet.md) — Contact-GraspNet** 收录于 awesome-physical-ai（natnew）**第 214/384** 条，分组 **Manipulation**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Dex-Net](wiki/entities/painode-215-dexnet.md) — Dex-Net** 收录于 awesome-physical-ai（natnew）**第 215/384** 条，分组 **Manipulation**。本页为知识库 **策展索引级** 详情节点 `📅unknown` `[entity_page]`
+- [GraspNet-1Billion](wiki/entities/painode-218-graspnet1billion.md) — GraspNet-1Billion** 收录于 awesome-physical-ai（natnew）**第 218/384** 条，分组 **Manipulation**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [MIT 6.4210 — Robotic Manipulation](wiki/entities/painode-219-mit64210roboticmanipulation.md) — MIT 6.4210 — Robotic Manipulation** 收录于 awesome-physical-ai（natnew）**第 219/384** 条，分组 **Manipulati `📅unknown` `[entity_page]`
+- [PerAct](wiki/entities/painode-221-peract.md) — PerAct** 收录于 awesome-physical-ai（natnew）**第 221/384** 条，分组 **Manipulation**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [Transporter Networks](wiki/entities/painode-225-transporternetworks.md) — Transporter Networks** 收录于 awesome-physical-ai（natnew）**第 225/384** 条，分组 **Manipulation**。本页为知识库  `📅unknown` `[entity_page]`
+- [Ahead of AI](wiki/entities/painode-226-aheadofai.md) — Ahead of AI** 收录于 awesome-physical-ai（natnew）**第 226/384** 条，分组 **Newsletters & Blogs**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [Chipstrat](wiki/entities/painode-228-chipstrat.md) — Chipstrat** 收录于 awesome-physical-ai（natnew）**第 228/384** 条，分组 **Newsletters & Blogs**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Google DeepMind Blog](wiki/entities/painode-229-googledeepmindblog.md) — Google DeepMind Blog** 收录于 awesome-physical-ai（natnew）**第 229/384** 条，分组 **Newsletters & Blogs**。本 `📅unknown` `[entity_page]`
+- [Hugging Face Blog](wiki/entities/painode-230-huggingfaceblog.md) — Hugging Face Blog** 收录于 awesome-physical-ai（natnew）**第 230/384** 条，分组 **Newsletters & Blogs**。本页为知 `📅unknown` `[entity_page]`
+- [IEEE Spectrum Robotics](wiki/entities/painode-231-ieeespectrumrobotics.md) — IEEE Spectrum Robotics** 收录于 awesome-physical-ai（natnew、aichr）**第 231/384** 条，分组 **Newsletters & B `📅unknown` `[entity_page]`
+- [Import AI](wiki/entities/painode-232-importai.md) — Import AI** 收录于 awesome-physical-ai（natnew）**第 232/384** 条，分组 **Newsletters & Blogs**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Interconnects](wiki/entities/painode-233-interconnects.md) — Interconnects** 收录于 awesome-physical-ai（natnew）**第 233/384** 条，分组 **Newsletters & Blogs**。本页为知识库  `📅unknown` `[entity_page]`
+- [Meta AI Blog](wiki/entities/painode-234-metaaiblog.md) — Meta AI Blog** 收录于 awesome-physical-ai（natnew）**第 234/384** 条，分组 **Newsletters & Blogs**。本页为知识库  `📅unknown` `[entity_page]`
+- [NVIDIA Developer Blog](wiki/entities/painode-235-nvidiadeveloperblog.md) — NVIDIA Developer Blog** 收录于 awesome-physical-ai（natnew）**第 235/384** 条，分组 **Newsletters & Blogs**。 `📅unknown` `[entity_page]`
+- [Robotics 24/7](wiki/entities/painode-236-robotics247.md) — Robotics 24/7** 收录于 awesome-physical-ai（natnew）**第 236/384** 条，分组 **Newsletters & Blogs**。本页为知识库  `📅unknown` `[entity_page]`
+- [Robots & Startups](wiki/entities/painode-237-robotsstartups.md) — Robots & Startups** 收录于 awesome-physical-ai（natnew）**第 237/384** 条，分组 **Newsletters & Blogs**。本页为知 `📅unknown` `[entity_page]`
+- [The Batch](wiki/entities/painode-238-thebatch.md) — The Batch** 收录于 awesome-physical-ai（natnew）**第 238/384** 条，分组 **Newsletters & Blogs**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [The Robot Report](wiki/entities/painode-239-therobotreport.md) — The Robot Report** 收录于 awesome-physical-ai（natnew、aichr）**第 239/384** 条，分组 **Newsletters & Blogs / `📅unknown` `[entity_page]`
+- [Andra Keay](wiki/entities/painode-240-andrakeay.md) — Andra Keay** 收录于 awesome-physical-ai（natnew）**第 240/384** 条，分组 **People to Follow**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Angelica Lim](wiki/entities/painode-242-angelicalim.md) — Angelica Lim** 收录于 awesome-physical-ai（natnew）**第 242/384** 条，分组 **People to Follow**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Austin Lyons](wiki/entities/painode-243-austinlyons.md) — Austin Lyons** 收录于 awesome-physical-ai（natnew）**第 243/384** 条，分组 **People to Follow**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Brett Adcock](wiki/entities/painode-244-brettadcock.md) — Brett Adcock** 收录于 awesome-physical-ai（natnew）**第 244/384** 条，分组 **People to Follow**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Chelsea Finn](wiki/entities/painode-245-chelseafinn.md) — Chelsea Finn** 收录于 awesome-physical-ai（natnew）**第 245/384** 条，分组 **People to Follow**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Dieter Fox](wiki/entities/painode-246-dieterfox.md) — Dieter Fox** 收录于 awesome-physical-ai（natnew）**第 246/384** 条，分组 **People to Follow**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Fei-Fei Li](wiki/entities/painode-247-feifeili.md) — Fei-Fei Li** 收录于 awesome-physical-ai（natnew）**第 247/384** 条，分组 **People to Follow**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Kate Darling](wiki/entities/painode-248-katedarling.md) — Kate Darling** 收录于 awesome-physical-ai（natnew）**第 248/384** 条，分组 **People to Follow**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Pieter Abbeel](wiki/entities/painode-249-pieterabbeel.md) — Pieter Abbeel** 收录于 awesome-physical-ai（natnew）**第 249/384** 条，分组 **People to Follow**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [Rodney Brooks](wiki/entities/painode-250-rodneybrooks.md) — Rodney Brooks** 收录于 awesome-physical-ai（natnew）**第 250/384** 条，分组 **People to Follow**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [Russ Tedrake](wiki/entities/painode-251-russtedrake.md) — Russ Tedrake** 收录于 awesome-physical-ai（natnew）**第 251/384** 条，分组 **People to Follow**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Soumith Chintala](wiki/entities/painode-253-soumithchintala.md) — Soumith Chintala** 收录于 awesome-physical-ai（natnew）**第 253/384** 条，分组 **People to Follow**。本页为知识库  `📅unknown` `[entity_page]`
+- [Yann LeCun](wiki/entities/painode-254-yannlecun.md) — Yann LeCun** 收录于 awesome-physical-ai（natnew）**第 254/384** 条，分组 **People to Follow**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [BehaviorTree.CPP](wiki/entities/painode-256-behaviortreecpp.md) — BehaviorTree.CPP** 收录于 awesome-physical-ai（natnew）**第 256/384** 条，分组 **Production Patterns / Refer `📅unknown` `[entity_page]`
+- [DDS Security (OMG Spec)](wiki/entities/painode-257-ddssecurityomgspec.md) — DDS Security (OMG Spec)** 收录于 awesome-physical-ai（natnew）**第 257/384** 条，分组 **Production Patterns  `📅unknown` `[entity_page]`
+- [micro-ROS](wiki/entities/painode-262-microros.md) — micro-ROS** 收录于 awesome-physical-ai（natnew）**第 262/384** 条，分组 **Production Patterns / Reference Ar `📅unknown` `[entity_page]`
+- [Nav2](wiki/entities/painode-264-nav2.md) — Nav2** 收录于 awesome-physical-ai（natnew）**第 264/384** 条，分组 **Production Patterns / Reference Archite `📅unknown` `[entity_page]`
+- [Open-RMF](wiki/entities/painode-266-openrmf.md) — Open-RMF** 收录于 awesome-physical-ai（natnew）**第 266/384** 条，分组 **Production Patterns / Reference Arc `📅unknown` `[entity_page]`
+- [rosbag2](wiki/entities/painode-269-xrosbag2.md) — rosbag2** 收录于 awesome-physical-ai（natnew）**第 269/384** 条，分组 **Production Patterns / Reference Arch `📅unknown` `[entity_page]`
+- [Zenoh](wiki/entities/painode-270-zenoh.md) — Zenoh** 收录于 awesome-physical-ai（natnew）**第 270/384** 条，分组 **Production Patterns / Reference Archit `📅unknown` `[entity_page]`
+- [Awesome Agentic AI Security](wiki/entities/painode-271-awesomeagenticaisecurity.md) — Awesome Agentic AI Security** 收录于 awesome-physical-ai（natnew）**第 271/384** 条，分组 **Related Awesome  `📅unknown` `[entity_page]`
+- [Awesome Agentic Engineering](wiki/entities/painode-272-awesomeagenticengineering.md) — Awesome Agentic Engineering** 收录于 awesome-physical-ai（natnew）**第 272/384** 条，分组 **Related Awesome  `📅unknown` `[entity_page]`
+- [Awesome AI Scientists](wiki/entities/painode-273-awesomeaiscientists.md) — Awesome AI Scientists** 收录于 awesome-physical-ai（natnew）**第 273/384** 条，分组 **Related Awesome Lists `📅unknown` `[entity_page]`
+- [Awesome Deep RL](wiki/entities/painode-274-awesomedeeprl.md) — Awesome Deep RL** 收录于 awesome-physical-ai（natnew）**第 274/384** 条，分组 **Related Awesome Lists**。本页为知 `📅unknown` `[entity_page]`
+- [Awesome Embodied Agent](wiki/entities/painode-275-awesomeembodiedagent.md) — Awesome Embodied Agent** 收录于 awesome-physical-ai（natnew）**第 275/384** 条，分组 **Related Awesome Lists `📅unknown` `[entity_page]`
+- [Awesome Generative AI](wiki/entities/painode-276-awesomegenerativeai.md) — Awesome Generative AI** 收录于 awesome-physical-ai（natnew）**第 276/384** 条，分组 **Related Awesome Lists `📅unknown` `[entity_page]`
+- [Awesome Imitation Learning](wiki/entities/painode-277-awesomeimitationlearning.md) — Awesome Imitation Learning** 收录于 awesome-physical-ai（natnew）**第 277/384** 条，分组 **Related Awesome L `📅unknown` `[entity_page]`
+- [Awesome LLM Robotics](wiki/entities/painode-278-awesomellmrobotics.md) — Awesome LLM Robotics** 收录于 awesome-physical-ai（natnew）**第 278/384** 条，分组 **Related Awesome Lists `📅unknown` `[entity_page]`
+- [Awesome Robotics](wiki/entities/painode-279-awesomerobotics.md) — Awesome Robotics** 收录于 awesome-physical-ai（natnew）**第 279/384** 条，分组 **Related Awesome Lists**。本页为 `📅unknown` `[entity_page]`
+- [Awesome Robotics 3D](wiki/entities/painode-280-awesomerobotics3d.md) — Awesome Robotics 3D** 收录于 awesome-physical-ai（natnew）**第 280/384** 条，分组 **Related Awesome Lists**。 `📅unknown` `[entity_page]`
+- [Awesome Robotics Libraries](wiki/entities/painode-281-awesomeroboticslibraries.md) — Awesome Robotics Libraries** 收录于 awesome-physical-ai（natnew）**第 281/384** 条，分组 **Related Awesome L `📅unknown` `[entity_page]`
+- [Bipedal Robot Learning Collection](wiki/entities/painode-283-bipedalrobotlearningcollection.md) — Bipedal Robot Learning Collection** 收录于 awesome-physical-ai（natnew）**第 283/384** 条，分组 **Related Aw `📅unknown` `[entity_page]`
+- [Berkeley RAIL Lab](wiki/entities/painode-284-berkeleyraillab.md) — Berkeley RAIL Lab** 收录于 awesome-physical-ai（aichr）**第 284/384** 条，分组 **Research Labs**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [Google DeepMind](wiki/entities/painode-285-googledeepmind.md) — Google DeepMind** 收录于 awesome-physical-ai（aichr）**第 285/384** 条，分组 **Research Labs**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [MIT Distributed Robotics Lab](wiki/entities/painode-286-mitdistributedroboticslab.md) — MIT Distributed Robotics Lab** 收录于 awesome-physical-ai（aichr）**第 286/384** 条，分组 **Research Labs**。 `📅unknown` `[entity_page]`
+- [MIT Media Lab Personal Robots](wiki/entities/painode-287-mitmedialabpersonalrobots.md) — MIT Media Lab Personal Robots** 收录于 awesome-physical-ai（aichr）**第 287/384** 条，分组 **Research Labs `📅unknown` `[entity_page]`
+- [MIT Robotics](wiki/entities/painode-288-mitrobotics.md) — MIT Robotics** 收录于 awesome-physical-ai（aichr）**第 288/384** 条，分组 **Research Labs**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Physical Intelligence](wiki/entities/painode-290-physicalintelligence.md) — Physical Intelligence** 收录于 awesome-physical-ai（aichr）**第 290/384** 条，分组 **Research Labs**。本页为知识库  `📅unknown` `[entity_page]`
+- [Stanford RISELab](wiki/entities/painode-291-stanfordriselab.md) — Stanford RISELab** 收录于 awesome-physical-ai（aichr）**第 291/384** 条，分组 **Research Labs**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Stanford VL](wiki/entities/painode-292-stanfordvl.md) — Stanford VL** 收录于 awesome-physical-ai（aichr）**第 292/384** 条，分组 **Research Labs**。本页为知识库 **策展索引级**  `📅unknown` `[entity_page]`
+- [Agility Robotics - Digit](wiki/entities/painode-293-agilityroboticsdigit.md) — Agility Robotics - Digit** 收录于 awesome-physical-ai（aichr）**第 293/384** 条，分组 **Robot Platforms**。本页 `📅unknown` `[entity_page]`
+- [Amazon Robotics](wiki/entities/painode-294-amazonrobotics.md) — Amazon Robotics** 收录于 awesome-physical-ai（aichr）**第 294/384** 条，分组 **Robot Platforms**。本页为知识库 **策展 `📅unknown` `[entity_page]`
+- [Apollo Robot](wiki/entities/painode-295-apollorobot.md) — Apollo Robot** 收录于 awesome-physical-ai（aichr）**第 295/384** 条，分组 **Robot Platforms**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [OmniSafe](wiki/entities/painode-314-omnisafe.md) — OmniSafe** 收录于 awesome-physical-ai（natnew）**第 314/384** 条，分组 **Safety & Robustness**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [Responsibility-Sensitive Safety (RSS)](wiki/entities/painode-316-responsibilitysensitivesafetyrss.md) — Responsibility-Sensitive Safety (RSS)** 收录于 awesome-physical-ai（natnew）**第 316/384** 条，分组 **Safety `📅unknown` `[entity_page]`
+- [Robot Trust & Safety (Stanford CRFM)](wiki/entities/painode-317-robottrustsafetystanfordcrfm.md) — Robot Trust & Safety (Stanford CRFM)** 收录于 awesome-physical-ai（natnew）**第 317/384** 条，分组 **Safety  `📅unknown` `[entity_page]`
+- [S-TaLiRo](wiki/entities/painode-319-staliro.md) — S-TaLiRo** 收录于 awesome-physical-ai（natnew）**第 319/384** 条，分组 **Safety & Robustness**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
+- [Safe Control Gym](wiki/entities/painode-320-safecontrolgym.md) — Safe Control Gym** 收录于 awesome-physical-ai（natnew）**第 320/384** 条，分组 **Safety & Robustness**。本页为知识 `📅unknown` `[entity_page]`
+- [Safety Gym (OpenAI)](wiki/entities/painode-322-safetygymopenai.md) — Safety Gym (OpenAI)** 收录于 awesome-physical-ai（natnew）**第 322/384** 条，分组 **Safety & Robustness**。本页 `📅unknown` `[entity_page]`
+- [Safety-Gymnasium](wiki/entities/painode-323-safetygymnasium.md) — Safety-Gymnasium** 收录于 awesome-physical-ai（natnew）**第 323/384** 条，分组 **Safety & Robustness**。本页为知识 `📅unknown` `[entity_page]`
+- [Scenic](wiki/entities/painode-324-scenic.md) — Scenic** 收录于 awesome-physical-ai（natnew）**第 324/384** 条，分组 **Safety & Robustness**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [VerifAI](wiki/entities/painode-325-verifai.md) — VerifAI** 收录于 awesome-physical-ai（natnew）**第 325/384** 条，分组 **Safety & Robustness**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [DextrAH-G](wiki/entities/painode-329-dextrahg.md) — DextrAH-G** 收录于 awesome-physical-ai（natnew）**第 329/384** 条，分组 **Sim-to-Real**。本页为知识库 **策展索引级** 详情节 `📅unknown` `[entity_page]`
+- [DeXtreme (NVIDIA)](wiki/entities/painode-330-dextremenvidia.md) — DeXtreme (NVIDIA)** 收录于 awesome-physical-ai（natnew）**第 330/384** 条，分组 **Sim-to-Real**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
+- [Eureka (NVIDIA)](wiki/entities/painode-332-eurekanvidia.md) — Eureka (NVIDIA)** 收录于 awesome-physical-ai（natnew）**第 332/384** 条，分组 **Sim-to-Real**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [Learning Robust Perceptive Locomotion (Miki et al.)](wiki/entities/painode-335-learningrobustperceptivelocomotio.md) — Learning Robust Perceptive Locomotion (Miki et al.)** 收录于 awesome-physical-ai（natnew）**第 335/384 `📅unknown` `[entity_page]`
+- [Genie 2 (DeepMind)](wiki/entities/painode-374-genie2deepmind.md) — Genie 2 (DeepMind)** 收录于 awesome-physical-ai（natnew）**第 374/384** 条，分组 **World Models**。本页为知识库 **策 `📅unknown` `[entity_page]`
 - [PAN Motion Retargeting](wiki/entities/pan-motion-retargeting.md) — pan-motion-retargeting**（<https://github.com/hlcdyy/pan-motion-retargeting>）是 TVCG 2023 论文 [*Pose- `📅unknown` `[entity_page]`
 - [1X World Model（1XWM / Redwood 评测引擎）](wiki/entities/paper-1xwm-redwood-world-model.md) — 1X World Model（1XWM）**（技术报告 *1X World Model: Evaluating Bits, not Atoms*；发现页挂在 [Redwood AI World M `📅unknown` `[entity_page]`
 - [3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）](wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 3D-IC**（*Joint Navigation and Manipulation Planning with 3D Interaction Chains*，Zhang 等，ICML 2026  `📅unknown` `[entity_page]`
@@ -2029,6 +2241,43 @@
 - [PAC-MAN](wiki/entities/paper-pac-man-perceptive-cbf-rl.md) — PAC-MAN**（*Perception-Aware CBF-RL for Whole-Body Safety in Humanoid Dodgeball*，[arXiv:2607.28623 `📅unknown` `[entity_page]`
 - [PACE（足式系统化 Sim2Real）](wiki/entities/paper-pace-sim2real-legged-robots.md) — PACE**（**P**recise **A**daptation through **C**ontinuous **E**volution）是 ETH Zurich Robotic System `📅unknown` `[entity_page]`
 - [PACT：溯源守恒的多视角融合与动作准入](wiki/entities/paper-pact-hrc-action-admission.md) — PACT**（*Provenance-Conserving Multi-View Fusion for Typed Action Admission in Human-Robot Collabor `📅unknown` `[entity_page]`
+- [SimGAN](wiki/entities/paper-pai-1612-07828-simgan.md) — SimGAN** 收录于 awesome-physical-ai（natnew）**第 339/384** 条，分组 **Sim-to-Real**。本页为知识库 **策展索引级** 详情节点；细 `📅unknown` `[entity_page]`
+- [Constrained Policy Optimization (Achiam et al.)](wiki/entities/paper-pai-1705-10528-constrainedpolicyoptimizationachi.md) — Constrained Policy Optimization (Achiam et al.)** 收录于 awesome-physical-ai（natnew）**第 312/384** 条，分 `📅unknown` `[entity_page]`
+- [Deep RL That Matters](wiki/entities/paper-pai-1709-06560-deeprlthatmatters.md) — Deep RL That Matters** 收录于 awesome-physical-ai（natnew）**第 107/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
+- [Learning Dexterous In-Hand Manipulation (OpenAI)](wiki/entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md) — Learning Dexterous In-Hand Manipulation (OpenAI)** 收录于 awesome-physical-ai（natnew）**第 334/384** 条， `📅unknown` `[entity_page]`
+- [Sim-to-Real via Sim-to-Sim (Koos et al. line)](wiki/entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) — Sim-to-Real via Sim-to-Sim (Koos et al. line)** 收录于 awesome-physical-ai（natnew）**第 338/384** 条，分组  `📅unknown` `[entity_page]`
+- [SimPLe](wiki/entities/paper-pai-1903-00374-simple.md) — SimPLe** 收录于 awesome-physical-ai（natnew）**第 380/384** 条，分组 **World Models**。本页为知识库 **策展索引级** 详情节点； `📅unknown` `[entity_page]`
+- [BayesSim](wiki/entities/paper-pai-1906-01728-bayessim.md) — BayesSim** 收录于 awesome-physical-ai（natnew）**第 328/384** 条，分组 **Sim-to-Real**。本页为知识库 **策展索引级** 详情节点 `📅unknown` `[entity_page]`
+- [Robust Policy Optimization](wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md) — Robust Policy Optimization** 收录于 awesome-physical-ai（natnew）**第 318/384** 条，分组 **Safety & Robustne `📅unknown` `[entity_page]`
+- [Learning Agile Flight in the Wild](wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md) — Learning Agile Flight in the Wild** 收录于 awesome-physical-ai（natnew）**第 333/384** 条，分组 **Sim-to-Rea `📅unknown` `[entity_page]`
+- [SimOpt](wiki/entities/paper-pai-1910-13325-simopt.md) — SimOpt** 收录于 awesome-physical-ai（natnew）**第 340/384** 条，分组 **Sim-to-Real**。本页为知识库 **策展索引级** 详情节点；细 `📅unknown` `[entity_page]`
+- [Realistic Adversarial Driving (Wang et al.)](wiki/entities/paper-pai-2003-01197-realisticadversarialdrivingwange.md) — Realistic Adversarial Driving (Wang et al.)** 收录于 awesome-physical-ai（natnew）**第 315/384** 条，分组  `📅unknown` `[entity_page]`
+- [Periodic Reward Composition for Bipedal Gaits](wiki/entities/paper-pai-2011-01387-periodicrewardcompositionforbipe.md) — Periodic Reward Composition for Bipedal Gaits** 收录于 awesome-physical-ai（natnew）**第 201/384** 条，分组  `📅unknown` `[entity_page]`
+- [Empirical Design in Reinforcement Learning](wiki/entities/paper-pai-2102-03479-empiricaldesigninreinforcementle.md) — Empirical Design in Reinforcement Learning** 收录于 awesome-physical-ai（natnew）**第 108/384** 条，分组 **E `📅unknown` `[entity_page]`
+- [Robust Parameterized Bipedal Locomotion (Cassie)](wiki/entities/paper-pai-2103-14295-robustparameterizedbipedallocomot.md) — Robust Parameterized Bipedal Locomotion (Cassie)** 收录于 awesome-physical-ai（natnew）**第 205/384** 条， `📅unknown` `[entity_page]`
+- [Cassie Bipedal Locomotion](wiki/entities/paper-pai-2105-08328-cassiebipedallocomotion.md) — Cassie Bipedal Locomotion** 收录于 awesome-physical-ai（natnew）**第 189/384** 条，分组 **Locomotion**。本页为知识 `📅unknown` `[entity_page]`
+- [Gato](wiki/entities/paper-pai-2205-06175-gato.md) — Gato** 收录于 awesome-physical-ai（natnew）**第 297/384** 条，分组 **Robotics Foundation Models**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [Safe Reinforcement Learning Survey](wiki/entities/paper-pai-2205-10330-safereinforcementlearningsurvey.md) — Safe Reinforcement Learning Survey** 收录于 awesome-physical-ai（natnew）**第 321/384** 条，分组 **Safety &  `📅unknown` `[entity_page]`
+- [Rapid Locomotion via RL](wiki/entities/paper-pai-2207-07802-rapidlocomotionviarl.md) — Rapid Locomotion via RL** 收录于 awesome-physical-ai（natnew）**第 202/384** 条，分组 **Locomotion**。本页为知识库  `📅unknown` `[entity_page]`
+- [Code as Policies](wiki/entities/paper-pai-2209-07753-codeaspolicies.md) — Code as Policies** 收录于 awesome-physical-ai（natnew）**第 296/384** 条，分组 **Robotics Foundation Models `📅unknown` `[entity_page]`
+- [VIMA](wiki/entities/paper-pai-2210-03094-vima.md) — VIMA** 收录于 awesome-physical-ai（natnew）**第 310/384** 条，分组 **Robotics Foundation Models**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [Bipedal Soccer (DeepMind OP3)](wiki/entities/paper-pai-2304-13653-bipedalsoccerdeepmindop3.md) — Bipedal Soccer (DeepMind OP3)** 收录于 awesome-physical-ai（natnew）**第 187/384** 条，分组 **Locomotion / K `📅unknown` `[entity_page]`
+- [SAM 3D](wiki/entities/paper-pai-2306-03908-sam3d.md) — SAM 3D** 收录于 awesome-physical-ai（aichr）**第 008/384** 条，分组 **3D Computer Vision**。本页为知识库 **策展索引级**  `📅unknown` `[entity_page]`
+- [Eval-vs-Train Mismatch (Kumar et al.)](wiki/entities/paper-pai-2306-13085-evalvstrainmismatchkumaretal.md) — Eval-vs-Train Mismatch (Kumar et al.)** 收录于 awesome-physical-ai（natnew）**第 109/384** 条，分组 **Evalua `📅unknown` `[entity_page]`
+- [A Survey on LLM-based Autonomous Agents](wiki/entities/paper-pai-2308-11432-asurveyonllmbasedautonomousage.md) — A Survey on LLM-based Autonomous Agents** 收录于 awesome-physical-ai（natnew）**第 360/384** 条，分组 **Surv `📅unknown` `[entity_page]`
+- [Verifiable Reinforcement Learning (DeepMind)](wiki/entities/paper-pai-2308-13247-verifiablereinforcementlearningde.md) — Verifiable Reinforcement Learning (DeepMind)** 收录于 awesome-physical-ai（natnew）**第 326/384** 条，分组  `📅unknown` `[entity_page]`
+- [RoboFlamingo](wiki/entities/paper-pai-2311-01378-roboflamingo.md) — RoboFlamingo** 收录于 awesome-physical-ai（natnew）**第 306/384** 条，分组 **Robotics Foundation Models**。本页 `📅unknown` `[entity_page]`
+- [Foundation Models in Robotics](wiki/entities/paper-pai-2312-07843-foundationmodelsinrobotics.md) — Foundation Models in Robotics** 收录于 awesome-physical-ai（natnew）**第 361/384** 条，分组 **Survey Papers `📅unknown` `[entity_page]`
+- [Robot Learning Survey](wiki/entities/paper-pai-2312-08591-robotlearningsurvey.md) — Robot Learning Survey** 收录于 awesome-physical-ai（natnew）**第 363/384** 条，分组 **Survey Papers**。本页为知识库 `📅unknown` `[entity_page]`
+- [World Models Survey](wiki/entities/paper-pai-2403-02622-worldmodelssurvey.md) — World Models Survey** 收录于 awesome-physical-ai（natnew）**第 364/384** 条，分组 **Survey Papers**。本页为知识库  `📅unknown` `[entity_page]`
+- [H2O](wiki/entities/paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md) — H2O: Human-to-Humanoid Real-Time Whole-Body Teleoperation** 收录于 awesome-physical-ai（natnew）**第 180 `📅unknown` `[entity_page]`
+- [3D Gaussian Splatting in Robotics](wiki/entities/paper-pai-2410-12262-3dgaussiansplattinginrobotics.md) — 3D Gaussian Splatting in Robotics** 收录于 awesome-physical-ai（natnew）**第 359/384** 条，分组 **Survey Pap `📅unknown` `[entity_page]`
+- [Neural Fields in Robotics](wiki/entities/paper-pai-2410-20220-neuralfieldsinrobotics.md) — Neural Fields in Robotics** 收录于 awesome-physical-ai（natnew）**第 362/384** 条，分组 **Survey Papers**。本页 `📅unknown` `[entity_page]`
+- [HugWBC](wiki/entities/paper-pai-2502-03206-hugwbcunifiedhumanoidwholebodyc.md) — HugWBC: Unified Humanoid Whole-Body Controller** 收录于 awesome-physical-ai（natnew）**第 182/384** 条，分组 `📅unknown` `[entity_page]`
+- [R&B-EnCoRe](wiki/entities/paper-pai-2602-08167-rbencore.md) — R&B-EnCoRe** 收录于 awesome-physical-ai（natnew）**第 305/384** 条，分组 **Robotics Foundation Models**。本页为知 `📅unknown` `[entity_page]`
+- [Recursive Belief VLA](wiki/entities/paper-pai-2602-20659-recursivebeliefvla.md) — Recursive Belief VLA** 收录于 awesome-physical-ai（aichr）**第 123/384** 条，分组 **Foundation Models (VLA `📅unknown` `[entity_page]`
+- [MEM — Multi-Scale Embodied Memory](wiki/entities/paper-pai-2603-03596-memmultiscaleembodiedmemory.md) — MEM — Multi-Scale Embodied Memory** 收录于 awesome-physical-ai（natnew）**第 301/384** 条，分组 **Robotics F `📅unknown` `[entity_page]`
+- [ABot-AgentOS](wiki/entities/paper-pai-2607-10350-abotagentos.md) — ABot-AgentOS** 收录于 awesome-physical-ai（natnew）**第 255/384** 条，分组 **Production Patterns / Reference `📅unknown` `[entity_page]`
 - [PaLM-E（HMI P053）](wiki/entities/paper-palm-e-embodied-language-model.md) — PaLM-E**（*PaLM-E: An Embodied Multimodal Language Model*，2023，[arXiv:2303.03378](https://arxiv.org `📅unknown` `[entity_page]`
 - [PAMoR](wiki/entities/paper-pamor.md) — PAMoR**（*Parameterized Affective Motion Generation in Real Time for Humanoid Robots*，[arXiv:2608.2 `📅unknown` `[entity_page]`
 - [PanoLOG / G²PS：全景户外大规模 3DGS 划分重建](wiki/entities/paper-panolog-ggps.md) — PanoLOG**（*Geometry and Gradient-based Partitioning for Panoramic Outdoor Reconstruction*，[arXiv:2 `📅unknown` `[entity_page]`
@@ -4065,6 +4314,7 @@
 - [智元发布分类 06：应用编排与交付](wiki/overview/agibot-release-category-06-application-delivery.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [AME-1 → AME-2：感知运动系统演进坐标](wiki/overview/ame-1-to-ame-2-technology-map.md) — AME-1 用本体条件注意力解决稀疏落脚；AME-2 在同一编码思想上补齐全局语境、在线不确定性感知映射与 Teacher–Student 部署一致性，把能力从「精确踩过去」推进到「混合地形里选对 `📅unknown` `[overview_page]`
 - [《自动驾驶核心算法盘点》专栏技术地图](wiki/overview/autonomous-driving-core-algorithms-series.md) — 经典自动驾驶软件栈仍可概括为 **感知 → 定位/地图 → 跟踪/预测 → 规划 → 控制**：上游把世界变成带 ID 的 3D 实体与未来意图，下游在运动学与舒适约束下把意图变成可执行轨迹与执行器指 `📅unknown` `[overview_page]`
+- [Awesome Physical AI 技术地图](wiki/overview/awesome-physical-ai-technology-map.md) — Physical AI 双清单技术地图** = 两份同名 Awesome 列表的并集节点化索引（按清单分组浏览，一点即达详情页）。 `📅unknown` `[overview_page]`
 - [BFM 技术地图：41 篇论文的五类问题视角](wiki/overview/bfm-41-papers-technology-map.md) — BFM 最值得看的，不是「动作库更大」，而是把身体能力做成上层智能可调用的接口**——走、平衡、起身、接触、抗扰恢复要先在底层封装好，语言 / VLA / 世界模型 / 规划器才能稳定调用；41  `📅unknown` `[overview_page]`
 - [BFM 分类 01：Forward-backward 表征](wiki/overview/bfm-category-01-forward-backward-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 02：Goal-conditioned 学习](wiki/overview/bfm-category-02-goal-conditioned-learning.md) — 运控基座的**动作覆盖面**——跟踪、全身技能、遥操作、人-物交互（HOI）能否在统一目标条件下扩展？ `📅unknown` `[overview_page]`

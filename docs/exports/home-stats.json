@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4359,
-  "edge_count": 38524,
+  "node_count": 4609,
+  "edge_count": 40393,
   "coverage": {
-    "covered": 4330,
-    "total": 4330,
+    "covered": 4580,
+    "total": 4580,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -133,7 +133,7 @@
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-maniskillformer.md",
@@ -218,24 +218,24 @@
   },
   "top_communities": [
     {
+      "label": "移动操作",
+      "size": 766
+    },
+    {
       "label": "操作",
-      "size": 632
-    },
-    {
-      "label": "宇树 G1 人形机器人",
-      "size": 550
-    },
-    {
-      "label": "国内开源全景 424 项阅读导航",
-      "size": 300
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 254
+      "size": 684
     },
     {
       "label": "仿真到现实",
-      "size": 217
+      "size": 315
+    },
+    {
+      "label": "国内开源全景 424 项阅读导航",
+      "size": 295
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 255
     },
     {
       "label": "全身控制",
@@ -247,24 +247,24 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1707,
+      "degree": 1732,
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 1117,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1067,
+      "degree": 1298,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 1136,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-overview-sun-awesome-wm-technology-map",
@@ -275,20 +275,20 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "degree": 958,
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 747,
+      "degree": 970,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "degree": 960,
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
@@ -306,19 +306,20 @@
       "has_repo": true
     },
     {
+      "detail_id": "wiki-overview-awesome-physical-ai-technology-map",
+      "label": "Awesome Physical AI 技术地图",
+      "type": "overview",
+      "degree": 624,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 622,
-      "has_repo": true
-    },
-    {
-      "detail_id": "wiki-methods-model-based-rl",
-      "label": "Model-Based RL（基于模型的强化学习）",
-      "type": "method",
-      "degree": 577,
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -328,7 +329,7 @@
       "type": "method",
       "degree": 165,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -336,14 +337,14 @@
       "type": "method",
       "degree": 90,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 67,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "degree": 68,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -357,13 +358,13 @@
       "type": "entity",
       "degree": 60,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
-      "degree": 53,
+      "degree": 54,
       "has_repo": true
     },
     {
@@ -372,7 +373,7 @@
       "type": "entity",
       "degree": 50,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -380,13 +381,14 @@
       "type": "entity",
       "degree": 49,
       "has_repo": true,
-      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 46
+      "degree": 46,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-ctrl-world",
