@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-vidu-s2.md",
+      "detail_id": "entity-paper-vidu-s2",
+      "label": "Vidu S2：实时交互、可编辑与空间视频生成",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-skyfall-gs.md",
       "detail_id": "entity-paper-skyfall-gs",
       "label": "Skyfall-GS：从卫星影像合成沉浸式 3D 城市场景",
@@ -199,28 +209,17 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wa-specdec.md",
-      "detail_id": "entity-paper-wa-specdec",
-      "label": "WA-SpecDec（arXiv:2608.08725）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-skyfall-gs.md",
-    "detail_id": "entity-paper-skyfall-gs",
-    "label": "Skyfall-GS：从卫星影像合成沉浸式 3D 城市场景",
+    "path": "wiki/entities/paper-vidu-s2.md",
+    "detail_id": "entity-paper-vidu-s2",
+    "label": "Vidu S2：实时交互、可编辑与空间视频生成",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
