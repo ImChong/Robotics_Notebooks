@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/laya.md",
+      "detail_id": "entity-laya",
+      "label": "Laya（System 1 决策引擎）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
       "path": "wiki/entities/paper-autotamp.md",
       "detail_id": "entity-paper-autotamp",
       "label": "AutoTAMP",
@@ -198,26 +209,17 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-awesome-humanoid-robot-learning.md",
-      "detail_id": "entity-paper-awesome-humanoid-robot-learning",
-      "label": "Awesome Humanoid Robot Learning",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-autotamp.md",
-    "detail_id": "entity-paper-autotamp",
-    "label": "AutoTAMP",
+    "path": "wiki/entities/laya.md",
+    "detail_id": "entity-laya",
+    "label": "Laya（System 1 决策引擎）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "动作块输出（Action Chunking） 社区"
   },
   "top_communities": [
