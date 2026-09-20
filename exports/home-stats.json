@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-20",
-  "node_count": 4610,
-  "edge_count": 40415,
+  "node_count": 4611,
+  "edge_count": 40425,
   "coverage": {
-    "covered": 4582,
-    "total": 4582,
+    "covered": 4583,
+    "total": 4583,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-panogs-slam.md",
+      "detail_id": "entity-paper-panogs-slam",
+      "label": "PanoGS-SLAM（Panoramic 3D Gaussian Splatting SLAM）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
     {
       "path": "wiki/entities/paper-decentralized-multi-humanoid-pickup.md",
       "detail_id": "entity-paper-decentralized-multi-humanoid-pickup",
@@ -205,37 +215,26 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-005-midas.md",
-      "detail_id": "entity-painode-005-midas",
-      "label": "MiDaS",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-decentralized-multi-humanoid-pickup.md",
-    "detail_id": "entity-paper-decentralized-multi-humanoid-pickup",
-    "label": "去中心化多人形搬运（arXiv:2609.17824）",
+    "path": "wiki/entities/paper-panogs-slam.md",
+    "detail_id": "entity-paper-panogs-slam",
+    "label": "PanoGS-SLAM（Panoramic 3D Gaussian Splatting SLAM）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 767
+      "size": 751
     },
     {
       "label": "操作",
-      "size": 658
+      "size": 650
     },
     {
       "label": "仿真到现实",
@@ -247,7 +246,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 240
+      "size": 250
     },
     {
       "label": "全身控制",

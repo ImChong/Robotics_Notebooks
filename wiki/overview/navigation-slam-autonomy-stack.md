@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -187,6 +187,7 @@ flowchart TB
 - **[SLAMFormer-∞](../entities/paper-slamformer-infinity.md)**：memory-conditioned **无界 dense mono SLAM Transformer**（frontend + PGGO 联合位姿/pointmap）；KITTI/Waymo 长程对照 VGGT-Long；官方仓截至 2026-08-08 仍为占位。
 - **[UniSim-SLAM](../entities/paper-unisim-slam.md)**：两视图低延迟前端 + 多视图子图后端，在 **统一 Sim(3) 多层因子图** 上联合优化关键帧与子图位姿；TUM RGB-D / 7-Scenes **无标定** SOTA（ECCV 2026）；官方仓截至 2026-09-11 仍为占位（`coming soon`）。
 - **[PanoLOG / G²PS](../entities/paper-panolog-ggps.md)**：ERP **全景户外大规模 3DGS**（天空球 + DAP 深度 + 几何/梯度划分）；训练代码已开源，服务 novel-view / 数字孪生资产而非实时定位。
+- **[PanoGS-SLAM](../entities/paper-panogs-slam.md)**：首个 **球面域 3DGS 全景稠密 SLAM**（\(L_{pano}\) 面积一致光度 + DGIS 深度引导插入）；PALVIO / SynPano 轨迹与渲染优于 MonoGS 等 GS 基线，前端 **15 iter** 收敛；**代码待发布**（arXiv:2609.17387）。
 - **[Gaussian-LIC2](../entities/paper-gaussian-lic2.md)**：实时 **LiDAR-Inertial-Camera 3DGS-SLAM**（连续时间里程计 + 深度补全初始化 + LiDAR 深度监督）；兼顾 **RGB/深度 NVS 与几何精度**，代码已开源；自采 out-of-sequence 评测集待发布。
 - **[i3dGS](../entities/paper-i3dgs-immediate-3dgs-unordered.md)**：乱序 **RGB 照片流** 的 **即时 3DGS 重建 + 全局回环**（VPR + 共视性图 + 渐进层级，SIGGRAPH 2026）；GraphDeco 官方代码已开源（研究许可）；更贴近 **捕获时 splat 反馈** 而非 LIC 里程计。
 

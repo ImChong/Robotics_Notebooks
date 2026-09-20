@@ -164,4 +164,4 @@
 - wiki/entities/paper-pose-semantic-legged-exploration.md
 - wiki/entities/paper-robovad.md
 
-📊 Sources 覆盖率：4582/4582 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4583/4583 (100%) wiki/entity 页有 ingest 来源
