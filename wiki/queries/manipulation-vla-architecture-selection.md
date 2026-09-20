@@ -4,6 +4,7 @@ type: query
 status: complete
 created: 2026-05-21
 updated: 2026-09-15
+summary: "操作任务的 VLA / 视频-动作 / 世界模型架构选型指南：按「有无机器人动作标签数据、是否需要长程潜计划或显式物理想象、是否涉及接触与触觉」给出 VLA、DeFI、mimic-video、DWM、CLAW、T-Rex 的推荐路线与代价对比。"
 related:
   - ../entities/paper-galaxea-g05.md
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
