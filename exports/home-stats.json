@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/humanoid-cognitive-reliability-gap.md",
+      "detail_id": "wiki-concepts-humanoid-cognitive-reliability-gap",
+      "label": "人形认知可靠性鸿沟（抓杯 vs 过马路）",
+      "type": "concept",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/concepts/robot-simulation-three-layers.md",
       "detail_id": "wiki-concepts-robot-simulation-three-layers",
       "label": "机器人仿真三层分工（Physics / Platform / Learning）",
@@ -196,26 +206,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "Data Flywheel (具身数据飞轮) 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tdhd-surgical-dual-arm.md",
-      "detail_id": "entity-paper-tdhd-surgical-dual-arm",
-      "label": "TDHD（arXiv:2608.09125）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/robot-simulation-three-layers.md",
-    "detail_id": "wiki-concepts-robot-simulation-three-layers",
-    "label": "机器人仿真三层分工（Physics / Platform / Learning）",
+    "path": "wiki/concepts/humanoid-cognitive-reliability-gap.md",
+    "detail_id": "wiki-concepts-humanoid-cognitive-reliability-gap",
+    "label": "人形认知可靠性鸿沟（抓杯 vs 过马路）",
     "type": "concept",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
