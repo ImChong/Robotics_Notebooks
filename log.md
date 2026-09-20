@@ -1,5 +1,10 @@
 ## [2026-09-20] ingest | sources/papers/panogs_slam_arxiv_2609_17387.md — 全景 3DGS-SLAM；代码待发布
 
+## [2026-09-20] ingest | sources/blogs/wechat_freedof_sim2real_four_routes — 44 篇参考文献独立详情节点 + 技术地图
+
+- **意图：** 补齐 FreeDof Sim2Real 四条路线公众号文末 44 篇文献表，每篇独立非重复 wiki 节点。
+- **关键页：** [freedof-sim2real-44-papers-technology-map](wiki/overview/freedof-sim2real-44-papers-technology-map.md)、[freedof_sim2real_44_catalog](sources/papers/freedof_sim2real_44_catalog.md)
+
 ## [2026-09-20] ingest | sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md — 具身小站 11 篇约束控制盘点；新建 ElastiQP / Dreaming Sound / RoboVAD / PointZero / Fetch My Beer / OpenDexGrasp 六页；复用 WAVE-Go / GPT-Policy / WholeBodyWAM / FIERCE / decMHT；技术地图 constraint-control-11-papers
 
 ## [2026-09-20] ingest | sources/blogs/wechat_shenlan_embodied_six_routes_survey_lineage_2026-09-20.md — 深蓝六条路线×12综述补课线；写回 wiki/queries/embodied-six-routes-survey-lineage.md，交叉六条窟窿页

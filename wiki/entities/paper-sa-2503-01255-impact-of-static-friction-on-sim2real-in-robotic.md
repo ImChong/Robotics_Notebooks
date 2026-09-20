@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2503.01255"
 venue: "arXiv 2025"
 summary: "Investigates the underexplored impact of Static friction on the Sim2Real gap, proposing a Static friction-aware domain randomization method to bridge the simulation-to-reality transfer"
@@ -13,10 +13,13 @@ related:
   - ../methods/crisp-real2sim.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/sun_awesome_r2s2r_2503_01255_impact-of-static-friction-on-sim2real-in.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 ---
 
 # Impact of Static Friction on Sim2Real in Robotic Reinforcement Learning

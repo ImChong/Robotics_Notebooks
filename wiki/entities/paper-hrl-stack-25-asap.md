@@ -3,16 +3,19 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, nvidia, cmu]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 venue: curated
 summary: "ASAP 的完整思想是 Aligning Simulation and Real Physics。它关注敏捷全身动作在仿真和真实之间的动力学偏差。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_rl_stack_25_asap_aligning_simulation_and_real_world_physics.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 ---
 
 # ASAP

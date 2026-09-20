@@ -2,13 +2,16 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2502.10894"
 related:
   - ../overview/paper-notebook-category-10-sim-to-real.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_pnb_bridging-the-sim-to-real-gap-for-athletic-loco-m.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "Bridging the Sim-to-Real Gap for Athletic Loco-Manipulation：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 

@@ -2,13 +2,16 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "1703.06907"
 related:
   - ../overview/paper-notebook-category-01-foundational-rl.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_pnb_domain-randomization-for-transferring-deep-neura.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "在视觉参数随机化的仿真环境里训练神经网络，让真实世界看起来只是仿真的\"另一个变体\"，从而无需任何真实数据即可完成 sim-to-real 迁移。"
 ---
 

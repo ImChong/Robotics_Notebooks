@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, sim2real, system-identification, active-exploration, cma-es, locomotion, unitree-go2, unitree-g1, isaac-gym, corl-2025, cmu]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2505.14266"
 venue: "CoRL 2025 Oral"
 code: https://github.com/LeCAR-Lab/SPI-Active
@@ -20,11 +20,14 @@ related:
   - ./paper-fada-humanoid.md
   - ../overview/paper-notebook-category-10-sim-to-real.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/spi_active_arxiv_2505_14266.md
   - ../../sources/repos/spi-active.md
   - ../../sources/sites/spi-active.md
   - ../../sources/papers/humanoid_pnb_spi-active.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "SPI-Active（CoRL 2025 Oral，CMU/LeCAR）：GPU 并行采样式 SysID + 主动探索最大化 FIM，辨识 Go2 质量/惯量与电机模型；高精度技能零样本迁移相对基线提升 42–63%。官方仓部分开源（SPI/Active/下游训练已发，Dataset Replay 与 Sim2real 待发）。"
 ---
 

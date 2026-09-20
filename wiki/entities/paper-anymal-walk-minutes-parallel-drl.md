@@ -4,15 +4,18 @@ type: entity
 tags: [quadruped, anymal, reinforcement-learning, isaac-gym, legged-gym, sim2real, eth]
 status: stable
 summary: "ANYmal：单机 GPU 上千并行环境与课程式地形，在分钟级训练出行走策略；开源 legged_gym，成为 RL+PD 配置与消融的教科书入口。"
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2109.11978"
 related:
   - ../entities/legged-gym.md
   - ../entities/anymal.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../tasks/locomotion.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 ---
 
 # Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning

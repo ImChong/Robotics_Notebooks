@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, sim2real, reinforcement-learning, domain-randomization, foundation-models, awesome-sim2real, curated-index, sun254667-r2s2r, awesome-real2sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 arxiv: "2502.13187"
 venue: "arXiv 2025 (v3 2025-03-08)"
 related:
@@ -24,13 +24,16 @@ related:
   - ../../sources/papers/sun_awesome_r2s2r_2502_13187_a-survey-of-sim-to-real-methods-in-rl-pr.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/lc_awesome_sim2real_survey_2502_13187.md
   - ../../sources/papers/sun_awesome_r2s2r_2502_13187_a-survey-of-sim-to-real-methods-in-rl-pr.md
   - ../../sources/papers/lc_awesome_sim2real_catalog.md
   - ../../sources/repos/awesome-sim2real.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "Longchao Da 等 2025 综述：按 MDP 四要素（State/Action/Transition/Reward）taxonomy Sim2Real RL，覆盖机器人/交通/推荐等多域，并讨论基础模型增强迁移、形式化评测与 AwesomeSim2Real 资源库。"
 ---
 

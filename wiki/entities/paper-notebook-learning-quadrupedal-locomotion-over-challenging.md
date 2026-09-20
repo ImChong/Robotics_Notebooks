@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, locomotion, privileged-learning, anymal, eth, science-robotics, hmi-papers]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2010.11251"
 venue: "Science Robotics 2020"
 doi: "https://doi.org/10.1126/scirobotics.abc5986"
@@ -13,9 +13,12 @@ related:
   - ./paper-robust-perceptive-locomotion-wild.md
   - ../queries/hmi-papers-coverage.md
   - ../overview/paper-notebook-category-03-high-impact-selection.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_pnb_learning-quadrupedal-locomotion-over-challenging.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "Science Robotics 2020：特权教师 + 本体历史学生 + 自适应地形课程，使 ANYmal 仅靠本体感觉零样本穿越泥雪碎石等复杂地形（HMI P008）。"
 ---
 

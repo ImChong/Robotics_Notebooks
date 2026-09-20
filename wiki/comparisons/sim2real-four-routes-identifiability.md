@@ -2,7 +2,7 @@
 type: comparison
 tags: [sim2real, system-identification, domain-randomization, online-adaptation, residual-learning, identifiability, locomotion, deployment]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -18,10 +18,12 @@ related:
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-hrl-stack-25-asap.md
   - ../overview/hub-sim2real.md
+  - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
   - ../../sources/raw/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
 summary: "以可辨识性为轴对比 Sim2Real 四条路线：系统辨识、域随机化、在线适应、残差学习；给出分层组合顺序、症状查表与论文阅读判据。"
 ---
 
@@ -128,6 +130,12 @@ flowchart TD
 - **残差外推风险** — 未跑过的动作没有保证；与 SysID「参数边界清楚」互补。
 - **在线适应静默失效** — 需部署期监控（文内 RAPT 等）与分层安全，独立于策略。
 - **训练成本下降改变性价比** — 低敏捷任务上「多跑 DR」可能与「做辨识」竞争；高敏捷仍倾向先标定执行器。
+
+
+
+### 44 篇参考文献索引
+
+逐篇独立详情节点见 [Sim2Real 44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)（44/44，0 重复 arXiv）。代表节点：[PACE](../entities/paper-pace-sim2real-legged-robots.md)、[SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md)、[RMA](../entities/paper-rma-rapid-motor-adaptation.md)、[ASAP](../entities/paper-hrl-stack-25-asap.md)、[PolySim](../entities/paper-polysim-multi-simulator-humanoid-sim2real.md)、[RAPT](../entities/paper-rapt-sim2real-ood-detection.md)。
 
 ## 关联页面
 
