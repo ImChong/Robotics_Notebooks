@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-xpace.md",
+      "detail_id": "entity-paper-xpace",
+      "label": "XPACE（Joint World and Action Modeling · arXiv:2609.17372）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
       "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
       "label": "Validating robotics simulators on real-world impacts",
@@ -197,27 +206,16 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-splatsim-gaussian-splatting-sim2real.md",
-      "detail_id": "entity-paper-splatsim-gaussian-splatting-sim2real",
-      "label": "SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
-    "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
-    "label": "Validating robotics simulators on real-world impacts",
+    "path": "wiki/entities/paper-xpace.md",
+    "detail_id": "entity-paper-xpace",
+    "label": "XPACE（Joint World and Action Modeling · arXiv:2609.17372）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
-    "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
