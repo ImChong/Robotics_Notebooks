@@ -258,8 +258,6 @@ flowchart LR
   - [动作重定向](depth-motion-retargeting.md) — 人演示变成机器人参考
   - [具身数据](depth-embodied-data.md) — 示范清洗、聚合与配比
   - [接触操作](depth-contact-manipulation.md) — IL 在精细接触任务上的主战场
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

@@ -240,8 +240,6 @@ flowchart LR
   - [ICL](depth-icl.md) — 上下文适应 vs 显式世界–动作联合
   - [动作生成](depth-motion-generation.md) — 未来视频/动作的生成侧
   - [具身测评](depth-embodied-eval.md) — 世界模型保真与策略成功率
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

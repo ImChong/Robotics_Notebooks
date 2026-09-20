@@ -1434,7 +1434,5 @@ flowchart TD
 ## 延伸阅读
 
 - 贯穿全程的教材：[Modern Robotics](../wiki/entities/modern-robotics-book.md)
-- 更细的阶段参考：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 实战经验补充：[Query：人形机器人运动控制 Know-How](../wiki/queries/humanoid-motion-control-know-how.md)
-- 技术栈全景图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
+- 工程踩坑补充：[人形机器人运动控制 Know-How](../wiki/overview/humanoid-motion-control-know-how.md) — 传感器噪声、电机热管理、地形适应的真机经验
 - 想换方向深挖：见上方 [可选纵深](#depth-optional-index)

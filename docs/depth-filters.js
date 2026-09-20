@@ -157,7 +157,6 @@
         'wiki/methods/vla.md',
         'wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md',
         'wiki/overview/shenlan-embodied-ai-fundamentals-series.md',
-        'wiki/queries/humanoid-motion-control-know-how.md',
         'wiki/queries/mpc-solver-selection.md',
         'wiki/queries/mpc-tuning-guide.md',
         'wiki/queries/open-source-motion-control-projects.md',

@@ -246,8 +246,6 @@ flowchart LR
   - [导航](depth-navigation.md) — 导航 VLA / VLN
   - [具身数据](depth-embodied-data.md) — 跨具身语料与配比
   - [ICL](depth-icl.md) — 不动权重的上下文适应
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

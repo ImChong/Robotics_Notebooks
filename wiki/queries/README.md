@@ -71,7 +71,6 @@
 | [hmi-opensource-projects-coverage](./hmi-opensource-projects-coverage.md) | 开源项目主表里的项目，在本库分别对应哪一页、该怎么读？（166 项快照；上游已 586） | Humanoid Motion Intelligence、开源运动控制项目摘要、上游开源主表 |
 | [china-domestic-opensource-424-coverage](./china-domestic-opensource-424-coverage.md) | 国内 76 家机构 424 个开源项目，在本库分别对应哪一页？ | 国内开源全景技术地图、Humanoid Motion Intelligence |
 | [hmi-papers-coverage](./hmi-papers-coverage.md) | 论文与项目总索引里的 191 篇论文，在本库是否都有独立详情节点？ | Humanoid Motion Intelligence、上游论文总索引、开源主表导读 |
-| [humanoid-motion-control-know-how](./humanoid-motion-control-know-how.md) | 飞书公开文档《人形机器人运动控制 Know-How》对技术栈项目最有价值的结构是什么？ | OCP、LIP/ZMP、WBC、TSID、State Estimation、Sim2Real |
 | [robot-policy-debug-playbook](./robot-policy-debug-playbook.md) | RL 策略在仿真中好但真机差，如何系统排查？ | Sim2Real、Domain Randomization、Privileged Training、Deployment |
 | [simulator-selection-guide](./simulator-selection-guide.md) | MuJoCo vs Isaac Lab vs Genesis，做 locomotion RL 选哪个？ | Locomotion、Sim2Real、RL、Humanoid Robot |
 | [demo-data-collection-guide](./demo-data-collection-guide.md) | 用模仿学习做操作，怎么高效收集人类演示数据？ | Teleoperation、Imitation Learning、Behavior Cloning、Bimanual Manipulation |

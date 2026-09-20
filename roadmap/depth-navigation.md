@@ -236,8 +236,6 @@ flowchart LR
   - [VLA](depth-vla.md) — 导航 VLA / VLN 的模型侧展开
   - [Loco-Manipulation](depth-loco-manipulation.md) — 到点之后还要动手
   - [WAM](depth-wam.md) — 出动作前预知场景如何变
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

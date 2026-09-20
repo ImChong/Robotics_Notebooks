@@ -228,8 +228,6 @@ flowchart LR
   - [具身数据](depth-embodied-data.md) — 仿真侧资产供给，在扩增阶段汇合
   - [具身测评](depth-embodied-eval.md) — 孪生场景用来回训和评测
   - [接触操作](depth-contact-manipulation.md) — 「接触可信」判据的任务侧
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 

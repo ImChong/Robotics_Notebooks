@@ -235,8 +235,6 @@ flowchart LR
   - [VLA](depth-vla.md) — 上下文条件常挂在 VLA 骨干上
   - [WAM](depth-wam.md) — 显式预知后果 vs 上下文里隐式适应
   - [遥操作](depth-teleoperation.md) — 一条示范从哪里来
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
 ## 参考来源
 
