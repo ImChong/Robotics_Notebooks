@@ -21,6 +21,7 @@ related:
   - ./data-flywheel.md
   - ../methods/enpire.md
   - ../references/llm-wiki-karpathy.md
+  - ../entities/learnprompt.md
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
 ---
