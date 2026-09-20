@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/browserskill.md",
+      "detail_id": "entity-browserskill",
+      "label": "BrowserSkill（腾讯 · 浏览器 Agent 桥）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/laya.md",
       "detail_id": "entity-laya",
       "label": "Laya（System 1 决策引擎）",
@@ -198,28 +209,18 @@
       "recency": "2026-09-20",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
-      "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
-      "label": "Validating robotics simulators on real-world impacts",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/laya.md",
-    "detail_id": "entity-laya",
-    "label": "Laya（System 1 决策引擎）",
+    "path": "wiki/entities/browserskill.md",
+    "detail_id": "entity-browserskill",
+    "label": "BrowserSkill（腾讯 · 浏览器 Agent 桥）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "动作块输出（Action Chunking） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
