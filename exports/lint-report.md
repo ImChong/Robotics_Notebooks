@@ -2,7 +2,7 @@
 
 ## [2026-09-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **43** 条信息型预警）：
+共发现 **0** 个问题（另含 **45** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -142,7 +142,7 @@
 - wiki/concepts/humanoid-cognitive-reliability-gap.md
 - wiki/concepts/retrieval-augmented-generation.md
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（11 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（12 个）
 - wiki/entities/painode-009-alfred.md
 - wiki/entities/painode-010-arnold.md
 - wiki/entities/painode-011-carlaleaderboard.md
@@ -154,12 +154,14 @@
 - wiki/entities/painode-023-teach.md
 - wiki/entities/painode-024-vlabench.md
 - wiki/entities/paper-bench2dex.md
+- wiki/entities/paper-robovad.md
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-mechanical-intelligence-info-theory.md
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（3 个）
 - wiki/entities/paper-leap-quadruped-active-perception.md
 - wiki/entities/paper-pose-semantic-legged-exploration.md
+- wiki/entities/paper-robovad.md
 
-📊 Sources 覆盖率：4576/4576 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4583/4583 (100%) wiki/entity 页有 ingest 来源

@@ -17,6 +17,7 @@ updated: 2026-09-18
 arxiv: "2609.19138"
 code: https://github.com/cheng-haha/GPT-Policy
 related:
+  - ../overview/constraint-control-11-papers-technology-map.md
   - ./paper-gpt-6-astra-embodied-policy.md
   - ../methods/vla.md
   - ../concepts/llm-robotics-control-interfaces.md
@@ -24,6 +25,7 @@ related:
   - ./paper-kino.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md
   - ../../sources/papers/gpt-policy_arxiv_2609_19138.md
   - ../../sources/sites/gpt-policy-cheng-haha-github-io.md
   - ../../sources/repos/gpt-policy.md

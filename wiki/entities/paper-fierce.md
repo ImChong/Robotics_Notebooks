@@ -6,11 +6,13 @@ updated: 2026-09-17
 arxiv: "2609.18651"
 code: https://github.com/ar-mine/FIERCE
 related:
+  - ../overview/constraint-control-11-papers-technology-map.md
   - ../methods/vla.md
   - ../methods/reinforcement-learning.md
   - ./paper-real-time-expo-ft.md
   - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md
   - ../../sources/papers/fierce_arxiv_2609_18651.md
   - ../../sources/repos/fierce.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md

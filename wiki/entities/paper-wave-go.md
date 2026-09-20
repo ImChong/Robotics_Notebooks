@@ -8,12 +8,16 @@ tags:
 status: complete
 updated: 2026-09-20
 arxiv: "2609.18193"
+code: https://github.com/vigorlee/wave-go
 related:
+  - ../overview/constraint-control-11-papers-technology-map.md
   - ../methods/generative-world-models.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md
   - ../../sources/papers/wave-go_arxiv_2609_18193.md
+  - ../../sources/repos/wave_go.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
 summary: "WAVE-Go（arXiv:2609.18193）：按累计失败风险选 4/8/16 步最长可执行前缀；RGB-D/LiDAR 持续重验证并可中断；模式切换需空间/稳定/任务证据。"
 ---
@@ -43,7 +47,7 @@ summary: "WAVE-Go（arXiv:2609.18193）：按累计失败风险选 4/8/16 步最
 | 项 | 内容 |
 |----|------|
 | **arXiv** | [2609.18193](https://arxiv.org/abs/2609.18193) |
-| **开源** | **待发布**（步骤 2.5，2026-09-20） |
+| **开源** | **已开源**（步骤 2.5，2026-09-20） |
 | **方法摘要** | World-model navigation + adaptive prefix execution + mode-switch evidence checks. |
 
 ## 源码运行时序图
@@ -60,13 +64,13 @@ summary: "WAVE-Go（arXiv:2609.18193）：按累计失败风险选 4/8/16 步最
 | 维度 | 读法 |
 |------|------|
 | **同周对照** | 见对应 [周更盘点](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md) 映射表，勿跨任务直接比 SR |
-| **开源状态** | **待发布** — 部署前以项目页/arXiv 为准 |
+| **开源状态** | **已开源** — 部署前以项目页/arXiv 为准 |
 
 ## 结论
 
 **WAVE-Go 用自适应前缀执行把世界模型导航落到轮足异构运动切换。**
 
-1. 开源：**待发布**；勿凭公众号摘要臆断可复现性。
+1. 开源：**已开源**；勿凭公众号摘要臆断可复现性。
 2. 指标须连同实验条件解读（仿真/真机、平台、成功阈值）。
 3. 关注 arXiv 版本更新与代码发布。
 
