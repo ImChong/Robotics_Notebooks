@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/embodied-six-routes-survey-lineage.md",
+      "detail_id": "wiki-queries-embodied-six-routes-survey-lineage",
+      "label": "六条路线 × 12 篇综述：补课线，不是终局赌注",
+      "type": "query",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/concepts/retrieval-augmented-generation.md",
       "detail_id": "wiki-concepts-retrieval-augmented-generation",
       "label": "Retrieval-Augmented Generation（RAG，检索增强生成）",
@@ -215,28 +224,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-023-teach.md",
-      "detail_id": "entity-painode-023-teach",
-      "label": "TEACh",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/retrieval-augmented-generation.md",
-    "detail_id": "wiki-concepts-retrieval-augmented-generation",
-    "label": "Retrieval-Augmented Generation（RAG，检索增强生成）",
-    "type": "concept",
+    "path": "wiki/queries/embodied-six-routes-survey-lineage.md",
+    "detail_id": "wiki-queries-embodied-six-routes-survey-lineage",
+    "label": "六条路线 × 12 篇综述：补课线，不是终局赌注",
+    "type": "query",
     "recency": "2026-09-20",
     "source": "git",
-    "action": "added",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
