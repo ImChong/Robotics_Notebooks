@@ -8,6 +8,7 @@ registers page-aliases, and patches hub/catalog stats.
 
 Idempotent: missing stub files are skipped.
 """
+
 from __future__ import annotations
 
 import json
@@ -81,9 +82,7 @@ def ensure_arxiv(frontmatter: str, arxiv: str) -> str:
 
 
 def rewrite_links(text: str, stub: str, canonical: str) -> str:
-    return text.replace(f"{stub}.md", f"{canonical}.md").replace(
-        f"]({stub})", f"]({canonical})"
-    )
+    return text.replace(f"{stub}.md", f"{canonical}.md").replace(f"]({stub})", f"]({canonical})")
 
 
 def walk_text_files() -> list[Path]:
@@ -156,7 +155,9 @@ def patch_coverage_numbers() -> None:
         text = load_text(path)
         text2 = pattern.sub(replacement, text)
         text2 = text2.replace("新建 249、复用 135", f"新建 {new_count}、复用 {reused}")
-        text2 = text2.replace("新建 **249**，复用 **135**", f"新建 **{new_count}**，复用 **{reused}**")
+        text2 = text2.replace(
+            "新建 **249**，复用 **135**", f"新建 **{new_count}**，复用 **{reused}**"
+        )
         if text2 != text:
             path.write_text(text2, encoding="utf-8")
 
