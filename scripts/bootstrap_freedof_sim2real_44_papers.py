@@ -81,7 +81,11 @@ PAPERS: list[dict] = [
         "mechanism": "4n+1 维关节参数 + 全局延迟；固定基座辨识后窄 DR 训练。",
         "conclusion": "高敏捷任务应先把名义执行器模型做准；PACE 给出可复现工程管线。",
         "tags": ["paper", "sim2real", "system-identification", "locomotion"],
-        "abbrev": [("PACE", "Precise Adaptation through Continuous Evolution", "本文框架"), ("CMA-ES", "Covariance Matrix Adaptation Evolution Strategy", "无梯度参数优化"), ("CoT", "Cost of Transport", "运输成本")],
+        "abbrev": [
+            ("PACE", "Precise Adaptation through Continuous Evolution", "本文框架"),
+            ("CMA-ES", "Covariance Matrix Adaptation Evolution Strategy", "无梯度参数优化"),
+            ("CoT", "Cost of Transport", "运输成本"),
+        ],
         "code": "https://github.com/leggedrobotics/pace-sim2real",
         "project": "https://pace.filipbjelonic.com/",
     },
@@ -99,7 +103,11 @@ PAPERS: list[dict] = [
         "mechanism": "对比执行器网络、控制论关节建模+SysID、静摩擦感知 DR 三组基线。",
         "conclusion": "SysID/DR 的参数集设计必须覆盖任务相关非光滑效应，而非盲目扩维。",
         "tags": ["paper", "sim2real", "friction", "reinforcement-learning"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("RL", "Reinforcement Learning", "强化学习"), ("DR", "Domain Randomization", "域随机化")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("DR", "Domain Randomization", "域随机化"),
+        ],
         "code": None,
         "project": None,
     },
@@ -117,7 +125,15 @@ PAPERS: list[dict] = [
         "mechanism": "采样式 SysID + 主动探索；可含接触但实验成本与摔机风险更高。",
         "conclusion": "在固定基座辨识之上，若需足地接触参数，应评估主动激励是否值得额外真机代价。",
         "tags": ["paper", "system-identification", "sim2real", "locomotion"],
-        "abbrev": [("SPI-Active", "Sampling-based System Identification with Active exploration", "本文方法"), ("FIM", "Fisher Information Matrix", "信息量矩阵"), ("SysID", "System Identification", "系统辨识")],
+        "abbrev": [
+            (
+                "SPI-Active",
+                "Sampling-based System Identification with Active exploration",
+                "本文方法",
+            ),
+            ("FIM", "Fisher Information Matrix", "信息量矩阵"),
+            ("SysID", "System Identification", "系统辨识"),
+        ],
         "code": "https://github.com/LeCAR-Lab/SPI-Active",
         "project": None,
     },
@@ -135,7 +151,11 @@ PAPERS: list[dict] = [
         "mechanism": "分析输入信号 richness 与 Fisher 信息矩阵可逆性的关系。",
         "conclusion": "动手做辨识实验前，用此文校准对「足够激励」的预期，避免采集无效数据。",
         "tags": ["paper", "system-identification", "experiment-design", "sim2real"],
-        "abbrev": [("FIM", "Fisher Information Matrix", "Fisher 信息矩阵"), ("SysID", "System Identification", "系统辨识"), ("TAC", "Transactions on Automatic Control", "IEEE 控制汇刊")],
+        "abbrev": [
+            ("FIM", "Fisher Information Matrix", "Fisher 信息矩阵"),
+            ("SysID", "System Identification", "系统辨识"),
+            ("TAC", "Transactions on Automatic Control", "IEEE 控制汇刊"),
+        ],
         "code": None,
         "project": None,
     },
@@ -153,7 +173,11 @@ PAPERS: list[dict] = [
         "mechanism": "可微物理引擎 + 梯度优化拟合真机轨迹。",
         "conclusion": "当参数维度高且仿真可微时，梯度法可显著降低辨识样本与迭代成本。",
         "tags": ["paper", "system-identification", "differentiable-simulation", "locomotion"],
-        "abbrev": [("SysID", "System Identification", "系统辨识"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("IROS", "Intelligent Robots and Systems", "IEEE 机器人旗舰会")],
+        "abbrev": [
+            ("SysID", "System Identification", "系统辨识"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("IROS", "Intelligent Robots and Systems", "IEEE 机器人旗舰会"),
+        ],
         "code": None,
         "project": None,
     },
@@ -171,7 +195,11 @@ PAPERS: list[dict] = [
         "mechanism": "分布匹配目标替代参数回归；强调策略在仿真与硬件上的行为方式一致。",
         "conclusion": "当参数不可辨或不想维护参数语义时，行为层对齐是可行替代，但可解释性更弱。",
         "tags": ["paper", "sim2real", "locomotion", "distribution-matching"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("Wasserstein", "Wasserstein distance", "分布距离度量"), ("Proprio", "Proprioception", "本体感受")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("Wasserstein", "Wasserstein distance", "分布距离度量"),
+            ("Proprio", "Proprioception", "本体感受"),
+        ],
         "code": None,
         "project": None,
     },
@@ -189,7 +217,11 @@ PAPERS: list[dict] = [
         "mechanism": "渲染/外观层随机化 + 深度网络训练；真机零微调迁移。",
         "conclusion": "读 DR 文献的默认起点；动力学 DR 是后续扩展而非另起炉灶。",
         "tags": ["paper", "domain-randomization", "sim2real", "computer-vision"],
-        "abbrev": [("DR", "Domain Randomization", "域随机化"), ("DNN", "Deep Neural Network", "深度神经网络"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("DR", "Domain Randomization", "域随机化"),
+            ("DNN", "Deep Neural Network", "深度神经网络"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -207,7 +239,11 @@ PAPERS: list[dict] = [
         "mechanism": "在仿真中对动力学参数采样，优化期望回报下的策略。",
         "conclusion": "理解 DR 保守性之前，先读此文建立「随机化参数空间」直觉。",
         "tags": ["paper", "domain-randomization", "sim2real", "dynamics-randomization"],
-        "abbrev": [("DR", "Domain Randomization", "域随机化"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("ICRA", "International Conference on Robotics and Automation", "机器人旗舰会")],
+        "abbrev": [
+            ("DR", "Domain Randomization", "域随机化"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("ICRA", "International Conference on Robotics and Automation", "机器人旗舰会"),
+        ],
         "code": None,
         "project": None,
     },
@@ -225,7 +261,11 @@ PAPERS: list[dict] = [
         "mechanism": "多阶段校准 + 随机化 + RL 训练；强调工程模块顺序。",
         "conclusion": "DR 不是单点技巧，而是与辨识、时延补偿绑定的系统配方。",
         "tags": ["paper", "sim2real", "quadruped", "domain-randomization"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("DR", "Domain Randomization", "域随机化"), ("RSS", "Robotics: Science and Systems", "机器人科学系统会议")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("DR", "Domain Randomization", "域随机化"),
+            ("RSS", "Robotics: Science and Systems", "机器人科学系统会议"),
+        ],
         "code": None,
         "project": None,
     },
@@ -243,7 +283,11 @@ PAPERS: list[dict] = [
         "mechanism": "域随机化覆盖动力学与观测不确定性 + 大规模并行仿真训练。",
         "conclusion": "DR 能覆盖复杂接触，但训练与仿真成本极高，不宜作为唯一默认方案。",
         "tags": ["paper", "sim2real", "manipulation", "domain-randomization"],
-        "abbrev": [("DR", "Domain Randomization", "域随机化"), ("RL", "Reinforcement Learning", "强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("DR", "Domain Randomization", "域随机化"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -261,7 +305,11 @@ PAPERS: list[dict] = [
         "mechanism": "根据真机轨迹误差反馈调整随机化参数分布。",
         "conclusion": "比手工设 DR 范围更数据驱动，但仍需真机迭代预算。",
         "tags": ["paper", "domain-randomization", "sim2real", "simopt"],
-        "abbrev": [("SimOpt", "Simulation Optimization", "仿真随机化闭环优化"), ("DR", "Domain Randomization", "域随机化"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("SimOpt", "Simulation Optimization", "仿真随机化闭环优化"),
+            ("DR", "Domain Randomization", "域随机化"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -279,7 +327,11 @@ PAPERS: list[dict] = [
         "mechanism": "贝叶斯推断更新仿真参数分布，而非单点参数。",
         "conclusion": "当参数不可唯一辨识时，用分布 DR 比假装有单点真值更诚实。",
         "tags": ["paper", "domain-randomization", "sim2real", "bayesian-inference"],
-        "abbrev": [("BayesSim", "Bayesian Simulation adaptation", "本文方法"), ("DR", "Domain Randomization", "域随机化"), ("RSS", "Robotics: Science and Systems", "机器人科学系统会议")],
+        "abbrev": [
+            ("BayesSim", "Bayesian Simulation adaptation", "本文方法"),
+            ("DR", "Domain Randomization", "域随机化"),
+            ("RSS", "Robotics: Science and Systems", "机器人科学系统会议"),
+        ],
         "code": None,
         "project": None,
     },
@@ -297,7 +349,11 @@ PAPERS: list[dict] = [
         "mechanism": "BO 搜索随机化超参，以任务表现作为黑盒目标。",
         "conclusion": "真机数据贵时，稀疏奖励 BO 比全轨迹拟合更可行，但样本效率仍有限。",
         "tags": ["paper", "domain-randomization", "sim2real", "bayesian-optimization"],
-        "abbrev": [("BO", "Bayesian Optimization", "贝叶斯优化"), ("DR", "Domain Randomization", "域随机化"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("BO", "Bayesian Optimization", "贝叶斯优化"),
+            ("DR", "Domain Randomization", "域随机化"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -315,7 +371,11 @@ PAPERS: list[dict] = [
         "mechanism": "自适应扩大随机化范围 + 大规模 RL 训练。",
         "conclusion": "ADR 降低手工设范围难度，但不能替代真机验收与分布校准。",
         "tags": ["paper", "domain-randomization", "sim2real", "adr"],
-        "abbrev": [("ADR", "Automatic Domain Randomization", "自动域随机化"), ("DR", "Domain Randomization", "域随机化"), ("RL", "Reinforcement Learning", "强化学习")],
+        "abbrev": [
+            ("ADR", "Automatic Domain Randomization", "自动域随机化"),
+            ("DR", "Domain Randomization", "域随机化"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+        ],
         "code": None,
         "project": None,
     },
@@ -333,7 +393,11 @@ PAPERS: list[dict] = [
         "mechanism": "ensemble of simulators + worst-case or CVaR-style policy update。",
         "conclusion": "需要尾部鲁棒时考虑 EPOpt 类方法，但可能更保守。",
         "tags": ["paper", "robust-rl", "sim2real", "domain-randomization"],
-        "abbrev": [("EPOpt", "Epistemic Policy Optimization", "集成模型鲁棒策略优化"), ("CVaR", "Conditional Value at Risk", "条件风险价值"), ("RL", "Reinforcement Learning", "强化学习")],
+        "abbrev": [
+            ("EPOpt", "Epistemic Policy Optimization", "集成模型鲁棒策略优化"),
+            ("CVaR", "Conditional Value at Risk", "条件风险价值"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+        ],
         "code": None,
         "project": None,
     },
@@ -351,7 +415,11 @@ PAPERS: list[dict] = [
         "mechanism": "min-max 博弈：策略 vs 扰动生成器。",
         "conclusion": "对抗训练可补 DR 尾部，但扰动物理合理性必须约束。",
         "tags": ["paper", "robust-rl", "sim2real", "adversarial-training"],
-        "abbrev": [("RARL", "Robust Adversarial Reinforcement Learning", "本文方法"), ("RL", "Reinforcement Learning", "强化学习"), ("DR", "Domain Randomization", "域随机化")],
+        "abbrev": [
+            ("RARL", "Robust Adversarial Reinforcement Learning", "本文方法"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("DR", "Domain Randomization", "域随机化"),
+        ],
         "code": None,
         "project": None,
     },
@@ -369,7 +437,11 @@ PAPERS: list[dict] = [
         "mechanism": "多异构仿真器并行 rollout + 结构层 DR。",
         "conclusion": "当 gap 来自引擎近似而非仅参数时，多引擎训练比单引擎宽 DR 更对症。",
         "tags": ["paper", "sim2real", "humanoid", "domain-randomization", "polysim"],
-        "abbrev": [("PolySim", "Poly Simulator training", "多仿真器训练"), ("DR", "Domain Randomization", "域随机化"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("PolySim", "Poly Simulator training", "多仿真器训练"),
+            ("DR", "Domain Randomization", "域随机化"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -387,7 +459,11 @@ PAPERS: list[dict] = [
         "mechanism": "统一任务下 benchmark 多引擎接触与积分行为差异。",
         "conclusion": "换引擎有时比调参更有效；PolySim 类多引擎训练有明确动机。",
         "tags": ["paper", "simulation", "physics-engine", "sim2real"],
-        "abbrev": [("ODE", "Open Dynamics Engine", "开源动力学引擎"), ("PhysX", "NVIDIA PhysX", "商业物理引擎"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("ODE", "Open Dynamics Engine", "开源动力学引擎"),
+            ("PhysX", "NVIDIA PhysX", "商业物理引擎"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -405,7 +481,11 @@ PAPERS: list[dict] = [
         "mechanism": "对比三引擎在冲击阶段的轨迹与接触力复现。",
         "conclusion": "接触参数是否可辨取决于实验条件；不能脱离任务谈参数敏感性。",
         "tags": ["paper", "simulation", "contact-model", "sim2real"],
-        "abbrev": [("RA-L", "Robotics and Automation Letters", "IEEE 机器人快报"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("MuJoCo", "Multi-Joint dynamics with Contact", "接触动力学仿真器")],
+        "abbrev": [
+            ("RA-L", "Robotics and Automation Letters", "IEEE 机器人快报"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("MuJoCo", "Multi-Joint dynamics with Contact", "接触动力学仿真器"),
+        ],
         "code": None,
         "project": None,
     },
@@ -423,7 +503,11 @@ PAPERS: list[dict] = [
         "mechanism": "统一数学框架对比软约束、互补约束等接触实现。",
         "conclusion": "引擎接触近似不是细节，而是 Sim2Real gap 的一级来源。",
         "tags": ["paper", "contact-model", "simulation", "sim2real"],
-        "abbrev": [("TRO", "Transactions on Robotics", "IEEE 机器人汇刊"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("LCP", "Linear Complementarity Problem", "线性互补接触公式")],
+        "abbrev": [
+            ("TRO", "Transactions on Robotics", "IEEE 机器人汇刊"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("LCP", "Linear Complementarity Problem", "线性互补接触公式"),
+        ],
         "code": None,
         "project": None,
     },
@@ -441,7 +525,11 @@ PAPERS: list[dict] = [
         "mechanism": "辨识器输出 extrinsics/参数 → 条件策略；部署期在线运行。",
         "conclusion": "在线 SysID 与 DR 组合是成熟路线，但激励不足会静默失效。",
         "tags": ["paper", "online-adaptation", "system-identification", "sim2real"],
-        "abbrev": [("UP-OSI", "Universal Policy with Online System Identification", "本文方法"), ("SysID", "System Identification", "系统辨识"), ("RSS", "Robotics: Science and Systems", "机器人科学系统会议")],
+        "abbrev": [
+            ("UP-OSI", "Universal Policy with Online System Identification", "本文方法"),
+            ("SysID", "System Identification", "系统辨识"),
+            ("RSS", "Robotics: Science and Systems", "机器人科学系统会议"),
+        ],
         "code": None,
         "project": None,
     },
@@ -459,7 +547,11 @@ PAPERS: list[dict] = [
         "mechanism": "Teacher-student 式特权训练 + 部署期 adaptation module。",
         "conclusion": "放松参数可辨识性要求，但不取消对历史信息量的需求。",
         "tags": ["paper", "online-adaptation", "sim2real", "locomotion"],
-        "abbrev": [("RMA", "Rapid Motor Adaptation", "本文方法"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("RL", "Reinforcement Learning", "强化学习")],
+        "abbrev": [
+            ("RMA", "Rapid Motor Adaptation", "本文方法"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+        ],
         "code": "https://github.com/antonilo/rl_locomotion",
         "project": "https://rma-legged-robots.github.io/",
     },
@@ -477,7 +569,11 @@ PAPERS: list[dict] = [
         "mechanism": "并行仿真 + 课程 + 适应模块。",
         "conclusion": "适应效果与训练规模、课程设计强相关。",
         "tags": ["paper", "locomotion", "sim2real", "online-adaptation"],
-        "abbrev": [("RL", "Reinforcement Learning", "强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("RSS", "Robotics: Science and Systems", "机器人科学系统会议")],
+        "abbrev": [
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("RSS", "Robotics: Science and Systems", "机器人科学系统会议"),
+        ],
         "code": None,
         "project": None,
     },
@@ -495,7 +591,11 @@ PAPERS: list[dict] = [
         "mechanism": "长上下文策略网络 + 大规模 RL 训练 + 真机部署。",
         "conclusion": "隐式适应简化架构，但失败诊断更难。",
         "tags": ["paper", "humanoid", "locomotion", "sim2real", "transformer"],
-        "abbrev": [("RL", "Reinforcement Learning", "强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("WBC", "Whole-Body Control", "全身控制")],
+        "abbrev": [
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("WBC", "Whole-Body Control", "全身控制"),
+        ],
         "code": None,
         "project": None,
     },
@@ -513,7 +613,11 @@ PAPERS: list[dict] = [
         "mechanism": "仿真特权训练 + 部署期仅学生前向。",
         "conclusion": "解决信息不可得，不自动解决动力学模型不准。",
         "tags": ["paper", "privileged-learning", "locomotion", "sim2real"],
-        "abbrev": [("RL", "Reinforcement Learning", "强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("Teacher-Student", "Privileged Teacher-Student", "特权教师学生训练")],
+        "abbrev": [
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("Teacher-Student", "Privileged Teacher-Student", "特权教师学生训练"),
+        ],
         "code": None,
         "project": None,
     },
@@ -531,7 +635,11 @@ PAPERS: list[dict] = [
         "mechanism": "数千并行环境 + PPO/类似 on-policy 算法。",
         "conclusion": "训练算力可换部分辨识工作，但不替代真机验收。",
         "tags": ["paper", "locomotion", "sim2real", "parallel-rl"],
-        "abbrev": [("DRL", "Deep Reinforcement Learning", "深度强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("ANYmal", "ANYmal quadruped", "苏黎世理工四足平台")],
+        "abbrev": [
+            ("DRL", "Deep Reinforcement Learning", "深度强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("ANYmal", "ANYmal quadruped", "苏黎世理工四足平台"),
+        ],
         "code": "https://github.com/leggedrobotics/legged_gym",
         "project": None,
     },
@@ -549,7 +657,11 @@ PAPERS: list[dict] = [
         "mechanism": "监督学习执行器模型 → 仿真中替换或增强力矩通道 → RL 训练 → 真机部署不运行网络。",
         "conclusion": "当 URDF 执行器模型过于简化时，执行器网络是力矩层残差的主流起点。",
         "tags": ["paper", "actuator-network", "sim2real", "locomotion"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("RL", "Reinforcement Learning", "强化学习"), ("PD", "Proportional–Derivative", "比例微分底层控制")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("PD", "Proportional–Derivative", "比例微分底层控制"),
+        ],
         "code": None,
         "project": None,
     },
@@ -567,7 +679,11 @@ PAPERS: list[dict] = [
         "mechanism": "物理仿真 + 神经网络残差项；循环结构表达时序误差。",
         "conclusion": "灰盒组合保留可解释性，适合主误差可物理解释、剩余结构复杂的平台。",
         "tags": ["paper", "residual-learning", "sim2real", "neural-augmented-simulation"],
-        "abbrev": [("RNN", "Recurrent Neural Network", "循环神经网络"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("CoRL", "Conference on Robot Learning", "机器人学习会议")],
+        "abbrev": [
+            ("RNN", "Recurrent Neural Network", "循环神经网络"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("CoRL", "Conference on Robot Learning", "机器人学习会议"),
+        ],
         "code": None,
         "project": None,
     },
@@ -585,7 +701,11 @@ PAPERS: list[dict] = [
         "mechanism": "轨迹匹配奖励训练执行器残差；抑制 reward hacking。",
         "conclusion": "观测口径受限时，轨迹级残差比回归电流标签更可靠。",
         "tags": ["paper", "residual-learning", "sim2real", "loco-manipulation"],
-        "abbrev": [("UAN", "Unified Actuator Network / athletic loco-manip work", "文内执行器残差线"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("RL", "Reinforcement Learning", "强化学习")],
+        "abbrev": [
+            ("UAN", "Unified Actuator Network / athletic loco-manip work", "文内执行器残差线"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("RL", "Reinforcement Learning", "强化学习"),
+        ],
         "code": None,
         "project": None,
     },
@@ -603,7 +723,11 @@ PAPERS: list[dict] = [
         "mechanism": "a = a_base + Δa_RL；基础控制器提供先验。",
         "conclusion": "动作层残差工程上更易落地，因不必改仿真器内部动力学。",
         "tags": ["paper", "residual-learning", "sim2real", "manipulation"],
-        "abbrev": [("RL", "Reinforcement Learning", "强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("ICRA", "International Conference on Robotics and Automation", "机器人旗舰会")],
+        "abbrev": [
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("ICRA", "International Conference on Robotics and Automation", "机器人旗舰会"),
+        ],
         "code": None,
         "project": None,
     },
@@ -621,7 +745,11 @@ PAPERS: list[dict] = [
         "mechanism": "Sim 预训练 → 真机配对轨迹 → delta action 模型 → 仿真对齐微调 → 真机无 delta 部署。",
         "conclusion": "辨识做到头后，动作层残差常是敏捷人形技能的下一档；基线需充分调优再解读百分比。",
         "tags": ["paper", "humanoid", "residual-learning", "sim2real"],
-        "abbrev": [("ASAP", "Aligning Simulation And real-world Physics", "本文方法"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("WBC", "Whole-Body Control", "全身控制")],
+        "abbrev": [
+            ("ASAP", "Aligning Simulation And real-world Physics", "本文方法"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("WBC", "Whole-Body Control", "全身控制"),
+        ],
         "code": None,
         "project": "https://agile.human2humanoid.com/",
     },
@@ -639,7 +767,11 @@ PAPERS: list[dict] = [
         "mechanism": "接口专属预训练 + 残差蒸馏进通用 tracker。",
         "conclusion": "接口 gap 与动力学 gap 需分开处理；仿真 SOTA 分数不等于真机可用。",
         "tags": ["paper", "humanoid", "teleoperation", "residual-learning", "sim2real"],
-        "abbrev": [("MOSAIC", "Motion tracking with rapid residual adaptation", "本文框架"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("WBC", "Whole-Body Control", "全身控制")],
+        "abbrev": [
+            ("MOSAIC", "Motion tracking with rapid residual adaptation", "本文框架"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("WBC", "Whole-Body Control", "全身控制"),
+        ],
         "code": None,
         "project": None,
     },
@@ -657,7 +789,11 @@ PAPERS: list[dict] = [
         "mechanism": "domain classifier 作为辅助信号 shaping 策略学习。",
         "conclusion": "当显式动力学模型难建时，判别式迁移信号是可行替代。",
         "tags": ["paper", "sim2real", "off-dynamics", "reinforcement-learning"],
-        "abbrev": [("RL", "Reinforcement Learning", "强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("OOD", "Out-of-Distribution", "分布外")],
+        "abbrev": [
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("OOD", "Out-of-Distribution", "分布外"),
+        ],
         "code": None,
         "project": None,
     },
@@ -675,7 +811,11 @@ PAPERS: list[dict] = [
         "mechanism": "仿真预训练 + 安全约束下的真机 policy fine-tuning。",
         "conclusion": "真机 RL 微调可行但昂贵；常见折中是少量安全校准。",
         "tags": ["paper", "sim2real", "real-world-rl", "locomotion"],
-        "abbrev": [("RL", "Reinforcement Learning", "强化学习"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("ICRA", "International Conference on Robotics and Automation", "机器人旗舰会")],
+        "abbrev": [
+            ("RL", "Reinforcement Learning", "强化学习"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("ICRA", "International Conference on Robotics and Automation", "机器人旗舰会"),
+        ],
         "code": None,
         "project": None,
     },
@@ -693,7 +833,11 @@ PAPERS: list[dict] = [
         "mechanism": "模型预测 + 失配度量 +（可选）LLM 根因推理。",
         "conclusion": "策略无自我评判机制，监控应作为部署标配而非附加项。",
         "tags": ["paper", "humanoid", "deployment", "ood-detection", "sim2real"],
-        "abbrev": [("RAPT", "Robust Adaptive Prediction for Transfer", "文内部署监控框架"), ("OOD", "Out-of-Distribution", "分布外检测"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("RAPT", "Robust Adaptive Prediction for Transfer", "文内部署监控框架"),
+            ("OOD", "Out-of-Distribution", "分布外检测"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -711,7 +855,11 @@ PAPERS: list[dict] = [
         "mechanism": "跨 sim/real 任务对比相关性；提出 predictivity 概念。",
         "conclusion": "仿真 leaderboard 高不等于部署可用；需读 predictivity 文献校准期望。",
         "tags": ["paper", "sim2real", "evaluation", "benchmark"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("RA-L", "Robotics and Automation Letters", "IEEE 机器人快报"), ("Benchmark", "Benchmark", "标准化评测套件")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("RA-L", "Robotics and Automation Letters", "IEEE 机器人快报"),
+            ("Benchmark", "Benchmark", "标准化评测套件"),
+        ],
         "code": None,
         "project": None,
     },
@@ -729,7 +877,11 @@ PAPERS: list[dict] = [
         "mechanism": "Real-to-sim 场景重建 + 策略在重建渲染中训练。",
         "conclusion": "观测层 gap 应走视觉/渲染路线，勿用动力学 SysID 硬修。",
         "tags": ["paper", "sim2real", "gaussian-splatting", "manipulation"],
-        "abbrev": [("3DGS", "3D Gaussian Splatting", "三维高斯溅射"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("RGB", "Red Green Blue", "视觉像素策略")],
+        "abbrev": [
+            ("3DGS", "3D Gaussian Splatting", "三维高斯溅射"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("RGB", "Red Green Blue", "视觉像素策略"),
+        ],
         "code": None,
         "project": None,
     },
@@ -747,7 +899,11 @@ PAPERS: list[dict] = [
         "mechanism": "Real-to-sim 3DGS 场景 + GPU 向量化 RL 环境。",
         "conclusion": "视觉 Sim2Real 需要渲染器工程，与动力学 gap 分工明确。",
         "tags": ["paper", "sim2real", "gaussian-splatting", "locomotion"],
-        "abbrev": [("GaussGym", "Gaussian Splatting Gym", "本文仿真框架"), ("3DGS", "3D Gaussian Splatting", "三维高斯溅射"), ("Sim2Real", "Simulation to Real", "仿真到真机")],
+        "abbrev": [
+            ("GaussGym", "Gaussian Splatting Gym", "本文仿真框架"),
+            ("3DGS", "3D Gaussian Splatting", "三维高斯溅射"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+        ],
         "code": None,
         "project": None,
     },
@@ -765,7 +921,11 @@ PAPERS: list[dict] = [
         "mechanism": "兼顾梯度信息量与物理保真的接触模型 + 端到端策略优化。",
         "conclusion": "可微仿真可用于辨识或直接训策略，但非光滑接触梯度仍需谨慎。",
         "tags": ["paper", "differentiable-simulation", "locomotion", "sim2real"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("CoRL", "Conference on Robot Learning", "机器人学习会议"), ("Contact", "Contact model", "接触动力学模型")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("CoRL", "Conference on Robot Learning", "机器人学习会议"),
+            ("Contact", "Contact model", "接触动力学模型"),
+        ],
         "code": None,
         "project": None,
     },
@@ -783,7 +943,11 @@ PAPERS: list[dict] = [
         "mechanism": "off-policy 算法 + 数千并行环境 + 极简 reward。",
         "conclusion": "训练便宜不等于验收便宜；高敏捷仍倾向先标定执行器。",
         "tags": ["paper", "humanoid", "sim2real", "locomotion", "fast-training"],
-        "abbrev": [("SAC", "Soft Actor-Critic", "离线策略 RL 算法"), ("Sim2Real", "Simulation to Real", "仿真到真机"), ("TD3", "Twin Delayed DDPG", "离线策略 RL 算法")],
+        "abbrev": [
+            ("SAC", "Soft Actor-Critic", "离线策略 RL 算法"),
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("TD3", "Twin Delayed DDPG", "离线策略 RL 算法"),
+        ],
         "code": None,
         "project": None,
     },
@@ -801,7 +965,11 @@ PAPERS: list[dict] = [
         "mechanism": "四要素分类 + 开源 benchmark 清单 + FM 展望。",
         "conclusion": "选型时同时读「MDP 哪一环 gap」与「辨识立场」两套坐标。",
         "tags": ["paper", "survey", "sim2real", "reinforcement-learning"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("MDP", "Markov Decision Process", "马尔可夫决策过程"), ("FM", "Foundation Model", "基础模型")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("MDP", "Markov Decision Process", "马尔可夫决策过程"),
+            ("FM", "Foundation Model", "基础模型"),
+        ],
         "code": "https://github.com/LongchaoDa/AwesomeSim2Real",
         "project": None,
     },
@@ -819,7 +987,11 @@ PAPERS: list[dict] = [
         "mechanism": "社区策展 README + 分类链接。",
         "conclusion": "作扩展阅读索引，与站内 awesome 实体互参而不重复造 survey 页。",
         "tags": ["resource", "awesome-list", "humanoid", "sim2real"],
-        "abbrev": [("Sim2Real", "Simulation to Real", "仿真到真机"), ("WBC", "Whole-Body Control", "全身控制"), ("VLA", "Vision-Language-Action", "视觉–语言–动作模型")],
+        "abbrev": [
+            ("Sim2Real", "Simulation to Real", "仿真到真机"),
+            ("WBC", "Whole-Body Control", "全身控制"),
+            ("VLA", "Vision-Language-Action", "视觉–语言–动作模型"),
+        ],
         "code": "https://github.com/YanjieZe/awesome-humanoid-robot-learning",
         "project": None,
     },
@@ -838,32 +1010,31 @@ def entity_rel(p: dict) -> str:
 
 
 def _paper_source(p: dict) -> str:
-    slug = p["slug"] or entity_basename(p).replace("paper-", "").replace(".md", "")
     ax = p.get("arxiv")
     ax_line = f"- **arXiv：** <https://arxiv.org/abs/{ax}>\n" if ax else ""
     code_line = f"- **代码：** <{p['code']}>\n" if p.get("code") else ""
     proj_line = f"- **项目页：** <{p['project']}>\n" if p.get("project") else ""
-    return f"""# {p['title']}
+    return f"""# {p["title"]}
 
-> 来源归档（paper / 自由度FreeDof Sim2Real 44 篇参考文献 [{p['ref']:02d}/44]）
+> 来源归档（paper / 自由度FreeDof Sim2Real 44 篇参考文献 [{p["ref"]:02d}/44]）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** paper
-- **出处：** {p['venue']}
-- **章节：** {p['section']}（[四条路线梳理](https://mp.weixin.qq.com/s/K_6MibGXWwh9OL9eSZxOMg)）
+- **出处：** {p["venue"]}
+- **章节：** {p["section"]}（[四条路线梳理](https://mp.weixin.qq.com/s/K_6MibGXWwh9OL9eSZxOMg)）
 {ax_line}{code_line}{proj_line}- **入库日期：** {TODAY}
-- **开源状态：** {p['open']}
-- **一句话说明：** {p['one_liner']}
+- **开源状态：** {p["open"]}
+- **一句话说明：** {p["one_liner"]}
 - **沉淀到 wiki：** [`wiki/entities/{entity_basename(p)}`](../../wiki/entities/{entity_basename(p)})
 
 ## 核心摘录（归纳）
 
-- {p['why']}
-- {p['mechanism']}
+- {p["why"]}
+- {p["mechanism"]}
 
 ## 对 wiki 的映射
 
-- [{entity_basename(p).replace('.md', '')}](../../wiki/entities/{entity_basename(p)})
+- [{entity_basename(p).replace(".md", "")}](../../wiki/entities/{entity_basename(p)})
 - [freedof-sim2real-44-papers-technology-map](../../wiki/overview/freedof-sim2real-44-papers-technology-map.md)
 - [sim2real-four-routes-identifiability](../../wiki/comparisons/sim2real-four-routes-identifiability.md)
 """
@@ -891,12 +1062,12 @@ sequenceDiagram
         return f"""
 ## 源码运行时序图
 
-**不适用（{p['open']}）** — 截至 {TODAY} 以项目页/论文 Code availability 为准；入库未核验可运行入口。
+**不适用（{p["open"]}）** — 截至 {TODAY} 以项目页/论文 Code availability 为准；入库未核验可运行入口。
 """
     return f"""
 ## 源码运行时序图
 
-**不适用（{p['open']}）** — 经典文献或策展资源，无可运行官方代码仓。
+**不适用（{p["open"]}）** — 经典文献或策展资源，无可运行官方代码仓。
 """
 
 
@@ -905,7 +1076,7 @@ def _entity_new(p: dict) -> str:
     assert slug
     ax = p.get("arxiv")
     ax_yaml = f'arxiv: "{ax}"\n' if ax else ""
-    code_yaml = f'code: {p["code"]}\n' if p.get("code") else ""
+    code_yaml = f"code: {p['code']}\n" if p.get("code") else ""
     src_name = f"freedof_sim2real_{p['ref']:02d}_{slug}.md"
     abbrev = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in p["abbrev"])
     related = [
@@ -921,7 +1092,7 @@ def _entity_new(p: dict) -> str:
     return f"""---
 type: {tag_type}
 tags:
-{_yaml_list(p['tags'], 2)}
+{_yaml_list(p["tags"], 2)}
 status: complete
 updated: {TODAY}
 {ax_yaml}{code_yaml}related:
@@ -930,16 +1101,16 @@ sources:
   - ../../sources/papers/{src_name}
   - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/blogs/{BLOG}
-summary: "{p['one_liner'][:160]}"
+summary: "{p["one_liner"][:160]}"
 ---
 
-# {p['title'].split('(')[0].strip()}（FreeDof [{p['ref']:02d}/44]）
+# {p["title"].split("(")[0].strip()}（FreeDof [{p["ref"]:02d}/44]）
 
-**{p['title']}**（{ax_link}）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/{BLOG}) 参考文献 **[{p['ref']:02d}/44]**，归类 **{p['section']}**。
+**{p["title"]}**（{ax_link}）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/{BLOG}) 参考文献 **[{p["ref"]:02d}/44]**，归类 **{p["section"]}**。
 
 ## 一句话定义
 
-{p['one_liner']}
+{p["one_liner"]}
 
 ## 英文缩写速查
 
@@ -949,27 +1120,27 @@ summary: "{p['one_liner'][:160]}"
 
 ## 为什么重要
 
-- {p['why']}
-- 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **{p['section']}** 节点。
-- 开源结论：**{p['open']}**（步骤 2.5，{TODAY}）。
+- {p["why"]}
+- 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **{p["section"]}** 节点。
+- 开源结论：**{p["open"]}**（步骤 2.5，{TODAY}）。
 
 ## 核心机制
 
 | 项 | 内容 |
 |----|------|
-| **出处** | {p['venue']} |
-| **文内章节** | {p['section']} |
-| **要点** | {p['mechanism']} |
-| **开源** | **{p['open']}** |
+| **出处** | {p["venue"]} |
+| **文内章节** | {p["section"]} |
+| **要点** | {p["mechanism"]} |
+| **开源** | **{p["open"]}** |
 
 {_seq_block(p)}
 
 ## 结论
 
-**{p['conclusion']}**
+**{p["conclusion"]}**
 
-1. 文内角色：{p['section']} 路线上的参考节点，非重复 arXiv 页面。
-2. 机制要点：{p['mechanism'][:100]}…
+1. 文内角色：{p["section"]} 路线上的参考节点，非重复 arXiv 页面。
+2. 机制要点：{p["mechanism"][:100]}…
 3. 部署/复现前请对照原文与项目页，勿直接外推公众号数字。
 
 ## 关联页面
@@ -980,7 +1151,7 @@ summary: "{p['one_liner'][:160]}"
 
 ## 参考来源
 
-- [freedof_sim2real_{p['ref']:02d}_{slug}.md](../../sources/papers/freedof_sim2real_{p['ref']:02d}_{slug}.md)
+- [freedof_sim2real_{p["ref"]:02d}_{slug}.md](../../sources/papers/freedof_sim2real_{p["ref"]:02d}_{slug}.md)
 - [{BLOG}](../../sources/blogs/{BLOG})
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
 
@@ -995,7 +1166,9 @@ def _catalog() -> str:
     for p in PAPERS:
         ax = p.get("arxiv")
         ax_cell = f"[{ax}](https://arxiv.org/abs/{ax})" if ax else "—"
-        wiki = f"[{entity_basename(p).replace('.md', '')}](../../wiki/entities/{entity_basename(p)})"
+        wiki = (
+            f"[{entity_basename(p).replace('.md', '')}](../../wiki/entities/{entity_basename(p)})"
+        )
         reuse = "复用" if p.get("reuse") else "新建"
         rows.append(
             f"| {p['ref']:02d} | {p['section']} | {p['title'][:60]} | {ax_cell} | {p['open']} | {reuse} | {wiki} |"
@@ -1138,10 +1311,6 @@ def _patch_reuse(p: dict) -> None:
     if not path.exists():
         raise FileNotFoundError(path)
     text = path.read_text(encoding="utf-8")
-    src_paper = f"../../sources/papers/freedof_sim2real_{p['ref']:02d}_{(p['slug'] or entity_basename(p).replace('paper-','').replace('.md',''))}.md"
-    # normalize source filename for reuse
-    slug_for_src = entity_basename(p).replace("paper-", "").replace(".md", "")
-    src_paper = f"../../sources/papers/freedof_sim2real_{p['ref']:02d}_{slug_for_src}.md"
     catalog_src = "  - ../../sources/papers/freedof_sim2real_44_catalog.md\n"
     blog_src = f"  - ../../sources/blogs/{BLOG}\n"
     map_rel = "../overview/freedof-sim2real-44-papers-technology-map.md"
@@ -1150,9 +1319,11 @@ def _patch_reuse(p: dict) -> None:
     if BLOG not in text:
         text = re.sub(r"(sources:\n(?:  - .+\n)+)", lambda m: m.group(0) + blog_src, text, count=1)
     if "freedof-sim2real-44-papers-technology-map" not in text:
-        text = re.sub(r"(related:\n(?:  - .+\n)+)", lambda m: m.group(0) + f"  - {map_rel}\n", text, count=1)
-    if p.get("arxiv") and 'arxiv:' not in text.split("---", 2)[1]:
-        text = text.replace(f"updated: {TODAY}", f"updated: {TODAY}\narxiv: \"{p['arxiv']}\"")
+        text = re.sub(
+            r"(related:\n(?:  - .+\n)+)", lambda m: m.group(0) + f"  - {map_rel}\n", text, count=1
+        )
+    if p.get("arxiv") and "arxiv:" not in text.split("---", 2)[1]:
+        text = text.replace(f"updated: {TODAY}", f'updated: {TODAY}\narxiv: "{p["arxiv"]}"')
     text = re.sub(r"^updated: \d{4}-\d{2}-\d{2}", f"updated: {TODAY}", text, count=1, flags=re.M)
     path.write_text(text, encoding="utf-8")
 
@@ -1162,9 +1333,13 @@ def _update_blog() -> None:
     for p in PAPERS:
         ax = p.get("arxiv")
         ax_cell = f"[{ax}](https://arxiv.org/abs/{ax})" if ax else "—"
-        wiki = f"[{entity_basename(p).replace('.md', '')}](../../wiki/entities/{entity_basename(p)})"
+        wiki = (
+            f"[{entity_basename(p).replace('.md', '')}](../../wiki/entities/{entity_basename(p)})"
+        )
         reuse = "**复用**" if p.get("reuse") else "**新建**"
-        rows.append(f"| {p['ref']:02d} | {p['section']} | {p['title'][:55]} | {ax_cell} | {reuse} | {wiki} |")
+        rows.append(
+            f"| {p['ref']:02d} | {p['section']} | {p['title'][:55]} | {ax_cell} | {reuse} | {wiki} |"
+        )
     table = "\n".join(rows)
     text = BLOG_PATH.read_text(encoding="utf-8")
     block = f"""
