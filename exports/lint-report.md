@@ -2,7 +2,7 @@
 
 ## [2026-09-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **5** 个问题（另含 **45** 条信息型预警）：
+共发现 **0** 个问题（另含 **45** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -37,12 +37,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（5 个）
-- wiki/overview/humanoid-motion-control-trends.md (wiki:2026-07-14 < sources/humanoid_motion_control_know_how.md:2026-09-20)
-- wiki/concepts/modeling-and-solving-for-control.md (wiki:2026-07-14 < sources/humanoid_motion_control_know_how.md:2026-09-20)
-- wiki/overview/humanoid-motion-control-framework-outlook.md (wiki:2026-07-14 < sources/humanoid_motion_control_know_how.md:2026-09-20)
-- wiki/overview/humanoid-model-based-control-stack.md (wiki:2026-07-14 < sources/humanoid_motion_control_know_how.md:2026-09-20)
-- wiki/overview/humanoid-rl-motion-control-methods.md (wiki:2026-08-13 < sources/humanoid_motion_control_know_how.md:2026-09-20)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -58,7 +54,7 @@
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（15 个）
 - Resource（被 32 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- Community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Hardware（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Course（被 18 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - standard（被 16 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
