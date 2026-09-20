@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
+      "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
+      "label": "具身数据采集五大路线产业地图",
+      "type": "query",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/entities/paper-vidu-s2.md",
       "detail_id": "entity-paper-vidu-s2",
       "label": "Vidu S2：实时交互、可编辑与空间视频生成",
@@ -194,27 +204,17 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-vla-action-post-training-depth-decodability.md",
-      "detail_id": "entity-paper-vla-action-post-training-depth-decodability",
-      "label": "VLA Depth Decodability（arXiv:2608.08904）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vidu-s2.md",
-    "detail_id": "entity-paper-vidu-s2",
-    "label": "Vidu S2：实时交互、可编辑与空间视频生成",
-    "type": "entity",
+    "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
+    "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
+    "label": "具身数据采集五大路线产业地图",
+    "type": "query",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
