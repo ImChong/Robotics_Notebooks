@@ -18,7 +18,7 @@
 |---|------|-------|----------------|------------------|
 | 1 | SAVLA | [2609.16641](https://arxiv.org/abs/2609.16641) | 待发布 | [paper-savla](../../wiki/entities/paper-savla.md) **新建** |
 | 2 | SWIM | [2609.17035](https://arxiv.org/abs/2609.17035) | 待发布 | [paper-swim-vla](../../wiki/entities/paper-swim-vla.md) **新建** |
-| 3 | XPACE | [2609.17372](https://arxiv.org/abs/2609.17372) | 待发布 | [paper-xpace](../../wiki/entities/paper-xpace.md) **新建** |
+| 3 | XPACE | [2609.17372](https://arxiv.org/abs/2609.17372) | 未开源 | [paper-xpace](../../wiki/entities/paper-xpace.md) **深读** |
 | 4 | Real-Time EXPO-FT | [2609.18207](https://arxiv.org/abs/2609.18207) | 待发布 | [paper-real-time-expo-ft](../../wiki/entities/paper-real-time-expo-ft.md) **复用** |
 | 5 | MPC 脚手架 dex RL | [2609.14878](https://arxiv.org/abs/2609.14878) | 待发布 | [paper-mpc-scaffolding-dex-rl](../../wiki/entities/paper-mpc-scaffolding-dex-rl.md) **新建** |
 | 6 | GraphPoint | [2609.18358](https://arxiv.org/abs/2609.18358) | 待发布 | [paper-graphpoint](../../wiki/entities/paper-graphpoint.md) **新建** |

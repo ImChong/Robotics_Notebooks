@@ -1,3 +1,9 @@
+## [2026-09-20] ingest | sources/papers/xpace_arxiv_2609_17372.md + sources/sites/xpace-project.md — XPACE（arXiv:2609.17372，XPENG Robotics）WAM+simulator 合一、5000h 异构经验、SGF recovery 自改进；开源结论：未开源（组织页无 XPACE 仓库）；深读 paper-xpace，交叉 world-action-models
+
+- **意图：** 从 senlanke 周更 stub 升格为项目页/arXiv 深读；步骤 2.5 核查 xpeng-robotics.github.io/xpace。
+- **开源结论：** 项目页仅链 GitHub 组织，无 XPACE 专用仓库或权重。
+- **关键页：** [paper-xpace](wiki/entities/paper-xpace.md)
+
 ## [2026-09-20] ingest | sources/papers/demohlm_arxiv_2510_11258.md — DemoHLM（arXiv:2510.11258，PKU/BeingBeyond）单示范人形 loco-manip 数据生成；开源结论：GitHub 部分开源（仅项目站镜像，无可运行代码）；升格 paper-loco-manip-161-136-demohlm
 
 - **意图：** 161 篇 stub 升格为 arXiv 深读；步骤 2.5 核查项目页与 GitHub。

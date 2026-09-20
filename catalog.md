@@ -3559,7 +3559,7 @@
 - [X2Streaming-TTS：令牌级因果流式语音合成](wiki/entities/paper-x2streaming-tts.md) — X2Streaming-TTS**（*Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inherit `📅unknown` `[entity_page]`
 - [XHugWBC（HMI P037）](wiki/entities/paper-xhugwbc-cross-humanoid.md) — XHugWBC**（*Scalable and General Whole-Body Control for Cross-Humanoid Locomotion*，2026，[arXiv:2602 `📅unknown` `[entity_page]`
 - [X-Morph：跨形态人体运动先验](wiki/entities/paper-xmorph.md) — X-Morph**（*Human Motion Priors for Scalable Robot Learning Across Morphologies*，[arXiv:2606.30290 `📅unknown` `[entity_page]`
-- [XPACE（arXiv:2609.17372）](wiki/entities/paper-xpace.md) — XPACE**（*XPACE: Joint World and Action Modeling from Heterogeneous Experience*，[arXiv:2609.17372 `📅unknown` `[entity_page]`
+- [XPACE（Joint World and Action Modeling · arXiv:2609.17372）](wiki/entities/paper-xpace.md) — XPACE**（*XPACE: Joint World and Action Modeling from Heterogeneous Experience*，[arXiv:2609.17372 `📅unknown` `[entity_page]`
 - [XR-2：1500 小时双臂家务到在线修正](wiki/entities/paper-xr2-bimanual-household.md) — Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Correction `📅unknown` `[entity_page]`
 - [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
 - [YAHMP：人形通用运动跟踪里什么真的重要？](wiki/entities/paper-yahmp.md) — YAHMP**（*Yet Another Humanoid Motion tracking Policy*；论文 *What Matters in Humanoid General Motion  `📅unknown` `[entity_page]`
