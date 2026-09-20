@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, motion-control, trends, bfm, mpc, reinforcement-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
   - ./humanoid-motion-control-framework-outlook.md
   - ./humanoid-motion-control-know-how-technology-map.md

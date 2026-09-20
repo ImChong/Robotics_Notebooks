@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, model-based, mpc, wbc, control-stack]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
   - ./humanoid-motion-control-know-how-technology-map.md
   - ../../roadmap/depth-classical-control.md

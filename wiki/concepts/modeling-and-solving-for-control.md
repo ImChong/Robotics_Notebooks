@@ -2,7 +2,7 @@
 type: concept
 tags: [control, modeling, optimization, humanoid]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 summary: "飞书「建模+求解」框架：先把人形控制问题写成动力学模型与约束，再选择 OCP/QP/MPC/RL 等求解器；是 Model-based 与 Learning-based 的共同上游。"
 related:
   - ./optimal-control.md
