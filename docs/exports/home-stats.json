@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-bench2dex.md",
+      "detail_id": "entity-paper-bench2dex",
+      "label": "Bench2Dex（arXiv:2609.15726）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-handedit.md",
+      "detail_id": "entity-paper-handedit",
+      "label": "HandEdit（arXiv:2608.12122）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
       "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
       "label": "Validating robotics simulators on real-world impacts（FreeDof [21/44]）",
@@ -190,37 +212,18 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rapt-sim2real-ood-detection.md",
-      "detail_id": "entity-paper-rapt-sim2real-ood-detection",
-      "label": "RAPT: model-predictive out-of-distribution detection and failure diagnosis for sim-to-real humanoid deployment（FreeDof [37/44]）",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rarl-robust-adversarial-rl.md",
-      "detail_id": "entity-paper-rarl-robust-adversarial-rl",
-      "label": "Robust adversarial reinforcement learning（FreeDof [18/44]）",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
-    "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
-    "label": "Validating robotics simulators on real-world impacts（FreeDof [21/44]）",
+    "path": "wiki/entities/paper-bench2dex.md",
+    "detail_id": "entity-paper-bench2dex",
+    "label": "Bench2Dex（arXiv:2609.15726）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
