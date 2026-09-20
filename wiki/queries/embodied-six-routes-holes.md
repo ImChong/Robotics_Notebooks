@@ -4,6 +4,7 @@ tags: [query, vla, world-model, reinforcement-learning, imitation-learning, taxo
 status: complete
 updated: 2026-09-15
 related:
+  - ./embodied-six-routes-survey-lineage.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ./embodied-fm-taxonomy-loop.md
   - ../methods/vla.md
@@ -16,6 +17,7 @@ related:
   - ../entities/figure-ai.md
   - ../entities/paper-arli.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_embodied_six_routes_survey_lineage_2026-09-20.md
   - ../../sources/blogs/wechat_shenlan_embodied_six_routes_holes_2026-09-04.md
   - ../../sources/raw/wechat_shenlan_embodied_six_routes_holes_2026-09-04.md
   - ../../sources/papers/smoothrl_arxiv_2608_29768.md
@@ -103,6 +105,7 @@ flowchart TD
 
 ## 关联页面
 
+- [六条路线 × 12 篇综述补课线](./embodied-six-routes-survey-lineage.md) — 同系列 2026-09-20 文：历史脉络与综述阅读顺序
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — 按学习信号划分
 - [具身大模型分类学选型闭环](./embodied-fm-taxonomy-loop.md) — 按 I/O 五层划分
 - [VLA](../methods/vla.md)
