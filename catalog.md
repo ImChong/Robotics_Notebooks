@@ -1191,6 +1191,7 @@
 - [Atlas Locomotion（HMI P005）](wiki/entities/paper-atlas-locomotion-optimization-stack.md) — Atlas Locomotion**（*Optimization-based Locomotion Planning, Estimation, and Control Design for the `📅unknown` `[entity_page]`
 - [AtomicVLA：原子技能学习的统一规划–执行 VLA](wiki/entities/paper-atomicvla.md) — AtomicVLA**（*AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots*，[arXiv:2603.07 `📅unknown` `[entity_page]`
 - [AURORA](wiki/entities/paper-aurora-hand-reconstruction.md) — AURORA**（*Active Uncertainty-Driven Re-Orientation for In-Hand Reconstruction*，[arXiv:2609.08493 `📅unknown` `[entity_page]`
+- [AutoHorizon（VLA Knows Its Limits · arXiv:2602.21445）](wiki/entities/paper-autohorizon.md) — VLA Knows Its Limits: Adaptive Execution Horizons for Robot Policies**（[arXiv:2602.21445](https:// `📅unknown` `[entity_page]`
 - [AutoIntervene（Action Chunk 自动接管）](wiki/entities/paper-autointervene.md) — AutoIntervene**（*Calibrated Intervention for Action-Chunking Imitation Learning Policies*，[arXiv:2 `📅unknown` `[entity_page]`
 - [自动化面部机构合成（Automated Synthesis of Facial Mechanisms for Conversational Animatronic Robots）](wiki/entities/paper-automated-facial-mechanisms-animatronic.md) — Automated Synthesis of Facial Mechanisms**（*Automated Synthesis of Facial Mechanisms for Conversat `📅unknown` `[entity_page]`
 - [Autonomous Spot（NeBula 长程探索）](wiki/entities/paper-autonomous-spot-nebula-exploration.md) — Autonomous Spot**（arXiv:2010.09259）系统论文描述如何将 **NeBula（Networked Belief-aware Perceptual Autonomy） `📅unknown` `[entity_page]`
