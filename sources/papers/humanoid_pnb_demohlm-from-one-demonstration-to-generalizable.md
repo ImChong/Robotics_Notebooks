@@ -14,7 +14,9 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
+- **arXiv：** <https://arxiv.org/abs/2510.11258>
 - 知识归纳见 wiki 实体页：[paper-loco-manip-161-136-demohlm](../../wiki/entities/paper-loco-manip-161-136-demohlm.md).
+- arXiv 摘录：[demohlm_arxiv_2510_11258.md](demohlm_arxiv_2510_11258.md)
 
 ## 对 wiki 的映射
 

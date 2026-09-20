@@ -1,3 +1,9 @@
+## [2026-09-20] ingest | sources/papers/demohlm_arxiv_2510_11258.md — DemoHLM（arXiv:2510.11258，PKU/BeingBeyond）单示范人形 loco-manip 数据生成；开源结论：GitHub 部分开源（仅项目站镜像，无可运行代码）；升格 paper-loco-manip-161-136-demohlm
+
+- **意图：** 161 篇 stub 升格为 arXiv 深读；步骤 2.5 核查项目页与 GitHub。
+- **开源结论：** 项目页/arXiv 已发布；代码仓无训练/部署入口。
+- **关键页：** [paper-loco-manip-161-136-demohlm](wiki/entities/paper-loco-manip-161-136-demohlm.md)
+
 ## [2026-09-20] ingest | sources/sites/bench2dex-github-io.md + handedit.github.io — Bench2Dex / HandEdit 项目页核查；开源结论：均已发布代码与数据/评测；升格/刷新 paper-bench2dex、新建 paper-handedit
 
 - **意图：** 步骤 2.5 核查两项目页；Bench2Dex 从「待发布」更正为已开源（GitHub + HF/ModelScope）；HandEdit 新建完整 ingest。
