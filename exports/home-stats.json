@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-autohorizon.md",
+      "detail_id": "entity-paper-autohorizon",
+      "label": "AutoHorizon（VLA Knows Its Limits · arXiv:2602.21445）",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
       "path": "wiki/entities/browserskill.md",
       "detail_id": "entity-browserskill",
       "label": "BrowserSkill（腾讯 · 浏览器 Agent 桥）",
@@ -200,27 +211,18 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-xpace.md",
-      "detail_id": "entity-paper-xpace",
-      "label": "XPACE（Joint World and Action Modeling · arXiv:2609.17372）",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/browserskill.md",
-    "detail_id": "entity-browserskill",
-    "label": "BrowserSkill（腾讯 · 浏览器 Agent 桥）",
+    "path": "wiki/entities/paper-autohorizon.md",
+    "detail_id": "entity-paper-autohorizon",
+    "label": "AutoHorizon（VLA Knows Its Limits · arXiv:2602.21445）",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "动作块输出（Action Chunking） 社区"
   },
   "top_communities": [
     {
