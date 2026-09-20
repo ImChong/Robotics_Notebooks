@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/robot-simulation-three-layers.md",
+      "detail_id": "wiki-concepts-robot-simulation-three-layers",
+      "label": "机器人仿真三层分工（Physics / Platform / Learning）",
+      "type": "concept",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+    },
+    {
       "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
       "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
       "label": "具身数据采集五大路线产业地图",
@@ -195,26 +205,17 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-vane.md",
-      "detail_id": "entity-paper-vane",
-      "label": "VANE（arXiv:2608.09448）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/embodied-data-collection-five-routes-landscape.md",
-    "detail_id": "wiki-queries-embodied-data-collection-five-routes-landscape",
-    "label": "具身数据采集五大路线产业地图",
-    "type": "query",
+    "path": "wiki/concepts/robot-simulation-three-layers.md",
+    "detail_id": "wiki-concepts-robot-simulation-three-layers",
+    "label": "机器人仿真三层分工（Physics / Platform / Learning）",
+    "type": "concept",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
   },
   "top_communities": [
     {
