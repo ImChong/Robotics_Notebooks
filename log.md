@@ -1,3 +1,5 @@
+## [2026-09-20] ingest | sources/blogs/wechat_shenlan_embodied_six_routes_survey_lineage_2026-09-20.md — 深蓝六条路线×12综述补课线；写回 wiki/queries/embodied-six-routes-survey-lineage.md，交叉六条窟窿页
+
 ## [2026-09-20] ingest | sources/repos/easy-vibe.md — Datawhale Easy-Vibe 3+1 阶段教程入库，升格 wiki/entities/easy-vibe.md
 
 ## [2026-09-20] ingest | sources/papers/lewis_rag_neurips_2020.md + rag_survey — RAG 奠基论文与综述入库，升格 wiki/concepts/retrieval-augmented-generation.md

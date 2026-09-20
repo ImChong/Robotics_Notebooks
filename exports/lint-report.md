@@ -162,4 +162,4 @@
 - wiki/entities/paper-leap-quadruped-active-perception.md
 - wiki/entities/paper-pose-semantic-legged-exploration.md
 
-📊 Sources 覆盖率：4575/4575 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4576/4576 (100%) wiki/entity 页有 ingest 来源

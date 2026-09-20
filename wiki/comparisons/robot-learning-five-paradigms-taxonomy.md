@@ -144,6 +144,7 @@ flowchart LR
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 选模型族时的姊妹入口；本页回答「用什么学习信号」
 - [Query：具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — VLM→VLN→VLA→VLX→WM 决策链
 - [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — 产业叙事并置的六条 + 各路卡点（与本页学习信号轴正交）
+- [六条路线 × 12 篇综述补课线](../queries/embodied-six-routes-survey-lineage.md) — 经典综述 continuity（与窟窿页互补）
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 学习方法层总入口
 - [Imitation Learning](../methods/imitation-learning.md) / [Reinforcement Learning](../methods/reinforcement-learning.md) / [VLA](../methods/vla.md)
 - [Sim2Real](../concepts/sim2real.md) / [Domain Randomization](../concepts/domain-randomization.md)
