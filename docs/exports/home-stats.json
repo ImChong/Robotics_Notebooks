@@ -9,28 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-bench2dex.md",
-      "detail_id": "entity-paper-bench2dex",
-      "label": "Bench2Dex（arXiv:2609.15726）",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-handedit.md",
-      "detail_id": "entity-paper-handedit",
-      "label": "HandEdit（arXiv:2608.12122）",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
       "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
       "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
       "label": "Validating robotics simulators on real-world impacts",
@@ -161,39 +139,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md",
-      "detail_id": "entity-paper-pai-1808-00177-learningdexterousinhandmanipulat",
-      "label": "Learning Dexterous In-Hand Manipulation (OpenAI)",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pai-1906-01728-bayessim.md",
-      "detail_id": "entity-paper-pai-1906-01728-bayessim",
-      "label": "BayesSim",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pai-1910-13325-simopt.md",
-      "detail_id": "entity-paper-pai-1910-13325-simopt",
-      "label": "SimOpt",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/paper-peng-dynamics-randomization-sim2real.md",
       "detail_id": "entity-paper-peng-dynamics-randomization-sim2real",
       "label": "Sim-to-real transfer of robotic control with dynamics randomization",
@@ -212,18 +157,67 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rapt-sim2real-ood-detection.md",
+      "detail_id": "entity-paper-rapt-sim2real-ood-detection",
+      "label": "RAPT: model-predictive out-of-distribution detection and failure diagnosis for sim-to-real humanoid deployment",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rarl-robust-adversarial-rl.md",
+      "detail_id": "entity-paper-rarl-robust-adversarial-rl",
+      "label": "Robust adversarial reinforcement learning",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md",
+      "detail_id": "entity-paper-schwarke-differentiable-simulation-locomotion-corl",
+      "label": "Learning deployable locomotion control via differentiable simulation",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-smith-legged-robots-keep-learning.md",
+      "detail_id": "entity-paper-smith-legged-robots-keep-learning",
+      "label": "Legged robots that keep on learning: fine-tuning locomotion policies in the real world",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-splatsim-gaussian-splatting-sim2real.md",
+      "detail_id": "entity-paper-splatsim-gaussian-splatting-sim2real",
+      "label": "SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bench2dex.md",
-    "detail_id": "entity-paper-bench2dex",
-    "label": "Bench2Dex（arXiv:2609.15726）",
+    "path": "wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md",
+    "detail_id": "entity-paper-acosta-validating-simulators-real-world-impacts",
+    "label": "Validating robotics simulators on real-world impacts",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
