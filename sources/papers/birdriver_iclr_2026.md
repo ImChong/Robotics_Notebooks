@@ -7,7 +7,8 @@
 - **会议：** ICLR 2026 Poster
 - **OpenReview：** <https://openreview.net/forum?id=TuU95FWkyH>
 - **ICLR Proceedings：** <https://proceedings.iclr.cc/paper_files/paper/2026/hash/acb18f946cde3cc29864e6df7df54d11-Abstract-Conference.html>
-- **PDF：** <https://proceedings.iclr.cc/paper_files/paper/2026/file/acb18f946cde3cc29864e6df7df54d11-Paper-Conference.pdf>
+- **PDF（Proceedings）：** <https://proceedings.iclr.cc/paper_files/paper/2026/file/acb18f946cde3cc29864e6df7df54d11-Paper-Conference.pdf>
+- **PDF（OpenReview）：** <https://openreview.net/pdf?id=TuU95FWkyH>
 - **ICLR Virtual：** <https://iclr.cc/virtual/2026/poster/10009274>
 - **作者：** Yinuo Wang†、Mining Tan†、Yuanxin Zhong†∗、Zhitao Wang、Siyuan Cheng∗
 - **机构：** 清华大学（Tsinghua）；华为（Huawei）；中国科学院大学（UCAS）；中国科学院自动化研究所 MAIS（CASIA）
@@ -15,9 +16,9 @@
 - **入库日期：** 2026-09-18
 - **一句话说明：** 分层 VLM–规划器：单帧 BEV 图 + 系统/用户 prompt → VLM 输出 ≤3 个相对坐标 key points → PLUTO 运动规划器解码轨迹；三类辅助 SFT 数据 + token 加权损失提升数值精度；nuPlan Test14 多数超 PLUTO 基座，InterPlan 长尾 SOTA。
 
-## 开源状态（核查，2026-09-18）
+## 开源状态（核查，2026-09-20）
 
-- **BIRDriver 官方实现：确认未开源。** ICLR 论文、OpenReview 与 PDF **未列** GitHub / Hugging Face / 项目页；检索未见作者公开训练/闭环仿真入口。
+- **BIRDriver 官方实现：确认未开源。** ICLR Proceedings、OpenReview forum/PDF 与 ICLR Virtual **未列** GitHub / Hugging Face / 项目页；二次检索仍无作者公开训练/闭环仿真入口。
 - **可复现边界：** 方法细节（BEV 渲染五类元素、RDP key point、838,824 样本三任务 10:1:2、LoRA on Qwen2.5VL-3B、PLUTO PointEncoder 微调 + VLM 预测噪声增广）已写在正文 §4–5 与 Appendix B；依赖 **nuPlan devkit** 与 **[PLUTO](https://github.com/jchengai/pluto)** 基座可部分对照，但 **VLM 权重与 BIRDriver 联合推理脚本未发布**。
 - **源码运行时序图：** wiki 实体页标 **不适用**。
 

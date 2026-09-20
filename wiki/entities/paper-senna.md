@@ -8,7 +8,7 @@ tags:
   - planning
   - hust
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 venue: "arXiv 2024"
 arxiv: "2410.22313"
 code: https://github.com/hustvl/Senna

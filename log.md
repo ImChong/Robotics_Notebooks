@@ -1,5 +1,7 @@
 ## [2026-09-20] ingest | sources/repos/learnprompt.md — 接入 LearnPrompt 中文 AI Practice Wiki 与 8 路径教程索引；升格 learnprompt 实体页
 
+## [2026-09-20] ingest | sources/papers/birdriver_iclr_2026.md — BIRDriver（ICLR 2026）二次核查：OpenReview PDF 链补全；开源仍确认未发布；刷新 paper-birdriver 核查日期
+
 ## [2026-09-20] ingest | sources/papers/simplememvla_arxiv_2609_05533.md — SimpleMemVLA（arXiv:2609.05533）原生视频上下文记忆 VLA；OpenBMB 全栈已开源；升格 paper-simplememvla；交叉 vla 长程记忆谱系
 
 ## [2026-09-20] ingest | sources/blogs/wechat_airs_embodied_data_five_routes_2026-09-15.md — AIRS 具身数采五大路线盘点；升格 embodied-data-collection-five-routes-landscape query 页；交叉四层术语地图 / depth-embodied-data

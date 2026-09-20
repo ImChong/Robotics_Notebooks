@@ -9,7 +9,7 @@ tags:
   - tsinghua
   - li-auto
 status: complete
-updated: 2026-09-18
+updated: 2026-09-20
 venue: "CoRL 2025"
 arxiv: "2402.12289"
 related:
