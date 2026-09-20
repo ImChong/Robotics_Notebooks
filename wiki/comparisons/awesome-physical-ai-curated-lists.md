@@ -2,12 +2,13 @@
 type: comparison
 tags: [curated-list, physical-ai, embodied-ai, vla]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../entities/awesome-physical-ai-aichr.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../overview/awesome-physical-ai-technology-map.md
   - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/repos/awesome-physical-ai-natnew.md
@@ -48,6 +49,13 @@ GitHub 上存在两个均名为 **awesome-physical-ai** 的独立仓库，入库
 | Quick start | Gymnasium → MuJoCo → LeRobot → OpenVLA | 无 staged 路径 |
 | 自动化 | issue triage workflow | 标准 CONTRIBUTING |
 
+
+## 子节点覆盖（2026-09-20 纵深）
+
+去重后 **384** 条独立详情节点（新建 241，复用 143；两清单同时出现 33）。
+
+完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
+
 ## 怎么选
 
 - **系统学习 / 长期跟踪 / 生产视角** → **natnew**：taxonomy 与 docs 站适合按 Sim2Real、Safety、Benchmark 系统浏览。
@@ -56,6 +64,7 @@ GitHub 上存在两个均名为 **awesome-physical-ai** 的独立仓库，入库
 
 ## 关联页面
 
+- [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [VLA](../methods/vla.md)

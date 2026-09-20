@@ -35,3 +35,9 @@ Simulators · Datasets · Benchmarks · Evaluation Methodology · Robotics Found
 - [awesome-physical-ai-natnew](../../wiki/entities/awesome-physical-ai-natnew.md)
 - [awesome-physical-ai-aichr](../../wiki/entities/awesome-physical-ai-aichr.md) — 同名异仓对照
 - [vla](../../wiki/methods/vla.md) · [sim2real](../../wiki/concepts/sim2real.md) · [generative-world-models](../../wiki/methods/generative-world-models.md)
+
+## 纵深节点化（2026-09-20）
+
+- 并集目录：[`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md)
+- 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)
+- 本清单解析条目：327

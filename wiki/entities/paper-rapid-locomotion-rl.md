@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, locomotion, quadruped, sim2real, mit, agility]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2205.02824"
 code: https://github.com/Improbable-AI/rapid-locomotion-rl
 related:
@@ -13,11 +13,15 @@ related:
   - ../concepts/curriculum-learning.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
+  - ../overview/awesome-physical-ai-technology-map.md
+  - ./awesome-physical-ai-natnew.md
 sources:
   - ../../sources/papers/rapid_locomotion_rl_arxiv_2205_02824.md
   - ../../sources/repos/improbable-ai-rapid-locomotion-rl.md
   - ../../sources/sites/agility-csail-mit.md
   - ../../sources/blogs/robot_daycare_mini_cheetah_2019.md
+  - ../../sources/repos/awesome-physical-ai-union-catalog.md
+  - ../../sources/repos/awesome-physical-ai-natnew.md
 summary: "Margolis et al. arXiv:2205.02824：端到端 RL 使 Mini Cheetah 野外高速至 3.9 m/s；速度课程 + 在线系统辨识式 Sim2Real。博文别名 Agile Locomotion via Model-free Learning。"
 ---
 

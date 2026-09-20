@@ -2,11 +2,12 @@
 type: entity
 tags: [curated-list, physical-ai, embodied-ai, vla, edge-ai, ros]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 related:
   - ./awesome-physical-ai-natnew.md
   - ../comparisons/awesome-physical-ai-curated-lists.md
   - ../methods/vla.md
+  - ../overview/awesome-physical-ai-technology-map.md
   - ./lerobot.md
   - ./isaac-lab.md
 sources:
@@ -38,6 +39,13 @@ summary: "aichr 组织维护的 Physical AI 策展清单：VLA、3D 视觉、仿
 - **工业 VLA 入口快：** GR00T、π0、Gemini Robotics、Octo 等同屏，适合 **选型扫一眼**。
 - **CC0 列表：** 鼓励 fork/重组；与 natnew MIT 仓许可证不同，引用时注意 **条目上游 License**。
 
+
+## 子节点覆盖（2026-09-20 纵深）
+
+去重后 **384** 条独立详情节点（新建 241，复用 143；两清单同时出现 33）。
+
+完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
+
 ## 核心结构
 
 Foundation Models (VLA) · 3D Computer Vision · Datasets · Benchmarks · Simulators · Edge AI · Hardware · Frameworks · Robot Platforms · Research Labs · Courses · Community
@@ -50,6 +58,7 @@ Foundation Models (VLA) · 3D Computer Vision · Datasets · Benchmarks · Simul
 
 ## 关联页面
 
+- [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [awesome-physical-ai（natnew）](./awesome-physical-ai-natnew.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [VLA](../methods/vla.md)

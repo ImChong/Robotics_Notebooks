@@ -30,3 +30,9 @@ Foundation Models (VLA) · 3D Computer Vision · Datasets · Benchmarks · Simul
 - [awesome-physical-ai-aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - [awesome-physical-ai-natnew](../../wiki/entities/awesome-physical-ai-natnew.md) — 同名异仓对照
 - [vla](../../wiki/methods/vla.md) · [lerobot](../../wiki/entities/lerobot.md)
+
+## 纵深节点化（2026-09-20）
+
+- 并集目录：[`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md)
+- 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)
+- 本清单解析条目：90

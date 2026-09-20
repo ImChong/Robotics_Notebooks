@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulator, arm, gripper, ros, robotis, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-20
 related:
   - ./robotis.md
   - ./dynamixel-sdk.md
@@ -12,9 +12,13 @@ related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../concepts/ros2-basics.md
+  - ../overview/awesome-physical-ai-technology-map.md
+  - ./awesome-physical-ai-natnew.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/repos/robotis-git.md
+  - ../../sources/repos/awesome-physical-ai-union-catalog.md
+  - ../../sources/repos/awesome-physical-ai-natnew.md
 summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulator-H、RH-P12-RN 等）：文档在 eManual 分系列维护，代码集中在 ROBOTIS-GIT 组织；Physical AI 侧见 OMY 与 cyclo_lab。"
 ---
 

@@ -2,13 +2,14 @@
 type: entity
 tags: [curated-list, physical-ai, embodied-ai, vla, world-models, sim2real, robotics-foundation-models]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 related:
   - ../methods/vla.md
   - ../concepts/sim2real.md
   - ../methods/generative-world-models.md
   - ./awesome-physical-ai-aichr.md
   - ../comparisons/awesome-physical-ai-curated-lists.md
+  - ../overview/awesome-physical-ai-technology-map.md
   - ./lerobot.md
 sources:
   - ../../sources/repos/awesome-physical-ai-natnew.md
@@ -41,6 +42,13 @@ summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical �
 - **Quick start 路径：** README 给出 Gymnasium → MuJoCo → LeRobot → OpenVLA 的 staged 入门，降低「Physical AI 从哪读起」摩擦。
 - **与 aichr 同名仓对照：** 见 [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)。
 
+
+## 子节点覆盖（2026-09-20 纵深）
+
+去重后 **384** 条独立详情节点（新建 241，复用 143；两清单同时出现 33）。
+
+完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
+
 ## 核心结构
 
 | 类别 | 侧重 |
@@ -61,6 +69,7 @@ summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical �
 
 ## 关联页面
 
+- [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [awesome-physical-ai（aichr）](./awesome-physical-ai-aichr.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [VLA](../methods/vla.md)

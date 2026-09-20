@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "humanoid", "whole-body-tracking", "expressive", "hmi-papers"]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2402.16796"
 code: https://github.com/chengxuxin/expressive-humanoid
 venue: "HMI curated · 2024"
@@ -13,9 +13,13 @@ related:
   - ../concepts/whole-body-coordination.md
   - ../methods/beyondmimic.md
   - ../tasks/humanoid-locomotion.md
+  - ../overview/awesome-physical-ai-technology-map.md
+  - ./awesome-physical-ai-natnew.md
 sources:
   - ../../sources/papers/hmi_p028_exbody-expressive-humanoid.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/repos/awesome-physical-ai-union-catalog.md
+  - ../../sources/repos/awesome-physical-ai-natnew.md
 ---
 
 # ExBody（HMI P028）
