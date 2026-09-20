@@ -10,7 +10,7 @@
 - **主链接：** <https://expressive-humanoid.github.io/>
 - **代码：** 未在清单中标注
 - **清单摘要：** Whole-body controller producing expressive, human-like motion on a real humanoid (RSS 2024).
-- **沉淀到 wiki：** [`wiki/entities/painode-191-expressivewholebodycontrol.md`](../../wiki/entities/painode-191-expressivewholebodycontrol.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-exbody-expressive-humanoid.md`](../../wiki/entities/paper-exbody-expressive-humanoid.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-191-expressivewholebodycontrol.md`](../../wiki/entities/painode-191-expressivewholebodycontrol.md)
+- 实体页：[`wiki/entities/paper-exbody-expressive-humanoid.md`](../../wiki/entities/paper-exbody-expressive-humanoid.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

@@ -53,9 +53,9 @@
 - 无
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（15 个）
-- Resource（被 33 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Hardware（被 24 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- Resource（被 32 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- Hardware（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Course（被 18 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - standard（被 16 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Benchmark（被 14 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
@@ -161,4 +161,4 @@
 - wiki/entities/paper-leap-quadruped-active-perception.md
 - wiki/entities/paper-pose-semantic-legged-exploration.md
 
-📊 Sources 覆盖率：4580/4580 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4572/4572 (100%) wiki/entity 页有 ingest 来源

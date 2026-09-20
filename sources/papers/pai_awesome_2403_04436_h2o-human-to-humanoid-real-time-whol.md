@@ -10,7 +10,7 @@
 - **主链接：** <https://arxiv.org/abs/2403.04436>
 - **代码：** 未在清单中标注
 - **清单摘要：** He et al. RL-based real-time teleoperation framework retargeting human motion to a humanoid (IROS 2024).
-- **沉淀到 wiki：** [`wiki/entities/paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md`](../../wiki/entities/paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md`](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md`](../../wiki/entities/paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md)
+- 实体页：[`wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md`](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

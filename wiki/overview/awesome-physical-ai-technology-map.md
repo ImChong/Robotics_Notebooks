@@ -3,7 +3,7 @@ type: overview
 tags: [overview, curated-index, physical-ai, awesome-physical-ai, technology-map]
 status: complete
 updated: 2026-09-20
-summary: "Physical AI 双清单技术地图：natnew ∪ aichr 去重后 384 条，新建 249、复用 135。"
+summary: "Physical AI 双清单技术地图：natnew ∪ aichr 去重后 384 条，新建 241、复用 143。"
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../entities/awesome-physical-ai-aichr.md
@@ -37,7 +37,7 @@ sources:
 
 - Awesome 列表本身不是知识图谱节点；若不升格子条目，图谱只能停在清单 hub。
 - 本地图 **优先复用** 库内已有 arXiv / GitHub / 标题 canonical 页，仅对缺失条目新建索引级节点。
-- 统计：去重后 **384** 条（新建 **249**，复用 **135**）。
+- 统计：去重后 **384** 条（新建 **241**，复用 **143**）。
 
 ## 覆盖范围
 
@@ -284,7 +284,7 @@ sources:
 | 154 | Boston Dynamics Atlas | [boston-dynamics](../entities/boston-dynamics.md) | natnew |
 | 155 | Boston Dynamics Spot | [boston-dynamics](../entities/boston-dynamics.md) | natnew |
 | 156 | Clearpath Robotics | [painode-156-clearpathrobotics](../entities/painode-156-clearpathrobotics.md) | natnew |
-| 157 | Dex-UMI | [painode-157-dexumi](../entities/painode-157-dexumi.md) | natnew |
+| 157 | Dex-UMI | [paper-notebook-dexumi-using-human-hand-as-the-universal-manipul](../entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md) | natnew |
 | 158 | DexUMI Code & Data | [paper-notebook-dexumi-using-human-hand-as-the-universal-manipul](../entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md) | natnew |
 | 159 | Fourier Intelligence GR-1 | [fourier-grx-n1](../entities/fourier-grx-n1.md) | natnew |
 | 160 | Franka Emika | [franka-research-3](../entities/franka-research-3.md) | natnew |
@@ -293,12 +293,12 @@ sources:
 | 163 | Kinova | [painode-163-kinova](../entities/painode-163-kinova.md) | natnew |
 | 164 | Kuka iiwa | [painode-164-kukaiiwa](../entities/painode-164-kukaiiwa.md) | natnew |
 | 165 | Open Dynamic Robot Initiative | [painode-165-opendynamicrobotinitiative](../entities/painode-165-opendynamicrobotinitiative.md) | natnew |
-| 166 | Open Manipulator | [painode-166-openmanipulator](../entities/painode-166-openmanipulator.md) | natnew |
+| 166 | Open Manipulator | [robotis-open-manipulator-line](../entities/robotis-open-manipulator-line.md) | natnew |
 | 167 | PAL Robotics TIAGo | [painode-167-palroboticstiago](../entities/painode-167-palroboticstiago.md) | natnew |
 | 168 | Reachy 2 (Pollen Robotics / Hugging Face) | [pollen-reachy2](../entities/pollen-reachy2.md) | natnew |
 | 169 | Reachy Mini | [painode-169-reachymini](../entities/painode-169-reachymini.md) | natnew |
 | 170 | SO-ARM100 | [painode-170-soarm100](../entities/painode-170-soarm100.md) | natnew |
-| 171 | Stanford Pupper | [painode-171-stanfordpupper](../entities/painode-171-stanfordpupper.md) | natnew |
+| 171 | Stanford Pupper | [stanford-doggo-and-pupper](../entities/stanford-doggo-and-pupper.md) | natnew |
 | 172 | UMI Gripper | [painode-172-umigripper](../entities/painode-172-umigripper.md) | natnew |
 | 173 | Universal Robots | [painode-173-universalrobots](../entities/painode-173-universalrobots.md) | natnew |
 | 174 | xArm | [painode-174-xarm](../entities/painode-174-xarm.md) | natnew |
@@ -312,7 +312,7 @@ sources:
 | 177 | Denoising World Model Learning for Humanoid Locomotion | [paper-notebook-advancing-humanoid-locomotion-mastering-challeng](../entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) | natnew |
 | 178 | Dex-UMI: A Benchmark for Generalizable Dexterous Manipulation | [paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div](../entities/paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) | natnew |
 | 179 | Expressive Whole-Body Control for Humanoid Robots | [paper-exbody-expressive-humanoid](../entities/paper-exbody-expressive-humanoid.md) | natnew |
-| 180 | H2O: Human-to-Humanoid Real-Time Whole-Body Teleoperation | [paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol](../entities/paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md) | natnew |
+| 180 | H2O: Human-to-Humanoid Real-Time Whole-Body Teleoperation | [paper-hrl-stack-07-learning_human_to_humanoid_real_time](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) | natnew |
 | 181 | HOVER: Versatile Neural Whole-Body Controller | [paper-bfm-14-hover](../entities/paper-bfm-14-hover.md) | natnew |
 | 182 | HugWBC: Unified Humanoid Whole-Body Controller | [paper-pai-2502-03206-hugwbcunifiedhumanoidwholebodyc](../entities/paper-pai-2502-03206-hugwbcunifiedhumanoidwholebodyc.md) | natnew |
 | 183 | UMI: An Open-Source Underactuated Manipulator for Dexterous Grasping | [paper-notebook-dreamzero-world-action-models-are-zero-shot-poli](../entities/paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) | natnew |
@@ -328,7 +328,7 @@ sources:
 | 188 | CASSI (Max Planck / Martius Lab) | [painode-188-cassimaxplanckmartiuslab](../entities/painode-188-cassimaxplanckmartiuslab.md) | natnew |
 | 189 | Cassie Bipedal Locomotion | [paper-pai-2105-08328-cassiebipedallocomotion](../entities/paper-pai-2105-08328-cassiebipedallocomotion.md) | natnew |
 | 190 | DeepMimic | [deepmimic](../methods/deepmimic.md) | natnew |
-| 191 | Expressive Whole-Body Control | [painode-191-expressivewholebodycontrol](../entities/painode-191-expressivewholebodycontrol.md) | natnew |
+| 191 | Expressive Whole-Body Control | [paper-exbody-expressive-humanoid](../entities/paper-exbody-expressive-humanoid.md) | natnew |
 | 192 | FLD — Fourier Latent Dynamics (MIT Biomimetics) | [painode-192-fldfourierlatentdynamicsmitbiom](../entities/painode-192-fldfourierlatentdynamicsmitbiom.md) | natnew |
 | 193 | HOVER — Versatile Humanoid Whole-Body Controller | [paper-bfm-14-hover](../entities/paper-bfm-14-hover.md) | natnew |
 | 194 | Humanoid Parkour Learning | [paper-notebook-humanoid-parkour-learning](../entities/paper-notebook-humanoid-parkour-learning.md) | natnew |
@@ -339,7 +339,7 @@ sources:
 | 199 | MuJoCo Menagerie | [mujoco-menagerie](../entities/mujoco-menagerie.md) | natnew |
 | 200 | OmniH2O | [paper-hrl-stack-08-omnih2o](../entities/paper-hrl-stack-08-omnih2o.md) | natnew |
 | 201 | Periodic Reward Composition for Bipedal Gaits | [paper-pai-2011-01387-periodicrewardcompositionforbipe](../entities/paper-pai-2011-01387-periodicrewardcompositionforbipe.md) | natnew |
-| 202 | Rapid Locomotion via RL | [paper-pai-2207-07802-rapidlocomotionviarl](../entities/paper-pai-2207-07802-rapidlocomotionviarl.md) | natnew |
+| 202 | Rapid Locomotion via RL | [paper-rapid-locomotion-rl](../entities/paper-rapid-locomotion-rl.md) | natnew |
 | 203 | Real-World Humanoid Locomotion with RL | [paper-digit-humanoid-locomotion-rl](../entities/paper-digit-humanoid-locomotion-rl.md) | natnew |
 | 204 | RMA — Rapid Motor Adaptation | [paper-rma-rapid-motor-adaptation](../entities/paper-rma-rapid-motor-adaptation.md) | natnew |
 | 205 | Robust Parameterized Bipedal Locomotion (Cassie) | [paper-pai-2103-14295-robustparameterizedbipedallocomot](../entities/paper-pai-2103-14295-robustparameterizedbipedallocomot.md) | natnew |
@@ -421,7 +421,7 @@ sources:
 | 261 | MCAP | [mcap-log-format](../entities/mcap-log-format.md) | natnew |
 | 262 | micro-ROS | [painode-262-microros](../entities/painode-262-microros.md) | natnew |
 | 263 | MoveIt 2 | [moveit2](../entities/moveit2.md) | natnew |
-| 264 | Nav2 | [painode-264-nav2](../entities/painode-264-nav2.md) | natnew |
+| 264 | Nav2 | [navigation2](../entities/navigation2.md) | natnew |
 | 265 | NVIDIA Isaac ROS | [isaac-ros-nvblox](../entities/isaac-ros-nvblox.md) | natnew |
 | 266 | Open-RMF | [painode-266-openrmf](../entities/painode-266-openrmf.md) | natnew |
 | 267 | ROS 2 | [ros2-basics](../concepts/ros2-basics.md) | natnew+aichr |
@@ -522,7 +522,7 @@ sources:
 | 332 | Eureka (NVIDIA) | [painode-332-eurekanvidia](../entities/painode-332-eurekanvidia.md) | natnew |
 | 333 | Learning Agile Flight in the Wild | [paper-pai-1909-11652-learningagileflightinthewild](../entities/paper-pai-1909-11652-learningagileflightinthewild.md) | natnew |
 | 334 | Learning Dexterous In-Hand Manipulation (OpenAI) | [paper-pai-1808-00177-learningdexterousinhandmanipulat](../entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md) | natnew |
-| 335 | Learning Robust Perceptive Locomotion (Miki et al.) | [painode-335-learningrobustperceptivelocomotio](../entities/painode-335-learningrobustperceptivelocomotio.md) | natnew |
+| 335 | Learning Robust Perceptive Locomotion (Miki et al.) | [paper-robust-perceptive-locomotion-wild](../entities/paper-robust-perceptive-locomotion-wild.md) | natnew |
 | 336 | Privileged Learning for Rapid Motor Adaptation | [paper-anymal-walk-minutes-parallel-drl](../entities/paper-anymal-walk-minutes-parallel-drl.md) | natnew |
 | 337 | Residual Reinforcement Learning for Robot Control | [paper-residual-rl-robot-control](../entities/paper-residual-rl-robot-control.md) | natnew |
 | 338 | Sim-to-Real via Sim-to-Sim (Koos et al. line) | [paper-pai-1812-07252-simtorealviasimtosimkooseta](../entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) | natnew |

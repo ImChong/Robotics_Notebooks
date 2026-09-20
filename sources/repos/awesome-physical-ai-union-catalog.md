@@ -164,7 +164,7 @@
 | 154 | Boston Dynamics Atlas | `url:bostondynamics.com/atlas` | Hardware Platforms | natnew | [`boston-dynamics.md`](../../wiki/entities/boston-dynamics.md) | 复用 |
 | 155 | Boston Dynamics Spot | `url:bostondynamics.com/spot` | Hardware Platforms | natnew | [`boston-dynamics.md`](../../wiki/entities/boston-dynamics.md) | 复用 |
 | 156 | Clearpath Robotics | `url:clearpathrobotics.com` | Hardware Platforms | natnew | [`painode-156-clearpathrobotics.md`](../../wiki/entities/painode-156-clearpathrobotics.md) | 新建 |
-| 157 | Dex-UMI | `url:dex-umi.github.io` | Hardware Platforms | natnew | [`painode-157-dexumi.md`](../../wiki/entities/painode-157-dexumi.md) | 新建 |
+| 157 | Dex-UMI | `url:dex-umi.github.io` | Hardware Platforms | natnew | [`paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md`](../../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md) | 复用 |
 | 158 | DexUMI Code & Data | `gh:real-stanford/dexumi` | Hardware Platforms | natnew | [`paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md`](../../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md) | 复用 |
 | 159 | Fourier Intelligence GR-1 | `url:fftai.com` | Hardware Platforms | natnew | [`fourier-grx-n1.md`](../../wiki/entities/fourier-grx-n1.md) | 复用 |
 | 160 | Franka Emika | `url:franka.de` | Hardware Platforms | natnew | [`franka-research-3.md`](../../wiki/entities/franka-research-3.md) | 复用 |
@@ -173,12 +173,12 @@
 | 163 | Kinova | `url:kinovarobotics.com` | Hardware Platforms | natnew | [`painode-163-kinova.md`](../../wiki/entities/painode-163-kinova.md) | 新建 |
 | 164 | Kuka iiwa | `url:kuka.com` | Hardware Platforms | natnew | [`painode-164-kukaiiwa.md`](../../wiki/entities/painode-164-kukaiiwa.md) | 新建 |
 | 165 | Open Dynamic Robot Initiative | `url:open-dynamic-robot-initiative.github` | Hardware Platforms | natnew | [`painode-165-opendynamicrobotinitiative.md`](../../wiki/entities/painode-165-opendynamicrobotinitiative.md) | 新建 |
-| 166 | Open Manipulator | `url:emanual.robotis.com/docs/en/platform` | Hardware Platforms | natnew | [`painode-166-openmanipulator.md`](../../wiki/entities/painode-166-openmanipulator.md) | 新建 |
+| 166 | Open Manipulator | `url:emanual.robotis.com/docs/en/platform` | Hardware Platforms | natnew | [`robotis-open-manipulator-line.md`](../../wiki/entities/robotis-open-manipulator-line.md) | 复用 |
 | 167 | PAL Robotics TIAGo | `url:pal-robotics.com` | Hardware Platforms | natnew | [`painode-167-palroboticstiago.md`](../../wiki/entities/painode-167-palroboticstiago.md) | 新建 |
 | 168 | Reachy 2 (Pollen Robotics / Hugging Face) | `url:pollen-robotics.com/reachy-2` | Hardware Platforms | natnew | [`pollen-reachy2.md`](../../wiki/entities/pollen-reachy2.md) | 复用 |
 | 169 | Reachy Mini | `url:huggingface.co/blog/reachy-mini` | Hardware Platforms | natnew | [`painode-169-reachymini.md`](../../wiki/entities/painode-169-reachymini.md) | 新建 |
 | 170 | SO-ARM100 | `gh:therobotstudio/so-arm100` | Hardware Platforms | natnew | [`painode-170-soarm100.md`](../../wiki/entities/painode-170-soarm100.md) | 新建 |
-| 171 | Stanford Pupper | `url:stanfordstudentrobotics.org/pupper` | Hardware Platforms | natnew | [`painode-171-stanfordpupper.md`](../../wiki/entities/painode-171-stanfordpupper.md) | 新建 |
+| 171 | Stanford Pupper | `url:stanfordstudentrobotics.org/pupper` | Hardware Platforms | natnew | [`stanford-doggo-and-pupper.md`](../../wiki/entities/stanford-doggo-and-pupper.md) | 复用 |
 | 172 | UMI Gripper | `url:umi-gripper.github.io` | Hardware Platforms | natnew | [`painode-172-umigripper.md`](../../wiki/entities/painode-172-umigripper.md) | 新建 |
 | 173 | Universal Robots | `url:universal-robots.com` | Hardware Platforms | natnew | [`painode-173-universalrobots.md`](../../wiki/entities/painode-173-universalrobots.md) | 新建 |
 | 174 | xArm | `url:ufactory.cc` | Hardware Platforms | natnew | [`painode-174-xarm.md`](../../wiki/entities/painode-174-xarm.md) | 新建 |
@@ -187,7 +187,7 @@
 | 177 | Denoising World Model Learning for Humanoid Locomotion | `arxiv:2408.14472` | Key Papers | natnew | [`paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md`](../../wiki/entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) | 复用 |
 | 178 | Dex-UMI: A Benchmark for Generalizable Dexterous Manipulation | `arxiv:2602.16710` | Key Papers | natnew | [`paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md`](../../wiki/entities/paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) | 复用 |
 | 179 | Expressive Whole-Body Control for Humanoid Robots | `arxiv:2402.16796` | Key Papers | natnew | [`paper-exbody-expressive-humanoid.md`](../../wiki/entities/paper-exbody-expressive-humanoid.md) | 复用 |
-| 180 | H2O: Human-to-Humanoid Real-Time Whole-Body Teleoperation | `arxiv:2403.04436` | Key Papers | natnew | [`paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md`](../../wiki/entities/paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol.md) | 新建 |
+| 180 | H2O: Human-to-Humanoid Real-Time Whole-Body Teleoperation | `arxiv:2403.04436` | Key Papers | natnew | [`paper-hrl-stack-07-learning_human_to_humanoid_real_time.md`](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) | 复用 |
 | 181 | HOVER: Versatile Neural Whole-Body Controller | `url:hover-versatile-humanoid.github.io/r` | Key Papers | natnew | [`paper-bfm-14-hover.md`](../../wiki/entities/paper-bfm-14-hover.md) | 复用 |
 | 182 | HugWBC: Unified Humanoid Whole-Body Controller | `arxiv:2502.03206` | Key Papers | natnew | [`paper-pai-2502-03206-hugwbcunifiedhumanoidwholebodyc.md`](../../wiki/entities/paper-pai-2502-03206-hugwbcunifiedhumanoidwholebodyc.md) | 新建 |
 | 183 | UMI: An Open-Source Underactuated Manipulator for Dexterous Grasping | `arxiv:2602.15922` | Key Papers | natnew | [`paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md`](../../wiki/entities/paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) | 复用 |
@@ -198,7 +198,7 @@
 | 188 | CASSI (Max Planck / Martius Lab) | `gh:martius-lab/cassi` | Locomotion | natnew | [`painode-188-cassimaxplanckmartiuslab.md`](../../wiki/entities/painode-188-cassimaxplanckmartiuslab.md) | 新建 |
 | 189 | Cassie Bipedal Locomotion | `arxiv:2105.08328` | Locomotion | natnew | [`paper-pai-2105-08328-cassiebipedallocomotion.md`](../../wiki/entities/paper-pai-2105-08328-cassiebipedallocomotion.md) | 新建 |
 | 190 | DeepMimic | `url:xbpeng.github.io/projects/deepmimic/` | Locomotion | natnew | [`deepmimic.md`](../../wiki/methods/deepmimic.md) | 复用 |
-| 191 | Expressive Whole-Body Control | `url:expressive-humanoid.github.io` | Locomotion | natnew | [`painode-191-expressivewholebodycontrol.md`](../../wiki/entities/painode-191-expressivewholebodycontrol.md) | 新建 |
+| 191 | Expressive Whole-Body Control | `url:expressive-humanoid.github.io` | Locomotion | natnew | [`paper-exbody-expressive-humanoid.md`](../../wiki/entities/paper-exbody-expressive-humanoid.md) | 复用 |
 | 192 | FLD — Fourier Latent Dynamics (MIT Biomimetics) | `gh:mit-biomimetics/fld` | Locomotion | natnew | [`painode-192-fldfourierlatentdynamicsmitbiom.md`](../../wiki/entities/painode-192-fldfourierlatentdynamicsmitbiom.md) | 新建 |
 | 193 | HOVER — Versatile Humanoid Whole-Body Controller | `url:hover-versatile-humanoid.github.io` | Locomotion | natnew | [`paper-bfm-14-hover.md`](../../wiki/entities/paper-bfm-14-hover.md) | 复用 |
 | 194 | Humanoid Parkour Learning | `arxiv:2406.10759` | Locomotion | natnew | [`paper-notebook-humanoid-parkour-learning.md`](../../wiki/entities/paper-notebook-humanoid-parkour-learning.md) | 复用 |
@@ -209,7 +209,7 @@
 | 199 | MuJoCo Menagerie | `gh:google-deepmind/mujoco_menagerie` | Locomotion | natnew | [`mujoco-menagerie.md`](../../wiki/entities/mujoco-menagerie.md) | 复用 |
 | 200 | OmniH2O | `url:omni.human2humanoid.com` | Locomotion | natnew | [`paper-hrl-stack-08-omnih2o.md`](../../wiki/entities/paper-hrl-stack-08-omnih2o.md) | 复用 |
 | 201 | Periodic Reward Composition for Bipedal Gaits | `arxiv:2011.01387` | Locomotion | natnew | [`paper-pai-2011-01387-periodicrewardcompositionforbipe.md`](../../wiki/entities/paper-pai-2011-01387-periodicrewardcompositionforbipe.md) | 新建 |
-| 202 | Rapid Locomotion via RL | `arxiv:2207.07802` | Locomotion | natnew | [`paper-pai-2207-07802-rapidlocomotionviarl.md`](../../wiki/entities/paper-pai-2207-07802-rapidlocomotionviarl.md) | 新建 |
+| 202 | Rapid Locomotion via RL | `arxiv:2207.07802` | Locomotion | natnew | [`paper-rapid-locomotion-rl.md`](../../wiki/entities/paper-rapid-locomotion-rl.md) | 复用 |
 | 203 | Real-World Humanoid Locomotion with RL | `arxiv:2303.03381` | Locomotion | natnew | [`paper-digit-humanoid-locomotion-rl.md`](../../wiki/entities/paper-digit-humanoid-locomotion-rl.md) | 复用 |
 | 204 | RMA — Rapid Motor Adaptation | `url:ashish-kmr.github.io/rma-legged-robo` | Locomotion | natnew | [`paper-rma-rapid-motor-adaptation.md`](../../wiki/entities/paper-rma-rapid-motor-adaptation.md) | 复用 |
 | 205 | Robust Parameterized Bipedal Locomotion (Cassie) | `arxiv:2103.14295` | Locomotion | natnew | [`paper-pai-2103-14295-robustparameterizedbipedallocomot.md`](../../wiki/entities/paper-pai-2103-14295-robustparameterizedbipedallocomot.md) | 新建 |
@@ -271,7 +271,7 @@
 | 261 | MCAP | `url:mcap.dev` | Production Patterns / Refere | natnew | [`mcap-log-format.md`](../../wiki/entities/mcap-log-format.md) | 复用 |
 | 262 | micro-ROS | `url:micro.ros.org` | Production Patterns / Refere | natnew | [`painode-262-microros.md`](../../wiki/entities/painode-262-microros.md) | 新建 |
 | 263 | MoveIt 2 | `url:moveit.ros.org` | Production Patterns / Refere | natnew | [`moveit2.md`](../../wiki/entities/moveit2.md) | 复用 |
-| 264 | Nav2 | `url:docs.nav2.org` | Production Patterns / Refere | natnew | [`painode-264-nav2.md`](../../wiki/entities/painode-264-nav2.md) | 新建 |
+| 264 | Nav2 | `url:docs.nav2.org` | Production Patterns / Refere | natnew | [`navigation2.md`](../../wiki/entities/navigation2.md) | 复用 |
 | 265 | NVIDIA Isaac ROS | `url:developer.nvidia.com/isaac-ros` | Production Patterns / Refere | natnew | [`isaac-ros-nvblox.md`](../../wiki/entities/isaac-ros-nvblox.md) | 复用 |
 | 266 | Open-RMF | `url:open-rmf.org` | Production Patterns / Refere | natnew | [`painode-266-openrmf.md`](../../wiki/entities/painode-266-openrmf.md) | 新建 |
 | 267 | ROS 2 | `url:docs.ros.org` | Production Patterns / Refere | natnew+aichr | [`ros2-basics.md`](../../wiki/concepts/ros2-basics.md) | 复用 |
@@ -342,7 +342,7 @@
 | 332 | Eureka (NVIDIA) | `url:eureka-research.github.io` | Sim-to-Real | natnew | [`painode-332-eurekanvidia.md`](../../wiki/entities/painode-332-eurekanvidia.md) | 新建 |
 | 333 | Learning Agile Flight in the Wild | `arxiv:1909.11652` | Sim-to-Real | natnew | [`paper-pai-1909-11652-learningagileflightinthewild.md`](../../wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md) | 新建 |
 | 334 | Learning Dexterous In-Hand Manipulation (OpenAI) | `arxiv:1808.00177` | Sim-to-Real | natnew | [`paper-pai-1808-00177-learningdexterousinhandmanipulat.md`](../../wiki/entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md) | 新建 |
-| 335 | Learning Robust Perceptive Locomotion (Miki et al.) | `url:leggedrobotics.github.io/rl-percepti` | Sim-to-Real | natnew | [`painode-335-learningrobustperceptivelocomotio.md`](../../wiki/entities/painode-335-learningrobustperceptivelocomotio.md) | 新建 |
+| 335 | Learning Robust Perceptive Locomotion (Miki et al.) | `url:leggedrobotics.github.io/rl-percepti` | Sim-to-Real | natnew | [`paper-robust-perceptive-locomotion-wild.md`](../../wiki/entities/paper-robust-perceptive-locomotion-wild.md) | 复用 |
 | 336 | Privileged Learning for Rapid Motor Adaptation | `arxiv:2109.11978` | Sim-to-Real | natnew | [`paper-anymal-walk-minutes-parallel-drl.md`](../../wiki/entities/paper-anymal-walk-minutes-parallel-drl.md) | 复用 |
 | 337 | Residual Reinforcement Learning for Robot Control | `arxiv:1812.03201` | Sim-to-Real | natnew | [`paper-residual-rl-robot-control.md`](../../wiki/entities/paper-residual-rl-robot-control.md) | 复用 |
 | 338 | Sim-to-Real via Sim-to-Sim (Koos et al. line) | `arxiv:1812.07252` | Sim-to-Real | natnew | [`paper-pai-1812-07252-simtorealviasimtosimkooseta.md`](../../wiki/entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) | 新建 |

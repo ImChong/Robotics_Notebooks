@@ -10,7 +10,7 @@
 - **主链接：** <https://leggedrobotics.github.io/rl-perceptiveloco/>
 - **代码：** 未在清单中标注
 - **清单摘要：** Science Robotics result combining proprioceptive and exteroceptive teachers for robust real-world transfer.
-- **沉淀到 wiki：** [`wiki/entities/painode-335-learningrobustperceptivelocomotio.md`](../../wiki/entities/painode-335-learningrobustperceptivelocomotio.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-robust-perceptive-locomotion-wild.md`](../../wiki/entities/paper-robust-perceptive-locomotion-wild.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-335-learningrobustperceptivelocomotio.md`](../../wiki/entities/painode-335-learningrobustperceptivelocomotio.md)
+- 实体页：[`wiki/entities/paper-robust-perceptive-locomotion-wild.md`](../../wiki/entities/paper-robust-perceptive-locomotion-wild.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

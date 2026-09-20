@@ -179,6 +179,16 @@ HAND_ALIASES: dict[str, str] = {
     "mobile aloha": "wiki/entities/aloha.md",
     "isaac ros": "wiki/entities/isaac-ros-nvblox.md",
     "nvidia isaac ros": "wiki/entities/isaac-ros-nvblox.md",
+    # Title/substance matches found after the first pass (existing pages lacked arXiv in frontmatter
+    # or used a project-page URL instead of the paper arXiv).
+    "h2o: human-to-humanoid real-time whole-body teleoperation": "wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md",
+    "expressive whole-body control": "wiki/entities/paper-exbody-expressive-humanoid.md",
+    "stanford pupper": "wiki/entities/stanford-doggo-and-pupper.md",
+    "nav2": "wiki/entities/navigation2.md",
+    "learning robust perceptive locomotion (miki et al.)": "wiki/entities/paper-robust-perceptive-locomotion-wild.md",
+    "rapid locomotion via rl": "wiki/entities/paper-rapid-locomotion-rl.md",
+    "open manipulator": "wiki/entities/robotis-open-manipulator-line.md",
+    "dex-umi": "wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md",
 }
 
 SECTION_KIND: dict[str, str] = {
@@ -619,12 +629,12 @@ class WikiIndex:
 
 
 def resolve_existing(e: dict[str, Any], idx: WikiIndex) -> str | None:
-    if e.get("arxiv") and e["arxiv"] in idx.arxiv:
-        return idx.arxiv[e["arxiv"]]
     alias_keys = [_norm_title(e["title"]), e["title"].lower().strip()]
     for k in alias_keys:
         if k in HAND_ALIASES:
             return HAND_ALIASES[k]
+    if e.get("arxiv") and e["arxiv"] in idx.arxiv:
+        return idx.arxiv[e["arxiv"]]
     if e.get("github") and e["github"] in idx.github:
         return idx.github[e["github"]]
     nt = e["norm"]

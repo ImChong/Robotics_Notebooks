@@ -1,6 +1,14 @@
 {
   "description": "已合并/删除页面的旧 detail 页 ID → canonical 页 ID 映射。合并重复节点删除页面时必须在此登记旧 ID，export_minimal.py 会注入 site-data-v1.json 的 pages.page_aliases，docs/main.js 详情页据此把旧链接重定向到合并后的页面，避免历史 URL 断链。键为旧页面 ID（entity-<stem> 或 wiki-<子目录>-<stem>），值为现存页面 ID。",
   "aliases": {
+    "entity-painode-157-dexumi": "entity-paper-notebook-dexumi-using-human-hand-as-the-universal-manipul",
+    "entity-painode-166-openmanipulator": "entity-robotis-open-manipulator-line",
+    "entity-painode-171-stanfordpupper": "entity-stanford-doggo-and-pupper",
+    "entity-painode-191-expressivewholebodycontrol": "entity-paper-exbody-expressive-humanoid",
+    "entity-painode-264-nav2": "entity-navigation2",
+    "entity-painode-335-learningrobustperceptivelocomotio": "entity-paper-robust-perceptive-locomotion-wild",
+    "entity-paper-pai-2207-07802-rapidlocomotionviarl": "entity-paper-rapid-locomotion-rl",
+    "entity-paper-pai-2403-04436-h2ohumantohumanoidrealtimewhol": "entity-paper-hrl-stack-07-learning_human_to_humanoid_real_time",
     "entity-paper-as-103-1": "entity-paper-as-104-a-survey-on-sim-to-real-transfer-methods-for-rob",
     "entity-paper-as-104-1": "entity-paper-as-107-how-simulation-helps-autonomous-driving-a-survey",
     "entity-paper-as-105-1": "entity-paper-as-108-parallel-learning-overview-and-perspective-for-c",

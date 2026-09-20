@@ -1,9 +1,8 @@
 ---
-
 type: entity
 tags: [repo, ros2, navigation, nav2, mobile-robot, planning, linux-foundation]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
   - ./python-robotics.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -15,8 +14,12 @@ related:
   - ./mushr.md
   - ./oomwoo.md
   - ./autoware.md
+  - ../overview/awesome-physical-ai-technology-map.md
+  - ./awesome-physical-ai-natnew.md
 sources:
   - ../../sources/repos/navigation2.md
+  - ../../sources/repos/awesome-physical-ai-union-catalog.md
+  - ../../sources/repos/awesome-physical-ai-natnew.md
 summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局/局部规划插件、代价地图与恢复行为，承接 SLAM 输出的 map/odom 并输出 cmd_vel。"
 ---
 

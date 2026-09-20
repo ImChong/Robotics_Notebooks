@@ -7,6 +7,7 @@ summary: "He et al. Attention-based exteroceptive encoder generalising perceptiv
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../overview/awesome-physical-ai-technology-map.md
+  - ./paper-ame-attention-based-map-encoding.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
 sources:
@@ -85,13 +86,14 @@ He et al. Attention-based exteroceptive encoder generalising perceptive locomoti
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
-- 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
+- 清单 DOI `10.1126/scirobotics.adv5733` 与站内 [AME-1](./paper-ame-attention-based-map-encoding.md)（*Science Robotics* eadv3604 / arXiv:2506.09588）**标题相近但 DOI 不同**，本页暂不合并，待 curator 核对是否为同一篇或 AME-2。
 
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
+- [AME-1（Attention-Based Map Encoding）](./paper-ame-attention-based-map-encoding.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
 ## 参考来源

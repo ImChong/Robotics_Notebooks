@@ -15,7 +15,7 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2505.21864"
 code: https://github.com/real-stanford/DexUMI
 related:
@@ -27,10 +27,14 @@ related:
   - ./paper-notebook-dextercap.md
   - ./paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md
   - ../../roadmap/depth-teleoperation.md
+  - ../overview/awesome-physical-ai-technology-map.md
+  - ./awesome-physical-ai-natnew.md
 sources:
   - ../../sources/papers/humanoid_pnb_dexumi-using-human-hand-as-the-universal-manipul.md
   - ../../sources/sites/dexumi.md
   - ../../sources/repos/dexumi.md
+  - ../../sources/repos/awesome-physical-ai-union-catalog.md
+  - ../../sources/repos/awesome-physical-ai-natnew.md
 summary: "DexUMI（CoRL 2025）：为 Inspire/XHand 优化可穿戴外骨骼，使人直接操作物体并采动作/触觉；再用 SAM2、ProPainter 与机器人手渲染缩小视觉差，Diffusion Policy 平均成功率 86%，MIT 全链开源。"
 ---
 

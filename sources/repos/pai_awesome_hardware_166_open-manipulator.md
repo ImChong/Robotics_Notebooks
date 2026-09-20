@@ -10,7 +10,7 @@
 - **主链接：** <https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/>
 - **代码：** 未在清单中标注
 - **清单摘要：** Affordable open-source robot arm from Robotis.
-- **沉淀到 wiki：** [`wiki/entities/painode-166-openmanipulator.md`](../../wiki/entities/painode-166-openmanipulator.md)
+- **沉淀到 wiki：** [`wiki/entities/robotis-open-manipulator-line.md`](../../wiki/entities/robotis-open-manipulator-line.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-166-openmanipulator.md`](../../wiki/entities/painode-166-openmanipulator.md)
+- 实体页：[`wiki/entities/robotis-open-manipulator-line.md`](../../wiki/entities/robotis-open-manipulator-line.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

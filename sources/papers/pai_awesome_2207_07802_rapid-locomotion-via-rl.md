@@ -10,7 +10,7 @@
 - **主链接：** <https://arxiv.org/abs/2207.07802>
 - **代码：** 未在清单中标注
 - **清单摘要：** Sim-to-real locomotion approach focused on high-speed deployment-ready policies.
-- **沉淀到 wiki：** [`wiki/entities/paper-pai-2207-07802-rapidlocomotionviarl.md`](../../wiki/entities/paper-pai-2207-07802-rapidlocomotionviarl.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-rapid-locomotion-rl.md`](../../wiki/entities/paper-rapid-locomotion-rl.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-pai-2207-07802-rapidlocomotionviarl.md`](../../wiki/entities/paper-pai-2207-07802-rapidlocomotionviarl.md)
+- 实体页：[`wiki/entities/paper-rapid-locomotion-rl.md`](../../wiki/entities/paper-rapid-locomotion-rl.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

@@ -10,7 +10,7 @@
 - **主链接：** <https://dex-umi.github.io/>
 - **代码：** 未在清单中标注
 - **清单摘要：** Dexterous manipulation platform and dataset for multi-fingered robotic hands.
-- **沉淀到 wiki：** [`wiki/entities/painode-157-dexumi.md`](../../wiki/entities/painode-157-dexumi.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md`](../../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-157-dexumi.md`](../../wiki/entities/painode-157-dexumi.md)
+- 实体页：[`wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md`](../../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

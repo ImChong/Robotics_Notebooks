@@ -45,7 +45,7 @@ summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical �
 
 ## 子节点覆盖（2026-09-20 纵深）
 
-去重后 **384** 条独立详情节点（新建 249，复用 135；两清单同时出现 33）。
+去重后 **384** 条独立详情节点（新建 241，复用 143；两清单同时出现 33）。
 
 完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
 

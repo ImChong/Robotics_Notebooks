@@ -10,7 +10,7 @@
 - **主链接：** <https://docs.nav2.org/>
 - **代码：** 未在清单中标注
 - **清单摘要：** ROS 2 navigation stack with behaviour trees, planners, and recovery patterns.
-- **沉淀到 wiki：** [`wiki/entities/painode-264-nav2.md`](../../wiki/entities/painode-264-nav2.md)
+- **沉淀到 wiki：** [`wiki/entities/navigation2.md`](../../wiki/entities/navigation2.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-264-nav2.md`](../../wiki/entities/painode-264-nav2.md)
+- 实体页：[`wiki/entities/navigation2.md`](../../wiki/entities/navigation2.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)
