@@ -54,7 +54,7 @@
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（15 个）
 - Resource（被 32 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- Community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Hardware（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Course（被 18 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - standard（被 16 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
@@ -208,4 +208,4 @@
 - wiki/entities/paper-rapt-sim2real-ood-detection.md
 - wiki/entities/paper-robovad.md
 
-📊 Sources 覆盖率：4623/4623 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4624/4624 (100%) wiki/entity 页有 ingest 来源

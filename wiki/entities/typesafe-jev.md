@@ -2,8 +2,9 @@
 type: entity
 tags: [typesafe-ai, jev, system-one-model, llm-agents, agent-infrastructure, open-source, decision-api]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 related:
+  - ./laya.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ./deepseek-harness.md
   - ./agent-lightning.md
@@ -17,7 +18,8 @@ sources:
   - ../../sources/repos/typesafe-sdk-python.md
   - ../../sources/repos/typesafe-ai-skills.md
   - ../../sources/repos/awesome-jev.md
-summary: "Jev 是 TypeSafe AI 首个 System One Model：并行采样、schema 约束的类型安全结构化决策 + 校准概率，用 RLCD 训练；官方 JS/Python SDK 与 Agent Skills 已 MIT 开源，模型为早期访问 API（非权重开放）。"
+  - ../../sources/repos/laya.md
+summary: "Jev 是 TypeSafe AI 首个 System One Model：并行采样、schema 约束的类型安全结构化决策 + 校准概率，用 RLCD 训练；官方 JS/Python SDK 与 Agent Skills 已 MIT 开源，模型为早期访问 API（非权重开放）。开源对照见 [Laya](./laya.md)。"
 ---
 
 # Jev（TypeSafe AI · System One Model）
@@ -152,6 +154,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Laya（开源 System One 对照）](./laya.md) — Apache 2.0 权重自托管；README 含与 Jev 的公开 benchmark 对照
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — BT 宏流程 vs Jev 毫秒级 fuzzy 分支
 - [DeepSeek Harness](./deepseek-harness.md) — 字符串 agent 运行时；可与 Jev 决策层叠加
 - [Agent Lightning](./agent-lightning.md) — LLM agent RL；与 Jev 决策 API 不同层
