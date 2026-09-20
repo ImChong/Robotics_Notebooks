@@ -2,12 +2,13 @@
 type: method
 tags: [data, generative-ai, simulation, long-tail, manipulation]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-20
 related:
   - ../concepts/embodied-data-cleaning.md
   - ../methods/generative-world-models.md
   - ../queries/demo-data-collection-guide.md
   - ../entities/comfyui.md
+  - ../entities/qwen-image-2-1.md
   - ../concepts/diffusion-model.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
@@ -32,7 +33,7 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 ### 主要技术路线
 
 1. **场景编辑 (Semantic Editing)**：
-   利用视频编辑模型（如 Stable Video Diffusion），将原始背景中的“实验室”替换为“厨房”、“办公室”或“户外草地”。这极大地提升了策略的视觉泛化能力。
+   利用视频/图像编辑模型（如 Stable Video Diffusion、[Qwen-Image-2.1](../entities/qwen-image-2-1.md)），将原始背景中的“实验室”替换为“厨房”、“办公室”或“户外草地”，或在机器人工作区 **插物体 / 换背景 / 生成 RGBA 主体层**。这极大地提升了策略的视觉泛化能力。
 2. **长尾合成 (Counterfactual Synthesis)**：
    针对特定的失败模式进行合成。例如，通过修改轨迹参数并使用生成模型，渲染出机器人“抓取失败”并触发“重新对齐”动作的虚拟轨迹。
 3. **物体变幻 (Object Swapping)**：

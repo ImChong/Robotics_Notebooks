@@ -1,3 +1,9 @@
+## [2026-09-20] ingest | sources/repos/qwen-image-2-1.md + sources/blogs/qwen_image_2_1_blog.md — Qwen-Image-2.1 统一 T2I/编辑/RGBA；开源结论：已开源（GitHub+HF+ModelScope）；新建 qwen-image-2-1 实体，交叉 generative-data-augmentation
+
+- **意图：** 通义 2026-09-20 图像模型发布；步骤 2.5 核查 GitHub/HF/ModelScope 权重与 Diffusers Day-0。
+- **开源结论：** 代码 + 权重 + PE 重写子模型均已发布。
+- **关键页：** [qwen-image-2-1](wiki/entities/qwen-image-2-1.md)
+
 ## [2026-09-20] ingest | sources/papers/xpace_arxiv_2609_17372.md + sources/sites/xpace-project.md — XPACE（arXiv:2609.17372，XPENG Robotics）WAM+simulator 合一、5000h 异构经验、SGF recovery 自改进；开源结论：未开源（组织页无 XPACE 仓库）；深读 paper-xpace，交叉 world-action-models
 
 - **意图：** 从 senlanke 周更 stub 升格为项目页/arXiv 深读；步骤 2.5 核查 xpeng-robotics.github.io/xpace。
