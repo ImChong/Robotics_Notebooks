@@ -2,13 +2,16 @@
 type: method
 tags: [llm, robotics, affordance, planning, language]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-20
 related:
   - ./vla.md
   - ../tasks/manipulation.md
+  - ../entities/paper-saycan.md
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
+  - ../overview/embodied-ai-guide-wechat-album-curator.md
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
+  - ../../sources/blogs/wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md
 summary: "SayCan 用语言模型生成高层子任务候选，用语义价值函数估计在环境中的可行性，将常识推理与机器人局部可达性结合。"
 ---
 
@@ -33,8 +36,10 @@ summary: "SayCan 用语言模型生成高层子任务候选，用语义价值函
 
 ## 关联页面
 
+- [SayCan 论文实体](../entities/paper-saycan.md)
 - [VLA](./vla.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
+- [Embodied-AI-Guide 微信专辑](../overview/embodied-ai-guide-wechat-album-curator.md)
 
 ## 参考来源
 

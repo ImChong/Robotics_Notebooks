@@ -7,7 +7,8 @@
 - **社区官网**: https://lumina-embodied.ai/ （博客镜像：https://lumina-embodied.ai/blog/eai-guide）
 - **站点归档**: [lumina-embodied-ai.md](../sites/lumina-embodied-ai.md)
 - **核心关注点**: 具身智能全栈技术、VLA 模型、仿真到现实管线、RoboTwin 2.0
-- **最后核查**: 2026-07-27
+- **最后核查**: 2026-09-20
+- **微信专辑**: [wechat_lumina_embodied_practice_album](../raw/wechat_lumina_embodied_practice_album_4608355279393816579.md) → [embodied-ai-guide-wechat-album-curator.md](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md)
 
 ## 核心内容摘要
 

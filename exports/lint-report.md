@@ -2,7 +2,7 @@
 
 ## [2026-09-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **77** 条信息型预警）：
+共发现 **0** 个问题（另含 **90** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -54,7 +54,7 @@
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（15 个）
 - Resource（被 32 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- Community（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Hardware（被 21 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Course（被 18 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - standard（被 16 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
@@ -116,31 +116,44 @@
 - wiki/entities/paper-kadian-sim2real-predictivity.md
 - wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（24 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（37 个）
 - wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md（缺 评测 / 对比）
+- wiki/entities/paper-autotamp.md（缺 评测 / 对比）
 - wiki/entities/paper-awesome-humanoid-robot-learning.md（缺 评测 / 对比）
+- wiki/entities/paper-cogact.md（缺 评测 / 对比）
+- wiki/entities/paper-diffusion-vla.md（缺 评测 / 对比）
+- wiki/entities/paper-embodiedgpt.md（缺 评测 / 对比）
 - wiki/entities/paper-epopt-robust-policies-model-ensembles.md（缺 评测 / 对比）
 - wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md（缺 评测 / 对比）
 - wiki/entities/paper-eysenbach-off-dynamics-rl.md（缺 评测 / 对比）
 - wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md（缺 评测 / 对比）
 - wiki/entities/paper-gevers-identification-information-matrix-2009.md（缺 评测 / 对比）
 - wiki/entities/paper-golemo-neural-augmented-robot-simulation.md（缺 评测 / 对比）
+- wiki/entities/paper-instruction2act.md（缺 评测 / 对比）
 - wiki/entities/paper-kadian-sim2real-predictivity.md（缺 评测 / 对比）
 - wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md（缺 评测 / 对比）
 - wiki/entities/paper-kovalev-differentiable-simulation-locomotion-sysid.md（缺 评测 / 对比）
 - wiki/entities/paper-le-lidec-contact-models-comparative-analysis.md（缺 评测 / 对比）
+- wiki/entities/paper-llm-p.md（缺 评测 / 对比）
+- wiki/entities/paper-look-before-you-leap.md（缺 评测 / 对比）
 - wiki/entities/paper-muratore-bayesian-optimization-domain-randomization.md（缺 评测 / 对比）
+- wiki/entities/paper-omnimanip.md（缺 评测 / 对比）
 - wiki/entities/paper-peng-dynamics-randomization-sim2real.md（缺 评测 / 对比）
 - wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md（缺 评测 / 对比）
 - wiki/entities/paper-rapt-sim2real-ood-detection.md（缺 评测 / 对比）
 - wiki/entities/paper-rarl-robust-adversarial-rl.md（缺 评测 / 对比）
+- wiki/entities/paper-rdt-1b.md（缺 评测 / 对比）
+- wiki/entities/paper-saycan.md（缺 评测 / 对比）
 - wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md（缺 评测 / 对比）
 - wiki/entities/paper-skyfall-gs.md（缺 对比）
 - wiki/entities/paper-smith-legged-robots-keep-learning.md（缺 评测 / 对比）
+- wiki/entities/paper-spatialvla.md（缺 评测 / 对比）
 - wiki/entities/paper-splatsim-gaussian-splatting-sim2real.md（缺 评测 / 对比）
 - wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md（缺 评测 / 对比）
+- wiki/entities/paper-text2motion.md（缺 评测 / 对比）
 - wiki/entities/paper-up-osi-universal-policy-online-sysid.md（缺 评测 / 对比）
 - wiki/entities/paper-vidu-s2.md（缺 对比）
+- wiki/entities/paper-voxposer.md（缺 评测 / 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -195,4 +208,4 @@
 - wiki/entities/paper-rapt-sim2real-ood-detection.md
 - wiki/entities/paper-robovad.md
 
-📊 Sources 覆盖率：4609/4609 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4623/4623 (100%) wiki/entity 页有 ingest 来源

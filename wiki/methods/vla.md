@@ -11,6 +11,7 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../overview/vla-evolution-lineage.md
+  - ../overview/embodied-ai-guide-wechat-album-curator.md
   - ../entities/paper-unified-robot-learning-survey.md
   - ../overview/embodied-infra-2026-panorama.md
   - ../queries/slam-second-spring-embodied.md
