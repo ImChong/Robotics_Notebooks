@@ -1968,7 +1968,7 @@
         <button type="button" id="restart-simulation" class="physics-action-btn" title="从初始状态重新计算力导向布局">
           <span>↻</span><span>刷新布局</span>
         </button>
-        <button type="button" id="timeline-animate" class="physics-action-btn" title="按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）">
+        <button type="button" id="timeline-animate" class="physics-action-btn" title="按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）">
           <span>▶</span><span>时序动画</span>
         </button>
         <div id="timeline-controls" class="timeline-controls is-disabled">
@@ -1982,7 +1982,7 @@
             <input type="range" id="timeline-progress" class="timeline-progress" min="0" max="100" value="0" step="1"
                    aria-label="时序进度，可拖拽倒退或快进" disabled />
           </div>
-          <div class="timeline-scrub-label"><span id="timeline-scrub-current">0</span> / <span id="timeline-scrub-total">0</span></div>
+          <div class="timeline-scrub-label"><span id="timeline-scrub-current">0</span> / <span id="timeline-scrub-total">0</span> · <span id="timeline-scrub-date">—</span></div>
         </div>
       </div>
     </div>
@@ -2937,8 +2937,8 @@
       if (timelineAnimateBtn) {
         timelineAnimateBtn.disabled = false;
         timelineAnimateBtn.title = is3DView()
-          ? '按页面更新时间顺序在 3D 立体视图中逐帧激活节点与连线'
-          : '按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
+          ? '按页面首次加入日从最老到最新，在 3D 立体视图中逐帧激活节点与连线'
+          : '按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
       }
     }
 
@@ -5276,7 +5276,7 @@
       linkForce.links(subEdges);
     }
 
-    /* ── 时序动画（Obsidian Animate：按 recency 从早到晚逐帧显现）── */
+    /* ── 时序动画（Obsidian Animate：按 git 首次加入日从最老到最新逐帧显现）── */
     const timelineAnimateBtn = document.getElementById('timeline-animate');
     const timelineControls = document.getElementById('timeline-controls');
     const timelineProgressEl = document.getElementById('timeline-progress');
@@ -5284,6 +5284,7 @@
     const timelineRestartBtn = document.getElementById('timeline-restart');
     const timelineScrubCurrentEl = document.getElementById('timeline-scrub-current');
     const timelineScrubTotalEl = document.getElementById('timeline-scrub-total');
+    const timelineScrubDateEl = document.getElementById('timeline-scrub-date');
 
     const TIMELINE_ICON_PLAY = '<svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><polygon points="5,3 5,13 13,8" fill="currentColor"/></svg>';
     const TIMELINE_ICON_PAUSE = '<svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/><rect x="9.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/></svg>';
@@ -5306,23 +5307,40 @@
       if (timelineProgressEl) timelineProgressEl.disabled = !scrubEnabled;
     }
 
-    function getNodeRecency(d) {
-      return d.recency || '1970-01-01';
+    // 时序时钟：默认 git 首次加入日（added）；「显示维护更新」打开后改用最近触达日（activity）。
+    // 不用 frontmatter/mtime 的 recency——部署/检出后 mtime 会塌成同一天，排序退化成路径字母序，
+    // 看起来像新页面先出现、老任务页最后才出现。
+    function timelineTsOf(d) {
+      const t = recencyIncludeMaintained ? d._activityTs : d._addedTs;
+      return t != null ? t : null;
+    }
+
+    function timelineDateOf(d) {
+      return recencyIncludeMaintained ? d._activityDate : d._addedDate;
     }
 
     function sortNodesByTimeline(list) {
       return list.slice().sort((a, b) => {
-        const cmp = getNodeRecency(a).localeCompare(getNodeRecency(b));
-        return cmp !== 0 ? cmp : a.id.localeCompare(b.id);
+        const ta = timelineTsOf(a);
+        const tb = timelineTsOf(b);
+        const aMissing = ta == null;
+        const bMissing = tb == null;
+        if (aMissing !== bMissing) return aMissing ? 1 : -1; // 缺日期的放到最后，不占「最老」种子
+        if (!aMissing && ta !== tb) return ta - tb;          // 最老 → 最新
+        return a.id.localeCompare(b.id);
       });
     }
 
     // 同步进度文本 + 进度条 + 顶部计数
     function updateTimelineProgress(revealedCount, total) {
+      const frontier = revealedCount > 0 && timelineOrdered[revealedCount - 1]
+        ? (timelineDateOf(timelineOrdered[revealedCount - 1]) || '—')
+        : '起点';
       const countEl = document.getElementById('graph-node-count');
-      if (countEl) countEl.textContent = `时序 ${revealedCount} / ${total} · ${edges.length} 边`;
+      if (countEl) countEl.textContent = `时序 ${revealedCount} / ${total} · ${frontier} · ${edges.length} 边`;
       if (timelineScrubCurrentEl) timelineScrubCurrentEl.textContent = String(revealedCount);
       if (timelineScrubTotalEl) timelineScrubTotalEl.textContent = String(total);
+      if (timelineScrubDateEl) timelineScrubDateEl.textContent = frontier;
       if (timelineProgressEl) {
         if (String(timelineProgressEl.max) !== String(total)) timelineProgressEl.max = String(total);
         timelineProgressEl.value = String(revealedCount);
@@ -5612,7 +5630,7 @@
 
     /* ── 3D 激活时序动画（生长式，仿 2D）──
        复用 2D 的进度 UI（播放/暂停/回到起点/进度条）与共享状态变量。推进逻辑驱动
-       graph3dView.timelineBegin/Seek/End：按 recency 顺序把节点逐个种到已激活邻居附近、
+       graph3dView.timelineBegin/Seek/End：按首次加入日从最老到最新把节点逐个种到已激活邻居附近、
        加入力模拟子集并重排，整图随时间「冒一个、重排一次」地生长；相机随子集自适应缩放。 */
     function enterTimelineMode3D() {
       if (!graph3dView) return;
@@ -6361,6 +6379,15 @@
       alpha: () => simulation.alpha(),
       alphaTarget: () => simulation.alphaTarget(),
       timelineAnimating: () => timelineAnimating,
+      timelinePlaying: () => timelinePlaying,
+      timelineIdx: () => timelineIdx,
+      timelineTotal: () => timelineTotal,
+      timelineOrderPreview: () => sortNodesByTimeline(nodes).map(n => ({
+        id: n.id,
+        added: n._addedDate || null,
+        activity: n._activityDate || null,
+        ts: timelineTsOf(n),
+      })),
       // G0 基线测量：分离力 tick / DOM 写入 / 社区标签三段耗时（非业务 UI）
       stop: () => simulation.stop(),
       simNodeCount: () => simulation.nodes().length,
