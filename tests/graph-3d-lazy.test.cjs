@@ -16,6 +16,7 @@ const flush = () => new Promise(setImmediate);
 function harness(options = {}) {
   const appended = [], switches = [], busy = [];
   let available = false;
+  const teardowns = [];
   const head = {
     appendChild(script) {
       appended.push(script.src);
@@ -38,10 +39,12 @@ function harness(options = {}) {
     window: { RNGraph3D: { isAvailable: () => available } },
     document: { createElement: () => ({ src: '', onload: null, onerror: null, parentNode: null }), head },
     viewMode3dBtn: button,
+    timelineAnimating: !!options.timelineAnimating,
+    teardownTimelineMode: () => { context.timelineAnimating = false; teardowns.push(1); },
     setSpatialViewMode: (mode, opts) => switches.push([mode, opts]),
   });
   vm.runInContext(source.slice(start, end), context);
-  return { context, appended, switches, button, busy };
+  return { context, appended, switches, button, busy, teardowns };
 }
 
 test('staying in 2D never downloads the 3D bundle', async () => {
@@ -73,6 +76,15 @@ test('a failed bundle load reaches the existing 2D fallback and can be retried',
   assert.deepEqual(h.switches, [['3d', undefined]], '交给 setSpatialViewMode 既有的失败恢复路径');
   await h.context.requestSpatialViewMode('3d');
   assert.equal(h.appended.length, 2, 'the failed load is not cached');
+});
+
+test('requesting 3D during a timeline tears it down before the bundle load', async () => {
+  const h = harness({ timelineAnimating: true });
+  const pending = h.context.requestSpatialViewMode('3d');
+  assert.deepEqual(h.teardowns, [1], 'timeline is torn down before waiting on the 3D bundle');
+  assert.equal(h.context.timelineAnimating, false);
+  await pending;
+  assert.deepEqual(h.switches, [['3d', undefined]]);
 });
 
 test('the graph page ships no unconditional 3D bundle tag', () => {
