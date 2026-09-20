@@ -19,7 +19,7 @@ sources:
 summary: "用 3D Gaussian Splatting 从真实场景重建可渲染仿真，实现 RGB 操控策略零样本迁移。"
 ---
 
-# SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting（FreeDof [39/44]）
+# SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting
 
 **SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting**（[arXiv:2409.10161](https://arxiv.org/abs/2409.10161)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[39/44]**，归类 **视觉 Sim2Real**。
 

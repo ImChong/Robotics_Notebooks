@@ -19,7 +19,7 @@ sources:
 summary: "可微接触模型突破腿足部署瓶颈，首个完全在可微仿真中训练并零样本上真机的腿足 locomotion。"
 ---
 
-# Learning deployable locomotion control via differentiable simulation（FreeDof [41/44]）
+# Learning deployable locomotion control via differentiable simulation
 
 **Learning deployable locomotion control via differentiable simulation**（[arXiv:2404.02887](https://arxiv.org/abs/2404.02887)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[41/44]**，归类 **可微仿真**。
 

@@ -19,7 +19,7 @@ sources:
 summary: "训练对手网络施加扰动力，与策略对抗以提升鲁棒性。"
 ---
 
-# Robust adversarial reinforcement learning（FreeDof [18/44]）
+# Robust adversarial reinforcement learning
 
 **Robust adversarial reinforcement learning (RARL)**（[arXiv:1703.02702](https://arxiv.org/abs/1703.02702)）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md) 参考文献 **[18/44]**，归类 **域随机化**。
 
