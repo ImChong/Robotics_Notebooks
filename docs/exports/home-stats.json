@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-skyfall-gs.md",
+      "detail_id": "entity-paper-skyfall-gs",
+      "label": "Skyfall-GS：从卫星影像合成沉浸式 3D 城市场景",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
+    },
+    {
       "path": "wiki/queries/humanoid-joint-motor-topology-selection.md",
       "detail_id": "wiki-queries-humanoid-joint-motor-topology-selection",
       "label": "人形关节电机拓扑选型：三种路线如何分工？",
@@ -192,27 +203,18 @@
       "recency": "2026-09-19",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-wam-diff2.md",
-      "detail_id": "entity-paper-wam-diff2",
-      "label": "WAM-Diff2（arXiv:2608.01035）",
-      "type": "entity",
-      "recency": "2026-09-19",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/humanoid-joint-motor-topology-selection.md",
-    "detail_id": "wiki-queries-humanoid-joint-motor-topology-selection",
-    "label": "人形关节电机拓扑选型：三种路线如何分工？",
-    "type": "query",
+    "path": "wiki/entities/paper-skyfall-gs.md",
+    "detail_id": "entity-paper-skyfall-gs",
+    "label": "Skyfall-GS：从卫星影像合成沉浸式 3D 城市场景",
+    "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "has_repo": true,
+    "community_label": "宇树 G1 人形机器人（Unitree G1） 社区"
   },
   "top_communities": [
     {
