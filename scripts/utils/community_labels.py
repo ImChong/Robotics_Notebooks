@@ -90,6 +90,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     ),
     "wiki/overview/paper-notebook-category-14-human-motion.md": "论文深读 · 人体动作（Human Motion）",
     "wiki/concepts/foundation-policy.md": "基础策略（Foundation Policy）",
+    "wiki/concepts/data-flywheel.md": "具身数据飞轮（Data Flywheel）",
     "wiki/overview/multirotor-simulation-planning-control-stack.md": "多旋翼开源栈（Multirotor Stack）",
     "wiki/methods/sonic-motion-tracking.md": (
         "规模化运动跟踪（Supersizing Motion Tracking for Natural Humanoid Control, SONIC）"
