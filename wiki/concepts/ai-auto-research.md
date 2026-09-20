@@ -2,9 +2,10 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-20
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
+  - ./retrieval-augmented-generation.md
   - ../references/llm-wiki-karpathy.md
   - ./recursive-self-improvement.md
   - ../entities/karpathy-autoresearch.md
@@ -45,7 +46,7 @@ AI 可以加速「研究形态」的产出，但 **科学实质**（证据、判
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RAG | Retrieval-Augmented Generation | 用外部文献/代码/日志 grounding 生成，降低幻觉 |
+| RAG | Retrieval-Augmented Generation | 用外部文献/代码/日志 grounding 生成；详见 [RAG 概念页](./retrieval-augmented-generation.md) |
 | E2E | End-to-End | 跨多阶段串联的自动化流水线（idea→paper 等） |
 | P2X | Paper-to-X | 将论文转为 poster、slides、video、网页等传播形态 |
 | LLM | Large Language Model | 各阶段生成与编排的核心模型 |

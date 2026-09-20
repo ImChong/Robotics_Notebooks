@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-09-20
 arxiv: "2511.23300"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md

@@ -2,7 +2,7 @@
 
 ## [2026-09-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **42** 条信息型预警）：
+共发现 **0** 个问题（另含 **43** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -138,8 +138,9 @@
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
 - wiki/concepts/humanoid-cognitive-reliability-gap.md
+- wiki/concepts/retrieval-augmented-generation.md
 
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（11 个）
 - wiki/entities/painode-009-alfred.md
@@ -161,4 +162,4 @@
 - wiki/entities/paper-leap-quadruped-active-perception.md
 - wiki/entities/paper-pose-semantic-legged-exploration.md
 
-📊 Sources 覆盖率：4573/4573 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4574/4574 (100%) wiki/entity 页有 ingest 来源
