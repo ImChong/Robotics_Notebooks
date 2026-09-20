@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/qwen-image-2-1.md",
+      "detail_id": "entity-qwen-image-2-1",
+      "label": "Qwen-Image-2.1",
+      "type": "entity",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-xpace.md",
       "detail_id": "entity-paper-xpace",
       "label": "XPACE（Joint World and Action Modeling · arXiv:2609.17372）",
@@ -196,26 +206,17 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-smith-legged-robots-keep-learning.md",
-      "detail_id": "entity-paper-smith-legged-robots-keep-learning",
-      "label": "Legged robots that keep on learning: fine-tuning locomotion policies in the real world",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-xpace.md",
-    "detail_id": "entity-paper-xpace",
-    "label": "XPACE（Joint World and Action Modeling · arXiv:2609.17372）",
+    "path": "wiki/entities/qwen-image-2-1.md",
+    "detail_id": "entity-qwen-image-2-1",
+    "label": "Qwen-Image-2.1",
     "type": "entity",
     "recency": "2026-09-20",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
