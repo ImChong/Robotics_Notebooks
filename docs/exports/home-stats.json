@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/retrieval-augmented-generation.md",
+      "detail_id": "wiki-concepts-retrieval-augmented-generation",
+      "label": "Retrieval-Augmented Generation（RAG，检索增强生成）",
+      "type": "concept",
+      "recency": "2026-09-20",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/learnprompt.md",
       "detail_id": "entity-learnprompt",
       "label": "LearnPrompt",
@@ -216,29 +226,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-025-amathematicalintroductiontorobot.md",
-      "detail_id": "entity-painode-025-amathematicalintroductiontorobot",
-      "label": "A Mathematical Introduction to Robotic Manipulation",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/learnprompt.md",
-    "detail_id": "entity-learnprompt",
-    "label": "LearnPrompt",
-    "type": "entity",
+    "path": "wiki/concepts/retrieval-augmented-generation.md",
+    "detail_id": "wiki-concepts-retrieval-augmented-generation",
+    "label": "Retrieval-Augmented Generation（RAG，检索增强生成）",
+    "type": "concept",
     "recency": "2026-09-20",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
