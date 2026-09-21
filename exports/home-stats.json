@@ -9,6 +9,35 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-gm-loco.md",
+      "detail_id": "entity-paper-gm-loco",
+      "label": "GM-Loco：颗粒介质上的地形自适应人形 locomotion",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-ross-dagger.md",
+      "detail_id": "entity-paper-ross-dagger",
+      "label": "DAgger 原论文（Ross et al., 2011）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/mit-flow-matching-diffusion-2026.md",
+      "detail_id": "wiki-overview-mit-flow-matching-diffusion-2026",
+      "label": "MIT 6.S184：Flow Matching & Diffusion Models（2026）",
+      "type": "overview",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
       "path": "wiki/entities/paper-vision-locomotion-egocentric.md",
       "detail_id": "entity-paper-vision-locomotion-egocentric",
       "label": "Vision Locomotion（Egocentric Depth 四足穿越复杂地形）",
@@ -178,47 +207,16 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanup-getting-up.md",
-      "detail_id": "entity-paper-humanup-getting-up",
-      "label": "HUMANUP",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-locoformer.md",
-      "detail_id": "entity-paper-locoformer",
-      "label": "LocoFormer",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rxr.md",
-      "detail_id": "entity-paper-rxr",
-      "label": "RxR",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vision-locomotion-egocentric.md",
-    "detail_id": "entity-paper-vision-locomotion-egocentric",
-    "label": "Vision Locomotion（Egocentric Depth 四足穿越复杂地形）",
+    "path": "wiki/entities/paper-gm-loco.md",
+    "detail_id": "entity-paper-gm-loco",
+    "label": "GM-Loco：颗粒介质上的地形自适应人形 locomotion",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
-    "action": "added",
-    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
