@@ -60,3 +60,4 @@ mjlab/
 | [legged_gym.md](legged_gym.md) | 同为足式/人形 RL 训练框架，legged_gym 绑定 IsaacGym，mjlab 绑定 MuJoCo |
 | [amp_mjlab.md](amp_mjlab.md) | AMP_mjlab 以 mjlab 为底层构建 G1 统一 AMP 策略 |
 | [unitree_rl_mjlab.md](unitree_rl_mjlab.md) | Unitree 官方以 mjlab 为底层构建的官方 RL 训练框架 |
+| [booster_mjlab.md](booster_mjlab.md) | whIRLwind 的 Booster K1 AMP / motion tracking 集成 |

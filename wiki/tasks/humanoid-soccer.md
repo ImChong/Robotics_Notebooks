@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
   - ./locomotion.md
@@ -17,6 +17,7 @@ related:
   - ../methods/paid-framework.md
   - ../methods/htwk-gym.md
   - ../entities/booster-robocup-demo.md
+  - ../entities/booster-mjlab.md
   - ../entities/roboflow-sports.md
   - ../entities/tennis-vision.md
   - ../entities/unitree-g1.md
@@ -79,6 +80,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 ### 强化学习 (RL) 驱动
 通过在大规模并行仿真（如 Isaac Gym/Lab）中训练，直接获取端到端的运动与技能。
 - **HTWK-Gym**：针对 Booster T1/K1 平台的足球任务优化框架。
+- **[booster_mjlab](../entities/booster-mjlab.md)**：whIRLwind（RoboCup 2026 Humanoid Soccer 第 4 名）的 **Booster K1 × mjlab + AMP** 训练栈；真机 AMP 行走与浏览器 WASM demo 见[项目页](https://intelligentroboticslab.github.io/booster_mjlab/)。
 - **PAiD (Perception-Action Integrated Decision-making)**：将感知与动作解耦并渐进式融合，实现更稳健的踢球。
 - **[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)**：以单条人类踢球参考为 scaffold 的 **三阶段 motion-guided curriculum RL**，在 G1 上实现 **亚米级点瞄准射门**、**13 m/s 级触球球速** 与 **来球 one-touch** 室外真机演示；**已开源** [训练](https://github.com/OpenDriveLab/RoboNaldo) / [部署](https://github.com/OpenDriveLab/RoboNaldo_Deploy)。
 - **[SkillX](../entities/paper-skillx-humanoid-soccer.md)**（arXiv:2609.06718）：松延动力×清华；命令条件 **统一多技能** actor + 技能专属 AMP/critic + 物体感知时序编码；E1 真机 MoCap/机载 ZED2i+YOLOv8；Hard 组合仿真 **81.7%**（[项目页](https://yzc0731.github.io/SkillX/)）；**代码待发布**。
@@ -128,6 +130,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - [humanoid-kick-vision-driven-soccer.md](../../sources/repos/humanoid-kick-vision-driven-soccer.md) — Zenodo 仿真训练/推理代码包
 - [opendrivelab-robonaldo.md](../../sources/sites/opendrivelab-robonaldo.md) — 项目页与开源核查
 - [Booster Robotics RoboCup Demo](../../wiki/entities/booster-robocup-demo.md) — 完整的足球比赛软件方案
+- [booster_mjlab 源码仓库](../../sources/repos/booster_mjlab.md) — whIRLwind K1 mjlab AMP 训练与 motion 管线
 - [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — 广播视角检测/跟踪/俯视雷达开源对照
 - [humanoid_soccer_swarm_intelligence_sensors_2025.md](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md) — 人形足球 swarm 群控（Sensors 2025）
 - [artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md) — ARTEMIS 冠军系统群控摘录
