@@ -336,6 +336,7 @@ flowchart TD
 如果你想沿着 locomotion 继续往下挖，建议从这里进入：
 
 ### 论文入口
+- [Vision Locomotion（CoRL 2022 ego-depth 四足）](../entities/paper-vision-locomotion-egocentric.md) — arXiv:2211.07638（Best Systems；A1 单 D435，scandots→深度 DAgger，无高程图）
 - [Extreme Parkour（端到端四足感知跑酷）](../entities/extreme-parkour.md) — arXiv:2309.14341（ICRA 2024；scandots + 航向双重蒸馏 → 单目深度，Go1）
 - [SWAP（对称等变世界模型四足跑酷）](../entities/paper-swap-parkour.md) — arXiv:2606.19928（SE-RSSM + 等变 Actor-Critic 端到端；Apollo 2.13 m 远跳 / 1.63 m 攀台）
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）

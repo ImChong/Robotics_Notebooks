@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/sites/vision-locomotion-github-io.md — CoRL 2022 Best Systems（arXiv:2211.07638）A1 单前向深度 scandots→DAgger；项目页无官方代码；新建 paper-vision-locomotion-egocentric 并交叉 stair-obstacle / extreme-parkour / RMA
+
 ## [2026-09-21] ingest | sources/repos/loongforge.md — 深度 ingest LoongForge 训练框架，升格 cn-os-loongforge 实体页并修正分类
 
 ## [2026-09-21] ingest | sources/repos/laya-mlx.md — 接入 Laya-MLX Apple Silicon MLX 端口并交叉更新 Laya 实体
