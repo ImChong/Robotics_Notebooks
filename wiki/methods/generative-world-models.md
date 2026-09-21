@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-21
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -36,6 +36,8 @@ related:
   - ../entities/paper-worldscore.md
   - ../entities/paper-harnesseval-w.md
   - ../entities/paper-wem-world-ego-modeling.md
+  - ../entities/paper-qwm.md
+  - ../entities/paper-code-as-world.md
   - ../entities/paper-gamma-world-multi-agent.md
   - ../entities/paper-homeworld-whole-home-scene-generation.md
   - ../entities/paper-infinite-diffusion-terrain-diffusion.md
@@ -416,6 +418,11 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 三维世界生成与流式 3DGS（产业样本）
 
 部分团队将「世界模型」叙事延伸到 **持久 3D 世界** 的生成与编辑，并以 **3D Gaussian Splatting** 在 Web 或工具链中交付可漫游场景；这与上文以 **像素视频 rollout** 为中心的讨论共享「生成式环境」动机，但 **评测对象与训练目标** 往往更接近内容管线而非机器人控制回路。产业侧公开样本见 [World Labs](../entities/world-labs.md)：**[Marble](../entities/marble-world-model.md)**（2025-11 GA：文/图/视频/Chisel → 可导出 splat/mesh，模型闭源 + World API；[文档](https://docs.worldlabs.ai/)）+ **[Atlas](../entities/atlas-world-model.md)**（2026-09 omni 底座：相机可控长视频、稀疏重建、Real-to-Sim 传感器 rollout；早期访问未开源）+ [Spark](../entities/spark-3dgs-renderer.md)；同类 Web 渲染可对照 [Aholo Viewer](../entities/aholo-viewer.md)（见 [Spark vs Aholo](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）。**卫星 → 城市 3DGS** 的学术对照见 [Skyfall-GS](../entities/paper-skyfall-gs.md)（ECCV 2026：无 3D 扫描标注，IDU + 扩散精炼街区 splat）。驾驶侧的对照是 [Instant NuRec](../entities/paper-instant-nurec.md)：它 **不发明像素**，而是一次前向给出可重姿态的分层 3DGS，再交给 [NuRec](../entities/nvidia-nurec.md) / AlpaSim——论文把它放在「重建骨干」，与生成修复 / 联合世界模型互补。
+
+### 可执行代码世界与 test-time Q 搜索（2026 样本）
+
+- **[Code-as-World](../entities/paper-code-as-world.md)**（arXiv:2608.27549，MirroS）：把物理组成、动力学与渲染写成 **可执行代码**，经 **agentic propose–execute–render–verify** 发现环从语言/视频恢复世界；**Code-as-World-VL** 在 **QuantiPhy** 上 SOTA，GitHub 已开源推理/eval。与像素 rollout WM 互补：强项是 **定量、可编辑** 机制表示。
+- **[QWM](../entities/paper-qwm.md)**（arXiv:2608.17163，Stanford/PKU）：学习到的 WM 用于 **Q-learning 上的 test-time 树搜索** 选动作，**不在 imagined rollout 上训练** policy/critic；Robomimic + LIBERO 样本效率显著提升，官方代码 **待发布**。
 
 ## 术语辨析
 

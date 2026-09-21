@@ -132,6 +132,8 @@ related:
   - ../entities/paper-robointer-1-5.md
   - ../entities/dexmal-dm05.md
   - ../entities/paper-last-hd-latent-physical-reasoning.md
+  - ../entities/paper-code-as-world.md
+  - ../entities/paper-infonce-geometry.md
   - ../entities/kinetiq-ascend.md
   - ../entities/cyclo-intelligence.md
   - ../entities/robo-bench.md
@@ -293,6 +295,8 @@ flowchart TD
 - **GlanceWAM（arXiv:2608.23927）**：视频 WAM 把想象移出控制关键路径，动作头潜空间 **48 ms**；RoboCasa **72.2%**、LIBERO **99.0%**；**MIT + HF 已开源**（见 [GlanceWAM](../entities/paper-glancewam.md)）
 - **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **89.0%**、RoboDojo 真机 **37.6/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
 - **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
+- **Code-as-World-VL（arXiv:2608.27549）**：**可执行代码** 表示物理世界 + agentic discovery，以 verified worlds 监督 VLM 做 **QuantiPhy 定量物理推理** SOTA；与 LaST-HD 的 latent 动力学对齐不同，强调 **simulator-executable 机制本体**（见 [Code-as-World](../entities/paper-code-as-world.md)）
+- **InfoNCE Geometry（ICML 2026）**：解释 CLIP 式 **modality gap** 的 population geometry——单靠 pairwise alignment 不足以匹配 cross-modal marginal；设计 VLA 上游对比预训练时可对照 [InfoNCE Geometry](../entities/paper-infonce-geometry.md)
 - **InternVLA-A1.5**：**Qwen3.5-2B MoT VLM + 460M unified expert**；Stage1 **持续 VQA/子任务/FAST** 共训保语义，Stage2 用 **50 foresight token** 查询 **冻结 WAN2.2** 潜式未来 + **flow matching** 连续动作；**1.2M** 机器人 + **3M** InternVLA-M1 预训练；**六套仿真全榜领先**，真机 **组合指令 OOD 绑定** 与 **13 步 MOF** 显著超 **π₀.₅/Motus**；**训练用世界模型、部署不滚像素**（~0.1s/步）（见 [InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md)，arXiv:2607.04988）
 - **JoyAI-RA 0.5（京东 Joy Future Academy）**：**VLWA** = VLM + **LAC-WM** + Flow Action Expert；**隐式 latent-action** 吃无标签人视频、**显式 130-D** 规范动作吃可靠轨迹；**内–外环 RL**；AgiBot G1 seen **92.0** / unseen **75.5**，人视频缩放未见饱和；**未开源**（见 [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md)，arXiv:2608.05674）
 - **τ₀-VLA**：**分层子任务 + 世界模型引导 TTC**（beam search 比较想象后果）；低层 **Qwen3.5 + MoT flow**、**40 维** 统一动作、**40,115 h** 预训练；长程四任务分层 **45.0%** vs 整任务 **27.5%**；低层 **已开源**、高层 TTC **逐步发布**（见 [τ₀-VLA](../entities/paper-tau0-vla.md)，arXiv:2608.16885）
