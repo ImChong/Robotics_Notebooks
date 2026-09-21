@@ -725,7 +725,7 @@ def write_blogs_and_sites() -> None:
     )
     text = text.replace("- **入库日期：** 2026-09-09", f"- **入库日期：** {DATE}")
     if "lightorigins_light_react" not in text:
-        text += f"\n- Tech Blog 归档：[lightorigins_light_react_2026-09-09](../blogs/lightorigins_light_react_2026-09-09.md)\n"
+        text += "\n- Tech Blog 归档：[lightorigins_light_react_2026-09-09](../blogs/lightorigins_light_react_2026-09-09.md)\n"
     react_site.write_text(text, encoding="utf-8")
 
     parkour_site = ROOT / "sources/sites/lightparkour.md"
@@ -758,7 +758,7 @@ def write_blogs_and_sites() -> None:
     nav_site = ROOT / "sources/sites/lightnav-0.md"
     nav_text = nav_site.read_text(encoding="utf-8")
     if "lightorigins_lightnav" not in nav_text:
-        nav_text += f"\n- Tech Blog 归档：[lightorigins_lightnav_0_2026-09-01](../blogs/lightorigins_lightnav_0_2026-09-01.md)\n"
+        nav_text += "\n- Tech Blog 归档：[lightorigins_lightnav_0_2026-09-01](../blogs/lightorigins_lightnav_0_2026-09-01.md)\n"
     nav_site.write_text(nav_text, encoding="utf-8")
 
 
