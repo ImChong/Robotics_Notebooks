@@ -1,3 +1,12 @@
+## [2026-09-21] structural | roadmap/depth-model-architecture.md — 新增第 26 条纵深路线「模型架构」并接入首页/路线视图/主路线
+
+- **触发：** 维护者要求"增加一个模型架构的纵深路线"。仓库里 [`humanoid-policy-network-architecture`](wiki/concepts/humanoid-policy-network-architecture.md)、[`rnn-cnn-transformer-mamba`](wiki/comparisons/rnn-cnn-transformer-mamba.md)、[`action-chunking`](wiki/methods/action-chunking.md)、[`unified-multimodal-tokens`](wiki/methods/unified-multimodal-tokens.md) 等架构知识已齐，但散落在概念/方法/对比页里，没有一条串起来的学习路线。
+- **新建：** [`roadmap/depth-model-architecture.md`](roadmap/depth-model-architecture.md)（Stage 0–5）：选型判据（由控制回路与时延预算反推函数族）→ 骨干族谱（MLP / CNN / RNN / Transformer / SSM 的归纳偏置 × 长程 × 复杂度）→ 感知编码（CNN vs ViT、冻结 vs 端到端、token 预算）→ 动作头（单步回归 → action chunk → 扩散 / 流匹配，含 receding horizon 与 temporal ensemble 之别）→ 多模态基座（统一 token、离散动作 token vs 连续动作头、双系统分层、WAM 未来预测进骨干）→ 规模与部署（缩放法则、实时性↔泛化边界、蒸馏量化与机载推理栈）。
+- **排序位：** 按各方向起点里程碑历史顺序，置于导航（概率 SLAM，1986）与模仿学习（行为克隆，1988）之间，起点取 **反向传播（Rumelhart et al., Nature 1986）**；首页默认折叠区可见，需展开。
+- **接入点：** `docs/depth-filters.js`（DEPTH_ORDER / HUB_IDS / FILTERS / META，25→26 条，emoji 🏗️）、`docs/index.html` 首页按钮与纵深路线计数、`docs/main.js` 折叠文案、`README.md` / `index.md` / `roadmap/README.md` / `roadmap/motion-control.md` 四处清单、10 条模型/学习向 depth 页互链，以及策略网络架构概念页与骨干对比页的回链。
+- **口径：** 全页不引入新论文数字，只编译既有 wiki 页结论；保留"人形真机低层策略至今常是 2–3 层小 MLP、瓶颈多不在架构"这一判断作为 Stage 0 主锚。
+- **验证：** `tests/test_depth_filters.py` 期望长度 26→27；`make ci-preflight` 与 `make test` 本地通过。
+
 ## [2026-09-21] ingest | sources/blogs/wechat_lightorigins_light_o1_2026-09-21.md — 亮源新创 Light-O1 全身智能基础模型；Preview 已开源 lightorigins/Light-O1
 
 ## [2026-09-21] ingest | sources/papers/offroad_global_nav_arxiv_2607_23743.md — TAMU+ARL 越野可通行全局规划；HF 数据集已开源（CC BY-NC），训练代码待发布

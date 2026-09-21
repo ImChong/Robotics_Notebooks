@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 25 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 26 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -19,7 +19,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（25 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（26 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'teleoperation',
@@ -30,6 +30,7 @@
     'rsi',
     'contact-manipulation',
     'navigation',
+    'model-architecture',
     'imitation-learning',
     'rl-locomotion',
     'loco-manipulation',
@@ -59,6 +60,7 @@
     'rsi': 'roadmap/depth-rsi.md',
     'contact-manipulation': 'roadmap/depth-contact-manipulation.md',
     'navigation': 'roadmap/depth-navigation.md',
+    'model-architecture': 'roadmap/depth-model-architecture.md',
     'imitation-learning': 'roadmap/depth-imitation-learning.md',
     'rl-locomotion': 'roadmap/depth-rl-locomotion.md',
     'loco-manipulation': 'roadmap/depth-loco-manipulation.md',
@@ -293,6 +295,35 @@
         'wiki/entities/orb-slam3.md',
         'wiki/entities/habitat-sim.md',
         'wiki/entities/matterport3d-simulator.md'
+      ])
+    },
+    'model-architecture': {
+      segments: new Set([
+        'architecture', 'transformer', 'attention', 'mamba', 'ssm', 'vit',
+        'cnn', 'backbones', 'vision-backbone', 'network-architecture',
+        'state-space-model'
+      ]),
+      ids: mergeIds('model-architecture', [
+        'wiki/concepts/humanoid-policy-network-architecture.md',
+        'wiki/concepts/humanoid-policy-observation-inputs.md',
+        'wiki/concepts/deep-learning-foundations.md',
+        'wiki/concepts/backpropagation.md',
+        'wiki/concepts/convolutional-neural-network.md',
+        'wiki/concepts/visual-representation-for-policy.md',
+        'wiki/concepts/embodied-fm-latency-generalization-tradeoff.md',
+        'wiki/concepts/control-inference-frequency-decoupling.md',
+        'wiki/concepts/receding-horizon-policy-execution.md',
+        'wiki/concepts/diffusion-model.md',
+        'wiki/concepts/lora.md',
+        'wiki/comparisons/rnn-cnn-transformer-mamba.md',
+        'wiki/comparisons/deep-learning-optimizers.md',
+        'wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md',
+        'wiki/methods/action-chunking.md',
+        'wiki/methods/unified-multimodal-tokens.md',
+        'wiki/methods/unet.md',
+        'wiki/methods/octo-model.md',
+        'wiki/methods/star-vla.md',
+        'wiki/overview/hub-vision-backbone.md'
       ])
     },
     'imitation-learning': {
@@ -667,6 +698,12 @@
       label: '导航',
       wikiPath: DEPTH_HUB_IDS.navigation,
       description: 'SLAM → Nav2 → VLN → 导航 VLA：定位、规划与语义导航。'
+    },
+    'model-architecture': {
+      emoji: '🏗️',
+      label: '模型架构',
+      wikiPath: DEPTH_HUB_IDS['model-architecture'],
+      description: '骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署的网络结构选型。'
     },
     'imitation-learning': {
       emoji: '🎓',

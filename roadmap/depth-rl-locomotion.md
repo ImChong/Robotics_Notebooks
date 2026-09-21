@@ -236,6 +236,7 @@ flowchart LR
   - [Loco-Manipulation](depth-loco-manipulation.md) — 行走策略接到操作
   - [传统模型控制](depth-classical-control.md) — WBC/MPC 与 RL 的组合与对照
   - [BFM](depth-bfm.md) — 跟踪/技能先验，常作 RL 的运动底座
+  - [模型架构](depth-model-architecture.md) — 横切视角：为什么低层高频策略至今仍常是小 MLP
 
 ## 参考来源
 

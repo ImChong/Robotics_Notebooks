@@ -240,6 +240,7 @@ flowchart LR
   - [ICL](depth-icl.md) — 上下文适应 vs 显式世界–动作联合
   - [动作生成](depth-motion-generation.md) — 未来视频/动作的生成侧
   - [具身测评](depth-embodied-eval.md) — 世界模型保真与策略成功率
+  - [模型架构](depth-model-architecture.md) — 横切视角：未来预测并进骨干后的结构件与延迟分解
 
 ## 参考来源
 

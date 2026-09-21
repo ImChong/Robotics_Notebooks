@@ -246,6 +246,7 @@ flowchart LR
   - [导航](depth-navigation.md) — 导航 VLA / VLN
   - [具身数据](depth-embodied-data.md) — 跨具身语料与配比
   - [ICL](depth-icl.md) — 不动权重的上下文适应
+  - [模型架构](depth-model-architecture.md) — 横切视角：token 化方案、动作头形式与时延预算怎么选
 
 ## 参考来源
 

@@ -226,6 +226,7 @@ flowchart LR
   - [动作生成](depth-motion-generation.md) — 参考运动的合成来源
   - [RL 运动控制](depth-rl-locomotion.md) — 跟踪/技能常作 locomotion 先验
   - [人形拳击](depth-humanoid-boxing.md) — 潜空间技能与对抗的产品向展开
+  - [模型架构](depth-model-architecture.md) — 横切视角：基座骨干、技能潜空间与动作头的结构选型
 
 ## 参考来源
 

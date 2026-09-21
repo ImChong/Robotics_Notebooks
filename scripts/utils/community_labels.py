@@ -159,6 +159,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
         "递归自我改进纵深路线（Recursive Self-Improvement Deep-Dive Roadmap, RSI）"
     ),
     "roadmap/depth-teleoperation.md": "遥操作纵深路线（Teleoperation Deep-Dive Roadmap）",
+    "roadmap/depth-model-architecture.md": (
+        "模型架构纵深路线（Model Architecture Deep-Dive Roadmap）"
+    ),
     "wiki/queries/simulator-selection-guide.md": "仿真器选型指南（Simulator Selection Guide）",
     "wiki/methods/ppo.md": "近端策略优化（Proximal Policy Optimization, PPO）",
     "roadmap/depth-classical-control.md": (

@@ -226,6 +226,7 @@ flowchart LR
   - [BFM](depth-bfm.md) — 生成参考进入跟踪/行为模型
   - [VLA](depth-vla.md) — 文本/多模态条件的另一条动作出口
   - [群控展演](depth-humanoid-swarm-performance.md) — 编舞与群舞的产品向展开
+  - [模型架构](depth-model-architecture.md) — 横切视角：扩散 / 流匹配去噪骨干与采样步数的代价
 
 ## 参考来源
 

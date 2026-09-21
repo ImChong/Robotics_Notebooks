@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-21
 summary: "人形与腿式模仿/强化策略里，网络“长什么样”往往被写在论文 Method：从浅层 MLP 到 AMP 判别器、MoE、Transformer/Diffusion chunk，再到 VLA 与 WAM；真机强项常是小 MLP，难点在观测、奖励与 sim2real。"
 related:
+  - ../../roadmap/depth-model-architecture.md
   - ../overview/ai-architecture-map.md
   - ./mlp.md
   - ./mixture-of-experts.md
@@ -159,6 +160,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md) — Stage 0–5 学习路径（选型判据 → 骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）
 - [AI 架构地图](../overview/ai-architecture-map.md) — 函数族总图；本页只展开决策栈代际
 - [MLP](./mlp.md)
 - [MoE](./mixture-of-experts.md)

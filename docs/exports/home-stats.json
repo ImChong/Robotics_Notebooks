@@ -1,23 +1,13 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4673,
-  "edge_count": 40960,
+  "node_count": 4674,
+  "edge_count": 41038,
   "coverage": {
     "covered": 4645,
     "total": 4645,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/light-o1.md",
-      "detail_id": "entity-light-o1",
-      "label": "Light-O1",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
     {
       "path": "wiki/entities/paper-offroad-global-nav.md",
       "detail_id": "entity-paper-offroad-global-nav",
@@ -36,7 +26,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/diffusion-transformer.md",
@@ -46,7 +36,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/generative-adversarial-network.md",
@@ -55,7 +45,8 @@
       "type": "concept",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/graph-neural-network.md",
@@ -65,7 +56,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/gru.md",
@@ -75,7 +66,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/mamba.md",
@@ -85,7 +76,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/mixture-of-experts.md",
@@ -95,7 +86,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/mlp.md",
@@ -105,7 +96,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/recurrent-neural-network.md",
@@ -115,7 +106,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/temporal-convolutional-network.md",
@@ -125,7 +116,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/unet.md",
@@ -134,8 +125,7 @@
       "type": "concept",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/overview/ai-architecture-map.md",
@@ -145,7 +135,16 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "roadmap/depth-model-architecture.md",
+      "detail_id": "roadmap-depth-model-architecture",
+      "label": "路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）",
+      "type": "roadmap_page",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/booster-mjlab.md",
@@ -212,23 +211,23 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/light-o1.md",
-    "detail_id": "entity-light-o1",
-    "label": "Light-O1",
+    "path": "wiki/entities/paper-offroad-global-nav.md",
+    "detail_id": "entity-paper-offroad-global-nav",
+    "label": "Off-Road Global Nav：可通行感知的长程越野全局规划",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 853
+      "size": 799
     },
     {
       "label": "操作",
-      "size": 683
+      "size": 690
     },
     {
       "label": "仿真到现实",
@@ -239,12 +238,12 @@
       "size": 298
     },
     {
-      "label": "视觉-语言-动作",
+      "label": "具身评测基准选型闭环",
       "size": 238
     },
     {
-      "label": "具身评测基准选型闭环",
-      "size": 201
+      "label": "视觉-语言-动作",
+      "size": 238
     }
   ],
   "top_hubs": [
@@ -260,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1315,
+      "degree": 1316,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
