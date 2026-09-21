@@ -22,3 +22,5 @@
 - 论文摘录：[lightnav0_arxiv_2608_30935](../papers/lightnav0_arxiv_2608_30935.md)
 - 仓库：[lightorigins/LightNav-0](../repos/lightorigins-lightnav-0.md)
 - 主实体：[LightNav-0](../../wiki/entities/paper-lightnav-0.md)
+
+- Tech Blog 归档：[lightorigins_lightnav_0_2026-09-01](../blogs/lightorigins_lightnav_0_2026-09-01.md)
