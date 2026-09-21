@@ -1,13 +1,142 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4673,
-  "edge_count": 41030,
+  "node_count": 4674,
+  "edge_count": 41038,
   "coverage": {
-    "covered": 4644,
-    "total": 4644,
+    "covered": 4645,
+    "total": 4645,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-offroad-global-nav.md",
+      "detail_id": "entity-paper-offroad-global-nav",
+      "label": "Off-Road Global Nav：可通行感知的长程越野全局规划",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/concepts/autoencoder.md",
+      "detail_id": "wiki-concepts-autoencoder",
+      "label": "Autoencoder / VAE（自编码器与变分自编码器）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/diffusion-transformer.md",
+      "detail_id": "wiki-concepts-diffusion-transformer",
+      "label": "DiT（Diffusion Transformer）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/generative-adversarial-network.md",
+      "detail_id": "wiki-concepts-generative-adversarial-network",
+      "label": "GAN（Generative Adversarial Network，生成对抗网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/graph-neural-network.md",
+      "detail_id": "wiki-concepts-graph-neural-network",
+      "label": "GNN（Graph Neural Network，图神经网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/gru.md",
+      "detail_id": "wiki-concepts-gru",
+      "label": "GRU（Gated Recurrent Unit，门控循环单元）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/mamba.md",
+      "detail_id": "wiki-concepts-mamba",
+      "label": "Mamba",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/mixture-of-experts.md",
+      "detail_id": "wiki-concepts-mixture-of-experts",
+      "label": "MoE（Mixture-of-Experts，混合专家）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/mlp.md",
+      "detail_id": "wiki-concepts-mlp",
+      "label": "MLP / Feedforward NN（多层感知机）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/recurrent-neural-network.md",
+      "detail_id": "wiki-concepts-recurrent-neural-network",
+      "label": "RNN / LSTM / GRU（循环神经网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/temporal-convolutional-network.md",
+      "detail_id": "wiki-concepts-temporal-convolutional-network",
+      "label": "TCN（Temporal Convolutional Network，时间卷积网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/unet.md",
+      "detail_id": "wiki-concepts-unet",
+      "label": "U-Net",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/ai-architecture-map.md",
+      "detail_id": "wiki-overview-ai-architecture-map",
+      "label": "AI 架构地图（Neural Network Architecture Map）",
+      "type": "overview",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
     {
       "path": "roadmap/depth-model-architecture.md",
       "detail_id": "roadmap-depth-model-architecture",
@@ -79,166 +208,26 @@
       "source": "git",
       "action": "added",
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/concepts/retrieval-augmented-generation.md",
-      "detail_id": "wiki-concepts-retrieval-augmented-generation",
-      "label": "Retrieval-Augmented Generation（RAG，检索增强生成）",
-      "type": "concept",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-simulation-three-layers.md",
-      "detail_id": "wiki-concepts-robot-simulation-three-layers",
-      "label": "机器人仿真三层分工（Physics / Platform / Learning）",
-      "type": "concept",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/painode-009-alfred.md",
-      "detail_id": "entity-painode-009-alfred",
-      "label": "ALFRED",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-010-arnold.md",
-      "detail_id": "entity-painode-010-arnold",
-      "label": "ARNOLD",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-011-carlaleaderboard.md",
-      "detail_id": "entity-painode-011-carlaleaderboard",
-      "label": "CARLA Leaderboard",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-012-colosseum.md",
-      "detail_id": "entity-painode-012-colosseum",
-      "label": "Colosseum",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-013-furniturebench.md",
-      "detail_id": "entity-painode-013-furniturebench",
-      "label": "FurnitureBench",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-018-minedojo.md",
-      "detail_id": "entity-painode-018-minedojo",
-      "label": "MineDojo",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-019-openeqa.md",
-      "detail_id": "entity-painode-019-openeqa",
-      "label": "OpenEQA",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-021-robothor.md",
-      "detail_id": "entity-painode-021-robothor",
-      "label": "RoboTHOR",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-023-teach.md",
-      "detail_id": "entity-painode-023-teach",
-      "label": "TEACh",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-024-vlabench.md",
-      "detail_id": "entity-painode-024-vlabench",
-      "label": "VLABench",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-083-argoverse2.md",
-      "detail_id": "entity-painode-083-argoverse2",
-      "label": "Argoverse 2",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-model-architecture.md",
-    "detail_id": "roadmap-depth-model-architecture",
-    "label": "路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）",
-    "type": "roadmap_page",
+    "path": "wiki/entities/paper-offroad-global-nav.md",
+    "detail_id": "entity-paper-offroad-global-nav",
+    "label": "Off-Road Global Nav：可通行感知的长程越野全局规划",
+    "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 805
+      "size": 799
     },
     {
       "label": "操作",
-      "size": 689
+      "size": 690
     },
     {
       "label": "仿真到现实",
@@ -250,7 +239,7 @@
     },
     {
       "label": "具身评测基准选型闭环",
-      "size": 256
+      "size": 238
     },
     {
       "label": "视觉-语言-动作",
@@ -270,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1315,
+      "degree": 1316,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

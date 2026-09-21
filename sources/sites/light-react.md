@@ -21,7 +21,7 @@
 - **问题：** 部分关节失效、外部扰动、摔倒后仍能 **单策略** 自主调整全身行为（行走 / 爬行 / 恢复），无需故障标签与模式切换。
 - **机制：** 具身 **In-Context Learning** / **Whole-Body Context Learning**——近期全身交互历史作上下文，Transformer 策略 **权重冻结** 下持续适应。
 - **命名：** REACT = **REsilient humAnoid ConTrol**。
-- **范式位置：** 亮源新创「规模化预训练 — 规模化对齐 — 规模化部署」中 **部署段** 首个成果（对齐段见 [LightNav-0](./lightnav-0.md)）。
+- **范式位置：** 亮源新创「规模化预训练 — 规模化对齐 — 规模化部署」中 **部署段** 首个成果（预训练段见 [Light-O1](./light-o1.md)，对齐段见 [LightNav-0](./lightnav-0.md)）。
 
 ## 交叉链接
 

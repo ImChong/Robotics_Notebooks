@@ -10,7 +10,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-16
+updated: 2026-09-21
 arxiv: "2608.30935"
 code: https://github.com/lightorigins/LightNav-0
 related:
@@ -129,6 +129,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Light-O1](./light-o1.md) — 同机构规模化预训练段：人类动作预训练全身智能
 - [Light REACT](./light-react.md) — 同机构规模化部署段：全身韧性 ICL
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [VLA](../methods/vla.md)
