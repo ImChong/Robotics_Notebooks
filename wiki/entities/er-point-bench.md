@@ -8,13 +8,16 @@ tags:
 status: complete
 updated: 2026-09-21
 related:
+  - ./pointarena.md
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
+  - ../overview/spatial-reasoning-benchmarks-technology-map.md
   - ./paper-lightnav-0.md
   - ./light-react.md
   - ./paper-light-loco-parkour.md
 sources:
   - ../../sources/papers/er_point_bench_lightnav_2026.md
+  - ../../sources/papers/pointarena_arxiv_2505_09990.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
 summary: "Point-Bench：LightNav-ER 八项具身推理评测之一；点定位能力占 ER 中期训练数据 35.14%。"
 ---

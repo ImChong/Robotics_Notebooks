@@ -1,3 +1,8 @@
+## [2026-09-21] ingest | 空间推理 batch（MolmoAct2/PointArena/RoboRefer/RoboSpatial/RoboPoint/Cambrian/EmbSpatial/Gemini arXiv）— 14 URL 深度入库 + spatial-reasoning-benchmarks 技术地图
+
+- **意图：** 用户指定 8 篇 arXiv + 6 项目页 batch ingest；升格 RoboSpatial/RefSpatial/EmbSpatial/MolmoER stub 并新建 PointArena/RoboRefer/RoboPoint/Cambrian/MolmoAct2 等实体。
+- **开源结论：** MolmoAct2、PointArena、RoboRefer、RoboPoint、Cambrian、EmbSpatial、RoboSpatial pipeline **已开源**；Gemini Robotics VLA **未开源**。
+
 ## [2026-09-21] ingest | sources/papers/me_dex_1_0_arxiv_2609_21449.md — ME-Dex 1.0 异构触觉 WAM；三专家 MoT + Agentic Tactile Data Engine；推理 runtime 已开源
 
 - **意图：** 用户指定 ingest arXiv:2609.21449 + <https://machembodied.com/ME-Dex/ME-Dex1.0.html>；新建 [paper-me-dex-1-0](wiki/entities/paper-me-dex-1-0.md) 并交叉 WAM/RoboTwin。

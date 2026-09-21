@@ -2,77 +2,74 @@
 type: entity
 tags:
   - benchmark
-  - embodied-reasoning
   - spatial-reasoning
+  - embodied-reasoning
+  - open-source
 status: complete
 updated: 2026-09-21
+arxiv: "2406.05756"
+code: https://github.com/mengfeidu/EmbSpatial-Bench
 related:
-  - ./light-origins.md
-  - ../overview/lightorigins-3blogs-technology-map.md
-  - ./paper-lightnav-0.md
-  - ./light-react.md
-  - ./paper-light-loco-parkour.md
+  - ./robospatial.md
+  - ./paper-cambrian-1.md
+  - ./lightnav-er.md
+  - ../overview/spatial-reasoning-benchmarks-technology-map.md
 sources:
+  - ../../sources/papers/embspatial_bench_arxiv_2406_05756.md
   - ../../sources/papers/embspatial_lightnav_2026.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
-summary: "EmbSpatial：LightNav-ER 评测套件成员；Blog 脚注 [3] 列出。"
+summary: "EmbSpatial-Bench（arXiv:2406.05756）：egocentric 六类空间关系 benchmark；LightNav-ER 套件成员；已开源 mengfeidu/EmbSpatial-Bench。"
 ---
 
-# EmbSpatial
+# EmbSpatial-Bench
 
-**EmbSpatial**（EmbSpatial：具身空间推理基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](https://www.lightorigins.com/blog/lightnav-0) 中被引用。
+**EmbSpatial-Bench**（[arXiv:2406.05756](https://arxiv.org/abs/2406.05756)，[代码](https://github.com/mengfeidu/EmbSpatial-Bench)）评测 **LVLM 在具身任务中的空间理解**：从 embodied 场景 **自动派生** egocentric 视角下的 **6 种空间关系** QA。
 
 ## 一句话定义
 
-**LightNav-ER 评测套件成员；Blog 脚注 [3] 列出。**
+**EmbSpatial 问：LVLM 在「第一人称具身视角」下懂不懂 left-of / inside / closer 这类关系。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLM | Vision-Language Model | 视觉-语言多模态模型 |
-| VLN | Vision-and-Language Navigation | 视觉-语言导航 |
-| ER | Embodied Reasoning | 具身推理；LightNav 第一阶段中期训练 |
-| RL | Reinforcement Learning | 强化学习 |
-| R2S2R | Real-to-Sim-to-Real | 真场景→仿真合成→真机部署 |
+| LVLM | Large Vision-Language Model | 大视觉-语言模型 |
+| ER | Embodied Reasoning | 具身推理；LightNav-ER 八项之一 |
+| VQA | Visual Question Answering | 视觉问答 |
 
 ## 为什么重要
 
-- 完整覆盖 LightNav 引用的 ER 八项基准。
-- 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
+- **LightNav-ER 套件：** [LightNav-0](./paper-lightnav-0.md) 博客脚注 [3] 列入八项 ER 评测（见 [lightnav-er](./lightnav-er.md)）。
+- **自动构造：** 无需人工逐条标注，可扩展 embodied 场景库。
+- **与 Cambrian CV-Bench 区分：** Cambrian 的 CV-Bench 偏 2D 空间；EmbSpatial 强调 **egocentric embodied** 设定。
 
 ## 核心信息
 
 | 项 | 内容 |
 |----|------|
-| **类型** | benchmark |
-| **出处** | LightNav-ER 评测套件 |
-| **开源** | **待核实** |
-
-
+| **关系类型** | 6 类 egocentric 空间关系 |
+| **开源** | **已开源** `mengfeidu/EmbSpatial-Bench` |
 
 ## 结论
 
-**EmbSpatial 是 LightNav / LightParkour 管线中的关键组件——读博客数字前先对齐本页定义与开源边界。**
+**EmbSpatial 是「具身 egocentric 空间 VQA」早期公共基准——读 LightNav-ER 分数时应对齐其六关系设定。**
 
-1. 状态：**待核实**
-2. 与机构页 [亮源新创（Light Origins）](./light-origins.md) 三段范式对照阅读。
-3. 工程复现以官方后续发布为准。
+- 自动派生保证与场景库同步扩展
+- 与 RoboSpatial-Home（scan QA）、RefSpatial（指代）互补
+- 开源仓库可复现 leaderboard 数字
 
 ## 关联页面
 
-- [亮源新创（Light Origins）](./light-origins.md)
-- [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
-- [LightNav-0](./paper-lightnav-0.md)
-- [Light REACT](./light-react.md)
+- [RoboSpatial](./robospatial.md)
+- [LightNav-ER](./lightnav-er.md)
+- [Cambrian-1 / CV-Bench](./paper-cambrian-1.md)
 
 ## 参考来源
 
+- [embspatial_bench_arxiv_2406_05756.md](../../sources/papers/embspatial_bench_arxiv_2406_05756.md)
 - [embspatial_lightnav_2026.md](../../sources/papers/embspatial_lightnav_2026.md)
-- [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
-- [Tech Blog](https://www.lightorigins.com/blog/lightnav-0)
 
 ## 推荐继续阅读
 
-- [Light Origins 官网](https://www.lightorigins.com/)
-- [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
+- [arXiv:2406.05756](https://arxiv.org/abs/2406.05756)
+- [GitHub EmbSpatial-Bench](https://github.com/mengfeidu/EmbSpatial-Bench)

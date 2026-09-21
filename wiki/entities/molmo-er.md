@@ -1,79 +1,78 @@
 ---
 type: entity
 tags:
-  - entity
   - vlm
   - embodied-reasoning
-  - navigation
+  - ai2
+  - open-source
 status: complete
 updated: 2026-09-21
 related:
-  - ./light-origins.md
-  - ../overview/lightorigins-3blogs-technology-map.md
+  - ./paper-molmoact2.md
+  - ./molmo2-vlm.md
   - ./paper-lightnav-0.md
-  - ./light-react.md
-  - ./paper-light-loco-parkour.md
+  - ./lightnav-er.md
+  - ../overview/spatial-reasoning-benchmarks-technology-map.md
 sources:
+  - ../../sources/papers/molmoact2_arxiv_2605_02881.md
+  - ../../sources/sites/allenai-molmoact2.md
   - ../../sources/papers/molmo_er_molmoact2_2026.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
-summary: "MolmoER：MolmoAct2 使用 MolmoER 作为 VLM 骨干做动作推理；LightNav 博客列为 LightNav-ER 同路线对照。"
+summary: "Molmo2-ER：Ai2 具身推理 VLM 骨干；MolmoAct2 的动作 reasoning 底座；ER 数据集已开源。"
 ---
 
-# MolmoER
+# Molmo2-ER（MolmoER）
 
-**MolmoER**（MolmoAct2 / MolmoER：具身推理 VLM 骨干）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](https://www.lightorigins.com/blog/lightnav-0) 中被引用。
+**Molmo2-ER**（**MolmoER**）是 **Ai2** 为 [MolmoAct2](./paper-molmoact2.md) 提供的 **具身推理（Embodied Reasoning）** 视觉-语言骨干：在通用 VLM 能力之上 mid-training 空间/指代/ER benchmark，再接入 flow-matching 动作专家。
 
 ## 一句话定义
 
-**MolmoAct2 使用 MolmoER 作为 VLM 骨干做动作推理；LightNav 博客列为 LightNav-ER 同路线对照。**
+**Molmo2-ER 是 MolmoAct2 的「先理解再动手」大脑——LightNav-ER 路线的开源对照。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLM | Vision-Language Model | 视觉-语言多模态模型 |
-| VLN | Vision-and-Language Navigation | 视觉-语言导航 |
-| ER | Embodied Reasoning | 具身推理；LightNav 第一阶段中期训练 |
-| RL | Reinforcement Learning | 强化学习 |
-| R2S2R | Real-to-Sim-to-Real | 真场景→仿真合成→真机部署 |
+| ER | Embodied Reasoning | 具身推理 mid-training |
+| VLM | Vision-Language Model | 视觉-语言骨干 |
+| VLA | Vision-Language-Action | MolmoAct2 完整栈含动作头 |
 
 ## 为什么重要
 
-- 「先 ER 再 SFT」三阶段导航后训练的行业平行实现。
-- 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
+- **LightNav 对照：** [LightNav-0](./paper-lightnav-0.md) 博客将 MolmoER / Gemini Robotics-ER 列为「先 ER 再 SFT」行业平行实现。
+- **数据开源：** HF **Molmo2-ER datasets** 与 MolmoAct2 同步发布。
+- **与 Molmo2 VLM 分工：** [Molmo2](./molmo2-vlm.md) 偏通用 VLM/grounding；Molmo2-ER 面向机器人 ER mid-training。
 
 ## 核心信息
 
 | 项 | 内容 |
 |----|------|
-| **类型** | model |
-| **出处** | MolmoAct2 2026 |
-| **开源** | **待核实** |
-
-
+| **机构** | Allen Institute for AI（Ai2） |
+| **下游** | [MolmoAct2](./paper-molmoact2.md) action expert |
+| **开源** | **已开源** ER 数据集；权重随 MolmoAct2 HF collections |
 
 ## 结论
 
-**MolmoER 是 LightNav / LightParkour 管线中的关键组件——读博客数字前先对齐本页定义与开源边界。**
+**读 MolmoAct2 应把 Molmo2-ER 当作独立 ER 层——不是普通 Molmo2 微调别名。**
 
-1. 状态：**待核实**
-2. 与机构页 [亮源新创（Light Origins）](./light-origins.md) 三段范式对照阅读。
-3. 工程复现以官方后续发布为准。
+- ER mid-training 与动作 SFT/post-training 分阶段
+- 与 LightNav-ER 八项 benchmark 可对照读空间能力来源
+- 开源 ER 数据支持复现 ablation
 
 ## 关联页面
 
-- [亮源新创（Light Origins）](./light-origins.md)
-- [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
-- [LightNav-0](./paper-lightnav-0.md)
-- [Light REACT](./light-react.md)
+- [MolmoAct2](./paper-molmoact2.md)
+- [Molmo2 VLM](./molmo2-vlm.md)
+- [LightNav-ER](./lightnav-er.md)
+- [Gemini Robotics ER](./gemini-robotics.md)
 
 ## 参考来源
 
+- [molmoact2_arxiv_2605_02881.md](../../sources/papers/molmoact2_arxiv_2605_02881.md)
+- [allenai-molmoact2.md](../../sources/sites/allenai-molmoact2.md)
 - [molmo_er_molmoact2_2026.md](../../sources/papers/molmo_er_molmoact2_2026.md)
-- [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
-- [Tech Blog](https://www.lightorigins.com/blog/lightnav-0)
 
 ## 推荐继续阅读
 
-- [Light Origins 官网](https://www.lightorigins.com/)
-- [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
+- [MolmoAct2 博客](https://allenai.org/blog/molmoact2)
+- [HF Molmo2-ER datasets](https://huggingface.co/collections/allenai/molmo2-er-datasets-69f8d605d92d46a5fc24ced2)
