@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4678,
-  "edge_count": 41092,
+  "node_count": 4686,
+  "edge_count": 41153,
   "coverage": {
-    "covered": 4649,
-    "total": 4649,
+    "covered": 4657,
+    "total": 4657,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -17,7 +17,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/overview/ai-architecture-map.md",
@@ -27,7 +27,28 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/light-o1.md",
+      "detail_id": "entity-light-o1",
+      "label": "Light-O1",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/light-origins.md",
+      "detail_id": "entity-light-origins",
+      "label": "亮源新创（Light Origins）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/methods/ssrm-steady-state-response-method.md",
@@ -49,17 +70,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/light-o1.md",
-      "detail_id": "entity-light-o1",
-      "label": "Light-O1",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-offroad-global-nav.md",
@@ -88,7 +98,8 @@
       "type": "concept",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/generative-adversarial-network.md",
@@ -97,7 +108,8 @@
       "type": "concept",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/graph-neural-network.md",
@@ -107,7 +119,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/gru.md",
@@ -117,7 +129,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/mamba.md",
@@ -127,7 +139,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/mixture-of-experts.md",
@@ -137,7 +149,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/mlp.md",
@@ -147,7 +159,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/recurrent-neural-network.md",
@@ -157,7 +169,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/temporal-convolutional-network.md",
@@ -167,7 +179,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/concepts/unet.md",
@@ -198,17 +210,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-code-as-world.md",
-      "detail_id": "entity-paper-code-as-world",
-      "label": "Code-as-World（Executable World Representations for Physical Reasoning）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -220,7 +221,7 @@
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
   },
   "top_communities": [
     {
@@ -240,12 +241,12 @@
       "size": 298
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 238
+      "label": "具身评测基准选型闭环",
+      "size": 267
     },
     {
-      "label": "具身评测基准选型闭环",
-      "size": 218
+      "label": "视觉-语言-动作",
+      "size": 238
     }
   ],
   "top_hubs": [
@@ -261,7 +262,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1316,
+      "degree": 1318,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -308,7 +309,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 642,
+      "degree": 643,
       "has_repo": true
     },
     {
@@ -370,7 +371,7 @@
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
-      "degree": 56,
+      "degree": 58,
       "has_repo": true,
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },

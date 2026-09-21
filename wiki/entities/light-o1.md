@@ -16,9 +16,14 @@ code: https://github.com/lightorigins/Light-O1
 related:
   - ./light-origins.md
   - ../concepts/whole-body-tracking-pipeline.md
+  - ../concepts/embodied-scaling-laws.md
   - ../methods/vla.md
   - ./paper-lightnav-0.md
   - ./light-react.md
+  - ./paper-nymeria.md
+  - ./nymeria-dataset.md
+  - ./paper-scaling-laws-neural-language-models.md
+  - ./hiw-500-dataset.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/loco-manipulation.md
 sources:
@@ -155,9 +160,37 @@ sequenceDiagram
 
 - [LightNav-0](./paper-lightnav-0.md) — 同机构规模化对齐段：VLM 通用导航
 - [Light REACT](./light-react.md) — 同机构规模化部署段：全身韧性 ICL
+- [Nymeria Dataset](./nymeria-dataset.md) / [Nymeria 论文](./paper-nymeria.md) — Transfer Scaling 人类 egocentric 适配轴
+- [HIW-500](./hiw-500-dataset.md) — Unitree G1 野外遥操作 scaling 轴
+- [Kaplan Scaling Laws](./paper-scaling-laws-neural-language-models.md) — 幂律拟合方法论原典
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [VLA](../methods/vla.md)
 - [全身跟踪管线](../concepts/whole-body-tracking-pipeline.md)
+- [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
+
+## Light-O1 Tech Blog 引用索引
+
+[官方 Tech Blog](https://www.lightorigins.com/en/blog/light-o1) 参考文献 **[1]–[17]** 与本库 **独立详情节点** 一一对应（不重复造页）：
+
+| # | 原文标题 | 详情节点 |
+|---|----------|----------|
+| [1] | π₀: A Vision-Language-Action Flow Model | [paper-pi0](./paper-pi0.md) |
+| [2] | GEN-1: Scaling Embodied Foundation Models | [generalist-gen1-thousand-hands](./generalist-gen1-thousand-hands.md) |
+| [3] | Physical Commonsense（Generalist 博文） | [physical-commonsense-generalist](./physical-commonsense-generalist.md) |
+| [4] | Dyna-2: 1M-Hour Scaling Law for WAM | [dyna-2](./dyna-2.md) |
+| [5] | An Observation on Generalization（Ilya Sutskever） | [talk-ilya-sutskever-observation-on-generalization](./talk-ilya-sutskever-observation-on-generalization.md) |
+| [6] | GPT-4 Technical Report | [paper-as-2303-08774-gpt-4-technical-report](./paper-as-2303-08774-gpt-4-technical-report.md) |
+| [7] | Attention Is All You Need | [paper-attention-is-all-you-need](./paper-attention-is-all-you-need.md) |
+| [8] | Nymeria（arXiv:2406.09905） | [paper-nymeria](./paper-nymeria.md) · 数据产品 [nymeria-dataset](./nymeria-dataset.md) |
+| [9] | HIW-500: Humanoids In-the-Wild | [hiw-500-dataset](./hiw-500-dataset.md) |
+| [10] | Scaling Laws for Neural Language Models | [paper-scaling-laws-neural-language-models](./paper-scaling-laws-neural-language-models.md) |
+| [11] | GR00T N1.7 | [isaac-gr00t](./isaac-gr00t.md) |
+| [12] | π0.5: Open-World VLA | [paper-pi05-open-world-vla](./paper-pi05-open-world-vla.md) |
+| [13] | OpenHLM | [paper-loco-manip-161-154-openhlm](./paper-loco-manip-161-154-openhlm.md) |
+| [14] | DIAL | [paper-dial-latent-world-vla](./paper-dial-latent-world-vla.md) |
+| [15] | HY-Motion 1.0 | [paper-hy-motion-1-0](./paper-hy-motion-1-0.md) |
+| [16] | Kimodo | [kimodo](./kimodo.md) |
+| [17] | InstructGPT（RLHF） | [paper-instructgpt-rlhf](./paper-instructgpt-rlhf.md) |
 
 ## 推荐继续阅读
 

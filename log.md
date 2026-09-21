@@ -1,3 +1,9 @@
+## [2026-09-21] ingest | Nymeria 2406.09905 + Project Aria 数据集、Kaplan 2001.08361、Light-O1 blog refs [1]–[17] 独立节点
+
+- **意图：** 用户指定 ingest arXiv:2406.09905、Nymeria 官方页、Kaplan scaling laws 2001.08361；Light-O1 Tech Blog 引用项目均需独立非重复详情节点。
+- **开源结论：** Nymeria **CC BY-NC 4.0** + [nymeria_dataset](https://github.com/facebookresearch/nymeria_dataset) **已开源**；Kaplan 为理论论文无代码仓；DIAL/HY-Motion/InstructGPT 等引用项复用或新建论文实体；Ilya Sutskever Simons 报告 [5] 新建 talk 节点。
+- **关键页：** [nymeria-dataset](wiki/entities/nymeria-dataset.md)、[paper-nymeria](wiki/entities/paper-nymeria.md)、[paper-scaling-laws-neural-language-models](wiki/entities/paper-scaling-laws-neural-language-models.md)、[light-o1 引用索引](wiki/entities/light-o1.md#light-o1-tech-blog-引用索引)、[physical-commonsense-generalist](wiki/entities/physical-commonsense-generalist.md)、[paper-dial-latent-world-vla](wiki/entities/paper-dial-latent-world-vla.md)、[paper-hy-motion-1-0](wiki/entities/paper-hy-motion-1-0.md)、[paper-instructgpt-rlhf](wiki/entities/paper-instructgpt-rlhf.md)、[talk-ilya-sutskever-observation-on-generalization](wiki/entities/talk-ilya-sutskever-observation-on-generalization.md)
+
 ## [2026-09-21] ingest | 四篇 All-You-Need 深读：1706.03762 Transformer 实体页、2510.14947 LCA/G1、2606.00829 EgoCross 推理、1802.06070 DIAYN
 
 ## [2026-09-21] ingest | sources/sites/lightorigins-about.md — 亮源新创 About 页入库；统一机构中文名为亮源新创（Light Origins）

@@ -2,7 +2,7 @@
 
 ## [2026-09-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **14** 条信息型预警）：
+共发现 **0** 个问题（另含 **18** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -98,15 +98,20 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（8 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（13 个）
 - wiki/entities/paper-attention-is-all-you-need.md（缺 对比）
 - wiki/entities/paper-bfm-30-diayn.md（缺 对比）
 - wiki/entities/paper-code-as-world.md（缺 方法 / 对比）
+- wiki/entities/paper-dial-latent-world-vla.md（缺 对比）
+- wiki/entities/paper-hy-motion-1-0.md（缺 对比）
 - wiki/entities/paper-infonce-geometry.md（缺 方法 / 对比）
+- wiki/entities/paper-instructgpt-rlhf.md（缺 方法 / 对比）
 - wiki/entities/paper-kino.md（缺 方法）
 - wiki/entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md（缺 对比）
+- wiki/entities/paper-nymeria.md（缺 对比）
 - wiki/entities/paper-qwm.md（缺 方法）
 - wiki/entities/paper-sa-2606-00829-the-right-inference-strategy-is-all-you-need-nea.md（缺 对比）
+- wiki/entities/paper-scaling-laws-neural-language-models.md（缺 方法）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -114,9 +119,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/birdview.md updated=2026-09-21）
-- wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/curobo.md updated=2026-09-21）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
+- wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/3dgenstudio.md updated=2026-09-21）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -136,4 +140,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4649/4649 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4657/4657 (100%) wiki/entity 页有 ingest 来源

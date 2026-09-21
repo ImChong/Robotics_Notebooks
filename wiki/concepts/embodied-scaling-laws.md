@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -12,6 +12,9 @@ related:
   - ../entities/skild-s1.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/dyna-2.md
+  - ../entities/light-o1.md
+  - ../entities/paper-scaling-laws-neural-language-models.md
+  - ../entities/nymeria-dataset.md
   - ../entities/perceptron-isaac-05.md
   - ../methods/vla.md
   - ../methods/egoscale.md
@@ -58,6 +61,7 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 7. **末端接口多样性（产业案例）**：[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) 主张在 **>50 万小时** 交互与 **~9k 末端变体** 上预训练同一基座，用 task-vector 权重更新度量「新手」新颖度；属 **闭源自报**，作多样性轴对照而非可复现定律拟合。
 8. **预训练时长与适应成本（产业案例）**：[GEN-1.5](../entities/generalist-gen15-one-shot.md) 在 **8+ 月** 持续预训练后报告 **无显式 ICL 训练** 的 one-shot physical prompting 与 **1–10 梯度步** 适应；作者主张更多预训练使新任务适应趋近「可忽略」——**闭源自报**，与 EgoScale / Dyna-2 的指标域不同。
 9. **ICL vs 语言 prompt（产业案例）**：[S1](../entities/skild-s1.md) 在同一数据/架构/算力下把预训练从 1k 推到 **100k 小时**：已见任务小数据语言 VLA 更好，未见任务上 ICL **66%** vs 语言 **9%**（约 7×）。读法是 **任务指定通道** 改变 scaling 斜率，不是另一条参数幂律；**闭源自报**。
+10. **人类动作 pretraining → 跨本体适配（案例）**：[Light-O1](../entities/light-o1.md) 将 **internet human video** 预训练 token 预算 D 扩至 **120B（≈10 万动作小时）**，在 [Nymeria](../entities/nymeria-dataset.md) / HIW-500 / LightBot 上报告 held-out **next-action loss** 与 **开环 MPJPE** 呈 **$L(D)=L_0+\alpha D^{-\eta}$** 幂律——协议对齐 [Kaplan LM scaling](../entities/paper-scaling-laws-neural-language-models.md)；**Preview 已开源**，完整 loco-manip 权重未公开。
 
 ## 宏观算力背景（与具身 scaling 的层级差）
 
@@ -86,6 +90,9 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 统一配方下相对 Qwen3.5 的非均匀具身 scaling
 - [EgoScale（人视频规模预训练 VLA）](../methods/egoscale.md)
 - [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md) — 闭源 1M h 人→机缩放主张
+- [Light-O1](../entities/light-o1.md) — 人类动作 pretraining Transfer Scaling Law（Nymeria / HIW-500 / LightBot）
+- [Kaplan Scaling Laws](../entities/paper-scaling-laws-neural-language-models.md) — LM 幂律方法论原典
+- [Nymeria Dataset](../entities/nymeria-dataset.md) — egocentric 人类 motion scaling 探针
 - [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 开源 1M h 通用视频置换 teleop（210×；权重入库日未齐）
 - [World Action Models](./world-action-models.md) — Dyna-2 所属 Joint WAM 族谱
 - [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — 预训练规模与 one-shot / 极少步适应
