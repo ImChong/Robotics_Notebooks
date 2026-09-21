@@ -4,6 +4,7 @@ summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长�
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
 updated: 2026-09-21
 related:
+  - ../entities/paper-attention-is-all-you-need.md
   - ../entities/transformer-cv-curriculum.md
   - ./deep-learning-foundations.md
   - ./humanoid-policy-network-architecture.md
@@ -81,6 +82,7 @@ $$
 - [Effective Degree](../entities/paper-effective-degree.md) — ViT / BERT 上用路径多项式正则提升泛化（ICML 2026）
 
 ## 参考来源
+- [Attention Is All You Need（论文实体）](../entities/paper-attention-is-all-you-need.md)
 - [Attention Is All You Need 来源归档（arXiv:1706.03762）](../../sources/papers/attention_is_all_you_need.md)
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 - [rasbt/LLMs-from-scratch 仓库归档](../../sources/repos/rasbt_llms_from_scratch.md)

@@ -20,7 +20,7 @@
 | 序列 | Hochreiter & Schmidhuber LSTM | Neural Computation 1997 | 长程门控记忆 |
 | 序列 | Cho et al. Learning Phrase Representations | [arXiv:1406.1078](https://arxiv.org/abs/1406.1078) | GRU / seq2seq |
 | 序列 | Bai et al. Empirical Evaluation of Generic Conv/RNN | [arXiv:1803.01271](https://arxiv.org/abs/1803.01271) | TCN |
-| 序列 | Vaswani et al. Attention Is All You Need | [arXiv:1706.03762](https://arxiv.org/abs/1706.03762) | Transformer |
+| 序列 | Vaswani et al. Attention Is All You Need | [arXiv:1706.03762](https://arxiv.org/abs/1706.03762) | Transformer → [实体页](../../wiki/entities/paper-attention-is-all-you-need.md) |
 | 序列 | Gu et al. Efficiently Modeling Long Sequences (S4) | [arXiv:2111.00396](https://arxiv.org/abs/2111.00396) | 结构化 SSM |
 | 序列 | Gu & Dao Mamba | [arXiv:2312.00752](https://arxiv.org/abs/2312.00752) | 选择性 SSM |
 | 生成 | Kingma & Welling Auto-Encoding Variational Bayes | [arXiv:1312.6114](https://arxiv.org/abs/1312.6114) | VAE |

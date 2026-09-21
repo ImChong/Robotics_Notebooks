@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | 四篇 All-You-Need 深读：1706.03762 Transformer 实体页、2510.14947 LCA/G1、2606.00829 EgoCross 推理、1802.06070 DIAYN
+
 ## [2026-09-21] ingest | sources/sites/lightorigins-about.md — 亮源新创 About 页入库；统一机构中文名为亮源新创（Light Origins）
 
 - **意图：** 用户指定 ingest <https://www.lightorigins.com/en/about>，并修正历史误写「光原点」。

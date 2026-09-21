@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）。"
@@ -31,7 +31,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [ANYmal Parkour](../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion.html)
 - [APEX](../entities/paper-notebook-apex-learning-adaptive-high-platform-traversal-f.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots.html)
 - [Advancing Humanoid Locomotion](../entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) — 待深读
-- [Architecture Is All You Need](../entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md) — 待深读
+- [Architecture Is All You Need](../entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md) — LCA 两阶段人形 locomotion（G1 楼梯/ledge）
 - [BeamDojo](../entities/paper-notebook-beamdojo-learning-agile-humanoid-locomotion-on-s.md) — 待深读
 - [Benchmarking Potential Based Rewards for Learning Humanoid Locomotion](../entities/paper-notebook-benchmarking-potential-based-rewards-for-learnin.md) — 待深读
 - [Bi-Level Motion Imitation for Humanoid Robots](../entities/paper-notebook-bi-level-motion-imitation-for-humanoid-robots.md) — 待深读

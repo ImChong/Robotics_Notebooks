@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, egocentric, ego-vision, vla, world-models, hand-object-interaction, wearable]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-21
 related:
   - ../overview/sun-awesome-ego-technology-map.md
   - ../overview/ego-9-papers-technology-map.md
