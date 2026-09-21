@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-ross-dagger.md",
+      "detail_id": "entity-paper-ross-dagger",
+      "label": "DAgger 原论文（Ross et al., 2011）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/mit-flow-matching-diffusion-2026.md",
+      "detail_id": "wiki-overview-mit-flow-matching-diffusion-2026",
+      "label": "MIT 6.S184：Flow Matching & Diffusion Models（2026）",
+      "type": "overview",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
       "path": "wiki/entities/laya-mlx.md",
       "detail_id": "entity-laya-mlx",
       "label": "Laya-MLX（Apple Silicon MLX 运行时）",
@@ -188,38 +208,16 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rxr.md",
-      "detail_id": "entity-paper-rxr",
-      "label": "RxR",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-srdf-vln-flywheel.md",
-      "detail_id": "entity-paper-srdf-vln-flywheel",
-      "label": "SRDF",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/laya-mlx.md",
-    "detail_id": "entity-laya-mlx",
-    "label": "Laya-MLX（Apple Silicon MLX 运行时）",
+    "path": "wiki/entities/paper-ross-dagger.md",
+    "detail_id": "entity-paper-ross-dagger",
+    "label": "DAgger 原论文（Ross et al., 2011）",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "动作块输出（Action Chunking） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
