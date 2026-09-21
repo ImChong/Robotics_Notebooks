@@ -9,7 +9,7 @@ tags:
   - deep-learning
   - robotics
 status: complete
-updated: 2026-09-09
+updated: 2026-09-21
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -89,6 +89,7 @@ flowchart TB
 ## 关联页面
 
 - [Vision Transformer（概念）](../concepts/vision-transformer.md)
+- [AI 架构地图](../overview/ai-architecture-map.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [目标检测（方法）](../methods/object-detection.md)
 - [通道–空间注意力（方法）](../methods/channel-spatial-attention.md) — CNN 侧补全局上下文的轻量档

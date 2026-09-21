@@ -67,6 +67,7 @@
 - [Inverse Reinforcement Learning](wiki/methods/inverse-reinforcement-learning.md)（从演示推断奖励再交给 RL；MaxEnt / GAIL / AIRL）
 - [Cartpole 问题](wiki/concepts/cartpole.md)（倒立摆小车：`CartPole-v1` 与 `Isaac-Cartpole-v0` 对照）
 - [Residual Policy Learning](wiki/methods/residual-policy-learning.md)（base + 残差统一框架：经典 RPL/Residual RL → RFC → Versatile Jumping → G1 上 RuN/ResMimic 九篇谱系）
+- [AI 架构地图](wiki/overview/ai-architecture-map.md)（前馈 / 空间 / 序列 / 生成 / 图 / 决策六支：MLP→VLA 骨干选型）
 - [PyTorch](wiki/entities/pytorch.md)
 - [TensorFlow](wiki/entities/tensorflow.md)
 - [世界模型功能分类（Renderer / Simulator / Planner）](wiki/concepts/functional-taxonomy-world-models.md)（Fei-Fei / World Labs：按 POMDP 输出消歧；上海人工智能实验室补表征轴）

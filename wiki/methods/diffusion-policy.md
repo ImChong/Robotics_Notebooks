@@ -3,7 +3,11 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-09-15
+updated: 2026-09-21
+related:
+  - ../overview/ai-architecture-map.md
+  - ../concepts/diffusion-transformer.md
+  - ../concepts/diffusion-model.md
 ---
 
 # Diffusion Policy
@@ -142,6 +146,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 
 ## 关联页面
 
+- [AI 架构地图](../overview/ai-architecture-map.md)
+- [DiT](../concepts/diffusion-transformer.md)
 - [Diffusion Policy 论文实体](../entities/paper-diffusion-policy.md) — arXiv:2303.04137 canonical 节点
 - [VLA / 世界模型 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [扩散模型（概念）](../concepts/diffusion-model.md) — 通用前向加噪/逆向降噪机制与架构演进

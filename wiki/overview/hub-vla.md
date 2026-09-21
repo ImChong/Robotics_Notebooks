@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-09-04
+updated: 2026-09-21
 summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
 ---
 
@@ -36,6 +36,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 |------|----------|----------|
 | 对比 | 五大模型分类 | [VLM/VLN/VLA/VLX/WM 分类](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) |
 | 方法 | VLA 定义与路线 | [VLA](../methods/vla.md) |
+| 总览 | 决策骨干在六支架构中的位置 | [AI 架构地图](./ai-architecture-map.md) |
 | 概念 | 行为基础模型 | [Behavior Foundation Model](../concepts/behavior-foundation-model.md) |
 | 概念 | Foundation Policy | [Foundation Policy](../concepts/foundation-policy.md) |
 | 地图 | BFM 41 篇技术地图 | [BFM 技术地图](./bfm-41-papers-technology-map.md) |
@@ -63,6 +64,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 - [Whole-Body VLA 相关实体](../entities/paper-hrl-stack-30-wholebodyvla.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [UCAG-P](../entities/paper-ucag-p.md) — 相机系腕/抓取锚点几何通才操作
+- [AI 架构地图](./ai-architecture-map.md)
 
 ## 参考来源
 

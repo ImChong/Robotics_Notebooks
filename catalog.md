@@ -3854,6 +3854,7 @@
 - [Agentic Coding 时代的软件工程基础](wiki/concepts/agentic-coding-software-fundamentals.md) — AI Engineering Skills Map: Software Engineering Fundamentals `📅unknown` `[wiki_page]`
 - [AI Auto-Research（学术研究自动化）](wiki/concepts/ai-auto-research.md) — AI Auto-Research**：用大语言模型及其 **agentic 扩展**，在学术研究 **全生命周期** — 从假设与文献、代码与实验、图表与写作，到同行评议、答辩修订与 Paper2 `📅unknown` `[wiki_page]`
 - [Armature Modeling（电枢惯量建模）](wiki/concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`
+- [Autoencoder / VAE（自编码器与变分自编码器）](wiki/concepts/autoencoder.md) — 自编码器（AE）**：编码器把输入压到低维码，解码器重建输入，用重建损失训练。**VAE** 把码换成分布 \(q_\phi(z|x)\)，用 ELBO 同时做重建与先验对齐，从而能从先验采样新样 `📅unknown` `[wiki_page]`
 - [反向传播算法 (Backpropagation)](wiki/concepts/backpropagation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [Bayesian Belief Analysis（贝叶斯信念分析）](wiki/concepts/bayesian-belief-analysis.md) — 贝叶斯信念分析**：在 **部分可观测** 或 **模型不确定** 的序贯决策中，用 **概率分布 $b_t$** 表示对隐状态（或参数）的信念，并按 **Bayes 规则** 随观测递推更新，再 `📅unknown` `[wiki_page]`
 - [Behavior Foundation Model（行为基础模型，BFM）](wiki/concepts/behavior-foundation-model.md) — Behavior Foundation Model（BFM）**：从 **大规模、多样化行为数据**（动捕、遥操作、自博弈交互等）学习 **可复用的全身行为先验**，使人形 **whole-bod `📅unknown` `[wiki_page]`
@@ -3888,6 +3889,7 @@
 - [Dexterous Kinematics (灵巧手运动学)](wiki/concepts/dexterous-kinematics.md) — 灵巧手运动学 (Dexterous Kinematics)** 是机器人学中研究多指协同操作的理论基础。与传统的单臂串联运动学不同，灵巧手在抓取物体时，多个手指通过接触点与物体共同构成了一个**闭 `📅unknown` `[wiki_page]`
 - [Differentiable Simulation（可微仿真）](wiki/concepts/differentiable-simulation.md) — 可微仿真**：物理引擎在 forward rollout 的同时支持 **对状态、参数或控制输入求导**，使优化与 learning 可直接利用 **解析梯度** 而非纯有限差分或黑盒 RL。 `📅unknown` `[wiki_page]`
 - [Diffusion Model（扩散模型）](wiki/concepts/diffusion-model.md) — 扩散模型（Diffusion Model）**：人为定义从真实数据到高斯噪声的前向破坏过程，训练神经网络学习逆向降噪，使模型能从简单噪声分布经多步小幅修正生成结构化样本。 `📅unknown` `[wiki_page]`
+- [DiT（Diffusion Transformer）](wiki/concepts/diffusion-transformer.md) — DiT**：在隐扩散框架里，把带噪潜张量切成 patch token，用 **Transformer 块 + 条件调制**（时间步、类别、文本）预测噪声，从而用可扩展的注意力骨干替代经典 [U-N `📅unknown` `[wiki_page]`
 - [分布式系统基础（CAP / 选主 / 一致性 / 超时 / 重试）](wiki/concepts/distributed-systems-basics.md) — 分布式系统基础** 给出多机协作时 **一致性、可用性、分区容忍** 的取舍，以及选主、超时与重试的工程默认值——并划清与机载安全 FSM 的边界。 `📅unknown` `[wiki_page]`
 - [Domain Randomization](wiki/concepts/domain-randomization.md) — 域随机化**：在仿真训练中主动随机化物理参数、视觉纹理、环境设置，让策略被迫学会适应各种变化的泛化能力，从而实现零样本从仿真迁移到现实。 `📅unknown` `[wiki_page]`
 - [动态障碍物滤波（导航地图制作）](wiki/concepts/dynamic-obstacle-filtering.md) — 动态障碍物滤波**在建图或代价地图流水线中识别并抑制 **非静态占用**（行人、临时堆物、扫描拖影），使二维导航地图主要表达墙体/家具等持久结构——对应课程第 4.1 节「动态障碍物剔除与二维导航 `📅unknown` `[wiki_page]`
@@ -3914,7 +3916,9 @@
 - [世界模型功能分类（Renderer / Simulator / Planner）](wiki/concepts/functional-taxonomy-world-models.md) — 世界模型功能分类** 是 Fei-Fei Li 与 World Labs（2026-06）提出的消歧：不按架构家族点名，而按系统在 **agent–环境环** 里 **输出哪一段**——像素观测、 `📅unknown` `[wiki_page]`
 - [Gait Generation（步态生成）](wiki/concepts/gait-generation.md) — Gait Generation** 是腿式机器人运动控制中负责**决定步态模式（gait pattern）的模块**：确定各腿的支撑/摆动相时序、步频、步幅范围，为步位规划和质心轨迹优化提供时序框 `📅unknown` `[wiki_page]`
 - [Generalized Value Functions (GVFs)](wiki/concepts/generalized-value-functions.md) — 广义价值函数（GVF）**：在标准 value function 框架下，把「奖励折扣和」推广为「**任意 cumulant 信号** 在 **策略 π** 与 **终止/折扣 γ** 下的期望累 `📅unknown` `[wiki_page]`
+- [GAN（Generative Adversarial Network，生成对抗网络）](wiki/concepts/generative-adversarial-network.md) — GAN**：生成器 \(G(z)\) 从噪声造样本，判别器 \(D(x)\) 区分真假；二者交替训练，使生成分布逼近数据分布。 `📅unknown` `[wiki_page]`
 - [生成式视觉预训练（Generative Vision Pretraining）](wiki/concepts/generative-vision-pretraining.md) — 生成式视觉预训练**是以 **合成视觉内容**（图像、编辑、视频帧等）为训练目标的表征学习范式；与 ImageNet 分类、对比学习、MAE 等 **非生成** 路线不同，它假设 **「能按语义与 `📅unknown` `[wiki_page]`
+- [GNN（Graph Neural Network，图神经网络）](wiki/concepts/graph-neural-network.md) — GNN**：把数据写成图 \(G=(V,E)\)，每层让节点用 **邻居聚合** 更新自身表示。图卷积网络（GCN）是最常用的一阶线性聚合特例。 `📅unknown` `[wiki_page]`
 - [Gravity Compensation（重力补偿）](wiki/concepts/gravity-compensation.md) — 重力补偿**：在控制力矩里抵消重力广义力 $g(q)$，使关节伺服不再用高增益硬扛自重。它是 [RNEA](../formalizations/articulated-body-algorithm `📅unknown` `[wiki_page]`
 - [GRU（Gated Recurrent Unit，门控循环单元）](wiki/concepts/gru.md) — GRU** 是一种 **门控循环神经网络（gated RNN）** 单元：用 **reset 门 $r_t$** 与 **update 门 $z_t$** 控制新信息与旧隐状态 $h_{t-1}$ `📅unknown` `[wiki_page]`
 - [Halbach Array（哈尔巴赫阵列）](wiki/concepts/halbach-array.md) — Halbach Array** 是一类 **磁化方向沿空间逐步旋转** 的永磁排布：目标侧（平面的一侧，或圆柱孔径内）磁场增强，另一侧（或材料外）削弱乃至理想为零——平面一手见 [Mallinso `📅unknown` `[wiki_page]`
@@ -3950,8 +3954,11 @@
 - [LIP / ZMP](wiki/concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
 - [LLM 机器人控制接口](wiki/concepts/llm-robotics-control-interfaces.md) — LLM 机器人控制接口**指把通用语言模型接到机器人时，模型完成同一任务的方式：从逐步输出力矩，到写 Python 控制器、训 RL 策略，再到向预训练步态/VLA 发高层命令——**接口抽象层级 `📅unknown` `[wiki_page]`
 - [LoRA (Low-Rank Adaptation，低秩适配)](wiki/concepts/lora.md) — LoRA** 是一种参数高效微调（PEFT）方法：不改动预训练权重，只在其旁路上训练一对低秩矩阵，使大模型能以极小的可训练参数量适配新任务、新形态或新动力学。 `📅unknown` `[wiki_page]`
+- [Mamba](wiki/concepts/mamba.md) — Mamba**：在 SSM 上加入 **选择性**——离散化参数随当前输入变化——并用硬件感知的 **并行扫描** 训练，推理时只更新常 `📅unknown` `[wiki_page]`
 - [消息队列可靠性（队列 / 重复消费 / 顺序 / 幂等）](wiki/concepts/message-queue-reliability.md) — 消息队列可靠性** 处理「异步投递」下的 **至少一次、重复、乱序** 现实，要求消费者 **幂等**——适用于任务调度与遥测，不替代实时中间件。 `📅unknown` `[wiki_page]`
 - [Micromouse](wiki/concepts/micromouse.md) — Micromouse** 是要求 **完全自主** 的小型差速（或同类）机器人在 **事先未知的网格迷宫** 中探索建图，并在后续跑次中以 **最短时间** 抵达中心目标区的经典机器人竞赛——现代 `📅unknown` `[wiki_page]`
+- [MoE（Mixture-of-Experts，混合专家）](wiki/concepts/mixture-of-experts.md) — MoE**：在一层里放多个 **专家**（通常是 MLP），由 **门控** 为每个 token/样本算出稀疏权重，只运行被选中的专家并把输出加权求和。 `📅unknown` `[wiki_page]`
+- [MLP / Feedforward NN（多层感知机）](wiki/concepts/mlp.md) — 多层感知机（MLP）**：把输入向量交替通过 **仿射变换** 与 **逐点非线性**，组成 \(f(x)=W_L\sigma(W_{L-1}\cdots\sigma(W_1x+b_1)\cdot `📅unknown` `[wiki_page]`
 - [Model Context Protocol（MCP）](wiki/concepts/model-context-protocol.md) — Model Context Protocol（MCP）** 是连接 **AI 应用（Host）** 与 **外部系统** 的开源标准：Host 为每个 Server 创建 **MCP Client `📅unknown` `[wiki_page]`
 - [Model Hardware Standard（MHS）](wiki/concepts/model-hardware-standard.md) — Model Hardware Standard（MHS）** 是给 AI agent 用的 **硬件 USB-C**：标准化驱动把显微镜、液体处理工作站、机械臂等可编程设备暴露成可发现的 `rea `📅unknown` `[wiki_page]`
 - [模型版本管理与 OTA](wiki/concepts/model-versioning-ota.md) — 模型版本管理与 OTA** 把策略/感知权重与机载固件当作 **可签名、可回滚、可审计** 的发布物，经空中或近场通道安全晋升到机器人。 `📅unknown` `[wiki_page]`
@@ -3983,6 +3990,7 @@
 - [处理器在环 Sim2Real（Processor-in-the-loop）](wiki/concepts/processor-in-the-loop-sim2real.md) — 处理器在环 Sim2Real**：不把控制器当成「数学上完美的函数」，而把**真实固件执行路径**（线程优先级、周期抖动、总线协议、嵌入式浮点语义）当作与环境动力学并列的**闭环组成部分**，在仿 `📅unknown` `[wiki_page]`
 - [过程奖励建模（Progress Reward Modeling）](wiki/concepts/progress-reward-modeling.md) — 过程奖励 / 进度模型** 回答执行中的问题：在当前目标下，机器人是在 **推进、停滞，还是回退**？它把「终局成功」之外的稠密、可比较信号用于 RL、监控、重排、过滤与恢复。 `📅unknown` `[wiki_page]`
 - [滚动预测执行（Receding-Horizon Policy Execution）](wiki/concepts/receding-horizon-policy-execution.md) — 滚动预测执行**：模仿学习 / VLA 部署里，策略 **不是每步只吐一个动作**，而是 **预测一段未来 action sequence**，**只执行其中前缀**，再在下一周期用 **更新后的 `📅unknown` `[wiki_page]`
+- [RNN / LSTM / GRU（循环神经网络）](wiki/concepts/recurrent-neural-network.md) — RNN**：每一步用同一组参数把「当前输入 + 上一隐状态」映射为新隐状态与输出。**LSTM** 与 **GRU** 是加了 **可学习门** 的实用变体，用来减轻长时滞上的梯度消失。 `📅unknown` `[wiki_page]`
 - [递归自改进（Recursive Self-Improvement）](wiki/concepts/recursive-self-improvement.md) — 递归自改进（RSI）** 是：在足够算力下，AI 系统 **充分自主地设计、训练并部署自己的后继者**——不是「帮人写训练脚本」，而是把后继模型的规格与优化闭环从人类手里接过去。 `📅unknown` `[wiki_page]`
 - [强化学习史（Sutton & Barto §1.6）](wiki/concepts/reinforcement-learning-history.md) — 强化学习史**：Sutton & Barto 将现代 RL 追溯为 **试错学习**（心理学与早期 AI）、**最优控制 / 动态规划**（Bellman、MDP）与 **时序差分学习**（Sam `📅unknown` `[wiki_page]`
 - [远程过程调用（Remote Procedure Call, RPC）](wiki/concepts/remote-procedure-call.md) — RPC** 是一种分布式通信范式：调用方像调用本地过程一样发起远程方法，运行时负责 **参数编解码、跨机传递、远端执行与结果返回**；经典论述见 Birrell & Nelson（1984），线上 `📅unknown` `[wiki_page]`
@@ -4019,6 +4027,7 @@
 - [状态空间模型（SSM）](wiki/concepts/state-space-model-ssm.md) — SSM（State Space Model）** 用隐状态 $h_t$ 与输入 $x_t$ 的线性（或输入依赖的选择性）递推生成输出，可在频域/卷积视图与递推视图间转换；**Mamba** 为其选 `📅unknown` `[wiki_page]`
 - [System Identification](wiki/concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
 - [Tactile Sensing（触觉感知）](wiki/concepts/tactile-sensing.md) — 触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交 `📅unknown` `[wiki_page]`
+- [TCN（Temporal Convolutional Network，时间卷积网络）](wiki/concepts/temporal-convolutional-network.md) — TCN**：在时间轴上使用 **因果卷积**（不看未来）、**膨胀卷积**（指数扩大感受野）和 **残差块** 的一维卷积网，把序列建模写成可并行的 CNN。 `📅unknown` `[wiki_page]`
 - [Terrain Adaptation（地形适应）](wiki/concepts/terrain-adaptation.md) — Terrain Adaptation**：让腿式或人形机器人根据地形感知结果，动态调整落脚点、身体姿态、接触时序和控制参数，从而在楼梯、碎石、草地、台阶和坡面上稳定行走。 `📅unknown` `[wiki_page]`
 - [地形 Latent 表征（Terrain Latent Representation）](wiki/concepts/terrain-latent-representation.md) — 地形 Latent 表征**：在感知足式/人形 locomotion 中，把深度图或高度图经 Encoder 映射为 **低维向量**（如 64–256 维），供策略网络消费。该向量常被称为  `📅unknown` `[wiki_page]`
 - [文字生成 CAD（Text-to-CAD）](wiki/concepts/text-to-cad.md) — 文字生成 CAD** 指用**自然语言提示**或**对话式代理**，自动生成或迭代**可编辑的 CAD 几何**（常见为 **B-rep** 实体），并通常导出 **STEP**、**STL**、 `📅2026-05-14` `[wiki_page]`
@@ -4027,6 +4036,7 @@
 - [TSID](wiki/concepts/tsid.md) — TSID（Task Space Inverse Dynamics，任务空间逆动力学）** 是一种典型的人形机器人全身控制方法，用来在满足动力学与接触约束的前提下，把任务空间目标转成可执行的关节加速 `📅unknown` `[wiki_page]`
 - [TTL 串行逻辑电平（UART 板内接口）](wiki/concepts/ttl-serial-logic-level.md) — 在嵌入式与机器人固件语境里，「串口」若未特别说明电气标准，通常指 **MCU UART 外设引脚上的 TTL/CMOS 单端逻辑电平**——不是 RS-232 的 ±12 V，也不是 RS-485 的 `📅unknown` `[wiki_page]`
 - [UART 与串行通信（TTL / RS-232 / RS-485）](wiki/concepts/uart-serial-communication.md) — UART（Universal Asynchronous Receiver-Transmitter）** 是 MCU 上最普遍的 **异步串行** 外设：按约定波特率逐位收发，用起始/停止位界定字符 `📅unknown` `[wiki_page]`
+- [U-Net](wiki/concepts/unet.md) — U-Net**：对称的 **收缩路径（编码器）** 与 **扩张路径（解码器）**，并在每一尺度用 **跳跃连接** 把浅层高分辨率特征拼到解码器，一次前向输出与输入同空间尺寸的密集图。 `📅unknown` `[wiki_page]`
 - [URDF（统一机器人描述格式）](wiki/concepts/urdf-robot-description.md) — URDF（Unified Robot Description Format）** 是用 XML 描述机器人 **连杆几何、关节类型、惯量与碰撞体** 的标准格式，是 ROS、MuJoCo、Pino `📅unknown` `[wiki_page]`
 - [变体自动化（Variational Automation, VA）](wiki/concepts/variational-automation.md) — 变体自动化（VA）** 由 GaP（NVIDIA / UC Berkeley 等，arXiv:[2607.0 `📅unknown` `[wiki_page]`
 - [Video-as-Simulation (视频即仿真)](wiki/concepts/video-as-simulation.md) — 视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个 `📅unknown` `[wiki_page]`
@@ -4361,6 +4371,7 @@
 - [智元发布分类 04：语义执行基座](wiki/overview/agibot-release-category-04-execution-vla.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [智元发布分类 05：身体能力底座](wiki/overview/agibot-release-category-05-body-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [智元发布分类 06：应用编排与交付](wiki/overview/agibot-release-category-06-application-delivery.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [AI 架构地图（Neural Network Architecture Map）](wiki/overview/ai-architecture-map.md) — 先问输入住在哪种几何里（向量 / 栅格 / 序列 / 分布 / 图），再问输出要单点回归还是多模态分布，最后才选具体骨干——机器人策略只是同一张地图在 `obs → action` 上的实例化。 `📅unknown` `[overview_page]`
 - [AME-1 → AME-2：感知运动系统演进坐标](wiki/overview/ame-1-to-ame-2-technology-map.md) — AME-1 用本体条件注意力解决稀疏落脚；AME-2 在同一编码思想上补齐全局语境、在线不确定性感知映射与 Teacher–Student 部署一致性，把能力从「精确踩过去」推进到「混合地形里选对 `📅unknown` `[overview_page]`
 - [《自动驾驶核心算法盘点》专栏技术地图](wiki/overview/autonomous-driving-core-algorithms-series.md) — 经典自动驾驶软件栈仍可概括为 **感知 → 定位/地图 → 跟踪/预测 → 规划 → 控制**：上游把世界变成带 ID 的 3D 实体与未来意图，下游在运动学与舒适约束下把意图变成可执行轨迹与执行器指 `📅unknown` `[overview_page]`
 - [Awesome Physical AI 技术地图](wiki/overview/awesome-physical-ai-technology-map.md) — Physical AI 双清单技术地图** = 两份同名 Awesome 列表的并集节点化索引（按清单分组浏览，一点即达详情页）。 `📅unknown` `[overview_page]`

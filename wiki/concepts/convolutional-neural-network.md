@@ -8,16 +8,19 @@ tags:
   - backbone
   - perception
 status: complete
-updated: 2026-08-12
+updated: 2026-09-21
 summary: "卷积神经网络用局部卷积核与权值共享提取层次化视觉特征，是检测/分割与机器人机载感知长期默认骨干，也是理解 ViT 替代路径的对照基线。"
 related:
   - ./vision-backbones.md
   - ./vision-transformer.md
   - ../comparisons/cnn-vs-vit-backbones.md
   - ./deep-learning-foundations.md
+  - ../overview/ai-architecture-map.md
+  - ./unet.md
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
+  - ../../sources/papers/lecun_gradient_based_learning_1998.md
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
 
@@ -78,6 +81,8 @@ flowchart LR
 
 ## 关联页面
 
+- [AI 架构地图](../overview/ai-architecture-map.md)
+- [U-Net](./unet.md)
 - [Vision Backbones](./vision-backbones.md)
 - [CNN vs ViT Backbones](../comparisons/cnn-vs-vit-backbones.md)
 - [ResNet](../entities/paper-resnet-deep-residual-learning.md)
@@ -86,6 +91,7 @@ flowchart LR
 
 ## 参考来源
 
+- [LeCun et al. 文档识别梯度学习（1998）](../../sources/papers/lecun_gradient_based_learning_1998.md)
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
 
 ## 推荐继续阅读

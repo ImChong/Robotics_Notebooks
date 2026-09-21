@@ -89,6 +89,8 @@ $$
 ## 关联页面
 
 - [Transformer](./transformer.md) — 长序列与并行训练的主流替代
+- [RNN / LSTM / GRU 总览](./recurrent-neural-network.md)
+- [AI 架构地图](../overview/ai-architecture-map.md)
 - [RNN vs CNN vs Transformer vs Mamba](../comparisons/rnn-cnn-transformer-mamba.md) — 骨干选型
 - [人形策略观测输入](./humanoid-policy-observation-inputs.md) — GRU 隐状态在策略中的角色
 - [PyTorch](../entities/pytorch.md) — `nn.GRU` 所属框架

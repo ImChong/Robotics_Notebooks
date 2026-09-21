@@ -2,7 +2,7 @@
 type: concept
 tags: [vit, vision-transformer, computer-vision, deep-learning, perception, backbone]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -14,6 +14,7 @@ related:
   - ../queries/perception-backbone-selection.md
   - ../entities/paper-turingvit.md
 sources:
+  - ../../sources/papers/vit_dosovitskiy_arxiv_2010_11929.md
   - ../../sources/blogs/wechat_human_five_vit_intro.md
   - ../../sources/papers/turingvit_arxiv_2606_24253.md
 summary: "Vision Transformer 将图像切为 patch token，以全局自注意力替代卷积堆叠，经仅编码器栈与 class token 完成分类；大数据下 scaling 优异，是 VLM/VLA 视觉塔与多模态统一架构的基础模块。"
@@ -124,6 +125,7 @@ flowchart LR
 - [生成式视觉预训练](./generative-vision-pretraining.md)：MAE、DINOv2 等 ViT SSL
 - [感知骨干选型 query](../queries/perception-backbone-selection.md)：任务导向决策树
 - [TuringViT](../entities/paper-turingvit.md)：VLM-native **线性注意力主导** 的可定制 SOTA ViT（小鹏；配方公开、资产未开源）
+- [AI 架构地图](../overview/ai-architecture-map.md)
 
 ## 推荐继续阅读
 
@@ -134,5 +136,6 @@ flowchart LR
 
 ## 参考来源
 
+- [ViT 一手论文（arXiv:2010.11929）](../../sources/papers/vit_dosovitskiy_arxiv_2010_11929.md)
 - [wechat_human_five_vit_intro.md](../../sources/blogs/wechat_human_five_vit_intro.md) — human five 微信公众号《ViT入门》（<https://mp.weixin.qq.com/s/ugiOirWHrSgEefG8W1-o6Q>）
 - [TuringViT 论文摘录（arXiv:2606.24253）](../../sources/papers/turingvit_arxiv_2606_24253.md)

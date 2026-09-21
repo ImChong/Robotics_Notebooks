@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vision-backbone, cnn, vit, perception, detection]
 status: complete
-updated: 2026-08-12
+updated: 2026-09-21
 summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头与策略输入的衔接，覆盖 ResNet/YOLO 选型与生成式视觉预训练对机器人表征的影响；课程级全量节点见 Transformer 视觉应用策展。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -48,6 +48,7 @@ related:
 | 概念 | 生成式视觉预训练 | [Generative Vision Pretraining](../concepts/generative-vision-pretraining.md) |
 | 策展 | Transformer 视觉应用八章全量节点 | [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md) |
 | 概念 | 多头注意力 / CNN 基础 | [Multi-Head Attention](../concepts/multi-head-attention.md)、[CNN](../concepts/convolutional-neural-network.md) |
+| 总览 | 六支 AI 架构（含 CNN/ResNet/U-Net/ViT） | [AI 架构地图](./ai-architecture-map.md) |
 | 方法 | DETR 族 / 分割 Transformer | [DETR](../entities/detr.md)、[SegFormer](../entities/segformer.md) |
 | 多模态 | CLIP → LLaVA 路线 | [多模态 LLM 发展路线](./multimodal-llm-development.md) |
 
@@ -63,6 +64,7 @@ related:
 - [Object Detection Model Selection](../queries/object-detection-model-selection.md)
 - [Perception Backbone Selection](../queries/perception-backbone-selection.md)
 - [3D Spatial VQA](../concepts/3d-spatial-vqa.md)
+- [AI 架构地图](./ai-architecture-map.md)
 
 ## 参考来源
 

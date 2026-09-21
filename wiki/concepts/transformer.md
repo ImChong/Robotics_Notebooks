@@ -2,11 +2,13 @@
 type: concept
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-09-16
+updated: 2026-09-21
 related:
   - ../entities/transformer-cv-curriculum.md
   - ./deep-learning-foundations.md
   - ./humanoid-policy-network-architecture.md
+  - ../overview/ai-architecture-map.md
+  - ./mamba.md
   - ../methods/bc-with-transformer.md
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/action-chunking.md
@@ -66,6 +68,8 @@ $$
 - **VLA / 通用策略**：[Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md) 将视觉-语言-动作统一为注意力建模。
 
 ## 关联页面
+- [AI 架构地图](../overview/ai-architecture-map.md)
+- [Mamba](./mamba.md)
 - [反向传播算法](./backpropagation.md)
 - [深度学习基础](./deep-learning-foundations.md)
 - [人形策略网络架构](./humanoid-policy-network-architecture.md)

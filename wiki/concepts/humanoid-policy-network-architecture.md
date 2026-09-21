@@ -2,9 +2,12 @@
 type: concept
 tags: [il, rl, humanoid, architecture, vla, world-models, foundation-policy, diffusion-policy, amp]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 summary: "人形与腿式模仿/强化策略里，网络“长什么样”往往被写在论文 Method：从浅层 MLP 到 AMP 判别器、MoE、Transformer/Diffusion chunk，再到 VLA 与 WAM；真机强项常是小 MLP，难点在观测、奖励与 sim2real。"
 related:
+  - ../overview/ai-architecture-map.md
+  - ./mlp.md
+  - ./mixture-of-experts.md
   - ./humanoid-policy-observation-inputs.md
   - ./whole-body-control.md
   - ./transformer.md
@@ -24,6 +27,8 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/personal/humanoid-policy-network-architecture-faq.md
+  - ../../sources/personal/ai-architecture-map.md
+  - ../../sources/papers/ai_architecture_foundations.md
 ---
 
 # 人形与腿式策略的网络架构（Policy Network Architecture）
@@ -154,6 +159,9 @@ flowchart TD
 
 ## 关联页面
 
+- [AI 架构地图](../overview/ai-architecture-map.md) — 函数族总图；本页只展开决策栈代际
+- [MLP](./mlp.md)
+- [MoE](./mixture-of-experts.md)
 - [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md) — 架构表格中「输入」列的五类来源与获取方式
 - [神经反馈控制器](./neural-feedback-controller.md) — Policy 作为 $\pi(x)$ 状态反馈律与推理算力直觉
 - [Transformer](./transformer.md)
@@ -169,6 +177,8 @@ flowchart TD
 ## 参考来源
 
 - [人形策略网络架构 FAQ 摘录（维护者整理）](../../sources/personal/humanoid-policy-network-architecture-faq.md)
+- [AI 架构地图 taxonomy](../../sources/personal/ai-architecture-map.md)
+- [AI 架构地图一手论文簇](../../sources/papers/ai_architecture_foundations.md)
 
 ## 推荐继续阅读（外部）
 

@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/papers/ai_architecture_foundations.md — 新建 AI 架构地图独立节点，入库 MLP/MoE/CNN/U-Net/ViT/RNN–Mamba/VAE/GAN/DDPM/DiT/GNN 一手论文；开源结论见簇内步骤 2.5 表
+
 ## [2026-09-21] ingest | sources/papers/cho+chung GRU 原典与 PyTorch nn.GRU 文档 — 新增 wiki/concepts/gru.md
 
 ## [2026-09-21] ingest | sources/papers/newton_raphson_method_primary_refs.md — Raphson(1690)+Modern Robotics Example 6.1 算例；加深 newtons-method 页
