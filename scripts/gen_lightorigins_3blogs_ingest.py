@@ -60,7 +60,13 @@ ENTITIES: list[dict[str, Any]] = [
         "blog": "react",
         "oss": "待发布",
         "site": "https://generalist-locomotion.github.io/",
-        "tags": ["paper", "locomotion", "transformer-xl", "in-context-learning", "cross-embodiment"],
+        "tags": [
+            "paper",
+            "locomotion",
+            "transformer-xl",
+            "in-context-learning",
+            "cross-embodiment",
+        ],
         "summary": "大规模 PPO + 程序生成机器人 + Transformer-XL 跨 episode 记忆；未见形态/电机故障下 test-time 适应。",
         "why": "Light REACT 对比 Transformer 64 帧上下文时引用；LocoFormer 代表「长上下文运动适应」前序。",
         "source_file": "locoformer_corl_2025.md",
@@ -462,7 +468,7 @@ def write_source(e: dict[str, Any]) -> None:
 
 ## 对 wiki 的映射
 
-- [{entity_filename(e).replace('.md', '')}](../../wiki/entities/{entity_filename(e)})
+- [{entity_filename(e).replace(".md", "")}](../../wiki/entities/{entity_filename(e)})
 - [3 篇技术地图](../../wiki/overview/{MAP}.md)
 """
     path.write_text(content, encoding="utf-8")
@@ -483,7 +489,7 @@ def write_entity(e: dict[str, Any]) -> None:
         conclusion = f"""
 ## 结论
 
-**{e["short"]} 在 Light Origins 三篇 Tech Blog 引用链中承担「{e['why'][:40]}…」角色——部署前以 arXiv/项目页与开源状态为准。**
+**{e["short"]} 在 Light Origins 三篇 Tech Blog 引用链中承担「{e["why"][:40]}…」角色——部署前以 arXiv/项目页与开源状态为准。**
 
 1. 开源：**{e["oss"]}**；勿凭博客脚注臆断可复现性。
 2. 与 [Light REACT](./light-react.md) / [LightNav-0](./paper-lightnav-0.md) / [Light-Loco-Parkour](./paper-light-loco-parkour.md) 按能力轴交叉阅读。
@@ -680,7 +686,7 @@ def write_blogs_and_sites() -> None:
         rows = []
         for e in cited_new:
             rows.append(
-                f"| {e['short']} | 新建 | [{entity_filename(e).replace('.md','')}](../../wiki/entities/{entity_filename(e)}) |"
+                f"| {e['short']} | 新建 | [{entity_filename(e).replace('.md', '')}](../../wiki/entities/{entity_filename(e)}) |"
             )
         for name, wiki_path, _ in cited_exist:
             rows.append(f"| {name} | 复用 | [{wiki_path}](../../{wiki_path}) |")
@@ -763,19 +769,17 @@ def write_blogs_and_sites() -> None:
 
 
 def write_technology_map() -> None:
-    entity_links = "\n".join(
-        f"  - ../entities/{entity_filename(e)}" for e in ENTITIES
-    )
+    entity_links = "\n".join(f"  - ../entities/{entity_filename(e)}" for e in ENTITIES)
     rows = []
     for e in ENTITIES:
         rows.append(
             f"| {e['short']} | {BLOGS[e['blog']]['date'][:7]} | "
-            f"[{entity_filename(e).replace('.md','')}](../entities/{entity_filename(e)}) |"
+            f"[{entity_filename(e).replace('.md', '')}](../entities/{entity_filename(e)}) |"
         )
     for name, wiki_path, blog_key in EXISTING:
         rows.append(
             f"| {name} | {BLOGS.get(blog_key, {}).get('date', DATE)[:7]} | "
-            f"[{wiki_path.replace('wiki/','')}](../{wiki_path.replace('wiki/','')}) |"
+            f"[{wiki_path.replace('wiki/', '')}](../{wiki_path.replace('wiki/', '')}) |"
         )
     content = f"""---
 type: overview
@@ -844,9 +848,7 @@ def update_page_aliases() -> None:
         old_id = f"entity-{stub}"
         new_id = f"entity-paper-{e['slug']}"
         data["aliases"][old_id] = new_id
-    aliases_path.write_text(
-        json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    aliases_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def remove_stubs() -> None:
@@ -960,7 +962,7 @@ def patch_main_entities() -> None:
 
 def append_log() -> None:
     entry = f"""
-## [{DATE}] ingest | sources/blogs/lightorigins_light_{'{react,nav,parkour}'} — 亮源新创三篇官方 Tech Blog；引用论文/基准/硬件独立节点 + 合并 stub 别名
+## [{DATE}] ingest | sources/blogs/lightorigins_light_{"{react,nav,parkour}"} — 亮源新创三篇官方 Tech Blog；引用论文/基准/硬件独立节点 + 合并 stub 别名
 
 - **意图：** 用户指定 ingest light-react / lightnav-0 / lightparkour 三篇 Tech Blog，并要求引用项独立非重复节点。
 - **开源结论：** LightNav-0 **已开源**；Light REACT / LightParkour **未开源**；Lightbot 0 为自研硬件叙事。
