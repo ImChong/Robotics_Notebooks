@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4675,
-  "edge_count": 41051,
+  "node_count": 4676,
+  "edge_count": 41065,
   "coverage": {
-    "covered": 4646,
-    "total": 4646,
+    "covered": 4647,
+    "total": 4647,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -224,7 +224,7 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 799
+      "size": 766
     },
     {
       "label": "操作",
@@ -240,7 +240,7 @@
     },
     {
       "label": "具身评测基准选型闭环",
-      "size": 238
+      "size": 252
     },
     {
       "label": "视觉-语言-动作",

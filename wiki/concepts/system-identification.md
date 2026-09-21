@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-closed-loop-inertia-calibration.md
@@ -101,7 +101,7 @@ System Identification 不是只辨识一个质量参数，它可能覆盖多个�
 - 控制延迟
 - 电流环 / 速度环等效动态
 
-这类参数对 sim2real 很关键。关节侧 **转子反射惯量 $I_a$ + 库仑/粘滞摩擦** 怎么从数据里估，见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)；实验怎样让延迟/摩擦/惯量可分开，见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
+这类参数对 sim2real 很关键。关节侧 **转子反射惯量 $I_a$ + 库仑/粘滞摩擦** 怎么从数据里估，见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)；**恒速/恒扭矩稳态响应法（SSRM）** 先拆 $B,T_c$ 见 [SSRM](../methods/ssrm-steady-state-response-method.md)；实验怎样让延迟/摩擦/惯量可分开，见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
 
 ### 3. Friction / Damping / Compliance
 非理想因素，包括：
