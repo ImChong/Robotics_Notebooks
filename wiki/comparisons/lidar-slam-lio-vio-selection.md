@@ -2,7 +2,7 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../queries/slam-second-spring-embodied.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -20,6 +20,7 @@ related:
   - ../methods/lidar-odometry-fusion.md
   - ../entities/paper-super-odometry-2.md
   - ../entities/paper-puma-lidar-mesh-odometry.md
+  - ../entities/paper-dcreg-degenerate-lidar-registration.md
 sources:
   - ../../sources/repos/navigation_slam_autonomy_stack_catalog.md
   - ../../sources/repos/fast_lio.md
@@ -64,6 +65,7 @@ summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM
 | **Ultra-Fusion** | CIL + 轮速/GNSS 可选 | 统一滑窗 BA + FRS | 待发布 | **可配置 WIO/VIO/LIO/LVIO**、退化调度、在线时空标定 | 复杂度高；ITS 多平台评测导向 |
 | **KILVO** | 关节编码 + IMU + LiDAR + 相机 | 异步–顺序混合 ESIKF | 待开放 | **人形**接触估计、模态失效自适应、**1 kHz** 输出 | 仓仍占位；非通用轮式栈 |
 | **PUMA** | 3D LiDAR | Poisson **mesh** + ray cast P2L | 无（研究仓） | **显式三角 mesh 地图**、KITTI 定性对比 surfel/TSDF | 非 ROS 实时；重建+射线较重；见 [PUMA](../entities/paper-puma-lidar-mesh-odometry.md) |
+| **DCReg** | 3D LiDAR（配准模块） | Schur 退化检测 + 物理轴 + 预条件 **PCG** P2L | 无（Eigen+PCL 模块） | **几何退化** scan-to-map：可解释弱轴、+20–50% 长时定位、最高 **116×** 求解加速 | 非完整 LIO/ROS；定位系统整管线待发布；见 [DCReg](../entities/paper-dcreg-degenerate-lidar-registration.md) |
 
 > **退化与标定扰动维度：** [Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md) 在 M3DGR 等基准上对 60+ 系统做 **传感器退化**（弱光、长廊、GNSS 拒止、打滑）与 **时空标定注入** Stress test，适合在固定传感器栈选型之外评估 **鲁棒融合架构**。人形冲击 / 掉传感器场景另见 [KILVO](../entities/paper-kilvo.md)（TMECH；代码待开放）。
 

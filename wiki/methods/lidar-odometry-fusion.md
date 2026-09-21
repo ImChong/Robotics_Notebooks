@@ -2,7 +2,7 @@
 type: method
 tags: [localization, lidar, odometry, sensor-fusion, slam, navigation, ekf]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../concepts/sensor-fusion.md
   - ../formalizations/ekf.md
@@ -16,6 +16,7 @@ related:
   - ../entities/humanoid-system-curriculum.md
   - ../entities/paper-super-odometry-2.md
   - ../entities/paper-puma-lidar-mesh-odometry.md
+  - ../entities/paper-dcreg-degenerate-lidar-registration.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -57,6 +58,7 @@ summary: "里程计与激光雷达融合定位：高频 odom 预测 + 激光 sca
 | AMCL 粒子滤波 | odom 运动模型 + 激光似然 | [Nav2](../entities/navigation2.md) |
 | Scan-to-map | 当前扫描 ↔ 静态栅格 | [slam_toolbox](../entities/slam-toolbox.md) 定位模式 |
 | Scan-to-mesh | 当前扫描 ↔ **Poisson 三角 mesh** | [PUMA](../entities/paper-puma-lidar-mesh-odometry.md)（ray cast + P2L；研究管线） |
+| 退化感知 P2L | 当前扫描 ↔ 点/面地图 + **Schur 物理轴 PCG** | [DCReg](../entities/paper-dcreg-degenerate-lidar-registration.md)（长廊/停车场等弱约束；Eigen+PCL 模块） |
 | LIO | LiDAR + IMU（紧/松） | [FAST-LIO](../entities/fast-lio.md)、LIO-SAM |
 | 人形 KILV | 关节运动学 + IMU + LiDAR + 相机 | [KILVO](../entities/paper-kilvo.md)（ESIKF + 接触估计 + 模态自适应；代码待开放） |
 | 因子图 | 多传感器因子 | 后端平滑、回环 |
