@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/light-o1.md",
+      "detail_id": "entity-light-o1",
+      "label": "Light-O1",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-offroad-global-nav.md",
       "detail_id": "entity-paper-offroad-global-nav",
       "label": "Off-Road Global Nav：可通行感知的长程越野全局规划",
@@ -198,27 +208,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-cognitive-reliability-gap.md",
-      "detail_id": "wiki-concepts-humanoid-cognitive-reliability-gap",
-      "label": "人形认知可靠性鸿沟（抓杯 vs 过马路）",
-      "type": "concept",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-offroad-global-nav.md",
-    "detail_id": "entity-paper-offroad-global-nav",
-    "label": "Off-Road Global Nav：可通行感知的长程越野全局规划",
+    "path": "wiki/entities/light-o1.md",
+    "detail_id": "entity-light-o1",
+    "label": "Light-O1",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
