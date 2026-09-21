@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-09-15
+updated: 2026-09-21
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
@@ -16,8 +16,10 @@ related:
   - ../entities/paper-lehome-learning-to-fold.md
   - ../entities/paper-kai0.md
   - ../entities/paper-autointervene.md
+  - ../entities/paper-ross-dagger.md
 sources:
   - ../../sources/personal/rl_runner_types.md
+  - ../../sources/papers/ross_dagger_aistats_2011.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/egosteer_arxiv_2607_09701.md
   - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
@@ -116,7 +118,9 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 
 ## 参考来源
 
-- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — Ross et al. DAgger 原论文与 IL 路线摘要
+- [ross_dagger_aistats_2011.md](../../sources/papers/ross_dagger_aistats_2011.md) — Ross et al. DAgger 原论文 ingest 档案（PMLR AISTATS 2011）
+- [paper-ross-dagger.md](../entities/paper-ross-dagger.md) — 论文实体页
+- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — IL 路线合集摘要
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：DAgger 风格的掩码在线蒸馏，把人形多控制接口统一进 CVAE 学生策略
 - **ingest 档案：** [sources/papers/php_parkour_arxiv_2602_15827.md](../../sources/papers/php_parkour_arxiv_2602_15827.md) — PHP：teacher-student 跑酷中 DAgger+PPO 课程蒸馏
@@ -140,6 +144,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛级双臂叠衣 DAgger + RL
 - [χ₀ / kai0](../entities/paper-kai0.md) — 协同叠衣/挂衣上的 Heuristic DAgger + chunk 平滑
 - [AutoIntervene](../entities/paper-autointervene.md) — 检索式支持触发的选择性干预（机器人门控切入/交回；arXiv:2608.07065）
+- [DAgger 原论文（Ross et al., 2011）](../entities/paper-ross-dagger.md) — 理论锚点与 no-regret reduction
 - [ULTRA：统一多模态 loco-manipulation 控制](../tasks/ultra-survey.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)
 

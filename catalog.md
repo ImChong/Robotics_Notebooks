@@ -1530,6 +1530,7 @@
 - [GlanceWAM：把视觉想象移出控制关键路径](wiki/entities/paper-glancewam.md) — GlanceWAM**（*Sparse Test-Time Imagination for World-Action Models*，[arXiv:2608.23927](https://arxi `📅unknown` `[entity_page]`
 - [Glob3R：3D 基础模型引导的全局 SfM](wiki/entities/paper-glob3r.md) — Glob3R**（*Glob3R: Global Structure-from-Motion with 3D Foundation Models*，arXiv:[2607.09225](https `📅unknown` `[entity_page]`
 - [GLoRI（arXiv:2609.05994）](wiki/entities/paper-glori-humanoid-loco-manipulation.md) — GLoRI**（*GLoRI: Closed-Loop Whole-Body Tracking with Global-Local Reference Interaction for Humano `📅unknown` `[entity_page]`
+- [GM-Loco：颗粒介质上的地形自适应人形 locomotion](wiki/entities/paper-gm-loco.md) — GM-Loco**（*Terrain-Adaptive Humanoid Locomotion on Granular Media*，arXiv:[2609.10286](https://arxi `📅unknown` `[entity_page]`
 - [GMT（General Motion Tracking for Humanoid Whole-Body Control）](wiki/entities/paper-gmt.md) — GMT**（*GMT: General Motion Tracking for Humanoid Whole-Body Control*，UC San Diego × Simon Fraser U `📅unknown` `[entity_page]`
 - [Go-with-the-Track](wiki/entities/paper-go-with-the-track.md) — Go-with-the-Track**（*Video Compositing and Motion Control with Point Tracking*，[arXiv:2606.20891 `📅unknown` `[entity_page]`
 - [GOAG](wiki/entities/paper-goag.md) — GOAG: Generative and Object-Agnostic Grasp Planner for Dexterous Robotic Manipulation**（[arXiv:260 `📅unknown` `[entity_page]`
@@ -1541,7 +1542,6 @@
 - [GPT-Policy：VLM 代理的上下文机器人学习](wiki/entities/paper-gpt-policy.md) — GPT-Policy**（*In-Context Robot Learning with VLM Agents*，[arXiv:2609.19138](https://arxiv.org/abs/ `📅unknown` `[entity_page]`
 - [GR00T-Dreams（HMI P068）](wiki/entities/paper-gr00t-dreams-synthetic-trajectories.md) — GR00T-Dreams**（*GR00T-Dreams: Synthetic Trajectory Generation for Humanoid Robot Learning*，2025）收录 `📅unknown` `[entity_page]`
 - [GRAIL](wiki/entities/paper-grail.md) — GRAIL**（*Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors*，[arXiv:2606.05160 `📅unknown` `[entity_page]`
-- [Granular Terrain Humanoid（arXiv:2609.10286）](wiki/entities/paper-granular-terrain-humanoid-locomotion.md) — Granular Terrain Humanoid**（*Learning Terrain-Adaptive Humanoid Locomotion on Granular Terrain*，[a `📅unknown` `[entity_page]`
 - [GraphPoint（arXiv:2609.18358）](wiki/entities/paper-graphpoint.md) — GraphPoint**（*GraphPoint: Semantic Entity Graphs and Point Trajectories for Compositional Robot Ma `📅unknown` `[entity_page]`
 - [GraspMF：积群 MeanFlow 快速生成抓取](wiki/entities/paper-graspmf.md) — GraspMF**（*Fast Generative Grasping via Lie Group-Constrained MeanFlow*；[arXiv:2608.26076](https:/ `📅unknown` `[entity_page]`
 - [Green for Go（VLA 导航可通行性视觉接地）](wiki/entities/paper-green-for-go-vla-nav-grounding.md) — Green for Go, Red for No**（*Visual Grounding via Semantic Segmentation for VLA Navigation Policies `📅unknown` `[entity_page]`
@@ -2103,7 +2103,7 @@
 - [Learning Multi-Modal Whole-Body Control for Real-World Humanoid Robots](wiki/entities/paper-notebook-learning-multi-modal-whole-body-control-for-real.md) — Learning Multi-Modal Whole-Body Control for Real-World Humanoid Robots** 已列入 [Robot Learning Paper `📅unknown` `[entity_page]`
 - [Learning Perceptive Humanoid Locomotion over Challenging Terrain](wiki/entities/paper-notebook-learning-perceptive-humanoid-locomotion-over-cha.md) — Learning Perceptive Humanoid Locomotion over Challenging Terrain** 已列入 [Robot Learning Paper Noteb `📅unknown` `[entity_page]`
 - [Challenging Terrain Locomotion（复杂地形四足）](wiki/entities/paper-notebook-learning-quadrupedal-locomotion-over-challenging.md) — Learning Quadrupedal Locomotion over Challenging Terrain**（Science Robotics 2020，[DOI](https://doi `📅unknown` `[entity_page]`
-- [Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) — Learning Sim-to-Real Humanoid Locomotion in 15 Minutes** 收录于 [Robot Learning Paper Notebooks](http `📅unknown` `[entity_page]`
+- [Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) — Learning Sim-to-Real Humanoid Locomotion in 15 Minutes**（[arXiv:2512.01996](https://arxiv.org/abs/ `📅unknown` `[entity_page]`
 - [PAiD：Learning Soccer Skills for Humanoid Robots](wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md) — PAiD**（*Perception-Action integrated Decision-making*，*Learning Soccer Skills for Humanoid Robots: `📅unknown` `[entity_page]`
 - [PioneeR：从正负示范与规则学习社交导航](wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md) — PioneeR**（*Learning Social Navigation from Positive and Negative Demonstrations and Rule-Based Spe `📅unknown` `[entity_page]`
 - [Learning Symmetric and Low-energy Locomotion](wiki/entities/paper-notebook-learning-symmetric-and-low-energy-locomotion.md) — Learning Symmetric and Low-energy Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchon `📅unknown` `[entity_page]`
@@ -2475,6 +2475,7 @@
 - [Learning Safe Humanoid Navigation from Reduced Order Models（arXiv:2609.19272）](wiki/entities/paper-rom-nav.md) — Learning Safe Humanoid Navigation from Reduced Order Models**（*Learning Safe Humanoid Navigation f `📅unknown` `[entity_page]`
 - [RoMAN-Flow](wiki/entities/paper-roman-flow.md) — RoMAN-Flow: Taming Autoregressive Normalizing Flows for Offline Reinforcement Learning in Robotic  `📅unknown` `[entity_page]`
 - [ROS2SmolVLA：工业轻量臂上的本地小型 VLA](wiki/entities/paper-ros2smolvla.md) — ROS2SmolVLA**（*Enabling Small Vision-Language-Action Models for Integration into Industrial-Grade  `📅unknown` `[entity_page]`
+- [DAgger 原论文（Ross et al., 2011）](wiki/entities/paper-ross-dagger.md) — A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning**（[PMLR v `📅unknown` `[entity_page]`
 - [ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）](wiki/entities/paper-rove-humanoid-vla-intervention.md) — ROVE** 是 XPENG Robotics 与复旦、港中文、上交等团队提出的 **人形 VLA 后训练 RL 框架**（arXiv:2606.17011，[项目页](https://xpeng `📅unknown` `[entity_page]`
 - [RPL：复杂地形上的鲁棒人形多向感知行走](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Yuanhang Zhang 等，Am `📅unknown` `[entity_page]`
 - [RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环](wiki/entities/paper-rsi-survey-2607-07663.md) — Recursive Self-Improvement in AI**（Chen, Wang & Qu；[arXiv:2607.07663](https://arxiv.org/abs/2607.0 `📅unknown` `[entity_page]`
@@ -4545,6 +4546,7 @@
 - [Loco-Manip 接触分类 05：VLA 与世界模型调用](wiki/overview/loco-manip-contact-category-05-vla-world-models.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 接触横切面：五段链路技术地图](wiki/overview/loco-manip-contact-technology-map.md) — 人形 loco-manip 的接触不只是一只手碰到物体——**脚底支撑、重心、物体受力、负载摆动、触觉与上层调度** 须在同一链路里对齐；策展文把约 36 篇工作按 **数据 → 表示 → 生成补数  `📅unknown` `[overview_page]`
 - [Mimic 控制演进：DeepMimic → BeyondMimic](wiki/overview/mimic-control-evolution-lineage.md) — 物理角色与人形 mimic 的主线不是「把 PPO 换得更复杂」，而是不断改写 **动作先验如何表达**、**示范如何变成控制信号**、以及 **训练后如何组合技能**——从 DeepMimic 的显 `📅unknown` `[overview_page]`
+- [MIT 6.S184：Flow Matching & Diffusion Models（2026）](wiki/overview/mit-flow-matching-diffusion-2026.md) — 一门把随机微分方程、概率路径与神经网络生成组件（VAE、DiT、CTMC）串成完整 latent diffusion 管线的 IAP 课——适合作为本库扩散/flow 形式化与机器人生成式策略的上 `📅unknown` `[overview_page]`
 - [运动小脑分类 A：走路底座](wiki/overview/motion-cerebellum-category-01-locomotion-base.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [运动小脑分类 B：动作模仿源流](wiki/overview/motion-cerebellum-category-02-motion-imitation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [运动小脑分类 C：数据入口](wiki/overview/motion-cerebellum-category-03-data-pipeline.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

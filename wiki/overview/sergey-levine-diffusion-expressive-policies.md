@@ -9,7 +9,7 @@ tags:
   - flow-matching
   - berkeley
 status: complete
-updated: 2026-08-09
+updated: 2026-09-21
 related:
   - ../methods/diffusion-policy.md
   - ../methods/action-chunking.md
