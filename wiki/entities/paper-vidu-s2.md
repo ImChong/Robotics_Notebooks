@@ -118,6 +118,15 @@ flowchart TB
 - 论文摘要称 **Vidu S2 优于全部 baselines**（具体指标与对照方法见 [arXiv PDF](https://arxiv.org/pdf/2609.11638)）。
 - 产品侧可验证：**在线 Demo** 交互质量、720p Avatar、流式 Editing 延迟与参考图切换连续性。
 
+## 与其他工作对比
+
+| 维度 | 读法 |
+|------|------|
+| **文内基线** | 摘要称优于全部 baselines，但**本页未转存指标与对照方法**；具体对照集须回 [arXiv PDF](https://arxiv.org/pdf/2609.11638) 核对，勿把这句摘要当排名结论 |
+| **与 S1 对照** | 分辨率、动态参考图、跳舞级指令与 **Editing 流式管线** 是验收 S2 相对 S1 的四条硬指标（见下方结论） |
+| **产品线区分** | 本页是 L2 交互世界产品线；要真机 WAM 须转 [Motubrain](./paper-motubrain.md) 线。在 [First-Principles](./paper-gwm-first-principles.md) 的 GWM 地图里，S2 接在 S1 之后、Motus 之前 |
+| **横比口径** | 截至入库日 **仅 Demo/API、无开源权重**；可独立验证的只有 Demo 交互质量，不能与开源模型的离线指标直接横比 |
+
 ## 工程实践
 
 | 项 | 说明 |

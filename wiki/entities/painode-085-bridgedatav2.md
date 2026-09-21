@@ -65,6 +65,7 @@ Diverse manipulation behaviours designed to support broad generalisation.
 | 代码/仓库 | <https://github.com/rail-berkeley/bridge_data_v2> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 重定向就绪度 | **需适配**：真机操作演示自带动作标签，同构机型可直接训练；换本体须核对动作空间（末端位姿 vs 关节）与夹爪定义后再重定向（索引级判断，以官方文档 / 数据卡为准） |
 
 调试时先确认链接指向的是官方仓/文档而不是镜像或过期 fork，再决定是否升格为深度实体页。
 

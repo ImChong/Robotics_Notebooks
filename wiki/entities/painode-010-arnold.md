@@ -9,6 +9,7 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/repos/pai_awesome_benchmark_010_arnold.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -77,6 +78,7 @@ Language-grounded continuous-task benchmark in physically realistic scenes.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 物理真实场景下的语言条件连续量任务（倒多少水、开多大角度），是该闭环第 ③ 层「均值成功率的陷阱」的典型案例：二值成功率掩盖连续量误差
 
 ## 参考来源
 

@@ -154,6 +154,15 @@ sequenceDiagram
 | **基线** | JAX：mip-splatting、sat-nerf、eogs、corgs；NYC：citydreamer、gaussiancity、corgs |
 | **交互** | 项目页 Web 3DGS viewer；融合 PLY + Mip-Splatting demo / SuperSplat |
 
+## 与其他工作对比
+
+| 维度 | 读法 |
+|------|------|
+| **文内基线不同组** | JAX 场景对 mip-splatting / sat-nerf / eogs / corgs；NYC 场景对 citydreamer / gaussiancity / corgs——两组基线不重合，**不可把 JAX 上的名次搬到 NYC** |
+| **路线对照** | 与纯生成式 CityGaussian 类路线对照：本文以卫星粗几何作骨架、扩散只补近景外观，用可控性换生成自由度；与 [PanoLOG](./paper-panolog-ggps.md) 互补——全景近景采集 vs 卫星远程几何 |
+| **指标口径** | PSNR / SSIM / LPIPS 是重建保真指标，CLIP-FID / CMMD 是生成分布指标；两类指标可能给出相反排序，横比前须声明用的是哪一类 |
+| **开源状态** | **已开源**（Apache 2.0，训练 / 评测 / 渲染 / 数据齐全）— 可自行复跑，不必依赖 README 摘录的数字 |
+
 ## 工程实践
 
 | 项 | 说明 |

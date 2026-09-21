@@ -62,6 +62,7 @@ Robot manipulation dataset with paired human demonstrations for one-shot learnin
 | 官方入口 | <https://rh20t.github.io/> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 重定向就绪度 | **需适配**：真机操作轨迹与配对人类演示并存，同构机型可直接训练；配对的人类演示一侧与跨机型使用均须先重定向（索引级判断，以官方文档 / 数据卡为准） |
 
 调试时先确认链接指向的是官方仓/文档而不是镜像或过期 fork，再决定是否升格为深度实体页。
 

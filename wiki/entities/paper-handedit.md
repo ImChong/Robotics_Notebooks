@@ -19,6 +19,7 @@ related:
   - ../methods/macrodata-egocentric-hand-action.md
   - ../tasks/manipulation.md
   - ../entities/paper-bench2dex.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/handedit_arxiv_2608_12122.md
   - ../../sources/sites/handedit-github-io.md
@@ -136,6 +137,7 @@ sequenceDiagram
 - [macrodata-egocentric-hand-action](../methods/macrodata-egocentric-hand-action.md)
 - [manipulation](../tasks/manipulation.md)
 - [paper-bench2dex](./paper-bench2dex.md)
+- [embodied-eval-benchmark-selection-loop](../queries/embodied-eval-benchmark-selection-loop.md) — 11 编辑器横评得出「感知质量好 ≠ 编辑任务成功、需 embodiment-aware 指标」，正是该闭环第 ② 层「视频逼真 ≠ 策略收益」在图像编辑侧的同构结论
 
 ## 参考来源
 

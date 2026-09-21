@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-20",
   "node_count": 4654,
-  "edge_count": 40722,
+  "edge_count": 40744,
   "coverage": {
     "covered": 4626,
     "total": 4626,
@@ -28,7 +28,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
     },
     {
       "path": "wiki/entities/laya.md",
@@ -189,8 +189,7 @@
       "type": "concept",
       "recency": "2026-09-20",
       "source": "git",
-      "action": "added",
-      "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/formalizations/ode-solving-methods.md",
@@ -210,7 +209,8 @@
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -227,11 +227,11 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 844
+      "size": 806
     },
     {
       "label": "操作",
-      "size": 646
+      "size": 640
     },
     {
       "label": "仿真到现实",
@@ -239,15 +239,15 @@
     },
     {
       "label": "国内开源全景 424 项阅读导航",
-      "size": 295
+      "size": 298
+    },
+    {
+      "label": "动作块输出",
+      "size": 255
     },
     {
       "label": "视觉-语言-动作",
       "size": 238
-    },
-    {
-      "label": "全身控制",
-      "size": 190
     }
   ],
   "top_hubs": [

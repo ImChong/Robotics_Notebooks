@@ -7,6 +7,7 @@ tags:
   - sim2real
 status: complete
 updated: 2026-09-20
+venue: "IEEE TAC 2009"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
@@ -54,6 +55,20 @@ summary: "从信息矩阵与实验设计理论回答：激励要多丰富才足�
 
 **不适用（不适用）** — 经典文献或策展资源，无可运行官方代码仓。
 
+
+## 实验与评测
+
+- **本页为索引级节点**（FreeDof 44 篇梳理 [06/44]）：正文固化文内角色与机制要点，**未转存原文实验表**。
+- **回原文须核对的证据**：本页要点是「输入信号 richness 与 Fisher 信息矩阵可逆性的关系」，对应证据是该关系的**理论条件推导**，而非某台机器人上的实测表。
+- **读法：** 先对齐平台、任务、指标定义与成功阈值，再读任何数字；勿从公众号摘录外推。
+
+## 与其他工作对比
+
+| 维度 | 读法 |
+|------|------|
+| **文内路线** | 归类 **系统辨识**；同路线其他节点见 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) |
+| **横比口径** | 属辨识理论的一般结论；落到具体机器人须自行核算 FIM 条件数，不能直接引用文内算例。 |
+| **开源状态** | **不适用** — 部署 / 复现前以项目页或原文 Code availability 为准 |
 
 ## 结论
 

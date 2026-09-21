@@ -9,6 +9,7 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/repos/pai_awesome_benchmark_013_furniturebench.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -77,6 +78,7 @@ Real-world long-horizon furniture assembly benchmark.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 真机长时程家具装配评测，直接坐在该闭环第 ④ 层「sim↔real 评测 gap 校准」的真机端：仿真成功率不可平移到此
 
 ## 参考来源
 

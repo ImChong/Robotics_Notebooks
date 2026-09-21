@@ -6,6 +6,7 @@ updated: 2026-09-20
 related:
   - ../overview/humanoid-eight-capabilities-technology-map.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../queries/embodied-fm-taxonomy-loop.md
   - ../methods/vla.md
   - ../methods/pi07-policy.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -162,6 +163,7 @@ flowchart TB
 
 - [人形八大能力技术地图](../overview/humanoid-eight-capabilities-technology-map.md) — 全栈鸟瞰（不同「八种能力」框架）
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 身体 API 先于 VLA 大规模调用
+- [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 本页的 compound reliability 说明为什么 ③ VLA 层单点成功率再高也不等于长时自主；三支柱里的记忆与世界模型正对应该闭环 ⑤ WM 层的「虚拟校验器」定位
 - [VLA 方法页](../methods/vla.md)
 - [Data Flywheel](data-flywheel.md)
 - [Humanoid Robot](../entities/humanoid-robot.md)

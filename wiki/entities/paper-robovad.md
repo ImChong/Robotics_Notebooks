@@ -15,6 +15,8 @@ related:
   - ./paper-pointzero.md
   - ../concepts/safety-filter.md
   - ../overview/constraint-control-11-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/robovad_arxiv_2609_17843.md
   - ../../sources/sites/robovad.md
@@ -82,6 +84,8 @@ summary: "RoboVAD（arXiv:2609.17843）：1,078 episode、5 类任务、5 类异
 - [imitation-learning](../methods/imitation-learning.md)
 - [paper-pointzero](./paper-pointzero.md)
 - [safety-filter](../concepts/safety-filter.md)
+- [embodied-eval-benchmark-selection-loop](../queries/embodied-eval-benchmark-selection-loop.md) — 跨域未见任务 split 上所有方法帧级 micro-AUC < 70%，是该闭环第 ③ 层「均值成功率的陷阱」与第 ④ 层「评测结论能否外推」的异常检测侧对照
+- [robot-perception-stack-selection-loop](../queries/robot-perception-stack-selection-loop.md) — 2 视角 RGB 视频帧级判异，属该闭环第 ② 层「2D 检测/分割选型」的评测入口：跨域掉点说明域内高分不等于换任务/换视角仍可用
 
 ## 参考来源
 

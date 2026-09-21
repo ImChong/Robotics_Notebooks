@@ -12,6 +12,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../concepts/humanoid-knee-harmonic-drive-limits.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/mechanical-intelligence-info-theory_arxiv_2609_19588.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
@@ -75,6 +76,7 @@ summary: "机械智能信息论（arXiv:2609.19588）：把身体动力学视为
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 - [locomotion](../tasks/locomotion.md)
 - [humanoid-knee-harmonic-drive-limits](../concepts/humanoid-knee-harmonic-drive-limits.md)
+- [actuator-drive-chain-selection-loop](../queries/actuator-drive-chain-selection-loop.md) — 本文的 SEA vs 低减速比本体感知执行器对照，属该闭环第 ③ 层「执行器建模与摩擦辨识」的选型输入
 
 ## 参考来源
 

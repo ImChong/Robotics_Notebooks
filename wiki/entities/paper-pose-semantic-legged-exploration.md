@@ -13,6 +13,7 @@ related:
   - ../tasks/locomotion.md
   - ../methods/vla.md
   - ../concepts/embodied-semantic-cognitive-map.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/pose-semantic-legged-exploration_arxiv_2609_19460.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
@@ -76,6 +77,7 @@ summary: "POSE（arXiv:2609.19460）：POSE 规划器把机身 pitch/roll 纳入
 - [locomotion](../tasks/locomotion.md)
 - [vla](../methods/vla.md)
 - [embodied-semantic-cognitive-map](../concepts/embodied-semantic-cognitive-map.md)
+- [robot-perception-stack-selection-loop](../queries/robot-perception-stack-selection-loop.md) — VLM 依历史与 BEV 剪枝语义视点，属该闭环第 ③ 层「2D→3D 提升与语义建图」；把机身 pitch/roll 纳入视点选择又反过来约束第 ① 层的可视条件
 
 ## 参考来源
 

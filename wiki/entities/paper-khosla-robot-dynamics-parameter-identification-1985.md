@@ -7,6 +7,7 @@ tags:
   - sim2real
 status: complete
 updated: 2026-09-20
+venue: "CDC 1985"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
@@ -54,6 +55,20 @@ summary: "经典机器人动力学参数辨识起点，奠定从输入–输出�
 
 **不适用（不适用）** — 经典文献或策展资源，无可运行官方代码仓。
 
+
+## 实验与评测
+
+- **本页为索引级节点**（FreeDof 44 篇梳理 [01/44]）：正文固化文内角色与机制要点，**未转存原文实验表**。
+- **回原文须核对的证据**：本页要点是「最小化模型预测与实测的动力学残差以估计参数」，对应证据是给定关节轨迹 / 力矩观测下的参数估计误差与残差收敛情况。
+- **读法：** 先对齐平台、任务、指标定义与成功阈值，再读任何数字；勿从公众号摘录外推。
+
+## 与其他工作对比
+
+| 维度 | 读法 |
+|------|------|
+| **文内路线** | 归类 **系统辨识**；同路线其他节点见 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) |
+| **横比口径** | 1985 年的机型与传感精度决定了文内估计精度；该数字不代表现代腿足执行器（谐波 / 准直驱）上的可达精度。 |
+| **开源状态** | **不适用** — 部署 / 复现前以项目页或原文 Code availability 为准 |
 
 ## 结论
 

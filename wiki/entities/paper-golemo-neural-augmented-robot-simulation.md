@@ -7,6 +7,7 @@ tags:
   - neural-augmented-simulation
 status: complete
 updated: 2026-09-20
+venue: "CoRL 2018"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
@@ -54,6 +55,20 @@ summary: "保留解析物理模型，用 RNN 学习残差修正不可建模的�
 
 **不适用（待核实）** — 截至 2026-09-20 以项目页/论文 Code availability 为准；入库未核验可运行入口。
 
+
+## 实验与评测
+
+- **本页为索引级节点**（FreeDof 44 篇梳理 [30/44]）：正文固化文内角色与机制要点，**未转存原文实验表**。
+- **回原文须核对的证据**：本页要点是「物理仿真 + 神经网络残差项，循环结构表达时序误差」，对应证据是加残差项前后的真机轨迹预测误差，以及策略迁移成功率的对比。
+- **读法：** 先对齐平台、任务、指标定义与成功阈值，再读任何数字；勿从公众号摘录外推。
+
+## 与其他工作对比
+
+| 维度 | 读法 |
+|------|------|
+| **文内路线** | 归类 **残差学习**；同路线其他节点见 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) |
+| **横比口径** | 残差网络在训练分布外会失效，属灰盒方法的固有边界；跨平台的误差数字不可直接搬用。 |
+| **开源状态** | **待核实** — 部署 / 复现前以项目页或原文 Code availability 为准 |
 
 ## 结论
 

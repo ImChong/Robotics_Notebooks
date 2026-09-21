@@ -9,6 +9,7 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/repos/pai_awesome_benchmark_011_carla-leaderboard.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -77,6 +78,7 @@ Standardized autonomous-driving benchmark emphasizing closed-loop safety and rob
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 闭环驾驶评测且强调安全与鲁棒性，属该闭环第 ③ 层「策略任务成功率评测」的闭环（非开环回放）口径参照
 
 ## 参考来源
 
