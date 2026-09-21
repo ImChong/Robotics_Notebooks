@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-me-dex-1-0.md",
+      "detail_id": "entity-paper-me-dex-1-0",
+      "label": "ME-Dex 1.0：异构触觉进入 World Action Modeling",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/insight-bench.md",
       "detail_id": "entity-insight-bench",
       "label": "INSIGHT-Bench",
@@ -199,28 +209,17 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/molmo2-vlm.md",
-      "detail_id": "entity-molmo2-vlm",
-      "label": "Molmo2",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/insight-bench.md",
-    "detail_id": "entity-insight-bench",
-    "label": "INSIGHT-Bench",
+    "path": "wiki/entities/paper-me-dex-1-0.md",
+    "detail_id": "entity-paper-me-dex-1-0",
+    "label": "ME-Dex 1.0：异构触觉进入 World Action Modeling",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
