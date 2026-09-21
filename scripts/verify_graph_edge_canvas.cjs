@@ -196,6 +196,43 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     }));
     check('时序动画只画已显现的边', tl.animating && tl.drawn > 0 && tl.drawn < drawnBeforeZoom,
       JSON.stringify(tl));
+
+    // 暂停后悬停已显现节点：应切到 hover 上色并高亮当前节点连线
+    await page.click('#timeline-playpause');
+    await sleep(900);
+    const tlHover = await dbg(() => {
+      let target = null;
+      document.querySelectorAll('.nodes g.node-g').forEach((el) => {
+        if (target || !el.__data__) return;
+        const op = parseFloat(el.style.opacity || '0');
+        const circle = el.querySelector('.node-circle');
+        const fo = circle ? parseFloat(circle.getAttribute('fill-opacity') || '0') : 0;
+        if (op > 0.15 && fo > 0.05) target = el;
+      });
+      if (!target) return null;
+      const r = target.getBoundingClientRect();
+      target.dispatchEvent(new MouseEvent('mouseenter', {
+        bubbles: false, clientX: r.x + r.width / 2, clientY: r.y + r.height / 2,
+      }));
+      return { id: target.__data__.id, mode: window.__RN_GRAPH2D_DEBUG__.edgePaintMode() };
+    });
+    await sleep(700);
+    const tlHoverInk = await ink();
+    check('时序动画悬停切到高亮连线',
+      !!tlHover && tlHover.mode === 'hover' && tlHoverInk > 0,
+      JSON.stringify({ ...tlHover, ink: tlHoverInk }));
+    if (tlHover && tlHover.id) {
+      await page.evaluate((id) => {
+        for (const el of document.querySelectorAll('.nodes g.node-g')) {
+          if (el.__data__ && el.__data__.id === id) {
+            el.dispatchEvent(new MouseEvent('mouseleave', { bubbles: false }));
+            return;
+          }
+        }
+      }, tlHover.id);
+      await sleep(500);
+    }
+
     await page.screenshot({ path: path.join(outDir, 'graph-edge-canvas-timeline.png') });
     await page.click('#timeline-animate');
     await sleep(2500);
