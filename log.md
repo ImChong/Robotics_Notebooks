@@ -1,3 +1,9 @@
+## [2026-09-21] ingest | sources/sites/lightorigins-about.md — 亮源新创 About 页入库；统一机构中文名为亮源新创（Light Origins）
+
+- **意图：** 用户指定 ingest <https://www.lightorigins.com/en/about>，并修正历史误写「光原点」。
+- **开源结论：** About 页无代码；GitHub 组织 **部分开源**（LightNav-0、Light-O1 等子项目）。
+- **关键页：** [light-origins](wiki/entities/light-origins.md)；`schema/institutions.json` 合并 `lightsource` → `light-origins`，label 改为 **亮源新创（Light Origins）**。
+
 ## [2026-09-21] ingest | sources/papers/ssrm_steady_state_response_method.md — 接入 SSRM 稳态响应法方法页与经典摩擦/惯量辨识文献簇
 
 ## [2026-09-21] ingest | sources/repos/birdview.md — Qiuner/birdview Architecture-first 编码代理 Skill；MIT 已开源，项目页 qiuner.github.io/birdview

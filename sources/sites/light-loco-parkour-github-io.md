@@ -5,7 +5,7 @@
 - **URL：** <https://light-loco-parkour.github.io/>
 - **PDF：** <https://light-loco-parkour.github.io/paper.pdf>
 - **视频：** <https://youtu.be/96Rfm7OmHjY>
-- **机构：** Light Origins（光原点）
+- **机构：** 亮源新创（Light Origins）
 - **平台：** Lightbot 0（自研 90 cm / 18.9 kg / 21 DoF 人形）
 - **配套论文归档：** [`sources/papers/light_loco_parkour_light_origins_2026.md`](../papers/light_loco_parkour_light_origins_2026.md)
 - **入库日期：** 2026-08-04

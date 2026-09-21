@@ -67,7 +67,7 @@ COMPANY_INST: dict[str, str] = {
     "妙动科技": "miaodong",
     "傲意科技": "ohand",
     "光轮智能": "lightwheel",
-    "亮源新创": "lightsource",
+    "亮源新创": "light-origins",
     "仙工智能": "seer",
     "众为创造": "zhongwei",
     "千觉机器人": "qianjue",

@@ -4,6 +4,7 @@ tags: [humanoid, whole-body-control, in-context-learning, resilient-control, tra
 status: complete
 updated: 2026-09-21
 related:
+  - ./light-origins.md
   - ../concepts/robot-in-context-learning.md
   - ./light-o1.md
   - ./paper-lightnav-0.md
@@ -14,6 +15,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_lightorigins_light_react_2026-09-09.md
   - ../../sources/sites/light-react.md
+  - ../../sources/sites/lightorigins-about.md
 summary: "Light REACT（亮源新创，2026-09-09）：把故障/扰动下的全身适应建模为具身 ICL——近期全身交互历史作上下文、Transformer 策略权重不变地协调行走/爬行/摔倒恢复；REACT=REsilient humAnoid ConTrol；部署段首个公开成果，代码/论文截至入库日未开源。"
 ---
 
@@ -48,7 +50,7 @@ summary: "Light REACT（亮源新创，2026-09-09）：把故障/扰动下的全
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 光原点（Light Origins） |
+| **机构** | 亮源新创（Light Origins） |
 | **发布** | 2026-09-09 微信公众号 |
 | **策略形态** | **Transformer**；训练于仿真合成的全身交互上下文 |
 | **部署输入** | 近期全身交互历史 + 常规定义（文内未披露完整观测维） |

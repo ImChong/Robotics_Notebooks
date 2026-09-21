@@ -2,7 +2,7 @@
 
 - **标题：** Light REACT — Resilient Humanoid Control（全身韧性智能）
 - **类型：** site（官方发布；截至入库日无独立项目子域）
-- **机构：** 光原点（Light Origins / 亮源新创）
+- **机构：** 亮源新创（Light Origins）
 - **主发布：** [微信公众号](https://mp.weixin.qq.com/s/Xfps8-XAv3u1S--EpS5Ezw)（2026-09-09）
 - **机构主页：** <https://www.lightorigins.com/>
 - **入库日期：** 2026-09-09
