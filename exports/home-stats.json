@@ -9,6 +9,121 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/embspatial.md",
+      "detail_id": "entity-embspatial",
+      "label": "EmbSpatial-Bench",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/er-point-bench.md",
+      "detail_id": "entity-er-point-bench",
+      "label": "Point-Bench",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/molmo-er.md",
+      "detail_id": "entity-molmo-er",
+      "label": "Molmo2-ER（MolmoER）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cambrian-1.md",
+      "detail_id": "entity-paper-cambrian-1",
+      "label": "Cambrian-1：视觉中心 MLLM 开源探索",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-molmoact2.md",
+      "detail_id": "entity-paper-molmoact2",
+      "label": "MolmoAct2：面向真机部署的 Action Reasoning Models",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-robopoint.md",
+      "detail_id": "entity-paper-robopoint",
+      "label": "RoboPoint：空间 affordance 的 keypoint VLM",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-roborefer.md",
+      "detail_id": "entity-paper-roborefer",
+      "label": "RoboRefer：机器人空间指代与推理",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/pointarena.md",
+      "detail_id": "entity-pointarena",
+      "label": "PointArena",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/refspatial.md",
+      "detail_id": "entity-refspatial",
+      "label": "RefSpatial-Bench",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/entities/robospatial.md",
+      "detail_id": "entity-robospatial",
+      "label": "RoboSpatial",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/overview/spatial-reasoning-benchmarks-technology-map.md",
+      "detail_id": "wiki-overview-spatial-reasoning-benchmarks-technology-map",
+      "label": "空间推理与指代 Benchmark 阅读地图",
+      "type": "overview",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
       "path": "wiki/entities/paper-me-dex-1-0.md",
       "detail_id": "entity-paper-me-dex-1-0",
       "label": "ME-Dex 1.0：异构触觉进入 World Action Modeling",
@@ -99,127 +214,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-driveteach-vla.md",
-      "detail_id": "entity-paper-driveteach-vla",
-      "label": "DriveTeach-VLA：教 VLA 看什么、看哪里",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/grpo.md",
-      "detail_id": "wiki-methods-grpo",
-      "label": "GRPO（Group Relative Policy Optimization）",
-      "type": "method",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/cv-bench-embodied.md",
-      "detail_id": "entity-cv-bench-embodied",
-      "label": "CV-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/embspatial.md",
-      "detail_id": "entity-embspatial",
-      "label": "EmbSpatial-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/er-point-bench.md",
-      "detail_id": "entity-er-point-bench",
-      "label": "Point-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/erqa.md",
-      "detail_id": "entity-erqa",
-      "label": "ERQA",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/habitatgs.md",
-      "detail_id": "entity-habitatgs",
-      "label": "HabitatGS",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/interiorgs.md",
-      "detail_id": "entity-interiorgs",
-      "label": "InteriorGS",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/lightbot-0.md",
-      "detail_id": "entity-lightbot-0",
-      "label": "Lightbot 0",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/lightnav-er.md",
-      "detail_id": "entity-lightnav-er",
-      "label": "LightNav-ER",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/molmo-er.md",
-      "detail_id": "entity-molmo-er",
-      "label": "Molmo2-ER（MolmoER）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-me-dex-1-0.md",
-    "detail_id": "entity-paper-me-dex-1-0",
-    "label": "ME-Dex 1.0：异构触觉进入 World Action Modeling",
+    "path": "wiki/entities/embspatial.md",
+    "detail_id": "entity-embspatial",
+    "label": "EmbSpatial-Bench",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "动作块输出（Action Chunking） 社区"
   },
   "top_communities": [
     {
