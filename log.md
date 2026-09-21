@@ -1,6 +1,4 @@
-## [2026-09-21] ingest | sources/papers/gm_loco_arxiv_2609_10286.md — 深度 ingest GM-Loco（3D RFT + VAE TS）；项目页 Code Coming Soon
-
-## [2026-09-21] ingest | Ross DAgger (AISTATS 2011) + FastSAC 15min 项目页 (Holosoma 已开源) + MIT 6.S184 Flow/Diffusion 2026 — 新建 paper-ross-dagger、深化 15min 实体、MIT 课程 overview
+## [2026-09-21] ingest | sources/sites/vision-locomotion-github-io.md — CoRL 2022 Best Systems（arXiv:2211.07638）A1 单前向深度 scandots→DAgger；项目页无官方代码；新建 paper-vision-locomotion-egocentric 并交叉 stair-obstacle / extreme-parkour / RMA
 
 ## [2026-09-21] ingest | sources/repos/loongforge.md — 深度 ingest LoongForge 训练框架，升格 cn-os-loongforge 实体页并修正分类
 

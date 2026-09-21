@@ -10,7 +10,7 @@ tags:
   - privileged-training
   - parkour
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 arxiv: "2309.14341"
 venue: "ICRA 2024"
 related:
@@ -24,6 +24,7 @@ related:
   - ./unitree.md
   - ./dreamwaq-plus.md
   - ./paper-swap-parkour.md
+  - ./paper-vision-locomotion-egocentric.md
   - ../methods/dagger.md
 sources:
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
@@ -108,7 +109,7 @@ flowchart TB
 ## 实验与 ablation（项目页）
 
 - **技能：** High jump、Long jump、Handstand、Tilted ramp、Step / Gap / Hurdle 组合；**新障碍组合与不同物理属性** 泛化。
-- **Vision locomotion 对照：** 分模块视觉 loco 在楼梯 **跌落**——说明跑酷需 **端到端** 或更强闭环。
+- **Vision Locomotion 对照：** 同团队 [CoRL 2022 ego-depth loco](./paper-vision-locomotion-egocentric.md) 在跑酷页展示的楼梯场景 **跌落**——说明极限动态技能需 **clearance + 航向蒸馏** 等增强，而非仅 scandots→深度两阶段。
 - **无 clearance：** 大 gap **触边失败**。
 - **无 direction distillation：** ramp **摇杆难以控制**。
 
