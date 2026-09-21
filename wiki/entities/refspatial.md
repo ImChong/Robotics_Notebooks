@@ -2,77 +2,73 @@
 type: entity
 tags:
   - benchmark
-  - embodied-reasoning
   - spatial-reasoning
+  - referring-expression
+  - open-source
 status: complete
 updated: 2026-09-21
 related:
-  - ./light-origins.md
+  - ./paper-roborefer.md
+  - ./robospatial.md
+  - ./lightnav-er.md
   - ../overview/lightorigins-3blogs-technology-map.md
-  - ./paper-lightnav-0.md
-  - ./light-react.md
-  - ./paper-light-loco-parkour.md
 sources:
+  - ../../sources/papers/roborefer_arxiv_2506_04308.md
   - ../../sources/papers/refspatial_lightnav_2026.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
-summary: "RefSpatial：LightNav-ER 评测项；检验语言-空间指代与图像 grounding。"
+summary: "RefSpatial-Bench：RoboRefer 空间指代 benchmark；LightNav-ER 八项之一；HF BAAI/RefSpatial-Bench 已发布。"
 ---
 
-# RefSpatial
+# RefSpatial-Bench
 
-**RefSpatial**（RefSpatial：空间指代具身推理基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](https://www.lightorigins.com/blog/lightnav-0) 中被引用。
+**RefSpatial-Bench** 是 [RoboRefer](./paper-roborefer.md) 发布的 **空间指代** 评测（HF [`BAAI/RefSpatial-Bench`](https://huggingface.co/datasets/BAAI/RefSpatial-Bench)），也被 [LightNav-ER](./lightnav-er.md) 八项具身推理套件引用（[LightNav-0 博客](https://www.lightorigins.com/blog/lightnav-0) 脚注 [3]）。
 
 ## 一句话定义
 
-**LightNav-ER 评测项；检验语言-空间指代与图像 grounding。**
+**RefSpatial-Bench 测 VLM 能否在复杂场景里「指对你说的那个 3D 位置」——带推理而不只是单次 pointing。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLM | Vision-Language Model | 视觉-语言多模态模型 |
-| VLN | Vision-and-Language Navigation | 视觉-语言导航 |
-| ER | Embodied Reasoning | 具身推理；LightNav 第一阶段中期训练 |
-| RL | Reinforcement Learning | 强化学习 |
-| R2S2R | Real-to-Sim-to-Real | 真场景→仿真合成→真机部署 |
+| REF | Referring Expression | 指代表达 |
+| VLM | Vision-Language Model | 视觉-语言模型 |
+| ER | Embodied Reasoning | 具身推理 mid-training 评测轴 |
 
 ## 为什么重要
 
-- LightNav Point CoT 空间意图 token 的能力对照。
-- 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
+- **产业横评：** Qwen3-VL、Gemini Robotics 1.5 技术报告采用 RefSpatial-Bench。
+- **Expand-Bench：** 扩展室内工厂/商店与 **室外** 街景/停车场（2025-10 发布）。
+- **与 RoboRefer 绑定：** 训练数据 RefSpatial + 模型权重见 [RoboRefer 项目页](https://zhoues.github.io/RoboRefer/)。
 
 ## 核心信息
 
 | 项 | 内容 |
 |----|------|
-| **类型** | benchmark |
-| **出处** | LightNav-ER 评测套件 |
-| **开源** | **待核实** |
-
-
+| **canonical 论文** | [RoboRefer arXiv:2506.04308](./paper-roborefer.md) |
+| **开源** | **已发布** Bench + Expand-Bench on HuggingFace |
 
 ## 结论
 
-**RefSpatial 是 LightNav / LightParkour 管线中的关键组件——读博客数字前先对齐本页定义与开源边界。**
+**读 LightNav-ER 的 RefSpatial 子项时，应指向 RoboRefer 官方 RefSpatial-Bench 协议与 Expand 版本。**
 
-1. 状态：**待核实**
-2. 与机构页 [亮源新创（Light Origins）](./light-origins.md) 三段范式对照阅读。
-3. 工程复现以官方后续发布为准。
+- 空间指代 + 推理；非纯 2D Point-Bench
+- Expand-Bench 补室外——旧分数不可与新 split 直接比
+- 与 [RoboSpatial-Home](./robospatial.md) POI/VQA 互补
 
 ## 关联页面
 
-- [亮源新创（Light Origins）](./light-origins.md)
-- [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
-- [LightNav-0](./paper-lightnav-0.md)
-- [Light REACT](./light-react.md)
+- [RoboRefer](./paper-roborefer.md)
+- [RoboSpatial](./robospatial.md)
+- [Point-Bench](./er-point-bench.md)
+- [LightNav-ER](./lightnav-er.md)
 
 ## 参考来源
 
+- [roborefer_arxiv_2506_04308.md](../../sources/papers/roborefer_arxiv_2506_04308.md)
 - [refspatial_lightnav_2026.md](../../sources/papers/refspatial_lightnav_2026.md)
-- [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
-- [Tech Blog](https://www.lightorigins.com/blog/lightnav-0)
 
 ## 推荐继续阅读
 
-- [Light Origins 官网](https://www.lightorigins.com/)
-- [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
+- [RefSpatial-Bench（HF）](https://huggingface.co/datasets/BAAI/RefSpatial-Bench)
+- [RoboRefer 项目页](https://zhoues.github.io/RoboRefer/)
