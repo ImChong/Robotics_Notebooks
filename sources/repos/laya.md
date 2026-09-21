@@ -8,6 +8,7 @@
 - **PyPI:** https://pypi.org/project/laya/
 - **Hugging Face 权重:** https://huggingface.co/convaiinnovations/laya（含 `multilingual`、`typed-decisions` 子目录）
 - **HF Demo:** https://huggingface.co/spaces/convaiinnovations/laya-demo
+- **MLX 端口（社区，Apple Silicon）:** https://github.com/mizorewww/laya-mlx · HF 预转换：[laya-mlx](https://huggingface.co/aac6fef/laya-mlx)、[multilingual](https://huggingface.co/aac6fef/laya-multilingual-mlx)、[typed-decisions](https://huggingface.co/aac6fef/laya-typed-decisions-mlx)
 - **Colab:** https://colab.research.google.com/drive/15d4Yv__KHeHjshVb-6PRTfqVllxih2S3
 - **工程文章:** https://dev.to/nandakishor_m_6cc0adfde9f/i-built-non-autoregressive-decision-models-a-year-ago-then-a-frontier-lab-called-it-a-18me
 - **最后核查:** 2026-09-20
@@ -28,5 +29,6 @@
 ## 对 wiki 的映射
 
 - **wiki/entities/laya.md** — 框架实体（与 [typesafe-jev](../../wiki/entities/typesafe-jev.md) 对照）
+- **wiki/entities/laya-mlx.md** — Apple Silicon MLX 推理端口（[laya-mlx.md](./laya-mlx.md)）
 - **wiki/concepts/behavior-tree-vla-orchestration.md** — 毫秒级路由/guardrail 与 VLA 分层
 - **wiki/concepts/llm-robotics-control-interfaces.md** — LLM 接口抽象阶梯上的「结构化决策」层

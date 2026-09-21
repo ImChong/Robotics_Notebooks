@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/repos/laya-mlx.md — 接入 Laya-MLX Apple Silicon MLX 端口并交叉更新 Laya 实体
+
 ## [2026-09-21] ingest | sources/papers/driveteach_vla_arxiv_2607_01658.md — DriveTeach-VLA（ECCV 2026）；DVD+2D-TGP+GRPO；已开源；新建 paper-driveteach-vla 并回链 vla/grpo
 
 ## [2026-09-21] ingest | sources/papers/g2g_arxiv_2606_08284.md — G2G 组间位姿估计；已开源（代码+十组权重）；新建 paper-g2g 实体并回链 state-estimation

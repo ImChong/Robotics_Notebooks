@@ -2,8 +2,9 @@
 type: entity
 tags: [framework, system-one, decision-engine, llm-agents, open-source, multilingual, convai, rlcd]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-21
 related:
+  - ./laya-mlx.md
   - ./typesafe-jev.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ../concepts/llm-robotics-control-interfaces.md
@@ -36,6 +37,7 @@ summary: "Laya（Apache 2.0）是 Convai 的多语言非自回归 System 1 决�
 
 - **与 [Jev](./typesafe-jev.md) 同谱对照：** 二者都是 System 1 typed decision；Jev 为 **闭源 API + 开源 SDK**，Laya 为 **Apache 2.0 权重 + 自托管**（README 对标 Jev 延迟与 typed-decisions 精度）。
 - **机器人/agent 编排：** 适合 ticket triage、guardrail、模型路由等 **<50 ms** 分支，与 [VLA](../methods/vla.md) chunk 或 [行为树编排](../concepts/behavior-tree-vla-orchestration.md) **异步** 并存。
+- **Apple Silicon 本地栈：** 社区 [Laya-MLX](./laya-mlx.md) 端口在 M3 Max 上单问约 **7–14 ms**（无 PyTorch），适合 Mac 边缘 agent 门控。
 - **多语言部署：** `Router` 在英文 ModernBERT 与 mmBERT 多语言 checkpoint 间切换，避免英文模型在非拉丁脚本上「高置信全错」（如 Khmer 0.000 acc @ 0.952 conf）。
 
 ## 核心信息
@@ -94,6 +96,7 @@ flowchart LR
 | **置信度门控** | RLCD 概率可设阈值（如 conf≥0.85 自动路由）；需 domain temperature 拟合（README 给出 ECE 改善） |
 | **微调** | base 在 typed-decisions **零样本 ~0.36**；领域微调可达 **~0.766**（见 Kaggle 2×T4 notebook） |
 | **高基数 choice** | >50 选项时增大 `head_max_len` 或分层 coarse-to-fine |
+| **Apple Silicon** | 本地 MLX 推理见 [Laya-MLX](./laya-mlx.md)（`pip install laya-mlx`，HF 预转换权重） |
 
 ## 局限与风险
 
@@ -121,6 +124,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Laya-MLX（Apple Silicon MLX 运行时）](./laya-mlx.md)
 - [Jev（TypeSafe System One）](./typesafe-jev.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
