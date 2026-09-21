@@ -11,6 +11,7 @@ related:
   - ./terrain-latent-representation.md
   - ./contact-estimation.md
   - ./humanoid-policy-network-architecture.md
+  - ./gru.md
   - ./humanoid-policy-reward-functions.md
   - ./control-inference-frequency-decoupling.md
   - ./domain-randomization.md
@@ -127,7 +128,7 @@ flowchart LR
 | 形式 | 典型配置 | 如何获得 | 代表工作 |
 |------|---------|---------|---------|
 | 帧堆叠 | H = 5–50 帧 obs 拼接 | 循环缓冲队列 | 多数 MLP 策略（含 BeyondMimic 历史堆叠） |
-| RNN/GRU 隐状态 | 32–256 维 hidden | 在线递推 | Extreme Parkour Student（ConvNet–GRU） |
+| RNN/GRU 隐状态 | 32–256 维 hidden | 在线递推 | Extreme Parkour Student（ConvNet–GRU）；机制见 [GRU](./gru.md) |
 | 学习 latent | 8–64 维 ẑ / belief | 在线估计器回归仿真特权 latent | [RMA](../entities/paper-rma-rapid-motor-adaptation.md)（φ@10 Hz + π@100 Hz 异步）、[DreamWaQ](../methods/dreamwaq.md) CENet |
 
 获取链路：训练时用 E 类特权信息**监督** latent（MSE 回归或对比学习，如 PvP 的 proprioceptive–privileged 对比表征），部署时估计器只看 A 类历史、与主策略**异步低频**运行——这是「把特权信息搬进可部署 latent」的标准搬运工。多速率对齐见 [控制与推理频率解耦](./control-inference-frequency-decoupling.md)。

@@ -2,7 +2,7 @@
 type: concept
 summary: "反向传播是在分层可微计算图上高效应用链式法则、逐层回传损失梯度以训练神经网络权重的核心算法，是现代机器人端到端感知与策略学习的优化底座。"
 description: 反向传播（Backpropagation）算法：链式法则、前向/反向两趟、与自动微分及机器人策略训练的关系。
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./deep-learning-foundations.md
   - ./transformer.md
@@ -81,6 +81,8 @@ BP **只负责算梯度**；[SGD](../methods/sgd.md)、[Adam](../methods/adam.md
 ## 关联页面
 
 - [深度学习基础](./deep-learning-foundations.md)
+- [MLP](./mlp.md)
+- [AI 架构地图](../overview/ai-architecture-map.md)
 - [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)
 - [SGD](../methods/sgd.md)
 - [Adam](../methods/adam.md)

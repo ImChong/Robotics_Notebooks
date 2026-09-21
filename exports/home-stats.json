@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4660,
-  "edge_count": 40873,
+  "node_count": 4673,
+  "edge_count": 41030,
   "coverage": {
-    "covered": 4631,
-    "total": 4631,
+    "covered": 4644,
+    "total": 4644,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,11 +234,11 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 763
+      "size": 805
     },
     {
       "label": "操作",
-      "size": 675
+      "size": 689
     },
     {
       "label": "仿真到现实",
@@ -249,12 +249,12 @@
       "size": 298
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 238
+      "label": "具身评测基准选型闭环",
+      "size": 256
     },
     {
-      "label": "具身评测基准选型闭环",
-      "size": 233
+      "label": "视觉-语言-动作",
+      "size": 238
     }
   ],
   "top_hubs": [
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1311,
+      "degree": 1315,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -293,7 +293,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 985,
+      "degree": 986,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

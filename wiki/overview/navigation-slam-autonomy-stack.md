@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-21
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -45,6 +45,7 @@ related:
   - ../entities/paper-icrowdnav.md
   - ../entities/paper-splc.md
   - ../entities/paper-humembr.md
+  - ../entities/paper-offroad-global-nav.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../concepts/ros2-basics.md
   - ../methods/vla.md
@@ -63,6 +64,7 @@ sources:
   - ../../sources/repos/isaac_ros_nvblox.md
   - ../../sources/repos/plfm_radar.md
   - ../../sources/repos/oomwoo.md
+  - ../../sources/papers/offroad_global_nav_arxiv_2607_23743.md
 summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR/VIO 里程计、Autoware 自动驾驶、Isaac ROS 加速感知建图，并与 OpenLoong 动力学、LeRobot/OpenVLA 具身学习对照分层选型。"
 ---
 
@@ -249,6 +251,7 @@ flowchart TB
 - [SPLC](../entities/paper-splc.md) — 自动社交偏好奖励 + Offline RL 人群导航（代码 coming soon）
 - [CommNav](../entities/paper-commnav.md) — 主动向路人打听目标位置（Habitat 3.0c；代码待发布）
 - [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA；Spot GraphNav 高层路点（非替代经典栈）
+- [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 越野开销地理学习 costmap + A\* LRP；局部仍走 MPPI（数据已开源，训练代码待发布）
 
 ## 推荐继续阅读
 

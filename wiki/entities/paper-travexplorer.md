@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, objectnav, zero-shot, multi-floor, quadruped, traversability, vln, sjtu, embodied-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 arxiv: "2605.19958"
 related:
   - ../tasks/zero-shot-object-navigation.md
@@ -14,6 +14,7 @@ related:
   - ./habitat-sim.md
   - ./paper-zonda.md
   - ../overview/quadruped-vln-embodied-workshop.md
+  - ./paper-offroad-global-nav.md
 sources:
   - ../../sources/papers/travexplorer_arxiv_2605_19958.md
   - ../../sources/sites/wuyi2121-travexplorer.md
@@ -133,6 +134,7 @@ TravExplorer 把 **可通行几何** 提升为一等公民，使四足零样本 
 | [ZONDA](./paper-zonda.md) | 同攻多楼层 ObjectNav；ZONDA 强动态行人与轮腿双足，TravExplorer 强 3D 可通行与四足 |
 | [LOVON](./paper-notebook-lovon-legged-open-vocabulary-object-navigator.md) | 足式开放词汇导航相关 notebook 实体，粒度偏索引 |
 | [Uni-LaViRA](./paper-uni-lavira.md) | training-free 统一导航 agent，不绑定可通行体积图 |
+| [Off-Road Global Nav](./paper-offroad-global-nav.md) | 户外轮式 UGV、开销卫星/LiDAR **2.5D costmap**、公里级路由；TravExplorer 是室内四足 **3D 支撑面 + ObjectNav** |
 
 ## 关联页面
 

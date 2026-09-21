@@ -16,7 +16,7 @@
 ### 1) 多层网络与隐藏单元表征
 
 - **要点：** 网络含输入、输出与 **内部隐藏单元（hidden units）**；训练目标是最小化实际输出与期望输出之差。权重更新后，隐藏单元会编码任务域中的 **重要特征**，任务规律由这些单元间的交互捕获——这是 back-propagation 相对早期 **perceptron-convergence** 等简单方法的关键能力：**能创造有用的新特征（useful new features）**。
-- **对 wiki 的映射：** [`wiki/concepts/backpropagation.md`](../../wiki/concepts/backpropagation.md)
+- **对 wiki 的映射：** [`wiki/concepts/backpropagation.md`](../../wiki/concepts/backpropagation.md)、[`wiki/concepts/mlp.md`](../../wiki/concepts/mlp.md)
 
 ### 2) 误差反向传播与权重调整
 
