@@ -191,5 +191,5 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [Attention Is All You Need (arXiv:1706.03762)](https://arxiv.org/abs/1706.03762)
+- [Attention Is All You Need（论文实体）](../entities/paper-attention-is-all-you-need.md) · [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
 - [Deep Learning Book — 架构各章](https://www.deeplearningbook.org/)

@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | 四篇 All-You-Need 深读：1706.03762 Transformer 实体页、2510.14947 LCA/G1、2606.00829 EgoCross 推理、1802.06070 DIAYN
+
 ## [2026-09-21] ingest | sources/papers/ssrm_steady_state_response_method.md — 接入 SSRM 稳态响应法方法页与经典摩擦/惯量辨识文献簇
 
 ## [2026-09-21] ingest | sources/repos/birdview.md — Qiuner/birdview Architecture-first 编码代理 Skill；MIT 已开源，项目页 qiuner.github.io/birdview

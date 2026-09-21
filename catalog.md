@@ -1194,6 +1194,7 @@
 - [AthenaZero：低惯量双臂动态操作平台](wiki/entities/paper-athenazero.md) — AthenaZero**（*A low-inertia, bimanual robot for dynamic manipulation*，[*Science Robotics* 11(118)， `📅unknown` `[entity_page]`
 - [Atlas Locomotion（HMI P005）](wiki/entities/paper-atlas-locomotion-optimization-stack.md) — Atlas Locomotion**（*Optimization-based Locomotion Planning, Estimation, and Control Design for the `📅unknown` `[entity_page]`
 - [AtomicVLA：原子技能学习的统一规划–执行 VLA](wiki/entities/paper-atomicvla.md) — AtomicVLA**（*AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots*，[arXiv:2603.07 `📅unknown` `[entity_page]`
+- [Attention Is All You Need](wiki/entities/paper-attention-is-all-you-need.md) — Attention Is All You Need**（Vaswani et al.，arXiv:1706.03762，Ne `📅unknown` `[entity_page]`
 - [AURORA](wiki/entities/paper-aurora-hand-reconstruction.md) — AURORA**（*Active Uncertainty-Driven Re-Orientation for In-Hand Reconstruction*，[arXiv:2609.08493 `📅unknown` `[entity_page]`
 - [AutoHorizon（VLA Knows Its Limits · arXiv:2602.21445）](wiki/entities/paper-autohorizon.md) — VLA Knows Its Limits: Adaptive Execution Horizons for Robot Policies**（[arXiv:2602.21445](https:// `📅unknown` `[entity_page]`
 - [AutoIntervene（Action Chunk 自动接管）](wiki/entities/paper-autointervene.md) — AutoIntervene**（*Calibrated Intervention for Action-Chunking Imitation Learning Policies*，[arXiv:2 `📅unknown` `[entity_page]`
@@ -1232,7 +1233,7 @@
 - [Reinforcement Learning with Prototypical Representations](wiki/entities/paper-bfm-27-proto-rl.md) — Reinforcement Learning with Prototypical Representations** 收录于 [awesome-bfm-papers](https://github `📅unknown` `[entity_page]`
 - [State Entropy Maximization with Random Encoders for Efficient Exploration](wiki/entities/paper-bfm-28-re3.md) — State Entropy Maximization with Random Encoders for Efficient Exploration** 收录于 [awesome-bfm-paper `📅unknown` `[entity_page]`
 - [Exploration by Random Network Distillation](wiki/entities/paper-bfm-29-rnd.md) — Exploration by Random Network Distillation** 收录于 [awesome-bfm-papers](https://github.com/friedrich `📅unknown` `[entity_page]`
-- [Diversity is All You Need](wiki/entities/paper-bfm-30-diayn.md) — Diversity is All You Need** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm- `📅unknown` `[entity_page]`
+- [Diversity is All You Need（DIAYN）](wiki/entities/paper-bfm-30-diayn.md) — DIAYN**（*Diversity is All You Need: Learning Skills without a Reward Function*；Eysenbach et al.；[a `📅unknown` `[entity_page]`
 - [Task Tokens](wiki/entities/paper-bfm-31-task-tokens.md) — Task Tokens** 收录于 awesome-bfm-papers **第 31 `📅unknown` `[entity_page]`
 - [Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics](wiki/entities/paper-bfm-32-unseen-dynamics.md) — Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics** 收录于 [awesome-bfm-papers `📅unknown` `[entity_page]`
 - [Fast Adaptation With Behavioral Foundation Models](wiki/entities/paper-bfm-33-fast-adaptation-bfm.md) — Fast Adaptation With Behavioral Foundation Models** 收录于 [awesome-bfm-papers](https://github.com/fr `📅unknown` `[entity_page]`
@@ -1897,7 +1898,7 @@
 - [Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand](wiki/entities/paper-notebook-antagonistic-bowden-cable-actuation-of-a-lightwe.md) — Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand** 收录于 [Robot Learning Paper Note `📅unknown` `[entity_page]`
 - [ANYmal Parkour：分层技能库的四足敏捷导航](wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) — ANYmal Parkour: Learning Agile Navigation for Quadrupedal Robots**（[arXiv:2306.14874](https://arxi `📅unknown` `[entity_page]`
 - [APEX](wiki/entities/paper-notebook-apex-learning-adaptive-high-platform-traversal-f.md) — APEX: Learning Adaptive High-Platform Traversal for Humanoid Robots** 收录于 [Robot Learning Paper No `📅unknown` `[entity_page]`
-- [Architecture Is All You Need](wiki/entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md) — Architecture Is All You Need: Diversity-Enabled Sweet Spots for Robust Humanoid Locomotion** 已列入  `📅unknown` `[entity_page]`
+- [Architecture Is All You Need](wiki/entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md) — Architecture Is All You Need: Diversity-Enabled Sweet Spots for Robust Humanoid Locomotion**（Werne `📅unknown` `[entity_page]`
 - [ARMADA](wiki/entities/paper-notebook-armada-augmented-reality-for-robot-manipulation.md) — ARMADA: Augmented Reality for Robot Manipulation and Robot-Free Data Acquisition** 收录于 [Robot Lear `📅unknown` `[entity_page]`
 - [ARMOR](wiki/entities/paper-notebook-armor-egocentric-perception-for-humanoid-robot-c.md) — ARMOR: Egocentric Perception for Humanoid Robot Collision Avoidance and Motion Planning** 已列入 [Rob `📅unknown` `[entity_page]`
 - [ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills](wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills** 收录于 [Robot Learning Pa `📅unknown` `[entity_page]`
