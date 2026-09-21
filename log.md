@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/repos/loongforge.md — 深度 ingest LoongForge 训练框架，升格 cn-os-loongforge 实体页并修正分类
+
 ## [2026-09-21] ingest | sources/repos/laya-mlx.md — 接入 Laya-MLX Apple Silicon MLX 端口并交叉更新 Laya 实体
 
 ## [2026-09-21] ingest | sources/papers/driveteach_vla_arxiv_2607_01658.md — DriveTeach-VLA（ECCV 2026）；DVD+2D-TGP+GRPO；已开源；新建 paper-driveteach-vla 并回链 vla/grpo

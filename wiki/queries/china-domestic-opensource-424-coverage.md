@@ -675,7 +675,7 @@ sources:
 
 | 项目 | 类别 | 站内详情页 |
 | --- | --- | --- |
-| LoongForge | 数据采集/工具 | [LoongForge](../entities/cn-os-loongforge.md) |
+| LoongForge | 训练框架/加速 | [LoongForge](../entities/cn-os-loongforge.md) |
 
 #### 腾讯机器人实验室（4）
 

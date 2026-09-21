@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-21",
   "node_count": 4724,
-  "edge_count": 41427,
+  "edge_count": 41429,
   "coverage": {
     "covered": 4695,
     "total": 4695,
@@ -236,7 +236,7 @@
     },
     {
       "label": "国内开源全景 424 项阅读导航",
-      "size": 298
+      "size": 297
     },
     {
       "label": "具身评测基准选型闭环",
@@ -260,7 +260,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1332,
+      "degree": 1333,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
