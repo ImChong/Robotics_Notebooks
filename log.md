@@ -1,3 +1,9 @@
+## [2026-09-21] ingest | sources/sites/pointzero.md — PointZero 项目页直 ingest（arXiv:2609.19142）：补全 Perceiver-IO+FM 架构、290 万合成帧/PGND/IL 全表；步骤 2.5 再核代码与 Dataset 均为 Coming Soon → 待发布
+
+- **意图：** 用户指定 ingest https://pointzero-wm.github.io/；在 09-20 公众号初稿基础上以项目页为准深化实体页。
+- **开源结论：** GitHub 占位 README「Release coming soon」；Dataset 按钮 Coming Soon — **待发布**（非可立即复现）。
+- **关键页：** [paper-pointzero](wiki/entities/paper-pointzero.md)
+
 ## [2026-09-21] ingest | sources/repos/next-ai-draw-io.md — Next AI Draw.io（DayuanJiang，~36k★）：Next.js 聊天制图 + @next-ai-drawio/mcp-server 浏览器预览；步骤 2.5 已开源（Apache-2.0）
 
 - **意图：** 用户指定 ingest GitHub 仓库；项目页 next-ai-drawio.jiang.jp 链回源码与 MCP npm 包。

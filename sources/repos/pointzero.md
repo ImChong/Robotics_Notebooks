@@ -6,10 +6,18 @@
 - **类型：** repo
 - **链接：** https://github.com/Duisterhof/pointzero
 - **arXiv：** <https://arxiv.org/abs/2609.19142>
-- **入库日期：** 2026-09-20
-- **一句话说明：** RGB-D + 稀疏 3D 点轨迹预测未来轨迹；290 万合成帧覆盖刚体/关节/可变形；微调到动作预测与 IL 后 7 任务中 6 个达或超基线，无需机器人动作标签预训练。
+- **项目页：** https://pointzero-wm.github.io/
+- **入库日期：** 2026-09-20（初稿）；2026-09-21（README 再核）
+- **一句话说明：** 官方 GitHub 占位仓库；README 声明 code release coming soon，尚无训练/推理脚本入口。
 - **沉淀到 wiki：** [`wiki/entities/paper-pointzero.md`](../../wiki/entities/paper-pointzero.md)
 
-## 开源状态
+## 开源状态（步骤 2.5，2026-09-21）
 
-- **已开源**：公开仓库（以 README 与 release 为准）。
+- **待发布**：仓库已公开，README 仅含 teaser 与链接，正文写 *「This repository will host the PointZero code. Release coming soon.»*
+- **尚无** 可辨识的 `train.py` / `eval.py` / 权重 release；复现需等待官方发布或对照论文自行实现。
+
+## README 要点
+
+- Website · Paper 链接齐全
+- Teaser GIF 展示 deformable / articulated / rigid 动力学预测
+- 无安装说明、无 checkpoint 下载、无数据链接
