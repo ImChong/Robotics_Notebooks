@@ -54,7 +54,7 @@ flowchart TB
   root --> spat["2 图像 / 空间"]
   root --> seq["3 序列 / 时间"]
   root --> gen["4 生成模型"]
-  root --> graph["5 图结构"]
+  root --> gfam["5 图结构"]
   root --> robot["6 机器人 / 决策"]
 
   ff --> mlp["MLP"]
@@ -79,7 +79,7 @@ flowchart TB
   gen --> diff["Diffusion"]
   gen --> dit["DiT"]
 
-  graph --> gnn["GNN"]
+  gfam --> gnn["GNN"]
 
   robot --> mp["MLP Policy"]
   robot --> rp["RNN / GRU / LSTM Policy"]
