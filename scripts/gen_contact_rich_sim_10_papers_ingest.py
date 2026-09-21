@@ -316,7 +316,7 @@ def write_entity(p: dict) -> None:
     if p["site"]:
         sources.insert(1, f"  - ../../sources/sites/{p['slug'].replace('_', '-')}.md")
     sources_yaml = "\n".join(sources)
-    code_front = f'\ncode: {p["code"]}' if p["code"] else ""
+    code_front = f"\ncode: {p['code']}" if p["code"] else ""
     content = f"""---
 type: entity
 tags:
@@ -461,9 +461,7 @@ def write_blog_and_map() -> None:
 """
     (ROOT / "sources/blogs" / BLOG).write_text(blog, encoding="utf-8")
 
-    entity_links = "\n".join(
-        f"  - ../entities/paper-{p['slug']}.md" for p in PAPERS
-    )
+    entity_links = "\n".join(f"  - ../entities/paper-{p['slug']}.md" for p in PAPERS)
     idx_rows = []
     for p in PAPERS:
         idx_rows.append(
