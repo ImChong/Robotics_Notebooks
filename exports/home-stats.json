@@ -9,6 +9,37 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-code-as-world.md",
+      "detail_id": "entity-paper-code-as-world",
+      "label": "Code-as-World（Executable World Representations for Physical Reasoning）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-infonce-geometry.md",
+      "detail_id": "entity-paper-infonce-geometry",
+      "label": "InfoNCE Geometry（Contrastive Representation Learning 的几何力学）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-qwm.md",
+      "detail_id": "entity-paper-qwm",
+      "label": "QWM（Q-Learning With World Models）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/next-ai-draw-io.md",
       "detail_id": "entity-next-ai-draw-io",
       "label": "Next AI Draw.io",
@@ -191,51 +222,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-090-nuscenes.md",
-      "detail_id": "entity-painode-090-nuscenes",
-      "label": "nuScenes",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-092-rh20t.md",
-      "detail_id": "entity-painode-092-rh20t",
-      "label": "RH20T",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-093-rlds.md",
-      "detail_id": "entity-painode-093-rlds",
-      "label": "RLDS",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/next-ai-draw-io.md",
-    "detail_id": "entity-next-ai-draw-io",
-    "label": "Next AI Draw.io",
+    "path": "wiki/entities/paper-code-as-world.md",
+    "detail_id": "entity-paper-code-as-world",
+    "label": "Code-as-World（Executable World Representations for Physical Reasoning）",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
