@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-relateanything.md",
+      "detail_id": "entity-paper-relateanything",
+      "label": "RelateAnything：实时开放词汇关系预测",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
+      "path": "wiki/overview/spatial-reasoning-benchmarks-technology-map.md",
+      "detail_id": "wiki-overview-spatial-reasoning-benchmarks-technology-map",
+      "label": "空间推理与指代 Benchmark 阅读地图",
+      "type": "overview",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作块输出（Action Chunking） 社区"
+    },
+    {
       "path": "wiki/entities/embspatial.md",
       "detail_id": "entity-embspatial",
       "label": "EmbSpatial-Bench",
@@ -114,16 +135,6 @@
       "community_label": "动作块输出（Action Chunking） 社区"
     },
     {
-      "path": "wiki/overview/spatial-reasoning-benchmarks-technology-map.md",
-      "detail_id": "wiki-overview-spatial-reasoning-benchmarks-technology-map",
-      "label": "空间推理与指代 Benchmark 阅读地图",
-      "type": "overview",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
       "path": "wiki/entities/paper-me-dex-1-0.md",
       "detail_id": "entity-paper-me-dex-1-0",
       "label": "ME-Dex 1.0：异构触觉进入 World Action Modeling",
@@ -203,27 +214,17 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/laya-mlx.md",
-      "detail_id": "entity-laya-mlx",
-      "label": "Laya-MLX（Apple Silicon MLX 运行时）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/embspatial.md",
-    "detail_id": "entity-embspatial",
-    "label": "EmbSpatial-Bench",
+    "path": "wiki/entities/paper-relateanything.md",
+    "detail_id": "entity-paper-relateanything",
+    "label": "RelateAnything：实时开放词汇关系预测",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "动作块输出（Action Chunking） 社区"
   },
   "top_communities": [
