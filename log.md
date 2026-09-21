@@ -1,3 +1,9 @@
+## [2026-09-21] ingest | sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md — 具身小站 10 篇接触丰富仿真盘点；10/10 独立节点新建
+
+- **意图：** 用户指定 ingest <https://mp.weixin.qq.com/s/OCz5OShnrRSeSNb8dcmXDg>；每篇论文独立非重复详情节点。
+- **开源结论：** RAPID / CRISP / Sim2Real Chunk VLA Pipeline **已开源**；GALA / SeeQ / SkelWAM / PARTS / CARF / PSR / Compositional CL benchmark **待发布**（PARTS 项目页标注 Code Coming Soon）。
+- **关键页：** [contact-rich-sim-10-papers-technology-map](wiki/overview/contact-rich-sim-10-papers-technology-map.md)；新增 RAPID、GALA、CRISP、SeeQ、SkelWAM、PARTS、CARF、PSR-VLA、Compositional CL WM Benchmark、Sim2Real Chunk VLA Pipeline 十实体。
+
 ## [2026-09-21] ingest | Nymeria 2406.09905 + Project Aria 数据集、Kaplan 2001.08361、Light-O1 blog refs [1]–[17] 独立节点
 
 - **意图：** 用户指定 ingest arXiv:2406.09905、Nymeria 官方页、Kaplan scaling laws 2001.08361；Light-O1 Tech Blog 引用项目均需独立非重复详情节点。
