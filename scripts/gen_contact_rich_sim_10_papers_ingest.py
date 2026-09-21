@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 WECHAT_URL = "https://mp.weixin.qq.com/s/OCz5OShnrRSeSNb8dcmXDg"
@@ -11,7 +12,7 @@ BLOG = "wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md"
 RAW = "wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md"
 MAP = "contact-rich-sim-10-papers-technology-map"
 
-PAPERS = [
+PAPERS: list[dict[str, Any]] = [
     {
         "num": "01",
         "slug": "rapid-vlm-rl",
@@ -199,7 +200,7 @@ def tag_yaml(tags: list[str]) -> str:
     return "\n".join(f"  - {t}" for t in tags)
 
 
-def write_paper_source(p: dict) -> None:
+def write_paper_source(p: dict[str, Any]) -> None:
     path = ROOT / "sources/papers" / p["source_file"]
     code_line = f"- **代码：** {p['code']}\n" if p["code"] else ""
     site_line = f"- **项目页：** {p['site']}\n" if p["site"] else ""
@@ -233,7 +234,7 @@ def write_paper_source(p: dict) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def write_repo(p: dict) -> None:
+def write_repo(p: dict[str, Any]) -> None:
     if not p["repo_file"]:
         return
     path = ROOT / "sources/repos" / p["repo_file"]
@@ -256,7 +257,7 @@ def write_repo(p: dict) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def write_site(p: dict) -> None:
+def write_site(p: dict[str, Any]) -> None:
     if not p["site"]:
         return
     site_slug = p["slug"].replace("_", "-")
@@ -280,7 +281,7 @@ def write_site(p: dict) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def seq_section(p: dict) -> str:
+def seq_section(p: dict[str, Any]) -> str:
     if not p["seq"]:
         return """## 源码运行时序图
 
@@ -305,7 +306,7 @@ sequenceDiagram
 """
 
 
-def write_entity(p: dict) -> None:
+def write_entity(p: dict[str, Any]) -> None:
     path = ROOT / "wiki/entities" / f"paper-{p['slug']}.md"
     sources = [
         f"  - ../../sources/papers/{p['source_file']}",
