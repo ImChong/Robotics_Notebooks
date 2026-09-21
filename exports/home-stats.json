@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4727,
-  "edge_count": 41471,
+  "node_count": 4728,
+  "edge_count": 41478,
   "coverage": {
-    "covered": 4698,
-    "total": 4698,
+    "covered": 4699,
+    "total": 4699,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dcreg-degenerate-lidar-registration.md",
+      "detail_id": "entity-paper-dcreg-degenerate-lidar-registration",
+      "label": "DCReg：Decoupled Characterization for Efficient Degenerate LiDAR Registration",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/entities/paper-gm-loco.md",
       "detail_id": "entity-paper-gm-loco",
@@ -197,26 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hm3d-ovon.md",
-      "detail_id": "entity-paper-hm3d-ovon",
-      "label": "HM3D-OVON",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gm-loco.md",
-    "detail_id": "entity-paper-gm-loco",
-    "label": "GM-Loco：颗粒介质上的地形自适应人形 locomotion",
+    "path": "wiki/entities/paper-dcreg-degenerate-lidar-registration.md",
+    "detail_id": "entity-paper-dcreg-degenerate-lidar-registration",
+    "label": "DCReg：Decoupled Characterization for Efficient Degenerate LiDAR Registration",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -237,7 +240,7 @@
     },
     {
       "label": "全身控制",
-      "size": 254
+      "size": 255
     },
     {
       "label": "视觉-语言-动作",
