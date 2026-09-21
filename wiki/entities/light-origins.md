@@ -7,6 +7,7 @@ related:
   - ./light-o1.md
   - ./light-react.md
   - ./paper-lightnav-0.md
+  - ./insight-bench.md
   - ./paper-light-loco-parkour.md
   - ../concepts/robot-in-context-learning.md
   - ../tasks/humanoid-locomotion.md
@@ -60,7 +61,7 @@ summary: "亮源新创（Light Origins，2024）：Physical AI 基础模型公�
 | 阶段 | 代表成果 | 站内页 | 开源（摘要） |
 |------|----------|--------|--------------|
 | 规模化预训练 | Light-O1 | [light-o1](./light-o1.md) | Preview 推理 + HF 权重 **已开源** |
-| 规模化对齐 | LightNav-0 | [paper-lightnav-0](./paper-lightnav-0.md) | 代码 + HF 权重 **已开源** |
+| 规模化对齐 | LightNav-0 + INSIGHT-Bench | [paper-lightnav-0](./paper-lightnav-0.md) · [insight-bench](./insight-bench.md) | 代码 + HF 权重 **已开源**；1097-episode 诊断评测 **已开源** |
 | 规模化部署 | Light REACT | [light-react](./light-react.md) | 截至入库日 **未开源** |
 | 全身跑酷 | Light-Loco-Parkour | [paper-light-loco-parkour](./paper-light-loco-parkour.md) | **未开源** |
 

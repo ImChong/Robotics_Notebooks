@@ -583,7 +583,7 @@
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Innodata](wiki/entities/innodata.md) — Innodata**（纳斯达克：**INOD**）向 AI 实验室与企业提供 **训练数据、评测、对齐与安全** 服务。LeoInAI Substack（2026-09）将其列为「物理 AI 数据 `📅unknown` `[entity_page]`
-- [INSIGHT-Bench](wiki/entities/insight-bench.md) — INSIGHT-Bench**（INSIGHT-Bench：Real2Sim2Real 导航数据引擎评测集）在 [Light Origins · LightNav-0：以规模化 Real2Sim2 `📅unknown` `[entity_page]`
+- [INSIGHT-Bench](wiki/entities/insight-bench.md) — INSIGHT-Bench**（项目页，[代码](https://github.com `📅unknown` `[entity_page]`
 - [Inspect Robots](wiki/entities/inspect-robots.md) — Inspect Robots**（GitHub，[文档](https://docs.inspectro `📅unknown` `[entity_page]`
 - [InstructBLIP](wiki/entities/instructblip.md) — InstructBLIP 在 BLIP-2 上做视觉指令调优：用指令感知 Q-Former 抽取与任务相关的视觉特征，提升零样本与指令跟随。 `📅unknown` `[entity_page]`
 - [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），输出对齐的彩色与深度，是人形系统课感知章与大量 G1 真 `📅unknown` `[entity_page]`
