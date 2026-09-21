@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/gru.md",
+      "detail_id": "wiki-concepts-gru",
+      "label": "GRU（Gated Recurrent Unit，门控循环单元）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/booster-mjlab.md",
       "detail_id": "entity-booster-mjlab",
       "label": "booster_mjlab（Booster K1 × mjlab）",
@@ -211,29 +220,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-085-bridgedatav2.md",
-      "detail_id": "entity-painode-085-bridgedatav2",
-      "label": "BridgeData V2",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/booster-mjlab.md",
-    "detail_id": "entity-booster-mjlab",
-    "label": "booster_mjlab（Booster K1 × mjlab）",
-    "type": "entity",
+    "path": "wiki/concepts/gru.md",
+    "detail_id": "wiki-concepts-gru",
+    "label": "GRU（Gated Recurrent Unit，门控循环单元）",
+    "type": "concept",
     "recency": "2026-09-21",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
