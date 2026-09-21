@@ -1334,6 +1334,7 @@
 - [Data Pyramid for Embodied Manipulation（具身数据金字塔综述）](wiki/entities/paper-data-pyramid-embodied-manipulation.md) — Data Pyramid for Embodied Manipulation**（arXiv:2607.24744，2026 `📅unknown` `[entity_page]`
 - [DATAFARM（arXiv:2609.12316）](wiki/entities/paper-datafarm.md) — DATAFARM**（[DATAFARM: Distribution-Aligned Task and Motion Planning for Fine-Tuning Vision-Languag `📅unknown` `[entity_page]`
 - [DayDreamer](wiki/entities/paper-daydreamer-world-models-real-robots.md) — DayDreamer** 收录于 具身智能研究室 · 具身世界模型六路线综述 **学习主导 `📅unknown` `[entity_page]`
+- [DCReg：Decoupled Characterization for Efficient Degenerate LiDAR Registration](wiki/entities/paper-dcreg-degenerate-lidar-registration.md) — DCReg**（*Decoupled Characterization for Efficient Degenerate LiDAR Registration*；[IJRR 2026](https `📅unknown` `[entity_page]`
 - [DeCAL：接触感知灵巧 VLA](wiki/entities/paper-decal.md) — DeCAL**（*Towards Physically-Grounded Dexterous Vision-Language-Action Models via Contact-Aware Lat `📅unknown` `[entity_page]`
 - [去中心化多人形搬运（arXiv:2609.17824）](wiki/entities/paper-decentralized-multi-humanoid-pickup.md) — 去中心化多人形搬运**（*Learning Multi-Humanoid Pickup and Transport via Decentralized Object-Centric Control `📅unknown` `[entity_page]`
 - [DECOWAM（腿足移动操作解耦全身 WAM）](wiki/entities/paper-decowam.md) — DECOWAM**（*Decoupled Whole-Body World-Action Model for Legged Mobile Manipulation*，[arXiv:2608.201 `📅unknown` `[entity_page]`

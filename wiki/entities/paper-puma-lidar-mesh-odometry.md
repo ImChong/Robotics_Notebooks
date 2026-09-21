@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, slam, lidar, mesh, odometry, mapping, autonomous-driving, icra]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 venue: "ICRA 2021"
 code: https://github.com/PRBonn/puma
 related:
