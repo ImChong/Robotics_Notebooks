@@ -30,6 +30,27 @@
       "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
+      "path": "wiki/entities/light-o1.md",
+      "detail_id": "entity-light-o1",
+      "label": "Light-O1",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/light-origins.md",
+      "detail_id": "entity-light-origins",
+      "label": "亮源新创（Light Origins）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
       "path": "wiki/methods/ssrm-steady-state-response-method.md",
       "detail_id": "wiki-methods-ssrm-steady-state-response-method",
       "label": "SSRM — Steady-State Response Method（稳态响应法）",
@@ -49,17 +70,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/light-o1.md",
-      "detail_id": "entity-light-o1",
-      "label": "Light-O1",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-offroad-global-nav.md",
@@ -198,17 +208,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-code-as-world.md",
-      "detail_id": "entity-paper-code-as-world",
-      "label": "Code-as-World（Executable World Representations for Physical Reasoning）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
