@@ -2,7 +2,7 @@
 
 ## [2026-09-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **18** 条信息型预警）：
+共发现 **0** 个问题（另含 **19** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -119,8 +119,9 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/3dgenstudio.md updated=2026-09-21）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
+- wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/birdview.md updated=2026-09-21）
+- wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/curobo.md updated=2026-09-21）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
