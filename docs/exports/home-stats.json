@@ -1,13 +1,62 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4660,
-  "edge_count": 40810,
+  "node_count": 4671,
+  "edge_count": 40941,
   "coverage": {
-    "covered": 4632,
-    "total": 4632,
+    "covered": 4643,
+    "total": 4643,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/ai-architecture-map.md",
+      "detail_id": "wiki-overview-ai-architecture-map",
+      "label": "AI 架构地图（Neural Network Architecture Map）",
+      "type": "overview",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/autoencoder.md",
+      "detail_id": "wiki-concepts-autoencoder",
+      "label": "Autoencoder / VAE（自编码器与变分自编码器）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/diffusion-transformer.md",
+      "detail_id": "wiki-concepts-diffusion-transformer",
+      "label": "DiT（Diffusion Transformer）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/generative-adversarial-network.md",
+      "detail_id": "wiki-concepts-generative-adversarial-network",
+      "label": "GAN（Generative Adversarial Network，生成对抗网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/graph-neural-network.md",
+      "detail_id": "wiki-concepts-graph-neural-network",
+      "label": "GNN（Graph Neural Network，图神经网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
     {
       "path": "wiki/concepts/gru.md",
       "detail_id": "wiki-concepts-gru",
@@ -15,7 +64,68 @@
       "type": "concept",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/mamba.md",
+      "detail_id": "wiki-concepts-mamba",
+      "label": "Mamba",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/mixture-of-experts.md",
+      "detail_id": "wiki-concepts-mixture-of-experts",
+      "label": "MoE（Mixture-of-Experts，混合专家）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/mlp.md",
+      "detail_id": "wiki-concepts-mlp",
+      "label": "MLP / Feedforward NN（多层感知机）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/recurrent-neural-network.md",
+      "detail_id": "wiki-concepts-recurrent-neural-network",
+      "label": "RNN / LSTM / GRU（循环神经网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/temporal-convolutional-network.md",
+      "detail_id": "wiki-concepts-temporal-convolutional-network",
+      "label": "TCN（Temporal Convolutional Network，时间卷积网络）",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/concepts/unet.md",
+      "detail_id": "wiki-concepts-unet",
+      "label": "U-Net",
+      "type": "concept",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/booster-mjlab.md",
@@ -88,8 +198,7 @@
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/robot-simulation-three-layers.md",
@@ -99,146 +208,26 @@
       "recency": "2026-09-20",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/painode-009-alfred.md",
-      "detail_id": "entity-painode-009-alfred",
-      "label": "ALFRED",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-010-arnold.md",
-      "detail_id": "entity-painode-010-arnold",
-      "label": "ARNOLD",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-011-carlaleaderboard.md",
-      "detail_id": "entity-painode-011-carlaleaderboard",
-      "label": "CARLA Leaderboard",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-012-colosseum.md",
-      "detail_id": "entity-painode-012-colosseum",
-      "label": "Colosseum",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-013-furniturebench.md",
-      "detail_id": "entity-painode-013-furniturebench",
-      "label": "FurnitureBench",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-018-minedojo.md",
-      "detail_id": "entity-painode-018-minedojo",
-      "label": "MineDojo",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-019-openeqa.md",
-      "detail_id": "entity-painode-019-openeqa",
-      "label": "OpenEQA",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-021-robothor.md",
-      "detail_id": "entity-painode-021-robothor",
-      "label": "RoboTHOR",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-023-teach.md",
-      "detail_id": "entity-painode-023-teach",
-      "label": "TEACh",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-024-vlabench.md",
-      "detail_id": "entity-painode-024-vlabench",
-      "label": "VLABench",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-083-argoverse2.md",
-      "detail_id": "entity-painode-083-argoverse2",
-      "label": "Argoverse 2",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/gru.md",
-    "detail_id": "wiki-concepts-gru",
-    "label": "GRU（Gated Recurrent Unit，门控循环单元）",
-    "type": "concept",
+    "path": "wiki/overview/ai-architecture-map.md",
+    "detail_id": "wiki-overview-ai-architecture-map",
+    "label": "AI 架构地图（Neural Network Architecture Map）",
+    "type": "overview",
     "recency": "2026-09-21",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 758
+      "size": 768
     },
     {
       "label": "操作",
-      "size": 673
+      "size": 680
     },
     {
       "label": "仿真到现实",
@@ -249,12 +238,12 @@
       "size": 298
     },
     {
-      "label": "具身评测基准选型闭环",
+      "label": "视觉-语言-动作",
       "size": 238
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 238
+      "label": "具身评测基准选型闭环",
+      "size": 215
     }
   ],
   "top_hubs": [
@@ -270,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1310,
+      "degree": 1314,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -293,7 +282,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 985,
+      "degree": 986,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
