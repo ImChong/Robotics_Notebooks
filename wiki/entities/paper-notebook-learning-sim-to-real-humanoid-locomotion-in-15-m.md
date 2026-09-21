@@ -1,85 +1,156 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
-status: stub
-updated: 2026-09-20
+tags: [paper, humanoid, rl, sim2real, off-policy, fastsac, unitree-g1, booster-t1, amazon-far]
+status: complete
+updated: 2026-09-21
 arxiv: "2512.01996"
+code: https://github.com/amazon-far/holosoma
 related:
   - ../methods/flashsac.md
+  - ./holosoma.md
+  - ../tasks/humanoid-locomotion.md
+  - ../concepts/sim2real.md
+  - ../comparisons/ppo-vs-sac.md
   - ../overview/paper-notebook-category-03-high-impact-selection.md
   - ../overview/humanoid-paper-notebooks-index.md
   - ./paper-fddc.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
-  - ../../sources/papers/freedof_sim2real_44_catalog.md
+  - ../../sources/sites/fastsac-humanoid-amazon-far.md
   - ../../sources/papers/humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md
+  - ../../sources/repos/holosoma.md
   - ../../sources/papers/flashsac_arxiv_2604_04539.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
-  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
-summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模并行调参的 FastSAC / FastTD3（离策略 RL） 配合 极简奖励 + 强域随机化（动力学、粗糙地形、推扰、延迟等），把 全关节人形速度跟踪 的训练墙钟时间压到约 15 分钟，并在 G1 / T1 上完成 sim-to-real；同一套配方也可加速 全身人形动作跟踪（相对 PPO 更快）。"
+summary: "Amazon FAR：单张 RTX 4090 + 数千并行仿真下，用为大规模并行调参的 FastSAC/FastTD3、极简奖励与强域随机化，约 15 分钟训出 G1/T1 全关节 sim-to-real 行走；同一配方加速 WBT；官方实现已开源于 Holosoma。"
 ---
 
 # Learning Sim-to-Real Humanoid Locomotion in 15 Minutes
 
-**Learning Sim-to-Real Humanoid Locomotion in 15 Minutes** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：03_High_Impact_Selection）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**Learning Sim-to-Real Humanoid Locomotion in 15 Minutes**（[arXiv:2512.01996](https://arxiv.org/abs/2512.01996)，Amazon FAR）提出面向 **Unitree G1 / Booster T1** 的 **FastSAC / FastTD3** 人形 sim-to-real 配方：在 **单张 RTX 4090**、**数千并行环境** 下，用 **极简奖励 + 强域随机化**（动力学、粗糙地形、推扰、action-rate 课程）把 **全关节速度跟踪** 训练墙钟压到 **约 15 分钟**，并完成真机迁移；项目页演示 **WBT**（box lifting、dancing 等）。**官方实现已开源**于 [Holosoma](./holosoma.md)（[amazon-far/holosoma](https://github.com/amazon-far/holosoma)）。
 
 ## 一句话定义
 
-在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模并行调参的 FastSAC / FastTD3（离策略 RL） 配合 极简奖励 + 强域随机化（动力学、粗糙地形、推扰、延迟等），把 全关节人形速度跟踪 的训练墙钟时间压到约 15 分钟，并在 G1 / T1 上完成 sim-to-real；同一套配方也可加速 全身人形动作跟踪（相对 PPO 更快）。
+**把 off-policy 人形 RL 的迭代单位从「天/小时」改成「分钟」：FastSAC/FastTD3 大规模并行调参 + 强 DR，单卡 15 分钟出可部署 G1/T1 行走策略。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| FastSAC | Fast Soft Actor-Critic | 面向大规模并行仿真调参的 SAC 变体 |
+| FastTD3 | Fast Twin Delayed DDPG | 面向大规模并行仿真调参的 TD3 变体 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升 sim-to-real |
+| WBT | Whole-Body Tracking | 全身参考动作/技能跟踪任务 |
+| Sim2Real | Simulation to Real | 仿真策略迁移真机 |
+| G1 | Unitree G1 Humanoid | 论文与项目页主要真机平台之一 |
+| T1 | Booster T1 Humanoid | 论文与项目页另一真机平台 |
 
 ## 为什么重要
 
-- 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
-- 后续 **[FlashSAC](../methods/flashsac.md)**（arXiv:2604.04539）在同一 off-policy 墙钟加速脉络上，用更大网络与范数约束进一步挑战 PPO 默认地位；本文 FastSAC/FastTD3 配方可视为其前驱小网络路线。
+- **墙钟革命：** 让人形 sim-to-real **日常可迭代**（15 min 级），降低算法/奖励/DR 试错的组织成本。
+- **Holosoma 生态锚点：** 项目页与论文共用 **Holosoma** 开源栈（训练 + 推理 + 重定向），后续 [LooperMuscle](./paper-loopermuscle.md)、[FDDC](./paper-fddc.md) 等多在此基座上扩展。
+- **FlashSAC 前驱：** [FlashSAC](../methods/flashsac.md) 在同一 off-policy 墙钟脉络上用 **更大网络 + 范数约束** 换渐近性能；本文是 **~0.2M 小网络极速路线**。
 
 ## 核心信息
 
-| 字段 | 内容 |
-|------|------|
-| 分类 | 03_High_Impact_Selection |
-| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html> |
-| arXiv | <https://arxiv.org/abs/2512.01996> |
+| 项 | 内容 |
+|----|------|
+| **机构** | Amazon FAR（Frontier AI & Robotics） |
+| **项目页** | <https://younggyo.me/fastsac-humanoid/> |
+| **论文** | <https://arxiv.org/abs/2512.01996> |
+| **代码** | **已开源** — [amazon-far/holosoma](https://github.com/amazon-far/holosoma)（Apache-2.0） |
+| **硬件** | 训练：单张 RTX 4090；真机：G1、T1 |
+| **训练墙钟** | Locomotion **~15 min**（项目页视频均为 15 min checkpoint） |
 
-## 实验与评测
+## 核心原理
 
-- 本页为 **策展清单索引** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+### 配方三要素
+
+1. **Off-policy 大规模并行：** FastSAC / FastTD3 针对 **数千 env** 重新调参（相对经典 SAC/TD3 更稳、更快 wall-clock）。
+2. **极简奖励：** 速度跟踪 + 少量正则（含 **action-rate 课程**），避免复杂 shaping 拖慢收敛。
+3. **强域随机化：** 动力学、粗糙地形、推扰等 **端到端** 与策略同训，支撑 zero-shot sim-to-real。
+
+### 流程总览
+
+```mermaid
+flowchart TB
+  sim["IsaacGym / IsaacSim\n数千并行 G1/T1"]
+  algo["FastSAC / FastTD3\n~15 min @ RTX 4090"]
+  dr["DR：动力学·地形·推扰\n+ action-rate 课程"]
+  ckpt["Checkpoint / Wandb"]
+  inf["holosoma_inference\nMuJoCo / 真机"]
+  sim --> dr --> algo --> ckpt --> inf
+```
+
+## 源码运行时序图
+
+官方实现见 [Holosoma](https://github.com/amazon-far/holosoma)（归档 [sources/repos/holosoma.md](../../sources/repos/holosoma.md)）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Setup as scripts/setup_isaacgym.sh
+    participant Train as holosoma/train_agent.py<br/>exp:g1-29dof-fast-sac
+    participant Sim as IsaacGym 并行 env
+    participant WB as Wandb / checkpoint
+    participant Inf as holosoma_inference
+    participant Robot as G1 / T1 真机
+    Dev->>Setup: 安装 IsaacGym 栈
+    Dev->>Train: FastSAC locomotion 训练
+    loop ~15 min 墙钟
+        Train->>Sim: 批量 rollout + DR
+        Sim-->>Train: transitions
+        Train->>Train: FastSAC 更新
+    end
+    Train->>WB: 保存 ONNX / pt
+    Dev->>Inf: 加载 checkpoint
+    Inf->>Robot: sim-to-real 部署
+```
+
+## 工程实践
+
+| 项 | 建议 |
+|----|------|
+| **入口** | `exp:g1-29dof-fast-sac`（G1）；T1 见 Holosoma 配置族 |
+| **对照** | 同仓 **PPO** 基线可用，但墙钟通常显著更长 |
+| **延伸** | WBT、OmniRetarget 重定向见 Holosoma 三子包文档 |
+| **后继** | 要渐近性能 → [FlashSAC](../methods/flashsac.md)；要 WBT 质量/墙钟平衡 → [LooperMuscle](./paper-loopermuscle.md) |
+
+## 局限与风险
+
+- **小网络上限：** FastSAC/FastTD3 配方优先 **速度**；极限性能由 FlashSAC 等 scaling 路线承接。
+- **仿真器依赖：** IsaacGym/IsaacSim 安装与 GPU 驱动仍是环境门槛。
+- **15 min 非万能：** 复杂 WBT/接触丰富技能仍需更长训练或架构改动（见项目页 WBT 演示 vs locomotion 训练时长说明）。
 
 ## 结论
 
-**这篇工作押的是「墙钟时间」而不是渐进性能：用为大规模并行重新调参的离策略 RL，把人形速度跟踪的训练压到单卡约 15 分钟，让 sim-to-real 从项目级实验变成可反复迭代的日常操作。**
+**这篇工作把 sim-to-real 人形 RL 的瓶颈从算法渐近性能改成工程迭代频率：15 分钟一版策略，让 DR/奖励/并行规模实验成为日常操作。**
 
-- 起作用的是算法侧与环境侧的配合：FastSAC / FastTD3 针对数千并行环境重新调参，配上极简奖励与覆盖动力学、粗糙地形、推扰、延迟的强域随机化。
-- 关键指标是训练墙钟时间（单张 RTX 4090 上约 15 分钟）与真机可迁移性（G1 / T1 完成 sim-to-real），而不是最终性能上限。
-- 配方具备一定通用性：同一套做法也能加速全身人形动作跟踪，相对 PPO 更快。
-- 与 [FlashSAC](../methods/flashsac.md) 对照：本文属小网络路线的前驱，FlashSAC 在同一 off-policy 墙钟加速脉络上改用更大网络与范数约束，继续挑战 PPO 的默认地位。
-- 本页为策展笔记摘要，量化 benchmark 与消融以深读笔记与论文 PDF 为准。
+- 关键杠杆是 **FastSAC/FastTD3 × 数千并行 × 极简奖励 × 强 DR** 的组合，而非单一 trick。
+- 真机证据覆盖 **G1/T1** 行走、侧走、转向与推扰恢复（项目页视频均来自 15 min checkpoint）。
+- **Holosoma 已开源**，是复现与扩展的单一入口（locomotion、WBT、重定向同仓）。
+- 与 FlashSAC 的关系：本文是 **小网络极速前驱**；FlashSAC 用更大模型与稳定机制换 **渐近性能 + 仍保持分钟– tens of minutes 墙钟**。
+- Paper Notebooks 深读笔记仍适合补 **消融与超参** 细节；量化表格以 arXiv PDF 为准。
 
-## 与其他页面的关系
+## 关联页面
 
-- [FlashSAC（方法页）](../methods/flashsac.md)
-- 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)
-- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
-- [FDDC](./paper-fddc.md) — 用 asymmetric FastSAC（本文配方脉络）训可部署单腿平衡策略（arXiv:2608.00500）
-- [LooperMuscle](./paper-loopermuscle.md) — FastSAC 基座 + 结构化 MoE 把 WBT 墙钟–质量鸿沟收窄（arXiv:2608.00820；~45 min vs PPO ~6 h）
-- [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 改版 FastTD3 + 稀疏 loco-manip；SMPC 专家数据（arXiv:2608.12063）
+- [Holosoma（实体）](./holosoma.md)
+- [FlashSAC（方法）](../methods/flashsac.md)
+- [Humanoid Locomotion（任务）](../tasks/humanoid-locomotion.md)
+- [Sim2Real（概念）](../concepts/sim2real.md)
+- [FDDC](./paper-fddc.md) — asymmetric FastSAC 单腿平衡（arXiv:2608.00500）
 
 ## 参考来源
 
+- [fastsac-humanoid-amazon-far.md](../../sources/sites/fastsac-humanoid-amazon-far.md) — 项目页 ingest（2026-09-21）
 - [humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md](../../sources/papers/humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md)
-- [flashsac_arxiv_2604_04539.md](../../sources/papers/flashsac_arxiv_2604_04539.md) — 后继 scaling 式 off-policy（FlashSAC）
-- [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — asymmetric FastSAC 单腿应用
-- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html>
+- [holosoma.md](../../sources/repos/holosoma.md) — 官方开源仓
+- 项目页：<https://younggyo.me/fastsac-humanoid/>
 - 论文：<https://arxiv.org/abs/2512.01996>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html)
+- [Holosoma GitHub README](https://github.com/amazon-far/holosoma) — 训练/部署命令
+- [FlashSAC 项目页](https://holiday-robot.github.io/FlashSAC/) — 后继 scaling off-policy
+- Paper Notebooks 深读：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html>

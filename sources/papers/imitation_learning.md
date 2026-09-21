@@ -6,7 +6,7 @@
 - **类型：** paper
 - **来源：** arXiv / conference
 - **入库日期：** 2026-04-08
-- **最后更新：** 2026-04-14
+- **最后更新：** 2026-09-21
 - **一句话说明：** 聚焦模仿学习核心算法与机器人动作生成路线，为 IL 页面持续提供可溯源输入。
 
 ## 核心论文摘录（MVP）
@@ -14,7 +14,10 @@
 ### 1) A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning (Ross et al., 2011)
 - **链接：** <https://proceedings.mlr.press/v15/ross11a.html>
 - **核心贡献：** 提出 DAgger，系统解决 BC 的 covariate shift 问题。
+- **专用 ingest 档案：** [ross_dagger_aistats_2011.md](./ross_dagger_aistats_2011.md)
 - **对 wiki 的映射：**
+  - [paper-ross-dagger](../../wiki/entities/paper-ross-dagger.md)
+  - [DAgger](../../wiki/methods/dagger.md)
   - [Imitation Learning](../../wiki/methods/imitation-learning.md)
   - [Inverse Reinforcement Learning](../../wiki/methods/inverse-reinforcement-learning.md) — IRL 是 BC compounding error 的另一条对策（学 $r$ 而非逐步回标）
 

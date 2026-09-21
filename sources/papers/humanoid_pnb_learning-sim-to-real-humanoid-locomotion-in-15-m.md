@@ -8,7 +8,10 @@
 - **分类：** 03_High_Impact_Selection
 - **子分类：** 行走经典
 - **arXiv：** <https://arxiv.org/abs/2512.01996>
+- **项目页：** <https://younggyo.me/fastsac-humanoid/>
+- **代码：** <https://github.com/amazon-far/holosoma>（**已开源**）
 - **入库日期：** 2026-06-07
+- **最后更新：** 2026-09-21
 - **一句话说明：** 在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模并行调参的 FastSAC / FastTD3（离策略 RL） 配合 极简奖励 + 强域随机化（动力学、粗糙地形、推扰、延迟等），把 全关节人形速度跟踪 的训练墙钟时间压到约 15 分钟，并在 G1 / T1 上完成 sim-to-real；同一套配方也可加速 全身人形动作跟踪（相对 PPO 更快）。
 
 ## 核心摘录（策展，非全文）
@@ -18,6 +21,8 @@
 
 ## 对 wiki 的映射
 
+- [fastsac-humanoid-amazon-far.md](../sites/fastsac-humanoid-amazon-far.md) — 项目页 ingest（2026-09-21）
+- [holosoma.md](../repos/holosoma.md) — 官方开源实现
 - [paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m](../../wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md)
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../../wiki/overview/paper-notebook-category-03-high-impact-selection.md)
 
