@@ -1,3 +1,8 @@
+## [2026-09-21] ingest | sources/papers/relateanything_arxiv_2609_12552.md — RelateAnything 实时开放词汇关系预测；RA-4M + OV-SGG-Bench；代码/权重/数据已开源
+
+- **意图：** 用户指定 ingest arXiv:2609.12552 + 项目页/GitHub/HF 模型与 RA-4M；新建 [paper-relateanything](wiki/entities/paper-relateanything.md) 并交叉空间推理地图与 ConceptGraphs。
+- **开源结论：** **已开源** — `Maelic/RelateAnything`（Apache-2.0）、HF relsgg 三档权重、RA-4M + OV-SGG-Bench、浏览器 ONNX demo。
+
 ## [2026-09-21] ingest | 空间推理 batch（MolmoAct2/PointArena/RoboRefer/RoboSpatial/RoboPoint/Cambrian/EmbSpatial/Gemini arXiv）— 14 URL 深度入库 + spatial-reasoning-benchmarks 技术地图
 
 - **意图：** 用户指定 8 篇 arXiv + 6 项目页 batch ingest；升格 RoboSpatial/RefSpatial/EmbSpatial/MolmoER stub 并新建 PointArena/RoboRefer/RoboPoint/Cambrian/MolmoAct2 等实体。
