@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, quasi-newton, bfgs, trajectory-optimization, numerical-methods]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./bfgs.md
   - ./l-bfgs.md

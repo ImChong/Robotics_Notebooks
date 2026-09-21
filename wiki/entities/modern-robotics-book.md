@@ -3,7 +3,7 @@
 type: entity
 tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational, northwestern]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./python-robotics.md
   - ./learn-robotics-qqfly-guide.md
@@ -11,6 +11,7 @@ related:
   - ../formalizations/se3-representation.md
   - ../formalizations/forward-kinematics.md
   - ../formalizations/inverse-kinematics.md
+  - ../methods/newtons-method.md
   - ../formalizations/robot-jacobian.md
   - ../concepts/floating-base-dynamics.md
   - ../concepts/whole-body-control.md
@@ -56,7 +57,7 @@ summary: "Lynch & Park 的现代机器人学经典教材，独特之处是全程
 | Ch 3 | Rigid-Body Motions | [李群与刚体运动](../formalizations/lie-group-rigid-body-motions.md)、[SE(3) Representation](../formalizations/se3-representation.md) |
 | Ch 4 | Forward Kinematics (PoE) | （部分隐含在 [pinocchio](./pinocchio.md)） |
 | Ch 5 | Velocity Kinematics & Statics | （隐含在 [whole-body-control](../concepts/whole-body-control.md) 的 Jacobian 部分） |
-| Ch 6 | Inverse Kinematics | （未直接覆盖） |
+| Ch 6 | Inverse Kinematics | [Newton–Raphson / 数值 IK](../methods/newtons-method.md)、[逆运动学形式化](../formalizations/inverse-kinematics.md) |
 | Ch 7 | Closed Chains | （未直接覆盖） |
 | Ch 8 | Dynamics of Open Chains | [Floating Base Dynamics](../concepts/floating-base-dynamics.md) |
 | Ch 9 | Trajectory Generation | [Trajectory Optimization](../methods/trajectory-optimization.md) |

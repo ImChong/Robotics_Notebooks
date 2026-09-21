@@ -111,7 +111,7 @@
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
 - wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/next-ai-draw-io.md updated=2026-09-21）
-- wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/paper-code-as-world.md updated=2026-09-21）
+- wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/curobo.md updated=2026-09-21）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无

@@ -63,6 +63,7 @@
 
 ## 辅助一手资料
 
+- [Newton–Raphson 法一手资料汇编](newton_raphson_method_primary_refs.md) — Raphson (1690) 求根原典 + *Modern Robotics* Example 6.1 IK 算例
 - [数值优化基础（机器人应用）课程](../../sources/courses/numerical_optimization_foundations_robotics.md) — 第 1 章阻尼牛顿、第 2 章 BFGS/CG
 - Nocedal & Wright, *Numerical Optimization* (2nd ed.) — Ch 2（线搜索）、Ch 6（拟牛顿）、Ch 7（大规模无约束）、Ch 10（最小二乘）
 

@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, bfgs, quasi-newton, numerical-methods, trajectory-optimization]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 summary: "BFGS 用梯度差分低秩更新近似 Hessian 逆，凸光滑问题超线性收敛，是中低维 NLP 的经典拟牛顿法。"
 related:
   - ./l-bfgs.md

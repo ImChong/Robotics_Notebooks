@@ -4157,7 +4157,7 @@
 - [Nesterov Momentum（Nesterov 加速梯度）](wiki/methods/nesterov-momentum.md) — Nesterov Accelerated Gradient（NAG）**：在施加动量更新 **之前**，先沿当前速度方向做一步「前瞻」，在 **前瞻点** 计算梯度。相比经典 [SGD Momen `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](wiki/methods/neural-motion-retargeting-nmr.md) — NMR（Neural Motion Retargeting）** 面向「人体 SMPL（或同类）序列 → 人形机器人可执行全身轨迹」：不把重定向当成孤立的逐帧几何优化，而是用**可扩展的监督数据  `📅unknown` `[method_page]`
 - [Neural Network Compensation Control（神经网络补偿控制）](wiki/methods/neural-network-compensation-control.md) — NN 补偿：离线训练网络拟合动力学残差，运行时并联输出补偿力矩，修正解析模型未覆盖的非线性。 `📅unknown` `[method_page]`
-- [Newton's Method（牛顿法）](wiki/methods/newtons-method.md) — 牛顿法（Newton's method）**：在当前点用 **Hessian** $\nabla^2 f(x_k)$ 构造二次模型，搜索方向 $p_k = -(\nabla^2 f(x_k))^{ `📅unknown` `[method_page]`
+- [Newton's Method / Newton–Raphson（牛顿–拉夫森法）](wiki/methods/newtons-method.md) — 牛顿–拉夫森法（Newton–Raphson method）**：对可微 $g(\theta)=0$，在当前点用 **一阶 Taylor 展开** 线性化并解修正量；标量式为经典 NR 迭代，向量 `📅unknown` `[method_page]`
 - [Nonlinear Model Predictive Control（NMPC）](wiki/methods/nonlinear-model-predictive-control.md) — NMPC（非线性 MPC）**：在每个控制周期求解 **非线性** 有限时域 OCP——非线性动力学 $x_{k+1}=f(x_k,u_k)$、非线性代价与约束（碰撞、摩擦等），只执行首步控制后滚 `📅unknown` `[method_page]`
 - [目标检测（Object Detection）](wiki/methods/object-detection.md) — 目标检测**在给定图像中同时回答 **「有什么物体」** 与 **「在哪里（边界框）」**；在机器人中它为 **抓取、导航、人机交互** 提供 **物体级语义与几何锚点**。 `📅unknown` `[method_page]`
 - [Octo（开源 Generalist Policy）](wiki/methods/octo-model.md) — Octo**（arXiv:2405.12213，[代码](https://github.com/octo-models/oc `📅unknown` `[method_page]`
