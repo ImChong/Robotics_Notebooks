@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/next-ai-draw-io.md",
+      "detail_id": "entity-next-ai-draw-io",
+      "label": "Next AI Draw.io",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/concepts/humanoid-cognitive-reliability-gap.md",
       "detail_id": "wiki-concepts-humanoid-cognitive-reliability-gap",
       "label": "人形认知可靠性鸿沟（抓杯 vs 过马路）",
@@ -211,27 +222,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-094-robomind.md",
-      "detail_id": "entity-painode-094-robomind",
-      "label": "RoboMIND",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/humanoid-cognitive-reliability-gap.md",
-    "detail_id": "wiki-concepts-humanoid-cognitive-reliability-gap",
-    "label": "人形认知可靠性鸿沟（抓杯 vs 过马路）",
-    "type": "concept",
-    "recency": "2026-09-20",
+    "path": "wiki/entities/next-ai-draw-io.md",
+    "detail_id": "entity-next-ai-draw-io",
+    "label": "Next AI Draw.io",
+    "type": "entity",
+    "recency": "2026-09-21",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
