@@ -2,12 +2,13 @@
 type: concept
 tags: [friction, actuator, system-identification, sim2real, modeling]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./system-identification.md
   - ./friction-compensation.md
   - ./robot-link-and-rotor-inertia.md
   - ../methods/joint-actuator-parameter-identification.md
+  - ../methods/ssrm-steady-state-response-method.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
   - ../entities/bam-better-actuator-models.md

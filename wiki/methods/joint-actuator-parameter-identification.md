@@ -2,8 +2,9 @@
 type: method
 tags: [system-identification, actuator, friction, armature, sim2real, identification]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
+  - ./ssrm-steady-state-response-method.md
   - ../concepts/system-identification.md
   - ../concepts/humanoid-closed-loop-inertia-calibration.md
   - ../concepts/joint-friction-models.md
@@ -22,6 +23,7 @@ related:
   - ../overview/hub-actuator-drive-chain.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
+  - ../../sources/papers/ssrm_steady_state_response_method.md
   - ../../sources/papers/joint_actuator_parameter_identification.md
   - ../../sources/repos/flobaroid.md
   - ../../sources/sites/bam-readthedocs.md
@@ -69,6 +71,7 @@ $I_a\ddot q$ 就是 MuJoCo `armature` 对力矩的贡献。扩展模型再加 St
 
 | 路线 | 机制 | 需要什么 | 开源入口 |
 |------|------|----------|----------|
+| SSRM 稳态响应法 | 恒速 → $b,\tau_c$；恒扭矩 → 阈值/偏置；$J$ 配 TRM | 单关节、最好有力矩/电流 | 见 [SSRM](./ssrm-steady-state-response-method.md)；BAM 摆锤补 $J$ |
 | 解耦台架 | 匀速 → LS 拟合 $b,\tau_c$；摆锤/自由振荡估 $I_a$ | 单关节可控、最好有电流/力矩 | 自己写十几行；BAM 把摆锤自动化 |
 | 线性回归 + Fourier | Swevers：周期 Fourier 激励；$Y$ 含惯性与 Coulomb/Viscous 列；OLS/MLE | **关节力矩**（或可靠电流×$K_t$） | [FloBaRoID](../entities/flobaroid.md)；$Y_{\mathrm{rb}}$ 用 Pinocchio `computeJointTorqueRegressor` |
 | 两步浮动基 | Ayusawa：基座 wrench **不含关节摩擦** → 先估惯性，再对关节残差拟合摩擦 | 浮动基 + 基座 IMU/力或等效 | FloBaRoID `identifier.py` |
@@ -124,6 +127,7 @@ flowchart TB
 
 ## 关联页面
 
+- [SSRM（稳态响应法）](./ssrm-steady-state-response-method.md) — 恒速/恒扭矩先拆 $B,T_c,T_{\mathrm{bias}}$，再进动态段
 - [关节动力学辨识实验设计](./sim2real-joint-sysid-experiment-design.md) — 可辨识性与分级实验（延迟→摩擦→惯量→柔性）
 - [System Identification](../concepts/system-identification.md) — 更宽的 SysID 层级（刚体 / 执行器 / 接触）
 - [人形整机闭环惯量标定](../concepts/humanoid-closed-loop-inertia-calibration.md) — 台架 \(I_a\) 覆盖不了装机后分布式质量；整机用闭环辨识
@@ -142,6 +146,7 @@ flowchart TB
 ## 参考来源
 
 - [自由度FreeDof：Sim2Real 动力学辨识实验设计](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 纠缠参数与分级实验
+- [SSRM 稳态响应法论文簇](../../sources/papers/ssrm_steady_state_response_method.md)
 - [关节执行器参数辨识论文簇](../../sources/papers/joint_actuator_parameter_identification.md)
 - [FloBaRoID 仓库](../../sources/repos/flobaroid.md)
 - [BAM 文档站](../../sources/sites/bam-readthedocs.md)

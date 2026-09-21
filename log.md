@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/papers/ssrm_steady_state_response_method.md — 接入 SSRM 稳态响应法方法页与经典摩擦/惯量辨识文献簇
+
 ## [2026-09-21] ingest | sources/repos/birdview.md — Qiuner/birdview Architecture-first 编码代理 Skill；MIT 已开源，项目页 qiuner.github.io/birdview
 
 - **意图：** 用户指定 ingest `Qiuner/birdview`。
