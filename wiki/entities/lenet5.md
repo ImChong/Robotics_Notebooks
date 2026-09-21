@@ -6,7 +6,7 @@ tags:
   - image-classification
   - deep-learning
 status: complete
-updated: 2026-08-12
+updated: 2026-09-21
 summary: "LeNet-5 是早期卷积分类网络（约 1998）：卷积+池化+全连接完成手写数字识别，奠定现代 CNN 分层特征提取范式。"
 related:
   - ../concepts/convolutional-neural-network.md
@@ -61,12 +61,14 @@ flowchart LR
 ## 关联页面
 
 - [CNN](../concepts/convolutional-neural-network.md)
+- [AI 架构地图](../overview/ai-architecture-map.md)
 - [MNIST](./dataset-mnist.md)
 - [AlexNet](./alexnet.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 
 ## 参考来源
 
+- [LeCun et al. 文档识别梯度学习（1998）](../../sources/papers/lecun_gradient_based_learning_1998.md)
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
 
 ## 推荐继续阅读

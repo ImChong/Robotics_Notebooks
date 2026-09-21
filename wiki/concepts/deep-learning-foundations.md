@@ -2,12 +2,14 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../entities/embodied-interview-qa.md
   - ./backpropagation.md
   - ./vision-backbones.md
   - ./transformer.md
+  - ../overview/ai-architecture-map.md
+  - ./mlp.md
   - ../methods/object-detection.md
   - ../methods/sgd.md
   - ../methods/adam.md
@@ -69,6 +71,8 @@ sources:
 - **生成 (Generation)**: [生成式模型基础](../formalizations/generative-foundations.md) 为动作轨迹生成提供数学底座。
 
 ## 关联页面
+- [AI 架构地图](../overview/ai-architecture-map.md) — 前馈 / 空间 / 序列 / 生成 / 图 / 决策六支选型
+- [MLP](./mlp.md)
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷一通识基础（梯度 / 归一化 / Transformer）面试速查
 - [反向传播算法](./backpropagation.md)
 - [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)

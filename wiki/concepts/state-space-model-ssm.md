@@ -7,14 +7,18 @@ tags:
   - sequence-modeling
   - deep-learning
 status: complete
-updated: 2026-08-12
+updated: 2026-09-21
 summary: "状态空间模型用隐状态递推刻画序列动力学；Mamba 等选择性 SSM 在保持近线性复杂度的同时获得强长程建模，成为 Transformer 的重要替代路线。"
 related:
   - ../comparisons/rnn-cnn-transformer-mamba.md
   - ../entities/vision-mamba-vim.md
   - ../concepts/transformer.md
+  - ../concepts/mamba.md
+  - ../overview/ai-architecture-map.md
   - ../entities/transformer-cv-curriculum.md
 sources:
+  - ../../sources/papers/gu_s4_arxiv_2111_00396.md
+  - ../../sources/papers/gu_mamba_arxiv_2312_00752.md
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
 
@@ -63,6 +67,8 @@ flowchart LR
 
 ## 关联页面
 
+- [Mamba](./mamba.md)
+- [AI 架构地图](../overview/ai-architecture-map.md)
 - [RNN/CNN/Transformer/Mamba 对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Vision Mamba](../entities/vision-mamba-vim.md)
 - [VMamba](../entities/vmamba.md)
@@ -70,6 +76,8 @@ flowchart LR
 
 ## 参考来源
 
+- [S4（arXiv:2111.00396）](../../sources/papers/gu_s4_arxiv_2111_00396.md)
+- [Mamba（arXiv:2312.00752）](../../sources/papers/gu_mamba_arxiv_2312_00752.md)
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
 
 ## 推荐继续阅读

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-learning, rl, il, imitation, reinforcement]
 status: complete
-updated: 2026-08-28
+updated: 2026-09-21
 summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行为克隆与 model-based 路线的选型、数据需求与机器人落地注意点。"
 ---
 
@@ -35,6 +35,7 @@ summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行�
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
 | 总览 | 机器人学习全景 | [Robot Learning Overview](./robot-learning-overview.md) |
+| 总览 | 网络函数族选型 | [AI 架构地图](./ai-architecture-map.md) |
 | 方法 | RL / IL / IRL | [Reinforcement Learning](../methods/reinforcement-learning.md)、[Imitation Learning](../methods/imitation-learning.md)、[Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md) |
 | 对比 | RL vs IL / PPO vs SAC | [RL vs IL](../comparisons/rl-vs-il.md)、[PPO vs SAC](../comparisons/ppo-vs-sac.md) |
 | 概念 | 奖励设计 / 课程 | [Reward Design](../concepts/reward-design.md)、[Curriculum Learning](../concepts/curriculum-learning.md) |
@@ -53,10 +54,12 @@ summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行�
 - [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md)
 - [Deep RL Game Milestones](../concepts/deep-rl-game-milestones.md)
+- [AI 架构地图](./ai-architecture-map.md)
 
 ## 参考来源
 
 - 本库归纳自 [Robot Learning Overview](./robot-learning-overview.md) 及 methods/comparisons 学习系列页
+- [AI 架构地图](./ai-architecture-map.md) — 策略骨干函数族
 - [IRL 一手论文索引](../../sources/papers/inverse_reinforcement_learning_primary_refs.md)
 - [RL Runner 类型谱系](../../sources/personal/rl_runner_types.md) — 训练循环编排层
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`learning` 命中规则）

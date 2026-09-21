@@ -9,7 +9,7 @@ tags:
   - classification
   - perception
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 arxiv: "1512.03385"
 venue: "CVPR 2016"
 code: https://github.com/KaimingHe/deep-residual-networks
@@ -107,6 +107,7 @@ flowchart LR
 
 ## 关联页面
 
+- [AI 架构地图](../overview/ai-architecture-map.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [目标检测（方法）](../methods/object-detection.md)

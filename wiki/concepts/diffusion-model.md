@@ -2,9 +2,13 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../formalizations/generative-foundations.md
+  - ../overview/ai-architecture-map.md
+  - ./diffusion-transformer.md
+  - ./autoencoder.md
+  - ./generative-adversarial-network.md
   - ../methods/diffusion-policy.md
   - ../methods/diffusion-motion-generation.md
   - ../formalizations/probability-flow.md
@@ -14,6 +18,8 @@ related:
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/comfyui.md
 sources:
+  - ../../sources/papers/ho_ddpm_arxiv_2006_11239.md
+  - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
   - ../../sources/blogs/wechat_human_five_diffusion_model_intro.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 summary: "扩散模型通过固定前向加噪与可学习逆向降噪，把高难度一次性生成拆解为稳定的多步监督子任务；是 Diffusion Policy、运动扩散与世界模型等机器人生成式路线的共同底座。"
@@ -131,6 +137,10 @@ flowchart LR
 
 ## 关联页面
 
+- [AI 架构地图](../overview/ai-architecture-map.md)
+- [DiT](./diffusion-transformer.md)
+- [Autoencoder / VAE](./autoencoder.md)
+- [GAN](./generative-adversarial-network.md)
 - [生成式模型基础](../formalizations/generative-foundations.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [基于扩散的运动生成](../methods/diffusion-motion-generation.md)
@@ -145,6 +155,8 @@ flowchart LR
 
 ## 参考来源
 
+- [DDPM（arXiv:2006.11239）](../../sources/papers/ho_ddpm_arxiv_2006_11239.md)
+- [DiT（arXiv:2212.09748）](../../sources/papers/peebles_dit_arxiv_2212_09748.md)
 - [wechat_human_five_diffusion_model_intro.md](../../sources/blogs/wechat_human_five_diffusion_model_intro.md) — human five 微信公众号《Diffusion Model入门》（<https://mp.weixin.qq.com/s/P4SxYSBnxDjX5De1jxMxfA>）
 - [sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine @ Simons：扩散/flow 改造连续动作策略（官方 abstract）
 

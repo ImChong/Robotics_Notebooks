@@ -7,7 +7,7 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md

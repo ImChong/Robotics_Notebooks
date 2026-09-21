@@ -12,6 +12,10 @@ status: complete
 updated: 2026-09-21
 summary: "RNN/CNN/Transformer/Mamba 四类序列–视觉骨干对比：归纳偏置、长程依赖、并行度与推理复杂度，服务视觉骨干与时序建模选型。"
 related:
+  - ../overview/ai-architecture-map.md
+  - ../concepts/mamba.md
+  - ../concepts/recurrent-neural-network.md
+  - ../concepts/temporal-convolutional-network.md
   - ../concepts/transformer.md
   - ../concepts/gru.md
   - ../concepts/state-space-model-ssm.md
@@ -73,7 +77,11 @@ Benchmark 赢不等于机载赢；Mamba 生态与算子成熟度仍低于 Transf
 
 ## 关联页面
 
+- [AI 架构地图](../overview/ai-architecture-map.md)
 - [GRU](../concepts/gru.md)
+- [Mamba](../concepts/mamba.md)
+- [RNN / LSTM / GRU](../concepts/recurrent-neural-network.md)
+- [TCN](../concepts/temporal-convolutional-network.md)
 - [SSM](../concepts/state-space-model-ssm.md)
 - [Transformer](../concepts/transformer.md)
 - [Vision Mamba](../entities/vision-mamba-vim.md)
@@ -82,6 +90,8 @@ Benchmark 赢不等于机载赢；Mamba 生态与算子成熟度仍低于 Transf
 ## 参考来源
 
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
+- [AI 架构地图一手论文簇](../../sources/papers/ai_architecture_foundations.md)
+- [Mamba（arXiv:2312.00752）](../../sources/papers/gu_mamba_arxiv_2312_00752.md)
 
 ## 推荐继续阅读
 

@@ -2,9 +2,10 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-21
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
+  - ../overview/ai-architecture-map.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -536,6 +537,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/crosstracer_arxiv_2608_06688.md](../../sources/papers/crosstracer_arxiv_2608_06688.md) — CrossTracer：像素轨迹残差跨本体导航（arXiv:2608.06688）
 
 ## 关联页面
+- [AI 架构地图](../overview/ai-architecture-map.md) — VLA 在六支函数族中的决策层位置
 - [人形认知可靠性鸿沟](../concepts/humanoid-cognitive-reliability-gap.md) — VLA 已会抓 vs 仍缺情境常识、长时记忆与「暂停优先」
 - [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md) — VLA 常居「大脑层」；与 MPC/WBC、反射安全链的分工
 - [NeuroVLA](../entities/paper-neurovla.md) — 皮层–小脑–脊髓式脑启发 VLA（AlphaBrain 开源）

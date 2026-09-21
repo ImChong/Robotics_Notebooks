@@ -2,7 +2,7 @@
 type: formalization
 summary: "生成式模型基础描述通过学习数据分布生成新样本的概率建模框架，是 Diffusion Policy、世界模型和轨迹生成方法的数学底座。"
 description: 通过学习数据的底层分布来生成新样本的一类概率模型，包括 GANs, VAEs, Normalizing Flows 和 Diffusion Models。
-updated: 2026-07-04
+updated: 2026-09-21
 ---
 
 # 生成式模型基础 (Generative Foundations)
@@ -53,6 +53,10 @@ $$p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\t
 - **触觉模拟 (Tactile Simulation)**: 生成逼真触觉传感器数据。
 
 ## 关联页面
+- [AI 架构地图](../overview/ai-architecture-map.md)
+- [Autoencoder / VAE](../concepts/autoencoder.md)
+- [GAN](../concepts/generative-adversarial-network.md)
+- [DiT](../concepts/diffusion-transformer.md)
 - [扩散模型（概念）](../concepts/diffusion-model.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [潜空间想象 (Latent Imagination)](../concepts/latent-imagination.md)
@@ -60,6 +64,9 @@ $$p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\t
 
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
+- [VAE（arXiv:1312.6114）](../../sources/papers/kingma_vae_arxiv_1312_6114.md)
+- [GAN（arXiv:1406.2661）](../../sources/papers/goodfellow_gan_arxiv_1406_2661.md)
+- [AI 架构地图一手论文簇](../../sources/papers/ai_architecture_foundations.md)
 
 ## 推荐继续阅读
 - [Generative Deep Learning (David Foster)](https://www.oreilly.com/library/view/generative-deep-learning/9781098134174/)
