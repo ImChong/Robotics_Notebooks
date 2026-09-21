@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4697,
-  "edge_count": 41233,
+  "node_count": 4721,
+  "edge_count": 41404,
   "coverage": {
-    "covered": 4668,
-    "total": 4668,
+    "covered": 4692,
+    "total": 4692,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -129,8 +129,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/nymeria-dataset.md",
@@ -171,8 +170,7 @@
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-nymeria.md",
@@ -192,8 +190,7 @@
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/physical-commonsense-generalist.md",
@@ -212,8 +209,7 @@
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
@@ -233,7 +229,7 @@
     },
     {
       "label": "操作",
-      "size": 696
+      "size": 691
     },
     {
       "label": "仿真到现实",
@@ -245,11 +241,11 @@
     },
     {
       "label": "具身评测基准选型闭环",
-      "size": 267
+      "size": 273
     },
     {
       "label": "视觉-语言-动作",
-      "size": 238
+      "size": 236
     }
   ],
   "top_hubs": [
@@ -319,7 +315,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 624,
+      "degree": 627,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -337,7 +333,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 165,
+      "degree": 166,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -345,7 +341,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 90,
+      "degree": 91,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -379,6 +375,13 @@
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
+      "detail_id": "entity-paper-light-loco-parkour",
+      "label": "Light-Loco-Parkour（LightLP）",
+      "type": "entity",
+      "degree": 50,
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
@@ -400,14 +403,6 @@
       "type": "entity",
       "degree": 46,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "entity-paper-ctrl-world",
-      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
-      "type": "entity",
-      "degree": 45,
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ]
 }

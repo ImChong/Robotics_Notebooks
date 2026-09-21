@@ -126,6 +126,7 @@ flowchart TD
 代表算法：
 - **Policy Gradient (策略梯度)**：直接优化策略。
     - **PPO (Proximal Policy Optimization)**：目前工业界和学术界最稳健、最常用的策略梯度算法。
+    - **[GRPO](./grpo.md)（Group Relative Policy Optimization）**：组内相对 advantage，省去独立 critic；[LightNav-0](../entities/paper-lightnav-0.md) 导航后训练第三阶段与 LLM RLVR 变体常用。
     - **[deepmimic](deepmimic.md)**：经典的显式轨迹跟踪模仿学习。
     - **[amp-reward](amp-reward.md)**：基于判别器的对抗性动作先验学习。
     - **[ase](ase.md) / [smp](smp.md)**：更先进的层次化技能嵌入与生成式动作先验。

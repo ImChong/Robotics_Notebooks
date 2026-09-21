@@ -36,7 +36,7 @@ sources:
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
-  - ../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md
+  - ../entities/paper-locoformer.md
 summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、从上下文窗口内的示范或交互证据归纳新映射；须与「映射选择」（π0.7 metadata）、「状态记忆」（MemoryVLA 等）及 test-time training（RoboTTT）区分——只有消解映射本身不确定性的第三类才是真 ICL。"
 ---
 
@@ -84,7 +84,7 @@ summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、�
 | 学习对象 | Context 典型来源 | 代表工作 |
 |----------|------------------|----------|
 | **Task / Behavior** | 机器人 demo、人视频、XR 遥操作 | KAT、[GEN-1.5](../entities/generalist-gen15-one-shot.md)、[S1](../entities/skild-s1.md) |
-| **Embodiment / World** | 任务无关主动探索、系统辨识片段 | ICWM、[LocoFormer](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) |
+| **Embodiment / World** | 任务无关主动探索、系统辨识片段 | ICWM、[LocoFormer](../entities/paper-locoformer.md) |
 | **History / Memory** | 自身 rollout、失败、跨 episode 历史 | LocoFormer、[RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) |
 
 未来基础模型很可能在同一上下文窗口内 **同时** 推断「做什么」「身体/环境如何工作」「刚才发生了什么」。
@@ -247,7 +247,7 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制
 - [RealAB 14 篇地图](../overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
 - [Light REACT](../entities/light-react.md) — 全身运动反馈作上下文；故障下行走/爬行/恢复（亮源新创部署段）
-- [LocoFormer（待深读）](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — Skild 系跨 episode TXL 运动适应；S1 的技术前序
+- [LocoFormer（待深读）](../entities/paper-locoformer.md) — Skild 系跨 episode TXL 运动适应；S1 的技术前序
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 选型链在 VLA 层给出 I/O 边界与时延约束；ICL 是同一层的 **部署期适应旋钮**，长上下文直接吃掉该链关心的每步推理预算
 - [接触力旋量闭环](../queries/contact-wrench-closed-loop.md) — 示范抽象越高越易归纳，但接触力信息正是这条链所需；ICL 上下文用关键点/图节点表示时，力与接触细节被丢在这里
 

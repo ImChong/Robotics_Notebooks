@@ -70,7 +70,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../entities/gel-slim.md) — 见 wiki 实体页
 - [Let Humanoids Hike! Integrative Skill Development on Complex Trails](../entities/paper-notebook-let-humanoids-hike-integrative-skill-development.md) — 待深读
 - [LiPS](../concepts/humanoid-parallel-joint-kinematics.md) — 见 wiki 实体页
-- [LocoFormer](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — 待深读
+- [LocoFormer](../entities/paper-locoformer.md) — 待深读
 - [MASH](../entities/paper-notebook-mash-cooperative-heterogeneous-multi-agent-rl-fo.md) — 待深读
 - [Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation](../entities/paper-notebook-mechanical-intelligence-aware-curriculum-rl-for.md) — 待深读
 - [MoRE](../entities/paper-amp-survey-08-more.md) — 见 wiki 实体页

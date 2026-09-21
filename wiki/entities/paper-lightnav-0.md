@@ -15,6 +15,9 @@ arxiv: "2608.30935"
 code: https://github.com/lightorigins/LightNav-0
 related:
   - ./light-origins.md
+  - ./lightnav-er.md
+  - ./insight-bench.md
+  - ../overview/lightorigins-3blogs-technology-map.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
   - ../overview/open-source-system-loop-7-papers-technology-map.md
@@ -23,6 +26,7 @@ related:
 sources:
   - ../../sources/papers/lightnav0_arxiv_2608_30935.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
+  - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
   - ../../sources/sites/lightnav-0.md
   - ../../sources/repos/lightorigins-lightnav-0.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md

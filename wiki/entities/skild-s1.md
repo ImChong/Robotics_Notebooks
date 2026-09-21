@@ -14,7 +14,7 @@ related:
   - ../tasks/manipulation.md
   - ../methods/imitation-learning.md
   - ./paper-robottt-test-time-training-vla-context.md
-  - ./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md
+  - ./paper-locoformer.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
   - ./paper-host-one-shot-human-video.md
 sources:
@@ -150,7 +150,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [RoboTTT](./paper-robottt-test-time-training-vla-context.md) — S1 文列为 concurrent，机制实为 TTT
-- [LocoFormer（论文笔记占位）](./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — 运动域前序
+- [LocoFormer（论文笔记占位）](./paper-locoformer.md) — 运动域前序
 - [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot；地平线短、数字可核对
 
 ## 参考来源
