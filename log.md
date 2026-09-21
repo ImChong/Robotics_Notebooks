@@ -1,3 +1,8 @@
+## [2026-09-21] ingest | sources/repos/next-ai-draw-io.md — Next AI Draw.io（DayuanJiang，~36k★）：Next.js 聊天制图 + @next-ai-drawio/mcp-server 浏览器预览；步骤 2.5 已开源（Apache-2.0）
+
+- **意图：** 用户指定 ingest GitHub 仓库；项目页 next-ai-drawio.jiang.jp 链回源码与 MCP npm 包。
+- **关键页：** [next-ai-draw-io](wiki/entities/next-ai-draw-io.md)；交叉 drawio-scientific-illustrator / archify / diagram-design / MCP 概念页
+
 ## [2026-09-20] ingest | sources/papers/autohorizon_arxiv_2602_21445.md — AutoHorizon（VLA Knows Its Limits，ECCV 2026）：test-time 动态 execution horizon；π0.5 LIBERO 代码已开源
 
 - **意图：** 用户指定 ingest；步骤 2.5：GitHub Apache-2.0 评测栈已发布，权重走 OpenPI，无官方 HF。

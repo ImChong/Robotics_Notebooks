@@ -17,6 +17,7 @@ updated: 2026-09-08
 related:
   - ./archify.md
   - ./drawio-scientific-illustrator.md
+  - ./next-ai-draw-io.md
   - ./manim.md
   - ./gsap-skills.md
   - ./mattpocock-skills.md
@@ -144,6 +145,7 @@ sequenceDiagram
 | **Diagram Design** | 自包含 HTML/SVG/PNG | Agent Skill（多 marketplace） | 39 editorial 类型、品牌 onboarding、draw.io/Mermaid 重绘 |
 | [Archify](./archify.md) | HTML + 导出图 | Skill + Node CLI | JSON 校验、Architecture Delta、五类系统图 |
 | [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) | 可编辑 `.drawio` | Codex Skill + MCP | 可见步进、科研插图 |
+| [Next AI Draw.io](./next-ai-draw-io.md) | `.drawio` XML + 导出 | Web 聊天 / MCP npm | 聊天迭代、云架构图 |
 | [Manim](./manim.md) | 讲解视频 | Python Scene | 时间线叙事，不是静态框图 |
 | [GSAP Skills](./gsap-skills.md) | Web UI 动效 | 官方 SKILL.md | DOM 动效，不是系统拓扑 |
 | 本库 Mermaid | Markdown 内流程图 | 无（静态编译） | wiki 结构、版本友好 |
@@ -152,6 +154,7 @@ sequenceDiagram
 
 - [Archify](./archify.md) — **JSON 校验系统图**；要 editorial 幻灯片/品牌 HTML 走本页
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可见步进 `.drawio`**；本 Skill 可 import draw.io 但产出 HTML
+- [Next AI Draw.io](./next-ai-draw-io.md) — **Web/MCP 原生 `.drawio` XML**；本 Skill 偏 editorial HTML
 - [Manim](./manim.md) — **程序化讲解动画**
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方技能
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照

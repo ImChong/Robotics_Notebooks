@@ -712,6 +712,7 @@
 - [neuPrint](wiki/entities/neuprint.md) — neuPrint** 是 HHMI Janelia 提供的 **连接组图数据库与交互查询服务**（https://neuprint.janelia.org/），支持按细胞类型、连接模式与 ROI  `📅unknown` `[entity_page]`
 - [Neuroglancer](wiki/entities/neuroglancer.md) — Neuroglancer** 是 Google 开源的 **WebGL 体数据可视化客户端**（Apache-2.0），可显示任意朝向的截面、3D mesh 与 skeleton。它 **纯前端运 `📅unknown` `[entity_page]`
 - [Newton Physics（物理引擎）](wiki/entities/newton-physics.md) — Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 NVIDIA Warp 上实现核心计算，集成 [MuJoCo `📅unknown` `[entity_page]`
+- [Next AI Draw.io](wiki/entities/next-ai-draw-io.md) — Next AI Draw.io**（DayuanJiang/next-ai-draw-io，Ap `📅unknown` `[entity_page]`
 - [NEXUS（感知型基础策略 · 跨域全身遥操作）](wiki/entities/nexus-humanoid.md) — NEXUS**（*A Perceptive Foundation Policy for Cross-Domain Whole-Body Teleoperation*，[项目页](https://n `📅unknown` `[entity_page]`
 - [nordschleife-racer](wiki/entities/nordschleife-racer.md) — nordschleife-racer** 是 **yassin.app** 背后的 **浏览器竞速引擎**：**TypeScript + Three.js** 实现程序化 **纽北** 单圈、 `📅unknown` `[entity_page]`
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
