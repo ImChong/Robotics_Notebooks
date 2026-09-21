@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/light-o1.md",
+      "detail_id": "entity-light-o1",
+      "label": "Light-O1",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/light-origins.md",
+      "detail_id": "entity-light-origins",
+      "label": "亮源新创（Light Origins）",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
       "path": "wiki/methods/ssrm-steady-state-response-method.md",
       "detail_id": "wiki-methods-ssrm-steady-state-response-method",
       "label": "SSRM — Steady-State Response Method（稳态响应法）",
@@ -28,17 +49,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/light-o1.md",
-      "detail_id": "entity-light-o1",
-      "label": "Light-O1",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-offroad-global-nav.md",
@@ -199,27 +209,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-infonce-geometry.md",
-      "detail_id": "entity-paper-infonce-geometry",
-      "label": "InfoNCE Geometry（Contrastive Representation Learning 的几何力学）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/ssrm-steady-state-response-method.md",
-    "detail_id": "wiki-methods-ssrm-steady-state-response-method",
-    "label": "SSRM — Steady-State Response Method（稳态响应法）",
-    "type": "method",
+    "path": "wiki/entities/light-o1.md",
+    "detail_id": "entity-light-o1",
+    "label": "Light-O1",
+    "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true,
+    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
   },
   "top_communities": [
     {
