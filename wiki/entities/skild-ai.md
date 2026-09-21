@@ -11,7 +11,7 @@ related:
   - ./generalist-ai-robotics.md
   - ../overview/overseas-embodied-ai-labs-landscape-2026.md
   - ../overview/notable-commercial-robot-platforms.md
-  - ./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md
+  - ./paper-locoformer.md
 sources:
   - ../../sources/sites/skild-ai.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
@@ -55,7 +55,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 | 节点 | 要点 | 入口 |
 |------|------|------|
 | 公司 thesis | **Skild Brain** · omni-bodied；安防巡检 / 移动操作 API / 精细装箱；**人视频学习** | [站点归档](../../sources/sites/skild-ai.md) |
-| **LocoFormer**（2025-09） | 运动通才 + 上下文累积经验；未见本体/环境在线适应 | [论文笔记占位](./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) |
+| **LocoFormer**（2025-09） | 运动通才 + 上下文累积经验；未见本体/环境在线适应 | [论文笔记占位](./paper-locoformer.md) |
 | **S1**（2026-08） | 视频 prompt；未见任务最长约 10 分钟；相对语言 VLA 未见档约 7× | [S1 实体](./skild-s1.md) |
 
 ## 工程实践
@@ -79,7 +79,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [Generalist AI](./generalist-ai-robotics.md) — 另一条闭源通才 / ICL 产业线
 - [海外具身智能实验室地图（2026）](../overview/overseas-embodied-ai-labs-landscape-2026.md)
-- [LocoFormer（论文笔记占位）](./paper-notebook-locoformer-generalist-locomotion-via-long-contex.md)
+- [LocoFormer（论文笔记占位）](./paper-locoformer.md)
 - [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot 对照，不是本公司产品
 
 ## 参考来源

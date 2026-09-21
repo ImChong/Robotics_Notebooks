@@ -12,6 +12,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
+  - ../overview/lightorigins-3blogs-technology-map.md
   - ../../sources/sites/lightorigins-about.md
 summary: "亮源新创（Light Origins，2024）：Physical AI 基础模型公司；Intelligence-first 路线覆盖预训练/对齐/部署三段范式；已公开 Light-O1、LightNav-0、Light REACT 等成果与 lightorigins GitHub 部分开源项目。"
 ---

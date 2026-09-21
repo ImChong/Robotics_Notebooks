@@ -8,6 +8,9 @@ related:
   - ../concepts/robot-in-context-learning.md
   - ./light-o1.md
   - ./paper-lightnav-0.md
+  - ./paper-tolebi.md
+  - ./paper-locoformer.md
+  - ./paper-humanup-getting-up.md
   - ./paper-light-loco-parkour.md
   - ../tasks/humanoid-locomotion.md
   - ../concepts/whole-body-tracking-pipeline.md
@@ -21,9 +24,9 @@ summary: "Light REACT（亮源新创，2026-09-09）：把故障/扰动下的全
 
 # Light REACT
 
-**Light REACT**（**REsilient humAnoid ConTrol**，亮源新创 **2026-09-09** [官方发布](https://mp.weixin.qq.com/s/Xfps8-XAv3u1S--EpS5Ezw)）是面向 **人形机器人规模化部署** 的 **全身韧性控制** 框架：在 **部分关节失效、外部扰动或摔倒** 后，**单策略** 仍能根据 **近期全身交互历史** 自主调整步态、转入爬行或尝试恢复——**无需故障标签、无需人工切换控制模式、无需在线更新模型权重**。
+**Light REACT**（**REsilient humAnoid ConTrol**，亮源新创 **2026-09-09** [Tech Blog](https://www.lightorigins.com/blog/light-react)，[微信发布](https://mp.weixin.qq.com/s/Xfps8-XAv3u1S--EpS5Ezw)）是面向 **人形机器人规模化部署** 的 **全身韧性控制** 框架：在 **部分关节失效、外部扰动或摔倒** 后，**单策略** 仍能根据 **近期全身交互历史** 自主调整步态、转入爬行或尝试恢复——**无需故障标签、无需人工切换控制模式、无需在线更新模型权重**。
 
-> **落地状态（2026-09-09）：** 仅微信公众号发布与文内仿真/真机演示叙述；**无 arXiv、无独立项目页、无公开代码**。
+> **落地状态（2026-09-21）：** 官方 [Tech Blog](https://www.lightorigins.com/blog/light-react) 已上线（韧性金字塔 + 三阶段 RL/蒸馏/偏好对齐 + Transformer ICL 真机演示）；**仍无 arXiv / 公开代码**。
 
 ## 一句话定义
 

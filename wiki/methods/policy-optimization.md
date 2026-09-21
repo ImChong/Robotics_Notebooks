@@ -203,6 +203,7 @@ SAC 常用于：
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — 无 minibatch 时的策略位移控制
 - [SDPG（视觉 RL）](../entities/paper-sdpg-visual-rl-stochastic-decoupled.md) — 随机平滑轨迹梯度 + decoupled 观测的策略改进（arXiv:2605.26478）
 - [SDPG（LLM RLVR）](../entities/paper-sdpg-self-distilled-policy-gradient.md) — GRPO + 全词表 privileged 自蒸馏（arXiv:2606.04036；与视觉 SDPG 同名不同物）
+- [GRPO（Group Relative Policy Optimization）](./grpo.md) — 组内相对 advantage；[LightNav-0](../entities/paper-lightnav-0.md) 第三阶段在线 RL
 - [Query：RL 超参数调参指南](../queries/rl-hyperparameter-guide.md)
 - [Cartpole 问题](../concepts/cartpole.md) — 先在 CartPole-v1 / Isaac-Cartpole-v0 跑通 PPO 再选型
 

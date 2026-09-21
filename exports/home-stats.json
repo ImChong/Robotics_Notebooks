@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4698,
-  "edge_count": 41241,
+  "node_count": 4722,
+  "edge_count": 41412,
   "coverage": {
-    "covered": 4669,
-    "total": 4669,
+    "covered": 4693,
+    "total": 4693,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-g2g.md",
+      "detail_id": "entity-paper-g2g",
+      "label": "G2G：利用组内几何做组间位姿估计",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/entities/paper-carf.md",
       "detail_id": "entity-paper-carf",
@@ -129,8 +140,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/nymeria-dataset.md",
@@ -151,7 +161,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/entities/paper-hy-motion-1-0.md",
@@ -171,8 +181,7 @@
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-nymeria.md",
@@ -192,8 +201,7 @@
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/physical-commonsense-generalist.md",
@@ -203,37 +211,28 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/talk-ilya-sutskever-observation-on-generalization.md",
-      "detail_id": "entity-talk-ilya-sutskever-observation-on-generalization",
-      "label": "An Observation on Generalization（Ilya Sutskever, 2023）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-carf.md",
-    "detail_id": "entity-paper-carf",
-    "label": "CARF（arXiv:2609.21982）",
+    "path": "wiki/entities/paper-g2g.md",
+    "detail_id": "entity-paper-g2g",
+    "label": "G2G：利用组内几何做组间位姿估计",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 766
+      "size": 722
     },
     {
       "label": "操作",
-      "size": 696
+      "size": 691
     },
     {
       "label": "仿真到现实",
@@ -244,12 +243,12 @@
       "size": 298
     },
     {
-      "label": "全身控制",
-      "size": 247
+      "label": "具身评测基准选型闭环",
+      "size": 273
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 238
+      "label": "全身控制",
+      "size": 247
     }
   ],
   "top_hubs": [
@@ -319,7 +318,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 624,
+      "degree": 627,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -337,7 +336,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 165,
+      "degree": 166,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -345,7 +344,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 90,
+      "degree": 91,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -375,7 +374,15 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 58,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "detail_id": "entity-paper-light-loco-parkour",
+      "label": "Light-Loco-Parkour（LightLP）",
+      "type": "entity",
+      "degree": 50,
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -399,14 +406,6 @@
       "type": "entity",
       "degree": 46,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "entity-paper-ctrl-world",
-      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
-      "type": "entity",
-      "degree": 45,
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ]
 }

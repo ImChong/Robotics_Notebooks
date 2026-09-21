@@ -5,13 +5,13 @@
 - **机构：** 亮源新创（Light Origins）
 - **主发布：** [微信公众号](https://mp.weixin.qq.com/s/Xfps8-XAv3u1S--EpS5Ezw)（2026-09-09）
 - **机构主页：** <https://www.lightorigins.com/>
-- **入库日期：** 2026-09-09
+- **入库日期：** 2026-09-21
 
 ## 开源核查（入库日）
 
 | 资产 | 状态 |
 |------|------|
-| 独立项目页 / Tech Blog | **未上线**（官网博客区仅有 LightNav-0、LightParkour） |
+| Tech Blog | **已上线** <https://www.lightorigins.com/blog/light-react> |
 | 论文 / arXiv | **未列** |
 | 代码 / 权重 | **未开源**（无 GitHub / HF 链接） |
 | 演示视频 | 微信公众号正文内嵌（未单独归档） |

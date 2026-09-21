@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-15
 venue: "Light Origins 项目页（暂无 arXiv）"
 related:
+  - ./lightbot-0.md
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
   - ./paper-deep-whole-body-parkour.md
@@ -18,13 +19,15 @@ related:
   - ../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md
 sources:
   - ../../sources/papers/light_loco_parkour_light_origins_2026.md
+  - ../../sources/blogs/lightorigins_lightparkour_2026-08-03.md
+  - ../../sources/sites/lightparkour.md
   - ../../sources/sites/light-loco-parkour-github-io.md
 summary: "Light-Loco-Parkour（Light Origins, 2026-08-03）：Real2Sim2Real 稀疏种子扩张 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏，Lightbot 0 上单策略机载深度跑酷；攀爬至 0.83H、踏石 99.9%、无技能标签；代码未开源。"
 ---
 
 # Light-Loco-Parkour（LightLP）
 
-**Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称 **LightParkour** / **LightLP**；[项目页](https://light-loco-parkour.github.io/)，[PDF](https://light-loco-parkour.github.io/paper.pdf)；**Light Origins**，项目页日期 **2026-08-03**）在自研人形 **Lightbot 0** 上，把稀疏人体动作种子经 **Real2Sim2Real** 扩成地形条件全身技能，再蒸馏为**单一机载深度策略**：只读深度与速度指令，自主在行走 / 攀爬 / vault 间切换。
+**Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称 **LightParkour** / **LightLP**；[Tech Blog](https://www.lightorigins.com/blog/lightparkour)，[项目页](https://light-loco-parkour.github.io/)，[PDF](https://light-loco-parkour.github.io/paper.pdf)；**Light Origins**，项目页日期 **2026-08-03**）在自研人形 **Lightbot 0** 上，把稀疏人体动作种子经 **Real2Sim2Real** 扩成地形条件全身技能，再蒸馏为**单一机载深度策略**：只读深度与速度指令，自主在行走 / 攀爬 / vault 间切换。
 
 > **落地状态：** 入库时 **无 arXiv、无公开代码**；以项目页 PDF 为准。
 

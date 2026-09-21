@@ -1,5 +1,10 @@
 ## [2026-09-21] ingest | sources/papers/g2g_arxiv_2606_08284.md — G2G 组间位姿估计；已开源（代码+十组权重）；新建 paper-g2g 实体并回链 state-estimation
 
+## [2026-09-21] ingest | sources/blogs/lightorigins_light_{react,nav,parkour} — 亮源新创三篇官方 Tech Blog；引用论文/基准/硬件独立节点 + 合并 stub 别名
+
+- **意图：** 用户指定 ingest light-react / lightnav-0 / lightparkour 三篇 Tech Blog，并要求引用项独立非重复节点。
+- **开源结论：** LightNav-0 **已开源**；Light REACT / LightParkour **未开源**；Lightbot 0 为自研硬件叙事。
+- **关键页：** [lightorigins-3blogs-technology-map](wiki/overview/lightorigins-3blogs-technology-map.md)；升级 LocoFormer / HUMANUP stub → 完整实体；新建 LightNav-ER、INSIGHT-Bench、TOLEBI、TrackVLA 等节点。
 ## [2026-09-21] ingest | sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md — 具身小站 10 篇接触丰富仿真盘点；10/10 独立节点新建
 
 - **意图：** 用户指定 ingest <https://mp.weixin.qq.com/s/OCz5OShnrRSeSNb8dcmXDg>；每篇论文独立非重复详情节点。

@@ -13,11 +13,11 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
-- 知识归纳见 wiki 实体页：[paper-notebook-locoformer-generalist-locomotion-via-long-contex](../../wiki/entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md).
+- 知识归纳见 wiki 实体页：[paper-locoformer](../../wiki/entities/paper-locoformer.md).
 
 ## 对 wiki 的映射
 
-- [paper-notebook-locoformer-generalist-locomotion-via-long-contex](../../wiki/entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md)
+- [paper-locoformer](../../wiki/entities/paper-locoformer.md)
 - 分类父节点：[paper-notebook-category-05-locomotion](../../wiki/overview/paper-notebook-category-05-locomotion.md)
 
 ## 参考来源（原始）
