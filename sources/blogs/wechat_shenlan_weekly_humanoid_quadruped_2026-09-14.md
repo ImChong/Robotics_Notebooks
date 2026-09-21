@@ -14,7 +14,7 @@
 
 | # | 简称 | arXiv | 开源（入库日核查） | wiki（唯一节点） |
 |---|------|-------|-------------------|------------------|
-| 1 | Granular Terrain Humanoid | [2609.10286](https://arxiv.org/abs/2609.10286) | 未见 | [paper-granular-terrain-humanoid-locomotion](../../wiki/entities/paper-granular-terrain-humanoid-locomotion.md) **新建** |
+| 1 | GM-Loco | [2609.10286](https://arxiv.org/abs/2609.10286) | 待发布 | [paper-gm-loco](../../wiki/entities/paper-gm-loco.md) **新建**（2026-09-21 深度 ingest） |
 | 2 | RoboDreamer | [2609.07096](https://arxiv.org/abs/2609.07096) | 未见 | [paper-robodreamer-anticipatory-humanoid-locomotion](../../wiki/entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) **新建** |
 | 3 | SkillX | [2609.06718](https://arxiv.org/abs/2609.06718) | 未见 | [paper-skillx-humanoid-soccer](../../wiki/entities/paper-skillx-humanoid-soccer.md) **新建** |
 | 4 | GLoRI | [2609.05994](https://arxiv.org/abs/2609.05994) | 未见 | [paper-glori-humanoid-loco-manipulation](../../wiki/entities/paper-glori-humanoid-loco-manipulation.md) **新建** |

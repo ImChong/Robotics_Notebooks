@@ -1530,6 +1530,7 @@
 - [GlanceWAM：把视觉想象移出控制关键路径](wiki/entities/paper-glancewam.md) — GlanceWAM**（*Sparse Test-Time Imagination for World-Action Models*，[arXiv:2608.23927](https://arxi `📅unknown` `[entity_page]`
 - [Glob3R：3D 基础模型引导的全局 SfM](wiki/entities/paper-glob3r.md) — Glob3R**（*Glob3R: Global Structure-from-Motion with 3D Foundation Models*，arXiv:[2607.09225](https `📅unknown` `[entity_page]`
 - [GLoRI（arXiv:2609.05994）](wiki/entities/paper-glori-humanoid-loco-manipulation.md) — GLoRI**（*GLoRI: Closed-Loop Whole-Body Tracking with Global-Local Reference Interaction for Humano `📅unknown` `[entity_page]`
+- [GM-Loco：颗粒介质上的地形自适应人形 locomotion](wiki/entities/paper-gm-loco.md) — GM-Loco**（*Terrain-Adaptive Humanoid Locomotion on Granular Media*，arXiv:[2609.10286](https://arxi `📅unknown` `[entity_page]`
 - [GMT（General Motion Tracking for Humanoid Whole-Body Control）](wiki/entities/paper-gmt.md) — GMT**（*GMT: General Motion Tracking for Humanoid Whole-Body Control*，UC San Diego × Simon Fraser U `📅unknown` `[entity_page]`
 - [Go-with-the-Track](wiki/entities/paper-go-with-the-track.md) — Go-with-the-Track**（*Video Compositing and Motion Control with Point Tracking*，[arXiv:2606.20891 `📅unknown` `[entity_page]`
 - [GOAG](wiki/entities/paper-goag.md) — GOAG: Generative and Object-Agnostic Grasp Planner for Dexterous Robotic Manipulation**（[arXiv:260 `📅unknown` `[entity_page]`
@@ -1541,7 +1542,6 @@
 - [GPT-Policy：VLM 代理的上下文机器人学习](wiki/entities/paper-gpt-policy.md) — GPT-Policy**（*In-Context Robot Learning with VLM Agents*，[arXiv:2609.19138](https://arxiv.org/abs/ `📅unknown` `[entity_page]`
 - [GR00T-Dreams（HMI P068）](wiki/entities/paper-gr00t-dreams-synthetic-trajectories.md) — GR00T-Dreams**（*GR00T-Dreams: Synthetic Trajectory Generation for Humanoid Robot Learning*，2025）收录 `📅unknown` `[entity_page]`
 - [GRAIL](wiki/entities/paper-grail.md) — GRAIL**（*Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors*，[arXiv:2606.05160 `📅unknown` `[entity_page]`
-- [Granular Terrain Humanoid（arXiv:2609.10286）](wiki/entities/paper-granular-terrain-humanoid-locomotion.md) — Granular Terrain Humanoid**（*Learning Terrain-Adaptive Humanoid Locomotion on Granular Terrain*，[a `📅unknown` `[entity_page]`
 - [GraphPoint（arXiv:2609.18358）](wiki/entities/paper-graphpoint.md) — GraphPoint**（*GraphPoint: Semantic Entity Graphs and Point Trajectories for Compositional Robot Ma `📅unknown` `[entity_page]`
 - [GraspMF：积群 MeanFlow 快速生成抓取](wiki/entities/paper-graspmf.md) — GraspMF**（*Fast Generative Grasping via Lie Group-Constrained MeanFlow*；[arXiv:2608.26076](https:/ `📅unknown` `[entity_page]`
 - [Green for Go（VLA 导航可通行性视觉接地）](wiki/entities/paper-green-for-go-vla-nav-grounding.md) — Green for Go, Red for No**（*Visual Grounding via Semantic Segmentation for VLA Navigation Policies `📅unknown` `[entity_page]`

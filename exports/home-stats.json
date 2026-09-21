@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-21",
   "node_count": 4726,
-  "edge_count": 41449,
+  "edge_count": 41456,
   "coverage": {
     "covered": 4697,
     "total": 4697,
@@ -222,7 +222,7 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 765
+      "size": 763
     },
     {
       "label": "操作",
@@ -281,7 +281,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 998,
+      "degree": 999,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

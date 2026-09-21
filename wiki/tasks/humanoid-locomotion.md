@@ -28,7 +28,7 @@ related:
   - ../entities/paper-wm-loco.md
   - ../entities/paper-safe-stop-humanoid.md
   - ../entities/paper-bridge-humanoid.md
-  - ../entities/paper-granular-terrain-humanoid-locomotion.md
+  - ../entities/paper-gm-loco.md
   - ../entities/paper-robodreamer-anticipatory-humanoid-locomotion.md
   - ../entities/paper-anti-gravity-flying-humanoid-wbc-mpc.md
   - ../entities/paper-visible-reachable-workspace-humanoid-design.md
@@ -124,7 +124,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
 - [WM-LOCO](../entities/paper-wm-loco.md) — RSSM+PPO 单深度预测特征；仿真沟/踏石上匹配 PPO 为 0%，G1 机载三类平均 93.3%（arXiv:2609.02542；代码待发布）
 - [DWMP](../entities/paper-dwmp.md) — Koopman 本体 WM + DepthDreamer 深度 WM 双路表征；MuJoCo 五类越障 SR 0.85–0.95，G1 真机随机布局最高 0.95（arXiv:2609.12347；未开源）
-- [颗粒地形自适应行走](../entities/paper-granular-terrain-humanoid-locomotion.md) — 3D 阻力颗粒接触 + Teacher-Student/VAE；玄武岩/干沙/海滩沙零样本（arXiv:2609.10286；未见代码）
+- [GM-Loco 颗粒介质地形自适应](../entities/paper-gm-loco.md) — 3D RFT 颗粒接触 + VAE Teacher-Student；G1 玄武岩/干沙/海滩沙走跑至 2.5 m/s（arXiv:2609.10286；代码待发布）
 - [RoboDreamer](../entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — Mamba PSSM 前瞻行走 + 推理动作细化（arXiv:2609.07096；未见代码）
 - [飞行人形反重力行走](../entities/paper-anti-gravity-flying-humanoid-wbc-mpc.md) — 推力率输入 WBC-MPC；东大（arXiv:2609.07544；未见代码）
 - [可见—可达工作空间硬件设计](../entities/paper-visible-reachable-workspace-humanoid-design.md) — Duke V2 双 RGB-D；覆盖率 38%→97%（arXiv:2609.08905；未见代码）
