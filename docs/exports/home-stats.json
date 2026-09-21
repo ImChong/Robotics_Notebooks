@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4671,
-  "edge_count": 40941,
+  "node_count": 4672,
+  "edge_count": 40952,
   "coverage": {
-    "covered": 4643,
-    "total": 4643,
+    "covered": 4644,
+    "total": 4644,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -16,7 +16,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/diffusion-transformer.md",
@@ -26,7 +26,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/generative-adversarial-network.md",
@@ -45,7 +45,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/gru.md",
@@ -55,7 +55,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/mamba.md",
@@ -65,7 +65,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/mixture-of-experts.md",
@@ -75,7 +75,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/mlp.md",
@@ -85,7 +85,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/recurrent-neural-network.md",
@@ -95,7 +95,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/temporal-convolutional-network.md",
@@ -105,7 +105,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/unet.md",
@@ -115,7 +115,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/overview/ai-architecture-map.md",
@@ -125,7 +125,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/entities/booster-mjlab.md",
@@ -218,12 +218,12 @@
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 768
+      "size": 853
     },
     {
       "label": "操作",

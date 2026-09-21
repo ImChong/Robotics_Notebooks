@@ -2,7 +2,7 @@
 type: comparison
 tags: [path-planning, navigation, local-planning, motion-planning, mobile-robot, comparison, engineering-selection]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./robot-path-planning-five-paradigms-taxonomy.md
   - ../methods/a-star.md
@@ -12,6 +12,7 @@ related:
   - ../entities/python-robotics.md
   - ../entities/humanoid-system-curriculum.md
   - ../entities/paper-icrowdnav.md
+  - ../entities/paper-offroad-global-nav.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
   - ../../sources/blogs/wechat_shenlan_robot_path_planning_five_paradigms.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
+  - ../../sources/papers/offroad_global_nav_arxiv_2607_23743.md
 summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部 DWA 跟踪避障、平滑优化补动力学可行性三层如何各司其职并组合落地。"
 ---
 
@@ -75,6 +77,7 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - **把平滑当避障**：平滑层只改几何、让路径可跟踪，不理解动态障碍。动态避障始终是 DWA（或 TEB/MPC）每周期重规划的职责，别指望一次平滑消除碰撞。
 - **归因错层**：全局穿墙常是 costmap 未膨胀或坐标系错，而非 A\* 逻辑坏；DWA 撞障常是 footprint 偏小或 costmap 未更新，而非评分公式错。先分清是哪一层的输入脏了。
 - **把学习型社交导航当成「第四层全局搜索」：** [iCrowdNav](../entities/paper-icrowdnav.md) 一类 DRL 人群策略更接近 **局部层替代/增强**（相对 DWA 学让行），长程仍常外挂拓扑或 Nav2 全局路点，不要用它顶替 A\* 找路。
+- **把学习 costmap 当成换掉分层：** [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) 用卫星/LiDAR 学 \(T\) 再 \(C=1-T\) 跑 A\*，局部仍是 MPPI。换的是 **全局代价从哪来**，不是取消全局/局部分层；纯局部规划在采石坑/长程上干预显著更多。
 
 ## 参考来源
 
@@ -84,6 +87,7 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - [深蓝AI：规划与控制篇](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 全局/局部分层背景
 - [深蓝具身智能：路径规划五范式](../../sources/blogs/wechat_shenlan_robot_path_planning_five_paradigms.md) — 五条技术路线与狭窄通道组合选型
 - [数值优化基础课程](../../sources/courses/numerical_optimization_foundations_robotics.md) — 第 2.4–2.5 节平滑导航路径
+- [Off-Road Global Nav 论文摘录](../../sources/papers/offroad_global_nav_arxiv_2607_23743.md) — 学习 costmap 仍走 A\* LRP / MPPI SRP
 
 ## 关联页面
 
@@ -95,3 +99,4 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — A\* + DWA 分层导航所属的课程主线
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL；相对 DWA 的学习型局部社交对照（代码待发布）
 - [路径规划五大范式](./robot-path-planning-five-paradigms-taxonomy.md) — 图搜索/采样/APF/MPC/AI 五条路线总览；本页三层栈是其工程子集
+- [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 越野学习 costmap + A\* LRP；局部 MPPI，不替代本页三层分工
