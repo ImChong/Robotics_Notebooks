@@ -236,7 +236,7 @@
 - [Lite3 RL Deploy](wiki/entities/cn-os-lite3-rl-deploy.md) — Lite3 RL Deploy** 是 云深处科技 公开的 **仿真环境** 开源项目：把训练得到的PyTorch策略转 `📅unknown` `[entity_page]`
 - [Lite3_SLAM](wiki/entities/cn-os-lite3-slam.md) — Lite3_SLAM** 是 云深处科技 公开的 **感知/导航** 开源项目：感知/定位/建图模块：为导航与控制提供环 `📅unknown` `[entity_page]`
 - [livelybot_pi_rl_baseline](wiki/entities/cn-os-livelybot-pi-rl-baseline.md) — livelybot_pi_rl_baseline** 是 高擎机电 公开的 **运动RL/技能训练** 开源项目 `📅unknown` `[entity_page]`
-- [LoongForge](wiki/entities/cn-os-loongforge.md) — LoongForge** 是 百度智能云 公开的 **数据采集/工具** 开源项目：以Megatron-LM为基础统一模型组网、 `📅unknown` `[entity_page]`
+- [LoongForge](wiki/entities/cn-os-loongforge.md) — LoongForge** 是 百度智能云百舸 开源的 **多模态大模型与具身模型训练框架**：在 patch 版 [Megatr `📅unknown` `[entity_page]`
 - [LoongMarathonNav](wiki/entities/cn-os-loongmarathonnav.md) — LoongMarathonNav** 是 上海人形机器人创新中心 公开的 **工程与工具** 开源项目：融合RTK、惯导、视觉和激光 `📅unknown` `[entity_page]`
 - [lumos_sdk](wiki/entities/cn-os-lumos-sdk.md) — lumos_sdk** 是 鹿明机器人 公开的 **SDK/驱动** 开源项目：提供鹿明机器人C++集成接口，使状态、设备与控制功 `📅unknown` `[entity_page]`
 - [LW-BenchHub](wiki/entities/cn-os-lw-benchhub.md) — LW-BenchHub** 是 光轮智能 公开的 **评测** 开源项目：基于Isaac Lab Arena统一任务、机器人和 `📅unknown` `[entity_page]`
