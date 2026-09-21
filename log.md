@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/blogs/wechat_lightorigins_light_o1_2026-09-21.md — 亮源新创 Light-O1 全身智能基础模型；Preview 已开源 lightorigins/Light-O1
+
 ## [2026-09-21] ingest | sources/papers/offroad_global_nav_arxiv_2607_23743.md — TAMU+ARL 越野可通行全局规划；HF 数据集已开源（CC BY-NC），训练代码待发布
 
 - **意图：** 用户指定 ingest arXiv:2607.23743 与 HF `anony-008/offroad-global-nav`。
