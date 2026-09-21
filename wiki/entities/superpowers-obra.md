@@ -21,6 +21,7 @@ related:
   - ./hermes-agent.md
   - ./agent-reach.md
   - ./open-code-review.md
+  - ./birdview.md
   - ./graphify.md
   - ../references/llm-wiki-karpathy.md
   - ../concepts/agentic-coding-software-fundamentals.md
@@ -55,6 +56,7 @@ summary: "Superpowers（obra/superpowers）是一套面向多种编码代理 har
 - **对机器人代码与仿真栈开发的迁移价值：** 本仓库读者常在 **Isaac Lab / MuJoCo / ROS2** 等多仓库、长链路场景下并行实验；`using-git-worktrees`、分任务子代理与 **RED/GREEN** 节奏，有助于降低「单会话上下文里乱改多模块」的风险（仍以团队自己的 CI 与规约为准）。
 - **生态位清晰：** 上游 README 明确技能集合与 **多 harness 安装差异**；贡献边界保守（不随意合并新技能），适合作为 **方法论参考** 而非未经验证的插件大杂烩。
 - **与「软件基础技能图」分工：** [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲人要保留哪些 **取舍判断**；Superpowers 讲代理默认走哪条 **交付管线**。有流程无判断，仍会把 vibe coding 加速进生产。
+- **改码前架构可见性：** [Birdview](birdview.md) 可在 `brainstorming` / `writing-plans` 之间插入 **仓库 architecture map**，把计划文件列表与模块边界对齐后再进子代理实现。
 
 ## 核心结构
 

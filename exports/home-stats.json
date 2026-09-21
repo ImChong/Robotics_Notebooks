@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4674,
-  "edge_count": 41038,
+  "node_count": 4675,
+  "edge_count": 41051,
   "coverage": {
-    "covered": 4645,
-    "total": 4645,
+    "covered": 4646,
+    "total": 4646,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/birdview.md",
+      "detail_id": "entity-birdview",
+      "label": "Birdview",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
     {
       "path": "wiki/entities/light-o1.md",
       "detail_id": "entity-light-o1",
@@ -197,28 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/next-ai-draw-io.md",
-      "detail_id": "entity-next-ai-draw-io",
-      "label": "Next AI Draw.io",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/light-o1.md",
-    "detail_id": "entity-light-o1",
-    "label": "Light-O1",
+    "path": "wiki/entities/birdview.md",
+    "detail_id": "entity-birdview",
+    "label": "Birdview",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
