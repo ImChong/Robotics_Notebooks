@@ -4779,10 +4779,35 @@
       return visibleNodeIds.has(s) && visibleNodeIds.has(t);
     }
 
+    /** 时序动画中悬停已显现节点：邻居点亮 + 当前节点连线高亮（未显现节点 pointer-events 已关） */
+    function applyTimelineHoverHighlight(d) {
+      buildNeighborSet(d);
+      node.select('.node-circle').attr('fill-opacity', n => {
+        if (!timelineRevealedIds.has(n.id)) return 0;
+        return (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
+      });
+      node.select('.node-glow').attr('fill-opacity', n =>
+        (n.id === d.id) ? 0.18 * recencyDimOf(n) : 0);
+      setEdgePaintMode('hover', d.id, nodeColor(d));
+    }
+
+    function clearTimelineHoverHighlight() {
+      renderTimelineStatic();
+      updateTimelineLinks();
+    }
+
     node
       .on('mouseenter', (ev, d) => {
-        // 时序动画进行中：禁用节点悬停，避免选中尚未显现的背景节点
-        if (timelineAnimating) return;
+        if (timelineAnimating) {
+          if (!timelineRevealedIds.has(d.id)) return;
+          if (sidebarFocusIds) {
+            if (sidebarFocusIds.has(d.id)) showTooltip(ev, d);
+            return;
+          }
+          applyTimelineHoverHighlight(d);
+          showTooltip(ev, d);
+          return;
+        }
         // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑；
         // 但选中节点及其直连邻居仍可悬停显示浮窗卡片
         if (sidebarFocusIds) {
@@ -4805,14 +4830,21 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
-        if (timelineAnimating) return;
         // 移动端固定卡片后，mousemove 不移动 tooltip
         if (!isMobile || !pinnedNode) {
           moveTooltip(ev);
         }
       })
       .on('mouseleave', () => {
-        if (timelineAnimating) return;
+        if (timelineAnimating) {
+          if (sidebarFocusIds) {
+            if (!isMobile || !pinnedNode) hideTooltip();
+            return;
+          }
+          clearTimelineHoverHighlight();
+          if (!isMobile || !pinnedNode) hideTooltip();
+          return;
+        }
         // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），不执行 mouseleave 的样式重置逻辑，
         // 只收起悬停浮窗
         if (sidebarFocusIds) {
@@ -6444,6 +6476,7 @@
       // G4：边改 canvas 后 DOM 侧只剩节点，边的成本在此单独计时
       drawEdges: () => drawEdges(),
       edgeDrawnCount: () => edgeDrawnCount,
+      edgePaintMode: () => edgePaintMode,
       edgeCanvasSize: () => (edgeCanvas
         ? { w: edgeCanvas.width, h: edgeCanvas.height, dpr: edgeCanvasDpr }
         : null),
