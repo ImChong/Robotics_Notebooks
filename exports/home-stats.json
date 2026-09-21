@@ -1,13 +1,34 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4677,
-  "edge_count": 41081,
+  "node_count": 4678,
+  "edge_count": 41092,
   "coverage": {
-    "covered": 4648,
-    "total": 4648,
+    "covered": 4649,
+    "total": 4649,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-attention-is-all-you-need.md",
+      "detail_id": "entity-paper-attention-is-all-you-need",
+      "label": "Attention Is All You Need",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/overview/ai-architecture-map.md",
+      "detail_id": "wiki-overview-ai-architecture-map",
+      "label": "AI 架构地图（Neural Network Architecture Map）",
+      "type": "overview",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
     {
       "path": "wiki/methods/ssrm-steady-state-response-method.md",
       "detail_id": "wiki-methods-ssrm-steady-state-response-method",
@@ -37,7 +58,8 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-offroad-global-nav.md",
@@ -158,16 +180,6 @@
       "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
     },
     {
-      "path": "wiki/overview/ai-architecture-map.md",
-      "detail_id": "wiki-overview-ai-architecture-map",
-      "label": "AI 架构地图（Neural Network Architecture Map）",
-      "type": "overview",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
-    },
-    {
       "path": "roadmap/depth-model-architecture.md",
       "detail_id": "roadmap-depth-model-architecture",
       "label": "路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）",
@@ -197,27 +209,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-infonce-geometry.md",
-      "detail_id": "entity-paper-infonce-geometry",
-      "label": "InfoNCE Geometry（Contrastive Representation Learning 的几何力学）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/ssrm-steady-state-response-method.md",
-    "detail_id": "wiki-methods-ssrm-steady-state-response-method",
-    "label": "SSRM — Steady-State Response Method（稳态响应法）",
-    "type": "method",
+    "path": "wiki/entities/paper-attention-is-all-you-need.md",
+    "detail_id": "entity-paper-attention-is-all-you-need",
+    "label": "Attention Is All You Need",
+    "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true,
+    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
   },
   "top_communities": [
     {
@@ -297,7 +300,7 @@
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
       "label": "国内具身开源全景 424 项 · 阅读导航",
       "type": "query",
-      "degree": 681,
+      "degree": 683,
       "has_repo": true,
       "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
     },

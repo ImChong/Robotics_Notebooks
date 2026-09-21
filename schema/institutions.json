@@ -2714,11 +2714,13 @@
       ]
     },
     "light-origins": {
-      "label": "光原点（Light Origins）",
+      "label": "亮源新创（Light Origins）",
       "aliases": [
         "light-origins",
         "lightorigins",
-        "light-origins-robotics"
+        "light-origins-robotics",
+        "lightsource",
+        "liangyuan"
       ]
     },
     "rai-institute": {
@@ -3586,13 +3588,6 @@
       "aliases": [
         "jzrobot",
         "jianzhi"
-      ]
-    },
-    "lightsource": {
-      "label": "亮源新创（LightSource）",
-      "aliases": [
-        "lightsource",
-        "liangyuan"
       ]
     },
     "linkerbot": {

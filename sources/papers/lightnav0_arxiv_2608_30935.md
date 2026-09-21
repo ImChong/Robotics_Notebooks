@@ -5,7 +5,7 @@
 - **标题：** LightNav-0: Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation
 - **类型：** paper
 - **原始链接：** <https://arxiv.org/abs/2608.30935>
-- **机构：** 光原点（Light Origins）
+- **机构：** 亮源新创（Light Origins）
 - **项目页：** <https://www.lightorigins.com/en/blog/lightnav-0>
 - **代码：** <https://github.com/lightorigins/LightNav-0>
 - **模型：** <https://huggingface.co/LightOriginsHQ/LightNav-0>
