@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hkust, alibaba, nju, fudan, sfm, 3d-reconstruction, foundation-model, slam, pose-estimation, neural-rendering, bundle-adjustment]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 arxiv: "2607.09225"
 venue: "arXiv 2026"
 related:

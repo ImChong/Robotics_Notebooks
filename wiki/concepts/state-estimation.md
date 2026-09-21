@@ -2,7 +2,7 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -240,6 +240,10 @@ $$
 ### 13. 统一 Sim(3) 前馈 SLAM（UniSim-SLAM）
 
 [UniSim-SLAM](../entities/paper-unisim-slam.md)（arXiv:2608.01706，ECCV 2026，UNIST Vision3D Lab）把 **两视图关键帧跟踪** 与 **周期多视图子图精炼** 写成 **互补 Sim(3) 约束**：在帧级关键帧位姿 \(\{T_i\}\) 与子图位姿 \(\{S_m\}\) 上构建 **view–view / view–submap / submap–submap** 三层边，并用深度统计锚定尺度。相对孤立的两视图图优化（ViSTA-SLAM）或纯子图对齐（VGGT-SLAM），它在 **无标定 RGB** 的 TUM RGB-D / 7-Scenes 上报告 SOTA 轨迹（平均 ATE 相对先前最佳降 **38.5% / 45.9%**），且默认 VGGT 前端 **197 ms** 仍优于纯多视图 SLAM 的延迟。注意：官方 GitHub 截至入库日仅为占位仓（`coming soon`），工程复现需等代码发布。
+
+### 14. 组间相对位姿（G2G）
+
+[G2G](../entities/paper-g2g.md)（arXiv:2606.08284，浙江大学等）在 **冻结 MapAnything** 上仅用 **32M** 跨组模块估计 **两组多视图图像之间的相对 6-DoF 位姿**，统一 **跨序列重定位** 与 **多相机 rig 里程计**；假设每组 **intra-group geometry** 已由 VO / 标定给出。相对 flatten 全部视图的多视图基线，它在 **低 FoV overlap**（NCLT median **0.24**）区间退化更缓；**代码与十组权重已开源**（CC BY-NC 4.0），适合多会话地图对齐与 rig 轨迹拼接，而非替代 full SLAM 前端。
 
 ## 最小代码骨架
 

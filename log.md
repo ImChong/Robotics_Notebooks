@@ -1,3 +1,4 @@
+## [2026-09-21] ingest | sources/papers/g2g_arxiv_2606_08284.md — G2G 组间位姿估计；已开源（代码+十组权重）；新建 paper-g2g 实体并回链 state-estimation
 
 ## [2026-09-21] ingest | sources/blogs/lightorigins_light_{react,nav,parkour} — 亮源新创三篇官方 Tech Blog；引用论文/基准/硬件独立节点 + 合并 stub 别名
 

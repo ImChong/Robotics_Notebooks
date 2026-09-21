@@ -1,228 +1,234 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4721,
-  "edge_count": 41404,
+  "node_count": 4722,
+  "edge_count": 41412,
   "coverage": {
-    "covered": 4692,
-    "total": 4692,
+    "covered": 4693,
+    "total": 4693,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/cv-bench-embodied.md",
-      "detail_id": "entity-cv-bench-embodied",
-      "label": "CV-Bench",
+      "path": "wiki/entities/paper-g2g.md",
+      "detail_id": "entity-paper-g2g",
+      "label": "G2G：利用组内几何做组间位姿估计",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/embspatial.md",
-      "detail_id": "entity-embspatial",
-      "label": "EmbSpatial",
+      "path": "wiki/entities/paper-carf.md",
+      "detail_id": "entity-paper-carf",
+      "label": "CARF（arXiv:2609.21982）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/er-point-bench.md",
-      "detail_id": "entity-er-point-bench",
-      "label": "Point-Bench",
+      "path": "wiki/entities/paper-crisp.md",
+      "detail_id": "entity-paper-crisp",
+      "label": "CRISP（arXiv:2609.21761）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/erqa.md",
-      "detail_id": "entity-erqa",
-      "label": "ERQA",
+      "path": "wiki/entities/paper-gala.md",
+      "detail_id": "entity-paper-gala",
+      "label": "GALA（arXiv:2609.21948）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/habitatgs.md",
-      "detail_id": "entity-habitatgs",
-      "label": "HabitatGS",
+      "path": "wiki/entities/paper-parts.md",
+      "detail_id": "entity-paper-parts",
+      "label": "PARTS（arXiv:2609.21788）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/insight-bench.md",
-      "detail_id": "entity-insight-bench",
-      "label": "INSIGHT-Bench",
+      "path": "wiki/entities/paper-psr-vla.md",
+      "detail_id": "entity-paper-psr-vla",
+      "label": "PSR-VLA（arXiv:2609.21753）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/interiorgs.md",
-      "detail_id": "entity-interiorgs",
-      "label": "InteriorGS",
+      "path": "wiki/entities/paper-rapid-vlm-rl.md",
+      "detail_id": "entity-paper-rapid-vlm-rl",
+      "label": "RAPID（arXiv:2609.21767）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/light-origins.md",
-      "detail_id": "entity-light-origins",
-      "label": "亮源新创（Light Origins）",
+      "path": "wiki/entities/paper-seeq.md",
+      "detail_id": "entity-paper-seeq",
+      "label": "SeeQ（arXiv:2609.22085）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/lightbot-0.md",
-      "detail_id": "entity-lightbot-0",
-      "label": "Lightbot 0",
+      "path": "wiki/entities/paper-sim2real-chunk-vla-pipeline.md",
+      "detail_id": "entity-paper-sim2real-chunk-vla-pipeline",
+      "label": "Sim2Real Chunk VLA Pipeline（arXiv:2609.21817）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/lightnav-er.md",
-      "detail_id": "entity-lightnav-er",
-      "label": "LightNav-ER",
+      "path": "wiki/entities/paper-skelwam.md",
+      "detail_id": "entity-paper-skelwam",
+      "label": "SkelWAM（arXiv:2609.21983）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/molmo-er.md",
-      "detail_id": "entity-molmo-er",
-      "label": "MolmoER",
+      "path": "wiki/entities/paper-wm-compositional-cl-benchmark.md",
+      "detail_id": "entity-paper-wm-compositional-cl-benchmark",
+      "label": "Compositional CL WM Benchmark（arXiv:2609.22055）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/molmo2-vlm.md",
-      "detail_id": "entity-molmo2-vlm",
-      "label": "Molmo2",
-      "type": "entity",
+      "path": "wiki/overview/contact-rich-sim-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-contact-rich-sim-10-papers-technology-map",
+      "label": "接触丰富仿真：10 篇论文阅读坐标",
+      "type": "overview",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-hm3d-ovon.md",
-      "detail_id": "entity-paper-hm3d-ovon",
-      "label": "HM3D-OVON",
+      "path": "wiki/entities/light-o1.md",
+      "detail_id": "entity-light-o1",
+      "label": "Light-O1",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-humanup-getting-up.md",
-      "detail_id": "entity-paper-humanup-getting-up",
-      "label": "HUMANUP",
+      "path": "wiki/entities/nymeria-dataset.md",
+      "detail_id": "entity-nymeria-dataset",
+      "label": "Nymeria Dataset",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
-      "path": "wiki/entities/paper-locoformer.md",
-      "detail_id": "entity-paper-locoformer",
-      "label": "LocoFormer",
+      "path": "wiki/entities/paper-dial-latent-world-vla.md",
+      "detail_id": "entity-paper-dial-latent-world-vla",
+      "label": "DIAL",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
-      "path": "wiki/entities/paper-rxr.md",
-      "detail_id": "entity-paper-rxr",
-      "label": "RxR",
+      "path": "wiki/entities/paper-hy-motion-1-0.md",
+      "detail_id": "entity-paper-hy-motion-1-0",
+      "label": "HY-Motion 1.0",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
-      "path": "wiki/entities/paper-srdf-vln-flywheel.md",
-      "detail_id": "entity-paper-srdf-vln-flywheel",
-      "label": "SRDF",
+      "path": "wiki/entities/paper-instructgpt-rlhf.md",
+      "detail_id": "entity-paper-instructgpt-rlhf",
+      "label": "InstructGPT（RLHF）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "action": "added"
     },
     {
-      "path": "wiki/entities/paper-tolebi.md",
-      "detail_id": "entity-paper-tolebi",
-      "label": "TOLEBI",
+      "path": "wiki/entities/paper-nymeria.md",
+      "detail_id": "entity-paper-nymeria",
+      "label": "Nymeria（论文）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
-      "path": "wiki/entities/paper-trackvla.md",
-      "detail_id": "entity-paper-trackvla",
-      "label": "TrackVLA",
+      "path": "wiki/entities/paper-scaling-laws-neural-language-models.md",
+      "detail_id": "entity-paper-scaling-laws-neural-language-models",
+      "label": "Scaling Laws for Neural Language Models",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "action": "added"
     },
     {
-      "path": "wiki/entities/qwen3-vl.md",
-      "detail_id": "entity-qwen3-vl",
-      "label": "Qwen3-VL",
+      "path": "wiki/entities/physical-commonsense-generalist.md",
+      "detail_id": "entity-physical-commonsense-generalist",
+      "label": "Physical Commonsense（Generalist 产业观点）",
       "type": "entity",
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cv-bench-embodied.md",
-    "detail_id": "entity-cv-bench-embodied",
-    "label": "CV-Bench",
+    "path": "wiki/entities/paper-g2g.md",
+    "detail_id": "entity-paper-g2g",
+    "label": "G2G：利用组内几何做组间位姿估计",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 766
+      "size": 722
     },
     {
       "label": "操作",
@@ -241,8 +247,8 @@
       "size": 273
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 236
+      "label": "全身控制",
+      "size": 247
     }
   ],
   "top_hubs": [
