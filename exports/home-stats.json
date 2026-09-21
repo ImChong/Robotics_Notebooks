@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4722,
-  "edge_count": 41412,
+  "node_count": 4723,
+  "edge_count": 41421,
   "coverage": {
-    "covered": 4693,
-    "total": 4693,
+    "covered": 4694,
+    "total": 4694,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-driveteach-vla.md",
+      "detail_id": "entity-paper-driveteach-vla",
+      "label": "DriveTeach-VLA：教 VLA 看什么、看哪里",
+      "type": "entity",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/grpo.md",
+      "detail_id": "wiki-methods-grpo",
+      "label": "GRPO（Group Relative Policy Optimization）",
+      "type": "method",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/cv-bench-embodied.md",
       "detail_id": "entity-cv-bench-embodied",
@@ -187,37 +207,18 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trackvla.md",
-      "detail_id": "entity-paper-trackvla",
-      "label": "TrackVLA",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/qwen3-vl.md",
-      "detail_id": "entity-qwen3-vl",
-      "label": "Qwen3-VL",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cv-bench-embodied.md",
-    "detail_id": "entity-cv-bench-embodied",
-    "label": "CV-Bench",
+    "path": "wiki/entities/paper-driveteach-vla.md",
+    "detail_id": "entity-paper-driveteach-vla",
+    "label": "DriveTeach-VLA：教 VLA 看什么、看哪里",
     "type": "entity",
     "recency": "2026-09-21",
     "source": "git",
     "action": "added",
-    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    "has_repo": true,
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
@@ -226,7 +227,7 @@
     },
     {
       "label": "操作",
-      "size": 691
+      "size": 692
     },
     {
       "label": "仿真到现实",
@@ -258,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1329,
+      "degree": 1331,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

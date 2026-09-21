@@ -363,6 +363,7 @@ flowchart TD
 - **Green for Go（导航 VLA 推理时 overlay，非新模型）**：SegFormer **绿=可通行 / 红=不可通行** 喂冻结 **OmniVLA**；Grand Tour 最远航点误差 **−27–44%**，但归一化后主要是轨迹缩短约 **30%**；图像目标与 **stop** 几乎无增益（见 [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)，arXiv:2607.05122；**确认未开源**）。**勿与** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) **混淆**。
 - **CrossTracer（导航 VLA 跨本体残差，非操作 VLA）**：OmniVLA 改成 **VL-Tracer** 出无本体像素轨迹，**CE-Adapter** 按机器人 ID 做残差；NaviTrace 总分 **45.68**（相对 Gemini-2.5-Pro +28.1%），去 adapter 掉到 22.56；真机相对 OmniVLA 轮式 SR **0.40→0.65**、腿式 **0.45→0.70**（见 [CrossTracer](../entities/paper-crosstracer.md)，arXiv:2608.06688；**宣称开源 / 待核实**）
 - **S²-VLA（驾驶 VLA，武汉理工，arXiv:2607.13926）**：针对单流驾驶 VLA 的 **spatial representation collapse**，把 **InternVL3-2B 多尺度语义流** 与 **绕过自回归头的 ViT 空间流**（BEV map / agent 辅助）解耦，经 **Dual-Stream Planning Adapter** 级联融合；NAVSIM 纯 SFT **PDMS 87.1 / NC 98.4**；**未开源**（见 [S²-VLA](../entities/paper-s-squared-vla.md)）
+- **DriveTeach-VLA（驾驶 VLA，BUAA/AIR/滴滴等，ECCV 2026，arXiv:2607.01658）**：**DVD** 注入交通视觉先验 + **2D-TGP** 轨迹空间 prompt，**TGP-guided SFT + GRPO** 生成 BEV 轨迹；NAVSIM 与 nuScenes **SOTA 级**；**已开源** Apache-2.0（GRPO 见 Curious-VLA）（见 [DriveTeach-VLA](../entities/paper-driveteach-vla.md)）
 
 ## VLA 与传统策略的区别
 

@@ -37,6 +37,7 @@ summary: "GRPO（Group Relative Policy Optimization）：DeepSeekMath 提出的�
 ## 为什么重要
 
 - [LightNav-0](../entities/paper-lightnav-0.md) 第三阶段在仿真中用 **GRPO** 比较自主规划执行结果，EVT-Bench 跟踪 SR 从 74.4→82.6。
+- [DriveTeach-VLA](../entities/paper-driveteach-vla.md)（ECCV 2026）在 **TGP-guided SFT** 后用 **GRPO** 对齐 BEV 轨迹与驾驶偏好；RL 实现见 [Curious-VLA](https://github.com/Mashiroln/curious_vla)。
 - 仓库另有 [Prism-GRPO](../entities/paper-prism-grpo.md)、[Temporal-GRPO](../entities/paper-temporal-grpo.md) 等变体论文页。
 - 与 [PPO](./ppo.md) 同属 on-policy 家族，但 **advantage 来自组内排序** 而非独立 value network（见 [MDP](../formalizations/mdp.md) 回报定义）。
 
