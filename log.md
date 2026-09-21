@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/repos/booster_mjlab.md — whIRLwind Booster K1×mjlab AMP 入库；训练/数据已开源，真机 deploy 待发布
+
 ## [2026-09-21] ingest | sources/papers/kino_arxiv_2609_18869.md — 深读补全 KINO 实体页；ETH；arXiv 无代码
 
 ## [2026-09-21] ingest | sources/papers/qwm_arxiv_2608_17163.md、code_as_world、infonce_geometry — 三篇论文实体页；QWM 代码待发布，Code-as-World/InfoNCE 已开源
