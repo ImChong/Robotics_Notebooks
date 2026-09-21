@@ -5,6 +5,7 @@ status: complete
 updated: 2026-08-25
 arxiv: "2309.16650"
 related:
+  - ./paper-relateanything.md
   - ../overview/embodied-wm-six-routes-technology-map.md
   - ../overview/embodied-wm-route-context.md
   - ../methods/generative-world-models.md

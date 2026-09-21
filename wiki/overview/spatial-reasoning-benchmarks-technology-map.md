@@ -9,6 +9,7 @@ tags:
 status: complete
 updated: 2026-09-21
 related:
+  - ../entities/paper-relateanything.md
   - ../entities/paper-molmoact2.md
   - ../entities/gemini-robotics.md
   - ../entities/robospatial.md
@@ -21,6 +22,7 @@ related:
   - ../concepts/3d-spatial-vqa.md
   - ../overview/lightorigins-3blogs-technology-map.md
 sources:
+  - ../../sources/papers/relateanything_arxiv_2609_12552.md
   - ../../sources/papers/molmoact2_arxiv_2605_02881.md
   - ../../sources/papers/pointarena_arxiv_2505_09990.md
   - ../../sources/papers/roborefer_arxiv_2506_04308.md
@@ -29,7 +31,7 @@ sources:
   - ../../sources/papers/cambrian_1_arxiv_2406_16860.md
   - ../../sources/papers/embspatial_bench_arxiv_2406_05756.md
   - ../../sources/papers/gemini_robotics_arxiv_2503_20020.md
-summary: "空间推理/指代/pointing benchmark 与 ER-VLA 模型阅读地图：MolmoAct2、Gemini Robotics、RoboSpatial、RefSpatial、PointArena、RoboPoint、Cambrian/CV-Bench、EmbSpatial。"
+summary: "空间推理/指代/pointing benchmark 与 ER-VLA 模型阅读地图：RelateAnything、MolmoAct2、Gemini Robotics、RoboSpatial、RefSpatial、PointArena、RoboPoint、Cambrian/CV-Bench、EmbSpatial。"
 ---
 
 # 空间推理与指代 Benchmark 阅读地图
@@ -58,6 +60,7 @@ summary: "空间推理/指代/pointing benchmark 与 ER-VLA 模型阅读地图�
 | **空间指代 + 推理** | RefSpatial-Bench（RoboRefer） | [paper-roborefer](../entities/paper-roborefer.md) · [refspatial](../entities/refspatial.md) |
 | **3D scan 空间 QA** | RoboSpatial-Home | [robospatial](../entities/robospatial.md) |
 | **egocentric 六关系** | EmbSpatial-Bench | [embspatial](../entities/embspatial.md) |
+| **开放词汇场景关系（SGG）** | OV-SGG-Bench + RelateAnything | [paper-relateanything](../entities/paper-relateanything.md) |
 | **2D 空间 MLLM** | CV-Bench（Cambrian） | [paper-cambrian-1](../entities/paper-cambrian-1.md) |
 | **ER 八项套件** | LightNav-ER（含 Point-Bench 等） | [lightnav-er](../entities/lightnav-er.md) · [3 篇地图](./lightorigins-3blogs-technology-map.md) |
 | **ER→Action 开源栈** | MolmoAct2 + Molmo2-ER | [paper-molmoact2](../entities/paper-molmoact2.md) · [molmo-er](../entities/molmo-er.md) |
@@ -93,7 +96,7 @@ flowchart TB
 | MolmoAct2 | **已开源** | **已发布** HF |
 | RoboRefer/RefSpatial | **已开源** | **已发布** |
 | RoboSpatial-Home | pipeline+eval **已开源** | 随下游模型 |
-| PointArena / RoboPoint / EmbSpatial / Cambrian | **已开源** | 多数已发布 |
+| PointArena / RoboPoint / EmbSpatial / Cambrian / RelateAnything | **已开源** | 多数已发布 |
 | Gemini Robotics | ER 样例 **部分** | VLA **未开源** |
 
 ## 关联页面
