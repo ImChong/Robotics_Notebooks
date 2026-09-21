@@ -180,6 +180,7 @@
 | [x] [unitree_ros.md](repos/unitree_ros.md) | unitree_ros：ROS1 + Gazebo8 官方描述与关节级仿真包 |
 | [x] [unitree_ros_to_real.md](repos/unitree_ros_to_real.md) | unitree_ros_to_real：ROS↔真机桥与 unitree_legged_msgs（与 unitree_ros 配套） |
 | [x] [now_you_see_that.md](repos/now_you_see_that.md) | Now You See That 官方 GitHub（arXiv:2602.06382；README + 视频；训练代码待发布） |
+| [x] [next-ai-draw-io.md](repos/next-ai-draw-io.md) | DayuanJiang/next-ai-draw-io：Next.js AI 聊天制图 + npm MCP 浏览器预览（Apache-2.0，~36k★） |
 | [x] [extreme-parkour.md](repos/extreme-parkour.md) | Extreme Parkour 官方代码（ICRA 2024；Isaac Gym + legged_gym 两阶段跑酷训练） |
 | [x] [antonilo_rl_locomotion.md](repos/antonilo_rl_locomotion.md) | antonilo/rl_locomotion：RMA 系 RaiSim 四足特权 locomotion 训练（亦服务 CMS ICRA 2023） |
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
@@ -443,6 +444,7 @@
 | [x] [amass-dataset.md](sites/amass-dataset.md) | AMASS：MPI-IS 统一 SMPL 人体动捕元数据集（站点与论文索引） |
 | [x] [apollo-lab-yale-apollo-resources-github-io.md](sites/apollo-lab-yale-apollo-resources-github-io.md) | apollo-lab-yale.github.io/apollo-resources：URDD 浏览器内可视化（Three.js + GitHub API 列机器人） |
 | [x] [now-you-see-that-github-io.md](sites/now-you-see-that-github-io.md) | Now You See That 项目页 hellod035.github.io（RSS 2026、深度增广可视化、跑酷/楼梯/平衡恢复实机视频；arXiv:2602.06382） |
+| [x] [next-ai-drawio-jiang-jp.md](sites/next-ai-drawio-jiang-jp.md) | Next AI Draw.io 演示站 next-ai-drawio.jiang.jp（聊天制图、BYOK、MCP 链出 GitHub） |
 | [x] [php-parkour-github-io.md](sites/php-parkour-github-io.md) | PHP 项目页 php-parkour.github.io（RSS 2026、浏览器 MuJoCo demo、跑酷实机视频；配套 arXiv:2602.15827） |
 | [x] [rpl-humanoid-github-io.md](sites/rpl-humanoid-github-io.md) | RPL 项目页 rpl-humanoid.github.io（双向楼梯/坡/垫脚石、2 kg 载荷、DFSV/RSM 消融；配套 arXiv:2602.03002） |
 | [x] [midas-hand-com.md](sites/midas-hand-com.md) | MIDAS Hand 项目页 midas-hand.com（直驱触觉灵巧手 BOM/CAD/装配/四仓库软件栈；配套 arXiv:2607.14487） |

@@ -19,6 +19,7 @@
 - **[Tnkr](../../wiki/entities/tnkr.md)**: 开源整机项目协作平台（CAD/线束/代码/部署一体），对接 GitHub、Onshape 与 AI 助手 Leonardo。
 
 ## Agent 驱动的图示与 CAD 桥
+- **[Next AI Draw.io](../../wiki/entities/next-ai-draw-io.md)**: Next.js 聊天 + `@next-ai-drawio/mcp-server`；自然语言生成 draw.io XML，浏览器实时预览，Cursor/Claude 一行 npx。
 - **[Draw.io Scientific Illustrator](../../wiki/entities/drawio-scientific-illustrator.md)**: Codex 插件；本机 MCP 可见操控 draw.io 画布，逐步重绘可编辑科研插图。
 - **[FreeCAD MCP](../../wiki/entities/freecad-mcp.md)**: FreeCAD Addon RPC + MCP server，自然语言驱动桌面 CAD。
 - **[HumanLayer Skills](../../wiki/entities/humanlayer-skills.md)**: Claude Code 迭代代理维护环（control-loop 设计、`<important if>` harness、GHA 调度）。

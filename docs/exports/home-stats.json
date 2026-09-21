@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4654,
-  "edge_count": 40744,
+  "node_count": 4655,
+  "edge_count": 40755,
   "coverage": {
-    "covered": 4626,
-    "total": 4626,
+    "covered": 4627,
+    "total": 4627,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -25,8 +25,7 @@
       "recency": "2026-09-20",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/robot-simulation-three-layers.md",
@@ -237,7 +236,7 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 806
+      "size": 855
     },
     {
       "label": "操作",
@@ -252,12 +251,12 @@
       "size": 298
     },
     {
-      "label": "动作块输出",
-      "size": 255
-    },
-    {
       "label": "视觉-语言-动作",
       "size": 238
+    },
+    {
+      "label": "动作块输出",
+      "size": 193
     }
   ],
   "top_hubs": [

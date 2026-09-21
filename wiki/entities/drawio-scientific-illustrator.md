@@ -14,6 +14,7 @@ tags:
 status: complete
 updated: 2026-08-30
 related:
+  - ./next-ai-draw-io.md
   - ./freecad-mcp.md
   - ./cad-skills.md
   - ./img2threejs.md
@@ -156,6 +157,7 @@ sequenceDiagram
 | 方案 | 产物 | 代理接口 | 强项 |
 |------|------|----------|------|
 | **本插件** | 可编辑 `.drawio` + 导出图 | Codex Skill + MCP | 可见步进、科研示意图、人在环审图 |
+| [Next AI Draw.io](./next-ai-draw-io.md) | `.drawio` XML + 导出 | Web 聊天 / MCP npm | 多 provider、浏览器 embed、聊天迭代 |
 | [FreeCAD MCP](./freecad-mcp.md) | FreeCAD 文档 / STEP | MCP + Addon RPC | 机械 CAD / FEM |
 | [CAD Skills](./cad-skills.md) | build123d → STEP/URDF | Agent Skills + CLI | 无头、可 CI 的制造向 CAD |
 | [img2threejs](./img2threejs.md) | TypeScript Three.js 工厂 | Agent Skill + forge 脚本 | 程序化 WebGL，非矢量框图 |
@@ -166,6 +168,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Next AI Draw.io](./next-ai-draw-io.md) — **Web/MCP 聊天出 draw.io XML**；与本页 **桌面 live、拒绝 XML-first** 形成对照
 - [FreeCAD MCP](./freecad-mcp.md) — **桌面 CAD** 的 MCP 桥；同属「代理驱动本机专业软件」
 - [CAD Skills](./cad-skills.md) — **制造向 STEP/URDF** Agent Skills
 - [img2threejs](./img2threejs.md) — **图像→程序化 Three.js** Skill（WebGL 资产）

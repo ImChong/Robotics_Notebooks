@@ -14,6 +14,7 @@ updated: 2026-09-19
 related:
   - ./diagram-design.md
   - ./drawio-scientific-illustrator.md
+  - ./next-ai-draw-io.md
   - ./manim.md
   - ./gsap-skills.md
   - ./graphify.md
@@ -135,6 +136,7 @@ sequenceDiagram
 |------|------|----------|------|
 | **Archify** | 自包含 HTML + 导出图 | Agent Skill + Node CLI | 可校验系统图、Delta 审阅、分享卡 |
 | [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) | 可编辑 `.drawio` | Codex Skill + MCP | 可见步进、论文插图 |
+| [Next AI Draw.io](./next-ai-draw-io.md) | `.drawio` XML + 导出 | Web 聊天 / MCP npm | 多 provider、浏览器 embed |
 | [Diagram Design](./diagram-design.md) | HTML/SVG/PNG | Agent Skill | 39 editorial 类型、品牌 onboarding、Mermaid/draw.io 重绘 |
 | [Manim](./manim.md) | 讲解视频 | Python Scene | 公式与时间线叙事 |
 | [GSAP Skills](./gsap-skills.md) | Web UI 动效 | 官方 `SKILL.md` | DOM / Scroll 交互，不是系统拓扑 |
@@ -145,6 +147,7 @@ sequenceDiagram
 
 - [Diagram Design](./diagram-design.md) — **editorial HTML/SVG** 与 Mermaid/draw.io 重绘；无 JSON 校验环
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可编辑科研框图**；同属「代理出图」，交付物不同
+- [Next AI Draw.io](./next-ai-draw-io.md) — **Web/MCP 聊天出 draw.io XML**；要校验 HTML 系统图仍走本页
 - [Manim](./manim.md) — **程序化讲解动画**，不是交互系统图
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方技能，沟通层但非架构拓扑
 - [graphify](./graphify.md) — **自动构图 + 图查询**；探索仓，不演示仓

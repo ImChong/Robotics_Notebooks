@@ -124,6 +124,7 @@ flowchart TB
 |------|----------|---------|
 | [FreeCAD MCP](../entities/freecad-mcp.md) | FreeCAD | PyPI MCP server ↔ Addon RPC |
 | [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) | draw.io desktop | Codex Skill + MCP |
+| [Next AI Draw.io](../entities/next-ai-draw-io.md) | draw.io embed（浏览器） | npm MCP + 嵌入 HTTP |
 | [DimOS](../entities/dimensionalos-dimos.md) | 机器人 OS | skills 暴露为 MCP tools |
 | [3D Gen Studio](../entities/3dgenstudio.md) | 网格生产台 | HTTP `/mcp` + stdio 桥 |
 | [Unreal MCP](../entities/unreal-mcp.md) | Unreal Editor | 编辑器内嵌 HTTP MCP（Experimental） |
@@ -143,7 +144,8 @@ flowchart TB
 - [Model Hardware Standard](./model-hardware-standard.md) — 物理设备驱动标准；可经 MCP 访问，但不等于 MCP
 - [远程过程调用（RPC）](./remote-procedure-call.md) — JSON-RPC / gRPC 概念下层
 - [FreeCAD MCP](../entities/freecad-mcp.md) — 桌面 CAD MCP 桥
-- [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) — 科研插图 MCP
+- [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) — 科研插图 MCP（桌面 live）
+- [Next AI Draw.io](../entities/next-ai-draw-io.md) — Web 聊天 + npm MCP 浏览器预览
 - [DimOS](../entities/dimensionalos-dimos.md) — 机器人 skills 的 MCP 暴露
 - [3D Gen Studio](../entities/3dgenstudio.md) · [Graphify](../entities/graphify.md) · [Hermes Agent](../entities/hermes-agent.md)
 - [ScienceDiscovery](../entities/sciencediscovery.md) — 科学 MCP：Node 治理 broker + 延迟披露工具 + CAS 审计
