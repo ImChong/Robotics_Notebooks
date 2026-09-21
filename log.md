@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/papers/cho+chung GRU 原典与 PyTorch nn.GRU 文档 — 新增 wiki/concepts/gru.md
+
 ## [2026-09-21] ingest | sources/papers/newton_raphson_method_primary_refs.md — Raphson(1690)+Modern Robotics Example 6.1 算例；加深 newtons-method 页
 
 ## [2026-09-21] ingest | sources/repos/booster_mjlab.md — whIRLwind Booster K1×mjlab AMP 入库；训练/数据已开源，真机 deploy 待发布
