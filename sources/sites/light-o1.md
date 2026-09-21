@@ -2,7 +2,7 @@
 
 - **标题：** Light-O1: Scaling Whole-Body Intelligence with Human Action Pretraining
 - **类型：** site（官方 Tech Blog）
-- **机构：** 光原点（Light Origins / 亮源新创）
+- **机构：** 亮源新创（Light Origins）
 - **项目页：** <https://www.lightorigins.com/en/blog/light-o1>
 - **代码：** <https://github.com/lightorigins/Light-O1>
 - **预览模型：** <https://huggingface.co/LightOriginsHQ/Light-O1-Preview>

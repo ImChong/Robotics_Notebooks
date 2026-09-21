@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4676,
-  "edge_count": 41065,
+  "node_count": 4677,
+  "edge_count": 41076,
   "coverage": {
-    "covered": 4647,
-    "total": 4647,
+    "covered": 4648,
+    "total": 4648,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -37,7 +37,8 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-offroad-global-nav.md",
@@ -298,7 +299,7 @@
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
       "label": "国内具身开源全景 424 项 · 阅读导航",
       "type": "query",
-      "degree": 681,
+      "degree": 683,
       "has_repo": true,
       "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
     },

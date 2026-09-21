@@ -6,7 +6,7 @@
 - **论文：** [arXiv:2608.30935](https://arxiv.org/abs/2608.30935)
 - **代码：** <https://github.com/lightorigins/LightNav-0>
 - **模型：** <https://huggingface.co/LightOriginsHQ/LightNav-0>
-- **机构：** 光原点（Light Origins）
+- **机构：** 亮源新创（Light Origins）
 - **入库日期：** 2026-09-01
 
 ## 开源核查（入库日）

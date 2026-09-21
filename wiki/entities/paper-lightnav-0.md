@@ -14,6 +14,7 @@ updated: 2026-09-21
 arxiv: "2608.30935"
 code: https://github.com/lightorigins/LightNav-0
 related:
+  - ./light-origins.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
   - ../overview/open-source-system-loop-7-papers-technology-map.md
@@ -31,7 +32,7 @@ summary: "LightNav-0（arXiv:2608.30935，Light Origins）：dual-channel pointi
 
 # LightNav-0：激发 VLM 空间智能的通用具身导航
 
-**LightNav-0**（*Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation*，[arXiv:2608.30935](https://arxiv.org/abs/2608.30935)，[项目页](https://www.lightorigins.com/en/blog/lightnav-0)，[代码](https://github.com/lightorigins/LightNav-0)）由 **光原点（Light Origins）** 提出：通过 **统一 token 接口** 对齐预训练 **VLM** 的空间智能——**dual-channel pointing** 表达任务、场景与本体无关的空间意图，**residual vector-quantized action tokenizer** 映射为精确轨迹。
+**LightNav-0**（*Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation*，[arXiv:2608.30935](https://arxiv.org/abs/2608.30935)，[项目页](https://www.lightorigins.com/en/blog/lightnav-0)，[代码](https://github.com/lightorigins/LightNav-0)）由 **亮源新创（Light Origins）** 提出：通过 **统一 token 接口** 对齐预训练 **VLM** 的空间智能——**dual-channel pointing** 表达任务、场景与本体无关的空间意图，**residual vector-quantized action tokenizer** 映射为精确轨迹。
 
 ## 一句话定义
 
@@ -57,7 +58,7 @@ summary: "LightNav-0（arXiv:2608.30935，Light Origins）：dual-channel pointi
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 光原点（Light Origins） |
+| **机构** | 亮源新创（Light Origins） |
 | **数据** | 2K+ 场景，4K+ 小时 |
 | **任务** | 指令跟随、开放词汇目标导航、视觉跟踪 |
 | **训练** | 视觉历史压缩、ER mid-training、SFT、RL |

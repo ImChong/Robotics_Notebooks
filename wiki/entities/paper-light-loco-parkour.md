@@ -55,7 +55,7 @@ summary: "Light-Loco-Parkour（Light Origins, 2026-08-03）：Real2Sim2Real 稀�
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 光原点（Light Origins） |
+| **机构** | 亮源新创（Light Origins） |
 | **平台** | Lightbot 0：90 cm / 18.9 kg / 21 DoF；腰下肢 45 N·m、臂 15 N·m QDD；D435 + 骨盆 IMU；Orin Nano |
 | **仿真** | IsaacLab |
 | **输入（部署）** | 机载深度 + 本体 + \((v_x,v_y,\omega_z)\) |

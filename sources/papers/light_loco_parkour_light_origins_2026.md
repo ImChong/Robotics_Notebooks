@@ -10,7 +10,7 @@
 - **视频：** <https://youtu.be/96Rfm7OmHjY>
 - **arXiv：** 入库时 **暂无编号**
 - **作者：** Hongming Chen、Zhuoran Li、Hongxi Wang、Jiangpeng Hu、Ziliang Li、Peize Liu、QingRui Zhao、Xuhao Liu、Liang Pan、Ximin Lyu、Yuntao Ma†、Tingxiang Fan†（† robotics team co-leads）
-- **机构：** Light Origins（光原点）
+- **机构：** 亮源新创（Light Origins）
 - **发表日期（项目页）：** 2026-08-03
 - **入库日期：** 2026-08-04
 - **一句话说明：** 在自研 Lightbot 0 上，用 Real2Sim2Real 从稀疏人体动作种子扩出地形配对全身技能，再经多专家 DAgger + 转移组 RL + 深度蒸馏，得到**单一机载深度策略**：仅深度 + 速度指令即可在行走 / 攀爬 / vault 间自主切换，无技能标签与运行时运动图。

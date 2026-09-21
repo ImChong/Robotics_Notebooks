@@ -14,6 +14,7 @@ status: complete
 updated: 2026-09-21
 code: https://github.com/lightorigins/Light-O1
 related:
+  - ./light-origins.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../methods/vla.md
   - ./paper-lightnav-0.md
@@ -23,6 +24,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_lightorigins_light_o1_2026-09-21.md
   - ../../sources/sites/light-o1.md
+  - ../../sources/sites/lightorigins-about.md
   - ../../sources/repos/lightorigins-light-o1.md
 summary: "Light-O1（亮源新创，2026-09-21）：从互联网视频恢复结构化人类动作并自回归预训练 transferable action prior，验证跨本体 Transfer Scaling Law（≈10 万动作小时）；真机 loco-manipulation + 指令→全身动作推理；Preview 推理代码与 HF 权重已开源，完整训练 checkpoint 未公开。"
 ---
@@ -49,7 +51,7 @@ summary: "Light-O1（亮源新创，2026-09-21）：从互联网视频恢复结�
 
 ## 为什么重要
 
-- **预训练段落位：** 亮源新创 **规模化预训练 → 规模化对齐 → 规模化部署** 三段范式中，Light-O1 是 **预训练段** 首个公开模型（对齐见 [LightNav-0](./paper-lightnav-0.md)，部署见 [Light REACT](./light-react.md)）。
+- **预训练段落位：** [亮源新创（Light Origins）](./light-origins.md) **规模化预训练 → 规模化对齐 → 规模化部署** 三段范式中，Light-O1 是 **预训练段** 首个公开模型（对齐见 [LightNav-0](./paper-lightnav-0.md)，部署见 [Light REACT](./light-react.md)）。
 - **数据范式切换：** 不 sole 依赖遥操作/UMI 专项采集，而是把 **互联网人类视频** 作为可扩展动作监督源。
 - **Transfer Scaling Law：** 预训练 multimodal token 预算 D 扩大后，适配 Nymeria / HIW-500 / LightBot 等 **不同本体与视角** 的 held-out 预测损失与开环姿态误差呈 **幂律改善**——为「堆人类动作数据」提供量化依据。
 - **开源 Preview：** [Light-O1-Preview](https://huggingface.co/LightOriginsHQ/Light-O1-Preview) + [Playground](https://huggingface.co/spaces/LightOriginsHQ/Light-O1-Preview-playground) 可体验 **指令→语言推理→全身动作** 完整链路。
@@ -58,7 +60,7 @@ summary: "Light-O1（亮源新创，2026-09-21）：从互联网视频恢复结�
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 光原点（Light Origins） |
+| **机构** | 亮源新创（Light Origins） |
 | **基座** | Qwen3.5-4B |
 | **预训练规模** | D = 3.75B–120B multimodal tokens（最大 ≈ **10 万动作小时** 人类动作） |
 | **动作表示** | 统一人类动作：根轨迹 + 身体姿态 + 手部状态；Preview 输出 `(frames, 138)` @ 20 FPS |
