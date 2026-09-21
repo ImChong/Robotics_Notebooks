@@ -275,6 +275,7 @@ flowchart LR
   - [具身数据](depth-embodied-data.md) — 飞轮的验收侧
   - [VLA](depth-vla.md) — 认知/操作成功率评测的主要对象
   - [RL 运动控制](depth-rl-locomotion.md) — 运控指标与跟踪评测
+  - [模型架构](depth-model-architecture.md) — 架构改动要靠分层评测证伪，别只看单一成功率
 
 ## 参考来源
 

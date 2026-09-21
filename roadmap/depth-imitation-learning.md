@@ -258,6 +258,7 @@ flowchart LR
   - [动作重定向](depth-motion-retargeting.md) — 人演示变成机器人参考
   - [具身数据](depth-embodied-data.md) — 示范清洗、聚合与配比
   - [接触操作](depth-contact-manipulation.md) — IL 在精细接触任务上的主战场
+  - [模型架构](depth-model-architecture.md) — 横切视角：动作头从单步回归到 chunk 与扩散的选型
 
 ## 参考来源
 

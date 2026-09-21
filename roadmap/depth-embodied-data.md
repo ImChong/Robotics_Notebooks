@@ -241,6 +241,7 @@ flowchart LR
   - [动作重定向](depth-motion-retargeting.md) — 人 → 本体折算的方法侧
   - [VLA](depth-vla.md) — 大规模跨具身数据的主要训练出口
   - [具身测评](depth-embodied-eval.md) — 飞轮的验收侧
+  - [模型架构](depth-model-architecture.md) — 数据供给撑住的容量上限最终落在结构选型上
 
 ## 参考来源
 

@@ -4593,6 +4593,7 @@
 - [路线（纵深）：如果目标是 ICL（具身上下文学习）](roadmap/depth-icl.md) — 摘要**：面向"想让机器人读完一条示范就会做新任务、且不动权重"的纵深路线，从「什么才算真 ICL」的判别边界，到示范表征与动作 token、遥操作示范与人类视频两条数据线，再到零梯度上下文 /  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是模仿学习与技能迁移](roadmap/depth-imitation-learning.md) — 摘要**：面向"从人类演示数据让机器人学习技能"的纵深路线，从时序建模基础到 ASE / Diffusion Policy，按 Stage 0–6 串通核心方法；本路线是 [运动控制主路线](mo `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Loco-Manipulation（移动操作）](roadmap/depth-loco-manipulation.md) — 摘要**：面向"让机器人边走边动手（搬箱、开门、端托盘）"的纵深路线，从行走与操作的全身耦合问题出发，经全身控制基座、遥操作与数据采集、全身技能学习，到统一生成式模型与导航–操作联合，按 Stag `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）](roadmap/depth-model-architecture.md) — 摘要**：面向"想知道一条机器人策略该用什么网络、多宽多深、动作怎么出"的纵深路线，从"由控制回路反推函数族"的选型判据出发，沿 MLP / CNN / RNN / Transformer / S `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）](roadmap/depth-motion-generation.md) — 摘要**：面向"想用生成模型造出人体/人形动作"的纵深路线，从生成模型基础（扩散 / 流匹配）与动作表示、文本-动作数据集，到生成骨干主线（MDM 式扩散 → 可控生成 → HY-Motion / `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）](roadmap/depth-motion-retargeting.md) — 摘要**：面向"想把人体/动物动捕、视频、生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 G `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](roadmap/depth-navigation.md) — 摘要**：面向"让机器人知道自己在哪、该往哪走"的纵深路线，从导航栈分层与 SLAM / 状态估计基座，到经典 ROS 2 导航闭环，再到学习型导航、视觉–语言导航（VLN）与导航 VLA / W `📅unknown` `[roadmap_page]`

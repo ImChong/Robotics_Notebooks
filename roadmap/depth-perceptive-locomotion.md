@@ -191,6 +191,7 @@ flowchart LR
   - [导航](depth-navigation.md) — 大范围「往哪走」vs 落足「往哪迈」
   - [Loco-Manipulation](depth-loco-manipulation.md) — 越障之后还要操作
   - [Sim2Real](depth-sim2real.md) — 感知策略上真机的域差
+  - [模型架构](depth-model-architecture.md) — 横切视角：地形编码器与策略网络的结构选型
 - 关联知识页：
   - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
   - [FastStair](../wiki/entities/paper-faststair-humanoid-stair-ascent.md) — Stage 3 人形高速上楼 · 规划引导 RL

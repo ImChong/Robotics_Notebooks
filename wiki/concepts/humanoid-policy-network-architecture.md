@@ -2,9 +2,10 @@
 type: concept
 tags: [il, rl, humanoid, architecture, vla, world-models, foundation-policy, diffusion-policy, amp]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 summary: "人形与腿式模仿/强化策略里，网络“长什么样”往往被写在论文 Method：从浅层 MLP 到 AMP 判别器、MoE、Transformer/Diffusion chunk，再到 VLA 与 WAM；真机强项常是小 MLP，难点在观测、奖励与 sim2real。"
 related:
+  - ../../roadmap/depth-model-architecture.md
   - ./humanoid-policy-observation-inputs.md
   - ./whole-body-control.md
   - ./transformer.md
@@ -154,6 +155,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md) — Stage 0–5 学习路径（选型判据 → 骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）
 - [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md) — 架构表格中「输入」列的五类来源与获取方式
 - [神经反馈控制器](./neural-feedback-controller.md) — Policy 作为 $\pi(x)$ 状态反馈律与推理算力直觉
 - [Transformer](./transformer.md)

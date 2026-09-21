@@ -235,6 +235,7 @@ flowchart LR
   - [VLA](depth-vla.md) — 上下文条件常挂在 VLA 骨干上
   - [WAM](depth-wam.md) — 显式预知后果 vs 上下文里隐式适应
   - [遥操作](depth-teleoperation.md) — 一条示范从哪里来
+  - [模型架构](depth-model-architecture.md) — 横切视角：上下文长度与 token 预算怎么进骨干
 
 ## 参考来源
 

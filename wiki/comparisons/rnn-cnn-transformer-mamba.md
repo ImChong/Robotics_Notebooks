@@ -9,9 +9,10 @@ tags:
   - architecture
   - comparison
 status: complete
-updated: 2026-08-12
+updated: 2026-09-21
 summary: "RNN/CNN/Transformer/Mamba 四类序列–视觉骨干对比：归纳偏置、长程依赖、并行度与推理复杂度，服务视觉骨干与时序建模选型。"
 related:
+  - ../../roadmap/depth-model-architecture.md
   - ../concepts/transformer.md
   - ../concepts/state-space-model-ssm.md
   - ../concepts/convolutional-neural-network.md
@@ -71,6 +72,7 @@ Benchmark 赢不等于机载赢；Mamba 生态与算子成熟度仍低于 Transf
 
 ## 关联页面
 
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md) — Stage 1 骨干族谱的学习入口
 - [SSM](../concepts/state-space-model-ssm.md)
 - [Transformer](../concepts/transformer.md)
 - [Vision Mamba](../entities/vision-mamba-vim.md)

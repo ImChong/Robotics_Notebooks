@@ -19,6 +19,7 @@
 | 想让研发闭环自己变强（递归自我改进） | [RSI 纵深路线](roadmap/depth-rsi.md) |
 | 想做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
 | 想让机器人自主从 A 到 B | [导航纵深路线](roadmap/depth-navigation.md) |
+| 想给策略挑网络结构（骨干 / 动作头 / 多模态基座） | [模型架构纵深路线](roadmap/depth-model-architecture.md) |
 | 想学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 想用强化学习做 locomotion | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
 | 想让机器人边走边动手 | [Loco-Manipulation 纵深路线](roadmap/depth-loco-manipulation.md) |
