@@ -2,9 +2,10 @@
 type: entity
 tags: [humanoid, whole-body-control, in-context-learning, resilient-control, transformer-policy, light-origins, deployment]
 status: complete
-updated: 2026-09-09
+updated: 2026-09-21
 related:
   - ../concepts/robot-in-context-learning.md
+  - ./light-o1.md
   - ./paper-lightnav-0.md
   - ./paper-light-loco-parkour.md
   - ../tasks/humanoid-locomotion.md
@@ -41,7 +42,7 @@ summary: "Light REACT（亮源新创，2026-09-09）：把故障/扰动下的全
 - **部署「最后一公里」：** 导航对齐（[LightNav-0](./paper-lightnav-0.md)）解决「去哪」后，REACT 直指 **运行中能力变化**——关节掉电、摔伤后是否还能动。
 - **单策略覆盖多行为模态：** 行走调整、爬行、摔倒恢复 **同一策略** 内切换，避免传统 **故障检测 → 模式切换 → 重训** 运维链。
 - **具身 ICL 新轴：** 与操作臂「示范当 prompt」不同，上下文是 **自身运动反馈序列**，归纳对象是 **当前运动能力** 而非新任务映射（见 [机器人 ICL](../concepts/robot-in-context-learning.md)）。
-- **机构范式第三段：** 亮源新创 **规模化预训练 → 规模化对齐 → 规模化部署** 中，REACT 为 **部署段** 首个公开成果。
+- **机构范式第三段：** 亮源新创 **规模化预训练 → 规模化对齐 → 规模化部署** 中，REACT 为 **部署段** 首个公开成果（预训练段见 [Light-O1](./light-o1.md)）。
 
 ## 核心信息
 

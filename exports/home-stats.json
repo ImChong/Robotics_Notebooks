@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4672,
-  "edge_count": 40952,
+  "node_count": 4673,
+  "edge_count": 40960,
   "coverage": {
-    "covered": 4644,
-    "total": 4644,
+    "covered": 4645,
+    "total": 4645,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -228,7 +228,7 @@
     },
     {
       "label": "操作",
-      "size": 680
+      "size": 683
     },
     {
       "label": "仿真到现实",
@@ -244,7 +244,7 @@
     },
     {
       "label": "具身评测基准选型闭环",
-      "size": 215
+      "size": 201
     }
   ],
   "top_hubs": [
@@ -260,7 +260,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1314,
+      "degree": 1315,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
