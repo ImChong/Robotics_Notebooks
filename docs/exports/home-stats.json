@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "roadmap/depth-model-architecture.md",
+      "detail_id": "roadmap-depth-model-architecture",
+      "label": "路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）",
+      "type": "roadmap_page",
+      "recency": "2026-09-21",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/booster-mjlab.md",
       "detail_id": "entity-booster-mjlab",
       "label": "booster_mjlab（Booster K1 × mjlab）",
@@ -211,29 +220,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/painode-085-bridgedatav2.md",
-      "detail_id": "entity-painode-085-bridgedatav2",
-      "label": "BridgeData V2",
-      "type": "entity",
-      "recency": "2026-09-20",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/booster-mjlab.md",
-    "detail_id": "entity-booster-mjlab",
-    "label": "booster_mjlab（Booster K1 × mjlab）",
-    "type": "entity",
+    "path": "roadmap/depth-model-architecture.md",
+    "detail_id": "roadmap-depth-model-architecture",
+    "label": "路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）",
+    "type": "roadmap_page",
     "recency": "2026-09-21",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
