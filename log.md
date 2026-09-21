@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/papers/g2g_arxiv_2606_08284.md — G2G 组间位姿估计；已开源（代码+十组权重）；新建 paper-g2g 实体并回链 state-estimation
+
 ## [2026-09-21] ingest | sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md — 具身小站 10 篇接触丰富仿真盘点；10/10 独立节点新建
 
 - **意图：** 用户指定 ingest <https://mp.weixin.qq.com/s/OCz5OShnrRSeSNb8dcmXDg>；每篇论文独立非重复详情节点。

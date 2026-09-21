@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md

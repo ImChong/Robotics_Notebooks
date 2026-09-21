@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, utoronto, vector-institute, 3d-reconstruction, foundation-model, sfm, pose-estimation, test-time-training, vggt, pointmap, visual-localization]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 arxiv: "2602.23361"
 venue: "CVPR 2026"
 code: https://github.com/nv-dvl/vgg-ttt

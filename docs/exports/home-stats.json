@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-21",
-  "node_count": 4697,
-  "edge_count": 41233,
+  "node_count": 4698,
+  "edge_count": 41241,
   "coverage": {
-    "covered": 4668,
-    "total": 4668,
+    "covered": 4669,
+    "total": 4669,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -130,7 +130,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
     },
     {
       "path": "wiki/entities/nymeria-dataset.md",
@@ -151,7 +151,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
     },
     {
       "path": "wiki/entities/paper-hy-motion-1-0.md",
@@ -172,7 +172,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
     },
     {
       "path": "wiki/entities/paper-nymeria.md",
@@ -193,7 +193,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
     },
     {
       "path": "wiki/entities/physical-commonsense-generalist.md",
@@ -203,7 +203,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
     },
     {
       "path": "wiki/entities/talk-ilya-sutskever-observation-on-generalization.md",
@@ -213,7 +213,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "动作块输出（Action Chunking） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -244,8 +244,8 @@
       "size": 298
     },
     {
-      "label": "具身评测基准选型闭环",
-      "size": 267
+      "label": "全身控制",
+      "size": 247
     },
     {
       "label": "视觉-语言-动作",
@@ -375,8 +375,7 @@
       "label": "π0.5（HMI P059）",
       "type": "entity",
       "degree": 58,
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",

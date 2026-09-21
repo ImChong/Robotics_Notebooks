@@ -14,7 +14,7 @@ tags:
   - unist
   - state-estimation
 status: complete
-updated: 2026-09-20
+updated: 2026-09-21
 arxiv: "2608.01706"
 venue: "ECCV 2026"
 related:
