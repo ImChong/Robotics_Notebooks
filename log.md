@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | Ross DAgger (AISTATS 2011) + FastSAC 15min 项目页 (Holosoma 已开源) + MIT 6.S184 Flow/Diffusion 2026 — 新建 paper-ross-dagger、深化 15min 实体、MIT 课程 overview
+
 ## [2026-09-21] ingest | sources/repos/loongforge.md — 深度 ingest LoongForge 训练框架，升格 cn-os-loongforge 实体页并修正分类
 
 ## [2026-09-21] ingest | sources/repos/laya-mlx.md — 接入 Laya-MLX Apple Silicon MLX 端口并交叉更新 Laya 实体

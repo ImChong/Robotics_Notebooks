@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, rl, motion-retargeting, whole-body-tracking, locomotion, amazon-far, isaacgym, isaacsim, mujoco, unitree-g1, booster-t1]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 summary: "holosoma 是 Amazon FAR 开源的人形全身 RL 训练、推理与 OmniRetarget 重定向一体化框架；支持 IsaacGym/IsaacSim/MJWarp/MuJoCo、PPO/FastSAC、G1/T1 与 sim-to-real 部署管线。"
 related:
   - ./paper-hil-hybrid-imitation-learning.md
@@ -14,8 +14,10 @@ related:
   - ./unitree-g1.md
   - ./isaac-gym-isaac-lab.md
   - ./mujoco.md
+  - ./paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
 sources:
   - ../../sources/repos/holosoma.md
+  - ../../sources/sites/fastsac-humanoid-amazon-far.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
 ---
 
@@ -94,6 +96,7 @@ flowchart LR
 ## 参考来源
 
 - [holosoma 仓库归档](../../sources/repos/holosoma.md)
+- [fastsac-humanoid 项目页](../../sources/sites/fastsac-humanoid-amazon-far.md) — 15 min locomotion 论文/视频入口
 - [OmniRetarget 论文归档](../../sources/papers/omniretarget_arxiv_2509_26633.md)
 
 ## 推荐继续阅读

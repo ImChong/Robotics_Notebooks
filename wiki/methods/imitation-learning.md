@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-21
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../concepts/robot-data-supervision-signal-types.md
