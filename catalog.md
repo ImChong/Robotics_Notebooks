@@ -1823,6 +1823,7 @@
 - [ManiSkillFormer（arXiv:2609.16331）](wiki/entities/paper-maniskillformer.md) — ManiSkillFormer**（*ManiSkillFormer: Demonstration-Free Compositional Manipulation via Task-Conditi `📅unknown` `[entity_page]`
 - [MaP-WAM（arXiv:2609.11561）](wiki/entities/paper-map-wam.md) — MaP-WAM**（[Memory as Plans: World-Action Modeling with Memory-Grounded Planning](https://arxiv.org `📅unknown` `[entity_page]`
 - [Masked Visual Actions（统一世界建模的掩码视觉动作）](wiki/entities/paper-masked-visual-actions.md) — Masked Visual Actions**（*Masked Visual Actions for Unified World Modeling*，[arXiv:2607.19343](http `📅unknown` `[entity_page]`
+- [ME-Dex 1.0：异构触觉进入 World Action Modeling](wiki/entities/paper-me-dex-1-0.md) — ME-Dex 1.0**（*Bringing Heterogeneous Tactile Sensing into World Action Modeling*，[arXiv:2609.21449 `📅unknown` `[entity_page]`
 - [机械智能信息论（arXiv:2609.19588）](wiki/entities/paper-mechanical-intelligence-info-theory.md) — 机械智能信息论**（*Quantifying Mechanical Intelligence in Legged Robots with Information Theory*，[arXiv:26 `📅unknown` `[entity_page]`
 - [MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md) — MECo-WAM**（*Learning 4D Geometric Priors for Inference-Efficient World Action Models*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [MemForest](wiki/entities/paper-memforest.md) — MemForest**（*Efficient Agent Memory Management via EventTree Partitioning and Progressive Merging `📅unknown` `[entity_page]`
