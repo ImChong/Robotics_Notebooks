@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-21",
   "node_count": 4728,
-  "edge_count": 41478,
+  "edge_count": 41486,
   "coverage": {
     "covered": 4699,
     "total": 4699,
@@ -147,6 +147,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     },
     {

@@ -1,12 +1,15 @@
-<<<<<<< HEAD
+## [2026-09-21] ingest | sources/sites/light-insight-bench.md — INSIGHT-Bench 官方评测站+仓库；5×5 诊断矩阵与 evidence-pack leaderboard；评测 harness 已开源
+
+- **意图：** 用户指定 ingest <https://lightorigins.github.io/Light-INSIGHT-Bench/>；深度升格 [insight-bench](wiki/entities/insight-bench.md) 并补齐 sites/repos 溯源。
+- **开源结论：** 评测侧 **已开源**（`lightorigins/Light-INSIGHT-Bench` + HF `LightOriginsHQ/light-insight-bench`）；200/210 场景需自备许可；训练侧 1683 场景引擎数据 **未**随本 release 完整发布。
+
 ## [2026-09-21] ingest | sources/sites/vision-locomotion-github-io.md — CoRL 2022 Best Systems（arXiv:2211.07638）A1 单前向深度 scandots→DAgger；项目页无官方代码；新建 paper-vision-locomotion-egocentric 并交叉 stair-obstacle / extreme-parkour / RMA
-=======
+
 ## [2026-09-21] ingest | sources/papers/dcreg_ijrr_2026_hu.md — IJRR 2026 DCReg 退化 LiDAR 配准；GitHub 已开源完整实现
 
 ## [2026-09-21] ingest | sources/papers/gm_loco_arxiv_2609_10286.md — 深度 ingest GM-Loco（3D RFT + VAE TS）；项目页 Code Coming Soon
 
 ## [2026-09-21] ingest | Ross DAgger (AISTATS 2011) + FastSAC 15min 项目页 (Holosoma 已开源) + MIT 6.S184 Flow/Diffusion 2026 — 新建 paper-ross-dagger、深化 15min 实体、MIT 课程 overview
->>>>>>> af016f510 ([2026-09-21] ingest | sources/papers/dcreg_ijrr_2026_hu.md — IJRR 2026 DCReg 退化 LiDAR 配准入库并同步全站索引)
 
 ## [2026-09-21] ingest | sources/repos/loongforge.md — 深度 ingest LoongForge 训练框架，升格 cn-os-loongforge 实体页并修正分类
 

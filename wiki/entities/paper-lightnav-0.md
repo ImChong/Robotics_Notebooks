@@ -17,6 +17,7 @@ related:
   - ./light-origins.md
   - ./lightnav-er.md
   - ./insight-bench.md
+  - ../tasks/zero-shot-object-navigation.md
   - ../overview/lightorigins-3blogs-technology-map.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
@@ -28,7 +29,9 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
   - ../../sources/sites/lightnav-0.md
+  - ../../sources/sites/light-insight-bench.md
   - ../../sources/repos/lightorigins-lightnav-0.md
+  - ../../sources/repos/lightorigins-light-insight-bench.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/lightnav-0.md
 summary: "LightNav-0（arXiv:2608.30935，Light Origins）：dual-channel pointing + RVQ action tokenizer 统一 VLM 空间意图；2K+ 场景 4K+ h 数据；10 个导航仿真达论文投稿时最优单目成功率 + 跨本体零样本真机；lightorigins/LightNav-0 与 HF 权重已开源。"
@@ -145,6 +148,7 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [LightNav-0 项目页](https://www.lightorigins.com/en/blog/lightnav-0)
+- [INSIGHT-Bench 评测站](https://lightorigins.github.io/Light-INSIGHT-Bench/)
 - [arXiv:2608.30935](https://arxiv.org/abs/2608.30935)
 
 ## 参考来源
@@ -152,6 +156,8 @@ sequenceDiagram
 - [lightnav0_arxiv_2608_30935.md](../../sources/papers/lightnav0_arxiv_2608_30935.md)
 - [具身智能小站 2026-09-01 七篇盘点](../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md)
 - [LightNav-0 项目页](../../sources/sites/lightnav-0.md)
+- [INSIGHT-Bench 项目页](../../sources/sites/light-insight-bench.md)
 - [lightorigins/LightNav-0](../../sources/repos/lightorigins-lightnav-0.md)
+- [lightorigins/Light-INSIGHT-Bench](../../sources/repos/lightorigins-light-insight-bench.md)
 - [LightNav-0 源码归档](../../sources/repos/lightnav-0.md)（<https://github.com/lightorigins/LightNav-0>）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

@@ -2,9 +2,10 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-21
 related:
   - ../entities/deepinsight.md
+  - ../entities/insight-bench.md
   - ../entities/genesis-world-10.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/isaac-gym-isaac-lab.md
