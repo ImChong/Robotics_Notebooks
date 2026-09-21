@@ -17,6 +17,7 @@ related:
   - ./mattpocock-skills.md
   - ./nuwa-skill.md
   - ./superpowers-obra.md
+  - ./birdview.md
   - ./agent-skills-addyosmani.md
   - ./andrej-karpathy.md
   - ../concepts/agentic-coding-software-fundamentals.md

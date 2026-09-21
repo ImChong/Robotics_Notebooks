@@ -18,6 +18,7 @@ related:
   - ./hermes-agent.md
   - ./mattpocock-skills.md
   - ./humanlayer-skills.md
+  - ./birdview.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
@@ -57,7 +58,7 @@ summary: "Open Code Review（alibaba/open-code-review，CLI 命令 ocr）是阿�
 
 ## 为什么重要（对本知识库读者）
 
-- **与 Superpowers「requesting-code-review」互补：** [Superpowers（obra）](superpowers-obra.md) 把 **何时请人/代理做评审** 写进交付管线；OCR 把 **怎么做 diff 级评审** 工程化为 CLI + 规则 + 定位模块，降低「skill 漂移、漏文件、行号不准」三类高频失败。
+- **与 Superpowers「requesting-code-review」互补：** [Superpowers（obra）](superpowers-obra.md) 把 **何时请人/代理做评审** 写进交付管线；OCR 把 **怎么做 diff 级评审** 工程化为 CLI + 规则 + 定位模块，降低「skill 漂移、漏文件、行号不准」三类高频失败。[Birdview](birdview.md) 则补 **改码前** 的模块级 scope 地图 — 三者宜串成 map → implement → review。
 - **维护本 wiki 时的直接可用性：** 本仓库由 Cloud Agent 推 PR、跑 `make ci-preflight`；在 Cursor / Codex 环境可装 OCR 插件或 `ocr review --format json`，作为 **PR 前第二意见**（仍须以人类 curator 与 CI 为准）。
 - **Agent 生态对照：** 与 [Agent Reach](agent-reach.md)（外网读搜脚手架）、[Hermes Agent](hermes-agent.md)（常驻运行时）不同，OCR 是 **垂直于 code review 的可审计工具链**；与 [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 中「生产可靠 / 评审」项同向。
 - **Recall 取舍透明：** 官方基准刻意 **牺牲 Recall 换 Precision**，适合 **降噪 triage** 而非「找尽所有问题」；选型时需与团队 SLA 对齐。

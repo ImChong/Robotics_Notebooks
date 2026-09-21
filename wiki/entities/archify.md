@@ -18,6 +18,7 @@ related:
   - ./manim.md
   - ./gsap-skills.md
   - ./graphify.md
+  - ./birdview.md
   - ./mattpocock-skills.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../references/llm-wiki-karpathy.md
@@ -141,6 +142,7 @@ sequenceDiagram
 | [Manim](./manim.md) | 讲解视频 | Python Scene | 公式与时间线叙事 |
 | [GSAP Skills](./gsap-skills.md) | Web UI 动效 | 官方 `SKILL.md` | DOM / Scroll 交互，不是系统拓扑 |
 | [graphify](./graphify.md) | `graph.json` + 查询 | Skill + CLI / MCP | 探索期知识图，不是演示图 |
+| [Birdview](./birdview.md) | `.birdview/*.json` + HTML | Agent Skill + Node CLI | **改码前** 仓库架构 map + scope 声明 |
 | 本库 Mermaid | Markdown 内流程图 | 无（静态编译） | wiki 结构、版本友好 |
 
 ## 关联页面
@@ -151,6 +153,7 @@ sequenceDiagram
 - [Manim](./manim.md) — **程序化讲解动画**，不是交互系统图
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方技能，沟通层但非架构拓扑
 - [graphify](./graphify.md) — **自动构图 + 图查询**；探索仓，不演示仓
+- [Birdview](./birdview.md) — **改码前** 从真实仓库 map 架构与变更 scope；本页偏描述驱动的展示图
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用工程技能对照
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 架构取舍仍要人转向；本工具只把已决定的边界画清楚
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译进 wiki；Archify 编译的是沟通工件

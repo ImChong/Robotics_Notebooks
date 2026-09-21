@@ -15,6 +15,7 @@ related:
   - ../entities/archify.md
   - ../entities/superpowers-obra.md
   - ../entities/open-code-review.md
+  - ../entities/birdview.md
   - ../entities/agent-skills-addyosmani.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ./ai-auto-research.md
@@ -113,6 +114,7 @@ flowchart TD
 
 - [Skills For Real Engineers（mattpocock）](../entities/mattpocock-skills.md) — 用 grill / TDD / 架构卫生对抗 vibe coding 的可安装技能
 - [Archify](../entities/archify.md) — 把已决定的服务边界 / 数据流画成可校验 HTML；不替代本页的架构取舍
+- [Birdview](../entities/birdview.md) — 改码前先 map 仓库模块与计划 scope；不替代 diff 或架构判断本身
 - [Superpowers（obra）](../entities/superpowers-obra.md) — brainstorm → worktree → TDD → 评审的代理交付管线
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 有 agent 仍要先做 reset/verify 环境工程
 - [ENPIRE](../methods/enpire.md) — coding agent 真机策略自改进；核心贡献是环境接口不是模型

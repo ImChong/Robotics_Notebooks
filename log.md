@@ -1,3 +1,9 @@
+## [2026-09-21] ingest | sources/repos/birdview.md — Qiuner/birdview Architecture-first 编码代理 Skill；MIT 已开源，项目页 qiuner.github.io/birdview
+
+- **意图：** 用户指定 ingest `Qiuner/birdview`。
+- **开源结论：** **已开源**（MIT）；`npx skills add Qiuner/birdview` 安装；npm 包未公开发布。
+- **关键页：** [birdview](wiki/entities/birdview.md)
+
 ## [2026-09-21] structural | roadmap/depth-model-architecture.md — 新增第 26 条纵深路线「模型架构」并接入首页/路线视图/主路线
 
 - **触发：** 维护者要求"增加一个模型架构的纵深路线"。仓库里 [`humanoid-policy-network-architecture`](wiki/concepts/humanoid-policy-network-architecture.md)、[`rnn-cnn-transformer-mamba`](wiki/comparisons/rnn-cnn-transformer-mamba.md)、[`action-chunking`](wiki/methods/action-chunking.md)、[`unified-multimodal-tokens`](wiki/methods/unified-multimodal-tokens.md) 等架构知识已齐，但散落在概念/方法/对比页里，没有一条串起来的学习路线。
