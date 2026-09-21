@@ -2,7 +2,7 @@
 type: method
 tags: [path-planning, search, navigation, graph-search, mobile-robot]
 status: complete
-updated: 2026-07-27
+updated: 2026-09-21
 related:
   - ./dwa.md
   - ./smooth-navigation-path-generation.md
@@ -13,12 +13,14 @@ related:
   - ../entities/humanoid-system-curriculum.md
   - ../comparisons/mobile-robot-navigation-planning-methods.md
   - ../concepts/micromouse.md
+  - ../entities/paper-offroad-global-nav.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
   - ../../sources/repos/emstef-micromouse.md
   - ../../sources/sites/micromouseonline-com.md
+  - ../../sources/papers/offroad_global_nav_arxiv_2607_23743.md
 summary: "A* 全局路径规划：在栅格或图上用 f=g+h 启发搜索最优路径；课程第 4.2 节与 Nav2/PythonRobotics 全局层基线，需与 DWA 局部避障分层配合。"
 ---
 
@@ -100,6 +102,7 @@ flowchart TB
 2. 在 PythonRobotics 或自写栅格上跑 A\*，对比曼哈顿 vs 欧氏启发的扩展节点数。
 3. 将折线交给 [DWA](./dwa.md) 跟踪；观察「全局穿墙」是否因未膨胀 footprint。
 4. Nav2：`planner_server` + `controller_server` 联调，确认 `global_costmap` 分辨率与机器人半径一致。
+5. 越野长程：A\* 的上界是 costmap 质量。学习型 \(C=1-T\)（见 [Off-Road Global Nav](../entities/paper-offroad-global-nav.md)）仍用 A\* / Yen \(K\)-shortest 出路点，评测看规划轨迹与人类 GPS 的 Fréchet，而不是换掉搜索器。
 
 ### 调试指标
 
@@ -135,6 +138,7 @@ flowchart TB
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 - [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其全局搜索层，含与 DWA/平滑的分层选型
 - [Micromouse](../concepts/micromouse.md) — 迷宫格图上 Flood Fill / A\* 族的竞赛压缩场景
+- [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 开销地理学习 costmap 后仍用 A\* 做公里级越野 LRP
 
 ## 参考来源
 
@@ -143,6 +147,7 @@ flowchart TB
 - [深蓝AI：规划与控制篇](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md)
 - [Micromouse in Webots 归档](../../sources/repos/emstef-micromouse.md)
 - [Micromouse Online 归档](../../sources/sites/micromouseonline-com.md)
+- [Off-Road Global Nav 论文摘录](../../sources/papers/offroad_global_nav_arxiv_2607_23743.md)
 
 ## 推荐继续阅读
 

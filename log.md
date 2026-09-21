@@ -1,3 +1,9 @@
+## [2026-09-21] ingest | sources/papers/offroad_global_nav_arxiv_2607_23743.md — TAMU+ARL 越野可通行全局规划；HF 数据集已开源（CC BY-NC），训练代码待发布
+
+- **意图：** 用户指定 ingest arXiv:2607.23743 与 HF `anony-008/offroad-global-nav`。
+- **开源结论：** 无独立项目页；HF 多模态地理数据集 **已发布**（CC BY-NC-4.0，~29.9 GB）；训练/推理代码与权重 **待发布**（勿把前作 unmannedlab/Trailblazer 当成本文实现）。
+- **关键页：** [paper-offroad-global-nav](wiki/entities/paper-offroad-global-nav.md)
+
 ## [2026-09-21] ingest | sources/papers/ai_architecture_foundations.md — 新建 AI 架构地图独立节点，入库 MLP/MoE/CNN/U-Net/ViT/RNN–Mamba/VAE/GAN/DDPM/DiT/GNN 一手论文；开源结论见簇内步骤 2.5 表
 
 ## [2026-09-21] ingest | sources/papers/cho+chung GRU 原典与 PyTorch nn.GRU 文档 — 新增 wiki/concepts/gru.md

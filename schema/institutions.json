@@ -2667,6 +2667,14 @@
         "texas-a-and-m"
       ]
     },
+    "arl": {
+      "label": "美国陆军研究实验室（DEVCOM Army Research Laboratory）",
+      "aliases": [
+        "arl",
+        "devcom-arl",
+        "army-research-laboratory"
+      ]
+    },
     "brown": {
       "label": "布朗大学（Brown University）",
       "aliases": [

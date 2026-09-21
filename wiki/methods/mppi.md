@@ -2,15 +2,17 @@
 type: method
 tags: [control, optimization, reinforcement-learning, model-based-rl, mpc]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ./model-based-rl.md
   - ./model-predictive-control.md
   - ../formalizations/variational-objective.md
   - ../entities/paper-pgif-mppi.md
+  - ../entities/paper-offroad-global-nav.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/pgif_mppi_arxiv_2608_08323.md
+  - ../../sources/papers/offroad_global_nav_arxiv_2607_23743.md
 summary: "模型预测路径积分（MPPI）是一种基于样本的概率模型预测控制方法，通过海量并行轨迹采样与加权平均，实现了对非凸、非平滑动力学系统的高效控制。"
 ---
 
@@ -44,14 +46,16 @@ MPPI 的核心是基于信息论的路径积分控制理论：
 - **天然并行**：极其适配 NVIDIA GPU 加速，可以在几毫秒内完成数万次 Rollout。
 - **鲁棒性**：作为一种随机优化方法，它比基于梯度的法方更容易跳出局部最优。
 
-社交导航里若把行人写成当前点障碍，会在交叉场景里低估风险。[PGIF-MPPI](../entities/paper-pgif-mppi.md) 把运动学预测铺成沿速度方向拉长的各向异性高斯场，300 走廊场景碰撞率 0%，Hard 密度则以超时换安全。
+社交导航里若把行人写成当前点障碍，会在交叉场景里低估风险。[PGIF-MPPI](../entities/paper-pgif-mppi.md) 把运动学预测铺成沿速度方向拉长的各向异性高斯场，300 走廊场景碰撞率 0%，Hard 密度则以超时换安全。越野长程里 MPPI 常作为 **短程执行器**：[Off-Road Global Nav](../entities/paper-offroad-global-nav.md) 用学习 costmap + A\* 出路点，Warthog 上再以 TerrainNet 局部图跑 MPPI；全局层失效表现为 lookahead/handoff，而不是采样器本身。
 
 ## 关联页面
 - [Model-Based RL](./model-based-rl.md)
 - [Model Predictive Control (MPC)](./model-predictive-control.md)
 - [变分目标函数](../formalizations/variational-objective.md)
 - [PGIF-MPPI](../entities/paper-pgif-mppi.md) — 行人预测高斯场；JAX 仓已开源
+- [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 越野 LRP 路点的 MPPI 短程执行（Phoenix / TerrainNet）
 
 ## 参考来源
 - Williams, G., et al. (2017). *Information-theoretic model predictive control: Theory and applications to autonomous driving*.
 - [PGIF-MPPI 论文摘录](../../sources/papers/pgif_mppi_arxiv_2608_08323.md)
+- [Off-Road Global Nav 论文摘录](../../sources/papers/offroad_global_nav_arxiv_2607_23743.md)
