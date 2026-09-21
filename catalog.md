@@ -1274,6 +1274,7 @@
 - [CMP：上下文感知运动先验](wiki/entities/paper-cmp.md) — CMP**（*Context-Aware Motion Priors*；论文 *Learning Context-Aware Motion Priors for Humanoid Control `📅unknown` `[entity_page]`
 - [CMU-Drive / V2V-VLA（arXiv:2608.07621）](wiki/entities/paper-cmu-drive-v2v-vla.md) — CMU-Drive / V2V-VLA**（arXiv:2608.07621）收录于 [多模空间 · 一周 VLA 研究趋势 `📅unknown` `[entity_page]`
 - [CO-Calib（多鱼眼标定 · 观测质量）](wiki/entities/paper-co-calib-multi-fisheye-calibration.md) — CO-Calib**（*Observation Quality Matters: Robust Multi-Fisheye Calibration via Failure-Oriented Ana `📅unknown` `[entity_page]`
+- [Code-as-World（Executable World Representations for Physical Reasoning）](wiki/entities/paper-code-as-world.md) — Code-as-World**（*Code as Worlds: Agentic Discovery of Executable World Representations for Physica `📅unknown` `[entity_page]`
 - [CogACT](wiki/entities/paper-cogact.md) — CogACT**（arXiv:2411.19650，[代码](https://github.com/microsoft/Co `📅unknown` `[entity_page]`
 - [COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）](wiki/entities/paper-coins-compositional-human-scene-interaction.md) — COINS**（*Compositional Human-Scene Interaction Synthesis with Semantic Control*，Zhao et al.，ECCV 2 `📅unknown` `[entity_page]`
 - [CommNav（通信使能社交导航）](wiki/entities/paper-commnav.md) — CommNav**（*Robots Ask the Way: Communication-Enabled Social Navigation*，[arXiv:2607.01044](https:/ `📅unknown` `[entity_page]`
@@ -1622,6 +1623,7 @@
 - [Importance Sampling + PCA：商业自动驾驶失败挖掘与 eigenfailure 诊断](wiki/entities/paper-importance-sampling-pca-av-failures.md) — Importance Sampling and PCA for Finding Failures in Commercial Autonomous Vehicles**（[arXiv:2607.1 `📅unknown` `[entity_page]`
 - [Indi：把行为意图蒸馏进 VLA 解码器](wiki/entities/paper-indi.md) — Indi**（*Act with Intent: Distilling Behavior Intent for Vision-Language-Action Models*，[arXiv:2608 `📅unknown` `[entity_page]`
 - [InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）](wiki/entities/paper-infinite-diffusion-terrain-diffusion.md) — InfiniteDiffusion**（*Bridging Learned Fidelity and Procedural Utility for Open-World Terrain Gener `📅unknown` `[entity_page]`
+- [InfoNCE Geometry（Contrastive Representation Learning 的几何力学）](wiki/entities/paper-infonce-geometry.md) — InfoNCE Geometry**（*The Geometric Mechanics of Contrastive Representation Learning: Alignment Pote `📅unknown` `[entity_page]`
 - [INSPECT（arXiv:2609.20615）](wiki/entities/paper-inspect-view-selection.md) — INSPECT**（*Learning Robot View Selection from Assistant Use*，[arXiv:2609.20615](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Instant Episode Repetition（IER）](wiki/entities/paper-instant-episode-repetition.md) — Instant Episode Repetition（IER）**（*Repetition as Reinforcement: Enhancing Sample Efficiency via In `📅unknown` `[entity_page]`
 - [Instant NuRec（Feed-Forward 3D Gaussian Reconstruction for Driving Scene Simulation）](wiki/entities/paper-instant-nurec.md) — Instant NuRec** 是 NVIDIA Spatial Intelligence Lab（[项目页](ht `📅unknown` `[entity_page]`
@@ -2364,6 +2366,7 @@
 - [Sim-to-Real: Learning Agile Locomotion For Quadruped Robots（RSS 2018）](wiki/entities/paper-quadruped-agile-sim2real-rss2018.md) — 一句话定义**：通过 **域随机化** 覆盖模型与传感不确定性，在仿真中训练 **高频敏捷四足运动策略**，并 **零样本或低开销** 迁移到实物平台，是后续大量 **sim2real 腿足工作 `📅unknown` `[entity_page]`
 - [Learning Torque Control for Quadrupedal Locomotion](wiki/entities/paper-quadruped-torque-control-rl.md) — 一句话定义**：用 **单网络策略直接预测关节扭矩**（相对高频），在仿真中训练并完成 **sim2real**，在多种地形与扰动下与 **位置+PD** 基线对比 **奖励与鲁棒性**。 `📅unknown` `[entity_page]`
 - [QuietWalk：面向多样鞋型的物理感知低噪人形行走](wiki/entities/paper-quietwalk-humanoid-locomotion.md) — QuietWalk**（*Physics-Informed Reinforcement Learning for Ground Reaction Force-Aware Humanoid Loco `📅unknown` `[entity_page]`
+- [QWM（Q-Learning With World Models）](wiki/entities/paper-qwm.md) — QWM**（*Q-Learning With World Models*，arXiv:2608.17163，[项目页](ht `📅unknown` `[entity_page]`
 - [R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化](wiki/entities/paper-r2s-ego.md) — R2S-EGO**（*Dual-Proxy Refinement for Sparse-Capture Real-to-Sim*，[arXiv:2608.06827](https://arxiv. `📅unknown` `[entity_page]`
 - [R2S-Eval：真实—仿真校准 + VLM 的机器人策略评测](wiki/entities/paper-r2s-eval.md) — R2S-Eval**（*Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models*，[arXiv:2609. `📅unknown` `[entity_page]`
 - [R³：相对回归的 3D 重建](wiki/entities/paper-r3-relative-regression.md) — R³**（*3D Reconstruction via Relative Regression*，arXiv:[2605.26519](https://arxiv.org/abs/2605.265 `📅unknown` `[entity_page]`

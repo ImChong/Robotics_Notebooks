@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-21
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
@@ -223,6 +223,10 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - HEAP 真机约 **2.5 h** 达 **2.7 cm** 跟踪；同超参迁到缆驱软臂约 **30 episode**
 - 仿真对照中相对 [TD-MPC2](../entities/paper-td-mpc2.md) / [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md) 强调「真实代价 + 一阶更新」的稳定与精度
 - 实体页与开源状态（确认未开源）：[Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md)
+
+### QWM（世界模型仅用于 test-time Q 搜索）
+
+[QWM](../entities/paper-qwm.md) 在 **EXPO / RLPD** 等 Q-learning 栈上叠 **学习到的世界模型**：每步用 WM 展开短视界搜索树、**Q 函数打分选动作**，但 **策略与 critic 只在真实转移上更新**——想象轨迹 **不进训练环**，避免经典 MBRL 在 model rollout 上的复合偏差。Robomimic（state）与 LIBERO（pixel）上样本效率与成功率显著优于 TD-MPC2 等；截至 2026-09-21 官方代码 **待发布**（arXiv:2608.17163）。
 
 ### WAM 内嵌 MBRL（共享参数 GWM）
 

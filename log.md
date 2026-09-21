@@ -1,3 +1,5 @@
+## [2026-09-21] ingest | sources/papers/qwm_arxiv_2608_17163.md、code_as_world、infonce_geometry — 三篇论文实体页；QWM 代码待发布，Code-as-World/InfoNCE 已开源
+
 ## [2026-09-21] ingest | sources/sites/pointzero.md — PointZero 项目页直 ingest（arXiv:2609.19142）：补全 Perceiver-IO+FM 架构、290 万合成帧/PGND/IL 全表；步骤 2.5 再核代码与 Dataset 均为 Coming Soon → 待发布
 
 - **意图：** 用户指定 ingest https://pointzero-wm.github.io/；在 09-20 公众号初稿基础上以项目页为准深化实体页。

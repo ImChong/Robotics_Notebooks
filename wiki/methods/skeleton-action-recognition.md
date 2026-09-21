@@ -145,6 +145,7 @@ summary: "骨架动作识别通过对关节序列建模来理解人体/机器人
 - [Imitation Learning](./imitation-learning.md) — 骨架动作识别是 IL 数据标注的上游技术
 - [CLAW](./claw.md) — 语言标注动作数据生成管线，与 HOVL 互补
 - [VLA](./vla.md) — 语言-动作对齐的下游应用场景
+- [InfoNCE Geometry](../entities/paper-infonce-geometry.md) — CLIP 式对比学习的 population geometry 与 modality gap 机制（ICML 2026）
 - [Motion Retargeting GMR](./motion-retargeting-gmr.md) — 跨骨架形态运动映射
 - [Diffusion Motion Generation](./diffusion-motion-generation.md) — 动作生成的下游应用
 
