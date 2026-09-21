@@ -33,7 +33,7 @@
 | Ch 3 | **Rigid-Body Motions** | SO(3)/SE(3)、旋转矩阵、齐次变换、**twist / wrench / 指数坐标** |
 | Ch 4 | **Forward Kinematics** | **PoE 公式（Product of Exponentials）**、空间形式 vs 物体形式 |
 | Ch 5 | **Velocity Kinematics and Statics** | 雅可比矩阵（空间/物体）、奇异性、可操作度椭球 |
-| Ch 6 | Inverse Kinematics | 解析解、数值解（牛顿-拉夫森） |
+| Ch 6 | Inverse Kinematics | 解析解、数值解（牛顿-拉夫森 §6.2.1–6.2.2；**Example 6.1** 平面 2R 三步收敛） |
 | Ch 7 | Kinematics of Closed Chains | 并联机构、Stewart 平台、Grübler 公式 |
 | Ch 8 | **Dynamics of Open Chains** | Lagrange / Newton-Euler、惯性矩阵 M(q)、动力学方程 |
 | Ch 9 | Trajectory Generation | 多项式时间律、最短路径、最优时间轨迹 |
@@ -60,8 +60,16 @@
 | 配套代码 | ✅ Python/MATLAB | ❌ | △ | ❌ |
 | 在线视频 | ✅ Coursera | ❌ | ❌ | ❌ |
 
+## Ch 6 数值 IK 与 Newton–Raphson（§6.2，一手算例）
+
+- **标量 NR：** $\theta_{k+1}=\theta_k-(\partial g/\partial\theta)^{-1}g(\theta_k)$（式 6.2.1 段）
+- **向量 IK：** $\Delta\theta=J^\dagger(x_d-f(\theta))$；SE(3) 用 $V_b=\log(T_{bs}^{-1}T_{sd})$ + $J_b$
+- **Example 6.1：** 2R 平面臂，链长 1 m，目标 $(30^\circ,90^\circ)$，初值 $(0^\circ,30^\circ)$，**3 次迭代**收敛
+- **wiki 映射：** [`newtons-method.md`](../../wiki/methods/newtons-method.md)、[`inverse-kinematics.md`](../../wiki/formalizations/inverse-kinematics.md)、[`newton_raphson_method_primary_refs.md`](newton_raphson_method_primary_refs.md)
+
 ## 当前提炼状态
 
 - [x] 章节目录与教材定位
 - [x] 与本项目已有 wiki 页面的术语对照
+- [x] Ch 6.2 Newton–Raphson + Example 6.1 算例摘录
 - [ ] 后续可专题深挖：PoE Forward Kinematics 形式化、Wheeled Mobile Robots 单页（当前 wiki 未覆盖）、传统采样规划（RRT/PRM）单页

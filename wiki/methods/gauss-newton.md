@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, gauss-newton, least-squares, trajectory-optimization, numerical-methods]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 summary: "Gauss-Newton 对残差最小二乘用 Jacobian 外积 JᵀJ 近似 Hessian，是 TrajOpt 打靶、IK 与标定的默认二阶曲率模型。"
 related:
   - ./newtons-method.md

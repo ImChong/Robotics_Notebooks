@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, inverse-kinematics, jacobian, embodied-ai, shenlan, manipulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-21
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./forward-kinematics.md
@@ -14,6 +14,7 @@ related:
   - ../entities/pink-ik.md
   - ../entities/ssik.md
   - ../entities/modern-robotics-book.md
+  - ../methods/newtons-method.md
   - ../concepts/null-space-control.md
   - ../methods/foot-locking-ik-orangeduck.md
   - ../entities/genoview-inverse-kinematics.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_inverse_kinematics.md
   - ../../sources/raw/wechat_shenlan_inverse_kinematics_2026-07-23.md
   - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/newton_raphson_method_primary_refs.md
   - ../../sources/papers/null_space_control.md
   - ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
 summary: "逆运动学求使末端达到目标 SE(3) 位姿的关节角：解可能不存在、不唯一或无穷多。工程主路径是解析（Pieper）→ 雅可比迭代+DLS → 冗余零空间；高维再用生成式候选池。"
@@ -67,7 +69,7 @@ $$
 v = J(q)\,\dot q
 $$
 
-每步：FK 得当前 $T$ → 6D 误差 $e$ → $\Delta q = J^+ e$ 或 DLS → 限幅/限位。热启动（用上一拍 $q$）比随机初值重要得多。
+每步：FK 得当前 $T$ → 6D 误差 $e$（或 SE(3) 上 body twist $V_b=\log(T_{bs}^{-1}T_{sd})$）→ $\Delta q = J^+ e$ 或 DLS → 限幅/限位。此即 [**Newton–Raphson 数值 IK**](../methods/newtons-method.md) 的 Jacobian 形式；*Modern Robotics* Example 6.1（平面 2R，三步收敛）见该页算例表。热启动（用上一拍 $q$）比随机初值重要得多。
 
 **DLS**：最小奇异值小时
 
