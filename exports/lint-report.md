@@ -2,7 +2,7 @@
 
 ## [2026-09-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **46** 条信息型预警）：
+共发现 **0** 个问题（另含 **47** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -99,7 +99,7 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-ross-dagger.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（23 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（24 个）
 - wiki/entities/paper-attention-is-all-you-need.md（缺 对比）
 - wiki/entities/paper-bfm-30-diayn.md（缺 对比）
 - wiki/entities/paper-code-as-world.md（缺 方法 / 对比）
@@ -111,6 +111,7 @@
 - wiki/entities/paper-instructgpt-rlhf.md（缺 方法 / 对比）
 - wiki/entities/paper-kino.md（缺 方法）
 - wiki/entities/paper-locoformer.md（缺 评测 / 对比）
+- wiki/entities/paper-me-dex-1-0.md（缺 对比）
 - wiki/entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md（缺 对比）
 - wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md（缺 评测 / 对比）
 - wiki/entities/paper-nymeria.md（缺 对比）
@@ -165,4 +166,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4699/4699 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4700/4700 (100%) wiki/entity 页有 ingest 来源

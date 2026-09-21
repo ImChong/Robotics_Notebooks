@@ -1,3 +1,8 @@
+## [2026-09-21] ingest | sources/papers/me_dex_1_0_arxiv_2609_21449.md — ME-Dex 1.0 异构触觉 WAM；三专家 MoT + Agentic Tactile Data Engine；推理 runtime 已开源
+
+- **意图：** 用户指定 ingest arXiv:2609.21449 + <https://machembodied.com/ME-Dex/ME-Dex1.0.html>；新建 [paper-me-dex-1-0](wiki/entities/paper-me-dex-1-0.md) 并交叉 WAM/RoboTwin。
+- **开源结论：** **部分开源** — `MachEmbodied/ME-Dex-1.0` 推理 + HF 权重已发布；训练代码/数据 **Coming soon**；项目页入库日 SSL 不可达。
+
 ## [2026-09-21] ingest | sources/sites/light-insight-bench.md — INSIGHT-Bench 官方评测站+仓库；5×5 诊断矩阵与 evidence-pack leaderboard；评测 harness 已开源
 
 - **意图：** 用户指定 ingest <https://lightorigins.github.io/Light-INSIGHT-Bench/>；深度升格 [insight-bench](wiki/entities/insight-bench.md) 并补齐 sites/repos 溯源。
