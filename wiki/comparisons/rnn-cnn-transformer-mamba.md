@@ -9,15 +9,17 @@ tags:
   - architecture
   - comparison
 status: complete
-updated: 2026-08-12
+updated: 2026-09-21
 summary: "RNN/CNN/Transformer/Mamba 四类序列–视觉骨干对比：归纳偏置、长程依赖、并行度与推理复杂度，服务视觉骨干与时序建模选型。"
 related:
   - ../concepts/transformer.md
+  - ../concepts/gru.md
   - ../concepts/state-space-model-ssm.md
   - ../concepts/convolutional-neural-network.md
   - ../entities/transformer-cv-curriculum.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
+  - ../../sources/papers/chung_gated_rnn_arxiv_1412_3555.md
 ---
 
 # RNN vs CNN vs Transformer vs Mamba
@@ -43,9 +45,9 @@ sources:
 
 ## 核心原理（对比）
 
-| 维度 | RNN | CNN | Transformer | Mamba |
+| 维度 | RNN（含 [GRU](../concepts/gru.md)/LSTM） | CNN | Transformer | Mamba |
 |------|-----|-----|-------------|-------|
-| 长程依赖 | 弱/梯度难 | 需深堆叠 | 强（O(1) 路径） | 强（状态压缩） |
+| 长程依赖 | 门控单元缓解；仍弱于 Transformer | 需深堆叠 | 强（O(1) 路径） | 强（状态压缩） |
 | 训练并行 | 差 | 好 | 好 | 好（扫描实现） |
 | 推理复杂度 | O(n) | ~线性 | O(n²) 注意力 | 近线性 |
 | 归纳偏置 | 时间因果 | 局部性 | 弱 | 选择性记忆 |
@@ -71,6 +73,7 @@ Benchmark 赢不等于机载赢；Mamba 生态与算子成熟度仍低于 Transf
 
 ## 关联页面
 
+- [GRU](../concepts/gru.md)
 - [SSM](../concepts/state-space-model-ssm.md)
 - [Transformer](../concepts/transformer.md)
 - [Vision Mamba](../entities/vision-mamba-vim.md)

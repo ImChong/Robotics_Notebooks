@@ -44,12 +44,14 @@
 | [强化学习](../../wiki/methods/reinforcement-learning.md) | 策略/价值网络与并行 rollout 训练的主流张量后端 |
 | [Isaac Gym / Isaac Lab](../../wiki/entities/isaac-gym-isaac-lab.md) | NVIDIA 机器人学习仿真管线与 PyTorch 生态常见组合 |
 | [LeRobot](../../wiki/entities/lerobot.md) | Hugging Face 具身栈与 Transformers 生态常以 PyTorch 为训练运行时 |
+| [GRU 概念页](../../wiki/concepts/gru.md) | `torch.nn.GRU` API 与 Cho/Chung 一手论文对照 |
 
 ---
 
 ## 对 wiki 的映射
 
-- 新建 **`wiki/entities/pytorch.md`**：框架实体页（能力边界、与机器人训练/部署关系、互链）。
+- **`wiki/entities/pytorch.md`**：框架实体页（能力边界、与机器人训练/部署关系、互链）。
+- **`wiki/concepts/gru.md`** + [`sources/sites/pytorch_nn_gru_docs.md`](../sites/pytorch_nn_gru_docs.md)：GRU 模块 API。
 - 轻量更新 **`wiki/concepts/deep-learning-foundations.md`**、**`wiki/entities/isaac-gym-isaac-lab.md`**：补充交叉引用，避免孤岛页。
 
 ---

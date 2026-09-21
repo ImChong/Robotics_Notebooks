@@ -3916,6 +3916,7 @@
 - [Generalized Value Functions (GVFs)](wiki/concepts/generalized-value-functions.md) — 广义价值函数（GVF）**：在标准 value function 框架下，把「奖励折扣和」推广为「**任意 cumulant 信号** 在 **策略 π** 与 **终止/折扣 γ** 下的期望累 `📅unknown` `[wiki_page]`
 - [生成式视觉预训练（Generative Vision Pretraining）](wiki/concepts/generative-vision-pretraining.md) — 生成式视觉预训练**是以 **合成视觉内容**（图像、编辑、视频帧等）为训练目标的表征学习范式；与 ImageNet 分类、对比学习、MAE 等 **非生成** 路线不同，它假设 **「能按语义与 `📅unknown` `[wiki_page]`
 - [Gravity Compensation（重力补偿）](wiki/concepts/gravity-compensation.md) — 重力补偿**：在控制力矩里抵消重力广义力 $g(q)$，使关节伺服不再用高增益硬扛自重。它是 [RNEA](../formalizations/articulated-body-algorithm `📅unknown` `[wiki_page]`
+- [GRU（Gated Recurrent Unit，门控循环单元）](wiki/concepts/gru.md) — GRU** 是一种 **门控循环神经网络（gated RNN）** 单元：用 **reset 门 $r_t$** 与 **update 门 $z_t$** 控制新信息与旧隐状态 $h_{t-1}$ `📅unknown` `[wiki_page]`
 - [Halbach Array（哈尔巴赫阵列）](wiki/concepts/halbach-array.md) — Halbach Array** 是一类 **磁化方向沿空间逐步旋转** 的永磁排布：目标侧（平面的一侧，或圆柱孔径内）磁场增强，另一侧（或材料外）削弱乃至理想为零——平面一手见 [Mallinso `📅unknown` `[wiki_page]`
 - [Hardware-in-the-Loop（HIL，硬件在环）](wiki/concepts/hardware-in-the-loop.md) — Hardware-in-the-Loop（HIL）** 将被测 **真实硬件**（控制器、ECU、变频器、嵌入式计算平台、传感器/执行器接口等）接入 **实时仿真环境**，由仿真器扮演物理 pla `📅unknown` `[wiki_page]`
 - [Hierarchical Quadruped Navigation Stack（四足分层导航栈）](wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 四足分层导航栈** 将 **语义/语言目标、全局路径、局部运动、关节力矩** 拆成多层模块，避免「一个端到端网络从像素直接到电机」的工程不可控性。 `📅unknown` `[wiki_page]`

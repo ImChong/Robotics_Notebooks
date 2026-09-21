@@ -5,7 +5,7 @@ title: PyTorch
 date: 2026-05-15
 tags: [framework, deep-learning, pytorch, distributed-training, deployment, meta, linux-foundation]
 summary: "PyTorch 是以 Python 优先、动态图友好的开源深度学习框架，覆盖从研究训练到服务端与边端部署的完整工具链，是机器人学习与仿真的主流张量后端之一。"
-updated: 2026-06-25
+updated: 2026-09-21
 ---
 
 # PyTorch
@@ -73,6 +73,7 @@ flowchart LR
 
 - [反向传播算法](../concepts/backpropagation.md)
 - [深度学习基础](../concepts/deep-learning-foundations.md)
+- [GRU（torch.nn.GRU）](../concepts/gru.md)
 - [强化学习](../methods/reinforcement-learning.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [LeRobot（Hugging Face）](./lerobot.md)
@@ -83,6 +84,7 @@ flowchart LR
 ## 参考来源
 
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)
+- [torch.nn.GRU 官方 API 文档](../../sources/sites/pytorch_nn_gru_docs.md)
 
 ## 推荐继续阅读
 
