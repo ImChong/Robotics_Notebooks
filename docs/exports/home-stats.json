@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-msfp-embodied-ai-survey.md",
+      "detail_id": "entity-paper-msfp-embodied-ai-survey",
+      "label": "MSFP Survey（具身 AI 多传感器融合感知）",
+      "type": "entity",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/paper-wam-design-empirical-study.md",
       "detail_id": "entity-paper-wam-design-empirical-study",
       "label": "WAM 设计要素受控实证研究",
@@ -204,22 +213,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-me-dex-1-0.md",
-      "detail_id": "entity-paper-me-dex-1-0",
-      "label": "ME-Dex 1.0：异构触觉进入 World Action Modeling",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-wam-design-empirical-study.md",
-    "detail_id": "entity-paper-wam-design-empirical-study",
-    "label": "WAM 设计要素受控实证研究",
+    "path": "wiki/entities/paper-msfp-embodied-ai-survey.md",
+    "detail_id": "entity-paper-msfp-embodied-ai-survey",
+    "label": "MSFP Survey（具身 AI 多传感器融合感知）",
     "type": "entity",
     "recency": "2026-09-22",
     "source": "git",
