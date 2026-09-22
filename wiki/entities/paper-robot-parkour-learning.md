@@ -2,14 +2,16 @@
 type: entity
 tags: ["paper", "quadruped", "parkour", "locomotion", "privileged-learning", "hmi-papers"]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 arxiv: "2309.05665"
 code: https://github.com/ZiwenZhuang/parkour
 venue: "HMI curated · 2023"
 summary: "Robot Parkour Learning（HMI P130）：用直接配点启发的软→硬动力学约束课程先让策略发现可行动作，再蒸馏成接收深度的单一视觉四足跑酷策略。"
 related:
+  - ./paper-parkour-in-the-wild.md
   - ./extreme-parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
+  - ../methods/multi-expert-distillation.md
   - ../concepts/privileged-training.md
   - ../tasks/locomotion.md
   - ../entities/humanoid-motion-intelligence.md

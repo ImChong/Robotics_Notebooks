@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-22
 summary: "飞书 Know-How 模块：Teacher-Student 用仿真特权信息训练教师，再蒸馏或 DAgger 聚合数据训练可部署学生，缓解 BC 分布偏移与 sim2real 观测差距。"
 related:
+  - ./multi-expert-distillation.md
   - ./dagger.md
   - ../concepts/rl-runner.md
   - ../concepts/privileged-training.md
@@ -78,6 +79,7 @@ RoboParty 飞书 Know-How 将 **Teacher-Student 模型** 与 **DAgger（Dataset 
 
 ## 关联页面
 
+- [Multi-Expert Distillation（多专家蒸馏）](./multi-expert-distillation.md) — 多 RL 专家 → DAgger → 单策略（locomotion 主线）
 - [DAgger](./dagger.md)、[Privileged Training](../concepts/privileged-training.md)
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Distillation Runner vs Imitation Runner：Teacher 网络 vs 专家演示
 - [Teacher-Student 多技能 BFM](./teacher-student-multi-skill-bfm.md)

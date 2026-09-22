@@ -128,6 +128,9 @@ flowchart LR
 - [FastStair](../wiki/entities/paper-faststair-humanoid-stair-ascent.md) — 机载高程图 + GPU 并行 DCM 落脚点作训练监督；人形 **高速上楼梯**（LimX Oli ~1.65 m/s）；规划引导 + 分速专家 LoRA 融合
 - [Explicit Stair Geometry](../wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md) — 与 FastStair 对照：BEV 点云 → 低维几何 token 条件化 PPO，强调 OOD 踢面与 G1 户外长楼梯
 - [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md) — FastStair 等规划引导路线的动力学与离散搜索直觉
+- [Multi-Expert Distillation（多专家蒸馏）](../wiki/methods/multi-expert-distillation.md) — 分地形/分技能 RL 专家 → DAgger 聚合 → 可选 RLFT；一手资料索引见 sources
+- [Parkour in the Wild（IJRR 2026）](../wiki/entities/paper-parkour-in-the-wild.md) — 9 专家 MED + 四深度 LSTM + RLFT；ANYmal D wild 部署；训练代码未开源
+- [Robot Parkour Learning](../wiki/entities/paper-robot-parkour-learning.md) — CoRL 2023 五技能 DAgger 蒸馏先例（**已开源**）
 - [Extreme Parkour](../wiki/entities/extreme-parkour.md)
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - [Humanoid Parkour Learning 深读笔记](../wiki/entities/paper-notebook-humanoid-parkour-learning.md)

@@ -93,7 +93,7 @@
 
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（3 个）
 - wiki/methods/bc-with-transformer.md（被 6 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/grpo.md（被 4 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/multi-expert-distillation.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/ssrm-steady-state-response-method.md（被 5 个页面引用，无 queries/comparisons 落地）
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
@@ -140,10 +140,10 @@
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（5 个）
 - wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/birdview.md updated=2026-09-21）
-- wiki/entities/paper-code-as-world.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-slamformer-infinity.md updated=2026-09-22）
+- wiki/entities/paper-code-as-world.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md updated=2026-09-22）
 - wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/curobo.md updated=2026-09-21）
-- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-slamformer-infinity.md updated=2026-09-22）
-- wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-slamformer-infinity.md updated=2026-09-22）
+- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md updated=2026-09-22）
+- wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md updated=2026-09-22）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -177,4 +177,4 @@
 - wiki/entities/paper-relateanything.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4708/4708 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4712/4712 (100%) wiki/entity 页有 ingest 来源
