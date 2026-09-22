@@ -12,7 +12,7 @@ tags:
   - rai-institute
   - cmu
 status: complete
-updated: 2026-09-17
+updated: 2026-09-22
 arxiv: "2608.26800"
 venue: "arXiv:2608.26800"
 related:

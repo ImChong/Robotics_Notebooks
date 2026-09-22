@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-wam-design-empirical-study.md",
+      "detail_id": "entity-paper-wam-design-empirical-study",
+      "label": "WAM 设计要素受控实证研究",
+      "type": "entity",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/entities/humanoidverse.md",
       "detail_id": "entity-humanoidverse",
       "label": "HumanoidVerse（LeCAR-Lab）",
@@ -205,29 +214,16 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/insight-bench.md",
-      "detail_id": "entity-insight-bench",
-      "label": "INSIGHT-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoidverse.md",
-    "detail_id": "entity-humanoidverse",
-    "label": "HumanoidVerse（LeCAR-Lab）",
+    "path": "wiki/entities/paper-wam-design-empirical-study.md",
+    "detail_id": "entity-paper-wam-design-empirical-study",
+    "label": "WAM 设计要素受控实证研究",
     "type": "entity",
     "recency": "2026-09-22",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
