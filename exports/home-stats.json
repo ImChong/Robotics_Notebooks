@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-22",
-  "node_count": 4737,
-  "edge_count": 41574,
+  "node_count": 4738,
+  "edge_count": 41615,
   "coverage": {
-    "covered": 4708,
-    "total": 4708,
+    "covered": 4709,
+    "total": 4709,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
+      "detail_id": "entity-paper-footquery-perceptive-humanoid-locomotion",
+      "label": "FootQuery：触地前瞻引导的深度历史检索感知人形行走",
+      "type": "entity",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
     {
       "path": "wiki/entities/paper-relateanything.md",
       "detail_id": "entity-paper-relateanything",
@@ -17,7 +27,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/overview/spatial-reasoning-benchmarks-technology-map.md",
@@ -27,7 +37,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/embspatial.md",
@@ -37,7 +47,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/er-point-bench.md",
@@ -47,7 +57,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/molmo-er.md",
@@ -57,7 +67,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-cambrian-1.md",
@@ -68,7 +78,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-molmoact2.md",
@@ -78,7 +88,8 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-robopoint.md",
@@ -89,7 +100,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-roborefer.md",
@@ -100,7 +111,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/pointarena.md",
@@ -111,7 +122,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/refspatial.md",
@@ -121,7 +132,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/robospatial.md",
@@ -132,7 +143,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-me-dex-1-0.md",
@@ -153,7 +164,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/light-origins.md",
@@ -163,7 +174,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "path": "wiki/entities/paper-dcreg-degenerate-lidar-registration.md",
@@ -174,7 +185,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/paper-gm-loco.md",
@@ -202,39 +213,27 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vision-locomotion-egocentric.md",
-      "detail_id": "entity-paper-vision-locomotion-egocentric",
-      "label": "Vision Locomotion（Egocentric Depth 四足穿越复杂地形）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-relateanything.md",
-    "detail_id": "entity-paper-relateanything",
-    "label": "RelateAnything：实时开放词汇关系预测",
+    "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
+    "detail_id": "entity-paper-footquery-perceptive-humanoid-locomotion",
+    "label": "FootQuery：触地前瞻引导的深度历史检索感知人形行走",
     "type": "entity",
-    "recency": "2026-09-21",
+    "recency": "2026-09-22",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "动作块输出（Action Chunking） 社区"
+    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 765
+      "size": 764
     },
     {
       "label": "操作",
-      "size": 692
+      "size": 697
     },
     {
       "label": "仿真到现实",
@@ -245,8 +244,8 @@
       "size": 297
     },
     {
-      "label": "全身控制",
-      "size": 255
+      "label": "视觉-语言导航",
+      "size": 285
     },
     {
       "label": "视觉-语言-动作",
@@ -274,7 +273,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1137,
+      "degree": 1138,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -395,18 +394,19 @@
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
-      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
+      "detail_id": "entity-paper-lightnav-0",
+      "label": "LightNav-0：激发 VLM 空间智能的通用具身导航",
       "type": "entity",
-      "degree": 46,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "degree": 48,
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     },
     {
       "detail_id": "entity-paper-light-loco-parkour",
       "label": "Light-Loco-Parkour（LightLP）",
       "type": "entity",
-      "degree": 46,
-      "community_label": "动作块输出（Action Chunking） 社区"
+      "degree": 47,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ]
 }

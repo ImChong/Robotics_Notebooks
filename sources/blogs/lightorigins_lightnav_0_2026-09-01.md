@@ -44,6 +44,7 @@
 
 ## 对 wiki 的映射
 
+- [LightNav-0 博客引用深读](../../wiki/queries/lightnav-0-blog-references-deep-read.md) — 三阶段 + 全引用表 + 仿真数字
 - [3 篇技术地图](../../wiki/overview/lightorigins-3blogs-technology-map.md)
 - [亮源新创（Light Origins）](../../wiki/entities/light-origins.md)
 

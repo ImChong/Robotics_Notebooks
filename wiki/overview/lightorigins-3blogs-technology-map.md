@@ -2,8 +2,9 @@
 type: overview
 tags: [overview, light-origins, navigation, humanoid, technology-map]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-22
 related:
+  - ../queries/lightnav-0-blog-references-deep-read.md
   - ../entities/paper-tolebi.md
   - ../entities/paper-locoformer.md
   - ../entities/paper-humanup-getting-up.md
@@ -55,6 +56,10 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 | ER | Embodied Reasoning | 导航后训练第一阶段 |
 | ICL | In-Context Learning | Light REACT 全身韧性上下文适应 |
 | RVQ | Residual Vector Quantization | LightNav 动作 token 化 |
+
+## LightNav-0 单篇深读
+
+博客 [lightnav-0](https://www.lightorigins.com/en/blog/lightnav-0) 引用项的 **三阶段管线 + 全表索引 + 读榜数字** 见 **[LightNav-0 博客引用深读](../queries/lightnav-0-blog-references-deep-read.md)**（Query 产物，2026-09-22）。
 
 ## 完整索引
 
