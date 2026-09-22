@@ -1,13 +1,52 @@
 {
   "generated_at": "2026-09-22",
-  "node_count": 4741,
-  "edge_count": 41676,
+  "node_count": 4742,
+  "edge_count": 41694,
   "coverage": {
-    "covered": 4712,
-    "total": 4712,
+    "covered": 4713,
+    "total": 4713,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/lightnav-0-blog-references-deep-read.md",
+      "detail_id": "wiki-queries-lightnav-0-blog-references-deep-read",
+      "label": "LightNav-0 博客引用深读",
+      "type": "query",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
+      "detail_id": "entity-paper-footquery-perceptive-humanoid-locomotion",
+      "label": "FootQuery：触地前瞻引导的深度历史检索感知人形行走",
+      "type": "entity",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-parkour-in-the-wild.md",
+      "detail_id": "entity-paper-parkour-in-the-wild",
+      "label": "Parkour in the Wild（PITW）",
+      "type": "entity",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
+      "path": "wiki/methods/multi-expert-distillation.md",
+      "detail_id": "wiki-methods-multi-expert-distillation",
+      "label": "Multi-Expert Distillation（多专家蒸馏）",
+      "type": "method",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/overview/vggt-geometric-state-survey.md",
       "detail_id": "wiki-overview-vggt-geometric-state-survey",
@@ -176,66 +215,26 @@
       "source": "git",
       "action": "added",
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dcreg-degenerate-lidar-registration.md",
-      "detail_id": "entity-paper-dcreg-degenerate-lidar-registration",
-      "label": "DCReg：Decoupled Characterization for Efficient Degenerate LiDAR Registration",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gm-loco.md",
-      "detail_id": "entity-paper-gm-loco",
-      "label": "GM-Loco：颗粒介质上的地形自适应人形 locomotion",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-ross-dagger.md",
-      "detail_id": "entity-paper-ross-dagger",
-      "label": "DAgger 原论文（Ross et al., 2011）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/mit-flow-matching-diffusion-2026.md",
-      "detail_id": "wiki-overview-mit-flow-matching-diffusion-2026",
-      "label": "MIT 6.S184：Flow Matching & Diffusion Models（2026）",
-      "type": "overview",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/vggt-geometric-state-survey.md",
-    "detail_id": "wiki-overview-vggt-geometric-state-survey",
-    "label": "VGGT 几何状态综述视角",
-    "type": "overview",
+    "path": "wiki/queries/lightnav-0-blog-references-deep-read.md",
+    "detail_id": "wiki-queries-lightnav-0-blog-references-deep-read",
+    "label": "LightNav-0 博客引用深读",
+    "type": "query",
     "recency": "2026-09-22",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
   },
   "top_communities": [
     {
-      "label": "移动操作",
-      "size": 724
-    },
-    {
       "label": "操作",
       "size": 697
+    },
+    {
+      "label": "移动操作",
+      "size": 684
     },
     {
       "label": "具身评测基准选型闭环",
@@ -290,7 +289,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1001,
+      "degree": 1002,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

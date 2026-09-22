@@ -91,7 +91,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 
 ### 与其他残差类工作的边界
 
-本谱系聚焦「base 行为 + 加性修正」主线。[RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) 已纳入上表：base 是 **retarget 参考**（非学到的控制器/生成器），残差默认只开承重关键 DoF，并强调长尾采样——与 RuN/ResMimic「学到的先验 + 残差」同形、不同 base 来源。其余变体宜交叉阅读而非混为一谈：[ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)（delta 动作模型学 sim–real 动力学差）、[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md)（触觉残差自适应）、[FARM](../entities/paper-notebook-farm-frame-accelerated-augmentation-and-residual.md)（帧加速增广与残差 MoE）、[Residual Off-Policy RL for BC Finetuning](../entities/paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c.md)（BC 微调残差）。
+本谱系聚焦「base 行为 + 加性修正」主线。[RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) 已纳入上表：base 是 **retarget 参考**（非学到的控制器/生成器），残差默认只开承重关键 DoF，并强调长尾采样——与 RuN/ResMimic「学到的先验 + 残差」同形、不同 base 来源。其余变体宜交叉阅读而非混为一谈：[ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)（delta 动作模型学 sim–real 动力学差；官方 [LeCAR-Lab/ASAP](https://github.com/LeCAR-Lab/ASAP) + [HumanoidVerse](../entities/humanoidverse.md)）、[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md)（触觉残差自适应）、[FARM](../entities/paper-notebook-farm-frame-accelerated-augmentation-and-residual.md)（帧加速增广与残差 MoE）、[Residual Off-Policy RL for BC Finetuning](../entities/paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c.md)（BC 微调残差）。
 
 ## 工程实践
 

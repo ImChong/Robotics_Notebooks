@@ -574,6 +574,7 @@
 - [Humanoid Motion Intelligence（人形机器人运动智能知识库）](wiki/entities/humanoid-motion-intelligence.md) — Humanoid Motion Intelligence**（GitHub：[`RealXiaoze/humanoid-motion-intelligence`](https://github.c `📅unknown` `[entity_page]`
 - [人形机器人（Humanoid Robot）](wiki/entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）](wiki/entities/humanoid-system-curriculum.md) — 一句话：** 把深蓝学院「人形机器人系统 - 理论与实践」八章大纲落成可交叉引用的知识图：以 Unitree G1 为平台，从 **行走 RL** 走到  `📅unknown` `[entity_page]`
+- [HumanoidVerse（LeCAR-Lab）](wiki/entities/humanoidverse.md) — HumanoidVerse**（LeCAR-Lab/HumanoidVerse，MIT）是 CMU  `📅unknown` `[entity_page]`
 - [HumanPlus-1000（同步第一人称 + 全身运动数据集）](wiki/entities/humanplus-1000-dataset.md) — HumanPlus-1000**（项目页 · [HF 预览](https:// `📅unknown` `[entity_page]`
 - [HumanTouch（可规模化人手触觉采集系统）](wiki/entities/humantouch.md) — HumanTouch**（*A Multimodal System for Scalable Human-Hand Tactile Acquisition*，[项目页](https://xspar `📅unknown` `[entity_page]`
 - [Hydra](wiki/entities/hydra-config.md) — Hydra](https://github.com/facebookresearch/hydra) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze `📅unknown` `[entity_page]`
@@ -1931,7 +1932,7 @@
 - [Architecture Is All You Need](wiki/entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md) — Architecture Is All You Need: Diversity-Enabled Sweet Spots for Robust Humanoid Locomotion**（Werne `📅unknown` `[entity_page]`
 - [ARMADA](wiki/entities/paper-notebook-armada-augmented-reality-for-robot-manipulation.md) — ARMADA: Augmented Reality for Robot Manipulation and Robot-Free Data Acquisition** 收录于 [Robot Lear `📅unknown` `[entity_page]`
 - [ARMOR](wiki/entities/paper-notebook-armor-egocentric-perception-for-humanoid-robot-c.md) — ARMOR: Egocentric Perception for Humanoid Robot Collision Avoidance and Motion Planning** 已列入 [Rob `📅unknown` `[entity_page]`
-- [ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills](wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills** 收录于 [Robot Learning Pa `📅unknown` `[entity_page]`
+- [ASAP：Aligning Simulation and Real-World Physics for Agile Humanoid Skills](wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — ASAP**（*Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills*， `📅unknown` `[entity_page]`
 - [AutoOdom](wiki/entities/paper-notebook-autoodom.md) — AutoOdom: Learning Auto-regressive Proprioceptive Odometry for Legged Locomotion** 收录于 [Robot Lear `📅unknown` `[entity_page]`
 - [AvatarPoser](wiki/entities/paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — AvatarPoser: Articulated Full-Body Pose Tracking from Sparse Motion Sensing** 收录于 [Robot Learning  `📅unknown` `[entity_page]`
 - [BeamDojo](wiki/entities/paper-notebook-beamdojo-learning-agile-humanoid-locomotion-on-s.md) — BeamDojo: Learning Agile Humanoid Locomotion on Sparse Footholds** 已列入 [Robot Learning Paper Noteb `📅unknown` `[entity_page]`

@@ -2,12 +2,14 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-09-15
+updated: 2026-09-22
 arxiv: "2508.16943"
 venue: "2025.08"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./humanoidverse.md
+  - ./paper-notebook-asap-aligning-simulation-and-real-world-physics.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanoidverse.md
 summary: "HumanoidVerse：列入 Paper Notebooks progress 待深读清单；深读笔记完成后补成完整摘要。"
@@ -16,6 +18,8 @@ summary: "HumanoidVerse：列入 Paper Notebooks progress 待深读清单；深�
 # HumanoidVerse
 
 **HumanoidVerse: A Versatile Humanoid for Vision-Language Guided Multi-Object Rearrangement** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
+
+> **命名消歧：** 本页指 **VLN 多物体重排论文**（arXiv:2508.16943）。LeCAR-Lab 的 **多仿真器训练框架** [HumanoidVerse](./humanoidverse.md)（[GitHub](https://github.com/LeCAR-Lab/HumanoidVerse)）是另一实体，为 [ASAP](./paper-notebook-asap-aligning-simulation-and-real-world-physics.md) 等工作的代码底座。
 
 ## 一句话定义
 
