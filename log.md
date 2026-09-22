@@ -1,3 +1,5 @@
+## [2026-09-22] query | LightNav-0 博客引用深读 — wiki/queries/lightnav-0-blog-references-deep-read.md
+
 ## [2026-09-22] ingest | sources/papers/footquery_arxiv_2609_21447.md — FootQuery 触地前瞻深度历史检索 + G1 真机；无官方代码
 
 ## [2026-09-22] ingest | sources/papers/legbot_cts_arxiv_2405_10830.md — CTS RA-L 2024 机构/DOI/项目页开源核查补全
