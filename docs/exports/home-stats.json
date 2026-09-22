@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-09-22",
-  "node_count": 4742,
-  "edge_count": 41694,
+  "node_count": 4743,
+  "edge_count": 41703,
   "coverage": {
-    "covered": 4713,
-    "total": 4713,
+    "covered": 4714,
+    "total": 4714,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-wam-design-empirical-study.md",
+      "detail_id": "entity-paper-wam-design-empirical-study",
+      "label": "WAM 设计要素受控实证研究",
+      "type": "entity",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/humanoidverse.md",
       "detail_id": "entity-humanoidverse",
@@ -205,34 +214,21 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/insight-bench.md",
-      "detail_id": "entity-insight-bench",
-      "label": "INSIGHT-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoidverse.md",
-    "detail_id": "entity-humanoidverse",
-    "label": "HumanoidVerse（LeCAR-Lab）",
+    "path": "wiki/entities/paper-wam-design-empirical-study.md",
+    "detail_id": "entity-paper-wam-design-empirical-study",
+    "label": "WAM 设计要素受控实证研究",
     "type": "entity",
     "recency": "2026-09-22",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 697
+      "size": 702
     },
     {
       "label": "移动操作",
@@ -240,7 +236,7 @@
     },
     {
       "label": "具身评测基准选型闭环",
-      "size": 349
+      "size": 356
     },
     {
       "label": "仿真到现实",
@@ -260,7 +256,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1756,
+      "degree": 1757,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -268,7 +264,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1337,
+      "degree": 1338,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -299,7 +295,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 969,
+      "degree": 970,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

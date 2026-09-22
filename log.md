@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/papers/wam_design_empirical_arxiv_2609_24048.md — WAM 三轴受控实证（因果/潜空间/目标）；无官方代码
+
 ## [2026-09-22] ingest | sources/blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md — 深蓝 SciRob 封面 AthenaZero 导读；复用 paper-athenazero 补三条路线/摆锤/刚度/7.3m 数字；自动合并 PR
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/aAaWJZaMO8goQLkIs1U5QA> + DOI aee1868

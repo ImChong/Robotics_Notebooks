@@ -179,4 +179,4 @@
 - wiki/entities/paper-relateanything.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4713/4713 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4714/4714 (100%) wiki/entity 页有 ingest 来源
