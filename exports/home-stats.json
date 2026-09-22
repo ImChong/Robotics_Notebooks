@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
+      "detail_id": "entity-paper-footquery-perceptive-humanoid-locomotion",
+      "label": "FootQuery：触地前瞻引导的深度历史检索感知人形行走",
+      "type": "entity",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    },
+    {
       "path": "wiki/entities/paper-relateanything.md",
       "detail_id": "entity-paper-relateanything",
       "label": "RelateAnything：实时开放词汇关系预测",
@@ -204,28 +214,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "动作块输出（Action Chunking） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vision-locomotion-egocentric.md",
-      "detail_id": "entity-paper-vision-locomotion-egocentric",
-      "label": "Vision Locomotion（Egocentric Depth 四足穿越复杂地形）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-relateanything.md",
-    "detail_id": "entity-paper-relateanything",
-    "label": "RelateAnything：实时开放词汇关系预测",
+    "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
+    "detail_id": "entity-paper-footquery-perceptive-humanoid-locomotion",
+    "label": "FootQuery：触地前瞻引导的深度历史检索感知人形行走",
     "type": "entity",
-    "recency": "2026-09-21",
+    "recency": "2026-09-22",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "动作块输出（Action Chunking） 社区"
+    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
   },
   "top_communities": [
     {
