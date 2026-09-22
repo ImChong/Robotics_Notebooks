@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, long-tail, distillation, teacher-student, reinforcement-learning, xpeng, sonic]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 arxiv: "2607.04837"
 summary: "Athena-WBC（arXiv:2607.04837，小鹏机器人）针对大规模人形 tracking 的训练集长尾残余失败，用能力对齐的 dynamic/balance privileged expert（改奖励与重力课程）+ 按动作路由 DAgger 蒸馏 + RL 微调，在 80 kg 自研人形上相对 SONIC-Base 配方改善长尾恢复与 held-out 跟踪，并提出 STC/TIS/MPJPE-W 评测。"
 related:
@@ -140,7 +140,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - **Scaling 对照：** [SONIC](../methods/sonic-motion-tracking.md)（亿级帧 + 统一 token）、[Humanoid-GPT](./paper-humanoid-gpt.md)（2B 帧 + Transformer 专家蒸馏）、[EGM](../methods/egm-efficient-general-mimic.md)（bin 课程 + CDMoE，偏数据效率）
-- **专家蒸馏先例：** BumbleBee（语义/运动聚类专家）、Parkour in the Wild（地形专家 → DAgger → RLFT）
+- **专家蒸馏先例：** BumbleBee（语义/运动聚类专家）、[Parkour in the Wild](./paper-parkour-in-the-wild.md)（地形专家 → DAgger → RLFT）
 - **小鹏栈：** [DeepInsight](./deepinsight.md)（全栈评测）、[ROVE](./paper-rove-humanoid-vla-intervention.md)（VLA 后训练）
 - **概念：** [Whole-Body Control](../concepts/whole-body-control.md)、[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - **选型：** [humanoid motion tracking 方法选型](../queries/humanoid-motion-tracking-method-selection.md)
@@ -155,5 +155,5 @@ flowchart TB
 - [arXiv:2607.04837](https://arxiv.org/abs/2607.04837) — 全文与 STC/TIS/MPJPE-W 定义
 - [SONIC（arXiv:2511.07820）](https://arxiv.org/abs/2511.07820) — 本文基线配方来源
 - [OmniH2O（CoRL 2024）](https://proceedings.mlr.press/v270/he25a.html) — privileged teacher 观测设计参照
-- [Parkour in the Wild（IJRR 2026）](https://doi.org/10.1177/02783649251347436) — 蒸馏后 RL 微调流程参照
+- [Parkour in the Wild（IJRR 2026）](./paper-parkour-in-the-wild.md) — 蒸馏后 RL 微调流程参照
 - [Humanoid-GPT 实体页](./paper-humanoid-gpt.md) — 另一路「数百 PPO expert → 通才」scaling 对照

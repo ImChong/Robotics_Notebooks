@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, dagger, online-learning, covariate-shift, cmu]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-22
 related:
   - ../methods/dagger.md
   - ../methods/behavior-cloning.md

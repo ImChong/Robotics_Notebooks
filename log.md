@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/papers/parkour_in_the_wild_arxiv_2505_11164.md + multi_expert_distillation_locomotion.md — 多专家蒸馏一手资料入库；新建方法页与 PITW 实体页；交叉 DAgger/teacher-student/跑酷路线
+
 ## [2026-09-22] query | LightNav-0 博客引用深读 — wiki/queries/lightnav-0-blog-references-deep-read.md
 
 ## [2026-09-22] ingest | sources/papers/footquery_arxiv_2609_21447.md — FootQuery 触地前瞻深度历史检索 + G1 真机；无官方代码

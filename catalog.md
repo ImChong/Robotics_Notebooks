@@ -2344,6 +2344,7 @@
 - [PanoLOG / G²PS：全景户外大规模 3DGS 划分重建](wiki/entities/paper-panolog-ggps.md) — PanoLOG**（*Geometry and Gradient-based Partitioning for Panoramic Outdoor Reconstruction*，[arXiv:2 `📅unknown` `[entity_page]`
 - [PanoWorld：真实世界全景可控生成](wiki/entities/paper-panoworld-real-world-panoramic-generation.md) — PanoWorld**（*Real-World Panoramic Generation*，[arXiv:2607.09661](https://arxiv.org/abs/2607.09661 `📅unknown` `[entity_page]`
 - [ParcelStow：模仿学习是否保留时间鲁棒性？](wiki/entities/paper-parcelstow.md) — ParcelStow**（*Does Imitation Learning Preserve Temporal Robustness in Dexterous Manipulation?*，[ar `📅unknown` `[entity_page]`
+- [Parkour in the Wild（PITW）](wiki/entities/paper-parkour-in-the-wild.md) — Parkour in the Wild**（*Learning a General and Extensible Agile Locomotion Policy Using Multi-Exper `📅unknown` `[entity_page]`
 - [ParkourFormer（预测监督 + 序列建模人形跑酷）](wiki/entities/paper-parkourformer.md) — ParkourFormer**（*Integrating Predictive Supervision and Sequence Modeling into Parkour Locomotion `📅unknown` `[entity_page]`
 - [PartialBiGrasp：残缺观测下的双臂抓取局部几何补全](wiki/entities/paper-partialbigrasp.md) — PartialBiGrasp**（*Inferring Hidden Local Geometry for Bimanual Grasping from Partial Views*；[arXiv `📅unknown` `[entity_page]`
 - [ParticleSplat（arXiv:2609.19463）](wiki/entities/paper-particlesplat.md) — ParticleSplat**（*Self-supervised Object-centric Latent Particle Splatting*，[arXiv:2609.19463](http `📅unknown` `[entity_page]`
@@ -4224,6 +4225,7 @@
 - [MT-Opt](wiki/methods/mt-opt.md) — MT-Opt**：在多机器人并行采集框架下，同时学习多项操控技能的连续动作多任务深度强化学习系统；强调任务规范、成功检测器与跨任务表示共享。 `📅unknown` `[method_page]`
 - [MTRG / GfR: Multi-Task Reference and Goal-Driven RL](wiki/methods/mtrg-reference-goal-driven-rl.md) — GfR**（Generalizing from References，**RSS 2026**）提出多任务 RL 范式， `📅unknown` `[method_page]`
 - [Mu Synthesis Control（μ 综合控制）](wiki/methods/mu-synthesis-control.md) — μ 综合：在 H∞ 框架上显式处理 **结构化参数不确定性**（多关节耦合、多参数漂移），优化稳定裕度。 `📅unknown` `[method_page]`
+- [Multi-Expert Distillation（多专家蒸馏）](wiki/methods/multi-expert-distillation.md) — Multi-Expert Distillation** 是足式/人形 **感知 locomotion 与跑酷** 中的主流 **技能合成** 范式：先为 **不同地形、障碍或技能** 训练 **独 `📅unknown` `[method_page]`
 - [Muon（MomentUm Orthogonalized by Newton–Schulz）](wiki/methods/muon.md) — Muon** 是面向神经网络 **隐藏层 2D 权重矩阵** 的优化器：对 SGD-momentum 产生的更新矩阵 $G$，用 **Newton–Schulz 迭代**（`newtonschul `📅unknown` `[method_page]`
 - [Nesterov Momentum（Nesterov 加速梯度）](wiki/methods/nesterov-momentum.md) — Nesterov Accelerated Gradient（NAG）**：在施加动量更新 **之前**，先沿当前速度方向做一步「前瞻」，在 **前瞻点** 计算梯度。相比经典 [SGD Momen `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](wiki/methods/neural-motion-retargeting-nmr.md) — NMR（Neural Motion Retargeting）** 面向「人体 SMPL（或同类）序列 → 人形机器人可执行全身轨迹」：不把重定向当成孤立的逐帧几何优化，而是用**可扩展的监督数据  `📅unknown` `[method_page]`
