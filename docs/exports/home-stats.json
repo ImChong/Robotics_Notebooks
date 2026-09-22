@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-22",
   "node_count": 4743,
-  "edge_count": 41703,
+  "edge_count": 41702,
   "coverage": {
     "covered": 4714,
     "total": 4714,
@@ -264,7 +264,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1338,
+      "degree": 1339,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -295,7 +295,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 970,
+      "degree": 969,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

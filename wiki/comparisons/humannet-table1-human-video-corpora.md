@@ -2,7 +2,7 @@
 type: comparison
 tags: [dataset, egocentric-video, exocentric-video, vla, embodied-pretraining, humannet]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 summary: "围绕 HumanNet 论文 Table 1，把代表性人类视频/行为语料按视点、活动语义与「具身向可用性」分组，并指向各数据集的官方入口；用于 VLA/模仿学习侧的人类数据选型，而非替代各数据集的官方数据卡。"
 related:
   - ../entities/humannet.md
