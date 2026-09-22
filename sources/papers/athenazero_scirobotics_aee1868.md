@@ -12,7 +12,8 @@
 - **项目页 / 博客：** <https://rai-inst.com/resources/blog/bimanual-robot-for-dynamic-manipulation/>
 - **代码：** [effective_mass_analysis](../repos/effective_mass_analysis.md) — MIT；有效质量椭圆复现
 - **数据：** [Zenodo 21939225](https://doi.org/10.5281/zenodo.21939225) · [Zenodo 22002793](https://doi.org/10.5281/zenodo.22002793) — 冲击测试、刚度评测、Fig.5–6 复现数据
-- **入库日期：** 2026-09-17
+- **入库日期：** 2026-09-17（SciRob 原文）；**2026-09-22** 补链深蓝具身智能公众号导读
+- **中文导读：** [`sources/blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md`](../blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md)（<https://mp.weixin.qq.com/s/aAaWJZaMO8goQLkIs1U5QA>）
 - **一句话说明：** RAI 首款 **低惯量准直驱双臂** 原型 **AthenaZero**：通过 **传动远端化** 与 **5:1 级低减速比** 把腕部 **有效质量** 压到人臂量级（约 **3.97 kg** vs FR3 **29 kg**），无腕部力矩传感器；以 **棒球式投/接/打** 与人机对传验证 **人类节奏** 动态操作，并开源 **有效质量分析** 工具与评测数据。
 
 ## 开源核查（步骤 2.5，截至 2026-09-17）
@@ -74,3 +75,4 @@
 
 - [Science Robotics DOI](https://doi.org/10.1126/scirobotics.aee1868)
 - [RAI 博客](https://rai-inst.com/resources/blog/bimanual-robot-for-dynamic-manipulation/)
+- [深蓝具身智能 · SciRob 封面导读](../blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md)

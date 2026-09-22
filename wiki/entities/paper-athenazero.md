@@ -11,7 +11,7 @@ tags:
   - effective-mass
   - rai-institute
 status: complete
-updated: 2026-09-17
+updated: 2026-09-22
 doi: "10.1126/scirobotics.aee1868"
 venue: "Science Robotics 2026"
 related:
@@ -25,6 +25,7 @@ related:
   - ../queries/humanoid-hardware-selection.md
 sources:
   - ../../sources/papers/athenazero_scirobotics_aee1868.md
+  - ../../sources/blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md
   - ../../sources/sites/rai-athenazero-blog.md
   - ../../sources/repos/effective_mass_analysis.md
 summary: "AthenaZero（SciRob 2026，DOI aee1868）：RAI 低惯量准直驱双臂原型，腕部有效质量 ~4 kg（人臂 ~3 kg、FR3 ~29 kg）；棒球投/接/打与人机对传验证 human cadence 动态操作。有效质量分析 MIT 开源 + Zenodo 数据；真机控制/CAD 未开源。"
@@ -94,6 +95,16 @@ flowchart LR
 
 ## 核心原理
 
+### 动态操作臂三条路线（选型对照）
+
+| 路线 | 代表 | 优势 | 短板 |
+|------|------|------|------|
+| **高减速协作臂** | Franka / UR / iiwa | 高静态扭矩、工业精度 | 反射惯量 ∝ ratio² → 高 EM；软件限矩难改撞击瞬间冲量 |
+| **柔性改造** | SEA、软体手、缓冲垫 | 形变吸收碰撞 | 闭环带宽↓；难高功率投掷 |
+| **低惯量 QDD** | WAM、AMBIDEX、**AthenaZero** | 物理层降 EM、背驱/力透明 | 静态扭矩↓、结构复杂；Bowden/皮带摩擦 |
+
+> 文内强调：虚拟降惯/力反馈受 **带宽与采样延迟** 约束，只能在接触 **之后** 生效；毫秒级高速冲击仍由 **硬件 EM** 决定。
+
 ### 有效质量为何是主指标
 
 协作臂 **>80:1** 减速比使 **反射惯量 ∝ ratio²** 主导接触点「重量感」。高有效质量 → 同样力矩下 **加减速慢**，控制器只能 **降速** 换柔顺。AthenaZero 把 **链接惯量 + 反射惯量** 一起压下，使 **人类 cadence**（快速 wind-up / 接触缓冲）在控制上可行。
@@ -105,15 +116,28 @@ flowchart LR
 | **低减速比（5:1）** | 降低反射惯量；保留 **反驱**（外力可回传） |
 | **97%+ 行星齿轮** | 电流力矩估计可用；省 FT 传感器 |
 | **电机收向躯干** | 摆臂时 ** distal 运动质量** 更小（类比棒球 kinetic chain 近端供能） |
-| **并联腕（构型相关 ratio）** | 分析仓给中性 workspace 参数；偏离时 ratio 略变 |
+| **并联腕（构型相关 ratio）** | 电机收至肘关节；腕部 **LUT + 双线性插值** 正解 **~3 μs**/查询 @ **1 kHz**；分析仓给中性 workspace 参数 |
+| **Bowden 三指手** | 躯干内电机 + **1.8 m** 缆绳；气压触觉 **200 Hz**；摩擦限制夹持力/手速 |
+
+### 摆锤冲击与刚度标定
+
+| 实验 | AthenaZero | FR3（对照） | 读法 |
+|------|------------|-------------|------|
+| **1 kg 摆锤撞击 EM** | **0.83 kg** | **3.3 kg** | 短距冲击实验；与 belted ellipsoid 叙事一致 |
+| **撞击峰值力** | **124.1 N** | **208.3 N** | FR3 更易把摆锤 **弹回** |
+| **主动刚度（30 位姿）** | 空载平均偏移 **~3 mm** | — | 闭环位置误差，非纯结构刚度 |
+| **+1.8 kg 载荷** | 平均偏移 **~12 mm** | — | **RJ7** 腕关节扭矩最低，伸展姿态力臂放大 |
 
 ### 棒球三项（评测摘要）
 
+**实验设置：** **7.3 m** 固定距离实验室；**OptiTrack 240 Hz** 球轨迹；机机/人机对传与 batting practice。
+
 | 任务 | 报告性能 | 读法 |
 |------|----------|------|
-| **投掷** | **>30 m/s**（博客 **70 mph / 113 km/h**） | 接近高中投手带 |
-| **接球** | 7.3 m 内 **>14 m/s**（博客 41 mph） | 外推 mound 距离 ≈ 职业 fastball 反应窗口 |
-| **挥棒** | **>14 m/s** 球速下 **82%** 接触（33 试） | 业余击球带 |
+| **投掷（单臂网球）** | **30.8 m/s** | 博客亦报 **70 mph** 级高速 |
+| **投掷（双臂棒球）** | **21.4 m/s** 投入 **0.25×0.25 m** 框 | 释放时序/打滑是瓶颈 |
+| **接球** | 7.3 m 最高 **18.3 m/s**；外推 mound **46.1 m/s** | 轨迹需 **≥3** 个采样点才够反应 |
+| **挥棒** | 最高来球 **13.9 m/s**；标准场地等效 **35 m/s**；**82%** 接触 @ **>14 m/s**（33 试） | 业余击球带 |
 | **对传** | 机机 **8** volley；人机 **12** volley | 轨迹不确定性 + 柔顺 |
 | **batting practice** | 机机 / 人机均 **~3 min** 连续 | 实时 swing 调整 |
 
@@ -186,7 +210,9 @@ sequenceDiagram
 - **高刚度跟踪：** 焊接类 **严格轨迹** 非设计 sweet spot。
 - **腕并联近似：** 分析仓 EM 在 wrist 中性有效；极限构型需额外验证。
 - **棒球外推：** 速度外推 mound 距离是 **作者解读**；独立第三方尚未复现全部数字。
+- **Bowden 手摩擦：** **1.8 m** 缆绳损耗限制夹持力与手速 — 为整体低惯量的工程取舍。
 - **抛接栈分离：** arXiv:2608.26800 **仍无代码** — 勿因本仓开源误以为 juggling 可复现。
+- **落地 gap（文内）：** 机载高速视觉、缆绳摩擦、热管理仍是走向现实部署的待解项。
 
 ## 关联页面
 
@@ -200,6 +226,7 @@ sequenceDiagram
 ## 参考来源
 
 - [AthenaZero SciRob 论文归档](../../sources/papers/athenazero_scirobotics_aee1868.md)
+- [深蓝具身智能 · SciRob 封面导读（2026-09-22）](../../sources/blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md)
 - [RAI AthenaZero 博客归档](../../sources/sites/rai-athenazero-blog.md)
 - [effective_mass_analysis 仓库归档](../../sources/repos/effective_mass_analysis.md)
 - [Science Robotics DOI](https://doi.org/10.1126/scirobotics.aee1868)
