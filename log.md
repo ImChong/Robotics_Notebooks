@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/blogs/wechat_embodied_heart_msfp_survey_tsinghua_2026-09-22.md — 清华 MSFP 综述 arXiv:2506.19769 四条技术轴实体页
+
 ## [2026-09-22] ingest | sources/papers/huro_arxiv_2609_10706.md — 深读 HuRo 机器人化流水线；补齐 sites/repos 归档与 paper-huro 实体（OOD 34.9→72.2%）；部分开源
 
 ## [2026-09-22] ingest | sources/papers/wam_design_empirical_arxiv_2609_24048.md — WAM 三轴受控实证（因果/潜空间/目标）；无官方代码

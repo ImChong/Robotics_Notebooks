@@ -1,11 +1,12 @@
 ---
 type: concept
 tags: [sensor-fusion, perception, localization, vio, ekf, state-estimation]
-updated: 2026-09-15
+updated: 2026-09-22
 related:
   - ./imu-principles-algorithms-camera-sync.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./state-estimation.md
+  - ../entities/paper-msfp-embodied-ai-survey.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md
   - ./contact-estimation.md
   - ./floating-base-dynamics.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/papers/perception_localization.md
   - ../../sources/papers/state_estimation.md
   - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
+  - ../../sources/papers/msfp_survey_arxiv_2506_19769.md
 summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提升状态估计鲁棒性。"
 ---
 
@@ -86,6 +88,10 @@ summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提�
 
 移动平台与 ITS 场景中，**弱光照、LiDAR 几何退化、轮速打滑、GNSS 拒止** 会使部分模态残差不可靠；固定权重融合易引入偏置。[Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md)（arXiv:2606.21223）在 **统一滑窗因子图** 内对 LiDAR / 视觉 / IMU / 轮速 / GNSS 做 **因子级可靠性调度**，并配合 **在线时空标定**，在 M3DGR 等基准上对 60+ SLAM 系统做退化与标定扰动评测——与腿式 **InEKF/VIO** 侧重不同，更面向 **轮式/腿式/UAV 多配置导航栈** 的鲁棒定位。
 
+### 感知任务侧 MSFP（与状态估计正交）
+
+本页侧重 **位姿/速度/接触** 的状态估计融合；**检测、分割、深度、占用** 等语义几何感知的多传感器栈见 [MSFP Survey](../entities/paper-msfp-embodied-ai-survey.md)（arXiv:2506.19769）——按 **多模态 / 多智能体 / 时间序列 / MM-LLM** 四条轴组织，便于感知 pipeline 选型，勿与 InEKF/VIO 混为一谈。
+
 ---
 
 ## 在控制栈中的位置
@@ -118,6 +124,7 @@ summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提�
 
 ## 关联页面
 - [IMU：原理、算法与摄像头驱动协同](./imu-principles-algorithms-camera-sync.md) — 六轴测量、标定、Mahony/Madgwick/EKF 与 V4L2/IIO 同步
+- [MSFP Survey（具身 AI 多传感器融合感知）](../entities/paper-msfp-embodied-ai-survey.md) — 感知任务侧四条技术轴 taxonomy
 - [Ultra-Fusion（多传感器 SLAM 论文实体）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 退化感知紧耦合 LVIO/LVWIO 与大规模基准
 - [状态估计（State Estimation）](./state-estimation.md)
 - [接触估计（Contact Estimation）](./contact-estimation.md)
