@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/papers/footquery_arxiv_2609_21447.md — FootQuery 触地前瞻深度历史检索 + G1 真机；无官方代码
+
 ## [2026-09-22] ingest | sources/papers/legbot_cts_arxiv_2405_10830.md — CTS RA-L 2024 机构/DOI/项目页开源核查补全
 
 ## [2026-09-21] ingest | sources/papers/relateanything_arxiv_2609_12552.md — RelateAnything 实时开放词汇关系预测；RA-4M + OV-SGG-Bench；代码/权重/数据已开源
