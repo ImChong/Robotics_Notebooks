@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, umd, naver-labs, 3d-reconstruction, feed-forward, fisheye, panoramic, camera-model, pose-estimation, pi3]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 arxiv: "2602.05321"
 venue: "ECCV 2026"
 code: https://github.com/jdk9405/Wid3R
@@ -206,6 +206,7 @@ sequenceDiagram
 - [PanoLOG / G²PS](./paper-panolog-ggps.md) — ERP 全景重建对照
 - [状态估计知识链](../overview/hub-state-estimation.md) — SLAM / 视觉几何入口
 - [Navigation SLAM Autonomy Stack](../overview/navigation-slam-autonomy-stack.md) — 导航栈中的视觉几何选型
+- [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — S1 多样输入 strengthening 地图
 
 ## 参考来源
 
