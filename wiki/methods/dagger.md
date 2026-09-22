@@ -1,10 +1,11 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-09-21
+updated: 2026-09-22
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
+  - ./multi-expert-distillation.md
   - ./behavior-cloning.md
   - ../concepts/rl-runner.md
   - ./imitation-learning.md
@@ -16,6 +17,7 @@ related:
   - ../entities/paper-lehome-learning-to-fold.md
   - ../entities/paper-kai0.md
   - ../entities/paper-autointervene.md
+  - ../entities/paper-parkour-in-the-wild.md
   - ../entities/paper-ross-dagger.md
 sources:
   - ../../sources/personal/rl_runner_types.md
@@ -94,6 +96,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 ### locomotion / whole-body 任务
 - 可以把高性能教师控制器、MPC 或人类设计的参考轨迹当专家
 - 更常见的变体是 teacher-student 蒸馏，而非完全照搬原始 DAgger 形式
+- **多专家蒸馏总览：** [Multi-Expert Distillation](./multi-expert-distillation.md) — 分地形/分技能 RL 专家 → DAgger 聚合 → 可选 RLFT（[Parkour in the Wild](../entities/paper-parkour-in-the-wild.md) 等）
 - **[PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)**：高动态跑酷学生策略用 **DAgger + PPO** 混合损失；纯 DAgger 对攀爬/翻越不足，需 success-driven RL 项
 - **[LightLP](../entities/paper-light-loco-parkour.md)**：多专家 **DAgger** 合成无技能标签 height-scan 学生，再深度 GRU 蒸馏 + PPO fine-tune；转移组用稀疏 RL 补 loco↔技能切换
 - **[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)**：分地形高程 **专家** 以 **DAgger 动作回归** 蒸馏为 **多视角深度** 统一下身策略；辅以 DFSV/RSM 处理多向与非对称感知
@@ -124,6 +127,8 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：DAgger 风格的掩码在线蒸馏，把人形多控制接口统一进 CVAE 学生策略
 - **ingest 档案：** [sources/papers/php_parkour_arxiv_2602_15827.md](../../sources/papers/php_parkour_arxiv_2602_15827.md) — PHP：teacher-student 跑酷中 DAgger+PPO 课程蒸馏
+- **ingest 档案：** [sources/papers/multi_expert_distillation_locomotion.md](../../sources/papers/multi_expert_distillation_locomotion.md) — 多专家蒸馏一手资料谱系索引
+- **ingest 档案：** [sources/papers/parkour_in_the_wild_arxiv_2505_11164.md](../../sources/papers/parkour_in_the_wild_arxiv_2505_11164.md) — PITW：9 专家 MED + RLFT（IJRR 2026）
 - **ingest 档案：** [sources/papers/light_loco_parkour_light_origins_2026.md](../../sources/papers/light_loco_parkour_light_origins_2026.md) — LightLP：多专家 DAgger + 转移组 RL + 深度蒸馏
 - **ingest 档案：** [sources/papers/rpl_arxiv_2602_03002.md](../../sources/papers/rpl_arxiv_2602_03002.md) — RPL：分地形高程专家 → 多视角深度 DAgger 蒸馏
 - **ingest 档案：** [sources/papers/ladderman_arxiv_2606_05873.md](../../sources/papers/ladderman_arxiv_2606_05873.md) — LadderMan：单参考 hybrid tracking 专家 → 深度 DAgger+RL 蒸馏
@@ -144,6 +149,8 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛级双臂叠衣 DAgger + RL
 - [χ₀ / kai0](../entities/paper-kai0.md) — 协同叠衣/挂衣上的 Heuristic DAgger + chunk 平滑
 - [AutoIntervene](../entities/paper-autointervene.md) — 检索式支持触发的选择性干预（机器人门控切入/交回；arXiv:2608.07065）
+- [Multi-Expert Distillation（多专家蒸馏）](./multi-expert-distillation.md) — locomotion 技能合成主线
+- [Parkour in the Wild（IJRR 2026）](../entities/paper-parkour-in-the-wild.md) — multi-expert distillation 标题级 flagship
 - [DAgger 原论文（Ross et al., 2011）](../entities/paper-ross-dagger.md) — 理论锚点与 no-regret reduction
 - [ULTRA：统一多模态 loco-manipulation 控制](../tasks/ultra-survey.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)

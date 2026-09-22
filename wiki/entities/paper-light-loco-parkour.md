@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, parkour, perceptive-locomotion, distillation, real2sim2real, dagger, light-origins, whole-body]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 venue: "Light Origins 项目页（暂无 arXiv）"
 related:
   - ./lightbot-0.md
@@ -15,6 +15,8 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../methods/dagger.md
+  - ../methods/multi-expert-distillation.md
+  - ./paper-parkour-in-the-wild.md
   - ../methods/hil-hybrid-imitation-learning.md
   - ../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md
 sources:

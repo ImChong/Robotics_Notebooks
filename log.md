@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/papers/parkour_in_the_wild_arxiv_2505_11164.md + multi_expert_distillation_locomotion.md — 多专家蒸馏一手资料入库；新建方法页与 PITW 实体页；交叉 DAgger/teacher-student/跑酷路线
+
 ## [2026-09-22] ingest | sources/papers/legbot_cts_arxiv_2405_10830.md — CTS RA-L 2024 机构/DOI/项目页开源核查补全
 
 ## [2026-09-21] ingest | sources/papers/relateanything_arxiv_2609_12552.md — RelateAnything 实时开放词汇关系预测；RA-4M + OV-SGG-Bench；代码/权重/数据已开源
