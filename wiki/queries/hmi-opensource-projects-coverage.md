@@ -206,7 +206,7 @@ sources:
 | [Genie Studio Agent](https://www.agibot.com/article/231/detail/59.html) | [Genie Studio Agent](../entities/genie-studio-agent.md) |
 | [Humanoid Everyday](https://github.com/physical-superintelligence-lab/Humanoid-Everyday) | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) |
 | [HumanoidBench](https://github.com/carlosferrazza/humanoid-bench) | [HumanoidBench](../entities/humanoid-bench.md) |
-| [HumanoidVerse](https://github.com/LeCAR-Lab/HumanoidVerse) | [HumanoidVerse](../entities/paper-notebook-humanoidverse.md) |
+| [HumanoidVerse](https://github.com/LeCAR-Lab/HumanoidVerse) | [HumanoidVerse 框架](../entities/humanoidverse.md)（≠ [VLN 论文页](../entities/paper-notebook-humanoidverse.md)） |
 | [Hydra](https://github.com/facebookresearch/hydra) | [Hydra](../entities/hydra-config.md) |
 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | [Isaac Lab](../entities/isaac-lab.md) |
 | [Isaac Sim](https://github.com/isaac-sim/IsaacSim) | [Isaac Sim](../entities/isaac-sim.md) |

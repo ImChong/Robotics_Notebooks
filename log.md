@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/repos/asap.md + HumanoidVerse — LECAR ASAP 项目页/代码/框架入库；升格 ASAP 实体与新建 HumanoidVerse 框架页（已开源 MIT）
+
 ## [2026-09-22] ingest | sources/papers/vggt_survey_researchgate_2026.md — VGGT 几何状态综述（BUPT/PKU，142 篇十类 taxonomy + 71 数据集）；升格 wiki/overview/vggt-geometric-state-survey.md；companion 已开源
 
 - **意图：** 用户指定 ingest <https://richardchen225.github.io/vggt_survey/>；以 Z_geo/R_geo 框架组织 VGGT 系文献地图并挂接 hub-state-estimation 与站内 VGGT 实体。
