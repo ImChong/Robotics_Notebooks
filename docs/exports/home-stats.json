@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-22",
-  "node_count": 4736,
-  "edge_count": 41557,
+  "node_count": 4737,
+  "edge_count": 41579,
   "coverage": {
-    "covered": 4707,
-    "total": 4707,
+    "covered": 4708,
+    "total": 4708,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -246,7 +246,7 @@
     },
     {
       "label": "全身控制",
-      "size": 255
+      "size": 257
     },
     {
       "label": "视觉-语言-动作",
@@ -297,7 +297,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 968,
+      "degree": 969,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

@@ -2,7 +2,7 @@
 
 ## [2026-09-22] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **55** 条信息型预警）：
+共发现 **0** 个问题（另含 **58** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -138,9 +138,12 @@
 - wiki/entities/paper-rxr.md（缺 重定向就绪度）
 - wiki/entities/vlnverse.md（缺 重定向就绪度）
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（5 个）
 - wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/birdview.md updated=2026-09-21）
+- wiki/entities/paper-code-as-world.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-slamformer-infinity.md updated=2026-09-22）
 - wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/curobo.md updated=2026-09-21）
+- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-slamformer-infinity.md updated=2026-09-22）
+- wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-slamformer-infinity.md updated=2026-09-22）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -174,4 +177,4 @@
 - wiki/entities/paper-relateanything.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4707/4707 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4708/4708 (100%) wiki/entity 页有 ingest 来源

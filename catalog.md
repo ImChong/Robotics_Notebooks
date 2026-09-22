@@ -4626,6 +4626,7 @@
 - [T-RO 分类 02：三维与手物表征](wiki/overview/tro-manip-category-02-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [T-RO 分类 03：无标签视频预训练](wiki/overview/tro-manip-category-03-video-pretraining.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [T-RO 分类 04：生成模型综述](wiki/overview/tro-manip-category-04-generative-models-survey.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [VGGT 几何状态综述视角](wiki/overview/vggt-geometric-state-survey.md) — VGGT 的价值不在「又出一个 depth 网络」，而在一次前馈同时给出可复用的几何状态：** 多视图 latent **Z<sub>geo</sub>** 与结构化输出 **R<sub>geo< `📅unknown` `[overview_page]`
 - [视频–接触–控制：10 篇论文的阅读坐标](wiki/overview/video-contact-control-10-papers-technology-map.md) — 具身智能正在把「看懂人类视频」、「仿真与控制接口」、「接触几何」与「大模型持续适配」焊成同一条动作链路——单点刷榜不如看机制能否复用到更长视野与更开放场景。 `📅unknown` `[overview_page]`
 - [视觉聚焦与数据效率：10 篇论文的阅读坐标](wiki/overview/visual-focus-data-efficiency-10-papers-technology-map.md) — 把视觉局部性、规划器经验、记忆压缩与空间/交互中间表示写进训练接口，比单纯堆数据或堆参数更省样本、更可解释。 `📅unknown` `[overview_page]`
 - [VLA 部署与系统可靠性：12 篇论文阅读坐标](wiki/overview/vla-deploy-12-papers-technology-map.md) — 「代码能否帮部署」取决于工程契约是否统一、感知退化是否被评测、以及安全/通信是否进入闭环——而非再多一个策略结构。 `📅unknown` `[overview_page]`
