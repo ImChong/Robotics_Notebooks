@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robbyant, 3d-reconstruction, foundation-model, slam, streaming-perception, pose-estimation, depth-estimation, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-22
 arxiv: "2604.14141"
 venue: "ECCV 2026 oral"
 code: https://github.com/Robbyant/lingbot-map
@@ -184,6 +184,7 @@ sequenceDiagram
 - [R³](./paper-r3-relative-regression.md) — 相对回归流式重建对照
 - [Register Any Point（RAP）](./paper-sa-2512-01850-register-any-point.md) — 多视角点云配准流匹配生成路线（ECCV 2026；PRBonn/RAP 已开源）
 - [State Estimation](../concepts/state-estimation.md) — 几何估计在控制链上游
+- [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — S4 流式/长序列 strengthening 地图
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 流式前馈重建在感知栈「表征层」的定位与选型口径
 - [VLA](../methods/vla.md) — 可选几何先验下游

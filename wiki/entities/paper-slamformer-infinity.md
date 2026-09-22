@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - state-estimation
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 arxiv: "2608.03429"
 venue: "arXiv 2026"
 related:
@@ -162,6 +162,7 @@ flowchart TB
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md) — 经典与学习型视觉栈分层
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 传感器栈选型（本方法为纯视觉稠密）
 - [ORB-SLAM3](./orb-slam3.md) — 稀疏视觉经典基线
+- [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — R2 SLAM reuse 地图
 
 ## 参考来源
 

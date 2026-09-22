@@ -1,3 +1,8 @@
+## [2026-09-22] ingest | sources/papers/vggt_survey_researchgate_2026.md — VGGT 几何状态综述（BUPT/PKU，142 篇十类 taxonomy + 71 数据集）；升格 wiki/overview/vggt-geometric-state-survey.md；companion 已开源
+
+- **意图：** 用户指定 ingest <https://richardchen225.github.io/vggt_survey/>；以 Z_geo/R_geo 框架组织 VGGT 系文献地图并挂接 hub-state-estimation 与站内 VGGT 实体。
+- **开源结论：** **Companion 已开源** — `richardchen225/Awesome-VGGT` + 交互项目页（非 VGGT 训练代码）。
+
 ## [2026-09-22] ingest | sources/papers/parkour_in_the_wild_arxiv_2505_11164.md + multi_expert_distillation_locomotion.md — 多专家蒸馏一手资料入库；新建方法页与 PITW 实体页；交叉 DAgger/teacher-student/跑酷路线
 
 ## [2026-09-22] query | LightNav-0 博客引用深读 — wiki/queries/lightnav-0-blog-references-deep-read.md

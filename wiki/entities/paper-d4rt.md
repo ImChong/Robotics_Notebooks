@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, 4d-reconstruction, point-tracking, depth-estimation, camera-pose, feedforward, foundation-model, deepmind, oxford, cvpr-2026, dynamic-scene]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 arxiv: "2512.08924"
 venue: "CVPR 2026"
 related:
@@ -176,6 +176,7 @@ flowchart TB
 - [State Estimation](../concepts/state-estimation.md) — 相机与稠密几何在状态估计栈中的位置
 - [状态估计枢纽](../overview/hub-state-estimation.md) — SLAM / 几何基础模型索引
 - [Visual Representation for Policy](../concepts/visual-representation-for-policy.md) — 策略用视觉表征选型
+- [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — S5 动态/4D strengthening 地图
 
 ## 推荐继续阅读
 

@@ -191,6 +191,7 @@ sequenceDiagram
 - [SLAMFormer-∞](./paper-slamformer-infinity.md) — 学习型在线 dense SLAM 对照
 - [State Estimation](../concepts/state-estimation.md) — 视觉几何在状态估计链中的位置
 - [状态估计知识链](../overview/hub-state-estimation.md) — SLAM / VIO 入口
+- [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — S2/S4 efficient & long-sequence 地图
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 几何先验与空间推理下游
 - [SE(3) 表示](../formalizations/se3-representation.md) — 位姿形式化底座
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 工程管线中的 VGGT 窗式用法对照

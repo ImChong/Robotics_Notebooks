@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-22
 arxiv: "2603.12655"
 venue: "arXiv 2026"
 summary: "Bypasses video generation to predict temporal evolution of frozen geometry foundation model features."
@@ -89,6 +89,7 @@ Bypasses video generation to predict temporal evolution of frozen geometry found
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — R4 几何世界模型 reuse 地图
 
 ## 参考来源
 
