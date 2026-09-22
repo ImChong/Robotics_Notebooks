@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/lightnav-0-blog-references-deep-read.md",
+      "detail_id": "wiki-queries-lightnav-0-blog-references-deep-read",
+      "label": "LightNav-0 博客引用深读",
+      "type": "query",
+      "recency": "2026-09-22",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
       "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
       "detail_id": "entity-paper-footquery-perceptive-humanoid-locomotion",
       "label": "FootQuery：触地前瞻引导的深度历史检索感知人形行走",
@@ -204,27 +214,17 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/overview/mit-flow-matching-diffusion-2026.md",
-      "detail_id": "wiki-overview-mit-flow-matching-diffusion-2026",
-      "label": "MIT 6.S184：Flow Matching & Diffusion Models（2026）",
-      "type": "overview",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
-    "detail_id": "entity-paper-footquery-perceptive-humanoid-locomotion",
-    "label": "FootQuery：触地前瞻引导的深度历史检索感知人形行走",
-    "type": "entity",
+    "path": "wiki/queries/lightnav-0-blog-references-deep-read.md",
+    "detail_id": "wiki-queries-lightnav-0-blog-references-deep-read",
+    "label": "LightNav-0 博客引用深读",
+    "type": "query",
     "recency": "2026-09-22",
     "source": "git",
     "action": "added",
-    "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
+    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
   },
   "top_communities": [
     {
