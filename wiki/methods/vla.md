@@ -309,6 +309,7 @@ flowchart TD
 用 egocentric 人视频、跨本体对齐替换或前置昂贵真机遥操作数据。
 
 - **HumanNet**：百万小时量级 **人中心** 一三人称视频语料 + 策展/标注管线；论文在 LingBot-VLA 设定下给出「**约 1000h** egocentric 人视频持续预训练 vs **约 100h** 真机数据」等受控对比，用于讨论 **人类视频小时** 能否在成本上部分替代早期真机预训练（见 [HumanNet](../entities/humannet.md)；论文 Table 1 相关基准语料索引见 [对照页](../comparisons/humannet-table1-human-video-corpora.md)）
+- **HuRo（RLWRLD / 延世大学，CoRL 2026，arXiv:2609.10706）**：**10 阶段机器人化流水线** 把五源 egocentric 人视频变成 **联合 robot-aligned 观测+重定向动作**（630K episode / 142M 帧）；ALLEX 上 VLA 预训练 scaling 使 Overall **51.5→80.3%**、**OOD 34.9→72.2%**；**流水线 Apache-2.0 已开源**，预构建 HuRo 语料与 VLA 权重待发布（见 [HuRo](../entities/paper-huro.md)）
 - **EgoScale**：在 **>20k h** 带 **腕 + 重定向高 DoF 手** 标签的 egocentric 人视频上预训练 **流式 VLA**，给出 **人数据规模 ↔ 验证损失（log-linear）↔ 真机灵巧后训练表现** 的实证链条，并以 **小规模视点对齐的人–机 mid-training** 承接 embodiment gap（见 [EgoScale](./egoscale.md)）
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；**代码与权重已开源**（全量处理后数据待发）（见 [EgoSteer](../entities/paper-egosteer.md)，arXiv:2607.09701）
 - **T-Rex**：在 EgoScale 同族 **人视频预训练** 之上，用 **100 h 触觉同步 play mid-training** 与 **变频率 MoT + 异步触觉 flow matching** 实现 **毫秒级触觉反应**；**12 项双手灵巧真机任务** 宏平均 **65%**，且 **朴素拼接触觉会损害 π₀.₅**（见 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）
