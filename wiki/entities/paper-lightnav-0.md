@@ -14,6 +14,7 @@ updated: 2026-09-21
 arxiv: "2608.30935"
 code: https://github.com/lightorigins/LightNav-0
 related:
+  - ../queries/lightnav-0-blog-references-deep-read.md
   - ./light-origins.md
   - ./lightnav-er.md
   - ./insight-bench.md
