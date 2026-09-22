@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/papers/legbot_cts_arxiv_2405_10830.md — CTS RA-L 2024 机构/DOI/项目页开源核查补全
+
 ## [2026-09-21] ingest | sources/papers/relateanything_arxiv_2609_12552.md — RelateAnything 实时开放词汇关系预测；RA-4M + OV-SGG-Bench；代码/权重/数据已开源
 
 - **意图：** 用户指定 ingest arXiv:2609.12552 + 项目页/GitHub/HF 模型与 RA-4M；新建 [paper-relateanything](wiki/entities/paper-relateanything.md) 并交叉空间推理地图与 ConceptGraphs。

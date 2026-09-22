@@ -3,12 +3,14 @@
 > 来源归档（ingest）
 
 - **标题：** CTS: Concurrent Teacher-Student Reinforcement Learning for Legged Locomotion
-- **类型：** paper / legged locomotion / teacher-student / PPO / privileged training
-- **出处：** arXiv preprint，2024-05-17
+- **类型：** paper / legged locomotion / teacher-student / PPO / privileged training / sim2real
+- **出处：** IEEE Robotics and Automation Letters (RA-L), 2024；预印本 arXiv:2405.10830（2024-05-17，v2 含期刊信息）
+- **DOI：** <https://doi.org/10.1109/LRA.2024.3457379>
 - **论文链接：** <https://arxiv.org/abs/2405.10830>
 - **PDF：** <https://arxiv.org/pdf/2405.10830>
-- **作者：** Hongxi Wang、Haoxiang Luo、Wei Zhang、Hua Chen
-- **项目页：** <https://clearlab-sustech.github.io/concurrentTS>
+- **作者：** Hongxi Wang *、Haoxiang Luo *、Wei Zhang、Hua Chen（* 同等贡献）
+- **机构：** 南方科技大学系统设计与智能制造学院（SDIM）；浙江大学—UIUC 联合学院（ZJUI）；逐际动力（LimX Dynamics）
+- **项目页：** <https://clearlab-sustech.github.io/concurrentTS>（归档见 [`sources/sites/clearlab-concurrent-ts.md`](../sites/clearlab-concurrent-ts.md)）
 - **相关实现（本 ingest）：** [Robot-Nav/legbot_lab](https://github.com/Robot-Nav/legbot_lab)（`PPO-CTS-MOE` 分支扩展 MoE）
 - **入库日期：** 2026-09-16
 - **一句话说明：** 提出 **并发 Teacher–Student（CTS）** 架构：教师（特权观测）与学生（可部署观测）在 **同一 PPO 训练循环** 中并行优化，而非先训教师再蒸馏；仿真对比显示相对两阶段 teacher–student 平均速度跟踪误差最多降低约 20%，并在四足与点足双足室内外实验验证。
@@ -18,7 +20,8 @@
 | 类型 | 链接 | 说明 |
 |------|------|------|
 | 论文 | [arXiv:2405.10830](https://arxiv.org/abs/2405.10830) | CTS 原文 |
-| 项目页 | [clearlab-sustech.github.io/concurrentTS](https://clearlab-sustech.github.io/concurrentTS) | 视频与补充材料 |
+| 期刊 | [IEEE RA-L](https://doi.org/10.1109/LRA.2024.3457379) | 正式发表 |
+| 项目页 | [clearlab-sustech.github.io/concurrentTS](https://clearlab-sustech.github.io/concurrentTS) | 视频与补充材料；**无官方 GitHub**（2026-09-22 核查） |
 | 代码（Legbot 扩展） | [Robot-Nav/legbot_lab](https://github.com/Robot-Nav/legbot_lab) | Isaac Lab 实现；`PPO` 基线 + `PPO-CTS-MOE` MoE-CTS |
 | 相邻范式 | [teacher-student-dagger-training](../../wiki/methods/teacher-student-dagger-training.md) | 两阶段蒸馏 / DAgger 通用范式 |
 | 同团队四足 RL | [legbot-mpc-wbc](../../wiki/entities/legbot-mpc-wbc.md) | Robot-Nav 另一开源线（MPC–WBC） |
@@ -56,7 +59,7 @@
 
 | 类别 | 状态 | 说明 |
 |------|------|------|
-| CTS 论文官方代码 | **项目页有演示** | clearlab-sustech 项目页；具体 GitHub 以项目页链接为准 |
+| CTS 论文官方代码 | **项目页未列 GitHub** | 2026-09-22 核查 [项目页](../sites/clearlab-concurrent-ts.md)：仅视频/补充材料，无 Code 链接 |
 | Legbot Lab 实现 | **已开源** | [Robot-Nav/legbot_lab](https://github.com/Robot-Nav/legbot_lab)，Apache-2.0；默认 `PPO`，扩展 `PPO-CTS-MOE` / `WF-CTS-MOE` |
 | 权重 / 部署 | **仓库含 ONNX + C++ 部署栈** | `play.py` 导出；`deploy/` + CycloneDDS + 串口网关 |
 

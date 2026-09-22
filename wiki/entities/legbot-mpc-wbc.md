@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, quadruped, mpc, wbc, sim2real, mujoco, pinocchio, open-source, mit]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-22
 code: https://github.com/Robot-Nav/legbot-MPC-WBC
 summary: "legbot-MPC-WBC：四足 Convex MPC（MIT Cheetah 3 路线）+ WBC 分支；Pinocchio+MuJoCo sim2sim/sim2real；MPC 规划接触力、低层执行。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, quadruped, ppo, teacher-student, moe, isaac-lab, mujoco, sim2real, onnx, open-source, legged-locomotion, robot-nav]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-22
 code: https://github.com/Robot-Nav/legbot_lab
 summary: "Legbot Lab：Robot-Nav 开源四足 Isaac Lab PPO 训练 + MuJoCo sim2sim + C++ ONNX/CycloneDDS 真机部署；PPO 基线含非对称 AC 与 10 帧历史，PPO-CTS-MOE 扩展并发 Teacher–Student + 8 专家 MoE。"
 related:
