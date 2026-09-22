@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, privileged-training, dagger, teacher-student, sim2real]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-22
 summary: "飞书 Know-How 模块：Teacher-Student 用仿真特权信息训练教师，再蒸馏或 DAgger 聚合数据训练可部署学生，缓解 BC 分布偏移与 sim2real 观测差距。"
 related:
   - ./dagger.md
@@ -44,7 +44,7 @@ RoboParty 飞书 Know-How 将 **Teacher-Student 模型** 与 **DAgger（Dataset 
 - **人形部署常态**：仿真有完美速度、高度图、接触标志；真机没有。
 - **飞书代码块定位**：与 DreamWaQ、PIE 等「单阶段非对称 AC」并列，代表**两阶段或迭代 IL** 路线。
 - **与 BFM 多技能 TS** 区分：本页是**通用训练范式**；多动作 BFM 见 [teacher-student-multi-skill-bfm](./teacher-student-multi-skill-bfm.md)。
-- **并发 TS 对照：** [CTS（arXiv:2405.10830）](../entities/paper-cts-concurrent-teacher-student-locomotion.md) 将 teacher/student **同一 PPO 循环联合训练**，相对本页两阶段蒸馏在盲 locomotion 上报告更高跟踪精度；工程实现见 [Legbot Lab](../entities/legbot-lab.md)。
+- **并发 TS 对照：** [CTS（IEEE RA-L 2024 / arXiv:2405.10830）](../entities/paper-cts-concurrent-teacher-student-locomotion.md) 将 teacher/student **同一 PPO 循环联合训练**，相对本页两阶段蒸馏在盲 locomotion 上报告更高跟踪精度；官方项目页无 GitHub，工程实现见 [Legbot Lab](../entities/legbot-lab.md)。
 
 ## 核心原理
 

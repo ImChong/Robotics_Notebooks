@@ -1,10 +1,11 @@
 ---
 type: entity
-tags: [paper, legged-locomotion, teacher-student, ppo, privileged-training, quadruped, biped, reinforcement-learning]
+tags: [paper, legged-locomotion, teacher-student, ppo, privileged-training, quadruped, biped, reinforcement-learning, sim2real, ieee-ral, sustech, zju-uiuc, limx]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-22
 arxiv: "2405.10830"
-venue: arXiv 2024
+doi: "10.1109/LRA.2024.3457379"
+venue: "IEEE RA-L 2024"
 related:
   - ./legbot-lab.md
   - ../methods/teacher-student-dagger-training.md
@@ -14,13 +15,14 @@ related:
   - ./legbot-mpc-wbc.md
 sources:
   - ../../sources/papers/legbot_cts_arxiv_2405_10830.md
+  - ../../sources/sites/clearlab-concurrent-ts.md
   - ../../sources/repos/legbot_lab.md
-summary: "CTS（arXiv:2405.10830）：并发 Teacher–Student PPO——特权教师与可部署学生在同一 RL 循环联合优化，相对两阶段蒸馏盲 locomotion 速度跟踪误差最多降约 20%；Legbot Lab 的 PPO-CTS-MOE 为 Isaac Lab + MoE 工程扩展。"
+summary: "CTS（IEEE RA-L 2024 / arXiv:2405.10830）：南科大 SDIM·ZJUI·LimX 提出并发 Teacher–Student PPO，盲 locomotion 速度跟踪误差相对两阶段 TS 最多降约 20%；官方项目页无 GitHub，工程复现见 Legbot Lab PPO-CTS-MOE。"
 ---
 
 # CTS：并发 Teacher–Student 腿足 Locomotion 强化学习
 
-**CTS**（*Concurrent Teacher-Student Reinforcement Learning for Legged Locomotion*；Hongxi Wang、Haoxiang Luo、Wei Zhang、Hua Chen；[arXiv:2405.10830](https://arxiv.org/abs/2405.10830)，2024-05）提出 **并发 Teacher–Student** 架构：特权 **教师** 与仅本体感知的 **学生** 在 **同一 PPO 训练方案** 中并行与环境交互并联合更新，而非先训教师再监督蒸馏。仿真对比显示相对两阶段 teacher–student，盲 locomotion **平均速度跟踪误差最多降低约 20%**；四足与点足双足室内外实验验证鲁棒敏捷运动。工程扩展见 [Legbot Lab](./legbot-lab.md)（`PPO-CTS-MOE`：MoE 学生编码器 + Isaac Lab 部署栈）。
+**CTS**（*Concurrent Teacher-Student Reinforcement Learning for Legged Locomotion*；Hongxi Wang *、Haoxiang Luo *、Wei Zhang、Hua Chen；[IEEE RA-L 2024](https://doi.org/10.1109/LRA.2024.3457379) / [arXiv:2405.10830](https://arxiv.org/abs/2405.10830)）由 **南方科技大学 SDIM**、**浙江大学—UIUC 联合学院（ZJUI）** 与 **逐际动力（LimX Dynamics）** 提出 **并发 Teacher–Student** 架构：特权 **教师** 与仅本体感知的 **学生** 在 **同一 PPO 训练方案** 中并行与环境交互并联合更新，而非先训教师再监督蒸馏。仿真对比显示相对两阶段 teacher–student，盲 locomotion **平均速度跟踪误差最多降低约 20%**；四足与点足双足室内外实验验证鲁棒 agile locomotion 与抗扰。官方 [项目页](https://clearlab-sustech.github.io/concurrentTS) **未列 GitHub**；工程扩展见 [Legbot Lab](./legbot-lab.md)（`PPO-CTS-MOE`：MoE 学生编码器 + Isaac Lab 部署栈）。
 
 ## 一句话定义
 
@@ -34,14 +36,19 @@ summary: "CTS（arXiv:2405.10830）：并发 Teacher–Student PPO——特权�
 | TS | Teacher–Student | 特权教师向可部署学生迁移 |
 | PPO | Proximal Policy Optimization | 修改版 PPO 同时更新双策略 |
 | RL | Reinforcement Learning | 腿足运动控制学习范式 |
+| RA-L | IEEE Robotics and Automation Letters | 正式发表期刊 |
+| SDIM | School of System Design and Intelligent Manufacturing | 南科大系统设计与智能制造学院 |
 | DR | Domain Randomization | 仿真随机化（工程实现常见配套） |
 
 ## 核心信息
 
 | 字段 | 内容 |
 |------|------|
-| venue | arXiv:2405.10830（2024-05-17） |
+| **机构** | 南方科技大学（SUSTech）SDIM；浙江大学—UIUC 联合学院（ZJUI）；逐际动力（LimX Dynamics） |
+| **作者** | Hongxi Wang *、Haoxiang Luo *、Wei Zhang、Hua Chen（* 同等贡献；通讯：Hua Chen） |
+| venue | [IEEE RA-L 2024](https://doi.org/10.1109/LRA.2024.3457379)；预印本 [arXiv:2405.10830](https://arxiv.org/abs/2405.10830) |
 | 项目页 | [clearlab-sustech.github.io/concurrentTS](https://clearlab-sustech.github.io/concurrentTS) |
+| 官方代码 | **项目页未列 GitHub**（2026-09-22 核查） |
 | Isaac Lab 扩展 | [Robot-Nav/legbot_lab](https://github.com/Robot-Nav/legbot_lab) 分支 `PPO-CTS-MOE` |
 | 开源（Legbot 线） | **已开源** 训练+部署；见 [legbot_lab.md](../../sources/repos/legbot_lab.md) |
 
@@ -125,7 +132,8 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **原文 vs Legbot 扩展：** MoE、env 比例、电机模型为 **工程仓库扩展**；引用 CTS 原文时应以 arXiv:2405.10830 为准。
+- **官方代码：** [项目页](https://clearlab-sustech.github.io/concurrentTS) 截至 2026-09-22 **无 GitHub**；复现依赖 [Legbot Lab](./legbot-lab.md) 等第三方实现。
+- **原文 vs Legbot 扩展：** MoE、env 比例、电机模型为 **工程仓库扩展**；引用 CTS 原文时应以 RA-L / arXiv:2405.10830 为准。
 - **与 RoboGauge 勿混：** [RoboGauge](https://robogauge.github.io/)（MoE + sim2sim 评测）为 **另一研究线**（XJTU Go2），非 CTS 官方代码。
 - **平台差异：** 原文含点足双足实验；Legbot Lab 面向自研四足，迁移需重调 MDP 与网关。
 
@@ -155,10 +163,12 @@ sequenceDiagram
 ## 参考来源
 
 - [legbot_cts_arxiv_2405_10830.md](../../sources/papers/legbot_cts_arxiv_2405_10830.md)
+- [clearlab-concurrent-ts.md](../../sources/sites/clearlab-concurrent-ts.md)
 - [legbot_lab.md](../../sources/repos/legbot_lab.md)
 
 ## 推荐继续阅读
 
+- [IEEE RA-L（DOI）](https://doi.org/10.1109/LRA.2024.3457379)
 - [arXiv:2405.10830](https://arxiv.org/abs/2405.10830)
 - [CTS 项目页与视频](https://clearlab-sustech.github.io/concurrentTS)
 - [Robot-Nav/legbot_lab](https://github.com/Robot-Nav/legbot_lab)（分支 `PPO-CTS-MOE`）
