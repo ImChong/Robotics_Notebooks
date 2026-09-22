@@ -3586,6 +3586,7 @@
 - [WA-SpecDec（arXiv:2608.08725）](wiki/entities/paper-wa-specdec.md) — WA-SpecDec**（arXiv:2608.08725）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
 - [WALL-SS（下一尺度自回归长程世界模型）](wiki/entities/paper-wall-ss.md) — WALL-SS**（*WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression*，[PDF](https:/ `📅unknown` `[entity_page]`
+- [WAM 设计要素受控实证研究](wiki/entities/paper-wam-design-empirical-study.md) — What Matters in Designing World Action Models: An Empirical Study**（Chao Tang *、Haoqing Wang * 等； `📅unknown` `[entity_page]`
 - [WAM-Diff2（arXiv:2608.01035）](wiki/entities/paper-wam-diff2.md) — WAM-Diff2**（arXiv:2608.01035）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08 `📅unknown` `[entity_page]`
 - [WAM 实时异步部署（Beyond Stalls · arXiv:2608.01880）](wiki/entities/paper-wam-realtime-async.md) — World Action Models in Real Time**（*An Empirical Study of Smooth Execution via Asynchronous Deploy `📅unknown` `[entity_page]`
 - [WAM-TTT（人视频 · 测试时训练 · WAM Steering）](wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — WAM-TTT**（*Steering World-Action Models by Watching Human Play at Test Time*，[arXiv:2607.06988](ht `📅unknown` `[entity_page]`

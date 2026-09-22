@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-22
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -47,6 +47,7 @@ related:
   - ../entities/paper-me-dex-1-0.md
   - ../entities/paper-lawam.md
   - ../entities/paper-openwam.md
+  - ../entities/paper-wam-design-empirical-study.md
   - ../entities/paper-ge-act-2.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
   - ../entities/paper-egoverse.md
@@ -132,6 +133,7 @@ sources:
   - ../../sources/sites/rekacs2-10k.md
   - ../../sources/sites/unifolm-world-model-action-github-io.md
   - ../../sources/papers/openwam_arxiv_2609_07398.md
+  - ../../sources/papers/wam_design_empirical_arxiv_2609_24048.md
 ---
 
 # World Action Models（WAM，世界–动作模型）
@@ -185,6 +187,8 @@ sources:
 | **接口** | Joint prediction / IDM | 联合出 \((\mathbf{O}, \mathbf{A})\) vs 先 \(p(\mathbf{O}\mid h,\ell)\) 再 \(p(\mathbf{A}\mid h,\mathbf{O})\) |
 
 形成 **Q1–Q4** 四象限（站点可交互筛选）。**Joint training alone 不决定 One Model**；部分 IDM 推理时不显式滚完整未来。选型时可用 RCL 象限对照下文 Cascaded/Joint 实例。
+
+**受控设计实证（三星等，arXiv:2609.24048）**：[WAM 设计要素受控实证](../entities/paper-wam-design-empirical-study.md) 在 **固定 Fast-WAM / LDA-1B 骨干** 下分别扫 **6 种视频–动作因果、8 种潜空间表征、4 种训练目标**，给出三条可操作的分布依赖规律：**(1)** 生成未来主要通过 **时间组织** 而非精确像素内容影响动作，且 **因果视频生成** 比严格 token 时序隔离更关键；**(2)** **inter-frame latent 偏 ID、framewise 偏 OOD**，预编码跨帧关系在 shift 下更脆；**(3)** **ID 上 BC-only 仍强**，**OOD 上 BC+VG 分阶段**（先 80% 稳表征再引入 dynamics）最优。读具体系统论文前可先对照该页三轴 checklist。
 
 **control utility 准则**（RCL 强调）：动作接地、时空一致、闭环改进、实时预算 — 避免只用视觉保真评价 WAM。
 

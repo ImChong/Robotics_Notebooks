@@ -1,3 +1,5 @@
+## [2026-09-22] ingest | sources/papers/wam_design_empirical_arxiv_2609_24048.md — WAM 三轴受控实证（因果/潜空间/目标）；无官方代码
+
 ## [2026-09-22] ingest | sources/repos/asap.md + HumanoidVerse — LECAR ASAP 项目页/代码/框架入库；升格 ASAP 实体与新建 HumanoidVerse 框架页（已开源 MIT）
 
 ## [2026-09-22] ingest | sources/papers/vggt_survey_researchgate_2026.md — VGGT 几何状态综述（BUPT/PKU，142 篇十类 taxonomy + 71 数据集）；升格 wiki/overview/vggt-geometric-state-survey.md；companion 已开源

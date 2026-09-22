@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, efficient-policy, libero, li-auto, casia, ucas, bupt, ucl, edinburgh]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-22
 code: https://github.com/mindvla-team/EFFVLA
 related:
   - ../methods/vla.md
