@@ -7,6 +7,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../methods/reinforcement-learning.md
+  - ../entities/paper-lunadrive.md
 sources:
   - ../../sources/blogs/wechat_zane_zhang_joint_encoder_comparison_2026-09-23.md
 summary: "关节模组编码器选型：光电/磁/电感测不同物理量；电机侧服务 FOC，输出侧看见背隙；分辨率≠精度，双编码器补偿传动链。"
@@ -70,6 +71,7 @@ flowchart LR
 $$ \tau_{\mathrm{est}} \approx K_\theta \left( \frac{\theta_{\mathrm{motor}}}{N} - \theta_{\mathrm{output}} \right) $$
 
 - 差值主要反映 **传动扭转变形** — 可作观测，**不能** 替代标定过的关节力矩传感器（非线性刚度、摩擦、滞回）。
+- **高电频率延迟：** 大极对 flat BLDC 超压驱动时电频率可达 **kHz 级**；除分辨率外须评估 **DAEC + MCU ωe 超前** — 见 [LunaDrive](../entities/paper-lunadrive.md)（3110 Hz 案例）。
 
 ## 工程实践（选型清单）
 

@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-23",
-  "node_count": 4754,
-  "edge_count": 41786,
+  "node_count": 4755,
+  "edge_count": 41796,
   "coverage": {
-    "covered": 4725,
-    "total": 4725,
+    "covered": 4726,
+    "total": 4726,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/embodied-industry-db.md",
+      "detail_id": "entity-embodied-industry-db",
+      "label": "具身产业库（Embodied Industry DB）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
+    },
     {
       "path": "wiki/concepts/strong-pair-data.md",
       "detail_id": "wiki-concepts-strong-pair-data",
@@ -199,40 +210,31 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/embspatial.md",
-      "detail_id": "entity-embspatial",
-      "label": "EmbSpatial-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/strong-pair-data.md",
-    "detail_id": "wiki-concepts-strong-pair-data",
-    "label": "强 Pair Data（Strong Pair Data）",
-    "type": "concept",
+    "path": "wiki/entities/embodied-industry-db.md",
+    "detail_id": "entity-embodied-industry-db",
+    "label": "具身产业库（Embodied Industry DB）",
+    "type": "entity",
     "recency": "2026-09-23",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true,
+    "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
   },
   "top_communities": [
+    {
+      "label": "移动操作",
+      "size": 671
+    },
     {
       "label": "操作",
       "size": 670
     },
     {
-      "label": "移动操作",
-      "size": 669
-    },
-    {
       "label": "世界动作模型",
-      "size": 654
+      "size": 655
     },
     {
       "label": "仿真到现实",
@@ -244,7 +246,7 @@
     },
     {
       "label": "全身控制",
-      "size": 275
+      "size": 277
     }
   ],
   "top_hubs": [
@@ -268,7 +270,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1140,
+      "degree": 1141,
       "community_label": "操作（Manipulation） 社区"
     },
     {
