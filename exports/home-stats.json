@@ -9,6 +9,55 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/joint-encoder-selection.md",
+      "detail_id": "wiki-concepts-joint-encoder-selection",
+      "label": "关节编码器选型（光电 / 磁 / 电感）",
+      "type": "concept",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-mimicagent.md",
+      "detail_id": "entity-paper-mimicagent",
+      "label": "MimicAgent（arXiv:2609.24145）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-rpv-semnav.md",
+      "detail_id": "entity-paper-rpv-semnav",
+      "label": "RPV-SemNav（arXiv:2607.25448）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-scientisttwo.md",
+      "detail_id": "entity-paper-scientisttwo",
+      "label": "ScientistTwo（arXiv:2609.19644）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-strider.md",
+      "detail_id": "entity-paper-strider",
+      "label": "STRIDER（X-Humanoid 演示）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
       "path": "wiki/entities/apexdrive-ai.md",
       "detail_id": "entity-apexdrive-ai",
       "label": "ApexDrive AI（selfdriving-car）",
@@ -159,72 +208,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-molmoact2.md",
-      "detail_id": "entity-paper-molmoact2",
-      "label": "MolmoAct2：面向真机部署的 Action Reasoning Models",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robopoint.md",
-      "detail_id": "entity-paper-robopoint",
-      "label": "RoboPoint：空间 affordance 的 keypoint VLM",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-roborefer.md",
-      "detail_id": "entity-paper-roborefer",
-      "label": "RoboRefer：机器人空间指代与推理",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/pointarena.md",
-      "detail_id": "entity-pointarena",
-      "label": "PointArena",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/refspatial.md",
-      "detail_id": "entity-refspatial",
-      "label": "RefSpatial-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/apexdrive-ai.md",
-    "detail_id": "entity-apexdrive-ai",
-    "label": "ApexDrive AI（selfdriving-car）",
-    "type": "entity",
+    "path": "wiki/concepts/joint-encoder-selection.md",
+    "detail_id": "wiki-concepts-joint-encoder-selection",
+    "label": "关节编码器选型（光电 / 磁 / 电感）",
+    "type": "concept",
     "recency": "2026-09-23",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
