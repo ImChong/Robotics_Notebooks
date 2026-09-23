@@ -76,6 +76,7 @@ related:
   - ../entities/paper-gift-intermediate-feature-training.md
   - ../entities/paper-adarobovlg.md
   - ../entities/paper-minerva-libero.md
+  - ../entities/paper-thaw-vla.md
   - ../entities/paper-xr2-bimanual-household.md
   - ../entities/paper-artis-gripper.md
   - ../entities/paper-gvla-gripper-aware-vla.md
@@ -342,6 +343,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 动作足够用的中间特征（arXiv:2609.04193）
 - [AdaRoboVLG](../entities/paper-adarobovlg.md) — 物理抓取与语义先验解耦（arXiv:2609.04096）
 - [MINERVA](../entities/paper-minerva-libero.md) — LIBERO 容量下限 0.54M / ~95%，CPU 5.1 ms/chunk（arXiv:2609.03715）
+- [THAW-VLA](../entities/paper-thaw-vla.md) — 0.8B QwenGR00T + WAM 特征蒸馏；LIBERO 97.9% / RoboCasa-GR1 50.5%，部署 32 ms（arXiv:2609.24682；已开源）
 - [TFGCA chunked VLA](../entities/paper-tfgca-chunked-vla.md) — 时频几何交叉注意力；LIBERO-Plus +6.3（arXiv:2609.09925；未见代码）
 - [FreqFM VLA](../entities/paper-freqfm-vla-flow-matching.md) — DCT 频率条件 flow matching；LIBERO-Plus +9.3（arXiv:2609.10405；未见代码）
 - [RoboDrop VLA 后训练筛选](../entities/paper-robodrop-vla-post-training.md) — 梯度兼容性策展；真机 SR 35%→67.5%（arXiv:2609.10021；未见代码）
