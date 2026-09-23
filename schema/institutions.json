@@ -140,6 +140,13 @@
         "university-of-maryland"
       ]
     },
+    "uts": {
+      "label": "悉尼科技大学（University of Technology Sydney）",
+      "aliases": [
+        "uts",
+        "uts-ri"
+      ]
+    },
     "berkeley": {
       "label": "加州大学伯克利分校（UC Berkeley）",
       "aliases": [

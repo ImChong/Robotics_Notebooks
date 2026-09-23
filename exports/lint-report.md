@@ -2,7 +2,7 @@
 
 ## [2026-09-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **61** 条信息型预警）：
+共发现 **0** 个问题（另含 **69** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,9 +52,10 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（3 个）
 - DiT（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - OOD（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- Training-free（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -97,11 +98,12 @@
 - wiki/methods/multi-expert-distillation.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/ssrm-steady-state-response-method.md（被 5 个页面引用，无 queries/comparisons 落地）
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（2 个）
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（3 个）
 - wiki/entities/paper-hrl-stack-25-asap.md
 - wiki/entities/paper-ross-dagger.md
+- wiki/entities/paper-strider.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（29 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（33 个）
 - wiki/entities/paper-attention-is-all-you-need.md（缺 对比）
 - wiki/entities/paper-bfm-30-diayn.md（缺 对比）
 - wiki/entities/paper-cambrian-1.md（缺 评测 / 对比）
@@ -115,6 +117,7 @@
 - wiki/entities/paper-kino.md（缺 方法）
 - wiki/entities/paper-locoformer.md（缺 评测 / 对比）
 - wiki/entities/paper-me-dex-1-0.md（缺 对比）
+- wiki/entities/paper-mimicagent.md（缺 对比）
 - wiki/entities/paper-molmoact2.md（缺 对比）
 - wiki/entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md（缺 对比）
 - wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md（缺 评测）
@@ -124,10 +127,13 @@
 - wiki/entities/paper-robopoint.md（缺 评测 / 对比）
 - wiki/entities/paper-roborefer.md（缺 评测 / 对比）
 - wiki/entities/paper-ross-dagger.md（缺 评测 / 对比）
+- wiki/entities/paper-rpv-semnav.md（缺 对比）
 - wiki/entities/paper-rxr.md（缺 评测 / 对比）
 - wiki/entities/paper-sa-2606-00829-the-right-inference-strategy-is-all-you-need-nea.md（缺 对比）
 - wiki/entities/paper-scaling-laws-neural-language-models.md（缺 方法）
+- wiki/entities/paper-scientisttwo.md（缺 对比）
 - wiki/entities/paper-srdf-vln-flywheel.md（缺 评测 / 对比）
+- wiki/entities/paper-strider.md（缺 对比）
 - wiki/entities/paper-tolebi.md（缺 评测 / 对比）
 - wiki/entities/paper-trackvla.md（缺 评测 / 对比）
 - wiki/entities/paper-vision-locomotion-egocentric.md（缺 对比）
@@ -173,11 +179,12 @@
 - wiki/entities/robospatial.md
 - wiki/entities/where2place.md
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/concepts/joint-encoder-selection.md
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（3 个）
 - wiki/entities/paper-relateanything.md
+- wiki/entities/paper-rpv-semnav.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4716/4716 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4721/4721 (100%) wiki/entity 页有 ingest 来源

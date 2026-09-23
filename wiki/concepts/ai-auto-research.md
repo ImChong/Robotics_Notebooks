@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-23
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ./retrieval-augmented-generation.md
@@ -21,6 +21,7 @@ related:
   - ../entities/sol-pi.md
   - ../entities/paper-metarsi-v1.md
   - ../entities/paper-rsi-survey-2607-07663.md
+  - ../entities/paper-scientisttwo.md
   - ../entities/rsi-harness.md
   - ../entities/agent-lightning.md
 sources:
@@ -32,6 +33,8 @@ sources:
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/repos/sciencediscovery.md
   - ../../sources/sites/openjiuwen-com.md
+  - ../../sources/papers/scientisttwo_arxiv_2609_19644.md
+  - ../../sources/sites/scientist-two-github-io.md
 ---
 
 # AI Auto-Research（学术研究自动化）
@@ -59,6 +62,7 @@ AI 可以加速「研究形态」的产出，但 **科学实质**（证据、判
 - **Agent 基础设施对照**：[Hermes Agent](../entities/hermes-agent.md)（常驻运行时）、[Agent Reach](../entities/agent-reach.md)（外网读搜）、[Superpowers](../entities/superpowers-obra.md)（交付流程技能）分别覆盖执行、检索与工程纪律 — 宜按生命周期阶段 **组合** 而非指望单 agent 端到端。[Agent Lightning](../entities/agent-lightning.md)（微软）则把 **真实 harness 轨迹** 经 Gateway 代理接到 **verl** RL 环，适合 S3 上「coding / 工具 agent 策略后训练」而非替代 wiki 知识编译。[ScienceDiscovery](../entities/sciencediscovery.md)（[openJiuwen](../entities/openjiuwen.md)）把 S2 文献 MCP 与 S3 沙箱实验收进同一本地工作台，验证靠权限卡与 CAS 而非单一 metric。
 - **S3 最小实例**：[karpathy/autoresearch](../entities/karpathy-autoresearch.md) 把代理限制为只改 `train.py`、固定 5 分钟训练与 **val_bpb** 去留环，人类迭代 `program.md` — 直接演示 **Explore→Execute→Verify** 在 LLM 训练 ablation 上的落地。
 - **S3 harness 搜索实例**：[SoL-Pi](../entities/sol-pi.md) 把同一 propose→implement→validate 环扩到 **Pi coding harness**（152→4 机制、535 环境、capability floor），开源四条 opt-in 效率扩展。
+- **E2E discovery + audit 实例**：[ScientistTwo](../entities/paper-scientisttwo.md)（Google Cloud AI）以 **107 篇人类 SOTA 论文** 为挑战，闭环 **ablation + rebuttal 补实验 + CoE integrity audit**；robotics 仅为评测域之一，但 S6–S7 闭环对「AI 写稿能否信」是硬标杆。
 - **实验室内部对照：** Anthropic Institute 用公开时程与自报工程数据讨论走向 [递归自改进](./recursive-self-improvement.md) 的距离：实现层已高度代理化，**选题与品味仍是人侧瓶颈**；完全 RSI 尚未发生。数字不可外部复现，只当方向信号。
 
 ## 核心结构：四阶段八阶段

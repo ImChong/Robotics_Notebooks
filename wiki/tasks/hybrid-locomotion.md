@@ -3,7 +3,7 @@ type: task
 tags: [locomotion, hybrid, wheel-legged, transformable, whole-body]
 status: in-progress
 summary: "Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。"
-updated: 2026-09-15
+updated: 2026-09-23
 sources:
   - ../../sources/papers/x2n_transformable.md
   - ../../sources/papers/mujica_arxiv_2605_13058.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/paper-bioinspired-multimodal-robotics.md
+  - ../entities/paper-mimicagent.md
 ---
 
 # Hybrid Locomotion (混合运动)
@@ -53,6 +54,10 @@ related:
 
 - [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **轮足四足** 上实现 **全向滚动、高台攀爬、摔倒恢复** 三类异构技能的 **单策略联合学习**，并用 **技能指示变量 + 高层选择器** 做自主模态切换（纯本体，无外部感知）。
 - 强调 **轮–腿协同** 与 **DC 电机速度–扭矩包络** 约束，真机零样本完成 **1 m 高台** 与楼梯/坡道/高台连续任务链。
+
+### MimicAgent（Go2 / Go2-W 文本→轨迹→RL）
+
+- [MimicAgent](../entities/paper-mimicagent.md)（CMU，arXiv:2609.24145）用 LLM 生成 **粗参考轨迹** 再 example-guided RL，覆盖 **Go2-W** 侧 flip、双足 skating 等 wheeled-quadruped 技能；与 MUJICA 的「单策略多技能指示」互补，强调 **缺 mocap 时用 agent 合成参考**。
 
 ### AWARE（Deep Robotics M20 高动态反射避障）
 

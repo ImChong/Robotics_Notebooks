@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-23
 related:
   - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md
@@ -128,6 +128,7 @@ flowchart TD
     - **PPO (Proximal Policy Optimization)**：目前工业界和学术界最稳健、最常用的策略梯度算法。
     - **[GRPO](./grpo.md)（Group Relative Policy Optimization）**：组内相对 advantage，省去独立 critic；[LightNav-0](../entities/paper-lightnav-0.md) 导航后训练第三阶段与 LLM RLVR 变体常用。
     - **[deepmimic](deepmimic.md)**：经典的显式轨迹跟踪模仿学习。
+    - **[MimicAgent](../entities/paper-mimicagent.md)**：LLM **文本→参考轨迹** 再 example-guided RL，补四足缺 mocap 场景（arXiv:2609.24145）。
     - **[amp-reward](amp-reward.md)**：基于判别器的对抗性动作先验学习。
     - **[ase](ase.md) / [smp](smp.md)**：更先进的层次化技能嵌入与生成式动作先验。
     - **BRRL / BPO (2026)**：有界重要性比强化学习，为 PPO 提供理论支撑并提升训练稳定性。
