@@ -1,3 +1,9 @@
+## [2026-09-23] ingest | sources/blogs/psibot_scaling_pair_data_embodied_intelligence_zh.md — Psi-R2.5 强 pair data 技术博客；Psi-W0 转换器 + ICL/HIL；商业闭源
+
+- **意图：** 用户指定 PsiBot 博客 scaling-pair-data-for-embodied-intelligence-zh
+- **开源结论：** **未开源**（R2.5 / pair 转换器无 GitHub）；对照 PKU–PsiBot EgoSteer 已开源
+- **关键页：** [`psibot-r25`](wiki/entities/psibot-r25.md)、[`strong-pair-data`](wiki/concepts/strong-pair-data.md)
+
 ## [2026-09-23] ingest | sources/papers/thaw_vla_arxiv_2609_24682.md — THAW-VLA 世界模型表征蒸馏到 0.8B QwenGR00T；Cosmos3 离线 cache + 零部署税；GitHub 已开源、HF 权重 private
 
 - **意图：** 用户指定 arXiv:2609.24682 + 项目页 thaw-vla.trung-dt.com

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, egocentric-video, dexterous-manipulation, world-model, flow-matching, dagger, teleoperation, human-robot-transfer, qwen, pku, psibot, upenn]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-23
 arxiv: "2607.09701"
 code: https://github.com/egosteer/egosteer
 related:
@@ -180,6 +180,8 @@ sequenceDiagram
 
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 人视频预训练与 flow-VLA 路线索引。
 - [EgoScale](../methods/egoscale.md) — 同族人视频规模预训练对照。
+- [Psi-R2.5](./psibot-r25.md) — 同机构商业线：强 pair + WM 转换 vs EgoSteer 开源全栈（未开源）。
+- [Strong Pair Data](../concepts/strong-pair-data.md) — 弱/强 pair 定义与质量门控。
 - [EgoWAM](./paper-egowam-egocentric-human-wam-co-training.md) — WAM 世界目标与人–机共训对照。
 - [DAgger](../methods/dagger.md) — HITL 纠偏理论与工程闭环。
 - [Teleoperation](../tasks/teleoperation.md) — 手套 / Vive 遥操作采集背景。

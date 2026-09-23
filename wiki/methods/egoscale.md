@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -17,6 +17,8 @@ related:
   - ../entities/paper-egoverse.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-egosteer.md
+  - ../entities/psibot-r25.md
+  - ../concepts/strong-pair-data.md
   - ../entities/egoworld-100w.md
   - ../entities/rekadaily-10k-dataset.md
   - ../entities/paper-ace-data-0.md
@@ -101,6 +103,7 @@ flowchart LR
 - **局限：标签来自估计栈。** Stage I 依赖 **SLAM / 手部估计**，噪声存在；论文论点是大规模 **统计上** 仍改善表示，但 **域外失败模式** 仍需用机端评测与数据清洗约束。
 - **局限：公开复现材料。** 截至项目页文案，**GitHub 仍为 Coming Soon**，工程复现应以后续官方发布为准。
 - **对照：[EgoSteer](../entities/paper-egosteer.md)（PKU/PsiBot，arXiv:2607.09701）。** 同属 egocentric 腕–指预训练 VLA，但用 **EgoSmith 策展吞吐 + 统一 HITL DAgger 栈 + 训练-only DINOv3 世界专家** 换 mid-training 叙事，且 **代码/权重已开源**（全量处理后数据待发）。
+- **对照：[Psi-R2.5](../entities/psibot-r25.md)（PsiBot 商业栈，2026-09 博客）。** 不走 mid-training 叙事，而用 **[强 pair data](../concepts/strong-pair-data.md)** + **Psi-W0 转换器** 把人手 dynamic 对齐到机端；**10 万小时质量复盘** + ICL，**未开源**。
 
 ## 与其他页面的关系
 
@@ -111,6 +114,7 @@ flowchart LR
 - 与 [EgoVerse](../entities/paper-egoverse.md)：同属 Direct 档 egocentric 人数据；EgoVerse 强调 **联盟协议采集 + 人–机共训缩放判据**（域对齐锚定、场景多样性），EgoScale 强调 **VLA 预训练小时 ↔ 验证损失 / 真机完成度**。
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：可把本文的 **log-linear 验证损失–数据规模** 与 **下游完成度** 的联动，当作 **人侧监督缩放** 的一个具体案例研究。
 - 与 [Dyna-2](../entities/dyna-2.md)：同属「人视频小时 → 机端增益」叙事；EgoScale 走 **VLA + 显式人–机对齐 mid-training（~20k h）**，Dyna-2 走 **WAM + 零对齐纯人预训练梯子（至 1M h）** 并主张跨具身零样本缩放——协议不同，宜对照读。
+- 与 [Strong Pair Data](../concepts/strong-pair-data.md) / [Psi-R2.5](../entities/psibot-r25.md)：EgoScale 用 **视点/play 对齐 mid-training**；PsiBot 用 **帧级强 pair + WM 转换** — 对齐粒度与开源边界不同。
 - 与 [Motion Retargeting](../concepts/motion-retargeting.md)：重定向是 **人手关键点 → 机器人手关节** 的硬接口；误差形态会进入 **预训练标签噪声** 讨论。
 - 与 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)：同人灵巧线后续工作；共享 **人 egocentric 预训练 + 机端 mid-training** 骨架，T-Rex 把 mid-training 换成 **触觉同步 play** 并引入 **高频触觉专家**；论文以 EgoScale 为 **最强无触觉基线（35% vs 65%）**。
 - 与 [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)：同属「egocentric → 可训手动作」；Macrodata 停在 **度量 21 关节轨迹 + Action MPJPE 工程标尺**（博客亦点名 EgoScale 的机器人手重定向表示），EgoScale 继续走到 **流式 VLA 预训练缩放与真机完成度**。

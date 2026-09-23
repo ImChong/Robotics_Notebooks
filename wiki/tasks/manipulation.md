@@ -77,6 +77,8 @@ related:
   - ../entities/paper-adarobovlg.md
   - ../entities/paper-minerva-libero.md
   - ../entities/paper-thaw-vla.md
+  - ../entities/psibot-r25.md
+  - ../concepts/strong-pair-data.md
   - ../entities/paper-xr2-bimanual-household.md
   - ../entities/paper-artis-gripper.md
   - ../entities/paper-gvla-gripper-aware-vla.md
@@ -221,6 +223,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - **EgoScale**：在 **海量 egocentric 人视频** 上对 **流式 VLA** 做 **腕 + 重定向灵巧手** 显式预训练，并以 **对齐人–机 mid-training** 承接 embodiment gap，面向 **高 DoF 长程灵巧** 任务；入口见 [EgoScale](../methods/egoscale.md)
 - **EgoWorld-100W**：StellarNex **百万级** 头戴第一人称操作语料，按 **场景×物体×动作×手性** 结构化；**申请制**合作开放（非公开一键下载）；入口见 [EgoWorld-100W](../entities/egoworld-100w.md)（与 ICLR [EgoWorld exo→ego](../entities/paper-egoworld.md) **同名异物**）
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；代码与权重已开源；入口见 [EgoSteer](../entities/paper-egosteer.md)（arXiv:2607.09701）
+- **Psi-R2.5**（PsiBot 博客，2026-09）：**[强 pair data](../concepts/strong-pair-data.md)** + **Psi-W0 转换器** 对齐人–机 dynamic；QwenVL3.5-4B + Wan2.2-IT2V-5B 双层栈；ICL 与 HIL 后训练 **~99%** 3C 装配（自报）；**未开源**；入口见 [Psi-R2.5](../entities/psibot-r25.md)
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **[EgoVerse](../entities/paper-egoverse.md) 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - **EgoVerse**：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身共训研究——共训可涨分，但缩放需 **域对齐锚定**，场景多样性主导有限预算泛化；入口见 [EgoVerse](../entities/paper-egoverse.md)
 - **RoboEdit**（[实体页](../entities/paper-roboedit.md)，arXiv:2608.18948）：**人类操作 RGB 视频 → robot video + 3D hand states**（RoboEdit-14M）；下游 Franka 真机 YCB；无官方代码 URL
@@ -383,6 +386,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [EgoWorld-100W](../entities/egoworld-100w.md) — 百万级自中心操作数据（申请制；四维覆盖）
 - [EgoWorld（exo→ego）](../entities/paper-egoworld.md) — 单张第三人称→第一人称视图翻译（ICLR 2026）
 - [EgoSteer](../entities/paper-egosteer.md) — EgoSmith + HITL DAgger + WM 增强双灵巧手 VLA 全栈（arXiv:2607.09701）
+- [Psi-R2.5](../entities/psibot-r25.md) — 强 pair + WM 转换；双层 Qwen+Wan 栈（博客；未开源）
+- [Strong Pair Data](../concepts/strong-pair-data.md) — 人–机帧级对齐数据定义
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 人示教活数据集与跨实验室共训判据
 - [RoboEdit](../entities/paper-roboedit.md) — 人类视频编辑为 RoboEdit-14M robot experience（UCLA，arXiv:2608.18948）
 - [HiFi-UMI / HiFi-UMI-2K](../entities/paper-hifi-umi.md) — 2000 h 高保真无机器人双臂数据；zero-robot 后训练（arXiv:2607.25895）

@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-23
 related:
   - ../../roadmap/depth-icl.md
   - ./foundation-policy.md
@@ -23,6 +23,8 @@ related:
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
   - ../entities/skild-s1.md
   - ../entities/skild-ai.md
+  - ../entities/psibot-r25.md
+  - ../concepts/strong-pair-data.md
   - ../entities/paper-host-one-shot-human-video.md
   - ../entities/paper-imitator-game.md
   - ../overview/hub-cross-embodiment.md
@@ -83,7 +85,7 @@ summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、�
 
 | 学习对象 | Context 典型来源 | 代表工作 |
 |----------|------------------|----------|
-| **Task / Behavior** | 机器人 demo、人视频、XR 遥操作 | KAT、[GEN-1.5](../entities/generalist-gen15-one-shot.md)、[S1](../entities/skild-s1.md) |
+| **Task / Behavior** | 机器人 demo、人视频、XR 遥操作 | KAT、[GEN-1.5](../entities/generalist-gen15-one-shot.md)、[S1](../entities/skild-s1.md)、[Psi-R2.5](../entities/psibot-r25.md)（人视频经 **强 pair** 转 robot context） |
 | **Embodiment / World** | 任务无关主动探索、系统辨识片段 | ICWM、[LocoFormer](../entities/paper-locoformer.md) |
 | **History / Memory** | 自身 rollout、失败、跨 episode 历史 | LocoFormer、[RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) |
 
