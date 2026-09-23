@@ -1,3 +1,9 @@
+
+## [2026-09-23] ingest | PixVerse R2 + 具身智能小站 12 篇
+
+- **意图：** ingest PixVerse R2（项目页/技术报告/World Demo/GitHub 核查）+ 公众号 12 篇论文独立节点。
+- **开源结论：** PixVerse R2 模型**未开源**（GitHub 仅 CLI/MCP）；12 篇中 IndustrialVLA-Bench / ME-U0 / TriWorldBench / Silent Sabotage / ϕ-RIE / Dual Cobots **已开源**，ε4P / Agentic Coding **未开源**，其余**待发布**。
+- **关键页：** [paper-pixverse-r2](wiki/entities/paper-pixverse-r2.md)、[collab-wm-12-papers-technology-map](wiki/overview/collab-wm-12-papers-technology-map.md)
 ## [2026-09-23] ingest | 九篇触觉 batch（AnySkin/Sparsh/VTLA×4/TouchWorld/ViTacWorld/VBTS survey）— 升格实体 + 技术地图；自动合并 PR
 
 ## [2026-09-23] ingest | sources/repos/embodied-industry-db.md — 具身产业库 V0.1 结构化产业时间线；已开源；交叉 HMI；自动合并 PR

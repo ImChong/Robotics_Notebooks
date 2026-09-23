@@ -428,6 +428,9 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 状态动力学「世界模型」（RWM）
 
+
+[PixVerse R2](../entities/paper-pixverse-r2.md)（PixVerse Research，2026）把 **Omni Causal AR** 持续预训练与同骨干 **Real-Time Acceleration** 合成一条实时 **音视频** 交互世界路径：运行中接收文本、参考、音频与 WASD 等控制，以 Sink/Rolling/Object 三通道记忆与 **Error Bank** 抑制长程漂移，并通过 block-sparse attention 与金字塔 ultra-few-step 蒸馏压延迟。在线体验 [world.pixverse.video](https://world.pixverse.video/)；**模型权重未开源**，与机器人 action-conditioned WM 评测口径不同，宜与 [Matrix-Game 3.0](../entities/paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact.md) 及 [TriWorldBench](../entities/paper-triworldbench.md) 对照阅读。
+
 足式控制与 MBRL 文献里也会出现 *Robotic World Model* 指 **学习的前向动力学 + 想象 rollout**（例如 ETH RSL 的 **RWM / RWM-U**：集成 RNN 预测 **状态与特权量**，而非扩散视频）。这与本页以 **像素 / Token 视频** 为中心的生成式世界模型 **共享「预测未来」动机**，但 **观测空间、训练目标与评测口径** 不同；工程入口与双仓分工见 [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)。
 
 ## 关联页面
