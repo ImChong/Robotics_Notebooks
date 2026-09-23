@@ -10,7 +10,8 @@
 - **主链接：** <https://underactuated.mit.edu/>
 - **代码：** 未在清单中标注
 - **清单摘要：** Open textbook/course on dynamics, planning, and control for underactuated systems.
-- **沉淀到 wiki：** [`wiki/entities/painode-074-mitunderactuatedrobotics.md`](../../wiki/entities/painode-074-mitunderactuatedrobotics.md)
+- **沉淀到 wiki：** [`wiki/entities/painode-074-mitunderactuatedrobotics.md`](../../wiki/entities/painode-074-mitunderactuatedrobotics.md)（2026-09-23 升格章节策展）
+- **课程归档：** [`sources/courses/mit_underactuated_robotics.md`](../courses/mit_underactuated_robotics.md)
 
 ---
 

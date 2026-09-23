@@ -1,4 +1,10 @@
 
+## [2026-09-23] ingest | sources/courses/mit_underactuated_robotics.md — MIT Underactuated Robotics 全课程章节策展；HTML 主版本 + Drake；升格 painode-074
+
+- **意图：** ingest https://underactuated.mit.edu/index.html
+- **开放结论：** 教材 HTML/录像/Drake **已开放**；作业未公开
+- **关键页：** [painode-074-mitunderactuatedrobotics](wiki/entities/painode-074-mitunderactuatedrobotics.md)
+
 ## [2026-09-23] ingest | PixVerse R2 + 具身智能小站 12 篇
 
 - **意图：** ingest PixVerse R2（项目页/技术报告/World Demo/GitHub 核查）+ 公众号 12 篇论文独立节点。

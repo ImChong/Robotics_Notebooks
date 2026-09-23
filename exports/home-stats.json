@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-23",
   "node_count": 4773,
-  "edge_count": 41946,
+  "edge_count": 41968,
   "coverage": {
     "covered": 4744,
     "total": 4744,
@@ -229,28 +229,28 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 673
+      "label": "世界动作模型",
+      "size": 735
     },
     {
       "label": "移动操作",
-      "size": 670
+      "size": 684
     },
     {
-      "label": "世界动作模型",
-      "size": 581
+      "label": "操作",
+      "size": 672
     },
     {
       "label": "仿真到现实",
-      "size": 320
+      "size": 329
     },
     {
       "label": "国内开源全景 424 项阅读导航",
-      "size": 295
+      "size": 298
     },
     {
-      "label": "全身控制",
-      "size": 282
+      "label": "视觉-语言-动作",
+      "size": 248
     }
   ],
   "top_hubs": [
@@ -258,7 +258,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1771,
+      "degree": 1772,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -274,7 +274,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1141,
+      "degree": 1142,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -289,7 +289,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1004,
+      "degree": 1003,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -313,14 +313,14 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 646,
+      "degree": 647,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 634,
+      "degree": 635,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

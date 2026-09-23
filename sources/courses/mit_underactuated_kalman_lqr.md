@@ -8,8 +8,9 @@
 - **入库日期：** 2026-06-01
 - **更新日期：** 2026-08-09（澄清：勿与 CMU Optimal Control 2025 playlist 混淆）
 - **链接：**
-  - [Underactuated Robotics 课程站](https://underactuated.csail.mit.edu/)
-  - [Ch.16 Estimation](https://underactuated.csail.mit.edu/estimation.html)
+  - [Underactuated Robotics 课程站（canonical）](https://underactuated.mit.edu/index.html)
+  - [Ch.19 State Estimation](https://underactuated.mit.edu/state_estimation.html)（2024 目录；旧链 `csail.mit.edu/estimation.html` 仍常见）
+  - **完整课程归档：** [`mit_underactuated_robotics.md`](./mit_underactuated_robotics.md)
 
 > **澄清（2026-08-09）：** YouTube 播放列表 [Optimal Control 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI) 属于 **CMU 16-745 / Zachary Manchester**，不是 Tedrake Underactuated。完整讲次归档见 [`cmu_optimal_control_16_745_2025_youtube.md`](./cmu_optimal_control_16_745_2025_youtube.md) 与 [`wiki/entities/cmu-optimal-control-curriculum.md`](../../wiki/entities/cmu-optimal-control-curriculum.md)。本文件只保留 Underactuated 课程自身入口。
 
@@ -36,4 +37,5 @@
 ## 当前提炼状态
 
 - [x] 与 CMU Optimal Control 2025 playlist 解耦并互链
-- [ ] 后续可补：Underactuated 各章 PDF/HTML 版本号与年度差异注记
+- [x] 全课程 TOC 与章节映射 — 见 [`mit_underactuated_robotics.md`](./mit_underactuated_robotics.md)
+- [ ] 后续可补：YouTube playlist 年度差异注记
