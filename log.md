@@ -1,4 +1,10 @@
 
+## [2026-09-23] ingest | sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md — 机器人研发工程师前沿算法六路线盘点；36 项独立节点
+
+- **触发：** 用户指定 https://mp.weixin.qq.com/s/JtoOU_ncZz5SEikmsZB3Xg；要求每项目独立非重复详情节点；自动合并 PR
+- **开源结论：** 新建 8 项中 VLA-Adapter / EmbodiedBrain / MemoryWAM / Dexora / Fast-WAM / Embodied-AI-Daily **已开源**；TempoWAM / OpenEAI **待发布**；复用项开源状态见各实体
+- **关键页：** [embodied-frontier-algorithms-technology-map](wiki/overview/embodied-frontier-algorithms-technology-map.md)
+
 ## [2026-09-23] ingest | sources/datasets/gen-human-ego-genrobot.md — 接入 GenRobot Gen-HumanEgo（1,848h DAS-Ego MCAP）；数据 HF 已开源 CC BY-SA 4.0，工具 das-datakit 已开源
 
 ## [2026-09-23] ingest | sources/sites/x2-aimdk-agibot.md + sources/repos/aimrt.md — AimDK X2 文档站与 AimRT 运行时深度入库

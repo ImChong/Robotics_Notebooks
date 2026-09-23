@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-23",
-  "node_count": 4775,
-  "edge_count": 41992,
+  "node_count": 4784,
+  "edge_count": 42069,
   "coverage": {
-    "covered": 4746,
-    "total": 4746,
+    "covered": 4755,
+    "total": 4755,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -229,15 +229,15 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 683
+      "size": 679
     },
     {
       "label": "操作",
-      "size": 673
+      "size": 670
     },
     {
       "label": "世界动作模型",
-      "size": 609
+      "size": 611
     },
     {
       "label": "仿真到现实",
@@ -248,8 +248,8 @@
       "size": 298
     },
     {
-      "label": "全身控制",
-      "size": 285
+      "label": "视觉-语言-动作",
+      "size": 248
     }
   ],
   "top_hubs": [
@@ -257,7 +257,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1772,
+      "degree": 1775,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -265,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1359,
+      "degree": 1365,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -273,7 +273,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1142,
+      "degree": 1143,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -296,7 +296,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 976,
+      "degree": 977,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -375,7 +375,7 @@
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
-      "degree": 58,
+      "degree": 59,
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },

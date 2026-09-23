@@ -169,6 +169,7 @@
 - [Electronic-Skin-ML](wiki/entities/cn-os-electronic-skin-ml.md) — Electronic-Skin-ML** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：ML 电子皮肤 SDK `📅unknown` `[entity_page]`
 - [Elite_Robots_CS_ROS2_Driver](wiki/entities/cn-os-elite-robots-cs-ros2-driver.md) — Elite_Robots_CS_ROS2_Driver** 是 艾利特机器人 公开的 **SDK/驱动** 开源项目：为艾利特 `📅unknown` `[entity_page]`
 - [Elite_Robots_CS_SDK](wiki/entities/cn-os-elite-robots-cs-sdk.md) — Elite_Robots_CS_SDK** 是 艾利特机器人 公开的 **SDK/驱动** 开源项目：提供艾利特CS系列机器人 `📅unknown` `[entity_page]`
+- [Embodied-AI-Daily](wiki/entities/cn-os-embodied-ai-daily.md) — Embodied-AI-Daily**（GitHub 仓库）是具身智能社区 **论文/issue  `📅unknown` `[entity_page]`
 - [embodied-skill-kit](wiki/entities/cn-os-embodied-skill-kit.md) — embodied-skill-kit** 是 北京人形机器人创新中心 公开的 **具身Agent/规划** 开源项目：具 `📅unknown` `[entity_page]`
 - [Embodylink](wiki/entities/cn-os-embodylink.md) — Embodylink** 是 越疆科技 公开的 **数据集/Benchmark** 开源项目：面向越疆机器人提供数据采集、 `📅unknown` `[entity_page]`
 - [EMGFilters](wiki/entities/cn-os-emgfilters.md) — EMGFilters** 是 傲意科技 公开的 **工程与工具** 开源项目：肌电信号滤波算法库 `📅unknown` `[entity_page]`
@@ -1360,6 +1361,7 @@
 - [DeWorldSG（深度感知 3D 语义场景图 · 世界模型先验）](wiki/entities/paper-deworldsg.md) — DeWorldSG**（*Depth-Aware 3D Semantic Scene Graph Generation via World-Model Priors*，[arXiv:2607.00 `📅unknown` `[entity_page]`
 - [DexHoldem：德州扑克桌面上的灵巧具身基准](wiki/entities/paper-dexholdem.md) — DexHoldem**（*Playing Texas Hold'em with Dexterous Embodied System*，[arXiv:2605.18727](https://arxi `📅unknown` `[entity_page]`
 - [DexMachina（arXiv:2505.24853）](wiki/entities/paper-dexmachina.md) — DexMachina**（Mandi Zhao, Yifan Hou, Dieter Fox, Yashraj Narang, Ajay Mandlekar, Shuran Song；Stanfo `📅unknown` `[entity_page]`
+- [Dexora（arXiv:2605.18722）](wiki/entities/paper-dexora.md) — Dexora**（*Dexora: Open-source VLA for High-DoF Bimanual Dexterity*，[arXiv:2605.18722](https://arxi `📅unknown` `[entity_page]`
 - [DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）](wiki/entities/paper-dexverse.md) — DexVerse**（arXiv:2607.08751，[项目页](https://ycyao216.github.io/D `📅unknown` `[entity_page]`
 - [DF-ExpEnse（arXiv:2606.19656）](wiki/entities/paper-df-expense.md) — DF-ExpEnse**（Calvin Luo, Chen Sun, Shuran Song；Stanford University; Brown University；[arXiv:2606.1 `📅unknown` `[entity_page]`
 - [DIAL](wiki/entities/paper-dial-latent-world-vla.md) — DIAL**（*Decoupling Intent and Action via Latent World Modeling for End-to-End VLA*，Chen et al.，[ar `📅unknown` `[entity_page]`
@@ -1435,6 +1437,7 @@
 - [ElastiQP（arXiv:2609.19080）](wiki/entities/paper-elastiqp.md) — ElastiQP**（*ElastiQP: An Always-Feasible QP Solver for Constrained Robot Control*，[arXiv:2609.1908 `📅unknown` `[entity_page]`
 - [基础模型时代具身操作综述（Planning & Learning）](wiki/entities/paper-embodied-manipulation-foundation-models-survey.md) — Embodied Robot Manipulation in the Era of Foundation Models: Planning and Learning Perspectives**（ `📅unknown` `[entity_page]`
 - [Embodied World Model Survey（HMI P072）](wiki/entities/paper-embodied-world-model-survey.md) — Embodied World Model Survey**（*A Comprehensive Survey on World Models for Embodied AI*，2025，[arXiv `📅unknown` `[entity_page]`
+- [EmbodiedBrain（arXiv:2510.20578）](wiki/entities/paper-embodiedbrain.md) — EmbodiedBrain**（*EmbodiedBrain: Expanding Performance Boundaries of Task Planning for Embodied Int `📅unknown` `[entity_page]`
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
 - [EmbodiedGPT](wiki/entities/paper-embodiedgpt.md) — EmbodiedGPT**（arXiv:2305.15021）收录于 Lumina [Embodied-AI-Guide 微 `📅unknown` `[entity_page]`
 - [EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）](wiki/entities/paper-embodiedskills.md) — EmbodiedSkills**（arXiv:2609.01281，[GitHub](https://github.com/ `📅unknown` `[entity_page]`
@@ -1469,6 +1472,7 @@
 - [FARM（arXiv:2609.11445）](wiki/entities/paper-farm-failure-readout.md) — FARM**（*Reading Failure Signals from the Internal Predictive States of a Frozen Robotic World Mode `📅unknown` `[entity_page]`
 - [FARO（可行性感知机器人运动优化）](wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — FARO**（*Feasibility-Aware Robot Motion Optimization*，[arXiv:2607.18362](https://arxiv.org/abs/2607 `📅unknown` `[entity_page]`
 - [Fast ECoT：思维复用的高效具身链式推理](wiki/entities/paper-fast-ecot.md) — Fast ECoT**（*Efficient Embodied Chain-of-Thought via Thoughts Reuse*，[arXiv:2506.07639](https://ar `📅unknown` `[entity_page]`
+- [Fast-WAM（arXiv:2603.16666）](wiki/entities/paper-fast-wam.md) — Fast-WAM**（*Fast-WAM: Do World Action Models Need Test-time Future Imagination?*，[arXiv:2603.16666 `📅unknown` `[entity_page]`
 - [FastGrasp：移动操作器上的学习式全身快速灵巧抓取](wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — FastGrasp**（*Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Mani `📅unknown` `[entity_page]`
 - [FastStair（Learning to Run Up Stairs with Humanoid Robots）](wiki/entities/paper-faststair-humanoid-stair-ascent.md) — FastStair** 是面向 **人形机器人高速上楼梯** 的 **规划引导 + 多阶段强化学习** 工作（arXiv:2601.10365，LimX Dynamics 等）：用 **DCM 落 `📅unknown` `[entity_page]`
 - [Fault-Tolerant Locomotion（执行器失效自适应步态）](wiki/entities/paper-fault-tolerant-locomotion.md) — Learning Fault-Tolerant Locomotion with Adaptive Gait Timing**（[arXiv:2608.07328](https://arxiv.or `📅unknown` `[entity_page]`
@@ -1842,6 +1846,7 @@
 - [机械智能信息论（arXiv:2609.19588）](wiki/entities/paper-mechanical-intelligence-info-theory.md) — 机械智能信息论**（*Quantifying Mechanical Intelligence in Legged Robots with Information Theory*，[arXiv:26 `📅unknown` `[entity_page]`
 - [MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md) — MECo-WAM**（*Learning 4D Geometric Priors for Inference-Efficient World Action Models*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [MemForest](wiki/entities/paper-memforest.md) — MemForest**（*Efficient Agent Memory Management via EventTree Partitioning and Progressive Merging `📅unknown` `[entity_page]`
+- [MemoryWAM（arXiv:2606.20562）](wiki/entities/paper-memorywam.md) — MemoryWAM**（*MemoryWAM: Efficient World Action Modeling with Persistent Memory*，[arXiv:2606.20562 `📅unknown` `[entity_page]`
 - [MeRoPE：相机可控视频生成的 Metric 旋转位置编码](wiki/entities/paper-merope.md) — MeRoPE**（*Metric Rotary Position Embedding for Camera-Controlled Video Generation*，[arXiv:2609.012 `📅unknown` `[entity_page]`
 - [Meta-Ctrl：保证计划合法，同时留下常识](wiki/entities/paper-meta-ctrl.md) — Meta-Ctrl**（*Guaranteed Plan Generation by Decoupling Syntactic and Semantic Constraints*，[arXiv:2 `📅unknown` `[entity_page]`
 - [MetaRSI-v1：递归自改进系统的元递归自改进](wiki/entities/paper-metarsi-v1.md) — MetaRSI-v1**（项目页亦称 MetaRSI / RSI2；arXiv:2609.06396，[CosmosMind `📅unknown` `[entity_page]`
@@ -2306,6 +2311,7 @@
 - [Open X-Embodiment（HMI P055）](wiki/entities/paper-open-x-embodiment.md) — Open X-Embodiment**（*Open X-Embodiment: Robotic Learning Datasets and RT-X Models*，2023，[arXiv:231 `📅unknown` `[entity_page]`
 - [OpenCap Monocular：单手机视频的人体运动学与动力学](wiki/entities/paper-opencap-monocular.md) — OpenCap Monocular**（*3D Human Kinematics and Musculoskeletal Dynamics from a Single Smartphone Vid `📅unknown` `[entity_page]`
 - [OpenDexGrasp（arXiv:2609.18117）](wiki/entities/paper-opendexgrasp.md) — OpenDexGrasp**（*OpenDexGrasp: Open-vocabulary Task-Oriented Dexterous Grasping*，[arXiv:2609.18117 `📅unknown` `[entity_page]`
+- [OpenEAI-VLA（arXiv:2606.03392）](wiki/entities/paper-openeai-vla.md) — OpenEAI-VLA**（*OpenEAI-Platform: An Open-source Embodied Artificial Intelligence Hardware-Software `📅unknown` `[entity_page]`
 - [Track Any Motions under Any Disturbances](wiki/entities/paper-opentrack.md) — Track Any Motions under Any Disturbances**（OpenTrack / Any2Track，arXiv:2509.13833）要求人形 motion trac `📅unknown` `[entity_page]`
 - [OpenVLA：可复现的开源视觉–语言–动作模型](wiki/entities/paper-openvla.md) — OpenVLA**（*OpenVLA: An Open-Source Vision-Language-Action Model*，[arXiv:2406.09246](https://arxiv. `📅unknown` `[entity_page]`
 - [OpenWAM：系统化世界–动作预训练的开源模块化栈](wiki/entities/paper-openwam.md) — OpenWAM**（*An Open, Modular Exploration Towards Systematic World–Action Model Pretraining*，[arXiv: `📅unknown` `[entity_page]`
@@ -3504,6 +3510,7 @@
 - [TEMPO（VLA 双频 RL 后训练）](wiki/entities/paper-tempo.md) — TEMPO**（*Semantic-Action Decoupled RL Post-Training for Vision-Language-Action Models*，[arXiv:2608 `📅unknown` `[entity_page]`
 - [Temporal GRPO：按阶段写回 VLA 强化学习的优势](wiki/entities/paper-temporal-grpo.md) — Temporal GRPO**（*Beyond Trajectory-Level Credit in Vision-Language-Action Reinforcement Learning*， `📅unknown` `[entity_page]`
 - [TemporalFlow-VLA：物理接地执行历史](wiki/entities/paper-temporalflow-vla.md) — TemporalFlow-VLA**（*Learning Physically Grounded Execution History for Long-Horizon Robot Manipula `📅unknown` `[entity_page]`
+- [TempoWAM（arXiv:2608.09492）](wiki/entities/paper-tempowam.md) — TempoWAM**（*Rethink Before You Execute: Adaptive Execution for World Action Models*，[arXiv:2608.09 `📅unknown` `[entity_page]`
 - [测试时智能综述：反馈驱动的适应、学习与扩展](wiki/entities/paper-test-time-intelligence-survey.md) — A Survey on Self-Improving Test-Time Intelligence: Feedback-Driven Adapting, Learning, and Scaling `📅unknown` `[entity_page]`
 - [Text2Motion](wiki/entities/paper-text2motion.md) — Text2Motion**（arXiv:2303.12153）收录于 Lumina [Embodied-AI-Guide 微 `📅unknown` `[entity_page]`
 - [TF-ART：接触学习要同时画模态和阶段](wiki/entities/paper-tf-art-tactile-force-survey.md) — TF-ART**（*Learning Physical Interaction: A Survey of Tactile- and Force-aware Robot Learning*；[arX `📅unknown` `[entity_page]`
@@ -3590,6 +3597,7 @@
 - [ViTaR：基础 VLA 的视触觉残差适配](wiki/entities/paper-vitar.md) — ViTaR**（*ViTaR: Visuo-Tactile Residual Adaptation for Foundation VLA Manipulation*，[arXiv:2608.158 `📅unknown` `[entity_page]`
 - [V-JEPA 2（自监督视频世界模型 · arXiv:2506.09985）](wiki/entities/paper-vjepa2.md) — V-JEPA 2**（*V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning*， `📅unknown` `[entity_page]`
 - [VLA Depth Decodability（arXiv:2608.08904）](wiki/entities/paper-vla-action-post-training-depth-decodability.md) — VLA Depth Decodability**（arXiv:2608.08904）收录于 [多模空间 · 一周 VLA 研 `📅unknown` `[entity_page]`
+- [VLA-Adapter（arXiv:2509.09372）](wiki/entities/paper-vla-adapter.md) — VLA-Adapter**（*VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model*，[ar `📅unknown` `[entity_page]`
 - [VLA-Precision：精密实机 VLA 在线强化学习](wiki/entities/paper-vla-precision.md) — VLA-Precision**（*Asymmetric Co-Bootstrapping for Efficient Real-World Online RL of Vision-Language `📅unknown` `[entity_page]`
 - [VLA Survey（HMI P071）](wiki/entities/paper-vla-survey-embodied.md) — VLA Survey**（*A Survey on Vision-Language-Action Models for Embodied AI*，2024，[arXiv:2405.14093](h `📅unknown` `[entity_page]`
 - [VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错](wiki/entities/paper-vla-ulap.md) — VLA-ULAP**（*Interleaving Cloud VLA Calls with Ultra-Lightweight Local Action Prediction at the Edg `📅unknown` `[entity_page]`
@@ -4495,6 +4503,7 @@
 - [Ego 分类 04：Ego+Exo 融合](wiki/overview/ego-category-04-ego-exo-fusion.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Embodied-AI-Guide 微信专辑 — 五篇策展索引](wiki/overview/embodied-ai-guide-wechat-album-curator.md) — 本页把 Lumina **Embodied-AI-Guide** 配套的微信专辑（5 篇入门/综述）拆成**可点 `📅unknown` `[overview_page]`
 - [具身数据从采集到飞轮（系列地图）](wiki/overview/embodied-data-collection-to-flywheel-album.md) — 本系列** 用四步把具身数据讲清楚：先拆采集术语（四层地图），再排数据配方（五层金字塔），然后定义飞轮最短闭环（避免空转），最后按监督信号分流（示范/失败/接管/Ego 各教什么）。 `📅unknown` `[overview_page]`
+- [具身智能前沿算法：六路线阅读坐标](wiki/overview/embodied-frontier-algorithms-technology-map.md) — 2026 具身算法的主线是「VLA 基座 + WAM 长程 + 足式/触觉/规划模块化」——选型应先定路线再定仓库，勿被公众号错误 arXiv 编号带偏。 `📅unknown` `[overview_page]`
 - [具身智能 Infra 2026：闭环比单点模型更拉开差距](wiki/overview/embodied-infra-2026-panorama.md) — 模型像发动机；Infra 决定燃料、监控、上线测试和可追溯维修要几天还是几分钟。 `📅unknown` `[overview_page]`
 - [具身资源合集：10 篇论文的阅读坐标](wiki/overview/embodied-resources-10-papers-technology-map.md) — 这一批工作的共同点是：把「能否复现」与「指标是否对准控制目标」同时摆上台面——从潜动作、VLA head 设计到跨具身 WBC 与实验室自动化。 `📅unknown` `[overview_page]`
 - [具身资源与可靠性：9 篇论文的阅读坐标](wiki/overview/embodied-resources-reliability-9-papers-technology-map.md) — 竞争点正从「更大的策略模型」扩展到数据检索、感知鲁棒、空间几何、接触安全、可信评测与开源资产栈——每篇论文应对应唯一 `paper-*` 详情节点。 `📅unknown` `[overview_page]`
