@@ -9,6 +9,101 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/cn-os-embodied-ai-daily.md",
+      "detail_id": "entity-cn-os-embodied-ai-daily",
+      "label": "Embodied-AI-Daily",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-dexora.md",
+      "detail_id": "entity-paper-dexora",
+      "label": "Dexora（arXiv:2605.18722）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-embodiedbrain.md",
+      "detail_id": "entity-paper-embodiedbrain",
+      "label": "EmbodiedBrain（arXiv:2510.20578）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-fast-wam.md",
+      "detail_id": "entity-paper-fast-wam",
+      "label": "Fast-WAM（arXiv:2603.16666）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-memorywam.md",
+      "detail_id": "entity-paper-memorywam",
+      "label": "MemoryWAM（arXiv:2606.20562）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-openeai-vla.md",
+      "detail_id": "entity-paper-openeai-vla",
+      "label": "OpenEAI-VLA（arXiv:2606.03392）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tempowam.md",
+      "detail_id": "entity-paper-tempowam",
+      "label": "TempoWAM（arXiv:2608.09492）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vla-adapter.md",
+      "detail_id": "entity-paper-vla-adapter",
+      "label": "VLA-Adapter（arXiv:2509.09372）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/overview/embodied-frontier-algorithms-technology-map.md",
+      "detail_id": "wiki-overview-embodied-frontier-algorithms-technology-map",
+      "label": "具身智能前沿算法：六路线阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/gen-human-ego-dataset.md",
       "detail_id": "entity-gen-human-ego-dataset",
       "label": "Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）",
@@ -121,105 +216,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-silent-sabotage.md",
-      "detail_id": "entity-paper-silent-sabotage",
-      "label": "Silent Sabotage（arXiv:2609.26184）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-situation-aware-dual-cobots.md",
-      "detail_id": "entity-paper-situation-aware-dual-cobots",
-      "label": "Situation-Aware Dual Cobots（arXiv:2609.26083）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-triworldbench.md",
-      "detail_id": "entity-paper-triworldbench",
-      "label": "TriWorldBench（arXiv:2609.26314）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-varepsilon4p.md",
-      "detail_id": "entity-paper-varepsilon4p",
-      "label": "ε4P（arXiv:2609.26672）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/collab-wm-12-papers-technology-map.md",
-      "detail_id": "wiki-overview-collab-wm-12-papers-technology-map",
-      "label": "协作数据、评测与世界模型：12 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-forcevla.md",
-      "detail_id": "entity-paper-forcevla",
-      "label": "ForceVLA：力感知 MoE 增强 VLA（NeurIPS 2025 · arXiv:2505.22159）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sparsh.md",
-      "detail_id": "entity-paper-sparsh",
-      "label": "Sparsh：视觉触觉自监督表征（CoRL 2024 · arXiv:2410.24090）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vision-based-tactile-intelligence.md",
-      "detail_id": "entity-paper-vision-based-tactile-intelligence",
-      "label": "Vision-Based Tactile Intelligence：VBTS 综述（arXiv:2608.15490）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/tactile-intelligence-nine-papers-map.md",
-      "detail_id": "wiki-overview-tactile-intelligence-nine-papers-map",
-      "label": "触觉智能九篇论文阅读地图",
-      "type": "overview",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/gen-human-ego-dataset.md",
-    "detail_id": "entity-gen-human-ego-dataset",
-    "label": "Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）",
+    "path": "wiki/entities/cn-os-embodied-ai-daily.md",
+    "detail_id": "entity-cn-os-embodied-ai-daily",
+    "label": "Embodied-AI-Daily",
     "type": "entity",
     "recency": "2026-09-23",
     "source": "git",
