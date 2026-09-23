@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/simate.md",
+      "detail_id": "entity-simate",
+      "label": "Simate（Physical AI Platform + Model + Scientist）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/nvidia-gr00t-e2e-g1-workflow.md",
       "detail_id": "entity-nvidia-gr00t-e2e-g1-workflow",
       "label": "NVIDIA GR00T G1 端到端参考 workflow",
@@ -205,27 +215,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pakt.md",
-      "detail_id": "entity-paper-pakt",
-      "label": "PAKT（arXiv:2609.25630）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-gr00t-e2e-g1-workflow.md",
-    "detail_id": "entity-nvidia-gr00t-e2e-g1-workflow",
-    "label": "NVIDIA GR00T G1 端到端参考 workflow",
+    "path": "wiki/entities/simate.md",
+    "detail_id": "entity-simate",
+    "label": "Simate（Physical AI Platform + Model + Scientist）",
     "type": "entity",
     "recency": "2026-09-23",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
