@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/gen-human-ego-dataset.md",
+      "detail_id": "entity-gen-human-ego-dataset",
+      "label": "Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/agibot-aimdk-x2.md",
       "detail_id": "entity-agibot-aimdk-x2",
       "label": "AimDK X2（灵犀 X2 二次开发框架）",
@@ -204,23 +214,12 @@
       "source": "git",
       "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/embodied-industry-db.md",
-      "detail_id": "entity-embodied-industry-db",
-      "label": "具身产业库（Embodied Industry DB）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/agibot-aimdk-x2.md",
-    "detail_id": "entity-agibot-aimdk-x2",
-    "label": "AimDK X2（灵犀 X2 二次开发框架）",
+    "path": "wiki/entities/gen-human-ego-dataset.md",
+    "detail_id": "entity-gen-human-ego-dataset",
+    "label": "Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）",
     "type": "entity",
     "recency": "2026-09-23",
     "source": "git",

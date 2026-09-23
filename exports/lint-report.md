@@ -194,4 +194,4 @@
 - wiki/entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4745/4745 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4746/4746 (100%) wiki/entity 页有 ingest 来源
