@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, dataset, embodied-ai-lab]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-23
 related:
   - ../overview/humanoid-motion-control-30-papers-technology-map.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -23,6 +23,7 @@ related:
   - ../methods/vla.md
   - ../entities/awesome-text-to-motion-zilize.md
   - ./robot-descriptions-py.md
+  - ./embodied-industry-db.md
   - ../../roadmap/motion-control.md
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -137,7 +138,7 @@ flowchart TB
 ## 局限与风险
 
 - **第三方策展，非一手论文**：数值、消融与开源声明以 arXiv / 项目页为准。
-- **与本库分工**：[`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks) 做跨主题编译与图谱；该仓做同主题的路线+产业+求职聚合——**勿整仓镜像**，只交叉引用。
+- **与本库分工**：[`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks) 做跨主题编译与图谱；该仓做同主题的路线+产业+求职聚合——**勿整仓镜像**，只交叉引用。结构化产业时间线与受控技术轴收敛见互补库 [具身产业库](./embodied-industry-db.md)（CC BY 4.0；**不得导入本 HMI 表格**，只作线索回到一手来源）。
 - **导读页是快照**：论文导读覆盖 P001–P191 的挂接（少数待补）；开源主表导读仍以 2026-07 的 166 项为深读快照，上游 586 项以原文为准。
 - **招聘与公司信息不构成排名或投资建议**；上游也明确声明产品发布 ≠ 独立验证能力。
 - **许可边界**：原创解读 CC BY-NC-SA 4.0；转载需署名且非商业；论文图与上游代码许可证不变。
@@ -157,6 +158,7 @@ flowchart TB
 - [运动控制主路线](../../roadmap/motion-control.md)
 - [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) — 人体 T2M 清单对照（非机器人控制）
 - [robot_descriptions.py](./robot-descriptions-py.md) — 主表「工程与实机部署」条目的独立详情；选型见 [机器人描述目录](../comparisons/robot-description-catalogs.md)
+- [具身产业库（Embodied Industry DB）](./embodied-industry-db.md) — 事件 YAML + 轴收敛 + 商业信号；技术定义链回本库 wiki
 
 ## 参考来源
 

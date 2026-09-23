@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-23",
-  "node_count": 4754,
-  "edge_count": 41789,
+  "node_count": 4755,
+  "edge_count": 41796,
   "coverage": {
-    "covered": 4725,
-    "total": 4725,
+    "covered": 4726,
+    "total": 4726,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/embodied-industry-db.md",
+      "detail_id": "entity-embodied-industry-db",
+      "label": "具身产业库（Embodied Industry DB）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
+    },
     {
       "path": "wiki/concepts/strong-pair-data.md",
       "detail_id": "wiki-concepts-strong-pair-data",
@@ -46,16 +57,6 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-lunadrive.md",
-      "detail_id": "entity-paper-lunadrive",
-      "label": "LunaDrive（arXiv:2609.21818）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-mimicagent.md",
@@ -212,14 +213,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/strong-pair-data.md",
-    "detail_id": "wiki-concepts-strong-pair-data",
-    "label": "强 Pair Data（Strong Pair Data）",
-    "type": "concept",
+    "path": "wiki/entities/embodied-industry-db.md",
+    "detail_id": "entity-embodied-industry-db",
+    "label": "具身产业库（Embodied Industry DB）",
+    "type": "entity",
     "recency": "2026-09-23",
     "source": "git",
     "action": "added",
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "has_repo": true,
+    "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
   },
   "top_communities": [
     {
@@ -240,7 +242,7 @@
     },
     {
       "label": "国内开源全景 424 项阅读导航",
-      "size": 294
+      "size": 295
     },
     {
       "label": "全身控制",
@@ -260,7 +262,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1344,
+      "degree": 1345,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -283,7 +285,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1003,
+      "degree": 1004,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -299,7 +301,7 @@
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
       "label": "国内具身开源全景 424 项 · 阅读导航",
       "type": "query",
-      "degree": 683,
+      "degree": 684,
       "has_repo": true,
       "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
     },
