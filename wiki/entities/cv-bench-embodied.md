@@ -5,8 +5,9 @@ tags:
   - embodied-reasoning
   - visual-reasoning
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
   - ./paper-lightnav-0.md
@@ -65,6 +66,7 @@ summary: "CV-Bench：LightNav-ER 评测项；占 ER 训练采样 20% 的通用�
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 具身大脑/MLLM 认知评测层：通用视觉/抽象推理 VQA，认知分高不蕴含可下发动作
 
 ## 参考来源
 

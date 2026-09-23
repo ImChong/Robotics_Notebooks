@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, text-to-motion, flow-matching, tencent, digital-human, diffusion-transformer]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2512.23464"
 code: https://github.com/Tencent-Hunyuan/HY-Motion-1.0
 related:
@@ -54,6 +54,19 @@ summary: "HY-Motion 1.0（arXiv:2512.23464）：十亿级 DiT+流匹配文本→
 |------|----------------------------|------------------|
 | Motion Arena Elo | 1078.3 | **1472.8** |
 | HY-Motion-Bench SSAE | 74.7 | **78.0** |
+
+## 与其他工作对比
+
+| 维度 | HY-Motion 1.0（本页） | [Kimodo](./kimodo.md) | [Light-O1](./light-o1.md) |
+|------|------------------------|------------------------|----------------------------|
+| 生成目标 | 文本 → **SMPL-H 201 维/帧** 运动序列 | 文本驱动运动生成 | 通用具身模型，Motion Arena 上同场评测 |
+| 建模 | 十亿级 **DiT + Flow Matching** | 见其页 | 见其页 |
+| 对齐手段 | **DPO / Flow-GRPO** 偏好 RL | — | — |
+| 开源 | 权重 + 代码已开源 | 见其页 | 见其页 |
+
+- **逐条对照见专页：** 三者的完整横比沉淀在 [HY-Motion vs GenMo vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md)，本节只给选型入口，不重复其表格。
+- **数值可比性：** 本页 Motion Arena Elo **1078.3** 与 HY-Motion-Bench SSAE **74.7** 是 **Light-O1 博客引用的对照值**，不是本库复现；跨榜（Arena Elo vs SSAE）本身也不是同一个量，不能合成一个「谁更强」的结论。
+- **与机器人运动的边界：** 输出是 **SMPL-H 人体运动**，不是机器人可执行轨迹；要上人形还需重定向与物理可行性过滤，这一步的代价不体现在本页任何指标里。
 
 ## 结论
 

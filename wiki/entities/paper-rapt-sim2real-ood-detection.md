@@ -7,7 +7,7 @@ tags:
   - ood-detection
   - sim2real
 status: complete
-updated: 2026-09-20
+updated: 2026-09-23
 arxiv: "2602.01515"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
@@ -84,6 +84,7 @@ summary: "仿真学习标称执行流形，部署时用预测偏差做 OOD 检�
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [分布外（OOD）泛化与 OOD 指标怎么读](../concepts/out-of-distribution-generalization.md) — 本页属其「② 部署监控」一义：参考分布是仿真标称执行流形，失败形态是漏报/误报而非任务失败
 
 ## 参考来源
 

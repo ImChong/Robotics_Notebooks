@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
-updated: 2026-09-18
+updated: 2026-09-23
 ---
 
 # Domain Randomization
@@ -147,6 +147,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 ## 关联页面
 
 - [Sim2Real](./sim2real.md)
+- [分布外（OOD）泛化与 OOD 指标怎么读](./out-of-distribution-generalization.md) — DR 的作用正是把变化塞进训练分布、从而缩小 OOD 的定义域；也因此「强 DR + 报 OOD 高分」需说明随机化范围
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 误差分流：可建模→校准，难建模→DR
 - [Procedural Terrain Generation](./procedural-terrain-generation.md) — DR 的地形载体（坡、台阶、碎石）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

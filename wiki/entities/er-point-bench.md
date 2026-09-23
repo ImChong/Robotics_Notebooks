@@ -6,8 +6,9 @@ tags:
   - pointing
   - vlm
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./pointarena.md
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
@@ -69,6 +70,7 @@ summary: "Point-Bench：LightNav-ER 八项具身推理评测之一；点定位�
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：pointing 式 affordance 定位，指点准 ≠ 抓得起
 
 ## 参考来源
 

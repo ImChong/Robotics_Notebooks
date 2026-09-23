@@ -101,6 +101,7 @@ STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不足以",  # 「0.1–0.2 pp 不足以支撑『全面 SOTA』叙事」：否认落在谓词上
     "不负责",  # 「WM 不负责单独变成 SOTA VLA」：同为「不 + 谓词」的辟谣
     "不包装",  # 「诚实的 technical report：不包装成 SOTA」：同为「不 + 谓词」的辟谣
+    "不提出",  # 「不提出单一 SOTA 系统，而是做结构性对照实验」：同为「不 + 谓词」的辟谣
     "未必",
     "勿",
 )
@@ -200,6 +201,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 划分口径（如「先 train 再 eval」「train split」），非可成页的机器人概念，
     # 与 clip（限幅动词）同类语义噪声，作停用词不再误报为「缺独立页」。
     "train",
+    # validate：各页正文里的 `validate` / **Validate** 均为工具页的 CLI 子命令名或
+    # 流水线阶段标签（如 `validate <type> <file> --quality showcase --json`、
+    # 「Plan → Generate → **Validate**」），是命令/阶段 token，非机器人概念/方法/
+    # 形式化，不应建独立页；与 train / eval / play / stop 同类命令名停用词。
+    "validate",
     # uv：各页正文里的 `uv` 均为 Astral 的 Python 包管理器命令（`uv run` /
     # `uv sync` / `uv pip install`，复现路径工具链引用），是打包/环境基础设施，
     # 非机器人概念/方法/形式化，不应建独立页；与 arxiv/license/md 同类基础设施停用词。
@@ -454,6 +460,20 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "act",  # 已由 methods/action-chunking.md（机制）+ entities/paper-act.md（论文）覆盖，
     # 缩写 slug 与页面 stem 不同名；与 wbc / rl / wam 同类
     "action",
+    # dit：Diffusion Transformer 的缩写，机制已由 concepts/diffusion-transformer.md
+    # 定义（扩散骨干把 U-Net 换成 Transformer），各页正文里的 **DiT** 均为「某动作头/
+    # 视频骨干用 DiT」的指称。缩写 slug 与页面 stem 不同名，与 act / wbc / urdf 同类。
+    "dit",
+    # ood：Out-of-Distribution 的缩写，机制与「OOD 相对谁」的三义辨析已由
+    # concepts/out-of-distribution-generalization.md 定义（评测档位 / 部署监控 /
+    # 数据配方目标）。缩写 slug 与页面 stem 不同名，与 act / dit / urdf 同类。
+    "ood",
+    # training-free：形容词性的**方法属性标签**而非单一机制——站内命中横跨扩散采样
+    # 重表述（infinite-diffusion terrain）、CLIP 先验零样本导航（RPV-SemNav）、
+    # prompt 式运动生成（motion-as-prompt）等互不相干的路线，唯一共同点是「不更新
+    # 权重」。各自机制已在对应实体/方法页释义，合成一页只会得到一个定义式条目。
+    # 与 base（基座/权重档名/消融条件三义）同类「属性标签而非可成页机制」。
+    "training-free",
     "base",  # 基座连杆 / 权重档名 / 消融条件名三义，已由 URDF + 浮动基座等页覆盖
     "amp",
     "armature",

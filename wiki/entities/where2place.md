@@ -5,8 +5,9 @@ tags:
   - embodied-reasoning
   - affordance
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
   - ./paper-lightnav-0.md
@@ -65,6 +66,7 @@ summary: "Where2Place：LightNav-ER 八项评测之一；与可通行点 / 落�
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：放置/可通行 affordance 推理，affordance 分 ≠ 放置成功率
 
 ## 参考来源
 

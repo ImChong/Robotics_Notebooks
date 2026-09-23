@@ -8,10 +8,11 @@ tags:
   - ai2
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2505.09990"
 code: https://github.com/pointarena/pointarena
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./er-point-bench.md
   - ./paper-robopoint.md
   - ./paper-roborefer.md
@@ -70,6 +71,7 @@ summary: "PointArena（arXiv:2505.09990，UW+Ai2）：语言引导 pointing 的�
 - [RoboPoint](./paper-robopoint.md)
 - [RoboRefer](./paper-roborefer.md)
 - [空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：pointing 精度评测，指点正确 ≠ 下游抓取成功
 
 ## 参考来源
 

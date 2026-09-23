@@ -39,7 +39,7 @@ summary: "Kaplan et al.（OpenAI，arXiv:2001.08361）：LM 损失对模型规�
 - **Light-O1 直接引用：** Tech Blog [10] 用 $L(D)=L_0+\alpha D^{-\eta}$ 拟合 **human action pretraining token 预算** 与适配后误差——协议对齐 Kaplan 式分析。
 - **与 Bitter Lesson 互补：** 提供 **可量化** 的「scale helps」证据，而非仅原则性论述。
 
-## 核心发现
+## 核心方法与发现
 
 | 轴 | 规律（直觉） |
 |----|--------------|

@@ -9,7 +9,7 @@ tags:
   - theory
   - adelaide
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2601.19597"
 venue: "ICML 2026"
 code: https://github.com/YichaoCai1/InfoNCE_Geometry
@@ -51,7 +51,7 @@ summary: "InfoNCE Geometry（ICML 2026，AIML/Adelaide）：大 batch InfoNCE �
 - **可检验预测：** 合成实验 + 预训练 CLIP + MS-COCO **语义 plausible corruption** 系统性放大 gap — 与「加强 pairwise 对齐即可闭合 gap」的直觉相悖。
 - **工程启示：** 闭 gap 可能需要 **显式 distribution-level regularization**，不能单靠更多 positive pairs。
 
-## 核心结构
+## 核心方法结构
 
 | 概念 | 单模态 InfoNCE | 对称多模态 InfoNCE |
 |------|----------------|-------------------|
@@ -120,6 +120,19 @@ sequenceDiagram
 - **理论 regime 假设：** 大 batch、特定 symmetric multimodal 形式；实际训练还有 augment、projector、batch construction 等工程因素。
 - **非 training framework：** 开源仓 **不包含** 完整 CLIP 预训练栈，主要是 **验证论文命题** 的脚本。
 - **闭 gap 处方：** 论文指出需 distribution-level 正则，但 **未给出单一 SOTA 训练配方** 替换现有 CLIP pipeline。
+
+## 与其他工作对比
+
+| 维度 | InfoNCE Geometry（本文） | 经验式 CLIP 训练配方工作 | modality gap 的表征观测类工作 |
+|------|---------------------------|---------------------------|--------------------------------|
+| 产出 | **population geometry** 的理论刻画（Gibbs 均衡 / 分岔） | 更好的 batch、温度、数据配方 | 「gap 存在」的实证测量 |
+| 对 gap 的解释 | 对称多模态 InfoNCE 的 **负对称散度耦合** 使 gap 可在强对齐下保留 | 多归因于优化不充分或数据噪声 | 描述现象，不给机制 |
+| 可操作性 | 指出需 **distribution-level 正则**，但未给替换配方 | 直接可用 | 不直接可用 |
+| 验证方式 | 合成 toy + CLIP/COCO 复现脚本（已开源） | 大规模训练 | 探针实验 |
+
+- **最重要的一条反直觉结论：** CLIP/COCO 实验显示 **强 retrieval 不等价于小 cross-modal discrepancy**——把 retrieval 指标当作「模态已对齐」的证据是错的，这直接影响用 CLIP 特征做下游 grounding 的可靠性判断。
+- **不要当训练框架读：** 开源仓是 **命题验证脚本**，不含完整 CLIP 预训练栈；它能告诉你 gap 为什么在，不能替你把 gap 关掉。
+- **适用边界：** 结论建立在 **大 batch + 对称多模态 InfoNCE** 这一 regime 上；实际训练里的 augmentation、projector、batch 构造都在假设之外，跨到非对称或小 batch 设定前需重新检查前提。
 
 ## 结论
 

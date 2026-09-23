@@ -6,6 +6,7 @@ updated: 2026-09-23
 arxiv: "2607.25448"
 code: https://github.com/UTS-RI/RPV-SemNav
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/zero-shot-object-navigation.md
   - ../concepts/embodied-semantic-cognitive-map.md
   - ../concepts/vision-language-feature-fusion.md
@@ -102,6 +103,20 @@ sequenceDiagram
 - **设定：** 500 步、成功距离 1m；initialize 12×30° 环视；离散 {forward 0.25m, turn 30°, stop}。
 - **读法：** 增益 modest 但 **training-free**；价值在 **可解释 room prior** 与 **object-centric map**。
 
+## 与其他工作对比
+
+| 维度 | RPV-SemNav（本页） | 端到端训练的 ObjectNav 策略 | 直接用 CLIP 打 frontier 分 |
+|------|---------------------|------------------------------|-----------------------------|
+| 是否训练导航策略 | **训练-free** | 需大量 episode 训练 | 训练-free |
+| 语义中介 | **房间概率向量（RPV）**，物体→房间类型分布 | 隐式，藏在策略权重里 | 物体↔frontier 直接相似度 |
+| 空间传播 | Fast Marching **测地线 flood-fill** 写入 value map | 隐式 | 通常按欧氏距离或视线 |
+| 可解释性 | 高：房间分布与 value map 均可视 | 低 | 中 |
+| 报告增益 | HM3D **SR +3%、SPL +1.3%**（原文口径） | — | — |
+
+- **RPV 这一层中介解决的是「共现」的可迁移性：** 直接用 CLIP 比对「杯子」和某个 frontier 视图，泛化到新场景时噪声大；先映射到 **房间类型分布** 再比对，利用的是「杯子更可能在厨房」这种 **跨场景稳定** 的先验。
+- **测地线而非欧氏：** flood-fill 沿 **可通行区域** 传播语义值，避免把墙另一侧的高分错误地赋给当前 frontier——这一步是 2D 语义提升到可导航 3D 结构时最常被跳过的环节，见 [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) 的 ③ 层。
+- **边界：** 增益是 **在 HM3D 仿真上** 的数（+3% SR / +1.3% SPL），幅度不大且 **训练-free 方法对 CLIP 先验质量高度敏感**；换场景库或换 CLIP 权重都需重测。
+
 ## 结论
 
 **RPV-SemNav 用 room-mediated co-occurrence 把「语义相似」换成「空间共现」，是 zero-shot ObjectNav 的可解释 engineering baseline。**
@@ -124,6 +139,7 @@ sequenceDiagram
 - [embodied-semantic-cognitive-map](../concepts/embodied-semantic-cognitive-map.md)
 - [vision-language-feature-fusion](../concepts/vision-language-feature-fusion.md)
 - [habitat-sim](./habitat-sim.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页归其 ③ 2D→3D 提升与语义建图层：CLIP 房间先验经测地线传播写入 semantic value map 再供 frontier 打分
 
 ## 参考来源
 

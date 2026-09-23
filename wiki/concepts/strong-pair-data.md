@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-23
 summary: "强 pair data（strong pair data）指人类与机器人演示在场景、逐帧时序与可 replay 动作上严格对齐的成对样本；相对仅任务语义一致的弱 pair，可把 human dynamic 拉入 robot domain，支撑预训练对齐与 ICL 上下文。"
 related:
+  - ../overview/hub-contact-force-control.md
   - ../entities/psibot-r25.md
   - ../methods/egoscale.md
   - ../entities/paper-egosteer.md
@@ -111,6 +112,7 @@ flowchart LR
 - [World Action Models](./world-action-models.md)
 - [Robot In-Context Learning](./robot-in-context-learning.md)
 - [Manipulation](../tasks/manipulation.md)
+- [接触力控（知识链汇总）](../overview/hub-contact-force-control.md) — 强 pair data 是其 ④ 接触丰富操作策略层的数据上游：人–机对齐样本决定接触策略能学到什么
 
 ## 参考来源
 

@@ -9,10 +9,12 @@ tags:
   - independent-maintainer
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2609.12552"
 code: https://github.com/Maelic/RelateAnything
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-conceptgraphs-open-vocabulary-3d-scene.md
   - ../concepts/3d-spatial-vqa.md
   - ../overview/spatial-reasoning-benchmarks-technology-map.md
@@ -150,6 +152,8 @@ sequenceDiagram
 - [PointArena](./pointarena.md)
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)
 - [空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：开放词汇场景图关系预测，关系 recall 高 ≠ 策略可消费的 3D 语义
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页归其 ③ 2D→3D 提升与语义建图层：场景图给出关系语义，仍需提升到无歧义 3D 才可被策略消费
 
 ## 参考来源
 

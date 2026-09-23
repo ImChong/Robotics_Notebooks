@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, hierarchical-control, x-humanoid, demo-only]
 status: draft
 updated: 2026-09-23
+venue: "X-Humanoid public demo (YouTube) 2026-09"
 related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
@@ -85,6 +86,21 @@ flowchart TB
 
 - 演示视频 **未附** 定量 SR/成功率、仿真器或真机平台说明。
 - 发布后应对齐：embodiment、任务集、是否与 Wise KaiWu / XR-1 共用数据或低层 API。
+
+## 与其他工作对比
+
+截至入库日 STRIDER **无公开论文与代码**，下表比较的是 **公开证据等级** 与 **路线定位**，不是方法性能：
+
+| 维度 | STRIDER（本页） | [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) | 端到端 loco-manip VLA |
+|------|------------------|-------------------------------------------------------------------|------------------------|
+| 公开材料 | **仅 YouTube demo**（Unlisted，约 4:51） | 论文 + 方法细节 | 论文/代码视项目而定 |
+| 分层假设 | 标题指向 HRL：任务层 → multi-gait stepping → 3D WBC | meta-skill 分层 | 单策略端到端 |
+| 可引用性 | **不可** 用于性能对比或复现 | 可 | 可 |
+| 本页作用 | 路线跟踪锚点 | 方法对照 | 方法对照 |
+
+- **唯一可做的对照是「问题相同」：** stepping 扩展可达工作空间、腿为臂让路，这些与 [loco-manipulation](../tasks/loco-manipulation.md) 页归纳的同族问题一致；但 **任何关于算法族（RL / MPC / VLA）的归类都属推测**，正式论文发布前不应写进对比表。
+- **与同机构 XR-1 分开记账：** [XR-1](https://github.com/Open-X-Humanoid/XR-1) 是已开源的 VLA 线，与本页 demo 不是同一 release，**不要把 XR-1 的开源状态回填给 STRIDER**。
+- **升级条件：** 出现 arXiv / 项目页 / 代码任一后，应回写 `sources/papers/`、更新开源状态与 `status`，并把本节替换为真正的方法对比。
 
 ## 结论
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, sim2real, off-policy, fastsac, unitree-g1, booster-t1, amazon-far]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2512.01996"
 code: https://github.com/amazon-far/holosoma
 related:
@@ -122,6 +122,26 @@ sequenceDiagram
 - **小网络上限：** FastSAC/FastTD3 配方优先 **速度**；极限性能由 FlashSAC 等 scaling 路线承接。
 - **仿真器依赖：** IsaacGym/IsaacSim 安装与 GPU 驱动仍是环境门槛。
 - **15 min 非万能：** 复杂 WBT/接触丰富技能仍需更长训练或架构改动（见项目页 WBT 演示 vs locomotion 训练时长说明）。
+
+## 实验与评测
+
+- **主结果口径：** 单张 **RTX 4090** + 数千并行环境，**约 15 分钟墙钟** 训出 G1 / Booster T1 的 **全关节速度跟踪** 策略并完成 zero-shot 真机迁移；项目页视频均取自 **15 min checkpoint**。
+- **迁移证据：** 真机 G1 与 T1 行走；同一配方加速 **WBT**（box lifting、dancing 等）演示。
+- **该读的不是「15 分钟」这个数：** 它绑定 **本体 + 任务（速度跟踪）+ 单卡 4090 + 数千 env** 这一组配置；换任务（如接触丰富操作）或换硬件预算，墙钟不可迁移。
+- **可复核性：** 官方实现已开源于 [Holosoma](./holosoma.md)（Apache-2.0），训练与推理入口完整，是这批 sim2real 配方里少数可被第三方 **重跑而非转述** 的；逐项数值仍 **以 [原文](https://arxiv.org/abs/2512.01996) 为准**。
+
+## 与其他工作对比
+
+| 维度 | 本文 FastSAC/FastTD3 配方 | 经典 PPO 人形 locomotion 配方 | 未针对并行调参的 SAC/TD3 |
+|------|----------------------------|-------------------------------|---------------------------|
+| 算法族 | **off-policy**，为数千 env 重新调参 | on-policy | off-policy，默认超参 |
+| 墙钟量级 | ~15 min（单卡 4090） | 小时～天 | 通常更慢且不稳 |
+| 奖励设计 | **极简**（速度跟踪 + 少量正则 + action-rate 课程） | 多项 shaping | 视实现而定 |
+| sim2real 手段 | 强 DR（动力学/地形/推扰）端到端同训 | 强 DR + 课程 | 视实现而定 |
+
+- **「off-policy 在人形上不好用」这条经验被改写的原因是调参而非算法：** 本文的增量在 **把 SAC/TD3 迁到数千并行环境的超参 regime**，不是提出新目标函数；PPO 与 SAC 的一般取舍见 [PPO vs SAC](../comparisons/ppo-vs-sac.md)。
+- **极简奖励是配方的一部分，不是省事：** 复杂 shaping 会拖慢收敛并与强 DR 互相打架；想把本配方搬到新任务时，**先砍奖励项再谈提速**。
+- **横比注意：** 与 [FDDC](./paper-fddc.md) 等同批 sim2real 工作放在一起时，墙钟只有在 **同硬件、同 env 数、同任务** 下才可比。
 
 ## 结论
 

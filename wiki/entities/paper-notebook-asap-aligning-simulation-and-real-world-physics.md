@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, motion-tracking, residual-policy, rss-2025, lecar-lab, cmu, nvidia, unitree-g1]
 status: complete
-updated: 2026-09-22
+updated: 2026-09-23
 arxiv: "2502.01143"
 venue: "RSS 2025"
 related:
@@ -124,6 +124,14 @@ sequenceDiagram
 | Delta 训练 | motion 文件需额外 `"action"` 键；开环 `+exp=train_delta_a_open_loop`，闭环 `+exp=train_delta_a_closed_loop` |
 | 部署 | MuJoCo sim2sim + UnitreeSDK2 Python sim2real；G1 需 29 DoF  waist 解锁（README 安全免责声明） |
 | 依赖框架 | [HumanoidVerse](./humanoidverse.md) 提供多 sim 训练底座 |
+
+## 实验与评测
+
+- **三类迁移面：** IsaacGym→IsaacSim、IsaacGym→Genesis、IsaacGym→**真机 G1**。前两者用于把「动力学失配」与「仿真器实现差异」分开看，第三条才是最终口径。
+- **对照基线：** SysID、域随机化（DR），以及 **只学 delta 动力学但不回灌仿真微调** 的消融。三者相对完整 ASAP 管线 **跟踪误差均更高**——其中「不回灌」这一条最关键，它说明 delta 模型的价值在 **改造训练环境**，而不是在部署时当补偿器用。
+- **技能面：** 侧跳、前跳、踢球、球星庆祝等全身敏捷动作（项目页 Before/After demo）。
+- **数值口径：** 本页不搬运完整表格；逐项跟踪误差 **以 [论文 PDF](https://arxiv.org/pdf/2502.01143) 与 [项目页](https://agile.human2humanoid.com/) 为准**。引用 [RobotDancing](./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) Table V 里的 ASAP-style 数时，**必须标明那是同协议重实现**，不是原论文报告值。
+- **评测的隐含成本：** delta 训练依赖 **真机 rollout**，而敏捷动作的真机采集本身受电机过热、硬件损伤与规模限制约束——这项成本不出现在任何跟踪误差数字里，却决定了配方能否复用。
 
 ## 结论
 

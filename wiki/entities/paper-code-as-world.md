@@ -10,7 +10,7 @@ tags:
   - mirros
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2608.27549"
 venue: "Preprint, 2026"
 code: https://github.com/MirroS-Lab/Code-as-World
@@ -54,7 +54,7 @@ summary: "Code-as-World（arXiv:2608.27549，MirroS）：可执行代码表示�
 - **Agentic discovery 可扩展监督：** 自动 propose–verify 降低人工写物理场景成本，为 **Code-as-World-VL** 提供大规模 **quantitative** 训练信号。
 - **QuantiPhy SOTA + 开源权重：** 4B/9B HF 权重与官方 eval 脚本降低复现门槛；规模 4B→9B→27B MRA **50.6→55.4→58.6** 显示 scaling。
 
-## 核心结构
+## 核心方法结构
 
 | 模块 | 作用 |
 |------|------|
@@ -137,6 +137,21 @@ sequenceDiagram
 - **Discovery 质量瓶颈：** agent 提出代码的错误会传导到 supervision；依赖仿真器与验证器设计。
 - **与像素 WM 互补：** 强项是 **定量、可编辑** 机制表示，非高保真自由形态视频 rollout。
 - **QuantiPhy 外推：** MRA 提升是否迁移到真机/VLA 闭环需单独验证。
+
+## 与其他工作对比
+
+同样问「VLM 能不能做物理推理」，三条路线的分歧在 **机制放在哪里**：
+
+| 维度 | Code-as-World（本文） | [LLMPhy](./paper-sa-2411-08027-llmphy-complex-physical-reasoning-using-large-la.md) | [LaST-HD](./paper-last-hd-latent-physical-reasoning.md) |
+|------|------------------------|--------------------------------------------------------------------------------------|----------------------------------------------------------|
+| 世界表示 | **可执行代码**（实体/状态/动力学/相机/渲染） | LLM 链式推理 + 外部物理引擎调用 | **latent** 物理状态 rollout |
+| 可检验性 | 高：执行→渲染→与证据比对，可做 counterfactual | 中：依赖 LLM 推理链是否正确 | 低：latent 不直接可读 |
+| 监督信号 | verified worlds 提供 **定量** 物理监督 | 以任务答案为主 | 以重建/预测损失为主 |
+| 典型失效 | agent 提出的代码错了会污染监督 | 链式推理断裂 | latent 与真实物理量脱钩 |
+
+- **与像素世界模型是互补而非竞争：** 本文强项是 **定量、可编辑的机制表示**，不是高保真自由形态视频 rollout；要评视频保真度应走 [Generative World Models](../methods/generative-world-models.md) 与 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 ② 层，两者指标不可互换。
+- **与 [WorldBench](./paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md) 的关系：** 后者是诊断式物理基准（出题方），本文是解题方 + 训练数据生成方；读 QuantiPhy 分数时不要当成 WorldBench 上的结论。
+- **横比的硬边界：** 4B/9B/27B 的 MRA **50.6 / 55.4 / 58.6** 是同一评测协议下的 scaling 证据；与其他工作横比前需确认 QuantiPhy 划分与 evaluator 版本一致，且 **MRA 提升是否迁移到真机/VLA 闭环仍未验证**。
 
 ## 结论
 

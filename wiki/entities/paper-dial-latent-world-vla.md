@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-model, robocasa, manipulation]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2603.29844"
 related:
   - ./light-o1.md
@@ -47,6 +47,19 @@ summary: "DIAL（arXiv:2603.29844）：VLA 中解耦 intent 与 action，用 lat
 
 - **RoboCasa GR1 Tabletop Simulation** 为主要仿真 benchmark 之一（与 Light-O1 同设定：24 厨房任务、1000 demo/task 训练、50 ep 评测）。
 - 具体 macro success **以原文 Table 为准**；Light-O1 blog 将其列为 **published baseline** 而非本库复现数值。
+
+## 与其他工作对比
+
+| 维度 | DIAL（本文） | 直出式端到端 VLA（VLM 当 encoder） | [π0.5](./paper-pi05-open-world-vla.md) |
+|------|--------------|------------------------------------|-----------------------------------------|
+| VLM 的角色 | 产出 **latent visual roadmap**（高层意图） | 特征提取器，一步映射到 motor | 预训练多模态骨干 + 动作专家 |
+| 意图/动作耦合 | **解耦**，动作梯度不直接冲刷语义特征 | 强耦合，易训练不稳/语义退化 | 分层但以动作 token 为主 |
+| 主张的收益 | 语言 grounding 更结构化、训练更稳 | 结构简单 | 开放世界泛化 |
+| 主要代价 | 多一层 latent 世界建模与其监督 | — | 预训练规模成本 |
+
+- **同 benchmark 才可比：** 本页数值口径是 **RoboCasa GR-1 Tabletop**（24 厨房任务 / 1000 demo per task / 50 ep 评测）；[Light-O1](./light-o1.md) 在同设定下报告更高 macro success，但那是 **该博客引用的 published baseline**，不是本库复现值。
+- **与世界模型路线的边界：** DIAL 的 latent world 服务的是 **意图 grounding**，不是像素级未来 rollout；与 [Generative World Models](../methods/generative-world-models.md) 一支的评测口径（预测保真度）不同，别拿视频质量指标横比。
+- **逐项数值：** macro success 与消融 **以原文 Table 为准**（[arXiv:2603.29844](https://arxiv.org/abs/2603.29844)）。
 
 ## 结论
 
