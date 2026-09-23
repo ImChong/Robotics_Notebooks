@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-21
+updated: 2026-09-23
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -77,6 +77,7 @@ sources:
 - 中文"移动操作"作为 **Loco-Manipulation** 的译名与统称使用；本页以腿式（人形）loco-manipulation 为主线。
 - 少量轮式 / 移动底座工作（[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md)、[FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)、[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) 等）按学术定义属 mobile manipulation，因方法论相通收录进本页对应技术路线（ABot-M0.5 在[世界–动作模型](#世界-动作模型-用未来预测驱动全身动作)组，FastGrasp / 3D-IC 在[轮式 / 移动底座对照](#轮式-移动底座对照-学术定义属-mobile-manipulation)组），小节内已标注"轮式 / 移动底座"；实体层用 `mobile-manipulation` tag 区分。
 - 系统学习路径见 [Loco-Manipulation 纵深路线](../../roadmap/depth-loco-manipulation.md)。
+- **机构演示跟踪：** [STRIDER（X-Humanoid）](../entities/paper-strider.md) 公开 **multi-gait stepping + 分层 3D loco-manip** demo（2026-09，尚无论文）。
 
 ## 英文缩写速查
 

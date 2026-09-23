@@ -2,7 +2,7 @@
 type: task
 tags: [task, objectnav, zero-shot, navigation, embodied-ai, open-vocabulary, habitat, vln]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 related:
   - ./vision-language-navigation.md
   - ../entities/paper-travexplorer.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-sam3.md
   - ../entities/paper-dart-sam3-realtime.md
   - ../entities/paper-blip2.md
+  - ../entities/paper-rpv-semnav.md
   - ../entities/habitat-sim.md
   - ../concepts/embodied-semantic-cognitive-map.md
   - ../concepts/vision-language-feature-fusion.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
   - ../../sources/papers/travexplorer_arxiv_2605_19958.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
+  - ../../sources/papers/rpv_semnav_arxiv_2607_25448.md
 summary: "零样本目标导航（ZSON / ObjectNav）：在未见环境中按开放词汇物体目标探索并到达，无需该目标类别的导航微调；常见 Habitat 评测与四足/轮腿真机部署。"
 ---
 
@@ -81,6 +83,7 @@ flowchart TB
 | 地图 | 占据 + 语义热力 + 实例记忆（[语义认知地图](../concepts/embodied-semantic-cognitive-map.md)） |
 | 跨楼层 | [TravExplorer](../entities/paper-travexplorer.md) 可通行 3D；[ZONDA](../entities/paper-zonda.md) 高度差启发式 |
 | 仿真 | [Habitat](../entities/habitat-sim.md) HM3D/MP3D |
+| 训练-free 语义 frontier | [RPV-SemNav](../entities/paper-rpv-semnav.md)（room-mediated RPV + geodesic value map） |
 | 真机 | 四足 Go2、轮腿双足等 + MPPI/局部规划 |
 
 ## 工程实践
