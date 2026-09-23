@@ -1,4 +1,6 @@
 
+## [2026-09-23] ingest | sources/datasets/gen-human-ego-genrobot.md — 接入 GenRobot Gen-HumanEgo（1,848h DAS-Ego MCAP）；数据 HF 已开源 CC BY-SA 4.0，工具 das-datakit 已开源
+
 ## [2026-09-23] ingest | sources/sites/x2-aimdk-agibot.md + sources/repos/aimrt.md — AimDK X2 文档站与 AimRT 运行时深度入库
 
 - **意图：** ingest <https://x2-aimdk.agibot.com/zh-cn/latest/index.html> 与 <https://github.com/AimRT/AimRT>
