@@ -1,64 +1,40 @@
 {
   "generated_at": "2026-09-23",
-  "node_count": 4788,
-  "edge_count": 42135,
+  "node_count": 4789,
+  "edge_count": 42190,
   "coverage": {
-    "covered": 4759,
-    "total": 4759,
+    "covered": 4760,
+    "total": 4760,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/mimo-v2-6.md",
-      "detail_id": "entity-mimo-v2-6",
-      "label": "MiMo-V2.6（Scaling RL Toward Self-Improvement）",
-      "type": "entity",
+      "path": "wiki/concepts/joint-encoder-selection.md",
+      "detail_id": "wiki-concepts-joint-encoder-selection",
+      "label": "关节编码器选型（光电 / 磁 / 电感）",
+      "type": "concept",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/out-of-distribution-generalization.md",
+      "detail_id": "wiki-concepts-out-of-distribution-generalization",
+      "label": "概念：分布外（OOD）泛化与 OOD 指标怎么读",
+      "type": "concept",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/strong-pair-data.md",
+      "detail_id": "wiki-concepts-strong-pair-data",
+      "label": "强 Pair Data（Strong Pair Data）",
+      "type": "concept",
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/simate.md",
-      "detail_id": "entity-simate",
-      "label": "Simate（Physical AI Platform + Model + Scientist）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-gr00t-e2e-g1-workflow.md",
-      "detail_id": "entity-nvidia-gr00t-e2e-g1-workflow",
-      "label": "NVIDIA GR00T G1 端到端参考 workflow",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-llava.md",
-      "detail_id": "entity-paper-llava",
-      "label": "LLaVA：Visual Instruction Tuning",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/cn-os-embodied-ai-daily.md",
-      "detail_id": "entity-cn-os-embodied-ai-daily",
-      "label": "Embodied-AI-Daily",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-dexora.md",
@@ -78,8 +54,7 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-fast-wam.md",
@@ -93,6 +68,17 @@
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
+      "path": "wiki/entities/paper-industrialvla-bench.md",
+      "detail_id": "entity-paper-industrialvla-bench",
+      "label": "IndustrialVLA-Bench（arXiv:2609.25562）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/paper-memorywam.md",
       "detail_id": "entity-paper-memorywam",
       "label": "MemoryWAM（arXiv:2606.20562）",
@@ -102,6 +88,15 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mimicagent.md",
+      "detail_id": "entity-paper-mimicagent",
+      "label": "MimicAgent（arXiv:2609.24145）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-openeai-vla.md",
@@ -115,6 +110,48 @@
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
+      "path": "wiki/entities/paper-pixverse-r2.md",
+      "detail_id": "entity-paper-pixverse-r2",
+      "label": "PixVerse R2：Scaling Real-Time Omni World Models",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rpv-semnav.md",
+      "detail_id": "entity-paper-rpv-semnav",
+      "label": "RPV-SemNav（arXiv:2607.25448）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-scientisttwo.md",
+      "detail_id": "entity-paper-scientisttwo",
+      "label": "ScientistTwo（arXiv:2609.19644）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-strider.md",
+      "detail_id": "entity-paper-strider",
+      "label": "STRIDER（X-Humanoid 演示）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
       "path": "wiki/entities/paper-tempowam.md",
       "detail_id": "entity-paper-tempowam",
       "label": "TempoWAM（arXiv:2608.09492）",
@@ -123,6 +160,27 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-thaw-vla.md",
+      "detail_id": "entity-paper-thaw-vla",
+      "label": "THAW-VLA（arXiv:2609.24682）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-triworldbench.md",
+      "detail_id": "entity-paper-triworldbench",
+      "label": "TriWorldBench（arXiv:2609.26314）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-vla-adapter.md",
@@ -136,19 +194,9 @@
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
-      "path": "wiki/overview/embodied-frontier-algorithms-technology-map.md",
-      "detail_id": "wiki-overview-embodied-frontier-algorithms-technology-map",
-      "label": "具身智能前沿算法：六路线阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/gen-human-ego-dataset.md",
-      "detail_id": "entity-gen-human-ego-dataset",
-      "label": "Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）",
+      "path": "wiki/entities/mimo-v2-6.md",
+      "detail_id": "entity-mimo-v2-6",
+      "label": "MiMo-V2.6（Scaling RL Toward Self-Improvement）",
       "type": "entity",
       "recency": "2026-09-23",
       "source": "git",
@@ -156,77 +204,23 @@
       "has_repo": true
     },
     {
-      "path": "wiki/entities/agibot-aimdk-x2.md",
-      "detail_id": "entity-agibot-aimdk-x2",
-      "label": "AimDK X2（灵犀 X2 二次开发框架）",
+      "path": "wiki/entities/simate.md",
+      "detail_id": "entity-simate",
+      "label": "Simate（Physical AI Platform + Model + Scientist）",
       "type": "entity",
       "recency": "2026-09-23",
       "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-agentic-coding-manipulation.md",
-      "detail_id": "entity-paper-agentic-coding-manipulation",
-      "label": "Agentic Coding Agent（arXiv:2609.26499）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-better-curriculum.md",
-      "detail_id": "entity-paper-better-curriculum",
-      "label": "Better Curriculum（arXiv:2609.25887）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-industrialvla-bench.md",
-      "detail_id": "entity-paper-industrialvla-bench",
-      "label": "IndustrialVLA-Bench（arXiv:2609.25562）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mate-virtual-teleop.md",
-      "detail_id": "entity-paper-mate-virtual-teleop",
-      "label": "MATE（arXiv:2609.26520）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mavp.md",
-      "detail_id": "entity-paper-mavp",
-      "label": "MAVP（arXiv:2609.26378）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mimo-v2-6.md",
-    "detail_id": "entity-mimo-v2-6",
-    "label": "MiMo-V2.6（Scaling RL Toward Self-Improvement）",
-    "type": "entity",
+    "path": "wiki/concepts/joint-encoder-selection.md",
+    "detail_id": "wiki-concepts-joint-encoder-selection",
+    "label": "关节编码器选型（光电 / 磁 / 电感）",
+    "type": "concept",
     "recency": "2026-09-23",
     "source": "git",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -235,11 +229,11 @@
     },
     {
       "label": "操作",
-      "size": 669
+      "size": 678
     },
     {
       "label": "世界动作模型",
-      "size": 636
+      "size": 578
     },
     {
       "label": "仿真到现实",
@@ -250,8 +244,8 @@
       "size": 298
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 248
+      "label": "全身控制",
+      "size": 268
     }
   ],
   "top_hubs": [
@@ -290,7 +284,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1003,
+      "degree": 1004,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -298,7 +292,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 977,
+      "degree": 978,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

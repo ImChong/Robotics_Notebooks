@@ -4085,6 +4085,7 @@
 - [Open X-Embodiment（OXE）](wiki/concepts/open-x-embodiment.md) — Open X-Embodiment**：面向机器人模仿学习的大规模跨机构、跨硬件形态数据集与基准管线，把多种机器人的演示统一到可比格式上，用于训练与评测「通用操作策略」。 `📅unknown` `[wiki_page]`
 - [操作系统基础（进程 / 线程 / 内存 / 文件系统 / 调度）](wiki/concepts/operating-system-basics.md) — 操作系统基础** 解释主控板上「谁在跑、何时被抢占、内存如何映射、磁盘 I/O 如何饿死控制线程」——是诊断真机抖动时最先翻的一层。 `📅unknown` `[wiki_page]`
 - [Optimal Control (OCP)](wiki/concepts/optimal-control.md) — 最优控制**：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架。 `📅unknown` `[wiki_page]`
+- [概念：分布外（OOD）泛化与 OOD 指标怎么读](wiki/concepts/out-of-distribution-generalization.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [感知后处理与坐标变换](wiki/concepts/perception-coordinate-postprocessing.md) — 感知后处理与坐标变换**把检测器输出的 **像素量**（框、线、交点）经相机内参、深度/平面假设与外参链，变成 **机器人 base 或场地世界系下的几何量**，并做过滤与拓扑校验——课程第 7. `📅unknown` `[wiki_page]`
 - [Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）](wiki/concepts/physics-fidelity-sim2real-gap.md) — 物理保真度（Physics Fidelity）**：仿真器对真实物理过程的逼近程度。它不是一个标量，而是沿 **几何/URDF 精度 → 刚体动力学算法 → 接触/摩擦模型 → 执行器模型** 四 `📅unknown` `[wiki_page]`
 - [人形腿部行星滚柱丝杠直线驱动（PRS 路线）](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 人形腿部用**行星滚柱丝杠（Planetary Roller Screw, PRS）**把电机旋转转为**直线推力**，再经**连杆机构**映射为髋/膝/踝等关节角，是在**负载密度、静态保持、纵向布 `📅unknown` `[wiki_page]`
