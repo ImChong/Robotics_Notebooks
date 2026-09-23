@@ -68,7 +68,7 @@
   - [运动小脑 64 篇](../blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
   - [AMP 运动先验](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
   - [国内开源全景 76 家 424 项](../blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
-- **互补清单**：[awesome-humanoid-robot-learning](awesome-humanoid-robot-learning.md)（Yanjie Ze，偏真机+开源论文列表）；[Robot Learning Paper Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)（单篇深读）；飞书 [开源运动控制项目](../../wiki/queries/open-source-motion-control-projects.md)（上游 README 另链「小而美的运动控制项目」）。
+- **互补清单**：[awesome-humanoid-robot-learning](awesome-humanoid-robot-learning.md)（Yanjie Ze，偏真机+开源论文列表）；[Robot Learning Paper Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)（单篇深读）；飞书 [开源运动控制项目](../../wiki/queries/open-source-motion-control-projects.md)（上游 README 另链「小而美的运动控制项目」）；[具身产业库](embodied-industry-db.md)（结构化产业时间线 + 技术轴收敛，CC BY 4.0；**不得导入 HMI 表格**）。
 
 ## 对 wiki 的映射
 

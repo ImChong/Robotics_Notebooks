@@ -1,3 +1,5 @@
+## [2026-09-23] ingest | sources/repos/embodied-industry-db.md — 具身产业库 V0.1 结构化产业时间线；已开源；交叉 HMI；自动合并 PR
+
 ## [2026-09-23] ingest | sources/blogs/psibot_scaling_pair_data_embodied_intelligence_zh.md — Psi-R2.5 强 pair data 技术博客；Psi-W0 转换器 + ICL/HIL；商业闭源
 
 - **意图：** 用户指定 PsiBot 博客 scaling-pair-data-for-embodied-intelligence-zh
