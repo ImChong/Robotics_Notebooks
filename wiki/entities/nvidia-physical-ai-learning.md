@@ -2,8 +2,9 @@
 type: entity
 tags: [course, nvidia, isaac, omniverse, openusd, physical-ai, sim2real]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-23
 related:
+  - ./nvidia-gr00t-e2e-g1-workflow.md
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./nvidia-getting-started-isaac-lab.md
   - ./nvidia-learn-openusd.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/sites/nvidia-physical-ai-learning.md
   - ../../sources/sites/nvidia-robotics-fundamentals-playlist.md
   - ../../sources/sites/nvidia-gtc.md
+  - ../../sources/courses/nvidia_gr00t_e2e_g1_workflow.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/courses/nvidia_learn_openusd.md
@@ -54,12 +56,13 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 
 - **工程主线清晰：** 门户把「仿真 → 数据 → 策略 → 真机」拆成可跟做的模块，比零散博客更适合作为本知识库的 **厂商官方课程锚点**。
 - **与仓库已有实体互补：** 本库已有 [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)、[Omniverse](./nvidia-omniverse.md)、[GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) 等 **研究/产品** 页；本门户页负责 **自学路径选型**，避免把课程目录散落在各实体页脚注里。
-- **两条动手主线：** [Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) 走 **RL + manager-based 任务设计**（Cartpole → UR10 reach → sim-to-real 分类）；[SO-101 Sim2Real 实验课](./nvidia-so101-sim2real-lab-workflow.md) 走 **VLA + 四类 gap 策略**，适合 manipulation 真机实验。
+- **三条 VLA / RL 动手主线：** [Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) 走 **RL + manager-based 任务设计**；[SO-101 Sim2Real 实验课](./nvidia-so101-sim2real-lab-workflow.md) 走 **操作臂 VLA + 四类 gap 策略**；[GR00T G1 端到端参考课](./nvidia-gr00t-e2e-g1-workflow.md) 走 **人形 G1 + GR00T 1.7 + 仿真/真机双路径部署**。
 
 ## 门户内的主要学习路径（摘要）
 
 | 路径 | 侧重 | 与本库关联 |
 |------|------|------------|
+| GR00T G1 E2E | 人形 G1 manipulation + GR00T 1.7 + Arena/Thor 部署 | [nvidia-gr00t-e2e-g1-workflow](./nvidia-gr00t-e2e-g1-workflow.md) |
 | SO-101 Sim2Real | 操作臂 VLA + 四类 gap 策略 | [nvidia-so101-sim2real-lab-workflow](./nvidia-so101-sim2real-lab-workflow.md) |
 | Getting Started With Isaac Lab | RL、GPU 并行、manager 任务、三类 sim-to-real 桥接 | [nvidia-getting-started-isaac-lab](./nvidia-getting-started-isaac-lab.md) |
 | Getting Started With Isaac Sim | 物理仿真、传感器、**SIL** | [Isaac Sim](./isaac-sim.md)、[Software-in-the-Loop](../concepts/software-in-the-loop.md) |
@@ -82,12 +85,14 @@ NVIDIA [Robotics Fundamentals Learning page](https://resources.nvidia.com/en-us-
 
 - [NVIDIA Physical AI Learning 门户](../../sources/sites/nvidia-physical-ai-learning.md)
 - [Robotics Fundamentals 播放列表](../../sources/sites/nvidia-robotics-fundamentals-playlist.md)
+- [GR00T G1 E2E 课程归档](../../sources/courses/nvidia_gr00t_e2e_g1_workflow.md)
 - [SO-101 Sim2Real 课程归档](../../sources/courses/nvidia_sim_to_real_so101_isaac.md)
 - [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md)
 - [What is Physical AI?（NVIDIA Glossary）](https://www.nvidia.com/en-us/glossary/generative-physical-ai/)
 
 ## 关联页面
 
+- [NVIDIA GR00T G1 端到端参考 workflow](./nvidia-gr00t-e2e-g1-workflow.md)
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
 - [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md)
 - [NVIDIA Learn OpenUSD](./nvidia-learn-openusd.md)
