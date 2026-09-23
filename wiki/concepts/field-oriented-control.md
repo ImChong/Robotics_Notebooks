@@ -2,8 +2,9 @@
 type: concept
 tags: [motor-control, embedded, bldc, stepper, actuators, firmware]
 status: complete
-updated: 2026-07-14
+updated: 2026-09-23
 related:
+  - ../entities/paper-lunadrive.md
   - ../formalizations/field-oriented-control-derivation.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../overview/motor-design-workflow.md
@@ -123,6 +124,7 @@ flowchart LR
 - [SimpleFOC](../entities/simplefoc.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — FOC 是②层电机驱动固件把母线电压变为受控相电流/力矩的核心控制律
+- [LunaDrive（论文实体）](../entities/paper-lunadrive.md) — 高 **p** flat BLDC 在 96 V 下 **3110 Hz** 电频率 FOC；**θ + Td·ωe** 延迟补偿案例
 
 ## 推荐继续阅读
 

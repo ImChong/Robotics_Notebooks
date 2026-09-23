@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hardware, actuator, qdd, proprioceptive, quadruped, mini-cheetah, mit, foc, can, thesis]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 venue: "MIT S.M. thesis 2018"
 code: https://github.com/bgkatz/3phase_integrated
 related:
@@ -20,6 +20,7 @@ related:
   - ../tasks/locomotion.md
   - ./quadruped-robot.md
   - ../../roadmap/depth-torque-motor-design.md
+  - ./paper-lunadrive.md
 sources:
   - ../../sources/papers/low_cost_modular_actuator_katz_mit_2018.md
   - ../../sources/sites/robot_daycare_mini_cheetah.md
@@ -160,6 +161,7 @@ sequenceDiagram
 | [Urs 3D 打印 QDD](./paper-3d-printed-open-source-actuators-legged.md) | Urs 热/寿命/背隙教材更系统；本文台架 + 整机动态演示更强 |
 | [OpenTorque](./opentorque-actuator.md) / [Doggo](./stanford-doggo-and-pupper.md) | 同为成品电机低减速；Katz 是工业/学术影响力最大的「模块化集成驱动」先例之一 |
 | ANYDrive / HEBI（文中对照） | 闭源商品；ANYDrive 大力矩下带宽掉得快；HEBI 软件友好但峰值功率有限 |
+| [LunaDrive](./paper-lunadrive.md) | 聚焦 **GaN 高压驱动板**（96 V / 3110 Hz FOC）；Katz 为 **24 V 集成 QDD 模块** — 互补读法 |
 
 ## 结论
 

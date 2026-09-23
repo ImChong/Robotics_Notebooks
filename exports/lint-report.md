@@ -187,4 +187,4 @@
 - wiki/entities/paper-rpv-semnav.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4721/4721 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4722/4722 (100%) wiki/entity 页有 ingest 来源

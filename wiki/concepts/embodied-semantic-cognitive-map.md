@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, semantic-mapping, embodied-ai, cognition, open-vocabulary, navigation, habitat, vln]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 related:
   - ./vision-language-feature-fusion.md
   - ./2d-to-3d-semantic-lifting-gap.md
