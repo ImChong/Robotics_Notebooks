@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/apexdrive-ai.md",
+      "detail_id": "entity-apexdrive-ai",
+      "label": "ApexDrive AI（selfdriving-car）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-msfp-embodied-ai-survey.md",
       "detail_id": "entity-paper-msfp-embodied-ai-survey",
       "label": "MSFP Survey（具身 AI 多传感器融合感知）",
@@ -202,27 +213,18 @@
       "source": "git",
       "action": "added",
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/robospatial.md",
-      "detail_id": "entity-robospatial",
-      "label": "RoboSpatial",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-msfp-embodied-ai-survey.md",
-    "detail_id": "entity-paper-msfp-embodied-ai-survey",
-    "label": "MSFP Survey（具身 AI 多传感器融合感知）",
+    "path": "wiki/entities/apexdrive-ai.md",
+    "detail_id": "entity-apexdrive-ai",
+    "label": "ApexDrive AI（selfdriving-car）",
     "type": "entity",
-    "recency": "2026-09-22",
+    "recency": "2026-09-23",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
