@@ -1,4 +1,6 @@
 
+## [2026-09-23] ingest | sources/papers/mimo_v2_6_technical_report_2026.md — MiMo-V2.6 技术报告与发布说明；开源 RL 栈与 Distill-9B 复现基线
+
 ## [2026-09-23] ingest | sources/sites/simate-ai.md — 接入 Simate Physical AI 三连体（Sinfra/Sipai/RoboScientist）；核查未开源；Sipai 绑定 RoboDojo 评测中
 
 ## [2026-09-23] ingest | sources/courses/nvidia_gr00t_e2e_g1_workflow.md — NVIDIA Learning GR00T G1 端到端官方课；新建 nvidia-gr00t-e2e-g1-workflow 并补强 Isaac GR00T / Physical AI Learning 交叉引用
