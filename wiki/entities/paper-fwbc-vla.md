@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, wbc, loco-manipulation, sensorless-force, contact-rich, wheeled-legged, zju, shanghai-ai-lab, tsinghua, zhongguancun-academy, deeprobotics, zust]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2609.03889"
 related:
   - ../methods/vla.md

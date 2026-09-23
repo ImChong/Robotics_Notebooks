@@ -13,7 +13,7 @@ tags:
   - shanghaitech
   - instadapt
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2607.22530"
 related:
   - ../concepts/visuo-tactile-fusion.md
@@ -28,6 +28,9 @@ related:
   - ../overview/world-model-physics-fidelity-outputs.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./current-robotics-currentworld.md
+  - ./paper-sparsh.md
+  - ./paper-forcevla.md
+  - ../overview/tactile-intelligence-nine-papers-map.md
 sources:
   - ../../sources/papers/vitacworld_arxiv_2607_22530.md
   - ../../sources/sites/vitacworld-github-io.md
@@ -183,6 +186,7 @@ o_t=\{I_t^{v}\}_{v\in\{\mathrm{main},\mathrm{wrist},\mathrm{tactile}\}}
 
 ## 关联页面
 
+- [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — 本批 ingest 中 ViTacWorld 位于 Foundation/WM 层
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 视觉全局 + 触觉局部
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触任务语境
 - [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) — 视触觉 WAM

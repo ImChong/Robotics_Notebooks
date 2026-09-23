@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, perception, tactile-sensing, vision-based-tactile, manipulation, dexterity, sensor, mit]
 status: complete
-updated: 2026-07-24
+updated: 2026-09-23
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/tactile-sensing.md

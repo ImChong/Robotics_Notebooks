@@ -15,7 +15,7 @@ tags:
   - fudan
   - ustc
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2607.18231"
 venue: "arXiv 2026"
 related:

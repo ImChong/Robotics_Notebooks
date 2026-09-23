@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md

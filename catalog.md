@@ -898,7 +898,7 @@
 - [UNECE R155](wiki/entities/painode-143-unecer155.md) — UNECE R155** 收录于 awesome-physical-ai（natnew）**第 143/384** 条，分组 **Governance & Policy**。本页为知识库 **策展 `📅unknown` `[entity_page]`
 - [UNECE R156](wiki/entities/painode-144-unecer156.md) — UNECE R156** 收录于 awesome-physical-ai（natnew）**第 144/384** 条，分组 **Governance & Policy**。本页为知识库 **策展 `📅unknown` `[entity_page]`
 - [White House Executive Order on AI (14110)](wiki/entities/painode-145-whitehouseexecutiveorderonai14.md) — White House Executive Order on AI (14110)** 收录于 awesome-physical-ai（natnew）**第 145/384** 条，分组 **Go `📅unknown` `[entity_page]`
-- [AnySkin](wiki/entities/painode-146-anyskin.md) — AnySkin** 收录于 awesome-physical-ai（aichr）**第 146/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
+- [AnySkin：即插即用磁触觉皮肤（ICRA 2025 · arXiv:2409.08276）](wiki/entities/painode-146-anyskin.md) — AnySkin**（*AnySkin: Plug-and-play Skin Sensing for Robotic Touch*，[arXiv:2409.08276](https://arxiv `📅unknown` `[entity_page]`
 - [DexSkin](wiki/entities/painode-148-dexskin.md) — DexSkin** 收录于 awesome-physical-ai（aichr）**第 148/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
 - [Dynamixel](wiki/entities/painode-149-dynamixel.md) — Dynamixel** 收录于 awesome-physical-ai（aichr）**第 149/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
 - [GelSight](wiki/entities/painode-151-gelsight.md) — GelSight** 收录于 awesome-physical-ai（aichr）**第 151/384** 条，分组 **Hardware & Actuation**。本页为知识库 **策展索引 `📅unknown` `[entity_page]`
@@ -1491,6 +1491,7 @@
 - [FoldNet++（arXiv:2609.12433）](wiki/entities/paper-foldnet-plus-plus.md) — FoldNet++**（[FoldNet++: a Large-Scale Synthetic Dataset for Robotic T-Shirt Folding and Unfolding `📅unknown` `[entity_page]`
 - [FootQuery：触地前瞻引导的深度历史检索感知人形行走](wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md) — FootQuery**（*Future-Touchdown-Guided Retrieval from Depth History for Perceptive Humanoid Locomoti `📅unknown` `[entity_page]`
 - [力感知轮足 loco-manip（arXiv:2609.13779）](wiki/entities/paper-force-aware-wheeled-leg-manip.md) — 力感知轮足 loco-manip**（*Force-Aware Reinforcement Learning with Hybrid Sensorless Force Estimation for `📅unknown` `[entity_page]`
+- [ForceVLA：力感知 MoE 增强 VLA（NeurIPS 2025 · arXiv:2505.22159）](wiki/entities/paper-forcevla.md) — ForceVLA**（*Enhancing VLA Models with a Force-aware MoE for Contact-rich Manipulation*，[arXiv:2505 `📅unknown` `[entity_page]`
 - [Foresight (PI)](wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md) — Foresight (PI)** 收录于 具身智能研究室 · 具身世界模型六路线综述  `📅unknown` `[entity_page]`
 - [ForeTime-VLA：世界模型未来 Token 蒸馏](wiki/entities/paper-foretime-vla.md) — ForeTime-VLA**（*Causal Future-Token Distillation from a World Action Model for Conveyor-Belt Manip `📅unknown` `[entity_page]`
 - [Are Foundation Models the Route to Full-Stack Transfer in Robotics?（arXiv:2602.22001）](wiki/entities/paper-foundation-models-full-stack-transfer.md) — Are Foundation Models the Route to Full-Stack Transfer in Robotics?**（Freek Stulp, Samuel Bustaman `📅unknown` `[entity_page]`
@@ -2843,7 +2844,7 @@
 - [Critique of World Model](wiki/entities/paper-sa-2507-05169-critique-of-world-model.md) — Critique of World Model** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-mo `📅unknown` `[entity_page]`
 - [EmbodieDreamer](wiki/entities/paper-sa-2507-05198-embodiedreamer-advancing-real2sim2real-transfer.md) — EmbodieDreamer: Advancing Real2Sim2Real Transfer for Policy Training via Embodied World Modeling `📅unknown` `[entity_page]`
 - [Neural-OS](wiki/entities/paper-sa-2507-08800-neural-os-towards-simulating-operating-systems-v.md) — Neural-OS: Towards Simulating Operating Systems via Neural Generative Models** 收录于 [Awesome World  `📅unknown` `[entity_page]`
-- [Tactile-VLA](wiki/entities/paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md) — Tactile-VLA: Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalizatio `📅unknown` `[entity_page]`
+- [Tactile-VLA：解锁 VLA 物理知识用于触觉泛化（arXiv:2507.09160）](wiki/entities/paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md) — Tactile-VLA**（*Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalizat `📅unknown` `[entity_page]`
 - [Demonstrating the Octopi-1.5 Visual-Tactile-Language Model](wiki/entities/paper-sa-2507-09985-demonstrating-the-octopi-1-5-visual-tactile-lang.md) — Demonstrating the Octopi-1.5 Visual-Tactile-Language Model** 收录于 [Awesome Touch](https://github.co `📅unknown` `[entity_page]`
 - [MindJourney](wiki/entities/paper-sa-2507-12508-mindjourney-test-time-scaling-with-world-models.md) — MindJourney: Test-Time Scaling with World Models for Spatial Reasoning** 收录于 [Awesome World Models `📅unknown` `[entity_page]`
 - [World Model-Based End-to-End Scene Generation for Accident Anticipation](wiki/entities/paper-sa-2507-12762-world-model-based-end-to-end-scene-generation-fo.md) — World Model-Based End-to-End Scene Generation for Accident Anticipation** 收录于 [Awesome World Model `📅unknown` `[entity_page]`
@@ -2868,7 +2869,7 @@
 - [IRL-VLA](wiki/entities/paper-sa-2508-06571-irl-vla-training-an-vision-language-action-polic.md) — IRL-VLA: Training an Vision-Language-Action Policy via Reward World Model** 收录于 [Awesome World Mod `📅unknown` `[entity_page]`
 - [Imaginative World Modeling with Scene Graphs for Embodied Agent Navigation](wiki/entities/paper-sa-2508-06990-imaginative-world-modeling-with-scene-graphs-for.md) — Imaginative World Modeling with Scene Graphs for Embodied Agent Navigation** 收录于 [Awesome World Mo `📅unknown` `[entity_page]`
 - [Matrix-3D](wiki/entities/paper-sa-2508-08086-matrix-3d-omnidirectional-explorable-3d-world-ge.md) — Matrix-3D: Omnidirectional Explorable 3D World Generation** 收录于 [Awesome World Models](https://git `📅unknown` `[entity_page]`
-- [OmniVTLA](wiki/entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md) — OmniVTLA: Vision-Tactile-Language-Action Model with Semantic-Aligned Tactile Sensing** 收录于 [Awesom `📅unknown` `[entity_page]`
+- [OmniVTLA：语义对齐触觉的 VTLA（arXiv:2508.08706）](wiki/entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md) — OmniVTLA**（*Vision-Tactile-Language-Action Model with Semantic-Aligned Tactile Sensing*，[arXiv:250 `📅unknown` `[entity_page]`
 - [PAR](wiki/entities/paper-sa-2508-09822-par-physical-autoregressive-model-for-robotic-ma.md) — PAR: Physical Autoregressive Model for Robotic Manipulation without Action Pretraining** 收录于 [Awes `📅unknown` `[entity_page]`
 - [Robot Policy Evaluation for Sim-to-Real Transfer](wiki/entities/paper-sa-2508-11117-robot-policy-evaluation-for-sim-to-real-transfer.md) — Robot Policy Evaluation for Sim-to-Real Transfer: A Benchmarking Perspective** 收录于 [Awesome-Real2S `📅unknown` `[entity_page]`
 - [Finite Automata Extraction](wiki/entities/paper-sa-2508-11836-finite-automata-extraction-low-data-world-model.md) — Finite Automata Extraction: Low-data World Model Learning as Programs from Gameplay Video** 收录于 [A `📅unknown` `[entity_page]`
@@ -3007,7 +3008,7 @@
 - [ExoGS](wiki/entities/paper-sa-2601-18629-exogs-a-4d-real-to-sim-to-real-framework-for-sca.md) — ExoGS: A 4D Real-to-Sim-to-Real Framework for Scalable Manipulation Data Collection** 收录于 [Awesome `📅unknown` `[entity_page]`
 - [EgoHandICL](wiki/entities/paper-sa-2601-19850-egohandicl-egocentric-3d-hand-reconstruction-wit.md) — EgoHandICL: Egocentric 3D Hand Reconstruction with In-Context Learning** 收录于 [Awesome Egocentric V `📅unknown` `[entity_page]`
 - [TouchGuide](wiki/entities/paper-sa-2601-20239-touchguide-inference-time-steering-of-visuomotor.md) — TouchGuide: Inference-Time Steering of Visuomotor Policies via Touch Guidance** 收录于 [Awesome Touch `📅unknown` `[entity_page]`
-- [TaF-VLA](wiki/entities/paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md) — TaF-VLA: Tactile-Force Alignment in Vision-Language-Action Models for Force-aware Manipulation** 收 `📅unknown` `[entity_page]`
+- [TaF-VLA：VLA 中的触觉–力对齐（arXiv:2601.20321）](wiki/entities/paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md) — TaF-VLA**（*Tactile-Force Alignment in Vision-Language-Action Models for Force-aware Manipulation*， `📅unknown` `[entity_page]`
 - [Advancing Open-source World Models (LingBot-World)](wiki/entities/paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md) — Advancing Open-source World Models (LingBot-World)** 收录于 [Awesome World Models](https://github.com `📅unknown` `[entity_page]`
 - [WorldBench](wiki/entities/paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md) — WorldBench: Disambiguating Physics for Diagnostic Evaluation of World Models** 收录于 [Awesome World  `📅unknown` `[entity_page]`
 - [LingBot-VA](wiki/entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) — LingBot-VA: Causal video-action world model for generalist robot control** 收录于 [Awesome World Mode `📅unknown` `[entity_page]`
@@ -3433,6 +3434,7 @@
 - [SPARK-VLN（动态社会视觉–语言导航）](wiki/entities/paper-spark-vln.md) — SPARK-VLN**（*Token-Wise Latent Streaming from Slow Reasoners to Fast Planners for Dynamic Vision L `📅unknown` `[entity_page]`
 - [SparkVLA](wiki/entities/paper-sparkvla.md) — SparkVLA: Stop-Aware Hierarchical VLA with Adaptive Action Chunking for Long-Horizon Manipulation `📅unknown` `[entity_page]`
 - [SparseDrive（SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation · arXiv:2405.19620）](wiki/entities/paper-sparsedrive.md) — SparseDrive**（*SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation*，[2405.1 `📅unknown` `[entity_page]`
+- [Sparsh：视觉触觉自监督表征（CoRL 2024 · arXiv:2410.24090）](wiki/entities/paper-sparsh.md) — Sparsh**（*Self-supervised touch representations for vision-based tactile sensing*，[arXiv:2410.2409 `📅unknown` `[entity_page]`
 - [Spatial Memory Agent：不调参也能长空间记性](wiki/entities/paper-spatial-memory-agent.md) — Spatial Memory Agent（SMA）**（*Experience-Grounded Procedure Memory for Spatial Intelligence*；[arXiv `📅unknown` `[entity_page]`
 - [Spatially Conditioned Multi-Agent Dexterous（arXiv:2609.06930）](wiki/entities/paper-spatially-conditioned-multi-agent-dexterous.md) — Spatially Conditioned Multi-Agent Dexterous**（*Distributed Dexterous Manipulation with Spatially C `📅unknown` `[entity_page]`
 - [SpatialVLA](wiki/entities/paper-spatialvla.md) — SpatialVLA**（arXiv:2501.15830，[代码](https://github.com/SpatialV `📅unknown` `[entity_page]`
@@ -3563,6 +3565,7 @@
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
 - [Visible-Reachable Workspace（arXiv:2609.08905）](wiki/entities/paper-visible-reachable-workspace-humanoid-design.md) — Visible-Reachable Workspace**（*Visible-Reachable Workspace for Perception-Aware Humanoid Design*， `📅unknown` `[entity_page]`
 - [Vision Aided Dynamic Exploration of Unstructured Terrain](wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md) — Kim et al.（MIT，ICRA 2020，[DOI:10.1109/ICRA40945.2020.9196777](https://doi.org/10.1109/ICRA40945.20 `📅unknown` `[entity_page]`
+- [Vision-Based Tactile Intelligence：VBTS 综述（arXiv:2608.15490）](wiki/entities/paper-vision-based-tactile-intelligence.md) — Vision-Based Tactile Intelligence for Robotics: Sensing, Learning, and Embodied Manipulation**（[ar `📅unknown` `[entity_page]`
 - [视觉特权表征人形足球运球（Lab-RoCoCo）](wiki/entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md) — Vision-Based Dribbling for Humanoid Soccer via Privileged Representation Learning**（Sapienza / CSI `📅unknown` `[entity_page]`
 - [Vision Locomotion（Egocentric Depth 四足穿越复杂地形）](wiki/entities/paper-vision-locomotion-egocentric.md) — Legged Locomotion in Challenging Terrains using Egocentric Vision**（Agarwal et al., [arXiv:2211.07 `📅unknown` `[entity_page]`
 - [Visual Foresight](wiki/entities/paper-visual-foresight-latent-mpc.md) — Visual Foresight** 收录于 具身智能研究室 · 具身世界模型六路线综述  `📅unknown` `[entity_page]`
@@ -4638,6 +4641,7 @@
 - [Awesome-Real2Sim2Real 技术地图](wiki/overview/sun-awesome-r2s2r-technology-map.md) — Awesome-Real2Sim2Real 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
 - [Awesome Touch 技术地图](wiki/overview/sun-awesome-touch-technology-map.md) — Awesome Touch 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
 - [Awesome World Models 技术地图](wiki/overview/sun-awesome-wm-technology-map.md) — Awesome World Models 技术地图** = 外部 Awesome 清单的站内可点开版本（按清单分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
+- [触觉智能九篇论文阅读地图](wiki/overview/tactile-intelligence-nine-papers-map.md) — 触觉智能正从「传感器单点」走向「可维护硬件 + SSL 表征 + 力/语义对齐 VTLA + 触觉世界模型」的分层栈——选型时先定层（硬件/表征/策略/WM），再打开对应实体页核对开源状态与指标。 `📅unknown` `[overview_page]`
 - [T-RO 2026 操作学习：5 篇论文技术地图](wiki/overview/tro-manip-5-papers-technology-map.md) — 2026 年上半年 T-RO 操作学习代表作共同指向：**规模化数据 + 更高级表征（SE(3) 等变、手物几何）+ 无标签视频结构化预训练 + 生成式策略** 正在并行重塑泛化能力；同时 **任务/ `📅unknown` `[overview_page]`
 - [T-RO 分类 01：数据规模化](wiki/overview/tro-manip-category-01-data-scaling.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [T-RO 分类 02：三维与手物表征](wiki/overview/tro-manip-category-02-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
