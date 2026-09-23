@@ -2,7 +2,7 @@
 
 ## [2026-09-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **84** 条信息型预警）：
+共发现 **0** 个问题（另含 **85** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,10 +52,11 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（3 个）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（4 个）
 - DiT（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - OOD（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Training-free（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- Validate（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -201,4 +202,4 @@
 - wiki/entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4757/4757 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4758/4758 (100%) wiki/entity 页有 ingest 来源

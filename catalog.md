@@ -3817,6 +3817,7 @@
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [Shift（shiftapp.nyc）](wiki/entities/shift-app-nyc.md) — Shift**（<https://www.shiftapp.nyc/>）是 **MicroAGI** 推出的消费者服务：在纽约为住户提供 **免费专业保洁**，保洁员佩戴 **头载相机** 录制第 `📅unknown` `[entity_page]`
 - [SIDA（Social Media Image Detection Assistant）](wiki/entities/sida.md) — SIDA** 是面向社交媒体图像的 **伪造检测 + 篡改定位 + 文字解释** 多模态助手：在 VLM 词表中引入特殊 token，同时输出真伪类别、篡改掩码与判定理由。 `📅unknown` `[entity_page]`
+- [Simate（Physical AI Platform + Model + Scientist）](wiki/entities/simate.md) — Simate**（simate.ai， slogan *Intelligence, in motion*）把 Physical AI 拆成 **Plat `📅unknown` `[entity_page]`
 - [SimpleFOC（Arduino-FOC 生态）](wiki/entities/simplefoc.md) — SimpleFOC** 指围绕 Arduino-FOC 库形成的开源项目：跨 MCU 的 **磁场定向控制 `📅unknown` `[entity_page]`
 - [SimToolReal](wiki/entities/simtoolreal.md) — SimToolReal](https://github.com/tylerlum/simtoolreal) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXi `📅unknown` `[entity_page]`
 - [Skild AI](wiki/entities/skild-ai.md) —  字段 | 内容  `📅unknown` `[entity_page]`

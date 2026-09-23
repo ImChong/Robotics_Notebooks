@@ -17,6 +17,7 @@ related:
   - ./vla-sota-leaderboard.md
   - ./paper-prm-as-a-judge.md
   - ./xiaomi-robotics-1.md
+  - ./simate.md
   - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/papers/robodojo_arxiv_2607_04434.md
@@ -185,6 +186,7 @@ sequenceDiagram
 - [RoboBench](./robo-bench.md) — MLLM 认知评测对照
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 论文摘录榜对照
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 已报 RoboDojo 仿真分数的 VLA 案例
+- [Simate](./simate.md) — Sipai 模型绑定 RoboDojo 评测（**进行中、分数未公开**，截至 2026-09-23）
 - [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 冻结 2026-07-03 公开视频做过程评测；SR 与 OPD 排名不完全一致
 - [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) — 独立十任务子集：π0.5+GPT 混合 48% vs Direct 26%（50 对齐实例）
 - [RoboLab](./robolab.md) — NVIDIA 高保真 sim 榜 RoboLab-120；真机策略零样本评测；与 RoboArena ρ=0.94
