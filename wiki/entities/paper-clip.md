@@ -7,13 +7,16 @@ tags:
   - vision-language
   - openai
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2103.00020"
 code: https://github.com/openai/CLIP
 related:
   - ./clip.md
+  - ./paper-llava.md
+  - ./llava.md
   - ./paper-dinov2.md
   - ./paper-openvla.md
+  - ../methods/vla.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
 sources:
   - ../../sources/papers/clip_arxiv_2103_00020.md
@@ -109,12 +112,14 @@ sequenceDiagram
 | 工作 | 相对本页 |
 |------|----------|
 | [DINOv2](./paper-dinov2.md) | 自监督几何特征更强 |
+| [LLaVA](./paper-llava.md) | 冻结 CLIP + 投影 + LLM 指令微调 |
 | [OpenVLA](./paper-openvla.md) | 双塔消费 CLIP 后继 |
 | [RT-2](./paper-rt-2.md) | 把对齐后的 VLM 接到动作 |
 
 ## 关联页面
 
 - [CLIP 模型实体](./clip.md)
+- [LLaVA 论文实体](./paper-llava.md)
 - [DINOv2](./paper-dinov2.md)
 - [OpenVLA](./paper-openvla.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
