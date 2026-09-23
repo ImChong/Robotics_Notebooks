@@ -125,7 +125,7 @@ flowchart LR
 | **④ 评测** | Isaac Arena | [Isaac Lab-Arena](../entities/isaac-lab-arena.md)、[DexBench](../entities/dexbench.md)、[Lightwheel RoboFinals](../entities/lightwheel-robofinals.md) | 通才策略的大规模并行评测 |
 | **⑤ SIL 测试** | MEGA / Isaac Sim / Isaac ROS | [Software-in-the-Loop](../concepts/software-in-the-loop.md)、[Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)、[Isaac Sim](../entities/isaac-sim.md) | 上机前跑真实软件栈回归 |
 | **⑥ 部署** | Isaac ROS | [Isaac ROS Nvblox](../entities/isaac-ros-nvblox.md)、[Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md)、[cuRobo](../entities/curobo.md)、[TensorRT](../entities/tensorrt.md)、[NVIDIA Jetson](../entities/nvidia-jetson.md)、[Jetson Orin NX](../entities/jetson-orin-nx.md) | 机载感知/规划/推理落到 ROS 2 |
-| **⑥ 端到端案例** | —（截图未画） | [Spot locomotion Sim2Real](../entities/nvidia-isaac-lab-spot-locomotion-sim2real.md)、[UR10e 工业装配 Sim2Real](../entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md)、[GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) | 官方把全链跑通的公开样例 |
+| **⑥ 端到端案例** | —（截图未画） | [GR00T G1 E2E 动手课](../entities/nvidia-gr00t-e2e-g1-workflow.md)、[Spot locomotion Sim2Real](../entities/nvidia-isaac-lab-spot-locomotion-sim2real.md)、[UR10e 工业装配 Sim2Real](../entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md)、[GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) | 官方把全链跑通的公开样例 |
 
 ## 工程实践：按缺口选入口
 

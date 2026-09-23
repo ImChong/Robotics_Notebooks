@@ -2,9 +2,10 @@
 type: entity
 tags: [repo, vla, humanoid, nvidia, foundation-policy, lerobot, isaac-lab, deployment]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-23
 summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 GA 参考代码、LeRobot 数据管线、后训练/评测/TensorRT 部署，并与 Isaac Lab-Arena、Teleop、Isaac ROS 组成端到端策略流水线。"
 related:
+  - ./nvidia-gr00t-e2e-g1-workflow.md
   - ../entities/paper-hrl-stack-34-gr00t_n1.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/lerobot.md
@@ -20,6 +21,7 @@ related:
   - ./nvidia-physical-ai-datasets.md
   - ./nvidia-gtc.md
 sources:
+  - ../../sources/courses/nvidia_gr00t_e2e_g1_workflow.md
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
   - ../../sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md
@@ -134,6 +136,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 采数栈：[isaac-teleop.md](./isaac-teleop.md) — Lab 3.x XR 主线；MCAP / LeRobot；Televiz 把头显当瘦客户端  
 - Kuavo 厂商胶水：[letools.md](./letools.md) — Learning 仓将 GR00T N1.5/N1.7 列入统一训练/client 部署  
 - 仿真框架：[isaac-gym-isaac-lab.md](../entities/isaac-gym-isaac-lab.md)  
+- 官方动手课：[nvidia-gr00t-e2e-g1-workflow.md](./nvidia-gr00t-e2e-g1-workflow.md) — G1 apple→plate **仿真/真机双路径** step-by-step 教程
 - 全栈定位：[NVIDIA Physical AI 工具链技术地图](../overview/nvidia-physical-ai-toolchain-technology-map.md) — 本页五阶段在端到端七段里的上下游
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)  
 - 视觉 Sim2Real 姊妹仓：[gr00t-visual-sim2real.md](../entities/gr00t-visual-sim2real.md)
@@ -144,6 +147,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 ## 参考来源
 
 - [isaac_gr00t.md](../../sources/repos/isaac_gr00t.md) — Isaac-GR00T 仓库 README 策展摘录  
+- [nvidia_gr00t_e2e_g1_workflow.md](../../sources/courses/nvidia_gr00t_e2e_g1_workflow.md) — NVIDIA Learning 官方 G1 E2E 动手课归档（2026-09-23）
 - [nvidia_develop_humanoid_robot_policies_isaac_gr00t.md](../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md) — NVIDIA Developer Blog 端到端平台介绍（2026-07-07）  
 - [wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md](../../sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md) — 具身智能研究室中文策展转载（G1 + VR/LeRobot 链路，2026-07-13）  
 - [gr00t_n1_arxiv_2503_14734.md](../../sources/papers/gr00t_n1_arxiv_2503_14734.md) — GR00T N1 论文与白皮书  
@@ -153,7 +157,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 ## 推荐继续阅读
 
 - [Develop Humanoid Robot Policies End-to-End with NVIDIA Isaac GR00T](https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/) — 官方端到端博客  
-- [NVIDIA Learning：GR00T 端到端工作流](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html) — 官方动手教程  
+- [NVIDIA GR00T G1 端到端参考 workflow](./nvidia-gr00t-e2e-g1-workflow.md) — 本库课程实体页；[官方站点](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html)  
 - [GTC 2025 Humanoid Developer Day — Building Humanoid Robots](./nvidia-gtc.md) — Jim Fan 介绍 GR00T 四部分（On-Demand）
 - [Isaac Teleop + GR00T 1.7 LeRobot 集成（HF Blog）](https://huggingface.co/blog/nvidia/nvidia-isaac-teleop-and-gr00t17-in-lerobot)  
 - [GR00T Reference Workflow for Unitree G1（Isaac ROS）](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_physical_ai/tutorials/tutorials.html) — 真机 MCAP → LeRobot → LEAPP 部署  

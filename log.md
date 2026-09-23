@@ -1,4 +1,6 @@
 
+## [2026-09-23] ingest | sources/courses/nvidia_gr00t_e2e_g1_workflow.md — NVIDIA Learning GR00T G1 端到端官方课；新建 nvidia-gr00t-e2e-g1-workflow 并补强 Isaac GR00T / Physical AI Learning 交叉引用
+
 ## [2026-09-23] ingest | sources/papers/llava_arxiv_2304_08485.md — VLA 上游 CLIP/LLaVA 一手资料；新建 paper-llava 与 sources 三件套，补强 VLA/多模态路线交叉引用；CLIP 已开源、LLaVA 已开源
 
 ## [2026-09-23] ingest | sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md — 机器人研发工程师前沿算法六路线盘点；36 项独立节点
