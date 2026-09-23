@@ -59,6 +59,16 @@
       "action": "added"
     },
     {
+      "path": "wiki/entities/paper-lunadrive.md",
+      "detail_id": "entity-paper-lunadrive",
+      "label": "LunaDrive（arXiv:2609.21818）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/paper-mimicagent.md",
       "detail_id": "entity-paper-mimicagent",
       "label": "MimicAgent（arXiv:2609.24145）",
@@ -199,16 +209,6 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/overview/spatial-reasoning-benchmarks-technology-map.md",
-      "detail_id": "wiki-overview-spatial-reasoning-benchmarks-technology-map",
-      "label": "空间推理与指代 Benchmark 阅读地图",
-      "type": "overview",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
