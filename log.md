@@ -1,4 +1,10 @@
 
+## [2026-09-23] ingest | sources/sites/x2-aimdk-agibot.md + sources/repos/aimrt.md — AimDK X2 文档站与 AimRT 运行时深度入库
+
+- **意图：** ingest <https://x2-aimdk.agibot.com/zh-cn/latest/index.html> 与 <https://github.com/AimRT/AimRT>
+- **开源结论：** AimRT **已开源**（Mulan PSL v2，~1408 stars）；AimDK 文档 **公开**，SDK **随文档/硬件分发**（非 GitHub 全量仓）；SLAM/导航选装、视觉接口待开放
+- **关键页：** [agibot-aimdk-x2](wiki/entities/agibot-aimdk-x2.md)、[cn-os-aimrt](wiki/entities/cn-os-aimrt.md)；交叉 [cn-os-agibot-x2-urdf](wiki/entities/cn-os-agibot-x2-urdf.md)
+
 ## [2026-09-23] ingest | sources/courses/mit_underactuated_robotics.md — MIT Underactuated Robotics 全课程章节策展；HTML 主版本 + Drake；升格 painode-074
 
 - **意图：** ingest https://underactuated.mit.edu/index.html

@@ -2,8 +2,10 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-09-23
 related:
+  - ./agibot-aimdk-x2.md
+  - ./cn-os-aimrt.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
@@ -47,8 +49,8 @@ institutions:
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `agibot_x2_urdf` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+2. **真机部署** 需配合 [AimDK X2](./agibot-aimdk-x2.md) SDK 与 [AimRT](./cn-os-aimrt.md) 运行时 — URDF 只解决仿真/训练侧资产引用。
+3. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
 
 ## 局限与风险
 
@@ -57,6 +59,8 @@ institutions:
 
 ## 关联页面
 
+- [AimDK X2（二次开发框架）](./agibot-aimdk-x2.md)
+- [AimRT（部署运行时）](./cn-os-aimrt.md)
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

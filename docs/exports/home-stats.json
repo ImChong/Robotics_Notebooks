@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-23",
-  "node_count": 4773,
-  "edge_count": 41968,
+  "node_count": 4774,
+  "edge_count": 41978,
   "coverage": {
-    "covered": 4744,
-    "total": 4744,
+    "covered": 4745,
+    "total": 4745,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,7 +234,7 @@
     },
     {
       "label": "移动操作",
-      "size": 684
+      "size": 683
     },
     {
       "label": "操作",
