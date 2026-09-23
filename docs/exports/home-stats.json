@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-23",
-  "node_count": 4751,
-  "edge_count": 41751,
+  "node_count": 4754,
+  "edge_count": 41789,
   "coverage": {
-    "covered": 4722,
-    "total": 4722,
+    "covered": 4725,
+    "total": 4725,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -16,6 +16,16 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-lunadrive.md",
+      "detail_id": "entity-paper-lunadrive",
+      "label": "LunaDrive（arXiv:2609.21818）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-mimicagent.md",
@@ -35,7 +45,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-scientisttwo.md",
@@ -45,7 +55,7 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-strider.md",
@@ -66,7 +76,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab） 社区"
     },
     {
       "path": "wiki/entities/paper-msfp-embodied-ai-survey.md",
@@ -75,7 +85,8 @@
       "type": "entity",
       "recency": "2026-09-22",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-wam-design-empirical-study.md",
@@ -84,7 +95,8 @@
       "type": "entity",
       "recency": "2026-09-22",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/humanoidverse.md",
@@ -105,7 +117,7 @@
       "recency": "2026-09-22",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md",
@@ -145,7 +157,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-relateanything.md",
@@ -156,7 +168,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/overview/spatial-reasoning-benchmarks-technology-map.md",
@@ -166,7 +178,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/embspatial.md",
@@ -176,7 +188,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/er-point-bench.md",
@@ -186,7 +198,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/molmo-er.md",
@@ -196,18 +208,7 @@
       "recency": "2026-09-21",
       "source": "git",
       "action": "added",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cambrian-1.md",
-      "detail_id": "entity-paper-cambrian-1",
-      "label": "Cambrian-1：视觉中心 MLLM 开源探索",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -221,28 +222,28 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 702
-    },
-    {
       "label": "移动操作",
-      "size": 685
+      "size": 671
     },
     {
-      "label": "具身评测基准选型闭环",
-      "size": 343
+      "label": "操作",
+      "size": 670
+    },
+    {
+      "label": "世界动作模型",
+      "size": 655
     },
     {
       "label": "仿真到现实",
-      "size": 332
+      "size": 321
     },
     {
       "label": "国内开源全景 424 项阅读导航",
       "size": 294
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 239
+      "label": "全身控制",
+      "size": 277
     }
   ],
   "top_hubs": [
@@ -250,7 +251,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1757,
+      "degree": 1763,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -258,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1339,
+      "degree": 1344,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -353,7 +354,8 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 65
+      "degree": 65,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -369,14 +371,14 @@
       "type": "entity",
       "degree": 58,
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "detail_id": "entity-paper-light-loco-parkour",
       "label": "Light-Loco-Parkour（LightLP）",
       "type": "entity",
       "degree": 51,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -400,7 +402,7 @@
       "type": "entity",
       "degree": 48,
       "has_repo": true,
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ]
 }

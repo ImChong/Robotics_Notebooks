@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-action-model, representation, libero, casia, ucas, nus, tsinghua, fudan]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2609.04193"
 related:
   - ../methods/vla.md
@@ -111,11 +111,13 @@ flowchart TB
 | 纯 VLA 视觉预训练 | 优化看懂场景；GIFT 优化「动作够不够用」 |
 | [SA-WAM](./paper-sa-wam.md) | SA-WAM 把 depth 几何塞进扩散骨干；GIFT 监督中间特征并可接 VLA/WAM |
 | [MINERVA](./paper-minerva-libero.md) | MINERVA 量闭集容量下限；GIFT 量分布转移下的结构监督收益 |
+| [THAW-VLA](./paper-thaw-vla.md) | 同为中间特征监督；THAW-VLA teacher 来自 WAM 且离线 cache，部署零额外开销 |
 
 ## 关联页面
 
 - [VLA](../methods/vla.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [THAW-VLA](./paper-thaw-vla.md)
 - [Manipulation](../tasks/manipulation.md)
 - [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
 

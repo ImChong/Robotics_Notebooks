@@ -2,7 +2,7 @@
 
 ## [2026-09-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **69** 条信息型预警）：
+共发现 **0** 个问题（另含 **71** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -103,7 +103,7 @@
 - wiki/entities/paper-ross-dagger.md
 - wiki/entities/paper-strider.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（33 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（34 个）
 - wiki/entities/paper-attention-is-all-you-need.md（缺 对比）
 - wiki/entities/paper-bfm-30-diayn.md（缺 对比）
 - wiki/entities/paper-cambrian-1.md（缺 评测 / 对比）
@@ -134,6 +134,7 @@
 - wiki/entities/paper-scientisttwo.md（缺 对比）
 - wiki/entities/paper-srdf-vln-flywheel.md（缺 评测 / 对比）
 - wiki/entities/paper-strider.md（缺 对比）
+- wiki/entities/paper-thaw-vla.md（缺 对比）
 - wiki/entities/paper-tolebi.md（缺 评测 / 对比）
 - wiki/entities/paper-trackvla.md（缺 评测 / 对比）
 - wiki/entities/paper-vision-locomotion-egocentric.md（缺 对比）
@@ -157,8 +158,8 @@
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/concepts/strong-pair-data.md
 
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -187,4 +188,4 @@
 - wiki/entities/paper-rpv-semnav.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4722/4722 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4725/4725 (100%) wiki/entity 页有 ingest 来源
