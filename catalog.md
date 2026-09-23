@@ -35,6 +35,7 @@
 - [Embody（Anthropic）](wiki/entities/anthropic-embody.md) — Embody** 是 Anthropic Frontier Red Team 用来量「通用语言模型接到机器人之后能做什么」的评测套件：分数按 **具身 × 控制接口** 堆叠，而不是只报一个聊天模 `📅unknown` `[entity_page]`
 - [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md) — AnyGrasp** 是上海交通大学 MVIG 团队提出的 **通用抓取感知** 系统：在 **平行夹爪** 设定下，从 **单目深度得到的场景点云** 中 **一次性** 预测 **稠密 7-D `📅unknown` `[entity_page]`
 - [ANYmal 四足机器人](wiki/entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
+- [ApexDrive AI（selfdriving-car）](wiki/entities/apexdrive-ai.md) — ApexDrive AI**（[poojithinavolu/selfdriving-car](https://github.com/poojithinavolu/selfdriving-car `📅unknown` `[entity_page]`
 - [Appen](wiki/entities/appen.md) — Appen**（澳交所：**APX**，悉尼）是全球 **AI 训练与后训练数据** 供应商之一。LeoInAI Substack（2026-09）引用其管理层对 **egocentric 物理操 `📅unknown` `[entity_page]`
 - [AprilTag（视觉 fiducial 与检测库）](wiki/entities/april-tag.md) — AprilTag** 是一类为**机器人、相机标定与 AR** 设计的**视觉基准标记（visual fiducial）**系统：标记可用普通打印机制作，软件从图像中恢复每个标记的 **ID**  `📅unknown` `[entity_page]`
 - [APXInf（VLA 端侧推理引擎）](wiki/entities/apxinf.md) — APXInf**（`RLinf/APXinf-robo`，引擎核心 [`infinigence/ApxInf`](h `📅unknown` `[entity_page]`

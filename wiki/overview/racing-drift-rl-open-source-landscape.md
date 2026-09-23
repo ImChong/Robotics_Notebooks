@@ -13,6 +13,7 @@ related:
   - ../entities/drive-game.md
   - ../entities/nordschleife-racer.md
   - ../entities/starter-kit-racing.md
+  - ../entities/apexdrive-ai.md
   - ../entities/carla.md
   - ../concepts/sim2real.md
   - ../overview/sim-platforms-decade-technology-map.md
@@ -32,7 +33,8 @@ sources:
   - ../../sources/repos/drive_game.md
   - ../../sources/repos/nordschleife_racer.md
   - ../../sources/repos/starter_kit_racing.md
-summary: "赛车/漂移与纽北驾驶开源景观：RL/MPC/F1TENTH 训练栈 + 浏览器 Three.js 驾驶引擎（drive-game、nordschleife-racer、starter-kit-racing），按仿真后端与控制范式分组选型。"
+  - ../../sources/repos/selfdriving-car.md
+summary: "赛车/漂移与纽北驾驶开源景观：RL/MPC/F1TENTH 训练栈 + 浏览器 Three.js 驾驶引擎（drive-game、nordschleife-racer、starter-kit-racing）+ 2D Neuroevolution 教学仿真（ApexDrive AI），按仿真后端与控制范式分组选型。"
 ---
 
 # 赛车漂移强化学习开源景观
@@ -107,6 +109,7 @@ flowchart TB
 | **drive-game** | OSM/DEM 真几何纽北 + **240 Hz** Pacejka 物理；Web/Android | [drive-game.pages.dev](https://drive-game.pages.dev) 可本地 `npm run dev` | 已开源 MIT | [drive-game](../entities/drive-game.md) |
 | **nordschleife-racer** | TS 程序化纽北 + 漂移物理 + Supabase 多人/榜 | 玩：[yassin.app](https://yassin.app)；仓为引擎切片 | 引擎 MIT；GLB/后端未入库 | [nordschleife-racer](../entities/nordschleife-racer.md) |
 | **starter-kit-racing** | Kenney Godot→JS 街机移植；GridMap 编辑器 | [Pages 在线](https://mrdoob.github.io/Starter-Kit-Racing/)；CDN 零构建 | 已开源 MIT | [starter-kit-racing](../entities/starter-kit-racing.md) |
+| **ApexDrive AI** | 2D 射线感知 + NumPy MLP + GA Neuroevolution；7 赛道 GUI/无头训练 | Pygame + NumPy | 已开源（无 LICENSE 文件） | [apexdrive-ai](../entities/apexdrive-ai.md) |
 | **SuperTuxKart** | GPL 卡丁车；Git code + SVN assets；趣味物理、在线多人 | 原生 Linux/Win/macOS/Android/Switch；Releases **1.5** | 已开源 GPL | [supertuxkart](../entities/supertuxkart.md) |
 
 ```mermaid
@@ -142,6 +145,7 @@ flowchart LR
 | 本地可 fork 的纽北模拟器 | [drive-game](../entities/drive-game.md) | `npm run dev`；非 RL 环境 |
 | 读漂移/多人引擎源码 | [nordschleife-racer](../entities/nordschleife-racer.md) | 完整游玩靠 yassin.app；车模不在仓内 |
 | 最小 Three.js 街机赛车样板 | [starter-kit-racing](../entities/starter-kit-racing.md) | arcade 物理非 Pacejka；CDN 离线需改 importmap |
+| 理解 Neuroevolution 连续控制（零 DL 框架） | [apexdrive-ai](../entities/apexdrive-ai.md) | 2D 拓扑非 3D AD；GA 样本效率低于现代 RL |
 
 ## RL vs MPC：如何读这条线
 
