@@ -8,10 +8,12 @@ related:
   - ../methods/trajectory-optimization.md
   - ../concepts/whole-body-control.md
   - ../tasks/locomotion.md
+  - ./painode-074-mitunderactuatedrobotics.md
   - ./mujoco.md
   - ./adams.md
 sources:
   - ../../sources/papers/simulation.md
+  - ../../sources/courses/mit_underactuated_robotics.md
 summary: "Drake 是由丰田研究院（TRI）主导开发的开源 C++ 机器人工具箱，以其在轨迹优化（直接配点法）和严谨动力学建模方面的统治力而闻名。"
 ---
 

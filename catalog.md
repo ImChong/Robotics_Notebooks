@@ -849,7 +849,7 @@
 - [DeepMind x UCL RL Lecture Series](wiki/entities/painode-071-deepmindxuclrllectureseries.md) — DeepMind x UCL RL Lecture Series** 收录于 awesome-physical-ai（natnew）**第 071/384** 条，分组 **Courses**。本 `📅unknown` `[entity_page]`
 - [Fast.ai Practical Deep Learning](wiki/entities/painode-072-fastaipracticaldeeplearning.md) — Fast.ai Practical Deep Learning** 收录于 awesome-physical-ai（natnew）**第 072/384** 条，分组 **Courses**。本页 `📅unknown` `[entity_page]`
 - [Hugging Face Deep RL Course](wiki/entities/painode-073-huggingfacedeeprlcourse.md) — Hugging Face Deep RL Course** 收录于 awesome-physical-ai（natnew）**第 073/384** 条，分组 **Courses**。本页为知识库 `📅unknown` `[entity_page]`
-- [MIT Underactuated Robotics](wiki/entities/painode-074-mitunderactuatedrobotics.md) — MIT Underactuated Robotics** 收录于 awesome-physical-ai（natnew）**第 074/384** 条，分组 **Courses**。本页为知识库  `📅unknown` `[entity_page]`
+- [MIT Underactuated Robotics 学习策展](wiki/entities/painode-074-mitunderactuatedrobotics.md) — 一句话：** Russ Tedrake 的 [Underactuated Robotic `📅unknown` `[entity_page]`
 - [NVIDIA DLI Robotics](wiki/entities/painode-075-nvidiadlirobotics.md) — NVIDIA DLI Robotics** 收录于 awesome-physical-ai（natnew）**第 075/384** 条，分组 **Courses**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
 - [Spinning Up in Deep RL (OpenAI)](wiki/entities/painode-076-spinningupindeeprlopenai.md) — Spinning Up in Deep RL (OpenAI)** 收录于 awesome-physical-ai（natnew）**第 076/384** 条，分组 **Courses**。本页 `📅unknown` `[entity_page]`
 - [zero2robot](wiki/entities/painode-077-zero2robot.md) — zero2robot** 收录于 awesome-physical-ai（natnew）**第 077/384** 条，分组 **Courses**。本页为知识库 **策展索引级** 详情节点；细 `📅unknown` `[entity_page]`
