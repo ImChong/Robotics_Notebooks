@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/mimo-v2-6.md",
+      "detail_id": "entity-mimo-v2-6",
+      "label": "MiMo-V2.6（Scaling RL Toward Self-Improvement）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
       "path": "wiki/entities/simate.md",
       "detail_id": "entity-simate",
       "label": "Simate（Physical AI Platform + Model + Scientist）",
@@ -204,27 +215,17 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-me-u0.md",
-      "detail_id": "entity-paper-me-u0",
-      "label": "MachEmbodied-U0（arXiv:2609.25627）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/simate.md",
-    "detail_id": "entity-simate",
-    "label": "Simate（Physical AI Platform + Model + Scientist）",
+    "path": "wiki/entities/mimo-v2-6.md",
+    "detail_id": "entity-mimo-v2-6",
+    "label": "MiMo-V2.6（Scaling RL Toward Self-Improvement）",
     "type": "entity",
     "recency": "2026-09-23",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
