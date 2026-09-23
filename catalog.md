@@ -15,6 +15,7 @@
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`
 - [Agent Skills（Addy Osmani）](wiki/entities/agent-skills-addyosmani.md) — Agent Skills** 是 addyosmani/agent-skills 仓库及其 [skill `📅unknown` `[entity_page]`
 - [AGILE（智元感控一体）](wiki/entities/agibot-agile.md) — AGILE** 是智元在 2026-06 发布地图 中推出的 **感控一体能力底 `📅unknown` `[entity_page]`
+- [AimDK X2（灵犀 X2 二次开发框架）](wiki/entities/agibot-aimdk-x2.md) — AimDK X2** 是智元机器人（AgiBot）为 **灵犀 X2** 人形提供的 **任务编程与扩展框架**：通过 [官方文档站](https://x2-aimdk.agibot.com/zh `📅unknown` `[entity_page]`
 - [BFM-2（智元运控基座）](wiki/entities/agibot-bfm-2.md) — BFM-2** 是智元在 2026-06 发布地图 中推出的 **运动小脑 /  `📅unknown` `[entity_page]`
 - [智元灵犀 X1（Agibot 开源人形）](wiki/entities/agibot-lingxi-x1.md) — 灵犀 X1** 是智元机器人 **Agibot** 品牌的开源人形方案：以 **文档中心** 提供 BOM、整机图纸、装机 SO `📅unknown` `[entity_page]`
 - [AGIBOT WORLD 2026](wiki/entities/agibot-world-2026.md) — AGIBOT WORLD 2026** 是智元在 Agibot-World 生态下发布的 **真实环境机器人学习数据集**（Hugging `📅unknown` `[entity_page]`
@@ -118,7 +119,7 @@
 - [agibot_x1_train](wiki/entities/cn-os-agibot-x1-train.md) — agibot_x1_train** 是 智元机器人 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真 `📅unknown` `[entity_page]`
 - [agibot_x2_urdf](wiki/entities/cn-os-agibot-x2-urdf.md) — agibot_x2_urdf** 是 智元机器人 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/U `📅unknown` `[entity_page]`
 - [agillink_omnihand_sdk](wiki/entities/cn-os-agillink-omnihand-sdk.md) — agillink_omnihand_sdk** 是 智元机器人 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状 `📅unknown` `[entity_page]`
-- [AimRT](wiki/entities/cn-os-aimrt.md) — AimRT** 是 智元机器人 公开的 **部署运行时** 开源项目：C++运行时通过插件和声明式配置组织线程、资源、通信与部署， `📅unknown` `[entity_page]`
+- [AimRT](wiki/entities/cn-os-aimrt.md) — AimRT** 是 智元机器人 开源的 **Modern C++ 机器人运行时框架**（[GitHub](https://gith `📅unknown` `[entity_page]`
 - [AIRBOT-Play-Hardware](wiki/entities/cn-os-airbot-play-hardware.md) — AIRBOT-Play-Hardware** 是 求之科技 公开的 **本体模型资产** 开源项目：AIRBOT Play `📅unknown` `[entity_page]`
 - [Alicia-D-Leader-ROS](wiki/entities/cn-os-alicia-d-leader-ros.md) — Alicia-D-Leader-ROS** 是 玄雅科技 公开的 **遥操作与数据采集** 开源项目：Alicia-D  `📅unknown` `[entity_page]`
 - [Alicia-D-ROS2](wiki/entities/cn-os-alicia-d-ros2.md) — Alicia-D-ROS2** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：Alicia-D 机械臂 ROS2 `📅unknown` `[entity_page]`
