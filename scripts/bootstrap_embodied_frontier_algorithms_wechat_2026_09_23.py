@@ -16,34 +16,202 @@ WX_URL = "https://mp.weixin.qq.com/s/JtoOU_ncZz5SEikmsZB3Xg"
 
 # reuse: existing wiki/entities filename (no paper- prefix for cn-os/openvla)
 REUSE: list[dict] = [
-    {"short": "OpenVLA", "reuse": "openvla.md", "route": "VLA", "arxiv": "2406.09246", "open": "已开源"},
-    {"short": "Octo", "reuse": "paper-octo.md", "route": "VLA", "arxiv": "2405.11172", "open": "已开源"},
-    {"short": "π-0", "reuse": "paper-pi0.md", "route": "VLA", "arxiv": "2503.06669", "open": "已开源"},
-    {"short": "π-0.5", "reuse": "paper-pi05-open-world-vla.md", "route": "VLA", "arxiv": "2503.06669", "open": "已开源"},
-    {"short": "ViLLA", "reuse": "paper-shenlan-wm-05-villa-x.md", "route": "VLA", "arxiv": None, "open": "部分开源"},
-    {"short": "GR00T N1", "reuse": "isaac-gr00t.md", "route": "VLA", "arxiv": None, "open": "已开源"},
-    {"short": "Green-VLA", "reuse": "paper-greenvla-staged-vla-humanoid.md", "route": "VLA", "arxiv": None, "open": "部分开源"},
-    {"short": "Gemini Robotics 2", "reuse": "gemini-robotics.md", "route": "VLA", "arxiv": None, "open": "未开源"},
-    {"short": "DreamZero", "reuse": "paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md", "route": "WAM", "arxiv": "2602.15922", "open": "已开源"},
-    {"short": "JEPA / V-JEPA 2", "reuse": "paper-vjepa2.md", "route": "WAM", "arxiv": "2506.09985", "open": "已开源"},
-    {"short": "AMP", "reuse": "amp-for-hardware.md", "route": "Legged", "arxiv": "2109.05498", "open": "已开源"},
-    {"short": "OpenWBT", "reuse": "cn-os-openwbt.md", "route": "Legged", "arxiv": None, "open": "已开源"},
-    {"short": "RMA", "reuse": "paper-rma-rapid-motor-adaptation.md", "route": "Legged", "arxiv": "2104.08776", "open": "已开源"},
-    {"short": "Diffusion Policy", "reuse": "paper-diffusion-policy.md", "route": "Manipulation", "arxiv": "2303.04137", "open": "已开源"},
-    {"short": "RDT-1B", "reuse": "paper-rdt-1b.md", "route": "Manipulation", "arxiv": "2410.07835", "open": "已开源"},
-    {"short": "GraspVLA", "reuse": "cn-os-graspvla.md", "route": "Manipulation", "arxiv": None, "open": "已开源"},
-    {"short": "Tactile-VLA", "reuse": "paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md", "route": "Tactile", "arxiv": "2507.09160", "open": "已开源"},
-    {"short": "ACE-Ego", "reuse": "paper-sa-2606-17200-ace-ego-0-unifying-egocentric-human-and-robotic.md", "route": "2026-VLA", "arxiv": "2606.11241", "open": "已开源"},
-    {"short": "LingBot-VLA", "reuse": "lingbot-vla.md", "route": "2026-VLA", "arxiv": "2601.18692", "open": "已开源"},
-    {"short": "DM0 / Dexbotic", "reuse": "dexmal-dm05.md", "route": "2026-VLA", "arxiv": "2602.08943", "open": "已开源"},
-    {"short": "Motus", "reuse": "paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md", "route": "2026-WAM", "arxiv": "2601.04278", "open": "已开源"},
-    {"short": "EnerVerse-AC", "reuse": "paper-sa-2501-01895-enerverse-envisioning-embodied-future-space-for.md", "route": "2026-WAM", "arxiv": "2511.06722", "open": "已开源"},
-    {"short": "LeTools", "reuse": "letools.md", "route": "2026-Loco", "arxiv": None, "open": "已开源"},
-    {"short": "HumanTracker", "reuse": "paper-humantracker.md", "route": "2026-Loco", "arxiv": None, "open": "已开源"},
-    {"short": "LIMMT / GQS", "reuse": "../methods/limmt-gqs-motion-curation.md", "route": "2026-Loco", "arxiv": "2606.06953", "open": "已开源"},
-    {"short": "XR-1", "reuse": "cn-os-xr-1.md", "route": "VLA", "arxiv": "2511.02776", "open": "已开源"},
-    {"short": "Awesome Legged Locomotion", "reuse": "awesome-legged-locomotion-learning.md", "route": "Awesome", "arxiv": None, "open": "已开源"},
-    {"short": "Awesome Physical AI", "reuse": "awesome-physical-ai-natnew.md", "route": "Awesome", "arxiv": None, "open": "已开源"},
+    {
+        "short": "OpenVLA",
+        "reuse": "openvla.md",
+        "route": "VLA",
+        "arxiv": "2406.09246",
+        "open": "已开源",
+    },
+    {
+        "short": "Octo",
+        "reuse": "paper-octo.md",
+        "route": "VLA",
+        "arxiv": "2405.11172",
+        "open": "已开源",
+    },
+    {
+        "short": "π-0",
+        "reuse": "paper-pi0.md",
+        "route": "VLA",
+        "arxiv": "2503.06669",
+        "open": "已开源",
+    },
+    {
+        "short": "π-0.5",
+        "reuse": "paper-pi05-open-world-vla.md",
+        "route": "VLA",
+        "arxiv": "2503.06669",
+        "open": "已开源",
+    },
+    {
+        "short": "ViLLA",
+        "reuse": "paper-shenlan-wm-05-villa-x.md",
+        "route": "VLA",
+        "arxiv": None,
+        "open": "部分开源",
+    },
+    {
+        "short": "GR00T N1",
+        "reuse": "isaac-gr00t.md",
+        "route": "VLA",
+        "arxiv": None,
+        "open": "已开源",
+    },
+    {
+        "short": "Green-VLA",
+        "reuse": "paper-greenvla-staged-vla-humanoid.md",
+        "route": "VLA",
+        "arxiv": None,
+        "open": "部分开源",
+    },
+    {
+        "short": "Gemini Robotics 2",
+        "reuse": "gemini-robotics.md",
+        "route": "VLA",
+        "arxiv": None,
+        "open": "未开源",
+    },
+    {
+        "short": "DreamZero",
+        "reuse": "paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md",
+        "route": "WAM",
+        "arxiv": "2602.15922",
+        "open": "已开源",
+    },
+    {
+        "short": "JEPA / V-JEPA 2",
+        "reuse": "paper-vjepa2.md",
+        "route": "WAM",
+        "arxiv": "2506.09985",
+        "open": "已开源",
+    },
+    {
+        "short": "AMP",
+        "reuse": "amp-for-hardware.md",
+        "route": "Legged",
+        "arxiv": "2109.05498",
+        "open": "已开源",
+    },
+    {
+        "short": "OpenWBT",
+        "reuse": "cn-os-openwbt.md",
+        "route": "Legged",
+        "arxiv": None,
+        "open": "已开源",
+    },
+    {
+        "short": "RMA",
+        "reuse": "paper-rma-rapid-motor-adaptation.md",
+        "route": "Legged",
+        "arxiv": "2104.08776",
+        "open": "已开源",
+    },
+    {
+        "short": "Diffusion Policy",
+        "reuse": "paper-diffusion-policy.md",
+        "route": "Manipulation",
+        "arxiv": "2303.04137",
+        "open": "已开源",
+    },
+    {
+        "short": "RDT-1B",
+        "reuse": "paper-rdt-1b.md",
+        "route": "Manipulation",
+        "arxiv": "2410.07835",
+        "open": "已开源",
+    },
+    {
+        "short": "GraspVLA",
+        "reuse": "cn-os-graspvla.md",
+        "route": "Manipulation",
+        "arxiv": None,
+        "open": "已开源",
+    },
+    {
+        "short": "Tactile-VLA",
+        "reuse": "paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md",
+        "route": "Tactile",
+        "arxiv": "2507.09160",
+        "open": "已开源",
+    },
+    {
+        "short": "ACE-Ego",
+        "reuse": "paper-sa-2606-17200-ace-ego-0-unifying-egocentric-human-and-robotic.md",
+        "route": "2026-VLA",
+        "arxiv": "2606.11241",
+        "open": "已开源",
+    },
+    {
+        "short": "LingBot-VLA",
+        "reuse": "lingbot-vla.md",
+        "route": "2026-VLA",
+        "arxiv": "2601.18692",
+        "open": "已开源",
+    },
+    {
+        "short": "DM0 / Dexbotic",
+        "reuse": "dexmal-dm05.md",
+        "route": "2026-VLA",
+        "arxiv": "2602.08943",
+        "open": "已开源",
+    },
+    {
+        "short": "Motus",
+        "reuse": "paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md",
+        "route": "2026-WAM",
+        "arxiv": "2601.04278",
+        "open": "已开源",
+    },
+    {
+        "short": "EnerVerse-AC",
+        "reuse": "paper-sa-2501-01895-enerverse-envisioning-embodied-future-space-for.md",
+        "route": "2026-WAM",
+        "arxiv": "2511.06722",
+        "open": "已开源",
+    },
+    {
+        "short": "LeTools",
+        "reuse": "letools.md",
+        "route": "2026-Loco",
+        "arxiv": None,
+        "open": "已开源",
+    },
+    {
+        "short": "HumanTracker",
+        "reuse": "paper-humantracker.md",
+        "route": "2026-Loco",
+        "arxiv": None,
+        "open": "已开源",
+    },
+    {
+        "short": "LIMMT / GQS",
+        "reuse": "../methods/limmt-gqs-motion-curation.md",
+        "route": "2026-Loco",
+        "arxiv": "2606.06953",
+        "open": "已开源",
+    },
+    {
+        "short": "XR-1",
+        "reuse": "cn-os-xr-1.md",
+        "route": "VLA",
+        "arxiv": "2511.02776",
+        "open": "已开源",
+    },
+    {
+        "short": "Awesome Legged Locomotion",
+        "reuse": "awesome-legged-locomotion-learning.md",
+        "route": "Awesome",
+        "arxiv": None,
+        "open": "已开源",
+    },
+    {
+        "short": "Awesome Physical AI",
+        "reuse": "awesome-physical-ai-natnew.md",
+        "route": "Awesome",
+        "arxiv": None,
+        "open": "已开源",
+    },
 ]
 
 NEW_PAPERS: list[dict] = [
@@ -62,9 +230,18 @@ NEW_PAPERS: list[dict] = [
         "mechanism": "Recurrent Progress Monitor 估计进度；Adaptive Execution Protocol 决定继续执行或丢弃剩余 chunk；per-task 校准因子在线适配。",
         "metrics": "LIBERO / RoboTwin / 真机；易任务维持成功率下减推理次数，难任务抬成功。",
         "conclusion": "TempoWAM 把 WAM 部署瓶颈从「预测多准」部分转成「何时重规划」；入库日未见独立官方仓库。",
-        "related": ["../concepts/world-action-models.md", "../methods/generative-world-models.md", "./paper-fast-wam.md", "./paper-memorywam.md"],
+        "related": [
+            "../concepts/world-action-models.md",
+            "../methods/generative-world-models.md",
+            "./paper-fast-wam.md",
+            "./paper-memorywam.md",
+        ],
         "abbrev": [
-            ("TempoWAM", "Timing Execution by Monitoring Progress Online", "本文自适应 WAM 执行方案"),
+            (
+                "TempoWAM",
+                "Timing Execution by Monitoring Progress Online",
+                "本文自适应 WAM 执行方案",
+            ),
             ("WAM", "World Action Model", "联合预测动作与环境演化"),
             ("RPM", "Recurrent Progress Monitor", "循环进度监测模块"),
             ("AEP", "Adaptive Execution Protocol", "自适应执行/重规划协议"),
@@ -85,7 +262,12 @@ NEW_PAPERS: list[dict] = [
         "mechanism": "Step-GRPO 把前序步骤作 Guided Precursors；三部分评测（General / Planning / E2E Sim）；VLM-PlanSim-99（AI2-THOR）。",
         "metrics": "多基准 SOTA（以原文为准）；HF EmbodiedBrain-7B 权重已发布。",
         "conclusion": "EmbodiedBrain 代表「规划专用 VLM + 真实仿真评测」路线；与 OpenVLA 等低层策略互补而非替代。",
-        "related": ["../tasks/manipulation.md", "../methods/vla.md", "./paper-openeai-vla.md", "../overview/embodied-frontier-algorithms-technology-map.md"],
+        "related": [
+            "../tasks/manipulation.md",
+            "../methods/vla.md",
+            "./paper-openeai-vla.md",
+            "../overview/embodied-frontier-algorithms-technology-map.md",
+        ],
         "abbrev": [
             ("EmbodiedBrain", "EmbodiedBrain", "中兴 NebulaBrain 具身规划 VLM"),
             ("Step-GRPO", "Step-Augmented Group Relative Policy Optimization", "长时序 RL 微调"),
@@ -108,7 +290,12 @@ NEW_PAPERS: list[dict] = [
         "mechanism": "MDH 优化臂结构 + 动力学补偿 PID + rolling action-chunk 插值；VLM 骨干 + 生成式 action head；统一数据转换管线。",
         "metrics": "四任务真机；OpenEAI-Arm 在同策略下优于两款商业 6+1 臂（作者报告）。",
         "conclusion": "OpenEAI 是「低成本臂 + 小数据 VLA」复现参考；论文写 codes 录用后发布，入库日以 ORoboSoul 分支为准。",
-        "related": ["../methods/vla.md", "./paper-pi0.md", "./lerobot.md", "../tasks/manipulation.md"],
+        "related": [
+            "../methods/vla.md",
+            "./paper-pi0.md",
+            "./lerobot.md",
+            "../tasks/manipulation.md",
+        ],
         "abbrev": [
             ("OpenEAI", "Open-source Embodied AI", "本文硬件–软件统一平台"),
             ("VLA", "Vision-Language-Action", "视觉–语言–动作策略"),
@@ -131,7 +318,12 @@ NEW_PAPERS: list[dict] = [
         "mechanism": "小型 VLM + Bridge Attention 融合机器人状态/动作；强调跨本体低成本微调。",
         "metrics": "LIBERO 等榜（以原文与仓库 README 为准）；社区复现见 vla-open-source-repro-landscape-2025。",
         "conclusion": "VLA-Adapter 是轻量 VLA 工程基线之一；选型时勿与 OpenPI 数据规模假设混用。",
-        "related": ["../methods/vla.md", "../overview/vla-open-source-repro-landscape-2025.md", "./openvla.md", "./paper-reflexvla.md"],
+        "related": [
+            "../methods/vla.md",
+            "../overview/vla-open-source-repro-landscape-2025.md",
+            "./openvla.md",
+            "./paper-reflexvla.md",
+        ],
         "abbrev": [
             ("VLA-Adapter", "Vision-Language-Action Adapter", "本文轻量 VLA 范式"),
             ("VLA", "Vision-Language-Action", "视觉–语言–动作策略"),
@@ -154,7 +346,12 @@ NEW_PAPERS: list[dict] = [
         "mechanism": "MoT 视频 DiT + 动作 DiT；gist token 蒸馏长程；推理跳过像素生成只更新 KV。",
         "metrics": "RMBench 等长时序记忆依赖任务（作者报告 83.0% 均值等）。",
         "conclusion": "MemoryWAM 代表 WAM 记忆结构工程化；与 TempoWAM 执行层、Fast-WAM 延迟优化可组合阅读。",
-        "related": ["../concepts/world-action-models.md", "./paper-fast-wam.md", "./paper-tempowam.md", "./lingbot-vla.md"],
+        "related": [
+            "../concepts/world-action-models.md",
+            "./paper-fast-wam.md",
+            "./paper-tempowam.md",
+            "./lingbot-vla.md",
+        ],
         "abbrev": [
             ("MemoryWAM", "Memory World Action Model", "本文带持久记忆的 WAM"),
             ("WAM", "World Action Model", "世界–动作联合模型"),
@@ -177,7 +374,12 @@ NEW_PAPERS: list[dict] = [
         "mechanism": "混合遥操作 + MuJoCo 数字孪生；100K sim + 10K+ 真机轨迹；clip 级质量判别降权噪声示范。",
         "metrics": "基础任务 90% 成功；灵巧平均 66.7%（作者报告）；ICRA 2026。",
         "conclusion": "Dexora 把高 DoF 双手 VLA 拉到可开源复现；部署前核对 LeRobot v2.1 数据 schema 与硬件栈。",
-        "related": ["../methods/vla.md", "../tasks/manipulation.md", "./paper-rdt-1b.md", "./cn-os-graspvla.md"],
+        "related": [
+            "../methods/vla.md",
+            "../tasks/manipulation.md",
+            "./paper-rdt-1b.md",
+            "./cn-os-graspvla.md",
+        ],
         "abbrev": [
             ("Dexora", "Dexora VLA", "本文 36-DoF 双手 VLA"),
             ("VLA", "Vision-Language-Action", "视觉–语言–动作策略"),
@@ -200,7 +402,12 @@ NEW_PAPERS: list[dict] = [
         "mechanism": "Wan2.2-TI2V 视频骨干 + Action DiT；推理只过一遍 clean latent 直接出动作 chunk。",
         "metrics": "仿真与真机折毛巾等；无具身预训练仍 competitive（作者报告）。",
         "conclusion": "Fast-WAM 证明 WAM 价值可在训练期视频建模中兑现，推理不必每步想象；TempoWAM/MemoryWAM 是互补层。",
-        "related": ["../concepts/world-action-models.md", "./paper-memorywam.md", "./paper-tempowam.md", "./paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md"],
+        "related": [
+            "../concepts/world-action-models.md",
+            "./paper-memorywam.md",
+            "./paper-tempowam.md",
+            "./paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md",
+        ],
         "abbrev": [
             ("Fast-WAM", "Fast World Action Model", "本文低延迟 WAM"),
             ("WAM", "World Action Model", "世界–动作联合模型"),
@@ -218,7 +425,10 @@ NEW_REPOS: list[dict] = [
         "open": "已开源",
         "route": "Awesome",
         "one_liner": "具身智能每日顶会/arXiv 论文速递 issue 仓库；公众号盘点常作索引入口。",
-        "related": ["../overview/embodied-frontier-algorithms-technology-map.md", "../methods/vla.md"],
+        "related": [
+            "../overview/embodied-frontier-algorithms-technology-map.md",
+            "../methods/vla.md",
+        ],
     },
 ]
 
@@ -309,21 +519,21 @@ def _paper_source(p: dict) -> str:
     slug = p["slug"]
     code_line = f"- **代码：** {p['code']}\n" if p.get("code") else ""
     proj_line = f"- **项目页：** {p['project']}\n" if p.get("project") else ""
-    return f"""# {p['title']}
+    return f"""# {p["title"]}
 
 > 来源归档（paper）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** paper
 - **arXiv：** <https://arxiv.org/abs/{ax}>
 {code_line}{proj_line}- **入库日期：** {TODAY}
-- **一句话说明：** {p['one_liner']}
+- **一句话说明：** {p["one_liner"]}
 - **沉淀到 wiki：** [`wiki/entities/paper-{slug}.md`](../../wiki/entities/paper-{slug}.md)
 - **触发 ingest：** [`sources/blogs/{BLOG}`](../blogs/{BLOG})
 
 ## 开源状态（步骤 2.5）
 
-- **{p['open']}**（核查日 {TODAY}）
+- **{p["open"]}**（核查日 {TODAY}）
 
 ## 对 wiki 的映射
 
@@ -338,7 +548,7 @@ def _entity(p: dict) -> str:
     abbrev = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in p["abbrev"])
     src_paper = f"../../sources/papers/{slug}_arxiv_{ax.replace('.', '_')}.md"
     src_blog = f"../../sources/blogs/{BLOG}"
-    code_line = f'code: {p["code"]}\n' if p.get("code") else ""
+    code_line = f"code: {p['code']}\n" if p.get("code") else ""
     repo_src = f"  - ../../sources/repos/{slug.replace('-', '_')}.md\n" if p.get("code") else ""
     site_src = f"  - ../../sources/sites/{slug}.md\n" if p.get("project") else ""
     kind = "执行层插件" if slug == "tempowam" else "策略或 WAM 训练栈"
@@ -355,7 +565,7 @@ def _entity(p: dict) -> str:
 sequenceDiagram
     autonumber
     participant U as 用户/评测脚本
-    participant R as {p['code'].split('/')[-1]} 仓库
+    participant R as {p["code"].split("/")[-1]} 仓库
     participant M as 模型权重
     participant E as 仿真/真机环境
     U->>R: clone + 依赖安装（见 README）
@@ -365,7 +575,7 @@ sequenceDiagram
     E-->>U: success / latency 等
 ```
 
-图下说明：复现以 [`sources/repos/{slug.replace('-', '_')}.md`](../../sources/repos/{slug.replace('-', '_')}.md) 与官方 README 为准。
+图下说明：复现以 [`sources/repos/{slug.replace("-", "_")}.md`](../../sources/repos/{slug.replace("-", "_")}.md) 与官方 README 为准。
 """
     rel_links = "\n".join(f"- [{r.split('/')[-1].replace('.md', '')}]({r})" for r in p["related"])
     proj_line = f"- [项目页]({p['project']})\n" if p.get("project") else ""
@@ -373,25 +583,25 @@ sequenceDiagram
     return f"""---
 type: entity
 tags:
-{_yaml_list(p['tags'], 2)}
+{_yaml_list(p["tags"], 2)}
 status: complete
 updated: {TODAY}
 arxiv: "{ax}"
 {code_line}related:
-{_yaml_list(p['related'] + ['../overview/embodied-frontier-algorithms-technology-map.md'], 2)}
+{_yaml_list(p["related"] + ["../overview/embodied-frontier-algorithms-technology-map.md"], 2)}
 sources:
   - {src_paper}
 {repo_src}{site_src}  - {src_blog}
-summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
+summary: "{p["short"]}（arXiv:{ax}）：{p["one_liner"][:120]}"
 ---
 
-# {p['short']}（arXiv:{ax}）
+# {p["short"]}（arXiv:{ax}）
 
-**{p['short']}**（*{p['title']}*，[arXiv:{ax}](https://arxiv.org/abs/{ax}){f"，[项目页]({p['project']})" if p.get('project') else ""}{f"，[代码]({p['code']})" if p.get('code') else ""}）来自 [机器人研发工程师 · 前沿算法盘点](../../sources/blogs/{BLOG})。
+**{p["short"]}**（*{p["title"]}*，[arXiv:{ax}](https://arxiv.org/abs/{ax}){f"，[项目页]({p['project']})" if p.get("project") else ""}{f"，[代码]({p['code']})" if p.get("code") else ""}）来自 [机器人研发工程师 · 前沿算法盘点](../../sources/blogs/{BLOG})。
 
 ## 一句话定义
 
-**{p['one_liner']}**
+**{p["one_liner"]}**
 
 ## 英文缩写速查
 
@@ -401,8 +611,8 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 
 ## 为什么重要
 
-- {p['why']}
-- 开源结论：**{p['open']}**（步骤 2.5，{TODAY}）。
+- {p["why"]}
+- 开源结论：**{p["open"]}**（步骤 2.5，{TODAY}）。
 - 与 [具身前沿算法技术地图](../overview/embodied-frontier-algorithms-technology-map.md) 同路线条目可横向对照。
 
 ## 核心机制
@@ -410,23 +620,23 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 | 项 | 内容 |
 |----|------|
 | **arXiv** | [{ax}](https://arxiv.org/abs/{ax}) |
-| **开源** | **{p['open']}** |
-| **要点** | {p['mechanism']} |
-| **文内指标** | {p['metrics']} |
+| **开源** | **{p["open"]}** |
+| **要点** | {p["mechanism"]} |
+| **文内指标** | {p["metrics"]} |
 
 {seq}
 
 ## 实验与评测
 
-- {p['metrics']}
+- {p["metrics"]}
 - **读法：** 索引级摘要；逐项 baseline 以原文 PDF 为准。
 
 ## 结论
 
-**{p['conclusion']}**
+**{p["conclusion"]}**
 
-1. 开源边界：**{p['open']}** — 以项目页/仓库实际链接为准（入库日 {TODAY}）。
-2. 核心机制：{p['mechanism'][:100]}…
+1. 开源边界：**{p["open"]}** — 以项目页/仓库实际链接为准（入库日 {TODAY}）。
+2. 核心机制：{p["mechanism"][:100]}…
 3. 部署前核对硬件栈与评测协议，勿直接横比公众号摘录数字。
 
 ## 关联页面
@@ -435,7 +645,7 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 
 ## 参考来源
 
-- [{slug}_arxiv_{ax.replace('.', '_')}.md](../../sources/papers/{slug}_arxiv_{ax.replace('.', '_')}.md)
+- [{slug}_arxiv_{ax.replace(".", "_")}.md](../../sources/papers/{slug}_arxiv_{ax.replace(".", "_")}.md)
 - [{BLOG}](../../sources/blogs/{BLOG})
 - [arXiv:{ax}](https://arxiv.org/abs/{ax})
 
@@ -447,21 +657,21 @@ summary: "{p['short']}（arXiv:{ax}）：{p['one_liner'][:120]}"
 
 
 def _repo(p: dict) -> str:
-    return f"""# {p['short']} 官方仓库
+    return f"""# {p["short"]} 官方仓库
 
 > 来源归档（repo）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** repo
-- **链接：** {p['code']}
-- **arXiv：** <https://arxiv.org/abs/{p['arxiv']}>
+- **链接：** {p["code"]}
+- **arXiv：** <https://arxiv.org/abs/{p["arxiv"]}>
 - **入库日期：** {TODAY}
-- **一句话说明：** {p['one_liner']}
-- **沉淀到 wiki：** [`wiki/entities/paper-{p['slug']}.md`](../../wiki/entities/paper-{p['slug']}.md)
+- **一句话说明：** {p["one_liner"]}
+- **沉淀到 wiki：** [`wiki/entities/paper-{p["slug"]}.md`](../../wiki/entities/paper-{p["slug"]}.md)
 
 ## 开源状态
 
-- **{p['open']}**（以 README 与 release 为准）。
+- **{p["open"]}**（以 README 与 release 为准）。
 """
 
 
@@ -473,22 +683,22 @@ type: entity
 tags: [curated-list, curator, awesome-list, embodied-ai]
 status: complete
 updated: {TODAY}
-code: {r['code']}
+code: {r["code"]}
 related:
-{_yaml_list(r['related'] + ['../overview/embodied-frontier-algorithms-technology-map.md'], 2)}
+{_yaml_list(r["related"] + ["../overview/embodied-frontier-algorithms-technology-map.md"], 2)}
 sources:
-  - ../../sources/repos/{slug.replace('-', '_')}.md
+  - ../../sources/repos/{slug.replace("-", "_")}.md
   - ../../sources/blogs/{BLOG}
-summary: "{r['one_liner'][:120]}"
+summary: "{r["one_liner"][:120]}"
 ---
 
-# {r['short']}
+# {r["short"]}
 
-**{r['short']}**（[GitHub 仓库]({r['code']})）是具身智能社区 **论文/issue 策展仓库**，被 [机器人研发工程师 · 前沿算法盘点](../../sources/blogs/{BLOG}) 列为持续追踪入口。
+**{r["short"]}**（[GitHub 仓库]({r["code"]})）是具身智能社区 **论文/issue 策展仓库**，被 [机器人研发工程师 · 前沿算法盘点](../../sources/blogs/{BLOG}) 列为持续追踪入口。
 
 ## 一句话定义
 
-**{r['one_liner']}**
+**{r["one_liner"]}**
 
 ## 英文缩写速查
 
@@ -507,8 +717,8 @@ summary: "{r['one_liner'][:120]}"
 
 | 项 | 内容 |
 |----|------|
-| **链接** | {r['code']} |
-| **开源** | **{r['open']}** |
+| **链接** | {r["code"]} |
+| **开源** | **{r["open"]}** |
 | **用途** | 跟踪 VLA/WAM/足式/操作新预印本与开源仓 |
 
 ## 局限与风险
@@ -522,30 +732,30 @@ summary: "{r['one_liner'][:120]}"
 
 ## 参考来源
 
-- [{slug.replace('-', '_')}.md](../../sources/repos/{slug.replace('-', '_')}.md)
+- [{slug.replace("-", "_")}.md](../../sources/repos/{slug.replace("-", "_")}.md)
 - [{BLOG}](../../sources/blogs/{BLOG})
 
 ## 推荐继续阅读
 
-- [Embodied-AI-Daily 仓库]({r['code']})
+- [Embodied-AI-Daily 仓库]({r["code"]})
 """
 
 
 def _repo_curator(r: dict) -> str:
-    return f"""# {r['short']}
+    return f"""# {r["short"]}
 
 > 来源归档（repo / 策展）
 
-- **标题：** {r['short']}
+- **标题：** {r["short"]}
 - **类型：** repo
-- **链接：** {r['code']}
+- **链接：** {r["code"]}
 - **入库日期：** {TODAY}
-- **一句话说明：** {r['one_liner']}
-- **沉淀到 wiki：** [`wiki/entities/cn-os-{r['slug']}.md`](../../wiki/entities/cn-os-{r['slug']}.md)
+- **一句话说明：** {r["one_liner"]}
+- **沉淀到 wiki：** [`wiki/entities/cn-os-{r["slug"]}.md`](../../wiki/entities/cn-os-{r["slug"]}.md)
 
 ## 开源状态
 
-- **{r['open']}**
+- **{r["open"]}**
 """
 
 
@@ -558,7 +768,19 @@ def _map() -> str:
     def row_new(p: dict) -> str:
         return f"| {p['short']} | [paper-{p['slug']}](../entities/paper-{p['slug']}.md) | {p['open']} |"
 
-    routes = ["VLA", "WAM", "Legged", "Manipulation", "Planning", "Tactile", "2026-VLA", "2026-WAM", "2026-Manipulation", "2026-Loco", "Awesome"]
+    routes = [
+        "VLA",
+        "WAM",
+        "Legged",
+        "Manipulation",
+        "Planning",
+        "Tactile",
+        "2026-VLA",
+        "2026-WAM",
+        "2026-Manipulation",
+        "2026-Loco",
+        "Awesome",
+    ]
     sections = ""
     for route in routes:
         rs = [r for r in REUSE if r["route"] == route]
@@ -568,8 +790,14 @@ def _map() -> str:
             continue
         lines = [row_reuse(r) for r in rs] + [row_new(p) for p in ns]
         for r in nr:
-            lines.append(f"| {r['short']} | [cn-os-{r['slug']}](../entities/cn-os-{r['slug']}.md) | {r['open']} |")
-        sections += f"\n### {route}\n\n| 项目 | 节点 | 开源 |\n|------|------|------|\n" + "\n".join(lines) + "\n"
+            lines.append(
+                f"| {r['short']} | [cn-os-{r['slug']}](../entities/cn-os-{r['slug']}.md) | {r['open']} |"
+            )
+        sections += (
+            f"\n### {route}\n\n| 项目 | 节点 | 开源 |\n|------|------|------|\n"
+            + "\n".join(lines)
+            + "\n"
+        )
 
     total = len(REUSE) + len(NEW_PAPERS) + len(NEW_REPOS)
     return f"""---
@@ -689,16 +917,24 @@ def main() -> None:
         (ROOT / "sources/papers" / ax_file).write_text(_paper_source(p), encoding="utf-8")
         (ROOT / "wiki/entities" / f"paper-{p['slug']}.md").write_text(_entity(p), encoding="utf-8")
         if p.get("code"):
-            (ROOT / "sources/repos" / f"{p['slug'].replace('-', '_')}.md").write_text(_repo(p), encoding="utf-8")
+            (ROOT / "sources/repos" / f"{p['slug'].replace('-', '_')}.md").write_text(
+                _repo(p), encoding="utf-8"
+            )
     for r in NEW_REPOS:
-        (ROOT / "sources/repos" / f"{r['slug'].replace('-', '_')}.md").write_text(_repo_curator(r), encoding="utf-8")
-        (ROOT / "wiki/entities" / f"cn-os-{r['slug']}.md").write_text(_cn_os_repo(r), encoding="utf-8")
+        (ROOT / "sources/repos" / f"{r['slug'].replace('-', '_')}.md").write_text(
+            _repo_curator(r), encoding="utf-8"
+        )
+        (ROOT / "wiki/entities" / f"cn-os-{r['slug']}.md").write_text(
+            _cn_os_repo(r), encoding="utf-8"
+        )
     log = ROOT / "log.md"
     marker = f"[{TODAY}] ingest | sources/blogs/{BLOG}"
     if marker not in log.read_text(encoding="utf-8"):
         log.write_text(_log_entry() + log.read_text(encoding="utf-8"), encoding="utf-8")
     total = len(REUSE) + len(NEW_PAPERS) + len(NEW_REPOS)
-    print(f"Wrote blog, map, {len(NEW_PAPERS)} paper entities, {len(NEW_REPOS)} repo entities ({total} mapped)")
+    print(
+        f"Wrote blog, map, {len(NEW_PAPERS)} paper entities, {len(NEW_REPOS)} repo entities ({total} mapped)"
+    )
 
 
 if __name__ == "__main__":
