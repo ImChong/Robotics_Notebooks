@@ -2,14 +2,16 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-09-23
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
+  - ../entities/gen-human-ego-dataset.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/das-datakit.md
+  - ../../sources/datasets/gen-human-ego-genrobot.md
 summary: "简智机器人 开源项目 das-datakit（数据集/Benchmark）：读取MCAP中的相机、深度、触觉和设备状态数据，提供解析、可视化及MCAP到H5转换入口，把RealOmni等采集数据接到后续清洗和训练管线。…"
 institutions:
   - jzrobot
@@ -57,6 +59,7 @@ institutions:
 
 ## 关联页面
 
+- [Gen-HumanEgo 开放人类 ego 数据集](../entities/gen-human-ego-dataset.md) — RealOmni-Open 人类 MCAP 子集；**推荐** 与本 kit 配套消费
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

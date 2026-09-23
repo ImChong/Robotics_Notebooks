@@ -516,6 +516,7 @@
 - [GE-Sim 2.0（Genie Envisioner World Simulator 2.0）](wiki/entities/ge-sim-2.md) — GE-Sim 2.0**（arXiv:2605.27491，AgiBot 等）是 **Genie Envisioner** 平台上的 **闭环视频世界模拟器**：在 [Genie Envision `📅unknown` `[entity_page]`
 - [GelSlim（薄片化视觉触觉传感器）](wiki/entities/gel-slim.md) — GelSlim** 是以 MIT 为主线的视觉触觉传感器（vision-based tactile sensor）家族，目标是把 [GelSight](../concepts/tactile-se `📅unknown` `[entity_page]`
 - [Gemini Robotics](wiki/entities/gemini-robotics.md) — Gemini Robotics** 是 Google DeepMind 面向物理交互的 Gemini 系列机器人模型族。HMI 论文/报告总索引将其收录为 **P061**（世界模型、VLA 与  `📅unknown` `[entity_page]`
+- [Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）](wiki/entities/gen-human-ego-dataset.md) — Gen-HumanEgo**（HF · [开放数据门户](https:// `📅unknown` `[entity_page]`
 - [Gen2Humanoid（文本→人形运动端到端管线）](wiki/entities/gen2humanoid.md) — Gen2Humanoid**（RavenLeeANU/Gen2Humanoid）把两条成熟开源能力—— `📅unknown` `[entity_page]`
 - [GenCAD-3D（Multimodal Geometry → CAD Program）](wiki/entities/gencad-3d.md) — GenCAD-3D** 是 MIT **Nomi Yu、Md Ferdous Alam、A John Hart、Faez Ahmed** 的工作（arXiv:2509.15246，[JMD](ht `📅2026-05-21` `[entity_page]`
 - [GenCAD（Image-Conditioned CAD Program Generation）](wiki/entities/gencad.md) — GenCAD** 是 MIT **Md Ferdous Alam** 与 **Faez Ahmed** 的工作（arXiv:2409.16294，[项目页](https://gencad.gith `📅2026-05-21` `[entity_page]`

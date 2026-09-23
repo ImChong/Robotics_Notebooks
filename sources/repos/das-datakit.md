@@ -15,6 +15,11 @@
 
 - **已开源**：公开仓库（以 README 与 release 为准）。
 
+## 关联数据集
+
+- **Gen-HumanEgo**（人类 DAS-Ego MCAP）：<https://huggingface.co/datasets/genrobot2025/Gen-HumanEgo> → [sources/datasets/gen-human-ego-genrobot.md](../datasets/gen-human-ego-genrobot.md)
+
 ## 对 wiki 的映射
 
 - [wiki/entities/cn-os-das-datakit.md](../../wiki/entities/cn-os-das-datakit.md)
+- [wiki/entities/gen-human-ego-dataset.md](../../wiki/entities/gen-human-ego-dataset.md)

@@ -311,6 +311,7 @@ flowchart TD
 
 用 egocentric 人视频、跨本体对齐替换或前置昂贵真机遥操作数据。
 
+- **Gen-HumanEgo（GenRobot / 简智，2026-09）**：**RealOmni-Open** 人类 ego 子集 **1,848 h / 44,632** MCAP episode，**六相机 DAS-Ego** 同步 RGB + **双手 3D/MANO/mesh + Ego-Depth + video/task/subtask 三级标注**；HF **ungated CC BY-SA 4.0**，读取走 **[das-datakit](../entities/cn-os-das-datakit.md)**（见 [Gen-HumanEgo](../entities/gen-human-ego-dataset.md)）
 - **HumanNet**：百万小时量级 **人中心** 一三人称视频语料 + 策展/标注管线；论文在 LingBot-VLA 设定下给出「**约 1000h** egocentric 人视频持续预训练 vs **约 100h** 真机数据」等受控对比，用于讨论 **人类视频小时** 能否在成本上部分替代早期真机预训练（见 [HumanNet](../entities/humannet.md)；论文 Table 1 相关基准语料索引见 [对照页](../comparisons/humannet-table1-human-video-corpora.md)）
 - **HuRo（RLWRLD / 延世大学，CoRL 2026，arXiv:2609.10706）**：**10 阶段机器人化流水线** 把五源 egocentric 人视频变成 **联合 robot-aligned 观测+重定向动作**（630K episode / 142M 帧）；ALLEX 上 VLA 预训练 scaling 使 Overall **51.5→80.3%**、**OOD 34.9→72.2%**；**流水线 Apache-2.0 已开源**，预构建 HuRo 语料与 VLA 权重待发布（见 [HuRo](../entities/paper-huro.md)）
 - **EgoScale**：在 **>20k h** 带 **腕 + 重定向高 DoF 手** 标签的 egocentric 人视频上预训练 **流式 VLA**，给出 **人数据规模 ↔ 验证损失（log-linear）↔ 真机灵巧后训练表现** 的实证链条，并以 **小规模视点对齐的人–机 mid-training** 承接 embodiment gap（见 [EgoScale](./egoscale.md)）
