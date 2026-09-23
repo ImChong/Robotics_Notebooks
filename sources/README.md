@@ -416,6 +416,7 @@
 |------|------|
 | [x] [easymocap-public-doc.md](sites/easymocap-public-doc.md) | EasyMocap 文档站 chingswy.github.io/easymocap-public-doc（安装/Quick Start；代码已开、数据协议申请） |
 | [x] [sonic-transfer-github-io.md](sites/sonic-transfer-github-io.md) | SONIC-Transfer 项目页 sonic-agibot-x2.github.io/sonic-transfer（冻结 GEAR-SONIC → X2；推理已开、无 arXiv） |
+| [x] [x2-aimdk-agibot.md](sites/x2-aimdk-agibot.md) | AimDK X2 官方文档站 x2-aimdk.agibot.com（灵犀 X2 二次开发 SDK；ROS 2；文档 1.1.0） |
 | [x] [allhandsup-org.md](sites/allhandsup-org.md) | All Hands Up：RLWRLD 腕装灵巧手画廊（16 手 URDF + 仿真 Kapandji；无独立 GitHub，URDF 可 HTTP 下载） |
 | [x] [daily-omni-github-io.md](sites/daily-omni-github-io.md) | Daily-Omni 项目页 lliar-liar.github.io/Daily-Omni（Leaderboard；代码+数据已开） |
 | [x] [pi-r2-flow-github-io.md](sites/pi-r2-flow-github-io.md) | πR² 项目页 pi-r2-flow.github.io（反应式实时 flow；代码已开） |
