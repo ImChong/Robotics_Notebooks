@@ -2,7 +2,7 @@
 
 ## [2026-09-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **77** 条信息型预警）：
+共发现 **0** 个问题（另含 **84** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -104,12 +104,15 @@
 - wiki/entities/paper-ross-dagger.md
 - wiki/entities/paper-strider.md
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（35 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（42 个）
 - wiki/entities/paper-attention-is-all-you-need.md（缺 对比）
 - wiki/entities/paper-bfm-30-diayn.md（缺 对比）
 - wiki/entities/paper-cambrian-1.md（缺 评测 / 对比）
 - wiki/entities/paper-code-as-world.md（缺 方法 / 对比）
+- wiki/entities/paper-dexora.md（缺 对比）
 - wiki/entities/paper-dial-latent-world-vla.md（缺 对比）
+- wiki/entities/paper-embodiedbrain.md（缺 对比）
+- wiki/entities/paper-fast-wam.md（缺 对比）
 - wiki/entities/paper-hm3d-ovon.md（缺 评测 / 对比）
 - wiki/entities/paper-humanup-getting-up.md（缺 评测 / 对比）
 - wiki/entities/paper-hy-motion-1-0.md（缺 对比）
@@ -118,12 +121,14 @@
 - wiki/entities/paper-kino.md（缺 方法）
 - wiki/entities/paper-locoformer.md（缺 评测 / 对比）
 - wiki/entities/paper-me-dex-1-0.md（缺 对比）
+- wiki/entities/paper-memorywam.md（缺 对比）
 - wiki/entities/paper-mimicagent.md（缺 对比）
 - wiki/entities/paper-molmoact2.md（缺 对比）
 - wiki/entities/paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md（缺 对比）
 - wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md（缺 评测）
 - wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md（缺 评测 / 对比）
 - wiki/entities/paper-nymeria.md（缺 对比）
+- wiki/entities/paper-openeai-vla.md（缺 对比）
 - wiki/entities/paper-pixverse-r2.md（缺 评测）
 - wiki/entities/paper-qwm.md（缺 方法）
 - wiki/entities/paper-robopoint.md（缺 评测 / 对比）
@@ -136,10 +141,12 @@
 - wiki/entities/paper-scientisttwo.md（缺 对比）
 - wiki/entities/paper-srdf-vln-flywheel.md（缺 评测 / 对比）
 - wiki/entities/paper-strider.md（缺 对比）
+- wiki/entities/paper-tempowam.md（缺 对比）
 - wiki/entities/paper-thaw-vla.md（缺 对比）
 - wiki/entities/paper-tolebi.md（缺 评测 / 对比）
 - wiki/entities/paper-trackvla.md（缺 评测 / 对比）
 - wiki/entities/paper-vision-locomotion-egocentric.md（缺 对比）
+- wiki/entities/paper-vla-adapter.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -194,4 +201,4 @@
 - wiki/entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4746/4746 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4755/4755 (100%) wiki/entity 页有 ingest 来源
