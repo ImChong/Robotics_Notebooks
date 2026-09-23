@@ -7,10 +7,13 @@ tags:
   - deep-learning
   - foundation-model
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 summary: "CLIP 用图文对比学习在超大规模配对数据上对齐双编码器，实现强零样本分类与开放词汇检索，是现代 VLM/VLA 视觉塔的重要源头。"
 related:
   - ./paper-clip.md
+  - ./paper-llava.md
+  - ./llava.md
+  - ../methods/vla.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../concepts/multimodality-basics.md
   - ../overview/multimodal-llm-development.md
@@ -65,6 +68,8 @@ flowchart LR
 ## 关联页面
 
 - [CLIP 论文实体](./paper-clip.md)
+- [LLaVA 论文实体](./paper-llava.md)
+- [VLA 方法](../methods/vla.md)
 - [VLA / 世界模型 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [多模态基础](../concepts/multimodality-basics.md)
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)

@@ -138,6 +138,10 @@ related:
   - ../entities/paper-last-hd-latent-physical-reasoning.md
   - ../entities/paper-code-as-world.md
   - ../entities/paper-infonce-geometry.md
+  - ../entities/paper-clip.md
+  - ../entities/clip.md
+  - ../entities/paper-llava.md
+  - ../entities/llava.md
   - ../entities/kinetiq-ascend.md
   - ../entities/cyclo-intelligence.md
   - ../entities/robo-bench.md
@@ -242,6 +246,10 @@ VLA 可以看成机器人版的多模态 foundation model：输入“看到了�
 - 它把“任务描述”从手写 reward 或手工 state machine，转成自然语言接口。
 - 它是 RT-2、π₀、OpenVLA、Octo 一类通用操作策略的共同抽象。
 - 它让一个模型处理多任务成为可能，但代价是更大的数据需求、更高推理延迟，以及更复杂的部署链路。
+
+### VLM 上游：CLIP → LLaVA
+
+多数开源 VLA 并非从零训练多模态骨干，而是沿 **[CLIP](../entities/paper-clip.md) 对比对齐 → [LLaVA](../entities/paper-llava.md) 视觉指令微调 → 动作解码头** 三跳演进：CLIP 提供开放词汇视觉语义，LLaVA 提供多轮指令接口与可复现训练栈（冻结 CLIP + 投影 + LLM），VLA 再在机器人轨迹上替换/追加连续或离散动作输出。纵深阅读顺序见 [多模态 LLM 发展路线](../overview/multimodal-llm-development.md) 与 [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md) 对齐基座段。
 
 ## 主要技术路线
 

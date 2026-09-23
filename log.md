@@ -1,4 +1,6 @@
 
+## [2026-09-23] ingest | sources/papers/llava_arxiv_2304_08485.md — VLA 上游 CLIP/LLaVA 一手资料；新建 paper-llava 与 sources 三件套，补强 VLA/多模态路线交叉引用；CLIP 已开源、LLaVA 已开源
+
 ## [2026-09-23] ingest | sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md — 机器人研发工程师前沿算法六路线盘点；36 项独立节点
 
 - **触发：** 用户指定 https://mp.weixin.qq.com/s/JtoOU_ncZz5SEikmsZB3Xg；要求每项目独立非重复详情节点；自动合并 PR

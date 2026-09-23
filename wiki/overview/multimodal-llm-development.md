@@ -9,15 +9,20 @@ tags:
   - llava
   - curriculum
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 summary: "多模态大模型发展路线：对比学习对齐（CLIP）→ 桥接生成（BLIP/BLIP-2）→ 视觉指令微调（LLaVA/InstructBLIP）→ 分割/编辑等具身友好下游（LISA 等）。"
 related:
   - ../concepts/multimodality-basics.md
+  - ../entities/paper-clip.md
   - ../entities/clip.md
+  - ../entities/paper-llava.md
   - ../entities/llava.md
+  - ../methods/vla.md
   - ../entities/paper-blip2.md
   - ../entities/transformer-cv-curriculum.md
 sources:
+  - ../../sources/papers/clip_arxiv_2103_00020.md
+  - ../../sources/papers/llava_arxiv_2304_08485.md
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
 
@@ -54,9 +59,9 @@ flowchart LR
 
 | 阶段 | 代表 | 能力 |
 |------|------|------|
-| 1 | [CLIP](../entities/clip.md) | 零样本分类/检索 |
+| 1 | [CLIP](../entities/paper-clip.md) | 零样本分类/检索 |
 | 2 | [BLIP](../entities/blip.md)/[BLIP-2](../entities/paper-blip2.md) | Caption/VQA，高效桥接 |
-| 3 | [LLaVA](../entities/llava.md)/[MiniGPT-4](../entities/minigpt4.md)/[InstructBLIP](../entities/instructblip.md) | 多轮视觉对话 |
+| 3 | [LLaVA](../entities/paper-llava.md)/[MiniGPT-4](../entities/minigpt4.md)/[InstructBLIP](../entities/instructblip.md) | 多轮视觉对话 |
 | 4 | [LISA](../entities/lisa.md)/[Sa2VA](../entities/sa2va.md)/[SIDA](../entities/sida.md) | 推理分割/视频具身编辑等 |
 
 ## 工程实践
@@ -79,6 +84,8 @@ flowchart LR
 
 ## 参考来源
 
+- [clip_arxiv_2103_00020](../../sources/papers/clip_arxiv_2103_00020.md)
+- [llava_arxiv_2304_08485](../../sources/papers/llava_arxiv_2304_08485.md)
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
 
 ## 推荐继续阅读

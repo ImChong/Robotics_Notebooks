@@ -159,9 +159,9 @@
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（6 个）
 - wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/birdview.md updated=2026-09-21）
-- wiki/entities/paper-code-as-world.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/embodied-industry-db.md updated=2026-09-23）
+- wiki/entities/paper-code-as-world.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/clip.md updated=2026-09-23）
 - wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/curobo.md updated=2026-09-21）
-- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/painode-146-anyskin.md updated=2026-09-23）
+- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/clip.md updated=2026-09-23）
 - wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/embodied-industry-db.md updated=2026-09-23）
 - wiki/entities/paper-wam-design-empirical-study.md（含绝对化措辞「SOTA」，updated=2026-09-22；同主题更新页 wiki/entities/painode-146-anyskin.md updated=2026-09-23）
 
@@ -201,4 +201,4 @@
 - wiki/entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4755/4755 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4756/4756 (100%) wiki/entity 页有 ingest 来源

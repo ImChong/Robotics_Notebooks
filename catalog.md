@@ -663,7 +663,7 @@
 - [LISA](wiki/entities/lisa.md) — LISA 让多模态 LLM 通过特殊分割 token 调用分割解码器，实现推理式分割（reasoning segmentation）：由复杂语言描述直接得到掩码。 `📅unknown` `[entity_page]`
 - [LiteReality-Agent](wiki/entities/litereality-agent.md) — LiteReality-Agent**（项目页，[Blog/PDF](https: `📅unknown` `[entity_page]`
 - [LLaDA2.2-flash](wiki/entities/llada2-2-flash.md) — LLaDA2.2-flash** 是 Inclusion AI（蚂蚁集团）LLaDA2 系列的 **agent-oriented `📅unknown` `[entity_page]`
-- [LLaVA](wiki/entities/llava.md) — LLaVA 用简单线性/MLP 投影连接冻结视觉编码器与 LLM，并在视觉指令数据上微调，成为开源视觉对话与具身 VLM 的高影响力基线。 `📅unknown` `[entity_page]`
+- [LLaVA](wiki/entities/llava.md) — LLaVA 用 GPT-4 生成视觉指令数据，经线性投影连接 CLIP 与 Vicuna 并两阶段微调，是开源视觉对话与 VLA 上游 VLM 的高影响力基线。 `📅unknown` `[entity_page]`
 - [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
 - [LocoMuJoCo](wiki/entities/loco-mujoco.md) — LocoMuJoCo](https://github.com/robfiras/loco-mujoco) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXia `📅unknown` `[entity_page]`
 - [Lumina 具身智能社区](wiki/entities/lumina-embodied.md) — Lumina**（官网 <https://lumina-embodied.ai/>，GitHub Org <https://github.com/Lumina-EAI>）是由十余位具身智能方向研究 `📅unknown` `[entity_page]`
@@ -1728,6 +1728,7 @@
 - [LingBot-Map：流式 3D 重建几何上下文 Transformer](wiki/entities/paper-lingbot-map.md) — LingBot-Map**（*LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction*，arXiv: `📅unknown` `[entity_page]`
 - [LIT（arXiv:2609.12641）](wiki/entities/paper-lit-latent-interface-training.md) — LIT**（[Breaking the Vision-Action Shortcut: Latent Interface Training for Generalizable Robotics F `📅unknown` `[entity_page]`
 - [LiveCook：流式多模态烹饪指导与 LiveMamba](wiki/entities/paper-livecook.md) — LiveCook**（*Can Multi-Modal LLMs Provide Live Step-by-Step Task Guidance?*，[arXiv:2511.21998](http `📅unknown` `[entity_page]`
+- [LLaVA：Visual Instruction Tuning](wiki/entities/paper-llava.md) — LLaVA**（*Visual Instruction Tuning*，arXiv:2304.08485，[项目页](htt `📅unknown` `[entity_page]`
 - [LLM+P](wiki/entities/paper-llm-p.md) — LLM+P**（arXiv:2304.11477）收录于 Lumina [Embodied-AI-Guide 微信专辑](. `📅unknown` `[entity_page]`
 - [LLM-STL Quadruped（arXiv:2609.07111）](wiki/entities/paper-llm-stl-quadruped-locomotion.md) — LLM-STL Quadruped**（*From LLM-Generated Specifications to Learned Quadruped Locomotion*，[arXiv:260 `📅unknown` `[entity_page]`
 - [LocateAnything：基于并行框解码的快速高质量视觉-语言定位](wiki/entities/paper-locateanything.md) — LocateAnything**（*Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding*，[arX `📅unknown` `[entity_page]`

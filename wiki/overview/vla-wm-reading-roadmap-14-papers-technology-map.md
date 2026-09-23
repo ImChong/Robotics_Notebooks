@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-15
 related:
   - ../entities/paper-clip.md
+  - ../entities/paper-llava.md
   - ../entities/paper-dinov2.md
   - ../entities/paper-rt-1.md
   - ../entities/paper-rt-2.md
@@ -59,8 +60,10 @@ summary: "依据具身智能研究室 2026-09-02 阅读路线，把 10 篇 VLA/�
 flowchart TB
   subgraph ALIGN["对齐基座"]
     CLIP[CLIP]
+    LLaVA[LLaVA 指令微调]
     DINO[DINOv2]
   end
+  CLIP --> LLaVA
   subgraph VLA["VLA 主线"]
     RT1[RT-1]
     RT2[RT-2]
@@ -87,7 +90,7 @@ flowchart TB
 
 文内推荐顺序：
 
-- **入门：** CLIP → RT-1 → RT-2 → OpenVLA；旁路 Diffusion Policy → π₀；动手 ACT。
+- **入门：** CLIP →（可选 LLaVA 理解 VLM 接口）→ RT-1 → RT-2 → OpenVLA；旁路 Diffusion Policy → π₀；动手 ACT。
 - **进阶：** OpenVLA 源码 → Octo 架构 → π₀ Flow Matching。
 - **WM：** LaDi-WM → DreamDojo → RISE → PointWorld。
 
@@ -98,6 +101,7 @@ flowchart TB
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|---------------|------|
 | 07 | CLIP | **已开源** `openai/CLIP` | [paper-clip](../entities/paper-clip.md) |
+| — | LLaVA（VLM 上游，非 14 篇内） | **已开源** `haotian-liu/LLaVA` | [paper-llava](../entities/paper-llava.md) |
 | 10 | DINOv2 | **已开源** `facebookresearch/dinov2` | [paper-dinov2](../entities/paper-dinov2.md) |
 
 ### VLA 主线（规模化 → 开源通才）
