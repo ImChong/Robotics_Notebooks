@@ -10,8 +10,9 @@ tags:
   - open-source
   - isaac-sim
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
   - ./paper-lightnav-0.md
@@ -197,6 +198,7 @@ sequenceDiagram
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md)
 - [Zero-Shot Object Navigation](../tasks/zero-shot-object-navigation.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页横跨其 ③ 策略任务成功率层与 ④ sim↔real 校准层：Isaac Sim 真扫场景导航成功率，仿真分外推真机仍需校准
 
 ## 参考来源
 

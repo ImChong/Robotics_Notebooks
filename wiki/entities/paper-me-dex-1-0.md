@@ -10,7 +10,7 @@ tags:
   - li-auto
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2609.21449"
 code: https://github.com/MachEmbodied/ME-Dex-1.0
 related:
@@ -104,6 +104,21 @@ flowchart TB
 | **真机** | LeRobot SO-101 + Paxini PX6AX；Xynova Flex2 双手 | 定性：换插座、叠罐等 contact-rich 序列 |
 
 **消融读法（RoboTwin Random）：** 仅 VA **86.90%** → +当前触觉条件 **89.54%** → +future tactile 预测 **90.60%** → +H-Bridge **91.92%**。训练后评测时将当前触觉置零仍 **91.70%**，说明 future tactile 预测路径可部分补偿缺失当前触觉。
+
+## 与其他工作对比
+
+同为「把触觉接进操作策略」，差别在 **触觉出现在计算图的哪一侧**：
+
+| 维度 | ME-Dex 1.0（本页） | [ContactWorld](./paper-sa-2606-13877-contactworld-what-matters-in-vision-tactile-worl.md) / [Tactile-WAM](./paper-sa-2606-26663-tactile-wam-touch-aware-world-action-model-with.md) | 把触觉只当条件输入的 VLA |
+|------|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| 触觉的角色 | **与视频并列的未来观测**，被联合预测 | 视触觉世界模型，各自定义触觉进入方式 | 仅作为观测条件，不被预测 |
+| 结构 | 三专家 MoT + **H-Bridge 共享注意力** | 见各自页 | 单骨干 + 动作头 |
+| 跨传感器对齐 | Canonical Hand Model + **冻结** Unified Tactile AE | 依赖各自传感器口径 | 通常绑定单一传感器 |
+| 代价 | 需要成规模的配对触觉数据与回放录力管线 | 同类代价 | 最低 |
+
+- **「预测触觉」比「读触觉」多要求什么：** 联合去噪要求触觉信号 **可预测且与动作因果相关**；传感器噪声大或标定漂移时，这一支会变成噪声源而不是信息源——这也是 Unified Tactile AE 需要跨源预训练后 **冻结** 的原因。
+- **数值可比性：** RoboTwin avg **78.9%（Clean→Random）** 是仿真基准口径，属 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 ③ 层；与 DexJoCo / ManiFeel 上的数不是同一评测面，也不蕴含真机成功率。
+- **复现边界：** 仓库目前是 **推理 + RoboTwin 评测**，训练代码与数据 coming soon；因此第三方暂时只能复现 **评测**，不能复现 **训练配方**，对比时应注明这一不对称。
 
 ## 结论
 

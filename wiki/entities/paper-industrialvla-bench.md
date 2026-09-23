@@ -11,6 +11,7 @@ updated: 2026-09-23
 arxiv: "2609.25562"
 code: https://github.com/xiaoqi-7/IndustrialVLA-Bench
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../queries/vla-deployment-guide.md
@@ -95,6 +96,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [vla-deployment-guide](../queries/vla-deployment-guide.md)
 - [fluxvla-engine](./fluxvla-engine.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ③ 策略任务成功率层并带 ④ 真机校准：工业场景 VLA 成功率与部署约束同测
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: query
 tags: [actuator, eda, foc, motor-control, ethercat, sim2real, hardware, selection-loop]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-23
 summary: "执行器驱动链选型闭环知识链：把 EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链，从分散的硬件/固件/建模实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、数据手册参数与实测曲线差在哪、建模保真度 vs 辨识成本如何取舍、总线周期 ≠ 闭环带宽。"
 sources:
   - ../../sources/sites/kicad-org.md
@@ -95,7 +95,7 @@ flowchart TD
 
 到这一层才正面回答**「策略把执行器当理想力矩源」这个抽象在真机上何时破**——摩擦、齿隙、带宽、热约束都会让「下发力矩 = 实际输出力矩」不成立：
 
-- **选什么/建什么**：先用 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) 决定测力矩还是只测编码器。路线再分两支——**显式解析摩擦模型**（[BAM](../entities/bam-better-actuator-models.md) / BAM-extended 用实测辨识 Stribeck/黏滞/库仑等[关节摩擦](../concepts/joint-friction-models.md)参数，可解释、参数少；有力矩时也可用 [FloBaRoID](../entities/flobaroid.md) 线性回归）与**数据驱动神经执行器网络**（[NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md) / [Actuator Network](../methods/actuator-network.md) 用真机数据端到端拟合指令→力矩映射，拟合力强但外推需谨慎）。这条链与仿真侧的 [Implicit/Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md) 直接对接——explicit 路线正是把这些辨识出的执行器模型写回仿真。
+- **选什么/建什么**：先用 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) 决定测力矩还是只测编码器；最省事的起手式是 [SSRM 稳态响应法](../methods/ssrm-steady-state-response-method.md)——给规定输入、等暂态过去、读稳态量，用退化的标量方程先把 **粘性 $B$ / 库仑 $T_c$ / 恒定偏置** 拆出来（惯量 $J$ 需再配动态段或 TRM）。路线再分两支——**显式解析摩擦模型**（[BAM](../entities/bam-better-actuator-models.md) / BAM-extended 用实测辨识 Stribeck/黏滞/库仑等[关节摩擦](../concepts/joint-friction-models.md)参数，可解释、参数少；有力矩时也可用 [FloBaRoID](../entities/flobaroid.md) 线性回归）与**数据驱动神经执行器网络**（[NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md) / [Actuator Network](../methods/actuator-network.md) 用真机数据端到端拟合指令→力矩映射，拟合力强但外推需谨慎）。这条链与仿真侧的 [Implicit/Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md) 直接对接——explicit 路线正是把这些辨识出的执行器模型写回仿真。
 - **取舍主线**：**建模保真度 vs 辨识成本**——理想力矩源假设最省事但最容易破；显式摩擦模型辨识成本中等、可解释；神经执行器网络保真度上限高但要负载在环采数据、且**分布外（温升、老化、异常负载）容易漂移**。是否值得往上建，取决于 sim2real gap 里执行器层的贡献占比（可用 [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md) 这类 sim2real 执行器 gap 估计来定位）。
 - **典型误判**：① 把「执行器网络在训练集拟合好」当成「真机各工况都准」——分布外温升/负载漂移是主要失效源；② 用**开环标定**（空载扫参数）代替**负载在环辨识**，得到的摩擦/力矩曲线在真实接触工况下系统性偏。
 
@@ -176,6 +176,7 @@ flowchart TD
 - [BAM（执行器摩擦辨识）](../entities/bam-better-actuator-models.md) — ③层显式摩擦辨识路线
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — ③层 $I_a$/摩擦算法选型（Fourier+OLS vs CMA-ES）
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — ③层可辨识性：延迟→摩擦→惯量分级实验
+- [SSRM 稳态响应法](../methods/ssrm-steady-state-response-method.md) — ③层最低成本起手式：稳态工况下先拆摩擦与偏置，不需黑盒优化
 - [FloBaRoID](../entities/flobaroid.md) — ③层有力矩传感时的线性辨识流水线
 - [NeuralActuator（神经执行器建模）](../entities/paper-neuralactuator-neural-actuation-modeling.md) — ③层数据驱动执行器网络路线
 - [SAGE（sim2real 执行器 gap 估计）](../entities/sage-sim2real-actuator-gap-estimator.md) — ③层定位执行器层 gap 占比

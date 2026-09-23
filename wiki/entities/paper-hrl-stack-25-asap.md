@@ -2,7 +2,9 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, sim2real, nvidia, cmu, lecar-lab]
 status: complete
-updated: 2026-09-22
+updated: 2026-09-23
+venue: "RSS 2025"
+code: https://github.com/LeCAR-Lab/ASAP
 summary: "ASAP（RSS 2025）：真机 delta action 对齐 sim–real 动力学，回灌仿真微调敏捷全身 tracking；官方 MIT 代码 LeCAR-Lab/ASAP 基于 HumanoidVerse，含 G1 sim2real。"
 related:
   - ./paper-notebook-asap-aligning-simulation-and-real-world-physics.md

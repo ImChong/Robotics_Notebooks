@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, egocentric-vision, vlm, benchmark, hkust-gz, curated-index, awesome-egocentric-vision]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2606.00829"
 venue: "arXiv 2026"
 code: https://github.com/YUEVII/Egocross-Challenge
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../entities/awesome-egocentric-vision.md
   - ../overview/sun-awesome-ego-technology-map.md
   - ../methods/vla.md
@@ -126,6 +127,20 @@ sequenceDiagram
 - **解读：** 四域均衡在 **63–77%**；无单域极端拉满 overall，说明 **分域接口** 而非某一 trick 主导。
 - **对照意义：** 同一 4B 基座在 **无接口设计** 时大量失败；接口对齐后 recover「已有知识」。
 
+## 与其他工作对比
+
+| 维度 | 本文（分域推理路由） | 换更大基座 | 大规模领域 SFT |
+|------|----------------------|------------|-----------------|
+| 基座 | **锁定 Qwen3-VL-4B**（赛方约束） | 更大模型 | 同基座 |
+| 训练预算 | Animal/Surgery **零更新**；XSports/Industry 仅 20 样本 × 2 epoch | 无需训练 | 需大量标注 |
+| 主要杠杆 | 帧采样率、提示模板、logprob 验真、专家路由 | 参数量 | 数据量 |
+| 迁移成本 | 每个新域要 **人工设计接口** | 低 | 高 |
+| 能解释失败吗 | 能：接口不匹配可逐项定位 | 不能 | 部分 |
+
+- **这篇的价值是一条诊断结论，不是一个方法：** overall **66.98%** 说明在 rare egocentric 域上，失败常来自 **接口不匹配**（帧率、题型、验真方式）而非基座缺知识——先换接口再换模型，是更省的排查顺序。
+- **代价必须一起读：** 四域接口是 **hand-crafted** 的，不具备自动迁移能力；域数一多，人工设计成本会超过微调成本，这也是作者把它定位为「nearly training-free」而非通用范式的原因。
+- **在评测闭环里的位置：** 属 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 ① 认知层，测的是 VQA 式推理；推理策略带来的增益 **不自动外推到动作**。
+
 ## 结论
 
 **EgoCross 源受限设定下，66.98% 说明：固定小 VLM 的上限Often 被推理格式卡住，而不是参数规模绝对不够。**
@@ -148,6 +163,7 @@ sequenceDiagram
 
 - 列表：[awesome-egocentric-vision.md](../entities/awesome-egocentric-vision.md)
 - 地图：[sun-awesome-ego-technology-map.md](../overview/sun-awesome-ego-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：第一人称跨域 VQA 的推理策略评测，推理增益不自动外推到动作
 
 ## 参考来源
 

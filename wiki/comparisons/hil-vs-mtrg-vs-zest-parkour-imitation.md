@@ -2,7 +2,7 @@
 type: comparison
 tags: [humanoid, parkour, imitation-learning, motion-tracking, amp, goal-conditioned, unitree-g1, character-animation]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 related:
   - ../methods/hil-hybrid-imitation-learning.md
   - ../entities/paper-hil-hybrid-imitation-learning.md
@@ -96,6 +96,7 @@ flowchart LR
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 人形跑酷任务挂接
 - [Locomotion](../tasks/locomotion.md) — 跑酷与障碍穿越总览
 - [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — 感知深度蒸馏跑酷；消融称纯稀疏奖励（HIL 式无专家）难学暴力接触
+- [多专家蒸馏](../methods/multi-expert-distillation.md) — 本页三条路线之外的第四种组织方式：不比「参考是否进部署」，而是**先按地形/子任务各训一个专家，再用 DAgger 式在线聚合蒸馏成单一可部署策略**；跑酷类工作常与本页路线叠加使用（LightLP 的感知深度蒸馏即属此族）
 - [DeepMimic](../methods/deepmimic.md) — 显式 tracking 传统
 - [AMP & HumanX](../methods/amp-reward.md) — style reward 来源
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 更广 WBT 选型

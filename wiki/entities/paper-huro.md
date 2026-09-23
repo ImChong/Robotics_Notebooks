@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, dataset, cross-embodiment, human-video, yonsei, rlwrld]
 status: complete
-updated: 2026-09-22
+updated: 2026-09-23
 arxiv: "2609.10706"
 code: https://github.com/3587jjh/HuRo
 related:
@@ -180,6 +180,7 @@ sequenceDiagram
 - [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md)
 - [HumanNet 语料对照](../comparisons/humannet-table1-human-video-corpora.md)
 - [SEED-UMI](./paper-seed-umi.md)
+- [分布外（OOD）泛化与 OOD 指标怎么读](../concepts/out-of-distribution-generalization.md) — 本页 OOD 完成率 34.9%→72.2% 属其「① 评测档位」一义：参考分布是训练集，换数据配方即换定义
 
 ## 参考来源
 

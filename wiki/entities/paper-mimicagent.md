@@ -91,6 +91,19 @@ flowchart LR
 - **用户研究：** n=57，1–5 偏好分；MimicAgent 在 Side Flip、Front Flip、AC、CDS 等领先。
 - **真机：** four-leg trot、two-leg walk/skate/roll、handstand 过渡等 clip — 证明 sim2real 非仅仿真。
 
+## 与其他工作对比
+
+| 维度 | MimicAgent（本页） | Eureka 式 **LLM reward design** | 人工动捕参考 + DeepMimic |
+|------|---------------------|----------------------------------|---------------------------|
+| LLM 产出物 | **参考轨迹**（kinematically feasible、dynamics-infeasible） | 奖励函数代码 | 不用 LLM |
+| 下游学习 | example-guided RL 补全动力学 | 常规 RL 用生成的奖励 | 模仿参考动作 |
+| 失败可诊断性 | 高：轨迹可用 **技能无关单元测试** 过滤（高度包络 / 关节限位 / 足部穿透 / 非腾空接触） | 低：奖励错了要靠训练结果反推 | 高，但受限于动捕覆盖 |
+| 获取新技能的成本 | 写一句 prompt | 写一句 prompt | 需新动捕 |
+
+- **本文的核心主张是「轨迹比奖励好生成」：** 奖励函数的错误要经过一整轮 RL 才暴露，而参考轨迹可以在 **执行前** 用运动学单元测试筛掉——这是它相对 reward-design 路线在泛化上的结构性优势，而不是模型更强。
+- **「动力学不可行」是特性不是缺陷：** 参考只需给出 **目标形状**，动力学由 RL 补；要求 LLM 直接输出 physics-valid 轨迹反而会把任务变难。
+- **读数边界：** **87% prompt 语义对齐** 与用户偏好优于 Eureka 属 **作者报告**；代码 **待发布**（入库日口径），第三方暂不可独立复现。人形 SMPL 演示是 **同管线能力展示**，主实验与指标都在四足，不要当人形结论引用。
+
 ## 结论
 
 **MimicAgent 把四足技能学习从「reward 景观搜索」改写成「参考轨迹合成 + EGRL」，对缺 mocap 的 embodiment 尤具启发。**

@@ -8,7 +8,7 @@ tags:
   - ai2
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2605.02881"
 code: https://github.com/allenai/molmoact2
 related:
@@ -77,6 +77,19 @@ flowchart LR
 | MolmoSpace leaderboard | 官方称 **第一 VLA**（项目 README 口径） |
 | ManiSkill 零样本 | DROID + Bimanual YAM sim eval 脚本已发布 |
 | Manda RoboLab-120 | MolmoAct 2 报告 **13.8%** aggregate（DROID 零样本对照） |
+
+## 与其他工作对比
+
+| 维度 | MolmoAct2（本页） | 直出动作的端到端 VLA | 闭源 VLA 产品栈 |
+|------|--------------------|----------------------|------------------|
+| 推理结构 | **先 ER 后动作**：Molmo2-ER 骨干 + flow-matching 动作专家 | 特征直出动作 | 不可见 |
+| 开源边界 | 代码 + base/finetuned 权重 + **ER 数据集** + LeRobot 部署栈 | 视项目而定 | 通常仅 API |
+| 部署目标 | Franka / SO-100·101 / 双臂 YAM 真机闭环 | 视项目而定 | 产品本体 |
+| 可复核性 | 高：第三方可 fine-tune、可重跑评测 | 中 | 低 |
+
+- **「MolmoSpace 第一」的口径要看清：** 那是 **项目 README 的自报口径**，与 [Manda RoboLab-120](./manda-robotics-open-policy-evaluation.md) 上 **13.8% aggregate（DROID 零样本）** 是两套完全不同的评测面——前者偏空间认知，后者是第三方真机聚合成功率，**不可互相替代，也不可合成一个排名**。
+- **开源栈本身是它的主要贡献之一：** 把 ER 数据、权重与 LeRobot 部署路径一起放出，使它成为少数能被外部 **重跑而非转述** 的 VLA；横比时这一点应计入，而不是只比成功率。
+- **与骨干页的分工：** 视觉-语言能力归 [Molmo2-ER](./molmo-er.md) / [Molmo2 VLM](./molmo2-vlm.md)，本页只负责 **动作侧** 的结构与部署读法。
 
 ## 结论
 

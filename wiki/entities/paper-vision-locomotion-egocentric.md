@@ -11,10 +11,11 @@ tags:
   - cmu
   - berkeley
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2211.07638"
 venue: "CoRL 2022"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/privileged-training.md
   - ../concepts/sim2real.md
   - ../concepts/terrain-adaptation.md
@@ -133,6 +134,19 @@ flowchart TB
 - **机体尺度：** 结论绑定 **小型 A1**；更大 Go1/ANYmal 上步态先验与 dynamics 不同，不可直接外推。
 - **复现门槛：** 官方代码缺失；Isaac Gym Preview + legged_gym 版本钉定；与 CMS / Extreme Parkour 开源栈 **不同论文**。
 
+## 与其他工作对比
+
+| 维度 | 本文（ego-depth 两阶段） | [RMA](./paper-rma-rapid-motor-adaptation.md) | [Extreme Parkour](./extreme-parkour.md) |
+|------|---------------------------|-----------------------------------------------|------------------------------------------|
+| 外感知 | **第一人称深度**（Student 输入） | 无外感知，靠 proprio 在线估 extrinsics | 视觉 + 更激进的技能课程 |
+| 特权信息 | scandots / extrinsics → Teacher | extrinsics → adaptation module | 类似特权→学生 |
+| 学生训练 | [DAgger](../methods/dagger.md) 行为克隆 | 监督回归 adaptation latent | 蒸馏 + 课程 |
+| 能力边界 | 本文自身在 **楼梯** 上留有失败案例，被后续工作当对照 | 地形自适应，但不主动看几何 | 大高差/跳跃 |
+
+- **从 RMA 到本文，补的是「看得见几何」：** RMA 用本体感知 **事后适应** 地形属性，对楼梯/台阶这类 **需要提前知道落脚点** 的几何无能为力；ego-depth 把信息提前了，但也引入了感知时延与标定误差这条新失效链。
+- **本文在同团队谱系里的位置是「对照」而非「终点」：** [Extreme Parkour](./extreme-parkour.md) 明确把本文的楼梯失败当作出发点；引用本文成功率时应说明这一点，否则会高估 ego-depth 单独带来的收益。
+- **在感知栈里的归位：** 属 [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) 的 ④ 下游策略消费层——真正的约束不是深度图质量，而是 **感知帧率能否被控制闭环带宽吃下**；这也是 [特权信息训练](../concepts/privileged-training.md) + 蒸馏范式在此类工作中反复出现的原因。
+
 ## 结论
 
 **Vision Locomotion 证明了「单前向深度 + 短时记忆 + 两阶段 scandots→深度蒸馏」可以在小型四足上零微调完成 stair/踏石/gap 的系统级穿越，但其能力边界 tightly coupled 于前视几何与仿真覆盖，而非通用 elevation-free 万能策略。**
@@ -157,6 +171,7 @@ flowchart TB
 - [Extreme Parkour](./extreme-parkour.md) — 同团队后续；本文作为楼梯失败对照
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) — 四足 ego-depth 条目索引
 - [Locomotion](../tasks/locomotion.md) — 四足 RL 任务地图
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页归其 ④ 下游策略消费层：ego-depth 感知输出与四足控制闭环带宽的对齐
 
 ## 推荐继续阅读
 

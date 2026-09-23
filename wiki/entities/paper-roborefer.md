@@ -8,11 +8,12 @@ tags:
   - referring-expression
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2506.04308"
 venue: NeurIPS 2025
 code: https://github.com/Zhoues/RoboRefer
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./refspatial.md
   - ./robospatial.md
   - ./pointarena.md
@@ -57,6 +58,25 @@ summary: "RoboRefer（NeurIPS 2025，arXiv:2506.04308）：空间指代+推理 V
 | **基准** | HF `BAAI/RefSpatial-Bench`；Expand-Bench 含室外 |
 | **开源** | **已开源** 代码 + SFT 8B 权重 |
 
+## 实验与评测
+
+- **自带训练集与标尺：** 发布 **RefSpatial** 训练数据与 **RefSpatial-Bench** 评测，并扩展 **RefSpatial-Expand-Bench**（含室外场景），使「训练配方」与「评测口径」在同一工作内闭合。
+- **被第三方采用是最强的外部验证：** Qwen3-VL、Gemini Robotics 1.5 等在评测中采用 RefSpatial-Bench，说明该标尺已具备跨团队可比性——这比单篇论文自报的领先幅度更有参考价值。
+- **能力边界：** 评的是「你指的是哪里」，属 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 **① 认知层**；指代正确 **不蕴含** 末端可达或抓取成功。
+- **数值口径：** 本页为 ingest 级摘要，**未复核逐项分数**；SFT 8B 权重与逐项成绩 **以 [原文](https://arxiv.org/abs/2506.04308)（NeurIPS 2025）与 [官方仓库](https://github.com/Zhoues/RoboRefer) 为准**。
+
+## 与其他工作对比
+
+| 维度 | RoboRefer（本页） | [RoboPoint](./paper-robopoint.md) | [RoboSpatial](./robospatial.md) / [EmbSpatial](./embspatial.md) |
+|------|--------------------|------------------------------------|------------------------------------------------------------------|
+| 题面 | 带 **推理** 的空间指代（含度量 / 3D） | 语言条件 keypoint affordance | 空间关系 QA |
+| 产出 | 模型 + 训练集 + 基准 | 模型 + 合成数据 + 权重 | 基准为主 |
+| 难度来源 | 指代表达的歧义与多步推理 | 点定位精度 | 关系判别 |
+| 被复用方式 | 基准被外部模型采用 | 权重被直接调用 | 基准被引用 |
+
+- **同属「空间理解」但不是同一个量：** keypoint 命中率、指代准确率、关系 QA 正确率三者的失败模式各不相同，**跨基准比分数没有意义**；[空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md) 给出站内统一索引。
+- **RefSpatial 的真正门槛在数据：** 带推理的指代需要标注多步空间关系，本文把这部分一并开源，是它比同类工作更易被复用的原因。
+
 ## 结论
 
 **RefSpatial-Bench 已成为 2025–2026 具身 VLM 空间能力的「公共标尺」之一。**
@@ -86,6 +106,7 @@ sequenceDiagram
 - [RoboSpatial](./robospatial.md)
 - [PointArena](./pointarena.md)
 - [Gemini Robotics](./gemini-robotics.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：空间指代推理评测，指代准 ≠ 末端执行成功
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, unsupervised-rl, skill-discovery, google, berkeley, awesome-bfm-papers]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "1802.06070"
 venue: "2018 · ICLR"
 code: https://github.com/ben-eysenbach/sac/blob/master/DIAYN.md
@@ -135,6 +135,22 @@ sequenceDiagram
 
 - vs adversarial unsupervised RL：**合作目标**，训练更稳。
 - **Seed 鲁棒：** 技能形态与下游性能对 seed **不敏感**（Fig.4/6/13）。
+
+## 与其他工作对比
+
+DIAYN 与另两条「给策略一个 motor prior」的路线放在一起才看得清它的取舍——差别在 **先验从哪来**，而不是算法复杂度：
+
+| 维度 | DIAYN（本文） | [AMP / 对抗动作先验](../methods/amp-reward.md) | 纯任务奖励 RL（从零训） |
+|------|---------------|-----------------------------------------------|--------------------------|
+| 先验来源 | 无任何外部数据，互信息 $I(S';Z)$ 自造 | 专家动捕 / 参考动作分布 | 无，全靠 reward shaping |
+| 博弈结构 | **合作式**：discriminator 与策略同向优化 | **对抗式** min-max | 不适用 |
+| 产出物 | 可区分状态分区的 low-level 技能库 | 风格受参考约束的单策略/风格项 | 单任务策略 |
+| 下游用法 | 挑 zero-shot 最优技能 / warm-start / 分层 | 作为风格正则叠加任务奖励 | 直接部署 |
+| 典型失效 | 技能多样但 **对任务无用** | 参考数据覆盖不到的动作学不出来 | 稀疏奖励冷启动 |
+
+- **「多样」和「有用」是两件事：** 本文的 zero-shot 高回报是 **在若干 benchmark 上命中**，不是每个 $z$ 都对下游有价值；把 DIAYN 当预训练用时，**技能选择/微调这一步不能省**。
+- **在 BFM 分类学中的位置：** 属 [#03 intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md) 一支，与探索 bonus 同为「不依赖任务奖励的行为来源」；与依赖专家数据的模仿式 BFM 分属两个供给侧，不能直接比样本效率（谱系见 [BFM 41 篇地图](../overview/bfm-41-papers-technology-map.md)）。
+- **横比注意：** 原文实验在 MuJoCo **低维 state** 上完成；与人形/视觉输入的技能发现工作对照时，$|Z|$、熵系数与网络容量都需重标定，不能照搬 Ant 超参当作方法差异的证据。
 
 ## 结论
 

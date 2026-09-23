@@ -6,10 +6,11 @@ tags:
   - embodied-reasoning
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2406.05756"
 code: https://github.com/mengfeidu/EmbSpatial-Bench
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./robospatial.md
   - ./paper-cambrian-1.md
   - ./lightnav-er.md
@@ -63,6 +64,7 @@ summary: "EmbSpatial-Bench（arXiv:2406.05756）：egocentric 六类空间关系
 - [RoboSpatial](./robospatial.md)
 - [LightNav-ER](./lightnav-er.md)
 - [Cambrian-1 / CV-Bench](./paper-cambrian-1.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：具身场景空间关系 VQA，测的是认知代理而非策略成功率
 
 ## 参考来源
 

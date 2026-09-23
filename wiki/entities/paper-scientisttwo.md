@@ -86,6 +86,20 @@ flowchart TB
 - **80.4% success：** 相对 **原论文 human SOTA** 的指标提升 — 需逐篇读 domain 与 metric。
 - **审稿对照：** 唯一在 Stanford Agentic Reviewer 上报告 **非零 accept rate（72.1%）** 的 autonomous agent（论文 Table）。
 
+## 与其他工作对比
+
+| 维度 | ScientistTwo（本页） | [karpathy-autoresearch](./karpathy-autoresearch.md) | 单点 benchmark 刷分 agent |
+|------|----------------------|------------------------------------------------------|----------------------------|
+| 输入 | **一篇已接受论文定义的挑战**（问题驱动） | 固定 `train.py` + 5 min 预算 | 一个指标 |
+| 闭环范围 | 复现 SOTA → 提想法 → ablation → 写稿 → 模拟审稿/rebuttal → meta-review | 训练脚本改进 | 调参/搜索 |
+| 产物 | 论文 + 代码（86 篇 beat-SOTA 子集） | 更快的训练脚本 | 更高的分 |
+| 可审计性 | 四维 integrity audit + 双自动审稿 | 直接看指标 | 直接看指标 |
+| 开源形态 | **分散 codebase**，随生成论文 | 单脚本 | 视项目而定 |
+
+- **「107 任务中 80.4% beat human SOTA」要配着任务定义读：** 输入是 **「超越某篇已接受论文」**，也就是目标明确、评测协议现成、对照组固定；这与开放式科研（问题都还没定义好）不是同一个难度，**不能外推成「AI 已能自主做研究」**。
+- **自动审稿分数不是同行评审：** ScholarPeer 7.5/10、Stanford Agentic Reviewer 5.7/10 是 **自动评审器** 的打分，与 ICLR/NeurIPS 接受稿均值的对比只能说明「风格与完整度接近」，不替代人类判断新颖性。
+- **复现门槛：** 没有单一 monorepo，每篇生成论文自带脚本；核实时应先读 **integrity audit 四维** 再看分数，否则很难分辨「真增益」与「评测协议漂移」。
+
 ## 结论
 
 **ScientistTwo 代表「审计过的 autonomous discovery」上限样本：强在闭环 empirical rigor + integrity，弱在仍依赖人类问题 formulation 与顶会 spec。**

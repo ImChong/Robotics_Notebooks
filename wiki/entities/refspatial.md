@@ -6,8 +6,9 @@ tags:
   - referring-expression
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-roborefer.md
   - ./robospatial.md
   - ./lightnav-er.md
@@ -62,6 +63,7 @@ summary: "RefSpatial-Bench：RoboRefer 空间指代 benchmark；LightNav-ER 八�
 - [RoboSpatial](./robospatial.md)
 - [Point-Bench](./er-point-bench.md)
 - [LightNav-ER](./lightnav-er.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：空间指代 benchmark，认知分仍需往 ③ 策略成功率压实
 
 ## 参考来源
 

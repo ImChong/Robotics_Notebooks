@@ -10,6 +10,7 @@ tags:
   - pixverse
 status: complete
 updated: 2026-09-23
+venue: "PixVerse Technical Report 2026"
 related:
   - ../methods/generative-world-models.md
   - ../methods/model-based-rl.md
@@ -116,6 +117,13 @@ flowchart TB
 | 输出 | 同步音视频 | 视频为主 | 多相机未来观测 |
 | 开源 | 模型未开源 | 部分开源 | Benchmark 已开源 |
 | 站点节点 | 本页 | [paper-sa-2604-08995-…](./paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact.md) | [TriWorldBench](./paper-triworldbench.md) |
+
+## 实验与评测
+
+- **评测性质：** 本页可核的数字来自 **官方技术报告的内部 stage eval**，没有公开第三方复跑通道（权重与训练/推理代码未开源），因此所有数值应当作 **厂商自报** 读。
+- **已报告的量：** 长程亮度漂移等漂移指标 **−35.8%**（Error Bank 消融口径）；注意力稀疏度 **>90%** 时内部四维质量评测仍保持。
+- **评的是什么能力：** 运行中多模态控制响应、长程身份/规则锚点、音画同步、ultra-few-step 延迟——**不是** 单次 T2V 画质榜，也不是机器人 action-conditioned 世界模型的物理忠实度。
+- **可做与不可做的评测：** 外部只能做 **API/产品层** 评测（进 [world.pixverse.video](https://world.pixverse.video/) 实测交互与延迟）；**不能** 复现 OCA 内部指标，也不能按 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) ② 层的机器人 WM 口径给它打分。
 
 ## 结论
 

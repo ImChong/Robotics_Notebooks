@@ -8,7 +8,7 @@ tags:
   - diffusion
   - sim2real
 status: complete
-updated: 2026-09-20
+updated: 2026-09-23
 arxiv: "2609.18119"
 related:
   - ../tasks/manipulation.md
@@ -53,7 +53,7 @@ summary: "Fetch My Beer（arXiv:2609.18119）：流体仿真筛选稳定轨迹 +
 | **arXiv** | [2609.18119](https://arxiv.org/abs/2609.18119) |
 | **开源** | **待发布** |
 | **要点** | 合成抓取+流体仿真验证 → 分层：高层 SE(3) 目标 + 潜空间扩散密集动作块；强调 motion smoothness。 |
-| **文内指标** | 液体 pick-and-place；相对 SOTA 操作策略在运输平滑度与动态稳定性上更优（项目页/RA-L 2026）。 |
+| **文内指标** | 液体 pick-and-place；相对此前 SOTA 操作策略在运输平滑度与动态稳定性上更优（项目页/RA-L 2026）。 |
 
 ## 源码运行时序图
 
@@ -62,7 +62,7 @@ summary: "Fetch My Beer（arXiv:2609.18119）：流体仿真筛选稳定轨迹 +
 
 ## 实验与评测
 
-- 液体 pick-and-place；相对 SOTA 操作策略在运输平滑度与动态稳定性上更优（项目页/RA-L 2026）。
+- 液体 pick-and-place；相对此前 SOTA 操作策略在运输平滑度与动态稳定性上更优（项目页/RA-L 2026）。
 - **读法：** 索引级摘要；逐项对照与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比

@@ -7,10 +7,11 @@ tags:
   - nvidia
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2411.16537"
 code: https://github.com/NVlabs/RoboSpatial
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-roborefer.md
   - ./refspatial.md
   - ./embspatial.md
@@ -74,6 +75,7 @@ summary: "RoboSpatial（CVPR 2025 Oral，arXiv:2411.16537）：3D scan 自动生
 - [EmbSpatial-Bench](./embspatial.md)
 - [LightNav-ER](./lightnav-er.md)
 - [空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：机器人视角空间推理 QA，可自动打分但离真机执行最远
 
 ## 参考来源
 

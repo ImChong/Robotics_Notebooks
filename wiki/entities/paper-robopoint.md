@@ -8,7 +8,7 @@ tags:
   - manipulation
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2406.10721"
 code: https://github.com/wentaoyuan/RoboPoint
 related:
@@ -53,6 +53,25 @@ summary: "RoboPoint（arXiv:2406.10721）：语言条件 keypoint affordance VLM
 | **输出** | 图像 keypoint affordance |
 | **数据** | 合成 instruction-tuning 数据（仓库发布） |
 | **开源** | **已开源** [wentaoyuan/RoboPoint](https://github.com/wentaoyuan/RoboPoint) 含权重与 Gradio demo |
+
+## 实验与评测
+
+- **评测形态：** 输出是 **图像 keypoint**，因此指标是「点对不对」（命中率 / 与真值区域的一致性），不是抓取成功率——这决定了它的分数属 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 **① 认知层**。
+- **数据侧的关键主张：** 训练用 **全自动合成 instruction-tuning 数据**，无需真机示范采集；因此复现成本主要在数据生成管线而非机器人时间。
+- **第三方对照：** [PointArena](./pointarena.md) 以 pointing 精度为轴把本文与其他 VLM 放在同一标尺上；[RoboRefer](./paper-roborefer.md) 的 RefSpatial-Bench 则把题面推到带推理的空间指代。引用分数时须注明来自哪个基准。
+- **数值口径：** 本页为 ingest 级摘要，**未复核逐项分数**；各基准数值 **以 [原文](https://arxiv.org/abs/2406.10721) 与 [官方仓库](https://github.com/wentaoyuan/RoboPoint) 为准**。
+
+## 与其他工作对比
+
+| 维度 | RoboPoint（本页） | [RoboRefer](./paper-roborefer.md) | 端到端 VLA |
+|------|--------------------|------------------------------------|-------------|
+| 输出 | 语言条件 **keypoint affordance** | 带推理的空间指代（含度量/3D） | 直接动作 |
+| 训练数据 | **合成** instruction-tuning，无需真机演示 | RefSpatial 训练集 | 机器人演示轨迹 |
+| 下游接法 | 点 → 导航/操作/AR，需外部控制器 | 同左 | 无需中间层 |
+| 主要风险 | 点对了但不可达/不可抓 | 同左 | 数据成本高、不可检查中间量 |
+
+- **「点」作为动作空间的价值与代价：** 它让一个通用 VLM 不必学动力学就能接进机器人栈，中间量 **人可检查**；代价是 **点正确 ≠ 可执行**——可达性、避障与抓取稳定性都在这层之外，必须由下游控制器兜底。
+- **与 VLA 的分工不是替代关系：** 合成数据带来的低成本泛化，换来的是把执行风险推给下游；选型时问的是「你缺的是语义定位还是动作能力」。
 
 ## 结论
 

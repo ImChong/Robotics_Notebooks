@@ -11,7 +11,7 @@ tags:
   - datawhale
   - tutorial
 status: complete
-updated: 2026-09-20
+updated: 2026-09-23
 related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/retrieval-augmented-generation.md
@@ -89,7 +89,7 @@ flowchart TB
 
 - **非机器人/具身主线：** 课纲面向 **通用 AI 产品**；Sim2Real、运动控制、VLA 需回到本站 `wiki/tasks/`、`wiki/methods/`。
 - **vibe coding 速度 vs 工程深度：** 课程强调 **先做出来**；直接上生产需叠加 [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 与 [Superpowers](superpowers-obra.md) 式 TDD/评审 — 避免「能 demo 不能运维」。
-- **工具链漂移：** AI IDE、Claude Code、Stripe/Supabase API 更新快 — 以仓库 **News** 与 GitHub 最新 commit 为准。
+- **工具链漂移：** AI IDE、Claude Code、Stripe/Supabase API 更新快 — 以仓库 **News** 与 GitHub 当前 HEAD 的 commit 为准。
 - **License NC：** CC BY-NC-SA 限制 **商业再分发**；学习、内部引用、链到官方站无碍；二次商用需另议授权。
 
 ## 关联页面

@@ -15,6 +15,7 @@ arxiv: "2508.08706"
 venue: "arXiv 2025"
 summary: "OmniVTLA（arXiv:2508.08706，SJTU/Paxini）：ObjTac 135K 三模态 + SA-ViT 语义对齐 + dual-path encoder；夹爪 pick-place 96.9%、灵巧手 100%、peg 83.3%；ObjTac 已开源，代码 coming soon。"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/contact-rich-manipulation.md
@@ -168,6 +169,7 @@ sequenceDiagram
 - [Sparsh](./paper-sparsh.md) — VBTS SSL 对照
 - [Tactile-VLA](./paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md) — 混合力控 VTLA
 - [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — VTLA 层
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页归其 ④ 下游策略消费层：视触觉感知输出如何被 VTLA 策略语义对齐后消费
 
 ## 参考来源
 

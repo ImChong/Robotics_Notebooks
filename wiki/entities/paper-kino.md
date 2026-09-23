@@ -59,7 +59,7 @@ summary: "KINO（arXiv:2609.18869，ETH Coros 组）：VLM 从预定义 whole-bo
 - **G1 真机闭环：** pickup / transport / placement；单手 bucket 与双手 box；VLM 可 **失败检测与重试**（Fig. 9）。
 - **方法谱系：** 与 Coros 组 [RobotKeyframing](https://arxiv.org/abs/2407.11562)（dense+sparse reward 跟踪 keyframe）一脉；KINO 把 keyframe **来源** 换成 **VLM + 库检索**。
 
-## 核心结构
+## 核心方法结构
 
 | 模块 | 作用 |
 |------|------|

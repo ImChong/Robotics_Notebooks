@@ -6,7 +6,7 @@ tags:
   - gaussian-splatting
   - simulation
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 related:
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
@@ -49,6 +49,7 @@ summary: "InteriorGS：INSIGHT-Bench 训练 16.1% 来自 InteriorGS；可导入�
 | **类型** | dataset |
 | **出处** | LightNav Tech Blog 引用 |
 | **开源** | **待核实** |
+| **重定向就绪度** | 场景资产而非动作数据，**不涉及动作重定向**；作为策略输入前需按目标形态适配（相机高度/视场、碰撞体与可通行性、导航图分辨率），具体适配口径 **待核实** |
 
 
 

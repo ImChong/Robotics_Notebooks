@@ -2,7 +2,7 @@
 type: concept
 tags: [evaluation, benchmark, sim2real, simulation, embodied-ai, reproducibility, world-model]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 summary: "仿真评测可复现性 ↔ 真实世界代表性 取舍概念页：明示仿真基准在可复现性/吞吐/可控性上的优势，为何以牺牲真实接触、感知噪声、长尾分布的代表性为代价，并把这条 gap 讲成「评测结论能否外推到真机」的物理根因；配可复现性 vs 代表性代价表、缩小评测 gap 的三条工程路线与常见误判速查。"
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
@@ -83,6 +83,7 @@ related:
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 RoboDojo 上过程指标 Sim–Real Spearman ρ 约 0.18–0.58
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 用可信仿真当闭环评测引擎的前提正是本页的 sim↔real 相关性
 - [Sim2Real](../concepts/sim2real.md) — 策略迁移 gap，本页评测 gap 与其同源不同落点
+- [分布外（OOD）泛化与 OOD 指标怎么读](./out-of-distribution-generalization.md) — 本页「加入 OOD 测试集」那一条的展开：OOD 相对谁、为何跨论文不可横比
 - [物理保真度 sim2real gap](../concepts/physics-fidelity-sim2real-gap.md) — 接触/物理层面 gap 的物理根因
 - [GigaWorld-1（世界模型策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md) — 「动作忠实 > 视觉逼真」是评测代表性的直接证据
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — WM 世界模型家族被当作策略评估器时，这条评测 gap 是其「世界模型推演层」选型可信度的前提

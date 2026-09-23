@@ -9,7 +9,7 @@ tags:
   - architecture
   - comparison
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 summary: "RNN/CNN/Transformer/Mamba 四类序列–视觉骨干对比：归纳偏置、长程依赖、并行度与推理复杂度，服务视觉骨干与时序建模选型。"
 related:
   - ../../roadmap/depth-model-architecture.md
@@ -88,6 +88,7 @@ Benchmark 赢不等于机载赢；Mamba 生态与算子成熟度仍低于 Transf
 - [Transformer](../concepts/transformer.md)
 - [Vision Mamba](../entities/vision-mamba-vim.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [BC + Transformer](../methods/bc-with-transformer.md) — 本页结论在机器人侧的落地口径：动作 chunk 通常较短，Transformer 的 $O(n^2)$ 代价不构成瓶颈，真正的选型判据变成「历史长度与多模态 token 混排」；上下文长到视频流量级时，本页的 Mamba/SSM 一列才重新进入视野
 
 ## 参考来源
 

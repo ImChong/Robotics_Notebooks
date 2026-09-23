@@ -11,6 +11,7 @@ updated: 2026-09-23
 arxiv: "2609.26314"
 code: https://github.com/TriWorldBench/TriWorldBench
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/generative-world-models.md
   - ../tasks/bimanual-manipulation.md
   - ../tasks/manipulation.md
@@ -96,6 +97,7 @@ sequenceDiagram
 - [bimanual-manipulation](../tasks/bimanual-manipulation.md)
 - [manipulation](../tasks/manipulation.md)
 - [paper-pixverse-r2](./paper-pixverse-r2.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ② 世界模型预测保真度层：多视角双臂 WM rollout 保真度，视频逼真 ≠ 策略收益
 
 ## 参考来源
 

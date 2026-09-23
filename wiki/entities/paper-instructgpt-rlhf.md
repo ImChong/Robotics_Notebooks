@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rlhf, alignment, nlp, openai, post-training]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2203.02155"
 venue: "NeurIPS 2022"
 related:
@@ -38,7 +38,7 @@ summary: "InstructGPT（arXiv:2203.02155）：SFT + 奖励模型 + PPO 的 RLHF 
 - **Light-O1 post-training：** Tech Blog [17] 明确用 **RLHF** 对齐 **human intent** 与 **两段式输出**（先语言推理 body 需求，再生成 action）——因 **intent 无 held-out loss**。
 - **具身对齐范式：** VLA/VLM 的 **preference / RLHF / DPO** 分支均溯源至此。
 
-## 核心管线
+## 核心方法管线
 
 ```mermaid
 flowchart LR
@@ -53,6 +53,19 @@ flowchart LR
 - 人类评估：**InstructGPT 1.3B** 可在多维度 **优于未对齐 GPT-3 175B**（论文人类 side-by-side）。
 - **Public API 用户** 偏好显著偏向 RLHF 模型。
 - **毒性 / 幻觉** 部分改善，但未消除——后续 RLHF/DPO 迭代仍继续。
+
+## 与其他工作对比
+
+| 维度 | InstructGPT / RLHF（本文） | 纯 SFT（只做指令微调） | 偏好直接优化（DPO 一类） |
+|------|-----------------------------|------------------------|---------------------------|
+| 训练段数 | 三段：SFT → 奖励模型 → PPO | 一段 | 两段：SFT → 直接用偏好对优化 |
+| 需要的标注 | 演示 + **成对偏好** | 仅演示 | 仅成对偏好 |
+| 工程复杂度 | 高：需维护 RM 与在线 RL 回路 | 低 | 中，无需在线 rollout |
+| 主要风险 | 奖励模型被 **reward hacking** | 只学到格式不学到偏好 | 偏好数据覆盖不到的行为不受约束 |
+
+- **本文真正证明的是「对齐比规模便宜」：** **1.3B 的对齐模型在人类 side-by-side 上可以胜过 175B 的未对齐模型**——这条结论的适用对象是 **人类偏好维度**，不是知识量或推理能力，别外推成「小模型更强」。
+- **迁到具身场景要换掉什么：** [Light-O1](./light-o1.md) 用同一模板对齐「先推理再动作」的输出格式，但机器人侧的奖励既可来自人类偏好，也可来自 **任务成功率/安全约束**；后者更接近可验证奖励，与本文的主观偏好不是同一类信号。
+- **未解决的部分：** 毒性与幻觉只是 **部分改善**；把 RLHF 当作安全性终点，是本文之后一系列对齐工作反复纠正的误读。
 
 ## 结论
 

@@ -7,9 +7,10 @@ tags:
   - benchmark
   - manipulation
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2609.22055"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/contact-rich-sim-10-papers-technology-map.md
   - ../concepts/sim2real.md
   - ../tasks/manipulation.md
@@ -87,6 +88,7 @@ summary: "Compositional CL WM Benchmark（arXiv:2609.22055）：把 world model 
 - [sim2real](../concepts/sim2real.md)
 - [manipulation](../tasks/manipulation.md)
 - [vla](../methods/vla.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ② 世界模型预测保真度层：组合式持续学习设定下的 WM 预测评测
 
 ## 参考来源
 

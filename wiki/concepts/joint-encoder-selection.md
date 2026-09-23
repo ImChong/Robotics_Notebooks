@@ -4,6 +4,7 @@ tags: [hardware, actuator, encoder, joint-module, humanoid, quadruped]
 status: complete
 updated: 2026-09-23
 related:
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../methods/reinforcement-learning.md
@@ -92,6 +93,7 @@ $$ \tau_{\mathrm{est}} \approx K_\theta \left( \frac{\theta_{\mathrm{motor}}}{N}
 - [loco-manipulation](../tasks/loco-manipulation.md)
 - [whole-body-control](../concepts/whole-body-control.md)
 - [reinforcement-learning](../methods/reinforcement-learning.md)
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本页归其 ② 电机驱动固件 FOC 层的反馈选型：编码器测什么物理量、装在哪，决定电流环换相与位置环的可用分辨率
 
 ## 参考来源
 

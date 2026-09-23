@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, egocentric, human-motion, project-aria, meta, motion-language]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "2406.09905"
 venue: "ECCV 2024"
 code: https://github.com/facebookresearch/nymeria_dataset
@@ -62,6 +62,19 @@ summary: "Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observ
 
 - 论文在三大任务上 **对比 contemporary SOTA**（具体数值以 PDF Table 为准）；核心信息是 **多模态 egocentric + GT** 相对单模态的增益。
 - 后续工作（EgoExoMoCap 等）常在 **Nymeria 子集** 上报告 MPJPE / recognition 指标——本页不重复搬运全部表格。
+
+## 与其他工作对比
+
+| 维度 | Nymeria（本文） | 仅有视频的 egocentric 数据集 | 实验室内动捕数据集 |
+|------|------------------|------------------------------|---------------------|
+| 采集场景 | **野外日常**（50 locations / 264 participants） | 野外，但无全身 GT | 受控实验室 |
+| 全身真值 | Aria + miniAria + **XSens** + observer 同步 | 无 | 有，但场景单一 |
+| 语言标注 | **三级层级**：motion narration → atomic action → activity summary | 多为单句描述或无 | 通常无 |
+| 主要代价 | 多设备同步与标定工程量极大 | 低 | 中 |
+
+- **它的增量不在「更大」，在「野外 + 有 GT + 有层级语言」同时成立：** 这三者过去通常只能取其二；论文在 egocentric body tracking / motion synthesis / action recognition 三任务上的对照，证明的正是这一组合带来的增益，而非单纯数据量。
+- **与站内数据节点的分工：** 数据产品口径（下载、许可、工具链）见 [Nymeria Dataset](./nymeria-dataset.md)；本页只保留 **论文级** 的方法贡献与评测读法。
+- **横比注意：** 后续工作（如 [EgoExoMoCap](./paper-egoexomocap.md)）常只在 **Nymeria 子集** 上报 MPJPE 或识别指标，子集划分不同则数不可比；引用前先核对 split。
 
 ## 结论
 

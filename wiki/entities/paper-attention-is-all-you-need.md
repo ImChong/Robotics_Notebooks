@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, transformer, sequence-modeling, nlp, architecture, google, google-brain, deep-learning]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-23
 arxiv: "1706.03762"
 venue: "NeurIPS 2017"
 code: https://github.com/tensorflow/tensor2tensor
@@ -130,6 +130,22 @@ sequenceDiagram
 - **WMT14 EN→FR：** 单模型 **41.8 BLEU**（当时 SOTA）。
 - **Parsing：** WSJ 与半监督设定均 **优于** 多数专用 parser，说明架构 **跨任务泛化**。
 - **消融（论文 Fig/表）：** 减少头数/层数/FFN 维度均掉 BLEU；去掉 PE 严重退化——验证三要素缺一不可。
+
+## 与其他工作对比
+
+同为「把变长序列映射成变长序列」的三条路线，差别不在精度调参，而在 **顺序依赖如何被打断**（下表复杂度口径同原文 Table 1，$n$ 为序列长、$d$ 为表示维、$k$ 为卷积核宽）：
+
+| 维度 | RNN / LSTM seq2seq | CNN seq2seq（膨胀卷积） | Transformer（本文） |
+|------|--------------------|------------------------|---------------------|
+| 顺序操作数 | $O(n)$，必须按时间步展开 | $O(1)$ | $O(1)$ |
+| 任意两位置最长路径 | $O(n)$ | $O(\log_k n)$ | $O(1)$ |
+| 每层主要复杂度 | $O(n\,d^2)$ | $O(k\,n\,d^2)$ | $O(n^2 d)$ |
+| 长程依赖的失效方式 | 梯度衰减 / 有效记忆截断 | 需堆足够层才覆盖全程 | 不衰减，但 $n$ 大时显存/算力先崩 |
+| 位置信息 | 结构自带 | 结构自带 | **必须显式注入 PE**，否则置换不变 |
+
+- **不是「注意力更准」，是「代价换了地方」：** RNN 把代价付在 **时间串行**，CNN 付在 **层数**，Transformer 把它折进 **$O(n^2)$ 的一层全连接注意力**。短 action chunk 上这笔交换几乎白赚，长视频 token 流上则反过来——这也是 [Mamba](../concepts/mamba.md) 一类状态空间模型把复杂度拉回线性的动机。
+- **与同期「结构 reformulation」类工作的关系：** 和 [ResNet](./paper-resnet-deep-residual-learning.md) 同属「换掉一条被默认为必需的结构假设」而非「加一个模块」——ResNet 打掉「深度必然难优化」，本文打掉「序列必然递归」。
+- **机器人侧的横比口径：** [ACT / action chunking](../methods/action-chunking.md)、[RT 系列](../methods/robotics-transformer-rt-series.md)、[BC+Transformer](../methods/bc-with-transformer.md) 复用的是 **block 语义**（MHA + FFN + 残差/LN），不是本文的 MT 超参；读这些页的成功率时不要把 WMT14 的 BLEU 优势当作动作任务上的先验优势。
 
 ## 结论
 

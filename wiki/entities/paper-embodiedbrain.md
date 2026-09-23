@@ -82,6 +82,19 @@ sequenceDiagram
 - 多基准 SOTA（以原文为准）；HF EmbodiedBrain-7B 权重已发布。
 - **读法：** 索引级摘要；逐项 baseline 以原文 PDF 为准。
 
+## 与其他工作对比
+
+| 维度 | EmbodiedBrain（本文） | [OpenEAI-VLA](./paper-openeai-vla.md) | 通用 MLLM 直接当规划器 |
+|------|------------------------|----------------------------------------|-------------------------|
+| 定位 | **具身任务规划 VLM**（7B/32B） | 端到端 VLA | 无具身对齐的通用模型 |
+| 训练配方 | agent-aligned 数据结构 + 大规模 SFT + **Step-GRPO**（前序步骤作 Guided Precursors）+ GRM 奖励 | VLA 预训练/微调 | 仅提示工程 |
+| 评测面 | 三部分：General / Planning / **E2E Sim**（VLM-PlanSim-99，AI2-THOR） | 操作任务成功率 | 通用基准 |
+| 输出 | 任务计划（需下游执行器落到动作） | 直接动作 | 文本计划 |
+
+- **「多基准 SOTA」要看是哪一层：** 本文的强项在 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 **① 认知/规划层**；VLM-PlanSim-99 已经往 ③ 靠了一步（端到端仿真），但仍不是真机成功率，**不可直接与 VLA 的操作成功率横比**。
+- **Step-GRPO 的适用前提：** 把前序步骤当 Guided Precursors，依赖任务本身 **有清晰的步骤结构**；长程、步骤边界模糊的任务上该信号会变弱。
+- **逐项数值：** 各基准分数与 baseline **以 [原文 PDF](https://arxiv.org/abs/2510.20578) 为准**；本页为索引级摘要。
+
 ## 结论
 
 **EmbodiedBrain 代表「规划专用 VLM + 真实仿真评测」路线；与 OpenVLA 等低层策略互补而非替代。**
