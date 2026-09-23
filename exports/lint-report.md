@@ -2,7 +2,7 @@
 
 ## [2026-09-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **71** 条信息型预警）：
+共发现 **0** 个问题（另含 **73** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -148,12 +148,13 @@
 - wiki/entities/paper-rxr.md（缺 重定向就绪度）
 - wiki/entities/vlnverse.md（缺 重定向就绪度）
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（5 个）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（6 个）
 - wiki/entities/easy-vibe.md（含绝对化措辞「最新」，updated=2026-09-20；同主题更新页 wiki/entities/birdview.md updated=2026-09-21）
 - wiki/entities/paper-code-as-world.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/embodied-industry-db.md updated=2026-09-23）
 - wiki/entities/paper-fetch-my-beer.md（含绝对化措辞「SOTA」，updated=2026-09-20；同主题更新页 wiki/entities/curobo.md updated=2026-09-21）
-- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/paper-athenazero.md updated=2026-09-22）
+- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/painode-146-anyskin.md updated=2026-09-23）
 - wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-21；同主题更新页 wiki/entities/embodied-industry-db.md updated=2026-09-23）
+- wiki/entities/paper-wam-design-empirical-study.md（含绝对化措辞「SOTA」，updated=2026-09-22；同主题更新页 wiki/entities/painode-146-anyskin.md updated=2026-09-23）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -183,9 +184,10 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/concepts/joint-encoder-selection.md
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（3 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（4 个）
 - wiki/entities/paper-relateanything.md
 - wiki/entities/paper-rpv-semnav.md
+- wiki/entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4726/4726 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4730/4730 (100%) wiki/entity 页有 ingest 来源

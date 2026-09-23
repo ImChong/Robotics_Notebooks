@@ -1,103 +1,181 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-touch, sun254667-touch]
+tags:
+  - paper
+  - vla
+  - vtla
+  - tactile-pretraining
+  - objtac
+  - semantic-alignment
+  - sjtu
+  - paxini
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2508.08706"
 venue: "arXiv 2025"
-summary: "Dual-path tactile encoder with pretrained ViT and semantically-aligned tactile ViT (SA-ViT); introduces ObjTac dataset with 135K tri-modal samples; achieves 96.9% success with grippers and 100% with dexterous hands."
+summary: "OmniVTLA（arXiv:2508.08706，SJTU/Paxini）：ObjTac 135K 三模态 + SA-ViT 语义对齐 + dual-path encoder；夹爪 pick-place 96.9%、灵巧手 100%、peg 83.3%；ObjTac 已开源，代码 coming soon。"
 related:
-  - ../entities/awesome-touch.md
-  - ../overview/sun-awesome-touch-technology-map.md
+  - ../concepts/tactile-sensing.md
+  - ../concepts/visuo-tactile-fusion.md
+  - ../concepts/contact-rich-manipulation.md
   - ../methods/vla.md
-  - ../methods/imitation-learning.md
-  - ../tasks/manipulation.md
-  - ../tasks/bimanual-manipulation.md
+  - ./paper-sparsh.md
+  - ./paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md
+  - ./paper-forcevla.md
+  - ../overview/tactile-intelligence-nine-papers-map.md
+  - ../overview/sun-awesome-touch-technology-map.md
 sources:
-  - ../../sources/papers/sun_awesome_touch_2508_08706_omnivtla-vision-tactile-language-action.md
-  - ../../sources/papers/sun_awesome_touch_catalog.md
-  - ../../sources/repos/awesome-touch.md
+  - ../../sources/papers/omnivtla_arxiv_2508_08706.md
+  - ../../sources/sites/objtac-omnivtla.md
 ---
 
-# OmniVTLA
+# OmniVTLA：语义对齐触觉的 VTLA（arXiv:2508.08706）
 
-**OmniVTLA: Vision-Tactile-Language-Action Model with Semantic-Aligned Tactile Sensing** 收录于 [Awesome Touch](https://github.com/sun254667/awesome-touch) **第 007/065** 篇，分组 **21 Unified Vision-Tactile-Language-Action Frameworks**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+**OmniVTLA**（*Vision-Tactile-Language-Action Model with Semantic-Aligned Tactile Sensing*，[arXiv:2508.08706](https://arxiv.org/abs/2508.08706)，Zhengxue Cheng 等 · **上海交通大学 / Paxini Tech**；[项目页](https://readerek.github.io/Objtac.github.io/)）提出 **语义对齐 VTLA**：双路径触觉编码（预训练 ViT + **SA-ViT**）+ **ObjTac**（56 物体 / 10 类 / **135K** 视–触–文三模态样本），使触觉 latent 与 CLIP/SigLIP 式视觉–语言语义同构。
 
 ## 一句话定义
 
-Dual-path tactile encoder with pretrained ViT and semantically-aligned tactile ViT (SA-ViT); introduces ObjTac dataset with 135K tri-modal samples; achieves 96.9% success with grippers and 100% with dexterous hands.
+**把触觉从「低维力向量拼接」升级为与视觉/语言语义对齐的 SA-ViT 表征，再用 dual-path encoder 驱动 VTLA——夹爪 pick-place 96.9%、灵巧手 100%、peg insertion 83.3%。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VTLA | Vision-Tactile-Language-Action | 视–触–语言–动作策略 |
-| WM | World Model | 视触觉前向预测 |
-| WAM | World Action Model | 世界–动作联合建模 |
-| Sim2Real | Simulation to Real | 仿真到真机迁移 |
-
-## 为什么重要
-
-- Dual-path tactile encoder with pretrained ViT and semantically-aligned tactile ViT (SA-ViT); introduces ObjTac dataset with 135K tri-modal samples; achieves 96.9% success with grippers and 100% with dexterous hands.
-- 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+| OmniVTLA | — | 本文语义对齐 VTLA |
+| VTLA | Vision-Tactile-Language-Action | 视–触–语言–动作 |
+| SA-ViT | Semantically-Aligned Tactile ViT | ObjTac 上对比学习的语义触觉 ViT |
+| ObjTac | — | 56 物体 135K 三模态数据集 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| ViT | Vision Transformer | dual-path 通用支路与 SA-ViT 支路 |
 
 ## 核心信息
 
-| 字段 | 内容 |
+| 项 | 内容 |
+|----|------|
+| 机构 | Shanghai Jiao Tong University；Paxini Tech |
+| 通讯作者 | Zhengxue Cheng（zxcheng@sjtu.edu.cn） |
+| 传感器 | Paxini Gen2 **力阵列触觉** + 720P 30 FPS 第一视角视频 + 文本 |
+| ObjTac | **56** 物体 / **10** 材质类 / **135K** 配对（270k 力记录筛选） |
+| 开源（2026-09-23） | **部分开源** — [ObjTac Google Drive](https://drive.google.com/drive/folders/1jamNGWYhCk-uVKtrleF55WUpHctmOQBH)；OmniVTLA 代码 **Coming Soon** |
+
+## 为什么重要
+
+- **触觉需要语义对齐而非仅低维拼接：** 图像编码器继承 CLIP/SigLIP 对齐；触觉侧 SA-ViT 在 ObjTac 上对齐材质/粗糙度/硬度等 **latent 概念**。
+- **ObjTac 填补三模态缺口：** 力阵列 + 视频 + 文本；60 Hz 力数据；相对纯 visuo-tactile 轨迹补 **语言描述层**。
+- **真机轨迹质量：** 语义触觉 cues 使策略 **「远快近慢」** — 无接触快速接近、接触段平滑减速。
+- **与 [Sparsh](./paper-sparsh.md) 分工：** Sparsh 跨 VBTS SSL；OmniVTLA 走 **力阵列 + 语义对齐 VTLA** 端到端。
+
+## 核心贡献/方法
+
+| 模块 | 要点 |
 |------|------|
-| 编号 | 007/065 |
-| 分组 | 21 Unified Vision-Tactile-Language-Action Frameworks |
-| 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2508.08706> |
+| **ObjTac** | 56 物体 × 10 类；每物体 2–5 次交互；Text + Vision + Tactile |
+| **SA-ViT** | ObjTac 对比学习；触觉与视觉/语言概念对齐 |
+| **Dual-path encoder** | 通用预训练 ViT path + SA-ViT path；参数匹配 controlled ablation |
+| **OmniVTLA** | 端到端接触丰富操作；继承 VLA 视觉–语言语义 |
+| **轨迹行为** | 接触前高速接近、接触后平滑减速 |
 
-## 核心机制（归纳）
+## 流程总览
 
-### 策展导读要点
-
-Dual-path tactile encoder with pretrained ViT and semantically-aligned tactile ViT (SA-ViT); introduces ObjTac dataset with 135K tri-modal samples; achieves 96.9% success with grippers and 100% with dexterous hands.
-
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+```mermaid
+flowchart TB
+  subgraph objtac [ObjTac 预训练]
+    collect["Paxini Gen2 采集<br/>56 obj / 135K"]
+    savit["SA-ViT 语义对齐"]
+    collect --> savit
+  end
+  subgraph enc [Dual-path Tactile Encoder]
+    vit["预训练 ViT path"]
+    sa["SA-ViT path"]
+    savit --> sa
+  end
+  subgraph vtla [OmniVTLA]
+    vlm["VLA 视觉–语言骨干"]
+    fuse["多模态融合"]
+    act["动作头"]
+    vit --> fuse
+    sa --> fuse
+    vlm --> fuse --> act
+  end
+  subgraph real [真机]
+    grip["夹爪 pick-place 96.9%"]
+    dex["灵巧手 100%"]
+    peg["peg insertion 83.3%"]
+  end
+  act --> real
+```
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2508.08706) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-touch-technology-map.md) 同分组条目。
+| 任务 | OmniVTLA | 基线提升 | 备注 |
+|------|----------|----------|------|
+| Pick-and-place（夹爪） | **96.9%** | **+21.9 pt** | 成功率 |
+| Pick-and-place（灵巧手） | **100%** | **+6.2 pt** | 成功率 |
+| Peg insertion | **83.3%** | **+33.3 pt** | 成功率 |
+| 轨迹 | 更短完成时间 | — | 更平滑减速 |
 
 ## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-touch-technology-map.md) 的 **21 Unified Vision-Tactile-Language-Action Frameworks** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+| 维度 | OmniVTLA | Tactile-VLA | ForceVLA | Sparsh |
+|------|----------|-------------|----------|--------|
+| 触觉表征 | **SA-ViT 语义对齐** | VBTS token 融合 | 6 轴 F/T MoE | SSL frozen encoder |
+| 数据 | **ObjTac 135K 三模态** | UMI demo | ForceVLA-Data | 661k 无标 SSL |
+| 控制 | 标准 VTLA 动作 | **混合位置–力** | π₀ flow | probe/DP |
+| 开源 | 数据已放 | Coming soon | 待发布 | ARCHIVED 全栈 |
 
 ## 结论
 
-**这一页能给你的是「OmniVTLA」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**OmniVTLA 的主张是：VTLA 里触觉必须是语义对齐的 latent（SA-ViT），而不是力向量的 append——ObjTac 135K + dual-path 在 pick-place 与 peg 上分别拉到 96.9%/100% 与 83.3%。**
 
-- 可确证的只有清单坐标：分组 **21 Unified Vision-Tactile-Language-Action Frameworks**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. **SA-ViT 是核心** — 相对 vanilla ViT path，语义对齐 path 驱动「远快近慢」轨迹。
+2. **ObjTac 可先用** — Drive 已放；135K 三模态适合预训 SA-ViT 或对照实验。
+3. **灵巧手 100%** — 相对夹爪 +6.2 pt 较小，但绝对成功率封顶。
+4. **Peg +33.3 pt** — 接触丰富插入任务增益最大。
+5. **代码待发** — 训练/推理仓 Coming Soon；权重未独立 HF 发布。
+6. **与 Sparsh 可组合** — dual-path 的通用 ViT 支路可接 frozen Sparsh（见 [九篇地图](../overview/tactile-intelligence-nine-papers-map.md)）。
 
-## 常见误区
+## 源码运行时序图
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+**不适用（训练/推理栈）** — OmniVTLA 代码 **Coming Soon**；**ObjTac 数据集** 可独立下载用于 SA-ViT 预训练或分析：
+
+```mermaid
+sequenceDiagram
+  participant User as 研究者
+  participant Drive as ObjTac Google Drive
+  participant Page as 项目页
+  participant Train as OmniVTLA 训练栈
+
+  User->>Page: Dataset 按钮
+  Page->>Drive: 下载 135K 三模态样本
+  Drive-->>User: Vision + Tactile + Text
+  User->>Page: Code 按钮
+  Page-->>User: Coming Soon（截至 2026-09-23）
+  Note over Train: 官方 train/infer 入口待发布
+```
+
+## 局限与风险
+
+- Paxini Gen2 力阵列；跨 DIGIT/GelSight（[Sparsh](./paper-sparsh.md) 族）泛化未验证。
+- SA-ViT 权重未独立发布；复现 VTLA 需等官方代码。
+- ObjTac 文本描述质量与 VLA 指令分布耦合；下游任务迁移需验证。
+- **部分开源** — 勿误写为全栈已开源。
 
 ## 关联页面
 
-- 列表实体：[Awesome Touch](../entities/awesome-touch.md)
-- 技术地图：[Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md)
-- 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- [视触觉融合](../concepts/visuo-tactile-fusion.md) — 三模态对齐
+- [触觉传感](../concepts/tactile-sensing.md) — 力阵列数据轴
+- [VLA](../methods/vla.md) — VTLA 骨干
+- [Sparsh](./paper-sparsh.md) — VBTS SSL 对照
+- [Tactile-VLA](./paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md) — 混合力控 VTLA
+- [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — VTLA 层
 
 ## 参考来源
 
-- [`sources/papers/sun_awesome_touch_2508_08706_omnivtla-vision-tactile-language-action.md`](../../sources/papers/sun_awesome_touch_2508_08706_omnivtla-vision-tactile-language-action.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
-- [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
-- 论文：<https://arxiv.org/abs/2508.08706>
+- [OmniVTLA 论文归档（arXiv:2508.08706）](../../sources/papers/omnivtla_arxiv_2508_08706.md)
+- [ObjTac / OmniVTLA 项目页归档](../../sources/sites/objtac-omnivtla.md)
 
 ## 推荐继续阅读
 
-- [Awesome Touch 仓库](https://github.com/sun254667/awesome-touch)
-- [原文](https://arxiv.org/abs/2508.08706)
+- [项目页](https://readerek.github.io/Objtac.github.io/) — ObjTac 规格、力阵列可视化、真机视频
+- [ObjTac Google Drive](https://drive.google.com/drive/folders/1jamNGWYhCk-uVKtrleF55WUpHctmOQBH) — 数据集下载
+- [arXiv:2508.08706](https://arxiv.org/abs/2508.08706) — dual-path ablation 全文

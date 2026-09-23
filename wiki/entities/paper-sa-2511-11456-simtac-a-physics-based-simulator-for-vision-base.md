@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2511.11456"
 venue: "arXiv 2025"
 summary: "Particle-based deformation modeling, light-field rendering for photorealistic tactile image generation, and neural network for predicting mechanical responses."

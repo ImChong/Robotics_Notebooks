@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, world-model, hierarchical-policy, contact-rich, imitation-learning, flow-matching, humanoid, hit, phanes-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 arxiv: "2607.07287"
 related:
   - ../methods/vla.md
@@ -14,6 +14,9 @@ related:
   - ../concepts/tactile-sensing.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
+  - ../entities/paper-sparsh.md
+  - ../entities/paper-forcevla.md
+  - ../overview/tactile-intelligence-nine-papers-map.md
 sources:
   - ../../sources/papers/touchworld_arxiv_2607_07287.md
   - ../../sources/sites/touchworld-phanes-lab.md
@@ -188,6 +191,7 @@ Water Flower、Tabletop Clearing、Cup Insertion、Power Plug Insertion、Pot Wi
 
 ## 关联页面
 
+- [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — 本批 ingest 中 TouchWorld 位于 Foundation/WM 层
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md)
 - [Contact-Rich Manipulation（接触丰富操作）](../concepts/contact-rich-manipulation.md)
