@@ -814,6 +814,13 @@
         "xiaomi"
       ]
     },
+    "xiaomi-mimo": {
+      "label": "小米 MiMo（Xiaomi MiMo）",
+      "aliases": [
+        "xiaomi-mimo",
+        "mimo"
+      ]
+    },
     "lumos": {
       "label": "光明机器人（Lumos Robotics）",
       "aliases": [

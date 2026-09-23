@@ -44,7 +44,7 @@ summary: "RoboBench（arXiv:2510.17801，ECCV 2026）系统评测 MLLM 作为操
 - **覆盖完整操纵认知链**：不像单一 VQA 或规划题集，五维 taxonomy 把 **隐式指令、跨本体/物体/视角泛化、affordance、执行 vs 规划失败诊断** 放在同一坐标系，便于定位模型短板。
 - **规划评测超越文本匹配**：**MLLM-as-world-simulator** 在 DAG 上 rollout 原子动作，检查 **NodeCorrectness** 与 **TaskCompletion**，减少「听起来合理但不可执行」的假阳性计划。
 - **与下游 VLA 有统计信号**：将开源 VLM backbone 最小微调为 VLA 后，RoboBench **object-centric 感知** 与 **CALVIN** 长程表现 **r=0.884**；**LIBERO-10** 更依赖 **静态+dynamic affordance**（r=0.677）——说明不同控制基准依赖不同认知技能，RoboBench 可作 **VLM 选型诊断**。
-- **工程可复现**：代码、HF 数据集与 leaderboard 结果均已发布；ECCV 2026 版覆盖 **18** 个闭源/开源/具身 MLLM（含 GPT-5.4、Claude-Opus-4.7、Gemini-3.1-Pro、Qwen3-VL、RoboBrain-2.5、MiMo-Embodied 等）。
+- **工程可复现**：代码、HF 数据集与 leaderboard 结果均已发布；ECCV 2026 版覆盖 **18** 个闭源/开源/具身 MLLM（含 GPT-5.4、Claude-Opus-4.7、Gemini-3.1-Pro、Qwen3-VL、RoboBrain-2.5、MiMo-Embodied 等）。**MiMo-V2.6** 为通用 Agent 基座，具身 MLLM 评测仍见 [MiMo-Embodied](https://github.com/XiaomiMiMo/MiMo-Embodied) 与 [MiMo-V2.6](./mimo-v2-6.md) 消歧说明。
 
 ## 核心结构
 
