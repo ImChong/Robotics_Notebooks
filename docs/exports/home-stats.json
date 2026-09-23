@@ -9,6 +9,36 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/strong-pair-data.md",
+      "detail_id": "wiki-concepts-strong-pair-data",
+      "label": "强 Pair Data（Strong Pair Data）",
+      "type": "concept",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/psibot-r25.md",
+      "detail_id": "entity-psibot-r25",
+      "label": "Psi-R2.5（PsiBot · Scaling Pair Data）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-thaw-vla.md",
+      "detail_id": "entity-paper-thaw-vla",
+      "label": "THAW-VLA（arXiv:2609.24682）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/concepts/joint-encoder-selection.md",
       "detail_id": "wiki-concepts-joint-encoder-selection",
       "label": "关节编码器选型（光电 / 磁 / 电感）",
@@ -179,46 +209,17 @@
       "source": "git",
       "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/embspatial.md",
-      "detail_id": "entity-embspatial",
-      "label": "EmbSpatial-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/er-point-bench.md",
-      "detail_id": "entity-er-point-bench",
-      "label": "Point-Bench",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/molmo-er.md",
-      "detail_id": "entity-molmo-er",
-      "label": "Molmo2-ER（MolmoER）",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/joint-encoder-selection.md",
-    "detail_id": "wiki-concepts-joint-encoder-selection",
-    "label": "关节编码器选型（光电 / 磁 / 电感）",
+    "path": "wiki/concepts/strong-pair-data.md",
+    "detail_id": "wiki-concepts-strong-pair-data",
+    "label": "强 Pair Data（Strong Pair Data）",
     "type": "concept",
     "recency": "2026-09-23",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
