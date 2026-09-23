@@ -2,10 +2,11 @@
 type: method
 tags: [vla, foundation-policy, embodied-ai, qwen, benchmark]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
+  - ../entities/paper-thaw-vla.md
   - ../entities/rldx-1.md
   - ../concepts/foundation-policy.md
   - ../entities/nvidia-omniverse.md
@@ -95,5 +96,6 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 -   [RLDX-1](../entities/rldx-1.md) — 同 Qwen3-VL 底座下的多流扩散动作头与物理传感路线对照
 -   [Qwen-VLA](../entities/qwen-vla.md) — 同生态下的 **大规模通才**（操作–导航统一 + embodiment prompt）对照
 -   [VLAct](../entities/paper-vlact.md) — StarVLA 生态下的 **表征中心 VLA 持续预训练** 骨干（arXiv:2608.27550）
+-   [THAW-VLA](../entities/paper-thaw-vla.md) — 在 StarVLA QwenGR00T 0.8B 上离线蒸馏 Cosmos3-Nano 特征；LIBERO 97.9%（arXiv:2609.24682；已开源）
 -   [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型概念
 -   [Diffusion Policy](./diffusion-policy.md) — 另一种主流的生成式动作头路线

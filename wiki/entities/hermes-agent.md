@@ -10,7 +10,7 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-09-15
+updated: 2026-09-23
 related:
   - ./deepseek-harness.md
   - ./ponytail.md
