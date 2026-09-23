@@ -9,6 +9,46 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-forcevla.md",
+      "detail_id": "entity-paper-forcevla",
+      "label": "ForceVLA：力感知 MoE 增强 VLA（NeurIPS 2025 · arXiv:2505.22159）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sparsh.md",
+      "detail_id": "entity-paper-sparsh",
+      "label": "Sparsh：视觉触觉自监督表征（CoRL 2024 · arXiv:2410.24090）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vision-based-tactile-intelligence.md",
+      "detail_id": "entity-paper-vision-based-tactile-intelligence",
+      "label": "Vision-Based Tactile Intelligence：VBTS 综述（arXiv:2608.15490）",
+      "type": "entity",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/tactile-intelligence-nine-papers-map.md",
+      "detail_id": "wiki-overview-tactile-intelligence-nine-papers-map",
+      "label": "触觉智能九篇论文阅读地图",
+      "type": "overview",
+      "recency": "2026-09-23",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/embodied-industry-db.md",
       "detail_id": "entity-embodied-industry-db",
       "label": "具身产业库（Embodied Industry DB）",
@@ -169,59 +209,17 @@
       "source": "git",
       "action": "added",
       "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-parkour-in-the-wild.md",
-      "detail_id": "entity-paper-parkour-in-the-wild",
-      "label": "Parkour in the Wild（PITW）",
-      "type": "entity",
-      "recency": "2026-09-22",
-      "source": "git",
-      "action": "added",
-      "community_label": "人形机器人移动（Humanoid Locomotion） 社区"
-    },
-    {
-      "path": "wiki/methods/multi-expert-distillation.md",
-      "detail_id": "wiki-methods-multi-expert-distillation",
-      "label": "Multi-Expert Distillation（多专家蒸馏）",
-      "type": "method",
-      "recency": "2026-09-22",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/vggt-geometric-state-survey.md",
-      "detail_id": "wiki-overview-vggt-geometric-state-survey",
-      "label": "VGGT 几何状态综述视角",
-      "type": "overview",
-      "recency": "2026-09-22",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-relateanything.md",
-      "detail_id": "entity-paper-relateanything",
-      "label": "RelateAnything：实时开放词汇关系预测",
-      "type": "entity",
-      "recency": "2026-09-21",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/embodied-industry-db.md",
-    "detail_id": "entity-embodied-industry-db",
-    "label": "具身产业库（Embodied Industry DB）",
+    "path": "wiki/entities/paper-forcevla.md",
+    "detail_id": "entity-paper-forcevla",
+    "label": "ForceVLA：力感知 MoE 增强 VLA（NeurIPS 2025 · arXiv:2505.22159）",
     "type": "entity",
     "recency": "2026-09-23",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
+    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
   },
   "top_communities": [
     {
