@@ -385,7 +385,7 @@ def _paper_source(p: dict) -> str:
     lines = [
         f"# {p['title']}",
         "",
-        f"- **类型：** paper",
+        "- **类型：** paper",
         f"- **arXiv：** <https://arxiv.org/abs/{ax}>",
     ]
     if p.get("project"):
@@ -406,7 +406,7 @@ def _paper_source(p: dict) -> str:
         "## 对 wiki 的映射",
         "",
         f"- 实体页：[`wiki/entities/paper-{p['slug']}.md`](../../wiki/entities/paper-{p['slug']}.md)",
-        f"- 技术地图：[`wiki/overview/collab-wm-12-papers-technology-map.md`](../../wiki/overview/collab-wm-12-papers-technology-map.md)",
+        "- 技术地图：[`wiki/overview/collab-wm-12-papers-technology-map.md`](../../wiki/overview/collab-wm-12-papers-technology-map.md)",
     ]
     return "\n".join(lines) + "\n"
 
@@ -844,7 +844,6 @@ def _map() -> str:
     def row(p: dict) -> str:
         return f"| {p['short']} | [paper-{p['slug']}](../entities/paper-{p['slug']}.md) | {p['open']} |"
 
-    paper_rows = "\n".join(row(p) for p in PAPERS)
     return f"""---
 type: overview
 tags: [overview, survey, vla, world-model, humanoid, collaboration, technology-map]
