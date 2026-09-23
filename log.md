@@ -1,3 +1,5 @@
+## [2026-09-23] ingest | sources/repos/selfdriving-car.md — ApexDrive AI 2D Neuroevolution 自驾仿真入库，已开源（无 DL 框架）
+
 ## [2026-09-22] ingest | sources/blogs/wechat_embodied_heart_msfp_survey_tsinghua_2026-09-22.md — 清华 MSFP 综述 arXiv:2506.19769 四条技术轴实体页
 
 ## [2026-09-22] ingest | sources/papers/huro_arxiv_2609_10706.md — 深读 HuRo 机器人化流水线；补齐 sites/repos 归档与 paper-huro 实体（OOD 34.9→72.2%）；部分开源

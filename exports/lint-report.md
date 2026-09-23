@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-09-22] lint | health-check | 自动化 wiki 健康检查
+## [2026-09-23] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题（另含 **61** 条信息型预警）：
 
@@ -180,4 +180,4 @@
 - wiki/entities/paper-relateanything.md
 - wiki/entities/paper-vision-locomotion-egocentric.md
 
-📊 Sources 覆盖率：4715/4715 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4716/4716 (100%) wiki/entity 页有 ingest 来源
