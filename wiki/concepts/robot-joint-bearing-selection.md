@@ -16,6 +16,8 @@ related:
   - ../overview/humanoid-hardware-101-actuation-sensing-chain.md
   - ../overview/humanoid-hardware-101-integrated-actuators.md
   - ./joint-module-self-development-workflow.md
+  - ./joint-torque-sensor-selection.md
+  - ./joint-encoder-selection.md
   - ./humanoid-knee-harmonic-drive-limits.md
   - ./humanoid-mass-production-engineering.md
   - ./robot-structural-modal-analysis.md

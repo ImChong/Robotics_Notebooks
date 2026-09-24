@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-23
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ./joint-torque-sensor-selection.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../methods/reinforcement-learning.md
@@ -71,7 +72,7 @@ flowchart LR
 
 $$ \tau_{\mathrm{est}} \approx K_\theta \left( \frac{\theta_{\mathrm{motor}}}{N} - \theta_{\mathrm{output}} \right) $$
 
-- 差值主要反映 **传动扭转变形** — 可作观测，**不能** 替代标定过的关节力矩传感器（非线性刚度、摩擦、滞回）。
+- 差值主要反映 **传动扭转变形** — 可作观测，**不能** 替代标定过的关节力矩传感器（非线性刚度、摩擦、滞回）；四路线对比与品牌见 [关节力矩传感器选型](./joint-torque-sensor-selection.md)。
 - **高电频率延迟：** 大极对 flat BLDC 超压驱动时电频率可达 **kHz 级**；除分辨率外须评估 **DAEC + MCU ωe 超前** — 见 [LunaDrive](../entities/paper-lunadrive.md)（3110 Hz 案例）。
 
 ## 工程实践（选型清单）

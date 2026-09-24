@@ -14,6 +14,7 @@ related:
   - ../overview/hub-actuator-drive-chain.md
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/torque-source-abstraction-gap.md
+  - ../concepts/joint-torque-sensor-selection.md
   - ../concepts/ethercat-protocol.md
   - ../concepts/motor-torque-current-curve.md
   - ../concepts/motor-torque-speed-curve.md
