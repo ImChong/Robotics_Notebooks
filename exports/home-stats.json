@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-sure-map.md",
+      "detail_id": "entity-paper-sure-map",
+      "label": "SURE-Map：自校正流式几何基础模型",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉感知（Robot Perception） 社区"
+    },
+    {
       "path": "wiki/entities/paper-cuvslam.md",
       "detail_id": "entity-paper-cuvslam",
       "label": "cuVSLAM：CUDA 加速视觉里程计与建图",
@@ -207,28 +218,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/skild-physical-self-play.md",
-      "detail_id": "entity-skild-physical-self-play",
-      "label": "Skild Physical Self-Play（后训练自博弈）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-cuvslam.md",
-    "detail_id": "entity-paper-cuvslam",
-    "label": "cuVSLAM：CUDA 加速视觉里程计与建图",
+    "path": "wiki/entities/paper-sure-map.md",
+    "detail_id": "entity-paper-sure-map",
+    "label": "SURE-Map：自校正流式几何基础模型",
     "type": "entity",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    "community_label": "视觉感知（Robot Perception） 社区"
   },
   "top_communities": [
     {
