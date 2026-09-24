@@ -4752,7 +4752,9 @@
     return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
-      var topics = TF.depthsForNode({ id: node.id, community: node.community });
+      var topics = TF.depthsForNode({
+        id: node.id, community: node.community, community_secondary: node.community_secondary
+      });
       if (!topics.length) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
 
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
