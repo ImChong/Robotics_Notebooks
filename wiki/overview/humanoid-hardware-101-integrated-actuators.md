@@ -51,6 +51,7 @@ sources:
 
 ## 关联页面
 
+- [小鹏 IRON 54 项专利技术地图](./xpeng-iron-54-patents-technology-map.md) — 肩/膝/手/腰/步态等 CN 专利独立节点
 - [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md) — 为何在腿上失效、三大物种
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md) — 峰值/连续/基速读图
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)

@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/blogs/wechat_xpeng_iron_54_patents_2026-09-24.md — 小鹏 IRON 54 项 CN 专利拆解；54/54 独立 patent-xpeng-cn* 实体 + 技术地图
+
+- **意图：** 用户指定 https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg；每篇专利独立非重复详情节点
+- **开源结论：** N/A（专利文本公开，无代码）
+- **关键页：** [`xpeng-iron-54-patents-technology-map`](wiki/overview/xpeng-iron-54-patents-technology-map.md)；54× [`patent-xpeng-cn*`](wiki/entities/)
+
 ## [2026-09-24] ingest | sources/blogs/wechat_zanehub_joint_torque_sensor_types_2026-09-24.md — Zane Hub 力控关节力矩传感四路线与品牌选型；新建 joint-torque-sensor-selection
 
 - **意图：** 用户指定 https://mp.weixin.qq.com/s/_Rs6EmAOlqxzP_rLTppWqQ；自动合并 PR

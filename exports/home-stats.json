@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4798,
-  "edge_count": 42263,
+  "node_count": 4853,
+  "edge_count": 42638,
   "coverage": {
-    "covered": 4769,
-    "total": 4769,
+    "covered": 4824,
+    "total": 4824,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -40,183 +40,174 @@
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
-      "path": "wiki/entities/flux-3-action.md",
-      "detail_id": "entity-flux-3-action",
-      "label": "FLUX 3 Action",
+      "path": "wiki/entities/patent-xpeng-cn117359667a-multi-finger-single-pushrod.md",
+      "detail_id": "entity-patent-xpeng-cn117359667a-multi-finger-single-pushrod",
+      "label": "小鹏 IRON · 单推杆联动多指的轻量化机械手（CN117359667A）",
       "type": "entity",
       "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dualwam.md",
-      "detail_id": "entity-paper-dualwam",
-      "label": "DualWAM（arXiv:2609.24868）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-predactor.md",
-      "detail_id": "entity-paper-predactor",
-      "label": "PredActor（arXiv:2609.24840）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robotwin-phys.md",
-      "detail_id": "entity-paper-robotwin-phys",
-      "label": "RoboTwin-Phys（arXiv:2609.26292）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-routelt.md",
-      "detail_id": "entity-paper-routelt",
-      "label": "RouteRLT（arXiv:2609.26467）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sample-simulate-select.md",
-      "detail_id": "entity-paper-sample-simulate-select",
-      "label": "Sample, Simulate, Select（S³，arXiv:2609.26420）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
-    },
-    {
-      "path": "wiki/concepts/joint-encoder-selection.md",
-      "detail_id": "wiki-concepts-joint-encoder-selection",
-      "label": "关节编码器选型（光电 / 磁 / 电感）",
-      "type": "concept",
-      "recency": "2026-09-23",
       "source": "git",
       "action": "added",
       "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/concepts/out-of-distribution-generalization.md",
-      "detail_id": "wiki-concepts-out-of-distribution-generalization",
-      "label": "概念：分布外（OOD）泛化与 OOD 指标怎么读",
-      "type": "concept",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
-    },
-    {
-      "path": "wiki/concepts/strong-pair-data.md",
-      "detail_id": "wiki-concepts-strong-pair-data",
-      "label": "强 Pair Data（Strong Pair Data）",
-      "type": "concept",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dexora.md",
-      "detail_id": "entity-paper-dexora",
-      "label": "Dexora（arXiv:2605.18722）",
+      "path": "wiki/entities/patent-xpeng-cn117507805a-hollow-planetary-module.md",
+      "detail_id": "entity-patent-xpeng-cn117507805a-hollow-planetary-module",
+      "label": "小鹏 IRON · 中空走线的嵌套式多级行星动力模组（CN117507805A）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-embodiedbrain.md",
-      "detail_id": "entity-paper-embodiedbrain",
-      "label": "EmbodiedBrain（arXiv:2510.20578）",
+      "path": "wiki/entities/patent-xpeng-cn117863190b-vision-tactile-terrain.md",
+      "detail_id": "entity-patent-xpeng-cn117863190b-vision-tactile-terrain",
+      "label": "小鹏 IRON · 融合视觉高度与落足触觉的地形轨迹规划（CN117863190B）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-fast-wam.md",
-      "detail_id": "entity-paper-fast-wam",
-      "label": "Fast-WAM（arXiv:2603.16666）",
+      "path": "wiki/entities/patent-xpeng-cn118123869a-finger-leadscrew-slider.md",
+      "detail_id": "entity-patent-xpeng-cn118123869a-finger-leadscrew-slider",
+      "label": "小鹏 IRON · 基座内丝杆滑块驱动的紧凑手指（CN118123869A）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-industrialvla-bench.md",
-      "detail_id": "entity-paper-industrialvla-bench",
-      "label": "IndustrialVLA-Bench（arXiv:2609.25562）",
+      "path": "wiki/entities/patent-xpeng-cn118254185a-motion-track-fsm.md",
+      "detail_id": "entity-patent-xpeng-cn118254185a-motion-track-fsm",
+      "label": "小鹏 IRON · 动作跟踪异常的等待、恢复与停止切换（CN118254185A）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-memorywam.md",
-      "detail_id": "entity-paper-memorywam",
-      "label": "MemoryWAM（arXiv:2606.20562）",
+      "path": "wiki/entities/patent-xpeng-cn118288289a-joint-limit-adapt.md",
+      "detail_id": "entity-patent-xpeng-cn118288289a-joint-limit-adapt",
+      "label": "小鹏 IRON · 面向关节限位的动作轨迹适配（CN118288289A）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-mimicagent.md",
-      "detail_id": "entity-paper-mimicagent",
-      "label": "MimicAgent（arXiv:2609.24145）",
+      "path": "wiki/entities/patent-xpeng-cn118544341a-motion-filter-queue.md",
+      "detail_id": "entity-patent-xpeng-cn118544341a-motion-filter-queue",
+      "label": "小鹏 IRON · 动作识别的双重滤波与轨迹队列缓冲（CN118544341A）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-openeai-vla.md",
-      "detail_id": "entity-paper-openeai-vla",
-      "label": "OpenEAI-VLA（arXiv:2606.03392）",
+      "path": "wiki/entities/patent-xpeng-cn118700158a-dexhand-calibration-map.md",
+      "detail_id": "entity-patent-xpeng-cn118700158a-dexhand-calibration-map",
+      "label": "小鹏 IRON · 个体标定与分段映射的灵巧手遥操作（CN118700158A）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-pixverse-r2.md",
-      "detail_id": "entity-paper-pixverse-r2",
-      "label": "PixVerse R2：Scaling Real-Time Omni World Models",
+      "path": "wiki/entities/patent-xpeng-cn118744424a-dual-point-teleop.md",
+      "detail_id": "entity-patent-xpeng-cn118744424a-dual-point-teleop",
+      "label": "小鹏 IRON · 手掌与肘部双位置约束的遥操作控制（CN118744424A）",
       "type": "entity",
-      "recency": "2026-09-23",
+      "recency": "2026-09-24",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn118927245a-vr-imu-teleop.md",
+      "detail_id": "entity-patent-xpeng-cn118927245a-vr-imu-teleop",
+      "label": "小鹏 IRON · VR头显与惯性动捕融合的多部位遥操作（CN118927245A）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn119017408a-hooke-joint-head-3dof.md",
+      "detail_id": "entity-patent-xpeng-cn119017408a-hooke-joint-head-3dof",
+      "label": "小鹏 IRON · 虎克铰与双驱动头部三轴机构（CN119017408A）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn119058853a-hip-cross-linear-actuator.md",
+      "detail_id": "entity-patent-xpeng-cn119058853a-hip-cross-linear-actuator",
+      "label": "小鹏 IRON · 十字轴与直线执行器耦合的髋关节（CN119058853A）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn119078989b-distributed-linear-leg.md",
+      "detail_id": "entity-patent-xpeng-cn119078989b-distributed-linear-leg",
+      "label": "小鹏 IRON · 髋膝踝直线执行器分布式机械腿（CN119078989B）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn119116008a-arm-internal-wiring.md",
+      "detail_id": "entity-patent-xpeng-cn119116008a-arm-internal-wiring",
+      "label": "小鹏 IRON · 臂内控制组件与关节贯通走线（CN119116008A）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn119188829a-finger-dual-axis-swing.md",
+      "detail_id": "entity-patent-xpeng-cn119188829a-finger-dual-axis-swing",
+      "label": "小鹏 IRON · 相交双轴驱动的手指摆动与俯仰机构（CN119188829A）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn119262120a-ankle-cross-dual-pushrod.md",
+      "detail_id": "entity-patent-xpeng-cn119262120a-ankle-cross-dual-pushrod",
+      "label": "小鹏 IRON · 十字轴与直线驱动联动的双轴踝关节（CN119262120A）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/patent-xpeng-cn119283063a-hollow-tube-battery.md",
+      "detail_id": "entity-patent-xpeng-cn119283063a-hollow-tube-battery",
+      "label": "小鹏 IRON · 套覆躯干与四肢的空心管电池（CN119283063A）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -260,7 +251,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1782,
+      "degree": 1794,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -268,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1387,
+      "degree": 1402,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -276,7 +267,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1145,
+      "degree": 1152,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -323,7 +314,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 636,
+      "degree": 643,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -352,6 +343,13 @@
       "degree": 91,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "detail_id": "entity-paper-xpace",
+      "label": "XPACE（Joint World and Action Modeling · arXiv:2609.17372）",
+      "type": "entity",
+      "degree": 68,
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
@@ -405,14 +403,6 @@
       "degree": 49,
       "has_repo": true,
       "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
-    },
-    {
-      "detail_id": "entity-paper-lightnav-0",
-      "label": "LightNav-0：激发 VLM 空间智能的通用具身导航",
-      "type": "entity",
-      "degree": 48,
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
     }
   ]
 }
