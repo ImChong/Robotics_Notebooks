@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md — 具身小站 13 篇论文盘点；13/13 独立 paper-* 详情节点 + 技术地图
+
+- **意图：** 用户指定 https://mp.weixin.qq.com/s/4QpQgKEw7BnLFzhG-05uzg；每篇论文独立非重复详情节点；自动合并 PR
+- **开源结论：** 6 已开源 / 7 待发布（步骤 2.5 项目页核查）
+- **关键页：** [`embodied-13-papers-technology-map`](wiki/overview/embodied-13-papers-technology-map.md)；深读 NowWAM / 跟进 TANDEM+ForgetMimic
+
 ## [2026-09-24] ingest | sources/sites/keentools-facebuilder-blender.md — KeenTools FaceBuilder 少图头部重建；add-on GPLv3 / Core 闭源；FaceBuilder×MetaHuman 五步法；wiki/entities/keentools-facebuilder.md
 
 ## [2026-09-24] ingest | sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md — Perry Dong 通用机器人 post-training 框架；EXPO-FT 配方 + 协议开放问题
