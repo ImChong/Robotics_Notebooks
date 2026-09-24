@@ -8,7 +8,7 @@
 - **PDF：** <https://arxiv.org/pdf/2609.24682>
 - **项目页：** <https://thaw-vla.trung-dt.com/> — 归档见 [`sources/sites/thaw-vla-trung-dt-com.md`](../sites/thaw-vla-trung-dt-com.md)
 - **代码：** **已开源** — <https://github.com/trungdt880/THAW-VLA>（MIT，vendored StarVLA）；归档见 [`sources/repos/thaw-vla.md`](../repos/thaw-vla.md)
-- **权重：** Hugging Face collection [`termanteus/thaw-vla`](https://huggingface.co/collections/termanteus/thaw-vla) — **private**，需申请访问
+- **权重：** Hugging Face collection [`termanteus/thaw-vla`](https://huggingface.co/collections/termanteus/thaw-vla) — **已公开**（2026-09-24 复核：`THAW-VLA-Qwen3.5-0.8B-LIBERO` 等 `gated=false`）
 - **机构：** 威斯康星大学麦迪逊分校（University of Wisconsin–Madison）、伊利诺伊大学厄巴纳-香槟分校（University of Illinois Urbana-Champaign）— Trung Dao、Sankalp Yamsani、Jaden Park、Joohyung Kim、Yong Jae Lee
 - **入库日期：** 2026-09-23
 - **一句话说明：** 在标准 VLA 训练上加 **一条 cosine 特征对齐项**：冻结世界模型（Cosmos3-Nano）对训练帧 **预计算并缓存** teacher 特征，学生 QwenGR00T（0.8B）对齐后 **丢弃 projector**，部署图与未蒸馏 baseline **完全相同**（RTX 5090 上 32 ms / 1.86 GB）。
@@ -62,7 +62,7 @@
 | 训练 / 评测 / deployment 代码 | **已开源**（MIT） |
 | Teacher 预计算脚本 | `tools/cosmos3_precompute_targets.py` |
 | 对齐模块 | `starVLA/model/modules/distill/fastwam_repa.py` |
-| 发布 checkpoint | HF **private**，需 request access |
+| 发布 checkpoint | HF **已公开**（2026-09-24；此前 private 需申请） |
 | Cosmos3-Nano teacher 权重 | 需自备 ~33 GB checkpoint |
 
 ## 对 wiki 的映射

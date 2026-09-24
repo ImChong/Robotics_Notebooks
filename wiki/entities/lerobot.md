@@ -4,8 +4,9 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持数据采集、训练、EnvHub 仿真评测与实物部署。"
-updated: 2026-09-18
+updated: 2026-09-24
 related:
+  - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
   - ../concepts/lerobot-envhub.md
   - ./paper-imitator-game.md
@@ -56,7 +57,7 @@ sources:
 ## 核心组件
 
 - **Dataset Library**：支持加载和上传大规模机器人演示数据集（LeRobotDataset v3）。
-- **Policy Library**：内置 ACT、Diffusion、π0/π0.5、GR00T N、SmolVLA 等策略实现；社区 fork 含 [GR00T Drifting 单步 action head 审计](./paper-groot-drifting-action-head.md)（`RealManShao/lerobot@feat/drif-ov`）。
+- **Policy Library**：内置 ACT、Diffusion、π0/π0.5、GR00T N、SmolVLA 等策略实现；社区 fork 含 [GR00T Drifting 单步 action head 审计](./paper-groot-drifting-action-head.md)（`RealManShao/lerobot@feat/drif-ov`）。**[FLUX 3 Action](./flux-3-action.md)** SO-101 任务 LoRA 官方走 LeRobot 集成（`docs/so101-lora.md`）。
 - **Hardware Interface**：统一 `Robot` 类连接电机、传感器与真机；第三方 `lerobot_robot_*` 插件自动发现。
 - **EnvHub / 仿真评测**：`lerobot.envs.make_env` 与 `lerobot-eval` 从 Hub 拉取 `env.py` 环境，或走内置 `libero` / `metaworld` 等 `--env.type`。详见 [LeRobot EnvHub](../concepts/lerobot-envhub.md)。
 

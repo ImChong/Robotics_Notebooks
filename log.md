@@ -1,4 +1,10 @@
 
+## [2026-09-24] ingest | 八项 PredActor/DualWAM/THAW/FLUX/S³/RouteRLT/RoboTwin-Phys + LeRobot 交叉 — 机载 joint diffusion、双系统 WAM、零训练 physics-in-the-loop、VLA↔RL 路由、物理 benchmark；THAW HF 权重已公开
+
+- **意图：** 用户指定 8 条 arXiv/GitHub/HF 链接 batch ingest；自动合并 PR
+- **开源结论：** **已开源** — THAW-VLA（GitHub+HF 公开）、FLUX 3 Action、LeRobot；**待发布** — PredActor（占位仓）、DualWAM；**未开源/未列链** — S³、RouteRLT；**RoboTwin-Phys** 数据/benchmark 待跟进
+- **关键页：** predactor / dualwam / sample-simulate-select / routelt / robotwin-phys / flux-3-action；刷新 thaw-vla HF 权限
+
 ## [2026-09-23] ingest | sources/papers/mimo_v2_6_technical_report_2026.md — MiMo-V2.6 技术报告与发布说明；开源 RL 栈与 Distill-9B 复现基线
 
 ## [2026-09-23] ingest | sources/sites/simate-ai.md — 接入 Simate Physical AI 三连体（Sinfra/Sipai/RoboScientist）；核查未开源；Sipai 绑定 RoboDojo 评测中

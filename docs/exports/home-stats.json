@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4789,
-  "edge_count": 42190,
+  "node_count": 4795,
+  "edge_count": 42228,
   "coverage": {
-    "covered": 4760,
-    "total": 4760,
+    "covered": 4766,
+    "total": 4766,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,7 +234,7 @@
   "top_communities": [
     {
       "label": "世界模型",
-      "size": 727
+      "size": 729
     },
     {
       "label": "产业与开源生态",
@@ -246,7 +246,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 327
+      "size": 328
     },
     {
       "label": "仿真到现实",
@@ -254,7 +254,7 @@
     },
     {
       "label": "动作模仿与生成",
-      "size": 273
+      "size": 274
     }
   ],
   "top_hubs": [
@@ -262,7 +262,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1778,
+      "degree": 1781,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1378,
+      "degree": 1385,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -278,7 +278,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1143,
+      "degree": 1145,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -293,7 +293,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1004,
+      "degree": 1005,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -343,7 +343,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 166,
+      "degree": 168,
       "has_repo": true,
       "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
     },

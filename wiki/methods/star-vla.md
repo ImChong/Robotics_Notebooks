@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, embodied-ai, qwen, benchmark]
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
