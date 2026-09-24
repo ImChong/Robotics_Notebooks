@@ -2,11 +2,12 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-24
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../methods/lingbot-map.md
+  - ../entities/paper-sure-map.md
   - ../entities/paper-glob3r.md
   - ../entities/paper-slamformer-infinity.md
   - ../entities/paper-d4rt.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/papers/state_estimation.md
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
+  - ../../sources/papers/sure_map_arxiv_2609_15795.md
   - ../../sources/papers/glob3r_arxiv_2607_09225.md
   - ../../sources/papers/slamformer_infinity_arxiv_2608_03429.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
@@ -212,6 +214,10 @@ $$
 ### 6. 流式几何上下文（LingBot-Map）
 
 [LingBot-Map](../methods/lingbot-map.md)（arXiv:2604.14141）面向 **单目视频流式 3D 重建**，用 **Geometric Context Attention（GCA）** 在单一注意力框架里维护三类互补上下文：**锚点坐标/尺度接地**、**局部稠密几何窗口**、**轨迹记忆**（早期帧仅保留 camera/register 等少量 token）。配合 **Paged KV Cache**，报告约 **20 FPS**（518×378）与 **>10k 帧** 稳定推理——对移动机器人而言，这是 **视觉–几何状态估计** 从「离线 SLAM 后端优化」走向 **前馈流式估计器** 的代表；其输出的相机轨迹与局部几何可作为 [State Estimation](./state-estimation.md) 链路上游，或与 EKF/VIO 融合抑制长程漂移。
+
+#### 6.1 流式几何自校正（SURE-Map）
+
+[SURE-Map](../entities/paper-sure-map.md)（arXiv:2609.15795）在 **LingBot-Map 等流式几何基础模型** 之上增加 **跨视几何不确定性**（联合位姿–深度是否诱导一致跨视对应）与 **多时间尺度自校正**（快因果帧 + 稀疏 keyframe-window **尺度重标定**），针对流式 **有限上下文** 下的局部误差累积与 **长程尺度漂移**；KITTI / Oxford Spires / VBR 等长程 ATE 相对基线下降。对状态估计链路，它代表「**前馈几何 + 显式自校正模块**」而非替换 EKF/VIO 滤波器本身。
 
 ### 7. 基础模型引导的全局 SfM（Glob3R）
 

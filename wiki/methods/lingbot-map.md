@@ -2,9 +2,10 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-24
 related:
   - ../entities/paper-lingbot-map.md
+  - ../entities/paper-sure-map.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/state-estimation.md
   - ../concepts/3d-spatial-vqa.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/sites/lingbot-map-technology-robbant.md
   - ../../sources/sites/lingbot-map-github-io.md
   - ../../sources/sites/businesswire-lingbot-map-2026-04-16.md
+  - ../../sources/papers/sure_map_arxiv_2609_15795.md
 summary: "LingBot-Map 是面向流式单目视频的前馈 3D 基础模型：Geometric Context Attention 用锚点接地、局部稠密窗口与轨迹记忆统一长程几何一致性，Paged KV（FlashInfer）支撑万帧级近似常数每帧推理。"
 ---
 
@@ -136,6 +138,11 @@ flowchart LR
 - **[R³](../entities/paper-r3-relative-regression.md)**（arXiv:2605.26519，UMich×西湖×NVIDIA）在 **DA3** 骨干上回归 **置信加权成对相对位姿**，用 **有界 keyframe bank** 做流式回环一致；LingBot-Map 用 **GCA + Paged KV** 维护几何上下文，不依赖显式相对位姿图。
 - **选型：** 要 **端到端流式前馈 + 已开源 Isaac 生态** → LingBot-Map；要 **相对位姿表示 + 双模式（流式/离线）单权重** → R³（[`KevinXu02/R3`](https://github.com/KevinXu02/R3) 已开源，权重 CC BY-NC）。
 
+### 与 SURE-Map（自校正扩展）的关系
+
+- **[SURE-Map](../entities/paper-sure-map.md)**（arXiv:2609.15795，MBZUAI×北大×清华）在 **LingBot-Map 权重** 上叠加 **跨视几何不确定性** 与 **多时间尺度自校正**（快因果流 + 稀疏 keyframe-window 尺度重标定），改善 KITTI / Oxford Spires / VBR 等 **长程 ATE** 与室内点云过滤；仓库 [`RCL-Robotics/SURE-map`](https://github.com/RCL-Robotics/SURE-map) 已开源。
+- **选型：** 已有 LingBot-Map 流式栈但 **长视频尺度漂移 / 动态场景点云噪声** 明显 → 评估 SURE-Map 模块；要 **更换骨干或相对位姿范式** → 仍对照 R³ / Glob3R。
+
 ### 与 VLA / 空间推理任务的关系
 
 - 可为 [VLA (Vision-Language-Action)](./vla.md) 或 [3D 空间 VQA](../concepts/3d-spatial-vqa.md) 讨论提供**在线度量几何**先验：语义–语言层仍需与几何模块分工或融合。
@@ -147,6 +154,7 @@ flowchart LR
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度对照
 - [VGG-T³（线性时间离线 VGGT）](../entities/paper-vgg-ttt.md) — 千图级前馈 pointmap / 查询定位对照
 - [R³（相对回归流式重建）](../entities/paper-r3-relative-regression.md) — DA3 + 成对相对位姿 + keyframe bank 对照
+- [SURE-Map（自校正流式扩展）](../entities/paper-sure-map.md) — LingBot 骨干 + uncertainty + 多尺度校正
 - [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — 学习型前后端联合精炼对照
 - [VLA (Vision-Language-Action)](./vla.md)
 - [State Estimation (状态估计)](../concepts/state-estimation.md)

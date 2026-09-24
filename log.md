@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/papers/sure_map_arxiv_2609_15795.md — SURE-Map 自校正流式几何 FM（MBZUAI×北大×清华）；已开源 RCL-Robotics/SURE-map + HF uncertainty；交叉 LingBot-Map
+
+- **意图：** 用户指定项目页 / GitHub / arXiv:2609.15795；自动合并 PR
+- **开源结论：** **已开源** — Apache-2.0 主体 + HF `uncertainty.pt`；骨干实验用 robbyant/lingbot-map；步骤 2.5 已核
+- **关键页：** [`paper-sure-map`](wiki/entities/paper-sure-map.md)
+
 ## [2026-09-24] ingest | sources/papers/cuvslam_arxiv_2506_04359.md — NVIDIA cuVSLAM CUDA VSLAM；已开源 PyCuVSLAM + Isaac ROS；paper-cuvslam 深读页
 
 - **意图：** 用户指定项目页 / GitHub / arXiv:2506.04359；自动合并 PR
