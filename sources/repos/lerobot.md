@@ -8,13 +8,14 @@
 - **Hub 组织页：** https://huggingface.co/lerobot
 - **文档：** https://huggingface.co/docs/lerobot/index
 - **EnvHub 文档：** https://huggingface.co/docs/lerobot/envhub
+- **LeRobotDataset v3 文档：** https://huggingface.co/docs/lerobot/lerobot-dataset-v3
 - **Stars：** ~24k+（2026-09）
 - **入库日期：** 2026-05-27
 - **最近复核：** 2026-09-06（EnvHub / `lerobot-eval`）
 - **一句话说明：** Hugging Face 具身智能全栈：PyTorch 库与 CLI（GitHub）+ Hub 上的模型 / LeRobotDataset / **EnvHub 仿真环境**。
 - **代码：** https://github.com/huggingface/lerobot（**已开源**，Apache 2.0）
-- **沉淀到 wiki：** [lerobot](../../wiki/entities/lerobot.md)、[lerobot-envhub](../../wiki/concepts/lerobot-envhub.md)
-- **交叉归档：** [lerobot-huggingface-org.md](../sites/lerobot-huggingface-org.md)、[lerobot-envhub-docs.md](../sites/lerobot-envhub-docs.md)
+- **沉淀到 wiki：** [lerobot](../../wiki/entities/lerobot.md)、[lerobot-envhub](../../wiki/concepts/lerobot-envhub.md)、[lerobot-dataset-v3](../../wiki/concepts/lerobot-dataset-v3.md)
+- **交叉归档：** [lerobot-huggingface-org.md](../sites/lerobot-huggingface-org.md)、[lerobot-envhub-docs.md](../sites/lerobot-envhub-docs.md)、[lerobot-dataset-v3-docs.md](../sites/lerobot-dataset-v3-docs.md)
 
 ---
 

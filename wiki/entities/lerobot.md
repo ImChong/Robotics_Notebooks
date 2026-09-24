@@ -9,6 +9,7 @@ related:
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
   - ../concepts/lerobot-envhub.md
+  - ../concepts/lerobot-dataset-v3.md
   - ./paper-imitator-game.md
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
@@ -29,6 +30,7 @@ related:
 sources:
   - ../../sources/repos/lerobot.md
   - ../../sources/sites/lerobot-envhub-docs.md
+  - ../../sources/sites/lerobot-dataset-v3-docs.md
   - ../../sources/sites/lerobot-huggingface-org.md
 ---
 
@@ -56,7 +58,7 @@ sources:
 
 ## 由哪几部分组成
 
-- **数据集（LeRobotDataset）**：存储和加载机器人演示数据。当前 v3 为 Parquet + MP4；`LeRobotDataset("lerobot/...")` 直接从 Hub 读
+- **数据集（LeRobotDataset）**：存储和加载机器人演示数据。**v3.0** 为 Parquet shard + 分相机 MP4 + 关系型 `meta/`（多 episode  per 文件、Hub 流式、`finalize()` 推送）；详见 [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md)。`LeRobotDataset("lerobot/...")` 从 Hub 缓存或流式读取
 - **策略库**：内置主流策略实现。模仿学习：ACT、[Diffusion Policy](../methods/diffusion-policy.md)、VQ-BeT；强化学习：HIL-SERL、TDMPC；VLA：π0 / π0.5、GR00T N1.7、SmolVLA、XVLA、Evo-1；世界模型：VLA-JEPA、FastWAM
 - **硬件接口**：统一的 `Robot` 类连接电机、相机和真机。原生：SO-100/101、LeKiwi、Koch、HopeJR、Reachy2、OpenARM、Unitree G1、reBot B601 等；第三方包按 `lerobot_robot_*` / `lerobot_teleoperator_*` / `lerobot_camera_*` 命名即可被自动发现
 - **仿真评测**：`lerobot-eval` 跑闭环评测。内置 LIBERO、Meta-World 等 `--env.type`；也可从 Hub 拉取第三方环境（EnvHub），见 [LeRobot EnvHub](../concepts/lerobot-envhub.md)
@@ -169,13 +171,14 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 - **只看 GitHub、不看 Hub：** 很多可部署 checkpoint 只发布在 `huggingface.co/lerobot`，复现论文或官方 demo 先查 Hub 的 Models / Collections。
 - **把 Hub 当训练平台：** Spaces 适合看数据和演示，正式训练仍在本地或集群上用 GitHub 仓的 CLI。
 - **随手加载 Hub 环境：** EnvHub 环境需要 `trust_remote_code=True`，等于执行别人的代码；先读 `env.py` 并钉住 commit，见 [LeRobot EnvHub](../concepts/lerobot-envhub.md)。
-- **混用数据格式版本：** 生态里 v2.1 与 v3 并存（如 Evo-1、RoboFlywheel 用 v2.1，LeTools、HandUMI 用 v3），字段不同；混用或上传前先用 Visualize Dataset Space 确认相机键、动作维度和帧率。
+- **混用数据格式版本：** 生态里 v2.1 与 v3 并存（如 Evo-1、RoboFlywheel 用 v2.1，LeTools、HandUMI 用 v3），字段与 shard 布局不同；应用官方 `convert_dataset_v21_to_v30` 或阅读 [v3 格式页](../concepts/lerobot-dataset-v3.md)；上传前 **`finalize()`** 否则 Parquet 损坏。
 
 ## 参考来源
 
 - [LeRobot 仓库归档](../../sources/repos/lerobot.md) — GitHub 主仓、`lerobot-eval`、策略族与硬件
 - [LeRobot Hugging Face 组织页归档](../../sources/sites/lerobot-huggingface-org.md) — Hub 资产规模、代表性模型与 Spaces
 - [LeRobot EnvHub 官方文档归档](../../sources/sites/lerobot-envhub-docs.md) — `make_env` 契约、URL 格式、安全与多任务返回
+- [LeRobotDataset v3.0 官方文档归档](../../sources/sites/lerobot-dataset-v3-docs.md) — Parquet/MP4/meta、流式训练、迁移与 finalize
 - [NVIDIA SO-101 Sim2Real 课程](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — `lerobot-record` 采集 so101_follower/leader 真机与仿真演示
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [RIO 仓库与论文归档](../../sources/repos/robot-io-rio.md) — 与 LeRobot 数据导出衔接的跨形态实时 I/O 框架
@@ -191,6 +194,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 ## 关联页面
 
 - [LeRobot EnvHub](../concepts/lerobot-envhub.md) — Hub 仿真环境的加载契约与安全注意
+- [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md) — 数据集目录布局、流式与 v2.1 迁移
 - [VLA](../methods/vla.md) — LeRobot 内置的 π0、SmolVLA 等所属方法族
 - [模仿学习](../methods/imitation-learning.md) — ACT、Diffusion Policy 等策略的方法背景
 - [Isaac Lab-Arena](./isaac-lab-arena.md)
