@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4874,
-  "edge_count": 42788,
+  "node_count": 4875,
+  "edge_count": 42799,
   "coverage": {
-    "covered": 4845,
-    "total": 4845,
+    "covered": 4846,
+    "total": 4846,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,7 +234,7 @@
   "top_communities": [
     {
       "label": "世界模型",
-      "size": 729
+      "size": 730
     },
     {
       "label": "产业与开源生态",
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1412,
+      "degree": 1413,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -301,7 +301,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 978,
+      "degree": 980,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },
