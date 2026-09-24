@@ -19,13 +19,14 @@ git 不可用（浅克隆）时回退 log.md；再无命中则回退 frontmatter
         "id": "wiki/methods/mpc.md",
         "label": "MPC",
         "type": "method",
-        "community": "community-0",
+        "community": "community-model-based-control",
+        "community_secondary": "community-reinforcement-learning",
         "institutions": ["nvidia"],
         "has_repo": true
       }
     ],
     "edges": [{"source": "wiki/methods/mpc.md", "target": "wiki/concepts/wbc.md"}],
-    "communities": [{"id": "community-0", "label": "...", "size": 12}],
+    "communities": [{"id": "community-model-based-control", "label": "...", "size": 12}],
     "institutions": [{"id": "nvidia", "label": "英伟达（NVIDIA）", "size": 22}]
   }
 
@@ -48,7 +49,7 @@ from pathlib import Path
 from typing import Any
 
 from export_minimal import extract_summary
-from utils.community_labels import COMMUNITY_NAME_OVERRIDES
+from utils.community_labels import load_topics
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
 
@@ -101,13 +102,29 @@ INSTITUTION_REGISTRY: dict[str, dict[str, Any]] = _load_institution_registry(
 )
 INSTITUTION_ALIAS_MAP: dict[str, str] = _build_institution_alias_map(INSTITUTION_REGISTRY)
 
-# 主社区检测（Louvain）合并后的目标社区数上限（与 MAX_COMMUNITIES 命名席位对齐）。
-# 命名席位上限 21（不含兜底桶）；含 community-other 时图例总数 = 命名数 + 1，目标显示约 20。
+# 诊断用 Louvain 结构聚类（scripts/diagnose_topics.py）合并后的目标簇数上限。
 PRIMARY_COMMUNITY_CAP = 21
-# 显式命名席位上限（不含 community-other）；溢出并入「其他」。
-MAX_COMMUNITIES = 21
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
+
+# ── 图谱主题注册表（schema/topics.json）────────────────────────────────────
+# 站点所称「社区」即固定主题：节点主主题 → node.community，次主题 → node.community_secondary。
+# 优先级：frontmatter `topic:` > seeds > tags 顺序匹配 > 邻居投票传播 > 其他。
+TOPICS: list[dict[str, Any]] = load_topics()
+TOPIC_BY_ID: dict[str, dict[str, Any]] = {str(t["id"]): t for t in TOPICS}
+TOPIC_RANK: dict[str, int] = {str(t["id"]): idx for idx, t in enumerate(TOPICS)}
+TOPIC_SEED_MAP: dict[str, str] = {
+    str(seed): str(t["id"]) for t in TOPICS for seed in t.get("seeds", [])
+}
+TOPIC_TAG_MAP: dict[str, str] = {
+    str(tag).lower(): str(t["id"]) for t in TOPICS for tag in t.get("tags", [])
+}
+# 每个节点最多两个主题（主 + 次）。
+MAX_NODE_TOPICS = 2
+
+
+def topic_community_id(topic_id: str) -> str:
+    return f"community-{topic_id}"
 
 
 def _community_label_map(community_meta: dict[str, dict[str, Any]]) -> dict[str, str]:
@@ -126,11 +143,8 @@ def _community_label_for_node(
     return community_labels.get(community_id, "")
 
 
-# 与同社区邻居的边占比低于此值的非枢纽节点归入「其他社区」（避免强行贴标签）。
-COMMUNITY_MEMBERSHIP_THRESHOLD = 0.5
 # 社区展示名格式：「中文（English） 社区」。规范见 schema/naming.md § 图谱社区命名。
-# 社区基名默认取枢纽页 H1，但 H1 风格不一；此处按 hub 路径给出统一 override，脚本再追加 ` 社区`。
-# 未命中 override 时回退 H1，并在 generate 阶段对不符合 COMMUNITY_HUB_NAME_RE 的基名打印 WARNING。
+# 基名取 schema/topics.json 的 label，脚本再追加 ` 社区`；不符合时 generate 阶段打印 WARNING。
 COMMUNITY_HUB_NAME_RE = re.compile(
     r"^[\u4e00-\u9fff]"  # 以中文开头
     r"[\u4e00-\u9fff\w\s·/·、，,\-：:]*"  # 中文主名（允许常见标点）
@@ -138,52 +152,6 @@ COMMUNITY_HUB_NAME_RE = re.compile(
 )
 # 研究机构展示名与社区基名共用「中文（English）」格式（不含 ` 社区` 后缀）。规范见 schema/naming.md。
 INSTITUTION_LABEL_RE = COMMUNITY_HUB_NAME_RE
-# COMMUNITY_NAME_OVERRIDES 见 utils/community_labels.py（首页 chip 与搜索别名共用）
-# Paper Notebooks 分类父节点与 wiki 知识页语义等价：社区检测后合并为同一社区，命名取 canonical 枢纽。
-# 规范见 schema/naming.md § 图谱社区命名；分类元数据见 schema/paper-notebook-categories.json。
-COMMUNITY_HUB_ALIASES: dict[str, str] = {
-    "wiki/overview/paper-notebook-category-01-foundational-rl.md": (
-        "wiki/methods/reinforcement-learning.md"
-    ),
-    "wiki/overview/paper-notebook-category-02-motion-retargeting.md": (
-        "wiki/concepts/motion-retargeting.md"
-    ),
-    "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md": (
-        "wiki/tasks/loco-manipulation.md"
-    ),
-    "wiki/overview/paper-notebook-category-05-locomotion.md": "wiki/tasks/locomotion.md",
-    "wiki/overview/paper-notebook-category-06-manipulation.md": "wiki/tasks/manipulation.md",
-    "wiki/overview/paper-notebook-category-07-teleoperation.md": "wiki/tasks/teleoperation.md",
-    "wiki/overview/paper-notebook-category-08-navigation.md": (
-        "wiki/tasks/vision-language-navigation.md"
-    ),
-    "wiki/overview/paper-notebook-category-09-state-estimation.md": (
-        "wiki/concepts/state-estimation.md"
-    ),
-    "wiki/overview/paper-notebook-category-10-sim-to-real.md": "wiki/concepts/sim2real.md",
-    "wiki/overview/paper-notebook-category-12-hardware-design.md": (
-        "wiki/overview/humanoid-hardware-101-technology-map.md"
-    ),
-    # sun254667 Awesome 技术地图：并入既有主题枢纽，避免策展索引页独占社区席位
-    "wiki/overview/sun-awesome-wm-technology-map.md": "wiki/methods/generative-world-models.md",
-    "wiki/overview/sun-awesome-ego-technology-map.md": (
-        "wiki/overview/ego-9-papers-technology-map.md"
-    ),
-    "wiki/overview/sun-awesome-touch-technology-map.md": "wiki/concepts/tactile-sensing.md",
-    "wiki/overview/sun-awesome-r2s2r-technology-map.md": "wiki/concepts/sim2real.md",
-    # LongchaoDa AwesomeSim2Real 技术地图：同属 Sim2Real 主题，归并到 sim2real 枢纽
-    "wiki/overview/lc-awesome-sim2real-technology-map.md": "wiki/concepts/sim2real.md",
-}
-
-
-def canonical_community_hub(hub_id: str) -> str:
-    """将别名枢纽页解析为 canonical 枢纽（用于社区合并与命名）。"""
-    return COMMUNITY_HUB_ALIASES.get(hub_id, hub_id)
-
-
-def resolve_community_hub_name(hub_id: str, fallback_label: str) -> str:
-    """返回社区基名（不含 ` 社区` 后缀）。优先 override，否则回退枢纽页 label。"""
-    return COMMUNITY_NAME_OVERRIDES.get(hub_id, fallback_label)
 
 
 def warn_nonconforming_institution_labels(
@@ -220,11 +188,11 @@ def warn_nonconforming_community_hub_names(
         print(
             "WARNING: community label does not match 中文（English） 社区 — "
             f"hub={hub_id!r} label={label!r}; "
-            "add COMMUNITY_NAME_OVERRIDES entry (see schema/naming.md)"
+            "fix label in schema/topics.json (see schema/naming.md)"
         )
 
 
-# V22: 当主社区占比超过该阈值时，对其内部做 Louvain 二级拆分。
+# V22: 当主簇占比超过该阈值时，对其内部做 Louvain 二级拆分（诊断用结构聚类）。
 LARGE_COMMUNITY_SPLIT_RATIO = 0.40
 LARGE_COMMUNITY_MIN_SIZE = 30
 # resolution > 1.0 偏好更细粒度社区（Reichardt-Bornholdt 形式的 modularity）。
@@ -1162,6 +1130,23 @@ def parse_frontmatter_list(content: str, key: str) -> list[str]:
     return []
 
 
+def parse_frontmatter_topics(content: str) -> list[str]:
+    """frontmatter 显式主题 `topic:`（标量 `topic: vla` 或列表 `topic: [vla, manipulation]`），小写去重保序。"""
+    items = parse_frontmatter_list(content, "topic")
+    if not items and content.startswith("---"):
+        end = content.find("\n---", 3)
+        fm = content[3:end] if end != -1 else ""
+        scalar = re.search(r"^topic\s*:\s*([^\s\[#][^#\n]*)", fm, re.MULTILINE)
+        if scalar:
+            items = [scalar.group(1)]
+    out: list[str] = []
+    for item in items:
+        topic_id = item.strip().strip("'\"").lower()
+        if topic_id and topic_id not in out:
+            out.append(topic_id)
+    return out
+
+
 def derive_node_institutions(content: str, alias_map: dict[str, str] | None = None) -> list[str]:
     """节点「所属机构」（canonical id，去重保序，可多归属）。
 
@@ -1480,153 +1465,111 @@ def louvain_communities(
     )
 
 
-def _hub_for_members(
-    members: list[str],
-    degree_map: Counter[str],
-    node_map: dict[str, dict[str, Any]],
-) -> str:
-    return max(
-        members,
-        key=lambda node_id: (degree_map.get(node_id, 0), node_map[node_id]["label"]),
-    )
-
-
-def _attach_canonical_hub_nodes(
-    buckets: dict[str, set[str]],
-    node_map: dict[str, dict[str, Any]],
-) -> None:
-    """把 canonical 枢纽页本体并入同名分桶，避免社区以非成员页命名（如 Locomotion）。"""
-    for canonical, members in buckets.items():
-        if canonical in members or canonical not in node_map:
-            continue
-        for other in buckets.values():
-            other.discard(canonical)
-        members.add(canonical)
-
-
-def _merge_partition_by_hub_equivalence(
-    partition: list[list[str]],
-    degree_map: Counter[str],
-    node_map: dict[str, dict[str, Any]],
-) -> list[list[str]]:
-    """合并枢纽页语义等价的社区分区（如 Paper Notebooks 分类页 vs 对应 task/concept 页）。"""
-    if not COMMUNITY_HUB_ALIASES:
-        return partition
-
-    buckets: dict[str, set[str]] = defaultdict(set)
-    for members in partition:
-        hub_id = _hub_for_members(members, degree_map, node_map)
-        buckets[canonical_community_hub(hub_id)].update(members)
-    _attach_canonical_hub_nodes(buckets, node_map)
-
-    merged = [sorted(members) for members in buckets.values() if members]
-    return sorted(merged, key=lambda members: (-len(members), members[0] if members else ""))
-
-
-def _intra_community_edge_ratio(
+def derive_node_topics(
     node_id: str,
-    community_id: str,
+    explicit: list[str],
+    tags: list[str],
+) -> tuple[list[str], str]:
+    """节点主题（≤2，主在前）及来源：explicit / seed / tags；无命中返回 ([], "")。
+
+    frontmatter `topic:` 非空且合法时整体覆盖；否则种子页主题居首，再按 tags 书写顺序
+    追加不同主题。非法 topic id 在此忽略，由 lint 报出。
+    """
+    valid_explicit = [tid for tid in explicit if tid in TOPIC_BY_ID]
+    if valid_explicit:
+        return valid_explicit[:MAX_NODE_TOPICS], "explicit"
+    ordered: list[str] = []
+    seed_topic = TOPIC_SEED_MAP.get(node_id)
+    if seed_topic:
+        ordered.append(seed_topic)
+    for tag in tags:
+        topic_id = TOPIC_TAG_MAP.get(str(tag).lower())
+        if topic_id and topic_id not in ordered:
+            ordered.append(topic_id)
+    if not ordered:
+        return [], ""
+    return ordered[:MAX_NODE_TOPICS], ("seed" if seed_topic else "tags")
+
+
+def propagate_topics(
+    assigned: dict[str, str],
     adjacency: dict[str, set[str]],
-    node_to_community: dict[str, str],
-) -> float:
-    neighbors = adjacency.get(node_id, set())
-    if not neighbors:
-        return 0.0
-    same = sum(1 for nb in neighbors if node_to_community.get(nb) == community_id)
-    return same / len(neighbors)
+) -> dict[str, str]:
+    """未定主题的节点按已定主题邻居投票（同步逐轮，平票取注册表靠前者），直到无新增。
 
-
-def _community_hub_ids(community_meta: dict[str, dict[str, Any]]) -> set[str]:
-    return {
-        str(meta["hub_id"])
-        for meta in community_meta.values()
-        if meta["id"] != OTHER_COMMUNITY_ID and meta.get("hub_id")
-    }
-
-
-def _demote_weak_community_members(
-    node_to_community: dict[str, str],
-    community_meta: dict[str, dict[str, Any]],
-    adjacency: dict[str, set[str]],
-    *,
-    threshold: float = COMMUNITY_MEMBERSHIP_THRESHOLD,
-) -> None:
-    """弱归属节点归入「其他社区」：邻居半数以上不在本社区，且非社区枢纽页。"""
-    hub_ids = _community_hub_ids(community_meta)
-    for node_id, community_id in list(node_to_community.items()):
-        if community_id == OTHER_COMMUNITY_ID or node_id in hub_ids:
-            continue
-        ratio = _intra_community_edge_ratio(node_id, community_id, adjacency, node_to_community)
-        if ratio < threshold:
-            node_to_community[node_id] = OTHER_COMMUNITY_ID
-
-
-def _recalculate_community_sizes(
-    community_meta: dict[str, dict[str, Any]],
-    node_to_community: dict[str, str],
-) -> None:
-    for meta in community_meta.values():
-        meta["size"] = 0
-    for community_id in node_to_community.values():
-        if community_id in community_meta:
-            community_meta[community_id]["size"] += 1
-
-
-def _ensure_other_community_bucket(community_meta: dict[str, dict[str, Any]]) -> None:
-    community_meta.setdefault(
-        OTHER_COMMUNITY_ID,
-        {"id": OTHER_COMMUNITY_ID, "label": OTHER_COMMUNITY_LABEL, "size": 0, "hub_id": None},
-    )
+    返回新增的 node → 主主题；与已定主题节点不连通的节点不出现在结果中。
+    """
+    known = dict(assigned)
+    added: dict[str, str] = {}
+    while True:
+        round_new: dict[str, str] = {}
+        for node in sorted(adjacency):
+            if node in known:
+                continue
+            votes = Counter(known[nb] for nb in adjacency[node] if nb in known)
+            if votes:
+                round_new[node] = min(votes, key=lambda tid: (-votes[tid], TOPIC_RANK[tid]))
+        if not round_new:
+            return added
+        known.update(round_new)
+        added.update(round_new)
 
 
 def assign_communities(
     nodes: list[dict[str, Any]],
     edges: list[dict[str, str]],
 ) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]]]:
-    node_ids = [node["id"] for node in nodes]
-    degree_map: Counter[str] = Counter()
-    for edge in edges:
-        degree_map[edge["source"]] += 1
-        degree_map[edge["target"]] += 1
+    """按 schema/topics.json 为节点定主题（社区）；返回 (社区列表, 社区元数据)。
 
-    adjacency = build_undirected_adjacency(node_ids, edges)
-    sorted_groups = _merge_partition_by_hub_equivalence(
-        detect_communities(adjacency),
-        degree_map,
-        {node["id"]: node for node in nodes},
+    写入 node["community"]（主主题）、node["community_secondary"]（次主题，可缺省）
+    与私有 node["_topic_source"]（explicit / seed / tags / propagated / other，写出前剔除）。
+    """
+    adjacency = build_undirected_adjacency([node["id"] for node in nodes], edges)
+    topics_by_node: dict[str, list[str]] = {}
+    for node in nodes:
+        topics, source = derive_node_topics(
+            str(node["id"]), node.get("_topics") or [], node.get("_tags") or []
+        )
+        if topics:
+            topics_by_node[node["id"]] = topics
+            node["_topic_source"] = source
+    propagated = propagate_topics(
+        {node_id: topics[0] for node_id, topics in topics_by_node.items()}, adjacency
     )
 
-    node_map = {node["id"]: node for node in nodes}
-    community_meta: dict[str, dict[str, Any]] = {}
-    node_to_community: dict[str, str] = {}
-
-    for idx, members in enumerate(sorted_groups):
-        if idx < MAX_COMMUNITIES:
-            community_id = f"community-{idx}"
-            hub_id = canonical_community_hub(
-                _hub_for_members(members, degree_map, node_map),
-            )
-            hub_name = resolve_community_hub_name(hub_id, node_map[hub_id]["label"])
-            label = f"{hub_name} 社区"
-        else:
-            community_id = OTHER_COMMUNITY_ID
-            label = OTHER_COMMUNITY_LABEL
-        community_meta.setdefault(
-            community_id, {"id": community_id, "label": label, "size": 0, "hub_id": None}
-        )
-        cm_entry = community_meta[community_id]
-        cm_entry["size"] = int(cm_entry["size"]) + len(members)
-        if community_meta[community_id]["hub_id"] is None and community_id != OTHER_COMMUNITY_ID:
-            community_meta[community_id]["hub_id"] = hub_id
-        for node_id in members:
-            node_to_community[node_id] = community_id
-
-    _demote_weak_community_members(node_to_community, community_meta, adjacency)
-    _ensure_other_community_bucket(community_meta)
-    _recalculate_community_sizes(community_meta, node_to_community)
-
+    sizes: Counter[str] = Counter()
     for node in nodes:
-        node["community"] = node_to_community.get(node["id"], OTHER_COMMUNITY_ID)
+        node.pop("community_secondary", None)
+        node_topics = topics_by_node.get(node["id"])
+        if node_topics:
+            node["community"] = topic_community_id(node_topics[0])
+            if len(node_topics) > 1:
+                node["community_secondary"] = topic_community_id(node_topics[1])
+        elif node["id"] in propagated:
+            node["community"] = topic_community_id(propagated[node["id"]])
+            node["_topic_source"] = "propagated"
+        else:
+            node["community"] = OTHER_COMMUNITY_ID
+            node["_topic_source"] = "other"
+        sizes[node["community"]] += 1
+
+    community_meta: dict[str, dict[str, Any]] = {}
+    for topic in TOPICS:
+        community_id = topic_community_id(str(topic["id"]))
+        if not sizes.get(community_id):
+            continue
+        community_meta[community_id] = {
+            "id": community_id,
+            "label": f"{topic['label']} 社区",
+            "size": sizes[community_id],
+            "hub_id": topic["seeds"][0] if topic.get("seeds") else None,
+        }
+    community_meta[OTHER_COMMUNITY_ID] = {
+        "id": OTHER_COMMUNITY_ID,
+        "label": OTHER_COMMUNITY_LABEL,
+        "size": sizes.get(OTHER_COMMUNITY_ID, 0),
+        "hub_id": None,
+    }
 
     community_list = sorted(
         community_meta.values(),
@@ -1685,6 +1628,9 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             # 论文节点：type=entity/method 且 frontmatter tags 含 paper（私有标记，写出前剔除）。
             # method 页覆盖 SONIC、BeyondMimic 等升格为深度拆解页的论文，须一并进论文榜单。
             "_is_paper": node_type in ("entity", "method") and "paper" in node_tags,
+            # 主题派生输入（私有，写出前剔除）：tags 顺序决定主/次主题
+            "_tags": node_tags,
+            "_topics": parse_frontmatter_topics(content),
         }
         # 图谱「按开源」着色 / 详情页 ⭐️：关联 sources/repos/ 源码归档
         if wiki_has_repo_source(content):
@@ -1860,6 +1806,9 @@ def main() -> None:
     added_dates = wiki_added_dates(nodes)
     for node in nodes:
         node.pop("_is_paper", None)
+        node.pop("_tags", None)
+        node.pop("_topics", None)
+        node.pop("_topic_source", None)
         recency = node.pop("_recency", None)
         if recency:
             node["recency"] = recency

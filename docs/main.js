@@ -4752,7 +4752,9 @@
     return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
-      var topics = TF.depthsForNode({ id: node.id, community: node.community });
+      var topics = TF.depthsForNode({
+        id: node.id, community: node.community, community_secondary: node.community_secondary
+      });
       if (!topics.length) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
 
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
@@ -4774,7 +4776,7 @@
     return renderMetaDepthBadges((detailPage && detailPage.path) || '', 'detailMetaDepth');
   }
 
-  // 社区徽标：复用 link-graph.json 的社区划分，rowId 可复用于路线页等。
+  // 社区徽标：复用 link-graph.json 的社区划分（主社区 + 可选次社区），rowId 可复用于路线页等。
   function renderMetaCommunityBadge(currentPath, rowId) {
     var communityRowId = rowId || 'detailMetaCommunity';
     if (!currentPath) {
@@ -4785,16 +4787,17 @@
     return ensureLinkGraphData().then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node || !node.community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
-      var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
-      if (!community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
       var tooltipApi = window.RNGraphTooltip || {};
       var colorMap = tooltipApi.buildCommunityColorMap
         ? tooltipApi.buildCommunityColorMap(gd.communities || [])
         : {};
-      var communityColor = colorMap[community.id] || '';
-      var html = tooltipApi.buildCommunityBadgeHtml
-        ? tooltipApi.buildCommunityBadgeHtml(community.id, community.label, communityColor)
-        : '';
+      var html = '';
+      [node.community, node.community_secondary].forEach(function (cid) {
+        var community = cid && (gd.communities || []).find(function (c) { return c.id === cid; });
+        if (community && tooltipApi.buildCommunityBadgeHtml) {
+          html += tooltipApi.buildCommunityBadgeHtml(community.id, community.label, colorMap[community.id] || '');
+        }
+      });
       renderDetailMetaItemRow(communityRowId, '所属社区', html);
     }).catch(function () { renderDetailMetaItemRow(communityRowId, '所属社区', ''); });
   }

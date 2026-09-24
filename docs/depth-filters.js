@@ -5,7 +5,8 @@
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
  *   excludeSegments 命中 → 直接排除；ids 显式纳入 → 命中；
- *   communities 命中 → 命中；segments 命中任一 → 命中。
+ *   communities 命中（主或次社区，id 为 schema/topics.json 的 community-<topic-id>）→ 命中；
+ *   segments 命中任一 → 命中。
  *
  * segments 匹配规则：
  *   - 无分隔符的单 token：与 node id 按 [/._-] 切开后的词元集合做精确命中；
@@ -390,7 +391,6 @@
       ])
     },
     'motion-retargeting': {
-      communities: new Set(['community-3']),
       segments: new Set([
         'retargeting', 'retarget', 'gmr', 'nmr', 'reactor', 'sonic',
         'exoactor', 'spider', 'wilor', 'mocap', 'keyframe', 'animation',
@@ -543,7 +543,7 @@
       ])
     },
     'vla': {
-      communities: new Set(['community-5']),
+      communities: new Set(['community-vla']),
       segments: new Set([
         'vla', 'vision-language-action', 'openvla', 'rt-2', 'pi0', 'gr00t',
         'foundation-policy'
@@ -847,7 +847,9 @@
       }
     }
     if (cfg.ids && cfg.ids.has(node.id)) return true;
-    if (cfg.communities && node.community && cfg.communities.has(node.community)) return true;
+    if (cfg.communities && (cfg.communities.has(node.community) || cfg.communities.has(node.community_secondary))) {
+      return true;
+    }
     if (cfg.segments) {
       for (var seg of cfg.segments) {
         if (segmentHits(node, segs, seg)) return true;

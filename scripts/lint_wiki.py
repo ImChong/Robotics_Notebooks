@@ -761,6 +761,7 @@ def _empty_results() -> dict[str, Any]:
         "method_missing_sections": [],
         "entity_missing_outgoing": [],
         "tool_missing_institution": [],
+        "invalid_topic": [],
         "wikilink_syntax": [],
         "unclosed_autolinks": [],
         "methods_without_practitioner_query": [],
@@ -2091,6 +2092,17 @@ def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None
             results["tool_missing_institution"].append(str(rel))
 
 
+def _check_frontmatter_topic(pages: list[Path], results: dict[str, Any]) -> None:
+    """frontmatter `topic:` 须为 schema/topics.json 已登记的 id，且最多 2 个（主 + 次）。"""
+    from generate_link_graph import MAX_NODE_TOPICS, TOPIC_BY_ID, parse_frontmatter_topics
+
+    for page in pages:
+        topics = parse_frontmatter_topics(page.read_text(encoding="utf-8"))
+        unknown = [tid for tid in topics if tid not in TOPIC_BY_ID]
+        if unknown or len(topics) > MAX_NODE_TOPICS:
+            results["invalid_topic"].append(f"{page.relative_to(REPO_ROOT)} （topic: {topics}）")
+
+
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
     """methods/ 页面结构检查 + entities/ 出边检查。
 
@@ -2162,6 +2174,7 @@ def lint() -> dict[str, Any]:
     _check_actuator_drive_chain_crosslink(pages, results)
     _check_perception_stack_crosslink(pages, results)
     _check_tool_institutions(pages, results)
+    _check_frontmatter_topic(pages, results)
 
     return results
 
@@ -2248,6 +2261,7 @@ def format_report(results: dict[str, Any]) -> str:
         ("method_missing_sections", "Methods 页面缺少主要路线区块", "⚠️"),
         ("entity_missing_outgoing", "Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
         ("tool_missing_institution", "工具实体缺少可派生的所属机构", "❌"),
+        ("invalid_topic", "frontmatter topic 非法（不在 schema/topics.json 或超过 2 个）", "❌"),
         (
             "methods_without_practitioner_query",
             "高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）",

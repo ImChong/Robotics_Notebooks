@@ -15,6 +15,7 @@
 type: concept        # concept | method | task | comparison | formalization | entity | overview | query
 tags: [locomotion, control, dynamics]
 status: complete     # stub | draft | complete
+topic: [locomotion]  # 可选：图谱主题（社区）1–2 个，id 见 schema/topics.json
 ---
 ```
 
@@ -22,6 +23,7 @@ status: complete     # stub | draft | complete
 - `type`：页面类型，对应下方各页面类型定义
 - `tags`：相关主题标签，用于 Dataview 过滤和图谱分析
 - `status`：`stub`（只有骨架）/ `draft`（基本完成但待完善）/ `complete`（满足最低质量标准）
+- `topic`（可选）：图谱主题（社区）id，最多 2 个（主 + 次），须在 [`schema/topics.json`](topics.json) 登记；缺省时按种子页 / tags 顺序 / 邻居传播自动派生，规则见 [naming.md § 图谱社区命名](naming.md#图谱社区命名)
 
 **Dataview 查询示例（在 Obsidian 中）：**
 ```dataview
