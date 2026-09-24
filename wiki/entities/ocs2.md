@@ -133,6 +133,9 @@ sequenceDiagram
 - [acados](./acados.md)
 - [MPC solver selection](../queries/mpc-solver-selection.md)
 - [MPC vs RL](../comparisons/mpc-vs-rl.md)
+- [qm-control](./qm-control.md) — 四足机械臂 OCS2 MPC+WBC 下游参考实现
+- [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+- [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源
 

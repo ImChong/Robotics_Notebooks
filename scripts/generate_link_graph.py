@@ -48,7 +48,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
-from export_minimal import extract_summary
+from export_minimal import extract_summary, parse_frontmatter, strip_frontmatter
 from utils.community_labels import load_topics
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
@@ -1623,7 +1623,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             "label": extract_title(content) or page.stem,
             "type": node_type,
             "health_score": health_score,
-            "summary": extract_summary(content),
+            "summary": extract_summary(strip_frontmatter(content), parse_frontmatter(content)),
             "_recency": wiki_recency_date(content, page).isoformat(),
             # 论文节点：type=entity/method 且 frontmatter tags 含 paper（私有标记，写出前剔除）。
             # method 页覆盖 SONIC、BeyondMimic 等升格为深度拆解页的论文，须一并进论文榜单。

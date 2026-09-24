@@ -184,6 +184,7 @@ Humanoid-DART 覆盖更广，但部分任务 average fitness 不一定最高，�
 | 路线 | 扩展数据的方式 | 物理过滤 | 适合问题 |
 |------|----------------|----------|----------|
 | Humanoid-DART | diffusion generator 在目标空间采样并迭代扩 archive | RL tracker + fitness + relabeling | 连续目标空间覆盖 |
+| [DCRR](./paper-dcrr-distance-conditioned-humanoid-transport.md) | 重拼源 termination 段 + 闭环 replay（**无** 生成器） | frozen teacher replay + achieved relabel | **单 clip** 距离条件终止 |
 | [HumanoidMimicGen](./paper-humanoidmimicgen.md) | 技能 DAG + whole-body planning 从少量 demo 合成轨迹 | cuRobo / Homie / 成功 rollout | 固定技能结构的数据生成 |
 | [GRAIL](./paper-grail.md) | 3D assets + video priors 生成大规模 4D HOI | tracker 与 sim2real 验证 | 全数字数据工厂 |
 | Parameterised Motion | 参数化单技能族 | 局部高质量但覆盖窄 | 低维目标变化 |

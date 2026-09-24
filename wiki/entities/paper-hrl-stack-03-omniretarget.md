@@ -186,6 +186,7 @@ sequenceDiagram
 - Dynamic refinement（多重打靶）：[Shooting for Contact / DSMS](./paper-shooting-for-contact.md) — 论文 Table II 以 OmniRetarget 为运动学基线对照（super-hero backflip 落地 9.3% vs DSMS 98.7%）
 - 下游数据消费：[EgoHTR](./paper-egohtr.md) 项目页声明 Human2Robot 场景感知 retarget 基于 OmniRetarget / GMR / CoACD
 - 表面对应对照：[UMR](./paper-umr-unified-motion-retargeting.md) — 点云接触向量、无粘脚硬约束；Carry/Kick/Stair 报告优于本文，Chair 上本文略好
+- 终端运输距离变体：[DCRR（2609.21467）](./paper-dcrr-distance-conditioned-humanoid-transport.md) — 在 retargeted 源参考上重拼 termination 段，构造距离条件 loco-manip 监督
 - 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 
