@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-24
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -34,6 +34,7 @@ related:
   - ../entities/rtabmap.md
   - ../entities/autoware.md
   - ../entities/isaac-ros-visual-slam.md
+  - ../entities/paper-cuvslam.md
   - ../entities/isaac-ros-nvblox.md
   - ../entities/openloong-dyn-control.md
   - ../entities/lerobot.md
@@ -61,6 +62,9 @@ sources:
   - ../../sources/repos/fast_lio.md
   - ../../sources/repos/autoware.md
   - ../../sources/repos/isaac_ros_visual_slam.md
+  - ../../sources/repos/cuvslam.md
+  - ../../sources/papers/cuvslam_arxiv_2506_04359.md
+  - ../../sources/sites/nvidia-cuvslam.md
   - ../../sources/repos/isaac_ros_nvblox.md
   - ../../sources/repos/plfm_radar.md
   - ../../sources/repos/oomwoo.md
@@ -202,7 +206,7 @@ flowchart TB
 - **算法词典（微信策展）：** [《自动驾驶核心算法盘点》专栏技术地图](./autonomous-driving-core-algorithms-series.md) 串起 ORB-SLAM2 / LOAM / LIO-SAM、MapTR 在线向量地图与 Hybrid A*/EM/LQR/MPC 等经典锚点，便于对照本页开源栈分层。
 - **[Autoware](../entities/autoware.md)**：Autoware Core/Universe 组件化，面向 **道路场景**。
 - **车规大算力 SoC（对照）：** 乘用车域控除 x86/Jetson 外，亦有 **>500 TOPS** 级 **ASIL-D** 芯片路线（如 [辉羲智能光至 R1](../entities/rhino-auto.md) 的 **RINA 无图城区方案** 叙事）；与 ROS 2 移动栈接口层不同，但同属 **感知–规划边缘算力** 选型语境。
-- **[Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md)** / **[nvblox](../entities/isaac-ros-nvblox.md)**：GPU 加速，与 Nav2 **3D costmap** 衔接。
+- **[cuVSLAM](../entities/paper-cuvslam.md)**（arXiv:2506.04359）：NVIDIA **CUDA VSLAM 库**（1–32 相机、PyCuVSLAM wheel）；ROS 2 封装见 **[Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md)**，建图侧 **[nvblox](../entities/isaac-ros-nvblox.md)** 与 Nav2 **3D costmap** 衔接。
 
 ### 与本仓库其它主线
 

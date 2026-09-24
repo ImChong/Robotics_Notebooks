@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/papers/cuvslam_arxiv_2506_04359.md — NVIDIA cuVSLAM CUDA VSLAM；已开源 PyCuVSLAM + Isaac ROS；paper-cuvslam 深读页
+
+- **意图：** 用户指定项目页 / GitHub / arXiv:2506.04359；自动合并 PR
+- **开源结论：** **已开源** — nvidia-isaac/cuVSLAM + NVIDIA Community License；步骤 2.5 项目页与 GitHub 已核
+- **关键页：** [`paper-cuvslam`](wiki/entities/paper-cuvslam.md)；交叉 isaac-ros-visual-slam / lidar-slam-lio-vio-selection
+
 ## [2026-09-24] ingest | sources/sites/roboflywheel-com.md — 阿里 RoboFlywheel 具身数据开放基础设施；部分开源（Recipe 文档/Sim 待 2026-10）；交叉 data-flywheel / lerobot / depth-embodied-data
 
 ## [2026-09-24] ingest | sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md — 具身小站 13 篇论文盘点；13/13 独立 paper-* 详情节点 + 技术地图
