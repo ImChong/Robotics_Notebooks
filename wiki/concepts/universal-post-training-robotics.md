@@ -13,6 +13,7 @@ related:
   - ../entities/skild-physical-self-play.md
   - ../queries/vla-deployment-guide.md
   - ../concepts/bitter-lesson.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md
   - ../../sources/sites/pd-perry-post-training.md
@@ -122,6 +123,7 @@ Frontier VLA 常用 **扩散/flow 动作头**（多模态正确动作）。经�
 - [Skild Physical Self-Play](../entities/skild-physical-self-play.md)
 - [VLA 部署指南](../queries/vla-deployment-guide.md)
 - [The Bitter Lesson](./bitter-lesson.md)
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 本页的 post-training 议题落在 VLA 动作执行层（及 WAM / 世界模型层）：预训练已能演示行为后，如何把成功率推到可部署
 
 ## 参考来源
 

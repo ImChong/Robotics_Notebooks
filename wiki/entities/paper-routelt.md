@@ -92,6 +92,17 @@ flowchart LR
 - **真机** cable pickup + port insertion：全轨迹成功 **35.0%**（base **6.7%**）。
 - 视频：Trossen insertion 同步 front/wrist + timeline 显示自动 specialist 序列。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：各行与本页不共享同一评测协议，数字不可直接相减。
+
+| 对照 | 差异读法 |
+|------|----------|
+| RLT（phase-local RL） | 同为「VLA 负责泛化、RL 专精精接触阶段」；RLT 的 handoff 依赖采集期 operator 或 privileged router、单阶段；RouteRLT 从 VLA latent **学习每步 ownership**，扩展到**多阶段多专家** |
+| [STEAM](./paper-steam-advantage-modeling.md) | STEAM 走 advantage 标注 + CFGRL **改写 VLA 权重**（π₀ 提纯）；RouteRLT **冻结 VLA**，只在执行层切换控制器 |
+| [VLA](../methods/vla.md) 中的 RECAP / advantage 微调 | 同上：RECAP 系把部署轨迹变成 advantage-conditioned 微调，改的是泛化骨干；RouteRLT 的专精能力放在外挂 RL specialist 里，骨干泛化不被覆盖 |
+| [Action Chunking](../methods/action-chunking.md) | chunk 策略天然要等下一次 replan 才能换控；RouteRLT 的 action-boundary manager 允许 **mid-chunk 立即切换** |
+
 ## 结论
 
 **RouteRLT 把 VLA+RL 分工从「人工/ privileged 划 phase」推进到「读 VLA latent 自动路由多枚 RL 专家」，适合 contact-rich 工业长程任务。**

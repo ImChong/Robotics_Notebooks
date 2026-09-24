@@ -10,7 +10,7 @@ tags:
   - mirros
   - open-source
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 arxiv: "2608.27549"
 venue: "Preprint, 2026"
 code: https://github.com/MirroS-Lab/Code-as-World
@@ -25,12 +25,12 @@ sources:
   - ../../sources/papers/code_as_world_arxiv_2608_27549.md
   - ../../sources/sites/code-as-world-project.md
   - ../../sources/repos/code-as-world.md
-summary: "Code-as-World（arXiv:2608.27549，MirroS）：可执行代码表示物理世界 + agentic propose–execute–render–verify 发现环；Code-as-World-VL 4B/9B 在 QuantiPhy 上 SOTA；GitHub 推理/eval 已开源。"
+summary: "Code-as-World（arXiv:2608.27549，MirroS）：可执行代码表示物理世界 + agentic propose–execute–render–verify 发现环；Code-as-World-VL 4B/9B 文内报告 QuantiPhy 最高分；GitHub 推理/eval 已开源。"
 ---
 
 # Code-as-World（Executable World Representations for Physical Reasoning）
 
-**Code-as-World**（*Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning*，[arXiv:2608.27549](https://arxiv.org/abs/2608.27549)，[项目页](https://mirros-lab.github.io/code-as-world/)，[GitHub](https://github.com/MirroS-Lab/Code-as-World)）由 **MirroS Lab** 提出：用 **可执行代码** 作为物理世界的 compact 本体——实体、状态、动力学、相机与渲染均可 **组合、执行、干预**；并通过 **agentic abductive discovery loop** 从自然语言或视频 **提出–执行–渲染–验证–迭代** 可执行世界假设。verified executable worlds 提供 **scalable 定量物理监督**，训练 **Code-as-World-VL** 在 **QuantiPhy** 上达到 SOTA 并报告超越 leading proprietary models。
+**Code-as-World**（*Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning*，[arXiv:2608.27549](https://arxiv.org/abs/2608.27549)，[项目页](https://mirros-lab.github.io/code-as-world/)，[GitHub](https://github.com/MirroS-Lab/Code-as-World)）由 **MirroS Lab** 提出：用 **可执行代码** 作为物理世界的 compact 本体——实体、状态、动力学、相机与渲染均可 **组合、执行、干预**；并通过 **agentic abductive discovery loop** 从自然语言或视频 **提出–执行–渲染–验证–迭代** 可执行世界假设。verified executable worlds 提供 **scalable 定量物理监督**，训练 **Code-as-World-VL**，文内报告其在 **QuantiPhy** 上取得发表时最高分并超越 leading proprietary models。
 
 ## 一句话定义
 
@@ -52,7 +52,7 @@ summary: "Code-as-World（arXiv:2608.27549，MirroS）：可执行代码表示�
 - **ontology vs evidence：** 像素/视频是 **evidence**；机制（状态、参数、动力学）需 **explicit、可检验** 表示 — 与纯 VLM 描述性物理推理划界。
 - **四性质可运维：** **Abstraction**（概念级实体/关系）、**Compositionality**（对象/环境/动力学可重组）、**Executability**（simulator 可跑）、**Controllability**（参数/初值/规则可编辑做 counterfactual）。
 - **Agentic discovery 可扩展监督：** 自动 propose–verify 降低人工写物理场景成本，为 **Code-as-World-VL** 提供大规模 **quantitative** 训练信号。
-- **QuantiPhy SOTA + 开源权重：** 4B/9B HF 权重与官方 eval 脚本降低复现门槛；规模 4B→9B→27B MRA **50.6→55.4→58.6** 显示 scaling。
+- **QuantiPhy 文内最高分 + 开源权重：** 4B/9B HF 权重与官方 eval 脚本降低复现门槛；规模 4B→9B→27B MRA **50.6→55.4→58.6** 显示 scaling。
 
 ## 核心方法结构
 
@@ -109,7 +109,7 @@ sequenceDiagram
 | Code-as-World-VL **9B** | **55.4** |
 | Code-as-World-VL **27B** | **58.6** |
 
-- 论文/report 称 **SOTA on QuantiPhy**，并 ** surpass leading proprietary models**（以项目页/论文表格为准）。
+- 论文/report 称发表时 **QuantiPhy 榜首**，并 ** surpass leading proprietary models**（以项目页/论文表格为准）。
 
 ## 工程实践
 
@@ -155,7 +155,7 @@ sequenceDiagram
 
 ## 结论
 
-**Code-as-World 把「物理世界」从 VLM 的隐式描述推进到可执行、可验证的代码本体，并以开源 VL + QuantiPhy 工具链给出可复现的 quantitative SOTA 证据。**
+**Code-as-World 把「物理世界」从 VLM 的隐式描述推进到可执行、可验证的代码本体，并以开源 VL + QuantiPhy 工具链给出可复现的定量领先证据（截至发表时）。**
 
 1. **范式** 是 executable code + agentic verify，不是更大 VLM 死记物理 QA。
 2. **QuantiPhy scaling** 清晰（4B/9B/27B），适合作为 physical reasoning VLM 选型参考点。

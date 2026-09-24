@@ -93,6 +93,17 @@ flowchart LR
 
 **读法：** 同一 RoboTwin 任务壳下，**物理 DR** 拉开 WAM/VLA 差距 — π₀.₅ 并非最强。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：各行与本页不共享同一评测协议，数字不可直接相减。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [RoboTwin 2.0](./robotwin.md) | 底座：同 50 个双臂任务壳，2.0 的 DR 主要随机化**外观/布局/相机**；Phys **不新增任务**，只加 13 维物理 operating condition 轴 |
+| [Ego2Robot](./paper-ego2robot.md) | 同样在 RoboTwin 上做解耦 OOD，但轴不同：Ego2Robot 拆 visual / layout / embodiment / semantic；Phys 专测**质量–摩擦–动力学** |
+| [Domain Randomization](../concepts/domain-randomization.md) | 物理 DR 常用作 sim2real **训练**手段；Phys 把它变成**评测**轴，并以 expert planning 可行性门控 + GT θ 标注保证每组条件可解、可审计 |
+| [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) | 选型读法：视觉/布局 SR 高不代表物理鲁棒；本页 π₀.₅ 31.60% vs Fast-WAM 44.24% 就是该闭环里「换轴后排名重排」的例子 |
+
 ## 结论
 
 **RoboTwin-Phys 把「懂物理世界吗」变成可复现 benchmark：视觉/布局泛化 ≠ 物理 operating condition 鲁棒。**

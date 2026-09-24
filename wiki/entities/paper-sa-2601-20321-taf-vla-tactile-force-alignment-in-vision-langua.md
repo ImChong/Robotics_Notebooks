@@ -10,7 +10,7 @@ tags:
   - beihang
   - shanghaitech
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 arxiv: "2601.20321"
 venue: "arXiv 2026"
 summary: "TaF-VLA（arXiv:2601.20321，北航/上科大/BIGAI/HKU）：触觉–力对齐（非触觉–视觉）；TaF-Device 10M+ 帧 TaF-Dataset + TaF-Adapter VQ 对比学习；7 力敏感任务平均 +22%；mrHuangyz/TaF-VLA 部分开源。"
@@ -35,7 +35,7 @@ sources:
 
 ## 一句话定义
 
-**用 TaF-Adapter 把时序触觉 VQ 码本与力 profile 做对比对齐，再 interleave 进 VLA——7 项力敏感日常任务平均较 SOTA 视触觉 VLA +22%，果冻切/镊子取砝码等 fragile 场景可插拔 Diffusion Policy/ACT。**
+**用 TaF-Adapter 把时序触觉 VQ 码本与力 profile 做对比对齐，再 interleave 进 VLA——7 项力敏感日常任务平均较此前 SOTA 视触觉 VLA +22%，果冻切/镊子取砝码等 fragile 场景可插拔 Diffusion Policy/ACT。**
 
 ## 英文缩写速查
 
@@ -73,7 +73,7 @@ sources:
 | **TaF-Dataset** | >10M 帧；6 传感器覆盖 GelSight / DIGIT 等族 |
 | **TaF-Adapter** | 时序触觉 → VQ 码本；对比学习对齐力 profile；历史聚合捕获 stick-slip |
 | **TaF-VLA** | 力对齐 token **interleave** language-action 流；力感知语言指令微调 |
-| **Benchmark** | 7 力临界任务（果冻切片、镊子取砝码、插件等）；**+22%** 平均 vs SOTA 视触觉 VLA |
+| **Benchmark** | 7 力临界任务（果冻切片、镊子取砝码、插件等）；**+22%** 平均 vs 此前 SOTA 视触觉 VLA |
 
 ## 流程总览
 
@@ -106,7 +106,7 @@ flowchart TB
 
 | 设置 | 结果 | 备注 |
 |------|------|------|
-| 7 任务平均 SR | **+22%** | vs SOTA 视触觉对齐 VLA |
+| 7 任务平均 SR | **+22%** | vs 此前 SOTA 视触觉对齐 VLA |
 | vs vision-only | 显著优势 | fragile / precision 场景 |
 | Plug-and-play | DP / ACT 可插 | 无需架构特定调参 |
 | 对齐 vs 预测 | 隐式 latent **优于** 显式力回归 | 跨传感器泛化 |
@@ -126,7 +126,7 @@ flowchart TB
 **TaF-VLA 把 VTLA 里缺失的一环补成「触觉–力对齐」而非「触觉–视觉对齐」——10M 帧 TaF-Dataset + VQ 对比学习，7 任务 +22%，且 Adapter 可插 DP/ACT。**
 
 1. **范式切换** — 读论文先分清 tactile–force vs tactile–vision alignment。
-2. **+22% 七任务平均** — 相对 SOTA 视触觉 VLA 的主线证据。
+2. **+22% 七任务平均** — 相对此前 SOTA 视触觉 VLA 的主线证据。
 3. **TaF-Dataset 先用** — HF `jiamig/taf-dataset` 10M+ 帧；文件区以实际上传为准。
 4. **隐式 > 显式** — 对齐 latent 比 force regression 更抗噪、跨传感器。
 5. **部分开源** — GitHub README 完整但项目页 Coming soon；权重未官方发布。

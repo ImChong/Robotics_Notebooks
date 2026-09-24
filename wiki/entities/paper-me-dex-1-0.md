@@ -10,7 +10,7 @@ tags:
   - li-auto
   - open-source
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 arxiv: "2609.21449"
 code: https://github.com/MachEmbodied/ME-Dex-1.0
 related:
@@ -128,7 +128,7 @@ flowchart TB
 - H-Bridge 共享注意力在 Random 上带来约 +1.3 pt，三专家信息交换有实证增益
 - Unified Tactile AE 跨 RoboTwin/DexJoCo/ManiFeel contact F1 90%+，支撑跨布局联合训练
 - RoboTwin Clean→Random **78.9%** 与 DexJoCo **65.3%** 在公开/自建基线上有竞争力
-- 双手任务（Assembly/Microwave 等）相对 DECO 系有明显优势，但非全任务 uniform SOTA
+- 双手任务（Assembly/Microwave 等）相对 DECO 系有明显优势，但并非全任务 uniform SOTA
 - **开源边界清晰：** 可复现 RoboTwin leaderboard 推理；训练代码与 Agentic Data Engine **待发布**
 - Leaderboard 评测 **无触觉观测** 时靠零输入 + 预测 future tactile——部署读法与有触觉训练设定不同
 
