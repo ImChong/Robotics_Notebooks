@@ -4,6 +4,12 @@
 - **开源结论：** **已开源** — EncosTech 组织 8 仓（硬件 CERN-OHL、deploy GPL-3.0 等）；步骤 2.5 以 GitHub README + encos.cn 为准
 - **关键页：** [`encos-hunter130`](wiki/entities/encos-hunter130.md)
 
+## [2026-09-24] ingest | sources/repos/lz4.md、sources/repos/zstd.md、sources/sites/rfc-8878-zstandard.md — LZ4 / Zstandard 无损压缩一手资料（官方 README + RFC 8878）；实体页与选型对比
+
+- **意图：** 用户指定 LZ4 或 Zstandard 等压缩方式一手资料；自动合并 PR
+- **开源结论：** **已开源** — lz4/lz4（BSD-2）、facebook/zstd（BSD OR GPLv2）；格式：LZ4 项目 doc / zstd **RFC 8878**（Informational）
+- **关键页：** [`lz4`](wiki/entities/lz4.md)、[`zstandard`](wiki/entities/zstandard.md)、[`lz4-vs-zstandard`](wiki/comparisons/lz4-vs-zstandard.md)
+
 ## [2026-09-24] ingest | sources/sites/robotis_aiworker_isaac_cumotion_technical_story.md — AI Worker × Isaac ROS cuMotion（静态/动态/attachment）；Isaac ROS 5.0 博客 + cyclo_solution 已开源
 
 - **意图：** 用户指定 NVIDIA 博客、ROBOTIS technical story、YouTube fmZdMV72IR0；自动合并 PR

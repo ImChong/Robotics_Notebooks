@@ -673,6 +673,7 @@
 - [Lumina 具身智能社区](wiki/entities/lumina-embodied.md) — Lumina**（官网 <https://lumina-embodied.ai/>，GitHub Org <https://github.com/Lumina-EAI>）是由十余位具身智能方向研究 `📅unknown` `[entity_page]`
 - [Lumo-2（Latent World-Action Model）](wiki/entities/lumo-2.md) — Lumo-2**（*Towards Predictive, Aligned, and Scalable Robot Learning*，[arXiv:2607.11270](https://arx `📅unknown` `[entity_page]`
 - [LW BENCHHUB TOUR](wiki/entities/lw-benchhub-tour.md) — LW BENCHHUB TOUR**（[GimpelZhang/lw_benchhub_tour](https://github.com/GimpelZhang/lw_benchhub_tour `📅unknown` `[entity_page]`
+- [LZ4](wiki/entities/lz4.md) — LZ4** 是 Yann Collet 维护的 **无损压缩库**（lz4/lz4，**BSD 2-Clause**），设计目标是  `📅unknown` `[entity_page]`
 - [Male CNS Connectome](wiki/entities/male-cns-connectome.md) — Male CNS Connectome** 是 HHMI Janelia **FlyEM Project Team** 发布的 **雄性果蝇中枢神经系统** 全连接组（**v1.0**，2026- `📅unknown` `[entity_page]`
 - [MambaIR](wiki/entities/mambair.md) — MambaIR 把 Mamba/SSM 用于图像恢复（去噪、超分等），利用长程建模改善伪影与全局一致性。 `📅unknown` `[entity_page]`
 - [Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）](wiki/entities/manda-robotics-open-policy-evaluation.md) — Understanding the Limits of Open-Source General Robotics Policies**（[Manda Robotics](https://manda `📅unknown` `[entity_page]`
@@ -4032,6 +4033,7 @@
 - [Yanjie Ze（迮炎杰）](wiki/entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与  `📅unknown` `[entity_page]`
 - [Unitree Z1 软件栈（z1_sdk 等）](wiki/entities/z1-sdk.md) — Z1** 是宇树六轴协作机械臂产品线。组织下拆有 `z1_sdk`、`z1_ros`、`z1_controller`、`z1_joystick` 等多个仓库；本页作为**唯一 wiki 节点**归 `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
+- [Zstandard（zstd）](wiki/entities/zstandard.md) — Zstandard**（**zstd**）是面向 **实时压缩** 的 **无损** 算法与格式（参考实现 [facebook/zstd](https://github.com/facebook/ `📅unknown` `[entity_page]`
 
 ### Wiki Concepts（概念页）
 
@@ -4521,6 +4523,7 @@
 - [Kalman Filter vs. Optimization-based Estimation (状态估计选型)](wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md) — 在机器人（特别是人形和四足机器人）中，实时估计 Base 的位置、速度和姿态是所有算法的基础。目前主要存在两大技术路线：以 **EKF** 为代表的递归滤波派，和以 **滑窗优化 (Sliding W `📅unknown` `[comparison_page]`
 - [LiDAR / LIO / VIO 开源选型对比](wiki/comparisons/lidar-slam-lio-vio-selection.md) — 要快且稳的 3D LIO** 选 **FAST-LIO**；要 **因子图 + GPS/回环** 选 **LIO-SAM**；要 **地面车辆起伏地形** 选 **LeGO-LOAM**；**视觉 `📅unknown` `[comparison_page]`
 - [运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？](wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md) — 运控与操作的学习栈分化**，不是因为「腿/hand 属于两个世界」，而是因为两类任务在 **训练数据已覆盖的知识**、**仍需外部注入的知识** 与 **获取该知识的成本** 上结构不同——运控目 `📅unknown` `[comparison_page]`
+- [LZ4 vs Zstandard（zstd）](wiki/comparisons/lz4-vs-zstandard.md) — 两者均为 **Yann Collet** 主导的无损压缩栈，常一同出现在 **日志、数据集、Python joblib、对象存储** 选型中；差异在 **默认平衡点** 与 **格式标准化**，而非「 `📅unknown` `[comparison_page]`
 - [移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑](wiki/comparisons/mobile-robot-navigation-planning-methods.md) — 移动机器人的导航规划不是单一算法，而是一条 **分层流水线**：全局层用 A\* 在静态占据栅格上搜出起点到终点的最优 **折线**；局部层用 [DWA `📅unknown` `[comparison_page]`
 - [Model-Based vs Model-Free RL 对比](wiki/comparisons/model-based-vs-model-free.md) —  维度 | Model-Free RL | Model-Based RL  `📅unknown` `[comparison_page]`
 - [电机电磁与多物理场仿真软件选型](wiki/comparisons/motor-em-simulation-software.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`

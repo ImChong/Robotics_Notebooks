@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-24
 summary: "机器人系统工程知识链：按实时控制面 / 机载软件面 / 数据与服务面 / 部署与运维面 / 安全与合规五层，索引 OS、IPC、网络、数据库、缓存、消息、分布式、容器、可观测性、RTOS、DDS、边云、频率解耦、OTA 与安全状态机等站内节点。"
 ---
 
@@ -41,7 +41,8 @@ summary: "机器人系统工程知识链：按实时控制面 / 机载软件面 
 | **机载软件面** | 进程、线程、内存、调度如何影响机器人程序？ | [操作系统基础](../concepts/operating-system-basics.md) |
 | | 同机多进程之间怎么传数据最快？ | [进程间通信（IPC）](../concepts/ipc-inter-process-communication.md) |
 | | ROS 2 的节点/话题/QoS 怎么用？底下发生了什么？ | [ROS 2 基础](../concepts/ros2-basics.md)、[DDS 通信机制](../concepts/dds-communication.md) |
-| **数据与服务面** | TCP/UDP/HTTP/DNS/TLS 在遥测与远程运维里怎么选？ | [网络协议栈](../concepts/network-protocol-stack.md) |
+| **数据与服务面** | 日志/数据集/OTA 包该用哪种无损压缩？ | [LZ4 vs Zstandard](../comparisons/lz4-vs-zstandard.md)、[LZ4](../entities/lz4.md)、[Zstandard](../entities/zstandard.md) |
+| | TCP/UDP/HTTP/DNS/TLS 在遥测与远程运维里怎么选？ | [网络协议栈](../concepts/network-protocol-stack.md) |
 | | 采集数据怎么存、怎么查得快？ | [数据库基础](../concepts/database-fundamentals.md) |
 | | 缓存为什么会穿透/雪崩/读到脏数据？ | [缓存一致性陷阱](../concepts/cache-consistency-pitfalls.md) |
 | | 消息重复、乱序、丢失怎么办？ | [消息队列可靠性](../concepts/message-queue-reliability.md) |

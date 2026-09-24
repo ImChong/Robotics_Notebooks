@@ -85,6 +85,7 @@ flowchart LR
 
 ## 关联页面
 
+- [LZ4](./lz4.md) — Stanford 链 **joblib + LZ4** 运动包所用压缩库
 - [MuJoCo](./mujoco.md) — MJCF 与物理引擎上下文
 - [Project Instinct](./project-instinct.md) — 同源组的公开研究与工具入口
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 重定向或跟踪之后的手工修整在流水线中的位置
