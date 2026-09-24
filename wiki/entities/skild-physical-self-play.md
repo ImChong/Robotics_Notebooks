@@ -5,6 +5,7 @@ title: Skild Physical Self-Play（后训练自博弈）
 status: complete
 updated: 2026-09-24
 related:
+  - ../concepts/universal-post-training-robotics.md
   - ./skild-s1.md
   - ./skild-ai.md
   - ../methods/reinforcement-learning.md
@@ -126,6 +127,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Universal Post-Training for Robotics](../concepts/universal-post-training-robotics.md) — 真机 value-RL 配方 vs 仿真自博弈两条 post-training 路线
 - [Skild AI（公司）](./skild-ai.md)
 - [S1：机器人 In-Context Learning](./skild-s1.md) — 预训练 / ICL 前一阶段
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

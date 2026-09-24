@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md — Perry Dong 通用机器人 post-training 框架；EXPO-FT 配方 + 协议开放问题
+
+- **意图：** 用户指定 https://pd-perry.github.io/posts/post-training.html；自动合并 PR
+- **开源结论：** **待发布** — expo-ft 项目页无 GitHub；Real-Time EXPO-FT 同
+- **关键页：** [`universal-post-training-robotics`](wiki/concepts/universal-post-training-robotics.md)；交叉 foundation-policy / VLA / RL / EXPO-FT / Skild self-play
+
 ## [2026-09-24] ingest | sources/blogs/skild_physical_self_play_2026-09-23.md — Skild Physical Self-Play；S1 后训练自博弈 + Isaac Sim 足球 Sim2Real；确认未开源
 
 - **意图：** 用户指定 https://www.skild.ai/blogs/physical-self-play；自动合并 PR
