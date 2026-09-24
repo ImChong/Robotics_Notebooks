@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-zyt-world.md",
+      "detail_id": "entity-paper-zyt-world",
+      "label": "ZYT-World：闭环智驾实时可控世界模型",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
       "path": "wiki/entities/paper-sure-map.md",
       "detail_id": "entity-paper-sure-map",
       "label": "SURE-Map：自校正流式几何基础模型",
@@ -208,28 +218,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
-    },
-    {
-      "path": "wiki/concepts/universal-post-training-robotics.md",
-      "detail_id": "wiki-concepts-universal-post-training-robotics",
-      "label": "Universal Post-Training for Robotics（通用机器人后训练）",
-      "type": "concept",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sure-map.md",
-    "detail_id": "entity-paper-sure-map",
-    "label": "SURE-Map：自校正流式几何基础模型",
+    "path": "wiki/entities/paper-zyt-world.md",
+    "detail_id": "entity-paper-zyt-world",
+    "label": "ZYT-World：闭环智驾实时可控世界模型",
     "type": "entity",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉感知（Robot Perception） 社区"
+    "community_label": "世界模型（World Models） 社区"
   },
   "top_communities": [
     {
