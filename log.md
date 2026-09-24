@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/blogs/skild_physical_self_play_2026-09-23.md — Skild Physical Self-Play；S1 后训练自博弈 + Isaac Sim 足球 Sim2Real；确认未开源
+
+- **意图：** 用户指定 https://www.skild.ai/blogs/physical-self-play；自动合并 PR
+- **开源结论：** **确认未开源** — github.com/skild-ai 仍 0 公开仓；无环境/权重
+- **关键页：** [`skild-physical-self-play`](wiki/entities/skild-physical-self-play.md)；交叉 skild-s1 / skild-ai / RL / sim2real / loco-manipulation
+
 ## [2026-09-24] ingest | sources/blogs/wechat_xpeng_iron_54_patents_2026-09-24.md — 小鹏 IRON 54 项 CN 专利拆解；54/54 独立 patent-xpeng-cn* 实体 + 技术地图
 
 - **意图：** 用户指定 https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg；每篇专利独立非重复详情节点

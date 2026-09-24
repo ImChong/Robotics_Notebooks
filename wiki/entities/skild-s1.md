@@ -3,9 +3,10 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, one-shot, foundation-policy, manipulation, scaling, skild-ai, nvidia]
 title: S1 机器人上下文学习（Skild）
 status: complete
-updated: 2026-09-15
+updated: 2026-09-24
 related:
   - ./skild-ai.md
+  - ./skild-physical-self-play.md
   - ../concepts/robot-in-context-learning.md
   - ./generalist-gen15-one-shot.md
   - ../concepts/foundation-policy.md
@@ -19,6 +20,7 @@ related:
   - ./paper-host-one-shot-human-video.md
 sources:
   - ../../sources/blogs/skild_s1_in_context_learning.md
+  - ../../sources/blogs/skild_physical_self_play_2026-09-23.md
   - ../../sources/sites/skild-ai.md
 summary: "Skild S1（2026-08 博客）：从预训练起用视频示范指定任务的操作基础模型；宣称单条视频、无后训练即可执行最长约 10 分钟的未见任务；内部对照 100k 小时档未见任务 ICL 66% vs 语言 VLA 9%。确认未开源。"
 ---
@@ -52,6 +54,7 @@ summary: "Skild S1（2026-08 博客）：从预训练起用视频示范指定任
 - **评测轴补全：** 把 ICL 拆成 **已见 vs 未见** × **短程原子 vs 长程组合**；并点名 concurrent 工作多停在短程或 in-distribution（见 [GEN-1.5](./generalist-gen15-one-shot.md)）。
 - **预训练目的论：** 主张后训练数据够密时从零训练可追上后训练基础模型，因此预训练应服务于 **立即从示范学习**，而不是为每个任务再 SFT。
 - **部署成本叙事：** 盆栽示例从录示范到真机执行约 **11 分钟**；作者把它接到 [数据飞轮](../concepts/data-flywheel.md)——分钟级部署才能把现场交互喂回预训练。
+- **后训练衔接：** 2026-09 [Physical Self-Play](./skild-physical-self-play.md) 将 S1 定位为 **ICL 预训练之后** 的 **自博弈 RL post-training** 底座，宣称可突破人类演示上限（Isaac Sim 足球 → Sim2Real）。
 - **闭源边界：** 训练配方本篇明确推迟；数字全部内部基准。当产业上界叙事，不当可复现方法。
 
 ## 流程总览
@@ -142,6 +145,7 @@ flowchart TB
 ## 关联页面
 
 - [Skild AI（公司入口）](./skild-ai.md)
+- [Skild Physical Self-Play（后训练自博弈）](./skild-physical-self-play.md)
 - [机器人 In-Context Learning](../concepts/robot-in-context-learning.md) — 三类不确定性；S1 落在「映射本身」
 - [GEN-1.5 一次示范学习](./generalist-gen15-one-shot.md) — 短程涌现 ICL 对照
 - [Foundation Policy](../concepts/foundation-policy.md)
