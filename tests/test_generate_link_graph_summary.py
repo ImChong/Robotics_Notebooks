@@ -13,6 +13,8 @@ def test_graph_node_summary_not_frontmatter_line() -> None:
     nodes, _edges = glg._build_graph_data()
     by_id = {str(n["id"]): n for n in nodes}
 
-    assert by_id["wiki/concepts/motion-retargeting.md"]["summary"].startswith("将人类或动物参考动作映射到")
+    assert by_id["wiki/concepts/motion-retargeting.md"]["summary"].startswith(
+        "将人类或动物参考动作映射到"
+    )
     bad = [n["id"] for n in nodes if _YAML_KEY_LINE.match(str(n.get("summary", "")))]
     assert bad == []
