@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4872,
-  "edge_count": 42765,
+  "node_count": 4873,
+  "edge_count": 42774,
   "coverage": {
-    "covered": 4843,
-    "total": 4843,
+    "covered": 4844,
+    "total": 4844,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-cuvslam.md",
+      "detail_id": "entity-paper-cuvslam",
+      "label": "cuVSLAM：CUDA 加速视觉里程计与建图",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    },
     {
       "path": "wiki/entities/roboflywheel.md",
       "detail_id": "entity-roboflywheel",
@@ -205,28 +216,18 @@
       "source": "git",
       "action": "added",
       "community_label": "硬件与执行器（Hardware and Actuators） 社区"
-    },
-    {
-      "path": "wiki/entities/patent-xpeng-cn117507805a-hollow-planetary-module.md",
-      "detail_id": "entity-patent-xpeng-cn117507805a-hollow-planetary-module",
-      "label": "小鹏 IRON · 中空走线的嵌套式多级行星动力模组（CN117507805A）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/roboflywheel.md",
-    "detail_id": "entity-roboflywheel",
-    "label": "RoboFlywheel",
+    "path": "wiki/entities/paper-cuvslam.md",
+    "detail_id": "entity-paper-cuvslam",
+    "label": "cuVSLAM：CUDA 加速视觉里程计与建图",
     "type": "entity",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
   },
   "top_communities": [
     {

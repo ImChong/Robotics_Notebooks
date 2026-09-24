@@ -206,7 +206,7 @@ sources:
 
 在 **Linux 工作站** 上，**USB 有线 Xbox 手柄** 通常由内核 **[xpad](../entities/xpad.md)** 驱动暴露为 `/dev/input/js*` 与 evdev 节点，再被 pygame、ROS `joy` 或 RIO 手柄 Node 读取；**蓝牙配对** 的 Xbox 手柄则走通用 HID，不经过 xpad。部署前需分清连接方式，避免「模块已加载但无输入」的误判。
 
-在 **Windows 工控机** 上，游戏手柄经 **XInput / `Windows.Gaming.Input`** 进入应用；若需要 **原生操作员控制台**（多路相机预览、模式切换、急停、状态面板），常见选型是 **[WinUI 3](../entities/winui.md)**（Fluent 控件 + XAML）与 [ONNX Runtime](../entities/onnxruntime.md) C# 推理同栈集成。WinUI 解决 **界面可读性与任务编排**，不替代 [RIO](../entities/robot-io-rio.md) 等跨形态 IO 中间件；GUI 设计取舍可参考 [非专家遥操作 GUI 论文笔记](../entities/paper-notebook-intuitive-gui-for-non-expert-teleoperation-of-hu.md)。
+在 **Windows 工控机** 上，游戏手柄经 **XInput / `Windows.Gaming.Input`** 进入应用；若需要 **原生操作员控制台**（多路相机预览、模式切换、急停、状态面板），常见选型是 **[WinUI 3](../entities/winui.md)**（Fluent 控件 + XAML）与 [ONNX Runtime](../entities/onnxruntime.md) C# 推理同栈集成。WinUI 解决 **界面可读性与任务编排**，不替代 [RIO](../entities/robot-io-rio.md) 等跨形态 IO 中间件；GUI 设计取舍可参考 [非专家遥操作 GUI 论文笔记](../entities/paper-notebook-intuitive-gui-for-non-expert-teleoperation-of-hu.md)。宿主 Windows 若需 **debloat 与减遥测**（长时间采数时降低后台 IO），可对照开源 Playbook **[Atlas OS](../entities/atlas-os.md)**（不重打包 ISO，安全选项可审计）。
 
 ### 臂部笛卡尔跟踪：解析 IK 参考（ssik）
 
