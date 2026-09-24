@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, nvidia, ros2, tsdf, esdf, mapping, nav2]
 status: complete
-updated: 2026-08-13
+updated: 2026-09-24
 related:
+  - ./robotis-ai-worker-isaac-cumotion.md
   - ../entities/isaac-ros-visual-slam.md
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -30,6 +31,7 @@ summary: "Isaac ROS Nvblox 用 GPU 维护 TSDF/ESDF 体素地图，为 Nav2 提�
 
 - **3D 避障**：弥补纯 2D 激光对悬空/桌面障碍的盲区。
 - **与 cuVSLAM 协同**：感知—建图—规划链在 Isaac ROS 内闭环。
+- **操作 ESDF**：cuMotion 可消费 Nvblox **ESDF** 做动态避障（例：[AI Worker × cuMotion](./robotis-ai-worker-isaac-cumotion.md)）。
 - 适合 **Jetson AMR**、仓储机器人等需要 **动态障碍** 更新的场景。
 
 ## 核心结构/机制

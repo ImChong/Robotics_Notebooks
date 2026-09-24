@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/sites/robotis_aiworker_isaac_cumotion_technical_story.md — AI Worker × Isaac ROS cuMotion（静态/动态/attachment）；Isaac ROS 5.0 博客 + cyclo_solution 已开源
+
+- **意图：** 用户指定 NVIDIA 博客、ROBOTIS technical story、YouTube fmZdMV72IR0；自动合并 PR
+- **开源结论：** **部分/已开源** — cyclo_solution + isaac_ros_cumotion；AI Worker 侧 JetPack 6.2 阶段 GPU 管线在外部工作站
+- **关键页：** [`robotis-ai-worker-isaac-cumotion`](wiki/entities/robotis-ai-worker-isaac-cumotion.md)
+
 ## [2026-09-24] ingest | sources/papers/zyt_world_arxiv_2609_21712.md — ZYT-World 闭环智驾实时 7 摄 WM（ZYT AI Team）；项目页未开源；交叉 generative-world-models / X-World
 
 - **意图：** 用户指定 arXiv:2609.21712；自动合并 PR
