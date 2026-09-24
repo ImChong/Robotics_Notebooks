@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/lerobot-dataset-v3.md",
+      "detail_id": "wiki-concepts-lerobot-dataset-v3",
+      "label": "LeRobotDataset v3.0",
+      "type": "concept",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    },
+    {
       "path": "wiki/comparisons/lz4-vs-zstandard.md",
       "detail_id": "wiki-comparisons-lz4-vs-zstandard",
       "label": "LZ4 vs Zstandard（zstd）",
@@ -211,29 +222,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-remote-surfaces-electrovibration.md",
-      "detail_id": "entity-paper-remote-surfaces-electrovibration",
-      "label": "Remote Surfaces（arXiv:2609.27938）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/lz4-vs-zstandard.md",
-    "detail_id": "wiki-comparisons-lz4-vs-zstandard",
-    "label": "LZ4 vs Zstandard（zstd）",
-    "type": "comparison",
+    "path": "wiki/concepts/lerobot-dataset-v3.md",
+    "detail_id": "wiki-concepts-lerobot-dataset-v3",
+    "label": "LeRobotDataset v3.0",
+    "type": "concept",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
   },
   "top_communities": [
     {
