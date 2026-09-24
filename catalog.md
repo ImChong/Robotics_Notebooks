@@ -4206,6 +4206,7 @@
 - [TTL 串行逻辑电平（UART 板内接口）](wiki/concepts/ttl-serial-logic-level.md) — 在嵌入式与机器人固件语境里，「串口」若未特别说明电气标准，通常指 **MCU UART 外设引脚上的 TTL/CMOS 单端逻辑电平**——不是 RS-232 的 ±12 V，也不是 RS-485 的 `📅unknown` `[wiki_page]`
 - [UART 与串行通信（TTL / RS-232 / RS-485）](wiki/concepts/uart-serial-communication.md) — UART（Universal Asynchronous Receiver-Transmitter）** 是 MCU 上最普遍的 **异步串行** 外设：按约定波特率逐位收发，用起始/停止位界定字符 `📅unknown` `[wiki_page]`
 - [U-Net](wiki/concepts/unet.md) — U-Net**：对称的 **收缩路径（编码器）** 与 **扩张路径（解码器）**，并在每一尺度用 **跳跃连接** 把浅层高分辨率特征拼到解码器，一次前向输出与输入同空间尺寸的密集图。 `📅unknown` `[wiki_page]`
+- [Universal Post-Training for Robotics（通用机器人后训练）](wiki/concepts/universal-post-training-robotics.md) — Universal post-training** 指：在 **大规模预训练** 的 VLA / WAM / foundation policy 之上，用 **可复现、可规模化的后训练栈**（算法 `📅unknown` `[wiki_page]`
 - [URDF（统一机器人描述格式）](wiki/concepts/urdf-robot-description.md) — URDF（Unified Robot Description Format）** 是用 XML 描述机器人 **连杆几何、关节类型、惯量与碰撞体** 的标准格式，是 ROS、MuJoCo、Pino `📅unknown` `[wiki_page]`
 - [变体自动化（Variational Automation, VA）](wiki/concepts/variational-automation.md) — 变体自动化（VA）** 由 GaP（NVIDIA / UC Berkeley 等，arXiv:[2607.0 `📅unknown` `[wiki_page]`
 - [Video-as-Simulation (视频即仿真)](wiki/concepts/video-as-simulation.md) — 视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个 `📅unknown` `[wiki_page]`

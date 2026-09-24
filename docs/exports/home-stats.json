@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4854,
-  "edge_count": 42651,
+  "node_count": 4855,
+  "edge_count": 42665,
   "coverage": {
-    "covered": 4825,
-    "total": 4825,
+    "covered": 4826,
+    "total": 4826,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,7 +234,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 329
+      "size": 330
     },
     {
       "label": "仿真到现实",
@@ -258,7 +258,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1402,
+      "degree": 1404,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -313,7 +313,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 645,
+      "degree": 647,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
