@@ -13,6 +13,7 @@ status: complete
 updated: 2026-08-31
 related:
   - ../tasks/teleoperation.md
+  - ./atlas-os.md
   - ./onnxruntime.md
   - ./paper-notebook-intuitive-gui-for-non-expert-teleoperation-of-hu.md
   - ./robot-io-rio.md
@@ -58,6 +59,7 @@ summary: "WinUI 3（microsoft/microsoft-ui-xaml，MIT）是 Windows App SDK 的�
 1. **Windows 工控机 HMI 的官方现代路径：** 许多实验室在 **Windows x64 工控机** 上跑策略推理（常配 [ONNX Runtime](./onnxruntime.md) C#）、相机 SDK 与手柄输入；WinUI 3 提供 **多窗格布局、实时图表、MediaPlayerElement 视频预览** 等原生控件，适合遥操作状态面板与数据采集前台——与 [Teleoperation](../tasks/teleoperation.md) 中「操作员能否看懂界面」的问题直接相关（参见 [非专家遥操作 GUI 论文笔记](./paper-notebook-intuitive-gui-for-non-expert-teleoperation-of-hu.md)）。
 2. **与 Linux 输入栈分工：** Linux 侧 USB Xbox 手柄多经 [xpad](./xpad.md) 暴露 evdev；Windows 侧手柄走 XInput / `Windows.Gaming.Input`。WinUI 负责 **任务模式、参数、急停与可视化**，不替代底层 IO 框架（如 [RIO](./robot-io-rio.md)）。
 3. **不是机器人中间件：** 勿把 WinUI 当作 ROS 桥、实时控制环或 XR 遥操作运行时；跨平台 XR 采数见 [XRoboToolkit](./paper-xrobotoolkit.md) 等专用栈。
+4. **宿主 OS 可选优化：** WinUI 应用跑在 Windows 10 1809+ 上；若工控机需减预装与后台遥测，见 [Atlas OS](./atlas-os.md) Playbook（与 WinUI 栈正交，仅优化宿主系统）。
 
 ## 核心原理
 
