@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/hdf5-mcap-lerobot-data-formats.md",
+      "detail_id": "wiki-comparisons-hdf5-mcap-lerobot-data-formats",
+      "label": "HDF5 vs MCAP vs LeRobot 数据集格式",
+      "type": "comparison",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    },
+    {
+      "path": "wiki/concepts/hdf5-file-format.md",
+      "detail_id": "wiki-concepts-hdf5-file-format",
+      "label": "HDF5 文件格式",
+      "type": "concept",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    },
+    {
       "path": "wiki/concepts/lerobot-dataset-v3.md",
       "detail_id": "wiki-concepts-lerobot-dataset-v3",
       "label": "LeRobotDataset v3.0",
@@ -200,39 +220,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-nowwam.md",
-      "detail_id": "entity-paper-nowwam",
-      "label": "NowWAM（arXiv:2609.28339）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-plantorv.md",
-      "detail_id": "entity-paper-plantorv",
-      "label": "PLANTORV（arXiv:2609.28184）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/lerobot-dataset-v3.md",
-    "detail_id": "wiki-concepts-lerobot-dataset-v3",
-    "label": "LeRobotDataset v3.0",
-    "type": "concept",
+    "path": "wiki/comparisons/hdf5-mcap-lerobot-data-formats.md",
+    "detail_id": "wiki-comparisons-hdf5-mcap-lerobot-data-formats",
+    "label": "HDF5 vs MCAP vs LeRobot 数据集格式",
+    "type": "comparison",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
   },
   "top_communities": [
