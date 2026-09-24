@@ -2,9 +2,10 @@
 type: entity
 tags: [robotis, ai-worker, physical-ai, ros2, humanoid, ffw, teleoperation, open-source]
 status: complete
-updated: 2026-09-05
-summary: "ROBOTIS AI Worker（FFW）官方 ROS 2 包 ai_worker：描述、bringup、导航、遥操作与 Docker；对接 Physical AI Tools / cyclo_lab / MuJoCo 资产。"
+updated: 2026-09-24
+summary: "ROBOTIS AI Worker（FFW）官方 ROS 2 包 ai_worker：描述、bringup、导航、遥操作与 Docker；对接 Physical AI Tools / cyclo_lab / MuJoCo；可选 Isaac ROS cuMotion 碰撞感知双臂规划（cyclo_solution）。"
 related:
+  - ./robotis-ai-worker-isaac-cumotion.md
   - ./robotis.md
   - ./robotis-physical-ai-tools.md
   - ./cyclo-lab.md
@@ -17,6 +18,7 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/repos/ai_worker.md
+  - ../../sources/sites/robotis_aiworker_isaac_cumotion_technical_story.md
 ---
 
 # ROBOTIS AI Worker（ai_worker）
@@ -42,6 +44,7 @@ sources:
 
 - **半人形操作硬件 + 官方 ROS 2**：比纯仿真资产更接近「能买、能 bringup、能接 VLA」的部署路径。
 - **与 Cyclo 栈咬合**：README 明确指向 [physical_ai_tools](./robotis-physical-ai-tools.md)、[MuJoCo menagerie](./robotis-mujoco-menagerie.md)、HF 模型与 `robotis/ros` Docker。
+- **GPU 碰撞感知操作（可选）**：[AI Worker × Isaac ROS cuMotion](./robotis-ai-worker-isaac-cumotion.md) 在 `cyclo_solution` 工作站上用 **MoveIt 2 + cuMotion + Nvblox** 做静态/动态/携带物体规划（[Isaac ROS 5.0 博客](https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/) 重点案例）。
 - **子型号仿真齐全**：FFW-SH5 / SG2 / BG2 出现在 menagerie 与 cyclo_lab 任务名中，便于 Sim2Sim 对照。
 
 ## 核心原理
@@ -74,7 +77,8 @@ flowchart LR
 2. 克隆 `ai_worker`，按 `docker/container.sh` 或 colcon 工作区 bringup（udev 规则见 `docker/99-*.rules`）。
 3. 采集/训练走 [physical_ai_tools](./robotis-physical-ai-tools.md)；Isaac Lab 任务与 DDS bringup 见 [cyclo_lab](./cyclo-lab.md)；长程 BT+VLA 见 [cyclo_intelligence](./cyclo-intelligence.md)。
 4. 仿真对照：[robotis_mujoco_menagerie](./robotis-mujoco-menagerie.md) 中 FFW 模型。
-5. 数据集与权重：[Hugging Face/ROBOTIS](https://huggingface.co/ROBOTIS)。
+5. 碰撞感知双臂规划：读 [cuMotion 集成页](./robotis-ai-worker-isaac-cumotion.md) 与 [cyclo_solution](https://github.com/ROBOTIS-GIT/cyclo_solution)（当前 JetPack 6.2 常配 **外置 GPU 工作站**）。
+6. 数据集与权重：[Hugging Face/ROBOTIS](https://huggingface.co/ROBOTIS)。
 
 ## 局限与风险
 
@@ -87,6 +91,7 @@ flowchart LR
 - [ROBOTIS 组织 hub](./robotis.md)
 - [Physical AI Tools](./robotis-physical-ai-tools.md)
 - [cyclo_lab](./cyclo-lab.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
+- [Isaac ROS cuMotion 集成](./robotis-ai-worker-isaac-cumotion.md)
 - [AI Sapiens](./robotis-ai-sapiens.md)
 - [Teleoperation](../tasks/teleoperation.md)
 

@@ -3861,6 +3861,7 @@
 - [Robot Viewer](wiki/entities/robot-viewer.md) — Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台。它最大的特点是支持多种主流机器人描述格式，并能直接在浏览器中运行物理仿真。 `📅unknown` `[entity_page]`
 - [Robotic World Model（ETH RSL：RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md) — Robotic World Model（RWM）** 与 **Uncertainty-Aware RWM（RWM-U）** 是 ETH Zurich（RSL / LAS 等）开源的 **模型基强化 `📅unknown` `[entity_page]`
 - [ROBOTIS AI Sapiens（ai_sapiens）](wiki/entities/robotis-ai-sapiens.md) — AI Sapiens** 是 ROBOTIS 的 **开源人形** 产品线（K1）；官方 ROS 2 软件入口为 [`ROBOTIS-GIT/ai_sapiens`](https://github `📅unknown` `[entity_page]`
+- [AI Worker × Isaac ROS cuMotion](wiki/entities/robotis-ai-worker-isaac-cumotion.md) — ROBOTIS AI Worker** 与 **NVIDIA Isaac ROS cuMotion** 的集成把 **半人形 lift + 双 7-DoF 臂** 接到 **GPU 碰撞感知运动规 `📅unknown` `[entity_page]`
 - [ROBOTIS AI Worker（ai_worker）](wiki/entities/robotis-ai-worker.md) — AI Worker** 是 ROBOTIS **Physical AI** 半人形操作平台（产品叙事 **FFW — Freedom From Work**）；官方 ROS 2 软件入口为 [`R `📅unknown` `[entity_page]`
 - [cyclo_mjlab（ROBOTIS）](wiki/entities/robotis-cyclo-mjlab.md) — cyclo_mjlab**（`ROBOTIS-GIT/cyclo_mjlab`，Apache-2.0，2 `📅unknown` `[entity_page]`
 - [ROBOTIS MuJoCo Menagerie](wiki/entities/robotis-mujoco-menagerie.md) — robotis_mujoco_menagerie**（[`ROBOTIS-GIT/robotis_mujoco_menagerie`](https://github.com/ROBOTIS-GIT `📅unknown` `[entity_page]`

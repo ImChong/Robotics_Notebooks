@@ -118,7 +118,7 @@
 - wiki/entities/paper-embodiedbrain.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
 - wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
 - wiki/entities/paper-llava.md（含绝对化措辞「SoTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
-- wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
+- wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/curobo.md updated=2026-09-24）
 - wiki/entities/paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
@@ -139,4 +139,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4846/4846 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4847/4847 (100%) wiki/entity 页有 ingest 来源
