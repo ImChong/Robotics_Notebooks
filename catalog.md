@@ -764,7 +764,7 @@
 - [NVIDIA Spatial Intelligence Lab（SIL）](wiki/entities/nvidia-spatial-intelligence-lab.md) — NVIDIA Spatial Intelligence Lab**（门户：<https://research.nvidia.com/labs/sil/>，GitHub：<https://githu `📅unknown` `[entity_page]`
 - [NVIDIA Warp（可微 GPU 计算框架）](wiki/entities/nvidia-warp.md) — NVIDIA Warp** 是面向仿真、机器人与机器学习的 **Python JIT 框架**：用 `@wp.kernel` 写普通函数，经 `wp.launch` 编译到 **CPU 或 CUD `📅unknown` `[entity_page]`
 - [Nymeria Dataset](wiki/entities/nymeria-dataset.md) — Nymeria** 是 Meta **Project Aria** 发布的 **野外最大规模多模态 egocentric 人类运动数据集**（[官方页](https://www.projectar `📅unknown` `[entity_page]`
-- [OCS2](wiki/entities/ocs2.md) — OCS2](https://github.com/leggedrobotics/ocs2) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
+- [OCS2](wiki/entities/ocs2.md) — OCS2**](https://github.com/leggedrobotics/ocs2)（**O**ptimal **C**ontrol for **S**witched **S**yst `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](wiki/entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
 - [ODRI Solo / Bolt（开源腿式平台）](wiki/entities/odri-solo-and-bolt.md) — ODRI（Open Dynamic Robot Initiative）** 提供面向研究的开源 **扭矩控制** 腿足平台：**Solo**（四足）与 **Bolt**（双足）常被引作 **低惯量 `📅unknown` `[entity_page]`
 - [OmniContact sim2sim](wiki/entities/omnicontact-sim2sim.md) — OmniContact_sim2sim**（GitHub）是 [OmniContact](. `📅unknown` `[entity_page]`

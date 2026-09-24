@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/repos/ocs2.md、sources/sites/ocs2-official-docs.md — OCS2 官方 GitHub + 文档站；已开源；重写实体页与 NMPC 方法页交叉
+
+- **意图：** 用户指定 https://github.com/leggedrobotics/ocs2 与 https://leggedrobotics.github.io/ocs2/overview.html；自动合并 PR
+- **开源结论：** **已开源** BSD 3-Clause；ROS 1 `main` / ROS 2 `ros2`；`ocs2_robotic_examples` 可运行
+- **关键页：** [`ocs2`](wiki/entities/ocs2.md)
+
 ## [2026-09-24] ingest | sources/repos/hunter130_collection.md — EncosTech Hunter V2（EC H130-V2）全栈开源聚合；已开源（多仓）；升格 encos-hunter130；交叉 open-source-humanoid-hardware / tienkung-lab
 
 - **意图：** 用户指定 https://github.com/EncosTech/hunter130_collection；自动合并 PR

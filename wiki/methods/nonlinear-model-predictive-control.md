@@ -79,7 +79,8 @@ summary: "非线性模型预测控制 NMPC：每步求解非线性 OCP，可处�
 ## 推荐继续阅读
 
 - [SRBD + 凸 MPC + WBC](../concepts/srbd-convex-mpc-wbc.md) — 与 CD-NMPC 的路线分叉
-- Acados / OCS2 文档
+- [OCS2](../entities/ocs2.md) — ETH RSL 切换系统 NMPC 工具箱（[文档](https://leggedrobotics.github.io/ocs2/)）
+- [acados](../entities/acados.md) — 嵌入式 RTI-SQP NMPC
 
 ## 参考来源
 
