@@ -3,9 +3,10 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, foundation-policy, manipulation, skild-ai, cmu]
 title: Skild AI
 status: complete
-updated: 2026-09-06
+updated: 2026-09-24
 related:
   - ./skild-s1.md
+  - ./skild-physical-self-play.md
   - ../concepts/robot-in-context-learning.md
   - ../concepts/foundation-policy.md
   - ./generalist-ai-robotics.md
@@ -15,6 +16,7 @@ related:
 sources:
   - ../../sources/sites/skild-ai.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
+  - ../../sources/blogs/skild_physical_self_play_2026-09-23.md
 summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni-bodied 单一脑控制任意机器人；2026-08 公开旗舰操作模型 S1（视频上下文 ICL），代码与数据确认未开源。"
 ---
 
@@ -57,6 +59,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 | 公司 thesis | **Skild Brain** · omni-bodied；安防巡检 / 移动操作 API / 精细装箱；**人视频学习** | [站点归档](../../sources/sites/skild-ai.md) |
 | **LocoFormer**（2025-09） | 运动通才 + 上下文累积经验；未见本体/环境在线适应 | [论文笔记占位](./paper-locoformer.md) |
 | **S1**（2026-08） | 视频 prompt；未见任务最长约 10 分钟；相对语言 VLA 未见档约 7× | [S1 实体](./skild-s1.md) |
+| **Physical Self-Play**（2026-09） | S1 后训练：Isaac Sim 自博弈 score-only；140 年仿真 → 人形足球 Sim2Real | [自博弈实体](./skild-physical-self-play.md) |
 
 ## 工程实践
 
@@ -75,6 +78,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 ## 关联页面
 
 - [S1：机器人 In-Context Learning](./skild-s1.md)
+- [Skild Physical Self-Play（后训练自博弈）](./skild-physical-self-play.md)
 - [机器人 In-Context Learning](../concepts/robot-in-context-learning.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [Generalist AI](./generalist-ai-robotics.md) — 另一条闭源通才 / ICL 产业线

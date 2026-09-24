@@ -112,7 +112,7 @@ flowchart TD
 涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。
 
 ### 3. 高动态与精细度平衡
-在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。
+在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。产业侧 [Skild Physical Self-Play](../entities/skild-physical-self-play.md) 以 **Isaac Sim 人形足球自博弈** 演示 **score-only RL** 涌现运球/铲球并 Sim2Real（闭源、无公开 benchmark）。
 
 ## 技术路线演进 (2024-2026)
 
