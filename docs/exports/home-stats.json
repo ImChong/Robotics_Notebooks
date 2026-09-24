@@ -1,13 +1,75 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4795,
-  "edge_count": 42228,
+  "node_count": 4796,
+  "edge_count": 42235,
   "coverage": {
-    "covered": 4766,
-    "total": 4766,
+    "covered": 4767,
+    "total": 4767,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/flux-3-action.md",
+      "detail_id": "entity-flux-3-action",
+      "label": "FLUX 3 Action",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dualwam.md",
+      "detail_id": "entity-paper-dualwam",
+      "label": "DualWAM（arXiv:2609.24868）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-predactor.md",
+      "detail_id": "entity-paper-predactor",
+      "label": "PredActor（arXiv:2609.24840）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robotwin-phys.md",
+      "detail_id": "entity-paper-robotwin-phys",
+      "label": "RoboTwin-Phys（arXiv:2609.26292）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-routelt.md",
+      "detail_id": "entity-paper-routelt",
+      "label": "RouteRLT（arXiv:2609.26467）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sample-simulate-select.md",
+      "detail_id": "entity-paper-sample-simulate-select",
+      "label": "Sample, Simulate, Select（S³，arXiv:2609.26420）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
+    },
     {
       "path": "wiki/concepts/joint-encoder-selection.md",
       "detail_id": "wiki-concepts-joint-encoder-selection",
@@ -155,81 +217,18 @@
       "source": "git",
       "action": "added",
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tempowam.md",
-      "detail_id": "entity-paper-tempowam",
-      "label": "TempoWAM（arXiv:2608.09492）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-thaw-vla.md",
-      "detail_id": "entity-paper-thaw-vla",
-      "label": "THAW-VLA（arXiv:2609.24682）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-triworldbench.md",
-      "detail_id": "entity-paper-triworldbench",
-      "label": "TriWorldBench（arXiv:2609.26314）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vla-adapter.md",
-      "detail_id": "entity-paper-vla-adapter",
-      "label": "VLA-Adapter（arXiv:2509.09372）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/mimo-v2-6.md",
-      "detail_id": "entity-mimo-v2-6",
-      "label": "MiMo-V2.6（Scaling RL Toward Self-Improvement）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/simate.md",
-      "detail_id": "entity-simate",
-      "label": "Simate（Physical AI Platform + Model + Scientist）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/joint-encoder-selection.md",
-    "detail_id": "wiki-concepts-joint-encoder-selection",
-    "label": "关节编码器选型（光电 / 磁 / 电感）",
-    "type": "concept",
-    "recency": "2026-09-23",
+    "path": "wiki/entities/flux-3-action.md",
+    "detail_id": "entity-flux-3-action",
+    "label": "FLUX 3 Action",
+    "type": "entity",
+    "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    "has_repo": true,
+    "community_label": "世界模型（World Models） 社区"
   },
   "top_communities": [
     {
@@ -293,7 +292,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1005,
+      "degree": 1006,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -325,7 +324,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 635,
+      "degree": 636,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
