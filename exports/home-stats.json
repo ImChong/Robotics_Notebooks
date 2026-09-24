@@ -15,7 +15,8 @@
       "type": "concept",
       "recency": "2026-09-23",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
       "path": "wiki/concepts/out-of-distribution-generalization.md",
@@ -24,7 +25,8 @@
       "type": "concept",
       "recency": "2026-09-23",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
     },
     {
       "path": "wiki/concepts/strong-pair-data.md",
@@ -34,7 +36,7 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
     },
     {
       "path": "wiki/entities/paper-dexora.md",
@@ -44,7 +46,8 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-embodiedbrain.md",
@@ -54,7 +57,8 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-fast-wam.md",
@@ -65,7 +69,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-industrialvla-bench.md",
@@ -76,7 +80,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-memorywam.md",
@@ -87,7 +91,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-mimicagent.md",
@@ -96,7 +100,8 @@
       "type": "entity",
       "recency": "2026-09-23",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-openeai-vla.md",
@@ -107,7 +112,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-pixverse-r2.md",
@@ -118,7 +123,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-rpv-semnav.md",
@@ -129,7 +134,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
     },
     {
       "path": "wiki/entities/paper-scientisttwo.md",
@@ -139,7 +144,7 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
     },
     {
       "path": "wiki/entities/paper-strider.md",
@@ -159,7 +164,7 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-thaw-vla.md",
@@ -169,7 +174,8 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-triworldbench.md",
@@ -180,7 +186,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-vla-adapter.md",
@@ -191,7 +197,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/mimo-v2-6.md",
@@ -201,7 +207,8 @@
       "recency": "2026-09-23",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
       "path": "wiki/entities/simate.md",
@@ -210,7 +217,8 @@
       "type": "entity",
       "recency": "2026-09-23",
       "source": "git",
-      "action": "added"
+      "action": "added",
+      "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -220,32 +228,33 @@
     "type": "concept",
     "recency": "2026-09-23",
     "source": "git",
-    "action": "added"
+    "action": "added",
+    "community_label": "硬件与执行器（Hardware and Actuators） 社区"
   },
   "top_communities": [
     {
-      "label": "移动操作",
-      "size": 710
+      "label": "世界模型",
+      "size": 727
     },
     {
-      "label": "操作",
-      "size": 678
+      "label": "产业与开源生态",
+      "size": 636
     },
     {
-      "label": "世界动作模型",
-      "size": 578
+      "label": "视觉感知",
+      "size": 412
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 327
     },
     {
       "label": "仿真到现实",
-      "size": 329
+      "size": 293
     },
     {
-      "label": "国内开源全景 424 项阅读导航",
-      "size": 298
-    },
-    {
-      "label": "全身控制",
-      "size": 268
+      "label": "动作模仿与生成",
+      "size": 273
     }
   ],
   "top_hubs": [
@@ -270,7 +279,7 @@
       "label": "Locomotion",
       "type": "task",
       "degree": 1143,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-overview-sun-awesome-wm-technology-map",
@@ -278,7 +287,7 @@
       "type": "overview",
       "degree": 1038,
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "detail_id": "wiki-concepts-sim2real",
@@ -294,7 +303,7 @@
       "type": "method",
       "degree": 978,
       "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "世界模型（World Models） 社区"
     },
     {
       "detail_id": "wiki-queries-china-domestic-opensource-424-coverage",
@@ -302,14 +311,15 @@
       "type": "query",
       "degree": 684,
       "has_repo": true,
-      "community_label": "国内开源全景 424 项阅读导航（China Domestic Open-Source Coverage） 社区"
+      "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
     },
     {
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 648,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -325,7 +335,7 @@
       "type": "overview",
       "degree": 621,
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -335,7 +345,7 @@
       "type": "method",
       "degree": 166,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
@@ -343,21 +353,21 @@
       "type": "method",
       "degree": 91,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 68,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
       "degree": 65,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -365,7 +375,7 @@
       "type": "entity",
       "degree": 60,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
       "detail_id": "entity-paper-pi05-open-world-vla",
@@ -373,14 +383,14 @@
       "type": "entity",
       "degree": 59,
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "entity-paper-light-loco-parkour",
       "label": "Light-Loco-Parkour（LightLP）",
       "type": "entity",
       "degree": 51,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
@@ -388,7 +398,7 @@
       "type": "entity",
       "degree": 50,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -396,7 +406,7 @@
       "type": "entity",
       "degree": 49,
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
     },
     {
       "detail_id": "entity-paper-lightnav-0",
@@ -404,7 +414,7 @@
       "type": "entity",
       "degree": 48,
       "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
     }
   ]
 }

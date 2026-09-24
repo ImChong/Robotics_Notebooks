@@ -91,6 +91,9 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
+### ❌ frontmatter topic 非法（不在 schema/topics.json 或超过 2 个）（0 个）
+- 无
+
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
