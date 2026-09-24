@@ -8,7 +8,8 @@
 - **Stars：** ~1360（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** NVIDIA cuVSLAM 加速视觉 SLAM/里程计，Jetson/ROS 2 部署。
-- **沉淀到 wiki：** [isaac-ros-visual-slam](../../wiki/entities/isaac-ros-visual-slam.md)、[navigation-slam-autonomy-stack](../../wiki/overview/navigation-slam-autonomy-stack.md)
+- **底层库：** [cuvslam.md](cuvslam.md)
+- **沉淀到 wiki：** [isaac-ros-visual-slam](../../wiki/entities/isaac-ros-visual-slam.md)、[paper-cuvslam](../../wiki/entities/paper-cuvslam.md)、[navigation-slam-autonomy-stack](../../wiki/overview/navigation-slam-autonomy-stack.md)
 
 ---
 

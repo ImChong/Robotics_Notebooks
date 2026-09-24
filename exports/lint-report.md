@@ -2,7 +2,7 @@
 
 ## [2026-09-24] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **7** 条信息型预警）：
+共发现 **0** 个问题（另含 **13** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -113,8 +113,13 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
 - wiki/entities/roboflywheel.md（缺 重定向就绪度）
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（6 个）
+- wiki/entities/paper-code-as-world.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
+- wiki/entities/paper-embodiedbrain.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
+- wiki/entities/paper-infonce-geometry.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
+- wiki/entities/paper-llava.md（含绝对化措辞「SoTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
+- wiki/entities/paper-me-dex-1-0.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
+- wiki/entities/paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md（含绝对化措辞「SOTA」，updated=2026-09-23；同主题更新页 wiki/entities/paper-cuvslam.md updated=2026-09-24）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -134,4 +139,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4843/4843 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4844/4844 (100%) wiki/entity 页有 ingest 来源

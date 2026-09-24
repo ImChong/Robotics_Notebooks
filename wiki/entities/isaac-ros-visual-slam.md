@@ -7,8 +7,10 @@ related:
   - ../entities/isaac-ros-nvblox.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/navigation2.md
+  - ./paper-cuvslam.md
 sources:
   - ../../sources/repos/isaac_ros_visual_slam.md
+  - ../../sources/repos/cuvslam.md
 summary: "Isaac ROS Visual SLAM 基于 NVIDIA cuVSLAM，在 Jetson/x86+GPU 上提供加速视觉里程计/SLAM，作为 ROS 2 组件接入 Nav2 感知链。"
 ---
 
@@ -48,6 +50,8 @@ summary: "Isaac ROS Visual SLAM 基于 NVIDIA cuVSLAM，在 Jetson/x86+GPU 上�
 ## 参考来源
 
 - [sources/repos/isaac_ros_visual_slam.md](../../sources/repos/isaac_ros_visual_slam.md)
+- [sources/repos/cuvslam.md](../../sources/repos/cuvslam.md) — 底层 cuVSLAM 库
+- [cuVSLAM 论文实体](./paper-cuvslam.md)
 - [NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam)
 
 ## 关联页面

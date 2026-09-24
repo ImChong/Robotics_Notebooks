@@ -1,23 +1,23 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4872,
-  "edge_count": 42765,
+  "node_count": 4873,
+  "edge_count": 42774,
   "coverage": {
-    "covered": 4843,
-    "total": 4843,
+    "covered": 4844,
+    "total": 4844,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/atlas-os.md",
-      "detail_id": "entity-atlas-os",
-      "label": "Atlas OS（Windows 优化 Playbook）",
+      "path": "wiki/entities/paper-cuvslam.md",
+      "detail_id": "entity-paper-cuvslam",
+      "label": "cuVSLAM：CUDA 加速视觉里程计与建图",
       "type": "entity",
       "recency": "2026-09-24",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
     },
     {
       "path": "wiki/entities/roboflywheel.md",
@@ -219,15 +219,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/atlas-os.md",
-    "detail_id": "entity-atlas-os",
-    "label": "Atlas OS（Windows 优化 Playbook）",
+    "path": "wiki/entities/paper-cuvslam.md",
+    "detail_id": "entity-paper-cuvslam",
+    "label": "cuVSLAM：CUDA 加速视觉里程计与建图",
     "type": "entity",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
   },
   "top_communities": [
     {

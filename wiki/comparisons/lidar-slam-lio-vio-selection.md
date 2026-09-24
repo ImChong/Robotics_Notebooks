@@ -61,7 +61,7 @@ summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM
 | **Kimera** | 立体 + IMU | VIO + RPGO + 语义 | ROS | 语义度量地图 | 组件多、学习曲线陡 |
 | **RTAB-Map** | RGB-D/立体/激光 | 记忆管理 | ROS/ROS2 | 一套 GUI 走通 | 高动态需额外处理 |
 | **voxgraph** | 深度/TSDF | 位姿图 + Voxblox | ROS | 多会话子图 | 生态小于 LIO 系 |
-| **Isaac cuVSLAM** | 多相机 | GPU | Isaac ROS | Jetson 部署 | 绑定 NVIDIA 栈 |
+| **[cuVSLAM](../entities/paper-cuvslam.md)** | 1–32 相机 / RGB-D / VI | CUDA 特征+BA | PyCuVSLAM + Isaac ROS | Jetson 实时、免调参默认 | 绑定 NVIDIA 栈；Multisensor 实验 |
 | **Ultra-Fusion** | CIL + 轮速/GNSS 可选 | 统一滑窗 BA + FRS | 待发布 | **可配置 WIO/VIO/LIO/LVIO**、退化调度、在线时空标定 | 复杂度高；ITS 多平台评测导向 |
 | **KILVO** | 关节编码 + IMU + LiDAR + 相机 | 异步–顺序混合 ESIKF | 待开放 | **人形**接触估计、模态失效自适应、**1 kHz** 输出 | 仓仍占位；非通用轮式栈 |
 | **PUMA** | 3D LiDAR | Poisson **mesh** + ray cast P2L | 无（研究仓） | **显式三角 mesh 地图**、KITTI 定性对比 surfel/TSDF | 非 ROS 实时；重建+射线较重；见 [PUMA](../entities/paper-puma-lidar-mesh-odometry.md) |
