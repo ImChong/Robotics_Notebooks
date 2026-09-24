@@ -9,6 +9,39 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/comparisons/lz4-vs-zstandard.md",
+      "detail_id": "wiki-comparisons-lz4-vs-zstandard",
+      "label": "LZ4 vs Zstandard（zstd）",
+      "type": "comparison",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    },
+    {
+      "path": "wiki/entities/lz4.md",
+      "detail_id": "entity-lz4",
+      "label": "LZ4",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    },
+    {
+      "path": "wiki/entities/zstandard.md",
+      "detail_id": "entity-zstandard",
+      "label": "Zstandard（zstd）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    },
+    {
       "path": "wiki/entities/encos-hunter130.md",
       "detail_id": "entity-encos-hunter130",
       "label": "Encos Hunter 130（Hunter V2 / EC H130-V2）",
@@ -189,48 +222,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robot-group-joining.md",
-      "detail_id": "entity-paper-robot-group-joining",
-      "label": "Robot Group Joining（arXiv:2609.28467）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-stein-admm-contact.md",
-      "detail_id": "entity-paper-stein-admm-contact",
-      "label": "Stein-ADMM（arXiv:2609.28299）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tandem.md",
-      "detail_id": "entity-paper-tandem",
-      "label": "TANDEM（arXiv:2609.28314）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/encos-hunter130.md",
-    "detail_id": "entity-encos-hunter130",
-    "label": "Encos Hunter 130（Hunter V2 / EC H130-V2）",
-    "type": "entity",
+    "path": "wiki/comparisons/lz4-vs-zstandard.md",
+    "detail_id": "wiki-comparisons-lz4-vs-zstandard",
+    "label": "LZ4 vs Zstandard（zstd）",
+    "type": "comparison",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
   },
   "top_communities": [
     {
