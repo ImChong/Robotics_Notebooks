@@ -14,6 +14,7 @@ status: complete
 updated: 2026-09-20
 arxiv: "2609.18207"
 related:
+  - ../concepts/universal-post-training-robotics.md
   - ../methods/vla.md
   - ../methods/action-chunking.md
   - ../queries/vla-deployment-guide.md
@@ -23,6 +24,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md
   - ../../sources/papers/real_time_expo_ft_arxiv_2609_18207.md
   - ../../sources/sites/real-time-expo-ft.md
@@ -131,6 +133,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Universal Post-Training for Robotics](../concepts/universal-post-training-robotics.md) — EXPO-FT 在「通用 post-training 配方」中的位置
 - [VLA 方法](../methods/vla.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [SmoothRL](./paper-smoothrl.md) — 异步 VLA 在线 RL 对照

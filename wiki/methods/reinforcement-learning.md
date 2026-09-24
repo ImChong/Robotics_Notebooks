@@ -270,6 +270,7 @@ flowchart LR
 - [强化学习史](../concepts/reinforcement-learning-history.md) — Sutton & Barto §1.6 三线史学框架
 - [The Bitter Lesson](../concepts/bitter-lesson.md) — scaling 方法论（search + learning）
 - [Skild Physical Self-Play](../entities/skild-physical-self-play.md) — 闭源产业样本：S1 底座 + Isaac Sim score-only 自博弈 → 人形足球 Sim2Real
+- [Universal Post-Training for Robotics](../concepts/universal-post-training-robotics.md) — 真机 value-RL + 协议标准化；EXPO-FT edit+Q 微调 VLA
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文 RL 教材与 PPO/SAC 章节，适合 Stage 0 打底
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
 - [Imitation Learning](./imitation-learning.md)

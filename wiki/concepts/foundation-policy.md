@@ -1,8 +1,9 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-09-17
+updated: 2026-09-24
 related:
+  - ./universal-post-training-robotics.md
   - ./embodied-foundation-model-hardware-codesign.md
   - ./robot-in-context-learning.md
   - ../queries/contact-wrench-closed-loop.md
@@ -43,6 +44,7 @@ sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
+  - ../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/blogs/perceptron_isaac_05.md
 summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
@@ -71,6 +73,8 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 传统机器人策略学习每个任务独立训练，无法复用跨任务知识。基础策略模型试图从根本上解决这一问题：训练一次，泛化到数百乃至数千个任务。
 
 跨任务泛化仍受 **本体动作空间、传感闭环与安全边界** 约束——「通用策略」不等于脱离硬件；见 [具身大模型与本体协同设计](./embodied-foundation-model-hardware-codesign.md)。
+
+2026 年产业预训练已能 **演示复杂行为**，但 **95% 级成功率** 仍不足以自主部署；[Universal Post-Training for Robotics](./universal-post-training-robotics.md) 论述需像 LLM 的 SFT/RLHF/RLVR 一样收敛 **通用 post-training 配方**（算法 + reward/reset/HIL 协议）。
 
 ---
 
@@ -199,6 +203,7 @@ flowchart TD
 
 ## 关联页面
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 通用策略下游的接触丰富操作，依赖本链的力旋量闭环执行保证
+- [Universal Post-Training for Robotics](./universal-post-training-robotics.md) — 预训练→高可靠部署的配方缺口与 EXPO-FT 坐标
 - [机器人 In-Context Learning](./robot-in-context-learning.md) — 部署期示范归纳 vs 记忆 vs metadata 的 taxonomy
 - [模仿学习（Imitation Learning）](../methods/imitation-learning.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
