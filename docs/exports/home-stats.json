@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4855,
-  "edge_count": 42665,
+  "node_count": 4856,
+  "edge_count": 42675,
   "coverage": {
-    "covered": 4826,
-    "total": 4826,
+    "covered": 4827,
+    "total": 4827,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -242,7 +242,7 @@
     },
     {
       "label": "动作模仿与生成",
-      "size": 274
+      "size": 276
     }
   ],
   "top_hubs": [

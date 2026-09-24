@@ -1,3 +1,5 @@
+## [2026-09-24] ingest | sources/sites/keentools-facebuilder-blender.md — KeenTools FaceBuilder 少图头部重建；add-on GPLv3 / Core 闭源；FaceBuilder×MetaHuman 五步法；wiki/entities/keentools-facebuilder.md
+
 ## [2026-09-24] ingest | sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md — Perry Dong 通用机器人 post-training 框架；EXPO-FT 配方 + 协议开放问题
 
 - **意图：** 用户指定 https://pd-perry.github.io/posts/post-training.html；自动合并 PR
