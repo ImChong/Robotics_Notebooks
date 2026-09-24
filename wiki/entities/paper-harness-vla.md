@@ -34,6 +34,7 @@ related:
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-robo-harness.md
   - ./paper-embodiedskills.md
+  - ./paper-robodawn.md
   - ./deepseek-harness.md
 sources:
   - ../../sources/papers/harness_vla_arxiv_2607_08448.md
