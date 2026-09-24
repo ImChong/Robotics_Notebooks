@@ -3683,13 +3683,21 @@ button.home-wiki-heatmap-cell.is-active {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+/* 社区标签：摘要下方单独一行的描边胶囊（色取社区色），不与顶部实心类型徽章同行 */
 .graph-hover-tooltip .tt-community {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 4px;
-  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.45);
+  background: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.14);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.72rem;
+  line-height: 1.5;
 }
 .graph-hover-tooltip .tt-meta-badges {
   display: flex;
@@ -3745,6 +3753,10 @@ button.home-wiki-heatmap-cell.is-active {
 }
 [data-theme="light"] .graph-hover-tooltip .tt-summary {
   color: rgba(0, 0, 0, 0.5);
+}
+[data-theme="light"] .graph-hover-tooltip .tt-community {
+  color: rgba(0, 0, 0, 0.68);
+  background: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.1);
 }
 [data-theme="light"] .graph-hover-tooltip .tt-link {
   color: rgba(45, 116, 218, 0.85);

@@ -4,6 +4,18 @@
 - **开源结论：** N/A（硬件选型综述，非项目页）
 - **关键页：** [`joint-torque-sensor-selection`](wiki/concepts/joint-torque-sensor-selection.md)；交叉 encoder / joint-module / actuator-drive-chain / HW101 感知链
 
+## [2026-09-24] ingest | sources/papers/hotice_arxiv_2609_25363.md — HOTICE USC 杂乱环境全身持物搬运；HOD-PF + dual-agent RL；G1 真机；代码待发布
+
+- **意图：** 用户指定 arXiv:2609.25363 + hotice2027.github.io
+- **开源结论：** **待发布** — 项目页 Anonymous，无 GitHub
+- **关键页：** [`paper-hotice`](wiki/entities/paper-hotice.md)；交叉 loco-manipulation / WBC / sim2real / TANGO
+
+## [2026-09-24] ingest | sources/papers/robodawn_arxiv_2609_22966.md — RoboDawn 冻结 VLM 语义命令 ICL；C2R 73.6% 1-shot；GitHub+710 轨迹回放已开源
+
+- **意图：** 用户指定 robodawn.top / results / arXiv:2609.22966 / Hugo-AGI/RoboDawn；自动合并 PR
+- **开源结论：** **已开源** — MIT 代码、prompts、128 demos、evaluation seeds；[robodawn.top/results](https://robodawn.top/results) 710 episodes
+- **关键页：** [`paper-robodawn`](wiki/entities/paper-robodawn.md)；交叉 VLA / RoboTwin / RoboDojo / Harness VLA
+
 ## [2026-09-24] ingest | 八项 PredActor/DualWAM/THAW/FLUX/S³/RouteRLT/RoboTwin-Phys + LeRobot 交叉 — 机载 joint diffusion、双系统 WAM、零训练 physics-in-the-loop、VLA↔RL 路由、物理 benchmark；THAW HF 权重已公开
 
 - **意图：** 用户指定 8 条 arXiv/GitHub/HF 链接 batch ingest；自动合并 PR
