@@ -1216,6 +1216,13 @@
         "korea-institute-of-machinery-materials"
       ]
     },
+    "keti": {
+      "label": "韩国电子技术研究院（KETI）",
+      "aliases": [
+        "keti",
+        "korea-electronics-technology-institute"
+      ]
+    },
     "korea-university": {
       "label": "高丽大学（Korea University）",
       "aliases": [
