@@ -2,11 +2,12 @@
 type: entity
 tags: [software, digital-human, character-animation, unreal-engine, mocap, dcc-pipeline, epic-games]
 status: complete
-updated: 2026-06-21
+updated: 2026-09-24
 related:
   - ./unreal-engine-5.md
   - ./mixamo.md
   - ./blender.md
+  - ./keentools-facebuilder.md
   - ./airsim.md
   - ./spear-sim.md
   - ./motioncode.md
@@ -45,7 +46,7 @@ summary: "Epic MetaHuman 是 UE 生态下的高保真数字人平台：Creator �
 
 | 模块 | 能力 | 机器人相关注记 |
 |------|------|----------------|
-| **MetaHuman Creator** | 数据库组装角色；**Mesh to MetaHuman** 将扫描/DCC/生成网格转为 MetaHuman 拓扑与 rig（5.8 支持 **全身**） | 人类外形与 rig 标准化，利于与动捕、视频姿态估计输出对齐 |
+| **MetaHuman Creator** | 数据库组装角色；**Mesh to MetaHuman** 将扫描/DCC/生成网格转为 MetaHuman 拓扑与 rig（5.8 支持 **全身**） | 人类外形与 rig 标准化，利于与动捕、视频姿态估计输出对齐；[KeenTools FaceBuilder](./keentools-facebuilder.md) 提供 **照片→Blender 头→MH texture** 官方五步法 |
 | **MetaHuman Animator** | 实时/离线面部；5.8 **全身** 单相机无标记（Experimental）；音频驱动表情与眨眼 | 可作 **表演捕捉** 上游，输出需经重定向才能喂给真机 WBT/IL |
 | **MetaHuman Crowds**（Experimental） | Collections + Mass + 近远景 LOD，移动端数百、高端数千角色 | 多智能体/人群仿真 **视觉层**；非多机器人动力学仿真 |
 | **MetaHuman Devkit / OpenRigLogic** | RigLogic、DNA 等 **MIT** 开源 | 第三方引擎或自定义可视化中嵌入 MetaHuman 兼容角色 |
@@ -109,6 +110,7 @@ flowchart LR
 
 - [Mixamo（Adobe 在线角色与动画）](./mixamo.md)
 - [Blender（开源 DCC 枢纽）](./blender.md)
+- [KeenTools FaceBuilder（照片→MH texture）](./keentools-facebuilder.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [动作重定向知识链汇总](../overview/hub-motion-retargeting.md)
