@@ -20,6 +20,17 @@
       "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
     },
     {
+      "path": "wiki/entities/atlas-os.md",
+      "detail_id": "entity-atlas-os",
+      "label": "Atlas OS（Windows 优化 Playbook）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    },
+    {
       "path": "wiki/entities/roboflywheel.md",
       "detail_id": "entity-roboflywheel",
       "label": "RoboFlywheel",
@@ -206,16 +217,6 @@
       "source": "git",
       "action": "added",
       "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
-    },
-    {
-      "path": "wiki/entities/patent-xpeng-cn117359667a-multi-finger-single-pushrod.md",
-      "detail_id": "entity-patent-xpeng-cn117359667a-multi-finger-single-pushrod",
-      "label": "小鹏 IRON · 单推杆联动多指的轻量化机械手（CN117359667A）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     }
   ],
   "latest_wiki_node": {
