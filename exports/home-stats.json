@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/universal-post-training-robotics.md",
+      "detail_id": "wiki-concepts-universal-post-training-robotics",
+      "label": "Universal Post-Training for Robotics（通用机器人后训练）",
+      "type": "concept",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/skild-physical-self-play.md",
       "detail_id": "entity-skild-physical-self-play",
       "label": "Skild Physical Self-Play（后训练自博弈）",
@@ -197,27 +207,17 @@
       "source": "git",
       "action": "added",
       "community_label": "硬件与执行器（Hardware and Actuators） 社区"
-    },
-    {
-      "path": "wiki/entities/patent-xpeng-cn119472748b-biped-two-stage-com.md",
-      "detail_id": "entity-patent-xpeng-cn119472748b-biped-two-stage-com",
-      "label": "小鹏 IRON · 双足迈步中的两阶段机身轨迹规划（CN119472748B）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/skild-physical-self-play.md",
-    "detail_id": "entity-skild-physical-self-play",
-    "label": "Skild Physical Self-Play（后训练自博弈）",
-    "type": "entity",
+    "path": "wiki/concepts/universal-post-training-robotics.md",
+    "detail_id": "wiki-concepts-universal-post-training-robotics",
+    "label": "Universal Post-Training for Robotics（通用机器人后训练）",
+    "type": "concept",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
