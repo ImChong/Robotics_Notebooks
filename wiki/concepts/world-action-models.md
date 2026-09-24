@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -41,6 +41,8 @@ related:
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
   - ../entities/paper-gift-intermediate-feature-training.md
   - ../entities/paper-thaw-vla.md
+  - ../entities/paper-dualwam.md
+  - ../entities/flux-3-action.md
   - ../overview/open-source-reproducibility-9-papers-technology-map.md
   - ../entities/paper-ld4wam.md
   - ../entities/paper-dreammimic.md
@@ -426,7 +428,9 @@ flowchart TB
 - [𝒩₀-TWAM（NeoteAI 触觉原生 WAM）](../entities/paper-n0-twam.md)
 - [EmbodiedVAE](../entities/paper-embodiedvae.md) — 操作世界模型的解耦 video VAE tokenizer（arXiv:2608.02990）
 - [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 把几何/可供性/目标区域监督接到 VLA 与 WAM-Fast/IDM（arXiv:2609.04193；待发布）
-- [THAW-VLA](../entities/paper-thaw-vla.md) — 训练时对齐缓存 WAM 特征、部署时完全剥离 teacher；0.8B VLA LIBERO 97.9% / 32 ms（arXiv:2609.24682；已开源）
+- [THAW-VLA](../entities/paper-thaw-vla.md) — 训练时对齐缓存 WAM 特征、部署时完全剥离 teacher；0.8B VLA LIBERO 97.9% / 32 ms（arXiv:2609.24682；GitHub+HF 已开源）
+- [DualWAM](../entities/paper-dualwam.md) — 双系统 WAM 异步全局规划 + 腕部局部 refinement；16.6× critical-path speedup（arXiv:2609.24868；待发布）
+- [FLUX 3 Action](../entities/flux-3-action.md) — BFL 7B WAM standalone 训练/推理 + Hub 公开权重；SO-101 LoRA 接 LeRobot（已开源）
 
 ### 推理开销与部署形态
 
@@ -436,7 +440,9 @@ flowchart TB
 - [LAWA（潜动作作未来意图）](../entities/paper-lawa.md) — 测试时去噪 latent 意图而非像素；RoboCasa 65.6/80.8%；代码待发布（arXiv:2608.24882）
 - [LaWAM](../entities/paper-lawam.md) — DINOv3 潜 subgoal 条件 VLA；LIBERO 98.6%（187 ms）；LeRobot 原生；已开源（arXiv:2606.15768，CoRL 2026）
 - [GlanceWAM](../entities/paper-glancewam.md) — 异步单帧前瞻，动作头 48 ms；RoboCasa 72.2% / LIBERO 99.0%；已开源（arXiv:2608.23927）
-- [THAW-VLA](../entities/paper-thaw-vla.md) — 不跑 WAM 推理：离线特征蒸馏，部署图与 undistilled VLA 相同；32 ms / 1.86 GB（arXiv:2609.24682；已开源）
+- [THAW-VLA](../entities/paper-thaw-vla.md) — 不跑 WAM 推理：离线特征蒸馏，部署图与 undistilled VLA 相同；32 ms / 1.86 GB（arXiv:2609.24682；GitHub+HF 已开源）
+- [DualWAM](../entities/paper-dualwam.md) — 共享去噪轨迹上 S2 全局 / S1 腕部异步 refinement（arXiv:2609.24868）
+- [FLUX 3 Action](../entities/flux-3-action.md) — 工程化 WAM 全量微调与 DROID/SO-101 部署栈（BFL；已开源）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — Motubrain 平台六策略实证
 - [ActEffect / Phi-WM 1.0](../entities/paper-phi-wm-acteffect.md) — 训练时受控 WM 反馈，部署一次前向（LIBERO 98.8%；确认未开源）
 - [SLIM-0.5B](../entities/paper-slim-05b.md) — 动作接地预测 latent + 紧凑 MoT flow 策略（非像素 rollout）

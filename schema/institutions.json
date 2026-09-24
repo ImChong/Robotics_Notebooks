@@ -3844,6 +3844,29 @@
       "aliases": [
         "synthesia"
       ]
+    },
+    "bonn": {
+      "label": "波恩大学（University of Bonn）",
+      "aliases": [
+        "bonn",
+        "university-of-bonn",
+        "uni-bonn"
+      ]
+    },
+    "black-forest-labs": {
+      "label": "黑森林实验室（Black Forest Labs）",
+      "aliases": [
+        "black-forest-labs",
+        "bfl",
+        "black-forest"
+      ]
+    },
+    "memo": {
+      "label": "妙记智能（Memo AI）",
+      "aliases": [
+        "memo",
+        "memo-ai"
+      ]
     }
   }
 }

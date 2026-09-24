@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-model, representation-distillation, manipulation, uw-madison, uiuc]
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 arxiv: "2609.24682"
 related:
   - ../methods/vla.md
@@ -49,7 +49,7 @@ summary: "THAW-VLA（UW–Madison/UIUC, arXiv:2609.24682）：离线缓存 Cosmo
 | 机构 | 威斯康星大学麦迪逊分校（UW–Madison）、伊利诺伊大学厄巴纳-香槟分校（UIUC） |
 | arXiv | [2609.24682](https://arxiv.org/abs/2609.24682) |
 | 项目页 | <https://thaw-vla.trung-dt.com/> |
-| 开源状态 | **已开源**（[GitHub](https://github.com/trungdt880/THAW-VLA)，MIT）；HF checkpoint **private** 需申请 |
+| 开源状态 | **已开源**（[GitHub](https://github.com/trungdt880/THAW-VLA)，MIT）；HF [termanteus/thaw-vla](https://huggingface.co/collections/termanteus/thaw-vla) 权重 **已公开**（2026-09-24 API：`gated=false`） |
 | 真机 | AgileX Nero 单臂；TRIP-Bag 双臂 handover |
 
 ## 流程总览
@@ -114,7 +114,7 @@ sequenceDiagram
 | 复现实验 | distill 与 baseline 成对 config；并发训练改 `MAIN_PORT` |
 | Checkpoint | HF 权重须放在 `checkpoints/` 子目录且带 `dataset_statistics.json`，否则动作未归一化 SR≈0 |
 | 部署读法 | 推理 **4 flow steps**；alignment 模块已剥离 — 与 [VLA](../methods/vla.md) 小模型部署栈一致 |
-| 开源边界 | 代码 MIT 全链路；发布权重 private；Cosmos3 teacher 需自备 |
+| 开源边界 | 代码 MIT 全链路；HF LIBERO/GR1 checkpoint **已公开**；Cosmos3 teacher 仍需自备 ~33 GB |
 
 ## 实验与评测读法
 

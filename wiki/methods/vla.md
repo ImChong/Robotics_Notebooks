@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../overview/ai-architecture-map.md
@@ -336,7 +336,8 @@ flowchart TD
 - **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
 - **EffVLA（MindVLA / 理想等，2026）**：固定 SigLIP2+Qwen2.5 骨干在 **延迟配对** 条件下扫 action-head 四轴；**VLM-init** 单杠杆 **+7.1** LIBERO-Plus 点、零延迟；~**3.75B** 效率膝；LIBERO-Plus **六轴领先**；`mindvla-team/EFFVLA` **部分开源** action-head（见 [EffVLA](../entities/paper-effvla.md)；横切面 [具身资源 10 篇地图](../overview/embodied-resources-10-papers-technology-map.md)）
 - **GIFT / MINERVA / LIBERO-Recover / XR-2（2026-09-04 九篇盘点 + 2026-09-08）**：[GIFT](../entities/paper-gift-intermediate-feature-training.md) 用几何/可供性/目标区域监督中间特征（LIBERO-Plus 79.6/72.6/87.8%，代码待发布）；[MINERVA](../entities/paper-minerva-libero.md) 用 0.54M task-ID 策略量 LIBERO 容量下限（约 95%，CPU 5.1 ms/chunk，已开源）；[LIBERO-Recover](../entities/paper-libero-recover.md) 从 SOTA 真实执行失败构造 2178 恢复场景（RSR 普遍 −50%+，评测栈已开源）；[XR-2](../entities/paper-xr2-bimanual-household.md) 开放 1500 小时双臂家务数据（策略未见）。横切面见 [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
-- **THAW-VLA（UW–Madison/UIUC，arXiv:2609.24682）**：离线缓存 Cosmos3-Nano 特征，对 [StarVLA](./star-vla.md) QwenGR00T 0.8B 加 cosine 对齐；部署图与 undistilled 相同（32 ms / 1.86 GB RTX 5090），LIBERO **97.9%**、RoboCasa-GR1 **50.5%**；**GitHub 已开源**、HF 权重 private（见 [THAW-VLA](../entities/paper-thaw-vla.md)）
+- **THAW-VLA（UW–Madison/UIUC，arXiv:2609.24682）**：离线缓存 Cosmos3-Nano 特征，对 [StarVLA](./star-vla.md) QwenGR00T 0.8B 加 cosine 对齐；部署图与 undistilled 相同（32 ms / 1.86 GB RTX 5090），LIBERO **97.9%**、RoboCasa-GR1 **50.5%**；**GitHub + HF 权重已开源**（见 [THAW-VLA](../entities/paper-thaw-vla.md)）
+- **RouteRLT（多伦多大学，arXiv:2609.26467）**：冻结 **SmolVLA** + 多枚 phase-specific **RL specialist**；从 VLA latent **学习 controller ownership**（含 mid-chunk 换控）；LIBERO **92.22%**、真机 insertion **35.0%**；**代码未列链接**（见 [RouteRLT](../entities/paper-routelt.md)）
 - **DeCAL（北大 / BAAI，CoRL 2026，arXiv:2609.09119）**：MoT + 接触感知门控 + 视触 **latent co-imagination**；六项真机 mean SR **71%** / PSR **83.4%**；[GitHub](https://github.com/AureleoPKU/DeCAL) + ModelScope 已开源（见 [DeCAL](../entities/paper-decal.md)）
 - **GeoSR（ECCV 2026 Oral）**：在几何 token 注入 VLM 的基线上，用 **Geometry-Unleashing Masking** 与 **Geometry-Guided Fusion** 迫使模型在静态/动态空间推理中真正使用 3D 几何；**VSI-Bench 51.9**、**DSR-Bench 66.1**（见 [GeoSR](../entities/paper-sa-2603-26639-geosr.md)；NUS；**已开源**）
 - **MINT（RSS 2026）**：用 **SDAT** 在 **DCT 频域** 做多尺度动作分词，**Intent token（低频全局）** 与 **Execution token（高频残差）** 显式解耦；策略以 **next-scale 自回归** 做意图→执行推理，**MINT-Zero** 支持 **单演示 Intent 注入** 的 one-shot 迁移；LIBERO / LIBERO-Plus / 真机报告强泛化与鲁棒性（见 [MINT](../entities/paper-mint-vla.md)，arXiv:2602.08602）
@@ -467,6 +468,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - **语义–动作双频 RL：** [TEMPO](../entities/paper-tempo.md)（arXiv:2608.07314）冻结 VLM，对 semantic projection / action expert 分设 TD3 环并令动作侧更高更新频率；CALVIN ABC→D **SR5 81.7%**；截至入库日确认未开源。
 - **同结果组 quality GRPO：** [Prism-GRPO](../entities/paper-prism-grpo.md)（arXiv:2608.17423）在 success+\(\lambda q\) 下把 all-success/all-failure 组拆成 execution-quality 谱，RoboTwin rollout 最多 **−56%**；基座 [SimpleVLA-RL](https://github.com/PRIME-RL/SimpleVLA-RL) 开源、Prism 补丁未单独发布。
 - **阶段条件 GRPO：** [Temporal GRPO](../entities/paper-temporal-grpo.md)（arXiv:2608.13026）修结果驱动 VLA-RL 的**轨迹级信用混叠**——只在进入同一阶段的 rollout 之间比相对优势并写回对应区间；RoboTwin 宏平均 **75.8%**（+7.0 vs SimpleVLA-RL）；**确认未开源**，勿与 TGRPO 混名。
+- **VLA↔RL 专家路由：** [RouteRLT](../entities/paper-routelt.md)（arXiv:2609.26467，IROS 2026 IARL）在 **冻结 SmolVLA** 上学习 **何时切换哪枚 phase RL specialist**，action-boundary manager 保证 mid-chunk 立即换控；LIBERO **92.22%**、真机 cable insertion **35.0%**；代码未列链接。
 - **Chunk 策略自动接管：** [AutoIntervene](../entities/paper-autointervene.md)（arXiv:2608.07065）用 visual-action 支持分位数校准双向人机切换，把干预段变成选择性 DAgger；九项双臂真机上 R2 平均 **80%** 成功且操作员时间低于人工盯梢。
 - **动态 execution horizon：** [AutoHorizon](../entities/paper-autohorizon.md)（arXiv:2602.21445，ECCV 2026）在 flow VLA test-time 读 action self-attention，为每 chunk 估计开环前缀长度；π0.5 + LIBERO 接近 static oracle，**Apache-2.0 代码已开源**。
 - **Q-Planning**：**冻结 BC/VLA + 小型离策略 Q-chunking**；推理 **Q 加权平均** N 个 BC flow 采样；在线 **只微调 Q**、吸收失败 rollout；LIBERO-10 **93→99%**、双臂真机 stack-cups **40→90%**；**已开源**（见 [Q-Planning](../entities/paper-qplanning.md)，arXiv:2608.21204）
@@ -703,7 +705,10 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Ego2Robot](../entities/paper-ego2robot.md) — 第一人称人视频合成 15 形态 18,561 h 预训练数据（arXiv:2608.02580；管线未开源）
 - [EATR-Stereo](../entities/paper-eatr-stereo.md) — 冻结 VLM + primary-aligned CVAT + 分段本体路由融合头载双目；33-DoF Omega 全流程 60%/抓取 100%（arXiv:2608.17453；未开源）
 - [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 动作足够用的中间特征监督；LIBERO-Plus 79.6/72.6/87.8%（arXiv:2609.04193；待发布）
-- [THAW-VLA](../entities/paper-thaw-vla.md) — WAM 特征蒸馏进 0.8B QwenGR00T，零部署税；LIBERO 97.9%（arXiv:2609.24682；已开源）
+- [THAW-VLA](../entities/paper-thaw-vla.md) — WAM 特征蒸馏进 0.8B QwenGR00T，零部署税；LIBERO 97.9%（arXiv:2609.24682；GitHub+HF 已开源）
+- [RouteRLT](../entities/paper-routelt.md) — 冻结 VLA + 多 RL specialist 自动路由（arXiv:2609.26467；未列代码）
+- [RoboTwin-Phys](../entities/paper-robotwin-phys.md) — 13 维物理参数多样性 benchmark（arXiv:2609.26292；数据待跟进）
+- [FLUX 3 Action](../entities/flux-3-action.md) — BFL 7B WAM 训练/部署 + LeRobot SO-101 LoRA（已开源）
 - [MINERVA](../entities/paper-minerva-libero.md) — 0.54M 闭集容量下限，标准 LIBERO 约 95%，CPU 5.1 ms/chunk（arXiv:2609.03715；已开源）
 - [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无传感器接触残差 + 轮足全身补偿（arXiv:2609.03889；未开源）
 - [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务 + DAgger 修正（arXiv:2609.03591；数据已开）
