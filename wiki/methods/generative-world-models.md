@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-24
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -82,6 +82,7 @@ related:
   - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-m4world.md
+  - ../entities/paper-zyt-world.md
   - ../entities/paper-abot-world-0.md
   - ../entities/paper-puffin-world.md
   - ../entities/open-dreamer.md
@@ -105,6 +106,7 @@ sources:
   - ../../sources/papers/wem_arxiv_2605_19957.md
   - ../../sources/papers/gamma_world_arxiv_2605_28816.md
   - ../../sources/papers/x_world_arxiv_2603_19979.md
+  - ../../sources/papers/zyt_world_arxiv_2609_21712.md
   - ../../sources/papers/x_cache_arxiv_2604_20289.md
   - ../../sources/papers/x_foresight_arxiv_2605_24892.md
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
@@ -382,6 +384,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 多视角多模态驾驶仿真（示例：M⁴World）
 
 [M⁴World](../entities/paper-m4world.md)（arXiv:2607.14005，美团 × CASIA × BIT）在共享 **DiT** 潜空间上联合生成 **环视视频 + 同步 LiDAR range map**，并把物体条件从几何 box 扩展为 **布局 + SigLIP/文本外观**；经 Teacher Forcing → 4-step ODE → Self-Forcing/DMD → 长视频微调，支撑 **分钟级** 因果流式，并用 VLM judge 评可控性。相对 X-World 的 **动作条件评测底座**，M⁴World 更强调 **物体级交互操纵与相机–LiDAR 多模态**；截至入库日 **未开源**。
+
+### 量产异构 rig + 一步闭环（示例：ZYT-World）
+
+[ZYT-World](../entities/paper-zyt-world.md)（arXiv:2609.21712，ZYT AI Team）面向 **量产 4 鱼眼（FoV>180°）+ 3 针孔** 的 **原生分辨率 ~720p 联合生成**：Plücker adapter + ego-motion AdaLN + 像素对齐 layout；**TF / CD / DMD / RigCritic** 将 **40-step 双向 teacher** 压到 **每 latent 1 step**，报告 **双 GPU 7 视 4 FPS**；**TinyVAE（19M）** 与 W8A8 解耦解码瓶颈；**4DGS 跨轨迹对 + plug-in 隐式 memory** 处理同地点重访。相对 X-World / OmniDreams 的 **chunk 或多步**，ZYT 强调 **frame-wise 一步 + 混合鱼眼 rig**；截至入库日项目页 **未开源**。
 
 ### 行为感知轨迹闭环（示例：BehaviorWorldGen）
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-24
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-homeworld-whole-home-scene-generation.md
   - ../entities/molmo-motion.md
   - ../entities/paper-x-world.md
+  - ../entities/paper-zyt-world.md
   - ../entities/paper-x-cache.md
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
@@ -48,6 +49,7 @@ sources:
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/papers/wem_arxiv_2605_19957.md
   - ../../sources/papers/x_world_arxiv_2603_19979.md
+  - ../../sources/papers/zyt_world_arxiv_2609_21712.md
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/m4world_arxiv_2607_14005.md
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
@@ -172,6 +174,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) — 开源视频基础模型、轨迹运动控制与分钟级 music-to-dance。
 - [RoboInter1.5](../entities/paper-robointer-1-5.md) — IR 控制视频条件世界模型 + 操作 VLA 套件（arXiv:2607.18709）。
 - [X-World](../entities/paper-x-world.md) — 小鹏 **7 摄动作条件** 驾驶视频世界模型（arXiv:2603.19979；未开源）。
+- [ZYT-World](../entities/paper-zyt-world.md) — **混合鱼眼–针孔 7 摄** 一步因果闭环 WM，**4 FPS / 双 GPU**（arXiv:2609.21712；未开源）。
 - [X-Cache](../entities/paper-x-cache.md) — 少步 AR 世界模型跨 chunk 加速（arXiv:2604.20289）。
 - [M⁴World](../entities/paper-m4world.md) — 多视角多模态驾驶 WM：物体外观控制 + 分钟级流式（arXiv:2607.14005；未开源）。
 - [ABot-World-0](../entities/paper-abot-world-0.md) — 单卡桌面键盘交互视频世界模型（arXiv:2607.19191；部分开源）。
@@ -193,6 +196,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - Zhang, J., et al. (2026). *MolmoMotion* (arXiv:2606.18558) — 见 [sources/blogs/allenai_molmo_motion.md](../../sources/blogs/allenai_molmo_motion.md)。
 - Lu, S., et al. (2026). *DriftWorld* (arXiv:2607.15065) — 见 [sources/papers/driftworld_arxiv_2607_15065.md](../../sources/papers/driftworld_arxiv_2607_15065.md)。
 - Zheng, C., et al. (2026). *X-World* (arXiv:2603.19979) — 见 [sources/papers/x_world_arxiv_2603_19979.md](../../sources/papers/x_world_arxiv_2603_19979.md)。
+- ZYT AI Team (2026). *ZYT-World* (arXiv:2609.21712) — 见 [sources/papers/zyt_world_arxiv_2609_21712.md](../../sources/papers/zyt_world_arxiv_2609_21712.md)。
 - Zayer, H., et al. (2026). *Masked Visual Actions* (arXiv:2607.19343) — 见 [sources/papers/masked_visual_actions_arxiv_2607_19343.md](../../sources/papers/masked_visual_actions_arxiv_2607_19343.md)。
 - Guo, Y., et al. (2026). *Ctrl-World* (arXiv:2510.10125) — 见 [sources/papers/ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)。
 - Chu, R., et al. (2025). *Wan-Move* (arXiv:2512.08765) — 见 [sources/papers/wan_move_arxiv_2512_08765.md](../../sources/papers/wan_move_arxiv_2512_08765.md)。

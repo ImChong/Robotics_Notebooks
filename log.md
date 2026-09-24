@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/papers/zyt_world_arxiv_2609_21712.md — ZYT-World 闭环智驾实时 7 摄 WM（ZYT AI Team）；项目页未开源；交叉 generative-world-models / X-World
+
+- **意图：** 用户指定 arXiv:2609.21712；自动合并 PR
+- **开源结论：** **未开源** — zyt-aim.github.io 仅 Technical Report；步骤 2.5 已核
+- **关键页：** [`paper-zyt-world`](wiki/entities/paper-zyt-world.md)
+
 ## [2026-09-24] ingest | sources/papers/sure_map_arxiv_2609_15795.md — SURE-Map 自校正流式几何 FM（MBZUAI×北大×清华）；已开源 RCL-Robotics/SURE-map + HF uncertainty；交叉 LingBot-Map
 
 - **意图：** 用户指定项目页 / GitHub / arXiv:2609.15795；自动合并 PR
