@@ -1605,6 +1605,7 @@
 - [HoMMI（arXiv:2603.03243）](wiki/entities/paper-hommi.md) — HoMMI**（Xiaomeng Xu, Jisang Park, Han Zhang, Eric Cousineau, Aditya Bhat, Jose Barreiros, Dian Wan `📅unknown` `[entity_page]`
 - [HoST：跨多样姿态的人形起身控制](wiki/entities/paper-host-humanoid-standingup.md) — HoST（Humanoid Standing-up Control）** 是上海 AI Lab 等团队提出的强化学习框架（arXiv:2502.08378，**RSS 2025 Best Syst `📅unknown` `[entity_page]`
 - [HOST：单条人类视频秒级习得操作](wiki/entities/paper-host-one-shot-human-video.md) — HOST**（*Human-to-robot One-Shot Skill AcquisiTion*，*Robots Acquire Manipulation Skills in Seconds  `📅unknown` `[entity_page]`
+- [HOTICE（arXiv:2609.25363）](wiki/entities/paper-hotice.md) — HOTICE**（*Whole-Body Humanoid Object Transportation in Cluttered Environments*，[arXiv:2609.25363 `📅unknown` `[entity_page]`
 - [Retargeting Matters](wiki/entities/paper-hrl-stack-01-retargeting_matters.md) — Retargeting Matters** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeU `📅unknown` `[entity_page]`
 - [Make Tracking Easy](wiki/entities/paper-hrl-stack-02-make_tracking_easy.md) — Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUP `📅unknown` `[entity_page]`
 - [OmniRetarget](wiki/entities/paper-hrl-stack-03-omniretarget.md) — OmniRetarget**（*OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco- `📅unknown` `[entity_page]`
@@ -2486,6 +2487,7 @@
 - [RoamFlow](wiki/entities/paper-roamflow.md) — RoamFlow**（*Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation*，南洋理工大 `📅unknown` `[entity_page]`
 - [RoboHarness（异构策略编排 · arXiv:2607.18060）](wiki/entities/paper-robo-harness.md) — RoboHarness**（*Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planni `📅unknown` `[entity_page]`
 - [RoboCraft](wiki/entities/paper-robocraft-particle-graph-dynamics.md) — RoboCraft** 收录于 具身智能研究室 · 具身世界模型六路线综述 **规划主导型 `📅unknown` `[entity_page]`
+- [RoboDawn（arXiv:2609.22966）](wiki/entities/paper-robodawn.md) — RoboDawn**（*Transferring the Intelligence of VLMs to Robotic Control*，[arXiv:2609.22966](https://a `📅unknown` `[entity_page]`
 - [RoboDreamer（arXiv:2609.07096）](wiki/entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — RoboDreamer**（*RoboDreamer: Anticipatory Humanoid Locomotion with Predictive State-Space Models*， `📅unknown` `[entity_page]`
 - [RoboDrop（arXiv:2609.10021）](wiki/entities/paper-robodrop-vla-post-training.md) — RoboDrop**（*RoboDrop: Curating VLA Post-Training Data via Local Gradient Compatibility*，[arXiv:260 `📅unknown` `[entity_page]`
 - [RoboEdit：人类视频转机器人经验](wiki/entities/paper-roboedit.md) — RoboEdit**（*Turning Human Manipulation Videos into Scalable Robot Experience*；[arXiv:2608.18948](h `📅unknown` `[entity_page]`
@@ -4109,6 +4111,7 @@
 - [关节编码器选型（光电 / 磁 / 电感）](wiki/concepts/joint-encoder-selection.md) — 关节编码器**决定模组 **定位精度上限、速度环带宽与长期可靠性**。选型核心不是「哪种精度更高」，而是 **测什么物理量、装在哪、失效模式能否接受** — 光电数光通量、磁测磁场方向、电感测互感 `📅unknown` `[wiki_page]`
 - [Joint Friction Models（关节摩擦模型）](wiki/concepts/joint-friction-models.md) — 关节摩擦模型** 描述传动与轴承中 **与速度、负载相关的非线性阻力**，是 URDF 默认参数往往缺失、却强烈影响 **力矩跟踪与 Sim2Real** 的关键项。 `📅unknown` `[wiki_page]`
 - [自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）](wiki/concepts/joint-module-self-development-workflow.md) — 自研关节模组**不是外购电机、减速器、编码器简单拼装，而是从**负载谱与空间/成本约束**出发，经**传动构型选型、五件套集成设计、结构刚度链、标定与控制、装配工艺与四层测试矩阵**，交付可在整机 `📅unknown` `[wiki_page]`
+- [关节力矩传感器选型（估力 / 双编差值 / 物理传感）](wiki/concepts/joint-torque-sensor-selection.md) — 关节力矩反馈**决定力控模组的「跟手感、减震感与恒力精度」。进入力控时代，反馈获取方式直接约束控制品质、成本与轴向尺寸 — 编译自 [Zane Hub 公众号文](../../sources/bl `📅unknown` `[wiki_page]`
 - [运动学可行与动力学可行](wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 飞书 Know-How 将 **运动学可行和动力学可行** 列为控制问题框架的核心分叉：前者回答「关节角度/末端轨迹是否存在」，后者回答「在给定力矩、摩擦与接触下是否稳定可执行」。 `📅unknown` `[wiki_page]`
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
 - [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一套面向实时系统的消息传递与数据编解码库：提供 publish/subscribe，并用类型描述语言自动生成多语言的强类型序列化代码；传输默认走 **UDP 组播**，无中心数据库、 `📅unknown` `[wiki_page]`

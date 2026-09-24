@@ -16,6 +16,8 @@ related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../queries/humanoid-joint-motor-topology-selection.md
   - ./robot-joint-bearing-selection.md
+  - ./joint-torque-sensor-selection.md
+  - ./joint-encoder-selection.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../../roadmap/depth-humanoid-hardware-design.md
 sources:
@@ -73,7 +75,7 @@ summary: "自研旋转关节模组是需求瀑布、传动构型、电机–减�
 1. **无框力矩电机**：定转子直接入壳，换扭矩密度与轴向尺寸；内转子响应快、外转子扭矩大；**连续瓶颈几乎总在散热**。
 2. **双编码器**：电机端 + 输出端（人形常见双绝对值 19 bit）；输出端把减速器传动误差纳入闭环。磁编易受抱闸与中空穿线磁场干扰，关键关节可改电感式并做隔磁。
 3. **抱闸**：断电锁止，制动力矩常取额定力矩 **1.3–1.5 倍**；需校核反向自锁与冲击载荷。
-4. **力矩传感器（可选）**：力控关节加应变/磁弹传感；标定（零点漂移、串扰、温漂）不过关则精度白费。
+4. **力矩传感器（可选）**：力控关节加应变片物理传感，或 **双编码器差值** 估力（零成本但精度有限）；标定（零点漂移、串扰、温漂）不过关则精度白费 — 路线与品牌见 [关节力矩传感器选型](./joint-torque-sensor-selection.md)。
 5. **驱动器**：FOC + [EtherCAT / CANopen](../overview/motor-drive-firmware-bus-protocols.md)；24–48 V 平台；**通信协议须在立项阶段锁死**，否则整机联调可卡数周。
 
 ## 流程总览

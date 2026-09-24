@@ -12,6 +12,8 @@ related:
   - ../methods/amp-reward.md
   - ../concepts/humanoid-knee-harmonic-drive-limits.md
   - ../concepts/humanoid-mass-production-engineering.md
+  - ../concepts/joint-torque-sensor-selection.md
+  - ../concepts/joint-encoder-selection.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
@@ -62,6 +64,12 @@ sources:
 - **电机轴 + 关节输出端双编码器**：弥补间隙、柔性、打滑，缓解 sim2real 差距。
 - 技术：**磁编** 成足式/人形默认（耐污、紧凑）；光学高分辨率但怕尘振。
 - **绝对式** 关节必备（掉电知位、安全恢复）；增量式多用于转速监测。
+
+## 力矩反馈（核心结论）
+
+- **四路线：** 电流环估力（碰撞检测）、**双编码器差值**（零增厚估力矩）、**应变片物理传感**（力控主流，约占旋转执行器成本 ~30%）、SAW/磁弹性（台架/特殊场景）。
+- **分层：** 关节单轴力矩传感参与实时控制环；**末端六维 F/T** 测交互力螺旋 — 协作臂常两者兼有，人形以关节级为主。
+- **深度选型：** [关节力矩传感器选型](../concepts/joint-torque-sensor-selection.md)（Zane Hub，2026-09-24）；双编细节见 [关节编码器选型](../concepts/joint-encoder-selection.md)。
 
 ## 关联页面
 

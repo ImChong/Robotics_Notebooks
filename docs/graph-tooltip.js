@@ -252,6 +252,16 @@
     if (el && api && api.render) api.render(el);
   }
 
+  /**
+   * 浮窗社区标签：放在摘要下方单独一行（不进顶部类型徽章行，避免两枚徽章挤在一起），
+   * 描边胶囊 + 🧭 与详情页「所属社区」按钮同一视觉语言，与实心类型徽章区分。
+   */
+  function buildTooltipCommunityHtml(communityLabel, communityColor) {
+    if (!communityLabel) return '';
+    return '<div class="tt-community"' + communityBadgeStyleAttr(communityColor) + '>' +
+      '<span aria-hidden="true">🧭</span><span>' + escapeHtml(shortenCommunityLabel(communityLabel)) + '</span></div>';
+  }
+
   function buildNodeTooltipHtml(opts) {
     opts = opts || {};
     var badges = buildMetaBadgesHtml(opts);
@@ -259,11 +269,13 @@
     var summary = opts.summary
       ? '<div class="tt-summary">' + escapeHtml(prepareMathText(opts.summary)) + '</div>'
       : '';
+    var community = buildTooltipCommunityHtml(opts.communityLabel, opts.communityColor);
     var extra = opts.extraHtml || '';
     var link = opts.linkHtml || '';
     return badges +
       '<div class="tt-title">' + title + '</div>' +
       summary +
+      community +
       extra +
       link;
   }

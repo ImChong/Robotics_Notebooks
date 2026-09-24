@@ -17,6 +17,7 @@ related:
   - ./vla-sota-leaderboard.md
   - ./paper-prm-as-a-judge.md
   - ./xiaomi-robotics-1.md
+  - ./paper-robodawn.md
   - ./simate.md
   - ./isaac-gym-isaac-lab.md
 sources:
@@ -186,6 +187,7 @@ sequenceDiagram
 - [RoboBench](./robo-bench.md) — MLLM 认知评测对照
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 论文摘录榜对照
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 已报 RoboDojo 仿真分数的 VLA 案例
+- [RoboDawn](./paper-robodawn.md) — **零 robot 训练** 的冻结 VLM agent；42 任务 1-shot **47.17%**（GPT-6 Astra）；**210** 评测轨迹可在 [robodawn.top/results](https://robodawn.top/results) 回放
 - [Simate](./simate.md) — Sipai 模型绑定 RoboDojo 评测（**进行中、分数未公开**，截至 2026-09-23）
 - [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 冻结 2026-07-03 公开视频做过程评测；SR 与 OPD 排名不完全一致
 - [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) — 独立十任务子集：π0.5+GPT 混合 48% vs Direct 26%（50 对齐实例）
