@@ -8,6 +8,7 @@ venue: "ECCV 2026 oral"
 code: https://github.com/Robbyant/lingbot-map
 related:
   - ../methods/lingbot-map.md
+  - ./paper-sure-map.md
   - ./paper-glob3r.md
   - ./paper-slamformer-infinity.md
   - ./paper-vgg-ttt.md
@@ -146,6 +147,7 @@ sequenceDiagram
 | [SLAMFormer-∞](./paper-slamformer-infinity.md) | ∞ 保留显式 frontend/backend + PGGO；LingBot 更 **端到端 GCA + Paged KV** |
 | [VGG-T³](./paper-vgg-ttt.md) | VGG-T³ **离线** TTT 线性化 VGGT；LingBot 维持 **视频流式 ~20 FPS** |
 | [R³](./paper-r3-relative-regression.md) | R³ 用 DA3 + **成对相对位姿**；LingBot 用 **GCA 三类上下文** |
+| [SURE-Map](./paper-sure-map.md) | **同骨干扩展**：跨视几何不确定性 + 多时间尺度自校正，改善长程 ATE/点云过滤 |
 | COLMAP / 经典 SLAM | 传统迭代优化与手工模块；LingBot **前馈 + 学习式状态管理** |
 
 ## 工程实践
@@ -178,6 +180,7 @@ sequenceDiagram
 ## 关联页面
 
 - [LingBot-Map（方法页）](../methods/lingbot-map.md) — 机制与选型展开
+- [SURE-Map](./paper-sure-map.md) — 流式 FM 自校正扩展（uncertainty + 多尺度尺度重标定）
 - [Glob3R](./paper-glob3r.md) — 离线全局 SfM 精炼对照
 - [SLAMFormer-∞](./paper-slamformer-infinity.md) — 学习型 dense mono SLAM 对照
 - [VGG-T³](./paper-vgg-ttt.md) — 离线线性化 VGGT 对照
