@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/repos/hunter130_collection.md — EncosTech Hunter V2（EC H130-V2）全栈开源聚合；已开源（多仓）；升格 encos-hunter130；交叉 open-source-humanoid-hardware / tienkung-lab
+
+- **意图：** 用户指定 https://github.com/EncosTech/hunter130_collection；自动合并 PR
+- **开源结论：** **已开源** — EncosTech 组织 8 仓（硬件 CERN-OHL、deploy GPL-3.0 等）；步骤 2.5 以 GitHub README + encos.cn 为准
+- **关键页：** [`encos-hunter130`](wiki/entities/encos-hunter130.md)
+
 ## [2026-09-24] ingest | sources/sites/robotis_aiworker_isaac_cumotion_technical_story.md — AI Worker × Isaac ROS cuMotion（静态/动态/attachment）；Isaac ROS 5.0 博客 + cyclo_solution 已开源
 
 - **意图：** 用户指定 NVIDIA 博客、ROBOTIS technical story、YouTube fmZdMV72IR0；自动合并 PR

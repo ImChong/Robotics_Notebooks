@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-24
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
@@ -22,6 +22,7 @@ related:
   - ./open-duck-mini.md
   - ./open-duck-mini-viewer.md
   - ./hightorque-robotics.md
+  - ./encos-hunter130.md
   - ../queries/humanoid-hardware-selection.md
   - ../../roadmap/motion-control.md
 sources:
@@ -34,6 +35,7 @@ sources:
   - ../../sources/repos/openloong.md
   - ../../sources/repos/open-x-humanoid.md
   - ../../sources/sites/x-humanoid.md
+  - ../../sources/repos/hunter130_collection.md
 summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humanoid、Roboto Origin、Asimov v1、ODRI 与商业平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
 ---
 
@@ -123,6 +125,13 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - **局限：** 小型平台动态与载荷能力与全尺寸人形不可直接类比；多软件栈环境依赖需自行对齐。
 - **详情：** [高擎机电（HighTorque Robotics）](./hightorque-robotics.md)
 
+## 2f. Encos Hunter 130 / Hunter V2（130 cm 全栈开源）
+
+- **特点：** **130 cm / 约 32 kg / 25 DoF**；第二代 Encos 快拆关节；硬件 **CERN-OHL-S-2.0**，软件从 **encos_driver → joint_sdk → Isaac Lab（PPO+AMP）→ ROS 2 Jazzy + ONNX** 分仓维护。
+- **优点：** [`hunter130_collection`](https://github.com/EncosTech/hunter130_collection) 聚合导航；训练 Fork [TienKung-Lab](./tienkung-lab.md)，与 [天工](./tienkung-humanoid-open-source.md) 路线可对照；含交付前 `robot_setup` 校准工具链。
+- **局限：** 全尺寸制造门槛高；部署仓 **GPL-3.0**；硬件 25 DoF 与训练 23 受控关节表述需对照 URDF。
+- **详情：** [Encos Hunter 130（Hunter V2）](./encos-hunter130.md)
+
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
@@ -137,6 +146,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
 - [ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — IIT 系人因 codesign；公开的是优化/控制软件而非 DIY 整机 BOM
+- [Encos Hunter 130（Hunter V2）](./encos-hunter130.md)
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)

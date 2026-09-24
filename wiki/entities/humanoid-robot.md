@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, platform, actuator]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-24
 related:
   - ./motioncode.md
   - ./project-instinct.md
@@ -15,6 +15,7 @@ related:
   - ./unitree.md
   - ./leju-robotics.md
   - ./hightorque-robotics.md
+  - ./encos-hunter130.md
   - ./anymal.md
   - ./boston-dynamics.md
   - ./asimov-v1.md
