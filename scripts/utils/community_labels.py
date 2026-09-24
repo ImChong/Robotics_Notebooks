@@ -1,9 +1,24 @@
-"""社区展示名与首页/搜索别名工具（单一事实源）。"""
+"""社区（图谱主题）注册表加载与首页/搜索别名工具。"""
 
 from __future__ import annotations
 
-# 社区展示名格式：「中文（English）」。规范见 schema/naming.md § 图谱社区命名。
-# 社区基名默认取枢纽页 H1，但 H1 风格不一；此处按 hub 路径给出统一 override。
+import json
+from pathlib import Path
+from typing import Any
+
+# 图谱主题注册表（单一事实源）：id / label / seeds / tags。规范见 schema/naming.md § 图谱社区命名。
+TOPICS_PATH = Path(__file__).resolve().parents[2] / "schema" / "topics.json"
+
+
+def load_topics(path: Path = TOPICS_PATH) -> list[dict[str, Any]]:
+    """读取 schema/topics.json 的 topics 列表（顺序即优先序）。"""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    topics = data.get("topics", [])
+    return topics if isinstance(topics, list) else []
+
+
+# 历史社区基名（Louvain 时代按枢纽页命名），现仅作为这些页面的搜索别名保留，
+# 避免中文检索回退；社区（主题）命名改由 schema/topics.json 决定。格式「中文（English）」。
 COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/transformer-cv-curriculum.md": (
         "计算机视觉中的 Transformer（Transformer in Computer Vision）"
@@ -174,6 +189,11 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/lerobot.md": "具身智能框架（LeRobot, Hugging Face）",
 }
 
+# 主题锚点页（seeds[0]）→ 主题 label
+TOPIC_ANCHOR_LABELS: dict[str, str] = {
+    str(t["seeds"][0]): str(t["label"]) for t in load_topics() if t.get("seeds")
+}
+
 COMMUNITY_LABEL_SUFFIX = " 社区"
 
 
@@ -208,8 +228,14 @@ def community_search_aliases(community_name: str) -> list[str]:
 
 
 def community_search_aliases_for_path(path: str) -> list[str]:
-    """按 wiki 路径返回社区搜索别名（首页 chip / 图谱社区简称）。"""
-    name = COMMUNITY_NAME_OVERRIDES.get(path.replace("\\", "/"))
-    if not name:
-        return []
-    return community_search_aliases(name)
+    """按 wiki 路径返回社区搜索别名：主题锚点页（seeds[0]）挂主题名，供首页 chip 检索命中。"""
+    norm = path.replace("\\", "/")
+    names = [TOPIC_ANCHOR_LABELS[norm]] if norm in TOPIC_ANCHOR_LABELS else []
+    if norm in COMMUNITY_NAME_OVERRIDES:
+        names.append(COMMUNITY_NAME_OVERRIDES[norm])
+    aliases: list[str] = []
+    for name in names:
+        for alias in community_search_aliases(name):
+            if alias not in aliases:
+                aliases.append(alias)
+    return aliases

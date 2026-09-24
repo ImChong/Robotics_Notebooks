@@ -1,6 +1,7 @@
 ---
 type: comparison
 tags: [curated-list, physical-ai, embodied-ai, vla]
+topic: [ecosystem]
 status: complete
 updated: 2026-09-20
 related:

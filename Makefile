@@ -1,4 +1,4 @@
-.PHONY: lint test ci-test install-hooks format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check bump-wiki-from-sources paper-notebook-links paper-notebook-bootstrap paper-notebook-dedupe paper-notebook-summaries rl-sim2sim-demo-links
+.PHONY: lint test ci-test install-hooks format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph topic-diagnose anki slides fetch badge vectors eval-search ci-preflight ci-check bump-wiki-from-sources paper-notebook-links paper-notebook-bootstrap paper-notebook-dedupe paper-notebook-summaries rl-sim2sim-demo-links
 
 # 与 .github/workflows/tests.yml 步骤顺序一致（不含 Wiki lint）
 ci-test:
@@ -75,6 +75,9 @@ graph:
 	python3 scripts/generate_link_graph.py
 	python3 scripts/generate_home_stats.py
 	python3 scripts/graph_exports_sync.py
+
+topic-diagnose:
+	python3 scripts/diagnose_topics.py
 
 anki:
 	python3 scripts/export_anki.py

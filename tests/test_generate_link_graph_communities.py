@@ -1,4 +1,4 @@
-"""Louvain 社区检测与合并上限（替代 Girvan-Newman 后的行为与性能）。"""
+"""Louvain 结构聚类（诊断用）与社区分配兜底桶。"""
 
 from __future__ import annotations
 
@@ -27,59 +27,6 @@ def test_detect_communities_completes_quickly_on_medium_graph() -> None:
     assert elapsed < 2.0, f"detect_communities too slow: {elapsed:.2f}s"
 
 
-def test_merge_partition_by_hub_equivalence_merges_alias_hubs() -> None:
-    """Paper Notebooks 分类页与对应 task 页应合并为同一社区分区。"""
-    partition = [
-        [
-            "wiki/overview/paper-notebook-category-06-manipulation.md",
-            "wiki/entities/paper-a.md",
-        ],
-        ["wiki/tasks/manipulation.md", "wiki/methods/foo.md"],
-    ]
-    degree_map = glg.Counter(
-        {
-            "wiki/overview/paper-notebook-category-06-manipulation.md": 50,
-            "wiki/entities/paper-a.md": 1,
-            "wiki/tasks/manipulation.md": 10,
-            "wiki/methods/foo.md": 2,
-        }
-    )
-    node_map = {nid: {"id": nid, "label": nid.split("/")[-1]} for nid in degree_map}
-
-    merged = glg._merge_partition_by_hub_equivalence(partition, degree_map, node_map)
-    assert len(merged) == 1
-    assert sum(len(group) for group in merged) == 4
-
-
-def test_merge_partition_by_hub_equivalence_pulls_in_canonical_hub() -> None:
-    """canonical 枢纽页落在别的分区时应被并回同名社区，否则社区会以非成员页命名。"""
-    partition = [
-        ["wiki/tasks/manipulation.md", "wiki/tasks/locomotion.md", "wiki/methods/foo.md"],
-        [
-            "wiki/overview/paper-notebook-category-05-locomotion.md",
-            "wiki/entities/paper-a.md",
-        ],
-    ]
-    degree_map = glg.Counter(
-        {
-            "wiki/tasks/manipulation.md": 90,
-            "wiki/tasks/locomotion.md": 80,
-            "wiki/methods/foo.md": 2,
-            "wiki/overview/paper-notebook-category-05-locomotion.md": 50,
-            "wiki/entities/paper-a.md": 1,
-        }
-    )
-    node_map = {nid: {"id": nid, "label": nid.split("/")[-1]} for nid in degree_map}
-
-    merged = glg._merge_partition_by_hub_equivalence(partition, degree_map, node_map)
-
-    assert sum(len(group) for group in merged) == len(degree_map)
-    locomotion_group = next(g for g in merged if "wiki/tasks/locomotion.md" in g)
-    assert "wiki/overview/paper-notebook-category-05-locomotion.md" in locomotion_group
-    manipulation_group = next(g for g in merged if "wiki/tasks/manipulation.md" in g)
-    assert "wiki/tasks/locomotion.md" not in manipulation_group
-
-
 def test_merge_communities_to_cap_merges_smallest() -> None:
     partition = [["a", "b"], ["c"], ["d", "e", "f"]]
     adjacency = {
@@ -93,44 +40,6 @@ def test_merge_communities_to_cap_merges_smallest() -> None:
     merged = glg._merge_communities_to_cap(partition, adjacency, cap=2)
     assert len(merged) == 2
     assert sum(len(c) for c in merged) == 6
-
-
-def test_demote_weak_community_members_moves_peripheral_nodes() -> None:
-    """跨社区桥接节点应归入「其他社区」，社区枢纽页豁免。"""
-    node_to_community = {
-        "hub-a": "community-0",
-        "core-a": "community-0",
-        "bridge": "community-0",
-        "core-b": "community-1",
-    }
-    community_meta = {
-        "community-0": {
-            "id": "community-0",
-            "label": "A 社区",
-            "size": 3,
-            "hub_id": "hub-a",
-        },
-        "community-1": {
-            "id": "community-1",
-            "label": "B 社区",
-            "size": 1,
-            "hub_id": "core-b",
-        },
-    }
-    adjacency = {
-        "hub-a": {"core-a", "bridge"},
-        "core-a": {"hub-a"},
-        "bridge": {"hub-a", "core-b", "loner"},
-        "core-b": {"bridge"},
-        "loner": {"bridge"},
-    }
-
-    glg._demote_weak_community_members(node_to_community, community_meta, adjacency, threshold=0.5)
-
-    assert node_to_community["hub-a"] == "community-0"
-    assert node_to_community["core-a"] == "community-0"
-    assert node_to_community["bridge"] == glg.OTHER_COMMUNITY_ID
-    assert node_to_community["core-b"] == "community-1"
 
 
 def test_assign_communities_always_includes_other_bucket() -> None:

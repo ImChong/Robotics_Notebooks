@@ -1,0 +1,553 @@
+{
+  "_doc": "图谱主题注册表（单一事实源，即站点所称「社区」）。generate_link_graph.py 按优先级为每个节点定主题（最多 2 个：主 + 次）：① frontmatter `topic:` 显式声明（覆盖其余规则）；② 本表 seeds（种子页固定主主题）；③ frontmatter tags 按书写顺序精确匹配本表 tags，第一个命中者为主、第二个不同主题为次；④ 仍无主题的节点按已定主题邻居投票传播（仅主主题）；⑤ 其余归「其他」。seeds[0] 为主题锚点页（首页 chip 搜索别名挂在它上面）。label 统一为「中文（English）」格式（见 schema/naming.md § 图谱社区命名）。一个 tag 只能归属一个主题。顺序即图例平票时的优先序。Louvain 结构聚类不再决定主题，仅由 scripts/diagnose_topics.py 做诊断。",
+  "topics": [
+    {
+      "id": "locomotion",
+      "label": "运动控制（Locomotion）",
+      "seeds": [
+        "wiki/tasks/locomotion.md",
+        "wiki/tasks/humanoid-locomotion.md",
+        "wiki/overview/hub-locomotion.md",
+        "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+        "wiki/tasks/hybrid-locomotion.md",
+        "wiki/tasks/balance-recovery.md",
+        "wiki/tasks/humanoid-soccer.md",
+        "wiki/overview/paper-notebook-category-05-locomotion.md",
+        "roadmap/motion-control.md",
+        "roadmap/depth-rl-locomotion.md",
+        "roadmap/depth-perceptive-locomotion.md",
+        "roadmap/depth-humanoid-soccer.md",
+        "roadmap/depth-humanoid-boxing.md",
+        "roadmap/depth-humanoid-swarm-performance.md"
+      ],
+      "tags": [
+        "locomotion",
+        "humanoid-locomotion",
+        "perceptive-locomotion",
+        "quadruped",
+        "legged",
+        "biped",
+        "parkour",
+        "wheel-legged",
+        "motion-control",
+        "soccer",
+        "robocup"
+      ]
+    },
+    {
+      "id": "model-based-control",
+      "label": "模型控制与全身控制（Model-Based and Whole-Body Control）",
+      "seeds": [
+        "wiki/concepts/whole-body-control.md",
+        "wiki/overview/hub-wbc.md",
+        "wiki/methods/model-predictive-control.md",
+        "wiki/concepts/state-estimation.md",
+        "wiki/overview/hub-state-estimation.md",
+        "wiki/overview/paper-notebook-category-09-state-estimation.md",
+        "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
+        "roadmap/depth-classical-control.md",
+        "roadmap/depth-safe-control.md"
+      ],
+      "tags": [
+        "whole-body-control",
+        "wbc",
+        "mpc",
+        "trajectory-optimization",
+        "optimal-control",
+        "qp",
+        "control",
+        "optimization",
+        "hierarchical-control",
+        "kinematics",
+        "inverse-kinematics",
+        "dynamics",
+        "state-estimation",
+        "sensor-fusion",
+        "ekf",
+        "system-identification",
+        "safety"
+      ]
+    },
+    {
+      "id": "motion-imitation",
+      "label": "动作模仿与生成（Motion Imitation and Generation）",
+      "seeds": [
+        "wiki/concepts/motion-retargeting.md",
+        "wiki/overview/hub-motion-retargeting.md",
+        "wiki/concepts/whole-body-tracking-pipeline.md",
+        "wiki/overview/hub-wbt.md",
+        "wiki/methods/amp-reward.md",
+        "wiki/methods/sonic-motion-tracking.md",
+        "wiki/entities/mimickit.md",
+        "wiki/overview/humanoid-amp-motion-prior-survey.md",
+        "wiki/overview/bfm-41-papers-technology-map.md",
+        "wiki/overview/humanoid-motion-cerebellum-technology-map.md",
+        "wiki/overview/paper-notebook-category-02-motion-retargeting.md",
+        "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
+        "wiki/overview/paper-notebook-category-14-human-motion.md",
+        "roadmap/depth-motion-retargeting.md",
+        "roadmap/depth-bfm.md",
+        "roadmap/depth-motion-generation.md"
+      ],
+      "tags": [
+        "motion-retargeting",
+        "retargeting",
+        "motion-tracking",
+        "whole-body-tracking",
+        "motion-imitation",
+        "sonic",
+        "bfm",
+        "behavior-foundation-model",
+        "awesome-bfm-papers",
+        "amp",
+        "motion-prior",
+        "adversarial-imitation",
+        "motion-cerebellum",
+        "motion-cerebellum-survey",
+        "human-motion",
+        "mocap",
+        "motion-capture",
+        "smpl",
+        "smpl-x",
+        "motion-generation",
+        "text-to-motion",
+        "character-animation"
+      ]
+    },
+    {
+      "id": "reinforcement-learning",
+      "label": "强化学习（Reinforcement Learning, RL）",
+      "seeds": [
+        "wiki/methods/reinforcement-learning.md",
+        "wiki/methods/policy-optimization.md",
+        "wiki/methods/ppo.md",
+        "wiki/overview/deep-rl-off-on-policy-evolution.md",
+        "wiki/overview/paper-notebook-category-01-foundational-rl.md"
+      ],
+      "tags": [
+        "reinforcement-learning",
+        "rl",
+        "ppo",
+        "sac",
+        "policy-optimization",
+        "off-policy",
+        "offline-rl",
+        "model-based-rl",
+        "visual-rl",
+        "teacher-student",
+        "privileged-training",
+        "curriculum",
+        "residual-learning"
+      ]
+    },
+    {
+      "id": "imitation-learning",
+      "label": "模仿学习（Imitation Learning, IL）",
+      "seeds": [
+        "wiki/methods/imitation-learning.md",
+        "wiki/methods/behavior-cloning.md",
+        "wiki/methods/diffusion-policy.md",
+        "wiki/methods/action-chunking.md",
+        "roadmap/depth-imitation-learning.md"
+      ],
+      "tags": [
+        "imitation-learning",
+        "il",
+        "behavior-cloning",
+        "diffusion-policy",
+        "action-chunking",
+        "dagger",
+        "flow-matching"
+      ]
+    },
+    {
+      "id": "vla",
+      "label": "视觉-语言-动作（Vision-Language-Action, VLA）",
+      "seeds": [
+        "wiki/methods/vla.md",
+        "wiki/overview/hub-vla.md",
+        "wiki/concepts/foundation-policy.md",
+        "wiki/overview/hub-embodied-foundation-model.md",
+        "wiki/overview/hub-cross-embodiment.md",
+        "wiki/overview/vla-open-source-repro-landscape-2025.md",
+        "roadmap/depth-vla.md",
+        "roadmap/depth-model-architecture.md",
+        "roadmap/depth-icl.md"
+      ],
+      "tags": [
+        "vla",
+        "vision-language-action",
+        "foundation-policy",
+        "embodied-foundation-model",
+        "cross-embodiment",
+        "vlm",
+        "mllm",
+        "vision-language",
+        "latent-action",
+        "embodied-reasoning",
+        "in-context-learning",
+        "post-training",
+        "scaling-laws"
+      ]
+    },
+    {
+      "id": "world-models",
+      "label": "世界模型（World Models）",
+      "seeds": [
+        "wiki/methods/generative-world-models.md",
+        "wiki/concepts/world-action-models.md",
+        "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+        "wiki/overview/sun-awesome-wm-technology-map.md",
+        "roadmap/depth-wam.md"
+      ],
+      "tags": [
+        "world-models",
+        "world-model",
+        "awesome-world-models",
+        "sun254667-wm",
+        "world-action-models",
+        "wam",
+        "embodied-wm-six-routes",
+        "video-generation",
+        "video-diffusion",
+        "jepa",
+        "latent-dynamics"
+      ]
+    },
+    {
+      "id": "manipulation",
+      "label": "操作（Manipulation）",
+      "seeds": [
+        "wiki/tasks/manipulation.md",
+        "wiki/tasks/bimanual-manipulation.md",
+        "wiki/overview/hub-grasp.md",
+        "wiki/overview/paper-notebook-category-06-manipulation.md"
+      ],
+      "tags": [
+        "manipulation",
+        "dexterous-manipulation",
+        "dexterous",
+        "dexterity",
+        "dexterous-hand",
+        "bimanual",
+        "dual-arm",
+        "grasping",
+        "grasp",
+        "deformable",
+        "manipulator"
+      ]
+    },
+    {
+      "id": "contact-tactile",
+      "label": "接触与触觉（Contact and Tactile Sensing）",
+      "seeds": [
+        "wiki/concepts/contact-rich-manipulation.md",
+        "wiki/overview/hub-contact-force-control.md",
+        "wiki/concepts/tactile-sensing.md",
+        "wiki/overview/hub-tactile.md",
+        "wiki/overview/sun-awesome-touch-technology-map.md",
+        "roadmap/depth-contact-manipulation.md"
+      ],
+      "tags": [
+        "contact-rich",
+        "contact-rich-manipulation",
+        "contact",
+        "force-control",
+        "impedance-control",
+        "impedance",
+        "friction",
+        "tactile",
+        "tactile-sensing",
+        "visuo-tactile",
+        "awesome-touch",
+        "sun254667-touch"
+      ]
+    },
+    {
+      "id": "loco-manipulation",
+      "label": "移动操作（Loco-Manipulation, Loco-Manip）",
+      "seeds": [
+        "wiki/tasks/loco-manipulation.md",
+        "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
+        "roadmap/depth-loco-manipulation.md"
+      ],
+      "tags": [
+        "loco-manipulation",
+        "loco-manip-161-survey",
+        "loco-manip-contact-survey",
+        "mobile-manipulation"
+      ]
+    },
+    {
+      "id": "teleop-data",
+      "label": "遥操作与数据（Teleoperation and Embodied Data）",
+      "seeds": [
+        "wiki/tasks/teleoperation.md",
+        "wiki/overview/hub-data-pipeline.md",
+        "wiki/concepts/data-flywheel.md",
+        "wiki/overview/paper-notebook-category-07-teleoperation.md",
+        "roadmap/depth-teleoperation.md",
+        "roadmap/depth-embodied-data.md"
+      ],
+      "tags": [
+        "teleoperation",
+        "vr",
+        "umi",
+        "dataset",
+        "data-collection",
+        "data-pipeline",
+        "data-generation",
+        "synthetic-data",
+        "data-flywheel",
+        "human-video",
+        "human-robot-transfer"
+      ]
+    },
+    {
+      "id": "sim2real",
+      "label": "仿真到现实（Simulation to Reality, Sim2Real）",
+      "seeds": [
+        "wiki/concepts/sim2real.md",
+        "wiki/overview/hub-sim2real.md",
+        "wiki/overview/paper-notebook-category-10-sim-to-real.md",
+        "wiki/overview/sun-awesome-r2s2r-technology-map.md",
+        "wiki/overview/lc-awesome-sim2real-technology-map.md",
+        "roadmap/depth-sim2real.md",
+        "roadmap/depth-real2sim.md"
+      ],
+      "tags": [
+        "sim2real",
+        "domain-randomization",
+        "real2sim",
+        "awesome-sim2real",
+        "longchao-sim2real",
+        "awesome-real2sim2real",
+        "sun254667-r2s2r"
+      ]
+    },
+    {
+      "id": "simulation",
+      "label": "仿真平台（Simulation Platforms）",
+      "seeds": [
+        "wiki/entities/mujoco.md",
+        "wiki/entities/isaac-gym-isaac-lab.md",
+        "wiki/entities/isaac-lab.md",
+        "wiki/queries/simulator-selection-guide.md",
+        "wiki/comparisons/mujoco-vs-isaac-lab.md",
+        "wiki/overview/sim-platforms-decade-technology-map.md",
+        "wiki/overview/hub-physics-fidelity.md",
+        "wiki/overview/paper-notebook-category-11-simulation-benchmark.md"
+      ],
+      "tags": [
+        "simulation",
+        "simulator",
+        "physics-engine",
+        "gpu-simulation",
+        "mujoco",
+        "mjlab",
+        "isaac-lab",
+        "isaac-sim",
+        "isaac-gym",
+        "newton",
+        "urdf"
+      ]
+    },
+    {
+      "id": "perception",
+      "label": "视觉感知（Robot Perception）",
+      "seeds": [
+        "wiki/queries/robot-perception-stack-selection-loop.md",
+        "wiki/overview/hub-vision-backbone.md",
+        "wiki/entities/transformer-cv-curriculum.md",
+        "wiki/overview/ego-9-papers-technology-map.md",
+        "wiki/overview/sun-awesome-ego-technology-map.md",
+        "wiki/overview/vggt-geometric-state-survey.md"
+      ],
+      "tags": [
+        "perception",
+        "computer-vision",
+        "awesome-egocentric-vision",
+        "sun254667-ego",
+        "egocentric",
+        "egocentric-vision",
+        "egocentric-video",
+        "ego-survey",
+        "3d-reconstruction",
+        "3dgs",
+        "gaussian-splatting",
+        "point-cloud",
+        "depth-estimation",
+        "rgb-d",
+        "multi-view",
+        "segmentation",
+        "object-detection",
+        "pose-estimation",
+        "open-vocabulary",
+        "active-perception",
+        "backbone",
+        "vit",
+        "cnn",
+        "sam"
+      ]
+    },
+    {
+      "id": "navigation",
+      "label": "导航与 SLAM（Navigation and SLAM）",
+      "seeds": [
+        "wiki/overview/navigation-slam-autonomy-stack.md",
+        "wiki/tasks/vision-language-navigation.md",
+        "wiki/tasks/zero-shot-object-navigation.md",
+        "wiki/tasks/autonomous-exploration.md",
+        "wiki/comparisons/lidar-slam-lio-vio-selection.md",
+        "wiki/overview/multirotor-simulation-planning-control-stack.md",
+        "wiki/overview/paper-notebook-category-08-navigation.md",
+        "roadmap/depth-navigation.md"
+      ],
+      "tags": [
+        "navigation",
+        "vln",
+        "vln-survey",
+        "social-navigation",
+        "slam",
+        "localization",
+        "mapping",
+        "semantic-mapping",
+        "lidar",
+        "vio",
+        "motion-planning",
+        "planning",
+        "mobile-robot",
+        "autonomous-driving",
+        "uav",
+        "multirotor"
+      ]
+    },
+    {
+      "id": "hardware",
+      "label": "硬件与执行器（Hardware and Actuators）",
+      "seeds": [
+        "wiki/overview/humanoid-hardware-101-technology-map.md",
+        "wiki/overview/humanoid-actuator-102-technology-map.md",
+        "wiki/overview/hub-actuator-drive-chain.md",
+        "wiki/concepts/field-oriented-control.md",
+        "wiki/comparisons/open-source-qdd-actuator-projects.md",
+        "wiki/overview/paper-notebook-category-12-hardware-design.md",
+        "roadmap/depth-torque-motor-design.md",
+        "roadmap/depth-humanoid-hardware-design.md"
+      ],
+      "tags": [
+        "hardware",
+        "actuator",
+        "motor",
+        "motor-control",
+        "qdd",
+        "foc",
+        "bldc",
+        "cad",
+        "manufacturing",
+        "soft-robotics"
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "系统工程与部署（Systems Engineering and Deployment）",
+      "seeds": [
+        "wiki/overview/hub-systems-engineering.md",
+        "wiki/overview/hub-communication.md",
+        "wiki/queries/real-time-control-middleware-guide.md",
+        "wiki/overview/motor-drive-firmware-bus-protocols.md",
+        "wiki/concepts/ros2-basics.md",
+        "wiki/comparisons/ros2-vs-lcm.md",
+        "wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md"
+      ],
+      "tags": [
+        "systems-engineering",
+        "deployment",
+        "ros2",
+        "ros",
+        "middleware",
+        "real-time",
+        "realtime",
+        "latency",
+        "embedded",
+        "firmware",
+        "ethercat",
+        "protocol",
+        "onnx",
+        "inference",
+        "edge-ai",
+        "gpu",
+        "gpu-cloud",
+        "infrastructure",
+        "sdk"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "label": "评测与基准（Evaluation and Benchmarks）",
+      "seeds": [
+        "wiki/overview/hub-embodied-eval-benchmark.md",
+        "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+        "roadmap/depth-embodied-eval.md"
+      ],
+      "tags": [
+        "benchmark",
+        "evaluation",
+        "eval",
+        "policy-evaluation",
+        "libero",
+        "robotwin"
+      ]
+    },
+    {
+      "id": "ecosystem",
+      "label": "产业与开源生态（Industry and Open-Source Ecosystem）",
+      "seeds": [
+        "wiki/queries/china-domestic-opensource-424-coverage.md",
+        "wiki/queries/hmi-opensource-projects-coverage.md",
+        "wiki/overview/notable-commercial-robot-platforms.md",
+        "wiki/overview/awesome-physical-ai-technology-map.md"
+      ],
+      "tags": [
+        "china-embodied-opensource",
+        "awesome-physical-ai",
+        "company",
+        "industry",
+        "platform",
+        "unitree",
+        "unitree-g1",
+        "unitree-go2",
+        "unitreerobotics",
+        "agibot",
+        "booster",
+        "limx",
+        "community",
+        "course",
+        "education",
+        "resource",
+        "person"
+      ]
+    },
+    {
+      "id": "ai-agents",
+      "label": "智能体与 AI 工具（AI Agents and Tools）",
+      "seeds": [
+        "wiki/references/llm-wiki-karpathy.md",
+        "wiki/concepts/ai-auto-research.md",
+        "wiki/concepts/recursive-self-improvement.md",
+        "roadmap/depth-rsi.md"
+      ],
+      "tags": [
+        "llm-agents",
+        "coding-agents",
+        "agent-infrastructure",
+        "skills",
+        "mcp",
+        "llm",
+        "ai-auto-research",
+        "recursive-self-improvement",
+        "software-engineering"
+      ]
+    }
+  ]
+}

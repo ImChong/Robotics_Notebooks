@@ -1,6 +1,7 @@
 ---
 type: entity
 tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, dataset, embodied-ai-lab]
+topic: [ecosystem]
 status: complete
 updated: 2026-09-23
 related:
