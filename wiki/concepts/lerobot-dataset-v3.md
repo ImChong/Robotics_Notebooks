@@ -19,6 +19,9 @@ related:
   - ../tasks/teleoperation.md
   - ../entities/handumi.md
   - ../entities/letools.md
+  - ../concepts/hdf5-file-format.md
+  - ../entities/mcap-log-format.md
+  - ../comparisons/hdf5-mcap-lerobot-data-formats.md
 sources:
   - ../../sources/sites/lerobot-dataset-v3-docs.md
   - ../../sources/repos/lerobot.md

@@ -1,105 +1,128 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
-status: draft
-updated: 2026-08-10
-summary: "MCAP：定义可索引的多通道机器人日志容器，并提供跨语言库和检查、合并、切分等命令行工具；高吞吐记录与按时间读取适合长期保存相机、状态和控制命令供回放分析。"
+tags: [serialization, logging, robotics, dataset, io, hmi-opensource-table, linux-foundation]
+status: complete
+updated: 2026-09-24
+summary: "MCAP：Foxglove 开源、序列化无关的 timestamped pub/sub 日志容器；Schema/Channel/Message + 可选 Chunk 索引；ROS2/Protobuf/JSON 载荷；真机与 Isaac 栈常用，可转 LeRobot。"
 related:
-  - ../concepts/sim2real.md
-  - ../entities/isaac-lab.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../entities/plotjuggler.md
+  - ../concepts/hdf5-file-format.md
+  - ../concepts/lerobot-dataset-v3.md
+  - ../comparisons/hdf5-mcap-lerobot-data-formats.md
   - ../entities/foxglove-studio.md
-  - ../queries/hmi-opensource-projects-coverage.md
+  - ../entities/plotjuggler.md
+  - ../entities/isaac-gr00t.md
+  - ../entities/isaac-teleop.md
+  - ../tasks/teleoperation.md
 sources:
+  - ../../sources/sites/mcap-spec.md
   - ../../sources/repos/mcap-log-format.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
 ---
 
 # MCAP
 
-[MCAP](https://github.com/foxglove/mcap) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 的「工程与实机部署」分组，是本库为该入口建立的独立详情节点。
-
 ## 一句话定义
 
-定义可索引的多通道机器人日志容器，并提供跨语言库和检查、合并、切分等命令行工具；高吞吐记录与按时间读取适合长期保存相机、状态和控制命令供回放分析。
+**MCAP**（[foxglove/mcap](https://github.com/foxglove/mcap)，**MIT**）是 **模块化日志容器文件格式**：在单文件中记录 **带时间戳的 pub/sub 消息**，**载荷序列化方式任意**（ROS 2、Protobuf、JSON 等由 **Schema** 描述）；支持 **Chunk + Summary 索引** 实现高吞吐写入与 **按时间/主题随机读**，广泛用于机器人 **真机录制、复盘与格式转换**（如 **MCAP → LeRobot**）。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| MCAP | MCAP | MCAP 相关缩写，详见正文 |
-| Sim2Real | Simulation to Real | 仿真到真机部署主线 |
-| RL | Reinforcement Learning | 训练与评测常用框架 |
-| API | Application Programming Interface | 仿真/中间件编程接口 |
+| MCAP | MCAP | 格式名；magic 字节 `\\x89MCAP0\\r\\n` |
+| ROS 2 | Robot Operating System 2 | 常见 MCAP 载荷之一（CDR） |
+| CLI | Command-Line Interface | `mcap` 检查/合并/切分 |
+| API | Application Programming Interface | Python `mcap`、TS `@mcap/core` 等 |
+| IL | Imitation Learning | 日志常经转换进入训练集 |
+| HF Hub | Hugging Face Hub | LeRobot 数据集托管（对比格式） |
 
 ## 为什么重要
 
-- **主表工程定位清晰**：该条目被放在「工程与实机部署」下，说明它服务的是这条人形运动智能问题链上的具体环节，而不是泛泛的链接收藏。
-- **可对照开源边界**：主表已概括其可复现范围（训练/推理/部署或仅方法页）；选型时应先读本页「开源状态」，再回官方 README / 项目页核对许可证与平台支持。
-- **便于知识库交叉引用**：独立节点让路线图、对比页与 ingest 日志可以稳定链接，避免只在策展列表里「点名」却无法下钻。
+- **一条文件多通道：** 相机、关节、IMU、指令可 **分 Channel** 写入同一 MCAP，Foxglove / PlotJuggler 按时间轴对齐 — 比「每模态一个文件」更易运维。
+- **序列化无关：** 同容器可混 ROS 2 topic 与自定义 Protobuf；换中间件不必换容器格式（换 Schema/Channel 定义）。
+- **真机 vs 训练格式桥：** [Isaac GR00T](../entities/isaac-gr00t.md) 真机参考流 **MCAP → LeRobot → LEAPP**；[Gen-HumanEgo](../entities/gen-human-ego-dataset.md) 等发布 **MCAP episode**。
+- **与 HDF5 / LeRobot 三角关系：** MCAP = **录制/日志**；HDF5 = **仿真/IL 中间数组**；LeRobot = **Hub 训练数据集** — 见 [对比页](../comparisons/hdf5-mcap-lerobot-data-formats.md)。
 
 ## 核心原理
 
-### 在技术路线中的位置
-
-| 字段 | 内容 |
-|------|------|
-| 主表分组 | 工程与实机部署 |
-| 官方入口 | https://github.com/foxglove/mcap |
-| 开源状态（据主表） | 已开源（以官方仓库 README 为准） |
-
-主表给出的技术定位可压缩为：
-
-> 定义可索引的多通道机器人日志容器，并提供跨语言库和检查、合并、切分等命令行工具；高吞吐记录与按时间读取适合长期保存相机、状态和控制命令供回放分析。
-
-阅读时建议抓住三点：**(1) 输入是什么数据或观测；(2) 输出是参考轨迹、策略、数据还是中间件能力；(3) 公开材料能否支撑训练/部署复现。**
-
-### 流程直觉（对照主表叙事）
+### 文件结构（mcap.dev/spec）
 
 ```mermaid
 flowchart LR
-  A["上游数据 / 观测 / 配置"] --> B["MCAP"]
-  B --> C["下游策略 / 部署 / 评测"]
+  M1[Leading Magic]
+  H[Header op=0x01]
+  D[Data section<br/>Schema Channel Message Chunk…]
+  DE[Data End]
+  S[Summary optional]
+  SO[Summary Offset optional]
+  F[Footer op=0x02]
+  M2[Trailing Magic]
+  M1 --> H --> D --> DE --> S --> SO --> F --> M2
 ```
 
-具体模块边界以官方文档为准；本页不替代 README。
+| 段 | 要点 |
+|----|------|
+| **Magic** | 首尾固定；第 5 字节 `0x30`（ASCII `'0'`）= **major version** |
+| **Data** | Message 可直接写或在 **Chunk** 内；**Data End 必须最后** |
+| **Summary** | 可选；**Chunk Index** 存在时 Message **应进 Chunk**（否则索引漏读） |
+| **Footer** | 索引读者入口；配合 Summary Offset **随机访问** |
+
+### 核心记录（概念）
+
+- **Schema** — 消息编码说明（如 ROS2 msg、Protobuf）  
+- **Channel** — 主题/流 ID，绑定 Schema  
+- **Message** — log time + publish time + payload  
+- **Chunk** — 压缩与索引单元  
+
+私有 opcode **0x80–0xFF** 留给应用扩展。
+
+### 生态（官方 README）
+
+| 语言 | 包 |
+|------|-----|
+| Python | PyPI **`mcap`** |
+| C++ | Conan **`mcap`** |
+| TS | **`@mcap/core`** |
+| Go / Rust / Swift | 见仓库子目录 |
+
+**CLI：** `brew install mcap` 或 GitHub **releases** — inspect、merge、split。
 
 ## 工程实践
 
-1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。
-2. **对齐本体与接口**：人形项目需核对关节顺序、控制频率、观测契约与仿真后端（Isaac / MuJoCo 等）是否与本机栈一致。
-3. **按主表定位做消融**：主表强调的可分拆实验切口（例如只换重定向约束、只换部署层）应优先验证，避免一上来全链路重训。
-4. **记录开源边界**：若仅有权重、Sim2Sim 或说明文档，不要假设训练管线可复现。
+### 开源状态（2026-09-24）
 
-| 检查项 | 建议 |
-|--------|------|
-| 许可与星标时效 | 以官方仓库页面为准 |
-| 支持机器人 / 仿真 | 读 assets 与 task 配置 |
-| 真机入口 | 查找 SDK、ROS、ONNX/JIT 导出说明 |
+- **已开源**：[github.com/foxglove/mcap](https://github.com/foxglove/mcap) **MIT**  
+- **规范一手：** [mcap.dev/spec](https://mcap.dev/spec)（归档 [sources/sites/mcap-spec.md](../../sources/sites/mcap-spec.md)）  
+- **可视化：** [Foxglove Studio](./foxglove-studio.md)、[PlotJuggler](./plotjuggler.md)（MCAP 读取）
+
+### 机器人管线中的位置
+
+1. **录制：** 真机或中间件桥写 MCAP（高吞吐、可索引）  
+2. **质检：** CLI `mcap info` / Studio 回放  
+3. **转换：** 项目脚本 **MCAP → LeRobot**（字段映射因栈而异）  
+4. **训练：** [LeRobotDataset v3](../concepts/lerobot-dataset-v3.md) + `lerobot-train`
 
 ## 局限与风险
 
-- **主表是策展摘要**：细节、指标与许可以一手来源为准；本页只做知识库节点与导航。
-- **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
-- **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
+- **不是训练数据集格式：** 需转换层；无 LeRobot 式 **`meta/stats.json`** 归一化约定  
+- **Schema 多样性：** 读 MCAP 须带对 **Schema 实现**（ROS 2 类型等）  
+- **索引约束：** 混用「chunk 内/外 Message」会破坏索引读者假设  
+- **与 rosbag2：** ROS 2 默认 bag 格式可能不同；转换工具链需单独验证
 
 ## 关联页面
 
-- [sim2real](../concepts/sim2real.md)
-- [isaac-lab](../entities/isaac-lab.md)
-- [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
-- [Foxglove](./foxglove-studio.md) — 常用 MCAP 可视化宿主
-- [PlotJuggler](./plotjuggler.md) — 3.x 增强 MCAP 读取韧性，可与时序面板联用
-- [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [HDF5 文件格式](../concepts/hdf5-file-format.md)
+- [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md)
+- [HDF5 vs MCAP vs LeRobot](../comparisons/hdf5-mcap-lerobot-data-formats.md)
+- [Isaac Teleop](./isaac-teleop.md)
+- [Isaac GR00T](./isaac-gr00t.md)
 
 ## 参考来源
 
-- [MCAP 来源归档](../../sources/repos/mcap-log-format.md)
-- [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
-- [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
+- [sources/sites/mcap-spec.md](../../sources/sites/mcap-spec.md)
+- [sources/repos/mcap-log-format.md](../../sources/repos/mcap-log-format.md)
 
 ## 推荐继续阅读
 
-- [官方入口](https://github.com/foxglove/mcap)
-- [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
+- [MCAP Format Specification](https://mcap.dev/spec)
+- [MCAP CLI 指南](https://mcap.dev/guides/cli)
+- [MCAP README（GitHub）](https://github.com/foxglove/mcap/blob/main/README.md)

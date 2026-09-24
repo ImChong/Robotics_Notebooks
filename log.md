@@ -4,6 +4,12 @@
 - **开源结论：** **已开源** — EncosTech 组织 8 仓（硬件 CERN-OHL、deploy GPL-3.0 等）；步骤 2.5 以 GitHub README + encos.cn 为准
 - **关键页：** [`encos-hunter130`](wiki/entities/encos-hunter130.md)
 
+## [2026-09-24] ingest | sources/sites/hdf-group-hdf5-intro.md、sources/sites/mcap-spec.md — HDF5 / MCAP / LeRobot 数据格式一手资料与三角对比
+
+- **意图：** 用户指定 HDF5、MCAP、LeRobot 格式一手资料；自动合并 PR
+- **开源结论：** HDF5 库与文档公开；MCAP **MIT** + mcap.dev/spec；LeRobot 见既有 v3 文档归档
+- **关键页：** [`hdf5-file-format`](wiki/concepts/hdf5-file-format.md)、[`mcap-log-format`](wiki/entities/mcap-log-format.md)（重写）、[`hdf5-mcap-lerobot-data-formats`](wiki/comparisons/hdf5-mcap-lerobot-data-formats.md)
+
 ## [2026-09-24] ingest | sources/sites/lerobot-dataset-v3-docs.md — LeRobotDataset v3.0 官方文档；概念页与 LeRobot 实体交叉
 
 - **意图：** 用户指定 https://huggingface.co/docs/lerobot/lerobot-dataset-v3；自动合并 PR
