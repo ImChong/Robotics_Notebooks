@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/papers/dcrr_arxiv_2609_21467.md — DCRR 单 clip 距离条件人形物体搬运（KETI×SNU×高丽大学）；未开源；交叉 OmniRetarget / DemoHLM / Humanoid-DART
+
+- **意图：** 用户指定 arXiv:2609.21467 标题与作者机构；自动合并 PR
+- **开源结论：** **未开源** — arXiv 无 GitHub/项目页；步骤 2.5 已核
+- **关键页：** [`paper-dcrr-distance-conditioned-humanoid-transport`](wiki/entities/paper-dcrr-distance-conditioned-humanoid-transport.md)
+
 ## [2026-09-24] ingest | sources/repos/hunter130_collection.md — EncosTech Hunter V2（EC H130-V2）全栈开源聚合；已开源（多仓）；升格 encos-hunter130；交叉 open-source-humanoid-hardware / tienkung-lab
 
 - **意图：** 用户指定 https://github.com/EncosTech/hunter130_collection；自动合并 PR

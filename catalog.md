@@ -1355,6 +1355,7 @@
 - [DAVIS（arXiv:2609.28175）](wiki/entities/paper-davis-humanoid-soccer.md) — DAVIS: A Depth-Only End-to-End Active-Vision Framework for Humanoid Soccer Skills**（[项目页](https:// `📅unknown` `[entity_page]`
 - [DayDreamer](wiki/entities/paper-daydreamer-world-models-real-robots.md) — DayDreamer** 收录于 具身智能研究室 · 具身世界模型六路线综述 **学习主导 `📅unknown` `[entity_page]`
 - [DCReg：Decoupled Characterization for Efficient Degenerate LiDAR Registration](wiki/entities/paper-dcreg-degenerate-lidar-registration.md) — DCReg**（*Decoupled Characterization for Efficient Degenerate LiDAR Registration*；[IJRR 2026](https `📅unknown` `[entity_page]`
+- [DCRR：单条 motion clip 的距离条件人形物体搬运](wiki/entities/paper-dcrr-distance-conditioned-humanoid-transport.md) — Learning Distance-Conditioned Object Transport for Humanoid Loco-Manipulation from a Single Motion `📅unknown` `[entity_page]`
 - [DeCAL：接触感知灵巧 VLA](wiki/entities/paper-decal.md) — DeCAL**（*Towards Physically-Grounded Dexterous Vision-Language-Action Models via Contact-Aware Lat `📅unknown` `[entity_page]`
 - [去中心化多人形搬运（arXiv:2609.17824）](wiki/entities/paper-decentralized-multi-humanoid-pickup.md) — 去中心化多人形搬运**（*Learning Multi-Humanoid Pickup and Transport via Decentralized Object-Centric Control `📅unknown` `[entity_page]`
 - [DECOWAM（腿足移动操作解耦全身 WAM）](wiki/entities/paper-decowam.md) — DECOWAM**（*Decoupled Whole-Body World-Action Model for Legged Mobile Manipulation*，[arXiv:2608.201 `📅unknown` `[entity_page]`
