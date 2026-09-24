@@ -12,6 +12,7 @@ status: complete
 updated: 2026-09-06
 related:
   - ../entities/lerobot.md
+  - ./lerobot-dataset-v3.md
   - ../entities/isaac-lab-arena.md
   - ../entities/lw-benchhub-tour.md
   - ../entities/libero-benchmark.md

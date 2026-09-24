@@ -4,6 +4,12 @@
 - **开源结论：** **已开源** — EncosTech 组织 8 仓（硬件 CERN-OHL、deploy GPL-3.0 等）；步骤 2.5 以 GitHub README + encos.cn 为准
 - **关键页：** [`encos-hunter130`](wiki/entities/encos-hunter130.md)
 
+## [2026-09-24] ingest | sources/sites/lerobot-dataset-v3-docs.md — LeRobotDataset v3.0 官方文档；概念页与 LeRobot 实体交叉
+
+- **意图：** 用户指定 https://huggingface.co/docs/lerobot/lerobot-dataset-v3；自动合并 PR
+- **开源结论：** **已开源** — huggingface/lerobot；v3 随 `lerobot >= 0.4.0`（文档口径）
+- **关键页：** [`lerobot-dataset-v3`](wiki/concepts/lerobot-dataset-v3.md)；更新 [`lerobot`](wiki/entities/lerobot.md)
+
 ## [2026-09-24] ingest | sources/repos/lz4.md、sources/repos/zstd.md、sources/sites/rfc-8878-zstandard.md — LZ4 / Zstandard 无损压缩一手资料（官方 README + RFC 8878）；实体页与选型对比
 
 - **意图：** 用户指定 LZ4 或 Zstandard 等压缩方式一手资料；自动合并 PR
