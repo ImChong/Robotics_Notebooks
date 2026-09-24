@@ -478,6 +478,7 @@
 - [具身智能高频面试题库（Embodied Interview QA）](wiki/entities/embodied-interview-qa.md) — 一句话：** [winstonjq.github.io/embodied-interview-qa](https://winstonjq.github.io/embodied-interview- `📅unknown` `[entity_page]`
 - [EmbSpatial-Bench](wiki/entities/embspatial.md) — EmbSpatial-Bench**（arXiv:2406.05756，[代码](https://github.com/me `📅unknown` `[entity_page]`
 - [EN02-OP（Westwood 开源三指末端）](wiki/entities/en02-op.md) — EN02-OP** 是 Westwood Robotics 发布的 **开源三指末端执行器**：**7 DoF**、**Ro `📅unknown` `[entity_page]`
+- [Encos Hunter 130（Hunter V2 / EC H130-V2）](wiki/entities/encos-hunter130.md) — Encos Hunter 130**（产品名 **Hunter V2**，硬件型号 **EC H130-V2**）是南京因克斯（EncosTech）与桥介数物联合推进的 **130 cm 级开源人 `📅unknown` `[entity_page]`
 - [EngineAI Native SDK](wiki/entities/engineai-native-sdk.md) — EngineAI Native SDK](https://github.com/engineai-robotics/engineai_robotics_native_sdk) 收录于具身智能研究室  `📅unknown` `[entity_page]`
 - [engineai_rl_lab](wiki/entities/engineai-rl-lab.md) — engineai_rl_lab](https://github.com/engineai-robotics/engineai_rl_lab) 收录于具身智能研究室 [开源项目主表](https:// `📅unknown` `[entity_page]`
 - [Point-Bench](wiki/entities/er-point-bench.md) — Point-Bench**（Point-Bench：图像点定位具身推理基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航 `📅unknown` `[entity_page]`

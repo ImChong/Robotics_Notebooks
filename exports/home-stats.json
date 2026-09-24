@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4876,
-  "edge_count": 42809,
+  "node_count": 4877,
+  "edge_count": 42820,
   "coverage": {
-    "covered": 4847,
-    "total": 4847,
+    "covered": 4848,
+    "total": 4848,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -278,7 +278,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1154,
+      "degree": 1155,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -293,7 +293,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1008,
+      "degree": 1009,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
