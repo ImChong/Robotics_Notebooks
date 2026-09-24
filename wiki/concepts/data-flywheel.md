@@ -54,7 +54,7 @@ sources:
 ## 与其他系统的关系
 
 - **实战路径**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将数据飞轮视为从 0 到 1 落地具身智能项目的核心目标。
-- **基础设施**：飞轮的转动需要强大的仿真底座（如 [isaac-gym-isaac-lab](../entities/isaac-gym-isaac-lab.md)、[genesis-sim](../entities/genesis-sim.md)）和自动化标注工具支撑。
+- **基础设施**：飞轮的转动需要强大的仿真底座（如 [isaac-gym-isaac-lab](../entities/isaac-gym-isaac-lab.md)、[genesis-sim](../entities/genesis-sim.md)）和自动化标注工具支撑。产业侧 [RoboFlywheel](../entities/roboflywheel.md) 把 **LeRobot 统一数据目录、Episode 级 Recipe、跨引擎 Sim 与公开榜单** 收成单一门户，是「飞轮基础设施化」的近期实例（核心框架与 bulk 数据截至 2026-09 仍处 pre-release）。
 
 ## 模仿式飞轮 vs RL 式飞轮
 
@@ -87,6 +87,7 @@ sources:
 - [LWD](../methods/lwd.md) — 失败轨迹也进飞轮的 RL 读法
 - [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md) — 数据架构难改，且是 AI 自己的输入上下文；schema 选错会污染飞轮
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — 灵巧 co-tracking 遥操作采数→DP 的飞轮实例
+- [RoboFlywheel](../entities/roboflywheel.md) — LeRobot 统一数据 + Recipe + 跨引擎 Sim + 榜单的开放基础设施门户
 
 ## 推荐继续阅读
 

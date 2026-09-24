@@ -1,3 +1,5 @@
+## [2026-09-24] ingest | sources/sites/roboflywheel-com.md — 阿里 RoboFlywheel 具身数据开放基础设施；部分开源（Recipe 文档/Sim 待 2026-10）；交叉 data-flywheel / lerobot / depth-embodied-data
+
 ## [2026-09-24] ingest | sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md — 具身小站 13 篇论文盘点；13/13 独立 paper-* 详情节点 + 技术地图
 
 - **意图：** 用户指定 https://mp.weixin.qq.com/s/4QpQgKEw7BnLFzhG-05uzg；每篇论文独立非重复详情节点；自动合并 PR

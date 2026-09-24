@@ -69,6 +69,7 @@ LeRobot 的工程闭环常拆成 **两处入口**：
 |------|------|----------|
 | **代码仓** | [github.com/huggingface/lerobot](https://github.com/huggingface/lerobot) | Python 包、CLI（`lerobot-record` / `lerobot-train` / **`lerobot-eval`**）、硬件驱动、策略与环境加载器 |
 | **Hub 组织页** | [huggingface.co/lerobot](https://huggingface.co/lerobot) | 预训练 **Models**、社区 **Datasets**、**EnvHub 环境仓**、**Spaces** 可视化与教程 |
+| **RoboFlywheel 门户** | [roboflywheel.com](http://roboflywheel.com) | 阿里系开放基础设施：多源数据统一到 **LeRobot V2.1** + Recipe 配方 + 跨引擎仿真；见 [RoboFlywheel](./roboflywheel.md) |
 
 2026-07 快照规模：Hub 上约 **56** 个模型、**187** 个数据集、**11** 个 Collections、**9** 个 Spaces；另含 `lerobot/robot-urdfs` 资产 bucket。
 
