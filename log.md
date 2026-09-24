@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/blogs/wechat_zanehub_joint_torque_sensor_types_2026-09-24.md — Zane Hub 力控关节力矩传感四路线与品牌选型；新建 joint-torque-sensor-selection
+
+- **意图：** 用户指定 https://mp.weixin.qq.com/s/_Rs6EmAOlqxzP_rLTppWqQ；自动合并 PR
+- **开源结论：** N/A（硬件选型综述，非项目页）
+- **关键页：** [`joint-torque-sensor-selection`](wiki/concepts/joint-torque-sensor-selection.md)；交叉 encoder / joint-module / actuator-drive-chain / HW101 感知链
+
 ## [2026-09-24] ingest | sources/papers/hotice_arxiv_2609_25363.md — HOTICE USC 杂乱环境全身持物搬运；HOD-PF + dual-agent RL；G1 真机；代码待发布
 
 - **意图：** 用户指定 arXiv:2609.25363 + hotice2027.github.io
