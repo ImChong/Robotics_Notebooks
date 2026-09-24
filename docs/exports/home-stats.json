@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4796,
-  "edge_count": 42240,
+  "node_count": 4797,
+  "edge_count": 42247,
   "coverage": {
-    "covered": 4767,
-    "total": 4767,
+    "covered": 4768,
+    "total": 4768,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -18,6 +18,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hotice.md",
+      "detail_id": "entity-paper-hotice",
+      "label": "HOTICE（arXiv:2609.25363）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "path": "wiki/entities/flux-3-action.md",
@@ -208,16 +218,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-scientisttwo.md",
-      "detail_id": "entity-paper-scientisttwo",
-      "label": "ScientistTwo（arXiv:2609.19644）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -293,7 +293,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1005,
+      "degree": 1006,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -325,7 +325,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 635,
+      "degree": 636,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

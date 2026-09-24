@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/papers/hotice_arxiv_2609_25363.md — HOTICE USC 杂乱环境全身持物搬运；HOD-PF + dual-agent RL；G1 真机；代码待发布
+
+- **意图：** 用户指定 arXiv:2609.25363 + hotice2027.github.io
+- **开源结论：** **待发布** — 项目页 Anonymous，无 GitHub
+- **关键页：** [`paper-hotice`](wiki/entities/paper-hotice.md)；交叉 loco-manipulation / WBC / sim2real / TANGO
+
 ## [2026-09-24] ingest | sources/papers/robodawn_arxiv_2609_22966.md — RoboDawn 冻结 VLM 语义命令 ICL；C2R 73.6% 1-shot；GitHub+710 轨迹回放已开源
 
 - **意图：** 用户指定 robodawn.top / results / arXiv:2609.22966 / Hugo-AGI/RoboDawn；自动合并 PR

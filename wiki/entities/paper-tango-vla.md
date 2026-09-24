@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, vision-language-navigation, whole-body, unitree-g1, corl-2026, pku, berkeley, princeton, google-deepmind]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-24
 arxiv: "2609.09158"
 venue: "CoRL 2026"
 related:
