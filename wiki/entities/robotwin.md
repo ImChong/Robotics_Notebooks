@@ -40,6 +40,7 @@ updated: 2026-09-24
 - **资产生成研究**：近期工作如 [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) 将 **物理接地、可关节 3D 资产** 作为具身与游戏管线的数据引擎，并在论文演示中引用 **RoboTwin** 作为操作仿真导入场景之一（细节以原论文为准）。
 - **记忆诊断基准**：**RoboTwin-MeM**（[EventVLA](./paper-eventvla-visual-evidence-memory.md)，arXiv:2606.20092）在 RoboTwin 2.0 上构建 8 项 **非马尔可夫** 双臂任务，用参数 $n$（须动态保留的中间关键帧数，1–5）分层评测 VLA 的 **瞬态证据记忆** 能力，区别于 RMBench 等可被静态初始帧/短期历史「取巧」解决的套件。[Chronos](./paper-chronos.md)（arXiv:2606.30318）在 **RMBench** 报告平均 **73.6%**，并在 **RoboTwin 2.0 Easy** 一般操作协议上平均 **70.0%**（点云 + 全历史 SSM，非记忆专项主张）。
 - **AgentLoop 长程编排：** [EmbodiedSkills](../entities/paper-embodiedskills.md)（arXiv:2609.01281）在 RoboTwin 2.0 上报告 **86.20%** 均值（任务适配 π₀.₅ 低层 + Qwen3-VL AgentLoop）；去 verification 降至 **48.2%**。
+- **冻结 VLM 语义接口：** [RoboDawn](../entities/paper-robodawn.md)（arXiv:2609.22966）在 C2R **1-shot 73.6%**（GPT-6 Astra），**零样本 53.2%** 仍高于 π₀.₅ **46.0%**（全量后训练）；**500** 评测轨迹 + 演示可在 [robodawn.top/results](https://robodawn.top/results) 回放。
 - **世界模型下游栈**：[Dexmal DW05](./dexmal-dw05.md) 以 **RobotWin-style JSONL** 为一等数据接口，发布 **DW05-Robotwin** SFT 权重（含 `norm_stats.json`）与动作条件 online demo；通用 **DW05-Base** 不含 RobotWin policy 归一化统计。
 - **物理条件多样性：** [RoboTwin-Phys](./paper-robotwin-phys.md)（arXiv:2609.26292）在 50 任务上 episode 级连续采样 **13** 个物理属性 + **5000+** 带 GT 物理参数的 expert demo；暴露 WAM/VLA 在 **质量/摩擦/动力学** 变化下的 robustness gap（相对仅视觉/布局 DR）。
 
