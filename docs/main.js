@@ -4531,6 +4531,7 @@
         title: d.label || d.id,
         summary: summary,
         communityColor: communityColor,
+        communityLabel: d.community ? communityLabelMap[d.community] : '',
         linkHtml: linkHtml
       });
     }
@@ -4952,6 +4953,7 @@
         title: page.title || pageId,
         summary: formatGraphTooltipSummary(page.summary),
         communityColor: (graphNode && graphNode.communityColor) || '',
+        communityLabel: (graphNode && graphNode.communityLabel) || '',
         linkHtml: linkHtml
       });
     }
@@ -5080,7 +5082,8 @@
         if (!node) return null;
         return {
           type: node.type || '',
-          communityColor: (node.community && communityColor[node.community]) || ''
+          communityColor: (node.community && communityColor[node.community]) || '',
+          communityLabel: (node.community && communityLabelMap[node.community]) || ''
         };
       };
 
