@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/repos/ocs2.md、sources/sites/ocs2-official-docs.md — OCS2 官方 GitHub + 文档站；已开源；重写实体页与 NMPC 方法页交叉
+
+- **意图：** 用户指定 https://github.com/leggedrobotics/ocs2 与 https://leggedrobotics.github.io/ocs2/overview.html；自动合并 PR
+- **开源结论：** **已开源** BSD 3-Clause；ROS 1 `main` / ROS 2 `ros2`；`ocs2_robotic_examples` 可运行
+- **关键页：** [`ocs2`](wiki/entities/ocs2.md)
+
 ## [2026-09-24] ingest | sources/repos/qm_control.md — 四足机械臂 qm_control（OCS2 MPC+WBC）；已开源 BSD-3；升格 qm-control；交叉 OCS2 / legbot-mpc-wbc
 
 - **意图：** 用户指定 https://github.com/skywoodsz/qm_control；自动合并 PR
