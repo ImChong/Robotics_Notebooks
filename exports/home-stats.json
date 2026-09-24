@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/keentools-facebuilder.md",
+      "detail_id": "entity-keentools-facebuilder",
+      "label": "KeenTools FaceBuilder for Blender",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
+    },
+    {
       "path": "wiki/concepts/universal-post-training-robotics.md",
       "detail_id": "wiki-concepts-universal-post-training-robotics",
       "label": "Universal Post-Training for Robotics（通用机器人后训练）",
@@ -197,27 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "硬件与执行器（Hardware and Actuators） 社区"
-    },
-    {
-      "path": "wiki/entities/patent-xpeng-cn119356384a-relative-step-planning.md",
-      "detail_id": "entity-patent-xpeng-cn119356384a-relative-step-planning",
-      "label": "小鹏 IRON · 以相对位移和转角规划双足迈步动作（CN119356384A）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/universal-post-training-robotics.md",
-    "detail_id": "wiki-concepts-universal-post-training-robotics",
-    "label": "Universal Post-Training for Robotics（通用机器人后训练）",
-    "type": "concept",
+    "path": "wiki/entities/keentools-facebuilder.md",
+    "detail_id": "entity-keentools-facebuilder",
+    "label": "KeenTools FaceBuilder for Blender",
+    "type": "entity",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true,
+    "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
   },
   "top_communities": [
     {
