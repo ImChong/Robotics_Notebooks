@@ -177,6 +177,6 @@ flowchart TB
 ## 推荐继续阅读
 
 - [NVIDIA Learning：课程首页](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html)
-- [GR00T Reference Workflow for Unitree G1（Isaac ROS）](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_physical_ai/tutorials/tutorials.html)
+- [GR00T Reference Workflow for Unitree G1（Isaac ROS）](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html)
 - [Develop Humanoid Robot Policies End-to-End with NVIDIA Isaac GR00T](https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/)
 - [Isaac Teleop + GR00T 1.7 LeRobot 集成（HF Blog）](https://huggingface.co/blog/nvidia/nvidia-isaac-teleop-and-gr00t17-in-lerobot)

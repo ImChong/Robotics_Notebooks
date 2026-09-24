@@ -93,7 +93,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 | 后训练 | `launch_finetune.py` + `g1_sim_wbc_data_gr00t_n_1_7_config.py` | `--embodiment-tag new_embodiment`；Arena 外单独 checkout Isaac-GR00T |
 | 闭环评测 | `policy_runner.py` + 远端 GR00T server | ZMQ；冒烟 `--num_steps 600`；统计 `--num_episodes 100` + `--num_envs 5` |
 
-真机 G1 部署见 [Isaac ROS GR00T Reference Workflow](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_physical_ai/tutorials/tutorials.html)（MCAP → LeRobot → LEAPP）。
+真机 G1 部署见 [Isaac ROS GR00T Reference Workflow](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html)（MCAP → LeRobot → LEAPP）。
 
 ## GR00T N1.7（当前 GA 主线）
 
@@ -160,6 +160,6 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - [NVIDIA GR00T G1 端到端参考 workflow](./nvidia-gr00t-e2e-g1-workflow.md) — 本库课程实体页；[官方站点](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html)  
 - [GTC 2025 Humanoid Developer Day — Building Humanoid Robots](./nvidia-gtc.md) — Jim Fan 介绍 GR00T 四部分（On-Demand）
 - [Isaac Teleop + GR00T 1.7 LeRobot 集成（HF Blog）](https://huggingface.co/blog/nvidia/nvidia-isaac-teleop-and-gr00t17-in-lerobot)  
-- [GR00T Reference Workflow for Unitree G1（Isaac ROS）](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_physical_ai/tutorials/tutorials.html) — 真机 MCAP → LeRobot → LEAPP 部署  
+- [GR00T Reference Workflow for Unitree G1（Isaac ROS）](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html) — 真机 MCAP → LeRobot → LEAPP 部署  
 - [LeRobot GR00T 文档](https://github.com/huggingface/lerobot/blob/main/docs/source/groot.mdx) — HF 侧 `groot` policy 工作流  
 - [GR00T N1 论文阅读笔记（Robot_Learning_Paper_Notebooks）](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)
