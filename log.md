@@ -1,3 +1,8 @@
+## [2026-09-24] ingest | sources/papers/hotice_arxiv_2609_25363.md — HOTICE USC 杂乱环境全身持物搬运；HOD-PF + dual-agent RL；G1 真机；代码待发布
+
+- **意图：** 用户指定 arXiv:2609.25363 + hotice2027.github.io
+- **开源结论：** **待发布** — 项目页 Anonymous，无 GitHub
+- **关键页：** [`paper-hotice`](wiki/entities/paper-hotice.md)；交叉 loco-manipulation / WBC / sim2real / TANGO
 
 ## [2026-09-24] ingest | 八项 PredActor/DualWAM/THAW/FLUX/S³/RouteRLT/RoboTwin-Phys + LeRobot 交叉 — 机载 joint diffusion、双系统 WAM、零训练 physics-in-the-loop、VLA↔RL 路由、物理 benchmark；THAW HF 权重已公开
 
