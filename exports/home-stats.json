@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/qm-control.md",
+      "detail_id": "entity-qm-control",
+      "label": "qm_control（四足机械臂 OCS2 MPC + WBC）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dcrr-distance-conditioned-humanoid-transport.md",
+      "detail_id": "entity-paper-dcrr-distance-conditioned-humanoid-transport",
+      "label": "DCRR：单条 motion clip 的距离条件人形物体搬运",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
       "path": "wiki/comparisons/hdf5-mcap-lerobot-data-formats.md",
       "detail_id": "wiki-comparisons-hdf5-mcap-lerobot-data-formats",
       "label": "HDF5 vs MCAP vs LeRobot 数据集格式",
@@ -199,38 +220,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-infinova.md",
-      "detail_id": "entity-paper-infinova",
-      "label": "InfiNoVA（arXiv:2609.27734）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mrsvlmra.md",
-      "detail_id": "entity-paper-mrsvlmra",
-      "label": "MRSVLMRA（arXiv:2609.27816）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/hdf5-mcap-lerobot-data-formats.md",
-    "detail_id": "wiki-comparisons-hdf5-mcap-lerobot-data-formats",
-    "label": "HDF5 vs MCAP vs LeRobot 数据集格式",
-    "type": "comparison",
+    "path": "wiki/entities/qm-control.md",
+    "detail_id": "entity-qm-control",
+    "label": "qm_control（四足机械臂 OCS2 MPC + WBC）",
+    "type": "entity",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    "has_repo": true,
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
