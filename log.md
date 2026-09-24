@@ -1,3 +1,9 @@
+## [2026-09-24] ingest | sources/repos/qm_control.md — 四足机械臂 qm_control（OCS2 MPC+WBC）；已开源 BSD-3；升格 qm-control；交叉 OCS2 / legbot-mpc-wbc
+
+- **意图：** 用户指定 https://github.com/skywoodsz/qm_control；自动合并 PR
+- **开源结论：** **已开源** — BSD-3-Clause；main + feature-force/compliance/real 分支；步骤 2.5 以 GitHub README 为准
+- **关键页：** [`qm-control`](wiki/entities/qm-control.md)
+
 ## [2026-09-24] ingest | sources/papers/dcrr_arxiv_2609_21467.md — DCRR 单 clip 距离条件人形物体搬运（KETI×SNU×高丽大学）；未开源；交叉 OmniRetarget / DemoHLM / Humanoid-DART
 
 - **意图：** 用户指定 arXiv:2609.21467 标题与作者机构；自动合并 PR

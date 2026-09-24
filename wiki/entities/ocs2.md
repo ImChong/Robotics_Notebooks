@@ -87,6 +87,7 @@ flowchart LR
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+- [qm-control](./qm-control.md) — 四足机械臂 OCS2 MPC+WBC 下游参考实现
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源

@@ -3807,6 +3807,7 @@
 - [PYLEECAN（径向磁通电机开源设计框架）](wiki/entities/pyleecan.md) — PYLEECAN**（Eomys/pyleecan，[pyleecan.org](https://www.pyleecan `📅unknown` `[entity_page]`
 - [PythonRobotics](wiki/entities/python-robotics.md) — PythonRobotics**（AtsushiSakai/PythonRobotics）是 G `📅unknown` `[entity_page]`
 - [PyTorch](wiki/entities/pytorch.md) — PyTorch** 是由 **PyTorch 基金会**（Linux Foundation 旗下） stewardship 的开源深度学习框架。它以 **Python 优先** 与 **命令式（e `📅2026-05-15` `[entity_page]`
+- [qm_control（四足机械臂 OCS2 MPC + WBC）](wiki/entities/qm-control.md) — qm_control**（skywoodsz/qm_control，BSD-3-Clause）是面向 **四足 `📅unknown` `[entity_page]`
 - [Qmini](wiki/entities/qmini.md) — Qmini** 面向爱好者、教育与科研的小型四足开源项目：强调可 3D 打印结构、一站式零件清单与模块化扩展。 `📅unknown` `[entity_page]`
 - [quad-swarm-rl](wiki/entities/quad-swarm-rl.md) — quad-swarm-rl**（Zhehui-Huang/quad-swarm-rl）是 **多四 `📅unknown` `[entity_page]`
 - [四足控制学习策展（仿真 → RL → 实机）](wiki/entities/quadruped-control-curriculum.md) — 一句话：** 四足 loco 的完整工程闭环是 **建模 → 辨识 → 并行 RL → 域随机化 → 摩擦补偿与蒸馏 → 导航集成**；本页把 [《四足机器人：从动力学建模到强化学习》](../. `📅unknown` `[entity_page]`

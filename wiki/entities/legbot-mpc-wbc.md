@@ -111,6 +111,7 @@ sequenceDiagram
 
 ## 与其他页面的关系
 
+- [qm-control.md](./qm-control.md) — 四足**机械臂** OCS2 MPC+WBC（Gazebo）
 - [mpc-wbc-integration.md](../concepts/mpc-wbc-integration.md)、[srbd-convex-mpc-wbc.md](../concepts/srbd-convex-mpc-wbc.md)
 - 人形 WBC 经典：[hub-wbc.md](../overview/hub-wbc.md)
 - [controlit.md](./controlit.md) — 人形 WBOSC 软件对照
