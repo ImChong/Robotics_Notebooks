@@ -2,7 +2,7 @@
 
 ## [2026-09-24] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **13** 条信息型预警）：
+共发现 **0** 个问题（另含 **16** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,8 +52,9 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
+- actions（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- MCAP（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -110,7 +111,8 @@
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（2 个）
+- wiki/entities/mcap-log-format.md（缺 重定向就绪度）
 - wiki/entities/roboflywheel.md（缺 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（6 个）
@@ -139,4 +141,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4852/4852 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4854/4854 (100%) wiki/entity 页有 ingest 来源

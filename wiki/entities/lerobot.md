@@ -10,6 +10,9 @@ related:
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
   - ../concepts/lerobot-envhub.md
   - ../concepts/lerobot-dataset-v3.md
+  - ../comparisons/hdf5-mcap-lerobot-data-formats.md
+  - ../concepts/hdf5-file-format.md
+  - ../entities/mcap-log-format.md
   - ./paper-imitator-game.md
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
@@ -195,6 +198,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 
 - [LeRobot EnvHub](../concepts/lerobot-envhub.md) — Hub 仿真环境的加载契约与安全注意
 - [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md) — 数据集目录布局、流式与 v2.1 迁移
+- [HDF5 vs MCAP vs LeRobot](../comparisons/hdf5-mcap-lerobot-data-formats.md) — 采数/日志/训练格式三角
 - [VLA](../methods/vla.md) — LeRobot 内置的 π0、SmolVLA 等所属方法族
 - [模仿学习](../methods/imitation-learning.md) — ACT、Diffusion Policy 等策略的方法背景
 - [Isaac Lab-Arena](./isaac-lab-arena.md)

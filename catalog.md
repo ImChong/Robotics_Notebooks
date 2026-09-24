@@ -686,7 +686,7 @@
 - [Skills For Real Engineers（mattpocock）](wiki/entities/mattpocock-skills.md) — Skills For Real Engineers** 是 mattpocock/skills 仓库及其 [skil `📅unknown` `[entity_page]`
 - [MAVSDK](wiki/entities/mavsdk.md) — MAVSDK**（mavlink/MAVSDK）把 **MAVLink** 报文封装为可维护的 **插件式服务**，是伴机 `📅unknown` `[entity_page]`
 - [mc_rtc](wiki/entities/mc-rtc.md) — mc_rtc](https://github.com/jrl-umi3218/mc_rtc) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
-- [MCAP](wiki/entities/mcap-log-format.md) — MCAP](https://github.com/foxglove/mcap) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`
+- [MCAP](wiki/entities/mcap-log-format.md) — MCAP**（foxglove/mcap，**MIT**）是 **模块化日志容器文件格式**：在单文件中记录 **带时间戳的 `📅unknown` `[entity_page]`
 - [MediaPipe](wiki/entities/mediapipe.md) — MediaPipe** 是 Google 维护的 **端侧机器学习** 开源项目：既有可即插即用的 **Solutions / Tasks**（视觉、文本、音频），也有底层的 **Framewor `📅unknown` `[entity_page]`
 - [Meshroom](wiki/entities/meshroom.md) — Meshroom**（alicevision/Meshroom，MPL-2.0）是 **AliceVision `📅unknown` `[entity_page]`
 - [MetaHuman（Epic 数字人平台）](wiki/entities/metahuman.md) — MetaHuman** 是 **Epic Games** 在 **Unreal Engine** 生态内提供的 **高保真数字人（digital human）** 创作与动画平台：通过 **Met `📅unknown` `[entity_page]`
@@ -4111,6 +4111,7 @@
 - [GRU（Gated Recurrent Unit，门控循环单元）](wiki/concepts/gru.md) — GRU** 是一种 **门控循环神经网络（gated RNN）** 单元：用 **reset 门 $r_t$** 与 **update 门 $z_t$** 控制新信息与旧隐状态 $h_{t-1}$ `📅unknown` `[wiki_page]`
 - [Halbach Array（哈尔巴赫阵列）](wiki/concepts/halbach-array.md) — Halbach Array** 是一类 **磁化方向沿空间逐步旋转** 的永磁排布：目标侧（平面的一侧，或圆柱孔径内）磁场增强，另一侧（或材料外）削弱乃至理想为零——平面一手见 [Mallinso `📅unknown` `[wiki_page]`
 - [Hardware-in-the-Loop（HIL，硬件在环）](wiki/concepts/hardware-in-the-loop.md) — Hardware-in-the-Loop（HIL）** 将被测 **真实硬件**（控制器、ECU、变频器、嵌入式计算平台、传感器/执行器接口等）接入 **实时仿真环境**，由仿真器扮演物理 pla `📅unknown` `[wiki_page]`
+- [HDF5 文件格式](wiki/concepts/hdf5-file-format.md) — HDF5**（Hierarchical Data Format version 5）是 **The HDF Group** 定义的 **二进制文件格式与逻辑数据模型**：用 **Group** 组 `📅unknown` `[wiki_page]`
 - [Hierarchical Quadruped Navigation Stack（四足分层导航栈）](wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 四足分层导航栈** 将 **语义/语言目标、全局路径、局部运动、关节力矩** 拆成多层模块，避免「一个端到端网络从像素直接到电机」的工程不可控性。 `📅unknown` `[wiki_page]`
 - [HQP（Hierarchical QP）](wiki/concepts/hqp.md) — 分层二次规划（Hierarchical Quadratic Programming，HQP）**：全身控制（WBC）中处理多任务优先级冲突的优化框架，通过将任务按优先级分层求解，确保高优先级任务精 `📅unknown` `[wiki_page]`
 - [人形整机闭环惯量标定（出厂体检）](wiki/concepts/humanoid-closed-loop-inertia-calibration.md) — 量产人形从「能演示」到「能稳定干活」，先要一份与身体一致的参数报告：运动学、惯量、IMU 零偏、足底力。工业臂那套**拆关节上台架**覆盖不了分布式质量与终身漂移；足式闭环会把上游误差放大进 [WBC `📅unknown` `[wiki_page]`
@@ -4516,6 +4517,7 @@
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](wiki/comparisons/ethercat-vs-ethernet-ip.md) — 在人形机器人、工业机械臂、移动操作平台落地时，"主控板 ↔ 关节驱动器"的连接几乎都跑在工业以太网上。**EtherCAT** 和 **EtherNet/IP** 是当前装机量最大的两种以太网现场总线 `📅unknown` `[comparison_page]`
 - [FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比](wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 背景**：围绕 RoboParty Lab 近期 MimicLite、[UFO](. `📅unknown` `[comparison_page]`
 - [GMR vs NMR vs ReActor：动作重定向方法谱系对比](wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 背景**：当源动作（动捕、视频估计、生成模型）要喂给目标人形 / 异构机器人时，重定向是必须穿过的一道闸。围绕「**像不像**」与「**能不能跟得上**」两条评价线，社区涌现了三类代表性路线——以 `📅unknown` `[comparison_page]`
+- [HDF5 vs MCAP vs LeRobot 数据集格式](wiki/comparisons/hdf5-mcap-lerobot-data-formats.md) — 三种格式在具身数据管线中 **常串联出现**，但 **设计目标不同**：HDF5 是 **通用科学数组容器**；MCAP 是 **多通道时间序列日志**；LeRobot v3 是 **面向 IL/RL `📅unknown` `[comparison_page]`
 - [HIL vs MTRG vs ZEST：跑酷模仿学习路线对比](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 同一作者群从 **物理角色动画跑酷**（HIL，[TOG 2026 实体](../entities/pap `📅unknown` `[comparison_page]`
 - [HumanNet Table 1：代表性人类视频语料与具身向关系](wiki/comparisons/humannet-table1-human-video-corpora.md) — HumanNet** 在与既有语料对比时，用一张表同时强调 **规模、视点、活动语义粒度** 以及论文中称为 **Embodied Use** 的定性列（与「能否直接支撑机器人学习接口」相关，但仍 `📅unknown` `[comparison_page]`
 - [人形参考运动与操作数据集选型](wiki/comparisons/humanoid-reference-motion-datasets.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
