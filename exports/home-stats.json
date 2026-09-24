@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-24",
-  "node_count": 4796,
-  "edge_count": 42235,
+  "node_count": 4797,
+  "edge_count": 42247,
   "coverage": {
-    "covered": 4767,
-    "total": 4767,
+    "covered": 4768,
+    "total": 4768,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-hotice.md",
+      "detail_id": "entity-paper-hotice",
+      "label": "HOTICE（arXiv:2609.25363）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
     {
       "path": "wiki/entities/flux-3-action.md",
       "detail_id": "entity-flux-3-action",
@@ -207,28 +217,17 @@
       "source": "git",
       "action": "added",
       "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-strider.md",
-      "detail_id": "entity-paper-strider",
-      "label": "STRIDER（X-Humanoid 演示）",
-      "type": "entity",
-      "recency": "2026-09-23",
-      "source": "git",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/flux-3-action.md",
-    "detail_id": "entity-flux-3-action",
-    "label": "FLUX 3 Action",
+    "path": "wiki/entities/paper-hotice.md",
+    "detail_id": "entity-paper-hotice",
+    "label": "HOTICE（arXiv:2609.25363）",
     "type": "entity",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "世界模型（World Models） 社区"
+    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
   },
   "top_communities": [
     {
@@ -245,7 +244,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 328
+      "size": 329
     },
     {
       "label": "仿真到现实",
@@ -261,7 +260,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1781,
+      "degree": 1782,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -269,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1385,
+      "degree": 1387,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
