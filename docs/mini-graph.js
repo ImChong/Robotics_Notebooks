@@ -62,6 +62,7 @@
         title: d.label || d.id,
         summary: summary,
         communityColor: communityColor,
+        communityLabel: d.community ? communityLabelMap[d.community] : '',
         linkHtml: '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">' + linkLabel + '</a>'
       });
     }
