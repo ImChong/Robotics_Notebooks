@@ -176,6 +176,7 @@ flowchart TB
 
 ## 关联页面
 
+- [小鹏 IRON 54 项专利技术地图](../overview/xpeng-iron-54-patents-technology-map.md) — 硬件/步态/具身专利布局（54 独立节点）
 - [world-action-models](../concepts/world-action-models.md)
 - [generative-world-models](../methods/generative-world-models.md)
 - [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)
