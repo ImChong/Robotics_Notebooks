@@ -3839,6 +3839,7 @@
 - [Robocurve](wiki/entities/robocurve.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`
+- [RoboFlywheel](wiki/entities/roboflywheel.md) — RoboFlywheel**（<http://roboflywheel.com>）是面向 **Physical AI / 具身智能** 的 **开放数据基础设施门户**，由 **阿里巴巴** 联合 `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
 - [RoboLab（通用策略高保真仿真评测）](wiki/entities/robolab.md) — RoboLab**（*RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies `📅unknown` `[entity_page]`
 - [robomimic](wiki/entities/robomimic.md) — robomimic](https://github.com/ARISE-Initiative/robomimic) 收录于具身智能研究室 [开源项目主表](https://github.com/Re `📅unknown` `[entity_page]`

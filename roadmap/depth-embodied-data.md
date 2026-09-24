@@ -226,7 +226,7 @@ flowchart LR
 | Stage 0 | 数据口径与金字塔分层 | [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) |
 | Stage 1 | 采集范式与装置选型 | [人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) |
 | Stage 2 | 清洗、质量与标注 | [具身数据清洗](../wiki/concepts/embodied-data-cleaning.md) |
-| Stage 3 | 格式与跨具身聚合 | [Open X-Embodiment](../wiki/concepts/open-x-embodiment.md) |
+| Stage 3 | 格式与跨具身聚合 | [Open X-Embodiment](../wiki/concepts/open-x-embodiment.md) · [RoboFlywheel](../wiki/entities/roboflywheel.md)（LeRobot V2.1 统一目录 + Recipe） |
 | Stage 4 | 扩增与合成 | [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) |
 | Stage 5 | 配比、缩放律与飞轮 | [Embodied Scaling Laws](../wiki/concepts/embodied-scaling-laws.md) · [Data Flywheel](../wiki/concepts/data-flywheel.md) |
 
