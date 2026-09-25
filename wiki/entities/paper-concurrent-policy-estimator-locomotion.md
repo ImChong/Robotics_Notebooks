@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, rl, state-estimation, locomotion, quadruped, sim2real, kaist]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2202.05481"
 related:
+  - ./paper-raibo2-marathon-energy-efficient-quadruped.md
   - ./mit-mini-cheetah.md
   - ../concepts/privileged-training.md
   - ../concepts/state-estimation.md
@@ -108,6 +109,7 @@ flowchart TB
 - [State estimation](../concepts/state-estimation.md)
 - [Rapid Locomotion RL](./paper-rapid-locomotion-rl.md)
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
+- [RAIBO2 马拉松能效（Nature 2026）](./paper-raibo2-marathon-energy-efficient-quadruped.md)
 
 ## 参考来源
 

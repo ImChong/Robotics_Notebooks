@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-25",
-  "node_count": 4900,
-  "edge_count": 43030,
+  "node_count": 4901,
+  "edge_count": 43042,
   "coverage": {
-    "covered": 4871,
-    "total": 4871,
+    "covered": 4872,
+    "total": 4872,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-xiaomi-cocktailasr-1.md",
+      "detail_id": "entity-paper-xiaomi-cocktailasr-1",
+      "label": "Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
+    },
     {
       "path": "wiki/entities/isaac-ros-deploy.md",
       "detail_id": "entity-isaac-ros-deploy",
@@ -204,28 +215,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sample-simulate-select.md",
-      "detail_id": "entity-paper-sample-simulate-select",
-      "label": "Sample, Simulate, Select（S³，arXiv:2609.26420）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-ros-deploy.md",
-    "detail_id": "entity-isaac-ros-deploy",
-    "label": "Isaac ROS Deploy",
+    "path": "wiki/entities/paper-xiaomi-cocktailasr-1.md",
+    "detail_id": "entity-paper-xiaomi-cocktailasr-1",
+    "label": "Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
   },
   "top_communities": [
     {
@@ -274,7 +275,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1156,
+      "degree": 1158,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -289,7 +290,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1010,
+      "degree": 1011,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
