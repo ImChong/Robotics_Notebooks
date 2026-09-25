@@ -21,12 +21,13 @@ import unicodedata
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 TODAY = date.today().isoformat()
 CACHE_DIR = Path("/tmp/rcl-awesome")
 
-LIST_META = {
+LIST_META: dict[str, Any] = {
     "repo": "awesome-world-action-models-rcl",
     "title": "Awesome World-Action Models (RCL)",
     "url": "https://github.com/rcl-robotics/Awesome-World-Action-Models",
@@ -135,9 +136,7 @@ def parse_papers_json(path: Path) -> list[dict]:
         meta_bits = " · ".join(x for x in [sub_en, quadrant] if x)
         contribution = (paper.get("contribution") or "").strip()
         if not contribution:
-            contribution = (
-                f"RCL Awesome WAM 清单收录（{section}）；细节以原文 PDF / 项目页为准。"
-            )
+            contribution = f"RCL Awesome WAM 清单收录（{section}）；细节以原文 PDF / 项目页为准。"
         if len(contribution) > 320:
             contribution = contribution[:317].rstrip() + "..."
 
