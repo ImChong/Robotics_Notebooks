@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/papers/cooperative_multi_uav_madrl_arxiv_2607_25754.md — AirSim 双机系统化 MADRL 协作迷宫导航（arXiv:2607.25754）；无官方代码；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2607.25754 Cooperative Multi-UAV Navigation…Systematic MADRL；自动合并 PR
+- **开源结论：** arXiv/HTML **无 GitHub 或项目页**（2026-09-25 步骤 2.5）→ **确认未开源**
+- **关键页：** [`paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl`](wiki/entities/paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl.md)
+
 ## [2026-09-25] ingest | DAVIS / LiMA / PointCast（arXiv:2609.28175/28431/28393）— 项目页深读；DAVIS 升格；LiMA+PointCast 新建实体；代码均待发布；自动合并 PR
 
 - **意图：** 用户指定三篇 arXiv + 项目页（深度图主动视觉 / 异步 WAM / 点集 WM）；自动合并 PR

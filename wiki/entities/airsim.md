@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, simulation, uav, computer-vision, unreal-engine, microsoft]
 status: complete
-updated: 2026-06-21
+updated: 2026-09-25
 related:
   - ./unreal-engine-5.md
   - ./unity-engine.md
