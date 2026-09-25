@@ -161,6 +161,7 @@ flowchart TB
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — POMDP 输出轴；与本页「训练闭环三线」正交
 - [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 压缩定义 + 功能×架构；倒金字塔对照本页三道门槛
 - [Generative World Models](../methods/generative-world-models.md) — 像素/Token 视频 rollout 与工程折中（DWM、Being-H0.7、mimic-video 等）
+- [Diffusion-Based World Models Survey](../entities/paper-diffusion-based-world-models-survey.md) — **扩散范式专综述** + [Living GitHub](https://github.com/energy588/Diffusion-based-World-Models)（360+；驾驶/具身/通用三域）
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 产业侧交互模拟器：评测 + Human-in-the-World-Model
 - [WALL-SS](../entities/paper-wall-ss.md) — next-scale AR 流式 WM + 虚实成功率校准
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 未来与动作联合建模的平行综述（arXiv:2605.12090）

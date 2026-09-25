@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-25",
-  "node_count": 4886,
-  "edge_count": 42909,
+  "node_count": 4887,
+  "edge_count": 42920,
   "coverage": {
-    "covered": 4857,
-    "total": 4857,
+    "covered": 4858,
+    "total": 4858,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-diffusion-based-world-models-survey.md",
+      "detail_id": "entity-paper-diffusion-based-world-models-survey",
+      "label": "Diffusion-Based World Models: A Survey",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界模型（World Models） 社区"
+    },
     {
       "path": "wiki/entities/paper-bioimpedance-eim-wearable-myography.md",
       "detail_id": "entity-paper-bioimpedance-eim-wearable-myography",
@@ -207,34 +218,23 @@
       "source": "git",
       "action": "added",
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sure-map.md",
-      "detail_id": "entity-paper-sure-map",
-      "label": "SURE-Map：自校正流式几何基础模型",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉感知（Robot Perception） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bioimpedance-eim-wearable-myography.md",
-    "detail_id": "entity-paper-bioimpedance-eim-wearable-myography",
-    "label": "Bioimpedance meets biomechanics（可穿戴 EIM）",
+    "path": "wiki/entities/paper-diffusion-based-world-models-survey.md",
+    "detail_id": "entity-paper-diffusion-based-world-models-survey",
+    "label": "Diffusion-Based World Models: A Survey",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    "community_label": "世界模型（World Models） 社区"
   },
   "top_communities": [
     {
       "label": "世界模型",
-      "size": 730
+      "size": 731
     },
     {
       "label": "产业与开源生态",
@@ -301,7 +301,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 980,
+      "degree": 982,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },

@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/papers/diffusion_wm_survey_preprints_202609_1022.md — Diffusion-Based World Models 综述（Preprints + Living GitHub）；已开源策展；自动合并 PR
+
+- **意图：** 用户指定 preprints 202609.1022 与 GitHub energy588/Diffusion-based-World-Models；自动合并 PR
+- **开源结论：** **已开源（策展型）** — 360+ 论文表、三分域 markdown、数据集 hub；非统一训练代码（步骤 2.5 以 GitHub README 为准）
+- **关键页：** [`paper-diffusion-based-world-models-survey`](wiki/entities/paper-diffusion-based-world-models-survey.md)
+
 ## [2026-09-25] ingest | sources/papers/bioimpedance_eim_scirobotics_2026.md — Science Robotics 可穿戴双频 EIM 编码肌束与激活动力学（Georgia Tech）；Zenodo 部分开源；自动合并 PR
 
 - **意图：** 用户指定 DOI 10.1126/scirobotics.aea4580 与 Zenodo 10.5281/zenodo.22044875；自动合并 PR
