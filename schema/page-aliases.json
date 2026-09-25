@@ -238,6 +238,7 @@
     "entity-paper-sa-2606-18610-sc3-eval-evaluating-robot-foundation-models-via": "entity-paper-sc3-eval",
     "entity-paper-xpolicylab": "entity-xpolicylab",
     "entity-paper-notebook-locoformer-generalist-locomotion-via-long-contex": "entity-paper-locoformer",
-    "entity-paper-notebook-learning-getting-up-policies-for-real-world-huma": "entity-paper-humanup-getting-up"
+    "entity-paper-notebook-learning-getting-up-policies-for-real-world-huma": "entity-paper-humanup-getting-up",
+    "wiki-queries-iros-2026-six-trends-from-1933-papers": "wiki-overview-iros-2026-six-trends-technology-map"
   }
 }
