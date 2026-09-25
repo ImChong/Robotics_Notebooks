@@ -20,7 +20,8 @@
 | 已发布 | 不适用 |
 |--------|--------|
 | 策展 Markdown、`data/papers.json`、静态站生成脚本（MIT） | 训练/推理栈、模型权重 |
-| Reading reports 子站 | 综述 arXiv/PDF（**Coming soon**） |
+| Reading reports 子站 | — |
+| 综述 PDF | [arXiv:2609.16074](https://arxiv.org/abs/2609.16074) |
 
 清单为 **资源导航 + 证据化分类**；复现价值在于按架构象限/应用域选型论文与基准。
 

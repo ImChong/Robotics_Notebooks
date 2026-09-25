@@ -1,10 +1,11 @@
 # World-Action Models for Robot Learning and Control: A Survey（RCL / MBZUAI）
 
 - **类型**：论文（survey）
-- **收录日期**：2026-09-16
+- **收录日期**：2026-09-16（arXiv 落地更新 2026-09-25）
 - **项目页**：<https://rcl-robotics.github.io/Awesome-World-Action-Models/>
 - **配套策展**：[Awesome World-Action Models 仓库](../repos/awesome-world-action-models-rcl.md) · [静态站点](../sites/awesome-world-action-models-rcl.md)
-- **arXiv**：**Coming soon**（截至入库日站点与 README 未挂编号）
+- **arXiv**：[2609.16074](https://arxiv.org/abs/2609.16074)（2026-09-25 发布；此前站点标注 Coming soon）
+- **中文导读**：[具身智能之心 WAM 训练策略（2026-09-25）](../blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md)
 - **作者**：Zuxing Lu, Hongjia Zhai, Guanzhi Wang, et al.（MBZUAI 通讯：Xingxing Zuo）
 
 ## 一句话

@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-24
+updated: 2026-09-25
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -131,6 +131,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
   - ../../sources/sites/awesome-world-action-models-rcl.md
   - ../../sources/papers/rcl_wam_robot_learning_survey.md
+  - ../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md
   - ../../sources/repos/awesome-world-models.md
   - ../../sources/repos/dexmal_opendw.md
   - ../../sources/repos/unifolm-world-model-action.md
@@ -195,6 +196,29 @@ sources:
 **受控设计实证（三星等，arXiv:2609.24048）**：[WAM 设计要素受控实证](../entities/paper-wam-design-empirical-study.md) 在 **固定 Fast-WAM / LDA-1B 骨干** 下分别扫 **6 种视频–动作因果、8 种潜空间表征、4 种训练目标**，给出三条可操作的分布依赖规律：**(1)** 生成未来主要通过 **时间组织** 而非精确像素内容影响动作，且 **因果视频生成** 比严格 token 时序隔离更关键；**(2)** **inter-frame latent 偏 ID、framewise 偏 OOD**，预编码跨帧关系在 shift 下更脆；**(3)** **ID 上 BC-only 仍强**，**OOD 上 BC+VG 分阶段**（先 80% 稳表征再引入 dynamics）最优。读具体系统论文前可先对照该页三轴 checklist。
 
 **control utility 准则**（RCL 强调）：动作接地、时空一致、闭环改进、实时预算 — 避免只用视觉保真评价 WAM。
+
+### RCL 综述：数据金字塔与两阶段训练（arXiv:2609.16074）
+
+[RCL 机器人向 WAM 综述](../../sources/papers/rcl_wam_robot_learning_survey.md) 与 [具身智能之心中文导读（2026-09-25）](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md) 把典型工程路径收成 **三类数据 × 预训练 → 后训练**：
+
+| 数据层 | 监督侧重 | 典型用途 |
+|--------|----------|----------|
+| 互联网 / 第三视角视频 | 画面时序自监督 | 物体运动、接触后果（无机器人标签） |
+| 第一视角人类演示 | 手物交互；可选姿态估计 | 意图与相对运动先验（EgoScale 类） |
+| 具身轨迹 | 观测–动作–结果配对 | 动作接地、闭环微调与 RL |
+
+**预训练** 先学时空变化与（潜在）动作表征，并用前向/逆动力学或联合生成把「预期变化」与「控制信号」绑在一起。**后训练** 再适配目标机器人（策略微调）、用世界模型增广轨迹/外观，或在神经仿真里 RL——收益需 **真机反馈** 校验，避免策略 exploit 过于乐观的世界 rollouts。
+
+相对 **纯 VLA 扩展**，文内对照 **[π0.5](../methods/pi07-policy.md)**（语义 + 子任务链 + 连续动作专家）与 **EgoScale**（人类视频动作提取 → 人机对齐）：二者分别放大 **任务语义** 与 **人类动作规模**，但仍受 **动作/子任务标注成本** 与 **VLM 预训练目标偏语义** 制约——这正是 WAM 用 **视频预测任务** 先积累运动经验、再用具身数据对齐的动机。
+
+```mermaid
+flowchart LR
+  V["action-free 视频"] --> PT["预训练：时空 + 动作表征"]
+  H["人类 ego 视频"] --> PT
+  PT --> FT["后训练：微调 / 增广 / 神经仿真 RL"]
+  E["具身轨迹"] --> FT
+  FT --> R["真机闭环校验"]
+```
 
 ### Cascaded WAM
 
@@ -390,7 +414,8 @@ flowchart TB
 - [sources/sites/awesome-wam-openmoss.md](../../sources/sites/awesome-wam-openmoss.md)
 - [sources/repos/awesome-world-action-models-rcl.md](../../sources/repos/awesome-world-action-models-rcl.md)
 - [sources/sites/awesome-world-action-models-rcl.md](../../sources/sites/awesome-world-action-models-rcl.md)
-- [sources/papers/rcl_wam_robot_learning_survey.md](../../sources/papers/rcl_wam_robot_learning_survey.md)
+- [sources/papers/rcl_wam_robot_learning_survey.md](../../sources/papers/rcl_wam_robot_learning_survey.md) — RCL 机器人向 WAM 综述（arXiv:2609.16074）
+- [具身智能之心 · WAM 训练策略导读（2026-09-25）](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md)
 - [sources/repos/awesome-world-models.md](../../sources/repos/awesome-world-models.md) — Awesome World Models 全谱策展（含 WAM/VLA 分册）
 - [sources/sites/rekacs2-10k.md](../../sources/sites/rekacs2-10k.md)
 
