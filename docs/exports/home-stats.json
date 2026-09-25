@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl.md",
+      "detail_id": "entity-paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl",
+      "label": "系统化 MADRL 多 UAV 复杂环境协作导航",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-lima-async-dual-system-wam.md",
       "detail_id": "entity-paper-lima-async-dual-system-wam",
       "label": "LiMA（异步扩散 WAM 灵巧操作）",
@@ -206,28 +216,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
-    },
-    {
-      "path": "wiki/entities/encos-hunter130.md",
-      "detail_id": "entity-encos-hunter130",
-      "label": "Encos Hunter 130（Hunter V2 / EC H130-V2）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-lima-async-dual-system-wam.md",
-    "detail_id": "entity-paper-lima-async-dual-system-wam",
-    "label": "LiMA（异步扩散 WAM 灵巧操作）",
+    "path": "wiki/entities/paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl.md",
+    "detail_id": "entity-paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl",
+    "label": "系统化 MADRL 多 UAV 复杂环境协作导航",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
-    "community_label": "世界模型（World Models） 社区"
+    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
   },
   "top_communities": [
     {
