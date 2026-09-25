@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-iros26-vc-motor-dynamic-arm-swing.md",
+      "detail_id": "entity-paper-iros26-vc-motor-dynamic-arm-swing",
+      "label": "IROS 2026：VC 电机模式切换动态人形甩臂",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
+      "path": "wiki/entities/variable-chain-motor.md",
+      "detail_id": "entity-variable-chain-motor",
+      "label": "Variable Chain Motor（可变链电机 / VC motor）",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    },
+    {
       "path": "wiki/entities/paper-geovla.md",
       "detail_id": "entity-paper-geovla",
       "label": "GeoVLA：为 VLA 补全 3D 几何表示",
@@ -193,40 +213,17 @@
       "source": "git",
       "action": "added",
       "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
-    },
-    {
-      "path": "wiki/entities/roboflywheel.md",
-      "detail_id": "entity-roboflywheel",
-      "label": "RoboFlywheel",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
-    },
-    {
-      "path": "wiki/entities/qm-control.md",
-      "detail_id": "entity-qm-control",
-      "label": "qm_control（四足机械臂 OCS2 MPC + WBC）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-geovla.md",
-    "detail_id": "entity-paper-geovla",
-    "label": "GeoVLA：为 VLA 补全 3D 几何表示",
+    "path": "wiki/entities/paper-iros26-vc-motor-dynamic-arm-swing.md",
+    "detail_id": "entity-paper-iros26-vc-motor-dynamic-arm-swing",
+    "label": "IROS 2026：VC 电机模式切换动态人形甩臂",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "硬件与执行器（Hardware and Actuators） 社区"
   },
   "top_communities": [
     {
