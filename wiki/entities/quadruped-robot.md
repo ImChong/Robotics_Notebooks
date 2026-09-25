@@ -2,8 +2,9 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 related:
+  - ./paper-raibo2-marathon-energy-efficient-quadruped.md
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./humanoid-robot.md
   - ./anymal.md
@@ -86,6 +87,7 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 - **系统学习路线**：[四足控制学习策展](./quadruped-control-curriculum.md)（URDF → SysID → PPO/DR → Sim2Real → 导航闭环；基于 [MATRiX](./matrix-simulation-platform.md)）
 - **仿真与 RL 范式**：[Legged Gym](./legged-gym.md)、[MuJoCo](./mujoco.md)、[Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)、[MATRiX](./matrix-simulation-platform.md)
 - **多步态 bio-inspired RL**：[Learning to Adapt（Nature MI 2025）](./paper-learning-to-adapt-bio-inspired-quadruped-gait.md)（RaiSim + [ihcr/learning_to_adapt](https://github.com/ihcr/learning_to_adapt)）
+- **马拉松级能效（Nature 2026）**：[RAIBO2](./paper-raibo2-marathon-energy-efficient-quadruped.md) — 单次充电 **42.195 km**，**CoT 0.25**（KAIST RaiLab / RaiSim 训练栈）
 - **离散地形最小感知**：[足底 ToF + RL（ETH RSL, arXiv:2606.31912）](./paper-discrete-terrain-minimal-proximity-sensing.md)（踏石/沟/平衡木，无相机 LiDAR）
 - **Stanford 开源四足**：[Stanford Doggo / Pupper](./stanford-doggo-and-pupper.md)（含 **Pupper v3** 文档站、RL/VLM 与 CS 123）；**早期模型控制**见 [easy_quadruped](./easy-quadruped.md)（MuJoCo Trot 闭环，与 v3 monorepo 不同栈）
 - **任务扩展**：[Hybrid Locomotion](../tasks/hybrid-locomotion.md)（轮腿、步态切换等多模式）

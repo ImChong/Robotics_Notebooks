@@ -4,9 +4,10 @@ type: entity
 tags: [quadruped, reinforcement-learning, sim2real, generalization, legged-gym, mit]
 status: stable
 summary: "四足 MoB：单一策略嵌入多种步态与风格参数，部署时人类可调参以适配分布外地形与任务；开源 Walk These Ways 控制器。"
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2212.03238"
 related:
+  - ./paper-raibo2-marathon-energy-efficient-quadruped.md
   - ../entities/legged-gym.md
   - ../entities/paper-anymal-walk-minutes-parallel-drl.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
@@ -92,6 +93,7 @@ flowchart LR
 - [legged_gym](./legged-gym.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Learning to Adapt（Nature MI 2025 四足多步态）](./paper-learning-to-adapt-bio-inspired-quadruped-gait.md)
+- [RAIBO2 马拉松能效（Nature 2026）](./paper-raibo2-marathon-energy-efficient-quadruped.md)
 
 ## 推荐继续阅读
 

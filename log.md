@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/papers/raibo2_marathon_nature_s41586_026_11102_5.md — RAIBO2 单次充电马拉松（Nature DOI 10.1038/s41586-026-11102-5）；Zenodo+raisimGym 部分开源；自动合并 PR
+
+- **意图：** 用户指定 Nature 2026 RAIBO2 马拉松论文；自动合并 PR
+- **开源结论：** **部分开源** — Zenodo 数据 + `raisimGym_nature` 训练/ablation；硬件/部署未发布
+- **关键页：** [`paper-raibo2-marathon-energy-efficient-quadruped`](wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md)；互链 [`quadruped-robot`](wiki/entities/quadruped-robot.md)、[`locomotion`](wiki/tasks/locomotion.md)
+
 ## [2026-09-25] ingest | sources/papers/xiaomi_cocktailasr_1_arxiv_2609_11274.md — Xiaomi-CocktailASR-1 TS-ASR（arXiv:2609.11274）；GitHub+HF 已开源；自动合并 PR
 
 - **意图：** 用户指定 arXiv:2609.11274 与 xiaomi-research/xiaomi-cocktailasr-1；自动合并 PR
