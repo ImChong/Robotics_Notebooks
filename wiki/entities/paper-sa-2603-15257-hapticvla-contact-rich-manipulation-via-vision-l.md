@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2603.15257"
 venue: "arXiv 2025"
 summary: "Safety-Aware Reward-Weighted Flow Matching (SA-RWFM) and Tactile Distillation (TD) framework incorporating distilled tactile token rather than raw sensor feedback."

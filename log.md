@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/blogs/wechat_ai_tech_review_iros_2026_six_trends_2026-09-25.md — IROS 2026 1933 篇六趋势解读；GeoVLA/Shallow-π 新建；overview+query；自动合并 PR
+
+- **意图：** 用户指定 https://mp.weixin.qq.com/s/XvdbbidbJKBszMQwVzvD0A；自动合并 PR
+- **开源结论：** GeoVLA **已开源**；Shallow-π **待发布**（步骤 2.5）
+- **关键页：** [`iros-2026-six-trends-technology-map`](wiki/overview/iros-2026-six-trends-technology-map.md)、[`paper-geovla`](wiki/entities/paper-geovla.md)、[`paper-shallow-pi`](wiki/entities/paper-shallow-pi.md)
+
 ## [2026-09-25] ingest | sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md — 理想 MachEmbodied 四篇（Brain/VLM/U0/Dex）；2 新建实体 + 2 复用；4/4 独立 detail 节点；自动合并 PR
 
 - **意图：** 用户指定公众号 https://mp.weixin.qq.com/s/UVSRMDa8Aq2oJtqkRUU_EA；每篇论文独立非重复节点；自动合并 PR

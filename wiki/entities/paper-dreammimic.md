@@ -12,7 +12,7 @@ tags:
   - intermimic
   - tsinghua
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2608.22278"
 related:
   - ../tasks/loco-manipulation.md
