@@ -702,6 +702,8 @@
 
 ## [2026-09-15] ingest | SAI + TRACE + Zeno-1 — 芝诺/ZJU 协作线：SAI 双机课程（待发布）、TRACE 记忆模块（corl-trace 已开源）、Zeno-1 3B 协作基础模型报告（待发布）
 
+## [2026-09-25] ingest | sources/papers/skillx_humanoid_soccer_arxiv_2609_06718.md — SkillX 增量：arXiv 标注 CoRL 2026、补全作者表；项目页步骤 2.5 复核仍为待发布
+
 ## [2026-09-15] ingest | sources/sites/skillx.md — SkillX（arXiv:2609.06718）项目页深读复核：松延动力×清华、E1 双部署后端；代码待发布
 
 ## [2026-09-15] ingest | sources/papers/dwmp_arxiv_2609_12347.md — 新建 DWMP（G1 双世界模型越障，Koopman+DepthDreamer）；未开源

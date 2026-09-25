@@ -83,7 +83,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - **[booster_mjlab](../entities/booster-mjlab.md)**：whIRLwind（RoboCup 2026 Humanoid Soccer 第 4 名）的 **Booster K1 × mjlab + AMP** 训练栈；真机 AMP 行走与浏览器 WASM demo 见[项目页](https://intelligentroboticslab.github.io/booster_mjlab/)。
 - **PAiD (Perception-Action Integrated Decision-making)**：将感知与动作解耦并渐进式融合，实现更稳健的踢球。
 - **[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)**：以单条人类踢球参考为 scaffold 的 **三阶段 motion-guided curriculum RL**，在 G1 上实现 **亚米级点瞄准射门**、**13 m/s 级触球球速** 与 **来球 one-touch** 室外真机演示；**已开源** [训练](https://github.com/OpenDriveLab/RoboNaldo) / [部署](https://github.com/OpenDriveLab/RoboNaldo_Deploy)。
-- **[SkillX](../entities/paper-skillx-humanoid-soccer.md)**（arXiv:2609.06718）：松延动力×清华；命令条件 **统一多技能** actor + 技能专属 AMP/critic + 物体感知时序编码；E1 真机 MoCap/机载 ZED2i+YOLOv8；Hard 组合仿真 **81.7%**（[项目页](https://yzc0731.github.io/SkillX/)）；**代码待发布**。
+- **[SkillX](../entities/paper-skillx-humanoid-soccer.md)**（arXiv:2609.06718，**CoRL 2026**）：松延动力×清华；命令条件 **统一多技能** actor + 技能专属 AMP/critic + 物体感知时序编码；E1 真机 MoCap/机载 ZED2i+YOLOv8；Hard 组合仿真 **81.7%**（[项目页](https://yzc0731.github.io/SkillX/)）；**代码待发布**。
 - **[视觉特权表征运球](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md)**（arXiv:2607.12702）：**RMA 式两阶段** — 特权编码器学对手感知运球，再蒸馏 **CNN+GRU 深度 latent**；Booster T1 仿真下无障碍 **100%**、静态障碍 **96%**、动态抢球 **46%** SR。
 - **[Vision-Driven Reactive Soccer](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)**（Science Robotics 2026 / arXiv:2511.03996）：**虚拟感知 + encoder-decoder** 把机载视觉误差写进统一 RL 环；AMP 运动先验；前场约 **90%** 踢球 SR；Zenodo **部分开源** 仿真训练与 checkpoint。
 
