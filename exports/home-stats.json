@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-25",
-  "node_count": 4889,
-  "edge_count": 42938,
+  "node_count": 4890,
+  "edge_count": 42948,
   "coverage": {
-    "covered": 4860,
-    "total": 4860,
+    "covered": 4861,
+    "total": 4861,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -291,7 +291,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1008,
+      "degree": 1009,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -323,7 +323,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 651,
+      "degree": 652,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

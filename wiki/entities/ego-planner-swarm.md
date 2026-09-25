@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, planning, swarm, esdf, uav, ros, zju-fast-lab, zju]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md

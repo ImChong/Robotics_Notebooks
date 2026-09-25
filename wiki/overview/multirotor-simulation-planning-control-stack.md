@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 related:
   - ../entities/paper-swarmnxt.md
   - ../entities/betaflight.md
@@ -200,6 +200,7 @@ flowchart TB
 - **[gym-pybullet-drones](../entities/gym-pybullet-drones.md)**：Gymnasium 四旋翼 RL，轻量可复现。
 - **[RL vs GC](../entities/paper-rl-vs-gc.md)**：UPenn GRASP 在 Isaac Lab 上对称比较 PPO 与 \(SE(3)\) 几何控制（RSS 2025，[已开源](https://github.com/PratikKunapuli/rl-vs-gc)）；协议与选型见 [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)。
 - **[quad-swarm-rl](../entities/quad-swarm-rl.md)**：多机 Gym 环境补充，社区较小。
+- **AirSim 迷宫协作 MADRL**（[arXiv:2607.25754](../entities/paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl.md)）：CTDE/MASAC + 结构 MoE，双机零样本 maze 与动态障碍；**无官方代码**。
 
 ### 真机群体
 
