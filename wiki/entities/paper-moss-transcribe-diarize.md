@@ -11,11 +11,12 @@ tags:
   - open-source
   - fudan
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2601.01554"
 code: https://github.com/OpenMOSS/MOSS-Transcribe-Diarize
 related:
   - ../methods/humanoid-voice-interaction.md
+  - ./paper-xiaomi-cocktailasr-1.md
   - ./paper-daily-omni.md
   - ../concepts/world-action-models.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -168,6 +169,7 @@ SATS（转写 + 说话人 + 时间戳）可以由 **几段拼**，也可以 **�
 | 流式分块 MLLM | JEDIS-LLM + Speaker Prompt Cache | 联合 | cache + 分块 | 边界 artifact；需维护 cache |
 | 通用长音频 MLLM | GPT-4o / Gemini 3 Pro | 提示词里要求 | 号称长上下文 | 论文观察：长音频常 **无法完整或格式合规输出** |
 | **本文（MOSS 0.9B）** | 统一音频–文本 MLLM | **单次前向内联合** | **128k 单 pass ≈ 90 min，不分块** | 非流式（future work）；Pro 更强但 **闭源** |
+| **TS-ASR（有 ref）** | [Xiaomi-CocktailASR-1](./paper-xiaomi-cocktailasr-1.md) | 参考声纹 prompt | 整段推理 | **只转写目标说话人**，非全场 SATS；需 ref |
 
 **为什么 Δcp 是这张表的判据：** 上述前四类都把说话人当独立子问题，代价直接体现在 **Δcp = cpCER − CER**——CER 尚可但 Δcp 很大（如 Movies 上某商用系统 Δcp **20.94**）意味着「字认得出、人分不清」。MOSS 在 AISHELL-4 上 Δcp **0.99**、Alimeeting 上甚至 **−2.69**（联合建模让说话人信息反过来帮了转写），这是单 pass 相对级联最实在的结构性收益。
 
@@ -196,6 +198,7 @@ SATS（转写 + 说话人 + 时间戳）可以由 **几段拼**，也可以 **�
 ## 关联页面
 
 - [人形智能语音交互](../methods/humanoid-voice-interaction.md) — ASR→NLU 闭环中的 ASR/分离上游
+- [Xiaomi-CocktailASR-1](./paper-xiaomi-cocktailasr-1.md) — 有 ref 时的 TS-ASR + 拒识（与 SATS 互补）
 - [Daily-Omni](./paper-daily-omni.md) — 音频 MLLM 另一轴（跨模态时序对齐评测）
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 同 OpenMOSS 生态综述入口
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 感知层 I/O 边界

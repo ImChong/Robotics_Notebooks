@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/papers/xiaomi_cocktailasr_1_arxiv_2609_11274.md — Xiaomi-CocktailASR-1 TS-ASR（arXiv:2609.11274）；GitHub+HF 已开源；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2609.11274 与 xiaomi-research/xiaomi-cocktailasr-1；自动合并 PR
+- **开源结论：** GitHub 推理/批量脚本 + HF **Ease3/Xiaomi-CocktailASR-1** **已开源**；训练代码未发布
+- **关键页：** [`paper-xiaomi-cocktailasr-1`](wiki/entities/paper-xiaomi-cocktailasr-1.md)；互链 [`humanoid-voice-interaction`](wiki/methods/humanoid-voice-interaction.md)
+
 ## [2026-09-25] ingest | sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md — RCL WAM 综述 arXiv:2609.16074 中文导读；同步 sources 与 WAM 概念页
 
 - **意图：** 用户指定 https://mp.weixin.qq.com/s/0ZMRkQCTmbWxWDiUBvdbsg；自动合并 PR
