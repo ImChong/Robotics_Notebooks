@@ -1862,8 +1862,10 @@
 - [Masked Visual Actions（统一世界建模的掩码视觉动作）](wiki/entities/paper-masked-visual-actions.md) — Masked Visual Actions**（*Masked Visual Actions for Unified World Modeling*，[arXiv:2607.19343](http `📅unknown` `[entity_page]`
 - [MATE（arXiv:2609.26520）](wiki/entities/paper-mate-virtual-teleop.md) — MATE**（*MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collectio `📅unknown` `[entity_page]`
 - [MAVP（arXiv:2609.26378）](wiki/entities/paper-mavp.md) — MAVP**（*MAVP: Map-Aware Visuomotor Policies for Mobile Manipulation*，[arXiv:2609.26378](https://ar `📅unknown` `[entity_page]`
+- [ME-Brain-1.0：记忆、认知与动作的自我演进具身框架](wiki/entities/paper-me-brain-1-0.md) — ME-Brain-1.0**（*Memory, Cognition and Action for Evolving Embodied Intelligence*，[arXiv:2609.24271 `📅unknown` `[entity_page]`
 - [ME-Dex 1.0：异构触觉进入 World Action Modeling](wiki/entities/paper-me-dex-1-0.md) — ME-Dex 1.0**（*Bringing Heterogeneous Tactile Sensing into World Action Modeling*，[arXiv:2609.21449 `📅unknown` `[entity_page]`
 - [MachEmbodied-U0（arXiv:2609.25627）](wiki/entities/paper-me-u0.md) — MachEmbodied-U0**（*MachEmbodied-U0: Unified Understanding and Generation Model for Embodied Intell `📅unknown` `[entity_page]`
+- [ME-VLM：统一具身认知与 Agent 协调的 VLM](wiki/entities/paper-me-vlm.md) — ME-VLM**（*A Unified VLM for Embodied Cognition and Agent Coordination*，[arXiv:2609.24526](https:// `📅unknown` `[entity_page]`
 - [机械智能信息论（arXiv:2609.19588）](wiki/entities/paper-mechanical-intelligence-info-theory.md) — 机械智能信息论**（*Quantifying Mechanical Intelligence in Legged Robots with Information Theory*，[arXiv:26 `📅unknown` `[entity_page]`
 - [MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md) — MECo-WAM**（*Learning 4D Geometric Priors for Inference-Efficient World Action Models*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [MemForest](wiki/entities/paper-memforest.md) — MemForest**（*Efficient Agent Memory Management via EventTree Partitioning and Progressive Merging `📅unknown` `[entity_page]`
@@ -4681,6 +4683,7 @@
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 **数据稀缺** 下仍能 **组合行为、适应新目标与物体**——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互 `📅unknown` `[overview_page]`
 - [大模型赋能人形机器人](wiki/overview/large-model-empowered-humanoids.md) — 大模型赋能人形**泛指用 **LLM / VLM / VLA** 等预训练模型承接语义理解与任务规划（有时含直接动作），再通过技能库、导航栈或端到端策略驱动人形执行——课程第 8.1 节的方法地图 `📅unknown` `[overview_page]`
 - [AwesomeSim2Real 技术地图](wiki/overview/lc-awesome-sim2real-technology-map.md) — AwesomeSim2Real 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文策展列表的站内节点化索引（按 MDP 四要素 + 领域分组浏览）。 `📅unknown` `[overview_page]`
+- [理想 MachEmbodied 四篇：记忆、认知、生成与触觉](wiki/overview/li-auto-machembodied-4-papers-technology-map.md) — 车企具身基座不是单模型，而是「记经验 → 定计划 → 生成动作 → 读触觉未来」四层；四篇 arXiv 各守一层，共享 MachEmbodied 品牌与部分代码栈。 `📅unknown` `[overview_page]`
 - [亮源新创三篇 Tech Blog：引用阅读坐标](wiki/overview/lightorigins-3blogs-technology-map.md) — 亮源新创公开的三段范式——预训练（Light-O1）→ 对齐（LightNav-0）→ 部署（Light REACT）——在跑酷线（LightParkour）上还有并行的全身感知运动蒸馏轴；读博客 `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 01：运控基座与通用全身跟踪](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 02：上半身中心控制与移动操作接口](wiki/overview/loco-manip-161-category-02-upper-body-interface.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

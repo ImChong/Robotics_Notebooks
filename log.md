@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md — 理想 MachEmbodied 四篇（Brain/VLM/U0/Dex）；2 新建实体 + 2 复用；4/4 独立 detail 节点；自动合并 PR
+
+- **意图：** 用户指定公众号 https://mp.weixin.qq.com/s/UVSRMDa8Aq2oJtqkRUU_EA；每篇论文独立非重复节点；自动合并 PR
+- **开源结论：** ME-Brain **部分**（Focus-VLWA 已释）；ME-VLM **待发布**；ME-U0 **已开源**；ME-Dex **部分**（步骤 2.5）
+- **关键页：** [`paper-me-brain-1-0`](wiki/entities/paper-me-brain-1-0.md)、[`paper-me-vlm`](wiki/entities/paper-me-vlm.md)、[`li-auto-machembodied-4-papers-technology-map`](wiki/overview/li-auto-machembodied-4-papers-technology-map.md)
+
 ## [2026-09-25] ingest | sources/papers/cooperative_multi_uav_madrl_arxiv_2607_25754.md — AirSim 双机系统化 MADRL 协作迷宫导航（arXiv:2607.25754）；无官方代码；自动合并 PR
 
 - **意图：** 用户指定 arXiv:2607.25754 Cooperative Multi-UAV Navigation…Systematic MADRL；自动合并 PR

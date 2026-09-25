@@ -10,7 +10,7 @@ tags:
   - li-auto
   - open-source
 status: complete
-updated: 2026-09-24
+updated: 2026-09-25
 arxiv: "2609.21449"
 code: https://github.com/MachEmbodied/ME-Dex-1.0
 related:
@@ -23,16 +23,20 @@ related:
   - ./paper-sa-2606-13877-contactworld-what-matters-in-vision-tactile-worl.md
   - ./paper-sa-2606-26663-tactile-wam-touch-aware-world-action-model-with.md
   - ./paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md
+  - ./paper-me-brain-1-0.md
+  - ./paper-me-u0.md
+  - ../overview/li-auto-machembodied-4-papers-technology-map.md
 sources:
   - ../../sources/papers/me_dex_1_0_arxiv_2609_21449.md
   - ../../sources/sites/me-dex-1-0.md
   - ../../sources/repos/machembodied-me-dex-1-0.md
+  - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
 summary: "ME-Dex 1.0（arXiv:2609.21449，理想汽车 Foundation Model）：三专家 MoT WAM 联合预测未来视频/触觉/动作；H-Bridge 共享注意力 + Canonical Hand + Unified Tactile AE；RoboTwin avg 78.9% Clean→Random；推理 runtime 已开源。"
 ---
 
 # ME-Dex 1.0：异构触觉进入 World Action Modeling
 
-**ME-Dex 1.0**（*Bringing Heterogeneous Tactile Sensing into World Action Modeling*，[arXiv:2609.21449](https://arxiv.org/abs/2609.21449)，[项目页](https://machembodied.com/ME-Dex/ME-Dex1.0.html)，[代码](https://github.com/MachEmbodied/ME-Dex-1.0)）由 **理想汽车（Li Auto）Foundation Model** 提出：**MachEmbodied-Dex-1.0** 把触觉与视频并列建模为 **未来观测**，在 Mixture-of-Transformers 内用 flow matching 联合预测 future video、future tactile latents 与 action chunks。
+**ME-Dex 1.0**（*Bringing Heterogeneous Tactile Sensing into World Action Modeling*，[arXiv:2609.21449](https://arxiv.org/abs/2609.21449)，[项目页](https://machembodied.com/ME-Dex/ME-Dex1.0.html)，[代码](https://github.com/MachEmbodied/ME-Dex-1.0)）由 **理想汽车（Li Auto）Foundation Model** 提出：**MachEmbodied-Dex-1.0** 把触觉与视频并列建模为 **未来观测**，在 Mixture-of-Transformers 内用 flow matching 联合预测 future video、future tactile latents 与 action chunks。[2026-09-25 理想四篇盘点](../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md) 强调 **插接/夹持** 类任务需触觉未来，与 ME-Brain 真机插充电器低成功率形成互补读法（**复用本页**）。
 
 ## 一句话定义
 
@@ -186,6 +190,7 @@ sequenceDiagram
 - [me_dex_1_0_arxiv_2609_21449.md](../../sources/papers/me_dex_1_0_arxiv_2609_21449.md)
 - [me-dex-1-0.md](../../sources/sites/me-dex-1-0.md)
 - [machembodied-me-dex-1-0.md](../../sources/repos/machembodied-me-dex-1-0.md)
+- [wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md](../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)
 
 ## 推荐继续阅读
 
