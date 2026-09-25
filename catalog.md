@@ -1698,6 +1698,7 @@
 - [InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA](wiki/entities/paper-internvla-a15-unified-vla.md) — InternVLA-A1.5**（*Unifying Understanding, Latent Foresight, and Action for Compositional Generaliz `📅unknown` `[entity_page]`
 - [InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）](wiki/entities/paper-interprior.md) — InterPrior** 是 UIUC 与 Amazon 团队的 **物理仿真人–物交互（HOI）** 论文（arXiv:2602.06035，项目页标注 **CVPR 2026 Highligh `📅unknown` `[entity_page]`
 - [IRASim（细粒度操作世界模型 · arXiv:2406.14540）](wiki/entities/paper-irasim.md) — IRASim**（*IRASim: A Fine-Grained World Model for Robot Manipulation*，[arXiv:2406.14540](https://ar `📅unknown` `[entity_page]`
+- [IROS 2026：VC 电机模式切换动态人形甩臂](wiki/entities/paper-iros26-vc-motor-dynamic-arm-swing.md) — Dynamic Humanoid Arm-Swing Motion via Trajectory Optimization Leveraging Speed–Torque Mode Switchi `📅unknown` `[entity_page]`
 - [IRWOZ 2.0：工业机器人对话数据集](wiki/entities/paper-irwoz-2.md) — IRWOZ 2.0**（*A Large Language Model-driven Dialogue Dataset for Industrial Robot Conversations*，[a `📅unknown` `[entity_page]`
 - [JEPA Policy：扩散-free 的动作与未来表征联合模仿学习](wiki/entities/paper-jepa-policy.md) — JEPA Policy**（*Diffusion-Free Imitation Learning via Paired Action and Future Representation Predi `📅unknown` `[entity_page]`
 - [JEPA-WAM（arXiv:2608.09381）](wiki/entities/paper-jepa-wam.md) — JEPA-WAM**（arXiv:2608.09381）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
@@ -3998,6 +3999,7 @@
 - [URDF Files Dataset](wiki/entities/urdf-files-dataset.md) — URDF Files Dataset](https://github.com/Daniella1/urdf_files_dataset) 配套 Tola & Corke 的 RA-L 论文 *Und `📅unknown` `[entity_page]`
 - [URDF-Studio](wiki/entities/urdf-studio.md) — URDF-Studio** 是由 OpenLegged 社区开发的一款专业级** Web 机器人设计与组装工作站**。它不仅是一个查看器，更是一个涵盖了从拓扑设计到硬件物料管理（BOM）的全流程工 `📅unknown` `[entity_page]`
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
+- [Variable Chain Motor（可变链电机 / VC motor）](wiki/entities/variable-chain-motor.md) — Variable Chain Motor（VC motor，可变链电机）** 是东京大学团队提出的电动作动器：将 **四个小电机单元** 以「链式」集成，并通过 **专用电路** 在绕组 **串联 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
 - [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
 - [VGGNet](wiki/entities/vggnet.md) — VGGNet** 证明仅用小尺寸 3×3 卷积反复堆叠即可加深网络并提升 ImageNet 精度，以结构简单换取可迁移的通用特征。 `📅unknown` `[entity_page]`

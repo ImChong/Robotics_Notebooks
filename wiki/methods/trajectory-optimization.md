@@ -110,6 +110,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md) — 数值优化课程地图
 - [CMU Optimal Control 2025 策展](../entities/cmu-optimal-control-curriculum.md) — Lec 11–13 非线性 / DDP / 直接法
 - [cuNRTO GPU 鲁棒轨迹优化](../entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
+- [IROS 2026 VC 电机模式切换动态甩臂](../entities/paper-iros26-vc-motor-dynamic-arm-swing.md) — 多模式 speed–torque **并集约束** + 执行时电气模式切换
 
 
 ## 参考来源
