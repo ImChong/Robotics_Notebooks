@@ -4,6 +4,7 @@ tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
 updated: 2026-09-25
 summary: "RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。"
+venue: "Microsoft Research Story（研究专题页，非 arXiv）"
 related:
   - ../entities/awesome-world-action-models-rcl.md
   - ../overview/rcl-awesome-wam-technology-map.md

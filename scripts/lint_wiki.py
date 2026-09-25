@@ -153,10 +153,15 @@ MISSING_CONCEPT_PAGE_MIN_PAGES = 6
 # benchmark…），「分组」后面是分组名（Benchmarks / Datasets / Companies / Books /
 # Courses / Manipulation…）。上千个策展页共用这两句模板，会把 20 个元数据标签一起
 # 顶成「高频缺页候选」，把真正的缺页信号挤出候选榜。
+# RCL Awesome-WAM 策展页（paper-rcl-*）的分组标签写在第三种位置——「技术地图 的
+# **WAMs** 分组逐条展开」，标签在提示词「分组」之前，前两式匹配不到，会把
+# WAMs / Datasets 两个分组名顶进候选榜（180 / 35 页），一并剔除。
 # 这里只剔除**标签本身连同它的提示词**，不动周围正文；也不逐个加停用词——那会让
 # 同一批词在别处作为真概念出现时也被静音（与 venue/type 那类「无论出现在哪都是
 # 字段名」的停用词不同，benchmark / manipulation / dataset 在别处是真概念）。
-CURATED_TAXONOMY_LABEL_RE = re.compile(r"清单中的角色是 \*\*[^*\n]+\*\*|分组 \*\*[^*\n]+\*\*")
+CURATED_TAXONOMY_LABEL_RE = re.compile(
+    r"清单中的角色是 \*\*[^*\n]+\*\*|分组 \*\*[^*\n]+\*\*|\*\*[^*\n]+\*\* 分组逐条展开"
+)
 # 候选输出上限，避免淹没健康报告。
 MISSING_CONCEPT_PAGE_MAX_CANDIDATES = 15
 # 明显非概念的高频 token（frontmatter 键 / 布尔值等），不计入候选。
@@ -507,6 +512,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 不是另一个待建的机制页。与 lerobot / mujoco / libero 同类「已由实体页覆盖、
     # slug 与页面 stem 不同名」。
     "dinov2",
+    # dinov3：外部视觉自监督骨干型号（命中处均为「冻结 **DINOv3** 特征空间」式的
+    # 骨干指称），已由 entities/paper-rcl-2508-10104-dinov3.md 覆盖，与 dinov2 同类
+    "dinov3",
+    # demo：命中处是 paper-*/工具实体「资源」表的 **Demo** 入口行（脚本名 / 在线演示
+    # 链接）与消融条件名；与 code 同为仓库/项目入口指针。示教数据这一概念义已由
+    # queries/demo-data-collection-guide.md 覆盖，不建 concepts/demo.md
+    "demo",
     # onnx：canonical 节点已是 entities/onnx.md（LF AI & Data 的开放模型交换标准，
     # 逐条释义计算图 IR / operators / `.onnx` 格式），执行引擎侧由 entities/onnxruntime.md
     # 承载，选型取舍由 comparisons/onnxruntime-vs-mnn-vs-tensorrt.md 定调（该页开篇即
@@ -556,6 +568,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # comparisons/mpc-vs-rl.md；各页命中处均为「**MPC** 在简化模型上求反力剖面」
     # 「**MPC** 生成到 reset posture 的轨迹」式的指称。与 rl / wbc / urdf 同属
     # 「缩写 slug ≠ 页面 stem」，不应按裸缩写误报为缺页。
+    "moe",  # 已由 concepts/mixture-of-experts.md 覆盖（缩写 slug 与页面 stem 不同名）
     "mpc",
     "mujoco",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖

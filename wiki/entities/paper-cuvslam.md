@@ -11,7 +11,7 @@ tags:
   - isaac-ros
   - multi-camera
 status: complete
-updated: 2026-09-24
+updated: 2026-09-25
 arxiv: "2506.04359"
 venue: "arXiv 2025"
 code: https://github.com/nvidia-isaac/cuVSLAM
@@ -112,7 +112,7 @@ flowchart TB
 | **Multi-Stereo vs 单立体** | 难序列上 **精度与鲁棒性** 提升（仿真 + 真实数据集） |
 | **Jetson 边缘** | 帧级 **实时** 处理（详见报告附录 Jetson 性能表） |
 
-> 复现与最新数字以 [arXiv HTML v3](https://arxiv.org/html/2506.04359v3) 与 Release 说明为准；工程侧另见 README **Performance / Troubleshooting**（标定、同步、帧率、运动模糊）。
+> 复现细节与量化数字以 [arXiv HTML v3](https://arxiv.org/html/2506.04359v3) 与 Release 说明为准；工程侧另见 README **Performance / Troubleshooting**（标定、同步、帧率、运动模糊）。
 
 ## 与其他工作对比
 
