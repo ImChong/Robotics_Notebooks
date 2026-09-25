@@ -303,6 +303,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 
 ### 采集接口与硬件（穿戴 / 手持 / 主从）
 
+- [Bioimpedance EIM（Science Robotics 2026）](../entities/paper-bioimpedance-eim-wearable-myography.md) — 双频可穿戴阻抗肌电；功能性运动中编码 **肌束长度 + 激活**（非 kinematic teleop 接口，但指向 **辅助 / 外骨骼闭环** 人体侧传感）
 - [HandUMI](../entities/handumi.md) — 开源无机器人示教；一次采集多臂重定向
 - [HiFi-UMI / HiFi-UMI-2K（论文实体）](../entities/paper-hifi-umi.md) — 高保真 UMI 2000 h；zero-robot 后训练（arXiv:2607.25895）
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 无机器人示范 → 人形全身扩散策略 + SKR
