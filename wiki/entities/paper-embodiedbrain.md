@@ -8,7 +8,7 @@ tags:
   - zte
   - step-grpo
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 arxiv: "2510.20578"
 code: https://github.com/ZTERobot/EmbodiedBrain1.0
 related:
@@ -55,7 +55,7 @@ summary: "EmbodiedBrain（arXiv:2510.20578）：7B/32B 具身规划 VLM：agent-
 | **arXiv** | [2510.20578](https://arxiv.org/abs/2510.20578) |
 | **开源** | **已开源** |
 | **要点** | Step-GRPO 把前序步骤作 Guided Precursors；三部分评测（General / Planning / E2E Sim）；VLM-PlanSim-99（AI2-THOR）。 |
-| **文内指标** | 多基准 SOTA（以原文为准）；HF EmbodiedBrain-7B 权重已发布。 |
+| **文内指标** | 文内报告多基准领先（以原文为准）；HF EmbodiedBrain-7B 权重已发布。 |
 
 
 ## 源码运行时序图
@@ -79,7 +79,7 @@ sequenceDiagram
 
 ## 实验与评测
 
-- 多基准 SOTA（以原文为准）；HF EmbodiedBrain-7B 权重已发布。
+- 文内报告多基准领先（以原文为准）；HF EmbodiedBrain-7B 权重已发布。
 - **读法：** 索引级摘要；逐项 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
@@ -91,7 +91,7 @@ sequenceDiagram
 | 评测面 | 三部分：General / Planning / **E2E Sim**（VLM-PlanSim-99，AI2-THOR） | 操作任务成功率 | 通用基准 |
 | 输出 | 任务计划（需下游执行器落到动作） | 直接动作 | 文本计划 |
 
-- **「多基准 SOTA」要看是哪一层：** 本文的强项在 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 **① 认知/规划层**；VLM-PlanSim-99 已经往 ③ 靠了一步（端到端仿真），但仍不是真机成功率，**不可直接与 VLA 的操作成功率横比**。
+- **「多基准领先」要看是哪一层：** 本文的强项在 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 **① 认知/规划层**；VLM-PlanSim-99 已经往 ③ 靠了一步（端到端仿真），但仍不是真机成功率，**不可直接与 VLA 的操作成功率横比**。
 - **Step-GRPO 的适用前提：** 把前序步骤当 Guided Precursors，依赖任务本身 **有清晰的步骤结构**；长程、步骤边界模糊的任务上该信号会变弱。
 - **逐项数值：** 各基准分数与 baseline **以 [原文 PDF](https://arxiv.org/abs/2510.20578) 为准**；本页为索引级摘要。
 

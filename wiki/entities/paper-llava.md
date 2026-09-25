@@ -10,7 +10,7 @@ tags:
   - microsoft
   - columbia
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 arxiv: "2304.08485"
 code: https://github.com/haotian-liu/LLaVA
 related:
@@ -81,7 +81,7 @@ flowchart LR
 ## 评测
 
 - **LLaVA-Bench**：相对 GPT-4 评分 **85.1%**（合成多模态指令集）。
-- **Science QA**：LLaVA + GPT-4 judge **92.53%** SoTA（原文）。
+- **Science QA**：LLaVA + GPT-4 judge **92.53%**，发表时（2023-04）该基准最高分（原文）。
 - 机器人侧：本页 **不直接输出动作**；价值在 **指令跟随与语义 grounding**，供 VLA 动作头消费。
 
 ## 结论

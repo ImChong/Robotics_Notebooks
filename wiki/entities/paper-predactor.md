@@ -101,6 +101,17 @@ flowchart LR
 
 真机 demo：文本 walk/jog/squat、摇杆转向、外扰反应、语义插值（stand↔raise hand / stand↔run）。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：各行与本页不共享同一评测协议，数字不可直接相减。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [SONIC](../methods/sonic-motion-tracking.md) | SONIC 是 **reference tracking** 路线（上游给参考运动、策略负责跟踪）；PredActor 不走 generator→tracker 分拆，**同一 joint diffusion 策略**直接出关节动作，扰动恢复也在该策略内 |
+| [Sample, Simulate, Select](./paper-sample-simulate-select.md) | 同在 G1 上做文本驱动运动：S³ **零训练**，冻结 MoMask + SONIC 仿真 best-of-N 选优；PredActor 需训练 joint state–action 去噪器，换来机载 50 Hz 闭环与 test-time CG/CFG 引导 |
+| [Diffusion Policy](../methods/diffusion-policy.md) | 经典 DP 只去噪**动作**；PredActor 联合去噪**未来状态 + 动作**，预测态作为引导内部量（不外发），并用 rolling denoising 压延迟 |
+| Diffuse-CLoC / SCDP / SCRIPT（论文 Table 1） | 同属 joint / 条件扩散人形控制；PredActor 的差异点是 **CFG + CG 并存且仅 proprio 输入**，并给出全 onboard 部署计时 — 以原文表格为准 |
+
 ## 结论
 
 **PredActor 把 joint diffusion 的「预测态引导 + 直接动作执行」落到 G1 机载 50 Hz，是 onboard generative humanoid control 的部署基准点；复现需等官方代码/权重。**

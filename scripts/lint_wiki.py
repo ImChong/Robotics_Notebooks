@@ -102,6 +102,7 @@ STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不负责",  # 「WM 不负责单独变成 SOTA VLA」：同为「不 + 谓词」的辟谣
     "不包装",  # 「诚实的 technical report：不包装成 SOTA」：同为「不 + 谓词」的辟谣
     "不提出",  # 「不提出单一 SOTA 系统，而是做结构性对照实验」：同为「不 + 谓词」的辟谣
+    "未给出",  # 「未给出单一 SOTA 训练配方」：同为「未 + 谓词」的辟谣
     "未必",
     "勿",
 )
@@ -460,6 +461,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "act",  # 已由 methods/action-chunking.md（机制）+ entities/paper-act.md（论文）覆盖，
     # 缩写 slug 与页面 stem 不同名；与 wbc / rl / wam 同类
     "action",
+    # actions：三义各有归属——ROS 2 的长时 **Actions** 通信原语已由 concepts/ros2-basics.md
+    # 释义，Isaac Lab 的 `Actions` manager 由 entities/nvidia-getting-started-isaac-lab.md
+    # 承载；余下的 `actions` 是代码 token（HDF5 数组键、ONNX 输出名、数据集标注字段），
+    # 与单数 action / qpos 同类，不单建概念页。
+    "actions",
     # dit：Diffusion Transformer 的缩写，机制已由 concepts/diffusion-transformer.md
     # 定义（扩散骨干把 U-Net 换成 Transformer），各页正文里的 **DiT** 均为「某动作头/
     # 视频骨干用 DiT」的指称。缩写 slug 与页面 stem 不同名，与 act / wbc / urdf 同类。
@@ -527,6 +533,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "lerobot-train",
     "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
     "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
+    # mcap：canonical 节点已是 entities/mcap-log-format.md（日志容器格式），与 HDF5 /
+    # LeRobot 的取舍由 comparisons/hdf5-mcap-lerobot-data-formats.md 定调；与 onnx /
+    # lerobot 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
+    "mcap",
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     # model：库内 6 处引用全是代码 token，不是待建的机制页——Newton 的

@@ -91,6 +91,17 @@ flowchart LR
 | Hardware gate passes | 33 | **85** |
 | 真机 gate clips | — | **177/177** standing |
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：各行与本页不共享同一评测协议，数字不可直接相减。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [PredActor](./paper-predactor.md) | 同在 G1 上做文本→运动：PredActor **训练**端到端 joint state–action 扩散策略并机载闭环；S³ **零训练**，冻结 MoMask 生成候选、用 SONIC 仿真 rollout 选优 |
+| [SONIC](../methods/sonic-motion-tracking.md) | SONIC 自带文本等多模态接口；S³ 不用其文本端，只把预训练 tracking policy + 仿真当 **verifier**，测「生成器 × 跟踪器」栈的 any-of-N 上限 |
+| [GMR 重定向](../methods/motion-retargeting-gmr.md) | S³ 把 IK 与 GMR 当可互补的两个 retargeter：IK 偏 locomotion、GMR 保 pelvis，双 retargeter OR 把合并上限提到 95.0% |
+| 运动学风险分类器（文内对照） | AUROC 0.90 的 fall predictor 只恢复约 25% S³ 增益 — 说明同 prompt 内排序需要物理 rollout，不能用运动学打分替代 |
+
 ## 结论
 
 **S³ 给出 language→G1 的 **零训练** physics-in-the-loop 上限：选优有效但无法创造生成器不产出的低骨盆行为；kinematic verifier 不能替代 rollout 排序。**

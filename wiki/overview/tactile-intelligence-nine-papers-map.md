@@ -9,7 +9,7 @@ tags:
   - survey
   - technology-map
 status: complete
-updated: 2026-09-23
+updated: 2026-09-24
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
@@ -108,7 +108,7 @@ flowchart TB
 | 3 | **Tactile-VLA** | VBTS + **混合位置–力** + CoT | Charger **90%**；擦板 OOD **80%** vs 0% | 待发布 | [paper-sa-2507-09160](../entities/paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md) |
 | 4 | **OmniVTLA** | **SA-ViT** 语义对齐 + ObjTac | Pick-place **96.9% / 100%**；peg **83.3%** | 部分（ObjTac 已放） | [paper-sa-2508-08706](../entities/paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md) |
 | 5 | **ForceVLA**（NeurIPS 2025） | **6 轴 F/T + FVLMoE** on π₀ | 五任务 **60.5%**（**+23.2 pt**）；plug **80%** | 待发布 | [paper-forcevla](../entities/paper-forcevla.md) |
-| 6 | **TaF-VLA** | **触觉–力 latent 对齐** TaF-Adapter | 7 任务 **+22%** vs SOTA 视触觉 VLA | 部分 `mrHuangyz/TaF-VLA` | [paper-sa-2601-20321](../entities/paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md) |
+| 6 | **TaF-VLA** | **触觉–力 latent 对齐** TaF-Adapter | 7 任务 **+22%** vs 此前 SOTA 视触觉 VLA | 部分 `mrHuangyz/TaF-VLA` | [paper-sa-2601-20321](../entities/paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md) |
 
 **VTLA 选型速记：**
 

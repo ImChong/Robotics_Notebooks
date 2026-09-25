@@ -89,6 +89,18 @@ flowchart TB
 - 真机 zero-shot：Franka 单臂多样操作 + Galbot 双臂/contact-rich（扫、倒、解 ribbon 等）。
 - 对比视频：vs π₀.₅ / Cosmos-Nano 等同 prompt 失败案例。
 
+## 与其他工作对比
+
+> 下表只做**定位对照**，不做跨设定横比：各行与本页不共享同一评测协议，数字不可直接相减。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [THAW-VLA](./paper-thaw-vla.md) | 同为「WAM 太慢、如何部署」，解法相反：THAW-VLA 把 WAM 特征**蒸馏**进紧凑 VLA、部署图与 baseline 相同；DualWAM **两端都保留 WAM**，靠异步分频拿延迟收益 |
+| [WholeBodyWAM](./paper-wholebodywam.md) | 同为保留预训练 WAM 先验，但扩展轴不同：WholeBodyWAM 把桌面 WAM 泛化到**人形全身**（UWBC 语义接口）；DualWAM 在**机械臂**上解**长视野 vs 闭环响应**的时延张力 |
+| [MAP-WAM](./paper-map-wam.md) | MAP-WAM 用情景记忆生成分段计划补**长程记忆**；DualWAM 的 S2 全局规划解决的是**低频规划与高频纠偏**的调度，二者正交 |
+| [控制/推理频率解耦](../concepts/control-inference-frequency-decoupling.md) | 通用范式是「低频 VLA + 高频 PD/WBC」；DualWAM 把高频端也换成**小 WAM**，并沿共享去噪轨迹（τ handoff）交接，而非只交动作块 |
+| [Action Chunking](../methods/action-chunking.md) | 单纯加长 chunk 能摊销推理但牺牲响应；DualWAM 保留 8-action 短 chunk，由 S1 高频刷新 |
+
 ## 结论
 
 **DualWAM 代表「双 WAM、共享去噪轨迹、异步更新」路线 — 在保留 world–action 联合生成的同时把控制环 latency 拉下来；工程复现待官方代码。**
