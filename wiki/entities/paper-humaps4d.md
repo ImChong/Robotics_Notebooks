@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, human-motion, mocap, semg, plantar-pressure, multimodal, cvpr, imt-nord-europe, imt, universite-de-lille]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 venue: "CVPR 2026"
 related:
   - ../concepts/motion-retargeting.md
@@ -134,6 +134,7 @@ flowchart LR
 | **[HUMOTO](./paper-notebook-humoto-a-4d-dataset-of-mocap-human-object-intera.md)** | 4D 人-物交互 MoCap；无 sEMG/足底/临床语义层 |
 | **[LaFAN1](./lafan1-dataset.md)** | 小规模高质量 BVH 步态；无可穿戴生理信号 |
 | **[人形参考运动数据集选型](../comparisons/humanoid-reference-motion-datasets.md)** | 机器人重定向主线；HUMAPS-4D 偏 **人体感知/生物力学 + 隐私友好推断** |
+| **[Bioimpedance EIM（Sci. Robot. 2026）](./paper-bioimpedance-eim-wearable-myography.md)** | 可穿戴 **阻抗域** 肌束/激活传感机理验证；与 HUMAPS sEMG **互补**（非数据集） |
 
 ## 结论
 

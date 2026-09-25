@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/papers/bioimpedance_eim_scirobotics_2026.md — Science Robotics 可穿戴双频 EIM 编码肌束与激活动力学（Georgia Tech）；Zenodo 部分开源；自动合并 PR
+
+- **意图：** 用户指定 DOI 10.1126/scirobotics.aea4580 与 Zenodo 10.5281/zenodo.22044875；自动合并 PR
+- **开源结论：** **部分开源** — Zenodo 发布后处理 Excel + Jupyter 图表复现；无 GitHub / 项目页 / 硬件固件（步骤 2.5 以 Zenodo README 为准）
+- **关键页：** [`paper-bioimpedance-eim-wearable-myography`](wiki/entities/paper-bioimpedance-eim-wearable-myography.md)
+
 ## [2026-09-24] ingest | sources/repos/ocs2.md、sources/sites/ocs2-official-docs.md — OCS2 官方 GitHub + 文档站；已开源；重写实体页与 NMPC 方法页交叉
 
 - **意图：** 用户指定 https://github.com/leggedrobotics/ocs2 与 https://leggedrobotics.github.io/ocs2/overview.html；自动合并 PR
