@@ -5,7 +5,7 @@
 - **站点**：<https://rcl-robotics.github.io/Awesome-World-Action-Models/>
 - **同源仓库**：<https://github.com/rcl-robotics/Awesome-World-Action-Models>
 - **综述标题**：*World-Action Models for Robot Learning and Control: A Survey*
-- **arXiv**：**Coming soon**（站点与 README 均标注待发布；截至入库日无编号）
+- **arXiv**：[2609.16074](https://arxiv.org/abs/2609.16074)（2026-09-25 发布）
 - **机构**：MBZUAI（通讯 Xingxing Zuo）等；联合 Caltech、Amazon FAR、UVA、Georgia Tech、NYU、UC Berkeley
 
 ## 一句话
@@ -24,7 +24,7 @@
 |--------|--------|
 | Markdown 策展清单、`papers.json`、静态站源码（MIT License） | 训练/推理代码、模型权重（清单性质） |
 
-**结论：已开源（策展与站点模板）**；综述 PDF/arXiv **待发布**。
+**结论：已开源（策展与站点模板）**；综述 PDF 见 **arXiv:2609.16074**。
 
 ## 站点摘录（2026-09-16 抓取要点）
 

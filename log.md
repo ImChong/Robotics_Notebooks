@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md — RCL WAM 综述 arXiv:2609.16074 中文导读；同步 sources 与 WAM 概念页
+
+- **意图：** 用户指定 https://mp.weixin.qq.com/s/0ZMRkQCTmbWxWDiUBvdbsg；自动合并 PR
+- **开源结论：** 综述 **arXiv:2609.16074** 已发布；Awesome 站点/仓库 **已开源**（MIT 策展）
+- **关键页：** [world-action-models](wiki/concepts/world-action-models.md)、[awesome-world-action-models-rcl](wiki/entities/awesome-world-action-models-rcl.md)
+
 ## [2026-09-25] ingest | sources/repos/isaac_ros_deploy.md — Isaac ROS Deploy（LEAPP + Triton + ros2_control）；已开源；自动合并 PR
 
 - **意图：** 用户指定 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_deploy；自动合并 PR

@@ -2,8 +2,9 @@
 type: entity
 tags: [curated-list, world-action-models, wam, vla, embodied-ai, survey, mbzuai]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 related:
+  - ../methods/pi07-policy.md
   - ../concepts/world-action-models.md
   - ./awesome-world-models.md
   - ../methods/vla.md
@@ -16,7 +17,8 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
   - ../../sources/sites/awesome-world-action-models-rcl.md
   - ../../sources/papers/rcl_wam_robot_learning_survey.md
-summary: "RCL Robotics / MBZUAI 维护的 Awesome World-Action Models：564 条 WAM 生态策展、2×2 架构四象限（One/Dual × Joint/IDM）、Reading reports 与 papers.json；配套综述 arXiv 待发布。"
+  - ../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md
+summary: "RCL Robotics / MBZUAI 维护的 Awesome World-Action Models：564 条 WAM 生态策展、2×2 架构四象限（One/Dual × Joint/IDM）、Reading reports 与 papers.json；配套综述 arXiv:2609.16074。"
 ---
 
 # Awesome World-Action Models（RCL / MBZUAI）
@@ -90,9 +92,13 @@ flowchart TB
 3. [Reading reports](https://rcl-robotics.github.io/Awesome-World-Action-Models/reports/) — 单篇证据化解读
 4. 站内概念页 [WAM](../concepts/world-action-models.md) — 与实例论文实体交叉阅读
 
+## 中文导读（具身智能之心，2026-09-25）
+
+[近 300 篇工作调研 · WAM 训练策略](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md) 用中文串读综述主线：**WM/VLA/WAM 分界**、**π0.5 / EgoScale** 两类 VLA 扩展、**三类数据金字塔**、**预训练（视频自监督 + 动作表征）→ 后训练（微调 / 增广 / 神经仿真 RL）**，并与本站 Q1–Q4 架构轴对照。文内「近 300 篇」指综述梳理规模；本清单 **564 entries** 含 VLA/数据/基准分册，宜并列使用。
+
 ## 局限与使用注意
 
-- **综述 arXiv 待发布**：截至入库日无正式编号；引用以项目页为准，后续落地后更新 source。
+- **综述 PDF**：正式编号 [arXiv:2609.16074](https://arxiv.org/abs/2609.16074)；引用以 PDF 与项目页为准。
 - **清单滞后**：awesome 依赖维护者更新；关键结论以原文与官方仓为准。
 - **非可运行栈**：MIT 许可的是站点/策展工具链，不含训练代码。
 - **与 OpenMOSS 分工**：2605.12090 配套 [Awesome-WAM](../../sources/repos/awesome-wam-openmoss.md) 更早建立 Cascaded/Joint 叙事；本清单 **条目更多、架构轴更细**，宜并列使用而非互相替代。
@@ -111,6 +117,7 @@ flowchart TB
 - [sources/repos/awesome-world-action-models-rcl.md](../../sources/repos/awesome-world-action-models-rcl.md)
 - [sources/sites/awesome-world-action-models-rcl.md](../../sources/sites/awesome-world-action-models-rcl.md)
 - [sources/papers/rcl_wam_robot_learning_survey.md](../../sources/papers/rcl_wam_robot_learning_survey.md)
+- [具身智能之心 · WAM 训练策略导读（2026-09-25）](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md)
 
 ## 推荐继续阅读
 
