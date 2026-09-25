@@ -124,7 +124,7 @@ flowchart LR
 | **④ 策略微调** | Fine Tuning Policy | [Isaac GR00T](../entities/isaac-gr00t.md)、[SO-101 Sim2Real 动手课](../entities/nvidia-so101-sim2real-lab-workflow.md) | VLA 后训练与 checkpoint 产出 |
 | **④ 评测** | Isaac Arena | [Isaac Lab-Arena](../entities/isaac-lab-arena.md)、[DexBench](../entities/dexbench.md)、[Lightwheel RoboFinals](../entities/lightwheel-robofinals.md) | 通才策略的大规模并行评测 |
 | **⑤ SIL 测试** | MEGA / Isaac Sim / Isaac ROS | [Software-in-the-Loop](../concepts/software-in-the-loop.md)、[Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)、[Isaac Sim](../entities/isaac-sim.md) | 上机前跑真实软件栈回归 |
-| **⑥ 部署** | Isaac ROS | [Isaac ROS Nvblox](../entities/isaac-ros-nvblox.md)、[Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md)、[cuRobo](../entities/curobo.md)、[TensorRT](../entities/tensorrt.md)、[NVIDIA Jetson](../entities/nvidia-jetson.md)、[Jetson Orin NX](../entities/jetson-orin-nx.md) | 机载感知/规划/推理落到 ROS 2 |
+| **⑥ 部署** | Isaac ROS | [Isaac ROS Deploy](../entities/isaac-ros-deploy.md)、[Isaac ROS Nvblox](../entities/isaac-ros-nvblox.md)、[Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md)、[cuRobo](../entities/curobo.md)、[TensorRT](../entities/tensorrt.md)、[NVIDIA Jetson](../entities/nvidia-jetson.md)、[Jetson Orin NX](../entities/jetson-orin-nx.md) | LEAPP 策略 + 感知/规划/推理落到 ROS 2 |
 | **⑥ 端到端案例** | —（截图未画） | [GR00T G1 E2E 动手课](../entities/nvidia-gr00t-e2e-g1-workflow.md)、[Spot locomotion Sim2Real](../entities/nvidia-isaac-lab-spot-locomotion-sim2real.md)、[UR10e 工业装配 Sim2Real](../entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md)、[GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) | 官方把全链跑通的公开样例 |
 
 ## 工程实践：按缺口选入口
@@ -137,7 +137,8 @@ flowchart LR
 | 数据不够多样 | [Cosmos Transfer](../entities/cosmos-transfer.md) | [Cosmos Cookbook](../entities/cosmos-cookbook.md) 的可运行配方 |
 | 训练环境 | [Isaac Lab](../entities/isaac-lab.md) | [Isaac Lab 默认环境](../entities/isaac-lab-default-environments.md) |
 | 评测口径 | [Isaac Lab-Arena](../entities/isaac-lab-arena.md) | [具身模型测评纵深路线](../../roadmap/depth-embodied-eval.md) |
-| 上机部署 | [Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md) | [TensorRT](../entities/tensorrt.md) + [Jetson](../entities/nvidia-jetson.md) |
+| 上机部署（learned policy） | [Isaac ROS Deploy](../entities/isaac-ros-deploy.md) | [Isaac GR00T](../entities/isaac-gr00t.md) LEAPP 导出 + [Jetson](../entities/nvidia-jetson.md) |
+| 上机部署（感知 SLAM） | [Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md) | [TensorRT](../entities/tensorrt.md) + [Jetson](../entities/nvidia-jetson.md) |
 | 跨段自动化管线 | [NVIDIA OSMO](../entities/nvidia-osmo.md) | [HIL 概念](../concepts/hardware-in-the-loop.md) + [Isaac Sim SDG 教程](https://nvidia.github.io/OSMO/main/user_guide/how_to/isaac_sim_sdg.html) |
 
 ## 局限与风险
@@ -146,7 +147,7 @@ flowchart LR
 - **截图里的多个节点本站没有独立页**（不为凑图造空壳页）：
   - **Arbitrator**、**Custom Checker** — 目前只在 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)、[Cosmos 3](../entities/cosmos-3.md) 内被提及，未单独升格。
   - **MEGA** — 本站无任何页面覆盖；**推测**为 Omniverse 侧的大规模工厂/车队数字孪生蓝图，待查证官方资料后再升格，不要按推测写页。
-  - **Isaac ROS 主页** — 本站只有 [Nvblox](../entities/isaac-ros-nvblox.md) 与 [Visual SLAM](../entities/isaac-ros-visual-slam.md) 两个组件页，缺框架总览页。
+  - **Isaac ROS 总览页** — 本站已有 [Deploy](../entities/isaac-ros-deploy.md)、[Nvblox](../entities/isaac-ros-nvblox.md)、[Visual SLAM](../entities/isaac-ros-visual-slam.md) 等组件页，仍缺单一「Isaac ROS 框架总览」页。
 - **版本漂移**：[Isaac Gym](../entities/isaac-gym.md) 已 deprecated；Cosmos 1.x/2.x 配方（Cookbook）为有限维护，新工作在 Cosmos 3。读本页表格时以各实体页的版本说明为准。
 - **生成数据的评分不是物理证明**：Cosmos Reason 之类 critic 只能滤「看起来不合理」，替代不了 SIL 与真机回归。
 
@@ -172,6 +173,7 @@ flowchart LR
 - [Isaac Lab-Arena 通才策略评测博客归档](../../sources/blogs/nvidia_isaac_lab_arena_generalist_policy_eval.md)
 - [NVIDIA Cosmos 仓库归档](../../sources/repos/nvidia_cosmos.md)、[Cosmos Cookbook 归档](../../sources/repos/nvidia_cosmos_cookbook.md)
 - [Isaac ROS Nvblox 仓库归档](../../sources/repos/isaac_ros_nvblox.md)
+- [Isaac ROS Deploy 仓库归档](../../sources/repos/isaac_ros_deploy.md)
 
 ## 推荐继续阅读
 

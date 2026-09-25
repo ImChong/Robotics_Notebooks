@@ -71,6 +71,7 @@ ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现�
 | 移动导航 | Nav2 | [Navigation2](../../../wiki/entities/navigation2.md)、[导航·SLAM 栈总览](../../../wiki/overview/navigation-slam-autonomy-stack.md) |
 | 自动驾驶 | Autoware Universe | [Autoware](../../../wiki/entities/autoware.md) |
 | 视觉 SLAM | Isaac ROS、slam_toolbox | [Isaac ROS Visual SLAM](../../../wiki/entities/isaac-ros-visual-slam.md) |
+| 策略部署（LEAPP） | Isaac ROS Deploy | [Isaac ROS Deploy](../../../wiki/entities/isaac-ros-deploy.md) |
 | 群体无人机 | Crazyswarm2 | [Crazyswarm2](../../../wiki/entities/crazyswarm2.md) |
 | 人形足球 demo | Booster RoboCup | [Booster RoboCup Demo](../../../wiki/entities/booster-robocup-demo.md) |
 | 四足机载软件 | Pupper v3 monorepo | [sources/repos/pupperv3_monorepo.md](../../../sources/repos/pupperv3_monorepo.md) |
