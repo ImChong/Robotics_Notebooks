@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md",
+      "detail_id": "entity-paper-raibo2-marathon-energy-efficient-quadruped",
+      "label": "RAIBO2：单次充电完成马拉松的高能效四足",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
       "path": "wiki/entities/paper-xiaomi-cocktailasr-1.md",
       "detail_id": "entity-paper-xiaomi-cocktailasr-1",
       "label": "Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）",
@@ -205,28 +216,18 @@
       "source": "git",
       "action": "added",
       "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-routelt.md",
-      "detail_id": "entity-paper-routelt",
-      "label": "RouteRLT（arXiv:2609.26467）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-xiaomi-cocktailasr-1.md",
-    "detail_id": "entity-paper-xiaomi-cocktailasr-1",
-    "label": "Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）",
+    "path": "wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md",
+    "detail_id": "entity-paper-raibo2-marathon-energy-efficient-quadruped",
+    "label": "RAIBO2：单次充电完成马拉松的高能效四足",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
