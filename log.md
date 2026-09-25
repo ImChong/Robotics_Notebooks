@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/repos/isaac_ros_deploy.md — Isaac ROS Deploy（LEAPP + Triton + ros2_control）；已开源；自动合并 PR
+
+- **意图：** 用户指定 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_deploy；自动合并 PR
+- **开源结论：** GitHub **已开源**（Apache-2.0；步骤 2.5 无独立项目页，以仓库与 Isaac ROS 文档为准）
+- **关键页：** [`isaac-ros-deploy`](wiki/entities/isaac-ros-deploy.md)；互链 GR00T / Isaac Lab / Physical AI 工具链地图
+
 ## [2026-09-25] structural | 合并重复节点 | wiki/queries/iros-2026-six-trends-from-1933-papers.md → wiki/overview/iros-2026-six-trends-technology-map.md（canonical）
 
 - **触发：** 用户报告 `detail.html?id=wiki-overview-iros-2026-six-trends-technology-map` 与 `detail.html?id=wiki-queries-iros-2026-six-trends-from-1933-papers` 两页重复。

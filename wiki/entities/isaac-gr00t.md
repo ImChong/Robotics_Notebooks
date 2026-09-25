@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, vla, humanoid, nvidia, foundation-policy, lerobot, isaac-lab, deployment]
 status: complete
-updated: 2026-09-23
+updated: 2026-09-25
 summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 GA 参考代码、LeRobot 数据管线、后训练/评测/TensorRT 部署，并与 Isaac Lab-Arena、Teleop、Isaac ROS 组成端到端策略流水线。"
 related:
   - ./nvidia-gr00t-e2e-g1-workflow.md
@@ -18,6 +18,7 @@ related:
   - ./paper-indi.md
   - ./perceptron-isaac-05.md
   - ./isaac-teleop.md
+  - ./isaac-ros-deploy.md
   - ./nvidia-physical-ai-datasets.md
   - ./nvidia-gtc.md
 sources:
@@ -93,7 +94,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 | 后训练 | `launch_finetune.py` + `g1_sim_wbc_data_gr00t_n_1_7_config.py` | `--embodiment-tag new_embodiment`；Arena 外单独 checkout Isaac-GR00T |
 | 闭环评测 | `policy_runner.py` + 远端 GR00T server | ZMQ；冒烟 `--num_steps 600`；统计 `--num_episodes 100` + `--num_envs 5` |
 
-真机 G1 部署见 [Isaac ROS GR00T Reference Workflow](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html)（MCAP → LeRobot → LEAPP）。
+真机 G1 部署见 [Isaac ROS GR00T Reference Workflow](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html)（MCAP → LeRobot → LEAPP）；机载 ROS 2 运行时见 [Isaac ROS Deploy](./isaac-ros-deploy.md)。
 
 ## GR00T N1.7（当前 GA 主线）
 
@@ -138,6 +139,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 仿真框架：[isaac-gym-isaac-lab.md](../entities/isaac-gym-isaac-lab.md)  
 - 官方动手课：[nvidia-gr00t-e2e-g1-workflow.md](./nvidia-gr00t-e2e-g1-workflow.md) — G1 apple→plate **仿真/真机双路径** step-by-step 教程
 - 全栈定位：[NVIDIA Physical AI 工具链技术地图](../overview/nvidia-physical-ai-toolchain-technology-map.md) — 本页五阶段在端到端七段里的上下游
+- LEAPP 机载运行时：[isaac-ros-deploy.md](./isaac-ros-deploy.md) — Triton + `ros2_control` / topic 部署
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)  
 - 视觉 Sim2Real 姊妹仓：[gr00t-visual-sim2real.md](../entities/gr00t-visual-sim2real.md)
 - 对象中心闭环增强：[POT-VLA](./paper-pot-vla.md) — 在 **GR00T-N1.7** 动作头插入持久 3D 对象 token + 几何谓词验收（G1 **39/80→71/80**；POT 侧未开源）
