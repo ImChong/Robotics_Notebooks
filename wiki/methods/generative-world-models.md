@@ -450,6 +450,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 生成式世界模型是五层选型闭环 **⑤ 世界模型推演层** 的 **级联预演** 范式（VLA 出候选 → WM 逐帧推演择优 → 真机执行），与 WAM 的「联合建模」范式并列，注意推演步长↑累积误差↑
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 生成视频可当 VFM，但观感保真 ≠ 可干预的物理结构；VGI 议程把本页方法族放进视觉通向 AGI 的坐标系
 - [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 把 WM 写成三轴之一，用耦合类型诊断长程/不确定失败（TMLR 2026）
+- [Diffusion-Based World Models Survey](../entities/paper-diffusion-based-world-models-survey.md) — Preprints 2026 **扩散 WM 专综述** + Living GitHub 三分域文献表（与本文工程折中视角互补）
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy
 - [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)
 - [Model-Based RL](../methods/model-based-rl.md)
