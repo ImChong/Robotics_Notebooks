@@ -3709,6 +3709,7 @@
 - [X-World（Controllable Ego-Centric Multi-Camera World Models）](wiki/entities/paper-x-world.md) — X-World**（arXiv:2603.19979）由小鹏（XPeng） GWM 团队提出：面向端到端智驾评测与数据扩增的 **动作条件 `📅unknown` `[entity_page]`
 - [X2Streaming-TTS：令牌级因果流式语音合成](wiki/entities/paper-x2streaming-tts.md) — X2Streaming-TTS**（*Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inherit `📅unknown` `[entity_page]`
 - [XHugWBC（HMI P037）](wiki/entities/paper-xhugwbc-cross-humanoid.md) — XHugWBC**（*Scalable and General Whole-Body Control for Cross-Humanoid Locomotion*，2026，[arXiv:2602 `📅unknown` `[entity_page]`
+- [Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）](wiki/entities/paper-xiaomi-cocktailasr-1.md) — Xiaomi-CocktailASR-1**（*Xiaomi-CocktailASR-1 Technical Report*，[arXiv:2609.11274](https://arxiv.or `📅unknown` `[entity_page]`
 - [X-Morph：跨形态人体运动先验](wiki/entities/paper-xmorph.md) — X-Morph**（*Human Motion Priors for Scalable Robot Learning Across Morphologies*，[arXiv:2606.30290 `📅unknown` `[entity_page]`
 - [XPACE（Joint World and Action Modeling · arXiv:2609.17372）](wiki/entities/paper-xpace.md) — XPACE**（*XPACE: Joint World and Action Modeling from Heterogeneous Experience*，[arXiv:2609.17372 `📅unknown` `[entity_page]`
 - [XR-2：1500 小时双臂家务到在线修正](wiki/entities/paper-xr2-bimanual-household.md) — Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Correction `📅unknown` `[entity_page]`
