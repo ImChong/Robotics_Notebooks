@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md",
+      "detail_id": "entity-paper-raibo2-marathon-energy-efficient-quadruped",
+      "label": "RAIBO2：单次充电完成马拉松的高能效四足",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
       "path": "wiki/entities/paper-rcl-1312-6114-auto-encoding-variational-bayes.md",
       "detail_id": "entity-paper-rcl-1312-6114-auto-encoding-variational-bayes",
       "label": "Auto-Encoding Variational Bayes",
@@ -216,29 +227,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-2203-15041-socially-compliant-navigation-dataset-scand-a-la.md",
-      "detail_id": "entity-paper-rcl-2203-15041-socially-compliant-navigation-dataset-scand-a-la",
-      "label": "Socially Compliant Navigation Dataset (SCAND)",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-rcl-1312-6114-auto-encoding-variational-bayes.md",
-    "detail_id": "entity-paper-rcl-1312-6114-auto-encoding-variational-bayes",
-    "label": "Auto-Encoding Variational Bayes",
+    "path": "wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md",
+    "detail_id": "entity-paper-raibo2-marathon-energy-efficient-quadruped",
+    "label": "RAIBO2：单次充电完成马拉松的高能效四足",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界模型（World Models） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
