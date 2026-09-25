@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2607.23783"
 venue: "arXiv 2026"
 summary: "First tactile-native world-action model trained at large scale; predicts both future vision and contact with strong capability on contact-rich tasks."

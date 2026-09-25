@@ -8,7 +8,7 @@ tags:
   - galaxea
   - tsinghua
 status: complete
-updated: 2026-09-23
+updated: 2026-09-25
 arxiv: "2603.16666"
 code: https://github.com/yuantianyuan01/FastWAM
 related:

@@ -15,7 +15,7 @@ tags:
   - tsinghua
   - ruc
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2608.09771"
 related:
   - ../concepts/world-action-models.md

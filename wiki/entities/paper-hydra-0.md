@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, action-conditioning, multi-embodiment, video-generation, policy-evaluation, cosmos, isaac-lab, nvidia, brown, columbia]
 status: complete
-updated: 2026-08-20
+updated: 2026-09-25
 arxiv: "2608.18077"
 related:
   - ../methods/generative-world-models.md

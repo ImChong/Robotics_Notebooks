@@ -7,7 +7,7 @@ tags:
   - memory
   - long-horizon
 status: complete
-updated: 2026-09-23
+updated: 2026-09-25
 arxiv: "2606.20562"
 code: https://github.com/yangsizhe/MemoryWAM
 related:

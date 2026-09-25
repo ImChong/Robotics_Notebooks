@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2607.13960"
 venue: "arXiv 2026"
 code: https://github.com/open-gigaai/giga-world-policy

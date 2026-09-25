@@ -11,7 +11,7 @@ tags:
   - vision-language-action
   - reinforcement-learning
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2605.15964"
 code: https://github.com/EmbodiedCity/WorldVLN.code
 related:

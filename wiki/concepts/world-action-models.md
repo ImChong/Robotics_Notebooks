@@ -436,6 +436,7 @@ flowchart TB
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 具身闭环 + 生成世界模型作视觉计划；与 WAM「联合建模」同构的议程层坐标
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
 - [Awesome World-Action Models（RCL / MBZUAI）](../entities/awesome-world-action-models-rcl.md) — 564 条 WAM 生态策展；2×2 四象限 + Reading reports
+- [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — PAPERS.md 全量逐篇 detail 节点
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — WAM 对应五层闭环的世界模型推演层
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — WAM 是五层选型闭环 **⑤ 世界模型推演层** 的 **联合建模** 范式（`p(o',a|o,l)` 前向预测与动作生成耦合），与生成式世界模型的「级联预演」范式并列

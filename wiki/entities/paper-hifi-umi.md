@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, umi, teleoperation, bimanual, manipulation, vla, wam, robot-free, simple-ai, imitation-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2607.25895"
 related:
   - ./handumi.md

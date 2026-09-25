@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, vla, world-models, representation-learning, robot-learning, tmlr, fujitsu-research-america, fujitsu, cmu]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2609.03927"
 venue: "TMLR 2026"
 related:

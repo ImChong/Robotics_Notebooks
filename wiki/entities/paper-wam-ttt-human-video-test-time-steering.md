@@ -19,7 +19,7 @@ tags:
 status: complete
 arxiv: "2607.06988"
 venue: arxiv
-updated: 2026-09-16
+updated: 2026-09-25
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md

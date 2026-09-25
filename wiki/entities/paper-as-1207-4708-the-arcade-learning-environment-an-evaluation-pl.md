@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-25
 arxiv: "1207.4708"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Other Environments。 本页为策展索引级节点，细节以原文为准。"
 related:

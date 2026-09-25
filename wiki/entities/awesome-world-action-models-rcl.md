@@ -4,6 +4,7 @@ tags: [curated-list, world-action-models, wam, vla, embodied-ai, survey, mbzuai]
 status: complete
 updated: 2026-09-25
 related:
+  - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/pi07-policy.md
   - ../concepts/world-action-models.md
   - ./awesome-world-models.md
@@ -14,6 +15,7 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../../roadmap/depth-wam.md
 sources:
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
   - ../../sources/sites/awesome-world-action-models-rcl.md
   - ../../sources/papers/rcl_wam_robot_learning_survey.md
@@ -87,10 +89,11 @@ flowchart TB
 
 ### 推荐浏览路径
 
-1. [Research map](https://rcl-robotics.github.io/Awesome-World-Action-Models/map/) — 视觉化类别与架构
-2. [Paper library](https://rcl-robotics.github.io/Awesome-World-Action-Models/papers/) — 多维筛选
-3. [Reading reports](https://rcl-robotics.github.io/Awesome-World-Action-Models/reports/) — 单篇证据化解读
-4. 站内概念页 [WAM](../concepts/world-action-models.md) — 与实例论文实体交叉阅读
+1. 站内 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — **564** 条逐篇独立 detail 节点（arXiv 去重链 canonical 页）
+2. [Research map](https://rcl-robotics.github.io/Awesome-World-Action-Models/map/) — 视觉化类别与架构
+3. [Paper library](https://rcl-robotics.github.io/Awesome-World-Action-Models/papers/) — 多维筛选
+4. [Reading reports](https://rcl-robotics.github.io/Awesome-World-Action-Models/reports/) — 单篇 evidence 解读
+5. 站内概念页 [WAM](../concepts/world-action-models.md) — 与实例论文实体交叉阅读
 
 ## 中文导读（具身智能之心，2026-09-25）
 
@@ -105,6 +108,7 @@ flowchart TB
 
 ## 关联页面
 
+- [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — PAPERS.md 全量站内索引
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 概念定义与文献实例
 - [WAM 纵深路线](../../roadmap/depth-wam.md) — 学习路径
 - [Awesome World Models](./awesome-world-models.md) — WM 全谱策展
@@ -114,6 +118,7 @@ flowchart TB
 
 ## 参考来源
 
+- [sources/papers/rcl_awesome_wam_catalog.md](../../sources/papers/rcl_awesome_wam_catalog.md) — PAPERS.md / papers.json 解析目录
 - [sources/repos/awesome-world-action-models-rcl.md](../../sources/repos/awesome-world-action-models-rcl.md)
 - [sources/sites/awesome-world-action-models-rcl.md](../../sources/sites/awesome-world-action-models-rcl.md)
 - [sources/papers/rcl_wam_robot_learning_survey.md](../../sources/papers/rcl_wam_robot_learning_survey.md)

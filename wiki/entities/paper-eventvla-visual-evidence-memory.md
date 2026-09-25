@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, manipulation, long-horizon, memory, dual-arm, qwen, ustc, shanghai-ai-lab, sjtu, hku, tsinghua, pku, huawei]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2606.20092"
 venue: "arXiv 2026"
 related:

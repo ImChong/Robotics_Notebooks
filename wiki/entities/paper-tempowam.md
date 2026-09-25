@@ -7,7 +7,7 @@ tags:
   - replanning
   - execution
 status: complete
-updated: 2026-09-23
+updated: 2026-09-25
 arxiv: "2608.09492"
 related:
   - ../concepts/world-action-models.md

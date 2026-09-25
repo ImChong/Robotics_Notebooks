@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-25
 arxiv: "1903.00374"
 summary: "Model-based RL baseline showing strong sample efficiency from learned video prediction."
 related:

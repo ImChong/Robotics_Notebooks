@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-model, tactile, contact-rich-manipulation, online-correction, fudan, shanghai-innovation-institute]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2609.05266"
 code: https://github.com/LogosRoboticsGroup/TacPAC
 related:

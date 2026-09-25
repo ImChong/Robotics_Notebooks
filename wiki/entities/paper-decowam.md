@@ -12,7 +12,7 @@ tags:
   - hit
   - deep-robotics
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2608.20114"
 venue: "arXiv 2026"
 related:

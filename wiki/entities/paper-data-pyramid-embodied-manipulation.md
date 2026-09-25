@@ -24,7 +24,7 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-09-19
+updated: 2026-09-25
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
 related:

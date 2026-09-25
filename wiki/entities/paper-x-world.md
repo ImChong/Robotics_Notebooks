@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, generative-world-models, autonomous-driving, multi-camera, video-diffusion, vla, xpeng]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-25
 arxiv: "2603.19979"
 related:
   - ../methods/generative-world-models.md

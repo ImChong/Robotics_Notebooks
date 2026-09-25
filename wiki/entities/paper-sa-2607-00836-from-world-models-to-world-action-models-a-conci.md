@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2607.00836"
 venue: "arXiv 2026"
 summary: "Defines world models as action-conditioned predictive models, summarizing four representative paradigms: imagine-then-execute, video-feature-conditioned action prediction, joint video-action modeling, and auxiliary video"

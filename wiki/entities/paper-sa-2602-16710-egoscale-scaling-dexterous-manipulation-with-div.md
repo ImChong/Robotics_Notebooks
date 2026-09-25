@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2602.16710"
 venue: "arXiv 2026"
 summary: "Trains a VLA model on over 20,854 hours of action-labeled egocentric human video, uncovering a log-linear scaling law between human data scale and validation loss"

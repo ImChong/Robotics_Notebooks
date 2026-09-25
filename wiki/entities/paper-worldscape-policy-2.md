@@ -13,7 +13,7 @@ tags:
   - tsinghua
   - sjtu
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2607.18840"
 related:
   - ../concepts/world-action-models.md

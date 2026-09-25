@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, toyota-research]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2508.00795"
 venue: —
 summary: "视频生成 + 动作扩散模块化端到端；无动作视频对泛化至关重要。"
