@@ -1,9 +1,10 @@
 ---
 type: entity
-tags: [paper, humanoid, soccer, amp, multi-skill, reinforcement-learning, sim2real, noetix, tsinghua]
+tags: [paper, humanoid, soccer, amp, multi-skill, reinforcement-learning, sim2real, noetix, tsinghua, corl-2026]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2609.06718"
+venue: "CoRL 2026"
 related:
   - ../tasks/humanoid-soccer.md
   - ../tasks/humanoid-locomotion.md
@@ -14,12 +15,12 @@ sources:
   - ../../sources/papers/skillx_humanoid_soccer_arxiv_2609_06718.md
   - ../../sources/sites/skillx.md
   - ../../sources/blogs/wechat_shenlan_weekly_humanoid_quadruped_2026-09-14.md
-summary: "SkillX（arXiv:2609.06718）：单命令条件 actor + 技能专属 AMP/critic + 物体感知时序编码；E1 真机 MoCap/机载视觉双后端；Hard 组合仿真 81.7%；代码待发布。"
+summary: "SkillX（arXiv:2609.06718，CoRL 2026）：单命令条件 actor + 技能专属 AMP/critic + 物体感知时序编码；E1 真机 MoCap/机载视觉双后端；Hard 组合仿真 81.7%；代码待发布。"
 ---
 
 # SkillX：人形足球统一多技能策略学习
 
-**SkillX**（*SkillX: Unified Multi-Skill Policy Learning for Humanoid Soccer*，[arXiv:2609.06718](https://arxiv.org/abs/2609.06718)，[项目页](https://yzc0731.github.io/SkillX/)）由 **松延动力（Noetix Robotics）** 与 **清华大学** Zhangchen Ye、Enxuan Ruan、Yifei Bao 等提出：用 **单一命令条件策略** 在仿真与 **25-DoF Noetix E1** 真机上学习并组合盘带、停球、射门等原子足球技能，避免多阶段流水线或策略蒸馏带来的切换不连续。
+**SkillX**（*SkillX: Unified Multi-Skill Policy Learning for Humanoid Soccer*，[arXiv:2609.06718](https://arxiv.org/abs/2609.06718)，[项目页](https://yzc0731.github.io/SkillX/)，**CoRL 2026**）由 **松延动力（Noetix Robotics）** 与 **清华大学** Zhangchen Ye、Enxuan Ruan、Yifei Bao、Runhan Huang、Jiankun Yang、Jiakang Jin、Yixiao Huo、Pengyuan Wang、Yinan Han、Huaxing Huang、Wenhao Cui、Yiming Li、Xiaoyu Tian 提出：用 **单一命令条件策略** 在仿真与 **25-DoF Noetix E1** 真机上学习并组合盘带、停球、射门等原子足球技能，避免多阶段流水线或策略蒸馏带来的切换不连续。
 
 ## 一句话定义
 
@@ -49,10 +50,11 @@ summary: "SkillX（arXiv:2609.06718）：单命令条件 actor + 技能专属 AM
 | 项 | 内容 |
 |----|------|
 | **机构** | 松延动力（Noetix Robotics）；清华大学 |
+| **会议** | CoRL 2026 |
 | **平台** | Noetix E1（25-DoF）；Isaac Sim / Isaac Lab |
 | **控制** | 策略 50 Hz 输出关节目标；仿真 200 Hz；低层 PD 跟踪 |
 | **参考动作** | 人类足球 MoCap → PHC 重定向至 E1 |
-| **开源** | **待发布**（项目页 2026-09-15 无 GitHub；[noetix_e1_lab](./cn-os-noetix-e1-lab.md) 仅为 E1 通用 RL 模板） |
+| **开源** | **待发布**（项目页 2026-09-25 无 GitHub；[noetix_e1_lab](./cn-os-noetix-e1-lab.md) 仅为 E1 通用 RL 模板） |
 
 ## 流程总览
 
@@ -83,7 +85,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-15** [项目页](https://yzc0731.github.io/SkillX/) 与 arXiv **未提供** SkillX 训练/部署官方仓库。E1 平台通用入口见 [noetix_e1_lab](./cn-os-noetix-e1-lab.md)，**不能**替代本文复现。
+**不适用** — 截至 **2026-09-25** [项目页](https://yzc0731.github.io/SkillX/) 与 arXiv **未提供** SkillX 训练/部署官方仓库。E1 平台通用入口见 [noetix_e1_lab](./cn-os-noetix-e1-lab.md)，**不能**替代本文复现。
 
 ## 实验与评测
 

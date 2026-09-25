@@ -6,11 +6,13 @@
 - **英文标题：** SkillX: Unified Multi-Skill Policy Learning for Humanoid Soccer
 - **类型：** paper / humanoid / soccer / amp / multi-skill / sim2real
 - **arXiv：** <https://arxiv.org/abs/2609.06718>（v2 2026-09-11；PDF：<https://arxiv.org/pdf/2609.06718>）
+- **Comments：** Accepted to **CoRL 2026**（arXiv 元数据，2026-09-25 核对）
 - **项目页：** <https://yzc0731.github.io/SkillX/>
 - **机构：** 松延动力（Noetix Robotics）；清华大学
+- **作者：** Zhangchen Ye、Enxuan Ruan、Yifei Bao（* 共一）、Runhan Huang、Jiankun Yang、Jiakang Jin、Yixiao Huo、Pengyuan Wang、Yinan Han、Huaxing Huang、Wenhao Cui、Yiming Li（† 通讯）、Xiaoyu Tian（† 通讯）
 - **平台：** 25-DoF Noetix E1；Isaac Sim / Isaac Lab 仿真
-- **开源：** **待发布**（步骤 2.5 核查 2026-09-15，见 [`sources/sites/skillx.md`](../sites/skillx.md)）
-- **入库日期：** 2026-09-14（项目页深读复核 2026-09-15）
+- **开源：** **待发布**（步骤 2.5 核查 2026-09-25，见 [`sources/sites/skillx.md`](../sites/skillx.md)）
+- **入库日期：** 2026-09-14（CoRL 2026 / 作者表 2026-09-25 增量更新）
 - **策展索引：** [wechat_shenlan_weekly_humanoid_quadruped_2026-09-14.md](../blogs/wechat_shenlan_weekly_humanoid_quadruped_2026-09-14.md)
 
 ## 核心论文摘录
@@ -37,9 +39,9 @@
 - 机载视觉：ZED2i + VIO + YOLOv8 球检测；另展示去球奖励的泛化交互。
 - **对 wiki 的映射：** 同上
 
-## 步骤 2.5 开源核查（2026-09-15）
+## 步骤 2.5 开源核查（2026-09-25）
 
-- 已打开 [项目页](https://yzc0731.github.io/SkillX/)：有 PDF 与演示视频，**无代码链接**。
+- 已打开 [项目页](https://yzc0731.github.io/SkillX/)：有 PDF 与演示视频，**无代码链接**（HTML 无 GitHub/HF 入口）。
 - arXiv v2 摘要与 HTML 正文 **未列** Code availability URL。
 - [Noetix-Robotics/noetix_e1_lab](https://github.com/Noetix-Robotics/noetix_e1_lab) 为 E1 平台 RL 模板，**不能**当作 SkillX 论文实现。
 - **结论：** **待发布**；发布后应新建 `sources/repos/skillx.md` 并补 wiki「源码运行时序图」。
