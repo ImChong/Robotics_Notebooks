@@ -275,6 +275,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 轨迹条件闭环选优（示例：TrAct）
 
+[PointCast](../entities/paper-pointcast-point-set-world-model.md)（arXiv:2609.28393，ICRA 2027 投稿）用 **19.8M DiT** 在 **持久 3D 点集** 上预测未来点窗口，一套架构覆盖 rigid / cloth / rope / cabinet，并接 **冻结 MPC**；与像素视频 WM 正交，偏 **几何操纵 + 轻量规划**（代码待发布）。
+
+[LiMA](../entities/paper-lima-async-dual-system-wam.md)（arXiv:2609.28431，CoRL 2026，PKU×BAAI）是 **异步双系统 WAM**：慢 Dreamer 刷新长 horizon intent，快 Refiner 做接触级修正，**Latent Schrödinger Bridge** 对齐稀疏/稠密；六双臂任务 **SR 70.8%**，H100 **325 ms**（较 Cosmos-Policy **−45.8%**）。
+
 [TrAct](../entities/paper-tract.md)（arXiv:2608.24101，UMich / Stanford）把 **2D 视觉轨迹** 作为 **控制与世界模型之间的中间接口**：**VLAT** 在 [π₀.₅](../entities/paper-pi05-open-world-vla.md) 上联合预测动作–轨迹对，**TWM**（SVD + ControlNet）以轨迹渲染条件滚未来视频，**VLAC** 对想象 rollout 打分选优。相对动作条件 **AWM**，TWM 在仿真 agent 视角 **PSNR 15.1→24.5**、**FVD 129→38**；闭环使 **LIBERO-INTEGRAL** 平均成功率 **27%→55%**、真机 Franka **49%→76%**。与 [Ctrl-World](../entities/paper-ctrl-world.md) 的笛卡尔动作条件 SVD 对照，TrAct 强调 **轨迹比动作更适合条件化像素未来**；**代码待发布**。
 
 ### 范数保持相机几何 PE（示例：MeRoPE）

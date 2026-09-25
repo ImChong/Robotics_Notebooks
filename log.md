@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | DAVIS / LiMA / PointCast（arXiv:2609.28175/28431/28393）— 项目页深读；DAVIS 升格；LiMA+PointCast 新建实体；代码均待发布；自动合并 PR
+
+- **意图：** 用户指定三篇 arXiv + 项目页（深度图主动视觉 / 异步 WAM / 点集 WM）；自动合并 PR
+- **开源结论：** 三项目页 **均无官方 GitHub**（2026-09-25 步骤 2.5）
+- **关键页：** [`paper-davis-humanoid-soccer`](wiki/entities/paper-davis-humanoid-soccer.md)、[`paper-lima-async-dual-system-wam`](wiki/entities/paper-lima-async-dual-system-wam.md)、[`paper-pointcast-point-set-world-model`](wiki/entities/paper-pointcast-point-set-world-model.md)
+
 ## [2026-09-25] ingest | sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md — 复核 Perry Dong post-training 博文（内容已于 2026-09-24 入库）；自动合并 PR
 
 - **意图：** 用户再次指定 https://pd-perry.github.io/posts/post-training.html；自动合并 PR

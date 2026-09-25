@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-25
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
@@ -290,6 +290,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md) — 真机缓冲学模型 + 真实轨迹一阶策略更新
 - [LUCID](../entities/paper-lucid.md) — 人形技能级 macro-dynamics 想象控制
 - [Motus2](../entities/paper-motus2.md) — 共享参数 WAM 内嵌 DiffusionNFT MBRL + Best-of-N 灵巧操作
+- [PointCast](../entities/paper-pointcast-point-set-world-model.md) — 冻结 **19.8M** 点集 WM + 采样 MPC；rigid/deformable/articulated 四任务（arXiv:2609.28393）
 - [WCM](../entities/paper-wcm-world-critic-model.md) — 反例式对照：世界模型只做 **critic 表征的辅助监督**，不参与想象 rollout 或规划
 
 ### 长程预测的理论边界

@@ -17,6 +17,7 @@ related:
   - ../entities/lumo-2.md
   - ../entities/philia.md
   - ../entities/paper-dswam-dual-system-wam.md
+  - ../entities/paper-lima-async-dual-system-wam.md
   - ../entities/paper-dynawm-vla-online-correction.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-dreamwam.md

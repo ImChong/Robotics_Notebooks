@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -194,6 +194,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真双臂 Piper 厨房 PnP：EnvHub 闭环、cuRobo 可达性闸门与自过滤数据飞轮
 - [SAI](../entities/paper-sai-sequential-asymmetric-imitation.md) — 双移动操作臂物理耦合：单遥操作三阶段模仿课程（arXiv:2606.16490；代码待发布）
 - [Zeno-1](../entities/paper-zeno-1-collaborative-intelligence.md) — 3B 去中心化协作基础模型；CPI + 持久记忆 + 预测内省（Zeno AI 技术报告；权重待发布）
+- [LiMA](../entities/paper-lima-async-dual-system-wam.md) — 异步双系统 WAM：长 horizon Dreamer + 高频 Refiner；六双臂灵巧任务 CoRL 2026（arXiv:2609.28431）
 
 ## 参考来源
 
