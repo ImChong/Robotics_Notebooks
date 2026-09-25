@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/iros-2026-six-trends-technology-map.md",
+      "detail_id": "wiki-overview-iros-2026-six-trends-technology-map",
+      "label": "IROS 2026：1933 篇论文的六条变化",
+      "type": "overview",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-iros26-vc-motor-dynamic-arm-swing.md",
       "detail_id": "entity-paper-iros26-vc-motor-dynamic-arm-swing",
       "label": "IROS 2026：VC 电机模式切换动态人形甩臂",
@@ -44,16 +54,6 @@
       "detail_id": "entity-paper-shallow-pi",
       "label": "Shallow-π：Flow-based VLA 的层蒸馏",
       "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/iros-2026-six-trends-technology-map.md",
-      "detail_id": "wiki-overview-iros-2026-six-trends-technology-map",
-      "label": "IROS 2026：1933 篇论文的六条变化",
-      "type": "overview",
       "recency": "2026-09-25",
       "source": "git",
       "action": "added",
@@ -217,14 +217,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-iros26-vc-motor-dynamic-arm-swing.md",
-    "detail_id": "entity-paper-iros26-vc-motor-dynamic-arm-swing",
-    "label": "IROS 2026：VC 电机模式切换动态人形甩臂",
-    "type": "entity",
+    "path": "wiki/overview/iros-2026-six-trends-technology-map.md",
+    "detail_id": "wiki-overview-iros-2026-six-trends-technology-map",
+    "label": "IROS 2026：1933 篇论文的六条变化",
+    "type": "overview",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
-    "community_label": "硬件与执行器（Hardware and Actuators） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
