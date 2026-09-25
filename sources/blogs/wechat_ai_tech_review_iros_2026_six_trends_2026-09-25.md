@@ -56,7 +56,6 @@
 ## 对 wiki 的映射
 
 - 阅读坐标：[IROS 2026 六趋势技术地图](../../wiki/overview/iros-2026-six-trends-technology-map.md)
-- Query 沉淀：[iros-2026-six-trends-from-1933-papers](../../wiki/queries/iros-2026-six-trends-from-1933-papers.md)
 - 交叉：[VLA](../../wiki/methods/vla.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[loco-manipulation](../../wiki/tasks/loco-manipulation.md)
 
 ## 当前提炼状态

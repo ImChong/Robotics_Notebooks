@@ -1,3 +1,9 @@
+## [2026-09-25] structural | 合并重复节点 | wiki/queries/iros-2026-six-trends-from-1933-papers.md → wiki/overview/iros-2026-six-trends-technology-map.md（canonical）
+
+- **触发：** 用户报告 `detail.html?id=wiki-overview-iros-2026-six-trends-technology-map` 与 `detail.html?id=wiki-queries-iros-2026-six-trends-from-1933-papers` 两页重复。
+- **判据：** 同一次 ingest、同一来源（AI科技评论 IROS 2026 六变化），六趋势、统计与代表论文一致。
+- **处理：** query 独有的「核心结论 / 选型读法 / 局限」并入 overview；删除 query 页；`schema/page-aliases.json` 登记旧 ID → overview；source 页移除 query 链接。
+
 ## [2026-09-25] ingest | sources/sites/hit4752_iros26_vc_motor_arm_swing.md — 可变链电机（VC motor）+ IROS 2026 动态甩臂 TO；项目页无代码；自动合并 PR
 
 - **意图：** 用户指定 https://hit4752.github.io/projects/202609_iros26-arm-swing/；可变链电机即时切换 speed–torque；自动合并 PR
