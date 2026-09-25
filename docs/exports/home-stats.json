@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-25",
-  "node_count": 4887,
-  "edge_count": 42920,
+  "node_count": 4889,
+  "edge_count": 42938,
   "coverage": {
-    "covered": 4858,
-    "total": 4858,
+    "covered": 4860,
+    "total": 4860,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -234,7 +234,7 @@
   "top_communities": [
     {
       "label": "世界模型",
-      "size": 731
+      "size": 733
     },
     {
       "label": "产业与开源生态",
@@ -262,7 +262,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1805,
+      "degree": 1808,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1413,
+      "degree": 1414,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -278,7 +278,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1155,
+      "degree": 1156,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -301,7 +301,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 982,
+      "degree": 986,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },

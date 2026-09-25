@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-24
+updated: 2026-09-25
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -378,6 +378,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Lumo-2](../entities/lumo-2.md) — Astribot latent WAM：三阶段模态预对齐、22 项 S1 真机 benchmark、32 段项目页演示视频（arXiv:2607.11270）
 - [Zero-WAM](../entities/paper-zero-wam.md) — 人视频 ICL 任务规格；RoboTwin 未见 46.95%；代码待发布
 - [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；LIBERO 组合/新布局泛化（arXiv:2607.27599）
+- [PointCast](../entities/paper-pointcast-point-set-world-model.md) — **19.8M** 点集 DiT WM；rigid/cloth/rope/cabinet + 冻结 MPC（arXiv:2609.28393）
 - [紧凑视觉触觉 WM 提升](../entities/paper-compact-visuotactile-wm-lifting.md) — ~650k 参数 WM；预测好≠策略好（arXiv:2609.09597；未见代码）
 
 **人视频 / egocentric 数据与迁移**

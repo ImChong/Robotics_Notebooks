@@ -65,7 +65,7 @@ summary: "具身智能小站 2026-09-24 十三篇盘点：生成式控制适配�
 | 06 | Amplify | [amplify-robotics](../entities/paper-amplify-robotics.md) | 用声明式 AMPL 模型表达机器人 NLP 问题，核心库 **537 行**，便于跨求解器复现轨迹优化基准。… |
 | 07 | BrickCraft-Duo | [brickcraft-duo](../entities/paper-brickcraft-duo.md) | 互锁积木双臂装配：可复用单/双臂技能 + 稳定性感知组合 + 人机定向修正，最长 **9 步** 长时任务。… |
 | 08 | PLANTORV | [plantorv](../entities/paper-plantorv.md) | VLM 擅长语义描述但不等于可靠几何；框架把 VLM 标注与 RGB-D 几何拆开再合成对象级表示。… |
-| 09 | DAVIS | [davis-humanoid-soccer](../entities/paper-davis-humanoid-soccer.md) | 仅头部深度 + 本体历史 + 低维指令，端到端输出 **25-DoF** PD 目标做人形足球射门/带球，无需运行时检测… |
+| 09 | DAVIS | [davis-humanoid-soccer](../entities/paper-davis-humanoid-soccer.md) | **168×80 深度-only + 主动头**；可见性门控几何 + GT→prediction annealing；射门/带球分 checkpoint；Noetix E1 真机（[项目页](https://thusi-lab.github.io/DAVIS/)） |
 | 10 | Stein-ADMM | [stein-admm-contact](../entities/paper-stein-admm-contact.md) | 接触隐式 TO 易陷单一局部接触模式；Stein 排斥力加在 ADMM 分裂变量上可发现 **多样** 抓取/推/交接策… |
 | 11 | MRSVLMRA | [mrsvlmra](../entities/paper-mrsvlmra.md) | 感知不对称多机协作：有相机四足共享语义场景，LLM 分工，zonotope 可达性门拦截不安全语言建议。… |
 | 12 | Remote Surfaces | [remote-surfaces-electrovibration](../entities/paper-remote-surfaces-electrovibration.md) | 电振动触觉把远程刚性接触映射到触摸屏，改善遥操作响应时间与临场感（N=21 用户研究）。… |
