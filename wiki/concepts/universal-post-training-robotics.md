@@ -2,7 +2,7 @@
 type: concept
 tags: [post-training, vla, reinforcement-learning, foundation-policy, value-based-rl, deployment, stanford]
 status: complete
-updated: 2026-09-24
+updated: 2026-09-25
 related:
   - ./foundation-policy.md
   - ../methods/vla.md

@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md — 复核 Perry Dong post-training 博文（内容已于 2026-09-24 入库）；自动合并 PR
+
+- **意图：** 用户再次指定 https://pd-perry.github.io/posts/post-training.html；自动合并 PR
+- **开源结论：** EXPO-FT **待发布**（项目页无 GitHub；步骤 2.5 复核）
+- **关键页：** [`universal-post-training-robotics`](wiki/concepts/universal-post-training-robotics.md)（无结构变更，更新复核日期）
+
 ## [2026-09-25] ingest | sources/papers/diffusion_wm_survey_preprints_202609_1022.md — Diffusion-Based World Models 综述（Preprints + Living GitHub）；已开源策展；自动合并 PR
 
 - **意图：** 用户指定 preprints 202609.1022 与 GitHub energy588/Diffusion-based-World-Models；自动合并 PR

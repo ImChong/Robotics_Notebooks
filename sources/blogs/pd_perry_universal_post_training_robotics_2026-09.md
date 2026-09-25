@@ -8,6 +8,7 @@
 - **原始链接：** <https://pd-perry.github.io/posts/post-training.html>
 - **发表日期：** 2026-09（September 2026）
 - **入库日期：** 2026-09-24
+- **最后复核：** 2026-09-25（用户再次指定同一 URL；原文结构未变）
 - **抓取方式：** 官方页直连（WebFetch）
 - **一句话说明：** Stanford Perry Dong 论述机器人已处「GPT-2 时刻」——预训练 VLA/WAM 能演示复杂行为但可靠性不足；需像 LLM 一样收敛 **通用 post-training 配方**（算法 + 标准协议）；以 **EXPO(-FT)** 为 value-based 微调扩散/flow 策略的样本，并列出 reward/reset/HIL/超参/初始化等开放默认项。
 
