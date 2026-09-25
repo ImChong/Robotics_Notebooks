@@ -1,13 +1,85 @@
 {
-  "generated_at": "2026-09-24",
+  "generated_at": "2026-09-25",
   "node_count": 4885,
-  "edge_count": 42896,
+  "edge_count": 42902,
   "coverage": {
     "covered": 4856,
     "total": 4856,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/universal-post-training-robotics.md",
+      "detail_id": "wiki-concepts-universal-post-training-robotics",
+      "label": "Universal Post-Training for Robotics（通用机器人后训练）",
+      "type": "concept",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dualwam.md",
+      "detail_id": "entity-paper-dualwam",
+      "label": "DualWAM（arXiv:2609.24868）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-predactor.md",
+      "detail_id": "entity-paper-predactor",
+      "label": "PredActor（arXiv:2609.24840）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robotwin-phys.md",
+      "detail_id": "entity-paper-robotwin-phys",
+      "label": "RoboTwin-Phys（arXiv:2609.26292）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-routelt.md",
+      "detail_id": "entity-paper-routelt",
+      "label": "RouteRLT（arXiv:2609.26467）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sample-simulate-select.md",
+      "detail_id": "entity-paper-sample-simulate-select",
+      "label": "Sample, Simulate, Select（S³，arXiv:2609.26420）",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
+    },
+    {
+      "path": "wiki/entities/roboflywheel.md",
+      "detail_id": "entity-roboflywheel",
+      "label": "RoboFlywheel",
+      "type": "entity",
+      "recency": "2026-09-24",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    },
     {
       "path": "wiki/entities/qm-control.md",
       "detail_id": "entity-qm-control",
@@ -146,92 +218,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/atlas-os.md",
-      "detail_id": "entity-atlas-os",
-      "label": "Atlas OS（Windows 优化 Playbook）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
-    },
-    {
-      "path": "wiki/entities/roboflywheel.md",
-      "detail_id": "entity-roboflywheel",
-      "label": "RoboFlywheel",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-amplify-robotics.md",
-      "detail_id": "entity-paper-amplify-robotics",
-      "label": "Amplify（arXiv:2609.28377）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-brickcraft-duo.md",
-      "detail_id": "entity-paper-brickcraft-duo",
-      "label": "BrickCraft-Duo（arXiv:2609.28281）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-davis-humanoid-soccer.md",
-      "detail_id": "entity-paper-davis-humanoid-soccer",
-      "label": "DAVIS（arXiv:2609.28175）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dissect-vla-post-training.md",
-      "detail_id": "entity-paper-dissect-vla-post-training",
-      "label": "DissectVLA（arXiv:2609.28161）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-forgetmimic.md",
-      "detail_id": "entity-paper-forgetmimic",
-      "label": "ForgetMimic（arXiv:2609.28378）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/qm-control.md",
-    "detail_id": "entity-qm-control",
-    "label": "qm_control（四足机械臂 OCS2 MPC + WBC）",
-    "type": "entity",
+    "path": "wiki/concepts/universal-post-training-robotics.md",
+    "detail_id": "wiki-concepts-universal-post-training-robotics",
+    "label": "Universal Post-Training for Robotics（通用机器人后训练）",
+    "type": "concept",
     "recency": "2026-09-24",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "运动控制（Locomotion） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
