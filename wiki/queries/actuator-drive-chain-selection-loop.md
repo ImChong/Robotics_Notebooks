@@ -2,9 +2,10 @@
 type: query
 tags: [actuator, eda, foc, motor-control, ethercat, sim2real, hardware, selection-loop]
 status: complete
-updated: 2026-09-23
+updated: 2026-09-25
 summary: "执行器驱动链选型闭环知识链：把 EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链，从分散的硬件/固件/建模实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、数据手册参数与实测曲线差在哪、建模保真度 vs 辨识成本如何取舍、总线周期 ≠ 闭环带宽。"
 sources:
+  - ../../sources/papers/iros26_vc_motor_arm_swing_tada.md
   - ../../sources/sites/kicad-org.md
   - ../../sources/sites/altium-designer-primary-refs.md
   - ../../sources/repos/simplefoc_arduino_foc.md
@@ -28,6 +29,8 @@ related:
   - ../methods/joint-actuator-parameter-identification.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
+  - ../entities/variable-chain-motor.md
+  - ../entities/paper-iros26-vc-motor-dynamic-arm-swing.md
   - ../methods/actuator-network.md
   - ../queries/ethercat-master-optimization.md
   - ../overview/motor-drive-firmware-bus-protocols.md
@@ -45,7 +48,7 @@ related:
 | 层 | 选什么 | 代表性工具/方案 | 核心取舍 | 这一层最容易骗人的地方 |
 |----|--------|----------------|----------|------------------------|
 | ① EDA 电路设计 | 驱动板/BMS/传感转接板怎么画、自研 vs 商用一体化关节 | [KiCad](../entities/kicad.md)（开源）、[Altium Designer](../entities/altium-designer.md)（商用） | 开源够用 vs 高速多层板信号完整性；自研省钱 vs 可靠性/调试成本 | 原理图过 ERC/DRC ≠ 高速板信号完整性 OK |
-| ② 电机驱动固件 FOC | 电流环带宽、编码器分辨率、标定策略 | [SimpleFOC](../entities/simplefoc.md) + [FOC 磁场定向控制](../concepts/field-oriented-control.md) | 电流环带宽 vs 编码器分辨率/采样噪声 | 电流环带宽拉高 ≠ 位置/力矩精度自动变好 |
+| ② 电机驱动固件 FOC | 电流环带宽、编码器分辨率、标定策略；**电气可切换 ST 包络**（如 [VC motor](../entities/variable-chain-motor.md)） | [SimpleFOC](../entities/simplefoc.md) + [FOC 磁场定向控制](../concepts/field-oriented-control.md) | 电流环带宽 vs 编码器分辨率/采样噪声；固定单点 ST vs 运行时串/并切换 | 电流环带宽拉高 ≠ 位置/力矩精度自动变好；**数据手册单条 ST 曲线 ≠ 可切换多模式包络** |
 | ③ 执行器建模与摩擦辨识 | 理想力矩源假设何时破、显式摩擦 vs 神经执行器网络 | [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)（算法选型）、[关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)（可辨识性）、[BAM 摩擦辨识](../entities/bam-better-actuator-models.md)、[NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)、[Actuator Network](../methods/actuator-network.md) | 建模保真度 vs 辨识成本；解析可解释 vs 网络拟合外推 | 拟合训练集好 ≠ 分布外温升/负载漂移不崩 |
 | ④ 实时总线闭环集成 | 总线周期/抖动与控制带宽的关系 | [EtherCAT](../concepts/ethercat-protocol.md) + [主站优化](./ethercat-master-optimization.md) | 总线周期 vs 闭环带宽；吞吐 vs 抖动确定性 | 周期设到 1kHz ≠ 闭环带宽就有 1kHz |
 
@@ -157,6 +160,7 @@ flowchart TD
 - [simplefoc_arduino_foc.md](../../sources/repos/simplefoc_arduino_foc.md) — ②层开源 FOC 驱动固件与参考硬件
 - [neuralactuator_arxiv_2607_11734.md](../../sources/papers/neuralactuator_arxiv_2607_11734.md) — ③层神经执行器建模，数据驱动指令→力矩映射
 - [bam_extended_friction_servos_arxiv_2410_08650.md](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — ③层伺服执行器摩擦辨识（BAM-extended）
+- [iros26_vc_motor_arm_swing_tada.md](../../sources/papers/iros26_vc_motor_arm_swing_tada.md) — ②层 **speed–torque 模式切换** + ③层并集约束轨迹优化（IROS 2026 JAXON 甩臂）
 
 ## 关联页面
 
@@ -184,4 +188,5 @@ flowchart TD
 - [Actuator Network](../methods/actuator-network.md) — ③层执行器网络方法页
 - [力矩-电流曲线](../concepts/motor-torque-current-curve.md) — ②层力矩标称非线性的物理背景
 - [力矩-转速曲线](../concepts/motor-torque-speed-curve.md) — ②层弱磁/饱和区偏离线性的背景
+- [可变链电机（VC motor）](../entities/variable-chain-motor.md) · [IROS 2026 VC 动态甩臂](../entities/paper-iros26-vc-motor-dynamic-arm-swing.md) — ②层电气重配置扩大 ST 包络 + 规划层并集约束范例
 - [电机驱动固件与总线协议（纵深）](../overview/motor-drive-firmware-bus-protocols.md) — 驱动链各层的纵深汇总入口

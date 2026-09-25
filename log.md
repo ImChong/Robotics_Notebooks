@@ -1,3 +1,9 @@
+## [2026-09-25] ingest | sources/sites/hit4752_iros26_vc_motor_arm_swing.md — 可变链电机（VC motor）+ IROS 2026 动态甩臂 TO；项目页无代码；自动合并 PR
+
+- **意图：** 用户指定 https://hit4752.github.io/projects/202609_iros26-arm-swing/；可变链电机即时切换 speed–torque；自动合并 PR
+- **开源结论：** 项目页 **确认未开源**（无 GitHub；步骤 2.5）；IROS 2025 硬件论文 DOI 交叉归档
+- **关键页：** [`variable-chain-motor`](wiki/entities/variable-chain-motor.md)、[`paper-iros26-vc-motor-dynamic-arm-swing`](wiki/entities/paper-iros26-vc-motor-dynamic-arm-swing.md)
+
 ## [2026-09-25] ingest | sources/blogs/wechat_ai_tech_review_iros_2026_six_trends_2026-09-25.md — IROS 2026 1933 篇六趋势解读；GeoVLA/Shallow-π 新建；overview+query；自动合并 PR
 
 - **意图：** 用户指定 https://mp.weixin.qq.com/s/XvdbbidbJKBszMQwVzvD0A；自动合并 PR
