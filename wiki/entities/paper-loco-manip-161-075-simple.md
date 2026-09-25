@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, simulation, benchmark, real-to-sim, sim2real, mujoco, isaac-sim, vla, wam, teleoperation, usc]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2606.08278"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md

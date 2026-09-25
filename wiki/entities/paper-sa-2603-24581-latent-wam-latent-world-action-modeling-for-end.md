@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2603.24581"
 venue: "arXiv 2026"
 summary: "Latent world action modeling for trajectory planning via spatial-aware and dynamic-aware latent representations."

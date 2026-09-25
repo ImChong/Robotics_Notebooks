@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2506.23135"
 venue: "arXiv 2025"
 summary: "A unified physics‑informed world model that jointly learns RGB video generation, temporal depth prediction, and adaptive keypoint tracking within a single framework."

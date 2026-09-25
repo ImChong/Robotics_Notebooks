@@ -1,8 +1,8 @@
-## [2026-09-25] ingest | sources/papers/raibo2_marathon_nature_s41586_026_11102_5.md — RAIBO2 单次充电马拉松（Nature DOI 10.1038/s41586-026-11102-5）；Zenodo+raisimGym 部分开源；自动合并 PR
+## [2026-09-25] ingest | sources/papers/rcl_awesome_wam_catalog.md — RCL Awesome WAM docs/PAPERS.md（564 条）；新建 paper-rcl-* 索引节点 + 技术地图；自动合并 PR
 
-- **意图：** 用户指定 Nature 2026 RAIBO2 马拉松论文；自动合并 PR
-- **开源结论：** **部分开源** — Zenodo 数据 + `raisimGym_nature` 训练/ablation；硬件/部署未发布
-- **关键页：** [`paper-raibo2-marathon-energy-efficient-quadruped`](wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md)；互链 [`quadruped-robot`](wiki/entities/quadruped-robot.md)、[`locomotion`](wiki/tasks/locomotion.md)
+- **意图：** 用户指定 https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md；每篇独立非重复 detail 节点
+- **开源结论：** 上游 MIT 策展仓 **已开源**；本批为清单索引级 ingest（386 新建 + 178 arXiv 复用 canonical 页）
+- **关键页：** [rcl-awesome-wam-technology-map](wiki/overview/rcl-awesome-wam-technology-map.md)、[awesome-world-action-models-rcl](wiki/entities/awesome-world-action-models-rcl.md)
 
 ## [2026-09-25] ingest | sources/papers/xiaomi_cocktailasr_1_arxiv_2609_11274.md — Xiaomi-CocktailASR-1 TS-ASR（arXiv:2609.11274）；GitHub+HF 已开源；自动合并 PR
 

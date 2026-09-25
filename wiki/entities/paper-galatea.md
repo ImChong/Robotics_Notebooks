@@ -11,7 +11,7 @@ tags:
   - sharpa
   - hku
 status: complete
-updated: 2026-09-19
+updated: 2026-09-25
 arxiv: "2609.10050"
 code: https://github.com/boyuan-an/GALATEA
 related:

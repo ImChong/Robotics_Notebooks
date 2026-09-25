@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-25
 arxiv: "2112.03227"
 venue: "IEEE Robotics and Automation"
 code: https://github.com/mees/calvin

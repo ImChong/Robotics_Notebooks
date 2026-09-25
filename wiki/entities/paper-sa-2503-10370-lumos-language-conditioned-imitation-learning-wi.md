@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2503.10370"
 venue: "arXiv 2025"
 code: https://github.com/nematoli/lumos

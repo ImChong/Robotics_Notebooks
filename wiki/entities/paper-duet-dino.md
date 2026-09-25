@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, latent-planning, multi-view, manipulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2609.10506"
 code: https://github.com/utn-air/DUET-DINO
 related:

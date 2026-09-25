@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, deformable, bimanual, fudan, cmu]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2609.10243"
 related:
   - ../tasks/bimanual-manipulation.md

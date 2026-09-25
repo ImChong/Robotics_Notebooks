@@ -6,7 +6,7 @@ tags:
   - world-model
   - 3d
 status: complete
-updated: 2026-09-19
+updated: 2026-09-25
 arxiv: "2608.07267"
 related:
   - ../methods/vla.md

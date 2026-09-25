@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-25
 venue: curated
 arxiv: "2608.09730"
 

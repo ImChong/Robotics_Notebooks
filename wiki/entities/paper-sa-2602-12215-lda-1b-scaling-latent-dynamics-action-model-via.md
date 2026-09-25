@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2602.12215"
 venue: "arXiv 2026"
 code: https://github.com/jiangranlv/latent-dynamics-action

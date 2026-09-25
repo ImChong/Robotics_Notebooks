@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2606.18375"
 venue: "arXiv 2026"
 summary: "DiT-based foundation model, ranked 1st on WorldArena and 2nd on AgiBot-Challenge2026."

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2412.18607"
 venue: "arXiv 2024"
 summary: "Unifies driving world modeling and planning with multi-modal autoregressive transformers."

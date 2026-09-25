@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2606.08737"
 venue: "arXiv 2026"
 summary: "Unified Tactile-World Action Model jointly modeling actions, future visual observations, and tactile dynamics; contact-gated visuotactile fusion and contact-aware attention bias; improves action accuracy by 31.7%."

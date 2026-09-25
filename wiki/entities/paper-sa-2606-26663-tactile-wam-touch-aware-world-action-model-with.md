@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2606.26663"
 venue: "arXiv 2026"
 summary: "Introduces Tactile Asymmetric Attention Mechanism (TAAM) with VideoClean mask to prevent tactile pollution; improves mean success rate by 38.9% overall and 86% on contact-rich tasks."

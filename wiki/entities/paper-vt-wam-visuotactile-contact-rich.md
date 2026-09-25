@@ -8,7 +8,7 @@ tags:
   - flow-matching
   - manipulation
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2607.02503"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md

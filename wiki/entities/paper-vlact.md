@@ -9,7 +9,7 @@ tags:
   - qwen
   - cuhk
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2608.27550"
 code: https://github.com/starVLA/VLAct
 related:

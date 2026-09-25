@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-25
 arxiv: "2603.03596"
 summary: "Memory architecture for vision-language-action models pairing a video encoder for short-horizon recall with language-based long-horizon memory. <!-- tags: paper -->"
 related:

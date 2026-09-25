@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, synthetic-data, benchmark, challenge, vla, sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-25
 arxiv: "2608.12416"
 code: https://github.com/EDEM-AI/RoboSynChallenge
 related:

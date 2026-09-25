@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, ai2, kaist, microsoft, nvidia, uw]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2410.11758"
 venue: ICLR 2025
 summary: "无动作标签互联网视频学离散潜在动作，少量机器人微调超越完整标签 SOTA VLA。"

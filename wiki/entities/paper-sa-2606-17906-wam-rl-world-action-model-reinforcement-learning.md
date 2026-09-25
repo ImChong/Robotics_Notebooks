@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-25
 arxiv: "2606.17906"
 venue: "arXiv 2026"
 summary: "First RL in World-Action paradigm jointly optimizing world and action models."

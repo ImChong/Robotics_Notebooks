@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, world-models, physical-ai, wfm, sim2real, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-25
 arxiv: "2511.00062"
 venue: "arXiv 2025"
 code: https://github.com/nvidia-cosmos/cosmos-predict2.5

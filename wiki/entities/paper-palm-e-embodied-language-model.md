@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "multimodal", "foundation-model", "google", "hmi-papers"]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2303.03378"
 venue: "HMI curated · 2023"
 summary: "PaLM-E（HMI P053）：把连续相机与机器人状态投影成与文本相同的嵌入序列，使视觉、状态与语言共享自回归推理上下文（输出仍主要在语言层）。"

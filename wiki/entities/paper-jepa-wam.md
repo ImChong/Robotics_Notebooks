@@ -6,7 +6,7 @@ tags:
   - world-model
   - jepa
 status: complete
-updated: 2026-09-19
+updated: 2026-09-25
 arxiv: "2608.09381"
 related:
   - ../methods/vla.md

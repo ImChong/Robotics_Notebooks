@@ -15,7 +15,7 @@ tags:
   - nus
   - buaa
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2608.24882"
 related:
   - ../concepts/world-action-models.md
