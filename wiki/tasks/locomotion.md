@@ -270,6 +270,7 @@ flowchart TD
 - [ANYmal 分钟级并行 DRL](../entities/paper-anymal-walk-minutes-parallel-drl.md)
 - [Walk These Ways（MoB）](../entities/paper-walk-these-ways-quadruped-mob.md)
 - [Learning to Adapt（Nature MI 2025 四足多步态 + 生物力学切换）](../entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md)
+- [RAIBO2（Nature 2026 单次充电马拉松 / CoT 0.25）](../entities/paper-raibo2-marathon-energy-efficient-quadruped.md)
 - [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md)
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
 - [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)

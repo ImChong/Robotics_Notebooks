@@ -4,9 +4,10 @@ type: entity
 tags: [quadruped, sim2real, reinforcement-learning, legged, mit]
 status: stable
 summary: "RSS 2018：随机化动力学与感知，在仿真中学敏捷四足运动并迁移真机；建立早期 sim2real 扭矩/敏捷控制参照系。"
-updated: 2026-09-15
+updated: 2026-09-25
 venue: "RSS 2018"
 related:
+  - ./paper-raibo2-marathon-energy-efficient-quadruped.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../concepts/sim2real.md
@@ -86,6 +87,7 @@ flowchart LR
 - [Locomotion](../tasks/locomotion.md)
 - [四足扭矩控制 RL](./paper-quadruped-torque-control-rl.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
+- [RAIBO2 马拉松能效（Nature 2026）](./paper-raibo2-marathon-energy-efficient-quadruped.md) — 同 Hwangbo/RaiSim 脉络下的 **CoT/续航** 轴
 
 ## 推荐继续阅读
 

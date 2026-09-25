@@ -2466,6 +2466,7 @@
 - [RADmesh（Remesh-Aware Mesh Deformation · ECCV 2026 Oral）](wiki/entities/paper-radmesh.md) — RADmesh**（*Remesh-Aware Mesh Deformation*，arXiv:2608.17182，[项目 `📅unknown` `[entity_page]`
 - [RAFT：特权 Critic 塑造无传感器推进器容错](wiki/entities/paper-raft-thruster-fault.md) — RAFT**（*Recurrent Asymmetric Fault Tolerant*，arXiv:2608.22976， `📅unknown` `[entity_page]`
 - [RAGA — Real Time Ray Traced Gaussian Shadow Casting](wiki/entities/paper-raga-real-time-ray-traced-gaussian-shadow-casting.md) — RAGA**（*Real Time Ray Traced Gaussian Shadow Casting for 3DGS Avatar-Scene Interaction*，[arXiv:260 `📅unknown` `[entity_page]`
+- [RAIBO2：单次充电完成马拉松的高能效四足](wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md) — A quadruped robot designed to complete a marathon on a single battery charge**（Lee, Youm, Park *et `📅unknown` `[entity_page]`
 - [Rapid Dexterous Pen Writing（arXiv:2609.11775）](wiki/entities/paper-rapid-dexterous-pen-writing.md) — Rapid Dexterous Pen Writing**（[Rapid Learning of Dexterous In-Hand Pen Writing through Real-Time J `📅unknown` `[entity_page]`
 - [Rapid Locomotion via Reinforcement Learning](wiki/entities/paper-rapid-locomotion-rl.md) — Margolis, Yang, Paigwar, Chen & Agrawal（MIT，arXiv:2205.02824） `📅unknown` `[entity_page]`
 - [RAPID（arXiv:2609.21767）](wiki/entities/paper-rapid-vlm-rl.md) — RAPID**（*Scaling Vision-Language Reward Learning for Robot Manipulation in Parallel Simulation*，[a `📅unknown` `[entity_page]`
