@@ -6,7 +6,7 @@ tags:
   - camera-robustness
   - novel-view
 status: complete
-updated: 2026-09-19
+updated: 2026-09-25
 arxiv: "2603.05868"
 related:
   - ../methods/vla.md

@@ -111,7 +111,7 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-cuvslam.md（含绝对化措辞「最新」，updated=2026-09-24；同主题更新页 wiki/entities/paper-bioimpedance-eim-wearable-myography.md updated=2026-09-25）
+- wiki/entities/paper-cuvslam.md（含绝对化措辞「最新」，updated=2026-09-24；同主题更新页 wiki/entities/paper-anycam-vla.md updated=2026-09-25）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -131,4 +131,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：4864/4864 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：4868/4868 (100%) wiki/entity 页有 ingest 来源

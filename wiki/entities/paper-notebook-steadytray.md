@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, residual-learning, reinforcement-learning, ppo, tray-transport, sim2real, unitree-g1, ucsd, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-25
 arxiv: "2603.10306"
 code: https://github.com/AllenHuangGit/steadytray
 related:
