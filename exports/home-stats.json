@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-me-brain-1-0.md",
+      "detail_id": "entity-paper-me-brain-1-0",
+      "label": "ME-Brain-1.0：记忆、认知与动作的自我演进具身框架",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-me-vlm.md",
+      "detail_id": "entity-paper-me-vlm",
+      "label": "ME-VLM：统一具身认知与 Agent 协调的 VLM",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/li-auto-machembodied-4-papers-technology-map.md",
+      "detail_id": "wiki-overview-li-auto-machembodied-4-papers-technology-map",
+      "label": "理想 MachEmbodied 四篇：记忆、认知、生成与触觉",
+      "type": "overview",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl.md",
       "detail_id": "entity-paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl",
       "label": "系统化 MADRL 多 UAV 复杂环境协作导航",
@@ -183,50 +215,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
-    },
-    {
-      "path": "wiki/comparisons/lz4-vs-zstandard.md",
-      "detail_id": "wiki-comparisons-lz4-vs-zstandard",
-      "label": "LZ4 vs Zstandard（zstd）",
-      "type": "comparison",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
-    },
-    {
-      "path": "wiki/entities/lz4.md",
-      "detail_id": "entity-lz4",
-      "label": "LZ4",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
-    },
-    {
-      "path": "wiki/entities/zstandard.md",
-      "detail_id": "entity-zstandard",
-      "label": "Zstandard（zstd）",
-      "type": "entity",
-      "recency": "2026-09-24",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl.md",
-    "detail_id": "entity-paper-sa-2607-25754-cooperative-multi-uav-navigation-madrl",
-    "label": "系统化 MADRL 多 UAV 复杂环境协作导航",
+    "path": "wiki/entities/paper-me-brain-1-0.md",
+    "detail_id": "entity-paper-me-brain-1-0",
+    "label": "ME-Brain-1.0：记忆、认知与动作的自我演进具身框架",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
-    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
