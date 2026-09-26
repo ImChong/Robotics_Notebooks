@@ -16,12 +16,12 @@
   </style>
 </head>
 <body>
-  <main class="container" style="padding:3rem 0">
+  <main class="container" style="padding-top:3rem;padding-bottom:3rem">
     <h1 class="hero-title" style="font-size:1.5rem">增长趋势</h1>
     <div class="trend-tabs" id="trend-tabs"></div>
     <p class="data-meta" id="trend-status">加载中…</p>
     <div id="trend-chart" style="width:100%;height:460px"></div>
-    <p class="data-meta">星标数据实时来自 GitHub API；节点 / 纵深数据来自部署时按 git 历史生成的 <code>exports/wiki-activity.json</code>（按当前仍存在页面的首次加入日统计）。</p>
+    <p class="data-meta">星标数据来自部署时拉取的 <code>exports/star-history.json</code>；节点 / 纵深数据来自部署时按 git 历史生成的 <code>exports/wiki-activity.json</code>（按当前仍存在页面的首次加入日统计）。</p>
     <p><a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a></p>
   </main>
   <script>
@@ -51,16 +51,21 @@
         return { x: x, y: x.map(function (d) { return byDay[d]; }) };
       }
 
-      var starDates = getJSON('https://api.github.com/repos/' + REPO).then(function (repo) {
-        var reqs = [];
-        for (var p = 1; p <= Math.max(1, Math.ceil(repo.stargazers_count / 100)); p++) {
-          reqs.push(getJSON('https://api.github.com/repos/' + REPO + '/stargazers?per_page=100&page=' + p,
-            { Accept: 'application/vnd.github.star+json' }));
-        }
-        return Promise.all(reqs);
-      }).then(function (chunks) {
-        return [].concat.apply([], chunks).map(function (s) { return s.starred_at.slice(0, 10); });
-      });
+      // 优先读部署时生成的静态数据；本地预览未生成时回退实时 API（未登录限额 60 次/小时/IP）
+      function liveStarDates() {
+        return getJSON('https://api.github.com/repos/' + REPO).then(function (repo) {
+          var reqs = [];
+          for (var p = 1; p <= Math.max(1, Math.ceil(repo.stargazers_count / 100)); p++) {
+            reqs.push(getJSON('https://api.github.com/repos/' + REPO + '/stargazers?per_page=100&page=' + p,
+              { Accept: 'application/vnd.github.star+json' }));
+          }
+          return Promise.all(reqs);
+        }).then(function (chunks) {
+          return [].concat.apply([], chunks).map(function (s) { return s.starred_at.slice(0, 10); });
+        });
+      }
+      var starDates = getJSON('exports/star-history.json')
+        .then(function (d) { return d.dates; }, liveStarDates);
 
       var addedNodes = getJSON('exports/wiki-activity.json').then(function (a) {
         var out = [];
@@ -90,6 +95,7 @@
           } }
       ];
 
+      var touch = window.matchMedia('(pointer: coarse)').matches;
       var current = null;
       function render(view) {
         current = view;
@@ -122,8 +128,10 @@
               ]
             },
             yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
-            bargap: 0.2
-          }, { responsive: true, displaylogo: false });
+            bargap: 0.2,
+            // 触屏上拖拽框选会吞掉页面滚动；缩放交给下方范围滑条
+            dragmode: touch ? false : 'zoom'
+          }, { responsive: true, displaylogo: false, displayModeBar: !touch });
           var total = view.kind === 'bar'
             ? s.y.reduce(function (a, b) { return a + b; }, 0)
             : (s.y[s.y.length - 1] || 0);
