@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5327,
-  "edge_count": 46634,
+  "node_count": 5328,
+  "edge_count": 46645,
   "coverage": {
-    "covered": 5298,
-    "total": 5298,
+    "covered": 5299,
+    "total": 5299,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-zetta.md",
+      "detail_id": "entity-paper-zetta",
+      "label": "Zetta ζ：高效闭环具身 Harness 与自进化物理智能",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/eka-robotics-vfa.md",
       "detail_id": "entity-eka-robotics-vfa",
@@ -202,28 +213,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
-    },
-    {
-      "path": "wiki/comparisons/robot-policy-deployment-dev-board-selection.md",
-      "detail_id": "wiki-comparisons-robot-policy-deployment-dev-board-selection",
-      "label": "机器人运控开发板选型（按策略网络模型）",
-      "type": "comparison",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/eka-robotics-vfa.md",
-    "detail_id": "entity-eka-robotics-vfa",
-    "label": "Eka Robotics — Vision-Force-Action（VFA）",
+    "path": "wiki/entities/paper-zetta.md",
+    "detail_id": "entity-paper-zetta",
+    "label": "Zetta ζ：高效闭环具身 Harness 与自进化物理智能",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -240,7 +241,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 360
+      "size": 361
     },
     {
       "label": "仿真到现实",
@@ -256,7 +257,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 2213,
+      "degree": 2214,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -264,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1836,
+      "degree": 1837,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -295,7 +296,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1014,
+      "degree": 1015,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

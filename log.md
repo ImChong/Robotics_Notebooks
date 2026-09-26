@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/papers/zetta_arxiv_2608_16590.md — Zetta ζ 闭环具身 harness（2608.16590）；Zetta-Embodiment 已开源；三 loop + Z-Infra；交叉 Zeva/Harness VLA；自动合并 PR
+
+- **意图：** 用户指定项目页 / GitHub / HF / arXiv
+- **开源结论：** **已开源** — `air-embodied-brain/Zetta-Embodiment`（权重与 sim 资产外置）
+- **关键页：** [paper-zetta](wiki/entities/paper-zetta.md)
+
 ## [2026-09-26] ingest | sources/sites/eka_robotics_com.md — Eka Robotics VFA（Vision-Force-Action）；官网 + Actuate26 微信整理；未开源；交叉 VLA/sim2real；自动合并 PR
 
 - **意图：** 用户指定 ekarobotics.com + 公众号 VFA 路线

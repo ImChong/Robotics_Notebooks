@@ -17,6 +17,7 @@ related:
   - ../methods/vla.md
   - ../concepts/world-action-models.md
   - ../overview/open-source-system-loop-7-papers-technology-map.md
+  - ./paper-zetta.md
 sources:
   - ../../sources/papers/zeva_arxiv_2608_30880.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
@@ -140,6 +141,7 @@ sequenceDiagram
 - [World Action Models](../concepts/world-action-models.md)
 - [CorrectVLA](./paper-correctvla.md) — 另一条免训练部署期纠错路线（人类语言反馈）
 - [Motus2](./paper-motus2.md) — 同批次世界模型自进化对照
+- [Zetta ζ](./paper-zetta.md) — 同组织：代码 critic/recovery 闭环 harness（arXiv:2608.16590）
 
 ## 推荐继续阅读
 
