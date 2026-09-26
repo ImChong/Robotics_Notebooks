@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, recursive-self-improvement, llm-agents, ai-auto-research, self-evaluation, governance, literature-review]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-26
 arxiv: "2607.07663"
 code: https://github.com/deepgrounding/recursive-self-improvement
 related:
@@ -11,6 +11,7 @@ related:
   - ../concepts/ai-auto-research.md
   - ../entities/awesome-rsi.md
   - ../entities/paper-metarsi-v1.md
+  - ../entities/paper-dream-rsi.md
   - ../entities/karpathy-autoresearch.md
   - ../entities/rsi-harness.md
   - ../entities/paper-harnessbank.md
@@ -204,7 +205,7 @@ sequenceDiagram
 - [递归自改进（概念）](../concepts/recursive-self-improvement.md)
 - [RSI 四层标准与五次推进](../queries/rsi-four-tier-five-pushes.md)
 - [AI Auto-Research](../concepts/ai-auto-research.md)
-- [Awesome RSI](./awesome-rsi.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [karpathy/autoresearch](./karpathy-autoresearch.md)
+- [Awesome RSI](./awesome-rsi.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [Dream-RSI（2609.14858）](./paper-dream-rsi.md) · [karpathy/autoresearch](./karpathy-autoresearch.md)
 
 ## 参考来源
 

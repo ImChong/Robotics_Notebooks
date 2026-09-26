@@ -134,6 +134,7 @@ flowchart LR
 - [SoL-Pi](../entities/sol-pi.md) — 「先让 harness 更省再 scale RSI」的工业实例；efficiency for efficiency 愿景
 - [Awesome RSI](../entities/awesome-rsi.md) — agent 层 RSI 方法/基准策展（artifact × mode 索引）
 - [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 1,250 篇机制 taxonomy + 验证层级 + 开源语料
+- [Dream-RSI（2609.14858）](../entities/paper-dream-rsi.md) — discovery history 作 exact replay「世界」；exploration 层 dreaming RSI + evolving worlds pool
 
 ## 参考来源
 
