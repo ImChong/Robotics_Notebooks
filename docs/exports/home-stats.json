@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5310,
-  "edge_count": 46497,
+  "node_count": 5311,
+  "edge_count": 46522,
   "coverage": {
-    "covered": 5281,
-    "total": 5281,
+    "covered": 5282,
+    "total": 5282,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -39,6 +39,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    },
+    {
+      "path": "wiki/comparisons/robot-policy-deployment-dev-board-selection.md",
+      "detail_id": "wiki-comparisons-robot-policy-deployment-dev-board-selection",
+      "label": "机器人运控开发板选型（按策略网络模型）",
+      "type": "comparison",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
     },
     {
       "path": "wiki/entities/paper-legnav-calf.md",
@@ -201,17 +212,6 @@
       "path": "wiki/entities/fluiduse.md",
       "detail_id": "entity-fluiduse",
       "label": "FluidUse（Apple Silicon 本地计算机使用）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
-    },
-    {
-      "path": "wiki/entities/laya-coreml.md",
-      "detail_id": "entity-laya-coreml",
-      "label": "Laya-CoreML（Apple Neural Engine 运行时）",
       "type": "entity",
       "recency": "2026-09-26",
       "source": "git",

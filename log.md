@@ -1,3 +1,5 @@
+## [2026-09-26] ingest | sources/sites/robot-control-dev-board-official-specs.md — 新增 wiki/comparisons/robot-policy-deployment-dev-board-selection.md：按策略网络模型（小 MLP / 人形跟踪 / 机载扩散 / 感知运动 / VLA / WBC-MPC）推荐开发板，并汇总 Jetson Orin/Thor、RDK X5/S100、RK3588、树莓派 5 官方指标；实测延迟引自 PredActor、APXInf、VLA-ULAP、CReF 等已入库资料
+
 ## [2026-09-26] ingest | sources/papers/egoexo4d_hm_arxiv_2609_30187.md — Ego-Exo4D-HM SMPL-H 4D 重建（2649 takes / 104.59 h）；代码+HF 已开源；自动合并 PR
 
 - **意图：** 用户问「拍人类视频机器人能否照着学」— 入库 Ego-Exo4D-HM 数据与 SLAHMR 改造管线

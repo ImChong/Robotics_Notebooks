@@ -2,11 +2,12 @@
 type: entity
 tags: [humanoid, hardware, brain, computer, embedded, nvidia]
 status: complete
-updated: 2026-04-21
+updated: 2026-09-26
 related:
   - ./humanoid-robot.md
   - ../queries/real-time-control-middleware-guide.md
   - ../../roadmap/motion-control.md
+  - ../comparisons/robot-policy-deployment-dev-board-selection.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "主流开源人形机器人“大脑”（主控电脑）选型：对比了 NVIDIA Jetson Orin、高性能 X86 工控机及国产边缘算力平台的性能边界与适用场景。"
@@ -59,6 +60,7 @@ summary: "主流开源人形机器人“大脑”（主控电脑）选型：对�
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
+- [机器人运控开发板选型（按策略网络模型）](../comparisons/robot-policy-deployment-dev-board-selection.md) — 按模型类型给出具体型号、官方指标与机载实测
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
