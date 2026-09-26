@@ -5,6 +5,8 @@ status: complete
 updated: 2026-09-21
 related:
   - ./laya.md
+  - ./laya-coreml.md
+  - ./fluiduse.md
   - ./typesafe-jev.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../concepts/behavior-tree-vla-orchestration.md
@@ -36,6 +38,7 @@ summary: "Laya-MLX（Apache 2.0）是 Laya typed decision 的 Apple Silicon MLX 
 - **Apple Silicon 本地部署：** MacBook / Mac Studio 上 agent 路由、guardrail、triage 可 **<15 ms** 单问，无需 GPU 云或 PyTorch 栈；适合与 [VLA](../methods/vla.md) 或 [行为树编排](../concepts/behavior-tree-vla-orchestration.md) 并行的 **边缘 System 1**。
 - **与上游 [Laya](./laya.md) 分工：** 上游提供 RLCD 训练、PyPI `laya`、Convai 官方权重；本端口专注 **MLX 推理 + 权重转换 + Snake 等可复现实验**。
 - **与 [Jev](./typesafe-jev.md) 对照：** Jev 为闭源 API；Laya-MLX 走 **开权重 + 全本地**，延迟数字在 M3 Max 上可自证（见仓内 `BENCHMARKS.md`）。
+- **与 [Laya-CoreML](./laya-coreml.md) 对照：** 同作者生态的 **Core ML / ANE** 路径在短问上常 **更快且更省电**（见 Made with Laya 收据）；MLX 仍适合纯 Python agent 与 `laya-snake` 高吞吐实验。
 
 ## 核心信息
 
@@ -121,6 +124,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Laya（System 1 决策引擎）](./laya.md)
+- [Laya-CoreML（Neural Engine 运行时）](./laya-coreml.md)
 - [Jev（TypeSafe System One）](./typesafe-jev.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
