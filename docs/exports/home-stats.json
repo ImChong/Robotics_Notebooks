@@ -1,23 +1,13 @@
 {
   "generated_at": "2026-09-26",
   "node_count": 5313,
-  "edge_count": 46544,
+  "edge_count": 46545,
   "coverage": {
     "covered": 5284,
     "total": 5284,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-coordinated-badminton-skills-anymal.md",
-      "detail_id": "entity-paper-coordinated-badminton-skills-anymal",
-      "label": "Learning Coordinated Badminton Skills（ANYmal 四足羽毛球）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
     {
       "path": "wiki/entities/paper-dream-rsi.md",
       "detail_id": "entity-paper-dream-rsi",
@@ -217,17 +207,29 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-motionjepa.md",
+      "detail_id": "entity-paper-motionjepa",
+      "label": "MotionJEPA：在隐空间捕获视觉变化以防止时间特征坍塌",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-coordinated-badminton-skills-anymal.md",
-    "detail_id": "entity-paper-coordinated-badminton-skills-anymal",
-    "label": "Learning Coordinated Badminton Skills（ANYmal 四足羽毛球）",
+    "path": "wiki/entities/paper-dream-rsi.md",
+    "detail_id": "entity-paper-dream-rsi",
+    "label": "Dream-RSI：在演化世界中递归自改进",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
-    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    "has_repo": true,
+    "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
   },
   "top_communities": [
     {

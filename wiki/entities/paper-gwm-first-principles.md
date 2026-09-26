@@ -161,7 +161,7 @@ flowchart TB
 
 - **无 arXiv / 战略页重定向** — 手稿难以版本锁定；引用应以 WRC 稿与实例论文为准。
 - **L4–L5 仅为路线图** — 不应提前当作已交付能力。
-- **Vidu Q3/S1/S2：** Q3/S1 仍属产品映射；**[Vidu S2](./paper-vidu-s2.md)**（arXiv:2609.11638）已升格独立 paper 节点（Demo/API 可用，代码未开源）。
+- **Vidu Q3/S1/S2：** Q3/S1 仍属产品映射；**[Vidu S2](./paper-vidu-s2.md)**（arXiv:2609.11638）已升格独立 paper 节点（Demo/API + [Vidu-S 文档仓](https://github.com/shengshu-ai/Vidu-S)；权重/本地推理未开源）。
 - **与 Data Pyramid 综述易混淆** — 写作与 ingest 必须显式区分 D1–D5 定义。
 
 ## 源码运行时序图

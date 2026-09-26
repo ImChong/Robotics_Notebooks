@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/repos/vidu-s.md — Vidu S2（2609.11638）再核查：GitHub shengshu-ai/Vidu-S 文档仓 + SRF/Turbo 要点；权重仍闭源；更新 paper-vidu-s2；自动合并 PR
+
+- **意图：** 用户指定 vidu-stream / Vidu-S / HF / arXiv 入库（实体已存在，刷新开源与 README 技术点）
+- **开源结论：** **部分** — Demo + API + GitHub 文档仓；**无** 公开权重与本地 train/infer
+- **关键页：** [paper-vidu-s2](wiki/entities/paper-vidu-s2.md)
+
 ## [2026-09-26] ingest | sources/papers/coordinated_badminton_skills_scirobotics_adu3922.md — ETH Hutter 团队 ANYmal-D 羽毛球（Sci. Rob. adu3922）；机载 visuomotor RL + 感知噪声模型；代码未开源；自动合并 PR
 
 - **意图：** 用户指定 articuno 项目页 / Science / ETH 新闻 / Research Collection
