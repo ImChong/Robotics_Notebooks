@@ -1,13 +1,123 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5313,
-  "edge_count": 46545,
+  "node_count": 5324,
+  "edge_count": 46591,
   "coverage": {
-    "covered": 5284,
-    "total": 5284,
+    "covered": 5295,
+    "total": 5295,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-aries-mission2-aerial.md",
+      "detail_id": "entity-paper-aries-mission2-aerial",
+      "label": "ARIES-Mission2（arXiv:2608.12763）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-art-vla-on-the-fly-tool-use.md",
+      "detail_id": "entity-paper-art-vla-on-the-fly-tool-use",
+      "label": "ART（arXiv:2608.14047）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-atombridge.md",
+      "detail_id": "entity-paper-atombridge",
+      "label": "AtomBridge（arXiv:2602.09430）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-bicpo-vla.md",
+      "detail_id": "entity-paper-bicpo-vla",
+      "label": "BICPO-VLA（arXiv:2608.13924）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dreamfly-aerial-vln.md",
+      "detail_id": "entity-paper-dreamfly-aerial-vln",
+      "label": "DreamFly（arXiv:2608.12308）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-fire-vla.md",
+      "detail_id": "entity-paper-fire-vla",
+      "label": "FIRE-VLA（arXiv:2608.13395）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-flashdrive-vla-autonomous-driving.md",
+      "detail_id": "entity-paper-flashdrive-vla-autonomous-driving",
+      "label": "FlashDrive（arXiv:2608.12932）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ssp-syn2sim2phy-vla-eval.md",
+      "detail_id": "entity-paper-ssp-syn2sim2phy-vla-eval",
+      "label": "SSP（arXiv:2608.14024）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-unitexture-vla-adversarial.md",
+      "detail_id": "entity-paper-unitexture-vla-adversarial",
+      "label": "UniTexture（arXiv:2608.13453）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vla-representation-task-progress.md",
+      "detail_id": "entity-paper-vla-representation-task-progress",
+      "label": "VLA Task Progress（arXiv:2608.13474）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-weekly-trends-2026-08-10-part3-technology-map.md",
+      "detail_id": "wiki-overview-vla-weekly-trends-2026-08-10-part3-technology-map",
+      "label": "一周 VLA 研究趋势（2026.08.10–08.16 · 第三篇）",
+      "type": "overview",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-coordinated-badminton-skills-anymal.md",
       "detail_id": "entity-paper-coordinated-badminton-skills-anymal",
@@ -104,130 +214,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-camp-arm-hand-motion-planning.md",
-      "detail_id": "entity-paper-camp-arm-hand-motion-planning",
-      "label": "CAMP",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-crosssafe.md",
-      "detail_id": "entity-paper-crosssafe",
-      "label": "CrossSafe",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-echo-in-the-steps.md",
-      "detail_id": "entity-paper-echo-in-the-steps",
-      "label": "Echo in the Steps",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-harnesspai.md",
-      "detail_id": "entity-paper-harnesspai",
-      "label": "HarnessPAI",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-polyumi.md",
-      "detail_id": "entity-paper-polyumi",
-      "label": "PolyUMI",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-propra-fingertip-anchoring.md",
-      "detail_id": "entity-paper-propra-fingertip-anchoring",
-      "label": "Self-Supervised Anchoring of Fingertip Sensing to Proprioception and Proactive Actions for Robot Imitation Learning",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rapid-agentic-programming.md",
-      "detail_id": "entity-paper-rapid-agentic-programming",
-      "label": "RAPID",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rolling-wam.md",
-      "detail_id": "entity-paper-rolling-wam",
-      "label": "Rolling-WAM（滚动想象 · World Action Model）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-self-adaptive-vla.md",
-      "detail_id": "entity-paper-self-adaptive-vla",
-      "label": "Self-Adaptive VLA（部署期硬件漂移自适应）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wrap-wrench-aware-assembly.md",
-      "detail_id": "entity-paper-wrap-wrench-aware-assembly",
-      "label": "Wrap",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/embodied-research-12-papers-technology-map.md",
-      "detail_id": "wiki-overview-embodied-research-12-papers-technology-map",
-      "label": "具身研究清单：12 篇论文阅读坐标",
-      "type": "overview",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-coordinated-badminton-skills-anymal.md",
-    "detail_id": "entity-paper-coordinated-badminton-skills-anymal",
-    "label": "Learning Coordinated Badminton Skills（ANYmal 四足羽毛球）",
+    "path": "wiki/entities/paper-aries-mission2-aerial.md",
+    "detail_id": "entity-paper-aries-mission2-aerial",
+    "label": "ARIES-Mission2（arXiv:2608.12763）",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
-    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -244,7 +241,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 349
+      "size": 360
     },
     {
       "label": "仿真到现实",
@@ -268,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1823,
+      "degree": 1834,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -341,7 +338,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 169,
+      "degree": 171,
       "has_repo": true,
       "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
     },

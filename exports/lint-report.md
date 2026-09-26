@@ -119,8 +119,8 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-geovla.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-beyondretarget-monocular-humanoid.md updated=2026-09-26）
-- wiki/entities/paper-xiaomi-cocktailasr-1.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-beyondretarget-monocular-humanoid.md updated=2026-09-26）
+- wiki/entities/paper-geovla.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-aries-mission2-aerial.md updated=2026-09-26）
+- wiki/entities/paper-xiaomi-cocktailasr-1.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-aries-mission2-aerial.md updated=2026-09-26）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/concepts/humanoid-topology-optimization-toolchain.md
@@ -140,4 +140,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：5284/5284 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：5295/5295 (100%) wiki/entity 页有 ingest 来源

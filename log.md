@@ -1,3 +1,8 @@
+## [2026-09-26] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md — 多模空间一周 VLA 第三篇（12 篇）；新建 10 实体 + 技术地图；复用 Temporal GRPO / SONIC；自动合并 PR
+
+- **意图：** 用户指定 mp.weixin.qq.com/s/YangjxIBI8830OtlBBn61g；**每篇独立非重复详情节点**
+- **节点：** 12/12 canonical（见 [vla-weekly-trends-2026-08-10-part3-technology-map](wiki/overview/vla-weekly-trends-2026-08-10-part3-technology-map.md)）
+
 ## [2026-09-26] ingest | sources/repos/vidu-s.md — Vidu S2（2609.11638）再核查：GitHub shengshu-ai/Vidu-S 文档仓 + SRF/Turbo 要点；权重仍闭源；更新 paper-vidu-s2；自动合并 PR
 
 - **意图：** 用户指定 vidu-stream / Vidu-S / HF / arXiv 入库（实体已存在，刷新开源与 README 技术点）
