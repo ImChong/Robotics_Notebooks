@@ -214,7 +214,7 @@ flowchart TB
 |--------|--------|----------------|
 | 状态估计 | 位姿 + 地图 | 浮基 + 接触 + 关节 |
 | 规划输出 | `cmd_vel` / 轨迹 | 足端/质心/关节参考 |
-| 学习 | VLA/IL 操作；学习型局部社交导航见 [iCrowdNav](../entities/paper-icrowdnav.md)（BEV+姿态意图，非 Nav2 替代）与 [SPLC](../entities/paper-splc.md)（自动社交偏好 + Offline RL）；主动问路找人见 [CommNav](../entities/paper-commnav.md)（Habitat 3.0c + COMM）；人中心例行找人见 [HUMEMBR](../entities/paper-humembr.md)（Spot GraphNav + LLM 记忆检索） | RL locomotion / tracking |
+| 学习 | VLA/IL 操作；学习型局部社交导航见 [LegNav/CALF](../entities/paper-legnav-calf.md)（踝高 2D LiDAR 腿特征 + JAX RL，**已开源**）、[iCrowdNav](../entities/paper-icrowdnav.md)（BEV+姿态意图，非 Nav2 替代）与 [SPLC](../entities/paper-splc.md)（自动社交偏好 + Offline RL）；主动问路找人见 [CommNav](../entities/paper-commnav.md)（Habitat 3.0c + COMM）；人中心例行找人见 [HUMEMBR](../entities/paper-humembr.md)（Spot GraphNav + LLM 记忆检索） | RL locomotion / tracking |
 | 代表仓 | Nav2、FAST-LIO | [OpenLoong-Dyn-Control](../entities/openloong-dyn-control.md)、[legged_gym](https://github.com/leggedrobotics/legged_gym) |
 
 ## 常见误区
@@ -251,6 +251,7 @@ flowchart TB
 - [Functional-SLAM](../entities/paper-functional-slam.md) — 在线功能场景图 SLAM（CoRL 2026；已开源）
 - [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外视觉语义占据（像素视锥高斯；代码待发布）
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — 全景户外 3DGS 重建（novel-view 资产）
+- [LegNav/CALF](../entities/paper-legnav-calf.md) — 踝高 LiDAR 腿部社交导航 CALF+RL（arXiv:2607.27922；**已开源**）
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL（局部社交层对照；代码待发布）
 - [SPLC](../entities/paper-splc.md) — 自动社交偏好奖励 + Offline RL 人群导航（代码 coming soon）
 - [CommNav](../entities/paper-commnav.md) — 主动向路人打听目标位置（Habitat 3.0c；代码待发布）

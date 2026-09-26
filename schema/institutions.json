@@ -3916,6 +3916,14 @@
         "cshl",
         "cold-spring-harbor"
       ]
+    },
+    "university-of-siena": {
+      "label": "锡耶纳大学（University of Siena）",
+      "aliases": [
+        "siena",
+        "university-of-siena",
+        "unisi"
+      ]
     }
   }
 }
