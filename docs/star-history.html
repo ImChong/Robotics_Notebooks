@@ -73,9 +73,9 @@
       });
 
       var VIEWS = [
-        { id: 'stars', label: 'Star 趋势', unit: 'Stars', kind: 'line',
+        { id: 'stars', label: '星标趋势', unit: '星标', kind: 'line',
           load: function () { return starDates.then(function (d) { return cumulative(dailyFromDates(d)); }); } },
-        { id: 'stars-daily', label: '每日星数', unit: '新增 Stars', kind: 'bar',
+        { id: 'stars-daily', label: '每日星数', unit: '新增星标', kind: 'bar',
           load: function () { return starDates.then(dailyFromDates); } },
         { id: 'nodes', label: '节点数趋势', unit: '节点', kind: 'line',
           load: function () { return addedNodes.then(function (n) { return cumulative(dailyFromDates(n.map(function (v) { return v.date; }))); }); } },
