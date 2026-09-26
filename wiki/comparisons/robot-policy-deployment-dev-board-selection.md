@@ -20,6 +20,9 @@ related:
   - ../entities/project-instinct.md
   - ../entities/open-duck-mini-runtime.md
   - ../entities/cn-os-rdk-model-zoo.md
+  - ../entities/onnxruntime.md
+  - ../entities/tensorrt.md
+  - ../entities/booster-robocup-demo.md
 sources:
   - ../../sources/sites/robot-control-dev-board-official-specs.md
   - ../../sources/sites/nvidia-jetson-embedded-systems.md
@@ -29,14 +32,15 @@ sources:
   - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/repos/instinct-onboard.md
   - ../../sources/repos/open_duck_mini_runtime.md
-summary: "按策略网络模型选机载开发板：小 MLP 用树莓派 / RK3588 / RDK X5 的 CPU 即可；人形全身跟踪与机载扩散以 Orin NX 16GB 为实测基线；深度感知运动上 AGX Orin；π₀.₅ 级 VLA 上 Jetson Thor；并给出各板官方指标。"
+  - ../../sources/repos/wbc_fsm.md
+summary: "按策略网络模型选机载开发板：小 MLP 用树莓派 / RK3588 / RDK X5 的 CPU 即可；人形全身跟踪与机载扩散以 Orin NX 16GB 为实测基线；深度感知运动上 AGX Orin；π₀.₅ 级 VLA 上 Jetson Thor；并给出各板官方指标与推荐模型格式（小网 .onnx + CPU，加速时用 TensorRT engine / .rknn / RDK .bin）。"
 ---
 
 # 机器人运控开发板选型（按策略网络模型）
 
 ## 一句话定义
 
-**先看策略网络的「FLOPs × 控制频率」和「权重占多少内存」，再选板：本体小网跑 CPU 就够，带视觉 / 扩散的低层策略从 Orin NX 起步，完整 VLA 要 Jetson Thor 或离板 GPU。**
+**先看策略网络的「FLOPs × 控制频率」和「权重占多少内存」，再选板：本体小网跑 CPU 就够，带视觉 / 扩散的低层策略从 Orin NX 起步，完整 VLA 要 Jetson Thor 或离板 GPU。模型文件统一先导出 `.onnx`，只在需要 GPU / NPU 加速时再编译成 TensorRT engine、`.rknn` 或 RDK `.bin`。**
 
 > 证据等级约定：表中 **实测** = 本库已入库资料里有该板上的部署或延迟数据；**推断** = 维护者按官方算力 / 内存推算，**尚无本库实测**，选型前需自测。
 
@@ -52,6 +56,8 @@ summary: "按策略网络模型选机载开发板：小 MLP 用树莓派 / RK358
 | p95 | 95th Percentile Latency | 95 分位延迟，机载实时门禁常用指标 |
 | RT | Real-Time | 实时；PREEMPT_RT 内核或独立 MCU 保证确定性 |
 | CAN FD | Controller Area Network Flexible Data-rate | 关节 / 电机总线，RDK X5 板载 1 路 |
+| ORT / TRT | ONNX Runtime / TensorRT | 通用 ONNX 推理引擎 / NVIDIA GPU 专属编译推理 |
+| PTQ / QAT | Post-Training Quantization / Quantization-Aware Training | 训练后量化（需校准集）/ 量化感知训练 |
 
 ## 为什么重要
 
@@ -116,12 +122,37 @@ flowchart TD
 - 数据均来自 2026-09-26 抓取的官方产品页，逐项出处见 [官方规格归档](../../sources/sites/robot-control-dev-board-official-specs.md)；Orin 家族更多软件栈信息见 [NVIDIA Jetson](../entities/nvidia-jetson.md)。
 - **Orin 与 Thor 的 AI 标称单位不同**（INT8 TOPS vs FP4 TFLOPS），比较 VLA 能力请看上一节的 **同模型实测延迟**，不要直接除。
 
+## 各开发板推荐的策略模型文件格式
+
+**总原则：训练侧统一导出 `.onnx` 作契约；只有要用 GPU / NPU 加速时，才在目标板上编译成厂商专属格式。** 厂商格式与芯片、工具链版本绑定，换板或升级 SDK 要重编（[TensorRT](../entities/tensorrt.md) engine 绑定 GPU SM 版本；RDK model zoo 建议排查精度问题时先确认板端 `libdnn.so` 与 OpenExplorer Docker 均为最新同期版本）。
+
+| 开发板 | 小 MLP / GRU 低层策略（50–100 Hz） | 感知 CNN / 扩散 / 大模型 | 转换工具 → 板端 runtime | 精度建议 | 证据 |
+|--------|-----------------------------------|--------------------------|--------------------------|----------|------|
+| **Raspberry Pi 5 / Pi Zero 2W** | **`.onnx`** + [ONNX Runtime](../entities/onnxruntime.md) CPU | 视觉 CNN：[ncnn](../entities/ncnn.md) `.param` + `.bin`；已有 TF 管线可用 `.tflite`（LiteRT） | 无 NPU，全在 CPU | FP32 即可（小网无需量化） | 实测：[Open Duck](../entities/open-duck-mini-runtime.md) Pi Zero 2W 跑 ONNX |
+| **RK3588**（Radxa CM5 / Rock 5） | **`.onnx`** + ORT CPU（A76 大核） | **`.rknn`**（NPU） | RKNN-Toolkit2 → RKNN Runtime `librknnrt.so`（C/C++）或 Toolkit-Lite2（Python） | NPU 走 **INT8**（需校准集）或 **FP16** | 格式为官方；小网放 CPU 为 **推断** |
+| **RDK X5** | **`.onnx`** + ORT CPU（A55 较弱，需实测余量） | **`.bin`**（BPU） | OpenExplorer Docker：`hb_mapper makertbin` → 板端 BPU 推理库 | BPU 只走 **INT8 PTQ** | 格式为官方；小网放 CPU 为 **推断** |
+| **RDK S100 / S100P** | **`.onnx`** + ORT CPU（A78AE） | **`.bin`（PTQ）/ `.hbm`（QAT）**（BPU；官方口径不一，见下） | OpenExplorer（S 系列）→ 板端 BPU 推理库 | INT8 PTQ；精度掉得多时改 QAT | 格式为官方；小网放 CPU 为 **推断** |
+| **Jetson Orin Nano / NX / AGX** | **`.onnx`** + ORT（CPU 或 CUDA EP）即可 | **TensorRT engine（`.engine` / `.plan`）**，在目标板上由 `.onnx` 编译 | `trtexec` / TensorRT Builder；或 ORT 的 TensorRT EP | 感知 / 扩散 **FP16** 起步；INT8 需校准；**Orin 无 FP8** | 实测：instinct_onboard（G1 Orin NX 跑 ONNX）；[Booster demo](../entities/booster-robocup-demo.md) 真机 Orin 用 TensorRT、仿真用 ORT |
+| **Jetson Thor** | 同上 | TensorRT engine；VLA 用专用引擎（[APXInf](../entities/apxinf.md)，Rust + 定制 CUDA 算子） | TensorRT / APXInf（在目标 GPU 上编译，`sm_110`） | **FP8** 最快（需校准）；BF16 为精度基线 | 实测：APXInf Thor FP8 41.16 ms / BF16 72.45 ms，LIBERO-10 成功率 92.2% / 92.8% |
+| **x86 工控机** | **`.onnx`** + ORT CPU；或 LibTorch 加载 TorchScript `.pt` | Intel 核显 / NPU 用 [OpenVINO](../entities/openvino.md) IR（`.xml` + `.bin`） | ORT / OpenVINO | FP32 / FP16 | 实测：[wbc-fsm](../../sources/repos/wbc_fsm.md) 纯 C++ ORT（x64 / aarch64） |
+
+**为什么小网默认 `.onnx` + CPU（维护者判断，非厂商结论）：**
+
+1. **精度零损失：** FP32 CPU 推理与训练侧数值一致，不引入 INT8 量化后的闭环漂移；NPU 普遍只吃 INT8 / FP16。
+2. **开销不划算：** 1–3M 参数 MLP 单次只有数 MFLOPs；而 RDK 官方说明 **即便纯 BPU 模型，输入 / 输出的量化 / 反量化也在 CPU 上做**，再加一次数据搬运，加速比有限。
+3. **一份文件多端复用：** 同一 `.onnx` 可在 MuJoCo / Isaac 做 Sim2Sim 回放，再原样上真机，排障时少一个变量（见 [ORT vs MNN vs TensorRT](./onnxruntime-vs-mnn-vs-tensorrt.md)）。
+
+**什么时候换成厂商格式：** 模型带图像 / 深度输入、扩散多步去噪、或 CPU 实测 p95 超出控制周期时，再编译 `.engine` / `.rknn` / `.bin`；换格式后必须用固定输入对拍 ONNX 输出，并做吊架闭环回归。
+
+- **RDK S 系列格式口径：** 官方 FAQ 写「`.bin` 对应 PTQ、`.hbm` 对应 QAT」，`rdk_model_zoo_s` README 写部署 `*.bin`，第三方评测称 S 系列原生为 `.hbm`，以所用 OpenExplorer 版本为准（出处见 [官方规格归档](../../sources/sites/robot-control-dev-board-official-specs.md)）。
+- **算子回落：** RDK 官方 FAQ 说明超出 BPU 约束的算子会在 CPU 上计算；GRU、Attention 等在 NPU 上的覆盖度需逐模型确认。
+
 ## 工程实践
 
 | 环节 | 建议 |
 |------|------|
 | 先算再买 | 用「FLOPs × Hz」和「参数 × 字节」估一遍，再对照上表；小网不要为 TOPS 付费 |
-| 推理后端 | Jetson 走 TensorRT / ONNX Runtime GPU；RK3588 / RDK 的 NPU 需各自工具链量化转换（RDK 见 [rdk_model_zoo](../entities/cn-os-rdk-model-zoo.md)）；小 MLP 直接 CPU 上 ONNX Runtime 最省事（见 [ORT vs MNN vs TensorRT](./onnxruntime-vs-mnn-vs-tensorrt.md)） |
+| 推理后端 | 按上一节「各开发板推荐的策略模型文件格式」选；RDK 转换示例见 [rdk_model_zoo](../entities/cn-os-rdk-model-zoo.md)，runtime 横评见 [ORT vs MNN vs TensorRT](./onnxruntime-vs-mnn-vs-tensorrt.md) |
 | 实时门禁 | 以 **完整回调 p95**（含观测构造、推理、下发）而非纯推理时间验收；换板或换导出都要重测 |
 | 分层部署 | 力矩 / PD 环放实时侧（x86 PREEMPT_RT、RDK S100 的 R52+ MCU 或电机驱动板），策略与感知放推理侧；急停独立于 GPU 进程（见 [Jetson Orin NX](../entities/jetson-orin-nx.md)） |
 | 量化回归 | INT8 / FP8 量化后必须吊架回归；Thor 的 FP8 需要校准数据，**Orin 无 FP8 Tensor Core**（[APXInf](../entities/apxinf.md)） |
@@ -156,6 +187,7 @@ flowchart TD
 - [CReF 论文归档](../../sources/papers/cref_arxiv_2603_29452.md) — AGX Orin 感知型运动部署
 - [instinct_onboard 仓库归档](../../sources/repos/instinct-onboard.md) — G1 Orin NX ONNX 部署
 - [Open Duck Mini Runtime 仓库归档](../../sources/repos/open_duck_mini_runtime.md) — Pi Zero 2W 策略部署
+- [wbc-fsm 仓库归档](../../sources/repos/wbc_fsm.md) — G1 纯 C++ ONNX Runtime 部署（x64 / aarch64）
 
 ## 推荐继续阅读
 
@@ -164,3 +196,5 @@ flowchart TD
 - [D-Robotics RDK S100](https://en.d-robotics.cc/rdks100) / [RDK X5](https://en.d-robotics.cc/rdkx5)
 - [Rockchip RK3588](https://www.rock-chips.com/a/en/products/RK35_Series/2022/0926/1660.html)
 - [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/)
+- [RKNN-Toolkit2](https://github.com/airockchip/rknn-toolkit2) / [RKNN Model Zoo](https://github.com/airockchip/rknn_model_zoo)
+- [D-Robotics rdk_model_zoo](https://github.com/D-Robotics/rdk_model_zoo) / [RDK S 工具链 FAQ](https://developer.d-robotics.cc/rdk_doc/en/rdk_s/FAQ/toolchain/)

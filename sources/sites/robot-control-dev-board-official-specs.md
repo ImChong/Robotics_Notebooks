@@ -89,6 +89,19 @@
 
 - G1 与 G1 EDU 均含 **「8 核高性能 CPU」** 作为基础运控算力；G1 EDU 可选 **高算力模组**（官方写作「Orin 等多品牌型号可选」），**未给 TOPS**。
 
+## 推理工具链与模型文件格式（2026-09-26 抓取）
+
+| 平台 | 官方工具链 / runtime | 部署文件格式 | 输入格式 | 量化 | 出处 |
+|------|---------------------|--------------|----------|------|------|
+| 瑞芯微 RK3588 等 | **RKNN-Toolkit2**（PC 端转换）→ 板端 **RKNN Runtime**（C/C++，`librknnrt.so`）或 **RKNN-Toolkit-Lite2**（Python） | **`.rknn`** | ONNX、PyTorch、TensorFlow 等（model zoo 示例以 ONNX 为主） | model zoo 列 **INT8 / FP16** 两档；v2.3.2 起有自动混合精度 | <https://github.com/airockchip/rknn-toolkit2>、<https://github.com/airockchip/rknn_model_zoo> |
+| 地瓜 RDK X5 | **OpenExplorer** Docker 工具链：`hb_mapper makertbin --model-type onnx` | **`.bin`** | ONNX 为主 | **INT8** PTQ（需校准集） | <https://github.com/D-Robotics/rdk_model_zoo> |
+| 地瓜 RDK S100 / S100P | OpenExplorer（S 系列，HBDK 编译） | **`.bin`（PTQ）/ `.hbm`（QAT）**——官方 FAQ 原文「`.bin` for PTQ, `.hbm` for QAT」；`rdk_model_zoo_s` README 写部署 `*.bin`；CNX 评测称 S 系列原生格式为 `.hbm`。**口径不一，以所用 OpenExplorer 版本文档为准** | ONNX 为主 | PTQ / QAT | <https://developer.d-robotics.cc/rdk_doc/en/rdk_s/FAQ/toolchain/>、<https://github.com/D-Robotics/rdk_model_zoo_s> |
+
+- RDK 官方 FAQ：**超出 BPU 约束（如 CxHxW > 8192）的算子回落 CPU 计算**；「少量算子受影响且整体性能达标则无需处理」。
+- rdk_model_zoo_s README：精度异常时先确认 **OpenExplorer Docker 与板端 `libdnn.so` 均为最新发布版本**。
+- rdk_model_zoo FAQ：**即便是纯 BPU 模型，输入 / 输出的量化 / 反量化节点也在 CPU 上执行**。
+- NVIDIA TensorRT（`.onnx` → 目标 GPU 专属 engine / plan）、ONNX Runtime、OpenVINO、ncnn、LiteRT 的格式说明已在本库对应实体页与 [ORT vs MNN vs TensorRT](../../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) 覆盖，此处不重复。
+
 ## 为什么值得保留
 
 - 本库已有 [NVIDIA Jetson](../../wiki/entities/nvidia-jetson.md)、[Jetson Orin NX](../../wiki/entities/jetson-orin-nx.md)、[人形「大脑」选型](../../wiki/entities/open-source-humanoid-brains.md) 等页，但 **国产板（RDK / RK3588）与树莓派没有官方规格来源**，且缺少「按策略模型类型选板」的统一视角。
