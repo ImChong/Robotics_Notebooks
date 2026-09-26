@@ -1,6 +1,6 @@
 ---
 type: overview
-tags: [hub, hub-communication, ethercat, can, ros2, firmware, bus, rpc, grpc, mqtt, iot]
+tags: [hub, hub-communication, ethercat, can, ros2, firmware, bus, rpc, grpc, mqtt, iot, zeromq]
 status: complete
 updated: 2026-09-17
 summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场总线（EtherCAT/CAN/UART）到 ROS 2 / LCM / RPC 软件中间件，覆盖人形与移动机器人底层数据链路选型。"
@@ -26,6 +26,7 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 | RPC | Remote Procedure Call | 请求/响应远程调用；见 [RPC 概念](../concepts/remote-procedure-call.md) |
 | gRPC | gRPC Remote Procedure Calls | 现代 RPC 框架（HTTP/2）；见 [gRPC](../entities/grpc.md) |
 | MQTT | Message Queuing Telemetry Transport | IoT pub/sub；Broker 路由；见 [MQTT 协议](../concepts/mqtt-protocol.md) |
+| ZMQ | ZeroMQ | Brokerless socket 消息库；见 [ZeroMQ](../entities/zeromq.md) |
 
 ## 为什么重要
 
@@ -45,6 +46,7 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 | DDS | ROS 2 底层 QoS/RTPS | [DDS 通信机制](../concepts/dds-communication.md) |
 | RPC | 请求/响应服务面 | [远程过程调用](../concepts/remote-procedure-call.md)、[gRPC](../entities/grpc.md) |
 | IoT / 遥测 | 边云状态、远程运维 | [MQTT 协议](../concepts/mqtt-protocol.md)、[Mosquitto](../entities/mosquitto.md) |
+| 策略 Server / 调试流 | GPU 推理进程 ↔ 仿真/真机；时序工具 | [ZeroMQ 消息模式](../concepts/zeromq-messaging.md)、[ZeroMQ](../entities/zeromq.md)、[PlotJuggler](../entities/plotjuggler.md) |
 | 时钟 | 分布式同步 | [Clock Synchronization](../concepts/clock-synchronization-algorithms.md) |
 | 整机架构 | 分域/拓扑/延迟预算 | [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) |
 | 系统工程 | OS/边云/OTA/安全 FSM | [系统工程知识链](./hub-systems-engineering.md) |
@@ -67,4 +69,5 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 
 - 本库归纳自 [Motor Drive / Firmware / Bus Protocols](./motor-drive-firmware-bus-protocols.md) 及 `wiki/concepts/*protocol*` 系列页
 - RPC 一手：[Birrell & Nelson 1984](../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md) · [RFC 5531](../../sources/sites/rfc-5531-onc-rpc.md) · [gRPC 文档](../../sources/sites/grpc-io-docs.md)
+- ZeroMQ 一手：[zeromq.org](../../sources/sites/zeromq-org-primary-refs.md) · [ØMQ Guide](../../sources/sites/zguide-zeromq.md) · [ZMTP RFC](../../sources/sites/zmq-rfc-zmtp-3.md) · [libzmq](../../sources/repos/libzmq.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`communication` 命中规则）

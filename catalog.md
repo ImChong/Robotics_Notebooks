@@ -4465,6 +4465,7 @@
 - [Yale OpenHand（耶鲁开源欠驱动手）](wiki/entities/yale-openhand.md) — Yale OpenHand** 是耶鲁大学 Grab Lab（Aaron M. Dollar 组）维护的 **开源、可快速原型的腱驱动欠驱动机器人手系列**：以 3D 打印 + 柔顺关节浇注降低改 `📅unknown` `[entity_page]`
 - [Yanjie Ze（迮炎杰）](wiki/entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与  `📅unknown` `[entity_page]`
 - [Unitree Z1 软件栈（z1_sdk 等）](wiki/entities/z1-sdk.md) — Z1** 是宇树六轴协作机械臂产品线。组织下拆有 `z1_sdk`、`z1_ros`、`z1_controller`、`z1_joystick` 等多个仓库；本页作为**唯一 wiki 节点**归 `📅unknown` `[entity_page]`
+- [ZeroMQ](wiki/entities/zeromq.md) — ZeroMQ**（zeromq/libzmq，站 [zeromq.org](https://zeromq.org/get-s `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
 - [Zstandard（zstd）](wiki/entities/zstandard.md) — Zstandard**（**zstd**）是面向 **实时压缩** 的 **无损** 算法与格式（参考实现 [facebook/zstd](https://github.com/facebook/ `📅unknown` `[entity_page]`
 
@@ -4682,6 +4683,7 @@
 - [Whole-Body Coordination（全身协调控制）](wiki/concepts/whole-body-coordination.md) — 全身协调控制（Whole-Body Coordination）**：研究高自由度机器人系统（尤其是人形机器人）如何将全身多个肢体、链接的运动在时间和空间上进行统一协调，使不同子系统的运动相互配合， `📅unknown` `[wiki_page]`
 - [Whole-Body Tracking Pipeline（全身运动跟踪流水线）](wiki/concepts/whole-body-tracking-pipeline.md) — Whole-Body Tracking（WBT）** 关心的是「让人形机器人**全身**按一段参考动作动起来」的端到端工程链路。它**消费** [Motion Retargeting Pipeli `📅unknown` `[wiki_page]`
 - [World Action Models（WAM，世界–动作模型）](wiki/concepts/world-action-models.md) — World Action Models（WAM）**：具身基础模型中，把 **环境在干预下的前向演化（未来观测/状态）** 与 **可执行控制动作** 放在 **同一策略框架** 里联合建模的一类 `📅unknown` `[wiki_page]`
+- [ZeroMQ 消息模式](wiki/concepts/zeromq-messaging.md) — ZeroMQ** 把 **消息模式** 固化在 **socket 类型** 里：开发者通过 **bind/connect** 拼拓扑，而不是向独立 Broker 注册 topic。语义的一手定义见 `📅unknown` `[wiki_page]`
 
 ### Wiki Methods（方法页）
 
