@@ -8,6 +8,7 @@ related:
   - ./laya-coreml.md
   - ./fluiduse.md
   - ./typesafe-jev.md
+  - ./valen.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../methods/vla.md
@@ -37,7 +38,7 @@ summary: "Laya（Apache 2.0）是 Convai 的多语言非自回归 System 1 决�
 
 ## 为什么重要
 
-- **与 [Jev](./typesafe-jev.md) 同谱对照：** 二者都是 System 1 typed decision；Jev 为 **闭源 API + 开源 SDK**，Laya 为 **Apache 2.0 权重 + 自托管**（README 对标 Jev 延迟与 typed-decisions 精度）。
+- **与 [Jev](./typesafe-jev.md) / [Valen](./valen.md) 同谱对照：** 三者都是 System 1 typed decision；Jev 为 **闭源 API + 开源 SDK**，Laya 为 **Apache 2.0 文本权重 + 自托管**，Valen 为 **Apache 2.0 多模态（Qwen3.5 + 决策头）+ 游戏/General 数据开源**。
 - **机器人/agent 编排：** 适合 ticket triage、guardrail、模型路由等 **<50 ms** 分支，与 [VLA](../methods/vla.md) chunk 或 [行为树编排](../concepts/behavior-tree-vla-orchestration.md) **异步** 并存。
 - **Apple Silicon 本地栈：** 社区 [Laya-MLX](./laya-mlx.md) 端口在 M3 Max 上单问约 **7–14 ms**（无 PyTorch）；[Laya-CoreML](./laya-coreml.md) 在 Neural Engine 上可达 **~3.6–5 ms**（Swift [FluidUse](./fluiduse.md) 或 Python `laya-coreml`），适合 Mac 边缘 agent 门控。
 - **多语言部署：** `Router` 在英文 ModernBERT 与 mmBERT 多语言 checkpoint 间切换，避免英文模型在非拉丁脚本上「高置信全错」（如 Khmer 0.000 acc @ 0.952 conf）。
@@ -130,6 +131,7 @@ sequenceDiagram
 - [Laya-CoreML（Neural Engine 运行时）](./laya-coreml.md)
 - [FluidUse（macOS 本地 computer-use）](./fluiduse.md)
 - [Jev（TypeSafe System One）](./typesafe-jev.md)
+- [Valen（万澜 · 多模态 System One）](./valen.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [VLA 方法页](../methods/vla.md)
