@@ -43,12 +43,11 @@ jobs:
           python3 scripts/generate_home_stats.py
           python3 scripts/graph_exports_sync.py
 
-      # 增长趋势页的星标时间线：用 GITHUB_TOKEN 在构建时拉取，避免访客浏览器
-      # 直连 GitHub API 触发未登录速率限制（403）。失败不阻塞部署，页面会回退到实时 API。
+      # 增长趋势页的星标时间线：构建时拉取，避免访客浏览器直连 GitHub API 触发未登录速率限制。
+      # 不传 GITHUB_TOKEN（该接口对其返回 403 Resource not accessible by integration）。
+      # 失败不阻塞部署，页面会回退到实时 API。
       - name: Generate star history
         continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/generate_star_history.py
 
       - name: Copy README to docs
