@@ -4531,6 +4531,7 @@
 - [人形机器人运控常见奖励函数分类（Humanoid Policy Reward Functions）](wiki/concepts/humanoid-policy-reward-functions.md) — 人形机器人运控常见奖励函数**：训练人形/腿式运动控制策略时写进环境的全部奖励项的总称；按「这个项在替谁说话」可切成六类——任务与跟踪、姿态与稳定、步态与接触、能效与平滑、安全与硬件、风格与模仿， `📅unknown` `[wiki_page]`
 - [人形机器人和橡皮人（教学类比）](wiki/concepts/humanoid-rubber-man-analogy.md) — 飞书 Know-How 子主题 **「人形机器人和橡皮人」** 用直观类比说明：仅在外形上模仿人类的机器人，可能在**质量分布、关节驱动、接触模型**上与真实人体相差甚远，行为更像「可扭曲的橡皮人」— `📅unknown` `[wiki_page]`
 - [人形机器人测试流程（L0–L5 六级递进）](wiki/concepts/humanoid-testing-workflow.md) — 人形机器人测试流程**是把 ~30+ 自由度、机械–电气–控制–AI 四域耦合的双足整机，按 **L0 仿真 → L1 部件台架 → L2 关节模组 → L3 子系统 → L4 整机 → L5 场 `📅unknown` `[wiki_page]`
+- [人形结构拓扑优化工具链（工况谱 → 优化 → 重建 → 验证）](wiki/concepts/humanoid-topology-optimization-toolchain.md) — 拓扑优化工具链**是在给定设计空间与载荷约束下，用 **SIMP 等密度法** 重分配结构材料、再经 **CAD 重建与工艺收口** 得到可装机零件的一整条 CAE 流程；对人形机器人而言，它服务 `📅unknown` `[wiki_page]`
 - [人形机器人与其他机器人的区别](wiki/concepts/humanoid-vs-other-robots.md) — 飞书 Know-How「人形机器人与其他机器人的区别」强调：人形不是「自由度更多的机械臂」或「双足版四足」，而是**浮动基 + 间歇接触 + 上身–下肢强耦合** 带来的独特控制问题集合。 `📅unknown` `[wiki_page]`
 - [Hybrid Force-Position Control（力位混合控制）](wiki/concepts/hybrid-force-position-control.md) — 力位混合控制**：把任务空间拆成“该控位置的方向”和“该控力的方向”，让机器人在一个子空间内严格跟踪几何目标，在另一个子空间内稳定施加期望接触力。 `📅unknown` `[wiki_page]`
 - [图像分割任务分类（语义 / 实例 / 全景）](wiki/concepts/image-segmentation-taxonomy.md) — 语义分割**给每个像素一个类别；**实例分割**还要区分同类别不同物体；**全景分割**统一可数 things 与不可数 stuff，输出整图一致的像素–段表示。 `📅unknown` `[wiki_page]`
