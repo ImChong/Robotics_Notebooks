@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-dream-rsi.md",
+      "detail_id": "entity-paper-dream-rsi",
+      "label": "Dream-RSI：在演化世界中递归自改进",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
+    },
+    {
       "path": "wiki/entities/valen.md",
       "detail_id": "entity-valen",
       "label": "Valen（万澜 · Multimodal System One Decision Model）",
@@ -207,29 +218,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/fluiduse.md",
-      "detail_id": "entity-fluiduse",
-      "label": "FluidUse（Apple Silicon 本地计算机使用）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/valen.md",
-    "detail_id": "entity-valen",
-    "label": "Valen（万澜 · Multimodal System One Decision Model）",
+    "path": "wiki/entities/paper-dream-rsi.md",
+    "detail_id": "entity-paper-dream-rsi",
+    "label": "Dream-RSI：在演化世界中递归自改进",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
   },
   "top_communities": [
     {
