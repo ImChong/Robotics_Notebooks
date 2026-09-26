@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/flow-matching-embodied-policy.md",
+      "detail_id": "wiki-concepts-flow-matching-embodied-policy",
+      "label": "流匹配与具身策略（Flow Matching for Embodied Policy）",
+      "type": "concept",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
       "path": "wiki/entities/paper-legnav-calf.md",
       "detail_id": "entity-paper-legnav-calf",
       "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
@@ -207,29 +217,17 @@
       "source": "git",
       "action": "added",
       "community_label": "硬件与执行器（Hardware and Actuators） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md",
-      "detail_id": "entity-paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world",
-      "label": "Advancing AI for the physical world",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-legnav-calf.md",
-    "detail_id": "entity-paper-legnav-calf",
-    "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
-    "type": "entity",
+    "path": "wiki/concepts/flow-matching-embodied-policy.md",
+    "detail_id": "wiki-concepts-flow-matching-embodied-policy",
+    "label": "流匹配与具身策略（Flow Matching for Embodied Policy）",
+    "type": "concept",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
