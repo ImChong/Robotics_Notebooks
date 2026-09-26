@@ -1,13 +1,148 @@
 {
   "generated_at": "2026-09-26",
   "node_count": 5306,
-  "edge_count": 46439,
+  "edge_count": 46457,
   "coverage": {
     "covered": 5277,
     "total": 5277,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-adahvla.md",
+      "detail_id": "entity-paper-adahvla",
+      "label": "AdaHVLA",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-beyondretarget-monocular-humanoid.md",
+      "detail_id": "entity-paper-beyondretarget-monocular-humanoid",
+      "label": "BeyondRetarget（单目视频 → 可执行人形 motion）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-camp-arm-hand-motion-planning.md",
+      "detail_id": "entity-paper-camp-arm-hand-motion-planning",
+      "label": "CAMP",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-crosssafe.md",
+      "detail_id": "entity-paper-crosssafe",
+      "label": "CrossSafe",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-echo-in-the-steps.md",
+      "detail_id": "entity-paper-echo-in-the-steps",
+      "label": "Echo in the Steps",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-harnesspai.md",
+      "detail_id": "entity-paper-harnesspai",
+      "label": "HarnessPAI",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-polyumi.md",
+      "detail_id": "entity-paper-polyumi",
+      "label": "PolyUMI",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-propra-fingertip-anchoring.md",
+      "detail_id": "entity-paper-propra-fingertip-anchoring",
+      "label": "Self-Supervised Anchoring of Fingertip Sensing to Proprioception and Proactive Actions for Robot Imitation Learning",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rapid-agentic-programming.md",
+      "detail_id": "entity-paper-rapid-agentic-programming",
+      "label": "RAPID",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rolling-wam.md",
+      "detail_id": "entity-paper-rolling-wam",
+      "label": "Rolling-WAM（滚动想象 · World Action Model）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-self-adaptive-vla.md",
+      "detail_id": "entity-paper-self-adaptive-vla",
+      "label": "Self-Adaptive VLA（部署期硬件漂移自适应）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wrap-wrench-aware-assembly.md",
+      "detail_id": "entity-paper-wrap-wrench-aware-assembly",
+      "label": "Wrap",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/embodied-research-12-papers-technology-map.md",
+      "detail_id": "wiki-overview-embodied-research-12-papers-technology-map",
+      "label": "具身研究清单：12 篇论文阅读坐标",
+      "type": "overview",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-motionjepa.md",
       "detail_id": "entity-paper-motionjepa",
@@ -63,38 +198,6 @@
       "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     },
     {
-      "path": "wiki/entities/paper-beyondretarget-monocular-humanoid.md",
-      "detail_id": "entity-paper-beyondretarget-monocular-humanoid",
-      "label": "BeyondRetarget（单目视频 → 可执行人形 motion）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rolling-wam.md",
-      "detail_id": "entity-paper-rolling-wam",
-      "label": "Rolling-WAM（滚动想象 · World Action Model）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-self-adaptive-vla.md",
-      "detail_id": "entity-paper-self-adaptive-vla",
-      "label": "Self-Adaptive VLA（部署期硬件漂移自适应）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md",
       "detail_id": "entity-paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world",
       "label": "Advancing AI for the physical world",
@@ -115,128 +218,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1312-6114-auto-encoding-variational-bayes.md",
-      "detail_id": "entity-paper-rcl-1312-6114-auto-encoding-variational-bayes",
-      "label": "Auto-Encoding Variational Bayes",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1705-06950-the-kinetics-human-action-video-dataset.md",
-      "detail_id": "entity-paper-rcl-1705-06950-the-kinetics-human-action-video-dataset",
-      "label": "The Kinetics Human Action Video Dataset",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1709-06158-matterport3d-learning-from-rgb-d-data-in-indoor.md",
-      "detail_id": "entity-paper-rcl-1709-06158-matterport3d-learning-from-rgb-d-data-in-indoor",
-      "label": "Matterport3D",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1711-00937-neural-discrete-representation-learning.md",
-      "detail_id": "entity-paper-rcl-1711-00937-neural-discrete-representation-learning",
-      "label": "Neural Discrete Representation Learning",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1801-00690-deepmind-control-suite.md",
-      "detail_id": "entity-paper-rcl-1801-00690-deepmind-control-suite",
-      "label": "DeepMind Control Suite",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1807-06757-on-evaluation-of-embodied-navigation-agents.md",
-      "detail_id": "entity-paper-rcl-1807-06757-on-evaluation-of-embodied-navigation-agents",
-      "label": "On Evaluation of Embodied Navigation Agents",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1812-01717-towards-accurate-generative-models-of-video-a-ne.md",
-      "detail_id": "entity-paper-rcl-1812-01717-towards-accurate-generative-models-of-video-a-ne",
-      "label": "Towards Accurate Generative Models of Video",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1907-05446-general-evaluation-for-instruction-conditioned-n.md",
-      "detail_id": "entity-paper-rcl-1907-05446-general-evaluation-for-instruction-conditioned-n",
-      "label": "General Evaluation for Instruction Conditioned Navigation using Dynamic Time ...",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1908-03568-behaviour-suite-for-reinforcement-learning.md",
-      "detail_id": "entity-paper-rcl-1908-03568-behaviour-suite-for-reinforcement-learning",
-      "label": "Behaviour Suite for Reinforcement Learning",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1909-04102-lic-fusion-lidar-inertial-camera-odometry.md",
-      "detail_id": "entity-paper-rcl-1909-04102-lic-fusion-lidar-inertial-camera-odometry",
-      "label": "LIC-Fusion",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-motionjepa.md",
-    "detail_id": "entity-paper-motionjepa",
-    "label": "MotionJEPA：在隐空间捕获视觉变化以防止时间特征坍塌",
+    "path": "wiki/entities/paper-adahvla.md",
+    "detail_id": "entity-paper-adahvla",
+    "label": "AdaHVLA",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界模型（World Models） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -308,7 +301,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1012,
+      "degree": 1013,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
