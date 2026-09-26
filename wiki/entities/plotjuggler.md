@@ -16,7 +16,9 @@ related:
   - ./tensorboard.md
   - ../comparisons/ros2-vs-lcm.md
   - ../concepts/mqtt-protocol.md
+  - ../concepts/zeromq-messaging.md
   - ./mosquitto.md
+  - ./zeromq.md
 sources:
   - ../../sources/repos/plotjuggler.md
   - ../../sources/sites/plotjuggler-io.md
@@ -69,7 +71,7 @@ summary: "PlotJuggler 是跨平台时序可视化桌面工具：拖拽多曲线�
 | 模式 | 典型来源 |
 |------|----------|
 | 文件 | CSV、PX4 **ULog**、**MCAP**、rosbag（经 ROS 插件）、Parquet（Toolbox） |
-| 实时流 | ROS1/2 **topic**、MQTT、WebSocket（含 Foxglove bridge）、ZeroMQ、UDP、串口 |
+| 实时流 | ROS1/2 **topic**、MQTT、WebSocket（含 Foxglove bridge）、[ZeroMQ](./zeromq.md)、UDP、串口 |
 | 实验设备 | **LSL**（Lab Streaming Layer）插件 |
 | 自定义 | DataLoader / DataStreamer 插件（示例见 `plotjuggler-sample-plugins`） |
 

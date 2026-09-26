@@ -10,6 +10,8 @@ related:
   - ./dds-communication.md
   - ../entities/mosquitto.md
   - ../entities/plotjuggler.md
+  - ../entities/zeromq.md
+  - ./zeromq-messaging.md
   - ../entities/wokwi.md
   - ../overview/hub-communication.md
   - ../queries/real-time-control-middleware-guide.md

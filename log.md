@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/sites/zeromq-org-primary-refs.md — ZeroMQ 一手（官网、Guide、ZMTP RFC、libzmq/czmq）；实体 + 消息模式概念；挂接 GR00T/PlotJuggler 通信 hub；自动合并 PR
+
+- **意图：** 用户要求 ZeroMQ 一手资料入库
+- **开源结论：** **已开源** — libzmq/czmq（MPL-2.0）；规范公开（rfc.zeromq.org）
+- **关键页：** [zeromq](wiki/entities/zeromq.md)、[zeromq-messaging](wiki/concepts/zeromq-messaging.md)
+
 ## [2026-09-26] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md — 多模空间一周 VLA 第三篇（12 篇）；新建 10 实体 + 技术地图；复用 Temporal GRPO / SONIC；自动合并 PR
 
 - **意图：** 用户指定 mp.weixin.qq.com/s/YangjxIBI8830OtlBBn61g；**每篇独立非重复详情节点**
