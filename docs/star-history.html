@@ -14,9 +14,11 @@
   <meta name="theme-color" content="#191919" />
   <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
   <style>
-    /* 五个视图在窄屏换行，并与副标题拉开距离 */
+    /* 六个视图在窄屏换行，并与副标题拉开距离 */
     #trend-tabs { flex-wrap: wrap; }
     #trend-section .home-hub-head { margin-bottom: 10px; }
+    /* 底部按钮复用 change-log 的 .updates-timeline-actions；本页无时间线左轨道，去掉内缩 */
+    #trend-section .updates-timeline-actions { padding-left: 0; padding-right: 0; }
   </style>
 </head>
 <body>
@@ -44,7 +46,12 @@
         <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <div id="trend-chart" style="width:100%;height:460px"></div>
-        <p class="home-hub-more"><a href="change-log.html">查看更新记录</a> · <a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a></p>
+        <div class="updates-timeline-actions" role="group" aria-label="增长趋势导航">
+          <div class="updates-timeline-actions-start">
+            <a class="btn-secondary" href="change-log.html">查看更新记录</a>
+            <a class="btn-secondary" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -94,6 +101,13 @@
         return out;
       });
 
+      function depthDaily() {
+        return addedNodes.then(function (n) {
+          return dailyFromDates(n.filter(function (v) { return /^roadmap\/depth-/.test(v.path); })
+            .map(function (v) { return v.date; }));
+        });
+      }
+
       var VIEWS = [
         { id: 'stars', label: '星标趋势', unit: '星标', kind: 'line',
           load: function () { return starCounts; } },
@@ -109,12 +123,9 @@
         { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar',
           load: function () { return addedNodes.then(function (n) { return dailyFromDates(n.map(function (v) { return v.date; })); }); } },
         { id: 'depth', label: '纵深数趋势', unit: '纵深路线', kind: 'line',
-          load: function () {
-            return addedNodes.then(function (n) {
-              return cumulative(dailyFromDates(n.filter(function (v) { return /^roadmap\/depth-/.test(v.path); })
-                .map(function (v) { return v.date; })));
-            });
-          } }
+          load: function () { return depthDaily().then(cumulative); } },
+        { id: 'depth-daily', label: '每日纵深数', unit: '新增纵深路线', kind: 'bar',
+          load: depthDaily }
       ];
 
       var touch = window.matchMedia('(pointer: coarse)').matches;
