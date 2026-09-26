@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/zeromq-messaging.md",
+      "detail_id": "wiki-concepts-zeromq-messaging",
+      "label": "ZeroMQ 消息模式",
+      "type": "concept",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    },
+    {
+      "path": "wiki/entities/zeromq.md",
+      "detail_id": "entity-zeromq",
+      "label": "ZeroMQ",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    },
+    {
       "path": "wiki/entities/paper-aries-mission2-aerial.md",
       "detail_id": "entity-paper-aries-mission2-aerial",
       "label": "ARIES-Mission2（arXiv:2608.12763）",
@@ -192,39 +214,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adahvla.md",
-      "detail_id": "entity-paper-adahvla",
-      "label": "AdaHVLA",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-beyondretarget-monocular-humanoid.md",
-      "detail_id": "entity-paper-beyondretarget-monocular-humanoid",
-      "label": "BeyondRetarget（单目视频 → 可执行人形 motion）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-aries-mission2-aerial.md",
-    "detail_id": "entity-paper-aries-mission2-aerial",
-    "label": "ARIES-Mission2（arXiv:2608.12763）",
-    "type": "entity",
+    "path": "wiki/concepts/zeromq-messaging.md",
+    "detail_id": "wiki-concepts-zeromq-messaging",
+    "label": "ZeroMQ 消息模式",
+    "type": "concept",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true,
+    "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
   },
   "top_communities": [
     {
