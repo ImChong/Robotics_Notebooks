@@ -3888,6 +3888,34 @@
         "fluidinference",
         "fluid-inference"
       ]
+    },
+    "vivo": {
+      "label": "维沃移动通信（vivo Mobile Communication）",
+      "aliases": [
+        "vivo",
+        "vivo-tech-research"
+      ]
+    },
+    "bielefeld": {
+      "label": "比勒费尔德大学（Bielefeld University）",
+      "aliases": [
+        "bielefeld",
+        "bielefeld-university"
+      ]
+    },
+    "slater-labs": {
+      "label": "斯拉特实验室（Slater Labs）",
+      "aliases": [
+        "slater-labs",
+        "slater"
+      ]
+    },
+    "cshl": {
+      "label": "冷泉港实验室（Cold Spring Harbor Laboratory）",
+      "aliases": [
+        "cshl",
+        "cold-spring-harbor"
+      ]
     }
   }
 }

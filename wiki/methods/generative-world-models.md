@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-24
+updated: 2026-09-26
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -505,6 +505,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [WCM](../entities/paper-wcm-world-critic-model.md) — JEPA 隐空间预测路线：不生成像素，只用预测目标监督 critic 表征（靠 SIGReg 防坍塌）
 - [LeJEPA](../entities/paper-lejepa.md) — SIGReg 图像配方；后续规划/视频 JEPA 的防坍塌起点
 - [LeWM](../entities/paper-lewm.md) — 像素端到端动作条件 JEPA，规划至 48× 快于 DINO-WM
+- [MotionJEPA](../entities/paper-motionjepa.md) — DISReg 平衡静/动态 latent，缓解 JEPA 时间坍塌；静态 distractor 下 CEM 四任务均值 81.8%/70.3%（arXiv:2609.23881；**已开源**）
 - [LpWM](../entities/paper-lpwm.md) — 稀疏非负码；PushT 中等预测器相对稠密 LeWM 最高 +57 pp
 - [LeVJEPA](../entities/paper-levjepa.md) — 把 LeJEPA+SIGReg 接到视频编码器：不要 EMA teacher / predictor / 像素重建；因果表征免费，但本文不做规划 WM
 - [INTACT](../entities/paper-intact.md) — 同构意图→动作无搜索 JEPA（相对 LeWM+CEM；文档仓 Coming Soon）。
