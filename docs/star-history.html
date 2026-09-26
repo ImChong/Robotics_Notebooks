@@ -5,25 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图。" />
   <title>增长趋势 | Robotics Notebooks</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2"></script>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#191919" />
   <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
   <style>
-    .trend-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 1rem 0; }
-    .trend-tabs button { padding: 8px 16px; font-size: 0.9rem; cursor: pointer; }
+    /* 五个视图在窄屏换行，并与副标题拉开距离 */
+    #trend-tabs { flex-wrap: wrap; }
+    #trend-section .home-hub-head { margin-bottom: 10px; }
   </style>
 </head>
 <body>
-  <main class="container" style="padding-top:3rem;padding-bottom:3rem">
-    <h1 class="hero-title" style="font-size:1.5rem">增长趋势</h1>
-    <div class="trend-tabs" id="trend-tabs"></div>
-    <p class="data-meta" id="trend-status">加载中…</p>
-    <div id="trend-chart" style="width:100%;height:460px"></div>
-    <p class="data-meta">星标数据来自部署时拉取的 <code>exports/star-history.json</code>；节点 / 纵深数据来自部署时按 git 历史生成的 <code>exports/wiki-activity.json</code>（按当前仍存在页面的首次加入日统计）。</p>
-    <p><a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a></p>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks | 机器人技术栈地图</a>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="trend-section" aria-labelledby="trend-heading">
+      <div class="container">
+        <div class="home-hub-head">
+          <h1 class="section-title" id="trend-heading">增长趋势</h1>
+          <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
+        </div>
+        <p class="section-subtitle">星标来自 GitHub，部署时更新；节点与纵深路线按 git 首次加入日统计（仅含现存页面）。</p>
+        <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
+        <div id="trend-chart" style="width:100%;height:460px"></div>
+        <p class="home-hub-more"><a href="change-log.html">查看更新记录 →</a> · <a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a></p>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <a href="https://imchong.github.io/index.html" target="_blank" rel="noopener noreferrer">Chong Liu</a> 2026 · Robotics Notebooks</p>
+    </div>
+  </footer>
+
   <script>
     (function () {
       var REPO = 'ImChong/Robotics_Notebooks';
@@ -100,13 +131,16 @@
       function render(view) {
         current = view;
         Array.prototype.forEach.call(tabs.children, function (b) {
-          b.className = b.dataset.view === view.id ? 'btn-primary' : 'btn-secondary';
+          var active = b.dataset.view === view.id;
+          b.className = 'home-hub-tab' + (active ? ' is-active' : '');
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
         status.textContent = '加载中…';
         view.load().then(function (s) {
           if (current !== view) return;
           var css = getComputedStyle(document.documentElement);
           var text = css.getPropertyValue('--text').trim();
+          var muted = css.getPropertyValue('--text-muted').trim();
           var grid = css.getPropertyValue('--border').trim();
           var accent = css.getPropertyValue('--accent').trim();
           var trace = view.kind === 'bar'
@@ -129,6 +163,7 @@
             },
             yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
             bargap: 0.2,
+            modebar: { bgcolor: 'rgba(0,0,0,0)', color: muted, activecolor: text },
             // 触屏上拖拽框选会吞掉页面滚动；缩放交给下方范围滑条
             dragmode: touch ? false : 'zoom'
           }, { responsive: true, displaylogo: false, displayModeBar: !touch });
@@ -153,9 +188,14 @@
         b.addEventListener('click', function () { render(v); });
         tabs.appendChild(b);
       });
+      // 主题切换后按新配色重绘
+      new MutationObserver(function () { if (current) render(current); })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
       var wanted = new URLSearchParams(location.search).get('view');
       render(VIEWS.filter(function (v) { return v.id === wanted; })[0] || VIEWS[0]);
     })();
   </script>
+  <script src="wiki-type-labels.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
