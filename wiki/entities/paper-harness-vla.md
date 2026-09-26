@@ -33,6 +33,7 @@ related:
   - ./rldx-1.md
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-robo-harness.md
+  - ./paper-zetta.md
   - ./paper-embodiedskills.md
   - ./paper-robodawn.md
   - ./deepseek-harness.md

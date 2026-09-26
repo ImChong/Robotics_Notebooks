@@ -2434,6 +2434,13 @@
         "eka-robotics"
       ]
     },
+    "z-trans-ai": {
+      "label": "智迁人工智能（Z-Trans AI）",
+      "aliases": [
+        "z-trans-ai",
+        "z-trans"
+      ]
+    },
     "uc-riverside": {
       "label": "加州大学河滨分校（UC Riverside）",
       "aliases": [
