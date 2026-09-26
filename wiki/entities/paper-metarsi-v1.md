@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, llm-agents, recursive-self-improvement, agent-harness, ai-auto-research, coding-agents, cosmosmind]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-26
 arxiv: "2609.06396"
 code: https://github.com/CosmosMind-ai/RSI-Harness
 related:
@@ -15,6 +15,7 @@ related:
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-auto-research.md
   - ../queries/real-robot-policy-autoresearch-harness.md
+  - ./paper-dream-rsi.md
 sources:
   - ../../sources/papers/metarsi_v1_arxiv_2609_06396.md
   - ../../sources/sites/cosmosmind-ai.md
@@ -166,6 +167,7 @@ sequenceDiagram
 | [SoL-Pi](./sol-pi.md) | Pi 上 **auto-research 搜效率 extension**；MetaRSI 是 **三算子 RSI 框架 + Genome 自指 harness** |
 | [autoresearch](./karpathy-autoresearch.md) | 单 GPU、单文件 edit 面 + 固定 metric；MetaRSI 是多算子 **schedule + 双路线** |
 | [DeepSeek Harness](./deepseek-harness.md) | 通用插件 agent OS；RSI-Harness **钉 Pi + Genome**，强调 harness **一等对象** |
+| [Dream-RSI](./paper-dream-rsi.md) | **Exploration policy** RSI + history replay「世界」；与 MetaRSI 三算子 **不同改进面** |
 
 ## 结论
 
@@ -186,6 +188,7 @@ sequenceDiagram
 - [karpathy/autoresearch](./karpathy-autoresearch.md) — 最小固定 eval 环对照
 - [SoL-Pi](./sol-pi.md) — Pi harness 上的 auto-research 扩展
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — harness 前提与 verify 环境
+- [Dream-RSI（2609.14858）](./paper-dream-rsi.md) — exploration 层 replay-simulator RSI
 
 ## 参考来源
 

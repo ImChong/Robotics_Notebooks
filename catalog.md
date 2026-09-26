@@ -1406,6 +1406,7 @@
 - [DPC：Direct Perception Control（直接感知控制）](wiki/entities/paper-dpc.md) — DPC**（*Direct Perception Control Model*，项目页，[规范 `📅unknown` `[entity_page]`
 - [DPT：Vision Transformers for Dense Prediction](wiki/entities/paper-dpt.md) — DPT**（*Vision Transformers for Dense Prediction*，[arXiv:2103.13413](https://arxiv.org/abs/2103.134 `📅unknown` `[entity_page]`
 - [DR-MPC（arXiv:2609.20035）](wiki/entities/paper-dr-mpc.md) — DR-MPC**（*DR-MPC: Fast and Feasible Dynamics-Relaxed Model-Predictive Control for Legged Locomotio `📅unknown` `[entity_page]`
+- [Dream-RSI：在演化世界中递归自改进](wiki/entities/paper-dream-rsi.md) — Dream-RSI**（arXiv:2609.14858，[dream-rsi.com](https://dream-rsi `📅unknown` `[entity_page]`
 - [Dreamer（HMI P064）](wiki/entities/paper-dreamer-latent-imagination.md) — Dreamer**（*Dream to Control: Learning Behaviors by Latent Imagination*，2019，[arXiv:1912.01603](htt `📅unknown` `[entity_page]`
 - [DreamHand](wiki/entities/paper-dreamhand.md) — DreamHand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recov `📅unknown` `[entity_page]`
 - [Dreaming the Sound of Contact（arXiv:2609.19137）](wiki/entities/paper-dreaming-sound-of-contact.md) — Dreaming the Sound of Contact**（*Dreaming the Sound of Contact: Leveraging Video and Audio Generat `📅unknown` `[entity_page]`
