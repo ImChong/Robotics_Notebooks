@@ -1,3 +1,5 @@
+## [2026-09-26] ingest | sources/papers/motionjepa_arxiv_2609_23881.md — MotionJEPA DISReg 入库；mkarmann/motion-jepa 已开源（planning 子模块）
+
 ## [2026-09-26] ingest | sources/repos/fluiduse.md — FluidUse / Laya Core ML（FluidInference Swift harness + HF laya-coreml + Python 收据页）；自动合并 PR
 
 - **意图：** 用户指定 https://www.madewithlaya.com/builds/laya-coreml、https://github.com/FluidInference/FluidUse、https://huggingface.co/FluidInference/laya-coreml 与上游 Laya 链接

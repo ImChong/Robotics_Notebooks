@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5295,
-  "edge_count": 46401,
+  "node_count": 5296,
+  "edge_count": 46409,
   "coverage": {
-    "covered": 5266,
-    "total": 5266,
+    "covered": 5267,
+    "total": 5267,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -241,7 +241,7 @@
   "top_communities": [
     {
       "label": "世界模型",
-      "size": 1121
+      "size": 1122
     },
     {
       "label": "产业与开源生态",
@@ -292,7 +292,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 1374,
+      "degree": 1376,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },
