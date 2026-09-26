@@ -3881,6 +3881,13 @@
         "memo",
         "memo-ai"
       ]
+    },
+    "fluidinference": {
+      "label": "流体推理（FluidInference）",
+      "aliases": [
+        "fluidinference",
+        "fluid-inference"
+      ]
     }
   }
 }

@@ -505,6 +505,7 @@
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
 - [FloBaRoID（浮动基动力学辨识工具箱）](wiki/entities/flobaroid.md) — FloBaRoID**（*FLOating BAse RObot dynamical IDentification*，[kjyv/FloBaRoID](https://github.com/kjy `📅unknown` `[entity_page]`
+- [FluidUse（Apple Silicon 本地计算机使用）](wiki/entities/fluiduse.md) — FluidUse**（GitHub，SPM `0.3.0+`）是 **FluidInference**  `📅unknown` `[entity_page]`
 - [FLUX 3 Action](wiki/entities/flux-3-action.md) — FLUX 3 Action** 是 Black Forest Labs 发布的 **world action mod `📅unknown` `[entity_page]`
 - [Humanoid FluxVLA Engine](wiki/entities/fluxvla-engine.md) — Humanoid FluxVLA Engine** 是 **逐际动力（LimX Dynamics）** 随 **COSA 0.5**（2026-07）同步开源的 **人形 VLA 全栈工程框架 `📅unknown` `[entity_page]`
 - [FlyBrainLab](wiki/entities/flybrainlab.md) — FlyBrainLab** 是 Fruit Fly Brain Observatory 团队开源的 **交互计算平台**（https://github.com/FlyBrainLab/FlyBra `📅unknown` `[entity_page]`
@@ -637,6 +638,7 @@
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
 - [Lambda Cloud](wiki/entities/lambda-cloud.md) — Lambda Cloud**（lambda.ai）是 **AI 专用 GPU 云**，以 **Lambda Stack `📅unknown` `[entity_page]`
+- [Laya-CoreML（Apple Neural Engine 运行时）](wiki/entities/laya-coreml.md) — Laya-CoreML** 指把 Laya **322M multilingual**（及英文/typed 变体）转到 **Apple Core ML** 后在设备上跑  `📅unknown` `[entity_page]`
 - [Laya-MLX（Apple Silicon MLX 运行时）](wiki/entities/laya-mlx.md) — Laya-MLX**（GitHub，[PyPI](https://pypi.org/project/laya-ml `📅unknown` `[entity_page]`
 - [Laya（System 1 决策引擎）](wiki/entities/laya.md) — Laya**（GitHub，PyPI，[HF  `📅unknown` `[entity_page]`
 - [开源机器人学学习指南（qqfly）](wiki/entities/learn-robotics-qqfly-guide.md) — 一句话：** learn-robotics.qqfly.net 是 qqfly 维护的 **CC BY 4.0 中文自学手 `📅unknown` `[entity_page]`

@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/repos/fluiduse.md — FluidUse / Laya Core ML（FluidInference Swift harness + HF laya-coreml + Python 收据页）；自动合并 PR
+
+- **意图：** 用户指定 https://www.madewithlaya.com/builds/laya-coreml、https://github.com/FluidInference/FluidUse、https://huggingface.co/FluidInference/laya-coreml 与上游 Laya 链接
+- **开源结论：** FluidUse **已开源**（Apache-2.0）；HF **FluidInference/laya-coreml** **已发布**；Python **laya-coreml**（mizorewww）**已开源**（PyPI + HF）；上游 Convai Laya **已开源**
+- **关键页：** [fluiduse](wiki/entities/fluiduse.md)、[laya-coreml](wiki/entities/laya-coreml.md)；交叉 [laya](wiki/entities/laya.md)
+
 ## [2026-09-26] ingest | sources/papers/morphometric_imitation_arxiv_2609_28660.md — Morphometric Imitation（Berkeley HOI→visuomotor 零样本）；GitHub 待发布；自动合并 PR
 
 - **意图：** 用户指定 https://morphometricimitation.github.io/ — One human demo · Any multi-fingered hand · Zero-shot sim-to-real visuomotor
