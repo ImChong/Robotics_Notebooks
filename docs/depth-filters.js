@@ -236,7 +236,14 @@
       ]),
       ids: mergeIds('safe-control', [
         'wiki/overview/hub-safe-fine-tuning.md',
-        'wiki/concepts/control-barrier-function.md'
+        'wiki/concepts/control-barrier-function.md',
+        'wiki/queries/sim2real-closed-loop-engineering.md',
+        'wiki/queries/sim2real-checklist.md',
+        'wiki/entities/wbc-fsm.md',
+        'wiki/entities/paper-fail-passive-gap.md',
+        'wiki/entities/paper-ressafe.md',
+        'wiki/entities/paper-motion-cerebellum-safewbc.md',
+        'wiki/entities/paper-hrl-stack-41-safefall.md'
       ])
     },
     'rsi': {
