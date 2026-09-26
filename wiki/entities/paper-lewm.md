@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, world-models, latent-dynamics, planning, mila, nyu, brown, samsung, ami-labs]
 status: complete
-updated: 2026-09-25
+updated: 2026-09-26
 arxiv: "2603.19312"
 venue: "arXiv 2026"
 code: https://github.com/lucas-maes/le-wm
@@ -124,6 +124,7 @@ sequenceDiagram
 | [LpWM](./paper-lpwm.md) | 同一梯子，稀疏目标 |
 | [LeVJEPA](./paper-levjepa.md) | 无动作、无规划 |
 | [Traj-LeWM](./paper-traj-lewm.md) | 同骨干 + LTC 路径感知规划（+3~+14 pp） |
+| [MotionJEPA](./paper-motionjepa.md) | 同 LeWM 栈 + DISReg；静态 distractor CEM 均值 +61/+58 pp vs LeWM（25/50 步） |
 | [SRD](./paper-state-readout-decoupling.md) | 解耦 rollout 接口，减长视界误差累积 |
 
 ## 结论
@@ -137,6 +138,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [MotionJEPA](./paper-motionjepa.md) — DISReg 防时间坍塌与 distractor 规划
 - [Traj-LeWM](./paper-traj-lewm.md) — 潜轨迹代价扩展
 - [State–Readout Decoupling](./paper-state-readout-decoupling.md) — rollout 解耦
 - [CausalVAE WM Plug-in](./paper-causalvae-world-models.md) — 同组因果动力学线
