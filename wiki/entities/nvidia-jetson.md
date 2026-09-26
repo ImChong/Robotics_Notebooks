@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, hardware, edge-ai, nvidia, jetson, onboard-compute, robotics, physical-ai]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-26
 related:
   - ./jetson-ai-lab.md
   - ./holoscan-sensor-bridge.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/hardware-in-the-loop.md
   - ../concepts/edge-cloud-robotics.md
   - ../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md
+  - ../comparisons/robot-policy-deployment-dev-board-selection.md
   - ./quadruped-robot.md
 sources:
   - ../../sources/sites/nvidia-jetson-embedded-systems.md
@@ -133,6 +134,7 @@ flowchart TB
 - [Jetson AI Lab](./jetson-ai-lab.md) — LLM/VLM/VLA 官方教程 hub
 - [Holoscan Sensor Bridge](./holoscan-sensor-bridge.md) — Sensor-over-Ethernet 低延迟 GPU 传感器流
 - [Jetson Orin NX](./jetson-orin-nx.md) — 四足/轻量机器人常用模组深读
+- [机器人运控开发板选型（按策略网络模型）](../comparisons/robot-policy-deployment-dev-board-selection.md) — Jetson 与 RDK / RK3588 / 树莓派按模型类型对照
 - [Isaac GR00T](./isaac-gr00t.md) — Thor 部署叙事与开源 VLA 平台
 - [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)
 - [Software-in-the-Loop](../concepts/software-in-the-loop.md)

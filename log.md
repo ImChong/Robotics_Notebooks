@@ -1,3 +1,5 @@
+## [2026-09-26] ingest | sources/sites/robot-control-dev-board-official-specs.md — 新增 wiki/comparisons/robot-policy-deployment-dev-board-selection.md：按策略网络模型（小 MLP / 人形跟踪 / 机载扩散 / 感知运动 / VLA / WBC-MPC）推荐开发板，并汇总 Jetson Orin/Thor、RDK X5/S100、RK3588、树莓派 5 官方指标；实测延迟引自 PredActor、APXInf、VLA-ULAP、CReF 等已入库资料
+
 ## [2026-09-26] ingest | sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md — 12/12 独立 paper 节点（新建9+复用3）
 
 ## [2026-09-26] ingest | sources/papers/motionjepa_arxiv_2609_23881.md — MotionJEPA DISReg 入库；mkarmann/motion-jepa 已开源（planning 子模块）
