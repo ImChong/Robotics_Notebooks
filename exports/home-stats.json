@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25",
+  "generated_at": "2026-09-26",
   "node_count": 5288,
   "edge_count": 46315,
   "coverage": {
@@ -8,6 +8,17 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md",
+      "detail_id": "entity-paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world",
+      "label": "Advancing AI for the physical world",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界模型（World Models） 社区"
+    },
     {
       "path": "wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md",
       "detail_id": "entity-paper-raibo2-marathon-energy-efficient-quadruped",
@@ -216,29 +227,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-2203-03605-dino-detr-with-improved-denoising-anchor-boxes-f.md",
-      "detail_id": "entity-paper-rcl-2203-03605-dino-detr-with-improved-denoising-anchor-boxes-f",
-      "label": "DINO",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md",
-    "detail_id": "entity-paper-raibo2-marathon-energy-efficient-quadruped",
-    "label": "RAIBO2：单次充电完成马拉松的高能效四足",
+    "path": "wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md",
+    "detail_id": "entity-paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world",
+    "label": "Advancing AI for the physical world",
     "type": "entity",
     "recency": "2026-09-25",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "运动控制（Locomotion） 社区"
+    "community_label": "世界模型（World Models） 社区"
   },
   "top_communities": [
     {
