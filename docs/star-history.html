@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图。" />
+  <title>增长趋势 | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>" />
+  <meta name="color-scheme" content="dark light" />
+  <script src="theme-init.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+  <style>
+    .trend-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 1rem 0; }
+    .trend-tabs button { padding: 8px 16px; font-size: 0.9rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <main class="container" style="padding:3rem 0">
+    <h1 class="hero-title" style="font-size:1.5rem">增长趋势</h1>
+    <div class="trend-tabs" id="trend-tabs"></div>
+    <p class="data-meta" id="trend-status">加载中…</p>
+    <div id="trend-chart" style="width:100%;height:460px"></div>
+    <p class="data-meta">星标数据实时来自 GitHub API；节点 / 纵深数据来自部署时按 git 历史生成的 <code>exports/wiki-activity.json</code>（按当前仍存在页面的首次加入日统计）。</p>
+    <p><a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a></p>
+  </main>
+  <script>
+    (function () {
+      var REPO = 'ImChong/Robotics_Notebooks';
+      var tabs = document.getElementById('trend-tabs');
+      var status = document.getElementById('trend-status');
+
+      function getJSON(url, h) {
+        return fetch(url, { headers: h || {} }).then(function (r) {
+          if (!r.ok) throw new Error(url.indexOf('api.github.com') >= 0
+            ? 'GitHub API ' + r.status + (r.status === 403 ? '（可能触发未登录速率限制，稍后再试）' : '')
+            : r.status + ' ' + url);
+          return r.json();
+        });
+      }
+
+      // 按日计数 → 累计序列
+      function cumulative(daily) {
+        var total = 0;
+        return { x: daily.x, y: daily.y.map(function (n) { return (total += n); }) };
+      }
+      function dailyFromDates(dates) {
+        var byDay = {};
+        dates.forEach(function (d) { byDay[d] = (byDay[d] || 0) + 1; });
+        var x = Object.keys(byDay).sort();
+        return { x: x, y: x.map(function (d) { return byDay[d]; }) };
+      }
+
+      var starDates = getJSON('https://api.github.com/repos/' + REPO).then(function (repo) {
+        var reqs = [];
+        for (var p = 1; p <= Math.max(1, Math.ceil(repo.stargazers_count / 100)); p++) {
+          reqs.push(getJSON('https://api.github.com/repos/' + REPO + '/stargazers?per_page=100&page=' + p,
+            { Accept: 'application/vnd.github.star+json' }));
+        }
+        return Promise.all(reqs);
+      }).then(function (chunks) {
+        return [].concat.apply([], chunks).map(function (s) { return s.starred_at.slice(0, 10); });
+      });
+
+      var addedNodes = getJSON('exports/wiki-activity.json').then(function (a) {
+        var out = [];
+        a.days.forEach(function (d) {
+          d.nodes.forEach(function (n) {
+            if (n.action === 'added') out.push({ date: d.date, path: n.path || '' });
+          });
+        });
+        return out;
+      });
+
+      var VIEWS = [
+        { id: 'stars', label: '星标趋势', unit: '星标', kind: 'line',
+          load: function () { return starDates.then(function (d) { return cumulative(dailyFromDates(d)); }); } },
+        { id: 'stars-daily', label: '每日星数', unit: '新增星标', kind: 'bar',
+          load: function () { return starDates.then(dailyFromDates); } },
+        { id: 'nodes', label: '节点数趋势', unit: '节点', kind: 'line',
+          load: function () { return addedNodes.then(function (n) { return cumulative(dailyFromDates(n.map(function (v) { return v.date; }))); }); } },
+        { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar',
+          load: function () { return addedNodes.then(function (n) { return dailyFromDates(n.map(function (v) { return v.date; })); }); } },
+        { id: 'depth', label: '纵深数趋势', unit: '纵深路线', kind: 'line',
+          load: function () {
+            return addedNodes.then(function (n) {
+              return cumulative(dailyFromDates(n.filter(function (v) { return /^roadmap\/depth-/.test(v.path); })
+                .map(function (v) { return v.date; })));
+            });
+          } }
+      ];
+
+      var current = null;
+      function render(view) {
+        current = view;
+        Array.prototype.forEach.call(tabs.children, function (b) {
+          b.className = b.dataset.view === view.id ? 'btn-primary' : 'btn-secondary';
+        });
+        status.textContent = '加载中…';
+        view.load().then(function (s) {
+          if (current !== view) return;
+          var css = getComputedStyle(document.documentElement);
+          var text = css.getPropertyValue('--text').trim();
+          var grid = css.getPropertyValue('--border').trim();
+          var accent = css.getPropertyValue('--accent').trim();
+          var trace = view.kind === 'bar'
+            ? { type: 'bar', marker: { color: accent } }
+            : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } };
+          trace.x = s.x;
+          trace.y = s.y;
+          trace.hovertemplate = '%{x|%Y-%m-%d}<br>%{y} ' + view.unit + '<extra></extra>';
+          Plotly.react('trend-chart', [trace], {
+            paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
+            font: { color: text }, margin: { t: 20, r: 20, b: 50, l: 60 },
+            xaxis: {
+              gridcolor: grid, type: 'date', rangeslider: { visible: true },
+              // 数字日期格式，避免 Plotly 默认的英文月份（May 2026）
+              tickformatstops: [
+                { dtickrange: [null, 86400000 - 1], value: '%m-%d %H:%M' },
+                { dtickrange: [86400000, 14 * 86400000], value: '%m-%d' },
+                { dtickrange: [14 * 86400000 + 1, null], value: '%Y-%m' }
+              ]
+            },
+            yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
+            bargap: 0.2
+          }, { responsive: true, displaylogo: false });
+          var total = view.kind === 'bar'
+            ? s.y.reduce(function (a, b) { return a + b; }, 0)
+            : (s.y[s.y.length - 1] || 0);
+          status.textContent = view.label + '：' + (view.kind === 'bar' ? '合计 ' : '当前 ') + total + ' ' + view.unit
+            + (s.x.length ? '（' + s.x[0] + ' → ' + s.x[s.x.length - 1] + '）' : '');
+        }).catch(function (e) {
+          if (current !== view) return;
+          status.textContent = '加载失败：' + e.message;
+          if (window.Plotly) Plotly.purge('trend-chart');
+        });
+        history.replaceState(null, '', '?view=' + view.id);
+      }
+
+      VIEWS.forEach(function (v) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = v.label;
+        b.dataset.view = v.id;
+        b.addEventListener('click', function () { render(v); });
+        tabs.appendChild(b);
+      });
+      var wanted = new URLSearchParams(location.search).get('view');
+      render(VIEWS.filter(function (v) { return v.id === wanted; })[0] || VIEWS[0]);
+    })();
+  </script>
+</body>
+</html>
