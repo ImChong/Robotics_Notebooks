@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/fluiduse.md",
+      "detail_id": "entity-fluiduse",
+      "label": "FluidUse（Apple Silicon 本地计算机使用）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
+    },
+    {
+      "path": "wiki/entities/laya-coreml.md",
+      "detail_id": "entity-laya-coreml",
+      "label": "Laya-CoreML（Apple Neural Engine 运行时）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
+    },
+    {
       "path": "wiki/entities/paper-morphometric-imitation.md",
       "detail_id": "entity-paper-morphometric-imitation",
       "label": "Morphometric Imitation（人类 HOI → 零样本真机 visuomotor）",
@@ -203,40 +225,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-1910-11215-robonet-large-scale-multi-robot-learning.md",
-      "detail_id": "entity-paper-rcl-1910-11215-robonet-large-scale-multi-robot-learning",
-      "label": "RoboNet",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-2005-14165-language-models-are-few-shot-learners.md",
-      "detail_id": "entity-paper-rcl-2005-14165-language-models-are-few-shot-learners",
-      "label": "Language Models are Few-Shot Learners",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-morphometric-imitation.md",
-    "detail_id": "entity-paper-morphometric-imitation",
-    "label": "Morphometric Imitation（人类 HOI → 零样本真机 visuomotor）",
+    "path": "wiki/entities/fluiduse.md",
+    "detail_id": "entity-fluiduse",
+    "label": "FluidUse（Apple Silicon 本地计算机使用）",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
   },
   "top_communities": [
     {
