@@ -31,6 +31,7 @@ related:
   - ../entities/easymocap.md
   - ../entities/paper-rhythm-dual-humanoid-interaction.md
   - ../entities/paper-beyondretarget-monocular-humanoid.md
+  - ../entities/paper-morphometric-imitation.md
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
@@ -248,6 +249,7 @@ flowchart TD
 - [4DAnyone](../entities/paper-4danyone.md) — 单目→多视角外观 / 4DGS；与本流水线共享 GVHMR 上游，**不输出** 可重定向关节
 - [EasyMocap](../entities/easymocap.md) — 标定多视角 / 镜面视频 → SMPL 系参数的上游工具箱
 - [MILO](../entities/paper-milo.md) — 单图 LRM→SMPL-H + 物体网格的上游 HOI 几何；不是关节指令，进本管线前还要做坐标系/尺度对齐
+- [Morphometric Imitation](../entities/paper-morphometric-imitation.md) — **灵巧 HOI**：MMO 形态+接触运动学 retarget → 残差 RL → visuomotor；三/四/五指手、真机 zero-shot
 
 ## 推荐继续阅读
 

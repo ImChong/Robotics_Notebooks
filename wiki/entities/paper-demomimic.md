@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, sim2real, imitation-learning, reinforcement-learning, contact-rich, single-demo, stanford, realab]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-26
 arxiv: "2609.01938"
 venue: "2026 · Stanford（arXiv:2609.01938）"
 related:
@@ -161,6 +161,7 @@ flowchart TB
 | [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) | 在 **wrench 空间** 比接触效应；DemoMimic 在 **接触局部几何 + 法向对齐/持续性** 上做奖励，两条接触奖励范式互补 |
 | [ADEPT](./paper-adept-dexterity.md) | 高 DoF 灵巧 **RL 预训练 + distill** 走大规模任务面；DemoMimic 只要 **每任务一条人类示范**，靠局部几何换物体泛化 |
 | [VisualMimic](./paper-notebook-visualmimic.md) | 同校线但对象不同：全身 loco-manipulation 的视觉分层控制 vs 本页多指 **桌面灵巧接触** |
+| [Morphometric Imitation](./paper-morphometric-imitation.md) | 同属 **单次人类示范 + 接触中心 + zero-shot sim-to-real visuomotor**；上游 **MMO 形态 retarget + GRAB 自然 HOI**，真机 **89.3% / 300 trial**（Berkeley） |
 | 多示范模仿学习 | 依赖 per-object 重采集；DemoMimic 的赌注是「示范条数不是瓶颈，仿真里算不算真接触才是」 |
 
 > 读法提醒：\* 标注的基线数字来自 **项目页复现**，非原论文自报值；跨论文横比前应回各自原文核评测协议。

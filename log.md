@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/papers/morphometric_imitation_arxiv_2609_28660.md — Morphometric Imitation（Berkeley HOI→visuomotor 零样本）；GitHub 待发布；自动合并 PR
+
+- **意图：** 用户指定 https://morphometricimitation.github.io/ — One human demo · Any multi-fingered hand · Zero-shot sim-to-real visuomotor
+- **开源结论：** 项目页链 [tsadja/morphometric](https://github.com/tsadja/morphometric)；README **Code will be released soon**
+- **关键页：** [paper-morphometric-imitation](wiki/entities/paper-morphometric-imitation.md)
+
 ## [2026-09-26] ingest | sources/blogs/wechat_zanehub_humanoid_topo_opt_toolchain_2026-09-26.md — Zane Hub 人形拓扑优化工具链；升格 humanoid-topology-optimization-toolchain；自动合并 PR
 
 - **意图：** 用户指定 https://mp.weixin.qq.com/s/B5s18iMOA6bcUKRxVeWGOw

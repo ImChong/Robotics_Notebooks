@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-25
+updated: 2026-09-26
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -250,6 +250,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - **FastGrasp**（[实体页](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)，arXiv:2604.12879）：**移动底盘 + 臂 + LeapHand 全身 RL 快速灵巧抓取**——CVAE 点云引导 + PPO + **二值触觉** 冲击稳定；仿真 **50.09%**、真机 **32–35%**
 - **ADEPT**（[实体页](../entities/paper-adept-dexterity.md)，arXiv:2608.19182）：**16 primitive reposing RL 预训练 + 保守 post-training + 两阶段 vision distill**——Kuka–Allegro / Flexiv–Sharpa **zero-shot** FMB peg insertion 与 dish placement；visuo-tactile **8/10** vs vision **3/10**；Code Coming soon
 - **DemoMimic**（[实体页](../entities/paper-demomimic.md)，Stanford 2026）：**单次人类示范** + **接触局部几何** 与 **AR/SCR** → 仿真 RL 教师蒸馏 **腕部 depth IL**；真机 **16 物体** 平均 **71%** SR，**最小 sim-to-real gap**（相对 DexMachina* / HERMES*）；**Code / arXiv coming soon**
+- **Morphometric Imitation**（[实体页](../entities/paper-morphometric-imitation.md)，UC Berkeley 2026，[arXiv:2609.28660](https://arxiv.org/abs/2609.28660)）：**MMO 形态+接触运动学 retarget** → **残差 RL** → **visuomotor IL**；**一条人类 GRAB HOI、三/四/五指手**；真机 **300 trial / 89.3%** zero-shot sim-to-real；GitHub **待发布**
 - **Bifur-circuits**（[实体页](../entities/paper-bifur-circuits.md)，UIST 2026，MIT HCIE）：**auxetic 超材料积木** 经 mechanical bifurcation 指数扩展稳态构型，内嵌 **I2C 拓扑感知**；MIT News 指向 **可重构夹爪 / 辅助具** 原型，但论文示范为 **可变家具与 tangible 控制器**，**无 grasp benchmark**；Open Source **待发布**
 
 ## 方法选型速查
@@ -410,6 +411,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [REGRIND（重定向引导灵巧操作 RL）](../methods/regrind-retargeting-guided-rl.md) — MoCap 单次演示 → interaction mesh 重定向 → 残差 RL；LEAP/WUJI 剪刀与螺丝刀真机（arXiv:2607.11874）
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 人类演示 → CWS 奖励 + RL；4,739 项双手 benchmark 与 DexMachina/ManipTrans/SPIDER 对照
 - [DemoMimic（单次示范灵巧泛化）](../entities/paper-demomimic.md) — 接触局部几何 + AR/SCR；16 物体真机 71% 均值（Stanford；代码待发布）
+- [Morphometric Imitation（HOI→visuomotor 零样本）](../entities/paper-morphometric-imitation.md) — MMO + 残差 RL + IL；GRAB/自然 HOI；89.3% 真机（Berkeley；代码待发布）
 - [WARP（离线全身重定向）](../entities/paper-warp-whole-body-retargeting.md) — Meta Quest 离线人演示 → 闭式 c-SEW 机器人动作 → BC；全身移动操作数据管线（arXiv:2606.29940）
 - [ADEPT](../entities/paper-adept-dexterity.md) — 灵巧 RL 预训练+后训练+sim2real FMB（NVIDIA/UMich，arXiv:2608.19182）
 - [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
