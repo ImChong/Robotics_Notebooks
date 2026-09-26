@@ -13,6 +13,7 @@ updated: 2026-09-26
 arxiv: "2609.29850"
 venue: "arXiv 2026"
 related:
+  - ../overview/embodied-research-12-papers-technology-map.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../methods/motion-retargeting-gmr.md
   - ../methods/neural-motion-retargeting-nmr.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/beyondretarget_arxiv_2609_29850.md
   - ../../sources/sites/beyondretarget-github-io.md
   - ../../sources/repos/beyondretarget.md
+  - ../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md
 summary: "BeyondRetarget（arXiv:2609.29850）：单目 RGB 端到端映射共享 robot-oriented motion 表征，经多机 decoder 与 contact-aware refine 输出可执行人形轨迹；仿真 SR 95.86%、流式 ~193 ms；GitHub 已开源 base 版。"
 ---
 

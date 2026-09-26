@@ -12,6 +12,7 @@ updated: 2026-09-26
 arxiv: "2609.30092"
 venue: "arXiv 2026"
 related:
+  - ../overview/embodied-research-12-papers-technology-map.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../concepts/data-flywheel.md
@@ -20,6 +21,7 @@ related:
 sources:
   - ../../sources/papers/self_adaptive_vla_arxiv_2609_30092.md
   - ../../sources/sites/self-adaptive-vla-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md
 summary: "Self-Adaptive VLA（arXiv:2609.30092）：用失败 rollout 的 context token（AdaLN）适应硬件漂移；shift 预补偿专家示范训练；测试时 ensemble token；四项精密任务恢复 base >80% 性能；代码待发布。"
 ---
 
