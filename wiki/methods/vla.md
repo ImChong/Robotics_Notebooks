@@ -439,6 +439,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 **测试时纠偏（模型外、免训练）：** 当已有成功 rollout 可复用、又不想更新大 VLA 时，[RTCF](../entities/paper-rtcf.md)（arXiv:2608.04527）用 **PMA** 按执行历史对齐记忆轨迹，再只叠 **低频运动残差** 到冻结 PI-FAST 提案；LIBERO 聚合 **86.4→88.4**、Long **61.6→68.6**，额外延迟中位约 **11 ms（CPU）**。与可训的 [DynaWM](../entities/paper-dynawm-vla-online-correction.md)（流匹配重写）及 [DreamSteer](../entities/paper-dreamsteer-vla-deployment-steering.md)（部署筛选）对照：RTCF 零参数、单次前向，但 **截至 2026-08 无公开代码**。
 
+**部署期 hardware shift（可训 context · 失败 rollout）：** [Self-Adaptive VLA](../entities/paper-self-adaptive-vla.md)（arXiv:2609.30092，UMass / Genesis AI）在 **冻结 base VLA** 上 post-train **plug-in context encoder**：已知 shift 下 rollout 作 context、**预补偿专家动作** 作监督，**AdaLN** 注入单 token；测试时 **ensemble 多次失败 token** 逐步恢复 **actuation bias / joint encoder offset** 等漂移，四项精密任务报告恢复 base **>80%** 性能，新工位 **0/5→5/5**（Assemble Ring 案例）；**截至 2026-09-26 无公开代码**。
+
 **真机精密在线 RL（更新权重）：** [VLA-Precision](../entities/paper-vla-precision.md)（arXiv:2609.04355，USTC）在 OpenPI 全参 SFT 后用 **ACoB** 非对称共自举做 Stage II 在线 RL，**ACoB-Stream** 闭环架构最高 **10.9×** 吞吐；九项精密化学任务平均 **98.3%**、**45.8 min/task**；Apache-2.0 全栈已开源。
 
 ## 适合放在系统中的哪一层

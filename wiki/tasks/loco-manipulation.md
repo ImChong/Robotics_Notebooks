@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-24
+updated: 2026-09-26
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -383,6 +383,7 @@ flowchart TD
 - [WEM（论文实体）](../entities/paper-wem-world-ego-modeling.md) — 混合导航–操作长程 **视频世界模型** 与 **HTEWorld** 基准（arXiv:2605.19957，BEHAVIOR-1K）
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
+- [Rolling-WAM（论文实体）](../entities/paper-rolling-wam.md) — **滚动 partial joint denoise** 降 replan 延迟；G1 真机 SR **85.0%**（arXiv:2609.30247；代码待发布）
 - [ω-0（论文实体）](../entities/paper-omega-0.md) — 潜空间 foresight + 扩散全身 latent 的并发家务 loco-manip（arXiv:2608.06375）
 - [Being-M0.7（论文实体）](../entities/paper-being-m07-humanoid-latent-wam.md) — 潜空间 video-motion 先验 + action expert 人形 loco-manip（BeingBeyond, 2026-07）
 - [ABot-M0.5（论文实体）](../entities/paper-abot-m05-mobile-manipulation-wam.md) — 移动操作 WAM：latent action + D-MoT + Dream Forcing（arXiv:2607.00678）

@@ -323,6 +323,8 @@ flowchart TB
 
 **文献实例（双 DiT 实时闭环 · 人形 loco-manip）**：[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 以 **Cosmos-Predict2.5 系 Video DiT** 在 **固定 flow 步单次前向** 的隐状态条件 **Motion DiT**，在 **SONIC 统一全身 motion token** 上联合预测行走、躯干、身高、足端交互与双手操作；三阶段 **egocentric 视频 → 跨具身动作 → 全身遥操作** 微调，在 **宇树 G1** 九项真机任务上相对同演示微调的 VLA 基线 **整体成功率 +32% 绝对值**，并报告 **任务驱动足部行为**（arXiv:2606.09215，Mondo Robotics / HKUST）。
 
+**文献实例（滚动 joint denoise · replan 延迟）**：[Rolling-WAM](../entities/paper-rolling-wam.md) 在 **MoT video DiT + action Transformer** 上维护 **staggered-noise 滑动窗口**：每 replan **清 imminent action chunk**、远处 chunk **partial refine**，steady-state replan **215 ms**（RoboTwin 对照 **4.5×** Joint-WAM）；LIBERO **98.1%**、RoboTwin 2.0 **93.3%**、**G1 真机 85.0%**（arXiv:2609.30247，USC / TRI 等；**代码待发布**）。
+
 **文献实例（UniMotion-4K motion prior · 人形 WAM）**：[WholeBodyWAM·UniMotion-4K](../entities/paper-wholebodywam-unimotion-4k.md) 从 **4.1K+ h** 异构全身 motion 预训练 **Motion Expert**，再经 **Video–Motion–Action MoT** 接地 **天工 3.0** 真机 loco-manipulation；与同名 [WBC 接地版 WholeBodyWAM](../entities/paper-wholebodywam.md)（arXiv:2609.16644）为 **不同论文**（arXiv:2609.18197）。
 
 **文献实例（潜空间 foresight · 人形并发家务 loco-manip）**：[ω-0](../entities/paper-omega-0.md) 用 **紧凑未来观测 embedding**（非像素视频重建）耦合 **扩散全身动作 latent**，经 **SONIC** 在 G1 上执行擦桌/拖地/洗衣等 **manipulate-while-moving**；配套 **ω-HOME**（40h+）；11 任务 Omni **SR 81.8% / Progress 90.3%**，显著高于 ψ-0 / DiT4DiT / Fast-WAM 等同协议基线（arXiv:2608.06375，NTU / PKU / BAAI / HKUST-GZ；代码与数据 WIP）。
