@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-beyondretarget-monocular-humanoid.md",
+      "detail_id": "entity-paper-beyondretarget-monocular-humanoid",
+      "label": "BeyondRetarget（单目视频 → 可执行人形 motion）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rolling-wam.md",
+      "detail_id": "entity-paper-rolling-wam",
+      "label": "Rolling-WAM（滚动想象 · World Action Model）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-self-adaptive-vla.md",
+      "detail_id": "entity-paper-self-adaptive-vla",
+      "label": "Self-Adaptive VLA（部署期硬件漂移自适应）",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md",
       "detail_id": "entity-paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world",
       "label": "Advancing AI for the physical world",
@@ -194,51 +226,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-2106-11810-nuplan-a-closed-loop-ml-based-planning-benchmark.md",
-      "detail_id": "entity-paper-rcl-2106-11810-nuplan-a-closed-loop-ml-based-planning-benchmark",
-      "label": "NuPlan",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-2112-10752-high-resolution-image-synthesis-with-latent-diff.md",
-      "detail_id": "entity-paper-rcl-2112-10752-high-resolution-image-synthesis-with-latent-diff",
-      "label": "High-Resolution Image Synthesis With Latent Diffusion Models",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-2112-11790-bevdet-high-performance-multi-camera-3d-object-d.md",
-      "detail_id": "entity-paper-rcl-2112-11790-bevdet-high-performance-multi-camera-3d-object-d",
-      "label": "BEVDet",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md",
-    "detail_id": "entity-paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world",
-    "label": "Advancing AI for the physical world",
+    "path": "wiki/entities/paper-beyondretarget-monocular-humanoid.md",
+    "detail_id": "entity-paper-beyondretarget-monocular-humanoid",
+    "label": "BeyondRetarget（单目视频 → 可执行人形 motion）",
     "type": "entity",
-    "recency": "2026-09-25",
+    "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界模型（World Models） 社区"
+    "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
   },
   "top_communities": [
     {
