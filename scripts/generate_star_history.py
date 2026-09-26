@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import json
 import os
+import sys
+import urllib.error
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -22,13 +24,28 @@ PER_PAGE = 100
 def fetch_page(page: int) -> list[dict]:
     req = urllib.request.Request(
         f"https://api.github.com/repos/{REPO}/stargazers?per_page={PER_PAGE}&page={page}",
-        headers={"Accept": "application/vnd.github.star+json"},
+        headers={
+            "Accept": "application/vnd.github.star+json",
+            "User-Agent": "Robotics-Notebooks-star-history",
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
     )
     token = os.environ.get("GITHUB_TOKEN")
     if token:
         req.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.load(resp)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.load(resp)
+    except urllib.error.HTTPError as e:
+        # 打出限额与响应体，便于在 Actions 日志里定位 403 原因
+        print(
+            f"❌ GitHub API {e.code} (page={page}, token={'yes' if token else 'no'}, "
+            f"ratelimit-remaining={e.headers.get('X-RateLimit-Remaining')}, "
+            f"ratelimit-resource={e.headers.get('X-RateLimit-Resource')}): "
+            f"{e.read().decode('utf-8', 'replace')[:500]}",
+            file=sys.stderr,
+        )
+        raise
 
 
 def main() -> None:
