@@ -10,7 +10,7 @@ tags:
   - loco-manipulation
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-09-26
 arxiv: "2511.11218"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -19,6 +19,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../methods/table-tennis-strategy-skill-learning.md
   - ./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
+  - ./paper-coordinated-badminton-skills-anymal.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanoid-whole-body-badminton-via-multi-stage-re.md
   - ../../sources/sites/humanoid-badminton-multi-stage-rl.md
@@ -49,6 +50,7 @@ summary: "人形全身羽毛球多阶段 RL（arXiv:2511.11218）：无 MoCap �
 
 - **动态快速物体交互试金石：** 发球到击球常 <1 s，挥拍 >5 m/s，出球可达 **19.1 m/s**，比静态 loco-manipulation 更苛刻。
 - **课程替代动作先验：** 与 [LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)（Imitation-to-Interaction + AMP）形成对照——本文强调 **从零发现** 节能挥拍。
+- **四足期刊对照：** [ETH ANYmal 羽毛球（Science Robotics adu3922）](./paper-coordinated-badminton-skills-anymal.md) — **机载 visuomotor RL**，与人形 MoCap/EKF 线不同形态。
 - **免预测变体几乎打平：** 暗示策略可吸收球路规律，简化部署调参。
 - **足球纵深的谱系邻居：** 方法论上与「步法 + 击球时机」共享，服务 Stage 5 方向 D。
 
@@ -137,7 +139,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- 羽毛球姊妹：[LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)
+- 羽毛球姊妹：[LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) · [ETH ANYmal 四足（Sci. Rob.）](./paper-coordinated-badminton-skills-anymal.md)
 - 任务：[loco-manipulation](../tasks/loco-manipulation.md)
 - 乒乓球方法：[PhysicsPingPong / table-tennis](../methods/table-tennis-strategy-skill-learning.md)
 - 纵深：[人形足球 Stage 5](../../roadmap/depth-humanoid-soccer.md)、[人形拳击纵深](../../roadmap/depth-humanoid-boxing.md)
