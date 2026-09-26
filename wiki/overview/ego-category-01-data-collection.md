@@ -64,6 +64,7 @@ sources:
 - [人→机器人](./ego-category-02-human-to-robot.md)
 - [ViDiHand](../entities/paper-vidihand.md) — 采集后的 **双手 4D 标注** 可用 video diffusion 先验 **无 detector** 规模化重建，支撑模仿/策略监督
 - [Ego4D](../entities/paper-ego4d.md) — FAIR 联盟 **~3,670 h** 全球日常 egocentric 视频 + 五大 benchmark（CVPR 2022）；后续多数 Ego 语料的规模/任务锚点（HumanNet 表标 **Indirect**）
+- [Ego-Exo4D-HM](../entities/paper-egoexo4d-hm.md) — 在 [Ego-Exo4D](https://ego-exo4d-data.org/) 同步多视角上发布 **2,649 takes / 104.59 h** SMPL-H 4D 重建（HF npz + MIT 管线）；ego-exo 视频→**稠密 3D 说明书** 层，机器人策略收益仍待下游验证
 - [Ego-OSCAR / Stereo-550](../entities/paper-ego-oscar.md) — 第一人称视觉实验室（FPV Labs）**~USD 200** 开源硬件硬同步立体+IMU 头戴；**~550 h/相机** gated 语料验证众包续采（观测-only，非 teleop）
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 活数据集（Aria / 产业 / 手机采集）与 EgoDB 接入；与本组「人类作分布式采集者」同动机、更偏操纵向 Direct 标注
 - [EgoWorld-100W](../entities/egoworld-100w.md) — StellarNex **百万级** 第一人称操作语料（**申请制**；四维 Scene×Object×Action×Handedness）；与 ICLR [EgoWorld 视图翻译](../entities/paper-egoworld.md) **同名异物**

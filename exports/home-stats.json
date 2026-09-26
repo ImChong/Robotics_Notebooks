@@ -1,33 +1,23 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5309,
-  "edge_count": 46485,
+  "node_count": 5310,
+  "edge_count": 46497,
   "coverage": {
-    "covered": 5280,
-    "total": 5280,
+    "covered": 5281,
+    "total": 5281,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/valen.md",
-      "detail_id": "entity-valen",
-      "label": "Valen（万澜 · Multimodal System One Decision Model）",
+      "path": "wiki/entities/paper-egoexo4d-hm.md",
+      "detail_id": "entity-paper-egoexo4d-hm",
+      "label": "Ego-Exo4D-HM",
       "type": "entity",
       "recency": "2026-09-26",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/flow-matching-embodied-policy.md",
-      "detail_id": "wiki-concepts-flow-matching-embodied-policy",
-      "label": "流匹配与具身策略（Flow Matching for Embodied Policy）",
-      "type": "concept",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
     },
     {
       "path": "wiki/entities/paper-legnav-calf.md",
@@ -218,18 +208,28 @@
       "action": "added",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-topology-optimization-toolchain.md",
+      "detail_id": "wiki-concepts-humanoid-topology-optimization-toolchain",
+      "label": "人形结构拓扑优化工具链（工况谱 → 优化 → 重建 → 验证）",
+      "type": "concept",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/valen.md",
-    "detail_id": "entity-valen",
-    "label": "Valen（万澜 · Multimodal System One Decision Model）",
+    "path": "wiki/entities/paper-egoexo4d-hm.md",
+    "detail_id": "entity-paper-egoexo4d-hm",
+    "label": "Ego-Exo4D-HM",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
   },
   "top_communities": [
     {
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1822,
+      "degree": 1823,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

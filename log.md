@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/papers/egoexo4d_hm_arxiv_2609_30187.md — Ego-Exo4D-HM SMPL-H 4D 重建（2649 takes / 104.59 h）；代码+HF 已开源；自动合并 PR
+
+- **意图：** 用户问「拍人类视频机器人能否照着学」— 入库 Ego-Exo4D-HM 数据与 SLAHMR 改造管线
+- **开源结论：** 项目页 + Installation/Pipeline 文档齐全；GitHub `Abhiram824/egoexo4d_human_meshes`（MIT）；HF `Ego-Exo4D-HM/npz-datasets` **已发布**；仍依赖 Ego-Exo4D 原始 take
+- **关键页：** [paper-egoexo4d-hm](wiki/entities/paper-egoexo4d-hm.md)；交叉 [paper-notebook-category-14-human-motion](wiki/overview/paper-notebook-category-14-human-motion.md)
+
 ## [2026-09-26] ingest | sources/repos/valen.md — Valen（万澜）多模态 System One；Qwen3.5-2B + 决策头、Preview-0923/Sokoban RLCD；GitHub+HF 权重与 100k 数据已开源；自动合并 PR
 
 - **意图：** 用户指定 Liuziyu77/Valen、Valen-Preview-0923、HF 数据集与 Space Demo
