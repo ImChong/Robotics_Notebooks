@@ -194,7 +194,7 @@ flowchart LR
 
 **方向 B：快速运动物体交互的体育谱系**
 - 从对人（拳击）到对物（羽毛球、乒乓球、足球）：共享"步法 + 时机 + 全身发力"的方法论
-- 关键词：[人形羽毛球全身控制](../wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[LHBS 类人羽毛球](../wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)、[人形足球纵深路线](depth-humanoid-soccer.md)
+- 关键词：[人形羽毛球全身控制](../wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[LHBS 类人羽毛球](../wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)、[ETH ANYmal 四足羽毛球（Science Robotics）](../wiki/entities/paper-coordinated-badminton-skills-anymal.md)、[人形足球纵深路线](depth-humanoid-soccer.md)
 
 **方向 C：赛事与产业**
 - 自主拳击与 VR 格斗联赛的产品化：售票赛事、机器人租赁与中美并行的格斗联赛叙事

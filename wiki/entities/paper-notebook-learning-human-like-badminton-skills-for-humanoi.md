@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, humanoid-paper-notebooks, amp, motion-prior, badminton, sim2real, dagger, goal-conditioned-rl, hku]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-26
 arxiv: "2602.08370"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -12,6 +12,7 @@ related:
   - ../concepts/sim2real.md
   - ./paper-notebook-latent.md
   - ./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md
+  - ./paper-coordinated-badminton-skills-anymal.md
 sources:
   - ../../sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md
   - ../../sources/papers/humanoid_pnb_learning-human-like-badminton-skills-for-humanoi.md
@@ -127,7 +128,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
-- 球类姊妹：[LATENT](./paper-notebook-latent.md)（网球）、[Whole-Body Badminton](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)（另一羽毛球多阶段 RL 条目）
+- 球类姊妹：[LATENT](./paper-notebook-latent.md)（网球）、[Whole-Body Badminton](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)（人形多阶段 RL）、[ETH ANYmal 四足 Sci. Rob.](./paper-coordinated-badminton-skills-anymal.md)
 - 方法：[amp-reward.md](../methods/amp-reward.md)
 - 任务：[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 概念：[sim2real.md](../concepts/sim2real.md)
