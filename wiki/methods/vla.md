@@ -41,6 +41,7 @@ related:
   - ../concepts/world-action-models.md
   - ../entities/paper-gift-intermediate-feature-training.md
   - ../entities/paper-thaw-vla.md
+  - ../entities/eka-robotics-vfa.md
   - ../entities/psibot-r25.md
   - ../concepts/strong-pair-data.md
   - ../entities/paper-minerva-libero.md
@@ -362,6 +363,7 @@ flowchart TD
 全身自由度、力/接触补偿，或把 VLA 当作被外壳调度的一段能力。
 
 - **FWBC-VLA（浙大 / 上海 AI Lab 等，arXiv:2609.03889）**：无 F/T 的 HSR-Force 残差同时条件化 π₀.₅ 与轮足底盘补偿；M20S 擦白板终段 **64%**、开门 **52%**；**确认未开源**（见 [FWBC-VLA](../entities/paper-fwbc-vla.md)）
+- **Eka VFA（2026，非 VLA 扩展）**：[Eka Robotics](../entities/eka-robotics-vfa.md) 公开 **Vision-Force-Action** 路线：力与视觉同为闭环一等信号，训练以 **仿真 RL** 为主并宣称 sim-to-real 产品级吞吐；**无论文/无官方代码**（见 [官网归档](../../sources/sites/eka_robotics_com.md)），与 π 系 VLA 对照阅读即可，勿混为同一 API 栈。
 - **TANGO（北大 / Berkeley / Princeton 等，CoRL 2026，arXiv:2609.09158）**：首个 **全身 VLA** 语言导航——仿真合成路径→全身运动→障碍编辑→RL tracking 监督 **29-DoF** 关节；G1 零样本 cluttered 真机；**截至 2026-09-10 未开源**（见 [TANGO](../entities/paper-tango-vla.md)）
 - **Green-VLA**：**L0→L1→R0→R1→R2** 五阶段课程 + **DataQA** + **64 维语义统一动作** + flow-matching 专家；**R2** 用 **IQL 轨迹优化** 与 **源噪声分布 actor** 突破 BC 饱和而不直接 RL 穿 flow；主平台 **Green 人形 32 DoF 上身**（见 [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)，arXiv:2602.00919）
 - **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）

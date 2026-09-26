@@ -2427,6 +2427,13 @@
         "realxiaoze"
       ]
     },
+    "eka-robotics": {
+      "label": "伊卡机器人（Eka Robotics）",
+      "aliases": [
+        "eka",
+        "eka-robotics"
+      ]
+    },
     "uc-riverside": {
       "label": "加州大学河滨分校（UC Riverside）",
       "aliases": [

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5326,
-  "edge_count": 46622,
+  "node_count": 5327,
+  "edge_count": 46634,
   "coverage": {
-    "covered": 5297,
-    "total": 5297,
+    "covered": 5298,
+    "total": 5298,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -266,7 +266,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1834,
+      "degree": 1836,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -297,7 +297,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1013,
+      "degree": 1014,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -313,7 +313,7 @@
       "detail_id": "wiki-concepts-world-action-models",
       "label": "World Action Models（WAM，世界–动作模型）",
       "type": "concept",
-      "degree": 751,
+      "degree": 752,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },

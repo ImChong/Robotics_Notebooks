@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/sites/eka_robotics_com.md — Eka Robotics VFA（Vision-Force-Action）；官网 + Actuate26 微信整理；未开源；交叉 VLA/sim2real；自动合并 PR
+
+- **意图：** 用户指定 ekarobotics.com + 公众号 VFA 路线
+- **开源结论：** **未开源** — 项目页无 GitHub/权重
+- **关键页：** [eka-robotics-vfa](wiki/entities/eka-robotics-vfa.md)
+
 ## [2026-09-26] ingest | sources/sites/zeromq-org-primary-refs.md — ZeroMQ 一手（官网、Guide、ZMTP RFC、libzmq/czmq）；实体 + 消息模式概念；挂接 GR00T/PlotJuggler 通信 hub；自动合并 PR
 
 - **意图：** 用户要求 ZeroMQ 一手资料入库
