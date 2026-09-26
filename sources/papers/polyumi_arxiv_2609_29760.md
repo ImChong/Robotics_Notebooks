@@ -10,4 +10,6 @@
 - **入库日期：** 2026-09-26
 - **索引来源：** [公众号 12 篇清单](../blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md)
 
+**摘要要点（arXiv abs 页，2026-09-26 核对）：** 开源无线手持夹爪同步采集腕部相机、光学触觉、接触音频与本体；感知手指可迁到机器人末端保持传感几何；VisTA 为 token 级多模态策略，在物体推断、滑移控制与接触丰富操作上与现有多模态策略持平或更优。
+
 **对 wiki 的映射：** [paper-polyumi](../../wiki/entities/paper-polyumi.md)

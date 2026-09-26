@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-26",
   "node_count": 5328,
-  "edge_count": 46645,
+  "edge_count": 46679,
   "coverage": {
     "covered": 5299,
     "total": 5299,
@@ -383,7 +383,7 @@
       "detail_id": "entity-paper-pi05-open-world-vla",
       "label": "π0.5（HMI P059）",
       "type": "entity",
-      "degree": 59,
+      "degree": 60,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

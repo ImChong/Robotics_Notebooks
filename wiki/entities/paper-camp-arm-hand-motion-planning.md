@@ -63,6 +63,15 @@ summary: "CAMP（arXiv:2609.29021）：约束空间内臂-手协同规划；分�
 2. 开源为 **待发布** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| 解耦规划（先臂路径、后手运动） | 简单但会漏掉「沿途需臂手协同调整」的可行解；CAMP 用 **feasible hand fibers** 刻画每个臂构型下的无碰手构型集合来保留这种耦合 |
+| 联合臂手高维构型空间直接规划 | 能捕获耦合，但搜索空间暴涨、碰撞约束非凸；CAMP 走 **分层手搜索 + 局部臂松弛** 生成候选，再用端点保持的 **VMP** 紧凑表示做粗到细联合优化 |
+| [Dual Process Motion Planning](./paper-dual-process-motion-planning.md) | 神经 System-1 + MPC/CBF 符号 System-2 动态调度；CAMP 是纯规划/优化路线，不含学习策略 |
+| [人形 loco-manip TAMP](./paper-notebook-task-and-motion-planning-for-humanoid-loco-manip.md) | 任务层 + 运动层联合；CAMP 只攻运动层的 **臂–手耦合**，六个受限仿真任务规划成功率 **84.2–98.5%**（摘要口径） |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

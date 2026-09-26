@@ -77,6 +77,16 @@ sequenceDiagram
 2. 开源为 **已开源** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [π0.5](./paper-pi05-open-world-vla.md) 等纯动作模型 | 摘要：不重训底模，LIBERO-PRO 上较 π0.5 **+61.6 分**；收敛程序还可当廉价专家数据采集器，用其数据微调 π0.5 再 **+38.8 分** |
+| Code-as-Policy 基线 | 高层 LLM 持续参与决策；HarnessPAI 选定程序后 **rollout 内无在线高层 LLM 推理**（程序内开环），推理预算挪到跨 rollout 的闭环演化 |
+| [AdaHVLA](./paper-adahvla.md) | 同期「演化 harness」路线；AdaHVLA 侧重 VLA 长程执行的多 agent 解耦修订与修订图，HarnessPAI 强调 **模型/本体无关** 并把失败蒸馏为可复用技能 |
+| [Harness VLA](./paper-harness-vla.md) | 冻结 VLA 作接触原语、agentic planner 编排；HarnessPAI 以 **代码** 作为组织动作原语的可执行、可演化接口 |
+| [RoboHarness](./paper-robo-harness.md) | 把 VLA / RL / TAMP 封装为 agentic skills 并做能力边界管理；HarnessPAI 覆盖桌面臂、家用机器人、扫地机与腿式 agent，RoboCasa atomic 上较 WorldDreamer **+27.2 分** |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

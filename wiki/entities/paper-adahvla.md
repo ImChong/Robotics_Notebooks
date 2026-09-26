@@ -77,6 +77,16 @@ sequenceDiagram
 2. 开源为 **已开源** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Harness VLA](./paper-harness-vla.md) | 冻结 VLA 作可重试原语、由记忆增强 planner 编排；AdaHVLA 进一步让 **harness 本身**（代码式协调策略）据机器人执行证据迭代修订 |
+| [HarnessPAI](./paper-harnesspai.md) | 同为「可演化代码 harness」；HarnessPAI 跨 rollout 演化程序并把失败蒸馏成技能库，AdaHVLA 把适配拆成 **证据分析 / harness 修订 / 行为评估** 三个解耦 agent 上下文，并用 **有状态修订图** 保留备选 harness 与适配记忆 |
+| [HarnessBank](./paper-harnessbank.md) | 通用 agent 基准上的 harness 自进化 + 门控筛选；AdaHVLA 把自进化落到 **VLA 长程执行**，修订由可检验的协调假设驱动、再用 rollout 验证 |
+| [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) | 腿式 VLN 的 VLA 基线；摘要报告 AdaHVLA 在 NaVILA-LH 上把平均测试成功率从 **22.5%** 提到最高 **57.5%** |
+| [Self-Adaptive VLA](./paper-self-adaptive-vla.md) | 在策略内部（失败 rollout context token）做部署适应；AdaHVLA **不改 VLA 权重**，只改外层 harness，三种 VLA 骨干操作成功率较初始 harness 最多 **+30.8 pp** |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

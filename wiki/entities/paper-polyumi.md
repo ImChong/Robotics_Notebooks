@@ -83,6 +83,16 @@ sequenceDiagram
 2. 开源为 **已开源** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [UMI](./paper-rcl-ref-e064f89fc62c8df5da9f-universal-manipulation-interface-in-the-wild-rob.md) | 手持夹爪示范以腕部视觉 + 本体为主；PolyUMI 加 **光学触觉 + 接触音频**，无线、无需系留工作站 |
+| [HiFi-UMI](./paper-hifi-umi.md) | 追视觉保真、时间同步与采集规模；PolyUMI 追 **接触模态**，且感知手指可直接迁到机器人末端、保持采集与执行的传感几何一致 |
+| [DexUMI](./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md) | 外骨骼式人手接口面向灵巧手；PolyUMI 是夹爪式平台 |
+| [PROPRA](./paper-propra-fingertip-anchoring.md) | 同期指尖传感工作：PROPRA 攻「稀疏、分相位信号难从少量示范学」的表征预训练；PolyUMI 攻采集硬件 + token 级 VisTA 融合策略 |
+| [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md) | 冻结视觉基策略、用触觉残差在线 RL 修正；VisTA 直接从多模态示范学习接触感知动作 |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

@@ -63,6 +63,16 @@ summary: "PROPRA（arXiv:2609.29822）：本体+动作片段分别锚定接近�
 2. 开源为 **待发布** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| 朴素模态拼接 | 摘要指出：直接把指尖信号加进策略 **不能稳定提升**，甚至可能低于纯视觉策略——稀疏、分相位信号难从有限示范中利用 |
+| 图像锚定预训练基线 | 把传感器历史对齐到图像；PROPRA 对齐到 **本体 + 动作段**，提供连续可用的感知运动参考，各传感器在其有信息的相位 **独立** 对齐，保留更多接触前状态信息 |
+| [PolyUMI](./paper-polyumi.md) | 同期多模态接触工作：PolyUMI 侧重采集平台与融合策略，PROPRA 侧重 **表征预训练** |
+| [视触觉融合](../concepts/visuo-tactile-fusion.md) | 主流讨论视觉 ↔ 触觉在接触瞬间的切换；PROPRA 额外引入 **反射式接近觉** 覆盖接触前阶段 |
+| [足底接近觉离散地形](./paper-discrete-terrain-minimal-proximity-sensing.md) | 同用接近觉，但用于腿足落脚；PROPRA 用于指尖的接触前预判 |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

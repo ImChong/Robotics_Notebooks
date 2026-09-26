@@ -63,6 +63,15 @@ summary: "Wrap（arXiv:2609.29407）：无夹具多机装配；联动 wrench、�
 2. 开源为 **待发布** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| 专用夹具 / 仅自上而下装配 | 传统做法；Wrap 用 **多机器人互相托持** 替代夹具，并允许利用桌面等外部支撑 |
+| [PEEL](./paper-peel-disassembly.md) | 求解拆解/装配 **顺序**（MAB-RRT 窄缝逃逸）；Wrap 以部件顺序依赖为输入，重点在 **多机任务分配 + 线性规划校核受力支撑抓取** |
+| [VT-Refine](./paper-sa-2510-14930-vt-refine-learning-bimanual-assembly-with-visuo.md) | 学习式双臂装配（扩散策略 + 触觉仿真 RL 精修）；Wrap 是 **规划式**，执行时再拆成接触丰富装配技能与自由空间运动 |
+| [Isaac Lab UR10e 装配](./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) | 单臂 RL 插入 + 阻抗环；Wrap 面向尺寸、运动学各异的 **机器人群组** 与多部件装配 |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

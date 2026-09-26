@@ -63,6 +63,15 @@ summary: "Echo in the Steps（arXiv:2609.28960）：门控记忆+显著性先验
 2. 开源为 **待发布** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Extreme Parkour](./extreme-parkour.md) | 四足单目深度 + 两阶段 RL 蒸馏；Echo 面向 **人形稀疏踏点 / 窄支撑**，加显著性先验与门控记忆应对落脚点离开视野 |
+| [ParkourFormer](./paper-parkourformer.md) | Transformer 以当前状态 cross-attention 查询历史并监督未来 AMP 状态；Echo 用 **显著性引导的门控记忆** 跨帧保留有信息的深度特征，并加 **交替损失**（对称正则）稳住左右交替落脚 |
+| [PHP 感知人形跑酷](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 侧重用 motion matching 合成多技能长程参考再蒸馏深度学生；Echo 侧重 **稀疏落脚处的感知记忆与步态交替** |
+| [足底接近觉离散地形](./paper-discrete-terrain-minimal-proximity-sensing.md) | ANYmal 足底 ToF + LSTM、无相机；Echo 仅用 **机载深度** + 门控记忆——两者都在解决「脚下地形已不在视野」的部分可观问题 |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)
