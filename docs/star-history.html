@@ -41,7 +41,7 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle">星标来自 GitHub，部署时更新；节点与纵深路线按 git 首次加入日统计（仅含现存页面）。</p>
+        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <div id="trend-chart" style="width:100%;height:460px"></div>
         <p class="home-hub-more"><a href="change-log.html">查看更新记录</a> · <a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a></p>
@@ -57,15 +57,12 @@
 
   <script>
     (function () {
-      var REPO = 'ImChong/Robotics_Notebooks';
       var tabs = document.getElementById('trend-tabs');
       var status = document.getElementById('trend-status');
 
-      function getJSON(url, h) {
-        return fetch(url, { headers: h || {} }).then(function (r) {
-          if (!r.ok) throw new Error(url.indexOf('api.github.com') >= 0
-            ? 'GitHub API ' + r.status + (r.status === 403 ? '（可能触发未登录速率限制，稍后再试）' : '')
-            : r.status + ' ' + url);
+      function getJSON(url) {
+        return fetch(url).then(function (r) {
+          if (!r.ok) throw new Error(r.status + ' ' + url);
           return r.json();
         });
       }
@@ -82,21 +79,10 @@
         return { x: x, y: x.map(function (d) { return byDay[d]; }) };
       }
 
-      // 优先读部署时生成的静态数据；本地预览未生成时回退实时 API（未登录限额 60 次/小时/IP）
-      function liveStarDates() {
-        return getJSON('https://api.github.com/repos/' + REPO).then(function (repo) {
-          var reqs = [];
-          for (var p = 1; p <= Math.max(1, Math.ceil(repo.stargazers_count / 100)); p++) {
-            reqs.push(getJSON('https://api.github.com/repos/' + REPO + '/stargazers?per_page=100&page=' + p,
-              { Accept: 'application/vnd.github.star+json' }));
-          }
-          return Promise.all(reqs);
-        }).then(function (chunks) {
-          return [].concat.apply([], chunks).map(function (s) { return s.starred_at.slice(0, 10); });
-        });
-      }
-      var starDates = getJSON('exports/star-history.json')
-        .then(function (d) { return d.dates; }, liveStarDates);
+      // 每日定时任务记录的星标总数快照 [[日期, 总数], ...]
+      var starCounts = getJSON('exports/star-history.json').then(function (d) {
+        return { x: d.counts.map(function (c) { return c[0]; }), y: d.counts.map(function (c) { return c[1]; }) };
+      });
 
       var addedNodes = getJSON('exports/wiki-activity.json').then(function (a) {
         var out = [];
@@ -110,9 +96,14 @@
 
       var VIEWS = [
         { id: 'stars', label: '星标趋势', unit: '星标', kind: 'line',
-          load: function () { return starDates.then(function (d) { return cumulative(dailyFromDates(d)); }); } },
+          load: function () { return starCounts; } },
         { id: 'stars-daily', label: '每日星数', unit: '新增星标', kind: 'bar',
-          load: function () { return starDates.then(dailyFromDates); } },
+          load: function () {
+            // 相邻快照之差；有取消星标时可能为负
+            return starCounts.then(function (s) {
+              return { x: s.x, y: s.y.map(function (n, i) { return n - (i ? s.y[i - 1] : 0); }) };
+            });
+          } },
         { id: 'nodes', label: '节点数趋势', unit: '节点', kind: 'line',
           load: function () { return addedNodes.then(function (n) { return cumulative(dailyFromDates(n.map(function (v) { return v.date; }))); }); } },
         { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar',
@@ -144,7 +135,7 @@
           var grid = css.getPropertyValue('--border').trim();
           var accent = css.getPropertyValue('--accent').trim();
           var trace = view.kind === 'bar'
-            ? { type: 'bar', marker: { color: accent } }
+            ? { type: 'bar', marker: { color: accent }, width: 0.8 * 86400000 } // 日期不连续时固定为 0.8 天宽
             : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } };
           trace.x = s.x;
           trace.y = s.y;
