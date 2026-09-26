@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/papers/beyondretarget_arxiv_2609_29850.md — BeyondRetarget / Rolling-WAM / Self-Adaptive VLA 三篇 arXiv:2609.29x；自动合并 PR
+
+- **意图：** 用户指定 BeyondRetarget（南大等，GitHub 已开源）+ Rolling-WAM（G1 滚动想象 WAM，代码待发布）+ Self-Adaptive VLA（失败轨迹硬件漂移适应）
+- **开源结论：** BeyondRetarget **已开源**（base 版）；Rolling-WAM 占位仓 **待发布**；Self-Adaptive VLA 项目页 **无 Code 链**
+- **关键页：** [paper-beyondretarget-monocular-humanoid](wiki/entities/paper-beyondretarget-monocular-humanoid.md)、[paper-rolling-wam](wiki/entities/paper-rolling-wam.md)、[paper-self-adaptive-vla](wiki/entities/paper-self-adaptive-vla.md)
+
 ## [2026-09-25] ingest | sources/papers/rcl_awesome_wam_catalog.md — RCL Awesome WAM docs/PAPERS.md（564 条）；新建 paper-rcl-* 索引节点 + 技术地图；自动合并 PR
 
 - **意图：** 用户指定 https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md；每篇独立非重复 detail 节点

@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-09-16
+updated: 2026-09-26
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -30,6 +30,7 @@ related:
   - ../entities/paper-mamma-markerless-motion-capture.md
   - ../entities/easymocap.md
   - ../entities/paper-rhythm-dual-humanoid-interaction.md
+  - ../entities/paper-beyondretarget-monocular-humanoid.md
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
@@ -122,6 +123,7 @@ flowchart TD
 - **多视角 SMPL / SMPL-X 采集**：棚拍可用 **[MAMMA](../entities/paper-mamma-markerless-motion-capture.md)** 或 **[EasyMocap](../entities/easymocap.md)** 等 markerless 多相机管线直接产出 **[SMPL-X](./smpl-x.md) / SMPL 时序**（双人近距离交互优先 MAMMA；标定消费级相机 / 镜面 / ZJU-MoCap 生态优先 EasyMocap），与 AMASS 离线库互补。接 EasyMocap JSON 时注意其 **`Rh` 与官方 `global_orient` 不等价**。
 - **双人→双机 kinematic conflict**：异构人体 MoCap 映射到 **同构双 humanoid** 时，**个体缩放流形** 与 **统一交互流形** 不可兼得；[Rhythm](../entities/paper-rhythm-dual-humanoid-interaction.md) 的 **IAMR** 通过 $\mathcal{E}_{self}$ / $\mathcal{E}_{inter}$ 解耦能量并导出交互图，是 MAGIC 数据集与下游 IGRL 的上游环节。
 - **视频 HMR 可选精炼**：对 GVHMR / TRAM 等输出的 world-space SMPL，可在进入拓扑映射前接入 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 类 **速度–加速度对齐后处理**，减轻 jitter 与脚滑（不改变 HMR 骨干本身）。
+- **绕过显式 SMPL 中间态（端到端）**：[BeyondRetarget](../entities/paper-beyondretarget-monocular-humanoid.md) 从单目 RGB 直接学 **robot-oriented 共享 motion 特征** 再 **多机 decode + contact refine**，推理期不经过「GVHMR/WHAM → GMR/NMR」两阶段；与上图 **A3→N→T→…** 经典链路并列，而非替换 MoCap 清洗段。
 - **2D→3D 关键点提升（非 SMPL）：** **[FMPose3D](../entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md)** 用 **Flow Matching** 从 2D 关节生成 **3D 关键点多假设** 再 RPEA 聚合；**已集成 DeepLabCut** 动物管线，适合「DLC 2D → 稀疏 3D 骨架 → IK/重定向」链路，推理比扩散 lifter 快一个数量级，但需自行映射到机器人骨架拓扑。
 - **生物力学单目源（非默认）：** [OpenCap Monocular](../entities/paper-opencap-monocular.md) 输出 OpenSim `.trc`/`.mot` 与关节力矩/GRF，面向临床动力学；接入机器人栈前需骨架映射与坐标对齐，通常不如 GVHMR→GMR 直接。
 - **风险**：朝向定义不一致是最常见的「整段漂移」根源，比关节角错误更难调试。

@@ -166,6 +166,7 @@ sources:
 | [ω-0](../entities/paper-omega-0.md)（NTU / PKU / BAAI / HKUST-GZ 2026） | Unitree G1 + Inspire | **Pico VR** 头显 + 足 tracker + 手持扳机；ZED Mini ego + 房间 ZED depth；**SONIC** 遥操作策略 | ω-HOME **40.3 h / 24 任务** | 潜空间 foresight Joint WAM；评测 11 任务 Omni **SR 81.8%**；代码/数据 WIP |
 | **[Immersive Social VR+LLM](../entities/paper-immersive-social-vr-llm-humanoids.md)**（NYUAD 2026） | Unitree H1 + Inspire 手 | **Apple Vision Pro** + 语音 | 多模态遥操作录制（RGB/语音/关节/眼动） | **LLM 语音高层 locomotion** + VR 腕/指操作 + ROS 双向音频社交；新手抓放 **80%** / 社交传方块 **70%**；**系统未开源** |
 | **[NEXUS](../entities/nexus-humanoid.md)**（SJTU，Research Preview 2026） | （待论文） | Live human motion | — | **感知型 foundation policy** + **跨域全身遥操作** + **地形感知**（预览楼梯 sim/real）；Paper/Code **Coming Soon** |
+| **[BeyondRetarget](../entities/paper-beyondretarget-monocular-humanoid.md)**（NJU 等 2026） | 八款人形（含 G1/R1/H1） | **单目 RGB**（1080p@30Hz 固定相机；非 XR） | 项目页 + 开源推理 | **跳过 SMPL 中间态** 端到端 motion；**~193 ms** 流式；真机 teleop 接 **SONIC + GR00T ZMQ**；当前 **base 版** |
 
 ### 外部追踪（动捕 / 光学 / 纯视觉）
 
