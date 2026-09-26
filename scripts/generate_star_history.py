@@ -2,14 +2,15 @@
 """generate_star_history.py — 部署时拉取 GitHub 星标时间线，供 docs/star-history.html 使用。
 
 浏览器端直连 GitHub API 未登录限额仅 60 次/小时/IP，移动网络共享出口 IP 极易 403；
-改为 pages.yml 构建时用 GITHUB_TOKEN 拉一次，写入 docs/exports/star-history.json
-（只保留每个星标的日期，不含用户信息）。
+改为 pages.yml 构建时拉一次，写入 docs/exports/star-history.json（只保留每个星标的日期，不含用户信息）。
+
+不带 GITHUB_TOKEN：Actions 的 GITHUB_TOKEN 调 stargazers 接口返回
+403 "Resource not accessible by integration"，故走未登录请求（每次部署约 5 次）。
 """
 
 from __future__ import annotations
 
 import json
-import os
 import sys
 import urllib.error
 import urllib.request
@@ -30,16 +31,13 @@ def fetch_page(page: int) -> list[dict]:
             "X-GitHub-Api-Version": "2022-11-28",
         },
     )
-    token = os.environ.get("GITHUB_TOKEN")
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.load(resp)
     except urllib.error.HTTPError as e:
         # 打出限额与响应体，便于在 Actions 日志里定位 403 原因
         print(
-            f"❌ GitHub API {e.code} (page={page}, token={'yes' if token else 'no'}, "
+            f"❌ GitHub API {e.code} (page={page}, "
             f"ratelimit-remaining={e.headers.get('X-RateLimit-Remaining')}, "
             f"ratelimit-resource={e.headers.get('X-RateLimit-Resource')}): "
             f"{e.read().decode('utf-8', 'replace')[:500]}",
