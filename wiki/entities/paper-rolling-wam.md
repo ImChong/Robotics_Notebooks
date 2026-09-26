@@ -16,6 +16,7 @@ updated: 2026-09-26
 arxiv: "2609.30247"
 venue: "arXiv 2026"
 related:
+  - ../overview/embodied-research-12-papers-technology-map.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -27,7 +28,8 @@ sources:
   - ../../sources/papers/rolling_wam_arxiv_2609_30247.md
   - ../../sources/sites/rolling-wam-github-io.md
   - ../../sources/repos/rolling-wam.md
-summary: "Rolling-WAM（arXiv:2609.30247）：滑动窗口内 staggered noise 分摊 video–action 联合去噪；steady-state replan 215 ms（4.5× Joint-WAM）；LIBERO 98.1%、RoboTwin 93.3%、G1 真机 85.0%；代码待发布。"
+  - ../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md
+summary: "Rolling-WAM（arXiv:2609.30247）：滑动窗口 staggered noise 分摊联合去噪；RoboTwin 2.0 单 A100 steady replan 215 ms（4.5× Joint-WAM 978 ms）；zyinghua/Rolling-WAM 已开源。"
 ---
 
 # Rolling-WAM（滚动想象 · World Action Model）
@@ -96,7 +98,7 @@ flowchart TB
 |----|------|
 | arXiv | <https://arxiv.org/abs/2609.30247> |
 | 项目页 | <https://rolling-wam.github.io/> |
-| GitHub | 占位仓存在；**待发布** |
+| GitHub | [zyinghua/Rolling-WAM](https://github.com/zyinghua/Rolling-WAM) **已开源**（权重 README 仍可能待齐） |
 | 复现边界 | 方法图与 latency 表可读；权重与脚本未开放 |
 
 ## 结论
