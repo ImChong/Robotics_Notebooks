@@ -1,3 +1,5 @@
+## [2026-09-26] ingest | sources/blogs/wechat_shenlan_flow_matching_embodied_column14_2026-09-26.md — 流匹配专栏概念页与概率流交叉引用
+
 ## [2026-09-26] ingest | sources/papers/legnav_calf_social_navigation_arxiv_2607_27922.md — LegNav/CALF 社交导航；LegNav-Sim 已开源含 checkpoints
 
 ## [2026-09-26] ingest | sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md — 12/12 独立 paper 节点（新建9+复用3）
