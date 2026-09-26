@@ -22,7 +22,7 @@ tags:
 status: complete
 venue: CVPR 2022
 arxiv: "2110.07058"
-updated: 2026-09-15
+updated: 2026-09-26
 code: https://github.com/facebookresearch/Ego4D
 related:
   - ../overview/ego-category-01-data-collection.md
@@ -210,6 +210,7 @@ sequenceDiagram
 | [ACE-Data-0](./paper-ace-data-0.md) | 真实家居同步度量 HOI/HSI + 触觉；小时数远小于 Ego4D，完备监督更强 |
 | [HumanNet](./humannet.md) | 百万小时人中心互联网语料；Table 1 将 Ego4D 列为 Ego / Indirect |
 | Ego-Exo4D | 同生态后续：同步 ego+exo 多视点技能活动（见官方仓公告） |
+| [Ego-Exo4D-HM](./paper-egoexo4d-hm.md) | 在 Ego-Exo4D 上批量发布 SMPL-H 4D 重建（2,649 takes）；补 **稠密 3D 运动** 层，非替代原始视频语料 |
 | R3M 等 | 用 Ego4D 人类视频做操作表征预训练的经典下游（见 [视觉表征与策略](../concepts/visual-representation-for-policy.md)） |
 
 ## 局限与风险

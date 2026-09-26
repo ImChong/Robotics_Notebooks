@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, loco-manipulation, ego-exo, vla, imitation-learning, data-pipeline, motion-retargeting, ik, fk, primeu, zgc-embodyai]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-26
 venue: "2026 · project preprint"
 related:
   - ../overview/loco-manip-contact-technology-map.md
@@ -170,6 +170,7 @@ PhysDex 是 flow-matching DiT 结构的 VLA，条件来自 PhysBrain VLM tokens�
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [HumanoidUMI](./paper-humanoidumi.md)
 - [VLK](./paper-vlk-synthetic-loco-manipulation.md)
+- [Ego-Exo4D-HM](./paper-egoexo4d-hm.md) — 上游 ego-exo 语料的 **SMPL-H 4D 中间层**；Human-as-Humanoid 仍需 PrimeU IK 才得机器人标签
 
 ## 参考来源
 
