@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Robotics Notebooks 的 GitHub Star、知识节点与纵深路线随时间变化的交互式趋势图。" />
+  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图。" />
   <title>增长趋势 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>" />
   <meta name="color-scheme" content="dark light" />
@@ -21,7 +21,7 @@
     <div class="trend-tabs" id="trend-tabs"></div>
     <p class="data-meta" id="trend-status">加载中…</p>
     <div id="trend-chart" style="width:100%;height:460px"></div>
-    <p class="data-meta">Star 数据实时来自 GitHub API；节点 / 纵深数据来自部署时按 git 历史生成的 <code>exports/wiki-activity.json</code>（按当前仍存在页面的首次加入日统计）。</p>
+    <p class="data-meta">星标数据实时来自 GitHub API；节点 / 纵深数据来自部署时按 git 历史生成的 <code>exports/wiki-activity.json</code>（按当前仍存在页面的首次加入日统计）。</p>
     <p><a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">⭐ 去 GitHub 点个 Star</a></p>
   </main>
   <script>
@@ -112,7 +112,15 @@
           Plotly.react('trend-chart', [trace], {
             paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
             font: { color: text }, margin: { t: 20, r: 20, b: 50, l: 60 },
-            xaxis: { gridcolor: grid, type: 'date', rangeslider: { visible: true } },
+            xaxis: {
+              gridcolor: grid, type: 'date', rangeslider: { visible: true },
+              // 数字日期格式，避免 Plotly 默认的英文月份（May 2026）
+              tickformatstops: [
+                { dtickrange: [null, 86400000 - 1], value: '%m-%d %H:%M' },
+                { dtickrange: [86400000, 14 * 86400000], value: '%m-%d' },
+                { dtickrange: [14 * 86400000 + 1, null], value: '%Y-%m' }
+              ]
+            },
             yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
             bargap: 0.2
           }, { responsive: true, displaylogo: false });

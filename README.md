@@ -86,8 +86,8 @@
 
 ---
 
-## ⭐ Star 趋势
+## ⭐ 星标趋势
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ImChong/Robotics_Notebooks&type=Date)](https://imchong.github.io/Robotics_Notebooks/star-history.html)
+[![星标趋势图](https://api.star-history.com/svg?repos=ImChong/Robotics_Notebooks&type=Date)](https://imchong.github.io/Robotics_Notebooks/star-history.html)
 
 > 点击图表打开 [Plotly 交互版](https://imchong.github.io/Robotics_Notebooks/star-history.html)（可缩放、悬停查看数值；另可切换每日星数、节点数趋势、每日节点数、纵深数趋势）。GitHub README 不执行 JavaScript，因此这里展示静态预览图。
