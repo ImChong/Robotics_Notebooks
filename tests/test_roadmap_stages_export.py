@@ -19,9 +19,9 @@ class RoadmapStagesExportTests(unittest.TestCase):
         stages = parse_roadmap_stages(
             DEPTH_SAFE_CONTROL.read_text(encoding="utf-8"), DEPTH_SAFE_CONTROL
         )
-        self.assertEqual(len(stages), 4)
+        self.assertEqual(len(stages), 5)
         self.assertEqual(stages[0]["id"], "stage-0")
-        self.assertEqual(stages[-1]["id"], "stage-3")
+        self.assertEqual(stages[-1]["id"], "stage-4")
         self.assertGreater(len(stages[1].get("related_items", [])), 0)
 
     def test_depth_rl_locomotion_parses_six_stages(self) -> None:

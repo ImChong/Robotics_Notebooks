@@ -5236,7 +5236,7 @@
 - [路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](roadmap/depth-real2sim.md) — 摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 RSI（递归自我改进）](roadmap/depth-rsi.md) — 摘要**：面向"想让研发闭环自己变强、并把这套东西用到机器人上"的纵深路线，从「四层判据 + 改的是哪个 artifact」的判别边界出发，沿着被系统改动对象逐层内收的顺序——记忆与技能库 → 权 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，按 Stage 0–3 串通核心方法；本路线是 [运动控制主路线 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL / 真机安全部署）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，最后落到真机上的分层安全部署（急停 / 安全状态机 / 跌倒减损  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）](roadmap/depth-sim2real.md) — 摘要**：面向"想把仿真里训好的策略稳定搬上真机"的纵深路线，从 domain gap 六类来源画像与方法三分（仿真端随机化 / 分布对齐 / 真机适应），到资产与执行器对齐（SysID / Ac `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](roadmap/depth-teleoperation.md) — 摘要**：面向"想搭一套让人实时操控人形机器人、并顺带采集高质量示范数据"的纵深路线，从遥操作的问题定义与输出形态定位、输入接口与硬件通道选型、设备信号到机器人指令的映射与延迟/双边稳定，到**人 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](roadmap/depth-torque-motor-design.md) — 摘要**：面向"想把关节电机从任务指标一路做到可验收力矩闭环模组"的纵深路线，从电机学地基与 TN/TI 读图，到关节指标定义与执行器架构选型、电磁热设计、驱动硬件与电流环、电机驱动 PCB 设计 `📅unknown` `[roadmap_page]`

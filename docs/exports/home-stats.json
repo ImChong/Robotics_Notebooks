@@ -1,24 +1,13 @@
 {
   "generated_at": "2026-09-26",
   "node_count": 5296,
-  "edge_count": 46391,
+  "edge_count": 46409,
   "coverage": {
     "covered": 5267,
     "total": 5267,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-motionjepa.md",
-      "detail_id": "entity-paper-motionjepa",
-      "label": "MotionJEPA：在隐空间捕获视觉变化以防止时间特征坍塌",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
     {
       "path": "wiki/entities/fluiduse.md",
       "detail_id": "entity-fluiduse",
@@ -225,18 +214,29 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rcl-1910-04867-a-large-scale-study-of-representation-learning-w.md",
+      "detail_id": "entity-paper-rcl-1910-04867-a-large-scale-study-of-representation-learning-w",
+      "label": "A Large-scale Study of Representation Learning with the Visual Task Adaptatio...",
+      "type": "entity",
+      "recency": "2026-09-25",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-motionjepa.md",
-    "detail_id": "entity-paper-motionjepa",
-    "label": "MotionJEPA：在隐空间捕获视觉变化以防止时间特征坍塌",
+    "path": "wiki/entities/fluiduse.md",
+    "detail_id": "entity-fluiduse",
+    "label": "FluidUse（Apple Silicon 本地计算机使用）",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界模型（World Models） 社区"
+    "community_label": "智能体与 AI 工具（AI Agents and Tools） 社区"
   },
   "top_communities": [
     {
@@ -308,7 +308,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1012,
+      "degree": 1013,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
