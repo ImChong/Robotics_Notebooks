@@ -270,7 +270,7 @@ flowchart TD
 确立 VLA 范式与可复现起点的工作。
 
 - **RT-2**：把 web-scale VLM 能力迁移到机器人控制
-- **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列
+- **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列（见 [流匹配与具身策略](../concepts/flow-matching-embodied-policy.md)）
 - **π₀.₇**：在 π 系 VLA 上系统化**多模态提示条件**（子任务语言、片段元数据、控制模态、视觉子目标）以合并异质数据并支持推理时 **steering**；官方报告开箱 dexterity 对标 RL 专精与组合/跨本体泛化迹象（见 [π₀.₇](./pi07-policy.md)）
 - **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程
 - **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线

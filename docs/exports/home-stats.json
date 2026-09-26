@@ -1,24 +1,13 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5308,
-  "edge_count": 46487,
+  "node_count": 5311,
+  "edge_count": 46522,
   "coverage": {
-    "covered": 5279,
-    "total": 5279,
+    "covered": 5282,
+    "total": 5282,
     "percent": 100
   },
   "latest_wiki_nodes": [
-    {
-      "path": "wiki/entities/paper-legnav-calf.md",
-      "detail_id": "entity-paper-legnav-calf",
-      "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
-    },
     {
       "path": "wiki/comparisons/robot-policy-deployment-dev-board-selection.md",
       "detail_id": "wiki-comparisons-robot-policy-deployment-dev-board-selection",
@@ -29,6 +18,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-legnav-calf.md",
+      "detail_id": "entity-paper-legnav-calf",
+      "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
     },
     {
       "path": "wiki/entities/paper-adahvla.md",
@@ -221,15 +221,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-legnav-calf.md",
-    "detail_id": "entity-paper-legnav-calf",
-    "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
-    "type": "entity",
+    "path": "wiki/comparisons/robot-policy-deployment-dev-board-selection.md",
+    "detail_id": "wiki-comparisons-robot-policy-deployment-dev-board-selection",
+    "label": "机器人运控开发板选型（按策略网络模型）",
+    "type": "comparison",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    "community_label": "系统工程与部署（Systems Engineering and Deployment） 社区"
   },
   "top_communities": [
     {
@@ -246,7 +246,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 348
+      "size": 349
     },
     {
       "label": "仿真到现实",
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1819,
+      "degree": 1823,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

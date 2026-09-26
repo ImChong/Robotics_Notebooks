@@ -7,6 +7,8 @@ summary: "行为树与 VLA 结合：用 BT 编排策略加载/暂停/复位与�
 related:
   - ../methods/vla.md
   - ../entities/typesafe-jev.md
+  - ../entities/valen.md
+  - ../entities/laya.md
   - ../entities/cyclo-intelligence.md
   - ../entities/navigation2.md
   - ../methods/saycan.md
@@ -110,7 +112,7 @@ BT 节点可传入：
 
 二者可叠加：BT 某一叶节点仍可调用 **VLM 重规划**；本概念页聚焦 **工程上已常见的「BT 管流程、VLA 管操作段」**。
 
-**毫秒级分支层：** 若节点只需在离散标签间路由（escalate / auto / 选技能 ID），[TypeSafe Jev](../entities/typesafe-jev.md) 等 **System One** API 可在 BT 外提供 **typed probability**，避免 LLM 字符串 parse；**VLA 仍负责连续操作 chunk**。
+**毫秒级分支层：** 若节点只需在离散标签间路由（escalate / auto / 选技能 ID），[TypeSafe Jev](../entities/typesafe-jev.md)、[Laya](../entities/laya.md)、[Valen（万澜）](../entities/valen.md) 等 **System One** 决策面可在 BT 外提供 **typed probability**（Valen 另支持 **图像/视频 state**），避免 LLM 字符串 parse；**VLA 仍负责连续操作 chunk**。
 
 ## 常见误区或局限
 
