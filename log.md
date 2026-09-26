@@ -1,3 +1,5 @@
+## [2026-09-26] ingest | sources/papers/legnav_calf_social_navigation_arxiv_2607_27922.md — LegNav/CALF 社交导航；LegNav-Sim 已开源含 checkpoints
+
 ## [2026-09-26] ingest | sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md — 12/12 独立 paper 节点（新建9+复用3）
 
 ## [2026-09-26] ingest | sources/papers/motionjepa_arxiv_2609_23881.md — MotionJEPA DISReg 入库；mkarmann/motion-jepa 已开源（planning 子模块）
