@@ -109,7 +109,7 @@
       }
 
       var VIEWS = [
-        { id: 'stars', label: '星标趋势', unit: '星标', kind: 'line',
+        { id: 'stars', label: '星数趋势', unit: '星标', kind: 'line',
           load: function () { return starCounts; } },
         { id: 'stars-daily', label: '每日星数', unit: '新增星标', kind: 'bar',
           load: function () {
@@ -130,6 +130,9 @@
 
       var touch = window.matchMedia('(pointer: coarse)').matches;
       var current = null;
+      // Plotly 调用串行化：上一次 react 未完成时再 react 会留下错乱的内部状态
+      //（范围滑条被撑到 2000-01-01），拖动滑条后坐标轴随之跑偏
+      var drawing = Promise.resolve();
       function render(view) {
         current = view;
         Array.prototype.forEach.call(tabs.children, function (b) {
@@ -139,47 +142,54 @@
         });
         status.textContent = '加载中…';
         view.load().then(function (s) {
-          if (current !== view) return;
-          var css = getComputedStyle(document.documentElement);
-          var text = css.getPropertyValue('--text').trim();
-          var muted = css.getPropertyValue('--text-muted').trim();
-          var grid = css.getPropertyValue('--border').trim();
-          var accent = css.getPropertyValue('--accent').trim();
-          var trace = view.kind === 'bar'
-            ? { type: 'bar', marker: { color: accent }, width: 0.8 * 86400000 } // 日期不连续时固定为 0.8 天宽
-            : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } };
-          trace.x = s.x;
-          trace.y = s.y;
-          trace.hovertemplate = '%{x|%Y-%m-%d}<br>%{y} ' + view.unit + '<extra></extra>';
-          Plotly.react('trend-chart', [trace], {
-            paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
-            font: { color: text }, margin: { t: 20, r: 20, b: 50, l: 60 },
-            xaxis: {
-              gridcolor: grid, type: 'date', rangeslider: { visible: true },
-              // 数字日期格式，避免 Plotly 默认的英文月份（May 2026）
-              tickformatstops: [
-                { dtickrange: [null, 86400000 - 1], value: '%m-%d %H:%M' },
-                { dtickrange: [86400000, 14 * 86400000], value: '%m-%d' },
-                { dtickrange: [14 * 86400000 + 1, null], value: '%Y-%m' }
-              ]
-            },
-            yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
-            bargap: 0.2,
-            modebar: { bgcolor: 'rgba(0,0,0,0)', color: muted, activecolor: text },
-            // 触屏上拖拽框选会吞掉页面滚动；缩放交给下方范围滑条
-            dragmode: touch ? false : 'zoom'
-          }, { responsive: true, displaylogo: false, displayModeBar: !touch });
-          var total = view.kind === 'bar'
-            ? s.y.reduce(function (a, b) { return a + b; }, 0)
-            : (s.y[s.y.length - 1] || 0);
-          status.textContent = view.label + '：' + (view.kind === 'bar' ? '合计 ' : '当前 ') + total + ' ' + view.unit
-            + (s.x.length ? '（' + s.x[0] + ' → ' + s.x[s.x.length - 1] + '）' : '');
+          var job = drawing.then(function () { return draw(view, s); });
+          drawing = job.catch(function () {});
+          return job;
         }).catch(function (e) {
           if (current !== view) return;
           status.textContent = '加载失败：' + e.message;
           if (window.Plotly) Plotly.purge('trend-chart');
         });
         history.replaceState(null, '', '?view=' + view.id);
+      }
+
+      function draw(view, s) {
+        if (current !== view) return;
+        var css = getComputedStyle(document.documentElement);
+        var text = css.getPropertyValue('--text').trim();
+        var muted = css.getPropertyValue('--text-muted').trim();
+        var grid = css.getPropertyValue('--border').trim();
+        var accent = css.getPropertyValue('--accent').trim();
+        var trace = view.kind === 'bar'
+          ? { type: 'bar', marker: { color: accent }, width: 0.8 * 86400000 } // 日期不连续时固定为 0.8 天宽
+          : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } };
+        trace.x = s.x;
+        trace.y = s.y;
+        trace.hovertemplate = '%{x|%Y-%m-%d}<br>%{y} ' + view.unit + '<extra></extra>';
+        var plotted = Plotly.react('trend-chart', [trace], {
+          paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
+          font: { color: text }, margin: { t: 20, r: 20, b: 50, l: 60 },
+          xaxis: {
+            gridcolor: grid, type: 'date', rangeslider: { visible: true },
+            // 数字日期格式，避免 Plotly 默认的英文月份（May 2026）
+            tickformatstops: [
+              { dtickrange: [null, 86400000 - 1], value: '%m-%d %H:%M' },
+              { dtickrange: [86400000, 14 * 86400000], value: '%m-%d' },
+              { dtickrange: [14 * 86400000 + 1, null], value: '%Y-%m' }
+            ]
+          },
+          yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
+          bargap: 0.2,
+          modebar: { bgcolor: 'rgba(0,0,0,0)', color: muted, activecolor: text },
+          // 触屏上拖拽框选会吞掉页面滚动；缩放交给下方范围滑条
+          dragmode: touch ? false : 'zoom'
+        }, { responsive: true, displaylogo: false, displayModeBar: !touch });
+        var total = view.kind === 'bar'
+          ? s.y.reduce(function (a, b) { return a + b; }, 0)
+          : (s.y[s.y.length - 1] || 0);
+        status.textContent = view.label + '：' + (view.kind === 'bar' ? '合计 ' : '当前 ') + total + ' ' + view.unit
+          + (s.x.length ? '（' + s.x[0] + ' → ' + s.x[s.x.length - 1] + '）' : '');
+        return plotted;
       }
 
       VIEWS.forEach(function (v) {
@@ -190,9 +200,11 @@
         b.addEventListener('click', function () { render(v); });
         tabs.appendChild(b);
       });
-      // 主题切换后按新配色重绘
-      new MutationObserver(function () { if (current) render(current); })
-        .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      // 主题切换后按新配色重绘；main.js 加载时会重设同值 data-theme，需跳过
+      new MutationObserver(function (records) {
+        var theme = document.documentElement.getAttribute('data-theme');
+        if (current && records.some(function (r) { return r.oldValue !== theme; })) render(current);
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'], attributeOldValue: true });
       var wanted = new URLSearchParams(location.search).get('view');
       render(VIEWS.filter(function (v) { return v.id === wanted; })[0] || VIEWS[0]);
     })();
