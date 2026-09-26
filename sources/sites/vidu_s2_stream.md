@@ -9,8 +9,10 @@
 - **机构：** 清华大学 · 生数科技（Shengshu Technology）
 - **论文：** [arXiv:2609.11638](https://arxiv.org/abs/2609.11638)
 - **API：** <https://platform.vidu.com/vidu-stream/doc>
+- **GitHub（文档仓）：** <https://github.com/shengshu-ai/Vidu-S> — 归档 [`sources/repos/vidu-s.md`](../repos/vidu-s.md)
+- **Hugging Face Papers：** <https://huggingface.co/papers/2609.11638>
 - **联系：** vidus@shengshu.ai
-- **一句话说明：** Vidu S2 官方产品页：S2-Avatar 实时交互数字人与 S2-Editing 实时视频流编辑的可玩 Demo + FAQ；无代码下载入口。
+- **一句话说明：** Vidu S2 官方产品页：S2-Avatar / S2-Editing 可玩 Demo + FAQ；**无模型权重下载**（集成走 API 或 GitHub 文档链）。
 
 ## 页面要点（2026-09-20 核查）
 
@@ -30,9 +32,11 @@
 ### 集成
 - API 文档：`platform.vidu.com/vidu-stream/doc`（含 S2-Avatar / S2-Editing quick-start）。
 
-## 开源结论
+## 开源结论（2026-09-26）
 
-- **未开源** — 页上无 GitHub、模型权重或训练代码链接；仅 **在线体验 + API 平台**。
+- **产品页：** 仍 **无** 权重/训练代码直链；**Demo + API** ✅。
+- **官方 GitHub [Vidu-S](https://github.com/shengshu-ai/Vidu-S)：** 文档与概览仓（非本地推理包）。
+- **综合：** **部分开源** — 见 [`sources/repos/vidu-s.md`](../repos/vidu-s.md)。
 
 ## 对 wiki 的映射
 

@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/repos/vidu-s.md — Vidu S2（2609.11638）再核查：GitHub shengshu-ai/Vidu-S 文档仓 + SRF/Turbo 要点；权重仍闭源；更新 paper-vidu-s2；自动合并 PR
+
+- **意图：** 用户指定 vidu-stream / Vidu-S / HF / arXiv 入库（实体已存在，刷新开源与 README 技术点）
+- **开源结论：** **部分** — Demo + API + GitHub 文档仓；**无** 公开权重与本地 train/infer
+- **关键页：** [paper-vidu-s2](wiki/entities/paper-vidu-s2.md)
+
 ## [2026-09-26] ingest | sources/papers/dream_rsi_arxiv_2609_14858.md — Dream-RSI（2609.14858）discovery history 作 replay simulator + exploration 层 RSI；PDF+demo 已开源、完整代码待发布；自动合并 PR
 
 - **意图：** 用户指定 dream-rsi.com / GitHub / HF / arXiv 入库
