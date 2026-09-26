@@ -13,10 +13,11 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-25
+updated: 2026-09-26
 arxiv: "2604.27792"
 related:
   - ./paper-gwm-first-principles.md
+  - ./paper-vidu-s2.md
   - ../overview/gwm-closed-loop-5-papers-technology-map.md
   - ./paper-motus2.md
   - ./paper-wam-realtime-async.md
@@ -172,6 +173,7 @@ flowchart TB
 - [WAM 动作后果分类 01](../overview/wm-action-consequence-category-01-wam-action-prediction.md)
 - [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
+- [Vidu S2（L2 交互视频）](./paper-vidu-s2.md) — 同机构产品线；非 WAM 动作输出
 
 ## 参考来源
 
