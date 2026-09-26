@@ -56,6 +56,7 @@ ANYmal 被誉为机器人强化学习的“黄埔军校”，它是无数里程�
 - **RMA (Rapid Motor Adaptation)**：通过在仿真中对地形和动态参数进行特权训练（Privileged Training），再使用适配模块（Adaptation Module）在线估计隐式环境特征，使 ANYmal 展现出了极强的越野与地形自适应能力。
 - **盲走能力**：ANYmal 证明了仅依靠本体感受（Proprioception，即关节位置、速度和 IMU 数据），机器人就能在深雪、高草、碎石等复杂地形下稳健行走。
 - **PACE（系统化 Sim2Real）**：ETH RSL 在 ANYmal D 上用 [PACE](./paper-pace-sim2real-legged-robots.md) 将全 **Cost of Transport** 降至 **1.27**（相对先前方法约 **−32%**），展示紧凑动力学辨识 + 物理能量 reward 的零样本迁移（arXiv:2509.06342）。
+- **Coordinated Badminton（loco-manip + 机载视觉）**：[Science Robotics adu3922](./paper-coordinated-badminton-skills-anymal.md) 在 ANYmal-D + DynaArm 上实现与人对打羽毛球，统一 RL visuomotor 与感知噪声模型。
 
 ## 与 Unitree 产品的区别
 

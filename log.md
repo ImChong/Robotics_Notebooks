@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/papers/coordinated_badminton_skills_scirobotics_adu3922.md — ETH Hutter 团队 ANYmal-D 羽毛球（Sci. Rob. adu3922）；机载 visuomotor RL + 感知噪声模型；代码未开源；自动合并 PR
+
+- **意图：** 用户指定 articuno 项目页 / Science / ETH 新闻 / Research Collection
+- **开源结论：** **未开源** — 无官方 GitHub 或训练栈
+- **关键页：** [paper-coordinated-badminton-skills-anymal](wiki/entities/paper-coordinated-badminton-skills-anymal.md)
+
 ## [2026-09-26] ingest | sources/papers/dream_rsi_arxiv_2609_14858.md — Dream-RSI（2609.14858）discovery history 作 replay simulator + exploration 层 RSI；PDF+demo 已开源、完整代码待发布；自动合并 PR
 
 - **意图：** 用户指定 dream-rsi.com / GitHub / HF / arXiv 入库
