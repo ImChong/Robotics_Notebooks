@@ -1,3 +1,9 @@
+## [2026-09-26] ingest | sources/blogs/wechat_zanehub_humanoid_topo_opt_toolchain_2026-09-26.md — Zane Hub 人形拓扑优化工具链；升格 humanoid-topology-optimization-toolchain；自动合并 PR
+
+- **意图：** 用户指定 https://mp.weixin.qq.com/s/B5s18iMOA6bcUKRxVeWGOw
+- **抓取：** wechat-article-for-ai（Camoufox；`--no-images`）
+- **关键页：** [humanoid-topology-optimization-toolchain](wiki/concepts/humanoid-topology-optimization-toolchain.md)
+
 ## [2026-09-26] ingest | sources/papers/beyondretarget_arxiv_2609_29850.md — BeyondRetarget / Rolling-WAM / Self-Adaptive VLA 三篇 arXiv:2609.29x；自动合并 PR
 
 - **意图：** 用户指定 BeyondRetarget（南大等，GitHub 已开源）+ Rolling-WAM（G1 滚动想象 WAM，代码待发布）+ Self-Adaptive VLA（失败轨迹硬件漂移适应）

@@ -17,6 +17,7 @@ related:
   - ../queries/humanoid-hardware-selection.md
   - ../../roadmap/depth-humanoid-hardware-design.md
   - ../entities/paper-humanoid-leg-generative-design-dynamics.md
+  - ./humanoid-topology-optimization-toolchain.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md

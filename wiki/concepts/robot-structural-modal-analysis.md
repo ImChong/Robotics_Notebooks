@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, hardware, structural-dynamics, modal-analysis, fea, vibration, humanoid, manipulation]
 status: complete
-updated: 2026-09-01
+updated: 2026-09-26
 related:
   - ./humanoid-mechanical-layout-design.md
   - ./contact-force-loop-bandwidth.md
@@ -13,6 +13,7 @@ related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../queries/humanoid-hardware-selection.md
   - ../overview/humanoid-hardware-101-chassis-materials.md
+  - ./humanoid-topology-optimization-toolchain.md
   - ../formalizations/control-loop-latency-modeling.md
 sources:
   - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
@@ -170,6 +171,7 @@ $$\text{MAC}=\frac{|\phi_a^T\phi_b|^2}{(\phi_a^T\phi_a)(\phi_b^T\phi_b)}$$
 - [Query：腿式/人形 RL 的 PD 增益怎么设](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [Query：人形硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Hardware 101 · 机身与材料](../overview/humanoid-hardware-101-chassis-materials.md)
+- [人形结构拓扑优化工具链](./humanoid-topology-optimization-toolchain.md) — TO 中的模态下限约束与伺服分离
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) — 延迟与可用带宽的定量关系
 
 ## 参考来源

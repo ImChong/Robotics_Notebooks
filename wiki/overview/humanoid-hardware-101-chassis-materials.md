@@ -2,15 +2,17 @@
 type: overview
 tags: [humanoid, hardware, chassis, materials, category-hub]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-26
 summary: "Humanoid Hardware 101 · 01 机身与材料 — 按载荷路径选材：铝合金承力骨架、钢耐磨、镁/钛减重、复材肢段、高分子外壳。"
 related:
   - ./humanoid-hardware-101-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../queries/humanoid-hardware-selection.md
   - ../entities/paper-humanoid-leg-generative-design-dynamics.md
+  - ../concepts/humanoid-topology-optimization-toolchain.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_topo_opt_toolchain_2026-09-26.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
   - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 ---
@@ -43,6 +45,7 @@ sources:
 - 铝合金长期疲劳需 **圆角、钢衬套螺纹孔**；钢用于齿轮/轴/轴承等 **数百万次微动** 部位。
 - 镁：**触变注射成型** 可降低液态燃烧风险；全球产能高度集中中国。
 - 复材与金属连接是 **薄弱节点**；多用于对轻量化极敏感的长肢段。
+- **拓扑优化/生成式设计** 在铝合金/钛/增材支架上系统减重时，须走完整 **工况谱→TO→重建→疲劳验证** 链，见 [人形结构拓扑优化工具链](../concepts/humanoid-topology-optimization-toolchain.md)（Zane Hub，2026-09-26）。
 
 ## 关联页面
 
@@ -51,6 +54,7 @@ sources:
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 - [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — Ti6Al4V 增材大/小腿连杆减重与模态验证案例
+- [人形结构拓扑优化工具链](../concepts/humanoid-topology-optimization-toolchain.md) — 商用/开源 TO 选型与六步工程流
 
 ## 参考来源
 

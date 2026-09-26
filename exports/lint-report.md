@@ -2,7 +2,7 @@
 
 ## [2026-09-26] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **3** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -113,8 +113,8 @@
 - wiki/entities/paper-geovla.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-beyondretarget-monocular-humanoid.md updated=2026-09-26）
 - wiki/entities/paper-xiaomi-cocktailasr-1.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-beyondretarget-monocular-humanoid.md updated=2026-09-26）
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/concepts/humanoid-topology-optimization-toolchain.md
 
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -131,4 +131,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：5262/5262 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：5263/5263 (100%) wiki/entity 页有 ingest 来源
