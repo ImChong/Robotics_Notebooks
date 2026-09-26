@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-26
 related:
   - ../entities/paper-pi0.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
@@ -38,7 +38,7 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 π₀ 的设计融合了语言模型的大规模预训练优势与生成式动作建模的精确性：
 
 1. **流匹配 (Flow Matching) 骨干**：
-   有别于 RT-1 等采用的标量离散化路线，π₀ 在动作输出层使用了**流匹配（Flow Matching）**。这是一种基于 [概率流形式化](../formalizations/probability-flow.md) 的高效生成式建模方法，能够以更少的推理步数生成高质量、连续且多模态的动作分布。
+   有别于 RT-1 等采用的标量离散化路线，π₀ 在动作输出层使用了**流匹配（Flow Matching）**。这是一种基于 [概率流形式化](../formalizations/probability-flow.md) 的高效生成式建模方法，能够以更少的推理步数生成高质量、连续且多模态的动作分布；工程直觉见 [流匹配与具身策略](../concepts/flow-matching-embodied-policy.md)。
 2. **视觉语言对齐**：
    π₀ 借用了预训练多模态大模型（如 VLM）的权重，使其天然具备理解自然语言指令（如“把弄脏的毛巾放进篮子里”）并识别图像中复杂物体的能力。
 3. **后训练 (Post-training) 范式**：

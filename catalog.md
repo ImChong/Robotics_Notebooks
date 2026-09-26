@@ -4406,6 +4406,7 @@
 - [URDF Files Dataset](wiki/entities/urdf-files-dataset.md) — URDF Files Dataset](https://github.com/Daniella1/urdf_files_dataset) 配套 Tola & Corke 的 RA-L 论文 *Und `📅unknown` `[entity_page]`
 - [URDF-Studio](wiki/entities/urdf-studio.md) — URDF-Studio** 是由 OpenLegged 社区开发的一款专业级** Web 机器人设计与组装工作站**。它不仅是一个查看器，更是一个涵盖了从拓扑设计到硬件物料管理（BOM）的全流程工 `📅unknown` `[entity_page]`
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
+- [Valen（万澜 · Multimodal System One Decision Model）](wiki/entities/valen.md) — Valen**（GitHub，HF 组织，[P `📅unknown` `[entity_page]`
 - [Variable Chain Motor（可变链电机 / VC motor）](wiki/entities/variable-chain-motor.md) — Variable Chain Motor（VC motor，可变链电机）** 是东京大学团队提出的电动作动器：将 **四个小电机单元** 以「链式」集成，并通过 **专用电路** 在绕组 **串联 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
 - [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
@@ -4516,6 +4517,7 @@
 - [Feature-Space Gradient Descent](wiki/concepts/feature-space-gradient-descent.md) — 特征层面的梯度下降 `📅unknown` `[wiki_page]`
 - [磁场定向控制（Field Oriented Control, FOC）](wiki/concepts/field-oriented-control.md) — FOC** 是一种在 **三相交流电机**（BLDC、PMSM）与部分 **步进电机** 上实现高效力矩控制的方法：用坐标变换把定子电流分解为与转子磁链对齐的 \(d\) 轴与正交的 \(q\)  `📅unknown` `[wiki_page]`
 - [Floating Base Dynamics](wiki/concepts/floating-base-dynamics.md) — Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。 `📅unknown` `[wiki_page]`
+- [流匹配与具身策略（Flow Matching for Embodied Policy）](wiki/concepts/flow-matching-embodied-policy.md) — 流匹配把「生成一条动作或轨迹」写成在高维状态空间里学习速度场 \(v_\theta(x,t)\)，再在 \(t\in[0,1]\) 上积分——输出的是瞬时速度规则，累积后才得到可执行的离散动作块。 `📅unknown` `[wiki_page]`
 - [果蝇连接组工具栈（Fly Connectomics Stack）](wiki/concepts/fly-connectomics-stack.md) — 果蝇连接组工具栈** 指围绕 *Drosophila* 突触分辨率连接组（以 **FlyWire 雌性全脑** 与 **Male CNS 雄性全 CNS** 为代表）形成的 **数据—存储—查询— `📅unknown` `[wiki_page]`
 - [Footstep Planning（步位规划）](wiki/concepts/footstep-planning.md) — Footstep Planning** 是腿式机器人运动规划中的核心子问题：在给定运动目标和地形约束下，**决定每一步脚应该落在哪里、何时落下**。步位规划的输出是一个时序接触点序列（contac `📅unknown` `[wiki_page]`
 - [Force Control Basics (力控制基础)](wiki/concepts/force-control-basics.md) — 在人形机器人和操作任务中，**力控制 (Force Control)** 是实现物理交互的基石。与传统工业机器人仅跟踪位置轨迹（Position Control）不同，力控制允许机器人感知并调节它对环 `📅unknown` `[wiki_page]`

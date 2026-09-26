@@ -2,7 +2,7 @@
 type: overview
 tags: [diffusion, flow-matching, generative-ai, course, mit, sde, score-matching]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-26
 related:
   - ../formalizations/probability-flow.md
   - ../methods/diffusion-policy.md
@@ -81,6 +81,7 @@ flowchart LR
 
 ## 关联页面
 
+- [流匹配与具身策略（概念）](../concepts/flow-matching-embodied-policy.md) — 机器人 VLA / 动作头侧 FM 导读
 - [Probability Flow（形式化）](../formalizations/probability-flow.md)
 - [Diffusion Model（概念）](../concepts/diffusion-model.md)
 - [Diffusion Policy（方法）](../methods/diffusion-policy.md)

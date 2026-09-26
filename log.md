@@ -4,6 +4,14 @@
 - **开源结论：** 项目页 + Installation/Pipeline 文档齐全；GitHub `Abhiram824/egoexo4d_human_meshes`（MIT）；HF `Ego-Exo4D-HM/npz-datasets` **已发布**；仍依赖 Ego-Exo4D 原始 take
 - **关键页：** [paper-egoexo4d-hm](wiki/entities/paper-egoexo4d-hm.md)；交叉 [paper-notebook-category-14-human-motion](wiki/overview/paper-notebook-category-14-human-motion.md)
 
+## [2026-09-26] ingest | sources/repos/valen.md — Valen（万澜）多模态 System One；Qwen3.5-2B + 决策头、Preview-0923/Sokoban RLCD；GitHub+HF 权重与 100k 数据已开源；自动合并 PR
+
+- **意图：** 用户指定 Liuziyu77/Valen、Valen-Preview-0923、HF 数据集与 Space Demo
+- **开源结论：** **已开源** — Apache 2.0 代码、`valen.train/inference/evaluate`、Preview checkpoint + General 100k / Eval 5k / Eval-Game
+- **关键页：** [valen](wiki/entities/valen.md)；交叉 [typesafe-jev](wiki/entities/typesafe-jev.md)、[laya](wiki/entities/laya.md)
+
+## [2026-09-26] ingest | sources/blogs/wechat_shenlan_flow_matching_embodied_column14_2026-09-26.md — 流匹配专栏概念页与概率流交叉引用
+
 ## [2026-09-26] ingest | sources/papers/legnav_calf_social_navigation_arxiv_2607_27922.md — LegNav/CALF 社交导航；LegNav-Sim 已开源含 checkpoints
 
 ## [2026-09-26] ingest | sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md — 12/12 独立 paper 节点（新建9+复用3）

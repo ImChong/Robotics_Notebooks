@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5308,
-  "edge_count": 46474,
+  "node_count": 5310,
+  "edge_count": 46497,
   "coverage": {
-    "covered": 5279,
-    "total": 5279,
+    "covered": 5281,
+    "total": 5281,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-egoexo4d-hm.md",
+      "detail_id": "entity-paper-egoexo4d-hm",
+      "label": "Ego-Exo4D-HM",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    },
     {
       "path": "wiki/entities/paper-legnav-calf.md",
       "detail_id": "entity-paper-legnav-calf",
@@ -207,29 +218,18 @@
       "source": "git",
       "action": "added",
       "community_label": "硬件与执行器（Hardware and Actuators） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md",
-      "detail_id": "entity-paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world",
-      "label": "Advancing AI for the physical world",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-legnav-calf.md",
-    "detail_id": "entity-paper-legnav-calf",
-    "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
+    "path": "wiki/entities/paper-egoexo4d-hm.md",
+    "detail_id": "entity-paper-egoexo4d-hm",
+    "label": "Ego-Exo4D-HM",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
   },
   "top_communities": [
     {
@@ -246,7 +246,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 348
+      "size": 349
     },
     {
       "label": "仿真到现实",
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1820,
+      "degree": 1823,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
