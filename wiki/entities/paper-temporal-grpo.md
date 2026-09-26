@@ -11,7 +11,7 @@ tags:
   - openvla
   - iscas
 status: complete
-updated: 2026-09-15
+updated: 2026-09-26
 arxiv: "2608.13026"
 related:
   - ../methods/vla.md
@@ -25,8 +25,10 @@ related:
   - ./paper-rynnbrain-1-1.md
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../comparisons/online-vs-offline-rl.md
+  - ../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md
 sources:
   - ../../sources/papers/temporal_grpo_arxiv_2608_13026.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md
 summary: "Temporal GRPO（中科院软件所，arXiv:2608.13026）：修结果驱动 VLA-RL 的轨迹级信用混叠——只在进入同一阶段的 rollout 之间比相对优势，并写回对应动作区间。RoboTwin 宏平均 75.8%（+7.0 vs SimpleVLA-RL）。确认未开源；勿与 TGRPO 混名。"
 ---
 

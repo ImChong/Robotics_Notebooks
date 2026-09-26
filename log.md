@@ -1,3 +1,8 @@
+## [2026-09-26] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md — 多模空间一周 VLA 第三篇（12 篇）；新建 10 实体 + 技术地图；复用 Temporal GRPO / SONIC；自动合并 PR
+
+- **意图：** 用户指定 mp.weixin.qq.com/s/YangjxIBI8830OtlBBn61g；**每篇独立非重复详情节点**
+- **节点：** 12/12 canonical（见 [vla-weekly-trends-2026-08-10-part3-technology-map](wiki/overview/vla-weekly-trends-2026-08-10-part3-technology-map.md)）
+
 ## [2026-09-26] ingest | sources/papers/coordinated_badminton_skills_scirobotics_adu3922.md — ETH Hutter 团队 ANYmal-D 羽毛球（Sci. Rob. adu3922）；机载 visuomotor RL + 感知噪声模型；代码未开源；自动合并 PR
 
 - **意图：** 用户指定 articuno 项目页 / Science / ETH 新闻 / Research Collection

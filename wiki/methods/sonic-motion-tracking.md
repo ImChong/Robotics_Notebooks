@@ -30,6 +30,7 @@ related:
   - ../entities/paper-sonic-transfer.md
   - ../entities/paper-dpc.md
   - ../entities/paper-scaling-bfm-humanoid.md
+  - ../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md
   - ./beyondmimic.md
   - ../entities/paper-umr-unified-motion-retargeting.md
   - ./egm-efficient-general-mimic.md
@@ -59,6 +60,7 @@ sources:
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/papers/loco_manip_161_survey_019_sonic.md
