@@ -12,7 +12,7 @@ tags:
   - ur10e
   - augsburg
 status: complete
-updated: 2026-09-15
+updated: 2026-09-26
 arxiv: "2608.23320"
 code: https://github.com/una-auxme/ros2smolvla_docker
 related:

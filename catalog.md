@@ -4515,6 +4515,7 @@
 - [Feature-Space Gradient Descent](wiki/concepts/feature-space-gradient-descent.md) — 特征层面的梯度下降 `📅unknown` `[wiki_page]`
 - [磁场定向控制（Field Oriented Control, FOC）](wiki/concepts/field-oriented-control.md) — FOC** 是一种在 **三相交流电机**（BLDC、PMSM）与部分 **步进电机** 上实现高效力矩控制的方法：用坐标变换把定子电流分解为与转子磁链对齐的 \(d\) 轴与正交的 \(q\)  `📅unknown` `[wiki_page]`
 - [Floating Base Dynamics](wiki/concepts/floating-base-dynamics.md) — Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。 `📅unknown` `[wiki_page]`
+- [流匹配与具身策略（Flow Matching for Embodied Policy）](wiki/concepts/flow-matching-embodied-policy.md) — 流匹配把「生成一条动作或轨迹」写成在高维状态空间里学习速度场 \(v_\theta(x,t)\)，再在 \(t\in[0,1]\) 上积分——输出的是瞬时速度规则，累积后才得到可执行的离散动作块。 `📅unknown` `[wiki_page]`
 - [果蝇连接组工具栈（Fly Connectomics Stack）](wiki/concepts/fly-connectomics-stack.md) — 果蝇连接组工具栈** 指围绕 *Drosophila* 突触分辨率连接组（以 **FlyWire 雌性全脑** 与 **Male CNS 雄性全 CNS** 为代表）形成的 **数据—存储—查询— `📅unknown` `[wiki_page]`
 - [Footstep Planning（步位规划）](wiki/concepts/footstep-planning.md) — Footstep Planning** 是腿式机器人运动规划中的核心子问题：在给定运动目标和地形约束下，**决定每一步脚应该落在哪里、何时落下**。步位规划的输出是一个时序接触点序列（contac `📅unknown` `[wiki_page]`
 - [Force Control Basics (力控制基础)](wiki/concepts/force-control-basics.md) — 在人形机器人和操作任务中，**力控制 (Force Control)** 是实现物理交互的基石。与传统工业机器人仅跟踪位置轨迹（Position Control）不同，力控制允许机器人感知并调节它对环 `📅unknown` `[wiki_page]`

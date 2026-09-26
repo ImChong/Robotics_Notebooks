@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-09-26",
-  "node_count": 5307,
-  "edge_count": 46462,
+  "node_count": 5308,
+  "edge_count": 46475,
   "coverage": {
-    "covered": 5278,
-    "total": 5278,
+    "covered": 5279,
+    "total": 5279,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-legnav-calf.md",
+      "detail_id": "entity-paper-legnav-calf",
+      "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
+      "type": "entity",
+      "recency": "2026-09-26",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    },
     {
       "path": "wiki/entities/paper-adahvla.md",
       "detail_id": "entity-paper-adahvla",
@@ -207,29 +218,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md",
-      "detail_id": "entity-paper-raibo2-marathon-energy-efficient-quadruped",
-      "label": "RAIBO2：单次充电完成马拉松的高能效四足",
-      "type": "entity",
-      "recency": "2026-09-25",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adahvla.md",
-    "detail_id": "entity-paper-adahvla",
-    "label": "AdaHVLA",
+    "path": "wiki/entities/paper-legnav-calf.md",
+    "detail_id": "entity-paper-legnav-calf",
+    "label": "LegNav / CALF：从感知人腿学习社交机器人导航",
     "type": "entity",
     "recency": "2026-09-26",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
   },
   "top_communities": [
     {
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1819,
+      "degree": 1821,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

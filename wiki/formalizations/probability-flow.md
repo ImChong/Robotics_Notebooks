@@ -2,8 +2,9 @@
 type: formalization
 tags: [math, probability, generative-ai, flow-matching, diffusion]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-26
 related:
+  - ../concepts/flow-matching-embodied-policy.md
   - ../methods/hy-motion-1.md
   - ../methods/diffusion-motion-generation.md
   - ../overview/mit-flow-matching-diffusion-2026.md
@@ -11,6 +12,7 @@ sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/courses/mit_flow_matching_diffusion_2026.md
+  - ../../sources/blogs/wechat_shenlan_flow_matching_embodied_column14_2026-09-26.md
 summary: "概率流（Probability Flow）提供了一个统一的数学框架来描述扩散模型与流匹配，通过将离散的去噪步转化为连续的可微常微分方程（ODE），实现了生成过程的极致加速与可控性。"
 ---
 
@@ -55,6 +57,7 @@ $$ v(x_t, t) = f(x_t, t) - \frac{1}{2} g(t)^2 \nabla_x \log p_t(x_t) $$
 3. **少样本适应**：通过微调（Fine-tuning）速度场，模型可以极快地学习新环境下的动作偏好。
 
 ## 关联页面
+- [流匹配与具身策略（概念）](../concepts/flow-matching-embodied-policy.md) — VLA 动作头 FM 的工程口径（专栏编译）
 - [MIT 6.S184 Flow Matching & Diffusion（2026）](../overview/mit-flow-matching-diffusion-2026.md) — SDE/FM 系统课
 - [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
