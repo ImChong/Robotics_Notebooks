@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-lift-reactive-force-vla-posttrain.md",
+      "detail_id": "entity-paper-lift-reactive-force-vla-posttrain",
+      "label": "LIFT（Late Reactive Force · VLA Post-Training · arXiv:2607.14236）",
+      "type": "entity",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/overview/embodied-simulators-series-technology-map.md",
       "detail_id": "wiki-overview-embodied-simulators-series-technology-map",
       "label": "具身仿真器系列 · 十大平台技术地图",
@@ -204,28 +215,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-streaming-rl-continual-robotics.md",
-      "detail_id": "entity-paper-streaming-rl-continual-robotics",
-      "label": "Streaming RL 分析",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/embodied-simulators-series-technology-map.md",
-    "detail_id": "wiki-overview-embodied-simulators-series-technology-map",
-    "label": "具身仿真器系列 · 十大平台技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-lift-reactive-force-vla-posttrain.md",
+    "detail_id": "entity-paper-lift-reactive-force-vla-posttrain",
+    "label": "LIFT（Late Reactive Force · VLA Post-Training · arXiv:2607.14236）",
+    "type": "entity",
     "recency": "2026-09-27",
     "source": "git",
     "action": "added",
-    "community_label": "仿真平台（Simulation Platforms） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
