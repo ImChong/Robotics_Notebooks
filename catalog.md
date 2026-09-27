@@ -4747,6 +4747,7 @@
 - [DSMS（接触隐式直接仿真多重打靶）](wiki/methods/dsms-contact-implicit-multiple-shooting.md) — DSMS**（Direct Simulation-based Multiple Shooting）是 [Shooting for Contact](../entities/paper-shooti `📅unknown` `[method_page]`
 - [DWA（Dynamic Window Approach）局部路径规划](wiki/methods/dwa.md) — 动态窗口法（DWA）** 在机器人当前速度可达的 **动态窗口** \(V_d\) 内采样线速度/角速度，前向仿真轨迹并用朝向、速度、间隙等目标打分，选出本周期最优 \((v,\omega)\)— `📅unknown` `[method_page]`
 - [DWM（Dexterous World Models，灵巧世界模型）](wiki/methods/dwm.md) — DWM**（Kim 等，CVPR 2026）研究的是：当环境的**静态几何**已经可用（典型来自重建得到的数字孪生），如何用**视频扩散**去预测**灵巧手操作**会在第一人称视频里诱发哪些**物 `📅unknown` `[method_page]`
+- [动捕手部轨迹的开环动态操作](wiki/methods/dynamic-manipulation-mocap-hand-open-loop.md) — 动捕手部轨迹 + 开环跟踪** 指：用 motion capture 记录人类 **高速动态操作** 的手部（或末端）轨迹，经 **带速度/动力学约束的 retarget** 生成机器人关节轨迹， `📅unknown` `[method_page]`
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](wiki/methods/dynaretarget-sbto-motion-retargeting.md) — DynaRetarget**（Dhédin 等，arXiv:2602.06827，[项目页](https://atarila `📅2026-06-17` `[method_page]`
 - [EFGCL（External Force-Guided Curriculum Learning）](wiki/methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再 `📅2026-05-13` `[method_page]`
 - [EGM（Efficient General Mimic，高效通用模仿跟踪）](wiki/methods/egm-efficient-general-mimic.md) — EGM**（Yang 等，arXiv:2512.19043）研究 **单一神经网络策略** 在仿真中对 **多段人体参考运动** 做 **全身动态跟踪**：重点解决 **大规模 MoCap 冗余/ `📅unknown` `[method_page]`
