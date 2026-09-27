@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, humanoid, hierarchical-control, egocentric, loco-manipulation, imitation-learning, vla, hkust-gz, bjut, hit, smsu-bit, jd, unitree-g1]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-27
 arxiv: "2606.17833"
 venue: "2026 · arXiv"
 code: https://github.com/William-wAng618/HumanoidArena
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-gmt.md
   - ../entities/isaac-lab.md
   - ./paper-humanoidmimicgen.md
+  - ./paper-choreo.md
 sources:
   - ../../sources/papers/humanoidarena_arxiv_2606_17833.md
   - ../../sources/sites/humanoidarena-github-io.md
@@ -203,6 +204,7 @@ sequenceDiagram
 | **[GMT](./paper-gmt.md)** | 提供 General Motion Tracking 方法锚点（Adaptive Sampling + MoE）；HumanoidArena 复用「高层中间动作 → 低层跟踪」分层语义，转而评测该接口的可执行性与可转移性（后端为 TWIST2/SONIC，非 Chen et al. 原文策略）。 |
 | **[OpenHLM](./paper-loco-manip-161-154-openhlm.md)** | 真机全身原生 VLA **配方**；HumanoidArena 是 **仿真分层接口基准**——可对照「中间动作可迁移性」与「全身 VLA 采集接口」两条线。 |
 | **端到端 loco-manip / 纯 tracking 评测** | 多数既有工作只评 **端到端任务成功率** 或 **纯 motion tracking**；HumanoidArena 用共享中间动作接口 + 四扰动轴 + cross-GMT，显式暴露 policy–tracker 接口瓶颈。 |
+| **[CHOREO](./paper-choreo.md)** | 同为 G1 **GMT 后端** 语境：CHOREO 走 **异源 SkillMotion 轨迹库 + 免训练 seam/bridge 长程组合**；HumanoidArena 走 **高层中间动作 → GMT 可迁移性诊断** — 互补「库外编排」与「接口 benchmark」。 |
 
 ## 关联页面
 
@@ -217,6 +219,7 @@ sequenceDiagram
 - [GMR（方法）](../methods/motion-retargeting-gmr.md) — 共享上游重定向。
 - [Isaac Lab](./isaac-lab.md) — 仿真宿主与录制环境。
 - [HumanoidMimicGen](./paper-humanoidmimicgen.md) — 另一 G1 loco-manip 仿真基准对照。
+- [CHOREO](./paper-choreo.md) — 异源 SkillMotion 长程组合（免训练过渡）
 - [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 真机全身 VLA 配方对照。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：人形分层全身控制基准，测 policy–tracker 接口可执行性/可转移性
 

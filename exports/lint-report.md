@@ -2,7 +2,7 @@
 
 ## [2026-09-27] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **24** 条信息型预警）：
+共发现 **0** 个问题（另含 **25** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -96,8 +96,8 @@
 ### ❌ frontmatter topic 非法（不在 schema/topics.json 或超过 2 个）（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（1 个）
+- wiki/methods/switch-framework.md（被 5 个页面引用，无 queries/comparisons 落地）
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-sceneagent-real2sim-capture-physics.md
@@ -146,4 +146,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/concepts/hand-eye-calibration.md
 
-📊 Sources 覆盖率：5335/5335 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：5336/5336 (100%) wiki/entity 页有 ingest 来源

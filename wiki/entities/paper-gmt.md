@@ -19,6 +19,7 @@ related:
   - ./paper-hrl-stack-25-asap.md
   - ./unitree-g1.md
   - ./paper-humantracker.md
+  - ./paper-choreo.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-01-motion-base-wbt.md
   - ../tasks/loco-manipulation.md
@@ -208,6 +209,7 @@ sequenceDiagram
 | [SONIC](../methods/sonic-motion-tracking.md) | 规模化 token/接口 | 更大语料叙事 | 工程栈更重 |
 | [HumanTracker](./paper-humantracker.md) | 评测层（非新策略） | 153 h 四族 + HumanScore | GMT 在 Ground Succ **0.0**、Daily HS **2.4**；独立零样本协议 |
 | [ResMimic](./paper-resmimic.md) | GMT 先验 + 残差 | 物体条件 | 下游 loco-manip，非替代 GMT |
+| [CHOREO](./paper-choreo.md) | **冻结 GMT 执行** SkillMotion 库 | 免训练 seam/bridge 组合 | 库外长程编排，非改 GMT 训练 |
 
 ## 关联页面
 
@@ -221,6 +223,7 @@ sequenceDiagram
 - [ExBody2（161 索引）](./paper-loco-manip-161-007-exbody2.md)
 - [ASAP](./paper-hrl-stack-25-asap.md)
 - [Unitree G1](./unitree-g1.md)
+- [CHOREO](./paper-choreo.md) — 异源 SkillMotion 长程组合（冻结 GMT 后端）
 
 ## 推荐继续阅读
 
