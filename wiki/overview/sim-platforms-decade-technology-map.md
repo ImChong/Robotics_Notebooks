@@ -22,9 +22,11 @@ related:
   - ../entities/adams.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
+  - ./embodied-simulators-series-technology-map.md
   - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+  - ../../sources/blogs/wechat_embodied_simulators_series_overview_2026-09-27.md
   - ../../sources/raw/wechat_sim_platforms_top8_2026-06-22.md
 summary: "依据深蓝具身智能 2026-06 盘点，把 2010 年后改变机器人学习的 TOP 8 仿真平台整理为十年演进技术地图；核心判断：平台轨迹反映重心从物理精度→视觉交互→渲染吞吐→GPU 并行→泛化基准→人类需求对齐的迁移。"
 ---
@@ -111,9 +113,11 @@ flowchart LR
 | 开放世界日常活动上限考试 | [BEHAVIOR-1K](../entities/behavior-1k.md) |
 | 2026 六层训练栈怎么选 | [训练栈分层地图](./robot-training-stack-layers-technology-map.md) |
 | Locomotion 三选一速查 | [仿真器选型指南](../queries/simulator-selection-guide.md) |
+| 2026 十平台横评 + 多平台管线 | [具身仿真器系列地图](./embodied-simulators-series-technology-map.md) |
 
 ## 关联页面
 
+- [具身仿真器系列 · 十大平台地图](./embodied-simulators-series-technology-map.md)
 - [训练栈分层技术地图](./robot-training-stack-layers-technology-map.md)
 - [VLN 10 篇技术地图](./vln-10-papers-technology-map.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)

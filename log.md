@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/blogs/wechat_embodied_simulators_series_overview_2026-09-27.md — 具身仿真器系列总览（十大平台横评）；10/10 复用实体 + 技术地图；WebFetch 抓取；自动合并 PR
+
+- **意图：** 用户指定 mp.weixin.qq.com/s/evU4IsliLfmsb9RoYXU65A
+- **开源结论：** **不适用**（公众号横评；各平台以官方仓为准）
+- **关键页：** [embodied-simulators-series-technology-map](wiki/overview/embodied-simulators-series-technology-map.md)
+
 ## [2026-09-27] ingest | sources/papers/choreo_arxiv_2609_22274.md — CHOREO SkillMotion 异源人形技能免训练组合（G1+GMT MuJoCo 95.4%）；注册 ouc；无官方代码；自动合并 PR
 
 - **意图：** 用户指定 arXiv/PDF/HTML/DOI 2609.22274
