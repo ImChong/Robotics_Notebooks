@@ -10,6 +10,7 @@ related:
   - ../formalizations/probability-flow.md
   - ../overview/vla-robustness-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md
   - ../../sources/papers/structrl_arxiv_2608_15139.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md
   - ../../sources/sites/structrl.md

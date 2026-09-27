@@ -25,6 +25,7 @@ related:
   - ../queries/vla-deployment-guide.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md
   - ../../sources/papers/reflexvla_arxiv_2608_14379.md
   - ../../sources/sites/reflexvla-github-io.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md
