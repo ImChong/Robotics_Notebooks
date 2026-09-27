@@ -33,6 +33,8 @@ summary: "LIFT（BIGAI）把人形控制的「墙钟大规模仿真预训练」�
 
 # LIFT（人形大规模预训练 + 高效微调）
 
+> **名称消歧：** 本页为 BIGAI **人形 RL** LIFT（arXiv:2601.21363）。VLA **力感知后训练** LIFT 见 [paper-lift-reactive-force-vla-posttrain](./paper-lift-reactive-force-vla-posttrain.md)（arXiv:2607.14236）。
+
 **LIFT**（论文缩写：**L**arge-scale pretra**I**ning and efficient **F**ine**T**uning）是面向 **人形机器人 locomotion** 的一条 **强化学习 + 世界模型** 工程管线：先用 **GPU 大规模并行仿真** 把 **离策略 SAC** 训到可部署强度，再用 **物理结构先验 + 学习残差** 的动力学模型支撑 **微调阶段的安全探索布局**。
 
 ## 一句话定义

@@ -4,6 +4,12 @@
 - **开源结论：** **不适用**（公众号横评；各平台以官方仓为准）
 - **关键页：** [embodied-simulators-series-technology-map](wiki/overview/embodied-simulators-series-technology-map.md)
 
+## [2026-09-27] ingest | sources/papers/lift_reactive_force_vla_arxiv_2607_14236.md + sites/lift-policy + repos/y-wng-lift — LIFT 力感知 VLA 后训练（arXiv:2607.14236，CoRL 2026）；π₀.₅ reactive expert + online DAgger；部分开源；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2607.14236、lift-policy.github.io、github.com/y-wng/lift
+- **开源结论：** **部分开源** — OpenPI 训练/online launcher/推理在仓内；Flexiv 驱动、TDK、NEDF2 SDK 外部
+- **关键页：** [paper-lift-reactive-force-vla-posttrain](wiki/entities/paper-lift-reactive-force-vla-posttrain.md)（与 [lift-humanoid](wiki/entities/lift-humanoid.md) 缩写消歧）
+
 ## [2026-09-27] ingest | sources/papers/choreo_arxiv_2609_22274.md — CHOREO SkillMotion 异源人形技能免训练组合（G1+GMT MuJoCo 95.4%）；注册 ouc；无官方代码；自动合并 PR
 
 - **意图：** 用户指定 arXiv/PDF/HTML/DOI 2609.22274
