@@ -5,6 +5,8 @@
 - **巡检修正：** `_check_dataset_entity_metadata` 内联 `tags: [...]` 由 `\bdataset\b` 改为整标签匹配（与列表式口径一致），`aloha-2` / `aloha` / `leju-robotics` 等 `dataset-collection` / `dataset-ecosystem` 派生标签不再误判为数据集实体；两项均补回归测试
 - **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型）；`ruff check` + `ruff format --check` 通过；`pytest` 453 passed（5 个失败均依赖未入库的 `exports/site-data-v1.json`，基线同样失败）；`eval_search_quality` 37/40 通过阈值（3 条 BM25 排名回归为既有问题，本轮未改）
 
+## [2026-09-27] structural | roadmap 全量巡检（近 21 天 ingest vs 27 条纵深路线）：depth-real2sim.md Stage 4 补 SIMPLER/SimplerEnv（real-to-sim 评测范式奠基，此前仅 depth-vla.md 一笔带过）；depth-teleoperation.md Stage 1 补 ALOHA 2（初代 ALOHA 的官方硬件迭代 + Menagerie 仿真工位，缺失的配套条目）；其余 27 条近期 ingest 逐一复核后判定非里程碑级或已有覆盖，不需要改动。
+
 ## [2026-09-27] ingest | sources/sites/khronos-openxr.md + sources/repos/khronos_openxr_sdk.md + sources/repos/collabora_monado.md — Khronos OpenXR 一手门户/SDK/Monado；升格 wiki/entities/openxr.md；交叉 teleoperation、XRoboToolkit、Isaac Teleop；自动合并 PR
 
 - **意图：** 补齐 OpenXR 标准一手资料（非仅应用论文间接引用）

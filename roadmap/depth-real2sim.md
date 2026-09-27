@@ -178,6 +178,7 @@ flowchart LR
 
 ### 推荐读什么
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) · [Sim vs Real 评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — real-to-sim 评测的方法与口径
+- [SIMPLER / SimplerEnv](../wiki/entities/paper-simplerenv-real2sim-eval.md) — 确立 real-to-sim 评测范式：对齐控制与视觉 gap 后免建 digital twin，仿真成功率与 Google Robot / Bridge WidowX 真机强相关
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 同一套资产既评测又训练的闭环样本
 - [Flexion RGB Sim2Real 管线](../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) · [VIRAL](../wiki/entities/paper-viral-humanoid-visual-sim2real.md) — 重建/渲染场景训练的视觉策略零样本落地
 - [具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md) — real-to-sim 评测在整套基准栈中的位置
