@@ -109,19 +109,6 @@
         return linkGraphPromise || (linkGraphPromise = getJSON('exports/link-graph.json'));
       }
 
-      // 纵深横轴统一为「中文(English)」，中文取自各 roadmap/depth-*.md 标题；其余纵深名本为纯中文
-      var DEPTH_AXIS_LABEL = {
-        'rsi': '递归自我改进(RSI)',
-        'rl-locomotion': '强化学习运动控制(RL Locomotion)',
-        'loco-manipulation': '移动操作(Loco-Manipulation)',
-        'sim2real': '仿真到真机迁移(Sim2Real)',
-        'icl': '具身上下文学习(ICL)',
-        'bfm': '人形行为基础模型(BFM)',
-        'vla': '视觉-语言-动作模型(VLA)',
-        'real2sim': '真实到仿真(Real2Sim)',
-        'wam': '世界-动作模型(WAM)'
-      };
-
       function depthDaily() {
         return addedNodes.then(function (n) {
           return dailyFromDates(n.filter(function (v) { return /^roadmap\/depth-/.test(v.path); })
@@ -167,7 +154,7 @@
             // 纵深命中口径与 graph.html 路线视图一致；条形按节点主社区堆叠着色
             return linkGraph().then(function (g) {
               var D = RNDepthFilters;
-              var names = D.DEPTH_ORDER.map(function (k) { return DEPTH_AXIS_LABEL[k] || D.DEPTH_META[k].label; });
+              var names = D.DEPTH_ORDER.map(function (k) { return D.DEPTH_META[k].label; });
               var count = {};
               g.nodes.forEach(function (n) {
                 D.depthsForNode(n).forEach(function (k) {

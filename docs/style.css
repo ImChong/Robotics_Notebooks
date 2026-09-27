@@ -1352,8 +1352,8 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .home-entry-route-links {
   display: grid;
-  /* 118px 让 6 个路线按钮在 >860px（移动端断点）任意宽度下保持单行，避免末项孤行 */
-  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  /* 按钮含英文副行「(English)」：170px 让 >860px 时排 4 列，最长英文名也能单行放下 */
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 10px;
   margin-top: auto;
   padding-top: 2px;
@@ -1367,6 +1367,18 @@ button.home-wiki-heatmap-cell.is-active {
   border: 1px solid var(--border);
   text-align: center;
   white-space: nowrap;
+  /* 「中文(English)」拆两行：中文主行 + 英文小字副行，保持列宽不被英文撑开 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.home-entry-route-links .route-en {
+  margin-top: 2px;
+  font-size: .72rem;
+  line-height: 1.2;
+  opacity: .75;
+  white-space: normal;
 }
 /* 折叠态的路线按钮必须真正隐藏（btn-secondary 的 display 会覆盖 UA 的 [hidden] 样式） */
 .home-entry-route-links a[hidden] { display: none; }
