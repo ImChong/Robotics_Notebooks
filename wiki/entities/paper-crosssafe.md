@@ -63,6 +63,15 @@ summary: "CrossSafe（arXiv:2609.28984）：形态感知潜空间安全过滤；
 2. 开源为 **待发布** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Safety Filter](../concepts/safety-filter.md) | 通用定义：最小修改把名义动作投影回安全集；CrossSafe 用 **Hamilton–Jacobi 可达性** 值函数 + 安全最大化策略实现过滤，并让两者 **跨本体共享** |
+| [Control Barrier Function](../concepts/control-barrier-function.md) | 通常按机器人解析设计 $h(x)$；CrossSafe 在 **形态感知 latent** 中做 HJ 可达性分析，安全概念可迁移、同时显式条件化各机身形态与运动学 |
+| 共享末端动作空间的通才 VLA | 末端动作空间不刻画「安全依赖形态」——同一动作对一台机身安全、对另一台不安全；这正是 CrossSafe 要补的缺口 |
+| 单本体安全过滤 | 每台机器人单独训练；CrossSafe 四本体 × 五任务联合训练后 **零样本** 迁移到留出本体、降低名义策略碰撞率，且训练本体越多泛化越好（摘要口径） |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

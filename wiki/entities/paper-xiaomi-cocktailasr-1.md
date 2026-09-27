@@ -11,7 +11,7 @@ tags:
   - open-source
   - xiaomi
 status: complete
-updated: 2026-09-25
+updated: 2026-09-26
 arxiv: "2609.11274"
 code: https://github.com/xiaomi-research/xiaomi-cocktailasr-1
 related:
@@ -165,7 +165,7 @@ sequenceDiagram
 
 ## 结论
 
-**一句话总判：CocktailASR-1 把「鸡尾酒会」收成带 ref 的 LLM-ASR 单调用——混合 SOTA、单人可共存、空输出拒识可接技能门控；机器人栈里适合「只听示教者」，全场纪要仍用 SATS/分离方案。**
+**一句话总判：CocktailASR-1 把「鸡尾酒会」收成带 ref 的 LLM-ASR 单调用——混合场景 WER 领先 README 对照模型、单人可共存、空输出拒识可接技能门控；机器人栈里适合「只听示教者」，全场纪要仍用 SATS/分离方案。**
 
 1. **先问有没有 ref** — 无稳定参考声纹时，TS-ASR 产品形态不成立；有 ref 时比通用 ASR 在 LibriMix/AliMeeting 上差距极大。
 2. **拒识与 FRR 要一起验收** — 负样本拒识 ~70–80% 的同时，正样本 FRR 虽低但非零；安全关键指令建议 **二次确认** 或 **非空才触发**。

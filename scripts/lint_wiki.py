@@ -528,6 +528,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # mujoco / libero 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
     "onnx",
     "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
+    # flow-matching：命中处均为「**flow-matching** 动作头 / 快规划器 / 监督」式的动作
+    # 生成头指称，机制已由 concepts/flow-matching-embodied-policy.md（速度场 + ODE
+    # 采样、与扩散策略的取舍）定义；页面 stem 带 -embodied-policy 后缀，与 dit / moe 同类
+    # 「已有归属、slug 与页面 stem 不同名」。
+    "flow-matching",
     "g1",
     "gmr",
     "heracles",
@@ -598,6 +603,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # （Newton 的 `Model` / `State` / `Control` 抽象、观测字典键 `state`），与 qpos /
     # reset 同类，不单建概念页
     "state",
+    # score：多义的评分字段名——LLM 判别器输出头（Laya / Valen 的 `choice` / `score` /
+    # `noul` 决策模式）、视频推理评测里与 `judge` 并列的续写分、竞技平台榜单聚合分、
+    # 自博弈足球的稀疏比分奖励。各义在对应实体页已释义，互不相干；与 state / step
+    # 同类「代码/字段 token 而非可成页机制」，不建 concepts/score.md。
+    "score",
     # student：Teacher–Student 蒸馏里「部署侧半边」的角色名，命中处清一色是
     # **Teacher** / **Student** 成对的两行训练表（DPL / SOLO 的特权重建蒸馏、
     # ArtManip 的潜表示蒸馏、HALOMI 的 DAgger、AME-2 的 action distill、

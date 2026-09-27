@@ -63,6 +63,16 @@ summary: "RAPID（arXiv:2609.30249）：从示范推断目标/原语/可交互�
 2. 开源为 **待发布** 时优先从项目页 Code 区核实，再写复现计划。
 3. 长程 / 部署类条目（AdaHVLA、HarnessPAI、Self-Adaptive VLA）同时记录 **成功率定义** 与 **失败恢复预算**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [RAPID（VLM-RL）](./paper-rapid-vlm-rl.md) | **同名不同 arXiv**：那篇是 VLM 偏好奖励 + GPU 并行 RL 的训练加速，与本文无关 |
+| Code-as-Policies 类代码策略 | 通常需人工给出任务规格、动作原语与验证环境；RAPID 从 **单次视觉人类示范** 自动推断三者，再由编码 agent 生成—验证—修订程序 |
+| [HarnessPAI](./paper-harnesspai.md) | 演化代码 harness 去组织已有动作模型；RAPID 的原语本身是 **轨迹优化程序**，用对象级关系约束组合，面向接触丰富的非抓取操作 |
+| [Code-as-World](./paper-code-as-world.md) | 用可执行代码表示 **物理世界** 做推理；RAPID 用代码表示 **策略**，强调对象中心关系表示以泛化到物体位姿/形状/材质与环境变化 |
+| [LIBERO](./libero-benchmark.md) | 抓取类任务在 LIBERO-Pro 上评测；八个非抓取任务另在 Franka 真机全部部署 |
+
 ## 关联页面
 
 - [具身研究 12 篇技术地图](../overview/embodied-research-12-papers-technology-map.md)

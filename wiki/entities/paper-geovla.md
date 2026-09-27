@@ -8,7 +8,7 @@ tags:
   - iros-2026
   - open-source
 status: complete
-updated: 2026-09-25
+updated: 2026-09-26
 arxiv: "2508.09071"
 code: https://github.com/linsun449/geovla.code
 related:
@@ -59,7 +59,7 @@ summary: "GeoVLA（arXiv:2508.09071，IROS 2026）：深度点云 PEN + 3D-enhan
 
 ## 实验与评测
 
-- 文内/原文：LIBERO、ManiSkill2 **SOTA 级**仿真表现；真机强调 **height adaptability、scale awareness、viewpoint invariance**。
+- 文内/原文：LIBERO、ManiSkill2 仿真上 **优于论文所比基线**（arXiv:2508.09071 发表时的对照集，非持续排名）；真机强调 **height adaptability、scale awareness、viewpoint invariance**。
 - **读法：** 与纯 2D VLA 或测试期视角合成（AnyCamVLA）对照时，先对齐 **是否使用深度传感器** 与 **训练协议**。
 
 ## 与其他工作对比

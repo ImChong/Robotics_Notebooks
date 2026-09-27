@@ -144,6 +144,7 @@ $$
 - [Humanoid Hardware 101 · 机身与材料](../overview/humanoid-hardware-101-chassis-materials.md) — 材料与传力路径
 - [人形下肢动力学衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 学术侧 Ti6Al4V 增材 leg 案例
 - [自研关节模组流程](./joint-module-self-development-workflow.md) — 执行器与结构接口
+- [物理保真度与 Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 减重改版后的质量/质心/惯量要回写 URDF，否则在几何/惯量层被动力学逐级放大
 
 ## 参考来源
 

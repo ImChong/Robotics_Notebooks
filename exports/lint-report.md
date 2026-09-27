@@ -2,7 +2,7 @@
 
 ## [2026-09-26] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **15** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,9 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
-- flow-matching（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- score（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -101,16 +100,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（9 个）
-- wiki/entities/paper-adahvla.md（缺 对比）
-- wiki/entities/paper-camp-arm-hand-motion-planning.md（缺 对比）
-- wiki/entities/paper-crosssafe.md（缺 对比）
-- wiki/entities/paper-echo-in-the-steps.md（缺 对比）
-- wiki/entities/paper-harnesspai.md（缺 对比）
-- wiki/entities/paper-polyumi.md（缺 对比）
-- wiki/entities/paper-propra-fingertip-anchoring.md（缺 对比）
-- wiki/entities/paper-rapid-agentic-programming.md（缺 对比）
-- wiki/entities/paper-wrap-wrench-aware-assembly.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -118,18 +109,17 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-geovla.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-aries-mission2-aerial.md updated=2026-09-26）
-- wiki/entities/paper-xiaomi-cocktailasr-1.md（含绝对化措辞「SOTA」，updated=2026-09-25；同主题更新页 wiki/entities/paper-aries-mission2-aerial.md updated=2026-09-26）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/concepts/humanoid-topology-optimization-toolchain.md
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/concepts/flow-matching-embodied-policy.md
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无

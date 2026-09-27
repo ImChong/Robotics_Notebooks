@@ -96,6 +96,7 @@ flowchart LR
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [MIT Flow Matching & Diffusion 2026](../overview/mit-flow-matching-diffusion-2026.md)
 - [VLA](../methods/vla.md)
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — flow-matching 动作头所在的 VLA 执行层与其上下游 VLM / VLN / WM 的选型边界
 
 ## 参考来源
 
