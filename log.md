@@ -4,6 +4,12 @@
 - **开源结论：** **部分开源** — arXiv + PDF 已发布；GitHub 仍 Coming soon
 - **关键页：** [paper-why-action-chunking-improves-bc](wiki/entities/paper-why-action-chunking-improves-bc.md)
 
+## [2026-09-27] ingest | sources/papers/grid_arxiv_2310_00887.md — GRID（General Robot Intelligence Development）；Open GRID + GRID-playground 部分开源、Enterprise 闭源；paper-grid + 更新 grid-general-robotics；自动合并 PR
+
+- **意图：** 用户指定项目页、Open GRID、文档、GenRobo/GRID-playground、arXiv:2310.00887
+- **开源结论：** **部分开源** — Playground notebook/config；Open GRID Web/CLI；Enterprise monorepo 未公开
+- **关键页：** [paper-grid-general-robot-intelligence-development](wiki/entities/paper-grid-general-robot-intelligence-development.md)、[grid-general-robotics](wiki/entities/grid-general-robotics.md)
+
 ## [2026-09-27] ingest | sources/sites/harvard-computationalrobotics-sceneagent.md — SceneAgent（Harvard）3DGS/捕获→预测物理 USD + digital sisters + VLA LoRA；GitHub 仅静态站、管线待发布；自动合并 PR
 
 - **意图：** 用户指定 Harvard 项目页与 ComputationalRobotics/SceneAgent

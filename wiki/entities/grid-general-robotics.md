@@ -1,9 +1,9 @@
 ---
 type: entity
-tags: [platform, physical-ai, sim2real, deployment, agentic-robotics, closed-source, manipulation]
+tags: [platform, physical-ai, sim2real, deployment, agentic-robotics, open-source-partial, manipulation, foundation-models]
 status: complete
-updated: 2026-09-10
-summary: "General Robotics 的 GRID 是闭源 Physical AI 平台：用 Robot Ingestion / World Experience / Skill Creation / Deployment & Evaluation 四类 harness 驱动 Auto-Engineering 闭环，把每次真机部署沉淀为可复用机体知识、技能与修复经验。"
+updated: 2026-09-27
+summary: "General Robotics GRID：Open GRID（Web/CLI + Cortex 托管模型 + Isaac/AirGen 云仿真）与 GRID-playground 示例开源；Enterprise 闭源 auto-engineering 四类 harness 复利；技术脉络见 arXiv:2310.00887 Foundation Mosaic。"
 related:
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ../concepts/sim2real.md
@@ -12,6 +12,8 @@ related:
   - ../concepts/system-identification.md
   - ../methods/behavior-cloning.md
   - ../methods/imitation-learning.md
+  - ../methods/vla.md
+  - ./paper-grid-general-robot-intelligence-development.md
   - ./cyclo-intelligence.md
   - ./nvidia-getting-started-isaac-lab.md
   - ./nvidia-warp.md
@@ -20,21 +22,26 @@ related:
 sources:
   - ../../sources/blogs/generalrobotics_auto_engineering_2026-09-09.md
   - ../../sources/sites/generalrobotics-company.md
+  - ../../sources/sites/generalrobotics-grid-product.md
+  - ../../sources/sites/grid-open-platform.md
+  - ../../sources/repos/grid-playground.md
+  - ../../sources/papers/grid_arxiv_2310_00887.md
 ---
 
-# GRID（General Robotics Auto-Engineering 平台）
+# GRID（General Robotics Intelligence Platform）
 
-**GRID** 是 [General Robotics](https://www.generalrobotics.company/) 的 **Robot Intelligence Platform**：单体 monorepo 集成 **50+ OEM 机器人**、数百感知/控制/规划/RL·IL/仿真/部署工作流。其 **Auto-Engineering** 范式用 agent + **四类 robotics harness** 把「理解机体 → 造世界经验 → 创建技能 → 部署评测与修复」收成可复利闭环——类比软件工程中 coding agent 的仓库、工具与可验证反馈，但反馈来自仿真与真机。
+**GRID** 是 [General Robotics](https://www.generalrobotics.company/) 的 **Physical AI 平台**（[产品页](https://www.generalrobotics.company/grid)）：现分 **Open GRID**（Web/CLI，免安装或快速装 CLI）与 **GRID Enterprise**（可扩展私有部署）。技术报告 [arXiv:2310.00887](https://arxiv.org/abs/2310.00887) 提出 **Foundation Mosaic + AirGen**；2026 产品叙事强调 **auto-engineering** 与 **四类 robotics harness** 复利。入门示例见 [GenRobo/GRID-playground](https://github.com/GenRobo/GRID-playground) 与 [文档 v2.1](https://docs.generalrobotics.dev/v2.1/introduction.md)。
 
 ## 一句话定义
 
-用 **GRID monorepo + 四类 harness** 让 agent 在统一抽象下自动完成机器人集成、混合仿真、多路径技能构建与真机评测迭代，并把失败、修复与验证结果沉淀为下次任务的工程起点。
+**Open GRID 提供统一 CLI/会话、云 Isaac/AirGen 与 Cortex 托管模型；Enterprise 用四类 harness 做 auto-engineering 复利——论文层 Mosaic 编排与产品层 harness 闭环同一品牌下的两条读法。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| GRID | General Robotics Intelligence / Deployment 平台名 | 官方产品名；非 Duke General Robotics Lab |
+| GRID | General Robot Intelligence Development | 平台全称；非 Duke General Robotics Lab |
+| Cortex | GRID Cortex | 托管检测/深度/分割/VLM/VLA 的 Ray Serve API 层 |
 | BC | Behavior Cloning | 行为克隆；Skill Creation 中合成 demo + DAgger 路线 |
 | DAgger | Dataset Aggregation | 迭代式纠正性模仿；与 BC 联用训练反应式策略 |
 | DFSPH | Divergence-free Smoothed Particle Hydrodynamics | 无散光滑粒子流体；文中与 MuJoCo 刚体耦合 |
@@ -45,17 +52,17 @@ sources:
 
 | 字段 | 内容 |
 |------|------|
-| 机构 | General Robotics（商业 Physical AI 公司） |
-| 产品 | GRID — Auto-Engineering 平台 |
-| 开源状态 | **未开源**（截至 2026-09-10 官网无公开代码仓） |
-| 官方入口 | [generalrobotics.company](https://www.generalrobotics.company/) · [Auto-Engineering 博客](https://www.generalrobotics.company/post/introducing-auto-engineering-for-robotics) |
+| 机构 | General Robotics（商业 Physical AI；论文 affiliation 曾为 Scaled Foundations） |
+| 产品形态 | **Open GRID** · **GRID Enterprise** · [GRID-playground](https://github.com/GenRobo/GRID-playground) |
+| 开源状态 | **部分开源** — Playground notebook/config；**Enterprise monorepo 未公开**（见 [步骤 2.5 归档](../../sources/sites/generalrobotics-grid-product.md)） |
+| 官方入口 | [grid 产品](https://www.generalrobotics.company/grid) · [Open GRID](https://grid.generalrobotics.dev) · [文档](https://docs.generalrobotics.dev/) · [arXiv:2310.00887](https://arxiv.org/abs/2310.00887) |
 
 ## 为什么重要
 
 - **把「稀缺」从模型转到工程 know-how：** 博客核心论断是能力供给日增，但可靠部署仍靠专家团队手工串联；Auto-Engineering 试图把这类知识蒸馏进可执行闭环。
 - **Harness 而非单点模型：** 与只发布 VLA checkpoint 不同，GRID 强调 **机体摄取、世界构造、技能路径选择、部署证据** 四类可组合基础设施——对齐站内 [真机 autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md) 对「环境 + 可验证反馈」的强调。
 - **复利证据：** 官方实验室叙事给出量化起点——Flexiv 上首技能约 **4 h**，同 setup 后续 **10–15 min**；并列举系统辨识、控制频率、深度几何等 **部署侧修复** 案例，适合与 [Sim2Real](../concepts/sim2real.md) 工程读法对照。
-- **与开源栈的关系：** 闭源平台，但依赖/对比对象包括 MuJoCo、[NVIDIA Warp](./nvidia-warp.md)、GELLO 示教等；选型时应与 [Cyclo Intelligence](./cyclo-intelligence.md)、[Isaac Lab](./nvidia-getting-started-isaac-lab.md) 等 **可审计开源栈** 区分。
+- **开放与闭源分层：** [Open GRID + Playground](./paper-grid-general-robot-intelligence-development.md) 可审计入门；**Enterprise auto-engineering** 仍主要靠 PoC。依赖/对比包括 Isaac Sim、AirGen、MuJoCo、[NVIDIA Warp](./nvidia-warp.md) 等；全栈开源对照 [Cyclo Intelligence](./cyclo-intelligence.md)、[Isaac Lab](./nvidia-getting-started-isaac-lab.md)。
 
 ## 四类 Robotics Harness
 
@@ -122,14 +129,14 @@ flowchart TB
 
 ## 局限与风险
 
-- **闭源与不可审计：** 截至入库日 **无公开仓库**；性能数字、 harness 边界与失败率无法独立复现，选型应要求 PoC 与数据/IP 条款（官网强调 Sovereign）。
+- **Enterprise 不可完全审计：** Playground 不含 Cortex/Enterprise 全栈；auto-engineering 性能数字需 PoC；数据/IP 条款见官网 **Sovereign** 叙事。
 - **叙事绑定特定硬件栈：** 案例含 Flexiv、UR5e、GELLO；迁移到其他 OEM 是否同等顺畅需实测。
 - **与学术 General Robotics Lab 易混淆：** Duke **[General Robotics Lab](https://generalroboticslab.com/)**（如 Argus、TSIL）为独立学术实体，与 **generalrobotics.company** 商业 GRID **无从属关系**。
 - **Agent 闭环风险：** 自动修改控制频率、深度模型与运动学参数能修 gap，也可能引入安全与回归问题；需保留人工闸门与变更追溯（博客强调 traceability，但实现未开源）。
 
 ## 源码运行时序图
 
-**不适用** — 步骤 2.5 判定 GRID 为 **闭源商业平台**，官网未提供可运行公开仓库；上文 Mermaid 为 **产品架构读图**，非 README 对齐的源码时序。
+**Playground 时序见** [论文实体页](./paper-grid-general-robot-intelligence-development.md) — Enterprise monorepo 仍 **不适用**；上文 harness Mermaid 为 **产品架构读图**。
 
 ## 关联页面
 
@@ -138,13 +145,20 @@ flowchart TB
 - [Data Flywheel](../concepts/data-flywheel.md) — 部署复利与数据闭环
 - [Cyclo Intelligence](./cyclo-intelligence.md) — 开源 Physical AI 全栈对照
 - [NVIDIA Isaac Lab 入门](./nvidia-getting-started-isaac-lab.md) — 开源仿真训练部署对照
+- [GRID 技术报告实体](./paper-grid-general-robot-intelligence-development.md) — Foundation Mosaic 与实验
 
 ## 参考来源
 
 - [Introducing Auto Engineering for Robotics（博客归档）](../../sources/blogs/generalrobotics_auto_engineering_2026-09-09.md)
 - [General Robotics 官网归档](../../sources/sites/generalrobotics-company.md)
+- [GRID 产品页归档](../../sources/sites/generalrobotics-grid-product.md)
+- [Open GRID / 文档归档](../../sources/sites/grid-open-platform.md)
+- [GRID-playground 仓库归档](../../sources/repos/grid-playground.md)
+- [grid_arxiv_2310_00887](../../sources/papers/grid_arxiv_2310_00887.md)
 
 ## 推荐继续阅读
 
+- Open GRID：<https://grid.generalrobotics.dev>
+- GRID Docs：<https://docs.generalrobotics.dev/v2.1/introduction.md>
 - 官方博客：<https://www.generalrobotics.company/post/introducing-auto-engineering-for-robotics>
 - NVIDIA ENPIRE / autoresearch 对照：[ENPIRE](../methods/enpire.md)、[真机 autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md)

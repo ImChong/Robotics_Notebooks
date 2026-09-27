@@ -551,7 +551,7 @@
 - [GR00T-WholeBodyControl（人形全身控制统一平台）](wiki/entities/gr00t-wholebodycontrol.md) — GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 `📅unknown` `[entity_page]`
 - [GRAIL Loco-Manipulation Dataset（G1 合成轨迹）](wiki/entities/grail-locomanipulation-dataset.md) — PhysicalAI-Robotics-Locomanipulation-GRAIL**（<https://huggingface.co/datasets/nvidia/PhysicalAI-Ro `📅unknown` `[entity_page]`
 - [graphify（Graphify Labs）](wiki/entities/graphify.md) — graphify** 是 Graphify-Labs/graphify 分发的 **编码代理技能 + 命令 `📅unknown` `[entity_page]`
-- [GRID（General Robotics Auto-Engineering 平台）](wiki/entities/grid-general-robotics.md) — GRID** 是 General Robotics 的 **Robot Intelligence Platform `📅unknown` `[entity_page]`
+- [GRID（General Robotics Intelligence Platform）](wiki/entities/grid-general-robotics.md) — GRID** 是 General Robotics 的 **Physical AI 平台**（[产品页](https `📅unknown` `[entity_page]`
 - [Grove-G1](wiki/entities/grove-g1.md) — Grove-G1**（Adyansh04/grove-g1）是面向 **Unitree G1** 的开源 **自主 `📅unknown` `[entity_page]`
 - [gRPC](wiki/entities/grpc.md) — gRPC** 是开源的高性能 **远程过程调用** 框架：用接口定义（默认 **Protocol Buffers `📅unknown` `[entity_page]`
 - [GS-Playground (3DGS 光真实感仿真)](wiki/entities/gs-playground.md) — GS-Playground** 是由 discoverse-dev 开发的高吞吐视觉机器人学习仿真框架，核心创新是将 **并行物理仿真** 与 **批量 3D Gaussian Splatting `📅unknown` `[entity_page]`
@@ -1601,6 +1601,7 @@
 - [GraspMF：积群 MeanFlow 快速生成抓取](wiki/entities/paper-graspmf.md) — GraspMF**（*Fast Generative Grasping via Lie Group-Constrained MeanFlow*；[arXiv:2608.26076](https:/ `📅unknown` `[entity_page]`
 - [Green for Go（VLA 导航可通行性视觉接地）](wiki/entities/paper-green-for-go-vla-nav-grounding.md) — Green for Go, Red for No**（*Visual Grounding via Semantic Segmentation for VLA Navigation Policies `📅unknown` `[entity_page]`
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
+- [GRID（General Robot Intelligence Development）](wiki/entities/paper-grid-general-robot-intelligence-development.md) — GRID**（*GRID: A Platform for General Robot Intelligence Development*，Vemprala / Chen / Shukla / Na `📅unknown` `[entity_page]`
 - [GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap](wiki/entities/paper-grip.md) — GRIP**（*Ground Reaction Inertial Poser*；arXiv:2603.16233，CVPR  `📅unknown` `[entity_page]`
 - [Gripper MagBot（arXiv:2609.12883）](wiki/entities/paper-gripper-magbot.md) — Gripper MagBot**（[From Transportation to Manipulation: Enabling Grasping in Magnetic Robotics](htt `📅unknown` `[entity_page]`
 - [GR00T Drifting Action Head：单步 VLA 速度–成功率审计](wiki/entities/paper-groot-drifting-action-head.md) — One-Step Drifting Action Heads for GR00T N1.7**（[arXiv:2609.18108](https://arxiv.org/abs/2609.1810 `📅unknown` `[entity_page]`
