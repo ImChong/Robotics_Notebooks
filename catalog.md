@@ -804,6 +804,7 @@
 - [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理优化与部署工具包 `📅2026-06-25` `[entity_page]`
 - [OpenVLA](wiki/entities/openvla.md) — OpenVLA**（openvla/openvla）提供可复现的 **Vision-Language-Action（VL `📅unknown` `[entity_page]`
 - [OpenVSLAM](wiki/entities/openvslam.md) — OpenVSLAM** 强调 **模块可替换** 的视觉 SLAM 框架（特征、回环、优化器可插拔）。 `📅unknown` `[entity_page]`
+- [OpenXR](wiki/entities/openxr.md) — OpenXR** 是 Khronos Group 维护的 **免版税、跨平台 XR（AR/VR）开放标准**：用一套 C AP `📅unknown` `[entity_page]`
 - [ORB-SLAM3](wiki/entities/orb-slam3.md) — ORB-SLAM3** 是学术与工程界广泛引用的 **视觉/视觉-惯性 SLAM** 开源库。 `📅unknown` `[entity_page]`
 - [Orca Hand（虎鲸巧手）](wiki/entities/orca-hand.md) — Orca Hand** 是一套面向 **仿生灵巧手** 复刻与二次开发的开源硬件/软件栈：**orcahand.com** 提供 CAD、 `📅unknown` `[entity_page]`
 - [ORCS（Oracle Robot Control Synthesis）](wiki/entities/orcs.md) — ORCS**（*Optimize, Retarget, Control Suite*，GitHub，[HF 权重](https:/ `📅unknown` `[entity_page]`

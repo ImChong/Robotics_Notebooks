@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/sites/khronos-openxr.md + sources/repos/khronos_openxr_sdk.md + sources/repos/collabora_monado.md — Khronos OpenXR 一手门户/SDK/Monado；升格 wiki/entities/openxr.md；交叉 teleoperation、XRoboToolkit、Isaac Teleop；自动合并 PR
+
+- **意图：** 补齐 OpenXR 标准一手资料（非仅应用论文间接引用）
+- **开源结论：** 规范公开；Loader/SDK 与 Monado **已开源**；Quest/PICO 等 **Conformant 闭源 runtime**
+- **关键页：** [openxr](wiki/entities/openxr.md)
+
 ## [2026-09-27] ingest | sources/repos/meta_quest_immersive_web_emulation_runtime.md + sites/meta-quest-iwer-docs.md — Meta Quest IWER WebXR 仿真运行时（npm iwer）；升格 wiki/entities/immersive-web-emulation-runtime.md；交叉 teleoperation、mjswan、Isaac Teleop；自动合并 PR
 
 - **意图：** 用户指定 github.com/meta-quest/immersive-web-emulation-runtime
