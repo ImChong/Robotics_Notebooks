@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/lift_reactive_force_vla_arxiv_2607_14236.md + sites/lift-policy + repos/y-wng-lift — LIFT 力感知 VLA 后训练（arXiv:2607.14236，CoRL 2026）；π₀.₅ reactive expert + online DAgger；部分开源；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2607.14236、lift-policy.github.io、github.com/y-wng/lift
+- **开源结论：** **部分开源** — OpenPI 训练/online launcher/推理在仓内；Flexiv 驱动、TDK、NEDF2 SDK 外部
+- **关键页：** [paper-lift-reactive-force-vla-posttrain](wiki/entities/paper-lift-reactive-force-vla-posttrain.md)（与 [lift-humanoid](wiki/entities/lift-humanoid.md) 缩写消歧）
+
 ## [2026-09-27] ingest | sources/papers/physical_ai_mechanical_hardware_scirobotics_aee2921_2026.md — SciRob eaee2921 Hurst Physical AI×机械硬件；Agility 作者版 + PubMed；注册 agility-robotics；自动合并 PR
 
 - **意图：** 用户指定 DOI 10.1126/scirobotics.aee2921、Science/PubMed/Agility 链

@@ -10,7 +10,7 @@ tags:
   - manipulation
   - pku
 status: complete
-updated: 2026-09-15
+updated: 2026-09-27
 arxiv: "2607.02840"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ./paper-taco-tactile-sensor-benchmark.md
+  - ./paper-lift-reactive-force-vla-posttrain.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "TACO（arXiv:2607.02840）：识别-想象-标注闭环——进度动作模型定位失败邻域，视触觉 WM 联合去噪视频+力矩并标注纠错动作；知识隔离触觉适应 + 优势条件训练；相对基础 VLA +44pp。"
@@ -121,6 +122,7 @@ flowchart TB
 | **Vision-only WM post-train** | 易 **接触不一致想象**；TACO **强制 force 联合去噪** |
 | **人工 intervengen / milestone** | 人工监视贵；TACO **自主闭环** |
 | **Filtered BC / 纯成功 demo** | 强化窄流形；TACO **扩展失败邻域覆盖** |
+| **[LIFT（Reactive Force）](./paper-lift-reactive-force-vla-posttrain.md)** | **真机 DAgger + 6D 力 reactive chunk**；TACO **WM 合成纠错数据** |
 
 ## 常见误区或局限
 
