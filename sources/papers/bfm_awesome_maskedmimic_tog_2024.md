@@ -9,7 +9,8 @@
 - **论文链接：** <https://research.nvidia.com/labs/par/maskedmimic/assets/SIGGRAPHAsia2024_MaskedMimic.pdf>
 - **代码/项目：** <https://github.com/NVlabs/ProtoMotions>
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
-- **入库日期：** 2026-05-26
+- **项目页/PDF 归档：** [`sources/sites/maskedmimic-nvidia-par.md`](../sites/maskedmimic-nvidia-par.md)
+- **入库日期：** 2026-05-26（步骤 2.5 复核 2026-09-27）
 - **一句话说明：** 稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。
 
 ## 核心摘录（策展，非全文）

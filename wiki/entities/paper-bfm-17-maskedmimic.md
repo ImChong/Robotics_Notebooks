@@ -3,19 +3,22 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-09-15
-venue: "2024 · TOG"
+updated: 2026-09-27
+venue: "SIGGRAPH Asia 2024 · ACM TOG"
 code: https://github.com/NVlabs/ProtoMotions
-summary: "稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。"
+summary: "MaskedMimic（TOG 2024）：masked motion inpainting 统一物理角色控制；稀疏/部分约束下补全全身轨迹；官方实现经 ProtoMotions 开源。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
-  - ../entities/protomotions.md
+  - ./protomotions.md
+  - ./paper-loco-manip-161-097-harmon.md
 sources:
+  - ../../sources/sites/maskedmimic-nvidia-par.md
   - ../../sources/papers/bfm_awesome_maskedmimic_tog_2024.md
+  - ../../sources/repos/protomotions.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
@@ -54,17 +57,34 @@ sources:
 
 ## 核心机制（归纳）
 
-### 1）策展导读要点
+### Masked motion inpainting
 
-以 **goal / reference / command** 为条件训练全身跟踪或交互策略，扩展人形可执行动作库。
+在 **部分 body / keyframe 被 mask** 时，模型 **inpaint** 剩余自由度，使 **物理仿真角色** 仍满足目标条件（稀疏 keyframe、局部 command 等）。这与「整条参考轨迹跟踪」不同：上层接口常只约束 **子集**（类似语言只描述手势片段）。
 
-### 2）策展导读要点
+### 与 ProtoMotions 栈
 
-数据侧常融合 MoCap、视频、遥操作与 HOI；控制侧强调 **抗扰、恢复与跨参考泛化**。
+官方 **代码入口** 为 [NVlabs/ProtoMotions](https://github.com/NVlabs/ProtoMotions)（Apache-2.0）：大规模 GPU 仿真 + RL/模仿模块。MaskedMimic 作为 **TOG 2024** 方法挂在此框架生态，而非独立小仓库。
 
-### 3）策展导读要点
+### 与 Harmon 的对读
 
-在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
+[Harmon](./paper-loco-manip-161-097-harmon.md) 用语言 + VLM **生成/编辑** 人形 reference motion；MaskedMimic 在 **物理角色** 上做 **条件补全**。二者都扩大「全身行为」，但 Harmon 偏 **语义生成**，MaskedMimic 偏 **部分观测下的物理控制**。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as 训练/评测脚本
+  participant PM as ProtoMotions 仿真
+  participant Pol as MaskedMimic 策略
+  User->>PM: 加载角色 + 部分 mask 条件
+  loop rollout
+    PM->>Pol: 观测（含 masked keyframes）
+    Pol->>PM: 全身控制 / inpainted motion
+    PM->>PM: 物理步进
+  end
+  Note over User,PM: 入口见 ProtoMotions README 与 PAR PDF 指引
+```
 
 ## 结论
 
@@ -92,6 +112,8 @@ sources:
 
 ## 参考来源
 
+- [MaskedMimic 项目/PDF 归档](../../sources/sites/maskedmimic-nvidia-par.md)
+- [ProtoMotions 仓库归档](../../sources/repos/protomotions.md)
 - [bfm_awesome_maskedmimic_tog_2024.md](../../sources/papers/bfm_awesome_maskedmimic_tog_2024.md) — awesome-bfm 策展摘录
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
