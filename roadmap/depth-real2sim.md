@@ -148,6 +148,7 @@ flowchart LR
 ### 推荐读什么
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](../wiki/entities/paper-agentic-real2sim.md) — episode 孪生 + 可换 VLM 后端 + 确定性工具解耦
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 场景孪生 + 三类数字表亲的完整增扩管线
+- [SceneAgent](../wiki/entities/paper-sceneagent-real2sim-capture-physics.md) — 3DGS/摄影测量/LiDAR → 预测物理 USD + **digital sisters** + demonstration factory（Harvard；代码待发布）
 - [COINS](../wiki/entities/paper-coins-compositional-human-scene-interaction.md) · [DIMOS](../wiki/entities/paper-dimos-human-scene-motion-synthesis.md) — 人–场景交互的正向合成对照
 - [动作生成纵深](depth-motion-generation.md) · [动作重定向纵深](depth-motion-retargeting.md) — "人体运动进场景"的表征邻接路线
 

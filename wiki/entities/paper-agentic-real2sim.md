@@ -19,7 +19,7 @@ tags:
   - fau
   - style3d
 status: complete
-updated: 2026-09-18
+updated: 2026-09-27
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md
@@ -27,6 +27,7 @@ related:
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ./paper-r2s-ego.md
   - ./paper-lucida-r2s.md
+  - ./paper-sceneagent-real2sim-capture-physics.md
   - ./articraft.md
   - ./paper-video2door-traversal.md
   - ./paper-bfm-zero.md
@@ -154,13 +155,13 @@ flowchart LR
 
 ## 与其他工作对比
 
-| 维度 | Agentic Real2Sim | [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | [CRISP](../methods/crisp-real2sim.md) | [R2S-EGO](./paper-r2s-ego.md) | [Lucida](./paper-lucida-r2s.md) |
-|------|------------------|-----------|-------|---------------------|----------------|
-| 产物单位 | **episode twin**（含执行器/轨迹/接触/任务） | sim-ready 场景 + cousins | 单目人–场景平面原语 | 既有场景的 **ego 视觉资产 + 碰撞面** | 可编辑物体资产 + 场景图 |
-| 底座 | MuJoCo 物理引擎 | 仿真场景生成 | RL + 平面原语 | 3DGS + 固定动力学/控制 | Seed3D mesh + GizmoAct |
-| 决策方式 | **VLM agent 编排 + 确定性工具** | 场景生成管线 | 单目重建 + RL | **robot/geometry 双代理** 预算化生成 | VLM **操作 3D gizmo** 闭环放置 |
-| 评测口径 | **回放成功**（三裁判 ≥8/10） | Pearson / MMRV 策略相关 | 人–场景重建质量 | 冻结 ego PSNR + 真机策略成功率 | 检测 mAP / ADD-SB / 场景 F-Score |
-| 后端可替换性 | **开源 31B ≈ 闭源**，成本差一个数量级 | — | — | 组件冻结公开 checkpoint；**管线本身未开源** | **整管线未开源** |
+| 维度 | Agentic Real2Sim | [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | [SceneAgent](./paper-sceneagent-real2sim-capture-physics.md) | [CRISP](../methods/crisp-real2sim.md) | [R2S-EGO](./paper-r2s-ego.md) | [Lucida](./paper-lucida-r2s.md) |
+|------|------------------|-----------|-------|---------------------|----------------|----------------|
+| 产物单位 | **episode twin**（含执行器/轨迹/接触/任务） | sim-ready 场景 + cousins | **USD 场景** + splat/mesh 演示 | 单目人–场景平面原语 | 既有场景的 **ego 视觉资产 + 碰撞面** | 可编辑物体资产 + 场景图 |
+| 底座 | MuJoCo 物理引擎 | 仿真场景生成 | Isaac Lab / MuJoCo / Unreal（USDZ） | RL + 平面原语 | 3DGS + 固定动力学/控制 | Seed3D mesh + GizmoAct |
+| 决策方式 | **VLM agent 编排 + 确定性工具** | 场景生成管线 | **VLM agent swarm** + 捕获工具链 | 单目重建 + RL | **robot/geometry 双代理** 预算化生成 | VLM **操作 3D gizmo** 闭环放置 |
+| 评测口径 | **回放成功**（三裁判 ≥8/10） | Pearson / MMRV 策略相关 | sim-only VLA→真机（**Pearson 待发布**） | 人–场景重建质量 | 冻结 ego PSNR + 真机策略成功率 | 检测 mAP / ADD-SB / 场景 F-Score |
+| 后端可替换性 | **开源 31B ≈ 闭源**，成本差一个数量级 | — | **管线待发布**（GitHub 仅静态站） | — | 组件冻结公开 checkpoint；**管线本身未开源** | **整管线未开源** |
 
 > 定位：需要 **episode 级物理回放 + 可换 VLM 编排** 时选本工作；只需操作场景 + 策略相关评测优先 SimFoundry；产物是物理引擎 episode，勿与像素视频世界模型混谈。
 
@@ -178,6 +179,7 @@ flowchart LR
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + cousins + 策略评测
 - [R2S-EGO](./paper-r2s-ego.md) — 稀疏捕获双代理 ego 场景细化（外观 + 真机坐姿）
 - [Lucida](./paper-lucida-r2s.md) — 室内物体级 Real2Sim；VLM 做 gizmo 放置而非 episode 编排
+- [SceneAgent](./paper-sceneagent-real2sim-capture-physics.md) — 3D 捕获 → USD 场景 + agent 审查（非 episode twin）
 - [Articraft](./articraft.md) — agentic VLM 铰接资产生成
 - [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 同属 simulator-in-the-loop agent，单位是单门视频孪生再学穿门策略，不是 DROID episode twin
 - [BFM-Zero](./paper-bfm-zero.md) — 人形适配器运动上下文
