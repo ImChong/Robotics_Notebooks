@@ -11,6 +11,7 @@ related:
   - ./paper-sa-2510-19430-gigabrain-0-a-world-model-powered-vision-languag.md
   - ../overview/vla-robustness-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md
   - ../../sources/papers/gigabrain_0_7_arxiv_2608_15875.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md
   - ../../sources/sites/gigabrain-0-7.md

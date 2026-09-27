@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md — 多模空间一周 VLA 第四篇（14 篇）；新建 10 实体 + 技术地图；复用 GigaBrain/Reflex/ViTaR/StructRL；自动合并 PR
+
+- **意图：** 用户指定 mp.weixin.qq.com/s/Eae0_0kuz-Hz8mmbpK3qBA；每篇论文独立非重复详情节点
+- **开源结论：** ForceU-VLA、PhaseLoRA **已开源**；Reflex 项目页 Code After acceptance；StructRL 项目页无 GitHub
+- **关键页：** [vla-weekly-trends-2026-08-10-part4-technology-map](wiki/overview/vla-weekly-trends-2026-08-10-part4-technology-map.md)
+
 ## [2026-09-27] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（5350 节点）
 
 - **触发：** 用户要求更新 README GIF

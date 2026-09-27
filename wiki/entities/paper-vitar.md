@@ -14,6 +14,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md
   - ../../sources/papers/vitar_arxiv_2608_15816.md
   - ../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md
   - ../../sources/sites/icr-lab-vitar.md
