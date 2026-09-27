@@ -91,6 +91,7 @@ flowchart LR
 - [RIO（Robot I/O）](../wiki/entities/robot-io-rio.md) — 多设备遥操作的 Node 化抽象
 - [xpad](../wiki/entities/xpad.md) 与 [Oculus Quest Teleop](../wiki/entities/oculust-quest-teleop.md)、[Isaac Teleop](../wiki/entities/isaac-teleop.md) — 手柄内核驱动 / VR / 仿真内录制
 - [ALOHA](../wiki/entities/aloha.md) — 低成本 leader–follower 双臂
+- [ALOHA 2](../wiki/entities/aloha-2.md) — Google DeepMind 硬件迭代：夹爪/机架/重力补偿升级 + D405 四相机阵列，开源 Menagerie 仿真工位（系统辨识后）与初代绑定同一套资产
 
 ### 学完输出什么
 - 一份自己方向的接口选型表（末端 / 手指 / 力触觉 / 下身 / 成本五列）
