@@ -13,6 +13,8 @@ related:
   - ../entities/intel-realsense.md
   - ../entities/humanoid-system-curriculum.md
   - ../entities/tennis-vision.md
+  - ./hand-eye-calibration.md
+  - ../entities/aloha-2.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "感知后处理与坐标变换：检测框/线特征经相机模型与 TF 链进入 base/场地系，并做置信度与拓扑校验；课程 7.1，足球视觉闭环胶水层。"
@@ -84,7 +86,7 @@ flowchart LR
 | 项 | 做法 |
 |----|------|
 | 内参 | SDK 厂参或重新标定板 |
-| 头–相机外参 | 标定板或 CAD + 实测；写入 URDF/TF |
+| 头–相机外参 | 标定板或 CAD + 实测；写入 URDF/TF；腕部相机见 [手眼标定](./hand-eye-calibration.md) |
 | 场地平面 | 标定俯仰；或用深度拟合地面 |
 | 验证 | 已知距离地标，误差应在厘米～分米级（教学） |
 

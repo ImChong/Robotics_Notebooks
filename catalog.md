@@ -26,6 +26,7 @@
 - [AlexNet](wiki/entities/alexnet.md) — AlexNet** 是 2012 ImageNet 竞赛冠军 CNN：更大深度/宽度、ReLU、Dropout 与 GPU 训练，证明端到端深度卷积特征可碾压传统手工特征。 `📅unknown` `[entity_page]`
 - [All Hands Up（RLWRLD 灵巧手档案）](wiki/entities/all-hands-up.md) — All Hands Up !** 是瑞沃世界（RLWRLD）维护的 **腕装模块化灵巧手公开档案**：在浏览器里加载各手 URDF、对照规格，并用仿真扫掠给出 **Kapandji 对掌分**；配 `📅unknown` `[entity_page]`
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
+- [ALOHA 2（增强型低成本双臂遥操作硬件）](wiki/entities/aloha-2.md) — ALOHA 2** 是 Google DeepMind **ALOHA 2 Team** 在初代 ALOHA 上的硬件迭代：面向 **机队级大规模双臂演示采数**，同时 `📅unknown` `[entity_page]`
 - [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是由 Google DeepMind (To `📅unknown` `[entity_page]`
 - [Altium Designer](wiki/entities/altium-designer.md) — Altium Designer** 是 Altium 旗下的 **商业 PCB EDA 套件**，在单一 **Unified Design Environment** 内完成原理图 → PCB → `📅2026-07-18` `[entity_page]`
 - [AMASS（Archive of Motion Capture as Surface Shapes）](wiki/entities/amass.md) — AMASS** 是 MPI-IS Perceiving Systems 维护的 **人体运动元数据集**：把多份独立 **光学标记动捕** 序列转换到统一的 **SMPL**（及网格）参数化上，使 `📅unknown` `[entity_page]`
@@ -4548,6 +4549,7 @@
 - [Gravity Compensation（重力补偿）](wiki/concepts/gravity-compensation.md) — 重力补偿**：在控制力矩里抵消重力广义力 $g(q)$，使关节伺服不再用高增益硬扛自重。它是 [RNEA](../formalizations/articulated-body-algorithm `📅unknown` `[wiki_page]`
 - [GRU（Gated Recurrent Unit，门控循环单元）](wiki/concepts/gru.md) — GRU** 是一种 **门控循环神经网络（gated RNN）** 单元：用 **reset 门 $r_t$** 与 **update 门 $z_t$** 控制新信息与旧隐状态 $h_{t-1}$ `📅unknown` `[wiki_page]`
 - [Halbach Array（哈尔巴赫阵列）](wiki/concepts/halbach-array.md) — Halbach Array** 是一类 **磁化方向沿空间逐步旋转** 的永磁排布：目标侧（平面的一侧，或圆柱孔径内）磁场增强，另一侧（或材料外）削弱乃至理想为零——平面一手见 [Mallinso `📅unknown` `[wiki_page]`
+- [手眼标定（Hand-Eye Calibration）](wiki/concepts/hand-eye-calibration.md) — 手眼标定**估计 **相机坐标系** 与 **机器人法兰/工具坐标系**（或基座系）之间的固定刚体变换，使像素/点云测量能进入 **末端或基座** 下的米制几何，供抓取、对准与多视融合。 `📅unknown` `[wiki_page]`
 - [Hardware-in-the-Loop（HIL，硬件在环）](wiki/concepts/hardware-in-the-loop.md) — Hardware-in-the-Loop（HIL）** 将被测 **真实硬件**（控制器、ECU、变频器、嵌入式计算平台、传感器/执行器接口等）接入 **实时仿真环境**，由仿真器扮演物理 pla `📅unknown` `[wiki_page]`
 - [HDF5 文件格式](wiki/concepts/hdf5-file-format.md) — HDF5**（Hierarchical Data Format version 5）是 **The HDF Group** 定义的 **二进制文件格式与逻辑数据模型**：用 **Group** 组 `📅unknown` `[wiki_page]`
 - [Hierarchical Quadruped Navigation Stack（四足分层导航栈）](wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 四足分层导航栈** 将 **语义/语言目标、全局路径、局部运动、关节力矩** 拆成多层模块，避免「一个端到端网络从像素直接到电机」的工程不可控性。 `📅unknown` `[wiki_page]`

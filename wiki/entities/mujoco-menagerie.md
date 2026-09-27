@@ -2,16 +2,18 @@
 type: entity
 tags: [repo, mujoco, mjcf, robot-models, deepmind, simulation]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-27
 related:
   - ./mujoco.md
   - ./robot-descriptions-py.md
   - ./awesome-robot-descriptions.md
   - ./unitree-mujoco.md
   - ../tasks/locomotion.md
+  - ./aloha-2.md
 sources:
   - ../../sources/repos/mujoco-menagerie-google.md
   - ../../sources/repos/mujoco-menagerie.md
+  - ../../sources/repos/mujoco-menagerie-aloha.md
   - ../../sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md
 summary: "google-deepmind/mujoco_menagerie：DeepMind 官方 MJCF 模型库，机械臂/四足/人形可直接仿真。"
 ---
@@ -44,6 +46,7 @@ summary: "google-deepmind/mujoco_menagerie：DeepMind 官方 MJCF 模型库，�
 1. Clone 后按子目录 README 加载对应 `*.xml`。
 2. 各子模型 **LICENSE 可能不同**（Apache-2.0 仓 + 子目录例外）；商用前读子文件夹 LICENSE。
 3. 引擎能力边界见 [MuJoCo](./mujoco.md) 实体页。
+4. **双臂遥操作：** [`aloha/`](https://github.com/google-deepmind/mujoco_menagerie/tree/main/aloha) 为 [ALOHA 2](./aloha-2.md) 工位（11 轨迹 SysID + D405 相机内参）；详见 [子目录归档](../../sources/repos/mujoco-menagerie-aloha.md)。
 
 ## 局限与使用注意
 
@@ -58,6 +61,7 @@ summary: "google-deepmind/mujoco_menagerie：DeepMind 官方 MJCF 模型库，�
 
 ## 参考来源
 
+- [sources/repos/mujoco-menagerie-aloha.md](../../sources/repos/mujoco-menagerie-aloha.md)
 - [sources/repos/mujoco-menagerie-google.md](../../sources/repos/mujoco-menagerie-google.md)
 - [wechat_robot_yanfa_opensource_algorithms_compendium.md](../../sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md)
 

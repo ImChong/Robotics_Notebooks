@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-27",
-  "node_count": 5329,
-  "edge_count": 46688,
+  "node_count": 5331,
+  "edge_count": 46711,
   "coverage": {
-    "covered": 5300,
-    "total": 5300,
+    "covered": 5302,
+    "total": 5302,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -238,7 +238,7 @@
     },
     {
       "label": "视觉感知",
-      "size": 414
+      "size": 415
     },
     {
       "label": "视觉-语言-动作",

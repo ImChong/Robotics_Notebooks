@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | ALOHA 2 / Menagerie aloha / D405 / OpenCV 手眼 / Tsai–Lenz — 双臂遥操作硬件+仿真与腕部相机标定链；硬件+Menagerie 已开源；新建 aloha-2、hand-eye-calibration；自动合并 PR
+
+- **意图：** 用户指定 aloha-2.github.io、Menagerie README、OpenCV calibrateHandEye、Tsai–Lenz DOI、RealSense D405 规格
+- **开源结论：** ALOHA 2 **硬件设计+教程已开源**；`mujoco_menagerie/aloha/` **已开源**（BSD-3-Clause）
+- **关键页：** [aloha-2](wiki/entities/aloha-2.md)、[hand-eye-calibration](wiki/concepts/hand-eye-calibration.md)
+
 ## [2026-09-27] ingest | sources/papers/show-harness_arxiv_2609_10522.md — Show-Harness（2609.10522）用户指定官方 ingest；步骤 2.5 已开源（GitHub+HF 权重/数据）；补 sites/repos 与 paper-show-harness 深读；自动合并 PR
 
 - **意图：** 用户指定 arXiv / 项目页 / GitHub / HF 模型与数据 + Show Lab @ NUS 作者元数据

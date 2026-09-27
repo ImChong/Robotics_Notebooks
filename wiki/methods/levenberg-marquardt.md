@@ -66,7 +66,7 @@ $$
 
 ## 在机器人中的典型应用
 
-- **相机-机器人手眼标定**、IMU 标定
+- **相机-机器人手眼标定**（见 [hand-eye-calibration](../concepts/hand-eye-calibration.md)）、IMU 标定
 - **冗余 IK**、retargeting 初值求解
 - **小规模状态估计** bundle adjustment
 - **cuRobo 等大规模 TrajOpt**：高维场景更常用 [L-BFGS](./l-bfgs.md)，LM 多用于中低维 NLS
