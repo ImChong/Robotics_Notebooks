@@ -4,11 +4,13 @@ tags: [paper, benchmark, manipulation, vla, evaluation, recovery]
 status: complete
 updated: 2026-09-27
 arxiv: "2609.28952"
+code: https://github.com/RUCKBReasoning/RoboRecover
 related:
   - ../overview/embodied-research-12-papers-recover-wam-technology-map.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/roborecover_arxiv_2609_28952.md
+  - ../../sources/repos/roborecover.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md
 summary: "RoboRecover（2609.28952）：从执行偏差后的中间状态评测策略恢复；LIBERO 200 场景下正常起点与恢复排名不一致。"
 ---
@@ -69,6 +71,7 @@ summary: "RoboRecover（2609.28952）：从执行偏差后的中间状态评测�
 ## 参考来源
 
 - [论文归档](../../sources/papers/roborecover_arxiv_2609_28952.md)
+- [RoboRecover 仓库归档](../../sources/repos/roborecover.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
 
 ## 推荐继续阅读

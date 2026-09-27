@@ -4,11 +4,13 @@ tags: [paper, wam, manipulation, asynchronous-inference, sjtu]
 status: complete
 updated: 2026-09-27
 arxiv: "2609.28927"
+code: https://github.com/SJTU-DENG-Lab/Streaming-WAM
 related:
   - ../overview/embodied-research-12-papers-recover-wam-technology-map.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/streaming_wam_arxiv_2609_28927.md
+  - ../../sources/repos/streaming-wam.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md
 summary: "Streaming-WAM（2609.28927）：已排定动作前缀条件化世界预测，异步推理与运动重叠；真机盖章任务回合耗时约 90s→38s（论文口径）。"
 ---
@@ -69,6 +71,7 @@ summary: "Streaming-WAM（2609.28927）：已排定动作前缀条件化世界�
 ## 参考来源
 
 - [论文归档](../../sources/papers/streaming_wam_arxiv_2609_28927.md)
+- [Streaming-WAM 仓库归档](../../sources/repos/streaming-wam.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
 
 ## 推荐继续阅读
