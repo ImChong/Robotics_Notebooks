@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-22
+updated: 2026-09-27
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -39,6 +39,7 @@ Motion Retargeting 是将一个运动序列（通常来自人类或动物）**�
 | 全身遥操（Teleoperation） | 实时将人类动作映射到人形机器人 |
 | AMP / ASE 风格先验 | 为 RL 策略提供运动风格参考 |
 | 技能库建立 | 一次录制，多种机器人复用 |
+| Ego → 灵巧 robot 动作 | [EgoWild2Dex](../entities/paper-egowild2dex.md) 用 **IK + 手指 retarget** 把 ego/glove/robot 示范统一到 **robot-native 高 DoF** 命令 |
 
 ---
 

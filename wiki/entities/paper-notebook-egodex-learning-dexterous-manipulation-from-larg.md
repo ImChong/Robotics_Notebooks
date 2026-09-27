@@ -19,6 +19,7 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/diffusion-policy.md
   - ../concepts/dexterous-kinematics.md
+  - ./paper-egowild2dex.md
 sources:
   - ../../sources/papers/humanoid_pnb_egodex.md
   - ../../sources/repos/ml-egodex.md

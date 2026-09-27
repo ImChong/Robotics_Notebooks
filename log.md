@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/egowild2dex_arxiv_2609_23755.md — EgoWild2Dex（2609.23755）野外 ego→灵巧 VLA；GeoFormer+三阶段训练+EgoWild 538.9h；数据/代码待发布；自动合并 PR
+
+- **意图：** 用户指定 mmlab.hk/egowild2dex 与 arXiv:2609.23755
+- **开源结论：** **待发布** — 项目页无 GitHub；论文 will release data/models/code
+- **关键页：** [paper-egowild2dex](wiki/entities/paper-egowild2dex.md)
+
 ## [2026-09-27] ingest | sources/papers/mm_future_arxiv_2609_20377.md — MM-Future 多模态联合驾驶 WAM（2609.20377）；NAVSIM 94.0 PDMS；步骤 2.5 代码待发布；附 NAVSIM/Argoverse 文档归档；自动合并 PR
 
 - **意图：** 用户指定 arXiv PDF + Argoverse User Guide 作数据生态参考
