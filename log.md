@@ -4,6 +4,12 @@
 - **开源结论：** **部分开源** — OpenPI 训练/online launcher/推理在仓内；Flexiv 驱动、TDK、NEDF2 SDK 外部
 - **关键页：** [paper-lift-reactive-force-vla-posttrain](wiki/entities/paper-lift-reactive-force-vla-posttrain.md)（与 [lift-humanoid](wiki/entities/lift-humanoid.md) 缩写消歧）
 
+## [2026-09-27] ingest | sources/papers/choreo_arxiv_2609_22274.md — CHOREO SkillMotion 异源人形技能免训练组合（G1+GMT MuJoCo 95.4%）；注册 ouc；无官方代码；自动合并 PR
+
+- **意图：** 用户指定 arXiv/PDF/HTML/DOI 2609.22274
+- **开源结论：** arXiv **未列** 项目页/GitHub → **未开源**
+- **关键页：** [paper-choreo](wiki/entities/paper-choreo.md)
+
 ## [2026-09-27] ingest | sources/papers/physical_ai_mechanical_hardware_scirobotics_aee2921_2026.md — SciRob eaee2921 Hurst Physical AI×机械硬件；Agility 作者版 + PubMed；注册 agility-robotics；自动合并 PR
 
 - **意图：** 用户指定 DOI 10.1126/scirobotics.aee2921、Science/PubMed/Agility 链

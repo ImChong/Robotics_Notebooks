@@ -94,6 +94,7 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 22. **官方开源研发栈**：在 [Unitree / unitreerobotics](./unitree.md) 组织下，G1 常用入口包括 `unitree_rl_gym` / `unitree_rl_lab` / `unitree_rl_mjlab`（RL）、`xr_teleoperate`（XR 遥操作）、`unitree_lerobot`（IL）与 UnifoLM VLA/WMA；ROS 2 真机桥见 [`unitree_ros2` v0.3.0](./unitree-ros2.md)（双臂 / Dex3 / Arm SDK）。组织地图见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。
 23. **工业功能安全缺口（Fail-Passive Gap）**：[Fail-Passive Gap](./paper-fail-passive-gap.md)（西门子，arXiv:2608.02809）在 G1 EDU 半封闭抓放单元上用认证光幕/F-PLC/无线 PROFIsafe 定位：切电对行走双足是危害，机侧平衡站住目前评不了 PL。
 24. **视觉后训练感知控制（ViBe）**：[ViBe](./paper-vibe.md)（USC，arXiv:2609.09918）在 motion tracker 上用预训练视觉编码器 + LoRA 做 **感知全身后训练**；G1 零样本 sim2real 覆盖路缘行走、跑酷、Repose Cube、全向物体 loco-manipulation 与躲避球（**未开源**）。
+25. **异源技能轨迹组合（CHOREO）**：[CHOREO](./paper-choreo.md)（OUC×UCAS×CASIA，arXiv:2609.22274）在 MuJoCo G1 上把运动库/RL/扩散输出规范为 **SkillMotion**，用 LLM 规划 + seam/bridge **免训练** 串联长程动作；冻结 **GMT** 下 130 任务序列成功率 **95.4%**（**未开源**）。
 
 ## 在具身智能中的作用
 
@@ -119,6 +120,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；G1 ONNX 50 Hz 无蒸馏真机（arXiv:2608.00500）
 - [POT-VLA](./paper-pot-vla.md) — 在 G1 上用持久 3D 对象 token 实现可验证的闭环移动操作
 - [ViBe](./paper-vibe.md) — motion tracker 视觉后训练；路缘/跑酷/物体操作/躲避球零样本 sim2real（arXiv:2609.09918；未开源）
+- [CHOREO](./paper-choreo.md) — SkillMotion 异源技能库 + 长程 seam/bridge 组合（MuJoCo+GMT；arXiv:2609.22274；未开源）
 - [smp](../methods/smp.md) (基于得分匹配的运动先验，已在 G1 完成验证)
 - [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md) — 生成视频→GMR→仿真 RL 跟踪（无真机结果；arXiv:2607.21648）
 - [X-Morph](./paper-xmorph.md) — 人体运动先落到 G1 表示，再跨形态到 Go2/六足/B2-Z1（arXiv:2606.30290）
