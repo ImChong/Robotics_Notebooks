@@ -55,6 +55,16 @@ summary: "DeltaWAM（2609.28811）：联合预测视觉增量与动作，缓存�
 
 **不适用**（请按 GitHub README 入口自行补 sequenceDiagram；入库日未逐仓核对）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Fast-WAM](./paper-fast-wam.md) | 训练期视频共训、**推理期跳过未来视频去噪**；DeltaWAM 推理期仍预测视觉，但只预测 **delta** 而非整帧重建 |
+| [GlanceWAM](./paper-glancewam.md) | 把想象减为 **异步单帧前瞻**、动作头走潜空间；DeltaWAM 减的是 **每步预测的内容量**（增量），不是预测频率 |
+| [C³ache](./paper-rcl-2606-08962-c3-3ache-accelerating-world-action-models-with-c.md) | training-free，跨 inference chunk **缓存复用同去噪步残差**（Fast-WAM 骨干）；DeltaWAM 的「缓存锚点 + 增量更新」在 **预测目标层面** 引入 delta，而非推理期外挂缓存 |
+| [Streaming-WAM](./paper-streaming-wam.md) | 同期「改 WAM 节拍」条目：Streaming-WAM 让推理与运动 **重叠** 以容忍延迟；DeltaWAM 直接 **降推理成本** |
+| [LiMA](./paper-lima-async-dual-system-wam.md) | 同为双臂 WAM 提速：LiMA 用 **慢–快双系统 + Latent Schrödinger Bridge**；DeltaWAM 保持单一联合预测、改为 **视觉/动作增量** |
+
 ## 结论
 
 **总判：DeltaWAM 适合作为「预测视觉 delta 而非整帧重建，配合 delta 动作更新，降低 WAM 推理成本。…」方向的入口页；机制细节以 arXiv 与项目页为准。**

@@ -102,6 +102,15 @@ flowchart LR
 - 论文与项目页以 **定性视频**（仿真 before/after VLM、真机跟做、手语）为主；本库未搬运 Table 级 sim 数字。
 - 161 篇清单 **#097/161** 归类：**04 生成式运动、语言控制与轨迹规划**。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [TextOp](./paper-loco-manip-161-022-textop.md) | 同为文本→人形全身：TextOp 用自回归运动扩散 **流式** 产出机器人骨架参考 + RL 跟踪器 50 Hz 执行、已开源；Harmon 复用人体 PhysDiff 先验 + IK + VLM 离线编辑，未开源 |
+| [OMG](./paper-omg-omni-modal-humanoid-control.md) | OMG 是 generator–tracker 分层，自建约 1174.66 h 对齐 G1 的数据训练 DiT，模态含语言/音频/人体参考；Harmon 不训练人形生成器，而是 **人体生成 + VLM 修补** |
+| [LangWBC](./paper-bfm-37-langwbc.md) | LangWBC 让语言直接进入端到端 WBC；Harmon 把语言停在 **参考 motion 生成/编辑层**，真机执行靠上下身解耦控制 |
+| [MaskedMimic](./paper-bfm-17-maskedmimic.md) | MaskedMimic 是 masked inpainting **物理角色控制**，在稀疏约束下补全全身轨迹；Harmon 是运动学参考 + 语义编辑，二者互补不可替代 |
+
 ## 结论
 
 **Harmon 把「语言→人形全身 motion」拆成：人体生成先验 + 跨 embodiment 映射 + VLM 语义修补，而不是一条端到端关节策略。**

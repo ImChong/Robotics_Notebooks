@@ -52,6 +52,27 @@ def test_inline_tags_are_detected(tmp_path: Path, monkeypatch) -> None:
     assert "规模" not in record
 
 
+def test_inline_derived_dataset_tag_is_ignored(tmp_path: Path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    page = wiki / "entities" / "aloha-2.md"
+    page.write_text(
+        "---\ntype: entity\ntags: [hardware, dataset-collection, bimanual]\n---\n采数硬件。\n",
+        encoding="utf-8",
+    )
+    # dataset-collection 是采数硬件标签，不是数据集实体（与列表式整标签匹配口径一致）
+    assert _run([page])["dataset_missing_metadata"] == []
+
+
+def test_inline_quoted_dataset_tag_mid_list_is_detected(tmp_path: Path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    page = wiki / "entities" / "baz.md"
+    page.write_text(
+        '---\ntype: entity\ntags: [human-motion, "dataset"]\n---\n正文仅描述规模 1000 条。\n',
+        encoding="utf-8",
+    )
+    assert len(_run([page])["dataset_missing_metadata"]) == 1
+
+
 def test_non_dataset_entity_is_ignored(tmp_path: Path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     page = wiki / "entities" / "unitree-g1.md"

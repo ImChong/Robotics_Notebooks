@@ -25,6 +25,7 @@ related:
   - ./paper-legged-robots-advances-challenges.md
   - ./paper-goal-oriented-comms-physical-ai.md
   - ./painode-041-agilityrobotics.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/physical_ai_mechanical_hardware_scirobotics_aee2921_2026.md
   - ../../sources/sites/agility_physical_ai_mechanical_hardware.md
@@ -152,6 +153,7 @@ flowchart LR
 - [Actuator 102 · 决策物种](../overview/humanoid-actuator-102-decision-species.md)
 - [Digit 人形 RL 行走](./paper-digit-humanoid-locomotion-rl.md)
 - [Agility Robotics（策展节点）](./painode-041-agilityrobotics.md)
+- [Query：执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本文主张的 cycloid 大关节、腱驱 SEA 手决定了 **③ 执行器建模与摩擦辨识层** 要面对的摩擦/惯量/柔顺真值：机械选型在先，「理想力矩源」假设破在哪由硬件定
 
 ## 推荐继续阅读
 

@@ -199,6 +199,22 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # arxiv：预印本托管/出版平台（基础设施），非机器人概念/方法/形式化，
     # 不应建独立 concepts/methods 页；与 http/https/main 同类基础设施停用词。
     "arxiv",
+    # github：代码托管平台（基础设施），各页命中处均为「**GitHub** 仓库/开源入口」
+    # 的指称（entities/openloong.md、entities/tnkr.md、paper-* 的核心信息表等），
+    # 非机器人概念/方法/形式化，不应建独立页；与 arxiv 同类基础设施停用词。
+    "github",
+    # agent：命中处全是软件框架的表格行标签或类名族——MimicKit / ProtoMotions 的
+    # 训练 **Agent** 模块（`PPOAgent` / `AMPAgent`）、Jetson AI Lab / Open Code
+    # Review / 编码 agent 课程的「**Agent**」栏目名、COMPASS 的「Agent-driven」
+    # 工程化。编码 agent 的概念本体已由 concepts/agentic-coding-software-fundamentals.md
+    # 承接，强化学习的 agent 由 methods/reinforcement-learning.md 定义；裸 token
+    # 与 model / state 同类，不单建概念页。
+    "agent",
+    # skills：命中处是 `skills` CLI（从 GitHub 安装 agent skill 包，entities/birdview.md）、
+    # 配置字段名（entities/rsi-harness.md）与「loco+manip **skills**」的泛指复数
+    # （paper-kino.md），三义被小写 slug 合并，非单一可成页概念；与 clip / train
+    # 同类语义噪声停用词。
+    "skills",
     # license：各页正文里的 `LICENSE` 均为仓库许可证文件名 / SPDX 口径引用
     # （如「仓库 `LICENSE` 文件」「以 LICENSE 为准」），是法务/文件名 token，
     # 非机器人概念/方法/形式化，不应建独立页；与 md/arxiv 同类基础设施停用词。
@@ -1761,9 +1777,12 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         tags = _frontmatter_tags(fm_block)
-        # tags 既支持列表式（- dataset），也支持内联式 [dataset, ...]
+        # tags 既支持列表式（- dataset），也支持内联式 [dataset, ...]；内联式按整标签
+        # 匹配，与列表式精确匹配口径一致，避免 dataset-collection 等派生标签误判
         if "dataset" not in tags and not re.search(
-            r"^tags:\s*\[[^\]]*\bdataset\b", fm_block, re.MULTILINE
+            r"^tags:\s*\[[^\]]*?(?<=[\[,])\s*[\"']?dataset[\"']?\s*[,\]]",
+            fm_block,
+            re.MULTILINE,
         ):
             continue
 

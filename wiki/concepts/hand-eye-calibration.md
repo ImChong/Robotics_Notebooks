@@ -11,6 +11,8 @@ related:
   - ../entities/aloha-2.md
   - ../methods/levenberg-marquardt.md
   - ../methods/grasp-pose-estimation.md
+  - ../queries/robot-perception-stack-selection-loop.md
+  - ../queries/contact-wrench-closed-loop.md
 sources:
   - ../../sources/sites/opencv-calib3d-hand-eye.md
   - ../../sources/papers/tsai_lenz_hand_eye_calibration_1989.md
@@ -88,6 +90,8 @@ flowchart TB
 - [三维坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md)
 - [ALOHA 2 四相机工位](../entities/aloha-2.md)
 - [Intel RealSense](../entities/intel-realsense.md)
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页是四层感知栈里 **① 传感与标定层** 的外参环节：外参一错，③层 2D→3D 提升与下游抓取全部带系统偏差
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 位于 **① 感知/估计层** 的视觉几何入口：接触前的位置预判依赖相机–末端外参，外参偏差会变成接触时刻的意外力
 
 ## 参考来源
 

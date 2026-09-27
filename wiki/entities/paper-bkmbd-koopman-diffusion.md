@@ -53,6 +53,15 @@ summary: "BK-MBD（2609.28920）：Koopman 升维 + 双线性动力学批量推�
 
 **不适用**（无统一官方入口或未开源）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Diffusion Policy](../methods/diffusion-policy.md) | 从示范学去噪生成动作序列；BK-MBD 是 **model-based** diffusion，靠动力学模型推演候选做采样规划 |
+| [MPPI](../methods/mppi.md) | 同为「采样轨迹 + 模型前向推演」的在线规划；BK-MBD 把推演放到 **Koopman 升维空间的双线性模型** 里以求实时 |
+| [DWMP](./paper-dwmp.md) | 同用 Koopman 线性化，但 DWMP 把 Koopman 本体 WM 作为 **策略表征**；BK-MBD 用于 **规划期批量推演** |
+| [Streaming-WAM](./paper-streaming-wam.md) | 同期都针对 **实时性** 瓶颈；Streaming-WAM 让 WAM 推理与运动 **异步重叠**，BK-MBD 是 **加速单步规划本身** |
+
 ## 结论
 
 **总判：BK-MBD 适合作为「每控制步一次状态升维，在 Koopman 空间用双线性模型加速 model-based diffusion 采样规划。…」方向的入口页；机制细节以 arXiv 与项目页为准。**

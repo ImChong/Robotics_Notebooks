@@ -55,6 +55,16 @@ summary: "Streaming-WAM（2609.28927）：已排定动作前缀条件化世界�
 
 **不适用**（请按 GitHub README 入口自行补 sequenceDiagram；入库日未逐仓核对）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [WAM 实时异步部署](./paper-wam-realtime-async.md) | 六种异步部署策略的对照实证，结论是训练时注入 **已承诺前缀**（train）综合最好、但无实验代码；Streaming-WAM 把 **已排定动作前缀** 作为世界预测条件，是这条路线的具体模型并 **已开源** |
+| [GlanceWAM](./paper-glancewam.md) | 异步 **稀疏单帧前瞻**，把视频生成移出控制关键路径；Streaming-WAM 让 WAM 推理与 **运动执行重叠**，用 action-conditioned 预测对齐推理完成时的场景 |
+| [LiMA](./paper-lima-async-dual-system-wam.md) · [DualWAM](./paper-dualwam.md) | 用 **慢–快双系统** 解耦长视界想象与高频修正；Streaming-WAM 按页面口径走的是 **动作前缀条件化** 补偿延迟，而非拆两套频率不同的模型 |
+| [Fast-WAM](./paper-fast-wam.md) | **推理期跳过未来视频去噪** 直接压单次延迟；Streaming-WAM 不以砍预测为主，而是 **容忍延迟并与执行并行** |
+| [DeltaWAM](./paper-deltawam.md) | 同期「改 WAM 节拍」条目：DeltaWAM 预测 **视觉 delta** 降单次推理成本；Streaming-WAM 改 **推理与控制的时序关系**，二者可正交组合（待验证） |
+
 ## 结论
 
 **总判：Streaming-WAM 适合作为「World–Action 模型在推理延迟下用 action-conditioned 预测对齐即将发生的场景，使控制与 W…」方向的入口页；机制细节以 arXiv 与项目页为准。**

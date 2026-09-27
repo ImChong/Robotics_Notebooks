@@ -53,6 +53,15 @@ summary: "CoPRE（2609.27381）：学习无接触力矩响应 + 噪声加权残�
 
 **不适用**（无统一官方入口或未开源）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Contact Estimation](../concepts/contact-estimation.md) | 经典力矩法 τ_contact = τ_measured − τ_gravity − τ_dynamics 再经雅可比映射；CoPRE 改为 **学习无接触力矩预测**，并用 **噪声加权** 雅可比出接触分数 |
+| [关节力矩传感器选型](../concepts/joint-torque-sensor-selection.md) | 物理力矩/六维力传感路线；CoPRE 面向 **低成本臂**，只用本体信号补灵敏度 |
+| [Tactile Sensing](../concepts/tactile-sensing.md) | 触觉在接触面直接测力与滑移；CoPRE 不加表面传感器，接触信息来自 **关节层残差** |
+| [TactileStep](./paper-tactilestep.md) | 同期 sensing 条目；TactileStep 用 **足底压力** 服务人形 locomotion，CoPRE 用 **本体力矩** 服务机械臂接触检测 |
+
 ## 结论
 
 **总判：CoPRE 适合作为「排除近期可能已接触观测来预测无接触关节力矩，再用噪声加权雅可比把残差转为接触分数。…」方向的入口页；机制细节以 arXiv 与项目页为准。**

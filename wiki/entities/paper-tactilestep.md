@@ -53,6 +53,16 @@ summary: "TactileStep（2609.28959）：足底压力→法向力/接触面积/Co
 
 **不适用**（无统一官方入口或未开源）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Contact Estimation](../concepts/contact-estimation.md) | 常见做法从关节力矩/电流推断足端接触或装足端 F/T；TactileStep 直接用 **足底压力** 得到法向力、接触面积与 CoP |
+| [Tactile Sensing](../concepts/tactile-sensing.md) | 触觉主场是灵巧抓取与接触丰富操作；TactileStep 把触觉放到 **人形足底**，调节足地交互 |
+| [人形运控奖励函数](../concepts/humanoid-policy-reward-functions.md) | 「步态与接触」类奖励（相位、冲击、滑移）通常用仿真量；TactileStep 用触觉量 **按步态阶段** 设计奖励 |
+| [CoPRE](./paper-copre-proprioceptive-contact.md) | 同期接触感知条目；CoPRE 只用 **本体力矩残差** 做机械臂接触检测，TactileStep 依赖 **足底触觉** |
+| [DWMP](./paper-dwmp.md) | 同为 G1 人形 locomotion；DWMP 靠本体 + 深度双世界模型越障，TactileStep 聚焦 **落脚冲击与支撑质量** |
+
 ## 结论
 
 **总判：TactileStep 适合作为「仅用地形触觉学习调节人形落脚冲击与支撑质量，而非额外力传感器堆栈。…」方向的入口页；机制细节以 arXiv 与项目页为准。**
