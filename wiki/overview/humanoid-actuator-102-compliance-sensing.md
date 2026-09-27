@@ -8,10 +8,12 @@ related:
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-actuator-102-gear-reflected-inertia.md
   - ./humanoid-actuator-102-decision-species.md
+  - ../entities/paper-physical-ai-mechanical-hardware.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
   - ../../sources/raw/wechat_humanoid_actuator_102_2026-06-02.md
   - ../../sources/papers/humanoid_actuator_102_reference_catalog.md
+  - ../../sources/papers/physical_ai_mechanical_hardware_scirobotics_aee2921_2026.md
 ---
 
 # Actuator 102 · 05：柔顺与感知反馈
@@ -33,7 +35,7 @@ sources:
 ## 串联弹性（VII）
 
 - **SEA**：电机与负载间弹簧 → 冲击存储、力传感、能效（单腿弹簧效应）。
-- 代表路线：**Agility Digit**；穿戴式高 RoM 实例见 MIT **TF8 MC-RFSEA**（[paper-tf8-reaction-force-sea-prosthesis](../entities/paper-tf8-reaction-force-sea-prosthesis.md)）；理论见 Pratt & Williamson (1995)（[参考文献索引](../../sources/papers/humanoid_actuator_102_reference_catalog.md)）。
+- 代表路线：**Agility Digit**（产业观点见 [Physical AI × 机械硬件](../entities/paper-physical-ai-mechanical-hardware.md)）；穿戴式高 RoM 实例见 MIT **TF8 MC-RFSEA**（[paper-tf8-reaction-force-sea-prosthesis](../entities/paper-tf8-reaction-force-sea-prosthesis.md)）；理论见 Pratt & Williamson (1995)（[参考文献索引](../../sources/papers/humanoid_actuator_102_reference_catalog.md)）。
 - 与刚性谐波/滚柱对比：**带宽受限** 但 **抗摔、抗冲击** 更好。
 
 ## 感知（VIII）
@@ -49,6 +51,7 @@ sources:
 
 ## 关联页面
 
+- [Physical AI × 机械硬件（SciRob 2026）](../entities/paper-physical-ai-mechanical-hardware.md)
 - [决策与物种](./humanoid-actuator-102-decision-species.md)
 - [TF8 / MC-RFSEA 仿生膝踝假肢](../entities/paper-tf8-reaction-force-sea-prosthesis.md)
 - [参考文献 · SEA / QDD](../../sources/papers/humanoid_actuator_102_reference_catalog.md)

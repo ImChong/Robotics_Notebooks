@@ -2,7 +2,7 @@
 
 ## [2026-09-27] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **23** 条信息型预警）：
+共发现 **0** 个问题（另含 **24** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -140,10 +140,10 @@
 - wiki/entities/paper-roborecover.md
 - wiki/entities/paper-simplerenv-real2sim-eval.md
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-physical-ai-mechanical-hardware.md
 
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/concepts/hand-eye-calibration.md
 
-📊 Sources 覆盖率：5332/5332 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：5333/5333 (100%) wiki/entity 页有 ingest 来源

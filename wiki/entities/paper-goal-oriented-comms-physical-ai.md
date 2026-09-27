@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'communications', '5g', 'edge-computing', 'physical-ai']
 status: complete
-updated: 2026-09-16
+updated: 2026-09-27
 arxiv: "2609.15895"
 related:
   - ../overview/embodied-infra-2026-panorama.md
@@ -78,6 +78,7 @@ summary: "Goal-Oriented Comms for Physical AI（arXiv:2609.15895）：用 3D 框
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [paper-robresilience](./paper-robresilience.md)
+- [Physical AI × 机械硬件（SciRob 2026）](./paper-physical-ai-mechanical-hardware.md) — 机内执行器 vs 通信栈互补
 
 ## 参考来源
 

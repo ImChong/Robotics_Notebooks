@@ -23,7 +23,7 @@ tags:
   - monash
   - rai-institute
 status: complete
-updated: 2026-09-19
+updated: 2026-09-27
 arxiv: "2607.28952"
 doi: "10.1126/scirobotics.aee0787"
 venue: "Science Robotics 2026"
@@ -248,6 +248,7 @@ flowchart TB
 - [Capture Point / DCM](../concepts/capture-point-dcm.md) — 与 ZMP/动态平衡史对照
 - [Evolution of Humanoid Locomotion Control](./paper-evolution-humanoid-locomotion-control.md) — 同刊 2026 **人形 locomotion 控制** 深潜 Review（280 refs companion）
 - [仿生多模态机器人综述](./paper-bioinspired-multimodal-robotics.md) — 同刊 Issue 116 跨介质对照
+- [Physical AI × 机械硬件（SciRob 2026）](./paper-physical-ai-mechanical-hardware.md) — 同领域 **Perspective**（硬件第一性）
 - [Challenging Terrain Locomotion](./paper-notebook-learning-quadrupedal-locomotion-over-challenging.md) — Lee et al. 2020 经典被引
 - [APT-RL](./paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — 感知敏捷四足前沿
 - [ANYmal](./anymal.md) — 巡检/野外自主语境
