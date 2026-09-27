@@ -2,16 +2,18 @@
 type: entity
 tags: ['paper', 'social-navigation', 'vlm', 'human-robot-interaction', 'navigation']
 status: complete
-updated: 2026-09-24
+updated: 2026-09-27
 arxiv: "2609.28467"
 related:
   - ../tasks/vision-language-navigation.md
   - ../tasks/teleoperation.md
   - ../methods/vla.md
   - ../overview/embodied-13-papers-technology-map.md
+  - ../overview/embodied-research-12-papers-recover-wam-technology-map.md
 sources:
   - ../../sources/papers/robot-group-joining_arxiv_2609_28467.md
   - ../../sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md
+  - ../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md
 summary: "Robot Group Joining（arXiv:2609.28467）：语言引导预测「社会上合适的加入站位」，而非仅几何路径到固定目标点。"
 ---
 

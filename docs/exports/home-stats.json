@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-27",
-  "node_count": 5338,
-  "edge_count": 46794,
+  "node_count": 5350,
+  "edge_count": 46833,
   "coverage": {
-    "covered": 5309,
-    "total": 5309,
+    "covered": 5321,
+    "total": 5321,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/dynamic-manipulation-mocap-hand-open-loop.md",
+      "detail_id": "wiki-methods-dynamic-manipulation-mocap-hand-open-loop",
+      "label": "动捕手部轨迹的开环动态操作",
+      "type": "method",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-simplerenv-real2sim-eval.md",
       "detail_id": "entity-paper-simplerenv-real2sim-eval",
@@ -207,33 +217,22 @@
       "source": "git",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wrap-wrench-aware-assembly.md",
-      "detail_id": "entity-paper-wrap-wrench-aware-assembly",
-      "label": "Wrap",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-simplerenv-real2sim-eval.md",
-    "detail_id": "entity-paper-simplerenv-real2sim-eval",
-    "label": "SIMPLER：仿真里评真实数据训练的 manipulation 策略",
-    "type": "entity",
+    "path": "wiki/methods/dynamic-manipulation-mocap-hand-open-loop.md",
+    "detail_id": "wiki-methods-dynamic-manipulation-mocap-hand-open-loop",
+    "label": "动捕手部轨迹的开环动态操作",
+    "type": "method",
     "recency": "2026-09-27",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "世界模型",
-      "size": 1123
+      "size": 1126
     },
     {
       "label": "产业与开源生态",
@@ -245,7 +244,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 362
+      "size": 363
     },
     {
       "label": "仿真到现实",
@@ -261,7 +260,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 2220,
+      "degree": 2232,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -269,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1842,
+      "degree": 1843,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +283,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 1377,
+      "degree": 1378,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },
