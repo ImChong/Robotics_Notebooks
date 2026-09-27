@@ -240,6 +240,8 @@ flowchart LR
 - **工程直觉**：耦合更紧，可能更利于 **一致性** 目标。
 - **主要张力**：**推理延迟**、训练目标设计、以及在多模态物理量（力触觉、形变）上的扩展。
 
+**文献实例（Joint + 驾驶多假设对）**：[MM-Future](../entities/paper-mm-future.md)（arXiv:2609.20377）在 **modality-aware flow** 里并行 **M 组 scene–action 假设** 双向共演化，用 **MM-Tokens** 降多视角 rollout 成本，并以 **future-conditioned scorer** 在配对未来上选轨；NAVSIM **94.0 PDMS / 91.5 EPDMS**，零样本 HUGSIM **32.3 HD-Score**；截至入库日 **代码待发布**。
+
 ```mermaid
 flowchart TB
   subgraph cascaded["Cascaded WAM"]
