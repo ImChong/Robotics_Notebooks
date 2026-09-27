@@ -2,8 +2,8 @@
 type: entity
 tags: [paper, imitation-learning, action-chunking, behavior-cloning, diffusion-policy, libero, robomimic, polimi, berkeley, analysis]
 status: complete
-updated: 2026-09-15
-venue: "CoRL 2026（项目页 PDF；暂无 arXiv）"
+updated: 2026-09-27
+venue: "CoRL 2026 · arXiv:2608.02547"
 related:
   - ../methods/action-chunking.md
   - ../methods/behavior-cloning.md
@@ -17,6 +17,7 @@ related:
   - ./paper-gsr-paravla.md
   - ./paper-revisiting-open-loop-action-chunking.md
 sources:
+  - ../../sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
   - ../../sources/sites/action-chunking-github-io.md
   - ../../sources/papers/autointervene_arxiv_2608_07065.md
@@ -26,9 +27,9 @@ summary: "Why Action Chunking Improves BC（CoRL 2026，Polimi / Berkeley）：�
 
 # Why Action Chunking Improves BC（延迟策略与隐式集成）
 
-**Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[项目页](https://action-chunking.github.io/)，[PDF](https://action-chunking.github.io/static/action_chunking.pdf)；CoRL 2026；Polimi / UC Berkeley）回答一个工程上几乎被默认的问题：BC 里几乎处处在用的 **action chunking**，到底靠什么提成功率。
+**Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[arXiv:2608.02547](https://arxiv.org/abs/2608.02547)、[项目页](https://action-chunking.github.io/)、[PDF](https://action-chunking.github.io/static/action_chunking.pdf)；CoRL 2026；Polimi / UC Berkeley）回答一个工程上几乎被默认的问题：BC 里几乎处处在用的 **action chunking**，到底靠什么提成功率。
 
-> **落地状态：** 入库时 **无 arXiv 编号、无公开代码**（页上均 Coming soon）；以项目页 PDF 为准。
+> **落地状态：** **arXiv 与项目页 PDF 已公开**；训练/推理代码仍为 **Coming soon**（2026-09-27 项目页核查）。
 
 ## 一句话定义
 
@@ -60,7 +61,7 @@ summary: "Why Action Chunking Improves BC（CoRL 2026，Polimi / Berkeley）：�
 | **会议** | CoRL 2026（PDF 元数据） |
 | **策略** | 自训 diffusion policy（chunk \(k=20\)）；附录核对 openpi π₀.₅ Libero 微调权重 |
 | **评测** | LIBERO 多套件、Robomimic PH（Can / Square / Transport / Tool Hang）、Franka 三操作任务 |
-| **开源** | **宣称将开源 / 待发布**（代码与 arXiv Coming soon；PDF 已公开） |
+| **开源** | **部分开源 / 代码待发布**（[arXiv](https://arxiv.org/abs/2608.02547) + PDF 已公开；GitHub 仍 Coming soon） |
 
 ## 核心原理
 
@@ -108,7 +109,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-08-04：项目页 Code 按钮为 Coming soon，无可辨识训练 / 推理入口）。待官方仓库发布后，再按 README 入口补 `sequenceDiagram`。
+**不适用**（截至 2026-09-27：项目页 Code 仍为 Coming soon，无可辨识训练 / 推理入口）。待官方仓库发布后，再按 README 入口补 `sequenceDiagram`。
 
 ## 工程实践
 
@@ -169,7 +170,7 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 
 ## 局限与风险
 
-- **代码与 arXiv 未公开：** 数字以项目页 PDF 为准，复现管线待 release。
+- **代码未公开：** 数字以 arXiv / 项目页 PDF 为准，训练复现管线待 release。
 - **主实验是 diffusion BC：** 结论是否原样迁移到离散 token VLA / flow matching 大模型，需单独验证（附录仅对 π₀.₅ Libero 权重做兼容性核对）。
 - **延迟引入反应滞后：** Delay/RDE 在强动态或需瞬时反馈的接触任务上可能伤安全性；真机任务偏桌面操作。
 - **集成成本：** 显式 Ens 的 Transport 跃迁伴随多倍推理；部署前要算清楚延迟预算。
@@ -190,7 +191,8 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 
 ## 参考来源
 
-- [Why Action Chunking Improves BC（论文归档）](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
+- [Why Action Chunking Improves BC（arXiv 索引）](../../sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md)
+- [Why Action Chunking Improves BC（CoRL 摘录归档）](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 同届 CoRL：历史窗与短 chunk
 - [action-chunking.github.io（项目页归档）](../../sources/sites/action-chunking-github-io.md)
 - [项目页 PDF](https://action-chunking.github.io/static/action_chunking.pdf)
@@ -199,6 +201,8 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 
 ## 推荐继续阅读
 
+- [arXiv:2608.02547](https://arxiv.org/abs/2608.02547)
+- [Hugging Face Papers](https://huggingface.co/papers/2608.02547)
 - [官方项目页](https://action-chunking.github.io/)
 - Zhao et al., [*Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*](https://arxiv.org/abs/2304.13705) — ACT：chunk 的代表性工程起点
 - Chi et al., [*Diffusion Policy*](https://diffusion-policy.cs.columbia.edu/) — 本文仿真/真机主策略族

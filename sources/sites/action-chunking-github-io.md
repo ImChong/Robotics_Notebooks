@@ -8,21 +8,24 @@
 - **配套论文归档：** [`sources/papers/why_action_chunking_improves_bc_corl2026.md`](../papers/why_action_chunking_improves_bc_corl2026.md)
 - **机构：** Politecnico di Milano（¹）、UC Berkeley（²）
 - **作者：** Filippo Lazzati¹、Kyle Stachowicz²、William Chen²、Alberto Maria Metelli¹、Andrew Wagenmaker²、Sergey Levine²
-- **入库日期：** 2026-08-04
+- **arXiv：** <https://arxiv.org/abs/2608.02547>
+- **Hugging Face Papers：** <https://huggingface.co/papers/2608.02547>
+- **入库日期：** 2026-08-04（arXiv 补链复核 2026-09-27）
 
 ## 一句话摘要
 
 CoRL 2026 论文项目页：用仿真（LIBERO / Robomimic）与 Franka 真机消融，论证 action chunking 的收益主要来自 **延迟观测条件化（delayed policy）** 与 **隐式集成（implicit ensembling）**，而非常见的「时序一致性 / 有效地平线缩短 / 表征学习」叙事；并提出 **Randomized Delay Ensemble（RDE）** 与显式延迟策略集成，可在多数设定匹配甚至超过标准 chunk 执行。
 
-## 开源状态（步骤 2.5，截至 2026-08-04）
+## 开源状态（步骤 2.5，截至 2026-09-27）
 
 | 资源 | 状态 |
 |------|------|
 | 项目页 PDF / presentation | **已发布**（`./static/action_chunking.pdf`、`./static/presentation.pdf`） |
-| arXiv | **Coming soon**（页上按钮未挂编号） |
-| Code | **Coming soon**（页上 GitHub 按钮无可用 URL） |
+| arXiv | **已发布** — [2608.02547](https://arxiv.org/abs/2608.02547)（页头按钮已挂链） |
+| Hugging Face Papers | **已索引** — [papers/2608.02547](https://huggingface.co/papers/2608.02547) |
+| Code | **Coming soon**（页上 GitHub 按钮仍无可用 URL） |
 
-**结论：宣称将开源 / 代码与 arXiv 待发布。** 复现入口以项目页 PDF 与叙述为准；wiki「源码运行时序图」标 **不适用**，待正式 release 后补。
+**结论：论文与 PDF 已公开；训练/推理代码待发布。** 复现入口以 arXiv + 项目页 PDF 为准；wiki「源码运行时序图」标 **不适用**，待正式 release 后补。
 
 ## 公开信息要点
 
@@ -32,7 +35,7 @@ CoRL 2026 论文项目页：用仿真（LIBERO / Robomimic）与 Franka 真机�
   2. 复合误差上界从 \(\Omega(2^H\epsilon)\) 改善到 \(\mathcal{O}((k+1)^{H/k}\epsilon)\)，但同样被 delayed policy 捕获（并非「只每 \(k\) 步决策」的有效地平线故事）。
   3. chunk 训练同时拟合多种时延关系 → **隐式集成**；部署时用 RDE（每步随机选延迟索引）可在不执行整段 chunk 的情况下复现收益。
 - **真机：** Franka Emika，三任务（carrot in bowl / bread toaster / sushi in cup），各 50 demos、50 rollouts；对比 single-step / delayed / action chunking / RDE。
-- **BibTeX：** `@article{lazzati2026chunking, ... year={2026}}`（无 arXiv id）。
+- **BibTeX：** `@article{lazzati2026chunking, ...}`；arXiv 版见 [`why_action_chunking_improves_bc_arxiv_2608_02547.md`](../papers/why_action_chunking_improves_bc_arxiv_2608_02547.md)。
 
 ## 为何值得保留
 

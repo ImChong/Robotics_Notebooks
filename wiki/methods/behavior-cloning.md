@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, supervised-learning, manipulation, covariate-shift]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-27
 summary: "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
 related:
   - ./imitation-learning.md
@@ -174,4 +174,4 @@ BC 的监督目标只在专家诱导的状态分布 \(d_{\pi^*}\) 上取期望�
 - Ross et al., *DAgger* — 经典交互式 IL 方法
 - Zhao et al., *ACT* — 用 action chunking 缓解长时序误差
 - Chi et al., *Diffusion Policy* — 生成式方法如何超越传统 BC
-- Lazzati et al., [*Why Does Action Chunking Improve BC?*](https://action-chunking.github.io/) — 机制消融与 RDE 部署
+- Lazzati et al., [*Why Does Action Chunking Improve BC?*](https://arxiv.org/abs/2608.02547) — 机制消融与 RDE 部署

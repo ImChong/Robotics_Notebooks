@@ -4103,7 +4103,7 @@
 - [Whole-Body Behaviors（HMI P002）](wiki/entities/paper-whole-body-behaviors-primitives.md) — Whole-Body Behaviors**（*Synthesis of Whole-Body Behaviors through Hierarchical Control of Behavior `📅unknown` `[entity_page]`
 - [WholeBodyWAM · UniMotion-4K（4100 小时全身运动世界模型）](wiki/entities/paper-wholebodywam-unimotion-4k.md) — WholeBodyWAM**（*Learning Whole-Body World Action Models with Scalable Motion Priors*，[arXiv:2609.1 `📅unknown` `[entity_page]`
 - [WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调](wiki/entities/paper-wholebodywam.md) — WholeBodyWAM**（*WholeBodyWAM: Generalizing Pre-trained World-Action Priors to Humanoid Loco-Manipu `📅unknown` `[entity_page]`
-- [Why Action Chunking Improves BC（延迟策略与隐式集成）](wiki/entities/paper-why-action-chunking-improves-bc.md) — Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[项目页](https: `📅unknown` `[entity_page]`
+- [Why Action Chunking Improves BC（延迟策略与隐式集成）](wiki/entities/paper-why-action-chunking-improves-bc.md) — Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[arXiv:2608. `📅unknown` `[entity_page]`
 - [Wid3R：相机模型条件化的宽视场 3D 重建](wiki/entities/paper-wid3r.md) — Wid3R**（*Wide Field-of-View 3D Reconstruction via Camera Model Conditioning*，arXiv:[2602.05321](ht `📅unknown` `[entity_page]`
 - [WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）](wiki/entities/paper-wikiskill.md) — WikiSkill**（*Compiling Agent Experience into Persistent Knowledge for Skill Evolution*，[arXiv:2608 `📅unknown` `[entity_page]`
 - [World In Your Hands（WIYH）：野外人类中心操作开源生态](wiki/entities/paper-wiyh.md) — World In Your Hands（WIYH）**（*A Large-Scale and Open-Source Ecosystem for Learning Human-Centric Ma `📅unknown` `[entity_page]`

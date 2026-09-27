@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md — Why AC Improves BC（2608.02547）补 arXiv/HF 与项目页再核；代码仍 Coming soon；更新 paper-why-action-chunking-improves-bc；自动合并 PR
+
+- **意图：** 用户指定 action-chunking.github.io、arXiv:2608.02547、Hugging Face Papers
+- **开源结论：** **部分开源** — arXiv + PDF 已发布；GitHub 仍 Coming soon
+- **关键页：** [paper-why-action-chunking-improves-bc](wiki/entities/paper-why-action-chunking-improves-bc.md)
+
 ## [2026-09-27] ingest | sources/sites/harvard-computationalrobotics-sceneagent.md — SceneAgent（Harvard）3DGS/捕获→预测物理 USD + digital sisters + VLA LoRA；GitHub 仅静态站、管线待发布；自动合并 PR
 
 - **意图：** 用户指定 Harvard 项目页与 ComputationalRobotics/SceneAgent
