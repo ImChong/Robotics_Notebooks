@@ -121,6 +121,7 @@ sources:
 | 系统 | 机器人 | 输入设备 | 数据规模 | 特点 |
 |------|--------|---------|---------|------ |
 | ALOHA（Stanford 2023） | 4 臂台式 | Leader Arms | ~50 任务 | 低成本（$20K），精细操作 |
+| [ALOHA 2](../entities/aloha-2.md)（DeepMind 2024） | 4 臂 + D405 | Leader Arms + Menagerie SysID | 机队采数 | 开源硬件 2.0、仿真工位与腕部深度 |
 | GELLO（Berkeley 2023） | 多 UR/Franka | Leader Arms | 低成本 | 低成本版 ALOHA |
 | **[NestDex](../entities/paper-nestdex.md)**（Usyd / PAIR Lab / Vanderbilt 2026） | Piper Nero + **WujiHand I（20-DoF）** | Leader 臂 + **1-DoF clutch**（内层手技能 copilot） | 六任务真机；外层 20 条/任务 | **嵌套采数**：人控臂与进度，部署卸掉内层；Copilot 采数 **100%**，AnyTeleop 三任务 **0%**；**未开源** |
 

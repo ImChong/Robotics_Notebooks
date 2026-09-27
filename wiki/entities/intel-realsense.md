@@ -2,7 +2,7 @@
 type: entity
 tags: [sensor, depth-camera, realsense, perception, rgb-d, humanoid]
 status: complete
-updated: 2026-07-23
+updated: 2026-09-27
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
@@ -12,8 +12,11 @@ related:
   - ../entities/unitree-g1.md
   - ../tasks/humanoid-soccer.md
   - ../entities/humanoid-system-curriculum.md
+  - ../entities/aloha-2.md
+  - ../concepts/hand-eye-calibration.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
+  - ../../sources/sites/realsense-d405-product.md
 summary: "Intel RealSense 深度相机族（D435/D455 等）：消费级 RGB-D，广泛用于人形头部/腕部、高度图导航与足球视觉；课程 6.1 传感器入口。"
 ---
 
@@ -29,7 +32,7 @@ summary: "Intel RealSense 深度相机族（D435/D455 等）：消费级 RGB-D�
 |------|----------|----------|
 | RGB-D | RGB + Depth | 彩色与深度对齐帧 |
 | D435 / D455 | Depth Camera models | 常见机载型号 |
-| D405 | Short-range model | 腕部近距常见 |
+| D405 | Short-range stereo RGB-D | 腕部近距；理想 **7–50 cm**，87°×58° FOV，全局快门 |
 | FOV | Field of View | 视场，影响场线可见范围 |
 | SDK | `librealsense` | 驱动、内参、对齐工具 |
 | IR | Infrared | 主动投影辅助立体匹配 |
@@ -80,9 +83,9 @@ flowchart LR
 |------|------|----------|
 | D435 / D435i | 广 FOV，综合 | 头/胸 |
 | D455 | 基线更长，中远更稳 | 头/导航 |
-| D405 | 近距 | 腕部操作 |
+| D405 | 理想 7–50 cm；±2%@50 cm 深度；42 mm 立方级；Global Shutter RGB+深度 | 腕部操作；[ALOHA 2](./aloha-2.md) 四路默认 |
 
-以当时 Intel/代理供货与 SDK 支持为准。
+Menagerie [ALOHA 2 工位](./aloha-2.md) 仿真相机 **内参按 D405 匹配**；真机外参见 [手眼标定](../concepts/hand-eye-calibration.md)。规格以 [D405 产品页归档](../../sources/sites/realsense-d405-product.md) 为准。
 
 ### 课程部署清单
 
@@ -115,10 +118,13 @@ flowchart LR
 - [感知后处理与坐标变换](../concepts/perception-coordinate-postprocessing.md)
 - [Unitree G1](./unitree-g1.md)
 - [人形系统课程策展](./humanoid-system-curriculum.md)
+- [ALOHA 2 四相机工位](./aloha-2.md)
+- [手眼标定](../concepts/hand-eye-calibration.md)
 
 ## 参考来源
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
+- [RealSense D405 产品规格](../../sources/sites/realsense-d405-product.md)
 
 ## 推荐继续阅读
 
