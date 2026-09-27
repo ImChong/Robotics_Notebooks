@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-27
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -51,7 +51,8 @@ summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自
 1. **对本库读者：先分清「研究自动化」和「RSI」。** [AI Auto-Research](./ai-auto-research.md) 与 [karpathy/autoresearch](../entities/karpathy-autoresearch.md) 是 **人设目标、agent 跑实验**。[ENPIRE](../methods/enpire.md) / [ASPIRE](../methods/aspire.md) 同构，对象换成真机策略或控制程序。RSI 要求系统 **自己决定下一代模型是什么**。Anthropic 明确：还没到，判断与选题仍是人的比较优势。
 2. **内部证据说明「做」已经极便宜。** 2026-05 合入生产的代码行 **>80%** 可归于 Claude；Q2 工程师 LOC/天约 2024 的 **8×**（LOC ≠ 质量）。实验微型环从 ~3× 加速到 ~52×。这意味着机器人研究里，**写 env/reward/脚手架的墙钟** 会继续塌缩，瓶颈滑向评测、真机 reset 与安全。
 3. **具身跟随假设。** 文内情景 3：递归智能若出现，**机器人（embodied intelligence）可能迅速跟随**，走类似能力升、成本降的路径——但药监、选举、信任仍按人类时间走。不要把「实验室算力速度」读成「明年工厂全自动」。
-4. **治理含义与单边暂停。** 作者认为可信全球放慢需要可验证停训；单边暂停只换领跑者。本库不展开军控，只把这条标成「能力叙事旁的约束」。
+4. **Grounded RSI（产业叙事对照）。** [Axis 可组合能力库](../entities/axis-composable-capability-library.md)（2026-09-25）把 **部署策略在真机产生的少量成功 rollout** 与仿真数据 **共训** 称为 robotics 语境下的 RSI：报告真机成功率约 **22%→52%**，属于 **有界、数据闭环** 而非「自主设计下一代模型架构」。与上文四层标准对照，更接近 **持久改进 + 真机 co-training**，仍 **不是** ignition。
+5. **治理含义与单边暂停。** 作者认为可信全球放慢需要可验证停训；单边暂停只换领跑者。本库不展开军控，只把这条标成「能力叙事旁的约束」。
 
 ## 核心原理
 
@@ -135,6 +136,7 @@ flowchart LR
 - [Awesome RSI](../entities/awesome-rsi.md) — agent 层 RSI 方法/基准策展（artifact × mode 索引）
 - [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 1,250 篇机制 taxonomy + 验证层级 + 开源语料
 - [Dream-RSI（2609.14858）](../entities/paper-dream-rsi.md) — discovery history 作 exact replay「世界」；exploration 层 dreaming RSI + evolving worlds pool
+- [Axis 可组合能力库（Grounded RSI）](../entities/axis-composable-capability-library.md) — 真机 rollout 共训后继策略的产业实验摘要
 
 ## 参考来源
 
