@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-09-24
+updated: 2026-09-27
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -264,6 +264,7 @@ flowchart TD
 
 - [DeepRL 动作空间对比（SCA 2017）](../entities/paper-deeprl-locomotion-action-space-sca2017.md)
 - [Digit 人形 RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md)
+- [Physical AI × 机械硬件（SciRob 2026）](../entities/paper-physical-ai-mechanical-hardware.md) — Hurst 观点：动力学决定 loco-manipulation 上限
 - [Cassie 双足多技能 RL](../entities/paper-cassie-biped-versatile-locomotion-rl.md)
 - [可变刚度腿足 RL](../entities/paper-variable-stiffness-locomotion-rl.md)
 - [Cassie 迭代式 sim2real](../entities/paper-cassie-iterative-locomotion-sim2real.md)

@@ -331,6 +331,13 @@
         "agibot"
       ]
     },
+    "agility-robotics": {
+      "label": "敏捷机器人（Agility Robotics）",
+      "aliases": [
+        "agility-robotics",
+        "agility"
+      ]
+    },
     "ace-robotics": {
       "label": "大晓机器人（Ace Robotics）",
       "aliases": [

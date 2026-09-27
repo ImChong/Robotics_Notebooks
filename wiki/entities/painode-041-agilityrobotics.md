@@ -9,8 +9,12 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ./paper-physical-ai-mechanical-hardware.md
+  - ./paper-digit-humanoid-locomotion-rl.md
 sources:
   - ../../sources/repos/pai_awesome_company_041_agility-robotics.md
+  - ../../sources/papers/physical_ai_mechanical_hardware_scirobotics_aee2921_2026.md
+  - ../../sources/sites/agility_physical_ai_mechanical_hardware.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
   - ../../sources/repos/awesome-physical-ai-aichr.md
@@ -73,6 +77,8 @@ Maker of Digit, a bipedal logistics robot deployed in commercial warehouses.
 
 ## 关联页面
 
+- [Physical AI × 机械硬件（SciRob 2026）](./paper-physical-ai-mechanical-hardware.md)
+- [Digit 人形 RL 行走](./paper-digit-humanoid-locomotion-rl.md)
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)

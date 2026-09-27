@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, actuator, tesla-optimus, unitree, agility-digit, category-hub]
 status: complete
-updated: 2026-06-02
+updated: 2026-09-27
 summary: "Actuator 102 · 07 — No Free Lunch 评分卡；三大物种（工厂/快递/家庭）；关节指标 >15Nm/kg、反向驱动 <1Nm、峰值持续 3:1、智能关节集成。"
 related:
   - ./humanoid-actuator-102-technology-map.md
@@ -32,7 +32,7 @@ sources:
 | 物种 | 任务 | 执行器倾向 | 案例 |
 |------|------|------------|------|
 | **A 工厂工人** | 搬重箱、8h+、精准放置 | 滚柱直线 + 谐波旋转 | Tesla Optimus、Figure 02、Apptronik Apollo |
-| **B 敏捷快递** | 快移、抗摔、续航 | SEA 或 QDD | Agility Digit、Unitree G1/H1 |
+| **B 敏捷快递** | 快移、抗摔、续航 | SEA 或 QDD | Agility Digit、Unitree G1/H1（产业硬件路线见 [Physical AI × 机械硬件](../entities/paper-physical-ai-mechanical-hardware.md)） |
 | **C 家庭助手** | 静音、安全、可负担 | 低减速谐波或 QDD | 1X Neo、Ubtech Walker |
 
 短期 **不会** 趋同为单一「通用」架构：高减速↔反射惯量、弹簧↔带宽等 **物理权衡** 难用软件消除。
