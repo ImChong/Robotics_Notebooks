@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | DAVIS / BRIDGE / EgoDex — 三项目页再核与链接补全；DAVIS·BRIDGE 代码仍待发布/coming soon；EgoDex 补 Apple 项目页·ICLR OpenReview·HF FiftyOne；自动合并 PR
+
+- **意图：** 用户指定 DAVIS（Noetix×清华）、BRIDGE（2609.03497）、EgoDex（2505.11709 + 全链外链）
+- **开源结论：** DAVIS **待发布**；BRIDGE **部分开源（CAD）** + Codes coming soon；EgoDex **部分开源**（数据+样例工具；HF 为社区镜像）
+- **关键页：** [paper-davis-humanoid-soccer](wiki/entities/paper-davis-humanoid-soccer.md)、[paper-bridge-humanoid](wiki/entities/paper-bridge-humanoid.md)、[paper-notebook-egodex-learning-dexterous-manipulation-from-larg](wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md)
+
 ## [2026-09-27] ingest | sources/sites/lightsplat.md — LightSplat（CVPR 2026 / 2603.24146）；UNIST×POSTECH training-free 开放词汇 3DGS；FD ~5 s；GitHub 待发布；交叉 2D→3D Gap / LEGO；自动合并 PR
 
 - **意图：** 用户指定 vision3d-lab.github.io/lightsplat 项目页 ingest
