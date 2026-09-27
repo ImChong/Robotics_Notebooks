@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/immersive-web-emulation-runtime.md",
+      "detail_id": "entity-immersive-web-emulation-runtime",
+      "label": "Immersive Web Emulation Runtime（IWER）",
+      "type": "entity",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+    },
+    {
       "path": "wiki/entities/paper-lift-reactive-force-vla-posttrain.md",
       "detail_id": "entity-paper-lift-reactive-force-vla-posttrain",
       "label": "LIFT（Late Reactive Force · VLA Post-Training · arXiv:2607.14236）",
@@ -204,29 +215,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-roborecover.md",
-      "detail_id": "entity-paper-roborecover",
-      "label": "RoboRecover",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-lift-reactive-force-vla-posttrain.md",
-    "detail_id": "entity-paper-lift-reactive-force-vla-posttrain",
-    "label": "LIFT（Late Reactive Force · VLA Post-Training · arXiv:2607.14236）",
+    "path": "wiki/entities/immersive-web-emulation-runtime.md",
+    "detail_id": "entity-immersive-web-emulation-runtime",
+    "label": "Immersive Web Emulation Runtime（IWER）",
     "type": "entity",
     "recency": "2026-09-27",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
   },
   "top_communities": [
     {
