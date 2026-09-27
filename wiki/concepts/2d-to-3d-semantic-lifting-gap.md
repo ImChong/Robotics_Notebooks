@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-27
 related:
   - ../entities/paper-abot-recon.md
   - ./embodied-perception-six-spatial-representations.md
@@ -19,6 +19,7 @@ related:
   - ../entities/cmu-mscv-semantic-3d-mapping.md
   - ../entities/paper-occanyscene.md
   - ../entities/paper-lego-leveled-language-gaussian-splatting.md
+  - ../entities/paper-lightsplat.md
   - ../entities/paper-pointdit.md
   - ../entities/paper-luna-universal-3d-human-animation.md
 sources:
@@ -27,6 +28,7 @@ sources:
   - ../../sources/repos/ov-sam3d.md
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
   - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
+  - ../../sources/papers/lightsplat_cvpr_2026_arxiv_2603_24146.md
   - ../../sources/papers/pointdit_arxiv_2607_02515.md
   - ../../sources/papers/luna_arxiv_2606_31981.md
 summary: "「2D 检测/分割结果」↔「可供策略消费的 3D 语义几何」取舍概念：提升时会引入尺度不确定、遮挡、时序不一致、语义–几何分离，以及 2D 粒度/绝对尺度与语义层级错位——它是感知输出能否被下游忠实消费的物理根因，可用深度融合 / 多视角一致性 / 联合建图收窄。"
@@ -107,8 +109,8 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
 ### 路线②：多视角一致性（去时序抖动）
 
-- **做什么**：跨帧用配准（ICP / 特征匹配）与对象关联把同一对象稳定绑定，抑制逐帧掩码边界与 ID 跳变，[SAM2](../entities/paper-sam2.md) 的视频级掩码传播即属此类。离线多视角辐射场上，[LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) 进一步用共视 + 3D 尺度把 SAM 粒度 **重分级** 成结构层级，避免把 2D 粒度或绝对尺寸当成 3D 语义级。
-- **取舍**：显著缓解语义闪烁与对象分裂；但要维护跨帧关联状态，机载有内存/算力开销。LEGO 是按场景优化（约 20–60 min），不是机载在线。
+- **做什么**：跨帧用配准（ICP / 特征匹配）与对象关联把同一对象稳定绑定，抑制逐帧掩码边界与 ID 跳变，[SAM2](../entities/paper-sam2.md) 的视频级掩码传播即属此类。离线多视角辐射场上，[LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) 进一步用共视 + 3D 尺度把 SAM 粒度 **重分级** 成结构层级，避免把 2D 粒度或绝对尺寸当成 3D 语义级；[LightSplat](../entities/paper-lightsplat.md) 则用 3D 掩码过滤 + 单步聚类把 SAM/CLIP **索引到高斯簇**，training-free、FD 约秒级。
+- **取舍**：显著缓解语义闪烁与对象分裂；但要维护跨帧关联状态，机载有内存/算力开销。LEGO 是按场景优化（约 20–60 min），不是机载在线；LightSplat 更快但语义在 **对象簇** 上，零件层级弱于 LEGO。
 - **关键坑**：只做单帧提升就写进地图，同一对象在地图里分裂成多个或来回漂移；或用全局物理尺度切层级，类内尺寸差会拆错家族。
 
 ### 路线③：语义-几何联合建图（类别 × 占据对齐）
@@ -126,7 +128,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 | 2D 检测很准，提升到 3D 就该准 | 尺度/遮挡/时序/语义分离/层级错位各自引入偏差 | 先判哪类损失占主导 |
 | 有深度图就能干净提升 | 远距/反光/低纹理深度不可信 | 对不可信深度设门限剔除 |
 | SAM 掩码精细就有语义 | SAM 输出无类别语义 | 配检测器/文本提示补类别 |
-| SAM 三档粒度能直接当 3D 层级 | 2D 粒度随视距变，绝对尺度与语义脱钩 | 按共视重分级，见 [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) |
+| SAM 三档粒度能直接当 3D 层级 | 2D 粒度随视距变，绝对尺度与语义脱钩 | 按共视重分级见 [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md)；或簇级索引见 [LightSplat](../entities/paper-lightsplat.md) |
 | 逐帧提升就能建稳定地图 | 时序不一致致对象分裂/漂移 | 加跨帧配准与对象关联 |
 | 稠密语义地图总是更好 | 机载内存/时延撑不住 | 按下游需求换对象级子地图 |
 
@@ -148,6 +150,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [ABot-Recon](../entities/paper-abot-recon.md) — 单目 RGB 流式点图/轨迹几何前端（无开放词汇语义）
 - [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外度量 lifting：像素视锥约束高斯，而不是绝对米制偏移
 - [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) — 离线 3DGS：把多视角 SAM 重分级成结构层级，再接 CLIP / 场景图
+- [LightSplat](../entities/paper-lightsplat.md) — 离线 3DGS：2-byte 索引 + 簇级 CLIP，training-free、秒级 FD
 - [PointDiT](../entities/paper-pointdit.md) — 路线①的 RGB-only 点图：像素空间扩散，细结构强，尺度仿射不变
 - [LUNA](../entities/paper-luna-universal-3d-human-animation.md) — 2D 驱动直接抬 3D 高斯形变：无结构蒸馏会扁平塌缩，是本页「深度歧义」在数字人动画上的对照
 - [视觉骨干（概念）](./vision-backbones.md) — 2D 特征提取背景
@@ -160,5 +163,6 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [OV-SAM3D（开放词汇 3D 分割）](../../sources/repos/ov-sam3d.md) — 路线③语义-几何联合建图一手资料
 - [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 跨相机/跨尺度 image-to-3D lifting 的视锥高斯路线
 - [LEGO 论文摘录](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md) — 多视角 SAM 重分级：结构层级 vs 2D 粒度 / 绝对尺度
+- [LightSplat 论文摘录](../../sources/papers/lightsplat_cvpr_2026_arxiv_2603_24146.md) — 索引注入 + 3D 聚类：秒级开放词汇 FD
 - [PointDiT 论文摘录](../../sources/papers/pointdit_arxiv_2607_02515.md) — 路线① RGB-only 仿射点图（像素空间扩散）
 - [LUNA 论文摘录](../../sources/papers/luna_arxiv_2606_31981.md) — 2D→3D 形变无 LBS 蒸馏会深度塌缩

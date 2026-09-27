@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/sites/lightsplat.md — LightSplat（CVPR 2026 / 2603.24146）；UNIST×POSTECH training-free 开放词汇 3DGS；FD ~5 s；GitHub 待发布；交叉 2D→3D Gap / LEGO；自动合并 PR
+
+- **意图：** 用户指定 vision3d-lab.github.io/lightsplat 项目页 ingest
+- **开源结论：** **待发布** — `vision3d-lab/lightsplat` README「Code will be released soon」
+- **关键页：** [paper-lightsplat](wiki/entities/paper-lightsplat.md)
+
 ## [2026-09-27] ingest | sources/papers/humanoid_whole_body_badminton_annealed_rl_arxiv_2511_11218.md — Phybot 人形羽毛球退火 RL 课程（2511.11218 v4）；作者七人（无 Junzhe He）；仿真 21 连拍 / 真机人机对打；代码待发布；同步 LHBS 项目页再核；自动合并 PR
 
 - **意图：** 用户指定 arXiv / 项目页 / GitHub + LHBS 项目页
