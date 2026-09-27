@@ -3872,7 +3872,7 @@
 - [RLVR-World](wiki/entities/paper-shenlan-wm-14-rlvr-world.md) — RLVR-World** 收录于 深蓝具身智能 · 世界模型 15 开源项目专题 **第  `📅unknown` `[entity_page]`
 - [WorldGym](wiki/entities/paper-shenlan-wm-15-worldgym.md) — WorldGym** 收录于 深蓝具身智能 · 世界模型 15 开源项目专题 **第 15 `📅unknown` `[entity_page]`
 - [Shooting for Contact（DSMS 动态运动重定向）](wiki/entities/paper-shooting-for-contact.md) — Shooting for Contact**（*Contact-Implicit Multiple Shooting for Dynamic Motion Retargeting*，arXiv: `📅unknown` `[entity_page]`
-- [Show-Harness（arXiv:2609.10522）](wiki/entities/paper-show-harness.md) — Show-Harness**（Show-Harness: Just a VLM Agent Can Play Robots） `📅unknown` `[entity_page]`
+- [Show-Harness（arXiv:2609.10522）](wiki/entities/paper-show-harness.md) — Show-Harness**（*Just a VLM Agent Can Play Robots*，[arXiv:2609.10522](https://arxiv.org/abs/2609.10 `📅unknown` `[entity_page]`
 - [SHRIMP：先在仿真里改计划，再让协作臂执行](wiki/entities/paper-shrimp.md) — SHRIMP**（*Simulation-driven Human-in-the-loop Refinement Interface for Manipulation Planning*；[arX `📅unknown` `[entity_page]`
 - [Silent Sabotage（arXiv:2609.26184）](wiki/entities/paper-silent-sabotage.md) — Silent Sabotage**（*Silent Sabotage: Internal State Triggered Backdoor Attacks on LLM-Powered Robot `📅unknown` `[entity_page]`
 - [Sim2Real Chunk VLA Pipeline（arXiv:2609.21817）](wiki/entities/paper-sim2real-chunk-vla-pipeline.md) — Sim2Real Chunk VLA Pipeline**（*A Sim-to-Real Integration Pipeline for Training and Deployment of C `📅unknown` `[entity_page]`

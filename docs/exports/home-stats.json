@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-09-27",
   "node_count": 5329,
-  "edge_count": 46689,
+  "edge_count": 46688,
   "coverage": {
     "covered": 5300,
     "total": 5300,
@@ -281,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 1377,
+      "degree": 1376,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },
