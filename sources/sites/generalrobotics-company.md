@@ -9,15 +9,18 @@
 - **入库日期：** 2026-09-10
 - **一句话说明：** General Robotics 商业 Physical AI 平台 **GRID** 官网；主推 **Auto-Engineering** 闭环与四类 robotics harness，面向仓储物流、制造、能源、政府等部署场景。
 
-## 开源核查（步骤 2.5，2026-09-10）
+## 开源核查（步骤 2.5，2026-09-27 复核）
 
 | 资源 | 状态 | 说明 |
 |------|------|------|
-| GRID 平台 / monorepo | **未开源** | 官网 About、博客与首页未列出 GitHub / Hugging Face / 模型权重下载；叙事为商业 **Robot Intelligence Platform** |
-| Auto-Engineering harness | **未开源** | 四类 harness 以产品能力描述，无可运行公开仓库 |
-| 第三方依赖（文中引用） | **部分可独立获取** | 如 NVIDIA Warp、MuJoCo、GELLO 等为外部开源/商业组件，非 GRID 本体 |
+| GRID Enterprise / 完整 monorepo | **未开源** | 企业版为私有可扩展部署；无完整平台公开仓库 |
+| **Open GRID** | **Web/CLI 产品** | <https://grid.generalrobotics.dev>；文档 v2.1：<https://docs.generalrobotics.dev/> |
+| **GRID-playground** | **部分开源** | [GenRobo/GRID-playground](https://github.com/GenRobo/GRID-playground) — notebook + 仿真 JSON |
+| Auto-Engineering harness | **未开源（实现）** | 四类 harness 以博客/产品描述为主 |
+| 技术报告 | **公开** | [arXiv:2310.00887](https://arxiv.org/abs/2310.00887) |
+| 第三方依赖 | **部分可独立获取** | Isaac Sim、AirGen、MuJoCo、Warp、GELLO 等为外部组件 |
 
-**结论：** 截至入库日，**GRID 为闭源商业平台**；wiki 勿写「可复现官方实现」，应区分「产品叙事」与站内已有开源栈（如 [Cyclo Intelligence](../../wiki/entities/cyclo-intelligence.md)、[Isaac Lab](../../wiki/entities/nvidia-getting-started-isaac-lab.md)）。
+**结论：** **Open GRID + Playground** 可审计入门；**Enterprise 训练/auto-engineering 闭环** 仍需 PoC。详见 [generalrobotics-grid-product.md](./generalrobotics-grid-product.md) 与 [paper-grid 实体](../../wiki/entities/paper-grid-general-robot-intelligence-development.md)。
 
 ## 页面要点（策展）
 
