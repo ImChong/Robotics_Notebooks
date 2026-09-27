@@ -1767,6 +1767,7 @@
 - [LIBERO-Recover：机器人失败恢复基准](wiki/entities/paper-libero-recover.md) — LIBERO-Recover**（*Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models*，[ar `📅unknown` `[entity_page]`
 - [Light-Loco-Parkour（LightLP）](wiki/entities/paper-light-loco-parkour.md) — Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称  `📅unknown` `[entity_page]`
 - [LightNav-0：激发 VLM 空间智能的通用具身导航](wiki/entities/paper-lightnav-0.md) — LightNav-0**（*Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation*，[arXiv:2608.3 `📅unknown` `[entity_page]`
+- [LightSplat](wiki/entities/paper-lightsplat.md) — LightSplat**（*Fast and Memory-Efficient Open-Vocabulary 3D Scene Understanding in Five Seconds*，[a `📅unknown` `[entity_page]`
 - [LiMA（异步扩散 WAM 灵巧操作）](wiki/entities/paper-lima-async-dual-system-wam.md) — LiMA: Bridging Long-term Imagination to Real-time Dexterous Manipulation via Asynchronous Diffusio `📅unknown` `[entity_page]`
 - [LingBot-Map：流式 3D 重建几何上下文 Transformer](wiki/entities/paper-lingbot-map.md) — LingBot-Map**（*LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction*，arXiv: `📅unknown` `[entity_page]`
 - [LIT（arXiv:2609.12641）](wiki/entities/paper-lit-latent-interface-training.md) — LIT**（[Breaking the Vision-Action Shortcut: Latent Interface Training for Generalizable Robotics F `📅unknown` `[entity_page]`

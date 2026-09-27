@@ -198,6 +198,7 @@ sequenceDiagram
 | GARField / SAGA | 全局物理尺度或相似度阈值；LEGO 用局部结构级，免逐实例调尺 |
 | [OV-SAM3D](./ov-sam3d.md) | 训练无关的点云开放词汇实例；LEGO 是按场景优化的辐射场 + 层级图 |
 | [FindAnything](./findanything.md) | 机载对象级体素子地图；LEGO 离线、更深零件层级 |
+| [LightSplat](./paper-lightsplat.md) | 同样 SAM+CLIP+3DGS，但 **无特征优化**、2-byte 索引 + 簇语义；FD 秒级，层级/复合查询弱于 LEGO |
 | [OccAnyScene](./paper-occanyscene.md) | 3DGS 做跨室内外占据；LEGO 做语言层级，不输出占据栅格 |
 | [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) | 同名易混；LEGS 是 3DGS 合成人形 VLA 数据，不是场景理解 |
 | [SAM](./paper-segment-anything.md) | 2D 掩码前端；LEGO 消费它并显式修好多视角粒度不一致 |
