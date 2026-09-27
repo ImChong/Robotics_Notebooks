@@ -7,9 +7,14 @@
 - **来源：** Apple
 - **链接：** <https://github.com/apple/ml-egodex>
 - **论文：** <https://arxiv.org/abs/2505.11709>
+- **项目页：** <https://machinelearning.apple.com/research/egodex-learning-dexterous-manipulation> — [`apple-ml-research-egodex.md`](../sites/apple-ml-research-egodex.md)
+- **OpenReview（ICLR 2026）：** <https://openreview.net/forum?id=FFxkFMU89E>
 - **数据：** README 内 Apple CDN 下载链接（约 2.0 TB）
+- **HF（FiftyOne 测试集，社区）：** <https://huggingface.co/datasets/Voxel51/egodex-test-multimodal>
+- **HF Demo（社区）：** <https://huggingface.co/spaces/harpreetsahota/egodex-fiftyone>
+- **FiftyOne 文档：** <https://docs.voxel51.com/dataset_zoo/datasets_hf/egodex_test_multimodal.html>
 - **许可：** 示例代码使用 Apple 源码许可；数据为 CC BY-NC-ND
-- **入库日期：** 2026-07-28
+- **入库日期：** 2026-07-28；**再核：** 2026-09-27
 - **一句话说明：** EgoDex 官方数据与轻量工具入口，公开 829 小时第一视角操作数据，并提供加载、2D/3D 可视化和 best-of-K 指标脚本。
 - **开源状态：** **部分开源** — 数据与样例工具公开；论文使用的 X-IL 大规模训练实现、配置和权重不在本仓库。
 - **沉淀到 wiki：** [`wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md`](../../wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md)

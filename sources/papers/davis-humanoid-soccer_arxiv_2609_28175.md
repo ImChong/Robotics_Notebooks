@@ -9,7 +9,7 @@
 - **项目页：** <https://thusi-lab.github.io/DAVIS/>
 - **作者：** Jiakang Jin、Yixiao Huo、Pengyuan Wang 等；Xiaoyu Tian、Yiming Li（通讯）
 - **机构：** Noetix Robotics（松延动力）；清华大学
-- **代码：** **待发布** — [项目页核查](../sites/davis-thusi-lab.md) 无 GitHub（2026-09-25）
+- **代码：** **待发布** — [项目页核查](../sites/davis-thusi-lab.md) 无 GitHub（2026-09-27 再核）
 - **入库日期：** 2026-09-24（初稿）；**2026-09-25** 项目页深读升格
 - **一句话说明：** **仅头部深度 + 本体历史 + 低维指令** 端到端输出 **25-DoF** PD 目标，学习 **主动视觉** 人形足球射门/带球；训练期可见性门控几何 + GT→prediction annealing + AMP；**无**运行时检测/规划模块。
 

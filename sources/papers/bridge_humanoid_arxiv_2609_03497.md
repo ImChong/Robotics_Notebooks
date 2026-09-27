@@ -8,10 +8,10 @@
 - **arXiv：** <https://arxiv.org/abs/2609.03497>
 - **PDF：** <https://arxiv.org/pdf/2609.03497>
 - **项目页：** <https://sites.google.com/view/bridgerobot> — 归档见 [`sources/sites/bridgerobot.md`](../sites/bridgerobot.md)
-- **代码：** 截至 2026-09-05 **训练/部署代码未发布**（项目页写录用后再发）；通用 `github.com/bridge` **不是** 本平台仓
+- **代码：** 截至 2026-09-27 **训练/部署代码未发布**（页眉 Codes/Tutorial **coming soon**；录用后再发完整资源）；通用 `github.com/bridge` **不是** 本平台仓
 - **CAD：** 项目页提供整机 `.stp` 下载
 - **机构：** 卡内基梅隆大学（CMU）、华中科技大学、JoyIn AI
-- **入库日期：** 2026-09-04；**再核：** 2026-09-05
+- **入库日期：** 2026-09-04；**再核：** 2026-09-27
 - **索引来源：** [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_9_papers_open_source_2026-09-04.md)
 - **一句话说明：** 数据驱动的形态–控制共设计；落地 80 cm / 12.5 kg / 21 DoF / 约 1500 美元的 Bridge，对照 Bumi / K1 / ToddlerBot。
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, open-hardware, morphology-control, cmu, hust]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-27
 arxiv: "2609.03497"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -50,7 +50,7 @@ summary: "BRIDGE（arXiv:2609.03497，CMU/HUST/JoyIn）：形态–控制共设�
 | **机构** | CMU、华中科技大学、JoyIn AI |
 | **规格** | **80 cm / 12.5 kg / 21 DoF / ~$1.5K**（Table 1 与项目页）；图注 88 cm / 13 kg |
 | **对照** | Bumi、Booster K1、Stanford ToddlerBot |
-| **开源** | **部分开源**：`.stp` CAD 已放；装配教程 / 电气 / BOM / 训练部署代码 **宣称待录用后发布** |
+| **开源** | **部分开源**：`.stp` CAD 已放；页眉 **Codes/Tutorial coming soon**；装配教程 / 电气 / BOM / 训练部署 **待录用后发布**（2026-09-27 再核） |
 
 ### 流程总览
 

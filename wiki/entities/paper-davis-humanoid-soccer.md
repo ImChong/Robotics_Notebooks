@@ -11,7 +11,7 @@ tags:
   - noetix
   - tsinghua
 status: complete
-updated: 2026-09-25
+updated: 2026-09-27
 arxiv: "2609.28175"
 related:
   - ../tasks/humanoid-soccer.md
@@ -58,7 +58,7 @@ summary: "DAVIS（Noetix×清华）：168×80 头部深度 + HIM 本体历史 + 
 | **平台** | 仿真 + **Noetix E1** 真机 |
 | **观测** | 168×80 深度（0.3–5 m）+ **5 步**本体历史 + 可选指令 |
 | **动作** | 25-D 关节位置残差 → `qdes = q0 + s ⊙ a` |
-| **开源** | **待发布**（项目页无 GitHub，2026-09-25） |
+| **开源** | **待发布**（项目页无 GitHub / Code 链，2026-09-27 再核） |
 
 ## 核心原理
 

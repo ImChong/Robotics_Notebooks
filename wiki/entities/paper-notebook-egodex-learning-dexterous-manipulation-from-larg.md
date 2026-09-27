@@ -10,7 +10,7 @@ tags:
   - humanoid-paper-notebooks
   - apple
 status: complete
-updated: 2026-09-25
+updated: 2026-09-27
 arxiv: "2505.11709"
 code: https://github.com/apple/ml-egodex
 related:
@@ -22,6 +22,7 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_egodex.md
   - ../../sources/repos/ml-egodex.md
+  - ../../sources/sites/apple-ml-research-egodex.md
 summary: "EgoDex（arXiv:2505.11709）：829 小时、33.8 万段、194 类桌面操作的 Vision Pro 第一视角数据集与手轨迹预测基准；数据和样例工具公开，完整训练实现未发布。"
 ---
 
@@ -61,7 +62,8 @@ summary: "EgoDex（arXiv:2505.11709）：829 小时、33.8 万段、194 类桌�
 | 标注 | 相机内外参、头/肩/臂/腕/手指 SE(3)、置信度、自然语言 |
 | 任务划分 | reversible、reset-free、reset 三类桌面操作 |
 | 基准输出 | 双手腕位置/6D 姿态 + 10 指尖位置，共 48 维动作 chunk |
-| 开放状态 | **部分开源**：数据与样例工具公开；完整 X-IL 训练代码和权重未发布 |
+| 会议 | ICLR 2026（[OpenReview](https://openreview.net/forum?id=FFxkFMU89E)） |
+| 开放状态 | **部分开源**：Apple CDN 数据 + GitHub 样例工具；[HF FiftyOne 测试集](https://huggingface.co/datasets/Voxel51/egodex-test-multimodal) 为社区镜像；完整 X-IL 训练代码和权重未发布 |
 
 ## 流程总览
 
@@ -115,7 +117,7 @@ sequenceDiagram
 
 | 项 | 建议 / 状态 |
 |----|-------------|
-| 最小验证 | 先下载 16 GB test set，按同编号 `.mp4` / `.hdf5` 检查同步 |
+| 最小验证 | 先下载 16 GB test set（Apple CDN 或 HF FiftyOne 子集），按同编号 `.mp4` / `.hdf5` 检查同步 |
 | 环境 | Python 3.11、FFmpeg 7.1.1、`pip install -r requirements.txt` |
 | 坐标 | 不要跨 episode 直接拼 ARKit world frame；先转当前相机或任务局部坐标 |
 | 质量过滤 | 使用关节 confidence，语言与方向标签为 GPT-4/VLM 自动生成，需抽检 |
@@ -169,9 +171,12 @@ sequenceDiagram
 
 - [humanoid_pnb_egodex.md](../../sources/papers/humanoid_pnb_egodex.md)
 - [ml-egodex.md](../../sources/repos/ml-egodex.md)
+- [apple-ml-research-egodex.md](../../sources/sites/apple-ml-research-egodex.md)
 - 论文：<https://arxiv.org/abs/2505.11709>
 
 ## 推荐继续阅读
 
+- Apple 项目页：<https://machinelearning.apple.com/research/egodex-learning-dexterous-manipulation>
 - 官方仓库与数据下载：<https://github.com/apple/ml-egodex>
+- HF FiftyOne 测试集：<https://huggingface.co/datasets/Voxel51/egodex-test-multimodal>
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video.html>

@@ -7,8 +7,13 @@
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video.html>
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2505.11709>
+- **项目页：** <https://machinelearning.apple.com/research/egodex-learning-dexterous-manipulation> — [`apple-ml-research-egodex.md`](../sites/apple-ml-research-egodex.md)
+- **OpenReview（ICLR 2026）：** <https://openreview.net/forum?id=FFxkFMU89E>
 - **代码 / 数据：** <https://github.com/apple/ml-egodex>
-- **开源核查（2026-07-28）：** **部分开源** — 829 小时数据和加载/可视化/指标样例公开；论文 X-IL 训练实现与权重未随仓库发布。
+- **Hugging Face（FiftyOne 测试集）：** <https://huggingface.co/datasets/Voxel51/egodex-test-multimodal>
+- **Hugging Face Demo：** <https://huggingface.co/spaces/harpreetsahota/egodex-fiftyone>
+- **FiftyOne 文档：** <https://docs.voxel51.com/dataset_zoo/datasets_hf/egodex_test_multimodal.html>
+- **开源核查（2026-09-27）：** **部分开源** — 829 小时数据与 loader/可视化/指标样例公开；HF 为社区 FiftyOne 镜像与 Demo；论文 X-IL 训练实现与权重未随官方仓发布。
 - **入库日期：** 2026-07-10
 - **一句话说明：** 操作模仿学习有数据稀缺问题：不像语言/2D 视觉有互联网规模语料，灵巧操作没有。第一视角人类视频是被动可扩展的诱人来源，但现有大数据集（如 Ego4D）无原生手姿标注、也不聚焦物体操作。为此，作者用 Apple Vision Pro 采集 EgoDex ——迄今最大、最多样的人类灵巧操作数据集：829 小时第一视角视频，录制时即配 3D 手与手指跟踪（多台标定相机 + 机载 SLAM 精确跟踪每只手每个关节的位姿）。数据覆盖194 个桌面任务（从系鞋带到叠衣服）的多样操作行为。作者还在该数据上训练并系统评测用于手部轨迹预测的模仿学习策略，引入度量与基准。数据集公开下载。
 
@@ -26,4 +31,7 @@
 
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video.html>
 - 论文：<https://arxiv.org/abs/2505.11709>
+- 项目页：[apple-ml-research-egodex.md](../sites/apple-ml-research-egodex.md)
+- OpenReview：<https://openreview.net/forum?id=FFxkFMU89E>
 - 仓库归档：[ml-egodex.md](../repos/ml-egodex.md)
+- HF 测试集：<https://huggingface.co/datasets/Voxel51/egodex-test-multimodal>
