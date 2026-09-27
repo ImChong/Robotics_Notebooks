@@ -1233,6 +1233,13 @@
         "korea-institute-of-machinery-materials"
       ]
     },
+    "khronos": {
+      "label": "图形标准工作组（Khronos Group）",
+      "aliases": [
+        "khronos",
+        "khronos-group"
+      ]
+    },
     "keti": {
       "label": "韩国电子技术研究院（KETI）",
       "aliases": [

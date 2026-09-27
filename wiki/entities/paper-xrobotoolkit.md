@@ -202,6 +202,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [OpenXR](./openxr.md) — Khronos 标准与 runtime/Loader 分层（本套件的数据面窄腰）
 - [Teleoperation](../tasks/teleoperation.md) — XR 示范采集任务总览
 - [Open-TeleVision](./paper-loco-manip-161-131-open-television.md) — 沉浸式主动视觉遥操作与延迟对照
 - [TWIST2](./paper-twist2.md) — 下游人形便携全身遥操作栈（依赖本套件）
