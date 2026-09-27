@@ -9,11 +9,13 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+  - ../../sources/blogs/wechat_embodied_simulators_series_overview_2026-09-27.md
   - ../../sources/papers/adams_orlandea_primary_refs.md
   - ../../sources/repos/omnisim.md
 related:
   - ../concepts/robot-simulation-three-layers.md
   - ../overview/sim-platforms-decade-technology-map.md
+  - ../overview/embodied-simulators-series-technology-map.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/mujoco-playground.md
   - ../entities/text2mujoco.md

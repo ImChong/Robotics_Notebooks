@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-27",
-  "node_count": 5366,
-  "edge_count": 46930,
+  "node_count": 5367,
+  "edge_count": 46950,
   "coverage": {
-    "covered": 5337,
-    "total": 5337,
+    "covered": 5338,
+    "total": 5338,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -18,6 +18,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/embodied-simulators-series-technology-map.md",
+      "detail_id": "wiki-overview-embodied-simulators-series-technology-map",
+      "label": "具身仿真器系列 · 十大平台技术地图",
+      "type": "overview",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真平台（Simulation Platforms） 社区"
     },
     {
       "path": "wiki/entities/paper-choreo.md",
@@ -205,17 +215,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-streaming-rl-continual-robotics.md",
-      "detail_id": "entity-paper-streaming-rl-continual-robotics",
-      "label": "Streaming RL 分析",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -299,7 +298,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1022,
+      "degree": 1023,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

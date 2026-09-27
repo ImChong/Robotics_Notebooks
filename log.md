@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/blogs/wechat_embodied_simulators_series_overview_2026-09-27.md — 具身仿真器系列总览（十大平台横评）；10/10 复用实体 + 技术地图；WebFetch 抓取；自动合并 PR
+
+- **意图：** 用户指定 mp.weixin.qq.com/s/evU4IsliLfmsb9RoYXU65A
+- **开源结论：** **不适用**（公众号横评；各平台以官方仓为准）
+- **关键页：** [embodied-simulators-series-technology-map](wiki/overview/embodied-simulators-series-technology-map.md)
+
 ## [2026-09-27] ingest | sources/papers/lift_reactive_force_vla_arxiv_2607_14236.md + sites/lift-policy + repos/y-wng-lift — LIFT 力感知 VLA 后训练（arXiv:2607.14236，CoRL 2026）；π₀.₅ reactive expert + online DAgger；部分开源；自动合并 PR
 
 - **意图：** 用户指定 arXiv:2607.14236、lift-policy.github.io、github.com/y-wng/lift
