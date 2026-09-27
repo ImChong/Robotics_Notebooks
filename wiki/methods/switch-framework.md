@@ -69,6 +69,7 @@ Switch 的高层调度器不仅仅是简单的顺序执行器：
 - [Any2Track & RGMT](./any2track.md) — 基准对比方法，侧重于通用跟踪。
 - [AMS](./ams.md) — 侧重于物理可行性过滤。
 - [Unitree G1](../entities/unitree-g1.md) — Switch 的实验验证平台。
+- [CHOREO（论文实体）](../entities/paper-choreo.md) — **免训练** 轨迹库 + 边界过渡组合；与 Switch 的 **图内 RL 切换** 对照阅读。
 
 ## 参考来源
 

@@ -346,6 +346,7 @@ flowchart TD
 - [APT-RL（Science Robotics 2026 封面）](../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — TO+TVAE 力矩先验 + 深度/LiDAR 蒸馏；HOUND 野外长程与 trot/bound 感知切换
 - [执行器约束 RL 高速四足（arXiv:2312.17507）](../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — MOR 扭矩–转速包络进训练；HOUND **6.5 m/s** 跑步机纪录；无 MOR 策略 **5 m/s 实机摔倒**
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
+- [CHOREO](../entities/paper-choreo.md) — arXiv:2609.22274（异源 SkillMotion 轨迹库 + LLM 规划 + seam/bridge **免训练** 长程组合；MuJoCo G1 + 冻结 GMT）
 - [DPL（单深度感知人形行走）](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — arXiv:2510.07152（IEEE RA-L；深度合成 + 交叉注意力高程重建 + 盲骨干多教师；TienKung Ultra；代码未开源）
 - [SOLO（长程感知人形运动）](../entities/paper-solo.md) — arXiv:2608.26583（QR + TA-MSE；天工 Omni 零样本 1.5 km；截至入库日未开源）
 - [CAP（单策略感知-盲走连续适应）](../entities/paper-cap-perception-blind-humanoid.md) — arXiv:2609.11553（CoRL 2026；WM 去噪 + proprio VAE；G1 部分遮挡 39/40；代码待发布）

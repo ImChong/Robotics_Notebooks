@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-27",
-  "node_count": 5364,
-  "edge_count": 46906,
+  "node_count": 5365,
+  "edge_count": 46919,
   "coverage": {
-    "covered": 5335,
-    "total": 5335,
+    "covered": 5336,
+    "total": 5336,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -276,7 +276,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1546,
+      "degree": 1548,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -341,7 +341,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 172,
+      "degree": 173,
       "has_repo": true,
       "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
     },
@@ -401,7 +401,7 @@
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
-      "degree": 50,
+      "degree": 51,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
