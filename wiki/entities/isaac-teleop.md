@@ -215,6 +215,7 @@ python examples/teleop/python/gripper_retargeting_example_simple.py
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) — README 中「跟踪全身 + SONIC」用例的 WBC 仓
 - [LeRobot](./lerobot.md) — Data Interface 声明的数据集互操作层
 - [Teleoperation（遥操作）](../tasks/teleoperation.md) — 任务视角与多系统对照表
+- [IWER（Immersive Web Emulation Runtime）](./immersive-web-emulation-runtime.md) — WebXR 桌面仿真（CloudXR.js 开发对照）
 - [XRoboToolkit（论文实体）](./paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（对照）
 - [Imitation Learning](../methods/imitation-learning.md) — 示范数据下游学习
 - [Unitree G1](./unitree-g1.md) — 文档中 G1 TriHand / loco-manip 遥操作范例平台
