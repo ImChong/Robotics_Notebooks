@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/embodied-simulators-series-technology-map.md",
+      "detail_id": "wiki-overview-embodied-simulators-series-technology-map",
+      "label": "具身仿真器系列 · 十大平台技术地图",
+      "type": "overview",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真平台（Simulation Platforms） 社区"
+    },
+    {
       "path": "wiki/entities/paper-choreo.md",
       "detail_id": "entity-paper-choreo",
       "label": "CHOREO（Every Humanoid Skill as a Trajectory）",
@@ -205,28 +215,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-streaming-wam.md",
-      "detail_id": "entity-paper-streaming-wam",
-      "label": "Streaming-WAM",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-choreo.md",
-    "detail_id": "entity-paper-choreo",
-    "label": "CHOREO（Every Humanoid Skill as a Trajectory）",
-    "type": "entity",
+    "path": "wiki/overview/embodied-simulators-series-technology-map.md",
+    "detail_id": "wiki-overview-embodied-simulators-series-technology-map",
+    "label": "具身仿真器系列 · 十大平台技术地图",
+    "type": "overview",
     "recency": "2026-09-27",
     "source": "git",
     "action": "added",
-    "community_label": "运动控制（Locomotion） 社区"
+    "community_label": "仿真平台（Simulation Platforms） 社区"
   },
   "top_communities": [
     {
