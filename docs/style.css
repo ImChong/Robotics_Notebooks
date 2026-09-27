@@ -1367,7 +1367,7 @@ button.home-wiki-heatmap-cell.is-active {
   border: 1px solid var(--border);
   text-align: center;
   white-space: nowrap;
-  /* 「中文(English)」拆两行：中文主行 + 英文小字副行，保持列宽不被英文撑开 */
+  /* 「中文（English）」拆两行：中文主行 + 英文小字副行，保持列宽不被英文撑开 */
   display: flex;
   flex-direction: column;
   align-items: center;
