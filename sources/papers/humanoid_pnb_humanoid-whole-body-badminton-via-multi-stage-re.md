@@ -2,14 +2,16 @@
 
 > 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记 + 项目页开源核查）
 
-- **标题：** Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
+- **标题（arXiv v4）：** Humanoid Whole-Body Badminton via an Annealed Reinforcement Learning Curriculum
+- **标题（项目页别名）：** Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
+- **作者（arXiv v4）：** Chenhao Liu, Leyun Jiang, Ningyuan Tian, Yibo Wang, Kairan Yao, Jinchen Fu, Xiaoyu Ren
 - **类型：** paper
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2511.11218>
 - **项目页：** <https://humanoid-badminton.github.io/Humanoid-Whole-Body-Badminton-via-Multi-Stage-Reinforcement-Learning/>
 - **入库日期：** 2026-07-10
-- **再核日期：** 2026-07-28
+- **再核日期：** 2026-09-27
 - **一句话说明：** 无先验三阶段全身羽毛球 RL；仿真 21 连拍；真机出球最高 19.1 m/s；代码待发布。
 
 ## 核心摘录（策展，非全文）

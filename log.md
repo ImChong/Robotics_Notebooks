@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/humanoid_whole_body_badminton_annealed_rl_arxiv_2511_11218.md — Phybot 人形羽毛球退火 RL 课程（2511.11218 v4）；作者七人（无 Junzhe He）；仿真 21 连拍 / 真机人机对打；代码待发布；同步 LHBS 项目页再核；自动合并 PR
+
+- **意图：** 用户指定 arXiv / 项目页 / GitHub + LHBS 项目页
+- **开源结论：** Whole-Body **待发布**（GitHub 仅站点）；LHBS **未开源**
+- **关键页：** [paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re](wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[paper-notebook-learning-human-like-badminton-skills-for-humanoi](wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)
+
 ## [2026-09-26] ingest | sources/papers/zetta_arxiv_2608_16590.md — Zetta ζ 闭环具身 harness（2608.16590）；Zetta-Embodiment 已开源；三 loop + Z-Infra；交叉 Zeva/Harness VLA；自动合并 PR
 
 - **意图：** 用户指定项目页 / GitHub / HF / arXiv

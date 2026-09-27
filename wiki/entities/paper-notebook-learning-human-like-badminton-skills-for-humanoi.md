@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, humanoid-paper-notebooks, amp, motion-prior, badminton, sim2real, dagger, goal-conditioned-rl, hku]
 status: complete
-updated: 2026-09-26
+updated: 2026-09-27
 arxiv: "2602.08370"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -16,6 +16,7 @@ related:
 sources:
   - ../../sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md
   - ../../sources/papers/humanoid_pnb_learning-human-like-badminton-skills-for-humanoi.md
+  - ../../sources/sites/lhbs-astrorix.md
 summary: "LHBS（arXiv:2602.08370）：Imitation-to-Interaction 四阶段渐进 RL——MoCap 教师 → DAgger 目标蒸馏 → AMP 稳定 → 羽毛球物理交互与流形扩展；EngineAI PM01 零样本真机正/反手挑球。"
 ---
 
@@ -46,6 +47,17 @@ summary: "LHBS（arXiv:2602.08370）：Imitation-to-Interaction 四阶段渐进 
 - **稀疏演示 → 稠密交互：** MoCap 击球点极少；**流形扩展（manifold expansion）** 把离散击球样本推广到稠密时空流形，是 Stage 4 能泛化动态拦截的关键。
 - **真机稀缺结果：** 作者称 **首个** 拟人羽毛球技能 **零样本 sim2real**；PM01 受控试验正手挑球 **90%**、反手挑球 **70%** SR（各 10 次）。
 - **与 LATENT 互补：** 同为人形 **球类竞技** 路线，LATENT 解决不完美网球 MoCap + latent 修正；LHBS 解决 **物理击球交互** 与 AMP 稳定，可对照阅读 [LATENT](./paper-notebook-latent.md)。
+- **与 Phybot 退火 RL 对照：** [Whole-Body Badminton（Annealed RL）](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) 走 **无 MoCap 先验** 统一 WBC + 仿真 21 连拍 / 真机人机对打；LHBS 走 **拟人模仿 → 物理交互**。
+
+## 核心信息
+
+| 项 | 内容 |
+|----|------|
+| **机构** | 香港大学（HKU）、EngineAI（深圳） |
+| **平台** | EngineAI PM01；真机评测用 FZMotion 提供基座与球位 |
+| **栈** | Isaac Sim + Isaac Lab；物理 200 Hz、策略 50 Hz |
+| **arXiv** | [2602.08370](https://arxiv.org/abs/2602.08370)（v2 online 2026-09-14） |
+| **开源** | **未开源**（截至 **2026-09-27**）：[项目页](https://astrorix.github.io/LHBS/) 无官方训练/部署 GitHub 或权重链接 |
 
 ## 流程总览
 
@@ -128,7 +140,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
-- 球类姊妹：[LATENT](./paper-notebook-latent.md)（网球）、[Whole-Body Badminton](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)（人形多阶段 RL）、[ETH ANYmal 四足 Sci. Rob.](./paper-coordinated-badminton-skills-anymal.md)
+- 球类姊妹：[LATENT](./paper-notebook-latent.md)（网球）、[Whole-Body Badminton（Annealed RL）](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[ETH ANYmal 四足 Sci. Rob.](./paper-coordinated-badminton-skills-anymal.md)
 - 方法：[amp-reward.md](../methods/amp-reward.md)
 - 任务：[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 概念：[sim2real.md](../concepts/sim2real.md)
@@ -136,6 +148,7 @@ flowchart TB
 ## 参考来源
 
 - [lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md](../../sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md)
+- [lhbs-astrorix.md](../../sources/sites/lhbs-astrorix.md)
 - [humanoid_pnb_learning-human-like-badminton-skills-for-humanoi.md](../../sources/papers/humanoid_pnb_learning-human-like-badminton-skills-for-humanoi.md)
 - 项目页：<https://astrorix.github.io/LHBS/>
 - 论文：<https://arxiv.org/abs/2602.08370>
