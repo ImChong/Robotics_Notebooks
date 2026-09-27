@@ -142,7 +142,8 @@
               var color = RNGraphTooltip.buildCommunityColorMap(g.communities);
               return { traces: [{
                 type: 'bar',
-                x: list.map(function (c) { return RNGraphTooltip.shortenCommunityLabel(c.label); }),
+                // 与纵深节点数一致：横坐标显示「中文（English）」，仅去掉末尾「社区」
+                x: list.map(function (c) { return String(c.label || c.id).replace(/\s*社区\s*$/, ''); }),
                 y: list.map(function (c) { return c.size; }),
                 marker: { color: list.map(function (c) { return color[c.id]; }) },
                 hovertemplate: '%{x}<br>%{y} 节点<extra></extra>'
