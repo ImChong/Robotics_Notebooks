@@ -1,22 +1,23 @@
 {
   "generated_at": "2026-09-27",
-  "node_count": 5365,
-  "edge_count": 46919,
+  "node_count": 5366,
+  "edge_count": 46930,
   "coverage": {
-    "covered": 5336,
-    "total": 5336,
+    "covered": 5337,
+    "total": 5337,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-choreo.md",
-      "detail_id": "entity-paper-choreo",
-      "label": "CHOREO（Every Humanoid Skill as a Trajectory）",
+      "path": "wiki/entities/paper-lift-reactive-force-vla-posttrain.md",
+      "detail_id": "entity-paper-lift-reactive-force-vla-posttrain",
+      "label": "LIFT（Late Reactive Force · VLA Post-Training · arXiv:2607.14236）",
       "type": "entity",
       "recency": "2026-09-27",
       "source": "git",
       "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/axis-composable-capability-library.md",
@@ -219,14 +220,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-choreo.md",
-    "detail_id": "entity-paper-choreo",
-    "label": "CHOREO（Every Humanoid Skill as a Trajectory）",
+    "path": "wiki/entities/paper-lift-reactive-force-vla-posttrain.md",
+    "detail_id": "entity-paper-lift-reactive-force-vla-posttrain",
+    "label": "LIFT（Late Reactive Force · VLA Post-Training · arXiv:2607.14236）",
     "type": "entity",
     "recency": "2026-09-27",
     "source": "git",
     "action": "added",
-    "community_label": "运动控制（Locomotion） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -243,7 +245,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 374
+      "size": 375
     },
     {
       "label": "仿真到现实",
@@ -259,7 +261,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 2232,
+      "degree": 2233,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -267,7 +269,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1856,
+      "degree": 1858,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

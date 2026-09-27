@@ -10,7 +10,7 @@ tags:
   - neurips
   - sjtu
 status: complete
-updated: 2026-09-23
+updated: 2026-09-27
 arxiv: "2505.22159"
 venue: "NeurIPS 2025"
 summary: "ForceVLA（NeurIPS 2025，arXiv:2505.22159，SJTU/上海 AI Lab 等）：π₀ 上 FVLMoE 将 6 轴外载 wrench 作 VLM 后一等模态；五任务平均 60.5%（+23.2 pt）；plug 消融 80%；代码待发布。"
@@ -22,6 +22,7 @@ related:
   - ./paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md
   - ./paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md
   - ./paper-touchworld-tactile-foundation-dexterous-manipulation.md
+  - ./paper-lift-reactive-force-vla-posttrain.md
   - ../overview/tactile-intelligence-nine-papers-map.md
   - ../overview/sun-awesome-touch-technology-map.md
 sources:
@@ -62,7 +63,7 @@ sources:
 - **VLA 的力盲问题：** 接触丰富阶段力需求随相位变化；纯视觉在遮挡下 brittle。
 - **融合位置发现：** **力必须在 VLM 之后** — early fusion MoE 可致 plug **0%**；late concat **60%**；FVLMoE **80%**。
 - **MoE 相位 specialization：** Expert load 随任务/完成度变化；insert/peel 相位 specialist；Expert 0 跨任务通用。
-- **与同批对照：** [Tactile-VLA](./paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md) 用 VBTS+混合力控；[TaF-VLA](./paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md) 用高维触觉–力 latent 对齐；ForceVLA 走 **低维 F/T + MoE** 最轻量路线。
+- **与同批对照：** [Tactile-VLA](./paper-sa-2507-09160-tactile-vla-unlocking-vision-language-action-mod.md) 用 VBTS+混合力控；[TaF-VLA](./paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md) 用高维触觉–力 latent 对齐；ForceVLA 走 **低维 F/T + MoE** 最轻量路线；**后训练期** 力注入见 [LIFT（Reactive Force）](./paper-lift-reactive-force-vla-posttrain.md)（π₀.₅ + reactive expert + online DAgger）。
 
 ## 核心贡献/方法
 
