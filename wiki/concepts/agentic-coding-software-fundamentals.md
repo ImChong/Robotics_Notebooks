@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-09-20
+updated: 2026-09-27
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身。吴恩达 AI Engineering Skills Map 把软件基础拆成全栈、数据、架构、安全可靠、生产运维五项。"
 related:
   - ../entities/mattpocock-skills.md
@@ -24,6 +24,7 @@ related:
   - ../references/llm-wiki-karpathy.md
   - ../entities/learnprompt.md
   - ../entities/easy-vibe.md
+  - ../entities/course-spec-driven-development-coding-agents.md
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
 ---
@@ -112,6 +113,7 @@ flowchart TD
 
 ## 关联页面
 
+- [Spec-Driven Development（DeepLearning.AI 短课）](../entities/course-spec-driven-development-coding-agents.md) — constitution + feature spec 的 plan-implement-verify 可跟做模板
 - [Skills For Real Engineers（mattpocock）](../entities/mattpocock-skills.md) — 用 grill / TDD / 架构卫生对抗 vibe coding 的可安装技能
 - [Archify](../entities/archify.md) — 把已决定的服务边界 / 数据流画成可校验 HTML；不替代本页的架构取舍
 - [Birdview](../entities/birdview.md) — 改码前先 map 仓库模块与计划 scope；不替代 diff 或架构判断本身

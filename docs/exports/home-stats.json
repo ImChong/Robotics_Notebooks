@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-09-27",
-  "node_count": 5332,
-  "edge_count": 46724,
+  "node_count": 5334,
+  "edge_count": 46743,
   "coverage": {
-    "covered": 5303,
-    "total": 5303,
+    "covered": 5305,
+    "total": 5305,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-egowild2dex.md",
+      "detail_id": "entity-paper-egowild2dex",
+      "label": "EgoWild2Dex（arXiv:2609.23755）",
+      "type": "entity",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/concepts/hand-eye-calibration.md",
       "detail_id": "wiki-concepts-hand-eye-calibration",
@@ -205,36 +215,26 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-art-vla-on-the-fly-tool-use.md",
-      "detail_id": "entity-paper-art-vla-on-the-fly-tool-use",
-      "label": "ART（arXiv:2608.14047）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/hand-eye-calibration.md",
-    "detail_id": "wiki-concepts-hand-eye-calibration",
-    "label": "手眼标定（Hand-Eye Calibration）",
-    "type": "concept",
+    "path": "wiki/entities/paper-egowild2dex.md",
+    "detail_id": "entity-paper-egowild2dex",
+    "label": "EgoWild2Dex（arXiv:2609.23755）",
+    "type": "entity",
     "recency": "2026-09-27",
     "source": "git",
     "action": "added",
-    "community_label": "视觉感知（Robot Perception） 社区"
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "世界模型",
-      "size": 1122
+      "size": 1123
     },
     {
       "label": "产业与开源生态",
-      "size": 637
+      "size": 638
     },
     {
       "label": "视觉感知",
@@ -281,7 +281,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 1376,
+      "degree": 1377,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },
@@ -313,7 +313,7 @@
       "detail_id": "wiki-concepts-world-action-models",
       "label": "World Action Models（WAM，世界–动作模型）",
       "type": "concept",
-      "degree": 752,
+      "degree": 754,
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },

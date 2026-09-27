@@ -9,7 +9,7 @@ tags:
   - diffusion
   - shenlan
 status: complete
-updated: 2026-09-20
+updated: 2026-09-27
 related:
   - ./autonomous-driving-core-algorithms-series.md
   - ../methods/generative-world-models.md
@@ -20,8 +20,11 @@ related:
   - ../entities/paper-uniad.md
   - ../entities/paper-diffusiondrive.md
   - ../entities/paper-birdriver.md
+  - ../entities/paper-mm-future.md
+  - ../entities/paper-rise-adaptive-imagination-wam.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
+  - ../../sources/papers/mm_future_arxiv_2609_20377.md
 summary: "深蓝AI《端到端自动驾驶：十大前沿算法盘点》技术地图：UniAD→VAD→DriveVLM→EMMA→GAIA-1→SparseDrive→Senna→MomAD→DriveTransformer→DiffusionDrive；每篇独立完整实体页。"
 ---
 
@@ -75,6 +78,16 @@ flowchart TB
 | 09 | 任务并行 Transformer | [DriveTransformer](../entities/paper-drivetransformer.md) | ICLR 2025 | 已开源 | 检测/预测/建图/规划 Query 在同一 Transformer 块内并行交互… |
 | 10 | 截断扩散实时规划 | [DiffusionDrive](../entities/paper-diffusiondrive.md) | CVPR 2025 Highlight | 已开源 | 先预测多模态锚点轨迹再截断扩散去噪，把去噪步数压到约 2 步，在 NAVSIM … |
 
+## NAVSIM 时代 WAM 延伸（非公众号 Top10 原文）
+
+公众号成文时 NAVSIM 尚未成为统一标尺；下列 **World–Action** 路线与上表 **DiffusionDrive / SparseDrive** 等 E2E 规划可在 **同一 PDMS/EPDMS 口径** 下对照（详见各深读页，勿跨协议硬比）：
+
+| 线索 | 实体页 | NAVSIM headline（论文自报） | 开源 |
+|------|--------|---------------------------|------|
+| 潜空间联合 WAM | [Latent-WAM](../entities/paper-sa-2603-24581-latent-wam-latent-world-action-modeling-for-end.md) | 清单索引；深读见 arXiv:2603.24581 | 见项目页 |
+| 自适应想象调度 | [RISE（酷哇）](../entities/paper-rise-adaptive-imagination-wam.md) | v1 **91.5 PDMS** / v2 **90.8 EPDMS** | 部分开源 |
+| 多模态 joint WAM | [MM-Future](../entities/paper-mm-future.md) | v1 **94.0 PDMS** / v2 **91.5 EPDMS** | **待发布** |
+
 ## 与模块化专辑的关系
 
 | 专辑 | 焦点 | 入口 |
@@ -91,6 +104,7 @@ flowchart TB
 5. **要量产轨迹平滑** → [MomAD](../entities/paper-momad.md)
 6. **要并行扩展** → [DriveTransformer](../entities/paper-drivetransformer.md)
 7. **要多模态实时生成规划** → [DiffusionDrive](../entities/paper-diffusiondrive.md)
+8. **要 joint WAM + 多假设 scene–action 对（NAVSIM）** → [MM-Future](../entities/paper-mm-future.md)（对照 [RISE](../entities/paper-rise-adaptive-imagination-wam.md) 的想象调度）
 
 ## 关联页面
 
