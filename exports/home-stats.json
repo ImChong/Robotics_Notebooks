@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-choreo.md",
+      "detail_id": "entity-paper-choreo",
+      "label": "CHOREO（Every Humanoid Skill as a Trajectory）",
+      "type": "entity",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
       "path": "wiki/entities/axis-composable-capability-library.md",
       "detail_id": "entity-axis-composable-capability-library",
       "label": "Axis 可组合 Robotic 能力库",
@@ -206,28 +216,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-actgaze.md",
-      "detail_id": "entity-paper-actgaze",
-      "label": "ActGaze",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/axis-composable-capability-library.md",
-    "detail_id": "entity-axis-composable-capability-library",
-    "label": "Axis 可组合 Robotic 能力库",
+    "path": "wiki/entities/paper-choreo.md",
+    "detail_id": "entity-paper-choreo",
+    "label": "CHOREO（Every Humanoid Skill as a Trajectory）",
     "type": "entity",
     "recency": "2026-09-27",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
