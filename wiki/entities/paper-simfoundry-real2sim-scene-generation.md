@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, omnigibson, 3dgs, vla]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-27
 arxiv: "2606.28276"
 code: https://github.com/NVlabs/SimFoundry
 related:
@@ -21,6 +21,7 @@ related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./paper-agentic-real2sim.md
   - ./paper-lucida-r2s.md
+  - ./paper-sceneagent-real2sim-capture-physics.md
 sources:
   - ../../sources/papers/simfoundry_arxiv_2606_28276.md
   - ../../sources/sites/nvidia-research-simfoundry.md
@@ -207,6 +208,7 @@ sequenceDiagram
 - **与 CRISP / 人形 Real2Sim 正交：** [CRISP](../methods/crisp-real2sim.md) 面向 **人–场景接触 + 平面原语 + 人形 RL 跟踪**；SimFoundry 面向 **桌面/厨房类操作场景 + 操作臂/VLA 评测**，几何表示与下游策略接口不同，不宜混为一谈。
 - **与 Agentic Real2Sim 对照：** [Agentic Real2Sim](./paper-agentic-real2sim.md)（arXiv:2607.19190）同样做真机→可仿真，但单位是 **交互 episode twin（MuJoCo 回放）**、编排层是 **VLM agent**，主指标是 **回放成功**；SimFoundry 主打 **场景孪生 + cousins + 策略 Pearson/MMRV**。
 - **与 Lucida 对照：** [Lucida](./paper-lucida-r2s.md)（arXiv:2608.30821）同样产出可编辑室内物体资产，但评测停在 **检测 / ADD-SB / 场景 Chamfer**，没有 cousins 或策略相关；放置靠 **GizmoAct GUI 闭环**，不是模块化孪生栈。
+- **与 SceneAgent 对照：** [SceneAgent](./paper-sceneagent-real2sim-capture-physics.md)（Harvard preprint）从 **3DGS/摄影测量/LiDAR** 出发，强调 **per-Gaussian 预测物理** 与 **digital sisters** + **demonstration factory/VLA LoRA**；页面自比本工作评测但 **Pearson 与管线代码截至 2026-09-27 未公开**。
 - **评测相关 ≠ 训练免费午餐：** 高 Pearson 只说明 **排序可信**；策略仍可能需 **cousins 或少量真机 demo** 才能覆盖未见物体/布局（论文 co-train 与 cousins 消融已说明）。
 - **代码开放度（2026-09-05）：** [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) **部分开源**（Apache-2.0）。**已发布** A/B 管线、C 加载脚手架、light editor、HF 示例场景。**未发布** 论文级数据生成 / 策略训练 / Pearson 评测协议；自动 3DGS 背景仍标 Coming Soon。第三方权重多有门控或非商用条款。
 - **论文下游 ≠ 开源下游：** 正文写 PyBullet + Isaac Lab；仓内阶段编号对齐 OmniGibson（`s14_og/`）。选型时按 README 而不是 PDF。
@@ -225,6 +227,7 @@ sequenceDiagram
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 研究组与姊妹工作（ENPIRE、GR00T Visual Sim2Real 等）
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — VLM agent 编排的 episode 级 Real2Sim（代码待开放）
 - [Lucida](./paper-lucida-r2s.md) — 室内多视角 → 可编辑资产 + GizmoAct 9-DoF（几何对齐，无策略评测）
+- [SceneAgent](./paper-sceneagent-real2sim-capture-physics.md) — 3D 捕获 + 预测物理 + digital sisters + VLA 微调（代码待发布）
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 驾驶/现场神经体积 USDZ；本页是操作 mesh+cousins，不是车队日志
 - [Instant NuRec](./paper-instant-nurec.md) — 前向 3DGS 驾驶世界；闭环看策略排序而非 Pearson
 - [HKTex](./paper-hktex-heat-kernel-textures.md) — sim-ready 物体 mesh 的无 UV 紧凑纹理与 PBR 外观层（ECCV 2026 Best Paper）

@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/sites/harvard-computationalrobotics-sceneagent.md — SceneAgent（Harvard）3DGS/捕获→预测物理 USD + digital sisters + VLA LoRA；GitHub 仅静态站、管线待发布；自动合并 PR
+
+- **意图：** 用户指定 Harvard 项目页与 ComputationalRobotics/SceneAgent
+- **开源结论：** **待发布** — 页脚 code/scenes soon；GitHub 为 project website static export
+- **关键页：** [paper-sceneagent-real2sim-capture-physics](wiki/entities/paper-sceneagent-real2sim-capture-physics.md)
+
 ## [2026-09-27] ingest | sources/papers/egowild2dex_arxiv_2609_23755.md — EgoWild2Dex（2609.23755）野外 ego→灵巧 VLA；GeoFormer+三阶段训练+EgoWild 538.9h；数据/代码待发布；自动合并 PR
 
 - **意图：** 用户指定 mmlab.hk/egowild2dex 与 arXiv:2609.23755

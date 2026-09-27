@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-27",
-  "node_count": 5334,
-  "edge_count": 46743,
+  "node_count": 5335,
+  "edge_count": 46758,
   "coverage": {
-    "covered": 5305,
-    "total": 5305,
+    "covered": 5306,
+    "total": 5306,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -248,7 +248,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 291
+      "size": 292
     },
     {
       "label": "动作模仿与生成",
@@ -260,7 +260,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 2215,
+      "degree": 2217,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -268,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1838,
+      "degree": 1839,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -299,7 +299,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 1015,
+      "degree": 1016,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -331,7 +331,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 656,
+      "degree": 657,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
