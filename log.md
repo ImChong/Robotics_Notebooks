@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/mm_future_arxiv_2609_20377.md — MM-Future 多模态联合驾驶 WAM（2609.20377）；NAVSIM 94.0 PDMS；步骤 2.5 代码待发布；附 NAVSIM/Argoverse 文档归档；自动合并 PR
+
+- **意图：** 用户指定 arXiv PDF + Argoverse User Guide 作数据生态参考
+- **开源结论：** **待发布**（无项目页/GitHub）
+- **关键页：** [paper-mm-future](wiki/entities/paper-mm-future.md)
+
 ## [2026-09-27] ingest | ALOHA 2 / Menagerie aloha / D405 / OpenCV 手眼 / Tsai–Lenz — 双臂遥操作硬件+仿真与腕部相机标定链；硬件+Menagerie 已开源；新建 aloha-2、hand-eye-calibration；自动合并 PR
 
 - **意图：** 用户指定 aloha-2.github.io、Menagerie README、OpenCV calibrateHandEye、Tsai–Lenz DOI、RealSense D405 规格
