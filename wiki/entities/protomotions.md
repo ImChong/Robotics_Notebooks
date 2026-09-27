@@ -2,7 +2,7 @@
 type: entity
 tags: [framework, simulation, humanoid, sim2real, nvidia, newton, mujoco, isaac-gym]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-27
 related:
   - ./amass.md
   - ./kimodo.md
@@ -14,8 +14,11 @@ related:
   - ../methods/deepmimic.md
   - ./xue-bin-peng.md
   - ./paper-gentrack.md
+  - ./paper-bfm-17-maskedmimic.md
+  - ./paper-loco-manip-161-097-harmon.md
 sources:
   - ../../sources/repos/protomotions.md
+  - ../../sources/sites/maskedmimic-nvidia-par.md
 summary: "ProtoMotions3 是 NVIDIA 开源的 GPU 加速人形仿真与学习框架，强调多后端、大规模动捕数据管线、模块化任务拼装与 ONNX 化 Sim2Real 部署。"
 ---
 

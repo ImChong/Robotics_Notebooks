@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | Harmon / SimplerEnv / MaskedMimic / ProtoMotions — 用户指定多链 ingest：2410.12773+Harmon 页、2405.05941+SimplerEnv 开源评测、MaskedMimic PDF+ProtoMotions；升格 harmon 与 paper-simplerenv-real2sim-eval；自动合并 PR
+
+- **意图：** arXiv 2410.12773、Harmon 项目页、ProtoMotions、MaskedMimic PDF、SimplerEnv 站+仓、arXiv 2405.05941
+- **开源结论：** Harmon **未开源**；SimplerEnv **已开源**；MaskedMimic **已开源（ProtoMotions 生态）**；ProtoMotions **已开源**
+- **关键页：** [paper-loco-manip-161-097-harmon](wiki/entities/paper-loco-manip-161-097-harmon.md)、[paper-simplerenv-real2sim-eval](wiki/entities/paper-simplerenv-real2sim-eval.md)、[paper-bfm-17-maskedmimic](wiki/entities/paper-bfm-17-maskedmimic.md)
+
 ## [2026-09-27] ingest | sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md — Why AC Improves BC（2608.02547）补 arXiv/HF 与项目页再核；代码仍 Coming soon；更新 paper-why-action-chunking-improves-bc；自动合并 PR
 
 - **意图：** 用户指定 action-chunking.github.io、arXiv:2608.02547、Hugging Face Papers

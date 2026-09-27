@@ -6,9 +6,9 @@
 - **分组：** Evaluation Methodology
 - **编号：** 116/384
 - **入库日期：** 2026-09-20
-- **arXiv：** （无 / 非 arXiv）
+- **arXiv：** <https://arxiv.org/abs/2405.05941> — 归档 [`simplerenv_arxiv_2405_05941.md`](../papers/simplerenv_arxiv_2405_05941.md)
 - **主链接：** <https://simpler-env.github.io/>
-- **代码：** 未在清单中标注
+- **代码：** <https://github.com/simpler-env/SimplerEnv>
 - **清单摘要：** Aligned simulator-based evaluation that correlates with real-robot performance for VLAs.
 - **沉淀到 wiki：** [`wiki/entities/painode-116-xsimplerenv.md`](../../wiki/entities/painode-116-xsimplerenv.md)
 

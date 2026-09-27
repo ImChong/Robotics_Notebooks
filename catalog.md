@@ -890,7 +890,7 @@
 - [EvalAI](wiki/entities/painode-110-evalai.md) — EvalAI** 收录于 awesome-physical-ai（natnew）**第 110/384** 条，分组 **Evaluation Methodology**。本页为知识库 **策展索 `📅unknown` `[entity_page]`
 - [nuPlan Devkit](wiki/entities/painode-112-nuplandevkit.md) — nuPlan Devkit** 收录于 awesome-physical-ai（natnew）**第 112/384** 条，分组 **Evaluation Methodology**。本页为知识 `📅unknown` `[entity_page]`
 - [RoboHive](wiki/entities/painode-114-robohive.md) — RoboHive** 收录于 awesome-physical-ai（natnew）**第 114/384** 条，分组 **Evaluation Methodology**。本页为知识库 **策 `📅unknown` `[entity_page]`
-- [SimplerEnv](wiki/entities/painode-116-xsimplerenv.md) — SimplerEnv** 收录于 awesome-physical-ai（natnew）**第 116/384** 条，分组 **Evaluation Methodology**。本页为知识库  `📅unknown` `[entity_page]`
+- [SimplerEnv](wiki/entities/painode-116-xsimplerenv.md) — SimplerEnv** 收录于 awesome-physical-ai（natnew）**第 116/384** 条，分组 **Evaluation Methodology**。本页保留 **清 `📅unknown` `[entity_page]`
 - [Statistical Reliability of RL Evaluations](wiki/entities/painode-117-statisticalreliabilityofrlevalua.md) — Statistical Reliability of RL Evaluations** 收录于 awesome-physical-ai（natnew）**第 117/384** 条，分组 **Ev `📅unknown` `[entity_page]`
 - [Waymo Open Challenges](wiki/entities/painode-118-waymoopenchallenges.md) — Waymo Open Challenges** 收录于 awesome-physical-ai（natnew）**第 118/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
 - [copper-rs](wiki/entities/painode-124-copperrs.md) — copper-rs** 收录于 awesome-physical-ai（aichr）**第 124/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策 `📅unknown` `[entity_page]`
@@ -1834,7 +1834,7 @@
 - [DreamControl](wiki/entities/paper-loco-manip-161-093-dreamcontrol.md) — DreamControl** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [EMOTION](wiki/entities/paper-loco-manip-161-094-emotion.md) — EMOTION** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
 - [FRoM-W1](wiki/entities/paper-loco-manip-161-096-from-w1.md) — FRoM-W1** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
-- [Harmon](wiki/entities/paper-loco-manip-161-097-harmon.md) — Harmon** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
+- [Harmon：语言驱动的人形全身 motion 生成](wiki/entities/paper-loco-manip-161-097-harmon.md) — Harmon**（*Whole-Body Motion Generation of Humanoid Robots from Language Descriptions*，[arXiv:2410. `📅unknown` `[entity_page]`
 - [Robot Motion Diffusion Model](wiki/entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) — Robot Motion Diffusion Model** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pA `📅unknown` `[entity_page]`
 - [SafeFlow](wiki/entities/paper-loco-manip-161-104-safeflow.md) — SafeFlow**（arXiv:2603.23983，[项目页](https://hanbyelcho.info/safe `📅unknown` `[entity_page]`
 - [从语言到运动](wiki/entities/paper-loco-manip-161-106-n106.md) — 从语言到运动** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
@@ -3885,6 +3885,7 @@
 - [SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）](wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — SimFoundry** 是 NVIDIA GEAR Lab 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606. `📅unknown` `[entity_page]`
 - [simple-evrgb-cal：无运动的事件—RGB 标定](wiki/entities/paper-simple-evrgb-cal.md) — Simplified Cross-Modal Calibration for Heterogeneous Event-RGB Stereo Systems**（[arXiv:2608.22965 `📅unknown` `[entity_page]`
 - [SimpleMemVLA（Native-Video Memory for VLA）](wiki/entities/paper-simplememvla.md) — SimpleMemVLA**（arXiv:2609.05533，[OpenBMB/SimpleMemVLA](https:/ `📅unknown` `[entity_page]`
+- [SIMPLER：仿真里评真实数据训练的 manipulation 策略](wiki/entities/paper-simplerenv-real2sim-eval.md) — SIMPLER**（*Evaluating Real-World Robot Manipulation Policies in Simulation*，[arXiv:2405.05941](htt `📅unknown` `[entity_page]`
 - [Situation-Aware Dual Cobots（arXiv:2609.26083）](wiki/entities/paper-situation-aware-dual-cobots.md) — Situation-Aware Dual Cobots**（*Situation Aware Locomotion for Dual Mobile Cobots in Shared Environ `📅unknown` `[entity_page]`
 - [Situation-aware Frontier：四足搜救的局势感知前沿排序](wiki/entities/paper-situation-aware-frontier-quadruped-sar.md) — Situation Aware Frontier Prioritization**（arXiv:2608.02571，[代码 `📅unknown` `[entity_page]`
 - [SkelWAM（arXiv:2609.21983）](wiki/entities/paper-skelwam.md) — SkelWAM**（*SkelWAM: A Skeleton-Guided World-Action Model for Zero-Shot Cross-Embodiment Manipulati `📅unknown` `[entity_page]`

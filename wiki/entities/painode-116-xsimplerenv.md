@@ -2,14 +2,16 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, eval]
 status: complete
-updated: 2026-09-20
-summary: "Aligned simulator-based evaluation that correlates with real-robot performance for VLAs."
+updated: 2026-09-27
+summary: "Physical AI #116 索引节点；canonical 深读见 paper-simplerenv-real2sim-eval（arXiv:2405.05941）。"
 related:
+  - ./paper-simplerenv-real2sim-eval.md
   - ../entities/awesome-physical-ai-natnew.md
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/papers/simplerenv_arxiv_2405_05941.md
   - ../../sources/repos/pai_awesome_eval_116_simplerenv.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
@@ -18,7 +20,7 @@ sources:
 
 # SimplerEnv
 
-**SimplerEnv** 收录于 awesome-physical-ai（natnew）**第 116/384** 条，分组 **Evaluation Methodology**。本页为知识库 **策展索引级** 详情节点；细节以官方文档 / 原文为准。
+**SimplerEnv** 收录于 awesome-physical-ai（natnew）**第 116/384** 条，分组 **Evaluation Methodology**。本页保留 **清单坐标**；机制、开源与评测读法见 canonical 论文页 **[SIMPLER / SimplerEnv](./paper-simplerenv-real2sim-eval.md)**（[arXiv:2405.05941](https://arxiv.org/abs/2405.05941)）。
 
 ## 一句话定义
 

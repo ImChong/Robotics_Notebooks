@@ -35,6 +35,11 @@
 - 完整教程：[G1 Deployment: Data to Real Robot](https://protomotions.github.io/tutorials/workflows/g1_deployment.html)。
 - 机器人切换示例：`--robot-name=smpl` → `--robot-name=h1_2` 等，需先准备对应重定向动作。
 
+### MaskedMimic（SIGGRAPH Asia 2024 TOG）
+
+- 论文 PDF：<https://research.nvidia.com/labs/par/maskedmimic/assets/SIGGRAPHAsia2024_MaskedMimic.pdf> — 归档 [`sources/sites/maskedmimic-nvidia-par.md`](../sites/maskedmimic-nvidia-par.md)
+- **Masked motion inpainting** 全身物理控制实现入口在本仓库生态；wiki 实体 [`paper-bfm-17-maskedmimic`](../../wiki/entities/paper-bfm-17-maskedmimic.md)
+
 ### 与生成式运动（Kimodo）衔接
 
 - 与 [**Kimodo**](https://research.nvidia.com/labs/sil/projects/kimodo/) 文生运动衔接：生成动作 → ProtoMotions 训练物理策略 → 可上真机；数据准备见 [Kimodo Data Preparation](https://protomotions.github.io/getting_started/kimodo_preparation.html)。
