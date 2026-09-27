@@ -10,7 +10,7 @@ tags:
   - loco-manipulation
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-26
+updated: 2026-09-27
 arxiv: "2511.11218"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -21,18 +21,19 @@ related:
   - ./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
   - ./paper-coordinated-badminton-skills-anymal.md
 sources:
+  - ../../sources/papers/humanoid_whole_body_badminton_annealed_rl_arxiv_2511_11218.md
   - ../../sources/papers/humanoid_pnb_humanoid-whole-body-badminton-via-multi-stage-re.md
   - ../../sources/sites/humanoid-badminton-multi-stage-rl.md
-summary: "人形全身羽毛球多阶段 RL（arXiv:2511.11218）：无 MoCap 先验的三阶段课程（步法→挥拍→任务精修）；仿真双机 21 连拍；真机出球最高 19.1 m/s；EKF 与免预测变体相当；代码宣称即将开源。"
+summary: "人形全身羽毛球退火 RL 课程（arXiv:2511.11218 v4）：无 MoCap 先验统一 WBC；仿真双机 21 连拍；真机人机对打、出球 19.1 m/s；EKF 与免预测相当；代码待发布。"
 ---
 
-# Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
+# Humanoid Whole-Body Badminton via an Annealed Reinforcement Learning Curriculum
 
-**Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning**（[arXiv:2511.11218](https://arxiv.org/abs/2511.11218)）给出 **无动作先验、无专家示范** 的统一全身羽毛球控制器：三阶段课程让腿臂共同服务击球；部署可用 **EKF 轨迹预测** 或 **免预测** 短历史球位变体。作者称 **首个真机人形羽毛球** 系统（Phybot C1，1.28 m / 21 DoF）。收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。在本库 [人形足球纵深 Stage 5](../../roadmap/depth-humanoid-soccer.md) 中作为 **竞技体育技能谱系** 对照。
+**Humanoid Whole-Body Badminton via an Annealed Reinforcement Learning Curriculum**（[arXiv:2511.11218](https://arxiv.org/abs/2511.11218)，v4 2026-09-14；项目页标题仍用 *Multi-Stage Reinforcement Learning*）由 **Chenhao Liu、Leyun Jiang、Ningyuan Tian、Yibo Wang、Kairan Yao、Jinchen Fu、Xiaoyu Ren**（Phybot）提出 **无动作先验、无专家示范** 的统一全身羽毛球控制器：**退火课程** 先用辅助 locomotion 目标稳学习，再逐步去掉以聚焦击球；腿臂统一步法 + 挥拍。部署可用 **EKF 轨迹预测** 或 **免预测** 短历史球位变体。仿真 **双机器人连续 21 拍**；真机 **人机对打** 与机喂球，出球最高 **19.1 m/s**。收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。在本库 [人形足球纵深 Stage 5](../../roadmap/depth-humanoid-soccer.md) 中作为 **竞技体育技能谱系** 对照。
 
 ## 一句话定义
 
-**不靠 MoCap 教挥拍——先学走到击球区，再学准点挥拍，最后拿掉步态塑形专心打中球；部署时可显式预测球路，也可只看最近几帧球位隐式推断时机。**
+**不靠 MoCap 教挥拍——用退火课程先靠辅助 locomotion 奖励稳住全身，再逐步拿掉塑形项聚焦稀疏击球；部署时可 EKF 预测球路，也可只看最近几帧球位隐式推断时机。**
 
 ## 英文缩写速查
 
@@ -43,13 +44,13 @@ summary: "人形全身羽毛球多阶段 RL（arXiv:2511.11218）：无 MoCap �
 | EKF | Extended Kalman Filter | 羽毛球轨迹估计与预测 |
 | WBC | Whole-Body Control | 腿臂统一服务击球目标 |
 | MoCap | Motion Capture | 真机基座位姿与球位；训练不用专家动作 |
-| DR | Domain Randomization | Stage 3 开启以巩固鲁棒 |
+| DR | Domain Randomization | 课程末段开启以巩固鲁棒 |
 | PD | Proportional-Derivative | 500 Hz 底层关节跟踪 |
 
 ## 为什么重要
 
 - **动态快速物体交互试金石：** 发球到击球常 <1 s，挥拍 >5 m/s，出球可达 **19.1 m/s**，比静态 loco-manipulation 更苛刻。
-- **课程替代动作先验：** 与 [LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)（Imitation-to-Interaction + AMP）形成对照——本文强调 **从零发现** 节能挥拍。
+- **退火课程替代动作先验：** 与 [LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)（Imitation-to-Interaction + AMP）形成对照——本文强调 **从零发现** 步法 + 挥拍共优化。
 - **四足期刊对照：** [ETH ANYmal 羽毛球（Science Robotics adu3922）](./paper-coordinated-badminton-skills-anymal.md) — **机载 visuomotor RL**，与人形 MoCap/EKF 线不同形态。
 - **免预测变体几乎打平：** 暗示策略可吸收球路规律，简化部署调参。
 - **足球纵深的谱系邻居：** 方法论上与「步法 + 击球时机」共享，服务 Stage 5 方向 D。
@@ -58,19 +59,21 @@ summary: "人形全身羽毛球多阶段 RL（arXiv:2511.11218）：无 MoCap �
 
 | 项 | 内容 |
 |----|------|
+| **作者** | Chenhao Liu, Leyun Jiang, Ningyuan Tian, Yibo Wang, Kairan Yao, Jinchen Fu, Xiaoyu Ren（arXiv v4；**不含** Junzhe He） |
+| **机构** | Beijing Phybot Technology Co., Ltd |
 | **平台** | Phybot C1（1.28 m，30 kg，21 DoF）；全尺寸球拍固连前臂 |
 | **栈** | Isaac Gym PPO · 策略 50 Hz · PD 500 Hz · 非对称 actor–critic |
 | **感知（真机）** | FZMotion MoCap 基座 + 球尖位置；EKF 或短历史球位 |
-| **开源** | **宣称将开源 / 待发布**（截至 **2026-07-28**）：GitHub 组织仓仅项目站，「All code will be released soon」；Code 按钮链回项目页，**无可运行训练入口** |
+| **开源** | **宣称将开源 / 待发布**（截至 **2026-09-27**）：GitHub 组织仓仅项目站，「All code will be released soon」；Code 按钮链回项目页，**无可运行训练入口** |
 
 ## 流程总览
 
 ```mermaid
 flowchart TB
-  subgraph train [三阶段课程]
-    s1["S1 步法<br/>走到击球区"]
+  subgraph train [退火课程（三阶段实现）]
+    s1["S1 步法<br/>辅助 locomotion + 击球区"]
     s2["S2 精度引导挥拍<br/>收紧位姿 σ"]
-    s3["S3 任务精修<br/>去掉接近/步态塑形"]
+    s3["S3 退火精修<br/>去掉接近/步态塑形"]
     s1 --> s2 --> s3
   end
   subgraph deploy [部署]
@@ -85,9 +88,9 @@ flowchart TB
 
 ## 核心机制（方法栈）
 
-### 1）三阶段奖励课程
+### 1）退火奖励课程（论文三阶段实现）
 
-- **S1：** 区域接近 + 步态/朝向塑形，先学会稳定换位。
+- **S1：** 区域接近 + 步态/朝向塑形，先学会稳定换位（辅助 locomotion 目标占主导）。
 - **S2：** 在击球时刻激活稀疏 hit 奖励（位置×姿态耦合 + 挥拍速度）；σ 从松到紧调度。
 - **S3：** 去掉接近主奖励与多项步态塑形，保留 hit + 安全正则，打开 DR/噪声；击球奖励再升 3–5%，能耗/力矩约降 20%。
 
@@ -103,11 +106,11 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（截至 2026-07-28）。** 官方 GitHub 仓声明代码即将发布，当前仅托管项目页；无训练/推理可运行入口可对齐。发布后应补 `sources/repos/` 与本图。
+**不适用（截至 2026-09-27）。** 官方 GitHub 仓声明代码即将发布，当前仅托管项目页；无训练/推理可运行入口可对齐。发布后应补 `sources/repos/` 与本图。
 
 ## 与其他工作对比
 
-| 维度 | 本文（Multi-Stage RL） | LHBS | HITTER（乒乓球） |
+| 维度 | 本文（Annealed RL） | LHBS | HITTER（乒乓球） |
 |------|------------------------|------|------------------|
 | **运动先验** | **无** | MoCap → AMP | 依赖示范参考 |
 | **统一全身** | 单策略，无独立基座位姿命令 | 四阶段模仿到交互 | 分层规划 + 全身控制 |
@@ -123,7 +126,7 @@ flowchart TB
 
 ## 结论
 
-**无先验的三阶段全身 RL 已能把人形羽毛球推到真机可打，但长回合与大工作区仍是下一步。**
+**无先验的退火全身 RL 已能把人形羽毛球推到真机可打（含人机对打），但长回合与大工作区仍是下一步。**
 
 1. **课程顺序硬约束** — 跳过 S1 或 S2 易发散；S3 负责打破平台期。
 2. **腿不是「走到点」** — 去掉独立基座命令，迫使步法与挥拍共优化。
@@ -147,6 +150,7 @@ flowchart TB
 
 ## 参考来源
 
+- [humanoid_whole_body_badminton_annealed_rl_arxiv_2511_11218.md](../../sources/papers/humanoid_whole_body_badminton_annealed_rl_arxiv_2511_11218.md)
 - [humanoid_pnb_humanoid-whole-body-badminton-via-multi-stage-re.md](../../sources/papers/humanoid_pnb_humanoid-whole-body-badminton-via-multi-stage-re.md)
 - [humanoid-badminton-multi-stage-rl.md](../../sources/sites/humanoid-badminton-multi-stage-rl.md)
 - 论文：<https://arxiv.org/abs/2511.11218>

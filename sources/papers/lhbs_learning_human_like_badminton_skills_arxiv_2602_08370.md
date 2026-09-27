@@ -12,6 +12,7 @@
 - **硬件：** EngineAI PM01 人形；真机评测辅以 FZMotion 光学动捕获取基座 6-DoF 与羽毛球 3D 位置
 - **仿真栈：** NVIDIA Isaac Sim + Isaac Lab；物理 200 Hz、策略 50 Hz
 - **入库日期：** 2026-06-25
+- **再核日期：** 2026-09-27（arXiv v2 online 2026-09-14；项目页仍无代码仓）
 - **一句话说明：** **Imitation-to-Interaction** 四阶段渐进 RL——MoCap 教师模仿 → DAgger 目标条件蒸馏 → AMP 风格稳定 → 羽毛球物理交互 + **流形扩展**；PM01 真机 **零样本** 完成正/反手挑球等拟人击球。
 
 ## 摘要级要点
@@ -50,13 +51,13 @@
 
 ### 与相邻人形球类技能对照
 
-| 维度 | LHBS（本文） | [LATENT](../../wiki/entities/paper-notebook-latent.md) 网球 | [Whole-Body Badminton](../../wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) |
+| 维度 | LHBS（本文） | [LATENT](../../wiki/entities/paper-notebook-latent.md) 网球 | [Whole-Body Badminton（Annealed RL）](../../wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) |
 |------|-------------|-----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| 平台 | EngineAI **PM01** | Unitree **G1** | （待深读） |
-| 核心难点 | 模仿 → **物理击球交互** | 不完美 MoCap → **latent 修正** | 多阶段 RL（待补充） |
-| 先验 | AMP + DAgger 蒸馏 | Latent action + **LAB** 屏障 | — |
-| 泛化 | **流形扩展** 稠密击球点 | 连续对打组合 | — |
-| Sim2Real | **零样本** 挑球 | 真人对打多拍 | — |
+| 平台 | EngineAI **PM01** | Unitree **G1** | Phybot **C1** |
+| 核心难点 | 模仿 → **物理击球交互** | 不完美 MoCap → **latent 修正** | **无先验** 退火课程 + 统一 WBC |
+| 先验 | AMP + DAgger 蒸馏 | Latent action + **LAB** 屏障 | **无** MoCap/专家示范 |
+| 泛化 | **流形扩展** 稠密击球点 | 连续对打组合 | 仿真双机 **21** 连拍 |
+| Sim2Real | **零样本** 挑球 | 真人对打多拍 | 人机对打 + 出球 **19.1 m/s** |
 
 ## 对 wiki 的映射
 
