@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md — 具身小站 12 篇（RoboRecover/Streaming-WAM/…/S2C）；12/12 独立 paper 节点（新建 11 + 复用 robot-group-joining）；技术地图 recover-wam；自动合并 PR
+
+- **意图：** 用户指定 mp.weixin.qq.com/s/RL232xWbXrs1XgNlFO3kdA；每篇论文独立非重复详情节点
+- **开源结论：** RoboRecover/Streaming-WAM/DeltaWAM/Streaming RL/KnowBody **已开源**；其余以项目页为准多为 **待发布**
+- **关键页：** [embodied-research-12-papers-recover-wam-technology-map](wiki/overview/embodied-research-12-papers-recover-wam-technology-map.md)
+
 ## [2026-09-27] ingest | sources/blogs/krishnasuresh_robot_whips_2026-09-26.md — Robot Whips 博客：动捕开环甩鞭/套索、GPT-6 Astra 自动 retarget；新建 dynamic-manipulation-mocap-hand-open-loop；交叉 Flying Knots；自动合并 PR
 
 - **意图：** 用户指定 Krishna Suresh 博客 https://krishnasuresh.org/blog/2026/robot-whips/

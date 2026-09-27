@@ -18,3 +18,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[Robot Group Joining](../../wiki/entities/paper-robot-group-joining.md)
+- **交叉索引：** [公众号 recover/wam 12 篇](../blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
