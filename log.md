@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/repos/meta_quest_immersive_web_emulation_runtime.md + sites/meta-quest-iwer-docs.md — Meta Quest IWER WebXR 仿真运行时（npm iwer）；升格 wiki/entities/immersive-web-emulation-runtime.md；交叉 teleoperation、mjswan、Isaac Teleop；自动合并 PR
+
+- **意图：** 用户指定 github.com/meta-quest/immersive-web-emulation-runtime
+- **开源结论：** **已开源** MIT；npm `iwer@2.5.0`
+- **关键页：** [immersive-web-emulation-runtime](wiki/entities/immersive-web-emulation-runtime.md)
+
 ## [2026-09-27] ingest | sources/blogs/wechat_embodied_simulators_series_overview_2026-09-27.md — 具身仿真器系列总览（十大平台横评）；10/10 复用实体 + 技术地图；WebFetch 抓取；自动合并 PR
 
 - **意图：** 用户指定 mp.weixin.qq.com/s/evU4IsliLfmsb9RoYXU65A

@@ -596,6 +596,7 @@
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
+- [Immersive Web Emulation Runtime（IWER）](wiki/entities/immersive-web-emulation-runtime.md) — IWER**（[Immersive Web Emulation Runtime](https://github.com/meta-quest/immersive-web-emulation-run `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Innodata](wiki/entities/innodata.md) — Innodata**（纳斯达克：**INOD**）向 AI 实验室与企业提供 **训练数据、评测、对齐与安全** 服务。LeoInAI Substack（2026-09）将其列为「物理 AI 数据 `📅unknown` `[entity_page]`
 - [INSIGHT-Bench](wiki/entities/insight-bench.md) — INSIGHT-Bench**（项目页，[代码](https://github.com `📅unknown` `[entity_page]`

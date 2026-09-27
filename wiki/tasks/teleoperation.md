@@ -338,6 +338,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 
 ### 平台、中间件与操作员工作站
 
+- [IWER（Immersive Web Emulation Runtime）](../entities/immersive-web-emulation-runtime.md) — Meta Quest 开源 WebXR 仿真运行时（桌面无头显调试 WebXR 遥操作页）
 - [XRoboToolkit（论文实体）](../entities/paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（PICO/Quest；全栈开源）
 - [Isaac Teleop](../entities/isaac-teleop.md) — NVIDIA Isaac Lab / Sim / ROS 2 统一 XR 遥操作；Televiz + LeRobot + 无标记手重建
 - [Isaac Lab](../entities/isaac-lab.md) — 集成宿主与内置遥操作环境

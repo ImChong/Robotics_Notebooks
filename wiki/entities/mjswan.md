@@ -98,6 +98,7 @@ flowchart LR
 
 ## 关联页面
 
+- [IWER（WebXR 仿真）](./immersive-web-emulation-runtime.md) — 桌面无头显调试 WebXR 交互
 - [MuJoCo WASM](./mujoco-wasm.md)
 - [MuJoCo](./mujoco.md)
 - [ONNX Runtime](./onnxruntime.md)
