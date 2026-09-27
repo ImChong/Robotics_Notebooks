@@ -6,9 +6,10 @@
 - **类型：** paper / imitation-learning / action-chunking / behavior-cloning / analysis
 - **会议：** CoRL 2026（PDF 元数据；项目页 BibTeX 写作 `@article{lazzati2026chunking}`）
 - **项目页：** <https://action-chunking.github.io/> — 归档见 [`sources/sites/action-chunking-github-io.md`](../sites/action-chunking-github-io.md)
-- **PDF：** <https://action-chunking.github.io/static/action_chunking.pdf>
-- **arXiv：** 入库时 **暂无编号**（页上写 Coming soon）
-- **代码：** 入库时 **Coming soon**（无可用 GitHub URL）
+- **PDF：** <https://action-chunking.github.io/static/action_chunking.pdf>（与 [arXiv PDF](https://arxiv.org/pdf/2608.02547) 同源发布）
+- **arXiv：** <https://arxiv.org/abs/2608.02547> — 索引归档见 [`why_action_chunking_improves_bc_arxiv_2608_02547.md`](./why_action_chunking_improves_bc_arxiv_2608_02547.md)
+- **Hugging Face Papers：** <https://huggingface.co/papers/2608.02547>
+- **代码：** **Coming soon**（2026-09-27 项目页仍无 GitHub URL）
 - **作者：** Filippo Lazzati、Kyle Stachowicz、William Chen、Alberto Maria Metelli、Andrew Wagenmaker、Sergey Levine
 - **机构：** 米兰理工大学（Politecnico di Milano）；加州大学伯克利分校（UC Berkeley）
 - **入库日期：** 2026-08-04
@@ -16,10 +17,10 @@
 
 ## 开源状态（步骤 2.5）
 
-- **核查日：** 2026-08-04，打开 <https://action-chunking.github.io/>。
-- **已发布：** 项目页、PDF、presentation。
-- **未发布：** arXiv 链接、代码仓库。
-- **结论：** **宣称将开源 / 待发布**。wiki 实体页不得写「已开源」；`## 源码运行时序图` 写 **不适用**。
+- **核查日：** 2026-09-27，打开 <https://action-chunking.github.io/> 与 arXiv:2608.02547。
+- **已发布：** 项目页、PDF、presentation、**arXiv**、Hugging Face Papers 索引。
+- **未发布：** 代码仓库（页上仍为 Code Coming soon）。
+- **结论：** **部分开源 / 代码待发布**。wiki 实体页不得写「训练代码已开源」；`## 源码运行时序图` 仍为 **不适用**。
 
 ## 摘录 1：否定既有假说，提出三条机制
 

@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-27
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -193,6 +193,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* — ACT 的代表性工作
 - [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：2D 视频预测与 3D 动作推理拆分预训练，扩散适配器输出动作 chunk
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：ACT + 模态特异触觉编码器的跨传感器基准
+- [sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md](../../sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md) — arXiv:2608.02547 索引
 - [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — CoRL 2026：chunk 收益机制（Delay / RDE / 隐式集成）
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 历史条件化使短 chunk 可反应（CoRL 2026）
 - [sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine：扩散/flow 使大块 action chunk 成为连续控制默认接口

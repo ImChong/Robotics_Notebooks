@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md — Why AC Improves BC（2608.02547）补 arXiv/HF 与项目页再核；代码仍 Coming soon；更新 paper-why-action-chunking-improves-bc；自动合并 PR
+
+- **意图：** 用户指定 action-chunking.github.io、arXiv:2608.02547、Hugging Face Papers
+- **开源结论：** **部分开源** — arXiv + PDF 已发布；GitHub 仍 Coming soon
+- **关键页：** [paper-why-action-chunking-improves-bc](wiki/entities/paper-why-action-chunking-improves-bc.md)
+
 ## [2026-09-27] ingest | sources/papers/grid_arxiv_2310_00887.md — GRID（General Robot Intelligence Development）；Open GRID + GRID-playground 部分开源、Enterprise 闭源；paper-grid + 更新 grid-general-robotics；自动合并 PR
 
 - **意图：** 用户指定项目页、Open GRID、文档、GenRobo/GRID-playground、arXiv:2310.00887
