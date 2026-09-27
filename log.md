@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/show-harness_arxiv_2609_10522.md — Show-Harness（2609.10522）用户指定官方 ingest；步骤 2.5 已开源（GitHub+HF 权重/数据）；补 sites/repos 与 paper-show-harness 深读；自动合并 PR
+
+- **意图：** 用户指定 arXiv / 项目页 / GitHub / HF 模型与数据 + Show Lab @ NUS 作者元数据
+- **开源结论：** **已开源** — `showlab/Show-Harness`、`showlab/Show-Harness-VLMs`、`showlab/Show-Harness-Data`
+- **关键页：** [paper-show-harness](wiki/entities/paper-show-harness.md)
+
 ## [2026-09-27] ingest | DAVIS / BRIDGE / EgoDex — 三项目页再核与链接补全；DAVIS·BRIDGE 代码仍待发布/coming soon；EgoDex 补 Apple 项目页·ICLR OpenReview·HF FiftyOne；自动合并 PR
 
 - **意图：** 用户指定 DAVIS（Noetix×清华）、BRIDGE（2609.03497）、EgoDex（2505.11709 + 全链外链）
