@@ -196,6 +196,7 @@ flowchart TD
 - [EgoScale](./egoscale.md)：在 **两万小时量级** egocentric 人视频上做 **显式腕–手动作** 预训练，并系统测量 **数据规模–离线验证–真机灵巧** 的缩放关系；用 **对齐人–机 mid-training** 把表示锚到机器人（arXiv:2602.16710）
 - [EgoVerse](../entities/paper-egoverse.md)：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身 **BC/CFM 共训**——共训可涨分，但有效缩放依赖 **域对齐人数据锚定**，有限预算下 **场景多样性** 优先（arXiv:2604.07607）
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)：在 **固定 HPT 与数据混合** 下仅换 **世界预测目标**，实证 **朴素 BC 人–机协同训练** 可因 **具身差距 / misalignment** **损害** 性能，而 **WAM 动力学分支** 使策略能随 **野外 egocentric 人数据** 扩展（Georgia Tech RL²，[项目页](https://gatech-rl2.github.io/egowam.github.io/)）
+- [EgoWild2Dex](../entities/paper-egowild2dex.md)：**538.9 h 野外 ego EgoWild** + **GeoFormer** 视角对齐 + **三阶段人–机训练**；每任务 **<1 h** robot 数据达 **96.7%** 长时程 **双手灵巧** 成功率（HKU×Kinetix，arXiv:2609.23755）
 - [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)：用 **动作条件世界模型** 在 **共享潜式物理推理空间** 对齐人手与机器人轨迹，配套 **OOL Glove** 与 **mixed-to-human**（混合共训 + 人手 DAgger 纠偏），在真机操作任务上报告 **人类数据缩放与快速适应**（arXiv:2606.23685）
 - [EgoPHI](../entities/paper-egophi.md)：从 **单目 ego RGB + 物体几何** 预测双手–关节物体 mesh 上 **稠密 3D 接触与力**；SOFA 仿真力监督 + ARCTIC/H2O 评测 + 透光真机 sim-to-real——可作为人类示范的 **物理层标注器** 上游 IL（ECCV 2026，arXiv:2608.13014；**部分开源**）
 

@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/papers/egowild2dex_arxiv_2609_23755.md — EgoWild2Dex（2609.23755）野外 ego→灵巧 VLA；GeoFormer+三阶段训练+EgoWild 538.9h；数据/代码待发布；自动合并 PR
+
+- **意图：** 用户指定 mmlab.hk/egowild2dex 与 arXiv:2609.23755
+- **开源结论：** **待发布** — 项目页无 GitHub；论文 will release data/models/code
+- **关键页：** [paper-egowild2dex](wiki/entities/paper-egowild2dex.md)
+
 ## [2026-09-27] ingest | ALOHA 2 / Menagerie aloha / D405 / OpenCV 手眼 / Tsai–Lenz — 双臂遥操作硬件+仿真与腕部相机标定链；硬件+Menagerie 已开源；新建 aloha-2、hand-eye-calibration；自动合并 PR
 
 - **意图：** 用户指定 aloha-2.github.io、Menagerie README、OpenCV calibrateHandEye、Tsai–Lenz DOI、RealSense D405 规格
