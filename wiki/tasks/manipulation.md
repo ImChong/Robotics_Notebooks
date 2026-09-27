@@ -12,6 +12,7 @@ related:
   - ../entities/paper-4dof-pen-sorting.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../entities/paper-flying-knots.md
+  - ../methods/dynamic-manipulation-mocap-hand-open-loop.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
   - ../entities/paper-embodied-manipulation-foundation-models-survey.md
   - ../entities/paper-vtap-gripper.md
@@ -240,6 +241,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 #### 可变形体与家务操作
 
+- **动捕开环（零学习）**：[动捕手部开环动态操作](../methods/dynamic-manipulation-mocap-hand-open-loop.md) — Suresh/Atkeson 2026 博客：Vicon 手部轨迹 retarget + 开环 ID 跟踪即可 **甩鞭 / 套索**；跟踪不足时见 Flying Knots
 - **Task-Level ILC（可变形体）**：[Flying Knots](../entities/paper-flying-knots.md)（arXiv:2602.21302）— **单次人类示教 + 粒子绳模型 + critical-point 逆模型 QP**，在 xArm7 真机上 **≤10 trials** 完成动态打结，绳型间 **2–5 trials** 可迁移；与大规模 BC/扩散策略形成 **样本效率** 对照
 - **神经布料仿真（可变形体 sim）**：[ClothTransformer](../entities/paper-clothtransformer-unified-latent-cloth-simulation.md)（arXiv:2605.27852）— **统一 latent Transformer** 覆盖 **人体着装 / 夹爪抓布 / 刚体碰撞**；~493.4k 帧 **GIPC 无穿透** 数据 + **可微 CCD**；可作 **操作规划 / 仿真加速** 的动力学先验（论文 Robotic Manip. 为仿真，非真机闭环）
 - **家用可变形操作 · Solve 叙事**：[ACT-2（Sunday Robotics）](../entities/sunday-robotics-act2.md)（2026-07）在 **Memo** 移动平台上以 **人类 sensorized 预训练 + in-house post-training** 报告 **叠衣 99.1%（785 ep、未见家庭、零部署适配）**；评测框架见 [Robotics Solve 标准](../concepts/robotics-solve-standard.md)——与开源 [TidyBot2](../entities/tidybot2.md)、[LeRobot folding](../entities/lerobot.md)、竞赛全链路 [Learning to Fold / LeHome](../entities/paper-lehome-learning-to-fold.md)（仿真 1st / 真机 2nd，SO-ARM101）、以及 [χ₀ / kai0](../entities/paper-kai0.md)（双臂协同展平/折叠/挂衣，相对 π₀.₅ 约 +250% SR，代码数据权重已开）形成 **闭源可靠性主张 vs 可复现栈** 对照

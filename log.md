@@ -1,3 +1,9 @@
+## [2026-09-27] ingest | sources/blogs/krishnasuresh_robot_whips_2026-09-26.md — Robot Whips 博客：动捕开环甩鞭/套索、GPT-6 Astra 自动 retarget；新建 dynamic-manipulation-mocap-hand-open-loop；交叉 Flying Knots；自动合并 PR
+
+- **意图：** 用户指定 Krishna Suresh 博客 https://krishnasuresh.org/blog/2026/robot-whips/
+- **开源结论：** **演示未开源**；工具栈为 Drake/Pinocchio 等社区库；跟踪失败对照 Flying Knots（已开源论文仓）
+- **关键页：** [dynamic-manipulation-mocap-hand-open-loop](wiki/methods/dynamic-manipulation-mocap-hand-open-loop.md)
+
 ## [2026-09-27] ingest | Harmon / SimplerEnv / MaskedMimic / ProtoMotions — 用户指定多链 ingest：2410.12773+Harmon 页、2405.05941+SimplerEnv 开源评测、MaskedMimic PDF+ProtoMotions；升格 harmon 与 paper-simplerenv-real2sim-eval；自动合并 PR
 
 - **意图：** arXiv 2410.12773、Harmon 项目页、ProtoMotions、MaskedMimic PDF、SimplerEnv 站+仓、arXiv 2405.05941

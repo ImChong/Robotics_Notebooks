@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, deformable-objects, rope, iterative-learning-control, model-based-control, quadratic-programming, imitation-learning, cmu, arxiv2026]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-27
 arxiv: "2602.21302"
 venue: "arXiv preprint"
 related:
@@ -11,7 +11,9 @@ related:
   - ../methods/imitation-learning.md
   - ../concepts/impedance-control.md
   - ./flying-knots-public.md
+  - ../methods/dynamic-manipulation-mocap-hand-open-loop.md
 sources:
+  - ../../sources/blogs/krishnasuresh_robot_whips_2026-09-26.md
   - ../../sources/papers/flying_knots_arxiv_2602_21302.md
   - ../../sources/repos/flying_knots_public.md
   - ../../sources/sites/flying-knots-github-io.md
@@ -133,6 +135,7 @@ flowchart TB
 | **大规模 IL / Diffusion Policy** | 数百+ 示教 | 隐式动力学 | **单示教 + 迭代修正** |
 | **RL in sim** | 海量仿真 + sim2real | 仿真绳物理 | **真机直接 ILC，轻量粒子模型** |
 | **轨迹级 ILC** | 重复试验 | 全状态跟踪 | **任务级 critical-point 目标** |
+| **动捕开环跟踪** | 单次 mocap | 手/末端轨迹 + ID | [Robot Whips 博客](../methods/dynamic-manipulation-mocap-hand-open-loop.md)：够准时 **零学习**；不够时落到本文 ILC |
 | **MPC / 在线优化** | 实时模型 | 每步重规划 | **批次迭代更新 Bézier 命令** |
 
 与 [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) 的关系：绳 **自碰撞** 是典型的 **瞬态接触丰富** 子问题；本文用 **任务级误差 + QP 逆模型** 而非阻抗/力控执行层直接闭环。
@@ -145,6 +148,7 @@ flowchart TB
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 自碰撞/contact 语义
 - [Imitation Learning](../methods/imitation-learning.md) — 单示教 vs 大规模 IL 对照
 - [flying_knots_public（仓库实体）](./flying-knots-public.md) — 代码与依赖入口
+- [动捕手部开环动态操作](../methods/dynamic-manipulation-mocap-hand-open-loop.md) — 同作者组：跟踪足够时免学习；本文为跟踪不足后备
 
 ## 推荐继续阅读
 
@@ -154,6 +158,7 @@ flowchart TB
 
 ## 参考来源
 
+- [Robot Whips 博客归档](../../sources/blogs/krishnasuresh_robot_whips_2026-09-26.md) — 开环 mocap 与本文 ILC 的衔接叙事
 - [Flying Knots 论文摘录](../../sources/papers/flying_knots_arxiv_2602_21302.md)
 - [flying_knots_public 仓库归档](../../sources/repos/flying_knots_public.md)
 - [Flying Knots 项目页归档](../../sources/sites/flying-knots-github-io.md)
