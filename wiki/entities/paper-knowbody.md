@@ -4,11 +4,13 @@ tags: [paper, vla, vlm, manipulation, body-model]
 status: complete
 updated: 2026-09-27
 arxiv: "2609.28530"
+code: https://github.com/Loule0-0/KnowBody
 related:
   - ../overview/embodied-research-12-papers-recover-wam-technology-map.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/knowbody_arxiv_2609_28530.md
+  - ../../sources/repos/knowbody.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md
 summary: "KnowBody（2609.28530）：为冻结 VLM 提供可查询/可修订身体关系模型，用交互证据连接语言指令与实际控制效果。"
 ---
@@ -69,6 +71,7 @@ summary: "KnowBody（2609.28530）：为冻结 VLM 提供可查询/可修订身�
 ## 参考来源
 
 - [论文归档](../../sources/papers/knowbody_arxiv_2609_28530.md)
+- [KnowBody 仓库归档](../../sources/repos/knowbody.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
 
 ## 推荐继续阅读

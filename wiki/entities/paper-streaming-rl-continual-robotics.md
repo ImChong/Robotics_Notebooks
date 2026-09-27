@@ -4,11 +4,13 @@ tags: [paper, reinforcement-learning, continual-learning, analysis]
 status: complete
 updated: 2026-09-27
 arxiv: "2609.28807"
+code: https://github.com/tjvitchutripop/stream-rl-robotics/
 related:
   - ../overview/embodied-research-12-papers-recover-wam-technology-map.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/streaming_rl_continual_robotics_arxiv_2609_28807.md
+  - ../../sources/repos/stream-rl-robotics.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md
 summary: "Streaming RL 分析（2609.28807）：流式 DRL 适应目标/环境/身体变化；足式有潜力，操作任务可能先恢复后退化。"
 ---
@@ -69,6 +71,7 @@ summary: "Streaming RL 分析（2609.28807）：流式 DRL 适应目标/环境/�
 ## 参考来源
 
 - [论文归档](../../sources/papers/streaming_rl_continual_robotics_arxiv_2609_28807.md)
+- [stream-rl-robotics 仓库归档](../../sources/repos/stream-rl-robotics.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
 
 ## 推荐继续阅读

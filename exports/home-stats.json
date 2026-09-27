@@ -46,6 +46,7 @@
       "recency": "2026-09-27",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },
     {
@@ -66,6 +67,7 @@
       "recency": "2026-09-27",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -76,6 +78,7 @@
       "recency": "2026-09-27",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
     },
     {
@@ -96,6 +99,7 @@
       "recency": "2026-09-27",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
@@ -106,6 +110,7 @@
       "recency": "2026-09-27",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "世界模型（World Models） 社区"
     },
     {
