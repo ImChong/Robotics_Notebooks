@@ -53,8 +53,8 @@
 - 无
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（3 个）
+- GitHub（被 7 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - Agent（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- GitHub（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - skills（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
@@ -146,4 +146,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/concepts/hand-eye-calibration.md
 
-📊 Sources 覆盖率：5333/5333 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：5335/5335 (100%) wiki/entity 页有 ingest 来源

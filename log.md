@@ -4,6 +4,12 @@
 - **开源结论：** **不适用**（Perspective 无论文代码；Digit 商业栈未列公开训练仓）
 - **关键页：** [paper-physical-ai-mechanical-hardware](wiki/entities/paper-physical-ai-mechanical-hardware.md)
 
+## [2026-09-27] ingest | sources/blogs/axis_composable_library_robotic_capabilities_2026-09-25.md — Axis 可组合能力库博客；Grounded RSI / proxy 选轨迹 / 低成本 Expert；axis-robotics + 站点/仓归档；交叉 Sim2Real·RSI；自动合并 PR
+
+- **意图：** 用户指定 axisrobotics.ai 博客 ingest
+- **开源结论：** AxisAIOrg **部分开源**（Web 采集/清洗/AXIS 训练）；博客 Expert·proxy·RSI **未列** 独立仓库
+- **关键页：** [axis-composable-capability-library](wiki/entities/axis-composable-capability-library.md)、[axis-robotics](wiki/entities/axis-robotics.md)
+
 ## [2026-09-27] ingest | sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md — 多模空间一周 VLA 第四篇（14 篇）；新建 10 实体 + 技术地图；复用 GigaBrain/Reflex/ViTaR/StructRL；自动合并 PR
 
 - **意图：** 用户指定 mp.weixin.qq.com/s/Eae0_0kuz-Hz8mmbpK3qBA；每篇论文独立非重复详情节点

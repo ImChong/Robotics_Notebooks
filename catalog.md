@@ -74,6 +74,8 @@
 - [AWS EC2 GPU](wiki/entities/aws-ec2-gpu.md) — Amazon EC2 GPU 实例**是 AWS 弹性计算中的 **NVIDIA GPU 虚拟机**产品线，从入门级 **g4dn（T4）** 到 **p5（H100）** / **p5e（H20 `📅unknown` `[entity_page]`
 - [Axellwppr / motion_tracking](wiki/entities/axellwppr-motion-tracking.md) — 一句话定义**：Axellwppr/motion_tracking 是 [HEFT](./paper `📅unknown` `[entity_page]`
 - [axfluxmdo（轴向磁通电机多学科优化工具包）](wiki/entities/axfluxmdo.md) — axfluxmdo**（jman4162/axfluxmdo，文档 [jman4162.github.io/axf `📅unknown` `[entity_page]`
+- [Axis 可组合 Robotic 能力库](wiki/entities/axis-composable-capability-library.md) — Axis Robotics** 在 **2026-09-25** [官方博客](https://axisrobotics.ai/blogs/blog/beyond-more-tasks-axis- `📅unknown` `[entity_page]`
+- [Axis Robotics（AXIS ROBOTICS）](wiki/entities/axis-robotics.md) — Axis Robotics** 是面向 **Physical AI** 的 **可复利数据基础设施** 公司（官网）：用 **去中心化贡献者 `📅unknown` `[entity_page]`
 - [BAM（Better Actuator Models）](wiki/entities/bam-better-actuator-models.md) — BAM**（Rhoban/bam）是论文 [*Extended Friction Models for the Physics S `📅unknown` `[entity_page]`
 - [Berkeley Autonomous Race Car（BARC）](wiki/entities/barc.md) — BARC**（Berkeley Autonomous Race Car）是 **UC Berkeley** 的 **1/10 尺度自主赛车** 开源研究与教学平台，涵盖机械/电气 CAD、ROS  `📅unknown` `[entity_page]`
 - [Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）](wiki/entities/bavaria-direct-winding-calculator.md) — Bavaria Direct Winding Scheme Calculator**（源码名 *Bewicklungsrechner XL*，(C) 2010 Felix Niessen，GPLv `📅unknown` `[entity_page]`

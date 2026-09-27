@@ -81,6 +81,8 @@ related:
   - ../queries/rl-sim2real-deployment-conditions.md
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../entities/awesome-real2sim2real.md
+  - ../entities/axis-composable-capability-library.md
+  - ../entities/axis-robotics.md
   - ../entities/paper-humanoidvln.md
   - ../entities/cosmos-transfer.md
   - ../entities/cosmos-cookbook.md
@@ -204,6 +206,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **忽略动作延迟**：仿真中动作瞬时执行，现实中有延迟
 - **只看 reward 不看安全性**：sim2real 部署初期容易损坏硬件
 - **把 Sim2Real 当成训完之后的独立步骤**：辨识、训练、部署因此彼此割裂；正确读法是从 [SysID](./system-identification.md) 启动、经 DR/课程与部署前馈/在线适应、再在运行中持续校准的闭环——见 [闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)
+- **部署后自生成真机数据共训（Grounded RSI 叙事）：** [Axis 可组合能力库](../entities/axis-composable-capability-library.md) 报告 sim 主数据 + 部署策略自主采集 **少量成功 rollout** 与仿真 **co-training**，真机成功率约 **22%→52%**；读作 **Sim2Real 从一次性迁移到自改进环** 的产业实例，证据为官方博客、**待独立复现**。
 - **一失败就盲目扩大 DR**：应先分解可建模参数 / 难建模动态 / 观测误差 / 时变工况，再分流到校准、随机化或适应，避免策略过度保守
 
 ## 在人形机器人中的应用

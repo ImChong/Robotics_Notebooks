@@ -353,6 +353,15 @@
         "archon"
       ]
     },
+    "axis-robotics": {
+      "label": "轴心机器人（Axis Robotics）",
+      "aliases": [
+        "axis-robotics",
+        "axisrobotics",
+        "axis-ai",
+        "axisaiorg"
+      ]
+    },
     "psibot": {
       "label": "灵巧智能（PsiBot）",
       "aliases": [
