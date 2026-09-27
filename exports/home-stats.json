@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-lightsplat.md",
+      "detail_id": "entity-paper-lightsplat",
+      "label": "LightSplat",
+      "type": "entity",
+      "recency": "2026-09-27",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉感知（Robot Perception） 社区"
+    },
+    {
       "path": "wiki/concepts/flow-matching-embodied-policy.md",
       "detail_id": "wiki-concepts-flow-matching-embodied-policy",
       "label": "流匹配与具身策略（Flow Matching for Embodied Policy）",
@@ -203,27 +214,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dreamfly-aerial-vln.md",
-      "detail_id": "entity-paper-dreamfly-aerial-vln",
-      "label": "DreamFly（arXiv:2608.12308）",
-      "type": "entity",
-      "recency": "2026-09-26",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/flow-matching-embodied-policy.md",
-    "detail_id": "wiki-concepts-flow-matching-embodied-policy",
-    "label": "流匹配与具身策略（Flow Matching for Embodied Policy）",
-    "type": "concept",
-    "recency": "2026-09-26",
+    "path": "wiki/entities/paper-lightsplat.md",
+    "detail_id": "entity-paper-lightsplat",
+    "label": "LightSplat",
+    "type": "entity",
+    "recency": "2026-09-27",
     "source": "git",
     "action": "added",
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "has_repo": true,
+    "community_label": "视觉感知（Robot Perception） 社区"
   },
   "top_communities": [
     {
