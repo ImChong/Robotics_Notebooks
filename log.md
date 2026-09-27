@@ -1,3 +1,10 @@
+## [2026-09-27] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（5350 节点）
+
+- **触发：** 用户要求更新 README GIF
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（67 frames / 1.26 MB；图谱 **5350** 节点 / **46833** 边）
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 重录并写回 `media/site-demo.gif`
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+
 ## [2026-09-27] ingest | sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md — 具身小站 12 篇（RoboRecover/Streaming-WAM/…/S2C）；12/12 独立 paper 节点（新建 11 + 复用 robot-group-joining）；技术地图 recover-wam；自动合并 PR
 
 - **意图：** 用户指定 mp.weixin.qq.com/s/RL232xWbXrs1XgNlFO3kdA；每篇论文独立非重复详情节点
