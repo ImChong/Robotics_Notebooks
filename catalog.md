@@ -400,6 +400,7 @@
 - [Cosmos Cookbook（WFM 配方站）](wiki/entities/cosmos-cookbook.md) — Cosmos Cookbook**（文档站，[GitHub](https `📅unknown` `[entity_page]`
 - [Cosmos Curator（视频策展）](wiki/entities/cosmos-curator.md) — Cosmos Curator** 是 NVIDIA Cosmos 生态里专门处理 **海量原始视频 → 可训练 clip + caption + emb `📅unknown` `[entity_page]`
 - [Cosmos Transfer（条件世界翻译）](wiki/entities/cosmos-transfer.md) — Cosmos Transfer** 是 NVIDIA Cosmos 里专门做 **world-to-world** 的一支：输入不是「从零生成世界」，而 `📅unknown` `[entity_page]`
+- [Spec-Driven Development with Coding Agents（DeepLearning.AI 短课）](wiki/entities/course-spec-driven-development-coding-agents.md) — DeepLearning.AI](https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents/) 与 `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
 - [Crocoddyl](wiki/entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
