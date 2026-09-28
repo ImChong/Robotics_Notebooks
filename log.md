@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | sources/sites/pi-website-technical-articles.md — 按 pi.website/blog 补齐 Hi Robot、KI、RTC、π*₀.₆、人视频迁移、Olympics 与 PI Layer，并修正公司路线跳转
+
 ## [2026-09-28] ingest | HomeBody（Stanford TML）G1+GPT Astra 技能库长程 loco-manip；GitHub 待发布；paper-homebody + sources 三件套
 
 ## [2026-09-28] ingest | Project SuperDex 复核（projectsuperdex.com + v1.0.0）；更新 sources 与 entity 开源/发布/引用占位
