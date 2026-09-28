@@ -250,6 +250,10 @@ flowchart TD
 - **核心：** **>1 万小时** 人中心三流数据（配对 video–motion / 仅视频 / 仅动作）预训练 **video-motion MoT**；视觉用 **冻结 DINO latent**（非像素）；motion 为 **head-root 紧凑头/双手/双脚** 表示，可与人形 FK 轨迹对齐；**future-conditioned action expert** 单向读取 prior 多层隐状态 + 当前观测，输出 **action chunk**；推理 **低频 prior 刷新 + 高频 expert**。
 - **代表作**：[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md) (BeingBeyond, 2026-07) — **G1** + Linker O6 + **PICO VR** 全身遥操作后训练；真机 Mirror/Fish 等 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**；与 [Being-H0.7](../methods/being-h07.md) 同机构潜空间 WAM，与 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 的 Joint 双 DiT 路线对照。
 
+#### 产业实例：脑–全身控制器协同 + real-to-sim-to-real（Δ₀ · 闭源）
+- **核心：** **MoT 潜空间 world–action brain**（DINO 未来特征 + 全身 motion，四模式训练）与 **69-DoF 学习式 controller** **协同扩展**；**motion command / delta-action** 统一遥操作、策略与 HIL；**>1 万 h** 配对 egocentric 人数据预训练 + **180 维 padded 跨 embodiment 动作空间**；**real-to-sim-to-real** 重建场景筛 checkpoint，**value + HIL** 真机 RL 后训练。
+- **代表作**：[Δ₀（Delta-0）](../entities/delta-0-humanoid-foundation-model.md)（Delta Intelligence，2026-09 博客）— 家务级演示（铺床、洗碗机、脚踏垃圾桶等）；控制器 zero-shot 跟踪称优于 HEFT / MimicLite / SONIC / ScaleBFM XL（第三方 leaderboard 协议）；洗碗机 OOD 布局 **4/20→13/20**（公司自报）；**截至入库日未开源**。
+
 #### 结构化 latent LLC + 技能级世界模型想象 HLC（LUCID · 长时程重排）
 - **核心**：反对脚本 FSM / 顺序单物体策略的长链交接；**Stage 1** 用对抗模仿训 **结构化 skill-anchor latent** 条件 LLC 并冻结；**Stage 2** 联合训 **macro-dynamics 世界模型**（预测技能诱导的任务状态变化，非关节级逐步动力学）与 Dreamer 式 HLC，在 **想象宏轨迹** 上优化有序多物体重排。
 - **代表作**：[LUCID](../entities/paper-lucid.md) (曼彻斯特大学 / IIT, 2026, arXiv:2608.07746) — HITR 衍生 ID/OOD 重排；ID **SR2 73.4%** vs 最强基线 HumanVLA **39.8%**；五物体链仍约 **SR5 21%**；结构化接口消融：无结构 latent **SR2=0**；**截至入库日未开源**。
