@@ -26,7 +26,7 @@
 | 8 | CFM 多任务蒸馏 | [2609.28107](https://arxiv.org/abs/2609.28107) | 待发布 | [paper-cfm-multitask-distillation](../../wiki/entities/paper-cfm-multitask-distillation.md) **新建** |
 | 9 | JAMB | [2609.25322](https://arxiv.org/abs/2609.25322) | 待发布 | [paper-jamb-bimanual-diffusion](../../wiki/entities/paper-jamb-bimanual-diffusion.md) **新建** |
 | 10 | BrickCraft-Duo | [2609.28281](https://arxiv.org/abs/2609.28281) | 待发布 | [paper-brickcraft-duo](../../wiki/entities/paper-brickcraft-duo.md) **复用** |
-| 11 | Cartesian Hand | [2609.25696](https://arxiv.org/abs/2609.25696) | 宣称将开源 | [paper-cartesian-hand-linear-fingers](../../wiki/entities/paper-cartesian-hand-linear-fingers.md) **新建** |
+| 11 | Cartesian Hand | [2609.25696](https://arxiv.org/abs/2609.25696) | 已开源（[Cartesian_Hand](https://github.com/generalroboticslab/Cartesian_Hand)） | [paper-cartesian-hand-linear-fingers](../../wiki/entities/paper-cartesian-hand-linear-fingers.md) **新建** |
 | 12 | GLoTouch | [2609.27695](https://arxiv.org/abs/2609.27695) | 待发布 | [paper-glotouch-haptic-grasping](../../wiki/entities/paper-glotouch-haptic-grasping.md) **新建** |
 | 13 | Opt2VLA | [2609.23968](https://arxiv.org/abs/2609.23968) | 待发布 | [paper-opt2vla-force-aware-humanoid](../../wiki/entities/paper-opt2vla-force-aware-humanoid.md) **新建** |
 | 14 | Brace Yourself | [2609.25486](https://arxiv.org/abs/2609.25486) | 待发布 | [paper-brace-yourself-environmental-bracing](../../wiki/entities/paper-brace-yourself-environmental-bracing.md) **新建** |

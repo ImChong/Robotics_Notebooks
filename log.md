@@ -4,6 +4,12 @@
 - **开源结论：** **已开源**（hardware/runtime/identification Apache-2.0；legged-zoo 无预训练策略）
 - **关键页：** [lerobot-humanoid](wiki/entities/lerobot-humanoid.md)
 
+## [2026-09-28] ingest | sources/sites/cartesian-hand-v1-generalroboticslab.md + repos/cartesian_hand.md — Cartesian Hand v1 项目页与 GRL 控制栈；已开源 Apache-2.0；深化 paper-cartesian-hand-linear-fingers；自动合并 PR
+
+- **意图：** 用户指定 https://generalroboticslab.com/cartesian_handv1
+- **开源结论：** **已开源** — `generalroboticslab/Cartesian_Hand`；任务转录尚未全物体重验证
+- **关键页：** [paper-cartesian-hand-linear-fingers](wiki/entities/paper-cartesian-hand-linear-fingers.md)
+
 ## [2026-09-28] ingest | sources/papers/forcetwin_arxiv_2609_21751.md + sites/forcetwin-website.md — ForceTwin 物理信息数字孪生（arXiv:2609.21751）；仪器化人类力交互辨识铰接动力学；项目页无代码；Contact-Guided（2608.28140）项目页再核 RA-L、仍无 GitHub；自动合并 PR
 
 - **意图：** 用户指定两篇 arXiv + 项目页 ingest
