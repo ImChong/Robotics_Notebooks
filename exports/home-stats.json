@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-scaledp-scaling-diffusion-transformer-policy.md",
+      "detail_id": "entity-paper-scaledp-scaling-diffusion-transformer-policy",
+      "label": "ScaleDP：十亿参数可扩展扩散 Transformer 操作策略",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
       "path": "wiki/entities/paper-dit-scalable-diffusion-transformers.md",
       "detail_id": "entity-paper-dit-scalable-diffusion-transformers",
       "label": "DiT：可扩展的 Transformer 扩散模型",
@@ -201,27 +211,16 @@
       "source": "git",
       "action": "added",
       "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-online-sim2real-closed-loop-modeling.md",
-      "detail_id": "entity-paper-online-sim2real-closed-loop-modeling",
-      "label": "在线闭环 Sim2Real（arXiv:2609.28878）",
-      "type": "entity",
-      "recency": "2026-09-28",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dit-scalable-diffusion-transformers.md",
-    "detail_id": "entity-paper-dit-scalable-diffusion-transformers",
-    "label": "DiT：可扩展的 Transformer 扩散模型",
+    "path": "wiki/entities/paper-scaledp-scaling-diffusion-transformer-policy.md",
+    "detail_id": "entity-paper-scaledp-scaling-diffusion-transformer-policy",
+    "label": "ScaleDP：十亿参数可扩展扩散 Transformer 操作策略",
     "type": "entity",
     "recency": "2026-09-28",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
