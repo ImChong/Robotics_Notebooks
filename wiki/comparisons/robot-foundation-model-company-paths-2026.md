@@ -9,9 +9,11 @@ related:
   - ../concepts/embodied-three-layer-control-architecture.md
   - ../overview/vla-evolution-lineage.md
   - ../overview/wam-motion-control-five-paths.md
+  - ../entities/delta-0-humanoid-foundation-model.md
 sources:
   - ../../sources/sites/robot-foundation-model-company-research-2026.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 12 家团队的公开技术路线与复现边界。"
+  - ../../sources/sites/deltai-com.md
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 13 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -23,7 +25,7 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 ## 30 秒读懂
 
 - **三种视角对应机器人栈的三层**：上层“看懂世界、生成动作”（VLA / WAM），中层“大小脑怎么接”（整机接口），下层“身体怎么稳稳做出来”（WBC、仿真迁移）。见下方分层图。
-- **公司不是互斥赛道**：1X、NVIDIA、Galbot、LimX、Unitree 在矩阵里都横跨两列以上。
+- **公司不是互斥赛道**：1X、NVIDIA、Galbot、LimX、Unitree、德塔智能在矩阵里都横跨两列以上。
 - **“有模型名” ≠ “能复现”**：开放程度差异很大，从“代码 + 权重”到“只有博客叙述”都有；复现前逐项核对代码、权重、数据、真机接口。
 - **不能排名**：各家任务、本体、频率、测评环境不同，本页只做路线对照，不是基准测试。
 
@@ -88,8 +90,9 @@ flowchart TB
 | LimX 逐际动力 |  | ● | ● | COSA、FluxVLA、腿足技能 |
 | Unitree 宇树 |  | ● | ● | G1、UnifoLM、控制生态 |
 | [Light Origins 亮源新创](../entities/light-o1.md) | ○ |  | ● | Light-O1、REACT、Parkour、Nav |
+| [Delta Intelligence 德塔智能](../entities/delta-0-humanoid-foundation-model.md) | ● | ● | ○ | Δ₀（潜空间 world–action brain + 69-DoF 全身控制器） |
 
-NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）。
+NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）。
 
 ## 三种视角各自追问什么
 
@@ -126,6 +129,7 @@ NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O
 | Skild AI | ❓ | ❓ | ❓ | 以公开说明为主 |
 | Google DeepMind | ❓ | ❓ | ❓ | 官方页面区分论文/演示与可获得模型 |
 | Galbot | ❓ | ❓ | ❓ | 项目级源码/权重须从各发布页核对 |
+| Delta Intelligence | ❌ | ❌ | ❌ | [Δ₀ 博客](https://deltai.com/en/blog/delta-0) 未列 GitHub / HF / 论文链接（[核查](../../sources/sites/deltai-com.md)） |
 
 > ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表按截至 2026-09-28 的收录资料整理，会过期。
 
@@ -169,10 +173,12 @@ flowchart LR
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)
 - [Skild AI 官方站归档](../../sources/sites/skild-ai.md)
+- [Delta Intelligence 官网归档与开源核查](../../sources/sites/deltai-com.md)
 - [The Physical Intelligence Layer](../entities/pi-physical-intelligence-layer.md) — 伙伴现场部署，不是新模型发布
 
 ## 推荐继续阅读
 
 - [Figure Helix 02 官方技术文章](https://www.figure.ai/news/helix-02)
 - [Light Origins 官方技术博客](https://www.lightorigins.com/en/blog/)
+- [Delta Intelligence 官方博客](https://deltai.com/en/blog)
 - [NVIDIA Robotics Blog](https://developer.nvidia.com/blog/tag/robotics/)

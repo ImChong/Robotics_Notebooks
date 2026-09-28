@@ -165,6 +165,16 @@
         { "date": "", "title": "UnifoLM-VLA-0", "track": "VLA", "desc": "面向通用人形操作的 VLA，训练 / 推理 / 权重开源。", "id": "entity-unifolm-vla", "url": "https://github.com/unitreerobotics/unifolm-vla" },
         { "date": "2026-09", "title": "UnifoLM-WLA-1.0", "track": "基础模型", "desc": "6B 人形 WLA：具身推理 → 动态区域预测 → 动作专家。", "id": "entity-unifolm-wla", "url": "https://github.com/unitreerobotics/unifolm-wla" }
       ]
+    },
+    {
+      "key": "deltai",
+      "name": "德塔智能 Delta Intelligence",
+      "lenses": ["wam", "humanoid"],
+      "summary": "人形基础模型（HFM）路线：潜空间 world–action brain 与 69-DoF 全身控制器协同设计，配 D1 全景全身数采；截至 2026-09 未开源。",
+      "official": "https://deltai.com/en/blog",
+      "nodes": [
+        { "date": "2026-09", "title": "Δ₀", "track": "基础模型", "desc": "MoT 潜空间 brain + delta-action 全身控制器；>1 万小时人数据预训练、real-to-sim-to-real 评测与真机 RL。", "id": "entity-delta-0-humanoid-foundation-model", "url": "https://deltai.com/en/blog/delta-0" }
+      ]
     }
   ]
 }
