@@ -1557,6 +1557,7 @@
 - [FoldNet++（arXiv:2609.12433）](wiki/entities/paper-foldnet-plus-plus.md) — FoldNet++**（[FoldNet++: a Large-Scale Synthetic Dataset for Robotic T-Shirt Folding and Unfolding `📅unknown` `[entity_page]`
 - [FootQuery：触地前瞻引导的深度历史检索感知人形行走](wiki/entities/paper-footquery-perceptive-humanoid-locomotion.md) — FootQuery**（*Future-Touchdown-Guided Retrieval from Depth History for Perceptive Humanoid Locomoti `📅unknown` `[entity_page]`
 - [力感知轮足 loco-manip（arXiv:2609.13779）](wiki/entities/paper-force-aware-wheeled-leg-manip.md) — 力感知轮足 loco-manip**（*Force-Aware Reinforcement Learning with Hybrid Sensorless Force Estimation for `📅unknown` `[entity_page]`
+- [ForceTwin（Physics-informed Digital Twins from Instrumented Human Interaction）](wiki/entities/paper-forcetwin.md) — ForceTwin**（arXiv:2609.21751，[项目页](https://timengelbracht.gith `📅unknown` `[entity_page]`
 - [ForceU-VLA（arXiv:2608.15009）](wiki/entities/paper-forceu-vla.md) — ForceU-VLA**（*ForceU-VLA: A Force-Aware Vision-Language-Action Model for Embodied Ultrasound Scann `📅unknown` `[entity_page]`
 - [ForceVLA：力感知 MoE 增强 VLA（NeurIPS 2025 · arXiv:2505.22159）](wiki/entities/paper-forcevla.md) — ForceVLA**（*Enhancing VLA Models with a Force-aware MoE for Contact-rich Manipulation*，[arXiv:2505 `📅unknown` `[entity_page]`
 - [Foresight (PI)](wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md) — Foresight (PI)** 收录于 具身智能研究室 · 具身世界模型六路线综述  `📅unknown` `[entity_page]`

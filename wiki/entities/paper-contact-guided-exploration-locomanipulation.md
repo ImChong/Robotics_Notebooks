@@ -2,13 +2,15 @@
 type: entity
 tags: ['paper', 'quadruped', 'loco-manipulation', 'rl', 'multi-critic', 'eth', 'nvidia']
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 arxiv: "2608.28140"
-summary: "Pisa/ETH/NVIDIA（arXiv:2608.28140）：多 Critic PPO + 抓取算法接触候选 + 探索权重衰减；箱推/运椅>90%；ALMA 真机椅运；项目页无代码。"
+venue: "IEEE RA-L"
+summary: "Pisa/ETH/NVIDIA（arXiv:2608.28140，RA-L）：多 Critic PPO + 抓取算法接触候选 + 探索权重衰减；箱推/运椅>90%；ALMA 真机椅运；项目页仍无代码。"
 related:
   - ../tasks/loco-manipulation.md
   - ../concepts/contact-rich-manipulation.md
   - ./paper-muldp.md
+  - ./paper-forcetwin.md
 sources:
   - ../../sources/papers/contact_guided_exploration_locomanipulation_arxiv_2608_28140.md
   - ../../sources/sites/contact-guided-exp.md
@@ -39,6 +41,7 @@ sources:
 | 项 | 内容 |
 |----|------|
 | **机构** | 比萨大学、苏黎世联邦理工（ETH）、NVIDIA |
+| **刊物** | IEEE Robotics and Automation Letters (RA-L) |
 | **开源** | 见 [工程实践](#工程实践) |
 
 ## 核心原理
@@ -64,8 +67,8 @@ flowchart TB
 
 | 项 | 说明 |
 |----|------|
-| 开源状态 | 见论文摘录与项目页核查结论 |
-| 复现入口 | 以 arXiv 为准 |
+| 开源状态 | **未开源** — [项目页](https://tolomeis.github.io/contact-guided-exp/) 截至 **2026-09-28** 仍 **未见** GitHub |
+| 复现入口 | 以 arXiv / RA-L 正文与项目页为准 |
 
 ## 实验与评测
 
@@ -107,6 +110,7 @@ flowchart TB
 - [loco-manipulation](../tasks/loco-manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [paper-muldp.md](./paper-muldp.md)
+- [paper-forcetwin.md](./paper-forcetwin.md) — 同 ETH/NVIDIA 生态；物体动力学孪生 vs 本文 loco-manip 探索
 - [奖励设计](../concepts/reward-design.md) — shaping 引导 vs 偏置最优解的矛盾
 - [课程学习](../concepts/curriculum-learning.md) — 正交的探索期手段
 - [PPO](../methods/ppo.md) — 多 critic 所依附的底座算法

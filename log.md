@@ -1,3 +1,9 @@
+## [2026-09-28] ingest | sources/papers/forcetwin_arxiv_2609_21751.md + sites/forcetwin-website.md — ForceTwin 物理信息数字孪生（arXiv:2609.21751）；仪器化人类力交互辨识铰接动力学；项目页无代码；Contact-Guided（2608.28140）项目页再核 RA-L、仍无 GitHub；自动合并 PR
+
+- **意图：** 用户指定两篇 arXiv + 项目页 ingest
+- **开源结论：** ForceTwin **未开源**；Contact-Guided **未开源**（2026-09-28 复核）
+- **关键页：** [paper-forcetwin](wiki/entities/paper-forcetwin.md)、[paper-contact-guided-exploration-locomanipulation](wiki/entities/paper-contact-guided-exploration-locomanipulation.md)
+
 ## [2026-09-28] ingest | sources/papers/x_navdp_arxiv_2607_28560.md + sites/x-navdp-project-page + repos/internrobotics_x_navdp — X-NavDP GQRM 导航扩散 RL 后训练（arXiv:2607.28560）；已开源 NavDP/baselines/x-navdp + HF；自动合并 PR
 
 - **意图：** 用户指定项目页、HF、arXiv:2607.28560
