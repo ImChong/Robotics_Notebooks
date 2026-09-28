@@ -374,6 +374,7 @@ flowchart TD
 
 ## 关联页面
 
+- [senlanke 周更论文索引（2026-09-21–25）](../overview/senlanke-weekly-2026-09-21-25-technology-map.md) — 腿式 35 篇 arXiv 唯一节点
 - [senlanke 周更论文索引（2026-09-14–18）](../overview/senlanke-weekly-2026-09-14-18-technology-map.md) — 腿式 28 篇 arXiv 唯一节点
 
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务

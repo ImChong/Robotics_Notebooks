@@ -10,6 +10,7 @@ related:
   - ../concepts/contact-dynamics.md
   - ../overview/embodied-13-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-21_25.md
   - ../../sources/papers/brickcraft-duo_arxiv_2609_28281.md
   - ../../sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md
 summary: "BrickCraft-Duo（arXiv:2609.28281）：互锁积木双臂装配：可复用单/双臂技能 + 稳定性感知组合 + 人机定向修正，最长 **9 步** 长时任务。"

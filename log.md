@@ -1,4 +1,10 @@
-## [2026-09-28] ingest | sources/papers/robogesture_arxiv_2608_28693.md + sites/robogesture-arxiv.md — RoboGesture 共语手势（arXiv:2608.28693，ECCV 2026）；英文题名/作者/六机构；项目页复核仍无代码；深化 wiki/entities/paper-robogesture.md；自动合并 PR
+## [2026-09-28] ingest | sources/blogs/wechat_senlanke_weekly_*_2026-09-21_25.md — senlanke 9.21–9.25 双周更（人形/四足 35 + Manipulation 15）；48 唯一 arXiv 节点（32 新建 + 16 复用）；技术地图 senlanke-weekly-2026-09-21-25；自动合并 PR
+
+- **意图：** 用户指定两篇 mp.weixin.qq.com 周更；每篇论文独立非重复详情节点
+- **开源结论：** 以各 `paper-*` 页步骤 2.5 为准（Spiderbot 已开源；Cartesian Hand 宣称将开源；ME-U0 复用既有开源节点）
+- **关键页：** [senlanke-weekly-2026-09-21-25-technology-map](wiki/overview/senlanke-weekly-2026-09-21-25-technology-map.md)
+
+## [2026-09-28] ingest | sources/papers/robogesture_arxiv_2608_28693.md + sites/robogesture-arxiv.md — RoboGesture 共语手势（arXiv:2608.28693，ECCV 2026）；英文题名/作者/六机构；项目页复核仍无 code；深化 wiki/entities/paper-robogesture.md；自动合并 PR
 
 - **意图：** 用户指定 arXiv 题名 *RoboGesture: Real-Time Semantic-aligned Co-Speech Gestures Generation for Humanoid Interaction*（清华/Galbot/北理工/哈工大/北大/上海期智）
 - **开源结论：** **未开源** — RoboGesture.github.io 截至 2026-09-28 无 GitHub/权重/数据链

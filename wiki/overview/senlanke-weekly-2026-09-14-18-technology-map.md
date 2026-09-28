@@ -100,5 +100,6 @@ summary: "senlanke 具身运控lab 2026-09-14–18 双周更索引：腿式 28 �
 
 ## 推荐继续阅读
 
+- [下一期 9.21–25 索引](./senlanke-weekly-2026-09-21-25-technology-map.md)
 - [ViLoMan（arXiv:2609.19340）](../entities/paper-viloman.md) — 本周 leg 盘点 ★ Teacher–Student 代表
 - [SAVLA（arXiv:2609.16641）](../entities/paper-savla.md) — 操作盘点几何等变 VLA

@@ -9,6 +9,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/echo-in-the-steps_arxiv_2609_28960.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md
 summary: "Echo in the Steps（arXiv:2609.28960）：门控记忆+显著性先验+交替步态；G1 仿真与真机跑酷检验稀疏踏点感知。"

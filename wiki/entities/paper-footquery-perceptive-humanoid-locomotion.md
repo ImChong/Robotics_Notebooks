@@ -21,6 +21,7 @@ related:
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ./unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/footquery_arxiv_2609_21447.md
 summary: "FootQuery（清华 AIR/电机系·USTB·NTU，arXiv:2609.21447）：用每只脚预测的下一触地点分布查询深度历史 cross-attention，训练期用已实现接触在历史 ROI 监督检索；G1 单策略户外楼梯与室内楼梯/平台/沟；截至入库日无项目页与代码。"
 ---

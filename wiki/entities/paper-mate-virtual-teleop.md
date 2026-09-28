@@ -16,6 +16,7 @@ related:
   - ./paper-me-u0.md
   - ../overview/collab-wm-12-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/mate-virtual-teleop_arxiv_2609_26520.md
   - ../../sources/sites/mate-virtual-teleop.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_collab_wm_2026-09-23.md

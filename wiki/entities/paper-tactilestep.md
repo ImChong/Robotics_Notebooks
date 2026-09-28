@@ -8,6 +8,7 @@ related:
   - ../overview/embodied-research-12-papers-recover-wam-technology-map.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/tactilestep_arxiv_2609_28959.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md
 summary: "TactileStep（2609.28959）：足底压力→法向力/接触面积/CoP，按步态阶段设计奖励调节 G1 足地交互。"

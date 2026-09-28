@@ -10,6 +10,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/ai-auto-research.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/mimicagent_arxiv_2609_24145.md
   - ../../sources/sites/mimic-agent-github-io.md
 summary: "MimicAgent（CMU, arXiv:2609.24145）：LLM agent 从文本生成粗参考轨迹，再 example-guided RL 学四足动态技能；87% prompt 语义对齐，用户偏好常优于 Eureka。"
