@@ -13,11 +13,11 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件为 **Paper Notebooks → 本库 wiki** 的溯源锚点；方法细节请读笔记页与论文 PDF。
-- 知识归纳见 wiki 实体页：[paper-notebook-toward-reliable-sim-to-real-predictability-for-m](../../wiki/entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md).
+- 知识归纳见 wiki 实体页：[paper-robogauge-moe-quadruped-locomotion](../../wiki/entities/paper-robogauge-moe-quadruped-locomotion.md).
 
 ## 对 wiki 的映射
 
-- [paper-notebook-toward-reliable-sim-to-real-predictability-for-m](../../wiki/entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md)
+- [paper-robogauge-moe-quadruped-locomotion](../../wiki/entities/paper-robogauge-moe-quadruped-locomotion.md)
 - 分类父节点：[paper-notebook-category-05-locomotion](../../wiki/overview/paper-notebook-category-05-locomotion.md)
 
 ## 参考来源（原始）

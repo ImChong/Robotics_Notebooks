@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 自动驾驶 · 高效推理与实时控制 · 四象限外
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-3a25df8af09d3c9d3d7a-drivevla-w0-world-models-amplify-data-scaling-la.md`](../../wiki/entities/paper-rcl-ref-3a25df8af09d3c9d3d7a-drivevla-w0-world-models-amplify-data-scaling-la.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2510-12796-drivevla-w0-world-models-amplify-data-scaling-la.md`](../../wiki/entities/paper-sa-2510-12796-drivevla-w0-world-models-amplify-data-scaling-la.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-3a25df8af09d3c9d3d7a-drivevla-w0-world-models-amplify-data-scaling-la.md`](../../wiki/entities/paper-rcl-ref-3a25df8af09d3c9d3d7a-drivevla-w0-world-models-amplify-data-scaling-la.md)
+- 实体页：[`wiki/entities/paper-sa-2510-12796-drivevla-w0-world-models-amplify-data-scaling-la.md`](../../wiki/entities/paper-sa-2510-12796-drivevla-w0-world-models-amplify-data-scaling-la.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

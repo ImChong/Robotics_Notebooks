@@ -15,7 +15,7 @@
 - **项目页：** <https://robocasa.ai/>
 - **子类 / 象限：** 机器人操作基准 · 物理仿真 · 合成数据与数据生成 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-685493265d49d3ee589a-robocasa-large-scale-simulation-of-everyday-task.md`](../../wiki/entities/paper-rcl-ref-685493265d49d3ee589a-robocasa-large-scale-simulation-of-everyday-task.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md`](../../wiki/entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-685493265d49d3ee589a-robocasa-large-scale-simulation-of-everyday-task.md`](../../wiki/entities/paper-rcl-ref-685493265d49d3ee589a-robocasa-large-scale-simulation-of-everyday-task.md)
+- 实体页：[`wiki/entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md`](../../wiki/entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

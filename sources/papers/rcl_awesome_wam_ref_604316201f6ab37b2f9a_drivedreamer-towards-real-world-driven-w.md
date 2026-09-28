@@ -15,7 +15,7 @@
 - **项目页：** <https://drivedreamer.github.io/>
 - **子类 / 象限：** 自动驾驶 · 联合视频动作建模 · Q1 · One Model × 联合预测
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-604316201f6ab37b2f9a-drivedreamer-towards-real-world-driven-world-mod.md`](../../wiki/entities/paper-rcl-ref-604316201f6ab37b2f9a-drivedreamer-towards-real-world-driven-world-mod.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2309-09777-drivedreamer-towards-real-world-driven-world-mod.md`](../../wiki/entities/paper-sa-2309-09777-drivedreamer-towards-real-world-driven-world-mod.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-604316201f6ab37b2f9a-drivedreamer-towards-real-world-driven-world-mod.md`](../../wiki/entities/paper-rcl-ref-604316201f6ab37b2f9a-drivedreamer-towards-real-world-driven-world-mod.md)
+- 实体页：[`wiki/entities/paper-sa-2309-09777-drivedreamer-towards-real-world-driven-world-mod.md`](../../wiki/entities/paper-sa-2309-09777-drivedreamer-towards-real-world-driven-world-mod.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

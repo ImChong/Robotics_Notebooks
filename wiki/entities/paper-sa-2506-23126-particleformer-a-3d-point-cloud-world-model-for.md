@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, curated-index, awesome-world-models, sun254667-wm, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 arxiv: "2506.23126"
 venue: "arXiv 2025"
 summary: "3D point cloud world model for multi-object, multi-material robotic manipulation."
@@ -13,10 +13,16 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/vla.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2506_23126_particleformer-a-3d-point-cloud-world-mo.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/papers/rcl_awesome_wam_ref_a4279cce45a54f73d7ba_particleformer-a-3d-point-cloud-world-mo.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
 # ParticleFormer
@@ -97,6 +103,10 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.23126>
+- [`sources/papers/rcl_awesome_wam_ref_a4279cce45a54f73d7ba_particleformer-a-3d-point-cloud-world-mo.md`](../../sources/papers/rcl_awesome_wam_ref_a4279cce45a54f73d7ba_particleformer-a-3d-point-cloud-world-mo.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, curated-index, awesome-world-models, sun254667-wm, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 arxiv: "2403.06845"
 venue: "arXiv 2024"
 code: https://drivedreamer2.github.io/
@@ -14,10 +14,16 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/vla.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2403_06845_drivedreamer-2-llm-enhanced-world-models.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/papers/rcl_awesome_wam_ref_eb71134f4ab2c037bb71_drivedreamer-2-llm-enhanced-world-models.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
 # DriveDreamer-2
@@ -98,6 +104,10 @@ LLM-enhanced world models for diverse driving video generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.06845>
+- [`sources/papers/rcl_awesome_wam_ref_eb71134f4ab2c037bb71_drivedreamer-2-llm-enhanced-world-models.md`](../../sources/papers/rcl_awesome_wam_ref_eb71134f4ab2c037bb71_drivedreamer-2-llm-enhanced-world-models.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

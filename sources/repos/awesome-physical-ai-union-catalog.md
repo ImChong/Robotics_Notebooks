@@ -37,7 +37,7 @@
 | 027 | Modern Robotics | `url:hades.mech.northwestern.edu/index.ph` | Books | natnew | [`modern-robotics-book.md`](../../wiki/entities/modern-robotics-book.md) | 复用 |
 | 028 | Planning Algorithms | `url:lavalle.pl/planning` | Books | natnew | [`painode-028-planningalgorithms.md`](../../wiki/entities/painode-028-planningalgorithms.md) | 新建 |
 | 029 | Probabilistic Robotics | `url:mitpress.mit.edu/9780262201629` | Books | natnew | [`painode-029-probabilisticrobotics.md`](../../wiki/entities/painode-029-probabilisticrobotics.md) | 新建 |
-| 030 | Reinforcement Learning: An Introduction | `url:incompleteideas.net/book/the-book.ht` | Books | natnew | [`painode-030-reinforcementlearninganintroducti.md`](../../wiki/entities/painode-030-reinforcementlearninganintroducti.md) | 新建 |
+| 030 | Reinforcement Learning: An Introduction | `url:incompleteideas.net/book/the-book.ht` | Books | natnew | [`sutton-barto-rl-book.md`](../../wiki/entities/sutton-barto-rl-book.md) | 新建 |
 | 031 | Robotics, Vision and Control | `url:petercorke.com/rvc` | Books | natnew | [`painode-031-roboticsvisionandcontrol.md`](../../wiki/entities/painode-031-roboticsvisionandcontrol.md) | 新建 |
 | 032 | Hugging Face Discord | `url:huggingface.co/join/discord` | Community | natnew | [`painode-032-huggingfacediscord.md`](../../wiki/entities/painode-032-huggingfacediscord.md) | 新建 |
 | 033 | Pollen Robotics Discord | `url:discord.gg/pollen-robotics` | Community | natnew | [`painode-033-pollenroboticsdiscord.md`](../../wiki/entities/painode-033-pollenroboticsdiscord.md) | 新建 |

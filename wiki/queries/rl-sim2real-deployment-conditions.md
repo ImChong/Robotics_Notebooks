@@ -13,7 +13,7 @@ related:
   - ../concepts/privileged-training.md
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
-  - ../entities/paper-quadruped-agile-sim2real-rss2018.md
+  - ../entities/paper-tan-quadruped-agile-locomotion-sim2real.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
 sources:
@@ -108,7 +108,7 @@ flowchart LR
 - [Sim2Real 闭环误差分层工程](./sim2real-closed-loop-engineering.md) — SysID→DR→适应闭环时序
 - [Sim2Real Checklist](./sim2real-checklist.md) — 渐进式真机 SOP
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md) — 在线适应模块
-- [ANYmal 敏捷 Sim2Real（RSS 2018）](../entities/paper-quadruped-agile-sim2real-rss2018.md) — 学习执行器模型先例
+- [ANYmal 敏捷 Sim2Real（RSS 2018）](../entities/paper-tan-quadruped-agile-locomotion-sim2real.md) — 学习执行器模型先例
 - [Locomotion](../tasks/locomotion.md)
 
 ## 参考来源

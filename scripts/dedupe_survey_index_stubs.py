@@ -53,6 +53,76 @@ MERGE_MAP: dict[str, str] = {
     "paper-notebook-adamimic": "paper-adamimic",
     "paper-notebook-towards-adaptable-humanoid-control-via-adaptive": "paper-adamimic",
     "paper-notebook-general-motion-tracking-for-humanoid-whole-body": "paper-gmt",
+    # 2026-09-28 重复节点审计：同一论文的多个策展索引节点（arXiv 号或完整标题相同，逐对核实）
+    "paper-notebook-toward-reliable-sim-to-real-predictability-for-m": (
+        "paper-robogauge-moe-quadruped-locomotion"
+    ),
+    "paper-as-084-discoverse-efficient-robot-simulation-in-complex": (
+        "paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex"
+    ),
+    "paper-as-117-domain-randomization-for-transferring-deep-neura": (
+        "paper-notebook-domain-randomization-for-transferring-deep-neura"
+    ),
+    "paper-as-1711-03938-carla-an-open-urban-driving-simulator": "carla",
+    "paper-rcl-ref-75baf2ba00d451202231-carla-an-open-urban-driving-simulator": "carla",
+    "paper-rcl-ref-4c7d069bbfa0f1875587-meta-world-a-benchmark-and-evaluation-for-multi": (
+        "paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi"
+    ),
+    "paper-rcl-ref-8c0a34d0c6ab6b64e3ae-diversity-is-all-you-need-learning-skills-withou": (
+        "paper-bfm-30-diayn"
+    ),
+    # 索引页 frontmatter 写成 arXiv:2511.12643（实为另一篇 WAF 论文），正确号 2511.15704
+    "paper-sa-2511-12643-in-n-on-scaling-egocentric-manipulation-with-in": (
+        "paper-notebook-in-n-on-scaling-egocentric-manipulation-with-in"
+    ),
+    "paper-rcl-ref-685493265d49d3ee589a-robocasa-large-scale-simulation-of-everyday-task": (
+        "paper-notebook-robocasa-large-scale-simulation-of-everyday-task"
+    ),
+    "paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba": (
+        "paper-sa-2502-20396-sim-to-real-reinforcement-learning-for-vision-ba"
+    ),
+    "paper-quadruped-agile-sim2real-rss2018": "paper-tan-quadruped-agile-locomotion-sim2real",
+    "paper-rcl-ref-283b7da95c4145cf56d0-dywa-dynamics-adaptive-world-action-model-for-ge": (
+        "paper-sa-2503-16806-dywa-dynamics-adaptive-world-action-model-for-ge"
+    ),
+    "paper-rcl-ref-2b3f47a14556997eb476-video-prediction-policy-a-generalist-robot-polic": (
+        "paper-shenlan-wm-02-vpp"
+    ),
+    "paper-rcl-ref-3a25df8af09d3c9d3d7a-drivevla-w0-world-models-amplify-data-scaling-la": (
+        "paper-sa-2510-12796-drivevla-w0-world-models-amplify-data-scaling-la"
+    ),
+    "paper-rcl-ref-604316201f6ab37b2f9a-drivedreamer-towards-real-world-driven-world-mod": (
+        "paper-sa-2309-09777-drivedreamer-towards-real-world-driven-world-mod"
+    ),
+    "paper-rcl-ref-a4279cce45a54f73d7ba-particleformer-a-3d-point-cloud-world-model-for": (
+        "paper-sa-2506-23126-particleformer-a-3d-point-cloud-world-model-for"
+    ),
+    "paper-rcl-ref-ca883d875395dd7ff120-adaworld-learning-adaptable-world-models-with-la": (
+        "paper-sa-2503-18938-adaworld-learning-adaptable-world-models-with-la"
+    ),
+    "paper-rcl-ref-eb71134f4ab2c037bb71-drivedreamer-2-llm-enhanced-world-models-for-div": (
+        "paper-sa-2403-06845-drivedreamer-2-llm-enhanced-world-models-for-div"
+    ),
+    "paper-sa-ego-095-minerva-ego-spatiotemporal-hints-for-egocentric": (
+        "paper-sa-2605-15342-minerva-ego-spatiotemporal-hints-for-egocentric"
+    ),
+    # 索引页 frontmatter 写成 arXiv:2606.16930（实为另一篇控制论文），正确号 2606.19156
+    "paper-sa-2606-16930-hand-4dgs-feed-forward-3d-gaussian-splatting-for": (
+        "paper-sa-2606-19156-hand-4dgs-feed-forward-3d-gaussian-splatting-for"
+    ),
+    "paper-sa-ego-113-megohand-multimodal-egocentric-hand-object-inter": (
+        "paper-sa-ego-026-megohand-multimodal-egocentric-hand-object-inter"
+    ),
+    "paper-sa-ego-104-enact-evaluating-embodied-cognition-with-world-m": (
+        "paper-sa-ego-033-enact-evaluating-embodied-cognition-with-world-m"
+    ),
+    "painode-030-reinforcementlearninganintroducti": "sutton-barto-rl-book",
+    "paper-rcl-ref-206bb9b995e39760f7d0-reinforcement-learning-an-introduction": (
+        "sutton-barto-rl-book"
+    ),
+    "paper-rcl-ref-47f59ffa32a9f466d486-probabilistic-robotics": (
+        "painode-029-probabilisticrobotics"
+    ),
 }
 
 
@@ -106,7 +176,9 @@ def merge_into_keeper(stub: str, keeper: str, stub_text: str) -> None:
     frontmatter = re.sub(r"^updated:.*$", f"updated: {TODAY}", frontmatter, count=1, flags=re.M)
 
     stub_related = [
-        r for r in re.findall(r"^  - (\.\./\S+|\./\S+)$", stub_fm, re.M) if f"/{keeper}.md" not in r
+        r
+        for r in re.findall(r"^  - (\.\./\S+|\./\S+)$", stub_fm, re.M)
+        if f"/{keeper}.md" not in r and "/sources/" not in r  # sources 列表另行合并
     ]
     frontmatter = add_list_entries(frontmatter, "related", stub_related)
     frontmatter = add_list_entries(
@@ -132,6 +204,13 @@ def normalize_link_texts(text: str, stub: str, keeper: str) -> str:
 def update_aliases() -> None:
     raw = load_text(ALIASES)
     data = json.loads(raw)
+    # 已有别名若指向本轮被合并的索引页，改指深读页（避免别名链指向已删除页面）
+    for old_id, target in data["aliases"].items():
+        stub = target.removeprefix("entity-")
+        if stub in MERGE_MAP:
+            raw = raw.replace(
+                f'"{old_id}": "{target}"', f'"{old_id}": "entity-{MERGE_MAP[stub]}"', 1
+            )
     additions = [
         f'    "entity-{stub}": "entity-{keeper}",\n'
         for stub, keeper in sorted(MERGE_MAP.items())

@@ -79,4 +79,4 @@
 - 主实体页：[`wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md`](../../wiki/entities/paper-raibo2-marathon-energy-efficient-quadruped.md)
 - 代码：[`sources/repos/raisimGym_nature.md`](../repos/raisimGym_nature.md)
 - 数据：[`sources/sites/zenodo_raibo2_marathon_dataset.md`](../sites/zenodo_raibo2_marathon_dataset.md)
-- 互链：[四足机器人](../../wiki/entities/quadruped-robot.md)、[RSS 2018 敏捷四足 sim2real（Hwangbo）](../../wiki/entities/paper-quadruped-agile-sim2real-rss2018.md)、[并发策略–估计器](../../wiki/entities/paper-concurrent-policy-estimator-locomotion.md)
+- 互链：[四足机器人](../../wiki/entities/quadruped-robot.md)、[RSS 2018 敏捷四足 sim2real（Hwangbo）](../../wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md)、[并发策略–估计器](../../wiki/entities/paper-concurrent-policy-estimator-locomotion.md)

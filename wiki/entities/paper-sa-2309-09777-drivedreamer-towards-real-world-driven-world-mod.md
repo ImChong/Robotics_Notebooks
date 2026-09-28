@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, curated-index, awesome-world-models, sun254667-wm, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 arxiv: "2309.09777"
 venue: "arXiv 2023"
 code: https://github.com/JeffWang987/DriveDreamer
@@ -14,10 +14,16 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/vla.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2309_09777_drivedreamer-towards-real-world-driven-w.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/papers/rcl_awesome_wam_ref_604316201f6ab37b2f9a_drivedreamer-towards-real-world-driven-w.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
 # DriveDreamer
@@ -98,6 +104,10 @@ Towards real-world-driven world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2309.09777>
+- [`sources/papers/rcl_awesome_wam_ref_604316201f6ab37b2f9a_drivedreamer-towards-real-world-driven-w.md`](../../sources/papers/rcl_awesome_wam_ref_604316201f6ab37b2f9a_drivedreamer-towards-real-world-driven-w.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

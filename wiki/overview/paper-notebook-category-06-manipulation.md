@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-28
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）。"
@@ -70,7 +70,7 @@ summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）
 - [Robot Drummer](../entities/paper-notebook-robot-drummer-learning-rhythmic-skills-for-human.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html)
 - [SafeHumanoid](../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html)
 - [Sim-and-Real Co-Training](../entities/paper-notebook-sim-and-real-co-training-a-simple-recipe-for-vis.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html)
-- [Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids](../entities/paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba.md) — 待深读
+- [Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids](../entities/paper-sa-2502-20396-sim-to-real-reinforcement-learning-for-vision-ba.md) — 待深读
 - [TOP](../entities/paper-notebook-top-time-optimization-policy-for-stable-and-accu.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/TOP__Time_Optimization_Policy_for_Stable_and_Accurate_Standing_Manipulation/TOP__Time_Optimization_Policy_for_Stable_and_Accurate_Standing_Manipulation.html)
 - [Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots](../entities/paper-notebook-towards-proprioception-aware-embodied-planning-f.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html)
 - [Unified Video Action Model](../entities/paper-shenlan-wm-10-uva.md) — 见 wiki 实体页

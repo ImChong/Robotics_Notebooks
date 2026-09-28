@@ -10,7 +10,7 @@
 - **主链接：** <http://incompleteideas.net/book/the-book.html>
 - **代码：** 未在清单中标注
 - **清单摘要：** Sutton & Barto. The classic RL textbook, freely available online.
-- **沉淀到 wiki：** [`wiki/entities/painode-030-reinforcementlearninganintroducti.md`](../../wiki/entities/painode-030-reinforcementlearninganintroducti.md)
+- **沉淀到 wiki：** [`wiki/entities/sutton-barto-rl-book.md`](../../wiki/entities/sutton-barto-rl-book.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-030-reinforcementlearninganintroducti.md`](../../wiki/entities/painode-030-reinforcementlearninganintroducti.md)
+- 实体页：[`wiki/entities/sutton-barto-rl-book.md`](../../wiki/entities/sutton-barto-rl-book.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

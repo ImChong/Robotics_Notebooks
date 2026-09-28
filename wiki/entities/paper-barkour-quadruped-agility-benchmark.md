@@ -23,7 +23,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/domain-randomization.md
   - ../concepts/terrain-adaptation.md
-  - ./paper-quadruped-agile-sim2real-rss2018.md
+  - ./paper-tan-quadruped-agile-locomotion-sim2real.md
   - ./paper-walk-these-ways-quadruped-mob.md
 sources:
   - ../../sources/papers/barkour_arxiv_2305_14654.md
@@ -129,7 +129,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)
-- [RSS 2018 敏捷四足 sim2real](./paper-quadruped-agile-sim2real-rss2018.md)
+- [RSS 2018 敏捷四足 sim2real](./paper-tan-quadruped-agile-locomotion-sim2real.md)
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的四足敏捷代表基准，双向回链
 

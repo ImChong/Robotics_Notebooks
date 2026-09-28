@@ -1489,10 +1489,11 @@ def _check_graph_badge(readme_content: str, results: dict[str, Any]) -> None:
     """README 的 Knowledge Graph 徽章须为读取部署产物 graph-badge.json 的 endpoint 徽章。
 
     数字不写进 README（否则每个 PR 都改同一行、互相冲突），由 pages.yml 部署时生成
-    docs/exports/graph-badge.json，shields.io 实时读取。
+    docs/exports/graph-badge.json，shields.io 实时读取。URL 末尾可带 ``&cacheSeconds=...``
+    限制 shields 缓存时长（否则部署前缓存的 404 会长期显示为 resource not found）。
     """
     if not re.search(
-        r"\[!\[Knowledge Graph\]\(https://img\.shields\.io/endpoint\?url=[^)]*graph-badge\.json\)\]\([^)]+\)",
+        r"\[!\[Knowledge Graph\]\(https://img\.shields\.io/endpoint\?url=[^)]*graph-badge\.json(?:&[^)]*)?\)\]\([^)]+\)",
         readme_content,
     ):
         results["readme_badge"].append(

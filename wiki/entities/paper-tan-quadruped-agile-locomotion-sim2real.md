@@ -6,16 +6,21 @@ tags:
   - quadruped
   - domain-randomization
 status: complete
-updated: 2026-09-20
+updated: 2026-09-28
 arxiv: "1804.10332"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
   - ../concepts/sim2real.md
+  - ./paper-raibo2-marathon-energy-efficient-quadruped.md
+  - ../queries/legged-humanoid-rl-pd-gain-setting.md
+  - ../entities/paper-quadruped-torque-control-rl.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/freedof_sim2real_11_tan-quadruped-agile-locomotion-sim2real.md
   - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
+  - ../../sources/papers/rl_pd_action_interface_locomotion.md
 summary: "腿足 Sim2Real 经典流水线：电机辨识、时延补偿、动力学随机化与推力扰动。"
 ---
 
@@ -89,6 +94,7 @@ summary: "腿足 Sim2Real 经典流水线：电机辨识、时延补偿、动力
 - [freedof_sim2real_11_tan-quadruped-agile-locomotion-sim2real.md](../../sources/papers/freedof_sim2real_11_tan-quadruped-agile-locomotion-sim2real.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [RL+PD 动作接口与增益设计论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md)
 
 ## 推荐继续阅读
 

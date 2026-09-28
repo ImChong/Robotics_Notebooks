@@ -11,7 +11,7 @@
 - **论文：** <https://air-discoverse.github.io/>
 - **代码：** <https://github.com/TATP-233/DISCOVERSE>
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Robotics Benchmarks。 本页为策展索引级节点，细节以原文为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-as-084-discoverse-efficient-robot-simulation-in-complex.md`](../../wiki/entities/paper-as-084-discoverse-efficient-robot-simulation-in-complex.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex.md`](../../wiki/entities/paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex.md)
 
 ---
 
@@ -24,5 +24,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-as-084-discoverse-efficient-robot-simulation-in-complex.md`](../../wiki/entities/paper-as-084-discoverse-efficient-robot-simulation-in-complex.md)
+- 实体页：[`wiki/entities/paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex.md`](../../wiki/entities/paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex.md)
 - 列表实体：[`wiki/entities/awesome-sim2real.md`](../../wiki/entities/awesome-sim2real.md)

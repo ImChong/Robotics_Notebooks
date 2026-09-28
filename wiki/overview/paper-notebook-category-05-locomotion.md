@@ -100,7 +100,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [Success in Humanoid Reinforcement Learning under Partial Observation](../entities/paper-notebook-success-in-humanoid-reinforcement-learning-under.md) — 待深读
 - [Symphony](../entities/paper-notebook-symphony-a-heuristic-normalized-calibrated-advan.md) — 待深读
 - [TD-GRPC](../entities/paper-notebook-td-grpc-temporal-difference-learning-with-group.md) — 待深读
-- [Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](../entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)
+- [Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](../entities/paper-robogauge-moe-quadruped-locomotion.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)
 - [Traversing Narrow Paths](../entities/paper-notebook-traversing-narrow-paths-a-two-stage-rl-framework.md) — 待深读
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — ICRA 2026 视觉/盲策略复合运动；G1/H1 感知缺失下缺口与动态障碍（arXiv:2502.14814；2026-08-28 升格完整实体页）
 - [VideoMimic](../entities/videomimic.md) — 见 wiki 实体页

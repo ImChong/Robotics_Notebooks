@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** A benchmark for evaluating complex egocentric visual reasoning, extending high-quality video data sources with challenging multi-step multimodal questions and spatiotemporally-dense human-annotated reasoning traces
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-ego-095-minerva-ego-spatiotemporal-hints-for-egocentric.md`](../../wiki/entities/paper-sa-ego-095-minerva-ego-spatiotemporal-hints-for-egocentric.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2605-15342-minerva-ego-spatiotemporal-hints-for-egocentric.md`](../../wiki/entities/paper-sa-2605-15342-minerva-ego-spatiotemporal-hints-for-egocentric.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-ego-095-minerva-ego-spatiotemporal-hints-for-egocentric.md`](../../wiki/entities/paper-sa-ego-095-minerva-ego-spatiotemporal-hints-for-egocentric.md)
+- 实体页：[`wiki/entities/paper-sa-2605-15342-minerva-ego-spatiotemporal-hints-for-egocentric.md`](../../wiki/entities/paper-sa-2605-15342-minerva-ego-spatiotemporal-hints-for-egocentric.md)
 - 列表实体：[`wiki/entities/awesome-egocentric-vision.md`](../../wiki/entities/awesome-egocentric-vision.md)

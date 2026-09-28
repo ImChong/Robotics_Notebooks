@@ -1,14 +1,23 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
+tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 arxiv: "2406.02523"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/generative-world-models.md
+  - ../methods/vla.md
+  - ../tasks/manipulation.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/humanoid_pnb_robocasa.md
+  - ../../sources/papers/rcl_awesome_wam_ref_685493265d49d3ee589a_robocasa-large-scale-simulation-of-every.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 summary: "AI 的进展很大程度由规模化驱动，但机器人受限于缺乏海量机器人数据集。本文主张用逼真物理仿真来规模化机器人学习的环境、任务与数据。RoboCasa 是一个面向日常环境训练通才机器人的大规模仿真框架，以厨房为核心，提供逼真多样的场景、跨 150+ 物体类别的数千 3D 资产与数十种可交互家具家电。它用生成式 AI（文本生 3D 资产、文本生图像纹理）增强真实与多样性；设计 100 个任务用于系统评测，含由大模型引导生成的复合任务。为便于学习，提供高质量人类演示并集成自动轨迹生成以最小人力大幅扩充数据集。实验显示：用合成生成的机器人数据做大规模模仿学习有清晰的规模化趋势，且在真实任务上前景可观。"
 ---
 
@@ -98,6 +107,10 @@ RoboCasa 要：用**逼真仿真 + 生成式 AI + 自动轨迹生成**，把环�
 - [humanoid_pnb_robocasa.md](../../sources/papers/humanoid_pnb_robocasa.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/RoboCasa__Large-Scale_Simulation_of_Everyday_Tasks_for_Generalist_Robots/RoboCasa__Large-Scale_Simulation_of_Everyday_Tasks_for_Generalist_Robots.html>
 - 论文：<https://arxiv.org/abs/2406.02523>
+- [`sources/papers/rcl_awesome_wam_ref_685493265d49d3ee589a_robocasa-large-scale-simulation-of-every.md`](../../sources/papers/rcl_awesome_wam_ref_685493265d49d3ee589a_robocasa-large-scale-simulation-of-every.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

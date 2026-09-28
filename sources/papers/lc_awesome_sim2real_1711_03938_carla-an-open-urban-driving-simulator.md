@@ -11,7 +11,7 @@
 - **论文：** <https://arxiv.org/abs/1711.03938>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页为策展索引级节点，细节以原文为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-as-1711-03938-carla-an-open-urban-driving-simulator.md`](../../wiki/entities/paper-as-1711-03938-carla-an-open-urban-driving-simulator.md)
+- **沉淀到 wiki：** [`wiki/entities/carla.md`](../../wiki/entities/carla.md)
 
 ---
 
@@ -24,5 +24,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-as-1711-03938-carla-an-open-urban-driving-simulator.md`](../../wiki/entities/paper-as-1711-03938-carla-an-open-urban-driving-simulator.md)
+- 实体页：[`wiki/entities/carla.md`](../../wiki/entities/carla.md)
 - 列表实体：[`wiki/entities/awesome-sim2real.md`](../../wiki/entities/awesome-sim2real.md)

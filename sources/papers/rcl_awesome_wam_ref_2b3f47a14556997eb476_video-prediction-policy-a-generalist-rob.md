@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 视觉规划与IDM · 高效推理与实时控制 · Q4 · Dual-system × IDM
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-2b3f47a14556997eb476-video-prediction-policy-a-generalist-robot-polic.md`](../../wiki/entities/paper-rcl-ref-2b3f47a14556997eb476-video-prediction-policy-a-generalist-robot-polic.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-shenlan-wm-02-vpp.md`](../../wiki/entities/paper-shenlan-wm-02-vpp.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-2b3f47a14556997eb476-video-prediction-policy-a-generalist-robot-polic.md`](../../wiki/entities/paper-rcl-ref-2b3f47a14556997eb476-video-prediction-policy-a-generalist-robot-polic.md)
+- 实体页：[`wiki/entities/paper-shenlan-wm-02-vpp.md`](../../wiki/entities/paper-shenlan-wm-02-vpp.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

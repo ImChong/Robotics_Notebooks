@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 物理仿真 · 自动驾驶基准 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-75baf2ba00d451202231-carla-an-open-urban-driving-simulator.md`](../../wiki/entities/paper-rcl-ref-75baf2ba00d451202231-carla-an-open-urban-driving-simulator.md)
+- **沉淀到 wiki：** [`wiki/entities/carla.md`](../../wiki/entities/carla.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-75baf2ba00d451202231-carla-an-open-urban-driving-simulator.md`](../../wiki/entities/paper-rcl-ref-75baf2ba00d451202231-carla-an-open-urban-driving-simulator.md)
+- 实体页：[`wiki/entities/carla.md`](../../wiki/entities/carla.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

@@ -8,6 +8,9 @@
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2507.23523>
 - **入库日期：** 2026-07-10
+- **项目页：** <https://embodiedfoundation.github.io/hrdt>
+- **代码：** <https://github.com/HongzheBi/H_RDT>；权重 <https://huggingface.co/embodiedfoundation/H-RDT>
+- **开源核查（2026-09-28）：** 已开源——预训练 / 微调脚本与 RoboTwin 2.0 推理代码、模型权重均公开
 - **一句话说明：** 机器人操作模仿学习面临大规模高质量机器人演示稀缺的根本难题。近期机器人基础模型常在跨本体机器人数据上预训练以扩规模，但不同本体的形态与动作空间差异大，统一训练难。H-RDT（Human to Robotics Diffusion Transformer）用人类操作数据增强机器人操作：核心洞察是带配对 3D 手姿标注的大规模第一视角人类操作视频蕴含丰富行为先验，能惠及机器人策略学习。采用两阶段：① 在大规模第一视角人类操作数据上预训练；② 用模块化动作编/解码器在机器人专属数据上做跨本体微调。模型是 2B 参数的扩散 Transformer，用流匹配建模复杂动作分布。仿真/真机较从零训练分别 +13.9% / +40.5%，超过 Pi0 与 RDT 基线。
 
 ## 核心摘录（策展，非全文）

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 arxiv: "2606.19156"
 venue: "arXiv 2026"
 summary: "Dynamic 3D hand reconstruction from egocentric videos essential for AR/VR and AI glasses, addressing fast head motion, rapid hand dynamics, severe occlusions, and single-view ambiguity"
@@ -17,6 +17,7 @@ sources:
   - ../../sources/papers/sun_awesome_ego_2606_19156_hand-4dgs-feed-forward-3d-gaussian-splat.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
+  - ../../sources/papers/sun_awesome_ego_2606_16930_hand-4dgs-feed-forward-3d-gaussian-splat.md
 ---
 
 # Hand-4DGS
@@ -96,6 +97,7 @@ Dynamic 3D hand reconstruction from egocentric videos essential for AR/VR and AI
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.19156>
+- [`sources/papers/sun_awesome_ego_2606_16930_hand-4dgs-feed-forward-3d-gaussian-splat.md`](../../sources/papers/sun_awesome_ego_2606_16930_hand-4dgs-feed-forward-3d-gaussian-splat.md) — 本条目策展摘录
 
 ## 推荐继续阅读
 

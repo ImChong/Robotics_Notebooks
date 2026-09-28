@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [reinforcement-learning, education, textbook, theory]
+tags: [reinforcement-learning, education, textbook, theory, curated-index, awesome-physical-ai, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 related:
   - ./richard-sutton.md
   - ../concepts/reinforcement-learning-history.md
@@ -14,9 +14,25 @@ related:
   - ../entities/hands-on-rl-book.md
   - ../concepts/cartpole.md
   - ../../roadmap/depth-rl-locomotion.md
+  - ../entities/awesome-physical-ai-natnew.md
+  - ../overview/awesome-physical-ai-technology-map.md
+  - ../methods/vla.md
+  - ../concepts/sim2real.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/generative-world-models.md
+  - ../tasks/manipulation.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md
+  - ../../sources/repos/pai_awesome_book_030_reinforcement-learning-an-introducti.md
+  - ../../sources/repos/awesome-physical-ai-union-catalog.md
+  - ../../sources/repos/awesome-physical-ai-natnew.md
+  - ../../sources/repos/awesome-physical-ai-aichr.md
+  - ../../sources/papers/rcl_awesome_wam_ref_206bb9b995e39760f7d0_reinforcement-learning-an-introduction.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领域标准教材；官方电子版、习题与教学材料托管于 incompleteideas.net。"
 ---
 
@@ -83,6 +99,14 @@ summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领�
 
 - [incompleteideas.net 一手资料索引](../../sources/sites/incompleteideas-net-rich-sutton.md)
 - [§1.6 History of Reinforcement Learning](../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md)
+- [`sources/repos/pai_awesome_book_030_reinforcement-learning-an-introducti.md`](../../sources/repos/pai_awesome_book_030_reinforcement-learning-an-introducti.md) — 本条目策展摘录
+- [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
+- [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
+- [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
+- [`sources/papers/rcl_awesome_wam_ref_206bb9b995e39760f7d0_reinforcement-learning-an-introduction.md`](../../sources/papers/rcl_awesome_wam_ref_206bb9b995e39760f7d0_reinforcement-learning-an-introduction.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

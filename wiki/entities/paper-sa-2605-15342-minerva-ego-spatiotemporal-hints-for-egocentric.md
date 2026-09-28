@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 arxiv: "2605.15342"
 venue: "arXiv 2026"
 summary: "A benchmark for evaluating complex egocentric visual reasoning with spatiotemporally-dense human-annotated reasoning traces. Prompting frontier models with hints of 'where' and 'when' to look yields substantial performan"
@@ -17,6 +17,7 @@ sources:
   - ../../sources/papers/sun_awesome_ego_2605_15342_minerva-ego-spatiotemporal-hints-for-ego.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
+  - ../../sources/papers/sun_awesome_ego_noarxiv_095_minerva-ego-spatiotemporal-hints-for-ego.md
 ---
 
 # Minerva-Ego
@@ -96,6 +97,7 @@ A benchmark for evaluating complex egocentric visual reasoning with spatiotempor
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.15342>
+- [`sources/papers/sun_awesome_ego_noarxiv_095_minerva-ego-spatiotemporal-hints-for-ego.md`](../../sources/papers/sun_awesome_ego_noarxiv_095_minerva-ego-spatiotemporal-hints-for-ego.md) — 本条目策展摘录
 
 ## 推荐继续阅读
 

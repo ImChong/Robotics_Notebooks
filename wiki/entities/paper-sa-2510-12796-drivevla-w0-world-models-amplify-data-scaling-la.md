@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, curated-index, awesome-world-models, sun254667-wm, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 arxiv: "2510.12796"
 venue: "arXiv 2025"
 code: https://github.com/BraveGroup/DriveVLA-W0
@@ -14,10 +14,16 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/vla.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2510_12796_drivevla-w0-world-models-amplify-data-sc.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/papers/rcl_awesome_wam_ref_3a25df8af09d3c9d3d7a_drivevla-w0-world-models-amplify-data-sc.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
 # DriveVLA-W0
@@ -98,6 +104,10 @@ World models amplify data scaling laws in autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.12796>
+- [`sources/papers/rcl_awesome_wam_ref_3a25df8af09d3c9d3d7a_drivevla-w0-world-models-amplify-data-sc.md`](../../sources/papers/rcl_awesome_wam_ref_3a25df8af09d3c9d3d7a_drivevla-w0-world-models-amplify-data-sc.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

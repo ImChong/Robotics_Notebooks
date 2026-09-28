@@ -14,7 +14,7 @@ related:
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-cassie-feedback-control-drl.md
   - ../entities/paper-quadruped-torque-control-rl.md
-  - ../entities/paper-quadruped-agile-sim2real-rss2018.md
+  - ../entities/paper-tan-quadruped-agile-locomotion-sim2real.md
   - ../entities/paper-variable-impedance-contact-rl.md
   - ../entities/paper-learning-quiet-walking-aibo.md
   - ../entities/paper-deeprl-locomotion-action-space-sca2017.md
@@ -90,7 +90,7 @@ sources:
 | 已能跑通固定 PD，想接 **泛化部署、行为切换与安全** | [Walk These Ways（MoB）](../entities/paper-walk-these-ways-quadruped-mob.md) · [arXiv:2212.03238](https://arxiv.org/abs/2212.03238)（**非** Walk in Minutes） |
 | **为何常用 PD 目标空间** 的原始 MDP 叙述 | [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md) · [arXiv:1803.05580](https://arxiv.org/abs/1803.05580) |
 | 判断 **是否应弃用 PD、改直驱扭矩** | [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md) · [arXiv:2203.05194](https://arxiv.org/abs/2203.05194) |
-| 四足 **sim2real 历史直觉**（位置/扭矩接口争论的背景） | [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md) · [RSS PDF p10](https://www.roboticsproceedings.org/rss14/p10.pdf) |
+| 四足 **sim2real 历史直觉**（位置/扭矩接口争论的背景） | [RSS 2018 敏捷四足 sim2real](../entities/paper-tan-quadruped-agile-locomotion-sim2real.md) · [RSS PDF p10](https://www.roboticsproceedings.org/rss14/p10.pdf) |
 | **位置 + 阻抗参数联合输出** 的思想前史（对照可变刚度） | [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md) · [arXiv:1907.07500](https://arxiv.org/abs/1907.07500) |
 
 ### 阅读与工程分支（Mermaid）
@@ -216,7 +216,7 @@ flowchart TB
 - [Walk These Ways（MoB）](../entities/paper-walk-these-ways-quadruped-mob.md)
 - [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md)
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
-- [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
+- [RSS 2018 敏捷四足 sim2real](../entities/paper-tan-quadruped-agile-locomotion-sim2real.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
 - [Learning Quiet Walking（aibo 可变 PD 低噪）](../entities/paper-learning-quiet-walking-aibo.md)
 

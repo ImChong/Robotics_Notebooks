@@ -8,6 +8,8 @@
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2507.11498>
 - **入库日期：** 2026-07-10
+- **项目页：** <https://robotdrummer.github.io>
+- **开源核查（2026-09-28）：** 未开源——项目页标注 Code (Coming Soon)
 - **一句话说明：** 人形在灵巧、平衡、行走上进步显著，但在音乐表演等表现性领域的角色仍少被探索。本文提出 Robot Drummer，通过一连串定时接触完成打鼓，把问题表述成节奏接触链（Rhythmic Contact Chain）。系统把乐曲分解成定长片段，并行用强化学习训练。在 30+ 首摇滚、金属、爵士曲目上测试，取得高 F1 分数，并涌现出交叉臂击打（cross-arm strikes）与自适应鼓棒分配（adaptive stick assignments）等行为，能完成数分钟级的多肢协调演奏。
 
 ## 核心摘录（策展，非全文）

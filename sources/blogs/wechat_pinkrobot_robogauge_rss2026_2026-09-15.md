@@ -41,5 +41,5 @@
 
 ## 对 wiki 的映射
 
-- **升格/补强：** [paper-robogauge-moe-quadruped-locomotion](../../wiki/entities/paper-robogauge-moe-quadruped-locomotion.md)（新建完整实体；与 [paper-notebook stub](../../wiki/entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md) 互链）
+- **升格/补强：** [paper-robogauge-moe-quadruped-locomotion](../../wiki/entities/paper-robogauge-moe-quadruped-locomotion.md)（新建完整实体；与 [paper-notebook stub](../../wiki/entities/paper-robogauge-moe-quadruped-locomotion.md) 互链）
 - **交叉：** [Sim2Real](../../wiki/concepts/sim2real.md)、[Domain Randomization](../../wiki/concepts/domain-randomization.md)、[Locomotion](../../wiki/tasks/locomotion.md)

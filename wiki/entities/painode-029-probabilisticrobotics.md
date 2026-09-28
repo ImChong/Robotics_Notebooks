@@ -1,19 +1,27 @@
 ---
 type: entity
-tags: [curated-index, physical-ai, awesome-physical-ai, book]
+tags: [curated-index, physical-ai, awesome-physical-ai, book, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-28
 summary: "Thrun, Burgard, Fox. Essential text on probabilistic methods for robotics."
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/generative-world-models.md
+  - ../tasks/manipulation.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/repos/pai_awesome_book_029_probabilistic-robotics.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
   - ../../sources/repos/awesome-physical-ai-aichr.md
+  - ../../sources/papers/rcl_awesome_wam_ref_47f59ffa32a9f466d486_probabilistic-robotics.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
 # Probabilistic Robotics
@@ -85,6 +93,10 @@ Thrun, Burgard, Fox. Essential text on probabilistic methods for robotics.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://mitpress.mit.edu/9780262201629/>
+- [`sources/papers/rcl_awesome_wam_ref_47f59ffa32a9f466d486_probabilistic-robotics.md`](../../sources/papers/rcl_awesome_wam_ref_47f59ffa32a9f466d486_probabilistic-robotics.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

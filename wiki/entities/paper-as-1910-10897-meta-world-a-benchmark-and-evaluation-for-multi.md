@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
+tags: [paper, curated-index, awesome-sim2real, longchao-sim2real, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-28
 arxiv: "1910.10897"
 venue: "CoRL"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页为策展索引级节点，细节以原文为准。"
@@ -13,10 +13,17 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/generative-world-models.md
+  - ../methods/vla.md
 sources:
   - ../../sources/papers/lc_awesome_sim2real_1910_10897_meta-world-a-benchmark-and-evaluation-fo.md
   - ../../sources/papers/lc_awesome_sim2real_catalog.md
   - ../../sources/repos/awesome-sim2real.md
+  - ../../sources/papers/rcl_awesome_wam_ref_4c7d069bbfa0f1875587_meta-world-a-benchmark-and-evaluation-fo.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
 # Meta-World
@@ -96,6 +103,10 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页为策
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1910.10897>
+- [`sources/papers/rcl_awesome_wam_ref_4c7d069bbfa0f1875587_meta-world-a-benchmark-and-evaluation-fo.md`](../../sources/papers/rcl_awesome_wam_ref_4c7d069bbfa0f1875587_meta-world-a-benchmark-and-evaluation-fo.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

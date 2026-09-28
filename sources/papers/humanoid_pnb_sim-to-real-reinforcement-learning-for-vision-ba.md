@@ -13,11 +13,11 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
-- 知识归纳见 wiki 实体页：[paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba](../../wiki/entities/paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba.md).
+- 知识归纳见 wiki 实体页：[paper-sa-2502-20396-sim-to-real-reinforcement-learning-for-vision-ba](../../wiki/entities/paper-sa-2502-20396-sim-to-real-reinforcement-learning-for-vision-ba.md).
 
 ## 对 wiki 的映射
 
-- [paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba](../../wiki/entities/paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba.md)
+- [paper-sa-2502-20396-sim-to-real-reinforcement-learning-for-vision-ba](../../wiki/entities/paper-sa-2502-20396-sim-to-real-reinforcement-learning-for-vision-ba.md)
 - 分类父节点：[paper-notebook-category-06-manipulation](../../wiki/overview/paper-notebook-category-06-manipulation.md)
 
 ## 参考来源（原始）

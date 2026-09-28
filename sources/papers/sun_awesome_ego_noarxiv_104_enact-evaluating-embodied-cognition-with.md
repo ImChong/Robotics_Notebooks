@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 - **项目页：** <https://openreview.net/forum?id=Patx6MRipw>
 - **Highlights（清单）：** First benchmark quantifying embodied cognition via egocentric interaction world modeling, revealing VLMs perform better on inverse tasks than forward prediction
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-ego-104-enact-evaluating-embodied-cognition-with-world-m.md`](../../wiki/entities/paper-sa-ego-104-enact-evaluating-embodied-cognition-with-world-m.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-ego-033-enact-evaluating-embodied-cognition-with-world-m.md`](../../wiki/entities/paper-sa-ego-033-enact-evaluating-embodied-cognition-with-world-m.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-ego-104-enact-evaluating-embodied-cognition-with-world-m.md`](../../wiki/entities/paper-sa-ego-104-enact-evaluating-embodied-cognition-with-world-m.md)
+- 实体页：[`wiki/entities/paper-sa-ego-033-enact-evaluating-embodied-cognition-with-world-m.md`](../../wiki/entities/paper-sa-ego-033-enact-evaluating-embodied-cognition-with-world-m.md)
 - 列表实体：[`wiki/entities/awesome-egocentric-vision.md`](../../wiki/entities/awesome-egocentric-vision.md)
