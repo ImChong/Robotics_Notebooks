@@ -55,6 +55,7 @@ flowchart LR
 - [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
 - [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — WAM 对应五层闭环的 **⑤ 推演层 · 联合建模**
 - Wang et al., *World Action Models* — [arXiv:2605.12090](https://arxiv.org/abs/2605.12090)
+- Lu et al., *World-Action Models for Robot Learning and Control: A Survey* — [arXiv:2609.16074](https://arxiv.org/abs/2609.16074) · 站内 [RCL 综述实体](../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md) + [Awesome 564 条](../wiki/entities/awesome-world-action-models-rcl.md)
 
 ### 学完输出什么
 - 能一句话说清 WAM 是什么、不是什么（相对 VLA 与外挂仿真）

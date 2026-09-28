@@ -6533,6 +6533,23 @@
     });
   }
 
+  // 首页「公司路线」卡：同样默认露出前 4 家，其余由展开按钮控制
+  var companyToggle = document.getElementById('homeCompanyToggle');
+  var companyLinks = document.getElementById('homeCompanyLinks');
+  if (companyToggle && companyLinks) {
+    companyToggle.addEventListener('click', function () {
+      var expanded = companyToggle.getAttribute('aria-expanded') !== 'true';
+      var extras = companyLinks.querySelectorAll('[data-company-extra]');
+      for (var cti = 0; cti < extras.length; cti++) {
+        extras[cti].hidden = !expanded;
+      }
+      companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      companyToggle.textContent = expanded
+        ? '收起公司列表 ↑'
+        : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
+    });
+  }
+
   // Hero「主路线」数字：滚到「从零开始」卡中心并顺时针描边一圈
   if (mainRouteCount && mainRouteCard) {
     mainRouteCount.addEventListener('click', function (event) {

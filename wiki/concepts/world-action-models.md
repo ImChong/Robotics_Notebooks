@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-vgi-white-paper.md
@@ -91,6 +91,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ./ai-auto-research.md
   - ../entities/awesome-world-action-models-rcl.md
+  - ../entities/paper-rcl-wam-robot-learning-control-survey.md
   - ../entities/awesome-world-models.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
@@ -184,7 +185,7 @@ sources:
 
 ### RCL 主线：2×2（架构 × 预测–动作接口）
 
-[MBZUAI / RCL 综述](../../sources/papers/rcl_wam_robot_learning_survey.md) 与 [Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md) 把两轴 **解耦**：
+[RCL 机器人向 WAM 综述（arXiv:2609.16074）](../entities/paper-rcl-wam-robot-learning-control-survey.md) 与 [Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md) 把两轴 **解耦**：
 
 | 轴 | 选项 | 直觉 |
 |----|------|------|
@@ -199,7 +200,7 @@ sources:
 
 ### RCL 综述：数据金字塔与两阶段训练（arXiv:2609.16074）
 
-[RCL 机器人向 WAM 综述](../../sources/papers/rcl_wam_robot_learning_survey.md) 与 [具身智能之心中文导读（2026-09-25）](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md) 把典型工程路径收成 **三类数据 × 预训练 → 后训练**：
+[RCL 机器人向 WAM 综述](../entities/paper-rcl-wam-robot-learning-control-survey.md) 与 [具身智能之心中文导读（2026-09-25）](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md) 把典型工程路径收成 **三类数据 × 预训练 → 后训练**：
 
 | 数据层 | 监督侧重 | 典型用途 |
 |--------|----------|----------|
