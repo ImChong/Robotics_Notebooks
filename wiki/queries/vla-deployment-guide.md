@@ -2,7 +2,7 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
@@ -15,7 +15,9 @@ related:
   - ../entities/paper-arli.md
   - ./vla-with-low-level-controller.md
   - ../entities/lw-benchhub-tour.md
+  - ../entities/jetson-openpi-pi05-on-thor.md
 sources:
+  - ../../sources/courses/jetson_openpi_pi05_on_thor.md
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/sim2real.md
@@ -49,8 +51,11 @@ sources:
 - **层融合**：TensorRT 会自动合并 Transformer 中的 LayerNorm 和线性层。
 - **算子插件**：针对特定的机器人算子（如旋转矩阵归一化）编写自定义 Plugin。
 
+### 官方 OpenPI + TensorRT（Jetson Thor）
+[NVIDIA Jetson AI Lab — OpenPi π₀.₅ on Thor](../entities/jetson-openpi-pi05-on-thor.md) 给出 **upstream openpi** 在 **AGX Thor** 上的完整导出链：**JAX → PyTorch → ONNX（ModelOpt FP8/NVFP4）→ trtexec engine**；`pi05_libero` 上教程自测 **~49 ms** total（PyTorch BF16 **~132 ms**）。Thor 专用 `deployment_scripts/` 经站点 **`download.sh`** 注入并 pin 固定 commit；Step 13 扩展 **`serve_policy.py --use-tensorrt`**，客户端仍用 **`openpi-client`**。适合希望 **跟官方容器/ModelOpt 配方**、自行维护 TRT engine 的团队。
+
 ### 专用 VLA 推理引擎（APXInf）
-通用 LLM serving（vLLM、sglang）优化 **云端大 batch 吞吐**；机器人端侧更关心 **batch=1、多视角、P50/P99 抖动**。[APXInf](../entities/apxinf.md)（[RLinf/APXinf-robo](https://github.com/RLinf/APXinf-robo)）面向 **π₀.₅ on Jetson Thor/Orin**：Rust 运行时 + 融合 CUDA 算子 + **OpenPI-compatible websocket serve**；Thor FP8 官方 P50 **41.16 ms**（onestep **26.32 ms**），LIBERO-10 **92.2%** vs baseline **92.4%**。已有 `openpi-client` 栈可 **只换推理 endpoint**；权重与 `norm_stats.json` 仍走 OpenPI/LeRobot 渠道。
+通用 LLM serving（vLLM、sglang）优化 **云端大 batch 吞吐**；机器人端侧更关心 **batch=1、多视角、P50/P99 抖动**。[APXInf](../entities/apxinf.md)（[RLinf/APXinf-robo](https://github.com/RLinf/APXinf-robo)）面向 **π₀.₅ on Jetson Thor/Orin**：Rust 运行时 + 融合 CUDA 算子 + **OpenPI-compatible websocket serve**；Thor FP8 官方 P50 **41.16 ms**（onestep **26.32 ms**），LIBERO-10 **92.2%** vs baseline **92.4%**。已有 `openpi-client` 栈可 **只换推理 endpoint**；权重与 `norm_stats.json` 仍走 OpenPI/LeRobot 渠道。与上节 **官方 TRT 教程** 协议兼容、实现路径不同——可按 **延迟目标 vs 维护成本** 选型。
 
 ### 视觉 Encoder 预计算
 如果使用了多视角相机，可以尝试在推理开始前，利用独立的子线程对不同视角的图像进行并行的 Resize 和 Normalization。

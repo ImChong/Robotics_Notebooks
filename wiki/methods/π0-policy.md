@@ -60,6 +60,8 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 
 主表定位：官方仓同时维护流匹配 π0、π0-FAST 与 π0.5，并提供检查点、数据配置、微调与推理服务。接入新本体时关键是动作归一化、字段映射与推理频率对齐。本库以本方法页（及 [π0.7](./pi07-policy.md)）承载 openpi 入口，不另建重复实体。
 
+**Jetson Thor 机载部署：** NVIDIA [OpenPi π₀.₅ on Thor](../entities/jetson-openpi-pi05-on-thor.md) 教程（ModelOpt FP8/NVFP4 + TensorRT，~49 ms）；第三方 [APXInf](../entities/apxinf.md) 提供更低延迟 OpenPI-compatible serve。总览见 [VLA 真机部署指南](../queries/vla-deployment-guide.md)。
+
 覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
