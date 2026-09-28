@@ -7,8 +7,9 @@
 - **类型：** paper / generative-model / diffusion / transformer
 - **arXiv：** <https://arxiv.org/abs/2212.09748> · PDF：<https://arxiv.org/pdf/2212.09748.pdf>
 - **会议：** ICCV 2023
-- **官方代码：** <https://github.com/facebookresearch/DiT>
-- **入库日期：** 2026-09-21
+- **项目页：** <https://www.wpeebles.com/DiT> — [`sources/sites/dit-wpeebles-com.md`](../sites/dit-wpeebles-com.md)
+- **官方代码：** <https://github.com/facebookresearch/DiT> — [`sources/repos/facebookresearch-dit.md`](../repos/facebookresearch-dit.md)
+- **入库日期：** 2026-09-21（项目页 / 仓库归档深化：2026-09-28）
 - **一句话说明：** 在隐空间扩散里用 **patch 化 Transformer** 替换 U-Net，展示清晰的 **Gflops–FID scaling**，成为后续文生图与机器人 flow/DiT 动作头的骨干模板。
 
 ## 核心摘录（面向 wiki 编译）
@@ -28,10 +29,15 @@
 - **要点：** 动作块是短序列，天然适合 Transformer token；与 VLM 骨干同族，便于共享工具链。Xiaomi / π / GR00T 等公开 VLA 的连续动作头大量写 **DiT + flow matching**。
 - **对 wiki 的映射：** [`wiki/methods/vla.md`](../../wiki/methods/vla.md)、[`wiki/methods/diffusion-policy.md`](../../wiki/methods/diffusion-policy.md)
 
-## 开源状态（步骤 2.5）
+## 开源状态（步骤 2.5，2026-09-28 再核）
 
-- `facebookresearch/DiT` **已开源**（PyTorch + 预训练权重说明）。
+| 资源 | 状态 |
+|------|------|
+| [wpeebles.com/DiT](https://www.wpeebles.com/DiT) | 链到 GitHub + 可视化；非空壳 |
+| [facebookresearch/DiT](https://github.com/facebookresearch/DiT) | **已开源**（`sample.py` / `train.py` / XL/2 权重直链） |
+| HF Demo | [wpeebles/DiT Space](https://huggingface.co/spaces/wpeebles/DiT) |
 
 ## 当前提炼状态
 
 - [x] 要点摘录与 wiki 映射
+- [x] 升格深度实体：[`wiki/entities/paper-dit-scalable-diffusion-transformers.md`](../../wiki/entities/paper-dit-scalable-diffusion-transformers.md)

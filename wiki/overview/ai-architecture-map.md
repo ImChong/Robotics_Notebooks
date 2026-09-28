@@ -105,7 +105,7 @@ flowchart TB
 | 4 生成 | AE / VAE | [autoencoder](../concepts/autoencoder.md) | [Kingma 2013](../../sources/papers/kingma_vae_arxiv_1312_6114.md) | 潜空间是否必须可采样？ |
 | 4 生成 | GAN | [generative-adversarial-network](../concepts/generative-adversarial-network.md) | [Goodfellow 2014](../../sources/papers/goodfellow_gan_arxiv_1406_2661.md) | 隐式分布匹配是否值得换训练不稳？ |
 | 4 生成 | Diffusion | [diffusion-model](../concepts/diffusion-model.md) | [Ho 2020](../../sources/papers/ho_ddpm_arxiv_2006_11239.md) | 多模态能否拆成稳定多步监督？ |
-| 4 生成 | DiT | [diffusion-transformer](../concepts/diffusion-transformer.md) | [Peebles 2023](../../sources/papers/peebles_dit_arxiv_2212_09748.md) | 去噪骨干能否与 VLM 同族？ |
+| 4 生成 | DiT | [diffusion-transformer](../concepts/diffusion-transformer.md) · [论文实体](../entities/paper-dit-scalable-diffusion-transformers.md) | [Peebles 2023](../../sources/papers/peebles_dit_arxiv_2212_09748.md) | 去噪骨干能否与 VLM 同族？ |
 | 5 图 | GNN | [graph-neural-network](../concepts/graph-neural-network.md) | [Kipf 2017](../../sources/papers/kipf_gcn_arxiv_1609_02907.md) | 关系拓扑是否比栅格更本质？ |
 | 6 决策 | 五类策略 | 见下节 | [Diffusion Policy](../../sources/papers/diffusion_policy_arxiv_2303_04137.md) 等 | 同一函数族如何接到控制环？ |
 

@@ -16,6 +16,12 @@
 - **开源结论：** ForceTwin **未开源**；Contact-Guided **未开源**（2026-09-28 复核）
 - **关键页：** [paper-forcetwin](wiki/entities/paper-forcetwin.md)、[paper-contact-guided-exploration-locomanipulation](wiki/entities/paper-contact-guided-exploration-locomanipulation.md)
 
+## [2026-09-28] ingest | sources/papers/peebles_dit_arxiv_2212_09748.md + sites/dit-wpeebles-com + repos/facebookresearch-dit — DiT（arXiv:2212.09748，ICCV 2023）；项目页链 GitHub + XL/2 权重；升格 paper-dit-scalable-diffusion-transformers、合并 RCL #086 stub；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2212.09748 与 wpeebles.com/DiT
+- **开源结论：** **已开源**（facebookresearch/DiT + 预训练 checkpoint + HF Space）
+- **关键页：** [paper-dit-scalable-diffusion-transformers](wiki/entities/paper-dit-scalable-diffusion-transformers.md)
+
 ## [2026-09-28] ingest | sources/papers/x_navdp_arxiv_2607_28560.md + sites/x-navdp-project-page + repos/internrobotics_x_navdp — X-NavDP GQRM 导航扩散 RL 后训练（arXiv:2607.28560）；已开源 NavDP/baselines/x-navdp + HF；自动合并 PR
 
 - **意图：** 用户指定项目页、HF、arXiv:2607.28560

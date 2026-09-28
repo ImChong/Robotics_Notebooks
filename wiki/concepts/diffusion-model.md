@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-28
 related:
   - ../formalizations/generative-foundations.md
   - ../overview/ai-architecture-map.md

@@ -2,7 +2,7 @@
 type: concept
 tags: [dit, diffusion, transformer, vla, architecture]
 status: complete
-updated: 2026-09-21
+updated: 2026-09-28
 summary: "Diffusion Transformer 用 patch 化 Transformer 替换 U-Net 做扩散去噪骨干，提供可预测的算力–质量缩放，并成为 VLA/flow 连续动作头的主流结构。"
 related:
   - ./diffusion-model.md
@@ -11,8 +11,11 @@ related:
   - ../methods/diffusion-policy.md
   - ../methods/vla.md
   - ../overview/ai-architecture-map.md
+  - ../entities/paper-dit-scalable-diffusion-transformers.md
 sources:
   - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
+  - ../../sources/sites/dit-wpeebles-com.md
+  - ../../sources/repos/facebookresearch-dit.md
   - ../../sources/papers/ho_ddpm_arxiv_2006_11239.md
   - ../../sources/papers/ai_architecture_foundations.md
 ---
@@ -73,6 +76,7 @@ flowchart LR
 
 ## 关联页面
 
+- [DiT 论文实体（ICCV 2023）](../entities/paper-dit-scalable-diffusion-transformers.md)
 - [扩散模型](./diffusion-model.md)
 - [Transformer](./transformer.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
