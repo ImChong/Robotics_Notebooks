@@ -12,7 +12,7 @@ tags:
   - meta-ai
   - open-source
 status: complete
-updated: 2026-09-09
+updated: 2026-09-28
 related:
   - ../concepts/contact-rich-manipulation.md
   - ./dexbench.md
@@ -52,8 +52,8 @@ summary: "Meta 开源的灵巧操作统一仿真平台：自研接触优先物�
 - **选型：** 若研究 **多指灵巧、螺纹拧紧、软体接触、触觉传感** 等接触主导任务，且需要 **一体化 authoring → 仿真 → RL** 栈，SuperDex 是当前 Meta 官方主推的 **开源全链路平台**（Apache 2.0）。
 - **与通用仿真器分工：** [MuJoCo Playground](./mujoco-playground.md) / [Isaac Lab](./isaac-lab.md) 强项在 **大规模并行 loco-manip**；SuperDex 强项在 **自研 contact-first 物理** 与灵巧操作资产管线，勿按「谁 FPS 更高」单维选型。
 - **与 DexBench 分工：** [DexBench](./dexbench.md) 是工业真机 **OSC 规格 + Regime 诊断语言**；SuperDex 是 **仿真+训练平台**，无公开工业 SR 排行榜。
-- **成熟度：** Physics / Robotics / Studio **已可安装运行**（`uv pip install superdex`）；**Lab 为 early preview**；**Teleop 未发布**（README 标 Q4 2026）。
-- **开源：** GitHub **已开源**；Python 3.12 有 PyPI 预编译 wheel；论文 citation 块 README 仍写待发表。
+- **成熟度：** Physics / Robotics / Studio **已可安装运行**（`uv pip install superdex`）；GitHub **v1.0.0**（2026-08-24，`stable` 分支）；**Lab 为 early preview**；**Teleop 未发布**（README 标 Q4 2026）。
+- **开源：** GitHub **已开源**（Apache 2.0）；Python 3.12 PyPI wheel；README 占位 citation（Mochi Team / *Implicit Physics Engine*）**尚无 arXiv/DOI**。
 
 ## 为什么重要
 
@@ -67,7 +67,7 @@ summary: "Meta 开源的灵巧操作统一仿真平台：自研接触优先物�
 
 ### 四模块职责
 
-| 模块 | 角色 | 状态（2026-09） |
+| 模块 | 角色 | 状态（2026-09-28） |
 |------|------|-----------------|
 | **SuperDex Physics** | 接触优先物理引擎；仿真底座 | 已发布；含 Physics Debugger |
 | **SuperDex Robotics** | 机器人定义/组合、控制器、传感器、执行器 | 已发布；含 OSC 等控制示例 |
@@ -135,7 +135,7 @@ sequenceDiagram
 | 克隆 | `git clone --branch stable https://github.com/facebookresearch/project_superdex.git` |
 | 快速开始 | `uv venv` → `uv pip install superdex`（**Python 3.12**） |
 | 源码+GUI | `uv sync --extra gui`；仓内命令加 `--no-project` |
-| 精度 | 默认 fp32；`SUPERDEX_PRECISION=double` 或 `--extra double` |
+| 精度 | 默认 fp32；运行时 fp64：`SUPERDEX_PRECISION=fp64` 或 `double`；构建 fp64：`uv sync --extra double` |
 | 平台 | Linux / Windows x86_64、macOS ARM；Linux GUI 需 X11 与 OpenGL 4.1 |
 | Lab | 视为 early preview；API 与性能可能大幅变动 |
 | 许可 | 源码 Apache 2.0；资产 CC BY 4.0；mesh-cli 组件 GPLv3 |
@@ -154,7 +154,7 @@ sequenceDiagram
 
 - **Lab 未成熟：** README 明确 early preview，不宜假设 API 稳定或 benchmark 齐全。
 - **Teleop 未发布：** Q4 2026 为路线图；截至入库日无法复现 README 画廊中的遥操作 demo 栈。
-- **无正式论文：** citation 块占位，学术对标需自行核对后续发表版本。
+- **论文未发表：** README 占位 `@misc{mochi2026}`（隐式物理引擎叙事）；**无 arXiv 号**，学术对标需等正式预印本。
 - **Python 版本钉扎：** 预编译 wheel 仅 **3.12**；其他版本需源码构建。
 - **非 GPU 大规模 benchmark：** 与 [RoboCasa](./robocasa.md) / [ManiSkill2](./maniskill2.md) 的「通才操作榜」不同赛道；工业规格见 [DexBench](./dexbench.md)。
 - **第三方许可：** 部分依赖与资产限非商业/学术用途，部署前须核对各组件 LICENSE。
