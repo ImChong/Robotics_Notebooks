@@ -512,7 +512,7 @@
 - [FloBaRoID（浮动基动力学辨识工具箱）](wiki/entities/flobaroid.md) — FloBaRoID**（*FLOating BAse RObot dynamical IDentification*，[kjyv/FloBaRoID](https://github.com/kjy `📅unknown` `[entity_page]`
 - [FluidUse（Apple Silicon 本地计算机使用）](wiki/entities/fluiduse.md) — FluidUse**（GitHub，SPM `0.3.0+`）是 **FluidInference**  `📅unknown` `[entity_page]`
 - [FLUX 3 Action](wiki/entities/flux-3-action.md) — FLUX 3 Action** 是 Black Forest Labs 发布的 **world action mod `📅unknown` `[entity_page]`
-- [Humanoid FluxVLA Engine](wiki/entities/fluxvla-engine.md) — Humanoid FluxVLA Engine** 是 **逐际动力（LimX Dynamics）** 随 **COSA 0.5**（2026-07）同步开源的 **人形 VLA 全栈工程框架 `📅unknown` `[entity_page]`
+- [FluxVLA Engine（arXiv:2609.17210）](wiki/entities/fluxvla-engine.md) — FluxVLA Engine**（*A One-Stop VLA Engineering Platform for Embodied Intelligence*，[arXiv:2609.17210 `📅unknown` `[entity_page]`
 - [FlyBrainLab](wiki/entities/flybrainlab.md) — FlyBrainLab** 是 Fruit Fly Brain Observatory 团队开源的 **交互计算平台**（https://github.com/FlyBrainLab/FlyBra `📅unknown` `[entity_page]`
 - [flying_knots_public（开源仓库）](wiki/entities/flying-knots-public.md) — flying_knots_public** 是 CMU Flying Knots 论文的 **MIT 许可研究代码快照**，实现 **示教采集 → 清洗标注 → IK 初始命令 → Task-Le `📅unknown` `[entity_page]`
 - [FlyWire](wiki/entities/flywire.md) — FlyWire**（https://flywire.ai/）是 **FlyWire Consortium** 经大规模专家 proofreading 完成的 **雌性成年果蝇全脑** 连接组平台。 `📅unknown` `[entity_page]`

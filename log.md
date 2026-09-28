@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | FluxVLA Engine arXiv:2609.17210 — 论文/sources/sites/repos 归档并深化 fluxvla-engine 实体（流程图+RTC 真机读法）
+
 ## [2026-09-28] ingest | KIWI（360° 相机双臂 UMI，arXiv:2609.22809）项目页核查：代码待发布
 
 ## [2026-09-28] ingest | InstantHMR（Apache-2.0 ONNX MHR 学生，GT 来自 sam-3d-body-dataset）入库；SAM 3D Body 补 Meta 项目页溯源与 HF 链接再核
