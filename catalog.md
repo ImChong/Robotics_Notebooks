@@ -3880,6 +3880,7 @@
 - [SayPlan](wiki/entities/paper-sayplan-llm-scene-graph-planning.md) — SayPlan** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上下文主导型 `📅unknown` `[entity_page]`
 - [SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）](wiki/entities/paper-sc3-eval.md) — SC3-Eval**（*SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation*，[ar `📅unknown` `[entity_page]`
 - [SCAIL-2：端到端 In-Context 受控角色动画](wiki/entities/paper-scail-2.md) — SCAIL-2**（*Unifying Controlled Character Animation with End-to-end In-Context Conditioning*，arXiv: `📅unknown` `[entity_page]`
+- [ScaleDP：十亿参数可扩展扩散 Transformer 操作策略](wiki/entities/paper-scaledp-scaling-diffusion-transformer-policy.md) — ScaleDP**（*Scaling Diffusion Policy in Transformer to 1 Billion Parameters for Robotic Manipulatio `📅unknown` `[entity_page]`
 - [ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-scaling-bfm-humanoid.md) — ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scale `📅unknown` `[entity_page]`
 - [Scaling Laws for Neural Language Models](wiki/entities/paper-scaling-laws-neural-language-models.md) — Scaling Laws for Neural Language Models**（Kaplan et al.，[arXiv:2001.08361](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
 - [Scan2Mesh：From Unstructured Range Scans to 3D Meshes（CVPR 2019）](wiki/entities/paper-scan2mesh-cvpr2019-dai.md) — Scan2Mesh**（arXiv:1811.10464，[CVPR 2019 PDF](https://openacces `📅unknown` `[entity_page]`
