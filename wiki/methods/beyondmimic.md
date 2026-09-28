@@ -362,6 +362,7 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - Hybrid Robotics，[whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) — 上游开源实现与 issue 讨论入口（张量命名以仓库为准）。
 - 论文：<https://arxiv.org/abs/2508.08241>（v4，2025-11-13）；正式发表：[DOI 10.1126/scirobotics.adx8924](https://doi.org/10.1126/scirobotics.adx8924)（*Science Robotics*，2026-08-26）；项目页：<https://beyondmimic.github.io/>。
 - [wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md](../../sources/blogs/wechat_shenlan_beyondmimic_science_robotics_2026-09-10.md) — 深蓝具身智能 *Science Robotics* 中文深度导读（实验数字、路线对照、局限）。
+- [wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md) — ROBOTIS K1 在 Isaac Lab 上 **4096** 并行 BeyondMimic 跟踪 + Sim2Real 部署案例；地图见 [robotis-humanoid-skills-nvidia-stack-technology-map](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)。
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 
 ## HMI 开源主表入口

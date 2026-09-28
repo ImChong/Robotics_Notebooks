@@ -2,11 +2,12 @@
 type: entity
 tags: [robotis, hardware, dynamixel, physical-ai, ros2, open-source, cyclo, humanoid, manipulator]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-28
 summary: "乐百机器人（ROBOTIS）官方开源组织 ROBOTIS-GIT（154 仓）：Dynamixel、TurtleBot3/OP3、Cyclo Physical AI（Isaac cyclo_lab + mjlab cyclo_mjlab、physical_ai_tools、cyclo_intelligence）与 Zenoh×LeRobot 桥接。"
 related:
   - ./robotis-ai-worker.md
   - ./robotis-ai-sapiens.md
+  - ../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md
   - ./cyclo-lab.md
   - ./robotis-cyclo-mjlab.md
   - ./robotis-physical-ai-tools.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/repos/cyclo_control.md
   - ../../sources/repos/cyclo_mjlab.md
   - ../../sources/repos/zenoh_ros2_sdk.md
+  - ../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md
 ---
 
 # ROBOTIS（乐百机器人）
@@ -131,6 +133,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Humanoid Skills × NVIDIA 栈（K1 全身 + Worker 操作）](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)
 - [AI Worker](./robotis-ai-worker.md) · [AI Sapiens](./robotis-ai-sapiens.md)
 - [cyclo_lab](./cyclo-lab.md) · [cyclo_mjlab](./robotis-cyclo-mjlab.md) · [cyclo_control](./cyclo-control.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
 - [Dynamixel SDK](./dynamixel-sdk.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, ai-sapiens, humanoid, ros2, physical-ai, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-28
 summary: "ROBOTIS AI Sapiens K1 官方 ROS 2 包 ai_sapiens：描述、bringup、关节组阻抗控制器与 RC broadcaster；对接 Physical AI Tools 与运动重定向资产。"
 related:
   - ./robotis.md
@@ -13,8 +13,12 @@ related:
   - ./unitree-g1.md
   - ../tasks/locomotion.md
   - ../overview/hub-motion-retargeting.md
+  - ../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md
+  - ../methods/beyondmimic.md
+  - ../entities/newton-physics.md
 sources:
   - ../../sources/repos/ai_sapiens.md
+  - ../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md
 ---
 
 # ROBOTIS AI Sapiens（ai_sapiens）
@@ -58,6 +62,7 @@ sources:
 3. 运动数据：关注组织内 `soma-retargeter`（SOMA BVH → 机器人 CSV）及 [运动重定向 hub](../overview/hub-motion-retargeting.md)。
 4. 与 [AI Worker](./robotis-ai-worker.md) 选型：操作/移动操作半人形 vs 全身人形 K1——软件仓与控制器插件不互通。
 5. 仿真资产：以 menagerie / 文档当前列表为准（人形资产可能滞后于 FFW/OMY）。
+6. **全身技能 pipeline（ROBOTIS 真机案例，2026-09）**：Kimodo/GEM-X 等 → SOMA → SOMA Retargeter → [Isaac Lab](https://isaac-sim.github.io/IsaacLab/) + [BeyondMimic](../methods/beyondmimic.md)（文内 **4096** 并行 K1、**50 Hz** 策略）；导出 `policy.onnx` + `sim2real.yaml` 在 **Jetson Orin NX** 上以 **DYNAMIXEL-Q 阻抗** 闭环。Sim2Real 上报告 **Newton** 物理后端相对默认 PhysX 更利于真机平衡；细节见 [Humanoid Skills 技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)。
 
 ## 局限与风险
 
@@ -68,6 +73,7 @@ sources:
 ## 关联页面
 
 - [ROBOTIS hub](./robotis.md) · [AI Worker](./robotis-ai-worker.md)
+- [Humanoid Skills × NVIDIA 栈技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)
 - [Physical AI Tools](./robotis-physical-ai-tools.md)
 - [OP3](./robotis-op3.md) · [THORMANG3](./robotis-thormang3.md)
 - [Unitree G1（对照）](./unitree-g1.md)
@@ -76,6 +82,7 @@ sources:
 ## 参考来源
 
 - [sources/repos/ai_sapiens.md](../../sources/repos/ai_sapiens.md)
+- [human five · Humanoid Skills（ROBOTIS K1 全身 pipeline）](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md)
 - 上游：<https://github.com/ROBOTIS-GIT/ai_sapiens>
 
 ## 推荐继续阅读

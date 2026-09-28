@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, differentiable, linux-foundation, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 related:
   - ./paper-dat-divide-and-truncate.md
   - ./paper-mixed-mpm-stiff-elastoplasticity.md
@@ -143,6 +143,7 @@ flowchart LR
 | 多物理 | 布料走 Style3D / VBD（`cloth_*`）；颗粒 / 雪 / 水走 ImplicitMPM（`mpm_*`） |
 | 约束机构 | Kamino 示例：`kamino_basic_fourbar`、`kamino_robot_anymal_d`；闭链理论与 BETA 状态见 [Kamino](./paper-kamino.md) |
 | Isaac Lab | 官方 CTA 指向 `IsaacLab` 的 `feature/newton`；Lab 环境 preset 含 `newton_mjwarp` / `newton_kamino` |
+| ROBOTIS K1 全身 | [Humanoid Skills 技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md) | 同一 BeyondMimic 任务换 **Newton** 后端后真机平衡/接触优于默认 PhysX（厂商案例，非独立 benchmark） |
 | 硬件 | NVIDIA Maxwell+、驱动 545+（CUDA 12）；无需本机 CUDA Toolkit；macOS 仅 CPU |
 
 ## 与相近工具的分工
@@ -201,6 +202,7 @@ flowchart LR
 - [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
 - [RoboFinals Newton-native 媒体文](../../sources/sites/lightwheel_robofinals_newton_native_benchmark.md)
 - [OmniSim 仓库归档](../../sources/repos/omnisim.md) — Newton 作为唯一后端的仿真器案例
+- [human five · Humanoid Skills（ROBOTIS K1 Newton 案例）](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md)
 
 ## 推荐继续阅读
 
