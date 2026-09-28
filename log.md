@@ -1,3 +1,7 @@
+## [2026-09-28] structural | 公司路线对照页补入德塔智能：矩阵、开放程度表、来源与继续阅读，团队数改为 13
+
+## [2026-09-28] structural | 公司路线新增德塔智能 Delta Intelligence（官方入口 deltai.com/en/blog，Δ₀ 节点），首页入口卡与计数改为 13 家
+
 ## [2026-09-28] ingest | Delta Intelligence Δ₀ 官方博客入库：sources/blogs + sites/deltai-com + wiki 实体；项目页无 GitHub，标未开源
 
 ## [2026-09-28] ingest | MMLab Physical RSI 1.0 项目页：Self-Harness 实体 + RoboDojo Overall #1 叙事（代码待发布）
